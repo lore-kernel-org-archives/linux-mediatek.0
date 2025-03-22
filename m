@@ -4,69 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92D16C36002
-	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Mar 2025 18:48:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 330EBC35FFC
+	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Mar 2025 22:53:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4cIh79rgalwniB1ooYuUH4eVM2LYCtDy2qNITeBYIFk=; b=fYHr1I/65biTsm7PxJDk6fIcxl
-	8pI23grCZmEDEznIt3JPJp4bU+YsPqq8hmQJM+HdyzUBFQTzI+f93nEc0i4eE2RoV3xAXWYirmoi9
-	jzrhsetZKoJN059LOfQQ/sjEHBblxblRiuwF727zkwTqMUg2S8ZUoQBnCA/DvExom9APVlWD6hzIr
-	biglVZtpBIQuLBSmlI8zTi7494h0X1/fB6jJXYOQVpcjFhZCdkX5twofXKf2ZaysD0fs84ViJ1HEi
-	sMy8hVA1AL0Z9xm1Q7tpQpN5Iy5HCIPBvOgzLbquE8b26n4etsl5buhXszJbWhuQAIPvZ33s0v5+v
-	Ux5DeRzg==;
+	bh=3Jt14YxismGrzSFIUTNtRc9HQQUaY0k4x/qsI+lQ69o=; b=P3rKq8gNEMJ9Fkvs3vMi0Zsk1e
+	IG2x7wgt+53QhYkIz4KuEVFoFB2RiTGuwuNuejKCs3rzMM0R8e6bq6dI4lLfCHbkzQcjXrN/UIhOb
+	KXM1nPzni0ggBGdQxtYL92rVQBTLwXAhA/uwQtU1oiJ6RlH20lWsoBpb1vuAbmDCfMGjRP4xtKSQd
+	2FqNifUQw4XAVIRcsR2BK1BUlxx76jqyQ6r+z5QRm4ABYI2o52mse874p7j4I78+Re/6Hss554MOU
+	zlcC7D2M+OFFmV33ydyIT8X2Ginq4H8njfiYd2hUAn2WmkDLq57BV+yEYVfzR5jo51yv3HqHORJN2
+	ddh9DZOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tw3ta-00000000CDz-3Eoj;
-	Sat, 22 Mar 2025 18:48:34 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1tw7iW-00000000PKa-3rWk;
+	Sat, 22 Mar 2025 22:53:24 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tw3tY-00000000CDB-1Aw1;
-	Sat, 22 Mar 2025 18:48:33 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1742669302; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=R1SslBixQeyNog5pWFZ1pHaQr0m8DO8ELxXGC9PAkG5HvdQXc/7aRf/wad4ceKGASIX6G4WENxzWV8ioCxo1k1iwvDIYPniAabvKD8ze63CAms3YJsMBgttCHjZPK9+sYGcYWA3iUbkwXwJU5a4U9G5JpcfsRBFApHWxRINwULY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1742669302; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=4cIh79rgalwniB1ooYuUH4eVM2LYCtDy2qNITeBYIFk=; 
-	b=V9MfdhLqLWa60DQFg4hTGX+WYSIYCk1vmNXi+xJ2Ue9asRhfjxSjCBhTQ0ubBHdN7PxgmR6j9BiAsJHkSJ8QLlAWtNrz+MMD5XaDRx4P32MdQvPFBSCt0HtfF4OTB8Ck+RGSQCcnJJZXCSVvFB3Pii1dxOOOBVV0A+r8XDxPSmg=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=adrian.larumbe@collabora.com;
-	dmarc=pass header.from=<adrian.larumbe@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1742669302;
-	s=zohomail; d=collabora.com; i=adrian.larumbe@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:Content-Transfer-Encoding:In-Reply-To:Message-Id:Reply-To;
-	bh=4cIh79rgalwniB1ooYuUH4eVM2LYCtDy2qNITeBYIFk=;
-	b=b/raMQsGFSm0eal5zSpI8vR8jxRy+yqNxnk5MiTxYth8EnBvlbfS2mFFgObrV5X9
-	Kh0TMQmoHABGKHX80V60TUIPlpcc3dXQPH+sEIln6Z8TkYOs07QOoGe5QZdBMVdwg5I
-	4QEfWBO/SBubaxl86++nM6vq7S+U5c9CEc6nf9to=
-Received: by mx.zohomail.com with SMTPS id 1742669301763129.7861767860668;
-	Sat, 22 Mar 2025 11:48:21 -0700 (PDT)
-Date: Sat, 22 Mar 2025 18:48:12 +0000
-From: Adrian Larumbe <adrian.larumbe@collabora.com>
-To: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	boris.brezillon@collabora.com, robh@kernel.org, steven.price@arm.com, 
-	maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, 
-	simona@ffwll.ch, kernel@collabora.com, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, sjoerd@collabora.com, angelogioacchino.delregno@collabora.com
-Subject: Re: [PATCH v4 4/6] drm/panfrost: Add support for AARCH64_4K page
- table format
-Message-ID: <5hl2ahnxeunqebenguxjwwie6ura3lxknu766xthov2m4qvsot@imrrfqftlmv4>
-References: <20250317145245.910566-1-ariel.dalessandro@collabora.com>
- <20250317145245.910566-5-ariel.dalessandro@collabora.com>
+	id 1tw7gq-00000000PGN-3YwR;
+	Sat, 22 Mar 2025 22:51:42 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-3965c995151so1644776f8f.1;
+        Sat, 22 Mar 2025 15:51:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1742683899; x=1743288699; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=3Jt14YxismGrzSFIUTNtRc9HQQUaY0k4x/qsI+lQ69o=;
+        b=CUAdbrGC8Xy07x3cFhV3sIoxzV2qaA11crdawmVo1pUpouzlKmO1oq3x+9Z4lLrClJ
+         vb/IE1aH/qgdoCUSh5NB/yy+tutpF1oB0zeMiEroTGgaSTcTK9E6TxNIEuA2kBb7+CQz
+         zMD4wHE5nLsjteW/pPd75uatx95GahadlX1f9ybz+lIAjwyVKEUv9WsWcf0Wh+YI4HjF
+         WKOJBFVBxxY8wTFc9GpChuRFQQPnEAgjYKdYue1uxcjLb4zChGCR/SDRiN1bWDik+zSx
+         qV/WfiRG1fPmuR806V638ET3qjRtwRWU7PBBvqCao0aBG+kub7mR5GRKdbuUMR8ZeUxt
+         7UUg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742683899; x=1743288699;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=3Jt14YxismGrzSFIUTNtRc9HQQUaY0k4x/qsI+lQ69o=;
+        b=VVr9vbGYwpuyzDjqvyxwmKo/WfWrSLcfZyuL9ZXkH9TJzMxMPmFHxxE/3EJT6WyBdL
+         yN+Y90TPQYF7Qeo4nnfdPA2PgXyO1s4CXOMNfJ2XnFpRHQ8X+u5OxL/RUyyWuk2Adp28
+         JF9ALfS5SUHjfmyndnv/FnDEW12O/sNf9rLcTrtlgsdUB5wEfZTalfHWWFovlWfa2xt8
+         nXM1dSh8adoRRauJhd8EPl7Z+OtWRoOKoW721Lq2OuawK/wcis5CY2eSVqLzdDl5g4+F
+         KIcYd8Irc3UDbcXEKaFHvjLDGe/QnC8yl5Tb71IUOg72gB7ctxUzUJUIalCU5sYPqMhX
+         m/3w==
+X-Forwarded-Encrypted: i=1; AJvYcCUPL2eAVmoi/5f9Mn0ywO5gifal9rq+3ZUFR+9mqwBidbR+WgK9ysOTqUX3ASQs1Ce5M+DgDh2VMKS2jgbpipHS@lists.infradead.org, AJvYcCX2TybTomYTootm05cZFPzwVUZ++yFfC3ZheMFCYvMhS4bve3PvrVFdfqH4u+qYlkOSQY4n52R3GMIOBGtTDYQ=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzeTuEjwn5FWtLDxa4DLmDSpuXyHFOAuVd1A91pVO6f7imMUfST
+	oNaUYrkirIjkLG3GU0xE9JimV56xUV78BlYYAeVI3blp6wfrciJ2
+X-Gm-Gg: ASbGncvH0jnkJc6dg8pjKdrhfrh9nngEujLmsWgHd2XIU+8v4hK8Evgbb9b9fod3rxb
+	Gu/U1mHa1jqmlujjOJb6ifKrl/W8ldcC+BneY3T4NDfyECTDX5oHlYBLg/cnH31APLQXI7CYGWq
+	ttWb28tCKwNYHnDMMtiFZ8bAiEQHJMzkwYd3NWP0xnIt1rg1MaHPF8da0tXjXqLeqTKnOjxD4ON
+	K/d1ghd8Z6H7J1G/y7WFUngWPGH/6DoXFUgL4w6LEiznWmIUp2ktI7fN1BDaY14iD11Xrw/rtps
+	vZHsUHDhiJqJeT2YmTL/DrRZWFmS50SREZuovpVXc/qqJo1K
+X-Google-Smtp-Source: AGHT+IGxXIu9gFWA5FTHPGshtlN1jdaNgj6n+gV081Jt+w3afTixlCPB5LoK8q8g2bwFmjRD4hWrlA==
+X-Received: by 2002:a05:6000:1547:b0:391:2d61:4542 with SMTP id ffacd0b85a97d-3997f8f2855mr7155076f8f.11.1742683898800;
+        Sat, 22 Mar 2025 15:51:38 -0700 (PDT)
+Received: from qasdev.system ([2a02:c7c:6696:8300:ec99:3da1:428d:90b1])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3997f9eef37sm6054754f8f.85.2025.03.22.15.51.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 22 Mar 2025 15:51:38 -0700 (PDT)
+Date: Sat, 22 Mar 2025 22:51:22 +0000
+From: Qasim Ijaz <qasdev00@gmail.com>
+To: Jonas Gorski <jonas.gorski@gmail.com>
+Cc: nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com, sean.wang@mediatek.com,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	chui-hao.chiu@mediatek.com, Bo.Jiao@mediatek.com,
+	linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] wifi: mt76: mt7996: prevent uninit return in
+ mt7996_mac_sta_add_links
+Message-ID: <Z98-6kXoYdSaFtVR@qasdev.system>
+References: <20250320201914.48159-1-qasdev00@gmail.com>
+ <CAOiHx==UCeMQpywQJCLPQqipEW0tK9youRxdR5+_T1LuGp_EHA@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250317145245.910566-5-ariel.dalessandro@collabora.com>
+In-Reply-To: <CAOiHx==UCeMQpywQJCLPQqipEW0tK9youRxdR5+_T1LuGp_EHA@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250322_114832_401945_BD05448F 
-X-CRM114-Status: GOOD (  36.11  )
+X-CRM114-CacheID: sfid-20250322_155140_887522_2B91657F 
+X-CRM114-Status: GOOD (  25.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,331 +104,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17.03.2025 11:52, Ariel D'Alessandro wrote:
-> Currently, Panfrost only supports MMU configuration in "LEGACY" (as
-> Bifrost calls it) mode, a (modified) version of LPAE "Large Physical
-> Address Extension", which in Linux we've called "mali_lpae".
->
-> This commit adds support for conditionally enabling AARCH64_4K page
-> table format. To achieve that, a "GPU optional quirks" field was added
-> to `struct panfrost_features` with the related flag.
->
-> Note that, in order to enable AARCH64_4K mode, the GPU variant must have
-> the HW_FEATURE_AARCH64_MMU feature flag present.
->
-> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Reviewed-by: Boris Brezillon <boris.brezillon@collabora.com>
-> ---
->  drivers/gpu/drm/panfrost/panfrost_device.h |  16 +++
->  drivers/gpu/drm/panfrost/panfrost_mmu.c    | 140 +++++++++++++++++++--
->  drivers/gpu/drm/panfrost/panfrost_regs.h   |  34 +++++
->  3 files changed, 183 insertions(+), 7 deletions(-)
->
-> diff --git a/drivers/gpu/drm/panfrost/panfrost_device.h b/drivers/gpu/drm/panfrost/panfrost_device.h
-> index cffcb0ac7c111..ad95f2ed31d9a 100644
-> --- a/drivers/gpu/drm/panfrost/panfrost_device.h
-> +++ b/drivers/gpu/drm/panfrost/panfrost_device.h
-> @@ -42,6 +42,14 @@ enum panfrost_gpu_pm {
->  	GPU_PM_VREG_OFF,
->  };
->
-> +/**
-> + * enum panfrost_gpu_quirks - GPU optional quirks
-> + * @GPU_QUIRK_FORCE_AARCH64_PGTABLE: Use AARCH64_4K page table format
-> + */
-> +enum panfrost_gpu_quirks {
-> +	GPU_QUIRK_FORCE_AARCH64_PGTABLE,
-> +};
-> +
->  struct panfrost_features {
->  	u16 id;
->  	u16 revision;
-> @@ -95,6 +103,9 @@ struct panfrost_compatible {
->
->  	/* Allowed PM features */
->  	u8 pm_features;
-> +
-> +	/* GPU configuration quirks */
-> +	u8 gpu_quirks;
->  };
->
->  struct panfrost_device {
-> @@ -162,6 +173,11 @@ struct panfrost_mmu {
->  	int as;
->  	atomic_t as_count;
->  	struct list_head list;
-> +	struct {
-> +		u64 transtab;
-> +		u64 memattr;
-> +		u64 transcfg;
-> +	} cfg;
->  };
->
->  struct panfrost_engine_usage {
-> diff --git a/drivers/gpu/drm/panfrost/panfrost_mmu.c b/drivers/gpu/drm/panfrost/panfrost_mmu.c
-> index 294f86b3c25e7..506f42ccfd5fc 100644
-> --- a/drivers/gpu/drm/panfrost/panfrost_mmu.c
-> +++ b/drivers/gpu/drm/panfrost/panfrost_mmu.c
-> @@ -26,6 +26,48 @@
->  #define mmu_write(dev, reg, data) writel(data, dev->iomem + reg)
->  #define mmu_read(dev, reg) readl(dev->iomem + reg)
->
-> +static u64 mair_to_memattr(u64 mair, bool coherent)
-> +{
-> +	u64 memattr = 0;
-> +	u32 i;
-> +
-> +	for (i = 0; i < 8; i++) {
-> +		u8 in_attr = mair >> (8 * i), out_attr;
-> +		u8 outer = in_attr >> 4, inner = in_attr & 0xf;
-> +
-> +		/* For caching to be enabled, inner and outer caching policy
-> +		 * have to be both write-back, if one of them is write-through
-> +		 * or non-cacheable, we just choose non-cacheable. Device
-> +		 * memory is also translated to non-cacheable.
-> +		 */
-> +		if (!(outer & 3) || !(outer & 4) || !(inner & 4)) {
-> +			out_attr = AS_MEMATTR_AARCH64_INNER_OUTER_NC |
-> +				   AS_MEMATTR_AARCH64_SH_MIDGARD_INNER |
-> +				   AS_MEMATTR_AARCH64_INNER_ALLOC_EXPL(false, false);
-> +		} else {
-> +			out_attr = AS_MEMATTR_AARCH64_INNER_OUTER_WB |
-> +				   AS_MEMATTR_AARCH64_INNER_ALLOC_EXPL(inner & 1, inner & 2);
-> +			/* Use SH_MIDGARD_INNER mode when device isn't coherent,
-> +			 * so SH_IS, which is used when IOMMU_CACHE is set, maps
-> +			 * to Mali's internal-shareable mode. As per the Mali
-> +			 * Spec, inner and outer-shareable modes aren't allowed
-> +			 * for WB memory when coherency is disabled.
-> +			 * Use SH_CPU_INNER mode when coherency is enabled, so
-> +			 * that SH_IS actually maps to the standard definition of
-> +			 * inner-shareable.
-> +			 */
-> +			if (!coherent)
-> +				out_attr |= AS_MEMATTR_AARCH64_SH_MIDGARD_INNER;
-> +			else
-> +				out_attr |= AS_MEMATTR_AARCH64_SH_CPU_INNER;
-> +		}
-> +
-> +		memattr |= (u64)out_attr << (8 * i);
-> +	}
-> +
-> +	return memattr;
-> +}
-> +
->  static int wait_ready(struct panfrost_device *pfdev, u32 as_nr)
->  {
->  	int ret;
-> @@ -124,9 +166,9 @@ static int mmu_hw_do_operation(struct panfrost_device *pfdev,
->  static void panfrost_mmu_enable(struct panfrost_device *pfdev, struct panfrost_mmu *mmu)
->  {
->  	int as_nr = mmu->as;
-> -	struct io_pgtable_cfg *cfg = &mmu->pgtbl_cfg;
-> -	u64 transtab = cfg->arm_mali_lpae_cfg.transtab;
-> -	u64 memattr = cfg->arm_mali_lpae_cfg.memattr;
-> +	u64 transtab = mmu->cfg.transtab;
-> +	u64 memattr = mmu->cfg.memattr;
-> +	u64 transcfg = mmu->cfg.transcfg;
->
->  	mmu_hw_do_operation_locked(pfdev, as_nr, 0, ~0ULL, AS_COMMAND_FLUSH_MEM);
->
-> @@ -139,6 +181,9 @@ static void panfrost_mmu_enable(struct panfrost_device *pfdev, struct panfrost_m
->  	mmu_write(pfdev, AS_MEMATTR_LO(as_nr), lower_32_bits(memattr));
->  	mmu_write(pfdev, AS_MEMATTR_HI(as_nr), upper_32_bits(memattr));
->
-> +	mmu_write(pfdev, AS_TRANSCFG_LO(as_nr), lower_32_bits(transcfg));
-> +	mmu_write(pfdev, AS_TRANSCFG_HI(as_nr), upper_32_bits(transcfg));
-> +
->  	write_cmd(pfdev, as_nr, AS_COMMAND_UPDATE);
->  }
->
-> @@ -152,9 +197,67 @@ static void panfrost_mmu_disable(struct panfrost_device *pfdev, u32 as_nr)
->  	mmu_write(pfdev, AS_MEMATTR_LO(as_nr), 0);
->  	mmu_write(pfdev, AS_MEMATTR_HI(as_nr), 0);
->
-> +	mmu_write(pfdev, AS_TRANSCFG_LO(as_nr), AS_TRANSCFG_ADRMODE_UNMAPPED);
-> +	mmu_write(pfdev, AS_TRANSCFG_HI(as_nr), 0);
-> +
->  	write_cmd(pfdev, as_nr, AS_COMMAND_UPDATE);
->  }
->
-> +static int mmu_cfg_init_mali_lpae(struct panfrost_mmu *mmu)
-> +{
-> +	struct io_pgtable_cfg *pgtbl_cfg = &mmu->pgtbl_cfg;
-> +
-> +	/* TODO: The following fields are duplicated between the MMU and Page
-> +	 * Table config structs. Ideally, should be kept in one place.
-> +	 */
-> +	mmu->cfg.transtab = pgtbl_cfg->arm_mali_lpae_cfg.transtab;
-> +	mmu->cfg.memattr = pgtbl_cfg->arm_mali_lpae_cfg.memattr;
-> +	mmu->cfg.transcfg = AS_TRANSCFG_ADRMODE_LEGACY;
-> +
-> +	return 0;
-> +}
-> +
-> +static int mmu_cfg_init_aarch64_4k(struct panfrost_mmu *mmu)
-> +{
-> +	struct io_pgtable_cfg *pgtbl_cfg = &mmu->pgtbl_cfg;
-> +	struct panfrost_device *pfdev = mmu->pfdev;
-> +
-> +	if (drm_WARN_ON(pfdev->ddev, pgtbl_cfg->arm_lpae_s1_cfg.ttbr &
-> +				     ~AS_TRANSTAB_AARCH64_4K_ADDR_MASK))
-> +		return -EINVAL;
-> +
-> +	mmu->cfg.transtab = pgtbl_cfg->arm_lpae_s1_cfg.ttbr;
-> +
-> +	mmu->cfg.memattr = mair_to_memattr(pgtbl_cfg->arm_lpae_s1_cfg.mair,
-> +					   pgtbl_cfg->coherent_walk);
-> +
-> +	mmu->cfg.transcfg = AS_TRANSCFG_PTW_MEMATTR_WB |
-> +			    AS_TRANSCFG_PTW_RA |
-> +			    AS_TRANSCFG_ADRMODE_AARCH64_4K |
-> +			    AS_TRANSCFG_INA_BITS(55 - pgtbl_cfg->ias);
-> +	if (pgtbl_cfg->coherent_walk)
-> +		mmu->cfg.transcfg |= AS_TRANSCFG_PTW_SH_OS;
-> +
-> +	return 0;
-> +}
-> +
-> +static int panfrost_mmu_cfg_init(struct panfrost_mmu *mmu,
-> +				  enum io_pgtable_fmt fmt)
-> +{
-> +	struct panfrost_device *pfdev = mmu->pfdev;
-> +
-> +	switch (fmt) {
-> +	case ARM_64_LPAE_S1:
-> +		return mmu_cfg_init_aarch64_4k(mmu);
-> +	case ARM_MALI_LPAE:
-> +		return mmu_cfg_init_mali_lpae(mmu);
-> +	default:
-> +		/* This should never happen */
-> +		drm_WARN(pfdev->ddev, "Invalid pgtable format");
+On Sat, Mar 22, 2025 at 12:51:57PM +0100, Jonas Gorski wrote:
+> Hi,
+> 
+> On Thu, Mar 20, 2025 at 9:19 PM Qasim Ijaz <qasdev00@gmail.com> wrote:
+> >
+> > If link_conf_dereference_protected() or mt7996_vif_link()
+> > or link_sta_dereference_protected() fail the code jumps to
+> > the error_unlink label and returns ret which is uninitialised.
+> >
+> > Fix this by setting err before jumping to error_unlink.
+> >
+> > Fixes: c7e4fc362443 ("wifi: mt76: mt7996: Update mt7996_mcu_add_sta to MLO support")
+> > Fixes: dd82a9e02c05 ("wifi: mt76: mt7996: Rely on mt7996_sta_link in sta_add/sta_remove callbacks")
+> > Signed-off-by: Qasim Ijaz <qasdev00@gmail.com>
+> > ---
+> >  drivers/net/wireless/mediatek/mt76/mt7996/main.c | 12 +++++++++---
+> >  1 file changed, 9 insertions(+), 3 deletions(-)
+> >
+> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+> > index 91c64e3a0860..78f7f1fc867e 100644
+> > --- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+> > +++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+> > @@ -998,16 +998,22 @@ mt7996_mac_sta_add_links(struct mt7996_dev *dev, struct ieee80211_vif *vif,
+> >                         continue;
+> >
+> >                 link_conf = link_conf_dereference_protected(vif, link_id);
+> > -               if (!link_conf)
+> > +               if (!link_conf) {
+> > +                       err = -EINVAL;
+> >                         goto error_unlink;
+> > +               }
+> >
+> >                 link = mt7996_vif_link(dev, vif, link_id);
+> > -               if (!link)
+> > +               if (!link) {
+> > +                       err = -EINVAL;
+> >                         goto error_unlink;
+> > +               }
+> >
+> >                 link_sta = link_sta_dereference_protected(sta, link_id);
+> > -               if (!link_sta)
+> > +               if (!link_sta) {
+> > +                       err = -EINVAL
+> 
+> You are missing a semicolon at the end of the line.
+> 
 
-I think there's a '1' missing here before the string literal.
-Other than that,
+Good spot! not sure how that happened but I will resend a v2 patch.
 
-Reviewed-by: Adrián Larumbe <adrian.larumbe@collabora.com>
+> To also do some bike shedding, you could initialize err (with 0 or
+> -EINVAL), and then change the err return to return err ? : -EINVAL;.
+> But your way has an explicit error code assigned to each failure, even
+> if it is always the same. So I won't claim my suggestion is better.
+> 
 
-> +		return -EINVAL;
-> +	}
-> +}
-> +
->  u32 panfrost_mmu_as_get(struct panfrost_device *pfdev, struct panfrost_mmu *mmu)
->  {
->  	int as;
-> @@ -618,6 +721,19 @@ struct panfrost_mmu *panfrost_mmu_ctx_create(struct panfrost_device *pfdev)
->  	u32 va_bits = GPU_MMU_FEATURES_VA_BITS(pfdev->features.mmu_features);
->  	u32 pa_bits = GPU_MMU_FEATURES_PA_BITS(pfdev->features.mmu_features);
->  	struct panfrost_mmu *mmu;
-> +	enum io_pgtable_fmt fmt;
-> +	int ret;
-> +
-> +	if (pfdev->comp->gpu_quirks & BIT(GPU_QUIRK_FORCE_AARCH64_PGTABLE)) {
-> +		if (!panfrost_has_hw_feature(pfdev, HW_FEATURE_AARCH64_MMU)) {
-> +			dev_err_once(pfdev->dev,
-> +				     "AARCH64_4K page table not supported\n");
-> +			return ERR_PTR(-EINVAL);
-> +		}
-> +		fmt = ARM_64_LPAE_S1;
-> +	} else {
-> +		fmt = ARM_MALI_LPAE;
-> +	}
->
->  	mmu = kzalloc(sizeof(*mmu), GFP_KERNEL);
->  	if (!mmu)
-> @@ -642,16 +758,26 @@ struct panfrost_mmu *panfrost_mmu_ctx_create(struct panfrost_device *pfdev)
->  		.iommu_dev	= pfdev->dev,
->  	};
->
-> -	mmu->pgtbl_ops = alloc_io_pgtable_ops(ARM_MALI_LPAE, &mmu->pgtbl_cfg,
-> -					      mmu);
-> +	mmu->pgtbl_ops = alloc_io_pgtable_ops(fmt, &mmu->pgtbl_cfg, mmu);
->  	if (!mmu->pgtbl_ops) {
-> -		kfree(mmu);
-> -		return ERR_PTR(-EINVAL);
-> +		ret = -EINVAL;
-> +		goto err_free_mmu;
->  	}
->
-> +	ret = panfrost_mmu_cfg_init(mmu, fmt);
-> +	if (ret)
-> +		goto err_free_io_pgtable;
-> +
->  	kref_init(&mmu->refcount);
->
->  	return mmu;
-> +
-> +err_free_io_pgtable:
-> +	free_io_pgtable_ops(mmu->pgtbl_ops);
-> +
-> +err_free_mmu:
-> +	kfree(mmu);
-> +	return ERR_PTR(ret);
->  }
->
->  static const char *access_type_name(struct panfrost_device *pfdev,
-> diff --git a/drivers/gpu/drm/panfrost/panfrost_regs.h b/drivers/gpu/drm/panfrost/panfrost_regs.h
-> index b5f279a19a084..2b8f1617b8369 100644
-> --- a/drivers/gpu/drm/panfrost/panfrost_regs.h
-> +++ b/drivers/gpu/drm/panfrost/panfrost_regs.h
-> @@ -301,6 +301,17 @@
->  #define AS_TRANSTAB_HI(as)		(MMU_AS(as) + 0x04) /* (RW) Translation Table Base Address for address space n, high word */
->  #define AS_MEMATTR_LO(as)		(MMU_AS(as) + 0x08) /* (RW) Memory attributes for address space n, low word. */
->  #define AS_MEMATTR_HI(as)		(MMU_AS(as) + 0x0C) /* (RW) Memory attributes for address space n, high word. */
-> +#define   AS_MEMATTR_AARCH64_INNER_ALLOC_IMPL		(2 << 2)
-> +#define   AS_MEMATTR_AARCH64_INNER_ALLOC_EXPL(w, r)	((3 << 2) | \
-> +							 ((w) ? BIT(0) : 0) | \
-> +							 ((r) ? BIT(1) : 0))
-> +#define   AS_MEMATTR_AARCH64_SH_MIDGARD_INNER		(0 << 4)
-> +#define   AS_MEMATTR_AARCH64_SH_CPU_INNER		(1 << 4)
-> +#define   AS_MEMATTR_AARCH64_SH_CPU_INNER_SHADER_COH	(2 << 4)
-> +#define   AS_MEMATTR_AARCH64_SHARED			(0 << 6)
-> +#define   AS_MEMATTR_AARCH64_INNER_OUTER_NC		(1 << 6)
-> +#define   AS_MEMATTR_AARCH64_INNER_OUTER_WB		(2 << 6)
-> +#define   AS_MEMATTR_AARCH64_FAULT			(3 << 6)
->  #define AS_LOCKADDR_LO(as)		(MMU_AS(as) + 0x10) /* (RW) Lock region address for address space n, low word */
->  #define AS_LOCKADDR_HI(as)		(MMU_AS(as) + 0x14) /* (RW) Lock region address for address space n, high word */
->  #define AS_COMMAND(as)			(MMU_AS(as) + 0x18) /* (WO) MMU command register for address space n */
-> @@ -311,6 +322,24 @@
->  /* Additional Bifrost AS registers */
->  #define AS_TRANSCFG_LO(as)		(MMU_AS(as) + 0x30) /* (RW) Translation table configuration for address space n, low word */
->  #define AS_TRANSCFG_HI(as)		(MMU_AS(as) + 0x34) /* (RW) Translation table configuration for address space n, high word */
-> +#define   AS_TRANSCFG_ADRMODE_LEGACY			(0 << 0)
-> +#define   AS_TRANSCFG_ADRMODE_UNMAPPED			(1 << 0)
-> +#define   AS_TRANSCFG_ADRMODE_IDENTITY			(2 << 0)
-> +#define   AS_TRANSCFG_ADRMODE_AARCH64_4K		(6 << 0)
-> +#define   AS_TRANSCFG_ADRMODE_AARCH64_64K		(8 << 0)
-> +#define   AS_TRANSCFG_INA_BITS(x)			((x) << 6)
-> +#define   AS_TRANSCFG_OUTA_BITS(x)			((x) << 14)
-> +#define   AS_TRANSCFG_SL_CONCAT				BIT(22)
-> +#define   AS_TRANSCFG_PTW_MEMATTR_NC			(1 << 24)
-> +#define   AS_TRANSCFG_PTW_MEMATTR_WB			(2 << 24)
-> +#define   AS_TRANSCFG_PTW_SH_NS				(0 << 28)
-> +#define   AS_TRANSCFG_PTW_SH_OS				(2 << 28)
-> +#define   AS_TRANSCFG_PTW_SH_IS				(3 << 28)
-> +#define   AS_TRANSCFG_PTW_RA				BIT(30)
-> +#define   AS_TRANSCFG_DISABLE_HIER_AP			BIT(33)
-> +#define   AS_TRANSCFG_DISABLE_AF_FAULT			BIT(34)
-> +#define   AS_TRANSCFG_WXN				BIT(35)
-> +#define   AS_TRANSCFG_XREADABLE				BIT(36)
->  #define AS_FAULTEXTRA_LO(as)		(MMU_AS(as) + 0x38) /* (RO) Secondary fault address for address space n, low word */
->  #define AS_FAULTEXTRA_HI(as)		(MMU_AS(as) + 0x3C) /* (RO) Secondary fault address for address space n, high word */
->
-> @@ -326,6 +355,11 @@
->  #define AS_TRANSTAB_LPAE_READ_INNER		BIT(2)
->  #define AS_TRANSTAB_LPAE_SHARE_OUTER		BIT(4)
->
-> +/*
-> + * Begin AARCH64_4K MMU TRANSTAB register values
-> + */
-> +#define AS_TRANSTAB_AARCH64_4K_ADDR_MASK	0xfffffffffffffff0
-> +
->  #define AS_STATUS_AS_ACTIVE			0x01
->
->  #define AS_FAULTSTATUS_ACCESS_TYPE_MASK		(0x3 << 8)
-> --
-> 2.47.2
+Thanks for the suggestion, I think this could work however I think my 
+current approach is more a bit more readable, so I will leave it as is.
 
+Thanks,
+Qasim
 
-Adrian Larumbe
+> Best regards,
+> Jonas
 
