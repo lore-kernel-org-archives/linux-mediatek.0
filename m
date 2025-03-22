@@ -4,85 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AB5FC35FFC
-	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Mar 2025 11:53:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 146E0C35FFC
+	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Mar 2025 13:40:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=R/38SpXX+t/RyNGR7UIeutSrg3vd9sf/spj62Z5/lVQ=; b=yR0+BA43xETi6VoJizcwz+/c1q
-	MD4fQauZKn+lIYYWogLcKCRidYzpNp5tmvYJTc6ycxfHKeQWnBduuA/oWIN7ZbNdTfppfvyor5S+M
-	x5Y9gMWQHnxxf1K5ULkMkMt57t6auCnSsfMMNdlSpadQJ4Rk+L5iPiPvHC6Gd6IWB0G3d2zGkzNq1
-	DTBqt4gcgZj0GImb/4yRwzINRLs/MqZv4jL1cb0ImNqPTFTo8hVHz4OEZ0uAp7EBYHH7T7rUDnmVP
-	zZN0tQHIkm2H2p/ZOwtx+HOGXZ54MhaEaxWMD9JX9jjhMmBOmmDtxNsCbzRF64KZKV4yQN7mgPuIq
-	IPIWNkGg==;
+	bh=xjUf1ryZi1oB5Nn5ayqZmUpZSv1nmZtfvq35vnb/yRU=; b=wibPcOVe1B7bXuoiaA7VefEObE
+	mRsezfHgV4EFPVTYS9kpb+JojOXyUPu4y7bPmesAnZcLwDG/uIkPTL85b6IuUCzoZ0ojPcn/OZTWv
+	ykjjiJJyMOcDHLoqQ2JBGGCroaPFXJmbse6SJxtNO98J9gYlac41gbrw1tCTfOyiJZGXPIms6v1OC
+	GwQeLYZ9ejZdm3NKt9CQkpmCBgwdor/UU8lCuQrDbKPt3j4w9Z6Loj6EZ7Ok5e/DGuR0/FlJOqJaO
+	yA+vcy+6p89ZmIlq8c/aBWmYZ/HG/xLIKrHK1C939qcCYGZcEFDcwhBPo+MJAB6vwNWx3u5rKmjHk
+	toJ4mvzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvxQI-0000000HMLI-35kE;
-	Sat, 22 Mar 2025 11:53:54 +0000
-Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
+	id 1tvz5O-0000000HSbP-0ST4;
+	Sat, 22 Mar 2025 13:40:26 +0000
+Received: from mout.web.de ([212.227.17.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1tvxOc-0000000HMGe-2AX1;
-	Sat, 22 Mar 2025 11:52:11 +0000
-Received: by mail-yw1-x1132.google.com with SMTP id 00721157ae682-6feaa0319d8so21259537b3.2;
-        Sat, 22 Mar 2025 04:52:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1742644329; x=1743249129; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=R/38SpXX+t/RyNGR7UIeutSrg3vd9sf/spj62Z5/lVQ=;
-        b=Mdb2m5yP1OKjajWnxKGlKoaTenMWU/3tvBA21BXGyAZ5UnbO7b4itzGusbFk8e3DbS
-         e/rW722TR2Q+1Uv99VexcEWi9NOcyBD/YW4yFBsH0KFUB0euA1ccucx429Y+ANQtFx83
-         s8VQtlGm6n0gUKWEiks7hnOG3fprKdzcmUeFnOKmSfx0dp+ZNPDx8+GWamuUNam4BhGF
-         jCk7H9ZEvMUbVVOdIQlzRAqjaE6EkvGIqTI+193uiK3HLIf4tCyUuxGKmfBbCcmMgAN1
-         sZmPWYvNpjolmRrvt/K8whQseCfP13EpIlT0XnqhCG+H7hSAbLGd9mNJd6Tms9qIEZCw
-         G6NA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742644329; x=1743249129;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=R/38SpXX+t/RyNGR7UIeutSrg3vd9sf/spj62Z5/lVQ=;
-        b=kzmb/kzCk/NU5uvaV6bmz3CaQZKhdq+ATXBm3HNA8p3NX1DRpxtO2U8ovd3AyPn7/L
-         KEPQxSMqTq57pI4fRSh9fiVll37ghtKnwnt9BA3et1gnrCQ9U/k+QVdGg6tt3InbqkWF
-         RhPQGvSMm8Ze5c0WSxptUGbynU7aTerGNGp63FDhoYKEhjZrfhi8ldF5j9y/v+oWlPJP
-         qSBir5A/rviPgQ9/9Ej7erC9rx/J9d/Ev4Z6++9e1jWMoyVX/foTBYsgpWyzXWfkWW6T
-         RomBm7FooNfciIw/uRLhllsEfPGRLZsn1PM0Kx6BzZcfYBO+kcEoIL/g/uFGbOPoftP9
-         38XQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVMGzjyQzWN7EpzYwox3/PqwQFQE6KVmHuh6qkMbBYkWN/Sih99FcWWbOrBnk8AAXzv7u8+1uWKIAmitqNvtdk=@lists.infradead.org, AJvYcCVoIKoVRnPUZt0ZuAN6JKdPZDlLYFhdTooJfX9R1ER77fZG1JC6mOcWjmu2dLSgi41nhsMHz29kqkbqaTcEG3e3@lists.infradead.org
-X-Gm-Message-State: AOJu0YxXsZzSCbBKvqcBnARO7XbP3HAcN9j71VIlfRCWSpp28mUeusYw
-	xrmIp81RflONFMFqkbgpd0pNjO5tFYtILcsonZkBX5kanolhaoWK2K3VAiSDHD2iPej7vEfd6A6
-	BL5s1NgK/3Epi9u1AhyEtw1zUK4g=
-X-Gm-Gg: ASbGncvcFWMufLxlQt5KkWnRIJY2U59kqnJKQMUdmLu/Imw6bWbTvSfbsVd9458bQvj
-	4FfwzHiXo+yUcJf+HFdeW+pfYY5W0Ia5phd2Tcfin2shOLDbm9lOjon4UmnNeRPl9Z369h/Ceht
-	xUZAIUNqsx0I4zrMzCO7/FQkpu
-X-Google-Smtp-Source: AGHT+IHEIH+TD7S8LIB0pgaC3Heq4ilCGl8dSsQ4Y2jB1WCnC9MH4oZaTqBRO+rXtE+U3iicvoBJ0yr1yUCPg/w5PwU=
-X-Received: by 2002:a05:6902:2845:b0:e60:5d76:f79d with SMTP id
- 3f1490d57ef6-e66a4fd7596mr8057025276.43.1742644328776; Sat, 22 Mar 2025
- 04:52:08 -0700 (PDT)
+	id 1tvz5L-0000000HSad-35Ti;
+	Sat, 22 Mar 2025 13:40:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
+	s=s29768273; t=1742650807; x=1743255607; i=markus.elfring@web.de;
+	bh=xjUf1ryZi1oB5Nn5ayqZmUpZSv1nmZtfvq35vnb/yRU=;
+	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
+	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
+	 cc:content-transfer-encoding:content-type:date:from:message-id:
+	 mime-version:reply-to:subject:to;
+	b=AmAu4Y5siP8bgaxCR/tjJpZDXc4vBtRdtx2dN0LBAxfsBeIOXhj7N1F+R7BdAmA0
+	 8Os3zQURBeGuVmRhotQf81yEbRVonsvgzZmfgjiIasFbjPXaxDwkBx5/khVSmG+MI
+	 x6GXMu3Qfrczs+zLtMCQavjR1FlCGaJkQsdJgsUXNlHvH6v6g8HJ1W5zBvdF46ywo
+	 4ZvXCLOTgPJEHZPgmtByHHiMq+MLz6/MwfwSFCBzWZgvCIoCtrwt0Pj1G8ukqAB5L
+	 8wJ2vDaEQ112v+mRKIaqpt+ZqURlHAfFWGqty+1HnC18PQzUMqzK/kPOdhyogucJK
+	 BaPYzqjYLA6PXNyOJA==
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from [192.168.178.29] ([94.31.70.73]) by smtp.web.de (mrweb105
+ [213.165.67.124]) with ESMTPSA (Nemesis) id 1MwR4R-1t4Hvm3Edp-016Jbe; Sat, 22
+ Mar 2025 14:40:07 +0100
+Message-ID: <52071c76-dd06-4b11-bb79-a5e0c28b94ca@web.de>
+Date: Sat, 22 Mar 2025 14:40:05 +0100
 MIME-Version: 1.0
-References: <20250320201914.48159-1-qasdev00@gmail.com>
-In-Reply-To: <20250320201914.48159-1-qasdev00@gmail.com>
-From: Jonas Gorski <jonas.gorski@gmail.com>
-Date: Sat, 22 Mar 2025 12:51:57 +0100
-X-Gm-Features: AQ5f1JoRh53ceEml7E4eB4zyrreqx0RIlQoRBpJCDeq9YDF93pFOkWwS8Y7fB0k
-Message-ID: <CAOiHx==UCeMQpywQJCLPQqipEW0tK9youRxdR5+_T1LuGp_EHA@mail.gmail.com>
-Subject: Re: [PATCH] wifi: mt76: mt7996: prevent uninit return in mt7996_mac_sta_add_links
-To: Qasim Ijaz <qasdev00@gmail.com>
-Cc: nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com, 
-	shayne.chen@mediatek.com, sean.wang@mediatek.com, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com, chui-hao.chiu@mediatek.com, 
-	Bo.Jiao@mediatek.com, linux-wireless@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla Thunderbird
+To: Qasim Ijaz <qasdev00@gmail.com>, linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: LKML <linux-kernel@vger.kernel.org>,
+ Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Bo Jiao <bo.jiao@mediatek.com>, Dan Carpenter <dan.carpenter@linaro.org>,
+ Felix Fietkau <nbd@nbd.name>, Johannes Berg <johannes@sipsolutions.net>,
+ Lorenzo Bianconi <lorenzo@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Peter Chiu <chui-hao.chiu@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>
+References: <20250322105052.19136-1-qasdev00@gmail.com>
+Subject: Re: [PATCH] wifi: mt76: mt7996: avoid NULL pointer dereference in
+ mt7996_set_monitor()
+Content-Language: en-GB
+From: Markus Elfring <Markus.Elfring@web.de>
+In-Reply-To: <20250322105052.19136-1-qasdev00@gmail.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:hzCFADGYDQPr010FsI8NS36pmqMY5yW3QkMd+OSetiqm5SCom4J
+ 7AjbzuRM69zCOx9flAZw0f6Q2kfc9mfXIfyPHQ9dZKyMtyex+p5/HYFXnkSPf5+n2iE2rra
+ egN+bJ+bR6yR5s0wg5v/3Lrdi8+A3Yh5+XbtrgbGVlQ49JLjVsnHnME90Mp40SdN2C/3SDa
+ /B5nCfICHGfKstaODc0yg==
+UI-OutboundReport: notjunk:1;M01:P0:n8ATnK4I5Oo=;Kxt+BdHKzWc+Hw88z3c4SFWzJd3
+ 8Z98fF/4yja44CleXzzt0MBLe5L9ZsvAgg7WznESaEm82dFuC6mLRf8n4h9wXk6XmzzEcgZEl
+ dgPnTsgn1eIGnk0MIZqfP2IEYs8BklNiVxIy/zRyu4JsGkjujf1V6z0vQkOf4EoaHI36M7ahV
+ 7zjIaf0Rcg6QS508Zk06o8xnga6OstVcrrN89cY3f4uddAomk8yWo/1OJyq1Kxcvaea2GxPCO
+ aGzBeTfnqQXETpVj2iGkiS6vA37soRG8zSZhjVRU62n7r0RfgLSd1zc/KUHNNtrNG3B31fZOv
+ NzKFO/3AunErQo8qD2Ll+URYFwuuwdMZFr2LLgGswAFNKPoKOxEyrKp4nmCnGH3BpMayZRq8j
+ Yj+8fBQmlXWW90yBun8M0XkKCAcXobjfhPl6X2d+87yS+XAH2RwFsPnzCtRPHtVqZPW3eKpkT
+ DaCYyxQ5LLUAD2yS6jeki97TaWPG68Su/R45hNUJx/6DH6yqv1GnwChBc9EGlyYqSdzf0J6zq
+ jjRstdAUhY6QIQ0iOmOBCGI3rn2mYawx7i6NhUhqZJC3KBxoHgKL0vcaqqAhKQoUm3r+hdkrt
+ lTJKLuITpLaDKQWsOxKAN9nbhh6P5cav1Kaap4JGbCfr9uuej0hZ6y3PP8WGRA380Y0kyKhZ1
+ 4u6d1ZPnXYasfvwCPPiInGZ4bdxbTP1vzA/iy4sO2of44wQ8zk1NC4A3aoai2RT8OfKl8YCoR
+ hqVxPQQ6Koij0nmTklNdgP4nayDjuff2xpQ7B8oTWEV7ghRJoL9904KiXMUuiDARg+/nN0H67
+ s3ZrJktIQXThuUSjTflH9ClguGqlI23CwNj9LsqC55CLULowbDqplaoNCEy6nnMYcFicpVjWJ
+ fDFivJno7jO9NsepDyaMuyF6s/nyeL1IQCjqNubMdXMjaSC7aQIaFtSiz4/+vJLx/smoQ3Dxv
+ MRRPAHCR8URV1D31iBHtedxjIH24y4jkpFvM9j+vPWPD3hnxx2WLVIeDGXtQXlQ2OhoutP+Jt
+ G7RImvr3kDPhXGnh7CODBOasOlatCUFf1gt06w76enNXhEiJj66mkoN8KSN3wZHizwEz64yry
+ 88SbxFStB1HKHlIZlVbTXflfaiyakSRp8b9WJqQR2b1+IXDFxdhkoGCAomFlp3XP0zlJPd8zX
+ L9E1ebeYHUoaRnKdmdJ/GDu9ND+qDLmbliMTBrYOM3gwUJk9h+BzoJep+NxvQUSJNJkdUMVxS
+ ZJFCZvYanSbpNMb1wgbGlF0t/s96eS8badeQ5voeJ6k+8Pl0kfI6SboiTs4McugH2O5GtRJ3I
+ HJHG987uao+qmMjXMXBGwnJhAtdGp2lnvQV9Hvnnz09/I4cCF5GmFQewrPfao9qMVzs5rPref
+ WLdRAD7fpSBZ5gV4zpl6IGdYYdxa8HZlhHGr6TCYVuFSOQLWGL0NsnUjpr1S8VDsu/cQX9LAU
+ kLUo7SBH/5eJtXfCYpm94TK4/X/K23ySAeiq52M08xVuSrQq3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250322_045210_557374_2CFCD7BD 
-X-CRM114-Status: GOOD (  16.19  )
+X-CRM114-CacheID: sfid-20250322_064024_145684_22378B39 
+X-CRM114-Status: UNSURE (   4.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,63 +109,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+> The function mt7996_set_monitor() dereferences phy before
+> the NULL sanity check.
+>
+> Fix this to avoid NULL pointer dereference by moving the
+> dereference after the check.
 
-On Thu, Mar 20, 2025 at 9:19=E2=80=AFPM Qasim Ijaz <qasdev00@gmail.com> wro=
-te:
->
-> If link_conf_dereference_protected() or mt7996_vif_link()
-> or link_sta_dereference_protected() fail the code jumps to
-> the error_unlink label and returns ret which is uninitialised.
->
-> Fix this by setting err before jumping to error_unlink.
->
-> Fixes: c7e4fc362443 ("wifi: mt76: mt7996: Update mt7996_mcu_add_sta to ML=
-O support")
-> Fixes: dd82a9e02c05 ("wifi: mt76: mt7996: Rely on mt7996_sta_link in sta_=
-add/sta_remove callbacks")
-> Signed-off-by: Qasim Ijaz <qasdev00@gmail.com>
-> ---
->  drivers/net/wireless/mediatek/mt76/mt7996/main.c | 12 +++++++++---
->  1 file changed, 9 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/n=
-et/wireless/mediatek/mt76/mt7996/main.c
-> index 91c64e3a0860..78f7f1fc867e 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-> @@ -998,16 +998,22 @@ mt7996_mac_sta_add_links(struct mt7996_dev *dev, st=
-ruct ieee80211_vif *vif,
->                         continue;
->
->                 link_conf =3D link_conf_dereference_protected(vif, link_i=
-d);
-> -               if (!link_conf)
-> +               if (!link_conf) {
-> +                       err =3D -EINVAL;
->                         goto error_unlink;
-> +               }
->
->                 link =3D mt7996_vif_link(dev, vif, link_id);
-> -               if (!link)
-> +               if (!link) {
-> +                       err =3D -EINVAL;
->                         goto error_unlink;
-> +               }
->
->                 link_sta =3D link_sta_dereference_protected(sta, link_id)=
-;
-> -               if (!link_sta)
-> +               if (!link_sta) {
-> +                       err =3D -EINVAL
+Were any known source code analysis tools involved for this software impro=
+vement?
 
-You are missing a semicolon at the end of the line.
-
-To also do some bike shedding, you could initialize err (with 0 or
--EINVAL), and then change the err return to return err ? : -EINVAL;.
-But your way has an explicit error code assigned to each failure, even
-if it is always the same. So I won't claim my suggestion is better.
-
-Best regards,
-Jonas
+Regards,
+Markus
 
