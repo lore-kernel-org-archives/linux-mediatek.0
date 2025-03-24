@@ -4,77 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47DC9C36008
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Mar 2025 19:21:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF432C36002
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Mar 2025 20:20:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Uu3d0MtSSjzAtw+Qhy9CyN3/i5xOqsepAkaEuUF8bc8=; b=Hc+2cqm/SGiHnQBOFghkEh7K0b
-	O714lAppqdbcrAB6Fww+TFO9hsg6O8LSTruBZAtQrPBUXT3wIyJ7eZCWELlS4CFsBOKehjUjt/lZG
-	ialWEIR8Sxo8It+DoAT8U//rP48k24jhVVSvB9i8sX5Ycqf3PKpCNi1Th/MXNuMm1YN6SP2za1f3R
-	07D8nYqWG2g1AGiQEVV/ACJG0A+4sdt140H4mqDxHWGgR11naYJHrhSkp5pT/vOHM8bcnrdQJD82I
-	1D72tEXiehsNe+2A4JXaxWYvlq3XEYIFN/FzlRl+918Z17mMZKGfHI1rp/MR8g7xcAY9+IAG9NsWX
-	djCwkuoQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XJfgCnXuhBLEgCpzz+cHEU9UnLI0jxUJyQLwQZlIBUY=; b=0jgLIfosVQVTlyrtwihTfudTJf
+	fIks8e2HDrSCYq2EyPGApEJwP8uTcYZ/cl5e0FhcsMNcQEv54/f56mCLQpMoc6ZyEN34sB59Qm1OL
+	LYxCZjmZnhBTGha9Yfm0+sza7n19LB2KBRRb8812XIaKWaYEtmKQ0h1c63W7xMIh2A/KYcNWI//8F
+	oygVUpw1O2y6eS0MkGKtGFvN7gTioZlmr5SLayVQpAWDkvoRZq8h+4pw/JZDcyKyb33/SYmArYyqC
+	XFWl53x8H/eTbyKaJzKU8vq7fSlfHYDFkpsEb3+fhSPh6WKngOwbH1cwjXn/myVV9f2yjoKPb6idv
+	+Otdd6Vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1twnM9-000000043JO-1pLj;
-	Mon, 24 Mar 2025 19:21:05 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1twoHI-00000004AY9-43fe;
+	Mon, 24 Mar 2025 20:20:08 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1twn1t-000000040Md-1QPY;
-	Mon, 24 Mar 2025 19:00:10 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1742842796; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=bJt1y4i/ehYsNO7hM5jVKOhrvEse1fiM1TFcl3MYIcmgiZplh5zRBgewFoSbWFy2EZ6+ghE8Gsuo6TLL/LXDiiee9ACqfdTUjnN0XpUxdo4lzQDptQOF2W4GuWM1Wk9O3SSgHawv50mlKGq5QlVQi7hmnbSSct6rI9LyLL+Y1mw=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1742842796; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=Uu3d0MtSSjzAtw+Qhy9CyN3/i5xOqsepAkaEuUF8bc8=; 
-	b=lB5UCEoGnZdPFFQ0S5uR0ZjV6DXkCeSHLSrNu+oWewq2ldkV7y/VEzvSXZ9lV7I8UcTAIhO2OZw4oGXVYAuQsuaf7e4jwA+7wMKF3O2Pn4BkjriTvFwn0uXT8NEYgD2ZKOzl73ZqBuA4vG7EvqzM3O3S5Zgx1R1vwA5Sj67Ob4g=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=ariel.dalessandro@collabora.com;
-	dmarc=pass header.from=<ariel.dalessandro@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1742842796;
-	s=zohomail; d=collabora.com; i=ariel.dalessandro@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=Uu3d0MtSSjzAtw+Qhy9CyN3/i5xOqsepAkaEuUF8bc8=;
-	b=fk7CoS5pCtIWrMdXWC7Xg9VA45aN11Bf+iu/k+3J0ozV34hlPFayd/DLB+ddh7il
-	jNeRIqVqUDpp/Ljhwe7Er7UNxGz1WSLyvgA2AjO/hOOK6DgS1TQrWKoDu5G99OYOc6R
-	Wc7of82scqX9i8IthnMWsjCpLY6fNHDvLScnJ4vA=
-Received: by mx.zohomail.com with SMTPS id 1742842794374585.952480853528;
-	Mon, 24 Mar 2025 11:59:54 -0700 (PDT)
-From: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-To: dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org
-Cc: boris.brezillon@collabora.com,
-	robh@kernel.org,
-	steven.price@arm.com,
-	maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	tzimmermann@suse.de,
-	airlied@gmail.com,
-	simona@ffwll.ch,
-	kernel@collabora.com,
+	id 1twoFZ-00000004AG9-25ry;
+	Mon, 24 Mar 2025 20:18:22 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 432D343B92;
+	Mon, 24 Mar 2025 20:18:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 25CF9C4CEDD;
+	Mon, 24 Mar 2025 20:18:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1742847499;
+	bh=NnWv+qAJjyydShD2opgIyPjRUBku9e2zXaoi4Dh+lXY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=sGbiLowv7wzD93y9r1HB2YDp0gsAInUeOtuyQ50pYwOHxm6jzie0j6Q2IQTQv535S
+	 id9QWjB3T128AvmAZMoCdwPSFsfoAPXzaJJbyTk9ZcW85hre46Xx0wYNabn1Vr+YK1
+	 9VFx/91shwNAKH/STumDqk18bLOu/6At5QAG3kXuz7tu7jwbOuPY3i6RngMQRRyOAO
+	 K8E4PdExxpsozvFLUQnf+vCfxNtdptU9sSdhqNWpxD/qHoGBlCEIXTOi5GPn53uWom
+	 fpf5vCW8cKD3F6UhS8l8t7cVd8tAcui+QwxxkDEnCDygd8ntlBNilu1zPX/rI2atRf
+	 bHP7BpjpZJt7A==
+Date: Mon, 24 Mar 2025 15:18:18 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Andy Teng <andy.teng@mediatek.com>,
 	linux-mediatek@lists.infradead.org,
+	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	sjoerd@collabora.com,
-	angelogioacchino.delregno@collabora.com,
-	Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-Subject: [PATCH v5 6/6] drm/panfrost: Force AARCH64_4K page table format on MediaTek MT8192
-Date: Mon, 24 Mar 2025 15:58:01 -0300
-Message-ID: <20250324185801.168664-7-ariel.dalessandro@collabora.com>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250324185801.168664-1-ariel.dalessandro@collabora.com>
-References: <20250324185801.168664-1-ariel.dalessandro@collabora.com>
+	Sean Wang <sean.wang@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH 1/2] dt-bindings: pinctrl: mediatek: Drop unrelated nodes
+ from DTS example
+Message-ID: <174284749693.804487.17057148980208397199.robh@kernel.org>
+References: <20250324125105.81774-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250324125105.81774-1-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250324_120009_436906_6AD175ED 
-X-CRM114-Status: UNSURE (   8.36  )
+X-CRM114-CacheID: sfid-20250324_131821_555211_F68B277D 
+X-CRM114-Status: UNSURE (   8.35  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,36 +80,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MediaTek MT8192 SoC has an ARM Mali-G57 MC5 GPU (Valhall-JM). Now that
-Panfrost supports AARCH64_4K page table format, let's enable it on this
-SoC.
 
-Running glmark2-es2-drm [0] benchmark, reported the same performance
-score on both modes Mali LPAE (LEGACY) vs. AARCH64_4K, before and after
-this commit. Tested on a Mediatek (MT8395) Genio 1200 EVK board.
+On Mon, 24 Mar 2025 13:51:04 +0100, Krzysztof Kozlowski wrote:
+> Binding example should not contain other nodes, e.g. consumers of
+> pinctrl of, because this is completely redundant and adds unnecessary
+> bloat.
+> 
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> ---
+>  .../bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml      | 10 ----------
+>  .../bindings/pinctrl/mediatek,mt6779-pinctrl.yaml      |  5 -----
+>  2 files changed, 15 deletions(-)
+> 
 
-[0] https://github.com/glmark2/glmark2
-
-Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-Reviewed-by: Boris Brezillon <boris.brezillon@collabora.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/gpu/drm/panfrost/panfrost_drv.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
-index 21e2f6c8d6be..237e6054d0af 100644
---- a/drivers/gpu/drm/panfrost/panfrost_drv.c
-+++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
-@@ -836,6 +836,7 @@ static const struct panfrost_compatible mediatek_mt8192_data = {
- 	.num_pm_domains = ARRAY_SIZE(mediatek_mt8192_pm_domains),
- 	.pm_domain_names = mediatek_mt8192_pm_domains,
- 	.pm_features = BIT(GPU_PM_CLK_DIS) | BIT(GPU_PM_VREG_OFF),
-+	.gpu_quirks = BIT(GPU_QUIRK_FORCE_AARCH64_PGTABLE),
- };
- 
- static const struct of_device_id dt_match[] = {
--- 
-2.49.0
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
 
