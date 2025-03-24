@@ -4,68 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C30FC36002
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Mar 2025 20:41:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F219C36002
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Mar 2025 20:44:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=I7QP+eYqdEw5ZqsTPzeRcWfs0jUCXEWKFFVGkcN3guI=; b=ZEr3lJlO9R28lCXfaJF9h3i0m6
-	323cU2Uv4ShirGaru2JzDUecOnKOOLKho4JgB6IsJcjQl5D4YS9nK1IT1ph+0y4T8Ip98rhPaxszs
-	bYWr16uPcp+MKF6oIhkqpEKH+HAzwyo8lG6QtG27sGAqDXZ1VI1eYAa+luiAS8c/riuIfFpHkJkWc
-	/oYdcJXOHHGFOyGi6cMS5de5mBuhUZUjSJrARSQkOIuuPpbwqtNvki7wZf9e9G++2LeJF1986JPxa
-	r0LqvQLK73qhzxLYZG/Z5ndcxx/4oMXvfu5uh01nBYDZJgPrzPkIFjsB8t79OdCzE83BEQqlFd3Ed
-	K6Xbg+YA==;
+	bh=0WIVcpjBC/lQY+F3Q9OHHemrJ++W8RAb8N2XPq+trw0=; b=uJk+wvJTwTczBhfDrvuoHkiZCj
+	aXyKWEgSbcuoFGZAIrxufPMvBJdxwex6NuiKLecWVpf4Q3W2TKepaOYiZT7aKFOl/ZXhshaqqWZbu
+	sajaxCboklj2yAsy4RgazbwdykSe1cDl3SAUrFl+7AZyZYzRN68tFpxgLI2UV6Gl0MaMx3KZCRgUr
+	nvwb6Cbj5CqzjrM/+oOKHne3yY6Sr6s9K1abmHII+DHnL25Swmgxoc3I6Pmxy+fqkBUresx1XLlhb
+	07dCpF0yos5X5FoHdyfFINaMX4rz7LPfmg4Ktqw7sttsyaZs7uhwmhrcouTH1XP0MNzEDYUBJ6ZFW
+	1tgHYlOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1twobe-00000004DXS-2xL0;
-	Mon, 24 Mar 2025 20:41:10 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1twof2-00000004DpS-2x0u;
+	Mon, 24 Mar 2025 20:44:40 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1twoK6-00000004BBm-36g9;
-	Mon, 24 Mar 2025 20:23:03 +0000
+	id 1twoPB-00000004Byd-1GIn;
+	Mon, 24 Mar 2025 20:28:18 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 113865C4AE2;
-	Mon, 24 Mar 2025 20:20:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 83861C4CEDD;
-	Mon, 24 Mar 2025 20:23:01 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 620154485D;
+	Mon, 24 Mar 2025 20:28:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 56685C4CEDD;
+	Mon, 24 Mar 2025 20:28:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1742847781;
-	bh=ncQqNWoVKSEqFbwPcK2In9RG6rSS6r5IytFyAcwNeig=;
+	s=k20201202; t=1742848096;
+	bh=nraEfwXGNNYxOKREgx+klOuG419qOT50aasEjbGDBd8=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Ejdlva0sboLce56+dojF4alyQ3vY8mOJn8F6yLgWJGTF/CcudDO3RVMp5mP75rcD6
-	 G+1clGY+geRG3CDgrjFOYaVkzKpT6q2xh0KqWSoxKUTlA4Z60ejkSttvQY2qO/XCHL
-	 3aUG4WA/EhAHgNf1nogUFmWyg3lM3I8Zh8RH8zeZvk9LL9XyjdEySvVApXpSCuLx/0
-	 LhwcrKg1+0TGmeqr33zDUDpZ6CQR1iV0P+ehOebOOT9s4tiIvuTr2BBdwXQAMzbV2w
-	 1tTXf/bbdgfmjKRdn2o82+/D4wI3opV0ARajLgWq0jZORADZkDDcG9Qm6puTtvM1p3
-	 bRimxV8JuiCsw==
-Date: Mon, 24 Mar 2025 15:23:00 -0500
-From: Rob Herring <robh@kernel.org>
+	b=OnNSYE68hBSBzyeGtTO8nd4tOOxSR0aog7akGaYiLwkG8num2NSKLgjJWh8uC3WuK
+	 U06pjVmuTdST0N48/cGtLz1X/xbKBvuVyo38G1KyRqk5JRDML7T2ur0OiskHh+GacP
+	 G7B/QgXENoJQLeeGgj3s9fP9hpjQxsPg5EAfU+QmH/ORmrU8nUC9sLfESe3SAjib5g
+	 Z5ygHc7Z6x2ayebeHLhKEgKL+fioKExC6D233ds831t23wzaGpVtdNUtbH/M6eNGmt
+	 LYI/cznIe/PeS+qM2oKj5D2MgTJ/BaX50rAh9BVbl6ZwXxuPu6LozGomPx5qwW6rwl
+	 MRcHsdtysEnRg==
+Date: Mon, 24 Mar 2025 15:28:15 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Sean Wang <sean.wang@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, iommu@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andy Teng <andy.teng@mediatek.com>,
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH 2/2] dt-bindings: pinctrl: mediatek: Correct indentation
- and style in DTS example
-Message-ID: <20250324202300.GA804681-robh@kernel.org>
-References: <20250324125105.81774-1-krzysztof.kozlowski@linaro.org>
- <20250324125105.81774-2-krzysztof.kozlowski@linaro.org>
+	linux-arm-msm@vger.kernel.org, Chen-Yu Tsai <wens@csie.org>,
+	Conor Dooley <conor+dt@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
+	David Heidelberg <david@ixit.cz>,
+	Maxime Ripard <mripard@kernel.org>, linux-sunxi@lists.linux.dev,
+	Samuel Holland <samuel@sholland.org>,
+	Joerg Roedel <joro@8bytes.org>, Robin Murphy <robin.murphy@arm.com>,
+	Will Deacon <will@kernel.org>, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
+Subject: Re: [PATCH] dt-bindings: iommu: Correct indentation and style in DTS
+ example
+Message-ID: <174284809477.815772.5676101186306641286.robh@kernel.org>
+References: <20250324125250.82137-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250324125105.81774-2-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20250324125250.82137-1-krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250324_132302_887509_BA04CB42 
-X-CRM114-Status: GOOD (  16.03  )
+X-CRM114-CacheID: sfid-20250324_132817_370758_62238657 
+X-CRM114-Status: GOOD (  11.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,74 +82,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 24, 2025 at 01:51:05PM +0100, Krzysztof Kozlowski wrote:
+
+On Mon, 24 Mar 2025 13:52:50 +0100, Krzysztof Kozlowski wrote:
 > DTS example in the bindings should be indented with 2- or 4-spaces and
 > aligned with opening '- |', so correct any differences like 3-spaces or
-> mixtures 2- and 4-spaces in one binding.
+> mixtures 2- and 4-spaces in one binding.  While re-indenting, drop
+> unused labels.
 > 
 > No functional changes here, but saves some comments during reviews of
 > new patches built on existing code.
 > 
 > Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 > ---
->  .../pinctrl/mediatek,mt65xx-pinctrl.yaml      | 83 +++++++------------
->  .../pinctrl/mediatek,mt7622-pinctrl.yaml      | 48 +++++------
->  .../pinctrl/mediatek,mt8183-pinctrl.yaml      | 68 +++++++--------
->  .../pinctrl/mediatek,mt8192-pinctrl.yaml      | 76 ++++++++---------
->  4 files changed, 127 insertions(+), 148 deletions(-)
+>  .../iommu/allwinner,sun50i-h6-iommu.yaml      |  24 ++--
+>  .../bindings/iommu/arm,smmu-v3.yaml           |  20 ++--
+>  .../devicetree/bindings/iommu/arm,smmu.yaml   | 104 +++++++++---------
+>  .../bindings/iommu/mediatek,iommu.yaml        |  18 +--
+>  .../bindings/iommu/qcom,apq8064-iommu.yaml    |  20 ++--
+>  5 files changed, 92 insertions(+), 94 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml
-> index 5f2808212f39..b9680b896f12 100644
-> --- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml
-> +++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml
-> @@ -137,64 +137,43 @@ examples:
->          #size-cells = <2>;
->  
->          pinctrl@1c20800 {
-> -          compatible = "mediatek,mt8135-pinctrl";
-> -          reg = <0 0x1000B000 0 0x1000>;
-> -          mediatek,pctl-regmap = <&syscfg_pctl_a>, <&syscfg_pctl_b>;
-> -          gpio-controller;
-> -          #gpio-cells = <2>;
-> -          interrupt-controller;
-> -          #interrupt-cells = <2>;
-> -          interrupts = <GIC_SPI 116 IRQ_TYPE_LEVEL_HIGH>,
-> -              <GIC_SPI 117 IRQ_TYPE_LEVEL_HIGH>,
-> -              <GIC_SPI 118 IRQ_TYPE_LEVEL_HIGH>;
-> +            compatible = "mediatek,mt8135-pinctrl";
-> +            reg = <0 0x1000B000 0 0x1000>;
-> +            mediatek,pctl-regmap = <&syscfg_pctl_a>, <&syscfg_pctl_b>;
-> +            gpio-controller;
-> +            #gpio-cells = <2>;
-> +            interrupt-controller;
-> +            #interrupt-cells = <2>;
-> +            interrupts = <GIC_SPI 116 IRQ_TYPE_LEVEL_HIGH>,
-> +                         <GIC_SPI 117 IRQ_TYPE_LEVEL_HIGH>,
-> +                         <GIC_SPI 118 IRQ_TYPE_LEVEL_HIGH>;
->  
-> -          i2c0_pins_a: i2c0-pins {
-> -            pins1 {
-> -              pinmux = <MT8135_PIN_100_SDA0__FUNC_SDA0>,
-> -                <MT8135_PIN_101_SCL0__FUNC_SCL0>;
-> -              bias-disable;
-> -            };
-> -          };
-> -
-> -          i2c1_pins_a: i2c1-pins {
-> -            pins {
-> -              pinmux = <MT8135_PIN_195_SDA1__FUNC_SDA1>,
-> -                <MT8135_PIN_196_SCL1__FUNC_SCL1>;
-> -              bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-> -            };
-> -          };
-> -
-> -          i2c2_pins_a: i2c2-pins {
-> -            pins1 {
-> -              pinmux = <MT8135_PIN_193_SDA2__FUNC_SDA2>;
-> -              bias-pull-down;
-> +            i2c0_pins_a: i2c0-pins {
-
-Perhaps drop the unused labels while you are here. Either way,
 
 Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
