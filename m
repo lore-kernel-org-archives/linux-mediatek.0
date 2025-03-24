@@ -4,55 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E2F1C36002
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Mar 2025 16:04:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B0FBC36002
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Mar 2025 16:13:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=490tjTP+zBHMJFp1JZwf5WadXQiJjbWhYpIRQyQfJew=; b=aaQ4f+6mKUuzfoCuOsBk5q0N14
-	09ejPt90f50fITycG068o88gwyVpoYR1YfFCVpUNaPoNdYJDvABCVrta9mh+gk4x4t+5ri3SClDeX
-	huPAdK8EMUAOeX6QR/hKuYuYOuiZ43RyQebBYZlIvK2IujhVHZoaBSjk8mVw61QcJhX4NETD/h1iJ
-	hKvDzeJKJIod+/1+dccBHtTqnhYSfgMU50D1E8hMNBkqGTfWL2IdhFTdTOAcxIL00Y4nYUw54dVTu
-	jJfpSkYbqIfBLzoIpiACrZZcmIR3xyo6gLnlL/aN9Yu76mhiTsPXomcIJEAZSoaJJzx9OPIbdP2P0
-	GYKeVmUw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kqWLTQ7zhXH5+VlwkOfoSyiykFUcF0hKyCkTujnVT5E=; b=1wzDXzwxO6KvFXcujOWQz2SYQY
+	uFYigPxYmyp78QoGONwge+BLKdYPWCq+0vHCoAa1TY50XHYEM2LjGQ394yVzJX7pq9l8x+v7T345x
+	IYYFu1ePmBMlX+LRzCPPnvUGBIcykgffww0NsHCp8ZhD3yxNQKekQdoOf2gCx5JgeeTnWWj89bY+s
+	xiSS6tPyCXq81h1rauYc3HbK3SNLExJ7h4ix21wpexh2wWxlk5IDJV/wIlwEDUbGWyhODX4OOodR5
+	Id9XtCWV3rJNZK/HfKDa4EBSYMe6jBilyykmQGcsnFsKw2t5fGoewS8ZLyVL9W5+KCuUxy6PoFb2E
+	dgpjEEsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1twkHm-00000003aMl-2MAA;
-	Mon, 24 Mar 2025 16:04:22 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1twkR4-00000003bS2-0eAh;
+	Mon, 24 Mar 2025 16:13:58 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1twkG4-00000003aB6-3fVk;
-	Mon, 24 Mar 2025 16:02:36 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 36ABE6157F;
-	Mon, 24 Mar 2025 16:02:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 88EC6C4CEDD;
-	Mon, 24 Mar 2025 16:02:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1742832155;
-	bh=lO70/EyOTHsSUCsToe3wwdpu/s9KqX41Qnit5o85758=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=fYwYfGSZVzY31upbyL96Mn2jcC6wRm9sskzWthKcQ05zB6hH9VZVivy37hpuecwwl
-	 xc2cFdT2vZ5M7IjIYVJ6TZuD6OUHfwsb26FmHK6iijmHFu2rBYCrdXeACBHEqImCbu
-	 OH06I7Goiyrr9tiCwAvThh7vEAbwwHqzkhjTRWGsDcDJ0Jhr/y6cL6cEme8Wz8+/pO
-	 Yqe5AYNV3x7zfSs1n3TOg8GMJluf8wXbd9OiiqYwdjq0lhiy93wOFoWpfycs8xnFL0
-	 5XqidcdArCoZQE38NAu06CxseJ9qKIeK02KWZG/Sk34UbSU9a6zm2heVsfXUyDqjPY
-	 ew4royVay7aKw==
-Date: Mon, 24 Mar 2025 11:02:34 -0500
-From: Rob Herring <robh@kernel.org>
-To: "paul-pl.chen" <paul-pl.chen@mediatek.com>
-Subject: Re: [PATCH v2 05/15] dt-bindings: display: mediatek: add OUTPROC
- yaml for MT8196
-Message-ID: <20250324160234.GA113887-robh@kernel.org>
-References: <20250321093435.94835-1-paul-pl.chen@mediatek.com>
- <20250321093435.94835-6-paul-pl.chen@mediatek.com>
+	id 1twkNy-00000003b2K-1sJx;
+	Mon, 24 Mar 2025 16:10:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1742832644;
+	bh=Gu2l2JLxMDCWKF/ck8d4RiqN/9CsaCC/fejEKfEzVwk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=UFTK7VIn1/I5hwkLfw1XtFbanIRysbesCsb7Fc5V2u10bJp47QKQJzMxNFMd5F+YQ
+	 akSezJjNHkk1SM7F6Yg74KtRyeXn1RjJr5dXTsjZavrUokJhiDalxFZs1qUAziHsic
+	 ltV6lzA8gJpa7SZF32lROzTPIL01r4ystflTk419bzbr294SJTQjVxwl3jneu+1hQX
+	 3VW21ug4qlj7uAjAIKJqFir6xaRJPgUdCpLZ8lYDmNSM1YW8HcSjjV+iibRNwiv2i8
+	 ZPwUOohPHhlJp7A4KR/uyhGj4f9R2Jaj3N7QaBl/FVdM04PIxxijVdBOkc0ijYn6MB
+	 U1BpVWajMgaiA==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D517417E0A50;
+	Mon, 24 Mar 2025 17:10:42 +0100 (CET)
+Message-ID: <d4af318b-1bdf-4abd-842d-461a763b79a4@collabora.com>
+Date: Mon, 24 Mar 2025 17:10:41 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250321093435.94835-6-paul-pl.chen@mediatek.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 3/3] pinctrl: mediatek: Add pinctrl driver on mt8196
+To: Cathy Xu <ot_cathy.xu@mediatek.com>,
+ Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Sean Wang <sean.wang@kernel.org>
+Cc: Lei Xue <lei.xue@mediatek.com>, linux-gpio@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ yong.mao@mediatek.com, Axe.Yang@mediatek.com, Jimin.Wang@mediatek.com,
+ Wenbin.Mei@mediatek.com, Guodong Liu <guodong.liu@mediatek.com>
+References: <20250321084142.18563-1-ot_cathy.xu@mediatek.com>
+ <20250321084142.18563-4-ot_cathy.xu@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250321084142.18563-4-ot_cathy.xu@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250324_091046_660542_D7CA1263 
+X-CRM114-Status: UNSURE (   6.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,91 +80,17 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: chunkuang.hu@kernel.org, conor+dt@kernel.org, xiandong.wang@mediatek.com, jason-jh.lin@mediatek.com, singo.chang@mediatek.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, treapking@chromium.org, devicetree@vger.kernel.org, nancy.lin@mediatek.com, linux-mediatek@lists.infradead.org, sunny.shen@mediatek.com, p.zabel@pengutronix.de, sirius.wang@mediatek.com, matthias.bgg@gmail.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 21, 2025 at 05:33:34PM +0800, paul-pl.chen wrote:
-> From: Paul-pl Chen <paul-pl.chen@mediatek.com>
+Il 21/03/25 09:39, Cathy Xu ha scritto:
+> From: Guodong Liu <guodong.liu@mediatek.com>
 > 
-> Add mediate,outproc.yaml to support OUTPROC for MT8196.
-> MediaTek display overlap output processor, namely OVL_OUTPROC
-> or OUTPROC,handles the post-stage of pixel processing in the
-> overlapping procedure.
+> Add pinctrl driver support for MediaTek Soc mt8196.
 > 
-> Signed-off-by: Paul-pl Chen <paul-pl.chen@mediatek.com>
-> ---
->  .../display/mediatek/mediatek,outproc.yaml    | 54 +++++++++++++++++++
->  1 file changed, 54 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,outproc.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,outproc.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,outproc.yaml
-> new file mode 100644
-> index 000000000000..f42e9abc1436
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,outproc.yaml
-> @@ -0,0 +1,54 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/display/mediatek/mediatek,outproc.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek display overlap output processor
-> +
-> +maintainers:
-> +  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
-> +  - Philipp Zabel <p.zabel@pengutronix.de>
-> +
-> +description: |
+> Signed-off-by: Guodong Liu <guodong.liu@mediatek.com>
+> Signed-off-by: Cathy Xu <ot_cathy.xu@mediatek.com>
 
-Don't need '|' if no formatting to preserve.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-> +  MediaTek display overlap output processor, namely OVL_OUTPROC or OUTPROC,
-> +  handles the post-stage of pixel processing in the overlapping procedure.
-> +  OVL_OUTPROC manages pixels for gamma correction and ensures that pixel
-> +  values are within the correct range.
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,mt8196-outproc
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - clocks
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +
-> +    soc {
-> +        #address-cells = <2>;
-> +        #size-cells = <2>;
-> +
-> +        disp_ovl0_outproc0: outproc@32970000 {
-
-Drop unused labels.
-
-> +            compatible = "mediatek,mt8196-outproc";
-> +            reg = <0 0x32970000 0 0x1000>;
-> +            clocks = <&ovlsys_config_clk 49>;
-> +            interrupts = <GIC_SPI 450 IRQ_TYPE_LEVEL_HIGH 0>;
-> +        };
-> +    };
-> -- 
-> 2.45.2
-> 
 
