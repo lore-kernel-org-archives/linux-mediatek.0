@@ -4,100 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65A30C36001
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Mar 2025 05:50:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92FB8C3600C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Mar 2025 07:41:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Y17ZL3We+j0Um9q8f67tlcHCzUzcIfQ03LepCBYfNfQ=; b=O/cVBIrmYR3N8wDAMST7WK8lRk
-	rFSHelOnehEzaSLxUnZvFfXzIgycU7En0Sx8AY8eItdwozd4CSdTg6TRgTz+eU8Plu1ewY6JxSA4u
-	AhL+9Ij7Lb81MSCGOaTD14JTQJNG3MbOETPuyOs4g/d5WCOQsXgIDfBOWywT/fttljArD5ZBoNAda
-	etC+mwhkqsNXkd1U7u9ZGaXUCtoXR3WI4DAXWtcFRii3u+Yhuwr1gBkluwj3Ut/VcW1ptIJBg8Un2
-	BBiaQatI74g/QHOtp3UcZNlQWRO4MRU928jcDjor4Uc/7yf/oLWCcY7SFNQwCpNl/id0EvLsMYh5Z
-	vgRdODvQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lHCM6K2iW1+fqMDLh9KgVtF4x5CiQjRva8x012yrIyc=; b=GuzfLdNo1+GakSKpDguLM1IDSJ
+	cNWLF6SFyVJuBN0QKyIvMOdI/VkPSwFenH5IZdLyaDeXLK6jca6uyeXgTSKW4DmuOCu9JZu44bVVv
+	J3UG/fvln8Vz5EhaEQ4DozT3JFmqOnI9rjkkNwNxL4QVPyRi+bGrsH8Z+x8NVasW9DmWsemRskSyN
+	YqEJSD92hbKneiMc2mjuYQ8GqKuAxZkjMElywshtWdF+CpYw6iTEIebqZxAYdbNQBaIYbsK4Bvik9
+	886YZ6u79ZNqNSn9Wor0gcL2CE7BwFD2LLiS2u8iII1MDl7F2V3uEPfVLoVYQfpPMLIA6srKNsDcd
+	xcMDU6uw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1twahx-00000002GrN-2N0r;
-	Mon, 24 Mar 2025 05:50:45 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1twcQx-00000002TgJ-3e2k;
+	Mon, 24 Mar 2025 07:41:19 +0000
+Received: from mout.web.de ([212.227.15.3])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1twahu-00000002Gqd-3HeN
-	for linux-mediatek@lists.infradead.org;
-	Mon, 24 Mar 2025 05:50:43 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-43d04ea9d9aso17239425e9.3
-        for <linux-mediatek@lists.infradead.org>; Sun, 23 Mar 2025 22:50:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1742795441; x=1743400241; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=Y17ZL3We+j0Um9q8f67tlcHCzUzcIfQ03LepCBYfNfQ=;
-        b=lNo7Pdqv+aqweJ1WAzq/01Y9Ee4zzogJ6k8jP1zpfhrQK4FG+gBp7N7UnKe5cgOnSS
-         Fp+xutyJ5R11pBH7BoVV12Ef70VmIVzXCXzIM1KBIMtWbq3te8ZGUukkkCZ35nFbBEou
-         2pCYcvFd2Jj6e4wvuUMKZtjV1R1nmkKsp7/Q99ar6jRAWtZAw/dawyhdQ0VIbb5Ca6uI
-         Ug+kwUhMeGwst6QihWmP2txg1127RqJDJqSFz6M7JdljwA9hG00uhd6IiFmGacaOizvi
-         uJ4A4ZZTEOJEtnFd9mBPjnjgfioViGFuXKU/ULmAbOLYthFrjiqztqk8mQA6QEax3VWS
-         oTsg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742795441; x=1743400241;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Y17ZL3We+j0Um9q8f67tlcHCzUzcIfQ03LepCBYfNfQ=;
-        b=R0AJBnTlYeaHA5N8G56XB1zSNk06Lctxc9tVfJpP0PAqefERnUG7ximJ4OvcQT+sx6
-         qzCD9zYvqRc+OWU5MzdjjkhIoiNw/my2o//a3n9rJkhQSMhB491wjQVj0GLDnFjalr5O
-         6+GdtbHZbI9sevWwhTQduFSm1FRpmHOlm24aJnaMR+vNyCuVjTCoh1SQAFy6wugov0hN
-         cjvNoo1tyKUEBWz58dadBrU9OtbdtjMshbSDXLdMb4vqyxJaNrW02B9zSsSLqIC23g8p
-         wa5C8z6I/pcJ6TZZniN4ZuSE+O8OD+4IofbpZFVS8EQNA8uO5AeP7zJEswyNPP72Jtwu
-         NXVw==
-X-Forwarded-Encrypted: i=1; AJvYcCV6zf7APkySCLDil4d/nnJwxSzGhD635Q/ulRSLlZVIPIe+KvBmwLM0g79Ql89DjmhVyd9jV+RiaGVUPLmF3A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzIVdBExvaLe58VQg/N0OjBMOPVTzlk+IgysCFLAF5q3DKvX6HP
-	izgGf4eaohyakTmWDMdyjXIn8Xnlxq2rFYZrJ30KDKZkUAvoxUHNNhQ7RIg9Bac=
-X-Gm-Gg: ASbGncsX2Jr9AubYWc+q87hgJag2XftDbEaZV57gMTkG3+JHiJam2kWF2TvRjt+PmR9
-	1yUqU2/yp3EwzHySw0PZv/mrT3j0GYvFVTybpZnmxwjcDfPrJpY31HYazfIAH4aY8cUg4CZcfU8
-	yd5vqehnvN9lmt9eXALC6PnQ3+X18/1IBhK/b3Qi1yczEKrUZppTQrfMZ3nehe4miQ9L6cXM0Hf
-	RrZiQVf30qd2JNw+KNyNq127ahWXTLvleWGz+RfvKOkuofnyHatjYFaE9rHeLXkr6UK1Q0Vn0ZF
-	/VymJ8Hhk4rR2dmB35ID09ugF0R9eTm7Ug9VMHjNEuXalnbVxg==
-X-Google-Smtp-Source: AGHT+IHmTYmhdJOC8tWd9mJoKjnOkYwl7qqf/27G1AO/Qiuynr43p01EUz4e7kx3RkIBljch7G1LIg==
-X-Received: by 2002:a05:600c:c8a:b0:43d:46de:b0eb with SMTP id 5b1f17b1804b1-43d509ec4ebmr103517695e9.12.1742795440557;
-        Sun, 23 Mar 2025 22:50:40 -0700 (PDT)
-Received: from localhost ([196.207.164.177])
-        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-43d43f332cfsm161996995e9.6.2025.03.23.22.50.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 23 Mar 2025 22:50:40 -0700 (PDT)
-Date: Mon, 24 Mar 2025 08:50:37 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: James Dutton <james.dutton@gmail.com>
-Cc: Johannes Berg <johannes@sipsolutions.net>,
-	Markus Elfring <Markus.Elfring@web.de>,
-	Qasim Ijaz <qasdev00@gmail.com>, linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	LKML <linux-kernel@vger.kernel.org>,
-	Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Bo Jiao <bo.jiao@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Peter Chiu <chui-hao.chiu@mediatek.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>
-Subject: Re: [PATCH] wifi: mt76: mt7996: avoid potential null deref in
+	id 1twcJm-00000002SYz-3Kae;
+	Mon, 24 Mar 2025 07:33:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
+	s=s29768273; t=1742801632; x=1743406432; i=markus.elfring@web.de;
+	bh=lHCM6K2iW1+fqMDLh9KgVtF4x5CiQjRva8x012yrIyc=;
+	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:Subject:To:Cc:
+	 References:From:In-Reply-To:Content-Type:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=MfUf2jm8rzqT28e1mSOGEbVg8GcCrSXq2DnnZIIL6CTEKFw1O8B1YYAxVR3p93wK
+	 3jSrck64eNT3wIJZpj9xLbDs2WFdV+V3BrAUGpCKr7vLfVCO58+OYnJl61DhYjIlu
+	 MCzZwMljjNCF7kBE2aU4SN9wyn/V0zSZKLCt9KlPP1pneusEByXOSzQiyj2WNUyJh
+	 6uEf1GcbkuX99CUJheyEtV2PWaOJiviHiqgBRX5zMNJ5OUWFWi8bZkzQhHRe4OupG
+	 YPDLypzmvAauiEAh14zVPbCGoRXox3OQWwzKB4Oud7aSyFh1REI2kzew/1ph/8WXL
+	 gYY3wuMLFHS7Lub3Cw==
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from [192.168.178.29] ([94.31.93.33]) by smtp.web.de (mrweb005
+ [213.165.67.108]) with ESMTPSA (Nemesis) id 1Mr7ac-1tKrO21bXi-00oDxV; Mon, 24
+ Mar 2025 08:33:52 +0100
+Message-ID: <46a53498-6c20-48fd-b090-02163baefddd@web.de>
+Date: Mon, 24 Mar 2025 08:33:39 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: wifi: mt76: mt7996: avoid potential null deref in
  mt7996_get_et_stats()
-Message-ID: <223c7280-443d-49b4-96b2-90472339dcd4@stanley.mountain>
+To: Dan Carpenter <dan.carpenter@linaro.org>, Qasim Ijaz
+ <qasdev00@gmail.com>, linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: LKML <linux-kernel@vger.kernel.org>,
+ Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Bo Jiao <bo.jiao@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
+ James Dutton <james.dutton@gmail.com>,
+ Johannes Berg <johannes@sipsolutions.net>,
+ Jonas Gorski <jonas.gorski@gmail.com>, Lorenzo Bianconi
+ <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Peter Chiu <chui-hao.chiu@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>
 References: <20250322141910.4461-1-qasdev00@gmail.com>
  <d1df5d97-4691-40d4-a6cc-416505f35164@web.de>
  <92d1a410788c54facedec033474046dda6a1a2cc.camel@sipsolutions.net>
  <CAAMvbhGrJ9b3Aab9+2a5zmvEgf0GZFmHLCC7Hud+egUE28voHQ@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAAMvbhGrJ9b3Aab9+2a5zmvEgf0GZFmHLCC7Hud+egUE28voHQ@mail.gmail.com>
+ <223c7280-443d-49b4-96b2-90472339dcd4@stanley.mountain>
+Content-Language: en-GB
+From: Markus Elfring <Markus.Elfring@web.de>
+In-Reply-To: <223c7280-443d-49b4-96b2-90472339dcd4@stanley.mountain>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Provags-ID: V03:K1:hPisYZtNHtgdSzDYvkU7jZ10PJssmACwm0eKAkVLKsCDI3b7xsG
+ lzCWmSJHsssVXlIH/WXbNoTQQWdL2uKRi5+cu2aBCoRq8td+NnkT20JfBooQvjsecx0XC+a
+ Ml1Bx1ENSjGs/NZ8CrOU68lZCqAPXZoL5nCXm2TCFWIKoraDOy7dtISm16LVoMimIarUZ88
+ wJXlpqLJg8q3B3nWr5f5A==
+UI-OutboundReport: notjunk:1;M01:P0:jO20oZj/TDE=;aGj7rYdAkRcQW7DeTxELt09CwZj
+ IMJ4QmMwA/3OFvwsgsx+W+vN98ShDLwI66ERueilwHOK24GN90dOcZ2A1m+MUdhx2kH9EtOb8
+ GpBM4wwOWefzfn5U56aJhfP1E3DwV6ungO7Vvh74LZqMJE6bGTdHJMTx6R4zKOtsb4INcAHwM
+ poYPqYUg5HK0TM6npx137BrPjtnruqBeRO2GQsLqZ8FTj724duSrnDT3//T6S7aMztQUaFx6J
+ SkDU9SXpaIdDOp6/YoaNw8JrB1RpTKSxNIpLOrF5wOCnormOMXjAmMM5e+vSmJ0M02DS7F1cl
+ DYw5vfl/PBhGELoXNFOrMyp5oFu1x+O5E51HA22nRsGOXftFcaEWTSzdxsVEePdyG+QTWEjAJ
+ wMPXa7wmzCXtohStcMSk3uRk/QbwW/PW2X6bUniVdn8oAcFwVQ+0YFGYyzEog9tasB1pHsWtw
+ TYAZFhNFHl+u+CzIFI2/ozAYEtATj/tCrR0g7XUTxT6TSqB2Vdb9TjvcE+gGayNWtdXm/yM5U
+ e1cCx7Q+Y2syqylyrykPExIaqEnzrFA8Lmq+eReqbjcav6EsWZUOvdSF7kwCaBefwGBvcf22f
+ ROchFCHsXAhpSK9gBgrAzVxoQl4qblOrpsOENuTWx9jcHsDvv5w2vHkvW4GdpzGRPRKiq5l8j
+ KbWP+xgKx1HV8FpskDsEAb7/1foieNAjOwCLRZJ7SGcoTeaVczjWxg3cTG+YulML9AmTgHBA0
+ zffaTDuiMvucBG2SAj/2LloeSBPIMg0xQtjHwTWkEqGcppQN8hOYzNXKcGpJiVszgB3wnjW+0
+ wIczXjNR4Z8Paj5H+g537DdGuw8lrAGoQNfWK1ScAauE2IYtJPyO+mFtEzQkmYNnyVk/ompDb
+ 3PnMdlmAKZpPuzRbfCT+I+Z7ty9PEExDxvkJ6b3epvlbzLVtnYfPH+XSWwXIHGP+7HEehn4/s
+ Rimek8h2ei3UvTqbuJK1crjfaXpN9urR0vFRJSANz0uTwLnUxicEX+vZ9RNl0TTikF2jzECix
+ a1JaA88odXlJOG/WCeqZXv6AXYa6kwUXwQkBUnz22/J5H6+p9tqWcrhfA9WdtVDg+BCeV9niA
+ /bRV8bytHFiTFBvTfULpmLU8HPC+bInE8AXFA5FI4r9FYSLQxHO+HKGSeTdSbL+h4lL78WAfc
+ rIIjTih9nMGSlskR2OXtFxGnuIC6pOnrvPWespFIh47fwCDCzXv7v9Mo2aT6IA5NWAgtbL3Zg
+ fWofTQ/7m+MeZu9VGM1GPm2mrWkMZnuGhTOdIcweduPdrWKQ6aR/zKIdha8QxSumnsIcXC9Ro
+ lKvoiXS2En6XgEWktqn+GL5Q5O9Kfj1eZKVeHoKG3V769mQmQFGUXtJchtPR9FZL1FCyjwDS9
+ L8/za+xtLeL4VD37A+P28rCywVzjlh5f7uhpm9p5HX05l1OMqNr+Hck7WhI+ww7k+NBvhXglG
+ lbaKo5Cuq4xGEPQlwWhoMX2SpxUnXuT/h4kczqgy9ikO/HlEg
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250323_225042_835457_22ED8A1F 
-X-CRM114-Status: GOOD (  21.16  )
+X-CRM114-CacheID: sfid-20250324_003355_202142_AA5427AD 
+X-CRM114-Status: UNSURE (   4.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,60 +116,9 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Mar 23, 2025 at 11:59:45AM +0000, James Dutton wrote:
-> As a security side note in relation to the following patch:
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-> b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-> index 66575698aef1..88e013577c0d 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-> @@ -68,11 +68,13 @@ static int mt7996_start(struct ieee80211_hw *hw)
-> 
->  static void mt7996_stop_phy(struct mt7996_phy *phy)
->  {
-> -       struct mt7996_dev *dev = phy->dev;
-> +       struct mt7996_dev *dev;
-> 
->         if (!phy || !test_bit(MT76_STATE_RUNNING, &phy->mt76->state))
->                 return;
-> 
-> +       dev = phy->dev;
-> +
->         cancel_delayed_work_sync(&phy->mt76->mac_work);
-> 
->         mutex_lock(&dev->mt76.mutex);
-> 
-> 
-> 
-> Prior to that patch, the code looks like this:
-> static void mt7996_stop_phy(struct mt7996_phy *phy)
->  {
->        struct mt7996_dev *dev = phy->dev;
-> 
->         if (!phy || !test_bit(MT76_STATE_RUNNING, &phy->mt76->state))
->                 return;
-> 
-> 
-> The compiler will completely remove the !phy check entirely because of
-> the use above it, so it being present in the source code is completely
-> bogus.
+> Also the "phy" point will never be NULL so the check should be removed.
+How many tools can help to determine such a software aspect with inter-procedural analyses?
 
-No, in the kernel we use the -fno-delete-null-pointer-checks so the
-NULL check will always be there.
-
-Also the "phy" point will never be NULL so the check should be removed.
-
-regards,
-dan carpenter
-
-> If one actually needs a !phy check to be present in the compiled code,
-> one must arrange it as per the patch above.
-> 
-> The fact that the !phy check is in the source code, implies to me that
-> someone, in the past, thought it was necessary, but I think an opinion
-> could be taken that it is there to obfuscate a security vulnerability.
-> 
-> Kind Regards
-> 
-> James
+Regards,
+Markus
 
