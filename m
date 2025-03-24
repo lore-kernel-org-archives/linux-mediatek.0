@@ -4,104 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92FB8C3600C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Mar 2025 07:41:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E08E0C3600C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Mar 2025 07:44:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lHCM6K2iW1+fqMDLh9KgVtF4x5CiQjRva8x012yrIyc=; b=GuzfLdNo1+GakSKpDguLM1IDSJ
-	cNWLF6SFyVJuBN0QKyIvMOdI/VkPSwFenH5IZdLyaDeXLK6jca6uyeXgTSKW4DmuOCu9JZu44bVVv
-	J3UG/fvln8Vz5EhaEQ4DozT3JFmqOnI9rjkkNwNxL4QVPyRi+bGrsH8Z+x8NVasW9DmWsemRskSyN
-	YqEJSD92hbKneiMc2mjuYQ8GqKuAxZkjMElywshtWdF+CpYw6iTEIebqZxAYdbNQBaIYbsK4Bvik9
-	886YZ6u79ZNqNSn9Wor0gcL2CE7BwFD2LLiS2u8iII1MDl7F2V3uEPfVLoVYQfpPMLIA6srKNsDcd
-	xcMDU6uw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ENeTUflag0l1WgJ9MraeaFTIx2U/M6/MceOO9Gs6H40=; b=S4WXa/SboUSytr16B0EDNmqRp6
+	YFzEzXcYoRu5jWFc/wjAnWRUce7rfVHoBVJal3i2dLzxPycwFdv8HAzwzAR8P4pMtyoesgI8Zsu27
+	GfjN9qbD2D/54/L7FAc0233iWLLQSCknIYmoRSoxv7i7AsegXxwqTCf9LTEALMmiPLudtWBwcgaRs
+	AdJzthCUOpXJ3NM6JobxpZIlCaxgd+sd2G7pmqW2F+IkBrqTlxMUYWGST/uR+LBAR0kKzdGgNGZs1
+	uiKuHXw80KEIOxHC7zeV+2CXiZYUdpuMID+YpWxtybg6mhjdTrqv+v/iB00hr3DDfbpJeRnNMtPhv
+	KBma6JwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1twcQx-00000002TgJ-3e2k;
-	Mon, 24 Mar 2025 07:41:19 +0000
-Received: from mout.web.de ([212.227.15.3])
+	id 1twcUO-00000002UBE-062B;
+	Mon, 24 Mar 2025 07:44:52 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1twcJm-00000002SYz-3Kae;
-	Mon, 24 Mar 2025 07:33:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
-	s=s29768273; t=1742801632; x=1743406432; i=markus.elfring@web.de;
-	bh=lHCM6K2iW1+fqMDLh9KgVtF4x5CiQjRva8x012yrIyc=;
-	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:Subject:To:Cc:
-	 References:From:In-Reply-To:Content-Type:
-	 Content-Transfer-Encoding:cc:content-transfer-encoding:
-	 content-type:date:from:message-id:mime-version:reply-to:subject:
-	 to;
-	b=MfUf2jm8rzqT28e1mSOGEbVg8GcCrSXq2DnnZIIL6CTEKFw1O8B1YYAxVR3p93wK
-	 3jSrck64eNT3wIJZpj9xLbDs2WFdV+V3BrAUGpCKr7vLfVCO58+OYnJl61DhYjIlu
-	 MCzZwMljjNCF7kBE2aU4SN9wyn/V0zSZKLCt9KlPP1pneusEByXOSzQiyj2WNUyJh
-	 6uEf1GcbkuX99CUJheyEtV2PWaOJiviHiqgBRX5zMNJ5OUWFWi8bZkzQhHRe4OupG
-	 YPDLypzmvAauiEAh14zVPbCGoRXox3OQWwzKB4Oud7aSyFh1REI2kzew/1ph/8WXL
-	 gYY3wuMLFHS7Lub3Cw==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.178.29] ([94.31.93.33]) by smtp.web.de (mrweb005
- [213.165.67.108]) with ESMTPSA (Nemesis) id 1Mr7ac-1tKrO21bXi-00oDxV; Mon, 24
- Mar 2025 08:33:52 +0100
-Message-ID: <46a53498-6c20-48fd-b090-02163baefddd@web.de>
-Date: Mon, 24 Mar 2025 08:33:39 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1twcT9-00000002U2c-3xHK
+	for linux-mediatek@lists.infradead.org;
+	Mon, 24 Mar 2025 07:43:37 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-43cfebc343dso28958255e9.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 24 Mar 2025 00:43:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1742802214; x=1743407014; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=ENeTUflag0l1WgJ9MraeaFTIx2U/M6/MceOO9Gs6H40=;
+        b=fjHHijztSA/jiW5J1ZJv5X/fBp64p30Yq2bGakpjjsGVCAELN3jEEPcLtonxyVw0zU
+         3o6cWa+Q1LyIIKt68diCSWC1s4Lf4/4ZFheH/lxkuOGsm1+uFVm/pUXQkrtnC2u51qcS
+         TSI1y5QjXcpbCAqVC3n+Mc5tQ8ma43fH8w3q7XjSHcBN+RdIJp6GGPMoVsWSR81ZN5qo
+         uKya1iZE25My9hzleJamn8PIoPFEp5iFEmWQwaOK8MJtm15b4/E0dH04Beigh+3rU1Jx
+         L88qua2mIe2tupsNfjNWdcVFEebV4kBR5U8B/pClEcEXP/3xLmas7rLtP5psrIaaUwhY
+         BJTQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742802214; x=1743407014;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ENeTUflag0l1WgJ9MraeaFTIx2U/M6/MceOO9Gs6H40=;
+        b=rfGMCy4K2ZRSyldB/T2GXr04le1Nlyxr+CbwWqSrpxj3Sfn/CrKXFLH5sd1R78Doj7
+         +SWPBnGNVlpiSw/2n2Bhbag/nYK3A6KGmZbcC7gdtzw1A//8ipJTd/7le4W/lShmUhkB
+         DKUJTjWL+B3E6r5APr134K73lcVmfWiVcRilnF6hv1HL3LY/VgFxFY90AtJOfjaKE1iK
+         JaQREYy5NFSscRXdhiO11l6dGRGY7FuVPafWA0YCjA73nNYfTNXQvQ49NzzQKMm3Qv2s
+         XgWWValTUszAqJlUBwrzrS1iGw8KDBjsCdelXaztKGyAuwcoenWgP5USw83Haftei+Hs
+         VkeA==
+X-Forwarded-Encrypted: i=1; AJvYcCWLI5HDiXez3R52gZA3zR2rHdG/p6YHEFgHAeMefn1h0CNQrN53YnvYDqUWufmO+c7VBD0vQotd6RopcO4NZQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxDEudDILGn3TdwqVkdZP2OZUcYsW93dFSv74XGz3uSwTYan75q
+	vduNQRmsWXSjz6Mk/Ji+3UEIiCHqQegjr2U4VeKCqThVa8QN6o8sLCH83Y/ZTdY=
+X-Gm-Gg: ASbGncuJ0ylRL6XYfJ3n06otKvqs3JPs47VD46rMZ7RllreZ8k8WLKW+ibjV2OCDkux
+	6uvjNfi3pshyKFiG8Bxn9lct2DoUaSJ/wLJkI9HvLyEkSMOoGsbXNbKkvwrz4Yv3/W1XFBCtWkn
+	btZHVtkgnkiRf9R/yBL/bk2EKe4kPe+D6mbVrrDG3SeT8eFsdScuD087eNPJKqBCGJd0BZzHpoi
+	/WXZ2JAhB4jFSSdRKkuKqPB4sESZ8wklGYnqdZ7pOsSn18JUBLxdl71vfNzYDFuVAfO51DpxP/Z
+	aOkTukvjL0QlFjBfQGN8bE/lfKruGvMIT5qESAbTdMDfD1Qgew==
+X-Google-Smtp-Source: AGHT+IGmGmS5ufUfMSrgfk7DIRjiH+iIQAHj6POw/bNjEYZrqwMBfch1zIjXMn5LOd+CGNnKdNiELw==
+X-Received: by 2002:a05:6000:2a2:b0:390:f400:2083 with SMTP id ffacd0b85a97d-3997f89a039mr9195803f8f.0.1742802214396;
+        Mon, 24 Mar 2025 00:43:34 -0700 (PDT)
+Received: from localhost ([196.207.164.177])
+        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-3997f9eff9asm10311692f8f.92.2025.03.24.00.43.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 24 Mar 2025 00:43:33 -0700 (PDT)
+Date: Mon, 24 Mar 2025 10:43:31 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: Markus Elfring <Markus.Elfring@web.de>
+Cc: Qasim Ijaz <qasdev00@gmail.com>, linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	LKML <linux-kernel@vger.kernel.org>,
+	Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Bo Jiao <bo.jiao@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
+	James Dutton <james.dutton@gmail.com>,
+	Johannes Berg <johannes@sipsolutions.net>,
+	Jonas Gorski <jonas.gorski@gmail.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Peter Chiu <chui-hao.chiu@mediatek.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>
 Subject: Re: wifi: mt76: mt7996: avoid potential null deref in
  mt7996_get_et_stats()
-To: Dan Carpenter <dan.carpenter@linaro.org>, Qasim Ijaz
- <qasdev00@gmail.com>, linux-wireless@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-Cc: LKML <linux-kernel@vger.kernel.org>,
- Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Bo Jiao <bo.jiao@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
- James Dutton <james.dutton@gmail.com>,
- Johannes Berg <johannes@sipsolutions.net>,
- Jonas Gorski <jonas.gorski@gmail.com>, Lorenzo Bianconi
- <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Peter Chiu <chui-hao.chiu@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>
+Message-ID: <d723d5c1-ed17-41b8-9bc4-274fd8e2b615@stanley.mountain>
 References: <20250322141910.4461-1-qasdev00@gmail.com>
  <d1df5d97-4691-40d4-a6cc-416505f35164@web.de>
  <92d1a410788c54facedec033474046dda6a1a2cc.camel@sipsolutions.net>
  <CAAMvbhGrJ9b3Aab9+2a5zmvEgf0GZFmHLCC7Hud+egUE28voHQ@mail.gmail.com>
  <223c7280-443d-49b4-96b2-90472339dcd4@stanley.mountain>
-Content-Language: en-GB
-From: Markus Elfring <Markus.Elfring@web.de>
-In-Reply-To: <223c7280-443d-49b4-96b2-90472339dcd4@stanley.mountain>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:hPisYZtNHtgdSzDYvkU7jZ10PJssmACwm0eKAkVLKsCDI3b7xsG
- lzCWmSJHsssVXlIH/WXbNoTQQWdL2uKRi5+cu2aBCoRq8td+NnkT20JfBooQvjsecx0XC+a
- Ml1Bx1ENSjGs/NZ8CrOU68lZCqAPXZoL5nCXm2TCFWIKoraDOy7dtISm16LVoMimIarUZ88
- wJXlpqLJg8q3B3nWr5f5A==
-UI-OutboundReport: notjunk:1;M01:P0:jO20oZj/TDE=;aGj7rYdAkRcQW7DeTxELt09CwZj
- IMJ4QmMwA/3OFvwsgsx+W+vN98ShDLwI66ERueilwHOK24GN90dOcZ2A1m+MUdhx2kH9EtOb8
- GpBM4wwOWefzfn5U56aJhfP1E3DwV6ungO7Vvh74LZqMJE6bGTdHJMTx6R4zKOtsb4INcAHwM
- poYPqYUg5HK0TM6npx137BrPjtnruqBeRO2GQsLqZ8FTj724duSrnDT3//T6S7aMztQUaFx6J
- SkDU9SXpaIdDOp6/YoaNw8JrB1RpTKSxNIpLOrF5wOCnormOMXjAmMM5e+vSmJ0M02DS7F1cl
- DYw5vfl/PBhGELoXNFOrMyp5oFu1x+O5E51HA22nRsGOXftFcaEWTSzdxsVEePdyG+QTWEjAJ
- wMPXa7wmzCXtohStcMSk3uRk/QbwW/PW2X6bUniVdn8oAcFwVQ+0YFGYyzEog9tasB1pHsWtw
- TYAZFhNFHl+u+CzIFI2/ozAYEtATj/tCrR0g7XUTxT6TSqB2Vdb9TjvcE+gGayNWtdXm/yM5U
- e1cCx7Q+Y2syqylyrykPExIaqEnzrFA8Lmq+eReqbjcav6EsWZUOvdSF7kwCaBefwGBvcf22f
- ROchFCHsXAhpSK9gBgrAzVxoQl4qblOrpsOENuTWx9jcHsDvv5w2vHkvW4GdpzGRPRKiq5l8j
- KbWP+xgKx1HV8FpskDsEAb7/1foieNAjOwCLRZJ7SGcoTeaVczjWxg3cTG+YulML9AmTgHBA0
- zffaTDuiMvucBG2SAj/2LloeSBPIMg0xQtjHwTWkEqGcppQN8hOYzNXKcGpJiVszgB3wnjW+0
- wIczXjNR4Z8Paj5H+g537DdGuw8lrAGoQNfWK1ScAauE2IYtJPyO+mFtEzQkmYNnyVk/ompDb
- 3PnMdlmAKZpPuzRbfCT+I+Z7ty9PEExDxvkJ6b3epvlbzLVtnYfPH+XSWwXIHGP+7HEehn4/s
- Rimek8h2ei3UvTqbuJK1crjfaXpN9urR0vFRJSANz0uTwLnUxicEX+vZ9RNl0TTikF2jzECix
- a1JaA88odXlJOG/WCeqZXv6AXYa6kwUXwQkBUnz22/J5H6+p9tqWcrhfA9WdtVDg+BCeV9niA
- /bRV8bytHFiTFBvTfULpmLU8HPC+bInE8AXFA5FI4r9FYSLQxHO+HKGSeTdSbL+h4lL78WAfc
- rIIjTih9nMGSlskR2OXtFxGnuIC6pOnrvPWespFIh47fwCDCzXv7v9Mo2aT6IA5NWAgtbL3Zg
- fWofTQ/7m+MeZu9VGM1GPm2mrWkMZnuGhTOdIcweduPdrWKQ6aR/zKIdha8QxSumnsIcXC9Ro
- lKvoiXS2En6XgEWktqn+GL5Q5O9Kfj1eZKVeHoKG3V769mQmQFGUXtJchtPR9FZL1FCyjwDS9
- L8/za+xtLeL4VD37A+P28rCywVzjlh5f7uhpm9p5HX05l1OMqNr+Hck7WhI+ww7k+NBvhXglG
- lbaKo5Cuq4xGEPQlwWhoMX2SpxUnXuT/h4kczqgy9ikO/HlEg
+ <46a53498-6c20-48fd-b090-02163baefddd@web.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <46a53498-6c20-48fd-b090-02163baefddd@web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250324_003355_202142_AA5427AD 
-X-CRM114-Status: UNSURE (   4.26  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250324_004335_984116_1217AAB8 
+X-CRM114-Status: GOOD (  10.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,9 +115,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Also the "phy" point will never be NULL so the check should be removed.
-How many tools can help to determine such a software aspect with inter-procedural analyses?
+On Mon, Mar 24, 2025 at 08:33:39AM +0100, Markus Elfring wrote:
+> > Also the "phy" point will never be NULL so the check should be removed.
+> How many tools can help to determine such a software aspect with
+> inter-procedural analyses?
+> 
 
-Regards,
-Markus
+You can just review the code.  There is only one caller.
+
+Btw, it's fine to have unnecessary NULL checks so long as they're done
+consistently.  Generally, we prefer people not add unnecessary code,
+but if it makes you feel safer, most maintainers aren't going to nit-pick
+you about it.  If you are doing the work then you get some say your own
+code.
+
+regards,
+dan carpenter
 
