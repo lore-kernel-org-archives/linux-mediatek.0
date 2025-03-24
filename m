@@ -4,115 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC2B1C36002
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Mar 2025 13:12:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BACDC36002
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Mar 2025 13:56:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ghHaIoZTdVg9s4AcD2zJxE+31Mhe4sZUJ4hTXusvaGY=; b=XAgbUYwqvtnpPhbm9eVXoKuyPo
-	TNYwKG4ypFzadAi2hXUVSW55rk/LB9BlDYjFTPPnr9UBBS5BHw7FJns0YCcRotZelKbsKm2fIPCS2
-	c2ZP7ZrIJhZ0vasxM43sQgErpRz1DMqyCjtgd5rLaMsY3bOoE/7I0TE14UIvir4+mKr3RPvPjX0kz
-	TAKtGC0lmsJ3v4bMO+Uy2cOHon8Ta/2DJ1uzNGDi5Q4hi3t39tyBY6FylAlq6pmvxUzkeNBO9Py9E
-	H8DHKV8/zuoYWqjDPl3wB6hriseWNA4IiTFCbWV/dMZ6+aBijKXKwwLu20fcIli3YvTtCN9lzr/Hk
-	6gcueOnw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=JR3Vjat4//MGEukixFZKwpNgnByay/aE/Yu8JW2MD0s=; b=v48nabQ3B/NM2AJXsCSzxAHTQc
+	6e7Mp8VTq6ZDPb+Mtqky3MrS9bCQNeDaahaN71MhYpWrCOdLZBMDznpmgqdBwCWcDipti9YBMiBQl
+	nxsJkcgra4BiLldWp6gl4uMkz7uke9s3xsfnPZyt0yRRPH2vwivaI5un7jgas2I4QozkRF3d9Zyl8
+	dHFcfms+FOVNPzk6IGIuI5wpf0ujbROnnFVzKAT9gWi8Oo6ZBFueyW+BFaMInil1Ukd3Gj4VRr4gh
+	fp8UaONUI3fzmdM0QD+1TEGcaX08hnTTSf0cZ7FuIso4hPv0b7SgFOJCnTkWEES3HmdP04DxPbz6N
+	ECCxqO+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1twhbD-00000003D5s-3k7A;
-	Mon, 24 Mar 2025 13:12:15 +0000
-Received: from ip-89-177-23-149.bb.vodafone.cz ([89.177.23.149] helo=ixit.cz)
+	id 1twiHe-00000003JrH-0iT6;
+	Mon, 24 Mar 2025 13:56:06 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1twhOT-000000039XZ-0rBA;
-	Mon, 24 Mar 2025 12:59:07 +0000
-Received: from [192.168.2.71] (office.icewarp.com [82.113.48.146])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by ixit.cz (Postfix) with ESMTPSA id 0BDD51669CA;
-	Mon, 24 Mar 2025 13:58:55 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ixit.cz; s=dkim;
-	t=1742821136;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=ghHaIoZTdVg9s4AcD2zJxE+31Mhe4sZUJ4hTXusvaGY=;
-	b=bmguFzJEiOBbzjWzRn6AMh2wdiX+dlHiGJLokvL2KAqR9iQbGzH1wVn1RYonHzGrLIi17s
-	Atw/knSrWKHsXIKx7mTIB/rKV70HFWjEEIkbghwmZW+9RehgeyAuYY8xzSJt/sbKHlGA8k
-	Fk1I/4g/56QFVXYD8uSJkgGUAdcTxFs=
-Message-ID: <2cf735da-9f20-4372-8b08-0b40c335ba6b@ixit.cz>
-Date: Mon, 24 Mar 2025 13:58:55 +0100
+	id 1twiFu-00000003JgR-03sQ
+	for linux-mediatek@lists.infradead.org;
+	Mon, 24 Mar 2025 13:54:19 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-43cfdc2c8c9so26583755e9.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 24 Mar 2025 06:54:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1742824456; x=1743429256; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=JR3Vjat4//MGEukixFZKwpNgnByay/aE/Yu8JW2MD0s=;
+        b=zQwEi1szz26LXx9+cmERrTucMnhtIsi1GSvfSis4jOIZ5jLZBgZo8xQQeOTsvjtOVD
+         7K5dwKA8wAhyGTN/PN3ULd/j16hQCrcJdurmS0rr3t8m0UY34UktFroxXAeoHCERfhNl
+         IqSY1JYruq3dVjbNaphOQec6rtkksiZZURaqFgfEEPGSS2923Kndqo3v58lVRyQppWSd
+         Kr3f6YFFDh+fz88WyD2N/sDLlgtJ7BZeKbZ7FRRgwVo58f533hZLJ5th4AlqZ9XCzeGg
+         MbiZRqcy63Nm7BufPA54NtzkdfpT7qTJqxMH4l76jn7MP5oGKcXEc74nxUGpZ8nWRqhb
+         S95w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742824456; x=1743429256;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=JR3Vjat4//MGEukixFZKwpNgnByay/aE/Yu8JW2MD0s=;
+        b=PXW7STWcdydmJAsGuzDTIgkO/drjvd/SY7klPNQ28NZ7lF+ZriN3fc1ES0LjfDgP6R
+         4e9Nja61JVIEVCwp7hsJU0wEbR4PYXpZ6B/W/FoY5MsEPV0HqC2jacIazn4yGFkhqXTG
+         dk2TvPcsffCIrwaVGhtwlBBgpbHy5CmueUZKpY9pQcWh60+jqOKsehpxzQ585Pr8CjHC
+         RWPpcpAjftxkYoWnT5FkXsLoBKHI9JfK7X1hhsWDF/5BJwRHlOTvmSJ0bfVbcZ8Tzldr
+         zxogXZyvQx0U8dAzERVzEOubMFSXEPVpKZ40CrOOn9Tdl8aJkVnJ+ugY80gBw2jOOZNR
+         Fcog==
+X-Forwarded-Encrypted: i=1; AJvYcCU4Y9KnpZOQR7SLromP3xfSIZDnAx2KxiAaPQjT8fg8BpJyOqNrDwP5d4kiY8RFX+fDG1AmMvjXam/4oNVqzQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyz6aj0BsW8GgqxvE+a9rY09dU/W0j+lHfl0La8+woy8oUWLhEQ
+	V5Kd6QZRgG18YH4XpGjTvYceyggluFT3nZKrzUkYK9nd2iKszsXblVksEPdX5xY=
+X-Gm-Gg: ASbGncu7oGI70V7EBGBP2iF53qgxjjP/lrie323nQlBv7MpRGEj4oN0LD+XiDmt9Bk1
+	DKIb739IG67mvnSENNZiGMellU57QQIcb+LWwWFIWSc4Wt0g5szKB/PDUssAG9cPEu2gZmI8tDj
+	z5ovPeNEPGTjB3LsdlGTN8oGOeXp1f+Cud3i3fgtAFjgweUPdNED+Hwf7oKmeYCp/PJxAbA6thx
+	SuSu3gaea3vohuM7sXUdD5P5mw9qR8cBv5p/W0dFdOpADQbt/StcQVMC4cXV6YwdQWCWN59F/97
+	zf0W+6/V5pYuV9568xk3AaNtTdR+9HxEzlyosMlqa5KY204=
+X-Google-Smtp-Source: AGHT+IFH33RxIKZKH2JbP0YaKUVRu316Wyz1RxNXnEWmCEW34UaKhoXJkjdKNuiOfa4Hg3Dd/jontA==
+X-Received: by 2002:a05:600c:3b29:b0:43d:683:8ca3 with SMTP id 5b1f17b1804b1-43d509e2df8mr89756545e9.5.1742824455740;
+        Mon, 24 Mar 2025 06:54:15 -0700 (PDT)
+Received: from [127.0.1.1] ([2a01:e0a:5ee:79d0:c587:ed44:4dac:278])
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-43d43f43ecbsm170929235e9.10.2025.03.24.06.54.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 24 Mar 2025 06:54:15 -0700 (PDT)
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Mon, 24 Mar 2025 14:54:08 +0100
+Subject: [PATCH RESEND v2] arm64: dts: mediatek: add mmc2 support for
+ mt8365-evk
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] dt-bindings: iommu: Correct indentation and style in DTS
- example
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>, Yong Wu <yong.wu@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Maxime Ripard <mripard@kernel.org>, iommu@lists.linux.dev,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
-References: <20250324125250.82137-1-krzysztof.kozlowski@linaro.org>
-Content-Language: en-US
-From: David Heidelberg <david@ixit.cz>
-Autocrypt: addr=david@ixit.cz; keydata=
- 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
-In-Reply-To: <20250324125250.82137-1-krzysztof.kozlowski@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+Message-Id: <20250109-mmc2-support-v2-1-5f660c809610@baylibre.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ macpaul.Lin@mediatek.com
+Cc: vsatoes@baylibre.com, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Alexandre Mergnat <amergnat@baylibre.com>
+X-Mailer: b4 0.12.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=6037; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=tVdOnKU51B2x4WqhOEirUsHUGpi24fZC4xipg7NMb4A=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBn4WQGonmqWbjvvOOnuWnTu4FnwVU7xp4VVEVlV95m
+ 3/HxwSaJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZ+FkBgAKCRArRkmdfjHURVzyD/
+ 0eP8LRNlYpVHgwi3HS2/xN1N9cM+aemGFjdADD0BCVXrDM2npRTrHYB5/aDfwdRamAZO2VUIHR1t/c
+ yFAGWCqxYLL2dzIYtW05ZfcbVpB3L0mHZ8Wl/29w4p9omGN3mJdNnpvZaMhz2gdPmRskgUmLUkMQy0
+ 3VJ7/+01qrMZZuM5Jk9QF2tdwCwBTQGUh2LKgIUMWtxsnrIpBah8zPR6WbGqxmPSp6q/L+XLTpgMMn
+ 9QurzShlkRBcrixPdTYmxcaocHLT1S4kfeC2obRaAp6C2ynmjkjDXJHS6lGYgU6JA6mNCeN+8Psl7v
+ KMNaSioC/i3uCUKJ9/535rHdc34LrluE6LxYxH53L8BPMR9zL7YQd4oMlntERr7d/YW4IkPtrcR8CX
+ cVYVWNqjUmcAa/ee0/Wwf2yaw8s5x+DZuN6X9DfLzLCoXH780bz0AMzY8yikO2ZC5yzGKOnCya4i5Y
+ aJJ5Kn3brO92pEMhdNjBUkfm+9kspBKlR2swOnfxSauVu+3cuF/yRiPhEqKx7Xy32/ItQGsEhRA/DA
+ DxnS6qKAWihMmpGQ3WbuASdGvqq79aRaVit2BPKjgC3fd/q4nj3qRR5zkJLLaqci4/OKup371gdwPp
+ Fgbto/RHc7A9hy3sOEi6VA6fzLuo0TBjijhcxtpqsfe+9Gsry/XhdgUMcDzg==
+X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
+ fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250324_055905_707422_6A6C2CD7 
-X-CRM114-Status: GOOD (  19.21  )
+X-CRM114-CacheID: sfid-20250324_065418_061550_62532ECE 
+X-CRM114-Status: GOOD (  10.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,305 +117,209 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 24/03/2025 13:52, Krzysztof Kozlowski wrote:
-> DTS example in the bindings should be indented with 2- or 4-spaces and
-> aligned with opening '- |', so correct any differences like 3-spaces or
-> mixtures 2- and 4-spaces in one binding.  While re-indenting, drop
-> unused labels.
-> 
-> No functional changes here, but saves some comments during reviews of
-> new patches built on existing code.
-> 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> ---
->   .../iommu/allwinner,sun50i-h6-iommu.yaml      |  24 ++--
->   .../bindings/iommu/arm,smmu-v3.yaml           |  20 ++--
->   .../devicetree/bindings/iommu/arm,smmu.yaml   | 104 +++++++++---------
->   .../bindings/iommu/mediatek,iommu.yaml        |  18 +--
->   .../bindings/iommu/qcom,apq8064-iommu.yaml    |  20 ++--
->   5 files changed, 92 insertions(+), 94 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/iommu/allwinner,sun50i-h6-iommu.yaml b/Documentation/devicetree/bindings/iommu/allwinner,sun50i-h6-iommu.yaml
-> index a8409db4a3e3..ad51ace9ca09 100644
-> --- a/Documentation/devicetree/bindings/iommu/allwinner,sun50i-h6-iommu.yaml
-> +++ b/Documentation/devicetree/bindings/iommu/allwinner,sun50i-h6-iommu.yaml
-> @@ -48,19 +48,19 @@ additionalProperties: false
->   
->   examples:
->     - |
-> -      #include <dt-bindings/interrupt-controller/arm-gic.h>
-> -      #include <dt-bindings/interrupt-controller/irq.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/interrupt-controller/irq.h>
->   
-> -      #include <dt-bindings/clock/sun50i-h6-ccu.h>
-> -      #include <dt-bindings/reset/sun50i-h6-ccu.h>
-> +    #include <dt-bindings/clock/sun50i-h6-ccu.h>
-> +    #include <dt-bindings/reset/sun50i-h6-ccu.h>
->   
-> -      iommu: iommu@30f0000 {
-> -          compatible = "allwinner,sun50i-h6-iommu";
-> -          reg = <0x030f0000 0x10000>;
-> -          interrupts = <GIC_SPI 57 IRQ_TYPE_LEVEL_HIGH>;
-> -          clocks = <&ccu CLK_BUS_IOMMU>;
-> -          resets = <&ccu RST_BUS_IOMMU>;
-> -          #iommu-cells = <1>;
-> -      };
-> +    iommu@30f0000 {
-> +        compatible = "allwinner,sun50i-h6-iommu";
-> +        reg = <0x030f0000 0x10000>;
-> +        interrupts = <GIC_SPI 57 IRQ_TYPE_LEVEL_HIGH>;
-> +        clocks = <&ccu CLK_BUS_IOMMU>;
-> +        resets = <&ccu RST_BUS_IOMMU>;
-> +        #iommu-cells = <1>;
-> +    };
->   
->   ...
-> diff --git a/Documentation/devicetree/bindings/iommu/arm,smmu-v3.yaml b/Documentation/devicetree/bindings/iommu/arm,smmu-v3.yaml
-> index 75fcf4cb52d9..36b31197c908 100644
-> --- a/Documentation/devicetree/bindings/iommu/arm,smmu-v3.yaml
-> +++ b/Documentation/devicetree/bindings/iommu/arm,smmu-v3.yaml
-> @@ -82,14 +82,14 @@ examples:
->       #include <dt-bindings/interrupt-controller/irq.h>
->   
->       iommu@2b400000 {
-> -            compatible = "arm,smmu-v3";
-> -            reg = <0x2b400000 0x20000>;
-> -            interrupts = <GIC_SPI 74 IRQ_TYPE_EDGE_RISING>,
-> -                         <GIC_SPI 75 IRQ_TYPE_EDGE_RISING>,
-> -                         <GIC_SPI 77 IRQ_TYPE_EDGE_RISING>,
-> -                         <GIC_SPI 79 IRQ_TYPE_EDGE_RISING>;
-> -            interrupt-names = "eventq", "gerror", "priq", "cmdq-sync";
-> -            dma-coherent;
-> -            #iommu-cells = <1>;
-> -            msi-parent = <&its 0xff0000>;
-> +        compatible = "arm,smmu-v3";
-> +        reg = <0x2b400000 0x20000>;
-> +        interrupts = <GIC_SPI 74 IRQ_TYPE_EDGE_RISING>,
-> +                     <GIC_SPI 75 IRQ_TYPE_EDGE_RISING>,
-> +                     <GIC_SPI 77 IRQ_TYPE_EDGE_RISING>,
-> +                     <GIC_SPI 79 IRQ_TYPE_EDGE_RISING>;
-> +        interrupt-names = "eventq", "gerror", "priq", "cmdq-sync";
-> +        dma-coherent;
-> +        #iommu-cells = <1>;
-> +        msi-parent = <&its 0xff0000>;
->       };
-> diff --git a/Documentation/devicetree/bindings/iommu/arm,smmu.yaml b/Documentation/devicetree/bindings/iommu/arm,smmu.yaml
-> index 7b9d5507d6cc..5b56e4f9d106 100644
-> --- a/Documentation/devicetree/bindings/iommu/arm,smmu.yaml
-> +++ b/Documentation/devicetree/bindings/iommu/arm,smmu.yaml
-> @@ -621,73 +621,71 @@ examples:
->     - |+
->       /* SMMU with stream matching or stream indexing */
->       smmu1: iommu@ba5e0000 {
-> -            compatible = "arm,smmu-v1";
-> -            reg = <0xba5e0000 0x10000>;
-> -            #global-interrupts = <2>;
-> -            interrupts = <0 32 4>,
-> -                         <0 33 4>,
-> -                         <0 34 4>, /* This is the first context interrupt */
-> -                         <0 35 4>,
-> -                         <0 36 4>,
-> -                         <0 37 4>;
-> -            #iommu-cells = <1>;
-> +        compatible = "arm,smmu-v1";
-> +        reg = <0xba5e0000 0x10000>;
-> +        #global-interrupts = <2>;
-> +        interrupts = <0 32 4>,
-> +                     <0 33 4>,
-> +                     <0 34 4>, /* This is the first context interrupt */
-> +                     <0 35 4>,
-> +                     <0 36 4>,
-> +                     <0 37 4>;
-> +        #iommu-cells = <1>;
->       };
->   
->       /* device with two stream IDs, 0 and 7 */
->       master1 {
-> -            iommus = <&smmu1 0>,
-> -                     <&smmu1 7>;
-> +        iommus = <&smmu1 0>,
-> +                 <&smmu1 7>;
->       };
->   
->   
->       /* SMMU with stream matching */
->       smmu2: iommu@ba5f0000 {
-> -            compatible = "arm,smmu-v1";
-> -            reg = <0xba5f0000 0x10000>;
-> -            #global-interrupts = <2>;
-> -            interrupts = <0 38 4>,
-> -                         <0 39 4>,
-> -                         <0 40 4>, /* This is the first context interrupt */
-> -                         <0 41 4>,
-> -                         <0 42 4>,
-> -                         <0 43 4>;
-> -            #iommu-cells = <2>;
-> +        compatible = "arm,smmu-v1";
-> +        reg = <0xba5f0000 0x10000>;
-> +        #global-interrupts = <2>;
-> +        interrupts = <0 38 4>,
-> +                     <0 39 4>,
-> +                     <0 40 4>, /* This is the first context interrupt */
-> +                     <0 41 4>,
-> +                     <0 42 4>,
-> +                     <0 43 4>;
-> +        #iommu-cells = <2>;
->       };
->   
->       /* device with stream IDs 0 and 7 */
->       master2 {
-> -            iommus = <&smmu2 0 0>,
-> -                     <&smmu2 7 0>;
-> +        iommus = <&smmu2 0 0>,
-> +                 <&smmu2 7 0>;
->       };
->   
->       /* device with stream IDs 1, 17, 33 and 49 */
->       master3 {
-> -            iommus = <&smmu2 1 0x30>;
-> +        iommus = <&smmu2 1 0x30>;
->       };
->   
->   
->       /* ARM MMU-500 with 10-bit stream ID input configuration */
->       smmu3: iommu@ba600000 {
-> -            compatible = "arm,mmu-500", "arm,smmu-v2";
-> -            reg = <0xba600000 0x10000>;
-> -            #global-interrupts = <2>;
-> -            interrupts = <0 44 4>,
-> -                         <0 45 4>,
-> -                         <0 46 4>, /* This is the first context interrupt */
-> -                         <0 47 4>,
-> -                         <0 48 4>,
-> -                         <0 49 4>;
-> -            #iommu-cells = <1>;
-> -            /* always ignore appended 5-bit TBU number */
-> -            stream-match-mask = <0x7c00>;
-> +        compatible = "arm,mmu-500", "arm,smmu-v2";
-> +        reg = <0xba600000 0x10000>;
-> +        #global-interrupts = <2>;
-> +        interrupts = <0 44 4>,
-> +                     <0 45 4>,
-> +                     <0 46 4>, /* This is the first context interrupt */
-> +                     <0 47 4>,
-> +                     <0 48 4>,
-> +                     <0 49 4>;
+Adds support for the MMC2 interface on the MT8365 EVK board.
+It introduces a fixed regulator for the MMC2 VDD33 supply and configures
+the MMC2 node with a 4-bit bus width, high-speed capabilities, UHS
+modes, and appropriate power supplies. Enabled SDIO IRQ, wakeup source,
+and kept power during suspend (to save firmware module) for wireless
+chip functionality.
 
-If you want to squash another change,
+Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+---
+Changes in v2:
+- Apply alphabetical order to pinctrl property items.
+- Improve commit message
+- Link to v1: https://lore.kernel.org/r/20250109-mmc2-support-v1-1-9b9d1b1ae35d@baylibre.com
+---
+ arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 103 +++++++++++++++++++++++++---
+ 1 file changed, 94 insertions(+), 9 deletions(-)
 
-0 xx 4
-to
-GIC_SPI xx IRQ_TYPE_LEVEL_HIGH
+diff --git a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+index 7d90112a7e274..a87f1b3ed6500 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
+@@ -53,6 +53,15 @@ memory@40000000 {
+ 		reg = <0 0x40000000 0 0xc0000000>;
+ 	};
+ 
++	mmc2_vdd33: mmc2_vdd33-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "mmc2_vdd33";
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		gpio = <&pio 121 0>;
++		enable-active-high;
++	};
++
+ 	usb_otg_vbus: regulator-0 {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "otg_vbus";
+@@ -197,6 +206,28 @@ &mmc1 {
+ 	status = "okay";
+ };
+ 
++&mmc2 {
++	assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL>;
++	assigned-clocks = <&topckgen CLK_TOP_MSDC50_2_SEL>;
++	bus-width = <4>;
++	cap-sd-highspeed;
++	cap-sdio-irq;
++	hs400-ds-delay = <0x12012>;
++	keep-power-in-suspend;
++	max-frequency = <200000000>;
++	non-removable;
++	pinctrl-0 = <&mmc2_default_pins>;
++	pinctrl-1 = <&mmc2_uhs_pins>;
++	pinctrl-names = "default", "state_uhs";
++	sd-uhs-sdr104;
++	sd-uhs-sdr25;
++	sd-uhs-sdr50;
++	vmmc-supply = <&mmc2_vdd33>;
++	vqmmc-supply = <&mt6357_vcn18_reg>;
++	wakeup-source;
++	status = "okay";
++};
++
+ &mt6357_pmic {
+ 	interrupts-extended = <&pio 145 IRQ_TYPE_LEVEL_HIGH>;
+ 	interrupt-controller;
+@@ -324,8 +355,8 @@ cmd-dat-pins {
+ 				 <MT8365_PIN_94_MSDC0_DAT6__FUNC_MSDC0_DAT6>,
+ 				 <MT8365_PIN_93_MSDC0_DAT7__FUNC_MSDC0_DAT7>,
+ 				 <MT8365_PIN_98_MSDC0_CMD__FUNC_MSDC0_CMD>;
+-			input-enable;
+ 			bias-pull-up;
++			input-enable;
+ 		};
+ 
+ 		rst-pins {
+@@ -337,8 +368,8 @@ rst-pins {
+ 	mmc0_uhs_pins: mmc0-uhs-pins {
+ 		clk-pins {
+ 			pinmux = <MT8365_PIN_99_MSDC0_CLK__FUNC_MSDC0_CLK>;
+-			drive-strength = <MTK_DRIVE_10mA>;
+ 			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++			drive-strength = <MTK_DRIVE_10mA>;
+ 		};
+ 
+ 		cmd-dat-pins {
+@@ -351,21 +382,21 @@ cmd-dat-pins {
+ 				 <MT8365_PIN_94_MSDC0_DAT6__FUNC_MSDC0_DAT6>,
+ 				 <MT8365_PIN_93_MSDC0_DAT7__FUNC_MSDC0_DAT7>,
+ 				 <MT8365_PIN_98_MSDC0_CMD__FUNC_MSDC0_CMD>;
+-			input-enable;
+-			drive-strength = <MTK_DRIVE_10mA>;
+ 			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++			drive-strength = <MTK_DRIVE_10mA>;
++			input-enable;
+ 		};
+ 
+ 		ds-pins {
+ 			pinmux = <MT8365_PIN_104_MSDC0_DSL__FUNC_MSDC0_DSL>;
+-			drive-strength = <MTK_DRIVE_10mA>;
+ 			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++			drive-strength = <MTK_DRIVE_10mA>;
+ 		};
+ 
+ 		rst-pins {
+ 			pinmux = <MT8365_PIN_97_MSDC0_RSTB__FUNC_MSDC0_RSTB>;
+-			drive-strength = <MTK_DRIVE_10mA>;
+ 			bias-pull-up;
++			drive-strength = <MTK_DRIVE_10mA>;
+ 		};
+ 	};
+ 
+@@ -386,16 +417,16 @@ cmd-dat-pins {
+ 				 <MT8365_PIN_91_MSDC1_DAT2__FUNC_MSDC1_DAT2>,
+ 				 <MT8365_PIN_92_MSDC1_DAT3__FUNC_MSDC1_DAT3>,
+ 				 <MT8365_PIN_87_MSDC1_CMD__FUNC_MSDC1_CMD>;
+-			input-enable;
+ 			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++			input-enable;
+ 		};
+ 	};
+ 
+ 	mmc1_uhs_pins: mmc1-uhs-pins {
+ 		clk-pins {
+ 			pinmux = <MT8365_PIN_88_MSDC1_CLK__FUNC_MSDC1_CLK>;
+-			drive-strength = <8>;
+ 			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++			drive-strength = <8>;
+ 		};
+ 
+ 		cmd-dat-pins {
+@@ -404,9 +435,63 @@ cmd-dat-pins {
+ 				 <MT8365_PIN_91_MSDC1_DAT2__FUNC_MSDC1_DAT2>,
+ 				 <MT8365_PIN_92_MSDC1_DAT3__FUNC_MSDC1_DAT3>,
+ 				 <MT8365_PIN_87_MSDC1_CMD__FUNC_MSDC1_CMD>;
+-			input-enable;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
+ 			drive-strength = <6>;
++			input-enable;
++		};
++	};
++
++	mmc2_default_pins: mmc2-default-pins {
++		clk-pins {
++			pinmux = <MT8365_PIN_81_MSDC2_CLK__FUNC_MSDC2_CLK>;
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++			drive-strength = <4>;
++		};
++
++		cmd-dat-pins {
++			pinmux = <MT8365_PIN_82_MSDC2_DAT0__FUNC_MSDC2_DAT0>,
++				 <MT8365_PIN_83_MSDC2_DAT1__FUNC_MSDC2_DAT1>,
++				 <MT8365_PIN_84_MSDC2_DAT2__FUNC_MSDC2_DAT2>,
++				 <MT8365_PIN_85_MSDC2_DAT3__FUNC_MSDC2_DAT3>,
++				 <MT8365_PIN_80_MSDC2_CMD__FUNC_MSDC2_CMD>;
+ 			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++			drive-strength = <4>;
++			input-enable;
++		};
++
++		sys-en-pins {
++			pinmux = <MT8365_PIN_120_DMIC1_CLK__FUNC_GPIO120>;
++			output-low;
++		};
++	};
++
++	mmc2_uhs_pins: mmc2-uhs-pins {
++		clk-pins {
++			pinmux = <MT8365_PIN_81_MSDC2_CLK__FUNC_MSDC2_CLK>;
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++			drive-strength = <8>;
++		};
++
++		cmd-dat-pins {
++			pinmux = <MT8365_PIN_82_MSDC2_DAT0__FUNC_MSDC2_DAT0>,
++				 <MT8365_PIN_83_MSDC2_DAT1__FUNC_MSDC2_DAT1>,
++				 <MT8365_PIN_84_MSDC2_DAT2__FUNC_MSDC2_DAT2>,
++				 <MT8365_PIN_85_MSDC2_DAT3__FUNC_MSDC2_DAT3>,
++				 <MT8365_PIN_80_MSDC2_CMD__FUNC_MSDC2_CMD>;
++			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
++			drive-strength = <8>;
++			input-enable;
++		};
++
++		ds-pins {
++			pinmux = <MT8365_PIN_86_MSDC2_DSL__FUNC_MSDC2_DSL>;
++			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
++			drive-strength = <8>;
++		};
++
++		sys-en-pins {
++			pinmux = <MT8365_PIN_120_DMIC1_CLK__FUNC_GPIO120>;
++			output-high;
+ 		};
+ 	};
+ 
 
-anyway, with or without:
+---
+base-commit: 9d89551994a430b50c4fffcb1e617a057fa76e20
+change-id: 20250109-mmc2-support-96b3ea516186
 
-Reviewed-by: David Heidelberg <david@ixit.cz>
-
-> +        #iommu-cells = <1>;
-> +        /* always ignore appended 5-bit TBU number */
-> +        stream-match-mask = <0x7c00>;
->       };
->   
->       bus {
-> -            /* bus whose child devices emit one unique 10-bit stream
-> -               ID each, but may master through multiple SMMU TBUs */
-> -            iommu-map = <0 &smmu3 0 0x400>;
-> -
-> -
-> +        /* bus whose child devices emit one unique 10-bit stream
-> +           ID each, but may master through multiple SMMU TBUs */
-> +        iommu-map = <0 &smmu3 0 0x400>;
->       };
->   
->     - |+
-> @@ -695,17 +693,17 @@ examples:
->       #include <dt-bindings/interrupt-controller/arm-gic.h>
->       #include <dt-bindings/interrupt-controller/irq.h>
->       smmu4: iommu@d00000 {
-> -      compatible = "qcom,msm8996-smmu-v2", "qcom,smmu-v2";
-> -      reg = <0xd00000 0x10000>;
-> +        compatible = "qcom,msm8996-smmu-v2", "qcom,smmu-v2";
-> +        reg = <0xd00000 0x10000>;
->   
-> -      #global-interrupts = <1>;
-> -      interrupts = <GIC_SPI 73 IRQ_TYPE_LEVEL_HIGH>,
-> -             <GIC_SPI 320 IRQ_TYPE_LEVEL_HIGH>,
-> -             <GIC_SPI 321 IRQ_TYPE_LEVEL_HIGH>;
-> -      #iommu-cells = <1>;
-> -      power-domains = <&mmcc 0>;
-> +        #global-interrupts = <1>;
-> +        interrupts = <GIC_SPI 73 IRQ_TYPE_LEVEL_HIGH>,
-> +                     <GIC_SPI 320 IRQ_TYPE_LEVEL_HIGH>,
-> +                     <GIC_SPI 321 IRQ_TYPE_LEVEL_HIGH>;
-> +        #iommu-cells = <1>;
-> +        power-domains = <&mmcc 0>;
->   
-> -      clocks = <&mmcc 123>,
-> -        <&mmcc 124>;
-> -      clock-names = "bus", "iface";
-> +        clocks = <&mmcc 123>,
-> +                 <&mmcc 124>;
-> +        clock-names = "bus", "iface";
->       };
-> diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-> index ea6b0f5f24de..1eac27893b03 100644
-> --- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-> +++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-> @@ -218,13 +218,13 @@ examples:
->       #include <dt-bindings/interrupt-controller/arm-gic.h>
->   
->       iommu: iommu@10205000 {
-> -            compatible = "mediatek,mt8173-m4u";
-> -            reg = <0x10205000 0x1000>;
-> -            interrupts = <GIC_SPI 139 IRQ_TYPE_LEVEL_LOW>;
-> -            clocks = <&infracfg CLK_INFRA_M4U>;
-> -            clock-names = "bclk";
-> -            mediatek,infracfg = <&infracfg>;
-> -            mediatek,larbs = <&larb0>, <&larb1>, <&larb2>,
-> -                             <&larb3>, <&larb4>, <&larb5>;
-> -            #iommu-cells = <1>;
-> +        compatible = "mediatek,mt8173-m4u";
-> +        reg = <0x10205000 0x1000>;
-> +        interrupts = <GIC_SPI 139 IRQ_TYPE_LEVEL_LOW>;
-> +        clocks = <&infracfg CLK_INFRA_M4U>;
-> +        clock-names = "bclk";
-> +        mediatek,infracfg = <&infracfg>;
-> +        mediatek,larbs = <&larb0>, <&larb1>, <&larb2>,
-> +                         <&larb3>, <&larb4>, <&larb5>;
-> +        #iommu-cells = <1>;
->       };
-> diff --git a/Documentation/devicetree/bindings/iommu/qcom,apq8064-iommu.yaml b/Documentation/devicetree/bindings/iommu/qcom,apq8064-iommu.yaml
-> index 9f83f851e61a..aaecad32dc9d 100644
-> --- a/Documentation/devicetree/bindings/iommu/qcom,apq8064-iommu.yaml
-> +++ b/Documentation/devicetree/bindings/iommu/qcom,apq8064-iommu.yaml
-> @@ -65,14 +65,14 @@ examples:
->       #include <dt-bindings/interrupt-controller/arm-gic.h>
->   
->       iommu@7500000 {
-> -            compatible = "qcom,apq8064-iommu";
-> -            reg = <0x07500000 0x100000>;
-> -            interrupts = <GIC_SPI 63 IRQ_TYPE_LEVEL_HIGH>,
-> -                         <GIC_SPI 64 IRQ_TYPE_LEVEL_HIGH>;
-> -            clocks = <&clk SMMU_AHB_CLK>,
-> -                     <&clk MDP_AXI_CLK>;
-> -            clock-names = "smmu_pclk",
-> -                          "iommu_clk";
-> -            #iommu-cells = <1>;
-> -            qcom,ncb = <2>;
-> +        compatible = "qcom,apq8064-iommu";
-> +        reg = <0x07500000 0x100000>;
-> +        interrupts = <GIC_SPI 63 IRQ_TYPE_LEVEL_HIGH>,
-> +                     <GIC_SPI 64 IRQ_TYPE_LEVEL_HIGH>;
-> +        clocks = <&clk SMMU_AHB_CLK>,
-> +                 <&clk MDP_AXI_CLK>;
-> +        clock-names = "smmu_pclk",
-> +                      "iommu_clk";
-> +        #iommu-cells = <1>;
-> +        qcom,ncb = <2>;
->       };
-
+Best regards,
 -- 
-David Heidelberg
+Alexandre Mergnat <amergnat@baylibre.com>
 
 
