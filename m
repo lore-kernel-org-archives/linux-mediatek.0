@@ -4,63 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0363AC36002
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Mar 2025 17:18:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B06AAC36008
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Mar 2025 18:44:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6UnkXScqouGuY1tYyYimFzbHtZCsWpZM7xk78yBqXKs=; b=qEbDEFPalgpr9d
-	5yXhUYWt2IWM2LPKwef+riKY9QDfP4Td1mgFq/qrtooUGpmj2MPGk1454cO9susjFp5Fl3d0n6bd8
-	bZ5zADw7Dma9SLqnMVAmCTHJToQ664tdwNUQESTkm/L1XnEb1xVyDcdhz+gB1c9uoXZK/9DRXMnJz
-	HXd7tN36pgMznUzabPZ75cN+/a02GE2NnUbyOvcUJPcqRboBbBGy4jczOLkdCAU4Sq357jRwOV3+9
-	vhbcymbUNLKHhIpPdg+rpwjOpXL+w2T3Qg3enQWvberah2BER6KOkPI0INtFRQ1wnS5qyfzFM0dm2
-	dr/uSwHn97Zw9L+4CmAw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3i45atEj/Em1zgDsdIfHqKPyZD2/NFVdU7m9egEFrkg=; b=So+LBXO4s+8OUi/rd9yjVFUqHs
+	19FaERCIsghI7oWPtLRfpisHE1RvjpIBQgF1/eWCrLsB/tAxp6thW44aYbZUwQ39TH6cm5PLOmn3D
+	sF/KHW/qF2xtasrR26Gs/57fuxn4tPXyauR53p9iTKVGJ3AawyqasFqDLFb8PyGjcsgPnf/pciRAB
+	43fcsmU0Slz8znS6HkHTVRD9GE5UkV12zoj0wtwZtHDbsmjOpUqOz25fkcPxiurdif8ap9xe5HylT
+	VZ12jghmNhg2Nr1GIIkfQciEpVDbed9Z/myHWYEO6jSWebzUwCZ05ps50J+MsM3c7czGqpIt1YDoj
+	BzKZULPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1twlRV-00000003m0S-3CGG;
-	Mon, 24 Mar 2025 17:18:29 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1twmmm-00000003yPP-3Z2K;
+	Mon, 24 Mar 2025 18:44:32 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1twlMB-00000003lP3-3pgd;
-	Mon, 24 Mar 2025 17:13:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1742836378;
-	bh=eSGtumyc/yfmz3YRryO3Vj1UMYd+r3aptpUmRaBllTg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=JIIEq3VRuU4o553rkNfLANwWMeCrtQHXqjd8xmrWyrzkbCqH3zpQoVKrhCvY6biFW
-	 KARJsNOuLyJtyi+uGRQoqHFjdtTWb8jq43Hb6FsEaXDVJbOH3Tv1pXQsftOXvD6j+a
-	 BgyoZAhV+TiLB+SBbX+/wCjHcxptNDhR6+bhRKHxlA/t/UqqjsupOQ9B8eNxu/EDvN
-	 Zngza1OqqTgfWVT4qaWCCU5/Gmi6YXUlbyKz9K0T/iE0Ze52a2iQ+Yukn4rDKaRcTV
-	 7dwnfEjo3OBCdj6YH2/OOAVlU7q13unn+FutOvMKh7mCNLOs2qO/Zw7iqMFAR49eQj
-	 vqP2ae8c/E22w==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D10E417E0385;
-	Mon, 24 Mar 2025 18:12:56 +0100 (CET)
-Message-ID: <754df305-9767-47be-8f98-4e287c56808e@collabora.com>
-Date: Mon, 24 Mar 2025 18:12:56 +0100
+	id 1twmmk-00000003yOe-2Nl1;
+	Mon, 24 Mar 2025 18:44:31 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1742841851; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=jV18Lr3WTYIwr0VI2NcmhfG0ucWBw3XpA4ZLsKhvb5kvwFLQXK20hR6HZNmlLmjDlQT7cI1bkqRhOLrjpslLrBFI6AJ58Q/5IcbEB8AmzdXVEA4Dq13mvbGJMKeqiyZ8mjF5hcsUueSPwRv6tqwRsEtxUe0H9Esn8cdUi+o/IIQ=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1742841851; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=3i45atEj/Em1zgDsdIfHqKPyZD2/NFVdU7m9egEFrkg=; 
+	b=cDn1geDA7XOV87TV37z9IW2J87l1HmdTS78uig6xXK/sM5sK1IXGQNWmLRz3bvKtotjKfKQnWNTu+1cvRwEJKE8R7AH4QsOXA9pDXO2E2YgD/OdX6Qe52bwVB6uaIDmLhu/+Eej4s0Z4xdCSb1Eb0DXkFCWyfonJ7RzTWAPBITA=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=ariel.dalessandro@collabora.com;
+	dmarc=pass header.from=<ariel.dalessandro@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1742841851;
+	s=zohomail; d=collabora.com; i=ariel.dalessandro@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=3i45atEj/Em1zgDsdIfHqKPyZD2/NFVdU7m9egEFrkg=;
+	b=CYhCmkbnpAtqmznlseu04bydQY+U12ExisubT8wS/U7AiTY1OXhIXVdf/nic22dS
+	jCGNhkINUOfj6Xpr9MEqXYLqAb1yOggK9z+xMauUpXP0WRy+Ae6uBY7zTkSQFPLS36q
+	istxulDhzmrK4P/W/AVPcv18FjZtDX6xCsEaaa7Y=
+Received: by mx.zohomail.com with SMTPS id 1742841849727969.7923025073931;
+	Mon, 24 Mar 2025 11:44:09 -0700 (PDT)
+Message-ID: <69da05c4-7471-47aa-a72d-b08d9b97e8dc@collabora.com>
+Date: Mon, 24 Mar 2025 15:44:03 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 07/15] soc: mediatek: mutex: refactor SOF settings for
- output components
-To: "paul-pl.chen" <paul-pl.chen@mediatek.com>, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, chunkuang.hu@kernel.org
-References: <20250321093435.94835-1-paul-pl.chen@mediatek.com>
- <20250321093435.94835-8-paul-pl.chen@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v4 4/6] drm/panfrost: Add support for AARCH64_4K page
+ table format
+To: Adrian Larumbe <adrian.larumbe@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ boris.brezillon@collabora.com, robh@kernel.org, steven.price@arm.com,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
+ airlied@gmail.com, simona@ffwll.ch, kernel@collabora.com,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ sjoerd@collabora.com, angelogioacchino.delregno@collabora.com
+References: <20250317145245.910566-1-ariel.dalessandro@collabora.com>
+ <20250317145245.910566-5-ariel.dalessandro@collabora.com>
+ <5hl2ahnxeunqebenguxjwwie6ura3lxknu766xthov2m4qvsot@imrrfqftlmv4>
 Content-Language: en-US
-In-Reply-To: <20250321093435.94835-8-paul-pl.chen@mediatek.com>
+From: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+In-Reply-To: <5hl2ahnxeunqebenguxjwwie6ura3lxknu766xthov2m4qvsot@imrrfqftlmv4>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250324_101300_106864_4A29D7CF 
-X-CRM114-Status: GOOD (  19.05  )
+X-CRM114-CacheID: sfid-20250324_114430_654963_698D74E6 
+X-CRM114-Status: GOOD (  13.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,220 +82,71 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, xiandong.wang@mediatek.com, jason-jh.lin@mediatek.com, singo.chang@mediatek.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, treapking@chromium.org, nancy.lin@mediatek.com, linux-mediatek@lists.infradead.org, sunny.shen@mediatek.com, p.zabel@pengutronix.de, sirius.wang@mediatek.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 21/03/25 10:33, paul-pl.chen ha scritto:
-> From: Nancy Lin <nancy.lin@mediatek.com>
+Adrian,
+
+On 3/22/25 3:48 PM, Adrian Larumbe wrote:
+> On 17.03.2025 11:52, Ariel D'Alessandro wrote:
+>> Currently, Panfrost only supports MMU configuration in "LEGACY" (as
+>> Bifrost calls it) mode, a (modified) version of LPAE "Large Physical
+>> Address Extension", which in Linux we've called "mali_lpae".
+>>
+>> This commit adds support for conditionally enabling AARCH64_4K page
+>> table format. To achieve that, a "GPU optional quirks" field was added
+>> to `struct panfrost_features` with the related flag.
+>>
+>> Note that, in order to enable AARCH64_4K mode, the GPU variant must have
+>> the HW_FEATURE_AARCH64_MMU feature flag present.
+>>
+>> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+>> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> Reviewed-by: Boris Brezillon <boris.brezillon@collabora.com>
+>> ---
+>>   drivers/gpu/drm/panfrost/panfrost_device.h |  16 +++
+>>   drivers/gpu/drm/panfrost/panfrost_mmu.c    | 140 +++++++++++++++++++--
+>>   drivers/gpu/drm/panfrost/panfrost_regs.h   |  34 +++++
+>>   3 files changed, 183 insertions(+), 7 deletions(-)
+
+[snip]
+
+>> diff --git a/drivers/gpu/drm/panfrost/panfrost_mmu.c b/drivers/gpu/drm/panfrost/panfrost_mmu.c
+>> index 294f86b3c25e7..506f42ccfd5fc 100644
+>> --- a/drivers/gpu/drm/panfrost/panfrost_mmu.c
+>> +++ b/drivers/gpu/drm/panfrost/panfrost_mmu.c
+
+[snip]
+
+>> +static int panfrost_mmu_cfg_init(struct panfrost_mmu *mmu,
+>> +				  enum io_pgtable_fmt fmt)
+>> +{
+>> +	struct panfrost_device *pfdev = mmu->pfdev;
+>> +
+>> +	switch (fmt) {
+>> +	case ARM_64_LPAE_S1:
+>> +		return mmu_cfg_init_aarch64_4k(mmu);
+>> +	case ARM_MALI_LPAE:
+>> +		return mmu_cfg_init_mali_lpae(mmu);
+>> +	default:
+>> +		/* This should never happen */
+>> +		drm_WARN(pfdev->ddev, "Invalid pgtable format");
 > 
-> Refactor SOF settings by adding mtk_mutex_get_output_comp_sof()
-> and extracting SOF logic from mtk_mutex_add_comp()
-> and mtk_mutex_remove_comp().
+> I think there's a '1' missing here before the string literal.
+> Other than that,
 > 
-> - Added mtk_mutex_add_comp_sof() and mtk_mutex_remove_comp_sof()
->    for SOF settings.
-> - Reused the switch case for SOF IDs.
-> - Separated MOD and SOF logic.
-> 
+> Reviewed-by: Adrián Larumbe <adrian.larumbe@collabora.com>
 
-This also needs more than one commit.
+Fixed, thanks!
 
-The cleanups go in a commit doing only cleanups.
+Will send v5 right away.
 
-> Signed-off-by: Nancy Lin <nancy.lin@mediatek.com>
-> Signed-off-by: Paul-pl Chen <paul-pl.chen@mediatek.com>
-> ---
->   drivers/soc/mediatek/mtk-mutex.c       | 121 +++++++++++++++----------
->   include/linux/soc/mediatek/mtk-mutex.h |   4 +
->   2 files changed, 79 insertions(+), 46 deletions(-)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
-> index aaa965d4b050..c026ac0e6969 100644
-> --- a/drivers/soc/mediatek/mtk-mutex.c
-> +++ b/drivers/soc/mediatek/mtk-mutex.c
-> @@ -853,43 +853,84 @@ void mtk_mutex_unprepare(struct mtk_mutex *mutex)
->   }
->   EXPORT_SYMBOL_GPL(mtk_mutex_unprepare);
->   
-> -void mtk_mutex_add_comp(struct mtk_mutex *mutex,
-> -			enum mtk_ddp_comp_id id)
-> +static int mtk_mutex_get_output_comp_sof(enum mtk_ddp_comp_id id)
->   {
-> -	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
-> -						 mutex[mutex->id]);
-> -	unsigned int reg;
-> -	unsigned int sof_id;
-> -	unsigned int offset;
-> -
-> -	WARN_ON(&mtx->mutex[mutex->id] != mutex);
-> -
->   	switch (id) {
->   	case DDP_COMPONENT_DSI0:
-> -		sof_id = MUTEX_SOF_DSI0;
-> -		break;
-> +		return MUTEX_SOF_DSI0;
->   	case DDP_COMPONENT_DSI1:
-> -		sof_id = MUTEX_SOF_DSI0;
-> -		break;
-> +		return MUTEX_SOF_DSI1;
->   	case DDP_COMPONENT_DSI2:
-> -		sof_id = MUTEX_SOF_DSI2;
-> -		break;
-> +		return MUTEX_SOF_DSI2;
->   	case DDP_COMPONENT_DSI3:
-> -		sof_id = MUTEX_SOF_DSI3;
-> -		break;
-> +		return MUTEX_SOF_DSI3;
->   	case DDP_COMPONENT_DPI0:
-> -		sof_id = MUTEX_SOF_DPI0;
-> -		break;
-> +		return MUTEX_SOF_DPI0;
->   	case DDP_COMPONENT_DPI1:
-> -		sof_id = MUTEX_SOF_DPI1;
-> -		break;
-> +		return MUTEX_SOF_DPI1;
->   	case DDP_COMPONENT_DP_INTF0:
-> -		sof_id = MUTEX_SOF_DP_INTF0;
-> -		break;
-> +		return MUTEX_SOF_DP_INTF0;
->   	case DDP_COMPONENT_DP_INTF1:
-> -		sof_id = MUTEX_SOF_DP_INTF1;
-> -		break;
-> +		return MUTEX_SOF_DP_INTF1;
->   	default:
-> +		break;
-> +	}
-> +
-> +	return -EINVAL;
-> +}
-> +
-> +void mtk_mutex_add_comp_sof(struct mtk_mutex *mutex, enum mtk_ddp_comp_id id)
-> +{
-> +	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
-> +						 mutex[mutex->id]);
-> +	int sof_id = mtk_mutex_get_output_comp_sof(id);
-> +	unsigned int offset;
-> +
-> +	if (sof_id < 0 || sof_id >= DDP_MUTEX_SOF_MAX)
-> +		return;
-> +
-> +	WARN_ON(&mtx->mutex[mutex->id] != mutex);
-> +
-> +	offset = DISP_REG_MUTEX_SOF(mtx->data->mutex_sof_reg, mutex->id);
-> +
-> +	writel_relaxed(mtx->data->mutex_sof[sof_id],
-> +		       mtx->regs + offset);
+-- 
+Ariel D'Alessandro
+Software Engineer
 
-fits in one line
-
-> +}
-> +EXPORT_SYMBOL_GPL(mtk_mutex_add_comp_sof);
-> +
-> +void mtk_mutex_remove_comp_sof(struct mtk_mutex *mutex, enum mtk_ddp_comp_id id)
-> +{
-> +	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
-> +						 mutex[mutex->id]);
-> +	unsigned int reg;
-> +	int sof_id = mtk_mutex_get_output_comp_sof(id);
-> +	unsigned int offset;
-> +
-> +	if (sof_id < 0 || sof_id >= DDP_MUTEX_SOF_MAX)
-> +		return;
-> +
-> +	WARN_ON(&mtx->mutex[mutex->id] != mutex);
-> +
-> +	offset = DISP_REG_MUTEX_SOF(mtx->data->mutex_sof_reg, mutex->id);
-> +	reg = readl_relaxed(mtx->regs + offset);
-> +	reg &= ~(1 << mtx->data->mutex_sof[id]);
-> +
-> +	writel_relaxed(reg, mtx->regs + offset);
-> +}
-> +EXPORT_SYMBOL_GPL(mtk_mutex_remove_comp_sof);
-> +
-> +void mtk_mutex_add_comp(struct mtk_mutex *mutex,
-> +			enum mtk_ddp_comp_id id)
-> +{
-> +	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
-> +						 mutex[mutex->id]);
-> +	unsigned int reg;
-> +	unsigned int offset;
-> +	bool is_output_comp = !!mtk_mutex_get_output_comp_sof(id);
-> +
-> +	WARN_ON(&mtx->mutex[mutex->id] != mutex);
-> +
-
-Looks like you can just do
-
-	if (is_output_comp) {
-		mtk_mutex_add_comp_sof(mutex, id);
-		return;
-	}
-
-	if (mtx->data->mutex_mod[id] < 32) { .....etc
-
-> +	if (!is_output_comp) {
->   		if (mtx->data->mutex_mod[id] < 32) {
->   			offset = DISP_REG_MUTEX_MOD(mtx->data->mutex_mod_reg,
->   						    mutex->id);
-> @@ -902,12 +943,10 @@ void mtk_mutex_add_comp(struct mtk_mutex *mutex,
->   			reg |= 1 << (mtx->data->mutex_mod[id] - 32);
->   			writel_relaxed(reg, mtx->regs + offset);
->   		}
-> -		return;
->   	}
->   
-> -	writel_relaxed(mtx->data->mutex_sof[sof_id],
-> -		       mtx->regs +
-> -		       DISP_REG_MUTEX_SOF(mtx->data->mutex_sof_reg, mutex->id));
-> +	if (is_output_comp)
-> +		mtk_mutex_add_comp_sof(mutex, id);
->   }
->   EXPORT_SYMBOL_GPL(mtk_mutex_add_comp);
->   
-> @@ -918,24 +957,11 @@ void mtk_mutex_remove_comp(struct mtk_mutex *mutex,
->   						 mutex[mutex->id]);
->   	unsigned int reg;
->   	unsigned int offset;
-> +	bool is_output_comp = !!mtk_mutex_get_output_comp_sof(id);
->   
->   	WARN_ON(&mtx->mutex[mutex->id] != mutex);
->   
-> -	switch (id) {
-> -	case DDP_COMPONENT_DSI0:
-> -	case DDP_COMPONENT_DSI1:
-> -	case DDP_COMPONENT_DSI2:
-> -	case DDP_COMPONENT_DSI3:
-> -	case DDP_COMPONENT_DPI0:
-> -	case DDP_COMPONENT_DPI1:
-> -	case DDP_COMPONENT_DP_INTF0:
-> -	case DDP_COMPONENT_DP_INTF1:
-> -		writel_relaxed(MUTEX_SOF_SINGLE_MODE,
-> -			       mtx->regs +
-> -			       DISP_REG_MUTEX_SOF(mtx->data->mutex_sof_reg,
-> -						  mutex->id));
-> -		break;
-> -	default:
-> +	if (!is_output_comp) {
-
-same comment as before.
-
->   		if (mtx->data->mutex_mod[id] < 32) {
->   			offset = DISP_REG_MUTEX_MOD(mtx->data->mutex_mod_reg,
->   						    mutex->id);
-> @@ -948,8 +974,11 @@ void mtk_mutex_remove_comp(struct mtk_mutex *mutex,
->   			reg &= ~(1 << (mtx->data->mutex_mod[id] - 32));
->   			writel_relaxed(reg, mtx->regs + offset);
->   		}
-> -		break;
->   	}
-> +
-> +	if (is_output_comp)
-> +		mtk_mutex_remove_comp_sof(mutex, id);
-> +
-
-Regards,
-Angelo
-
+Collabora Ltd.
+Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK 
+Registered in England & Wales, no. 5513718
 
 
