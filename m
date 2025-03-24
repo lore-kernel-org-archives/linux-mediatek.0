@@ -4,72 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32D78C36002
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Mar 2025 16:15:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C21F9C36002
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Mar 2025 17:16:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ud2D32OpYFAxLXnumGhiF5g0NIsy+W+RnWVIQCIbFzQ=; b=Kw/5bwzQFhf5+uDea8ZtTb31SB
-	UgGmUN9Kv8j4yiZqnZwtEQpxH4a/7FwzIfWZZxqryT7qsuM3FgYh7HPFooAzVGVa2f+imymujDaZz
-	vquXEz3uPBc0OcwroWRMR2OxDWJ3MBr+NqEUcqTHlJgZBZufZxLD+42Nc9ESwVXDAALuXiCb4IYP2
-	y3qgb/XQSmqnz/bVCcOCfDDzolDw8mC+mcfCoJwMgLPoz6HD3go1Mhzvzo5z55pEq4BRf9vGtC9em
-	Yrs6Fe5h0gml1o9K0xDtESiPr/nj2KjlvPFVh7nAa/n3ghbx+tqnWI5qDUv0JXEZrTn9yj+M+VCaz
-	zsmlAELA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=EuR4aKvxuRyKXZs6RIgK2lyca63MOhkPXIKR+BhI87U=; b=2Rk9nkysTVppon
+	myTIAFHJ5Di+hkchISmtzHHlflboSlK+P9ZoWNHur4AVHPnXvs4MJ1DnDPnag4/26ZjuNL/HKDxCb
+	Lw0DaVc1DUpJ8CaMKrHaNiJo46nfCxYEQKCTIzfjueP23B7dcyM4LI6Zvnyb1Y7kHoDxJBVEJ/jjA
+	Gj30yCWbMY9gzxVBERtPRijwbaYKydioH3MxJ18G9xZSqOXXaJLfUlaDsx1fY74GH4c+MbrKJSJF3
+	8Fioz4peecIDZ0q51JCblhbL+XeHgXJVE0IB/OIG3aZ31i1c6ysMA0nVmwjX1yXBmzZS8mZhDGYjG
+	CiyP/4wKhDpIlnVG9V9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1twkSl-00000003bgs-1ehO;
-	Mon, 24 Mar 2025 16:15:43 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1twlPo-00000003ltH-3Ojl;
+	Mon, 24 Mar 2025 17:16:44 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1twkO0-00000003b2f-2CWX;
-	Mon, 24 Mar 2025 16:10:49 +0000
+	id 1twlIy-00000003kzO-0kau;
+	Mon, 24 Mar 2025 17:09:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1742832646;
-	bh=Yt3UrsjkedkYE/1CYuEeJN8oJ93eMzK1Z86WS4MGAaw=;
+	s=mail; t=1742836178;
+	bh=llRTuDYSeRoGI5yKkUqID7lKQVZnXzBT4+Yfc0wBsYQ=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=T51an9kgoMO6xmet3WCYCP90WzglJReKQMheqUVoZqg8TNXEMJ2jFJpSmTIYXpkM2
-	 X2jhcU2liEBJg/VIBV09cNURdA7RtvOd28g0J4cO99sPAddfQRyRVbtXMLte07EROQ
-	 bb1LFjHLuTiEuGPgaHdKcim+NIgVvDoPPzrvaZBBRHpA+IHBHLQsleOfpX4F1Y5q6d
-	 rRJqK3440KK9fKG0z3t6a6INUKR+QxdrNpXz01Y58uDNBntrXuQT+WVvq0jIDXK3kl
-	 YPy0NVBF+Nu65/E9awClszeYx2QF5s41CDOU0tbxwctRBvapbTAscchGorGM4dwWPp
-	 Ex5BDM3J6GGzQ==
+	b=bYl2Vu0xJsHh80Ct0yPOFVt/YyQGHzZRH+PuZLFZ7KaBZ6waWR+IRkqp/AM8W/KJJ
+	 kQw07HXXKdT3CIbqHHfOjJjVFb2/2yRRCMr609E69nMQXykWntjlrK3xPysxf9uur5
+	 5MUvHa4xU2jHLljp4c56gZJfZrEImwCbpG95qGeqG4CSOgWyMGO5D+InfH/aApiJon
+	 /XPJirvqAghAH+wO+P210g7xvMg1Hhs03HOhxwRPQcRZNSMwDk5rxfHVnaR79LshM/
+	 d23Nc9YEJqcceZqmfeyWK1WQR6TfNDEPFnZTGIClALe2LouGsaEreYEwmb9YYKKbkI
+	 4AU4wclZIbKgQ==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id DB64417E0A62;
-	Mon, 24 Mar 2025 17:10:44 +0100 (CET)
-Message-ID: <334d0492-1707-4299-99c0-feacb5954de1@collabora.com>
-Date: Mon, 24 Mar 2025 17:10:42 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A08AD17E0A62;
+	Mon, 24 Mar 2025 18:09:37 +0100 (CET)
+Message-ID: <67337197-abec-450c-b400-ae37a0cd0692@collabora.com>
+Date: Mon, 24 Mar 2025 18:09:37 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 2/3] arm64: dts: mediatek: mt8196: Add pinmux macro
- header file
-To: Cathy Xu <ot_cathy.xu@mediatek.com>,
- Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Sean Wang <sean.wang@kernel.org>
-Cc: Lei Xue <lei.xue@mediatek.com>, linux-gpio@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- yong.mao@mediatek.com, Axe.Yang@mediatek.com, Jimin.Wang@mediatek.com,
- Wenbin.Mei@mediatek.com, Guodong Liu <guodong.liu@mediatek.com>
-References: <20250321084142.18563-1-ot_cathy.xu@mediatek.com>
- <20250321084142.18563-3-ot_cathy.xu@mediatek.com>
+Subject: Re: [PATCH v2 06/15] soc: mediatek: add mmsys support for MT8196
+To: "paul-pl.chen" <paul-pl.chen@mediatek.com>, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, chunkuang.hu@kernel.org
+References: <20250321093435.94835-1-paul-pl.chen@mediatek.com>
+ <20250321093435.94835-7-paul-pl.chen@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250321084142.18563-3-ot_cathy.xu@mediatek.com>
+In-Reply-To: <20250321093435.94835-7-paul-pl.chen@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250324_091048_711150_2D1BE82A 
-X-CRM114-Status: UNSURE (   5.72  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250324_100940_533818_63AF2426 
+X-CRM114-Status: GOOD (  33.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,16 +71,338 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, xiandong.wang@mediatek.com, jason-jh.lin@mediatek.com, singo.chang@mediatek.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, treapking@chromium.org, nancy.lin@mediatek.com, linux-mediatek@lists.infradead.org, sunny.shen@mediatek.com, p.zabel@pengutronix.de, sirius.wang@mediatek.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 21/03/25 09:39, Cathy Xu ha scritto:
-> Add the pinctrl header file on MediaTek mt8196.
+Il 21/03/25 10:33, paul-pl.chen ha scritto:
+> From: Nancy Lin <nancy.lin@mediatek.com>
 > 
-> Signed-off-by: Guodong Liu <guodong.liu@mediatek.com>
-> Signed-off-by: Cathy Xu <ot_cathy.xu@mediatek.com>
+> 1. Defining driver data and adding compatible string
+> for different subsystems
+> (DISPSYS0, DISPSYS1, OVLSYS0, OVLSYS1, VDISP_AO)
+> 2. Adding functions to control top clocks and ddp clocks.
+> 3. Updating the probe function to initialize clocks and
+> enable runtime PM if its node has the power-domains property.
+> 4. Adding functions to configure ddp components and
+> set default configurations.
+> 5. Adding the routing table for each mmsys in MT8196.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+You need at least two commits for all that you're doing here... and adding MT8196
+tables should be the last one.
+
+> 
+> Signed-off-by: Nancy Lin <nancy.lin@mediatek.com>
+> Signed-off-by: Paul-pl Chen <paul-pl.chen@mediatek.com>
+> ---
+>   drivers/soc/mediatek/mt8196-mmsys.h    | 451 +++++++++++++++++++++++++
+>   drivers/soc/mediatek/mtk-mmsys.c       | 203 ++++++++++-
+>   drivers/soc/mediatek/mtk-mmsys.h       |  18 +
+>   include/linux/soc/mediatek/mtk-mmsys.h |  60 ++++
+>   4 files changed, 731 insertions(+), 1 deletion(-)
+>   create mode 100644 drivers/soc/mediatek/mt8196-mmsys.h
+> 
+> diff --git a/drivers/soc/mediatek/mt8196-mmsys.h b/drivers/soc/mediatek/mt8196-mmsys.h
+> new file mode 100644
+> index 000000000000..ff841ae9939a
+> --- /dev/null
+> +++ b/drivers/soc/mediatek/mt8196-mmsys.h
+> @@ -0,0 +1,451 @@
+
+..snip..
+
+> +static const struct mtk_mmsys_default mmsys_mt8196_disp0_default_table[] = {
+> +	{MT8196_OVLSYS_GCE_EVENT_SEL, MT8196_EVENT_GCE_EN, GENMASK(1, 0)},
+> +	{MT8196_DISP0_BYPASS_MUX_SHADOW,
+> +	 MT8196_CB_BYPASS_MUX_SHADOW | MT8196_BYPASS_MUX_SHADOW,
+> +	 MT8196_CB_BYPASS_MUX_SHADOW | MT8196_BYPASS_MUX_SHADOW},
+> +	{MT8196_DISP0_DLI_RELAY0, MT8196_DLI_RELAY_1T2P, GENMASK(31, 30)},
+> +	{MT8196_DISP0_DLI_RELAY1, MT8196_DLI_RELAY_1T2P, GENMASK(31, 30)},
+> +	{MT8196_DISP0_DLI_RELAY8, MT8196_DLI_RELAY_1T2P, GENMASK(31, 30)},
+> +	{MT8196_DISP0_DLO_RELAY1, MT8196_DLI_RELAY_1T2P, GENMASK(31, 30)},
+> +	{MT8196_DISP0_DLO_RELAY2, MT8196_DLI_RELAY_1T2P, GENMASK(31, 30)},
+> +	{MT8196_DISP0_DLO_RELAY3, MT8196_DLI_RELAY_1T2P, GENMASK(31, 30)},
+> +};
+> +
+> +static const struct mtk_mmsys_default mmsys_mt8196_disp1_default_table[] = {
+> +	{MT8196_OVLSYS_GCE_EVENT_SEL, MT8196_EVENT_GCE_EN, GENMASK(1, 0)},
+> +	{MT8196_DISP1_INT_MERGE, 0, BIT(0)},
+> +	{MT8196_DISP1_BYPASS_MUX_SHADOW,
+> +	 MT8196_CB_BYPASS_MUX_SHADOW | MT8196_BYPASS_MUX_SHADOW,
+> +	 MT8196_CB_BYPASS_MUX_SHADOW | MT8196_BYPASS_MUX_SHADOW},
+> +	{MT8196_DISP1_DLI_RELAY21, MT8196_DLI_RELAY_1T2P, GENMASK(31, 30)},
+> +	{MT8196_DISP1_DLI_RELAY22, MT8196_DLI_RELAY_1T2P, GENMASK(31, 30)},
+> +	{MT8196_DISP1_DLI_RELAY23, MT8196_DLI_RELAY_1T2P, GENMASK(31, 30)},
+> +	{MT8196_DISP1_GCE_FRAME_DONE_SEL0, MT8196_FRAME_DONE_DVO, GENMASK(5, 0)},
+> +	{MT8196_DISP1_GCE_FRAME_DONE_SEL1, MT8196_FRAME_DONE_DP_INTF0, GENMASK(5, 0)},
+> +};
+> +
+> +static const struct mtk_mmsys_routes mmsys_mt8196_ovl0_routing_table[] = {
+> +	{
+> +		DDP_COMPONENT_OVL0_EXDMA2, DDP_COMPONENT_OVL0_BLENDER1,
+
+There's a new MMSYS_ROUTE macro that was introduced because tables contained
+wrong values in multiple instances and in multiple SoCs: please use it here and
+for all routing tables.
+
+> +		MT8196_OVL_RSZ_IN_CB2_MOUT_EN, MT8196_DISP_OVL_EXDMA2_1_TO_OVL_EXDMA_OUT_CB3,
+> +		MT8196_DISP_OVL_EXDMA2_1_TO_OVL_EXDMA_OUT_CB3
+
+..snip..
+
+> +};
+> +#endif /* __SOC_MEDIATEK_MT8196_MMSYS_H */
+> diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+> index bb4639ca0b8c..1d3ca4f9f237 100644
+> --- a/drivers/soc/mediatek/mtk-mmsys.c
+> +++ b/drivers/soc/mediatek/mtk-mmsys.c
+> @@ -4,12 +4,14 @@
+>    * Author: James Liao <jamesjj.liao@mediatek.com>
+>    */
+>   
+> +#include <linux/clk.h>
+>   #include <linux/delay.h>
+>   #include <linux/device.h>
+>   #include <linux/io.h>
+>   #include <linux/module.h>
+>   #include <linux/of.h>
+>   #include <linux/platform_device.h>
+> +#include <linux/pm_runtime.h>
+>   #include <linux/reset-controller.h>
+>   #include <linux/soc/mediatek/mtk-mmsys.h>
+>   
+> @@ -21,6 +23,7 @@
+>   #include "mt8188-mmsys.h"
+>   #include "mt8192-mmsys.h"
+>   #include "mt8195-mmsys.h"
+> +#include "mt8196-mmsys.h"
+>   #include "mt8365-mmsys.h"
+>   
+>   #define MMSYS_SW_RESET_PER_REG 32
+> @@ -144,6 +147,54 @@ static const struct mtk_mmsys_driver_data mt8195_vppsys1_driver_data = {
+>   	.is_vppsys = true,
+>   };
+>   
+> +static const struct mtk_mmsys_driver_data mt8196_dispsys0_driver_data = {
+> +	.clk_driver = "clk-mt8196-disp0",
+> +	.routes = mmsys_mt8196_disp0_routing_table,
+> +	.num_routes = ARRAY_SIZE(mmsys_mt8196_disp0_routing_table),
+> +	.async_info = mmsys_mt8196_disp0_async_comp_table,
+> +	.num_async_info = ARRAY_SIZE(mmsys_mt8196_disp0_async_comp_table),
+> +	.def_config = mmsys_mt8196_disp0_default_table,
+> +	.num_def_config = ARRAY_SIZE(mmsys_mt8196_disp0_default_table),
+> +	.num_top_clk = 1,
+> +};
+> +
+> +static const struct mtk_mmsys_driver_data mt8196_dispsys1_driver_data = {
+> +	.clk_driver = "clk-mt8196-disp1",
+> +	.routes = mmsys_mt8196_disp1_routing_table,
+> +	.num_routes = ARRAY_SIZE(mmsys_mt8196_disp1_routing_table),
+> +	.async_info = mmsys_mt8196_disp1_async_comp_table,
+> +	.num_async_info = ARRAY_SIZE(mmsys_mt8196_disp1_async_comp_table),
+> +	.def_config = mmsys_mt8196_disp1_default_table,
+> +	.num_def_config = ARRAY_SIZE(mmsys_mt8196_disp1_default_table),
+> +	.num_top_clk = 1,
+> +};
+> +
+> +static const struct mtk_mmsys_driver_data mt8196_ovlsys0_driver_data = {
+> +	.clk_driver = "clk-mt8196-ovl0",
+> +	.routes = mmsys_mt8196_ovl0_routing_table,
+> +	.num_routes = ARRAY_SIZE(mmsys_mt8196_ovl0_routing_table),
+> +	.async_info = mmsys_mt8196_ovl0_async_comp_table,
+> +	.num_async_info = ARRAY_SIZE(mmsys_mt8196_ovl0_async_comp_table),
+> +	.def_config = mmsys_mt8196_ovl0_default_table,
+> +	.num_def_config = ARRAY_SIZE(mmsys_mt8196_ovl0_default_table),
+> +};
+> +
+> +static const struct mtk_mmsys_driver_data mt8196_ovlsys1_driver_data = {
+> +	.clk_driver = "clk-mt8196-ovl1",
+> +	.routes = mmsys_mt8196_ovl1_routing_table,
+> +	.num_routes = ARRAY_SIZE(mmsys_mt8196_ovl1_routing_table),
+> +	.async_info = mmsys_mt8196_ovl1_async_comp_table,
+> +	.num_async_info = ARRAY_SIZE(mmsys_mt8196_ovl1_async_comp_table),
+> +	.def_config = mmsys_mt8196_ovl0_default_table,
+> +	.num_def_config = ARRAY_SIZE(mmsys_mt8196_ovl0_default_table),
+> +};
+> +
+> +static const struct mtk_mmsys_driver_data mt8196_vdisp_ao_driver_data = {
+> +	.clk_driver = "clk-mt8196-vdisp_ao",
+> +	.def_config = mmsys_mt8196_vdisp_ao_default_table,
+> +	.num_def_config = ARRAY_SIZE(mmsys_mt8196_vdisp_ao_default_table),
+> +};
+> +
+>   static const struct mtk_mmsys_driver_data mt8365_mmsys_driver_data = {
+>   	.clk_driver = "clk-mt8365-mm",
+>   	.routes = mt8365_mmsys_routing_table,
+> @@ -158,6 +209,9 @@ struct mtk_mmsys {
+>   	spinlock_t lock; /* protects mmsys_sw_rst_b reg */
+>   	struct reset_controller_dev rcdev;
+>   	struct cmdq_client_reg cmdq_base;
+> +	struct clk **async_clk;
+> +	int num_async_clk;
+> +	struct clk **top_clk;
+>   };
+>   
+>   static void mtk_mmsys_update_bits(struct mtk_mmsys *mmsys, u32 offset, u32 mask, u32 val,
+> @@ -180,6 +234,99 @@ static void mtk_mmsys_update_bits(struct mtk_mmsys *mmsys, u32 offset, u32 mask,
+>   	writel_relaxed(tmp, mmsys->regs + offset);
+>   }
+>   
+> +int mtk_mmsys_top_clk_enable(struct device *dev)
+> +{
+> +	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
+> +	int ret, i;
+> +
+> +	if (!mmsys->data->num_top_clk)
+> +		return 0;
+> +
+> +	for (i = 0; i < mmsys->data->num_top_clk; i++)
+> +		ret = clk_prepare_enable(mmsys->top_clk[i]);
+> +	return ret;
+> +}
+> +EXPORT_SYMBOL_GPL(mtk_mmsys_top_clk_enable);
+> +
+> +void mtk_mmsys_top_clk_disable(struct device *dev)
+> +{
+> +	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
+> +	int i;
+> +
+> +	for (i = 0; i < mmsys->data->num_top_clk; i++)
+> +		clk_disable_unprepare(mmsys->top_clk[i]);
+> +}
+> +EXPORT_SYMBOL_GPL(mtk_mmsys_top_clk_disable);
+> +
+> +int mtk_mmsys_ddp_clk_enable(struct device *dev, enum mtk_ddp_comp_id comp_id)
+> +{
+> +	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
+> +	const struct mtk_mmsys_async_info *async = mmsys->data->async_info;
+> +
+> +	int i;
+> +
+> +	if (!mmsys->data->num_async_info)
+> +		return 0;
+> +
+> +	for (i = 0; i < mmsys->data->num_async_info; i++)
+> +		if (comp_id == async[i].comp_id)
+> +			return clk_prepare_enable(mmsys->async_clk[async[i].index]);
+
+Why can't you add the clocks in the mediatek-drm nodes and handle enablement in the
+drm driver?!
+
+> +	return 0;
+> +}
+> +EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_clk_enable);
+> +
+> +void mtk_mmsys_ddp_clk_disable(struct device *dev, enum mtk_ddp_comp_id comp_id)
+> +{
+> +	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
+> +	const struct mtk_mmsys_async_info *async = mmsys->data->async_info;
+> +	int i;
+> +
+> +	if (!mmsys->data->num_async_info)
+> +		return;
+> +
+> +	for (i = 0; i < mmsys->data->num_async_info; i++)
+> +		if (comp_id == async[i].comp_id)
+> +			clk_disable_unprepare(mmsys->async_clk[async[i].index]);
+> +}
+> +EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_clk_disable);
+> +
+> +void mtk_mmsys_ddp_config(struct device *dev, enum mtk_ddp_comp_id comp_id,
+> +			  int width, int height, struct cmdq_pkt *cmdq_pkt)
+> +{
+> +	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
+> +	const struct mtk_mmsys_async_info *async = mmsys->data->async_info;
+> +	int i;
+> +
+> +	if (!mmsys->data->num_async_info)
+> +		return;
+> +
+> +	for (i = 0; i < mmsys->data->num_async_info; i++)
+> +		if (comp_id == async[i].comp_id)
+> +			break;
+> +
+> +	if (i == mmsys->data->num_async_info)
+> +		return;
+> +
+> +	mtk_mmsys_update_bits(mmsys, async[i].offset, async[i].mask,
+> +			      height << 16 | width, cmdq_pkt);
+
+linux/bitfield.h provides macros that you should use for those register fields.
+
+> +}
+> +EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_config);
+> +
+> +void mtk_mmsys_default_config(struct device *dev)
+> +{
+> +	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
+> +	const struct mtk_mmsys_default *def_config = mmsys->data->def_config;
+> +	int i;
+> +
+> +	if (!mmsys->data->num_def_config)
+> +		return;
+> +
+> +	for (i = 0; i < mmsys->data->num_def_config; i++)
+> +		mtk_mmsys_update_bits(mmsys, def_config[i].offset, def_config[i].mask,
+> +				      def_config[i].val, NULL);
+> +}
+> +EXPORT_SYMBOL_GPL(mtk_mmsys_default_config);
+> +
+>   void mtk_mmsys_ddp_connect(struct device *dev,
+>   			   enum mtk_ddp_comp_id cur,
+>   			   enum mtk_ddp_comp_id next)
+> @@ -390,7 +537,7 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
+>   	struct platform_device *clks;
+>   	struct platform_device *drm;
+>   	struct mtk_mmsys *mmsys;
+> -	int ret;
+> +	int ret, i;
+>   
+>   	mmsys = devm_kzalloc(dev, sizeof(*mmsys), GFP_KERNEL);
+>   	if (!mmsys)
+> @@ -432,6 +579,49 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
+>   		return PTR_ERR(clks);
+>   	mmsys->clks_pdev = clks;
+>   
+> +	if (mmsys->data->num_top_clk) {
+> +		struct device_node *node;
+> +
+> +		node = of_get_child_by_name(dev->of_node, "top");
+
+No, you can't do that if there's no binding to support that.
+
+> +		if (!node) {
+> +			dev_err(&pdev->dev, "Couldn't find top node\n");
+> +			return -EINVAL;
+> +		}
+> +
+> +		mmsys->top_clk = devm_kmalloc_array(dev, mmsys->data->num_top_clk,
+> +						    sizeof(*mmsys->top_clk), GFP_KERNEL);
+> +		if (!mmsys->top_clk)
+> +			return -ENOMEM;
+> +
+> +		for (i = 0; i < mmsys->data->num_top_clk; i++) {
+> +			mmsys->top_clk[i] = of_clk_get(node, i);
+> +			if (IS_ERR(mmsys->top_clk[i]))
+> +				return PTR_ERR(mmsys->top_clk[i]);
+> +		}
+> +	}
+> +
+> +	if (mmsys->data->num_async_info) {
+> +		struct device_node *node;
+> +
+> +		node = of_get_child_by_name(dev->of_node, "async");
+> +		if (!node) {
+> +			dev_err(&pdev->dev, "Couldn't find async node\n");
+> +			return -EINVAL;
+> +		}
+> +
+
+Also this looks like you have children providing only clocks?!
+I really need to look at the bindings to decide, but this looks wrong.
+
+Regards,
+Angelo
 
 
 
