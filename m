@@ -4,83 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 245DCC35FFC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Mar 2025 05:47:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73821C36008
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Mar 2025 10:22:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=whPHeHDPWb1OWluhkdd8/iDGoq5/wJGdCJNpRYEBORs=; b=CV/9oZpoVBQC76pkkbkbaoQHRE
-	Jb9NzNOUCKiPR+PqUMoSH77trn9S/LFbqy09izI6yyySyE8gB7i1zpTsLUKTCDBYHjBWbgsmk4AJy
-	B8bgyKfJ1Ldpttw5KsBhwFFG/4kykO05zI+0exIjHcFpQmkE2gYwYaOkl7MtNBZoXGjgprvgLVLpt
-	z5wPKRNMeCzkIWpal9QgkiAJBMpnvcjvUczB9clfUxzNFsVzGheHDTgGizC0tooD0Q7ym4uEruV+h
-	3XEpdT9pK4WBLH2gc8yZVgMpHql9iEQyRUKA1bKjGbf7CM3RRr8Yjl/IZ+PTvPlgAPtERZG33T/9c
-	cMaZm8wA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WVAozl6mi9ob89WhmV+U28hJYmW1/113AbyI1zx8oEY=; b=cE/7xlsm+j0P+UDXiqeKdK6Myu
+	V8GU7EMl+puX90JvM+OoP4u78LUQ0gWJ6Qb1zTAX3tYm4SnpVLHcAhPENX8cNzAHkpMdCHT8xz/+p
+	QxApbNZwtEwQ47KTlf1CnjedJwHqzg5O1rz6qgaW6HDfUS83qSa3uBiDWGKI3BTKh6Hzo5PTnIUMW
+	GZGo/RKe2RPwa3cQHjtGjPyuG3iTvkenE2jfZevvLXx/dJ3e68fTR0ki7EbpJ4treVzQj9RpYmQtK
+	Ao7sNL4JNCXqohCNVFfAuifGca8qbwADkrkR8Ota4rRwFdI+eHj4SgiNNInax6DE4tUUQweBehiEQ
+	4ocm4bLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98 #2 (Red Hat Linux))
-	id 1twx8A-00000004vI8-0a9P;
-	Tue, 25 Mar 2025 05:47:18 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1tx1Qe-00000005QUL-1inI;
+	Tue, 25 Mar 2025 10:22:40 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98 #2 (Red Hat Linux))
-	id 1twx87-00000004vHb-08aD
-	for linux-mediatek@lists.infradead.org;
-	Tue, 25 Mar 2025 05:47:16 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-3997205e43eso4290395f8f.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 24 Mar 2025 22:47:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1742881633; x=1743486433; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=whPHeHDPWb1OWluhkdd8/iDGoq5/wJGdCJNpRYEBORs=;
-        b=oCbhhRvn98R3Lyo30F3BzM86GEPQ9lsJlGpelvgNI9Qwx1ucUCG+x9xxATs9mWvrF3
-         84yYsxXF5To1AM+VptNalet5UB6slcZC52IT4jrkdmrn/n0ekImhSJspIU68GZReNBA2
-         ue4rGI0VmkTrTvG/tgs1pvy0AZdtLnylPS/IoDge6QThK7tOF0p6WRjsPGj/kaInPtWk
-         cz9nGBseUHvTJD8d3mRhEAeO92q67d0LL8PuKqDnuoQ0QvEWuc4tSFBSfRweOE0Js884
-         J5pvr340nsAixUWOQ3+5JrGRourutCdi4W6f3CVHGdRdPgOki+UwBoE5IxHfJv9MqQY7
-         AXpQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742881633; x=1743486433;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=whPHeHDPWb1OWluhkdd8/iDGoq5/wJGdCJNpRYEBORs=;
-        b=gGHbGdQfFxcF3Gth/n1IEeYb8z6PGoUqdqEweVBl5BGXS+FkgpBXO8Ob1aTUPtGm1J
-         R72DMYd1IHpdvHe9ORRN1b/G2/OjFuE1qBZYxCYCo+k7xkiZcoppkxRjrwQQ0EI+A8Dq
-         CV9LV/EZasMijEGSPkYb9t8hg6YfCCpoCPrOAK3YGPMDzu9SMlau4gcEYVfi1+2GCUX7
-         RGsTBa0kB4WSPuitOoaWKckkiC6U1nmWWjqGFR/GxKUtLZkkJonoqG3PsAXjg6q8MvJD
-         OcVrXDSxpgGsHc4/7Lc5VZ7CBf5tKbo4H6lZMYpf8Qx33XlSkmsohQqTS3XMMOgyDMXe
-         T8cQ==
-X-Gm-Message-State: AOJu0YwROJi0HDkaEYQkPX87g7iH52r1PnD/O/fmLe54S320kEiyPD6X
-	BNqFVivQB8EcbVY+lxP2MZQaZsMJwZgQ60nxrnqZ1edzbM+M68UzBXRFdaK0y3I=
-X-Gm-Gg: ASbGncv8p5F/WRK99WO3GNjerYdJLs7OnlD9lq4NRphWtII6KpkbGYtuE39KFbXUrLh
-	kKna8cIqo0CKXaITW9Z60P/Yn3unUolKOzLLZOaYM2QnMC9Dl2OltMYwDZ4cDjCXXp72ksKmd5n
-	FKwU9ZvPpn9/t/ksZGwN+VNmIRFgjpwmnWNFLUfSkDKrcSgX6C2N/OBl9vEXskMzundOqQk9BAJ
-	/8MO2rkFV6hAMcM32vkhhyyipSBKkGK+KL236tGEKTK5lcFpiNcvxtjU98mCL/jnn7gCrYQ1eEf
-	IuZv7umt6CgDXPN4h4yU14J0K0/FJTEy6bf1NOv17x2xHFyVbA==
-X-Google-Smtp-Source: AGHT+IGNzmhxmfDpRSL//4YZV8P7hlWa94c/MQzOCUBl2MVttM9km40tpC411Ib7relS5eSAvLZ41Q==
-X-Received: by 2002:a05:6000:4008:b0:39a:c8a8:4fbf with SMTP id ffacd0b85a97d-39ac8a85327mr556569f8f.18.1742881633309;
-        Mon, 24 Mar 2025 22:47:13 -0700 (PDT)
-Received: from localhost ([196.207.164.177])
-        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-43d43fdeb6esm190742885e9.31.2025.03.24.22.47.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 24 Mar 2025 22:47:12 -0700 (PDT)
-Date: Tue, 25 Mar 2025 08:47:08 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Hao Chang <ot_chhao.chang@mediatek.com>
-Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org
-Subject: Re: [bug report] pinctrl: mediatek: Add EINT support for multiple
- addresses
-Message-ID: <065d465b-60b1-4c25-b9db-1f00b40cb09f@stanley.mountain>
-References: <dac846e5-d15d-4def-a7e3-ce17e74e2da6@stanley.mountain>
+	id 1tx1Ou-00000005QIM-0ckC;
+	Tue, 25 Mar 2025 10:20:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1742898050;
+	bh=xj2m28Ti0TkvOIJe8EXIP8rCVJJiSJ2Q+cPMUlJtiLM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ayS+QmiNet5Hdbi6IDs8ib9eCDd79/eaAeVdfdZcC1I5YOhAqjYfTyjc7ZCVMrOJ1
+	 pgSUDVJ7Jst0sQ+6KsrfMj4+eKvPIpT57QAwmk3wNPYQEveORlc5dRpxolndKWBs+/
+	 Wh10I0ufahc/DzN1UWdPZkAcdx3XYA8ZEGCCkYsxOVORh/0Fc66qeTeidJelMjpEQ+
+	 kzl3LwxzN5Rd5BValTtzB16mqaEcJab/tyOEpkNYETN0fe9DFR6i6I2jwFO4A1ImyG
+	 21bJfJQ/0HB83kbk/AwzAt7Y85GLGneMlLmCQONOiD40wLM/SgZgJE/4FR09JsrAwL
+	 NLUdY0y9KHoLg==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 35A2017E0A5C;
+	Tue, 25 Mar 2025 11:20:49 +0100 (CET)
+Message-ID: <3572d6e2-8950-4937-bed5-624bf5bde7f3@collabora.com>
+Date: Tue, 25 Mar 2025 11:20:48 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <dac846e5-d15d-4def-a7e3-ce17e74e2da6@stanley.mountain>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] dt-bindings: mmc: mtk-sd: add single burst switch
+To: =?UTF-8?B?QXhlIFlhbmcgKOadqOejiik=?= <Axe.Yang@mediatek.com>,
+ =?UTF-8?B?V2VuYmluIE1laSAo5qKF5paH5b2sKQ==?= <Wenbin.Mei@mediatek.com>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
+ <Chaotian.Jing@mediatek.com>, "robh@kernel.org" <robh@kernel.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "ulf.hansson@linaro.org" <ulf.hansson@linaro.org>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
+ =?UTF-8?B?QW5keS1sZCBMdSAo5Y2i5LicKQ==?= <Andy-ld.Lu@mediatek.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ =?UTF-8?B?WW9uZyBNYW8gKOavm+WLhyk=?= <yong.mao@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ =?UTF-8?B?UWluZ2xpYW5nIExpICjpu47mmbTkuq4p?= <Qingliang.Li@mediatek.com>
+References: <20250306085028.5024-1-axe.yang@mediatek.com>
+ <20250306085028.5024-2-axe.yang@mediatek.com>
+ <3e84fda8-2566-4f18-8ef9-850c84789c34@collabora.com>
+ <f84800fac589429157cd84034ef2f4541d3486a7.camel@mediatek.com>
+ <b09f618a-eaf9-4258-ae2d-67eff1cb249f@collabora.com>
+ <f8ce830d831aaba0d2748d31f8ba4a9915b7a14e.camel@mediatek.com>
+ <52d2f247a3058b96625bcdf5ab370282dfc9fb0e.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <52d2f247a3058b96625bcdf5ab370282dfc9fb0e.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250324_224715_079401_8C2C9849 
-X-CRM114-Status: GOOD (  14.75  )
+X-CRM114-CacheID: sfid-20250325_032052_342902_3D17DEAA 
+X-CRM114-Status: GOOD (  35.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,65 +94,223 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 25, 2025 at 08:45:13AM +0300, Dan Carpenter wrote:
-> Hello Hao Chang,
+Il 25/03/25 03:41, Axe Yang (杨磊) ha scritto:
+> Hi Angelo,
 > 
-> Commit 3ef9f710efcb ("pinctrl: mediatek: Add EINT support for
-> multiple addresses") from Mar 22, 2025 (linux-next), leads to the
-> following Smatch static checker warning:
+> Any comment on this :D
 > 
-> 	drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c:384 mtk_build_eint()
-> 	warn: error code type promoted to positive: 'count_reg_names'
-> 
-> drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
->     374                 return 0;
->     375 
->     376         if (!of_property_read_bool(np, "interrupt-controller"))
->     377                 return -ENODEV;
->     378 
->     379         hw->eint = devm_kzalloc(hw->dev, sizeof(*hw->eint), GFP_KERNEL);
->     380         if (!hw->eint)
->     381                 return -ENOMEM;
->     382 
->     383         count_reg_names = of_property_count_strings(np, "reg-names");
-> --> 384         if (count_reg_names < hw->soc->nbase_names)
-> 
-> count_reg_names is type int but hw->soc->nbase_names is unsigned int.  So
-> if of_property_count_strings() returns a negative error code then it's
-> type promoted as a high positive unsigned int value and treated as success.
-> 
->     385                 return -EINVAL;
->     386 
->     387         hw->eint->nbase = count_reg_names - hw->soc->nbase_names;
-> 
-> hw->eint->nbase is a u8 so the negative value is truncated to a low positive
-> value.
-> 
->     388         hw->eint->base = devm_kmalloc_array(&pdev->dev, hw->eint->nbase,
->     389                                             sizeof(*hw->eint->base), GFP_KERNEL | __GFP_ZERO);
-> 
-> This allocation will always succeed.
-> 
-> regards,
-> dan carpenter
-> 
->     390         if (!hw->eint->base) {
->     391                 ret = -ENOMEM;
->     392                 goto err_free_base;
->     393         }
->     394 
->     395         for (i = hw->soc->nbase_names, j = 0; i < count_reg_names; i++, j++) {
->     396                 hw->eint->base[j] = of_iomap(np, i);
->     397                 if (IS_ERR(hw->eint->base[j])) {
 
-Oh, also of_iomap() returns NULL on errors, not error pointers.
+Check inline reply below....
 
-regards,
-dan carpenter
+> Regards,
+> Axe
+> 
+> On Wed, 2025-03-12 at 14:30 +0800, axe.yang wrote:
+>> On Tue, 2025-03-11 at 10:47 +0100, AngeloGioacchino Del Regno wrote:
+>>> External email : Please do not click links or open attachments
+>>> until
+>>> you have verified the sender or the content.
+>>>
+>>>
+>>> Il 07/03/25 07:59, Axe Yang (杨磊) ha scritto:
+>>>> On Thu, 2025-03-06 at 10:19 +0100, AngeloGioacchino Del Regno
+>>>> wrote:
+>>>>> External email : Please do not click links or open attachments
+>>>>> until
+>>>>> you have verified the sender or the content.
+>>>>>
+>>>>>
+>>>>> Il 06/03/25 09:48, Axe Yang ha scritto:
+>>>>>> Add 'mediatek,disable-single-burst' setting. This property
+>>>>>> can
+>>>>>> be
+>>>>>> used to switch bus burst type, from single burst to INCR,
+>>>>>> which
+>>>>>> is
+>>>>>> determined by the bus type within the IP. Some versions of
+>>>>>> the
+>>>>>> IP
+>>>>>> are using AXI bus, thus this switch is necessary as 'single'
+>>>>>> is
+>>>>>> not
+>>>>>> the burst type supported by the bus.
+>>>>>>
+>>>>>> Signed-off-by: Axe Yang <axe.yang@mediatek.com>
+>>>>>
+>>>>> I am mostly sure that this is not something to put in
+>>>>> devicetree,
+>>>>> but
+>>>>> as
+>>>>> platform data for specific SoC(s), as much as I'm mostly sure
+>>>>> that
+>>>>> all of
+>>>>> the instances of the MSDC IP in one SoC will be *all* using
+>>>>> either
+>>>>> single
+>>>>> or INCR.
+>>>>
+>>>> No, actually MSDC IPs in one SoC are using different versions.
+>>>> Usually MSDC1 (index from 1) is used as eMMC host, the left hosts
+>>>> are
+>>>> used as SD/SDIO hosts. They have similar designs, but there are
+>>>> still
+>>>> difference.
+>>>>
+>>>>>
+>>>>> So, I think I know the answer but I'll still ask just to be
+>>>>> extremely
+>>>>> sure:
+>>>>>
+>>>>> is there any MediaTek SoC that has different IP versions for
+>>>>> different MSDC
+>>>>> instances, and that hence require single burst on one instance
+>>>>> and
+>>>>> INCR on
+>>>>> another instance?
+>>>>
+>>>> Yes. Actually every SoC has different IP versions for eMMC and
+>>>> SD/SDIO
+>>>> host as I said.
+>>>> e.g. For MT8168, signel burst bit should be set to 1 for eMMC
+>>>> Host,
+>>>> but
+>>>> 0 for SD/SDIO Host.
+>>>>
+>>>>>
+>>>>> And if there is - is there a pattern? Is it always SDIO
+>>>>> requiring
+>>>>> INCR or
+>>>>> always eMMC/SD requiring it?
+>>>>>
+>>>>>
+>>>>
+>>>> No, there is no pattern. Both eMMC and SD/SDIO hosts need to be
+>>>> configured base on IP version. There is no binding relationship
+>>>> between
+>>>> eMMC/SD/SDIO and the burst type. eMMC burst type might be INCR or
+>>>> single, same as SD/SDIO.
+>>>>
+>>>
+>>> Okay but if there are different IP versions, and AXI/AHB is
+>>> determined
+>>> by the IP version, why aren't you parsing the MAIN_VER/ECO_VER
+>>> registers of
+>>> the MSDC IP to check whether to use INCR or SINGLE?
+>>
+>>
+>> To address your concerns, I had further discussions with the
+>> designer.
+>> Their response was that the bus type and IP version are not bound
+>> together. This contradicts my previous statements, and I apologize
+>> for
+>> that.
+>> According to the designer's feedback, I must say that the single
+>> burst
+>> setting is indeed tied to the IC, but the granularity is such that it
+>> needs to be set individually for each host.
+>> Given the large number of ICs Mediatek currently has, adding burst
+>> type
+>> information for each host to the driver's compatible structure would
+>> mean adding hundreds(maybe thousands :() of lines to the driver for
+>> the
+>> compatible structures for *all previous SoCs* (currently there are
+>> only
+>> 13 compatible structures, and they can be reuse by new SoC). This
+>> approach seems very cumbersome.
+>>
+>> So I still believe that placing this setting in the DTS is a more
+>> appropriate approach.
+>>
 
->     398                         ret = PTR_ERR(hw->eint->base[j]);
->     399                         goto err_free_eint;
->     400                 }
->     401         }
->     402 
+Hello Axe,
+
+sorry for the wait - this email fell through the cracks and I didn't see
+it at all, so thank you for the ping.
+
+Unfortunately, I don't think that this would be acceptable from a devicetree and/or
+bindings standpoint, but then you don't really need to modify the pdata for all of
+the currently supported SoCs to declare false, as false==0, which is the default.
+
+But maybe there's another way out of this.
+
+You said that this modification is done because some controllers are under AXI and
+some others are under AHB... I was doing some cleanups to this driver and doing so
+made me check a couple of things....
+
+When a MSDC controller is under AXI, there will be configuration for that in other
+registers - specifically, I'm wondering if the EMMC50_CFG2 register can be used to
+check if we are under an AHB to AXI wrapper or not.
+
+The idea is to read this register (offset 0x21c), [27:24] AXI_SET_LEN contains the
+number of beats per burst (from 1 to 16), and also [23:19] AXI_RX_OUTSTANDING_NUM
+contains the number of outstanding transfers (1 to 13).
+
+If a controller does not have an AXI2AHB Wrapper, or if it does not use the AXI bus
+this register should read zero I think?
+
+Especially the two fields that I mentioned before, those should read zero.
+
+That, especially because the hwaddr for the controllers is anyway and always long
+0x1000 - and I think that the extra registers space, on controllers that don't have
+the EMMC50 registers (msdc1 and msdc2) should be still reserved to those and never
+used for anything else.
+
+Would that detection way work?
+
+If it would, we'd be again autodetecting whether to set or not the AXI single burst
+option in the patch bits...without relying on specifying anything manually, not in
+the devicetree, and not in the platform data :-)
+
+Cheers,
+Angelo
+
+>> Regards,
+>> Axe
+>>
+>>>
+>>> Cheers,
+>>> Angelo
+>>>
+>>>>
+>>>> Regards,
+>>>> Axe
+>>>>
+>>>>
+>>>>>
+>>>>>> ---
+>>>>>>     Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 8
+>>>>>> ++++++++
+>>>>>>     1 file changed, 8 insertions(+)
+>>>>>>
+>>>>>> diff --git a/Documentation/devicetree/bindings/mmc/mtk-
+>>>>>> sd.yaml
+>>>>>> b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+>>>>>> index 0debccbd6519..6076aff0a689 100644
+>>>>>> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+>>>>>> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+>>>>>> @@ -100,6 +100,14 @@ properties:
+>>>>>>         minimum: 0
+>>>>>>         maximum: 0xffffffff
+>>>>>>
+>>>>>> +  mediatek,disable-single-burst:
+>>>>>> +    $ref: /schemas/types.yaml#/definitions/flag
+>>>>>> +    description:
+>>>>>> +      Burst type setting. For some versions of the IP that
+>>>>>> do
+>>>>>> not
+>>>>>> use
+>>>>>> +      AHB bus, the burst type need to be switched to INCR.
+>>>>>> +      If present, use INCR burst type.
+>>>>>> +      If not present, use single burst type.
+>>>>>> +
+>>>>>>       mediatek,hs200-cmd-int-delay:
+>>>>>>         $ref: /schemas/types.yaml#/definitions/uint32
+>>>>>>         description:
+>>>>>
+>>>>>
+>>>>>
+>>>
+>>>
+
+
 
