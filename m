@@ -4,73 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E21BFC35FFC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Mar 2025 11:51:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71A37C35FFC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Mar 2025 13:32:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bm2dXKLp3LTMDc8Qpu6pqZp/K1dyJwz6AZGGD6z8t/M=; b=JrCKxnGJcXQlMf8dchdsFy2lyN
-	nXTg5XyFVoKWfAqPvNFgTGOfQbr3UyYWCOzImPNYc/xvsKc7bPwzR1F6rPY4mc+C8VKi3++WQAYWf
-	tjFvMF8Tn5z7hlTYE1HokVrrbZBiaenN69tvGugrqfOixInap8toupwsRcQbkjS00df9smDVKYPcp
-	9lmNsP02HtWHKNChmumD0QhQVUeawkztofLdTJxgrmQPpSvWejttwyFjfYOqpQUvmhotl5XfXChOi
-	MvWdw5lWY1kVVxeHYHH5hKOfBRU5nLvzt5u0BWPRTmUMCodxaBHtNX7K8yKtKJ3bVR+Pw0/8wCbXh
-	yOKuFuXQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FHndIVYNwQRbJ5agZ0hgtdvmI5GxtcfTYh32VkltYxk=; b=G/rQbbq/zs4gm/A3MpKDJEKEKM
+	7PbQ5AArIIJ9dgO5azC9UdAzdLUV4y70g/VSwM1gOFHkrp9Y8igjY0n0hBwhnLEU/rOYNoa6Wrf4R
+	39PjF34ANZpOOqlbzVKMHrCLrcsu4ThWAeBUNsdw2tr+Dvfg1LdUBNObEtMmeL/fnsSTts2lOaL1z
+	JjKiSAxzY4+NJdkOeA+Ile1bFWW7ppljttP6unfCwWaQ+fHljvD0I3u6rOk+Gs5v+OcFBohmY5yKA
+	qQlytC3BklBr2b+vPEHzx3S4jQgE6TsIw+0uQTe9DFeEQMOnFxGYTN5XYZaNNOTtcg4W7jotiCL75
+	u5yKV47g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tx2ot-00000005hPx-3y5L;
-	Tue, 25 Mar 2025 11:51:47 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1tx4ON-000000062aV-0Gji;
+	Tue, 25 Mar 2025 13:32:31 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tx2n9-00000005h9j-44hZ;
-	Tue, 25 Mar 2025 11:50:01 +0000
+	id 1tx4Kn-000000061yX-06Mk;
+	Tue, 25 Mar 2025 13:28:50 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 61FD15C4BC9;
-	Tue, 25 Mar 2025 11:47:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 08523C4CEE4;
-	Tue, 25 Mar 2025 11:49:59 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id A918E4375D;
+	Tue, 25 Mar 2025 13:28:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 117DCC4CEE4;
+	Tue, 25 Mar 2025 13:28:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1742903399;
-	bh=ZZdZYmOj1ovGoh5945Z2dttRqyMKc3WTfbIx0vwUbGU=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=gGJRZLy1WGT9Tlf+yIt17XTtbRhH1gW691Kv6DYWjKAY4BItY+DhyvHWMw5kkvaoL
-	 KKsPEXE9qRjWO3l1qgg7swuhUQzYBPxB1XcIvus+PE/QNvk+bvElBA9WlxrowNC+3J
-	 Y/E1Rxuk9kjweHN8UdkGlc5m2rSLwZIvT/4rpNOvPNwFhbJQndITX5eMQtV83H0FeO
-	 S6YgvuRJjN/6+ry/NbXtK79Sr+qsVpn1E7JVmhX4DfDtQ5yTeMmIqsK6sizO53MYAZ
-	 txFuebDaPwmCa22+MNq5Qg9wExdULRD/Zznoan+rsGvmEgpC921giO5iaFVjMikx8c
-	 dcr43+rM0WDCQ==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 71530380CFE7;
-	Tue, 25 Mar 2025 11:50:36 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next v2 0/7] net: xdp: Add missing metadata support for
- some xdp drvs
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <174290343526.531918.1341302638467898392.git-patchwork-notify@kernel.org>
-Date: Tue, 25 Mar 2025 11:50:35 +0000
+	s=k20201202; t=1742909327;
+	bh=dmvM6IN5Dthvxa5kh8GBs+FInlsd/ahwhF0FbdrWGqQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=EmLbCOHOih8hX0taTqKGfc5nAPd/Dpwg4C9VeIXPHSWWUjSbWi45uoM2BDlvUB+q0
+	 HkzPlh/SjtVAf1CjUps8m/r9f5auBR7XTojLfrSfaROckQVfpVZFdka7Y9mXcbDU80
+	 5ueJfukfGutY7ahZ6Gt1WaugQ3S8ITJiNT8M6PNHCepcqZQhi1AT0LFDo9HImWxW7p
+	 /GtDVP6DT4UMw5tp9xX8pNSFJYMcvaqzDeh+MjuJj68HIAmIfq/OBkVw+J/FxmDS9/
+	 k098C4S9DpBuIZKRDGBVSdBr7VcR9pMaa40u79KHwdi5vkmBjuIoJKJ7zvawCuApxq
+	 TmXu7t6vo1wEQ==
+Date: Tue, 25 Mar 2025 14:28:41 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: Marcin Wojtas <marcin.s.wojtas@gmail.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+	Alexei Starovoitov <ast@kernel.org>,
+	Daniel Borkmann <daniel@iogearbox.net>,
+	Jesper Dangaard Brouer <hawk@kernel.org>,
+	John Fastabend <john.fastabend@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Ilias Apalodimas <ilias.apalodimas@linaro.org>,
+	Masahisa Kojima <kojima.masahisa@socionext.com>,
+	Sunil Goutham <sgoutham@marvell.com>,
+	Geetha sowjanya <gakula@marvell.com>,
+	Subbaraya Sundeep <sbhatta@marvell.com>,
+	hariprasad <hkelam@marvell.com>,
+	Bharat Bhushan <bbhushan2@marvell.com>,
+	Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"K. Y. Srinivasan" <kys@microsoft.com>,
+	Haiyang Zhang <haiyangz@microsoft.com>,
+	Wei Liu <wei.liu@kernel.org>, Dexuan Cui <decui@microsoft.com>,
+	Siddharth Vadapalli <s-vadapalli@ti.com>,
+	Roger Quadros <rogerq@kernel.org>, netdev@vger.kernel.org,
+	bpf@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-hyperv@vger.kernel.org,
+	linux-omap@vger.kernel.org, Michal Kubiak <michal.kubiak@intel.com>
+Subject: Re: [PATCH net-next v2 4/7] net: octeontx2: Add metadata support for
+ xdp mode
+Message-ID: <Z-Kvia3EhrtAjKOG@lore-rh-laptop>
 References: <20250318-mvneta-xdp-meta-v2-0-b6075778f61f@kernel.org>
-In-Reply-To: <20250318-mvneta-xdp-meta-v2-0-b6075778f61f@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: marcin.s.wojtas@gmail.com, andrew+netdev@lunn.ch, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, ast@kernel.org,
- daniel@iogearbox.net, hawk@kernel.org, john.fastabend@gmail.com,
- linux@armlinux.org.uk, ilias.apalodimas@linaro.org,
- kojima.masahisa@socionext.com, sgoutham@marvell.com, gakula@marvell.com,
- sbhatta@marvell.com, hkelam@marvell.com, bbhushan2@marvell.com, nbd@nbd.name,
- sean.wang@mediatek.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, kys@microsoft.com,
- haiyangz@microsoft.com, wei.liu@kernel.org, decui@microsoft.com,
- s-vadapalli@ti.com, rogerq@kernel.org, netdev@vger.kernel.org,
- bpf@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-hyperv@vger.kernel.org,
- linux-omap@vger.kernel.org, michal.kubiak@intel.com
+ <20250318-mvneta-xdp-meta-v2-4-b6075778f61f@kernel.org>
+ <20250325044126.1c0f9b83@kernel.org>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="E4yhCdChUNhJbUGb"
+Content-Disposition: inline
+In-Reply-To: <20250325044126.1c0f9b83@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250325_045000_064088_469DE20A 
-X-CRM114-Status: GOOD (  10.42  )
+X-CRM114-CacheID: sfid-20250325_062849_104762_E262EAD1 
+X-CRM114-Status: GOOD (  12.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,44 +99,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
 
-This series was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+--E4yhCdChUNhJbUGb
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On Tue, 18 Mar 2025 12:46:04 +0100 you wrote:
-> Introduce missing metadata support for some xdp drivers setting metadata
-> size building the skb from xdp_buff.
-> Please note most of the drivers are just compile tested.
-> 
-> ---
-> Changes in v2:
-> - Improve commit logs for each patch specifying xdp headroom size for
->   each modified driver.
-> - Link to v1: https://lore.kernel.org/r/20250311-mvneta-xdp-meta-v1-0-36cf1c99790e@kernel.org
-> 
-> [...]
+> On Tue, 18 Mar 2025 12:46:08 +0100 Lorenzo Bianconi wrote:
+> > @@ -1514,13 +1518,14 @@ static bool otx2_xdp_rcv_pkt_handler(struct otx=
+2_nic *pfvf,
+> > =20
+> >  	hard_start =3D (unsigned char *)phys_to_virt(pa);
+> >  	xdp_prepare_buff(&xdp, hard_start, OTX2_HEAD_ROOM,
+> > -			 cqe->sg.seg_size, false);
+> > +			 cqe->sg.seg_size, true);
+> > =20
+> >  	act =3D bpf_prog_run_xdp(prog, &xdp);
+> > =20
+> >  handle_xdp_verdict:
+> >  	switch (act) {
+> >  	case XDP_PASS:
+> > +		*metasize =3D xdp.data - xdp.data_meta;
+> >  		break;
+> >  	case XDP_TX:
+> >  		qidx +=3D pfvf->hw.tx_queues;
+>=20
+> This one handles ABORT and invalid return codes as PASS not DROP.
+> That should probably be fixed separately?
 
-Here is the summary with links:
-  - [net-next,v2,1/7] net: mvneta: Add metadata support for xdp mode
-    https://git.kernel.org/netdev/net-next/c/07b2fbffaaea
-  - [net-next,v2,2/7] net: mvpp2: Add metadata support for xdp mode
-    https://git.kernel.org/netdev/net-next/c/9a45e193c88a
-  - [net-next,v2,3/7] net: netsec: Add metadata support for xdp mode
-    https://git.kernel.org/netdev/net-next/c/a5fec3c88142
-  - [net-next,v2,4/7] net: octeontx2: Add metadata support for xdp mode
-    https://git.kernel.org/netdev/net-next/c/33bfff8fc8ba
-  - [net-next,v2,5/7] net: ethernet: mediatek: Add metadata support for xdp mode
-    https://git.kernel.org/netdev/net-next/c/74fb1346bc77
-  - [net-next,v2,6/7] net: mana: Add metadata support for xdp mode
-    https://git.kernel.org/netdev/net-next/c/c313d35f60c1
-  - [net-next,v2,7/7] net: ti: cpsw: Add metadata support for xdp mode
-    https://git.kernel.org/netdev/net-next/c/b3a54be70ca6
+Yes, right. I will post a fix for it.
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+Regards,
+Lorenzo
 
+--E4yhCdChUNhJbUGb
+Content-Type: application/pgp-signature; name=signature.asc
 
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ+KvhgAKCRA6cBh0uS2t
+rJqvAP9OpMaZdQLvzyjRJ+yYPN1BtI+hjZJfXaRH2utWQHb7uwD+L6oltUUEGPYK
+Pxr4Ki69CfDwCdxPyDpzyKCdOPyfDAk=
+=cnQi
+-----END PGP SIGNATURE-----
+
+--E4yhCdChUNhJbUGb--
 
