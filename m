@@ -4,72 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F533C35FFC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Mar 2025 11:09:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F615C35FFC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Mar 2025 11:13:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lJolzEhULqF3LFn69QNoqRWDE5RyhC6PWRPHaVbw8XM=; b=oQ8ere4PQiHhKVK9ADx4S4AwWr
-	0jboAFCzSWg+DXVUDeneXew0zKYOeJrE0V7nlZzvIc9vDg/pSd94+m8jG+dI5+xJRbkvLZ8SFAZxX
-	mmO9AHNEUpNdUSgYdWlZUZTuPduj9Ltn8sdpkcJl9IOcOA0scN3f0ckAbQsluN9/fcnxs4U7kYXbn
-	6DhwT1ZCpi5TNrO4Z4/gVwCBNOicU8ahPJC9VaoQW7+iMXhZObBDaPmsHgsOzFV+dzNrUhZ5iLy2M
-	Q5o/ozxgRweg4wphksDumsU0MeXNqt4Rs4ZfihJf6mQub7NUlzzBTayDl11pvHjkb9ozoOwTfpJQZ
-	jD4ONoAA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=awf9MvvKMjSOrAlGvChuLJ8AFD7kCHAnylIItOBTw34=; b=4pQVcttrcZxWTajZfLJYKG5Bdw
+	4ZBMxbI8plbg+oy02dJaTYKkahB2shCQhUq6VAx7xNWYorvvDw3Gsc5RnoKFSDf4sihMLNtL1D9LS
+	xueZt2+40hJQ4f738wGq2sDk6NlCn2Lc9v3QVtO27mFZDZSkqsFTwDRHlrbX7VdauHQq+tJevkl8s
+	c/AN/9xDfLIdwTUoRaDYEUtFNEQxhMc1ul8RvEoCsznGpwXpuBKhBzmmOWOT6RzfGvN2/UlaclWZP
+	poT5oz0NaMDLPm3Sod+5IzAI3I6+xmPquqwrBXuQcWtjsk15Ti1DOkxauSckWgooD5DQY6e/VEy67
+	9yS9Qv5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tx2A6-00000005ayI-3S9K;
-	Tue, 25 Mar 2025 11:09:38 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tx2DV-00000005bjG-2I3c;
+	Tue, 25 Mar 2025 11:13:09 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tx27B-00000005aMn-2u1D;
-	Tue, 25 Mar 2025 11:06:39 +0000
+	id 1tx27k-00000005aWu-2F16;
+	Tue, 25 Mar 2025 11:07:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1742900795;
-	bh=D0N/mgLzCXi4oZJoUT9/lMZngBeCJnMRqCEe8RPVzCw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=BDM6SVMILwPq70pCVbl5bItk8GC0tcw9Yf/34rYFw6mCnsN+0yUhfJ/hjiEeDmn72
-	 U/rtTB5SmTcJGgmK3BZgMDjTc0hOnJaukjn/UNzwgBnVk7brn9q0PkuiUIBfUuZDFV
-	 /zv/Zxa8KTIPQG2taIBBWZ5p/GXotmZq93q8rvpyMR3QhlH9TaqL4UWMJLUDFeiJav
-	 oaWEJjL7EdSh00MXLBQG9R/fO5qaK1ES5NL0feETn5ewOfDXhGrOCpSZC+OTwfLJOL
-	 KAzWvgqVBrQpvPHyVOUJI/5otjdYifxjbuAroFyqWGttAulvH7kZxZ+7Cd/mLVZAPr
-	 QrTihiq9olnjw==
-Received: from [192.168.50.250] (unknown [171.76.87.92])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	s=mail; t=1742900830;
+	bh=L6stbKrSJItr4b97Xxhs4L11+kqiuh6UY41CNBNHrRE=;
+	h=From:To:Cc:Subject:Date:From;
+	b=cKKkKRJU324QW2eljbzVlG3gkBQzcjDClqBQy9fPsTZLmOuzG8KhOm+D35N5Lq3be
+	 mhbyotG5G7LzurKTTOxhZJmtW/zzwxu0rcZr96XgHC2BQL/AXP28vXR7a68z1s7ZTj
+	 KkKkcTMQzunPKU7KIP1wnbgndCQxjyPG3dNJom383RC7pb2wNDHGMuC/K+ZAoW0i/Z
+	 vnC/uBtuM29bkJBnLA5G12TJsDqxlt6ysOeLDM7z1iTk+XJLQyIKPdbKSryRsYhFP7
+	 ut5N4QXYTjVD9U22cL30Q8hIYkq/9+HeWI/7lMaMI/SH1xJxT8/4YaNsNf3ujMz5WL
+	 e85Ed0TLJjZ5Q==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8ED1117E09D6;
-	Tue, 25 Mar 2025 12:06:30 +0100 (CET)
-Message-ID: <c71855d0-2638-4f06-9b75-cdbd137837bb@collabora.com>
-Date: Tue, 25 Mar 2025 16:36:00 +0530
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A01B117E09D6;
+	Tue, 25 Mar 2025 12:07:09 +0100 (CET)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: chaotian.jing@mediatek.com
+Cc: ulf.hansson@linaro.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-mmc@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	kernel@collabora.com,
+	axe.yang@mediatek.com
+Subject: [PATCH 0/4] mmc: mtk-sd: Cleanups for register R/W
+Date: Tue, 25 Mar 2025 12:06:57 +0100
+Message-ID: <20250325110701.52623-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 1/3] drm/ci: uprev mesa
-To: Daniel Stone <daniel@fooishbar.org>
-Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
- helen.fornazier@gmail.com, airlied@gmail.com, simona.vetter@ffwll.ch,
- robdclark@gmail.com, guilherme.gallo@collabora.com,
- sergi.blanch.torne@collabora.com, valentine.burley@collabora.com,
- lumag@kernel.org, quic_abhinavk@quicinc.com, mripard@kernel.org,
- jani.nikula@linux.intel.com, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org,
- amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, virtualization@lists.linux.dev,
- linux-kernel@vger.kernel.org
-References: <20250314085858.39328-1-vignesh.raman@collabora.com>
- <20250314085858.39328-2-vignesh.raman@collabora.com>
- <CAPj87rMjF84yyPqBshuGu=8qx6Xhq9Z-HgEnQe=tRtbu3E8OtQ@mail.gmail.com>
-Content-Language: en-US
-From: Vignesh Raman <vignesh.raman@collabora.com>
-In-Reply-To: <CAPj87rMjF84yyPqBshuGu=8qx6Xhq9Z-HgEnQe=tRtbu3E8OtQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250325_040637_890483_3B806657 
-X-CRM114-Status: UNSURE (   9.05  )
+X-CRM114-CacheID: sfid-20250325_040712_746091_D04ADF65 
+X-CRM114-Status: UNSURE (   6.86  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,26 +78,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+This series adds missing register field definitions for the MSDC patch
+bit registers and aggregates various register writes into just one,
+greatly lowering the amount of register reads and writes especially
+during the controller initialization phase, other than the tuning
+phases and set_ios for mclk setting.
 
-On 21/03/25 15:56, Daniel Stone wrote:
-> Hi Vignesh,
-> 
-> On Fri, 14 Mar 2025 at 08:59, Vignesh Raman <vignesh.raman@collabora.com> wrote:
->> LAVA was recently patched [1] with a fix on how parameters are parsed in
->> `lava-test-case`, so we don't need to repeat quotes to send the
->> arguments properly to it. Uprev mesa to fix this issue.
-> 
-> Thanks a lot; the series is:
-> Acked-by: Daniel Stone <daniels@collabora.com>
+While this will have a performance gain, that is completely ignorable,
+hence this series' only focus is a cleanup and an improvement in the
+readability of the register settings (as those now have actual names,
+some documenting, and no magic numbers around).
 
-Applied to drm-misc-next.
+This series brings no functional differences.
 
-Regards,
-Vignesh
+AngeloGioacchino Del Regno (4):
+  mmc: mtk-sd: Clarify patch bit register initialization and layout
+  mmc: mtk-sd: Aggregate writes for MSDC_PATCH_BIT1/2 setup
+  mmc: mtk-sd: Do single write in function msdc_new_tx_setting
+  mmc: mtk-sd: Aggregate R/W for top_base iospace case where possible
 
-> 
-> Cheers,
-> Daniel
-> 
+ drivers/mmc/host/mtk-sd.c | 207 ++++++++++++++++++++++++--------------
+ 1 file changed, 132 insertions(+), 75 deletions(-)
+
+-- 
+2.48.1
 
 
