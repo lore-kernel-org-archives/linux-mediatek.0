@@ -4,67 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B709C36008
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Mar 2025 10:21:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50DFDC36008
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Mar 2025 10:30:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hqe2Yp7IFfFJ9StH3iQ08pr7JVoIfbbzAz+K9lagJLU=; b=ebPoMTdhPGyDS8cvWctsh3ZQYy
-	/JRUrCHZMgI2EXK9nssmaKWteNN8EJ8zXDYR+G7X1QxoiihTYOpwj57SODcLGpyVUmb0YsRSvc8DL
-	hGSX2i/TNM0WPPNS7REYYHKlOs5l5GFyfQW8QdkthM4/MN07Uoe3xqikRrlDLSbPzw8Zj3FyYeOwS
-	w+1y4vGOquncN0Nr/b/KFPfHUM10Yzqf4LcrsETVYPpKyE8OjNfHxkbPsBremfJ+HYVlLJ6FhB6yH
-	deo3oV8xhKqxVj6gR9bM2YIakoknZJ+hoK5SvNlOowr0OUdB97jSoFr1a/X9AMXe+ODONAbs8obvs
-	P9UI058w==;
+	bh=XJUggdTIkfRJoVlc76dbKdX8mUmRG1iBcDIlJAi6v68=; b=OOh9z7DY6kOXxrYrFYLrXp3eJU
+	yG1szL1y1WdWDfL7vhTCbsGFnL1zDsr9gyUb8SQqHZ3bWLOawhiFAuHcpdMPZVp+30++li8xE1pAu
+	zP7dgd/WU1F+uVO46IHJmDB5cH7rRhcjkopnqAgnG7fz4Z0ZT+uyU7KA4TcGzXzMIWPjFEUR+fqe1
+	cWu5GSFiT6ijxnfIslxSZVXz2W/iQH35b95iJeL3QX6o8HVxBW9Urbxf4bUvsTck8nDN8+EmDJVrG
+	D5SZdqJfCLvYsn4cDTebZZkU6WeUuQS5NaHlXdcsYwQDROftK8GBX6EmFcUOGPs11J9V1HkCKN+Gr
+	nmy5jf+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1txNt2-00000008AJp-2Sj6;
-	Wed, 26 Mar 2025 10:21:28 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1txO2D-00000008CaA-21Pv;
+	Wed, 26 Mar 2025 10:30:57 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1txNqU-000000089oh-2Xbw;
-	Wed, 26 Mar 2025 10:18:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1742984329;
-	bh=q/nFNojlosborYJGt0qwUe6tullznsb4Pf2IVsxtddI=;
+	id 1txNyu-00000008Bfz-14eb;
+	Wed, 26 Mar 2025 10:27:33 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 37A5743BEE;
+	Wed, 26 Mar 2025 10:27:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8A3D7C4CEE2;
+	Wed, 26 Mar 2025 10:27:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1742984851;
+	bh=Xxyxru3tPYed0R2P7ea+/NwPUgMnKwxHss8FlSg3c40=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=R2w7KzYZhiCblvBuuvmzKgygHYi2uZCJ+vZIKkxh9za6J8dIz2FAZoiRvvM6OBmdI
-	 38FwuPBbPOrgaeJnsVXy81JlZ2l+ypPoTzCouhW+gZ4Ffm+7w2uPubNLS3utlWhZnj
-	 mIFuelbr0pR3PcR2LLEX7K+J0oNehKGrLvFaf+J0OeFWNp9zDy/aL6ObaWWZ1rovEK
-	 CoToye6Vmdx2cy4GJ8Sn2v+imUq8oJkI4rtiNF7r3qa5L0V6sDns8Xb6VFfM6uQbKw
-	 enm6x+qSmGOFhxNqz47IKsgb8Z6Di62ZiIfNKkPyV5gYE2Qrdp4ksrZFMuk18OagZh
-	 4L7kHRlPWWP+g==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 88E8017E0E8F;
-	Wed, 26 Mar 2025 11:18:48 +0100 (CET)
-Message-ID: <fb154077-e650-480e-a4d7-0a141b563dfc@collabora.com>
-Date: Wed, 26 Mar 2025 11:18:47 +0100
+	b=BoTXDB/JShvYFk/ygVu6KgxkrUH7CEipQlnLfFHqw6Qo7kRkwtGiJxSd8StsGz2GG
+	 TpG6JNClQHqXTocK2IfEnl+hXowpPA8mBvRmoZFLiMabiRYDBlMSj5LLd9o3O8vWa6
+	 eopiKqkJ9IZPzfWIrXLveihd+5BGFdOgC7w5czH++75GQfA5reCdK+fG6KQaQQ7Ocu
+	 /joGlCWwh8i9Bj0KqaLehax0Dx+VpsEcrWypL38XVquLa2l97/87o2bMSk7Xt/ZA8b
+	 EXthH0W/g1MMB5ow/9EooOxm+nB71+JcF/ACkcXH6W2Ju/iq/aj0tdAy2pfmX/fOWv
+	 www9F92PV+4kA==
+Message-ID: <12f9b9ca-330b-4417-a805-da3880bc168f@kernel.org>
+Date: Wed, 26 Mar 2025 11:27:24 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [v3,1/2] dt-bindings: memory-controllers: Add MediaTek DRAM
  controller interface
-To: Crystal Guo <crystal.guo@mediatek.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Rob Herring <robh@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Crystal Guo <crystal.guo@mediatek.com>
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20250326063041.7126-1-crystal.guo@mediatek.com>
  <20250326063041.7126-2-crystal.guo@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+ <20250326-courageous-cobra-of-promise-2c839e@krzk-bin>
+ <6e7ad33d-c0e3-4160-81c3-93f6c88976ae@collabora.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
-In-Reply-To: <20250326063041.7126-2-crystal.guo@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <6e7ad33d-c0e3-4160-81c3-93f6c88976ae@collabora.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250326_031850_791969_98829A90 
-X-CRM114-Status: GOOD (  13.72  )
+X-CRM114-CacheID: sfid-20250326_032732_337146_D074A88B 
+X-CRM114-Status: GOOD (  13.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,77 +123,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/03/25 07:30, Crystal Guo ha scritto:
-> A MediaTek DRAM controller interface to provide the current DDR
-> data rate.
+On 26/03/2025 11:17, AngeloGioacchino Del Regno wrote:
+> Il 26/03/25 08:56, Krzysztof Kozlowski ha scritto:
+>> On Wed, Mar 26, 2025 at 02:30:31PM +0800, Crystal Guo wrote:
+>>> A MediaTek DRAM controller interface to provide the current DDR
+>>> data rate.
+>>>
+>>> Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
+>>> ---
+>>>   .../memory-controllers/mediatek,dramc.yaml    | 44 +++++++++++++++++++
+>>>   1 file changed, 44 insertions(+)
+>>>   create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,dramc.yaml
+>>
+>> Where is the rest of the patchset in DT patchwork? Where is any
+>> changelog? Cover letter? What changed here?
+>>
+>> I receive dozen or hundreds of emails, so if you want to make
+>> it difficult for me to review, I will just ignore the patch.
+>>
+>> I mark it as changes requested.
+>>
 > 
-> Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
-> ---
->   .../memory-controllers/mediatek,dramc.yaml    | 44 +++++++++++++++++++
->   1 file changed, 44 insertions(+)
->   create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,dramc.yaml
+> Krzysztof, I do see that devicetree cc'ed in all of the patches that Crystal
+> sent - including the cover letter... and the cover letter has a changelog... :-)
 > 
-> diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,dramc.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,dramc.yaml
-> new file mode 100644
-> index 000000000000..8bdacfc36cb5
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,dramc.yaml
+> Was there any temporary issue with the DT patchwork or something, maybe?
+> 
+> I anyway had to request some changes so no worries.
 
-The filename should be "mediatek,mt8196-dramc.yaml"
-
-
-> @@ -0,0 +1,44 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +# Copyright (c) 2025 MediaTek Inc.
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/memory-controllers/mediatek,dramc.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek DRAM Controller (DRAMC)
-> +
-> +maintainers:
-> +  - Crystal Guo <crystal.guo@mediatek.com>
-> +
-> +description:
-> +  A MediaTek DRAM controller interface to provide the current data rate of DRAM.
-> +
-> +properties:
-> +  compatible:
-> +    items:
-> +      - enum:
-> +          - mediatek,mt8196-dramc
-
-P.S.: bindings maintainers: this driver is expected to get more compatibles soon.
-
-Cheers,
-Angelo
+I was not precise. Rob's DT review process, which I also use, fetches
+entire thread with b4 and then runs local mail client (mutt) on it. I
+got only the binding patch. I see entire thread on my other mail client
+(I often don't connect these in my brain), so indeed no clue what happened.
 
 
-> +
-> +  reg:
-> +    items:
-> +      - description: anaphy registers
-> +      - description: ddrphy registers
-> +
-> +additionalProperties: false
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +
-> +examples:
-> +  - |
-> +    soc {
-> +        #address-cells = <2>;
-> +        #size-cells = <2>;
-> +
-> +        memory-controller@10236000 {
-> +            compatible = "mediatek,mt8196-dramc";
-> +            reg = <0 0x10236000 0 0x2000>,
-> +                  <0 0x10238000 0 0x2000>;
-> +        };
-> +    };
-
-
+Best regards,
+Krzysztof
 
