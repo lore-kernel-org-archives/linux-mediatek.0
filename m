@@ -4,94 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2CB4C36008
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Mar 2025 10:14:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82622C36008
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Mar 2025 10:19:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=u+DNp9QMgdrRGLxMsL46W/r+9G/+hiEbxecdzU4iISI=; b=TXsO4/pGzoS0UeQZ6KhwMrcvul
-	sGNDdSYSuth5pkuY2W2pcaAchy/Exk/bd5dFGTXGOpEO4UllbYUqGPjpJ4dnGfCs+28Np9SyQT0H2
-	NgQXu4ZAE4yZAgJPgZ2SKUQUabWZpp+Msrn2V0UHd4QUW3LusmjPRX8UN3T7owzV520DkPPRIDmUJ
-	86vlIVseCJeSv1yqBsCQgvVy9iOzxrIrsfM+iHiWyVEAWQ3olEzB/hF+tKTjKzcBgoWr3eRvHmGve
-	7YIPDkWWJON/GJt0vNWI/vVzBZW9msxqU/gkBRMr7OUFiMwgFG7RqEZcaum0deioq1NNM4SWELWKo
-	vygJrIug==;
+	bh=t3PfDdHFaYgoo5q+CK9acBY6BX1CACgiqMX4CHLm94g=; b=Ss/3F2Ws+a9dX3gfGUOFdo01C0
+	I/ikCY+L0mTurEKvDFAJFoP4BgSijUkxauNisdecpHV9JJx22sc3bcH9iTGtsthh2/NVsiTdAEaHc
+	nHMffv45YZUeh7AdEfnRlRoMwMojG65RBdPOHh1EuJan1/CLfoh8+JCjWWhY1nypzVChURkofbSGP
+	ajjrsydMU31bVt96oYF5+bity/8C5sTMN26yBQUoevsfKgPOnpcPfGnTTACFGh8hagMbGvv3qYYLZ
+	bdup+m7ZmfsyOrg5idHIbeZaiO3h93gbh7NVQpk5evSBflAl4NE2cwbU7WwJ+GlaZP7VMiDZiBSFp
+	/WxS5iDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1txNmX-0000000894M-48fS;
-	Wed, 26 Mar 2025 10:14:45 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1txNrK-000000089t5-2GJg;
+	Wed, 26 Mar 2025 10:19:42 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1txNmU-00000008939-0Eid
-	for linux-mediatek@lists.infradead.org;
-	Wed, 26 Mar 2025 10:14:44 +0000
-Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-43cf3192f3bso56857715e9.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 26 Mar 2025 03:14:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1742984080; x=1743588880; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=u+DNp9QMgdrRGLxMsL46W/r+9G/+hiEbxecdzU4iISI=;
-        b=KSjoM3BPmFBMXuRy0Pu6eGyCVVwfPNU7Z+K6ihMVD8xKp1zwkPERCG6G7owy6GTj/r
-         2drfsOU1z8p1P9Ca3nYwUOP3J69RLjeYwEdXKOt3anKLn9N2retM+/EcEATQEeXoac0N
-         PL3dDEJyjNENHAYjaClQHyRLcV46dwyuP8ORibiaRTn12shyBjlPBbnSVJtxVutYCblg
-         wnBNh7OsvJe1DeBe02Y6G2mCGses/dJ/qiB2jwHjYbZme9YrRqDzAox+MOlZmQFuwbct
-         axTmGMWFHCdJJ+vfu1OX1QMbCd+YkiJJMqmVMcfQNf2pGUAQSMquzgPpclofsFp+EE52
-         dk5A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742984080; x=1743588880;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=u+DNp9QMgdrRGLxMsL46W/r+9G/+hiEbxecdzU4iISI=;
-        b=IXSEGspisI6WS7elvi7/f80m4jQUY5gMSjXpjYJkJAxLcMhD5gKFFZvjwVokUDV6RA
-         5cZdlDgDX1X1Y566YhPmbQtCHs3a2GKLAfbIH2lOnYw5WsMdHTlLVrkGWKE/XRTnf56h
-         DO+1gMJKcy6wxrnU4vZmzLL+vg9073RyA6K3zjyxq0rsKcmx8WEHL5zsxZEPgsmKjbQ5
-         wTmAsJI4/a9fZywl9qUVU3R1MGMdfa0x4Rg7v2w6WGjx+7w8IlikAX4Z7Kqm6NTaI65B
-         Su0dSTMZ2iQFjWRx3FWnUMafITxQ7nzrVLKQAxFB96hXZpK/+h6I9q7xUxDpMKg/GNOu
-         McEA==
-X-Forwarded-Encrypted: i=1; AJvYcCXtjRXJo3w6lh7bqmqA+YQY8fzgBigfw9fEVTkxdR0kw7MyussdgHQOBbGQImQoscXTCIFEKeWDA6KhQIRPOQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzryFzNcQifRH6PQRDBgJvj9HmkAxsMWtxYjDCzPfMLVyeMe0H4
-	4c1N7z0rmiZi0gcgSNWRV7knDm47yYhE1dkNUD42ymvfKTSgvXRNVf8a6reI3dA=
-X-Gm-Gg: ASbGncun6kjkBu0d79HjJl1eOfocBp/cLEtU2XTsoXrQvUqFqpt5qKktIytS7+bMvUf
-	ppH8AvuqmdFDINUJtQ4k5aODnjn+kKHxDnL0FEI7s9YxXdVVlSmf30OBRdosDHoJFQISisk1C6b
-	41clL3XgNDjc3FfGhWSxql5s7ZFazCyXCiVeo3H7CYgPidpRQQv8xNhl2JMsofH2zCb5zwS+3sN
-	JwcJwqVcByWvOkOHh+nlwil/qiKIvqSf8xZm4nD/7J7184ZijbY0kf5RvrxEV7jOzJXeLKy653u
-	jH94kekKEzfz8KKz6C3NPWJ757agzJ42hnVoBDz1wxpZv57kB7gjWiRYCyVtZGWgS5JML7BuZ5d
-	Y5+ZtQ20+GjNl8mRw
-X-Google-Smtp-Source: AGHT+IHwhUQzzlTOSTisycIZUmQB3vcpLzOCNhJ8f/5tktjjSbuVrOP11IMJCJMu5JzNW6Sn0rBjNw==
-X-Received: by 2002:a05:600c:1e07:b0:43c:fdbe:439b with SMTP id 5b1f17b1804b1-43d509e374bmr207124305e9.4.1742984079808;
-        Wed, 26 Mar 2025 03:14:39 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:5ee:79d0:9b00:d804:1c3a:7697? ([2a01:e0a:5ee:79d0:9b00:d804:1c3a:7697])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43d4fdbcfaasm176097065e9.35.2025.03.26.03.14.38
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 26 Mar 2025 03:14:39 -0700 (PDT)
-Message-ID: <8fde6af6-baaa-4f26-b9c0-a17ebcb67073@baylibre.com>
-Date: Wed, 26 Mar 2025 11:14:38 +0100
+	id 1txNpa-000000089gz-25pO;
+	Wed, 26 Mar 2025 10:17:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1742984272;
+	bh=HpBiFIVpWXiykM13dQ/yHPEonhKPXJCHKDyxubErAAQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Yv5bD2lPXSKwUy1+SERNNdlr/RzEvR8PspwtvDjs+Uxv8RssIK88D0SpbEW2RQfM0
+	 OiCCbAoqHOShARwed4QF+NEEG47DjoTjhP1D/RDuHg2HiPL05RycooONUTF5IDuINu
+	 j8FFUR6ZiWu5Dyk1Ldkue0yY5c9liU9juyOgdYL31oXfgLFGqg7rhlqZaV2SFmdFpt
+	 VKfSfdrvE7cVjrJ/FNlk9f1o1CNaS4cfJzDSgfRsikzLM7fuvkBKT12vvWt3Xzv3sf
+	 BxGTPNRp9tB+7CpMWTYO4/tkw6HNAVofvlY7E2vvVULi43e5ov+vgqzut5XrZra/S7
+	 +FkYBCoe3+s3Q==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9590417E0E8F;
+	Wed, 26 Mar 2025 11:17:51 +0100 (CET)
+Message-ID: <6e7ad33d-c0e3-4160-81c3-93f6c88976ae@collabora.com>
+Date: Wed, 26 Mar 2025 11:17:50 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RESEND v2] arm64: dts: mediatek: add mmc2 support for
- mt8365-evk
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, macpaul.Lin@mediatek.com
-Cc: vsatoes@baylibre.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20250109-mmc2-support-v2-1-5f660c809610@baylibre.com>
- <ecd8a46e-0f87-498e-8a12-fdeae6f5791d@collabora.com>
+Subject: Re: [v3,1/2] dt-bindings: memory-controllers: Add MediaTek DRAM
+ controller interface
+To: Krzysztof Kozlowski <krzk@kernel.org>,
+ Crystal Guo <crystal.guo@mediatek.com>
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20250326063041.7126-1-crystal.guo@mediatek.com>
+ <20250326063041.7126-2-crystal.guo@mediatek.com>
+ <20250326-courageous-cobra-of-promise-2c839e@krzk-bin>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <ecd8a46e-0f87-498e-8a12-fdeae6f5791d@collabora.com>
+In-Reply-To: <20250326-courageous-cobra-of-promise-2c839e@krzk-bin>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250326_031442_339160_6BBC03F8 
-X-CRM114-Status: GOOD (  19.83  )
+X-CRM114-CacheID: sfid-20250326_031754_697863_A56DB1F3 
+X-CRM114-Status: GOOD (  13.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,209 +81,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Angelo,
-
-Thanks for the review :D
-
-I've some comment below:
-
-On 24/03/2025 15:09, AngeloGioacchino Del Regno wrote:
-> Il 24/03/25 14:54, Alexandre Mergnat ha scritto:
->> Adds support for the MMC2 interface on the MT8365 EVK board.
->> It introduces a fixed regulator for the MMC2 VDD33 supply and configures
->> the MMC2 node with a 4-bit bus width, high-speed capabilities, UHS
->> modes, and appropriate power supplies. Enabled SDIO IRQ, wakeup source,
->> and kept power during suspend (to save firmware module) for wireless
->> chip functionality.
+Il 26/03/25 08:56, Krzysztof Kozlowski ha scritto:
+> On Wed, Mar 26, 2025 at 02:30:31PM +0800, Crystal Guo wrote:
+>> A MediaTek DRAM controller interface to provide the current DDR
+>> data rate.
 >>
->> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+>> Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
 >> ---
->> Changes in v2:
->> - Apply alphabetical order to pinctrl property items.
->> - Improve commit message
->> - Link to v1: https://lore.kernel.org/r/20250109-mmc2-support-v1-1-9b9d1b1ae35d@baylibre.com
->> ---
->>   arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 103 +++++++++++++++++++++++++---
->>   1 file changed, 94 insertions(+), 9 deletions(-)
->>
->> diff --git a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts 
->> b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
->> index 7d90112a7e274..a87f1b3ed6500 100644
->> --- a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
->> +++ b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
->> @@ -53,6 +53,15 @@ memory@40000000 {
->>           reg = <0 0x40000000 0 0xc0000000>;
->>       };
->> +    mmc2_vdd33: mmc2_vdd33-regulator {
->> +        compatible = "regulator-fixed";
->> +        regulator-name = "mmc2_vdd33";
+>>   .../memory-controllers/mediatek,dramc.yaml    | 44 +++++++++++++++++++
+>>   1 file changed, 44 insertions(+)
+>>   create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,dramc.yaml
 > 
-> mmc2-vdd33 please
-
-Ok
-
+> Where is the rest of the patchset in DT patchwork? Where is any
+> changelog? Cover letter? What changed here?
 > 
->> +        regulator-min-microvolt = <3300000>;
->> +        regulator-max-microvolt = <3300000>;
->> +        gpio = <&pio 121 0>;
->> +        enable-active-high;
->> +    };
->> +
->>       usb_otg_vbus: regulator-0 {
->>           compatible = "regulator-fixed";
->>           regulator-name = "otg_vbus";
-
-Then, I will change this too.
-
->> @@ -197,6 +206,28 @@ &mmc1 {
->>       status = "okay";
->>   };
->> +&mmc2 {
->> +    assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL>;
->> +    assigned-clocks = <&topckgen CLK_TOP_MSDC50_2_SEL>;
->> +    bus-width = <4>;
->> +    cap-sd-highspeed;
->> +    cap-sdio-irq;
->> +    hs400-ds-delay = <0x12012>;
->> +    keep-power-in-suspend;
->> +    max-frequency = <200000000>;
->> +    non-removable;
->> +    pinctrl-0 = <&mmc2_default_pins>;
->> +    pinctrl-1 = <&mmc2_uhs_pins>;
->> +    pinctrl-names = "default", "state_uhs";
->> +    sd-uhs-sdr104;
->> +    sd-uhs-sdr25;
->> +    sd-uhs-sdr50;
->> +    vmmc-supply = <&mmc2_vdd33>;
->> +    vqmmc-supply = <&mt6357_vcn18_reg>;
->> +    wakeup-source;
->> +    status = "okay";
->> +};
->> +
->>   &mt6357_pmic {
->>       interrupts-extended = <&pio 145 IRQ_TYPE_LEVEL_HIGH>;
->>       interrupt-controller;
->> @@ -324,8 +355,8 @@ cmd-dat-pins {
->>                    <MT8365_PIN_94_MSDC0_DAT6__FUNC_MSDC0_DAT6>,
->>                    <MT8365_PIN_93_MSDC0_DAT7__FUNC_MSDC0_DAT7>,
->>                    <MT8365_PIN_98_MSDC0_CMD__FUNC_MSDC0_CMD>;
->> -            input-enable;
->>               bias-pull-up;
->> +            input-enable;
+> I receive dozen or hundreds of emails, so if you want to make
+> it difficult for me to review, I will just ignore the patch.
 > 
-> This is a cleanup and goes to a different commit
-
-Agree
-
-> 
->>           };
->>           rst-pins {
->> @@ -337,8 +368,8 @@ rst-pins {
->>       mmc0_uhs_pins: mmc0-uhs-pins {
->>           clk-pins {
->>               pinmux = <MT8365_PIN_99_MSDC0_CLK__FUNC_MSDC0_CLK>;
->> -            drive-strength = <MTK_DRIVE_10mA>;
->>               bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
->> +            drive-strength = <MTK_DRIVE_10mA>;
-> 
-> While at it, in a cleanup commit, if you could also remove those MTK_DRIVE_xxx and
-> use just the number that'd be great.
-
-Sure
-
-> 
->>           };
->>           cmd-dat-pins {
->> @@ -351,21 +382,21 @@ cmd-dat-pins {
->>                    <MT8365_PIN_94_MSDC0_DAT6__FUNC_MSDC0_DAT6>,
->>                    <MT8365_PIN_93_MSDC0_DAT7__FUNC_MSDC0_DAT7>,
->>                    <MT8365_PIN_98_MSDC0_CMD__FUNC_MSDC0_CMD>;
->> -            input-enable;
->> -            drive-strength = <MTK_DRIVE_10mA>;
->>               bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
->> +            drive-strength = <MTK_DRIVE_10mA>;
->> +            input-enable;
->>           };
->>           ds-pins {
->>               pinmux = <MT8365_PIN_104_MSDC0_DSL__FUNC_MSDC0_DSL>;
->> -            drive-strength = <MTK_DRIVE_10mA>;
->>               bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
->> +            drive-strength = <MTK_DRIVE_10mA>;
->>           };
->>           rst-pins {
->>               pinmux = <MT8365_PIN_97_MSDC0_RSTB__FUNC_MSDC0_RSTB>;
->> -            drive-strength = <MTK_DRIVE_10mA>;
->>               bias-pull-up;
->> +            drive-strength = <MTK_DRIVE_10mA>;
->>           };
->>       };
->> @@ -386,16 +417,16 @@ cmd-dat-pins {
->>                    <MT8365_PIN_91_MSDC1_DAT2__FUNC_MSDC1_DAT2>,
->>                    <MT8365_PIN_92_MSDC1_DAT3__FUNC_MSDC1_DAT3>,
->>                    <MT8365_PIN_87_MSDC1_CMD__FUNC_MSDC1_CMD>;
->> -            input-enable;
->>               bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
->> +            input-enable;
->>           };
->>       };
->>       mmc1_uhs_pins: mmc1-uhs-pins {
->>           clk-pins {
->>               pinmux = <MT8365_PIN_88_MSDC1_CLK__FUNC_MSDC1_CLK>;
->> -            drive-strength = <8>;
->>               bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
->> +            drive-strength = <8>;
->>           };
->>           cmd-dat-pins {
->> @@ -404,9 +435,63 @@ cmd-dat-pins {
->>                    <MT8365_PIN_91_MSDC1_DAT2__FUNC_MSDC1_DAT2>,
->>                    <MT8365_PIN_92_MSDC1_DAT3__FUNC_MSDC1_DAT3>,
->>                    <MT8365_PIN_87_MSDC1_CMD__FUNC_MSDC1_CMD>;
->> -            input-enable;
->> +            bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
->>               drive-strength = <6>;
->> +            input-enable;
->> +        };
->> +    };
->> +
->> +    mmc2_default_pins: mmc2-default-pins {
->> +        clk-pins {
->> +            pinmux = <MT8365_PIN_81_MSDC2_CLK__FUNC_MSDC2_CLK>;
->> +            bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
->> +            drive-strength = <4>;
->> +        };
->> +
->> +        cmd-dat-pins {
->> +            pinmux = <MT8365_PIN_82_MSDC2_DAT0__FUNC_MSDC2_DAT0>,
->> +                 <MT8365_PIN_83_MSDC2_DAT1__FUNC_MSDC2_DAT1>,
->> +                 <MT8365_PIN_84_MSDC2_DAT2__FUNC_MSDC2_DAT2>,
->> +                 <MT8365_PIN_85_MSDC2_DAT3__FUNC_MSDC2_DAT3>,
->> +                 <MT8365_PIN_80_MSDC2_CMD__FUNC_MSDC2_CMD>;
->>               bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
->> +            drive-strength = <4>;
->> +            input-enable;
->> +        };
->> +
->> +        sys-en-pins {
->> +            pinmux = <MT8365_PIN_120_DMIC1_CLK__FUNC_GPIO120>;
-> 
-> My schematics say that the DMIC1_CLK pin is PERST_N, DMIC_DAT0 is PWR_EN: what's
-> the intention here?!
-> 
-> In any case, this is not a mmc2 pin, but something else :-)
-
-First of all, name in schematic are wrong, I noticed that when I've port these feature from kernel 
-5.15 to 6.6. After digging and talking to MTK, they confirm me that PERST_N is actually an enable 
-pin (or power_on).
-
-Secondly, MT7663_PERST_N (MT8365_PIN_120_DMIC1_CLK__FUNC_GPIO120) is part of mmc2 pin since is it 
-connected to the MMC2 connector pin number 52.
-
-> 
-> Cheers,
-> Angelo
+> I mark it as changes requested.
 > 
 
--- 
-Regards,
-Alexandre
+Krzysztof, I do see that devicetree cc'ed in all of the patches that Crystal
+sent - including the cover letter... and the cover letter has a changelog... :-)
+
+Was there any temporary issue with the DT patchwork or something, maybe?
+
+I anyway had to request some changes so no worries.
+
+Cheers,
+Angelo
 
