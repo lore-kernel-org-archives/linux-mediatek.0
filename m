@@ -4,95 +4,130 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 009B8C3600B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Mar 2025 11:39:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5ECF1C36011
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Mar 2025 21:47:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SiDyYekmZNMSivdab4Zrek7jwPATeBFWbRgjeMVU2kg=; b=P1DGvwDTZaw7tkmsHYx6Vb5B56
-	nBmLd8ke7b/Mc3QNfiUTpVMMcZa4EY52QRC0PZVdwwnuZq/bJVbJpV5RWx52hmSpuQnLb5JZVjfj3
-	ELMgUq7nwSI+GMGonCZV61FO18gRo4zYOZbPD5IZgRGMgszHIMajCAdZX9RpmqHwbD0TJJ3UQ7oPF
-	9D2Ah7AUsTbT+BeRg4/v7z/nJJ+03i5chOBea2hDR01qqaYNBHm7FPIjPQTuOMqJrO7EVZL2aizya
-	8/hQIutlxPmm6F3Y/z9wFaMrm1JiyE62rX6zBrY5YrqTJNUzqkM0buzX2t0vOtpg+fTEJVFZKO94T
-	LwoWtskA==;
+	bh=zvANn6MKGnI/R3dATeqeGh0E6qIlFeBO/SDqOqZXNB4=; b=B7gkgB/E0T17PHiYBaBSqTiztk
+	hg4Y07fohFMdPTU8mKfyjyoo6XWjs0UxHBIY90aK45G0FmN3asv94Ivm+x/bau6Nf283uNx4eOSF2
+	Y0lNLJQU+MPTqobgf1YNnaSaUkdhp23jKi/73QRZpKj4C/xjKk7iX8EdfrVCsqjtB4aeaMxhAPVcs
+	2UhKonU6J8B5yS1eHsyNhUo9salFUNO70lloFt1/3cMNHMA3CtAaTiV2wyDAv0G/J0X5qhRJjKHj5
+	h6GxJ/+m+N6cya6HYjtiIHu7ardL14n/+4VD/kxltMiBuasdOeEktWmTJTG1wrYEqWHX1g4Gz1WYO
+	JX3IxJ8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1txlaB-0000000AqQn-0Y62;
-	Thu, 27 Mar 2025 11:39:35 +0000
-Received: from 003.mia.mailroute.net ([199.89.3.6])
+	id 1txv4L-0000000C5t6-1WSy;
+	Thu, 27 Mar 2025 21:47:21 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1txlYQ-0000000Aq79-0U2Q;
-	Thu, 27 Mar 2025 11:37:47 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 003.mia.mailroute.net (Postfix) with ESMTP id 4ZNhTp2gcgzm0GTW;
-	Thu, 27 Mar 2025 11:37:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1743075451; x=1745667452; bh=SiDyYekmZNMSivdab4Zrek7j
-	wPATeBFWbRgjeMVU2kg=; b=HIN67TwmZCtgN/QnU4Iglp3zfThOppqJZmwn9gxR
-	tjyKuoN7ymVRADOc+jgcxtdb+k9S5Gz6jWy3NQG/2kVJe6Dspu0XBZqFKfuV0E6O
-	4rfMfs5zueHztCNMi6RWR/Ru18OgpnqfcyFE1ScSyij2OTMsOw1SIbFi7vo3hqim
-	RdHjQ5CNWn282Zxly66VXILMTjSS2Z2tL4LNrRk0PBaX+P9XT61vutbANkWuZNF9
-	lsMs4WlWUcYZLagbwJzjFp8bfx2ZA1dbiGSXpbM8Gki9nuIcGRUJyqO+0V8vu0a/
-	xQRQD6+jhWx/Vz4ZGizHcYY+MdLA7eTP1iwlEbm/h73IaA==
-X-Virus-Scanned: by MailRoute
-Received: from 003.mia.mailroute.net ([127.0.0.1])
- by localhost (003.mia [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id WXirvB8zVYkM; Thu, 27 Mar 2025 11:37:31 +0000 (UTC)
-Received: from [10.47.187.167] (unknown [91.223.100.87])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 003.mia.mailroute.net (Postfix) with ESMTPSA id 4ZNhTD50Rxzlmm8q;
-	Thu, 27 Mar 2025 11:37:03 +0000 (UTC)
-Message-ID: <3d7b543c-1165-42e0-8471-25b04c7572ac@acm.org>
-Date: Thu, 27 Mar 2025 07:36:56 -0400
+	id 1txv2a-0000000C5jq-2Sww;
+	Thu, 27 Mar 2025 21:45:33 +0000
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 52RFOsjC005967;
+	Thu, 27 Mar 2025 21:45:12 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	zvANn6MKGnI/R3dATeqeGh0E6qIlFeBO/SDqOqZXNB4=; b=Qgw/8FeyzSmI1wlB
+	NfZnvKcBcpSNZt7B94o8k/ebxojfA/8usORWpJsGNHzNzeM05YvqRUdCY7Kp2ARz
+	g3fc0X28lGyHiUt4Yh0AuPYfjg8wJS+JTjwsS8/9lOAAVj3ah1MOqbKn9aQ0xXYf
+	JcmqcrUN+LNykHIbvC7sHloXfD2NAMZjyy724owaUuVTc71Bmz8nOvaM1Pow2Vi+
+	a6osk9abCncVB2QbmfN7bdF/lZU+k3du3um/I9gBiEhNVXwS7nofdz67m+Jy+loM
+	+kWaO+IgkFOWEo+lIyjtB4TefMz6Of8q9nQcFmLOhTx60gfG7f9QjvDcmsYq115r
+	Ns/Xhw==
+Received: from nasanppmta03.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 45m7nf6pfh-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 27 Mar 2025 21:45:11 +0000 (GMT)
+Received: from nasanex01a.na.qualcomm.com (nasanex01a.na.qualcomm.com [10.52.223.231])
+	by NASANPPMTA03.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTPS id 52RLjA95029897
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 27 Mar 2025 21:45:10 GMT
+Received: from [10.46.162.103] (10.80.80.8) by nasanex01a.na.qualcomm.com
+ (10.52.223.231) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Thu, 27 Mar
+ 2025 14:45:10 -0700
+Message-ID: <4cb20c80-9bb0-e147-e3c0-467f4c8828ba@quicinc.com>
+Date: Thu, 27 Mar 2025 14:45:10 -0700
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
 Subject: Re: [PATCH v4 1/1] scsi: ufs: core: add device level exception
  support
-To: "Bao D. Nguyen" <quic_nguyenb@quicinc.com>,
- Arthur Simchaev <Arthur.Simchaev@sandisk.com>,
- "quic_cang@quicinc.com" <quic_cang@quicinc.com>,
- "quic_nitirawa@quicinc.com" <quic_nitirawa@quicinc.com>,
- "avri.altman@wdc.com" <avri.altman@wdc.com>,
- "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
- "manivannan.sadhasivam@linaro.org" <manivannan.sadhasivam@linaro.org>,
- "minwoo.im@samsung.com" <minwoo.im@samsung.com>,
- "adrian.hunter@intel.com" <adrian.hunter@intel.com>,
- "martin.petersen@oracle.com" <martin.petersen@oracle.com>
-Cc: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
- Alim Akhtar <alim.akhtar@samsung.com>,
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Bean Huo <beanhuo@micron.com>, Keoseong Park <keosung.park@samsung.com>,
- Ziqi Chen <quic_ziqichen@quicinc.com>, Al Viro <viro@zeniv.linux.org.uk>,
- Gwendal Grignou <gwendal@chromium.org>, Eric Biggers <ebiggers@google.com>,
- open list <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support:Keyword:mediatek"
- <linux-arm-kernel@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support:Keyword:mediatek"
- <linux-mediatek@lists.infradead.org>
+Content-Language: en-US
+To: Bart Van Assche <bvanassche@acm.org>,
+        Arthur Simchaev
+	<Arthur.Simchaev@sandisk.com>,
+        "quic_cang@quicinc.com"
+	<quic_cang@quicinc.com>,
+        "quic_nitirawa@quicinc.com"
+	<quic_nitirawa@quicinc.com>,
+        "avri.altman@wdc.com" <avri.altman@wdc.com>,
+        "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
+        "manivannan.sadhasivam@linaro.org" <manivannan.sadhasivam@linaro.org>,
+        "minwoo.im@samsung.com" <minwoo.im@samsung.com>,
+        "adrian.hunter@intel.com"
+	<adrian.hunter@intel.com>,
+        "martin.petersen@oracle.com"
+	<martin.petersen@oracle.com>
+CC: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+        Alim Akhtar
+	<alim.akhtar@samsung.com>,
+        "James E.J. Bottomley"
+	<James.Bottomley@HansenPartnership.com>,
+        Matthias Brugger
+	<matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>,
+        Bean Huo <beanhuo@micron.com>,
+        Keoseong Park <keosung.park@samsung.com>,
+        Ziqi Chen
+	<quic_ziqichen@quicinc.com>,
+        Al Viro <viro@zeniv.linux.org.uk>,
+        "Gwendal
+ Grignou" <gwendal@chromium.org>,
+        Eric Biggers <ebiggers@google.com>,
+        open
+ list <linux-kernel@vger.kernel.org>,
+        "moderated list:ARM/Mediatek SoC
+ support:Keyword:mediatek" <linux-arm-kernel@lists.infradead.org>,
+        "moderated
+ list:ARM/Mediatek SoC support:Keyword:mediatek"
+	<linux-mediatek@lists.infradead.org>
 References: <4370b3a3b5a5675bb3e75aaa48a273674c159339.1742526978.git.quic_nguyenb@quicinc.com>
  <SA2PR16MB4251229744D717821D3D8353F4A72@SA2PR16MB4251.namprd16.prod.outlook.com>
  <c5ab13ec-f650-ea10-5cb8-d6a2ddf1e825@quicinc.com>
  <0a68d437-5d6a-42aa-ae4e-6f5d89cfcaf3@acm.org>
  <ad246ef4-7429-63bb-0279-90738736f6e3@quicinc.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <ad246ef4-7429-63bb-0279-90738736f6e3@quicinc.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+ <3d7b543c-1165-42e0-8471-25b04c7572ac@acm.org>
+From: "Bao D. Nguyen" <quic_nguyenb@quicinc.com>
+In-Reply-To: <3d7b543c-1165-42e0-8471-25b04c7572ac@acm.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nasanex01a.na.qualcomm.com (10.52.223.231)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: nCKyFslt_4G4_-qPtbD5MfnbT8RKH2fg
+X-Proofpoint-GUID: nCKyFslt_4G4_-qPtbD5MfnbT8RKH2fg
+X-Authority-Analysis: v=2.4 cv=IMMCChvG c=1 sm=1 tr=0 ts=67e5c6e7 cx=c_pps a=JYp8KDb2vCoCEuGobkYCKw==:117 a=JYp8KDb2vCoCEuGobkYCKw==:17 a=GEpy-HfZoHoA:10 a=IkcTkHD0fZMA:10 a=Vs1iUdzkB0EA:10 a=St5hpErUO6hIVgotEGUA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1095,Hydra:6.0.680,FMLib:17.12.68.34
+ definitions=2025-03-27_04,2025-03-27_02,2024-11-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 suspectscore=0
+ impostorscore=0 malwarescore=0 mlxscore=0 clxscore=1015 phishscore=0
+ priorityscore=1501 mlxlogscore=999 adultscore=0 lowpriorityscore=0
+ bulkscore=0 spamscore=0 classifier=spam authscore=0 authtc=n/a authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2502280000
+ definitions=main-2503270146
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250327_043746_220376_A07134E0 
-X-CRM114-Status: GOOD (  16.22  )
+X-CRM114-CacheID: sfid-20250327_144532_650800_4C8608FC 
+X-CRM114-Status: GOOD (  20.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,45 +142,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 3/26/25 7:47 PM, Bao D. Nguyen wrote:
-> On 3/26/2025 3:49 AM, Bart Van Assche wrote:
->> On 3/25/25 6:15 PM, Bao D. Nguyen wrote:
->>> The existing "struct utp_upiu_query_v4_0" probably has a bug in it.=20
->>> It does not use the=C2=A0 __attribute__((__packed__)) attribute. The=20
->>> compiler is free to add padding in this structure, resulting in the=20
->>> read attribute value being incorrect. I plan to provide a separate=20
->>> patch to fix this issue.
->>
->> Adding __attribute__((__packed__)) or __packed to data structures that
->> don't need it is not an improvement but is a change that makes
->> processing slower on architectures that do not support unaligned
->> accesses. Instead of adding __packed to data structures in their
->> entirety, only add it to those members that need it and check the
->> structure size as follows:
->>
->> static_assert(sizeof(...) =3D=3D ...);
->>
-> Thank you for the info on this, Bart.
-> IMO, this response upiu data should be __packed because the data coming=
-=20
-> from the hardware follows a strict format as defined by the spec. If we=
-=20
-> support __pack each individual field which data may be read by the=20
-> driver (the attribute read commands) and check the validity of their=20
-> sizes, it may add some complexity?
+On 3/27/2025 4:36 AM, Bart Van Assche wrote:
+> On 3/26/25 7:47 PM, Bao D. Nguyen wrote:
+>> On 3/26/2025 3:49 AM, Bart Van Assche wrote:
+>>> On 3/25/25 6:15 PM, Bao D. Nguyen wrote:
+>>>> The existing "struct utp_upiu_query_v4_0" probably has a bug in it. 
+>>>> It does not use the  __attribute__((__packed__)) attribute. The 
+>>>> compiler is free to add padding in this structure, resulting in the 
+>>>> read attribute value being incorrect. I plan to provide a separate 
+>>>> patch to fix this issue.
+>>>
+>>> Adding __attribute__((__packed__)) or __packed to data structures that
+>>> don't need it is not an improvement but is a change that makes
+>>> processing slower on architectures that do not support unaligned
+>>> accesses. Instead of adding __packed to data structures in their
+>>> entirety, only add it to those members that need it and check the
+>>> structure size as follows:
+>>>
+>>> static_assert(sizeof(...) == ...);
+>>>
+>> Thank you for the info on this, Bart.
+>> IMO, this response upiu data should be __packed because the data 
+>> coming from the hardware follows a strict format as defined by the 
+>> spec. If we support __pack each individual field which data may be 
+>> read by the driver (the attribute read commands) and check the 
+>> validity of their sizes, it may add some complexity?
+> 
+> Hi Bao,
+> 
+> As explained in my previous email, adding __packed to data structures in
+> their entirety is a bad practice. Please don't do this.
+> 
+> Regarding your question: I have not yet seen any data structure that
+> represents an on-the-wire data format where every single data member
+> has to be annotated with __packed. Only data members that are not
+> aligned to a natural boundary need this annotation. Examples are
+> available in this header file: include/scsi/srp.h.
+> 
 
-Hi Bao,
+Thanks Bart. How about we change the current utp_upiu_query_v4_0 to
 
-As explained in my previous email, adding __packed to data structures in
-their entirety is a bad practice. Please don't do this.
+struct utp_upiu_query_v4_0 {
+         __u8 opcode;
+         __u8 idn;
+         __u8 index;
+         __u8 selector;
+         __u8 cmd_specifics[8];
+         /* private: */
+         __be32 reserved;
+};
 
-Regarding your question: I have not yet seen any data structure that
-represents an on-the-wire data format where every single data member
-has to be annotated with __packed. Only data members that are not
-aligned to a natural boundary need this annotation. Examples are
-available in this header file: include/scsi/srp.h.
+Depending on the opcode/transaction, the cmd_specifics[] can be type 
+casted to access the LENGTH, FLAG_VALUE, VALUE[0:63] fields of the QUERY 
+UPIU. The __u8 array[8] would also prevent the compiler padding to the data.
 
-Thanks,
+Thanks, Bao
 
-Bart.
+
 
