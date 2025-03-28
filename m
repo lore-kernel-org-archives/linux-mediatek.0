@@ -4,76 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66EA3C36013
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Mar 2025 05:54:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74A42C28B20
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Mar 2025 09:40:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=69PLrnKDSkWLBAn6mbZ7O2rqd8N5RBtQ/FMsieVTxiI=; b=jYHs6lQqEvHQJyqE/Vk47W9vyY
-	diDe9/qN+wsDSbV+27fvP/sl30/qeskOl9KolGhwLsKzUgiPNNUoFT5Sv4Tdj8cMsb6rVfMfJuxoP
-	OLGr0kWzlnrvCq3wZwHGLXzwtN8PrNGGKFDqBAJuhHYpo2cnerc9iV0+3DGUY/erRbtABW8wLWdD5
-	2fXn6ASNnUDdPvHI+IvMCz4XqAjKfDCx5SAnGWy5luPE++RyJjNs4fNBQebM18J2DzgWptfpUiqyB
-	7LgOyeATS/pwTK5c6LQtK+Ly3lz8Cl7YDsD/Z+b6ucG5zsMYj2dRhglTG3aS9dKhZRIeK7q/T7DJ0
-	+Pg2pjFA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=lVf1OxT8PGj4PYemPZVHKfGsO8vE6CKP1+cnxJtI79Q=; b=cV9/0c0r7/92c/UNCakD2qDzBN
+	Dg6M8DJGEfIdQoKb5adRd/czH2pgjEm/IBw0RsX0Lun4yJSQsE6j6OaSFIJLKBUnyABPqCUj3dQei
+	6ciyKXctQdmuurg4gPDC1YggDsdVkdTAE3o2yOH+VtkNF/bFy3wDqCfMbINfKWZSR1wRxSYnN1yxp
+	U1sG3A9AX5+1E3xAQHY5eHVSy9VK9nFlW5LlSHdedQiI1szWelDJIeTpG+5wZzEhxMiLu7VSL3lJg
+	iMxToN7DTLHvSlo4Pwy5Zs+htkAK9FIpTF7WfrUCLx6UsMp71RMQJ3WOOdxugf/Uqv7YmIfFscWz5
+	HVYfNmbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1ty2fY-0000000CgIl-21YW;
-	Fri, 28 Mar 2025 05:54:16 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ty6Cq-0000000D32Z-2hPG;
+	Fri, 28 Mar 2025 09:40:52 +0000
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1ty2fP-0000000Cg8V-17Ux
+	id 1ty6Cn-0000000D32C-3jZt
 	for linux-mediatek@lists.infradead.org;
-	Fri, 28 Mar 2025 05:54:09 +0000
-X-UUID: 0b8f26da0b9911f0a1e849db4cc18d44-20250327
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=69PLrnKDSkWLBAn6mbZ7O2rqd8N5RBtQ/FMsieVTxiI=;
-	b=WC9PV36POorIbt8wGQJwp1Atk9Llsi1CbJdSm/YLcaqrhJ8a8L2IZQWDycqdBZXYGBBZUoJ5Gn9boTAZlQBX353uBaSeB4TAopTEQmOrDxK6pOSxf7TaKjMfa4RO8Wo6uD+g7dandbrdd8dtRPbaJ/S71AZkWTK/y5HsPae4abc=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:391c3628-16ca-4e0a-8f57-2a3a41ffd890,IP:0,UR
-	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-25
-X-CID-META: VersionHash:0ef645f,CLOUDID:17cae6c6-16da-468a-87f7-8ca8d6b3b9f7,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
-	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
-	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 0b8f26da0b9911f0a1e849db4cc18d44-20250327
-Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
-	(envelope-from <shayne.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1144676114; Thu, 27 Mar 2025 22:54:00 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Fri, 28 Mar 2025 13:53:57 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Fri, 28 Mar 2025 13:53:57 +0800
-From: Shayne Chen <shayne.chen@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
-	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
-	<evelyn.tsai@mediatek.com>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, StanleyYP Wang
-	<StanleyYP.Wang@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>
-Subject: [PATCH 06/10] wifi: mt76: mt7996: add eeprom support for mt7990
-Date: Fri, 28 Mar 2025 13:50:54 +0800
-Message-ID: <20250328055058.1648755-7-shayne.chen@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20250328055058.1648755-1-shayne.chen@mediatek.com>
-References: <20250328055058.1648755-1-shayne.chen@mediatek.com>
+	Fri, 28 Mar 2025 09:40:51 +0000
+Received: by mail-pl1-x62a.google.com with SMTP id d9443c01a7336-2239c066347so45510345ad.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 28 Mar 2025 02:40:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=huaqin-corp-partner-google-com.20230601.gappssmtp.com; s=20230601; t=1743154849; x=1743759649; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=lVf1OxT8PGj4PYemPZVHKfGsO8vE6CKP1+cnxJtI79Q=;
+        b=cCk+H/ycic6FelRL0ZCI4rbJIbc5nIhowu5ZaiO77ztBmok9Rh0HvvQAV0sxdVtQ6H
+         1M+RsQ7i2+BEsAUO2SfntFvaktpAF7xwrnrDmZhrXlX1k+CATp8h2R1hLRdNpAkWH0ym
+         qjxbzGqUKWZD96Odf0ReWR9oH6lNVHVvio9UhfFbiZnga2bckbTxGMW5mzN46YpbFIn2
+         IH10Wa/RQWa4Xvk+eiK2VviprxikkZ0nd9w3uuhIK1tTJFOFFTYan0FzqA4dKZQSdPdL
+         n4w+euiHoPEuatlnMfUYFKqNNm0KaFxl6TTRRbUK3+eVPHCfWYiF/5TlEBZbvfHpa0Gp
+         Niog==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1743154849; x=1743759649;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=lVf1OxT8PGj4PYemPZVHKfGsO8vE6CKP1+cnxJtI79Q=;
+        b=dSigcTONKJFrvRTUWV1fV4Ri+uoBCALe/ulF88dbYNf8WJnGWbcIvXJWmgeDrcvJDZ
+         hbyJQ/7sayPd+18AFlpx8ukyPIQjOKdy8FDpTLkpxLwaY/mhBc8wQalPeePXkYI86rZO
+         4qhFo5Ie/mB/93OTGWEr5oKBhkbGOwqG8aa4cxO9BdyoQmaPwemJnVEzz6mKV7CZmJq3
+         mKNA1yEWMBRiaUixmojb/Oh9tC7blOMQZF4umZQ3vgSwJGJbrQddMy8MXXrdQH0rvjam
+         6oIq/EvbRX3xaVhjsqqmUaYBnra2McLZZw5lZIjNuRbStZh9SWSQnD7IwdWFbu53Krmi
+         +tdQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWtMmyNewyg11dxFVF6gE65q4ZZ0szFbsKYe/o/nFB/pw//ktsHvv6pMHoUg0iDaupBAKhqbtFaEaXnfSoDNQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzm+cRh8Rp4jL3txCVatZgKIpESOm2/w9xyp2mKOQsJlPCixZ8Z
+	kl9cpf8Xs3nzYuh9YYtaS5S+DcSt5Cc08izc8fEDTciYR5Gngr4UNOVjEaZQB/o=
+X-Gm-Gg: ASbGncuWdNRQxXWKkwkPti5IqNO9oJh0HIPhmOD31UzXgvFLz6c/Gpma3+mpaM/0h7s
+	3mi/sl1PoeysRWAmsAqHqrolRHE9gVgEkqLlFBaY80uztfrZtMFA66WZCjXEszWJz8tkMrLU2mK
+	JuwQvVc8+7MNzdbw2eEsOFr9efj2y95K3G2ftVmkYeFlaPcdD0HGVNWI62AVu2GEnlq/t3WmOlq
+	Om+zZUax0rnZ4BD7x8fzK5dChvfhS+pdVCffo7u83k+RTfXPyqEN38IfTOREj07BmVlG0z4ZT/0
+	XKVZhXr0DR9WeldO1BGgbSl0NSog8RIaICzf0ny9z6XQSoid3BegrPkjYPOHUgmPN5GuWX5ziLD
+	pZCE=
+X-Google-Smtp-Source: AGHT+IHlMk3FT8wV80BXMjlruAdNjtASKILfG6spB3x0ZSEswoz0sZWSrejxGN07tV3Fa7SmSJ5ASQ==
+X-Received: by 2002:a05:6a00:3392:b0:736:9fa2:bcbb with SMTP id d2e1a72fcca58-739610e3485mr11701752b3a.24.1743154848458;
+        Fri, 28 Mar 2025 02:40:48 -0700 (PDT)
+Received: from zjn.huaqin.com ([116.66.212.162])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7397106c7b7sm1283012b3a.116.2025.03.28.02.40.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 28 Mar 2025 02:40:48 -0700 (PDT)
+From: Jianeng Ceng <cengjianeng@huaqin.corp-partner.google.com>
+To: sam@ravnborg.org,
+	neil.armstrong@linaro.org,
+	daniel@ffwll.ch,
+	dianders@google.com,
+	hsinyi@google.com,
+	angelogioacchino.delregno@collabora.com,
+	matthias.bgg@gmail.com,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	knoxchiou@google.com
+Cc: dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Jianeng Ceng <cengjianeng@huaqin.corp-partner.google.com>
+Subject: [PATCH v9 0/2] arm64: dts: mediatek: Add MT8186 Ponyta
+Date: Fri, 28 Mar 2025 17:40:32 +0800
+Message-Id: <20250328094034.3400233-1-cengjianeng@huaqin.corp-partner.google.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250327_225407_314078_D007A8AF 
-X-CRM114-Status: GOOD (  11.06  )
+X-CRM114-CacheID: sfid-20250328_024050_191243_6B0A80D4 
+X-CRM114-Status: UNSURE (   8.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,83 +109,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
-
-Add eeprom definition and default bin file for mt7990.
-This is a preliminary patch to support mt7990 chipset.
-
-Signed-off-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
-Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+This is v9 of the MT8186 Chromebook device tree series.
 ---
- drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c | 6 ++++++
- drivers/net/wireless/mediatek/mt76/mt7996/init.c   | 3 +++
- drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h | 7 +++++++
- 3 files changed, 16 insertions(+)
+Changes in v9:
+- PATCH 2/2: Add sound model to fix the warning.
+- Link to v8:https://lore.kernel.org/all/20240914063122.1622196-1-cengjianeng@huaqin.corp-partner.google.com/
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c
-index 51b09956486b..6f3eb053ef02 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c
-@@ -17,6 +17,8 @@ static int mt7996_check_eeprom(struct mt7996_dev *dev)
- 		return is_mt7996(&dev->mt76) ? 0 : -EINVAL;
- 	case MT7992_DEVICE_ID:
- 		return is_mt7992(&dev->mt76) ? 0 : -EINVAL;
-+	case MT7990_DEVICE_ID:
-+		return is_mt7990(&dev->mt76) ? 0 : -EINVAL;
- 	default:
- 		return -EINVAL;
- 	}
-@@ -39,6 +41,10 @@ static char *mt7996_eeprom_name(struct mt7996_dev *dev)
- 				return MT7992_EEPROM_DEFAULT_MIX;
- 			return MT7992_EEPROM_DEFAULT;
- 		}
-+	case MT7990_DEVICE_ID:
-+		if (dev->var.fem == MT7996_FEM_INT)
-+			return MT7990_EEPROM_DEFAULT_INT;
-+		return MT7990_EEPROM_DEFAULT;
- 	case MT7996_DEVICE_ID:
- 	default:
- 		switch (dev->var.type) {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-index f017d30e1c49..2865cab31390 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-@@ -943,6 +943,9 @@ static int mt7996_variant_type_init(struct mt7996_dev *dev)
- 		else
- 			return -EINVAL;
- 		break;
-+	case MT7990_DEVICE_ID:
-+		dev->var.type = MT7990_VAR_TYPE_23;
-+		break;
- 	default:
- 		return -EINVAL;
- 	}
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-index 148271fcd88f..2dd33f303a06 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-@@ -73,6 +73,9 @@
- #define MT7992_EEPROM_DEFAULT_23	"mediatek/mt7996/mt7992_eeprom_23.bin"
- #define MT7992_EEPROM_DEFAULT_23_INT	"mediatek/mt7996/mt7992_eeprom_23_2i5i.bin"
- 
-+#define MT7990_EEPROM_DEFAULT		"mediatek/mt7996/mt7990_eeprom.bin"
-+#define MT7990_EEPROM_DEFAULT_INT	"mediatek/mt7996/mt7990_eeprom_2i5i.bin"
-+
- #define MT7996_EEPROM_SIZE		7680
- #define MT7996_EEPROM_BLOCK_SIZE	16
- #define MT7996_TOKEN_SIZE		16384
-@@ -143,6 +146,10 @@ enum mt7992_var_type {
- 	MT7992_VAR_TYPE_23,
- };
- 
-+enum mt7990_var_type {
-+	MT7990_VAR_TYPE_23,
-+};
-+
- enum mt7996_fem_type {
- 	MT7996_FEM_EXT,
- 	MT7996_FEM_INT,
+Changes in v8:
+- PATCH 1/2: Remove custom label.
+- PATCH 2/2: Change the commit about ponyta.
+- Link to v7:https://lore.kernel.org/all/20240913031505.372868-1-cengjianeng@huaqin.corp-partner.google.com/
+
+Changes in v7:
+- PATCH 2/2: Remove prototype sku.
+- PATCH 2/2: Disable the other trackpad to enable one of them.
+- Link to v5:https://lore.kernel.org/all/20240913015503.4192806-1-cengjianeng@huaqin.corp-partner.google.com/
+
+Changes in v6:
+- No change.
+
+Changes in v5:
+- PATCH 1/2: Remove sku2147483647.
+- PATCH 2/2: Remove sku2147483647.
+- Link to v4:https://lore.kernel.org/all/20240906085739.1322676-1-cengjianeng@huaqin.corp-partner.google.com/
+
+Changes in v4:
+- PATCH 1/2: Add more info for Ponyta custom label in commit.
+- Link to v3:https://lore.kernel.org/all/20240904081501.2060933-1-cengjianeng@huaqin.corp-partner.google.com/
+
+Changes in v3:
+- PATCH 0/2: Add the modify records.
+- PATCH 1/2: Modify lable to label.
+- Link to v2:https://lore.kernel.org/all/20240903061603.3007289-1-cengjianeng@huaqin.corp-partner.google.com/
+
+Changes in v2:
+- PATCH 2/2: Modify the dtb name without rev2.
+- Link to v1:https://lore.kernel.org/all/20240902125502.1844374-1-cengjianeng@huaqin.corp-partner.google.com/
+
+Jianeng Ceng (2):
+  dt-bindings: arm: mediatek: Add MT8186 Ponyta Chromebook
+  arm64: dts: mediatek: Add MT8186 Ponyta Chromebooks
+
+ .../devicetree/bindings/arm/mediatek.yaml     | 10 ++++
+ arch/arm64/boot/dts/mediatek/Makefile         |  2 +
+ .../mediatek/mt8186-corsola-ponyta-sku0.dts   | 18 +++++++
+ .../mediatek/mt8186-corsola-ponyta-sku1.dts   | 22 +++++++++
+ .../dts/mediatek/mt8186-corsola-ponyta.dtsi   | 49 +++++++++++++++++++
+ 5 files changed, 101 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku0.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku1.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta.dtsi
+
 -- 
-2.39.2
+2.34.1
 
 
