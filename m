@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C20FCC36018
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Mar 2025 05:54:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63288C3600C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Mar 2025 05:54:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QsdUmFFLDZj5FPXjU9QE40sGSmXARWdokfpO+ZrHuO8=; b=ByaPef8zrKecMoQ6Yc4q+4INXT
-	nUyW6ZtmF01uREcJtY+0yW0DPaXSvG7atzfATPSQsXJ9NPvRbj4iRmXFe0/r6YIvZX++sI1L3VRPB
-	kJk/vHHsFnwJAvu5iwyNSB5Y+k8lCxOZxvbpTndBC4vFW1W823j5EGY2e5gaSDxTuY++Ux1tTpqr4
-	jOL+gNSUwrrBnb6vl2VUw4TRPVyuI15oxnjPnkJBJrqWAZcyKniEp+saOFgcST3doKGJYsvljwWc4
-	iXD8xnsz6jXNpo+881L5cjcHUAi0JFOzSsJn4F7xsNnH39Boq73U3YL+VJJKZf2cN5kg4/eNlj7j/
-	jFwh0tsA==;
+	bh=ORYWmPk8ADrE9mxDQmnh8WLjbCoSun65/Nzkwh9xP5A=; b=p2J1on8rNJqIo20fcXxhYz1mF0
+	4JEPVrRga4HMVQQU6nQB72zNycvvw1/mMqunEBvMVL3Gs9eI9lJB1Do+40DDkftAaVFrylQ60/xH5
+	29agj7JW2mXWlcCtTgt5dQbJikRYfTu/wAEUJqKFqYSwDdxkwVTzqC5PqYrAGRB/AoIrXLW6o+UgB
+	e3jGdLm+5kzlkVoidU2V57DnmX4WUqgZff1Tqreoo2HQ9Rfh6XV6q1utxUxdCuk7ZnTzVBZXhYmZr
+	JnmV8bZ9kcIOTWSI4o70Jipl4U3Uozv9h0RePHGn+OX0hH8FawfnIPIDTRkYpUxI3s43eAISeGS/B
+	iONrbybQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1ty2fT-0000000CgEV-3SAc;
-	Fri, 28 Mar 2025 05:54:11 +0000
+	id 1ty2fS-0000000CgCz-2DQV;
+	Fri, 28 Mar 2025 05:54:10 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1ty2fO-0000000Cg82-3jx1
+	id 1ty2fN-0000000Cg82-2STG
 	for linux-mediatek@lists.infradead.org;
-	Fri, 28 Mar 2025 05:54:08 +0000
-X-UUID: 0b5bd3340b9911f083f2a1c9db70dae0-20250327
+	Fri, 28 Mar 2025 05:54:06 +0000
+X-UUID: 0b82a4140b9911f083f2a1c9db70dae0-20250327
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=QsdUmFFLDZj5FPXjU9QE40sGSmXARWdokfpO+ZrHuO8=;
-	b=ajgSkviYP64/QoYGi6Jo/SNixJK7xGj/jNb0YTa8LOPaQmQxL04LtbH1ReKAsH9hDOazBcCuAFyGFWwHScSRnnIvJz+C4ZvOEwOCoXpOPWKZ3iD7YVIBPQYrLUU7d+K0lrkPiXkg+J8cKhrZpr8G3F37I3qop40CWw54zHfNA6Q=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ORYWmPk8ADrE9mxDQmnh8WLjbCoSun65/Nzkwh9xP5A=;
+	b=VaKliTAw583gl+CtYtRTBs3Y4ep1CGLLluUjKamKZgUqZjSxrRHaAd2JSBUe9T8q40cMezKJuIh3ZhO6B6IlML7PcsmsV6wFy89fQWTYIW0PtCVu0JADdBoHLx7RKHfAGXp1Lkxq4L74hKbLBFFsWUxNvE9jHROLdpzzD8SAvp0=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:d84e2354-195a-496a-a7a5-5532f9a5f712,IP:0,UR
-	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-25
-X-CID-META: VersionHash:0ef645f,CLOUDID:ee64ab4a-a527-43d8-8af6-bc8b32d9f5e9,B
+X-CID-O-INFO: VERSION:1.2.1,REQID:d9cbd758-30f6-438a-9272-886a8733cd48,IP:0,UR
+	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:-5
+X-CID-META: VersionHash:0ef645f,CLOUDID:1dcae6c6-16da-468a-87f7-8ca8d6b3b9f7,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
 	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
 	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 0b5bd3340b9911f083f2a1c9db70dae0-20250327
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
+X-UUID: 0b82a4140b9911f083f2a1c9db70dae0-20250327
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
 	(envelope-from <shayne.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2027761028; Thu, 27 Mar 2025 22:53:59 -0700
+	with ESMTP id 430671813; Thu, 27 Mar 2025 22:53:59 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Fri, 28 Mar 2025 13:53:56 +0800
+ 15.2.1258.39; Fri, 28 Mar 2025 13:53:57 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Fri, 28 Mar 2025 13:53:56 +0800
+ 15.2.1258.39 via Frontend Transport; Fri, 28 Mar 2025 13:53:57 +0800
 From: Shayne Chen <shayne.chen@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>
 CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
 	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
 	<evelyn.tsai@mediatek.com>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Shayne Chen <shayne.chen@mediatek.com>,
-	Peter Chiu <chui-hao.chiu@mediatek.com>
-Subject: [PATCH 01/10] wifi: mt76: mt7996: add macros for pci decive id
-Date: Fri, 28 Mar 2025 13:50:49 +0800
-Message-ID: <20250328055058.1648755-2-shayne.chen@mediatek.com>
+	<linux-mediatek@lists.infradead.org>, StanleyYP Wang
+	<StanleyYP.Wang@mediatek.com>, Peter Chiu <chui-hao.chiu@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>
+Subject: [PATCH 05/10] wifi: mt76: mt7996: rework register mapping for mt7990
+Date: Fri, 28 Mar 2025 13:50:53 +0800
+Message-ID: <20250328055058.1648755-6-shayne.chen@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20250328055058.1648755-1-shayne.chen@mediatek.com>
 References: <20250328055058.1648755-1-shayne.chen@mediatek.com>
@@ -72,8 +73,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250327_225406_944772_B673D6A0 
-X-CRM114-Status: GOOD (  18.14  )
+X-CRM114-CacheID: sfid-20250327_225405_632300_F3AE443B 
+X-CRM114-Status: GOOD (  16.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,225 +89,365 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The chipset name (i.e., brand name) used by the driver may cause confusion
-with the PCI device ID when adding support for new chipsets.
+From: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
 
-| Chipset name | PCI device id  |
-|--------------|----------------|
-| 7996         | 0x7990, 0x7991 |
-| 7992         | 0x7992, 0x799a |
-| 7990         | 0x7993, 0x799b |
-
-To prevent confusion, replace the code that directly uses the device ID
-with macros. This is a preliminary patch to support mt7990 chipset.
+Rework register offset and l1/l2/cbtop mapping for mt7990.
+This is a preliminary patch to support mt7990 chipset.
 
 Co-developed-by: Peter Chiu <chui-hao.chiu@mediatek.com>
 Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Co-developed-by: Shayne Chen <shayne.chen@mediatek.com>
 Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+Signed-off-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7996/coredump.c  |  4 ++--
- .../net/wireless/mediatek/mt76/mt7996/eeprom.c    |  8 ++++----
- drivers/net/wireless/mediatek/mt76/mt7996/init.c  |  4 ++--
- drivers/net/wireless/mediatek/mt76/mt7996/mcu.c   |  4 ++--
- drivers/net/wireless/mediatek/mt76/mt7996/mmio.c  |  6 +++---
- .../net/wireless/mediatek/mt76/mt7996/mt7996.h    |  9 +++++++--
- drivers/net/wireless/mediatek/mt76/mt7996/pci.c   | 15 ++++++++-------
- 7 files changed, 28 insertions(+), 22 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7996/mmio.c  | 186 ++++++++++++++++--
+ .../net/wireless/mediatek/mt76/mt7996/regs.h  |  47 +++--
+ 2 files changed, 208 insertions(+), 25 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/coredump.c b/drivers/net/wireless/mediatek/mt76/mt7996/coredump.c
-index ccab0d7b9be4..303d6e80a666 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/coredump.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/coredump.c
-@@ -48,8 +48,8 @@ const struct mt7996_mem_region*
- mt7996_coredump_get_mem_layout(struct mt7996_dev *dev, u32 *num)
- {
- 	switch (mt76_chip(&dev->mt76)) {
--	case 0x7990:
--	case 0x7991:
-+	case MT7996_DEVICE_ID:
-+	case MT7996_DEVICE_ID_2:
- 		*num = ARRAY_SIZE(mt7996_mem_regions);
- 		return &mt7996_mem_regions[0];
- 	default:
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c
-index 53dfac02f8af..51b09956486b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c
-@@ -13,9 +13,9 @@ static int mt7996_check_eeprom(struct mt7996_dev *dev)
- 	u16 val = get_unaligned_le16(eeprom);
- 
- 	switch (val) {
--	case 0x7990:
-+	case MT7996_DEVICE_ID:
- 		return is_mt7996(&dev->mt76) ? 0 : -EINVAL;
--	case 0x7992:
-+	case MT7992_DEVICE_ID:
- 		return is_mt7992(&dev->mt76) ? 0 : -EINVAL;
- 	default:
- 		return -EINVAL;
-@@ -25,7 +25,7 @@ static int mt7996_check_eeprom(struct mt7996_dev *dev)
- static char *mt7996_eeprom_name(struct mt7996_dev *dev)
- {
- 	switch (mt76_chip(&dev->mt76)) {
--	case 0x7992:
-+	case MT7992_DEVICE_ID:
- 		switch (dev->var.type) {
- 		case MT7992_VAR_TYPE_23:
- 			if (dev->var.fem == MT7996_FEM_INT)
-@@ -39,7 +39,7 @@ static char *mt7996_eeprom_name(struct mt7996_dev *dev)
- 				return MT7992_EEPROM_DEFAULT_MIX;
- 			return MT7992_EEPROM_DEFAULT;
- 		}
--	case 0x7990:
-+	case MT7996_DEVICE_ID:
- 	default:
- 		switch (dev->var.type) {
- 		case MT7996_VAR_TYPE_233:
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-index 6b660424aedc..f017d30e1c49 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-@@ -929,13 +929,13 @@ static int mt7996_variant_type_init(struct mt7996_dev *dev)
- 	u8 var_type;
- 
- 	switch (mt76_chip(&dev->mt76)) {
--	case 0x7990:
-+	case MT7996_DEVICE_ID:
- 		if (val & MT_PAD_GPIO_2ADIE_TBTC)
- 			var_type = MT7996_VAR_TYPE_233;
- 		else
- 			var_type = MT7996_VAR_TYPE_444;
- 		break;
--	case 0x7992:
-+	case MT7992_DEVICE_ID:
- 		if (val & MT_PAD_GPIO_ADIE_SINGLE)
- 			var_type = MT7992_VAR_TYPE_23;
- 		else if (u32_get_bits(val, MT_PAD_GPIO_ADIE_COMB_7992))
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-index ddd555942c73..81cc50ae55b0 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-@@ -13,7 +13,7 @@
- #define fw_name(_dev, name, ...)	({			\
- 	char *_fw;						\
- 	switch (mt76_chip(&(_dev)->mt76)) {			\
--	case 0x7992:						\
-+	case MT7992_DEVICE_ID:						\
- 		switch ((_dev)->var.type) {			\
- 		case MT7992_VAR_TYPE_23:			\
- 			_fw = MT7992_##name##_23;		\
-@@ -22,7 +22,7 @@
- 			_fw = MT7992_##name;			\
- 		}						\
- 		break;						\
--	case 0x7990:						\
-+	case MT7996_DEVICE_ID:						\
- 	default:						\
- 		switch ((_dev)->var.type) {			\
- 		case MT7996_VAR_TYPE_233:			\
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7996/mmio.c
-index 13b188e281bd..8b07883f45cc 100644
+index 8b07883f45cc..51dd9a5f83cc 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7996/mmio.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mmio.c
-@@ -350,7 +350,7 @@ int mt7996_mmio_wed_init(struct mt7996_dev *dev, void *pdev_ptr,
- 				     MT_RXQ_RING_BASE(MT7996_RXQ_BAND0) +
- 				     MT7996_RXQ_BAND0 * MT_RING_SIZE;
+@@ -54,6 +54,17 @@ static const u32 mt7996_offs[] = {
+ 	[MIB_BSCR7]		= 0x9e8,
+ 	[MIB_BSCR17]		= 0xa10,
+ 	[MIB_TRDR1]		= 0xa28,
++	[HIF_REMAP_L1]		= 0x24,
++	[HIF_REMAP_BASE_L1]	= 0x130000,
++	[HIF_REMAP_L2]		= 0x1b4,
++	[HIF_REMAP_BASE_L2]	= 0x1000,
++	[CBTOP1_PHY_END]	= 0x77ffffff,
++	[INFRA_MCU_END]		= 0x7c3fffff,
++	[WTBLON_WDUCR]		= 0x370,
++	[WTBL_UPDATE]		= 0x380,
++	[WTBL_ITCR]		= 0x3b0,
++	[WTBL_ITCR0]		= 0x3b8,
++	[WTBL_ITCR1]		= 0x3bc,
+ };
  
--		wed->wlan.id = 0x7991;
-+		wed->wlan.id = MT7996_DEVICE_ID_2;
- 		wed->wlan.tx_tbit[0] = ffs(MT_INT_TX_DONE_BAND2) - 1;
- 	} else {
- 		wed->wlan.hw_rro = dev->has_rro; /* default on */
-@@ -443,13 +443,13 @@ static int mt7996_mmio_init(struct mt76_dev *mdev,
- 	spin_lock_init(&dev->reg_lock);
+ static const u32 mt7992_offs[] = {
+@@ -80,6 +91,54 @@ static const u32 mt7992_offs[] = {
+ 	[MIB_BSCR7]		= 0xae4,
+ 	[MIB_BSCR17]		= 0xb0c,
+ 	[MIB_TRDR1]		= 0xb24,
++	[HIF_REMAP_L1]		= 0x8,
++	[HIF_REMAP_BASE_L1]	= 0x40000,
++	[HIF_REMAP_L2]		= 0x1b4,
++	[HIF_REMAP_BASE_L2]	= 0x1000,
++	[CBTOP1_PHY_END]	= 0x77ffffff,
++	[INFRA_MCU_END]		= 0x7c3fffff,
++	[WTBLON_WDUCR]		= 0x370,
++	[WTBL_UPDATE]		= 0x380,
++	[WTBL_ITCR]		= 0x3b0,
++	[WTBL_ITCR0]		= 0x3b8,
++	[WTBL_ITCR1]		= 0x3bc,
++};
++
++static const u32 mt7990_offs[] = {
++	[MIB_RVSR0]		= 0x800,
++	[MIB_RVSR1]		= 0x804,
++	[MIB_BTSCR5]		= 0x868,
++	[MIB_BTSCR6]		= 0x878,
++	[MIB_RSCR1]		= 0x890,
++	[MIB_RSCR27]		= 0xa38,
++	[MIB_RSCR28]		= 0xa3c,
++	[MIB_RSCR29]		= 0xa40,
++	[MIB_RSCR30]		= 0xa44,
++	[MIB_RSCR31]		= 0xa48,
++	[MIB_RSCR33]		= 0xa50,
++	[MIB_RSCR35]		= 0xa58,
++	[MIB_RSCR36]		= 0xa5c,
++	[MIB_BSCR0]		= 0xbb8,
++	[MIB_BSCR1]		= 0xbbc,
++	[MIB_BSCR2]		= 0xbc0,
++	[MIB_BSCR3]		= 0xbc4,
++	[MIB_BSCR4]		= 0xbc8,
++	[MIB_BSCR5]		= 0xbcc,
++	[MIB_BSCR6]		= 0xbd0,
++	[MIB_BSCR7]		= 0xbd4,
++	[MIB_BSCR17]		= 0xbfc,
++	[MIB_TRDR1]		= 0xc14,
++	[HIF_REMAP_L1]		= 0x8,
++	[HIF_REMAP_BASE_L1]	= 0x40000,
++	[HIF_REMAP_L2]		= 0x1b8,
++	[HIF_REMAP_BASE_L2]	= 0x110000,
++	[CBTOP1_PHY_END]	= 0x7fffffff,
++	[INFRA_MCU_END]		= 0x7cffffff,
++	[WTBLON_WDUCR]		= 0x400,
++	[WTBL_UPDATE]		= 0x410,
++	[WTBL_ITCR]		= 0x440,
++	[WTBL_ITCR0]		= 0x448,
++	[WTBL_ITCR1]		= 0x44c,
+ };
  
- 	switch (device_id) {
--	case 0x7990:
-+	case MT7996_DEVICE_ID:
- 		dev->reg.base = mt7996_reg_base;
- 		dev->reg.offs_rev = mt7996_offs;
+ static const struct __map mt7996_reg_map[] = {
+@@ -135,14 +194,83 @@ static const struct __map mt7996_reg_map[] = {
+ 	{ 0x0, 0x0, 0x0 }, /* imply end of search */
+ };
+ 
++static const struct __map mt7990_reg_map[] = {
++	{0x54000000, 0x02000, 0x1000}, /* WFDMA_0 (PCIE0 MCU DMA0) */
++	{0x55000000, 0x03000, 0x1000}, /* WFDMA_1 (PCIE0 MCU DMA1) */
++	{0x56000000, 0x04000, 0x1000}, /* WFDMA_2 (Reserved) */
++	{0x57000000, 0x05000, 0x1000}, /* WFDMA_3 (MCU wrap CR) */
++	{0x58000000, 0x06000, 0x1000}, /* WFDMA_4 (PCIE1 MCU DMA0 (MEM_DMA)) */
++	{0x59000000, 0x07000, 0x1000}, /* WFDMA_5 (PCIE1 MCU DMA1) */
++	{0x820c0000, 0x08000, 0x4000}, /* WF_UMAC_TOP (PLE) */
++	{0x820c8000, 0x0c000, 0x2000}, /* WF_UMAC_TOP (PSE) */
++	{0x820cc000, 0x0e000, 0x2000}, /* WF_UMAC_TOP (PP) */
++	{0x820e0000, 0x20000, 0x0400}, /* WF_LMAC_TOP BN0 (WF_CFG) */
++	{0x820e1000, 0x20400, 0x0200}, /* WF_LMAC_TOP BN0 (WF_TRB) */
++	{0x820e2000, 0x20800, 0x0400}, /* WF_LMAC_TOP BN0 (WF_AGG) */
++	{0x820e3000, 0x20c00, 0x0400}, /* WF_LMAC_TOP BN0 (WF_ARB) */
++	{0x820e4000, 0x21000, 0x0400}, /* WF_LMAC_TOP BN0 (WF_TMAC) */
++	{0x820e5000, 0x21400, 0x0800}, /* WF_LMAC_TOP BN0 (WF_RMAC) */
++	{0x820ce000, 0x21c00, 0x0200}, /* WF_LMAC_TOP (WF_SEC) */
++	{0x820e7000, 0x21e00, 0x0200}, /* WF_LMAC_TOP BN0 (WF_DMA) */
++	{0x820cf000, 0x22000, 0x1000}, /* WF_LMAC_TOP (WF_PF) */
++	{0x820e9000, 0x23400, 0x0200}, /* WF_LMAC_TOP BN0 (WF_WTBLOFF) */
++	{0x820ea000, 0x24000, 0x0200}, /* WF_LMAC_TOP BN0 (WF_ETBF) */
++	{0x820eb000, 0x24200, 0x0400}, /* WF_LMAC_TOP BN0 (WF_LPON) */
++	{0x820ec000, 0x24600, 0x0200}, /* WF_LMAC_TOP BN0 (WF_INT) */
++	{0x820ed000, 0x24800, 0x0800}, /* WF_LMAC_TOP BN0 (WF_MIB) */
++	{0x820ca000, 0x26000, 0x2000}, /* WF_LMAC_TOP BN0 (WF_MUCOP) */
++	{0x820d0000, 0x30000, 0x10000}, /* WF_LMAC_TOP (WF_WTBLON) */
++	{0x00400000, 0x80000, 0x10000}, /* WF_MCU_SYSRAM */
++	{0x820f0000, 0xa0000, 0x0400}, /* WF_LMAC_TOP BN1 (WF_CFG) */
++	{0x820f1000, 0xa0600, 0x0200}, /* WF_LMAC_TOP BN1 (WF_TRB) */
++	{0x820f2000, 0xa0800, 0x0400}, /* WF_LMAC_TOP BN1 (WF_AGG) */
++	{0x820f3000, 0xa0c00, 0x0400}, /* WF_LMAC_TOP BN1 (WF_ARB) */
++	{0x820f4000, 0xa1000, 0x0400}, /* WF_LMAC_TOP BN1 (WF_TMAC) */
++	{0x820f5000, 0xa1400, 0x0800}, /* WF_LMAC_TOP BN1 (WF_RMAC) */
++	{0x820f7000, 0xa1e00, 0x0200}, /* WF_LMAC_TOP BN1 (WF_DMA) */
++	{0x820f9000, 0xa3400, 0x0200}, /* WF_LMAC_TOP BN1 (WF_WTBLOFF) */
++	{0x820fa000, 0xa4000, 0x0200}, /* WF_LMAC_TOP BN1 (WF_ETBF) */
++	{0x820fb000, 0xa4200, 0x0400}, /* WF_LMAC_TOP BN1 (WF_LPON) */
++	{0x820fc000, 0xa4600, 0x0200}, /* WF_LMAC_TOP BN1 (WF_INT) */
++	{0x820fd000, 0xa4800, 0x0800}, /* WF_LMAC_TOP BN1 (WF_MIB) */
++	{0x820cc000, 0xa5000, 0x2000}, /* WF_LMAC_TOP BN1 (WF_MUCOP) */
++	{0x820c4000, 0xa8000, 0x4000}, /* WF_LMAC_TOP (WF_UWTBL) */
++	{0x81030000, 0xae000, 0x100}, /* WFSYS_AON part 1 */
++	{0x81031000, 0xae100, 0x100}, /* WFSYS_AON part 2 */
++	{0x81032000, 0xae200, 0x100}, /* WFSYS_AON part 3 */
++	{0x81033000, 0xae300, 0x100}, /* WFSYS_AON part 4 */
++	{0x81034000, 0xae400, 0x100}, /* WFSYS_AON part 5 */
++	{0x80020000, 0xb0000, 0x10000}, /* WF_TOP_MISC_OFF */
++	{0x81020000, 0xc0000, 0x10000}, /* WF_TOP_MISC_ON */
++	{0x81040000, 0x120000, 0x1000}, /* WF_MCU_CFG_ON */
++	{0x81050000, 0x121000, 0x1000}, /* WF_MCU_EINT */
++	{0x81060000, 0x122000, 0x1000}, /* WF_MCU_GPT */
++	{0x81070000, 0x123000, 0x1000}, /* WF_MCU_WDT */
++	{0x80010000, 0x124000, 0x1000}, /* WF_AXIDMA */
++	{0x7c020000, 0xd0000, 0x10000}, /* CONN_INFRA, wfdma for from CODA flow use */
++	{0x7c060000, 0xe0000, 0x10000}, /* CONN_INFRA, conn_host_csr_top for from CODA flow use */
++	{0x20020000, 0xd0000, 0x10000}, /* CONN_INFRA, wfdma */
++	{0x20060000, 0xe0000, 0x10000}, /* CONN_INFRA, conn_host_csr_top */
++	{0x7c000000, 0xf0000, 0x10000}, /* CONN_INFRA */
++	{0x70020000, 0x1f0000, 0x9000}, /* PCIE remapping (AP2CONN) */
++	{0x0, 0x0, 0x0}, /* imply end of search */
++};
++
+ static u32 mt7996_reg_map_l1(struct mt7996_dev *dev, u32 addr)
+ {
+ 	u32 offset = FIELD_GET(MT_HIF_REMAP_L1_OFFSET, addr);
+ 	u32 base = FIELD_GET(MT_HIF_REMAP_L1_BASE, addr);
++	u32 l1_mask, val;
++
++	if (is_mt7996(&dev->mt76)) {
++		l1_mask = MT_HIF_REMAP_L1_MASK_7996;
++		val = FIELD_PREP(MT_HIF_REMAP_L1_MASK_7996, base);
++	} else {
++		l1_mask = MT_HIF_REMAP_L1_MASK;
++		val = FIELD_PREP(MT_HIF_REMAP_L1_MASK, base);
++	}
+ 
+-	dev->bus_ops->rmw(&dev->mt76, MT_HIF_REMAP_L1,
+-			  MT_HIF_REMAP_L1_MASK,
+-			  FIELD_PREP(MT_HIF_REMAP_L1_MASK, base));
++	dev->bus_ops->rmw(&dev->mt76, MT_HIF_REMAP_L1, l1_mask, val);
+ 	/* use read to push write */
+ 	dev->bus_ops->rr(&dev->mt76, MT_HIF_REMAP_L1);
+ 
+@@ -151,18 +279,41 @@ static u32 mt7996_reg_map_l1(struct mt7996_dev *dev, u32 addr)
+ 
+ static u32 mt7996_reg_map_l2(struct mt7996_dev *dev, u32 addr)
+ {
+-	u32 offset = FIELD_GET(MT_HIF_REMAP_L2_OFFSET, addr);
+-	u32 base = FIELD_GET(MT_HIF_REMAP_L2_BASE, addr);
++	u32 offset, base, l2_mask, val;
+ 
+-	dev->bus_ops->rmw(&dev->mt76, MT_HIF_REMAP_L2,
+-			  MT_HIF_REMAP_L2_MASK,
+-			  FIELD_PREP(MT_HIF_REMAP_L2_MASK, base));
++	if (is_mt7990(&dev->mt76)) {
++		offset = FIELD_GET(MT_HIF_REMAP_L2_OFFSET_7990, addr);
++		base = FIELD_GET(MT_HIF_REMAP_L2_BASE_7990, addr);
++		l2_mask = MT_HIF_REMAP_L2_MASK_7990;
++		val = FIELD_PREP(MT_HIF_REMAP_L2_MASK_7990, base);
++	} else {
++		offset = FIELD_GET(MT_HIF_REMAP_L2_OFFSET, addr);
++		base = FIELD_GET(MT_HIF_REMAP_L2_BASE, addr);
++		l2_mask = MT_HIF_REMAP_L2_MASK;
++		val = FIELD_PREP(MT_HIF_REMAP_L2_MASK, base);
++	}
++
++	dev->bus_ops->rmw(&dev->mt76, MT_HIF_REMAP_L2, l2_mask, val);
+ 	/* use read to push write */
+ 	dev->bus_ops->rr(&dev->mt76, MT_HIF_REMAP_L2);
+ 
+ 	return MT_HIF_REMAP_BASE_L2 + offset;
+ }
+ 
++static u32 mt7996_reg_map_cbtop(struct mt7996_dev *dev, u32 addr)
++{
++	u32 offset = FIELD_GET(MT_HIF_REMAP_CBTOP_OFFSET, addr);
++	u32 base = FIELD_GET(MT_HIF_REMAP_CBTOP_BASE, addr);
++
++	dev->bus_ops->rmw(&dev->mt76, MT_HIF_REMAP_CBTOP,
++			  MT_HIF_REMAP_CBTOP_MASK,
++			  FIELD_PREP(MT_HIF_REMAP_CBTOP_MASK, base));
++	/* use read to push write */
++	dev->bus_ops->rr(&dev->mt76, MT_HIF_REMAP_CBTOP);
++
++	return MT_HIF_REMAP_BASE_CBTOP + offset;
++}
++
+ static u32 __mt7996_reg_addr(struct mt7996_dev *dev, u32 addr)
+ {
+ 	int i;
+@@ -193,17 +344,20 @@ static u32 __mt7996_reg_remap_addr(struct mt7996_dev *dev, u32 addr)
+ 	    (addr >= MT_WFSYS1_PHY_START && addr <= MT_WFSYS1_PHY_END))
+ 		return mt7996_reg_map_l1(dev, addr);
+ 
+-	if (dev_is_pci(dev->mt76.dev) &&
+-	    ((addr >= MT_CBTOP1_PHY_START && addr <= MT_CBTOP1_PHY_END) ||
+-	    addr >= MT_CBTOP2_PHY_START))
+-		return mt7996_reg_map_l1(dev, addr);
+-
+ 	/* CONN_INFRA: covert to phyiscal addr and use layer 1 remap */
+ 	if (addr >= MT_INFRA_MCU_START && addr <= MT_INFRA_MCU_END) {
+ 		addr = addr - MT_INFRA_MCU_START + MT_INFRA_BASE;
+ 		return mt7996_reg_map_l1(dev, addr);
+ 	}
+ 
++	if (dev_is_pci(dev->mt76.dev) &&
++	    ((addr >= MT_CBTOP1_PHY_START && addr <= MT_CBTOP1_PHY_END) ||
++	    addr >= MT_CBTOP2_PHY_START)) {
++		if (is_mt7990(&dev->mt76))
++			return mt7996_reg_map_cbtop(dev, addr);
++		return mt7996_reg_map_l1(dev, addr);
++	}
++
+ 	return mt7996_reg_map_l2(dev, addr);
+ }
+ 
+@@ -455,6 +609,12 @@ static int mt7996_mmio_init(struct mt76_dev *mdev,
  		dev->reg.map = mt7996_reg_map;
  		dev->reg.map_size = ARRAY_SIZE(mt7996_reg_map);
  		break;
--	case 0x7992:
-+	case MT7992_DEVICE_ID:
- 		dev->reg.base = mt7996_reg_base;
- 		dev->reg.offs_rev = mt7992_offs;
- 		dev->reg.map = mt7996_reg_map;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-index 43e646ed6094..bc22c3e12d94 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-@@ -30,6 +30,11 @@
- #define MT7996_RX_MCU_RING_SIZE		512
- #define MT7996_RX_MCU_RING_SIZE_WA	1024
++	case MT7990_DEVICE_ID:
++		dev->reg.base = mt7996_reg_base;
++		dev->reg.offs_rev = mt7990_offs;
++		dev->reg.map = mt7990_reg_map;
++		dev->reg.map_size = ARRAY_SIZE(mt7990_reg_map);
++		break;
+ 	default:
+ 		return -EINVAL;
+ 	}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/regs.h b/drivers/net/wireless/mediatek/mt76/mt7996/regs.h
+index 1981b6250f45..e942c0058731 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/regs.h
+@@ -64,6 +64,17 @@ enum offs_rev {
+ 	MIB_BSCR7,
+ 	MIB_BSCR17,
+ 	MIB_TRDR1,
++	HIF_REMAP_L1,
++	HIF_REMAP_BASE_L1,
++	HIF_REMAP_L2,
++	HIF_REMAP_BASE_L2,
++	CBTOP1_PHY_END,
++	INFRA_MCU_END,
++	WTBLON_WDUCR,
++	WTBL_UPDATE,
++	WTBL_ITCR,
++	WTBL_ITCR0,
++	WTBL_ITCR1,
+ 	__MT_OFFS_MAX,
+ };
  
-+#define MT7996_DEVICE_ID		0x7990
-+#define MT7996_DEVICE_ID_2		0x7991
-+#define MT7992_DEVICE_ID		0x7992
-+#define MT7992_DEVICE_ID_2		0x799a
+@@ -291,19 +302,19 @@ enum offs_rev {
+ /* WTBLON TOP */
+ #define MT_WTBLON_TOP_BASE			0x820d4000
+ #define MT_WTBLON_TOP(ofs)			(MT_WTBLON_TOP_BASE + (ofs))
+-#define MT_WTBLON_TOP_WDUCR			MT_WTBLON_TOP(0x370)
++#define MT_WTBLON_TOP_WDUCR			MT_WTBLON_TOP(__OFFS(WTBLON_WDUCR))
+ #define MT_WTBLON_TOP_WDUCR_GROUP		GENMASK(4, 0)
+ 
+-#define MT_WTBL_UPDATE				MT_WTBLON_TOP(0x380)
++#define MT_WTBL_UPDATE				MT_WTBLON_TOP(__OFFS(WTBL_UPDATE))
+ #define MT_WTBL_UPDATE_WLAN_IDX			GENMASK(11, 0)
+ #define MT_WTBL_UPDATE_ADM_COUNT_CLEAR		BIT(14)
+ #define MT_WTBL_UPDATE_BUSY			BIT(31)
+ 
+-#define MT_WTBL_ITCR				MT_WTBLON_TOP(0x3b0)
++#define MT_WTBL_ITCR				MT_WTBLON_TOP(__OFFS(WTBL_ITCR))
+ #define MT_WTBL_ITCR_WR				BIT(16)
+ #define MT_WTBL_ITCR_EXEC			BIT(31)
+-#define MT_WTBL_ITDR0				MT_WTBLON_TOP(0x3b8)
+-#define MT_WTBL_ITDR1				MT_WTBLON_TOP(0x3bc)
++#define MT_WTBL_ITDR0				MT_WTBLON_TOP(__OFFS(WTBL_ITCR0))
++#define MT_WTBL_ITDR1				MT_WTBLON_TOP(__OFFS(WTBL_ITCR1))
+ #define MT_WTBL_SPE_IDX_SEL			BIT(6)
+ 
+ /* WTBL */
+@@ -578,27 +589,39 @@ enum offs_rev {
+ #define MT_MCU_CMD_WDT_MASK			GENMASK(31, 30)
+ 
+ /* l1/l2 remap */
+-#define MT_HIF_REMAP_L1				0x155024
+-#define MT_HIF_REMAP_L1_MASK			GENMASK(31, 16)
++#define CONN_BUS_CR_VON_BASE			0x155000
++#define MT_HIF_REMAP_L1				(CONN_BUS_CR_VON_BASE + __OFFS(HIF_REMAP_L1))
++#define MT_HIF_REMAP_L1_MASK_7996		GENMASK(31, 16)
++#define MT_HIF_REMAP_L1_MASK			GENMASK(15, 0)
+ #define MT_HIF_REMAP_L1_OFFSET			GENMASK(15, 0)
+ #define MT_HIF_REMAP_L1_BASE			GENMASK(31, 16)
+-#define MT_HIF_REMAP_BASE_L1			0x130000
++#define MT_HIF_REMAP_BASE_L1			__OFFS(HIF_REMAP_BASE_L1)
+ 
+-#define MT_HIF_REMAP_L2				0x1b4
++#define MT_HIF_REMAP_L2				__OFFS(HIF_REMAP_L2)
+ #define MT_HIF_REMAP_L2_MASK			GENMASK(19, 0)
+ #define MT_HIF_REMAP_L2_OFFSET			GENMASK(11, 0)
+ #define MT_HIF_REMAP_L2_BASE			GENMASK(31, 12)
+-#define MT_HIF_REMAP_BASE_L2			0x1000
++#define MT_HIF_REMAP_L2_MASK_7990		GENMASK(15, 0)
++#define MT_HIF_REMAP_L2_OFFSET_7990		GENMASK(15, 0)
++#define MT_HIF_REMAP_L2_BASE_7990		GENMASK(31, 16)
++#define MT_HIF_REMAP_BASE_L2			__OFFS(HIF_REMAP_BASE_L2)
 +
- #define MT7996_FIRMWARE_WA		"mediatek/mt7996/mt7996_wa.bin"
- #define MT7996_FIRMWARE_WM		"mediatek/mt7996/mt7996_wm.bin"
- #define MT7996_FIRMWARE_DSP		"mediatek/mt7996/mt7996_dsp.bin"
-@@ -471,11 +476,11 @@ static inline bool
- mt7996_has_background_radar(struct mt7996_dev *dev)
- {
- 	switch (mt76_chip(&dev->mt76)) {
--	case 0x7990:
-+	case MT7996_DEVICE_ID:
- 		if (dev->var.type == MT7996_VAR_TYPE_233)
- 			return false;
- 		break;
--	case 0x7992:
-+	case MT7992_DEVICE_ID:
- 		if (dev->var.type == MT7992_VAR_TYPE_23)
- 			return false;
- 		break;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/pci.c b/drivers/net/wireless/mediatek/mt76/mt7996/pci.c
-index 04056181368a..a4338367aaa1 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/pci.c
-@@ -16,14 +16,14 @@ static DEFINE_SPINLOCK(hif_lock);
- static u32 hif_idx;
++/* for mt7990 only */
++#define MT_HIF_REMAP_CBTOP			0x1f6554
++#define MT_HIF_REMAP_CBTOP_MASK			GENMASK(15, 0)
++#define MT_HIF_REMAP_CBTOP_OFFSET		GENMASK(15, 0)
++#define MT_HIF_REMAP_CBTOP_BASE			GENMASK(31, 16)
++#define MT_HIF_REMAP_BASE_CBTOP			0x1c0000
  
- static const struct pci_device_id mt7996_pci_device_table[] = {
--	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x7990) },
--	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x7992) },
-+	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, MT7996_DEVICE_ID) },
-+	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, MT7992_DEVICE_ID) },
- 	{ },
- };
+ #define MT_INFRA_BASE				0x18000000
+ #define MT_WFSYS0_PHY_START			0x18400000
+ #define MT_WFSYS1_PHY_START			0x18800000
+ #define MT_WFSYS1_PHY_END			0x18bfffff
+ #define MT_CBTOP1_PHY_START			0x70000000
+-#define MT_CBTOP1_PHY_END			0x77ffffff
++#define MT_CBTOP1_PHY_END			__OFFS(CBTOP1_PHY_END)
+ #define MT_CBTOP2_PHY_START			0xf0000000
+ #define MT_INFRA_MCU_START			0x7c000000
+-#define MT_INFRA_MCU_END			0x7c3fffff
++#define MT_INFRA_MCU_END			__OFFS(INFRA_MCU_END)
  
- static const struct pci_device_id mt7996_hif_device_table[] = {
--	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x7991) },
--	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x799a) },
-+	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, MT7996_DEVICE_ID_2) },
-+	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, MT7992_DEVICE_ID_2) },
- 	{ },
- };
- 
-@@ -63,8 +63,8 @@ static struct mt7996_hif *mt7996_pci_init_hif2(struct pci_dev *pdev)
- {
- 	hif_idx++;
- 
--	if (!pci_get_device(PCI_VENDOR_ID_MEDIATEK, 0x7991, NULL) &&
--	    !pci_get_device(PCI_VENDOR_ID_MEDIATEK, 0x799a, NULL))
-+	if (!pci_get_device(PCI_VENDOR_ID_MEDIATEK, MT7996_DEVICE_ID_2, NULL) &&
-+	    !pci_get_device(PCI_VENDOR_ID_MEDIATEK, MT7992_DEVICE_ID_2, NULL))
- 		return NULL;
- 
- 	writel(hif_idx | MT_PCIE_RECOG_ID_SEM,
-@@ -121,7 +121,8 @@ static int mt7996_pci_probe(struct pci_dev *pdev,
- 
- 	mt76_pci_disable_aspm(pdev);
- 
--	if (id->device == 0x7991 || id->device == 0x799a)
-+	if (id->device == MT7996_DEVICE_ID_2 ||
-+	    id->device == MT7992_DEVICE_ID_2)
- 		return mt7996_pci_hif2_probe(pdev);
- 
- 	dev = mt7996_mmio_probe(&pdev->dev, pcim_iomap_table(pdev)[0],
+ /* FW MODE SYNC */
+ #define MT_FW_ASSERT_CNT			0x02208274
 -- 
 2.39.2
 
