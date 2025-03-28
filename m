@@ -4,81 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19957C28B20
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Mar 2025 12:13:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0830CC28B20
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Mar 2025 14:52:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:From:Subject:Message-ID:Mime-Version:Date:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=o8yZxDWKVuGdJufLroOp7bVTav6VTJyysxYI8wso148=; b=n1elOgLZuUMUk4X04zXVas+rze
-	dw8LSiO1BuYEqPbukOWWs5eUlKsNXLCGceho0wRQlcEBoeZWAZUa2PJZgtQuQV4NbMMHq3wBVGGsp
-	hjL4bEddzbBcWhXrR6ew+c9XuUzYgGUYG6K1xLV3ZzQnI0CA8NOF1MCeedKcWUy3WKrVujccCNYow
-	l4D6esj2YF9y1tO+JQrbhTby+fsUZwOFhqtv09uJh+KTcDuCCycIT7qyldLOmaIvPOX2oMMMY49E6
-	XmoOw03kbc5jT25yAz/f1j+uJL/R//I6GRW6x5rTTgTPEVkiRnAUwKyTWXQOWAlEMwh5ciIILimpU
-	OYyLK+QQ==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4ZE+cd4BF6DxUBAmY/OkkgML45nE3/ZZOvYLMZAwwYc=; b=YEI6wS4cVzw7wkSj8VN4I+STfE
+	ai3ZWa/F+LH74YJWy0iDi8ryJlWcdSKIz21B3v5HvmLMV1qxRFhFGd2GRrC22xJ1QuAyeetKMkPyU
+	cGk1M1tC6C4h55iW88mWlsqx27KBOCxp6cV+pH4mlgS5aWPuPoyVFiWLI2WkuGqicfyf0LqLSdCrY
+	4Wifhm0cndDeJHTtxkc2Z/whfUzPXNC9EpsyIXfCODMK+myXKtYs3+O8cl+ToIa7JV1KEkeKnrlLj
+	zySl23JnpE6kI11/T2PghxNgPX1II7o8X61cs4GpmW2oPXUNeafCuerlRh4FO/jHWw2jzBOrhDpyA
+	5Sj/JYpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1ty8aB-0000000DI8R-2BJu;
-	Fri, 28 Mar 2025 12:13:07 +0000
-Received: from mail-ej1-x64a.google.com ([2a00:1450:4864:20::64a])
+	id 1tyB4L-0000000DeoW-1btr;
+	Fri, 28 Mar 2025 14:52:25 +0000
+Received: from 004.mia.mailroute.net ([199.89.3.7])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1ty8a9-0000000DI7p-1tel
-	for linux-mediatek@lists.infradead.org;
-	Fri, 28 Mar 2025 12:13:06 +0000
-Received: by mail-ej1-x64a.google.com with SMTP id a640c23a62f3a-ac27d8ac365so164706266b.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 28 Mar 2025 05:13:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1743163983; x=1743768783; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:from:subject:message-id
-         :mime-version:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=o8yZxDWKVuGdJufLroOp7bVTav6VTJyysxYI8wso148=;
-        b=S0V0F0VgIM82A7PZqsgQ92xFdSxumMkFddEuZz/0bqs5xBLd+AlYYKvZAH/zuGScHX
-         6GeJll/7ePH1HdNV1c7Iz55iOWk9pTWIu/smIBQTZXBXxSqLKrqUO+3XY5BUmn9Q5G6J
-         v6FExmSd3VoRz+TfgSxZESvJ4CYYqhLTeVQXkxAiWlluX8zO30Dnl4X7j6bUqYQjzPsl
-         aveE5NnxBo/G544fpIYQy8gkU4eo6JSbhn0+0wDwOV/tdkQgkq1F8FVFpn+9kNJLGoFW
-         SXLGKwY8h+noSo40UNgOUJUjlbPYQWTB4UzKgq60nHE3QnSbeGzxundoRAAuhR3bLrMX
-         KkAw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743163983; x=1743768783;
-        h=content-transfer-encoding:cc:to:from:subject:message-id
-         :mime-version:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=o8yZxDWKVuGdJufLroOp7bVTav6VTJyysxYI8wso148=;
-        b=doSPybKzQ1vcEbkxbPcdjWc3JzbgBz3ulFefRfNlkRkvXzHLul3xNywP+jc5OQBD37
-         X533gT1YGiAjxISIinPqE7Zh3yZvUv2J0OMsywIwvzVP4Z0IE6JkzDxN4MVSVOZParU3
-         5Xp+sayKZoJSZLrBEwwQqe4x0L4gaGasMw48pvh2UitLMocSU5ZKtpipxoBf1KtrRbVz
-         zVbIlXFnWCcXFfZbJi24d1PgSsHFno0jVzQtPVBPRB5XaxqOvXpjDINlKgZe2379eNJ2
-         t1MKJGr5pj7Y0raPL2gKFv5rJAX4w90AT2Xhr6O3/jYGGGpVdyB5kAL6bQKyD4fSmxDj
-         eSMQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXAxEhceSW6RU82h+Tcay8hP21hs6guKuSnBsl++6P45HqqgTrSZJBkGi/VTYvIGy7ekAWmK0W8Tfx9IxImug==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzGrkbdY8jXKX2hb7QeHTc0ndpJax71ARVzksInkUU74A78Ftzc
-	pk2/GQIW6+zU5/EAP74Q/ZPi/QgMRyMHMOzt0GUJjlyDEZ9ohhjAaUaDrmtJOH8edpesBBKijNW
-	eaNTKPtaYew==
-X-Google-Smtp-Source: AGHT+IH+URE2JNYwtr+vzakMr5FIwnaziOhvei4JU7ZPSwNs2+pFJiuJvdGrEEam/bZoSIkKiBoQnrek1y96ng==
-X-Received: from edrc15.prod.google.com ([2002:aa7:d60f:0:b0:5e6:510c:9f00])
- (user=lmajczak job=prod-delivery.src-stubby-dispatcher) by
- 2002:a05:6402:34d4:b0:5ec:8ef1:35c4 with SMTP id 4fb4d7f45d1cf-5ed8e4957d7mr7600952a12.13.1743163983409;
- Fri, 28 Mar 2025 05:13:03 -0700 (PDT)
-Date: Fri, 28 Mar 2025 12:13:00 +0000
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.49.0.472.ge94155a9ec-goog
-Message-ID: <20250328121300.2612942-1-lmajczak@google.com>
-Subject: [PATCH] arm64: dts: mediatek: mt8186: starmie: Fix external display
-From: "=?UTF-8?q?=C5=81ukasz=20Majczak?=" <lmajczak@google.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	"=?UTF-8?q?=C5=81ukasz=20Majczak?=" <lmajczak@google.com>
-Content-Type: text/plain; charset="UTF-8"
+	id 1tyAIX-0000000DX75-0BHo;
+	Fri, 28 Mar 2025 14:03:02 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 004.mia.mailroute.net (Postfix) with ESMTP id 4ZPMfw4yNVznsPmg;
+	Fri, 28 Mar 2025 14:02:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1743170565; x=1745762566; bh=4ZE+cd4BF6DxUBAmY/OkkgML
+	45nE3/ZZOvYLMZAwwYc=; b=UPm1J3mpblKfQc0YCZUMmcge9Fp2Hef+73/B73p/
+	+KPKKDSby43MhHWq8epDKk3NYStHZ1OtKRT2+Uy2GUKG3KmayPt0HQ2zTr3YoX9X
+	Mhmuyla+B676KGjl9r1BkBgGM1KIxXrtFqC66hhgh41Mu9FEZ2Oj7SzQSaSqTliY
+	VWaUxxFFSTaNVCpLA9arQbDnjYmHQ9ymBJ1/gxoczCX+jDZt3741OPKPpJzxWz2g
+	tWMT4et2zzF+4M/b9fZhBrMTpFdN8yW9GhqN/ZAHfhUvAWJNJp6pnT0TZ3rwIHQa
+	TskXsuvMcSpf0/Z3Jk7cN/6vV/e0n57/z9uq3n59JLigWg==
+X-Virus-Scanned: by MailRoute
+Received: from 004.mia.mailroute.net ([127.0.0.1])
+ by localhost (004.mia [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id QSa-olsH7qKs; Fri, 28 Mar 2025 14:02:45 +0000 (UTC)
+Received: from [192.168.50.14] (c-73-231-117-72.hsd1.ca.comcast.net [73.231.117.72])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bvanassche@acm.org)
+	by 004.mia.mailroute.net (Postfix) with ESMTPSA id 4ZPMfR3GjYzm0ytY;
+	Fri, 28 Mar 2025 14:02:21 +0000 (UTC)
+Message-ID: <989e695e-e6a4-4427-9041-e39ecf5b5674@acm.org>
+Date: Fri, 28 Mar 2025 07:02:20 -0700
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 1/1] scsi: ufs: core: add device level exception
+ support
+To: "Bao D. Nguyen" <quic_nguyenb@quicinc.com>,
+ Arthur Simchaev <Arthur.Simchaev@sandisk.com>,
+ "quic_cang@quicinc.com" <quic_cang@quicinc.com>,
+ "quic_nitirawa@quicinc.com" <quic_nitirawa@quicinc.com>,
+ "avri.altman@wdc.com" <avri.altman@wdc.com>,
+ "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
+ "manivannan.sadhasivam@linaro.org" <manivannan.sadhasivam@linaro.org>,
+ "minwoo.im@samsung.com" <minwoo.im@samsung.com>,
+ "adrian.hunter@intel.com" <adrian.hunter@intel.com>,
+ "martin.petersen@oracle.com" <martin.petersen@oracle.com>
+Cc: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ Alim Akhtar <alim.akhtar@samsung.com>,
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Bean Huo <beanhuo@micron.com>, Keoseong Park <keosung.park@samsung.com>,
+ Ziqi Chen <quic_ziqichen@quicinc.com>, Al Viro <viro@zeniv.linux.org.uk>,
+ Gwendal Grignou <gwendal@chromium.org>, Eric Biggers <ebiggers@google.com>,
+ open list <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support:Keyword:mediatek"
+ <linux-arm-kernel@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support:Keyword:mediatek"
+ <linux-mediatek@lists.infradead.org>
+References: <4370b3a3b5a5675bb3e75aaa48a273674c159339.1742526978.git.quic_nguyenb@quicinc.com>
+ <SA2PR16MB4251229744D717821D3D8353F4A72@SA2PR16MB4251.namprd16.prod.outlook.com>
+ <c5ab13ec-f650-ea10-5cb8-d6a2ddf1e825@quicinc.com>
+ <0a68d437-5d6a-42aa-ae4e-6f5d89cfcaf3@acm.org>
+ <ad246ef4-7429-63bb-0279-90738736f6e3@quicinc.com>
+ <3d7b543c-1165-42e0-8471-25b04c7572ac@acm.org>
+ <4cb20c80-9bb0-e147-e3c0-467f4c8828ba@quicinc.com>
+Content-Language: en-US
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <4cb20c80-9bb0-e147-e3c0-467f4c8828ba@quicinc.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250328_051305_487776_5CE0E965 
-X-CRM114-Status: UNSURE (   8.55  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250328_070301_186234_7130D095 
+X-CRM114-Status: GOOD (  10.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,81 +109,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The dpi-default-pins overwrittes the same called node, defined in
-mt8186-corsola.dtsi with the wrong set of pins, so remove
-it from mt8186-corsola-starmie.dtsi as the first one is correct and
-sufficient.
-In addition, remove dpi-func-pins node from mt8186-corsola-starmie.dtsi,
-as it is not used anywhere and also defines the same set of pins as
-dpi-default-pins node already present in mt8186-corsola.dtsi.
+On 3/27/25 5:45 PM, Bao D. Nguyen wrote:
+> Thanks Bart. How about we change the current utp_upiu_query_v4_0 to
+>=20
+> struct utp_upiu_query_v4_0 {
+>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 __u8 opcode;
+>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 __u8 idn;
+>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 __u8 index;
+>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 __u8 selector;
+>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 __u8 cmd_specifics[8];
+>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* private: */
+>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 __be32 reserved;
+> };
+>=20
+> Depending on the opcode/transaction, the cmd_specifics[] can be type=20
+> casted to access the LENGTH, FLAG_VALUE, VALUE[0:63] fields of the QUER=
+Y=20
+> UPIU. The __u8 array[8] would also prevent the compiler padding to the=20
+> data.
 
-Verifeid above with Corsola/Starmie device, by connecting external screen
-with usb-c -> hdmi adapter.
+Are there any user space applications that use the osf3/4/5/6/7 member
+names? Has it been considered to preserve these by introducing a union?
 
-Signed-off-by: =C5=81ukasz Majczak <lmajczak@google.com>
----
- .../dts/mediatek/mt8186-corsola-starmie.dtsi  | 45 -------------------
- 1 file changed, 45 deletions(-)
+Thanks,
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-starmie.dtsi b/arc=
-h/arm64/boot/dts/mediatek/mt8186-corsola-starmie.dtsi
-index 5ea8bdc00e81..a8e79c2791ba 100644
---- a/arch/arm64/boot/dts/mediatek/mt8186-corsola-starmie.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-starmie.dtsi
-@@ -375,51 +375,6 @@ &pio {
- 			  "TP",
- 			  "TP";
-=20
--	dpi_default_pins: dpi-default-pins {
--		pins-cmd-dat {
--			pinmux =3D <PINMUX_GPIO103__FUNC_GPIO103>,
--				 <PINMUX_GPIO104__FUNC_GPIO104>,
--				 <PINMUX_GPIO105__FUNC_GPIO105>,
--				 <PINMUX_GPIO106__FUNC_GPIO106>,
--				 <PINMUX_GPIO107__FUNC_GPIO107>,
--				 <PINMUX_GPIO108__FUNC_GPIO108>,
--				 <PINMUX_GPIO109__FUNC_GPIO109>,
--				 <PINMUX_GPIO110__FUNC_GPIO110>,
--				 <PINMUX_GPIO111__FUNC_GPIO111>,
--				 <PINMUX_GPIO112__FUNC_GPIO112>,
--				 <PINMUX_GPIO113__FUNC_GPIO113>,
--				 <PINMUX_GPIO114__FUNC_GPIO114>,
--				 <PINMUX_GPIO101__FUNC_GPIO101>,
--				 <PINMUX_GPIO100__FUNC_GPIO100>,
--				 <PINMUX_GPIO102__FUNC_GPIO102>,
--				 <PINMUX_GPIO99__FUNC_GPIO99>;
--			drive-strength =3D <10>;
--			output-low;
--		};
--	};
--
--	dpi_func_pins: dpi-func-pins {
--		pins-cmd-dat {
--			pinmux =3D <PINMUX_GPIO103__FUNC_DPI_DATA0>,
--				 <PINMUX_GPIO104__FUNC_DPI_DATA1>,
--				 <PINMUX_GPIO105__FUNC_DPI_DATA2>,
--				 <PINMUX_GPIO106__FUNC_DPI_DATA3>,
--				 <PINMUX_GPIO107__FUNC_DPI_DATA4>,
--				 <PINMUX_GPIO108__FUNC_DPI_DATA5>,
--				 <PINMUX_GPIO109__FUNC_DPI_DATA6>,
--				 <PINMUX_GPIO110__FUNC_DPI_DATA7>,
--				 <PINMUX_GPIO111__FUNC_DPI_DATA8>,
--				 <PINMUX_GPIO112__FUNC_DPI_DATA9>,
--				 <PINMUX_GPIO113__FUNC_DPI_DATA10>,
--				 <PINMUX_GPIO114__FUNC_DPI_DATA11>,
--				 <PINMUX_GPIO101__FUNC_DPI_HSYNC>,
--				 <PINMUX_GPIO100__FUNC_DPI_VSYNC>,
--				 <PINMUX_GPIO102__FUNC_DPI_DE>,
--				 <PINMUX_GPIO99__FUNC_DPI_PCLK>;
--			drive-strength =3D <10>;
--		};
--	};
--
- 	en_pp6000_mipi_disp_150ma_fixed_pins: en_pp6000-mipi-disp-150ma-fixed-pin=
-s {
- 		pins-en {
- 			pinmux =3D <PINMUX_GPIO154__FUNC_GPIO154>;
---=20
-2.49.0.472.ge94155a9ec-goog
-
+Bart.
 
