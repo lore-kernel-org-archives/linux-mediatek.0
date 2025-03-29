@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81A7EC36016
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B837C36018
 	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Mar 2025 15:47:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,58 +12,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O+fL1ilVxm4dyNoa1NaBE6Dc7bEVWGR1AuCK9fl1KVU=; b=0NUbrheKxN0KPXSU9lC0M+8dbt
-	hQbFefLU7HDN+ioJsAVENvOtmK21zGeKC/hG8GCFs2Z69cI1ZpHgsTpMyJwq9yPDcRuC7XmZKXU2F
-	fHfIW5jPMPl17Vo5m6D9DvBosaoR583MiKly4/eemJOIQVYGRkJ5z+RzixPzVIxFXJYRo7NcCwWyn
-	XjdS8nHdcsRn6m7JCR04vL1ccsZBM/Mo/lFfux07NfMc6u22fLJp5Kiz4nG+EIGT1EtjAUqn34tkO
-	Ur8A2B0UOFgWJJcKwz5o841IHyLa0TRiu3b8Gt70A2XQTOIal/K6N4VyU6DbH3C08EiOsb5uZcPb0
-	wgKN5mhw==;
+	bh=wA6tB5jf2eHCDBLI/SlO3iktMUtN5Y+F51SNFTax68w=; b=MKrLcAXPxW8MvM0Zy93shILeB7
+	GOkbDW1ChN28RvCMRtZulYm30JuWFzk3DHbZ+fRUpb/d8owhd6AtQz9aKM2CDS7PbkRfmnUMFeux8
+	6X8zAv8FPB0ALOZUZ6QsKKR9FJQCzYVkU2del9lBlLHsIjiKLP4G7qZvvJQD31v0GGJez0eikPIBM
+	khcLeNdSnbgHR1rxH8oBm91l30pKqqaUqlGWKpNCKBVgAcsJ+pHEFvsS+3BxNY9RA/E+Fyd2Z+gGi
+	6rgpAAvSYJlxv4MXF5lms0GtASo1qQWOpF5JXZUUL5/bgQeoJrNWvj/Xx5MO33h8k4G0m/u0e3a60
+	AigOntSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tyYPX-0000000FHje-2WGm;
+	id 1tyYPX-0000000FHj5-11Vp;
 	Sat, 29 Mar 2025 15:47:51 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tyYPT-0000000FHdW-0u1f
+	id 1tyYPT-0000000FHdZ-0tf2
 	for linux-mediatek@lists.infradead.org;
-	Sat, 29 Mar 2025 15:47:49 +0000
-X-UUID: 2529b9bc0cb511f083f2a1c9db70dae0-20250329
+	Sat, 29 Mar 2025 15:47:48 +0000
+X-UUID: 2572546a0cb511f083f2a1c9db70dae0-20250329
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=O+fL1ilVxm4dyNoa1NaBE6Dc7bEVWGR1AuCK9fl1KVU=;
-	b=CljryTMT/btDZcteo3BVLVZmMU2Ybh6lXsKWP7Tw9lscEEGtSo06HJi/LzvKwe5K0OS9EiJM1kDOsA2PfZJGOUDlmNSfhVOhxnUDfaVJ8wSqXajyLCOap4BjuZgo5oz++YQ/WkU97uaTwzgFlv0wp4gaT51f3glqaDzRN/V2klo=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=wA6tB5jf2eHCDBLI/SlO3iktMUtN5Y+F51SNFTax68w=;
+	b=APeo9DS82GURhNNUiwRejFN94DhUsrsnwUyN0eyJrAIcwfzb82Gp4lGD/raogWpslj1ixDNDhKqnoBFsIeZp8MWc9z79TvlwtmAznoRkvwFb+dqxgdYvT9JBopZgK5BQ0t18h6MXhX2YFsKyi1kpzJh1rRxijZAeoptVh4bAD/I=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:1f919ebd-a3a7-402e-b460-987116fb5eb6,IP:0,UR
+X-CID-O-INFO: VERSION:1.2.1,REQID:203a8b33-6c85-492c-b9f7-92145dca5d5a,IP:0,UR
 	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
 	:release,TS:-25
-X-CID-META: VersionHash:0ef645f,CLOUDID:88ecfa8c-f5b8-47d5-8cf3-b68fe7530c9a,B
+X-CID-META: VersionHash:0ef645f,CLOUDID:87ecfa8c-f5b8-47d5-8cf3-b68fe7530c9a,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
 	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
 	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 2529b9bc0cb511f083f2a1c9db70dae0-20250329
-Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
+X-UUID: 2572546a0cb511f083f2a1c9db70dae0-20250329
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
 	(envelope-from <shayne.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 416759831; Sat, 29 Mar 2025 08:47:40 -0700
+	with ESMTP id 1051829548; Sat, 29 Mar 2025 08:47:40 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Sat, 29 Mar 2025 23:47:37 +0800
+ 15.2.1258.39; Sat, 29 Mar 2025 23:47:38 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Sat, 29 Mar 2025 23:47:37 +0800
+ 15.2.1258.39 via Frontend Transport; Sat, 29 Mar 2025 23:47:38 +0800
 From: Shayne Chen <shayne.chen@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>
 CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
 	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
 	<evelyn.tsai@mediatek.com>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Peter Chiu
-	<chui-hao.chiu@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>
-Subject: [PATCH mt76-next v2 03/10] wifi: mt76: mt7996: rework WA mcu command for mt7990
-Date: Sat, 29 Mar 2025 23:47:23 +0800
-Message-ID: <20250329154731.2113551-4-shayne.chen@mediatek.com>
+	<linux-mediatek@lists.infradead.org>, StanleyYP Wang
+	<StanleyYP.Wang@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>
+Subject: [PATCH mt76-next v2 06/10] wifi: mt76: mt7996: add eeprom support for mt7990
+Date: Sat, 29 Mar 2025 23:47:26 +0800
+Message-ID: <20250329154731.2113551-7-shayne.chen@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20250329154731.2113551-1-shayne.chen@mediatek.com>
 References: <20250329154731.2113551-1-shayne.chen@mediatek.com>
@@ -72,8 +72,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250329_084747_299656_012AE204 
-X-CRM114-Status: GOOD (  13.65  )
+X-CRM114-CacheID: sfid-20250329_084747_297120_C87937BC 
+X-CRM114-Status: GOOD (  11.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,142 +88,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Chiu <chui-hao.chiu@mediatek.com>
+From: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
 
-Since mt7990 lacks WA firmware, some WA commands are not supported or
-need to be refactored to use the SDO command.
+Add eeprom definition and default bin file for mt7990.
 This is a preliminary patch to support mt7990 chipset.
 
-Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Signed-off-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
 Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 ---
- .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  2 +
- .../net/wireless/mediatek/mt76/mt7996/mcu.c   | 50 ++++++++++++++++---
- .../net/wireless/mediatek/mt76/mt7996/mcu.h   |  6 +++
- 3 files changed, 50 insertions(+), 8 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c | 6 ++++++
+ drivers/net/wireless/mediatek/mt76/mt7996/init.c   | 3 +++
+ drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h | 7 +++++++
+ 3 files changed, 16 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-index 43237e518373..8226b975f7e6 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-@@ -1065,6 +1065,7 @@ enum {
- 	MCU_UNI_EVENT_WED_RRO = 0x57,
- 	MCU_UNI_EVENT_PER_STA_INFO = 0x6d,
- 	MCU_UNI_EVENT_ALL_STA_INFO = 0x6e,
-+	MCU_UNI_EVENT_SDO = 0x83,
- };
- 
- #define MCU_UNI_CMD_EVENT			BIT(1)
-@@ -1297,6 +1298,7 @@ enum {
- 	MCU_UNI_CMD_PER_STA_INFO = 0x6d,
- 	MCU_UNI_CMD_ALL_STA_INFO = 0x6e,
- 	MCU_UNI_CMD_ASSERT_DUMP = 0x6f,
-+	MCU_UNI_CMD_SDO = 0x88,
- };
- 
- enum {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-index 1d12ccbacbcf..8f97315ef0ea 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-@@ -338,8 +338,12 @@ mt7996_mcu_send_message(struct mt76_dev *mdev, struct sk_buff *skb,
- int mt7996_mcu_wa_cmd(struct mt7996_dev *dev, int cmd, u32 a1, u32 a2, u32 a3)
- {
- 	struct {
-+		u8 _rsv[4];
-+
-+		__le16 tag;
-+		__le16 len;
- 		__le32 args[3];
--	} req = {
-+	} __packed req = {
- 		.args = {
- 			cpu_to_le32(a1),
- 			cpu_to_le32(a2),
-@@ -347,7 +351,16 @@ int mt7996_mcu_wa_cmd(struct mt7996_dev *dev, int cmd, u32 a1, u32 a2, u32 a3)
- 		},
- 	};
- 
--	return mt76_mcu_send_msg(&dev->mt76, cmd, &req, sizeof(req), false);
-+	if (mt7996_has_wa(dev))
-+		return mt76_mcu_send_msg(&dev->mt76, cmd, &req.args,
-+					 sizeof(req.args), false);
-+
-+	req.tag = cpu_to_le16(cmd == MCU_WA_PARAM_CMD(QUERY) ? UNI_CMD_SDO_QUERY :
-+							       UNI_CMD_SDO_SET);
-+	req.len = cpu_to_le16(sizeof(req) - 4);
-+
-+	return mt76_mcu_send_msg(&dev->mt76, MCU_WA_UNI_CMD(SDO), &req,
-+				 sizeof(req), true);
- }
- 
- static void
-@@ -3223,13 +3236,15 @@ int mt7996_mcu_init_firmware(struct mt7996_dev *dev)
- 	if (ret)
- 		return ret;
- 
--	ret = mt7996_mcu_fw_log_2_host(dev, MCU_FW_LOG_WA, 0);
--	if (ret)
--		return ret;
-+	if (mt7996_has_wa(dev)) {
-+		ret = mt7996_mcu_fw_log_2_host(dev, MCU_FW_LOG_WA, 0);
-+		if (ret)
-+			return ret;
- 
--	ret = mt7996_mcu_set_mwds(dev, 1);
--	if (ret)
--		return ret;
-+		ret = mt7996_mcu_set_mwds(dev, 1);
-+		if (ret)
-+			return ret;
-+	}
- 
- 	ret = mt7996_mcu_init_rx_airtime(dev);
- 	if (ret)
-@@ -4749,7 +4764,26 @@ int mt7996_mcu_cp_support(struct mt7996_dev *dev, u8 mode)
- 	    mode > mt76_connac_lmac_mapping(IEEE80211_AC_VO))
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c
+index 51b09956486b..6f3eb053ef02 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c
+@@ -17,6 +17,8 @@ static int mt7996_check_eeprom(struct mt7996_dev *dev)
+ 		return is_mt7996(&dev->mt76) ? 0 : -EINVAL;
+ 	case MT7992_DEVICE_ID:
+ 		return is_mt7992(&dev->mt76) ? 0 : -EINVAL;
++	case MT7990_DEVICE_ID:
++		return is_mt7990(&dev->mt76) ? 0 : -EINVAL;
+ 	default:
  		return -EINVAL;
+ 	}
+@@ -39,6 +41,10 @@ static char *mt7996_eeprom_name(struct mt7996_dev *dev)
+ 				return MT7992_EEPROM_DEFAULT_MIX;
+ 			return MT7992_EEPROM_DEFAULT;
+ 		}
++	case MT7990_DEVICE_ID:
++		if (dev->var.fem == MT7996_FEM_INT)
++			return MT7990_EEPROM_DEFAULT_INT;
++		return MT7990_EEPROM_DEFAULT;
+ 	case MT7996_DEVICE_ID:
+ 	default:
+ 		switch (dev->var.type) {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+index f017d30e1c49..a4c2986fcffd 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+@@ -943,6 +943,9 @@ static int mt7996_variant_type_init(struct mt7996_dev *dev)
+ 		else
+ 			return -EINVAL;
+ 		break;
++	case MT7990_DEVICE_ID:
++		var_type = MT7990_VAR_TYPE_23;
++		break;
+ 	default:
+ 		return -EINVAL;
+ 	}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+index 148271fcd88f..2dd33f303a06 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+@@ -73,6 +73,9 @@
+ #define MT7992_EEPROM_DEFAULT_23	"mediatek/mt7996/mt7992_eeprom_23.bin"
+ #define MT7992_EEPROM_DEFAULT_23_INT	"mediatek/mt7996/mt7992_eeprom_23_2i5i.bin"
  
-+	if (!mt7996_has_wa(dev)) {
-+		struct {
-+			u8 _rsv[4];
++#define MT7990_EEPROM_DEFAULT		"mediatek/mt7996/mt7990_eeprom.bin"
++#define MT7990_EEPROM_DEFAULT_INT	"mediatek/mt7996/mt7990_eeprom_2i5i.bin"
 +
-+			__le16 tag;
-+			__le16 len;
-+			u8 cp_mode;
-+			u8 rsv[3];
-+		} __packed req = {
-+			.tag = cpu_to_le16(UNI_CMD_SDO_CP_MODE),
-+			.len = cpu_to_le16(sizeof(req) - 4),
-+			.cp_mode = mode,
-+		};
-+
-+		return mt76_mcu_send_msg(&dev->mt76, MCU_WA_UNI_CMD(SDO),
-+					 &req, sizeof(req), true);
-+	}
-+
- 	cp_mode = cpu_to_le32(mode);
-+
- 	return mt76_mcu_send_msg(&dev->mt76, MCU_WA_EXT_CMD(CP_SUPPORT),
- 				 &cp_mode, sizeof(cp_mode), true);
- }
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
-index 2ab6a53bee86..8ef7d4baee90 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
-@@ -937,6 +937,12 @@ enum {
- 	UNI_CMD_SER_TRIGGER
+ #define MT7996_EEPROM_SIZE		7680
+ #define MT7996_EEPROM_BLOCK_SIZE	16
+ #define MT7996_TOKEN_SIZE		16384
+@@ -143,6 +146,10 @@ enum mt7992_var_type {
+ 	MT7992_VAR_TYPE_23,
  };
  
-+enum {
-+	UNI_CMD_SDO_SET = 1,
-+	UNI_CMD_SDO_QUERY,
-+	UNI_CMD_SDO_CP_MODE = 6,
++enum mt7990_var_type {
++	MT7990_VAR_TYPE_23,
 +};
 +
- enum {
- 	MT7996_SEC_MODE_PLAIN,
- 	MT7996_SEC_MODE_AES,
+ enum mt7996_fem_type {
+ 	MT7996_FEM_EXT,
+ 	MT7996_FEM_INT,
 -- 
 2.39.2
 
