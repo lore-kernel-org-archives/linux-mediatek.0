@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0B2FC36013
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F40EC28B20
 	for <linux-mediatek@archiver.kernel.org>; Sun, 30 Mar 2025 17:03:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,32 +12,32 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WFuKeZ2Mgo5yTqNGhX/kKLsejXNkpw0wnwsa5YPEGN4=; b=HnhFSuahDmR6TqSyOge1hbCQoE
-	HRbiZo8+0QoI11w7G2Q14Y9+P3dbUvl07Jy2lO0skdw+mrWxpo3ggWx8DC2bAs9+Q9st756eylwiz
-	0D1psCJxIPPziEyle2rFk3Ge9+zsxFfo4sho+4lnfN5xpDk92PTd77qhXfV9pg1AgE6Vf8tRfTKeV
-	5uFnwLyyN+NdMxPalX5lYyO9LBGwOVNxzXySIQSWzBow1XQLjxr5FCt2MlZa/nlPiZy9FASGk04Q2
-	E99aaa4jjKnF0Fvbr+MiuD5PgA2pav+6nZ5yGOWIZiFARiQr9OjiQseCS3RXDs25RMnISMhRDwjUl
-	oGP19bTA==;
+	bh=KM5EcPL4IKHM4rlCbQTASYXsAHqwj3BMx36LqYyLIcU=; b=GzhZSrI3+EUra1t8wxBBkRz9ES
+	0Jj46EFvOv80Xo7NIVH+oAeWeEubAXX2DJl8Oh3/rLvZ5EWq+V+xrFlUjajE94r7Bnfv7K9TWcDZE
+	vgH2orasOzqqX5ZJ5wisSdRILkzWWewRvM9jZKLZjQRajnwp6EPo1rjZAOVtOqVCPnmA7ylKW49xr
+	xkEoU7UIjKuypURJraRfR3Z8iBO2eFeTw6aMLge6/eI0Hd8yu1bJK9ZT2v8lLs4JtmvrGJqXZyKCC
+	kcwKzcf0xVJX4U/mPLqHS8P0A4Dm+S8nNvdxnrR3PoO10KvWen/a9lqFrXTBqw5hm5+apjZ+/D1QU
+	WOFyl9zQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tyw4f-0000000GPxt-3fVn;
+	id 1tyw4f-0000000GPxM-2KCz;
 	Sun, 30 Mar 2025 17:03:53 +0000
 Received: from mail.cjdns.fr ([5.135.140.105])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tyw4c-0000000GPtj-0sjJ
+	id 1tyw4Z-0000000GPsk-3KCQ
 	for linux-mediatek@lists.infradead.org;
-	Sun, 30 Mar 2025 17:03:51 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 695112FBEBA;
-	Sun, 30 Mar 2025 19:03:46 +0200 (CEST)
+	Sun, 30 Mar 2025 17:03:49 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 660E52FBEA5;
+	Sun, 30 Mar 2025 19:03:44 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
-	t=1743354228; h=from:subject:date:message-id:to:cc:mime-version:
+	t=1743354225; h=from:subject:date:message-id:to:cc:mime-version:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=WFuKeZ2Mgo5yTqNGhX/kKLsejXNkpw0wnwsa5YPEGN4=;
-	b=c5Fxsc8Qjq+xXMQ3KJfuXIyTa5NAWGu+Obv/NHUXY2Id2ztmg2FxM7jyYG+PMcNN64krvt
-	WZsaQz0zz74RbBOthui+6gTiWGvoOY34R4xQAXCKEsDYUA1+wSQdE4MeCWudtBArEL03fr
-	Crjl1BGm0gjLtxytkyB5wlfL6UTV7kuwX3FR/XznWt2zGex3VBa5+PSzm1jQnxgNv5gkmL
-	GWO7bQEfqUBU1D0k13UFsj9FNtORgm6YUgxEOwPB2tqRBl04avqzjzmYUhtzWJvgZxNQ7D
-	c+kVJythVKg88n8DPza/TuByJEKDD3RBY4iDW1yBMke9Bs0xwJygx96aZ9yGKg==
+	bh=KM5EcPL4IKHM4rlCbQTASYXsAHqwj3BMx36LqYyLIcU=;
+	b=ihnCKKqE041/HCw0oG5aAukIpEj9Lcv+xyjD0xVI7LH+pDCsQMDgO7Kgv+U+1ZXIwaEtCA
+	xlhY1+7KLarOYTcZ6KIPTZL/RRQGjo0daVIvtQ9HfKRRRI38SA9hpgfZQLYZCCHtzn510Z
+	M2zMUstT27pRXVNRE4Nx+PRgUt1yM+Do7alLJIsviGO67AiT9w9/9TwE1se9rHDPje3su/
+	jVB/+GpbkVrIpYM3ASQ9IyuyB3tNjMfJZnion9oUE8tj9flR7CEnEiHq/p3Ky+iAXKxjht
+	+vpfC8hMyPw8C1elKBqJUGLBmRBhqdZkEYrjB9iP5nXDmQpAPbCKoYeHFtk15A==
 From: Caleb James DeLisle <cjd@cjdns.fr>
 To: linux-mips@vger.kernel.org
 Cc: Thomas Gleixner <tglx@linutronix.de>,
@@ -50,20 +50,18 @@ Cc: Thomas Gleixner <tglx@linutronix.de>,
 	linux-kernel@vger.kernel.org,
 	benjamin.larsson@genexis.eu,
 	linux-mediatek@lists.infradead.org,
-	Caleb James DeLisle <cjd@cjdns.fr>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v3 06/10] dt-bindings: mips: Add EcoNet platform binding
-Date: Sun, 30 Mar 2025 17:03:02 +0000
-Message-Id: <20250330170306.2584136-7-cjd@cjdns.fr>
+	Caleb James DeLisle <cjd@cjdns.fr>
+Subject: [PATCH v3 05/10] clocksource/drivers: Add EcoNet Timer HPT driver
+Date: Sun, 30 Mar 2025 17:03:01 +0000
+Message-Id: <20250330170306.2584136-6-cjd@cjdns.fr>
 In-Reply-To: <20250330170306.2584136-1-cjd@cjdns.fr>
 References: <20250330170306.2584136-1-cjd@cjdns.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250330_100350_467890_4C99F3EC 
-X-CRM114-Status: UNSURE (   8.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250330_100348_258107_FE17BD49 
+X-CRM114-Status: GOOD (  20.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,47 +76,270 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Document the top-level device tree binding for EcoNet MIPS-based SoCs.
+Introduce a clocksource driver for the so-called high-precision timer (HPT)
+in the EcoNet EN751221 MIPS SoC.
 
 Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- .../devicetree/bindings/mips/econet.yaml      | 26 +++++++++++++++++++
- 1 file changed, 26 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/mips/econet.yaml
+ drivers/clocksource/Kconfig                 |   8 +
+ drivers/clocksource/Makefile                |   1 +
+ drivers/clocksource/timer-econet-en751221.c | 216 ++++++++++++++++++++
+ 3 files changed, 225 insertions(+)
+ create mode 100644 drivers/clocksource/timer-econet-en751221.c
 
-diff --git a/Documentation/devicetree/bindings/mips/econet.yaml b/Documentation/devicetree/bindings/mips/econet.yaml
+diff --git a/drivers/clocksource/Kconfig b/drivers/clocksource/Kconfig
+index 487c85259967..976afb0b2312 100644
+--- a/drivers/clocksource/Kconfig
++++ b/drivers/clocksource/Kconfig
+@@ -73,6 +73,14 @@ config DW_APB_TIMER_OF
+ 	select DW_APB_TIMER
+ 	select TIMER_OF
+ 
++config ECONET_EN751221_TIMER
++	bool "EcoNet EN751221 High Precision Timer" if COMPILE_TEST
++	depends on HAS_IOMEM
++	select CLKSRC_MMIO
++	select TIMER_OF
++	help
++	  Support for CPU timer found on EcoNet MIPS based SoCs.
++
+ config FTTMR010_TIMER
+ 	bool "Faraday Technology timer driver" if COMPILE_TEST
+ 	depends on HAS_IOMEM
+diff --git a/drivers/clocksource/Makefile b/drivers/clocksource/Makefile
+index 43ef16a4efa6..d2998601eda5 100644
+--- a/drivers/clocksource/Makefile
++++ b/drivers/clocksource/Makefile
+@@ -17,6 +17,7 @@ obj-$(CONFIG_CLKBLD_I8253)	+= i8253.o
+ obj-$(CONFIG_CLKSRC_MMIO)	+= mmio.o
+ obj-$(CONFIG_DAVINCI_TIMER)	+= timer-davinci.o
+ obj-$(CONFIG_DIGICOLOR_TIMER)	+= timer-digicolor.o
++obj-$(CONFIG_ECONET_EN751221_TIMER)	+= timer-econet-en751221.o
+ obj-$(CONFIG_OMAP_DM_TIMER)	+= timer-ti-dm.o
+ obj-$(CONFIG_OMAP_DM_SYSTIMER)	+= timer-ti-dm-systimer.o
+ obj-$(CONFIG_DW_APB_TIMER)	+= dw_apb_timer.o
+diff --git a/drivers/clocksource/timer-econet-en751221.c b/drivers/clocksource/timer-econet-en751221.c
 new file mode 100644
-index 000000000000..d8181b58c781
+index 000000000000..9cfeead09377
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/mips/econet.yaml
-@@ -0,0 +1,26 @@
-+# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/mips/econet.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
++++ b/drivers/clocksource/timer-econet-en751221.c
+@@ -0,0 +1,216 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Timer present on EcoNet EN75xx MIPS based SoCs.
++ *
++ * Copyright (C) 2025 by Caleb James DeLisle <cjd@cjdns.fr>
++ */
 +
-+title: EcoNet MIPS SoCs
++#include <linux/io.h>
++#include <linux/cpumask.h>
++#include <linux/interrupt.h>
++#include <linux/clockchips.h>
++#include <linux/sched_clock.h>
++#include <linux/of.h>
++#include <linux/of_irq.h>
++#include <linux/of_address.h>
++#include <linux/cpuhotplug.h>
++#include <linux/clk.h>
 +
-+maintainers:
-+  - Caleb James DeLisle <cjd@cjdns.fr>
++#define ECONET_BITS			32
++#define ECONET_MIN_DELTA		0x00001000
++#define ECONET_MAX_DELTA		GENMASK(ECONET_BITS - 2, 0)
++/* 34Kc hardware has 1 block and 1004Kc has 2. */
++#define ECONET_NUM_BLOCKS		DIV_ROUND_UP(NR_CPUS, 2)
 +
-+properties:
-+  $nodename:
-+    const: '/'
++static struct {
++	void __iomem	*membase[ECONET_NUM_BLOCKS];
++	u32		freq_hz;
++} econet_timer __ro_after_init;
 +
-+  compatible:
-+    oneOf:
-+      - description: Boards with EcoNet EN751221 family SoC
-+        items:
-+          - enum:
-+              - smartfiber,xp8421-b
-+          - const: econet,en751221
++static DEFINE_PER_CPU(struct clock_event_device, econet_timer_pcpu);
 +
-+additionalProperties: true
++/* Each memory block has 2 timers, the order of registers is:
++ * CTL, CMR0, CNT0, CMR1, CNT1
++ */
++static inline void __iomem *reg_ctl(u32 timer_n)
++{
++	return econet_timer.membase[timer_n >> 1];
++}
 +
-+...
++static inline void __iomem *reg_compare(u32 timer_n)
++{
++	return econet_timer.membase[timer_n >> 1] + (timer_n & 1) * 0x08 + 0x04;
++}
++
++static inline void __iomem *reg_count(u32 timer_n)
++{
++	return econet_timer.membase[timer_n >> 1] + (timer_n & 1) * 0x08 + 0x08;
++}
++
++static inline u32 ctl_bit_enabled(u32 timer_n)
++{
++	return 1U << (timer_n & 1);
++}
++
++static inline u32 ctl_bit_pending(u32 timer_n)
++{
++	return 1U << ((timer_n & 1) + 16);
++}
++
++static bool cevt_is_pending(int cpu_id)
++{
++	return ioread32(reg_ctl(cpu_id)) & ctl_bit_pending(cpu_id);
++}
++
++static irqreturn_t cevt_interrupt(int irq, void *dev_id)
++{
++	struct clock_event_device *dev = this_cpu_ptr(&econet_timer_pcpu);
++	int cpu = cpumask_first(dev->cpumask);
++
++	if (!cevt_is_pending(cpu)) {
++		pr_debug("%s IRQ %d on CPU %d is not pending\n", __func__, irq, cpu);
++		return IRQ_NONE;
++	}
++
++	iowrite32(ioread32(reg_count(cpu)), reg_compare(cpu));
++	dev->event_handler(dev);
++	return IRQ_HANDLED;
++}
++
++static int cevt_set_next_event(ulong delta, struct clock_event_device *dev)
++{
++	u32 next;
++	int cpu;
++
++	cpu = cpumask_first(dev->cpumask);
++	next = ioread32(reg_count(cpu)) + delta;
++	iowrite32(next, reg_compare(cpu));
++
++	if ((s32)(next - ioread32(reg_count(cpu))) < ECONET_MIN_DELTA / 2)
++		return -ETIME;
++
++	return 0;
++}
++
++static int cevt_init_cpu(uint cpu)
++{
++	struct clock_event_device *cd = &per_cpu(econet_timer_pcpu, cpu);
++	u32 reg;
++
++	pr_info("%s: Setting up clockevent for CPU %d\n", cd->name, cpu);
++
++	reg = ioread32(reg_ctl(cpu)) | ctl_bit_enabled(cpu);
++	iowrite32(reg, reg_ctl(cpu));
++
++	enable_percpu_irq(cd->irq, IRQ_TYPE_NONE);
++
++	/* Do this last because it synchronously configures the timer */
++	clockevents_config_and_register(
++		cd, econet_timer.freq_hz,
++		ECONET_MIN_DELTA, ECONET_MAX_DELTA);
++
++	return 0;
++}
++
++static u64 notrace sched_clock_read(void)
++{
++	/* Always read from clock zero no matter the CPU */
++	return (u64)ioread32(reg_count(0));
++}
++
++/* Init */
++
++static void __init cevt_dev_init(uint cpu)
++{
++	iowrite32(0, reg_count(cpu));
++	iowrite32(U32_MAX, reg_compare(cpu));
++}
++
++static int __init cevt_init(struct device_node *np)
++{
++	int i, irq, ret;
++
++	irq = irq_of_parse_and_map(np, 0);
++	if (irq <= 0) {
++		pr_err("%pOFn: irq_of_parse_and_map failed", np);
++		return -EINVAL;
++	}
++
++	ret = request_percpu_irq(irq, cevt_interrupt, np->name, &econet_timer_pcpu);
++
++	if (ret < 0) {
++		pr_err("%pOFn: IRQ %d setup failed (%d)\n", np, irq, ret);
++		goto err_unmap_irq;
++	}
++
++	for_each_possible_cpu(i) {
++		struct clock_event_device *cd = &per_cpu(econet_timer_pcpu, i);
++
++		cd->rating		= 310,
++		cd->features		= CLOCK_EVT_FEAT_ONESHOT |
++					  CLOCK_EVT_FEAT_C3STOP |
++					  CLOCK_EVT_FEAT_PERCPU;
++		cd->set_next_event	= cevt_set_next_event;
++		cd->irq			= irq;
++		cd->cpumask		= cpumask_of(i);
++		cd->name		= np->name;
++
++		cevt_dev_init(i);
++	}
++
++	cpuhp_setup_state(CPUHP_AP_MIPS_GIC_TIMER_STARTING,
++			  "clockevents/en75/timer:starting",
++			  cevt_init_cpu, NULL);
++	return 0;
++
++err_unmap_irq:
++	irq_dispose_mapping(irq);
++	return ret;
++}
++
++static int __init timer_init(struct device_node *np)
++{
++	int num_blocks = DIV_ROUND_UP(num_possible_cpus(), 2);
++	struct clk *clk;
++	int ret;
++
++	clk = of_clk_get(np, 0);
++	if (IS_ERR(clk)) {
++		pr_err("%pOFn: Failed to get CPU clock from DT %ld\n", np, PTR_ERR(clk));
++		return PTR_ERR(clk);
++	}
++
++	econet_timer.freq_hz = clk_get_rate(clk);
++
++	for (int i = 0; i < num_blocks; i++) {
++		econet_timer.membase[i] = of_iomap(np, i);
++		if (!econet_timer.membase[i]) {
++			pr_err("%pOFn: failed to map register [%d]\n", np, i);
++			return -ENXIO;
++		}
++	}
++
++	/* For clocksource purposes always read clock zero, whatever the CPU */
++	ret = clocksource_mmio_init(reg_count(0), np->name,
++				    econet_timer.freq_hz, 301, ECONET_BITS,
++				    clocksource_mmio_readl_up);
++	if (ret) {
++		pr_err("%pOFn: clocksource_mmio_init failed: %d", np, ret);
++		return ret;
++	}
++
++	ret = cevt_init(np);
++	if (ret < 0)
++		return ret;
++
++	sched_clock_register(sched_clock_read, ECONET_BITS,
++			     econet_timer.freq_hz);
++
++	pr_info("%pOFn: using %u.%03u MHz high precision timer\n", np,
++		econet_timer.freq_hz / 1000000,
++		(econet_timer.freq_hz / 1000) % 1000);
++
++	return 0;
++}
++
++TIMER_OF_DECLARE(econet_timer_hpt, "econet,en751221-timer", timer_init);
 -- 
 2.39.5
 
