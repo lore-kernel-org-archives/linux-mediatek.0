@@ -4,66 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49B95C3600C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Mar 2025 10:04:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B31CC3600B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Mar 2025 10:09:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pNOxqJPY/YHWbLO2RHaiqSmt9tX5hxrtpOUoQm6ztDU=; b=kj4QiOyIiAHSUHwrl3TbcnfJuG
-	O5GcyY/N0YNmYZBe5JQSMmzbe0RDs42hCHDDJdnLK0xodegTMdsqNVy+U0v2BDrf1E67ISGH9xE8+
-	M4ezMWykPwAND2XvMacvyq58Hcs84LTBYUyW8UleZ6LaaVPa6r7eMJUrwK3No3I+GnrrKSks3bw4S
-	e5rS3b264AVRvjYubUfbS8/m8ND8qQs+BMuWd94iuj0m5UHA31LRCnzNVk7YiNSrkHXaI+V7D5kLm
-	4kA0YRbGPXTmC/uaAbdzy/FUGtZaW++nPlHjiYdx52cBYAiK9i4TIqva50wlO186p/MLNYISKZHs2
-	c1F4enZw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=BzRbmbdVH64WkPtUMsoKFbvdXYbRjm6+e5C6pk5/ync=; b=F2DoBRylrrx7jTzmjvHBdiK6Z0
+	FiS5v2vJsb5QCyEyw0gIIG69YKDyNUDrE9zji0HhkBj83PbvGBYzvTqrZpPlCwRMTQoNA1J6i6ggm
+	NN7iuP9T/2ggPVSoqQeXru2rhkXwBQhP6qP+W+qfGolTPuaISKrKW1vOn7ebSgdsTdH2OADWpklJm
+	aLdtvGYKsFwWZr8U3tDCaDoIZgOjSCCA6hnY+EiFhj3nDfX5N05SGWn6yil9Of+dZmXL1WtcbrDQp
+	8Mt7LfnVpUL1hC23XE1xNGofsfjm7yWJBFg6hJJiqS356K8SnxPGcgG4sFFRdEYLv5J8cQXcg+1CJ
+	7vCwFDQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzC0N-0000000008v-1ntW;
-	Mon, 31 Mar 2025 10:04:31 +0000
+	id 1tzC5H-000000001OV-2RoZ;
+	Mon, 31 Mar 2025 10:09:35 +0000
 Received: from s3.sipsolutions.net ([2a01:4f8:242:246e::2] helo=sipsolutions.net)
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzBni-0000000HZYu-1osP
-	for linux-mediatek@lists.infradead.org;
-	Mon, 31 Mar 2025 09:51:28 +0000
+	id 1tzC3N-000000001Cv-0uZa;
+	Mon, 31 Mar 2025 10:07:38 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
-	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
-	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
-	Resent-Cc:Resent-Message-ID; bh=pNOxqJPY/YHWbLO2RHaiqSmt9tX5hxrtpOUoQm6ztDU=;
-	t=1743414684; x=1744624284; b=BMhMGtCpBmc+C39sex4+hB1LbtrM/GzTFeZcGwVWR707kbW
-	CsnXMp1mHRmFwkybExaTsXTTilJYg9mFFEbbfBHRVnK9OjaGGPEGAPszJFABQiwyHLU+sXfqzd+F0
-	pp3uolCB6BQJPp0qsAvP/QHkT3nFKea3xr+1tpP02I/7Nv06V9NgTnHtga2FJI1+9LEo0NtEJReKo
-	uEXHztoI9eSj4cAOj66B5/k6plxGrKZF9BjIeyJIS4Vud706wo3gwK6rNswFg8rTnHGA6dZWzv2Ax
-	VpFfxjOCnO+Ii9UQlv0MB+QgfnfKshm5meZYnRnAtODnGQogB1o1kxO7jXrNu6KQ==;
+	d=sipsolutions.net; s=mail; h=Content-Transfer-Encoding:MIME-Version:
+	Message-ID:Date:Subject:Cc:To:From:Content-Type:Sender:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-To:Resent-Cc:
+	Resent-Message-ID:In-Reply-To:References;
+	bh=BzRbmbdVH64WkPtUMsoKFbvdXYbRjm6+e5C6pk5/ync=; t=1743415656; x=1744625256; 
+	b=q6RhXIMWRvU+mDixzHfvx2SgbhlTiHEHWPTWwC+3EYj9p0OgfzOnB152Qw5Dkmhv6Z+17KlJi/N
+	fDMi5pGsIJeqz8sDIgcJiTEuJYsbFwqep4KzhZVXbC8NQ5sedNeBSKXN0hxLHuWqVxbwql6jNtY/X
+	gC7q/XEyPGI+HdV2yhGpLiVo2DtDzK1e9PDuc2/V+tIRo59G/g2uYDuzLm1BCsBN7P7hxZ4scKnPb
+	3h3dXBX3Tb643WaVekiWDTGfGbdNa2af7BaSuMsHidfnbBXTOrODsb5grMImpJRHVkxSTRsHzoeSA
+	O1VB+zu6t0MnQZlAy4jsWl2V8sX4InMHcB9A==;
 Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
 	(Exim 4.98)
 	(envelope-from <johannes@sipsolutions.net>)
-	id 1tzBna-0000000B8Kn-3SWD;
-	Mon, 31 Mar 2025 11:51:19 +0200
-Message-ID: <bb2c561c7b849dcf9c129520a28f8d5667e5bd8e.camel@sipsolutions.net>
-Subject: Re: [PATCH] wifi: mt76: mt7925: add EHT preamble puncturing
+	id 1tzC3K-0000000B8h4-0OPy;
+	Mon, 31 Mar 2025 12:07:34 +0200
 From: Johannes Berg <johannes@sipsolutions.net>
-To: Allan Wang <allan.wang@mediatek.com>, nbd@nbd.name, lorenzo@kernel.org
-Cc: deren.wu@mediatek.com, mingyen.hsieh@mediatek.com,
- Sean.Wang@mediatek.com, 	Soul.Huang@mediatek.com, Leon.Yen@mediatek.com,
- Michael.Lo@mediatek.com, 	Eric-SY.Chang@mediatek.com, km.lin@mediatek.com,
- robin.chiu@mediatek.com, 	ch.yeh@mediatek.com, posh.sun@mediatek.com,
- Quan.Zhou@mediatek.com, 	Ryder.Lee@mediatek.com, Shayne.Chen@mediatek.com,
- linux-wireless@vger.kernel.org, 	linux-mediatek@lists.infradead.org
-Date: Mon, 31 Mar 2025 11:51:17 +0200
-In-Reply-To: <20250331091747.2592021-1-allan.wang@mediatek.com>
-References: <20250331091747.2592021-1-allan.wang@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.54.3 (3.54.3-1.fc41) 
+To: linux-mediatek@lists.infradead.org
+Cc: linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Johannes Berg <johannes.berg@intel.com>
+Subject: [RFC] net: ethernet: mtk_wed: annotate RCU release in attach()
+Date: Mon, 31 Mar 2025 12:07:32 +0200
+Message-ID: <20250331120731.ac482033a33a.I550c501b29788714dad469cf99e2a81ed06d0565@changeid>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
-X-malware-bazaar: not-scanned
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250331_025126_752420_26E308B5 
-X-CRM114-Status: UNSURE (   5.55  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250331_030737_286633_B4AF0D9D 
+X-CRM114-Status: GOOD (  12.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,15 +75,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Was just idly wondering what you were doing and it's your driver and
-all, but ...
+From: Johannes Berg <johannes.berg@intel.com>
 
-On Mon, 2025-03-31 at 17:17 +0800, Allan Wang wrote:
->=20
-> +	req->is_eth_dscb_present =3D chandef->punctured ? 1 : 0;
-> +	req->eht_dis_sub_chan_bitmap =3D chandef->punctured;
+There are some sparse warnings in wifi, and it seems that
+it's actually possible to annotate a function pointer with
+__releases(), making the sparse warnings go away. In a way
+that also serves as documentation that rcu_read_unlock()
+must be called in the attach method, so add that annotation.
 
-That can't be right?
+Signed-off-by: Johannes Berg <johannes.berg@intel.com>
+---
+ include/linux/soc/mediatek/mtk_wed.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-johannes
+diff --git a/include/linux/soc/mediatek/mtk_wed.h b/include/linux/soc/mediatek/mtk_wed.h
+index a476648858a6..d8949a4ed0dc 100644
+--- a/include/linux/soc/mediatek/mtk_wed.h
++++ b/include/linux/soc/mediatek/mtk_wed.h
+@@ -192,7 +192,7 @@ struct mtk_wed_device {
+ };
+ 
+ struct mtk_wed_ops {
+-	int (*attach)(struct mtk_wed_device *dev);
++	int (*attach)(struct mtk_wed_device *dev) __releases(RCU);
+ 	int (*tx_ring_setup)(struct mtk_wed_device *dev, int ring,
+ 			     void __iomem *regs, bool reset);
+ 	int (*rx_ring_setup)(struct mtk_wed_device *dev, int ring,
+-- 
+2.49.0
+
 
