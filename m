@@ -4,69 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 406A5C36013
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Mar 2025 08:40:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F0D2C36011
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Mar 2025 09:18:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k7wwkMJuKrgAAHqCuFo82uHn3H8Esy9hZsip1Q0vPVE=; b=aY7GASASNl88lpHgqA7Q0qGinq
-	Xy3xXYda6AOPDAAnH/YeKjIi2EKIgLTwzOKtimEP3KQj40Xkv1u58rvgTLKRNCk4kliYVtmsJohvj
-	8UmD4dvhDhEvYHdTS0qszlVM5R91qBv9PMAoDBBrprXlDDk6S/JhEr8gru8ql2lwcvfsPDO0RtV4J
-	Iee7TXBJDL0LAMO+snhjSg96orXq1BUk55nEI8GSMVAOVmfzDeEI0QqnpRZxgAZnqcrfGGjbjZrm9
-	w+OjRjRTexrDmeyGFkUDhwDE2VOy60JPlHpr6VfOLs83hsa4gDf3S7BbDK7t40Q0lebV4Ai1S+5Po
-	cgsodNaw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=KHqToERv4Tac/mm0zbgftvUdTtlwe0Vgt811wXQWxJA=; b=BTkq2c8kJuOoMXJo/9BZ8tKldQ
+	rxAhC3+scm3r3S5ytzlgH/1NrZhwcpUkgDqcnySaGNVUGV8j+yTcIk6nx2YZ+L+g6NLiaD6e4F69L
+	nfTw4034FF8OH3M6eycAAgtuECAP/VQJcblkKCOKMYA1diS82UxOJReEDBrqFgsgidFwsqCxms9Ak
+	4l/EtIZCy3NfDtoYxgjPK91Uddg7N5IuOILJvJOez7rRsJtPuvzCzKYWXOJATyiIQ3OiIxmxYcvc7
+	KdjXFgLrBi9yD/lO0gy83R/NNqDAQRAU0Q9x+eu2JDS4DSeF47bsoLVuVB9apweV1jRQIueoPqKyZ
+	Z3p9cY1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzAgu-0000000HPRS-0jMq;
-	Mon, 31 Mar 2025 08:40:20 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tzBHP-0000000HUWz-0JGb;
+	Mon, 31 Mar 2025 09:18:03 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzAgr-0000000HPQW-168D
+	id 1tzBHM-0000000HUVk-1xmQ
 	for linux-mediatek@lists.infradead.org;
-	Mon, 31 Mar 2025 08:40:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1743410414;
-	bh=ypcrZAQMEpvhOWeBUP5X3m7CMpEjeUmAFI7M8hG6qVo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=g2ZSF3szLbk4CKxgx5lsyICscYAmAzRVfUHo6ib/UJMZ56Eq6wfxwG7AcfTdQtssx
-	 thF9QOf3CU/ngGOAA3mri8RbjKhItKS7SHYmVPU6xLMwHmqs1P12EFQK+7sVWieGQ3
-	 e0OD2Bj9bpVZIPBj1Dde06Pk7GTMlSTCbF0pjbb5ixRz9F0cErBOba0pix8JMxjlzD
-	 LG4bPSi1+QnzhwQSB/ye0aEMJilKVO4k8fSfKomy0kS4paebpCGuX6QIewdhZCRyZp
-	 ejs4IE6VOUSHF54K6Iq3g1MRoi0hmXULMTu6YCZ6L43RVLn2c48BpcpVamvv8ZQ2/n
-	 c+NKvyoR4Rc0w==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EF98717E0860;
-	Mon, 31 Mar 2025 10:40:13 +0200 (CEST)
-Message-ID: <86725036-4204-49a8-a841-4f9eff69aa6f@collabora.com>
-Date: Mon, 31 Mar 2025 10:40:13 +0200
+	Mon, 31 Mar 2025 09:18:01 +0000
+X-UUID: 07737e960e1111f0a1e849db4cc18d44-20250331
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=KHqToERv4Tac/mm0zbgftvUdTtlwe0Vgt811wXQWxJA=;
+	b=lwgvSqGUYAexeXfi4lCm+52S1LIuLdxAYy8ULhA19qQS8NII+DW+kEvdyP5Q16hquezoJGx2rLeDMw8Bpk33lnvUaNEAL9qPjd9Iaw3Fyc2306VcA9Lcakd+aQ7A59sn+Qsv259NLYvVGnPCvj/nMqRMZlOmaHtQARxLYVIwqeY=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:c07c4ee5-021c-44ae-b1eb-044503355aa3,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:8412c54a-a527-43d8-8af6-bc8b32d9f5e9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 07737e960e1111f0a1e849db4cc18d44-20250331
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
+	(envelope-from <allan.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2088791256; Mon, 31 Mar 2025 02:17:55 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Mon, 31 Mar 2025 17:17:52 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Mon, 31 Mar 2025 17:17:52 +0800
+From: Allan Wang <allan.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <deren.wu@mediatek.com>, <mingyen.hsieh@mediatek.com>,
+	<Sean.Wang@mediatek.com>, <Soul.Huang@mediatek.com>, <Leon.Yen@mediatek.com>,
+	<Michael.Lo@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
+	<km.lin@mediatek.com>, <robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>,
+	<posh.sun@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
+	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, Allan Wang <allan.wang@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt7925: add EHT preamble puncturing
+Date: Mon, 31 Mar 2025 17:17:47 +0800
+Message-ID: <20250331091747.2592021-1-allan.wang@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 1/2] dt-bindings: arm: mediatek: Add MT8186 Ponyta
- Chromebook
-To: Jianeng Ceng <cengjianeng@huaqin.corp-partner.google.com>,
- sam@ravnborg.org, neil.armstrong@linaro.org, daniel@ffwll.ch,
- dianders@google.com, hsinyi@google.com, matthias.bgg@gmail.com,
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- knoxchiou@google.com
-Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20250328094034.3400233-1-cengjianeng@huaqin.corp-partner.google.com>
- <20250328094034.3400233-2-cengjianeng@huaqin.corp-partner.google.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250328094034.3400233-2-cengjianeng@huaqin.corp-partner.google.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250331_014017_458858_8909F188 
-X-CRM114-Status: GOOD (  10.88  )
+X-CRM114-CacheID: sfid-20250331_021800_517385_4D104E00 
+X-CRM114-Status: GOOD (  11.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,73 +87,145 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 28/03/25 10:40, Jianeng Ceng ha scritto:
-> Ponyta is a custom label Chromebook based on MT8186. It is a
-> self-developed project of Huaqin and has no fixed OEM.
-> 
-> Signed-off-by: Jianeng Ceng <cengjianeng@huaqin.corp-partner.google.com>
-> ---
-> Chage in V9:
-> - No change.
-> 
-> Changes in v8:
-> - PATCH 1/2: Remove custom label.
-> - Link to v7:https://lore.kernel.org/all/01020191ea98a643-2d0be5d1-e00b-48e0-b823-bfe2c65b0d00-000000@eu-west-1.amazonses.com/
-> 
-> Chage since V6:
-> - No change.
-> 
-> Changes in v5:
-> - PATCH 1/2: Remove sku2147483647.
-> - Link to v4:https://lore.kernel.org/all/20240906085739.1322676-2-cengjianeng@huaqin.corp-partner.google.com/
-> 
-> Changes in v4:
-> - PATCH 1/2: Add more info for Ponyta custom label in commit.
-> - Link to v3:https://lore.kernel.org/all/20240904081501.2060933-1-cengjianeng@huaqin.corp-partner.google.com/
-> 
-> Changes in v3:
-> - PATCH 1/2: Modify lable to label.
-> - Link to v2:https://lore.kernel.org/all/20240903061603.3007289-1-cengjianeng@huaqin.corp-partner.google.com/
-> 
-> Chage since V2:
-> - No change.
-> 
-> ---
->   Documentation/devicetree/bindings/arm/mediatek.yaml | 10 ++++++++++
->   1 file changed, 10 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> index 108ae5e0185d..fdc57c140af7 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> @@ -285,6 +285,16 @@ properties:
->             - const: google,steelix-sku393218
->             - const: google,steelix
->             - const: mediatek,mt8186
-> +      - description: Google Ponyta
-> +        items:
+Add mt7925 EHT preamble puncturing.
 
-            items:
-              - enum:
-                  - google,ponyta-sku0
-                  - google,ponyta-sku1
+Signed-off-by: Allan Wang <allan.wang@mediatek.com>
+---
+ .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  1 +
+ .../net/wireless/mediatek/mt76/mt7925/main.c  | 10 ++++++
+ .../net/wireless/mediatek/mt76/mt7925/mcu.c   | 34 +++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7925/mcu.h   | 16 +++++++++
+ 4 files changed, 61 insertions(+)
 
-> +          - const: google,ponyta-sku0
-> +          - const: google,ponyta
-> +          - const: mediatek,mt8186
-
-Regards,
-Angelo
-
-> +      - description: Google Ponyta
-> +        items:
-> +          - const: google,ponyta-sku1
-> +          - const: google,ponyta
-> +          - const: mediatek,mt8186
->         - description: Google Rusty (Lenovo 100e Chromebook Gen 4)
->           items:
->             - const: google,steelix-sku196609
-
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+index 43237e518373..e57287a9e41d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+@@ -1369,6 +1369,7 @@ enum {
+ 	UNI_BSS_INFO_OFFLOAD = 25,
+ 	UNI_BSS_INFO_MLD = 26,
+ 	UNI_BSS_INFO_PM_DISABLE = 27,
++	UNI_BSS_INFO_EHT = 30,
+ };
+ 
+ enum {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+index e79364ac129e..83f93f9e002c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+@@ -1865,6 +1865,10 @@ mt7925_change_chanctx(struct ieee80211_hw *hw,
+ 			link_conf = mt792x_vif_to_bss_conf(vif, mconf->link_id);
+ 			mt7925_mcu_set_chctx(mvif->phy->mt76, &mconf->mt76,
+ 					     link_conf, ctx);
++
++			if (changed & IEEE80211_CHANCTX_CHANGE_PUNCTURING)
++				mt7925_mcu_set_eht_pp(mvif->phy->mt76, &mconf->mt76,
++						      link_conf, ctx);
+ 		}
+ 	}
+ 
+@@ -1954,8 +1958,10 @@ static void mt7925_link_info_changed(struct ieee80211_hw *hw,
+ 	struct mt792x_phy *phy = mt792x_hw_phy(hw);
+ 	struct mt792x_dev *dev = mt792x_hw_dev(hw);
+ 	struct mt792x_bss_conf *mconf;
++	struct ieee80211_bss_conf *link_conf;
+ 
+ 	mconf = mt792x_vif_to_link(mvif, info->link_id);
++	link_conf = mt792x_vif_to_bss_conf(vif, mconf->link_id);
+ 
+ 	mt792x_mutex_acquire(dev);
+ 
+@@ -1997,6 +2003,10 @@ static void mt7925_link_info_changed(struct ieee80211_hw *hw,
+ 		mvif->mlo_pm_state = MT792x_MLO_CHANGED_PS;
+ 	}
+ 
++	if (changed & IEEE80211_CHANCTX_CHANGE_PUNCTURING)
++		mt7925_mcu_set_eht_pp(mvif->phy->mt76, &mconf->mt76,
++				      link_conf, NULL);
++
+ 	mt792x_mutex_release(dev);
+ }
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index e61da76b2097..46f7e30232d5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -2298,6 +2298,40 @@ __mt7925_mcu_alloc_bss_req(struct mt76_dev *dev, struct mt76_vif_link *mvif, int
+ 	return skb;
+ }
+ 
++static
++void mt7925_mcu_bss_eht_tlv(struct sk_buff *skb, struct mt76_phy *phy,
++			    struct ieee80211_bss_conf *link_conf,
++			    struct ieee80211_chanctx_conf *ctx)
++{
++	struct cfg80211_chan_def *chandef = ctx ? &ctx->def :
++						  &link_conf->chanreq.oper;
++
++	struct bss_eht_tlv *req;
++	struct tlv *tlv;
++
++	tlv = mt76_connac_mcu_add_tlv(skb, UNI_BSS_INFO_EHT, sizeof(*req));
++	req = (struct bss_eht_tlv *)tlv;
++	req->is_eth_dscb_present = chandef->punctured ? 1 : 0;
++	req->eht_dis_sub_chan_bitmap = chandef->punctured;
++}
++
++int mt7925_mcu_set_eht_pp(struct mt76_phy *phy, struct mt76_vif_link *mvif,
++			  struct ieee80211_bss_conf *link_conf,
++			  struct ieee80211_chanctx_conf *ctx)
++{
++	struct sk_buff *skb;
++
++	skb = __mt7925_mcu_alloc_bss_req(phy->dev, mvif,
++					 MT7925_BSS_UPDATE_MAX_SIZE);
++	if (IS_ERR(skb))
++		return PTR_ERR(skb);
++
++	mt7925_mcu_bss_eht_tlv(skb, phy, link_conf, ctx);
++
++	return mt76_mcu_skb_send_msg(phy->dev, skb,
++				     MCU_UNI_CMD(BSS_INFO_UPDATE), true);
++}
++
+ int mt7925_mcu_set_chctx(struct mt76_phy *phy, struct mt76_vif_link *mvif,
+ 			 struct ieee80211_bss_conf *link_conf,
+ 			 struct ieee80211_chanctx_conf *ctx)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
+index 8ac43feb26d6..d55ea59bda7d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
+@@ -372,6 +372,19 @@ struct bss_mld_tlv {
+ 	u8 __rsv[3];
+ } __packed;
+ 
++struct bss_eht_tlv {
++	__le16 tag;
++	__le16 len;
++	u8  is_eht_op_present;
++	u8  is_eth_dscb_present;
++	u8  eht_ctrl;
++	u8  eht_ccfs0;
++	u8  eht_ccfs1;
++	u8  pad1;
++	__le16 eht_dis_sub_chan_bitmap;
++	u8  pad2[4];
++} __packed;
++
+ struct sta_rec_ba_uni {
+ 	__le16 tag;
+ 	__le16 len;
+@@ -642,6 +655,9 @@ int mt7925_mcu_set_radio_en(struct mt792x_phy *phy, bool enable);
+ int mt7925_mcu_set_chctx(struct mt76_phy *phy, struct mt76_vif_link *mvif,
+ 			 struct ieee80211_bss_conf *link_conf,
+ 			 struct ieee80211_chanctx_conf *ctx);
++int mt7925_mcu_set_eht_pp(struct mt76_phy *phy, struct mt76_vif_link *mvif,
++			  struct ieee80211_bss_conf *link_conf,
++			  struct ieee80211_chanctx_conf *ctx);
+ int mt7925_mcu_set_rate_txpower(struct mt76_phy *phy);
+ int mt7925_mcu_update_arp_filter(struct mt76_dev *dev,
+ 				 struct ieee80211_bss_conf *link_conf);
+-- 
+2.45.2
 
 
