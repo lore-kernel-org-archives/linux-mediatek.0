@@ -4,94 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E6AAC3600B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Mar 2025 10:42:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E78DC3600B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Mar 2025 11:15:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=8hC4q30f9UkZjMp/7IensIAT+0r2jKyVixXgW1Ksqww=; b=IK5DW/JRqWO/VrrvUPGySl8OqL
-	Nctw6+Kak5HS7Eeci6R1ShouP2FHEY/e7DQsr6qUBEkOiThnx/ImR1orvtPOgyuAhpQ6q3aeJ9Mon
-	rjKKgUANR7Iu9vX64UWrVctMUSVfe0jVJ8Rozc9zVy6XH7Af2cOoIAz70ZM9grSemArw0Fxt1F42K
-	4aDtZQwgwoCTb0vPTOdxVlLcN4RhhZtuEpah3g0rByi4XCfcqiHCox7MOeVxFPGVmL+u87Qg6sId0
-	IZ7I1uDgvC26JdsJcNcvCLPszxh6bdBDR/HqDqwHeeivDTyXSMKsehPgTIbsJ0wcccUah/HTNe2aE
-	FQeImFrw==;
+	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=63qFvfIzijRRXeWjG7Gdgug6Q2YIRJCYz23Ir1lfV7k=; b=JL+IUhy5u5Wt19eTRVAMPsGtG0
+	lHRJIjLAw7uWljC53SG1DoUl9IFKZ6tWVyaoS0P2SPZbldNF5BHDUMfVzPOynCuPBlo/XQGzVrK+A
+	B1zIaP31o1eIKmKTntUX6zeXSCeT30eeJo4VFyIwyHdxURleWx3n/V2gSHRDPAhLUjGkZcX9HQm1f
+	AaDlmxfZ8RxHAyUOBX6MzuTkDSaTJNLK+3MFOAb/CqccE6APsWSgT21WK3fqe73+RsTSvQQfASOLs
+	TUXHOVKkvbEnDo7P1nLNSAL6spl+iQz3DAOIBeVnNmk226hPTKPY4fUuTuiQ8lp3ZUnHnmC/nV3pD
+	3uTT8/sQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzCay-000000006Id-2kUC;
-	Mon, 31 Mar 2025 10:42:20 +0000
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
+	id 1tzD70-00000000Btb-22M1;
+	Mon, 31 Mar 2025 11:15:26 +0000
+Received: from mout.web.de ([212.227.17.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzCV6-000000005He-403l;
-	Mon, 31 Mar 2025 10:36:18 +0000
-Received: by mail-pl1-x641.google.com with SMTP id d9443c01a7336-227b828de00so73898795ad.1;
-        Mon, 31 Mar 2025 03:36:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1743417376; x=1744022176; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=8hC4q30f9UkZjMp/7IensIAT+0r2jKyVixXgW1Ksqww=;
-        b=GdkFg7CLkwmtHlJIQ1fYiUw56q/7WMV7zcfi7+59Isj20GyEMMdhsshi+TtVO4IBBJ
-         zYcqq1GoAQ/j9DAUisUvyP35yZzW5d8sDCBTNf7hZs3XTd0NzqT9onKbfGF6GwWyLUjH
-         MKgGqikW6QlZsrceKUW7csCUihH7NaQb+8+fnXPHVeH+RYF01JlOlatruip9EPM5GoZT
-         SluZgDpYmgeGrE3j9IsFsCqlGj3kyvK5Wew54gT/zjSN1ibQznpETbOngwtpO7VF2UWW
-         IxwqIi9ZdGo9gPq6EHdDrPO3MUKXCj/dZ7X/rw7i+q42Yn4oWuNrip59a8QK+rtOqCFK
-         N0Bw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743417376; x=1744022176;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=8hC4q30f9UkZjMp/7IensIAT+0r2jKyVixXgW1Ksqww=;
-        b=UYq/+a1GNTcs0n/jvjo+TiAFG+j7XioR48Su/2Gg9I4enYg8a3wVhN26GQxWYm/G8R
-         MxHFdIynKSUoPe1TLY3JQjQeB1ZfcGdYNoJ4qM3NyHBTKzfhhyxPzSHgrIHiwQXYi5nW
-         Yx+XTZgi8vZYM3Fo/NU5iahEV3oTHJ+JXvJ34MN5sAloLgRstew5Yd+TR/EyZ+nVocl7
-         UBW+56qs/fLsBayf8d2vEX71z3VHqb2VTaMKOinAkg1m3EoLHoIf60R9KWzzWnUaIDSW
-         +/XYCzXBGOumvGWFk2T7le+hXgyqEn6Roqgh1ZyKY0ZLQ01Mevgs5vmJmpJ3LxI0n2K+
-         WBSg==
-X-Forwarded-Encrypted: i=1; AJvYcCW6bWRAgdXofrUF/bJPgetrBMY0onRnj58v3NJ+VYu6QczTylEEn2q6R7Wht/SyorAW5f4iDWiRNNC8OSZW/WgI@lists.infradead.org, AJvYcCWc4wZ2JyrZfuFHTQaxdLguSVzgiKyR6p3kPS88rBJ4yBf+12BiNBx0Wfey3ym2e8PHBq1Yq9n3F/z93N4wUlM=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzwEtRZtQEZUvzL1hFqfFgmkKRrb+kNxhBKMc832ISodhXdPlob
-	w51PVpqO+kQGntD0kpHaDturLnyr60E54Ttr4294UOzklMu4HOWohU6v5ZrWxTYpyw==
-X-Gm-Gg: ASbGncultuqYRnBLvSX1We1WnQ28rMsWKs5ukMqOR25Z9+LKa/2NlJ0WHO6g7dVcrDv
-	c3LPHbJ67a0fIO4+Xn+iSUZ0fqbCzo/noZ/xSIV9NqsyKne6VTrnwXCdQeyZdquKvmtcsX3Erzw
-	8n6uH3MnCbPnfkJJfAW4r4aH8v2zHNJeyit2eE8r6zuGXbDuIDaFPr/7K3L6FcbHPMvSfQNzEQD
-	52jDkwCbkMCoyI6Kipe7hX70d8rH2kl7v5FRDl4+7wunOMYJEtIeD+HFIvku6Wev3ogJf4u/7Ll
-	B2PlF0eWYrfGs52McSCOBPNusLQOXr65xGZnqvbuePSAA9imuMgHs7yYGHehHu/hdQ3cSLsHsDI
-	JadiV4g==
-X-Google-Smtp-Source: AGHT+IEI3i1AQFr0jMC8FT29Lzc8UGqmVmTq4ieOAqus6bXWPKmXMnFF1f9vgpgb+tXlgciOTA5wLg==
-X-Received: by 2002:a17:902:ce0b:b0:220:ff3f:6cc0 with SMTP id d9443c01a7336-2292f9e62d6mr157774965ad.38.1743417376277;
-        Mon, 31 Mar 2025 03:36:16 -0700 (PDT)
-Received: from henry.localdomain ([111.202.148.167])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2291f1f7dd8sm66104645ad.226.2025.03.31.03.36.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 31 Mar 2025 03:36:15 -0700 (PDT)
-From: Henry Martin <bsdhenrymartin@gmail.com>
-To: nbd@nbd.name,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com
-Cc: shayne.chen@mediatek.com,
-	sean.wang@mediatek.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	howard-yh.hsu@mediatek.com,
-	StanleyYP.Wang@mediatek.com,
-	chui-hao.chiu@mediatek.com,
-	linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Henry Martin <bsdhenrymartin@gmail.com>
-Subject: [PATCH] wifi: mt76: mt7996: Add NULL check in mt7996_thermal_init
-Date: Mon, 31 Mar 2025 18:35:43 +0800
-Message-Id: <20250331103543.9154-1-bsdhenrymartin@gmail.com>
-X-Mailer: git-send-email 2.34.1
+	id 1tzD5G-00000000BZR-2RTG;
+	Mon, 31 Mar 2025 11:13:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
+	s=s29768273; t=1743419609; x=1744024409; i=markus.elfring@web.de;
+	bh=63qFvfIzijRRXeWjG7Gdgug6Q2YIRJCYz23Ir1lfV7k=;
+	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
+	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
+	 cc:content-transfer-encoding:content-type:date:from:message-id:
+	 mime-version:reply-to:subject:to;
+	b=DuCYBdDhF8Fy4JQuEISj/xxgWJGxhskPvt7avwMknr9RnkdPIVq1ioV167HlIkwP
+	 9jk277vaZTgu97yDUC6b2cQPnNu7vv1oCd2LzGq08lS8tusYDGCSZcG36L8k2GGN+
+	 uSUUUqiojCVcpL99WiWvwrYWr5ltqW1wfyARA5wOUiGCx8Xv9oRHJcm1wUp++M2y0
+	 7VdvBHsujjBwumoQTEfrvRYqU01apYwTZ9NDK98YuO6c7vDeyCaoSKRi+VcvXsHoW
+	 9Mh+fBM/E7kMkALgFuN2rfzeKCIcFTKtgOnR6UyPYx/rg5D8tQdEpBTjAccq6LA7W
+	 ipVscRTofRR5LHuWvw==
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from [192.168.178.29] ([94.31.70.37]) by smtp.web.de (mrweb105
+ [213.165.67.124]) with ESMTPSA (Nemesis) id 1MXoYQ-1tbzEb0Sjc-00JC9a; Mon, 31
+ Mar 2025 13:13:29 +0200
+Message-ID: <a2ba5805-3e2a-4967-9c78-2702bf55304c@web.de>
+Date: Mon, 31 Mar 2025 13:13:26 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+To: Henry Martin <bsdhenrymartin@gmail.com>, linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: LKML <linux-kernel@vger.kernel.org>,
+ Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Felix Fietkau <nbd@nbd.name>, Howard Hsu <howard-yh.hsu@mediatek.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Peter Chiu <chui-hao.chiu@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+ StanleyYP Wang <StanleyYP.Wang@mediatek.com>
+References: <20250331103543.9154-1-bsdhenrymartin@gmail.com>
+Subject: Re: [PATCH] wifi: mt76: mt7996: Add NULL check in mt7996_thermal_init
+Content-Language: en-GB
+From: Markus Elfring <Markus.Elfring@web.de>
+In-Reply-To: <20250331103543.9154-1-bsdhenrymartin@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:E43tro449Ol30lrF617necoQPncpjixgFyA64Up7dJH5TVfM12a
+ hD/dqOom0bt25Jfaze2XNBarwKvOa1LS/m55Bc5iA/sBhQuCwrh7au622dfxiJia06I2OGZ
+ cG/sSUU3rJ1Ez5QzZ36FLlM27NtFxYzhukaLhdZOtgMvC37BSK9drd6Yb0NeywLyBhmSfIQ
+ 791+ixOhWFt8ZhSqv6t5A==
+UI-OutboundReport: notjunk:1;M01:P0:XgyDYicIh3M=;bQjk5pLYYjSB6PgM7fpD2zt5rkv
+ j/Fd0srC+6SyjkmrZoyiw8Y+OzYhoxJHWVddoodtmtMmK2R5wkM6MzbLbPjHP07XTb7OVpiGd
+ eFhSBuvgcfo6wzo4sYYjYq9BeLGcFHgMu65B309H54/zMdMSRoXIj3/DQQ9qQ5K3V8o4RXb3h
+ 2wNwWtFgcsxC5wqnW2Gqbck+7gHOtpp6gh/LNfBtnzoyCshTS+RbVB3S3NCw6A4bXGkXQBFWV
+ 4w5o2BAQqW7PE+K7WkkCBpk8ylEf3nFxAL7TBf6nXFWUkjpX9K6JDgXjAdmWf2wOps86cbVp3
+ s8yDi3p87ZSgXD9bX25akKMkhk0tzFuZnhYS3hz9i73W99hw+AJuxIje5VnjVTwzOw2tfJSKP
+ qTgesIXsoxHHlAOT7CIUR8yFYSQgjUjtdrrrrtlih739Cc0SYI0YI5/l0afpsGQzOR2fjlVrs
+ 0v3SJeHMtqvXnxC34SCdDUHfR9WHnVlfrIBSnvl5xIXoop0x5iwLwwalFijB+YNNTI49EXmrL
+ /0oiAIjNUDFXY0yvdFrDTVD4x5DEx8HDJ5p7vkP0wE8x2LnChFfMSVnI80aWh0AOeHDnMRwMj
+ y+g6KtyVVi9Sa4cZihCC+r7QP+nX912uKPcG8uJyg171lOWEyvaikcOoixUahqaKFbxsQ6XhJ
+ zEhOqgiX57GvIHskk8gkCmFC0Y5AXnHHA/82PzF1o93Cc9UR7nMfViWfcIAFZFaa2e/HtucYk
+ uaUUPpIZ6eu+WFGUy1BJdvCBggbfxReYuwGs0kGV01aS918t+fUbuIGCy1ocuZ/fOqDrZ+6Xs
+ CKvx0qJocSxTnq6WDBogfwtg76u0kQqa7f9FepQBR0sMYhOdAwW40N0HojT7JAK7N5L9ptdFh
+ BZj/V3Mzvb5Kr++h8OD479/RJi/p8cdr/ZhhrIHITs2r8XCxcMc96oNjXoF81eYlOk6Vqft3o
+ v3To9SmOnP0z2S6k+DOdEUlCOSpZ60Aj7Dk0RhAI4wKoNzurNygP7RPcEuCmiYE9o/I9iH++C
+ qTJJ1vCLk4TupbwswCqUhbq5X6MKtD+7sMZRykWqTJ3hNYcRrReR1PJDZac47lcSYnbkhHDgA
+ XH+OYIziDKs092Wvp2CdoqZr461kz/Jo1yGtSVIWfe68MNjrBjM3OlHYhf5J6RGxfidhMj86G
+ /4Inwo8Q1smp/X7Mnz8Slbipxjn6asyIooHZq+6ezca4R4D1MhqGt7OvJoJYoqBYt399dWF4N
+ AH5eYqkJ5fPXay6DBIx2UPVNuHJD9+Qerb2rhvzQzLMJ4qdRctMKSDEimt+lTUcnJAv249Cx4
+ WpaKgQN0ouxDKp4vxBGBaOwpX8Pio2O6eb2ux7zwwciPmo8Q0uaVrt+1+lXI3og77Aw6FF7zK
+ c+gLrM3HzHHDIr7Mfp6F6UM2EqDBQa9QQr1U4y82rDto/zlXaECUt3npPP7tvuRJw43DPsWtF
+ B35sLEqCMaxXjiiLt8p5+VOl7VvxbatTDjfuklmGX/yv2xSou
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250331_033616_988643_EAE1AAE6 
-X-CRM114-Status: GOOD (  10.13  )
+X-CRM114-CacheID: sfid-20250331_041338_918962_C89C91F9 
+X-CRM114-Status: UNSURE (   6.41  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,31 +108,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When devm_kasprintf() fails, it returns a NULL pointer. However, this return value is not properly checked in the function mt7996_thermal_init.
+> When devm_kasprintf() fails, it returns a NULL pointer. However, this re=
+turn value is not properly checked in the function mt7996_thermal_init.
+>
+> A NULL check should be added after the devm_kasprintf() to prevent poten=
+tial NULL pointer dereference error.
 
-A NULL check should be added after the devm_kasprintf() to prevent potential NULL pointer dereference error.
+* Please adhere to word wrapping preferences around 75 characters per text=
+ line.
 
-Fixes: 69d54ce7491d0 ("switch to single multi-radio wiphy")
+* How do you think about to choose the imperative mood for an improved cha=
+nge description?
+  https://web.git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/t=
+ree/Documentation/process/submitting-patches.rst?h=3Dv6.14#n94
 
-Signed-off-by: Henry Martin <bsdhenrymartin@gmail.com>
----
- drivers/net/wireless/mediatek/mt76/mt7996/init.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-index 6b660424aedc..702447022f0e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-@@ -217,6 +217,8 @@ static int mt7996_thermal_init(struct mt7996_phy *phy)
- 
- 	name = devm_kasprintf(&wiphy->dev, GFP_KERNEL, "mt7996_%s.%d",
- 			      wiphy_name(wiphy), phy->mt76->band_idx);
-+	if (!name)
-+		return -ENOMEM;
- 	snprintf(cname, sizeof(cname), "cooling_device%d", phy->mt76->band_idx);
- 
- 	cdev = thermal_cooling_device_register(name, phy, &mt7996_thermal_ops);
--- 
-2.34.1
-
+Regards,
+Markus
 
