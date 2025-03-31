@@ -4,65 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F64BC3600C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Mar 2025 10:16:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E6AAC3600B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Mar 2025 10:42:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=qrz2Jjzo6wrUZ14eaGmNUqzQPnqra+wcv/JiWOhUbxM=; b=z7YmYuY93EwyHvatcLOVDJml+v
-	UUkASlvAfwkiRSlqD7h0hM4YpckguCOQ8zchil5RSkrHKVcTa+qVo3weMqKBppNQu1i/KBhsU8IN2
-	rIBMOVQsOq0HNw+VvcOkFH69LJecg2DW9C+EwkiKKQjMy/myOIx+VRrb6LrZSK44f9+B53bkLKhe5
-	euNMpZeOWP3/SRA3se/CeM/1KDOWrSXMH3oR0dypSHsMOdM3EpM28TgA8skB8Wf9TDzv8ZuSnqlFG
-	z0w7c9qME14c8PGsrwvzQ5SncrwXs84F1UkzHLXCBY6SSsybWFfgZzlFodx58TKvBghU0nlj1dSh0
-	A5W+JKSw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8hC4q30f9UkZjMp/7IensIAT+0r2jKyVixXgW1Ksqww=; b=IK5DW/JRqWO/VrrvUPGySl8OqL
+	Nctw6+Kak5HS7Eeci6R1ShouP2FHEY/e7DQsr6qUBEkOiThnx/ImR1orvtPOgyuAhpQ6q3aeJ9Mon
+	rjKKgUANR7Iu9vX64UWrVctMUSVfe0jVJ8Rozc9zVy6XH7Af2cOoIAz70ZM9grSemArw0Fxt1F42K
+	4aDtZQwgwoCTb0vPTOdxVlLcN4RhhZtuEpah3g0rByi4XCfcqiHCox7MOeVxFPGVmL+u87Qg6sId0
+	IZ7I1uDgvC26JdsJcNcvCLPszxh6bdBDR/HqDqwHeeivDTyXSMKsehPgTIbsJ0wcccUah/HTNe2aE
+	FQeImFrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzCBd-000000002QL-0bH0;
-	Mon, 31 Mar 2025 10:16:09 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1tzCay-000000006Id-2kUC;
+	Mon, 31 Mar 2025 10:42:20 +0000
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzC9t-000000002CR-3xZ1;
-	Mon, 31 Mar 2025 10:14:23 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 43FBCA430A4;
-	Mon, 31 Mar 2025 10:08:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4DDE1C4CEE5;
-	Mon, 31 Mar 2025 10:14:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1743416060;
-	bh=56IfTRauGxaQRKelmBbZK/tQWYp/lbJMPy7TjK50Wqc=;
-	h=From:Date:Subject:To:Cc:From;
-	b=UM5PkaxQaot4GJoJ+pHs9qPNmy+XoOLrc2NZ7l9Mikjh9Q6ro0mj/NEQyD+mWDF4n
-	 A2JEbK/A0Lud86zCoJEVtjBNiIYh7t0+Fouw68z1hC+mmAsYvLLoDSt1oNk5Op3uxz
-	 MKUmfoHUs5SPE/B3B8SjuvCD7Kj79NMRAaGk83yjA97UYFcHG1RINlUoNUPvn80iV3
-	 uIPvHC4IFUNLWtAEE3W19QGnUhQp2ZHn2KZjnUAq31SIezXVpEtg7gr4I9aR38Dnx3
-	 UMmAJu5whsDInYk/XgHgfCx09hFossNbly/7CZn/M4ZHB/+fq/us1yReLb6zI2taWu
-	 FCBZQs+lAJjNg==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Mon, 31 Mar 2025 12:14:09 +0200
-Subject: [PATCH net v3] net: airoha: Validate egress gdm port in
- airoha_ppe_foe_entry_prepare()
+	id 1tzCV6-000000005He-403l;
+	Mon, 31 Mar 2025 10:36:18 +0000
+Received: by mail-pl1-x641.google.com with SMTP id d9443c01a7336-227b828de00so73898795ad.1;
+        Mon, 31 Mar 2025 03:36:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1743417376; x=1744022176; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=8hC4q30f9UkZjMp/7IensIAT+0r2jKyVixXgW1Ksqww=;
+        b=GdkFg7CLkwmtHlJIQ1fYiUw56q/7WMV7zcfi7+59Isj20GyEMMdhsshi+TtVO4IBBJ
+         zYcqq1GoAQ/j9DAUisUvyP35yZzW5d8sDCBTNf7hZs3XTd0NzqT9onKbfGF6GwWyLUjH
+         MKgGqikW6QlZsrceKUW7csCUihH7NaQb+8+fnXPHVeH+RYF01JlOlatruip9EPM5GoZT
+         SluZgDpYmgeGrE3j9IsFsCqlGj3kyvK5Wew54gT/zjSN1ibQznpETbOngwtpO7VF2UWW
+         IxwqIi9ZdGo9gPq6EHdDrPO3MUKXCj/dZ7X/rw7i+q42Yn4oWuNrip59a8QK+rtOqCFK
+         N0Bw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1743417376; x=1744022176;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=8hC4q30f9UkZjMp/7IensIAT+0r2jKyVixXgW1Ksqww=;
+        b=UYq/+a1GNTcs0n/jvjo+TiAFG+j7XioR48Su/2Gg9I4enYg8a3wVhN26GQxWYm/G8R
+         MxHFdIynKSUoPe1TLY3JQjQeB1ZfcGdYNoJ4qM3NyHBTKzfhhyxPzSHgrIHiwQXYi5nW
+         Yx+XTZgi8vZYM3Fo/NU5iahEV3oTHJ+JXvJ34MN5sAloLgRstew5Yd+TR/EyZ+nVocl7
+         UBW+56qs/fLsBayf8d2vEX71z3VHqb2VTaMKOinAkg1m3EoLHoIf60R9KWzzWnUaIDSW
+         +/XYCzXBGOumvGWFk2T7le+hXgyqEn6Roqgh1ZyKY0ZLQ01Mevgs5vmJmpJ3LxI0n2K+
+         WBSg==
+X-Forwarded-Encrypted: i=1; AJvYcCW6bWRAgdXofrUF/bJPgetrBMY0onRnj58v3NJ+VYu6QczTylEEn2q6R7Wht/SyorAW5f4iDWiRNNC8OSZW/WgI@lists.infradead.org, AJvYcCWc4wZ2JyrZfuFHTQaxdLguSVzgiKyR6p3kPS88rBJ4yBf+12BiNBx0Wfey3ym2e8PHBq1Yq9n3F/z93N4wUlM=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzwEtRZtQEZUvzL1hFqfFgmkKRrb+kNxhBKMc832ISodhXdPlob
+	w51PVpqO+kQGntD0kpHaDturLnyr60E54Ttr4294UOzklMu4HOWohU6v5ZrWxTYpyw==
+X-Gm-Gg: ASbGncultuqYRnBLvSX1We1WnQ28rMsWKs5ukMqOR25Z9+LKa/2NlJ0WHO6g7dVcrDv
+	c3LPHbJ67a0fIO4+Xn+iSUZ0fqbCzo/noZ/xSIV9NqsyKne6VTrnwXCdQeyZdquKvmtcsX3Erzw
+	8n6uH3MnCbPnfkJJfAW4r4aH8v2zHNJeyit2eE8r6zuGXbDuIDaFPr/7K3L6FcbHPMvSfQNzEQD
+	52jDkwCbkMCoyI6Kipe7hX70d8rH2kl7v5FRDl4+7wunOMYJEtIeD+HFIvku6Wev3ogJf4u/7Ll
+	B2PlF0eWYrfGs52McSCOBPNusLQOXr65xGZnqvbuePSAA9imuMgHs7yYGHehHu/hdQ3cSLsHsDI
+	JadiV4g==
+X-Google-Smtp-Source: AGHT+IEI3i1AQFr0jMC8FT29Lzc8UGqmVmTq4ieOAqus6bXWPKmXMnFF1f9vgpgb+tXlgciOTA5wLg==
+X-Received: by 2002:a17:902:ce0b:b0:220:ff3f:6cc0 with SMTP id d9443c01a7336-2292f9e62d6mr157774965ad.38.1743417376277;
+        Mon, 31 Mar 2025 03:36:16 -0700 (PDT)
+Received: from henry.localdomain ([111.202.148.167])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2291f1f7dd8sm66104645ad.226.2025.03.31.03.36.07
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 31 Mar 2025 03:36:15 -0700 (PDT)
+From: Henry Martin <bsdhenrymartin@gmail.com>
+To: nbd@nbd.name,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com
+Cc: shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	howard-yh.hsu@mediatek.com,
+	StanleyYP.Wang@mediatek.com,
+	chui-hao.chiu@mediatek.com,
+	linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Henry Martin <bsdhenrymartin@gmail.com>
+Subject: [PATCH] wifi: mt76: mt7996: Add NULL check in mt7996_thermal_init
+Date: Mon, 31 Mar 2025 18:35:43 +0800
+Message-Id: <20250331103543.9154-1-bsdhenrymartin@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250331-airoha-validate-egress-gdm-port-v3-1-c14e6ba9733a@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAPBq6mcC/x3NQQqDQAxA0atI1gZGQ231KtJFmEnHQOtIIlIQ7
- 96hy7f5/wQXU3GYmhNMDnUtawW1DcSF1yyoqRr60N8CUYesVhbGg9+aeBeUbOKOOX1wK7Yj0RA
- f93EcQmSolc3kpd//YX5e1w9fdG6DcQAAAA==
-X-Change-ID: 20250331-airoha-validate-egress-gdm-port-336c879960ca
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250331_031422_145653_1D80E692 
-X-CRM114-Status: GOOD (  17.00  )
+X-CRM114-CacheID: sfid-20250331_033616_988643_EAE1AAE6 
+X-CRM114-Status: GOOD (  10.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,122 +106,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Device pointer in airoha_ppe_foe_entry_prepare routine is not strictly
-necessary a device allocated by airoha_eth driver since it is an egress
-device and the flowtable can contain even wlan, pppoe or vlan devices.
-E.g:
+When devm_kasprintf() fails, it returns a NULL pointer. However, this return value is not properly checked in the function mt7996_thermal_init.
 
-flowtable ft {
-        hook ingress priority filter
-        devices = { eth1, lan1, lan2, lan3, lan4, wlan0 }
-        flags offload                               ^
-                                                    |
-                     "not allocated by airoha_eth" --
-}
+A NULL check should be added after the devm_kasprintf() to prevent potential NULL pointer dereference error.
 
-In this case airoha_get_dsa_port() will just return the original device
-pointer and we can't assume netdev priv pointer points to an
-airoha_gdm_port struct.
-Fix the issue validating egress gdm port in airoha_ppe_foe_entry_prepare
-routine before accessing net_device priv pointer.
+Fixes: 69d54ce7491d0 ("switch to single multi-radio wiphy")
 
-Fixes: 00a7678310fe ("net: airoha: Introduce flowtable offload support")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Signed-off-by: Henry Martin <bsdhenrymartin@gmail.com>
 ---
-Changes in v3:
-- Rebase on top of net tree
-- Fix commit log
-- Link to v2: https://lore.kernel.org/r/20250315-airoha-flowtable-null-ptr-fix-v2-1-94b923d30234@kernel.org
+ drivers/net/wireless/mediatek/mt76/mt7996/init.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Changes in v2:
-- Avoid checking netdev_priv pointer since it is always not NULL
-- Link to v1: https://lore.kernel.org/r/20250312-airoha-flowtable-null-ptr-fix-v1-1-6363fab884d0@kernel.org
----
- drivers/net/ethernet/airoha/airoha_eth.c | 13 +++++++++++++
- drivers/net/ethernet/airoha/airoha_eth.h |  3 +++
- drivers/net/ethernet/airoha/airoha_ppe.c | 10 ++++++++--
- 3 files changed, 24 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index c0a642568ac115ea9df6fbaf7133627a4405a36c..bf9c882e9c8b087dbf5e907636547a0117d1b96a 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -2454,6 +2454,19 @@ static void airoha_metadata_dst_free(struct airoha_gdm_port *port)
- 	}
- }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+index 6b660424aedc..702447022f0e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+@@ -217,6 +217,8 @@ static int mt7996_thermal_init(struct mt7996_phy *phy)
  
-+int airoha_is_valid_gdm_port(struct airoha_eth *eth,
-+			     struct airoha_gdm_port *port)
-+{
-+	int i;
-+
-+	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
-+		if (eth->ports[i] == port)
-+			return 0;
-+	}
-+
-+	return -EINVAL;
-+}
-+
- static int airoha_alloc_gdm_port(struct airoha_eth *eth,
- 				 struct device_node *np, int index)
- {
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index 60690b685710c72a2e15c6c6c94240108dafa1c1..d199b8adffc0b25c369dc19cdc074c50af40e3bf 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -532,6 +532,9 @@ u32 airoha_rmw(void __iomem *base, u32 offset, u32 mask, u32 val);
- #define airoha_qdma_clear(qdma, offset, val)			\
- 	airoha_rmw((qdma)->regs, (offset), (val), 0)
+ 	name = devm_kasprintf(&wiphy->dev, GFP_KERNEL, "mt7996_%s.%d",
+ 			      wiphy_name(wiphy), phy->mt76->band_idx);
++	if (!name)
++		return -ENOMEM;
+ 	snprintf(cname, sizeof(cname), "cooling_device%d", phy->mt76->band_idx);
  
-+int airoha_is_valid_gdm_port(struct airoha_eth *eth,
-+			     struct airoha_gdm_port *port);
-+
- void airoha_ppe_check_skb(struct airoha_ppe *ppe, u16 hash);
- int airoha_ppe_setup_tc_block_cb(enum tc_setup_type type, void *type_data,
- 				 void *cb_priv);
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index 8b55e871352d359fa692c253d3f3315c619472b3..65833e2058194a64569eafec08b80df8190bba6c 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -197,7 +197,8 @@ static int airoha_get_dsa_port(struct net_device **dev)
- #endif
- }
- 
--static int airoha_ppe_foe_entry_prepare(struct airoha_foe_entry *hwe,
-+static int airoha_ppe_foe_entry_prepare(struct airoha_eth *eth,
-+					struct airoha_foe_entry *hwe,
- 					struct net_device *dev, int type,
- 					struct airoha_flow_data *data,
- 					int l4proto)
-@@ -224,6 +225,11 @@ static int airoha_ppe_foe_entry_prepare(struct airoha_foe_entry *hwe,
- 	if (dev) {
- 		struct airoha_gdm_port *port = netdev_priv(dev);
- 		u8 pse_port;
-+		int err;
-+
-+		err = airoha_is_valid_gdm_port(eth, port);
-+		if (err)
-+			return err;
- 
- 		if (dsa_port >= 0)
- 			pse_port = port->id == 4 ? FE_PSE_PORT_GDM4 : port->id;
-@@ -633,7 +639,7 @@ static int airoha_ppe_flow_offload_replace(struct airoha_gdm_port *port,
- 	    !is_valid_ether_addr(data.eth.h_dest))
- 		return -EINVAL;
- 
--	err = airoha_ppe_foe_entry_prepare(&hwe, odev, offload_type,
-+	err = airoha_ppe_foe_entry_prepare(eth, &hwe, odev, offload_type,
- 					   &data, l4proto);
- 	if (err)
- 		return err;
-
----
-base-commit: 2ea396448f26d0d7d66224cb56500a6789c7ed07
-change-id: 20250331-airoha-validate-egress-gdm-port-336c879960ca
-
-Best regards,
+ 	cdev = thermal_cooling_device_register(name, phy, &mt7996_thermal_ops);
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.34.1
 
 
