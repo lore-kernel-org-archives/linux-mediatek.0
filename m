@@ -4,99 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6A9EC36014
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Apr 2025 10:13:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD922C36014
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Apr 2025 10:37:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uz7X0saZ07cJoMgjZepVgox7FPN1JF4+WKasDO8EH1c=; b=Ka4Dk5ZQUms4tKXhZsZUickd9w
-	JiCI7tdd5dkaD9O77CxqdxdYDj9EWIvHWIp+T7Tr5GHpkhhfSBvASecbjavi93Ll033jDe974rFkr
-	9ncyZGKHgHWpznnhlkHaa+lekODn5pfLV2lzeyz7JuFB6Z04L+4L7X6MQClHVIQzyCa9GTxNG+wqm
-	7BCFVJFwbKFPPyk5GP7RoZRsxm6KLclLpvtD0lMfUbZhR3XqzgGQBs+vsNPeZFWRANnqNmph3WlWS
-	HvadgeXV/9MMIinPru/grnLOc/HLvIRTXSejnUuWaZ+K8cRKJp3N9UVz8AxEMDR6mwslOsRJkRd0x
-	Wht0x81w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ytMW1JEd/USOIly1Q63V1abRpzV1AGB7DrsNSLqwano=; b=G7H5uMR/YXBFelZjNioCZdtjMZ
+	UeFFkmdcLTWXiceT96Fz9nkqsftnQkK6M+U1Kht7AIoV0L6+8SVfkX0C7m4iXR4D2DiYiRz+dkEj/
+	25USVJAtGh+pwUgOm8o3rveLVZ+dukpZEED5a0gXtALpvJbmjVWt/PhHyztD0gIeUoS8TOUEuVh/m
+	iv2vprFogCGlrhKr+3xTpQdWmtM2IItKnm7eytfhavy1LkNLzRlo3hSUeR276GPKG3/LSuW/GhqW3
+	S+iWIs0vMGn9WF2cUFsP7EpA5AFypgxNuO56bNsEx1SO6ygwADAvEU6Q7ViXMtQZYbUdAsAJTFwgG
+	anGZJQ5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzYcp-00000002azx-0OdX;
-	Tue, 01 Apr 2025 10:13:43 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1tzYzj-00000002eJb-34yY;
+	Tue, 01 Apr 2025 10:37:23 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzYH4-00000002Wwa-1hMz
-	for linux-mediatek@lists.infradead.org;
-	Tue, 01 Apr 2025 09:51:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1743501072;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=uz7X0saZ07cJoMgjZepVgox7FPN1JF4+WKasDO8EH1c=;
-	b=cC02/npY3r3Rp0e8vz3bUlzIE3jIQVWjjxZpj19sOJgGocJlJPbYuvqMmSJNha4Q6ymTKF
-	vjnfo2lfolUEM56KPHaQYQ3oMW98zFMGh5SICB8rRiIug7Znz8+EkFHVfQb4eIXODEl7Yi
-	r5xOzrMBjZuGMbzQUIJvmGpgj5r3BrY=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-660-BsKJ7O23PZimrIZxgOrfBg-1; Tue, 01 Apr 2025 05:49:41 -0400
-X-MC-Unique: BsKJ7O23PZimrIZxgOrfBg-1
-X-Mimecast-MFC-AGG-ID: BsKJ7O23PZimrIZxgOrfBg_1743500980
-Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-43d3b211d0eso31128825e9.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 01 Apr 2025 02:49:41 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743500980; x=1744105780;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=uz7X0saZ07cJoMgjZepVgox7FPN1JF4+WKasDO8EH1c=;
-        b=VQyn1ik9P3AfufF5Uf6GFc41U+V1QYSLzyTOQYSghv1zV9tDPxzQlIK+aFy9hMudFa
-         XwoRRR7erSa0ymGMi/muTuFSLTFTgTn7wEH62JeYJSofE5khJci3DzXaBXejM3SbM2wf
-         0RMjqENgRGaCAmMn2NCBU738qnMSe3Y9DLm2B0IF1hdAVr3UJFfn/FtJLUcQo69gmIan
-         NVxy/yjJsPrLtlFK3MEB+Ky1CpVbiAVvMkjfLq0A/lyFAFZFxfggrumHr7m3DIYtqDHc
-         /Au2zjhITbCVMpQwS58iOiDCK9jc3sL0oWUOFruXN3tYhzRwxiCH/WeEkOtnKHiLkv6d
-         9+RQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVUn0NoKddM8r5bRn8v42DqWaWqLOYJPRAm+lTuuWSO9pHTGeprmmmhfSUYm+tEBxVsfMdkzflGg2ZNPGVzOw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwwsyiOTbx04XrDBBV1JPtZl7y8mvITbm5+5Hazuzq3u/lNXYlo
-	QpSC+WdZQRnIwsdjUHh7hQzOyTyBS6W1lb9+hHGxWCbpk1dd3ARGD/4Qar7a8PDfUdldQ/BQ4os
-	boKEBaO+1+hj5XSL8S/xS3a6l/Fcm2KQut8U31kj/zGOgwe1atC2qe/PnyrNBxpp4PfxJ3g==
-X-Gm-Gg: ASbGncufn7ahXb0QGSZHaw3P4pXXRgwKLXXAgplR2+HLthNZd/9x8peagwlLaUyBBf5
-	n4pNGeIkmMFxDXa+Woa6qwcCCewr5GHie7fPAhq9/sVmnIPaZ8heORhqvIdvre37ZU7WTwQU/kS
-	1OrWZDY6I1vz1V+GTSi2MytPW4xYvN13bM9joT8oZ5WxJzFuEeQaME8HLfL5blz8bRclvr2cVN4
-	oNpP9Nhsj12qcAZ6S992m0/56+ifnDqpp08upzn+IFAXCJYHR1kpqMqg7+Z9OYGUc/i0+Kht+nP
-	bjfpnJHHa2pY6A==
-X-Received: by 2002:a05:600c:310c:b0:43b:c7f0:6173 with SMTP id 5b1f17b1804b1-43db6224034mr86356865e9.4.1743500980215;
-        Tue, 01 Apr 2025 02:49:40 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGq6P/LONQIdq2pleoYEuzzxgyj99hAud3WvWbJHB5zZUAUKpRXcJTP2ISiVIGMBWKtclaTMA==
-X-Received: by 2002:a05:600c:310c:b0:43b:c7f0:6173 with SMTP id 5b1f17b1804b1-43db6224034mr86356785e9.4.1743500979880;
-        Tue, 01 Apr 2025 02:49:39 -0700 (PDT)
-Received: from localhost ([2a01:e11:1007:ea0:8374:5c74:dd98:a7b2])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43d82efe389sm192609015e9.19.2025.04.01.02.49.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 01 Apr 2025 02:49:39 -0700 (PDT)
-Date: Tue, 1 Apr 2025 11:49:38 +0200
-From: Davide Caratti <dcaratti@redhat.com>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net] net: airoha: Fix ETS priomap validation
-Message-ID: <Z-u2svZqo4NC0JGm@dcaratti.users.ipa.redhat.com>
-References: <20250331-airoha-ets-validate-priomap-v1-1-60a524488672@kernel.org>
+	id 1tzYbi-00000002apV-12vD;
+	Tue, 01 Apr 2025 10:12:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1743502352;
+	bh=8HXAKgifZyDMFvEFL2UG2RrXMWLxhgR2W5amAACOcGw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=m4zNDmD/FgliKcANYqD0WMniKWGYG8uGdM78bd4lloUQqEpPTP+i8YoSEQfgU+xw7
+	 P2ZXknDCGMQLlS2sI4ss+z8g7P/RhIYCO6zPzk4Pi0ZqzIDLLDjL6RoAkPmD3zxqpR
+	 yg++vJd/7VBeqhaGCFEp9kLc8CLH6+Np+QzMEZQ4fxIENzxsyVTGA1KR4tI2q/DQ3W
+	 CipZdK3dFvfDwTqYJ2JAeptX1/kVrATWLcoxudNoc8j2wND5WrZ+NbWwJG12Rldey5
+	 dB27ZWqVupcEJUm9ifFCa8qHrk3A24CxdNAy23xwklXwmQj555r8BneLTlp+z1SHR/
+	 k8qiM1TJU+DrA==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6E7CB17E07F3;
+	Tue,  1 Apr 2025 12:12:31 +0200 (CEST)
+Message-ID: <2de0cc68-f3d7-4b9c-86d3-105666963fb7@collabora.com>
+Date: Tue, 1 Apr 2025 12:12:30 +0200
 MIME-Version: 1.0
-In-Reply-To: <20250331-airoha-ets-validate-priomap-v1-1-60a524488672@kernel.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: qLZQqVw1u86vESE4Ne-fMe8SUoB54IXqkAmYh5qNNtk_1743500980
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] ASoC: mediatek: re-enable buffer pre-allocation on some
+ platforms
+To: Chen-Yu Tsai <wenst@chromium.org>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-sound@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ treapking@chromium.org, yuanhsinte@chromium.org
+References: <20250401085659.1222008-1-wenst@chromium.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250401085659.1222008-1-wenst@chromium.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250401_025114_532041_B57602CE 
-X-CRM114-Status: UNSURE (   8.70  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250401_031234_453670_0FC38388 
+X-CRM114-Status: GOOD (  20.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,19 +78,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 31, 2025 at 06:17:31PM +0200, Lorenzo Bianconi wrote:
-> ETS Qdisc schedules SP bands in a priority order assigning band-0 the
-> highest priority (band-0 > band-1 > .. > band-n) while EN7581 arranges
-> SP bands in a priority order assigning band-7 the highest priority
-> (band-7 > band-6, .. > band-n).
-> Fix priomap check in airoha_qdma_set_tx_ets_sched routine in order to
-> align ETS Qdisc and airoha_eth driver SP priority ordering.
+Il 01/04/25 10:56, Chen-Yu Tsai ha scritto:
+> In commit 32c9c06adb5b ("ASoC: mediatek: disable buffer pre-allocation")
+> buffer pre-allocation was disabled to accommodate newer platforms that
+> have a limited reserved memory region for the audio frontend.
 > 
-> Fixes: b56e4d660a96 ("net: airoha: Enforce ETS Qdisc priomap")
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> Turns out disabling pre-allocation across the board impacts platforms
+> that don't have this reserved memory region. Buffer allocation failures
+> have been observed on MT8173 and MT8183 based Chromebooks under low
+> memory conditions, which results in no audio playback for the user.
+> 
+> Reinstate the original policy of pre-allocating audio buffers at probe
+> time on MT8173, MT8183, and MT8186 platforms. These platforms do not
+> have reserved memory for the audio frontend.
+> 
+> Fixes: 32c9c06adb5b ("ASoC: mediatek: disable buffer pre-allocation")
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
-LGTM!
+Have you tried to add the reserved memory regions to the MT8173/83/86 AFE?
 
-Reviewed-by: Davide Caratti <dcaratti@redhat.com>
+This means not only devicetree but also the driver - that should be simple
+enough, and would allow to eventually add a layer of further commonization
+between the AFE PCM drivers of all those MediaTek SoCs.
+
+Cheers,
+Angelo
+
+> ---
+>   sound/soc/mediatek/common/mtk-afe-platform-driver.c | 4 +++-
+>   sound/soc/mediatek/common/mtk-base-afe.h            | 1 +
+>   sound/soc/mediatek/mt8173/mt8173-afe-pcm.c          | 1 +
+>   sound/soc/mediatek/mt8183/mt8183-afe-pcm.c          | 1 +
+>   sound/soc/mediatek/mt8186/mt8186-afe-pcm.c          | 1 +
+>   5 files changed, 7 insertions(+), 1 deletion(-)
+> 
+> diff --git a/sound/soc/mediatek/common/mtk-afe-platform-driver.c b/sound/soc/mediatek/common/mtk-afe-platform-driver.c
+> index 6b6330583941..70fd05d5ff48 100644
+> --- a/sound/soc/mediatek/common/mtk-afe-platform-driver.c
+> +++ b/sound/soc/mediatek/common/mtk-afe-platform-driver.c
+> @@ -120,7 +120,9 @@ int mtk_afe_pcm_new(struct snd_soc_component *component,
+>   	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
+>   
+>   	size = afe->mtk_afe_hardware->buffer_bytes_max;
+> -	snd_pcm_set_managed_buffer_all(pcm, SNDRV_DMA_TYPE_DEV, afe->dev, 0, size);
+> +	snd_pcm_set_managed_buffer_all(pcm, SNDRV_DMA_TYPE_DEV, afe->dev,
+> +				       afe->preallocate_buffers ? size : 0,
+> +				       size);
+>   
+>   	return 0;
+>   }
+> diff --git a/sound/soc/mediatek/common/mtk-base-afe.h b/sound/soc/mediatek/common/mtk-base-afe.h
+> index f51578b6c50a..a406f2e3e7a8 100644
+> --- a/sound/soc/mediatek/common/mtk-base-afe.h
+> +++ b/sound/soc/mediatek/common/mtk-base-afe.h
+> @@ -117,6 +117,7 @@ struct mtk_base_afe {
+>   	struct mtk_base_afe_irq *irqs;
+>   	int irqs_size;
+>   	int memif_32bit_supported;
+> +	bool preallocate_buffers;
+>   
+>   	struct list_head sub_dais;
+>   	struct snd_soc_dai_driver *dai_drivers;
+> diff --git a/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c b/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c
+> index 04ed0cfec174..37b20ec80829 100644
+> --- a/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c
+> +++ b/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c
+> @@ -1114,6 +1114,7 @@ static int mt8173_afe_pcm_dev_probe(struct platform_device *pdev)
+>   	afe->mtk_afe_hardware = &mt8173_afe_hardware;
+>   	afe->memif_fs = mt8173_memif_fs;
+>   	afe->irq_fs = mt8173_irq_fs;
+> +	afe->preallocate_buffers = true;
+>   
+>   	platform_set_drvdata(pdev, afe);
+>   
+> diff --git a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
+> index d083b4bf0f95..0ef07fb2898d 100644
+> --- a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
+> +++ b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
+> @@ -1214,6 +1214,7 @@ static int mt8183_afe_pcm_dev_probe(struct platform_device *pdev)
+>   	afe->mtk_afe_hardware = &mt8183_afe_hardware;
+>   	afe->memif_fs = mt8183_memif_fs;
+>   	afe->irq_fs = mt8183_irq_fs;
+> +	afe->preallocate_buffers = true;
+>   
+>   	afe->runtime_resume = mt8183_afe_runtime_resume;
+>   	afe->runtime_suspend = mt8183_afe_runtime_suspend;
+> diff --git a/sound/soc/mediatek/mt8186/mt8186-afe-pcm.c b/sound/soc/mediatek/mt8186/mt8186-afe-pcm.c
+> index db7c93401bee..c588a68d672d 100644
+> --- a/sound/soc/mediatek/mt8186/mt8186-afe-pcm.c
+> +++ b/sound/soc/mediatek/mt8186/mt8186-afe-pcm.c
+> @@ -2935,6 +2935,7 @@ static int mt8186_afe_pcm_dev_probe(struct platform_device *pdev)
+>   	afe->irq_fs = mt8186_irq_fs;
+>   	afe->get_dai_fs = mt8186_get_dai_fs;
+>   	afe->get_memif_pbuf_size = mt8186_get_memif_pbuf_size;
+> +	afe->preallocate_buffers = true;
+>   
+>   	afe->runtime_resume = mt8186_afe_runtime_resume;
+>   	afe->runtime_suspend = mt8186_afe_runtime_suspend;
+
 
 
