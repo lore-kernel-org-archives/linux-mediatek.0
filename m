@@ -4,76 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF194C36018
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Apr 2025 08:40:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0D69C36014
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Apr 2025 08:57:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=TcarTI4q4IM41MZDd1UR+Ub2gKdC3FXHi7aVCTSwG1k=; b=4ckaADJZO7bab0y0vMlS/DLb01
-	oAXL2Tmf/itveOvZZR7iavOmPzwKf6dmMk8GGTCG4NT2nkixfA3V2p0dIK/oWOEUFJPWjRuit4dRU
-	Jy6DBg3VAktukzcCfQ3medmXdnyg52pQrs9iHbhYn2DAPq96FPwEyXLB51hfG1MmIiFyUWHcfDOx6
-	Y7dINKFm/z9BcKAzV8h2NRpKqoesWrp/0jFsPQ/3c5io9wx9FMcK9lDSJtpPTQ32Yxh2ak2cJvL8/
-	wuWZP4xaz+K1G3CDNgBwf2PsHyJNTurcCdiedoHpDjeL4i/RcvUMVdzfm5x3kXGmAuvNdXPFcEots
-	5UYgHy2A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=qxufKce8+6rFq47Dsd+IWCpPIS7gkHkiCqEgue9+foQ=; b=rORPIFJkGr8UNgzeczDz23bf98
+	CTiwRklzWMcgYMtKKx2V0YB1iYBBXSNAoKsT1Jipp7GSzzNhPX6bkfnRWVYGThiktkbTpDVFqNi79
+	2woxdVt1DCXWFirtsLohA3MLMaTjRE5cc4i+M2OxiMiY27/JomAK93PEPUutBlXcIJGY0wf2/zyFr
+	o4PxGeDOvgXqiP53UR6gjvD8QlY24WdgcjseHLoqn8NVqtU/06hTIbhqUxWS0xk50uEm0gzAdlmGx
+	7m2sS8PSULFy34i9rartycXLtJydJr63B0zw4eyWCa8/hzBqma2FOX+Nfy8FUHRXwXyVHtOenknc5
+	CL5XXDmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzXAR-00000002LqV-35bA;
-	Tue, 01 Apr 2025 08:40:19 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1tzXQi-00000002O63-45tH;
+	Tue, 01 Apr 2025 08:57:09 +0000
+Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzX5o-00000002LNj-3ywP
+	id 1tzXQf-00000002O5E-3McQ
 	for linux-mediatek@lists.infradead.org;
-	Tue, 01 Apr 2025 08:35:34 +0000
-X-UUID: 44c6372a0ed411f0a1e849db4cc18d44-20250401
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=TcarTI4q4IM41MZDd1UR+Ub2gKdC3FXHi7aVCTSwG1k=;
-	b=VvRBqnaSylN42w+p7BNPFVyT7FaWVovmzoAXcEGWBabPAsfvceoi9HjxdYQZW0TBU2/G9+rnx8URjmZfOEoh+jM7qCHyF3mmTvfqChul/Z+Vj5lSiepkpGKwJLjyuBwuuXvf9gPknDGDepiOZjE81MARuNxKjx9tjkMd5UHV/bU=;
-X-CID-CACHE: Type:Local,Time:202504010128-07,HitQuantity:1
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:6005cd09-9d09-4621-80e9-863f1222d0be,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:0ef645f,CLOUDID:96d9158d-f5b8-47d5-8cf3-b68fe7530c9a,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 44c6372a0ed411f0a1e849db4cc18d44-20250401
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <allan.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 154796334; Tue, 01 Apr 2025 01:35:29 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Tue, 1 Apr 2025 16:35:27 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Tue, 1 Apr 2025 16:35:27 +0800
-From: Allan Wang <allan.wang@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <deren.wu@mediatek.com>, <mingyen.hsieh@mediatek.com>,
-	<Sean.Wang@mediatek.com>, <Soul.Huang@mediatek.com>, <Leon.Yen@mediatek.com>,
-	<Michael.Lo@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
-	<km.lin@mediatek.com>, <robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>,
-	<posh.sun@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
-	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Allan Wang <allan.wang@mediatek.com>
-Subject: [v2] wifi: mt76: mt7925: add EHT preamble puncturing
-Date: Tue, 1 Apr 2025 16:35:25 +0800
-Message-ID: <20250401083525.2734333-1-allan.wang@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	Tue, 01 Apr 2025 08:57:07 +0000
+Received: by mail-pj1-x1029.google.com with SMTP id 98e67ed59e1d1-30155bbbed9so6951167a91.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 01 Apr 2025 01:57:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1743497824; x=1744102624; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=qxufKce8+6rFq47Dsd+IWCpPIS7gkHkiCqEgue9+foQ=;
+        b=nzEc7ZHF6tRIcc0EaD7g58I7Rk1EnXxQn7FYWuvZ3ygYZWVR5caLRE4IZR+MGLXd7h
+         G4MQ6h5LcOSUV7ZR1hBaUsTg4l6q+oCLwxIYyn6CzoHIu9GaWdS2L7iLAdMH6njrekfh
+         xQlZA51rDHmMqeFHkRXwkAJ3/6tL2IHppb+cQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1743497824; x=1744102624;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=qxufKce8+6rFq47Dsd+IWCpPIS7gkHkiCqEgue9+foQ=;
+        b=P22bR0x2ZwS4hUpq2lWNtMhsB9INsrIL0uDW5VZVJTgmG+zk7mjPhqwoVdXby6ymY5
+         ooyvi6rSPie4titcszobZJsNHPdOaDU3o2mnBWOxmX4SuZDiDXojTWTpcPutnA507FA/
+         R8hm0JDkPy5theEewoczh2+266ybnzulvuXvHbt2iwYK0koWcY1GQBhcaKhC09SZl1u4
+         T5AfE1KRrosooOBqtApu1lCMkOHumpyd6J1gWI1uOibgjw+Ng9CysxBqIsSDmmQz+Xl1
+         AZ0k3U3QUEPZZOWmXe3apzmDDt2DccZZ2c2Z+D8xjCJXeDPt4jOPbDTr0qYgKsKAp1vS
+         RNsA==
+X-Forwarded-Encrypted: i=1; AJvYcCWV7gqCfTi9n9mWpRjPcQlP3fz7wUME7L0ExWlgEkeEEHEI2zagcYHtiVSqeiwsXyAx92EiFqkrwihFNMiOxw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx742aNZx0fYYPyf3g/F845nK5IOeE+UAUC3AmtTw9OWeNmgKwR
+	R3F+pBjWizzybp2N3uv00LDWuOG4c6e/0eDfF+hhtkGiqJV0rDbjpL+MZ2QPQw==
+X-Gm-Gg: ASbGncsL945eOKw7O4md1cpolvMseM7/RJCqCNI+LBN1RoIBL5xDtGD7KZrWP54L59G
+	C+EmcKVPY4FnJImWTPGVjQTSm4AwJA/keS9JrrCo/Fa5jifSYNhyYHblzgPuwMct5mwXnT+G97Y
+	pU0iNDgZsIxG+vUjYCp5fjUveNequ18UdhXx2QKOkUp7HX4QUQiDOpv6xpmSrCzFELW69MWRl4o
+	0MoJ2HZ6z3kCK9DZvdLqKgukYagmy7yENPiPAtqWrtIRreYfavriIOlQQN9ARL5svM0f5pNFff0
+	T+DwR1OTd+/6IPs1pn759X55kgpGhldahuHuj6s5DpdRNu9zGiKY+cu/M01xYeMSG5sJH96hCA=
+	=
+X-Google-Smtp-Source: AGHT+IEGnyXdQQaEtEc12iqZVx24nt1bNnc7msMFARFnIYDLX4DR4C5RKsaUHtsIKRjop94QRdf+PA==
+X-Received: by 2002:a17:90b:5690:b0:2fe:9e6c:add9 with SMTP id 98e67ed59e1d1-305608ab182mr4183384a91.18.1743497824504;
+        Tue, 01 Apr 2025 01:57:04 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:ad70:9e5d:51fd:567e])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-305166caa77sm8756803a91.0.2025.04.01.01.57.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 01 Apr 2025 01:57:04 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Mark Brown <broonie@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	linux-sound@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	treapking@chromium.org,
+	yuanhsinte@chromium.org
+Subject: [PATCH] ASoC: mediatek: re-enable buffer pre-allocation on some platforms
+Date: Tue,  1 Apr 2025 16:56:57 +0800
+Message-ID: <20250401085659.1222008-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.49.0.472.ge94155a9ec-goog
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250401_013532_999757_7B2441D3 
-X-CRM114-Status: GOOD (  11.38  )
+X-CRM114-CacheID: sfid-20250401_015705_859593_1512C376 
+X-CRM114-Status: GOOD (  14.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,147 +101,93 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mt7925 EHT preamble puncturing.
+In commit 32c9c06adb5b ("ASoC: mediatek: disable buffer pre-allocation")
+buffer pre-allocation was disabled to accommodate newer platforms that
+have a limited reserved memory region for the audio frontend.
 
-Signed-off-by: Allan Wang <allan.wang@mediatek.com>
----
-v2: fix __le16 assignment
----
- .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  1 +
- .../net/wireless/mediatek/mt76/mt7925/main.c  | 10 ++++++
- .../net/wireless/mediatek/mt76/mt7925/mcu.c   | 34 +++++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7925/mcu.h   | 16 +++++++++
- 4 files changed, 61 insertions(+)
+Turns out disabling pre-allocation across the board impacts platforms
+that don't have this reserved memory region. Buffer allocation failures
+have been observed on MT8173 and MT8183 based Chromebooks under low
+memory conditions, which results in no audio playback for the user.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-index 43237e518373..e57287a9e41d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-@@ -1369,6 +1369,7 @@ enum {
- 	UNI_BSS_INFO_OFFLOAD = 25,
- 	UNI_BSS_INFO_MLD = 26,
- 	UNI_BSS_INFO_PM_DISABLE = 27,
-+	UNI_BSS_INFO_EHT = 30,
- };
+Reinstate the original policy of pre-allocating audio buffers at probe
+time on MT8173, MT8183, and MT8186 platforms. These platforms do not
+have reserved memory for the audio frontend.
+
+Fixes: 32c9c06adb5b ("ASoC: mediatek: disable buffer pre-allocation")
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ sound/soc/mediatek/common/mtk-afe-platform-driver.c | 4 +++-
+ sound/soc/mediatek/common/mtk-base-afe.h            | 1 +
+ sound/soc/mediatek/mt8173/mt8173-afe-pcm.c          | 1 +
+ sound/soc/mediatek/mt8183/mt8183-afe-pcm.c          | 1 +
+ sound/soc/mediatek/mt8186/mt8186-afe-pcm.c          | 1 +
+ 5 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/sound/soc/mediatek/common/mtk-afe-platform-driver.c b/sound/soc/mediatek/common/mtk-afe-platform-driver.c
+index 6b6330583941..70fd05d5ff48 100644
+--- a/sound/soc/mediatek/common/mtk-afe-platform-driver.c
++++ b/sound/soc/mediatek/common/mtk-afe-platform-driver.c
+@@ -120,7 +120,9 @@ int mtk_afe_pcm_new(struct snd_soc_component *component,
+ 	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
  
- enum {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-index e79364ac129e..83f93f9e002c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-@@ -1865,6 +1865,10 @@ mt7925_change_chanctx(struct ieee80211_hw *hw,
- 			link_conf = mt792x_vif_to_bss_conf(vif, mconf->link_id);
- 			mt7925_mcu_set_chctx(mvif->phy->mt76, &mconf->mt76,
- 					     link_conf, ctx);
-+
-+			if (changed & IEEE80211_CHANCTX_CHANGE_PUNCTURING)
-+				mt7925_mcu_set_eht_pp(mvif->phy->mt76, &mconf->mt76,
-+						      link_conf, ctx);
- 		}
- 	}
+ 	size = afe->mtk_afe_hardware->buffer_bytes_max;
+-	snd_pcm_set_managed_buffer_all(pcm, SNDRV_DMA_TYPE_DEV, afe->dev, 0, size);
++	snd_pcm_set_managed_buffer_all(pcm, SNDRV_DMA_TYPE_DEV, afe->dev,
++				       afe->preallocate_buffers ? size : 0,
++				       size);
  
-@@ -1954,8 +1958,10 @@ static void mt7925_link_info_changed(struct ieee80211_hw *hw,
- 	struct mt792x_phy *phy = mt792x_hw_phy(hw);
- 	struct mt792x_dev *dev = mt792x_hw_dev(hw);
- 	struct mt792x_bss_conf *mconf;
-+	struct ieee80211_bss_conf *link_conf;
- 
- 	mconf = mt792x_vif_to_link(mvif, info->link_id);
-+	link_conf = mt792x_vif_to_bss_conf(vif, mconf->link_id);
- 
- 	mt792x_mutex_acquire(dev);
- 
-@@ -1997,6 +2003,10 @@ static void mt7925_link_info_changed(struct ieee80211_hw *hw,
- 		mvif->mlo_pm_state = MT792x_MLO_CHANGED_PS;
- 	}
- 
-+	if (changed & IEEE80211_CHANCTX_CHANGE_PUNCTURING)
-+		mt7925_mcu_set_eht_pp(mvif->phy->mt76, &mconf->mt76,
-+				      link_conf, NULL);
-+
- 	mt792x_mutex_release(dev);
+ 	return 0;
  }
+diff --git a/sound/soc/mediatek/common/mtk-base-afe.h b/sound/soc/mediatek/common/mtk-base-afe.h
+index f51578b6c50a..a406f2e3e7a8 100644
+--- a/sound/soc/mediatek/common/mtk-base-afe.h
++++ b/sound/soc/mediatek/common/mtk-base-afe.h
+@@ -117,6 +117,7 @@ struct mtk_base_afe {
+ 	struct mtk_base_afe_irq *irqs;
+ 	int irqs_size;
+ 	int memif_32bit_supported;
++	bool preallocate_buffers;
  
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index e61da76b2097..286f602623c0 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -2298,6 +2298,40 @@ __mt7925_mcu_alloc_bss_req(struct mt76_dev *dev, struct mt76_vif_link *mvif, int
- 	return skb;
- }
+ 	struct list_head sub_dais;
+ 	struct snd_soc_dai_driver *dai_drivers;
+diff --git a/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c b/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c
+index 04ed0cfec174..37b20ec80829 100644
+--- a/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c
++++ b/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c
+@@ -1114,6 +1114,7 @@ static int mt8173_afe_pcm_dev_probe(struct platform_device *pdev)
+ 	afe->mtk_afe_hardware = &mt8173_afe_hardware;
+ 	afe->memif_fs = mt8173_memif_fs;
+ 	afe->irq_fs = mt8173_irq_fs;
++	afe->preallocate_buffers = true;
  
-+static
-+void mt7925_mcu_bss_eht_tlv(struct sk_buff *skb, struct mt76_phy *phy,
-+			    struct ieee80211_bss_conf *link_conf,
-+			    struct ieee80211_chanctx_conf *ctx)
-+{
-+	struct cfg80211_chan_def *chandef = ctx ? &ctx->def :
-+						  &link_conf->chanreq.oper;
-+
-+	struct bss_eht_tlv *req;
-+	struct tlv *tlv;
-+
-+	tlv = mt76_connac_mcu_add_tlv(skb, UNI_BSS_INFO_EHT, sizeof(*req));
-+	req = (struct bss_eht_tlv *)tlv;
-+	req->is_eth_dscb_present = chandef->punctured ? 1 : 0;
-+	req->eht_dis_sub_chan_bitmap = cpu_to_le16(chandef->punctured);
-+}
-+
-+int mt7925_mcu_set_eht_pp(struct mt76_phy *phy, struct mt76_vif_link *mvif,
-+			  struct ieee80211_bss_conf *link_conf,
-+			  struct ieee80211_chanctx_conf *ctx)
-+{
-+	struct sk_buff *skb;
-+
-+	skb = __mt7925_mcu_alloc_bss_req(phy->dev, mvif,
-+					 MT7925_BSS_UPDATE_MAX_SIZE);
-+	if (IS_ERR(skb))
-+		return PTR_ERR(skb);
-+
-+	mt7925_mcu_bss_eht_tlv(skb, phy, link_conf, ctx);
-+
-+	return mt76_mcu_skb_send_msg(phy->dev, skb,
-+				     MCU_UNI_CMD(BSS_INFO_UPDATE), true);
-+}
-+
- int mt7925_mcu_set_chctx(struct mt76_phy *phy, struct mt76_vif_link *mvif,
- 			 struct ieee80211_bss_conf *link_conf,
- 			 struct ieee80211_chanctx_conf *ctx)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
-index 8ac43feb26d6..d55ea59bda7d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
-@@ -372,6 +372,19 @@ struct bss_mld_tlv {
- 	u8 __rsv[3];
- } __packed;
+ 	platform_set_drvdata(pdev, afe);
  
-+struct bss_eht_tlv {
-+	__le16 tag;
-+	__le16 len;
-+	u8  is_eht_op_present;
-+	u8  is_eth_dscb_present;
-+	u8  eht_ctrl;
-+	u8  eht_ccfs0;
-+	u8  eht_ccfs1;
-+	u8  pad1;
-+	__le16 eht_dis_sub_chan_bitmap;
-+	u8  pad2[4];
-+} __packed;
-+
- struct sta_rec_ba_uni {
- 	__le16 tag;
- 	__le16 len;
-@@ -642,6 +655,9 @@ int mt7925_mcu_set_radio_en(struct mt792x_phy *phy, bool enable);
- int mt7925_mcu_set_chctx(struct mt76_phy *phy, struct mt76_vif_link *mvif,
- 			 struct ieee80211_bss_conf *link_conf,
- 			 struct ieee80211_chanctx_conf *ctx);
-+int mt7925_mcu_set_eht_pp(struct mt76_phy *phy, struct mt76_vif_link *mvif,
-+			  struct ieee80211_bss_conf *link_conf,
-+			  struct ieee80211_chanctx_conf *ctx);
- int mt7925_mcu_set_rate_txpower(struct mt76_phy *phy);
- int mt7925_mcu_update_arp_filter(struct mt76_dev *dev,
- 				 struct ieee80211_bss_conf *link_conf);
+diff --git a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
+index d083b4bf0f95..0ef07fb2898d 100644
+--- a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
++++ b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
+@@ -1214,6 +1214,7 @@ static int mt8183_afe_pcm_dev_probe(struct platform_device *pdev)
+ 	afe->mtk_afe_hardware = &mt8183_afe_hardware;
+ 	afe->memif_fs = mt8183_memif_fs;
+ 	afe->irq_fs = mt8183_irq_fs;
++	afe->preallocate_buffers = true;
+ 
+ 	afe->runtime_resume = mt8183_afe_runtime_resume;
+ 	afe->runtime_suspend = mt8183_afe_runtime_suspend;
+diff --git a/sound/soc/mediatek/mt8186/mt8186-afe-pcm.c b/sound/soc/mediatek/mt8186/mt8186-afe-pcm.c
+index db7c93401bee..c588a68d672d 100644
+--- a/sound/soc/mediatek/mt8186/mt8186-afe-pcm.c
++++ b/sound/soc/mediatek/mt8186/mt8186-afe-pcm.c
+@@ -2935,6 +2935,7 @@ static int mt8186_afe_pcm_dev_probe(struct platform_device *pdev)
+ 	afe->irq_fs = mt8186_irq_fs;
+ 	afe->get_dai_fs = mt8186_get_dai_fs;
+ 	afe->get_memif_pbuf_size = mt8186_get_memif_pbuf_size;
++	afe->preallocate_buffers = true;
+ 
+ 	afe->runtime_resume = mt8186_afe_runtime_resume;
+ 	afe->runtime_suspend = mt8186_afe_runtime_suspend;
 -- 
-2.45.2
+2.49.0.472.ge94155a9ec-goog
 
 
