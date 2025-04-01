@@ -4,64 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C4E2C36014
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Apr 2025 10:06:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56459C36018
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Apr 2025 10:10:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xLEx9ag6rRyJwsDWi2eXFnNE5uDiHwvjqDeRRFzSv8M=; b=hnTVpxCyU4Itm7aryI+pmMDbAt
-	8JrzvRO8MXvxEJC9RPeGCQXFSlq8H7/SV8oA38eD3pCQlVlOYy/0mYQiPx6KSflO1wmR1hYY0l25o
-	/AScUzgBoE6lGNiOXPBrqCtFhmUUMXOPIpbvHbFt+2AtnXvc2EeiWIsjHBbYvZ7IirIgUbht9sItF
-	HVLpJawuegA1BVT7vJ6vtgtcDv3ARUz8xECvwHmEfgMtLO58JgbSc/ZAvhnlGQdfgTdJA8XWpFhGt
-	XEfdKHoNTekYqReZ00zb5sLv50jgHqqDd19UDNGyrxzcsCyXLD/37mhb8xCVS+HpvJwoXwwOpYyQg
-	8T8VnjXQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=hvhK/NxFAtUOi2+7WK4QJ2mVgKDHK9XifDnJ7Z+flcY=; b=LW1DCr2VKmX0eoBo8jYtgEpZZy
+	3ukkuz/g65iMG1i8Vw1fA+KQxTizRBYlri1yeIu328hKGqMx0uum7Ty90QwdHeKLQa2O83DJkFE+v
+	JBO5hPxDmdmbbzvFF7HUGKTVlZ5Pj5IEwSXOvm5IfjLgXPwbRHmk7R1O6qohPQz672Uqzu4je6sqD
+	JVXGXXvHg1ZhiqgZ2HYas62rpQKB5xYn9tFxYtVChUIhPR89OqfeTC75GC0J7+vG6mf8hxdc/+aXX
+	29MpwCpdQIuEwmK5MHA+S6FAnCWIirEEL9ndmodP4yqdEEwIQfgwzPqZLCki3dheGJ1riNfk5tkST
+	PKs/O3nQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzYVk-00000002Zgu-0ztE;
-	Tue, 01 Apr 2025 10:06:24 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1tzYZH-00000002aPu-1vE7;
+	Tue, 01 Apr 2025 10:10:03 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzY0u-00000002UaD-3FJN;
-	Tue, 01 Apr 2025 09:34:34 +0000
+	id 1tzY8v-00000002Vlt-11xy;
+	Tue, 01 Apr 2025 09:42:49 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 23CDAA435FF;
-	Tue,  1 Apr 2025 09:29:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ACD2EC4CEE4;
-	Tue,  1 Apr 2025 09:34:29 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id F1D7D61132;
+	Tue,  1 Apr 2025 09:42:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 069CFC4CEE4;
+	Tue,  1 Apr 2025 09:42:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1743500071;
-	bh=7lkAOLmurMCkLel+JEnAt0AfvmrS0keXEItR7INNDXI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=tCeV6Q+/pvkhcx91PG1MjGJj26MDQSAzN5cUN18jYSX31tCdizbhkOdQUVKLQZeE7
-	 Qocao8Czzn8TGft7RucqfYzeauAZx18r/0btTdO98PlUhxaVVfyPEXM0DskQPbNMml
-	 EB/eo5sUh/OyMzJi0q3VPqBAlBm+lGndPYI4WUb6SgSmKUILXpAnCl11ryLNZDsJqG
-	 wloIFVT+Vec7yd7goYUcENJGEy7PhnWECr2QEa0PtN3w+I9jWedofCq7OmjkZ81xbx
-	 TWd6No/Ar0t5xZVx050FFRAaCWxjBK8dKFSLbho/6S7BQF7PblesHx41OWKrtv9N4y
-	 wjPVPJ7sB00Hg==
-Date: Tue, 1 Apr 2025 10:34:27 +0100
-From: Simon Horman <horms@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Davide Caratti <dcaratti@redhat.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net] net: airoha: Fix ETS priomap validation
-Message-ID: <20250401093427.GA214849@horms.kernel.org>
-References: <20250331-airoha-ets-validate-priomap-v1-1-60a524488672@kernel.org>
+	s=k20201202; t=1743500568;
+	bh=Tg3tXMHJf2C+qh4933Cv7caaqlu4tWE4+ox/5ISh5pA=;
+	h=From:Date:Subject:To:Cc:From;
+	b=UriSNX2wpuXYZx7VT/c9Z8eibqdIg6QdUTcwrJJu7clqwp16r6uArXVZWx5Cg7yWT
+	 2OtbHnRPB2qbUyZx/4R0HbOf6CYB8eHJyQuh07YbbdZtRjc634oKwgotGKMbSWwG0a
+	 84tcm4s0aegCOe3UtfBqJslPloIHbGK10v0ZxZA475MuapMku8EWWKsobjFNHY0hHZ
+	 gCvEgud8mKPu80H+xEO76p+ICRYwIHmLunzF5Fs8gR3tXCT81BYRr3UQ8U/GD0Fznb
+	 wgsB49XeRm9ArhapHZXO71VsAFlOPOG4VIYLmj2+nIEZLOkVdmwSthalkbc3L3VsA+
+	 UMHMEqohUW0VA==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Tue, 01 Apr 2025 11:42:30 +0200
+Subject: [PATCH net v4] net: airoha: Validate egress gdm port in
+ airoha_ppe_foe_entry_prepare()
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250331-airoha-ets-validate-priomap-v1-1-60a524488672@kernel.org>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250401_023432_893155_3A72D818 
-X-CRM114-Status: UNSURE (   8.34  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250401-airoha-validate-egress-gdm-port-v4-1-c7315d33ce10@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAW162cC/42NQQ6CMBAAv0J6dg2wCOLJfxgOa1nLRqRkSxoN4
+ e9WXuBx5jCzmsAqHMwlW41ylCB+SlAdMmMHmhyD9IlNmZenHLEAEvUDQaRReloY2CmHAK5/wex
+ 1AcTanpu2rXNLJlVm5Ye898OtSzxIWLx+9mHEn/2/HREKsEXF9Z3aBpGuT9aJx6NXZ7pt276DG
+ 7UnzwAAAA==
+X-Change-ID: 20250331-airoha-validate-egress-gdm-port-336c879960ca
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+X-Mailer: b4 0.14.2
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,17 +75,123 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 31, 2025 at 06:17:31PM +0200, Lorenzo Bianconi wrote:
-> ETS Qdisc schedules SP bands in a priority order assigning band-0 the
-> highest priority (band-0 > band-1 > .. > band-n) while EN7581 arranges
-> SP bands in a priority order assigning band-7 the highest priority
-> (band-7 > band-6, .. > band-n).
-> Fix priomap check in airoha_qdma_set_tx_ets_sched routine in order to
-> align ETS Qdisc and airoha_eth driver SP priority ordering.
-> 
-> Fixes: b56e4d660a96 ("net: airoha: Enforce ETS Qdisc priomap")
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Dev pointer in airoha_ppe_foe_entry_prepare routine is not strictly
+a device allocated by airoha_eth driver since it is an egress device
+and the flowtable can contain even wlan, pppoe or vlan devices. E.g:
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+flowtable ft {
+        hook ingress priority filter
+        devices = { eth1, lan1, lan2, lan3, lan4, wlan0 }
+        flags offload                               ^
+                                                    |
+                     "not allocated by airoha_eth" --
+}
+
+In this case airoha_get_dsa_port() will just return the original device
+pointer and we can't assume netdev priv pointer points to an
+airoha_gdm_port struct.
+Fix the issue validating egress gdm port in airoha_ppe_foe_entry_prepare
+routine before accessing net_device priv pointer.
+
+Fixes: 00a7678310fe ("net: airoha: Introduce flowtable offload support")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+Changes in v4:
+- Return bool in airoha_is_valid_gdm_port() instead of int
+- Link to v3: https://lore.kernel.org/r/20250331-airoha-validate-egress-gdm-port-v3-1-c14e6ba9733a@kernel.org
+
+Changes in v3:
+- Rebase on top of net tree
+- Fix commit log
+- Link to v2: https://lore.kernel.org/r/20250315-airoha-flowtable-null-ptr-fix-v2-1-94b923d30234@kernel.org
+
+Changes in v2:
+- Avoid checking netdev_priv pointer since it is always not NULL
+- Link to v1: https://lore.kernel.org/r/20250312-airoha-flowtable-null-ptr-fix-v1-1-6363fab884d0@kernel.org
+---
+ drivers/net/ethernet/airoha/airoha_eth.c | 13 +++++++++++++
+ drivers/net/ethernet/airoha/airoha_eth.h |  3 +++
+ drivers/net/ethernet/airoha/airoha_ppe.c |  8 ++++++--
+ 3 files changed, 22 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index c0a642568ac115ea9df6fbaf7133627a4405a36c..743f85a1ee380a92d22ba91f3ee42e5fcb59aec7 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -2454,6 +2454,19 @@ static void airoha_metadata_dst_free(struct airoha_gdm_port *port)
+ 	}
+ }
+ 
++bool airoha_is_valid_gdm_port(struct airoha_eth *eth,
++			      struct airoha_gdm_port *port)
++{
++	int i;
++
++	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
++		if (eth->ports[i] == port)
++			return true;
++	}
++
++	return false;
++}
++
+ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
+ 				 struct device_node *np, int index)
+ {
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
+index 60690b685710c72a2e15c6c6c94240108dafa1c1..ec8908f904c61988c3dc973e187596c49af139fb 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.h
++++ b/drivers/net/ethernet/airoha/airoha_eth.h
+@@ -532,6 +532,9 @@ u32 airoha_rmw(void __iomem *base, u32 offset, u32 mask, u32 val);
+ #define airoha_qdma_clear(qdma, offset, val)			\
+ 	airoha_rmw((qdma)->regs, (offset), (val), 0)
+ 
++bool airoha_is_valid_gdm_port(struct airoha_eth *eth,
++			      struct airoha_gdm_port *port);
++
+ void airoha_ppe_check_skb(struct airoha_ppe *ppe, u16 hash);
+ int airoha_ppe_setup_tc_block_cb(enum tc_setup_type type, void *type_data,
+ 				 void *cb_priv);
+diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
+index 8b55e871352d359fa692c253d3f3315c619472b3..f10dab935cab6fad747fdfaa70b67903904c1703 100644
+--- a/drivers/net/ethernet/airoha/airoha_ppe.c
++++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+@@ -197,7 +197,8 @@ static int airoha_get_dsa_port(struct net_device **dev)
+ #endif
+ }
+ 
+-static int airoha_ppe_foe_entry_prepare(struct airoha_foe_entry *hwe,
++static int airoha_ppe_foe_entry_prepare(struct airoha_eth *eth,
++					struct airoha_foe_entry *hwe,
+ 					struct net_device *dev, int type,
+ 					struct airoha_flow_data *data,
+ 					int l4proto)
+@@ -225,6 +226,9 @@ static int airoha_ppe_foe_entry_prepare(struct airoha_foe_entry *hwe,
+ 		struct airoha_gdm_port *port = netdev_priv(dev);
+ 		u8 pse_port;
+ 
++		if (!airoha_is_valid_gdm_port(eth, port))
++			return -EINVAL;
++
+ 		if (dsa_port >= 0)
+ 			pse_port = port->id == 4 ? FE_PSE_PORT_GDM4 : port->id;
+ 		else
+@@ -633,7 +637,7 @@ static int airoha_ppe_flow_offload_replace(struct airoha_gdm_port *port,
+ 	    !is_valid_ether_addr(data.eth.h_dest))
+ 		return -EINVAL;
+ 
+-	err = airoha_ppe_foe_entry_prepare(&hwe, odev, offload_type,
++	err = airoha_ppe_foe_entry_prepare(eth, &hwe, odev, offload_type,
+ 					   &data, l4proto);
+ 	if (err)
+ 		return err;
+
+---
+base-commit: f278b6d5bb465c7fd66f3d103812947e55b376ed
+change-id: 20250331-airoha-validate-egress-gdm-port-336c879960ca
+
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
