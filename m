@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 099C0C36010
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D2B1C3601A
 	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Apr 2025 21:19:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,43 +12,28 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YYCk+klL64EFjv81up9yZqqKCbdbZ2pRh5gnlDzkmv8=; b=jkfvlTVEtlEVfgQ81pYo2SoLEF
-	y2xYAo9112ors5IrMSU5gYvm0ZzmZfdHP5ZQA34ji3meFd2QMXfYu1N7SE/cYRGgSOCL0xLqwR1gB
-	lmpyR3TV5RDCd5BZFbEEt3yXg2/bE5ygsa5D0h5R37p0pvjYQyIaMq6qEZZoZHPMgzqrP/9OUDRHv
-	XO/HLt1ukZvz+hg/SDJG4b9ukzRecgyHY/9PnG885w8/FIFDu/+q60QJkyA+1HwaUBb5CNYNb8j2v
-	lmcCcygHwekf2ue7vUtqD/cwZnzXogp3oKtG33J+AX1o/O7Gd4z7Aad83YvL2Sg76C4OgXLZ2RtKk
-	udU+S30Q==;
+	bh=MWBpOvs6sVOpFwHE44plD7/cTALPK6x9/0CXgUz0dS8=; b=k6p8lJnCFNTwMdYBQakRYXuSDP
+	Ka2QFZdi0yWmhD7RRgCBWeQV0Oe93mwbyKeIY2rAkQIkdpheYGoN5gX6AKvnQwh1fxv5bvU4QQ/SF
+	fn5kbErd4Wjodg/gyxy2X6zzqA1TfP6n3q6cU83ceaULwjVxmQybn68GJtFkkB37LwO+3AnvlC4Uf
+	1rXvbBW02gzFn+BPK3Icp1EhUaK351w49M0WI/kQOaJynfyMwAA9Y0wASun5UWWD6HTCz3UyAJIP+
+	LnWI4SsAmLtag4xXiPdZ0SfzrnUwijBc8LjMnudPGqi9qcTREJENPqUVVZnO1A3rcN5L2UB8N9gbu
+	UMIyeW1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzj1S-00000004RDx-0ajD;
+	id 1tzj1S-00000004RE7-1r21;
 	Tue, 01 Apr 2025 21:19:50 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzitj-00000004Pz4-1ara
-	for linux-mediatek@bombadil.infradead.org;
-	Tue, 01 Apr 2025 21:11:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=YYCk+klL64EFjv81up9yZqqKCbdbZ2pRh5gnlDzkmv8=; b=hZZocwWs+QoBp2LR3cT7lAYx8a
-	7XD6ndC1j3bLrjWoVGAtkfRr8qpWPHp7ULw2XCwPXScrsiatRLKUoLN3nyYtVm+sIZSc1GNPQgEpL
-	GP1SNWAE+bNJRf5NtyTI/CnFCxACMwgXbegEPecLGoPOa5IQxtLrYb+UDufbAuQRc4kO1EtmrE6Rb
-	fXpXpC9LbQfsy6PExEWglFj6JkZeDuPbLTkbG4cm0/VzRJ0TEFK44YKLjQ8SBABsuGQsWmfZT1+5O
-	FemecHTD/dMOVn9c8KXuBgQ2KvxDQGxeOWf9ym2XcfNO+Kt21/VGpnu2Miz0CwmNpq73Ltm/IjXn5
-	hD/G05Eg==;
 Received: from foss.arm.com ([217.140.110.172])
-	by desiato.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzite-00000006sbq-47aI
+	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1tziuU-00000004QEQ-2sj3
 	for linux-mediatek@lists.infradead.org;
-	Tue, 01 Apr 2025 21:11:49 +0000
+	Tue, 01 Apr 2025 21:12:40 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 84F9D1063
-	for <linux-mediatek@lists.infradead.org>; Tue,  1 Apr 2025 14:11:45 -0700 (PDT)
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 0FB8B106F
+	for <linux-mediatek@lists.infradead.org>; Tue,  1 Apr 2025 14:12:39 -0700 (PDT)
 Received: from e110455-lin.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 0ED1B3F694
-	for <linux-mediatek@lists.infradead.org>; Tue,  1 Apr 2025 14:11:41 -0700 (PDT)
-Date: Tue, 1 Apr 2025 22:11:23 +0100
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 90DE43F694
+	for <linux-mediatek@lists.infradead.org>; Tue,  1 Apr 2025 14:12:35 -0700 (PDT)
+Date: Tue, 1 Apr 2025 22:12:17 +0100
 From: Liviu Dudau <liviu.dudau@arm.com>
 To: shao.mingyin@zte.com.cn
 Cc: j@jannau.net, chunkuang.hu@kernel.org, fnkl.kernel@gmail.com,
@@ -61,20 +46,19 @@ Cc: j@jannau.net, chunkuang.hu@kernel.org, fnkl.kernel@gmail.com,
 	linux-arm-kernel@lists.infradead.org, yang.yang29@zte.com.cn,
 	xu.xin16@zte.com.cn, ye.xingchen@zte.com.cn,
 	tang.dongxing@zte.com.cn
-Subject: Re: [PATCH 2/4] drm: arm: =?utf-8?Q?hdlcd?=
- =?utf-8?Q?=3A_Replace_custom_compare=5Fdev_with=C2=A0component=5Fcompare?=
- =?utf-8?B?X29m?=
-Message-ID: <Z-xWe6nHEvKHdvsd@e110455-lin.cambridge.arm.com>
+Subject: Re: [PATCH 3/4] drm: malidp: =?utf-8?Q?Rep?=
+ =?utf-8?Q?lace_custom_compare=5Fdev_with=C2=A0component=5Fcompare=5Fof?=
+Message-ID: <Z-xWsbM2fh8TPmhO@e110455-lin.cambridge.arm.com>
 References: <20250331172534353mkMR1nv-dsjFTZTXCPY0a@zte.com.cn>
- <20250331173018043nQB6z_xgZxuYx0AkGeixh@zte.com.cn>
+ <20250331173124559aCNI8BfX0ay0U5wryryME@zte.com.cn>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250331173018043nQB6z_xgZxuYx0AkGeixh@zte.com.cn>
+In-Reply-To: <20250331173124559aCNI8BfX0ay0U5wryryME@zte.com.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250401_221147_407757_881D4EF4 
-X-CRM114-Status: GOOD (  16.53  )
+X-CRM114-CacheID: sfid-20250401_141238_772663_F575B768 
+X-CRM114-Status: GOOD (  16.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,7 +73,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 31, 2025 at 05:30:18PM +0800, shao.mingyin@zte.com.cn wrote:
+On Mon, Mar 31, 2025 at 05:31:24PM +0800, shao.mingyin@zte.com.cn wrote:
 > From: Tang Dongxing <tang.dongxing@zte.com.cn>
 > 
 > Remove the custom device comparison function compare_dev and replace it
@@ -101,37 +85,39 @@ On Mon, Mar 31, 2025 at 05:30:18PM +0800, shao.mingyin@zte.com.cn wrote:
 Reviewed-by: Liviu Dudau <liviu.dudau@arm.com>
 
 Best regards,
-Liviu Dudau
+Liviu
 
 > ---
->  drivers/gpu/drm/arm/hdlcd_drv.c | 7 +------
->  1 file changed, 1 insertion(+), 6 deletions(-)
+>  drivers/gpu/drm/arm/malidp_drv.c | 9 +--------
+>  1 file changed, 1 insertion(+), 8 deletions(-)
 > 
-> diff --git a/drivers/gpu/drm/arm/hdlcd_drv.c b/drivers/gpu/drm/arm/hdlcd_drv.c
-> index c3179d74f3f5..45b1dc5613bf 100644
-> --- a/drivers/gpu/drm/arm/hdlcd_drv.c
-> +++ b/drivers/gpu/drm/arm/hdlcd_drv.c
-> @@ -346,11 +346,6 @@ static const struct component_master_ops hdlcd_master_ops = {
->  	.unbind		= hdlcd_drm_unbind,
+> diff --git a/drivers/gpu/drm/arm/malidp_drv.c b/drivers/gpu/drm/arm/malidp_drv.c
+> index e083021e9e99..e2e6fd1f64b0 100644
+> --- a/drivers/gpu/drm/arm/malidp_drv.c
+> +++ b/drivers/gpu/drm/arm/malidp_drv.c
+> @@ -910,13 +910,6 @@ static const struct component_master_ops malidp_master_ops = {
+>  	.unbind = malidp_unbind,
 >  };
 > 
-> -static int compare_dev(struct device *dev, void *data)
+> -static int malidp_compare_dev(struct device *dev, void *data)
 > -{
-> -	return dev->of_node == data;
+> -	struct device_node *np = data;
+> -
+> -	return dev->of_node == np;
 > -}
 > -
->  static int hdlcd_probe(struct platform_device *pdev)
+>  static int malidp_platform_probe(struct platform_device *pdev)
 >  {
 >  	struct device_node *port;
-> @@ -361,7 +356,7 @@ static int hdlcd_probe(struct platform_device *pdev)
+> @@ -930,7 +923,7 @@ static int malidp_platform_probe(struct platform_device *pdev)
 >  	if (!port)
 >  		return -ENODEV;
 > 
-> -	drm_of_component_match_add(&pdev->dev, &match, compare_dev, port);
-> +	drm_of_component_match_add(&pdev->dev, &match, component_compare_of, port);
+> -	drm_of_component_match_add(&pdev->dev, &match, malidp_compare_dev,
+> +	drm_of_component_match_add(&pdev->dev, &match, component_compare_of,
+>  				   port);
 >  	of_node_put(port);
-> 
->  	return component_master_add_with_match(&pdev->dev, &hdlcd_master_ops,
+>  	return component_master_add_with_match(&pdev->dev, &malidp_master_ops,
 > -- 
 > 2.25.1
 
