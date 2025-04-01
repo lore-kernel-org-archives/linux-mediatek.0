@@ -4,68 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B1AFC36010
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Apr 2025 11:04:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4903C36010
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Apr 2025 11:52:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=X3ZOq6c79zbJ9H5cHCUCjlq7WUCGFI42oT0DicmfbmY=; b=GR9DhMpVF8hGYFW5IPIuyx6XL+
-	WqtZBb5hkfSrhx/StT2PrEsC+JlN4ExHxygPDVpl9mJZrLsbgle2hq8/EUvuXLACBEdcpUaE8Mi8G
-	M5ZVkUKDVv8uWxK5wNwfTqcedw58sO2EkUu0SgUC6g5yujNxn9obnQ1NHucC+wWZExaw4oAhcbGEH
-	QuiRIrHWa07av9Ky4oEBCMwryVidn+zfHyVTB0jO2ZqXzTrl7+e627U0ugW2A2qJIYDEUgdiv7f31
-	wMn0i8OLKGsMyX9jTJjI9QYiNM9OY6BQc8odsAIQ+Ij6wzYxjt7TsAAd3aDPj3QLIfNJygUrX5S6D
-	MxndEhHQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:References:In-Reply-To:
+	Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=aB648o5YY1TqC9NWUirl7q6IvvMzNQQ6izOuYdpRBGc=; b=Fvq6FGyBMVG3n0BBNtTio5wcvG
+	7mBbro4NWfYzPdrAXx3ttToaEK3KlFX/8h1zGCog/ugan3mwgI1kNvcVXKjzrmNx9LYgRRToQys+7
+	Vnnf4nf2QRQhBFPlxB+NEC1NpdoLZqlvhDiDoKTx/7X+X58d+PFW/i0Qq03TXQzE6crbyAyQ0+PCL
+	juUD5HOBQiXo5MHsg+MO+1z1YpdiJbMfjwiro14C+U7naafpf5mxPCkSg9V4nQkg/Bc/jz0+IKBAc
+	sea862xxjKpdrX3BbYbtYGRxc0p6Q3OlXBIGQhI7Snb55pH1WNvG7VnuJ9/BPKZgxmFxNGNwLWEOO
+	hx0H0mXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzZQB-00000002iiJ-1SLW;
-	Tue, 01 Apr 2025 11:04:43 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1tzaAH-00000002qkA-0c7g;
+	Tue, 01 Apr 2025 11:52:21 +0000
+Received: from mout.gmx.net ([212.227.17.20])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzZ7y-00000002fYV-0wuQ;
-	Tue, 01 Apr 2025 10:45:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1743504352;
-	bh=Q3Rq26r7RWzMRNiTpdrzgrN2XFA9CqCbvfJV1vKATc8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=NuUWo2ARnMiC1dVIpFKvf5r/VCD292ws5muhqdcTQrKXr12ZlJaoapPdcnzUy1liz
-	 cI4SmM+IqaFhl8z3gILjXtMQz0ron6kbgRwCPeh3GKS8vM5L2ljrxqPTv+OdEDEkt7
-	 9GZNZqkp2M9S04lRC0ZWuk2etWZmYsIpS9c/Os+duaxgTOSG24B36JQzZpCpyd+JBV
-	 fu3uH3U+OWMVc6z/azpKDu4dp5gGcqLLy28lUVpdm1Po82W+BCiOKw/yWp/dgKsNMh
-	 apNsP9RXJuLsw4kePW+SArv5CFHLZQFqRB/xIF1Nj0o0maGjvLwYtNZJUUKYrI5WXo
-	 Z/XWH8i61t4oQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2111A17E014F;
-	Tue,  1 Apr 2025 12:45:52 +0200 (CEST)
-Message-ID: <10af1881-a930-4552-a369-97d4c52459c4@collabora.com>
-Date: Tue, 1 Apr 2025 12:45:51 +0200
+	id 1tza3g-00000002pYw-3OZg;
+	Tue, 01 Apr 2025 11:45:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1743507920; x=1744112720; i=frank-w@public-files.de;
+	bh=aB648o5YY1TqC9NWUirl7q6IvvMzNQQ6izOuYdpRBGc=;
+	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
+	 Content-Type:In-Reply-To:References:Date:cc:
+	 content-transfer-encoding:content-type:date:from:message-id:
+	 mime-version:reply-to:subject:to;
+	b=ApD74cxwr60+65cSJzVQOLtyufSKqdjWNZwpD/NTqtjv8ePB0mjaosgMo6CtUauK
+	 qrl9Wx26wZdXYmH88IW5HO/n6HgdxU97eJXsP+vhq+DfhdyOT6/ZQF0RsAnzolXbb
+	 1ZeahTX8FEMcvSiiNLKvuBsTQXPDbBlfxXYgY0RcyQS9Aq98XmEs6UBrRRPNreyjT
+	 7mX3wZg0d+gEEIfaA5gzgHuVBrZLp5lAVr2lnuauQ1ANGv7ALqohrq3I8cjyRIWk4
+	 YlN+rZnGPq1UaaY6ngbn+Cs+bNszHXX5UxORM0ZAGF0Xsoc91R7CQBOT699CyoZQq
+	 R6xZDrKjmb7kEvlEAw==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [217.61.145.244] ([217.61.145.244]) by
+ trinity-msg-rest-gmx-gmx-live-5779db864f-xlr59 (via HTTP); Tue, 1 Apr 2025
+ 11:45:20 +0000
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] ASoC: mediatek: re-enable buffer pre-allocation on some
- platforms
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-sound@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- treapking@chromium.org, yuanhsinte@chromium.org
-References: <20250401085659.1222008-1-wenst@chromium.org>
- <2de0cc68-f3d7-4b9c-86d3-105666963fb7@collabora.com>
- <CAGXv+5Hw+13J6eU6X3EPa+Vr4kmyNH5L83Zj2VLqx=_Z+XtOzw@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <CAGXv+5Hw+13J6eU6X3EPa+Vr4kmyNH5L83Zj2VLqx=_Z+XtOzw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Message-ID: <trinity-2fa9ed21-07af-4fbf-a20e-32684dabdd82-1743507920209@trinity-msg-rest-gmx-gmx-live-5779db864f-xlr59>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: angelogioacchino.delregno@collabora.com, mikhail.kshevetskiy@iopsys.eu,
+ matthias.bgg@gmail.com, daniel@makrotopia.org
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+Subject: Aw: Re: [RESEND][PATCH] arm64: dts: mediatek: mt7986: fix pwn fan
+ settings for sinovoip bpi-r3 board
+Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <618b3cdb-0fef-4194-aeb0-4111c011904d@collabora.com>
+Importance: normal
+References: <20250226050132.547353-1-mikhail.kshevetskiy@iopsys.eu>
+ <618b3cdb-0fef-4194-aeb0-4111c011904d@collabora.com>
+Date: Tue, 1 Apr 2025 11:45:20 +0000
+Sensitivity: Normal
+X-Priority: 3
+X-UI-CLIENT-META-MAIL-DROP: W10=
+X-Provags-ID: V03:K1:yO9aGdXbvADh/oQI0VHxmCucpkTB+ojEJkMcxZCfRjv2ZJ90aw3qVZTkH5cLASUJx9Nur
+ Og6p2s8UaNE0KwUXlloc/hHbG+wzNhFp78q5Vb54eEYjbbxuOEEMsZbN8jEuT+i88ImC/O40hrPc
+ sa/urpEYkekuNC7/Nn617V93ul1xotaU/38Qeu7qVhQhF4LulL6URd/E+03t4AGJifoWdA3GDs2F
+ Gapu3bI/UMBg5UxJ30b/ZmATIPFiG3aPwmnXU8bPKyUceaiVlyGVgo0k+57a49RdUiTexGve4McC
+ +sLUlTB+bslcL0DhNrAOfN565uwEItKzvxrLR47LOH6zknPCe7RbVFgRzsSKWa5q9I=
+UI-OutboundReport: notjunk:1;M01:P0:Ou5OEG+zFwg=;aKeVcj8YEdkxAf8v4DSOSDw4ziz
+ NcJfgTMEfH2INfC98FxnMo9HOmJbOoYVBVOPX+sBjoCQn2CqqAyqrNAyxmtz5CgalDpPQn1ba
+ xfZGBrshdMQUBqu31xsG+oZSc3SE8PU+pniCSbUpXDXEqJa5HTQcuqoaYLn4HFHvqgwEJKvbI
+ 7fHQeE2sePpXv5JGaSps91PxWdqpIkcEkFyA0P/AvcHaPl5HC2i4gTkRh/Lrvfefo35mrV7fk
+ BxYodTWmHRHib2pFY6ikV+6SJGArijoxL1RA/j16iEjZIcMFelElBLeZ3hshh+3yhlXQwaeii
+ sNrZOiVYRUUOVU+BrfZsUC+5Jjze4tn+ZLS58nb6r0u+OGmpQpErB79sXVrwQPTfNgX+5SsaE
+ o2kkWV8p9GVWxfNYP5pyhn9HPOJZf1IEfvj+ppWJtx4aUxzns63QPKM4WRfbpTPgHC48pi2pW
+ ZnamhlbJQgL7smDq1lB/aJMaIktH2cZ1nXsOKA3v+zt+t2I68Ob6Q0LSDHZaEnHY+npTDEF4S
+ 61qUgYsBHuYfAlRC+exDCYGhb2i11ebgk+UhaXh+c2OsjkCAicy34JAaKeZ1ZCiJenqVqsTIZ
+ IFI2eeKZgNlCHMN641uF4N8ImMLYUlZ4853piXi6iLEIHw0+bykkR2jUjzDW4kSO9j5jio8NA
+ QSUNEwq9eym9OAuK9Id8FFmHikmNZSVxbWh9yX9CGbSPcbiUFv+sAKb0I6Lkqs7aeE53e1O3R
+ JQeQAYnGuDSV6Cf+HN9+DXas6HMbqfFiMuhQCLDnU0BMjjJrhzUuEAqXZX941nIfea7FIh622
+ C6/hRVOugy3qK71SE0fNtb5jtpT7nHSqqWy2vVu/qSyytQR5cbEWQNKaEn1UwwRnsZGjFwmhy
+ gKLMHY9gSThbzDXkWXA8K681pg2kVQYOKsVwmDVD3+x2RfI0K65gVuCabQO1y44SqMixp7kvr
+ KdFseEnxVF5riYLsiRXcJiEbKjuKkR7LmUywICt6aDVzkbsR4vy88T1AcT6eeL29O2sNjOhWf
+ SP6TgCo4K3yPyf/6HHQNlvOiwOR6HVNMlvhLMzAFyA/VD2ph5CYRxaeVoF3/lfiiuo+ij8Hf7
+ GWWE46ExXT6RG2cShw7Rx8+PT7lQF3utvtzPwPG0bRGzdQ2lF5Xsc15Z/eoqemxiDJEikjtrM
+ cNdyQh7blA9z74XpNhpOOjzDwKxFxF182JUqFhLIIz/lFMCjZdbynMs6zs7CfINikh/qwb/Um
+ dn7KZs0NFa2y2htkkhM9IMcwopsK/QSbzekajGsaPtB10eRvk2cPlkU=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250401_034554_771091_38728C9F 
-X-CRM114-Status: GOOD (  25.35  )
+X-CRM114-CacheID: sfid-20250401_044533_228908_C609EC70 
+X-CRM114-Status: UNSURE (   6.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,134 +104,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 01/04/25 12:38, Chen-Yu Tsai ha scritto:
-> On Tue, Apr 1, 2025 at 6:12 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> Il 01/04/25 10:56, Chen-Yu Tsai ha scritto:
->>> In commit 32c9c06adb5b ("ASoC: mediatek: disable buffer pre-allocation")
->>> buffer pre-allocation was disabled to accommodate newer platforms that
->>> have a limited reserved memory region for the audio frontend.
->>>
->>> Turns out disabling pre-allocation across the board impacts platforms
->>> that don't have this reserved memory region. Buffer allocation failures
->>> have been observed on MT8173 and MT8183 based Chromebooks under low
->>> memory conditions, which results in no audio playback for the user.
->>>
->>> Reinstate the original policy of pre-allocating audio buffers at probe
->>> time on MT8173, MT8183, and MT8186 platforms. These platforms do not
->>> have reserved memory for the audio frontend.
->>>
->>> Fixes: 32c9c06adb5b ("ASoC: mediatek: disable buffer pre-allocation")
->>> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
->>
->> Have you tried to add the reserved memory regions to the MT8173/83/86 AFE?
-> 
-> I haven't tried it, though I'm fairly certain that would work as well.
-> 
->> This means not only devicetree but also the driver - that should be simple
->> enough, and would allow to eventually add a layer of further commonization
->> between the AFE PCM drivers of all those MediaTek SoCs.
-> 
-> I think no driver changes are necessary? It's a single memory region,
-> so it would automatically be picked by the driver core for all coherent
-> DMA allocations.
-> 
-> I picked the driver route because it restores old behavior.
+Hi
 
-That makes sense, yes, but I'd still like to get them all behaving the same
-instead of having some doing this, and some others doing that - especially
-because we can...
+ping (and noticed a typo in subject)...it does not look like you picked the patch up.
 
-So while I agree on that we should have this fix, I'd really like to see it
-done properly, so that if there is no reserved memory assigned in devicetree
-the probe function sets preallocate_buffers = true.
+> i have the fan from sinovoip and that was working for me, but if your fan only works with new values, i have no point against this change.
 
-That's why I said driver changes... (and sorry I've been a bit cryptic!)
+> btw. angelo, how is state for my r4-dtsi change?
+currently i only can add a blank dts for the phy variant, or do you have other recommends?
 
-Hint: If of_reserved_mem_device_init() fails, no memory region was assigned!
-
-Angelo
-
-> 
-> 
-> ChenYu
-> 
->> Cheers,
->> Angelo
->>
->>> ---
->>>    sound/soc/mediatek/common/mtk-afe-platform-driver.c | 4 +++-
->>>    sound/soc/mediatek/common/mtk-base-afe.h            | 1 +
->>>    sound/soc/mediatek/mt8173/mt8173-afe-pcm.c          | 1 +
->>>    sound/soc/mediatek/mt8183/mt8183-afe-pcm.c          | 1 +
->>>    sound/soc/mediatek/mt8186/mt8186-afe-pcm.c          | 1 +
->>>    5 files changed, 7 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/sound/soc/mediatek/common/mtk-afe-platform-driver.c b/sound/soc/mediatek/common/mtk-afe-platform-driver.c
->>> index 6b6330583941..70fd05d5ff48 100644
->>> --- a/sound/soc/mediatek/common/mtk-afe-platform-driver.c
->>> +++ b/sound/soc/mediatek/common/mtk-afe-platform-driver.c
->>> @@ -120,7 +120,9 @@ int mtk_afe_pcm_new(struct snd_soc_component *component,
->>>        struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
->>>
->>>        size = afe->mtk_afe_hardware->buffer_bytes_max;
->>> -     snd_pcm_set_managed_buffer_all(pcm, SNDRV_DMA_TYPE_DEV, afe->dev, 0, size);
->>> +     snd_pcm_set_managed_buffer_all(pcm, SNDRV_DMA_TYPE_DEV, afe->dev,
->>> +                                    afe->preallocate_buffers ? size : 0,
->>> +                                    size);
->>>
->>>        return 0;
->>>    }
->>> diff --git a/sound/soc/mediatek/common/mtk-base-afe.h b/sound/soc/mediatek/common/mtk-base-afe.h
->>> index f51578b6c50a..a406f2e3e7a8 100644
->>> --- a/sound/soc/mediatek/common/mtk-base-afe.h
->>> +++ b/sound/soc/mediatek/common/mtk-base-afe.h
->>> @@ -117,6 +117,7 @@ struct mtk_base_afe {
->>>        struct mtk_base_afe_irq *irqs;
->>>        int irqs_size;
->>>        int memif_32bit_supported;
->>> +     bool preallocate_buffers;
->>>
->>>        struct list_head sub_dais;
->>>        struct snd_soc_dai_driver *dai_drivers;
->>> diff --git a/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c b/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c
->>> index 04ed0cfec174..37b20ec80829 100644
->>> --- a/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c
->>> +++ b/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c
->>> @@ -1114,6 +1114,7 @@ static int mt8173_afe_pcm_dev_probe(struct platform_device *pdev)
->>>        afe->mtk_afe_hardware = &mt8173_afe_hardware;
->>>        afe->memif_fs = mt8173_memif_fs;
->>>        afe->irq_fs = mt8173_irq_fs;
->>> +     afe->preallocate_buffers = true;
->>>
->>>        platform_set_drvdata(pdev, afe);
->>>
->>> diff --git a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
->>> index d083b4bf0f95..0ef07fb2898d 100644
->>> --- a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
->>> +++ b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
->>> @@ -1214,6 +1214,7 @@ static int mt8183_afe_pcm_dev_probe(struct platform_device *pdev)
->>>        afe->mtk_afe_hardware = &mt8183_afe_hardware;
->>>        afe->memif_fs = mt8183_memif_fs;
->>>        afe->irq_fs = mt8183_irq_fs;
->>> +     afe->preallocate_buffers = true;
->>>
->>>        afe->runtime_resume = mt8183_afe_runtime_resume;
->>>        afe->runtime_suspend = mt8183_afe_runtime_suspend;
->>> diff --git a/sound/soc/mediatek/mt8186/mt8186-afe-pcm.c b/sound/soc/mediatek/mt8186/mt8186-afe-pcm.c
->>> index db7c93401bee..c588a68d672d 100644
->>> --- a/sound/soc/mediatek/mt8186/mt8186-afe-pcm.c
->>> +++ b/sound/soc/mediatek/mt8186/mt8186-afe-pcm.c
->>> @@ -2935,6 +2935,7 @@ static int mt8186_afe_pcm_dev_probe(struct platform_device *pdev)
->>>        afe->irq_fs = mt8186_irq_fs;
->>>        afe->get_dai_fs = mt8186_get_dai_fs;
->>>        afe->get_memif_pbuf_size = mt8186_get_memif_pbuf_size;
->>> +     afe->preallocate_buffers = true;
->>>
->>>        afe->runtime_resume = mt8186_afe_runtime_resume;
->>>        afe->runtime_suspend = mt8186_afe_runtime_suspend;
->>
->>
-
+regards Frank
 
