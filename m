@@ -4,82 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AF16C36010
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Apr 2025 10:59:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53074C36010
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Apr 2025 11:01:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pRV+VeBoTN2SUSAD80QVrLhbV77gG979UsKYtyQMX8w=; b=jd5sIKO6fbN6TPCr03kEjEY+cG
-	R+uKUIrlClrlIo4u7l7rVGeg8szAD5K6ZpIrfaW/YspnAJIiZdto3nMKtQIPFnX9VYqtXDZ88Iqqd
-	YIJKfqK8NKQ7P6EgP9rA0sRNTjAeM4NJt5QGtJzcEE/NbubrD0RcbpPSpMglPDETsO6poBHuSEqkV
-	ksA+fHdvWU6Sw3/tNV7NdweLntpn27ZA7n4CzMoue1MYF7eJNFrMrFryE+x6g/QZHEftfSd7xXTJ6
-	efCAiG3kOArd9XXlQC8smGAFMZ9A8raqTxlWIQklw/VDtQGSVNqKGy9Iy0DxXbiw8SRDij9thD0Ht
-	yjJJmK5w==;
+	bh=L70RQfP142JDi0wg/GLWbGt4oR+cGIYDeU9CiOJovqU=; b=FpktJqVfhQByNDoaix90OlMjCW
+	5iY+I4G2Dj34coX9kr0+OkdzYzeC1drBom3yjFDep0sjB/76r9QsHivgsIilfwUl6Yeau1/YIv8p3
+	v0+gY2Bvv+cDw6mM3QaxRXdJM0mC2yW4W5MrVV9bs5Y8XQXWLZdYoJ+iUBJBZpNtQhkhzVCAyEQek
+	YLsTeQyO7zYSxDFY+hon9PQlMTMmreXJ9J+6csRHkr8zGBNJ2nn6JQLN3wJ80GRTBCyyqksFQJGFG
+	eEYTmnadlvQraBkO7scyVwlwAf+y4MJHCEcZlU/GKa9t7EKbfhc7oxMPxqF7+UNhAW8W4d+/eMayL
+	BLfeO3gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzZKr-00000002hfo-0ss5;
-	Tue, 01 Apr 2025 10:59:13 +0000
-Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
+	id 1tzZMf-00000002hyx-0azv;
+	Tue, 01 Apr 2025 11:01:05 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzZ1i-00000002ebV-0Azy
+	id 1tzZ55-00000002f7H-1DZg
 	for linux-mediatek@lists.infradead.org;
-	Tue, 01 Apr 2025 10:39:28 +0000
-Received: by mail-lj1-x22a.google.com with SMTP id 38308e7fff4ca-30bf8632052so47446881fa.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 01 Apr 2025 03:39:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1743503964; x=1744108764; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=pRV+VeBoTN2SUSAD80QVrLhbV77gG979UsKYtyQMX8w=;
-        b=fOeSfeGj5yacaikpYO6l1gdAimCvv4hEHn4JIwuQ2B5BaEpTs1nF3KN6GVapsHQh2E
-         PqepA9Xt3qpmopBREg/2iA7dKYUio00ujn4/fYUc9lNuDt/W2KWrcpgGZhDUgCpt1Gxq
-         J9nrd9aAD0RQwxWscGCm/j+LWjWissAiQaeWw=
+	Tue, 01 Apr 2025 10:42:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1743504174;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=L70RQfP142JDi0wg/GLWbGt4oR+cGIYDeU9CiOJovqU=;
+	b=QNNIBO5qDk/jSuIu7mMhoumnGOsL4pigICNlBC3LqPe9EUB8b5ZrO2IG+0t6lXI6RMnL0v
+	+CMwtV0ihSocpsci+ufC07wpT4CUj9FvLilmR7Zipz5s9DraCwedD6Dc460tbRfvSGC4M/
+	DeHOBxvab9NWv2mvDGEBm/Q2VqODFwM=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-470-lKw2_XkoNWiBDt9BNebKYg-1; Tue, 01 Apr 2025 06:42:51 -0400
+X-MC-Unique: lKw2_XkoNWiBDt9BNebKYg-1
+X-Mimecast-MFC-AGG-ID: lKw2_XkoNWiBDt9BNebKYg_1743504170
+Received: by mail-wr1-f70.google.com with SMTP id ffacd0b85a97d-399744f742bso1597331f8f.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 01 Apr 2025 03:42:50 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743503964; x=1744108764;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=pRV+VeBoTN2SUSAD80QVrLhbV77gG979UsKYtyQMX8w=;
-        b=EBJdaaok815CjRygozFKe833nQCvRNyMFoVQDiWrGz+SxhdH/axM8nEXhxx45rXpx6
-         +H0HVAsIBQlH9vt1CxTR6Uzhk4TKTEjHHrRBQ4qj/ZoDYpveB0O6cUbIgHk8cf+mfJor
-         62ecLVUSSD/gahZO/3yUNHZzR8eSqoSzizZtUqQx6ExlXvWShGCujrql9jsZW26Yf1o9
-         Ycjp1QJzc7uud5zuca+VtHLZ8UaHP8eOpPNYV2YDsK3ymbe9mZlZsJcRqjX3isGQ6/xT
-         y7VTK86VFRD3e0Akl7rt1ieOAR7NjIxSs2tAFivMnk2BGlaRuS4ILhZQnL54JxkLVE9X
-         umFw==
-X-Forwarded-Encrypted: i=1; AJvYcCWIjSxuzriP4/gnV9hAlw3GYin3qfmM6CeMOdbgRMut5XcBhPGVIEyseVPRFwjEuRoyqxOCJ6HGtG0QIYD/Bg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw2wyamTDvPSeE8UVScGGJNmm+plpr+HkvNvWIHCdia8ZZDyKCT
-	3r8LnaI5RJDV5odA0H098S72gce31RZd5eiV29aL+WNVLMqllrenD0are/Z0z6dso+/tX8jptLa
-	CqmCZ675oSfT9LCjizL/q2qwUnNH0/E5wCTcz
-X-Gm-Gg: ASbGnct7U/ukIVxdkIS/GSU14qpiTkMVjbR7/3ayQ/+g4xEdn5J9E+QOCFIwCmn7NR9
-	wjy3JiJguNM2WmiSAzZf2A2DUlfnxklSD9A6MRB1/Z+ckcRKkdpiiWC2OCRN1orhmBBAVi2qaGo
-	a33V+vxfgSV4He4jsALOV10PjcSgKjd6k0neVjChNNbU2qfZBA0Gi9Ag==
-X-Google-Smtp-Source: AGHT+IHYL4/j9tzg1TKZZJWZGJjZ8cGZeF1J3Sn0HnhWsgBtHcAF53FT/BIES0497J4HXcNOkVv/f17SBTVzgwcdel4=
-X-Received: by 2002:a2e:9b05:0:b0:30d:626e:d03a with SMTP id
- 38308e7fff4ca-30de02f8530mr35374221fa.34.1743503964001; Tue, 01 Apr 2025
- 03:39:24 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1743504169; x=1744108969;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=L70RQfP142JDi0wg/GLWbGt4oR+cGIYDeU9CiOJovqU=;
+        b=kuactNGhCum5lTrN73t4wSij9BOR3ytBHw9NOnsq94YBt8Wyaqgqcmf8VHMs3J8rlT
+         psCMV8AwIIkN3eul0ouTBbOXfGq4b2AgagpGVjYTvFwSeBUgCXDjepiI+YioSlBHgEnR
+         tdytPLORjF0VqkLdSkUnQEvGPTTge7TvreRtgALpHh48Y1TENqool+rmT7E0fawztH1w
+         vVGcz9twXqY5Qv+iEVVwijGroYzgKQRcUl+fuRtyqF7R0UInPf9N7IRIGhcnQmFVDpj1
+         gWbpM3jjcKZLcHvyy9VcSGUhDqdx3TG4gti663aNf5fNZoBS/qjaCryT+UpQgQxoBRVt
+         g3Sw==
+X-Forwarded-Encrypted: i=1; AJvYcCUS7g9JLls2Bg8sHYHJllqrjrBIPUGmSThtovkkhZ5iXaEHWXyPy9H0vKecRIUyfhWr3y3JPPUha7lyWO1WWQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw8IuINtI3+2LBHmcVM18JuPZGspQhgq6/hQprbm936m8Y2ZcfO
+	us7sNVl9QCAd7TcVY+p9fOBzgw3hFJt/ehC8M6GVr8171zS0V06IOZBlinPoBGFtBVm2ny8jkuU
+	fbDoorvAKFGtd8b8cWPCkoZBs/UwECDKKFa7eJBQWEWRmZeim83RY7zUfG/yw0lDyFfln0g==
+X-Gm-Gg: ASbGncv5UIsvbLapCi2aSw9MEIaovZhRbh2OzFMXaRAZmfLhbF0Ywr5YR2KFTqwFWlb
+	4TVVxhZjWSSgjwkYLI9HBCaN9HFQWJ3hE8skArjKSG+jXcxTAgE2K+uwkWTxWjSYsfhepzncu5L
+	syY8OYWwS5hPXQopxciQQr/50y4ck2R6yJVFS1PBgXoQtX/yk7sqFJirMBz1XLNgMZchRNjVRws
+	inYG4g5wpQ7q9BhO/xMeD02atXVGY6VxMuYA7XC1pfYS+Q43Q3LEUeT6Szxy8hars4om0GJMmuw
+	GK7Q0NDnl8ElmMOzXXdqVIco1jIiG3xeN5/428/mruVcww==
+X-Received: by 2002:a05:6000:2409:b0:39c:1410:6c20 with SMTP id ffacd0b85a97d-39c14106c25mr9465874f8f.45.1743504169665;
+        Tue, 01 Apr 2025 03:42:49 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IErjtyNpQgTEEfLNTpXMht6fpOiuyDyvAzgK2cO+MDz04IWniLzgBXbdUzCkiAA6Wpk9SMqnw==
+X-Received: by 2002:a05:6000:2409:b0:39c:1410:6c20 with SMTP id ffacd0b85a97d-39c14106c25mr9465851f8f.45.1743504169250;
+        Tue, 01 Apr 2025 03:42:49 -0700 (PDT)
+Received: from [192.168.88.253] (146-241-68-231.dyn.eolo.it. [146.241.68.231])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39c0b79e31csm13961368f8f.68.2025.04.01.03.42.48
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 01 Apr 2025 03:42:48 -0700 (PDT)
+Message-ID: <d994809c-7960-4fea-b10a-9c1937f00fa5@redhat.com>
+Date: Tue, 1 Apr 2025 12:42:47 +0200
 MIME-Version: 1.0
-References: <20250401085659.1222008-1-wenst@chromium.org> <2de0cc68-f3d7-4b9c-86d3-105666963fb7@collabora.com>
- <CAGXv+5Hw+13J6eU6X3EPa+Vr4kmyNH5L83Zj2VLqx=_Z+XtOzw@mail.gmail.com>
-In-Reply-To: <CAGXv+5Hw+13J6eU6X3EPa+Vr4kmyNH5L83Zj2VLqx=_Z+XtOzw@mail.gmail.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 1 Apr 2025 18:39:12 +0800
-X-Gm-Features: AQ5f1Jofn6bhSx5kpNoRsfEnci1ZkLDZUqLOYiDj9S7j7E1dOgnZdf4ci23APiY
-Message-ID: <CAGXv+5GwbFXo0W3VCkwgouHZTDwqou-i7sQ2zocNchgEYG16fw@mail.gmail.com>
-Subject: Re: [PATCH] ASoC: mediatek: re-enable buffer pre-allocation on some platforms
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, linux-sound@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, treapking@chromium.org, yuanhsinte@chromium.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net] net: airoha: Fix qid report in
+ airoha_tc_get_htb_get_leaf_queue()
+To: Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn
+ <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org
+References: <20250331-airoha-htb-qdisc-offload-del-fix-v1-1-4ea429c2c968@kernel.org>
+From: Paolo Abeni <pabeni@redhat.com>
+In-Reply-To: <20250331-airoha-htb-qdisc-offload-del-fix-v1-1-4ea429c2c968@kernel.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: WP5VJqk41JBNrh_5eRS7Ejf95PGj-q0aWsxcIFAFbQ8_1743504170
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250401_033926_097421_42E67F71 
-X-CRM114-Status: GOOD (  31.17  )
+X-CRM114-CacheID: sfid-20250401_034255_404845_2D1C0A04 
+X-CRM114-Status: UNSURE (   6.74  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,143 +113,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 1, 2025 at 6:38=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.org> wr=
-ote:
->
-> On Tue, Apr 1, 2025 at 6:12=E2=80=AFPM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
-> >
-> > Il 01/04/25 10:56, Chen-Yu Tsai ha scritto:
-> > > In commit 32c9c06adb5b ("ASoC: mediatek: disable buffer pre-allocatio=
-n")
-> > > buffer pre-allocation was disabled to accommodate newer platforms tha=
-t
-> > > have a limited reserved memory region for the audio frontend.
-> > >
-> > > Turns out disabling pre-allocation across the board impacts platforms
-> > > that don't have this reserved memory region. Buffer allocation failur=
-es
-> > > have been observed on MT8173 and MT8183 based Chromebooks under low
-> > > memory conditions, which results in no audio playback for the user.
-> > >
-> > > Reinstate the original policy of pre-allocating audio buffers at prob=
-e
-> > > time on MT8173, MT8183, and MT8186 platforms. These platforms do not
-> > > have reserved memory for the audio frontend.
-> > >
-> > > Fixes: 32c9c06adb5b ("ASoC: mediatek: disable buffer pre-allocation")
-> > > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> >
-> > Have you tried to add the reserved memory regions to the MT8173/83/86 A=
-FE?
->
-> I haven't tried it, though I'm fairly certain that would work as well.
->
-> > This means not only devicetree but also the driver - that should be sim=
-ple
-> > enough, and would allow to eventually add a layer of further commonizat=
-ion
-> > between the AFE PCM drivers of all those MediaTek SoCs.
->
-> I think no driver changes are necessary? It's a single memory region,
-> so it would automatically be picked by the driver core for all coherent
-> DMA allocations.
->
-> I picked the driver route because it restores old behavior.
+On 3/31/25 8:52 AM, Lorenzo Bianconi wrote:
+> Fix the following kernel warning deleting HTB offloaded leafs and/or root
+> HTB qdisc in airoha_eth driver properly reporting qid in
+> airoha_tc_get_htb_get_leaf_queue routine.
+> 
+> $tc qdisc replace dev eth1 root handle 10: htb offload
+> $tc class add dev eth1 arent 10: classid 10:4 htb rate 100mbit ceil 100mbit
+> $tc qdisc replace dev eth1 parent 10:4 handle 4: ets bands 8 \
+>  quanta 1514 3028 4542 6056 7570 9084 10598 12112
+> $tc qdisc del dev eth1 root
+> 
+> [   55.827864] ------------[ cut here ]------------
+> [   55.832493] WARNING: CPU: 3 PID: 2678 at 0xffffffc0798695a4
+> [   55.956510] CPU: 3 PID: 2678 Comm: tc Tainted: G           O 6.6.71 #0
+> [   55.963557] Hardware name: Airoha AN7581 Evaluation Board (DT)
+> [   55.969383] pstate: 20400005 (nzCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+> [   55.976344] pc : 0xffffffc0798695a4
+> [   55.979851] lr : 0xffffffc079869a20
+> [   55.983358] sp : ffffffc0850536a0
+> [   55.986665] x29: ffffffc0850536a0 x28: 0000000000000024 x27: 0000000000000001
+> [   55.993800] x26: 0000000000000000 x25: ffffff8008b19000 x24: ffffff800222e800
+> [   56.000935] x23: 0000000000000001 x22: 0000000000000000 x21: ffffff8008b19000
+> [   56.008071] x20: ffffff8002225800 x19: ffffff800379d000 x18: 0000000000000000
+> [   56.015206] x17: ffffffbf9ea59000 x16: ffffffc080018000 x15: 0000000000000000
+> [   56.022342] x14: 0000000000000000 x13: 0000000000000000 x12: 0000000000000001
+> [   56.029478] x11: ffffffc081471008 x10: ffffffc081575a98 x9 : 0000000000000000
+> [   56.036614] x8 : ffffffc08167fd40 x7 : ffffffc08069e104 x6 : ffffff8007f86000
+> [   56.043748] x5 : 0000000000000000 x4 : 0000000000000000 x3 : 0000000000000001
+> [   56.050884] x2 : 0000000000000000 x1 : 0000000000000250 x0 : ffffff800222c000
+> [   56.058020] Call trace:
+> [   56.060459]  0xffffffc0798695a4
+> [   56.063618]  0xffffffc079869a20
+> [   56.066777]  __qdisc_destroy+0x40/0xa0
+> [   56.070528]  qdisc_put+0x54/0x6c
+> [   56.073748]  qdisc_graft+0x41c/0x648
+> [   56.077324]  tc_get_qdisc+0x168/0x2f8
+> [   56.080978]  rtnetlink_rcv_msg+0x230/0x330
+> [   56.085076]  netlink_rcv_skb+0x5c/0x128
+> [   56.088913]  rtnetlink_rcv+0x14/0x1c
+> [   56.092490]  netlink_unicast+0x1e0/0x2c8
+> [   56.096413]  netlink_sendmsg+0x198/0x3c8
+> [   56.100337]  ____sys_sendmsg+0x1c4/0x274
+> [   56.104261]  ___sys_sendmsg+0x7c/0xc0
+> [   56.107924]  __sys_sendmsg+0x44/0x98
+> [   56.111492]  __arm64_sys_sendmsg+0x20/0x28
+> [   56.115580]  invoke_syscall.constprop.0+0x58/0xfc
+> [   56.120285]  do_el0_svc+0x3c/0xbc
+> [   56.123592]  el0_svc+0x18/0x4c
+> [   56.126647]  el0t_64_sync_handler+0x118/0x124
+> [   56.131005]  el0t_64_sync+0x150/0x154
+> [   56.134660] ---[ end trace 0000000000000000 ]---
+> 
+> Fixes: ef1ca9271313b ("net: airoha: Add sched HTB offload support")
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-Also because one setting policy in the device tree, while the other
-is in the implementation.
+Acked-by: Paolo Abeni <pabeni@redhat.com>
 
->
-> ChenYu
->
-> > Cheers,
-> > Angelo
-> >
-> > > ---
-> > >   sound/soc/mediatek/common/mtk-afe-platform-driver.c | 4 +++-
-> > >   sound/soc/mediatek/common/mtk-base-afe.h            | 1 +
-> > >   sound/soc/mediatek/mt8173/mt8173-afe-pcm.c          | 1 +
-> > >   sound/soc/mediatek/mt8183/mt8183-afe-pcm.c          | 1 +
-> > >   sound/soc/mediatek/mt8186/mt8186-afe-pcm.c          | 1 +
-> > >   5 files changed, 7 insertions(+), 1 deletion(-)
-> > >
-> > > diff --git a/sound/soc/mediatek/common/mtk-afe-platform-driver.c b/so=
-und/soc/mediatek/common/mtk-afe-platform-driver.c
-> > > index 6b6330583941..70fd05d5ff48 100644
-> > > --- a/sound/soc/mediatek/common/mtk-afe-platform-driver.c
-> > > +++ b/sound/soc/mediatek/common/mtk-afe-platform-driver.c
-> > > @@ -120,7 +120,9 @@ int mtk_afe_pcm_new(struct snd_soc_component *com=
-ponent,
-> > >       struct mtk_base_afe *afe =3D snd_soc_component_get_drvdata(comp=
-onent);
-> > >
-> > >       size =3D afe->mtk_afe_hardware->buffer_bytes_max;
-> > > -     snd_pcm_set_managed_buffer_all(pcm, SNDRV_DMA_TYPE_DEV, afe->de=
-v, 0, size);
-> > > +     snd_pcm_set_managed_buffer_all(pcm, SNDRV_DMA_TYPE_DEV, afe->de=
-v,
-> > > +                                    afe->preallocate_buffers ? size =
-: 0,
-> > > +                                    size);
-> > >
-> > >       return 0;
-> > >   }
-> > > diff --git a/sound/soc/mediatek/common/mtk-base-afe.h b/sound/soc/med=
-iatek/common/mtk-base-afe.h
-> > > index f51578b6c50a..a406f2e3e7a8 100644
-> > > --- a/sound/soc/mediatek/common/mtk-base-afe.h
-> > > +++ b/sound/soc/mediatek/common/mtk-base-afe.h
-> > > @@ -117,6 +117,7 @@ struct mtk_base_afe {
-> > >       struct mtk_base_afe_irq *irqs;
-> > >       int irqs_size;
-> > >       int memif_32bit_supported;
-> > > +     bool preallocate_buffers;
-> > >
-> > >       struct list_head sub_dais;
-> > >       struct snd_soc_dai_driver *dai_drivers;
-> > > diff --git a/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c b/sound/soc/m=
-ediatek/mt8173/mt8173-afe-pcm.c
-> > > index 04ed0cfec174..37b20ec80829 100644
-> > > --- a/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c
-> > > +++ b/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c
-> > > @@ -1114,6 +1114,7 @@ static int mt8173_afe_pcm_dev_probe(struct plat=
-form_device *pdev)
-> > >       afe->mtk_afe_hardware =3D &mt8173_afe_hardware;
-> > >       afe->memif_fs =3D mt8173_memif_fs;
-> > >       afe->irq_fs =3D mt8173_irq_fs;
-> > > +     afe->preallocate_buffers =3D true;
-> > >
-> > >       platform_set_drvdata(pdev, afe);
-> > >
-> > > diff --git a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c b/sound/soc/m=
-ediatek/mt8183/mt8183-afe-pcm.c
-> > > index d083b4bf0f95..0ef07fb2898d 100644
-> > > --- a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
-> > > +++ b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
-> > > @@ -1214,6 +1214,7 @@ static int mt8183_afe_pcm_dev_probe(struct plat=
-form_device *pdev)
-> > >       afe->mtk_afe_hardware =3D &mt8183_afe_hardware;
-> > >       afe->memif_fs =3D mt8183_memif_fs;
-> > >       afe->irq_fs =3D mt8183_irq_fs;
-> > > +     afe->preallocate_buffers =3D true;
-> > >
-> > >       afe->runtime_resume =3D mt8183_afe_runtime_resume;
-> > >       afe->runtime_suspend =3D mt8183_afe_runtime_suspend;
-> > > diff --git a/sound/soc/mediatek/mt8186/mt8186-afe-pcm.c b/sound/soc/m=
-ediatek/mt8186/mt8186-afe-pcm.c
-> > > index db7c93401bee..c588a68d672d 100644
-> > > --- a/sound/soc/mediatek/mt8186/mt8186-afe-pcm.c
-> > > +++ b/sound/soc/mediatek/mt8186/mt8186-afe-pcm.c
-> > > @@ -2935,6 +2935,7 @@ static int mt8186_afe_pcm_dev_probe(struct plat=
-form_device *pdev)
-> > >       afe->irq_fs =3D mt8186_irq_fs;
-> > >       afe->get_dai_fs =3D mt8186_get_dai_fs;
-> > >       afe->get_memif_pbuf_size =3D mt8186_get_memif_pbuf_size;
-> > > +     afe->preallocate_buffers =3D true;
-> > >
-> > >       afe->runtime_resume =3D mt8186_afe_runtime_resume;
-> > >       afe->runtime_suspend =3D mt8186_afe_runtime_suspend;
-> >
-> >
 
