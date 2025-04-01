@@ -4,73 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6D94C36010
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Apr 2025 13:25:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FFD3C36010
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Apr 2025 13:26:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=NxVIV4pFjINn3tgmhSVhsZyc0SATb9hEOee3IIClFb4=; b=ffgy1JHgwv9CWnLfqJ+V+bC5NL
-	MXC3OQqKmi9xeyBZa1T7QkQwTVYviE04gy+ILsn5qgRZupnA9bvmxewZNjewI2ia4g+cN05ADMXbZ
-	lXJCkJzGmU7btcUtddYbkfeHpoBgEzvNWQyAtg5fxU5v0MlpcwF1IGUZIGj1gEhBzrFxIP9Iwu/EY
-	vQWKhGKLH8r4+k5ioQkDRt6eQAtho8ayMhoHf8IuCFNNdoyOZ2pUIZYw8z5sUZmGV9mipeFOTBzs9
-	saL3Rp7X6Uv1P8URNx8mtwvSYr8MS6aGR55GwbanlumzCqYDrEONSox1ZHjGp1xlWaacOWz59UDFm
-	lklNND8g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WnbTGdC1nckjCkTxkzO584mZEF4AjiIhUXBjL+x1FQ4=; b=ZLxve2s/YNUvNU6IKL2wpRqVEJ
+	5+m1BE+VtfySMypXnM01u0sB216yyRdsGDWhn18SK8N80Eboh70i+cuU5z50hyuoVQJruwUqnXxQf
+	nXNnLMGBANjzzqW9Z2z+fU0yhxTdYRQKsU5VUuT9s3xiNVYXLA2R7Q6MUjvRMt2VMy5ceRdQWmL2I
+	8Vwlq2/0P7wB8nj5hRivhc+KkO4tqD4sT0oGJNU/zq3+vCiuRQ0TSqTTuFPF6UdQYmZaHvrQGgMQ8
+	FMvDpqHhEBzVdmH22weXH2VyZnL/gW0Sg8PhGdSsP2ZO/5Vm7TXp9ADGMmMGfqAKzRgsdreaPT9Vw
+	K4g/4Ymg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzbc3-00000003Qob-3FLA;
-	Tue, 01 Apr 2025 13:25:07 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1tzbdp-00000003QzD-1jxA;
+	Tue, 01 Apr 2025 13:26:57 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzbaP-00000003QdT-1YQH
+	id 1tzbcq-00000003Qv3-1ejX
 	for linux-mediatek@lists.infradead.org;
-	Tue, 01 Apr 2025 13:23:25 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id F320E61132;
-	Tue,  1 Apr 2025 13:23:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 850DBC4CEE4;
-	Tue,  1 Apr 2025 13:23:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1743513804;
-	bh=6Nw24EbRgYYOy+DUPepq5IsFLUV2zOLDoEnzpik+ckQ=;
-	h=From:Date:Subject:To:Cc:From;
-	b=cq2kZ99dvRPfIxGmTFv3MhgRx9esG0fmrnHDe/NgYY50SZvi+w5Lj0oaGCkqDK83x
-	 5mVIe4bL3WOZniMGFUg4q7kZG0YK4VmnrftqaxxQNjHXDgt0WRh8JEVk7aglUSCPYU
-	 gLeIbqX7d0PTEpSpLyHBHlJeug1A6GC1iggh2/rUp9tXr7qf7anuIDHv5J/I5PnYxS
-	 xbTAS5+KIgXaGPkPvznvV7B1jcBAKkDBgDN2cj0WLDnMczc+q+KPNAW7FQwKyf2ls6
-	 vdNvl07h+zFJ8bPM6tSs/egtAtSPhTWfZoAlX7zp02XATfi2qyHRsnDHWifFz+aA4O
-	 regtDvx7wxp+A==
-From: Mattijs Korpershoek <mkorpershoek@kernel.org>
-Date: Tue, 01 Apr 2025 15:23:10 +0200
-Subject: [PATCH] MAINTAINERS: .mailmap: update Mattijs Korpershoek's email
- address
+	Tue, 01 Apr 2025 13:25:57 +0000
+X-UUID: d2f6aaf20efc11f0a1e849db4cc18d44-20250401
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=WnbTGdC1nckjCkTxkzO584mZEF4AjiIhUXBjL+x1FQ4=;
+	b=aB1wUZ4pWWfH+Y7OVC8HvPzvh6LWzC24sdKKJ+XzlerXN0CSkOve9XRfROo3uAKIEIQoyzq5djp+kouHWaFMdmVvs/Q+WO6OMQbUh09nDuuJ5uzF9loUclrF0vis3FylFCkcQ+6cQCV60cNtQ5QLtEHGdhhgZEXxq8P7qG58pLk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:4b98db64-3d7d-4a9e-9829-c090afa8132a,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:441d91a5-c619-47e3-a41b-90eedbf5b947,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102,TC:nil,Content:0|50,
+	EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
+	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: d2f6aaf20efc11f0a1e849db4cc18d44-20250401
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <shayne.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 387509353; Tue, 01 Apr 2025 06:25:48 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Tue, 1 Apr 2025 21:25:45 +0800
+Received: from [10.233.130.16] (10.233.130.16) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.1258.39 via Frontend
+ Transport; Tue, 1 Apr 2025 21:25:45 +0800
+Message-ID: <2cb3376205353e98384ca8faa4454fa0511d47b5.camel@mediatek.com>
+Subject: Re: [PATCH 02/10] wifi: mt76: connac: add support to load firmware
+ for mt7990
+From: Shayne Chen <shayne.chen@mediatek.com>
+To: Ping-Ke Shih <pkshih@realtek.com>, Felix Fietkau <nbd@nbd.name>
+CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
+	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, StanleyYP Wang
+	<StanleyYP.Wang@mediatek.com>, Peter Chiu <chui-hao.chiu@mediatek.com>
+Date: Tue, 1 Apr 2025 21:25:45 +0800
+In-Reply-To: <7ec7c486728d490caef7dcdac3c1c8e4@realtek.com>
+References: <20250328055058.1648755-1-shayne.chen@mediatek.com>
+	 <20250328055058.1648755-3-shayne.chen@mediatek.com>
+	 <7ec7c486728d490caef7dcdac3c1c8e4@realtek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.52.3-0ubuntu1 
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250401-mattijs-korg-v1-1-734a7ad8be1f@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAL3o62cC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDI1MDEwND3dzEkpLMrGLd7PyidN00s0Rjk8Qkc/NkkzQloJaCotS0zAqwcdG
- xtbUARub+nV4AAAA=
-X-Change-ID: 20250401-mattijs-korg-f6a34ab77c4f
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- linux-input@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Mattijs Korpershoek <mkorpershoek@kernel.org>
-X-Mailer: b4 0.14.3-dev-94c79
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1580;
- i=mkorpershoek@kernel.org; h=from:subject:message-id;
- bh=6Nw24EbRgYYOy+DUPepq5IsFLUV2zOLDoEnzpik+ckQ=;
- b=owEBbQGS/pANAwAIARkNHbRmThk1AcsmYgBn6+jIx9a8LCkrFb7kmJXLDCuPk62m9kwIBzlmu9ZR
- Q+Ro0mOJATMEAAEIAB0WIQQu6UKnth9qvlMTrQAZDR20Zk4ZNQUCZ+voyAAKCRAZDR20Zk4ZNYbqB/
- 43jZtO9qIG3UXhKqKWSGO9KB10zS2goC2nTlptSgzAcelUtnRxXIjshqRDgSR8HInKxRD0+hJZqytt
- Et6JexuYQPk6mI1pkasSqHFS2HtTt8XxnAnf4KeUmjVIUUkHUMsgpNjXWblajmSSCjeQCShU1RvIG8
- NnFVzCO4IiTQqdRIbFEiE8VrVRAXJr6MJVxUu7g6BAtozeB/Hx5X92PI8qDBMtrpuykiezQL1QYOwC
- 9cG6ePFrx0kQDCdtpMTcHCrpzpcoTD+mTzwXOxOglItuoqN7VUTL3mDm+vnG7mr79YOsbBR/hEOg49
- gsEmTUdPH5qlpMBAskecPaeZE65NHO
-X-Developer-Key: i=mkorpershoek@kernel.org; a=openpgp;
- fpr=8234A35B45C0D26B31C1A2DA570338B018144F28
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250401_062556_440782_11307D6A 
+X-CRM114-Status: GOOD (  11.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,46 +90,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Update Mattijs Korpershoek's email address to @kernel.org.
+Hi Ping-Ke,
 
-Signed-off-by: Mattijs Korpershoek <mkorpershoek@kernel.org>
----
- .mailmap    | 1 +
- MAINTAINERS | 2 +-
- 2 files changed, 2 insertions(+), 1 deletion(-)
+On Mon, 2025-03-31 at 04:40 +0000, Ping-Ke Shih wrote:
+>=20
+> External email : Please do not click links or open attachments until
+> you have verified the sender or the content.
+>=20
+>=20
+> Shayne Chen <shayne.chen@mediatek.com> wrote:
+> > --- a/drivers/net/wireless/mediatek/mt76/mt76_connac.h
+> > +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
+> > @@ -232,9 +232,14 @@ static inline bool is_mt7992(struct mt76_dev
+> > *dev)
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return mt76_chip(dev) =3D=3D=
+ 0x7992;
+> > =C2=A0}
+> >=20
+> > +static inline bool is_mt7990(struct mt76_dev *dev)
+> > +{
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return mt76_chip(dev) =3D=3D 0x79=
+93;
+>=20
+> It seems like patch 01/10 want to avoid this kind of confusion.
+>=20
+This helper is added in mt76_connac.h, which can be used by mt76 common
+part and mt7996 per-chip folder.
 
-diff --git a/.mailmap b/.mailmap
-index f485903803c6..d68de811b8e8 100644
---- a/.mailmap
-+++ b/.mailmap
-@@ -474,6 +474,7 @@ Matthias Fuchs <socketcan@esd.eu> <matthias.fuchs@esd.eu>
- Matthieu Baerts <matttbe@kernel.org> <matthieu.baerts@tessares.net>
- Matthieu CASTET <castet.matthieu@free.fr>
- Matti Vaittinen <mazziesaccount@gmail.com> <matti.vaittinen@fi.rohmeurope.com>
-+Mattijs Korpershoek <mkorpershoek@kernel.org> <mkorpershoek@baylibre.com>
- Matt Ranostay <matt@ranostay.sg> <matt.ranostay@konsulko.com>
- Matt Ranostay <matt@ranostay.sg> <matt@ranostay.consulting>
- Matt Ranostay <matt@ranostay.sg> Matthew Ranostay <mranostay@embeddedalley.com>
-diff --git a/MAINTAINERS b/MAINTAINERS
-index d5dfb9186962..50d6519d3b9d 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -15014,7 +15014,7 @@ F:	Documentation/devicetree/bindings/media/mediatek-jpeg-*.yaml
- F:	drivers/media/platform/mediatek/jpeg/
- 
- MEDIATEK KEYPAD DRIVER
--M:	Mattijs Korpershoek <mkorpershoek@baylibre.com>
-+M:	Mattijs Korpershoek <mkorpershoek@kernel.org>
- S:	Supported
- F:	Documentation/devicetree/bindings/input/mediatek,mt6779-keypad.yaml
- F:	drivers/input/keyboard/mt6779-keypad.c
+> Also, there are two IDs for MT7990:
+>=20
+> #define MT7990_DEVICE_ID=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0x7993
+> #define MT7990_DEVICE_ID_2=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 0x799b
+>=20
+These two are only used by mt7996 per-chip folder.
 
----
-base-commit: 08733088b566b58283f0f12fb73f5db6a9a9de30
-change-id: 20250401-mattijs-korg-f6a34ab77c4f
+Regards,
+Shayne
 
-Best regards,
--- 
-Mattijs Korpershoek <mkorpershoek@kernel.org>
+> > +}
+> > +
+> > =C2=A0static inline bool is_mt799x(struct mt76_dev *dev)
+> > =C2=A0{
+> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return is_mt7996(dev) || is_mt799=
+2(dev);
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return is_mt7996(dev) || is_mt799=
+2(dev) || is_mt7990(dev);
+> > =C2=A0}
+> >=20
 
 
