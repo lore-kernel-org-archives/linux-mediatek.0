@@ -4,84 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A86AC28B20
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Apr 2025 10:20:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 569DAC28B20
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Apr 2025 10:33:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XTVP9DTsW3vnY5FLKNjx74F5/L54TED0U9Vc1dT3Vbk=; b=vGIjUS77q8tX32sqPm4cNF5gy8
-	Zy3UvV3eIUsJTiOqm7GK0KCkSoSjWVVXm47pl5Y+XsPT1/IKwR/TLcrf+1PXUefPAVEuAbX7+uqXo
-	jxqQls5w5Jra9sLopQE6HOAshiSOKmrjbmUA0gv3SNnAd0FiortptrJMeTnhr7WTtUbT0X8zsBegz
-	afbPldvLIPglIMhmKVTOokePq6/oHhhO9w6KpGc0vino0RBjdTbtP5D3gc+wv0DkdG29wpOW0N40z
-	2x4gHM5Va4zAMNTaqD6GCOsVSH5RIxuzAOcNlA8gpmnK6byT+UNBqvPblpH7ag/CTBs4dNA7azdCs
-	D4D4ZqIQ==;
+	bh=M0Ghaex3AKWJt5PFBJVZhY6fak2Zh8YnEj0FiAOWcFo=; b=epytDAfMHatudlJzT3uBHodTuX
+	WvozR3KX29P5WUfU2E/YyoTnma4f51M1GhQNzJC1Th+zdllniTsETm54ufCG9c6GfPi04ZA3j1IPa
+	eCcB1SLRrrcu1cgv+W61Z3WNzw8scBhp8bphvgggI8cAXTx+fci07Fz7s22MtsxgvxqU6UL5tUKCV
+	gAj5TJ68sRYTYNjmxITLkE8wrmxMz8kGUxrTpJ8jCH3TtS17wrQtGlYeZ360leZNHKCNwUI6R5iry
+	KkAYqSIu9ydLqD6pBGxfDTECfCtrjkoyFStBilpNHugC9P1rCwtNkeIa+WNaA5+ihaRdMokDn8uIg
+	/Xt+w8Tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzvDB-00000005meQ-34o6;
-	Wed, 02 Apr 2025 10:20:45 +0000
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
+	id 1tzvPb-00000005oJD-0Xsg;
+	Wed, 02 Apr 2025 10:33:35 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzvC7-00000005mMJ-2Do6
-	for linux-mediatek@lists.infradead.org;
-	Wed, 02 Apr 2025 10:19:40 +0000
-Received: by mail-pj1-x102b.google.com with SMTP id 98e67ed59e1d1-2ff799d99dcso11457088a91.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 02 Apr 2025 03:19:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1743589179; x=1744193979; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=XTVP9DTsW3vnY5FLKNjx74F5/L54TED0U9Vc1dT3Vbk=;
-        b=JZiB/afUjeL65J4X1qi3B2yEy0ycN3JeUWQGJ7joDzVsDy9HBLPmpp4G84GmUJVNC9
-         s6OjPilNArnBIbMnx3Zeo7kPq+PLqK44JdC9clo8Z0PMPH8rHmFe5i7YPfrTreoXsgjD
-         yeDgCZmZsjHBnjEVQAH0RuwdbfJjw0EDdo7R4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743589179; x=1744193979;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=XTVP9DTsW3vnY5FLKNjx74F5/L54TED0U9Vc1dT3Vbk=;
-        b=XF20hoTF6k/g2aEOImXxJxis8/bzxpovTi1GDQEHW5lXWuu0mkVSEc7ucl+613p4DH
-         t6b1uyZ86fPhBRfnZGSEs+sGT9AhGb0NdSIg4zZ+89yTNzVTWPnTktzKWwZl+Jn/dG7L
-         PeIpHbd/93Nt1C3puPEwL4PmW2h/gx2H83u5LeGJREc3Rw1+CyQ120goUcZHbVVklEcs
-         Y9tP2xjy3/1jex3eYuT4zZ3qfkwpK9szfciuG1IBsJFlzi4IOUNlMTNIjYNuVCrbXh9j
-         hAM74Qs0Dztebtmfd51DFhABsV2DJgFliZV2X8FOmoezI7uG2PeKdUjNULLog/m4vM/X
-         S7IQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWWlha92S8p5ib6UfRG11Zs9XS0eOjX/iPuguPXRAmnYZEVcKOvrBOayVvw1Qynwz/UDY8pf0dArlMKFgybTQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz2zgTd7a07/4Iie02BDioM9UT/4BG9oW+TrQfEyy4ayQcua3Y7
-	W7FcKZA43/J8ChDqk7HxF9AAyh2+eThxr9JSPXZJy9wGaBKJHNiZ8lpF6oUjvTA1SmWPJbkRB21
-	Im6lPBoU5iz7UsP7rqsZF5FAIoqU3ognSnK+3
-X-Gm-Gg: ASbGncuETzBmSu8ANAwfzCDejxNQRWFBwgsk7Cjd4F63NtNvqhXVX9DasagQfcjFfbS
-	fNlN8P4pG7XZT1D2KTaDzK4brVVV4pSf6gDITza/cqgIJ1vsFxok5RLQnmpDfm47qwgGPmRpl5a
-	szkf4XbMcVc2OV33KrKaMiPGNdtxCVegrNqPmjWT0LkEh4X34QUYb8
-X-Google-Smtp-Source: AGHT+IFc/gdat5Dr87A+81uJRFZWgnUw8FjScnpjhEXBVgVwotYa3CxXqBYBb5s66JTrRULG7QmLlhlnerHeo7QspTI=
-X-Received: by 2002:a17:90b:3b50:b0:301:1bce:c258 with SMTP id
- 98e67ed59e1d1-3053215e7femr19031005a91.22.1743589179070; Wed, 02 Apr 2025
- 03:19:39 -0700 (PDT)
+	id 1tzvNq-00000005oAf-3Xzt;
+	Wed, 02 Apr 2025 10:31:46 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 6EEC061145;
+	Wed,  2 Apr 2025 10:31:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C3F36C4CEDD;
+	Wed,  2 Apr 2025 10:31:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1743589906;
+	bh=63p0kski9U6nsCvi6fYsHnrpfHycvQ4nMq73FmYFwFk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=eWwwCyedhV+dc/ZyugeQjy/6cv3VIHoDsUFVjTzSPEpDamVMX+3MLeKD8xZmlrsmc
+	 IH08cypPsIfifb7VUEAjQUpNrGA1p1fxzEPaUTmZInIW1me8ry6QEU9KPhc5r9CaFT
+	 Mr2yruYYOPOA0HPxcGfPbYxG75x1BRvFCBpGCTs3UkPYsXAnwO3TMO/CBISes7OCYE
+	 pMyU1WzAqsZZCqDp9Zu0rilJCC9ksoqVDuKUgg5queyIxsVGilBt7QAWTBAy1es5hj
+	 lIeJpaZ1zMLVj6BJ1ijoBqIaAVYT6r9liJyO8cBT4M4wHfP0Ebb76qmUqYHtgUvqEf
+	 t1ZTs1LzhkuMQ==
+Message-ID: <ca8d93e1-ea75-42b3-b7a5-a12cb509890c@kernel.org>
+Date: Wed, 2 Apr 2025 12:31:39 +0200
 MIME-Version: 1.0
-References: <20250402083628.20111-1-angelogioacchino.delregno@collabora.com> <20250402083628.20111-4-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20250402083628.20111-4-angelogioacchino.delregno@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 2 Apr 2025 18:19:24 +0800
-X-Gm-Features: AQ5f1Jr24z9TQrfYXn99ssRwXfkIHJUxBLD8IHIrUHUVmb0Bwvezsgoy_EISkMk
-Message-ID: <CAGXv+5H1aww6Adf=EKCkpC8oCkdRLEHP5_fwtfU1BzEsnyi7NA@mail.gmail.com>
-Subject: Re: [PATCH v1 3/5] drm/mediatek: mtk_drm_drv: Unbind secondary mmsys
- components on err
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
-	simona@ffwll.ch, matthias.bgg@gmail.com, nancy.lin@mediatek.com, 
-	ck.hu@mediatek.com, djkurtz@chromium.org, littlecvr@chromium.org, 
-	bibby.hsieh@mediatek.com, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250402_031939_598738_ABC51434 
-X-CRM114-Status: GOOD (  24.56  )
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/2] Add vcp driver
+To: Xiangzhi Tang <xiangzhi.tang@mediatek.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Mathieu Poirier <mathieu.poirier@linaro.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, jjian.zhou@mediatek.com,
+ hailong.fan@mediatek.com
+References: <20250402092134.12293-1-xiangzhi.tang@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <20250402092134.12293-1-xiangzhi.tang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,62 +120,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 2, 2025 at 4:36=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> When calling component_bind_all(), if a component that is included
-> in the list fails, all of those that have been successfully bound
-> will be unbound, but this driver has two components lists for two
-> actual devices, as in, each mmsys instance has its own components
-> list.
->
-> In case mmsys0 (or actually vdosys0) is able to bind all of its
-> components, but the secondary one fails, all of the components of
-> the first are kept bound, while the ones of mmsys1/vdosys1 are
-> correctly cleaned up.
->
-> This is not right because, in case of a failure, the components
-> are re-bound for all of the mmsys/vdosys instances without caring
-> about the ones that were previously left in a bound state.
->
-> Fix that by calling component_unbind_all() on all of the previous
-> component masters that succeeded binding all subdevices when any
-> of the other masters errors out.
->
-> Fixes: 1ef7ed48356c ("drm/mediatek: Modify mediatek-drm for mt8195 multi =
-mmsys support")
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
+On 02/04/2025 11:19, Xiangzhi Tang wrote:
+> Add support MediaTek's Video Companion Processor(VCP) host driver to
+> control the MediaTek VCP Risc-V coprocessor.
+> The VCP host driver using rproc mechanism to load vcm firmware
+> from filesystem, and using SMC services to request ATF to setting
+> vcp boot sequence, and Host communicated with VCP FW depends on VCP
+> IPC interfaces
+> 
+> This series patches dependent on:
+> [1]
+> https://lore.kernel.org/all/20250307032942.10447-1-guangjie.song@mediatek.com/
 
-Makes sense.
+They should not depend. It blocks your patch. I suggest decoupling from
+dependencies.
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
-> ---
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/med=
-iatek/mtk_drm_drv.c
-> index 6b31df587507..2d6562b29755 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -482,8 +482,11 @@ static int mtk_drm_kms_init(struct drm_device *drm)
->         for (i =3D 0; i < private->data->mmsys_dev_num; i++) {
->                 drm->dev_private =3D private->all_drm_private[i];
->                 ret =3D component_bind_all(private->all_drm_private[i]->d=
-ev, drm);
-> -               if (ret)
-> +               if (ret) {
-> +                       while (--i >=3D 0)
-> +                               component_unbind_all(private->all_drm_pri=
-vate[i]->dev, drm);
->                         return ret;
-> +               }
->         }
->
->         /*
-> --
-> 2.48.1
->
+Best regards,
+Krzysztof
 
