@@ -4,93 +4,132 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39BA2C3601A
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Apr 2025 15:40:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56B14C36017
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Apr 2025 19:01:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PSL4oRGEAPHD9iSzx4FRIOJD2xPfGaZhPkphkR7+6y0=; b=nXRRhBOmWYkSVn+BDkxAinYs4Q
-	C5pWuc0riQ0RTBGyzi+1mOSK2m0lvbktZpRf2ojQr+ke6ioTUISlnFg2psCjcg1NunEnbYX6yV7BH
-	G/HSSnXGIN5rB681CZEtSHrLRNLBpC4ZgOedX4NKr09av/omiB880oQGz4tT62v/jk4xUh1o5LMua
-	znThZ8mPE2LJRsKD/LYb6WXySYp31kQUyYVldzCGFQ1fu3Wuc4W/LeSh4htgvqIakIPNdP33CsrmH
-	NIr3LNqvpgpLI1e5Nd3vdQwqE95DkDgEBSSMr61C/IaZRrLzNauEH+EAOGDMSSG07Jmb3uolaRDag
-	QycixTLg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ij6oVdOz4GhS0vGrhbityqjcv93TkR0sIrqUodkZMFk=; b=0oG4QpJJ1mhkLCm5v8TuivKc0E
+	EQsY93e6aBB/UcMpQ3l3SJVi/dpKGwzrAvWjU53SW5MQwkCZBv6iwItKMfE8lyU6ZdZNb/CVlYNCi
+	H0jJXnqWEKacD3oRv7CSWDeAOi4J16se4+fe5dNTHNd5psPDDAr6Zs/GXXGvzFfuXtP4d8HDtnrVx
+	hCJGiakmeWVo3ombCdExrUZNXhJ916tShuih7CVqlr+6SRI2z0/P4jkktykF8nKHDGbUT4CbBpYav
+	b6vlKsCKoa9iGgyh3JxrMuYIXEhUtH0ZUfXpRhGXu2wacUqxqvusz0Nz6XqGkVQtyCEmMdOJ4swXC
+	QZjOvejw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u00Cn-00000006Y1d-16JP;
-	Wed, 02 Apr 2025 15:40:41 +0000
-Received: from mail-qv1-xf36.google.com ([2607:f8b0:4864:20::f36])
+	id 1u03Kh-00000006zl9-07vg;
+	Wed, 02 Apr 2025 19:01:03 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u00Cl-00000006Y0P-1BT9
-	for linux-mediatek@lists.infradead.org;
-	Wed, 02 Apr 2025 15:40:40 +0000
-Received: by mail-qv1-xf36.google.com with SMTP id 6a1803df08f44-6eaf1b6ce9aso70864456d6.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 02 Apr 2025 08:40:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1743608438; x=1744213238; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:to:from:subject:message-id:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=PSL4oRGEAPHD9iSzx4FRIOJD2xPfGaZhPkphkR7+6y0=;
-        b=Q1Q9rQ7o0qLLLWOCD+bbN4yKOQlGr0+xKNXAF1xk2lYt8LV0p06CrT5u400UBPge3y
-         eie8S6KETXFLN5YVCo1KRY65+V1mqFQ0yezQGNBM1dWsGteziBgSprK7tPCbxEJBz5PL
-         wi+S/NinPa0wHxOBy+ZJPUuGrycvP0uHLNLmRk/G74rlQHU/5Dx61H++xMexdeBustDF
-         1YvAN7xVBSMG8alsbVZqCzLwZGczm2MAeAIbOvaaAF4MMMubUUcbLIUIzrvx1lI4lfel
-         9adke+lHnyq63Ygtu5GUUVHcs99ZcG+gPozdjR1EzKbzUHCqsRxNYVeGxYntaFmEonOK
-         nkMA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743608438; x=1744213238;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:to:from:subject:message-id:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=PSL4oRGEAPHD9iSzx4FRIOJD2xPfGaZhPkphkR7+6y0=;
-        b=S84GXsp7XgdShIJD69kS40tggcWdqZvEpQO/+4eDCuZFaNQ/l3dee1AFcSluNNN8Ou
-         7fKhwe46M6trNlgnGvTFXw7wUZTbgIbaJnrghgDlfT7/nObZCFBlzM4Vk6/Kc4MUTwgD
-         hAf19vzoWct5u8ay5yOidcF6bPr6RFgBsM2xA3PAo4sVUyHrWmjdaXB9vOSdQUalqrdN
-         OJGcsLdk3nZkXyt7QYksoRR+aIQKV3OnbIgonCBhNs28QpoUj6a3+TM9nn3ab+NtyXjj
-         X+/lRboggQnzYCxe19VfoiEH1JE4RKEDycxn82Co8a5UlnPHBsy5BHFCrisVWWnQFWQS
-         bHCg==
-X-Forwarded-Encrypted: i=1; AJvYcCV+jAsGm9B7X4KaoD6sj/4zx0ZwoyEEyj99RYrrEZ8Sh0QRgiWaxKm1O8oax8pBNawAavRktjakxEmO1NM5Lw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YywB9Y/ZUUJUg/7HYUPI61FXz99ooIC+ejk2RNf0Vzv++Y9ug4J
-	Kg6Ln3+T2eV0LKWsvaqxTb2xCtOuUgwD/dwgT/r1Vdbq43huMHx8s4OSY4XdeRI=
-X-Gm-Gg: ASbGncvVu4mLNJtt2goVLmrqj2zzsG6kj5hzOKwhs+6/0Ew1ZpRI/XGux2Kjxrv8w8t
-	N51MKOk/2hC1QhH1FkXeanpPLTq3mIH7Q+dyuuZSn8LEN9aoOQVVAv0B3uKxRbhsgCjsELYWIoh
-	w/o0EtcN8jdx/h4snbsAvCSyceq6llsJRKzPete27BRFWNeyJ1gkO8HmLIKvHg/7qtf6tstRNgl
-	cYytWlq6mWteN+Z+yXPrF2cKb+rU+D2UaWNH2QeW1iRoGN2/R16Sap5bEQvW4LEorh7r/PRXlH+
-	/s7W+sw7bJvYB/iZSR/Aa/AcguUDa6WdfwkviOqqm38DWUhrHw==
-X-Google-Smtp-Source: AGHT+IF4Dz/stCS5BEC5GFlEUNzvWwaks8m+IIa7woNJtCMmFQbWLxjNz8YenZdUROs678sB7aZKEw==
-X-Received: by 2002:a05:6214:b62:b0:6d8:9ead:c665 with SMTP id 6a1803df08f44-6ef02c92ed5mr46211356d6.27.1743608437967;
-        Wed, 02 Apr 2025 08:40:37 -0700 (PDT)
-Received: from ?IPv6:2606:6d00:11:e976::5ac? ([2606:6d00:11:e976::5ac])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6eec965a1desm75344486d6.60.2025.04.02.08.40.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 02 Apr 2025 08:40:37 -0700 (PDT)
-Message-ID: <14a86f60d026411eb7e4546b8a4879a90f247843.camel@ndufresne.ca>
-Subject: Re: [PATCH] media: mtk-vcodec: Fix reference count leak in
- mtk_vcodec_fw_scp_init
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Miaoqian Lin <linmq006@gmail.com>, Tiffany Lin
- <tiffany.lin@mediatek.com>,  Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>, Mauro Carvalho Chehab	
- <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Fullway Wang <fullwaywang@outlook.com>, 	linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Date: Wed, 02 Apr 2025 11:40:36 -0400
-In-Reply-To: <cfc905988dda23078b5086f3eb0975863bbb6c2d.camel@ndufresne.ca>
-References: <20250318110556.903-1-linmq006@gmail.com>
-	 <cfc905988dda23078b5086f3eb0975863bbb6c2d.camel@ndufresne.ca>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.0 (3.56.0-1.fc42) 
+	id 1u03KT-00000006zjP-1B4G;
+	Wed, 02 Apr 2025 19:00:50 +0000
+Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 532C1hZx024534;
+	Wed, 2 Apr 2025 19:00:28 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	ij6oVdOz4GhS0vGrhbityqjcv93TkR0sIrqUodkZMFk=; b=hYhD7pVNIeDwDBrW
+	RdO5PrMwS8sO1ippIQSGUyIYQ2aHb7qJuvA8S/CTVfe+wl3fGVcBkK+tVHJeC/Fq
+	hL0quAhjsZgdxh4KYOc6r2i6Gy0K17YxXYIvcN3aAPcOVgVQfvxnN1L1QRwh3B/f
+	iNw133fc//aUQBjMULW74HoUe6hVoYaUgy9HMacMC7MaMwE5l9UNz5swOuqq8Os5
+	wu3dTwbUcX100OEvJokqUmtO2Ui7Bihi+ChA5Cq0uSXw6qzZZsLnr5JqmT6CIlBj
+	jsmAF8BSmVLuxw7LwpPsMxs6waa4SBRHV0VIQ6IaNJwJBe63uNd47fsw3lzvLxqP
+	V7jENg==
+Received: from nasanppmta05.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 45rbpywh5x-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 02 Apr 2025 19:00:28 +0000 (GMT)
+Received: from nasanex01a.na.qualcomm.com (nasanex01a.na.qualcomm.com [10.52.223.231])
+	by NASANPPMTA05.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTPS id 532J0RBJ002057
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 2 Apr 2025 19:00:27 GMT
+Received: from [10.46.162.103] (10.80.80.8) by nasanex01a.na.qualcomm.com
+ (10.52.223.231) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Wed, 2 Apr 2025
+ 12:00:26 -0700
+Message-ID: <1b87152e-ff0f-9c45-020d-4927ff3dbef8@quicinc.com>
+Date: Wed, 2 Apr 2025 12:00:26 -0700
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+Subject: Re: [PATCH v4 1/1] scsi: ufs: core: add device level exception
+ support
+Content-Language: en-US
+To: "manivannan.sadhasivam@linaro.org" <manivannan.sadhasivam@linaro.org>,
+        Bart Van Assche <bvanassche@acm.org>
+CC: Arthur Simchaev <Arthur.Simchaev@sandisk.com>,
+        "quic_cang@quicinc.com"
+	<quic_cang@quicinc.com>,
+        "quic_nitirawa@quicinc.com"
+	<quic_nitirawa@quicinc.com>,
+        "avri.altman@wdc.com" <avri.altman@wdc.com>,
+        "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
+        "minwoo.im@samsung.com"
+	<minwoo.im@samsung.com>,
+        "adrian.hunter@intel.com" <adrian.hunter@intel.com>,
+        "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
+        "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+        Alim Akhtar
+	<alim.akhtar@samsung.com>,
+        "James E.J. Bottomley"
+	<James.Bottomley@hansenpartnership.com>,
+        Matthias Brugger
+	<matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>,
+        Bean Huo <beanhuo@micron.com>,
+        Keoseong Park <keosung.park@samsung.com>,
+        Ziqi Chen
+	<quic_ziqichen@quicinc.com>,
+        Al Viro <viro@zeniv.linux.org.uk>,
+        "Gwendal
+ Grignou" <gwendal@chromium.org>,
+        Eric Biggers <ebiggers@google.com>,
+        open
+ list <linux-kernel@vger.kernel.org>,
+        "moderated list:ARM/Mediatek SoC
+ support:Keyword:mediatek" <linux-arm-kernel@lists.infradead.org>,
+        "moderated
+ list:ARM/Mediatek SoC support:Keyword:mediatek"
+	<linux-mediatek@lists.infradead.org>
+References: <4370b3a3b5a5675bb3e75aaa48a273674c159339.1742526978.git.quic_nguyenb@quicinc.com>
+ <SA2PR16MB4251229744D717821D3D8353F4A72@SA2PR16MB4251.namprd16.prod.outlook.com>
+ <c5ab13ec-f650-ea10-5cb8-d6a2ddf1e825@quicinc.com>
+ <0a68d437-5d6a-42aa-ae4e-6f5d89cfcaf3@acm.org>
+ <ad246ef4-7429-63bb-0279-90738736f6e3@quicinc.com>
+ <3d7b543c-1165-42e0-8471-25b04c7572ac@acm.org>
+ <4cb20c80-9bb0-e147-e3c0-467f4c8828ba@quicinc.com>
+ <989e695e-e6a4-4427-9041-e39ecf5b5674@acm.org>
+ <yzy7oad77h744vf2bdylkm4fronemjwvrmlstnj6x5lzjxg672@zya6toqv4aeg>
+From: "Bao D. Nguyen" <quic_nguyenb@quicinc.com>
+In-Reply-To: <yzy7oad77h744vf2bdylkm4fronemjwvrmlstnj6x5lzjxg672@zya6toqv4aeg>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nasanex01a.na.qualcomm.com (10.52.223.231)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: nuJyCFbkUJbHjGlJ8RMkEV0OQHadcz5I
+X-Proofpoint-ORIG-GUID: nuJyCFbkUJbHjGlJ8RMkEV0OQHadcz5I
+X-Authority-Analysis: v=2.4 cv=ZNLXmW7b c=1 sm=1 tr=0 ts=67ed894c cx=c_pps a=JYp8KDb2vCoCEuGobkYCKw==:117 a=JYp8KDb2vCoCEuGobkYCKw==:17 a=GEpy-HfZoHoA:10 a=IkcTkHD0fZMA:10 a=XR8D0OoHHMoA:10 a=KKAkSRfTAAAA:8 a=Si26H9tSdrSrRDVtBSgA:9 a=QEXdDO2ut3YA:10
+ a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1095,Hydra:6.0.680,FMLib:17.12.68.34
+ definitions=2025-04-02_08,2025-04-02_03,2024-11-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 spamscore=0
+ lowpriorityscore=0 clxscore=1015 mlxscore=0 adultscore=0 mlxlogscore=999
+ priorityscore=1501 bulkscore=0 suspectscore=0 malwarescore=0 phishscore=0
+ impostorscore=0 classifier=spam authscore=0 authtc=n/a authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2502280000
+ definitions=main-2504020121
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250402_084039_316835_EFD477F8 
-X-CRM114-Status: GOOD (  17.61  )
+X-CRM114-CacheID: sfid-20250402_120049_339817_BC0077AB 
+X-CRM114-Status: GOOD (  15.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,64 +144,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le mercredi 02 avril 2025 =C3=A0 11:37 -0400, Nicolas Dufresne a =C3=A9crit=
-=C2=A0:
-> Hi,
->=20
-> Le mardi 18 mars 2025 =C3=A0 19:05 +0800, Miaoqian Lin a =C3=A9crit=C2=A0=
-:
-> > scp_get() returns a reference that needs to be released with scp_put().
-> > Add missing scp_put() before returning error in mtk_vcodec_fw_scp_init(=
-).
-> >=20
-> > Fixes: 53dbe0850444 ("media: mtk-vcodec: potential null pointer deferen=
-ce in SCP")
-> > Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
-> > ---
-> > =C2=A0.../platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 | 5 +++--
-> > =C2=A01 file changed, 3 insertions(+), 2 deletions(-)
-> >=20
-> > diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_f=
-w_scp.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
-> > index ff23b225db70..11ab3bc60217 100644
-> > --- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
-> > +++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_scp.c
-> > @@ -71,7 +71,6 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(void *pr=
-iv, enum mtk_vcodec_fw_use
-> > =C2=A0		pr_err("Invalid fw_use %d (use a reasonable fw id here)\n", fw_=
-use);
-> > =C2=A0		return ERR_PTR(-EINVAL);
-> > =C2=A0	}
-> > -
->=20
-> Might sound nit-picky, but don't do style fixes in patches intended for
-> backports. It increases the chance of conflicts.
->=20
-> > =C2=A0	scp =3D scp_get(plat_dev);
-> > =C2=A0	if (!scp) {
-> > =C2=A0		dev_err(&plat_dev->dev, "could not get vdec scp handle");
-> > @@ -79,8 +78,10 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(void *p=
-riv, enum mtk_vcodec_fw_use
-> > =C2=A0	}
-> > =C2=A0
-> > =C2=A0	fw =3D devm_kzalloc(&plat_dev->dev, sizeof(*fw), GFP_KERNEL);
-> > -	if (!fw)
-> > +	if (!fw) {
-> > +		scp_put(scp);
-> > =C2=A0		return ERR_PTR(-ENOMEM);
-> > +	}
->=20
-> With the above style change removed:
->=20
-> Reviewed-by: Nicolas Dufresne <nicolas.dufresne@colllabora.com>
+On 4/2/2025 12:49 AM, manivannan.sadhasivam@linaro.org wrote:
+> Yeah, we should be cautious in changing the uAPI header as it can break the
+> userspace applications. Annotating the members that need packed attribute seems
+> like the way forward to me.
 
-Sorry for the noise, I see that Hans fixed and merged it already.
+Yes, I realized potential issue when Bart raised a concern.
 
-Nicolas
+> 
+> Though, I'd like to understand which architecture has the alignment constraint
+> in this structure. Only if an architecture requires 8 byte alignment for __be32
+> would be a problem. That too only for osf7 and reserved. But I'm not aware of
+> such architectures in use.
+When using "__u64 value;" in place of osf3-6, I saw the compiler padded 
+4 bytes, so __packed was needed for me to get correct __u64 value. I 
+thought even the existing structure utp_upiu_query_v4_0 may need 
+__packed on some fields where the driver reads the returned data in 
+order to be safe across all architectures. However, without evidence of 
+an actual failure, I didn't touch the existing structure. Only raised 
+potential issue for discussion.
 
->=20
-> > =C2=A0	fw->type =3D SCP;
-> > =C2=A0	fw->ops =3D &mtk_vcodec_rproc_msg;
-> > =C2=A0	fw->scp =3D scp;
+Thanks, Bao
 
