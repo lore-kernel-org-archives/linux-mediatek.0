@@ -4,132 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56B14C36017
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Apr 2025 19:01:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DE7AC3601A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Apr 2025 00:12:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ij6oVdOz4GhS0vGrhbityqjcv93TkR0sIrqUodkZMFk=; b=0oG4QpJJ1mhkLCm5v8TuivKc0E
-	EQsY93e6aBB/UcMpQ3l3SJVi/dpKGwzrAvWjU53SW5MQwkCZBv6iwItKMfE8lyU6ZdZNb/CVlYNCi
-	H0jJXnqWEKacD3oRv7CSWDeAOi4J16se4+fe5dNTHNd5psPDDAr6Zs/GXXGvzFfuXtP4d8HDtnrVx
-	hCJGiakmeWVo3ombCdExrUZNXhJ916tShuih7CVqlr+6SRI2z0/P4jkktykF8nKHDGbUT4CbBpYav
-	b6vlKsCKoa9iGgyh3JxrMuYIXEhUtH0ZUfXpRhGXu2wacUqxqvusz0Nz6XqGkVQtyCEmMdOJ4swXC
-	QZjOvejw==;
+	bh=uOzQv6AaWTlFrQzkmwQI0UtFso0mAywnshBRsL5OMTU=; b=RJXsRqZvbDtacH2fMPWXUAcc8f
+	19xY1k2B1L+B3sz+nSvP5Vvd/3cZg79Wh2fj85XtIbVCKcklNLM7uUzw4aBhsRGKUtx5OLOdtm+T1
+	wK4geq3aTZQ+s+vi1bJhlGe9c7I+ctbKuv8fqaSC6suZbPsByHxaPq2OJYfob9b3Y7dOKrsjPeKH1
+	TwI8GNf+1hR+dZecSDqWavXFqjLPAMc2qOESXygZ9nfir7CbvTc3cFnV1qmsEXGP0LdM2qFmKzVUD
+	E2EF03wV65Thmx13zIgrLjqGn/rq5ZaFW12Y28Qqzs9CyI50+VvI5d/h6zM7y2F1WTLIMrZjVkIWg
+	UEORPtDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u03Kh-00000006zl9-07vg;
-	Wed, 02 Apr 2025 19:01:03 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1u08Bg-00000007Trd-26l7;
+	Thu, 03 Apr 2025 00:12:04 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u03KT-00000006zjP-1B4G;
-	Wed, 02 Apr 2025 19:00:50 +0000
-Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 532C1hZx024534;
-	Wed, 2 Apr 2025 19:00:28 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	ij6oVdOz4GhS0vGrhbityqjcv93TkR0sIrqUodkZMFk=; b=hYhD7pVNIeDwDBrW
-	RdO5PrMwS8sO1ippIQSGUyIYQ2aHb7qJuvA8S/CTVfe+wl3fGVcBkK+tVHJeC/Fq
-	hL0quAhjsZgdxh4KYOc6r2i6Gy0K17YxXYIvcN3aAPcOVgVQfvxnN1L1QRwh3B/f
-	iNw133fc//aUQBjMULW74HoUe6hVoYaUgy9HMacMC7MaMwE5l9UNz5swOuqq8Os5
-	wu3dTwbUcX100OEvJokqUmtO2Ui7Bihi+ChA5Cq0uSXw6qzZZsLnr5JqmT6CIlBj
-	jsmAF8BSmVLuxw7LwpPsMxs6waa4SBRHV0VIQ6IaNJwJBe63uNd47fsw3lzvLxqP
-	V7jENg==
-Received: from nasanppmta05.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 45rbpywh5x-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 02 Apr 2025 19:00:28 +0000 (GMT)
-Received: from nasanex01a.na.qualcomm.com (nasanex01a.na.qualcomm.com [10.52.223.231])
-	by NASANPPMTA05.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTPS id 532J0RBJ002057
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 2 Apr 2025 19:00:27 GMT
-Received: from [10.46.162.103] (10.80.80.8) by nasanex01a.na.qualcomm.com
- (10.52.223.231) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Wed, 2 Apr 2025
- 12:00:26 -0700
-Message-ID: <1b87152e-ff0f-9c45-020d-4927ff3dbef8@quicinc.com>
-Date: Wed, 2 Apr 2025 12:00:26 -0700
+	id 1u07gk-00000007Qw5-3lM3;
+	Wed, 02 Apr 2025 23:40:06 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 76E8D614BD;
+	Wed,  2 Apr 2025 23:39:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1E755C4CEE9;
+	Wed,  2 Apr 2025 23:40:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1743637206;
+	bh=Bt2+ylCDCULSGt5nLv1shq3mwylcM3/US0MV5+Bai3s=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=NvLOcdmE4l2qunB8uuJ67ncdOG2IEdK1AwwNhnWxwLXiqL94NF+4TigyAPrOZy1YT
+	 vDJ3LbOECt9UgC8XXj5OvqBe0fcCZQm31/xokCwbvm3sAGteCFu0zIiDPqDM/rR1M2
+	 v/4LZTTy4Mb88mCNliHqFch2PmGR+caOGMBrNwGP7EoGz3XgeV9ml3YgP+3KSoFoD9
+	 dFR8w7ugtKdqGbrOZqN9CzANKTsVaMgI5HthfVlnpg7dDH3pd+rk9DUau5/xeHIweV
+	 G90Hz8FJOGqrNDDXMW1S5yKGvixVSYrS+vTy3W6icjUTxF1BJqaSyXU6hCkEFEtaD/
+	 515vir6l/KUqQ==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 33B76380CEE3;
+	Wed,  2 Apr 2025 23:40:44 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Subject: Re: [PATCH v4 1/1] scsi: ufs: core: add device level exception
- support
-Content-Language: en-US
-To: "manivannan.sadhasivam@linaro.org" <manivannan.sadhasivam@linaro.org>,
-        Bart Van Assche <bvanassche@acm.org>
-CC: Arthur Simchaev <Arthur.Simchaev@sandisk.com>,
-        "quic_cang@quicinc.com"
-	<quic_cang@quicinc.com>,
-        "quic_nitirawa@quicinc.com"
-	<quic_nitirawa@quicinc.com>,
-        "avri.altman@wdc.com" <avri.altman@wdc.com>,
-        "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
-        "minwoo.im@samsung.com"
-	<minwoo.im@samsung.com>,
-        "adrian.hunter@intel.com" <adrian.hunter@intel.com>,
-        "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
-        "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
-        Alim Akhtar
-	<alim.akhtar@samsung.com>,
-        "James E.J. Bottomley"
-	<James.Bottomley@hansenpartnership.com>,
-        Matthias Brugger
-	<matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>,
-        Bean Huo <beanhuo@micron.com>,
-        Keoseong Park <keosung.park@samsung.com>,
-        Ziqi Chen
-	<quic_ziqichen@quicinc.com>,
-        Al Viro <viro@zeniv.linux.org.uk>,
-        "Gwendal
- Grignou" <gwendal@chromium.org>,
-        Eric Biggers <ebiggers@google.com>,
-        open
- list <linux-kernel@vger.kernel.org>,
-        "moderated list:ARM/Mediatek SoC
- support:Keyword:mediatek" <linux-arm-kernel@lists.infradead.org>,
-        "moderated
- list:ARM/Mediatek SoC support:Keyword:mediatek"
-	<linux-mediatek@lists.infradead.org>
-References: <4370b3a3b5a5675bb3e75aaa48a273674c159339.1742526978.git.quic_nguyenb@quicinc.com>
- <SA2PR16MB4251229744D717821D3D8353F4A72@SA2PR16MB4251.namprd16.prod.outlook.com>
- <c5ab13ec-f650-ea10-5cb8-d6a2ddf1e825@quicinc.com>
- <0a68d437-5d6a-42aa-ae4e-6f5d89cfcaf3@acm.org>
- <ad246ef4-7429-63bb-0279-90738736f6e3@quicinc.com>
- <3d7b543c-1165-42e0-8471-25b04c7572ac@acm.org>
- <4cb20c80-9bb0-e147-e3c0-467f4c8828ba@quicinc.com>
- <989e695e-e6a4-4427-9041-e39ecf5b5674@acm.org>
- <yzy7oad77h744vf2bdylkm4fronemjwvrmlstnj6x5lzjxg672@zya6toqv4aeg>
-From: "Bao D. Nguyen" <quic_nguyenb@quicinc.com>
-In-Reply-To: <yzy7oad77h744vf2bdylkm4fronemjwvrmlstnj6x5lzjxg672@zya6toqv4aeg>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
- nasanex01a.na.qualcomm.com (10.52.223.231)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: nuJyCFbkUJbHjGlJ8RMkEV0OQHadcz5I
-X-Proofpoint-ORIG-GUID: nuJyCFbkUJbHjGlJ8RMkEV0OQHadcz5I
-X-Authority-Analysis: v=2.4 cv=ZNLXmW7b c=1 sm=1 tr=0 ts=67ed894c cx=c_pps a=JYp8KDb2vCoCEuGobkYCKw==:117 a=JYp8KDb2vCoCEuGobkYCKw==:17 a=GEpy-HfZoHoA:10 a=IkcTkHD0fZMA:10 a=XR8D0OoHHMoA:10 a=KKAkSRfTAAAA:8 a=Si26H9tSdrSrRDVtBSgA:9 a=QEXdDO2ut3YA:10
- a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1095,Hydra:6.0.680,FMLib:17.12.68.34
- definitions=2025-04-02_08,2025-04-02_03,2024-11-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 spamscore=0
- lowpriorityscore=0 clxscore=1015 mlxscore=0 adultscore=0 mlxlogscore=999
- priorityscore=1501 bulkscore=0 suspectscore=0 malwarescore=0 phishscore=0
- impostorscore=0 classifier=spam authscore=0 authtc=n/a authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2502280000
- definitions=main-2504020121
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250402_120049_339817_BC0077AB 
-X-CRM114-Status: GOOD (  15.41  )
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net] net: airoha: Fix qid report in
+ airoha_tc_get_htb_get_leaf_queue()
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <174363724274.1716091.6235443928429080409.git-patchwork-notify@kernel.org>
+Date: Wed, 02 Apr 2025 23:40:42 +0000
+References: <20250331-airoha-htb-qdisc-offload-del-fix-v1-1-4ea429c2c968@kernel.org>
+In-Reply-To: <20250331-airoha-htb-qdisc-offload-del-fix-v1-1-4ea429c2c968@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -144,25 +72,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 4/2/2025 12:49 AM, manivannan.sadhasivam@linaro.org wrote:
-> Yeah, we should be cautious in changing the uAPI header as it can break the
-> userspace applications. Annotating the members that need packed attribute seems
-> like the way forward to me.
+Hello:
 
-Yes, I realized potential issue when Bart raised a concern.
+This patch was applied to netdev/net.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
+On Mon, 31 Mar 2025 08:52:53 +0200 you wrote:
+> Fix the following kernel warning deleting HTB offloaded leafs and/or root
+> HTB qdisc in airoha_eth driver properly reporting qid in
+> airoha_tc_get_htb_get_leaf_queue routine.
 > 
-> Though, I'd like to understand which architecture has the alignment constraint
-> in this structure. Only if an architecture requires 8 byte alignment for __be32
-> would be a problem. That too only for osf7 and reserved. But I'm not aware of
-> such architectures in use.
-When using "__u64 value;" in place of osf3-6, I saw the compiler padded 
-4 bytes, so __packed was needed for me to get correct __u64 value. I 
-thought even the existing structure utp_upiu_query_v4_0 may need 
-__packed on some fields where the driver reads the returned data in 
-order to be safe across all architectures. However, without evidence of 
-an actual failure, I didn't touch the existing structure. Only raised 
-potential issue for discussion.
+> $tc qdisc replace dev eth1 root handle 10: htb offload
+> $tc class add dev eth1 arent 10: classid 10:4 htb rate 100mbit ceil 100mbit
+> $tc qdisc replace dev eth1 parent 10:4 handle 4: ets bands 8 \
+>  quanta 1514 3028 4542 6056 7570 9084 10598 12112
+> $tc qdisc del dev eth1 root
+> 
+> [...]
 
-Thanks, Bao
+Here is the summary with links:
+  - [net] net: airoha: Fix qid report in airoha_tc_get_htb_get_leaf_queue()
+    https://git.kernel.org/netdev/net/c/57b290d97c61
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
