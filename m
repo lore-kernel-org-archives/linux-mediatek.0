@@ -4,91 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 213DEC36017
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Apr 2025 15:36:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11625C3601A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Apr 2025 15:37:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TMIWEgwFtWafyi1/bv5jf0ov4gPA0B6DmtDQeyIS7xQ=; b=oRZqSIlZZfwOImHyDVD0qyhs26
-	Gu/4OcyMp84AcEERPc/r0XKf0/W1OXDQAqscLUpfez01XqBIcmj/GlhvcOOuHhFTSTGvtCWrRRmV3
-	/u3bqJ8GM9WwKKuKqQgBUzSd0YXq4CJDJWNJ5GC1R2f+eWMdflk5ciyOVy4FzmHOBg87eKkUx0V3K
-	GtLjEpPYnZOKTMpGVmiN0Dkq7rOaU3jTbqJ8rNR7MbUwZaIRXEHCAuYA54duBQsNTy12YCizdvt09
-	tgO7zEO45VNfT0YdMo0bCeWKc4DBaEZiQJbmrJWYVM/Y7NR7o/FvFULA9o/0eDCSaUGIxrfmKXuZX
-	lSLzzgWw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qHeI/enDitFlBEcc048aGVEh0jINU/AtcrHazOovAk8=; b=M4OT5ca9gcuAae+TpNDXfZ9Kn3
+	GCt9AWmsqObi8I+R5HDurce/fMs3f30X6mbURt5Dhqg85hTkw27MJsuhQ2VEv15YqJVSBk+f8qkN4
+	XruPIzzAz0a6dujJtyjC8yegwlb+nD3z951lE5gShv4DJePfz6FPLkRNOyF+4tNezIvc47/EUmo8f
+	W0LOdx9TXPcc6ol7ZiD75GsxGcJ/8XGYAddiSqq9tYuW+oPFHj/IDs9Oxo+Ou2ED2krVPTWuxoZTx
+	zagOE3q3aJMmjNwwPMW9VEZ+bOEjZS9gO8fSbMt/wiQr/cW3bsKMiqTI6PSxo29BIAidGxBUpPtaY
+	vcob46Vg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u008Q-00000006XKi-0dQ1;
-	Wed, 02 Apr 2025 15:36:10 +0000
-Received: from mail-qt1-x829.google.com ([2607:f8b0:4864:20::829])
+	id 1u00A9-00000006XXU-0Zwf;
+	Wed, 02 Apr 2025 15:37:57 +0000
+Received: from dispatch1-us1.ppe-hosted.com ([148.163.129.48])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u007J-00000006XE6-13Cm
+	id 1u007R-00000006XFu-3N0Z
 	for linux-mediatek@lists.infradead.org;
-	Wed, 02 Apr 2025 15:35:02 +0000
-Received: by mail-qt1-x829.google.com with SMTP id d75a77b69052e-4769bbc21b0so61534691cf.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 02 Apr 2025 08:35:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1743608099; x=1744212899; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=TMIWEgwFtWafyi1/bv5jf0ov4gPA0B6DmtDQeyIS7xQ=;
-        b=KlRwsR6SNbXgKfG3lAsdKvRQ6/X0Crz8O63/5dJUGXOy7YgN/kaTihaGzcw+ps7syC
-         AwcKR7iqttYlXbvvBVV61Ez9oY2WP3khaj8+Cu7C5cMOXVm15o/BxRN9aReDhOoeE6om
-         HSOdhJFOvyQpSPtDWlEgEVLUqexpwu3cfo7p6TILItAkcwWbecY9zJhD89BrdkthNt4s
-         GDozrn6xCoo56o2LClGpC6s1sS2PdkLxzd36YUwJ+Vay+dYwGe7kGD/PztUSWNsX7Mj+
-         fGVWruMLK7x0yRayYP/RQUYu/wpiDCIhDNCvzHi+yUqEjoaPUICot6wuxqMB1/lRIixT
-         6Krw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743608099; x=1744212899;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=TMIWEgwFtWafyi1/bv5jf0ov4gPA0B6DmtDQeyIS7xQ=;
-        b=T4TfVi7zLHGQX7cHdE4XFOoIRi7cwxJOwOp2ODPJHJ0+iwdpPlCOPS0XNOBC+YoV37
-         PbpgNrc28p9LHcypKq+AN5h28B46QTVlOpCHdJOL5SOmuHhOegYY3/QEm98mY48+2gdY
-         4cn9lG/dCYTWLhHOvMRpb//39K7a9+zsYoNL1q2BF2Qq/ZDphT+WGbIidwGXwRMM/Fyg
-         NOR6Pp/vrDh5hKiFErmQLE9WyBNoG5zhgK9bcDKyMoRVNQ0wyXX7Wo0v4aXeIntn5hjH
-         ShWPYt40T/Ec5A5Qx9MPDliuk7mzfIF9N0L0PIow0i7BnfKZ05BPV/+CvVpclgQaJt+z
-         VsYA==
-X-Forwarded-Encrypted: i=1; AJvYcCXUiZ2MWFtSXvi/xkHjQwYwVVcly+rbVxagfBcHpcVyrJCb6GrfT1uXxDom1cH85qNMbC0+8VUIH069ZZ3fXA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy38rTDqK9j2V8pwAt4u9jle0oQCUk4RLYIwFdLtbJWm1qI0ckg
-	4mb5T4522C/LGvBRpXUvKF5de+3Qx1ie4U+HUlhzTDnezD6grSUwK58Js+OmjFY=
-X-Gm-Gg: ASbGncv7GYwbaHIrIf3mmezTV2N0Gyo5YMWvBRi9BuD0qZCmWBg9ZfZZiZAzFWK0h0E
-	0pz2qglSZa9bqE8GsaZHmrlkQbOzoIu52b2Kw64FrRttAakN9Hppzi8ooixg/zZl1GSX4E2pZsy
-	e80jAZB3sqzmqUjfZCMu/sFQ99fsxctu9MORmOs2alyfJWd7QkamOI7+ENMNPlAnxta5HsFUH+l
-	X18VzbB0STuow7kKBqDjkH6xUetPHFmFcLZn3Ctkg8dTJq/SjytTW4pyOXLKC3BW2WhiJQyV97t
-	dXTotpYpa9IQOqJ0/n50/RCTQeyVlPwciwHd/w6ikh7CKwEJxA==
-X-Google-Smtp-Source: AGHT+IF86UTdqujtK2ylyC4iKj51JDYDBGg0ZkrtMCZ8qTcR6Ji/O+4OQfsimKWJomrOBg7nwZAemg==
-X-Received: by 2002:ac8:5991:0:b0:476:9e82:6515 with SMTP id d75a77b69052e-47909fa7e14mr42821291cf.23.1743608099524;
-        Wed, 02 Apr 2025 08:34:59 -0700 (PDT)
-Received: from ?IPv6:2606:6d00:11:e976::5ac? ([2606:6d00:11:e976::5ac])
-        by smtp.gmail.com with ESMTPSA id d75a77b69052e-47782a7fbf4sm80192371cf.39.2025.04.02.08.34.58
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 02 Apr 2025 08:34:59 -0700 (PDT)
-Message-ID: <8fe576366e52d530d0507d8475fb52210a27b6df.camel@ndufresne.ca>
-Subject: Re: [PATCH] media: mediatek: vcodec: Correct vsi_core framebuffer
- size
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Fei Shao <fshao@chromium.org>, Hans Verkuil <hverkuil@xs4all.nl>, Mauro
- Carvalho Chehab <mchehab@kernel.org>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Yunfei Dong
-	 <yunfei.dong@mediatek.com>, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org
-Date: Wed, 02 Apr 2025 11:34:57 -0400
-In-Reply-To: <20250314075703.4167532-1-fshao@chromium.org>
-References: <20250314075703.4167532-1-fshao@chromium.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.0 (3.56.0-1.fc42) 
+	Wed, 02 Apr 2025 15:35:11 +0000
+Received: from engine.ppe-hosted.com (unknown [10.7.65.235])
+	by dispatch1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTPS id A034E60159;
+	Wed,  2 Apr 2025 15:35:08 +0000 (UTC)
+X-Virus-Scanned: Proofpoint Essentials engine
+Received: from mail3.candelatech.com (mail.candelatech.com [208.74.158.173])
+	by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id CFD55A800B7;
+	Wed,  2 Apr 2025 15:35:04 +0000 (UTC)
+Received: from [192.168.100.159] (unknown [50.251.239.81])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by mail3.candelatech.com (Postfix) with ESMTPSA id 3A17113C2B0;
+	Wed,  2 Apr 2025 08:35:04 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com 3A17113C2B0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=candelatech.com;
+	s=default; t=1743608104;
+	bh=1U55AuNF9Zw5tptF5+2WY9llHsrHeffahgoSOBnxAVk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=FKNGCy23K0a4xEaSzzcSYqgSH09WZCtvAGtFgaQp4azFqE83HSLqedAIzrNKKWcYn
+	 BIXeY7u3zYMvn+Ga/vju8Wp1jwq9DCC4+IjRcnLrx/fie38H68g6MUvvISOSjr45ZA
+	 HYBmfbBTi7VpKtIkmITebmR0z49GQRDHVlBC7ZOw=
+Message-ID: <90f222c1-518d-90a2-6ae5-47cb13692c8b@candelatech.com>
+Date: Wed, 2 Apr 2025 08:35:03 -0700
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH 09/10] wifi: mt76: mt7996: rework background radar check
+ for mt7990
+To: Ping-Ke Shih <pkshih@realtek.com>, Shayne Chen
+ <shayne.chen@mediatek.com>, Felix Fietkau <nbd@nbd.name>
+Cc: linux-wireless <linux-wireless@vger.kernel.org>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
+ Evelyn Tsai <evelyn.tsai@mediatek.com>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>,
+ StanleyYP Wang <StanleyYP.Wang@mediatek.com>
+References: <20250328055058.1648755-1-shayne.chen@mediatek.com>
+ <20250328055058.1648755-10-shayne.chen@mediatek.com>
+ <59abf964667144b0ab10220e41b6b821@realtek.com>
+ <29344a3f054368ae948415d6183365a09d1fe6d5.camel@mediatek.com>
+ <44832c3d3a74429aaa095bdba4573391@realtek.com>
+Content-Language: en-US
+From: Ben Greear <greearb@candelatech.com>
+Organization: Candela Technologies
+In-Reply-To: <44832c3d3a74429aaa095bdba4573391@realtek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-MDID: 1743608106-awR-MG-B6MkV
+X-MDID-O: us5;ut7;1743608106;awR-MG-B6MkV;<greearb@candelatech.com>;6f4ef9b9d2914700e150fb80c2b35f23
+X-PPE-TRUSTED: V=1;DIR=OUT;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250402_083501_559279_5671B7E4 
-X-CRM114-Status: GOOD (  16.23  )
+X-CRM114-CacheID: sfid-20250402_083509_886349_C676BC16 
+X-CRM114-Status: GOOD (  15.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,50 +92,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On 4/1/25 18:30, Ping-Ke Shih wrote:
+> Shayne Chen <shayne.chen@mediatek.com> wrote:
+> 
+>> On Mon, 2025-03-31 at 05:55 +0000, Ping-Ke Shih wrote:
+>>>
+>>>
+>>> Shayne Chen <shayne.chen@mediatek.com> wrote:
+>>>
+>>> [...]
+>>>
+>>>> +
+>>>> +bool mt7996_eeprom_has_background_radar(struct mt7996_dev *dev)
+>>>> +{
+>>>> +       switch (mt76_chip(&dev->mt76)) {
+>>>> +       case MT7996_DEVICE_ID:
+>>>> +               if (dev->var.type == MT7996_VAR_TYPE_233)
+>>>> +                       return false;
+>>>> +               break;
+>>>> +       case MT7992_DEVICE_ID:
+>>>> +               if (dev->var.type == MT7992_VAR_TYPE_23)
+>>>> +                       return false;
+>>>> +               break;
+>>>> +       case MT7990_DEVICE_ID: {
+>>>> +               u8 path, rx_path, nss, *eeprom = dev-
+>>>>> mt76.eeprom.data;
+>>>> +
+>>>> +               mt7996_eeprom_parse_stream(eeprom, MT_BAND1, &path,
+>>>> &rx_path, &nss);
+>>>> +               /* Disable background radar capability in 3T3R */
+>>>> +               if (path == 3 || rx_path == 3)
+>>>> +                       return false;
+>>>> +               break;
+>>>> +       }
+>>>
+>>> The indentation of close brace looks weird.
+>>
+>> Will fix it, thanks.
+>>>
+>>> Since -Wdeclaration-after-statement is dropped, I think compilers
+>>> will not
+>>> warn without the braces. But note that it is still not recommended to
+>>> put declarations in the middle.
+>>>
+>> Since those variables are currently only used by mt7990 case, I think
+>> they can be putting there for the moment.
+> 
+> That looks not very natural though...
+> 
+> In fact, the declarations either in beginning of this function or at the
+> mt7990 case, the frame size (stack) are the same.
 
-Le vendredi 14 mars 2025 =C3=A0 15:56 +0800, Fei Shao a =C3=A9crit=C2=A0:
-> The framebuffer size for decoder instances was being incorrectly set -
-> inst->vsi_core->fb.y.size was assigned twice consecutively.
->=20
-> Assign the second picinfo framebuffer size to the C framebuffer instead,
-> which appears to be the intended target based on the surrounding code.
->=20
-> Fixes: 2674486aac7d ("media: mediatek: vcodec: support stateless hevc dec=
-oder")
-> Signed-off-by: Fei Shao <fshao@chromium.org>
-> ---
->=20
-> =C2=A0.../mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 2 +-
-> =C2=A01 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hev=
-c_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec=
-_hevc_req_multi_if.c
-> index aa721cc43647..2725db882e5b 100644
-> --- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_m=
-ulti_if.c
-> +++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_m=
-ulti_if.c
-> @@ -821,7 +821,7 @@ static int vdec_hevc_slice_setup_core_buffer(struct v=
-dec_hevc_slice_inst *inst,
-> =C2=A0	inst->vsi_core->fb.y.dma_addr =3D y_fb_dma;
-> =C2=A0	inst->vsi_core->fb.y.size =3D ctx->picinfo.fb_sz[0];
-> =C2=A0	inst->vsi_core->fb.c.dma_addr =3D c_fb_dma;
-> -	inst->vsi_core->fb.y.size =3D ctx->picinfo.fb_sz[1];
-> +	inst->vsi_core->fb.c.size =3D ctx->picinfo.fb_sz[1];
+The open parens make it the start of a new code block, so even strict
+old c compilers should handle this just fine, and I personally like
+variables kept to a tight local scope if possible.  Unless there is a
+technical reason to change the code, then there are probably more important
+things to worry about.
 
-To Yunfei, this information is copied to be passed to the CORE, is that
-value not used by the firmware ? I can see that everything else in the
-driver uses the picinfo structure. I'm simply trying to understand why
-that didn't break anything and what is the implication before this fix,
-so I can determin is that's more or less cosmetic at the moment. That
-being asked, I'll give it my:
+Thanks,
+Ben
 
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+-- 
+Ben Greear <greearb@candelatech.com>
+Candela Technologies Inc  http://www.candelatech.com
 
-> =C2=A0
-> =C2=A0	inst->vsi_core->dec.vdec_fb_va =3D (unsigned long)fb;
-> =C2=A0
+
 
