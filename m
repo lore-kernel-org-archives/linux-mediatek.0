@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 011B6C28B20
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Apr 2025 12:58:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7093FC28B20
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Apr 2025 13:07:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=A2Chr44f9vlOMc7f4E8oimX2NcpgIX6xoXL220imPLo=; b=j5rtbyO+2urt5IeM3z+qdAZeOv
-	QzlSs6bEhxdVCsXK2DJOgSMKz+wEf4R52FwPXgra6neKHZ33/ATFDAcUsmgxxrzFeXIioHN+vH7r9
-	tYT5NtGv/QXImKIzi32uiNB5kl48Ii63eGHckV0c+oCQ1NgRQ9j97EudqcPgLs92C1/5wD+Gnz1ro
-	YnOgYCPH9P4eWK/PehihyInDeUJqjIDQLUKhxfwcA133onXOvZFJ1F0ZzbSn1l2HchFpcXcwVxleC
-	fPp59mb5/0sR8O5VJQDDBRjCdVR58erYILkr/ghdO84sQEZz3Bm3cyveHYhZ422ANcdZ8Uh8iNHDh
-	O1Dq+EKw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jkLZTgUTl0od51OvChnwPqYfzOJOlJAUzehMCgDZQSE=; b=BSobVq60elt21OmEpY+OVqqZ03
+	g11F88ry3KJ8bVquCoWFVC8pne+TRHWv7DeWUNtISOHIqpYeQHa/9hcWfEslE3oQKHNcEJuWq49kX
+	oaz61wzGY4fT/hDGc9tQ8PUKLWYnz5wSV8ySPk3WUCNJpYAYiKzTf53dSqFMdmNK1q6kBEHDInsHI
+	zyT12Zw7cM1F0S3ELWNeQ2au9zdUbdcqW/+F5Cq6s/tS0IGeI45QWiPhQkj0kvVixyN4SipSgXM8D
+	o+snVXyI2oT5zEJ/bwtAl4+CPHNfnLX98vu0d4fI4hQMHDnDc4xugi1McWIWlIABklR3qqVC4sXsL
+	22djNXmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzxg8-00000006AU0-3CmN;
-	Wed, 02 Apr 2025 12:58:48 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1tzxoK-00000006CJu-1ixn;
+	Wed, 02 Apr 2025 13:07:16 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1tzxcu-000000069uF-1zA3;
-	Wed, 02 Apr 2025 12:55:28 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id D504661162;
-	Wed,  2 Apr 2025 12:55:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E2860C4CEDD;
-	Wed,  2 Apr 2025 12:55:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1743598527;
-	bh=KLUcO4PETxRtJ7bSzZDcl4QzL3KsG5+5Tq3fAEUTpLQ=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=IXkHxxk41GO44tK70RVcRfKfgdhBtcyxVbaLKM7n4Z3jxTjVgb3zuO0Sb3Dzzu+22
-	 wdHoqCt+9NhCXNfexVLwZU1cheoCxr6z97bLZF5ZMoGy/p3Kg0kGcKtU0mcka0FdhB
-	 LRJGQD+ODZNaI6ID56uO1l9rR7hjfxaD5is34slsc3l+sRBEt05yah6cGDXNSSr1+o
-	 vVAXjen+z1rwrHTUvB1Rzg+wQ0F9Gs6+O2Fy6nbLmVtfQ2dc03MGPh2pCCddjauqNR
-	 d9rBiHU91AUWGHp2Y3l86l3+Jly/zOTeMBsW7/Fbp7FMRR+g2jWIkcW/QhwNQ+frK7
-	 zlCYyYqqzbigA==
-Date: Wed, 02 Apr 2025 07:55:26 -0500
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1tzxkW-00000006BYV-392m;
+	Wed, 02 Apr 2025 13:03:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1743598998;
+	bh=QChMnVhP79OYUjktTjNwX0bo36faAS1EdEROK2OJg3s=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=WyXnBZMel3gNh7BZTQeXHJGyXEMggDb6Ha5exyzx+nLrvLq1/B8RHRfUmtj8FypP+
+	 Vkz8TII3BK5E3bDvqrYBABKa2/V817tfqeu05lLzur/T741v8UJJgQ8XOFfV1XyxQO
+	 8dapgOlOLD7RlL76DvYA2w6TYQFDugIw0p8zbKrzzP3CPTsTxfjxMxRTTaW2M6bpsJ
+	 VMk9lbuenzw9Ka9d6cXRQGS33z5ehjZDoRFkJ6D/Vsx/LL1SKbiZg8jIXA0z8QAx/g
+	 BjVahbvnUI15ISXLMPlE9SFlieT2Q9UCoY1GwqYJYNre277nqFpvtndNE3fAEJBhwh
+	 7QRCXfxXRMXQg==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id BD74917E0385;
+	Wed,  2 Apr 2025 15:03:17 +0200 (CEST)
+Message-ID: <4d916221-d9ea-4e08-8d22-1be1982323ee@collabora.com>
+Date: Wed, 2 Apr 2025 15:03:17 +0200
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: linux-kernel@vger.kernel.org, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- linux-remoteproc@vger.kernel.org, 
- Mathieu Poirier <mathieu.poirier@linaro.org>, hailong.fan@mediatek.com, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, 
- Bjorn Andersson <andersson@kernel.org>, 
- Xiangzhi Tang <Xiangzhi.Tang@mediatek.com>, 
- linux-mediatek@lists.infradead.org, 
- Project_Global_Chrome_Upstream_Group@mediatek.com, jjian.zhou@mediatek.com, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>
-To: Xiangzhi Tang <xiangzhi.tang@mediatek.com>
-In-Reply-To: <20250402092134.12293-2-xiangzhi.tang@mediatek.com>
-References: <20250402092134.12293-1-xiangzhi.tang@mediatek.com>
- <20250402092134.12293-2-xiangzhi.tang@mediatek.com>
-Message-Id: <174359852621.53914.11998352307162389918.robh@kernel.org>
-Subject: Re: [PATCH 1/2] dt-bindings: remoteproc: Add VCP support for
- mt8196
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/2] rtc: mt6397: Fix mt6357 RTC year offset handling
+ for hwclock commands
+To: Alexandre Mergnat <amergnat@baylibre.com>,
+ Eddie Huang <eddie.huang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Macpaul Lin <macpaul.lin@mediatek.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-rtc@vger.kernel.org, linux-kernel@vger.kernel.org
+References: <20250109-enable-rtc-v2-0-d7ddc3e73c57@baylibre.com>
+ <20250109-enable-rtc-v2-2-d7ddc3e73c57@baylibre.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250109-enable-rtc-v2-2-d7ddc3e73c57@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250402_060320_966463_95B76FB6 
+X-CRM114-Status: GOOD (  24.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,49 +80,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Wed, 02 Apr 2025 17:19:24 +0800, Xiangzhi Tang wrote:
-> Add the new binding document for MediaTek Video Companion
-> Processor(VCP) on MediaTek mt8196.
+Il 02/04/25 12:51, Alexandre Mergnat ha scritto:
+> The mt6357 RTC was failing when using the `hwclock -r --verbose` command,
+> despite reading correctly through sysfs. There is high chance for other
+> platform to be impacted by the year offset handling issue.
 > 
-> Signed-off-by: Xiangzhi Tang <xiangzhi.tang@mediatek.com>
+> The hardware RTC registers store years relative to 1968, but the driver
+> wasn't consistently applying the offset when converting between
+> hardware and Linux time representation.
+> 
+> This inconsistency caused alarm rollover failures during device
+> registration, with the error "alarm rollover not handled -22" in the
+> logs, causing hwclock commands to fail.
+> 
+> The ioctl interface used by the hwclock command requires proper time
+> range validation that wasn't happening with the inconsistent year
+> offsets.
+> 
+> Fixes the issue by applying the year offset in all operations:
+>     - Adding (RTC_MIN_YEAR - RTC_BASE_YEAR) when reading from hardware
+>     - Subtracting the same offset when writing to hardware
+>     - Using the same logic for both regular time and alarm operations
+> 
+> With these changes, the hwclock command works correctly and time
+> values are consistently handled across all interfaces.
+> 
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 > ---
->  .../remoteproc/mediatek,mt8196-vcp.yaml       | 174 ++++++++++++++++++
->  1 file changed, 174 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/remoteproc/mediatek,mt8196-vcp.yaml
+>   drivers/rtc/rtc-mt6397.c | 13 ++++++++-----
+>   1 file changed, 8 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
+> index 692c00ff544b2..ba52e225dc8fa 100644
+> --- a/drivers/rtc/rtc-mt6397.c
+> +++ b/drivers/rtc/rtc-mt6397.c
+> @@ -77,7 +77,8 @@ static int __mtk_rtc_read_time(struct mt6397_rtc *rtc,
+>   	tm->tm_mday = data[RTC_OFFSET_DOM];
+>   	tm->tm_wday = data[RTC_OFFSET_DOW];
+>   	tm->tm_mon = data[RTC_OFFSET_MTH] & RTC_TC_MTH_MASK;
+> -	tm->tm_year = data[RTC_OFFSET_YEAR];
+> +	/* The RTC registers store years since 1968 (hardware's base year) */
+> +	tm->tm_year = data[RTC_OFFSET_YEAR] + (RTC_MIN_YEAR - RTC_BASE_YEAR);
+
+This patch received a NACK because of RTC_MIN_YEAR_OFFSET.
+
+What you're doing here is avoiding to use the "RTC_MIN_YEAR_OFFSET" definition name
+but otherwise doing the very same thing that was NACKed before.
+
+Regards,
+Angelo
+
+>   
+>   	ret = regmap_read(rtc->regmap, rtc->addr_base + RTC_TC_SEC, sec);
+>   exit:
+> @@ -119,7 +120,8 @@ static int mtk_rtc_set_time(struct device *dev, struct rtc_time *tm)
+>   	data[RTC_OFFSET_DOM] = tm->tm_mday;
+>   	data[RTC_OFFSET_DOW] = tm->tm_wday;
+>   	data[RTC_OFFSET_MTH] = tm->tm_mon;
+> -	data[RTC_OFFSET_YEAR] = tm->tm_year;
+> +	/* Convert from tm_year (years since 1900) to RTC register format (years since 1968) */
+> +	data[RTC_OFFSET_YEAR] = tm->tm_year - (RTC_MIN_YEAR - RTC_BASE_YEAR);
+>   
+>   	mutex_lock(&rtc->lock);
+>   	ret = regmap_bulk_write(rtc->regmap, rtc->addr_base + RTC_TC_SEC,
+> @@ -165,8 +167,8 @@ static int mtk_rtc_read_alarm(struct device *dev, struct rtc_wkalrm *alm)
+>   	tm->tm_hour = data[RTC_OFFSET_HOUR] & RTC_AL_HOU_MASK;
+>   	tm->tm_mday = data[RTC_OFFSET_DOM] & RTC_AL_DOM_MASK;
+>   	tm->tm_mon = data[RTC_OFFSET_MTH] & RTC_AL_MTH_MASK;
+> -	tm->tm_year = data[RTC_OFFSET_YEAR] & RTC_AL_YEA_MASK;
+> -
+> +	/* Apply the same offset conversion for alarm read */
+> +	tm->tm_year = (data[RTC_OFFSET_YEAR] & RTC_AL_YEA_MASK) + (RTC_MIN_YEAR - RTC_BASE_YEAR);
+>   	tm->tm_mon--;
+>   
+>   	return 0;
+> @@ -200,8 +202,9 @@ static int mtk_rtc_set_alarm(struct device *dev, struct rtc_wkalrm *alm)
+>   				(tm->tm_mday & RTC_AL_DOM_MASK));
+>   	data[RTC_OFFSET_MTH] = ((data[RTC_OFFSET_MTH] & ~(RTC_AL_MTH_MASK)) |
+>   				(tm->tm_mon & RTC_AL_MTH_MASK));
+> +	/* Convert alarm year using the same offset as in read/write time */
+>   	data[RTC_OFFSET_YEAR] = ((data[RTC_OFFSET_YEAR] & ~(RTC_AL_YEA_MASK)) |
+> -				(tm->tm_year & RTC_AL_YEA_MASK));
+> +				((tm->tm_year - (RTC_MIN_YEAR - RTC_BASE_YEAR)) & RTC_AL_YEA_MASK));
+>   
+>   	if (alm->enabled) {
+>   		ret = regmap_bulk_write(rtc->regmap,
 > 
 
-My bot found errors running 'make dt_binding_check' on your patch:
-
-yamllint warnings/errors:
-
-dtschema/dtc warnings/errors:
-Documentation/devicetree/bindings/remoteproc/mediatek,mt8196-vcp.example.dts:26:18: fatal error: dt-bindings/power/mt8196-power.h: No such file or directory
-   26 |         #include <dt-bindings/power/mt8196-power.h>
-      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-compilation terminated.
-make[2]: *** [scripts/Makefile.dtbs:131: Documentation/devicetree/bindings/remoteproc/mediatek,mt8196-vcp.example.dtb] Error 1
-make[2]: *** Waiting for unfinished jobs....
-make[1]: *** [/builds/robherring/dt-review-ci/linux/Makefile:1522: dt_binding_check] Error 2
-make: *** [Makefile:248: __sub-make] Error 2
-
-doc reference errors (make refcheckdocs):
-Warning: Documentation/devicetree/bindings/remoteproc/mediatek,mt8196-vcp.yaml references a file that doesn't exist: Documentation/devicetree/bindings/mailbox/mediatek,mt8196-vcp-mbox.yaml
-Documentation/devicetree/bindings/remoteproc/mediatek,mt8196-vcp.yaml: Documentation/devicetree/bindings/mailbox/mediatek,mt8196-vcp-mbox.yaml
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250402092134.12293-2-xiangzhi.tang@mediatek.com
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
 
 
