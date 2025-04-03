@@ -4,71 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB338C3601B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Apr 2025 19:14:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EF09C36014
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Apr 2025 19:18:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LrgdlEKY3vHeRpr6ePF0ZMuONDmKmwStdhfSfnBrBaA=; b=vbO2CHwxDWz/biO//MQPRSfRB7
-	oPfXfxomH6isvhApzi4pbTCJLNT++8CpgM0pJa/BO46yhhnWGLKJRmB/WAZrOWlyPJ+2otOWQdHhX
-	sBDBo2xjzArD0LPbwsoiwWHrD97oD8WycTs52woJQdWUtg7X8ClP4zxWkIgG0q49CoDovflGezmRP
-	Nq6SIdYD5td7EvibT7WuiK4m4f2AdLB87orbkoC/qeqTpOmcHgSv8K700oeJeEXBsTP7E8lo0BGVf
-	UMFy1sdBaosFT2Z5mcFJmYy722QiohrLaQDj1tMxTLAnJXyg7NZDkI/wvKp8w3qszksFia43xhrnl
-	zJgnKJ+Q==;
+	bh=GWdLKGAnYLVYKNLEKoU2bBVM35N2T2bjMzPVcRFUn5s=; b=jMJ2Jjxnk+Z5/VtAwijCLWNhHc
+	n0c2Gkw7iEA//Nlism+56UjYMJeLPrGZLjoGE1Z41czj5Bbuz4G+GWiaIAZE18grJKJc0P7Sx2Pi2
+	9ycipvOqxVtFS2nQaxbbTSDr3tEI6+6D89xu2kOsxv9lgJw8Ym/qZkC1vUrwAaY2wy1S7Vi/T77P7
+	t/5+r33nJY4KWFtfVx18Eyd/EtU3b0nY0PHv9pB+0ova1zQ60jWN3lho+YyMI9ufWfJvMkU8uD3sZ
+	VZ7Un/Adt3MgQp/RkhCveBBg1BzMzNg3ysJI3B9TlkhGjzFHsJx/bGNL1qDOive/DhU5NZwE+qYYR
+	Sfrzb1VQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0Q1f-00000009gbo-0Gsb;
-	Thu, 03 Apr 2025 19:14:55 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1u0Q5E-00000009hxZ-1Ov2;
+	Thu, 03 Apr 2025 19:18:36 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0Puc-00000009eZT-3iBn;
-	Thu, 03 Apr 2025 19:07:40 +0000
+	id 1u0Pva-00000009eum-0vWV;
+	Thu, 03 Apr 2025 19:08:38 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 442175C6B9C;
-	Thu,  3 Apr 2025 19:05:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B0B3FC4CEE3;
-	Thu,  3 Apr 2025 19:07:36 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 7EF34614B5;
+	Thu,  3 Apr 2025 19:08:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E067CC4CEE8;
+	Thu,  3 Apr 2025 19:08:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1743707258;
-	bh=TsMNKRZtD/Lt/aSoZyhCzfbpGiFdx00T4FRyJB57hNs=;
+	s=k20201202; t=1743707317;
+	bh=GNHJfVzVNAlpwYr3o5Fo+VsNpqk3jsX89c60zyBrKwU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=hVW8vL7e1xnObUq227NMjJMkJOUaftRNq5dX0NOSUO8m6XaCQTmHjfsUjW55v9Hkl
-	 QrlY213UHrrhqyAG2bX2f4q8YPaBU7bFZiO/DuKeCWezUSCs38x6e8KaBfeHtEOBHB
-	 W7wEGdnqiTDI7McNBG9PwMTh1VxzX//AM5VaVF4rqpSoENdmmyDkPJpU90o8NxGyxB
-	 jBlPDlbClZcbnTXnlSVykwOXk/gRQpHS5TGyFNQaYtlP3cuUqd6l/v0ZI4xvGmgAGt
-	 LS5p9wvM82qg03ohJQPGVMp3nacsu4dlttfShyKQJn1EfyzXsjNMVVHfz+jxejxHZa
-	 PX9OJ5mEyk6rA==
+	b=IiXniznLUPnU5s4wS8HfXlaTnJn/xk4hdEdPMlBawrVec4B3Gl5LNchPJpYKajQdE
+	 RKHs/nrt8wrK6+Uajq3oyAmcNUfEXBVj105SHsGppy7nStlXqX7gM9WE5pMVNFFBPV
+	 EdtD+no0KNxw9Hm5fFLaaovmOGrTEwihKk6jhx23wMbkh23r3b/x/DUJv4YQRFIVUo
+	 LZNThAT7h/8q5vtq1beBErJvSukYgYBXeAsz8LpD/a5MxhEM7LqBCoNY9lzIv86L/m
+	 yleXcIDwcq0JMwYmGavbFo/9vksrWhQnhglo1gFpXjTRU+Zt0irciBZgr2/6P+5jZl
+	 Vs/SpjOB8gFCA==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Jiande Lu <jiande.lu@mediatek.com>,
-	Luiz Augusto von Dentz <luiz.von.dentz@intel.com>,
+Cc: Icenowy Zheng <uwu@icenowy.me>,
+	Felix Fietkau <nbd@nbd.name>,
 	Sasha Levin <sashal@kernel.org>,
-	marcel@holtmann.org,
-	luiz.dentz@gmail.com,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	linux-bluetooth@vger.kernel.org,
+	linux-wireless@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.12 43/47] Bluetooth: btusb: Add 2 HWIDs for MT7922
-Date: Thu,  3 Apr 2025 15:05:51 -0400
-Message-Id: <20250403190555.2677001-43-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.6 22/26] wifi: mt76: mt76x2u: add TP-Link TL-WDN6200 ID to device table
+Date: Thu,  3 Apr 2025 15:07:41 -0400
+Message-Id: <20250403190745.2677620-22-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250403190555.2677001-1-sashal@kernel.org>
-References: <20250403190555.2677001-1-sashal@kernel.org>
+In-Reply-To: <20250403190745.2677620-1-sashal@kernel.org>
+References: <20250403190745.2677620-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.12.21
+X-stable-base: Linux 6.6.85
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250403_120738_980099_082CD63D 
-X-CRM114-Status: UNSURE (   9.82  )
-X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,57 +79,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jiande Lu <jiande.lu@mediatek.com>
+From: Icenowy Zheng <uwu@icenowy.me>
 
-[ Upstream commit a88643b7e48506777e175e80c902c727ddd90851 ]
+[ Upstream commit 06cccc2ebbe6c8a20f714f3a0ff3ff489d3004bb ]
 
-Add below HWIDs for MediaTek MT7922 USB Bluetooth chip.
-VID 0x0489, PID 0xe152
-VID 0x0489, PID 0xe153
+The TP-Link TL-WDN6200 "Driverless" version cards use a MT7612U chipset.
 
-Patch has been tested successfully and controller is recognized
-device pair successfully.
+Add the USB ID to mt76x2u driver.
 
-MT7922 module bring up message as below.
-Bluetooth: Core ver 2.22
-Bluetooth: HCI device and connection manager initialized
-Bluetooth: HCI socket layer initialized
-Bluetooth: L2CAP socket layer initialized
-Bluetooth: SCO socket layer initialized
-Bluetooth: hci0: HW/SW Version: 0x008a008a, Build Time: 20241106163512
-Bluetooth: hci0: Device setup in 2284925 usecs
-Bluetooth: hci0: HCI Enhanced Setup Synchronous Connection command is advertised, but not supported.
-Bluetooth: hci0: AOSP extensions version v1.00
-Bluetooth: BNEP (Ethernet Emulation) ver 1.3
-Bluetooth: BNEP filters: protocol multicast
-Bluetooth: BNEP socket layer initialized
-Bluetooth: MGMT ver 1.22
-Bluetooth: RFCOMM TTY layer initialized
-Bluetooth: RFCOMM socket layer initialized
-Bluetooth: RFCOMM ver 1.11
-
-Signed-off-by: Jiande Lu <jiande.lu@mediatek.com>
-Signed-off-by: Luiz Augusto von Dentz <luiz.von.dentz@intel.com>
+Signed-off-by: Icenowy Zheng <uwu@icenowy.me>
+Link: https://patch.msgid.link/20250317102235.1421726-1-uwu@icenowy.me
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/bluetooth/btusb.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt76x2/usb.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 3a0b9dc98707f..151054a718522 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -626,6 +626,10 @@ static const struct usb_device_id quirks_table[] = {
- 						     BTUSB_WIDEBAND_SPEECH },
- 	{ USB_DEVICE(0x0489, 0xe102), .driver_info = BTUSB_MEDIATEK |
- 						     BTUSB_WIDEBAND_SPEECH },
-+	{ USB_DEVICE(0x0489, 0xe152), .driver_info = BTUSB_MEDIATEK |
-+						     BTUSB_WIDEBAND_SPEECH },
-+	{ USB_DEVICE(0x0489, 0xe153), .driver_info = BTUSB_MEDIATEK |
-+						     BTUSB_WIDEBAND_SPEECH },
- 	{ USB_DEVICE(0x04ca, 0x3804), .driver_info = BTUSB_MEDIATEK |
- 						     BTUSB_WIDEBAND_SPEECH },
- 	{ USB_DEVICE(0x04ca, 0x38e4), .driver_info = BTUSB_MEDIATEK |
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c b/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
+index 55068f3252ef3..d804309992196 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
+@@ -21,6 +21,7 @@ static const struct usb_device_id mt76x2u_device_table[] = {
+ 	{ USB_DEVICE(0x0846, 0x9053) },	/* Netgear A6210 */
+ 	{ USB_DEVICE(0x045e, 0x02e6) },	/* XBox One Wireless Adapter */
+ 	{ USB_DEVICE(0x045e, 0x02fe) },	/* XBox One Wireless Adapter */
++	{ USB_DEVICE(0x2357, 0x0137) },	/* TP-Link TL-WDN6200 */
+ 	{ },
+ };
+ 
 -- 
 2.39.5
 
