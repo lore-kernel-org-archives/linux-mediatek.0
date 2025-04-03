@@ -4,60 +4,200 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 643FFC3600C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Apr 2025 14:42:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BE46C3600C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Apr 2025 14:57:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Date:References:Message-ID:In-Reply-To:From:Subject:Cc:To:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uoLQQzQC+cp7umyd/eMU6viAyp8Vg8rM6rbLiqSk0yw=; b=2WE5PHiIzN11jwaNUBFXNCqIRS
-	+z058HxlHIPXVyW7KbpWKepVUpgo07W/JOrhERNarnMGuV4/eP3w6NYqo+XYKvScD1lR3Fhc6ezc+
-	nwi+nS8i8j6kDCjKXLXnbwrynhdFHrJnE0qywMYnxzke2M61Z4vIGh4hpz1pMd6BCQbmE1c2zMBlh
-	VjX2SPc/4aDvlmBTJVSbhBVRsyOnuCJ5xZDWOfdntT74gYCCRPFpn+f6Ps9AteueJdXPmzATAbbtQ
-	QYSGEnuu7ulG8nhuc6hBle3Mzn5Q5hT95vWurhxKPSe8f5PSvxavNA4OZxs2BRGOdu04xbvP9kH34
-	EnsYDpwQ==;
+	bh=sgwkrHbyHodj6iHYR8WSUeLD7D9iHiAFbkA8XXr2m68=; b=KQJIW1XuRA+UfzDexiVb3bkOFU
+	NjH0qYPgPWjLjrrs9xse6gYxgOo6anKoH07O/wsCrOYcAbhBYSUMzTp6H+YEWAlb4a2tgB2g8GxAq
+	HBUUAfYGYNGPyyRVSNnKzIXy3UszIGuLIg7vQ3S8CvhH06CpoifVMxiR08uICmVgbPv9sQi+ssk8L
+	RaDpGdUvSJljjCclf8BvrSaSgi58Aczp5DL5oCMv6vNkiOvUEzz5tQWXnFur3JTJ5nImMd20J0FtP
+	Dl/HuyOF8virSCkYT5hT13WdFMi03zwXnp4qFEoP53obdFHe9VmvDKjvzSVZAPG+L7UfIY16j/ab4
+	LPhJ5kwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0Lm2-000000096lK-0iWo;
-	Thu, 03 Apr 2025 14:42:30 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1u0M0h-000000099k7-0c3J;
+	Thu, 03 Apr 2025 14:57:39 +0000
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0LfJ-000000095eQ-4Ai0;
-	Thu, 03 Apr 2025 14:35:34 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 3D29668436;
-	Thu,  3 Apr 2025 14:35:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E180BC4CEE7;
-	Thu,  3 Apr 2025 14:35:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1743690933;
-	bh=clMVZUg7aCr+NLtc+S3LZyI+5cu7m6OvVqqIogY95n8=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=aR2eCKYWqx5ayDSWmvE0vxYepUcrgLBeCnS9cIvGjXbHgppnW4SxtTNIzXiUQan/Q
-	 VTL1hg/RJE9aTF6y5UR/rmznPWGYAc7h0MXPHjaK2yzCU0sxOk5220aGMqE+6VJy0V
-	 ZuM2bSXzWTdE1DRgNymiy9VL5Yf8qB3QA2cmok7vlU88OmoyOKg4VdLE/Qm4jITOAF
-	 odaeVsQMRDt5a7Dk3e6jsE5eGmM/IjSg7/Z/lh2elUV+jJvYA3R07dWz6VsestSlcG
-	 MR4mKg949sC8PniPeFnAc72TiYKyE12tAcL5oPeHQ5AXefSc+ScyD1oIJIhWoKElps
-	 ljIVpTMqORryw==
-Date: Thu, 03 Apr 2025 09:35:31 -0500
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1u0Lyr-000000099OQ-2lNZ;
+	Thu, 03 Apr 2025 14:55:46 +0000
+Received: from pps.filterd (m0246627.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 533BHeIq032053;
+	Thu, 3 Apr 2025 14:55:24 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
+	:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to; s=corp-2023-11-20; bh=sgwkrHbyHodj6iHYR8
+	WSUeLD7D9iHiAFbkA8XXr2m68=; b=er142KOvzSC5vx2h2yS8sdOgus34TigyzY
+	GDhrXAqgPx1Oyncv5SmOdtVLfP+kazt4xYuH8Q4At23uSrw1f1EWqYyvpJVZ+2NU
+	qpbAV84RFzamhB+GNBlYVHpV3JQXoYa5ngNnKt2HMuFOrfOEloEAkcKjeLSgvL2m
+	PLkepI+z5GgUuuQaWiEYV9Ikfka4N1DXRu/gZ1GIRxSAaYH5VJbwrLKVkdo1TKwY
+	vj2nZePhuWpNzJAUTZdMxSezwo00+seVcS9pSDUg43QaaQiW7nx5CIGDN4Tub32R
+	A5m3emdiseD5Nx9Ex/SrriMMVb63oyKc/tC3kbyqCsseu6FVAhnw==
+Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 45p7f0mwu1-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Thu, 03 Apr 2025 14:55:24 +0000 (GMT)
+Received: from pps.filterd (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 533DUl6M010718;
+	Thu, 3 Apr 2025 14:55:23 GMT
+Received: from nam11-dm6-obe.outbound.protection.outlook.com (mail-dm6nam11lp2175.outbound.protection.outlook.com [104.47.57.175])
+	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 45p7ajge0j-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Thu, 03 Apr 2025 14:55:23 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=KcQvc7M70U7Sap1Vv+OUvzAd9snuvIp5oeK6oq4yikzkEpf9eqb0ZSbGpWHdNAzjSEfGBCV6NlYMcE/sU8wU0aNGzpc4LcSOjhqg3+7Ft5tvHVI47jpWRDrnosRJDnLVyfm600VTeEFYzgIhfy+5Kywr8mQ0aRu4HMBwQNFELzEOd6idPy4tHx5cr3dF2HlZkaeQ5lenXpw9nPUBk+eb6AYy8aPRcGNChZQbC5OF+CUJdA++Jo9SJ8eFoeNXFK+bt3eP0V6LsXqPMGLvZe2IGb4+9oc56QKo9Y6LHrhZ7/khd+c5tW6NIn4QVI0BtCNoRAGF1mcls8zcumMWa9MVSQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=sgwkrHbyHodj6iHYR8WSUeLD7D9iHiAFbkA8XXr2m68=;
+ b=JHq5YTevPfuOde4iZXBPuSyoIjlJsEiUcQCsYah6AdreV3puxkkDJFkYyFv4gbHQNXHIQI+Scuh1OhkZbaxQ3y8OxiWVvVEqUDzlj2Ef4bSD8z+qaFRJ8sRPmpYdNKvbue/1tQDwPvs1Rqro+s6W4+8OIKLSmfZVqwSNkMZipuZ9b8BuE3TQy10iPxULBL1WNUoJHD6Eg4hTQXDkfMaqIkv8Cd32bBJyxcO9t+aA1GVDJNNBiBGZYA+GIXa0nD5UxPimrioyR/eF7qGdHSZk4zpae+nb81D9oLpgb3ddHErpLlUnIqhawONxuw/nrYQ+RZ2jPbWZ+xTw7S2NBeDC6A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=sgwkrHbyHodj6iHYR8WSUeLD7D9iHiAFbkA8XXr2m68=;
+ b=sM6NZ1CZOnCthqgK+n+M0akgxPeasYUCieqrNadi3SiwQ1cUPDaVy2ej73r1Ueg0c0VHI7uWgm8L9GNyxUHuM06pK+mGtV4Ma9QVVnP4l2470MS5/1Q0Hr2PYHeo1WNQJSjRKLsAxJI1RAeTJ9VKPbYtgfWWX3ugwkWBW0sM6Ok=
+Received: from CH0PR10MB5338.namprd10.prod.outlook.com (2603:10b6:610:cb::8)
+ by SA1PR10MB7555.namprd10.prod.outlook.com (2603:10b6:806:378::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8583.41; Thu, 3 Apr
+ 2025 14:55:20 +0000
+Received: from CH0PR10MB5338.namprd10.prod.outlook.com
+ ([fe80::5cca:2bcc:cedb:d9bf]) by CH0PR10MB5338.namprd10.prod.outlook.com
+ ([fe80::5cca:2bcc:cedb:d9bf%4]) with mapi id 15.20.8583.043; Thu, 3 Apr 2025
+ 14:55:20 +0000
+To: "Bao D. Nguyen" <quic_nguyenb@quicinc.com>
+Cc: <quic_cang@quicinc.com>, <bvanassche@acm.org>, <avri.altman@wdc.com>,
+        <peter.wang@mediatek.com>, <manivannan.sadhasivam@linaro.org>,
+        <minwoo.im@samsung.com>, <adrian.hunter@intel.com>,
+        <martin.petersen@oracle.com>, <linux-scsi@vger.kernel.org>,
+        Alim Akhtar
+ <alim.akhtar@samsung.com>,
+        "James E.J. Bottomley"
+ <James.Bottomley@HansenPartnership.com>,
+        Matthias Brugger
+ <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,
+        Bean Huo <beanhuo@micron.com>,
+        Keoseong Park <keosung.park@samsung.com>,
+        Ziqi Chen
+ <quic_ziqichen@quicinc.com>,
+        Gwendal Grignou <gwendal@chromium.org>,
+        Al
+ Viro <viro@zeniv.linux.org.uk>, Eric Biggers <ebiggers@google.com>,
+        open
+ list <linux-kernel@vger.kernel.org>,
+        "moderated list:ARM/Mediatek SoC
+ support:Keyword:mediatek" <linux-arm-kernel@lists.infradead.org>,
+        "moderated list:ARM/Mediatek SoC support:Keyword:mediatek"
+ <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH v5 1/1] scsi: ufs: core: add device level exception support
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+In-Reply-To: <6278d7c125b2f0cf5056f4a647a4b9c1fdd24fc7.1743198325.git.quic_nguyenb@quicinc.com>
+	(Bao D. Nguyen's message of "Fri, 28 Mar 2025 14:46:13 -0700")
+Organization: Oracle Corporation
+Message-ID: <yq14iz5uwfm.fsf@ca-mkp.ca.oracle.com>
+References: <6278d7c125b2f0cf5056f4a647a4b9c1fdd24fc7.1743198325.git.quic_nguyenb@quicinc.com>
+Date: Thu, 03 Apr 2025 10:55:19 -0400
+Content-Type: text/plain
+X-ClientProxiedBy: MN0P222CA0015.NAMP222.PROD.OUTLOOK.COM
+ (2603:10b6:208:531::24) To CH0PR10MB5338.namprd10.prod.outlook.com
+ (2603:10b6:610:cb::8)
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, 
- mtk29348 <Bo.Kong@mediatek.com>, linux-kernel@vger.kernel.org, 
- linux-media@vger.kernel.org, Teddy.Chen@mediatek.com, 
- Project_Global_Chrome_Upstream_Group@mediatek.com, 
- zhaoyuan.chen@mediatek.com, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-To: "bo.kong" <bo.kong@mediatek.com>
-In-Reply-To: <20250403074005.21472-1-bo.kong@mediatek.com>
-References: <20250403074005.21472-1-bo.kong@mediatek.com>
-Message-Id: <174369066367.2789561.14328496849433879876.robh@kernel.org>
-Subject: Re: [PATCH v5 0/4] Add AIE driver support for mt8188
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CH0PR10MB5338:EE_|SA1PR10MB7555:EE_
+X-MS-Office365-Filtering-Correlation-Id: 09b047f2-957c-42f0-93eb-08dd72bf8df8
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|7416014|1800799024|376014;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?YWOp54KM3WJDN9GBNKIHtLC0nGFMn/GDxA4+rN8VJaiwWI/nLBfJh+KBkoYQ?=
+ =?us-ascii?Q?ZL42Kkvx+gPqxEwGMGmhaYpSc2HzH1kIcSCp5/FG2hb9bA16Qk88qUiU/AzL?=
+ =?us-ascii?Q?8KL7pGzn99pTWbz/Qb4/bREmTIDpUUT6RvEp0nFu6UqHil94MVQYv30vHvKz?=
+ =?us-ascii?Q?RwuiWde2dQEPTskfVeQLTnfoWn5Noe65ajf/y0VvPyhh+rPUKxSPoAT5cPGO?=
+ =?us-ascii?Q?Z0TdyuIk80sMgMLhOsKBOVEoeuKRk3Mwdveelrl6J/13ZNIaYMGYgFYZh6n6?=
+ =?us-ascii?Q?/8kWlHc9bxVG1Xct1aiaRWsuytsOm46/qsH3YvCYUZDz0nCqk9SZEzVYWwvl?=
+ =?us-ascii?Q?YLhbVpH5dL/RHrKm7tpJUd5Dob+yRKpDRG2jHIK5r4f007/vr/1AkpvpjvZT?=
+ =?us-ascii?Q?dsdpGyXo2JMMbLJJI3xwByNtBjiBI6D7fJImcG6ahWdYyBypCiYj6StqH//o?=
+ =?us-ascii?Q?26S0UJtPPV0hgoWI66fSJeBEf78793gTKDFVqMLe5Ki1vkb7VgDGGo6oyXX+?=
+ =?us-ascii?Q?AcfZZUy8A9gHnbtTiD54AINUepdmbGEmnMYcx+fYnbDEFhsyrLpiMHA6yoVU?=
+ =?us-ascii?Q?RLw86/wGibWiMwNj0igt2JN3vHtGG4QRUDR8oqCmAvWxPqF6OvXsmrycw6V/?=
+ =?us-ascii?Q?m6XrWVlABBYuoB3Mspa4XdAf/TrfnSvT0VLv5U+CzkP5DHlNHyxjlrTteJV9?=
+ =?us-ascii?Q?V35lZYRn3CS9x+yaKBoXkfvZOLK3QYS8j7UekV+jnIR8WZgsaG5lPOZVmcH2?=
+ =?us-ascii?Q?zDSWHeS5Jcu44hSIpZqC8rDBNaNXL5WqxMPnN2OGHwuezALhV0NBXou3FkK/?=
+ =?us-ascii?Q?iCDASDuuNTAaCvPvo22M/7YQ3adaU1R8Cbsmb2TcTzjbhZcllH107onAeygt?=
+ =?us-ascii?Q?nBbA6A6jmT2diwQ1KrLKY/lPY5Rb9lk1bJvrjYLCZsmj8VA6oGpA4NTxyE/q?=
+ =?us-ascii?Q?7q0H4uCKEP08k81qMB0gSCg/zQ4P9cz8g9XY4U879v3afakgmJsI+fkl65aG?=
+ =?us-ascii?Q?25rzE2bDVxjBJhPggyvnbK0kCva88N0YrjURuyZncLSRchgnrayl89z3nRma?=
+ =?us-ascii?Q?m1v0ZIbO8mVq1HVdZC6QcuDzXoTgLxIeDVceCLWzVDKENIf64OT57i2FGGEM?=
+ =?us-ascii?Q?BFdY6ifP9usK2w8W3whWonHlZSzpg+ovi+Evk2wDtP4szvGuLbhrTXfd23sS?=
+ =?us-ascii?Q?3i1NyKP8cZBzUcanhq6yHdXVnQJu6qx6WTPFN+O5G5aDyqU0sWpD5WakttS4?=
+ =?us-ascii?Q?Ko7FWm7TtHBa7XPqvbGkDH2co6WAQaAcBalLNLAc9EClUaT5VUaBD0QYba2T?=
+ =?us-ascii?Q?Z2ZKxxNLYJg8N6ubwN37uVUVWDuSocRB5bpkTyb7V572GNDn/be/TRhx05XL?=
+ =?us-ascii?Q?OKxcRo4h+IAbIC7BSZCqwd7ezmzz?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH0PR10MB5338.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(7416014)(1800799024)(376014);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?k/3uAFlSv9FjGbiB6SJKgZ+HMSawVMg/fkhU4I0V0tvcmJkcz73G/NKGd9GL?=
+ =?us-ascii?Q?R20271Bb/ceKvT4Ts3N8cSRJCE6qa8cjALYCd8LG8LtgN/t4LCEnKC5mU6Dt?=
+ =?us-ascii?Q?MnSKR345fNOVa+DGW9hJJHxAWhRQH2aw4ullb4Zs022dFug4ylIRmVlChp9h?=
+ =?us-ascii?Q?maYs+XvqWN6YovDRJIkZmXWj60R6+1Ss8LEAuWPyqZjzMZ8+EhMRWKHqKS/2?=
+ =?us-ascii?Q?Y/QaxKXmnYnXAEOVd5xPcz9M73f2TImUBhVNfSEYjQ64b01vjSQVo3m1ucyC?=
+ =?us-ascii?Q?mbhMtuYmm7iMRVCX+LgezZPs2bfNdrj8sOtdiIbeX4939ZWsPaXKj4ICv+Mc?=
+ =?us-ascii?Q?G3nL6cMGvd0LpIYzkQveg5XJjVRyMdQ12CSnoCoApNVQ3X4Fmev1nAV4okWt?=
+ =?us-ascii?Q?52eR+suIqGmiuCV9z10M9tFW5pmATUiMlhSExWX16GgxKH710ZBBXBguYJHf?=
+ =?us-ascii?Q?U0byedOTU21SBcz0+KTPHAAebqzQbuV+vzmK6+fpaOKqnx+X6GYWH+58WzOy?=
+ =?us-ascii?Q?R/AE4ZgX0IbOaXCQfGagd/dCk8bZF4w04G3KnQjgZVR0EadQUAPBXA7Cc4yA?=
+ =?us-ascii?Q?qxKvLPydYdg5Ei1O9pfuscVzopacr21tcX5dfYk2DEyHfDR9pNdIDGvzrlDQ?=
+ =?us-ascii?Q?R+cltskBtuD7AlDgyShIKCu5VqC4EouKwvVGSSmfryKN1THEafPF2erxDWMB?=
+ =?us-ascii?Q?6lBPEFp+hWB1l/YTcqYLlHra7bnvw8tsqCj05XVDjCj21VnC+PoYQBx1gNlE?=
+ =?us-ascii?Q?/xovlo0jtR2GOhFDMU6t4It221Tc+tsC3+c+c57K7rUGCb4XESMe0byKYat0?=
+ =?us-ascii?Q?OPl7zuSy9v7WfhxA4L7jRCUX2oYbZAXbtt+l5aLoqNE7eE1/mCxMBQbCUzlI?=
+ =?us-ascii?Q?VusYd9gQ2lBJw+3g7KLuJ1nfn/nYKOmYum4ITG7uJ/Od3b4G1ucqDwBDCUAJ?=
+ =?us-ascii?Q?gUIlq3R4B4K5dOCagslsVaoC51AYS8oTS5oFoIQ2D0zyXc2QxIKy95Qjpd5Z?=
+ =?us-ascii?Q?imvb3Ns46nAJo6xOEYblPNbHYWKeDGRQqegoHR5IH2ngwbqWPhT59pcLvIRG?=
+ =?us-ascii?Q?F4sj3P2xtG4kEIXFtJErswKhT0tikDzU8rAqR4ChEUuu4Qj/mel1XM+GXvWo?=
+ =?us-ascii?Q?W+32AI59lHvAfU1JWb5Y42Zm15K8xd0APBGHiu65+bbEQSf/mZxK4v9sEWMJ?=
+ =?us-ascii?Q?+sBz3XUd9uC9jkzPRPA8vxDcGwXoB2TzpWT8a7CUFC0lgpboNJGYe0L6tKVM?=
+ =?us-ascii?Q?TDNwu+mHosGFkVoK/qt17i+j1d0lA7Qcv1X0DK/0EjZNRmi5zSsg9iP3V89e?=
+ =?us-ascii?Q?2/eD8lqf18iH1FsJSET4EIrQLRDSbEIQ9PtsEFTQSAWTBB/z86c8WBlPTWIF?=
+ =?us-ascii?Q?6+d5iAAety9LxE8Hu5oi53NDUV0RjFIR65BDht4yok8D4kBWqEvyiMrPbN/T?=
+ =?us-ascii?Q?F/X/BlT3fJQizZ1jxjg44zFYA6bjB49NwhzSHM3p+0hegbl2xKxqVyLEM1vh?=
+ =?us-ascii?Q?JgFJtXtWUcXncgk1v6pDcPiLC7Acg/hqqk2ILnGW78AiQ/Pz246Iqp78JG6b?=
+ =?us-ascii?Q?KWLI9t+ZZ1mUvVVEUs2Zusyp/G6mUfesCnKEW/gJnwKyCMNsWEYZPMg6bDtV?=
+ =?us-ascii?Q?0Q=3D=3D?=
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: LIbPUvapfsstnHyS6p0Uh9tdL50fTsENSIpwzRF/RaHkcoj+gyD/EtK8zuUFOku55tMThlB/TQvLCjSkJiy1KvJqz2+bZOLcxOcXHdmEudOhPfr73zs9z4n4eKrDqavWbty+ZMJpa8hd4XwRgW4Kk/tKt8seEwIdrU+6dkMFWtAXGkidc8IbuGSTRBIUlFSphmsc7r4VPr31KmBzdzeq0itHMS7wRFGPubdZNFe9kDGpMkZXp+MIp0CPMYSm41H2VrTOfhqa0gQZwnLbiCjI3YZb9zym1Kz8fl3nvR1ki9WFjduSR4lEZDlk1Nrwf4TJPEGDZsUpQ4dDpFlBqHZAPoEpgcUEk1VNucRhFjrEnhpiGsc/uc+9hPIT62bNR8P+t7HtdKJm6S8DGyNTAQeGJzBJFceqsc8cQBsywMpfObzSs6mjHa29W/2b9BgF6WxPeUvO/Vt0db7F+HFL6+mbg3nyTanOtMBCUH3PU0DBLxXTjrtFafz1qDgNWekZoSgPn/kq2vo/Hs/bKxK79fqIuqdqtOKC3UTzZZukXRxWR6E7UIm9j2Ud7WuQoPFxh2JscEDIiEsGIOhpUESoknUhIx5pGe8Xg5QLfukS6NJFrFU=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 09b047f2-957c-42f0-93eb-08dd72bf8df8
+X-MS-Exchange-CrossTenant-AuthSource: CH0PR10MB5338.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Apr 2025 14:55:20.3809
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: enOPpd8U3AwL9Wjz37x4uxVMcvhWHw7KOBJYrAU34CGETSlPw2DpzYGu2WhLxPArZK4JGpvz9dzXWc7CTwnbzjWjkqQuFK74T1C8qOLV7sM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR10MB7555
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1095,Hydra:6.0.680,FMLib:17.12.68.34
+ definitions=2025-04-03_06,2025-04-02_03,2024-11-22_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0 bulkscore=0 suspectscore=0
+ adultscore=0 malwarescore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2502280000
+ definitions=main-2504030070
+X-Proofpoint-ORIG-GUID: uImLyoGDk-QXNOsnJz5hjoP8-4XwrP1c
+X-Proofpoint-GUID: uImLyoGDk-QXNOsnJz5hjoP8-4XwrP1c
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250403_075545_702730_6FAB1100 
+X-CRM114-Status: UNSURE (   9.38  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,233 +213,17 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 03 Apr 2025 15:38:32 +0800, bo.kong wrote:
-> From: Bo Kong <Bo.Kong@mediatek.com>
-> 
-> AIE(AI Engine) is one of the units in mt8188 ISP which provides hardware accelerated face detection function, it can detect different sizes of faces in a raw image.
-> 
-> Bo Kong (4):
->   media: dt-bindings: add MT8188 AIE
->   arm64: dts: mt8188: add aie node
->   uapi: linux: add MT8188 AIE
->   media: mediatek: add MT8188 AIE driver
-> 
->  .../bindings/media/mediatek,mt8188-aie.yaml   |   78 +
->  arch/arm64/boot/dts/mediatek/mt8188.dtsi      |   33 +
->  drivers/media/platform/mediatek/Kconfig       |    1 +
->  drivers/media/platform/mediatek/Makefile      |    1 +
->  drivers/media/platform/mediatek/aie/Kconfig   |   12 +
->  drivers/media/platform/mediatek/aie/Makefile  |    5 +
->  drivers/media/platform/mediatek/aie/mtk_aie.h |  870 ++++++
->  .../media/platform/mediatek/aie/mtk_aie_drv.c | 2398 +++++++++++++++++
->  .../platform/mediatek/aie/mtk_aie_v4l2.c      | 1295 +++++++++
->  drivers/media/v4l2-core/v4l2-ioctl.c          |    3 +
->  include/uapi/linux/mtk_aie_v4l2_controls.h    |  308 +++
->  include/uapi/linux/videodev2.h                |    6 +
->  12 files changed, 5010 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8188-aie.yaml
->  create mode 100644 drivers/media/platform/mediatek/aie/Kconfig
->  create mode 100644 drivers/media/platform/mediatek/aie/Makefile
->  create mode 100644 drivers/media/platform/mediatek/aie/mtk_aie.h
->  create mode 100644 drivers/media/platform/mediatek/aie/mtk_aie_drv.c
->  create mode 100644 drivers/media/platform/mediatek/aie/mtk_aie_v4l2.c
->  create mode 100644 include/uapi/linux/mtk_aie_v4l2_controls.h
-> 
-> --
-> 2.45.2
-> 
-> 
-> 
+Bao,
 
+> The ufs device JEDEC specification version 4.1 adds support for the
+> device level exception events. To support this new device level
+> exception feature, expose two new sysfs nodes below to provide the
+> user space access to the device level exception information.
+> /sys/bus/platform/drivers/ufshcd/*/device_lvl_exception_count
+> /sys/bus/platform/drivers/ufshcd/*/device_lvl_exception_id
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
+Applied to 6.15/scsi-staging, thanks!
 
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
-
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
-
-  pip3 install dtschema --upgrade
-
-
-This patch series was applied (using b4) to base:
- Base: attempting to guess base-commit...
- Base: tags/next-20250403 (exact match)
-
-If this is not the correct base, please add 'base-commit' tag
-(or use b4 which does this automatically)
-
-New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/mediatek/' for 20250403074005.21472-1-bo.kong@mediatek.com:
-
-arch/arm64/boot/dts/mediatek/mt8188.dtsi:2359.25-2370.5: ERROR (phandle_references): /soc/larb@15340000: Reference to non-existent node or label "smi_img1"
-ERROR: Input tree has errors, aborting (use -f to force output)
-make[3]: *** [scripts/Makefile.dtbs:131: arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku4.dtb] Error 2
-make[2]: *** [scripts/Makefile.build:461: arch/arm64/boot/dts/mediatek] Error 2
-make[2]: Target 'arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku4.dtb' not remade because of errors.
-make[1]: *** [/home/rob/proj/linux-dt-testing/Makefile:1475: mediatek/mt8188-geralt-ciri-sku4.dtb] Error 2
-arch/arm64/boot/dts/mediatek/mt8188.dtsi:2359.25-2370.5: ERROR (phandle_references): /soc/larb@15340000: Reference to non-existent node or label "smi_img1"
-ERROR: Input tree has errors, aborting (use -f to force output)
-make[3]: *** [scripts/Makefile.dtbs:131: arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb] Error 2
-make[2]: *** [scripts/Makefile.build:461: arch/arm64/boot/dts/mediatek] Error 2
-make[2]: Target 'arch/arm64/boot/dts/mediatek/mt8370-genio-510-evk.dtb' not remade because of errors.
-make[1]: *** [/home/rob/proj/linux-dt-testing/Makefile:1475: mediatek/mt8370-genio-510-evk.dtb] Error 2
-arch/arm64/boot/dts/mediatek/mt8188.dtsi:2359.25-2370.5: ERROR (phandle_references): /soc/larb@15340000: Reference to non-existent node or label "smi_img1"
-ERROR: Input tree has errors, aborting (use -f to force output)
-make[3]: *** [scripts/Makefile.dtbs:131: arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dtb] Error 2
-make[2]: *** [scripts/Makefile.build:461: arch/arm64/boot/dts/mediatek] Error 2
-make[2]: Target 'arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dtb' not remade because of errors.
-make[1]: *** [/home/rob/proj/linux-dt-testing/Makefile:1475: mediatek/mt8390-genio-700-evk.dtb] Error 2
-arch/arm64/boot/dts/mediatek/mt8188.dtsi:2359.25-2370.5: ERROR (phandle_references): /soc/larb@15340000: Reference to non-existent node or label "smi_img1"
-ERROR: Input tree has errors, aborting (use -f to force output)
-make[3]: *** [scripts/Makefile.dtbs:131: arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku1.dtb] Error 2
-make[2]: *** [scripts/Makefile.build:461: arch/arm64/boot/dts/mediatek] Error 2
-make[2]: Target 'arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku1.dtb' not remade because of errors.
-make[1]: *** [/home/rob/proj/linux-dt-testing/Makefile:1475: mediatek/mt8188-geralt-ciri-sku1.dtb] Error 2
-arch/arm64/boot/dts/mediatek/mt8188.dtsi:2359.25-2370.5: ERROR (phandle_references): /soc/larb@15340000: Reference to non-existent node or label "smi_img1"
-ERROR: Input tree has errors, aborting (use -f to force output)
-make[3]: *** [scripts/Makefile.dtbs:131: arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku7.dtb] Error 2
-make[2]: *** [scripts/Makefile.build:461: arch/arm64/boot/dts/mediatek] Error 2
-make[2]: Target 'arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku7.dtb' not remade because of errors.
-make[1]: *** [/home/rob/proj/linux-dt-testing/Makefile:1475: mediatek/mt8188-geralt-ciri-sku7.dtb] Error 2
-arch/arm64/boot/dts/mediatek/mt8188.dtsi:2359.25-2370.5: ERROR (phandle_references): /soc/larb@15340000: Reference to non-existent node or label "smi_img1"
-ERROR: Input tree has errors, aborting (use -f to force output)
-make[3]: *** [scripts/Makefile.dtbs:131: arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku3.dtb] Error 2
-make[2]: *** [scripts/Makefile.build:461: arch/arm64/boot/dts/mediatek] Error 2
-make[2]: Target 'arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku3.dtb' not remade because of errors.
-make[1]: *** [/home/rob/proj/linux-dt-testing/Makefile:1475: mediatek/mt8188-geralt-ciri-sku3.dtb] Error 2
-arch/arm64/boot/dts/mediatek/mt8188.dtsi:2359.25-2370.5: ERROR (phandle_references): /soc/larb@15340000: Reference to non-existent node or label "smi_img1"
-ERROR: Input tree has errors, aborting (use -f to force output)
-make[3]: *** [scripts/Makefile.dtbs:131: arch/arm64/boot/dts/mediatek/mt8188-evb.dtb] Error 2
-make[2]: *** [scripts/Makefile.build:461: arch/arm64/boot/dts/mediatek] Error 2
-make[2]: Target 'arch/arm64/boot/dts/mediatek/mt8188-evb.dtb' not remade because of errors.
-make[1]: *** [/home/rob/proj/linux-dt-testing/Makefile:1475: mediatek/mt8188-evb.dtb] Error 2
-arch/arm64/boot/dts/mediatek/mt8188.dtsi:2359.25-2370.5: ERROR (phandle_references): /soc/larb@15340000: Reference to non-existent node or label "smi_img1"
-ERROR: Input tree has errors, aborting (use -f to force output)
-make[3]: *** [scripts/Makefile.dtbs:131: arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku6.dtb] Error 2
-make[2]: *** [scripts/Makefile.build:461: arch/arm64/boot/dts/mediatek] Error 2
-make[2]: Target 'arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku6.dtb' not remade because of errors.
-make[1]: *** [/home/rob/proj/linux-dt-testing/Makefile:1475: mediatek/mt8188-geralt-ciri-sku6.dtb] Error 2
-arch/arm64/boot/dts/mediatek/mt8188.dtsi:2359.25-2370.5: ERROR (phandle_references): /soc/larb@15340000: Reference to non-existent node or label "smi_img1"
-ERROR: Input tree has errors, aborting (use -f to force output)
-make[3]: *** [scripts/Makefile.dtbs:131: arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku0.dtb] Error 2
-make[2]: *** [scripts/Makefile.build:461: arch/arm64/boot/dts/mediatek] Error 2
-make[2]: Target 'arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku0.dtb' not remade because of errors.
-make[1]: *** [/home/rob/proj/linux-dt-testing/Makefile:1475: mediatek/mt8188-geralt-ciri-sku0.dtb] Error 2
-arch/arm64/boot/dts/mediatek/mt8188.dtsi:2359.25-2370.5: ERROR (phandle_references): /soc/larb@15340000: Reference to non-existent node or label "smi_img1"
-ERROR: Input tree has errors, aborting (use -f to force output)
-make[3]: *** [scripts/Makefile.dtbs:131: arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku2.dtb] Error 2
-make[2]: *** [scripts/Makefile.build:461: arch/arm64/boot/dts/mediatek] Error 2
-make[2]: Target 'arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku2.dtb' not remade because of errors.
-make[1]: *** [/home/rob/proj/linux-dt-testing/Makefile:1475: mediatek/mt8188-geralt-ciri-sku2.dtb] Error 2
-arch/arm64/boot/dts/mediatek/mt8188.dtsi:2359.25-2370.5: ERROR (phandle_references): /soc/larb@15340000: Reference to non-existent node or label "smi_img1"
-ERROR: Input tree has errors, aborting (use -f to force output)
-make[3]: *** [scripts/Makefile.dtbs:131: arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku5.dtb] Error 2
-make[2]: *** [scripts/Makefile.build:461: arch/arm64/boot/dts/mediatek] Error 2
-make[2]: Target 'arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku5.dtb' not remade because of errors.
-make[1]: *** [/home/rob/proj/linux-dt-testing/Makefile:1475: mediatek/mt8188-geralt-ciri-sku5.dtb] Error 2
-make: *** [Makefile:248: __sub-make] Error 2
-make: Target 'mediatek/mt8183-pumpkin.dtb' not remade because of errors.
-make: Target 'mediatek/mt6797-evb.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-kodama-sku16.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-fennel14.dtb' not remade because of errors.
-make: Target 'mediatek/mt8395-genio-1200-evk.dtb' not remade because of errors.
-make: Target 'mediatek/mt7986a-bananapi-bpi-r3.dtb' not remade because of errors.
-make: Target 'mediatek/mt8173-evb.dtb' not remade because of errors.
-make: Target 'mediatek/mt7986b-rfb.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-willow-sku0.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-tentacruel-sku262144.dtb' not remade because of errors.
-make: Target 'mediatek/mt8195-cherry-tomato-r2.dtb' not remade because of errors.
-make: Target 'mediatek/mt7981b-openwrt-one.dtb' not remade because of errors.
-make: Target 'mediatek/mt8173-elm.dtb' not remade because of errors.
-make: Target 'mediatek/mt7622-rfb1.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-damu.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-willow-sku1.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-tentacool-sku327681.dtb' not remade because of errors.
-make: Target 'mediatek/mt6779-evb.dtb' not remade because of errors.
-make: Target 'mediatek/mt8188-geralt-ciri-sku4.dtb' not remade because of errors.
-make: Target 'mediatek/mt8173-elm-hana-rev7.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-starmie-sku1.dtb' not remade because of errors.
-make: Target 'mediatek/mt8370-genio-510-evk.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-kenzo.dtb' not remade because of errors.
-make: Target 'mediatek/mt2712-evb.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-tentacool-sku327683.dtb' not remade because of errors.
-make: Target 'mediatek/mt7981b-cudy-wr3000-v1.dtb' not remade because of errors.
-make: Target 'mediatek/mt8192-asurada-hayato-r1.dtb' not remade because of errors.
-make: Target 'mediatek/mt8390-genio-700-evk.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-fennel-sku7.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-makomo-sku1.dtb' not remade because of errors.
-make: Target 'mediatek/mt8395-kontron-3-5-sbc-i1200.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-pico6.dtb' not remade because of errors.
-make: Target 'mediatek/mt8188-geralt-ciri-sku1.dtb' not remade because of errors.
-make: Target 'mediatek/mt8195-demo.dtb' not remade because of errors.
-make: Target 'mediatek/mt8173-elm-hana.dtb' not remade because of errors.
-make: Target 'mediatek/mt6755-evb.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-chinchou-sku16.dtb' not remade because of errors.
-make: Target 'mediatek/mt8192-asurada-spherion-r0.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-chinchou-sku0.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-kodama-sku32.dtb' not remade because of errors.
-make: Target 'mediatek/mt7622-bananapi-bpi-r64.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-chinchou-sku1.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-voltorb-sku589825.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-magneton-sku393218.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-evb.dtb' not remade because of errors.
-make: Target 'mediatek/mt8188-geralt-ciri-sku7.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-fennel-sku6.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-evb.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-magneton-sku393216.dtb' not remade because of errors.
-make: Target 'mediatek/mt8188-geralt-ciri-sku3.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-fennel14-sku2.dtb' not remade because of errors.
-make: Target 'mediatek/mt6797-x20-dev.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-cozmo.dtb' not remade because of errors.
-make: Target 'mediatek/mt8188-evb.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-krane-sku0.dtb' not remade because of errors.
-make: Target 'mediatek/mt8365-evk.dtb' not remade because of errors.
-make: Target 'mediatek/mt8195-evb.dtb' not remade because of errors.
-make: Target 'mediatek/mt8395-radxa-nio-12l.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-makomo-sku0.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-steelix-sku131073.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-voltorb-sku589824.dtb' not remade because of errors.
-make: Target 'mediatek/mt7988a-bananapi-bpi-r4.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-starmie-sku0.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-burnet.dtb' not remade because of errors.
-make: Target 'mediatek/mt8188-geralt-ciri-sku6.dtb' not remade because of errors.
-make: Target 'mediatek/mt7986a-acelink-ew-7886cax.dtb' not remade because of errors.
-make: Target 'mediatek/mt8516-pumpkin.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-kakadu-sku22.dtb' not remade because of errors.
-make: Target 'mediatek/mt7986a-rfb.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-kodama-sku288.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-krane-sku176.dtb' not remade because of errors.
-make: Target 'mediatek/mt8188-geralt-ciri-sku0.dtb' not remade because of errors.
-make: Target 'mediatek/mt6795-evb.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-tentacruel-sku262148.dtb' not remade because of errors.
-make: Target 'mediatek/mt8167-pumpkin.dtb' not remade because of errors.
-make: Target 'mediatek/mt7981b-xiaomi-ax3000t.dtb' not remade because of errors.
-make: Target 'mediatek/mt8188-geralt-ciri-sku2.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-steelix-sku131072.dtb' not remade because of errors.
-make: Target 'mediatek/mt8195-cherry-dojo-r1.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-kappa.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-kakadu.dtb' not remade because of errors.
-make: Target 'mediatek/mt7986a-bananapi-bpi-r3-mini.dtb' not remade because of errors.
-make: Target 'mediatek/mt6795-sony-xperia-m5.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-magneton-sku393217.dtb' not remade because of errors.
-make: Target 'mediatek/mt8192-evb.dtb' not remade because of errors.
-make: Target 'mediatek/mt8195-cherry-tomato-r3.dtb' not remade because of errors.
-make: Target 'mediatek/mt8195-cherry-tomato-r1.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-katsu-sku32.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-katsu-sku38.dtb' not remade because of errors.
-make: Target 'mediatek/mt8188-geralt-ciri-sku5.dtb' not remade because of errors.
-make: Target 'mediatek/mt8186-corsola-rusty-sku196608.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-jacuzzi-pico.dtb' not remade because of errors.
-make: Target 'mediatek/mt8183-kukui-kodama-sku272.dtb' not remade because of errors.
-
-
-
-
-
+-- 
+Martin K. Petersen
 
