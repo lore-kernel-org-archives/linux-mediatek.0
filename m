@@ -4,59 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D402DC3600C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Apr 2025 20:08:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85D3CC3600C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Apr 2025 22:51:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2B6OIwla7raUmTVqkAOBhJzO3h76Clx+8aU7P7edG3I=; b=RCV8ijaI6syYlUziQA1RPyzXg7
-	bkxvKssQdLoZ6Xw/IRQNc6C5xc+/UfrRdAQpnLPHo/iWGYcvevTWMH4bW5yDr+0BfhIgtsDcJp4um
-	AM8zMtD1E8cpegmRjL/vuYQX1Slo/NE/0ItDRG/klS7mnxJVG0sUHtzQ/spUAG05Oiv2NzyngzbpD
-	ZUUJJdbjlyJtW26NBl4mytQwjc3hj61NOJx5v7J9udEY30KsitD+3KWfmQVh3jyp5wxYisXbtZ0ox
-	7GUbx5ducqdRVnTnLW+tkNL9AidN7jwKgzep5oF5jBnL2MoBK6ko/I3gbwxQ1axDHOIWCRJ+sHTJ5
-	an8BPy8A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ksKt9YGUnAx3ZDzBlKKp8D3XqmxW53MpBBSSYbEVUlg=; b=qllRm8PtOFOnhL/st+xRdILap7
+	LQzE5iEkQItmQ97K+WYUHYFMIHP3VUlzeGMf56Uy27khtrtJjkoSwvz/CUJmzIxHCwrZsNtOnZdWg
+	V62GPFteFnvfW6FTJqmsGow/jH/CDHgSBg9Uuvmn4Ru25z5Qr2mgWuQhHPdd0+IJn0oQqSv1L/UM7
+	wyktFLCd0UTVrrCzUpE39FynDqUZPvOGSqzTRnMLFh8+8LNDhgyvpzb78iQno1+cfIOkJcSs1hV4N
+	aV0oQNFs+Vni46vN3DTqsWarEoeZmUmPpBILk2bebrdwTiT8muGzJBbUQk7tIDbZa+u/4WUl9DFJ7
+	JLQN0ZSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0QrI-00000009tcU-3MP8;
-	Thu, 03 Apr 2025 20:08:16 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1u0TPa-0000000AHtQ-1DXc;
+	Thu, 03 Apr 2025 22:51:50 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0Qcn-00000009q2B-14bE;
-	Thu, 03 Apr 2025 19:53:18 +0000
-Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id CCC9A6D5;
-	Thu,  3 Apr 2025 21:51:18 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1743709879;
-	bh=SUI00eySafeyd6YAdaNfDWXQziyjQoigDH+2+g1acA8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=MUnYnC4/T7y59yd7JqupnWgY/lfEQmBWcuoJjXqyH85TohAEaGA0FFOCxpzLCFQpk
-	 SUOFxXNM2imOOXTaKxEH9wLHmZJdm2wrMN2qnQvFEd1ns/MILZNCF+73MOD57uF4Y8
-	 dQD16bRmfllhOplVvgbCcI+wmXdpO4acq/abUVpE=
-Date: Thu, 3 Apr 2025 22:52:47 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: "bo.kong" <bo.kong@mediatek.com>
-Cc: Rob Herring <robh@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, zhaoyuan.chen@mediatek.com,
-	Teddy.Chen@mediatek.com,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v5 0/4] Add AIE driver support for mt8188
-Message-ID: <20250403195247.GA12280@pendragon.ideasonboard.com>
-References: <20250403074005.21472-1-bo.kong@mediatek.com>
+	id 1u0TNm-0000000AHdT-2SIP;
+	Thu, 03 Apr 2025 22:49:58 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id D1F5B614BA;
+	Thu,  3 Apr 2025 22:49:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7FD26C4CEE8;
+	Thu,  3 Apr 2025 22:49:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1743720597;
+	bh=8Kg/t2RqkZte6lOZ5o3u94WA0oTskjj8aJjrgnHYWv4=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=YmJoPO28sntJNdov6hfpPioOgUIChFYyaNcVAq5XQ1Ea/Qt2bDEShy6y4VWAXObcx
+	 1zb2T1wNHVMALD/WjoNyfIn0mxJ4nENsdncxzdFJgshnDefBscSqRPQqgwamy+4toW
+	 nvsS3QHInywPZcMR3PX2q1BdB5ocWlgLxz/tM5Q2pBJCPe8BsSyZ/TizQKpnXwK+y4
+	 wtijEf1pqC6K5D/LgTd2I4mM9n8GM6OBWhtH1wKauYmuPJw4MWvlJ2x5Vs2WUV+B8a
+	 gkKNCMo6r1NJWxea4Amgv3ZggxvTwkTJsAOJ7DlDpRTaYI6oyBqiHCZc3KKu2xJfM/
+	 1658t8SJrAFYQ==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id B0455380664C;
+	Thu,  3 Apr 2025 22:50:35 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20250403074005.21472-1-bo.kong@mediatek.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250403_125317_614066_AFFA1871 
-X-CRM114-Status: GOOD (  11.65  )
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net v4] net: airoha: Validate egress gdm port in
+ airoha_ppe_foe_entry_prepare()
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <174372063424.2709734.9248725253121002171.git-patchwork-notify@kernel.org>
+Date: Thu, 03 Apr 2025 22:50:34 +0000
+References: <20250401-airoha-validate-egress-gdm-port-v4-1-c7315d33ce10@kernel.org>
+In-Reply-To: <20250401-airoha-validate-egress-gdm-port-v4-1-c7315d33ce10@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,51 +72,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Bo,
+Hello:
 
-Thank you for the patches.
+This patch was applied to netdev/net.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-On Thu, Apr 03, 2025 at 03:38:32PM +0800, bo.kong wrote:
-> From: Bo Kong <Bo.Kong@mediatek.com>
+On Tue, 01 Apr 2025 11:42:30 +0200 you wrote:
+> Dev pointer in airoha_ppe_foe_entry_prepare routine is not strictly
+> a device allocated by airoha_eth driver since it is an egress device
+> and the flowtable can contain even wlan, pppoe or vlan devices. E.g:
 > 
-> AIE(AI Engine) is one of the units in mt8188 ISP which provides hardware accelerated face detection function, it can detect different sizes of faces in a raw image.
-
-This series is missing:
-
-- The v4l2-compliance report
-- Documentation of the UAPI
-- A pointer to an open-source userspace implementation using the device,
-  in a project relevant to the field of use
-
-> Bo Kong (4):
->   media: dt-bindings: add MT8188 AIE
->   arm64: dts: mt8188: add aie node
->   uapi: linux: add MT8188 AIE
->   media: mediatek: add MT8188 AIE driver
+> flowtable ft {
+>         hook ingress priority filter
+>         devices = { eth1, lan1, lan2, lan3, lan4, wlan0 }
+>         flags offload                               ^
+>                                                     |
+>                      "not allocated by airoha_eth" --
+> }
 > 
->  .../bindings/media/mediatek,mt8188-aie.yaml   |   78 +
->  arch/arm64/boot/dts/mediatek/mt8188.dtsi      |   33 +
->  drivers/media/platform/mediatek/Kconfig       |    1 +
->  drivers/media/platform/mediatek/Makefile      |    1 +
->  drivers/media/platform/mediatek/aie/Kconfig   |   12 +
->  drivers/media/platform/mediatek/aie/Makefile  |    5 +
->  drivers/media/platform/mediatek/aie/mtk_aie.h |  870 ++++++
->  .../media/platform/mediatek/aie/mtk_aie_drv.c | 2398 +++++++++++++++++
->  .../platform/mediatek/aie/mtk_aie_v4l2.c      | 1295 +++++++++
->  drivers/media/v4l2-core/v4l2-ioctl.c          |    3 +
->  include/uapi/linux/mtk_aie_v4l2_controls.h    |  308 +++
->  include/uapi/linux/videodev2.h                |    6 +
->  12 files changed, 5010 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mt8188-aie.yaml
->  create mode 100644 drivers/media/platform/mediatek/aie/Kconfig
->  create mode 100644 drivers/media/platform/mediatek/aie/Makefile
->  create mode 100644 drivers/media/platform/mediatek/aie/mtk_aie.h
->  create mode 100644 drivers/media/platform/mediatek/aie/mtk_aie_drv.c
->  create mode 100644 drivers/media/platform/mediatek/aie/mtk_aie_v4l2.c
->  create mode 100644 include/uapi/linux/mtk_aie_v4l2_controls.h
+> [...]
 
+Here is the summary with links:
+  - [net,v4] net: airoha: Validate egress gdm port in airoha_ppe_foe_entry_prepare()
+    https://git.kernel.org/netdev/net/c/09bccf56db36
+
+You are awesome, thank you!
 -- 
-Regards,
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-Laurent Pinchart
+
 
