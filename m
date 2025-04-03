@@ -4,67 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85149C3600C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Apr 2025 19:25:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95273C3600C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Apr 2025 19:31:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NV5Keu7PobIj1Vs9zR4FhOKfU5f9HhtMky13/A51/JY=; b=gD7GAfWv7EHrlJa0l2RbrjMRgf
-	QyAtvwiemSlFwOlAoEG4vZYZCMdcMb3cOfzwCXifNtt3gGoNeZbbY9fFc3Msz084e5SVfKSqi79Cn
-	S0HBadPWjLGoQjYUhPZFAkJX3KtoQ355DMCtN/hXPT+VciaTM4iDEBeCzb+kP6WnPp29O0cvGpQ/x
-	wRFdFiVulrxqOlSlEp70rFVk9U0BTP2mNE8Sv6IQCvX25sGADzpFod30MrqXiYgiK/Xjz0yYSvAQA
-	U4z8O3qB+f2dw0sCqQUfRoU5MyBohaImB7HBwcYkyGa95E8eOzArMQVRdWQJK+wMqENYrCQ4jYh+6
-	q4Bovcag==;
+	bh=ougpKDT4W0EpalyGx8Lbiw1TrmtNjfxUfEa1IjqTPLU=; b=RYzEfCAhXp8bWqp4ZrGxiSaMng
+	9TF7gkS1Bz0qoWhfUDu8eiwoneZYufFNInKOipRj1T128Z0RUByoY71dbSubosjmak1QO3BSMs3hX
+	X18mKMBnBzQLlsIaLd6UY7jPirB1vEAsPF47HR2bzYCwQpbhVGoyvH0ZEBiGAX/NxauTHfRcmbTIM
+	F9Qv73dgHoQ+L5BKqZ7VPDgYg6i9nYx/ww38X6yNOSmER2+fuAUMy9sR6MoBgZ8yAMxg5HzzXBZj8
+	umu4Be3Grufh2eHbdB30OoMWaiel3TVpssvVzlVUMkBLax0hP44eGk8fGCuUXsyrj2l+/4N7W9Fef
+	6fvl4Z4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0QCM-00000009k2k-2dAd;
-	Thu, 03 Apr 2025 19:25:58 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1u0QHi-00000009lHK-2G1w;
+	Thu, 03 Apr 2025 19:31:30 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0Pxv-00000009fL2-4C13;
-	Thu, 03 Apr 2025 19:11:04 +0000
+	id 1u0Q1I-00000009gRp-0nMw;
+	Thu, 03 Apr 2025 19:14:33 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 72DF6614B3;
-	Thu,  3 Apr 2025 19:10:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3234C4CEE3;
-	Thu,  3 Apr 2025 19:11:01 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 6380444CA8;
+	Thu,  3 Apr 2025 19:14:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 68F37C4CEEB;
+	Thu,  3 Apr 2025 19:14:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1743707463;
-	bh=p0tKKu06Y829F+DUE1Ct7xBxdEYR3/AUxIgzVvJ3Lyg=;
+	s=k20201202; t=1743707671;
+	bh=l0dhYx5/XiNaJAorfCzUdOzlFbxzJF2QTg94iZI4lLY=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=osoQnYQkpnINrA2CaWCLL5cG7z/TKM10yEBblFUqLTLLW9w4lP2Tb63pu9/qqHG6j
-	 Uh7Q9b8wVdxkTc5IRfRpDYc+DqLnVp3vbdzJAaAqFkokDdSpw01jHtXTXYB5RcXtFW
-	 QtX/4kcFG3+cODEMiTGsxxAvKKRTng6voP64QUrIOf39jRSS6IRG3EwOL0YQ7Vi0n8
-	 hQArBsUBbUMwoGpXwlfLkRebkmbHx+6kHSB9BT/66FY0o0Qr65ECJ0jp+la2UyMcN+
-	 VX9GOdgUFHxTKU0Iy3WX104n/FlHgL6NxtWimsZRYjOJhqv9Xk5YdFBR2k+O4k6HiY
-	 678SbobnicPTA==
+	b=JMygLT2Vq7+OYfJG3kXNLsEqWNH1fhrFXCUbeDBn9z+0BQHGsUfkDYjFs986LOGFa
+	 xJ2udTAGn/C9QqXTwnTrJDDWzmKLUi9p3Y9dcQklOGabeZQF05ngEO6UEwtdOYJEkr
+	 1+xogqXBH+vezAfxraYpCaN8S04dI57VsDmTvLUUcnf75wRrUPpvgNWyjahulRabLO
+	 CEHxv2f8kwQ+bDwqo18ExAPPmLetOjajcNrz4Cgp9tkIfcWm6Ffq1j1ADc62RF6eUr
+	 GwpWBRD26w4+LYZlD78sfkZh+MKCr9EERHHffCV1tb+MLT4xWOR0V5wPF4uQ4pbHfG
+	 u0vSgI/LA9LzQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Icenowy Zheng <uwu@icenowy.me>,
-	Felix Fietkau <nbd@nbd.name>,
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	CK Hu <ck.hu@mediatek.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 	Sasha Levin <sashal@kernel.org>,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
+	p.zabel@pengutronix.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
 	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-wireless@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.4 11/14] wifi: mt76: mt76x2u: add TP-Link TL-WDN6200 ID to device table
-Date: Thu,  3 Apr 2025 15:10:33 -0400
-Message-Id: <20250403191036.2678799-11-sashal@kernel.org>
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.14 27/44] drm/mediatek: mtk_dpi: Move the input_2p_en bit to platform data
+Date: Thu,  3 Apr 2025 15:12:56 -0400
+Message-Id: <20250403191313.2679091-27-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250403191036.2678799-1-sashal@kernel.org>
-References: <20250403191036.2678799-1-sashal@kernel.org>
+In-Reply-To: <20250403191313.2679091-1-sashal@kernel.org>
+References: <20250403191313.2679091-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 5.4.291
+X-stable-base: Linux 6.14
 Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250403_121432_279835_A88A2C14 
+X-CRM114-Status: GOOD (  13.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,34 +83,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Icenowy Zheng <uwu@icenowy.me>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-[ Upstream commit 06cccc2ebbe6c8a20f714f3a0ff3ff489d3004bb ]
+[ Upstream commit c90876a695dd83e76680b88b40067275a5982811 ]
 
-The TP-Link TL-WDN6200 "Driverless" version cards use a MT7612U chipset.
+In preparation for adding support for MT8195's HDMI reserved DPI
+instance, move the input_2p_en bit for DP_INTF to platform data.
 
-Add the USB ID to mt76x2u driver.
+While at it, remove the input_2pixel member from platform data as
+having this bit implies that the 2pixel feature must be enabled.
 
-Signed-off-by: Icenowy Zheng <uwu@icenowy.me>
-Link: https://patch.msgid.link/20250317102235.1421726-1-uwu@icenowy.me
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Link: https://patchwork.kernel.org/project/dri-devel/patch/20250217154836.108895-7-angelogioacchino.delregno@collabora.com/
+Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76x2/usb.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c b/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
-index 96a2b7ba6764b..8c392d55d59ba 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
-@@ -19,6 +19,7 @@ static const struct usb_device_id mt76x2u_device_table[] = {
- 	{ USB_DEVICE(0x0846, 0x9053) },	/* Netgear A6210 */
- 	{ USB_DEVICE(0x045e, 0x02e6) },	/* XBox One Wireless Adapter */
- 	{ USB_DEVICE(0x045e, 0x02fe) },	/* XBox One Wireless Adapter */
-+	{ USB_DEVICE(0x2357, 0x0137) },	/* TP-Link TL-WDN6200 */
- 	{ },
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index 1864eb02dbf50..c3fc85764c973 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -127,14 +127,14 @@ struct mtk_dpi_yc_limit {
+  * @is_ck_de_pol: Support CK/DE polarity.
+  * @swap_input_support: Support input swap function.
+  * @support_direct_pin: IP supports direct connection to dpi panels.
+- * @input_2pixel: Input pixel of dp_intf is 2 pixel per round, so enable this
+- *		  config to enable this feature.
+  * @dimension_mask: Mask used for HWIDTH, HPORCH, VSYNC_WIDTH and VSYNC_PORCH
+  *		    (no shift).
+  * @hvsize_mask: Mask of HSIZE and VSIZE mask (no shift).
+  * @channel_swap_shift: Shift value of channel swap.
+  * @yuv422_en_bit: Enable bit of yuv422.
+  * @csc_enable_bit: Enable bit of CSC.
++ * @input_2p_en_bit: Enable bit for input two pixel per round feature.
++ *		     If present, implies that the feature must be enabled.
+  * @pixels_per_iter: Quantity of transferred pixels per iteration.
+  * @edge_cfg_in_mmsys: If the edge configuration for DPI's output needs to be set in MMSYS.
+  */
+@@ -148,12 +148,12 @@ struct mtk_dpi_conf {
+ 	bool is_ck_de_pol;
+ 	bool swap_input_support;
+ 	bool support_direct_pin;
+-	bool input_2pixel;
+ 	u32 dimension_mask;
+ 	u32 hvsize_mask;
+ 	u32 channel_swap_shift;
+ 	u32 yuv422_en_bit;
+ 	u32 csc_enable_bit;
++	u32 input_2p_en_bit;
+ 	u32 pixels_per_iter;
+ 	bool edge_cfg_in_mmsys;
+ };
+@@ -610,9 +610,9 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+ 		mtk_dpi_dual_edge(dpi);
+ 		mtk_dpi_config_disable_edge(dpi);
+ 	}
+-	if (dpi->conf->input_2pixel) {
+-		mtk_dpi_mask(dpi, DPI_CON, DPINTF_INPUT_2P_EN,
+-			     DPINTF_INPUT_2P_EN);
++	if (dpi->conf->input_2p_en_bit) {
++		mtk_dpi_mask(dpi, DPI_CON, dpi->conf->input_2p_en_bit,
++			     dpi->conf->input_2p_en_bit);
+ 	}
+ 	mtk_dpi_sw_reset(dpi, false);
+ 
+@@ -1006,12 +1006,12 @@ static const struct mtk_dpi_conf mt8195_dpintf_conf = {
+ 	.output_fmts = mt8195_output_fmts,
+ 	.num_output_fmts = ARRAY_SIZE(mt8195_output_fmts),
+ 	.pixels_per_iter = 4,
+-	.input_2pixel = true,
+ 	.dimension_mask = DPINTF_HPW_MASK,
+ 	.hvsize_mask = DPINTF_HSIZE_MASK,
+ 	.channel_swap_shift = DPINTF_CH_SWAP,
+ 	.yuv422_en_bit = DPINTF_YUV422_EN,
+ 	.csc_enable_bit = DPINTF_CSC_ENABLE,
++	.input_2p_en_bit = DPINTF_INPUT_2P_EN,
  };
  
+ static int mtk_dpi_probe(struct platform_device *pdev)
 -- 
 2.39.5
 
