@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4F5DC3600C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Apr 2025 11:15:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AA7CC3600C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Apr 2025 11:15:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=nhZODBc3yQWuwoe5FdhPLSZkoPupsn7Fy4qR0rl4EDE=; b=navtMajb7cT6J/CFkL4cVzcDwx
-	9N79s9JUu1Qbiipr45OoqDXqT2+1beulAwhoUs1Tt+ce8nWbNtDkUK9C2nC5UZwVo0qDaFUYrVu7N
-	jRNm3/K55T6fta8W+kIqwccuV76sduTOKOHJOwx60o1ZWUaQBrBG/sRfOGqeN5N643ngHgEGgzPr9
-	dFh1SuWoNFoQJKsru1LOEz8Y8QdoIrOBSaEh8ZzDN9uQUMHM3iWrp7fEuMHA1HUETAaO5370N7Xb2
-	wrGj3KI1zsaWEknfft370uU/Pb2WH+ZcUpupJxLPX2a9v9PZPQjDjCrLvVmw9updbEJchUmfc9ilA
-	W2N3nn+g==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RcyGRAHQFS+ybw4WNgPD32cRLc8OePZfzMvWoPhF09U=; b=pY2EyxBwj6Q05w57rY/0z0T8Ys
+	5RF3iV4zYG0P1xlSBCS37aC9O/2qE4EJ8WtwlOCL/K8uXOjtCglbA/T87TT2Ppp5yHEY9MA7TdJoV
+	SGm1jHuthlSD0VYHjG2bnz9WlOUEmpUN7AKFiKg5SyUKpRSJJ/FL3UXOcmDyHEgu7syV+Jn3vIOIo
+	4Bpdd3bHS19LTnBnzpNMfy1BtWZsbiU+aIZEIu93hN44Ih3R4L5rTOYb5gzCCQHP6H1vkPS+Yt38T
+	pFM1YaAE4FJs6NnSP3ayfld3NYXMIsMWOPqJyjCH1y7uq0AJXR4jF3JzABrDD5BflOgtsjVXOHh3C
+	ZBpdfJdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0IXX-00000008fUh-2Ftj;
-	Thu, 03 Apr 2025 11:15:19 +0000
+	id 1u0IXZ-00000008fVh-2Fxs;
+	Thu, 03 Apr 2025 11:15:21 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0I6s-00000008cF2-194a;
-	Thu, 03 Apr 2025 10:47:47 +0000
+	id 1u0I6t-00000008cF9-1O9M;
+	Thu, 03 Apr 2025 10:47:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1743677264;
-	bh=krVSqUMcdIJm0l6D8vCcbNrCt6hb1FXOmk01RVoxGgI=;
-	h=From:To:Cc:Subject:Date:From;
-	b=gDiS+LNWako3Yd4OZmxHJpbbQH24gPo3P7AJpjH5rPQQSYCi/aTFkSG5zooc6fazC
-	 2l2sQJ9ByJfzScLHLeHRx48qcuokSKnvopPznQaaoIfx5xewQk+T9spIXHrWeEJkpw
-	 bpKuqH4Ckro4vF9Xv2Zk+nRivlZuzDc0HpiTct15XKroXv4iJrPm5oX6oM/qrEs/QU
-	 MUTOq+FRkRN1PPc8JI0rZ+POhoxRu+N8AK5p51gbmtubkk2QgXKqbs+unl3oRBpV4J
-	 Macve0O4vLxKgaGRsiZILjto1gDlZ2ohY0Fp3n4MzNkKRKfy9ccqmET6shy6f0Pe6P
-	 pY5zacfHULYgA==
+	s=mail; t=1743677265;
+	bh=cdgfmZWt92kl0WT1E+bmMblp1Gwma1GMRb4hLbf+qZI=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=FMNfxomSjJQHWBxfx0+elkxR1CNA/+rKzicDqXNq90eXvvjj4CCwqQipyeoAsKcjb
+	 fhkQEuLrKWrLhdkh8sEK22esehbTAHbmYgIWmuKAoXp2Zzic7BzvKQth86kvVeIs2n
+	 TE58FQOHQtOaLtZA1Gk/rYAIX71fswWbq6msvoh+g9fXydADnudS8kBr8RM/nbVUpD
+	 MapphVL208KOwRbpJiJEeQtQPN3DJyFRh+mRJVPSLBvDraAw8/2ZBbAcr/GOVGxLGJ
+	 /h1K9jmno5GxNGp+lS/PEB7hQhUBU60lhv0FbvqETzMfCDm0x1HEHG7nC7UBBZZ63M
+	 qGQuI4AeWCkbg==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 828FC17E0702;
-	Thu,  3 Apr 2025 12:47:43 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B8F8217E0FCC;
+	Thu,  3 Apr 2025 12:47:44 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -61,15 +61,17 @@ Cc: p.zabel@pengutronix.de,
 	linux-arm-kernel@lists.infradead.org,
 	wenst@chromium.org,
 	kernel@collabora.com
-Subject: [PATCH v2 0/5] drm/mediatek: Cleanups and sanitization
-Date: Thu,  3 Apr 2025 12:47:36 +0200
-Message-ID: <20250403104741.71045-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 1/5] drm/mediatek: mtk_drm_drv: Fix kobject put for mtk_mutex device ptr
+Date: Thu,  3 Apr 2025 12:47:37 +0200
+Message-ID: <20250403104741.71045-2-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.48.1
+In-Reply-To: <20250403104741.71045-1-angelogioacchino.delregno@collabora.com>
+References: <20250403104741.71045-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250403_034746_510274_6BE257B2 
-X-CRM114-Status: GOOD (  11.00  )
+X-CRM114-CacheID: sfid-20250403_034747_547269_AE9E1E9E 
+X-CRM114-Status: GOOD (  15.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,54 +86,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Changes in v2:
- - Fixed typo in description for commit [2/5]
- - Using IRQF_NO_AUTOEN in devm_request_irq() instead of calling
-   irq_set_status_flags() to set flag for the same functionality.
+This driver is taking a kobject for mtk_mutex only once per mmsys
+device for each drm-mediatek driver instance, differently from the
+behavior with other components, but it is decrementing the kobj's
+refcount in a loop and once per mmsys: this is not right and will
+result in a refcount_t underflow warning when mediatek-drm returns
+multiple probe deferrals in one boot (or when manually bound and
+unbound).
 
-During probe, the mediatek-drm drivers take a bunch of kobject
-references for the various component sub-drivers and for the
-mmsys/mutex handles.
+Besides that, the refcount for mutex_dev was not decremented for
+error cases in mtk_drm_bind(), causing another refcount_t warning
+but this time for overflow, when the failure happens not during
+driver bind but during component bind.
 
-Unfortunately, the refcount is not correctly decremented in some
-cases, and not correctly incremented in some others, leading to
-refcount_t overflows *or* underflows depending on where the code
-fails during platform driver probe or during component bind.
+In order to fix one of the reasons why this is happening, remove
+the put_device(xx->mutex_dev) loop from the mtk_drm_kms_init()'s
+put_mutex_dev label (and drop the label) and add a single call to
+correctly free the single incremented refcount of mutex_dev to
+the mtk_drm_unbind() function to fix the refcount_t underflow.
 
-This means that if mediatek-drm or any component of it returns a
-probe deferral, and if this happens "too many times" (where too
-many equals to around 3-5 times, and that's happening especially
-when outer drivers are compiled as module while mediatek-drm is
-built-in), it creates a whole bunch of badnesses.
+Moreover, add the same call to the error cases in mtk_drm_bind()
+to fix the refcount_t overflow.
 
-This series sanitizes the freeing of the acquired kobjects in
-mediatek-drm - especially in the multi-mmsys (multi-vdo) case.
+Fixes: 1ef7ed48356c ("drm/mediatek: Modify mediatek-drm for mt8195 multi mmsys support")
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Link: https://lore.kernel.org/r/20250402083628.20111-2-angelogioacchino.delregno@collabora.com
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 17 ++++++++++-------
+ 1 file changed, 10 insertions(+), 7 deletions(-)
 
-While at it, this also moves the ISR enablement and disablement
-to the component bind/unbind callbacks respectively, while keeping
-the ISR installation to the probe function: this is done to avoid
-leaks and to avoid entering ISRs for OVL/RDMA after those are
-unbound (as that'd be dangerous, other than useless, because those
-could access memory that doesn't belong to those drivers anymore,
-as pointers may not have been set to NULL...!).
-
-As an example, this is the reason (if not one of the reasons) for
-a boot failure seen on the MT8195 Tomato Chromebook, pointed out
-by KernelCI.
-
-
-AngeloGioacchino Del Regno (5):
-  drm/mediatek: mtk_drm_drv: Fix kobject put for mtk_mutex device ptr
-  drm/mediatek: Fix kobject put for component sub-drivers
-  drm/mediatek: mtk_drm_drv: Unbind secondary mmsys components on err
-  drm/mediatek: mtk_disp_ovl: Enable/disable interrupt on bind/unbind
-  drm/mediatek: mtk_disp_rdma: Enable/disable interrupt on bind/unbind
-
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c  | 20 +++++++++-----
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c | 34 ++++++++++++++----------
- drivers/gpu/drm/mediatek/mtk_drm_drv.c   | 31 +++++++++++++++------
- 3 files changed, 56 insertions(+), 29 deletions(-)
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index e09578756de0..a8fbccb50c74 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -464,7 +464,7 @@ static int mtk_drm_kms_init(struct drm_device *drm)
+ 
+ 	ret = drmm_mode_config_init(drm);
+ 	if (ret)
+-		goto put_mutex_dev;
++		return ret;
+ 
+ 	drm->mode_config.min_width = 64;
+ 	drm->mode_config.min_height = 64;
+@@ -483,7 +483,7 @@ static int mtk_drm_kms_init(struct drm_device *drm)
+ 		drm->dev_private = private->all_drm_private[i];
+ 		ret = component_bind_all(private->all_drm_private[i]->dev, drm);
+ 		if (ret)
+-			goto put_mutex_dev;
++			return ret;
+ 	}
+ 
+ 	/*
+@@ -576,9 +576,6 @@ static int mtk_drm_kms_init(struct drm_device *drm)
+ err_component_unbind:
+ 	for (i = 0; i < private->data->mmsys_dev_num; i++)
+ 		component_unbind_all(private->all_drm_private[i]->dev, drm);
+-put_mutex_dev:
+-	for (i = 0; i < private->data->mmsys_dev_num; i++)
+-		put_device(private->all_drm_private[i]->mutex_dev);
+ 
+ 	return ret;
+ }
+@@ -649,8 +646,10 @@ static int mtk_drm_bind(struct device *dev)
+ 		return 0;
+ 
+ 	drm = drm_dev_alloc(&mtk_drm_driver, dev);
+-	if (IS_ERR(drm))
+-		return PTR_ERR(drm);
++	if (IS_ERR(drm)) {
++		ret = PTR_ERR(drm);
++		goto err_put_dev;
++	}
+ 
+ 	private->drm_master = true;
+ 	drm->dev_private = private;
+@@ -676,6 +675,8 @@ static int mtk_drm_bind(struct device *dev)
+ 	drm_dev_put(drm);
+ 	for (i = 0; i < private->data->mmsys_dev_num; i++)
+ 		private->all_drm_private[i]->drm = NULL;
++err_put_dev:
++	put_device(private->mutex_dev);
+ 	return ret;
+ }
+ 
+@@ -688,6 +689,8 @@ static void mtk_drm_unbind(struct device *dev)
+ 		drm_dev_unregister(private->drm);
+ 		mtk_drm_kms_deinit(private->drm);
+ 		drm_dev_put(private->drm);
++
++		put_device(private->mutex_dev);
+ 	}
+ 	private->mtk_drm_bound = false;
+ 	private->drm_master = false;
 -- 
 2.48.1
 
