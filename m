@@ -4,94 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B36FC3600C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Apr 2025 06:47:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F087C3600C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Apr 2025 06:54:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ykrR7iAx9ez7r09+03/1ZkDbNGh2pKfyFPnmAhHSaXs=; b=YVHlwKbs2/8Cmg+J0U5BhUpG2P
-	begQJucdGt48fAQ35esxQ4y4/Zti5v4w3rHVHRdrxn3vdwUq+axjxx6SdzpF2xWGSna0E6WWaezoi
-	fNiaC37VT3Aw4dsKkF0FzwQ9b7MZ9zF7ZDuFcj7eQtoUvkbPXkICf8wFo9uCb2cnV6ST/4damRuCg
-	bjeBIHR4NmBcLl94l07tMjAbbDAI6qxOBY5O79hyDNE7i4aX9f5H6DXt7HmRZ1Y1gzvCPeoGo5Mbi
-	6BsEZfoE9hDaVwHatdz5tbVcatQcC1nlH8duKDgPmBJXJHU/pQjRh71mmfIIPFCez9uDu0ergu1sR
-	X3wWYbHQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LTZofUX6Jv/8yJIenVhAoWh1nNKDtqpvFcNBJxTaRao=; b=CoEze66ga/d3kQGPWPrJmDyfJp
+	pj1gg7oOOy6uAMbLreSHyC5MfK0P5+KkMaTL0zT8+WTKra1l42G8qAXPZY5lfLZSyuroOrSHrmKtw
+	HgI3s6hWf15UpJM1ICSiu5WO15bHV5ga3Wx5wRb1VqBrErjupMMxdhGt7oHGdxra19X1SUqNB5JYb
+	dqgNP+82aSHlU0AL+mGyUapK2KAUTeyFzDEbHz3h5jqdzQxXdGpzqwQUabYezihqQPaxAyFy1v0+b
+	9/Xw4DlhoKwO+JuPW3gPVgPsE7Cq0Zl3P/5QsAS/IGzmiaI/tu+APCGztN3FeeXs9BX5qX3Y7K6FA
+	DwHSHw8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0EMf-00000007yM7-1iXq;
-	Thu, 03 Apr 2025 06:47:49 +0000
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
+	id 1u0ET2-00000007zQY-1Dvs;
+	Thu, 03 Apr 2025 06:54:24 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0EIz-00000007xqf-3wZZ;
-	Thu, 03 Apr 2025 06:44:04 +0000
-Received: by mail-pg1-x543.google.com with SMTP id 41be03b00d2f7-af590aea813so862247a12.0;
-        Wed, 02 Apr 2025 23:44:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1743662641; x=1744267441; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=ykrR7iAx9ez7r09+03/1ZkDbNGh2pKfyFPnmAhHSaXs=;
-        b=BPEehj5qLN8wOjawegF+G7ZzYb+m4Ya1Qzb2YlrreQZUw+eZjZNic/C0y9oHAV+Kpz
-         IoRxN2qPbA0bEneCQeYDwdIZqOfWKomOiMJ+JfrtXqsFOgMVtWwNcrSaggntbvvjlGfN
-         q6LKzN3SRZv2O21X6wRLNaAgXnCIsX7MGSxodVIvxFZPjlxDROvFgIU3monEYNGfvxdA
-         mB+XdMhJ03b4W+ZTMRyE/c3fdsqvQgElHZTK1ohSu+MWMJbN73ILUJHmo8gRwyBpZ63X
-         vyViVQI36nYYnRiWm1amhmgUlN4xIY/2UrbEsUgKSTdhuHpfSfyOLx4Bo0zoebsCgF4N
-         vYZg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743662641; x=1744267441;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ykrR7iAx9ez7r09+03/1ZkDbNGh2pKfyFPnmAhHSaXs=;
-        b=KYLYFS1NRpn2r5LCeHc8qS5JWitNJxfbu/RkS9Whf9mB22NCVqZaeyItE2pU08Wc+s
-         D8tpMAJHMayneujF1skW87F5fsQzI06vth9jIFANj6tvLCQbr0ZGH/jPi33HgQg//mSh
-         fSyJFVlXw4wLR9kpKjOZDPGDpwJUbX6NF4k27UbAEMl5JnSp2wybTfasjiq+cHq8xYdf
-         rp47Sqer4Ky2J5HBnhAGKdjlJiHFyyi/AzOerW+CKPHDw0eL/4fny0Sv+ZLPEFufRbHT
-         JjlriPgLRTTh4AnBsnqZFHy5UiTNJ3G0QATSs43iec39DW1B3t+7GKBOH5/gDR9GtoEE
-         ndbw==
-X-Forwarded-Encrypted: i=1; AJvYcCV+q+KZPj4xfqB0Z8o+kCzJ+Le3mnyfBe/PR0zFvd1ADsPiytqXX8R+FHHuliO0x842cVSicdw9uKE/5fsMxtzC@lists.infradead.org, AJvYcCX9s03G2H7sam89N3Fxz/NZbvZjEyc91FezqOTZONuGMadAmGczqc9ORPqEbgxu/Qhsi3BtKNwhVSbY97cIynU=@lists.infradead.org
-X-Gm-Message-State: AOJu0YyjN11nV24nvWVURIWIHOZrDfEeFm+tK4FwyOU1Neru29t7eC9i
-	x0QpImKevIUQ5MK4DJojPSM35Nk+mDK+GFGM17T5M4623sEpy5K6
-X-Gm-Gg: ASbGncuZBBjyXDuA+VnbZpxSoNgumlfbhXnO305q63Ex4b8dd9nyYMoCZiaJPlAuQhJ
-	BVqbHZKo9DL/unW2J56JlcOob7ZeUuTJ66OQQ7nTLQU6jwozk5/fYyb0MoVvaMo6f5hs45wLdBQ
-	1tT08XXrH1DTRKISLwpdl3EuYBtCI5OM2jLUz2Oto5EnYjjO/fR22z0k7bgpeZ/cnJLCg0/cJRN
-	r+HdEU4brlmMzKEhHHTjmmZjfeH5iHPk75dpW1i6dpbaoq9xwztOI3oJscfxryqKCl0LP6foO38
-	TZlfiAKGDrX2cRwH84Ub7MigM9jN0I56p5+9r2816ls7lJSO2ZRo24oZwWCx28dtQeVCXMo=
-X-Google-Smtp-Source: AGHT+IG83pAigN0u9fFp1U+1mHdp8ie0G+EShwD4mUh/8O4s3BJGqBMlbGS+xQCeTPBm2I+l1DLKGA==
-X-Received: by 2002:a17:903:3d04:b0:215:b1e3:c051 with SMTP id d9443c01a7336-229765eb309mr33330915ad.11.1743662640547;
-        Wed, 02 Apr 2025 23:44:00 -0700 (PDT)
-Received: from henry.localdomain ([111.202.148.167])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-229785c3819sm7055945ad.87.2025.04.02.23.43.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 02 Apr 2025 23:44:00 -0700 (PDT)
-From: Henry Martin <bsdhenrymartin@gmail.com>
-To: nbd@nbd.name,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com,
-	sean.wang@mediatek.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	wiagn233@outlook.com,
-	rex.lu@mediatek.com,
-	chui-hao.chiu@mediatek.com,
-	bsdhenrymartin@gmail.com
-Cc: linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v1] wifi: mt76: mt7996: Fix null-ptr-deref in mt7996_mmio_wed_init()
-Date: Thu,  3 Apr 2025 14:43:44 +0800
-Message-Id: <20250403064344.64253-1-bsdhenrymartin@gmail.com>
-X-Mailer: git-send-email 2.34.1
+	id 1u0EPV-00000007yoT-38bZ;
+	Thu, 03 Apr 2025 06:50:47 +0000
+X-UUID: f2d19ed4105711f0a1e849db4cc18d44-20250402
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=LTZofUX6Jv/8yJIenVhAoWh1nNKDtqpvFcNBJxTaRao=;
+	b=eR+RL3yi5DShQCFKQr80qgSyh3xBnrE0D04BOawx8nuVQS+iq54xn7sMfDKUKbBnRzA778wmeeVyA60YnNY1BahcFXTwXhF9Bbj7GwOZPH4Kj5zWzRC77rxnFZeHIWExMSgQXl/cXz0j32WvmvP8tjGf37hwjtzY+jVPEAuF1UY=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:1b908a36-075f-42e0-9715-8c2d11a373e2,IP:0,UR
+	L:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:25
+X-CID-META: VersionHash:0ef645f,CLOUDID:5e22e94a-a527-43d8-8af6-bc8b32d9f5e9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
+	,IP:nil,URL:11|83|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
+	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-UUID: f2d19ed4105711f0a1e849db4cc18d44-20250402
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <crystal.guo@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 654618536; Wed, 02 Apr 2025 23:50:37 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Thu, 3 Apr 2025 14:50:34 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Thu, 3 Apr 2025 14:50:33 +0800
+From: Crystal Guo <crystal.guo@mediatek.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>, Rob Herring <robh@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Crystal Guo
+	<crystal.guo@mediatek.com>
+CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v4 1/2] dt-bindings: memory-controllers: Add MediaTek DRAM controller interface
+Date: Thu, 3 Apr 2025 14:48:47 +0800
+Message-ID: <20250403065030.22761-2-crystal.guo@mediatek.com>
+X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20250403065030.22761-1-crystal.guo@mediatek.com>
+References: <20250403065030.22761-1-crystal.guo@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250402_234401_976614_E964B013 
-X-CRM114-Status: UNSURE (   8.64  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250402_235045_808735_BC4BF01F 
+X-CRM114-Status: GOOD (  13.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,32 +89,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-devm_ioremap() returns NULL on error. Currently, mt7996_mmio_wed_init()
-does not check for this case, which results in a NULL pointer
-dereference.
+A MediaTek DRAM controller interface to provide the current DDR
+data rate.
 
-Add NULL check after devm_ioremap() to prevent this issue.
-
-Fixes: 83eafc9251d6 ("wifi: mt76: mt7996: add wed tx support")
-Signed-off-by: Henry Martin <bsdhenrymartin@gmail.com>
+Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7996/mmio.c | 2 ++
- 1 file changed, 2 insertions(+)
+ .../mediatek,mt8196-dramc.yaml                | 44 +++++++++++++++++++
+ 1 file changed, 44 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,mt8196-dramc.yaml
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7996/mmio.c
-index 13b188e281bd..5bade83238bd 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mmio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mmio.c
-@@ -323,6 +323,8 @@ int mt7996_mmio_wed_init(struct mt7996_dev *dev, void *pdev_ptr,
- 	wed->wlan.base = devm_ioremap(dev->mt76.dev,
- 				      pci_resource_start(pci_dev, 0),
- 				      pci_resource_len(pci_dev, 0));
-+	if (!wed->wlan.base)
-+		return -ENOMEM;
- 	wed->wlan.phy_base = pci_resource_start(pci_dev, 0);
- 
- 	if (hif2) {
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,mt8196-dramc.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,mt8196-dramc.yaml
+new file mode 100644
+index 000000000000..c0b3e7166a87
+--- /dev/null
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,mt8196-dramc.yaml
+@@ -0,0 +1,44 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++# Copyright (c) 2025 MediaTek Inc.
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/memory-controllers/mediatek,mt8196-dramc.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek DRAM Controller (DRAMC)
++
++maintainers:
++  - Crystal Guo <crystal.guo@mediatek.com>
++
++description:
++  A MediaTek DRAM controller interface to provide the current data rate of DRAM.
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt8196-dramc
++
++  reg:
++    items:
++      - description: anaphy registers
++      - description: ddrphy registers
++
++additionalProperties: false
++
++required:
++  - compatible
++  - reg
++
++examples:
++  - |
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        memory-controller@10236000 {
++            compatible = "mediatek,mt8196-dramc";
++            reg = <0 0x10236000 0 0x2000>,
++                  <0 0x10238000 0 0x2000>;
++        };
++    };
 -- 
-2.34.1
+2.18.0
 
 
