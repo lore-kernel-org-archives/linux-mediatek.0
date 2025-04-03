@@ -4,205 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D27FEC3601B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Apr 2025 07:30:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 035CDC3601B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Apr 2025 07:40:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=v2k57w3spyjgMiFCRXiQw0dLjNGClsOUWHQtoY6KCqU=; b=21jdu4hRI9gQkqIkkmfUmQjX99
-	OaraVuNPVr5Ix4NGDiUnqmDlKOfKEmPbyAbzQktwxjAOZtbz+ODI4q1aagO6CjaVZ0TOID2FuXExJ
-	GXPDc4Ge26ktSm9cmmDapnBa1WJA2yDeRBXuU5SONkJa7n4IjbpM/sMw1QWcaZaVpqyNXF1ABktuW
-	G4JWuUX1e4z/JRLqfjEHK0QOIa//0oQ/zTD6sm8FqBS7HZ91qRUNYYmVVyrr8sooWPkca6Ib4pajr
-	URI/P7noFeiJaV3UGtS/9+tfZEHuViQLuDx0MKZzyQWPYltcHCgFcjySaLe32QniaVwN9YSI1anSy
-	jAZlLlvA==;
+	bh=wAT6CJcD8ytdYoyJijtAbZBEnVq+2dlyKKEa8H2Koi8=; b=hoAHgTxzeUuzIgIWV3/Bnvf1M/
+	n3PLgk7lZZaoX5N0pgdrIDJdRoMErSzZ7sHkkPiLZJIhLTDIjZ4S1hddYqx2uF1p69ZzfBHgqEcxx
+	F2Lal7Lg/HzKeGF49u508eA+bbAUs6SsUqkB7ofSjirkgc3DekqJoXVCyZMpzFKRQ0AwA8ilRhAio
+	X9jxe1DnKP49S03EBAchRM5+6ouAuedM7hpxjkTJU+D4PUqQ1X7Lt6hrmzIiNDRQr83Ah1UqHbTo/
+	eAobfX9BcZKEfx6HilLF2vhbw0Y8B/b+edjxErUp1ZyLKsmBR+LsVWxzPt+6Ec6rEz5xblvWiVu1e
+	ef74DNfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0F2B-000000087RF-2bFh;
-	Thu, 03 Apr 2025 07:30:43 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1u0FBi-000000089BG-3z7v;
+	Thu, 03 Apr 2025 07:40:34 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0ExJ-000000086L6-2SMm;
-	Thu, 03 Apr 2025 07:25:43 +0000
-X-UUID: d441c00c105c11f0a1e849db4cc18d44-20250403
+	id 1u0FBP-0000000895f-0SB0;
+	Thu, 03 Apr 2025 07:40:16 +0000
+X-UUID: e033144a105e11f083f2a1c9db70dae0-20250403
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=v2k57w3spyjgMiFCRXiQw0dLjNGClsOUWHQtoY6KCqU=;
-	b=D7jV/PKhxwnK+H3r/pCyYLKa263OYG8nq8LMMGmTD9zJdz2luZ+9bU3aagzFgqMVCFuYHfUvMGfWvXPiy7NoyxT2DMnuEmhTDraFWl9/2HlfIERy508gOUVBEE4gZ0/IuRRsQV0t9Gym+kF/4uR7gvZ/DB80hBX1hmOSUitmsZk=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=wAT6CJcD8ytdYoyJijtAbZBEnVq+2dlyKKEa8H2Koi8=;
+	b=CLQAGMoi7JxjSKpElYov9CGTEppJ7P8ReQ6udUdbzjv3GfmW3b4BRM7TQ4z2VK82oCqNIrPZzQttKVhK2nna/ViCzyT7rVh5xavtIyU0EmCyNvzAHmY/MYRdi5YOkyhuOl9GT462jGt2nWDzSYdA7y4kRPIIUkoIKzl3kAy46Bk=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:50de484e-aa54-4e46-af2f-13e491fc8ee3,IP:0,UR
+X-CID-O-INFO: VERSION:1.2.1,REQID:d377da59-9ed6-4dc9-aba3-3470741bfc33,IP:0,UR
 	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
 	elease,TS:0
-X-CID-META: VersionHash:0ef645f,CLOUDID:2c602d8d-f5b8-47d5-8cf3-b68fe7530c9a,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111,TC:nil,Conte
-	nt:0|50,EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,
-	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:23b6a5a5-c619-47e3-a41b-90eedbf5b947,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
+	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
+	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: d441c00c105c11f0a1e849db4cc18d44-20250403
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <yong.wu@mediatek.com>)
+X-UUID: e033144a105e11f083f2a1c9db70dae0-20250403
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+	(envelope-from <bo.kong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1465222841; Thu, 03 Apr 2025 00:25:33 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+	with ESMTP id 282720387; Thu, 03 Apr 2025 00:40:12 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Thu, 3 Apr 2025 15:25:30 +0800
-Received: from APC01-TYZ-obe.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Thu, 3 Apr 2025 15:25:30 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=GcN+hHv/Ho77kRox/2sjzZj8P3+njAP1l4nXsLAMzeup8llaeWO90WPrcwvSfOe4zHeWu+3/ZJ24etEC/52yY8Q4R3K0gHAY166qjcMieZOaryaJeGMwLv8utWJrmMmu367glQiUyIUhuirsfhRfE92IuIu1m0Bjfr1HEBw7xy4kJG1lFwp47PIHjJqbOl71Gh3pW+0kZo9TJO9KtLBIFvzItlVbs8YgzhGxqVWK3P1GZrSlsuElpvy8w860Lk6Nwxae3JQRfmc9g2TWKdEujekJ/kfsypUGxLoXCfv3qykqa/rsc/sNuQnpoRG51VzNwG+MpbCasWT35rytQ9b4Ug==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=v2k57w3spyjgMiFCRXiQw0dLjNGClsOUWHQtoY6KCqU=;
- b=Ol+R7IUk47v+AIyyrPAsKurTPIElasynWm+l3ynLBsmlkiJOZcP29bQ4JrSQS+/c6KxF/rFAQ5zKB5Kc6YK7AAVx/mKELRZziH8EQGLK+6eusY9VRGsB9huRSa/CJVMNiVxXyyY5jFKC8ojUVSS0dJBm0EbPvLLJBuJSpwvdDUCoepcPzY7HWji2AvEkjHQxbC6DT7haMCtPteaGfTCUjzTTa5kQSKXqhJZmAvJisG2AQ+iLyDKYyf2l0Flwi6u69aMQt4O6CxrutGTCQZGIA3eBczc/M3lcmZBJMkDg2yheRz5Ogo2Wsp39mQsq5L8BB8gbXV8IgsP3QtVqWR7HIw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=v2k57w3spyjgMiFCRXiQw0dLjNGClsOUWHQtoY6KCqU=;
- b=JhM23MSp2szsyhxb9yB+PVkK6jJXBLqrla4qY45j/ROt8v7ITt7fSvqRoqPosXyS4Y3RwX8ZJDTsnEyl1LH8D7rnKJtNqORPEhecCK1mdxeg9K5l3c7NrFbabgUgKbzhG8RfPgbDKwoBhTDYs5ugsSvleSEtySSY6LrJgQvbRrs=
-Received: from SI2PR03MB5885.apcprd03.prod.outlook.com (2603:1096:4:142::7) by
- SEYPR03MB8301.apcprd03.prod.outlook.com (2603:1096:101:1ac::8) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.8583.43; Thu, 3 Apr 2025 07:25:26 +0000
-Received: from SI2PR03MB5885.apcprd03.prod.outlook.com
- ([fe80::683a:246a:d31f:1c0]) by SI2PR03MB5885.apcprd03.prod.outlook.com
- ([fe80::683a:246a:d31f:1c0%5]) with mapi id 15.20.8583.041; Thu, 3 Apr 2025
- 07:25:25 +0000
-From: =?utf-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>
-To: "robin.murphy@arm.com" <robin.murphy@arm.com>, "joro@8bytes.org"
-	<joro@8bytes.org>, "louisalexis.eyraud@collabora.com"
-	<louisalexis.eyraud@collabora.com>, "robh@kernel.org" <robh@kernel.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "bhelgaas@google.com"
-	<bhelgaas@google.com>, "lpieralisi@kernel.org" <lpieralisi@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"will@kernel.org" <will@kernel.org>
-CC: "jroedel@suse.de" <jroedel@suse.de>, "kernel@collabora.com"
-	<kernel@collabora.com>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "jgg@ziepe.ca" <jgg@ziepe.ca>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"iommu@lists.linux.dev" <iommu@lists.linux.dev>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-Subject: Re: [PATCH] iommu/mediatek: Fix NULL pointer deference in
- mtk_iommu_device_group
-Thread-Topic: [PATCH] iommu/mediatek: Fix NULL pointer deference in
- mtk_iommu_device_group
-Thread-Index: AQHbnwWYw7AalrKX5kuusJlyJ705FLORlRaA
-Date: Thu, 3 Apr 2025 07:25:25 +0000
-Message-ID: <ffb19b2e42d3e99990cddaa13264e87561ab26d4.camel@mediatek.com>
-References: <20250327-fix-mtk-iommu-error-v1-1-df969158e752@collabora.com>
-In-Reply-To: <20250327-fix-mtk-iommu-error-v1-1-df969158e752@collabora.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SI2PR03MB5885:EE_|SEYPR03MB8301:EE_
-x-ms-office365-filtering-correlation-id: cdf6b8cf-2ea0-439f-97eb-08dd7280b3e4
-x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|7416014|376014|366016|38070700018;
-x-microsoft-antispam-message-info: =?utf-8?B?ZkxUQ0EwV0xUOG0yVWdrQTY5eStjeVNQRWlCUi9WS2VXY1RmelBhWHJSNXEy?=
- =?utf-8?B?eW5xdXlHNmp5Z0hkdWFiamV3SnZjQzRZVjN5elFyNCtLQ2hXRmtDT0ludUNh?=
- =?utf-8?B?NmVMSzAvME1zRk92SnNyRXc4dGNDUEY5WHg2cUtxa3FTckNnTmhaUDV6SXpD?=
- =?utf-8?B?UU5DcUxSMHNZcTltK0lTS0dJL0UyVXRDU2dMVE42NUhENDhnYm5iY0ZHZDZl?=
- =?utf-8?B?MTFkNTgyTnhEaTFMdEh4LzRneXVncHZwT3hRRFByWnJZZWJmZTNQOGFpNUpp?=
- =?utf-8?B?K1BDOGRvSENZa1ZYcVdnajZuaUMyL2ZqTnN0SkVJcmpyZVk2UExXR0pTLzZ4?=
- =?utf-8?B?UHlGM1hxdzNQcGo1SVZPN1RLWTN4c3JuL2dmaFpNaXc3alRZRXg5RUo2UzhH?=
- =?utf-8?B?VGZsN0t6SUVVQjBSOXhYaVdTYTBBMjVhWVQ0NEdqTElOdThhdjBlNGZTMG5M?=
- =?utf-8?B?eThncUp3M2dBcE1lQU1aeHN4T29DYnV1TytUL3hndzdPYnJyM3M5bzh5cU9Z?=
- =?utf-8?B?K01pRU9sNnlWTzhtbVVmU29XeWxudVBTODF1RUtLNzRxQnpDQVc0eis5QU1t?=
- =?utf-8?B?bDF5bFBmQVBhaXdaZ0o3aW1ZaTc3NjRteWtvMFI0RU44MzhqRVdRNWh6VXVQ?=
- =?utf-8?B?dmxwL01sTzdBQTV4MmZYNkppNlB4SE1xcnRYK20reVBicHpmTTN3YUlVWXpu?=
- =?utf-8?B?ajlLMlFDQ3FrTEFVUkhJUk1EckVORUphaFZzem9SV2V1UlYzTG03ZkNTcm1U?=
- =?utf-8?B?K0hWMzF4VEdCSnV6dW5oQXYvTnNqL05NM3BXeVFpU2MxTTAyNFQveGpVT3Ex?=
- =?utf-8?B?S1h6WFBMSkk2Rk5mTGpwMXpzRmxvYi9HNU81VHFKbCsvSExsR0R6c0pTNmpC?=
- =?utf-8?B?enBXR0s5emZJNTZaT1BMMy94K3RxVXIxbFR4R3JnaGlSNE9tdmFHaTU0ZEw4?=
- =?utf-8?B?djBmdFVZd3ZoYjhxMm0rc1dtMVNUNFJIUURsM21kWnRPdWczWjBlOVBOZjFo?=
- =?utf-8?B?d3RCbm9xbERoL0k1czBUbjZkMDVXVTBnNDZKaU9QOUsxa1VDeFJpRVFMZUts?=
- =?utf-8?B?eDJEa3J1cFZlNk41RFRpR0FpSmJFcTE3WHBuaDZWQjNkS0EvN3hCaUxQakJl?=
- =?utf-8?B?c1hoZ1BJU3RVZnkwa3J5ZXh6MHFFaTlPeHF1UUJJRjFWdG8xZktaV01nZExl?=
- =?utf-8?B?VnV5VlBEc1V6Ui92cmpnTEdMVVRpaGdKalZvb3pzekFqTDJLa1pzS2U4MGVZ?=
- =?utf-8?B?dGN1VHFsdU9mZmwrcU94OVo5bHJlVXNNZGxsYm1wRmdpdTlOenhvcThqSm1F?=
- =?utf-8?B?NTlaWnVJSnpQT3VKaGV0UnZPNDlsdnYrM0hjdGl0Sk9RVXA0d3VzeU1TYUZW?=
- =?utf-8?B?RUc2Z0thVEo3N3A4MXg3a0RLb1AwVU5yQno0MjM1QmZEYnVkOHVoT3g0eVBR?=
- =?utf-8?B?d3hOM0xuaUNFVTN5UWxDY3hJaDhwOHB1aU1kTVRid1dIVndNUHkxcmdxeHRk?=
- =?utf-8?B?TmN5MUlWSnJPZXpvSXpVNVBhQmpOUlVwdTJTOE5IZktPNmtnT0hmL01laHBR?=
- =?utf-8?B?c00zWUlNUERPc3NST3hSMWloSFpLMGU4cHlnaHB3Qkl3MlpyMktnamtBZ0Vy?=
- =?utf-8?B?bVZ6K3N6V3ozc0FtRm5XbFBmbVZNR21DanpKUjZCN1QwWHJ6SVN2d2tVa2VJ?=
- =?utf-8?B?Z0hKazNFQkNKOHBQMnFldEhLNjRHVUVRcUpUV2kza1JVWHQxanpIVkNsa0lP?=
- =?utf-8?B?V1Jxb3hUS0hoaEJoaHVkamo4UHh2WWdZMUt1c0ErU0tmS216cXVBa0ZEUDA3?=
- =?utf-8?B?c2VZUWxhbVdCdldxdCtkNTU0MSswbFIwakhRVm5hSkVxeDV3dUlMMkpHZHhM?=
- =?utf-8?B?ODQ3T2JoVjU1Z3JlOW44TVZhQkJLRUlPN08ySys5UVhNUlVad2Zlems4ckdu?=
- =?utf-8?B?VlFCOVVjQ1NBeWxsREFRN3U5U3ZIcHFPclJBNENxMDBQOFlZcERVUEVzSFlO?=
- =?utf-8?B?eEM1enpqN0Z3PT0=?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SI2PR03MB5885.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(7416014)(376014)(366016)(38070700018);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?THNSbUNTWXRvY1E0WjFiSzU1czlzZkhFVUVHNTQ4dW10Y21veFJTUG9RM09a?=
- =?utf-8?B?YmJieHNOckhyNXFEZkRGeSsyYWNXVUNyT1VFOGRKbFE2OFZkc0RFSFhGTVRO?=
- =?utf-8?B?dWgxWnlNSmUxVGNFQS9RVVZaT1hoYkFFcHNISDByZllNTEprNTY4UG5NRkFY?=
- =?utf-8?B?anM0Y3YrRllac1ZNeVlHbThzNHBhaXdnS3JxVWpsczZqdGNVY2cvTzI4Nmtx?=
- =?utf-8?B?WDZqME9SYTJKREtJVVBXMEhrVnVMWVBEWmpreHdBWk9uWStuYTlTWUlvbk5z?=
- =?utf-8?B?RENDT1NBWlRkZ3NjRnRvb3dBczRKNUJRZ0FFaHdwWkx2RWpYcTl2N3pOWEcr?=
- =?utf-8?B?OHNmVXVsbUVRWmp3K2hVRnVFclVSeUdEaUgzZm1PNmQrNXZRUGw4d2d0NDNn?=
- =?utf-8?B?clhpRFY5cVVyb1ZZVE5zRWh2bG90cmFRdVNHSFY2eDgwRmxRbXNkV3RzRVB4?=
- =?utf-8?B?c3VkaDU1TUQ4QVlickVtRHorclVLdFI2bUdrSUFoNFJxZVpzMWhTbEl5cnJN?=
- =?utf-8?B?WlNpaGR5VTRScnNRK1hzemk1dzBrampsOFRxdGVEeU8ySFV3N0VKL1gzQ2hs?=
- =?utf-8?B?Zmo3SFBWQjVHT1hSYytnN1BiT2lGTGV3bTdjTXQxR2pnM2JxUnJQbHEvVFpG?=
- =?utf-8?B?Vm4rWHFIdkN4RERHaThnQXo0aVQ0eHVVQ0dwWGhFUzkwUU10Qmp0SXlwcFdv?=
- =?utf-8?B?MkpxOE00MUNkaFNXRTVVbkpKSkd0RVdhTER0aW43elpiTFk3ejFNbENiRzlC?=
- =?utf-8?B?M091QmU0V1F1NFB4TDFtY1gxZzlGUFRrSGxZQ2R3azJYM1Fsd3ZVelg3SGNU?=
- =?utf-8?B?amFuVkFUYTVjcWhlK0dhRFBCNEZNYjNlRUs5NFYzNDNEcmVYTVQ2a3I5bHk4?=
- =?utf-8?B?VGo4NTE0S1FKTWxPaFJXNi96VlowaGJtSDJGSHBTZkVkQmp2cUdQZWYyekxo?=
- =?utf-8?B?dEpQYXZyU0NPVHhMZGpQM0IzbjlTTytPMGpDM3FiVGlxR0ZtOCttanBOM1VL?=
- =?utf-8?B?aHlRUWlvR1JRV0xWQ3cvTDdxdnlvL2tZclYwcjNBZHFVSDlnYzlKdit1L2hu?=
- =?utf-8?B?RnlxYno0Yk9NMDdoQU4wOU9PM04yV1JLd2RTMXRQblcyS2V2SVBCYks0b2lE?=
- =?utf-8?B?bjM2TlhPbDlFSjkvQ2YvTTFMR0hwOFprdFhJdE9qTEhndjRJbjUxVituaTFp?=
- =?utf-8?B?UXZLajlDd1Y4ajFXNGNhOGxSNm5INGNYZmtudnl4THZkNU1ZZUFhazJnbytz?=
- =?utf-8?B?cXpBeis0QWdJSm01OUJ6clFTM0U3K1RWVVd5SC9LU2ovNlNKdm1OSnVRcnZy?=
- =?utf-8?B?d3h1SlZ1OXJYVGZJTjJkOWJ5MDRJVVRQem9haUNueUQvUzJ2S295eklHN1Vn?=
- =?utf-8?B?Z1hFeGJRZEdUUjU2cU9FZjNzUnZ5dDl2RVJYc0NsVWJKd2JvK2F4R3dBd2tB?=
- =?utf-8?B?Mi9pM1M0UUhxcVpjTk5NUEVpOThGSjJhRkljMm9DSkhRS1pBakYvbW5DSDZ2?=
- =?utf-8?B?YWJMcjN1bUxRbVBnaDZMT2pSR0VrU3BUWkdUSkgxcnZMMDJkS0tOaWlaNjgr?=
- =?utf-8?B?M1FpWkUwbnBuSXdtSGVwYmN0ZkdYNUxMSkVIb0d6MExpaE5GRlU3eDE4SzNE?=
- =?utf-8?B?SDVSN21HVWRtcmlvZnlGWkZsM0QxU3pDb2pMYWdOY1VzUW4yYVFNSTlWTWxB?=
- =?utf-8?B?UTdINU9ySlBCblpnNjB4UXhJajd5d3hVcjFjY3d6bkorK1VHb04rSTFNdEVR?=
- =?utf-8?B?THFhcFR6T1dIcXZGS0MwQ2s5K0Z6N1pKYWRRdForYlE0R1lrc0IvZ3Jub2xk?=
- =?utf-8?B?dnByRVRkQ3lQNUNpdE1EbHhzVE9MOFFnb0E2Z29CQVgyRUp1Z3JldStna2g0?=
- =?utf-8?B?YmhJdm8vZERSaEZUQ3BobGVvZm90RDRVdGR4U01hT0xGbGQ0YS9EQ3VEekVl?=
- =?utf-8?B?YkZtQmYvL0orZVhBVHhuUmwrRXBVNlRqRHlkT0ttWGpmQkp3QkVycjFrRlhS?=
- =?utf-8?B?S0Y0dkYwYVlCOFprSS9rck4wTE9DUFhLTjM5dENFSDMvS3BkS0VHcFRQM0tq?=
- =?utf-8?B?Z1VYYURLUU9kSmlCYXM1YldJTWhROGdsZGNHcEJsZldIV2JtSUF4MlZzYnBl?=
- =?utf-8?Q?To0+NYBwGzhgDA5ZBGVJityCk?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <AF072F809C8E9543A8046DAC74F4156A@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+ 15.2.1258.39; Thu, 3 Apr 2025 15:40:09 +0800
+Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Thu, 3 Apr 2025 15:40:09 +0800
+From: bo.kong <bo.kong@mediatek.com>
+To: Rob Herring <robh@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, mtk29348 <Bo.Kong@mediatek.com>,
+	<linux-media@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: <zhaoyuan.chen@mediatek.com>, <Teddy.Chen@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v5 3/4] uapi: linux: add MT8188 AIE
+Date: Thu, 3 Apr 2025 15:38:35 +0800
+Message-ID: <20250403074005.21472-4-bo.kong@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20250403074005.21472-1-bo.kong@mediatek.com>
+References: <20250403074005.21472-1-bo.kong@mediatek.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SI2PR03MB5885.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: cdf6b8cf-2ea0-439f-97eb-08dd7280b3e4
-X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Apr 2025 07:25:25.5799
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: GeysDNDchm6/46N5fEZEdXxrC37alFk6tvKEqV2JVLZBKwtJCfqe2IFJ3ynkP6TYQ3vFpcZylButNvIwZAvbGQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR03MB8301
-X-MTK: N
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250403_002541_646001_25823E7E 
-X-CRM114-Status: GOOD (  14.78  )
+X-CRM114-CacheID: sfid-20250403_004015_171217_009341B0 
+X-CRM114-Status: GOOD (  20.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -217,132 +87,388 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAyMDI1LTAzLTI3IGF0IDExOjQ2ICswMTAwLCBMb3Vpcy1BbGV4aXMgRXlyYXVkIHdy
-b3RlOg0KPiBFeHRlcm5hbCBlbWFpbCA6IFBsZWFzZSBkbyBub3QgY2xpY2sgbGlua3Mgb3Igb3Bl
-biBhdHRhY2htZW50cyB1bnRpbA0KPiB5b3UgaGF2ZSB2ZXJpZmllZCB0aGUgc2VuZGVyIG9yIHRo
-ZSBjb250ZW50Lg0KPiANCj4gDQo+IEN1cnJlbnRseSwgbXRrX2lvbW11IGNhbGxzIGR1cmluZyBw
-cm9iZSBpb21tdV9kZXZpY2VfcmVnaXN0ZXIgYmVmb3JlDQo+IHRoZSBod19saXN0IGZyb20gZHJp
-dmVyIGRhdGEgaXMgaW5pdGlhbGl6ZWQuIFNpbmNlIGlvbW11IHByb2JpbmcNCj4gaXNzdWUNCj4g
-Zml4LCBpdCBsZWFkcyB0byBOVUxMIHBvaW50ZXIgZGVyZWZlcmVuY2UgaW4gbXRrX2lvbW11X2Rl
-dmljZV9ncm91cA0KPiB3aGVuDQo+IGh3X2xpc3QgaXMgYWNjZXNzZWQgd2l0aCBsaXN0X2ZpcnN0
-X2VudHJ5IChub3QgbnVsbCBzYWZlKS4NCj4gDQo+IFNvLCBjaGFuZ2UgdGhlIGNhbGwgb3JkZXIg
-dG8gZW5zdXJlIGlvbW11X2RldmljZV9yZWdpc3RlciBpcyBjYWxsZWQNCj4gYWZ0ZXIgdGhlIGRy
-aXZlciBkYXRhIGFyZSBpbml0aWFsaXplZC4NCj4gDQo+IEZpeGVzOiA5ZTNhMmE2NDM2NTMgKCJp
-b21tdS9tZWRpYXRlazogQWRhcHQgc2hhcmluZyBhbmQgbm9uLXNoYXJpbmcNCj4gcGd0YWJsZSBj
-YXNlIikNCj4gRml4ZXM6IGJjYjgxYWM2YWUzYyAoImlvbW11OiBHZXQgRFQvQUNQSSBwYXJzaW5n
-IGludG8gdGhlIHByb3Blcg0KPiBwcm9iZSBwYXRoIikNCj4gU2lnbmVkLW9mZi1ieTogTG91aXMt
-QWxleGlzIEV5cmF1ZCA8bG91aXNhbGV4aXMuZXlyYXVkQGNvbGxhYm9yYS5jb20+DQo+IC0tLQ0K
-PiBUaGlzIHBhdGNoIGZpeGVzIGEgTlVMTCBwb2ludGVyIGRlcmVmZXJlbmNlIHRoYXQgb2NjdXJz
-IGR1cmluZyB0aGUNCj4gbXRrX2lvbW11IGRyaXZlciBwcm9iZSBhbmQgb2JzZXJ2ZWQgYXQgbGVh
-c3Qgb24gc2V2ZXJhbCBNZWRpYXRlaw0KPiBHZW5pbyBib2FyZHM6DQo+IGBgYA0KPiBVbmFibGUg
-dG8gaGFuZGxlIGtlcm5lbCBOVUxMIHBvaW50ZXIgZGVyZWZlcmVuY2UgYXQgdmlydHVhbCBhZGRy
-ZXNzDQo+IDAwMDAwMDAwMDAwMDAwMDANCj4gTWVtIGFib3J0IGluZm86DQo+ICAgRVNSID0gMHgw
-MDAwMDAwMDk2MDAwMDA0DQo+ICAgRUMgPSAweDI1OiBEQUJUIChjdXJyZW50IEVMKSwgSUwgPSAz
-MiBiaXRzDQo+ICAgU0VUID0gMCwgRm5WID0gMA0KPiAgIEVBID0gMCwgUzFQVFcgPSAwDQo+ICAg
-RlNDID0gMHgwNDogbGV2ZWwgMCB0cmFuc2xhdGlvbiBmYXVsdA0KPiBEYXRhIGFib3J0IGluZm86
-DQo+ICAgSVNWID0gMCwgSVNTID0gMHgwMDAwMDAwNCwgSVNTMiA9IDB4MDAwMDAwMDANCj4gICBD
-TSA9IDAsIFduUiA9IDAsIFRuRCA9IDAsIFRhZ0FjY2VzcyA9IDANCj4gICBHQ1MgPSAwLCBPdmVy
-bGF5ID0gMCwgRGlydHlCaXQgPSAwLCBYcyA9IDANCj4gdXNlciBwZ3RhYmxlOiA0ayBwYWdlcywg
-NDgtYml0IFZBcywgcGdkcD0wMDAwMDAwMTAxMzgwMDAwDQo+IFswMDAwMDAwMDAwMDAwMDAwXSBw
-Z2Q9MDAwMDAwMDAwMDAwMDAwMCwgcDRkPTAwMDAwMDAwMDAwMDAwMDANCj4gSW50ZXJuYWwgZXJy
-b3I6IE9vcHM6IDAwMDAwMDAwOTYwMDAwMDQgWyMxXSAgU01QDQo+IE1vZHVsZXMgbGlua2VkIGlu
-OiBidHVzYiBidHJ0bCBtdDYzMTVfcmVndWxhdG9yIGJ0aW50ZWwNCj4gbXRrX3Zjb2RlY19kZWMN
-Cj4gICBidG10ayB2NGwyX3ZwOSBidGJjbSBtdGtfdmNvZGVjX2VuYyB2NGwyX2gyNjQgbXRrX3Zj
-b2RlY19kYmdmcw0KPiAgIGJsdWV0b290aCBtdGtfanBlZyBlY2RoX2dlbmVyaWMgbXRrX3Zjb2Rl
-Y19jb21tb24gbXRrX2pwZWdfZW5jX2h3DQo+ICAgbXRrX2pwZWdfZGVjX2h3IGVjYyB2NGwyX21l
-bTJtZW0gcmZraWxsIHZpZGVvYnVmMl9kbWFfY29udGlnDQo+ICAgdmlkZW9idWYyX21lbW9wcyB2
-aWRlb2J1ZjJfdjRsMiB2aWRlb2RldiB2aWRlb2J1ZjJfY29tbW9uIG1jDQo+ICAgbXQ2MzYwX2No
-YXJnZXIgbWNwMjUxeGZkIGl0NTIwNSBnb29kaXhfdHMgY2FuX2RldiBwYW5mcm9zdA0KPiAgIGRy
-bV9zaG1lbV9oZWxwZXIgZ3B1X3NjaGVkIGx2dHNfdGhlcm1hbCBtdGtfc3ZzIG10a19hZHNwX21h
-aWxib3gNCj4gICBzbmRfc29jX2RtaWMgbXRrX3NjcCBtdGtfcnBtc2cgbXRrX3NjcF9pcGkgbXRr
-X2NtZHFfbWFpbGJveA0KPiAgIG1lZGlhdGVrX2NwdWZyZXFfaHcgc3BtaV9tdGtfcG1pZiBmdXNl
-IGRtX21vZCBpcF90YWJsZXMgeF90YWJsZXMNCj4gICBpcHY2IG1lZGlhdGVrX2RybSB0Y3BjaV9t
-dDYzNjAgZHJtX2Rpc3BsYXlfaGVscGVyIGRybV9jbGllbnRfbGliDQo+ICAgdGNwY2kgZHJtX2Rt
-YV9oZWxwZXIgZHJtX2ttc19oZWxwZXIgdGNwbSBkcm0gbXRrX211dGV4IG10a19tbXN5cw0KPiAg
-IHR5cGVjIHJ0Y19tdDYzOTcgbXRrX2NtZHFfaGVscGVyIHBoeV9tdGtfcGNpZSBwY2llX21lZGlh
-dGVrX2dlbjMNCj4gICBkd21hY19tZWRpYXRlayBzdG1tYWNfcGxhdGZvcm0gc3RtbWFjIHB3bV9t
-dGtfZGlzcCBwY3NfeHBjcyBwd21fYmwNCj4gICBiYWNrbGlnaHQNCj4gQ1BVOiA1IFVJRDogMCBQ
-SUQ6IDEyIENvbW06IGt3b3JrZXIvdTMyOjAgTm90IHRhaW50ZWQgNi4xNC4wLW5leHQtDQo+IDIw
-MjUwMzI2ICM0IFBSRUVNUFQNCj4gSGFyZHdhcmUgbmFtZTogTWVkaWFUZWsgR2VuaW8gMTIwMCBF
-VkstUDFWMi1FTU1DIChEVCkNCj4gV29ya3F1ZXVlOiBldmVudHNfdW5ib3VuZCBkZWZlcnJlZF9w
-cm9iZV93b3JrX2Z1bmMNCj4gcHN0YXRlOiA4MDQwMDAwOSAoTnpjdiBkYWlmICtQQU4gLVVBTyAt
-VENPIC1ESVQgLVNTQlMgQlRZUEU9LS0pDQo+IHBjIDogbXRrX2lvbW11X2RldmljZV9ncm91cCsw
-eDJjLzB4ZTANCj4gbHIgOiBfX2lvbW11X3Byb2JlX2RldmljZSsweDEzMC8weDQ5MA0KPiBzcCA6
-IGZmZmY4MDAwODI3YjM5NzANCj4geDI5OiBmZmZmODAwMDgyN2IzOTcwIHgyODogZmZmZjAwMDBj
-MDAyODAwMCB4Mjc6IGZmZmY4MDAwODE2NGYyYjgNCj4geDI2OiBmZmZmMDAwMGNiYzQ3MTMwIHgy
-NTogZmZmZjgwMDA4MDk2YTlmMCB4MjQ6IGZmZmY4MDAwODE2NGY1YTgNCj4geDIzOiBmZmZmODAw
-MDgyNjg0YjYwIHgyMjogZmZmZjgwMDA4MjdiM2E4MCB4MjE6IGZmZmYwMDAwY2JjNDcxMzANCj4g
-eDIwOiBmZmZmZmZmZmZmZmZmZmVkIHgxOTogZmZmZjAwMDBjMTE3YzAxMCB4MTg6IDAwMDAwMDAw
-MDAwMDAwMDANCj4geDE3OiA2ZjcwMmQ2MTZkNjQyZDY0IHgxNjogNjU3NDYzNjk3Mjc0NzM2NSB4
-MTU6IDAwMDAwMDAwMDAwMDAwMDINCj4geDE0OiAwMDAwMDAwMDAwMDAwMDAwIHgxMzogMDAwMDAw
-MDAwMDEyOGQ1NSB4MTI6IDZmNjMyZDYxNmQ2NDJlMzANCj4geDExOiAwMDAwMDAwMDAwMDAwMTAw
-IHgxMDogMDAwMDAwMDAwMDAwMDAwMSB4OSA6IDAwMDAwMDAwMDAwMDAyMjANCj4geDggOiAwMTAx
-MDEwMTAxMDEwMTAxIHg3IDogZmZmZjAwMDBjMTE3YzAxMCB4NiA6IDMwNmM3NjZmMmM3Mjc0NjEN
-Cj4geDUgOiAwMDAwMDAwMDAwMDAwMDAwIHg0IDogZmZmZjAwMDBjMTBhMmRlOCB4MyA6IGZmZmYw
-MDAwYzEwYTJlNzANCj4geDIgOiBmZmZmMDAwMGMwMWE0NjAwIHgxIDogMDAwMDAwMDAwMDAwMDAw
-MCB4MCA6IGZmZmYwMDAwYzY1NDcwYzANCj4gQ2FsbCB0cmFjZToNCj4gIG10a19pb21tdV9kZXZp
-Y2VfZ3JvdXArMHgyYy8weGUwIChQKQ0KPiAgX19pb21tdV9wcm9iZV9kZXZpY2UrMHgxMzAvMHg0
-OTANCj4gIHByb2JlX2lvbW11X2dyb3VwKzB4M2MvMHg3MA0KPiAgYnVzX2Zvcl9lYWNoX2Rldisw
-eDdjLzB4ZTANCj4gIGlvbW11X2RldmljZV9yZWdpc3RlcisweGQ4LzB4MjJjDQo+ICBtdGtfaW9t
-bXVfcHJvYmUrMHgyNzAvMHg1M2MNCj4gIHBsYXRmb3JtX3Byb2JlKzB4NjgvMHhkOA0KPiAgcmVh
-bGx5X3Byb2JlKzB4YmMvMHgyYzANCj4gIF9fZHJpdmVyX3Byb2JlX2RldmljZSsweDc4LzB4MTIw
-DQo+ICBkcml2ZXJfcHJvYmVfZGV2aWNlKzB4M2MvMHgxNTQNCj4gIF9fZGV2aWNlX2F0dGFjaF9k
-cml2ZXIrMHhiOC8weDE0MA0KPiAgYnVzX2Zvcl9lYWNoX2RydisweDg4LzB4ZTgNCj4gIF9fZGV2
-aWNlX2F0dGFjaCsweGEwLzB4MTkwDQo+ICBkZXZpY2VfaW5pdGlhbF9wcm9iZSsweDE0LzB4MjAN
-Cj4gIGJ1c19wcm9iZV9kZXZpY2UrMHhiNC8weGMwDQo+ICBkZWZlcnJlZF9wcm9iZV93b3JrX2Z1
-bmMrMHg5MC8weGM4DQo+ICBwcm9jZXNzX29uZV93b3JrKzB4MTQ4LzB4Mjg0DQo+ICB3b3JrZXJf
-dGhyZWFkKzB4MmNjLzB4M2NjDQo+ICBrdGhyZWFkKzB4MTJjLzB4MjA0DQo+ICByZXRfZnJvbV9m
-b3JrKzB4MTAvMHgyMA0KPiBDb2RlOiBiNDAwMDUwMCBmOTQwMWMwMSA5MjgwMDI1NCBmOTQwOTgy
-MSAoZjk0MDAwMzUpDQo+IC0tLVsgZW5kIHRyYWNlIDAwMDAwMDAwMDAwMDAwMDAgXS0tLQ0KPiBg
-YGANCj4gDQo+IEkndmUgdGVzdGVkIHRoaXMgcGF0Y2ggb24gTWVkaWF0ZWsgR2VuaW8gNTEwLUVW
-SyBhbmQgMTIwMC1FVksgYm9hcmRzDQo+IHdpdGggYSBrZXJuZWwgYmFzZWQgb24gbGludXgtbmV4
-dCAodGFnOiBuZXh0LTIwMjUwMzI3KS4NCj4gLS0tDQo+ICBkcml2ZXJzL2lvbW11L210a19pb21t
-dS5jIHwgMjUgKysrKysrKysrKysrKy0tLS0tLS0tLS0tLQ0KPiAgMSBmaWxlIGNoYW5nZWQsIDEz
-IGluc2VydGlvbnMoKyksIDEyIGRlbGV0aW9ucygtKQ0KPiANCj4gZGlmZiAtLWdpdCBhL2RyaXZl
-cnMvaW9tbXUvbXRrX2lvbW11LmMgYi9kcml2ZXJzL2lvbW11L210a19pb21tdS5jDQo+IGluZGV4
-DQo+IDAzNGIwZTY3MDM4NGEyNGRmMTAxMzBjYmJmZjk1Y2U4ZTBiYzA5MmQuLjE0YWRiOTZhMzdi
-YjBkODRiNjMxMTg4ZTQ4ZA0KPiBkOGI5MzY4MjFhNzE3IDEwMDY0NA0KPiAtLS0gYS9kcml2ZXJz
-L2lvbW11L210a19pb21tdS5jDQo+ICsrKyBiL2RyaXZlcnMvaW9tbXUvbXRrX2lvbW11LmMNCj4g
-QEAgLTEzNzIsMTUgKzEzNzIsNiBAQCBzdGF0aWMgaW50IG10a19pb21tdV9wcm9iZShzdHJ1Y3QN
-Cj4gcGxhdGZvcm1fZGV2aWNlICpwZGV2KQ0KPiAgICAgICAgIHBsYXRmb3JtX3NldF9kcnZkYXRh
-KHBkZXYsIGRhdGEpOw0KPiAgICAgICAgIG11dGV4X2luaXQoJmRhdGEtPm11dGV4KTsNCj4gDQo+
-IC0gICAgICAgcmV0ID0gaW9tbXVfZGV2aWNlX3N5c2ZzX2FkZCgmZGF0YS0+aW9tbXUsIGRldiwg
-TlVMTCwNCj4gLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJtdGstaW9tbXUu
-JXBhIiwgJmlvYWRkcik7DQo+IC0gICAgICAgaWYgKHJldCkNCj4gLSAgICAgICAgICAgICAgIGdv
-dG8gb3V0X2xpbmtfcmVtb3ZlOw0KPiAtDQo+IC0gICAgICAgcmV0ID0gaW9tbXVfZGV2aWNlX3Jl
-Z2lzdGVyKCZkYXRhLT5pb21tdSwgJm10a19pb21tdV9vcHMsDQo+IGRldik7DQo+IC0gICAgICAg
-aWYgKHJldCkNCj4gLSAgICAgICAgICAgICAgIGdvdG8gb3V0X3N5c2ZzX3JlbW92ZTsNCj4gLQ0K
-PiAgICAgICAgIGlmIChNVEtfSU9NTVVfSEFTX0ZMQUcoZGF0YS0+cGxhdF9kYXRhLCBTSEFSRV9Q
-R1RBQkxFKSkgew0KPiAgICAgICAgICAgICAgICAgbGlzdF9hZGRfdGFpbCgmZGF0YS0+bGlzdCwg
-ZGF0YS0+cGxhdF9kYXRhLT5od19saXN0KTsNCj4gICAgICAgICAgICAgICAgIGRhdGEtPmh3X2xp
-c3QgPSBkYXRhLT5wbGF0X2RhdGEtPmh3X2xpc3Q7DQo+IEBAIC0xMzkwLDE4ICsxMzgxLDI4IEBA
-IHN0YXRpYyBpbnQgbXRrX2lvbW11X3Byb2JlKHN0cnVjdA0KPiBwbGF0Zm9ybV9kZXZpY2UgKnBk
-ZXYpDQo+ICAgICAgICAgICAgICAgICBkYXRhLT5od19saXN0ID0gJmRhdGEtPmh3X2xpc3RfaGVh
-ZDsNCj4gICAgICAgICB9DQo+IA0KPiArICAgICAgIHJldCA9IGlvbW11X2RldmljZV9zeXNmc19h
-ZGQoJmRhdGEtPmlvbW11LCBkZXYsIE5VTEwsDQo+ICsgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAibXRrLWlvbW11LiVwYSIsICZpb2FkZHIpOw0KPiArICAgICAgIGlmIChyZXQp
-DQo+ICsgICAgICAgICAgICAgICBnb3RvIG91dF9saXN0X2RlbDsNCj4gKw0KPiArICAgICAgIHJl
-dCA9IGlvbW11X2RldmljZV9yZWdpc3RlcigmZGF0YS0+aW9tbXUsICZtdGtfaW9tbXVfb3BzLA0K
-PiBkZXYpOw0KPiArICAgICAgIGlmIChyZXQpDQo+ICsgICAgICAgICAgICAgICBnb3RvIG91dF9s
-aW5rX3JlbW92ZTsNCg0KDQpUeXBvIGhlcmUuIFVzZSBvdXRfc3lzZnNfcmVtb3ZlIGluc3RlYWQg
-YW5kIHJlbW92ZSBvdXRfbGlua19yZW1vdmUNCmxhYmVsLiBUaGVuLA0KDQpSZXZpZXdlZC1ieTog
-WW9uZyBXdSA8eW9uZy53dUBtZWRpYXRlay5jb20+DQoNClRoYW5rcyB2ZXJ5IG11Y2ggZm9yIHRo
-aXMgcGF0Y2guDQoNCj4gKw0KPiAgICAgICAgIGlmIChNVEtfSU9NTVVfSVNfVFlQRShkYXRhLT5w
-bGF0X2RhdGEsIE1US19JT01NVV9UWVBFX01NKSkgew0KPiAgICAgICAgICAgICAgICAgcmV0ID0g
-Y29tcG9uZW50X21hc3Rlcl9hZGRfd2l0aF9tYXRjaChkZXYsDQo+ICZtdGtfaW9tbXVfY29tX29w
-cywgbWF0Y2gpOw0KPiAgICAgICAgICAgICAgICAgaWYgKHJldCkNCj4gLSAgICAgICAgICAgICAg
-ICAgICAgICAgZ290byBvdXRfbGlzdF9kZWw7DQo+ICsgICAgICAgICAgICAgICAgICAgICAgIGdv
-dG8gb3V0X2RldmljZV91bnJlZ2lzdGVyOw0KPiAgICAgICAgIH0NCj4gICAgICAgICByZXR1cm4g
-cmV0Ow0KPiANCj4gLW91dF9saXN0X2RlbDoNCj4gLSAgICAgICBsaXN0X2RlbCgmZGF0YS0+bGlz
-dCk7DQo+ICtvdXRfZGV2aWNlX3VucmVnaXN0ZXI6DQo+ICAgICAgICAgaW9tbXVfZGV2aWNlX3Vu
-cmVnaXN0ZXIoJmRhdGEtPmlvbW11KTsNCj4gIG91dF9zeXNmc19yZW1vdmU6DQo+ICAgICAgICAg
-aW9tbXVfZGV2aWNlX3N5c2ZzX3JlbW92ZSgmZGF0YS0+aW9tbXUpOw0KPiArb3V0X2xpc3RfZGVs
-Og0KPiArICAgICAgIGxpc3RfZGVsKCZkYXRhLT5saXN0KTsNCj4gIG91dF9saW5rX3JlbW92ZToN
-Cj4gICAgICAgICBpZiAoTVRLX0lPTU1VX0lTX1RZUEUoZGF0YS0+cGxhdF9kYXRhLCBNVEtfSU9N
-TVVfVFlQRV9NTSkpDQo+ICAgICAgICAgICAgICAgICBkZXZpY2VfbGlua19yZW1vdmUoZGF0YS0+
-c21pY29tbV9kZXYsIGRldik7DQo+IA0KPiAtLS0NCj4gYmFzZS1jb21taXQ6IGJjOTYwZTNlMzJj
-OGI5NDBjMTBiMTQ1NTcyNzEzNTVmNjZhZTRkYjENCj4gY2hhbmdlLWlkOiAyMDI1MDMyNy1maXgt
-bXRrLWlvbW11LWVycm9yLWFmNmVjMzQ3ZDA1Nw0KPiANCj4gQmVzdCByZWdhcmRzLA0KPiAtLQ0K
-PiBMb3Vpcy1BbGV4aXMgRXlyYXVkIDxsb3Vpc2FsZXhpcy5leXJhdWRAY29sbGFib3JhLmNvbT4N
-Cj4gDQo=
+From: Bo Kong <Bo.Kong@mediatek.com>
+
+Add AIE control related definitions.
+
+Signed-off-by: Bo Kong <Bo.Kong@mediatek.com>
+---
+Changes in v5:
+1. Add an introduction for feature_threshold.
+2. Change the name of v4l2_aie_roi to aie_roi_coordinate.
+3. Change the name of v4l2_aie_padding to aie_padding_size.
+4. Add an explanation for en_padding and describe the functions of the three modes of fd_mode.
+5. Move the structures in the mtk_aie.h file to the uapi directory.
+
+Changes in v4:
+1. Add document to describe the detail of V4L2_META_FMT_MTFD_RESULT
+2. Add the introduction of related variables
+
+Changes in v3:
+None
+
+Changes in v2:
+1. Fix coding style
+---
+ drivers/media/v4l2-core/v4l2-ioctl.c       |   3 +
+ include/uapi/linux/mtk_aie_v4l2_controls.h | 308 +++++++++++++++++++++
+ include/uapi/linux/videodev2.h             |   6 +
+ 3 files changed, 317 insertions(+)
+ create mode 100644 include/uapi/linux/mtk_aie_v4l2_controls.h
+
+diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
+index a16fb44c7246..74d0d13f841f 100644
+--- a/drivers/media/v4l2-core/v4l2-ioctl.c
++++ b/drivers/media/v4l2-core/v4l2-ioctl.c
+@@ -1479,6 +1479,9 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
+ 	case V4L2_META_FMT_GENERIC_CSI2_16:	descr = "8-bit Generic Meta, 16b CSI-2"; break;
+ 	case V4L2_META_FMT_GENERIC_CSI2_20:	descr = "8-bit Generic Meta, 20b CSI-2"; break;
+ 	case V4L2_META_FMT_GENERIC_CSI2_24:	descr = "8-bit Generic Meta, 24b CSI-2"; break;
++	case V4L2_META_FMT_MTFD_RESULT:
++		descr = "MTK AIE Result Fmt";
++	break;
+ 
+ 	default:
+ 		/* Compressed formats */
+diff --git a/include/uapi/linux/mtk_aie_v4l2_controls.h b/include/uapi/linux/mtk_aie_v4l2_controls.h
+new file mode 100644
+index 000000000000..952dcdb23283
+--- /dev/null
++++ b/include/uapi/linux/mtk_aie_v4l2_controls.h
+@@ -0,0 +1,308 @@
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
++/*
++ * AIE Controls Header
++ *
++ * Copyright (c) 2020 MediaTek Inc.
++ * Author: Bo Kong <bo.kong@mediatek.com>
++ */
++
++#ifndef __MTK_AIE_V4L2_CONTROLS_H__
++#define __MTK_AIE_V4L2_CONTROLS_H__
++
++#include <linux/types.h>
++
++/*
++ * The base for the mediatek Face Detection driver controls.
++ * We reserve 16 controls for this driver.
++ * Each CID represents different stages of AIE, with different structures and functions
++ * and cannot be reused
++ */
++#define V4L2_CID_USER_MTK_FD_BASE (V4L2_CID_USER_BASE + 0x1fd0)
++#define V4L2_CID_MTK_AIE_INIT (V4L2_CID_USER_MTK_FD_BASE + 1)
++#define V4L2_CID_MTK_AIE_PARAM (V4L2_CID_USER_MTK_FD_BASE + 2)
++
++#define MAX_FACE_NUM			1024
++#define FLD_CUR_LANDMARK		11
++#define FLD_MAX_FRAME			15
++
++/**
++ * struct v4l2_ctrl_aie_init - aie init parameters.
++ *
++ * @max_img_width: maximum width of the source image.
++ * @max_img_height: maximum height of the source image.
++ * @pyramid_width: maximum width of the base pyramid.
++ * @pyramid_height: maximum height of the base pyramid.
++ * @feature_threshold: The threshold for the face confidence.Range: 100 ~ 400.
++ *                     The larger the value,the lower the face recognition rate
++ */
++struct v4l2_ctrl_aie_init {
++	__u32 max_img_width;
++	__u32 max_img_height;
++	__u32 pyramid_width;
++	__u32 pyramid_height;
++	__s32 feature_threshold;
++};
++
++/**
++ * struct aie_roi_coordinate - aie roi parameters.
++ *
++ * @x1: x1 of the roi coordinate.
++ * @y1: y1 of the roi coordinate.
++ * @x2: x2 of the roi coordinate.
++ * @y2: y2 of the roi coordinate.
++ */
++struct aie_roi_coordinate {
++	__u32 x1;
++	__u32 y1;
++	__u32 x2;
++	__u32 y2;
++};
++
++/**
++ * struct aie_padding_size - aie padding parameters.
++ *
++ * @left: the size of padding left.
++ * @right: the size of padding right.
++ * @down: the size of padding below.
++ * @up: the size of padding above.
++ */
++struct aie_padding_size {
++	__u32 left;
++	__u32 right;
++	__u32 down;
++	__u32 up;
++};
++
++/**
++ * struct v4l2_fld_crop_rip_rop - aie fld parameters.
++ *
++ * @fld_in_crop_x1: x1 of the crop coordinate.
++ * @fld_in_crop_y1: y1 of the crop coordinate.
++ * @fld_in_crop_x2: x2 of the crop coordinate.
++ * @fld_in_crop_y2: y2 of the crop coordinate.
++ * @fld_in_rip: fld in rip.
++ * @fld_in_rop: fld in rop.
++ */
++struct v4l2_fld_crop_rip_rop {
++	__u32 fld_in_crop_x1;
++	__u32 fld_in_crop_y1;
++	__u32 fld_in_crop_x2;
++	__u32 fld_in_crop_y2;
++	__u32 fld_in_rip;
++	__u32 fld_in_rop;
++};
++
++/**
++ * struct fd_ret - aie fd result parameters.
++ *
++ * @anchor_x0: X coordinate of the top-left corner of each detected face.
++ * @anchor_x1: X coordinate of the bottom-right corner of each detected face.
++ * @anchor_y0: Y coordinate of the top-left corner of each detected face.
++ * @anchor_y1: Y coordinate of the bottom-right corner of each detected face.
++ * @rop_landmark_score0: Score for the first rotation pose landmark.
++ * @rop_landmark_score1: Score for the second rotation pose landmark.
++ * @rop_landmark_score2: Score for the third rotation pose landmark.
++ * @anchor_score: Score for the anchor points.
++ * @rip_landmark_score0: Score for the first rotation-invariant pose landmark.
++ * @rip_landmark_score1: Score for the second rotation-invariant pose landmark.
++ * @rip_landmark_score2: Score for the third rotation-invariant pose landmark.
++ * @rip_landmark_score3: Score for the fourth rotation-invariant pose landmark.
++ * @rip_landmark_score4: Score for the fifth rotation-invariant pose landmark.
++ * @rip_landmark_score5: Score for the sixth rotation-invariant pose landmark.
++ * @rip_landmark_score6: Score for the seventh rotation-invariant pose landmark.
++ * @face_result_index: Index of each detected face.
++ * @anchor_index: Index of the anchor points.
++ * @fd_partial_result: Partial face detection result.
++ */
++struct fd_ret {
++	__u16 anchor_x0[MAX_FACE_NUM];
++	__u16 anchor_x1[MAX_FACE_NUM];
++	__u16 anchor_y0[MAX_FACE_NUM];
++	__u16 anchor_y1[MAX_FACE_NUM];
++	__s16 rop_landmark_score0[MAX_FACE_NUM];
++	__s16 rop_landmark_score1[MAX_FACE_NUM];
++	__s16 rop_landmark_score2[MAX_FACE_NUM];
++	__s16 anchor_score[MAX_FACE_NUM];
++	__s16 rip_landmark_score0[MAX_FACE_NUM];
++	__s16 rip_landmark_score1[MAX_FACE_NUM];
++	__s16 rip_landmark_score2[MAX_FACE_NUM];
++	__s16 rip_landmark_score3[MAX_FACE_NUM];
++	__s16 rip_landmark_score4[MAX_FACE_NUM];
++	__s16 rip_landmark_score5[MAX_FACE_NUM];
++	__s16 rip_landmark_score6[MAX_FACE_NUM];
++	__u16 face_result_index[MAX_FACE_NUM];
++	__u16 anchor_index[MAX_FACE_NUM];
++	__u32 fd_partial_result;
++};
++
++/**
++ * struct fd_result - Face detection results for different pyramid levels.
++ *
++ * @fd_pyramid0_num: Number of faces detected at pyramid level 0.
++ * @fd_pyramid1_num: Number of faces detected at pyramid level 1.
++ * @fd_pyramid2_num: Number of faces detected at pyramid level 2.
++ * @fd_total_num: Total number of faces detected across all pyramid levels.
++ * @pyramid0_result: Detection results for pyramid level 0.
++ * @pyramid1_result: Detection results for pyramid level 1.
++ * @pyramid2_result: Detection results for pyramid level 2.
++ */
++struct fd_result {
++	__u16 fd_pyramid0_num;
++	__u16 fd_pyramid1_num;
++	__u16 fd_pyramid2_num;
++	__u16 fd_total_num;
++	struct fd_ret pyramid0_result;
++	struct fd_ret pyramid1_result;
++	struct fd_ret pyramid2_result;
++};
++
++/**
++ * struct attr_result - Attribute detection results parameters.
++ *
++ * @gender_ret: Gender detection results.
++ * @ethnicity_ret: Ethnicity detection results.
++ * @merged_age_ret: Merged age detection results.
++ * @merged_gender_ret: Merged gender detection results.
++ * @merged_is_indian_ret: Merged results indicating if the subject is Indian.
++ * @merged_ethnicity_ret: Merged ethnicity detection results.
++ */
++struct attr_result {
++	__s16 gender_ret[2][64];
++	__s16 ethnicity_ret[4][64];
++	__s16 merged_age_ret[2];
++	__s16 merged_gender_ret[2];
++	__s16 merged_is_indian_ret[2];
++	__s16 merged_ethnicity_ret[4];
++};
++
++/**
++ * struct fld_landmark - FLD coordinates parameters.
++ *
++ * @x: X coordinate of the facial landmark.
++ * @y: Y coordinate of the facial landmark.
++ */
++struct fld_landmark {
++	__u16 x;
++	__u16 y;
++};
++
++/**
++ * struct fld_result - FLD detection results parameters.
++ *
++ * @fld_landmark: Array of facial landmarks, each with X and Y coordinates.
++ * @fld_out_rip: Output rotation-invariant pose value.
++ * @fld_out_rop: Output rotation pose value.
++ * @confidence: Confidence score of the facial landmark detection.
++ * @blinkscore: Blink score indicating the likelihood of eye blink.
++ */
++struct fld_result {
++	struct fld_landmark fld_landmark[FLD_CUR_LANDMARK];
++	__u16 fld_out_rip;
++	__u16 fld_out_rop;
++	__u16 confidence;
++	__s16 blinkscore;
++};
++
++/**
++ * struct aie_enq_info - V4L2 Kernelspace parameters.
++ *
++ * @sel_mode: select a mode(FDMODE, ATTRIBUTEMODE, FLDMODE) for current fd.
++ *           FDMODE: Face Detection.
++ *           ATTRIBUTEMODE: Gender and ethnicity detection
++ *           FLDMODE: Locations of eyebrows, eyes, ears, nose,and mouth
++ * @src_img_fmt: source image format.
++ * @src_img_width: the width of the source image.
++ * @src_img_height: the height of the source image.
++ * @src_img_stride: the stride of the source image.
++ * @pyramid_base_width: pyramid is the size of resizer, the width of the base pyramid.
++ * @pyramid_base_height: pyramid is the size of resizer, the width of the base pyramid.
++ * @number_of_pyramid: number of pyramid, min: 1, max: 3.
++ * @rotate_degree: the rotate degree of the image.
++ * @en_roi: enable roi(roi is a box diagram that selects a rectangle in a picture).
++ *          when en_roi is enable, AIE will return a rectangle face detection result
++ * @src_roi: roi params.
++ * @en_padding: enable padding, this is only used on the hardware of yuv to rgb.
++ *              and has noting to do with fd_mode
++ * @src_padding: padding params.
++ * @freq_level: frequency level, Get value from user space enque.
++ * @fld_face_num: the number of faces in fld.
++ *                user space tells driver the number of detections.
++ * @fld_input: fld input params.
++ * @src_img_addr: Source image address.
++ * @src_img_addr_uv: Source image address for UV plane.
++ * @fd_out: Face detection results.
++ * @attr_out: Attribute detection results.
++ * @fld_out: Array of facial landmark detection results for multiple frames.
++ * @irq_status: Interrupt request status.
++ */
++struct aie_enq_info {
++	__u32 sel_mode;
++	__u32 src_img_fmt;
++	__u32 src_img_width;
++	__u32 src_img_height;
++	__u32 src_img_stride;
++	__u32 pyramid_base_width;
++	__u32 pyramid_base_height;
++	__u32 number_of_pyramid;
++	__u32 rotate_degree;
++	int en_roi;
++	struct aie_roi_coordinate src_roi;
++	int en_padding;
++	struct aie_padding_size src_padding;
++	unsigned int freq_level;
++	unsigned int fld_face_num;
++	struct v4l2_fld_crop_rip_rop fld_input[FLD_MAX_FRAME];
++	__u32 src_img_addr;
++	__u32 src_img_addr_uv;
++	struct fd_result fd_out;
++	struct attr_result attr_out;
++	struct fld_result fld_out[FLD_MAX_FRAME];
++	__u32 irq_status;
++};
++
++/**
++ * struct v4l2_ctrl_aie_param - V4L2 Userspace parameters.
++ *
++ * @fd_mode: select a mode(FDMODE, ATTRIBUTEMODE, FLDMODE) for current fd.
++ *           FDMODE: Face Detection.
++ *           ATTRIBUTEMODE: Gender and ethnicity detection
++ *           FLDMODE: Locations of eyebrows, eyes, ears, nose,and mouth
++ * @src_img_fmt: source image format.
++ * @src_img_width: the width of the source image.
++ * @src_img_height: the height of the source image.
++ * @src_img_stride: the stride of the source image.
++ * @pyramid_base_width: pyramid is the size of resizer, the width of the base pyramid.
++ * @pyramid_base_height: pyramid is the size of resizer, the width of the base pyramid.
++ * @number_of_pyramid: number of pyramid, min: 1, max: 3.
++ * @rotate_degree: the rotate degree of the image.
++ * @en_roi: enable roi(roi is a box diagram that selects a rectangle in a picture).
++ *          when en_roi is enable, AIE will return a rectangle face detection result
++ * @src_roi: roi params.
++ * @en_padding: enable padding, this is only used on the hardware of yuv to rgb.
++ *              and has noting to do with fd_mode
++ * @src_padding: padding params.
++ * @freq_level: frequency level, Get value from user space enque.
++ * @fld_face_num: the number of faces in fld.
++ *                user space tells driver the number of detections.
++ * @fld_input: fld input params.
++ */
++struct v4l2_ctrl_aie_param {
++	__u32 fd_mode;
++	__u32 src_img_fmt;
++	__u32 src_img_width;
++	__u32 src_img_height;
++	__u32 src_img_stride;
++	__u32 pyramid_base_width;
++	__u32 pyramid_base_height;
++	__u32 number_of_pyramid;
++	__u32 rotate_degree;
++	__s32 en_roi;
++	struct aie_roi_coordinate src_roi;
++	__s32 en_padding;
++	struct aie_padding_size src_padding;
++	__u32 freq_level;
++	__u32 fld_face_num;
++	struct v4l2_fld_crop_rip_rop fld_input[FLD_MAX_FRAME];
++};
++
++#endif /* __MTK_AIE_V4L2_CONTROLS_H__ */
+diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+index c8cb2796130f..329bbac9239e 100644
+--- a/include/uapi/linux/videodev2.h
++++ b/include/uapi/linux/videodev2.h
+@@ -858,6 +858,9 @@ struct v4l2_pix_format {
+ #define V4L2_META_FMT_RK_ISP1_STAT_3A	v4l2_fourcc('R', 'K', '1', 'S') /* Rockchip ISP1 3A Statistics */
+ #define V4L2_META_FMT_RK_ISP1_EXT_PARAMS	v4l2_fourcc('R', 'K', '1', 'E') /* Rockchip ISP1 3a Extensible Parameters */
+ 
++/* Vendor-specific definition: used for the MediaTek camera subsystem's face detection results */
++#define V4L2_META_FMT_MTFD_RESULT	v4l2_fourcc('M', 'T', 'f', 'd')
++
+ /* Vendor specific - used for RaspberryPi PiSP */
+ #define V4L2_META_FMT_RPI_BE_CFG	v4l2_fourcc('R', 'P', 'B', 'C') /* PiSP BE configuration */
+ #define V4L2_META_FMT_RPI_FE_CFG	v4l2_fourcc('R', 'P', 'F', 'C') /* PiSP FE configuration */
+@@ -1965,6 +1968,9 @@ enum v4l2_ctrl_type {
+ 	V4L2_CTRL_TYPE_AV1_TILE_GROUP_ENTRY = 0x281,
+ 	V4L2_CTRL_TYPE_AV1_FRAME	    = 0x282,
+ 	V4L2_CTRL_TYPE_AV1_FILM_GRAIN	    = 0x283,
++
++	V4L2_CTRL_TYPE_AIE_INIT		= 0x0290,
++	V4L2_CTRL_TYPE_AIE_PARAM	= 0x0291,
+ };
+ 
+ /*  Used in the VIDIOC_QUERYCTRL ioctl for querying controls */
+-- 
+2.45.2
+
 
