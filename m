@@ -4,74 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD901C3601E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Apr 2025 11:15:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57E96C3601E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Apr 2025 11:18:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JNzcbrLbSu9IlQAXBLVSfZ0H9gudsTEJ9VcSgRMIuRk=; b=rrXszTHknyrNr1AgbvEog9MO6Z
-	ncCxIaY3eVqqgpON8cvmI5cdgFs3T7Z5DQsMJbBiF87v9BXf4hozZEYIIUKZQfnCJIN7zslVh8ZQk
-	siMRzd1ZRNxHMJTxEbKDtxfuuvM2dgjgzZ7cv2nDNNhvBwrXzKmdMMQhGEXD7Z0WzdAPiLmg5zSQ3
-	YCpg/Ec3z6kXfmOzYCbMVa3NcaC6y3VHVk6rK2dsI8Ae7hzWKy3dlT1NwMwOk64Tjc+ZSfa/AvkG3
-	CvxEFnlOTI7GomflKr/pmeQaWHId2TRXfSgcwF8vPqDclZOXadyJKzf62Lubzo+xv/FFJhTRVfG7+
-	UFlWj+zg==;
+	bh=3NqZLvVHKGuNw1wTIqGKWp86laOj/ttZgeIOR6YlWkY=; b=hvfhauZD2BhpGNm9WKaRwZvQcx
+	f+yTkh/ULs315fSvCyQoSvYu/z4NdtlQxNOAV6pWHaA23ooymbbxmaHNUearTTfAKc8E9A23n/siJ
+	Bfben/e5PkNyXuqO4Z62flC/8MlAVFPebxQiES+M/qaMndVMFaUy1o0uNW2IW9bmdsuDtHcIOMCb6
+	qeernI0gkXBWIBaS+V7/OERqKkUjPb9FMZh4vmcWfdpjGfSeFCOxRLbSC4NofbZcTULRbQ277ACcD
+	yZb8CwMw7EULlolqhxkIytCZvK9QORUvghf3jSQsqRLGgdEb6EL9P945CFx4mmWZ+bpj55cTXeOp2
+	cTZsIIeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0IXn-00000008fjj-2hRC;
-	Thu, 03 Apr 2025 11:15:35 +0000
+	id 1u0Ib4-00000008gbn-1akV;
+	Thu, 03 Apr 2025 11:18:58 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0I6y-00000008cHn-0GH2;
-	Thu, 03 Apr 2025 10:47:53 +0000
+	id 1u0IGN-00000008dff-1IKB;
+	Thu, 03 Apr 2025 10:57:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1743677270;
-	bh=x1wtdufQF5A9ff40c172tRf7AZns8UAMMhQfqRaFnN4=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=nsp7uBpe5gwRIweVut4tJQ7obUSye6hB0kimMKqule2r8ctO9aEO+oMxU/x/nvHIu
-	 wZ/tOU0XABIePTkwo/gbBbUrUpxShlk+odCVU6ictUi4juIhyklynbntc4PmIhHKbG
-	 l9S2Y8NieIaXz8GDa+NkM9hv8EVrYyi6RDteJhOkbfZA24KhvctJO0Euip+K/JqlZc
-	 mH5r8gAeNo+gTO/g/4Oe/kXdjeDpnAn7cFSJP3JBbYCgoGACfKboqZHLXhM9BC9e7/
-	 QDFBcOXynMHmQaFZHcg3r8NqpqmXnKhNFI/BOprB5DFcqsZgDEXDoxUiWSDNdLQmp2
-	 /6eWTvhLoUmyw==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	s=mail; t=1743677853;
+	bh=tkw/pAVMikC8vZDLk5yz26i/hAbPheqhEpIiGxCaaGw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=AY8I1SS+s6hcViJlt+RbH2FK2aegdngXe66s8ZBVLRHtc3y3l346QhzQImcPyMVuf
+	 xrtk7CdWeeGr4SOIQQi5V+ZAQ+2BSRktF9LGc5id2LRFqWPvMp1vmkvmHNaVFllM3R
+	 kEfbF9Au4BVBDfNFdd4tPraPiLzKrQqf/YlmGsfyf/Q5Y7qn9Ctc6eRr3xgo6iVjjO
+	 yNjcIvZKhkseDqweYUKgWsE4glxeFJhb9idRXwz0hUUYycMTZz9Ou88WVLEqdcLI9r
+	 Oy2ec2W8RI8EH4lStUSe7+jJ8nvpC1AVizD01z13oTcXBX0TcDviiM9R8uG+1r0cF4
+	 qXjIIdFuCdCRg==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 89D8317E0702;
-	Thu,  3 Apr 2025 12:47:49 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: chunkuang.hu@kernel.org
-Cc: p.zabel@pengutronix.de,
-	airlied@gmail.com,
-	simona@ffwll.ch,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	nancy.lin@mediatek.com,
-	ck.hu@mediatek.com,
-	djkurtz@chromium.org,
-	littlecvr@chromium.org,
-	bibby.hsieh@mediatek.com,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	wenst@chromium.org,
-	kernel@collabora.com
-Subject: [PATCH v2 5/5] drm/mediatek: mtk_disp_rdma: Enable/disable interrupt on bind/unbind
-Date: Thu,  3 Apr 2025 12:47:41 +0200
-Message-ID: <20250403104741.71045-6-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250403104741.71045-1-angelogioacchino.delregno@collabora.com>
-References: <20250403104741.71045-1-angelogioacchino.delregno@collabora.com>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 72DCB17E0F47;
+	Thu,  3 Apr 2025 12:57:32 +0200 (CEST)
+Message-ID: <736d0164-b672-4c3b-ad64-89c31482effb@collabora.com>
+Date: Thu, 3 Apr 2025 12:57:31 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] dt-bindings: mmc: mtk-sd: add single burst switch
+To: =?UTF-8?B?QXhlIFlhbmcgKOadqOejiik=?= <Axe.Yang@mediatek.com>,
+ =?UTF-8?B?V2VuYmluIE1laSAo5qKF5paH5b2sKQ==?= <Wenbin.Mei@mediatek.com>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
+ <Chaotian.Jing@mediatek.com>, "robh@kernel.org" <robh@kernel.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "ulf.hansson@linaro.org" <ulf.hansson@linaro.org>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
+ =?UTF-8?B?QW5keS1sZCBMdSAo5Y2i5LicKQ==?= <Andy-ld.Lu@mediatek.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ =?UTF-8?B?WW9uZyBNYW8gKOavm+WLhyk=?= <yong.mao@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ =?UTF-8?B?UWluZ2xpYW5nIExpICjpu47mmbTkuq4p?= <Qingliang.Li@mediatek.com>
+References: <20250306085028.5024-1-axe.yang@mediatek.com>
+ <20250306085028.5024-2-axe.yang@mediatek.com>
+ <3e84fda8-2566-4f18-8ef9-850c84789c34@collabora.com>
+ <f84800fac589429157cd84034ef2f4541d3486a7.camel@mediatek.com>
+ <b09f618a-eaf9-4258-ae2d-67eff1cb249f@collabora.com>
+ <f8ce830d831aaba0d2748d31f8ba4a9915b7a14e.camel@mediatek.com>
+ <52d2f247a3058b96625bcdf5ab370282dfc9fb0e.camel@mediatek.com>
+ <3572d6e2-8950-4937-bed5-624bf5bde7f3@collabora.com>
+ <8958413b4138d815d582927f7702b35ffc20f122.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <8958413b4138d815d582927f7702b35ffc20f122.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250403_034752_411172_0836E31D 
-X-CRM114-Status: GOOD (  21.02  )
+X-CRM114-CacheID: sfid-20250403_035735_514333_736BCDA8 
+X-CRM114-Status: GOOD (  36.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,119 +96,297 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The RDMA driver is installing an ISR in the probe function but, if
-the component is not bound yet, the interrupt handler may call the
-vblank_cb ahead of time (while probing other drivers) or too late
-(while removing other drivers), possibly accessing memory that it
-should not try to access by reusing stale pointers.
+Il 27/03/25 03:48, Axe Yang (杨磊) ha scritto:
+> On Tue, 2025-03-25 at 11:20 +0100, AngeloGioacchino Del Regno wrote:
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>>
+>>
+>> Il 25/03/25 03:41, Axe Yang (杨磊) ha scritto:
+>>> Hi Angelo,
+>>>
+>>> Any comment on this :D
+>>>
+>>
+>> Check inline reply below....
+>>
+>>> Regards,
+>>> Axe
+>>>
+>>> On Wed, 2025-03-12 at 14:30 +0800, axe.yang wrote:
+>>>> On Tue, 2025-03-11 at 10:47 +0100, AngeloGioacchino Del Regno
+>>>> wrote:
+>>>>> External email : Please do not click links or open attachments
+>>>>> until
+>>>>> you have verified the sender or the content.
+>>>>>
+>>>>>
+>>>>> Il 07/03/25 07:59, Axe Yang (杨磊) ha scritto:
+>>>>>> On Thu, 2025-03-06 at 10:19 +0100, AngeloGioacchino Del Regno
+>>>>>> wrote:
+>>>>>>> External email : Please do not click links or open
+>>>>>>> attachments
+>>>>>>> until
+>>>>>>> you have verified the sender or the content.
+>>>>>>>
+>>>>>>>
+>>>>>>> Il 06/03/25 09:48, Axe Yang ha scritto:
+>>>>>>>> Add 'mediatek,disable-single-burst' setting. This
+>>>>>>>> property
+>>>>>>>> can
+>>>>>>>> be
+>>>>>>>> used to switch bus burst type, from single burst to INCR,
+>>>>>>>> which
+>>>>>>>> is
+>>>>>>>> determined by the bus type within the IP. Some versions
+>>>>>>>> of
+>>>>>>>> the
+>>>>>>>> IP
+>>>>>>>> are using AXI bus, thus this switch is necessary as
+>>>>>>>> 'single'
+>>>>>>>> is
+>>>>>>>> not
+>>>>>>>> the burst type supported by the bus.
+>>>>>>>>
+>>>>>>>> Signed-off-by: Axe Yang <axe.yang@mediatek.com>
+>>>>>>>
+>>>>>>> I am mostly sure that this is not something to put in
+>>>>>>> devicetree,
+>>>>>>> but
+>>>>>>> as
+>>>>>>> platform data for specific SoC(s), as much as I'm mostly
+>>>>>>> sure
+>>>>>>> that
+>>>>>>> all of
+>>>>>>> the instances of the MSDC IP in one SoC will be *all* using
+>>>>>>> either
+>>>>>>> single
+>>>>>>> or INCR.
+>>>>>>
+>>>>>> No, actually MSDC IPs in one SoC are using different
+>>>>>> versions.
+>>>>>> Usually MSDC1 (index from 1) is used as eMMC host, the left
+>>>>>> hosts
+>>>>>> are
+>>>>>> used as SD/SDIO hosts. They have similar designs, but there
+>>>>>> are
+>>>>>> still
+>>>>>> difference.
+>>>>>>
+>>>>>>>
+>>>>>>> So, I think I know the answer but I'll still ask just to be
+>>>>>>> extremely
+>>>>>>> sure:
+>>>>>>>
+>>>>>>> is there any MediaTek SoC that has different IP versions
+>>>>>>> for
+>>>>>>> different MSDC
+>>>>>>> instances, and that hence require single burst on one
+>>>>>>> instance
+>>>>>>> and
+>>>>>>> INCR on
+>>>>>>> another instance?
+>>>>>>
+>>>>>> Yes. Actually every SoC has different IP versions for eMMC
+>>>>>> and
+>>>>>> SD/SDIO
+>>>>>> host as I said.
+>>>>>> e.g. For MT8168, signel burst bit should be set to 1 for eMMC
+>>>>>> Host,
+>>>>>> but
+>>>>>> 0 for SD/SDIO Host.
+>>>>>>
+>>>>>>>
+>>>>>>> And if there is - is there a pattern? Is it always SDIO
+>>>>>>> requiring
+>>>>>>> INCR or
+>>>>>>> always eMMC/SD requiring it?
+>>>>>>>
+>>>>>>>
+>>>>>>
+>>>>>> No, there is no pattern. Both eMMC and SD/SDIO hosts need to
+>>>>>> be
+>>>>>> configured base on IP version. There is no binding
+>>>>>> relationship
+>>>>>> between
+>>>>>> eMMC/SD/SDIO and the burst type. eMMC burst type might be
+>>>>>> INCR or
+>>>>>> single, same as SD/SDIO.
+>>>>>>
+>>>>>
+>>>>> Okay but if there are different IP versions, and AXI/AHB is
+>>>>> determined
+>>>>> by the IP version, why aren't you parsing the MAIN_VER/ECO_VER
+>>>>> registers of
+>>>>> the MSDC IP to check whether to use INCR or SINGLE?
+>>>>
+>>>>
+>>>> To address your concerns, I had further discussions with the
+>>>> designer.
+>>>> Their response was that the bus type and IP version are not bound
+>>>> together. This contradicts my previous statements, and I
+>>>> apologize
+>>>> for
+>>>> that.
+>>>> According to the designer's feedback, I must say that the single
+>>>> burst
+>>>> setting is indeed tied to the IC, but the granularity is such
+>>>> that it
+>>>> needs to be set individually for each host.
+>>>> Given the large number of ICs Mediatek currently has, adding
+>>>> burst
+>>>> type
+>>>> information for each host to the driver's compatible structure
+>>>> would
+>>>> mean adding hundreds(maybe thousands :() of lines to the driver
+>>>> for
+>>>> the
+>>>> compatible structures for *all previous SoCs* (currently there
+>>>> are
+>>>> only
+>>>> 13 compatible structures, and they can be reuse by new SoC). This
+>>>> approach seems very cumbersome.
+>>>>
+>>>> So I still believe that placing this setting in the DTS is a more
+>>>> appropriate approach.
+>>>>
+>>
+>> Hello Axe,
+>>
+>> sorry for the wait - this email fell through the cracks and I didn't
+>> see
+>> it at all, so thank you for the ping.
+>>
+>> Unfortunately, I don't think that this would be acceptable from a
+>> devicetree and/or
+>> bindings standpoint, but then you don't really need to modify the
+>> pdata for all of
+>> the currently supported SoCs to declare false, as false==0, which is
+>> the default.
+>>
+>> But maybe there's another way out of this.
+>>
+>> You said that this modification is done because some controllers are
+>> under AXI and
+>> some others are under AHB... I was doing some cleanups to this driver
+>> and doing so
+>> made me check a couple of things....
+>>
+>> When a MSDC controller is under AXI, there will be configuration for
+>> that in other
+>> registers - specifically, I'm wondering if the EMMC50_CFG2 register
+>> can be used to
+>> check if we are under an AHB to AXI wrapper or not.
+>>
+>> The idea is to read this register (offset 0x21c), [27:24] AXI_SET_LEN
+>> contains the
+>> number of beats per burst (from 1 to 16), and also [23:19]
+>> AXI_RX_OUTSTANDING_NUM
+>> contains the number of outstanding transfers (1 to 13).
+>>
+>> If a controller does not have an AXI2AHB Wrapper, or if it does not
+>> use the AXI bus
+>> this register should read zero I think?
+>>
+>> Especially the two fields that I mentioned before, those should read
+>> zero.
+>>
+>> That, especially because the hwaddr for the controllers is anyway and
+>> always long
+>> 0x1000 - and I think that the extra registers space, on controllers
+>> that don't have
+>> the EMMC50 registers (msdc1 and msdc2) should be still reserved to
+>> those and never
+>> used for anything else.
+>>
+>> Would that detection way work?
+> 
+> Confirmed that this approach will work for all Soc and IP version. Thx.
+> 
 
-In order to fix this, like done in the OVL driver, add a new `irq`
-member to struct mtk_disp_ovl and then add the IRQF_NO_AUTOEN flag
-to the irq while installing the ISR to manually disable and clear
-the hwirqs with register writes, and enable_irq() and disable_irq()
-in the bind and unbind callbacks respectively.
+That's great to hear.
 
-Also, the call to devm_request_irq() was moved after the platform
-data and drvdata assignment, but in this specific case it is just
-to make it cosmetically correct, as with this change the ISR will
-not execute until the component is bound, hence no dev_get_drvdata
-happens before that.
+Makes things much simpler and at this point that will even fix some other
+MediaTek SoCs at this point ;-)
 
-Note that since IRQF_TRIGGER_NONE is effectively 0 and doing nothing
-this (fake) flag was dropped.
 
-Fixes: 119f5173628a ("drm/mediatek: Add DRM Driver for Mediatek SoC MT8173.")
-Link: https://lore.kernel.org/r/20250402083628.20111-6-angelogioacchino.delregno@collabora.com
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c | 34 ++++++++++++++----------
- 1 file changed, 20 insertions(+), 14 deletions(-)
+> Will send v2 after your register cleanup series accepted.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-index bf47790e4d6b..c1bc1bbad86d 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-@@ -81,6 +81,7 @@ struct mtk_disp_rdma_data {
- struct mtk_disp_rdma {
- 	struct clk			*clk;
- 	void __iomem			*regs;
-+	int				irq;
- 	struct cmdq_client_reg		cmdq_reg;
- 	const struct mtk_disp_rdma_data	*data;
- 	void				(*vblank_cb)(void *data);
-@@ -295,13 +296,23 @@ void mtk_rdma_layer_config(struct device *dev, unsigned int idx,
- static int mtk_disp_rdma_bind(struct device *dev, struct device *master,
- 			      void *data)
- {
--	return 0;
-+	struct mtk_disp_rdma *priv = dev_get_drvdata(dev);
-+
-+	/* Disable and clear pending interrupts */
-+	writel(0x0, priv->regs + DISP_REG_RDMA_INT_ENABLE);
-+	writel(0x0, priv->regs + DISP_REG_RDMA_INT_STATUS);
-+
-+	enable_irq(priv->irq);
- 
-+	return 0;
- }
- 
- static void mtk_disp_rdma_unbind(struct device *dev, struct device *master,
- 				 void *data)
- {
-+	struct mtk_disp_rdma *priv = dev_get_drvdata(dev);
-+
-+	disable_irq(priv->irq);
- }
- 
- static const struct component_ops mtk_disp_rdma_component_ops = {
-@@ -314,16 +325,15 @@ static int mtk_disp_rdma_probe(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	struct mtk_disp_rdma *priv;
- 	struct resource *res;
--	int irq;
- 	int ret;
- 
- 	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
- 	if (!priv)
- 		return -ENOMEM;
- 
--	irq = platform_get_irq(pdev, 0);
--	if (irq < 0)
--		return irq;
-+	priv->irq = platform_get_irq(pdev, 0);
-+	if (priv->irq < 0)
-+		return priv->irq;
- 
- 	priv->clk = devm_clk_get(dev, NULL);
- 	if (IS_ERR(priv->clk))
-@@ -347,21 +357,17 @@ static int mtk_disp_rdma_probe(struct platform_device *pdev)
- 	if (ret && (ret != -EINVAL))
- 		return dev_err_probe(dev, ret, "Failed to get rdma fifo size\n");
- 
--	/* Disable and clear pending interrupts */
--	writel(0x0, priv->regs + DISP_REG_RDMA_INT_ENABLE);
--	writel(0x0, priv->regs + DISP_REG_RDMA_INT_STATUS);
--
--	ret = devm_request_irq(dev, irq, mtk_disp_rdma_irq_handler,
--			       IRQF_TRIGGER_NONE, dev_name(dev), priv);
--	if (ret < 0)
--		return dev_err_probe(dev, ret, "Failed to request irq %d\n", irq);
--
- 	priv->data = of_device_get_match_data(dev);
- 
- 	platform_set_drvdata(pdev, priv);
- 
- 	pm_runtime_enable(dev);
- 
-+	ret = devm_request_irq(dev, priv->irq, mtk_disp_rdma_irq_handler,
-+			       IRQF_NO_AUTOEN, dev_name(dev), priv);
-+	if (ret < 0)
-+		return dev_err_probe(dev, ret, "Failed to request irq %d\n", priv->irq);
-+
- 	ret = component_add(dev, &mtk_disp_rdma_component_ops);
- 	if (ret) {
- 		pm_runtime_disable(dev);
--- 
-2.48.1
+Please feel free to send your v2 even right now, just add a note (not in the
+commit description) saying that your patch is based on top of my series.
+
+That will be fine.
+
+Also, if you could provide a review on my series, that would help speeding up
+things :-)
+
+Thanks,
+Angelo
+
+> 
+> Regards,
+> Axe
+> 
+>>
+>> If it would, we'd be again autodetecting whether to set or not the
+>> AXI single burst
+>> option in the patch bits...without relying on specifying anything
+>> manually, not in
+>> the devicetree, and not in the platform data :-)
+>>
+>> Cheers,
+>> Angelo
+>>
+>>>> Regards,
+>>>> Axe
+>>>>
+>>>>>
+>>>>> Cheers,
+>>>>> Angelo
+>>>>>
+>>>>>>
+>>>>>> Regards,
+>>>>>> Axe
+>>>>>>
+>>>>>>
+>>>>>>>
+>>>>>>>> ---
+>>>>>>>>      Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 8
+>>>>>>>> ++++++++
+>>>>>>>>      1 file changed, 8 insertions(+)
+>>>>>>>>
+>>>>>>>> diff --git a/Documentation/devicetree/bindings/mmc/mtk-
+>>>>>>>> sd.yaml
+>>>>>>>> b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+>>>>>>>> index 0debccbd6519..6076aff0a689 100644
+>>>>>>>> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+>>>>>>>> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+>>>>>>>> @@ -100,6 +100,14 @@ properties:
+>>>>>>>>          minimum: 0
+>>>>>>>>          maximum: 0xffffffff
+>>>>>>>>
+>>>>>>>> +  mediatek,disable-single-burst:
+>>>>>>>> +    $ref: /schemas/types.yaml#/definitions/flag
+>>>>>>>> +    description:
+>>>>>>>> +      Burst type setting. For some versions of the IP
+>>>>>>>> that
+>>>>>>>> do
+>>>>>>>> not
+>>>>>>>> use
+>>>>>>>> +      AHB bus, the burst type need to be switched to
+>>>>>>>> INCR.
+>>>>>>>> +      If present, use INCR burst type.
+>>>>>>>> +      If not present, use single burst type.
+>>>>>>>> +
+>>>>>>>>        mediatek,hs200-cmd-int-delay:
+>>>>>>>>          $ref: /schemas/types.yaml#/definitions/uint32
+>>>>>>>>          description:
+>>>>>>>
+>>>>>>>
+>>>>>>>
+>>>>>
+>>>>>
+>>
+>>
 
 
