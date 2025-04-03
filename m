@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EF09C36014
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Apr 2025 19:18:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6653AC3601A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Apr 2025 19:20:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GWdLKGAnYLVYKNLEKoU2bBVM35N2T2bjMzPVcRFUn5s=; b=jMJ2Jjxnk+Z5/VtAwijCLWNhHc
-	n0c2Gkw7iEA//Nlism+56UjYMJeLPrGZLjoGE1Z41czj5Bbuz4G+GWiaIAZE18grJKJc0P7Sx2Pi2
-	9ycipvOqxVtFS2nQaxbbTSDr3tEI6+6D89xu2kOsxv9lgJw8Ym/qZkC1vUrwAaY2wy1S7Vi/T77P7
-	t/5+r33nJY4KWFtfVx18Eyd/EtU3b0nY0PHv9pB+0ova1zQ60jWN3lho+YyMI9ufWfJvMkU8uD3sZ
-	VZ7Un/Adt3MgQp/RkhCveBBg1BzMzNg3ysJI3B9TlkhGjzFHsJx/bGNL1qDOive/DhU5NZwE+qYYR
-	Sfrzb1VQ==;
+	bh=GWdLKGAnYLVYKNLEKoU2bBVM35N2T2bjMzPVcRFUn5s=; b=dKIz6h226zcqqlq62Zpl4u0Zxp
+	nNLOIxMY9hJzdPS066UuXVtcweBywUf09qoy4M81k2na++cRwzcgZcYkr7/jc6a2yfFTZxz/+pFpH
+	wrVMKREqdffvRqnPO0ujUIyehhTfeGwr7Bo1wepmUJy7hUWDcSEPJoxqifnJ0f2DeicpKMRxY5IuX
+	nAwHL5NZJWIFsuQcxfCry/GoFVY4KOdGzNnE+7efrN9yeRoan0ooM8VPA5IGEUYcbu9pGp8/Z6QG1
+	L9RBB2HlCB+boTyzyFp4iNkffQwTIBbEfeEdXZ2GrGcofz28096XhIjrsIQo8ApsDPEcAmg3f3dOc
+	APGz7ysQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0Q5E-00000009hxZ-1Ov2;
-	Thu, 03 Apr 2025 19:18:36 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1u0Q71-00000009ii3-1yCj;
+	Thu, 03 Apr 2025 19:20:27 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0Pva-00000009eum-0vWV;
-	Thu, 03 Apr 2025 19:08:38 +0000
+	id 1u0PwE-00000009ezz-0Jj5;
+	Thu, 03 Apr 2025 19:09:18 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7EF34614B5;
-	Thu,  3 Apr 2025 19:08:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E067CC4CEE8;
-	Thu,  3 Apr 2025 19:08:35 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 8673E614B3;
+	Thu,  3 Apr 2025 19:09:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E9381C4CEE3;
+	Thu,  3 Apr 2025 19:09:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1743707317;
+	s=k20201202; t=1743707357;
 	bh=GNHJfVzVNAlpwYr3o5Fo+VsNpqk3jsX89c60zyBrKwU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=IiXniznLUPnU5s4wS8HfXlaTnJn/xk4hdEdPMlBawrVec4B3Gl5LNchPJpYKajQdE
-	 RKHs/nrt8wrK6+Uajq3oyAmcNUfEXBVj105SHsGppy7nStlXqX7gM9WE5pMVNFFBPV
-	 EdtD+no0KNxw9Hm5fFLaaovmOGrTEwihKk6jhx23wMbkh23r3b/x/DUJv4YQRFIVUo
-	 LZNThAT7h/8q5vtq1beBErJvSukYgYBXeAsz8LpD/a5MxhEM7LqBCoNY9lzIv86L/m
-	 yleXcIDwcq0JMwYmGavbFo/9vksrWhQnhglo1gFpXjTRU+Zt0irciBZgr2/6P+5jZl
-	 Vs/SpjOB8gFCA==
+	b=mNtZH96SC7vejZoof6rb13cd2BmHITWz5AZ5zVhIMpl1nrI339vnsX3xu8Weky0fZ
+	 YeZ80LunGjsW//mHlS+ItEoJf+aHO+I0iy056fTJQMb/Brv0Pv2bxwTozusVHt9rW2
+	 O4Pl5T0CtmPe45VJ+FBK8ZJBEjP8gX0+w58nj1eSykCFqBhSzGHIeixdoHTr2f6Gac
+	 8uDWHNiY8ghFY8Ql4uWQ7GXRz3c+bTWcSj50qYajSndhBod84xc2L85VXtvXfm2nEF
+	 Kw70X1zdMGg4EHMMv2e3xBr7c95qFD/3ALyINWEaD2+ugEOB38zcbMidyemh91AMyd
+	 zR1AlSzHzUUzg==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -54,16 +54,16 @@ Cc: Icenowy Zheng <uwu@icenowy.me>,
 	linux-wireless@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.6 22/26] wifi: mt76: mt76x2u: add TP-Link TL-WDN6200 ID to device table
-Date: Thu,  3 Apr 2025 15:07:41 -0400
-Message-Id: <20250403190745.2677620-22-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.1 14/18] wifi: mt76: mt76x2u: add TP-Link TL-WDN6200 ID to device table
+Date: Thu,  3 Apr 2025 15:08:40 -0400
+Message-Id: <20250403190845.2678025-14-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250403190745.2677620-1-sashal@kernel.org>
-References: <20250403190745.2677620-1-sashal@kernel.org>
+In-Reply-To: <20250403190845.2678025-1-sashal@kernel.org>
+References: <20250403190845.2678025-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.6.85
+X-stable-base: Linux 6.1.132
 Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
