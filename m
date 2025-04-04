@@ -4,64 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF466C36014
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Apr 2025 14:10:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6C2AC36010
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Apr 2025 14:10:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=C2TPJrUENIZhg+jjkWL7t6plBZLQvnhMuJOgRGwcC7o=; b=nHZIkp8aKWpxKBc5RsIlWstruP
-	HEJ9c5PkWGefRpj/4VCiG/W4qGS7WDC6pTKjHy8JPbfd41DaBrdL8K0pqSW7qrZwVVk6GiGKn79R5
-	C+wiS6mwUB6B9zEXRdH+kmT9dBDWoN+FLPvQ29p4Q482HWrz2qvAV0dx9mUE6GILlqKlnBpQ5KYZg
-	5D0oPzVmXoYAtQ/zxnJ7lZfeS4MpHnz7r/gCd8hjSwPQ5db4etj+amcWFxWuXZK8AV1GiElXcfNsz
-	Cl3VxuCKfm06YRMVPYYtUr3XgFGrasNFydOjnZFyjGfM610CQjzY0NiIWwwtG2WAbYF9bObyZj72o
-	pnpr6MnA==;
+	bh=nPYlQn0VW0pN1l46FpkNlTR/VrDNwWI6liMIF/TsdII=; b=rCWEosoF30rWL83qzv9sCInXXh
+	t7/Gc4WbpvbiiXiS6WDHEoI7HNWonbDY1Wd32tpM4GJ8o3Vsvoaz1FKkfXz63+eKmkqpgxDViaikq
+	yr82tmsSlaHG9hre8Q0yIZvdBYnoSsZEfeQvw+xu3FXkJf7jKUkwIb2Iut5SHmFIZ19d8SHtiNn0W
+	QU9M5SJ3oEA9cEMLBN57So5cbLrfnEPVVFCM3BpHeN0UTZWe7dVsdwSFjm/fvUCZqCuJ7IAGBglSx
+	kUbcnlYsWCoA2825Uy76dteWZPoJ4SOe5Cc3i9aMcTQ1//33ZmZYsplAvd5AHw6KLUfa/1vTZdBZB
+	W/AvDDrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0hkB-0000000BwkL-3Hi6;
-	Fri, 04 Apr 2025 14:10:03 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1u0hkg-0000000Bwt3-3Kpv;
+	Fri, 04 Apr 2025 14:10:34 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0hfY-0000000BvxE-1IIp;
-	Fri, 04 Apr 2025 14:05:17 +0000
+	id 1u0hkf-0000000BwsV-0wIa;
+	Fri, 04 Apr 2025 14:10:33 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 4526045076;
-	Fri,  4 Apr 2025 14:05:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4F935C4CEF5;
-	Fri,  4 Apr 2025 14:05:15 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id EF34261136;
+	Fri,  4 Apr 2025 14:10:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CC096C4CEEC;
+	Fri,  4 Apr 2025 14:10:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1743775515;
-	bh=sXc59e9oCS1JyARzmEkCFC/sWd+6b3k5Zd9xARKgKhU=;
+	s=k20201202; t=1743775831;
+	bh=l2lzsNRrga+hAwlZPw2hZyVI7hOngQ48zjWgc72CGr4=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=nCGf3I9tEmCSvB0E76/BUXH6Nk1Q786Smv1KYQf7QmCCD9o9Vf7Jhiuw+t0LRBV69
-	 fCQDUgY4uJnXj9Qtye3sGi5fSmLjQJjXNRK/EEEdrFO4FIOnMma7eAkGuyZRmfOSfg
-	 hldrIX+bb9WXeeI5iiR1rh1rVUuQqiXwgbhatKkxVl4shFjEMD6B/1hgd5VDxXk3s1
-	 2GLoeerZIcXyrkvsszXm+iKisJa7hv/VYq64834LR35wmHqQST9N7TujpLPgk8EdVT
-	 UcAJ9djGAUQ/qu7XPoq1vjZ58Lh+q8niDbtBdREOB9J7EnKo65uRZQ9qCRO90Gcjnk
-	 R08WFLmx941ew==
-Received: by mail-ed1-f52.google.com with SMTP id 4fb4d7f45d1cf-5e6ff035e9aso4063983a12.0;
-        Fri, 04 Apr 2025 07:05:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCWJwCWvquNOqZx1+x6N7nRI3HOMGYjQMrfik0HNKkz7C4tfNhygELV+fo3QswR/eX41FLMq4LcT69cm9JO9l10=@lists.infradead.org, AJvYcCWKtnBlG3UOqe3oTLWHKHNygCUfVe5PlQNT7e1/gGXdRBkWO0j5qYLaPNGxBDNfCV5FjNOonxKhJHja/edwH10=@lists.infradead.org, AJvYcCX+tvt/jip5fJ0Q9xo48xvCaDI9ik9l8j8OUqW3aIZHf0Y5ImrMkjTsgcfS+vUK0YRdq6+J/D8qaXrrBfQo@lists.infradead.org, AJvYcCXdm0eYgirIqOUJUX4SNYsNrVm337ztQHpKfbsRBF3XpAw2hR7PzezYTL1zHILoT3cwIB7ypWFTN5IEEgf2WRSTLA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzVmPPgxbG4BvIAS5Uu5alYyFMJSkIw4qfOPY8EIH4CEOamlKVM
-	dRL8e3EcI/zdGrbQuiBRc/jt2rB7abvI30PqIsWnghvo9+Ymo3CW+KG6LVi+RmYvonPA1PEzenH
-	BFdna0+fe8z1ZYU4bf5p3XERFeQ==
-X-Google-Smtp-Source: AGHT+IGvjzmo+S0oZ7wclO731FKO/yFH3v6rfa52+MwQrSf/9tdEEQ9A/kWSXMLtJKL4wmLWRjaXPrcr+vGPnUPbJIE=
-X-Received: by 2002:a05:6402:5112:b0:5e7:8be5:d189 with SMTP id
- 4fb4d7f45d1cf-5f0b3b62317mr2699905a12.4.1743775513430; Fri, 04 Apr 2025
- 07:05:13 -0700 (PDT)
+	b=MhXqLqpa43mJjzUE+SiXJTbXwmVJ/HY6gBTctJU9FfRezIv1qLjartTS85rOgNg9a
+	 ZhN4HzOepVa85NDLlDWJODei3AOF6LINQBifXsj/9vcNkRNTNwOPyODWr//oY7SEXN
+	 pqbYfSz27XnI8DD+h0GaWdbcrDerOqpp+11Vuj4JYUOWKhgGITX67L3hbAOFtsPvzb
+	 xSZsVs/S+Pr54A87UysNCn/RkaXJaFv8XaW0L8BHyTXXNGj+g0awaZqTwq7UI8BMyg
+	 xtscO/vdTlk2M4zdjpWE5iml8FERUp0D7y1vv/91pL6IP0dkPhJrxNVtmC/K/73oRz
+	 naujA3WQObjpA==
+Received: by mail-ed1-f53.google.com with SMTP id 4fb4d7f45d1cf-5e8be1c6ff8so3930499a12.1;
+        Fri, 04 Apr 2025 07:10:31 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCUGDRh2xgauy5zgvxdxdXf3nkEq3lOYsxYlbgM0gKF98ef+nTYbpcI0IOXKcrFGz7ijVva1E5+n5lOT2PZJ@lists.infradead.org, AJvYcCVdjP2pieNiJ4kqYOcKWEj/vhTF16bxKWk1IIDZ5JMI4zrr81IZivcjRaWQyjlMTwXly6r4Dex6fKmbfDZ2r7w=@lists.infradead.org, AJvYcCW3uSgswGc+lCOC/MmALyuBQejAHDQpNZh/H2PpULYhcxipYfhq5xjvUiyDOxuMYMbSsCJZlIMYvwIDLwp1jWLq7A==@lists.infradead.org, AJvYcCW91qWSdDN8o/+GbxrnBSzS2EsHliUrEe8Eb1/7fNdum21cU212Tom2kRhCnCvGamEIx6ktDNLD/hMv5gFqFBE=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzuwECURqnE/iqLHH6tQzXtTy6tb28SgrjePgCrqSuyB9ZHTFtB
+	J7zHAHeIKkNoTgmUxC0ByJzZAoSQ8aefupuRHi8e7POlAFhlrHiPO3cTlnSoH7t/Ud0FeWk4id+
+	nAxsqEaUU/67txM/JvM6xBo70AQ==
+X-Google-Smtp-Source: AGHT+IGYXjl+q1G3Ghk1zMOjaKXndZfqYp9hiiK7OTWs/zAZNM/+0QVdqEQQ+zuW4YRtKHDm+WaT1WT3knVA25eifPc=
+X-Received: by 2002:a05:6402:3481:b0:5ed:921a:ded6 with SMTP id
+ 4fb4d7f45d1cf-5f0b657862emr2694084a12.18.1743775830233; Fri, 04 Apr 2025
+ 07:10:30 -0700 (PDT)
 MIME-Version: 1.0
 References: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org>
- <20250403-dt-cpu-schema-v1-9-076be7171a85@kernel.org> <CAPDyKFoEEp8AZ7aJ8-wwp8=n+T4gbij15oYaCNhF1Bd-E1nMbg@mail.gmail.com>
-In-Reply-To: <CAPDyKFoEEp8AZ7aJ8-wwp8=n+T4gbij15oYaCNhF1Bd-E1nMbg@mail.gmail.com>
+ <20250403-dt-cpu-schema-v1-6-076be7171a85@kernel.org> <Z-_K2XDEcbtcCMVM@linaro.org>
+ <CAL_JsqJT-0gwvJnMb63izy6WwJpBVsswkauL8OMLCrF08q9HYQ@mail.gmail.com>
+In-Reply-To: <CAL_JsqJT-0gwvJnMb63izy6WwJpBVsswkauL8OMLCrF08q9HYQ@mail.gmail.com>
 From: Rob Herring <robh@kernel.org>
-Date: Fri, 4 Apr 2025 09:05:02 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqLB7SpVNTVruAb98YEPC5sRpssjsSP=NkqdON6qP+74fw@mail.gmail.com>
-X-Gm-Features: ATxdqUGVc4_Mt0PqKKmf21CRVRmw-a_zuqLCxbME19ZuBODzSy1GgUUs6hNAKo0
-Message-ID: <CAL_JsqLB7SpVNTVruAb98YEPC5sRpssjsSP=NkqdON6qP+74fw@mail.gmail.com>
-Subject: Re: [PATCH 09/19] arm: dts: qcom: sdx55/sdx65: Fix CPU power-domain-names
-To: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Fri, 4 Apr 2025 09:10:18 -0500
+X-Gmail-Original-Message-ID: <CAL_JsqJDkoj4d-aKvZ92kZ1mikqjJV4J4w=-3eNk3z6q6g0ssw@mail.gmail.com>
+X-Gm-Features: ATxdqUGgk50-VgqfiN2r-WHP1-0cyp1Dem4hGHbf6672N4-b5gggSNdLRbwnjDg
+Message-ID: <CAL_JsqJDkoj4d-aKvZ92kZ1mikqjJV4J4w=-3eNk3z6q6g0ssw@mail.gmail.com>
+Subject: Re: [PATCH 06/19] arm64: dts: qcom: msm8939: Fix CPU node
+ "enable-method" property dependencies
+To: Stephan Gerhold <stephan.gerhold@linaro.org>
 Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
 	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
 	Samuel Holland <samuel@sholland.org>, "Rafael J. Wysocki" <rafael@kernel.org>, 
@@ -89,9 +91,6 @@ Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
 	linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250404_070516_385507_4DFD7504 
-X-CRM114-Status: GOOD (  22.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,44 +105,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 4, 2025 at 5:31=E2=80=AFAM Ulf Hansson <ulf.hansson@linaro.org>=
- wrote:
+On Fri, Apr 4, 2025 at 8:18=E2=80=AFAM Rob Herring <robh@kernel.org> wrote:
 >
-> On Fri, 4 Apr 2025 at 05:02, Rob Herring (Arm) <robh@kernel.org> wrote:
+> On Fri, Apr 4, 2025 at 7:04=E2=80=AFAM Stephan Gerhold
+> <stephan.gerhold@linaro.org> wrote:
 > >
-> > "rpmhpd" is not documented nor used anywhere. As the enable-method is
-> > "psci" use "psci" for the power-domain name.
+> > On Thu, Apr 03, 2025 at 09:59:27PM -0500, Rob Herring (Arm) wrote:
+> > > The "qcom,acc" and "qcom,saw" properties aren't valid with "spin-tabl=
+e"
+> > > enable-method nor are they used on 64-bit kernels, so they can be
+> > > dropped.
+> > >
 > >
-> > Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
-> > ---
-> >  arch/arm/boot/dts/qcom/qcom-sdx55.dtsi | 2 +-
-> >  arch/arm/boot/dts/qcom/qcom-sdx65.dtsi | 2 +-
-> >  2 files changed, 2 insertions(+), 2 deletions(-)
+> > The bootloader we currently use on these devices reads these properties
+> > to set up the spin-table, so removing these will break booting secondar=
+y
+> > CPU cores.
 > >
-> > diff --git a/arch/arm/boot/dts/qcom/qcom-sdx55.dtsi b/arch/arm/boot/dts=
-/qcom/qcom-sdx55.dtsi
-> > index 39530eb580ea..64d9858b4248 100644
-> > --- a/arch/arm/boot/dts/qcom/qcom-sdx55.dtsi
-> > +++ b/arch/arm/boot/dts/qcom/qcom-sdx55.dtsi
-> > @@ -57,7 +57,7 @@ cpu0: cpu@0 {
-> >                         enable-method =3D "psci";
-> >                         clocks =3D <&apcs>;
-> >                         power-domains =3D <&rpmhpd SDX55_CX>;
-> > -                       power-domain-names =3D "rpmhpd";
-> > +                       power-domain-names =3D "psci";
+> > The motivation for implementing it that way was that 32-bit vs 64-bit
+> > kernel shouldn't be relevant for the describing the hardware blocks in
+> > the device tree. The code in the bootloader is generic and handles
+> > different SoCs (e.g. msm8916 with 4 cores and msm8939 with 8 cores, the
+> > enable sequences are identical).
+> >
+> > Can we keep this in somehow? To be fair, I'm not sure what property we
+> > could match on to check if these properties are allowed ...
 >
-> As I understand it, this isn't for cpu-power-mgmt but for
-> cpu-performance-scaling.
->
-> I have been thinking of adding a common power-domain-name for this,
-> but never reached to do it. I think the last one we added was the
-> Airoha SoC [1] which uses "perf", which seems to be the most common
-> one. Still I don't see that being documented.
+> Yes, we can keep them. We'll have to allow them with "spin-table" and
+> "psci" I guess.
 
-It's all a mess and abuse of the power-domains binding...
+I came up with something like this instead:
 
-"perf" is documented. I can add "rpmhpd" I suppose, but I don't see
-anything using the name. Or I can remove it.
+- if:
+  # 2 Qualcomm platforms bootloaders need qcom,acc and qcom,saw yet use
+  # "spin-table" or "psci" enable-methods. Disallowing the properties for
+  # all other CPUs is the best we can do as there's not any way to
+  # distinguish these Qualcomm platforms.
+    properties:
+      compatible:
+        not:
+          const: arm,cortex-a53
+  then:
+    properties:
+      qcom,acc: false
+      qcom,saw: false
+
+Not ideal as there are lots of A53s, but better than enabling for
+every 64-bit platform.
+
+
+Also, is adding the cpu-release-addr fine? It could trip up a
+bootloader tests if the property is already present and doesn't update
+it in that case.
 
 Rob
 
