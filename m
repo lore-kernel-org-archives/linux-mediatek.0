@@ -4,56 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FAE1C36010
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Apr 2025 14:02:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AE11C3601A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Apr 2025 14:04:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=9ZVhWybsQPBRrmpyo04d68VKV2Tp06jwUv8a+/Fie0U=; b=E41njOY5mYRULG
-	CEBEbGgwyKtXHlJUhrbQ8dmCumQpHntLSaUcGadBHsHi/PhvWAOuFPwPY9uxAMPD29Tfasc+5FvBW
-	jL0523jiSUIm3ZS1ZzXFj24tBFakRregHGifj4d9yrWQ1ZlNWs4klV+1ed3l+PRgwM79+/Vo0ASYI
-	gI4H6i2JOelMnpi2QSQjG8P3PGQIb+X9FB6mMMVeRxouYiClYj87qCsOdMMbb6tzBn7d/dXFDfBpC
-	/k097DoGvAwT+LGfhHCwAHfTLkwGrHLUHagnZ1XbdJrE2F1HNUuAIzhq2txipQFFjUjiH0FWv4+AO
-	63TEjdOZdec3m+I1rGYA==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=la0UMI/UisL21wG4UPlGkhTcnil6/pfUh4ZRF4MLSS8=; b=QpzmZiezt0MpQTueBqjtFxWEAR
+	9080qqmY1pS6Y/Qt+xJcoqDIicWfTvxaCvEijg+nRtSvAohdjFdw81bAeMIsc1oJ8J+kMqr5NHHPJ
+	4KkgaW8COE+K1az00SG2vrmfB9IBOsCtHoQV4dBltlvyfNap14y6Y8CF8c9bjn03SJrXs7ZDIMST8
+	uez6jdoI1cput7wkMbh2Lcd209iy5xzW0EoD/s4ND7k1swtVzU+/EE8VjQydkegZwEaoyV3xzRyV4
+	ubIbAPGxU8QlOlJmlzCef9QKI9yAOhnD/JA6FPonLEo6FRuOcCKFjfAyCPnwrSV0evlADRU9TZnrN
+	GKEjnUDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0hdJ-0000000BvZS-0XuR;
-	Fri, 04 Apr 2025 14:02:57 +0000
+	id 1u0hf1-0000000BvnV-1xgP;
+	Fri, 04 Apr 2025 14:04:43 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0hTt-0000000Btft-3KX9;
-	Fri, 04 Apr 2025 13:53:15 +0000
+	id 1u0hTu-0000000BtgC-2hsT;
+	Fri, 04 Apr 2025 13:53:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1743774791;
-	bh=vR24AuULjA4+FsZtPLkXjrIG5WFlOIcKpNzCDaqBB8I=;
-	h=From:Subject:Date:To:Cc:From;
-	b=o8Eb81yclHsonFXupkotQQ545cCg1bjrcg/KlF+sm4DtYaKpbAjYczvlI2rBtAN4H
-	 nhuW6IAhFV89ORMHep6ac+fbEaMXoPTLIlI1QRLFhqCqPExaDxvL0uibg15dbY/hqr
-	 Xy5RSFQn/EYF2cxGGnVC5mXf5i1GSeAV+yboQPxsZN6afxxc5s17g5M0Qv6/ueYy+t
-	 SwdUWIcIQOYpNR1QXuxNG/RVQ3jP3V2UkEK1aTOsKnREXoOKPqy2ZeAZSEYfImhwUO
-	 MrWVS6HjZX9YlR9O+xrOAvEouLA/64+7vfkuVZXtObUTP5a36PuW47uyCzYId2rtm0
-	 yFV0p5z0m7OlQ==
+	s=mail; t=1743774793;
+	bh=wHSW2yYOr4KJOJ8+TNv3Qp3Jf9vVjS0eM/3lV8YHR0A=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=QazsvcgNslrT/Rv3rrW0/23ORVL5cuYxw4xkuVAs3u7eGNXUtrFdwWeM0aw2nBRFk
+	 dF8gBaach/iaMQoHFjPkg1T+fIFZDjYvoL65/F+vDYfzx152kIyV/SMe0uK3u8bdcr
+	 YO/LIcZwu0fKOyRzZ04oJ0Tvn67D3c6BHM6dEhyt3oCax2XSP+NsHrEYPGMItKBDJE
+	 0d7u8x+m2AkT3p/N6DPk3qN87cLaSw2ZRfA3d+DD+ZUtmT0ciZxiQzzZb2MOA59/56
+	 mgAfKsQwkYhAx1T76/jP1G+89T0tanEDDIC6j8PJbUzNlyAN3LpYZOqTeja007OfDi
+	 OX8Gh0wbosK3w==
 Received: from apertis-1.home (2a01cb0892F2D600C8f85cF092D4af51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: jmassot)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E7BC317E00AC;
-	Fri,  4 Apr 2025 15:53:10 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6CFEE17E080B;
+	Fri,  4 Apr 2025 15:53:12 +0200 (CEST)
 From: Julien Massot <julien.massot@collabora.com>
-Subject: [PATCH 0/2] mt8395 evk/radxa-nio-12l Add scp firmware name
-Date: Fri, 04 Apr 2025 15:53:08 +0200
-Message-Id: <20250404-mt8395-scp-fw-v1-0-bb8f20cd399d@collabora.com>
+Date: Fri, 04 Apr 2025 15:53:10 +0200
+Subject: [PATCH 2/2] arm64: dts: mediatek: mt8395-genio-1200-evk: Add scp
+ firmware-name
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAETk72cC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDI1MDEwMT3dwSC2NLU93i5ALdtHJdQ2PTpBQDA9NES4skJaCegqLUtMwKsHn
- RsbW1ADuol6VfAAAA
-X-Change-ID: 20250404-mt8395-scp-fw-135bd005a98b
+Message-Id: <20250404-mt8395-scp-fw-v1-2-bb8f20cd399d@collabora.com>
+References: <20250404-mt8395-scp-fw-v1-0-bb8f20cd399d@collabora.com>
+In-Reply-To: <20250404-mt8395-scp-fw-v1-0-bb8f20cd399d@collabora.com>
 To: kernel@collabora.com, Rob Herring <robh@kernel.org>, 
  Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, 
@@ -65,8 +64,8 @@ Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  Julien Massot <julien.massot@collabora.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250404_065314_019814_11729DC3 
-X-CRM114-Status: UNSURE (   7.74  )
+X-CRM114-CacheID: sfid-20250404_065314_855608_9BAE22E5 
+X-CRM114-Status: UNSURE (   9.34  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,38 +81,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add missing firmware-name property for mt8395 genio-1200-evk and
-radxa-nio-12l.
+Set the scp firmware name to the default location.
 
-To: kernel@collabora.com
-To: Rob Herring <robh@kernel.org>
-To: Krzysztof Kozlowski <krzk+dt@kernel.org>
-To: Conor Dooley <conor+dt@kernel.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Ben Lok <ben.lok@mediatek.com>
-Cc: devicetree@vger.kernel.org
-Cc: linux-kernel@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: kernel@collabora.com
-
+Fixes: f2b543a191b6 ("arm64: dts: mediatek: add device-tree for Genio 1200 EVK board")
 Signed-off-by: Julien Massot <julien.massot@collabora.com>
 ---
-Julien Massot (2):
-      arm64: dts: mediatek: mt8395-nio-12l: Add scp firmware-name
-      arm64: dts: mediatek: mt8395-genio-1200-evk: Add scp firmware-name
-
  arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts | 1 +
- arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts  | 1 +
- 2 files changed, 2 insertions(+)
----
-base-commit: a4cda136f021ad44b8b52286aafd613030a6db5f
-change-id: 20250404-mt8395-scp-fw-135bd005a98b
+ 1 file changed, 1 insertion(+)
 
-Best regards,
+diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+index f02c32def593a54531221ec57473a335af08a92f..2740c799ca12d7e05694f706df34335fa164aeb8 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+@@ -872,6 +872,7 @@ &pmic {
+ 
+ &scp {
+ 	memory-region = <&scp_mem>;
++	firmware-name = "mediatek/mt8195/scp.img";
+ 	status = "okay";
+ };
+ 
+
 -- 
-Julien Massot <julien.massot@collabora.com>
+2.49.0
 
 
