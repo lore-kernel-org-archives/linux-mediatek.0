@@ -4,103 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3FF3C36010
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Apr 2025 10:37:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62C1DC3601E
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Apr 2025 11:13:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=s85N6LbGyDvlbfm+7fjpbjUdhdaXcYheIAW+0EJPQoQ=; b=xnOQsanwDSFAGdI++Utea89Op7
-	/JC7YWLJPQw5xAxoNWlPYZ808ZtNBVxe+xRbiPPQwOah/tALsv25MgDozojWa6+W2tpILjvh+o7fl
-	jq7k01Wxrr9BhwL82uTIarNGmvWmXaEPVoij6zpF0XaKY1YTLnCqS/Buc0oUpIGHpq64MThB+iNxm
-	Xjr+usa4+p3iXFq28bQeEtTYMf9uU+wM3y7//frkkS7EDNAB2YZSRD/xHSHLTfzHgt5vK74NTKMVX
-	UEZ2weo21SbdEH3C/hVAGI55HZJhHqJ4uKxBzDJTD50l15M0ZMSi/JMMIK2ClwZUXabxkxE/e4EJR
-	Qsd31evQ==;
+	bh=Yr86mi2fY9Vmdc04Uxb6LfuvLQakZvpo4sXDLey8XKo=; b=kZbOZRUYo5dquqVKppeTO/dS1w
+	h+FcnwG33sr06pQWcOgTsJgCCThATuRkfU8oFKH3sSJCoi1J61IlScPs3EVp3zxa+6+H5Ueu31SS8
+	cnydoKtVUuo8IJm63GzDoFILmdBSldfBdMifAVOzSSGXhYPg2ZnRpvPHZ/b/vbqwDdYDjKKb/PLGh
+	h3z5Vu1Ut1YlDlMfoT6BkootZKgNCGVPStDaQWxf4I4rL8Ql/65YVMD86R+lmgrQugX7M0zck+/mv
+	w1pGxT3lrqq/Ev47AAxeao4Zrt8unI1p392t34ENs2M9oJUveHiTgshPEFoaYOpKg5pj9oJGPOKBL
+	b7dxzxlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0eQC-0000000BRga-3mCc;
-	Fri, 04 Apr 2025 10:37:12 +0000
-Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
+	id 1u0eyp-0000000BWOA-48Av;
+	Fri, 04 Apr 2025 11:12:59 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0eQA-0000000BRej-40X7
-	for linux-mediatek@lists.infradead.org;
-	Fri, 04 Apr 2025 10:37:12 +0000
-Received: by mail-yw1-x112d.google.com with SMTP id 00721157ae682-6ff1e375a47so19390387b3.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 04 Apr 2025 03:37:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1743763030; x=1744367830; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=s85N6LbGyDvlbfm+7fjpbjUdhdaXcYheIAW+0EJPQoQ=;
-        b=u6ULu3r5c4dCrT6PKJZD6OD/9MFLTlYRCvdoMImBqicSYktmGGjJMr0ltQUZXm0vJx
-         rfZXMMXkfI/mSsgjccviUM8DARthQWS2hdCHre/0xsF2718kReaR7lLflUInPl2LRbra
-         88Sl1mQON1GBUOIN6Eucl3yROxanrMR3ja/phqzke+nKSgE9lzkEPoEyX1Wwhqpn3hfA
-         GzyCWUxhVS06ZDziHSBqV2HzWtmQrycqL1pgA43JIRBMTltrxp3InB3ejnNvO5F7yLU0
-         DFedxWALbk6nY4CTBM9FKMYhjdFsOC2YlYc5JcYTaWGSoMv08fBhf6k2Ulsl5Mm4LKJY
-         J7Jg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743763030; x=1744367830;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=s85N6LbGyDvlbfm+7fjpbjUdhdaXcYheIAW+0EJPQoQ=;
-        b=Y3kXuq8DRT+9zEnW2N+MRa0hrMzLNTfiBUaSEHTTq864U/fXvwFu8s1xtJ85T22B6b
-         d7pkyMK0ZgSKZ0X8NJNdLr3X3+2aTrL3tFcWdRUQJsQJHKNpiovhbfId5MUX9P0QI2oo
-         lDHWcgJbC6eQcOMi8ajm3lsCBDl+d2Ja5pAFPIyEoGaXt3rF6xIJ/NDqqqpjAE68hIjO
-         22G7v/qjPdsyIwUTJGo9FYWvarp6j7tanj02WUtDY3Ze1VQYpzIw8t5j9igq+QepnhQ3
-         nIx40SB96scforHjJCrzl9zIG9lXjiHZgffiSAasOFkxoS3vgY0jI92w79RQREWygHE7
-         1k6w==
-X-Forwarded-Encrypted: i=1; AJvYcCWdiF02GOkfPk5Pt+tXZjDPVPUA5BnIWMrvASmtEitGrtNlwNVamvvzmeHdV6xDb5Gg1afyY+2GgrzpAogSnw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwH9ub9zvfl9O4Gne2qdx8C9WHCB6aX8xxBeXCVFrd6ioPJ1czg
-	b5I1WvUEES0ELXUfXZ4nTVq1tKMd2dU+6kFWIkTpvU6k/MwaCXz5mR0E6JTVtPLXTmKJHHFTp1P
-	4ff6/TTpFqlAY0/wJUeFQv2cmsrhPi1v/oAAQUg==
-X-Gm-Gg: ASbGncs/oNhTyCReFh02wAqwkW5TfefjA2B9vaJDFlfbz8CgyKMScsgK0ScKrCZ8qFJ
-	eBORGuEJNZEUAce9FxtcwhqSCP7YuHRJ71K4N+woIbJ0pnY+qj6r8pPAc+FDKo9I8jmfnqaq2mu
-	2Vz16P965UaeGUJZux5hID7SFqlm0=
-X-Google-Smtp-Source: AGHT+IGuuSb2kyra+w2zQGcM5KZ+95CLnIjAJJ+ZAGPbM9ApbFO7sbm4a8zwJjSrMRu7/2gU0ViAtYbSOKTRdRXJ4YY=
-X-Received: by 2002:a05:690c:4c11:b0:702:5689:356e with SMTP id
- 00721157ae682-703e1546003mr46207307b3.12.1743763029893; Fri, 04 Apr 2025
- 03:37:09 -0700 (PDT)
+	id 1u0ex1-0000000BW3d-29Ym;
+	Fri, 04 Apr 2025 11:11:08 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 90A715C433F;
+	Fri,  4 Apr 2025 11:08:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DEEDEC4CEDD;
+	Fri,  4 Apr 2025 11:11:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1743765066;
+	bh=PxW9C9uE2sPn+4J3bcvgkKgFGQt0vPUOZGSNVIJBhW0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=nIGPRwcgNe+LrpmucRUeB6TYyfDmOz4zcF22kG1wiCAB2TN0wSlTet7gWXtbvEUHn
+	 OcgwRKO3f7e8yxYG52oo+CES6+qfbKq9C2T/Vnk0Qzuv9p1QQhpyKuzHLPc6qSEbNX
+	 aX0VuYPEf53boA40M1uDh1TgGlpevRp/LH4lxqdmMgqWP4E4bLUgFM39z+aQprf9rE
+	 HWS44gbSipCCMkdj5mTaiV0fiS2hL8CyVy1wIujogU/TDhRliGhgO7rZ3wZfj3620g
+	 ojYKfzKlqBCq1L2SbghpU4s+z7KgYHlwZr7dHx475APcyleKPcyvAxih3r7arSaWbq
+	 dLw9Xusgebqkg==
+Date: Fri, 4 Apr 2025 13:11:03 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Crystal Guo <crystal.guo@mediatek.com>
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v4 2/2] memory/mediatek: Add an interface to get current
+ DDR data rate
+Message-ID: <20250404-soft-pumpkin-bettong-09abfc@shite>
+References: <20250403065030.22761-1-crystal.guo@mediatek.com>
+ <20250403065030.22761-3-crystal.guo@mediatek.com>
 MIME-Version: 1.0
-References: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org> <20250403-dt-cpu-schema-v1-18-076be7171a85@kernel.org>
-In-Reply-To: <20250403-dt-cpu-schema-v1-18-076be7171a85@kernel.org>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Fri, 4 Apr 2025 12:36:33 +0200
-X-Gm-Features: AQ5f1JqCiMQtdQdQn1tCIXwltI0szojsJGdKxwputYjFQK19pJwwJrC7p_ihypo
-Message-ID: <CAPDyKFrFRrPVJ_t0JrAE1VTbS02hwr=L-EHtqb7CQiWzB1MnQg@mail.gmail.com>
-Subject: Re: [PATCH 18/19] dt-bindings: arm/cpus: Add power-domains constraints
-To: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Viresh Kumar <viresh.kumar@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Vincenzo Frascino <vincenzo.frascino@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, 
-	Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, 
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Viresh Kumar <vireshk@kernel.org>, 
-	Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>, zhouyanjie@wanyeetech.com, 
-	Conor Dooley <conor@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>, Steen Hegelund <Steen.Hegelund@microchip.com>, 
-	Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, 
-	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org, 
-	linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-mips@vger.kernel.org, 
-	imx@lists.linux.dev, linux-rockchip@lists.infradead.org, 
-	linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20250403065030.22761-3-crystal.guo@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250404_033711_002883_CBDBDCBA 
-X-CRM114-Status: GOOD (  16.71  )
+X-CRM114-CacheID: sfid-20250404_041107_669748_0F587392 
+X-CRM114-Status: GOOD (  34.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,55 +75,269 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 4 Apr 2025 at 05:06, Rob Herring (Arm) <robh@kernel.org> wrote:
->
-> The "power-domains" and "power-domains-names" properties are missing any
-> constraints. Add the constraints and drop the generic descriptions.
->
-> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+
+Please use subject prefixes matching the subsystem. You can get them for
+example with 'git log --oneline -- DIRECTORY_OR_FILE' on the directory
+your patch is touching. For bindings, the preferred subjects are
+explained here:
+https://www.kernel.org/doc/html/latest/devicetree/bindings/submitting-patches.html#i-for-patch-submitters
+
+memory: mediatek:
+
+On Thu, Apr 03, 2025 at 02:48:48PM GMT, Crystal Guo wrote:
+> Add MediaTek DRAMC driver to provide an interface that can
+> obtain current DDR data rate.
+> 
+> Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
 > ---
->  Documentation/devicetree/bindings/arm/cpus.yaml | 8 ++------
->  1 file changed, 2 insertions(+), 6 deletions(-)
->
-> diff --git a/Documentation/devicetree/bindings/arm/cpus.yaml b/Documentation/devicetree/bindings/arm/cpus.yaml
-> index 6f74ebfd38df..5bd5822db8af 100644
-> --- a/Documentation/devicetree/bindings/arm/cpus.yaml
-> +++ b/Documentation/devicetree/bindings/arm/cpus.yaml
-> @@ -313,19 +313,15 @@ properties:
->      maxItems: 1
->
->    power-domains:
-> -    description:
-> -      List of phandles and PM domain specifiers, as defined by bindings of the
-> -      PM domain provider (see also ../power_domain.txt).
-> +    maxItems: 1
+>  drivers/memory/Kconfig              |   1 +
+>  drivers/memory/Makefile             |   1 +
+>  drivers/memory/mediatek/Kconfig     |  20 +++
+>  drivers/memory/mediatek/Makefile    |   2 +
+>  drivers/memory/mediatek/mtk-dramc.c | 223 ++++++++++++++++++++++++++++
+>  5 files changed, 247 insertions(+)
+>  create mode 100644 drivers/memory/mediatek/Kconfig
+>  create mode 100644 drivers/memory/mediatek/Makefile
+>  create mode 100644 drivers/memory/mediatek/mtk-dramc.c
+> 
+> diff --git a/drivers/memory/Kconfig b/drivers/memory/Kconfig
+> index c82d8d8a16ea..b1698549ff81 100644
+> --- a/drivers/memory/Kconfig
+> +++ b/drivers/memory/Kconfig
+> @@ -227,5 +227,6 @@ config STM32_FMC2_EBI
+>  
+>  source "drivers/memory/samsung/Kconfig"
+>  source "drivers/memory/tegra/Kconfig"
+> +source "drivers/memory/mediatek/Kconfig"
 
-There are more than one in some cases. The most is probably three, I think.
+m goes before s, so this goes before samsung source.
 
->
->    power-domain-names:
->      description:
-> -      A list of power domain name strings sorted in the same order as the
-> -      power-domains property.
-> -
->        For PSCI based platforms, the name corresponding to the index of the PSCI
->        PM domain provider, must be "psci". For SCMI based platforms, the name
->        corresponding to the index of an SCMI performance domain provider, must be
->        "perf".
-> +    enum: [ psci, perf, cpr ]
->
->    resets:
->      maxItems: 1
->
-> --
-> 2.47.2
->
->
+>  
+>  endif
+> diff --git a/drivers/memory/Makefile b/drivers/memory/Makefile
+> index d2e6ca9abbe0..c0facf529803 100644
+> --- a/drivers/memory/Makefile
+> +++ b/drivers/memory/Makefile
+> @@ -27,6 +27,7 @@ obj-$(CONFIG_STM32_FMC2_EBI)	+= stm32-fmc2-ebi.o
+>  
+>  obj-$(CONFIG_SAMSUNG_MC)	+= samsung/
+>  obj-$(CONFIG_TEGRA_MC)		+= tegra/
+> +obj-$(CONFIG_MEDIATEK_MC)	+= mediatek/
+>  obj-$(CONFIG_TI_EMIF_SRAM)	+= ti-emif-sram.o
+>  obj-$(CONFIG_FPGA_DFL_EMIF)	+= dfl-emif.o
+>  
+> diff --git a/drivers/memory/mediatek/Kconfig b/drivers/memory/mediatek/Kconfig
+> new file mode 100644
+> index 000000000000..eadc11ec0f1c
+> --- /dev/null
+> +++ b/drivers/memory/mediatek/Kconfig
+> @@ -0,0 +1,20 @@
+> +# SPDX-License-Identifier: GPL-2.0-only
+> +config MEDIATEK_MC
+> +	bool "MediaTek Memory Controller support"
+> +	default y
 
-Other than above, feel free to add:
+Why this has to be enabled for every compile test build? Look how other
+platforms do it.
 
-Reviewed-by: Ulf Hansson <ulf.hansson@linaro.org>
+I'll fix the tegra.
 
-Kind regards
-Uffe
+
+> +	depends on ARCH_MEDIATEK || COMPILE_TEST
+> +	help
+> +	  This option allows to enable MediaTek memory controller drivers,
+> +	  which may include controllers for DRAM or others.
+> +
+> +if MEDIATEK_MC
+> +
+> +config MTK_DRAMC
+> +	tristate "MediaTek DRAMC driver"
+> +	default y
+
+This matters less, could stay or could be also ARCH_MDIATEK.
+
+> +	help
+> +	  This driver is for the DRAM Controller found in MediaTek SoCs
+> +	  and provides a sysfs interface for reporting the current DRAM
+> +	  data rate.
+> +
+> +endif
+
+...
+
+> +
+> +static unsigned int read_reg_field(void __iomem *base, unsigned int offset, unsigned int mask)
+> +{
+> +	unsigned int val = readl(base + offset);
+> +	unsigned int shift = __ffs(mask);
+> +
+> +	return (val & mask) >> shift;
+> +}
+> +
+> +static int mtk_dramc_probe(struct platform_device *pdev)
+
+Weird ordering. probe() is one of the last functions. Only other driver
+struct functions (like remove, suspend/resume) go after, not some
+regular code.
+
+> +{
+> +	struct mtk_dramc *dramc;
+> +	const struct mtk_dramc_pdata *pdata;
+> +
+> +	dramc = devm_kzalloc(&pdev->dev, sizeof(struct mtk_dramc), GFP_KERNEL);
+> +	if (!dramc)
+> +		return dev_err_probe(&pdev->dev, -ENOMEM, "Failed to allocate memory\n");
+> +
+> +	pdata = of_device_get_match_data(&pdev->dev);
+> +	if (!pdata)
+> +		return dev_err_probe(&pdev->dev, -EINVAL, "No platform data available\n");
+
+Just return. That's impossible condition, so no need for printing errors.
+
+> +
+> +	dramc->pdata = pdata;
+
+Why do you need pdata variable in the first place? Make this code
+simple, not complicated.
+
+> +
+> +	dramc->anaphy_base = devm_platform_ioremap_resource(pdev, 0);
+> +	if (IS_ERR(dramc->anaphy_base))
+> +		return dev_err_probe(&pdev->dev, PTR_ERR(dramc->anaphy_base),
+> +				     "Unable to map ANAPHY base\n");
+> +
+> +	dramc->ddrphy_base = devm_platform_ioremap_resource(pdev, 1);
+> +	if (IS_ERR(dramc->ddrphy_base))
+> +		return dev_err_probe(&pdev->dev, PTR_ERR(dramc->ddrphy_base),
+> +				     "Unable to map DDRPHY base\n");
+> +
+> +	platform_set_drvdata(pdev, dramc);
+> +	return 0;
+> +}
+> +
+> +static unsigned int mtk_fmeter_v1(struct mtk_dramc *dramc)
+> +{
+> +	const struct mtk_dramc_pdata *pdata = dramc->pdata;
+> +	unsigned int shu_level, pll_sel, offset;
+> +	unsigned int sdmpcw, posdiv, clkdiv, fbksel, sopen, async_ca, ser_mode;
+> +	unsigned int prediv_freq, posdiv_freq, vco_freq;
+> +	unsigned int final_rate;
+> +
+> +	shu_level = read_reg_field(dramc->ddrphy_base, pdata->regs[DRAMC_DPHY_DVFS_STA],
+> +				   pdata->masks[DRAMC_DPHY_DVFS_SHU_LV]);
+
+Don't creat your own wrappers. Use existing FIELD_PREP stuff.
+
+> +	pll_sel = read_reg_field(dramc->ddrphy_base, pdata->regs[DRAMC_DPHY_DVFS_STA],
+> +				 pdata->masks[DRAMC_DPHY_DVFS_PLL_SEL]);
+> +	offset = pdata->shuffle_offset * shu_level;
+> +
+> +	sdmpcw = read_reg_field(dramc->anaphy_base,
+> +				((pll_sel == 0) ?
+> +				pdata->regs[DRAMC_APHY_SHU_PHYPLL2] :
+> +				pdata->regs[DRAMC_APHY_SHU_CLRPLL2]) + offset,
+> +				pdata->masks[DRAMC_APHY_PLL2_SDMPCW]);
+> +	posdiv = read_reg_field(dramc->anaphy_base,
+> +				((pll_sel == 0) ?
+> +				pdata->regs[DRAMC_APHY_SHU_PHYPLL3] :
+> +				pdata->regs[DRAMC_APHY_SHU_CLRPLL3]) + offset,
+> +				pdata->masks[DRAMC_APHY_PLL3_POSDIV]);
+> +	fbksel = read_reg_field(dramc->anaphy_base, pdata->regs[DRAMC_APHY_SHU_PHYPLL4] + offset,
+> +				pdata->masks[DRAMC_APHY_PLL4_FBKSEL]);
+> +	sopen = read_reg_field(dramc->anaphy_base, pdata->regs[DRAMC_APHY_ARPI0] + offset,
+> +			       pdata->masks[DRAMC_APHY_ARPI0_SOPEN]);
+> +	async_ca = read_reg_field(dramc->anaphy_base, pdata->regs[DRAMC_APHY_CA_ARDLL1] + offset,
+> +				  pdata->masks[DRAMC_APHY_ARDLL1_CK_EN]);
+> +	ser_mode = read_reg_field(dramc->anaphy_base, pdata->regs[DRAMC_APHY_B0_TX0] + offset,
+> +				  pdata->masks[DRAMC_APHY_B0_TX0_SER_MODE]);
+> +
+> +	clkdiv = (ser_mode == 1) ? 1 : 0;
+> +	posdiv &= ~(pdata->posdiv_purify);
+> +
+> +	prediv_freq = pdata->ref_freq_mhz * (sdmpcw >> pdata->prediv);
+> +	posdiv_freq = (prediv_freq >> posdiv) >> 1;
+> +	vco_freq = posdiv_freq << fbksel;
+> +	final_rate = vco_freq >> clkdiv;
+> +
+> +	if (sopen == 1 && async_ca == 1)
+> +		final_rate >>= 1;
+> +
+> +	return final_rate;
+> +}
+> +
+> +/**
+> + * mtk_dramc_get_data_rate - Calculate the current DRAM data rate
+> + * @dev: Device pointer
+> + *
+> + * Return: DRAM Data Rate in Mbps or negative number for error
+> + */
+> +static unsigned int mtk_dramc_get_data_rate(struct device *dev)
+> +{
+> +	struct mtk_dramc *dramc = dev_get_drvdata(dev);
+> +
+> +	if (dramc->pdata->fmeter_version == 1)
+
+Drop, it's not possible to have other case.
+
+> +		return mtk_fmeter_v1(dramc);
+> +
+> +	dev_err(dev, "Frequency meter version %u not supported\n", dramc->pdata->fmeter_version);
+> +	return -EINVAL;
+> +}
+> +
+> +static ssize_t dram_data_rate_show(struct device *dev,
+> +				   struct device_attribute *attr, char *buf)
+
+No ABI doc.
+
+Why existing interconnect interface is not suitable here?  This should
+be an interconnect, otherwise what is the point of this driver? What do
+you exactly configure here?
+
+
+> +{
+> +	return snprintf(buf, PAGE_SIZE, "DRAM data rate = %u\n",
+> +			mtk_dramc_get_data_rate(dev));
+> +}
+> +
+> +static DEVICE_ATTR_RO(dram_data_rate);
+> +
+> +static struct attribute *mtk_dramc_attrs[] = {
+> +	&dev_attr_dram_data_rate.attr,
+> +	NULL
+> +};
+> +ATTRIBUTE_GROUPS(mtk_dramc);
+> +
+> +static const struct mtk_dramc_pdata dramc_pdata_mt8196 = {
+> +	.fmeter_version = 1,
+> +	.ref_freq_mhz = 26,
+> +	.regs = mtk_dramc_regs_mt8196,
+> +	.masks = mtk_dramc_masks_mt8196,
+> +	.posdiv_purify = BIT(2),
+> +	.prediv = 7,
+> +	.shuffle_offset = 0x700,
+> +};
+> +
+> +static const struct of_device_id mtk_dramc_of_ids[] = {
+> +	{ .compatible = "mediatek,mt8196-dramc", .data = &dramc_pdata_mt8196 },
+> +	{ /* sentinel */ }
+> +};
+> +MODULE_DEVICE_TABLE(of, mtk_dramc_of_ids);
+> +
+> +static struct platform_driver mtk_dramc_driver = {
+> +	.probe = mtk_dramc_probe,
+> +	.driver = {
+> +		.name = "mtk-dramc",
+> +		.of_match_table = mtk_dramc_of_ids,
+> +		.dev_groups = mtk_dramc_groups,
+> +	},
+> +};
+> +module_platform_driver(mtk_dramc_driver);
+> +
+> +MODULE_AUTHOR("Crystal Guo <crystal.guo@mediatek.com>");
+> +MODULE_DESCRIPTION("MediaTek DRAM Controller Driver");
+> +MODULE_LICENSE("GPL");
+> -- 
+> 2.18.0
+> 
 
