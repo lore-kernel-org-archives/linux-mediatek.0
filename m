@@ -4,90 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C221C36010
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Apr 2025 14:59:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06FF7C36010
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Apr 2025 16:17:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c7cQKBN+UbGA+zdtlFTWd/84IZ7FHX3JaNXUpQMP2xo=; b=SN1gRGWDdODVk3PHrVLmlF9J9N
-	uf77ltTlqXEIAxx4WpKE+sP6FrZD8Qd5YzINYAJD+HRKIbjlALEdzt9KM5jjc13TBTpbJU2qx6MWs
-	Kjtw+Db84TgJFuygoEJR8tKut/lLx6y+ReJhQIQPUbedsZJt0kdyD+VODjVKTESUwrkmA0ZZ3qtt2
-	Qx9ETpxEWR0CYxOBZLeRce2hvpTouCX7Ms7x8Q2wDIin50pswnnnBzJ7A/PbIlgLBTVKqM9TFF41o
-	Pn/7a5le1DmcQaPlzpjDlMxF5UZijnU7judIaaDanmrgq7Ud6J5n7S8X7MQGtnEGXQ3wNY/8OnvwP
-	JlSzKgyQ==;
+	bh=jjz0Bi8WKyLJqMNsU8m6WOJraIVGFS572EwKtQSmgpI=; b=kU7+SgxD8qJORLL00AauDEGjbn
+	pZfMGAelBEJaSa2uLa3yovCh6cOvy/1AvYtxg3N1DVi5g0Fo3OoCo3d+krSsO1a+Cnyn6rGR2TZJ/
+	l0CL755DgJi6KC6Cg/3HYZkOz4zKKOKNkzAzCrwI5r9eP5/up5eGKtPbQHbh1jI552IqBRmfvvQrv
+	EKoa+L7ZZ6UMnHHsq0fjWv3mEHgHg7BhneT4cd+04wqO4o98ZSaYJbBGSrqI4p0FiYsIVK6YPmSKQ
+	uZcvivoWIHu73EiSqfy3QvCU1N2mMbGJ9uZSWHhtAt2Wb2rOWUba5fC5rCi+XmzBwOOFJwcWnrwmN
+	XSPGIEtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0iVm-0000000C4xk-2OMS;
-	Fri, 04 Apr 2025 14:59:14 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1u0jjD-0000000CHMY-0BXI;
+	Fri, 04 Apr 2025 16:17:11 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0iSl-0000000C48I-4Asj;
-	Fri, 04 Apr 2025 14:56:09 +0000
+	id 1u0jVl-0000000CFeK-040m;
+	Fri, 04 Apr 2025 16:03:17 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id A6B015C6CA4;
-	Fri,  4 Apr 2025 14:53:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 08F3BC4CEDD;
-	Fri,  4 Apr 2025 14:56:05 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id DBB8461135;
+	Fri,  4 Apr 2025 16:03:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C565FC4CEDD;
+	Fri,  4 Apr 2025 16:03:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1743778565;
-	bh=ZKC9yGDKP7ZL9SggbwEVntc6h66l9cUcpFwGsLIdwyU=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=lYq0AhwkZcTUWyVwicaZ1vvM7sdLhXVWb88uIIREKJeM4f4dFtPRR+5YtBnIQ3+8S
-	 4rmWfDWxmKz8BkutmGYcsQCbqBKQsOpb3vKdZoOj3zlMzyIr63+JtEno2kDqBxKGaL
-	 uSpnRzGTivLPzIQSa2vlGQgFkEoHK4Djr247EPkB1MI0mgoQqCboWVbZe1YDRxstNw
-	 XL6TPr4SJ3ntriVvow1CY9ZhW/TaC9VWQaFtDYXQkEycuv4vNUekj/x3m4CmjcWhg8
-	 J/6CXGfE842P8cqvOhDfI5vtBqXZj1W2sAP8ubZBZr4Jve8ltlaLGaw/5ccWSyVqKq
-	 iX0gZX5BzPDSQ==
-Date: Fri, 04 Apr 2025 09:56:03 -0500
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-MIME-Version: 1.0
+	s=k20201202; t=1743782596;
+	bh=ZeKtbccKAfskNRA51l4MhLz7OC60VEzIqp0CWNxqyYQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=dHMecoa01reZDsWeYeRFKDoHvfVdjbITR0YQzM9FrxVMiEBb8fao+AwhSbaSskVdY
+	 tn0O84nyZ8Ca2Fex9WdB6BYhFs2swRBStq71ki/yVyokwEFe8WlW4tLe/B4GvwuKkW
+	 KXiBsNQb/KGDDsUE2NUCLFgwPjTmc5ROnyzx8piq1J95K4PXQ2/Zzd28jVcs5UON0V
+	 T0QAhQ2musAtZT4tcLK3iUVLfqepa3x8C0c+HemmeScwze3y2i1GvvF/zsJhiKb+1X
+	 cncYm1oRwoWq06MZTqN+5Mr8AjHFD+nof9k3F4euGkmwVE4n80vfvjQTMjO09HT8Q5
+	 WfvYqpksKft6Q==
+Date: Fri, 4 Apr 2025 11:03:14 -0500
 From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Bjorn Andersson <andersson@kernel.org>, 
- Viresh Kumar <viresh.kumar@linaro.org>, linux-kernel@vger.kernel.org, 
- Conor Dooley <conor@kernel.org>, linux-rockchip@lists.infradead.org, 
- Daniel Machon <daniel.machon@microchip.com>, 
- "Rafael J. Wysocki" <rafael@kernel.org>, Shawn Guo <shawnguo@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, 
- UNGLinuxDriver@microchip.com, Jerome Brunet <jbrunet@baylibre.com>, 
- Kevin Hilman <khilman@baylibre.com>, linux-sunxi@lists.linux.dev, 
- Liviu Dudau <liviu.dudau@arm.com>, linux-arm-kernel@lists.infradead.org, 
- Fabio Estevam <festevam@gmail.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Stephen Boyd <sboyd@kernel.org>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Vincenzo Frascino <vincenzo.frascino@arm.com>, 
- linux-renesas-soc@vger.kernel.org, 
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
- Magnus Damm <magnus.damm@gmail.com>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Geert Uytterhoeven <geert+renesas@glider.be>, 
- Viresh Kumar <vireshk@kernel.org>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, zhouyanjie@wanyeetech.com, 
- Claudiu Beznea <claudiu.beznea@tuxon.dev>, Heiko Stuebner <heiko@sntech.de>, 
- Jernej Skrabec <jernej.skrabec@gmail.com>, linux-pm@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, 
- linux-mips@vger.kernel.org, imx@lists.linux.dev, 
- Samuel Holland <samuel@sholland.org>, Sudeep Holla <sudeep.holla@arm.com>, 
- Nishanth Menon <nm@ti.com>, devicetree@vger.kernel.org, 
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>, 
- linux-arm-msm@vger.kernel.org, Nicolas Ferre <nicolas.ferre@microchip.com>, 
- linux-amlogic@lists.infradead.org, Sascha Hauer <s.hauer@pengutronix.de>, 
- Steen Hegelund <Steen.Hegelund@microchip.com>, 
- Lorenzo Pieralisi <lpieralisi@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>
-To: "Rob Herring (Arm)" <robh@kernel.org>
-In-Reply-To: <20250403-dt-cpu-schema-v1-14-076be7171a85@kernel.org>
-References: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org>
- <20250403-dt-cpu-schema-v1-14-076be7171a85@kernel.org>
-Message-Id: <174377856145.1313232.11316769002552655294.robh@kernel.org>
-Subject: Re: [PATCH 14/19] dt-bindings: arm/cpus: Add schemas for
- "enable-method" dependencies
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250404_075608_118521_8DAB551F 
-X-CRM114-Status: GOOD (  13.53  )
+To: Mattijs Korpershoek <mkorpershoek@kernel.org>
+Cc: devicetree@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	linux-arm-kernel@lists.infradead.org,
+	Mattijs Korpershoek <mkorpershoek@baylibre.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	linux-input@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] dt-bindings: mediatek,mt6779-keypad: Update Mattijs'
+ email address
+Message-ID: <174378259415.1509225.11221231406789658607.robh@kernel.org>
+References: <20250401-mattijs-dts-korg-v1-1-0f8d96bf8a99@kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250401-mattijs-dts-korg-v1-1-0f8d96bf8a99@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,46 +76,15 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 03 Apr 2025 21:59:35 -0500, Rob Herring (Arm) wrote:
-> Replace the prose for properties dependent on specific "enable-method"
-> values with schemas defining the same requirements.
+On Tue, 01 Apr 2025 15:30:37 +0200, Mattijs Korpershoek wrote:
+> Update Mattijs Korpershoek's email address to @kernel.org.
 > 
-> Both "qcom,acc" and "qcom,saw" properties appear to be required for any
-> of the Qualcomm enable-method values, so the schema is a bit simpler
-> than what the text said. The references to arm/msm/qcom,saw2.txt and
-> arm/msm/qcom,kpss-acc.txt are out of date, so just drop them.
-> 
-> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+> Signed-off-by: Mattijs Korpershoek <mkorpershoek@kernel.org>
 > ---
->  Documentation/devicetree/bindings/arm/cpus.yaml | 82 +++++++++++++++----------
->  1 file changed, 49 insertions(+), 33 deletions(-)
+>  Documentation/devicetree/bindings/input/mediatek,mt6779-keypad.yaml | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
 
-My bot found errors running 'make dt_binding_check' on your patch:
-
-yamllint warnings/errors:
-
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/soc/qcom/qcom,saw2.example.dtb: cpu@0: 'qcom,acc' is a required property
-	from schema $id: http://devicetree.org/schemas/arm/cpus.yaml#
-
-doc reference errors (make refcheckdocs):
-Warning: Documentation/translations/ja_JP/process/submit-checklist.rst references a file that doesn't exist: Documentation/translations/ja_JP/SubmitChecklist
-Documentation/translations/ja_JP/process/submit-checklist.rst: Documentation/translations/ja_JP/SubmitChecklist
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250403-dt-cpu-schema-v1-14-076be7171a85@kernel.org
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
 
