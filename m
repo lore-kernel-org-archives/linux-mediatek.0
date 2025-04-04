@@ -4,97 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 840A3C3601E
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Apr 2025 09:51:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14749C36010
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Apr 2025 10:31:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qDJ3Mb7YyqUASiYdnt4nl93Qyi0Oahcb6qeEI0SSTA0=; b=D/1Mcb/e1jHb7yP9U4I4h/sm3E
-	PYcC5OSyILzu7sg4Ybv3JWRk0KrI/XLqW4ZFvitnR1YsbTsJsZq6hn85uzsdgCM7ztnKwD1RdpsTd
-	vs1pCiK7P1z0Gmm+wclUbGQL9L8DwLNV4mMAZcU57kwfJXBUifW2gQzLp/A/W+YotoIwfMuzTltAE
-	9IC7zkVZmLtRMO7j5MOrkcAC+SccVIzS/RVOrFCrpKJmTyvgraExbERH/IBgmExA1AOB+94m38L0m
-	VkZ4wR+7WWyTqhqtRxOp22OL3Pr+DDOQZD1Jw8Igh6AsUtI58Qeig5ffS83XpQPOjHhCNLTLt7/Xg
-	EMMM/UvA==;
+	bh=p2d7X4LZ95qskY0j6wRpuQmYie6Gy7m1icDTnjrkreI=; b=s3j9W9eRn0Lb0cUpIHoxoi6t74
+	fQhvlF2stEbpdoBYzd374o8ntbFXOZd9qX1IitI30iRoGMahUe74cPM7nWH+S0DsErOn+rVKa+Fjx
+	tKjLP1H3T/rOLibwCO8PiO98TfSKjXbPLPn+YYlaQLEQeigDpeAUXrH+uDFW1I5h1KKoHg20aZXCO
+	jFx1TRSzRl0M9E2H3B1lpp4nEm5TNSD4WFHoqdkwKp/7Gx1NOoS9X2zXtRlxYrosgnIUh/ki9sc9t
+	njrs9lrpf8TNAYfuWThGoznYJAvm0K2NNJWLHhy30roDlkmzCKWUWBSPYkZyTrP6E8r2U419Vmebp
+	UPmvijeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0dhg-0000000BKUr-1AF5;
-	Fri, 04 Apr 2025 09:51:12 +0000
-Received: from esa.microchip.iphmx.com ([68.232.154.123])
+	id 1u0eL2-0000000BQ2g-4432;
+	Fri, 04 Apr 2025 10:31:52 +0000
+Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0dam-0000000BJDS-09mV;
-	Fri, 04 Apr 2025 09:44:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
-  t=1743759843; x=1775295843;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=/1xoPsKQlQBWMpLcgEjKZ/hJOcJIL0rM7P/QyChG6kU=;
-  b=MlzXWpqJ7mWNZk8vxaj24vZmpxXGpN5gd91Wynlbn/v32f283FGuXyXp
-   NcnD1jU3ABkTE44yq+ZPaab3j4tDylCb37ZrvcCq4d1GQ40pnIvQg3byd
-   MjYqUXxk0FGsMbUKg5v4N63yLO7Gk7vbZiutaOGY5+pUZJjzOD+S59ejB
-   uC+8rWbotewgXRGiLxNDvs/ZV+MJ/ZEux7MT09I9vBTfmdcNAFbCcdzIx
-   ji5F8cMY0tztrlVRoVsnVJ+li6e9+ss51SELSYQtcMFpzRLxlfAQ4yErS
-   lmNk11IIv8atNt+aa6G0e89iKj8d7vMC+PxKJRYO5MfjHTQ0QfIdQblA7
-   Q==;
-X-CSE-ConnectionGUID: CCbOwbOjQ2SseDv2d8Zv6w==
-X-CSE-MsgGUID: TTSMcQbYQG2UnIfQGa0ggw==
-X-IronPort-AV: E=Sophos;i="6.15,187,1739862000"; 
-   d="scan'208";a="39641646"
-X-Amp-Result: SKIPPED(no attachment in message)
-Received: from unknown (HELO email.microchip.com) ([170.129.1.10])
-  by esa4.microchip.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 04 Apr 2025 02:44:01 -0700
-Received: from chn-vm-ex04.mchp-main.com (10.10.85.152) by
- chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.44; Fri, 4 Apr 2025 02:43:37 -0700
-Received: from DEN-DL-M70577 (10.10.85.11) by chn-vm-ex04.mchp-main.com
- (10.10.85.152) with Microsoft SMTP Server id 15.1.2507.44 via Frontend
- Transport; Fri, 4 Apr 2025 02:43:28 -0700
-Date: Fri, 4 Apr 2025 09:43:28 +0000
-From: Daniel Machon <daniel.machon@microchip.com>
-To: "Rob Herring (Arm)" <robh@kernel.org>
-CC: Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
-	<conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec
-	<jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, "Rafael J.
- Wysocki" <rafael@kernel.org>, Viresh Kumar <viresh.kumar@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Vincenzo Frascino
-	<vincenzo.frascino@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla
-	<sudeep.holla@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, "Bjorn
- Andersson" <andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>,
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Viresh Kumar
-	<vireshk@kernel.org>, Nishanth Menon <nm@ti.com>, Stephen Boyd
-	<sboyd@kernel.org>, <zhouyanjie@wanyeetech.com>, Conor Dooley
-	<conor@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, "Claudiu
- Beznea" <claudiu.beznea@tuxon.dev>, Steen Hegelund
-	<Steen.Hegelund@microchip.com>, <UNGLinuxDriver@microchip.com>, Shawn Guo
-	<shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, "Pengutronix
- Kernel Team" <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>, Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Geert Uytterhoeven
-	<geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-sunxi@lists.linux.dev>, <linux-kernel@vger.kernel.org>,
-	<linux-pm@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-arm-msm@vger.kernel.org>, <linux-mips@vger.kernel.org>,
-	<imx@lists.linux.dev>, <linux-rockchip@lists.infradead.org>,
-	<linux-amlogic@lists.infradead.org>, <linux-renesas-soc@vger.kernel.org>
-Subject: Re: [PATCH 04/19] arm64: dts: microchip: sparx5: Fix CPU node
- "enable-method" property dependencies
-Message-ID: <20250404094328.cojaf5cxrotnetln@DEN-DL-M70577>
-References: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org>
- <20250403-dt-cpu-schema-v1-4-076be7171a85@kernel.org>
+	id 1u0eKy-0000000BQ04-0x5D
+	for linux-mediatek@lists.infradead.org;
+	Fri, 04 Apr 2025 10:31:50 +0000
+Received: by mail-yw1-x112f.google.com with SMTP id 00721157ae682-6fedefb1c9cso17136827b3.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 04 Apr 2025 03:31:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1743762707; x=1744367507; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=p2d7X4LZ95qskY0j6wRpuQmYie6Gy7m1icDTnjrkreI=;
+        b=KfFBoSYQiBvBjQsyNSvaLo/Y6aynzfC7zxFxCmxE2tomWxfaTnNbgQ/dkTOmMeVRyg
+         spDaPHTSRXycBtcjJ0hL4BKvu3/p02og5SrnfXFvhNVFFrQzZPsLHBNQ89LNLVFsEu/g
+         NK8jfm8T7tIXHsAcKXFfU/8W+GB+xZ+LQVZQ0Hg5qhaQ5QizoiZ0uyvaA5fM3hSQSz8E
+         sbAm7CRDRdrIz/8IsHkxjybB+lMYnFQmhGLITpSWIX8QF1VbtT+9uyPp4PZwlGzpEqXm
+         WSqw+vkr75ZlKCxwLuVJDfvucx8BaiobeCuCPO9lcEsyNX22Qm8hDdUMY/8gDVdFpYUC
+         NiDw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1743762707; x=1744367507;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=p2d7X4LZ95qskY0j6wRpuQmYie6Gy7m1icDTnjrkreI=;
+        b=AGSeCbeQgH6NTpnw83SoaGrJs7n3jHzOWUtapsuV7LXGC2UCn30Rz0yHDmgO+7LJi4
+         6jZKo+jeX/6acd0AI6yRAdcMnkzHGDLLJbqvHv/A7ngFLnD40wZF0892XR9tzQWY4+ks
+         scZ3FdzV8RipCS/+LuNYg8Ap1oBENdIeExMP2q9Cz/4LF3Z3wuNkt3dD4Wg1mqUt0/UP
+         QnvVAlOGenmRAE90lXW2DNZJ/6okJELZddFShWB2HbxDLFvL2Pj4Ruo5JwO7SbVbHNSO
+         82ynsqwvqSSZgRrbRLZfcV4zTX4NqTq7phqXAUe7hvp7pIsYOZIX4V8vm/ulC0z5eRbf
+         p15A==
+X-Forwarded-Encrypted: i=1; AJvYcCUcjGeTatRbpxhTQdCuQbKcBo4q6u206+OmBCz+VuJdCBobIgkRoXPoDH3FLvuyR6Aio0xCS2O5h7bRXZDL2g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxjPd65Py/QwOMzsDPCIXI+uiIUCxiaPiMTi9IYoDOeDMWuDila
+	PrhRALbr49R1HLfsN8A9MRoxc+kPg2NuiZTmxhPqPi1eq8LsmAZJukk15IMfevifpVrZ4nhkWXW
+	nclGtxPFNfki3AO6W5vKIhcwR1QuRwAdqUkt3eA==
+X-Gm-Gg: ASbGncsUNi/StIKgwbr9SNEq3hBMddJsR9uaq2ep4D1LbQryjYOn1DmoIBNy4YCLjqw
+	34h/PepUidAKjSIasouPlQfIsFqK6RAaBLCVoRyjPm+oCiL/gHHF5lfSUi7iId6tYMEuzSC2QqV
+	+EAQuBKghaPIv8y1UBGOjbTW78FF4s4TmX6ik1qw==
+X-Google-Smtp-Source: AGHT+IHL6tNiMt83fP/8QoVhxPRtZTRBqTJ/Cw9tCME3kjDGJ0WhVAtLf3L7QrkxkDkyR8ahdAf3HNvn/ambJdKtSJE=
+X-Received: by 2002:a05:690c:9a0d:b0:702:d85:5347 with SMTP id
+ 00721157ae682-703e16473e9mr44558927b3.36.1743762706998; Fri, 04 Apr 2025
+ 03:31:46 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20250403-dt-cpu-schema-v1-4-076be7171a85@kernel.org>
+References: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org> <20250403-dt-cpu-schema-v1-9-076be7171a85@kernel.org>
+In-Reply-To: <20250403-dt-cpu-schema-v1-9-076be7171a85@kernel.org>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Fri, 4 Apr 2025 12:30:59 +0200
+X-Gm-Features: AQ5f1JoO4h1zt0Jv8N6Q3VB80QU6oNypKSnO1edlCmwT1znvOfAf3BOWzm_IC6U
+Message-ID: <CAPDyKFoEEp8AZ7aJ8-wwp8=n+T4gbij15oYaCNhF1Bd-E1nMbg@mail.gmail.com>
+Subject: Re: [PATCH 09/19] arm: dts: qcom: sdx55/sdx65: Fix CPU power-domain-names
+To: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Samuel Holland <samuel@sholland.org>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Viresh Kumar <viresh.kumar@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Vincenzo Frascino <vincenzo.frascino@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, 
+	Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, 
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Viresh Kumar <vireshk@kernel.org>, 
+	Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>, zhouyanjie@wanyeetech.com, 
+	Conor Dooley <conor@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>, Steen Hegelund <Steen.Hegelund@microchip.com>, 
+	Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, 
+	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	Heiko Stuebner <heiko@sntech.de>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org, 
+	linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-mips@vger.kernel.org, 
+	imx@lists.linux.dev, linux-rockchip@lists.infradead.org, 
+	linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250404_024404_316779_9D26B064 
-X-CRM114-Status: GOOD (  12.98  )
+X-CRM114-CacheID: sfid-20250404_033148_273823_8458CE53 
+X-CRM114-Status: GOOD (  19.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,38 +115,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> The "spin-table" enable-method requires "cpu-release-addr" property,
-> so add a dummy entry. It is assumed the bootloader will fill in the
-> correct values.
-> 
+On Fri, 4 Apr 2025 at 05:02, Rob Herring (Arm) <robh@kernel.org> wrote:
+>
+> "rpmhpd" is not documented nor used anywhere. As the enable-method is
+> "psci" use "psci" for the power-domain name.
+>
 > Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
 > ---
->  arch/arm64/boot/dts/microchip/sparx5_pcb_common.dtsi | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/microchip/sparx5_pcb_common.dtsi b/arch/arm64/boot/dts/microchip/sparx5_pcb_common.dtsi
-> index 32bb76b3202a..83bf5c81b5f7 100644
-> --- a/arch/arm64/boot/dts/microchip/sparx5_pcb_common.dtsi
-> +++ b/arch/arm64/boot/dts/microchip/sparx5_pcb_common.dtsi
-> @@ -12,10 +12,12 @@ &psci {
-> 
->  &cpu0 {
->         enable-method = "spin-table";
-> +       cpu-release-addr = /bits/ 64 <0>;
->  };
-> 
->  &cpu1 {
->         enable-method = "spin-table";
-> +       cpu-release-addr = /bits/ 64 <0>;
->  };
-> 
->  &uart0 {
-> 
+>  arch/arm/boot/dts/qcom/qcom-sdx55.dtsi | 2 +-
+>  arch/arm/boot/dts/qcom/qcom-sdx65.dtsi | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/arch/arm/boot/dts/qcom/qcom-sdx55.dtsi b/arch/arm/boot/dts/qcom/qcom-sdx55.dtsi
+> index 39530eb580ea..64d9858b4248 100644
+> --- a/arch/arm/boot/dts/qcom/qcom-sdx55.dtsi
+> +++ b/arch/arm/boot/dts/qcom/qcom-sdx55.dtsi
+> @@ -57,7 +57,7 @@ cpu0: cpu@0 {
+>                         enable-method = "psci";
+>                         clocks = <&apcs>;
+>                         power-domains = <&rpmhpd SDX55_CX>;
+> -                       power-domain-names = "rpmhpd";
+> +                       power-domain-names = "psci";
+
+As I understand it, this isn't for cpu-power-mgmt but for
+cpu-performance-scaling.
+
+I have been thinking of adding a common power-domain-name for this,
+but never reached to do it. I think the last one we added was the
+Airoha SoC [1] which uses "perf", which seems to be the most common
+one. Still I don't see that being documented.
+
+>                         operating-points-v2 = <&cpu_opp_table>;
+>                 };
+>         };
+> diff --git a/arch/arm/boot/dts/qcom/qcom-sdx65.dtsi b/arch/arm/boot/dts/qcom/qcom-sdx65.dtsi
+> index 6b23ee676c9e..bfd04e53c5a8 100644
+> --- a/arch/arm/boot/dts/qcom/qcom-sdx65.dtsi
+> +++ b/arch/arm/boot/dts/qcom/qcom-sdx65.dtsi
+> @@ -58,7 +58,7 @@ cpu0: cpu@0 {
+>                         enable-method = "psci";
+>                         clocks = <&apcs>;
+>                         power-domains = <&rpmhpd SDX65_CX_AO>;
+> -                       power-domain-names = "rpmhpd";
+> +                       power-domain-names = "psci";
+
+Ditto.
+
+>                         operating-points-v2 = <&cpu_opp_table>;
+>                 };
+>         };
+>
 > --
 > 2.47.2
 >
+>
 
-Reviewed-by: Daniel Machon <daniel.machon@microchip.com>
-Tested-by: Daniel Machon <daniel.machon@microchip.com>
- 
+Kind regards
+Uffe
+
+[1]
+drivers/cpufreq/airoha-cpufreq.c
+Documentation/devicetree/bindings/cpufreq/airoha,en7581-cpufreq.yaml
+drivers/pmdomain/mediatek/airoha-cpu-pmdomain.c
 
