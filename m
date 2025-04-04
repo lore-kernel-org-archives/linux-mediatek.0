@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19A9EC36010
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Apr 2025 08:01:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E713C36010
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Apr 2025 08:29:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Pi9+p40l7//vLKO8DuYTv+ORJz3B9aWETGdVOxLyydc=; b=X6mlT5hofCZTjajHGRPZUj+WV+
-	fTaTZGDnj1HTuZemO0NdNfRFuD2115jPQZgnO7l00tFLhqWNbS9Pg9/2uySQHB4tmcHQI9fCIYmnl
-	lEzdplFTQVyz+IZRveLFtHGKgEQ5UQvZv9rNolT3ydxDTwQrBXZGNszpYQUEUBwFsqFN1eWGcfNuT
-	U92Mx88Lh5vrUOaC3OgGdEms8fmVqfG03lMEftPF2gtuDfBPxdb/DTWI1RtvDgD9C3XF0XBJs475W
-	dhdt7E6HcYve124ZzgPAlEbIFV+yHGZsZHlLEx/wm6qCWLzx+SW2ifFatXbOnjx33YnxMoukBupbp
-	VsvfaaiA==;
+	bh=Pi9+p40l7//vLKO8DuYTv+ORJz3B9aWETGdVOxLyydc=; b=4WJu6B3aLP28TcBNk3syFgFbF9
+	TxLXkl+h8cKFVBTo0kYjIs3+ehNUNQH/N9G+R1FeopPl4Abll5wSJpPJi4e0g533fxqTa2/Gg9u9I
+	IUYqihhP9uhNzY5lpwNhfaKmuW0QpbswXyxnCKuhfP9B0amREyy/mZsULDmzCl1GCxnWiTvk2FWBe
+	AWcWP4HR5hz8WH8APqYvp607N20Ftli6/pZDWMD/5BSdxqNxz6BRKeK3bQKFFcYITiztFCunfiYnN
+	qq+9jiqhaIxoehPt3VVRGlH2YRZiWeDyETW52Kcrqfd9yyFua96lZwKrOF8pKi7Fu0QL9z8MtaxVX
+	HVNYncLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0bz2-0000000B5ND-3jSR;
-	Fri, 04 Apr 2025 08:01:00 +0000
+	id 1u0cQr-0000000B8xc-2MCl;
+	Fri, 04 Apr 2025 08:29:45 +0000
 Received: from mail.ventrixor.pl ([91.134.88.136])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0bz0-0000000B5MS-3yQS
+	id 1u0cQp-0000000B8wU-2h4Q
 	for linux-mediatek@lists.infradead.org;
-	Fri, 04 Apr 2025 08:01:00 +0000
+	Fri, 04 Apr 2025 08:29:44 +0000
 Received: by mail.ventrixor.pl (Postfix, from userid 1002)
-	id 4902C25C17; Fri,  4 Apr 2025 08:00:55 +0000 (UTC)
+	id A4B3525EAC; Fri,  4 Apr 2025 08:28:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ventrixor.pl; s=mail;
-	t=1743753657; bh=Pi9+p40l7//vLKO8DuYTv+ORJz3B9aWETGdVOxLyydc=;
+	t=1743755295; bh=Pi9+p40l7//vLKO8DuYTv+ORJz3B9aWETGdVOxLyydc=;
 	h=Date:From:To:Subject:From;
-	b=20xhgeLeDsiHPKVVw5BqVoaQfd//559Kzofu2Vn96cYhzxEMrFND8HLvOpN6VcgWT
-	 51Xo2gYO3bHzLBhhomq/h69VBxFmvdoV1GQ/nEQolB3K8Sn59JHP7NqMhiVfgj75+p
-	 3gqZ3JTaYGwO1iuPUCVnDumsdK3gEO2o0XzxOTcUG+4ZVBc3NdYmQhsrEk/OimmXrS
-	 wlc26o8Kyb7vc5I7yCsoOBdjBhoLMS/A8W6k15dnlO1gD8JBAIfnErzQekakXmajeY
-	 WXc6EUzbOlD97DZTDgQ903E4m5GsNnqy2bZe9XDq9ecYO6abikUSMrrgVOAX73dZTO
-	 i6kBOjfzNB2/Q==
-Received: by mail.ventrixor.pl for <linux-mediatek@lists.infradead.org>; Fri,  4 Apr 2025 08:00:53 GMT
-Message-ID: <20250404064500-0.1.6b.1c8jz.0.edbzokl2ot@ventrixor.pl>
-Date: Fri,  4 Apr 2025 08:00:53 GMT
+	b=BjEJ7k5py1P7kMCx3LuAFuVaLPPNCyhQsEopA1KhZujfe5N46gqqPSDmTNJe03LuD
+	 styuQDOOJgprN8K8RacuVBALITPW+fwzRMF6MhXqLkqaTdUwWMIIaJIg0okv3ckqED
+	 RESQdEV9BEpNgZE94BfKBpuzEoYjYn3zSW23T+CrvEbXd46QUBNHPonFP5NhUcA4vR
+	 CDcVyXEtnrVWABHjgVbV5IYyVUb7hos5RAG5X1V8ctFM5R/53hwp+fOvoGXqf/TiFD
+	 bxmbIC8qL7yo9uvbrSPV2Rt2LMngYsD7w0oj69zclGnvBjYgkpiUttYwkBjX38mmfm
+	 ORfkUjO1GbSFg==
+Received: by mail.ventrixor.pl for <linux-mediatek@lists.infradead.org>; Fri,  4 Apr 2025 08:28:10 GMT
+Message-ID: <20250404074859-0.1.6c.1c8jz.0.2rj5hn897e@ventrixor.pl>
+Date: Fri,  4 Apr 2025 08:28:10 GMT
 From: "Jan Adamczyk" <jan.adamczyk@ventrixor.pl>
 To: <linux-mediatek@lists.infradead.org>
 Subject: Rekrutacja handlowca 
@@ -49,7 +49,7 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250404_010059_122425_05928182 
+X-CRM114-CacheID: sfid-20250404_012943_815591_59AB3324 
 X-CRM114-Status: UNSURE (   1.49  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
