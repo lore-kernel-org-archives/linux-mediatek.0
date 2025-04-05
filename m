@@ -4,148 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6945DC36010
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Apr 2025 20:42:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B382C36010
+	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Apr 2025 14:42:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Dvhmq4YEot5WzH3QxroXInz9L/fpcl+l6rHMMX3PtHk=; b=AHK9DDSar6hXjbz3HY7kMab2gT
-	4dseCMbKf69/ofvgRTmJlslRxsX925DFf2csYAdho/ceCS9kubByv63I1KNmWJb/oPEM8vjhu07qB
-	mJOTgI70aPdBd7EMRre74w4yCwaPzGEpVJDTmgPYtQvB92oCHq6i8SZJIkdEgOTKGp2QLMzwJwXbj
-	CROjdtvJHlfVGaokBpLyZSZFVovkPntN1f39J27o+PBpIr3mruZDgv1t/9OyASKTXZ2shzutX2htg
-	Q1coEs9Y0tBzEdAFxYZaDLaXdKMufArYdMjLI7SUiWIQ7LGP9vOGA8TeieeD2IjO2OrMqHIoPu/m9
-	uJ6olpWg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Csb+0GW//Bfzqqosi46iTT2S26iXUq5v+2fvzrH8ANg=; b=VpmFUVYiqy6SB3RQ2j2l+erk8T
+	P80VHLJym0ugqLc2pzFuVk46VSmBJ/Si1XyN/1gX8YMnclp3Y/LH/bRSnn4kH97TSjWzuXJz+NI+K
+	a/Si5ySig0/bs3iaeQR/H5M85oO7NpiTHwZOHYGEuyP4U1nHw/Htysx2aN2lh2mOmW1AWHPjNh7L6
+	+fjRAg1LiOiHrXlj9DzsNEaKK0bfMAY7n1MbczqcvlR0rDCTar/mi0nGzWgEYnXQX5PjTJXv0koF+
+	Sx/m4+kS6P6PIsqhz8XQXpwzn0AGWEINoQhi19nVJa5qrKluC210fcl/FNeKPne9+Y871DcVt4A/t
+	euy6SiXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0nrt-0000000CouV-23Xw;
-	Fri, 04 Apr 2025 20:42:25 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1u14jD-0000000E4yw-0IKG;
+	Sat, 05 Apr 2025 14:42:35 +0000
+Received: from mout01.posteo.de ([185.67.36.65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u0nrr-0000000Cot8-2MXB
+	id 1u14jA-0000000E4xI-2NUA
 	for linux-mediatek@lists.infradead.org;
-	Fri, 04 Apr 2025 20:42:25 +0000
-Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 534JEqck006627
-	for <linux-mediatek@lists.infradead.org>; Fri, 4 Apr 2025 20:42:23 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	Dvhmq4YEot5WzH3QxroXInz9L/fpcl+l6rHMMX3PtHk=; b=UsllvDr7X0dVrVbg
-	KZrNk15XTlIpsHlSLRUHo1Rjd3mfVeLUdGKHjVPPT5oOtoD+m/7gYsxr82zV892q
-	b7DDA2z8RHrrKZPaefDEmcOzeLnzA/lFvL5E+X69QLvc+QhNryoD3SpGeyVat7A0
-	l7g8KWHIdbS8b8uQKBh4BbQqAUDVJHYqq5HvXdC6gjCVWJ9VCosCJBQDi43vBsmH
-	GoBGnTtv+L6v4/5iXkHEKdSOpElOzwzfnUz/k8AoMoGiD4+1akr5kALv4pZKHFDM
-	PDQPTTo607hZqu+RzrP4NeG19lbnkHE5lUaymOg4HAIwKg/Z1ceaJG4sp9s4dZoX
-	29V1lQ==
-Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com [209.85.160.200])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 45t2d8jv70-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Fri, 04 Apr 2025 20:42:23 +0000 (GMT)
-Received: by mail-qt1-f200.google.com with SMTP id d75a77b69052e-476783cbdb8so4936981cf.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 04 Apr 2025 13:42:22 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743799342; x=1744404142;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Dvhmq4YEot5WzH3QxroXInz9L/fpcl+l6rHMMX3PtHk=;
-        b=DcU7e1gnbMtUk+0vtTsSqydnykt2RK0iBG3G+rdROISEtsx30dl6r2mDOP2oHM1aLa
-         Wyf1Y9WE5Hpr9oyo+ORHT4mwpZ7PiiCIVp5VwIgpvaeJ51fRmSlAHyhFbSm8Kjh/CdlQ
-         n2IXas5QzHnv+VmpqnpnJxofrQQ2fS3cWF9icRa/n7N9eFIdERTmnu0V5rKnOaz5SkBB
-         5QELU7ObhMKHB78MUCRu/53Vi/R1mmlxnBqbkO7Ig18Ycye8rJEOH3HBzfb9/pYVNtjW
-         1vVVvMAVqOk88Hxn1ABVD6prp6Ukz38X+QCm+2t4exYvTQTaRYrw1uAcfliHgdXYaerO
-         vYmQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWf1Tx9x3LF64p/lJ6qZv/87PSpCd4P867ZlLSoKVCuTP/ok7UIyTG1XfdxjfHTbudxS/wDBmGk8a6PnhV3sQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy0MB275upZ8cdkqdHz4nVCpcRyxxfSYSwIfjzsgJIcYIOT6UFA
-	zhntHWZkKbY3QZGRtKykCvFJqwRcdV3tcMCEMFuH6cZ+eGPRk6yqrBQoxyurIlEVpjI7fpNc1DG
-	9hNcoHQ1Btsch+8DwTvzeRnBr75VlbVAjHsLvlCoSf8K0pI/NF+AAzYMiRk9wtP3cVfj9Bcw=
-X-Gm-Gg: ASbGncuCnr9uH8G7aw5bogxPJ78LmXZF/FwKUQnr1UmVy3VMN9/3n0e/GYdOVIW6wyk
-	LPg8fxPkpmIrnZA4cSnsqxxH/EOO8vMKdvhpOWCWr57NhfoKiqQxVJJIBKm9SrYAZK5h7DKrDb6
-	HSIyaC5WGGsgRZUeJdON9IpyN6wNa0Y4NRCB3LxH0/pmq36J5J+JYvwEXS0r2VdOYyYhVAs8b2m
-	UasHCVHZ2m2OvvLAoIUW40rRinv8O/qbgi8ZfeOQcZShtPcRIneRqTOkKVjS5ZlCcOo9Wmvp8fa
-	U/3pxUzZYtV0pRrKrBdT7dKr+iRkh6A1Hvl3oOYrZY+7C6FUKcvJXobfznXeLbr1SGK3JQ==
-X-Received: by 2002:a05:620a:2890:b0:7c5:c5cd:7599 with SMTP id af79cd13be357-7c774d0f248mr242298285a.3.1743799341873;
-        Fri, 04 Apr 2025 13:42:21 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IE+SWzK4xJTznItCy4yyRIatUgCtVJCf8ZO8c+GM8oZYtvMasi6TSfEl5lIgHq+ml10q5QRWA==
-X-Received: by 2002:a05:620a:2890:b0:7c5:c5cd:7599 with SMTP id af79cd13be357-7c774d0f248mr242292385a.3.1743799341449;
-        Fri, 04 Apr 2025 13:42:21 -0700 (PDT)
-Received: from [192.168.65.90] (078088045245.garwolin.vectranet.pl. [78.88.45.245])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ac7bfe5d442sm310126866b.26.2025.04.04.13.42.16
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 04 Apr 2025 13:42:20 -0700 (PDT)
-Message-ID: <beb1e6a1-8fdf-451c-9c48-bb3abff89226@oss.qualcomm.com>
-Date: Fri, 4 Apr 2025 22:42:15 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 11/19] arm: dts: qcom: ipq4019: Drop redundant CPU
- "clock-latency"
-To: "Rob Herring (Arm)" <robh@kernel.org>,
-        Krzysztof Kozlowski <krzk+dt@kernel.org>,
-        Conor Dooley
- <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
-        Jernej Skrabec <jernej.skrabec@gmail.com>,
-        Samuel Holland <samuel@sholland.org>,
-        "Rafael J. Wysocki"
- <rafael@kernel.org>,
-        Viresh Kumar <viresh.kumar@linaro.org>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Vincenzo Frascino <vincenzo.frascino@arm.com>,
-        Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>,
-        Lorenzo Pieralisi <lpieralisi@kernel.org>,
-        Bjorn Andersson <andersson@kernel.org>,
-        Konrad Dybcio <konradybcio@kernel.org>,
-        Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
-        Viresh Kumar <vireshk@kernel.org>, Nishanth Menon <nm@ti.com>,
-        Stephen Boyd <sboyd@kernel.org>, zhouyanjie@wanyeetech.com,
-        Conor Dooley <conor@kernel.org>,
-        Nicolas Ferre
- <nicolas.ferre@microchip.com>,
-        Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-        Steen Hegelund <Steen.Hegelund@microchip.com>,
-        Daniel Machon <daniel.machon@microchip.com>,
-        UNGLinuxDriver@microchip.com, Shawn Guo <shawnguo@kernel.org>,
-        Sascha Hauer <s.hauer@pengutronix.de>,
-        Pengutronix Kernel Team <kernel@pengutronix.de>,
-        Fabio Estevam <festevam@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
-        Neil Armstrong <neil.armstrong@linaro.org>,
-        Kevin Hilman <khilman@baylibre.com>,
-        Jerome Brunet <jbrunet@baylibre.com>,
-        Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-        Geert Uytterhoeven <geert+renesas@glider.be>,
-        Magnus Damm <magnus.damm@gmail.com>
+	Sat, 05 Apr 2025 14:42:33 +0000
+Received: from submission (posteo.de [185.67.36.169]) 
+	by mout01.posteo.de (Postfix) with ESMTPS id E8656240028
+	for <linux-mediatek@lists.infradead.org>; Sat,  5 Apr 2025 16:42:28 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=posteo.de; s=2017;
+	t=1743864148; bh=XfnEVi3ovC/zw6g3a+nScy1RtngEkEo5Aoq+dlPJPpk=;
+	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version:
+	 Content-Transfer-Encoding:Content-Type:Autocrypt:OpenPGP:From;
+	b=kpKTySCR9tVzJeZkrRR96FmaI5z2uTfS1UgZ1LpQ3uiZDUhk5hZl1Wg7atK7sF7Py
+	 t2asO+qjhckqLWTAXxzO0qKwssbnQJVHhCap2/Ttyl5qFKDRg6KUJBn1mT57NZN74A
+	 U2yd4Y81VINm50wKMQoE5w5YEKYFNIWFZlwKMcZMeKWKbJuW5GTkUsl3J5sqBlokOe
+	 HlMB62MvRhv1jhGOhOHSSQuYMBXt7PXHJVTolJDFbkwv334aH2+ZC//yE6KFT/KF6+
+	 fWFBhnGyRrDLlxlIWTNnqZLWzpqSPXXxc6mO/SFGpd74DILF9X3KADVWBTc4IBkgvM
+	 JBCaAeSLwoOlg==
+Received: from customer (localhost [127.0.0.1])
+	by submission (posteo.de) with ESMTPSA id 4ZVJ8s527hz9rxK;
+	Sat,  5 Apr 2025 16:42:21 +0200 (CEST)
+From: Alexander Reimelt <alexander.reimelt@posteo.de>
+To: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>,
+ "Rob Herring (Arm)" <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>,
+ "Rafael J. Wysocki" <rafael@kernel.org>,
+ Viresh Kumar <viresh.kumar@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Vincenzo Frascino <vincenzo.frascino@arm.com>,
+ Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konradybcio@kernel.org>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Viresh Kumar <vireshk@kernel.org>, Nishanth Menon <nm@ti.com>,
+ Stephen Boyd <sboyd@kernel.org>, zhouyanjie@wanyeetech.com,
+ Conor Dooley <conor@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+ Steen Hegelund <Steen.Hegelund@microchip.com>,
+ Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Magnus Damm <magnus.damm@gmail.com>,
+ Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-        linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
-        linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org,
-        linux-arm-msm@vger.kernel.org, linux-mips@vger.kernel.org,
-        imx@lists.linux.dev, linux-rockchip@lists.infradead.org,
-        linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org
+ linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
+ linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-mips@vger.kernel.org,
+ imx@lists.linux.dev, linux-rockchip@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org
+Subject: Re: [PATCH 07/19] arm64: dts: qcom: msm8992-lg-h815: Fix CPU node
+ "enable-method" property dependencies
+Date: Sat, 05 Apr 2025 14:42:21 +0000
+Message-ID: <4999945.OV4Wx5bFTl@stinkpad>
+In-Reply-To: <d3592f32-e29c-4b40-b045-7267795a9617@oss.qualcomm.com>
 References: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org>
- <20250403-dt-cpu-schema-v1-11-076be7171a85@kernel.org>
-Content-Language: en-US
-From: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-In-Reply-To: <20250403-dt-cpu-schema-v1-11-076be7171a85@kernel.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Proofpoint-GUID: nOxPyPsmjYKYKO1uwu4v8WRr-eoYQpZD
-X-Proofpoint-ORIG-GUID: nOxPyPsmjYKYKO1uwu4v8WRr-eoYQpZD
-X-Authority-Analysis: v=2.4 cv=N+gpF39B c=1 sm=1 tr=0 ts=67f0442f cx=c_pps a=JbAStetqSzwMeJznSMzCyw==:117 a=FpWmc02/iXfjRdCD7H54yg==:17 a=IkcTkHD0fZMA:10 a=XR8D0OoHHMoA:10 a=VwQbUJbxAAAA:8 a=EUspDBNiAAAA:8 a=EKXQiu_l0foPX_vtw34A:9 a=QEXdDO2ut3YA:10
- a=uxP6HrT_eTzRwkO_Te1X:22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1095,Hydra:6.0.680,FMLib:17.12.68.34
- definitions=2025-04-04_09,2025-04-03_03,2024-11-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxscore=0 phishscore=0
- priorityscore=1501 impostorscore=0 adultscore=0 clxscore=1015
- lowpriorityscore=0 suspectscore=0 mlxlogscore=803 bulkscore=0
- malwarescore=0 spamscore=0 classifier=spam authscore=0 authtc=n/a authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2502280000
- definitions=main-2504040141
+ <470e2155-7145-44ab-9d6d-117a2d98d7f8@oss.qualcomm.com>
+ <d3592f32-e29c-4b40-b045-7267795a9617@oss.qualcomm.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="utf-8"
+Autocrypt: addr=alexander.reimelt@posteo.de;
+  keydata=xjMEZg0fSRYJKwYBBAHaRw8BAQdAIcaNTdj3NWDe5HQPCUs6oYyQygAJWP9LCzhr+C7RwMrNG2Fs
+  ZXhhbmRlci5yZWltZWx0QHBvc3Rlby5kZcKZBBMWCgBBFiEEM+Wy6sI/mP5S0zIFHqi3OKk8uRIF
+  AmYNH0kCGwMFCQWjo9cFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4AACgkQHqi3OKk8uRJ8ogD9
+  EVg4zgfmC2SqXCgms6LETAzVX4CrAS8yMhyd7Md921cA/R8lhm9B96RYgA7MvFPFJb1T6JFY75Jg
+  QLXrtIE5llwHzjgEZg0fSRIKKwYBBAGXVQEFAQEHQBGDuxZLOTvppxyM4G18fSR6xzT0xkkPOia7
+  Bh6L1vAAAwEIB8J+BBgWCgAmFiEEM+Wy6sI/mP5S0zIFHqi3OKk8uRIFAmYNH0kCGwwFCQWjo9cA
+  CgkQHqi3OKk8uRIa1wD8CZDdCAKXstgXY96eeSSP7MecEF5TBdmWOiVgjlEIpoEA/RnGuDaj06B1
+  F51wyGAjYXSmn5qFoNHu3yXyLUkFz1ME
+OpenPGP: url=https://posteo.de/keys/alexander.reimelt@posteo.de.asc
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250404_134223_611933_963A51D6 
-X-CRM114-Status: GOOD (  11.34  )
+X-CRM114-CacheID: sfid-20250405_074232_885228_191D877A 
+X-CRM114-Status: GOOD (  13.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -160,16 +118,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 4/4/25 4:59 AM, Rob Herring (Arm) wrote:
-> The "clock-latency" property is part of the deprecated opp-v1 binding
-> and is redundant if the opp-v2 table has equal or larger values in any
-> "clock-latency-ns". The OPP table has values of 256000, so it can be
-> removed.
-> 
-> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
-> ---
+> On 4/4/25 10:30 PM, Konrad Dybcio wrote:
+> > On 4/4/25 4:59 AM, Rob Herring (Arm) wrote:
+> >> The "spin-table" enable-method requires "cpu-release-addr" property,
+> >> so add a dummy entry. It is assumed the bootloader will fill in the
+> >> correct values.
+> >> 
+> >> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+> >> ---
+> > 
+> > This looks good to me without knowing any better about the specifics
+> > of this device..
+> > 
+> > +Alexander - does the bootloader you use take care of this? Otherwise
+> > we can just do what Sony devices do and stop on removing the psci node
 
-Reviewed-by: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+I currently can't test this, but the bootloader (lk2nd) will set it.
 
-Konrad
+Alexander
+
+
 
