@@ -4,91 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE5A1C3601A
-	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Apr 2025 20:14:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52B6FC36002
+	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Apr 2025 22:16:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=d0bCgywlp6kaDxRJG12fl3NMTv2SIFaAtl9wSse2RnE=; b=ptho/1p8Z64pHAwT7Fn1LFirhM
-	rrHApeB4n15m9MTn0k0NQVAUnzWwjACKD/UCNH6aoqBjLpNkhwememBAfu4T6EvBqX3M+J3ZWMgCJ
-	Rx0kkO1MBzQBDQp5iXS6HB9SeBLgJBJECQSOvyVjwEQ0bagn/GWvyUF4tluBXYIbSWDDXubR4+BEl
-	YJ8PqNE6QL1Zwk5R76u7Lkrp1QLFyoFLpSTtuAuHvne8WY25/evUFaaUJ3TFnpAanm7J6NB3JKWh8
-	CdQoLWoWWlgos9g8xce+9582lGXM65oyrYSS/Ce+efgKKf9KGklTuvJFHzArb26YUL2HowkIBW/Tk
-	8MZDdovg==;
+	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=kQY49MNV2vw+RYB/lwmnIQvb/vWfn9IT+VLkvnf1e7s=; b=uJEzOgga4LsxCcOJVGHwqwcPVg
+	On5kv4ohfIRuzNUBaiYnzq9ltQwquckOXo6PAcKLn8LGe0lmb1OUW7rC0tEp3+aVkTpkUr8P9HTW4
+	RBDcaPhpdTrCJ40eUu+OBmU3PsTMgioqdCBSe70evnG9lYerwMUPBCy6MLKcSf29QW9Onk6rD6gVQ
+	tBoeCzMdhwJgBAu2hQW+4IGW6IFXsed7tKlQgJOsQk7zNgCpwqwEv60ZP8C7Takum4rsNMFgP50CF
+	CrlqUXuKpZjRXcmnUo2EgjJBGZ2XPqGGPSJ2DJbiGD2jThvJv5TtvTK2bWFYLIVZbv7kZumHbuC3J
+	gu9QTG+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1WO0-0000000Fl3u-3KDw;
-	Sun, 06 Apr 2025 20:14:32 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1u1YIR-0000000FtJP-03bx;
+	Sun, 06 Apr 2025 22:16:55 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1WK0-0000000Fkgb-0dxn
-	for linux-mediatek@lists.infradead.org;
-	Sun, 06 Apr 2025 20:10:26 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-39123ad8a9fso369894f8f.2
-        for <linux-mediatek@lists.infradead.org>; Sun, 06 Apr 2025 13:10:23 -0700 (PDT)
+	id 1u1YGb-0000000Fstm-3jr1;
+	Sun, 06 Apr 2025 22:15:03 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-43d07ca6a80so18769695e9.1;
+        Sun, 06 Apr 2025 15:15:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1743970222; x=1744575022; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=d0bCgywlp6kaDxRJG12fl3NMTv2SIFaAtl9wSse2RnE=;
-        b=eOmiPNfqyhp+OdT8XEFT0nsscC9GCxJxezOhtb/IRhliQFA3X/di86ja1XV1uGmjyS
-         U0Q6kw0y2K4zqETO4naTOrGr/oytaVgoF831b8lcrrV3J6sH6u+3/LuIIw2Hcd6XFRWr
-         if0BwlUZeXJv9lfasraeamGNf7sTTJQPRUDTFk6euy8LPEsZEn9cShHQZ90tjME3EP3z
-         HJQsvmvL2sicuFy8IL0MNZOMka2I7sd4LwTTSA1KItiDbbISLhMHzJCk4oUlIFL5omHO
-         +Bvdha/yT3FHLDoh1dtQaFFmVXXy5m7bJUHIQApp82kALeKd2+orm0g1rzs3t6YXHO1e
-         YQlQ==
+        d=gmail.com; s=20230601; t=1743977700; x=1744582500; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:from:to:cc:subject:date:message-id:reply-to;
+        bh=kQY49MNV2vw+RYB/lwmnIQvb/vWfn9IT+VLkvnf1e7s=;
+        b=XzlI6spWtpwxTkJcZ1kHucVyg2GP49VJuAfdDBcmfzduZn//OCyeiVpkyhwldIqbcN
+         QYxNI2h53i7M5SaQgo4g7jMPFE1ewurFEL1zZjk1PtOwDWPrkM+/SYoTjk/u1gvkn8sO
+         CPKLM2UsCigXifF2WxXxK6c6qydAkatHhoHbly9NL77IN5FfcioPCWR4Tfgn2QyFWGvy
+         6agK3ohs+kDV09heHEQGWbKYN5fQnoXYAMfKQcQubsviCZgFrd0DZAs8tz7xrP8rqTlW
+         /j05AsLLYLDSj+esidSWfG4PFLSw81hBLbxrKoMyhBJ/d/kKlyDpnUsrPEje08IT/xHj
+         lMRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743970222; x=1744575022;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=d0bCgywlp6kaDxRJG12fl3NMTv2SIFaAtl9wSse2RnE=;
-        b=jbqjXojuMVAjd9/BZjCf9MClkaSsGlPRSN3v9DXU1XWu4DAjoNqshxuTlW05UIe0LW
-         TaalrwkUECczEDPC3xALyhpc4nh0OUKo3pk/cwGdTJPT8vzBrP3NZWJzt0LR2MruHngz
-         eHm46MsktuVjrHMiH12AgsuPkpNyMaSNL473Jeqoy9VElkKDFbeWKuFfemS6bvepUSw/
-         s/OSjmBL3flFu863ReIQdAwaM6CUdhAHxw7uNAFaddxaDK09H2Xfhp1qGS5F2i55MBwf
-         Gw1ua/NSSn8BrW1EaY2S5wKfXt5WjDo3iSPZdGizC57S5/YrqhGMxMQ7K5sl6jyARuz/
-         wWLg==
-X-Forwarded-Encrypted: i=1; AJvYcCV3n3+UjlaiOuXF5BmzhD651QMTGC8TPI3MSK9Ouc37+NcRSHGneUf9C5cc4wEZmrKlyk3lDrsTj+Mp/ijM0g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzwOwjQ1bBKIuKg6NEltoPTS95IXZ9xN02ebZD+K6kVtI61LVFy
-	t1DFjE3+Iw5PkzARW7EFFVp1mrykKUinSifR7ssck+g0/Oprt0Bl4+aAFBiOPCA=
-X-Gm-Gg: ASbGncv1c8ET84v+yQXrfeL/gAqRNWSZPxhEZ5/zl3QA7G88V7SSDxxXAsE7hMqfhRV
-	kPfjr5s/AFTgeMiDRoaacNdK5hY7nZyK+2h77U2yCGwl0XXXdGjM7JLK/M54HHG4PEPTXeEfY/l
-	UK4TnT+av9S5fP9aOKpNN2y/deSFHzQ+df1hRFm8Gunrj3jgFZFz4RSBLR69MXA0oLZ3Vkc8D7P
-	cPOiLaascjr71dlxGOO9iG96r4R9QPAhNergwkZCeSUlhUZyZf3nZOl7W9+Hkv6zzbg5QZzdOmY
-	xni4lZ91dt+ljE8tfj3+zY10Cn3B4aHWMqL5p/jq9PwQ7l0/D28uXA==
-X-Google-Smtp-Source: AGHT+IHX4ogO0j9l/DVFfDe0o53qqxRjbgFXh9pHpQJLcNqGVqDaNvFPF3GPRIgR8kG8COOn0609yQ==
-X-Received: by 2002:a05:6000:4022:b0:391:319c:193f with SMTP id ffacd0b85a97d-39cba93cfc3mr3063727f8f.13.1743970222445;
-        Sun, 06 Apr 2025 13:10:22 -0700 (PDT)
-Received: from shite.. ([178.197.198.86])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39c301acec9sm10080656f8f.40.2025.04.06.13.10.21
+        d=1e100.net; s=20230601; t=1743977700; x=1744582500;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=kQY49MNV2vw+RYB/lwmnIQvb/vWfn9IT+VLkvnf1e7s=;
+        b=S/XrnNN9LAGoratBFX9olB1rgJiheOwtXBKRyIoVpQlOJZf4vmpSGuR3X7T2olhK5B
+         BRQUHMDnzOGc4nXOkTfSmbPtYRXXEgh1+Cd0kGSWj+Se2BslwssA224pwC4zp9TtWkPa
+         Wr29drbcEMjL0undEETlCnunmIov4SpzcC8MvKeGg2LJpFrxX4thtOzd7ADLsWHOHMRM
+         X+ZQXBaZ/v45Nua3FrGIvWJD841kqAg/VH7k+Pptmr3emFaEoC/RQoRuT9JvtD/VF8D5
+         9gRr09Rr9XNluOy2zS0H8SVbcHvzOLbm7IcxSkvdWm+YVSWQWHOs5UzGP2yKkr8NCwAm
+         x7Sg==
+X-Forwarded-Encrypted: i=1; AJvYcCV4jWfXTQQzjkGxyzLyMejMHsyE7aCdduxE5qXKdiWm2P1U0sEW5Y7URzIVF7rBgKfu4vfr3lCvzzm3auhkimzI@lists.infradead.org, AJvYcCXgcHuw2wBYD1SD8KTfOiHNGzBsE5E0KbAykZhj9uBdABkm8wIpXr64Mw8uBSRgXU6x8jtvCEVzZZb9Z6ikY10=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwG80l81qFZkg0zv8vRMnaO8nUUD/BPsrBPjp8VPKgIGW9qQGND
+	aE4GRvPDIFx8uvLK/FZ0DClOgG5rMINHtAmYBdn11zEZmCAEBWR5
+X-Gm-Gg: ASbGncsK86kK5351KPcaROfd5s55IrK7+fybdbpPvtHTFDmaI+S1AZVlXlqWpylrMhl
+	iuREwlJw2b83GQSlH58HV0fZCVYYuxgi5AGAcW+VqE7yEisnFElyM03lldS+8ghVtxjSfsVCltN
+	Ag5EcvJ8Nr7YSEvKIIRke12o3IRX9OQnwxqtTlNEbGrg6wu7/Zsf2VgbUvYGSH5pUziY75mP2vk
+	LLUGQYnhlJtEATQ1vMUddC2UTYqEF+Py3KFGyuPRvi5sF/HMBU7c4BjiL38Blp+aJHXMth76cYQ
+	l1EMzZL1lMkdEtittiAN4xW3RzgCjN7aQ86OFra6g31ugqXtR26PScYSPgxdwrAFGNEaZlPc0Ce
+	RwZ/zqO4to+ZFgQ==
+X-Google-Smtp-Source: AGHT+IFHPZSGfdYEiMrh30dapV2ATq2oroNmn/OyTiAdMgqfo6FsGmPAIu/fmpb4M1YuUBVOTcPLPg==
+X-Received: by 2002:a05:600c:35c8:b0:43c:f513:9591 with SMTP id 5b1f17b1804b1-43ecf86b406mr90635615e9.14.1743977699324;
+        Sun, 06 Apr 2025 15:14:59 -0700 (PDT)
+Received: from localhost.localdomain (93-34-88-225.ip49.fastwebnet.it. [93.34.88.225])
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-43ec366aa29sm111517055e9.39.2025.04.06.15.14.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 06 Apr 2025 13:10:21 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Marcel Holtmann <marcel@holtmann.org>,
-	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-bluetooth@vger.kernel.org,
+        Sun, 06 Apr 2025 15:14:58 -0700 (PDT)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	"Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
+	netdev@vger.kernel.org,
+	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH 2/2] Bluetooth: btmtksdio: Fix wakeup source leaks on device unbind
-Date: Sun,  6 Apr 2025 22:10:17 +0200
-Message-ID: <20250406201017.47727-2-krzysztof.kozlowski@linaro.org>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20250406201017.47727-1-krzysztof.kozlowski@linaro.org>
-References: <20250406201017.47727-1-krzysztof.kozlowski@linaro.org>
+	linux-mediatek@lists.infradead.org,
+	"Lei Wei (QUIC)" <quic_leiwei@quicinc.com>
+Subject: [RFC PATCH net-next v2 00/11] net: pcs: Introduce support for fwnode PCS
+Date: Mon,  7 Apr 2025 00:13:53 +0200
+Message-ID: <20250406221423.9723-1-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250406_131024_191270_A66F55D9 
-X-CRM114-Status: GOOD (  10.95  )
+X-CRM114-CacheID: sfid-20250406_151501_961196_335D13BD 
+X-CRM114-Status: GOOD (  22.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,28 +111,142 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Device can be unbound or probe can fail, so driver must also release
-memory for the wakeup source.
+This series introduce a most awaited feature that is correctly
+provide PCS with fwnode without having to use specific export symbol
+and additional handling of PCS in phylink.
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
- drivers/bluetooth/btmtksdio.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+First the PCS fwnode:
 
-diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-index edd5eead1e93..566c136e83bf 100644
---- a/drivers/bluetooth/btmtksdio.c
-+++ b/drivers/bluetooth/btmtksdio.c
-@@ -1410,7 +1410,7 @@ static int btmtksdio_probe(struct sdio_func *func,
- 	 */
- 	pm_runtime_put_noidle(bdev->dev);
- 
--	err = device_init_wakeup(bdev->dev, true);
-+	err = devm_device_init_wakeup(bdev->dev);
- 	if (err)
- 		bt_dev_err(hdev, "failed to initialize device wakeup");
- 
+The concept is to implement a producer-consumer API similar to other
+subsystem like clock or PHY.
+
+That seems to be the best solution to the problem as PCS driver needs
+to be detached from phylink and implement a simple way to provide a
+PCS while maintaining support for probe defer or driver removal.
+
+To keep the implementation simple, the PCS driver devs needs some
+collaboration to correctly implement this. This is O.K. as helper
+to correctly implement this are provided hence it's really a matter
+of following a pattern to correct follow removal of a PCS driver.
+
+A PCS provider have to implement and call fwnode_pcs_add_provider() in
+probe function and define an xlate function to define how the PCS
+should be provided based on the requested interface and phandle spec
+defined in fwnode (based on the #pcs-cells)
+
+fwnode_pcs_get() is provided to provide a specific PCS declared in
+fwnode at index.
+
+A simple xlate function is provided for simple single PCS
+implementation, fwnode_pcs_simple_get.
+
+A PCS provider on driver removal should first call
+fwnode_pcs_del_provider() to delete itself as a provider and then
+release the PCS from phylink with phylink_release_pcs() under rtnl
+lock.
+
+This series also introduce handling of PCS in phylink and try
+to deprecate .mac_select_pcs.
+
+Phylink now might contain a linked list of available PCS and
+those will be used for PCS selection on phylink_major_config.
+
+MAC driver needs to define pcs_interfaces mask in phylink_config
+for every interface that needs a dedicated PCS.
+
+These PCS can be provided to phylink at phylink_create time
+by setting the available_pcs and num_available_pcs in
+phylink_config.
+A helper to parse PCS from fwnode is provided
+fwnode_phylink_pcs_parse() that will fill a preallocated array of
+PCS.
+
+phylink_create() will fill the internal PCS list with the passed
+array of PCS. phylink_major_config and other user of .mac_select_pcs
+are adapted to make use of this new PCS list.
+
+The supported interface value is also moved internally to phylink
+struct. This is to handle late removal and addition of PCS.
+
+The supported interface mask in phylink is done by OR the
+supported_interfaces in phylink_config with every PCS in PCS list.
+
+PCS removal is supported by forcing a mac_config, refresh the
+supported interfaces and run a phy_resolve().
+
+PCS late addition is supported by introducing a global notifier
+for PCS provider. If a phylink have the pcs_interfaces mask not
+zero, it's registered to this notifier.
+
+PCS provider will emit a global PCS add event to signal any
+interface that a new PCS might be avialable.
+
+The function will then check if the PCS is related to the MAC
+fwnode and add it accordingly.
+
+A user for this new implementation is provided as an Airoha PCS
+driver. This was also tested downstream with the IPQ95xx QCOM SoC
+and with the help of Daniel also on the various Mediatek MT7988
+SoC with both SFP cage implementation and DSA attached.
+
+Lots of tests were done with driver unbind/bind and with interface
+up/down also by adding print to make sure major_config_fail gets
+correctly triggered and reset once the PCS comes back.
+
+The dedicated commits have longer description on the implementation
+so it's suggested to also check there for additional info.
+
+While this was developed there was a different version that was
+proposed for the feature, this is posted with the hope of
+implementing a more streamlined implementation and as a
+continuation of v2 with the addressed request from Russell.
+
+Changes v2:
+- Switch to fwnode
+- Implement PCS provider notifier
+- Better split changes
+- Move supported_interfaces to phylink
+- Add circular dependency patch
+- Rework handling with indirect addition/removal and
+  trigger of phylink_resolve()
+
+Christian Marangi (11):
+  net: phylink: fix possible circular locking dep with config in-band
+  net: phylink: keep and use MAC supported_interfaces in phylink struct
+  net: phy: introduce phy_interface_copy helper
+  net: phylink: introduce internal phylink PCS handling
+  net: phylink: add phylink_release_pcs() to externally release a PCS
+  net: pcs: implement Firmware node support for PCS driver
+  net: phylink: support late PCS provider attach
+  dt-bindings: net: ethernet-controller: permit to define multiple PCS
+  net: pcs: airoha: add PCS driver for Airoha SoC
+  dt-bindings: net: pcs: Document support for Airoha Ethernet PCS
+  net: airoha: add phylink support for GDM2/3/4
+
+ .../bindings/net/ethernet-controller.yaml     |    2 -
+ .../bindings/net/pcs/airoha,pcs.yaml          |  112 +
+ drivers/net/ethernet/airoha/airoha_eth.c      |  266 +-
+ drivers/net/ethernet/airoha/airoha_eth.h      |    4 +
+ drivers/net/ethernet/airoha/airoha_regs.h     |   12 +
+ drivers/net/pcs/Kconfig                       |   14 +
+ drivers/net/pcs/Makefile                      |    2 +
+ drivers/net/pcs/pcs-airoha.c                  | 2855 +++++++++++++++++
+ drivers/net/pcs/pcs.c                         |  235 ++
+ drivers/net/phy/phylink.c                     |  283 +-
+ include/linux/pcs/pcs-airoha.h                |   26 +
+ include/linux/pcs/pcs-provider.h              |   41 +
+ include/linux/pcs/pcs.h                       |  104 +
+ include/linux/phy.h                           |    5 +
+ include/linux/phylink.h                       |   12 +
+ 15 files changed, 3942 insertions(+), 31 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/net/pcs/airoha,pcs.yaml
+ create mode 100644 drivers/net/pcs/pcs-airoha.c
+ create mode 100644 drivers/net/pcs/pcs.c
+ create mode 100644 include/linux/pcs/pcs-airoha.h
+ create mode 100644 include/linux/pcs/pcs-provider.h
+ create mode 100644 include/linux/pcs/pcs.h
+
 -- 
-2.45.2
+2.48.1
 
 
