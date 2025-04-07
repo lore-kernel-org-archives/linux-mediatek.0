@@ -4,91 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC9FAC36010
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 16:04:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06F20C36010
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 16:06:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/O3LOiW6qlWOLvEGw+B4O1JAwtUWMQ+DkwfDtCgM5ok=; b=Nk8XCtjmr09R3afHto7ekyexNL
-	LSlhyiZX1AXUJBoPtY5muoV/T5/nyJG8pt2eSjo7q+tEfUX1vIpByXkCXqUwaFP2peBRD1bff88o8
-	pm86rrxLC5+NQXOJE/Cf+kgGtrdO5oJhK1tqAo3xK5Uq6+GEKHTAbwFUuE6UI7mBXregI2hpzJQnW
-	uIfsLVYMRocmDQDshgIpZ1ynRbzTGW9Mj8zeAYPrfL63BjqLGZ81vTDfipTLaPNo4KwBKnKyl9RoR
-	zcDorW7TQQ7gFuz7xmuQz7VUkLnpGOJ74zXClTQ7G9lBsxlU4LxNAoQ2mqP2i8M/ybDZgQfi0Xr1O
-	u3T7wwAg==;
+	bh=DN6sdMdKOpXRPjuWjDBZBgf1MF77VD/mT8Bpbj1C0ko=; b=ioSGks7mrWRXgDXQFDAmlkQ+mC
+	3h2xzJuhWyknGJO8Fd0ayWHrX0WM4++CYe5eDqkVbFjr5sX2ZRoN4f5N6CZBuUUG4/crhYINdprUL
+	9wrVOBbLqJPFjvkFw+MDY/hk+fuMS9y4lsukdNGZ4AApEgi/1y2MVTIhF7c3OfQe/0yBBD/1UhO8J
+	I7TW0+5cbLLbikm2uPmklheXNu7IOK+3JsFqFiiX8nd4yrgq8+vZOiW535jqJ7FfMarQb7Z+UHlfs
+	l+kSI1N5kVsy3ICzsj5BygI1M8PWup2q33bjLddx5x1XCvzOoozgIyKnhwxRslJHOmkcp9t5rW2IC
+	fpmXUT8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1oxu-000000013PV-3Zl5;
-	Mon, 07 Apr 2025 16:04:50 +0000
-Received: from relay9-d.mail.gandi.net ([217.70.183.199])
+	id 1u1oze-000000015Jr-0CFf;
+	Mon, 07 Apr 2025 16:06:38 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1nOm-00000000i7D-0oyh;
-	Mon, 07 Apr 2025 14:24:29 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 8129C443B6;
-	Mon,  7 Apr 2025 14:24:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1744035866;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=/O3LOiW6qlWOLvEGw+B4O1JAwtUWMQ+DkwfDtCgM5ok=;
-	b=kYdr1YU9TU6r0qqhpOTSiLYEQiQzOa0B4YfKeO85xFe0JOgnNVk8Ngn3pTu1dgAVeZrXbo
-	/6pioVVYiLloP6e0nWM8VJhXP1gPNcjvOdjMrnktZc813lllTTTJP/nxBxobk5bdVNnJ8I
-	XEgXXC5+VIdLl1JqlLElRdFm2xOKmusuqQcHL4yq8aTK6nuzuj4eJkA3ns6aMHpjWhmWDB
-	VCu38WwXYAx7XxEOow3UuKCoTCWbQN5rRnSnqb0l3vOPknGTlV6j8gE4MIurQMR2eDweVk
-	hRDNfqZygNY8HpUACvyPjKEry0lF4eH5xYfh5+DvlzeMkHWztJ+hJH7bwEIo3w==
-From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Mon, 07 Apr 2025 16:23:23 +0200
-Subject: [PATCH 08/34] drm/bridge: megachips-stdpxxxx-ge-b850v3-fw: convert
- to devm_drm_bridge_alloc() API
+	id 1u1o2Z-00000000ruY-1Dzu;
+	Mon, 07 Apr 2025 15:05:36 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 677AEA42E9F;
+	Mon,  7 Apr 2025 15:00:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 031B8C4CEE8;
+	Mon,  7 Apr 2025 15:05:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1744038332;
+	bh=Mw9qucjIp0Omq/A9vAIb/29JeyZDGU+9uc/m9jCRX7A=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=gKQS3aWs5xVxCEeJcS5zafu+bQCjIu6I8wU63yWdkZqgTpN0ZX/HSRgG0wgmWL3Df
+	 tO4n9x0oecWmoMZuH9gLl66GZO1AzfyrFd6iPK8hsaD1rVynbuKzMzFYofrQdqnGmp
+	 YE1GFpYc3rTrfy463qTV34W6ytzsjmWknY/GRntLu/xhoBMNTaqRfPiTSkkl8yRcm3
+	 JZa3p5KhofL4wTtG8vofHq+wfE28TQJYr6EcDYsDgl5WUa2CRXX81T5kYlpVYFKA1X
+	 tILrVOmLhSJEvkXnYTKUB3Ueun2ZuSdoGzFkrObrHcMl3dRZeuhARHTmLzv3nTPBng
+	 XpeskTYpqLJZA==
+From: Conor Dooley <conor@kernel.org>
+To: Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Viresh Kumar <viresh.kumar@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Vincenzo Frascino <vincenzo.frascino@arm.com>,
+	Liviu Dudau <liviu.dudau@arm.com>,
+	Sudeep Holla <sudeep.holla@arm.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konradybcio@kernel.org>,
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+	Viresh Kumar <vireshk@kernel.org>,
+	Nishanth Menon <nm@ti.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	zhouyanjie@wanyeetech.com,
+	Conor Dooley <conor@kernel.org>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Steen Hegelund <Steen.Hegelund@microchip.com>,
+	Daniel Machon <daniel.machon@microchip.com>,
+	UNGLinuxDriver@microchip.com,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	"Rob Herring (Arm)" <robh@kernel.org>
+Cc: Conor Dooley <conor.dooley@microchip.com>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-sunxi@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-mips@vger.kernel.org,
+	imx@lists.linux.dev,
+	linux-rockchip@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org
+Subject: Re: (subset) [PATCH 00/19] Arm cpu schema clean-ups
+Date: Mon,  7 Apr 2025 16:04:56 +0100
+Message-ID: <20250407-explicit-explain-a741ef76ba8e@spud>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org>
+References: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250407-drm-bridge-convert-to-alloc-api-v1-8-42113ff8d9c0@bootlin.com>
-References: <20250407-drm-bridge-convert-to-alloc-api-v1-0-42113ff8d9c0@bootlin.com>
-In-Reply-To: <20250407-drm-bridge-convert-to-alloc-api-v1-0-42113ff8d9c0@bootlin.com>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Jagan Teki <jagan@amarulasolutions.com>, Shawn Guo <shawnguo@kernel.org>, 
- Sascha Hauer <s.hauer@pengutronix.de>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, 
- Douglas Anderson <dianders@chromium.org>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Krzysztof Kozlowski <krzk@kernel.org>, 
- Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Cc: Anusha Srivatsa <asrivats@redhat.com>, 
- Paul Kocialkowski <paulk@sys-base.io>, Dmitry Baryshkov <lumag@kernel.org>, 
- =?utf-8?q?Herv=C3=A9_Codina?= <herve.codina@bootlin.com>, 
- Hui Pu <Hui.Pu@gehealthcare.com>, 
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
- dri-devel@lists.freedesktop.org, asahi@lists.linux.dev, 
- linux-kernel@vger.kernel.org, chrome-platform@lists.linux.dev, 
- imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, 
- linux-renesas-soc@vger.kernel.org, platform-driver-x86@vger.kernel.org, 
- linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
- freedreno@lists.freedesktop.org, linux-stm32@st-md-mailman.stormreply.com, 
- Luca Ceresoli <luca.ceresoli@bootlin.com>, Ian Ray <ian.ray@ge.com>, 
- Martyn Welch <martyn.welch@collabora.co.uk>, 
- Peter Senna Tschudin <peter.senna@gmail.com>
-X-Mailer: b4 0.14.2
-X-GND-State: clean
-X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvtddtgedvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhfffugggtgffkfhgjvfevofesthejredtredtjeenucfhrhhomhepnfhutggrucevvghrvghsohhlihcuoehluhgtrgdrtggvrhgvshholhhisegsohhothhlihhnrdgtohhmqeenucggtffrrghtthgvrhhnpeeiieeuvdfftefgueduleehueetgffgjeeitedtteetkeeuueeuueekveevvdeuveenucfkphepvdgrtddvmeeijedtmedvtddvtdemvggrtddumegsvgegudemleehvgejmeefgeefmeeludefvgenucevlhhushhtvghrufhiiigvpeegnecurfgrrhgrmhepihhnvghtpedvrgdtvdemieejtdemvddtvddtmegvrgdtudemsggvgedumeelhegvjeemfeegfeemledufegvpdhhvghloheplgduledvrdduieekrddujeekrdejhegnpdhmrghilhhfrhhomheplhhutggrrdgtvghrvghsohhlihessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepgeegpdhrtghpthhtohephhgvrhhvvgdrtghoughinhgrsegsohhothhlihhnrdgtohhmpdhrtghpthhtoheplhhinhhugidqmhgvughirghtvghksehlihhsthhsrdhinhhfrhgruggvrggurdhorhhgpdhrtghpthhtohepshhhrgifnhhguhhosehkvghrn
- hgvlhdrohhrghdprhgtphhtthhopefjuhhirdfruhesghgvhhgvrghlthhhtggrrhgvrdgtohhmpdhrtghpthhtohepkhgvrhhnvghlsehpvghnghhuthhrohhnihigrdguvgdprhgtphhtthhopehsihhmohhnrgesfhhffihllhdrtghhpdhrtghpthhtoheprhhfohhssheskhgvrhhnvghlrdhorhhgpdhrtghpthhtoheprghnughriigvjhdrhhgrjhgurgesihhnthgvlhdrtghomh
-X-GND-Sasl: luca.ceresoli@bootlin.com
+X-Developer-Signature: v=1; a=openpgp-sha256; l=698; i=conor.dooley@microchip.com; h=from:subject:message-id; bh=3ED6nRUUmofI7rnQA5nqnPZ4e85/GutKQ3V+2IZjPhU=; b=owGbwMvMwCFWscWwfUFT0iXG02pJDOmfX85o+sg3ueWv6O3Sh03r2wxfSPGs4/kmI3wy2pZ9l jij8++rHaUsDGIcDLJiiiyJt/tapNb/cdnh3PMWZg4rE8gQBi5OAZjI0yMM/7PeKB0VzvzRsU76 6ZZK72k+2yufHdmVoe3au+jKpq5jvk8Y/oc+Uf8o/IzxBH/rpdnLH972fP4uU2Jz797u8z9eX11 z8TcbAA==
+X-Developer-Key: i=conor.dooley@microchip.com; a=openpgp; fpr=F9ECA03CF54F12CD01F1655722E2C55B37CF380C
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250407_072428_367450_1A51DBF8 
-X-CRM114-Status: GOOD (  11.95  )
+X-CRM114-CacheID: sfid-20250407_080535_457424_EEA6B6BF 
+X-CRM114-Status: UNSURE (   8.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,51 +122,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is the new API for allocating DRM bridges.
+From: Conor Dooley <conor.dooley@microchip.com>
 
-Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+On Thu, 03 Apr 2025 21:59:21 -0500, Rob Herring (Arm) wrote:
+> The Arm cpu.yaml schema fails to restrict allowed properties in 'cpu'
+> nodes. The result, not surprisely, is a number of additional properties
+> and errors in .dts files. This series resolves those issues.
+> 
+> There's still more properties in arm32 DTS files which I have not
+> documented. Mostly yet more supply names and "fsl,soc-operating-points".
+> What's a few more warnings on the 10000s of warnings...
+> 
+> [...]
 
----
+Applied to microchip-dt64, thanks!
 
-Cc: Ian Ray <ian.ray@ge.com>
-Cc: Martyn Welch <martyn.welch@collabora.co.uk>
-Cc: Peter Senna Tschudin <peter.senna@gmail.com>
----
- drivers/gpu/drm/bridge/megachips-stdpxxxx-ge-b850v3-fw.c | 11 ++++-------
- 1 file changed, 4 insertions(+), 7 deletions(-)
+[04/19] arm64: dts: microchip: sparx5: Fix CPU node "enable-method" property dependencies
+        https://git.kernel.org/at91/c/ec32344d2a3b
 
-diff --git a/drivers/gpu/drm/bridge/megachips-stdpxxxx-ge-b850v3-fw.c b/drivers/gpu/drm/bridge/megachips-stdpxxxx-ge-b850v3-fw.c
-index 15a5a1f644fc10182c55bc9e489ccb81d4f924f9..81dde9ed7bcf7cacae000d9da31a3a5c347ce037 100644
---- a/drivers/gpu/drm/bridge/megachips-stdpxxxx-ge-b850v3-fw.c
-+++ b/drivers/gpu/drm/bridge/megachips-stdpxxxx-ge-b850v3-fw.c
-@@ -225,13 +225,11 @@ static int ge_b850v3_lvds_init(struct device *dev)
- 	if (ge_b850v3_lvds_ptr)
- 		goto success;
- 
--	ge_b850v3_lvds_ptr = devm_kzalloc(dev,
--					  sizeof(*ge_b850v3_lvds_ptr),
--					  GFP_KERNEL);
--
--	if (!ge_b850v3_lvds_ptr) {
-+	ge_b850v3_lvds_ptr = devm_drm_bridge_alloc(dev, struct ge_b850v3_lvds, bridge,
-+						   &ge_b850v3_lvds_funcs);
-+	if (IS_ERR(ge_b850v3_lvds_ptr)) {
- 		mutex_unlock(&ge_b850v3_lvds_dev_mutex);
--		return -ENOMEM;
-+		return PTR_ERR(ge_b850v3_lvds_ptr);
- 	}
- 
- success:
-@@ -264,7 +262,6 @@ static int ge_b850v3_register(void)
- 	struct device *dev = &stdp4028_i2c->dev;
- 
- 	/* drm bridge initialization */
--	ge_b850v3_lvds_ptr->bridge.funcs = &ge_b850v3_lvds_funcs;
- 	ge_b850v3_lvds_ptr->bridge.ops = DRM_BRIDGE_OP_DETECT |
- 					 DRM_BRIDGE_OP_EDID;
- 	ge_b850v3_lvds_ptr->bridge.type = DRM_MODE_CONNECTOR_DisplayPort;
-
--- 
-2.49.0
-
+Thanks,
+Conor.
 
