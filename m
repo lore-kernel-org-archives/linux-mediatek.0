@@ -4,48 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D8F0C36010
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 07:23:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50C94C36010
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 07:43:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OjZ0zQeaYZnQU9cNThossNnDdF3Qb/2WWXU7fkBOVOk=; b=s8bwD3J/yTovVs2MlMs1jUuEi6
-	xaE2s0nKz1YnPdO5+cLaHXZyv8OqR/84Npg4Vt/6qLV9Jm4AbcSrC6HcmMGc+Fe6pXnnJkSZYOMA9
-	NAhjCLlEo+S/Vsu6JNr7EoUX07313W0aWoZI5o5QuMibdQIGFGD4qOooZ3+j0jjhMcexc5pF+3xtQ
-	Ali00Ul88d+1tiUvrHnldk9s0E68NDRtYl+2F5qLNZ10X0qYZxLPU0gmmrVGeMA72uYrN6+ChsZI1
-	kEBb3TTI25CNwmUoW23hpEnWKruZpY1mqO2Q2KlOcCn7IeRpgm60b0/pngWKpfCp+cF4wPL7Av9PJ
-	bw/JypGg==;
+	bh=As0gDp6f/1uOTN1u3EzmRbaKo9fkCDvltWXAEu0wSl0=; b=Bg3wgNIIN/fK6aBogCvjs3i+G+
+	nPdAIyvxzwFNVNv4q+HHYXAUAo5zwq0/xh5tLnZH1yJGkiaXUCCirte5VkBzEpF0Teg5JgRm/NQ3r
+	Kt+R24XT7XGf3rmEYLUUI7FPmAbQaFQY/WA849ES3JwpKO2rIosd8xVkFIgcTRezljH/A9StwHzSy
+	jJAdBPDzFvNFSfGBoSP92+2WVMhSzEsLC66DrGeKsxvdHPUBSQJaD5XOenMaidk/S5lQNuFZaVrAa
+	wnkN3aunN1nGiF65H/wlbI7BGernRjNT5HNEb0uyQ7a1SQRWatLNFFqoNphoWcx/s4fxsf7CCdKZS
+	2TctfMug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1gpi-0000000GkRT-2Zh7;
-	Mon, 07 Apr 2025 07:23:50 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1u1h8s-0000000GpOU-19uo;
+	Mon, 07 Apr 2025 07:43:38 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1gjl-0000000GiNm-04Q4;
-	Mon, 07 Apr 2025 07:17:42 +0000
+	id 1u1gkm-0000000GigQ-2peq;
+	Mon, 07 Apr 2025 07:18:46 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id A94AC49E84;
-	Mon,  7 Apr 2025 07:17:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B617EC4CEDD;
-	Mon,  7 Apr 2025 07:17:33 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id AD22F49E82;
+	Mon,  7 Apr 2025 07:18:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CA8E9C4CEDD;
+	Mon,  7 Apr 2025 07:18:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744010259;
-	bh=xJjO5xrrilFPpI6mBKh+TwJzScF9WqVhZqd3zYeJSIw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=cRutONbpHlN1ZSPZTjguB2x0f33l9njLQS1D88rABmVfG3nEZkbjgHksJ3cKjO4fi
-	 yixsqYmhCGBqGXDrXFnVPZ1rLmJRgzzH4foTv+Ova6dMRDxulLNPHIBJuxlVPKxDkd
-	 oJhWzd/Khql6TtIADoR/oxvUF0VV7mtqTjhthjv9+fLN+n3EAGhgrLw6wByy8coMSG
-	 1edTD31vSGI017jC2OlJoq/Z0V7PplJe2xNFAqI1zhOqZziqYkZpy74hhA8vIbA0r2
-	 4WvDaGJjXyk8LqytWvhU/aFjG2njZ6UwcV81CkF3OLgS6MstGe1YS7H+VFV2tOJtt1
-	 H776i7Vd+IIuw==
-Message-ID: <f213dc91-96db-4c91-a997-72ded078ae10@kernel.org>
-Date: Mon, 7 Apr 2025 09:17:31 +0200
+	s=k20201202; t=1744010324;
+	bh=HSNjqz4a8M5fS+65hxqgWwwjzBf7XSHXFHjnWJ3OwXk=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=XaQfzqxSLdGAvT0lruNGWzRagxrJMSi04iNh2+SQOUiyLLKsHSz8qlDg2RTpplrtn
+	 8/Zl07yXmos6Yg13KbAMV92f3tpQq2ggt7lXMThPd8YRxEuH09GsdQNwbaxC3wfyYE
+	 e8VjIorr0dioCwFzd21Vd1kXQoyrT534JOhEtuhzKLGOL4FMOH3ekOhoZCIwWslUOm
+	 wTv20R8813Sa+BluUa9feq3kCbDHWR5kRdmaSAN2dgGSh5/Bsq48poT4yaxvC7WUxR
+	 e/hGuP7+i+QEsknuyokBHK4ZJ7m4Lj++/WqlVs6xQnKQT5t0TXGDx1rPA3CsWRY/8d
+	 LPi13HSWgUZ6g==
+Message-ID: <19b67f7d-a7fe-4c3e-884b-b2a3986f57ed@kernel.org>
+Date: Mon, 7 Apr 2025 09:18:36 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2 07/57] irqdomain: pci: Switch to of_fwnode_handle()
+From: Jiri Slaby <jirislaby@kernel.org>
 To: Bjorn Helgaas <helgaas@kernel.org>
 Cc: tglx@linutronix.de, maz@kernel.org, linux-kernel@vger.kernel.org,
  Jingoo Han <jingoohan1@gmail.com>,
@@ -66,8 +67,8 @@ Cc: tglx@linutronix.de, maz@kernel.org, linux-kernel@vger.kernel.org,
  linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rpi-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 References: <20250321163240.GA1130095@bhelgaas>
+ <f213dc91-96db-4c91-a997-72ded078ae10@kernel.org>
 Content-Language: en-US
-From: Jiri Slaby <jirislaby@kernel.org>
 Autocrypt: addr=jirislaby@kernel.org; keydata=
  xsFNBE6S54YBEACzzjLwDUbU5elY4GTg/NdotjA0jyyJtYI86wdKraekbNE0bC4zV+ryvH4j
  rrcDwGs6tFVrAHvdHeIdI07s1iIx5R/ndcHwt4fvI8CL5PzPmn5J+h0WERR5rFprRh6axhOk
@@ -110,12 +111,12 @@ Autocrypt: addr=jirislaby@kernel.org; keydata=
  f/bIWIr0cqQmqQ33FgRhrG1+Xml6UXyJ2jExmlO8JljuOGeXYh6ZkIEyzqzffzBLXZCujlYQ
  DFXpyMNVJ2ZwPmX2mWEoYuaBU0JN7wM+/zWgOf2zRwhEuD3A2cO2PxoiIfyUEfB9SSmffaK/
  S4xXoB6wvGENZ85Hg37C7WDNdaAt6Xh2uQIly5grkgvWppkNy4ZHxE+jeNsU7tg=
-In-Reply-To: <20250321163240.GA1130095@bhelgaas>
+In-Reply-To: <f213dc91-96db-4c91-a997-72ded078ae10@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250407_001741_098922_085A6F7D 
-X-CRM114-Status: GOOD (  10.63  )
+X-CRM114-CacheID: sfid-20250407_001844_764027_2F12D788 
+X-CRM114-Status: GOOD (  13.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,30 +131,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 21. 03. 25, 17:32, Bjorn Helgaas wrote:
-> On Wed, Mar 19, 2025 at 10:29:00AM +0100, Jiri Slaby (SUSE) wrote:
->> of_node_to_fwnode() is irqdomain's reimplementation of the "officially"
->> defined of_fwnode_handle(). The former is in the process of being
->> removed, so use the latter instead.
+On 07. 04. 25, 9:17, Jiri Slaby wrote:
+> On 21. 03. 25, 17:32, Bjorn Helgaas wrote:
+>> On Wed, Mar 19, 2025 at 10:29:00AM +0100, Jiri Slaby (SUSE) wrote:
+>>> of_node_to_fwnode() is irqdomain's reimplementation of the "officially"
+>>> defined of_fwnode_handle(). The former is in the process of being
+>>> removed, so use the latter instead.
+>>
+>> I'm fine with these and happy to apply via the PCI tree, but it sounds
+>> like you're planning a v3 with a few updates, so I'll hold off for
+>> now:
+>>
+>> https://lore.kernel.org/r/4bc0e1ca-a523-424a-8759-59e353317fba@kernel.org
 > 
-> I'm fine with these and happy to apply via the PCI tree, but it sounds
-> like you're planning a v3 with a few updates, so I'll hold off for
-> now:
+> Right, there will be a v3 to deal better with irq_domain_create_*()'s 
+> first parameter (patches 13-39/57 later in this series).
 > 
-> https://lore.kernel.org/r/4bc0e1ca-a523-424a-8759-59e353317fba@kernel.org
+> But this very patch (of_fwnode_handle() cleanup sub-series) won't be 
+> affected, so please take it through your tree, if you can.
 
-Right, there will be a v3 to deal better with irq_domain_create_*()'s 
-first parameter (patches 13-39/57 later in this series).
+FWIW, the patch was 20250319092951.37667-8-jirislaby@kernel.org if you 
+already dropped it.
 
-But this very patch (of_fwnode_handle() cleanup sub-series) won't be 
-affected, so please take it through your tree, if you can.
-
-I will fix up the _create_ subseries and resend non-merged patches from 
-this series in v3 later. So it's also fine to wait for v3. (But less I 
-have to resend (unmodified), the better ;).)
-
-thanks,
+> I will fix up the _create_ subseries and resend non-merged patches from 
+> this series in v3 later. So it's also fine to wait for v3. (But less I 
+> have to resend (unmodified), the better ;).)
+> 
+> thanks,
 -- 
 js
 suse labs
+
 
