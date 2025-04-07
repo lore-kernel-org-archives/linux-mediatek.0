@@ -4,105 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D684C36018
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 18:50:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAACCC369A4
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 18:50:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:Message-ID:In-Reply-To:Subject:cc:To:Date:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2E83vRDeGBi2KQKmMy4PdlP5hsTnpBPGTayVZg7p9Bg=; b=NT7O9552qxqeoXj1XmOZ/pWuSV
-	VyzMC4mYXgHpswIrBULqJP/bCHjW2YNrLVdgohStm2waYD8NWuK+tXQmoTPO8I7Xgn/r5Wmo5OB7I
-	l/ObdciZ3fsJUUHwbLuoqCzykplGUkxbdEl6O5nO6gsLXzvnPfVAb2fEdnXQioNqySdcO/yLXFLJz
-	O3TySYaVoF1iQLaBCRa2qYi8tuFx8BC9BcWgGQdW+wDwTihQfbfVa3K5iJ4Wj2Cr2utsEA88ZlR8f
-	tYoNB5ssDFe2WDzK60YjI8xWDiyLTrK9KWa0Ugb/L2KTZXJHCBLyPCdjtfi+urdsjEHbI/MF+Td5z
-	HPJSANGQ==;
+	bh=fcEmP8BWR9G6jF7SFswjkfMRfPbz6AuZJB2v6MIMGzY=; b=yMSwyiSBmK1arqve5n3WkHJNuu
+	9EqXJPmNQVJ9Nvd/3A586sJynIm/sP+Mpetd4X+GVfuhXAqKbDZJZlt3k2ji3WlA8kq8DxasUXUaC
+	igINStGG/14p8ycparCOWx2KVkVooZ5ymfhtvRvPh3QMVarDqj20YXeoPsiknmeA+n98GpuSEhYzK
+	52lqEoszwPiDFLkGPIC8GaNP5LHSEewkn0gxV0eBZVu7pFefQ7oeO8GuXDXu5thLJr9f9qZVoDUU0
+	xisZNd/6GuL0gIMWGzF31gMn5s1tLCyMQxGLiAGmvyI7raDi7V36esvekMJBLjU/EC5F5SGze5jQp
+	/z4kWPkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1rYB-00000001cdj-3v1J;
-	Mon, 07 Apr 2025 18:50:27 +0000
-Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
+	id 1u1rYY-00000001dBo-0yoq;
+	Mon, 07 Apr 2025 18:50:50 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1pK7-00000001AnD-1yD1
-	for linux-mediatek@lists.infradead.org;
-	Mon, 07 Apr 2025 16:27:49 +0000
-Received: by mail-yw1-x112f.google.com with SMTP id 00721157ae682-6f6ca9a3425so53850237b3.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 07 Apr 2025 09:27:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1744043266; x=1744648066; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=2E83vRDeGBi2KQKmMy4PdlP5hsTnpBPGTayVZg7p9Bg=;
-        b=xkY2zL35ZrIeJ2h7iimk8YNwvJ69z6xvQmX21luuOvS4QTMPXsDXEJM5NLiT9FOmve
-         E/VplsY3id4rpxbuv2zMHyn2g/JdkSJsSj7H0l/bLB1xiU2txTAKPxmUbUK82xl4V/0g
-         Ymic6WGfu4EPq392Q+MnnUbUeWjUbNmkqU8mrddqkwvWLUPPbplpW8E+zZArzb0JAyYF
-         ulXZzaZV1ZOYRI5Lt8i3yy9G3prVNrUj95HuYoddur5UjRXiGNiRvk69mPFNHeleFBph
-         SpomeNqiBj9u08xi0jsBwOf7s0cqZOkx3w0CHBMAAuId/236UXYO2N1F05WaPUYrPAwQ
-         nNdA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744043266; x=1744648066;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=2E83vRDeGBi2KQKmMy4PdlP5hsTnpBPGTayVZg7p9Bg=;
-        b=tJlfWrHOaCsqF/pX8UQZZ6lR/btTPGmA8myoMxzNw3OprFV8bFGFZ9OqWu5Lv0fHYu
-         96v0rWLie95dSPKf5u1ohiQ55Vq0tncJk6cK741N0ij/DnNDGMGC9m8YMH7hdydA/FUr
-         QTIUAlNLktX8tvhCeCB/+/iy8Ae0aoFsswxQoX6zm6BPW7M/FYSQPs42ggFgEUZWFxM7
-         MwMHfdjOaUZ4WB9zAbCpU2znFNSNX8h1qpw9V7l5h4Tea42RAolXVKw9Agp46BBHKR7V
-         buEeG4JQ7xclVi1R1RaNg0kgBEKSA+Zp4qbUBSEcQKOT5D2eM1PsKCL9RJfXctvetAoI
-         8okQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXRvP6G1cWABeTrxYtlgVlxwh0C7gMarN9x4fB1z68mIXMZtUvI3pkk4r2ZybJN7Q9jkpjUA2OEfJy0rW3ELQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxwo4PGOTNPvtfWe9gvOtoux7GeLtOmP25yt52k/Udz2gwtotcQ
-	sYimmnxPOTOyoqtmmnCoee+RLM1yMxRp5NZdMuLwOBjzxjilUhkGJtRlJ87KrnvFp5dKdTcJ0DM
-	FJMHPQ6R9JJrLQFq8K0zfvaADwvydY1Ev0uWlMg==
-X-Gm-Gg: ASbGncu9ez8TRigr12uoIqmn6ag483Olu2WoopxCNH2HVB+e6qvjnvWEAznUfrSUdBU
-	jvcw9ckMiI37fKZ69En8N0XuVnXX0rUIdvxlY1F1AzcvE/1ZL3ym/g21ghCPqfcur23V3piE18X
-	UJrbubd0PvIZSqOmGn6ym3JB9OpFw=
-X-Google-Smtp-Source: AGHT+IGtNp2BrAkn3PRcCBrP5vhlJ1looux4OpDWyP6ljq92N0vWykgYWHtVBu01P5IBh7MS/lbuITHOgr8FD7w/MVE=
-X-Received: by 2002:a05:690c:a84:b0:6f9:9d40:35cb with SMTP id
- 00721157ae682-703f41267b0mr168266747b3.6.1744043266227; Mon, 07 Apr 2025
- 09:27:46 -0700 (PDT)
+	id 1u1pd6-00000001Gov-1kYi;
+	Mon, 07 Apr 2025 16:47:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:MIME-Version:References:
+	Message-ID:In-Reply-To:Subject:cc:To:Date:From:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=fcEmP8BWR9G6jF7SFswjkfMRfPbz6AuZJB2v6MIMGzY=; b=RDLa366e7pfEavfl0soKISCI4K
+	2DKfURBuxad42nrYy8swXY7tliKg0O4TXDzrYaTDfMmTr7EsVRZQ9ORzLtnSjTei3LApc8Nu2wvkd
+	L/lRRGtpi8Kebp3Ef+pXvZuu91eMMKS66bvmr1ID6MgU/MFItUFiapZicLiUBDo08CVQGqdpp5uk3
+	j4km0GiaM8HF7JzN+xrfogUFblT08spRSFWC9be+PABQKAjszKXZwYPGTuWKx+FC2Jc+UjBFlYwoI
+	t95pHJFJhqoheBWvMWI1z8JtEbACBKlHj7e60Phpg0I1jfrO2VdNYUobrbrY49tzB3kJ0KGCtcB6Y
+	S27u35Qg==;
+Received: from mgamail.intel.com ([198.175.65.16])
+	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1u1pd3-000000084RE-0BO9;
+	Mon, 07 Apr 2025 16:47:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1744044441; x=1775580441;
+  h=from:date:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=d/9rF2v6gxz+aVjjloTd50bAqLAn569sdN/hKyUhniA=;
+  b=StNe33wtqmNTXyRn0mk9qeP1sByARAW2sZdHEto/aidbogWuI0Kt1Q3q
+   IOYSBUVG6bUHvDUbRhMqFMjKo7Yaocg+CzGrxarCzBhw7Tq5lXbRAhC4d
+   ZvZjGMfA0PsMTRM1vzUXGWvHwbZP//Mhp1l4y173vd1OBQtafs7WCkn/d
+   5VETtfELPESGZ9jV4QWuaPo34uwEDW2eDfakSlpJDq0k2mQFgK7zgj+eS
+   mb4ubfmVbO6xW3Y81KG3WppRsXDzIpy8YGVPVACIiaQamE2DnU6ywvW3y
+   QQQy/tkP4jZUpzzKezeljXwICHj4sv/hnmGefsEAzV22LvtX3HYbDBI9Q
+   Q==;
+X-CSE-ConnectionGUID: HViCMrgGQY6urprMpRR+2Q==
+X-CSE-MsgGUID: fIJTYMMXRNCl9h+Sabfv1Q==
+X-IronPort-AV: E=McAfee;i="6700,10204,11397"; a="45533295"
+X-IronPort-AV: E=Sophos;i="6.15,194,1739865600"; 
+   d="scan'208";a="45533295"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Apr 2025 09:47:13 -0700
+X-CSE-ConnectionGUID: dEMeJzZ7RJaZ+YDO48bYaw==
+X-CSE-MsgGUID: yioqSJnkQC+IzOwpsUAeHQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,194,1739865600"; 
+   d="scan'208";a="127767783"
+Received: from ijarvine-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.245.229])
+  by orviesa009-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Apr 2025 09:47:02 -0700
+From: =?UTF-8?q?Ilpo=20J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>
+Date: Mon, 7 Apr 2025 19:46:59 +0300 (EEST)
+To: Luca Ceresoli <luca.ceresoli@bootlin.com>
+cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+    Maxime Ripard <mripard@kernel.org>, 
+    Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+    Simona Vetter <simona@ffwll.ch>, Andrzej Hajda <andrzej.hajda@intel.com>, 
+    Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+    Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+    Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+    Jagan Teki <jagan@amarulasolutions.com>, Shawn Guo <shawnguo@kernel.org>, 
+    Sascha Hauer <s.hauer@pengutronix.de>, 
+    Pengutronix Kernel Team <kernel@pengutronix.de>, 
+    Fabio Estevam <festevam@gmail.com>, 
+    Douglas Anderson <dianders@chromium.org>, 
+    Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+    Krzysztof Kozlowski <krzk@kernel.org>, 
+    Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, 
+    Anusha Srivatsa <asrivats@redhat.com>, 
+    Paul Kocialkowski <paulk@sys-base.io>, Dmitry Baryshkov <lumag@kernel.org>, 
+    =?ISO-8859-15?Q?Herv=E9_Codina?= <herve.codina@bootlin.com>, 
+    Hui Pu <Hui.Pu@gehealthcare.com>, 
+    Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+    dri-devel@lists.freedesktop.org, asahi@lists.linux.dev, 
+    LKML <linux-kernel@vger.kernel.org>, chrome-platform@lists.linux.dev, 
+    imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+    linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+    linux-renesas-soc@vger.kernel.org, platform-driver-x86@vger.kernel.org, 
+    linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
+    freedreno@lists.freedesktop.org, linux-stm32@st-md-mailman.stormreply.com, 
+    Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
+    Hans de Goede <hdegoede@redhat.com>
+Subject: Re: [PATCH 02/34] platform: arm64: acer-aspire1-ec: convert to
+ devm_drm_bridge_alloc() API
+In-Reply-To: <20250407-drm-bridge-convert-to-alloc-api-v1-2-42113ff8d9c0@bootlin.com>
+Message-ID: <a9000632-a6d1-d369-c317-9ee73aa645dc@linux.intel.com>
+References: <20250407-drm-bridge-convert-to-alloc-api-v1-0-42113ff8d9c0@bootlin.com> <20250407-drm-bridge-convert-to-alloc-api-v1-2-42113ff8d9c0@bootlin.com>
 MIME-Version: 1.0
-References: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org>
- <20250403-dt-cpu-schema-v1-9-076be7171a85@kernel.org> <03011a33-174b-4027-bdd2-043aa685380b@oss.qualcomm.com>
-In-Reply-To: <03011a33-174b-4027-bdd2-043aa685380b@oss.qualcomm.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Mon, 7 Apr 2025 18:27:10 +0200
-X-Gm-Features: ATxdqUE6-dDNiPO2iJ2zywPixm7KYg2Lx2vGxVH4s4tPgli0QW4REXdhqc3rxfE
-Message-ID: <CAPDyKFoZ7NfN+pkCPnusvTOEaxbQhr=1FJqzdDGrLcKAzBpGyQ@mail.gmail.com>
-Subject: Re: [PATCH 09/19] arm: dts: qcom: sdx55/sdx65: Fix CPU power-domain-names
-To: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-Cc: "Rob Herring (Arm)" <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	"Rafael J. Wysocki" <rafael@kernel.org>, Viresh Kumar <viresh.kumar@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Vincenzo Frascino <vincenzo.frascino@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, 
-	Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, 
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Viresh Kumar <vireshk@kernel.org>, 
-	Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>, zhouyanjie@wanyeetech.com, 
-	Conor Dooley <conor@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>, Steen Hegelund <Steen.Hegelund@microchip.com>, 
-	Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, 
-	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org, 
-	linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-mips@vger.kernel.org, 
-	imx@lists.linux.dev, linux-rockchip@lists.infradead.org, 
-	linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: multipart/mixed; boundary="8323328-1316811861-1744044419=:936"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250407_092747_595468_9252CB84 
-X-CRM114-Status: GOOD (  14.13  )
+X-CRM114-CacheID: sfid-20250407_174721_486170_7343113B 
+X-CRM114-Status: GOOD (  15.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,37 +123,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 4 Apr 2025 at 22:41, Konrad Dybcio
-<konrad.dybcio@oss.qualcomm.com> wrote:
->
-> On 4/4/25 4:59 AM, Rob Herring (Arm) wrote:
-> > "rpmhpd" is not documented nor used anywhere. As the enable-method is
-> > "psci" use "psci" for the power-domain name.
-> >
-> > Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
-> > ---
->
-> "psci" is what we want here, but these platforms require some more
-> massaging..
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-So this isn't for CPU performance scaling?
+--8323328-1316811861-1744044419=:936
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 
->
-> These SoCs don't seem to have any PSCI idle states (deeper than WFI)
-> described, which is no bueno, as they support some..
+On Mon, 7 Apr 2025, Luca Ceresoli wrote:
 
-If PSCI PC mode is the only supported CPU suspend mode, we don't need
-the power-domain topology to be described in DT as it's optional to
-use.
+> This is the new API for allocating DRM bridges.
+>=20
+> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+>=20
+> ---
+>=20
+> Cc: "Bryan O'Donoghue" <bryan.odonoghue@linaro.org>
+> Cc: "Ilpo J=C3=A4rvinen" <ilpo.jarvinen@linux.intel.com>
+> Cc: Hans de Goede <hdegoede@redhat.com>
+> ---
+>  drivers/platform/arm64/acer-aspire1-ec.c | 7 +++----
+>  1 file changed, 3 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/drivers/platform/arm64/acer-aspire1-ec.c b/drivers/platform/=
+arm64/acer-aspire1-ec.c
+> index 958fe1bf5f85bb69ac7962f217de9f0b40cde9a1..438532a047e68799ac53a16a4=
+c813fc16be997b9 100644
+> --- a/drivers/platform/arm64/acer-aspire1-ec.c
+> +++ b/drivers/platform/arm64/acer-aspire1-ec.c
+> @@ -452,9 +452,9 @@ static int aspire_ec_probe(struct i2c_client *client)
+>  =09int ret;
+>  =09u8 tmp;
+> =20
+> -=09ec =3D devm_kzalloc(dev, sizeof(*ec), GFP_KERNEL);
+> -=09if (!ec)
+> -=09=09return -ENOMEM;
+> +=09ec =3D devm_drm_bridge_alloc(dev, struct aspire_ec, bridge, &aspire_e=
+c_bridge_funcs);
+> +=09if (IS_ERR(ec))
+> +=09=09return PTR_ERR(ec);
+> =20
+>  =09ec->client =3D client;
+>  =09i2c_set_clientdata(client, ec);
+> @@ -497,7 +497,6 @@ static int aspire_ec_probe(struct i2c_client *client)
+>  =09fwnode =3D device_get_named_child_node(dev, "connector");
+>  =09if (fwnode) {
+>  =09=09INIT_WORK(&ec->work, aspire_ec_bridge_update_hpd_work);
+> -=09=09ec->bridge.funcs =3D &aspire_ec_bridge_funcs;
+>  =09=09ec->bridge.of_node =3D to_of_node(fwnode);
+>  =09=09ec->bridge.ops =3D DRM_BRIDGE_OP_HPD;
+>  =09=09ec->bridge.type =3D DRM_MODE_CONNECTOR_USB;
 
-Is this a PC or OSI based platform?
+Hi Luca,
 
->
-> I'll try to improve this.
->
-> Konrad
->
+It took a while to locate where the code for the new helper is. I suggest=
+=20
+if you need send another version of the series directly linking to the=20
+commit in the cover letter so that it won't take multiple hoops to find it=
+=20
+if one wants to review the code and is not having all drm trees easily at=
+=20
+hand. Here it is for the benefit of other pdx86 people:
 
-Kind regards
-Uffe
+https://gitlab.freedesktop.org/drm/misc/kernel/-/commit/0cc6aadd7fc1e629b71=
+5ea3d1ba537ef2da95eec
+
+
+Acked-by: Ilpo J=C3=A4rvinen <ilpo.jarvinen@linux.intel.com>
+
+I assume you want this to go through the drm tree where the helper already=
+=20
+is?
+
+--=20
+ i.
+
+--8323328-1316811861-1744044419=:936--
 
