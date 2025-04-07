@@ -4,62 +4,147 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6AE4C3601E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 14:25:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 762F8C36010
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 14:27:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NK3hWHxex8PqRLp7aZqEtXRSw5bPGETvPfitT3JR38A=; b=GT9uWZSo404LiWkupR5xuZvUxY
-	Z8DdBD6PquEFv6KFI2DTOJKJwR7YjYgoI5VTQr5Rnpi3611sXwvQqZnDVhQYRrRjeEeHd2zPNkuw2
-	G5fXFMzt5LUn3C7bpa4rd8e0bkwDLK/Fy9iLcTYYTNdBeIxWNhbEVarHiCptKvnPIj4E6ejCAXWkR
-	9NEfzs/DkoVXgYllg+k0i92VW5qhO+0zEGsJief5ZaMzvwWTGgi+NkNZgGFqdErBCJs62l9iMOMP8
-	7/G1BM0sFr9aCipdBvKPPOiYPOAda6jaKsIbKgw3Lds86eQ8UwtIwPl9u+pgKZRRrCAZSQAI7FtzV
-	M8JYOgEw==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=vOkWTDkaWqhHq1Y4W7agfsE9Y+5yrRlMq2iiUf0n4NM=; b=EX7xt1PGmsuBAc
+	203SxcSOTon/jIOeZ3/vAwGo6y92kthS+PrZgRlj3TtpCJE33dzF/SHvW2VwBYjFD4KtUWUDVpdEL
+	NxDNaRS3/7R7gzwp+IU6MGfhthz8GHFmQbkGrwTE0X/2KGEfqJoz09nKLfsNgsbxgW1VPgBUG6VcC
+	zWYmdUA23gOfzzP9JnpI6EP83MohEM1i4e5jefPoLfx48JW9L+8BnE5Be4tyHZPTXu+/cNqTXkdVz
+	PzHzFUosncigyp2GN5OIik9NHqxhe00+3wg3Q1Xin7F3kXooT1NtdgbqYwDT1m5nb+/Px19Tyu3S8
+	/wYkWy8DIdrwknP8Syow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1nQA-00000000imh-3ASB;
-	Mon, 07 Apr 2025 14:25:54 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1u1nRv-00000000jQm-22JX;
+	Mon, 07 Apr 2025 14:27:43 +0000
+Received: from relay9-d.mail.gandi.net ([217.70.183.199])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1nJN-00000000h5h-1Hui;
-	Mon, 07 Apr 2025 14:18:54 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E324A49F4C;
-	Mon,  7 Apr 2025 14:18:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1CA79C4CEDD;
-	Mon,  7 Apr 2025 14:18:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744035531;
-	bh=smNW7eURXbLB4ENz5lLbAub976bCrWFKe8LdVwQRLVE=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Bl2Nt4hJSu1ALcGO3FI92M5BAKmzo7yj8Pc5B7qVPj07QHVr2/dkTDQ/1BulUtEqA
-	 ZZJDr3ggj2efvjmlLUEv66EC9Ojs4UI9VtiMxZfJRcijc7bN3Sx35ajHI8goKy8VjC
-	 tdVsMLy4sXF7z2YFglV29sauKI/pnZb2uiXjznn/wb3t4VNZuFd+sF4otHZq9CePSg
-	 ReurBiMt/GGAzu9xFFF7iYR2eLsHDXgfpa87ss3eLic7YgvCsfASi9b17oWw7ipuWp
-	 R4BsnnKnFtQ4iG/qEg9lz5vfcn+JuSgXEH52N5wKIQVX/UT18dUaDkKMYS1UMy1te2
-	 X7gWNjUwxgwXQ==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Mon, 07 Apr 2025 16:18:32 +0200
-Subject: [PATCH net-next 3/3] net: airoha: Add L2 hw acceleration support
+	id 1u1nON-00000000hux-3UJK;
+	Mon, 07 Apr 2025 14:24:05 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 619A143281;
+	Mon,  7 Apr 2025 14:23:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1744035838;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=vOkWTDkaWqhHq1Y4W7agfsE9Y+5yrRlMq2iiUf0n4NM=;
+	b=ZpF3iYw2Xj1SLfGI3tRB2yHigFy/oDTkUYICDm/tJpzx9bK0IOsEYXjxhxmkeK5WnoAEJm
+	HyVZ1EXFuJRezu8putKQB4eRCLvS2T7qsQ8kk3Iu6zx2nLVWKY2ssnJf50zUGniwkmwKQk
+	hiAQth6a9vlsmgeSdAg1hpyENcfJ1fWMO1Gcf7zxhGYUd2J7hHu8Md7Dv3mSav0dHxBFtV
+	U1pYmZ85envObCNONKWpUOnLStUwWnKZhrkj3vFhbvdQDvkc2vz3yRhvBMdAqe8nIzrGoS
+	sv0K4jHhwh0TNbpSBCSYEX6dWcz2a0PJ1slkUXO+rZqq6ScPL6OsIkU3Ui7X/w==
+From: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Subject: [PATCH 00/34] drm: convert all bridges to devm_drm_bridge_alloc()
+Date: Mon, 07 Apr 2025 16:23:15 +0200
+Message-Id: <20250407-drm-bridge-convert-to-alloc-api-v1-0-42113ff8d9c0@bootlin.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250407-airoha-flowtable-l2b-v1-3-18777778e568@kernel.org>
-References: <20250407-airoha-flowtable-l2b-v1-0-18777778e568@kernel.org>
-In-Reply-To: <20250407-airoha-flowtable-l2b-v1-0-18777778e568@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Content-Transfer-Encoding: 8bit
+X-B4-Tracking: v=1; b=H4sIANTf82cC/x2NSQqAMAwAvyI5G6ilCvoV8dAlakBbSUUE8e8Wj
+ 8PAzAOZhCnDUD0gdHHmFAs0dQV+tXEh5FAYtNKtMspgkB2dcCjGp3iRnHgmtNuWPNqDsWuMIz9
+ 3WvcGSuUQmvn+D+P0vh8Deqr4cQAAAA==
+X-Change-ID: 20250404-drm-bridge-convert-to-alloc-api-614becf62294
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Jagan Teki <jagan@amarulasolutions.com>, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, 
+ Douglas Anderson <dianders@chromium.org>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, 
+ Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Cc: Anusha Srivatsa <asrivats@redhat.com>, 
+ Paul Kocialkowski <paulk@sys-base.io>, Dmitry Baryshkov <lumag@kernel.org>, 
+ =?utf-8?q?Herv=C3=A9_Codina?= <herve.codina@bootlin.com>, 
+ Hui Pu <Hui.Pu@gehealthcare.com>, 
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+ dri-devel@lists.freedesktop.org, asahi@lists.linux.dev, 
+ linux-kernel@vger.kernel.org, chrome-platform@lists.linux.dev, 
+ imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+ linux-renesas-soc@vger.kernel.org, platform-driver-x86@vger.kernel.org, 
+ linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
+ freedreno@lists.freedesktop.org, linux-stm32@st-md-mailman.stormreply.com, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, Adam Ford <aford173@gmail.com>, 
+ Adrien Grassein <adrien.grassein@gmail.com>, 
+ Aleksandr Mishin <amishin@t-argos.ru>, Andy Yan <andy.yan@rock-chips.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Benson Leung <bleung@chromium.org>, Biju Das <biju.das.jz@bp.renesas.com>, 
+ Christoph Fritz <chf.fritz@googlemail.com>, 
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, 
+ Detlev Casanova <detlev.casanova@collabora.com>, 
+ Dharma Balasubiramani <dharma.b@microchip.com>, 
+ Guenter Roeck <groeck@chromium.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Jani Nikula <jani.nikula@intel.com>, Janne Grunau <j@jannau.net>, 
+ Jerome Brunet <jbrunet@baylibre.com>, Jesse Van Gavere <jesseevg@gmail.com>, 
+ Kevin Hilman <khilman@baylibre.com>, 
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
+ Liu Ying <victor.liu@nxp.com>, 
+ Manikandan Muralidharan <manikandan.m@microchip.com>, 
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, Phong LE <ple@baylibre.com>, 
+ Sasha Finkelstein <fnkl.kernel@gmail.com>, 
+ Sugar Zhang <sugar.zhang@rock-chips.com>, 
+ Sui Jingfeng <sui.jingfeng@linux.dev>, 
+ Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, 
+ Vitalii Mordan <mordan@ispras.ru>, 
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
+ =?utf-8?q?Ilpo_J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>, 
+ Hans de Goede <hdegoede@redhat.com>, 
+ =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
+ "Rob Herring (Arm)" <robh@kernel.org>, 
+ Hsin-Te Yuan <yuanhsinte@chromium.org>, 
+ Pin-yen Lin <treapking@chromium.org>, Xin Ji <xji@analogixsemi.com>, 
+ Aradhya Bhatia <a-bhatia1@ti.com>, 
+ Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, Ian Ray <ian.ray@ge.com>, 
+ Martyn Welch <martyn.welch@collabora.co.uk>, 
+ Peter Senna Tschudin <peter.senna@gmail.com>, 
+ Russell King <linux@armlinux.org.uk>, Alim Akhtar <alim.akhtar@samsung.com>, 
+ Inki Dae <inki.dae@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, 
+ Seung-Woo Kim <sw0312.kim@samsung.com>, 
+ Linus Walleij <linus.walleij@linaro.org>, 
+ Abhinav Kumar <quic_abhinavk@quicinc.com>, 
+ Bjorn Andersson <quic_bjorande@quicinc.com>, 
+ Marijn Suijten <marijn.suijten@somainline.org>, 
+ Rob Clark <robdclark@gmail.com>, Sean Paul <sean@poorly.run>, 
+ Helge Deller <deller@gmx.de>, 
+ Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, 
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Philippe Cornu <philippe.cornu@foss.st.com>, 
+ Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>, 
+ Yannick Fertre <yannick.fertre@foss.st.com>, 
+ =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
+ Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
+ Alain Volmat <alain.volmat@foss.st.com>, 
+ Raphael Gallais-Pou <rgallaispou@gmail.com>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Michal Simek <michal.simek@amd.com>
 X-Mailer: b4 0.14.2
+X-GND-State: clean
+X-GND-Score: -100
+X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvtddtgedvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhufffkfggtgfgvfevofesthekredtredtjeenucfhrhhomhepnfhutggrucevvghrvghsohhlihcuoehluhgtrgdrtggvrhgvshholhhisegsohhothhlihhnrdgtohhmqeenucggtffrrghtthgvrhhnpeelgfeugfeludffleevudfhfffhleekjedvkeduudefvdekgfefuddvffelffelffenucfkphepvdgrtddvmeeijedtmedvtddvtdemvggrtddumegsvgegudemleehvgejmeefgeefmeeludefvgenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpedvrgdtvdemieejtdemvddtvddtmegvrgdtudemsggvgedumeelhegvjeemfeegfeemledufegvpdhhvghloheplgduledvrdduieekrddujeekrdejhegnpdhmrghilhhfrhhomheplhhutggrrdgtvghrvghsohhlihessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepudduuddprhgtphhtthhopehhvghrvhgvrdgtohguihhnrgessghoohhtlhhinhdrtghomhdprhgtphhtthhopehlihhnuhigqdhmvgguihgrthgvkheslhhishhtshdrihhnfhhrrgguvggrugdrohhrghdprhgtphhtthhopehshhgrfihnghhuoheskhgvrhhnv
+ ghlrdhorhhgpdhrtghpthhtohepphdriigrsggvlhesphgvnhhguhhtrhhonhhigidruggvpdhrtghpthhtohepjfhuihdrrfhusehgvghhvggrlhhthhgtrghrvgdrtghomhdprhgtphhtthhopegrqdgshhgrthhirgdusehtihdrtghomhdprhgtphhtthhopegrnhgurhiivghjrdhhrghjuggrsehinhhtvghlrdgtohhmpdhrtghpthhtohepmhhrihhprghrugeskhgvrhhnvghlrdhorhhg
+X-GND-Sasl: luca.ceresoli@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250407_071853_391154_0B8BF205 
-X-CRM114-Status: GOOD (  18.20  )
+X-CRM114-CacheID: sfid-20250407_072404_137418_EB476BEB 
+X-CRM114-Status: GOOD (  13.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,293 +159,170 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Similar to mtk driver, introduce the capability to offload L2 traffic
-defining flower rules in the PSE/PPE engine available on EN7581 SoC.
-Since the hw always reports L2/L3/L4 flower rules, link all L2 rules
-sharing the same L2 info (with different L3/L4 info) in the L2 subflows
-list of a given L2 PPE entry.
+devm_drm_bridge_alloc() is the new API to allocate and initialize a DRM
+bridge, and the only one supported from now on. It is also necessary for
+implementing reference counting and thus needed to support removal of
+bridges from a still existing DRM pipeline without use-after-free.
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+This series converts all DRM bridges to the new API.
+
+Patch 1 uses a coccinelle semantic patch to mass-convert some of those
+drivers -- thanks Maxime for having suggested the patch that served as a
+starting point for me. I was unable to come up with a better patch
+converting more drivers though, so I converted all others manually. Most of
+them were trivial. I left the non-trivial ones at the end of the series to
+help reviewers know where to look at more carefully.
+
+Due to the large number of touched files, the list of recipients generated
+by get_maintainers (b4 actually) was huge, 60~70 people (not counting
+mailing lists), so I took the liberty of trimming the list as reasonably as
+I could to DRM maintainers and frequent contributors, and added all other
+recipients individually per-patch. I hope this is fine. Don't hesitate to
+suggest more people which should be Cc-ed in a future series, or a better
+Cc policy.
+
+Current plan and status of the DRM bridge refcounting work:
+
+ A. ✔ add new alloc API and refcounting -> (now in drm-misc-next)
+ B. ➜ convert all bridge drivers to new API (this series)
+ C. documentation, kunit tests, debugfs improvements
+ D. after (B), add get/put to drm_bridge_add/remove() + attach/detech()
+ E. after (B), convert accessors; this is a large work and can be done
+    in chunks
+
+Luca
+
+Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 ---
- drivers/net/ethernet/airoha/airoha_eth.c |   2 +-
- drivers/net/ethernet/airoha/airoha_eth.h |  11 ++-
- drivers/net/ethernet/airoha/airoha_ppe.c | 162 +++++++++++++++++++++++++------
- 3 files changed, 144 insertions(+), 31 deletions(-)
+Luca Ceresoli (34):
+      drm: convert many bridge drivers from devm_kzalloc() to devm_drm_bridge_alloc() API
+      platform: arm64: acer-aspire1-ec: convert to devm_drm_bridge_alloc() API
+      drm/bridge: analogix-anx6345: convert to devm_drm_bridge_alloc() API
+      drm/bridge: anx7625: convert to devm_drm_bridge_alloc() API
+      drm/bridge: cdns-dsi: convert to devm_drm_bridge_alloc() API
+      drm/bridge: display-connector: convert to devm_drm_bridge_alloc() API
+      drm/bridge: lt9611uxc: convert to devm_drm_bridge_alloc() API
+      drm/bridge: megachips-stdpxxxx-ge-b850v3-fw: convert to devm_drm_bridge_alloc() API
+      drm/bridge: nxp-ptn3460: convert to devm_drm_bridge_alloc() API
+      drm/bridge: sii902x: convert to devm_drm_bridge_alloc() API
+      drm/bridge: dw-hdmi: convert to devm_drm_bridge_alloc() API
+      drm/bridge: tda998x: convert to devm_drm_bridge_alloc() API
+      drm/bridge: ti-sn65dsi86: convert to devm_drm_bridge_alloc() API
+      drm/exynos: mic: convert to devm_drm_bridge_alloc() API
+      drm/mcde: convert to devm_drm_bridge_alloc() API
+      drm/msm/dp: convert to devm_drm_bridge_alloc() API
+      drm/msm/dsi: convert to devm_drm_bridge_alloc() API
+      drm/msm/hdmi: convert to devm_drm_bridge_alloc() API
+      drm/omap: dss: dpi: convert to devm_drm_bridge_alloc() API
+      drm/omap: dss: dsi: convert to devm_drm_bridge_alloc() API
+      drm/omap: dss: hdmi4: convert to devm_drm_bridge_alloc() API
+      drm/omap: dss: hdmi5: convert to devm_drm_bridge_alloc() API
+      drm/omap: dss: sdi: convert to devm_drm_bridge_alloc() API
+      drm/omap: dss: venc: convert to devm_drm_bridge_alloc() API
+      drm/rcar-du: dsi: convert to devm_drm_bridge_alloc() API
+      drm/bridge: stm_lvds: convert to devm_drm_bridge_alloc() API
+      drm/vc4: convert to devm_drm_bridge_alloc() API
+      drm/sti: dvo: convert to devm_drm_bridge_alloc() API
+      drm: zynqmp_dp: convert to devm_drm_bridge_alloc() API
+      drm/bridge: imx8qxp-pixel-combiner: convert to devm_drm_bridge_alloc() API
+      drm/bridge: imx8*-ldb: convert to devm_drm_bridge_alloc() API
+      drm/bridge: tc358767: convert to devm_drm_bridge_alloc() API
+      drm/bridge: add devm_drm_put_bridge()
+      drm/bridge: panel: convert to devm_drm_bridge_alloc() API
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index d748dc6de92367365db9f9548f9af52a7fdac187..723eba7cfa0cf405dc2ef9248b34bf6af897ceed 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -694,7 +694,7 @@ static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
- 
- 		reason = FIELD_GET(AIROHA_RXD4_PPE_CPU_REASON, msg1);
- 		if (reason == PPE_CPU_REASON_HIT_UNBIND_RATE_REACHED)
--			airoha_ppe_check_skb(eth->ppe, hash);
-+			airoha_ppe_check_skb(eth->ppe, q->skb, hash);
- 
- 		done++;
- 		napi_gro_receive(&q->napi, q->skb);
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index 57925648155b104021c10821096ba267c9c7cef6..e82abfc1a67bda7f675342327ae07601d81f2b8f 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -430,11 +430,15 @@ enum airoha_flow_entry_type {
- 
- struct airoha_flow_table_entry {
- 	union {
--		struct hlist_node list;
--		struct rhash_head l2_node;
-+		struct hlist_node list; /* PPE L3 flow entry */
-+		struct {
-+			struct rhash_head l2_node;  /* L2 flow entry */
-+			struct hlist_head l2_flows; /* PPE L2 subflows list */
-+		};
- 	};
- 
- 	struct airoha_foe_entry data;
-+	struct hlist_node l2_subflow_node; /* PPE L2 subflow entry */
- 	u32 hash;
- 
- 	enum airoha_flow_entry_type type;
-@@ -548,7 +552,8 @@ u32 airoha_rmw(void __iomem *base, u32 offset, u32 mask, u32 val);
- bool airoha_is_valid_gdm_port(struct airoha_eth *eth,
- 			      struct airoha_gdm_port *port);
- 
--void airoha_ppe_check_skb(struct airoha_ppe *ppe, u16 hash);
-+void airoha_ppe_check_skb(struct airoha_ppe *ppe, struct sk_buff *skb,
-+			  u16 hash);
- int airoha_ppe_setup_tc_block_cb(enum tc_setup_type type, void *type_data,
- 				 void *cb_priv);
- int airoha_ppe_init(struct airoha_eth *eth);
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index 8f75752c6714cc211a8efd0b6fdf5565ffa23c14..e95a7b727dda2e0182e0ddb567cb13fb746cd455 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -204,6 +204,15 @@ static int airoha_get_dsa_port(struct net_device **dev)
- #endif
- }
- 
-+static void airoha_ppe_foe_set_bridge_addrs(struct airoha_foe_bridge *br,
-+					    struct ethhdr *eh)
-+{
-+	br->dest_mac_hi = get_unaligned_be32(eh->h_dest);
-+	br->dest_mac_lo = get_unaligned_be16(eh->h_dest + 4);
-+	br->src_mac_hi = get_unaligned_be16(eh->h_source);
-+	br->src_mac_lo = get_unaligned_be32(eh->h_source + 2);
-+}
-+
- static int airoha_ppe_foe_entry_prepare(struct airoha_eth *eth,
- 					struct airoha_foe_entry *hwe,
- 					struct net_device *dev, int type,
-@@ -254,13 +263,7 @@ static int airoha_ppe_foe_entry_prepare(struct airoha_eth *eth,
- 
- 	qdata = FIELD_PREP(AIROHA_FOE_SHAPER_ID, 0x7f);
- 	if (type == PPE_PKT_TYPE_BRIDGE) {
--		hwe->bridge.dest_mac_hi = get_unaligned_be32(data->eth.h_dest);
--		hwe->bridge.dest_mac_lo =
--			get_unaligned_be16(data->eth.h_dest + 4);
--		hwe->bridge.src_mac_hi =
--			get_unaligned_be16(data->eth.h_source);
--		hwe->bridge.src_mac_lo =
--			get_unaligned_be32(data->eth.h_source + 2);
-+		airoha_ppe_foe_set_bridge_addrs(&hwe->bridge, &data->eth);
- 		hwe->bridge.data = qdata;
- 		hwe->bridge.ib2 = val;
- 		l2 = &hwe->bridge.l2.common;
-@@ -385,6 +388,19 @@ static u32 airoha_ppe_foe_get_entry_hash(struct airoha_foe_entry *hwe)
- 		hv3 = hwe->ipv6.src_ip[1] ^ hwe->ipv6.dest_ip[1];
- 		hv3 ^= hwe->ipv6.src_ip[0];
- 		break;
-+	case PPE_PKT_TYPE_BRIDGE: {
-+		struct airoha_foe_mac_info *l2 = &hwe->bridge.l2;
-+
-+		hv1 = l2->common.src_mac_hi & 0xffff;
-+		hv1 = hv1 << 16 | l2->src_mac_lo;
-+
-+		hv2 = l2->common.dest_mac_lo;
-+		hv2 = hv2 << 16;
-+		hv2 = hv2 | ((l2->common.src_mac_hi & 0xffff0000) >> 16);
-+
-+		hv3 = l2->common.dest_mac_hi;
-+		break;
-+	}
- 	case PPE_PKT_TYPE_IPV4_DSLITE:
- 	case PPE_PKT_TYPE_IPV6_6RD:
- 	default:
-@@ -483,30 +499,100 @@ static int airoha_ppe_foe_commit_entry(struct airoha_ppe *ppe,
- 	return 0;
- }
- 
-+static void airoha_ppe_foe_remove_flow(struct airoha_ppe *ppe,
-+				       struct airoha_flow_table_entry *e)
-+{
-+	lockdep_assert_held(&ppe_lock);
-+
-+	hlist_del_init(&e->list);
-+	if (e->hash != 0xffff) {
-+		e->data.ib1 &= ~AIROHA_FOE_IB1_BIND_STATE;
-+		e->data.ib1 |= FIELD_PREP(AIROHA_FOE_IB1_BIND_STATE,
-+					  AIROHA_FOE_STATE_INVALID);
-+		airoha_ppe_foe_commit_entry(ppe, &e->data, e->hash);
-+		e->hash = 0xffff;
-+	}
-+	if (e->type == FLOW_TYPE_L2_SUBFLOW) {
-+		hlist_del_init(&e->l2_subflow_node);
-+		kfree(e);
-+	}
-+}
-+
-+static void airoha_ppe_foe_remove_l2_flow(struct airoha_ppe *ppe,
-+					  struct airoha_flow_table_entry *e)
-+{
-+	struct hlist_head *head = &e->l2_flows;
-+	struct hlist_node *n;
-+
-+	lockdep_assert_held(&ppe_lock);
-+
-+	rhashtable_remove_fast(&ppe->l2_flows, &e->l2_node,
-+			       airoha_l2_flow_table_params);
-+	hlist_for_each_entry_safe(e, n, head, l2_subflow_node)
-+		airoha_ppe_foe_remove_flow(ppe, e);
-+}
-+
- static void airoha_ppe_foe_flow_remove_entry(struct airoha_ppe *ppe,
- 					     struct airoha_flow_table_entry *e)
- {
- 	lockdep_assert_held(&ppe_lock);
- 
--	if (e->type == FLOW_TYPE_L2) {
--		rhashtable_remove_fast(&ppe->l2_flows, &e->l2_node,
--				       airoha_l2_flow_table_params);
--	} else {
--		hlist_del_init(&e->list);
--		if (e->hash != 0xffff) {
--			e->data.ib1 &= ~AIROHA_FOE_IB1_BIND_STATE;
--			e->data.ib1 |= FIELD_PREP(AIROHA_FOE_IB1_BIND_STATE,
--						  AIROHA_FOE_STATE_INVALID);
--			airoha_ppe_foe_commit_entry(ppe, &e->data, e->hash);
--			e->hash = 0xffff;
--		}
--	}
-+	if (e->type == FLOW_TYPE_L2)
-+		airoha_ppe_foe_remove_l2_flow(ppe, e);
-+	else
-+		airoha_ppe_foe_remove_flow(ppe, e);
- }
- 
--static void airoha_ppe_foe_insert_entry(struct airoha_ppe *ppe, u32 hash)
-+static int
-+airoha_ppe_foe_commit_subflow_entry(struct airoha_ppe *ppe,
-+				    struct airoha_flow_table_entry *e,
-+				    u32 hash)
-+{
-+	u32 mask = AIROHA_FOE_IB1_BIND_PACKET_TYPE | AIROHA_FOE_IB1_BIND_UDP;
-+	struct airoha_foe_entry *hwe_p, hwe;
-+	struct airoha_flow_table_entry *f;
-+	struct airoha_foe_mac_info *l2;
-+	int type;
-+
-+	hwe_p = airoha_ppe_foe_get_entry(ppe, hash);
-+	if (!hwe_p)
-+		return -EINVAL;
-+
-+	f = kzalloc(sizeof(*f), GFP_ATOMIC);
-+	if (!f)
-+		return -ENOMEM;
-+
-+	hlist_add_head(&f->l2_subflow_node, &e->l2_flows);
-+	f->type = FLOW_TYPE_L2_SUBFLOW;
-+	f->hash = hash;
-+
-+	memcpy(&hwe, hwe_p, sizeof(*hwe_p));
-+	hwe.ib1 = (hwe.ib1 & mask) | (e->data.ib1 & ~mask);
-+	l2 = &hwe.bridge.l2;
-+	memcpy(l2, &e->data.bridge.l2, sizeof(*l2));
-+
-+	type = FIELD_GET(AIROHA_FOE_IB1_BIND_PACKET_TYPE, hwe.ib1);
-+	if (type == PPE_PKT_TYPE_IPV4_HNAPT)
-+		memcpy(&hwe.ipv4.new_tuple, &hwe.ipv4.orig_tuple,
-+		       sizeof(hwe.ipv4.new_tuple));
-+	else if (type >= PPE_PKT_TYPE_IPV6_ROUTE_3T &&
-+		 l2->common.etype == ETH_P_IP)
-+		l2->common.etype = ETH_P_IPV6;
-+
-+	hwe.bridge.ib2 = e->data.bridge.ib2;
-+	airoha_ppe_foe_commit_entry(ppe, &hwe, hash);
-+
-+	return 0;
-+}
-+
-+static void airoha_ppe_foe_insert_entry(struct airoha_ppe *ppe,
-+					struct sk_buff *skb,
-+					u32 hash)
- {
- 	struct airoha_flow_table_entry *e;
-+	struct airoha_foe_bridge br = {};
- 	struct airoha_foe_entry *hwe;
-+	bool commit_done = false;
- 	struct hlist_node *n;
- 	u32 index, state;
- 
-@@ -522,12 +608,33 @@ static void airoha_ppe_foe_insert_entry(struct airoha_ppe *ppe, u32 hash)
- 
- 	index = airoha_ppe_foe_get_entry_hash(hwe);
- 	hlist_for_each_entry_safe(e, n, &ppe->foe_flow[index], list) {
--		if (airoha_ppe_foe_compare_entry(e, hwe)) {
--			airoha_ppe_foe_commit_entry(ppe, &e->data, hash);
--			e->hash = hash;
--			break;
-+		if (e->type == FLOW_TYPE_L2_SUBFLOW) {
-+			state = FIELD_GET(AIROHA_FOE_IB1_BIND_STATE, hwe->ib1);
-+			if (state != AIROHA_FOE_STATE_BIND) {
-+				e->hash = 0xffff;
-+				airoha_ppe_foe_remove_flow(ppe, e);
-+			}
-+			continue;
-+		}
-+
-+		if (commit_done || !airoha_ppe_foe_compare_entry(e, hwe)) {
-+			e->hash = 0xffff;
-+			continue;
- 		}
-+
-+		airoha_ppe_foe_commit_entry(ppe, &e->data, hash);
-+		commit_done = true;
-+		e->hash = hash;
- 	}
-+
-+	if (commit_done)
-+		goto unlock;
-+
-+	airoha_ppe_foe_set_bridge_addrs(&br, eth_hdr(skb));
-+	e = rhashtable_lookup_fast(&ppe->l2_flows, &br,
-+				   airoha_l2_flow_table_params);
-+	if (e)
-+		airoha_ppe_foe_commit_subflow_entry(ppe, e, hash);
- unlock:
- 	spin_unlock_bh(&ppe_lock);
- }
-@@ -890,7 +997,8 @@ int airoha_ppe_setup_tc_block_cb(enum tc_setup_type type, void *type_data,
- 	return err;
- }
- 
--void airoha_ppe_check_skb(struct airoha_ppe *ppe, u16 hash)
-+void airoha_ppe_check_skb(struct airoha_ppe *ppe, struct sk_buff *skb,
-+			  u16 hash)
- {
- 	u16 now, diff;
- 
-@@ -903,7 +1011,7 @@ void airoha_ppe_check_skb(struct airoha_ppe *ppe, u16 hash)
- 		return;
- 
- 	ppe->foe_check_time[hash] = now;
--	airoha_ppe_foe_insert_entry(ppe, hash);
-+	airoha_ppe_foe_insert_entry(ppe, skb, hash);
- }
- 
- int airoha_ppe_init(struct airoha_eth *eth)
+ drivers/gpu/drm/adp/adp-mipi.c                     |  8 ++--
+ drivers/gpu/drm/bridge/adv7511/adv7511_drv.c       |  9 ++--
+ drivers/gpu/drm/bridge/analogix/analogix-anx6345.c |  8 ++--
+ drivers/gpu/drm/bridge/analogix/analogix-anx78xx.c |  9 ++--
+ drivers/gpu/drm/bridge/analogix/anx7625.c          |  7 ++-
+ drivers/gpu/drm/bridge/aux-bridge.c                |  9 ++--
+ drivers/gpu/drm/bridge/aux-hpd-bridge.c            |  9 ++--
+ drivers/gpu/drm/bridge/cadence/cdns-dsi-core.c     |  8 ++--
+ .../gpu/drm/bridge/cadence/cdns-mhdp8546-core.c    |  8 ++--
+ drivers/gpu/drm/bridge/chipone-icn6211.c           |  9 ++--
+ drivers/gpu/drm/bridge/chrontel-ch7033.c           |  8 ++--
+ drivers/gpu/drm/bridge/cros-ec-anx7688.c           |  9 ++--
+ drivers/gpu/drm/bridge/display-connector.c         |  8 ++--
+ drivers/gpu/drm/bridge/fsl-ldb.c                   |  7 ++-
+ drivers/gpu/drm/bridge/imx/imx-ldb-helper.c        |  4 +-
+ drivers/gpu/drm/bridge/imx/imx-ldb-helper.h        |  3 +-
+ drivers/gpu/drm/bridge/imx/imx-legacy-bridge.c     |  9 ++--
+ drivers/gpu/drm/bridge/imx/imx8mp-hdmi-pvi.c       | 10 ++--
+ drivers/gpu/drm/bridge/imx/imx8qm-ldb.c            | 32 ++++++++-----
+ drivers/gpu/drm/bridge/imx/imx8qxp-ldb.c           | 20 +++++---
+ .../gpu/drm/bridge/imx/imx8qxp-pixel-combiner.c    | 18 ++++---
+ drivers/gpu/drm/bridge/imx/imx8qxp-pixel-link.c    |  8 ++--
+ drivers/gpu/drm/bridge/imx/imx8qxp-pxl2dpi.c       |  8 ++--
+ drivers/gpu/drm/bridge/ite-it6263.c                |  9 ++--
+ drivers/gpu/drm/bridge/ite-it6505.c                |  9 ++--
+ drivers/gpu/drm/bridge/ite-it66121.c               |  9 ++--
+ drivers/gpu/drm/bridge/lontium-lt8912b.c           |  9 ++--
+ drivers/gpu/drm/bridge/lontium-lt9211.c            |  8 ++--
+ drivers/gpu/drm/bridge/lontium-lt9611.c            |  9 ++--
+ drivers/gpu/drm/bridge/lontium-lt9611uxc.c         |  7 ++-
+ drivers/gpu/drm/bridge/lvds-codec.c                |  9 ++--
+ .../drm/bridge/megachips-stdpxxxx-ge-b850v3-fw.c   | 11 ++---
+ drivers/gpu/drm/bridge/microchip-lvds.c            |  8 ++--
+ drivers/gpu/drm/bridge/nwl-dsi.c                   |  8 ++--
+ drivers/gpu/drm/bridge/nxp-ptn3460.c               |  9 ++--
+ drivers/gpu/drm/bridge/panel.c                     | 11 ++---
+ drivers/gpu/drm/bridge/parade-ps8622.c             |  9 ++--
+ drivers/gpu/drm/bridge/parade-ps8640.c             |  9 ++--
+ drivers/gpu/drm/bridge/sii902x.c                   |  7 ++-
+ drivers/gpu/drm/bridge/sii9234.c                   |  9 ++--
+ drivers/gpu/drm/bridge/sil-sii8620.c               |  9 ++--
+ drivers/gpu/drm/bridge/simple-bridge.c             | 10 ++--
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c       |  8 ++--
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c          |  7 ++-
+ drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c      |  8 ++--
+ drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c     |  8 ++--
+ drivers/gpu/drm/bridge/tc358762.c                  |  9 ++--
+ drivers/gpu/drm/bridge/tc358764.c                  |  9 ++--
+ drivers/gpu/drm/bridge/tc358767.c                  | 56 +++++++++++++++-------
+ drivers/gpu/drm/bridge/tc358768.c                  |  9 ++--
+ drivers/gpu/drm/bridge/tc358775.c                  |  9 ++--
+ drivers/gpu/drm/bridge/tda998x_drv.c               |  7 ++-
+ drivers/gpu/drm/bridge/thc63lvd1024.c              |  8 ++--
+ drivers/gpu/drm/bridge/ti-dlpc3433.c               |  9 ++--
+ drivers/gpu/drm/bridge/ti-sn65dsi86.c              |  7 ++-
+ drivers/gpu/drm/bridge/ti-tdp158.c                 |  8 ++--
+ drivers/gpu/drm/bridge/ti-tfp410.c                 |  9 ++--
+ drivers/gpu/drm/bridge/ti-tpd12s015.c              |  9 ++--
+ drivers/gpu/drm/drm_bridge.c                       | 14 ++++++
+ drivers/gpu/drm/exynos/exynos_drm_mic.c            |  7 ++-
+ drivers/gpu/drm/mcde/mcde_dsi.c                    |  7 ++-
+ drivers/gpu/drm/mediatek/mtk_dp.c                  |  9 ++--
+ drivers/gpu/drm/mediatek/mtk_dpi.c                 |  9 ++--
+ drivers/gpu/drm/mediatek/mtk_dsi.c                 |  9 ++--
+ drivers/gpu/drm/mediatek/mtk_hdmi.c                |  9 ++--
+ drivers/gpu/drm/meson/meson_encoder_cvbs.c         | 12 ++---
+ drivers/gpu/drm/meson/meson_encoder_dsi.c          | 12 ++---
+ drivers/gpu/drm/meson/meson_encoder_hdmi.c         | 12 ++---
+ drivers/gpu/drm/msm/dp/dp_drm.c                    |  9 ++--
+ drivers/gpu/drm/msm/dsi/dsi_manager.c              |  9 ++--
+ drivers/gpu/drm/msm/hdmi/hdmi_bridge.c             |  9 ++--
+ drivers/gpu/drm/omapdrm/dss/dpi.c                  |  7 ++-
+ drivers/gpu/drm/omapdrm/dss/dsi.c                  |  7 ++-
+ drivers/gpu/drm/omapdrm/dss/hdmi4.c                | 26 ++++------
+ drivers/gpu/drm/omapdrm/dss/hdmi5.c                | 26 ++++------
+ drivers/gpu/drm/omapdrm/dss/sdi.c                  | 25 ++++------
+ drivers/gpu/drm/omapdrm/dss/venc.c                 | 23 ++++-----
+ drivers/gpu/drm/renesas/rcar-du/rcar_lvds.c        |  9 ++--
+ drivers/gpu/drm/renesas/rcar-du/rcar_mipi_dsi.c    |  8 ++--
+ drivers/gpu/drm/renesas/rz-du/rzg2l_mipi_dsi.c     | 10 ++--
+ drivers/gpu/drm/sti/sti_dvo.c                      | 29 +++++------
+ drivers/gpu/drm/stm/lvds.c                         |  7 ++-
+ drivers/gpu/drm/vc4/vc4_dsi.c                      | 30 ++----------
+ drivers/gpu/drm/xlnx/zynqmp_dp.c                   |  7 ++-
+ drivers/platform/arm64/acer-aspire1-ec.c           |  7 ++-
+ include/drm/drm_bridge.h                           |  4 ++
+ 86 files changed, 438 insertions(+), 491 deletions(-)
+---
+base-commit: 0bed7a4df3efaeaeec3e48fa1dfa3aefc1b07e37
+change-id: 20250404-drm-bridge-convert-to-alloc-api-614becf62294
 
+Best regards,
 -- 
-2.49.0
+Luca Ceresoli <luca.ceresoli@bootlin.com>
 
 
