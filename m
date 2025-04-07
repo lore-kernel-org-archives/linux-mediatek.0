@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96580C3601E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 16:27:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2E5DC36010
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 16:27:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2+5+GjqrqahDjWCbB2TifM56CkY8Jd8rJ23PVGyVzuc=; b=OD3ClP7OT2AT4kKjW43TMa4dPj
-	MVfFugtT9MQ87wfCxwCC/sFSAu/MABYQAozSmicMNXSIhwSk9dH9Q47nZTfIEiLzlzs0CCjWDt+xj
-	Njz8vgIUMzFUgg3dXnTSIL/OHBycBdut/jhVj4cfVJ/VXvjx3RAEmronFPn9BDVJDtemGQ/AfhZqb
-	QPQIl/7joEvADS1fg58LrnOqyLDYLglTRqayTbB0v11p+eR40VDKq2i3CgPA3YfUtRyQf8ImUyZGN
-	y/xFsR0ZYkXG0Y85BPE5JON9YLcCMmPnJQd9CpWqdg/IOepkAccKOLgkvFBf5PsBLz9ygDlgJ8h1s
-	EdACAnyw==;
+	bh=l3FWEw1G2sbWwRwK4wsDs1lETDuJQR8YFKZYWm0MnUo=; b=geNmo8ahKGcISQyW0IQAWZAMsK
+	PdHiEZn0ei/0Eyr6Bff650fLFB+kBVYLG3X7P35DowTFEC8TXam8T3v9/JiG0+/55kYhFeOAuyaxO
+	jEOavBKPOrCoV13YNAvu3fjkIuyy3VH4ujFhYMRS5v1l4re1Sgz3BcclvXO1WImA0gTqvMrJkKD2B
+	mdNPNldpS7NaGxM/q8tsA+jiyrI6fVKT93RsZPiDZ95T2OTLPIaOep6+8tdvFvBD8Tkc58Tgcpmxm
+	RoT0a1watSWg5jbfshrVYD1Ag0xf177li13UWr+v5iKP1Zl5woIC+R3JA8Ti33oqs7nHEp6/XuQcf
+	FRWIr8Cg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1pK8-00000001Aq8-259V;
-	Mon, 07 Apr 2025 16:27:48 +0000
+	id 1u1pKA-00000001AuY-2tky;
+	Mon, 07 Apr 2025 16:27:50 +0000
 Received: from relay9-d.mail.gandi.net ([217.70.183.199])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1nPh-00000000ib5-35ba;
-	Mon, 07 Apr 2025 14:25:27 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id CD6D5443B3;
-	Mon,  7 Apr 2025 14:25:20 +0000 (UTC)
+	id 1u1nPr-00000000ied-3oYM;
+	Mon, 07 Apr 2025 14:25:37 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id B8B68443AE;
+	Mon,  7 Apr 2025 14:25:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1744035924;
+	t=1744035933;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=2+5+GjqrqahDjWCbB2TifM56CkY8Jd8rJ23PVGyVzuc=;
-	b=RwFIkdg5agZhBhwsTZgmPQ2eaHXEeoiI5CQXOuC/m85Emg9m3JdajfWQGbV9ulWUMdibCD
-	98R8yhVa577pFnS7gUgPJmbBbU7plM6FSyEfBgmLEwOk6nvqTLiFjBXl+dLwM/oZtdyfNJ
-	DCjHuQISBz/6my/ZkiRytQdoDuI9qp+/t1Iy3128aMjrTZWZiEzuCSkZYJLZNlJ4WakWze
-	ifuLQIxdQJ2u2ywY+qwQZDabgObJ2BM84imy7QGpuflkqJxiMrejUeSfNRyOEvrr5WJLVf
-	OysN6COLFParX5+PmEC9FxEMOK5iTuktKUdEQW/A2WVDM1uvD5HmBXgKibTvKg==
+	bh=l3FWEw1G2sbWwRwK4wsDs1lETDuJQR8YFKZYWm0MnUo=;
+	b=MvR2Us08NUfikuKz4xh+TnkajC5v+jRtsCRc7Cd3VY8SJP9Wr51paCNX+JRjk6QuX7otMl
+	yzzUFfYbwsxpeqK6/w7k9JqSrw+I3VuHUW1RQHZCLS1CbB3ecpIQe39MMfVR4qJtP0WK6p
+	Re/c+2bE2ag2UEQlqF60XSinQe5BFOnBwh87sche2KJW2UfNhtmiqeoztFAuQdmNe1qCQT
+	SV8PuiiyLNPZDRMKZP8ahQL0hX42lIrb5FquWctVJ7+9Ql55iMVoT5R1MTxeYUj9NztgjQ
+	9RTeLa732ATrp4N/BM8UcWsiNz6/vXe2ri8t1aYvq9TZVI4vx7RmEOaU42UbUw==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Mon, 07 Apr 2025 16:23:41 +0200
-Subject: [PATCH 26/34] drm/bridge: stm_lvds: convert to
- devm_drm_bridge_alloc() API
+Date: Mon, 07 Apr 2025 16:23:44 +0200
+Subject: [PATCH 29/34] drm: zynqmp_dp: convert to devm_drm_bridge_alloc()
+ API
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250407-drm-bridge-convert-to-alloc-api-v1-26-42113ff8d9c0@bootlin.com>
+Message-Id: <20250407-drm-bridge-convert-to-alloc-api-v1-29-42113ff8d9c0@bootlin.com>
 References: <20250407-drm-bridge-convert-to-alloc-api-v1-0-42113ff8d9c0@bootlin.com>
 In-Reply-To: <20250407-drm-bridge-convert-to-alloc-api-v1-0-42113ff8d9c0@bootlin.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -78,20 +78,18 @@ Cc: Anusha Srivatsa <asrivats@redhat.com>,
  linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
  freedreno@lists.freedesktop.org, linux-stm32@st-md-mailman.stormreply.com, 
  Luca Ceresoli <luca.ceresoli@bootlin.com>, 
- Alexandre Torgue <alexandre.torgue@foss.st.com>, 
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
- Philippe Cornu <philippe.cornu@foss.st.com>, 
- Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>, 
- Yannick Fertre <yannick.fertre@foss.st.com>
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Michal Simek <michal.simek@amd.com>, 
+ Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
 X-Mailer: b4 0.14.2
 X-GND-State: clean
 X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvtddtgedvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhfffugggtgffkfhgjvfevofesthejredtredtjeenucfhrhhomhepnfhutggrucevvghrvghsohhlihcuoehluhgtrgdrtggvrhgvshholhhisegsohhothhlihhnrdgtohhmqeenucggtffrrghtthgvrhhnpeeiieeuvdfftefgueduleehueetgffgjeeitedtteetkeeuueeuueekveevvdeuveenucfkphepvdgrtddvmeeijedtmedvtddvtdemvggrtddumegsvgegudemleehvgejmeefgeefmeeludefvgenucevlhhushhtvghrufhiiigvpedvfeenucfrrghrrghmpehinhgvthepvdgrtddvmeeijedtmedvtddvtdemvggrtddumegsvgegudemleehvgejmeefgeefmeeludefvgdphhgvlhhopegludelvddrudeikedrudejkedrjeehngdpmhgrihhlfhhrohhmpehluhgtrgdrtggvrhgvshholhhisegsohhothhlihhnrdgtohhmpdhnsggprhgtphhtthhopeegiedprhgtphhtthhopehhvghrvhgvrdgtohguihhnrgessghoohhtlhhinhdrtghomhdprhgtphhtthhopehlihhnuhigqdhmvgguihgrthgvkheslhhishhtshdrihhnfhhrrgguvggrugdrohhrghdprhgtphhtthhopehshhgrfihnghhuoheskhgvr
+X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvtddtgedvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhfffugggtgffkfhgjvfevofesthejredtredtjeenucfhrhhomhepnfhutggrucevvghrvghsohhlihcuoehluhgtrgdrtggvrhgvshholhhisegsohhothhlihhnrdgtohhmqeenucggtffrrghtthgvrhhnpeeiieeuvdfftefgueduleehueetgffgjeeitedtteetkeeuueeuueekveevvdeuveenucfkphepvdgrtddvmeeijedtmedvtddvtdemvggrtddumegsvgegudemleehvgejmeefgeefmeeludefvgenucevlhhushhtvghrufhiiigvpedvgeenucfrrghrrghmpehinhgvthepvdgrtddvmeeijedtmedvtddvtdemvggrtddumegsvgegudemleehvgejmeefgeefmeeludefvgdphhgvlhhopegludelvddrudeikedrudejkedrjeehngdpmhgrihhlfhhrohhmpehluhgtrgdrtggvrhgvshholhhisegsohhothhlihhnrdgtohhmpdhnsggprhgtphhtthhopeeggedprhgtphhtthhopehhvghrvhgvrdgtohguihhnrgessghoohhtlhhinhdrtghomhdprhgtphhtthhopehlihhnuhigqdhmvgguihgrthgvkheslhhishhtshdrihhnfhhrrgguvggrugdrohhrghdprhgtphhtthhopehshhgrfihnghhuoheskhgvr
  hhnvghlrdhorhhgpdhrtghpthhtohepjfhuihdrrfhusehgvghhvggrlhhthhgtrghrvgdrtghomhdprhgtphhtthhopehkvghrnhgvlhesphgvnhhguhhtrhhonhhigidruggvpdhrtghpthhtohepshhimhhonhgrsehffhiflhhlrdgthhdprhgtphhtthhopehrfhhoshhssehkvghrnhgvlhdrohhrghdprhgtphhtthhopegrnhgurhiivghjrdhhrghjuggrsehinhhtvghlrdgtohhm
 X-GND-Sasl: luca.ceresoli@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250407_072525_906038_2B73CCD5 
-X-CRM114-Status: GOOD (  10.56  )
+X-CRM114-CacheID: sfid-20250407_072536_080537_96370529 
+X-CRM114-Status: GOOD (  12.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,44 +106,49 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 This is the new API for allocating DRM bridges.
 
+This driver has a peculiar structure. zynqmp_dpsub.c is the actual driver,
+which delegates to a submodule (zynqmp_dp.c) the allocation of a
+sub-structure embedding the drm_bridge and its initialization, however it
+does not delegate the drm_bridge_add(). Hence, following carefully the code
+flow, it is correct to change the allocation function and .funcs assignment
+in the submodule, while the drm_bridge_add() is not in that submodule.
+
 Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 
 ---
 
-Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>
-Cc: Maxime Coquelin <mcoquelin.stm32@gmail.com>
-Cc: Philippe Cornu <philippe.cornu@foss.st.com>
-Cc: Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>
-Cc: Yannick Fertre <yannick.fertre@foss.st.com>
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Michal Simek <michal.simek@amd.com>
+Cc: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
 ---
- drivers/gpu/drm/stm/lvds.c | 7 +++----
+ drivers/gpu/drm/xlnx/zynqmp_dp.c | 7 +++----
  1 file changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/gpu/drm/stm/lvds.c b/drivers/gpu/drm/stm/lvds.c
-index a3ae9a93ce6670eb2c4dd36b3e572fcbca791a1c..07788e8d3d8302a3951e97d64736b721033998d3 100644
---- a/drivers/gpu/drm/stm/lvds.c
-+++ b/drivers/gpu/drm/stm/lvds.c
-@@ -1049,9 +1049,9 @@ static int lvds_probe(struct platform_device *pdev)
+diff --git a/drivers/gpu/drm/xlnx/zynqmp_dp.c b/drivers/gpu/drm/xlnx/zynqmp_dp.c
+index 11d2415fb5a1f7fad03421898331289f2295d68b..de22b6457a78a7a2110f9f308d0b5a8700544010 100644
+--- a/drivers/gpu/drm/xlnx/zynqmp_dp.c
++++ b/drivers/gpu/drm/xlnx/zynqmp_dp.c
+@@ -2439,9 +2439,9 @@ int zynqmp_dp_probe(struct zynqmp_dpsub *dpsub)
+ 	struct zynqmp_dp *dp;
+ 	int ret;
  
- 	dev_dbg(dev, "Probing LVDS driver...\n");
- 
--	lvds = devm_kzalloc(dev, sizeof(*lvds), GFP_KERNEL);
--	if (!lvds)
+-	dp = kzalloc(sizeof(*dp), GFP_KERNEL);
+-	if (!dp)
 -		return -ENOMEM;
-+	lvds = devm_drm_bridge_alloc(dev, struct stm_lvds, lvds_bridge, &lvds_bridge_funcs);
-+	if (IS_ERR(lvds))
-+		return PTR_ERR(lvds);
++	dp = devm_drm_bridge_alloc(&pdev->dev, struct zynqmp_dp, bridge, &zynqmp_dp_bridge_funcs);
++	if (IS_ERR(dp))
++		return PTR_ERR(dp);
  
- 	lvds->dev = dev;
+ 	dp->dev = &pdev->dev;
+ 	dp->dpsub = dpsub;
+@@ -2488,7 +2488,6 @@ int zynqmp_dp_probe(struct zynqmp_dpsub *dpsub)
  
-@@ -1164,7 +1164,6 @@ static int lvds_probe(struct platform_device *pdev)
- 		goto err_lvds_probe;
- 	}
- 
--	lvds->lvds_bridge.funcs = &lvds_bridge_funcs;
- 	lvds->lvds_bridge.of_node = dev->of_node;
- 	lvds->hw_version = lvds_read(lvds, LVDS_VERR);
- 
+ 	/* Initialize the bridge. */
+ 	bridge = &dp->bridge;
+-	bridge->funcs = &zynqmp_dp_bridge_funcs;
+ 	bridge->ops = DRM_BRIDGE_OP_DETECT | DRM_BRIDGE_OP_EDID
+ 		    | DRM_BRIDGE_OP_HPD;
+ 	bridge->type = DRM_MODE_CONNECTOR_DisplayPort;
 
 -- 
 2.49.0
