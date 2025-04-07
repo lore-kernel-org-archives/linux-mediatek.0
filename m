@@ -4,81 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2748C3601E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 13:52:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA75EC36010
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 14:20:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0TmOhe1bI1nRNV0NE53OyjwkYey+CrXkJvZIridblTc=; b=jb4X4auot/wEUg+A+Cx7nb8cZr
-	5/4bjYmeD1ux3xUXhA2wPtCYKTugczdJOscnahIvUQUWkASYYccI9E1tmqJkeQkIp4i/+dO5N/Z/E
-	nn+tS69k82VuBa9zHpY3Oi1thpD2bNLylLAz/Y7+eMT/VZLvdWcDD13XkPkaO1iFxZF4E+9btmdBO
-	NrcRZN8D3l3ATg9ooWZ1TRw7SlTISW2EN14ZuMtPO1jf5qygdU6Hmb/QorKLy16XvRCx6WrVo2sep
-	CStvhb6pUgnxxV9iZLHRBGgVLj8+Mq+JAUIIRCKzqxR7HSQpP4RyVZ4/ZzrLiJX2tfSjB/ena2Dw9
-	/IWftTYA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=5dpUmMt+S/OI2c2iE1k7M1eJLqralXYhPrDshRzYb5k=; b=xHCOjj+20R8IkY
+	fHRlkzwquh4h18cMGGFYpAD7J3OdoJoW/vpTFmqOXIoAETGIGhOS9TzSJ+X0o6jKeD6NCHQbJiYwx
+	Jiu6JYXBGcQNCIcGn/kUOuj23zGIXJuySPw2510RlN3+SgwXoyQVLF/CAqH+V/DG7GrPy9sfXITRZ
+	HrZvF2wIFDIZ07KA6WeBnY6aFTzKwE6W86KZ9OEVNBsUtosJdlBlxVo5bRW/7vCm61ptCKfLdoxlJ
+	8salEMWBs/OqDCSYjkQrQfQEkzl/QJAMW3f5g3lhS18N9Z7KoYNd43ycGTdrjdZOkqpZO6P7LC3lI
+	xJ9Q6sUp72qGkOLrEgzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1muF-00000000biM-422r;
-	Mon, 07 Apr 2025 13:52:55 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1u1nL0-00000000hLk-0jVw;
+	Mon, 07 Apr 2025 14:20:34 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1mZs-00000000WyI-1YhK;
-	Mon, 07 Apr 2025 13:31:54 +0000
-X-UUID: a7588b9c13b411f083f2a1c9db70dae0-20250407
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=0TmOhe1bI1nRNV0NE53OyjwkYey+CrXkJvZIridblTc=;
-	b=MflTLccGJpLit7Gr+NV3MbXWbzGvQ2CoWjHt7LUbcKdzXjYDXQwf0+k9+Atjys+Pr1bzpGUqb71F99soDlNhOoP65nfrI5Yza7M8ZBKdZUQ3mDlxV2hxqfeOQTOsS563CvuqS+UbYoKZSnj+w2iVHXMx4b4/uPmYazjGHCFpoz4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:de0f6175-4fba-4e27-9119-b84045d86f1f,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:0ef645f,CLOUDID:70b546c7-16da-468a-87f7-8ca8d6b3b9f7,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
-	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
-	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: a7588b9c13b411f083f2a1c9db70dae0-20250407
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
-	(envelope-from <bincai.liu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1241197495; Mon, 07 Apr 2025 06:31:47 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Mon, 7 Apr 2025 21:31:44 +0800
-Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Mon, 7 Apr 2025 21:31:43 +0800
-From: Bincai Liu <bincai.liu@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
-	<p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, Simona Vetter
-	<simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Jitao Shi <jitao.shi@mediatek.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-phy@lists.infradead.org>,
-	Bincai Liu <bincai.liu@mediatek.com>
-Subject: [PATCH 4/4] drm/mediatek: dsi: Enable runtime PM
-Date: Mon, 7 Apr 2025 21:31:25 +0800
-Message-ID: <20250407133138.22449-5-bincai.liu@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20250407133138.22449-1-bincai.liu@mediatek.com>
-References: <20250407133138.22449-1-bincai.liu@mediatek.com>
+	id 1u1nJE-00000000h3w-0tVb;
+	Mon, 07 Apr 2025 14:18:45 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 22FC75C5E59;
+	Mon,  7 Apr 2025 14:16:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7DDAFC4CEE7;
+	Mon,  7 Apr 2025 14:18:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1744035522;
+	bh=DnrMjwW8y80OVJq5tsXLXyJch9UJ6gA4haWZSBKjZGw=;
+	h=From:Subject:Date:To:Cc:From;
+	b=CJALCunY5XwA6fJnawsx9DBCukkaaLIXr0IGlmoYPmZNgWE24Uc2Oj8jZBxmTEysv
+	 CRhOPVHuSlXMB+pgd5W91CoFgAw/3aiFj2w6cTaXv1UxOTvU/6UrJFpnYtyMGHYMiG
+	 jMlwk9Y7Y2PpC3O6+dtq1fnpKT0PCuo/oQmQuG/m2BrkV1rpBLeACRcC6FQvVHhKfO
+	 xckGzy+5mPwDiDiV1tYGEuqgaBXMO4Gz72fGIdZIDp+GavAD0YqV5sDRAJtSq22Inm
+	 TPDWihIpBAojtfsSKQxAMS8VPeRlaL7tLTaa1+QwFTH4s6VUIqf75G/eKyXS3srDzG
+	 VGtm9bDXnqdBg==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH net-next 0/3] Add L2 hw acceleration for airoha_eth driver
+Date: Mon, 07 Apr 2025 16:18:29 +0200
+Message-Id: <20250407-airoha-flowtable-l2b-v1-0-18777778e568@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIALXe82cC/x3MPQqAMAxA4atIZgP9sYtXEYdUowaKlVZUKN7d4
+ vgN7xXInIQz9E2BxJdkiXuFbhuYNtpXRpmrwSjjlNUWSVLcCJcQ75N8YAzGIyvv1NyRNdpBTY/
+ Eizz/dhjf9wP4+ayfZgAAAA==
+X-Change-ID: 20250313-airoha-flowtable-l2b-e0b50d4a3215
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250407_063152_447341_27864B80 
-X-CRM114-Status: GOOD (  11.60  )
+X-CRM114-CacheID: sfid-20250407_071844_296198_57F0C0DA 
+X-CRM114-Status: UNSURE (   6.18  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,59 +77,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This power is new added in MT8196. So runtime PM is enable
-to turn off dsi power to reduce power consumption.
+Introduce the capability to offload L2 traffic defining flower rules in
+the PSE/PPE engine available on EN7581 SoC.
+Since the hw always reports L2/L3/L4 flower rules, link all L2 rules
+sharing the same L2 info (with different L3/L4 info) in the L2 subflows
+list of a given L2 PPE entry.
 
-Signed-off-by: Bincai Liu <bincai.liu@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dsi.c | 5 +++++
- 1 file changed, 5 insertions(+)
+Lorenzo Bianconi (3):
+      net: airoha: Add l2_flows rhashtable
+      net: airoha: Add airoha_ppe_foe_flow_remove_entry_locked()
+      net: airoha: Add L2 hw acceleration support
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index b1467d6bed06..21cfba1f9b89 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -12,6 +12,7 @@
- #include <linux/of_platform.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
-+#include <linux/pm_runtime.h>
- #include <linux/reset.h>
- #include <linux/units.h>
- 
-@@ -715,6 +716,7 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
- 	dsi->data_rate = DIV_ROUND_UP_ULL(dsi->vm.pixelclock * bit_per_pixel,
- 					  dsi->lanes);
- 
-+	pm_runtime_get_sync(dsi->host.dev);
- 	ret = clk_set_rate(dsi->hs_clk, dsi->data_rate);
- 	if (ret < 0) {
- 		dev_err(dev, "Failed to set data rate: %d\n", ret);
-@@ -789,6 +791,7 @@ static void mtk_dsi_poweroff(struct mtk_dsi *dsi)
- 	clk_disable_unprepare(dsi->digital_clk);
- 
- 	phy_power_off(dsi->phy);
-+	pm_runtime_put_sync(dsi->host.dev);
- 
- 	dsi->lanes_ready = false;
- }
-@@ -1272,6 +1275,7 @@ static int mtk_dsi_probe(struct platform_device *pdev)
- 	dsi->bridge.funcs = &mtk_dsi_bridge_funcs;
- 	dsi->bridge.of_node = dev->of_node;
- 	dsi->bridge.type = DRM_MODE_CONNECTOR_DSI;
-+	pm_runtime_enable(dev);
- 
- 	return 0;
- }
-@@ -1282,6 +1286,7 @@ static void mtk_dsi_remove(struct platform_device *pdev)
- 
- 	mtk_output_dsi_disable(dsi);
- 	mipi_dsi_host_unregister(&dsi->host);
-+	pm_runtime_disable(&pdev->dev);
- }
- 
- static const struct mtk_dsi_driver_data mt8173_dsi_driver_data = {
+ drivers/net/ethernet/airoha/airoha_eth.c |   2 +-
+ drivers/net/ethernet/airoha/airoha_eth.h |  22 ++-
+ drivers/net/ethernet/airoha/airoha_ppe.c | 224 ++++++++++++++++++++++++++-----
+ 3 files changed, 215 insertions(+), 33 deletions(-)
+---
+base-commit: 61f96e684edd28ca40555ec49ea1555df31ba619
+change-id: 20250313-airoha-flowtable-l2b-e0b50d4a3215
+
+Best regards,
 -- 
-2.45.2
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
