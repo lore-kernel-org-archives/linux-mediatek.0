@@ -4,82 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0CDFC36010
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 14:51:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13B77C36010
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 14:52:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FNL+NAWFI0GxoBJ167yJeoBFSWA7FvYgScloIAzLUeo=; b=NzUbwaM9sWlc02pvtQSZnxnIW5
-	his5Os3X0beJy7kiK2IQW+PKKqwysiARuJ6xPrfu7rznAeiopGrN2XZ+yJLFQLpbkVgL9u1HndNvj
-	jRT/6qLbt15y+0Ems02tUKskt+e5KkvExLUVodKDKyWgbcsvZuqjNBzIya7xIdkfw4H9JI49LzEkv
-	owxAdhaKHvcasP8cqRRlewL5j8FWwgHvwO+oXe7Cof1XatUCq3As8ED0MsryaKG50PAqE6HaNsT0K
-	bIByoXtGW8IFvc6yCbpTiwp8PVS19bi5TeCqY2o0FRL4d5m7ebaa6bXaj8rDLL0gpgW0rC8jMr34z
-	H5tcEunA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Y2vRVDgjiAJpk8Ki0+vTDs+cY+Rn+ImdKgp8gnjEE0s=; b=mgdDeWFE2p7lQlT6HHwAi+PApW
+	tWR/nxSFIa6LWeaK0Xj0g3XvhibCZ5NzNtPSydPINSLzaOb0SPdIccUBkfY8r61bZm6BpmJf8Sqyo
+	kY9TI2BW9KhUYgJy5mSKOUOIdOXFwHlTfa5+FQIeHdnrvakGjufoe1DQyIBrKQpA8BSS2mft+cuBz
+	Pu/+yJSLIm3FgfaxR4kl/FvlzXCwn7eQG1P6OyU4KuU8js9/OQuY+FbGwK2mUIguNFu1eBWVy/A2V
+	bi89HQkQKLeOBJW71jdm6Z+Uwm9g46yYeWrvZbxqDlP1dKrCnTXJwTtjjlCBQKDEc014/7yi2Yd9+
+	fVyAIsiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1noa-00000000oTJ-2ntb;
-	Mon, 07 Apr 2025 14:51:08 +0000
-Received: from mail-qt1-x834.google.com ([2607:f8b0:4864:20::834])
+	id 1u1nqK-00000000oxl-0bsX;
+	Mon, 07 Apr 2025 14:52:56 +0000
+Received: from relay9-d.mail.gandi.net ([217.70.183.199])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1nP3-00000000iIp-2Pm1
-	for linux-mediatek@lists.infradead.org;
-	Mon, 07 Apr 2025 14:24:46 +0000
-Received: by mail-qt1-x834.google.com with SMTP id d75a77b69052e-4766631a6a4so44284201cf.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 07 Apr 2025 07:24:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=szeredi.hu; s=google; t=1744035884; x=1744640684; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=FNL+NAWFI0GxoBJ167yJeoBFSWA7FvYgScloIAzLUeo=;
-        b=Vr6bvQB1sSWh2KRAsMWfws/QK1RtXVDFRkD/FfbghQvVBBzlJbktBvTtbhkW9ivRvZ
-         ScOOYqb2m0JkLJ2ne987qctqQxCntroJbesKEB0tntYf9XhlnHHtgMdOUBpcUffnrPyC
-         Efh2Bqwla88sjpNLARN0Hz4PjyECJQ71VJkXI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744035884; x=1744640684;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=FNL+NAWFI0GxoBJ167yJeoBFSWA7FvYgScloIAzLUeo=;
-        b=mzHezjo9Esm3cjfZ9OQqTxNd5sZ7Bq8cjpR2VahVtKcKQ+ZwoiSp+Sx9NOlZahXo49
-         DQfQPuPWnjvBivwBQJgAAxvynLqbocFn2CQdzuPn5yghrL1IYXADqlZ8xOIk7+VKn08M
-         JQZq4EcgJ8HW+izD+IvdLu0720xZp80bVG1B0YiG0CBHw6l8JV+oUxB4JYb/SX50qXci
-         y0DMKDLjXGPHKfHWhUGyVfdPzRyaWSpnsgJJN7VGGoD2rb88ilFIFxE44UTy1bfkcnS6
-         R/8F5b+FxXch1/AF1tM9LsthSbf3U8Ci+jELYrDLvaY/8qdqU/nzJeJ/a9HVzFc+kMcX
-         6+ww==
-X-Forwarded-Encrypted: i=1; AJvYcCWNCWOWPE7E1I+UsJ7ICH0r5FTROOSwDVUyQ30bJKSRqiHK6X7FsbfqzbrlF4hsz/0QkI0+fEsicfS5RpCyxA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yys8+Od9vMDkb8apIweuT0jiOBeqItn87A9joSo9zfV/6EvrHFi
-	PoeMNhguHWFrDvZQy7bleMKSfH1bDPSdkpAJzkRI8RVrKlWo+1H/y0LrPwREuTtBULautMH+TW8
-	qsLNdBUDUgjt4/OrAm0hqqqajnAFK3DDibExyIQ==
-X-Gm-Gg: ASbGnctIK96grpChrAulXJ3hBxJf50P7XIdmn1K8bxUMvgk8Sqqb426nbtMRtkWIWZ2
-	UslvQQNI0u5OfqYu5aUa7VR37TINYp6l2dgpktB1uNRUAtnClbdXwxDcNXNQPJpM0iT4cH1Ah+Q
-	bEVV5Np6f/p0mvRWaUpMsUE6J6EOM=
-X-Google-Smtp-Source: AGHT+IFQd4jHNyMbSuzJ059jvOO/iExVzCO/KphR667EKFZiLjHNp+k+91snAGwPCrKp9DxvzNZfuI0F/c1qQXQ410A=
-X-Received: by 2002:a05:622a:199f:b0:472:bbb:1bab with SMTP id
- d75a77b69052e-47930fe7403mr104524641cf.24.1744035883851; Mon, 07 Apr 2025
- 07:24:43 -0700 (PDT)
+	id 1u1nP4-00000000iJl-2tFy;
+	Mon, 07 Apr 2025 14:24:48 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id D8787442C5;
+	Mon,  7 Apr 2025 14:24:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1744035885;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Y2vRVDgjiAJpk8Ki0+vTDs+cY+Rn+ImdKgp8gnjEE0s=;
+	b=gkN3Kkhxyodq2MsiFZv3t2WVqN2oNukMTyu2Ux1rGrW2TAwwBmvYSROEln8Rg4SF2mw4rJ
+	iDI3cvgkQ52+HaveiTqRnDDNSRUPmqE8EQUUUxeeXEiQfdtHri+2TWWN9g0NcU/q9ifoyk
+	Z02mGYrTxMoCGguAUPztaSblIRGBnLLpbXUVskwOu/z7YsdCCusqbWV/dvjdSHD1oCtYA5
+	ITYEcp8Y94rpqmafKPn++d0zyjavXsdyjazVVPps7Gq4OoFP1XZhgq2Wy/GyJFKdP8jph9
+	+oEXfFs7ws4ovHUAPb8JovSBNChRvy+AeH/xqyJd6k/F0zZa/B3SdPJyR7Jbbg==
+From: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Date: Mon, 07 Apr 2025 16:23:29 +0200
+Subject: [PATCH 14/34] drm/exynos: mic: convert to devm_drm_bridge_alloc()
+ API
 MIME-Version: 1.0
-References: <20250407115111.25535-1-xiangsheng.hou@mediatek.com>
-In-Reply-To: <20250407115111.25535-1-xiangsheng.hou@mediatek.com>
-From: Miklos Szeredi <miklos@szeredi.hu>
-Date: Mon, 7 Apr 2025 16:24:32 +0200
-X-Gm-Features: ATxdqUEaLGT2M3QdvlukIOwAEuscXulm8_kXjOV6iVYrWf5p1vewCG0W1HdKGiE
-Message-ID: <CAJfpegsN47xDbVFsu=-TLW+A2=-33fNY83zt5bhebFqH67LAVA@mail.gmail.com>
-Subject: Re: [RESEND] virtiofs: add filesystem context source name check
-To: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
-Cc: Vivek Goyal <vgoyal@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>, eperezma@redhat.com, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, virtualization@lists.linux.dev, 
-	linux-fsdevel@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	benliang.zhao@mediatek.com, bin.zhang@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250407-drm-bridge-convert-to-alloc-api-v1-14-42113ff8d9c0@bootlin.com>
+References: <20250407-drm-bridge-convert-to-alloc-api-v1-0-42113ff8d9c0@bootlin.com>
+In-Reply-To: <20250407-drm-bridge-convert-to-alloc-api-v1-0-42113ff8d9c0@bootlin.com>
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Jagan Teki <jagan@amarulasolutions.com>, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, 
+ Douglas Anderson <dianders@chromium.org>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, 
+ Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+Cc: Anusha Srivatsa <asrivats@redhat.com>, 
+ Paul Kocialkowski <paulk@sys-base.io>, Dmitry Baryshkov <lumag@kernel.org>, 
+ =?utf-8?q?Herv=C3=A9_Codina?= <herve.codina@bootlin.com>, 
+ Hui Pu <Hui.Pu@gehealthcare.com>, 
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+ dri-devel@lists.freedesktop.org, asahi@lists.linux.dev, 
+ linux-kernel@vger.kernel.org, chrome-platform@lists.linux.dev, 
+ imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+ linux-renesas-soc@vger.kernel.org, platform-driver-x86@vger.kernel.org, 
+ linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
+ freedreno@lists.freedesktop.org, linux-stm32@st-md-mailman.stormreply.com, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+ Alim Akhtar <alim.akhtar@samsung.com>, Inki Dae <inki.dae@samsung.com>, 
+ Kyungmin Park <kyungmin.park@samsung.com>, 
+ Seung-Woo Kim <sw0312.kim@samsung.com>
+X-Mailer: b4 0.14.2
+X-GND-State: clean
+X-GND-Score: -100
+X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvtddtgedvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhfffugggtgffkfhgjvfevofesthejredtredtjeenucfhrhhomhepnfhutggrucevvghrvghsohhlihcuoehluhgtrgdrtggvrhgvshholhhisegsohhothhlihhnrdgtohhmqeenucggtffrrghtthgvrhhnpeeiieeuvdfftefgueduleehueetgffgjeeitedtteetkeeuueeuueekveevvdeuveenucfkphepvdgrtddvmeeijedtmedvtddvtdemvggrtddumegsvgegudemleehvgejmeefgeefmeeludefvgenucevlhhushhtvghrufhiiigvpedutdenucfrrghrrghmpehinhgvthepvdgrtddvmeeijedtmedvtddvtdemvggrtddumegsvgegudemleehvgejmeefgeefmeeludefvgdphhgvlhhopegludelvddrudeikedrudejkedrjeehngdpmhgrihhlfhhrohhmpehluhgtrgdrtggvrhgvshholhhisegsohhothhlihhnrdgtohhmpdhnsggprhgtphhtthhopeeghedprhgtphhtthhopehhvghrvhgvrdgtohguihhnrgessghoohhtlhhinhdrtghomhdprhgtphhtthhopehlihhnuhigqdhmvgguihgrthgvkheslhhishhtshdrihhnfhhrrgguvggrugdrohhrghdprhgtphhtthhopehshhgrfihnghhuoheskhgvr
+ hhnvghlrdhorhhgpdhrtghpthhtohepihhnkhhirdgurggvsehsrghmshhunhhgrdgtohhmpdhrtghpthhtoheprghlihhmrdgrkhhhthgrrhesshgrmhhsuhhnghdrtghomhdprhgtphhtthhopefjuhhirdfruhesghgvhhgvrghlthhhtggrrhgvrdgtohhmpdhrtghpthhtohepkhgvrhhnvghlsehpvghnghhuthhrohhnihigrdguvgdprhgtphhtthhopehsihhmohhnrgesfhhffihllhdrtghh
+X-GND-Sasl: luca.ceresoli@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250407_072445_624576_BC73FDC6 
-X-CRM114-Status: UNSURE (   7.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250407_072446_868135_05827ACB 
+X-CRM114-Status: GOOD (  11.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,16 +104,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 7 Apr 2025 at 13:51, Xiangsheng Hou <xiangsheng.hou@mediatek.com> wrote:
->
-> In certain scenarios, for example, during fuzz testing, the source
-> name may be NULL, which could lead to a kernel panic. Therefore, an
-> extra check for the source name should be added.
->
-> Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
+This is the new API for allocating DRM bridges.
 
-Acked-by: Miklos Szeredi <mszeredi@redhat.com>
+Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 
-Thanks,
-Miklos
+---
+
+Cc: Alim Akhtar <alim.akhtar@samsung.com>
+Cc: Inki Dae <inki.dae@samsung.com>
+Cc: Kyungmin Park <kyungmin.park@samsung.com>
+Cc: Seung-Woo Kim <sw0312.kim@samsung.com>
+---
+ drivers/gpu/drm/exynos/exynos_drm_mic.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/gpu/drm/exynos/exynos_drm_mic.c b/drivers/gpu/drm/exynos/exynos_drm_mic.c
+index b34ec67283370e3fa836c7df06e12e2fba524622..29a8366513fa70655c6ceec9a09db0158e7bb169 100644
+--- a/drivers/gpu/drm/exynos/exynos_drm_mic.c
++++ b/drivers/gpu/drm/exynos/exynos_drm_mic.c
+@@ -379,11 +379,11 @@ static int exynos_mic_probe(struct platform_device *pdev)
+ 	struct resource res;
+ 	int ret, i;
+ 
+-	mic = devm_kzalloc(dev, sizeof(*mic), GFP_KERNEL);
+-	if (!mic) {
++	mic = devm_drm_bridge_alloc(dev, struct exynos_mic, bridge, &mic_bridge_funcs);
++	if (IS_ERR(mic)) {
+ 		DRM_DEV_ERROR(dev,
+ 			      "mic: Failed to allocate memory for MIC object\n");
+-		ret = -ENOMEM;
++		ret = PTR_ERR(mic);
+ 		goto err;
+ 	}
+ 
+@@ -421,7 +421,6 @@ static int exynos_mic_probe(struct platform_device *pdev)
+ 
+ 	platform_set_drvdata(pdev, mic);
+ 
+-	mic->bridge.funcs = &mic_bridge_funcs;
+ 	mic->bridge.of_node = dev->of_node;
+ 
+ 	drm_bridge_add(&mic->bridge);
+
+-- 
+2.49.0
+
 
