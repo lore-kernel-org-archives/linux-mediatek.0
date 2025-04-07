@@ -4,63 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 359C7C36002
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 02:18:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 137FCC36002
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 03:15:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=72ED1ETj5TNm96Y8ef67UN8/SxRcjwp7diw/thOQEZk=; b=vy0KNfCQ+hSjnhOkeBW2oxsezK
-	+di6NLkXBK+QRHRMmN4JSHmviN0L7cV2k9PExFRusLh6pF6ufm8CzTFr7Auh6kM/sTD4sO9w3v3QA
-	xQFW+QiuAqV/VRa/bROdiU6F8lSHtKbVScHwzZ2e06CvCCZX/ThP2mF7zpVFMeqGZwXuxvWkVzukV
-	fHkhHHcl6qIOgJd5/EV+tP+3tXypuItFXb4750IJ7jPwbc5ynEmkOYLcHveBw0dakGOcAlTS43N3h
-	lKj4qQ0aRMQTcZPR+nd4rtqPeAWlbHFNjb1RhKTfBi4F5ZvlauMxxLlEnuHyau0SAH6UHpzou+Ksm
-	2TIv9yvw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PqDsWVFq6CmNz/0yFdKFX32jFAy7M6dtMt4P6N2Z6wA=; b=G6bsUs4tWlfBAQExVrFlYRgiYB
+	Iv/7K74q3c+dzmaS10N1AXxK7lbllKmZkUOEqKW4ZHfu/Lim99NoDzMuqNC18CEx8sQ1u3R21+63L
+	YH0kvFEhkifL98GZdyBTe5xP0Wb50yvH5S9Cc8MldKPNTs+05XYDxmc6In3IK70G3HoQbEcFnSYRv
+	d3i/jN113rte1hE+oQqfGL5O2a2EC9rYozzdqiex4nbAwKlB/LCY8EimLVWKhF6Dt6212ecSVCaZO
+	CruFuNYk78a8wUa2vjCVwz4YOlUAa1GgMJ5XchMo2pNTsnsmbA1VzzZCyMYDY44eSAV/HCWl9jmgb
+	JZN9n1gA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1c43-0000000GBnx-0HuQ;
-	Mon, 07 Apr 2025 02:18:19 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1u1cxk-0000000GFWx-3yHV;
+	Mon, 07 Apr 2025 03:15:53 +0000
+Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1c2G-0000000GBcE-1o12;
-	Mon, 07 Apr 2025 02:16:29 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 1C8475C3AF7;
-	Mon,  7 Apr 2025 02:14:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B0528C4CEE3;
-	Mon,  7 Apr 2025 02:16:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1743992186;
-	bh=3rHspDM4Z5rVXG4tA5JfDXRtzhVtLN/iGOYarrS7OaY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Nd3On4L0RRnfdW4UpVrVDTfvgyoJBRLKLksqf40lOGeFMZEr6wCgvvEyslc82DDDc
-	 Uw8fHsH92SfvGU6SrO3I+pspMWlDmu6D9YZ5d39BgBuIBet+Df/f4Ae2eaqAKjrlPZ
-	 rM25M+WsfVymcB8XLe4/GHJQqM8OZlrYH4zHeU7/NJIAV5kZiOJ8XAtT+RxjvR2+Xr
-	 25EKDktVGqKHqZ9vi4OXiB++uepdgzQQ1Jl260KCrLKjXX3a/wcLdz0rHaVTx7LfGv
-	 MPLEiibWo6n66Hd1vg7oXL6WyxEsuMiv7JzqfWLQrnba5W9EgQVTEnYkkQduMiLaJT
-	 s5mn1ZsHglNAg==
-Date: Mon, 7 Apr 2025 02:16:22 +0000
-From: Tzung-Bi Shih <tzungbi@kernel.org>
-To: Laura Nao <laura.nao@collabora.com>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	bleung@chromium.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, chrome-platform@lists.linux.dev,
-	nfraprado@collabora.com, kernel@collabora.com
-Subject: Re: (subset) [PATCH 0/2] Use ChromeOS DT hardware prober with MT8192
- Spherion trackpads
-Message-ID: <Z_M1dti05ZUeTfrG@google.com>
-References: <20250318102259.189289-1-laura.nao@collabora.com>
+	id 1u1cxi-0000000GFWA-31h2;
+	Mon, 07 Apr 2025 03:15:51 +0000
+Received: by mail-lf1-x142.google.com with SMTP id 2adb3069b0e04-5493b5bc6e8so4892057e87.2;
+        Sun, 06 Apr 2025 20:15:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1743995748; x=1744600548; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=PqDsWVFq6CmNz/0yFdKFX32jFAy7M6dtMt4P6N2Z6wA=;
+        b=UAXZdw8WwigJVr01MC0l+RFinBJcZI/yV2jKh9eoA85QV+5p9/lrr6w1nznEJDnAV/
+         tuHlZzEFgI+4aOd0QH8a6mb8K35rAVTH1YKE5i/+/cW31+1uT3rm/mnZlKyTVhvP0t2s
+         Ht/0gi0R+qHttmlkoL1jnnXxd5iRau1W5lU/gj5nXikHNpEO0BGsFhk4Almf9XRBOXra
+         pGZ9sE60/Iw5MUngE/p4UsEk1dw3BSGL7K3mQed643dDShHjrVpnSxROuEWzmf5rcso0
+         o++/Jf4mRYAx92CsxbX1ZGA8ySbxw7xBTbuX+5aub5Pu9UXM8WIVnMnpLiAB4xuBnCC7
+         Uc3A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1743995748; x=1744600548;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=PqDsWVFq6CmNz/0yFdKFX32jFAy7M6dtMt4P6N2Z6wA=;
+        b=ZcGBs+3LAtxbgoGmptKfNMZibq0QSTlM0yzqCWMZq/sk0pDgvdJnxOOkyor1fwCE96
+         yVy+T7xrErL+VTxXbzSh/HAfvHsDNlPpb7mfkIDrmCy593jaMaji/UA1w2BS4DpASi5R
+         V4ylQv5Mom7WtPsKXRHfFBqGUtnGNPbOecdH6Im6/Ej9pf9yHnUuUcjTpy2kCDzR4G9S
+         lD44UIjfqEAkJk5c554FOVcfjmVfOtW0xHiw4wPdESeKnhL2jXTeUwXRPANy9/Ed0gXC
+         nauYFBeIF1uSlLNJXwXgqEVzYsapp7O1UGc8RjcWRtTeBllulyhkWOtywqg0jXqNcZX+
+         4RqQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVYMHp7xXmDC/M2t92hqaKA4VFR2Yg29tqNavG8Xc4tu2QPJq5PyzhjRgxhnI1x8dC7B2kgM4EXKL9okYIYhCU=@lists.infradead.org, AJvYcCX6x8A2wj4xCGObMFtNcXHW+zx5UqJIF8GeJJY4ORzJ0rvZdegUb8KDFkXKSuUgi5grBYFfqCYarrGSCVkxhzTN@lists.infradead.org
+X-Gm-Message-State: AOJu0YxC9G1XBMEUVQRJJECfmYXax5rqWJE0PAkwX3VBHyIhsSstcHjV
+	q8S/y7FfDxYkQWL6vG2+OocykCQ5/1zUSI7rYMTqAObkz3LVekJ6n+/I/XrCQh1siWtbwdZHh/R
+	pMZAPheme0TRcVilOI1NudYMvnQI=
+X-Gm-Gg: ASbGnct+h7QVmYKMD8MinXfNWI0clQvWuZlpUTbEyBYcTOmoUHLmLUDklzHm1/xcCQA
+	tRX+81Sb1b7pg38DJ/zKPQYz3aL3brDpzCdptzLTvT7NjMbMpFs/jfW0taC1DJv2Y4qeboMOzNQ
+	xfQ9kA/T+bTgl1PpKF8buCH8pQldc=
+X-Google-Smtp-Source: AGHT+IE1/krWBer5PlXlNstxZmEQ7m52OIfXmOpc5fR3+RwNHJcKV+9HLLyqwwgFSrjQDe5S5gtm8Yxvggz68q1KRMw=
+X-Received: by 2002:a05:651c:1987:b0:30b:ecfc:78c6 with SMTP id
+ 38308e7fff4ca-30f0be0402fmr29433611fa.1.1743995747797; Sun, 06 Apr 2025
+ 20:15:47 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250318102259.189289-1-laura.nao@collabora.com>
+References: <20250403064344.64253-1-bsdhenrymartin@gmail.com> <db778d8c-0a56-4b01-b5b5-5610a68a4875@web.de>
+In-Reply-To: <db778d8c-0a56-4b01-b5b5-5610a68a4875@web.de>
+From: henry martin <bsdhenrymartin@gmail.com>
+Date: Mon, 7 Apr 2025 11:15:37 +0800
+X-Gm-Features: ATxdqUGqt472XmSz_PMOlPioxTI8XhNNFObI4ZwjTYubgdvn8cZdtUxQubfAd08
+Message-ID: <CAEnQdOox3XQnKVwefaT6p1rp=xEq1Ki4uD63nvwrjLCnVkZPmQ@mail.gmail.com>
+Subject: Re: [PATCH] wifi: mt76: mt7996: Fix null-ptr-deref in mt7996_mmio_wed_init()
+To: Markus Elfring <Markus.Elfring@web.de>
+Cc: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>, 
+	Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Peter Chiu <chui-hao.chiu@mediatek.com>, Felix Fietkau <nbd@nbd.name>, 
+	Lorenzo Bianconi <lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Rex Lu <rex.lu@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, 
+	Shengyu Qu <wiagn233@outlook.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250406_191628_679436_E2D5822B 
-X-CRM114-Status: UNSURE (   8.51  )
+X-CRM114-CacheID: sfid-20250406_201550_758722_BBF17104 
+X-CRM114-Status: UNSURE (   9.47  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,24 +100,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 18, 2025 at 11:22:57AM +0100, Laura Nao wrote:
-> This series marks the trackpads for the Google Spherion variants as
-> "fail-needs-probe" and makes them compatibile with the ChromeOS DT hardware
-> prober.
-> 
-> Laura Nao (2):
->   platform/chrome: Add support for Google Spherion in HW prober
->   arm64: dts: mediatek: mt8192-asurada-spherion: Mark trackpads as
->     fail-needs-probe
+Ok, I will correct them in V2.
+
+Regards,
+Henry
+
+Markus Elfring <Markus.Elfring@web.de> =E4=BA=8E2025=E5=B9=B44=E6=9C=883=E6=
+=97=A5=E5=91=A8=E5=9B=9B 18:13=E5=86=99=E9=81=93=EF=BC=9A
 >
-> [...]
-
-Applied to
-
-    https://git.kernel.org/pub/scm/linux/kernel/git/chrome-platform/linux.git for-next
-
-[1/2] platform/chrome: Add support for Google Spherion in HW prober
-      commit: 8dc528bed728ca0b887d9d5edecbcf23d7fed5a4
-
-Thanks!
+> =E2=80=A6
+> > Add NULL check after devm_ioremap() to prevent this issue.
+>
+> Can a summary phrase like =E2=80=9CPrevent null pointer dereference in mt=
+7996_mmio_wed_init()=E2=80=9D
+> be a bit nicer?
+>
+>
+> =E2=80=A6
+> > +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mmio.c
+> > @@ -323,6 +323,8 @@ int mt7996_mmio_wed_init(struct mt7996_dev *dev, vo=
+id *pdev_ptr,
+> >       wed->wlan.base =3D devm_ioremap(dev->mt76.dev,
+> >                                     pci_resource_start(pci_dev, 0),
+> >                                     pci_resource_len(pci_dev, 0));
+> > +     if (!wed->wlan.base)
+> > +             return -ENOMEM;
+>
+> Can a blank line be desirable after such a statement?
+>
+> Regards,
+> Markus
 
