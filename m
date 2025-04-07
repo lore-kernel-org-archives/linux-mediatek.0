@@ -4,48 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D053C36010
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 13:06:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4ACFFC36010
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 13:11:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OwCwGiaDtzIB698dOuML59ePc96MxTVQqBseY5M27Og=; b=i9urDoIdUp2fWllMtVfl+VwrsJ
-	gsrEiqWo0KH6/eYl56O6wocm/DvC37cnlDPocVhGrNBALviBs4AIJRJQNmFjD49NqQBvGUi8Sg7xu
-	41YlMEn/4itNvDQP6Wu+cyPOgY7+P+nfmMArHDSV4rWuQ8KpiLf2uvVBrbHiSMcrxF4BYvR6ZLjak
-	X9LNRNF1Hvm8A2a0eqOnWMX4adnWefRhR/ZjlWTps9ZcvUyzt4OW5Rkl/cHhp5Xo8Ap2x17lM6Lcr
-	AZxPIFz12tcMpq7Ucm9ZZ+BMwciMLg6gmujSkd2HlJiAM/fmFUOdRWf/DbdatYy6XTCxSy5wsZXFc
-	Hr1IAXIQ==;
+	bh=vtAF01T0+8V0WYeMbg/9qGZdJomfdooiOA1wqovC91Y=; b=0+7gceAHZ5WWML3Zq3AwMr6pc+
+	Mbh0taM0qAIQXbOVc95ungFUBatO7Cbjk7H4b4xo5mBTbH/Slmf/Ctnyek+pTdm6JaWg5yI7wYZ8K
+	AEnHRqMfV3Sk8wlTwupqK+Te8LEy+HoFNzVQsWKeKZM5CLb0FSKJnOueyURJVNiCsfiHJ1Zxwh5aK
+	SQHcb0GN06M8ZlBA2X0QQOnp/g58CNgmAAK+xWMwTbPOM0qwXLZryGkMmoZMuRUouYaYNybWFEVnA
+	P3b6VGt3nnz5R63i59jK8+LrL7FePVJJLR1/tRk9Sbs8mWhnlKEocAsgWs+UBL0rdqk81fWEXiAs3
+	AXgGnDDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1mBb-00000000Pqn-0Err;
-	Mon, 07 Apr 2025 13:06:47 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1u1mGT-00000000R74-1YyE;
+	Mon, 07 Apr 2025 13:11:49 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1m9o-00000000PRe-3og4;
-	Mon, 07 Apr 2025 13:04:58 +0000
+	id 1u1mEi-00000000Qiv-3WUb;
+	Mon, 07 Apr 2025 13:10:00 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 2C14FA489DD;
-	Mon,  7 Apr 2025 12:59:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E10C8C4CEE9;
-	Mon,  7 Apr 2025 13:04:49 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 738A561129;
+	Mon,  7 Apr 2025 13:09:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6F204C4CEDD;
+	Mon,  7 Apr 2025 13:09:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744031095;
-	bh=6LzS3DspmqdNUubz8lMmXOKFGB9bxKOcNKhA5QoTcdU=;
+	s=k20201202; t=1744031399;
+	bh=lrEQ3fr+h9CURtK/FYz3Ba3eDcS304hMn4rCuayzuFA=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=aMvBFSGMPmEW/SjpC+iDJ3tLZiObx4MXAAP7Yc2c8wDZcoBuoa/G8CVv5bVSGKn8e
-	 NLksswWUa4Ni+9k61AygTrXvQlFoSG0jkkrpr8icE/+HKhV7EVWUs/lbDbq2BgNmvt
-	 hm9StvTH+yvU5+nV3DRPGTWk76eJjWYC4Omy9eNZ5tkdP0L3t22a9MG7ZwXDzPx0OI
-	 SQ98wVjSKj+Z6ithx02LihU5JevIG065YCIVC/4zCMbkeFlFb6Q9qX8OANg/iSzvjn
-	 XMUSJHNCivO01UTCO+vIPcH66BlQxaB+BxA2dJQZmViprsda/vBXKqYGO10DeFLqOe
-	 8+ea7viCRH0ag==
-Message-ID: <1945935b-9597-476a-93f2-c0527ab77344@kernel.org>
-Date: Mon, 7 Apr 2025 15:04:47 +0200
+	b=jeSF7Zo5CK4pyTsgDM4KiUW2HeZ6FYWOJfDP2WNoXJb5lZdDkjPW0q1P8Yh9Fiwfs
+	 EFMIgtQwk2zKQ6ASkYrDdm9lyVrEXOQv6LsgShVPS+Fw91cqdzSbesvFQoIKD+bjWV
+	 jqAk1vumbUn+lbxhc6lDaQGSgaDELXP3LHfCba0ga1kDn1XlBkH1VAAMH/sLuMRDvy
+	 qWXVzzVPmB8E5B89dih1K27xjsIA5uQf6T8DAJ6Rz0s7kn4IhEe2W87xI6QnBMzqmq
+	 Sy1Dcojs0vgzDBNEVt5nZwEXqPtHViFbr0s9OhqGsHEIAU5eagtT1GueEYpkTKR5T9
+	 BeGA+vIR3k5iQ==
+Message-ID: <d26b9775-0f85-48a7-ba52-093484ada382@kernel.org>
+Date: Mon, 7 Apr 2025 15:09:53 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 00/11] ASoC: mediatek: Add support for MT8196 SoC
+Subject: Re: [PATCH v2 09/11] ASoC: dt-bindings: mediatek,mt8196-afe: add
+ audio AFE document
 To: "Darren.Ye" <darren.ye@mediatek.com>, Liam Girdwood
  <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -58,6 +59,7 @@ Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org
 References: <20250407120708.26495-1-darren.ye@mediatek.com>
+ <20250407120708.26495-10-darren.ye@mediatek.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -103,12 +105,9 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <20250407120708.26495-1-darren.ye@mediatek.com>
+In-Reply-To: <20250407120708.26495-10-darren.ye@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250407_060457_075747_82548CDD 
-X-CRM114-Status: GOOD (  11.54  )
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,24 +125,227 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On 07/04/2025 14:06, Darren.Ye wrote:
 > From: Darren Ye <darren.ye@mediatek.com>
 > 
-> This series of patches adds support for Mediatek AFE of MT8196 SoC.
-> Patches are based on broonie tree "for-next" branch.
+> Add mt8196 audio AFE document.
 > 
-> Changes since v1:
->   - modify mtk_memif_set_channel and mtk_afe_pcm_pointer interfaces
->     are improved to support mt8196.
->   - remove duplicate definitions in the mt8196 common header file.
->   - cm logic is merge into the afe platform driver.
->   - modify afe clk to return judgment logic and remove useless clk sources.
->   - refactor the mt8196 adda dai driver.
->   - remove the gpio module and use SND_SOC_DAPM_PINCTRL to manage it.
->   - removes CONNSYS_I2S related functions that are not supported in i2s dai driver.
->   - fixed mt8196-afe.yaml and mt8196-mt6681.yaml syntax issues.
->   - modify log printing in all modules.
-You just sent it today and immediately sent (20 minutes later) v2 with
-so many changes?
+> Signed-off-by: Darren Ye <darren.ye@mediatek.com>
+> ---
+>  .../bindings/sound/mediatek,mt8196-afe.yaml   | 233 ++++++++++++++++++
 
-Give people chance to review. One big patchset every few days.
+Bindings are before their users. Order your patches correctly (see DT
+submitting patches).
+
+>  1 file changed, 233 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8196-afe.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8196-afe.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8196-afe.yaml
+> new file mode 100644
+> index 000000000000..44f8847b13a8
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/sound/mediatek,mt8196-afe.yaml
+
+Filename matching compatible.
+
+
+> @@ -0,0 +1,233 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/sound/mediatek,mt8196-afe.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek Audio Front End PCM controller for MT8196
+> +
+> +maintainers:
+> +  - Darren Ye <darren.ye@mediatek.com>
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,mt8196-afe-pcm
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+
+Blank line
+
+> +  memory-region:
+> +    maxItems: 1
+> +    description: |
+> +      Shared memory region for AFE memif.  A "shared-dma-pool".
+> +      See dtschema reserved-memory/shared-dma-pool.yaml for details.
+
+Drop description
+
+Blank line
+
+> +  mediatek,cksys:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description: The phandle of the mediatek clk systemd controller
+
+For what purpose? this should be answered here. Anyway you clocks for
+handling clocks of clk controller.
+
+> +
+> +  mediatek,vlpcksys:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description: The phandle of the mediatek vlpcksys controller
+
+Blank line. For what purpose?
+
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    items:
+> +      - description: audio hopping clock gate
+> +      - description: audio f26m clock gate
+> +      - description: audio apll1 clock gate
+> +      - description: audio apll2 clock gate
+> +      - description: audio apll1 tuner gate
+> +      - description: audio apll2 tuner gate
+> +      - description: mux for audio vlp int
+> +      - description: mux for audio vlp engen1
+> +      - description: mux for audio vlp engen2
+> +      - description: mux for audio h
+> +      - description: vlp clock 26m
+> +      - description: audio mainpll divide 4
+> +      - description: mux for audio apll1
+> +      - description: audio apll1
+> +      - description: mux for audio apll2
+> +      - description: audio apll2
+> +      - description: audio apll1 divide 4
+> +      - description: audio apll2 divide 4
+> +      - description: mux for i2sin0 mck
+> +      - description: mux for i2sin1 mck
+> +      - description: mux for fmi2s mck
+> +      - description: mux for tdmout mck
+> +      - description: auido apll12 divide for i2sin0
+> +      - description: auido apll12 divide for i2sin1
+> +      - description: auido apll12 divide for fmi2s
+> +      - description: auido apll12 divide for tdmout mck
+> +      - description: auido apll12 divide for tdmout bck
+> +      - description: audio adsp clk
+> +      - description: 26m clock
+
+Do not come with entirely different ordering than existing variants.
+
+> +
+> +  clock-names:
+> +    items:
+> +      - const: aud_hopping_clk
+
+Look how this is called in upstream.
+
+> +      - const: aud_f26m_clk
+> +      - const: aud_apll1_clk
+> +      - const: aud_apll2_clk
+> +      - const: aud_apll_tuner1_clk
+> +      - const: aud_apll_tuner2_clk
+> +      - const: vlp_mux_audio_int
+> +      - const: vlp_mux_aud_eng1
+> +      - const: vlp_mux_aud_eng2
+> +      - const: vlp_mux_audio_h
+> +      - const: vlp_clk26m_clk
+> +      - const: ck_mainpll_d4_d4
+> +      - const: ck_mux_aud_1
+> +      - const: ck_apll1_ck
+> +      - const: ck_mux_aud_2
+> +      - const: ck_apll2_ck
+> +      - const: ck_apll1_d4
+> +      - const: ck_apll2_d4
+> +      - const: ck_i2sin0_m_sel
+> +      - const: ck_i2sin1_m_sel
+> +      - const: ck_fmi2s_m_sel
+> +      - const: ck_tdmout_m_sel
+> +      - const: ck_apll12_div_i2sin0
+> +      - const: ck_apll12_div_i2sin1
+> +      - const: ck_apll12_div_fmi2s
+> +      - const: ck_apll12_div_tdmout_m
+> +      - const: ck_apll12_div_tdmout_b
+> +      - const: ck_adsp_sel
+> +      - const: ck_clk26m_clk
+
+The same.
+
+> +
+> +  mediatek,etdm4-out-ch:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description:
+> +      Number of ETDM4 output channels.
+> +    minimum: 1
+> +    maximum: 8
+> +
+> +  mediatek,etdm4-in-ch:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description:
+> +      Number of ETDM4 input channels.
+> +    minimum: 1
+> +    maximum: 8
+
+Why is this binding so different than existing ones? I expect uniformity
+not rework of all properties every time you upstream new device.
+
+> +
+> +  mediatek,etdm4-out-sync:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description:
+> +      ETDM4 output and input enable synchronization.
+> +    enum:
+> +      - 0 # Enable controlled by itself
+> +      - 1 # Enable synchronization with ETDM4 input.
+> +
+> +  mediatek,etdm4-in-sync:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description:
+> +      ETDM4 input and outpuot enable synchronization.
+> +    enum:
+> +      - 0 # Enable controlled by itself
+> +      - 1 # Enable synchronization with ETDM4 output.
+> +
+> +
+> +
+
+Hm? But why? One blank line is enough.
+
+> +  mediatek,etdm4-ip-mode:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description: ETDM IP mode.
+> +    enum:
+> +      - 0 # One ip multi-ch mode
+> +      - 1 # Multi-ip 2ch mode
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - mediatek,cksys
+> +  - mediatek,vlpcksys
+> +  - power-domains
+> +  - memory-region
+> +  - clocks
+> +  - clock-names
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +
+> +    soc {
+> +        #address-cells = <2>;
+> +        #size-cells = <2>;
+> +
+> +        afe: mt8196-afe-pcm@1a110000 {
+
+Look at other bindings.
+
+Node names should be generic. See also an explanation and list of
+examples (not exhaustive) in DT specification:
+https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
+
 
 Best regards,
 Krzysztof
