@@ -4,109 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25D5CC36018
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 18:50:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32102C36018
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 18:52:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6OrvsvEYA+XXB2xdTLTpIAwjv43X6JKiVZsB2NNpFGM=; b=mF34A8iW0KdXACcLv6BpWeejvg
-	CfyM6INvU0/pH1k9aD4yoEBAGiHKjoiWCIi96k1UA6VukVxCQba5ZNqJoKLczCw8J81aAPOC5bazB
-	VBC7CYpXOwRbXdxt6snQq20rjTUq9Ntbf9DcHs8+oYh0R/ITk/Qn6V+61x7+ItgvPiCoZiwZQA9Qw
-	RoZvG4NBtWobpNnHzcdpUmGxjRtyCpq+Wlk9QJRO2OklVaxkGfmTjzzLvvUwx+EWwxxTImROQFf1H
-	45chcq2VYp4UKkKuhhd8z4jUQm4RubtplUhtaVj47fW+k+LuTHT9COXK9paurXvnDXucwNUmBIq3z
-	WOAeZRjQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	bh=wkTAESEKeKUtdyXTDTV8eheg+YrwZqve/99BaU7jXd0=; b=3vVV6gPKnfmsmU//1lIQ2BYU22
+	3jxut3ftAryMYmOt5BwQGePh4PGHdntxW7PbWl/NBDT3IuVGzb9ODNuDdomszwF8wtCUamHmAANRW
+	UhH6psXIcrcriz8SdVuQT+PQm1oPKTqyMaOD0Zh+6v6B/gpcvQ1h6n39EHoRW2Ex5bIJ3QgZwmuCW
+	wP14pivm7lDmM6o9m7riQH0pYDGAx8KUuKLGnke3dxbfQ+JXcA7SSjIxG9RrPVqPJk8KYaCD5j7WG
+	2KV+je4IpEy9ie8kaLI6Xr98LSwM+dKAXvgLQ2ADf8DYxeihuOOtbZhnmqoARhmHnQPY5215rbd5p
+	ehg4x6xQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1rYe-00000001dO5-2AYG;
-	Mon, 07 Apr 2025 18:50:56 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1u1ra2-00000001fyM-0WQc;
+	Mon, 07 Apr 2025 18:52:22 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1pgV-00000001HG2-2Lx1;
-	Mon, 07 Apr 2025 16:50:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=6OrvsvEYA+XXB2xdTLTpIAwjv43X6JKiVZsB2NNpFGM=; b=SdsvFv6JTyqowC2RqDU4pOeOJL
-	/bZnRo43dmp+OU5D6lYdtC/AVXB8au06J684P2SiV5rQFB9ikUFzx/6WWZsXbbtTx0sRtKySuf5SU
-	kVwBa+zg7ZFU5iTpkMZOk5ymsDjjD4zjHaZIgCDtOOLlTfnylftNNU38y6n1Jn68m9KEHVBWBRi8i
-	Z4WnxHwKPNSt0S3/2eakTVvBut3G8zr88vYidRgMqd0d4AredKAKD3ObMQIC1I33bjfbk1Fn8t061
-	3Ij7QltmzYxHXac3ctDbDqFaOGaEJAVIEb26kanSCOekz/SLhCdPhngDv5nexC3odpl7kxpnKSOEl
-	N++4RJtA==;
-Received: from sea.source.kernel.org ([172.234.252.31])
-	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1pgS-000000084cJ-1aWz;
-	Mon, 07 Apr 2025 16:50:54 +0000
+	id 1u1qoy-00000001Siq-0WrI;
+	Mon, 07 Apr 2025 18:03:44 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6655C49FA6;
-	Mon,  7 Apr 2025 16:50:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CAB5FC4AF10;
-	Mon,  7 Apr 2025 16:50:50 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 066DB61164;
+	Mon,  7 Apr 2025 18:03:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F0CDAC4CEDD;
+	Mon,  7 Apr 2025 18:03:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744044650;
-	bh=9rKDfEvc7K+7LzU7nTcuoqeYfX0y7c5G08Njz5uF/Vo=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=Sp9MSWDJaaAqP1q2SYIWKIo2g5ROm+6P5tR7LFd8E50X8gK4zuhxBadi53VkyP+Ic
-	 Mjsmlr7jxLIM1qBo59vxeEqPR6FZPe9YVLx4CPyU2A4DHmeFfsEwHB8BxVshIFEmeC
-	 12MMo2b3egIrNo05eXUirOJt6tvZCoIHerm6NWQWppuvtrt7Sdv8HQefioWs1cgwOv
-	 mkQpF5mP4YM/Mqvyo83b7cKwtpLn0eBZTzXGJBE6sjFWjRkVl9Js0s32ghUeE+0pJ2
-	 vKcR/Tzpjum/ZIgOGGfWTmbdDSesqQEtB6FpedtzQIqOmygCuQe1BApOBiIe8k3tMk
-	 ZEfSj8h17KEtg==
-Received: by mail-ed1-f44.google.com with SMTP id 4fb4d7f45d1cf-5edc07c777eso5986597a12.3;
-        Mon, 07 Apr 2025 09:50:50 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCUL95JFS3q6Il1E1xYKws+l+u5pYtV7PW2mFx+hOTTkBVmXFxfQ7t+W0ytEGWlk21Iwh0+X5Umn9fMyXs5/@lists.infradead.org, AJvYcCW6aM7hPzWGI01jUr5PsI/wa0vrhMv9Rd6WUbbLcs8YFMsr7XiN+DgsZOgp0/n3WrZMJMpUISH1Ll4GOXmz2+ZJnw==@lists.infradead.org, AJvYcCWKR7e0NsXM1rhR76SlacnAOdVOPwwBCavz3lbnoKzgz88RMlIMeI5ao2PxEuophTzou8Di+cWV4/g/2Jd9siI=@lists.infradead.org, AJvYcCXPfmge4uHex2/N0jaRxHDa/vNtUnNZ8B0s1sxZ/cezS/du89lhEHHcDMc3i5QxTojMTYiS654l7PFl8uFWNb4=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw28fLRSltbGjJpkMmEm8BZ038uC1snBgStlnbFLcpxWnt0E4C1
-	Wq/aZVGa74d6N6rDovFuL9sEUdQKo4QU16PyMpzKpT6TK8ySSxNuQvgo3vwSj18etYIC93xZAZ3
-	Q+D5G20mf/tUV7UavriKUPqTn6g==
-X-Google-Smtp-Source: AGHT+IEYKsKGhFSJY/Ew6wLedApBd8mm5Tfxxs3oUxIJoVcHTWnGkb+RbDSqCHxLGxft/yGwgIdnVVemND8kyOfPXZI=
-X-Received: by 2002:a05:6402:26ca:b0:5e7:c779:85db with SMTP id
- 4fb4d7f45d1cf-5f0db7fc898mr8148611a12.4.1744044649254; Mon, 07 Apr 2025
- 09:50:49 -0700 (PDT)
+	s=k20201202; t=1744049023;
+	bh=YHIy5Y1koKmkECfrSnEDyoWYCat4HjXEskfIpv3fwuc=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=RttCvuN6FYjIuyMSpBvHJlb4NGyWZ/3GBZXejCnlcffyyRb6qBm7entEeT5evaQPe
+	 LF0Y0672+3ZAnwDw6WTDneKn3v8souc6WjSgylaiDpxYunKnwcZj2aCfx1rd5invPL
+	 tBhB17TFw4gFjshVKtaDfsnXWzrIe8GsvSp0EKT1tgW4qdDsoptaI4oabflYTQKqah
+	 0S0QDF0bxdh3qiwItJEEY2RlOOnJ8Yd1d4s+7BKH0GEopNDPQU+7M4phafo7qggkpP
+	 qmvHquthg0WYzrN/WkyrxyW/lHo+3k6cCJK2Ffia4l+TYXQIuehc971AnL7F8FZX1I
+	 x1p5l2w16/ZBw==
+Date: Mon, 7 Apr 2025 13:03:41 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: "Jiri Slaby (SUSE)" <jirislaby@kernel.org>
+Cc: tglx@linutronix.de, maz@kernel.org, linux-kernel@vger.kernel.org,
+	Jingoo Han <jingoohan1@gmail.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>,
+	Hou Zhiqiang <Zhiqiang.Hou@nxp.com>,
+	Toan Le <toan@os.amperecomputing.com>,
+	Joyce Ooi <joyce.ooi@intel.com>, Jim Quinlan <jim2101024@gmail.com>,
+	Nicolas Saenz Julienne <nsaenz@kernel.org>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Michal Simek <michal.simek@amd.com>,
+	Daire McNamara <daire.mcnamara@microchip.com>,
+	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rpi-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2 07/57] irqdomain: pci: Switch to of_fwnode_handle()
+Message-ID: <20250407180341.GA189772@bhelgaas>
 MIME-Version: 1.0
-References: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org>
- <20250403-dt-cpu-schema-v1-18-076be7171a85@kernel.org> <CAPDyKFrFRrPVJ_t0JrAE1VTbS02hwr=L-EHtqb7CQiWzB1MnQg@mail.gmail.com>
- <CAL_JsqKygxhcQ=PZW84sfiW7BVXKF839vfNyxS9GwAXuqmN=8g@mail.gmail.com> <CAPDyKFoHQdHED0hHUR7VKin0XG6SVnYXuvPjB=Xe+1o2hpiPJA@mail.gmail.com>
-In-Reply-To: <CAPDyKFoHQdHED0hHUR7VKin0XG6SVnYXuvPjB=Xe+1o2hpiPJA@mail.gmail.com>
-From: Rob Herring <robh@kernel.org>
-Date: Mon, 7 Apr 2025 11:50:37 -0500
-X-Gmail-Original-Message-ID: <CAL_Jsq+Oa7MvVO7Y-RG+qrY2e86B_q0XGq1LWoy5Mq+G72ZHzQ@mail.gmail.com>
-X-Gm-Features: ATxdqUFxTokrKuT9iYBdxHBpsv0NfQo4Eim7mTXXSg7aEaclQFxJWUQS1crmjko
-Message-ID: <CAL_Jsq+Oa7MvVO7Y-RG+qrY2e86B_q0XGq1LWoy5Mq+G72ZHzQ@mail.gmail.com>
-Subject: Re: [PATCH 18/19] dt-bindings: arm/cpus: Add power-domains constraints
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Viresh Kumar <viresh.kumar@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Vincenzo Frascino <vincenzo.frascino@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, 
-	Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, 
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Viresh Kumar <vireshk@kernel.org>, 
-	Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>, zhouyanjie@wanyeetech.com, 
-	Conor Dooley <conor@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>, Steen Hegelund <Steen.Hegelund@microchip.com>, 
-	Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, 
-	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org, 
-	linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-mips@vger.kernel.org, 
-	imx@lists.linux.dev, linux-rockchip@lists.infradead.org, 
-	linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250407_175052_836112_0F8BB617 
-X-CRM114-Status: GOOD (  20.26  )
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20250319092951.37667-8-jirislaby@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,57 +86,183 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 7, 2025 at 11:23=E2=80=AFAM Ulf Hansson <ulf.hansson@linaro.org=
-> wrote:
->
-> On Fri, 4 Apr 2025 at 15:09, Rob Herring <robh@kernel.org> wrote:
-> >
-> > On Fri, Apr 4, 2025 at 5:37=E2=80=AFAM Ulf Hansson <ulf.hansson@linaro.=
-org> wrote:
-> > >
-> > > On Fri, 4 Apr 2025 at 05:06, Rob Herring (Arm) <robh@kernel.org> wrot=
-e:
-> > > >
-> > > > The "power-domains" and "power-domains-names" properties are missin=
-g any
-> > > > constraints. Add the constraints and drop the generic descriptions.
-> > > >
-> > > > Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
-> > > > ---
-> > > >  Documentation/devicetree/bindings/arm/cpus.yaml | 8 ++------
-> > > >  1 file changed, 2 insertions(+), 6 deletions(-)
-> > > >
-> > > > diff --git a/Documentation/devicetree/bindings/arm/cpus.yaml b/Docu=
-mentation/devicetree/bindings/arm/cpus.yaml
-> > > > index 6f74ebfd38df..5bd5822db8af 100644
-> > > > --- a/Documentation/devicetree/bindings/arm/cpus.yaml
-> > > > +++ b/Documentation/devicetree/bindings/arm/cpus.yaml
-> > > > @@ -313,19 +313,15 @@ properties:
-> > > >      maxItems: 1
-> > > >
-> > > >    power-domains:
-> > > > -    description:
-> > > > -      List of phandles and PM domain specifiers, as defined by bin=
-dings of the
-> > > > -      PM domain provider (see also ../power_domain.txt).
-> > > > +    maxItems: 1
-> > >
-> > > There are more than one in some cases. The most is probably three, I =
-think.
-> >
-> > Unless I missed it, testing says otherwise. What would the names be if
-> > more than 1 entry?
->
-> "psci", "perf", "cpr", etc
->
-> The "psci" is always for CPU power management, the other is for CPU
-> performance scaling (which may be more than one power-domain in some
-> cases).
->
-> I would suggest changing this to "maxItems: 3". That should be
-> sufficient I think.
+On Wed, Mar 19, 2025 at 10:29:00AM +0100, Jiri Slaby (SUSE) wrote:
+> of_node_to_fwnode() is irqdomain's reimplementation of the "officially"
+> defined of_fwnode_handle(). The former is in the process of being
+> removed, so use the latter instead.
+> 
+> Signed-off-by: Jiri Slaby (SUSE) <jirislaby@kernel.org>
+> Cc: Jingoo Han <jingoohan1@gmail.com>
+> Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+> Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>
+> Cc: "Krzysztof Wilczyński" <kw@linux.com>
+> Cc: Rob Herring <robh@kernel.org>
+> Cc: Bjorn Helgaas <bhelgaas@google.com>
+> Cc: Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>
+> Cc: Hou Zhiqiang <Zhiqiang.Hou@nxp.com>
+> Cc: Toan Le <toan@os.amperecomputing.com>
+> Cc: Joyce Ooi <joyce.ooi@intel.com>
+> Cc: Jim Quinlan <jim2101024@gmail.com>
+> Cc: Nicolas Saenz Julienne <nsaenz@kernel.org>
+> Cc: Florian Fainelli <florian.fainelli@broadcom.com>
+> Cc: Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>
+> Cc: Ray Jui <rjui@broadcom.com>
+> Cc: Scott Branden <sbranden@broadcom.com>
+> Cc: Ryder Lee <ryder.lee@mediatek.com>
+> Cc: Jianjun Wang <jianjun.wang@mediatek.com>
+> Cc: Michal Simek <michal.simek@amd.com>
+> Cc: Daire McNamara <daire.mcnamara@microchip.com>
+> Cc: linux-pci@vger.kernel.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-rpi-kernel@lists.infradead.org
+> Cc: linux-mediatek@lists.infradead.org
 
-Again, my testing says 1 is enough. So where is a .dts file with 3 or 2?
+Applied to pci/irq for v6.16, thanks!
 
-Rob
+> ---
+>  drivers/pci/controller/dwc/pcie-designware-host.c    | 2 +-
+>  drivers/pci/controller/mobiveil/pcie-mobiveil-host.c | 2 +-
+>  drivers/pci/controller/pci-xgene-msi.c               | 2 +-
+>  drivers/pci/controller/pcie-altera-msi.c             | 2 +-
+>  drivers/pci/controller/pcie-brcmstb.c                | 2 +-
+>  drivers/pci/controller/pcie-iproc-msi.c              | 2 +-
+>  drivers/pci/controller/pcie-mediatek.c               | 2 +-
+>  drivers/pci/controller/pcie-xilinx-dma-pl.c          | 2 +-
+>  drivers/pci/controller/pcie-xilinx-nwl.c             | 2 +-
+>  drivers/pci/controller/plda/pcie-plda-host.c         | 2 +-
+>  10 files changed, 10 insertions(+), 10 deletions(-)
+> 
+> diff --git a/drivers/pci/controller/dwc/pcie-designware-host.c b/drivers/pci/controller/dwc/pcie-designware-host.c
+> index ecc33f6789e3..d1cd48efad43 100644
+> --- a/drivers/pci/controller/dwc/pcie-designware-host.c
+> +++ b/drivers/pci/controller/dwc/pcie-designware-host.c
+> @@ -227,7 +227,7 @@ static const struct irq_domain_ops dw_pcie_msi_domain_ops = {
+>  int dw_pcie_allocate_domains(struct dw_pcie_rp *pp)
+>  {
+>  	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
+> -	struct fwnode_handle *fwnode = of_node_to_fwnode(pci->dev->of_node);
+> +	struct fwnode_handle *fwnode = of_fwnode_handle(pci->dev->of_node);
+>  
+>  	pp->irq_domain = irq_domain_create_linear(fwnode, pp->num_vectors,
+>  					       &dw_pcie_msi_domain_ops, pp);
+> diff --git a/drivers/pci/controller/mobiveil/pcie-mobiveil-host.c b/drivers/pci/controller/mobiveil/pcie-mobiveil-host.c
+> index 0e088e74155d..6628eed9d26e 100644
+> --- a/drivers/pci/controller/mobiveil/pcie-mobiveil-host.c
+> +++ b/drivers/pci/controller/mobiveil/pcie-mobiveil-host.c
+> @@ -435,7 +435,7 @@ static const struct irq_domain_ops msi_domain_ops = {
+>  static int mobiveil_allocate_msi_domains(struct mobiveil_pcie *pcie)
+>  {
+>  	struct device *dev = &pcie->pdev->dev;
+> -	struct fwnode_handle *fwnode = of_node_to_fwnode(dev->of_node);
+> +	struct fwnode_handle *fwnode = of_fwnode_handle(dev->of_node);
+>  	struct mobiveil_msi *msi = &pcie->rp.msi;
+>  
+>  	mutex_init(&msi->lock);
+> diff --git a/drivers/pci/controller/pci-xgene-msi.c b/drivers/pci/controller/pci-xgene-msi.c
+> index 7bce327897c9..69a9c0a87639 100644
+> --- a/drivers/pci/controller/pci-xgene-msi.c
+> +++ b/drivers/pci/controller/pci-xgene-msi.c
+> @@ -247,7 +247,7 @@ static int xgene_allocate_domains(struct xgene_msi *msi)
+>  	if (!msi->inner_domain)
+>  		return -ENOMEM;
+>  
+> -	msi->msi_domain = pci_msi_create_irq_domain(of_node_to_fwnode(msi->node),
+> +	msi->msi_domain = pci_msi_create_irq_domain(of_fwnode_handle(msi->node),
+>  						    &xgene_msi_domain_info,
+>  						    msi->inner_domain);
+>  
+> diff --git a/drivers/pci/controller/pcie-altera-msi.c b/drivers/pci/controller/pcie-altera-msi.c
+> index e1cee3c0575f..5fb3a2e0017e 100644
+> --- a/drivers/pci/controller/pcie-altera-msi.c
+> +++ b/drivers/pci/controller/pcie-altera-msi.c
+> @@ -164,7 +164,7 @@ static const struct irq_domain_ops msi_domain_ops = {
+>  
+>  static int altera_allocate_domains(struct altera_msi *msi)
+>  {
+> -	struct fwnode_handle *fwnode = of_node_to_fwnode(msi->pdev->dev.of_node);
+> +	struct fwnode_handle *fwnode = of_fwnode_handle(msi->pdev->dev.of_node);
+>  
+>  	msi->inner_domain = irq_domain_add_linear(NULL, msi->num_of_vectors,
+>  					     &msi_domain_ops, msi);
+> diff --git a/drivers/pci/controller/pcie-brcmstb.c b/drivers/pci/controller/pcie-brcmstb.c
+> index 8b2b099e81eb..1f356fca07a2 100644
+> --- a/drivers/pci/controller/pcie-brcmstb.c
+> +++ b/drivers/pci/controller/pcie-brcmstb.c
+> @@ -581,7 +581,7 @@ static const struct irq_domain_ops msi_domain_ops = {
+>  
+>  static int brcm_allocate_domains(struct brcm_msi *msi)
+>  {
+> -	struct fwnode_handle *fwnode = of_node_to_fwnode(msi->np);
+> +	struct fwnode_handle *fwnode = of_fwnode_handle(msi->np);
+>  	struct device *dev = msi->dev;
+>  
+>  	msi->inner_domain = irq_domain_add_linear(NULL, msi->nr, &msi_domain_ops, msi);
+> diff --git a/drivers/pci/controller/pcie-iproc-msi.c b/drivers/pci/controller/pcie-iproc-msi.c
+> index 649fcb449f34..804b3a5787c5 100644
+> --- a/drivers/pci/controller/pcie-iproc-msi.c
+> +++ b/drivers/pci/controller/pcie-iproc-msi.c
+> @@ -451,7 +451,7 @@ static int iproc_msi_alloc_domains(struct device_node *node,
+>  	if (!msi->inner_domain)
+>  		return -ENOMEM;
+>  
+> -	msi->msi_domain = pci_msi_create_irq_domain(of_node_to_fwnode(node),
+> +	msi->msi_domain = pci_msi_create_irq_domain(of_fwnode_handle(node),
+>  						    &iproc_msi_domain_info,
+>  						    msi->inner_domain);
+>  	if (!msi->msi_domain) {
+> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+> index 811a8b4acd50..efcc4a7c17be 100644
+> --- a/drivers/pci/controller/pcie-mediatek.c
+> +++ b/drivers/pci/controller/pcie-mediatek.c
+> @@ -485,7 +485,7 @@ static struct msi_domain_info mtk_msi_domain_info = {
+>  
+>  static int mtk_pcie_allocate_msi_domains(struct mtk_pcie_port *port)
+>  {
+> -	struct fwnode_handle *fwnode = of_node_to_fwnode(port->pcie->dev->of_node);
+> +	struct fwnode_handle *fwnode = of_fwnode_handle(port->pcie->dev->of_node);
+>  
+>  	mutex_init(&port->lock);
+>  
+> diff --git a/drivers/pci/controller/pcie-xilinx-dma-pl.c b/drivers/pci/controller/pcie-xilinx-dma-pl.c
+> index dd117f07fc95..71cf13ae51c7 100644
+> --- a/drivers/pci/controller/pcie-xilinx-dma-pl.c
+> +++ b/drivers/pci/controller/pcie-xilinx-dma-pl.c
+> @@ -470,7 +470,7 @@ static int xilinx_pl_dma_pcie_init_msi_irq_domain(struct pl_dma_pcie *port)
+>  	struct device *dev = port->dev;
+>  	struct xilinx_msi *msi = &port->msi;
+>  	int size = BITS_TO_LONGS(XILINX_NUM_MSI_IRQS) * sizeof(long);
+> -	struct fwnode_handle *fwnode = of_node_to_fwnode(port->dev->of_node);
+> +	struct fwnode_handle *fwnode = of_fwnode_handle(port->dev->of_node);
+>  
+>  	msi->dev_domain = irq_domain_add_linear(NULL, XILINX_NUM_MSI_IRQS,
+>  						&dev_msi_domain_ops, port);
+> diff --git a/drivers/pci/controller/pcie-xilinx-nwl.c b/drivers/pci/controller/pcie-xilinx-nwl.c
+> index 8d6e2a89b067..9cf8a96f7bc4 100644
+> --- a/drivers/pci/controller/pcie-xilinx-nwl.c
+> +++ b/drivers/pci/controller/pcie-xilinx-nwl.c
+> @@ -495,7 +495,7 @@ static int nwl_pcie_init_msi_irq_domain(struct nwl_pcie *pcie)
+>  {
+>  #ifdef CONFIG_PCI_MSI
+>  	struct device *dev = pcie->dev;
+> -	struct fwnode_handle *fwnode = of_node_to_fwnode(dev->of_node);
+> +	struct fwnode_handle *fwnode = of_fwnode_handle(dev->of_node);
+>  	struct nwl_msi *msi = &pcie->msi;
+>  
+>  	msi->dev_domain = irq_domain_add_linear(NULL, INT_PCI_MSI_NR,
+> diff --git a/drivers/pci/controller/plda/pcie-plda-host.c b/drivers/pci/controller/plda/pcie-plda-host.c
+> index 4153214ca410..4c7a9fa311e3 100644
+> --- a/drivers/pci/controller/plda/pcie-plda-host.c
+> +++ b/drivers/pci/controller/plda/pcie-plda-host.c
+> @@ -150,7 +150,7 @@ static struct msi_domain_info plda_msi_domain_info = {
+>  static int plda_allocate_msi_domains(struct plda_pcie_rp *port)
+>  {
+>  	struct device *dev = port->dev;
+> -	struct fwnode_handle *fwnode = of_node_to_fwnode(dev->of_node);
+> +	struct fwnode_handle *fwnode = of_fwnode_handle(dev->of_node);
+>  	struct plda_msi *msi = &port->msi;
+>  
+>  	mutex_init(&port->msi.lock);
+> -- 
+> 2.49.0
+> 
 
