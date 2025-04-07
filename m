@@ -4,74 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32102C36018
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 18:52:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A8B8C369A5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 22:57:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	bh=wkTAESEKeKUtdyXTDTV8eheg+YrwZqve/99BaU7jXd0=; b=3vVV6gPKnfmsmU//1lIQ2BYU22
-	3jxut3ftAryMYmOt5BwQGePh4PGHdntxW7PbWl/NBDT3IuVGzb9ODNuDdomszwF8wtCUamHmAANRW
-	UhH6psXIcrcriz8SdVuQT+PQm1oPKTqyMaOD0Zh+6v6B/gpcvQ1h6n39EHoRW2Ex5bIJ3QgZwmuCW
-	wP14pivm7lDmM6o9m7riQH0pYDGAx8KUuKLGnke3dxbfQ+JXcA7SSjIxG9RrPVqPJk8KYaCD5j7WG
-	2KV+je4IpEy9ie8kaLI6Xr98LSwM+dKAXvgLQ2ADf8DYxeihuOOtbZhnmqoARhmHnQPY5215rbd5p
-	ehg4x6xQ==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cjEt/IPzaAdKLiLHC8nJ5ihJ1fjZFnzeMJstnBzp7XQ=; b=ckfP9ayriojkWH+4Kquq6faLdJ
+	MKEYaBWLC1y2DCbnGmOXE9dBuQy0Dx/OXI1MDtoBvlIpHpiuG8jmolGLW8sucNrmHsyaRNHp7x0lx
+	U7wEa+qtDXS0VglbnFbEBeIyvULOKAYg5udFqxs/URgpAaw9MW5rDCMrndn9vL/xl2l3XbhTiBpHU
+	aWfYMJxTskwpYARHUWQmD6M1Benm1d8Qm1tOb79tu0VsM6bRNqDt1O5SHOqsHO/e4fwXFmoi7CTKa
+	iaxSOnTxt1wOAr9B7GJcuxLO1MyWXuZ9hVeFmM/fHJXbNi10OMRxcbqSl+kueMrfZHxjReznWl092
+	koCjBlww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1ra2-00000001fyM-0WQc;
-	Mon, 07 Apr 2025 18:52:22 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1u1vPS-00000002EX6-2AMi;
+	Mon, 07 Apr 2025 22:57:42 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1qoy-00000001Siq-0WrI;
-	Mon, 07 Apr 2025 18:03:44 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 066DB61164;
-	Mon,  7 Apr 2025 18:03:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F0CDAC4CEDD;
-	Mon,  7 Apr 2025 18:03:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744049023;
-	bh=YHIy5Y1koKmkECfrSnEDyoWYCat4HjXEskfIpv3fwuc=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=RttCvuN6FYjIuyMSpBvHJlb4NGyWZ/3GBZXejCnlcffyyRb6qBm7entEeT5evaQPe
-	 LF0Y0672+3ZAnwDw6WTDneKn3v8souc6WjSgylaiDpxYunKnwcZj2aCfx1rd5invPL
-	 tBhB17TFw4gFjshVKtaDfsnXWzrIe8GsvSp0EKT1tgW4qdDsoptaI4oabflYTQKqah
-	 0S0QDF0bxdh3qiwItJEEY2RlOOnJ8Yd1d4s+7BKH0GEopNDPQU+7M4phafo7qggkpP
-	 qmvHquthg0WYzrN/WkyrxyW/lHo+3k6cCJK2Ffia4l+TYXQIuehc971AnL7F8FZX1I
-	 x1p5l2w16/ZBw==
-Date: Mon, 7 Apr 2025 13:03:41 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: "Jiri Slaby (SUSE)" <jirislaby@kernel.org>
-Cc: tglx@linutronix.de, maz@kernel.org, linux-kernel@vger.kernel.org,
-	Jingoo Han <jingoohan1@gmail.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>,
-	Hou Zhiqiang <Zhiqiang.Hou@nxp.com>,
-	Toan Le <toan@os.amperecomputing.com>,
-	Joyce Ooi <joyce.ooi@intel.com>, Jim Quinlan <jim2101024@gmail.com>,
-	Nicolas Saenz Julienne <nsaenz@kernel.org>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Michal Simek <michal.simek@amd.com>,
-	Daire McNamara <daire.mcnamara@microchip.com>,
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rpi-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 07/57] irqdomain: pci: Switch to of_fwnode_handle()
-Message-ID: <20250407180341.GA189772@bhelgaas>
+	id 1u1s8N-00000001orE-1gLc;
+	Mon, 07 Apr 2025 19:27:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:From:Date:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=cjEt/IPzaAdKLiLHC8nJ5ihJ1fjZFnzeMJstnBzp7XQ=; b=WNfTXju/J+uQEFb71+wGkU7uTO
+	lEP6eHOaRDzTh3qLjRqAfnGM6fHND/o3GN8b+yXKxHdSx0nvDr6EGDcrDq6nJW1p4bZuwS8z7AcOm
+	2wWmNDtURDi43mPRmnKRM6+h6F02F25Rh6Xi4PJ6As8/s6KKopMqqKYT6g1TxNuwnfAsa5yPZxF1W
+	DYQ51qMzX+brwujfsaXQYLZ52TK0/zmwATyhtb2fofpXR7XJyJdco80PCkVrVfLitc/TaZNiA7KKT
+	j506dIJnR170KpmTofNel0cdtsCivy2FC4BYqGIhOCVhEw13ujtG0VWB7bAZqxvrzI5NAPlsaF/FE
+	tO4ok1fg==;
+Received: from relay9-d.mail.gandi.net ([2001:4b98:dc4:8::229])
+	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1u1s8K-0000000885B-0kXO;
+	Mon, 07 Apr 2025 19:27:50 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 37D604421F;
+	Mon,  7 Apr 2025 19:27:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1744054065;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=cjEt/IPzaAdKLiLHC8nJ5ihJ1fjZFnzeMJstnBzp7XQ=;
+	b=Gi+8MJKk54bvu0U11jHOJw08NvtnpAzunZzJXO4mlFlnzsLVy8DFQIv5f1cwemOl31f/in
+	yXq1Um8EF62nuW+7K5/FANGhJKfIDt3FpxkAeF2Uw52NGHGgsgSLt5hId5UF1i3v6U7LiQ
+	QV71SvnJzRB4Bv9Y0pBT6LtPqcjAci3aXj9uPyPUUIhwMeK2lXlaYCBe0svd+nHK7Htak4
+	/9HotCk7aCwdmAu+N82j0bdVIG/9XNextLdkUXD3MPHCRUDF3rNzBb5f+B2kzx0rN1agcB
+	y2M7EU6B7HGxiOcK1BDKg9fGTg+UZIk8/GVGNr8AJuzWT4pQ2/Cw+JF6m2DEKA==
+Date: Mon, 7 Apr 2025 21:27:39 +0200
+From: Luca Ceresoli <luca.ceresoli@bootlin.com>
+To: Ilpo =?UTF-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
+ <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie
+ <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Andrzej Hajda
+ <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>,
+ Robert Foss <rfoss@kernel.org>, Laurent Pinchart
+ <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>, Jagan Teki
+ <jagan@amarulasolutions.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer
+ <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Douglas Anderson
+ <dianders@chromium.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Krzysztof
+ Kozlowski <krzk@kernel.org>, Dmitry Baryshkov
+ <dmitry.baryshkov@linaro.org>, Anusha Srivatsa <asrivats@redhat.com>, Paul
+ Kocialkowski <paulk@sys-base.io>, Dmitry Baryshkov <lumag@kernel.org>,
+ =?UTF-8?B?SGVydsOp?= Codina <herve.codina@bootlin.com>, Hui Pu
+ <Hui.Pu@gehealthcare.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ dri-devel@lists.freedesktop.org, asahi@lists.linux.dev, LKML
+ <linux-kernel@vger.kernel.org>, chrome-platform@lists.linux.dev,
+ imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-renesas-soc@vger.kernel.org, platform-driver-x86@vger.kernel.org,
+ linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ freedreno@lists.freedesktop.org, linux-stm32@st-md-mailman.stormreply.com,
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>, Hans de Goede
+ <hdegoede@redhat.com>
+Subject: Re: [PATCH 02/34] platform: arm64: acer-aspire1-ec: convert to
+ devm_drm_bridge_alloc() API
+Message-ID: <20250407212739.1e991b6a@booty>
+In-Reply-To: <a9000632-a6d1-d369-c317-9ee73aa645dc@linux.intel.com>
+References: <20250407-drm-bridge-convert-to-alloc-api-v1-0-42113ff8d9c0@bootlin.com>
+	<20250407-drm-bridge-convert-to-alloc-api-v1-2-42113ff8d9c0@bootlin.com>
+	<a9000632-a6d1-d369-c317-9ee73aa645dc@linux.intel.com>
+Organization: Bootlin
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250319092951.37667-8-jirislaby@kernel.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-GND-State: clean
+X-GND-Score: -100
+X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvtddutdefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvvefukfgjfhhoofggtgfgsehtqhertdertdejnecuhfhrohhmpefnuhgtrgcuvegvrhgvshholhhiuceolhhutggrrdgtvghrvghsohhlihessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnhepvddtuedtfefgueehiefhjeeiffekudfhgfdtledvffekhfegteduieejveevteehnecuffhomhgrihhnpehfrhgvvgguvghskhhtohhprdhorhhgpdgsohhothhlihhnrdgtohhmnecukfhppedvrgdtvdemieejtdemvddtvddtmegvrgdtudemsggvgedumeelhegvjeemfeegfeemledufegvnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepvdgrtddvmeeijedtmedvtddvtdemvggrtddumegsvgegudemleehvgejmeefgeefmeeludefvgdphhgvlhhopegsohhothihpdhmrghilhhfrhhomheplhhutggrrdgtvghrvghsohhlihessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepgeefpdhrtghpthhtohepihhlphhordhjrghrvhhinhgvnheslhhinhhugidrihhnthgvlhdrtghomhdprhgtphhtthhopehmrggrrhhtvghnrdhlrghnkhhhohhrshhtsehlihhnuhigr
+ dhinhhtvghlrdgtohhmpdhrtghpthhtohepmhhrihhprghrugeskhgvrhhnvghlrdhorhhgpdhrtghpthhtohepthiiihhmmhgvrhhmrghnnhesshhushgvrdguvgdprhgtphhtthhopegrihhrlhhivggusehgmhgrihhlrdgtohhmpdhrtghpthhtohepshhimhhonhgrsehffhiflhhlrdgthhdprhgtphhtthhopegrnhgurhiivghjrdhhrghjuggrsehinhhtvghlrdgtohhmpdhrtghpthhtohepnhgvihhlrdgrrhhmshhtrhhonhhgsehlihhnrghrohdrohhrgh
+X-GND-Sasl: luca.ceresoli@bootlin.com
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250407_202748_372309_68140329 
+X-CRM114-Status: GOOD (  21.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,183 +116,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 19, 2025 at 10:29:00AM +0100, Jiri Slaby (SUSE) wrote:
-> of_node_to_fwnode() is irqdomain's reimplementation of the "officially"
-> defined of_fwnode_handle(). The former is in the process of being
-> removed, so use the latter instead.
-> 
-> Signed-off-by: Jiri Slaby (SUSE) <jirislaby@kernel.org>
-> Cc: Jingoo Han <jingoohan1@gmail.com>
-> Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-> Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>
-> Cc: "Krzysztof Wilczyński" <kw@linux.com>
-> Cc: Rob Herring <robh@kernel.org>
-> Cc: Bjorn Helgaas <bhelgaas@google.com>
-> Cc: Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>
-> Cc: Hou Zhiqiang <Zhiqiang.Hou@nxp.com>
-> Cc: Toan Le <toan@os.amperecomputing.com>
-> Cc: Joyce Ooi <joyce.ooi@intel.com>
-> Cc: Jim Quinlan <jim2101024@gmail.com>
-> Cc: Nicolas Saenz Julienne <nsaenz@kernel.org>
-> Cc: Florian Fainelli <florian.fainelli@broadcom.com>
-> Cc: Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>
-> Cc: Ray Jui <rjui@broadcom.com>
-> Cc: Scott Branden <sbranden@broadcom.com>
-> Cc: Ryder Lee <ryder.lee@mediatek.com>
-> Cc: Jianjun Wang <jianjun.wang@mediatek.com>
-> Cc: Michal Simek <michal.simek@amd.com>
-> Cc: Daire McNamara <daire.mcnamara@microchip.com>
-> Cc: linux-pci@vger.kernel.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-rpi-kernel@lists.infradead.org
-> Cc: linux-mediatek@lists.infradead.org
+Hello Ilpo,
 
-Applied to pci/irq for v6.16, thanks!
+On Mon, 7 Apr 2025 19:46:59 +0300 (EEST)
+Ilpo J=C3=A4rvinen <ilpo.jarvinen@linux.intel.com> wrote:
 
-> ---
->  drivers/pci/controller/dwc/pcie-designware-host.c    | 2 +-
->  drivers/pci/controller/mobiveil/pcie-mobiveil-host.c | 2 +-
->  drivers/pci/controller/pci-xgene-msi.c               | 2 +-
->  drivers/pci/controller/pcie-altera-msi.c             | 2 +-
->  drivers/pci/controller/pcie-brcmstb.c                | 2 +-
->  drivers/pci/controller/pcie-iproc-msi.c              | 2 +-
->  drivers/pci/controller/pcie-mediatek.c               | 2 +-
->  drivers/pci/controller/pcie-xilinx-dma-pl.c          | 2 +-
->  drivers/pci/controller/pcie-xilinx-nwl.c             | 2 +-
->  drivers/pci/controller/plda/pcie-plda-host.c         | 2 +-
->  10 files changed, 10 insertions(+), 10 deletions(-)
-> 
-> diff --git a/drivers/pci/controller/dwc/pcie-designware-host.c b/drivers/pci/controller/dwc/pcie-designware-host.c
-> index ecc33f6789e3..d1cd48efad43 100644
-> --- a/drivers/pci/controller/dwc/pcie-designware-host.c
-> +++ b/drivers/pci/controller/dwc/pcie-designware-host.c
-> @@ -227,7 +227,7 @@ static const struct irq_domain_ops dw_pcie_msi_domain_ops = {
->  int dw_pcie_allocate_domains(struct dw_pcie_rp *pp)
->  {
->  	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
-> -	struct fwnode_handle *fwnode = of_node_to_fwnode(pci->dev->of_node);
-> +	struct fwnode_handle *fwnode = of_fwnode_handle(pci->dev->of_node);
->  
->  	pp->irq_domain = irq_domain_create_linear(fwnode, pp->num_vectors,
->  					       &dw_pcie_msi_domain_ops, pp);
-> diff --git a/drivers/pci/controller/mobiveil/pcie-mobiveil-host.c b/drivers/pci/controller/mobiveil/pcie-mobiveil-host.c
-> index 0e088e74155d..6628eed9d26e 100644
-> --- a/drivers/pci/controller/mobiveil/pcie-mobiveil-host.c
-> +++ b/drivers/pci/controller/mobiveil/pcie-mobiveil-host.c
-> @@ -435,7 +435,7 @@ static const struct irq_domain_ops msi_domain_ops = {
->  static int mobiveil_allocate_msi_domains(struct mobiveil_pcie *pcie)
->  {
->  	struct device *dev = &pcie->pdev->dev;
-> -	struct fwnode_handle *fwnode = of_node_to_fwnode(dev->of_node);
-> +	struct fwnode_handle *fwnode = of_fwnode_handle(dev->of_node);
->  	struct mobiveil_msi *msi = &pcie->rp.msi;
->  
->  	mutex_init(&msi->lock);
-> diff --git a/drivers/pci/controller/pci-xgene-msi.c b/drivers/pci/controller/pci-xgene-msi.c
-> index 7bce327897c9..69a9c0a87639 100644
-> --- a/drivers/pci/controller/pci-xgene-msi.c
-> +++ b/drivers/pci/controller/pci-xgene-msi.c
-> @@ -247,7 +247,7 @@ static int xgene_allocate_domains(struct xgene_msi *msi)
->  	if (!msi->inner_domain)
->  		return -ENOMEM;
->  
-> -	msi->msi_domain = pci_msi_create_irq_domain(of_node_to_fwnode(msi->node),
-> +	msi->msi_domain = pci_msi_create_irq_domain(of_fwnode_handle(msi->node),
->  						    &xgene_msi_domain_info,
->  						    msi->inner_domain);
->  
-> diff --git a/drivers/pci/controller/pcie-altera-msi.c b/drivers/pci/controller/pcie-altera-msi.c
-> index e1cee3c0575f..5fb3a2e0017e 100644
-> --- a/drivers/pci/controller/pcie-altera-msi.c
-> +++ b/drivers/pci/controller/pcie-altera-msi.c
-> @@ -164,7 +164,7 @@ static const struct irq_domain_ops msi_domain_ops = {
->  
->  static int altera_allocate_domains(struct altera_msi *msi)
->  {
-> -	struct fwnode_handle *fwnode = of_node_to_fwnode(msi->pdev->dev.of_node);
-> +	struct fwnode_handle *fwnode = of_fwnode_handle(msi->pdev->dev.of_node);
->  
->  	msi->inner_domain = irq_domain_add_linear(NULL, msi->num_of_vectors,
->  					     &msi_domain_ops, msi);
-> diff --git a/drivers/pci/controller/pcie-brcmstb.c b/drivers/pci/controller/pcie-brcmstb.c
-> index 8b2b099e81eb..1f356fca07a2 100644
-> --- a/drivers/pci/controller/pcie-brcmstb.c
-> +++ b/drivers/pci/controller/pcie-brcmstb.c
-> @@ -581,7 +581,7 @@ static const struct irq_domain_ops msi_domain_ops = {
->  
->  static int brcm_allocate_domains(struct brcm_msi *msi)
->  {
-> -	struct fwnode_handle *fwnode = of_node_to_fwnode(msi->np);
-> +	struct fwnode_handle *fwnode = of_fwnode_handle(msi->np);
->  	struct device *dev = msi->dev;
->  
->  	msi->inner_domain = irq_domain_add_linear(NULL, msi->nr, &msi_domain_ops, msi);
-> diff --git a/drivers/pci/controller/pcie-iproc-msi.c b/drivers/pci/controller/pcie-iproc-msi.c
-> index 649fcb449f34..804b3a5787c5 100644
-> --- a/drivers/pci/controller/pcie-iproc-msi.c
-> +++ b/drivers/pci/controller/pcie-iproc-msi.c
-> @@ -451,7 +451,7 @@ static int iproc_msi_alloc_domains(struct device_node *node,
->  	if (!msi->inner_domain)
->  		return -ENOMEM;
->  
-> -	msi->msi_domain = pci_msi_create_irq_domain(of_node_to_fwnode(node),
-> +	msi->msi_domain = pci_msi_create_irq_domain(of_fwnode_handle(node),
->  						    &iproc_msi_domain_info,
->  						    msi->inner_domain);
->  	if (!msi->msi_domain) {
-> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-> index 811a8b4acd50..efcc4a7c17be 100644
-> --- a/drivers/pci/controller/pcie-mediatek.c
-> +++ b/drivers/pci/controller/pcie-mediatek.c
-> @@ -485,7 +485,7 @@ static struct msi_domain_info mtk_msi_domain_info = {
->  
->  static int mtk_pcie_allocate_msi_domains(struct mtk_pcie_port *port)
->  {
-> -	struct fwnode_handle *fwnode = of_node_to_fwnode(port->pcie->dev->of_node);
-> +	struct fwnode_handle *fwnode = of_fwnode_handle(port->pcie->dev->of_node);
->  
->  	mutex_init(&port->lock);
->  
-> diff --git a/drivers/pci/controller/pcie-xilinx-dma-pl.c b/drivers/pci/controller/pcie-xilinx-dma-pl.c
-> index dd117f07fc95..71cf13ae51c7 100644
-> --- a/drivers/pci/controller/pcie-xilinx-dma-pl.c
-> +++ b/drivers/pci/controller/pcie-xilinx-dma-pl.c
-> @@ -470,7 +470,7 @@ static int xilinx_pl_dma_pcie_init_msi_irq_domain(struct pl_dma_pcie *port)
->  	struct device *dev = port->dev;
->  	struct xilinx_msi *msi = &port->msi;
->  	int size = BITS_TO_LONGS(XILINX_NUM_MSI_IRQS) * sizeof(long);
-> -	struct fwnode_handle *fwnode = of_node_to_fwnode(port->dev->of_node);
-> +	struct fwnode_handle *fwnode = of_fwnode_handle(port->dev->of_node);
->  
->  	msi->dev_domain = irq_domain_add_linear(NULL, XILINX_NUM_MSI_IRQS,
->  						&dev_msi_domain_ops, port);
-> diff --git a/drivers/pci/controller/pcie-xilinx-nwl.c b/drivers/pci/controller/pcie-xilinx-nwl.c
-> index 8d6e2a89b067..9cf8a96f7bc4 100644
-> --- a/drivers/pci/controller/pcie-xilinx-nwl.c
-> +++ b/drivers/pci/controller/pcie-xilinx-nwl.c
-> @@ -495,7 +495,7 @@ static int nwl_pcie_init_msi_irq_domain(struct nwl_pcie *pcie)
->  {
->  #ifdef CONFIG_PCI_MSI
->  	struct device *dev = pcie->dev;
-> -	struct fwnode_handle *fwnode = of_node_to_fwnode(dev->of_node);
-> +	struct fwnode_handle *fwnode = of_fwnode_handle(dev->of_node);
->  	struct nwl_msi *msi = &pcie->msi;
->  
->  	msi->dev_domain = irq_domain_add_linear(NULL, INT_PCI_MSI_NR,
-> diff --git a/drivers/pci/controller/plda/pcie-plda-host.c b/drivers/pci/controller/plda/pcie-plda-host.c
-> index 4153214ca410..4c7a9fa311e3 100644
-> --- a/drivers/pci/controller/plda/pcie-plda-host.c
-> +++ b/drivers/pci/controller/plda/pcie-plda-host.c
-> @@ -150,7 +150,7 @@ static struct msi_domain_info plda_msi_domain_info = {
->  static int plda_allocate_msi_domains(struct plda_pcie_rp *port)
->  {
->  	struct device *dev = port->dev;
-> -	struct fwnode_handle *fwnode = of_node_to_fwnode(dev->of_node);
-> +	struct fwnode_handle *fwnode = of_fwnode_handle(dev->of_node);
->  	struct plda_msi *msi = &port->msi;
->  
->  	mutex_init(&port->msi.lock);
-> -- 
-> 2.49.0
-> 
+> On Mon, 7 Apr 2025, Luca Ceresoli wrote:
+>=20
+> > This is the new API for allocating DRM bridges.
+> >=20
+> > Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+> >=20
+> > ---
+> >=20
+> > Cc: "Bryan O'Donoghue" <bryan.odonoghue@linaro.org>
+> > Cc: "Ilpo J=C3=A4rvinen" <ilpo.jarvinen@linux.intel.com>
+> > Cc: Hans de Goede <hdegoede@redhat.com>
+> > ---
+> >  drivers/platform/arm64/acer-aspire1-ec.c | 7 +++----
+> >  1 file changed, 3 insertions(+), 4 deletions(-)
+> >=20
+> > diff --git a/drivers/platform/arm64/acer-aspire1-ec.c b/drivers/platfor=
+m/arm64/acer-aspire1-ec.c
+> > index 958fe1bf5f85bb69ac7962f217de9f0b40cde9a1..438532a047e68799ac53a16=
+a4c813fc16be997b9 100644
+> > --- a/drivers/platform/arm64/acer-aspire1-ec.c
+> > +++ b/drivers/platform/arm64/acer-aspire1-ec.c
+> > @@ -452,9 +452,9 @@ static int aspire_ec_probe(struct i2c_client *clien=
+t)
+> >  	int ret;
+> >  	u8 tmp;
+> > =20
+> > -	ec =3D devm_kzalloc(dev, sizeof(*ec), GFP_KERNEL);
+> > -	if (!ec)
+> > -		return -ENOMEM;
+> > +	ec =3D devm_drm_bridge_alloc(dev, struct aspire_ec, bridge, &aspire_e=
+c_bridge_funcs);
+> > +	if (IS_ERR(ec))
+> > +		return PTR_ERR(ec);
+> > =20
+> >  	ec->client =3D client;
+> >  	i2c_set_clientdata(client, ec);
+> > @@ -497,7 +497,6 @@ static int aspire_ec_probe(struct i2c_client *clien=
+t)
+> >  	fwnode =3D device_get_named_child_node(dev, "connector");
+> >  	if (fwnode) {
+> >  		INIT_WORK(&ec->work, aspire_ec_bridge_update_hpd_work);
+> > -		ec->bridge.funcs =3D &aspire_ec_bridge_funcs;
+> >  		ec->bridge.of_node =3D to_of_node(fwnode);
+> >  		ec->bridge.ops =3D DRM_BRIDGE_OP_HPD;
+> >  		ec->bridge.type =3D DRM_MODE_CONNECTOR_USB; =20
+>=20
+> Hi Luca,
+>=20
+> It took a while to locate where the code for the new helper is. I suggest=
+=20
+> if you need send another version of the series directly linking to the=20
+> commit in the cover letter so that it won't take multiple hoops to find i=
+t=20
+> if one wants to review the code and is not having all drm trees easily at=
+=20
+> hand. Here it is for the benefit of other pdx86 people:
+>=20
+> https://gitlab.freedesktop.org/drm/misc/kernel/-/commit/0cc6aadd7fc1e629b=
+715ea3d1ba537ef2da95eec
+
+Apologies, indeed you have a good point. I added the link to the cover
+letter so it will be in v2, if any.
+
+> Acked-by: Ilpo J=C3=A4rvinen <ilpo.jarvinen@linux.intel.com>
+
+Thanks!
+
+> I assume you want this to go through the drm tree where the helper alread=
+y=20
+> is?
+
+MY best guess is that drm-misc-next is the appropriate branch, and it
+is where the helper is already present, but I'll let maintainers decide
+what is most appropriate.
+
+Luca
+
+--=20
+Luca Ceresoli, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
