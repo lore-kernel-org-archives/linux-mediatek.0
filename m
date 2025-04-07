@@ -4,104 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A8B8C369A5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 22:57:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28819C369A1
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 22:57:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cjEt/IPzaAdKLiLHC8nJ5ihJ1fjZFnzeMJstnBzp7XQ=; b=ckfP9ayriojkWH+4Kquq6faLdJ
-	MKEYaBWLC1y2DCbnGmOXE9dBuQy0Dx/OXI1MDtoBvlIpHpiuG8jmolGLW8sucNrmHsyaRNHp7x0lx
-	U7wEa+qtDXS0VglbnFbEBeIyvULOKAYg5udFqxs/URgpAaw9MW5rDCMrndn9vL/xl2l3XbhTiBpHU
-	aWfYMJxTskwpYARHUWQmD6M1Benm1d8Qm1tOb79tu0VsM6bRNqDt1O5SHOqsHO/e4fwXFmoi7CTKa
-	iaxSOnTxt1wOAr9B7GJcuxLO1MyWXuZ9hVeFmM/fHJXbNi10OMRxcbqSl+kueMrfZHxjReznWl092
-	koCjBlww==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=BGxVucIVlSEFbAitfPBjdS68Ocep8Kjrs9c8bCpYovM=; b=ytdMWsnUkhpayq9P746HFe6eIQ
+	oWI66/PzTSupk6aiGmVOi9KDXp/BXikR+s/vM3z0bEAr+aX+ktAKmreJ+jDbh1YHFnAeor/4Q0h4L
+	CTpbFosqUMGtt8OzpkWDgIbw/O5h3RrynljauZtgnCB39FVSEIvqBxHBH0St26Z9Q+DG1caJRfdns
+	itHxQOfc3gUk2FA8Tk59MjIBETn8RRO6ICL0O74cXtohGDa+w2teP2YMEdFp1x9hji+NaoY7/sYGW
+	6oSPQZg5J/MbW9nrqK3WRcfiPqBwh0SM8IxeAbN4+A/jZlSdmac7383D9VVMx3lvE2Oshh7Bp1PWR
+	Hyx3s5Ig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1vPS-00000002EX6-2AMi;
-	Mon, 07 Apr 2025 22:57:42 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1u1vPW-00000002Ear-0Wk5;
+	Mon, 07 Apr 2025 22:57:46 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1s8N-00000001orE-1gLc;
-	Mon, 07 Apr 2025 19:27:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:From:Date:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=cjEt/IPzaAdKLiLHC8nJ5ihJ1fjZFnzeMJstnBzp7XQ=; b=WNfTXju/J+uQEFb71+wGkU7uTO
-	lEP6eHOaRDzTh3qLjRqAfnGM6fHND/o3GN8b+yXKxHdSx0nvDr6EGDcrDq6nJW1p4bZuwS8z7AcOm
-	2wWmNDtURDi43mPRmnKRM6+h6F02F25Rh6Xi4PJ6As8/s6KKopMqqKYT6g1TxNuwnfAsa5yPZxF1W
-	DYQ51qMzX+brwujfsaXQYLZ52TK0/zmwATyhtb2fofpXR7XJyJdco80PCkVrVfLitc/TaZNiA7KKT
-	j506dIJnR170KpmTofNel0cdtsCivy2FC4BYqGIhOCVhEw13ujtG0VWB7bAZqxvrzI5NAPlsaF/FE
-	tO4ok1fg==;
-Received: from relay9-d.mail.gandi.net ([2001:4b98:dc4:8::229])
-	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1s8K-0000000885B-0kXO;
-	Mon, 07 Apr 2025 19:27:50 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 37D604421F;
-	Mon,  7 Apr 2025 19:27:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1744054065;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=cjEt/IPzaAdKLiLHC8nJ5ihJ1fjZFnzeMJstnBzp7XQ=;
-	b=Gi+8MJKk54bvu0U11jHOJw08NvtnpAzunZzJXO4mlFlnzsLVy8DFQIv5f1cwemOl31f/in
-	yXq1Um8EF62nuW+7K5/FANGhJKfIDt3FpxkAeF2Uw52NGHGgsgSLt5hId5UF1i3v6U7LiQ
-	QV71SvnJzRB4Bv9Y0pBT6LtPqcjAci3aXj9uPyPUUIhwMeK2lXlaYCBe0svd+nHK7Htak4
-	/9HotCk7aCwdmAu+N82j0bdVIG/9XNextLdkUXD3MPHCRUDF3rNzBb5f+B2kzx0rN1agcB
-	y2M7EU6B7HGxiOcK1BDKg9fGTg+UZIk8/GVGNr8AJuzWT4pQ2/Cw+JF6m2DEKA==
-Date: Mon, 7 Apr 2025 21:27:39 +0200
-From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-To: Ilpo =?UTF-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
- <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie
- <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Andrzej Hajda
- <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>,
- Robert Foss <rfoss@kernel.org>, Laurent Pinchart
- <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>,
- Jernej Skrabec <jernej.skrabec@gmail.com>, Jagan Teki
- <jagan@amarulasolutions.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer
- <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Douglas Anderson
- <dianders@chromium.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Krzysztof
- Kozlowski <krzk@kernel.org>, Dmitry Baryshkov
- <dmitry.baryshkov@linaro.org>, Anusha Srivatsa <asrivats@redhat.com>, Paul
- Kocialkowski <paulk@sys-base.io>, Dmitry Baryshkov <lumag@kernel.org>,
- =?UTF-8?B?SGVydsOp?= Codina <herve.codina@bootlin.com>, Hui Pu
- <Hui.Pu@gehealthcare.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- dri-devel@lists.freedesktop.org, asahi@lists.linux.dev, LKML
- <linux-kernel@vger.kernel.org>, chrome-platform@lists.linux.dev,
- imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-renesas-soc@vger.kernel.org, platform-driver-x86@vger.kernel.org,
- linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- freedreno@lists.freedesktop.org, linux-stm32@st-md-mailman.stormreply.com,
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>, Hans de Goede
- <hdegoede@redhat.com>
-Subject: Re: [PATCH 02/34] platform: arm64: acer-aspire1-ec: convert to
- devm_drm_bridge_alloc() API
-Message-ID: <20250407212739.1e991b6a@booty>
-In-Reply-To: <a9000632-a6d1-d369-c317-9ee73aa645dc@linux.intel.com>
-References: <20250407-drm-bridge-convert-to-alloc-api-v1-0-42113ff8d9c0@bootlin.com>
-	<20250407-drm-bridge-convert-to-alloc-api-v1-2-42113ff8d9c0@bootlin.com>
-	<a9000632-a6d1-d369-c317-9ee73aa645dc@linux.intel.com>
-Organization: Bootlin
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+	id 1u1sd1-00000001tfH-0HuX;
+	Mon, 07 Apr 2025 19:59:31 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id EB0826111F;
+	Mon,  7 Apr 2025 19:59:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 98640C4CEDD;
+	Mon,  7 Apr 2025 19:59:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1744055970;
+	bh=IJJiTiufrBlO5nC2ia/xZN3g7wJxk91IVPvElnFO708=;
+	h=From:Date:Subject:To:Cc:From;
+	b=cVMTeiaWugrMINR7Zm9QDlGlm651K2BHvG7fbQ/FK6FjkkjBsY1f0qO9jf1uye2FE
+	 zirttmNrMrvOOztexIaInvZfWf1bVJAFrcjwasIIawHpKHiokfTKE7czsfnIdb69qc
+	 lp+HGLJi7A5YkGt7kKd0oNXYPCoKAd7gZp7nDoq84vo18oZ4HltK2RI5t9KOAGfV0h
+	 dVgpnVa4iXnlQs/gnGyNakl1kCVjkrYjeEGbFDaezYm40XYS3IZpY7pFZLRhwGuDFV
+	 qg9dUyc3aGe/UvmEPbo09g96E3CA1azn4UrWWpnWZL65woe+cUWsgYb7DjMKJg1ziU
+	 IP5oxfG2jndew==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Mon, 07 Apr 2025 21:59:04 +0200
+Subject: [PATCH net-next] net: airoha: Add matchall filter offload support
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-GND-State: clean
-X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvtddutdefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvvefukfgjfhhoofggtgfgsehtqhertdertdejnecuhfhrohhmpefnuhgtrgcuvegvrhgvshholhhiuceolhhutggrrdgtvghrvghsohhlihessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnhepvddtuedtfefgueehiefhjeeiffekudfhgfdtledvffekhfegteduieejveevteehnecuffhomhgrihhnpehfrhgvvgguvghskhhtohhprdhorhhgpdgsohhothhlihhnrdgtohhmnecukfhppedvrgdtvdemieejtdemvddtvddtmegvrgdtudemsggvgedumeelhegvjeemfeegfeemledufegvnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepvdgrtddvmeeijedtmedvtddvtdemvggrtddumegsvgegudemleehvgejmeefgeefmeeludefvgdphhgvlhhopegsohhothihpdhmrghilhhfrhhomheplhhutggrrdgtvghrvghsohhlihessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepgeefpdhrtghpthhtohepihhlphhordhjrghrvhhinhgvnheslhhinhhugidrihhnthgvlhdrtghomhdprhgtphhtthhopehmrggrrhhtvghnrdhlrghnkhhhohhrshhtsehlihhnuhigr
- dhinhhtvghlrdgtohhmpdhrtghpthhtohepmhhrihhprghrugeskhgvrhhnvghlrdhorhhgpdhrtghpthhtohepthiiihhmmhgvrhhmrghnnhesshhushgvrdguvgdprhgtphhtthhopegrihhrlhhivggusehgmhgrihhlrdgtohhmpdhrtghpthhtohepshhimhhonhgrsehffhiflhhlrdgthhdprhgtphhtthhopegrnhgurhiivghjrdhhrghjuggrsehinhhtvghlrdgtohhmpdhrtghpthhtohepnhgvihhlrdgrrhhmshhtrhhonhhgsehlihhnrghrohdrohhrgh
-X-GND-Sasl: luca.ceresoli@bootlin.com
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250407_202748_372309_68140329 
-X-CRM114-Status: GOOD (  21.60  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250407-airoha-hw-rx-ratelimit-v1-1-917d092d56fd@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAIcu9GcC/x3MTQqAIBBA4avErBtQK6SuEi0kpxzojzFKiO6et
+ PwW7z0QSZgidMUDQhdH3rcMXRYwBrfNhOyzwSjTqEq36Fj24DDcKAnFnbTwyidq72tlydrWNJD
+ jQ2ji9I/74X0/IcNwM2gAAAA=
+X-Change-ID: 20250319-airoha-hw-rx-ratelimit-1dd407e77925
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,90 +73,419 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Ilpo,
+Introduce tc matchall filter offload support in airoha_eth driver.
+Matchall hw filter is used to implement hw rate policing via tc action
+police:
 
-On Mon, 7 Apr 2025 19:46:59 +0300 (EEST)
-Ilpo J=C3=A4rvinen <ilpo.jarvinen@linux.intel.com> wrote:
+$tc qdisc add dev eth0 handle ffff: ingress
+$tc filter add dev eth0 parent ffff: matchall action police \
+ rate 100mbit burst 1000k drop
 
-> On Mon, 7 Apr 2025, Luca Ceresoli wrote:
->=20
-> > This is the new API for allocating DRM bridges.
-> >=20
-> > Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
-> >=20
-> > ---
-> >=20
-> > Cc: "Bryan O'Donoghue" <bryan.odonoghue@linaro.org>
-> > Cc: "Ilpo J=C3=A4rvinen" <ilpo.jarvinen@linux.intel.com>
-> > Cc: Hans de Goede <hdegoede@redhat.com>
-> > ---
-> >  drivers/platform/arm64/acer-aspire1-ec.c | 7 +++----
-> >  1 file changed, 3 insertions(+), 4 deletions(-)
-> >=20
-> > diff --git a/drivers/platform/arm64/acer-aspire1-ec.c b/drivers/platfor=
-m/arm64/acer-aspire1-ec.c
-> > index 958fe1bf5f85bb69ac7962f217de9f0b40cde9a1..438532a047e68799ac53a16=
-a4c813fc16be997b9 100644
-> > --- a/drivers/platform/arm64/acer-aspire1-ec.c
-> > +++ b/drivers/platform/arm64/acer-aspire1-ec.c
-> > @@ -452,9 +452,9 @@ static int aspire_ec_probe(struct i2c_client *clien=
-t)
-> >  	int ret;
-> >  	u8 tmp;
-> > =20
-> > -	ec =3D devm_kzalloc(dev, sizeof(*ec), GFP_KERNEL);
-> > -	if (!ec)
-> > -		return -ENOMEM;
-> > +	ec =3D devm_drm_bridge_alloc(dev, struct aspire_ec, bridge, &aspire_e=
-c_bridge_funcs);
-> > +	if (IS_ERR(ec))
-> > +		return PTR_ERR(ec);
-> > =20
-> >  	ec->client =3D client;
-> >  	i2c_set_clientdata(client, ec);
-> > @@ -497,7 +497,6 @@ static int aspire_ec_probe(struct i2c_client *clien=
-t)
-> >  	fwnode =3D device_get_named_child_node(dev, "connector");
-> >  	if (fwnode) {
-> >  		INIT_WORK(&ec->work, aspire_ec_bridge_update_hpd_work);
-> > -		ec->bridge.funcs =3D &aspire_ec_bridge_funcs;
-> >  		ec->bridge.of_node =3D to_of_node(fwnode);
-> >  		ec->bridge.ops =3D DRM_BRIDGE_OP_HPD;
-> >  		ec->bridge.type =3D DRM_MODE_CONNECTOR_USB; =20
->=20
-> Hi Luca,
->=20
-> It took a while to locate where the code for the new helper is. I suggest=
-=20
-> if you need send another version of the series directly linking to the=20
-> commit in the cover letter so that it won't take multiple hoops to find i=
-t=20
-> if one wants to review the code and is not having all drm trees easily at=
-=20
-> hand. Here it is for the benefit of other pdx86 people:
->=20
-> https://gitlab.freedesktop.org/drm/misc/kernel/-/commit/0cc6aadd7fc1e629b=
-715ea3d1ba537ef2da95eec
+Curennet implementation supports just drop/accept as exceed/notexceed
+actions. Moreover, rate and burst are the only supported configuration
+parameters.
 
-Apologies, indeed you have a good point. I added the link to the cover
-letter so it will be in v2, if any.
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/ethernet/airoha/airoha_eth.c  | 275 +++++++++++++++++++++++++++++-
+ drivers/net/ethernet/airoha/airoha_eth.h  |   8 +-
+ drivers/net/ethernet/airoha/airoha_ppe.c  |   9 +-
+ drivers/net/ethernet/airoha/airoha_regs.h |   7 +
+ 4 files changed, 288 insertions(+), 11 deletions(-)
 
-> Acked-by: Ilpo J=C3=A4rvinen <ilpo.jarvinen@linux.intel.com>
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index d748dc6de92367365db9f9548f9af52a7fdac187..1839e44a241ad37c1588c0d040649d93d0fac733 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -527,6 +527,27 @@ static int airoha_fe_init(struct airoha_eth *eth)
+ 	/* disable IFC by default */
+ 	airoha_fe_clear(eth, REG_FE_CSR_IFC_CFG, FE_IFC_EN_MASK);
+ 
++	airoha_fe_wr(eth, REG_PPE_DFT_CPORT0(0),
++		     FIELD_PREP(DFT_CPORT_MASK(7), FE_PSE_PORT_CDM1) |
++		     FIELD_PREP(DFT_CPORT_MASK(6), FE_PSE_PORT_CDM1) |
++		     FIELD_PREP(DFT_CPORT_MASK(5), FE_PSE_PORT_CDM1) |
++		     FIELD_PREP(DFT_CPORT_MASK(4), FE_PSE_PORT_CDM1) |
++		     FIELD_PREP(DFT_CPORT_MASK(4), FE_PSE_PORT_CDM1) |
++		     FIELD_PREP(DFT_CPORT_MASK(3), FE_PSE_PORT_CDM1) |
++		     FIELD_PREP(DFT_CPORT_MASK(2), FE_PSE_PORT_CDM1) |
++		     FIELD_PREP(DFT_CPORT_MASK(1), FE_PSE_PORT_CDM1) |
++		     FIELD_PREP(DFT_CPORT_MASK(0), FE_PSE_PORT_CDM1));
++	airoha_fe_wr(eth, REG_PPE_DFT_CPORT0(1),
++		     FIELD_PREP(DFT_CPORT_MASK(7), FE_PSE_PORT_CDM2) |
++		     FIELD_PREP(DFT_CPORT_MASK(6), FE_PSE_PORT_CDM2) |
++		     FIELD_PREP(DFT_CPORT_MASK(5), FE_PSE_PORT_CDM2) |
++		     FIELD_PREP(DFT_CPORT_MASK(4), FE_PSE_PORT_CDM2) |
++		     FIELD_PREP(DFT_CPORT_MASK(4), FE_PSE_PORT_CDM2) |
++		     FIELD_PREP(DFT_CPORT_MASK(3), FE_PSE_PORT_CDM2) |
++		     FIELD_PREP(DFT_CPORT_MASK(2), FE_PSE_PORT_CDM2) |
++		     FIELD_PREP(DFT_CPORT_MASK(1), FE_PSE_PORT_CDM2) |
++		     FIELD_PREP(DFT_CPORT_MASK(0), FE_PSE_PORT_CDM2));
++
+ 	/* enable 1:N vlan action, init vlan table */
+ 	airoha_fe_set(eth, REG_MC_VLAN_EN, MC_VLAN_EN_MASK);
+ 
+@@ -1631,7 +1652,6 @@ static void airhoha_set_gdm2_loopback(struct airoha_gdm_port *port)
+ 
+ 	if (port->id == 3) {
+ 		/* FIXME: handle XSI_PCE1_PORT */
+-		airoha_fe_wr(eth, REG_PPE_DFT_CPORT0(0),  0x5500);
+ 		airoha_fe_rmw(eth, REG_FE_WAN_PORT,
+ 			      WAN1_EN_MASK | WAN1_MASK | WAN0_MASK,
+ 			      FIELD_PREP(WAN0_MASK, HSGMII_LAN_PCIE0_SRCPORT));
+@@ -2109,6 +2129,125 @@ static int airoha_tc_setup_qdisc_ets(struct airoha_gdm_port *port,
+ 	}
+ }
+ 
++static int airoha_qdma_get_rl_param(struct airoha_qdma *qdma, int queue_id,
++				    u32 addr, enum trtcm_param_type param,
++				    u32 *val_low, u32 *val_high)
++{
++	u32 idx = QDMA_METER_IDX(queue_id), group = QDMA_METER_GROUP(queue_id);
++	u32 val, config = FIELD_PREP(RATE_LIMIT_PARAM_TYPE_MASK, param) |
++			  FIELD_PREP(RATE_LIMIT_METER_GROUP_MASK, group) |
++			  FIELD_PREP(RATE_LIMIT_PARAM_INDEX_MASK, idx);
++
++	airoha_qdma_wr(qdma, REG_TRTCM_CFG_PARAM(addr), config);
++	if (read_poll_timeout(airoha_qdma_rr, val,
++			      val & RATE_LIMIT_PARAM_RW_DONE_MASK,
++			      USEC_PER_MSEC, 10 * USEC_PER_MSEC, true, qdma,
++			      REG_TRTCM_CFG_PARAM(addr)))
++		return -ETIMEDOUT;
++
++	*val_low = airoha_qdma_rr(qdma, REG_TRTCM_DATA_LOW(addr));
++	if (val_high)
++		*val_high = airoha_qdma_rr(qdma, REG_TRTCM_DATA_HIGH(addr));
++
++	return 0;
++}
++
++static int airoha_qdma_set_rl_param(struct airoha_qdma *qdma, int queue_id,
++				    u32 addr, enum trtcm_param_type param,
++				    u32 val)
++{
++	u32 idx = QDMA_METER_IDX(queue_id), group = QDMA_METER_GROUP(queue_id);
++	u32 config = RATE_LIMIT_PARAM_RW_MASK |
++		     FIELD_PREP(RATE_LIMIT_PARAM_TYPE_MASK, param) |
++		     FIELD_PREP(RATE_LIMIT_METER_GROUP_MASK, group) |
++		     FIELD_PREP(RATE_LIMIT_PARAM_INDEX_MASK, idx);
++
++	airoha_qdma_wr(qdma, REG_TRTCM_DATA_LOW(addr), val);
++	airoha_qdma_wr(qdma, REG_TRTCM_CFG_PARAM(addr), config);
++
++	return read_poll_timeout(airoha_qdma_rr, val,
++				 val & RATE_LIMIT_PARAM_RW_DONE_MASK,
++				 USEC_PER_MSEC, 10 * USEC_PER_MSEC, true,
++				 qdma, REG_TRTCM_CFG_PARAM(addr));
++}
++
++static int airoha_qdma_set_rl_config(struct airoha_qdma *qdma, int queue_id,
++				     u32 addr, bool enable, u32 enable_mask)
++{
++	u32 val;
++	int err;
++
++	err = airoha_qdma_get_rl_param(qdma, queue_id, addr, TRTCM_MISC_MODE,
++				       &val, NULL);
++	if (err)
++		return err;
++
++	val = enable ? val | enable_mask : val & ~enable_mask;
++
++	return airoha_qdma_set_rl_param(qdma, queue_id, addr, TRTCM_MISC_MODE,
++					val);
++}
++
++static int airoha_qdma_set_rl_token_bucket(struct airoha_qdma *qdma,
++					   int queue_id, u32 rate_val,
++					   u32 bucket_size)
++{
++	u32 val, config, tick, unit, rate, rate_frac;
++	int err;
++
++	err = airoha_qdma_get_rl_param(qdma, queue_id, REG_INGRESS_TRTCM_CFG,
++				       TRTCM_MISC_MODE, &config, NULL);
++	if (err)
++		return err;
++
++	val = airoha_qdma_rr(qdma, REG_INGRESS_TRTCM_CFG);
++	tick = FIELD_GET(INGRESS_FAST_TICK_MASK, val);
++	if (config & TRTCM_TICK_SEL)
++		tick *= FIELD_GET(INGRESS_SLOW_TICK_RATIO_MASK, val);
++	if (!tick)
++		return -EINVAL;
++
++	unit = (config & TRTCM_PKT_MODE) ? 1000000 / tick : 8000 / tick;
++	if (!unit)
++		return -EINVAL;
++
++	rate = rate_val / unit;
++	rate_frac = rate_val % unit;
++	rate_frac = FIELD_PREP(TRTCM_TOKEN_RATE_MASK, rate_frac) / unit;
++	rate = FIELD_PREP(TRTCM_TOKEN_RATE_MASK, rate) |
++	       FIELD_PREP(TRTCM_TOKEN_RATE_FRACTION_MASK, rate_frac);
++
++	err = airoha_qdma_set_rl_param(qdma, queue_id, REG_INGRESS_TRTCM_CFG,
++				       TRTCM_TOKEN_RATE_MODE, rate);
++	if (err)
++		return err;
++
++	val = bucket_size;
++	if (!(config & TRTCM_PKT_MODE))
++		val = max_t(u32, val, MIN_TOKEN_SIZE);
++	val = min_t(u32, __fls(val), MAX_TOKEN_SIZE_OFFSET);
++
++	return airoha_qdma_set_rl_param(qdma, queue_id, REG_INGRESS_TRTCM_CFG,
++					TRTCM_BUCKETSIZE_SHIFT_MODE, val);
++}
++
++static int airoha_qdma_init_rl_config(struct airoha_qdma *qdma, int queue_id,
++				      bool enable, enum trtcm_unit_type unit)
++{
++	bool tick_sel = queue_id == 0 || queue_id == 2 || queue_id == 8;
++	enum trtcm_param mode = TRTCM_METER_MODE;
++	int err;
++
++	mode |= unit == TRTCM_PACKET_UNIT ? TRTCM_PKT_MODE : 0;
++	err = airoha_qdma_set_rl_config(qdma, queue_id, REG_INGRESS_TRTCM_CFG,
++					enable, mode);
++	if (err)
++		return err;
++
++	return airoha_qdma_set_rl_config(qdma, queue_id, REG_INGRESS_TRTCM_CFG,
++					 tick_sel, TRTCM_TICK_SEL);
++}
++
+ static int airoha_qdma_get_trtcm_param(struct airoha_qdma *qdma, int channel,
+ 				       u32 addr, enum trtcm_param_type param,
+ 				       enum trtcm_mode_type mode,
+@@ -2273,10 +2412,142 @@ static int airoha_tc_htb_alloc_leaf_queue(struct airoha_gdm_port *port,
+ 	return 0;
+ }
+ 
++static int airoha_qdma_set_rx_meter(struct airoha_gdm_port *port,
++				    u32 rate, u32 bucket_size,
++				    enum trtcm_unit_type unit_type)
++{
++	struct airoha_qdma *qdma = port->qdma;
++	int i;
++
++	for (i = 0; i < ARRAY_SIZE(qdma->q_rx); i++) {
++		int err;
++
++		if (!qdma->q_rx[i].ndesc)
++			continue;
++
++		err = airoha_qdma_init_rl_config(qdma, i, !!rate, unit_type);
++		if (err)
++			return err;
++
++		err = airoha_qdma_set_rl_token_bucket(qdma, i, rate,
++						      bucket_size);
++		if (err)
++			return err;
++	}
++
++	return 0;
++}
++
++static int airoha_tc_matchall_act_validate(struct tc_cls_matchall_offload *f)
++{
++	const struct flow_action *actions = &f->rule->action;
++	const struct flow_action_entry *act;
++
++	if (!flow_action_has_entries(actions)) {
++		NL_SET_ERR_MSG_MOD(f->common.extack,
++				   "filter run with no actions");
++		return -EINVAL;
++	}
++
++	if (!flow_offload_has_one_action(actions)) {
++		NL_SET_ERR_MSG_MOD(f->common.extack,
++				   "only once action per filter is supported");
++		return -EOPNOTSUPP;
++	}
++
++	act = &actions->entries[0];
++	if (act->id != FLOW_ACTION_POLICE) {
++		NL_SET_ERR_MSG_MOD(f->common.extack, "unsupported action");
++		return -EOPNOTSUPP;
++	}
++
++	if (act->police.exceed.act_id != FLOW_ACTION_DROP) {
++		NL_SET_ERR_MSG_MOD(f->common.extack,
++				   "invalid exceed action id");
++		return -EOPNOTSUPP;
++	}
++
++	if (act->police.notexceed.act_id != FLOW_ACTION_ACCEPT) {
++		NL_SET_ERR_MSG_MOD(f->common.extack,
++				   "invalid notexceed action id");
++		return -EOPNOTSUPP;
++	}
++
++	if (act->police.notexceed.act_id == FLOW_ACTION_ACCEPT &&
++	    !flow_action_is_last_entry(actions, act)) {
++		NL_SET_ERR_MSG_MOD(f->common.extack,
++				   "action accept must be last");
++		return -EOPNOTSUPP;
++	}
++
++	if (act->police.peakrate_bytes_ps || act->police.avrate ||
++	    act->police.overhead) {
++		NL_SET_ERR_MSG_MOD(f->common.extack,
++				   "peakrate/avrate/overhead not supported");
++		return -EOPNOTSUPP;
++	}
++
++	return 0;
++}
++
++static int airoha_dev_tc_matchall(struct net_device *dev,
++				  struct tc_cls_matchall_offload *f)
++{
++	enum trtcm_unit_type unit_type = TRTCM_BYTE_UNIT;
++	struct airoha_gdm_port *port = netdev_priv(dev);
++	u32 rate = 0, bucket_size = 0;
++
++	switch (f->command) {
++	case TC_CLSMATCHALL_REPLACE: {
++		const struct flow_action_entry *act;
++		int err;
++
++		err = airoha_tc_matchall_act_validate(f);
++		if (err)
++			return err;
++
++		act = &f->rule->action.entries[0];
++		if (act->police.rate_pkt_ps) {
++			rate = act->police.rate_pkt_ps;
++			bucket_size = act->police.burst_pkt;
++			unit_type = TRTCM_PACKET_UNIT;
++		} else {
++			rate = div_u64(act->police.rate_bytes_ps, 1000);
++			rate = rate << 3; /* Kbps */
++			bucket_size = act->police.burst;
++		}
++		fallthrough;
++	}
++	case TC_CLSMATCHALL_DESTROY:
++		return airoha_qdma_set_rx_meter(port, rate, bucket_size,
++						unit_type);
++	default:
++		return -EOPNOTSUPP;
++	}
++}
++
++static int airoha_dev_setup_tc_block_cb(enum tc_setup_type type,
++					void *type_data, void *cb_priv)
++{
++	struct net_device *dev = cb_priv;
++
++	if (!tc_can_offload(dev))
++		return -EOPNOTSUPP;
++
++	switch (type) {
++	case TC_SETUP_CLSFLOWER:
++		return airoha_ppe_setup_tc_block_cb(dev, type_data);
++	case TC_SETUP_CLSMATCHALL:
++		return airoha_dev_tc_matchall(dev, type_data);
++	default:
++		return -EOPNOTSUPP;
++	}
++}
++
+ static int airoha_dev_setup_tc_block(struct airoha_gdm_port *port,
+ 				     struct flow_block_offload *f)
+ {
+-	flow_setup_cb_t *cb = airoha_ppe_setup_tc_block_cb;
++	flow_setup_cb_t *cb = airoha_dev_setup_tc_block_cb;
+ 	static LIST_HEAD(block_cb_list);
+ 	struct flow_block_cb *block_cb;
+ 
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
+index ec8908f904c61988c3dc973e187596c49af139fb..31ebb46be454c26ec789ed692a2f968c6c1ace03 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.h
++++ b/drivers/net/ethernet/airoha/airoha_eth.h
+@@ -127,6 +127,11 @@ enum tx_sched_mode {
+ 	TC_SCH_WRR2,
+ };
+ 
++enum trtcm_unit_type {
++	TRTCM_BYTE_UNIT,
++	TRTCM_PACKET_UNIT,
++};
++
+ enum trtcm_param_type {
+ 	TRTCM_MISC_MODE, /* meter_en, pps_mode, tick_sel */
+ 	TRTCM_TOKEN_RATE_MODE,
+@@ -536,8 +541,7 @@ bool airoha_is_valid_gdm_port(struct airoha_eth *eth,
+ 			      struct airoha_gdm_port *port);
+ 
+ void airoha_ppe_check_skb(struct airoha_ppe *ppe, u16 hash);
+-int airoha_ppe_setup_tc_block_cb(enum tc_setup_type type, void *type_data,
+-				 void *cb_priv);
++int airoha_ppe_setup_tc_block_cb(struct net_device *dev, void *type_data);
+ int airoha_ppe_init(struct airoha_eth *eth);
+ void airoha_ppe_deinit(struct airoha_eth *eth);
+ struct airoha_foe_entry *airoha_ppe_foe_get_entry(struct airoha_ppe *ppe,
+diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
+index f10dab935cab6fad747fdfaa70b67903904c1703..3b14ad1c126ab11ee103de6448c3640244cf7f7f 100644
+--- a/drivers/net/ethernet/airoha/airoha_ppe.c
++++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+@@ -822,18 +822,13 @@ static int airoha_ppe_offload_setup(struct airoha_eth *eth)
+ 	return err;
+ }
+ 
+-int airoha_ppe_setup_tc_block_cb(enum tc_setup_type type, void *type_data,
+-				 void *cb_priv)
++int airoha_ppe_setup_tc_block_cb(struct net_device *dev, void *type_data)
+ {
+-	struct flow_cls_offload *cls = type_data;
+-	struct net_device *dev = cb_priv;
+ 	struct airoha_gdm_port *port = netdev_priv(dev);
++	struct flow_cls_offload *cls = type_data;
+ 	struct airoha_eth *eth = port->qdma->eth;
+ 	int err = 0;
+ 
+-	if (!tc_can_offload(dev) || type != TC_SETUP_CLSFLOWER)
+-		return -EOPNOTSUPP;
+-
+ 	mutex_lock(&flow_offload_mutex);
+ 
+ 	if (!eth->npu)
+diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/ethernet/airoha/airoha_regs.h
+index 8146cde4e8ba370e79b9b1bd87bb66a2caf7649a..29c8f046b9910c371ab4edc34b01f58d7383ae8d 100644
+--- a/drivers/net/ethernet/airoha/airoha_regs.h
++++ b/drivers/net/ethernet/airoha/airoha_regs.h
+@@ -283,6 +283,7 @@
+ #define PPE_HASH_SEED				0x12345678
+ 
+ #define REG_PPE_DFT_CPORT0(_n)			(((_n) ? PPE2_BASE : PPE1_BASE) + 0x248)
++#define DFT_CPORT_MASK(_n)			GENMASK(3 + ((_n) << 2), ((_n) << 2))
+ 
+ #define REG_PPE_DFT_CPORT1(_n)			(((_n) ? PPE2_BASE : PPE1_BASE) + 0x24c)
+ 
+@@ -691,6 +692,12 @@
+ #define REG_TRTCM_DATA_LOW(_n)		((_n) + 0x8)
+ #define REG_TRTCM_DATA_HIGH(_n)		((_n) + 0xc)
+ 
++#define RATE_LIMIT_PARAM_RW_MASK	BIT(31)
++#define RATE_LIMIT_PARAM_RW_DONE_MASK	BIT(30)
++#define RATE_LIMIT_PARAM_TYPE_MASK	GENMASK(29, 28)
++#define RATE_LIMIT_METER_GROUP_MASK	GENMASK(27, 26)
++#define RATE_LIMIT_PARAM_INDEX_MASK	GENMASK(23, 16)
++
+ #define REG_TXWRR_MODE_CFG		0x1020
+ #define TWRR_WEIGHT_SCALE_MASK		BIT(31)
+ #define TWRR_WEIGHT_BASE_MASK		BIT(3)
 
-Thanks!
+---
+base-commit: 61f96e684edd28ca40555ec49ea1555df31ba619
+change-id: 20250319-airoha-hw-rx-ratelimit-1dd407e77925
 
-> I assume you want this to go through the drm tree where the helper alread=
-y=20
-> is?
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
-MY best guess is that drm-misc-next is the appropriate branch, and it
-is where the helper is already present, but I'll let maintainers decide
-what is most appropriate.
-
-Luca
-
---=20
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
 
