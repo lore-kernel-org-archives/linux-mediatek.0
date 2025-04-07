@@ -4,70 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59119C369A3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 13:27:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE83CC369A2
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 13:45:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pnGHcrER9YDxAyPU3nkvZnlbQptjLRPQDQ+T4cQt70g=; b=FAtw2N8kH6RfREmDMruKRXeaAM
-	6z+fbFSE91b4QRLN61XlBthPUVQpvqrL4Bx8gEY5vr+0j3L1z/ONDZBc2HRS/K2EpYnV4Qvu+6e9y
-	BMDZbryokgTAjWFrI9466rPeM0HvSkoSmLenNgu37orUF3S8cbbZc2FRrrBxC490pzKVKm9upA2Fl
-	/sfXGRLlxJJVyjqY0urdQMzUIO4TpTEijAgx6XOJLEsOn2w00LY6qJXSbPzVxafxr+WmTnmbEMmO+
-	P2+CZl1sIuzp54q63UQpyINy3m34WfwFDl5Gej623gddkpjskPw5Fv0rSlG2lfasIB7f5FWaH+0Ii
-	/ZsfMlkw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=95+TfsQFbAqrLKW6vRoc95bSZAIrkYHN/gPsou0GUZU=; b=kETXJ/7Um1ZGqlhYiswb6MkTwf
+	E7rCtOJzZvxeapHSqgbevoGF/qLjG4XcRirkNkizLRSZHki4M/pGl3AHecd3lD/k+Lenp90m2M6xQ
+	xptPXv4Z98J07DaFMn+bIBXkwgVafMSte3T1LJDxzSr8xAfU2pBZ3Z+Tu6fsNk/Lw1EAiF9wTmzs7
+	DVUekGV8zauKdherbkg+P8k3Yt26HRJmlxzBsVX1Tg0K9B3DtsdvhqrlVrmBkpKvbJWO/5MzCDr06
+	E+DkuUbsHkgBR6rEooVGqlVvj8mlEZkA4lQO9sGuTrQ2bsge8UrmVe+jEiEHZ4EJcFzq64ZoyUB1l
+	amRzOGeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1mVf-00000000VdS-1z0W;
-	Mon, 07 Apr 2025 13:27:31 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1u1mnM-00000000aRz-24zc;
+	Mon, 07 Apr 2025 13:45:48 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1mT3-00000000UnF-1mlk;
-	Mon, 07 Apr 2025 13:24:49 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 33B7C61129;
-	Mon,  7 Apr 2025 13:24:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EF6D7C4CEDD;
-	Mon,  7 Apr 2025 13:24:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744032288;
-	bh=phz+W/y/P98TEbJzgV0y5Ve9zvJ2zXTVkoIK4Sd0Rz0=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=cMPH9s83obHD/J4Ik3GrucvSZ1HvxqMFUaVBhBsE3ECURdL3gO0LMM+1wzfO+2Nl0
-	 msMJIbdgl6bqFjf9LW3gMuy/IdtAhjyZabrVLFlZP9ni28+XAA2QvxaqEsuZbwu6qU
-	 eT1wYu2AUHehWodKeTcx0yvWhAd0qboDezG4HVQZyX0cB8jvIsxj6QMjDrbrCbRpjw
-	 h5WhU5otun52iDmd2aWnsBjuFFxu5uTJB4foYrIEUONew7GP5GyLPHyfZJgju/mkWH
-	 Yn0EQegdKgTzPqRbxD2OWXVcQUdNqLPClwq+U7FTKQByobcUnrY+T9m7Nt7pdFDvB0
-	 5UbxZyrOEIvPw==
-From: Christian Brauner <brauner@kernel.org>
-To: Vivek Goyal <vgoyal@redhat.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Miklos Szeredi <miklos@szeredi.hu>,
-	eperezma@redhat.com,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Xiangsheng Hou <xiangsheng.hou@mediatek.com>
-Cc: Christian Brauner <brauner@kernel.org>,
-	virtualization@lists.linux.dev,
-	linux-fsdevel@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	benliang.zhao@mediatek.com,
-	bin.zhang@mediatek.com
-Subject: Re: [RESEND] virtiofs: add filesystem context source name check
-Date: Mon,  7 Apr 2025 15:24:32 +0200
-Message-ID: <20250407-erzeugen-granit-5fdd39986bfd@brauner>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20250407115111.25535-1-xiangsheng.hou@mediatek.com>
-References: <20250407115111.25535-1-xiangsheng.hou@mediatek.com>
+	id 1u1mZr-00000000WxL-0ZKA;
+	Mon, 07 Apr 2025 13:31:52 +0000
+X-UUID: a5af42f413b411f083f2a1c9db70dae0-20250407
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=95+TfsQFbAqrLKW6vRoc95bSZAIrkYHN/gPsou0GUZU=;
+	b=iN5Z/BmNwcIR5RzvVal91yo1dSx1Q7r71MKGKSAn/hd+7SjyFJU5/5/2fZ2/aNo4qBPLhEUBViscHC1mjU7bGbz/CWB+LUaZ5TIIiww44G6vVOx8TTQEOzR8bUxdfURj2CUjrLdsCn/e6M4UhaikKOGESbKnNppZjVQYTUPUqkc=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:3231fa81-c950-4f9e-aa5c-62c7cb1d8bee,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:ea98c7a5-c619-47e3-a41b-90eedbf5b947,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: a5af42f413b411f083f2a1c9db70dae0-20250407
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <bincai.liu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1293531308; Mon, 07 Apr 2025 06:31:44 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Mon, 7 Apr 2025 21:31:41 +0800
+Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Mon, 7 Apr 2025 21:31:40 +0800
+From: Bincai Liu <bincai.liu@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+	<p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, Simona Vetter
+	<simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Jitao Shi <jitao.shi@mediatek.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-phy@lists.infradead.org>,
+	Bincai Liu <bincai.liu@mediatek.com>
+Subject: [PATCH 0/4] Add dsi support for mt8196
+Date: Mon, 7 Apr 2025 21:31:21 +0800
+Message-ID: <20250407133138.22449-1-bincai.liu@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1025; i=brauner@kernel.org; h=from:subject:message-id; bh=phz+W/y/P98TEbJzgV0y5Ve9zvJ2zXTVkoIK4Sd0Rz0=; b=owGbwMvMwCU28Zj0gdSKO4sYT6slMaR/viR+uDh1wTkdg2mVAqyb9F9PjM/5EuUp+WuDsM4ji +1hxcsKOkpZGMS4GGTFFFkc2k3C5ZbzVGw2ytSAmcPKBDKEgYtTACYS9prhn9mM5ufHhQ6aZO9W Sj5W8KfH77Dxml8ORjnFaRM6rnde3s7wV2rV5Dd+oj93p21bwVGiemdh7qntsfvfRakuDHkSuq9 lJhcA
-X-Developer-Key: i=brauner@kernel.org; a=openpgp; fpr=4880B8C9BD0E5106FC070F4F7B3C391EFEA93624
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250407_063151_178572_34A29359 
+X-CRM114-Status: UNSURE (   8.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,28 +92,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 07 Apr 2025 19:50:49 +0800, Xiangsheng Hou wrote:
-> In certain scenarios, for example, during fuzz testing, the source
-> name may be NULL, which could lead to a kernel panic. Therefore, an
-> extra check for the source name should be added.
-> 
-> 
+Bincai Liu (4):
+  dt-bindings: soc: mediatek: add mipi yaml for MT8196
+  dt-bindings: soc: mediatek: add dsi yaml for MT8196
+  drm/mediatek: Add mipi dsi driver for mt8196
+  drm/mediatek: dsi: Enable runtime PM
 
-Applied to the vfs.fixes branch of the vfs/vfs.git tree.
-Patches in the vfs.fixes branch should appear in linux-next soon.
+ .../display/mediatek/mediatek,dsi.yaml        |   1 +
+ .../bindings/phy/mediatek,dsi-phy.yaml        |   1 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c        |   2 +
+ drivers/gpu/drm/mediatek/mtk_dsi.c            | 253 +++++++++++-------
+ drivers/phy/mediatek/Makefile                 |   1 +
+ .../phy/mediatek/phy-mtk-mipi-dsi-mt8196.c    | 201 ++++++++++++++
+ drivers/phy/mediatek/phy-mtk-mipi-dsi.c       |   1 +
+ drivers/phy/mediatek/phy-mtk-mipi-dsi.h       |   1 +
+ 8 files changed, 363 insertions(+), 98 deletions(-)
+ create mode 100644 drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8196.c
 
-Please report any outstanding bugs that were missed during review in a
-new review to the original patch series allowing us to drop it.
+-- 
+2.45.2
 
-It's encouraged to provide Acked-bys and Reviewed-bys even though the
-patch has now been applied. If possible patch trailers will be updated.
-
-Note that commit hashes shown below are subject to change due to rebase,
-trailer updates or similar. If in doubt, please check the listed branch.
-
-tree:   https://git.kernel.org/pub/scm/linux/kernel/git/vfs/vfs.git
-branch: vfs.fixes
-
-[1/1] virtiofs: add filesystem context source name check
-      https://git.kernel.org/vfs/vfs/c/a94fd938df2b
 
