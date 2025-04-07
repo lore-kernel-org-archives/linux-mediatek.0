@@ -4,75 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7409C36010
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 12:08:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29429C36010
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 12:35:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=tkF2DYghDX+VQfWwEAkZ56brYwDEfPo9ZbyXaVQNw8w=; b=y5VFqZYYeqAq12C3sLIFkg6Hm3
-	hL8IdscGX4fnLmJPtRelgdWn9dBmlotYRWSD4pgtNHITLPhO+Z9ueaujBSRBvyfao0RvfuDc8Deh/
-	uikxZC6/+1R8yLcDkdmE+vsUVo12zrhCQrg+ojRNhdSR7QZYvzBAfTSytjV+ZfhZ6Sh9JTiu7PhuB
-	tNILsDCqn4hz+pnucIamBMtzHxaVJtNNCPT3+wsUGqQGJWvQhgNywfVDvmmGbxouEsiXieAORtFnS
-	IttpaJcoxQp5Kfsip+zYP4O4aSjmOnKvPlQ7MQhAjc8P/Sd1+Ph7KitmpV/nLtr3KrRpmZXQ3xK1m
-	1Eat4DoQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=H0Ju1JYitew1f7vP2gI0VqL3Y8dqgqZen6iVSaDOPyM=; b=n4EwPYlEqmmTwZ38Rt9JBwjio7
+	Qd4w2qhlBZH9AKMCye/LfAwhRH2dVk2IyOdwO9VvV2TrgkTbtslJNL4+mzu0ULbu4Oqphlnex6tS6
+	eupo94o31uX5DllYLat69n8HHBpn/zmZp3CUQJV1jfVd41hNmfKD47ShbW2oEW90rb5TptKmGj9D2
+	VArjj4UVRV+F6+Xy4hSc6cCch5XTJ4D4TBeQu/Rag9zItsTTkPd4kGT5UX3JiqPAtlCaB/0PsHdVp
+	rkFcSJgL66XawrhDp67XCdqFbMwL8DNREG/vXJpP6kHSYaKLZE7R7eNnP9sA+tffYLwY21G69yZe9
+	lJjUT4Cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1lHP-00000000Awb-3fBy;
-	Mon, 07 Apr 2025 12:08:43 +0000
+	id 1u1lhl-00000000H4n-0WJW;
+	Mon, 07 Apr 2025 12:35:57 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1l0a-000000005lb-1wEs;
-	Mon, 07 Apr 2025 11:51:21 +0000
-X-UUID: 9ccf83c813a611f083f2a1c9db70dae0-20250407
+	id 1u1lGY-00000000Al4-2tud;
+	Mon, 07 Apr 2025 12:07:51 +0000
+X-UUID: ea77f73413a811f083f2a1c9db70dae0-20250407
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=tkF2DYghDX+VQfWwEAkZ56brYwDEfPo9ZbyXaVQNw8w=;
-	b=dkDo2ljr/sjlsjNlGfkK7xnllS11m7EAELVbxF48MOdpRgeY5+FB9Tr3LWl50hEl09m6Tpr1kBlybpkQskkhlue4E/XCDUnM6izu49IRQx4vahYZxZwz3ZYBm8eTN782/aTlXF8IRD5Msts73jgYOYZpiRWWWPrEz2rXGy7xFcc=;
+	h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=H0Ju1JYitew1f7vP2gI0VqL3Y8dqgqZen6iVSaDOPyM=;
+	b=fVGsZOev5PR+5hAOjWZV7iMEkOqRDqNUByGkTp5Rahz56nLM3VBlXSJDGbg+/hAfdIzPPdoNymQ+Ni+YdbU+QngsZ7JdRYzHS8FWvYO4wOoi9vrC91SBpljK0l9+m9VMWgefjRBs0C2w3Z6A6BsVcNA51I8W+TozkEQsTDMHUmg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:6f29a8f9-4d42-49cf-bbf6-77a520ff60b6,IP:0,UR
+X-CID-O-INFO: VERSION:1.2.1,REQID:19bc6594-b091-479f-bf94-3471af1a8007,IP:0,UR
 	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
 	elease,TS:0
-X-CID-META: VersionHash:0ef645f,CLOUDID:d91046c7-16da-468a-87f7-8ca8d6b3b9f7,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:7bec0a4b-a527-43d8-8af6-bc8b32d9f5e9,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|102,TC:nil,Content:0|50,EDM:-3,IP
+	:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,
+	LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0
 X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 9ccf83c813a611f083f2a1c9db70dae0-20250407
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
-	(envelope-from <xiangsheng.hou@mediatek.com>)
+X-UUID: ea77f73413a811f083f2a1c9db70dae0-20250407
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <darren.ye@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 255631010; Mon, 07 Apr 2025 04:51:16 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+	with ESMTP id 1830155125; Mon, 07 Apr 2025 05:07:45 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
  MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Mon, 7 Apr 2025 19:51:13 +0800
+ 15.2.1258.39; Mon, 7 Apr 2025 20:07:43 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Mon, 7 Apr 2025 19:51:13 +0800
-From: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
-To: Vivek Goyal <vgoyal@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
-	Miklos Szeredi <miklos@szeredi.hu>, <eperezma@redhat.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <virtualization@lists.linux.dev>, <linux-fsdevel@vger.kernel.org>,
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Mon, 7 Apr 2025 20:07:42 +0800
+From: Darren.Ye <darren.ye@mediatek.com>
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Rob
+ Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor
+ Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Linus
+ Walleij <linus.walleij@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>
+CC: <linux-sound@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <benliang.zhao@mediatek.com>,
-	<bin.zhang@mediatek.com>, Xiangsheng Hou <xiangsheng.hou@mediatek.com>
-Subject: [RESEND] virtiofs: add filesystem context source name check
-Date: Mon, 7 Apr 2025 19:50:49 +0800
-Message-ID: <20250407115111.25535-1-xiangsheng.hou@mediatek.com>
+	<linux-mediatek@lists.infradead.org>, <linux-gpio@vger.kernel.org>, Darren Ye
+	<darren.ye@mediatek.com>
+Subject: [PATCH v2 00/11] ASoC: mediatek: Add support for MT8196 SoC
+Date: Mon, 7 Apr 2025 20:06:24 +0800
+Message-ID: <20250407120708.26495-1-darren.ye@mediatek.com>
 X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250407_045120_499350_481585D1 
-X-CRM114-Status: GOOD (  11.21  )
+X-CRM114-CacheID: sfid-20250407_050750_728736_05DF8458 
+X-CRM114-Status: GOOD (  13.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,30 +89,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In certain scenarios, for example, during fuzz testing, the source
-name may be NULL, which could lead to a kernel panic. Therefore, an
-extra check for the source name should be added.
+From: Darren Ye <darren.ye@mediatek.com>
 
-Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
----
- fs/fuse/virtio_fs.c | 3 +++
- 1 file changed, 3 insertions(+)
+This series of patches adds support for Mediatek AFE of MT8196 SoC.
+Patches are based on broonie tree "for-next" branch.
 
-diff --git a/fs/fuse/virtio_fs.c b/fs/fuse/virtio_fs.c
-index 2c7b24cb67ad..53c2626e90e7 100644
---- a/fs/fuse/virtio_fs.c
-+++ b/fs/fuse/virtio_fs.c
-@@ -1669,6 +1669,9 @@ static int virtio_fs_get_tree(struct fs_context *fsc)
- 	unsigned int virtqueue_size;
- 	int err = -EIO;
- 
-+	if (!fsc->source)
-+		return invalf(fsc, "No source specified");
-+
- 	/* This gets a reference on virtio_fs object. This ptr gets installed
- 	 * in fc->iq->priv. Once fuse_conn is going away, it calls ->put()
- 	 * to drop the reference to this object.
+Changes since v1:
+  - modify mtk_memif_set_channel and mtk_afe_pcm_pointer interfaces
+    are improved to support mt8196.
+  - remove duplicate definitions in the mt8196 common header file.
+  - cm logic is merge into the afe platform driver.
+  - modify afe clk to return judgment logic and remove useless clk sources.
+  - refactor the mt8196 adda dai driver.
+  - remove the gpio module and use SND_SOC_DAPM_PINCTRL to manage it.
+  - removes CONNSYS_I2S related functions that are not supported in i2s dai driver.
+  - fixed mt8196-afe.yaml and mt8196-mt6681.yaml syntax issues.
+  - modify log printing in all modules.
+  - optimize the header file included for machine driver.
+
+Darren Ye (11):
+  ASoC: mediatek: common: modify mtk afe common driver for mt8196
+  ASoC: mediatek: common: modify mtk afe platform driver for mt8196
+  ASoC: mediatek: mt8196: add common header
+  ASoC: mediatek: mt8196: support audio clock control
+  ASoC: mediatek: mt8196: support ADDA in platform driver
+  ASoC: mediatek: mt8196: support I2S in platform driver
+  ASoC: mediatek: mt8196: support TDM in platform driver
+  ASoC: mediatek: mt8196: add platform driver
+  ASoC: dt-bindings: mediatek,mt8196-afe: add audio AFE document
+  ASoC: mediatek: mt8196: add machine driver with mt6681
+  ASoC: dt-bindings: mediatek,mt8196-mt6681: add mt8196-mt6681 document
+
+ .../bindings/sound/mediatek,mt8196-afe.yaml   |   233 +
+ .../sound/mediatek,mt8196-mt6681.yaml         |   114 +
+ sound/soc/mediatek/Kconfig                    |    30 +
+ sound/soc/mediatek/Makefile                   |     1 +
+ sound/soc/mediatek/common/mtk-afe-fe-dai.c    |    23 +-
+ sound/soc/mediatek/common/mtk-afe-fe-dai.h    |     1 +
+ .../mediatek/common/mtk-afe-platform-driver.c |    47 +-
+ .../mediatek/common/mtk-afe-platform-driver.h |     2 +
+ sound/soc/mediatek/common/mtk-base-afe.h      |    13 +
+ sound/soc/mediatek/mt8196/Makefile            |    16 +
+ sound/soc/mediatek/mt8196/mt8196-afe-clk.c    |   729 +
+ sound/soc/mediatek/mt8196/mt8196-afe-clk.h    |    78 +
+ sound/soc/mediatek/mt8196/mt8196-afe-common.h |   194 +
+ sound/soc/mediatek/mt8196/mt8196-afe-pcm.c    |  5070 +++++++
+ sound/soc/mediatek/mt8196/mt8196-dai-adda.c   |   918 ++
+ sound/soc/mediatek/mt8196/mt8196-dai-i2s.c    |  4080 ++++++
+ sound/soc/mediatek/mt8196/mt8196-dai-tdm.c    |   825 ++
+ .../mediatek/mt8196/mt8196-interconnection.h  |   121 +
+ sound/soc/mediatek/mt8196/mt8196-mt6681.c     |   876 ++
+ sound/soc/mediatek/mt8196/mt8196-reg.h        | 12068 ++++++++++++++++
+ 20 files changed, 25414 insertions(+), 25 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8196-afe.yaml
+ create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8196-mt6681.yaml
+ create mode 100644 sound/soc/mediatek/mt8196/Makefile
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-afe-clk.c
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-afe-clk.h
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-afe-common.h
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-afe-pcm.c
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-dai-adda.c
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-dai-i2s.c
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-dai-tdm.c
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-interconnection.h
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-mt6681.c
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-reg.h
+
 -- 
-2.46.0
+2.45.2
 
 
