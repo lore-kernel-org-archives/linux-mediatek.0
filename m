@@ -4,68 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C140C36010
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 07:56:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47531C3601A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 07:59:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=o9lhrqFj+zTxv4mjLFJPL2FVDZ/HuM/6FAsRpA7t9aM=; b=ze7OBzVAGPy84JV444IGXEkgik
-	UEuzZeyT+LDaLKgK9mZtafn4JrGMeNJbWahNzqbX4fF+W4u28SHVsGxe2dc38+EcovFmY2d1SDGW8
-	bxXTGQQbIGby9uwLLvQosKAAAPeTIVW/slo8xhvQYC293VDdSnb7+Zc3wwmnGwBkQMSccahT+4C72
-	RlKiPjTjQ2pZ4yDUPBfOyu2ROVT67y5UUx40CBmKYYBcbk9eXwtRdbkRKWfCEpkQprn001Os3ZQPU
-	tirg0bUpc301GpuYRasCB5Mgz0NYNPCI/mDNTEAE1Mqyp/CwT++268NmDRI8g2WqK2r1a3phjPsfs
-	qYSX//Zw==;
+	bh=qzqYqpX1n+9iBoljfssVQ71YHV7yXI4Hc7MudyfJowk=; b=41RL+pnRo1J7DB2tfCTRlEYYEo
+	Bt1Rm3CZDT84PW67ffzPuYRWyUT9h2EGx2TLy4eGjh/T74cYta7LFfffK/fKDG9I94aNVnpQE2wKB
+	mMwC0enzWa7QXl0HYnaCPZYAN3BOuy2xf8NpMBXAEhRVgIbpBJKFCxgE7LDEmn7wIvMGm/o3eqQ2D
+	AFlpstqNqX0gIwDnfd+XMfLd9uHq7DmIZe8h8/s8AFVE9rIuWPw4W32Y6UyxigjcEI0Xq03C/lG6Z
+	CfX8tcsA8B3jiUhlQAF1UOFDLlJa0a5rCsiIOjf1xRA65INBUSrsjJU/xPEL0h0bnwOZUPXwqtKA6
+	n576OfTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1hL9-0000000Gt5x-0VVz;
-	Mon, 07 Apr 2025 07:56:19 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1u1hOd-0000000GuKJ-1f4j;
+	Mon, 07 Apr 2025 07:59:55 +0000
+Received: from mout.web.de ([217.72.192.78])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1gsH-0000000GlTx-211v;
-	Mon, 07 Apr 2025 07:26:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1744010788;
-	bh=scrnhWy6rMUlkpUpOweP3I5fA6E5KfGFiyvMFOn9mn8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=USsmhKH6wjFeUKz++3U5jar4ryLBzBg/8KQNbXR5VJRu2VnDNyuVrqH+2Jx2zogT+
-	 B7qwPw34h5WHQAtkonY/ZFb/g1pWSxd5RVdvsLExVka9X9JhGeeupsmid7pSAEDG3T
-	 k2dns+2USd0dQSS7KB1keIqYoG0Onid5kfqKNiYKGLEwJ5HMc6s46Dboc9dyoDmLNd
-	 L8TSR2VROM8zw7xnJWyU6U2OewadfgdM4XucDPTB7Ql2Gxa8wsRxmyM027bHvqzqZs
-	 iRV6NvUInGUvHRqz9jNfVaSgqbaZME5BffHybfPWxhnABmFrYoJiwEKFQGIPSccaJZ
-	 F+176LzuwrdnQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 60C9317E0CBE;
-	Mon,  7 Apr 2025 09:26:27 +0200 (CEST)
-Message-ID: <6d2462ee-1303-4325-a244-6d3408f4d749@collabora.com>
-Date: Mon, 7 Apr 2025 09:26:27 +0200
+	id 1u1hG0-0000000GrQk-27yZ;
+	Mon, 07 Apr 2025 07:51:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
+	s=s29768273; t=1744012236; x=1744617036; i=markus.elfring@web.de;
+	bh=qzqYqpX1n+9iBoljfssVQ71YHV7yXI4Hc7MudyfJowk=;
+	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
+	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
+	 cc:content-transfer-encoding:content-type:date:from:message-id:
+	 mime-version:reply-to:subject:to;
+	b=sWopx7xvOIqDpk/rw3r8Q95+2HHtLbsF1C7cTccGgg996R71sAiDqnthOsSoJOrA
+	 6+A1nDQ07zh03mN0PygsY2P0q4205ukJoh+ludqIVU4cipZJx6wSLMg/x2r1t9M/T
+	 39YCcGFSOjEnQBA6UdXKHJxdd1pNSOS63kvgEHub9DQfBcLet2hhtJcvZXbV7Rky9
+	 g5xBFRSv5PbapbXNW5NNFoGX+Kquua33hdCODj6BlZ6l6WiBt9SD5y9jWqv9bf/G8
+	 w/zqb2T/JuX+Gg3QEmCuOh5IYgOyM58axcrDnKYEicAbR/yoWrsyH9BUF7laZx6p2
+	 2UvuugT255GYBM7JAw==
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from [192.168.178.29] ([94.31.93.4]) by smtp.web.de (mrweb105
+ [213.165.67.124]) with ESMTPSA (Nemesis) id 1N7gXQ-1sx8BC26vS-013ax6; Mon, 07
+ Apr 2025 09:50:36 +0200
+Message-ID: <b429eb4d-514d-410f-8443-7e3f40709951@web.de>
+Date: Mon, 7 Apr 2025 09:50:34 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] arm64: dts: mediatek: mt8395-nio-12l: Add scp
- firmware-name
-To: Julien Massot <julien.massot@collabora.com>, kernel@collabora.com,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Ben Lok <ben.lok@mediatek.com>,
- Macpaul Lin <macpaul.lin@mediatek.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20250404-mt8395-scp-fw-v1-0-bb8f20cd399d@collabora.com>
- <20250404-mt8395-scp-fw-v1-1-bb8f20cd399d@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250404-mt8395-scp-fw-v1-1-bb8f20cd399d@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+To: Henry Martin <bsdhenrymartin@gmail.com>, linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: LKML <linux-kernel@vger.kernel.org>,
+ Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Peter Chiu <chui-hao.chiu@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
+ Lorenzo Bianconi <lorenzo@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rex Lu <rex.lu@mediatek.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>, Shengyu Qu <wiagn233@outlook.com>
+References: <20250407032349.83360-1-bsdhenrymartin@gmail.com>
+Subject: Re: [PATCH v2] wifi: mt76: mt7996: Fix null-ptr-deref in
+ mt7996_mmio_wed_init()
+Content-Language: en-GB
+From: Markus Elfring <Markus.Elfring@web.de>
+In-Reply-To: <20250407032349.83360-1-bsdhenrymartin@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:UyaaN9+jk/ECW7DFcQreDAuUpqxrW+hgEQpFAN5vL+Xk7uyrKqV
+ +EUNAU6Cv+xDaECNkjN1LIEyvYICi2AFBiQ7r8mrRBmYsSeNd2UwCd9XqUkY2JPnRBVUmN2
+ h0gmmb0mHyQ87sV39w4LuwIWX4ajZh5cdb/0APWFFd2VQlMvSFkeIPe7VuOiKjZTg1ArzQv
+ Yf6BT3zSFj+s8FojjKDGA==
+UI-OutboundReport: notjunk:1;M01:P0:rGWYfE/QzDg=;DQE66In2XWKiA1TpSrWROWLIh1P
+ Caplna0f2CPkP/kc2OpqsL1kow6F+YtowFp+R9whgFTLaOpBZpHsCr+0/OeHoAztVkmlNtpNF
+ 1EodH7GJcu4KJsiEP1VkNQspO9Z5/E7yjy5Xwy0mEtHN4gQ+paobRTm25kHiFirSO0Hes4nQj
+ DiGL14Kihm1t7DjPi9smIDkvCn3yICFqnBUP4lZ3fOyVqdWT5o2Z1rBwGzw7IlgKnGWVoIim6
+ HxAZSJrOvEapTKXeWrhjKLqXVt0AgmgFVVau56CLh3YtGaw+uw9umRrmgQfcWwpVB8EgVf/Ba
+ DPwQI/KsLI6lz2BeVuRS1OAaMUNYZnAsColfR2D1dYA+BRvT9TPLXb7ovFJwe5AY/24Eg+RGv
+ x7EE7skkdkz2P4QagnJI5pZhmclxNFYHgN+4henoy2txUgjTpuwJItWky3vJlGU0MvAhBWZ/E
+ ddnziPFxXPntKyCRI0NpG1wF1xoo139zfa16c+/fuJuZbM6H074XZ59PF0sYtA+Exqtm4lizM
+ nAFZ4eiI/9PcdTDZnpi+uvKcJPBwPbYFOB17L5M1M+zUQ7UFaW7XW0lelP09S4jzZp0OjkZM5
+ f6ZjrWPZpH8AdBZ6cZADZouqTTUHVfKdaBISTcmX65FktrGIUMRV7zZzmVRBFC/ZFYn9Vb8RW
+ mhS4B4irb/UWYrStuei0fpjSaJbMU0Wb51WbQr5W80yNLTDimff4B6GpQfcTUSWAeX531Wyk7
+ Fegu8S+iXB8w/PhW2AvQGH8hBMrCAKeMeRyjELdr6BTSJPy34H4XRanpy7pEi5kj/jvh5iQf7
+ 6OWTV/6wmgTdyn383O9L5PH/49Bz/kj1YnkywIuuKQhsZUndmjioEh8z8ZEdooAtMFq4+rsuP
+ y/Ecf4EFz5LfN4ebl7itTooFQJkQJ3McG3QSXPGpLKD0Ga7HaDdD8DUYgPShgRArEa0t9JIA6
+ 60oGy/8puUokr/j7kikD+tOC9bK/xl0Vo8RNCE73CCwDlzAX5HMu6czFM7YWJpzusOlnaH+q7
+ SPHtYAgZSWFGeiQ7cY3Q6ylbyR8QDl1g+UU7e9T5JLbaoIRvRNg71L2DxqfJWKQY8PSqsBRlS
+ sh1QP5I4mKbYp8gVaNh/hZK9iGX8rD8ska95FpWMoPdru5/gmy+Z8Zt5e4GdM+Cpeoxma/2CA
+ kyW2fKe+/t45jiyxtjtaVBpP+8y3MYuB1fUjZbT2jntQoEhDhts+GeWJ9JPkTlBQZFqHaVvSs
+ RasTOa+y+NB4TI+1v61qnNK770x90O0htoHtBKXswg6mYw6ViBdfZFY1BneciPd7o4ZpMTzol
+ Nm5xMh2L4q5ls7RI0ogQm6Dx3J7lXN2mOyBdDvQfRUbIn9TNUEWzvlsYKo8Mnjhb+OC7Xa7Yf
+ DPtf6J6PQIhx2WZ84tYq3om6RY8C0PmujbcXElsvs9uILVsNx325SEOpQTj7tvfKnUT5LoM0M
+ V0kZs7j8DvoweK+IZfGFW5J1+NgrQ2J+w+4wGREwWK4jkr7Z9nIO9ITblGKXphb5+OXO+Qw==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250407_002629_667480_4BA95A69 
-X-CRM114-Status: UNSURE (   6.38  )
+X-CRM114-CacheID: sfid-20250407_005100_943338_D972C607 
+X-CRM114-Status: UNSURE (   3.88  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,14 +108,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 04/04/25 15:53, Julien Massot ha scritto:
-> Set the scp firmware name to the default location.
-> 
-> Fixes: 96564b1e2ea4 ("arm64: dts: mediatek: Introduce the MT8395 Radxa NIO 12L board")
-> 
-> Signed-off-by: Julien Massot <julien.massot@collabora.com>
+=E2=80=A6
+> Prevent null pointer dereference in mt7996_mmio_wed_init()
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Would you occasionally like to mark the end of sentences with a dot?
 
 
+Can any other summary phrase variant become more desirable accordingly?
+
+Regards,
+Markus
 
