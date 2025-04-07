@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBB14C369A2
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 16:04:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CD62C369A3
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Apr 2025 16:04:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qAMpzkdcu4YyVXcoriylpHMenEacmOqIz6YdxYu79ZI=; b=oKb1A0MpjCLVMCJGuSs5CaOzNH
-	JMsJjpq+KiKv6FtkvuGPe0dj9pihEzpYicyNf7LHE7yPcTNvcSojwggDGeyP1vS2CbiSdgXHaoj0M
-	7zss0KRHHj5nIpWhApSWt8C+ZFqtCJ71Rikc+kOdRjnDMzB+noTon+ndkxCBpwkO5CtSl09x6OAST
-	tEtPG4EZmE9hylc9xgwTAVfU6DOU8B7JBfmq1Tqc3yDLGgA/qxw1x7xtxf1rOAUOy8MirGuIXbihg
-	h1lVEgjezmMovX66dNeqVcqZYI9gwbjsfJSppMhGfwAUuLjV+QUtW4vOlpbGFB12k3Pc7l4qe1bGD
-	+SjprlLA==;
+	bh=NO0jEJIODika0sc4dK27jguZyI9XfEcXufTdm0R0rzA=; b=l+/zQVO0hMoBZWJm+M9rqkrTP1
+	4frKFUpzap/oY7Ab9raDVcGEZP5NabiEkjomNGePGVG2NgklXZPZSHSXn6Nx+Nb4Y22l1Lyn+UmMJ
+	2/MgKE1FBzuMy0UI51YX9X1RsPHsrEqFvJ9g7L1wSYbU/AHcHJW6uCBnC+iJ9q0yYA47Bxi6Pb9ko
+	DBjnxxAcHTx6kTUGGRbbm9T85wfLDrVy3C9Kj5pEPfrltyPs2tLZJUE5GJe4QCkaUvEEC33xD3obX
+	zsicF1cQmfrXxgT8SCgpUr4GEoDUKIWFbdb4L0E/9crL6wilt2Rz0tUYNL31nGWmaRB00tMdASFyc
+	4aeRlyJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1oxr-000000013LP-3hxH;
-	Mon, 07 Apr 2025 16:04:47 +0000
+	id 1u1oxt-000000013Mw-1AUZ;
+	Mon, 07 Apr 2025 16:04:49 +0000
 Received: from relay9-d.mail.gandi.net ([2001:4b98:dc4:8::229])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u1nOX-00000000hzS-19OP;
-	Mon, 07 Apr 2025 14:24:14 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 4EA45443C1;
-	Mon,  7 Apr 2025 14:24:07 +0000 (UTC)
+	id 1u1nOc-00000000i2u-44lI;
+	Mon, 07 Apr 2025 14:24:20 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 22A81443B6;
+	Mon,  7 Apr 2025 14:24:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1744035850;
+	t=1744035856;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=qAMpzkdcu4YyVXcoriylpHMenEacmOqIz6YdxYu79ZI=;
-	b=Wfrb62ueqx8DP1HYXxaflMLoLXVQDKpQVW2eYS2h4mc9l/ES7x52R1vQeSJpEZ0LQim7Tg
-	CcOr9UWg4z1IcXQcrc5Qxb5Gesz+lsq6C0fvaqO60G0crMegAw2JAWQ6ehIlUTZGNbhmWa
-	9qRIFuGoXSENuRnMsG1uQttxSugL6rcyEAXZlyHTKHMVZ9WTMxrNpbScipqGe1/ww3VSLr
-	PEImoY8BsVjiWVoAKwkKVWhhuIeQZC3FcpYNyO4RhJZz5EKBms0IBYf+wsKxShuz9FYhQv
-	ApOuhtEH2d1tZEY+pTzGkIBDBP/xQ1SMj1OqPO5cc5b9ZLV6vad3z+kpbHrenQ==
+	bh=NO0jEJIODika0sc4dK27jguZyI9XfEcXufTdm0R0rzA=;
+	b=Fg/7eCVqYJI4h8ndPDHWPGq3IcINsnEBoT5jCLNxhNzTrfBj6Ezez9E5lC4+QLKcEQM7SN
+	1oTLMQkTiEJyGDzHBffR3Lc88aLwjmKspTEmOr99Flwt2pCcBZeoKTOz4iXYqooYaRxXGJ
+	4N/Hy15wrQvkpEe9/JBvQVtliZdYg5FogOTRA7kPUdS0vexTlCNlPMRFJf4KmmH2z9fwd4
+	Neiut5nWXZo9KjIC8sciyTDFYP2/Ovb6pQfXpCR8rX6fvoSPdo4g5nWEWuB+QPMTLvlz3j
+	QPm4L/9XL0dsJni0EybfuQeLRiyiw6+4bZKPNcP8crh83dboliOd+KGK0RcBbA==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Mon, 07 Apr 2025 16:23:18 +0200
-Subject: [PATCH 03/34] drm/bridge: analogix-anx6345: convert to
+Date: Mon, 07 Apr 2025 16:23:20 +0200
+Subject: [PATCH 05/34] drm/bridge: cdns-dsi: convert to
  devm_drm_bridge_alloc() API
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20250407-drm-bridge-convert-to-alloc-api-v1-3-42113ff8d9c0@bootlin.com>
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250407-drm-bridge-convert-to-alloc-api-v1-5-42113ff8d9c0@bootlin.com>
 References: <20250407-drm-bridge-convert-to-alloc-api-v1-0-42113ff8d9c0@bootlin.com>
 In-Reply-To: <20250407-drm-bridge-convert-to-alloc-api-v1-0-42113ff8d9c0@bootlin.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -78,19 +78,17 @@ Cc: Anusha Srivatsa <asrivats@redhat.com>,
  linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
  freedreno@lists.freedesktop.org, linux-stm32@st-md-mailman.stormreply.com, 
  Luca Ceresoli <luca.ceresoli@bootlin.com>, 
- =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
- Jani Nikula <jani.nikula@intel.com>, Sui Jingfeng <sui.jingfeng@linux.dev>
+ Aradhya Bhatia <a-bhatia1@ti.com>, 
+ Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
 X-Mailer: b4 0.14.2
 X-GND-State: clean
 X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvtddtgedvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhfffugggtgffkfhgjvfevofesthekredtredtjeenucfhrhhomhepnfhutggrucevvghrvghsohhlihcuoehluhgtrgdrtggvrhgvshholhhisegsohhothhlihhnrdgtohhmqeenucggtffrrghtthgvrhhnpefffffgfefghfettedtfeehgfdtveekhfekudeiueetkeehleetveetjeffhedugeenucfkphepvdgrtddvmeeijedtmedvtddvtdemvggrtddumegsvgegudemleehvgejmeefgeefmeeludefvgenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpedvrgdtvdemieejtdemvddtvddtmegvrgdtudemsggvgedumeelhegvjeemfeegfeemledufegvpdhhvghloheplgduledvrdduieekrddujeekrdejhegnpdhmrghilhhfrhhomheplhhutggrrdgtvghrvghsohhlihessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepgeeipdhrtghpthhtohepuhdrkhhlvghinhgvqdhkohgvnhhighessggrhihlihgsrhgvrdgtohhmpdhrtghpthhtohephhgvrhhvvgdrtghoughinhgrsegsohhothhlihhnrdgtohhmpdhrtghpthhtoheplhhinhhugidqmhgvughirghtvghksehlihhst
- hhsrdhinhhfrhgruggvrggurdhorhhgpdhrtghpthhtohepshhhrgifnhhguhhosehkvghrnhgvlhdrohhrghdprhgtphhtthhopefjuhhirdfruhesghgvhhgvrghlthhhtggrrhgvrdgtohhmpdhrtghpthhtohepkhgvrhhnvghlsehpvghnghhuthhrohhnihigrdguvgdprhgtphhtthhopehsihhmohhnrgesfhhffihllhdrtghhpdhrtghpthhtoheprhhfohhssheskhgvrhhnvghlrdhorhhg
+X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvtddtgedvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhfffugggtgffkfhgjvfevofesthejredtredtjeenucfhrhhomhepnfhutggrucevvghrvghsohhlihcuoehluhgtrgdrtggvrhgvshholhhisegsohhothhlihhnrdgtohhmqeenucggtffrrghtthgvrhhnpeeiieeuvdfftefgueduleehueetgffgjeeitedtteetkeeuueeuueekveevvdeuveenucfkphepvdgrtddvmeeijedtmedvtddvtdemvggrtddumegsvgegudemleehvgejmeefgeefmeeludefvgenucevlhhushhtvghrufhiiigvpedunecurfgrrhgrmhepihhnvghtpedvrgdtvdemieejtdemvddtvddtmegvrgdtudemsggvgedumeelhegvjeemfeegfeemledufegvpdhhvghloheplgduledvrdduieekrddujeekrdejhegnpdhmrghilhhfrhhomheplhhutggrrdgtvghrvghsohhlihessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepgeefpdhrtghpthhtohephhgvrhhvvgdrtghoughinhgrsegsohhothhlihhnrdgtohhmpdhrtghpthhtoheplhhinhhugidqmhgvughirghtvghksehlihhsthhsrdhinhhfrhgruggvrggurdhorhhgpdhrtghpthhtohepshhhrgifnhhguhhosehkvghrn
+ hgvlhdrohhrghdprhgtphhtthhopefjuhhirdfruhesghgvhhgvrghlthhhtggrrhgvrdgtohhmpdhrtghpthhtohepkhgvrhhnvghlsehpvghnghhuthhrohhnihigrdguvgdprhgtphhtthhopehsihhmohhnrgesfhhffihllhdrtghhpdhrtghpthhtoheprhhfohhssheskhgvrhhnvghlrdhorhhgpdhrtghpthhtoheprghnughriigvjhdrhhgrjhgurgesihhnthgvlhdrtghomh
 X-GND-Sasl: luca.ceresoli@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250407_072413_518461_1A7DCF43 
-X-CRM114-Status: GOOD (  11.01  )
+X-CRM114-CacheID: sfid-20250407_072419_191276_3F846296 
+X-CRM114-Status: GOOD (  11.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,41 +109,38 @@ Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 
 ---
 
-Cc: "Uwe Kleine-König" <u.kleine-koenig@baylibre.com>
-Cc: Andy Yan <andy.yan@rock-chips.com>
-Cc: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Cc: Jani Nikula <jani.nikula@intel.com>
-Cc: Sui Jingfeng <sui.jingfeng@linux.dev>
+Cc: Aradhya Bhatia <a-bhatia1@ti.com>
+Cc: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
 ---
- drivers/gpu/drm/bridge/analogix/analogix-anx6345.c | 8 ++++----
+ drivers/gpu/drm/bridge/cadence/cdns-dsi-core.c | 8 ++++----
  1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix-anx6345.c b/drivers/gpu/drm/bridge/analogix/analogix-anx6345.c
-index f2bafa6cf77956ecafc87aae3a2b6890bdb36cfa..f3fe47b12edca1f92ddd306d152be144df5649b5 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix-anx6345.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix-anx6345.c
-@@ -664,9 +664,10 @@ static int anx6345_i2c_probe(struct i2c_client *client)
- 	struct device *dev;
- 	int i, err;
+diff --git a/drivers/gpu/drm/bridge/cadence/cdns-dsi-core.c b/drivers/gpu/drm/bridge/cadence/cdns-dsi-core.c
+index b022dd6e6b6e9e43bf11583806e1a8d1e7431ae8..7604574da66606c103cc035dd94b0e211b64ebdc 100644
+--- a/drivers/gpu/drm/bridge/cadence/cdns-dsi-core.c
++++ b/drivers/gpu/drm/bridge/cadence/cdns-dsi-core.c
+@@ -1289,9 +1289,10 @@ static int cdns_dsi_drm_probe(struct platform_device *pdev)
+ 	int ret, irq;
+ 	u32 val;
  
--	anx6345 = devm_kzalloc(&client->dev, sizeof(*anx6345), GFP_KERNEL);
--	if (!anx6345)
+-	dsi = devm_kzalloc(&pdev->dev, sizeof(*dsi), GFP_KERNEL);
+-	if (!dsi)
 -		return -ENOMEM;
-+	anx6345 = devm_drm_bridge_alloc(&client->dev, struct anx6345, bridge,
-+					&anx6345_bridge_funcs);
-+	if (IS_ERR(anx6345))
-+		return PTR_ERR(anx6345);
++	dsi = devm_drm_bridge_alloc(&pdev->dev, struct cdns_dsi, input.bridge,
++				    &cdns_dsi_bridge_funcs);
++	if (IS_ERR(dsi))
++		return PTR_ERR(dsi);
  
- 	mutex_init(&anx6345->lock);
+ 	platform_set_drvdata(pdev, dsi);
  
-@@ -738,7 +739,6 @@ static int anx6345_i2c_probe(struct i2c_client *client)
- 	/* Look for supported chip ID */
- 	anx6345_poweron(anx6345);
- 	if (anx6345_get_chip_id(anx6345)) {
--		anx6345->bridge.funcs = &anx6345_bridge_funcs;
- 		drm_bridge_add(&anx6345->bridge);
+@@ -1349,7 +1350,6 @@ static int cdns_dsi_drm_probe(struct platform_device *pdev)
+ 	 * CDNS_DPI_INPUT.
+ 	 */
+ 	input->id = CDNS_DPI_INPUT;
+-	input->bridge.funcs = &cdns_dsi_bridge_funcs;
+ 	input->bridge.of_node = pdev->dev.of_node;
  
- 		return 0;
+ 	/* Mask all interrupts before registering the IRQ handler. */
 
 -- 
 2.49.0
