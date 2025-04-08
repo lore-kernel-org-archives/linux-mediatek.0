@@ -4,89 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA12FC36010
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Apr 2025 20:14:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEFDBC36010
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Apr 2025 21:12:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
 	Content-Type:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HZBj1pu1Gbt9nmf3HPjL8Iajal0YtOWsZfn+N+DCOL0=; b=wHPtEi6ZA7EsLOcRTGAMpVBjew
-	IcLWt5lHosu+qCuNSBDs1D4lQsXRSliQjTNC5i2FDJQdJGdR4bA4TM+5PfbFs9TNq8WdW4tLdA8Xs
-	trFCM1GjQrZY0unYGq0mojyy/fiS2sGIT9xgOHrL/pg7wAj+p6nE2gSTe/VunzspAqBNqf94o4qnk
-	ZvWRGAKUWwu8zfvQqc6XoSo9b0+dh5ukbxc+cqg8DpSpEhaC6RerjilEFgsPj4n1z5GxxqZyGEQhj
-	CRUlNw80REdaE9gHqb5x79E205aigWN3RhZYDVSvk2m2YZB/2DlW9wuS2sL3eWr2LdP5eV3F2G5+l
-	m0h3Z6bg==;
+	bh=vh84+CBhMGtpOXwlmBr5bpr2Gm/sSPvGOTBORXK3kdk=; b=WXuYtsUbshJz0Xbmf1K/VDXBss
+	QjHMfxIa1dz424RiYmAuF2U01la6aM3+gHXYDzPTYtN4zxz4gmiScWsL/As38KkgUYeFotqJhq/rZ
+	wr02RbunA0SP5kgd2rupnwzDYPK7poKnP/spLUlZYUXm+1nF/4uuHL0YtjinpPYlL9F9ZcLWKhiZV
+	umZrNT8HY/iaawIud8oLJWWh4wpVXEwju+qJW0MJ2BMqYIS3ZoLBmXHrCQ9M5UC7OPTASeLq54AHV
+	mrQgaPmXAwrAx+hRUWAffum3BRoj0uVkbskGVYSBNb0NbQwV6BuAVD4r/jq/mackVpuKZCU/L7r6R
+	DOwgKRBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2FLV-00000005Jtf-440f;
-	Tue, 08 Apr 2025 20:14:57 +0000
-Received: from mgamail.intel.com ([192.198.163.14])
+	id 1u2GFW-00000005QCZ-2s2C;
+	Tue, 08 Apr 2025 21:12:50 +0000
+Received: from mgamail.intel.com ([198.175.65.20])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2FJi-00000005JhG-0ZQV;
-	Tue, 08 Apr 2025 20:13:07 +0000
+	id 1u2F4r-00000005HaM-2i8a;
+	Tue, 08 Apr 2025 19:57:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1744143186; x=1775679186;
+  t=1744142266; x=1775678266;
   h=date:from:to:cc:subject:message-id:references:
    in-reply-to:mime-version;
-  bh=aMzOj12PNde/KPNS9qVhrJY6oQK1b/3ZBCz99YKojRI=;
-  b=No6RM74fjMyYf3Iop13MlnO5gEsH+LA9/qJh5UQIWxhwMgTpVbIoKhzS
-   /NfjgZPdnOQUa2JGaSPC2MlvemsW1TDgDQkW21OlIeiWCmMExmHCzTX9z
-   JLp4RtAos9uqz6GPIBX8Re6h1AVtjpGnNBcRgcncVwB94FJm05KeIuhwJ
-   zsWXhy3tjFf1Tz3WoYKhygqiG7q1O+PReyCy5FKHsNAkbDFhl9yn0RqhJ
-   mjm8BYFjYhnzRvvIKBga5tFcHn9wJ61OyyZ09lKujZk9iesAuVipaiNd/
-   wxds9u02nCzTrlNuxtV1cVl5GQG4ohmvAPPIL4DWSRbg76adhyR5eEVVd
+  bh=Jiqv8SEpFYX6SwxxyhOkYs0CHLQ0g093Sa6h7LN4I1E=;
+  b=C01l13exIzbzJamIY5EiPxblVGvIX2IQqrY3Wmh0Su+qdE4ZkMvkkV15
+   NtqC0GfwzqriIB1yO7NoLJgazdQrohfWrwtzeHEyvUz7mOKtoMLBbNodc
+   sBecKr3dHdhrDsQeRugJ61Gh+6UMDG1W/wkYJkIftcIbYKD+qOwtmMLBh
+   ik/FiXC9nzkxF9XIc0h2eHAlNkI2aqqFaE/7a/vlSYJBJ2tnIOBs5iTKZ
+   r5erSBGl4hFrT95End11ZMdCWrPOWM4cCZBneymzRrGtnb5tgwiVeVETH
+   V9cLG+uQ6gU94obPHz7azqjAIi8cEIvUT/jDPiwCBBhWOVRzunZPGtitX
    A==;
-X-CSE-ConnectionGUID: c4px2K80QMqFWuWwdehdfA==
-X-CSE-MsgGUID: oFMzImuHT5qABavFe2UZwg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11397"; a="45759280"
-X-IronPort-AV: E=Sophos;i="6.15,199,1739865600"; 
-   d="scan'208";a="45759280"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
-  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Apr 2025 13:13:01 -0700
-X-CSE-ConnectionGUID: Zdz/8253T+Cf/gG1igQuEw==
-X-CSE-MsgGUID: gYvI7u8cTHCmuenSIy8vJg==
+X-CSE-ConnectionGUID: kukTQXsuS1yLij/Jq2FicA==
+X-CSE-MsgGUID: wy2dP4P+Rc6P6XxpgTO7PQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11397"; a="45312062"
+X-IronPort-AV: E=Sophos;i="6.15,198,1739865600"; 
+   d="scan'208";a="45312062"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Apr 2025 12:57:44 -0700
+X-CSE-ConnectionGUID: aNXhpWl6TNuniGsJ5XQBdg==
+X-CSE-MsgGUID: rzLXN1pBT7+5ugywKxrLiw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,199,1739865600"; 
-   d="scan'208";a="159355953"
-Received: from orsmsx902.amr.corp.intel.com ([10.22.229.24])
-  by fmviesa001.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Apr 2025 13:13:01 -0700
-Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
- ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+X-IronPort-AV: E=Sophos;i="6.15,198,1739865600"; 
+   d="scan'208";a="133236145"
+Received: from orsmsx903.amr.corp.intel.com ([10.22.229.25])
+  by orviesa003.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Apr 2025 12:57:44 -0700
+Received: from ORSMSX903.amr.corp.intel.com (10.22.229.25) by
+ ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.14; Tue, 8 Apr 2025 13:13:00 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ 15.2.1544.14; Tue, 8 Apr 2025 12:57:43 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.14 via Frontend Transport; Tue, 8 Apr 2025 13:13:00 -0700
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.169)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ 15.2.1544.14 via Frontend Transport; Tue, 8 Apr 2025 12:57:43 -0700
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.42) by
+ edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.44; Tue, 8 Apr 2025 13:13:00 -0700
+ 15.1.2507.44; Tue, 8 Apr 2025 12:57:43 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=f1BGTuuQTARCyT82mc+4RATz+Fu7Bbly3SD7yV9M5w/QyYOfaqmXyRcRY7ka98OHx6r6dt98SJUIPcnvK8wBBkRnfxt+dNDB/Tp6QAmOREDByskjit8I9q00lEebA+G4f6orgc47NOH4bxHTZq5eIzh0KgIFGeYuyirLYg61IZaoHk3mPoFb2etnuKqUytmHQiVTY7HbFnpnY7q7Oaf3bTy2kwxafKYDWud3MFmJRIrcrPT4MDeUQs3YJtzPMOeDsT+/0nmIMfkQJlr9vQ2NNEiwytCXaesZDq6gpyajJNe5K5mhM6aw0kq2YOd9wgoa4mERj1sJmns//aVbn22iBA==
+ b=d1NeTJrCTHMHDFwJQyChmlcYeVl76MUhuOFUhLtH2KM5OEXA2hNYG9GqE3xkXyAYYZ/4lJYAsDvBhfDmwK7LYBAyuVaTR1G57TZpgdz4JGj4XPr54cxaMZdKPIseq5yO70cpINJ1+QVsYafxZQ0OQsPskxLM/DywGXy+DLb9jPIbhODeIO+exULOLw7EyTjzpcQR8Td5LpuUP6SWQwi7TggUJD+w5DpsEjNtcOl28l0LgFYmuC+IEZBg6maBM5LdZeI6CzUSDXDMQJvmWeR67loe9v1XFNwBetD+HKmreZVZs5kL4eYKfgILWVUyBUVM0xvG5AMZMCCh+wEdkKo/8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=HZBj1pu1Gbt9nmf3HPjL8Iajal0YtOWsZfn+N+DCOL0=;
- b=mupr2wXCvQ6ytWGRB+DVvswgEImqTIG2BGNuF+3QtGM3bxE5kC/9grV0j8U1mFAvuRGz9JLL3F5xaKHJ6UiIuczcGmheHHKjJ/wsJpcsZ+Ykh/uA8J1EKkwUmDxWUo24v15ZZldhtD4H7juS8PhmHyJyhpuckpo7teIH3R8UZL+HrxcarCbFoHJ+03Xiegp+s2zQ/gNVzRURjbMgCuiPRd/iBU0Pn1tK5AyEIuqJf7kciEtilLebQuf8ICLO9oxPJkJZuDw8cST7PBf0Yec2o3pphm/54NVe0K/9jzyS4Z16EDTFDERTd20Sgfcb5Fa0pNqvhEHKZzKksQ97Uztpyw==
+ bh=vh84+CBhMGtpOXwlmBr5bpr2Gm/sSPvGOTBORXK3kdk=;
+ b=gI84wRiqJx4qhjVOEPfoqiO98GykEliIGQQDzfyAgf6DlnZucTzSo58c+zb8RaAKvs/c/MCu/4vpggFceeJA9isi4qELknBcpku3gj0NYrBMy1KGIcRh74uycfeW0XPsaJ7nuwiOksp25LhICI9TbrBBkEsUGOhs0vVbrTcsAC9WK338VLyp5LU5EP32QhM+wx9RzxaWIT3yhePYzhCMLQXDe5AiTvoc7QmfZEv/QuemjMlULkMAGi9lielYo4c7lLBUK/p7Qal1mEp2pQeP+bvbBzKo8vmawa3BIBbyoiiEnAmJSsHa/oKM9G2isMlB7ke9Y+B8zIlgtGOv4zW5rg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
 Received: from DS0PR11MB8665.namprd11.prod.outlook.com (2603:10b6:8:1b8::6) by
- SJ2PR11MB8538.namprd11.prod.outlook.com (2603:10b6:a03:578::16) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8606.34; Tue, 8 Apr
- 2025 20:12:57 +0000
+ CYXPR11MB8663.namprd11.prod.outlook.com (2603:10b6:930:da::21) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.8606.34; Tue, 8 Apr 2025 19:57:12 +0000
 Received: from DS0PR11MB8665.namprd11.prod.outlook.com
  ([fe80::8e7e:4f8:f7e4:3955]) by DS0PR11MB8665.namprd11.prod.outlook.com
  ([fe80::8e7e:4f8:f7e4:3955%5]) with mapi id 15.20.8632.021; Tue, 8 Apr 2025
- 20:12:56 +0000
-Date: Tue, 8 Apr 2025 22:12:44 +0200
+ 19:57:12 +0000
+Date: Tue, 8 Apr 2025 21:56:58 +0200
 From: Michal Kubiak <michal.kubiak@intel.com>
 To: Lorenzo Bianconi <lorenzo@kernel.org>
 CC: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
@@ -94,93 +93,92 @@ CC: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
 	<kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<netdev@vger.kernel.org>
-Subject: Re: [PATCH net-next 2/3] net: airoha: Add
- airoha_ppe_foe_flow_remove_entry_locked()
-Message-ID: <Z/WDPBMIPSCkbg9e@localhost.localdomain>
+Subject: Re: [PATCH net-next 3/3] net: airoha: Add L2 hw acceleration support
+Message-ID: <Z/V/ip/dA+aw+dCW@localhost.localdomain>
 References: <20250407-airoha-flowtable-l2b-v1-0-18777778e568@kernel.org>
- <20250407-airoha-flowtable-l2b-v1-2-18777778e568@kernel.org>
+ <20250407-airoha-flowtable-l2b-v1-3-18777778e568@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Disposition: inline
-In-Reply-To: <20250407-airoha-flowtable-l2b-v1-2-18777778e568@kernel.org>
-X-ClientProxiedBy: ZR0P278CA0220.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:6a::22) To DS0PR11MB8665.namprd11.prod.outlook.com
+In-Reply-To: <20250407-airoha-flowtable-l2b-v1-3-18777778e568@kernel.org>
+X-ClientProxiedBy: ZR0P278CA0122.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:910:20::19) To DS0PR11MB8665.namprd11.prod.outlook.com
  (2603:10b6:8:1b8::6)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS0PR11MB8665:EE_|SJ2PR11MB8538:EE_
-X-MS-Office365-Filtering-Correlation-Id: e9d60adb-5a22-4e01-c3e4-08dd76d9c088
+X-MS-TrafficTypeDiagnostic: DS0PR11MB8665:EE_|CYXPR11MB8663:EE_
+X-MS-Office365-Filtering-Correlation-Id: e166eca3-1554-492a-7670-08dd76d78d74
 X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|376014|7053199007;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?cDv9EOrzWb3uemdgK9mexO73XmhNDomo2jndB/rQGRuHVbMDD8GV0WccGlOl?=
- =?us-ascii?Q?Fdmi5jdzn0bW67R7seJlKfWanre1i6NdIwyxvoxBCL6P+wCExzig73An90K/?=
- =?us-ascii?Q?qXjdcKThYn82/TotExxCD/Rj8tjflf2Byd9cf97xooaLp2fWwLZXoNtD4DxZ?=
- =?us-ascii?Q?/rPtHgZDOFvHauN/nQupfInt0IqTBfiHYF6W3i5v4ym710F3u/tDixNNhnNz?=
- =?us-ascii?Q?oub6SwkLcO5mLg+wenDVorwYlr9v/0RSIqAmBnk+U3ba1+rlvsH6+a+zFlqw?=
- =?us-ascii?Q?ySJAo3p4y/55fLDiOnCv+U3pMYaajzfXZbBVwVnuhJQCYzD4b3+lll/ne5V4?=
- =?us-ascii?Q?LEPHcxJQpuvhLUTVG23pw2pAZN9R+kUyZec+d+SZ873BBu0EVPvfkdCROY4d?=
- =?us-ascii?Q?ie7i27M+VIs2VkOd5CxAOMFuB3tGox0h6TMMJfRqp2NfVQMT9DS7pTqzymEZ?=
- =?us-ascii?Q?HBHcl8ENAd3GMHZNj18PhQITYYaM9l2KvyBpRHT73deVFkIud81mZU7NEgaV?=
- =?us-ascii?Q?ySC81wKgr7HZx4yqu/ovTzP7+GsfJ/xOW36uJ4ODZKWUz2HyytvJpjs3Awl1?=
- =?us-ascii?Q?AHG0rbhueURIDCc0dHsgWUqJK+r4/sPh3jHh0cVU2zix9wZgUGuTAVFSlgbE?=
- =?us-ascii?Q?Yz2BW1NRI5JOj+CgOV+Ba8J/0W23rnt3I4KdxVfVfYB1r0sithC8N7zlrCP9?=
- =?us-ascii?Q?1FVXRI3zYHgZJZ5LcGTW3mT9uwVp/DWo5xD5H+plfBDV2mWP3i4L8rMb80rv?=
- =?us-ascii?Q?9oCL6NkLe40YWQ38SOWYGg0kOEURJiE6mme1RMw4dEbU1Uth4kFi2hh0GHN8?=
- =?us-ascii?Q?QYXf22wTVcFLJckPu0IUgjD9vm7VRy6T+UUpDASUzVxCfv8JKqnmeby44vB9?=
- =?us-ascii?Q?0guHXwbEW39pYZ90VQh2nhjRj3GDQhwxmBlvhdAz6jpHeCWoBFCaMnvM71DP?=
- =?us-ascii?Q?053CcfMqREj7Gx9vuPea6Jz0Sy31/yCAbcJcHRgMqUH2/EBmYRWEo5KRC3m2?=
- =?us-ascii?Q?Wsl6XXzzIg4dB4lajHvjqFRuByVRJZC+JjHyZw690IG5zNU1Rd3niHoSFdka?=
- =?us-ascii?Q?C3GABusIhPXC+kHiFB4xPsJsV8IlTtZIr87aZLjQ6AIMIVBJ2Kx5Hr5D1mNg?=
- =?us-ascii?Q?UX88neJYlboR1Aa3N2fg70btEEzwT+xVRZjpyh3JeW9X4XkiCSI7XI3Jls4u?=
- =?us-ascii?Q?4TcXYK7Mhlxdn+vZHvP7k2L5EbSOS5w9lK0Dj0uqOIoOjidlNAPgS6Tx8r4I?=
- =?us-ascii?Q?HkZnDuwyCoQG1KeqleWOZ49RbpXXGzhRWCjiQOlt2WRti9guZaMIGbaR0jHS?=
- =?us-ascii?Q?qzISJZ59wbgpJEtvfvf1u6IE2vQCZoMUBNTFvV1R2JwgX5/elu2cBirpiUpO?=
- =?us-ascii?Q?GWKDr6apG2KfE5Qb+HIV+HTuFvRi?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DS0PR11MB8665.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014)(7053199007);DIR:OUT;SFP:1101;
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|376014|7053199007;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?5dyEwpJ3t2WVzR/R1qSWt0Bi0f+AQaBH6gTjqoHmNF+bHaHJWixxEqkHQx87?=
+ =?us-ascii?Q?U5QBA7d0OTUKphR2dH2Z3ifisB54Ta9HTNxqiw/W5tWS3FHpJqH66uyA1dih?=
+ =?us-ascii?Q?G7XdesSKmVfvzFlM0h8GaYFHjif6Ny5oO0PytxkcWrYwsxvGbgNrvBKkCo8t?=
+ =?us-ascii?Q?bcb1luRfnifH2xR+bzK0MpNCAgiTiOvZTzZ37SGpnJiiblNbUhNsuJ0BZRit?=
+ =?us-ascii?Q?wjSaZbQcSI2s83reJjfPNVSCDiM20SQKmy7731k1/eiRp5XaqOOnTOI8TBJk?=
+ =?us-ascii?Q?79nR/fdSIt9Yz3CsEPZLfqqw/qnPvt9uevfGfnBjqJ+NwFfdE5Pl+grxRStf?=
+ =?us-ascii?Q?faFwjXv6OeedPVQ6FeOhJc4a8rgngHJlfF22o9QgiCpVDNw+MkXKNACxR7Ma?=
+ =?us-ascii?Q?zHdHoLKNTPk4d+Fc+T/vHDd3VJOFYT3LQZS/RiVHgo+kjdx5DaabGAsRvtrs?=
+ =?us-ascii?Q?KGCXoCygHUlesuhhKmYOgjs7DwTnqjr1KmGiRtZXg0XQG0SGITOHYWdQx8oh?=
+ =?us-ascii?Q?JjCVlzLxQvFKzXE8oyCAntjsaBxPfJP01sEbmt8/yoURHUgBNMr1LYWKW4KW?=
+ =?us-ascii?Q?ZTofzfosUSLJutsmWnMgNg4iYdVv/xIwkF9EqQcCq1lJqjRnHgApzcid0M5A?=
+ =?us-ascii?Q?f7VLaMdpJip9mpJFUgXHczexIDZZtKBSE0RKfVdkCFeUAYaF2ciuY4R9fBkW?=
+ =?us-ascii?Q?PvEOk8WQ43ELrB5fjVymhB0I7McgCgdE8JQPy6TY+SvD1sW1FY2/AJgxoWRb?=
+ =?us-ascii?Q?8k+sXjizTpMqDwC49I/HDksfBqbNESaBObmp+Jy6dJkdJUHwQySQ1Wc/KqLe?=
+ =?us-ascii?Q?TCdNfFQbTubMBTumPIWukPgvbyVdIyDThEGK0eNky0Ms7qfGWtflqtsRfyi1?=
+ =?us-ascii?Q?ssW2OTV8IZLIJNzrd38T2mo+/4fFt/k/KoXKRBM0oIP9xFAdBhh6Tlm8MQZF?=
+ =?us-ascii?Q?5xif6UDtumL18DxxOJJBTIHhQAUAzQxKFQuls0cg6A1ZxE7ZACFDKM8K2XCA?=
+ =?us-ascii?Q?V0jVzJ8KxrpxNnOoSYJvfIqel66z5NUJbMqcvtJQdx2RpW+4XFuGLykYDsDG?=
+ =?us-ascii?Q?FJh90LKOZxSgysSmU8dGhBYB1vlMIHSQB5z9/Ggl13k9HyUG0w5kcABfHijc?=
+ =?us-ascii?Q?QE/qBqXQabT1skCy3ZmIetSLnZ2s+pIisBVRjjCA8aN37oLQ1O/GIQZsEEZR?=
+ =?us-ascii?Q?8Zg6amqDc94lWPFw2P+0eCbnNXT+M4SGQBi2xmKRfKhGKNnYXCKTKB9Zqs9k?=
+ =?us-ascii?Q?mw6kkKnseihim9rTU1HJqOcXjgO6obtQv0bFk6ZHGk70ZUSzVknH2pwzYsIn?=
+ =?us-ascii?Q?PpaVTKcvIecKaRNxO3K76ArNjwlIrHKw7C4B2+Nco0P38wXLsNM8GdTehSd5?=
+ =?us-ascii?Q?y9uCL6VgiDeidljjTnRgdJQsxadG?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DS0PR11MB8665.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(376014)(7053199007);DIR:OUT;SFP:1101;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?nTrexB8VCsAJKQkXedqJm103p2YBZCFgw4t6njk9x2zA5n9BIC5iklisMnft?=
- =?us-ascii?Q?wkDVxg6H74MOscZnFNmFBLsDSeDln7zrvW3fxFs/hzP2glehaIS3caIhOBJ1?=
- =?us-ascii?Q?Q5R/9dP+Z7yNTgLyMkmioHVmyzvxcxD9+unDtDihGzOuyB/A9kUkCWfEbdRy?=
- =?us-ascii?Q?WYkHuQneUogjWHSNXRTdifaiqUbpBwrTvCaXfoDIDenFq69EhXjpgFlOgedp?=
- =?us-ascii?Q?E2oE8SpBAXEQUh6hgWKIyedqVyGnlyWismV2wJ3U6Z22wyDaNjGnciEiIaqK?=
- =?us-ascii?Q?ZbTESU+Oewa75iyJRInsrB0Jh3NvbbcLdksEbby1awg1e3MR8YJPttb5GVd+?=
- =?us-ascii?Q?Wi31fx3gbqLV6rxmbPcNVIegRg80wqKfjuCnQ96YO/6Pi7bi1wDAFOsh5x4Z?=
- =?us-ascii?Q?5l7+hMPzPzS0J0xsuJcPO7Zxr+aTP/ib01U2brY02lF4NRhoGigEqnDHENYE?=
- =?us-ascii?Q?4y6DB5lQeITPX+u5DZWG6fdVO/Qq2cMm1Z2ZHt6Hmu71WnJMYIGjlL3B4xkn?=
- =?us-ascii?Q?Hm0Rc0cj5GBgjoV4gqb8D84mwqjAFyIHKiaxbAwiZnPY9J/qEGrlID6HNl/+?=
- =?us-ascii?Q?ivYvrbOQjDOMBA60PnynPl1jKYZ2Cub7pBREfihskePTbWMzfjmGTEWOn7zP?=
- =?us-ascii?Q?BjZdKZGcnMw64MGx+N5j6cDr/HVU10fDZRtwW8jZNXEevg0fKNZUwn0NqKk6?=
- =?us-ascii?Q?6zH43TaxGGTrjBpEur8ypobA6J1/X0iVf/yJp5ILpOnwBkJ6wEIr+UeQf1Nd?=
- =?us-ascii?Q?DNYxh0fE4bAg71UDXcO+ffFbbI9kYIVQ324V3NZDoUklHb+zWq3QifwEc6OR?=
- =?us-ascii?Q?7YLMWWiSt6q8MIAsfkIqrKXch44WS06iNLpQmD4Yi37On0OdewnVwzlcXNdZ?=
- =?us-ascii?Q?MpVBHoN3LrHixb1vfKoC0QAxT79dBtY16HdGRPFNxUGtnVVDgfdL2w/vIiJ6?=
- =?us-ascii?Q?40cdw/btILgiyji839WByvzH6vjsBVPxwtrlnbqenTLa4a4hGXVivpcIxCME?=
- =?us-ascii?Q?xaUrEwbkGMU9/b6NZWJQv8DNM51faYk4ZogPdZbCn338excqH+3OhdDl2R3n?=
- =?us-ascii?Q?7RrvRrKg5EOUsHv4lIAFiIERQieecGXtDYso8BTgP45/G2rDST3WomzyGAdo?=
- =?us-ascii?Q?Gxm3PQuuBrQW/pbsGYDhQQASoDZcuO24eMCvaE/7dXIyagHAGRUoYWF+l1GY?=
- =?us-ascii?Q?v6721m/kQdOCl2zhJ6c3YdxFs2EtO0oudQUt4tWnZF7i3ih2SB6pQTaH65/j?=
- =?us-ascii?Q?i1tu6q9KX2Bb9mTXHmjy5dyjpedwSLSLp+w3u6uF60c9bAJiRqjEnPEdppCT?=
- =?us-ascii?Q?JvVKmewRdyLeUutRlc7HCKT1x2RmHA3nrf56DU7okhi+Tyx90WU+wsw7lzZi?=
- =?us-ascii?Q?e0JgnKzrYsiKL/R9LtKNskHx3R+DbBgyydv5VNJAMlERu/FInfldXgkNh98W?=
- =?us-ascii?Q?5ZFDcLShjUdesciSn83iKhyr4Jn64CEi/6EqP1nAqTVfvKdJI0wuvzVboWVh?=
- =?us-ascii?Q?5cTYciObqenwTo3i4KHcTXry2FLDME7+9aC5ZXj8OXyQ+s7duM8AkE707dQe?=
- =?us-ascii?Q?0zLcy2Z3sGaIc0k/sFDyDuRngbGsaxI6AfDp/SWdYIyoPxrJN2VXouJ6gENc?=
- =?us-ascii?Q?dQ=3D=3D?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: e9d60adb-5a22-4e01-c3e4-08dd76d9c088
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?lkbo5SDRNs4/ZF8vK4u5rER4CxZh18z9d0qg6dVbiZp3c/6Y7pAIdC2Wb3IE?=
+ =?us-ascii?Q?G1om+gz288+sW75FFCAaVY8u/jTozefTMQZwmFMjLStUCQO/1hPMui/LOwgt?=
+ =?us-ascii?Q?vM6lDx/f1uZnOSxrkoNhIk4XVaVanpGT3Ut1kKXTnumShgwxnaOy2FJ1tjFv?=
+ =?us-ascii?Q?1p03wfrPI+K5E5Gl/NkDQDIYQ2pTg7cDohh7fOP75pr0MLIP3aPQlxqrQsAh?=
+ =?us-ascii?Q?nt1ofFWe9jq9QWhDwFUte8IPmoKLyTUamWAorBU822CgAIzuwHK7h7D5Sfkc?=
+ =?us-ascii?Q?64xpIOaxZTGzqzpejIFYfqLfRjJO+xdH1oJFGSuBudyWc6yl5dby/POauvXN?=
+ =?us-ascii?Q?ya5UTQo0mZDabGQo86SKTxNb/+718xuXRKIHE8AbJUWbBPX/cIn4FOElHjU7?=
+ =?us-ascii?Q?7LTrOfX0HXcKHSCtHDCksM9s4pveskq3wi7sqUPXqILL/NlKvGPuHaPfgOJ6?=
+ =?us-ascii?Q?qJd8S3+CL21oPhzCNMXI04UWsvRdQY6ZqoZ1GjPfPFfLnRZUZLh143u/oX+W?=
+ =?us-ascii?Q?hPb1NHc7L0UvBy6H1B741KrDiO820onqOAUVch+VczfPqCpQ6nKpAAwFEEmY?=
+ =?us-ascii?Q?99HDqjDNANcGH8O15GtqpuAneW3ucJwy0TpdOjQBIeJLHS2Y9ZcmPYOmDyvG?=
+ =?us-ascii?Q?VE6rv9ePhX0A5lb0Z6N1eR0W/6V2mRcFsNpFkLXm6Bo8UNTYML74yMP7w+kt?=
+ =?us-ascii?Q?tRvo2HMgO2e0kq3vHp216ggkkaJMbJEkuwNpYww+G8l6XyvCRaW3IMzTS5GA?=
+ =?us-ascii?Q?hvEnCF45jOcg3rQ2oY3FVVOPOcDzahiLLH4gnGmTnLz9Do+BJ/c1S3HqYhT7?=
+ =?us-ascii?Q?KtdlqImQ6qz+2tN1pnY5d4opXVT78yxpJdczBORX4jVa8yU73LAaZtL0igTr?=
+ =?us-ascii?Q?wbm/JAGUxOCEZFw1svzLwd7GV3ViTu7Ls/G2Wa3vl6yxflhkn0NeoyVS1fZa?=
+ =?us-ascii?Q?DoWlvSHm0b40xVVK0KM33eelbi2GJyKoSjpDR+Bq3xEA3/J7Y6Ejr+WaSaam?=
+ =?us-ascii?Q?WsVK5C6VZfwmOwfqptXu6EWpCB7ZV2SZrqTwPlBEnwGL/ZddCVR/d5sJ2J8Y?=
+ =?us-ascii?Q?fLwOWicCJ6mqERfyLmjjHzSOIISc3XZKtI8OZY029SMb/Lv1UAVUrTPtTdwO?=
+ =?us-ascii?Q?gERvAYFsFLHsb4ZCvKo+ewuCTc/di+3SwZtk6k9wqKnsx0qaJjv432pbZKJv?=
+ =?us-ascii?Q?PjGpQLj9XF57a3gO1kFcp+eVvHdaPQ/hEB6k2pF2KMWlq8uPuLSxj0SDf4tt?=
+ =?us-ascii?Q?9VEbvBnxCZIQEFZtqoctajjZaVfD1m4yu2iHmcPB+0Y7XPuw+RYaQxV8UqyB?=
+ =?us-ascii?Q?K08FT+1Kbv2P76vF9QxVUye5bP2YnMjGrJn52PAlMQZimemws+eZTEVBBUqZ?=
+ =?us-ascii?Q?aqI8T54yk96FJoowksM+HHiLnR4ZgxIdsMcWR1W4+sP+cDjgUDdVj6MnG0bE?=
+ =?us-ascii?Q?D40fmaAT+1LVCCCQR0NU7nmw+LUqxCuL/W+AuQ8e6yfI6I2RIQVgIY5h6d6G?=
+ =?us-ascii?Q?53co7t/62vByYFCh1DL4dQ1N63YHTrHds49DVX4WZdjuO5SVuwjtNyzMC95i?=
+ =?us-ascii?Q?KwsrP5E9yrCqPNxc72Iz+B5JLMdXPjMMeMgG7I+UYxYlgf9Z4C0NB70Ru9BR?=
+ =?us-ascii?Q?3g=3D=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: e166eca3-1554-492a-7670-08dd76d78d74
 X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB8665.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Apr 2025 20:12:56.8162
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Apr 2025 19:57:12.1091
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: nXBto02aK9cb0DqXmdVwatChLCOD3u2Nh+DL1I0sy1F0S/icFMu4mzoe3y4yXFCBJ1IuaafoiEKGo1B8JYKbSQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ2PR11MB8538
+X-MS-Exchange-CrossTenant-UserPrincipalName: 7njl+Q2HjfDElvfZBgk4wlv5981sjX1akXI5gGM/g9WlGDBJoUHEyha4gZMZX0XTVIkSGYQ9rjgkqN1uSs3ikA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CYXPR11MB8663
 X-OriginatorOrg: intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250408_131306_189971_39EEE09B 
-X-CRM114-Status: GOOD (  10.31  )
+X-CRM114-CacheID: sfid-20250408_125745_735368_29509336 
+X-CRM114-Status: GOOD (  18.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -195,21 +193,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 07, 2025 at 04:18:31PM +0200, Lorenzo Bianconi wrote:
-> Introduce airoha_ppe_foe_flow_remove_entry_locked utility routine
-> in order to run airoha_ppe_foe_flow_remove_entry holding ppe_lock.
-> This is a preliminary patch to L2 offloading support to airoha_eth
-> driver.
+On Mon, Apr 07, 2025 at 04:18:32PM +0200, Lorenzo Bianconi wrote:
+> Similar to mtk driver, introduce the capability to offload L2 traffic
+> defining flower rules in the PSE/PPE engine available on EN7581 SoC.
+> Since the hw always reports L2/L3/L4 flower rules, link all L2 rules
+> sharing the same L2 info (with different L3/L4 info) in the L2 subflows
+> list of a given L2 PPE entry.
 > 
 > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  drivers/net/ethernet/airoha/airoha_eth.c |   2 +-
+>  drivers/net/ethernet/airoha/airoha_eth.h |  11 ++-
+>  drivers/net/ethernet/airoha/airoha_ppe.c | 162 +++++++++++++++++++++++++------
+>  3 files changed, 144 insertions(+), 31 deletions(-)
+> 
 
-Could you please explain the reason of introducing the *_remove_entry_locked
-function if "airoha_ppe_foe_flow_remove_entry()" is still never called out of
-"airoha_ppe_foe_flow_remove_entry_locked()" context (at least in this
-series)?
-I would expect that it can be useful if you have an use case when you want
-to call "airoha_ppe_foe_flow_remove_entry()" from another function that
-has already taken the lock, but I haven't found such a context.
+[...]
+
+> +static void airoha_ppe_foe_remove_flow(struct airoha_ppe *ppe,
+> +				       struct airoha_flow_table_entry *e)
+> +{
+> +	lockdep_assert_held(&ppe_lock);
+> +
+> +	hlist_del_init(&e->list);
+> +	if (e->hash != 0xffff) {
+> +		e->data.ib1 &= ~AIROHA_FOE_IB1_BIND_STATE;
+> +		e->data.ib1 |= FIELD_PREP(AIROHA_FOE_IB1_BIND_STATE,
+> +					  AIROHA_FOE_STATE_INVALID);
+> +		airoha_ppe_foe_commit_entry(ppe, &e->data, e->hash);
+> +		e->hash = 0xffff;
+> +	}
+> +	if (e->type == FLOW_TYPE_L2_SUBFLOW) {
+> +		hlist_del_init(&e->l2_subflow_node);
+> +		kfree(e);
+> +	}
+> +}
+> +
+> +static void airoha_ppe_foe_remove_l2_flow(struct airoha_ppe *ppe,
+> +					  struct airoha_flow_table_entry *e)
+> +{
+> +	struct hlist_head *head = &e->l2_flows;
+> +	struct hlist_node *n;
+> +
+> +	lockdep_assert_held(&ppe_lock);
+> +
+> +	rhashtable_remove_fast(&ppe->l2_flows, &e->l2_node,
+> +			       airoha_l2_flow_table_params);
+> +	hlist_for_each_entry_safe(e, n, head, l2_subflow_node)
+> +		airoha_ppe_foe_remove_flow(ppe, e);
+> +}
+> +
+>  static void airoha_ppe_foe_flow_remove_entry(struct airoha_ppe *ppe,
+>  					     struct airoha_flow_table_entry *e)
+>  {
+>  	lockdep_assert_held(&ppe_lock);
+>  
+> -	if (e->type == FLOW_TYPE_L2) {
+> -		rhashtable_remove_fast(&ppe->l2_flows, &e->l2_node,
+> -				       airoha_l2_flow_table_params);
+> -	} else {
+> -		hlist_del_init(&e->list);
+> -		if (e->hash != 0xffff) {
+> -			e->data.ib1 &= ~AIROHA_FOE_IB1_BIND_STATE;
+> -			e->data.ib1 |= FIELD_PREP(AIROHA_FOE_IB1_BIND_STATE,
+> -						  AIROHA_FOE_STATE_INVALID);
+> -			airoha_ppe_foe_commit_entry(ppe, &e->data, e->hash);
+> -			e->hash = 0xffff;
+> -		}
+> -	}
+> +	if (e->type == FLOW_TYPE_L2)
+> +		airoha_ppe_foe_remove_l2_flow(ppe, e);
+> +	else
+> +		airoha_ppe_foe_remove_flow(ppe, e);
+
+It's not a hard request, more of a question: wouldn't it be better to
+introduce "airoha_ppe_foe_remove_l2_flow()" and
+"airoha_ppe_foe_remove_flow()" in the patch #2?
+It looks like reorganizing the code can be part of the preliminary
+patch and the current patch can just add the feature, e.g. L2_SUBFLOW.
 
 Thanks,
 Michal
