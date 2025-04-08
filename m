@@ -4,76 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FB2EC36010
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Apr 2025 18:54:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD412C369A1
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Apr 2025 19:02:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=X2ySDSk4AFlY04h6e4qpoZgIAYu/rTcjr9nmw7qtre4=; b=kPqnl/ShDPV9/2vCb+9rPGX2vJ
-	iwaHpfH0LahovMPti9Aim7UdvJxpAlXYfEar+ydt0/WsynTUHTGScyagJnU3dUTeReKe+e1wwVxr6
-	CEgjbpUy183RvsCvb0FwCHwA0o/l/vyboD9QhzWmRzcp6Emcr/0ull6H4XPfY1sGl6QA9c/WTBhws
-	bRLwt7LV4K1UwP7SCCLjB6VJ6Sx0keTysJibIJlNrbwc9ZDLBKN4ZkLIy7UI5vkkrJ16JeJO871QF
-	RVA5KAUvUd9us9WQIUeasoi7nCYFp3DZQN9EBoZMbiRMrKMdF+JVMUJf7w+SAIg4rx1JG0w3+amqV
-	kHaELaTw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CUlKKPlBNcX+ovv1QVnpgE0TYv5pOjsAO1cQONG28sc=; b=ALZpPndk7HGwC6CclFGbzl9P+z
+	yXot+hFNkVS2LbgpIMfNxwWSjHuuMYw87grKDf+g8d+/QCwAtC7iAUYCIxH+e0Go8Ccx/4AZGIL4W
+	RDy9vXQhwgsGF2ap7PbGOsTKcnz2hJ/Tq92VpLJSJWcn4Mzp4Re2d45PinS4tuKMtj0zD8ZWHsv4W
+	QM0rMd4Aie1Tl04HqEXwTU9O5+2iqA80jsfnQpZUMy1MWSo91evmB8YFU7HatDzEVgOLta8jHZnd3
+	DsaUUhTgYv4WU2lxpGnESqN2h7WnShwqBCQRykb12SGK3X7hoiPgCbHimx+s9eDs78DLxQXnYCAzo
+	mZPgXXtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2E5d-00000005ABL-0LOz;
-	Tue, 08 Apr 2025 18:54:29 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2E3s-000000059xT-1PUc;
-	Tue, 08 Apr 2025 18:52:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=X2ySDSk4AFlY04h6e4qpoZgIAYu/rTcjr9nmw7qtre4=; b=H3Jvi7Ts8aTCtQgQnWgk0289ca
-	pjYw0P255UAAo3/GcWXjtwU6Gqm020R+e3Kzt2fFGzcbfGcgT4n72MPKLflOgeBWBexxzLGKpqj6Q
-	STpZDwTGroOlscWKnFaa4acu2hiig+xAc81+j6H8PwLGgoS78fObRTH5od8OZgEEa4t2uiznm1iMQ
-	BJPAgqGsk7OOIu77s6HLx9nNWHLmYw2S9LLOrBSn06M8gMurOWgEeJJEnn9zdjsJl2kpJztiwb+6y
-	soyu/rdj94AWA1iJxch+uL0w4XwwIzoy98mdCVyRk+yZBIwhNI3/+PNXT2rK5exl0yWvUDoxT9xUr
-	E5xpxNUA==;
+	id 1u2ED6-00000005BTB-3uFZ;
+	Tue, 08 Apr 2025 19:02:12 +0000
 Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
-	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u2E3o-00000008Onk-2f63;
-	Tue, 08 Apr 2025 18:52:38 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1u2E8Z-00000005AiV-1W1D;
+	Tue, 08 Apr 2025 18:57:32 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 21ECEA49032;
-	Tue,  8 Apr 2025 18:47:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1E7D2C4CEE9;
-	Tue,  8 Apr 2025 18:52:32 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 6C808A49124;
+	Tue,  8 Apr 2025 18:52:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6491BC4CEEA;
+	Tue,  8 Apr 2025 18:57:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744138353;
-	bh=mu+QLtbier6NMLYJyK3BwUVJp4CUvrmcEmRBDd0mqTg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=oOTOblY+ZdTcyClr0tGlJuSZQqykvvZQyTFaVP4dUqCRDQa2OjnzVhZijrdnuw44l
-	 YfCQ0/VyKQuwLF1JcWogJCgIVOwQDAwCjJmzFUdJZi7rF806Vy4piek8vrrelPeQJK
-	 NjTFRujSZUbaue4RrOFUr5nynorD8crW+Jxntnnn+fqpiIZiAna9JhOrf/tSN6BtYv
-	 DOh42UOUcGApDjtj1OkzAx0Jj9uoIrFohamjIAM5K8mEy8oWMXyJqNKvVz1HjJ6dcF
-	 tVso4l2sRcrDSJhJ3cT1ZK6eT2nRREsRM8n/1tNy9mjyTUUsjCsN4w1fFzEOVX1HAN
-	 DQ4uEHNLIXZuw==
-Date: Tue, 8 Apr 2025 20:52:30 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net-next 0/3] Add L2 hw acceleration for airoha_eth driver
-Message-ID: <Z_VwbsjFak7sREYN@lore-desk>
+	s=k20201202; t=1744138649;
+	bh=Zq46Qr2znB6f0M/kcECH5HtNBXx3KTiGDsDx+biqMDM=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=GxI+86hHJtfLXQhDGT5iJDwd1kK9NkNKGbdjoKj+gBEg8cwlt1HRH0bOs2wjsFSL6
+	 vyflJKROprk1sJBReSSPx1sPx1PUz8vCbXU9+/c1r+CymLUnnLnXOuyfyNCH81xGU4
+	 HfcEsOy3e54nmGckI2o8/amiEWhEGoQ6jKZlOfRN9D/jjVA1jk9cwSsqe36CaUsUMh
+	 3vRb4GuIXAMzor4aQsl9GFvJDYxV/8Yq7sYt5ItfIqQutsAdcWqtoQ51+rkghqQv/a
+	 y98nL9s5PkHlrseLMkIafN7+xIBpz/z+XDTXYEvYgnvxNlGLfrnN0Ff49rrFg6WMbo
+	 L+yKsHus4UpWw==
+Date: Tue, 8 Apr 2025 11:57:27 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Michal Kubiak <michal.kubiak@intel.com>, Andrew Lunn
+ <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, Eric
+ Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org
+Subject: Re: [PATCH net-next 1/3] net: airoha: Add l2_flows rhashtable
+Message-ID: <20250408115727.6b7468b3@kernel.org>
+In-Reply-To: <Z_VTpBhntxXPncsv@lore-desk>
 References: <20250407-airoha-flowtable-l2b-v1-0-18777778e568@kernel.org>
+	<20250407-airoha-flowtable-l2b-v1-1-18777778e568@kernel.org>
+	<Z/VCYwQS5hWqe/y0@localhost.localdomain>
+	<Z_VTpBhntxXPncsv@lore-desk>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="cwckOtaj5kVyqye2"
-Content-Disposition: inline
-In-Reply-To: <20250407-airoha-flowtable-l2b-v1-0-18777778e568@kernel.org>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250408_195236_843108_53D6D2E2 
-X-CRM114-Status: GOOD (  12.12  )
+X-CRM114-CacheID: sfid-20250408_115731_464317_6822036B 
+X-CRM114-Status: GOOD (  11.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,56 +76,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, 8 Apr 2025 18:49:40 +0200 Lorenzo Bianconi wrote:
+> > I didn't find any usage of L4 flow type in the series.
+> > Is that reserved for future series? Shouldn't it be added together with
+> > its usage then?  
+> 
+> FLOW_TYPE_L4 is equal to 0 so it is the default value for
+> airoha_flow_table_entry type when not set explicitly.
+> It is done this way to reduce code changes.
 
---cwckOtaj5kVyqye2
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> Introduce the capability to offload L2 traffic defining flower rules in
-> the PSE/PPE engine available on EN7581 SoC.
-> Since the hw always reports L2/L3/L4 flower rules, link all L2 rules
-> sharing the same L2 info (with different L3/L4 info) in the L2 subflows
-> list of a given L2 PPE entry.
->=20
-> ---
-> Lorenzo Bianconi (3):
->       net: airoha: Add l2_flows rhashtable
->       net: airoha: Add airoha_ppe_foe_flow_remove_entry_locked()
->       net: airoha: Add L2 hw acceleration support
->=20
->  drivers/net/ethernet/airoha/airoha_eth.c |   2 +-
->  drivers/net/ethernet/airoha/airoha_eth.h |  22 ++-
->  drivers/net/ethernet/airoha/airoha_ppe.c | 224 +++++++++++++++++++++++++=
-+-----
->  3 files changed, 215 insertions(+), 33 deletions(-)
-> ---
-> base-commit: 61f96e684edd28ca40555ec49ea1555df31ba619
-> change-id: 20250313-airoha-flowtable-l2b-e0b50d4a3215
->=20
-> Best regards,
-> --=20
-> Lorenzo Bianconi <lorenzo@kernel.org>
->=20
-
-Hi Andrew, David, Eric, Jakub and Paolo,
-
-the series has been marked as 'changed requested' but Michal is fine with
-current approach. Am I supposed to repost?
-
-Regards,
-Lorenzo
-
---cwckOtaj5kVyqye2
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ/VwbgAKCRA6cBh0uS2t
-rMh2AP0RiMzPfMojS+LKe/VnGc+9kAPC0dZn8jlHkdT5JydKhQEA+jqP4K893c4F
-fPL4pqO2PtARhomxzYl3AumfteZ96gI=
-=nFvh
------END PGP SIGNATURE-----
-
---cwckOtaj5kVyqye2--
+That seems quite unintuitive. Could you init explicitly for the
+benefit of people reading this code?
 
