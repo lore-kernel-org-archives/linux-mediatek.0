@@ -4,86 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60C05C3600C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Apr 2025 09:30:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83DA1C369A4
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Apr 2025 09:54:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=DNUnjAwr3K7/bh0YQuGEFB/xa4tI2s8atXnUMP1mg7g=; b=0+ojYtIXUfU3TyQ6kRwlKP03Sd
-	S/TYMzXd66XrzPBaetZ76h09AGMIS9SzGkU/VjI2sZ9HjNJ1VOJxl6Ul4g8UrSNqtGZpAk/TVI+SK
-	40Rem77ZETUf9JcTs3Jr1/gF7Sgijew47y2dyK28wccymr6WbHlEOgRzWvUyV08ivfAzbZrodNQGM
-	QJXTDGd+8IFI6+N0oFR1RjdvYgnyI8FlolJT58o7sMkMaF2KhIsA0JTH+ztxqgY9Xk5OF2ypXthmX
-	eLTC2qg5pJW6nk0mL1ZrLxfgxanIA2/aFlvL+8+pwaO8UflrCSBLpSUwwS2PKSNavrhhmcZsnIFb9
-	FghE+iRg==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
+	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=B9jOtwj6zr/UlgyzehUvwRXcqVoFIXeaFAL8YGh83i0=; b=qXFwBy4N+M0Adj9WY6EAXV9F/Y
+	KwrIOzRvS3Qi0H5oosm/yAxR0rJ/0wPVAAbcwBXwyG4otxXttkYllmz/i7cU5xJDWTqB9QvkguRSL
+	4mk56TW4kho+r+qpmaOTFoODYIlMyNamXoipy+wybyWUxn29KdZDE6wlB3ev40GS5XtCfr0zsYgwI
+	QFpHDqhk1a4L82cEmhKF+j2iGgOhw94rwGEIjQsiY9JahrfIaB/J/6yrjftpSg2zGI5rTXB9bPrR0
+	0rhhJroklVDatcLFUZpvcDVdOy/KpLfq+KYshRLfvjSTkLtW7CcHQrMFdzsnDYJrJlbbWyRHSJjcK
+	GhQC4ncg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u25Hs-00000003RxN-1o11;
-	Tue, 08 Apr 2025 09:30:32 +0000
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+	id 1u25fM-00000003X4j-36oN;
+	Tue, 08 Apr 2025 09:54:48 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u25Av-00000003QOf-0iQK
-	for linux-mediatek@lists.infradead.org;
-	Tue, 08 Apr 2025 09:23:22 +0000
-Received: by mail-pl1-x62c.google.com with SMTP id d9443c01a7336-223fd89d036so62261485ad.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 08 Apr 2025 02:23:20 -0700 (PDT)
+	id 1u25cs-00000003W2k-2B73;
+	Tue, 08 Apr 2025 09:52:15 +0000
+Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-39bf44be22fso3555927f8f.0;
+        Tue, 08 Apr 2025 02:52:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1744104200; x=1744709000; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=DNUnjAwr3K7/bh0YQuGEFB/xa4tI2s8atXnUMP1mg7g=;
-        b=VqRzcteSR5MEBGl/6aG0GyFzdhRObtO6YMaSYuBzZ9Hzqex/g7LcsANQIyfArS8fas
-         YVw5fhtRwC3nXpDo5WkVLtr7yg4/fwXGllJRPMo9z7JxDu8Ly4PTxdhvBRjomOkFg1Y8
-         sXx2+Ypt4qaT8cD/b5bSJEqev0jCISUzhyPVw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744104200; x=1744709000;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=gmail.com; s=20230601; t=1744105933; x=1744710733; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=DNUnjAwr3K7/bh0YQuGEFB/xa4tI2s8atXnUMP1mg7g=;
-        b=L7SG4XMKfz7HfJTIPPkKngjCuxzpmH91upS2IM4xKAwAt293bDyglqf6fL6O86uKU/
-         PbnPEQ9j+t/dvWzNoE+6Qv41fo2djPMs+8rkGTJB8rvjgmQ90frrOMBCJIaeZ9ToWDg8
-         88dINO4PmQwrNtcVy9YA/4so3wTaLXkaKmkgXLLMYIu7dYnGzZ1BPGT5VsYywijHpRio
-         IZM++0DR9KunwT8bIEq9AGad2HY4XdrFNW005nyKmQMDZ84ZkWYAWE2WTzzsVi4q3R9b
-         Vv93v61sk8dbTRRyhPzy4y9eCNRh/jpRKCwTqoky4byyc7wOt6JdxiCvLO35QdLUnb4q
-         sqFw==
-X-Forwarded-Encrypted: i=1; AJvYcCXblbZmcxH7R85tOnazJ5x1sX5kQGizKwnlFW9sv/WUXhkCPDtcKTnUcCTHrLyFZtX1QYK4ttOlxmuAGKkVeA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwHYaLws9QjHSJjO3UoIQIWWBZFSpxQAeM610Mooj/l0oSkqKbs
-	JyV3flzr7Tcq/COLkLvCS9UoLr3M+pyUm17FKXzlDjFPcchT3gS8SgT81avcbw==
-X-Gm-Gg: ASbGnctW7Y1hZhT6vL2p2tjCob/FN55xkU4Ze1rWzlreKPH97gn/33zdI8H8ukJ9ZbT
-	CD+sdOli9cINBQCL3Vt7oB6WJ74AsySteqUt5BflgQtzJJN7rBJaZRxnpd/WtW4T7cvcm2rspNK
-	ViW/TIv8h4jmn1NhbbrwSoo0PVvHkZ7Irw/CZ31TmIwiK5PAJEziE3PFbmPDfG+nBKcwuZxAvbP
-	PqK4VyPNKI+KSHS5xJWcJbqy1MEjQz602u5rGgFDdvIpA4Ousi1ONkdWTtuERF+F7MM5mWM7KcO
-	cV6EkaBsJLyv+D8g72qNuY/vFRk4l7AlK7HrXQFp9x72Ft1Wuts+S9+LYLz1Dlo=
-X-Google-Smtp-Source: AGHT+IGPhkSRb5R3PVNGCzYv1a6SJZoNU3t0aIi0QTJm3JWsa/HB1uZ+jzdpdKOIXFpq6puPuDXpRQ==
-X-Received: by 2002:a17:902:da85:b0:224:f12:3735 with SMTP id d9443c01a7336-22a8a06b38dmr169101945ad.31.1744104200152;
-        Tue, 08 Apr 2025 02:23:20 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:79d9:c941:96f6:ac1c])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2297865e477sm95651655ad.122.2025.04.08.02.23.18
+        bh=B9jOtwj6zr/UlgyzehUvwRXcqVoFIXeaFAL8YGh83i0=;
+        b=RfuMNjOzp77glFYYJc5oZLw+oD/XXiE/+SLUwIiKfZMo+cfDWlc5IGoiuDJ7+9K+qy
+         Wi/Sp7B/IsbIE2AyApnqlHm5QtLARz4MVpAmNIsREEm/8iKsMHo45cUE3dCjRYtAeiYG
+         B67NYWfx5rAsGlNplqur2YtezPyp8O/CnrqnClv6ojAuAHPZeYj+09q1W8qeRvKEwr27
+         00n572sLfZztsYm8GMdTJjJVcqBzGI4+A4dpFysZGG4AZMts6XNNOOcn7of6J6s0Oa2q
+         tqX1mQpkgu1eDAbH9YiNo17RsbprrMfYcB592TCuCZ2V03j06xgV1ksxuScgPj2TaA6l
+         Ecvg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1744105933; x=1744710733;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=B9jOtwj6zr/UlgyzehUvwRXcqVoFIXeaFAL8YGh83i0=;
+        b=vPKgDAKBEe/cTWe7bWYmvEnAv0DRrzlUXEbRUYnDvk2515RGlF0bEDcosLPn1aZzqu
+         +yed69MtA6iUOzHtRG/B0ILyFeVAtR12YKTC/03KfR+T3bS/Jq55de/jjAxib3lLxzb5
+         kqo7zrS6SKYKsISuYOMckMxORQ2AQ8FdGHelavb7EZLn95qxrrJwUGEqL6+JKLSF4vBL
+         TPMDLGJzBReoYUtdipNl8Jg/CGYWWHpJ1qQfEw6GB4DssvktyZm/MVQQ1fE3QhKFjnOh
+         YP8NeBQ1+OnyDl5V5ljcWHyUPxB2fzx+KZLo2uCFX9GUgb5BdQgJ5lgfxD2jURhiWKZu
+         KlWg==
+X-Forwarded-Encrypted: i=1; AJvYcCVRkB3Lg/HHzxEL5lIXEBZeSzrVg46thmY0hf1JEBZAgawvbs3E4qRzhi0vT3Smd2UhjEdWhXprF6rBTg1Vq3Q=@lists.infradead.org, AJvYcCVzS+Lkm7qwtZXf5V50aa2PtAC03eZJOB/g6od2xoIiffOm5N7V2d6IysKdJubPG0ri/VdEXiR0PGUmFnm/c18I@lists.infradead.org
+X-Gm-Message-State: AOJu0YzY6RrUEjsV9DoCOvBffGD47Rjc/Hc7eRPU5PWvgWccyMDVCbAS
+	Fzt9mN3bhJ4YS6dknPBYxtHMSukmh21VNCKPdpsrPcxaZpNJ1GpV
+X-Gm-Gg: ASbGncsF4J9kHdP53DqWU1v1J2WfK/T8usbq5uKT/R6vKAwgDm9NowY/MEanrgpc4+l
+	nNb8wZaMk+i/AuH1kRRBpnhamIN8g7/S9V8cLB74SEktYj1mpFvBTCmbACF2hpNRJpJFJYLoY2V
+	liZ824/cVUFHEOkEkFuVtOZsPzORFijqyKd9/2l298ESVVZCa5pm8DMl5b6rbEHT6laYZhuxCky
+	FHaRSDMMPgOVWUBQ134SmMdMy+f83KC+jgSGdGp4AfFfRyLc7C2zxtRZ0C23cYQh/DbSTuYyBxJ
+	29gCmUK60tHi/HxoBbggBrpTAodCn8OIwCtwj1Nal9n1L2LtWp+ATk74F7FJ+AZ27U7DdB7WUUy
+	wxCWnZWOHT7/22A==
+X-Google-Smtp-Source: AGHT+IFwQXlkEkiv59tTOoBNbBWxAd5ev/Yt4wKxTnHPQXrrp31uVElCwlox+riOCqLgnYPJvB/0CA==
+X-Received: by 2002:a05:6000:1862:b0:39c:12ce:1054 with SMTP id ffacd0b85a97d-39d6fc00e59mr9843048f8f.8.1744105932837;
+        Tue, 08 Apr 2025 02:52:12 -0700 (PDT)
+Received: from localhost.localdomain (93-34-88-225.ip49.fastwebnet.it. [93.34.88.225])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-39c3020dacfsm14493310f8f.72.2025.04.08.02.52.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 08 Apr 2025 02:23:19 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
+        Tue, 08 Apr 2025 02:52:12 -0700 (PDT)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Christian Marangi <ansuelsmth@gmail.com>,
+	Lee Jones <lee@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Simon Horman <horms@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	netdev@vger.kernel.org,
+	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	"Chengci . Xu" <chengci.xu@mediatek.com>,
-	Yong Wu <yong.wu@mediatek.com>,
-	Robin Murphy <robin.murphy@arm.com>
-Subject: [PATCH] arm64: dts: mediatek: mt8188: Fix IOMMU device for rdma0
-Date: Tue,  8 Apr 2025 17:23:02 +0800
-Message-ID: <20250408092303.3563231-1-wenst@chromium.org>
-X-Mailer: git-send-email 2.49.0.504.g3bcea36a83-goog
+	upstream@airoha.com
+Subject: [net-next PATCH v14 01/16] dt-bindings: nvmem: Document support for Airoha AN8855 Switch EFUSE
+Date: Tue,  8 Apr 2025 11:51:08 +0200
+Message-ID: <20250408095139.51659-2-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.48.1
+In-Reply-To: <20250408095139.51659-1-ansuelsmth@gmail.com>
+References: <20250408095139.51659-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250408_022321_237662_18C86F70 
-X-CRM114-Status: GOOD (  14.65  )
+X-CRM114-CacheID: sfid-20250408_025214_558566_525B666C 
+X-CRM114-Status: GOOD (  13.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,43 +122,146 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Based on the comments in the MT8188 IOMMU binding header, the rdma0
-device specifies the wrong IOMMU device for the IOMMU port it is
-tied to:
+Document support for Airoha AN8855 Switch EFUSE used to calibrate
+internal PHYs and store additional configuration info.
 
-    This SoC have two MM IOMMU HWs, this is the connected information:
-    iommu-vdo: larb0/2/5/9/10/11A/11C/13/16B/17B/19/21
-    iommu-vpp: larb1/3/4/6/7/11B/12/14/15/16A/17A/23/27
-
-rdma0's endpoint is M4U_PORT_L1_DISP_RDMA0 (on larb1), which should use
-iommu-vpp, but it is currently tied to iommu-vdo.
-
-Somehow this went undetected until recently in Linux v6.15-rc1 with some
-IOMMU subsystem framework changes that caused the IOMMU to no longer
-work. The IOMMU would fail to probe if any devices associated with it
-could not be successfully attached. Prior to these changes, only the
-end device would be left without an IOMMU attached.
-
-Fixes: 7075b21d1a8e ("arm64: dts: mediatek: mt8188: Add display nodes for vdosys0")
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 ---
- arch/arm64/boot/dts/mediatek/mt8188.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../bindings/nvmem/airoha,an8855-efuse.yaml   | 123 ++++++++++++++++++
+ 1 file changed, 123 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/nvmem/airoha,an8855-efuse.yaml
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-index 69a8423d3858..29d35ca94597 100644
---- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-@@ -2579,7 +2579,7 @@ rdma0: rdma@1c002000 {
- 			reg = <0 0x1c002000 0 0x1000>;
- 			clocks = <&vdosys0 CLK_VDO0_DISP_RDMA0>;
- 			interrupts = <GIC_SPI 638 IRQ_TYPE_LEVEL_HIGH 0>;
--			iommus = <&vdo_iommu M4U_PORT_L1_DISP_RDMA0>;
-+			iommus = <&vpp_iommu M4U_PORT_L1_DISP_RDMA0>;
- 			power-domains = <&spm MT8188_POWER_DOMAIN_VDOSYS0>;
- 			mediatek,gce-client-reg = <&gce0 SUBSYS_1c00XXXX 0x2000 0x1000>;
- 
+diff --git a/Documentation/devicetree/bindings/nvmem/airoha,an8855-efuse.yaml b/Documentation/devicetree/bindings/nvmem/airoha,an8855-efuse.yaml
+new file mode 100644
+index 000000000000..9802d9ea2176
+--- /dev/null
++++ b/Documentation/devicetree/bindings/nvmem/airoha,an8855-efuse.yaml
+@@ -0,0 +1,123 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/nvmem/airoha,an8855-efuse.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Airoha AN8855 Switch EFUSE
++
++maintainers:
++  - Christian Marangi <ansuelsmth@gmail.com>
++
++description:
++  Airoha AN8855 EFUSE used to calibrate internal PHYs and store additional
++  configuration info.
++
++$ref: nvmem.yaml#
++
++properties:
++  compatible:
++    const: airoha,an8855-efuse
++
++  '#nvmem-cell-cells':
++    const: 0
++
++required:
++  - compatible
++  - '#nvmem-cell-cells'
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    efuse {
++        compatible = "airoha,an8855-efuse";
++
++        #nvmem-cell-cells = <0>;
++
++        nvmem-layout {
++            compatible = "fixed-layout";
++            #address-cells = <1>;
++            #size-cells = <1>;
++
++            shift_sel_port0_tx_a: shift-sel-port0-tx-a@c {
++               reg = <0xc 0x4>;
++            };
++
++            shift_sel_port0_tx_b: shift-sel-port0-tx-b@10 {
++                reg = <0x10 0x4>;
++            };
++
++            shift_sel_port0_tx_c: shift-sel-port0-tx-c@14 {
++                reg = <0x14 0x4>;
++            };
++
++            shift_sel_port0_tx_d: shift-sel-port0-tx-d@18 {
++               reg = <0x18 0x4>;
++            };
++
++            shift_sel_port1_tx_a: shift-sel-port1-tx-a@1c {
++               reg = <0x1c 0x4>;
++            };
++
++            shift_sel_port1_tx_b: shift-sel-port1-tx-b@20 {
++               reg = <0x20 0x4>;
++            };
++
++            shift_sel_port1_tx_c: shift-sel-port1-tx-c@24 {
++               reg = <0x24 0x4>;
++            };
++
++            shift_sel_port1_tx_d: shift-sel-port1-tx-d@28 {
++               reg = <0x28 0x4>;
++            };
++
++            shift_sel_port2_tx_a: shift-sel-port2-tx-a@2c {
++                reg = <0x2c 0x4>;
++            };
++
++            shift_sel_port2_tx_b: shift-sel-port2-tx-b@30 {
++                reg = <0x30 0x4>;
++            };
++
++            shift_sel_port2_tx_c: shift-sel-port2-tx-c@34 {
++                reg = <0x34 0x4>;
++            };
++
++            shift_sel_port2_tx_d: shift-sel-port2-tx-d@38 {
++                reg = <0x38 0x4>;
++            };
++
++            shift_sel_port3_tx_a: shift-sel-port3-tx-a@4c {
++                reg = <0x4c 0x4>;
++            };
++
++            shift_sel_port3_tx_b: shift-sel-port3-tx-b@50 {
++                reg = <0x50 0x4>;
++            };
++
++            shift_sel_port3_tx_c: shift-sel-port3-tx-c@54 {
++               reg = <0x54 0x4>;
++            };
++
++            shift_sel_port3_tx_d: shift-sel-port3-tx-d@58 {
++               reg = <0x58 0x4>;
++            };
++
++            shift_sel_port4_tx_a: shift-sel-port4-tx-a@5c {
++                reg = <0x5c 0x4>;
++            };
++
++            shift_sel_port4_tx_b: shift-sel-port4-tx-b@60 {
++                reg = <0x60 0x4>;
++            };
++
++            shift_sel_port4_tx_c: shift-sel-port4-tx-c@64 {
++                reg = <0x64 0x4>;
++            };
++
++            shift_sel_port4_tx_d: shift-sel-port4-tx-d@68 {
++                reg = <0x68 0x4>;
++            };
++        };
++    };
 -- 
-2.49.0.504.g3bcea36a83-goog
+2.48.1
 
 
