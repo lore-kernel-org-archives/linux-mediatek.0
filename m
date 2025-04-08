@@ -4,91 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4627EC369A2
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Apr 2025 18:15:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FB2EC36010
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Apr 2025 18:54:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=YcOUVWVG1AAUU/kF4IJvSl+9zDVrwqBtFVUW2rq0rjY=; b=nVJ6Xmy+xgSYoFfBq6fI2StGBR
-	hGNTbwr6BC8MvwH80P2ubgm5k97b1soRfFlNwTGleJazuZJQL54oM3BJ1jqfOKJxA1thKEl3jOnf6
-	Du39KGEa/zn7aYKv4rVQ7928FCFAbJwvZ22oqBk/hKvhhJuASRKlvro85OSENgbuv9tzVBL1qKqre
-	kh3K0bdpO9elxwu8d4/BRsoMb3sapOvAO+2YfliBpAW7V5zfQNJ/hm5FVE+jgIgmn9m4NsniCylRq
-	UIlpQ6ChF6oqRg/DipAcGzpmDYtYtBoG/y7bAIfblj3R6OzWtKYbOxKpQjdfvvX0LkwG/nJ7A22Be
-	pzMcsruw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=X2ySDSk4AFlY04h6e4qpoZgIAYu/rTcjr9nmw7qtre4=; b=kPqnl/ShDPV9/2vCb+9rPGX2vJ
+	iwaHpfH0LahovMPti9Aim7UdvJxpAlXYfEar+ydt0/WsynTUHTGScyagJnU3dUTeReKe+e1wwVxr6
+	CEgjbpUy183RvsCvb0FwCHwA0o/l/vyboD9QhzWmRzcp6Emcr/0ull6H4XPfY1sGl6QA9c/WTBhws
+	bRLwt7LV4K1UwP7SCCLjB6VJ6Sx0keTysJibIJlNrbwc9ZDLBKN4ZkLIy7UI5vkkrJ16JeJO871QF
+	RVA5KAUvUd9us9WQIUeasoi7nCYFp3DZQN9EBoZMbiRMrKMdF+JVMUJf7w+SAIg4rx1JG0w3+amqV
+	kHaELaTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2DU0-000000054o5-1J9p;
-	Tue, 08 Apr 2025 18:15:36 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1u2E5d-00000005ABL-0LOz;
+	Tue, 08 Apr 2025 18:54:29 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2DJd-000000053bC-1N3u;
-	Tue, 08 Apr 2025 18:04:54 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-3913d129c1aso4055829f8f.0;
-        Tue, 08 Apr 2025 11:04:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744135492; x=1744740292; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=YcOUVWVG1AAUU/kF4IJvSl+9zDVrwqBtFVUW2rq0rjY=;
-        b=Vhfa217rJoQVYTRIKaOi5FEfVDs3t/OJiouvsUqY+tgwVBvoMKGfwGvFmJwgUGlRGb
-         wDPg+SJt2biCKnDezjmLJeKgmh9OyRagAY1tUXuuGMs9gNySiXelDPo0muUg/4P/3Nj9
-         YSQO76n6JNGu5nGX7CojPS/gmeJ1P9RtxpV1fIW9IqhrlW5spB3Tnc9qkeO1AINRqu46
-         72fZO/xTm50tHucTNVn8ytj0rUR0t7FdmZAIGxTG500Z1kDdgMiapClFfpnRnuT/mRRa
-         DCfMtpog8UTfMr4ibiBOmLimt5IzORWgdqagHxcfqfgr+2EAilLbm80FhYoLa+a1bvHX
-         H+nw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744135492; x=1744740292;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=YcOUVWVG1AAUU/kF4IJvSl+9zDVrwqBtFVUW2rq0rjY=;
-        b=cV+WeL62ApJGuR9IUKto75Dz55wtAXEwnOKdg51UNgQhIlFu510mx4J82uTfd9nGBh
-         QEN0IDewAfoRQs1alFdcMg1uNpzfeqhQmyISzyJe6pikAqo6oW2v/r2p9TbnTyZEgUOS
-         gourTC2/98PQN6epZetcHGx0dVZldvBJOZ4OjGQGzYyWidsZEwa/g6iTkSoCzrkXT3zv
-         4B2u3t+XurhYwfwAiF1FWFghe40epHkcdATtD4S0TsqIK/nBeFRyMrXpFXzn+Gmf9RVT
-         DFQ4RIJa3ABWfeI2kihTKe6XgvRP+EUJVVI3qHssa3FYoOYd2AFNWTvW371JsUeqgzub
-         TD8A==
-X-Forwarded-Encrypted: i=1; AJvYcCU2inEx8QK33YgYaFmlVHq8REL4Lxw3a6FH0XGkKdGXQnt8vv7V7p+xe+LgcxCmB6EM4l3uaEHWwP/P9dt+3nY=@lists.infradead.org, AJvYcCUuGdWt7Dqu//TJugHVQTZLs+XvECKmsHqSgRBBMXuWjnY1Ts0pcLj2NUoCdesfq/dsgdggfmLsNWvzlsf/RprZ@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw5dtgiNB7iMyfJh0S/HG0JB1OkOSbMl44ppA4LUxA8JFdnwM5k
-	boOyQubmzupMll1GbNlyea5jFdQQ9ag4p/OVqytyqBOTxANb/enc6Dk/fA==
-X-Gm-Gg: ASbGncvsqP+bLffVSEihsCL1gk7SAZLUutqL2Q4rcSvs20d95myjzcBnHVX5bW7aivJ
-	g0DcRO7qNskYy2mmbYrPIL3HwZSPBve6CtjvdBH4JZgPfWUkNV4sUlR6k0JVzefqc0l8D80Rs3U
-	aiFfFTnpcBgs2lWNMhJFxS0iPOCqVqu4RJY3C9HSa+nQH9NJVothHDufDUrF4J36H9ep03w5yVw
-	/M+8YxKFJvXTuIv9GJQ2S0SIAN5x+R4vlwXMcFN1b23r5d5X/Nh9hL3QsyxiXCoSHY32MgE83gt
-	1czg8OGW4nc08qOKC+cQMme1bE68mMF1un2WXlKUcEKsaw==
-X-Google-Smtp-Source: AGHT+IFW4ID2IVLIJJSO6AIqnzG5sx6n8ibzh5IQ9vxzEszMDqEO1Q5l1iqmcRSrWTuGE6wSfEs9sg==
-X-Received: by 2002:a05:6000:2289:b0:39c:30f7:a599 with SMTP id ffacd0b85a97d-39d820f7f4emr4042317f8f.18.1744135491468;
-        Tue, 08 Apr 2025 11:04:51 -0700 (PDT)
-Received: from qasdev.Home ([2a02:c7c:6696:8300:5b45:5642:beb0:688f])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43ec147c9dbsm176684525e9.0.2025.04.08.11.04.50
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 08 Apr 2025 11:04:51 -0700 (PDT)
-From: Qasim Ijaz <qasdev00@gmail.com>
-To: nbd@nbd.name,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com,
-	sean.wang@mediatek.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	chui-hao.chiu@mediatek.com,
-	Bo.Jiao@mediatek.com
-Cc: linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH RESEND] wifi: mt76: mt7996: avoid null deref in mt7996_stop_phy()
-Date: Tue,  8 Apr 2025 19:04:48 +0100
-Message-Id: <20250408180448.19274-1-qasdev00@gmail.com>
-X-Mailer: git-send-email 2.39.5
+	id 1u2E3s-000000059xT-1PUc;
+	Tue, 08 Apr 2025 18:52:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=X2ySDSk4AFlY04h6e4qpoZgIAYu/rTcjr9nmw7qtre4=; b=H3Jvi7Ts8aTCtQgQnWgk0289ca
+	pjYw0P255UAAo3/GcWXjtwU6Gqm020R+e3Kzt2fFGzcbfGcgT4n72MPKLflOgeBWBexxzLGKpqj6Q
+	STpZDwTGroOlscWKnFaa4acu2hiig+xAc81+j6H8PwLGgoS78fObRTH5od8OZgEEa4t2uiznm1iMQ
+	BJPAgqGsk7OOIu77s6HLx9nNWHLmYw2S9LLOrBSn06M8gMurOWgEeJJEnn9zdjsJl2kpJztiwb+6y
+	soyu/rdj94AWA1iJxch+uL0w4XwwIzoy98mdCVyRk+yZBIwhNI3/+PNXT2rK5exl0yWvUDoxT9xUr
+	E5xpxNUA==;
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1u2E3o-00000008Onk-2f63;
+	Tue, 08 Apr 2025 18:52:38 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 21ECEA49032;
+	Tue,  8 Apr 2025 18:47:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1E7D2C4CEE9;
+	Tue,  8 Apr 2025 18:52:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1744138353;
+	bh=mu+QLtbier6NMLYJyK3BwUVJp4CUvrmcEmRBDd0mqTg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=oOTOblY+ZdTcyClr0tGlJuSZQqykvvZQyTFaVP4dUqCRDQa2OjnzVhZijrdnuw44l
+	 YfCQ0/VyKQuwLF1JcWogJCgIVOwQDAwCjJmzFUdJZi7rF806Vy4piek8vrrelPeQJK
+	 NjTFRujSZUbaue4RrOFUr5nynorD8crW+Jxntnnn+fqpiIZiAna9JhOrf/tSN6BtYv
+	 DOh42UOUcGApDjtj1OkzAx0Jj9uoIrFohamjIAM5K8mEy8oWMXyJqNKvVz1HjJ6dcF
+	 tVso4l2sRcrDSJhJ3cT1ZK6eT2nRREsRM8n/1tNy9mjyTUUsjCsN4w1fFzEOVX1HAN
+	 DQ4uEHNLIXZuw==
+Date: Tue, 8 Apr 2025 20:52:30 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net-next 0/3] Add L2 hw acceleration for airoha_eth driver
+Message-ID: <Z_VwbsjFak7sREYN@lore-desk>
+References: <20250407-airoha-flowtable-l2b-v1-0-18777778e568@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="cwckOtaj5kVyqye2"
+Content-Disposition: inline
+In-Reply-To: <20250407-airoha-flowtable-l2b-v1-0-18777778e568@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250408_110453_367356_D3DCB5D9 
-X-CRM114-Status: GOOD (  10.55  )
+X-CRM114-CacheID: sfid-20250408_195236_843108_53D6D2E2 
+X-CRM114-Status: GOOD (  12.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,39 +88,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In mt7996_stop_phy() the mt7996_phy structure is 
-dereferenced before the null sanity check which could 
-lead to a null deref.
 
-Fix by moving the dereference operation after the 
-sanity check.
+--cwckOtaj5kVyqye2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Fixes: 69d54ce7491d ("wifi: mt76: mt7996: switch to single multi-radio wiphy")
-Signed-off-by: Qasim Ijaz <qasdev00@gmail.com>
----
- drivers/net/wireless/mediatek/mt76/mt7996/main.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+> Introduce the capability to offload L2 traffic defining flower rules in
+> the PSE/PPE engine available on EN7581 SoC.
+> Since the hw always reports L2/L3/L4 flower rules, link all L2 rules
+> sharing the same L2 info (with different L3/L4 info) in the L2 subflows
+> list of a given L2 PPE entry.
+>=20
+> ---
+> Lorenzo Bianconi (3):
+>       net: airoha: Add l2_flows rhashtable
+>       net: airoha: Add airoha_ppe_foe_flow_remove_entry_locked()
+>       net: airoha: Add L2 hw acceleration support
+>=20
+>  drivers/net/ethernet/airoha/airoha_eth.c |   2 +-
+>  drivers/net/ethernet/airoha/airoha_eth.h |  22 ++-
+>  drivers/net/ethernet/airoha/airoha_ppe.c | 224 +++++++++++++++++++++++++=
++-----
+>  3 files changed, 215 insertions(+), 33 deletions(-)
+> ---
+> base-commit: 61f96e684edd28ca40555ec49ea1555df31ba619
+> change-id: 20250313-airoha-flowtable-l2b-e0b50d4a3215
+>=20
+> Best regards,
+> --=20
+> Lorenzo Bianconi <lorenzo@kernel.org>
+>=20
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-index 66575698aef1..88e013577c0d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-@@ -68,11 +68,13 @@ static int mt7996_start(struct ieee80211_hw *hw)
- 
- static void mt7996_stop_phy(struct mt7996_phy *phy)
- {
--	struct mt7996_dev *dev = phy->dev;
-+	struct mt7996_dev *dev;
- 
- 	if (!phy || !test_bit(MT76_STATE_RUNNING, &phy->mt76->state))
- 		return;
- 
-+	dev = phy->dev;
-+
- 	cancel_delayed_work_sync(&phy->mt76->mac_work);
- 
- 	mutex_lock(&dev->mt76.mutex);
--- 
-2.39.5
+Hi Andrew, David, Eric, Jakub and Paolo,
 
+the series has been marked as 'changed requested' but Michal is fine with
+current approach. Am I supposed to repost?
+
+Regards,
+Lorenzo
+
+--cwckOtaj5kVyqye2
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ/VwbgAKCRA6cBh0uS2t
+rMh2AP0RiMzPfMojS+LKe/VnGc+9kAPC0dZn8jlHkdT5JydKhQEA+jqP4K893c4F
+fPL4pqO2PtARhomxzYl3AumfteZ96gI=
+=nFvh
+-----END PGP SIGNATURE-----
+
+--cwckOtaj5kVyqye2--
 
