@@ -4,62 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED7E6C369A2
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Apr 2025 16:51:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4627EC369A2
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Apr 2025 18:15:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8e48Pbev6VOGOSJjyEzQZ85gfGf1+hZai8iCVJTt43A=; b=w5MJaBYkprcKPBRLdpSv6RQZ6Z
-	87tGj9e2y3oUD/4MSLBsoibnX1IFiFmobIFzbdLK1kpmJ7c65DJwrBtMB5NqPKJINy9uH/PEaM44+
-	xws2h5awQmkbiwVtILT8BSLVuZrJSXfi/3SXsXbixOcIp3Qdbcega0ciAT52OuPomtqcjmqgLTmfc
-	8JF89HT58Yt2ne6nhKW+mnlOYFpcX1jCg/dV6drg3C49PCd9is1urSQ3Svy8Dk07RKrpU/HGI8ZQW
-	rP2TaAf7kmG2QSMTBRtgzniGVtv4wTzWphL0lN9eNLpwR3n/YHL7uS++aBcxFrqb0Rfo+zy2et+N3
-	K2TlNkHw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=YcOUVWVG1AAUU/kF4IJvSl+9zDVrwqBtFVUW2rq0rjY=; b=nVJ6Xmy+xgSYoFfBq6fI2StGBR
+	hGNTbwr6BC8MvwH80P2ubgm5k97b1soRfFlNwTGleJazuZJQL54oM3BJ1jqfOKJxA1thKEl3jOnf6
+	Du39KGEa/zn7aYKv4rVQ7928FCFAbJwvZ22oqBk/hKvhhJuASRKlvro85OSENgbuv9tzVBL1qKqre
+	kh3K0bdpO9elxwu8d4/BRsoMb3sapOvAO+2YfliBpAW7V5zfQNJ/hm5FVE+jgIgmn9m4NsniCylRq
+	UIlpQ6ChF6oqRg/DipAcGzpmDYtYtBoG/y7bAIfblj3R6OzWtKYbOxKpQjdfvvX0LkwG/nJ7A22Be
+	pzMcsruw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2CAl-00000004rsH-3KHe;
-	Tue, 08 Apr 2025 16:51:39 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1u2DU0-000000054o5-1J9p;
+	Tue, 08 Apr 2025 18:15:36 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2C8t-00000004rW3-32gD;
-	Tue, 08 Apr 2025 16:49:43 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1C67368431;
-	Tue,  8 Apr 2025 16:49:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 70726C4CEE5;
-	Tue,  8 Apr 2025 16:49:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744130982;
-	bh=docnkBXYdwDwkqgQOlHMc19oD/O+yTnHvXJK4hwfkS8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Fl62+fywj4jxzSGT/WAqz9WgAiCtRQOxjtU3zqKUryAI8/J56zLD+j/S8x7rbdkfP
-	 qojXTPh0KeuzF9FsVsEWulPUxhWmp9hRfmPdnbGAyowv9FrRG5B6OrE3eHSOoGvGAq
-	 HgZq/G8DdzpZmLbHlAL6TsJYjElWds5uj7XjWImoOs5xFQVWIbBjxGUJmGWUSN5mj9
-	 CpqQARUdAsrKCsXQS/X/Y1BUWyXCitbkaunxQ/4AHuOauwFYEGlpB7rr9Z03Rt2xxw
-	 lCSijPRNvYWoNko4ExexiqSwlPgKk0HlY0G46iijreoI72tpgUBuo4reS6vESobMXN
-	 5QmAzWPlxHQ8A==
-Date: Tue, 8 Apr 2025 18:49:40 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Michal Kubiak <michal.kubiak@intel.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	id 1u2DJd-000000053bC-1N3u;
+	Tue, 08 Apr 2025 18:04:54 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-3913d129c1aso4055829f8f.0;
+        Tue, 08 Apr 2025 11:04:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1744135492; x=1744740292; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=YcOUVWVG1AAUU/kF4IJvSl+9zDVrwqBtFVUW2rq0rjY=;
+        b=Vhfa217rJoQVYTRIKaOi5FEfVDs3t/OJiouvsUqY+tgwVBvoMKGfwGvFmJwgUGlRGb
+         wDPg+SJt2biCKnDezjmLJeKgmh9OyRagAY1tUXuuGMs9gNySiXelDPo0muUg/4P/3Nj9
+         YSQO76n6JNGu5nGX7CojPS/gmeJ1P9RtxpV1fIW9IqhrlW5spB3Tnc9qkeO1AINRqu46
+         72fZO/xTm50tHucTNVn8ytj0rUR0t7FdmZAIGxTG500Z1kDdgMiapClFfpnRnuT/mRRa
+         DCfMtpog8UTfMr4ibiBOmLimt5IzORWgdqagHxcfqfgr+2EAilLbm80FhYoLa+a1bvHX
+         H+nw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1744135492; x=1744740292;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=YcOUVWVG1AAUU/kF4IJvSl+9zDVrwqBtFVUW2rq0rjY=;
+        b=cV+WeL62ApJGuR9IUKto75Dz55wtAXEwnOKdg51UNgQhIlFu510mx4J82uTfd9nGBh
+         QEN0IDewAfoRQs1alFdcMg1uNpzfeqhQmyISzyJe6pikAqo6oW2v/r2p9TbnTyZEgUOS
+         gourTC2/98PQN6epZetcHGx0dVZldvBJOZ4OjGQGzYyWidsZEwa/g6iTkSoCzrkXT3zv
+         4B2u3t+XurhYwfwAiF1FWFghe40epHkcdATtD4S0TsqIK/nBeFRyMrXpFXzn+Gmf9RVT
+         DFQ4RIJa3ABWfeI2kihTKe6XgvRP+EUJVVI3qHssa3FYoOYd2AFNWTvW371JsUeqgzub
+         TD8A==
+X-Forwarded-Encrypted: i=1; AJvYcCU2inEx8QK33YgYaFmlVHq8REL4Lxw3a6FH0XGkKdGXQnt8vv7V7p+xe+LgcxCmB6EM4l3uaEHWwP/P9dt+3nY=@lists.infradead.org, AJvYcCUuGdWt7Dqu//TJugHVQTZLs+XvECKmsHqSgRBBMXuWjnY1Ts0pcLj2NUoCdesfq/dsgdggfmLsNWvzlsf/RprZ@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw5dtgiNB7iMyfJh0S/HG0JB1OkOSbMl44ppA4LUxA8JFdnwM5k
+	boOyQubmzupMll1GbNlyea5jFdQQ9ag4p/OVqytyqBOTxANb/enc6Dk/fA==
+X-Gm-Gg: ASbGncvsqP+bLffVSEihsCL1gk7SAZLUutqL2Q4rcSvs20d95myjzcBnHVX5bW7aivJ
+	g0DcRO7qNskYy2mmbYrPIL3HwZSPBve6CtjvdBH4JZgPfWUkNV4sUlR6k0JVzefqc0l8D80Rs3U
+	aiFfFTnpcBgs2lWNMhJFxS0iPOCqVqu4RJY3C9HSa+nQH9NJVothHDufDUrF4J36H9ep03w5yVw
+	/M+8YxKFJvXTuIv9GJQ2S0SIAN5x+R4vlwXMcFN1b23r5d5X/Nh9hL3QsyxiXCoSHY32MgE83gt
+	1czg8OGW4nc08qOKC+cQMme1bE68mMF1un2WXlKUcEKsaw==
+X-Google-Smtp-Source: AGHT+IFW4ID2IVLIJJSO6AIqnzG5sx6n8ibzh5IQ9vxzEszMDqEO1Q5l1iqmcRSrWTuGE6wSfEs9sg==
+X-Received: by 2002:a05:6000:2289:b0:39c:30f7:a599 with SMTP id ffacd0b85a97d-39d820f7f4emr4042317f8f.18.1744135491468;
+        Tue, 08 Apr 2025 11:04:51 -0700 (PDT)
+Received: from qasdev.Home ([2a02:c7c:6696:8300:5b45:5642:beb0:688f])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43ec147c9dbsm176684525e9.0.2025.04.08.11.04.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 08 Apr 2025 11:04:51 -0700 (PDT)
+From: Qasim Ijaz <qasdev00@gmail.com>
+To: nbd@nbd.name,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	chui-hao.chiu@mediatek.com,
+	Bo.Jiao@mediatek.com
+Cc: linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net-next 1/3] net: airoha: Add l2_flows rhashtable
-Message-ID: <Z_VTpBhntxXPncsv@lore-desk>
-References: <20250407-airoha-flowtable-l2b-v1-0-18777778e568@kernel.org>
- <20250407-airoha-flowtable-l2b-v1-1-18777778e568@kernel.org>
- <Z/VCYwQS5hWqe/y0@localhost.localdomain>
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH RESEND] wifi: mt76: mt7996: avoid null deref in mt7996_stop_phy()
+Date: Tue,  8 Apr 2025 19:04:48 +0100
+Message-Id: <20250408180448.19274-1-qasdev00@gmail.com>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="VqEHdJY9D56yjHxB"
-Content-Disposition: inline
-In-Reply-To: <Z/VCYwQS5hWqe/y0@localhost.localdomain>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250408_110453_367356_D3DCB5D9 
+X-CRM114-Status: GOOD (  10.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,73 +103,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+In mt7996_stop_phy() the mt7996_phy structure is 
+dereferenced before the null sanity check which could 
+lead to a null deref.
 
---VqEHdJY9D56yjHxB
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Fix by moving the dereference operation after the 
+sanity check.
 
-> On Mon, Apr 07, 2025 at 04:18:30PM +0200, Lorenzo Bianconi wrote:
-> > Introduce l2_flows rhashtable in airoha_ppe struct in order to
-> > store L2 flows committed by upper layers of the kernel. This is a
-> > preliminary patch in order to offload L2 traffic rules.
-> >=20
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
->=20
-> The patch logic and coding style looks OK to me.
-> Just one question inline.
->=20
-> Thanks,
-> Michal
->=20
-> > ---
-> >  drivers/net/ethernet/airoha/airoha_eth.h | 15 ++++++-
-> >  drivers/net/ethernet/airoha/airoha_ppe.c | 67 ++++++++++++++++++++++++=
-+++-----
-> >  2 files changed, 72 insertions(+), 10 deletions(-)
-> >=20
-> > diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/eth=
-ernet/airoha/airoha_eth.h
-> > index ec8908f904c61988c3dc973e187596c49af139fb..57925648155b104021c1082=
-1096ba267c9c7cef6 100644
-> > --- a/drivers/net/ethernet/airoha/airoha_eth.h
-> > +++ b/drivers/net/ethernet/airoha/airoha_eth.h
-> > @@ -422,12 +422,23 @@ struct airoha_flow_data {
-> >  	} pppoe;
-> >  };
-> > =20
-> > +enum airoha_flow_entry_type {
-> > +	FLOW_TYPE_L4,
->=20
-> I didn't find any usage of L4 flow type in the series.
-> Is that reserved for future series? Shouldn't it be added together with
-> its usage then?
+Fixes: 69d54ce7491d ("wifi: mt76: mt7996: switch to single multi-radio wiphy")
+Signed-off-by: Qasim Ijaz <qasdev00@gmail.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7996/main.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-Hi Michal,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+index 66575698aef1..88e013577c0d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+@@ -68,11 +68,13 @@ static int mt7996_start(struct ieee80211_hw *hw)
+ 
+ static void mt7996_stop_phy(struct mt7996_phy *phy)
+ {
+-	struct mt7996_dev *dev = phy->dev;
++	struct mt7996_dev *dev;
+ 
+ 	if (!phy || !test_bit(MT76_STATE_RUNNING, &phy->mt76->state))
+ 		return;
+ 
++	dev = phy->dev;
++
+ 	cancel_delayed_work_sync(&phy->mt76->mac_work);
+ 
+ 	mutex_lock(&dev->mt76.mutex);
+-- 
+2.39.5
 
-FLOW_TYPE_L4 is equal to 0 so it is the default value for
-airoha_flow_table_entry type when not set explicitly.
-It is done this way to reduce code changes.
-
-Regards,
-Lorenzo
-
->=20
-> > +	FLOW_TYPE_L2,
-> > +	FLOW_TYPE_L2_SUBFLOW,
-> > +};
-> > +
-
---VqEHdJY9D56yjHxB
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ/VTpAAKCRA6cBh0uS2t
-rGyDAQD+/MiN9rnT3IcrZdxscKWStrcvisFTzqCG87xrS38scwEA1zJ7zNWR7F7M
-2jHW6MMsL97uScqhfJbq9aDNi5vn9g4=
-=tsCu
------END PGP SIGNATURE-----
-
---VqEHdJY9D56yjHxB--
 
