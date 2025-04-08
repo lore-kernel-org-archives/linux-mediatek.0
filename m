@@ -4,139 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94117C369A4
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Apr 2025 13:14:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36D72C3600C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Apr 2025 13:15:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vFThqq7ILooH+RLGqVKM/XdZcU6OAYhPWLK/0HqsQ6M=; b=IgCfG5j7MuNKWP+BnhbiRuSriW
-	c4Ul/wceQ1xzB9p0LV16MCSVwDpalZ+SJah6Z1lL8HTcZ11hHLsBP6/xLh3aL/iDF+Ai3S1zYDRoC
-	RVxsdCHsgwerMLw8i8NZR2RVOt0sBNn2gH/mGWcxm3ksguBA5d7sAKt0OGmVKiTugY+bKhfXmoQFt
-	UkhHCIIe3BJGQTAFPXXOHEQx+Kb7EYMVVCZgT7R00pfrMW7U49+4362T6wF0wlEZFl746J2H6mr0C
-	Z61aA48LjnxBd4Kni7jmsWsAqD6Hqk9bngvQkm8Bom6ATCvp8cDZ6VsXxOdkE102xOmoVkyBSwURl
-	qFGYNuhg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XgQfANebtdqnI5c6U+NPo92x9wLAySpUrYEpuKhqRpM=; b=H5/LOHxFF7dlwbCtHVXj5cdF9h
+	SVLNBVazysa8+wHrtlxZdd/CEz9TV104ZsWLJBkQd4a0kDu7FSxoYIvkOTiivP41SxK/9ELLX/Oux
+	S7G8fFPD+pTEKYMbOUU7RQKPLymevmKm2ND43rSg99QlmlTAwgeJYSFs62soD19gSUp8dVBcAL4sc
+	lJC+OqO8k5lLnyrXEDZeCAgI5spR85mZ7205EfvwzIKHrLu0J5323oKhYiYsxnBioXYaQOGUyzfv4
+	Feu9A41XzM6oSGmUv+vTv98kTUhHWNQgd3Sv8l0Y3KX2VFb6OJuta+eX7wySkjgZ1hlApTDLNhcMr
+	NFgmAHCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u28mw-0000000489n-2gJU;
-	Tue, 08 Apr 2025 13:14:50 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1u28ne-0000000495f-0KyV;
+	Tue, 08 Apr 2025 13:15:34 +0000
+Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u27k8-00000003wbb-3wmV
+	id 1u27tg-00000003xmK-49GH
 	for linux-mediatek@lists.infradead.org;
-	Tue, 08 Apr 2025 12:07:55 +0000
-Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 538BHWA9018771
-	for <linux-mediatek@lists.infradead.org>; Tue, 8 Apr 2025 12:07:52 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to; s=qcppdkim1; bh=vFThqq7ILooH+RLGqVKM/XdZ
-	cU6OAYhPWLK/0HqsQ6M=; b=XCnJ3igmR+clyI6eG7KCsy4++SCt3rnvgEcoddjz
-	hb7g1vwListu13hpLmJk5ufeGmsBt0Qdu0SnQ/QRAtTZfdE5QShMPt8TbeY7A41l
-	VFsCbPyorFtJTrjqkySeyNxr8C8CHT5PZGvanfmxNv66Cvbl1PDci8yRDawVnuAd
-	Zc+YHj3bC/Vgx9sgZzbgdUB9JZPfXjP9ra1wzTgm9rPrPVNGFkET1SosGzdGwTbV
-	67RFqwbcoSc3ZUYaJ5uURcPI7zK7KMC/shGPG8BM8iXpre0Ofe5yGNZJ8QhOtwDN
-	ZO3Q//fI/7LjIqCriXeZ+MbfbK+sqhgGbmnKIv263WLRtQ==
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com [209.85.222.198])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 45twdgfq12-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Tue, 08 Apr 2025 12:07:52 +0000 (GMT)
-Received: by mail-qk1-f198.google.com with SMTP id af79cd13be357-7c760637fe5so971192485a.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 08 Apr 2025 05:07:51 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744114071; x=1744718871;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+	Tue, 08 Apr 2025 12:17:50 +0000
+Received: by mail-yw1-x1136.google.com with SMTP id 00721157ae682-6fedefb1c9cso45622187b3.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 08 Apr 2025 05:17:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1744114663; x=1744719463; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=vFThqq7ILooH+RLGqVKM/XdZcU6OAYhPWLK/0HqsQ6M=;
-        b=QiCqrJy7sxXHIT61B33cs8XkZ/awOYjsiEP+chFbVjrp6r4ZAt03fnXZ6fdNQnU4no
-         AleA7HMQ9hTcBaSxucKKCUnErUjYfNHBkdRILgPnLOR3Ct0/xy1lKZbGNFAshx4rczFw
-         VMejmQZyPDx816IXwvErkEG3em2n5M0fxXgFSLlsc/nRjfZewfPBqqgY79Vm9EydEZOq
-         Zpg6tPcwsaHlF/eThbNECJiZsbofgIBU7btGTSrX9hBukR/gMM7piUO9Lq5Us1S8dBIT
-         0viTHD0NNIGimflNZtv0iAmDXgrt1EgmETZYobqsw9o1/gJAjjV9XIIvXTj2WT26zgbG
-         go0w==
-X-Forwarded-Encrypted: i=1; AJvYcCXZcGAlMDKQbImp5l2MXiN/EIwkHaq9VIkmXfXgfKvMR8FFJV0XVU1mKDsiZkYjs69qEM2D+UjfJoiFOewUVA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwIMA51oKBut8xRXMLEShQSLWDTe0DlmDtG/8InEdGttgBnotfK
-	bsBb0HP5zoI4jy2m31VeocuDkdPYF6TFN1luX5l5mT/tp+LCtiDoslZarLSmAClLin1zeLIpuzy
-	OuN3tBKfbuCBxCvnH736MqJ5o5xKdcROw5UXrU+Kl46860K3AIdnvhpZbwhqLQZdcuiWGxBA=
-X-Gm-Gg: ASbGncv9V81NX3BQLz9Xzh4R9AhQAD7DK/NsKfydCZ81t4XvlDAmG+YAMnC8YN9Toa2
-	vJEf3i/LwYsfDt/Wc/1pncFS7eROPnIHmKoNpsB6mwUnaIp8hlTM6nkSEU5vVwWspB/JXqHR585
-	h3hzTUp5NBKtPAPF59B8GeqFLR53gxFW74gW5yMWAR9sRvpt0nBmIXol9VtyAs6Hye1cR/7kT8M
-	3Btn4XakZQy0TQnwcR8COMHVFOfuNIbMbmHSlyeFHgRxD2MQmJ6yUKeRC0pen7RgkBLhMxKdjev
-	35aKTRmfXi8zFt9lp//JLHw/RsIsgmRlFldOKtCgb/TY/DjZTj4o6JTJJozz/36Gm5VDl+I7wHl
-	Pepc=
-X-Received: by 2002:a05:620a:17a7:b0:7c0:bb3f:e285 with SMTP id af79cd13be357-7c77dd62725mr1589590185a.24.1744114071318;
-        Tue, 08 Apr 2025 05:07:51 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEi/xFz1Y/FUnJgwy2p/a82dsZcDfNqrlyFtWekzBv5M8uIRg3fMoN8KW/g0lGhJUXSQz8Eyg==
-X-Received: by 2002:a05:620a:17a7:b0:7c0:bb3f:e285 with SMTP id af79cd13be357-7c77dd62725mr1589584485a.24.1744114070904;
-        Tue, 08 Apr 2025 05:07:50 -0700 (PDT)
-Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--7a1.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::7a1])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-54c1e66377esm1493668e87.209.2025.04.08.05.07.49
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 08 Apr 2025 05:07:50 -0700 (PDT)
-Date: Tue, 8 Apr 2025 15:07:48 +0300
-From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-        Maxime Ripard <mripard@kernel.org>,
-        Thomas Zimmermann <tzimmermann@suse.de>,
-        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-        Andrzej Hajda <andrzej.hajda@intel.com>,
-        Neil Armstrong <neil.armstrong@linaro.org>,
-        Robert Foss <rfoss@kernel.org>,
-        Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-        Jonas Karlman <jonas@kwiboo.se>,
-        Jernej Skrabec <jernej.skrabec@gmail.com>,
-        Jagan Teki <jagan@amarulasolutions.com>,
-        Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
-        Pengutronix Kernel Team <kernel@pengutronix.de>,
-        Fabio Estevam <festevam@gmail.com>,
-        Douglas Anderson <dianders@chromium.org>,
-        Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-        Krzysztof Kozlowski <krzk@kernel.org>,
-        Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
-        Anusha Srivatsa <asrivats@redhat.com>,
-        Paul Kocialkowski <paulk@sys-base.io>,
-        Dmitry Baryshkov <lumag@kernel.org>,
-        =?utf-8?B?SGVydsOp?= Codina <herve.codina@bootlin.com>,
-        Hui Pu <Hui.Pu@gehealthcare.com>,
-        Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
-        dri-devel@lists.freedesktop.org, asahi@lists.linux.dev,
-        linux-kernel@vger.kernel.org, chrome-platform@lists.linux.dev,
-        imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
-        linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
-        linux-renesas-soc@vger.kernel.org, platform-driver-x86@vger.kernel.org,
-        linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
-        freedreno@lists.freedesktop.org,
-        linux-stm32@st-md-mailman.stormreply.com,
-        Russell King <linux@armlinux.org.uk>
-Subject: Re: [PATCH 12/34] drm/bridge: tda998x: convert to
- devm_drm_bridge_alloc() API
-Message-ID: <kgobwv6zldlyb7vxyy4fyhe73krnsjr6aczpwl6agompne3tiw@vyk4m65vaqul>
-References: <20250407-drm-bridge-convert-to-alloc-api-v1-0-42113ff8d9c0@bootlin.com>
- <20250407-drm-bridge-convert-to-alloc-api-v1-12-42113ff8d9c0@bootlin.com>
+        bh=XgQfANebtdqnI5c6U+NPo92x9wLAySpUrYEpuKhqRpM=;
+        b=aL3WhV6qI4pDtIFufwSuHLMYAwqdBBammaQbOZXuC1bVcmSE7b4+7GK7Saa3IcmRrl
+         BCTnPcpbOOo6i18MeJci06xc5JzOxGq/8AVBGv6zOqZBmwC4De6Tp0N5wNgpnTA5uqRt
+         eygzOT/YVX0wJy+xR9bH+YEUr2jSbn82uqSR/fZ7ZO5+bWA1YO9vyly2gB4n9hneTMNf
+         Ynczyrs97ixYvFlsxuXj0XbTTCLjtqzflJgcAcj6D+rdSfHSsUKyNKKcxNFDLFU/0UZS
+         5PWCwQZALVZgP8Kp9Kh/liHa8rNj2QndhP0JeESv6m60hCE173Gzl53eYHnvK7zvM8DB
+         3k1g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1744114663; x=1744719463;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=XgQfANebtdqnI5c6U+NPo92x9wLAySpUrYEpuKhqRpM=;
+        b=xOGkaGBbfaw7SWVaQ7eswoDh/En0J3l6UYSwGha+HWw/vVqJVSX+XrBEkCi5RCubak
+         ri9ZcEmIpT+p0cicKsnDFixKw/F1krdPTfMcFxpjxxx3qku93+LtK5joDWxNXvc3u9fm
+         1byvBCRBlIv5UOj8QKf1Spz4dRymM4wjeZpvWK+9ALPtdP3eioxmLmHSu/jU2JD7zuYT
+         Aj5RlAPOec2kztUwVlOAtVWzbeNCaoeUbyO383flnbnFk6vn0AKXj175yjICXXUFA5Fs
+         fMAnooPp8lXFAQAI18L8lIZEYuisFpbouIC6vV3+wYwqntvHUfCRBZ7PFOpJMfyeZ1ag
+         epXg==
+X-Forwarded-Encrypted: i=1; AJvYcCUCtXoXWrOiUzlnss4mL/wJDwVJZgUE5W/4xVZYlq48FTJyhBubhsFcfgShQ980DuIBKVH4P/58r8cdpz/qnQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw8WLvGLoWRrP/kBos2WRoXbNgmu4Jn4vLHRYqN0078YMVoPbdL
+	mm7t8ayp5Lo+Gc8zZYxIj09QG1aygO/GK5u5NjbwKwO0tkwW7L3sdUmB0aWdFrV0avGZVnNbjN9
+	GpBsd11zu7+FGBMi6wNL13/PqLguKbnd+8I+NlQ==
+X-Gm-Gg: ASbGncv/RBSpWpH4zwmCMDcy1QPCv3W1nVtI9JIgByX1af+39vIYhFWGlAkdKCSfGWm
+	A7VzvBwCrIjSj2NNSpWbJj9sV6q83F0mZHL1HSIZiR3yXRD3wg39f5P4VnAZxBc6SmKixbTHj0L
+	4fcPlMhzBZPBDBNdqiWYMw8UNU1fA=
+X-Google-Smtp-Source: AGHT+IE9ys53OzSUdrwDVzPrCpJ3j0rVw9UiRXdXpPHOiJneCGTZtJTMxzg8Xq2rdR9GYtx0ZTNP05CFJHjGpzcayc8=
+X-Received: by 2002:a05:690c:67c4:b0:6ff:28b2:50e1 with SMTP id
+ 00721157ae682-703e14ffd3dmr297170407b3.2.1744114663553; Tue, 08 Apr 2025
+ 05:17:43 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250407-drm-bridge-convert-to-alloc-api-v1-12-42113ff8d9c0@bootlin.com>
-X-Authority-Analysis: v=2.4 cv=PJgP+eqC c=1 sm=1 tr=0 ts=67f51198 cx=c_pps a=qKBjSQ1v91RyAK45QCPf5w==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10 a=XR8D0OoHHMoA:10 a=P-IC7800AAAA:8 a=PHq6YzTAAAAA:8 a=EUspDBNiAAAA:8 a=hcs5bi09U0a-O7-gtRoA:9 a=CjuIK1q_8ugA:10
- a=NFOGd7dJGGMPyQGDc5-O:22 a=d3PnA9EDa4IxuAV0gXij:22 a=ZKzU8r6zoKMcqsNulkmm:22
-X-Proofpoint-ORIG-GUID: o1YpxHL9lo0LoPi6nGlv99KT4HbL4-oY
-X-Proofpoint-GUID: o1YpxHL9lo0LoPi6nGlv99KT4HbL4-oY
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1095,Hydra:6.0.680,FMLib:17.12.68.34
- definitions=2025-04-08_04,2025-04-08_01,2024-11-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 phishscore=0
- lowpriorityscore=0 clxscore=1011 adultscore=0 malwarescore=0 spamscore=0
- impostorscore=0 suspectscore=0 mlxlogscore=934 bulkscore=0 mlxscore=0
- priorityscore=1501 classifier=spam authscore=0 authtc=n/a authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2502280000
- definitions=main-2504080086
+References: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org>
+ <20250403-dt-cpu-schema-v1-18-076be7171a85@kernel.org> <CAPDyKFrFRrPVJ_t0JrAE1VTbS02hwr=L-EHtqb7CQiWzB1MnQg@mail.gmail.com>
+ <CAL_JsqKygxhcQ=PZW84sfiW7BVXKF839vfNyxS9GwAXuqmN=8g@mail.gmail.com>
+ <CAPDyKFoHQdHED0hHUR7VKin0XG6SVnYXuvPjB=Xe+1o2hpiPJA@mail.gmail.com> <CAL_Jsq+Oa7MvVO7Y-RG+qrY2e86B_q0XGq1LWoy5Mq+G72ZHzQ@mail.gmail.com>
+In-Reply-To: <CAL_Jsq+Oa7MvVO7Y-RG+qrY2e86B_q0XGq1LWoy5Mq+G72ZHzQ@mail.gmail.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Tue, 8 Apr 2025 14:17:07 +0200
+X-Gm-Features: ATxdqUE7frfhfuxoKUlf3DinAq4W783EiniruawsYcgTKF9-ms73Ag05S_dZWTY
+Message-ID: <CAPDyKFoKdj-Y4-dCwYRG7TLdS1HcSH=i9EN-b9Cpyo50kMmC5Q@mail.gmail.com>
+Subject: Re: [PATCH 18/19] dt-bindings: arm/cpus: Add power-domains constraints
+To: Rob Herring <robh@kernel.org>
+Cc: Stephan Gerhold <stephan.gerhold@linaro.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
+	"Rafael J. Wysocki" <rafael@kernel.org>, Viresh Kumar <viresh.kumar@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Vincenzo Frascino <vincenzo.frascino@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, 
+	Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, 
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Viresh Kumar <vireshk@kernel.org>, 
+	Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>, zhouyanjie@wanyeetech.com, 
+	Conor Dooley <conor@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>, Steen Hegelund <Steen.Hegelund@microchip.com>, 
+	Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, 
+	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	Heiko Stuebner <heiko@sntech.de>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org, 
+	linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-mips@vger.kernel.org, 
+	imx@lists.linux.dev, linux-rockchip@lists.infradead.org, 
+	linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250408_050753_110229_B2C9E18F 
-X-CRM114-Status: GOOD (  14.87  )
+X-CRM114-CacheID: sfid-20250408_051745_047637_53F8E44D 
+X-CRM114-Status: GOOD (  25.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -151,22 +121,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 07, 2025 at 04:23:27PM +0200, Luca Ceresoli wrote:
-> This is the new API for allocating DRM bridges.
-> 
-> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
-> 
-> ---
-> 
-> Cc: Russell King <linux@armlinux.org.uk>
-> ---
->  drivers/gpu/drm/bridge/tda998x_drv.c | 7 +++----
->  1 file changed, 3 insertions(+), 4 deletions(-)
-> 
++ Stephan Gerhold
 
-Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+On Mon, 7 Apr 2025 at 18:50, Rob Herring <robh@kernel.org> wrote:
+>
+> On Mon, Apr 7, 2025 at 11:23=E2=80=AFAM Ulf Hansson <ulf.hansson@linaro.o=
+rg> wrote:
+> >
+> > On Fri, 4 Apr 2025 at 15:09, Rob Herring <robh@kernel.org> wrote:
+> > >
+> > > On Fri, Apr 4, 2025 at 5:37=E2=80=AFAM Ulf Hansson <ulf.hansson@linar=
+o.org> wrote:
+> > > >
+> > > > On Fri, 4 Apr 2025 at 05:06, Rob Herring (Arm) <robh@kernel.org> wr=
+ote:
+> > > > >
+> > > > > The "power-domains" and "power-domains-names" properties are miss=
+ing any
+> > > > > constraints. Add the constraints and drop the generic description=
+s.
+> > > > >
+> > > > > Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+> > > > > ---
+> > > > >  Documentation/devicetree/bindings/arm/cpus.yaml | 8 ++------
+> > > > >  1 file changed, 2 insertions(+), 6 deletions(-)
+> > > > >
+> > > > > diff --git a/Documentation/devicetree/bindings/arm/cpus.yaml b/Do=
+cumentation/devicetree/bindings/arm/cpus.yaml
+> > > > > index 6f74ebfd38df..5bd5822db8af 100644
+> > > > > --- a/Documentation/devicetree/bindings/arm/cpus.yaml
+> > > > > +++ b/Documentation/devicetree/bindings/arm/cpus.yaml
+> > > > > @@ -313,19 +313,15 @@ properties:
+> > > > >      maxItems: 1
+> > > > >
+> > > > >    power-domains:
+> > > > > -    description:
+> > > > > -      List of phandles and PM domain specifiers, as defined by b=
+indings of the
+> > > > > -      PM domain provider (see also ../power_domain.txt).
+> > > > > +    maxItems: 1
+> > > >
+> > > > There are more than one in some cases. The most is probably three, =
+I think.
+> > >
+> > > Unless I missed it, testing says otherwise. What would the names be i=
+f
+> > > more than 1 entry?
+> >
+> > "psci", "perf", "cpr", etc
+> >
+> > The "psci" is always for CPU power management, the other is for CPU
+> > performance scaling (which may be more than one power-domain in some
+> > cases).
+> >
+> > I would suggest changing this to "maxItems: 3". That should be
+> > sufficient I think.
+>
+> Again, my testing says 1 is enough. So where is a .dts file with 3 or 2?
 
--- 
-With best wishes
-Dmitry
+Right! I assume those with 3 or 2 just haven't made it upstream yet,
+but sure they are cases. If you prefer to update the binding later,
+that's fine by me, but I just wanted to avoid unnecessary churns for
+you.
+
+For example, msm8916 seems to be one case that already uses "psci",
+but requires an additional two power-domains for performance-scaling.
+At least according to earlier discussions [1] with Stephan Gerhold.
+
+Moreover, it's perfectly fine to also describe CPU's idle-states by
+using the power-domains/domain-idle-states DT bindings, according to
+the bindings for PSCI [2] (no matter of PSCI OSI/PC mode). In other
+words, for all those that only have a "perf" or "cpr" power-domain
+today (or whatever name is used for the performance-scaling domain),
+those could easily add a "psci" power-domain too, depending on how
+they choose to describe things in DT.
+
+Kind regards
+Uffe
+
+[1]
+https://lore.kernel.org/all/ZRcC2IRRv6dtKY65@gerhold.net/
+[2]
+Documentation/devicetree/bindings/arm/psci.yaml
 
