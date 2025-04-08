@@ -4,68 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87412C369A5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Apr 2025 19:12:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D467BC369A1
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Apr 2025 19:27:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=4ZR2UVpqmeFDPx4PfDo4Uk4g9Hsu2oDRhSNi1KzWe7k=; b=cx8nqlj4xF99JBoSIJkA4c3sSk
-	kgHfne238nIbIueIbJApZ2wPXA0h11Cnaodsa9WecQ6KHTS0tc0qdoQJq0c73QMIsu9JyugEXdgZN
-	1u8gMhtrbMPWf28+5+DlLGT7N5Ra7Oiugo7UK1kZmaUodDw2KQp6xCuNg1pI2wKS6RKNjlQeI/iL8
-	grqb6kkziWLrMutyeZizK7Seio2YzLZvxW5U7XYMHmif5cz87bC946f8W+TG5V3OZEYNh5ttrH/RT
-	7NvFFbzWOd7xoETRMRwVmRV0V7Q8AWWpJVjUwhq4UJdAC5RsbKRcy02pX/zYDFXV/8t1DGiTeSS4d
-	JoJ5INRg==;
+	bh=KrpT+jmLuV0pMig4xoM27D18t14gkY3tPjFQzNc4T6g=; b=EGfXOEI9O1+A01NdCUqzxNlfQx
+	G0++2CdWGueejkmvchHPtoxKklxtlZ8Nwv9Upx90QIGvyRzKbQKI555k64PCG7qVxpO6la1t4QEV7
+	VO3kISeAMV1lsFvzKYHwpIpZ7yCOIv4RAukoSaldRNSH5V3ya3nDaA/cl/ymXa32H7kIGJmSbyAdO
+	uDUw+WYi96HupzHgPinyiTKaKe7uGvSVA2yIz2eaiBoXa/mpLCGbuMC5C1OufIJdnmoQ+rFZ9rQ7n
+	NDCrm0eiDDTSOtUqyraQsHpmOLVEAZMWjX9me2F6qdLh4VpzcNrFuWiRYOgM8asR9D51H85fUnAQu
+	SoNib+yA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2ENN-00000005DHS-3FWB;
-	Tue, 08 Apr 2025 19:12:49 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1u2Ebt-00000005Etu-3JnS;
+	Tue, 08 Apr 2025 19:27:49 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2D4W-00000005121-0aP5;
-	Tue, 08 Apr 2025 17:49:17 +0000
-Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-43d07ca6a80so30591535e9.1;
-        Tue, 08 Apr 2025 10:49:15 -0700 (PDT)
+	id 1u2DNS-0000000546f-0OuH;
+	Tue, 08 Apr 2025 18:08:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=KrpT+jmLuV0pMig4xoM27D18t14gkY3tPjFQzNc4T6g=; b=qMde5UPV9VyuD8krnXJZ2h+eVG
+	41YqqH4FYRiok9UwjLVNr3Bhuwl3RCROMnpSQjAfaGmIl3UYIqv6A3zFo3zt0eKPsGy/OHxmIO+nf
+	3G4wygcUqsc0dY6V4OPhCRzkd3zrb2JipsFTHf5M59OLUtLKbjdcQQGloRTiC2icn9n8CS93znjse
+	o26wliWVzpb7MmkRdXwrnylcauM/YshXk9Pm8WfN4nayzV9t/+RNKp3+UPSwmikrPSBiyfRaJ8QJ+
+	444gW5RQEWVQVZnRIN78KSi1ADZUTxAP1XurnGDFw1TK7KGscrjK2VlNeK5XGbRYMARmyve3GIWYi
+	HM0VXwag==;
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1u2DNO-00000008NdZ-465L;
+	Tue, 08 Apr 2025 18:08:48 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-43cfebc343dso39787995e9.2;
+        Tue, 08 Apr 2025 11:08:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744134554; x=1744739354; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1744135724; x=1744740524; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=4ZR2UVpqmeFDPx4PfDo4Uk4g9Hsu2oDRhSNi1KzWe7k=;
-        b=O0/YERsuNXF3w+hxdST/u57k97xBpQllQRdLNRkUBdsSRk4aEn+15skJy7Qm0D2abp
-         A+Dx64A8asF//LoMwvIYMkxyTz/lrl9SHfNKGt/sC1sBeCfxQsN8gMduK7PhLMLCBBYJ
-         xEAue2X36mC/uRrgx6TeCIOj+Zcf9onSjM9MZNC8S0nJyqePqkqOuVbE9BfN5kwHLBrM
-         wWyho/+8USlEN2sDgBqUvHYSxdfpKo8T20t2vDnjcdkB3hxIKaLlonjNhZudNux5skJ+
-         6mibIOt890W0PwtkJORgG4QhdSCwMQsB3ZmkpJEky1aZjxi+I2Va94TfB2EYM5MocHya
-         H5wQ==
+        bh=KrpT+jmLuV0pMig4xoM27D18t14gkY3tPjFQzNc4T6g=;
+        b=mb3FHvdxI7W+CJiMtFTzpNFZvIj1omXkfL573LEk4h1S2AVLc2kJ1ydiQcosTt+G9M
+         C2BUKqunQez5lhGYy2m5gNUVbOOv4Zjt5B2GkKGV0NN8/mYzRpOD4uFAeRuYb0/hM0Tf
+         m/uAAK3gPwH0hmx565vWoilMsK5ZAbOzKrHVGBixTGmIcSt7ypZ6heisiZLCEPp3MCZq
+         2ByB+C7pwzb8CjwUjr4ifUzv/Pk/dTi55aLeKVrw7KQjn+vCwBzsVC52Bl4+Wp8ufT9H
+         Bx49zprwHBFJWIK0Ig68ELVRHDsTQ0ZygjZcxCBV2HoRwyY4qRIRTjYCAFE9ka0s6y0v
+         NIkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744134554; x=1744739354;
+        d=1e100.net; s=20230601; t=1744135724; x=1744740524;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=4ZR2UVpqmeFDPx4PfDo4Uk4g9Hsu2oDRhSNi1KzWe7k=;
-        b=wYgPrXw4rOFbs5yrzJX5gwHBdQ5odJXwiG8UzeCOYsB1QxN6y0XqQmzMlX3fyHCQuv
-         EmbJa8T4yr9s+oWwDjYPOW0xbUmnw8ihIwih4gfQbA7aFsjHYNshGASZMPzBU2AjqZ5q
-         rq0G8g0CVhKeM+S6X9R/rb/oOhQD8I4BHVLCFRr3MgC30bAO6+tbwCeWfirn+9nPS39n
-         wtpeBH5n7Yntetxm9p4olKNFbo9Qbv7oVtYBmHQNwPmogGI1WXWr6MTLCGgYyJkXUbVc
-         JEqvXWHMKJoJBLuWfmK7WLFN0VJUESnby9mSva1YRS91YqI33i3/OHVNGuiHUi6BiL6X
-         NnmA==
-X-Forwarded-Encrypted: i=1; AJvYcCU6F1iNygVtWFJnhZKRbpUppD107ij9+wNRyXOEx7fyxPofVgWoGUFNSI0rpNvOHOcbR+LP1R/Sog7XEVEq2KQ=@lists.infradead.org, AJvYcCXQunD9QuPV1iF5QbgHs5mpWxKBOyV9ueDOag5gK9EHDMurlCxX/AZYLfL9ae/RpTvgqvXDoztTn6lpQupnXgwm@lists.infradead.org
-X-Gm-Message-State: AOJu0YwrPwaas8LvbTR67qKuHMIIm6/ZbobN6ZTu9aKbp7qbbN5mpAJL
-	MX5IRmHiir0gVRWo2NE7qFSwS/9R6loa11Z6OEgDbOIaIPevj49L5NouYg==
-X-Gm-Gg: ASbGncs83Tmage9xJHko5gIwn18zuPIC5dVF0BW8wrlFBRczAR2tSlCMAxvk9SAYpYA
-	Sk2BjLW68ufHNz+kLrkTCDrFaNbdMhJbFdu9VZq6i8NzcVTat/4nHq5WmdyHdsZ7epw9iCTLKu0
-	15damAC1kIIjSviU7csNZ8Lp7aCmkcVBMd6ztwCwuvCov89pGk8FW1EJU8dRr8Xz7Yd6iIRHo83
-	sQalnAH9wpScCqybVJcs+Gy7cxntAyoN834+H9Rpylsmy38Rxx0jPz4ZPVC5FfG3T6dG276JiBx
-	zBwCdYubSTT2M5qdPz1Y9DCmxnf9YCq1jHDsqAoAbXJWsA==
-X-Google-Smtp-Source: AGHT+IEZ3U5D/EEyRNJJA0h121CkODT3waTKE0XhCx7gpizhS9Xryu5e5ySB2/sFUv+P+fwP9Vnchg==
-X-Received: by 2002:a05:600c:1e20:b0:43b:d0fe:b8ac with SMTP id 5b1f17b1804b1-43f1ed6727bmr189225e9.30.1744134553902;
-        Tue, 08 Apr 2025 10:49:13 -0700 (PDT)
+        bh=KrpT+jmLuV0pMig4xoM27D18t14gkY3tPjFQzNc4T6g=;
+        b=C5ZiIYgzLyd9yiHLZurCKqAUyKXS0Rst7pwOSJmr12dLnEfRxjWeqsUMTFSLP42K09
+         /0F7dnXzpNlkz+zMiyA6kPtdM86INzVZOkJPA1JwIcqOX8t1DsibiBZ/THfATtaKCKCk
+         uxov1Bv7DW8Q77jGS6bn0AuuJQUdxLoX/PQ+sArUD2vaB1QoRDvRiHf56j8DhG39u6HR
+         qI3EHna9Tco1RT5wyfMa6w0mEjtkwRT0DMjDlyJMbxtoNTXXdg1MzPQGaZDnE3qI/NAP
+         iphaJod6ubV3oaujTr8mkApWsRXkBxn+d8uPhNJHwdGUvHKlDRqpdVi7d2flrru+1/b8
+         r8vQ==
+X-Forwarded-Encrypted: i=1; AJvYcCV1kzid3XAmxrOsBNJDeSRqjxX7LtLzvt/b881u0t+Ch6zSvqvHcsONwDty0cDczAp++uf8ID1qhZKIf8mWkDIT@lists.infradead.org, AJvYcCX0/9ooWQ12HX8k9zCYdsITghshUmoBv7yxqcM2g0dsdd9UfiYzZB+etBnbVFD3A8ZgrXFzVRd7pE/1w4Z7RX8=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzf70na5Ykesv84E5gKQDUgU9iv+ESD9iogsKwL/1FrcfZmsQGw
+	Eqihzec7JfW4EQX3KkyjmrCtKSR1b5Z9ZHwWN9sYiuaTpOrPiRAN
+X-Gm-Gg: ASbGncsboH7oy6vCwEQf8ViVNtGjFMc6nxYhASrxpnDSiH6WlCXgZfCQhHEmmkpnTck
+	y7nj/47f6APNuVoumU98aHcRqoPeHYH75hGhE3Cdha0IQrzj/Focd1xJzvljaVawdKoh2towzXt
+	TcU3j2wiDdUhQc92ih5WjPvBxN98sJKDky4N9rEC2ybeCocboZE7H1Za1zxikUy+go5iy50gEJw
+	GNcFOW1/zXDpD5TU5qOy1OuYU/b5N47vqi7o8vExCJN/VQdsu367ZuBxN+Rp4Vw6gw1rya9jaix
+	FlkyuHHHG970APEYyHjznG6SVAzZulstpXm7nL3AgwWGoqziFqHGOAmg
+X-Google-Smtp-Source: AGHT+IGyH8xe4Xn7pdARQCUYSDd+37MKMCz08gGeVjeUKpJyPaAluAtZl33+vtBRvWnulgqkjovgyQ==
+X-Received: by 2002:a05:600c:5104:b0:43d:ed:ad07 with SMTP id 5b1f17b1804b1-43f1ed671edmr789965e9.29.1744135724433;
+        Tue, 08 Apr 2025 11:08:44 -0700 (PDT)
 Received: from qasdev.Home ([2a02:c7c:6696:8300:5b45:5642:beb0:688f])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43ec16a5776sm173535645e9.22.2025.04.08.10.49.13
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39c30226dfesm15864058f8f.97.2025.04.08.11.08.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 08 Apr 2025 10:49:13 -0700 (PDT)
+        Tue, 08 Apr 2025 11:08:44 -0700 (PDT)
 From: Qasim Ijaz <qasdev00@gmail.com>
 To: nbd@nbd.name,
 	lorenzo@kernel.org,
@@ -80,15 +94,15 @@ Cc: linux-wireless@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 RESEND] wifi: mt76: mt7996: prevent uninit return in mt7996_mac_sta_add_links
-Date: Tue,  8 Apr 2025 18:48:58 +0100
-Message-Id: <20250408174858.15847-1-qasdev00@gmail.com>
+Subject: [PATCH RESEND] wifi: mt76: mt7996: avoid NULL pointer dereference in mt7996_set_monitor()
+Date: Tue,  8 Apr 2025 19:08:39 +0100
+Message-Id: <20250408180839.19997-1-qasdev00@gmail.com>
 X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250408_104916_193438_B988192D 
-X-CRM114-Status: GOOD (  10.04  )
+X-CRM114-CacheID: sfid-20250408_190847_091980_7498E03A 
+X-CRM114-Status: GOOD (  10.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,52 +117,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If link_conf_dereference_protected() or mt7996_vif_link()
-or link_sta_dereference_protected() fail the code jumps to
-the error_unlink label and returns ret which is uninitialised.
+The function mt7996_set_monitor() dereferences phy before 
+the NULL sanity check.
 
-Fix this by setting err before jumping to error_unlink.
- 
-Fixes: c7e4fc362443 ("wifi: mt76: mt7996: Update mt7996_mcu_add_sta to MLO support")
-Fixes: dd82a9e02c05 ("wifi: mt76: mt7996: Rely on mt7996_sta_link in sta_add/sta_remove callbacks")
+Fix this to avoid NULL pointer dereference by moving the 
+dereference after the check.
+
+Fixes: 69d54ce7491d ("wifi: mt76: mt7996: switch to single multi-radio wiphy")
 Signed-off-by: Qasim Ijaz <qasdev00@gmail.com>
 ---
-v2:
-- Added missing semi-colon as pointed out by Jonas Gorski
-
- drivers/net/wireless/mediatek/mt76/mt7996/main.c | 12 +++++++++---
- 1 file changed, 9 insertions(+), 3 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7996/main.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-index 91c64e3a0860..70823bbb165c 100644
+index 91c64e3a0860..66575698aef1 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-@@ -998,16 +998,22 @@ mt7996_mac_sta_add_links(struct mt7996_dev *dev, struct ieee80211_vif *vif,
- 			continue;
+@@ -414,11 +414,13 @@ static void mt7996_phy_set_rxfilter(struct mt7996_phy *phy)
  
- 		link_conf = link_conf_dereference_protected(vif, link_id);
--		if (!link_conf)
-+		if (!link_conf) {
-+			err = -EINVAL;
- 			goto error_unlink;
-+		}
+ static void mt7996_set_monitor(struct mt7996_phy *phy, bool enabled)
+ {
+-	struct mt7996_dev *dev = phy->dev;
++	struct mt7996_dev *dev;
  
- 		link = mt7996_vif_link(dev, vif, link_id);
--		if (!link)
-+		if (!link) {
-+			err = -EINVAL;
- 			goto error_unlink;
-+		}
+ 	if (!phy)
+ 		return;
  
- 		link_sta = link_sta_dereference_protected(sta, link_id);
--		if (!link_sta)
-+		if (!link_sta) {
-+			err = -EINVAL;
- 			goto error_unlink;
-+		}
++	dev = phy->dev;
++	
+ 	if (enabled == !(phy->rxfilter & MT_WF_RFCR_DROP_OTHER_UC))
+ 		return;
  
- 		err = mt7996_mac_sta_init_link(dev, link_conf, link_sta, link,
- 					       link_id);
 -- 
 2.39.5
 
