@@ -4,109 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36D72C3600C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Apr 2025 13:15:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF38AC369A2
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Apr 2025 14:06:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XgQfANebtdqnI5c6U+NPo92x9wLAySpUrYEpuKhqRpM=; b=H5/LOHxFF7dlwbCtHVXj5cdF9h
-	SVLNBVazysa8+wHrtlxZdd/CEz9TV104ZsWLJBkQd4a0kDu7FSxoYIvkOTiivP41SxK/9ELLX/Oux
-	S7G8fFPD+pTEKYMbOUU7RQKPLymevmKm2ND43rSg99QlmlTAwgeJYSFs62soD19gSUp8dVBcAL4sc
-	lJC+OqO8k5lLnyrXEDZeCAgI5spR85mZ7205EfvwzIKHrLu0J5323oKhYiYsxnBioXYaQOGUyzfv4
-	Feu9A41XzM6oSGmUv+vTv98kTUhHWNQgd3Sv8l0Y3KX2VFb6OJuta+eX7wySkjgZ1hlApTDLNhcMr
-	NFgmAHCg==;
+	bh=eKjdH4Pw3NpQPLkg+gCbs76LHGbj5tkScdwQ0i1YzGA=; b=juChJ5L0P2oPlhRjPF+pdaHL7j
+	r4uI7P8ReZjDganNQEdNrDJNGYlFL68HFX50HBbIqX0R4IAMUSlT+PkrZt+rTVd0C1rZDPwju89zJ
+	RmbPRDVZcHgQuStfCNta+trIsUP7T3cXLF2muaBDjY6zfU3u5CbUebPT+BaT0lH1rrLMnfO55lrey
+	bk4G/oZSr4diR2iO1lT3EeH+7XqJpjmxHBtuKwLF7+rNpP/zO8SH93sBfKi37JUNlM6hY4wuXDXzN
+	SgTmX5QYgbb0bGyI8ZAOfSxnre4qscBOwksUnd9rcJEVVYj9k4BE6L8jnLzAhC4nHGLu618rziX9N
+	ZgUQFKTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u28ne-0000000495f-0KyV;
-	Tue, 08 Apr 2025 13:15:34 +0000
-Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
+	id 1u29b5-00000004Jj3-2kui;
+	Tue, 08 Apr 2025 14:06:39 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u27tg-00000003xmK-49GH
+	id 1u29Rr-00000004Hyc-10gl
 	for linux-mediatek@lists.infradead.org;
-	Tue, 08 Apr 2025 12:17:50 +0000
-Received: by mail-yw1-x1136.google.com with SMTP id 00721157ae682-6fedefb1c9cso45622187b3.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 08 Apr 2025 05:17:44 -0700 (PDT)
+	Tue, 08 Apr 2025 13:57:12 +0000
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-ac2bdea5a38so935598666b.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 08 Apr 2025 06:57:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1744114663; x=1744719463; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1744120625; x=1744725425; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=XgQfANebtdqnI5c6U+NPo92x9wLAySpUrYEpuKhqRpM=;
-        b=aL3WhV6qI4pDtIFufwSuHLMYAwqdBBammaQbOZXuC1bVcmSE7b4+7GK7Saa3IcmRrl
-         BCTnPcpbOOo6i18MeJci06xc5JzOxGq/8AVBGv6zOqZBmwC4De6Tp0N5wNgpnTA5uqRt
-         eygzOT/YVX0wJy+xR9bH+YEUr2jSbn82uqSR/fZ7ZO5+bWA1YO9vyly2gB4n9hneTMNf
-         Ynczyrs97ixYvFlsxuXj0XbTTCLjtqzflJgcAcj6D+rdSfHSsUKyNKKcxNFDLFU/0UZS
-         5PWCwQZALVZgP8Kp9Kh/liHa8rNj2QndhP0JeESv6m60hCE173Gzl53eYHnvK7zvM8DB
-         3k1g==
+        bh=eKjdH4Pw3NpQPLkg+gCbs76LHGbj5tkScdwQ0i1YzGA=;
+        b=qiWjD/PlB1PM7cH1g68X0OIF7K8dy9Cz5Oe4Xv6jj6c5FM32WUJefkKcpDdeDVLXPJ
+         lyld4Dz5zlfOqcd3I8pyNmJkXy1O+5YsrHmXt949kkGLA9YO3u6M8PvFPIlKJ/ZI3OiU
+         WDKwJum5i4exB6owgvP7jj5rI/KNYcJaw0vwCJJD+ZYDx+TJj1WeFKeFFXsh7ic67S8y
+         21Kyp+iHPSFVmvXVzZ/EnKtktVWpGXl13Jjhuse+lujjJTEqb1+EnedWDOj3L3CQccWN
+         UZ2uj2/giXlgcf67lj3Mq8GsK8SGJcPpoUq4FRgGQZyE/kkUhVZJDcKtAAZCbDWeY5iP
+         WHBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744114663; x=1744719463;
+        d=1e100.net; s=20230601; t=1744120625; x=1744725425;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=XgQfANebtdqnI5c6U+NPo92x9wLAySpUrYEpuKhqRpM=;
-        b=xOGkaGBbfaw7SWVaQ7eswoDh/En0J3l6UYSwGha+HWw/vVqJVSX+XrBEkCi5RCubak
-         ri9ZcEmIpT+p0cicKsnDFixKw/F1krdPTfMcFxpjxxx3qku93+LtK5joDWxNXvc3u9fm
-         1byvBCRBlIv5UOj8QKf1Spz4dRymM4wjeZpvWK+9ALPtdP3eioxmLmHSu/jU2JD7zuYT
-         Aj5RlAPOec2kztUwVlOAtVWzbeNCaoeUbyO383flnbnFk6vn0AKXj175yjICXXUFA5Fs
-         fMAnooPp8lXFAQAI18L8lIZEYuisFpbouIC6vV3+wYwqntvHUfCRBZ7PFOpJMfyeZ1ag
-         epXg==
-X-Forwarded-Encrypted: i=1; AJvYcCUCtXoXWrOiUzlnss4mL/wJDwVJZgUE5W/4xVZYlq48FTJyhBubhsFcfgShQ980DuIBKVH4P/58r8cdpz/qnQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw8WLvGLoWRrP/kBos2WRoXbNgmu4Jn4vLHRYqN0078YMVoPbdL
-	mm7t8ayp5Lo+Gc8zZYxIj09QG1aygO/GK5u5NjbwKwO0tkwW7L3sdUmB0aWdFrV0avGZVnNbjN9
-	GpBsd11zu7+FGBMi6wNL13/PqLguKbnd+8I+NlQ==
-X-Gm-Gg: ASbGncv/RBSpWpH4zwmCMDcy1QPCv3W1nVtI9JIgByX1af+39vIYhFWGlAkdKCSfGWm
-	A7VzvBwCrIjSj2NNSpWbJj9sV6q83F0mZHL1HSIZiR3yXRD3wg39f5P4VnAZxBc6SmKixbTHj0L
-	4fcPlMhzBZPBDBNdqiWYMw8UNU1fA=
-X-Google-Smtp-Source: AGHT+IE9ys53OzSUdrwDVzPrCpJ3j0rVw9UiRXdXpPHOiJneCGTZtJTMxzg8Xq2rdR9GYtx0ZTNP05CFJHjGpzcayc8=
-X-Received: by 2002:a05:690c:67c4:b0:6ff:28b2:50e1 with SMTP id
- 00721157ae682-703e14ffd3dmr297170407b3.2.1744114663553; Tue, 08 Apr 2025
- 05:17:43 -0700 (PDT)
+        bh=eKjdH4Pw3NpQPLkg+gCbs76LHGbj5tkScdwQ0i1YzGA=;
+        b=IVDxCiy5jLBXdTWhayTTIml4rX8so/MHoeXCcqG0SNNxOlo81yYquVTjOKrBNp2wWJ
+         4VjjFD4bNRq8kjLOvkiM2U5dHRn9czVZlXxx/FnY7Kqm5Votqr++Ct+1HYeH0UNf6NzN
+         iIeO1vALTTmGcMAb6D0xaPYk0gePSEYWRNZTB4Tls2nUwgupAL71C19g2mga4l8RKfZk
+         ep/PJMqCG2ezl7kt6V0FziKW6M2LvYedT/NiAdSqRT/P0JklFXXLXw2uORWO7STgu9sD
+         scbuMDXcqaZgt5R73vTz/114cNLpobgFgeoWJ8afshFqa+GnF9MJ0/hJECdspCB51QrI
+         hKDA==
+X-Forwarded-Encrypted: i=1; AJvYcCU3Bflzohlmzac2cO4Gatb60bv4dvhu9jNxrkxiJe80TkduBLtI90ZjK6QJEDrdzPbHikZLR5Y77reNFSeg3w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzT/d3hT0AfrEnPON3yJ8QYBNt/wsXBuFHNbQDoo+rJfawwqjjo
+	RfuYdjzcjEgLVJQsGmnviO9WBPti2lg8jZCvKiQY4vmMHffK5LU0FeNs+HW3nlSup/xvpPBCNJx
+	gc5C52mb/itIrU/f90EvGorzqMCw0TI3x/DUSVA==
+X-Gm-Gg: ASbGnctjbtREMiNYw0/L39P583/6SxbLavuXEanMRQ9J18VcpBbNCSqZVsquE0yh9wJ
+	oiZIzoVJTD5agrO/NSrzBDl8C96ELHMPfK62qMYYz9/wKFoLLpqWJ1XitcXEFTE6P8K2h40Sgir
+	FGYhFdXdVEtuMbdfP/zZ6EeMyGIoh0vQyPRQBHqVOkHo4XltNHdAgOQId9zeR8
+X-Google-Smtp-Source: AGHT+IF48flZYNk+YO92lTcI4xK0KZJsxFwCMsBP9ivkrbDJj57LOF+fPF5jQfMsA9Cn6stG3kjzEOQY6ms+eoLQc1s=
+X-Received: by 2002:a17:906:f587:b0:ac1:e881:8997 with SMTP id
+ a640c23a62f3a-ac7d6c9f74fmr1690319666b.3.1744120624595; Tue, 08 Apr 2025
+ 06:57:04 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org>
- <20250403-dt-cpu-schema-v1-18-076be7171a85@kernel.org> <CAPDyKFrFRrPVJ_t0JrAE1VTbS02hwr=L-EHtqb7CQiWzB1MnQg@mail.gmail.com>
- <CAL_JsqKygxhcQ=PZW84sfiW7BVXKF839vfNyxS9GwAXuqmN=8g@mail.gmail.com>
- <CAPDyKFoHQdHED0hHUR7VKin0XG6SVnYXuvPjB=Xe+1o2hpiPJA@mail.gmail.com> <CAL_Jsq+Oa7MvVO7Y-RG+qrY2e86B_q0XGq1LWoy5Mq+G72ZHzQ@mail.gmail.com>
-In-Reply-To: <CAL_Jsq+Oa7MvVO7Y-RG+qrY2e86B_q0XGq1LWoy5Mq+G72ZHzQ@mail.gmail.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Tue, 8 Apr 2025 14:17:07 +0200
-X-Gm-Features: ATxdqUE7frfhfuxoKUlf3DinAq4W783EiniruawsYcgTKF9-ms73Ag05S_dZWTY
-Message-ID: <CAPDyKFoKdj-Y4-dCwYRG7TLdS1HcSH=i9EN-b9Cpyo50kMmC5Q@mail.gmail.com>
-Subject: Re: [PATCH 18/19] dt-bindings: arm/cpus: Add power-domains constraints
-To: Rob Herring <robh@kernel.org>
-Cc: Stephan Gerhold <stephan.gerhold@linaro.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	"Rafael J. Wysocki" <rafael@kernel.org>, Viresh Kumar <viresh.kumar@linaro.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
+References: <20250122-add-mtk-isp-3-0-support-v8-0-a3d3731eef45@baylibre.com>
+ <20250122-add-mtk-isp-3-0-support-v8-4-a3d3731eef45@baylibre.com> <b68208ea56f297fab0a0c290e73a8671366735b6.camel@mediatek.com>
+In-Reply-To: <b68208ea56f297fab0a0c290e73a8671366735b6.camel@mediatek.com>
+From: Julien Stephan <jstephan@baylibre.com>
+Date: Tue, 8 Apr 2025 15:56:51 +0200
+X-Gm-Features: ATxdqUFS9UWyQm5VlU8vEK9QeSLji9-pVMuKN2hnPjsQ_fZ62HhsLvXH6NYRKbg
+Message-ID: <CAEHHSvYcet16TrWRbE=nkyS-0jXNbB+=knL0zUKLbnqcYBaSpA@mail.gmail.com>
+Subject: Re: [PATCH v8 4/5] media: platform: mediatek: isp: add mediatek
+ ISP3.0 camsv
+To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
+Cc: "laurent.pinchart@ideasonboard.com" <laurent.pinchart@ideasonboard.com>, 
+	=?UTF-8?B?QW5keSBIc2llaCAo6Kyd5pm655qTKQ==?= <Andy.Hsieh@mediatek.com>, 
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Vincenzo Frascino <vincenzo.frascino@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, 
-	Sudeep Holla <sudeep.holla@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, 
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Viresh Kumar <vireshk@kernel.org>, 
-	Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>, zhouyanjie@wanyeetech.com, 
-	Conor Dooley <conor@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>, Steen Hegelund <Steen.Hegelund@microchip.com>, 
-	Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, 
-	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org, 
-	linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-mips@vger.kernel.org, 
-	imx@lists.linux.dev, linux-rockchip@lists.infradead.org, 
-	linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org
+	"robh@kernel.org" <robh@kernel.org>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>, 
+	"mchehab@kernel.org" <mchehab@kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>, 
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
+	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, 
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
+	"paul.elder@ideasonboard.com" <paul.elder@ideasonboard.com>, 
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+	"fsylvestre@baylibre.com" <fsylvestre@baylibre.com>, 
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+	"pnguyen@baylibre.com" <pnguyen@baylibre.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250408_051745_047637_53F8E44D 
-X-CRM114-Status: GOOD (  25.32  )
+X-CRM114-CacheID: sfid-20250408_065707_281753_3AF4FB2A 
+X-CRM114-Status: GOOD (  28.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,86 +108,487 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-+ Stephan Gerhold
-
-On Mon, 7 Apr 2025 at 18:50, Rob Herring <robh@kernel.org> wrote:
+Le jeu. 20 mars 2025 =C3=A0 03:18, CK Hu (=E8=83=A1=E4=BF=8A=E5=85=89) <ck.=
+hu@mediatek.com> a =C3=A9crit :
 >
-> On Mon, Apr 7, 2025 at 11:23=E2=80=AFAM Ulf Hansson <ulf.hansson@linaro.o=
-rg> wrote:
+> On Wed, 2025-01-22 at 14:59 +0100, Julien Stephan wrote:
+> > External email : Please do not click links or open attachments until yo=
+u have verified the sender or the content.
 > >
-> > On Fri, 4 Apr 2025 at 15:09, Rob Herring <robh@kernel.org> wrote:
-> > >
-> > > On Fri, Apr 4, 2025 at 5:37=E2=80=AFAM Ulf Hansson <ulf.hansson@linar=
-o.org> wrote:
-> > > >
-> > > > On Fri, 4 Apr 2025 at 05:06, Rob Herring (Arm) <robh@kernel.org> wr=
-ote:
-> > > > >
-> > > > > The "power-domains" and "power-domains-names" properties are miss=
-ing any
-> > > > > constraints. Add the constraints and drop the generic description=
-s.
-> > > > >
-> > > > > Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
-> > > > > ---
-> > > > >  Documentation/devicetree/bindings/arm/cpus.yaml | 8 ++------
-> > > > >  1 file changed, 2 insertions(+), 6 deletions(-)
-> > > > >
-> > > > > diff --git a/Documentation/devicetree/bindings/arm/cpus.yaml b/Do=
-cumentation/devicetree/bindings/arm/cpus.yaml
-> > > > > index 6f74ebfd38df..5bd5822db8af 100644
-> > > > > --- a/Documentation/devicetree/bindings/arm/cpus.yaml
-> > > > > +++ b/Documentation/devicetree/bindings/arm/cpus.yaml
-> > > > > @@ -313,19 +313,15 @@ properties:
-> > > > >      maxItems: 1
-> > > > >
-> > > > >    power-domains:
-> > > > > -    description:
-> > > > > -      List of phandles and PM domain specifiers, as defined by b=
-indings of the
-> > > > > -      PM domain provider (see also ../power_domain.txt).
-> > > > > +    maxItems: 1
-> > > >
-> > > > There are more than one in some cases. The most is probably three, =
-I think.
-> > >
-> > > Unless I missed it, testing says otherwise. What would the names be i=
-f
-> > > more than 1 entry?
 > >
-> > "psci", "perf", "cpr", etc
+> > From: Phi-bang Nguyen <pnguyen@baylibre.com>
 > >
-> > The "psci" is always for CPU power management, the other is for CPU
-> > performance scaling (which may be more than one power-domain in some
-> > cases).
+> > This driver provides a path to bypass the SoC ISP so that image data
+> > coming from the SENINF can go directly into memory without any image
+> > processing. This allows the use of an external ISP.
 > >
-> > I would suggest changing this to "maxItems: 3". That should be
-> > sufficient I think.
+> > Signed-off-by: Phi-bang Nguyen <pnguyen@baylibre.com>
+> > Signed-off-by: Florian Sylvestre <fsylvestre@baylibre.com>
+> > [Paul Elder fix irq locking]
+> > Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
+> > Co-developed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> > Co-developed-by: Julien Stephan <jstephan@baylibre.com>
+> > Signed-off-by: Julien Stephan <jstephan@baylibre.com>
+> > ---
 >
-> Again, my testing says 1 is enough. So where is a .dts file with 3 or 2?
+> [snip]
+>
+> > +
+> > +void mtk_camsv_setup(struct mtk_cam_dev *cam_dev, unsigned int count,
+> > +                    u32 w, u32 h, u32 bpl, u32 mbus_fmt)
+> > +{
+> > +       const struct mtk_cam_conf *conf =3D cam_dev->conf;
+> > +       const struct mtk_cam_format_info *fmtinfo;
+> > +       struct mtk_cam_dev_buffer *buf;
+> > +       unsigned long flags;
+> > +       unsigned int i;
+> > +       u32 tmp;
+> > +
+> > +       for (i =3D 0; i < count; i++)
+> > +               mtk_camsv_fbc_inc(cam_dev);
+>
+> I think you should call mtk_camsv_fbc_inc() only after mtk_camsv_update_b=
+uffers_add().
+>
+> > +
+> > +       fmtinfo =3D mtk_cam_format_info_by_code(mbus_fmt);
+> > +
+> > +       mtk_camsv_tg_write(cam_dev, CAMSV_TG_SEN_MODE, conf->tg_sen_mod=
+e);
+> > +
+> > +       mtk_camsv_tg_write(cam_dev, CAMSV_TG_SEN_GRAB_PXL,
+> > +                            (w * fmtinfo->w_factor) << 16U);
+> > +
+> > +       mtk_camsv_tg_write(cam_dev, CAMSV_TG_SEN_GRAB_LIN, h << 16U);
+> > +
+> > +       /* YUV_U2S_DIS: disable YUV sensor unsigned to signed */
+> > +       mtk_camsv_tg_write(cam_dev, CAMSV_TG_PATH_CFG, 0x1000U);
+> > +
+> > +       /* Reset cam */
+> > +       mtk_camsv_write(cam_dev, CAMSV_SW_CTL, CAMSV_SW_RST);
+> > +       mtk_camsv_write(cam_dev, CAMSV_SW_CTL, 0x0U);
+> > +       mtk_camsv_write(cam_dev, CAMSV_SW_CTL, CAMSV_IMGO_RST_TRIG);
+> > +
+> > +       readl_poll_timeout_atomic(cam_dev->regs + CAMSV_SW_CTL, tmp,
+> > +                                 (tmp =3D=3D (CAMSV_IMGO_RST_TRIG |
+> > +                                          CAMSV_IMGO_RST_ST)), 10, 200=
+);
+> > +
+> > +       mtk_camsv_write(cam_dev, CAMSV_SW_CTL, 0x0U);
+> > +
+> > +       mtk_camsv_write(cam_dev, CAMSV_INT_EN, INT_ST_MASK_CAMSV);
+> > +
+> > +       mtk_camsv_write(cam_dev, CAMSV_MODULE_EN,
+> > +                         conf->module_en | fmtinfo->module_en_pak);
+> > +       mtk_camsv_write(cam_dev, CAMSV_FMT_SEL, fmtinfo->fmt_sel);
+> > +       mtk_camsv_write(cam_dev, CAMSV_PAK, fmtinfo->pak);
+> > +
+> > +       mtk_camsv_img0_write(cam_dev, CAMSV_IMGO_SV_XSIZE, bpl - 1U);
+> > +       mtk_camsv_img0_write(cam_dev, CAMSV_IMGO_SV_YSIZE, h - 1U);
+> > +
+> > +       mtk_camsv_img0_write(cam_dev, CAMSV_IMGO_SV_STRIDE,
+> > +                              fmtinfo->imgo_stride | bpl);
+> > +
+> > +       mtk_camsv_img0_write(cam_dev, CAMSV_IMGO_SV_CON, conf->imgo_con=
+);
+> > +       mtk_camsv_img0_write(cam_dev, CAMSV_IMGO_SV_CON2, conf->imgo_co=
+n2);
+> > +
+> > +       /* Set buf addr */
+> > +       spin_lock_irqsave(&cam_dev->buf_list_lock, flags);
+> > +       buf =3D list_first_entry_or_null(&cam_dev->buf_list,
+> > +                                      struct mtk_cam_dev_buffer,
+> > +                                      list);
+> > +       if (buf)
+> > +               mtk_camsv_update_buffers_add(cam_dev, buf);
+> > +       spin_unlock_irqrestore(&cam_dev->buf_list_lock, flags);
+> > +
+> > +       /* CMOS_EN first */
+> > +       mtk_camsv_tg_write(cam_dev, CAMSV_TG_SEN_MODE,
+> > +                            mtk_camsv_tg_read(cam_dev, CAMSV_TG_SEN_MO=
+DE) |
+> > +                            CAMSV_TG_SEN_MODE_CMOS_EN);
+> > +
+> > +       /* finally, CAMSV_MODULE_EN : IMGO_EN */
+> > +       mtk_camsv_write(cam_dev, CAMSV_MODULE_EN,
+> > +                         mtk_camsv_read(cam_dev, CAMSV_MODULE_EN) |
+> > +                         CAMSV_MODULE_EN_IMGO_EN);
+> > +}
+> > +
+>
+> [snip]
+>
+> > +
+> > +static int mtk_camsv_runtime_resume(struct device *dev)
+> > +{
+> > +       struct mtk_cam_dev *cam_dev =3D dev_get_drvdata(dev);
+> > +       struct vb2_queue *vbq =3D &cam_dev->vdev.vbq;
+> > +       struct mtk_cam_dev_buffer *buf;
+> > +       unsigned long flags =3D 0;
+> > +       int ret;
+> > +
+> > +       ret =3D clk_bulk_prepare_enable(cam_dev->num_clks, cam_dev->clk=
+s);
+> > +       if (ret) {
+> > +               dev_err(dev, "failed to enable clock:%d\n", ret);
+> > +               return ret;
+> > +       }
+> > +
+> > +       if (vb2_is_streaming(vbq)) {
+> > +
+> > +               spin_lock_irqsave(&cam_dev->buf_list_lock, flags);
+> > +               buf =3D list_first_entry_or_null(&cam_dev->buf_list,
+> > +                                              struct mtk_cam_dev_buffe=
+r,
+> > +                                              list);
+> > +               if (buf)
+> > +                       mtk_camsv_update_buffers_add(cam_dev, buf);
+>
+> I don't know, when suspend, the register value would be kept or not.
+> If register is not kept, I think you should re-program all register in mt=
+k_camsv_setup().
+> But it seems it's not necessary, so the register is kept and you don't ne=
+ed to set register again.
+> So this mtk_camsv_update_buffers_add() is redundant.
+>
+> > +
+> > +               spin_unlock_irqrestore(&cam_dev->buf_list_lock, flags);
+> > +
+> > +               /* Stream on the sub-device */
+> > +               ret =3D v4l2_subdev_enable_streams(&cam_dev->subdev,
+> > +                                                cam_dev->subdev_pads[M=
+TK_CAM_CIO_PAD_VIDEO].index,
+> > +                                                BIT(0));
+> > +
+> > +               if (ret)
+> > +                       goto fail_no_stream;
+> > +       }
+> > +
+> > +       return 0;
+> > +
+> > +fail_no_stream:
+> > +       mtk_cam_vb2_return_all_buffers(cam_dev, VB2_BUF_STATE_QUEUED);
+> > +       return ret;
+> > +}
+> > +
+> > +static const struct dev_pm_ops mtk_camsv_pm_ops =3D {
+> > +       SET_SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend,
+> > +                               pm_runtime_force_resume)
+> > +       SET_RUNTIME_PM_OPS(mtk_camsv_runtime_suspend,
+> > +                          mtk_camsv_runtime_resume, NULL)
+> > +};
+> > +#endif
+> > +
+>
+> [snip]
+>
+> > +/* -------------------------------------------------------------------=
+----------
+> > + * Format Information
+> > + */
+> > +
+> > +static const struct mtk_cam_format_info mtk_cam_format_info[] =3D {
+> > +       {
+> > +               .fourcc =3D V4L2_PIX_FMT_SBGGR8,
+> > +               .code =3D MEDIA_BUS_FMT_SBGGR8_1X8,
+> > +               .bpp =3D 8,
+> > +               .w_factor =3D 1,
+> > +               .module_en_pak =3D CAMSV_MODULE_EN_PAK_EN,
+> > +               .pak =3D CAMSV_PAK_PAK_MODE_RAW_8
+> > +                       | CAMSV_PAK_PAK_DBL_MODE_2_PIXELS,
+> > +               .fmt_sel =3D CAMSV_FMT_SEL_TG1_FMT_RAW_8,
+> > +               .imgo_stride =3D CAMSV_IMGO_SV_STRIDE_BUS_SIZE_EN
+> > +                       | CAMSV_IMGO_SV_STRIDE_BUS_SIZE_32,
+> > +       }, {
+> > +               .fourcc =3D V4L2_PIX_FMT_SGBRG8,
+> > +               .code =3D MEDIA_BUS_FMT_SGBRG8_1X8,
+> > +               .bpp =3D 8,
+> > +               .w_factor =3D 1,
+> > +               .module_en_pak =3D CAMSV_MODULE_EN_PAK_EN,
+> > +               .pak =3D CAMSV_PAK_PAK_MODE_RAW_8
+> > +                       | CAMSV_PAK_PAK_DBL_MODE_2_PIXELS,
+> > +               .fmt_sel =3D CAMSV_FMT_SEL_TG1_FMT_RAW_8,
+> > +               .imgo_stride =3D CAMSV_IMGO_SV_STRIDE_BUS_SIZE_EN
+> > +                       | CAMSV_IMGO_SV_STRIDE_BUS_SIZE_32,
+> > +       }, {
+> > +               .fourcc =3D V4L2_PIX_FMT_SGRBG8,
+> > +               .code =3D MEDIA_BUS_FMT_SGRBG8_1X8,
+> > +               .bpp =3D 8,
+> > +               .w_factor =3D 1,
+> > +               .module_en_pak =3D CAMSV_MODULE_EN_PAK_EN,
+> > +               .pak =3D CAMSV_PAK_PAK_MODE_RAW_8
+> > +                       | CAMSV_PAK_PAK_DBL_MODE_2_PIXELS,
+> > +               .fmt_sel =3D CAMSV_FMT_SEL_TG1_FMT_RAW_8,
+> > +               .imgo_stride =3D CAMSV_IMGO_SV_STRIDE_BUS_SIZE_EN
+> > +                       | CAMSV_IMGO_SV_STRIDE_BUS_SIZE_32,
+> > +       }, {
+> > +               .fourcc =3D V4L2_PIX_FMT_SRGGB8,
+> > +               .code =3D MEDIA_BUS_FMT_SRGGB8_1X8,
+> > +               .bpp =3D 8,
+> > +               .w_factor =3D 1,
+> > +               .module_en_pak =3D CAMSV_MODULE_EN_PAK_EN,
+> > +               .pak =3D CAMSV_PAK_PAK_MODE_RAW_8
+> > +                       | CAMSV_PAK_PAK_DBL_MODE_2_PIXELS,
+> > +               .fmt_sel =3D CAMSV_FMT_SEL_TG1_FMT_RAW_8,
+> > +               .imgo_stride =3D CAMSV_IMGO_SV_STRIDE_BUS_SIZE_EN
+> > +                       | CAMSV_IMGO_SV_STRIDE_BUS_SIZE_32,
+> > +       }, {
+> > +               .fourcc =3D V4L2_PIX_FMT_SBGGR10,
+>
+> In stream_out_fmts[], it does not declare V4L2_PIX_FMT_SBGGR10.
+> So you may remove it in mtk_cam_format_info[], or add it in stream_out_fm=
+ts[].
+>
+> > +               .code =3D MEDIA_BUS_FMT_SBGGR10_1X10,
+> > +               .bpp =3D 10,
+> > +               .w_factor =3D 1,
+> > +               .module_en_pak =3D CAMSV_MODULE_EN_PAK_EN,
+> > +               .pak =3D CAMSV_PAK_PAK_MODE_RAW_10
+> > +                       | CAMSV_PAK_PAK_DBL_MODE_2_PIXELS,
+> > +               .fmt_sel =3D CAMSV_FMT_SEL_TG1_FMT_RAW_10,
+> > +               .imgo_stride =3D CAMSV_IMGO_SV_STRIDE_BUS_SIZE_EN
+> > +                       | CAMSV_IMGO_SV_STRIDE_BUS_SIZE_32,
+> > +       }, {
+> > +               .fourcc =3D V4L2_PIX_FMT_SGBRG10,
+>
+> Ditto.
+>
+> > +               .code =3D MEDIA_BUS_FMT_SGBRG10_1X10,
+> > +               .bpp =3D 10,
+> > +               .w_factor =3D 1,
+> > +               .module_en_pak =3D CAMSV_MODULE_EN_PAK_EN,
+> > +               .pak =3D CAMSV_PAK_PAK_MODE_RAW_10
+> > +                       | CAMSV_PAK_PAK_DBL_MODE_2_PIXELS,
+> > +               .fmt_sel =3D CAMSV_FMT_SEL_TG1_FMT_RAW_10,
+> > +               .imgo_stride =3D CAMSV_IMGO_SV_STRIDE_BUS_SIZE_EN
+> > +                       | CAMSV_IMGO_SV_STRIDE_BUS_SIZE_32,
+> > +       }, {
+> > +               .fourcc =3D V4L2_PIX_FMT_SGRBG10,
+>
+> Ditto.
+>
+> > +               .code =3D MEDIA_BUS_FMT_SGRBG10_1X10,
+> > +               .bpp =3D 10,
+> > +               .w_factor =3D 1,
+> > +               .module_en_pak =3D CAMSV_MODULE_EN_PAK_EN,
+> > +               .pak =3D CAMSV_PAK_PAK_MODE_RAW_10
+> > +                       | CAMSV_PAK_PAK_DBL_MODE_2_PIXELS,
+> > +               .fmt_sel =3D CAMSV_FMT_SEL_TG1_FMT_RAW_10,
+> > +               .imgo_stride =3D CAMSV_IMGO_SV_STRIDE_BUS_SIZE_EN
+> > +                       | CAMSV_IMGO_SV_STRIDE_BUS_SIZE_32,
+> > +       }, {
+> > +               .fourcc =3D V4L2_PIX_FMT_SRGGB10,
+>
+> Ditto.
+>
+> > +               .code =3D MEDIA_BUS_FMT_SRGGB10_1X10,
+> > +               .bpp =3D 10,
+> > +               .w_factor =3D 1,
+> > +               .module_en_pak =3D CAMSV_MODULE_EN_PAK_EN,
+> > +               .pak =3D CAMSV_PAK_PAK_MODE_RAW_10
+> > +                       | CAMSV_PAK_PAK_DBL_MODE_2_PIXELS,
+> > +               .fmt_sel =3D CAMSV_FMT_SEL_TG1_FMT_RAW_10,
+> > +               .imgo_stride =3D CAMSV_IMGO_SV_STRIDE_BUS_SIZE_EN
+> > +                       | CAMSV_IMGO_SV_STRIDE_BUS_SIZE_32,
+> > +       }, {
+> > +               .fourcc =3D V4L2_PIX_FMT_SBGGR12,
+>
+> Ditto.
+>
+> > +               .code =3D MEDIA_BUS_FMT_SBGGR12_1X12,
+> > +               .bpp =3D 12,
+> > +               .w_factor =3D 1,
+> > +               .module_en_pak =3D CAMSV_MODULE_EN_PAK_EN,
+> > +               .pak =3D CAMSV_PAK_PAK_MODE_RAW_12
+> > +                       | CAMSV_PAK_PAK_DBL_MODE_2_PIXELS,
+> > +               .fmt_sel =3D CAMSV_FMT_SEL_TG1_FMT_RAW_12,
+> > +               .imgo_stride =3D CAMSV_IMGO_SV_STRIDE_BUS_SIZE_EN
+> > +                       | CAMSV_IMGO_SV_STRIDE_BUS_SIZE_32,
+> > +       }, {
+> > +               .fourcc =3D V4L2_PIX_FMT_SGBRG12,
+>
+> Ditto.
+>
+> > +               .code =3D MEDIA_BUS_FMT_SGBRG12_1X12,
+> > +               .bpp =3D 12,
+> > +               .w_factor =3D 1,
+> > +               .module_en_pak =3D CAMSV_MODULE_EN_PAK_EN,
+> > +               .pak =3D CAMSV_PAK_PAK_MODE_RAW_12
+> > +                       | CAMSV_PAK_PAK_DBL_MODE_2_PIXELS,
+> > +               .fmt_sel =3D CAMSV_FMT_SEL_TG1_FMT_RAW_12,
+> > +               .imgo_stride =3D CAMSV_IMGO_SV_STRIDE_BUS_SIZE_EN
+> > +                       | CAMSV_IMGO_SV_STRIDE_BUS_SIZE_32,
+> > +       }, {
+> > +               .fourcc =3D V4L2_PIX_FMT_SGRBG12,
+>
+> Ditto.
+>
+> > +               .code =3D MEDIA_BUS_FMT_SGRBG12_1X12,
+> > +               .bpp =3D 12,
+> > +               .w_factor =3D 1,
+> > +               .module_en_pak =3D CAMSV_MODULE_EN_PAK_EN,
+> > +               .pak =3D CAMSV_PAK_PAK_MODE_RAW_12
+> > +                       | CAMSV_PAK_PAK_DBL_MODE_2_PIXELS,
+> > +               .fmt_sel =3D CAMSV_FMT_SEL_TG1_FMT_RAW_12,
+> > +               .imgo_stride =3D CAMSV_IMGO_SV_STRIDE_BUS_SIZE_EN
+> > +                       | CAMSV_IMGO_SV_STRIDE_BUS_SIZE_32,
+> > +       }, {
+> > +               .fourcc =3D V4L2_PIX_FMT_SRGGB12,
+>
+> Ditto.
+>
+> > +               .code =3D MEDIA_BUS_FMT_SRGGB12_1X12,
+> > +               .bpp =3D 12,
+> > +               .w_factor =3D 1,
+> > +               .module_en_pak =3D CAMSV_MODULE_EN_PAK_EN,
+> > +               .pak =3D CAMSV_PAK_PAK_MODE_RAW_12
+> > +                       | CAMSV_PAK_PAK_DBL_MODE_2_PIXELS,
+> > +               .fmt_sel =3D CAMSV_FMT_SEL_TG1_FMT_RAW_12,
+> > +               .imgo_stride =3D CAMSV_IMGO_SV_STRIDE_BUS_SIZE_EN
+> > +                       | CAMSV_IMGO_SV_STRIDE_BUS_SIZE_32,
+> > +       }, {
+> > +               .fourcc =3D V4L2_PIX_FMT_UYVY,
+> > +               .code =3D MEDIA_BUS_FMT_UYVY8_1X16,
+> > +               .bpp =3D 16,
+> > +               .w_factor =3D 2,
+> > +               .module_en_pak =3D CAMSV_MODULE_EN_PAK_SEL,
+> > +               .pak =3D 0, /* ignored */
+> > +               .fmt_sel =3D CAMSV_FMT_SEL_IMGO_BUS_SIZE_16
+> > +                       | CAMSV_FMT_SEL_TG1_FMT_YUV422,
+> > +               .imgo_stride =3D CAMSV_IMGO_SV_STRIDE_BUS_SIZE_EN
+> > +                       | CAMSV_IMGO_SV_STRIDE_BUS_SIZE_16,
+> > +       }, {
+> > +               .fourcc =3D V4L2_PIX_FMT_VYUY,
+> > +               .code =3D MEDIA_BUS_FMT_VYUY8_1X16,
+> > +               .bpp =3D 16,
+> > +               .w_factor =3D 2,
+> > +               .module_en_pak =3D CAMSV_MODULE_EN_PAK_SEL,
+> > +               .pak =3D 0, /* ignored */
+> > +               .fmt_sel =3D CAMSV_FMT_SEL_IMGO_BUS_SIZE_16
+> > +                       | CAMSV_FMT_SEL_TG1_FMT_YUV422,
+> > +               .imgo_stride =3D CAMSV_IMGO_SV_STRIDE_BUS_SIZE_EN
+> > +                       | CAMSV_IMGO_SV_STRIDE_BUS_SIZE_16,
+> > +       }, {
+> > +               .fourcc =3D V4L2_PIX_FMT_YUYV,
+> > +               .code =3D MEDIA_BUS_FMT_YUYV8_1X16,
+> > +               .bpp =3D 16,
+> > +               .w_factor =3D 2,
+> > +               .module_en_pak =3D CAMSV_MODULE_EN_PAK_SEL,
+> > +               .pak =3D 0, /* ignored */
+> > +               .fmt_sel =3D CAMSV_FMT_SEL_IMGO_BUS_SIZE_16
+> > +                       | CAMSV_FMT_SEL_TG1_FMT_YUV422,
+> > +               .imgo_stride =3D CAMSV_IMGO_SV_STRIDE_BUS_SIZE_EN
+> > +                       | CAMSV_IMGO_SV_STRIDE_BUS_SIZE_16,
+> > +       }, {
+> > +               .fourcc =3D V4L2_PIX_FMT_YVYU,
+> > +               .code =3D MEDIA_BUS_FMT_YVYU8_1X16,
+> > +               .bpp =3D 16,
+> > +               .w_factor =3D 2,
+> > +               .module_en_pak =3D CAMSV_MODULE_EN_PAK_SEL,
+> > +               .pak =3D 0, /* ignored */
+> > +               .fmt_sel =3D CAMSV_FMT_SEL_IMGO_BUS_SIZE_16
+> > +                       | CAMSV_FMT_SEL_TG1_FMT_YUV422,
+> > +               .imgo_stride =3D CAMSV_IMGO_SV_STRIDE_BUS_SIZE_EN
+> > +                       | CAMSV_IMGO_SV_STRIDE_BUS_SIZE_16,
+> > +       },
+> > +};
+> > +
+>
+> [snip]
+>
+> > +
+> > +static void mtk_cam_vb2_buf_queue(struct vb2_buffer *vb)
+> > +{
+> > +       struct mtk_cam_dev *cam =3D vb2_get_drv_priv(vb->vb2_queue);
+> > +       struct mtk_cam_dev_buffer *buf =3D to_mtk_cam_dev_buffer(vb);
+> > +       unsigned long flags;
+> > +
+> > +       /* Add the buffer into the tracking list */
+> > +       spin_lock_irqsave(&cam->buf_list_lock, flags);
+> > +       if (vb2_start_streaming_called(vb->vb2_queue) && list_empty(&ca=
+m->buf_list))
+> > +               mtk_camsv_update_buffers_add(cam, buf);
+> > +
+> > +       list_add_tail(&buf->list, &cam->buf_list);
+> > +       spin_unlock_irqrestore(&cam->buf_list_lock, flags);
+> > +       if (vb2_start_streaming_called(vb->vb2_queue))
+> > +               mtk_camsv_fbc_inc(cam);
+>
+> I think you should call mtk_camsv_fbc_inc() just after mtk_camsv_update_b=
+uffers_add();
+>
 
-Right! I assume those with 3 or 2 just haven't made it upstream yet,
-but sure they are cases. If you prefer to update the binding later,
-that's fine by me, but I just wanted to avoid unnecessary churns for
-you.
+Hi CK,
 
-For example, msm8916 seems to be one case that already uses "psci",
-but requires an additional two power-domains for performance-scaling.
-At least according to earlier discussions [1] with Stephan Gerhold.
+Is there any particular reason? I moved it at the bottom, to reduce
+the spinlock region as you requested in v7.. OR maybe I am missing
+something ?
 
-Moreover, it's perfectly fine to also describe CPU's idle-states by
-using the power-domains/domain-idle-states DT bindings, according to
-the bindings for PSCI [2] (no matter of PSCI OSI/PC mode). In other
-words, for all those that only have a "perf" or "cpr" power-domain
-today (or whatever name is used for the performance-scaling domain),
-those could easily add a "psci" power-domain too, depending on how
-they choose to describe things in DT.
+Cheers
+Julien
 
-Kind regards
-Uffe
-
-[1]
-https://lore.kernel.org/all/ZRcC2IRRv6dtKY65@gerhold.net/
-[2]
-Documentation/devicetree/bindings/arm/psci.yaml
+> > +}
+> > +
+>
+> [snip]
+>
+> > +
+> > +static int mtk_cam_vidioc_try_fmt(struct file *file, void *fh,
+> > +                                 struct v4l2_format *f)
+> > +{
+> > +       struct mtk_cam_video_device *vdev =3D file_to_mtk_cam_video_dev=
+ice(file);
+> > +       struct v4l2_pix_format_mplane *pix_mp =3D &f->fmt.pix_mp;
+> > +       const struct mtk_cam_format_info *fmtinfo;
+> > +
+> > +       /* Validate pixelformat */
+> > +       if (!mtk_cam_dev_find_fmt(vdev->desc, pix_mp->pixelformat))
+> > +               pix_mp->pixelformat =3D vdev->desc->fmts[0];
+>
+> In [1], it says return EINVAL when driver not support this buffer format.
+>
+> [1] https://docs.kernel.org/userspace-api/media/v4l/vidioc-g-fmt.html#des=
+cription
+>
+> Regards,
+> CK
+>
+> > +
+> > +       pix_mp->width =3D clamp_val(pix_mp->width, IMG_MIN_WIDTH, IMG_M=
+AX_WIDTH);
+> > +       pix_mp->height =3D clamp_val(pix_mp->height, IMG_MIN_HEIGHT,
+> > +                                  IMG_MAX_HEIGHT);
+> > +
+> > +       pix_mp->num_planes =3D 1;
+> > +
+> > +       fmtinfo =3D mtk_cam_format_info_by_fourcc(pix_mp->pixelformat);
+> > +       calc_bpl_size_pix_mp(fmtinfo, pix_mp);
+> > +
+> > +       /* Constant format fields */
+> > +       pix_mp->colorspace =3D V4L2_COLORSPACE_SRGB;
+> > +       pix_mp->field =3D V4L2_FIELD_NONE;
+> > +       pix_mp->ycbcr_enc =3D V4L2_YCBCR_ENC_DEFAULT;
+> > +       pix_mp->quantization =3D V4L2_QUANTIZATION_DEFAULT;
+> > +       pix_mp->xfer_func =3D V4L2_XFER_FUNC_DEFAULT;
+> > +
+> > +       return 0;
+> > +}
+> > +
+>
+>
+> ************* MEDIATEK Confidentiality Notice ********************
+> The information contained in this e-mail message (including any
+> attachments) may be confidential, proprietary, privileged, or otherwise
+> exempt from disclosure under applicable laws. It is intended to be
+> conveyed only to the designated recipient(s). Any use, dissemination,
+> distribution, printing, retaining or copying of this e-mail (including it=
+s
+> attachments) by unintended recipient(s) is strictly prohibited and may
+> be unlawful. If you are not an intended recipient of this e-mail, or beli=
+eve
+> that you have received this e-mail in error, please notify the sender
+> immediately (by replying to this e-mail), delete any and all copies of
+> this e-mail (including any attachments) from your system, and do not
+> disclose the content of this e-mail to any other person. Thank you!
 
