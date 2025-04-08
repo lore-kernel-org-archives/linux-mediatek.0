@@ -4,64 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0CD6C3600C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Apr 2025 08:17:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04FEAC369A1
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Apr 2025 08:17:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AJjno0ngebiuX7C9w99K4Qs1Ucuo7p0N2nbncgeNwto=; b=Rwa7XEMajQAGNF9O0Na6So1sa0
-	uQpXJYLeL+XaIEAWPZLRFcCPjrFGaVqId1oiL4cIl+gQQz9U14kcy5ojHB0ls46PBJIoa/I796foD
-	l8pyXI4AflxBaI0v++rsQTYLTMkwyWMjKX2MVYXZz6RtD8ZSmdnB69P3DfvZ9/IHhIxiikK/Sw14x
-	DSPjE2pZTbKLKfFFmhKJm6/l5PPdxdD077sbdJEh338sH+fDqvHDY7llw2lH0ws8286e3qGUDnj1o
-	RKJTD5iGaK5T2QUOpMaz3uULj4xhaGN9FoDCblUiEyqPm0lLLn4JZpN7Jj/9vnu55W5VCU8qz3d5H
-	UNY7X/EQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=jxb0oDMobd7GaIcoqojTSF8ZoNcoVg4kM8ohJkoHKb8=; b=hJUER2FTrcBhFSq19Na8srTViz
+	gto1s+Q+zHcRkP/bDAhm08EJtzJWvC7NnhuEDPFZmXl2J5NLBkbYrEYjOmh/pqLg5E2pp7WkHXaMF
+	8YAbD6y+hjzEVCYidc5paOqiMmhnJ41TGsMM/HrEK9TKiLWP7CzSASpnW/J4d+szfGABQZBLTQx0q
+	F6yXC3/sGCbmrfJy+awNyIKUve+5hhySql05RBwmXI44LLhY0s5cD5/ve68HRG4c0gp2eBEN6E1wE
+	oysvZzQAnPo8CYaaxSrz+bGLMGZey3FM98SrCC6AHd1VSP4fGdDgJMlcg7c6b8YxVwzM0eLGBU6nS
+	MOrmymmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u248k-00000003DV9-3lkR;
-	Tue, 08 Apr 2025 08:17:02 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1u248l-00000003DVL-0tPu;
+	Tue, 08 Apr 2025 08:17:03 +0000
+Received: from mail.novaplan.pl ([51.195.118.1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u243h-00000003CGU-03NB;
-	Tue, 08 Apr 2025 08:11:54 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id A496C4A0E4;
-	Tue,  8 Apr 2025 08:11:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BD2C7C4CEE9;
-	Tue,  8 Apr 2025 08:11:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744099908;
-	bh=sdci4lJsO/FOikKIVq4yCkhQfnhsn9Us40sQtnVw+Xs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Qzp9zD1fw7vRDLwtT0qI/gIR/GHnf3Qv752bVzjp7b5VGG06sX7xDK5fp961WVTEf
-	 WPEAfUv/c2tzI+IBLGZ+y1Rx/KE1w9Q7Yf/tHlA3lLIe5QufpOu0k3puZt4WL4a5Is
-	 VrpCeIsEhZrQ4QP1zM3Xn3XrPRmsgXFEfDQE+Qo1PAvmatJiHf3B/XPntRYegpfMYr
-	 r8E9sOE+bqEf+25D9ZvKx626KgpcFQnDkzCvTVZVzat7FuIBUxJDU6QKvFIrMuhodP
-	 ntQLt9UlAtCulJpHCkWXZy7RvYHOPdM/BZVkbc/fUibXacHQVeleZ7US4z/TeZ7cio
-	 XP3uLDDN3mb8g==
-Date: Tue, 8 Apr 2025 10:11:45 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Davide Caratti <dcaratti@redhat.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net-next] net: airoha: Add matchall filter offload support
-Message-ID: <Z_TaQbEeTZnKL9ei@lore-desk>
-References: <20250407-airoha-hw-rx-ratelimit-v1-1-917d092d56fd@kernel.org>
- <CAKa-r6tNa+Ltxb61g6E3h66pxW0XTDb76T6Wc2XMJCu8xuAvPg@mail.gmail.com>
+	id 1u2447-00000003CKB-1BAj
+	for linux-mediatek@lists.infradead.org;
+	Tue, 08 Apr 2025 08:12:17 +0000
+Received: by mail.novaplan.pl (Postfix, from userid 1002)
+	id DBC5EA3F29; Tue,  8 Apr 2025 10:10:50 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=novaplan.pl; s=mail;
+	t=1744099918; bh=jxb0oDMobd7GaIcoqojTSF8ZoNcoVg4kM8ohJkoHKb8=;
+	h=Date:From:To:Subject:From;
+	b=I8qLzDY4jpVUGaCGpu0eD0ClPnTAO+8A8FA+y5mEbzcMYV7gngBQhZwSajkO3UW5B
+	 BurpZ9l8EVEZccMljrzNENFXpD1EkfSOAoel3CnBsx7PN7bZ1YS8yAW70DtwPXLVlp
+	 mcksyxX01QVS/qtrb2FIZsja380apKbuD4IyVEAhMr44gBitmyh/VqpdLBfMEcO8Hb
+	 e2RcA0PPZugWB4KgRMd93TBlVrbai6dHvpvXwrt8s/QQSFNVqo7dKCE+eiPIHYYDIa
+	 yh2V2upQToXFROUgq82T1DrsjJRP2PGpOWKlIU6+8wNAeIk+0dV84SZ+3piYQGrVAg
+	 uNtef885YFjNQ==
+Received: by mail.novaplan.pl for <linux-mediatek@lists.infradead.org>; Tue,  8 Apr 2025 08:10:26 GMT
+Message-ID: <20250408084500-0.1.kw.1n7s0.0.q2k4x52hkp@novaplan.pl>
+Date: Tue,  8 Apr 2025 08:10:26 GMT
+From: "Adrian Liszka" <adrian.liszka@novaplan.pl>
+To: <linux-mediatek@lists.infradead.org>
+Subject: =?UTF-8?Q?Prosz=C4=99_o_kontakt?=
+X-Mailer: mail.novaplan.pl
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="cf4oqZqIraZr0Mc3"
-Content-Disposition: inline
-In-Reply-To: <CAKa-r6tNa+Ltxb61g6E3h66pxW0XTDb76T6Wc2XMJCu8xuAvPg@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250408_011149_071294_486A965D 
-X-CRM114-Status: GOOD (  16.00  )
+X-CRM114-CacheID: sfid-20250408_011216_026862_D6856472 
+X-CRM114-Status: UNSURE (  -0.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,72 +66,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Dzie=C5=84 dobry,
 
---cf4oqZqIraZr0Mc3
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Czy jest mo=C5=BCliwo=C5=9B=C4=87 nawi=C4=85zania wsp=C3=B3=C5=82pracy z =
+Pa=C5=84stwem?
 
-> hello Lorenzo, thanks for this patch!
+Z ch=C4=99ci=C4=85 porozmawiam z osob=C4=85 zajmuj=C4=85c=C4=85 si=C4=99 =
+dzia=C5=82aniami zwi=C4=85zanymi ze sprzeda=C5=BC=C4=85.
 
-Hi Davide,
+Pomagamy skutecznie pozyskiwa=C4=87 nowych klient=C3=B3w.
 
-thx for the review.
+Zapraszam do kontaktu.
 
->=20
-> On Mon, Apr 7, 2025 at 10:04=E2=80=AFPM Lorenzo Bianconi <lorenzo@kernel.=
-org> wrote:
-> >
-> > Introduce tc matchall filter offload support in airoha_eth driver.
-> > Matchall hw filter is used to implement hw rate policing via tc action
-> > police:
-> >
-> > $tc qdisc add dev eth0 handle ffff: ingress
-> > $tc filter add dev eth0 parent ffff: matchall action police \
-> >  rate 100mbit burst 1000k drop
-> >
-> > Curennet implementation supports just drop/accept as exceed/notexceed
-> > actions. Moreover, rate and burst are the only supported configuration
-> > parameters.
-> >
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
->=20
-> [...]
->=20
-> > +
-> > +       if (act->police.peakrate_bytes_ps || act->police.avrate ||
-> > +           act->police.overhead) {
-> > +               NL_SET_ERR_MSG_MOD(f->common.extack,
-> > +                                  "peakrate/avrate/overhead not suppor=
-ted");
-> > +               return -EOPNOTSUPP;
-> > +       }
->=20
-> I think the driver should also validate the so-called "mtu policing"
-> parameter. E.g, configuring it in the hardware if it has non-zero
-> value in act->police, or alternatively reject offloading of police
-> rules where act->police.mtu is non-zero (like done in the hunk above).
-> WDYT?
 
-ack, right, I missed it. I will add it in v2.
-
-Regards,
-Lorenzo
-
-> --=20
-> davide
->=20
-
---cf4oqZqIraZr0Mc3
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ/TaQQAKCRA6cBh0uS2t
-rO5FAP9IPAyg0FFzsbCQb+ZqLZXr+62jP0nLzaeO/Mklx3HefwEAloAoGjXka5kn
-3FvimlCwCpSabbKDUFgb6Nl9SpTVnQk=
-=NtS5
------END PGP SIGNATURE-----
-
---cf4oqZqIraZr0Mc3--
+Z pozdrowieniami
+Adrian Liszka
 
