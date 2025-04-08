@@ -4,181 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEFDBC36010
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Apr 2025 21:12:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47882C36010
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Apr 2025 22:56:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vh84+CBhMGtpOXwlmBr5bpr2Gm/sSPvGOTBORXK3kdk=; b=WXuYtsUbshJz0Xbmf1K/VDXBss
-	QjHMfxIa1dz424RiYmAuF2U01la6aM3+gHXYDzPTYtN4zxz4gmiScWsL/As38KkgUYeFotqJhq/rZ
-	wr02RbunA0SP5kgd2rupnwzDYPK7poKnP/spLUlZYUXm+1nF/4uuHL0YtjinpPYlL9F9ZcLWKhiZV
-	umZrNT8HY/iaawIud8oLJWWh4wpVXEwju+qJW0MJ2BMqYIS3ZoLBmXHrCQ9M5UC7OPTASeLq54AHV
-	mrQgaPmXAwrAx+hRUWAffum3BRoj0uVkbskGVYSBNb0NbQwV6BuAVD4r/jq/mackVpuKZCU/L7r6R
-	DOwgKRBA==;
+	bh=hpQpod7dJ19FCqCA7ULsaw9W9YKDpeqR+rpRTosUPvY=; b=y/1Btb23uhXqbzxP/F/s0EPYFO
+	vdX/rKxUDFhMwrNUXwgvNV/fjABM/7AMYp+8J5BDMPSTmb7YA1GqjOKOBPod0xZ5eI5dxKvCtQ6+9
+	Q1iVGMhFnPDEH7d0XsU0xIUsGXpAOXOVsqQMHHg2H/wH0AmqFHkEDtXw9iL54MpVkmEsVZXi0q84w
+	i8iMIzRKicMqBisCuauWl0H6Huz1NFY9qdxGs3BtcY3uq7c+4zRGwFoQIeMVSSpDpsoG4o+bMhWR+
+	dJS3T/vFyQWp0ydOTVXpDxz9RVMt48gHLoDSZErt9W0LUtSru6FZ054qiiKhGu4zMIOkwaiRVfogh
+	bjH3IGWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2GFW-00000005QCZ-2s2C;
-	Tue, 08 Apr 2025 21:12:50 +0000
-Received: from mgamail.intel.com ([198.175.65.20])
+	id 1u2Hs3-00000005dXG-0ffa;
+	Tue, 08 Apr 2025 22:56:43 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2F4r-00000005HaM-2i8a;
-	Tue, 08 Apr 2025 19:57:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1744142266; x=1775678266;
-  h=date:from:to:cc:subject:message-id:references:
-   in-reply-to:mime-version;
-  bh=Jiqv8SEpFYX6SwxxyhOkYs0CHLQ0g093Sa6h7LN4I1E=;
-  b=C01l13exIzbzJamIY5EiPxblVGvIX2IQqrY3Wmh0Su+qdE4ZkMvkkV15
-   NtqC0GfwzqriIB1yO7NoLJgazdQrohfWrwtzeHEyvUz7mOKtoMLBbNodc
-   sBecKr3dHdhrDsQeRugJ61Gh+6UMDG1W/wkYJkIftcIbYKD+qOwtmMLBh
-   ik/FiXC9nzkxF9XIc0h2eHAlNkI2aqqFaE/7a/vlSYJBJ2tnIOBs5iTKZ
-   r5erSBGl4hFrT95End11ZMdCWrPOWM4cCZBneymzRrGtnb5tgwiVeVETH
-   V9cLG+uQ6gU94obPHz7azqjAIi8cEIvUT/jDPiwCBBhWOVRzunZPGtitX
-   A==;
-X-CSE-ConnectionGUID: kukTQXsuS1yLij/Jq2FicA==
-X-CSE-MsgGUID: wy2dP4P+Rc6P6XxpgTO7PQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11397"; a="45312062"
-X-IronPort-AV: E=Sophos;i="6.15,198,1739865600"; 
-   d="scan'208";a="45312062"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
-  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Apr 2025 12:57:44 -0700
-X-CSE-ConnectionGUID: aNXhpWl6TNuniGsJ5XQBdg==
-X-CSE-MsgGUID: rzLXN1pBT7+5ugywKxrLiw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,198,1739865600"; 
-   d="scan'208";a="133236145"
-Received: from orsmsx903.amr.corp.intel.com ([10.22.229.25])
-  by orviesa003.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Apr 2025 12:57:44 -0700
-Received: from ORSMSX903.amr.corp.intel.com (10.22.229.25) by
- ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.14; Tue, 8 Apr 2025 12:57:43 -0700
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.14 via Frontend Transport; Tue, 8 Apr 2025 12:57:43 -0700
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.42) by
- edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.44; Tue, 8 Apr 2025 12:57:43 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=d1NeTJrCTHMHDFwJQyChmlcYeVl76MUhuOFUhLtH2KM5OEXA2hNYG9GqE3xkXyAYYZ/4lJYAsDvBhfDmwK7LYBAyuVaTR1G57TZpgdz4JGj4XPr54cxaMZdKPIseq5yO70cpINJ1+QVsYafxZQ0OQsPskxLM/DywGXy+DLb9jPIbhODeIO+exULOLw7EyTjzpcQR8Td5LpuUP6SWQwi7TggUJD+w5DpsEjNtcOl28l0LgFYmuC+IEZBg6maBM5LdZeI6CzUSDXDMQJvmWeR67loe9v1XFNwBetD+HKmreZVZs5kL4eYKfgILWVUyBUVM0xvG5AMZMCCh+wEdkKo/8Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=vh84+CBhMGtpOXwlmBr5bpr2Gm/sSPvGOTBORXK3kdk=;
- b=gI84wRiqJx4qhjVOEPfoqiO98GykEliIGQQDzfyAgf6DlnZucTzSo58c+zb8RaAKvs/c/MCu/4vpggFceeJA9isi4qELknBcpku3gj0NYrBMy1KGIcRh74uycfeW0XPsaJ7nuwiOksp25LhICI9TbrBBkEsUGOhs0vVbrTcsAC9WK338VLyp5LU5EP32QhM+wx9RzxaWIT3yhePYzhCMLQXDe5AiTvoc7QmfZEv/QuemjMlULkMAGi9lielYo4c7lLBUK/p7Qal1mEp2pQeP+bvbBzKo8vmawa3BIBbyoiiEnAmJSsHa/oKM9G2isMlB7ke9Y+B8zIlgtGOv4zW5rg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from DS0PR11MB8665.namprd11.prod.outlook.com (2603:10b6:8:1b8::6) by
- CYXPR11MB8663.namprd11.prod.outlook.com (2603:10b6:930:da::21) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.8606.34; Tue, 8 Apr 2025 19:57:12 +0000
-Received: from DS0PR11MB8665.namprd11.prod.outlook.com
- ([fe80::8e7e:4f8:f7e4:3955]) by DS0PR11MB8665.namprd11.prod.outlook.com
- ([fe80::8e7e:4f8:f7e4:3955%5]) with mapi id 15.20.8632.021; Tue, 8 Apr 2025
- 19:57:12 +0000
-Date: Tue, 8 Apr 2025 21:56:58 +0200
-From: Michal Kubiak <michal.kubiak@intel.com>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-CC: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
-	<davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
-	<kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<netdev@vger.kernel.org>
-Subject: Re: [PATCH net-next 3/3] net: airoha: Add L2 hw acceleration support
-Message-ID: <Z/V/ip/dA+aw+dCW@localhost.localdomain>
+	id 1u2HqH-00000005dSX-32Wl;
+	Tue, 08 Apr 2025 22:54:53 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 5A28261143;
+	Tue,  8 Apr 2025 22:54:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E5AA5C4CEE5;
+	Tue,  8 Apr 2025 22:54:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1744152891;
+	bh=hpQpod7dJ19FCqCA7ULsaw9W9YKDpeqR+rpRTosUPvY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=lrTv7IPYgNZEzrxhfJn5SEO9OsPwJm2zDsJ8jD/sGC8U/9mlfZNFI41W8XtL/cFb+
+	 EEXPQ9mEUVDioKafuVGq+rXx1LfS4fVIZMdAaWqXEjtaRONIy37w7/ANWZYscR8emw
+	 ZoIhxoxr6wC3Z299vkT+2cHLgeJD/22PrkcQJDDE403xmzz1+M9my0XXw7mShyWKoi
+	 F3xOHY1vfZwFcLi0bbfMysCrgz2MpntuFO+DLRfG/vesH0z/sKNDc4PhcCdmnYHOmK
+	 Tu2LyAH/2Z6+CHkB1bIkIbFfeRp4KQNX947EB4GkNMgQYy30IIp3uT5dzXZt4pmLv3
+	 h+2/vejLXx0Xw==
+Date: Wed, 9 Apr 2025 00:54:48 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: Michal Kubiak <michal.kubiak@intel.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net-next 1/3] net: airoha: Add l2_flows rhashtable
+Message-ID: <Z_WpOIGugyLnc99N@lore-desk>
 References: <20250407-airoha-flowtable-l2b-v1-0-18777778e568@kernel.org>
- <20250407-airoha-flowtable-l2b-v1-3-18777778e568@kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20250407-airoha-flowtable-l2b-v1-3-18777778e568@kernel.org>
-X-ClientProxiedBy: ZR0P278CA0122.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:20::19) To DS0PR11MB8665.namprd11.prod.outlook.com
- (2603:10b6:8:1b8::6)
+ <20250407-airoha-flowtable-l2b-v1-1-18777778e568@kernel.org>
+ <Z/VCYwQS5hWqe/y0@localhost.localdomain>
+ <Z_VTpBhntxXPncsv@lore-desk>
+ <20250408115727.6b7468b3@kernel.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS0PR11MB8665:EE_|CYXPR11MB8663:EE_
-X-MS-Office365-Filtering-Correlation-Id: e166eca3-1554-492a-7670-08dd76d78d74
-X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|376014|7053199007;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?5dyEwpJ3t2WVzR/R1qSWt0Bi0f+AQaBH6gTjqoHmNF+bHaHJWixxEqkHQx87?=
- =?us-ascii?Q?U5QBA7d0OTUKphR2dH2Z3ifisB54Ta9HTNxqiw/W5tWS3FHpJqH66uyA1dih?=
- =?us-ascii?Q?G7XdesSKmVfvzFlM0h8GaYFHjif6Ny5oO0PytxkcWrYwsxvGbgNrvBKkCo8t?=
- =?us-ascii?Q?bcb1luRfnifH2xR+bzK0MpNCAgiTiOvZTzZ37SGpnJiiblNbUhNsuJ0BZRit?=
- =?us-ascii?Q?wjSaZbQcSI2s83reJjfPNVSCDiM20SQKmy7731k1/eiRp5XaqOOnTOI8TBJk?=
- =?us-ascii?Q?79nR/fdSIt9Yz3CsEPZLfqqw/qnPvt9uevfGfnBjqJ+NwFfdE5Pl+grxRStf?=
- =?us-ascii?Q?faFwjXv6OeedPVQ6FeOhJc4a8rgngHJlfF22o9QgiCpVDNw+MkXKNACxR7Ma?=
- =?us-ascii?Q?zHdHoLKNTPk4d+Fc+T/vHDd3VJOFYT3LQZS/RiVHgo+kjdx5DaabGAsRvtrs?=
- =?us-ascii?Q?KGCXoCygHUlesuhhKmYOgjs7DwTnqjr1KmGiRtZXg0XQG0SGITOHYWdQx8oh?=
- =?us-ascii?Q?JjCVlzLxQvFKzXE8oyCAntjsaBxPfJP01sEbmt8/yoURHUgBNMr1LYWKW4KW?=
- =?us-ascii?Q?ZTofzfosUSLJutsmWnMgNg4iYdVv/xIwkF9EqQcCq1lJqjRnHgApzcid0M5A?=
- =?us-ascii?Q?f7VLaMdpJip9mpJFUgXHczexIDZZtKBSE0RKfVdkCFeUAYaF2ciuY4R9fBkW?=
- =?us-ascii?Q?PvEOk8WQ43ELrB5fjVymhB0I7McgCgdE8JQPy6TY+SvD1sW1FY2/AJgxoWRb?=
- =?us-ascii?Q?8k+sXjizTpMqDwC49I/HDksfBqbNESaBObmp+Jy6dJkdJUHwQySQ1Wc/KqLe?=
- =?us-ascii?Q?TCdNfFQbTubMBTumPIWukPgvbyVdIyDThEGK0eNky0Ms7qfGWtflqtsRfyi1?=
- =?us-ascii?Q?ssW2OTV8IZLIJNzrd38T2mo+/4fFt/k/KoXKRBM0oIP9xFAdBhh6Tlm8MQZF?=
- =?us-ascii?Q?5xif6UDtumL18DxxOJJBTIHhQAUAzQxKFQuls0cg6A1ZxE7ZACFDKM8K2XCA?=
- =?us-ascii?Q?V0jVzJ8KxrpxNnOoSYJvfIqel66z5NUJbMqcvtJQdx2RpW+4XFuGLykYDsDG?=
- =?us-ascii?Q?FJh90LKOZxSgysSmU8dGhBYB1vlMIHSQB5z9/Ggl13k9HyUG0w5kcABfHijc?=
- =?us-ascii?Q?QE/qBqXQabT1skCy3ZmIetSLnZ2s+pIisBVRjjCA8aN37oLQ1O/GIQZsEEZR?=
- =?us-ascii?Q?8Zg6amqDc94lWPFw2P+0eCbnNXT+M4SGQBi2xmKRfKhGKNnYXCKTKB9Zqs9k?=
- =?us-ascii?Q?mw6kkKnseihim9rTU1HJqOcXjgO6obtQv0bFk6ZHGk70ZUSzVknH2pwzYsIn?=
- =?us-ascii?Q?PpaVTKcvIecKaRNxO3K76ArNjwlIrHKw7C4B2+Nco0P38wXLsNM8GdTehSd5?=
- =?us-ascii?Q?y9uCL6VgiDeidljjTnRgdJQsxadG?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DS0PR11MB8665.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(376014)(7053199007);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?lkbo5SDRNs4/ZF8vK4u5rER4CxZh18z9d0qg6dVbiZp3c/6Y7pAIdC2Wb3IE?=
- =?us-ascii?Q?G1om+gz288+sW75FFCAaVY8u/jTozefTMQZwmFMjLStUCQO/1hPMui/LOwgt?=
- =?us-ascii?Q?vM6lDx/f1uZnOSxrkoNhIk4XVaVanpGT3Ut1kKXTnumShgwxnaOy2FJ1tjFv?=
- =?us-ascii?Q?1p03wfrPI+K5E5Gl/NkDQDIYQ2pTg7cDohh7fOP75pr0MLIP3aPQlxqrQsAh?=
- =?us-ascii?Q?nt1ofFWe9jq9QWhDwFUte8IPmoKLyTUamWAorBU822CgAIzuwHK7h7D5Sfkc?=
- =?us-ascii?Q?64xpIOaxZTGzqzpejIFYfqLfRjJO+xdH1oJFGSuBudyWc6yl5dby/POauvXN?=
- =?us-ascii?Q?ya5UTQo0mZDabGQo86SKTxNb/+718xuXRKIHE8AbJUWbBPX/cIn4FOElHjU7?=
- =?us-ascii?Q?7LTrOfX0HXcKHSCtHDCksM9s4pveskq3wi7sqUPXqILL/NlKvGPuHaPfgOJ6?=
- =?us-ascii?Q?qJd8S3+CL21oPhzCNMXI04UWsvRdQY6ZqoZ1GjPfPFfLnRZUZLh143u/oX+W?=
- =?us-ascii?Q?hPb1NHc7L0UvBy6H1B741KrDiO820onqOAUVch+VczfPqCpQ6nKpAAwFEEmY?=
- =?us-ascii?Q?99HDqjDNANcGH8O15GtqpuAneW3ucJwy0TpdOjQBIeJLHS2Y9ZcmPYOmDyvG?=
- =?us-ascii?Q?VE6rv9ePhX0A5lb0Z6N1eR0W/6V2mRcFsNpFkLXm6Bo8UNTYML74yMP7w+kt?=
- =?us-ascii?Q?tRvo2HMgO2e0kq3vHp216ggkkaJMbJEkuwNpYww+G8l6XyvCRaW3IMzTS5GA?=
- =?us-ascii?Q?hvEnCF45jOcg3rQ2oY3FVVOPOcDzahiLLH4gnGmTnLz9Do+BJ/c1S3HqYhT7?=
- =?us-ascii?Q?KtdlqImQ6qz+2tN1pnY5d4opXVT78yxpJdczBORX4jVa8yU73LAaZtL0igTr?=
- =?us-ascii?Q?wbm/JAGUxOCEZFw1svzLwd7GV3ViTu7Ls/G2Wa3vl6yxflhkn0NeoyVS1fZa?=
- =?us-ascii?Q?DoWlvSHm0b40xVVK0KM33eelbi2GJyKoSjpDR+Bq3xEA3/J7Y6Ejr+WaSaam?=
- =?us-ascii?Q?WsVK5C6VZfwmOwfqptXu6EWpCB7ZV2SZrqTwPlBEnwGL/ZddCVR/d5sJ2J8Y?=
- =?us-ascii?Q?fLwOWicCJ6mqERfyLmjjHzSOIISc3XZKtI8OZY029SMb/Lv1UAVUrTPtTdwO?=
- =?us-ascii?Q?gERvAYFsFLHsb4ZCvKo+ewuCTc/di+3SwZtk6k9wqKnsx0qaJjv432pbZKJv?=
- =?us-ascii?Q?PjGpQLj9XF57a3gO1kFcp+eVvHdaPQ/hEB6k2pF2KMWlq8uPuLSxj0SDf4tt?=
- =?us-ascii?Q?9VEbvBnxCZIQEFZtqoctajjZaVfD1m4yu2iHmcPB+0Y7XPuw+RYaQxV8UqyB?=
- =?us-ascii?Q?K08FT+1Kbv2P76vF9QxVUye5bP2YnMjGrJn52PAlMQZimemws+eZTEVBBUqZ?=
- =?us-ascii?Q?aqI8T54yk96FJoowksM+HHiLnR4ZgxIdsMcWR1W4+sP+cDjgUDdVj6MnG0bE?=
- =?us-ascii?Q?D40fmaAT+1LVCCCQR0NU7nmw+LUqxCuL/W+AuQ8e6yfI6I2RIQVgIY5h6d6G?=
- =?us-ascii?Q?53co7t/62vByYFCh1DL4dQ1N63YHTrHds49DVX4WZdjuO5SVuwjtNyzMC95i?=
- =?us-ascii?Q?KwsrP5E9yrCqPNxc72Iz+B5JLMdXPjMMeMgG7I+UYxYlgf9Z4C0NB70Ru9BR?=
- =?us-ascii?Q?3g=3D=3D?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: e166eca3-1554-492a-7670-08dd76d78d74
-X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB8665.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Apr 2025 19:57:12.1091
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 7njl+Q2HjfDElvfZBgk4wlv5981sjX1akXI5gGM/g9WlGDBJoUHEyha4gZMZX0XTVIkSGYQ9rjgkqN1uSs3ikA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CYXPR11MB8663
-X-OriginatorOrg: intel.com
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250408_125745_735368_29509336 
-X-CRM114-Status: GOOD (  18.13  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="xnN5FBJtbR+nAVlX"
+Content-Disposition: inline
+In-Reply-To: <20250408115727.6b7468b3@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -193,86 +76,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 07, 2025 at 04:18:32PM +0200, Lorenzo Bianconi wrote:
-> Similar to mtk driver, introduce the capability to offload L2 traffic
-> defining flower rules in the PSE/PPE engine available on EN7581 SoC.
-> Since the hw always reports L2/L3/L4 flower rules, link all L2 rules
-> sharing the same L2 info (with different L3/L4 info) in the L2 subflows
-> list of a given L2 PPE entry.
-> 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  drivers/net/ethernet/airoha/airoha_eth.c |   2 +-
->  drivers/net/ethernet/airoha/airoha_eth.h |  11 ++-
->  drivers/net/ethernet/airoha/airoha_ppe.c | 162 +++++++++++++++++++++++++------
->  3 files changed, 144 insertions(+), 31 deletions(-)
-> 
 
-[...]
+--xnN5FBJtbR+nAVlX
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> +static void airoha_ppe_foe_remove_flow(struct airoha_ppe *ppe,
-> +				       struct airoha_flow_table_entry *e)
-> +{
-> +	lockdep_assert_held(&ppe_lock);
-> +
-> +	hlist_del_init(&e->list);
-> +	if (e->hash != 0xffff) {
-> +		e->data.ib1 &= ~AIROHA_FOE_IB1_BIND_STATE;
-> +		e->data.ib1 |= FIELD_PREP(AIROHA_FOE_IB1_BIND_STATE,
-> +					  AIROHA_FOE_STATE_INVALID);
-> +		airoha_ppe_foe_commit_entry(ppe, &e->data, e->hash);
-> +		e->hash = 0xffff;
-> +	}
-> +	if (e->type == FLOW_TYPE_L2_SUBFLOW) {
-> +		hlist_del_init(&e->l2_subflow_node);
-> +		kfree(e);
-> +	}
-> +}
-> +
-> +static void airoha_ppe_foe_remove_l2_flow(struct airoha_ppe *ppe,
-> +					  struct airoha_flow_table_entry *e)
-> +{
-> +	struct hlist_head *head = &e->l2_flows;
-> +	struct hlist_node *n;
-> +
-> +	lockdep_assert_held(&ppe_lock);
-> +
-> +	rhashtable_remove_fast(&ppe->l2_flows, &e->l2_node,
-> +			       airoha_l2_flow_table_params);
-> +	hlist_for_each_entry_safe(e, n, head, l2_subflow_node)
-> +		airoha_ppe_foe_remove_flow(ppe, e);
-> +}
-> +
->  static void airoha_ppe_foe_flow_remove_entry(struct airoha_ppe *ppe,
->  					     struct airoha_flow_table_entry *e)
->  {
->  	lockdep_assert_held(&ppe_lock);
->  
-> -	if (e->type == FLOW_TYPE_L2) {
-> -		rhashtable_remove_fast(&ppe->l2_flows, &e->l2_node,
-> -				       airoha_l2_flow_table_params);
-> -	} else {
-> -		hlist_del_init(&e->list);
-> -		if (e->hash != 0xffff) {
-> -			e->data.ib1 &= ~AIROHA_FOE_IB1_BIND_STATE;
-> -			e->data.ib1 |= FIELD_PREP(AIROHA_FOE_IB1_BIND_STATE,
-> -						  AIROHA_FOE_STATE_INVALID);
-> -			airoha_ppe_foe_commit_entry(ppe, &e->data, e->hash);
-> -			e->hash = 0xffff;
-> -		}
-> -	}
-> +	if (e->type == FLOW_TYPE_L2)
-> +		airoha_ppe_foe_remove_l2_flow(ppe, e);
-> +	else
-> +		airoha_ppe_foe_remove_flow(ppe, e);
+> On Tue, 8 Apr 2025 18:49:40 +0200 Lorenzo Bianconi wrote:
+> > > I didn't find any usage of L4 flow type in the series.
+> > > Is that reserved for future series? Shouldn't it be added together wi=
+th
+> > > its usage then? =20
+> >=20
+> > FLOW_TYPE_L4 is equal to 0 so it is the default value for
+> > airoha_flow_table_entry type when not set explicitly.
+> > It is done this way to reduce code changes.
+>=20
+> That seems quite unintuitive. Could you init explicitly for the
+> benefit of people reading this code?
 
-It's not a hard request, more of a question: wouldn't it be better to
-introduce "airoha_ppe_foe_remove_l2_flow()" and
-"airoha_ppe_foe_remove_flow()" in the patch #2?
-It looks like reorganizing the code can be part of the preliminary
-patch and the current patch can just add the feature, e.g. L2_SUBFLOW.
+ack, I will do in v2.
 
-Thanks,
-Michal
+Regards,
+Lorenzo
 
+--xnN5FBJtbR+nAVlX
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZ/WpOAAKCRA6cBh0uS2t
+rPhJAP9tJumh66ALD7Mi9Lq67Q0zkiY3AAxsC78L/bK7hPMQFQD8CfrrTsGIVd2b
+/YSRGiDILJJyG34/g8CbrhR6aFdaywo=
+=k4nT
+-----END PGP SIGNATURE-----
+
+--xnN5FBJtbR+nAVlX--
 
