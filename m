@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65B08C36002
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Apr 2025 13:47:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8952FC36002
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Apr 2025 13:49:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fH8ArQjuc+2u3p6o4rk0DYjx4SdQ4eKAPkOkQQfVCWs=; b=aix1GIEGyi09MofTW7m41dT7Dc
-	DEvoCIklQZ4mzJew7pdMectShHMWl/g8ukmbTHO/K8DifRRqq4q2u+er0EWSULsf7hEeOaMMtEuBc
-	rK7KDq8GE8k6QfhR+4/dfbxIZWWznhnRO8XtXFFIhO7KMOSnN8gMlPzi/8uIiyc8gimEytc0zhDRK
-	foAGiek8SGKNFaLzgBaME6jwkbB425FFTohYPVkkF7clauwgaGCpq0PHa4GG2wrBv18Ct0EKmCS9r
-	WvgYSEmz5DEEyBygel+FMgI0Sk6ZoU6EKj4celzZx89AIp4mTNU6277NXb/g8m19v98EBefJyy5Ei
-	G5ZU/tWQ==;
+	bh=jqSNFSYXlXxTwkh6bL0mTO3yvcmdY0hyoTCTc52nf/k=; b=v3qD2mMACvXRtgJv5FbHcCu+xe
+	YSek3LRBZfGLd/GCxNZpRMmryUEcl0isdjpgNqaMl7uj31cnQTMzeFWugWPCIc1YzNeBXFguCrcQi
+	HigjW2Vha7QCra5R6K1GmVT4l/x7hF+hSj+CEwUVx4d1sqPAn2Oy/ujiLtXz1Dd7yzDHP30bSU46m
+	YD09aUx5mzj0T8+tfu2hRdrzzTtSv7pNpBo0mlcPC69yghM6ULm14b02aWcr7FG+/9qXO3gYwcIM8
+	AgmUv9ydOS5ggjr//ukuJf+iuAf2ayUOvELIwQTIRQGhDs7MlE+jVb9HyJ+trxzm/PWaUdcEb3PHb
+	S0QycSPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2VmU-00000007LXf-1kMJ;
-	Wed, 09 Apr 2025 13:47:54 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1u2VoE-00000007LoM-20wh;
+	Wed, 09 Apr 2025 13:49:42 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2VFR-00000007FNT-04ID;
-	Wed, 09 Apr 2025 13:13:46 +0000
+	id 1u2VFS-00000007FOZ-2teK;
+	Wed, 09 Apr 2025 13:13:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1744204423;
-	bh=K/wA4RpGEvpZTPnWIurJlrBJX3eagtXahi8v+wS0GY4=;
+	s=mail; t=1744204425;
+	bh=j7ayRQIQFRn1u4tmoDP5qxk4hSTrJu8ovhaWYDRxaLg=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=LNeEAbGDIeZN9xP2BxPWsc0nDBcOLnh0kXrVgOhBb1C7+i+mR6xCB5TmMj2AS3x4Y
-	 mR41xOAAxCdaLbY5hfhvUMOFJ9h8/LDs/yepz4c/JxsVTghOBwfpRoharUMS7p4i+l
-	 40AorgL82t1baYd8n2HIa7cWtJFVNVAOqYpdZIai9pzbzcPcIrhGiL951XqKM4gvZc
-	 Of64D22/S5BpekHjM2zjl3Rn+ENAuvLApaJCcWxlnCqlrSOrNx73ltKch6qeWdMXFF
-	 pW7EK36mE96xVBpktr9AayUAX2qDHJhiWqeP4spVpLakkcTKagZXRslXO34baZ9kX7
-	 cycvRkfg2tM/w==
+	b=Xkdu69jB1C8B2NhLRK3P3Bbm2p42R8Ry7y5MfT1JRd0u2fVWPudHHXOChnRN+54an
+	 dGN3A85OvVxEjHUSKENrtobbKKnnaD5vf6IM6VVp2s5GlfQ8okeoGZIh8ghA9GbAY9
+	 SJSGddl5V+c2fsdb17gaL1WYfH1+Tfe8ZAC3NKQfwkMl/cHZaLsCTljWKDE6YZ7INk
+	 B1PF0DxBh8Xbn+dXj+oCT/zVPuAnlugkrm7eLf2SWz4TBCLqOrm3OmMbDqAlGJi9am
+	 pjVWTEn5xC0SCVgVxFMrEbFKhUXvNRYAqj29emIr2m1t4a9OqPWGvMzBypWcuiukLM
+	 ha7szyaQiab1A==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 33DDE17E0B2D;
-	Wed,  9 Apr 2025 15:13:42 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E240217E101A;
+	Wed,  9 Apr 2025 15:13:43 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -71,17 +71,17 @@ Cc: p.zabel@pengutronix.de,
 	ives.chenjh@mediatek.com,
 	tommyyl.chen@mediatek.com,
 	jason-jh.lin@mediatek.com
-Subject: [PATCH v8 13/23] drm/mediatek: mtk_hdmi: Move output init to mtk_hdmi_register_audio_driver()
-Date: Wed,  9 Apr 2025 15:13:08 +0200
-Message-ID: <20250409131318.108690-14-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v8 14/23] drm/mediatek: mtk_hdmi: Improve mtk_hdmi_get_all_clk() flexibility
+Date: Wed,  9 Apr 2025 15:13:09 +0200
+Message-ID: <20250409131318.108690-15-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250409131318.108690-1-angelogioacchino.delregno@collabora.com>
 References: <20250409131318.108690-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250409_061345_200563_97D33DCE 
-X-CRM114-Status: GOOD (  13.04  )
+X-CRM114-CacheID: sfid-20250409_061346_882252_640F0588 
+X-CRM114-Status: GOOD (  16.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,78 +96,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In preparation for moving the common bits of this driver, merge the
-contents of mtk_hdmi_output_init in mtk_hdmi_register_audio_driver
-function to aggregate all of the initial audio setup together in
-the same function and to make it clear that all of the setup that
-is performed in mtk_hdmi_output_init is specifically related only
-to audio and not video.
+In preparation for splitting common bits of this driver and for
+introducing a new version of the MediaTek HDMI Encoder IP, improve
+the flexibility	of function mtk_hdmi_get_all_clk() by adding a
+pointer to the clock names array and size of it to its parameters.
+
+Also change the array of struct clock pointers in the mtk_hdmi
+structure to be dynamically allocated, and allocate it in probe.
 
 Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_hdmi.c | 27 ++++++++-------------------
- 1 file changed, 8 insertions(+), 19 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_hdmi.c | 26 ++++++++++++++++----------
+ 1 file changed, 16 insertions(+), 10 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-index e1e4fe427bf7..b38ba714ea2e 100644
+index b38ba714ea2e..68f479ec34c7 100644
 --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
 +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-@@ -1025,20 +1025,6 @@ static int mtk_hdmi_setup_vendor_specific_infoframe(struct mtk_hdmi *hdmi,
+@@ -159,7 +159,7 @@ struct mtk_hdmi {
+ 	struct phy *phy;
+ 	struct device *cec_dev;
+ 	struct i2c_adapter *ddc_adpt;
+-	struct clk *clk[MTK_HDMI_CLK_COUNT];
++	struct clk **clk;
+ 	struct drm_display_mode mode;
+ 	bool dvi_mode;
+ 	struct regmap *sys_regmap;
+@@ -1072,17 +1072,18 @@ static const char * const mtk_hdmi_clk_names[MTK_HDMI_CLK_COUNT] = {
+ 	[MTK_HDMI_CLK_AUD_SPDIF] = "spdif",
+ };
+ 
+-static int mtk_hdmi_get_all_clk(struct mtk_hdmi *hdmi,
+-				struct device_node *np)
++static int mtk_hdmi_get_all_clk(struct mtk_hdmi *hdmi, struct device_node *np,
++				const char * const *clock_names, size_t num_clocks)
+ {
+ 	int i;
+ 
+-	for (i = 0; i < ARRAY_SIZE(mtk_hdmi_clk_names); i++) {
+-		hdmi->clk[i] = of_clk_get_by_name(np,
+-						  mtk_hdmi_clk_names[i]);
++	for (i = 0; i < num_clocks; i++) {
++		hdmi->clk[i] = of_clk_get_by_name(np, clock_names[i]);
++
+ 		if (IS_ERR(hdmi->clk[i]))
+ 			return PTR_ERR(hdmi->clk[i]);
+ 	}
++
  	return 0;
  }
  
--static int mtk_hdmi_output_init(struct mtk_hdmi *hdmi)
--{
--	struct hdmi_audio_param *aud_param = &hdmi->aud_param;
--
--	aud_param->aud_codec = HDMI_AUDIO_CODING_TYPE_PCM;
--	aud_param->aud_sample_size = HDMI_AUDIO_SAMPLE_SIZE_16;
--	aud_param->aud_input_type = HDMI_AUD_INPUT_I2S;
--	aud_param->aud_i2s_fmt = HDMI_I2S_MODE_I2S_24BIT;
--	aud_param->aud_mclk = HDMI_AUD_MCLK_128FS;
--	aud_param->aud_input_chan_type = HDMI_AUD_CHAN_TYPE_2_0;
--
--	return 0;
--}
--
- static void mtk_hdmi_audio_enable(struct mtk_hdmi *hdmi)
+@@ -1381,15 +1382,15 @@ static int mtk_hdmi_get_cec_dev(struct mtk_hdmi *hdmi, struct device *dev, struc
+ 	return 0;
+ }
+ 
+-static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
+-				   struct platform_device *pdev)
++static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi, struct platform_device *pdev,
++				   const char * const *clk_names, size_t num_clocks)
  {
- 	mtk_hdmi_hw_send_aud_packet(hdmi, true);
-@@ -1615,6 +1601,7 @@ static void mtk_hdmi_unregister_audio_driver(void *data)
- static int mtk_hdmi_register_audio_driver(struct device *dev)
- {
- 	struct mtk_hdmi *hdmi = dev_get_drvdata(dev);
-+	struct hdmi_audio_param *aud_param = &hdmi->aud_param;
- 	struct hdmi_codec_pdata codec_data = {
- 		.ops = &mtk_hdmi_audio_codec_ops,
- 		.max_i2s_channels = 2,
-@@ -1624,6 +1611,13 @@ static int mtk_hdmi_register_audio_driver(struct device *dev)
- 	};
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *np = dev->of_node;
+ 	struct device_node *remote, *i2c_np;
  	int ret;
  
-+	aud_param->aud_codec = HDMI_AUDIO_CODING_TYPE_PCM;
-+	aud_param->aud_sample_size = HDMI_AUDIO_SAMPLE_SIZE_16;
-+	aud_param->aud_input_type = HDMI_AUD_INPUT_I2S;
-+	aud_param->aud_i2s_fmt = HDMI_I2S_MODE_I2S_24BIT;
-+	aud_param->aud_mclk = HDMI_AUD_MCLK_128FS;
-+	aud_param->aud_input_chan_type = HDMI_AUD_CHAN_TYPE_2_0;
-+
- 	hdmi->audio_pdev = platform_device_register_data(dev,
- 							 HDMI_CODEC_DRV_NAME,
- 							 PLATFORM_DEVID_AUTO,
-@@ -1665,11 +1659,6 @@ static int mtk_hdmi_probe(struct platform_device *pdev)
- 	mutex_init(&hdmi->update_plugged_status_lock);
- 	platform_set_drvdata(pdev, hdmi);
- 
--	ret = mtk_hdmi_output_init(hdmi);
--	if (ret)
--		return dev_err_probe(dev, ret,
--				     "Failed to initialize hdmi output\n");
--
- 	ret = mtk_hdmi_register_audio_driver(dev);
+-	ret = mtk_hdmi_get_all_clk(hdmi, np);
++	ret = mtk_hdmi_get_all_clk(hdmi, np, clk_names, num_clocks);
  	if (ret)
- 		return dev_err_probe(dev, ret,
+ 		return dev_err_probe(dev, ret, "Failed to get clocks\n");
+ 
+@@ -1638,6 +1639,7 @@ static int mtk_hdmi_probe(struct platform_device *pdev)
+ {
+ 	struct mtk_hdmi *hdmi;
+ 	struct device *dev = &pdev->dev;
++	const int num_clocks = MTK_HDMI_CLK_COUNT;
+ 	int ret;
+ 
+ 	hdmi = devm_kzalloc(dev, sizeof(*hdmi), GFP_KERNEL);
+@@ -1647,7 +1649,11 @@ static int mtk_hdmi_probe(struct platform_device *pdev)
+ 	hdmi->dev = dev;
+ 	hdmi->conf = of_device_get_match_data(dev);
+ 
+-	ret = mtk_hdmi_dt_parse_pdata(hdmi, pdev);
++	hdmi->clk = devm_kcalloc(dev, num_clocks, sizeof(*hdmi->clk), GFP_KERNEL);
++	if (!hdmi->clk)
++		return -ENOMEM;
++
++	ret = mtk_hdmi_dt_parse_pdata(hdmi, pdev, mtk_hdmi_clk_names, num_clocks);
+ 	if (ret)
+ 		return ret;
+ 
 -- 
 2.49.0
 
