@@ -4,114 +4,152 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38C6DC36002
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Apr 2025 16:25:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79C9CC36002
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Apr 2025 18:35:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xtl6RB/YoPdedVlKr/EZKIbBoP+mhzuG7eRvyZOvh2Y=; b=DU/2V2sq/X3uEuRIvpsOAj1QK8
-	TSlhkHyHZQEFpDdwlS2A4GUPlqneAkcz//+Pz8O3f5MrukGtXhwLjgA9E7EwCIavoRR6MwxodSObX
-	A4XWwY8x35bE8lktYgXSCIOt8kdPVAqUp28DIVebV7dxT360LQtz14HEtUjU2oBSyA2nBkMBdjRV6
-	sGVGEu8GA3rg+NjZ8M5gINZzAAdV4LCAsssgULem0+QDfS05iPH9v/cPJEKiYRXBYWNYuHkQGg9ub
-	/bNaaVUL2gjtS2oQu1pVUZI2ZvojmsffvncyIvi1jbAB1uZWPTskQfVn9/LQ456GpPKXtCwRWbUTx
-	ZPDktpEQ==;
+	bh=h3tN8Xg2pRwFhKBUhJyoFYaiPiYIFv7y7hpbU+APvsA=; b=TE2Cgkv6DQyKEV+VyRs3q5YOvc
+	YZZA4ODvnN/lHcjMNcRb5qVfja6Py5hBHSHCnWPUXwbVuHZe0wbjLgJiiqWrRJj7QGkNl0n4hl6BA
+	kEk2qSyCWJzd2DOY2K0YS8scGJ8WBOlVK3pfh7YkOhIE5EN0crdC2cd7akGXjhmRFfLEWrd+dpsAl
+	8VmD3fDgXahNU/XJZJHk//xgyf57N+pKVV68T+QaczJH3OIyCiBKVMRlEmUQFEy0qrPNFjx2QydK3
+	Zs2b/DhXdfeo9eD0nJ7EMtpE+cJrXHzxmO3A+FezbNIUGNbSSDEy5dtUf29wdTSc/FeJpPG82/fFs
+	B2czXg3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2YEd-00000007sV7-1D73;
-	Wed, 09 Apr 2025 16:25:07 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1u2aGx-00000008Bvv-0V5s;
+	Wed, 09 Apr 2025 18:35:39 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2Y3G-00000007qix-2s71;
-	Wed, 09 Apr 2025 16:13:24 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 4BE8DA49A93;
-	Wed,  9 Apr 2025 16:07:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A4E36C4CEE2;
-	Wed,  9 Apr 2025 16:13:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744215201;
-	bh=yJiCj/KLlXnc9aM7spTJqyiJV+1GV9RlHUWP2ACtPZo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=KBI1MXOXwVafCWYo+bPClyePCICCqCXlYMV85Ynv+NoJzmLqqF3hHAsdT48jkgaeK
-	 mMqkQGxACw+U0ptiJFw+sM6RFCGwY6GdmnlB2APJZ6zyMdsqDjX5/EYDxaOZHdo9AV
-	 vhxO7x6IO6HFpRIE/jT5HHWinHqmaQjZqgmVzGklKKCZ1izAAUy6sTyArpospnfXBs
-	 /sxzDbj6QJw/L1pHrBqVy8SN0L4wgGpOHLLH6G0PfjcOwBQLJot7QHz+BtZ/7hoMnB
-	 urAdV1I6eyzJBdu0195rw8mZUSQHbPhNZKWokCa7H5rGtHmeXANHFtgKyzztYd8rdS
-	 wghHpRIrHr25Q==
-Message-ID: <b01e955d-329a-4130-8cd9-fce4d31cbc54@kernel.org>
-Date: Wed, 9 Apr 2025 18:13:15 +0200
+	id 1u2aGu-00000008Bub-49tE
+	for linux-mediatek@lists.infradead.org;
+	Wed, 09 Apr 2025 18:35:38 +0000
+Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 539HG2mt017095
+	for <linux-mediatek@lists.infradead.org>; Wed, 9 Apr 2025 18:35:36 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	h3tN8Xg2pRwFhKBUhJyoFYaiPiYIFv7y7hpbU+APvsA=; b=BEcxr57EUiJY5Zym
+	kVNSxVwdl1/G+WnKZuK+rrrBokydGO/Oh3UpLZWk4kL3VGv2SmZR3i/K6wuf2YOI
+	MpodShpD7Ukn+eqF+kTxaEAW5tLuv0RTNDEG9lR31fCxF4wwsbIh54Tb+rDBzvkY
+	R02dOpwLQyR09UacSpshxRb/Aa1t9Sa0cqYNVnm+UUMJN9lkCsaHQecEQDnqKyfr
+	M9Tj2Ei9EZY3qDpuDSHjXEdH5VGK/kupDdwYPBVBtsL4/Cr+/793ixrAqiOXu9ea
+	C2RawlFXomCZxJWIpKE0WahyzSIVh5Ehs76kZRSWUp/xi6CvdT3uLQ6bdG2ibQCP
+	I2IDfQ==
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com [209.85.222.199])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 45twbumev0-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Wed, 09 Apr 2025 18:35:35 +0000 (GMT)
+Received: by mail-qk1-f199.google.com with SMTP id af79cd13be357-7c54734292aso75485a.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 09 Apr 2025 11:35:35 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1744223734; x=1744828534;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=h3tN8Xg2pRwFhKBUhJyoFYaiPiYIFv7y7hpbU+APvsA=;
+        b=V0fRU+kst1bfSTGn1fVwRlnRfUCawzaJsjIpxFQJMOp50eK7qsJFUoA0OmZkwXAKwH
+         7uaRptNDLSJPnK+hmag2L+s+rYWumpYMdpt7BUHA8DZFpQBYyqiXAZv/drBm1jnkJbkH
+         NaN42lJwZqG/MBOrQtNuqgzveU/4/h9Fh0iu/etCZWQPFcJvOEp7JG9c4CdGHqtC41t5
+         CBwLpdRu4Briv9Pu3UGpF/Q9Guw4Q3GRTSuYHZJPT+e2RcoTcw5eMyRmA7jdXCx47SBB
+         c5wyK4n9y6ow9kKVsCwogRoVxA9nBTnGKyRbLsrbY88cKKJHsMyfv9D952wWDbz4strU
+         P2Fw==
+X-Forwarded-Encrypted: i=1; AJvYcCVYSPc8hPcdbHav75cH/4JRkDuSk29LpTropTvawLl3jUTolA89Z/aMMdkDZ/IN/9uGgv68LP3mDZfC7ats7Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxy9G/ulq3DXQa5F/Uimp69rMhxpX1lwEzGzd6bYvmkHTFxVHQo
+	9aJrsqb7agHMwYNIevSXxibMxzKnBjuo3rdHOan7fGP9Z9+HaVUxIIRgveStSdr+mBArA09DZOt
+	rMgcl2cnT6XHeQVFpwfRQpE8tVtUPOYIde6KuEZTuwCqrk37tHFEwVJW6BPGtS0IljgUep+o=
+X-Gm-Gg: ASbGncta+ovnGJtzLQScTU2fEaP1F1PTEHYAuURH7DN+nfztzFCeqwQqT0pqLLCgF6o
+	jFeQLS+5ZR8Q9V7PmMqBoF6Xw9w+JTUzzjN3FWezskRR9NOZPbtiTObBekMmHSNZEB675mnsOWQ
+	82GrkFK8R7CN9KGyXh9ba5Ki4UXwyIeuZY1TnKmIUyVtMn6ULqguPAm7feay6hfp4B2quHF51Z7
+	gl5BDG4NXEyj52xnNRiidOH7zEhAmAY+kCSkc1QEB0kbzsFUDa8Nb/rUinX1AuIhFiBIXpz1bva
+	JVNZCI9hkaXKqP8MdZ0INLjDzvX9dLd+3tf1Q8Cxtvn+aIaKlpz3ZvXBOwgB2MbBkQ==
+X-Received: by 2002:a05:620a:319f:b0:7c3:c4ba:d8a6 with SMTP id af79cd13be357-7c79cc4fb3amr237221885a.14.1744223734646;
+        Wed, 09 Apr 2025 11:35:34 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFP4Nhv309/CRScfglwzxDlYjCREIsnQLZ9iN6mVMw3ZcNyjL93Zpdnb8GcZSJKHfk6DuunWg==
+X-Received: by 2002:a05:620a:319f:b0:7c3:c4ba:d8a6 with SMTP id af79cd13be357-7c79cc4fb3amr237218585a.14.1744223734222;
+        Wed, 09 Apr 2025 11:35:34 -0700 (PDT)
+Received: from [192.168.65.90] (078088045245.garwolin.vectranet.pl. [78.88.45.245])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-acaa1bb3167sm134011966b.21.2025.04.09.11.35.30
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 09 Apr 2025 11:35:33 -0700 (PDT)
+Message-ID: <66f8d957-f7a5-4aec-b8e7-5bcc7ff7f569@oss.qualcomm.com>
+Date: Wed, 9 Apr 2025 20:35:29 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 3/3] memory: mtk-smi: mt8188: Use
- devm_pm_runtime_enable
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Friday Yang <friday.yang@mediatek.com>
-Cc: Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20250408033206.12176-1-friday.yang@mediatek.com>
- <20250408033206.12176-4-friday.yang@mediatek.com>
- <20250408-woodoo-quick-worm-bf82b4@shite>
- <e777f95c-c21f-4a91-b044-5fc19eb22c3d@collabora.com>
- <258c8fda-70cc-4624-aef6-7cbef3cdbde6@kernel.org>
- <399f89fb-092e-4fb3-8a0b-987dea129554@collabora.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [PATCH 09/19] arm: dts: qcom: sdx55/sdx65: Fix CPU
+ power-domain-names
+To: Ulf Hansson <ulf.hansson@linaro.org>,
+        Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+Cc: "Rob Herring (Arm)" <robh@kernel.org>,
+        Krzysztof Kozlowski <krzk+dt@kernel.org>,
+        Conor Dooley
+ <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
+        Jernej Skrabec <jernej.skrabec@gmail.com>,
+        Samuel Holland <samuel@sholland.org>,
+        "Rafael J. Wysocki"
+ <rafael@kernel.org>,
+        Viresh Kumar <viresh.kumar@linaro.org>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Vincenzo Frascino <vincenzo.frascino@arm.com>,
+        Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>,
+        Lorenzo Pieralisi <lpieralisi@kernel.org>,
+        Bjorn Andersson <andersson@kernel.org>,
+        Konrad Dybcio <konradybcio@kernel.org>,
+        Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+        Viresh Kumar <vireshk@kernel.org>, Nishanth Menon <nm@ti.com>,
+        Stephen Boyd <sboyd@kernel.org>, zhouyanjie@wanyeetech.com,
+        Conor Dooley <conor@kernel.org>,
+        Nicolas Ferre
+ <nicolas.ferre@microchip.com>,
+        Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+        Steen Hegelund <Steen.Hegelund@microchip.com>,
+        Daniel Machon <daniel.machon@microchip.com>,
+        UNGLinuxDriver@microchip.com, Shawn Guo <shawnguo@kernel.org>,
+        Sascha Hauer <s.hauer@pengutronix.de>,
+        Pengutronix Kernel Team <kernel@pengutronix.de>,
+        Fabio Estevam <festevam@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+        Neil Armstrong <neil.armstrong@linaro.org>,
+        Kevin Hilman <khilman@baylibre.com>,
+        Jerome Brunet <jbrunet@baylibre.com>,
+        Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+        Geert Uytterhoeven <geert+renesas@glider.be>,
+        Magnus Damm <magnus.damm@gmail.com>, devicetree@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+        linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
+        linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+        linux-mips@vger.kernel.org, imx@lists.linux.dev,
+        linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org,
+        linux-renesas-soc@vger.kernel.org
+References: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org>
+ <20250403-dt-cpu-schema-v1-9-076be7171a85@kernel.org>
+ <03011a33-174b-4027-bdd2-043aa685380b@oss.qualcomm.com>
+ <CAPDyKFoZ7NfN+pkCPnusvTOEaxbQhr=1FJqzdDGrLcKAzBpGyQ@mail.gmail.com>
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <399f89fb-092e-4fb3-8a0b-987dea129554@collabora.com>
+From: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+In-Reply-To: <CAPDyKFoZ7NfN+pkCPnusvTOEaxbQhr=1FJqzdDGrLcKAzBpGyQ@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
+X-Proofpoint-GUID: c6LdsiCsIt8QO2K4fl1FsyAstweRZW0s
+X-Proofpoint-ORIG-GUID: c6LdsiCsIt8QO2K4fl1FsyAstweRZW0s
+X-Authority-Analysis: v=2.4 cv=dbeA3WXe c=1 sm=1 tr=0 ts=67f6bdf7 cx=c_pps a=HLyN3IcIa5EE8TELMZ618Q==:117 a=FpWmc02/iXfjRdCD7H54yg==:17 a=IkcTkHD0fZMA:10 a=XR8D0OoHHMoA:10 a=EUspDBNiAAAA:8 a=VwQbUJbxAAAA:8 a=OWbFrMhi_jq_UiG4ISsA:9 a=QEXdDO2ut3YA:10
+ a=bTQJ7kPSJx9SKPbeHEYW:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1095,Hydra:6.0.680,FMLib:17.12.68.34
+ definitions=2025-04-09_06,2025-04-08_04,2024-11-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 impostorscore=0
+ suspectscore=0 mlxlogscore=832 phishscore=0 mlxscore=0 spamscore=0
+ malwarescore=0 clxscore=1015 adultscore=0 priorityscore=1501
+ lowpriorityscore=0 bulkscore=0 classifier=spam authscore=0 authtc=n/a
+ authcc= route=outbound adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2502280000 definitions=main-2504090122
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250409_091322_860929_D53C3748 
-X-CRM114-Status: GOOD (  21.53  )
+X-CRM114-CacheID: sfid-20250409_113537_041690_39632CDC 
+X-CRM114-Status: GOOD (  17.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,90 +164,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 09/04/2025 17:50, AngeloGioacchino Del Regno wrote:
-> Il 09/04/25 11:56, Krzysztof Kozlowski ha scritto:
->> On 09/04/2025 10:26, AngeloGioacchino Del Regno wrote:
->>> Il 08/04/25 08:29, Krzysztof Kozlowski ha scritto:
->>>> On Tue, Apr 08, 2025 at 11:31:56AM GMT, Friday Yang wrote:
->>>>> Replace pm_runtime_enable with the devres-enabled version which
->>>>> can trigger pm_runtime_disable.
->>>>>
->>>>> Signed-off-by: Friday Yang <friday.yang@mediatek.com>
->>>>> ---
->>>>>    drivers/memory/mtk-smi.c | 16 +++++++++-------
->>>>>    1 file changed, 9 insertions(+), 7 deletions(-)
->>>>>
->>>>> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
->>>>> index f25d46d2ef33..daef6d350419 100644
->>>>> --- a/drivers/memory/mtk-smi.c
->>>>> +++ b/drivers/memory/mtk-smi.c
->>>>> @@ -713,16 +713,17 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
->>>>>    	if (ret)
->>>>>    		goto err_link_remove;
->>>>>
->>>>> -	pm_runtime_enable(dev);
->>>>> +	ret = devm_pm_runtime_enable(dev);
->>>>> +	if (ret)
->>>>> +		goto err_link_remove;
->>>>> +
->>>>>    	platform_set_drvdata(pdev, larb);
->>>>>    	ret = component_add(dev, &mtk_smi_larb_component_ops);
->>>>>    	if (ret)
->>>>> -		goto err_pm_disable;
->>>>> +		goto err_link_remove;
->>>>>
->>>>>    	return 0;
->>>>>
->>>>> -err_pm_disable:
->>>>> -	pm_runtime_disable(dev);
->>>>
->>>> You now broke/changed the order of cleanup without any explanation.
->>>>
->>>> Best regards,
->>>> Krzysztof
->>>>
+On 4/7/25 6:27 PM, Ulf Hansson wrote:
+> On Fri, 4 Apr 2025 at 22:41, Konrad Dybcio
+> <konrad.dybcio@oss.qualcomm.com> wrote:
+>>
+>> On 4/4/25 4:59 AM, Rob Herring (Arm) wrote:
+>>> "rpmhpd" is not documented nor used anywhere. As the enable-method is
+>>> "psci" use "psci" for the power-domain name.
 >>>
->>> I agree some comment in the commit description saying that the cleanup reordering
->>> doesn't matter in this specific case would've been nice to have, but anyway IMO
->>> it's not a big deal - he didn't break anything, anyway :-)
+>>> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+>>> ---
 >>
->> Cleanup orderings are tricky, so are you sure nothing got here called in
->> incorrect moment?
+>> "psci" is what we want here, but these platforms require some more
+>> massaging..
 > 
-> Yes.
+> So this isn't for CPU performance scaling?
+
+Nope!
+
 > 
->  >> I see that runtime PM will be disabled much later and
->> what certainty you have that device won't get resumed that time?
 >>
-> How can a device that failed to probe be resumed?! Who's going to resume it?! :-)
-
-That's unbind path.
-
+>> These SoCs don't seem to have any PSCI idle states (deeper than WFI)
+>> described, which is no bueno, as they support some..
 > 
-> Also, in the remove phase, all users get removed first, there's no ISR (implies
-> that there's no isr that will resume this device inadvertently, and other than
-> no isr - there's no kthread/queue/this/that that could do this), and no nothing.
+> If PSCI PC mode is the only supported CPU suspend mode, we don't need
+> the power-domain topology to be described in DT as it's optional to
+> use.
 > 
-> Moreover, SMI-LARB cannot be removed unless all of the components are unbound;
-> SMI-Common (be it a common or a sub-common) cannot be removed if SMI-LARB is still
-> using it.
-> 
-> No I don't see anything that can resume it before devm does its job.
+> Is this a PC or OSI based platform?
+Unfortunately it seems like only PC mode is implemented.
 
-so this should be in commit msg... I doubt that author did any
-investigation but instead just blindly converted to devm.
-
-> 
-> If you do see something though, I'm curious to understand what I'm missing here :-)
-
-You change the order of cleanup and this is known to introduce errors.
-Real bugs during probe error paths or removal. Some are tricky to
-trigger, but some are obvious and really happening. The easiest to
-trigger issues is for devices sharing interrupts (there is even CONFIG
-for that). That's why generic recommendation is don't use devm with
-shared interrupts. Even more generic recommendation is don't mix devm
-with non-devm, but just choose one.
-
-Best regards,
-Krzysztof
+Konrad
 
