@@ -4,86 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 750FBC36002
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Apr 2025 14:05:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 262CFC36002
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Apr 2025 14:09:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zE5O2TDJ/6z3dcDYX+Ueo+HhdE0zYiz4VC/3D3/fltI=; b=2ov4aI2S6cHTkS1vCGMAI41Ukr
-	mHv3ELGIxMzK/ei3Xv7JGD0ubZNcyDZacebTyyrXDg2Jtp0xxSxYp4imjJUVht3bhXjsKoa135KQH
-	p4KL4Bki0dBJWMhPirL/vING6r5y0L15uq06xxu98yy5W990YolCnV0xXPvjDutIGDpO5zCN5qXMC
-	c5PIF8n8josajYVT5W+WdKnxoPzr6r3BVWODU6S+mcKv8sh49u5hBrxfpcbnuZUtsfjZ8VGanLF0U
-	PtMrRPoyB4pEnRfFePyzQuaIDEdcneQXYNJwHK+DpnlSf3YmNzpVRKNmCgcxmm5UdvKWX5TfQGSo7
-	mtHxBxNA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OPytIAR32acMc1Jy5NAX4zaoua0Um2xWn2RghqT1VbM=; b=k9cTaE/5eDhktZlsjyWSniL736
+	Am8HSCQJAz0LpaZyxIfO0Xh/w4qcFRSljryCZ0uXTViKDoVrNqoMbdhWxUE0bTI0d1t171/kCeAeD
+	jQI3VUZ8PRGSOlkS4xuiBhYEJMJ03t9rE6e2sr6D3sa37Pz7hzso1I3ZECJ9LJiIBcc8gEVWQIxK/
+	5wjgMeSEIu9TKIHIguYm0wyUe0xu2Ib5GA6+yUgwOn+RjqCzdV25zvQz5L2lNW/zg7SDKGcr5Gqju
+	8aRFmBnOiEod13h/WXbxxWS5q36WiAPqqEoIQLrsEOIYKVHIn/0F2UGE04dH0WZTAoEgofs07+zlG
+	VTBs9mDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2W3y-00000007OHK-28Xe;
-	Wed, 09 Apr 2025 14:05:58 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1u2W7T-00000007Olb-0kfi;
+	Wed, 09 Apr 2025 14:09:35 +0000
+Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2VFi-00000007FYc-0ffc;
-	Wed, 09 Apr 2025 13:14:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1744204440;
-	bh=iEqi4D14t6E8AwloqFFSWOfiLtd7GjARxp7/cOXDtLE=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Icpa6Z9gNzzh+NduNfI7bqo3qeTZzFmxbrTzbEvXQlsd7uZ4Vk790rshPoun1LWW2
-	 DBr8PSLo2lpGs6b5c8HBbZh0yWRlqAoANmSehFNyH5aFrex/TAv9iGKZp0t6ixNHXs
-	 hhixOUkJ9DZgIEKnNiqQT/9OCdQ8JkAcbZif7xrXh18Ax0FNnEbinCLQUwF2LdR5vu
-	 ysJMZ44pI/I0qyGudhHEnuR/gLZoMT6lWvFmThO7g/MOnwuXjct2Q3khnlLa6q1FiH
-	 fwEfUFLfWCKUFDLbpUm9diCOy6Wy7qTvZUaWoYJOvApXufgcHiSXNm/p5RIqFGQHgx
-	 8DucueJBt7rXg==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5012E17E0B2D;
-	Wed,  9 Apr 2025 15:13:59 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: chunkuang.hu@kernel.org
-Cc: p.zabel@pengutronix.de,
-	airlied@gmail.com,
-	simona@ffwll.ch,
-	maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	tzimmermann@suse.de,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	ck.hu@mediatek.com,
-	jitao.shi@mediatek.com,
-	jie.qiu@mediatek.com,
-	junzhi.zhao@mediatek.com,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	kernel@collabora.com,
-	dmitry.baryshkov@linaro.org,
-	lewis.liao@mediatek.com,
-	ives.chenjh@mediatek.com,
-	tommyyl.chen@mediatek.com,
-	jason-jh.lin@mediatek.com,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v8 23/23] drm/mediatek/hdmi: Use syscon_regmap_lookup_by_phandle_args
-Date: Wed,  9 Apr 2025 15:13:18 +0200
-Message-ID: <20250409131318.108690-24-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250409131318.108690-1-angelogioacchino.delregno@collabora.com>
-References: <20250409131318.108690-1-angelogioacchino.delregno@collabora.com>
+	id 1u2VFt-00000007Fdm-2pjU
+	for linux-mediatek@lists.infradead.org;
+	Wed, 09 Apr 2025 13:14:15 +0000
+Received: by mail-yw1-x1129.google.com with SMTP id 00721157ae682-6ff4faf858cso51356377b3.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 09 Apr 2025 06:14:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1744204453; x=1744809253; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=OPytIAR32acMc1Jy5NAX4zaoua0Um2xWn2RghqT1VbM=;
+        b=qiSeIpOuQ8XfeYMLzFx+p8seSNm5Wblzcvu4OdB4vqyilwqY3UeyrmBQ91ygFXVGMK
+         3Kv0CCmlstIA5tZinyh5BxId7fqACj9DH+Obmeo6GangGWhFmqUiWiy9SaRr4tLUkM3X
+         sPG4/XFllTv6BnewBKibExbRMmYVrSyrsclHubNlx6U2YSO0Drv0WKrJn3oJXE5EhOcX
+         Gtr9n47/YL+XEwUaix2vp0CwQ4PXKlTf2OrQSTG04LUnZ1I6crmu3jcYSzKB7itul9Nt
+         yL6eZeTaf1+ghyG/+yuvbOoRK0Wd1Pup5An6LEj3ktXKGDZoECbxjpoBiS3/TF/94FG0
+         PsTw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1744204453; x=1744809253;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=OPytIAR32acMc1Jy5NAX4zaoua0Um2xWn2RghqT1VbM=;
+        b=QIh3yX2XnHtAuntONaLUFu3bc2wKYnDvIzrv/x83sabX3dQvP3txLt0piin/RKT5sB
+         IBXElqqYn45gfC34PZwEFIStNztWAbAzXaUf2qL9exRT7VAh9t0Hkh5dz5o1Ijvuh3VU
+         MoFVTEpPKnQUS2U022Hf5kEZkzM/NQyvDpXBqXnHclc8JhrRVOUitEJk5AR90NgwBhI8
+         ecLcU7GqYbMLV2A75bI3BsTG+KWfv2DumuWz+jxUxYXSIzZL2q9SV1L+VSwyQ/rjSw3o
+         jT5tm/EyH4ziHT0ofBHpPcj9AazJ3RkdZkyKWxu5mVcXtYUFA3j+q/o7bjurt9kyAl/1
+         CCYw==
+X-Forwarded-Encrypted: i=1; AJvYcCW49RftXlWdAv7sJvSKbLek2HDFvVD3TGtnpI9z0jkZ3S/qwTa2nKRh6tQuAxIvj/yTJJTUypOQZTAMkL/3gw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy7jrSphOBVWGhzBOtUzBoiiMvHIrEPP+U03E9mGJI6bdhgihra
+	B6kSLXmkvgbueTOynE10AJxzTVYX6VpW9k/azM3JASeY0EGhuDIbdRa2cQGZ2tDZoKSRhJux2WH
+	Fn2wBnMsgJ66IPqaBtd78RKejdR2ChMe1i2Nv0g==
+X-Gm-Gg: ASbGnctY3LHXSa7UgtHZ1ZWi8nZrrPJAq/mwVR6SIk3viQw5FvEApbmtzSPFyc3Q7/2
+	zJzlOVQ3D5F7lkUk0C/P2Cw4ZfaCsnQNypV2m9vRpXHLDiBM6D5bGsX63IbcdzLH5aYpFuUG5Cp
+	IlDBulMJ/9XUqtn4AQ6/Tc9k8=
+X-Google-Smtp-Source: AGHT+IHEapgN4KpAu2PH+cMh+2Gzlwfzy4KLVKnXkondFCagfktuVPm3ZUGmWpdWktkF6zuY6BhY5v5enEDZADi0x7Q=
+X-Received: by 2002:a05:690c:4a04:b0:703:b606:738f with SMTP id
+ 00721157ae682-70538813013mr54886587b3.9.1744204452852; Wed, 09 Apr 2025
+ 06:14:12 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20250325110701.52623-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250325110701.52623-1-angelogioacchino.delregno@collabora.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Wed, 9 Apr 2025 15:13:37 +0200
+X-Gm-Features: ATxdqUHSGpiXGAwgK7msekj1T4YSrnCc2mkntlahkz6x0Wt2J4BgD7Yq4ISR4rI
+Message-ID: <CAPDyKFrR7S23hCbEpwSj93f3ZczkbQAMgpJo1NNsK4bpMr-qnw@mail.gmail.com>
+Subject: Re: [PATCH 0/4] mmc: mtk-sd: Cleanups for register R/W
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: chaotian.jing@mediatek.com, matthias.bgg@gmail.com, 
+	linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	kernel@collabora.com, axe.yang@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250409_061402_367073_57D120BC 
-X-CRM114-Status: UNSURE (   9.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250409_061413_714117_A4E72718 
+X-CRM114-Status: GOOD (  13.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,46 +94,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+On Tue, 25 Mar 2025 at 12:07, AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> This series adds missing register field definitions for the MSDC patch
+> bit registers and aggregates various register writes into just one,
+> greatly lowering the amount of register reads and writes especially
+> during the controller initialization phase, other than the tuning
+> phases and set_ios for mclk setting.
+>
+> While this will have a performance gain, that is completely ignorable,
+> hence this series' only focus is a cleanup and an improvement in the
+> readability of the register settings (as those now have actual names,
+> some documenting, and no magic numbers around).
+>
+> This series brings no functional differences.
+>
+> AngeloGioacchino Del Regno (4):
+>   mmc: mtk-sd: Clarify patch bit register initialization and layout
+>   mmc: mtk-sd: Aggregate writes for MSDC_PATCH_BIT1/2 setup
+>   mmc: mtk-sd: Do single write in function msdc_new_tx_setting
+>   mmc: mtk-sd: Aggregate R/W for top_base iospace case where possible
+>
+>  drivers/mmc/host/mtk-sd.c | 207 ++++++++++++++++++++++++--------------
+>  1 file changed, 132 insertions(+), 75 deletions(-)
+>
 
-Use syscon_regmap_lookup_by_phandle_args() which is a wrapper over
-syscon_regmap_lookup_by_phandle() combined with getting the syscon
-argument.  Except simpler code this annotates within one line that given
-phandle has arguments, so grepping for code would be easier.
+Applied for next, thanks!
 
-There is also no real benefit in printing errors on missing syscon
-argument, because this is done just too late: runtime check on
-static/build-time data.  Dtschema and Devicetree bindings offer the
-static/build-time check for this already.
-
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-[Angelo: Rebased over HDMIv2/DDCv2 series cleanups]
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/gpu/drm/mediatek/mtk_hdmi_common.c | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_common.c b/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
-index 784bc05c9541..00a638a3caf4 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
-@@ -269,12 +269,9 @@ static int mtk_hdmi_get_cec_dev(struct mtk_hdmi *hdmi, struct device *dev, struc
- 	 * MMSYS_CONFIG device and the register offset of the HDMI_SYS_CFG
- 	 * registers it contains.
- 	 */
--	hdmi->sys_regmap = syscon_regmap_lookup_by_phandle(np, "mediatek,syscon-hdmi");
-+	hdmi->sys_regmap = syscon_regmap_lookup_by_phandle_args(np, "mediatek,syscon-hdmi",
-+								1, &hdmi->sys_offset);
- 	if (IS_ERR(hdmi->sys_regmap))
--		return PTR_ERR(hdmi->sys_regmap);
--
--	ret = of_property_read_u32_index(np, "mediatek,syscon-hdmi", 1, &hdmi->sys_offset);
--	if (ret)
- 		return dev_err_probe(dev, ret,
- 				     "Failed to get system configuration registers\n");
- 
--- 
-2.49.0
-
+Kind regards
+Uffe
 
