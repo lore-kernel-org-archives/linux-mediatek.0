@@ -4,56 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1541C36002
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Apr 2025 09:49:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 040F2C369A1
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Apr 2025 09:51:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=d3ETJJSIy/PfakG+9b0NBF2+q++JB8XWsugzaxZ9KXo=; b=sF/VWkflohIYu8
-	xOkybqhfYm4umrPRBDTOA5O+iD9zYiuewrdEzQkpd4/GVi3VshmG43L0VfDUqbdWfKpqnDrrpJjQy
-	6OWn+NO6tbw3tj+wQdUUnNUAYkjURpu+9teV8DOjJtx0hkN9X5cfqluOVplofSLX5t31uDYk5rcRL
-	3fSMPjKY8PtfGceLks3/yu0+cvo2fc1KvEe9J3foB3GLjLhTucSy4W+HaRJwnrahjsCal0EUkng0z
-	vnGdUnaIo+i7YENRf3KbOqKXPWBQ0MpJ9tpqFXESFlqn4LNna7QTh7bVt0aEA99/PByTrl2AHLPNI
-	0kDL84jaRlnR4P5ZQMXA==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zgqG3xwmCdqB6muuFbSBwEGoSLz2HXO0rIP5HfuJ+mA=; b=I6c92mrAVmpHDyg04a+3w0y23G
+	q+mTTX4e0oXLq1+7yfZT9xZ5cxx3JBxi5wZ+9Jn7wzT748naZyQb4qibg8BGgtrK+/QpgSNEJLkQU
+	brH/q0xqcI39k6EljRyULXZRep+B3pusw4RTydGV4uJxmU0/IjLVMTGww7rsCtYZdrxbV3lOmsrfd
+	dyPdzuykN+DpB6O/AKDXZIIxdJSyyrmty+IuszPpz3EaeK9mNYc3aT0O3xobopcOrVbln9jZEUNIP
+	hJWhvLJdJbmzFS/vBFPRRR0b14rJWo/7gmn/pjbHEAGlJ+mxAZm/aBT3h/AzxM59GG0kFXdb8l/Ya
+	L4ilLdsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2S3j-00000006kLV-3uMZ;
-	Wed, 09 Apr 2025 09:49:27 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1u2S5W-00000006kaL-1AuW;
+	Wed, 09 Apr 2025 09:51:18 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2S1y-00000006kCZ-1kEK;
-	Wed, 09 Apr 2025 09:47:38 +0000
+	id 1u2S21-00000006kCj-1e9J;
+	Wed, 09 Apr 2025 09:47:43 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1BDF868432;
-	Wed,  9 Apr 2025 09:47:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 18ADBC4CEE3;
-	Wed,  9 Apr 2025 09:47:36 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id F39EBA48A36;
+	Wed,  9 Apr 2025 09:42:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EBF18C4CEE3;
+	Wed,  9 Apr 2025 09:47:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744192057;
-	bh=+m0+N46haligEw11nrASxYuR/7DydAeoOe7+i2M73fo=;
-	h=From:Subject:Date:To:Cc:From;
-	b=rbUfYfs5XOo5tkvyZq39tMu8b4hVDMHci6cq/9DXOBwaKcXCKkRskse6SYupSxtEQ
-	 75FRODDHVTWK1FHXjUg1asgP7As971PPBF6wObzRNrQ5BF2Kw846N8HtKpvL3UmWil
-	 zbgYe6lPLEWyNRhuz2PVaWXJlFjSZzn9MFYnJPZM+Dhe3dq5E/+Cvo0feP5Ind+ski
-	 PrqqBftR8k8UJ2GJAyI4nnQls9+jxDIVwNziaT0MKOiwcuaSmt24xE9M5/EmAKlDjQ
-	 d+90Ct/JS+RIUL179++0TBJYmhTRdH8t+KmaMxLw5UfZXIXW8ObK4dgMC1oSh/sMEY
-	 X6L7Kym3CSMvA==
+	s=k20201202; t=1744192060;
+	bh=0+KmhDC5Bq+hB5H1LEihm9+Jr3ipByVEnTSATi06Hj0=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=DNBipUjS+vhiULkvJjAwla3R/ws3eJzjAAfLbPC2e1yO6TyNaikqMr+UJwyLgrseW
+	 TiYeqDjtObhXTTe/yMPrxLvT9NnMv6+axeBIER3clp2Ym2IjDCH0nrBYN1L/Ej692e
+	 5lgfEbJVzunoWFmExrdgfgMerdvEo6+FsjJFFywQc5nWyNxz8dMvE9JJUF6VvnulgP
+	 6k8n57VURCJUUZr4WqJKzCsbaNa8HN+gzonuVwB1CjPkdrbyhY62x57bdNtAikZGVu
+	 1bCs8dMEAxXScS1SGFcv3LEv0iN02OP1xlGA32knRd3P+3jU542obo36frnK4sKqr7
+	 PmcQxyltBldXw==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Subject: [PATCH net-next v2 0/2] Add L2 hw acceleration for airoha_eth
- driver
-Date: Wed, 09 Apr 2025 11:47:13 +0200
-Message-Id: <20250409-airoha-flowtable-l2b-v2-0-4a1e3935ea92@kernel.org>
+Date: Wed, 09 Apr 2025 11:47:14 +0200
+Subject: [PATCH net-next v2 1/2] net: airoha: Add l2_flows rhashtable
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIACFC9mcC/22NwQ6CMBBEf4Xs2TVtoUI8+R+GQ5EFNjaUbAlqC
- P9uwatze5PMmxUiCVOEa7aC0MKRw5jAnDJ4DG7sCblNDEYZq3Kdo2MJg8POh9fsGk/oTYOkGqv
- awuVGW0jTSajj96G914kHjnOQz/Gy6L39CQtV/hcuGhXqqtxTkb1UtyfJSP4cpId627YvMfYLL
- rkAAAA=
-X-Change-ID: 20250313-airoha-flowtable-l2b-e0b50d4a3215
+Message-Id: <20250409-airoha-flowtable-l2b-v2-1-4a1e3935ea92@kernel.org>
+References: <20250409-airoha-flowtable-l2b-v2-0-4a1e3935ea92@kernel.org>
+In-Reply-To: <20250409-airoha-flowtable-l2b-v2-0-4a1e3935ea92@kernel.org>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
  "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
@@ -62,6 +58,9 @@ Cc: linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
  Michal Kubiak <michal.kubiak@intel.com>
 X-Mailer: b4 0.14.2
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250409_024741_826910_228827CC 
+X-CRM114-Status: GOOD (  16.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,36 +75,212 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce the capability to offload L2 traffic defining flower rules in
-the PSE/PPE engine available on EN7581 SoC.
-Since the hw always reports L2/L3/L4 flower rules, link all L2 rules
-sharing the same L2 info (with different L3/L4 info) in the L2 subflows
-list of a given L2 PPE entry.
+Introduce l2_flows rhashtable in airoha_ppe struct in order to
+store L2 flows committed by upper layers of the kernel. This is a
+preliminary patch in order to offload L2 traffic rules.
 
+Reviewed-by: Michal Kubiak <michal.kubiak@intel.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
-Changes in v2:
-- squash patch 1/3 and 2/3
-- explicitly initialize airoha_flow_table_entry type for
-  FLOW_TYPE_L4 entry
-- get rid of airoha_ppe_foe_flow_remove_entry_locked() and just rely on
-  airoha_ppe_foe_flow_remove_entry()
-- Link to v1: https://lore.kernel.org/r/20250407-airoha-flowtable-l2b-v1-0-18777778e568@kernel.org
+ drivers/net/ethernet/airoha/airoha_eth.h |  15 ++++-
+ drivers/net/ethernet/airoha/airoha_ppe.c | 103 +++++++++++++++++++++++++------
+ 2 files changed, 98 insertions(+), 20 deletions(-)
 
----
-Lorenzo Bianconi (2):
-      net: airoha: Add l2_flows rhashtable
-      net: airoha: Add L2 hw acceleration support
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
+index ec8908f904c61988c3dc973e187596c49af139fb..86e08832246dfdc4fc448a8aeceb7032d633e812 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.h
++++ b/drivers/net/ethernet/airoha/airoha_eth.h
+@@ -422,12 +422,23 @@ struct airoha_flow_data {
+ 	} pppoe;
+ };
+ 
++enum airoha_flow_entry_type {
++	FLOW_TYPE_L4,
++	FLOW_TYPE_L2,
++	FLOW_TYPE_L2_SUBFLOW,
++};
++
+ struct airoha_flow_table_entry {
+-	struct hlist_node list;
++	union {
++		struct hlist_node list; /* PPE L3 flow entry */
++		struct rhash_head l2_node; /* L2 flow entry */
++	};
+ 
+ 	struct airoha_foe_entry data;
+ 	u32 hash;
+ 
++	enum airoha_flow_entry_type type;
++
+ 	struct rhash_head node;
+ 	unsigned long cookie;
+ };
+@@ -480,6 +491,8 @@ struct airoha_ppe {
+ 	void *foe;
+ 	dma_addr_t foe_dma;
+ 
++	struct rhashtable l2_flows;
++
+ 	struct hlist_head *foe_flow;
+ 	u16 foe_check_time[PPE_NUM_ENTRIES];
+ 
+diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
+index f10dab935cab6fad747fdfaa70b67903904c1703..7219125ade134614d12bfad3f02b48392962d88f 100644
+--- a/drivers/net/ethernet/airoha/airoha_ppe.c
++++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+@@ -24,6 +24,13 @@ static const struct rhashtable_params airoha_flow_table_params = {
+ 	.automatic_shrinking = true,
+ };
+ 
++static const struct rhashtable_params airoha_l2_flow_table_params = {
++	.head_offset = offsetof(struct airoha_flow_table_entry, l2_node),
++	.key_offset = offsetof(struct airoha_flow_table_entry, data.bridge),
++	.key_len = 2 * ETH_ALEN,
++	.automatic_shrinking = true,
++};
++
+ static bool airoha_ppe2_is_enabled(struct airoha_eth *eth)
+ {
+ 	return airoha_fe_rr(eth, REG_PPE_GLO_CFG(1)) & PPE_GLO_CFG_EN_MASK;
+@@ -476,6 +483,43 @@ static int airoha_ppe_foe_commit_entry(struct airoha_ppe *ppe,
+ 	return 0;
+ }
+ 
++static void airoha_ppe_foe_remove_flow(struct airoha_ppe *ppe,
++				       struct airoha_flow_table_entry *e)
++{
++	lockdep_assert_held(&ppe_lock);
++
++	hlist_del_init(&e->list);
++	if (e->hash != 0xffff) {
++		e->data.ib1 &= ~AIROHA_FOE_IB1_BIND_STATE;
++		e->data.ib1 |= FIELD_PREP(AIROHA_FOE_IB1_BIND_STATE,
++					  AIROHA_FOE_STATE_INVALID);
++		airoha_ppe_foe_commit_entry(ppe, &e->data, e->hash);
++		e->hash = 0xffff;
++	}
++}
++
++static void airoha_ppe_foe_remove_l2_flow(struct airoha_ppe *ppe,
++					  struct airoha_flow_table_entry *e)
++{
++	lockdep_assert_held(&ppe_lock);
++
++	rhashtable_remove_fast(&ppe->l2_flows, &e->l2_node,
++			       airoha_l2_flow_table_params);
++}
++
++static void airoha_ppe_foe_flow_remove_entry(struct airoha_ppe *ppe,
++					     struct airoha_flow_table_entry *e)
++{
++	spin_lock_bh(&ppe_lock);
++
++	if (e->type == FLOW_TYPE_L2)
++		airoha_ppe_foe_remove_l2_flow(ppe, e);
++	else
++		airoha_ppe_foe_remove_flow(ppe, e);
++
++	spin_unlock_bh(&ppe_lock);
++}
++
+ static void airoha_ppe_foe_insert_entry(struct airoha_ppe *ppe, u32 hash)
+ {
+ 	struct airoha_flow_table_entry *e;
+@@ -505,11 +549,37 @@ static void airoha_ppe_foe_insert_entry(struct airoha_ppe *ppe, u32 hash)
+ 	spin_unlock_bh(&ppe_lock);
+ }
+ 
++static int
++airoha_ppe_foe_l2_flow_commit_entry(struct airoha_ppe *ppe,
++				    struct airoha_flow_table_entry *e)
++{
++	struct airoha_flow_table_entry *prev;
++
++	e->type = FLOW_TYPE_L2;
++	prev = rhashtable_lookup_get_insert_fast(&ppe->l2_flows, &e->l2_node,
++						 airoha_l2_flow_table_params);
++	if (!prev)
++		return 0;
++
++	if (IS_ERR(prev))
++		return PTR_ERR(prev);
++
++	return rhashtable_replace_fast(&ppe->l2_flows, &prev->l2_node,
++				       &e->l2_node,
++				       airoha_l2_flow_table_params);
++}
++
+ static int airoha_ppe_foe_flow_commit_entry(struct airoha_ppe *ppe,
+ 					    struct airoha_flow_table_entry *e)
+ {
+-	u32 hash = airoha_ppe_foe_get_entry_hash(&e->data);
++	int type = FIELD_GET(AIROHA_FOE_IB1_BIND_PACKET_TYPE, e->data.ib1);
++	u32 hash;
+ 
++	if (type == PPE_PKT_TYPE_BRIDGE)
++		return airoha_ppe_foe_l2_flow_commit_entry(ppe, e);
++
++	hash = airoha_ppe_foe_get_entry_hash(&e->data);
++	e->type = FLOW_TYPE_L4;
+ 	e->hash = 0xffff;
+ 
+ 	spin_lock_bh(&ppe_lock);
+@@ -519,23 +589,6 @@ static int airoha_ppe_foe_flow_commit_entry(struct airoha_ppe *ppe,
+ 	return 0;
+ }
+ 
+-static void airoha_ppe_foe_flow_remove_entry(struct airoha_ppe *ppe,
+-					     struct airoha_flow_table_entry *e)
+-{
+-	spin_lock_bh(&ppe_lock);
+-
+-	hlist_del_init(&e->list);
+-	if (e->hash != 0xffff) {
+-		e->data.ib1 &= ~AIROHA_FOE_IB1_BIND_STATE;
+-		e->data.ib1 |= FIELD_PREP(AIROHA_FOE_IB1_BIND_STATE,
+-					  AIROHA_FOE_STATE_INVALID);
+-		airoha_ppe_foe_commit_entry(ppe, &e->data, e->hash);
+-		e->hash = 0xffff;
+-	}
+-
+-	spin_unlock_bh(&ppe_lock);
+-}
+-
+ static int airoha_ppe_flow_offload_replace(struct airoha_gdm_port *port,
+ 					   struct flow_cls_offload *f)
+ {
+@@ -890,9 +943,20 @@ int airoha_ppe_init(struct airoha_eth *eth)
+ 	if (err)
+ 		return err;
+ 
++	err = rhashtable_init(&ppe->l2_flows, &airoha_l2_flow_table_params);
++	if (err)
++		goto error_flow_table_destroy;
++
+ 	err = airoha_ppe_debugfs_init(ppe);
+ 	if (err)
+-		rhashtable_destroy(&eth->flow_table);
++		goto error_l2_flow_table_destroy;
++
++	return 0;
++
++error_l2_flow_table_destroy:
++	rhashtable_destroy(&ppe->l2_flows);
++error_flow_table_destroy:
++	rhashtable_destroy(&eth->flow_table);
+ 
+ 	return err;
+ }
+@@ -909,6 +973,7 @@ void airoha_ppe_deinit(struct airoha_eth *eth)
+ 	}
+ 	rcu_read_unlock();
+ 
++	rhashtable_destroy(&eth->ppe->l2_flows);
+ 	rhashtable_destroy(&eth->flow_table);
+ 	debugfs_remove(eth->ppe->debugfs_dir);
+ }
 
- drivers/net/ethernet/airoha/airoha_eth.c |   2 +-
- drivers/net/ethernet/airoha/airoha_eth.h |  22 ++-
- drivers/net/ethernet/airoha/airoha_ppe.c | 224 ++++++++++++++++++++++++++-----
- 3 files changed, 212 insertions(+), 36 deletions(-)
----
-base-commit: 61f96e684edd28ca40555ec49ea1555df31ba619
-change-id: 20250313-airoha-flowtable-l2b-e0b50d4a3215
-
-Best regards,
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.49.0
 
 
