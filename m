@@ -4,62 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 448C1C36002
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Apr 2025 21:43:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9ED0C369A2
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Apr 2025 23:39:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=L45+ICB39rILiQvvG8IODqUa4EonAhQsmqzSvglwcQQ=; b=I8LZtgu20SMnwd51ZjyakGO4Ck
-	uQwuCNgCPgQGvVoCLYClXxBrUmVKaHyon5Nja5xm66sNWJpJKpGd4/S9kLgBLcc+Zr/YfYLgyq+Cv
-	oH/W7SnaxFjq7YYxmlyus+Pp3y+JkTM+prgnDD4zhcl0qO2Aykp+C/lsbO8XmF/Jwpv3JSd2IZXMZ
-	ld0+0eIIDis5/8OvGYPXM0++N8KUwH+TKnlaOlc+Zu9ZJn8lqPofShC2Pgt/pcDys6PT6Y5yxEZTW
-	us3sR6XnmXsMIGKQEZubwB9PJETUbWcnOVXWKNSh73bb1Dir+6BOhY2KfdRvtFZz7V9okjuJ+xL/P
-	gP3qPH2w==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NKOMm9lLgvb/F18kqPd+NqbO3iD1QOhWvXonfY0dLd0=; b=NaEz46fJ1AirMcI4yre+2oF8uE
+	JJN/XEOBE/0xP969VPLMHHzKf3+woE6ha+08NacrDJQlG+365vnslV3nDKETreH4jw+sM1Cbbopet
+	7S53Z0sewNjDmUF14v0iJX4HiPd6rBwaz+er814jEgWD9czo3VZOylm2qstApAleZaxXSCcTz993V
+	kUhEto/wa1uq97qpjZntaVfHh8Qwp2YbERX51s7NN4VDTpQw6mMdq2/WFQ/qtlpDGsW3PxvkmGj/h
+	Vcc4w9EUXQGiFohWBvPCQ3NUBO9dWf/mn2UXZwQR0CY0DW/w0KWh22Cb65OSX4BJK+BRVLOlM5PdJ
+	14lrjOQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2dD0-00000008cCj-0ZR3;
-	Wed, 09 Apr 2025 21:43:46 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1u2f0z-00000008mW3-2cB7;
+	Wed, 09 Apr 2025 23:39:29 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2cNY-00000008Uz8-3tiZ;
-	Wed, 09 Apr 2025 20:50:38 +0000
+	id 1u2ezD-00000008mS0-12Oy;
+	Wed, 09 Apr 2025 23:37:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 84531A42FD1;
-	Wed,  9 Apr 2025 20:45:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 98447C4CEE2;
-	Wed,  9 Apr 2025 20:50:35 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id CE7E761127;
+	Wed,  9 Apr 2025 23:37:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 157BBC4CEE2;
+	Wed,  9 Apr 2025 23:37:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744231835;
-	bh=ha/sFYVwv67xLp5xqyVpRwtjWeRe2Tkg8+E+AQktWgw=;
-	h=From:To:Cc:Subject:Date:From;
-	b=lXQeaM+fET/Oa1+E0vAsStRyBGOIXYZ9LJ5C7aN7XKUDpEiLGUtPFqqTaHO5S1emi
-	 IF1BNRKURiaKbsmJzfR5Z3U+OpvVAm+hvoMhSM+MFokdWxzXUHLmMrOq+ITnrpgnqw
-	 BnywndcvfGI5u+fdcpD7MoGFP4p5VmIgBr8afgZ70llzXgdtWjV11p2Oc1uYEvlt9V
-	 8bU1OYwpBOmMTsKgeXKQYGxuPcdQjwn7SQZLs5hTMuerJ7Fv6n2zZYtC/XjwmNowI6
-	 KW9blpbRg862v9jqPKkVh9ybM0QZoKZFcCK8F6mr071Pz6BbJNosuZ3TcQChPnlCIS
-	 VaizwMgU+HcLg==
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] arm/arm64: dts: mediatek: Add missing "#sound-dai-cells" to linux,bt-sco
-Date: Wed,  9 Apr 2025 15:50:00 -0500
-Message-ID: <20250409205001.1522009-1-robh@kernel.org>
-X-Mailer: git-send-email 2.47.2
+	s=k20201202; t=1744241858;
+	bh=fn3kK6il9AD7bbyhGbo7s4pLFMPkWIgx39JLPgek8Gw=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=lMHIfp9N9b4AU82PF84cXzGFVf0BQn2dXv8FXhAnXKy5a0Qohkexq7ua9cJJQaN+R
+	 qkpnhLZs0cT37kuiyh07Zyti4dkbvQKSDPTkJsWKEd+l6W8ygLXbKqxtbL7r3PubfA
+	 sACc7DcndTkjnFvyb/5fy6HFSRx0JKB/ZyBTwWbhSmNvkt+PZn1L3+7IBgDXLkTbL/
+	 4I0SZhBwBo1iJpDVtNvI7oU2cfj4UmsmypODzhPCwZ6IC/OtGvGi2R0+Z7ST9UJQyr
+	 R2QYvEEf60muOa7hVqZ54LGG33k7QQ3aA+kyVuyAQmhNDu0tG2yCCRRbsPUqplPi2N
+	 VIoMKhSHZQLSg==
+Date: Wed, 9 Apr 2025 16:37:37 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
+ <pabeni@redhat.com>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, Davide Caratti
+ <dcaratti@redhat.com>
+Subject: Re: [PATCH net-next v2] net: airoha: Add matchall filter offload
+ support
+Message-ID: <20250409163737.2b6c13e3@kernel.org>
+In-Reply-To: <20250409-airoha-hw-rx-ratelimit-v2-1-694e4fda5c91@kernel.org>
+References: <20250409-airoha-hw-rx-ratelimit-v2-1-694e4fda5c91@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250409_135037_032383_0D71FDD3 
-X-CRM114-Status: UNSURE (   9.16  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,40 +71,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add missing "#sound-dai-cells" which is required by the linux,bt-sco
-binding.
+On Wed, 09 Apr 2025 01:15:32 +0200 Lorenzo Bianconi wrote:
+> +	airoha_fe_wr(eth, REG_PPE_DFT_CPORT0(0),
+> +		     FIELD_PREP(DFT_CPORT_MASK(7), FE_PSE_PORT_CDM1) |
+> +		     FIELD_PREP(DFT_CPORT_MASK(6), FE_PSE_PORT_CDM1) |
+> +		     FIELD_PREP(DFT_CPORT_MASK(5), FE_PSE_PORT_CDM1) |
+> +		     FIELD_PREP(DFT_CPORT_MASK(4), FE_PSE_PORT_CDM1) |
+> +		     FIELD_PREP(DFT_CPORT_MASK(4), FE_PSE_PORT_CDM1) |
 
-Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
----
- arch/arm/boot/dts/mediatek/mt2701-evb.dts      | 1 +
- arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 1 +
- 2 files changed, 2 insertions(+)
+Coccicheck spotted that the previous line is duplicated..
 
-diff --git a/arch/arm/boot/dts/mediatek/mt2701-evb.dts b/arch/arm/boot/dts/mediatek/mt2701-evb.dts
-index 4c76366aa938..e97dc37f716c 100644
---- a/arch/arm/boot/dts/mediatek/mt2701-evb.dts
-+++ b/arch/arm/boot/dts/mediatek/mt2701-evb.dts
-@@ -50,6 +50,7 @@ sound:sound {
- 
- 	bt_sco_codec:bt_sco_codec {
- 		compatible = "linux,bt-sco";
-+		#sound-dai-cells = <0>;
- 	};
- 
- 	backlight_lcd: backlight_lcd {
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-index e1495f1900a7..9f53344fa83e 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-@@ -105,6 +105,7 @@ sound: mt8183-sound {
- 
- 	btsco: bt-sco {
- 		compatible = "linux,bt-sco";
-+		#sound-dai-cells = <0>;
- 	};
- 
- 	wifi_pwrseq: wifi-pwrseq {
+> +		     FIELD_PREP(DFT_CPORT_MASK(3), FE_PSE_PORT_CDM1) |
+> +		     FIELD_PREP(DFT_CPORT_MASK(2), FE_PSE_PORT_CDM1) |
+> +		     FIELD_PREP(DFT_CPORT_MASK(1), FE_PSE_PORT_CDM1) |
+> +		     FIELD_PREP(DFT_CPORT_MASK(0), FE_PSE_PORT_CDM1));
+> +	airoha_fe_wr(eth, REG_PPE_DFT_CPORT0(1),
+> +		     FIELD_PREP(DFT_CPORT_MASK(7), FE_PSE_PORT_CDM2) |
+> +		     FIELD_PREP(DFT_CPORT_MASK(6), FE_PSE_PORT_CDM2) |
+> +		     FIELD_PREP(DFT_CPORT_MASK(5), FE_PSE_PORT_CDM2) |
+> +		     FIELD_PREP(DFT_CPORT_MASK(4), FE_PSE_PORT_CDM2) |
+> +		     FIELD_PREP(DFT_CPORT_MASK(4), FE_PSE_PORT_CDM2) |
+
+.. and here.
+
+> +		     FIELD_PREP(DFT_CPORT_MASK(3), FE_PSE_PORT_CDM2) |
+> +		     FIELD_PREP(DFT_CPORT_MASK(2), FE_PSE_PORT_CDM2) |
+> +		     FIELD_PREP(DFT_CPORT_MASK(1), FE_PSE_PORT_CDM2) |
+> +		     FIELD_PREP(DFT_CPORT_MASK(0), FE_PSE_PORT_CDM2));
 -- 
-2.47.2
-
+pw-bot: cr
 
