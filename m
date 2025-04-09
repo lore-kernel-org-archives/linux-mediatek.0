@@ -4,82 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 262CFC36002
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Apr 2025 14:09:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEFCCC36002
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Apr 2025 14:45:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OPytIAR32acMc1Jy5NAX4zaoua0Um2xWn2RghqT1VbM=; b=k9cTaE/5eDhktZlsjyWSniL736
-	Am8HSCQJAz0LpaZyxIfO0Xh/w4qcFRSljryCZ0uXTViKDoVrNqoMbdhWxUE0bTI0d1t171/kCeAeD
-	jQI3VUZ8PRGSOlkS4xuiBhYEJMJ03t9rE6e2sr6D3sa37Pz7hzso1I3ZECJ9LJiIBcc8gEVWQIxK/
-	5wjgMeSEIu9TKIHIguYm0wyUe0xu2Ib5GA6+yUgwOn+RjqCzdV25zvQz5L2lNW/zg7SDKGcr5Gqju
-	8aRFmBnOiEod13h/WXbxxWS5q36WiAPqqEoIQLrsEOIYKVHIn/0F2UGE04dH0WZTAoEgofs07+zlG
-	VTBs9mDQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=m9EjBbOxyoiI2wKi1uLjAzEdktlVYSr76yh0tHokIek=; b=f23O3Nb0tp8wCgseTjX1JI2Rxq
+	iobNm2nmq2VlBFKdrvspwYI0NjkD0BRbNIgqB4RcyL2TrYNUekFDJvCGldQR1XNZiRAWVV+M2udk0
+	KNXSU1YbJ8pmba8IA1dblACagcfmmowHpZ6GrgR0Cnsv7nu+PaKjiM39il3oOW9XXO4fba9qXh5JM
+	Q9GHcXSDSDrnu/BRAoRB3wFFUHtZXF0zfC4aXapGeg15HsOnDFjGmkKbsXqA8VQsbeSCqbF+PuPNJ
+	ywHqTTF9BNHYTiJ6VfVgSdyxeoUB80g5bXEUpArbW2oydyMM83gb9V3q5TjVK8pr7otWQQ/Ex8HNc
+	cnOB/drw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2W7T-00000007Olb-0kfi;
-	Wed, 09 Apr 2025 14:09:35 +0000
-Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
+	id 1u2WgQ-00000007WC4-30pZ;
+	Wed, 09 Apr 2025 14:45:42 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2VFt-00000007Fdm-2pjU
+	id 1u2W6d-00000007Oev-3Lcm
 	for linux-mediatek@lists.infradead.org;
-	Wed, 09 Apr 2025 13:14:15 +0000
-Received: by mail-yw1-x1129.google.com with SMTP id 00721157ae682-6ff4faf858cso51356377b3.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 09 Apr 2025 06:14:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1744204453; x=1744809253; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=OPytIAR32acMc1Jy5NAX4zaoua0Um2xWn2RghqT1VbM=;
-        b=qiSeIpOuQ8XfeYMLzFx+p8seSNm5Wblzcvu4OdB4vqyilwqY3UeyrmBQ91ygFXVGMK
-         3Kv0CCmlstIA5tZinyh5BxId7fqACj9DH+Obmeo6GangGWhFmqUiWiy9SaRr4tLUkM3X
-         sPG4/XFllTv6BnewBKibExbRMmYVrSyrsclHubNlx6U2YSO0Drv0WKrJn3oJXE5EhOcX
-         Gtr9n47/YL+XEwUaix2vp0CwQ4PXKlTf2OrQSTG04LUnZ1I6crmu3jcYSzKB7itul9Nt
-         yL6eZeTaf1+ghyG/+yuvbOoRK0Wd1Pup5An6LEj3ktXKGDZoECbxjpoBiS3/TF/94FG0
-         PsTw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744204453; x=1744809253;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=OPytIAR32acMc1Jy5NAX4zaoua0Um2xWn2RghqT1VbM=;
-        b=QIh3yX2XnHtAuntONaLUFu3bc2wKYnDvIzrv/x83sabX3dQvP3txLt0piin/RKT5sB
-         IBXElqqYn45gfC34PZwEFIStNztWAbAzXaUf2qL9exRT7VAh9t0Hkh5dz5o1Ijvuh3VU
-         MoFVTEpPKnQUS2U022Hf5kEZkzM/NQyvDpXBqXnHclc8JhrRVOUitEJk5AR90NgwBhI8
-         ecLcU7GqYbMLV2A75bI3BsTG+KWfv2DumuWz+jxUxYXSIzZL2q9SV1L+VSwyQ/rjSw3o
-         jT5tm/EyH4ziHT0ofBHpPcj9AazJ3RkdZkyKWxu5mVcXtYUFA3j+q/o7bjurt9kyAl/1
-         CCYw==
-X-Forwarded-Encrypted: i=1; AJvYcCW49RftXlWdAv7sJvSKbLek2HDFvVD3TGtnpI9z0jkZ3S/qwTa2nKRh6tQuAxIvj/yTJJTUypOQZTAMkL/3gw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy7jrSphOBVWGhzBOtUzBoiiMvHIrEPP+U03E9mGJI6bdhgihra
-	B6kSLXmkvgbueTOynE10AJxzTVYX6VpW9k/azM3JASeY0EGhuDIbdRa2cQGZ2tDZoKSRhJux2WH
-	Fn2wBnMsgJ66IPqaBtd78RKejdR2ChMe1i2Nv0g==
-X-Gm-Gg: ASbGnctY3LHXSa7UgtHZ1ZWi8nZrrPJAq/mwVR6SIk3viQw5FvEApbmtzSPFyc3Q7/2
-	zJzlOVQ3D5F7lkUk0C/P2Cw4ZfaCsnQNypV2m9vRpXHLDiBM6D5bGsX63IbcdzLH5aYpFuUG5Cp
-	IlDBulMJ/9XUqtn4AQ6/Tc9k8=
-X-Google-Smtp-Source: AGHT+IHEapgN4KpAu2PH+cMh+2Gzlwfzy4KLVKnXkondFCagfktuVPm3ZUGmWpdWktkF6zuY6BhY5v5enEDZADi0x7Q=
-X-Received: by 2002:a05:690c:4a04:b0:703:b606:738f with SMTP id
- 00721157ae682-70538813013mr54886587b3.9.1744204452852; Wed, 09 Apr 2025
- 06:14:12 -0700 (PDT)
+	Wed, 09 Apr 2025 14:08:45 +0000
+X-UUID: 22417376154c11f083f2a1c9db70dae0-20250409
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=m9EjBbOxyoiI2wKi1uLjAzEdktlVYSr76yh0tHokIek=;
+	b=qkHFp3xJ/HCQSxqLYnN6/GB2Th0Fb061lm3QJf2HkJyC8MQSMCySf++gouk6b2SrAYKhvH/2NwK+wSkOYXlXtLGP75NNSnVdRglcECtw+0jn1S9tTlxIXDTRVfag+Rc85aoxa05uZwZE4/b6PyEmfEdJmKNijDgMFzWSI1y2RRU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:2072090f-1172-4100-bde5-818e0b6a580a,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:f857e0a5-c619-47e3-a41b-90eedbf5b947,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: 22417376154c11f083f2a1c9db70dae0-20250409
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <shayne.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1345608093; Wed, 09 Apr 2025 07:08:38 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Wed, 9 Apr 2025 22:08:36 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Wed, 9 Apr 2025 22:08:36 +0800
+From: Shayne Chen <shayne.chen@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
+	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Shayne Chen <shayne.chen@mediatek.com>
+Subject: [PATCH mt76-next v3 00/10] Add MT7990 support
+Date: Wed, 9 Apr 2025 22:07:40 +0800
+Message-ID: <20250409140750.724437-1-shayne.chen@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-References: <20250325110701.52623-1-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20250325110701.52623-1-angelogioacchino.delregno@collabora.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Wed, 9 Apr 2025 15:13:37 +0200
-X-Gm-Features: ATxdqUHSGpiXGAwgK7msekj1T4YSrnCc2mkntlahkz6x0Wt2J4BgD7Yq4ISR4rI
-Message-ID: <CAPDyKFrR7S23hCbEpwSj93f3ZczkbQAMgpJo1NNsK4bpMr-qnw@mail.gmail.com>
-Subject: Re: [PATCH 0/4] mmc: mtk-sd: Cleanups for register R/W
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chaotian.jing@mediatek.com, matthias.bgg@gmail.com, 
-	linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	kernel@collabora.com, axe.yang@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250409_061413_714117_A4E72718 
-X-CRM114-Status: GOOD (  13.26  )
+X-CRM114-CacheID: sfid-20250409_070843_843228_02E94D7D 
+X-CRM114-Status: UNSURE (   9.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,34 +86,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 25 Mar 2025 at 12:07, AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> This series adds missing register field definitions for the MSDC patch
-> bit registers and aggregates various register writes into just one,
-> greatly lowering the amount of register reads and writes especially
-> during the controller initialization phase, other than the tuning
-> phases and set_ios for mclk setting.
->
-> While this will have a performance gain, that is completely ignorable,
-> hence this series' only focus is a cleanup and an improvement in the
-> readability of the register settings (as those now have actual names,
-> some documenting, and no magic numbers around).
->
-> This series brings no functional differences.
->
-> AngeloGioacchino Del Regno (4):
->   mmc: mtk-sd: Clarify patch bit register initialization and layout
->   mmc: mtk-sd: Aggregate writes for MSDC_PATCH_BIT1/2 setup
->   mmc: mtk-sd: Do single write in function msdc_new_tx_setting
->   mmc: mtk-sd: Aggregate R/W for top_base iospace case where possible
->
->  drivers/mmc/host/mtk-sd.c | 207 ++++++++++++++++++++++++--------------
->  1 file changed, 132 insertions(+), 75 deletions(-)
->
+This series introduces support for the MT7990 PCI Wi-Fi device, a Wi-Fi 7
+chipset that supports Dual-Band Dual Concurrent (DBDC) on both 2.4 GHz and
+5 GHz bands.
 
-Applied for next, thanks!
+This series is based on:
+https://patchwork.kernel.org/project/linux-wireless/patch/20250320015909.3948612-1-StanleyYP.Wang@mediatek.com/
 
-Kind regards
-Uffe
+v2:
+ - remove accidentally added tag in 03/10
+ - fix variable used uninitialized in 06/10
+ - add target tree name
+
+v3:
+ - no need to wait response for SDO command (03/10)
+ - modify indentation of switch case bracket (09/10)
+
+Peter Chiu (4):
+  wifi: mt76: mt7996: rework WA mcu command for mt7990
+  wifi: mt76: mt7996: rework DMA configuration for mt7990
+  wifi: mt76: mt7996: adjust HW capabilities for mt7990
+  wifi: mt76: mt7996: add PCI device id for mt7990
+
+Shayne Chen (2):
+  wifi: mt76: mt7996: add macros for pci decive id
+  wifi: mt76: connac: rework TX descriptor and TX free for mt7990
+
+StanleyYP Wang (4):
+  wifi: mt76: connac: add support to load firmware for mt7990
+  wifi: mt76: mt7996: rework register mapping for mt7990
+  wifi: mt76: mt7996: add eeprom support for mt7990
+  wifi: mt76: mt7996: rework background radar check for mt7990
+
+ .../net/wireless/mediatek/mt76/mt76_connac.h  |   7 +-
+ .../wireless/mediatek/mt76/mt76_connac3_mac.h |   1 +
+ .../wireless/mediatek/mt76/mt76_connac_mcu.c  |   3 +-
+ .../wireless/mediatek/mt76/mt76_connac_mcu.h  |   2 +
+ .../wireless/mediatek/mt76/mt7996/coredump.c  |   4 +-
+ .../net/wireless/mediatek/mt76/mt7996/dma.c   | 192 ++++++++++++------
+ .../wireless/mediatek/mt76/mt7996/eeprom.c    |  41 +++-
+ .../net/wireless/mediatek/mt76/mt7996/init.c  |  18 +-
+ .../net/wireless/mediatek/mt76/mt7996/mac.c   |  42 +++-
+ .../net/wireless/mediatek/mt76/mt7996/mcu.c   |  77 +++++--
+ .../net/wireless/mediatek/mt76/mt7996/mcu.h   |   6 +
+ .../net/wireless/mediatek/mt76/mt7996/mmio.c  | 192 ++++++++++++++++--
+ .../wireless/mediatek/mt76/mt7996/mt7996.h    |  50 +++--
+ .../net/wireless/mediatek/mt76/mt7996/pci.c   |  21 +-
+ .../net/wireless/mediatek/mt76/mt7996/regs.h  |  51 +++--
+ 15 files changed, 549 insertions(+), 158 deletions(-)
+
+-- 
+2.39.2
+
 
