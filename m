@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CFCEC369A2
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Apr 2025 13:18:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7ED67C36002
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Apr 2025 13:20:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5XzR95nX80To15KfQKolebpaAlDV9SKntQH/jQWMtRI=; b=PEidLoOBJ8sqcwDcLyvksCt1ld
-	J/Gcc7O6BujkNVH9/406ZON78LmPauTSAX+b4AJBi6qIupxS/WkvmhMPnO4xpwt2uIGZnfMMcbKcQ
-	ndoWPxhi79z6prOMvC10zpOXZei0ByuFNljbaAlwPLiV6bfp1BEOVoeUfAQYqPPnVMzH/V8Xoegob
-	Wh7GWFlHnT6ax2u1lW+8liSWLHsfeN5cFg+bX1AevlbW+cAlmk0pQnLh46gkSw1caxz0KTSkvHQw8
-	9fKK/p/yBbl6psZwt2ZY+rlE18rpW1BK4osuhO5CEr4pyTA2Nb6Swv1GZrljmQHpkt6PWg5leXp8S
-	KxOv/BCA==;
+	bh=FBE1uKvXUxG86cyTUP/gEfeTKKh8Eaeg95O/L1hscJE=; b=J/dDK7lJm8jB2z0VUUeYmEAXhN
+	G9ZX0c+WXUdv0yQQn1nf4JC0swo2FOajD91ZWaiiKvb6PwvoEgtfCxdBDWpIG7dMcVV9zZ1OnaFT2
+	IES5Mfp0CclXYdNwpxaQstFak3Cdz/IzkOwMXul3SlZ2lO+RpB/hTGrXmxUBcysYQ58OSPefTpfg9
+	MtD5v+oO8DXz4AtoXgs5OoNEw5e1x43DZYKQba19ZZ2y+Cb3qfRetkyUoggtV8+Kyl4zkp+M+me9J
+	0QJC9wLEP/JkICcN7ku5HJAt5srST/BaFL3FZGf9RL5n6BswD3pt2LZuWAKF8Z52+zyfTYmI8siVa
+	Y2lkHPsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2VKH-00000007Gio-1MCQ;
-	Wed, 09 Apr 2025 13:18:45 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1u2VM1-00000007HC0-2W5g;
+	Wed, 09 Apr 2025 13:20:33 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2VEy-00000007F1u-1xEE;
-	Wed, 09 Apr 2025 13:13:17 +0000
+	id 1u2VEy-00000007F2Q-43v1;
+	Wed, 09 Apr 2025 13:13:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1744204394;
-	bh=pQbgxTHUSndGNceRAo7lyCtBFDwzO+1qKqjpMO19XNA=;
+	s=mail; t=1744204395;
+	bh=pjKrGK2aEr7zkX+T3vxIp/LJ9TSuRWsNbfcccXAMTV4=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=oFDUDqXQGhUNRTx4Ub8V+URTI2v16LvKKB0f0CoaRT6KxgIucCSSzcoShvKWiOQSJ
-	 1WAbypQYkPBjcvXpcuMt7x4wlh8IVNTqG6zDsVkzXy6nzOH6+KBbmJr3amNgX4Bksq
-	 Ab/PEnipUeyPLPFI62WHk0uTC4fp74REV7W2t5IeZgsSrijZLus3UQo8VfmUlK2SXG
-	 wI+zM57t7CFi09YcbVzgINGWFrswop7vssaqfi+9F1D5S/EZzFv75C6FAAI63kDrBi
-	 5hpM42crND+tIiBG11xZO07azJjJ5RlIqW5typCSRLYbSUBhh05sOZnoVSKXfsMWhW
-	 hwQ22xxlGfY4A==
+	b=gXCy5yl59A3Qjsx8C3KBLyS5J9WGi57d1p8L7g0tOwq4WkuzlHv2toE6mle+T1q6m
+	 f0Aw+ld54eC/U6vu7uIn0+b7P0707dbphVRUp/L2QyfhkGYymBht4UhAq9/SChDim8
+	 samN665teK77+WtZksjGaqlyBkPn1STL2I5BspOzP+eQE7EqVPxlieF+27lQCQYxWK
+	 LtdUw65fFG0Gb1QaycdnZJrsMYnkP2b6qAzGSlOdXdB3ORq2J5ZFVyYPYvwIRQwN0N
+	 Y69I7KO96BO+lK2S2b/sWmeDZc+HAoi8kJjx7cPvw+t7YnTLdVvAtiDPQAvkeF2/qT
+	 W9o4JXiMVapyQ==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id CE23417E09BF;
-	Wed,  9 Apr 2025 15:13:13 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id CC40917E0EB8;
+	Wed,  9 Apr 2025 15:13:14 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -59,17 +59,17 @@ Cc: p.zabel@pengutronix.de,
 	ives.chenjh@mediatek.com,
 	tommyyl.chen@mediatek.com,
 	jason-jh.lin@mediatek.com
-Subject: [PATCH v1 2/5] drm/mediatek: mtk_dpi: Add local helpers for bus format parameters
-Date: Wed,  9 Apr 2025 15:13:03 +0200
-Message-ID: <20250409131306.108635-3-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v1 3/5] drm/mediatek: mtk_dpi: Add support for additional output formats
+Date: Wed,  9 Apr 2025 15:13:04 +0200
+Message-ID: <20250409131306.108635-4-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250409131306.108635-1-angelogioacchino.delregno@collabora.com>
 References: <20250409131306.108635-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250409_061316_645286_6DD0F952 
-X-CRM114-Status: GOOD (  10.90  )
+X-CRM114-CacheID: sfid-20250409_061317_153589_BA2A3718 
+X-CRM114-Status: GOOD (  11.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,82 +84,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In preparation for adding support for additional color formats,
-add local helpers to map media bus format parameters to this
-driver's bit_num, channel_swap and color_format.
+Add support for configuring the Display Parallel Interface block
+to output YUV444 8/10 bits, YUV422 10/12 bits (8 bits support is
+already present), BGR 8-bits, and RGB 10-bits.
 
-This commit brings no functional changes.
+The enablement of the various additional output formats in SoCs
+platform data will be done in a different change.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dpi.c | 46 ++++++++++++++++++++++++++----
- 1 file changed, 40 insertions(+), 6 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 33 ++++++++++++++++++++++++++++--
+ 1 file changed, 31 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index d735398e97f8..5a66dfe3ad40 100644
+index 5a66dfe3ad40..a9e8113a1618 100644
 --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
 +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -738,6 +738,43 @@ static u32 *mtk_dpi_bridge_atomic_get_input_bus_fmts(struct drm_bridge *bridge,
- 	return input_fmts;
+@@ -59,7 +59,8 @@ enum mtk_dpi_out_channel_swap {
+ 
+ enum mtk_dpi_out_color_format {
+ 	MTK_DPI_COLOR_FORMAT_RGB,
+-	MTK_DPI_COLOR_FORMAT_YCBCR_422
++	MTK_DPI_COLOR_FORMAT_YCBCR_422,
++	MTK_DPI_COLOR_FORMAT_YCBCR_444
+ };
+ 
+ struct mtk_dpi {
+@@ -450,9 +451,15 @@ static void mtk_dpi_config_disable_edge(struct mtk_dpi *dpi)
+ static void mtk_dpi_config_color_format(struct mtk_dpi *dpi,
+ 					enum mtk_dpi_out_color_format format)
+ {
+-	mtk_dpi_config_channel_swap(dpi, MTK_DPI_OUT_CHANNEL_SWAP_RGB);
++	mtk_dpi_config_channel_swap(dpi, dpi->channel_swap);
+ 
+ 	switch (format) {
++	case MTK_DPI_COLOR_FORMAT_YCBCR_444:
++		mtk_dpi_config_yuv422_enable(dpi, false);
++		mtk_dpi_config_csc_enable(dpi, true);
++		if (dpi->conf->swap_input_support)
++			mtk_dpi_config_swap_input(dpi, false);
++		break;
+ 	case MTK_DPI_COLOR_FORMAT_YCBCR_422:
+ 		mtk_dpi_config_yuv422_enable(dpi, true);
+ 		mtk_dpi_config_csc_enable(dpi, true);
+@@ -743,10 +750,18 @@ static unsigned int mtk_dpi_bus_fmt_bit_num(unsigned int out_bus_format)
+ 	switch (out_bus_format) {
+ 	default:
+ 	case MEDIA_BUS_FMT_RGB888_1X24:
++	case MEDIA_BUS_FMT_BGR888_1X24:
+ 	case MEDIA_BUS_FMT_RGB888_2X12_LE:
+ 	case MEDIA_BUS_FMT_RGB888_2X12_BE:
+ 	case MEDIA_BUS_FMT_YUYV8_1X16:
++	case MEDIA_BUS_FMT_YUV8_1X24:
+ 		return MTK_DPI_OUT_BIT_NUM_8BITS;
++	case MEDIA_BUS_FMT_RGB101010_1X30:
++	case MEDIA_BUS_FMT_YUYV10_1X20:
++	case MEDIA_BUS_FMT_YUV10_1X30:
++		return MTK_DPI_OUT_BIT_NUM_10BITS;
++	case MEDIA_BUS_FMT_YUYV12_1X24:
++		return MTK_DPI_OUT_BIT_NUM_12BITS;
+ 	}
  }
  
-+static unsigned int mtk_dpi_bus_fmt_bit_num(unsigned int out_bus_format)
-+{
-+	switch (out_bus_format) {
-+	default:
-+	case MEDIA_BUS_FMT_RGB888_1X24:
-+	case MEDIA_BUS_FMT_RGB888_2X12_LE:
-+	case MEDIA_BUS_FMT_RGB888_2X12_BE:
-+	case MEDIA_BUS_FMT_YUYV8_1X16:
-+		return MTK_DPI_OUT_BIT_NUM_8BITS;
-+	}
-+}
-+
-+static unsigned int mtk_dpi_bus_fmt_channel_swap(unsigned int out_bus_format)
-+{
-+	switch (out_bus_format) {
-+	default:
-+	case MEDIA_BUS_FMT_RGB888_1X24:
-+	case MEDIA_BUS_FMT_RGB888_2X12_LE:
-+	case MEDIA_BUS_FMT_RGB888_2X12_BE:
-+	case MEDIA_BUS_FMT_YUYV8_1X16:
-+		return MTK_DPI_OUT_CHANNEL_SWAP_RGB;
-+	}
-+}
-+
-+static unsigned int mtk_dpi_bus_fmt_color_format(unsigned int out_bus_format)
-+{
-+	switch (out_bus_format) {
-+	default:
-+	case MEDIA_BUS_FMT_RGB888_1X24:
-+	case MEDIA_BUS_FMT_RGB888_2X12_LE:
-+	case MEDIA_BUS_FMT_RGB888_2X12_BE:
-+		return MTK_DPI_COLOR_FORMAT_RGB;
-+	case MEDIA_BUS_FMT_YUYV8_1X16:
-+		return MTK_DPI_COLOR_FORMAT_YCBCR_422;
-+	}
-+}
-+
- static int mtk_dpi_bridge_atomic_check(struct drm_bridge *bridge,
- 				       struct drm_bridge_state *bridge_state,
- 				       struct drm_crtc_state *crtc_state,
-@@ -757,13 +794,10 @@ static int mtk_dpi_bridge_atomic_check(struct drm_bridge *bridge,
- 		bridge_state->output_bus_cfg.format);
- 
- 	dpi->output_fmt = out_bus_format;
--	dpi->bit_num = MTK_DPI_OUT_BIT_NUM_8BITS;
--	dpi->channel_swap = MTK_DPI_OUT_CHANNEL_SWAP_RGB;
-+	dpi->bit_num = mtk_dpi_bus_fmt_bit_num(out_bus_format);
-+	dpi->channel_swap = mtk_dpi_bus_fmt_channel_swap(out_bus_format);
- 	dpi->yc_map = MTK_DPI_OUT_YC_MAP_RGB;
--	if (out_bus_format == MEDIA_BUS_FMT_YUYV8_1X16)
--		dpi->color_format = MTK_DPI_COLOR_FORMAT_YCBCR_422;
--	else
--		dpi->color_format = MTK_DPI_COLOR_FORMAT_RGB;
-+	dpi->color_format = mtk_dpi_bus_fmt_color_format(out_bus_format);
- 
- 	return 0;
+@@ -757,8 +772,15 @@ static unsigned int mtk_dpi_bus_fmt_channel_swap(unsigned int out_bus_format)
+ 	case MEDIA_BUS_FMT_RGB888_1X24:
+ 	case MEDIA_BUS_FMT_RGB888_2X12_LE:
+ 	case MEDIA_BUS_FMT_RGB888_2X12_BE:
++	case MEDIA_BUS_FMT_RGB101010_1X30:
+ 	case MEDIA_BUS_FMT_YUYV8_1X16:
++	case MEDIA_BUS_FMT_YUYV10_1X20:
++	case MEDIA_BUS_FMT_YUYV12_1X24:
+ 		return MTK_DPI_OUT_CHANNEL_SWAP_RGB;
++	case MEDIA_BUS_FMT_BGR888_1X24:
++	case MEDIA_BUS_FMT_YUV8_1X24:
++	case MEDIA_BUS_FMT_YUV10_1X30:
++		return MTK_DPI_OUT_CHANNEL_SWAP_BGR;
+ 	}
  }
+ 
+@@ -767,11 +789,18 @@ static unsigned int mtk_dpi_bus_fmt_color_format(unsigned int out_bus_format)
+ 	switch (out_bus_format) {
+ 	default:
+ 	case MEDIA_BUS_FMT_RGB888_1X24:
++	case MEDIA_BUS_FMT_BGR888_1X24:
+ 	case MEDIA_BUS_FMT_RGB888_2X12_LE:
+ 	case MEDIA_BUS_FMT_RGB888_2X12_BE:
++	case MEDIA_BUS_FMT_RGB101010_1X30:
+ 		return MTK_DPI_COLOR_FORMAT_RGB;
+ 	case MEDIA_BUS_FMT_YUYV8_1X16:
++	case MEDIA_BUS_FMT_YUYV10_1X20:
++	case MEDIA_BUS_FMT_YUYV12_1X24:
+ 		return MTK_DPI_COLOR_FORMAT_YCBCR_422;
++	case MEDIA_BUS_FMT_YUV8_1X24:
++	case MEDIA_BUS_FMT_YUV10_1X30:
++		return MTK_DPI_COLOR_FORMAT_YCBCR_444;
+ 	}
+ }
+ 
 -- 
 2.49.0
 
