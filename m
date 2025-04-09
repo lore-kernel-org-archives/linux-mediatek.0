@@ -4,74 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C895C36010
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Apr 2025 03:29:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE337C36002
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Apr 2025 06:19:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=/ldIfw+IopvBD+8WtZqHSYb8hrJIJMbhoye5hb+79cI=; b=QSEeaQESmlQ4AAII3aFnTLPDDz
-	UMNOdC6sgSQOPm2VXuKeS56Sn719ikeZBOtXVG7NwuZfPtbe2jQR1XC17Z/QswQqKRq0UsKJHakis
-	VKjsyV/XrGhnUqfBpyQsc/MaDEaXFS2foH9KkFDQOsiZ+8oMZRtNSGIJEgSlrA3cKlmrz/lVrAv+T
-	1ffcJhDP12dpLXLgsO+WgIRg3a80daxDllQ7507zv/78nVk+Cw26w+ka7rt7HrpLCKQ4JR16PvTaB
-	Gx7Xm4M0esU9go5/hQXQxjgmqCCccMNPK+PTeWC0Jh339C2/n1T9p0m1JgaLSeWOmCJ94K+bwpUQI
-	mZihby6w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xPFx8UgUAY0xlIDn/x5aIYb1lovd1B9jsWSk1FiXXns=; b=3nOgX+ZONQkrg+ltoRxKyKb/tZ
+	IU3PWuACI8q6hz0GKRgkOhlt9LgCyo280we/DtNIcKvkcgxZyRZlEK3IrHa60kcd3m+jTNm31BFn5
+	wV60jyEiYiaMXYHgqnXC5fMD6TrKMWd+pv/TKedU8hjQTnDO3RxYx+W0QS5zUUV8b8iB+Lw3JxFCj
+	gUdYnp5vQmBmrPacz9E5b+l3abkMCx9kwM2ai/TYdZGamwLQ3rQYs7rfdtm00ppK00mkdjozMeZ9y
+	iPRRcmoPm1AVSV2T4cYjO/FbX/qAoUzF5ix2qYgkj5A5N1wt1uf/m1vDadmQ6JdbK8bzRMlOIMVoS
+	aZicjviA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2M7z-000000061SM-3HVx;
-	Wed, 09 Apr 2025 03:29:27 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1u2Omr-00000006Gfc-3NQb;
+	Wed, 09 Apr 2025 06:19:49 +0000
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2M7x-000000061Rg-0BKd;
-	Wed, 09 Apr 2025 03:29:26 +0000
-X-UUID: d460181414f211f0a1e849db4cc18d44-20250408
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=/ldIfw+IopvBD+8WtZqHSYb8hrJIJMbhoye5hb+79cI=;
-	b=J0/TFlWoPiF7AcKLYkuJgpkA7U0DRzQd+w/yx3GdBK2A9QeeKJfz6ptT07OHix7+DwxatVwqvpmjlfHk8KkUClIIDsI+f7tUrj19eFVGjpWYI3ck/oIRWFt/2jnPBn4/WMin4U6BjboEe0hJ6TYNFupbSPicpDtk8Ma5aqOLj1U=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:97d5e442-f3dd-482d-8860-fbf53b9d449c,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:0ef645f,CLOUDID:651d59c7-16da-468a-87f7-8ca8d6b3b9f7,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: d460181414f211f0a1e849db4cc18d44-20250408
-Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
-	(envelope-from <yiru.zhang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 794477129; Tue, 08 Apr 2025 20:29:22 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Wed, 9 Apr 2025 11:29:19 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Wed, 9 Apr 2025 11:29:19 +0800
-From: yiru zhang <yiru.zhang@mediatek.com>
-To: Suzuki K Poulose <suzuki.poulose@arm.com>, Mike Leach
-	<mike.leach@linaro.org>, James Clark <james.clark@linaro.org>, Alexander
- Shishkin <alexander.shishkin@linux.intel.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <coresight@lists.linaro.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, yiru
- zhang <yiru.zhang@mediatek.com>
-Subject: [PATCH] [Patch v2]Add ETE devarch condition in etm4_init_iomem_access
-Date: Wed, 9 Apr 2025 11:29:12 +0800
-Message-ID: <20250409032917.7580-1-yiru.zhang@mediatek.com>
-X-Mailer: git-send-email 2.46.0
+	id 1u2Omq-00000006Gem-0BZz
+	for linux-mediatek@lists.infradead.org;
+	Wed, 09 Apr 2025 06:19:49 +0000
+Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-54b09cb06b0so6681379e87.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 08 Apr 2025 23:19:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1744179586; x=1744784386; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=xPFx8UgUAY0xlIDn/x5aIYb1lovd1B9jsWSk1FiXXns=;
+        b=PIwlUrjzSMhEGxKh/QXu9XUbe6lwYmX/9oycvx94itGqXx7/LxWF+JDACHMeZPvlEQ
+         tBthxITb2bDN6HeRWGwOV5a/Sl5FNAhsKgwib8OUJoproGv+m9zEZD8M5Xdmqr9FuRiN
+         EPk/+nLCUNYhAPNPkPDyxWt+SKv14/EhERynE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1744179586; x=1744784386;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=xPFx8UgUAY0xlIDn/x5aIYb1lovd1B9jsWSk1FiXXns=;
+        b=IULC0Q0tkobeZj0Dgk66pwA/mZ06ydQ7wt2xw0ZZPHRc/skluZaGZXDse8HexOWg7J
+         k+jSIygaarKiYHNlIJtHNacQ+AWIbkkMTsPqDU7AAyew+HD3RQnObeXFaFu042YtEqLb
+         xzbqU5j9I4ZhRx92wOGZB86PfIMnYh5Kxtf4F4UyzzRaNNMg2m2K6MAH2MWpkayZL1IB
+         Q8hqc3hzsJfs2S8QxfI4dQPYUgovEm2zs0vF+VNjXoTqEB8eUj4gNXLMkIcHrhEDsRxU
+         vCRi9Lw6wuSmT9fjzGBrKRy1mCgmFJ4b7oo4EPh+pAVdGl5Yh+4EDPBlxBZSsGWtf0JH
+         gnmg==
+X-Forwarded-Encrypted: i=1; AJvYcCXflo6ZIXYL45KuRv15qA1X9yC/LzJKMV8/Ppl87has4nOHP8GkLh8noBvLJJk9X+TzBW5tYqZHNJ6UCgjXjg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yygu3U3tb8GhRqLiK67nDy6Rj6snLwJ76jMmL7qQW5w3PaOcL7M
+	YDYLmrF1jCmxSGTBxEiMnl160jcsQwFyv3CnwTIx+h2ywc+G0NG7mV/Bjy2RfwL0Rn/Hy13yZSn
+	nTTMtEZyEh9lvcJBg/xpoGkmsEZZQhUBpujof
+X-Gm-Gg: ASbGncu7+ZCAv4MJMiMpx6xStj4f9RZaaFynN6QkMbh3YJYCW4mfTAYnIb5PbSlf0dK
+	73bYaVdRRVpZIAYVvoNPVG5vj90scrS7o6Kj/wX+1yNFe/+IOl6eWvj8L5rYtIxOudUZmRxzmRR
+	7Pi0id05Euw6dDVnaJ/bPDJeHrYaF+PVwXBGU4SjhiRB39hpeRBg==
+X-Google-Smtp-Source: AGHT+IF6USYpAM9lg3k8+AOqxfZjq6iN1XgABgZ7lN+hrkpyKB/hsy6JujD3QodyEr1gyD8+wAk4r3Qa2Kqqw1r74QQ=
+X-Received: by 2002:a05:6512:1103:b0:545:49d:5474 with SMTP id
+ 2adb3069b0e04-54c4370f307mr358171e87.20.1744179585702; Tue, 08 Apr 2025
+ 23:19:45 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+References: <20250403110915.75322-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250403110915.75322-1-angelogioacchino.delregno@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 9 Apr 2025 14:19:34 +0800
+X-Gm-Features: ATxdqUGA8j7J3cMwwhvKkgHKxtLogzcNaUx9TtG6kN-tP3TulVKQHf_ux6bE6j8
+Message-ID: <CAGXv+5G8kUg87+JzuCW5sZKHTBA3-CnwSFdrucn_k1rgcpJHOg@mail.gmail.com>
+Subject: Re: [PATCH] drm/mediatek: mtk_dp: Fix hdmi codec and phy driver unregistration
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
+	simona@ffwll.ch, matthias.bgg@gmail.com, nancy.lin@mediatek.com, 
+	ck.hu@mediatek.com, djkurtz@chromium.org, littlecvr@chromium.org, 
+	bibby.hsieh@mediatek.com, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250408_202925_094444_139C3869 
-X-CRM114-Status: GOOD (  10.55  )
+X-CRM114-CacheID: sfid-20250408_231948_207379_3F484A87 
+X-CRM114-Status: GOOD (  24.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,38 +95,128 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Due to ETE supported, so add ETE devarch condition in etm4_init_iomem_access.
-Signed-off-by: yiru zhang <yiru.zhang@mediatek.com>
+On Thu, Apr 3, 2025 at 7:09=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> During probe, this driver is registering two platform devices: one
+> for the HDMI Codec driver and one for the DisplayPort PHY driver.
+>
+> In the probe function, none of the error cases are unregistering
+> any of the two platform devices and this may cause registration
+> of multiple instances of those in case this driver returns one or
+> more probe deferral(s) in the "wrong" spots.
+>
+> In order to fix this, add devm actions to unregister those and
+> remove the manual calls to platform_device_unregister in the
+> mtk_dp_remove() function, as those would otherwise be redundant.
+>
+> Fixes: e71a8ebbe086 ("drm/mediatek: dp: Audio support for MT8195")
+> Fixes: caf2ae486742 ("drm/mediatek: dp: Add support for embedded DisplayP=
+ort aux-bus")
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dp.c | 30 ++++++++++++++++++++++++++----
+>  1 file changed, 26 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek=
+/mtk_dp.c
+> index 3d4648d2e15f..3eb685a46d99 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dp.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+> @@ -2648,6 +2648,13 @@ static const struct hdmi_codec_ops mtk_dp_audio_co=
+dec_ops =3D {
+>         .hook_plugged_cb =3D mtk_dp_audio_hook_plugged_cb,
+>  };
+>
+> +static void mtk_dp_unregister_pdevs(void *data)
+> +{
+> +       struct platform_device *ext_pdev =3D data;
+> +
+> +       platform_device_unregister(ext_pdev);
+> +}
+> +
+>  static int mtk_dp_register_audio_driver(struct device *dev)
+>  {
+>         struct mtk_dp *mtk_dp =3D dev_get_drvdata(dev);
+> @@ -2658,18 +2665,29 @@ static int mtk_dp_register_audio_driver(struct de=
+vice *dev)
+>                 .data =3D mtk_dp,
+>                 .no_capture_mute =3D 1,
+>         };
+> +       int ret;
+>
+>         mtk_dp->audio_pdev =3D platform_device_register_data(dev,
+>                                                            HDMI_CODEC_DRV=
+_NAME,
+>                                                            PLATFORM_DEVID=
+_AUTO,
+>                                                            &codec_data,
+>                                                            sizeof(codec_d=
+ata));
+> -       return PTR_ERR_OR_ZERO(mtk_dp->audio_pdev);
+> +       if (IS_ERR(mtk_dp->audio_pdev))
+> +               return PTR_ERR(mtk_dp->audio_pdev);
+> +
+> +       ret =3D devm_add_action_or_reset(dev, mtk_dp_unregister_pdevs, mt=
+k_dp->phy_dev);
 
-v1->v2: use switch case way
----
- drivers/hwtracing/coresight/coresight-etm4x-core.c | 10 +++++++---
- 1 file changed, 7 insertions(+), 3 deletions(-)
+Wrong platform device given here. You want audio_pdev instead.
 
-diff --git a/drivers/hwtracing/coresight/coresight-etm4x-core.c b/drivers/hwtracing/coresight/coresight-etm4x-core.c
-index 2b8f10463840..366d11e038de 100644
---- a/drivers/hwtracing/coresight/coresight-etm4x-core.c
-+++ b/drivers/hwtracing/coresight/coresight-etm4x-core.c
-@@ -1135,11 +1135,15 @@ static bool etm4_init_iomem_access(struct etmv4_drvdata *drvdata,
- 	 * with MMIO. But we cannot touch the OSLK until we are
- 	 * sure this is an ETM. So rely only on the TRCDEVARCH.
- 	 */
--	if ((devarch & ETM_DEVARCH_ID_MASK) != ETM_DEVARCH_ETMv4x_ARCH) {
--		pr_warn_once("TRCDEVARCH doesn't match ETMv4 architecture\n");
-+	switch (devarch & ETM_DEVARCH_ID_MASK) {
-+	case ETM_DEVARCH_ETMv4x_ARCH:
-+	case ETM_DEVARCH_ETE_ARCH:
-+		break;
-+	default:
-+		pr_warn_once("Unknown ETM architecture: %x\n",
-+			     devarch & ETM_DEVARCH_ID_MASK);
- 		return false;
- 	}
--
- 	drvdata->arch = etm_devarch_to_arch(devarch);
- 	*csa = CSDEV_ACCESS_IOMEM(drvdata->base);
- 	return true;
--- 
-2.46.0
 
+Having briefly looked at this driver, I think it needs more cleanup. :o
+
+
+ChenYu
+
+> +       if (ret) {
+> +               platform_device_unregister(mtk_dp->audio_pdev);
+> +               return dev_err_probe(dev, ret,
+> +                                    "Failed to add codec unregister devm=
+ action");
+> +       }
+> +       return 0;
+>  }
+>
+>  static int mtk_dp_register_phy(struct mtk_dp *mtk_dp)
+>  {
+>         struct device *dev =3D mtk_dp->dev;
+> +       int ret;
+>
+>         mtk_dp->phy_dev =3D platform_device_register_data(dev, "mediatek-=
+dp-phy",
+>                                                         PLATFORM_DEVID_AU=
+TO,
+> @@ -2679,6 +2697,13 @@ static int mtk_dp_register_phy(struct mtk_dp *mtk_=
+dp)
+>                 return dev_err_probe(dev, PTR_ERR(mtk_dp->phy_dev),
+>                                      "Failed to create device mediatek-dp=
+-phy\n");
+>
+> +       ret =3D devm_add_action_or_reset(dev, mtk_dp_unregister_pdevs, mt=
+k_dp->phy_dev);
+> +       if (ret) {
+> +               platform_device_unregister(mtk_dp->phy_dev);
+> +               return dev_err_probe(dev, ret,
+> +                                    "Failed to add phy unregister devm a=
+ction");
+> +       }
+> +
+>         mtk_dp_get_calibration_data(mtk_dp);
+>
+>         mtk_dp->phy =3D devm_phy_get(&mtk_dp->phy_dev->dev, "dp");
+> @@ -2848,9 +2873,6 @@ static void mtk_dp_remove(struct platform_device *p=
+dev)
+>         pm_runtime_disable(&pdev->dev);
+>         if (mtk_dp->data->bridge_type !=3D DRM_MODE_CONNECTOR_eDP)
+>                 del_timer_sync(&mtk_dp->debounce_timer);
+> -       platform_device_unregister(mtk_dp->phy_dev);
+> -       if (mtk_dp->audio_pdev)
+> -               platform_device_unregister(mtk_dp->audio_pdev);
+>  }
+>
+>  #ifdef CONFIG_PM_SLEEP
+> --
+> 2.48.1
+>
 
