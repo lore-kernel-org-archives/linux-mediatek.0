@@ -4,70 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B498C369A1
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Apr 2025 08:28:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56332C36002
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Apr 2025 08:46:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Sd0Nefj/hx5VlUAmlqlVWdF5+FL/N8G6Z6Uuuq0IIBY=; b=qkYPwQyCPN6m1E7gmcfeupW25Z
-	g+ZsYe/MH2sgUbNc+lgMeXD+pa9Erm1jf/2y5id0tRKgFt7XVXChqpkASO2DEOZqewiwa7ez8fW6H
-	VLrbTxpcrrToQ9VN5d8S/4aMKXfiYwo5108FgNKMqWLXM3NA+XNSupGicPISPOpQppKCzuxMypYbN
-	AgfJzy8den6q4TxpmcHePECbtq2MMIzfMFIAEg6I+vZQPSIRgd9UMX+va5MVmT/ugioyRZJNNfbZw
-	RAmAoErwZoOOLahebMtHQiegYYX/59XXDPUuR/Nubq7NGL8sscFUeVj/6Wu3nmP+TeVde3OtZOQuA
-	Thjob7Ow==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0GRaecEdfuWriM7C+yo0bHf6awsUkAtrtSOEV6bJJCA=; b=wuKFJ96CsPY6zSNjnB7+qKVDbK
+	lPcHVObiK7mufFZUFxfsCwqbxvR5maB8aEa/FPOC4Zhb9Kzz0eBla+k8DD8ODFEuuQrmmOzIXRksb
+	P3rzY2ZPRjJA9oLrV8nf/7nu//BPc5Ovx2i+kFyBBTdiCb/348G+tpmhNyr6cXVn8aY7vfK3UmGTM
+	7Fl32SSx2VKx+GWjN2HuQlPnJ65wpClZ3KENkpuU6ivwIniOyGLYhOZ0lerUhLXuHd7PDX4Qb32Ce
+	Ep6GFxhSAaaVL3jehy0iVxZCkTM9dp9mSJ38bXqcuPKSnDg1Y3r+yU4TOUMhnK2KUB4Rt1pAoGBDc
+	AK5I6EuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2QnD-00000006ZyS-1IsN;
-	Wed, 09 Apr 2025 08:28:19 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1u2R4Y-00000006d6Z-13FR;
+	Wed, 09 Apr 2025 08:46:14 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2QlJ-00000006ZXf-2GZD;
-	Wed, 09 Apr 2025 08:26:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1744187179;
-	bh=wrOa//1C4u8hYENOAxqq+2W4agP1bfREkfVr0tNeANI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=F4M+j51rC3JshiEfTXHA5tKJBpDoYImKAH5CAllztoULTu84ynM/m0X1gjyNr0bb7
-	 o83QKIeC73hniza3njKH29vq0bplmPNLAyyH3LriOmF9mGgsVIz1Q8X51Nxw2zpkFD
-	 5s38hOWVau7pPV2aE82YemPw2Sgkzv0XjjjFWdhQQBCYAqDAHt1XlL9EX08zRqM1Fk
-	 QRMZ/V38HRRO8REFP/scEdG6Epme8kqSoTvueuiphBhPNt9icfCfQZ6zcz2GI0y5B8
-	 QfwOk7c6MXeAX86zLCDOBp+phld5bOsn45WQj7gEo45Fv4IvVeTgQQZAZNoxSrt612
-	 ZgHYzP8W4cmpw==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 10C8F17E0903;
-	Wed,  9 Apr 2025 10:26:19 +0200 (CEST)
-Message-ID: <e777f95c-c21f-4a91-b044-5fc19eb22c3d@collabora.com>
-Date: Wed, 9 Apr 2025 10:26:18 +0200
+	id 1u2R4V-00000006d5R-2ggO
+	for linux-mediatek@lists.infradead.org;
+	Wed, 09 Apr 2025 08:46:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1744188369;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=0GRaecEdfuWriM7C+yo0bHf6awsUkAtrtSOEV6bJJCA=;
+	b=MHV4ZhI9yPO3LnEm28W+ZCCxkTLrt4OWySpTS9UgB8Y2ORL/N/mcaDwb3/xZb9IToPD3UY
+	Mqtp+sxiWMJiSCRLxgPLNMGlu7nBHCLFXzFstpyfa/MJpTvPDuwEq7++0HwJNCaMhdWHxf
+	h4nBqCW4uDNkwLjMKYc0mBcAD/9+llU=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-522-L-7FKsLbNoSq1rGZFtvl9Q-1; Wed, 09 Apr 2025 04:46:08 -0400
+X-MC-Unique: L-7FKsLbNoSq1rGZFtvl9Q-1
+X-Mimecast-MFC-AGG-ID: L-7FKsLbNoSq1rGZFtvl9Q_1744188367
+Received: by mail-wr1-f69.google.com with SMTP id ffacd0b85a97d-3912fc9861cso2633062f8f.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 09 Apr 2025 01:46:07 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1744188367; x=1744793167;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=0GRaecEdfuWriM7C+yo0bHf6awsUkAtrtSOEV6bJJCA=;
+        b=YLaJCypeQpkldF0uIujtux7dq1euRRzCducD30xP9PS7rBiwNt5U0BVJW9zASIR1JA
+         pBmEWz2mGujjKVtmVrciKl9w6o0XWykIUl5z5I+ZY/aErBuY0s0GSa66gm27wFZrYuE7
+         mYBWhQfaet6q+87KTC6wzGgJGh1B5uD3FibtCgP9ErV8/IK1nu83zacPoD/uioOtrNHh
+         rpxcKVvDoVInDycxJkW8sviv1+dSF3Ecn9gEKbGUfdYrAEjns37zlc8tPpxyODUc2Ji+
+         vwtv3MrbX5+aL8u8OJdV9nztR+4NXqasC9fANYeZYVDdqyq6bv7Qndyj4NJG8r3puYf/
+         MsOg==
+X-Forwarded-Encrypted: i=1; AJvYcCXAJS9DTgkwwiMi0CwWAT13Nghlxei7vz8ZWKF7AiklAn8X5ehqt9DV6akNvi65jX16svnV9IZOb6izhL4TlQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxhzlg+h1Qn00RRi7f1ZTUOc+TXtzC5zBMe7W++g3++nqHrezQ3
+	dWenPm6AfT7rSFPN4qYqQ1bb6JnAlFx2H37aHYYIk0w65tZRIOp7KSGM0bnPMA+cFr5q3HYCbTV
+	4mJFHnvc0/Nl9T17TKaOyY5I58ZpLBCI4asZBtn/O/H/JAEd6bFTDvGHkKTbFZHaZZ/sSZA==
+X-Gm-Gg: ASbGnctAlWRZusMqQmJ7MshIkfqIp8SYNl52iGBH0Jl3vU81ILssa4XL4sIP49ixRMx
+	JM0lSM+mAllwTMg0LN5IiBUtXH2t7PYkdNlKUkXn/aEPaczmQ5fHFLjfB2UZTd/uNMMXN8qX356
+	32x6PfdWvysmsxixoohkTTTkCZV9dg50LGaP87lUCwGTk20qTRUu8gEvpuVGdYMu3y3VlKvwJ4s
+	1fO2YTNsJbScOld5yNI3lMa3ZZqljGaiMn7B7u2ibDWozVXDyPgAtHvBs7pO5nrfRmORB17M63U
+	bHDRa2+KxQ==
+X-Received: by 2002:a5d:59a8:0:b0:391:3b70:2dab with SMTP id ffacd0b85a97d-39d87aa83f7mr1836450f8f.17.1744188366942;
+        Wed, 09 Apr 2025 01:46:06 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFy+550CSY65ENB+HIM0YP9gUefmg712FU2KtH7qBXHCJBM64fPaYYk4BYRgiS6DoCFcosTjQ==
+X-Received: by 2002:a5d:59a8:0:b0:391:3b70:2dab with SMTP id ffacd0b85a97d-39d87aa83f7mr1836423f8f.17.1744188366581;
+        Wed, 09 Apr 2025 01:46:06 -0700 (PDT)
+Received: from localhost ([2a01:e11:1007:ea0:8374:5c74:dd98:a7b2])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39d89389f72sm948917f8f.42.2025.04.09.01.46.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 09 Apr 2025 01:46:06 -0700 (PDT)
+Date: Wed, 9 Apr 2025 10:46:05 +0200
+From: Davide Caratti <dcaratti@redhat.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net-next v2] net: airoha: Add matchall filter offload
+ support
+Message-ID: <Z_YzzeUVd8ww6sjf@dcaratti.users.ipa.redhat.com>
+References: <20250409-airoha-hw-rx-ratelimit-v2-1-694e4fda5c91@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 3/3] memory: mtk-smi: mt8188: Use
- devm_pm_runtime_enable
-To: Krzysztof Kozlowski <krzk@kernel.org>,
- Friday Yang <friday.yang@mediatek.com>
-Cc: Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20250408033206.12176-1-friday.yang@mediatek.com>
- <20250408033206.12176-4-friday.yang@mediatek.com>
- <20250408-woodoo-quick-worm-bf82b4@shite>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250408-woodoo-quick-worm-bf82b4@shite>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+In-Reply-To: <20250409-airoha-hw-rx-ratelimit-v2-1-694e4fda5c91@kernel.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: T2AqDgrPDpK785FxJXD_xdmsMbJTsjIOYZNUHQe6ltA_1744188367
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250409_012623_790145_B2270E08 
-X-CRM114-Status: GOOD (  15.57  )
+X-CRM114-CacheID: sfid-20250409_014611_788285_1D2469C9 
+X-CRM114-Status: UNSURE (   9.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,53 +112,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/04/25 08:29, Krzysztof Kozlowski ha scritto:
-> On Tue, Apr 08, 2025 at 11:31:56AM GMT, Friday Yang wrote:
->> Replace pm_runtime_enable with the devres-enabled version which
->> can trigger pm_runtime_disable.
->>
->> Signed-off-by: Friday Yang <friday.yang@mediatek.com>
->> ---
->>   drivers/memory/mtk-smi.c | 16 +++++++++-------
->>   1 file changed, 9 insertions(+), 7 deletions(-)
->>
->> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
->> index f25d46d2ef33..daef6d350419 100644
->> --- a/drivers/memory/mtk-smi.c
->> +++ b/drivers/memory/mtk-smi.c
->> @@ -713,16 +713,17 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
->>   	if (ret)
->>   		goto err_link_remove;
->>
->> -	pm_runtime_enable(dev);
->> +	ret = devm_pm_runtime_enable(dev);
->> +	if (ret)
->> +		goto err_link_remove;
->> +
->>   	platform_set_drvdata(pdev, larb);
->>   	ret = component_add(dev, &mtk_smi_larb_component_ops);
->>   	if (ret)
->> -		goto err_pm_disable;
->> +		goto err_link_remove;
->>
->>   	return 0;
->>
->> -err_pm_disable:
->> -	pm_runtime_disable(dev);
-> 
-> You now broke/changed the order of cleanup without any explanation.
-> 
-> Best regards,
-> Krzysztof
-> 
+hi,
 
-I agree some comment in the commit description saying that the cleanup reordering
-doesn't matter in this specific case would've been nice to have, but anyway IMO
-it's not a big deal - he didn't break anything, anyway :-)
+On Wed, Apr 09, 2025 at 01:15:32AM +0200, Lorenzo Bianconi wrote:
+> Introduce tc matchall filter offload support in airoha_eth driver.
+> Matchall hw filter is used to implement hw rate policing via tc action
+> police:
+> 
+> $tc qdisc add dev eth0 handle ffff: ingress
+> $tc filter add dev eth0 parent ffff: matchall action police \
+>  rate 100mbit burst 1000k drop
+> 
+> The current implementation supports just drop/accept as exceed/notexceed
+> actions. Moreover, rate and burst are the only supported configuration
+> parameters.
+> 
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+> Changes in v2:
+> - Validate act police mtu parameter
+> - Link to v1: https://lore.kernel.org/r/20250407-airoha-hw-rx-ratelimit-v1-1-917d092d56fd@kernel.org
+> ---
 
-Instead, the big deal is that Friday forgot to retain Reviewed-by and Acked-by tags
-that were released to him on those patches....... :-)
+for v2:
 
-Cheers,
-Angelo
+Reviewed-by: Davide Caratti <dcaratti@redhat.com>
+
 
