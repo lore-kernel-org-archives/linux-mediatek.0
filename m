@@ -4,63 +4,126 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6C51C36002
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Apr 2025 09:53:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D643C369A1
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Apr 2025 09:58:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JbZfGnrvBueNORnoSftkfcnFH2EaJcpNVy3WYXrCzaA=; b=SC6vjMja8WXfKnIrLxA2hBSfLF
-	hAcfc2cx8JD0f0DAnEG0PSyuoTiA7SUcXLXwaNHW2CjN7yRZrFEPKhiW+kMM6mFoMZz0HSEP0Z/bz
-	5yd8m9RpnTV4xHKv2qMidrUHJK3kzaf/raQSCdod07l8/Z7w2ALSNXBEdGK7X+ETmCy2hd0GGV4vP
-	LJAF6whimkYydKujrOzDWdgpDRKbHjLNXbTTmFng36l59D81vYUAbMKHgqNvpYNLivPASgP4dw+pl
-	k1JIX4tHfFV2nJUCaifawPJ+GDP5TOSW/0v/jPxrcZZROH4OtC1+WuVccjSLzgn5DF+umKaCo/RtC
-	gyzMmMug==;
+	bh=hwNQowCRrZKpoRjbSexMOK7xw0KAm2e2dAPubfMLQVo=; b=dAJ4ztP2y3wVRTXvEO8DVXcUZN
+	nWRWUN+hQsvvBO3i3fIVGLj0BTyJUaYPJ0TtKbuJZv2bJhFt3TgH6v0Bx0R4X+Ugjw0RAxKLhNvFC
+	pRGzxzt7RhnNd6eFCclJul0732aAQt/NaL6PbMTmzmCiKkmfKr5VoT7g9i//0VVbBdQkK3f6BSe6G
+	7PW5QR3jmM9PxIAVi55SE0DHjNqXIEjVdkTyWJ3to5E5X2Ps5VtFe8E10TdGhu7HPhEq2xKXhK8PI
+	blE5rp3XpqD09qYl/ksbNtMrPjQjLzMZD4G7ieVXd6SdHzpUK6PpQg3y+aEueVPq5ZwovFYBHmkbh
+	7q7rLXRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2S7G-00000006kp4-3no5;
-	Wed, 09 Apr 2025 09:53:06 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1u2SCM-00000006lyk-2bKM;
+	Wed, 09 Apr 2025 09:58:22 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2S24-00000006kDD-1BQ6;
-	Wed, 09 Apr 2025 09:47:45 +0000
+	id 1u2SAb-00000006lgb-1gko;
+	Wed, 09 Apr 2025 09:56:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=hwNQowCRrZKpoRjbSexMOK7xw0KAm2e2dAPubfMLQVo=; b=b6p80x6OxgbBfxUEYlkL5+O+HD
+	V/JHlbPiQoyzO5Uulsg0gf1AGJJ+pP4oiDYpELlRMd8xd1TGRE8V8v90OGHxXEUddL0lqPiZS2JxY
+	oBiNYqbSE/gBQkcY4OX+vwFnrDKXZOtJlK0y6esjXaW5l97GpdpB9UOtJBjFhEXMPKj8X0Z/TDt4u
+	sidPOwHkVulyNZnYLEUNuK9lGU/pVf6JYjO/n4aAJFOyExSkQmfCD5ukIxeRMyIjbWfWGvIdQExeJ
+	/+k1561whPQJWZxSQhxty8YKy7Nm44TIwL2LTq8DSiG2POwZwTVStGxfM+vy5fJjqT4DOkKhSo3+4
+	MLy9RL/A==;
+Received: from sea.source.kernel.org ([172.234.252.31])
+	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1u2SAY-00000008ZIg-019V;
+	Wed, 09 Apr 2025 09:56:32 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id A07C25C4B8C;
-	Wed,  9 Apr 2025 09:45:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3018C4CEE3;
-	Wed,  9 Apr 2025 09:47:42 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 40AF449B02;
+	Wed,  9 Apr 2025 09:56:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B178EC4CEEB;
+	Wed,  9 Apr 2025 09:56:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744192063;
-	bh=/2IpQ7sVRJq6Vf3T0EIcS5Weg2qoJKPSVQKt4cZ1a14=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=qQ+/zyZ8TKmTQ1l+wh6SWcb0ujI26BF4IEFofB5LG+keabefs3I5xbHInKVg0CudT
-	 R66hwF/0dK0eYYtZnqFyswRUmzBB8n2V/uY/p4gUKZ1KFn6Ua9UBZt1shJ8zdDrD/i
-	 GkUdbPi3hyJMjvutyOl4u0F9CbKhJqfBboCe0fP+L5fjBPyjtnV3z0TmpNhk/IMUzV
-	 JXM/9yZ/HMLem2/VIrsIUBEF7h7k0dBud535g+CtqPHCQrpogy4Nfwk94P53ZJXUnC
-	 3sT7dlj/h74ImezgslNtxpC6+qeOI+0pSZRVwR5Z7jDPrCUg393PYO/MGXC60/eSJK
-	 Oe3MJ6kKtGrwA==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Wed, 09 Apr 2025 11:47:15 +0200
-Subject: [PATCH net-next v2 2/2] net: airoha: Add L2 hw acceleration
- support
+	s=k20201202; t=1744192584;
+	bh=Rt/zFCT2dVTcx0v7PgWTkg2x2TmEPzbuCc7LGol1NJo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=qWPe5feZ8pZyNgIE8UrI6Qe+5HR6c8wDH2s4C1DqPnOMRD2ktMdZnSdqh7dCkyLWi
+	 FP74r3nZP76ETGqCVpcNNDaZZsssd29J9NJxyVX9QoIMQlpnaoCezJx4hGlAAYEraz
+	 knt1yLB+bcGqG4liiQxunbx2M4AVlHo+SMRRg1hQO6FT7QP9/iZ3aYw2IqXCXN7vdT
+	 2Yl00VKdRd1Pbpiy9Hxi/QwpX+IgjYH1J+uJDsWbA8drLstFyOn9HY49GXdxgLF/Fb
+	 CBIj5zIpwhsqr5DMGh8bPbOLs3AH6RVCcehA2xh3aqy/d3XNVzaoQb5dLI3R2G8Q6O
+	 kVOtNcCJ9xQvQ==
+Message-ID: <258c8fda-70cc-4624-aef6-7cbef3cdbde6@kernel.org>
+Date: Wed, 9 Apr 2025 11:56:19 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 3/3] memory: mtk-smi: mt8188: Use
+ devm_pm_runtime_enable
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Friday Yang <friday.yang@mediatek.com>
+Cc: Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20250408033206.12176-1-friday.yang@mediatek.com>
+ <20250408033206.12176-4-friday.yang@mediatek.com>
+ <20250408-woodoo-quick-worm-bf82b4@shite>
+ <e777f95c-c21f-4a91-b044-5fc19eb22c3d@collabora.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 fv0=
+In-Reply-To: <e777f95c-c21f-4a91-b044-5fc19eb22c3d@collabora.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250409-airoha-flowtable-l2b-v2-2-4a1e3935ea92@kernel.org>
-References: <20250409-airoha-flowtable-l2b-v2-0-4a1e3935ea92@kernel.org>
-In-Reply-To: <20250409-airoha-flowtable-l2b-v2-0-4a1e3935ea92@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250409_024744_415271_563659C3 
-X-CRM114-Status: GOOD (  18.84  )
+X-CRM114-CacheID: sfid-20250409_105630_532630_345B5EDD 
+X-CRM114-Status: GOOD (  13.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,259 +138,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Similar to mtk driver, introduce the capability to offload L2 traffic
-defining flower rules in the PSE/PPE engine available on EN7581 SoC.
-Since the hw always reports L2/L3/L4 flower rules, link all L2 rules
-sharing the same L2 info (with different L3/L4 info) in the L2 subflows
-list of a given L2 PPE entry.
+On 09/04/2025 10:26, AngeloGioacchino Del Regno wrote:
+> Il 08/04/25 08:29, Krzysztof Kozlowski ha scritto:
+>> On Tue, Apr 08, 2025 at 11:31:56AM GMT, Friday Yang wrote:
+>>> Replace pm_runtime_enable with the devres-enabled version which
+>>> can trigger pm_runtime_disable.
+>>>
+>>> Signed-off-by: Friday Yang <friday.yang@mediatek.com>
+>>> ---
+>>>   drivers/memory/mtk-smi.c | 16 +++++++++-------
+>>>   1 file changed, 9 insertions(+), 7 deletions(-)
+>>>
+>>> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+>>> index f25d46d2ef33..daef6d350419 100644
+>>> --- a/drivers/memory/mtk-smi.c
+>>> +++ b/drivers/memory/mtk-smi.c
+>>> @@ -713,16 +713,17 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
+>>>   	if (ret)
+>>>   		goto err_link_remove;
+>>>
+>>> -	pm_runtime_enable(dev);
+>>> +	ret = devm_pm_runtime_enable(dev);
+>>> +	if (ret)
+>>> +		goto err_link_remove;
+>>> +
+>>>   	platform_set_drvdata(pdev, larb);
+>>>   	ret = component_add(dev, &mtk_smi_larb_component_ops);
+>>>   	if (ret)
+>>> -		goto err_pm_disable;
+>>> +		goto err_link_remove;
+>>>
+>>>   	return 0;
+>>>
+>>> -err_pm_disable:
+>>> -	pm_runtime_disable(dev);
+>>
+>> You now broke/changed the order of cleanup without any explanation.
+>>
+>> Best regards,
+>> Krzysztof
+>>
+> 
+> I agree some comment in the commit description saying that the cleanup reordering
+> doesn't matter in this specific case would've been nice to have, but anyway IMO
+> it's not a big deal - he didn't break anything, anyway :-)
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c |   2 +-
- drivers/net/ethernet/airoha/airoha_eth.h |   9 ++-
- drivers/net/ethernet/airoha/airoha_ppe.c | 121 +++++++++++++++++++++++++++----
- 3 files changed, 115 insertions(+), 17 deletions(-)
+Cleanup orderings are tricky, so are you sure nothing got here called in
+incorrect moment? I see that runtime PM will be disabled much later and
+what certainty you have that device won't get resumed that time?
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index d748dc6de92367365db9f9548f9af52a7fdac187..723eba7cfa0cf405dc2ef9248b34bf6af897ceed 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -694,7 +694,7 @@ static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
- 
- 		reason = FIELD_GET(AIROHA_RXD4_PPE_CPU_REASON, msg1);
- 		if (reason == PPE_CPU_REASON_HIT_UNBIND_RATE_REACHED)
--			airoha_ppe_check_skb(eth->ppe, hash);
-+			airoha_ppe_check_skb(eth->ppe, q->skb, hash);
- 
- 		done++;
- 		napi_gro_receive(&q->napi, q->skb);
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index 86e08832246dfdc4fc448a8aeceb7032d633e812..e82abfc1a67bda7f675342327ae07601d81f2b8f 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -431,10 +431,14 @@ enum airoha_flow_entry_type {
- struct airoha_flow_table_entry {
- 	union {
- 		struct hlist_node list; /* PPE L3 flow entry */
--		struct rhash_head l2_node; /* L2 flow entry */
-+		struct {
-+			struct rhash_head l2_node;  /* L2 flow entry */
-+			struct hlist_head l2_flows; /* PPE L2 subflows list */
-+		};
- 	};
- 
- 	struct airoha_foe_entry data;
-+	struct hlist_node l2_subflow_node; /* PPE L2 subflow entry */
- 	u32 hash;
- 
- 	enum airoha_flow_entry_type type;
-@@ -548,7 +552,8 @@ u32 airoha_rmw(void __iomem *base, u32 offset, u32 mask, u32 val);
- bool airoha_is_valid_gdm_port(struct airoha_eth *eth,
- 			      struct airoha_gdm_port *port);
- 
--void airoha_ppe_check_skb(struct airoha_ppe *ppe, u16 hash);
-+void airoha_ppe_check_skb(struct airoha_ppe *ppe, struct sk_buff *skb,
-+			  u16 hash);
- int airoha_ppe_setup_tc_block_cb(enum tc_setup_type type, void *type_data,
- 				 void *cb_priv);
- int airoha_ppe_init(struct airoha_eth *eth);
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index 7219125ade134614d12bfad3f02b48392962d88f..d4969c2a03524253ace346dd6d862981ebfb44ed 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -204,6 +204,15 @@ static int airoha_get_dsa_port(struct net_device **dev)
- #endif
- }
- 
-+static void airoha_ppe_foe_set_bridge_addrs(struct airoha_foe_bridge *br,
-+					    struct ethhdr *eh)
-+{
-+	br->dest_mac_hi = get_unaligned_be32(eh->h_dest);
-+	br->dest_mac_lo = get_unaligned_be16(eh->h_dest + 4);
-+	br->src_mac_hi = get_unaligned_be16(eh->h_source);
-+	br->src_mac_lo = get_unaligned_be32(eh->h_source + 2);
-+}
-+
- static int airoha_ppe_foe_entry_prepare(struct airoha_eth *eth,
- 					struct airoha_foe_entry *hwe,
- 					struct net_device *dev, int type,
-@@ -254,13 +263,7 @@ static int airoha_ppe_foe_entry_prepare(struct airoha_eth *eth,
- 
- 	qdata = FIELD_PREP(AIROHA_FOE_SHAPER_ID, 0x7f);
- 	if (type == PPE_PKT_TYPE_BRIDGE) {
--		hwe->bridge.dest_mac_hi = get_unaligned_be32(data->eth.h_dest);
--		hwe->bridge.dest_mac_lo =
--			get_unaligned_be16(data->eth.h_dest + 4);
--		hwe->bridge.src_mac_hi =
--			get_unaligned_be16(data->eth.h_source);
--		hwe->bridge.src_mac_lo =
--			get_unaligned_be32(data->eth.h_source + 2);
-+		airoha_ppe_foe_set_bridge_addrs(&hwe->bridge, &data->eth);
- 		hwe->bridge.data = qdata;
- 		hwe->bridge.ib2 = val;
- 		l2 = &hwe->bridge.l2.common;
-@@ -385,6 +388,19 @@ static u32 airoha_ppe_foe_get_entry_hash(struct airoha_foe_entry *hwe)
- 		hv3 = hwe->ipv6.src_ip[1] ^ hwe->ipv6.dest_ip[1];
- 		hv3 ^= hwe->ipv6.src_ip[0];
- 		break;
-+	case PPE_PKT_TYPE_BRIDGE: {
-+		struct airoha_foe_mac_info *l2 = &hwe->bridge.l2;
-+
-+		hv1 = l2->common.src_mac_hi & 0xffff;
-+		hv1 = hv1 << 16 | l2->src_mac_lo;
-+
-+		hv2 = l2->common.dest_mac_lo;
-+		hv2 = hv2 << 16;
-+		hv2 = hv2 | ((l2->common.src_mac_hi & 0xffff0000) >> 16);
-+
-+		hv3 = l2->common.dest_mac_hi;
-+		break;
-+	}
- 	case PPE_PKT_TYPE_IPV4_DSLITE:
- 	case PPE_PKT_TYPE_IPV6_6RD:
- 	default:
-@@ -496,15 +512,24 @@ static void airoha_ppe_foe_remove_flow(struct airoha_ppe *ppe,
- 		airoha_ppe_foe_commit_entry(ppe, &e->data, e->hash);
- 		e->hash = 0xffff;
- 	}
-+	if (e->type == FLOW_TYPE_L2_SUBFLOW) {
-+		hlist_del_init(&e->l2_subflow_node);
-+		kfree(e);
-+	}
- }
- 
- static void airoha_ppe_foe_remove_l2_flow(struct airoha_ppe *ppe,
- 					  struct airoha_flow_table_entry *e)
- {
-+	struct hlist_head *head = &e->l2_flows;
-+	struct hlist_node *n;
-+
- 	lockdep_assert_held(&ppe_lock);
- 
- 	rhashtable_remove_fast(&ppe->l2_flows, &e->l2_node,
- 			       airoha_l2_flow_table_params);
-+	hlist_for_each_entry_safe(e, n, head, l2_subflow_node)
-+		airoha_ppe_foe_remove_flow(ppe, e);
- }
- 
- static void airoha_ppe_foe_flow_remove_entry(struct airoha_ppe *ppe,
-@@ -520,10 +545,56 @@ static void airoha_ppe_foe_flow_remove_entry(struct airoha_ppe *ppe,
- 	spin_unlock_bh(&ppe_lock);
- }
- 
--static void airoha_ppe_foe_insert_entry(struct airoha_ppe *ppe, u32 hash)
-+static int
-+airoha_ppe_foe_commit_subflow_entry(struct airoha_ppe *ppe,
-+				    struct airoha_flow_table_entry *e,
-+				    u32 hash)
-+{
-+	u32 mask = AIROHA_FOE_IB1_BIND_PACKET_TYPE | AIROHA_FOE_IB1_BIND_UDP;
-+	struct airoha_foe_entry *hwe_p, hwe;
-+	struct airoha_flow_table_entry *f;
-+	struct airoha_foe_mac_info *l2;
-+	int type;
-+
-+	hwe_p = airoha_ppe_foe_get_entry(ppe, hash);
-+	if (!hwe_p)
-+		return -EINVAL;
-+
-+	f = kzalloc(sizeof(*f), GFP_ATOMIC);
-+	if (!f)
-+		return -ENOMEM;
-+
-+	hlist_add_head(&f->l2_subflow_node, &e->l2_flows);
-+	f->type = FLOW_TYPE_L2_SUBFLOW;
-+	f->hash = hash;
-+
-+	memcpy(&hwe, hwe_p, sizeof(*hwe_p));
-+	hwe.ib1 = (hwe.ib1 & mask) | (e->data.ib1 & ~mask);
-+	l2 = &hwe.bridge.l2;
-+	memcpy(l2, &e->data.bridge.l2, sizeof(*l2));
-+
-+	type = FIELD_GET(AIROHA_FOE_IB1_BIND_PACKET_TYPE, hwe.ib1);
-+	if (type == PPE_PKT_TYPE_IPV4_HNAPT)
-+		memcpy(&hwe.ipv4.new_tuple, &hwe.ipv4.orig_tuple,
-+		       sizeof(hwe.ipv4.new_tuple));
-+	else if (type >= PPE_PKT_TYPE_IPV6_ROUTE_3T &&
-+		 l2->common.etype == ETH_P_IP)
-+		l2->common.etype = ETH_P_IPV6;
-+
-+	hwe.bridge.ib2 = e->data.bridge.ib2;
-+	airoha_ppe_foe_commit_entry(ppe, &hwe, hash);
-+
-+	return 0;
-+}
-+
-+static void airoha_ppe_foe_insert_entry(struct airoha_ppe *ppe,
-+					struct sk_buff *skb,
-+					u32 hash)
- {
- 	struct airoha_flow_table_entry *e;
-+	struct airoha_foe_bridge br = {};
- 	struct airoha_foe_entry *hwe;
-+	bool commit_done = false;
- 	struct hlist_node *n;
- 	u32 index, state;
- 
-@@ -539,12 +610,33 @@ static void airoha_ppe_foe_insert_entry(struct airoha_ppe *ppe, u32 hash)
- 
- 	index = airoha_ppe_foe_get_entry_hash(hwe);
- 	hlist_for_each_entry_safe(e, n, &ppe->foe_flow[index], list) {
--		if (airoha_ppe_foe_compare_entry(e, hwe)) {
--			airoha_ppe_foe_commit_entry(ppe, &e->data, hash);
--			e->hash = hash;
--			break;
-+		if (e->type == FLOW_TYPE_L2_SUBFLOW) {
-+			state = FIELD_GET(AIROHA_FOE_IB1_BIND_STATE, hwe->ib1);
-+			if (state != AIROHA_FOE_STATE_BIND) {
-+				e->hash = 0xffff;
-+				airoha_ppe_foe_remove_flow(ppe, e);
-+			}
-+			continue;
-+		}
-+
-+		if (commit_done || !airoha_ppe_foe_compare_entry(e, hwe)) {
-+			e->hash = 0xffff;
-+			continue;
- 		}
-+
-+		airoha_ppe_foe_commit_entry(ppe, &e->data, hash);
-+		commit_done = true;
-+		e->hash = hash;
- 	}
-+
-+	if (commit_done)
-+		goto unlock;
-+
-+	airoha_ppe_foe_set_bridge_addrs(&br, eth_hdr(skb));
-+	e = rhashtable_lookup_fast(&ppe->l2_flows, &br,
-+				   airoha_l2_flow_table_params);
-+	if (e)
-+		airoha_ppe_foe_commit_subflow_entry(ppe, e, hash);
- unlock:
- 	spin_unlock_bh(&ppe_lock);
- }
-@@ -899,7 +991,8 @@ int airoha_ppe_setup_tc_block_cb(enum tc_setup_type type, void *type_data,
- 	return err;
- }
- 
--void airoha_ppe_check_skb(struct airoha_ppe *ppe, u16 hash)
-+void airoha_ppe_check_skb(struct airoha_ppe *ppe, struct sk_buff *skb,
-+			  u16 hash)
- {
- 	u16 now, diff;
- 
-@@ -912,7 +1005,7 @@ void airoha_ppe_check_skb(struct airoha_ppe *ppe, u16 hash)
- 		return;
- 
- 	ppe->foe_check_time[hash] = now;
--	airoha_ppe_foe_insert_entry(ppe, hash);
-+	airoha_ppe_foe_insert_entry(ppe, skb, hash);
- }
- 
- int airoha_ppe_init(struct airoha_eth *eth)
-
--- 
-2.49.0
-
+Best regards,
+Krzysztof
 
