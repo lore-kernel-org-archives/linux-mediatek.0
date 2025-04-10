@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57C23C369A2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 06:38:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92FBFC3601E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 06:40:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Wb38Lrsbjihsded5puREHzLVno5a5AXyiSOJ4Mw+QZs=; b=jxhkXRjdAESnkRHNeGb3G9W8eD
-	9AMCuWpG6qyek7mX92417k4qa+qw1x6y+Aq9yUE69DVg9Bg7XTz+a5RmA4rqmLYXIj8zD86TZyAGG
-	mWme/XwkcSo8GLUAbDqqiZEqlfB6H7qAGN71Zu/rrHcLVM4eg3bvfMZxEUqlPeJT9ev7kAmLXbLsj
-	pEv/e+B6O7R9uOlz7Cz3HXOVTU1Eb4S5uoaG3n95G57CHD8Qr6LFUb0QDCgrFTgBUEmyo2xID2asM
-	2L+B2AZdcEGjpqgyhILthjkykJL+iGev8kXhCKNd5Joln4ggQkOtx8Mbo5U4da6GImoSKw3WFZUxk
-	JcVIO+OA==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ulVM59ZeQ8rXPZCTFkVp7wxXjbIZ6rNqXUAn/FbeXy4=; b=s81rmB14qwZPPP7VoQ6Rui3Shk
+	r60CNfKV2x/VeJJ47lbLb5Q5+8ceu15fLi9YJ0IaBMXOJwUH6O38mIPEiIzadLwJoO0fPmnEyafhY
+	cjKB0u01rERK2Ym+SCs9pV9IC5RZnDGQfZoc6YyZ08A4YwpnY+hjSftAmid3l+//knRHgrxfo7aCX
+	92Gl4zh/GQS7PQD8K9FMAAv13rCPeehtoK74/3H6fKj85py0Uu8dMcy+uxwO8gYRoZ3CsvFFw36j/
+	HEHyggcBXuCoFS1jOlIfcZ+2P9Goha6GqNqCoErrV2Neq0xnbLVBHM1CvUwh0urkTBCFcDghU8Q9X
+	HEGICpnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2lYO-00000009OXq-1Wsj;
-	Thu, 10 Apr 2025 06:38:24 +0000
+	id 1u2laA-00000009OtH-2MHX;
+	Thu, 10 Apr 2025 06:40:14 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2lQb-00000009N5f-3Wrv;
-	Thu, 10 Apr 2025 06:30:27 +0000
-X-UUID: 43cb40c415d511f083f2a1c9db70dae0-20250409
+	id 1u2lQe-00000009N69-45yQ;
+	Thu, 10 Apr 2025 06:30:31 +0000
+X-UUID: 42bf550815d511f083f2a1c9db70dae0-20250409
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Wb38Lrsbjihsded5puREHzLVno5a5AXyiSOJ4Mw+QZs=;
-	b=Dj/9aJT4ZyrtyWljC75adJOC6gPuSTyOsazhlHimd+S7mb8FOqE5uypggyQ549H+tfOYuLKeMgKIUWTQZu5WVNMvBaHNTSsR9WCA+6FWUnt4ChbwMDnmu5q7TfK3zp8GYcyr54QCocI37hEdG/csnGkwtUGSZ+eO4eE9uNy7g/4=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=ulVM59ZeQ8rXPZCTFkVp7wxXjbIZ6rNqXUAn/FbeXy4=;
+	b=bKcE2V3KK2iFZeV81s9h3aE2MP+CMK7IZW1EUn77Cra9AgLghfuL8zxksneHUgePfj9njbo8CDCL7yRkpBh23v74nlBjf8gsT7z/OykYycDGiRkwsDOGpcjKxwvgMaeNYzX0L066C3i0ffD4uLWZPF3guKUTiVyP7zXguBEpfRM=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:08add45d-7aa9-4602-a76c-3f4a4e445951,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:0ef645f,CLOUDID:9b9b138b-0afe-4897-949e-8174746b1932,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
-	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
-	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 5,DFT|NGT
-X-CID-BAS: 5,DFT|NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 43cb40c415d511f083f2a1c9db70dae0-20250409
-Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
+X-CID-O-INFO: VERSION:1.2.1,REQID:44fc5e1e-9983-4065-beb7-6d0dea98b2bb,IP:0,UR
+	L:0,TC:0,Content:0,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-30
+X-CID-META: VersionHash:0ef645f,CLOUDID:9c9b138b-0afe-4897-949e-8174746b1932,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:2,IP:nil
+	,URL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:
+	1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 5,DFT
+X-CID-BAS: 5,DFT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: 42bf550815d511f083f2a1c9db70dae0-20250409
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
 	(envelope-from <kyrie.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 430031464; Wed, 09 Apr 2025 23:30:15 -0700
+	with ESMTP id 1237300579; Wed, 09 Apr 2025 23:30:14 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Thu, 10 Apr 2025 14:30:13 +0800
+ 15.2.1258.39; Thu, 10 Apr 2025 14:30:11 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Thu, 10 Apr 2025 14:30:12 +0800
+ 15.2.1258.39 via Frontend Transport; Thu, 10 Apr 2025 14:30:10 +0800
 From: kyrie.wu <kyrie.wu@mediatek.com>
 To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
 	<mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
@@ -63,19 +63,17 @@ To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
 CC: kyrie.wu <kyrie.wu@mediatek.com>
-Subject: [PATCH v2 02/12] dt-bindings: mediatek: Add mediatek, mt8196-jpgenc compatible
-Date: Thu, 10 Apr 2025 14:29:55 +0800
-Message-ID: <20250410063006.5313-3-kyrie.wu@mediatek.com>
+Subject: [PATCH v2 00/12] Enable jpeg enc & dec multi-hardwares for MT8196
+Date: Thu, 10 Apr 2025 14:29:53 +0800
+Message-ID: <20250410063006.5313-1-kyrie.wu@mediatek.com>
 X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20250410063006.5313-1-kyrie.wu@mediatek.com>
-References: <20250410063006.5313-1-kyrie.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250409_233021_944588_D04D1820 
-X-CRM114-Status: UNSURE (   9.65  )
+X-CRM114-CacheID: sfid-20250409_233025_338786_472EC068 
+X-CRM114-Status: UNSURE (   9.69  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -91,39 +89,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mediatek,mt8196-jpgenc compatible to binding document.
+This series adds support for mt8196 multi-hardwares jpeg enc & dec,
+by first adding mt8196 jpegdec and jpegenc compatible to install
+kernel driver. Add smmu setting to support smmu and iommu at the
+same time.
+Secondly refactor buffer and clock setting to support multi-hw jpeg
+working.
+Lastly, fix some bugs, including resolution change handleing, stop
+streaming sw flow and others.
 
-Signed-off-by: kyrie.wu <kyrie.wu@mediatek.com>
+This series has been tested with MT8196 tast test.
+Encoding and decoding worked for this chip.
+
+Patches 1-3 Adds jpeg encoder and decoder compatible.
+Patches 4 add jpeg smmu sid setting.
+Patches 5 fix jpeg hw count setting to support different chips.
+Patches 6 refactor jpeg buffer payload setting to handle buffer
+size bug while resolution changed.
+Patches 7 reconstruct jpeg dst buffer layout.
+Patches 8 fix multi-core stop streaming flow
+Patches 9 refactor multi-core clk suspend/resume setting
+Patches 10 fix decoding buffer number setting timing issue
+Patches 11 refactor decoding resolution change operation
+Patches 12 fix remove buffer operation
+
 ---
- .../bindings/media/mediatek,mt8195-jpegenc.yaml           | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+This series patches dependent on:
+[1]
+https://patchwork.kernel.org/project/linux-mediatek/patch/20240808092555.12999-1-jianhua.lin@mediatek.com/
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
-index 596186497b68..e2d772ea0fb0 100644
---- a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
-@@ -14,7 +14,9 @@ description:
- 
- properties:
-   compatible:
--    const: mediatek,mt8195-jpgenc
-+    enum:
-+      - mediatek,mt8195-jpgenc
-+      - mediatek,mt8196-jpgenc
- 
-   power-domains:
-     maxItems: 1
-@@ -44,7 +46,9 @@ patternProperties:
- 
-     properties:
-       compatible:
--        const: mediatek,mt8195-jpgenc-hw
-+        enum:
-+          - mediatek,mt8195-jpgenc-hw
-+          - mediatek,mt8196-jpgenc-hw
- 
-       reg:
-         maxItems: 1
+Changes compared with v1:
+--refine jpeg dt-bindings for MT8196
+--optimize software code to manage jpeg HW count
+--refactor smmu sid setting function interface
+--Some modifications for patch v1's review comments.
+
+kyrie.wu (12):
+  dt-bindings: mediatek: Add mediatek, mt8196-jpgdec compatible
+  dt-bindings: mediatek: Add mediatek, mt8196-jpgenc compatible
+  media: mediatek: jpeg: add jpeg compatible
+  media: mediatek: jpeg: add jpeg smmu sid setting
+  media: mediatek: jpeg: fix jpeg hw count setting
+  media: mediatek: jpeg: refactor jpeg buffer payload setting
+  media: mediatek: jpeg: refactor jpeg dst buffer layout
+  media: mediatek: jpeg: fix stop streaming flow for multi-core
+  media: mediatek: jpeg: refactor multi-core clk suspend and resume
+    setting
+  media: mediatek: jpeg: fix decoding buffer number setting timing issue
+  media: mediatek: jpeg: refactor decoding resolution change operation
+  media: mediatek: jpeg: fix remove buffer operation for multi-core
+
+ .../media/mediatek,mt8195-jpegdec.yaml        |   8 +-
+ .../media/mediatek,mt8195-jpegenc.yaml        |   8 +-
+ .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 166 +++++++++++++-----
+ .../platform/mediatek/jpeg/mtk_jpeg_core.h    |  25 ++-
+ .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.c  | 113 +++++++++++-
+ .../platform/mediatek/jpeg/mtk_jpeg_enc_hw.c  | 114 +++++++++++-
+ 6 files changed, 381 insertions(+), 53 deletions(-)
+
 -- 
 2.46.0
 
