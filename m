@@ -4,63 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 666FCC3601E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 16:06:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A5B0C3601E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 16:13:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GGBRp/mJ44odAQ+DK3ZQeuktW6/k2UiJ6GrDt9QhUkQ=; b=ZacAp5vNt61qvPSiRkXVZn9eAH
-	lYJ7iJUD9QQs3QmeQBgd0pse8WRvB6zm09EB61d4iT7xroWWSZJEEpBbYK17Se+KlzbJvu3ci4G7P
-	3oQuotJ6jHgnnjUJlXbMtyYyYvD/+GtF7bPuhU86jTFUHpb1N3OwHPBfw8sDE3U8l+U3M9+E3TXLN
-	WbDO0J+zmy7gNrf0e2SN5no3H4NuYKGK/MQu+l/wGBDCAAJT2nVwi8ZD7yKBXAGyEywnPUe5jV/bF
-	32FWvuHuoO/lgLcddaVEztJSIXA6rcSixTbofpqJmZNNyEAF3LDxvFvqW6Xenvunc1DSakkInXLTH
-	sU6I7wwQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=1aD3H5SmNlfRhw7KUYgaAyaJqkhSNgnVmYp8u5QpgpQ=; b=1b05hzttBV+jxVZHQJutelabQQ
+	249gA73ITRJbdlQcr1bqlGMTB/Gk/XWN+p3UV0C1YN5pfBFvBd8e0hnZL2j/pzgCstlsvneza0uSC
+	dNCg8Yh7J0TXMEweEUTZHdTV5+jpGdKb6sG+HJ/Lij6owefPh745vZIf2AcIdu1opVmbBgUAKcTX9
+	SeJy5kG5zg5DnX6tTCvDFmbLbmgrntXzyjcTxpv4AwxEMXe9qtvnnzSEN1oDlvCiXdB/xCViyvqBW
+	/ilxbv7CLiPxiRJqfkxKYzxMZNNXQujncEOFz738MvCxNCvbKUg7stSbJKpiokCmu1MFtd51Eypby
+	t/8XTi6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2uPn-0000000B7sc-1i4b;
-	Thu, 10 Apr 2025 16:06:07 +0000
-Received: from mgamail.intel.com ([192.198.163.13])
+	id 1u2uXJ-0000000B8yM-39qe;
+	Thu, 10 Apr 2025 16:13:53 +0000
+Received: from mgamail.intel.com ([192.198.163.17])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2tce-0000000Aymv-1UtY;
-	Thu, 10 Apr 2025 15:15:21 +0000
+	id 1u2tk1-0000000AzqA-1qxq;
+	Thu, 10 Apr 2025 15:22:58 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1744298120; x=1775834120;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=V4GHZJ8ckeMnMp0rIGnPoc0LafTsnMm513zi7ZBVHVQ=;
-  b=CROV4MqHXSGRrysn0smbGdwbh+/D7iWjm6THt1yJxbQ/YVZ7YTPK55in
-   Dtd7hacN4FxRk/ng3DwDV5cfaRu7VnpKgAP5IWnBbuCOwCxOdyVYMeRYQ
-   Z64I1dwezzk3RMwcK0xGHLIqU15Tw5zrWFtOr2m9bQ01CasZPhGcaFCdu
-   l37do29E9a32b0LJXFqQXS1uCRp0A+QTNMTKlZLYfGWstAFn0C7M+Uj5q
-   om67Yduxrdb3lsb/XTr89ILMY7dgNrs2HueHdDxjcBpHPSzQ7fJEkrHyw
-   NdPxHrK8zXDoxigbQmZM2IkffjHWmES2WIQKxTgFMpDqdGQrR4zPlDcYV
-   w==;
-X-CSE-ConnectionGUID: PuDLA/e7TyalFsI+T7E1DA==
-X-CSE-MsgGUID: SbqTe0BXSTSM+xYDplzTwg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11400"; a="48534422"
+  t=1744298577; x=1775834577;
+  h=from:to:cc:subject:date:message-id:mime-version:
+   content-transfer-encoding;
+  bh=kVA5MpLBMU4IYqfLgN92o9IEr4g+jq3spidVJHcMb6o=;
+  b=A7L/Jf8zyq2DTcrf/+TOMHhSNQQ3Klde43qhvF3ruYWpyeFucsev5IDc
+   Xd4XCvbFLMhAAH0Saw2zA1rR0K8Xfl17Z2I5JFVWBPBU343JcBl1sOiHK
+   RZaJxE9xmLT8+GTf3DBl8hvil21wI0icQ2b6RN3BKF8TVOu3Cd4GWt10r
+   5vWBvMMePRpu8/LkgUrBLNlJpdQwLUWbC8EGT2xrqgJAU9Et55Kj/lHDl
+   iQV50HZE0dnGeXzZQx0TfF+CkU092kMrXph9nVNJbsg7BpTtcbM7fFm4h
+   YoGlW/0AMiVG8z9Aq5EBYTVDTqfC6N1ctK2+/uaU1vkmA8v+YQJV6RgWQ
+   A==;
+X-CSE-ConnectionGUID: RD9wf2rQT1WA9ydKnUstjA==
+X-CSE-MsgGUID: ybvndWx4Sdqy6iYaAjd3zg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11400"; a="45716264"
 X-IronPort-AV: E=Sophos;i="6.15,202,1739865600"; 
-   d="scan'208";a="48534422"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
-  by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Apr 2025 08:15:18 -0700
-X-CSE-ConnectionGUID: vQ7lhxf+QZ2w5KQxjMC4EQ==
-X-CSE-MsgGUID: XLyoK8lKQ9C7x/NfnQcgNg==
+   d="scan'208";a="45716264"
+Received: from orviesa005.jf.intel.com ([10.64.159.145])
+  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Apr 2025 08:22:55 -0700
+X-CSE-ConnectionGUID: 3j6bmGJiRKOZWNowD2NzRA==
+X-CSE-MsgGUID: ew/RyzT9RNy/1OP0CZJiGQ==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.15,202,1739865600"; 
-   d="scan'208";a="128912597"
+   d="scan'208";a="134108194"
 Received: from turnipsi.fi.intel.com (HELO kekkonen.fi.intel.com) ([10.237.72.44])
-  by fmviesa007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Apr 2025 08:15:15 -0700
-Received: from kekkonen.localdomain (localhost [127.0.0.1])
-	by kekkonen.fi.intel.com (Postfix) with SMTP id CE9BF11F74E;
-	Thu, 10 Apr 2025 18:15:12 +0300 (EEST)
-Date: Thu, 10 Apr 2025 15:15:12 +0000
+  by orviesa005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Apr 2025 08:22:52 -0700
+Received: from punajuuri.localdomain (punajuuri.localdomain [192.168.240.130])
+	by kekkonen.fi.intel.com (Postfix) with ESMTP id DEA3A11F74E;
+	Thu, 10 Apr 2025 18:22:49 +0300 (EEST)
+Received: from sailus by punajuuri.localdomain with local (Exim 4.96)
+	(envelope-from <sakari.ailus@linux.intel.com>)
+	id 1u2tjt-00HObw-2j;
+	Thu, 10 Apr 2025 18:22:49 +0300
 Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Herbert Xu <herbert@gondor.apana.org.au>
-Cc: linux-crypto@vger.kernel.org, Olivia Mackall <olivia@selenic.com>,
+To: linux-crypto@vger.kernel.org
+Cc: Olivia Mackall <olivia@selenic.com>,
+	Herbert Xu <herbert@gondor.apana.org.au>,
 	Nicolas Ferre <nicolas.ferre@microchip.com>,
 	Sean Wang <sean.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
@@ -68,22 +72,20 @@ Cc: linux-crypto@vger.kernel.org, Olivia Mackall <olivia@selenic.com>,
 	Avi Fishman <avifishman70@gmail.com>,
 	Tomer Maimon <tmaimon77@gmail.com>,
 	Tali Perry <tali.perry1@gmail.com>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@baylibre.com>,
+	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org
-Subject: Re: [PATCH 1/3] hwrng: atmel - Add a local variable for struct
- device pointer
-Message-ID: <Z_fggNyPaotb2mYh@kekkonen.localdomain>
-References: <20250410070623.3676647-1-sakari.ailus@linux.intel.com>
- <20250410070623.3676647-2-sakari.ailus@linux.intel.com>
- <Z_d2fcuWPiel_OnT@gondor.apana.org.au>
+	linux-mediatek@lists.infradead.org,
+	openbmc@lists.ozlabs.org
+Subject: [PATCH v2 0/3] Use a local device pointer for hwrng drivers instead of casting constantly
+Date: Thu, 10 Apr 2025 18:22:36 +0300
+Message-Id: <20250410152239.4146166-1-sakari.ailus@linux.intel.com>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Z_d2fcuWPiel_OnT@gondor.apana.org.au>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250410_081520_413032_BF75D5B4 
-X-CRM114-Status: GOOD (  16.82  )
+X-CRM114-CacheID: sfid-20250410_082257_499335_37225978 
+X-CRM114-Status: UNSURE (   7.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,36 +100,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Herbert,
+Hi folks,
 
-On Thu, Apr 10, 2025 at 03:42:53PM +0800, Herbert Xu wrote:
-> On Thu, Apr 10, 2025 at 10:06:21AM +0300, Sakari Ailus wrote:
-> > Add a local variable for a struct device pointer instead of obtaining the
-> > hwrng priv field and casting it as a struct device pointer whenever it's
-> > needed.
-> > 
-> > Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
-> > ---
-> >  drivers/char/hw_random/atmel-rng.c | 9 +++++----
-> >  1 file changed, 5 insertions(+), 4 deletions(-)
-> > 
-> > diff --git a/drivers/char/hw_random/atmel-rng.c b/drivers/char/hw_random/atmel-rng.c
-> > index 143406bc6939..5192c39ebaeb 100644
-> > --- a/drivers/char/hw_random/atmel-rng.c
-> > +++ b/drivers/char/hw_random/atmel-rng.c
-> > @@ -56,12 +56,13 @@ static int atmel_trng_read(struct hwrng *rng, void *buf, size_t max,
-> >  			   bool wait)
-> >  {
-> >  	struct atmel_trng *trng = container_of(rng, struct atmel_trng, rng);
-> > +	struct device *dev = (struct device *)trng->rng.priv;
-> 
-> Please stop using the priv field and instead add a struct device
-> pointer to struct atmel_trng.
+Clean up random number reading by storing struct device pointer to device
+context struct. The changes are very similar in all three drivers.
 
-Thanks for the review. I'll do that in v2.
+since v2:
+
+- Add a struct device pointer field to device context structs, don't use
+  struct hwrgn priv field for the purpose anymore.
+
+Sakari Ailus (3):
+  hwrng: atmel - Add struct device pointer to device context struct
+  hwrng: mtk - Add struct device pointer to device context struct
+  hwrng: npcm - Add struct device pointer to device context struct
+
+ drivers/char/hw_random/atmel-rng.c | 11 ++++++-----
+ drivers/char/hw_random/mtk-rng.c   |  9 +++++----
+ drivers/char/hw_random/npcm-rng.c  |  9 +++++----
+ 3 files changed, 16 insertions(+), 13 deletions(-)
 
 -- 
-Regards,
+2.39.5
 
-Sakari Ailus
 
