@@ -4,76 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11B7EC369A8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 11:17:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01A4FC369A8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 11:18:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8aFqx7rBqmhAKUDz1EoI12kISFmiMl1zSnR1/LjpxZQ=; b=sWWuLseOqR86EbIy3gNmfchnfL
-	YhmppQOhXcqYHnXuBQKv2I6Evc9npFeJKZU42swz7LKyhAgiYkqFRr9oPbqrxvEPfoQqbYF4Zeq59
-	caQ7dgzTc5Sei9abfcnEB4si7TY8IXKWWXrjrEw8Qm4kRG//4KKVSg2iPuxt/ddodVe3dHFJ56svV
-	75fG542JETLFGdRB3Ao4uAoIKGDa1cQ+8/hncpCNQhqxujcpeUUmzg9bsBxeiox+ZRt0uC2COQxVa
-	mgpzUAlXFM06HO3f7I86I4wsQz/A7at/K4c9sLRnh3goL/Ruy4upw+eIGbqtwQUj4USPw3kPoWJtl
-	WQ9edoTw==;
+	bh=3Uo5er/uYGpDnrC4qdUdTQ+M350k6gcqOXroe0mMArE=; b=hKWiTo2k9N0WDf9Ugm/3ssfaZN
+	Y0rNJbFjuxQBUrECnfRvyShkr/0K9xTyrc+Nwjrlw8mTeAp38d3k+xqurKGx8/3r3kWFioEFYhbEI
+	k2E/oBKgDBwaAu0nkqSJZN4z/ED+gihYPrxs8TT3d/e7SpkuAGZLqpBZccxj/6Mr6yWxOQ9rjcTu4
+	P+WGNOZYoErOWVu0T2b6RCQCquLBMQAsIIEWvl7DTKGWs5FrK1oD7lySOTRfBtQjJXgfEo0IJnYnR
+	84BrNm2Of2HHmp27z5pCe7Rhv2UIgAaYU76MsrNSVaIkoMGelpx2jqkKBKwEEu5gifZ6ObBdt7g5r
+	XM0NHXGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2pu5-0000000ADLd-3HDl;
-	Thu, 10 Apr 2025 11:17:05 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1u2pvM-0000000AFC8-07dM;
+	Thu, 10 Apr 2025 11:18:24 +0000
+Received: from mgamail.intel.com ([198.175.65.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2oZu-00000009zyF-3FrQ;
-	Thu, 10 Apr 2025 09:52:13 +0000
-X-UUID: 752df50a15f111f0a1e849db4cc18d44-20250410
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=8aFqx7rBqmhAKUDz1EoI12kISFmiMl1zSnR1/LjpxZQ=;
-	b=qVpx0/9ujT4wejx8Eup3Ts1ZQp7vwDUfTULzpdcRX6x/kAulk45sMSqERcQ7l6TUGGY7qv4QS6lGdTl2FAH2FvOQGWs1PfGEemxfynyJe4nC9TnjgwKkcGuOH3KBfgH3NDxQGzjRq23mkGIyJ/vlURAUqlIEtilDe7D8w4sNYDo=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:403a1ad4-d384-4781-82f6-7523bc88a566,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:0ef645f,CLOUDID:265c728d-f5b8-47d5-8cf3-b68fe7530c9a,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
-	,IP:nil,URL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
-	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: 752df50a15f111f0a1e849db4cc18d44-20250410
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <yiru.zhang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 95452777; Thu, 10 Apr 2025 02:52:04 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Thu, 10 Apr 2025 17:52:01 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Thu, 10 Apr 2025 17:52:01 +0800
-From: yiru zhang <yiru.zhang@mediatek.com>
-To: <yiru.zhang@mediatek.com>
-CC: <alexander.shishkin@linux.intel.com>,
-	<angelogioacchino.delregno@collabora.com>, <coresight@lists.linaro.org>,
-	<james.clark@linaro.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<matthias.bgg@gmail.com>, <mike.leach@linaro.org>, <suzuki.poulose@arm.com>,
-	kernel test robot <lkp@intel.com>
-Subject: [PATCH] [Patch v3]Add ETE devarch condition in etm4_init_iomem_access
-Date: Thu, 10 Apr 2025 17:51:58 +0800
-Message-ID: <20250410095158.8966-1-yiru.zhang@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20250409032917.7580-1-yiru.zhang@mediatek.com>
-References: <20250409032917.7580-1-yiru.zhang@mediatek.com>
+	id 1u2oi7-0000000A1U1-0nF2;
+	Thu, 10 Apr 2025 10:00:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1744279239; x=1775815239;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=ONUHM5dAa9V9tNPfQhvJhcJq9TbPfVh38gul5GwseA0=;
+  b=Fux1xUHgpwGhqjq7nNpdXhE4Ehm1haJXLUZaNBaROTOkpfC0JNxfAH5G
+   NPU68Ib+r3LHpsVu3aGD96o+n5ubWiYmX51LNA24XuBnNdyIn8WLmW3Za
+   6xPX126FhcQhrxc13S3qEtsIKXaRhE5/nqUg00ezxddTb38nHsVj1IUZK
+   NEI85xqZM8mLAcScRQz1kb5Xrkc/888Li7SVOMwKnw3DFtk3hnkv4Fd27
+   70RQeKYMx/qBLWJXDRbJVs81oLj1WQAYKmT/E5HrYODr86Nukmyl4C5cZ
+   91tliRmvKnEtOjv40l69u1UgOWf6HQRr21mTtKv9QW1i3ryP669bUkxyE
+   w==;
+X-CSE-ConnectionGUID: tfCAnchXSyCbWWZfS9fCnw==
+X-CSE-MsgGUID: dQ1hywIKR8yBs3juWinBMw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11399"; a="57159392"
+X-IronPort-AV: E=Sophos;i="6.15,202,1739865600"; 
+   d="scan'208";a="57159392"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+  by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Apr 2025 03:00:37 -0700
+X-CSE-ConnectionGUID: 05lbWpcNR3KWflc7G4CuNA==
+X-CSE-MsgGUID: YLZYCk0KSbOI90zQomq2Sw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,202,1739865600"; 
+   d="scan'208";a="133980819"
+Received: from lkp-server01.sh.intel.com (HELO b207828170a5) ([10.239.97.150])
+  by fmviesa004.fm.intel.com with ESMTP; 10 Apr 2025 03:00:34 -0700
+Received: from kbuild by b207828170a5 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1u2ohz-0009tz-0B;
+	Thu, 10 Apr 2025 10:00:31 +0000
+Date: Thu, 10 Apr 2025 17:59:56 +0800
+From: kernel test robot <lkp@intel.com>
+To: Sakari Ailus <sakari.ailus@linux.intel.com>,
+	linux-crypto@vger.kernel.org
+Cc: oe-kbuild-all@lists.linux.dev, Olivia Mackall <olivia@selenic.com>,
+	Herbert Xu <herbert@gondor.apana.org.au>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Avi Fishman <avifishman70@gmail.com>,
+	Tomer Maimon <tmaimon77@gmail.com>,
+	Tali Perry <tali.perry1@gmail.com>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@baylibre.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org
+Subject: Re: [PATCH 3/3] hwrng: npcm - Add a local variable for struct device
+ pointer
+Message-ID: <202504101705.PeW9QC3m-lkp@intel.com>
+References: <20250410070623.3676647-4-sakari.ailus@linux.intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250410070623.3676647-4-sakari.ailus@linux.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250410_025210_820291_4303B803 
-X-CRM114-Status: UNSURE (   9.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250410_030039_302890_95E67B51 
+X-CRM114-Status: GOOD (  16.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,42 +98,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Due to ETE supported, so add ETE devarch condition in etm4_init_iomem_access.
+Hi Sakari,
 
-Signed-off-by: yiru zhang <yiru.zhang@mediatek.com>
-Reported-by: kernel test robot <lkp@intel.com>
-Closes: https://lore.kernel.org/oe-kbuild-all/202504101759.7Ls0Uy4o-lkp@intel.com/
+kernel test robot noticed the following build errors:
 
-v1->v2: use switch case way
-v2->v3: clean build warning
----
- drivers/hwtracing/coresight/coresight-etm4x-core.c | 10 +++++++---
- 1 file changed, 7 insertions(+), 3 deletions(-)
+[auto build test ERROR on char-misc/char-misc-testing]
+[also build test ERROR on char-misc/char-misc-next char-misc/char-misc-linus herbert-cryptodev-2.6/master linus/master v6.15-rc1 next-20250410]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-diff --git a/drivers/hwtracing/coresight/coresight-etm4x-core.c b/drivers/hwtracing/coresight/coresight-etm4x-core.c
-index 2b8f10463840..4002a2823fd0 100644
---- a/drivers/hwtracing/coresight/coresight-etm4x-core.c
-+++ b/drivers/hwtracing/coresight/coresight-etm4x-core.c
-@@ -1135,11 +1135,15 @@ static bool etm4_init_iomem_access(struct etmv4_drvdata *drvdata,
- 	 * with MMIO. But we cannot touch the OSLK until we are
- 	 * sure this is an ETM. So rely only on the TRCDEVARCH.
- 	 */
--	if ((devarch & ETM_DEVARCH_ID_MASK) != ETM_DEVARCH_ETMv4x_ARCH) {
--		pr_warn_once("TRCDEVARCH doesn't match ETMv4 architecture\n");
-+	switch (devarch & ETM_DEVARCH_ID_MASK) {
-+	case ETM_DEVARCH_ETMv4x_ARCH:
-+	case ETM_DEVARCH_ETE_ARCH:
-+		break;
-+	default:
-+		pr_warn_once("Unknown ETM architecture: 0x%lx\n",
-+			     devarch & ETM_DEVARCH_ID_MASK);
- 		return false;
- 	}
--
- 	drvdata->arch = etm_devarch_to_arch(devarch);
- 	*csa = CSDEV_ACCESS_IOMEM(drvdata->base);
- 	return true;
+url:    https://github.com/intel-lab-lkp/linux/commits/Sakari-Ailus/hwrng-atmel-Add-a-local-variable-for-struct-device-pointer/20250410-151223
+base:   char-misc/char-misc-testing
+patch link:    https://lore.kernel.org/r/20250410070623.3676647-4-sakari.ailus%40linux.intel.com
+patch subject: [PATCH 3/3] hwrng: npcm - Add a local variable for struct device pointer
+config: csky-randconfig-001-20250410 (https://download.01.org/0day-ci/archive/20250410/202504101705.PeW9QC3m-lkp@intel.com/config)
+compiler: csky-linux-gcc (GCC) 14.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250410/202504101705.PeW9QC3m-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202504101705.PeW9QC3m-lkp@intel.com/
+
+All error/warnings (new ones prefixed by >>):
+
+   drivers/char/hw_random/npcm-rng.c: In function 'npcm_rng_read':
+>> drivers/char/hw_random/npcm-rng.c:58:9: error: expected ',' or ';' before 'int'
+      58 |         int retval = 0;
+         |         ^~~
+>> drivers/char/hw_random/npcm-rng.c:78:17: error: 'retval' undeclared (first use in this function)
+      78 |                 retval++;
+         |                 ^~~~~~
+   drivers/char/hw_random/npcm-rng.c:78:17: note: each undeclared identifier is reported only once for each function it appears in
+>> drivers/char/hw_random/npcm-rng.c:87:1: warning: control reaches end of non-void function [-Wreturn-type]
+      87 | }
+         | ^
+
+
+vim +58 drivers/char/hw_random/npcm-rng.c
+
+c98429297d8b25a Tomer Maimon 2019-09-12  53  
+c98429297d8b25a Tomer Maimon 2019-09-12  54  static int npcm_rng_read(struct hwrng *rng, void *buf, size_t max, bool wait)
+c98429297d8b25a Tomer Maimon 2019-09-12  55  {
+c98429297d8b25a Tomer Maimon 2019-09-12  56  	struct npcm_rng *priv = to_npcm_rng(rng);
+11fd03b27c8824f Sakari Ailus 2025-04-10  57  	struct device *dev = (struct device *)priv->rng.priv
+c98429297d8b25a Tomer Maimon 2019-09-12 @58  	int retval = 0;
+c98429297d8b25a Tomer Maimon 2019-09-12  59  	int ready;
+c98429297d8b25a Tomer Maimon 2019-09-12  60  
+11fd03b27c8824f Sakari Ailus 2025-04-10  61  	pm_runtime_get_sync(dev);
+c98429297d8b25a Tomer Maimon 2019-09-12  62  
+c2fb644638ae45c Tomer Maimon 2020-09-24  63  	while (max) {
+c98429297d8b25a Tomer Maimon 2019-09-12  64  		if (wait) {
+c2fb644638ae45c Tomer Maimon 2020-09-24  65  			if (readb_poll_timeout(priv->base + NPCM_RNGCS_REG,
+c98429297d8b25a Tomer Maimon 2019-09-12  66  					       ready,
+c98429297d8b25a Tomer Maimon 2019-09-12  67  					       ready & NPCM_RNG_DATA_VALID,
+c98429297d8b25a Tomer Maimon 2019-09-12  68  					       NPCM_RNG_POLL_USEC,
+c98429297d8b25a Tomer Maimon 2019-09-12  69  					       NPCM_RNG_TIMEOUT_USEC))
+c98429297d8b25a Tomer Maimon 2019-09-12  70  				break;
+c98429297d8b25a Tomer Maimon 2019-09-12  71  		} else {
+c2fb644638ae45c Tomer Maimon 2020-09-24  72  			if ((readb(priv->base + NPCM_RNGCS_REG) &
+c98429297d8b25a Tomer Maimon 2019-09-12  73  			    NPCM_RNG_DATA_VALID) == 0)
+c98429297d8b25a Tomer Maimon 2019-09-12  74  				break;
+c98429297d8b25a Tomer Maimon 2019-09-12  75  		}
+c98429297d8b25a Tomer Maimon 2019-09-12  76  
+c2fb644638ae45c Tomer Maimon 2020-09-24  77  		*(u8 *)buf = readb(priv->base + NPCM_RNGD_REG);
+c2fb644638ae45c Tomer Maimon 2020-09-24 @78  		retval++;
+c2fb644638ae45c Tomer Maimon 2020-09-24  79  		buf++;
+c2fb644638ae45c Tomer Maimon 2020-09-24  80  		max--;
+c98429297d8b25a Tomer Maimon 2019-09-12  81  	}
+c98429297d8b25a Tomer Maimon 2019-09-12  82  
+11fd03b27c8824f Sakari Ailus 2025-04-10  83  	pm_runtime_mark_last_busy(dev);
+11fd03b27c8824f Sakari Ailus 2025-04-10  84  	pm_runtime_put_sync_autosuspend(dev);
+c98429297d8b25a Tomer Maimon 2019-09-12  85  
+c98429297d8b25a Tomer Maimon 2019-09-12  86  	return retval || !wait ? retval : -EIO;
+c98429297d8b25a Tomer Maimon 2019-09-12 @87  }
+c98429297d8b25a Tomer Maimon 2019-09-12  88  
+
 -- 
-2.46.0
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
