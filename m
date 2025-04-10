@@ -4,75 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C163C3601E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 08:30:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1C28C3601E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 08:43:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Tvm+drxaFLk25NxNGK6leQFz6UBSeg5ou+cb6osDu1M=; b=hR+veUfDFMPQ3wAY9TXpfPrgVx
-	z4FzDSQVxbgfBA/phvhRanxR3NyQH7CPYHriqKVqMximEuOpiMLXRxqRKNomIuhxUf3iXbOFFLSlS
-	LKoo2TJkgUpa+/sddFy5b+2FjoFljz4vrPGkyGbMzHmcfbZInxswYgxMCBJmt4+SIyvu2XCYcMIDl
-	avmsWNOET05ODSoZbaB8t6LWWnT1UupRD0iGERDDpixLXJ4iYBvfxygihSG6Zh/js5XtrBGlc9GoA
-	8bPf4n6rEnYv1680BiJpzQHqD7tVci7+Pg528/TEo/D+9ZZpsFCBHMMGqAAOBun1yiHv2xBsVDvzp
-	hV5vybIA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vyRnA4Q+yFbS2ZBT7zMPT+jHN8phVJhU2QuGyNS6f34=; b=MAmZZN7MLrtsmyj2deD0OI2061
+	CPlNzfQcNv2JmSnyGwDFf81BYFgRd374sdU7SCSfI3SGoH4PVd7hmv3dtTHbd4wOHbJDOVc9mIr0L
+	YyOvYQmZPZhE7TBajxU4J2FL7zP7rmECG9dXGiV85TFRzk/1EgyrCuo+X3UDKL/QVL9s5LYpDD6tP
+	EN/jDxdiioIqYY2veznMupVK6UmAQ/ooRZlYor1kUPDoEU64CfbG0wQFiD0kA9imlgxaFKS4iZPGj
+	twWYmmLYjsB1LdOfE9lPgdoU3c8LKTp2BNcjIIowwmkFLCPbH7mGPSLtC38XhOhr4/RWKun2MemxX
+	Q8cc6l7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2nIQ-00000009khd-1emQ;
-	Thu, 10 Apr 2025 08:30:02 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1u2nV2-00000009n6y-0A53;
+	Thu, 10 Apr 2025 08:43:04 +0000
+Received: from mgamail.intel.com ([198.175.65.20])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2mj2-00000009dMp-0cY1;
-	Thu, 10 Apr 2025 07:53:29 +0000
-X-UUID: df02cfde15e011f083f2a1c9db70dae0-20250410
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Tvm+drxaFLk25NxNGK6leQFz6UBSeg5ou+cb6osDu1M=;
-	b=MZhgFVaZA4LfxPGca9jXrpLBNGPxDIGUR/fdehXTmMQ8KFzpTSlax7L+ECgI/atLDTR5hQM6s97gVjl0FzNfuq1VvL1lMwIBFZ8Fm6UE1us4Qa0RxQ1gFY9HMTLPJezGY21jRzblIDHhJ/pNmKt6Rh5FY4HcHCbPe1Yp77AcPvs=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:57ba4899-2c96-4fea-a015-5b9c42b08dae,IP:0,UR
-	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-25
-X-CID-META: VersionHash:0ef645f,CLOUDID:2413e9a5-c619-47e3-a41b-90eedbf5b947,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: df02cfde15e011f083f2a1c9db70dae0-20250410
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
-	(envelope-from <axe.yang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1560231312; Thu, 10 Apr 2025 00:53:20 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Thu, 10 Apr 2025 15:53:18 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Thu, 10 Apr 2025 15:53:17 +0800
-From: Axe Yang <axe.yang@mediatek.com>
-To: Chaotian Jing <chaotian.jing@mediatek.com>, Ulf Hansson
-	<ulf.hansson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1u2lzk-00000009TPp-1232;
+	Thu, 10 Apr 2025 07:06:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1744268800; x=1775804800;
+  h=from:to:cc:subject:date:message-id:in-reply-to:
+   references:mime-version:content-transfer-encoding;
+  bh=eVtQY8JBtI7OBFxIa1E1PA3pS0GE/8DYWFULSp6JaHg=;
+  b=SWy+MEIxIKFI7gK7TTRI0dl9vEhB5kZYtSvbIx1zTCCFbwdUkRDmDNLW
+   9VkPKNBtuePT0FPjCdKwCutxVx3symAarTYa32DY3Kkf7s2DvzG9kUTuz
+   hcLZ5YNpfhqm/GHUNV1RpnE/x/4LzwWGYnRidLNOY3Z0a/JQr2ZTyWW+2
+   PC4Ri7bYGA/1jRIWRW++ytGTJ0EEuuZLae963uSlzyEL5I5DHA051GGXn
+   Zt47L/ZoAX6H9bKA4ENBD5X2kwkRu9uHIgV7eLTjQM6dzA/5KJb8OziYu
+   U6nx3km/e3BhnrEFt9pEKitqgIsgvcWQentYvcuE07cZpgRj+0k8EmX4O
+   g==;
+X-CSE-ConnectionGUID: V27z1nB+STSlsqswaxjU4A==
+X-CSE-MsgGUID: xBncpXWARnSHc5Az+xsx/A==
+X-IronPort-AV: E=McAfee;i="6700,10204,11399"; a="45484786"
+X-IronPort-AV: E=Sophos;i="6.15,202,1739865600"; 
+   d="scan'208";a="45484786"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Apr 2025 00:06:39 -0700
+X-CSE-ConnectionGUID: kVTH2jZVTbeS/zX/rcXnvA==
+X-CSE-MsgGUID: BorZ3DaiT8GsjoUcY7tKvA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,202,1739865600"; 
+   d="scan'208";a="128791501"
+Received: from turnipsi.fi.intel.com (HELO kekkonen.fi.intel.com) ([10.237.72.44])
+  by fmviesa007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Apr 2025 00:06:36 -0700
+Received: from punajuuri.localdomain (punajuuri.localdomain [192.168.240.130])
+	by kekkonen.fi.intel.com (Postfix) with ESMTP id AAD2D11FA2F;
+	Thu, 10 Apr 2025 10:06:33 +0300 (EEST)
+Received: from sailus by punajuuri.localdomain with local (Exim 4.96)
+	(envelope-from <sakari.ailus@linux.intel.com>)
+	id 1u2lzd-00FQT7-28;
+	Thu, 10 Apr 2025 10:06:33 +0300
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: linux-crypto@vger.kernel.org
+Cc: Olivia Mackall <olivia@selenic.com>,
+	Herbert Xu <herbert@gondor.apana.org.au>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	<yong.mao@mediatek.com>, <qingliang.li@mediatek.com>,
-	<andy-ld.lu@mediatek.com>, Wenbin Mei <wenbin.mei@mediatek.com>
-CC: <linux-mmc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Axe Yang <axe.yang@mediatek.com>
-Subject: [PATCH v2] mmc: mtk-sd: Add condition to enable 'single' burst type
-Date: Thu, 10 Apr 2025 15:52:47 +0800
-Message-ID: <20250410075314.6439-1-axe.yang@mediatek.com>
-X-Mailer: git-send-email 2.46.0
+	Avi Fishman <avifishman70@gmail.com>,
+	Tomer Maimon <tmaimon77@gmail.com>,
+	Tali Perry <tali.perry1@gmail.com>,
+	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	openbmc@lists.ozlabs.org
+Subject: [PATCH 1/3] hwrng: atmel - Add a local variable for struct device pointer
+Date: Thu, 10 Apr 2025 10:06:21 +0300
+Message-Id: <20250410070623.3676647-2-sakari.ailus@linux.intel.com>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20250410070623.3676647-1-sakari.ailus@linux.intel.com>
+References: <20250410070623.3676647-1-sakari.ailus@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250410_005328_188939_36D50544 
-X-CRM114-Status: GOOD (  13.17  )
+X-CRM114-CacheID: sfid-20250410_000640_320045_E7038501 
+X-CRM114-Status: GOOD (  11.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,63 +101,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This change add a condition for 'single' burst type selection.
+Add a local variable for a struct device pointer instead of obtaining the
+hwrng priv field and casting it as a struct device pointer whenever it's
+needed.
 
-Read AXI_LEN field from EMMC50_CFG2(AHB2AXI wrapper) register, if the
-value is not 0, it means the HWIP is using AXI as AMBA bus, which do
-not support 'single' burst type.
-
-Signed-off-by: Axe Yang <axe.yang@mediatek.com>
+Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
 ---
-This change dependents on 'mmc: mtk-sd: Cleanups for register R/W':
+ drivers/char/hw_random/atmel-rng.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
-https://patchwork.kernel.org/project/linux-mediatek/cover/20250325110701.52623-1-angelogioacchino.delregno@collabora.com/
----
- drivers/mmc/host/mtk-sd.c | 16 ++++++++++++----
- 1 file changed, 12 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index ceeae1aeac94..2e4bd5166c17 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -84,6 +84,7 @@
- #define EMMC51_CFG0	 0x204
- #define EMMC50_CFG0      0x208
- #define EMMC50_CFG1      0x20c
-+#define EMMC50_CFG2      0x21c
- #define EMMC50_CFG3      0x220
- #define SDC_FIFO_CFG     0x228
- #define CQHCI_SETTING	 0x7fc
-@@ -306,7 +307,10 @@
- /* EMMC50_CFG1 mask */
- #define EMMC50_CFG1_DS_CFG        BIT(28)  /* RW */
+diff --git a/drivers/char/hw_random/atmel-rng.c b/drivers/char/hw_random/atmel-rng.c
+index 143406bc6939..5192c39ebaeb 100644
+--- a/drivers/char/hw_random/atmel-rng.c
++++ b/drivers/char/hw_random/atmel-rng.c
+@@ -56,12 +56,13 @@ static int atmel_trng_read(struct hwrng *rng, void *buf, size_t max,
+ 			   bool wait)
+ {
+ 	struct atmel_trng *trng = container_of(rng, struct atmel_trng, rng);
++	struct device *dev = (struct device *)trng->rng.priv;
+ 	u32 *data = buf;
+ 	int ret;
  
--#define EMMC50_CFG3_OUTS_WR       GENMASK(4, 0)  /* RW */
-+/* EMMC50_CFG2 mask */
-+#define EMMC50_CFG2_AXI_SET_LEN   GENMASK(27, 24) /* RW */
-+
-+#define EMMC50_CFG3_OUTS_WR       GENMASK(4, 0)   /* RW */
+-	ret = pm_runtime_get_sync((struct device *)trng->rng.priv);
++	ret = pm_runtime_get_sync(dev);
+ 	if (ret < 0) {
+-		pm_runtime_put_sync((struct device *)trng->rng.priv);
++		pm_runtime_put_sync(dev);
+ 		return ret;
+ 	}
  
- #define SDC_FIFO_CFG_WRVALIDSEL   BIT(24)  /* RW */
- #define SDC_FIFO_CFG_RDVALIDSEL   BIT(25)  /* RW */
-@@ -1917,9 +1921,13 @@ static void msdc_init_hw(struct msdc_host *host)
- 	pb1_val |= FIELD_PREP(MSDC_PATCH_BIT1_CMDTA, 1);
- 	pb1_val |= MSDC_PB1_DDR_CMD_FIX_SEL;
+@@ -79,8 +80,8 @@ static int atmel_trng_read(struct hwrng *rng, void *buf, size_t max,
+ 	ret = 4;
  
--	/* Set single burst mode, auto sync state clear, block gap stop clk */
--	pb1_val |= MSDC_PB1_SINGLE_BURST | MSDC_PB1_RSVD20 |
--		   MSDC_PB1_AUTO_SYNCST_CLR | MSDC_PB1_MARK_POP_WATER;
-+	/* Support 'single' burst type only when AXI_LEN is 0 */
-+	sdr_get_field(host->base + EMMC50_CFG2, EMMC50_CFG2_AXI_SET_LEN, &val);
-+	if (!val)
-+		pb1_val |= MSDC_PB1_SINGLE_BURST;
-+
-+	/* Set auto sync state clear, block gap stop clk */
-+	pb1_val |= MSDC_PB1_RSVD20 | MSDC_PB1_AUTO_SYNCST_CLR | MSDC_PB1_MARK_POP_WATER;
+ out:
+-	pm_runtime_mark_last_busy((struct device *)trng->rng.priv);
+-	pm_runtime_put_sync_autosuspend((struct device *)trng->rng.priv);
++	pm_runtime_mark_last_busy(dev);
++	pm_runtime_put_sync_autosuspend(dev);
+ 	return ret;
+ }
  
- 	/* Set low power DCM, use HCLK for GDMA, use MSDC CLK for everything else */
- 	pb1_val |= MSDC_PB1_LP_DCM_EN | MSDC_PB1_RSVD3 |
 -- 
-2.46.0
+2.39.5
 
 
