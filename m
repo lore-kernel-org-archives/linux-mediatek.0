@@ -4,80 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC22FC369A2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 07:17:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56DDCC3601E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 07:42:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uHfbW2BwhNKtYp0DwDcnPQM1979WkjuSa3wL4YpUPVA=; b=TOmlRmrJNrSN/uxDBy6/5vYEVy
-	Fd0fGdz1uSWkmrfynHWghF85t87SvKKKzZrNRiNpOxcrUuoHTWpZhJcrQJDyJ0MMzKMakJB2HZl7T
-	7p4LgOBEN2sn/kVa3CId0JJo3rZPz68X72Arid3IE1hbiiEFI33INp7LNOCWqgd/4q7QmCX3v0wzg
-	35PPX16AYw1VMCEH9J5cc+7kbyDpiw4kdxAZ/+4WUjwYoKaqB/CMfCvcu+6zDDnQpty2EqDNKNega
-	C4+80aNO2iT+Qve92f+QQDe6wMJ7O8D98PSMXgQKfd5S/GNRQx0fAOvjJD6K3fC+DCgBLJNobl8QT
-	D7CrEDgg==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=snR33B7zczTC3bN8IdXkOLcUmwroMI60wHKgyBtLUdc=; b=kJro8sG/GrICwi2msP9nR+n+QT
+	TcfWt/d8noKusR1OwMJ1OuhdrxZ3aWpZELONx5wWJ3iWMMrDZ0+bJVlOwYjV5K885NGOzCvRh08zl
+	Dzfdg9jBNssqVYP3dzcyHZM6eEB3WO07aEmndqM3kT2FD8tXbk0xD2BQRwe30GUwGLg8Y1CS2AELi
+	NarhnMwvry6+4law0Ws9VTOhqVsPFd/7rdqx8Af0M4G5ImjeDE/NCp8Io3zhLngW+XmJdFGk7Popa
+	J+3nbD2uQRcTDM/d4WWBv3WW843W2WSi/3hWbFtoNTCOHz7Vg6hpFja60f+zhns+LyVC0gwRU8eY8
+	Z2oxiNtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2mAL-00000009Vmg-3H6n;
-	Thu, 10 Apr 2025 07:17:37 +0000
-Received: from relay1-d.mail.gandi.net ([2001:4b98:dc4:8::221])
+	id 1u2mXz-00000009bda-1iSZ;
+	Thu, 10 Apr 2025 07:42:03 +0000
+Received: from mgamail.intel.com ([198.175.65.20])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2lgA-00000009PsW-3E1t;
-	Thu, 10 Apr 2025 06:46:29 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id CB5D64435C;
-	Thu, 10 Apr 2025 06:46:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1744267582;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=uHfbW2BwhNKtYp0DwDcnPQM1979WkjuSa3wL4YpUPVA=;
-	b=Dj7FSe+kWXd23IvbZ+MSy+pec7Gjo7DJP4LDzOxce5VjGLvIS6UX7tnz07Fbv2sOsYGiH8
-	LsTB5QxV2U7fToDLGpA7wJFGJhr9oG3kvS4U0YoGuE2eAy+N/1zeJ/rsEVWSv79oZwbG46
-	DATvE87ImDnDaOjkUMUY2HtE36Fua6NoNfADlYSQV+t+UfdDkJJ+FfS3TKtdTNNj95VQzt
-	Pkuy1FlNsUg3hd3j9WRkD70FhN3TMGK0VDfGDFvFsH48rctlSY2SPuTK+ymns7AScMV43T
-	LQvaRoMg9v5qrS1z0EhaWPk7As1QOwqqTANPgzYzRSlI+8QDasNT/QNch3O15g==
-Date: Thu, 10 Apr 2025 08:46:18 +0200
-From: Maxime Chevallier <maxime.chevallier@bootlin.com>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof
- Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Andrew
- Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, Eric
- Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo
- Abeni <pabeni@redhat.com>, Vladimir Oltean <olteanv@gmail.com>, Srinivas
- Kandagatla <srinivas.kandagatla@linaro.org>, Heiner Kallweit
- <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>, "Chester A.
- Unal" <chester.a.unal@arinc9.com>, Daniel Golle <daniel@makrotopia.org>,
- DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Simon
- Horman <horms@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, upstream@airoha.com
-Subject: Re: [net-next PATCH v14 07/16] net: mdio: regmap: add support for
- C45 read/write
-Message-ID: <20250410084618.43edc269@fedora.home>
-In-Reply-To: <67f620a1.050a0220.347fc7.1fee@mx.google.com>
-References: <20250408095139.51659-1-ansuelsmth@gmail.com>
-	<20250408095139.51659-8-ansuelsmth@gmail.com>
-	<20250409090751.6bc42b5b@fedora.home>
-	<67f620a1.050a0220.347fc7.1fee@mx.google.com>
-Organization: Bootlin
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+	id 1u2lzl-00000009TQV-3ZDu;
+	Thu, 10 Apr 2025 07:06:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1744268802; x=1775804802;
+  h=from:to:cc:subject:date:message-id:mime-version:
+   content-transfer-encoding;
+  bh=BwgGI6MZYv2vNydtUJb8sY2UgwkVT1/xfezAVPOvL2k=;
+  b=MYI96k1BYD+dYPrZGkWZa9LP0bqhPlDJVLQCXOAYIhzFGVmRf+VlMCbw
+   ppzdU+dFAAufhhCHuLlwDi40R6GVlpAYmgw3iXKSaQnERhIFaftzWP7JG
+   TDqjR2vN/tJJWdp4zTcJjvERn3jqJj1VxOKfC7zLX85HUgfSTrreojJJR
+   upjcS1SUSy8nVVwmC/I+va9cQKMOfjQCT+pbClLIwirQIOahl1H4lvxWX
+   afnwfExm1yhTG5M8NGIk9HcH/FhaXHPII66SHszGQfsZd6DtI5wjnVn1t
+   Okx/qJYF8ySEc721l5ZsLRmXXRPjfQg7mYczT4eGVFtinMMjDaIO7sBLQ
+   A==;
+X-CSE-ConnectionGUID: i0HQSAwZQQG5fvCihvcM8g==
+X-CSE-MsgGUID: qC++cvxFRuGdI7gZt0vAnA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11399"; a="45484806"
+X-IronPort-AV: E=Sophos;i="6.15,202,1739865600"; 
+   d="scan'208";a="45484806"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Apr 2025 00:06:40 -0700
+X-CSE-ConnectionGUID: dc0X+vL2S5ioxsxxRhI0SA==
+X-CSE-MsgGUID: 4vsCeVDXRH+kGFuW1sc24A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,202,1739865600"; 
+   d="scan'208";a="128791503"
+Received: from turnipsi.fi.intel.com (HELO kekkonen.fi.intel.com) ([10.237.72.44])
+  by fmviesa007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Apr 2025 00:06:36 -0700
+Received: from punajuuri.localdomain (punajuuri.localdomain [192.168.240.130])
+	by kekkonen.fi.intel.com (Postfix) with ESMTP id A9DBE11FA2C;
+	Thu, 10 Apr 2025 10:06:33 +0300 (EEST)
+Received: from sailus by punajuuri.localdomain with local (Exim 4.96)
+	(envelope-from <sakari.ailus@linux.intel.com>)
+	id 1u2lzd-00FQT3-20;
+	Thu, 10 Apr 2025 10:06:33 +0300
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: linux-crypto@vger.kernel.org
+Cc: Olivia Mackall <olivia@selenic.com>,
+	Herbert Xu <herbert@gondor.apana.org.au>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Avi Fishman <avifishman70@gmail.com>,
+	Tomer Maimon <tmaimon77@gmail.com>,
+	Tali Perry <tali.perry1@gmail.com>,
+	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	openbmc@lists.ozlabs.org
+Subject: [PATCH 0/3] Use a local device pointer for hwrng drivers instead of casting constantly
+Date: Thu, 10 Apr 2025 10:06:20 +0300
+Message-Id: <20250410070623.3676647-1-sakari.ailus@linux.intel.com>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-GND-State: clean
-X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvtdekvdduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvvefukfgjfhhoofggtgfgsehtjeertdertddvnecuhfhrohhmpeforgigihhmvgcuvehhvghvrghllhhivghruceomhgrgihimhgvrdgthhgvvhgrlhhlihgvrhessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnhepgeevledtvdevueehhfevhfelhfekveeftdfgiedufeffieeltddtgfefuefhueeknecukfhppedvrgdtudemtggsudelmeekugegheemgeeltddtmeeiheeikeemvdelsgdumeelvghfheemvgektgejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepvdgrtddumegtsgduleemkegugeehmeegledttdemieehieekmedvlegsudemlegvfhehmegvkegtjedphhgvlhhopehfvgguohhrrgdrhhhomhgvpdhmrghilhhfrhhomhepmhgrgihimhgvrdgthhgvvhgrlhhlihgvrhessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepvdejpdhrtghpthhtoheprghnshhuvghlshhmthhhsehgmhgrihhlrdgtohhmpdhrtghpthhtoheplhgvvgeskhgvrhhnvghlrdhorhhgpdhrtghpthhtoheprhhosghhsehkvghrnhgvlhdrohhrghdprhgtphhtthhopehkr
- hiikhdoughtsehkvghrnhgvlhdrohhrghdprhgtphhtthhopegtohhnohhrodgutheskhgvrhhnvghlrdhorhhgpdhrtghpthhtoheprghnughrvgifodhnvghtuggvvheslhhunhhnrdgthhdprhgtphhtthhopegurghvvghmsegurghvvghmlhhofhhtrdhnvghtpdhrtghpthhtohepvgguuhhmrgiivghtsehgohhoghhlvgdrtghomh
-X-GND-Sasl: maxime.chevallier@bootlin.com
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250409_234627_443080_A60DCA20 
-X-CRM114-Status: GOOD (  43.44  )
+X-CRM114-CacheID: sfid-20250410_000642_103253_745B451D 
+X-CRM114-Status: UNSURE (   7.20  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,95 +100,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 9 Apr 2025 09:24:13 +0200
-Christian Marangi <ansuelsmth@gmail.com> wrote:
+Hi folks,
 
-> On Wed, Apr 09, 2025 at 09:07:51AM +0200, Maxime Chevallier wrote:
-> > Hi Christian,
-> > 
-> > On Tue,  8 Apr 2025 11:51:14 +0200
-> > Christian Marangi <ansuelsmth@gmail.com> wrote:
-> >   
-> > > Add support for C45 read/write for mdio regmap. This can be done
-> > > by enabling the support_encoded_addr bool in mdio regmap config and by
-> > > using the new API devm_mdio_regmap_init to init a regmap.
-> > > 
-> > > To support C45, additional info needs to be appended to the regmap
-> > > address passed to regmap OPs.
-> > > 
-> > > The logic applied to the regmap address value:
-> > > - First the regnum value (20, 16)
-> > > - Second the devnum value (25, 21)
-> > > - A bit to signal if it's C45 (26)
-> > > 
-> > > devm_mdio_regmap_init MUST be used to register a regmap for this to
-> > > correctly handle internally the encode/decode of the address.
-> > > 
-> > > Drivers needs to define a mdio_regmap_init_config where an optional regmap
-> > > name can be defined and MUST define C22 OPs (mdio_read/write).
-> > > To support C45 operation also C45 OPs (mdio_read/write_c45).
-> > > 
-> > > The regmap from devm_mdio_regmap_init will internally decode the encoded
-> > > regmap address and extract the various info (addr, devnum if C45 and
-> > > regnum). It will then call the related OP and pass the extracted values to
-> > > the function.
-> > > 
-> > > Example for a C45 read operation:
-> > > - With an encoded address with C45 bit enabled, it will call the
-> > >   .mdio_read_c45 and addr, devnum and regnum will be passed.
-> > >   .mdio_read_c45 will then return the val and val will be stored in the
-> > >   regmap_read pointer and will return 0. If .mdio_read_c45 returns
-> > >   any error, then the regmap_read will return such error.
-> > > 
-> > > With support_encoded_addr enabled, also C22 will encode the address in
-> > > the regmap address and .mdio_read/write will called accordingly similar
-> > > to C45 operation.  
-> > 
-> > This driver's orginal goal is to address the case where we have a
-> > PHY-like device that has the same register layout and behaviour as a
-> > C22 PHY, but where the registers are not accesses through MDIO (MMIO
-> > for example, as in altera-tse or dwmac-socfpga, or potentially SPI even
-> > though  there's no example upstream).
-> > 
-> > What is done here is quite different, I guess it could work if we have
-> > MMIO C45 phys that understand the proposed encoding, but I don't really
-> > understand the dance where C45 accesses are wrapped by this mdio-regmap
-> > driver into regmap accesss, but the regmap itself converts it back to
-> > C45 accesses. Is it just so that it fits well with MFD ?  
-> 
-> The main task of this wrapping is to remove from the dev side having to
-> handle the encode/decode part. regmap address is still a single value
-> but if a phy is mmio mapped is difficult to support c45 since you need 3
-> different values (phy id, mmd and addr)
-> 
-> With this implementation a c45 that is mmio mapped can implement
-> whatever way he wants to configure each parameter for read/write
-> operation.
-> 
-> Example the ecoding might be on different mask and with the additional
-> function it can be reorganized following the specific mask.
-> 
-> > 
-> > I'm not really against that, it still converts mdio access to regmap so
-> > there's that, but is there a way to elaborate or document somewhere why
-> > we need to do go through C45 -> regmap -> C45 instead of just
-> > writing a mii_bus driver in the first place ?  
-> 
-> This was askek to prevent creating additional ""trivial"" mdio driver
-> that would all do the same task. Since mdio-regmap was already in place
-> it could have been extended with a more generic approach.
+Clean up random number reading by adding a local shorthand variable for a
+struct device pointer used on multiple Runtime PM functions. The changes
+are very similar in all three drivers.
 
-Ah yes that's the point I was missing, I've browsed more in depth and
-indeed in V11 Vlad suggested to use this.
+Sakari Ailus (3):
+  hwrng: atmel - Add a local variable for struct device pointer
+  hwrng: mtk - Add a local variable for struct device pointer
+  hwrng: npcm - Add a local variable for struct device pointer
 
-> Any hint on where to better document this?
+ drivers/char/hw_random/atmel-rng.c | 9 +++++----
+ drivers/char/hw_random/mtk-rng.c   | 7 ++++---
+ drivers/char/hw_random/npcm-rng.c  | 7 ++++---
+ 3 files changed, 13 insertions(+), 10 deletions(-)
 
-Given the simplicity of the driver, I think this commit log is good
-enough then :)
+-- 
+2.39.5
 
-Let's go for it and hopefully this can be reused elsewhere !
-
-Reviewed-by: Maxime Chevallier <maxime.chevallier@bootlin.com>
-
-Maxime
 
