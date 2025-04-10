@@ -4,102 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC42FC3601E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 11:18:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA51AC369A8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 11:19:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
-	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CdUAxzWtLeB6HjxCg5m7G0qo3TL8BAYNXQpF7s4o0Vo=; b=rI5TQ/MYzKWM94TmHd9XuLI9aa
-	riWLxotel1Bj6FpSacbY9hi0iPDkwYnoiyeasV+DoUkFjg9bMZWGXlYVZxO3C6AOvw4iwOGRu/JIj
-	vkr3njDa3q5SUFw9X64Hx09Y61MhjhlHt8IE7L3qZpPfPi2lZsJkPJMLc1yysgz9Qs+6IQ+YjD09V
-	igK7LjuGQS70ek4H4/SBdMXbN653vtJq08r9kCuRGYL7U3L+j2gCd7yUcgOUwct9zUV+lruERUNZO
-	K7G3DoL4nVa67M8vVGDo0iuQSmzKb0fgjqG7vYEJLKTuAE3Ng63avd9BipW2F57krZvnAXxOSHarV
-	G4CUTm6g==;
+	Content-Type:Subject:References:In-Reply-To:Message-Id:To:From:Date:
+	MIME-Version:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=V0yBdNIFiNFE1FpbrRAP6wKPm7LpSS3P6fwzuoGhPPM=; b=nadgVP6GO1xwbwbAlTMFQsg7mP
+	uX7R2fpeTBqbc1Fp6a6M5zsBpgsFXHGsCSU5x+Q8lkBcYJDrc/Tsm6/ZMqPGzesJlsEeqw19gm4FE
+	zv7Jhd3aTRgxb5jGOoUYqfcXrxx09Wo7CqMbHMaiu+K53wgVfNpOkD/ZEzACxusYvzEPl16ldo0UU
+	j6j9D+6TcfExPA1K3FDvkzTWdfGBWzNW+eVweqSMhokXcKBxxVdMazKPvFu/LzHFpn4/e5JPofXYh
+	IEfXuAI4lBXrxt2OvaSkl3/1b5MOcnU0BhkqxOJglRTaaefIy4tKC9HHAJcvurmCkMx+wxC8RbTp5
+	PX4w0kXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2pvd-0000000AFdC-0DPx;
-	Thu, 10 Apr 2025 11:18:41 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1u2pw9-0000000AGKL-3aYt;
+	Thu, 10 Apr 2025 11:19:13 +0000
+Received: from fout-b1-smtp.messagingengine.com ([202.12.124.144])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2om1-0000000A28I-0mX6;
-	Thu, 10 Apr 2025 10:04:42 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-43cebe06e9eso4610185e9.3;
-        Thu, 10 Apr 2025 03:04:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744279480; x=1744884280; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=CdUAxzWtLeB6HjxCg5m7G0qo3TL8BAYNXQpF7s4o0Vo=;
-        b=UEBKXnRCc35MWvVAjh8/ZuR8Y7NOv5uGQeeyWxdwLR/goHYhbO0PIMqqjIpaljE6LW
-         ut/oaP9yV8DMyFjSCxSdTrdK6Oq2kIY2mrT8QZkoNLsc/mNF0WJ15D+RFsjrBbw7HcVV
-         V/nWvCl/x5wCF17UFgB6EvcguD/dgkBOfljJICqz9kogMoQu3Sk/3tQIXh3Kv5kxuR/y
-         nuSxEwsOb4SaTyT3s7+68JgKMwQRmkrbuZEMKZoCNvJOGEQd7I6dEpGpfKG/pT9e8B/7
-         +kcse/BUrcJu6iEoiVp7MIKi674tGGWx3fhuR4irrYO9gHB2uCUZZowIyNBzqqec33cx
-         xpPg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744279480; x=1744884280;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=CdUAxzWtLeB6HjxCg5m7G0qo3TL8BAYNXQpF7s4o0Vo=;
-        b=t1iDLeyN+nbrHCy5fiTfwz9iuo0BC1Q4ytzh8OAf451fcCmcuvuUICIHrQ8aZgSAa9
-         BZLteKoO/l7wWcOxVGu7lpb6/hgpurO7E+CS+qgzUVXL7sec8dRmcOF37NyIhKNrV+4P
-         nnDkfZAmLF1SwAxb/hVZodl55H6DXKY8G8y3K8zHCeE/i7XKiXkd1rDSwVU5+CzVaT/T
-         tDfo2yBVQ+y1dBITKTiCY3c7jkoWbq1JOMSxwnQYWh3ol3Mmquc5osFdaSSscO5XGpK/
-         yOI1+0Cb71OUm92W9rtBl6B/OL+mFS2wimYY3Rxs1jDR8uMHBZOPMwFnh6bnu4JOP2eS
-         l+0w==
-X-Forwarded-Encrypted: i=1; AJvYcCUGPGIAwHRUkKZq/Pkg7ba3NjqzPO2lOS/ivuqGxTBNJhxc5GWkBm+nti/QdTl5UB1VB+uOdKDU+p4Fz+ydDevf@lists.infradead.org, AJvYcCXe+e3mNESMpbYVqxoRgyRlDigfNqZVufAqsaQXeXTOMyYmbhKSQJtjAwh61hlKxZk9B1nCE3q3wVdNmFALFTc=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw9pD5D47soR1B98/dIDej0fGITGgUp7PkRupTZAFklpYBcMfbV
-	V/ZaR1hW3DVfdm1exJ7GKUaTmovofsbM523aBRQozNCor3W09A6Z
-X-Gm-Gg: ASbGncsBkQ4ykI53ubGsEiQF9iQvp5KTjeTqSfuV4MLhvbYQsyc3GYPYEHqpO0gKeKX
-	+hvY6xc+QH6TE16gZXVxurWHkWF8H1Brzc61i/O9r7ADiMus4Be8Oz0pKnhwp9rQRCOfW7fq+Vf
-	HwE3X6QjlwqdIETJGCznXSmTaoyvS7AY93lDoXeXnFgPGsk7a+tcH/82gvsPx4knVVhnniTQ0r5
-	cHXXdGJrFrAG8vjlJ5l7+2Dsms5EZaSA1+iNYK1aRPcSBQm4xBBELbsPGKnp7HqPbPolcCXdwy5
-	hd+0DpzUmzBjOi2J6EVgmu5fqEMZDyznxYsaPxfFJDr3FgTZrQwORGfQEDBPRxePf4rkAI5fK3A
-	j9byZtDf+DQ==
-X-Google-Smtp-Source: AGHT+IGYoTyBBqFICuMkH3mR4Fg8hmdezzL5DfQ1KcqV7+Ty4VNQeL8aQBID3P+joTDw2WBxubY1eQ==
-X-Received: by 2002:a05:600c:4f4e:b0:43c:fae1:5151 with SMTP id 5b1f17b1804b1-43f2d9599efmr19305005e9.25.1744279479484;
-        Thu, 10 Apr 2025 03:04:39 -0700 (PDT)
-Received: from localhost.localdomain (93-34-88-225.ip49.fastwebnet.it. [93.34.88.225])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-43f2066d109sm50193065e9.20.2025.04.10.03.04.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Apr 2025 03:04:39 -0700 (PDT)
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Qingfang Deng <dqfext@gmail.com>,
-	SkyLake Huang <SkyLake.Huang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Randy Dunlap <rdunlap@infradead.org>,
-	Simon Horman <horms@kernel.org>,
-	Arnd Bergmann <arnd@arndb.de>,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [net-next PATCH v2 2/2] net: phy: mediatek: add Airoha PHY ID to SoC driver
-Date: Thu, 10 Apr 2025 12:04:04 +0200
-Message-ID: <20250410100410.348-2-ansuelsmth@gmail.com>
-X-Mailer: git-send-email 2.48.1
+	id 1u2pBz-0000000A6Rt-1Hhm;
+	Thu, 10 Apr 2025 10:31:32 +0000
+Received: from phl-compute-05.internal (phl-compute-05.phl.internal [10.202.2.45])
+	by mailfout.stl.internal (Postfix) with ESMTP id 3584C114010E;
+	Thu, 10 Apr 2025 06:31:27 -0400 (EDT)
+Received: from phl-imap-11 ([10.202.2.101])
+  by phl-compute-05.internal (MEProxy); Thu, 10 Apr 2025 06:31:27 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
+	:content-transfer-encoding:content-type:content-type:date:date
+	:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to; s=fm1; t=1744281087;
+	 x=1744367487; bh=V0yBdNIFiNFE1FpbrRAP6wKPm7LpSS3P6fwzuoGhPPM=; b=
+	Z5KSZ7nJVbdwy9BhFww8lYpEdyJhzZWk9XLxTa+UG6uUBBj2rdqhWZasS+ErZ8br
+	mmUPLlBEmpfYJIDD7uVeMUmMYiBjyGZgs/HwTvPomyyTjU/hsaS+Tj3qnpELuLOW
+	UiSzIvC0FQbWRGhRVBBXcm5geduHs3X895U2faeoAz/I5BqKN9n2YdT7xQ7kbv8i
+	kcvro6iOqTcI77aVWnuwZOEp8rXsVe0E9jGXy+BcNgQKQN2DZZf6LzTqj1+gG7Eb
+	o6eQdAVs+cHkzQZfEL3E9l7Q1Dqnhh2Kq66Nt7WPvABBc7ABXFmP/yijnqgrsiLE
+	QdcVLp7yRrgF3tTiOEeMiw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-transfer-encoding:content-type
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
+	:x-me-sender:x-sasl-enc; s=fm2; t=1744281087; x=1744367487; bh=V
+	0yBdNIFiNFE1FpbrRAP6wKPm7LpSS3P6fwzuoGhPPM=; b=UGIH6PgKM3vhT2VIE
+	aBFuE80+Eqjo+S2oIkcsH9rO6OwI2i3iLbm8V+IIiqH0iRGxiyvau0fMgSetdXrC
+	vPTxWhYmJRX7ieCba6fEtWSxY5nLKN9h5hcPaR2XNdUEKmXCiPv3IXWJmLv09J7w
+	UZ1zoymlOy0QxnMDOpVjw1XjPQ7a7nHmdxM5CMx77iaEGbSpb/l3nljsOmUCZOAj
+	jXoaw5SEJ+wb64IkHMKhSZ4pEvqjMSNEAf76Rasxzb+zsVAm1gNIJSByrqa2X7Ki
+	pFnGJ1GHzJvrrYnvjw6iZDr17tCrP4klibJT2pQKIsXB8MJzbkXrtA06Bd0Z9B3W
+	DEUtA==
+X-ME-Sender: <xms:_Z33Z0X5BqMn_cSrL6aNS3-Obxa46Z30GQgcGGj5mGDQ2U_QPS42pw>
+    <xme:_Z33Z4k8fpfX5TEMQkjQr9zko--N8gtzQjf_0X_bMjOnXUkuE--Xg7CRb7_hv1H9e
+    i65puKGMioFG0Teklw>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvtdekieejucetufdoteggodetrf
+    dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggv
+    pdfurfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpih
+    gvnhhtshculddquddttddmnecujfgurhepofggfffhvffkjghfufgtgfesthejredtredt
+    tdenucfhrhhomhepfdetrhhnugcuuegvrhhgmhgrnhhnfdcuoegrrhhnugesrghrnhgusg
+    druggvqeenucggtffrrghtthgvrhhnpefhkeeltdfffefhgffhteetheeuhffgteeghfdt
+    ueefudeuleetgfehtdejieffhfenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmh
+    epmhgrihhlfhhrohhmpegrrhhnugesrghrnhgusgdruggvpdhnsggprhgtphhtthhopedu
+    ledpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtoheplhhinhhugiesrghrmhhlihhnuh
+    igrdhorhhgrdhukhdprhgtphhtthhopegrnhhgvghlohhgihhorggttghhihhnohdruggv
+    lhhrvghgnhhosegtohhllhgrsghorhgrrdgtohhmpdhrtghpthhtohepuggrvhgvmhesug
+    grvhgvmhhlohhfthdrnhgvthdprhgtphhtthhopegrnhhsuhgvlhhsmhhthhesghhmrghi
+    lhdrtghomhdprhgtphhtthhopeguqhhfvgigthesghhmrghilhdrtghomhdprhgtphhtth
+    hopehhkhgrlhhlfigvihhtudesghhmrghilhdrtghomhdprhgtphhtthhopehmrghtthhh
+    ihgrshdrsghgghesghhmrghilhdrtghomhdprhgtphhtthhopegvughumhgriigvthesgh
+    hoohhglhgvrdgtohhmpdhrtghpthhtoheprhguuhhnlhgrphesihhnfhhrrgguvggrugdr
+    ohhrgh
+X-ME-Proxy: <xmx:_Z33Z4Y0z37CzBhOWyz0En_d25z8H-7acC6HizYeN82BV-W20FZqUA>
+    <xmx:_Z33ZzUt1QtGrN8Djm48g4a2K4XfLgUtr5tKUMuMsIgGpV6FRSmoSw>
+    <xmx:_Z33Z-mhgW8KNjQWLry_fGsAqqkVl8MtKBxcdRwxElndIhjGUvRyAQ>
+    <xmx:_Z33Z4fiW8MWbivsSOLRkzI2hBWPm-P9xIDG-hopMChnOXfz_poiPA>
+    <xmx:_533Z4eNW4OfL-TJflZ4WA5fweG31XUM5p8BeO5Qwv_WwyvyJp7acXfw>
+Feedback-ID: i56a14606:Fastmail
+Received: by mailuser.phl.internal (Postfix, from userid 501)
+	id 8E3E72220073; Thu, 10 Apr 2025 06:31:25 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
+MIME-Version: 1.0
+X-ThreadId: T2340d8c52bdbc82d
+Date: Thu, 10 Apr 2025 12:31:05 +0200
+From: "Arnd Bergmann" <arnd@arndb.de>
+To: "Christian Marangi" <ansuelsmth@gmail.com>,
+ "Andrew Lunn" <andrew@lunn.ch>, "Heiner Kallweit" <hkallweit1@gmail.com>,
+ "Russell King" <linux@armlinux.org.uk>,
+ "David S . Miller" <davem@davemloft.net>,
+ "Eric Dumazet" <edumazet@google.com>, "Jakub Kicinski" <kuba@kernel.org>,
+ "Paolo Abeni" <pabeni@redhat.com>, "Daniel Golle" <daniel@makrotopia.org>,
+ "Qingfang Deng" <dqfext@gmail.com>,
+ "SkyLake Huang" <SkyLake.Huang@mediatek.com>,
+ "Matthias Brugger" <matthias.bgg@gmail.com>,
+ "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
+ "Randy Dunlap" <rdunlap@infradead.org>, "Simon Horman" <horms@kernel.org>,
+ Netdev <netdev@vger.kernel.org>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Message-Id: <c108aee9-f668-4cd7-b276-d5e0a266eaa4@app.fastmail.com>
 In-Reply-To: <20250410100410.348-1-ansuelsmth@gmail.com>
 References: <20250410100410.348-1-ansuelsmth@gmail.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Subject: Re: [net-next PATCH v2 1/2] net: phy: mediatek: permit to compile test GE SOC
+ PHY driver
+Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250410_030441_223671_19079257 
-X-CRM114-Status: GOOD (  20.98  )
+X-CRM114-CacheID: sfid-20250410_033131_826097_25EFF328 
+X-CRM114-Status: GOOD (  12.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,137 +125,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Airoha AN7581 SoC ship with a Switch based on the MT753x Switch embedded
-in other SoC like the MT7581 and the MT7988. Similar to these they
-require configuring some pin to enable LED PHYs.
+On Thu, Apr 10, 2025, at 12:04, Christian Marangi wrote:
+> When commit 462a3daad679 ("net: phy: mediatek: fix compile-test
+> dependencies") fixed the dependency, it should have also introduced
+> an or on COMPILE_TEST to permit this driver to be compile-tested even if
+> NVMEM_MTK_EFUSE wasn't selected
 
-Add support for the PHY ID for the Airoha embedded Switch and define a
-simple probe function to toggle these pins. Also fill the LED functions
-and add dedicated function to define LED polarity.
+Why does this matter? NVMEM_MTK_EFUSE can be enabled for both
+allmodconfig and randconfig builds on any architecture, so you
+get build coverage either way, it's just a little less likely
+to be enabled in randconfig I guess?
 
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
-Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
----
-Changes v2:
-- Add Reviewed-by tag
-- Address suggested dependency from Russell
+> diff --git a/drivers/net/phy/mediatek/Kconfig b/drivers/net/phy/mediatek/Kconfig
+> index 2a8ac5aed0f8..6a4c2b328c41 100644
+> --- a/drivers/net/phy/mediatek/Kconfig
+> +++ b/drivers/net/phy/mediatek/Kconfig
+> @@ -15,8 +15,7 @@ config MEDIATEK_GE_PHY
+> 
+>  config MEDIATEK_GE_SOC_PHY
+>  	tristate "MediaTek SoC Ethernet PHYs"
+> -	depends on (ARM64 && ARCH_MEDIATEK) || COMPILE_TEST
+> -	depends on NVMEM_MTK_EFUSE
+> +	depends on (ARM64 && ARCH_MEDIATEK && NVMEM_MTK_EFUSE) || COMPILE_TEST
+>  	select MTK_NET_PHYLIB
+>  	help
+>  	  Supports MediaTek SoC built-in Gigabit Ethernet PHYs.
+> -- 
 
- drivers/net/phy/mediatek/Kconfig      |  4 +-
- drivers/net/phy/mediatek/mtk-ge-soc.c | 62 +++++++++++++++++++++++++++
- 2 files changed, 65 insertions(+), 1 deletion(-)
+I would expect this to break the build with CONFIG_NVMEM=m
+and MEDIATEK_GE_SOC_PHY=y.
 
-diff --git a/drivers/net/phy/mediatek/Kconfig b/drivers/net/phy/mediatek/Kconfig
-index 6a4c2b328c41..4308002bb82c 100644
---- a/drivers/net/phy/mediatek/Kconfig
-+++ b/drivers/net/phy/mediatek/Kconfig
-@@ -15,7 +15,9 @@ config MEDIATEK_GE_PHY
- 
- config MEDIATEK_GE_SOC_PHY
- 	tristate "MediaTek SoC Ethernet PHYs"
--	depends on (ARM64 && ARCH_MEDIATEK && NVMEM_MTK_EFUSE) || COMPILE_TEST
-+	depends on ARM64 || COMPILE_TEST
-+	depends on ARCH_AIROHA || (ARCH_MEDIATEK && NVMEM_MTK_EFUSE) || \
-+		   COMPILE_TEST
- 	select MTK_NET_PHYLIB
- 	help
- 	  Supports MediaTek SoC built-in Gigabit Ethernet PHYs.
-diff --git a/drivers/net/phy/mediatek/mtk-ge-soc.c b/drivers/net/phy/mediatek/mtk-ge-soc.c
-index 175cf5239bba..fd0e447ffce7 100644
---- a/drivers/net/phy/mediatek/mtk-ge-soc.c
-+++ b/drivers/net/phy/mediatek/mtk-ge-soc.c
-@@ -11,8 +11,11 @@
- #include "../phylib.h"
- #include "mtk.h"
- 
-+#define MTK_PHY_MAX_LEDS			2
-+
- #define MTK_GPHY_ID_MT7981			0x03a29461
- #define MTK_GPHY_ID_MT7988			0x03a29481
-+#define MTK_GPHY_ID_AN7581			0x03a294c1
- 
- #define MTK_EXT_PAGE_ACCESS			0x1f
- #define MTK_PHY_PAGE_STANDARD			0x0000
-@@ -1406,6 +1409,53 @@ static int mt7981_phy_probe(struct phy_device *phydev)
- 	return mt798x_phy_calibration(phydev);
- }
- 
-+static int an7581_phy_probe(struct phy_device *phydev)
-+{
-+	struct mtk_socphy_priv *priv;
-+	struct pinctrl *pinctrl;
-+
-+	/* Toggle pinctrl to enable PHY LED */
-+	pinctrl = devm_pinctrl_get_select(&phydev->mdio.dev, "gbe-led");
-+	if (IS_ERR(pinctrl))
-+		dev_err(&phydev->mdio.bus->dev,
-+			"Failed to setup PHY LED pinctrl\n");
-+
-+	priv = devm_kzalloc(&phydev->mdio.dev, sizeof(*priv), GFP_KERNEL);
-+	if (!priv)
-+		return -ENOMEM;
-+
-+	phydev->priv = priv;
-+
-+	return 0;
-+}
-+
-+static int an7581_phy_led_polarity_set(struct phy_device *phydev, int index,
-+				       unsigned long modes)
-+{
-+	u32 mode;
-+	u16 val;
-+
-+	if (index >= MTK_PHY_MAX_LEDS)
-+		return -EINVAL;
-+
-+	for_each_set_bit(mode, &modes, __PHY_LED_MODES_NUM) {
-+		switch (mode) {
-+		case PHY_LED_ACTIVE_LOW:
-+			val = MTK_PHY_LED_ON_POLARITY;
-+			break;
-+		case PHY_LED_ACTIVE_HIGH:
-+			val = 0;
-+			break;
-+		default:
-+			return -EINVAL;
-+		}
-+	}
-+
-+	return phy_modify_mmd(phydev, MDIO_MMD_VEND2, index ?
-+			      MTK_PHY_LED1_ON_CTRL : MTK_PHY_LED0_ON_CTRL,
-+			      MTK_PHY_LED_ON_POLARITY, val);
-+}
-+
- static struct phy_driver mtk_socphy_driver[] = {
- 	{
- 		PHY_ID_MATCH_EXACT(MTK_GPHY_ID_MT7981),
-@@ -1441,6 +1491,17 @@ static struct phy_driver mtk_socphy_driver[] = {
- 		.led_hw_control_set = mt798x_phy_led_hw_control_set,
- 		.led_hw_control_get = mt798x_phy_led_hw_control_get,
- 	},
-+	{
-+		PHY_ID_MATCH_EXACT(MTK_GPHY_ID_AN7581),
-+		.name		= "Airoha AN7581 PHY",
-+		.probe		= an7581_phy_probe,
-+		.led_blink_set	= mt798x_phy_led_blink_set,
-+		.led_brightness_set = mt798x_phy_led_brightness_set,
-+		.led_hw_is_supported = mt798x_phy_led_hw_is_supported,
-+		.led_hw_control_set = mt798x_phy_led_hw_control_set,
-+		.led_hw_control_get = mt798x_phy_led_hw_control_get,
-+		.led_polarity_set = an7581_phy_led_polarity_set,
-+	},
- };
- 
- module_phy_driver(mtk_socphy_driver);
-@@ -1448,6 +1509,7 @@ module_phy_driver(mtk_socphy_driver);
- static const struct mdio_device_id __maybe_unused mtk_socphy_tbl[] = {
- 	{ PHY_ID_MATCH_EXACT(MTK_GPHY_ID_MT7981) },
- 	{ PHY_ID_MATCH_EXACT(MTK_GPHY_ID_MT7988) },
-+	{ PHY_ID_MATCH_EXACT(MTK_GPHY_ID_AN7581) },
- 	{ }
- };
- 
--- 
-2.48.1
+The normal thing here would be to have a dependency on
+CONFIG_NVMEM in place of the NVMEM_MTK_EFUSE dependency,
+or possible on 'NVMEM || !NVMEM' if you want to make it
+more likely to be enabled in randconfig builds.
 
+       Arnd
 
