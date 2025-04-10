@@ -4,59 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CBE3C369A9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 16:31:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 908AFC3601E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 16:36:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CNiqWei6bVR2lcSyh/W3av+DrOCPLtgDwruDBvw5w8o=; b=3sNpNKRWpX1H1cYfyLSyOkytZr
-	AjYZG3F4B0mK0Xax9KhfvtnU/zEAXnoDwAIkkF5loSUrNM9KOl09la7htIn4YELWSYGzwM1FzBfjW
-	PxyvXR20b/u/iDbhUqaRaXdsa3e1DrkUmOWY2oSd3B5PoUHxbD9ctNF7dfNHeyeF79THnJQToHF3A
-	UKCP92YEXvP3JGQHl8SDwIDSOuFsBN8OicOJE077k6BfpjMeTL19dfvzuQ+2Qwu8aJjW465DK1/Pw
-	vEGFjQ//sPZWTWbbLqZ72hkfwPq2hzOsrogjGP+7dNoXXFHfQ/PpPRhEWzmb+fpQjH2bXHgKD/Re5
-	qNS7DY5Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=jr8GIrdRlIpCc54qo16KakVcosmAmbQYvtEy95rW0Yc=; b=U57IriThYWmq2r
+	/tLsnN8ARgxpjehF8e1geGPIImtXtkMYzri6PJBnkFoJPb/S16mc3v7CmbPWg7SKXokDa9mvP9vF/
+	ZtmH8T0WIBPqu9mVyIT1CdNDt78BvYwODx1H7CGZ/HoFK/A5Z/L5KtAK573ebo9xEUO4tDSkNtY74
+	PWjB6PUH4lO44Q9K8vC0T2YHVmkXo4tlX1Vf+euOa323P39h/Zp322ZYXfmAdftxl5BAn//mX+YIa
+	EO9VhNfGkqQ5zUR9XuzFDZ/IAYh6uKRqBATx9X+waCArVDLdzDQ5F8RetN7eo/QvQDCMQulQKMz3C
+	xFy5lusKBwa3Ol67TfaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2uo2-0000000BCqq-1JpA;
-	Thu, 10 Apr 2025 16:31:10 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1u2utN-0000000BEPi-2d0a;
+	Thu, 10 Apr 2025 16:36:41 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2trX-0000000B1oj-3jZg;
-	Thu, 10 Apr 2025 15:30:43 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id CECFE68448;
-	Thu, 10 Apr 2025 15:30:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 22F3DC4CEDD;
-	Thu, 10 Apr 2025 15:30:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744299042;
-	bh=5zcV/CG8AMLAy9luku1LD5mAKplEIFPVlXKn8cKy+bQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=sQLDv9fwNtDQlftYK63Xa1crTz3K3Nb0427ADYfWdru0Tigrvr36sJaABKHPdTC71
-	 hAp8Y5dINwauilTu0E+12AsgghiralaNUR0SqRMla/1XR/Ktnr2GgVfjGCjXazY6Xq
-	 Y7M4I6Nt3PGeHCu7f682d50yN1rMzvvC3ahQQOn5VdhdpUM0FtdCTKwDoc5AI4J5+d
-	 eL4wHuU93NEBJxoRY5BTPkGCUTnuAAUG8EffgU3+4o+wsHrcZiu+yQ25ZPtJD+Txap
-	 N804kSYEPBb14q0T8oF6BfXE0OW1ni0A27NHMAVJn2HBYw5X2aNpf4LTyXG9AUtlK8
-	 VnQbMhmImmIGA==
-Date: Thu, 10 Apr 2025 16:30:38 +0100
-From: Simon Horman <horms@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net-next] net: airoha: Add matchall filter offload support
-Message-ID: <20250410153038.GT395307@horms.kernel.org>
-References: <20250407-airoha-hw-rx-ratelimit-v1-1-917d092d56fd@kernel.org>
+	id 1u2u0Z-0000000B3R1-1eNW;
+	Thu, 10 Apr 2025 15:40:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1744299601;
+	bh=tPergy+7vln1jvxL4YHdDb/GQY/NPfI0GdgYCslJK/k=;
+	h=From:Subject:Date:To:Cc:From;
+	b=QhZrEgNcjDYjrV1DCwmAHSqUfYZ/XvszBg2F0NauJeHOYpmVscW7dcPcq8LyY385r
+	 LfelS4Ax3Ne5siHXzdb4cesGA8IWTAALhutIVtXaXOmJyz6hfRGQ/ikPEroaOa5tEv
+	 9znFNcYbh6VxeYQRwvxofYNOzYE7B2D6CNRakWlWzihgkHyRZwGOuWKY6LjPutGiJI
+	 usqSjAchJscFEs7AbDUdpxyEvFM6eEnksIm+JJnbNxSC6tgMoZZ6szeUCqMB0X/8SZ
+	 D0hlaoXnS0RA8G6Zj3IhgaaY2oHjPasymn3y8RRildjMaSjVyla1D8yqzoxE4oNZ+U
+	 +WIJPoqHUdOAw==
+Received: from [192.168.13.180] (unknown [IPv6:2606:6d00:11:e976::5ac])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E092B17E03B6;
+	Thu, 10 Apr 2025 17:39:59 +0200 (CEST)
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Subject: [PATCH v2 0/5] Add manual request completion to the MediaTek
+ VCodec driver
+Date: Thu, 10 Apr 2025 11:39:55 -0400
+Message-Id: <20250410-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v2-0-5b99ec0450e6@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250407-airoha-hw-rx-ratelimit-v1-1-917d092d56fd@kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAEvm92cC/62OWw6CMBBFt2L6bQ2Ul/rlPgxphjLIRGixLVVD2
+ LuVxB34eW7uzLkLc2gJHTvvFmYxkCOjI4j9jqke9A05tZGZSESRZKngDhtwnkB3ltQdeVCmRSV
+ H0DMM0uJjRuelMuM0oI/P5JN8L50Hj7GketLIy6wUquqOCaQ5i6bJYkevbcW1jtyT88a+t1Eh/
+ aY/f/4Xf0h5wgsUVQVZW56K5qLMMEBjLBziJavXdf0A871mERoBAAA=
+X-Change-ID: 20250312-sebastianfricke-vcodec_manual_request_completion_with_state_machine-6362c7f80a14
+To: Sakari Ailus <sakari.ailus@linux.intel.com>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Hans Verkuil <hverkuil@xs4all.nl>, Tiffany Lin <tiffany.lin@mediatek.com>, 
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
+ Yunfei Dong <yunfei.dong@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, kernel@collabora.com, 
+ linux-media@vger.kernel.org, 
+ Sebastian Fricke <sebastian.fricke@collabora.com>, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Hans Verkuil <hverkuil@xs4all.nl>
+X-Mailer: b4 0.14.2
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250410_084003_595691_90338A90 
+X-CRM114-Status: GOOD (  24.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,23 +88,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 07, 2025 at 09:59:04PM +0200, Lorenzo Bianconi wrote:
-> Introduce tc matchall filter offload support in airoha_eth driver.
-> Matchall hw filter is used to implement hw rate policing via tc action
-> police:
-> 
-> $tc qdisc add dev eth0 handle ffff: ingress
-> $tc filter add dev eth0 parent ffff: matchall action police \
->  rate 100mbit burst 1000k drop
-> 
-> Curennet implementation supports just drop/accept as exceed/notexceed
+This set introduces the manual request completion API by the author Hans
+Verkuil and implements it within the MediaTek VCodec driver.
 
-nit: Current
+Why is this needed?
 
-> actions. Moreover, rate and burst are the only supported configuration
-> parameters.
-> 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+The VCodec driver supports a hardware containing two separate cores, the
+CORE and the LAT, these are working in a serial manner without this
+series. This series solves two issues, the first being that the current
+code runs into a problem, that occurs when the last request object is
+unbound from the request, before the v4l2_ctrl_request_complete function
+is called, causing an implicit transition to the COMPLETE state.
+This issues has been found in applications which didn't attach the
+controls for the very first request (which is supposed to enable the
+driver to sniff out the correct formats, etc.).
+The second issue is that the VCodec driver can not utilize the full
+performance of both cores, when the LAT core has to wait for the CORE
+core to finishing processing the decode. Thus by enabling the LAT core
+to process the next bitstream, right after processing the last we can
+increase the performance of the driver.
+With the manual request completion API, we can separate the
+completion of the request objects of a request and from the completion
+of the request itself, which allows to send a new bitstream after the
+LAT core has processed the previous and while the CORE core decodes the
+previous bitstream, so both cores can work in a parallel manner, but
+while keeping the request alive during both steps.
 
-...
+A new state machine for the VCodec driver ensures, that all necessary
+processing steps are handled in the correct order depending on the
+current step in the execution. This state machine has been added to each
+request to ensure that new requests do not alter the state of still
+ongoing requests.
+
+Additionally, this series adds a small patch to avoid trying to handle a
+scenario, which is not supported by the hardware and thus runs into a
+timeout.
+
+Signed-off-by: Sebastian Fricke <sebastian.fricke@collabora.com>
+Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+---
+Changes in v2:
+- The implementation patch for V1 was using an outdated version of the
+  "media: vcodec: Implement manual request completion" patch, update it
+  to the most recent one which doesn't use the state machine globally
+  but instead per request, thus having no conflicts between multiple
+  concurrent threads
+- The kernel test robot found an issue because a function which I only
+  use locally was defined without the static keyword
+- Link to v1: https://lore.kernel.org/r/20250314-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v1-0-5e277a3d695b@collabora.com
+
+---
+Hans Verkuil (3):
+      media: mc: add manual request completion
+      media: vicodec: add support for manual completion
+      media: mc: add debugfs node to keep track of requests
+
+Nicolas Dufresne (1):
+      media: mtk-vcodec: Don't try to decode 422/444 VP9
+
+Sebastian Fricke (1):
+      media: vcodec: Implement manual request completion
+
+ drivers/media/mc/mc-device.c                       | 30 ++++++++++
+ drivers/media/mc/mc-devnode.c                      |  5 ++
+ drivers/media/mc/mc-request.c                      | 44 +++++++++++++-
+ .../mediatek/vcodec/common/mtk_vcodec_cmn_drv.h    | 13 ++++
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec.c       |  4 +-
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c   | 50 ++++++++++++++++
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h   | 19 ++++++
+ .../vcodec/decoder/mtk_vcodec_dec_stateless.c      | 69 ++++++++++++++--------
+ drivers/media/test-drivers/vicodec/vicodec-core.c  | 21 +++++--
+ include/media/media-device.h                       |  9 +++
+ include/media/media-devnode.h                      |  4 ++
+ include/media/media-request.h                      | 38 +++++++++++-
+ 12 files changed, 274 insertions(+), 32 deletions(-)
+---
+base-commit: 9ddc3d6c16ea2587898a315f20f7b8fbd791dc1b
+change-id: 20250312-sebastianfricke-vcodec_manual_request_completion_with_state_machine-6362c7f80a14
+
+Best regards,
+-- 
+Nicolas Dufresne <nicolas.dufresne@collabora.com>
+
 
