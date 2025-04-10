@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 023BEC369AB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 17:09:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72880C3601E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 17:09:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JPAuVhlZ3a4pSuK39vpWOUBZ0SGBWWQUCJXUHbBxpOo=; b=n+Xdmp67O1QEFDC9EiY9cq4ibU
-	jpsrDxqUqSSaITmpeEW3fFn46/e+dNyLVHpgL5681RBZLNhqvKm7mylMFQ7HMvSm/2HrpES8BHvNr
-	Nu6tLzpBfZYL+XLcKIh4Rd5ZYx/GcYaR4GVurXG1FnsddnIOWPIaQeK9ExCgffHomV9CGfDlx+fsH
-	wbUw/TntxSgitDN5bXXOuN7AMQ86NXHu0AA74xL6qiOhk+85/wQI8zUsh9xZ+tMTkRDXELubuxJj3
-	gONbg6iAmTQ2MBfIpVQBK1kVM2IDXhkwFc+Ojm9MiXvQt/r3sxqlOGaljWrDTUqpvaJJk9Ra4pffa
-	CKg5OMdg==;
+	bh=0i8ye0TgbRGta61NxSluRETGX8vYSDrQ9Wn0mCSRWNo=; b=XuLVIN6WcrTkuQ8R2qz/ZFpynG
+	LfMNRIzEjRMpbZ56M8vi92yxBOoqwcZVhCEGViXJ9Cg4ya+Q3hPRX06MqYl1BVt5UjkrKN98dnnhG
+	aRTZu5BmIhmBcUpI15lLUWDXpMsqxkhrt9rspAchMqozMDd8I9RzID7p20ko66ODS69ASECncPYh2
+	cRwiR2HOBiMhTrpngfapIFAV9GtdW8T1/0ztHZaUjMMCDKlJoZ5Dg2nStRp4vpAxGRyeGh8PFsmv4
+	ahXLhIvU5WixxdJJo/e2nWeljMOoew4JXyiS7gz26ehuycv2tIQHYNDgEI2x1WT+MWiG6WHZgBEj5
+	7yzTEqYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2vPU-0000000BKCy-00xI;
-	Thu, 10 Apr 2025 17:09:52 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1u2vPV-0000000BKFF-17bR;
+	Thu, 10 Apr 2025 17:09:53 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2u8P-0000000B56I-3TPv;
-	Thu, 10 Apr 2025 15:48:11 +0000
+	id 1u2u8T-0000000B57F-0EpN;
+	Thu, 10 Apr 2025 15:48:14 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7910C436FF;
-	Thu, 10 Apr 2025 15:48:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DDA26C4CEDD;
-	Thu, 10 Apr 2025 15:48:08 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id E3AD15C5B9B;
+	Thu, 10 Apr 2025 15:45:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 50FF4C4CEDD;
+	Thu, 10 Apr 2025 15:48:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744300089;
-	bh=HIIKA21HRG0UMoa6Z5akxw0Rd/PBeaBOvNKebLyM4Fo=;
+	s=k20201202; t=1744300090;
+	bh=8tfaaNZ4HrH7opoaFMg4/Qd0jHKomOYwuo5NwUKhvx0=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=NDuyjHuAfA6KjGorxG2uu7aOlrv9cSAfO+afdA6IkAmxInucrHnIseovaP9t5II0m
-	 WEz7WVg0CpzfebCU948awd0ZQYWGd26CUcmNyGgwMekzzuOjtl2t3erSWy0NrwsK01
-	 O9aVDq1O5lzEvp118vPWAaGTJL2aZ0GRDYuY+0y+5BefpFipNwJU8SA3QbSmrtm16D
-	 jtoVcxXu62TgBYgsFNxHw6DCt2wJ6lNKnJOiwoFw3rN4TOTSjFsxWqp/b7Lbb5pJ1q
-	 vAHEgDd4YWmKnC9K7XAW3kppXIg3wtlTHcJIz56fq4wS/0dDVRJPw0M1gvO+6y6LdY
-	 lPwe8Fo4bUENA==
+	b=F07Lc4bpt+yN+th4lZJNLUif9Vsbs8jnsVA6h1SEMAAxVrX+FL4/Au5KWenw+1DH9
+	 BH6yiYIZmka6TMCrTmOJ6M1rp46sGn4toqpLPa+fzTNNn8OBVUk5tm+MrmGeLGtp4v
+	 0t08uUIYAhHkGvs4IpQOEZEHXIojnzNcl2f+3yHjgP0JTy6xYRjxiWwtaTjbg95rz7
+	 /uEl+E10tBzh5CvL3m6w6qy/ck4AJQjiwbobS6qZG66/NYkbJ1QRHlGCA8SAlCgNUE
+	 Ud/S2sHTPErUfalr4V9fg1m5v0/lTQklRsHgcL77c5S3/NmmfVOtoujb6pTEDjlGaj
+	 WsGZ5T9YPKZbQ==
 From: "Rob Herring (Arm)" <robh@kernel.org>
-Date: Thu, 10 Apr 2025 10:47:37 -0500
-Subject: [PATCH v2 16/17] dt-bindings: arm/cpus: Add power-domains
- constraints
+Date: Thu, 10 Apr 2025 10:47:38 -0500
+Subject: [PATCH v2 17/17] dt-bindings: cpufreq: Drop redundant Mediatek
+ binding
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250410-dt-cpu-schema-v2-16-63d7dc9ddd0a@kernel.org>
+Message-Id: <20250410-dt-cpu-schema-v2-17-63d7dc9ddd0a@kernel.org>
 References: <20250410-dt-cpu-schema-v2-0-63d7dc9ddd0a@kernel.org>
 In-Reply-To: <20250410-dt-cpu-schema-v2-0-63d7dc9ddd0a@kernel.org>
 To: Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -84,12 +84,11 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, 
  linux-renesas-soc@vger.kernel.org, linux-mips@vger.kernel.org, 
  linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- Ulf Hansson <ulf.hansson@linaro.org>, Sudeep Holla <sudeep.holla@arm.com>
+ Sudeep Holla <sudeep.holla@arm.com>, Viresh Kumar <viresh.kumar@linaro.org>
 X-Mailer: b4 0.15-dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250410_084809_912348_E4DB3E10 
-X-CRM114-Status: UNSURE (   9.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250410_084813_221845_285DB32E 
+X-CRM114-Status: GOOD (  13.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,43 +103,274 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The "power-domains" and "power-domains-names" properties are missing any
-constraints. Add the constraints and drop the generic descriptions.
+The Mediatek CPUFreq binding document just describes properties from
+the CPU node which the driver uses. This is redundant as all the
+properties are described in the arm/cpus.yaml schema.
 
-Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+Signed-off-by: "Rob Herring (Arm)" <robh@kernel.org>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Ulf Hansson <ulf.hansson@linaro.org>
 Reviewed-by: Sudeep Holla <sudeep.holla@arm.com>
+Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
 ---
- Documentation/devicetree/bindings/arm/cpus.yaml | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
+ .../bindings/cpufreq/cpufreq-mediatek.txt          | 250 ---------------------
+ 1 file changed, 250 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/arm/cpus.yaml b/Documentation/devicetree/bindings/arm/cpus.yaml
-index 3846f13ded5b..3d61313ca00e 100644
---- a/Documentation/devicetree/bindings/arm/cpus.yaml
-+++ b/Documentation/devicetree/bindings/arm/cpus.yaml
-@@ -313,19 +313,15 @@ properties:
-     maxItems: 1
- 
-   power-domains:
--    description:
--      List of phandles and PM domain specifiers, as defined by bindings of the
--      PM domain provider (see also ../power_domain.txt).
-+    maxItems: 1
- 
-   power-domain-names:
-     description:
--      A list of power domain name strings sorted in the same order as the
--      power-domains property.
+diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
+deleted file mode 100644
+index e0a4ba599abc..000000000000
+--- a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
++++ /dev/null
+@@ -1,250 +0,0 @@
+-Binding for MediaTek's CPUFreq driver
+-=====================================
 -
-       For PSCI based platforms, the name corresponding to the index of the PSCI
-       PM domain provider, must be "psci". For SCMI based platforms, the name
-       corresponding to the index of an SCMI performance domain provider, must be
-       "perf".
-+    enum: [ psci, perf, cpr ]
- 
-   resets:
-     maxItems: 1
+-Required properties:
+-- clocks: A list of phandle + clock-specifier pairs for the clocks listed in clock names.
+-- clock-names: Should contain the following:
+-	"cpu"		- The multiplexer for clock input of CPU cluster.
+-	"intermediate"	- A parent of "cpu" clock which is used as "intermediate" clock
+-			  source (usually MAINPLL) when the original CPU PLL is under
+-			  transition and not stable yet.
+-	Please refer to Documentation/devicetree/bindings/clock/clock-bindings.txt for
+-	generic clock consumer properties.
+-- operating-points-v2: Please refer to Documentation/devicetree/bindings/opp/opp-v2.yaml
+-	for detail.
+-- proc-supply: Regulator for Vproc of CPU cluster.
+-
+-Optional properties:
+-- sram-supply: Regulator for Vsram of CPU cluster. When present, the cpufreq driver
+-	       needs to do "voltage tracking" to step by step scale up/down Vproc and
+-	       Vsram to fit SoC specific needs. When absent, the voltage scaling
+-	       flow is handled by hardware, hence no software "voltage tracking" is
+-	       needed.
+-- mediatek,cci:
+-	Used to confirm the link status between cpufreq and mediatek cci. Because
+-	cpufreq and mediatek cci could share the same regulator in some MediaTek SoCs.
+-	To prevent the issue of high frequency and low voltage, we need to use this
+-	property to make sure mediatek cci is ready.
+-	For details of mediatek cci, please refer to
+-	Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
+-- #cooling-cells:
+-	For details, please refer to
+-	Documentation/devicetree/bindings/thermal/thermal-cooling-devices.yaml
+-
+-Example 1 (MT7623 SoC):
+-
+-	cpu_opp_table: opp_table {
+-		compatible = "operating-points-v2";
+-		opp-shared;
+-
+-		opp-598000000 {
+-			opp-hz = /bits/ 64 <598000000>;
+-			opp-microvolt = <1050000>;
+-		};
+-
+-		opp-747500000 {
+-			opp-hz = /bits/ 64 <747500000>;
+-			opp-microvolt = <1050000>;
+-		};
+-
+-		opp-1040000000 {
+-			opp-hz = /bits/ 64 <1040000000>;
+-			opp-microvolt = <1150000>;
+-		};
+-
+-		opp-1196000000 {
+-			opp-hz = /bits/ 64 <1196000000>;
+-			opp-microvolt = <1200000>;
+-		};
+-
+-		opp-1300000000 {
+-			opp-hz = /bits/ 64 <1300000000>;
+-			opp-microvolt = <1300000>;
+-		};
+-	};
+-
+-	cpu0: cpu@0 {
+-		device_type = "cpu";
+-		compatible = "arm,cortex-a7";
+-		reg = <0x0>;
+-		clocks = <&infracfg CLK_INFRA_CPUSEL>,
+-			 <&apmixedsys CLK_APMIXED_MAINPLL>;
+-		clock-names = "cpu", "intermediate";
+-		operating-points-v2 = <&cpu_opp_table>;
+-		#cooling-cells = <2>;
+-	};
+-	cpu@1 {
+-		device_type = "cpu";
+-		compatible = "arm,cortex-a7";
+-		reg = <0x1>;
+-		operating-points-v2 = <&cpu_opp_table>;
+-	};
+-	cpu@2 {
+-		device_type = "cpu";
+-		compatible = "arm,cortex-a7";
+-		reg = <0x2>;
+-		operating-points-v2 = <&cpu_opp_table>;
+-	};
+-	cpu@3 {
+-		device_type = "cpu";
+-		compatible = "arm,cortex-a7";
+-		reg = <0x3>;
+-		operating-points-v2 = <&cpu_opp_table>;
+-	};
+-
+-Example 2 (MT8173 SoC):
+-	cpu_opp_table_a: opp_table_a {
+-		compatible = "operating-points-v2";
+-		opp-shared;
+-
+-		opp-507000000 {
+-			opp-hz = /bits/ 64 <507000000>;
+-			opp-microvolt = <859000>;
+-		};
+-
+-		opp-702000000 {
+-			opp-hz = /bits/ 64 <702000000>;
+-			opp-microvolt = <908000>;
+-		};
+-
+-		opp-1001000000 {
+-			opp-hz = /bits/ 64 <1001000000>;
+-			opp-microvolt = <983000>;
+-		};
+-
+-		opp-1105000000 {
+-			opp-hz = /bits/ 64 <1105000000>;
+-			opp-microvolt = <1009000>;
+-		};
+-
+-		opp-1183000000 {
+-			opp-hz = /bits/ 64 <1183000000>;
+-			opp-microvolt = <1028000>;
+-		};
+-
+-		opp-1404000000 {
+-			opp-hz = /bits/ 64 <1404000000>;
+-			opp-microvolt = <1083000>;
+-		};
+-
+-		opp-1508000000 {
+-			opp-hz = /bits/ 64 <1508000000>;
+-			opp-microvolt = <1109000>;
+-		};
+-
+-		opp-1573000000 {
+-			opp-hz = /bits/ 64 <1573000000>;
+-			opp-microvolt = <1125000>;
+-		};
+-	};
+-
+-	cpu_opp_table_b: opp_table_b {
+-		compatible = "operating-points-v2";
+-		opp-shared;
+-
+-		opp-507000000 {
+-			opp-hz = /bits/ 64 <507000000>;
+-			opp-microvolt = <828000>;
+-		};
+-
+-		opp-702000000 {
+-			opp-hz = /bits/ 64 <702000000>;
+-			opp-microvolt = <867000>;
+-		};
+-
+-		opp-1001000000 {
+-			opp-hz = /bits/ 64 <1001000000>;
+-			opp-microvolt = <927000>;
+-		};
+-
+-		opp-1209000000 {
+-			opp-hz = /bits/ 64 <1209000000>;
+-			opp-microvolt = <968000>;
+-		};
+-
+-		opp-1404000000 {
+-			opp-hz = /bits/ 64 <1007000000>;
+-			opp-microvolt = <1028000>;
+-		};
+-
+-		opp-1612000000 {
+-			opp-hz = /bits/ 64 <1612000000>;
+-			opp-microvolt = <1049000>;
+-		};
+-
+-		opp-1807000000 {
+-			opp-hz = /bits/ 64 <1807000000>;
+-			opp-microvolt = <1089000>;
+-		};
+-
+-		opp-1989000000 {
+-			opp-hz = /bits/ 64 <1989000000>;
+-			opp-microvolt = <1125000>;
+-		};
+-	};
+-
+-	cpu0: cpu@0 {
+-		device_type = "cpu";
+-		compatible = "arm,cortex-a53";
+-		reg = <0x000>;
+-		enable-method = "psci";
+-		cpu-idle-states = <&CPU_SLEEP_0>;
+-		clocks = <&infracfg CLK_INFRA_CA53SEL>,
+-			 <&apmixedsys CLK_APMIXED_MAINPLL>;
+-		clock-names = "cpu", "intermediate";
+-		operating-points-v2 = <&cpu_opp_table_a>;
+-	};
+-
+-	cpu1: cpu@1 {
+-		device_type = "cpu";
+-		compatible = "arm,cortex-a53";
+-		reg = <0x001>;
+-		enable-method = "psci";
+-		cpu-idle-states = <&CPU_SLEEP_0>;
+-		clocks = <&infracfg CLK_INFRA_CA53SEL>,
+-			 <&apmixedsys CLK_APMIXED_MAINPLL>;
+-		clock-names = "cpu", "intermediate";
+-		operating-points-v2 = <&cpu_opp_table_a>;
+-	};
+-
+-	cpu2: cpu@100 {
+-		device_type = "cpu";
+-		compatible = "arm,cortex-a72";
+-		reg = <0x100>;
+-		enable-method = "psci";
+-		cpu-idle-states = <&CPU_SLEEP_0>;
+-		clocks = <&infracfg CLK_INFRA_CA72SEL>,
+-			 <&apmixedsys CLK_APMIXED_MAINPLL>;
+-		clock-names = "cpu", "intermediate";
+-		operating-points-v2 = <&cpu_opp_table_b>;
+-	};
+-
+-	cpu3: cpu@101 {
+-		device_type = "cpu";
+-		compatible = "arm,cortex-a72";
+-		reg = <0x101>;
+-		enable-method = "psci";
+-		cpu-idle-states = <&CPU_SLEEP_0>;
+-		clocks = <&infracfg CLK_INFRA_CA72SEL>,
+-			 <&apmixedsys CLK_APMIXED_MAINPLL>;
+-		clock-names = "cpu", "intermediate";
+-		operating-points-v2 = <&cpu_opp_table_b>;
+-	};
+-
+-	&cpu0 {
+-		proc-supply = <&mt6397_vpca15_reg>;
+-	};
+-
+-	&cpu1 {
+-		proc-supply = <&mt6397_vpca15_reg>;
+-	};
+-
+-	&cpu2 {
+-		proc-supply = <&da9211_vcpu_reg>;
+-		sram-supply = <&mt6397_vsramca7_reg>;
+-	};
+-
+-	&cpu3 {
+-		proc-supply = <&da9211_vcpu_reg>;
+-		sram-supply = <&mt6397_vsramca7_reg>;
+-	};
 
 -- 
 2.47.2
