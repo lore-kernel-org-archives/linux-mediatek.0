@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54012C3601E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 18:31:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F180C369A9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 18:31:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RVEmfdcIK+nAC24P6F8Ud5S0YAAGuFYjRvgCZ39ZrCQ=; b=vq1qntUo8bz3dHws9iCxAD/N4w
-	mm6WgO3RM+bapro8Ti4MKYYkwCD2ijwQMZxIZZQSqkILNT0GVeybBZ/g6MZtgZsuah7bYPZaXC9mt
-	aDU/XVhgMWlA7W+Z1N1+W3Ihx6rb5aTPmt32Qjaawu2o32WtTirVrYvLG6aV9V4VmdAlTfJZcnJWm
-	906uqE/Kikdr/FXjTBPUkBgnVnqANuKYbux9xuL2aFevFSVRbmeMFM5FfhFekf8tPdBZwZnP9sP5K
-	Bqj0zNbGHQmtJJ4LlCjsNfvNpwppsI25WcXDNEprI0LcSeUx2q3TiVu4gRtFQZlxMP+sFDkDx8aXC
-	0h6hqNyA==;
+	bh=pFjKItarHUEZIrjo0ZjhvTOl5jmnWBzUA0dauVIkn30=; b=R0UrkubHfrqmdvIoMcvIFPr3lh
+	CXJiJBiyiZa9/Dst6AY+1kRTkIFrxbCyS0JG/yxfwyPF5+rytTEhs3NZIy1pH9HBiSmwVBmIj4TPH
+	S6AMO8yRL259jaIgbBH2dSSG9jy13hnscM+TtFERVN/a1b1l45uSYO37ed8mIA+8f2La8QN+NWxXF
+	xdfCxNJDQUtOLXDiXmH0tp+TttqmoM9ge3/fWePorWyl7phK6HM9LrF+S83pTqPD4kVszU+GJNnHb
+	Qo0J1Moj9lYfdf+fAMR+r+CQUyg5xWWr+K0dMqE5FVD+e+RoFLXZ/nRUDkynnl2YFZvzYL92pSWqN
+	dqA71SjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2wgI-0000000BWLv-1Iu9;
-	Thu, 10 Apr 2025 18:31:18 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1u2wgO-0000000BWQl-2eZ0;
+	Thu, 10 Apr 2025 18:31:24 +0000
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2vd8-0000000BMa0-1K9W;
-	Thu, 10 Apr 2025 17:23:59 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-39c2688619bso665324f8f.1;
-        Thu, 10 Apr 2025 10:23:57 -0700 (PDT)
+	id 1u2vsl-0000000BPYR-0uSz;
+	Thu, 10 Apr 2025 17:40:08 +0000
+Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-39c1efc457bso684900f8f.2;
+        Thu, 10 Apr 2025 10:40:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744305836; x=1744910636; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1744306806; x=1744911606; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:subject:cc
          :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=RVEmfdcIK+nAC24P6F8Ud5S0YAAGuFYjRvgCZ39ZrCQ=;
-        b=m9t/RrWfzN3ejrUcFLtu3NGpbdNof2lwVq6Ts7pt9fdrlw4rx7t+Lg9Ho2nxt9FxFu
-         Bw5ueHMh0hoG4UsCcBpY5b4njIeNAEqRXWAfBbKkN15OpLScPOLDF0TkmcoGN/S0Qiue
-         SKJRedAmgWo0FvfRg2n3Kz5Dqh8VLZKccOUZzq/Dw/otzoNwpYBONJn3oREe+nERxfdx
-         7DA+ACPx+vuQPuvfDO/7C3ytPl6Nx78LBZS6Ssp3uyo9roE+LCO7bdYPED3oy6nw0UJP
-         r2CQmeooIRyUSCWe6Tazom5kASNhhnIDB2v/EELc67vHsw1W8/CyEVdgkuKyUkGJf/4r
-         +l9Q==
+        bh=pFjKItarHUEZIrjo0ZjhvTOl5jmnWBzUA0dauVIkn30=;
+        b=WMqlRWMtocjQrFCa+LnuD+6y4zgd8OsShhoeLB0yFao92VMQ4EnF+VrJJAoU0BTZ/w
+         msZp/BgRh1RXZSAjPYGiUuK0IZ7OSdUNUzlGf2uXxYSf0WWjLCAeTbcSzdtDt8W4TKlc
+         1FSc1D2Zt0jV/t+mWRcwvIpq/CHOwupm6J2hyucvliPcJItbDF0u1oDH5aPRs6zk6+Va
+         xIm90aEameSPE+8zoAZrxah25/ikG2bFl4/+IZFob/EbdlRo4oT9jUSFHkqUFSazlPUw
+         9kcWL5FE3Y+It+xSqbtNrWbBj0CsUXpLtxVIugJUbQjRgcq+krGAzlDvs8OIMRVHWPa4
+         unsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744305836; x=1744910636;
+        d=1e100.net; s=20230601; t=1744306806; x=1744911606;
         h=in-reply-to:content-disposition:mime-version:references:subject:cc
          :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=RVEmfdcIK+nAC24P6F8Ud5S0YAAGuFYjRvgCZ39ZrCQ=;
-        b=tKO/2gSRHbabXXvRAzhZIQaGIBSOtNlIlDx4nbT0YNUwv2gxG6o/iAmE4RXzmOl6um
-         J7CpJ0pXBQr7JfoFd8XQCQSB3rPnSYWESR0VIOyYyeFHAbMR/ILWp9wYdzobzx933fvJ
-         GBfdWCDe2AVTiJRgVU7cybPHO2RqE0qL4uJFI7auc7OZtS2Q0abpUu+ljvO/IIuSLYH0
-         mv/RnpaJv2Eyzzbzegzk3NVpMkRIvEIve/2pOj8/uHtPy6DoTyVY7aTtwOCtcbq6OzNA
-         m7zzIpq9gYAXC07YNIbYTEqD+SqYA5WCN+nHamv5gLIqc37jj29h/RGfi1ELrRJP1QM0
-         h6KQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVmjsQ8pjpB/jzN9cQPVLUGYbMV52SU+7tDbYtZLdfZvtT1W5YTDvGrbMlYtpUmdJtsj9wTuo8kKA6vFZNrnFfM@lists.infradead.org, AJvYcCWxX28uuZWXtmQzU13dS7t7srDT5B6aVTR+eYF6uMvYJl04YMQqDOFNi58ZyQBrBcvxgpBFUZHzrLqzwqZalds=@lists.infradead.org
-X-Gm-Message-State: AOJu0YweetLD3LNAp1qPXdNb1Smz7n1Hzn+WIslX5V3BLGnceUd4wVS3
-	H0TiXMamw+zSpJ/T3Wmyi+AM5XHzgCeoI9nz9UcYgUJ/R51S5dLo
-X-Gm-Gg: ASbGnctL4Aj4OCLCbpRJt+wc6JgmZUX5jyXBHAq6TgDNBYzz5S1/IacqvOFfhvJ0q/e
-	mwadNT4DcaryqLea6jjv3308pk+7xZOMC+jhQUajloO3I/DxQrUVmaW2nyicRhsZAqc3ixodLBQ
-	KIbIDX1HGXrMrYwAVAJqzO6Kv8oaVSaKOTc98h5HPa3R7RfUmNAu/y3JpwcHcb4zgr2yuw8s4WQ
-	2u1xMh9hzqpPgDWuYg461jPaPUBVUYgSNJTslKhbpvXiNsktu471v56BHdELnb/RIHctCgW28/q
-	Y5keXluCnrvDB5KZX4T8VOpxXhaWhuisQo5QvgzMIZrfQ2Kw/P+XqY1U4jeULJvDnGNl5fr8NN1
-	soTKFToE=
-X-Google-Smtp-Source: AGHT+IFqhoIbl8rG6Xm1pydrcNvSBmIecSBYlMaEofFIFMZzgUR9B34igWvZcOG2E52kzZjCqGGyAw==
-X-Received: by 2002:a05:6000:2586:b0:391:3aaf:1d5d with SMTP id ffacd0b85a97d-39d8f47497bmr3207232f8f.27.1744305836300;
-        Thu, 10 Apr 2025 10:23:56 -0700 (PDT)
+        bh=pFjKItarHUEZIrjo0ZjhvTOl5jmnWBzUA0dauVIkn30=;
+        b=lPJ0xR46tBBqoOo4IdKYZ9E0IpcUDYLgQ3baMi0hK6wX2tM4Ch1vCa7Xx/eN7W+t7J
+         4v1tEWiIOqzvtx7cVjrYZp7nKCQttiozJhJ5I/XJWYP1zJsLEfYw83DbaOc6qOj9IMtm
+         I4bLWgK/sj0zpkZG8c1u3oLv1YMLfpxUIPeDgQsEaTFbNUuXLYBliADs9Hleywwsde62
+         +UUa2oPqTGoMIau63PH/sTvjsMLL/mfMemSmmbxqmRCE+9URwc8HXSTfITZu7PovSWiv
+         N79TDmg1L6sR83OTmAW9KVR3bHrDWNysViYNFu+M1+B3kYm4pVQJg1p4TUmwf+Wh5Dgo
+         CORA==
+X-Forwarded-Encrypted: i=1; AJvYcCVrYJGbPX7stkdBQusYKnEoTh6qH+a7+oTGKNropIRZzm2qN0AsDwKHYv4jZCaPSu6LbGkx7y6yFQe0WhuMNbE=@lists.infradead.org, AJvYcCXZnJz4G0SHm1p2CWdv9h/SK6EpWHPh2wBzmS9ryxOTC5VbAI7MF3UEh+4ZLX+zproiXISZtQLw9XHS/UJRhazf@lists.infradead.org
+X-Gm-Message-State: AOJu0YxE3nmK14qLFOl7ILon6dy7dvpb4DRspPaBDhYcnTAnGFlnwmTl
+	yTrl7YgBCtB2cGEDGWZhmDrlKAFAtt/bXuu2kmDavyQoCVF/aK5c
+X-Gm-Gg: ASbGnct9g7+1TKNIkjtsumRsaGtUJ9L+eU8vYkx4SVcUyncGrR6qESMZUWzFt0htIrb
+	6wNjrkUmYwNk50wEqX9zhnXifZa+479cOsYCNt/t/5mSWU3/DaMDDb1ZSVvSdeQfbtIQFJeDrjW
+	eH/RTTRvtNh14my4lS6rUy87TIoMHy9aqAyEPaKlUapJADGDvhW2Y8l/kn90DDLg3AST6qQ+RTg
+	edIv+PdLJ7YVsz9LYmt0TAi4uL9MaMaXLBRmBuSU9hxQLzr4a92+QCNP1nnKn43l+CtkuSKRcOv
+	uRzSufrerzn9jPZJqXC0byj0ZtVpVje3MYo+gQB+/k8S5V2MYSz3gA30emYH2NLgah8ULBEvLt5
+	idt0m928=
+X-Google-Smtp-Source: AGHT+IFv4THUajH089YkeOkRes3LsTf9KDOb0k8QeqOxF6+NTBvRT51OO4QNQNiPc57IIpsOupZZ1w==
+X-Received: by 2002:a05:6000:2204:b0:391:40bd:6222 with SMTP id ffacd0b85a97d-39d8f46daecmr3242955f8f.22.1744306805615;
+        Thu, 10 Apr 2025 10:40:05 -0700 (PDT)
 Received: from Ansuel-XPS. (93-34-88-225.ip49.fastwebnet.it. [93.34.88.225])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39d893f0a75sm5495874f8f.62.2025.04.10.10.23.54
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39d893f0a80sm5568993f8f.68.2025.04.10.10.40.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Apr 2025 10:23:55 -0700 (PDT)
-Message-ID: <67f7feab.df0a0220.40a6f.c911@mx.google.com>
-X-Google-Original-Message-ID: <Z_f-qflwHutRYS6_@Ansuel-XPS.>
-Date: Thu, 10 Apr 2025 19:23:53 +0200
+        Thu, 10 Apr 2025 10:40:05 -0700 (PDT)
+Message-ID: <67f80275.df0a0220.39b09a.dd38@mx.google.com>
+X-Google-Original-Message-ID: <Z_gCcun1WNIjfxbM@Ansuel-XPS.>
+Date: Thu, 10 Apr 2025 19:40:02 +0200
 From: Christian Marangi <ansuelsmth@gmail.com>
 To: Andrew Lunn <andrew@lunn.ch>
 Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
@@ -94,18 +94,18 @@ Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
 	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	upstream@airoha.com
-Subject: Re: [net-next PATCH v14 06/16] net: mdio: regmap: prepare support
- for multiple valid addr
+Subject: Re: [net-next PATCH v14 07/16] net: mdio: regmap: add support for
+ C45 read/write
 References: <20250408095139.51659-1-ansuelsmth@gmail.com>
- <20250408095139.51659-7-ansuelsmth@gmail.com>
- <6f29a01d-35da-4d51-b309-a1799950a707@lunn.ch>
+ <20250408095139.51659-8-ansuelsmth@gmail.com>
+ <50c7328d-b8f7-4b07-9e34-6d7c34923335@lunn.ch>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <6f29a01d-35da-4d51-b309-a1799950a707@lunn.ch>
+In-Reply-To: <50c7328d-b8f7-4b07-9e34-6d7c34923335@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250410_102358_352031_D81C3030 
-X-CRM114-Status: GOOD (  17.09  )
+X-CRM114-CacheID: sfid-20250410_104007_258128_16727F22 
+X-CRM114-Status: GOOD (  39.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,22 +120,100 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 10, 2025 at 07:18:02PM +0200, Andrew Lunn wrote:
-> On Tue, Apr 08, 2025 at 11:51:13AM +0200, Christian Marangi wrote:
-> > Rework the valid_addr and convert it to a mask in preparation for mdio
-> > regmap to support multiple valid addr in the case the regmap can support
-> > it.
+On Thu, Apr 10, 2025 at 07:08:53PM +0200, Andrew Lunn wrote:
+> On Tue, Apr 08, 2025 at 11:51:14AM +0200, Christian Marangi wrote:
+> > Add support for C45 read/write for mdio regmap. This can be done
+> > by enabling the support_encoded_addr bool in mdio regmap config and by
+> > using the new API devm_mdio_regmap_init to init a regmap.
+> > 
+> > To support C45, additional info needs to be appended to the regmap
+> > address passed to regmap OPs.
+> > 
+> > The logic applied to the regmap address value:
+> > - First the regnum value (20, 16)
+> > - Second the devnum value (25, 21)
+> > - A bit to signal if it's C45 (26)
+> > 
+> > devm_mdio_regmap_init MUST be used to register a regmap for this to
+> > correctly handle internally the encode/decode of the address.
+> > 
+> > Drivers needs to define a mdio_regmap_init_config where an optional regmap
+> > name can be defined and MUST define C22 OPs (mdio_read/write).
+> > To support C45 operation also C45 OPs (mdio_read/write_c45).
+> > 
+> > The regmap from devm_mdio_regmap_init will internally decode the encoded
+> > regmap address and extract the various info (addr, devnum if C45 and
+> > regnum). It will then call the related OP and pass the extracted values to
+> > the function.
+> > 
+> > Example for a C45 read operation:
+> > - With an encoded address with C45 bit enabled, it will call the
+> >   .mdio_read_c45 and addr, devnum and regnum will be passed.
+> >   .mdio_read_c45 will then return the val and val will be stored in the
+> >   regmap_read pointer and will return 0. If .mdio_read_c45 returns
+> >   any error, then the regmap_read will return such error.
+> > 
+> > With support_encoded_addr enabled, also C22 will encode the address in
+> > the regmap address and .mdio_read/write will called accordingly similar
+> > to C45 operation.
 > 
-> I think it would be good to pull these MDIO regmap patches out into a
-> series of their own. We know there is a user, so i'm happy for us the
-> accept it without that user. But this code needs further discusion,
-> which will be irrelevant for the switch.
+> This patchset needs pulling apart, there are two many things going on.
+> 
+> You are adding at least two different features here. The current code
+> only supports a single device on the bus, and it assumes the regmap
+> provider knows what device that is. That is probably because all
+> current users only have a single device. You now appear to want to
+> pass that address to the regmap provider. I don't see the need for
+> that, since it is still a single device on the bus. So adding this
+> feature on its own, with a good commit message, will explain that.
 >
 
-Ok so how you would like to proceed for the remaining patch? Repost as RFC?
+Thing is that for C45 some kind of encoding/decoding is needed anyway
+and with the suggested encoding (in previous patches) also C22 needs
+special handling to extract the right address.
 
-Still waiting feedback for nvmem and mfd so I would love to get feedback
-for them (that are also irrelevant to the switch)
+> You want to add C45 support. So that is another patch.
+> 
+
+I decided to implement C45 first as it would indirectly add support for
+multiple register as for C45 you need to encode the PHY address anyway
+(even if it's always the same) (making the next patch trivial as
+everything will be already in place and just need to enable it by
+passing a valid_addr_mask)
+
+> C22 and C45 are different address spaces. To me, it seems logical to
+> have different regmaps. That makes the regmap provider simpler. A C22
+> regmap provider probably is just a straight access. A C45 regmap
+> provider might need to handle the hardware having a sparse register
+> map, only some of these 32 block of 65536 are implemented, etc.
+> 
+> So i think:
+> 
+> struct mdio_regmap_config {
+>         struct device *parent;
+>         struct regmap *regmap;
+>         char name[MII_BUS_ID_SIZE];
+>         u8 valid_addr;
+>         bool autoscan;
+> };
+> 
+> should be extended with a second regmap, used for C45.
+
+So you are suggesting 2 regmap with dedicated read/write function.
+
+The thing is that if the final target is to permit this driver to
+support multiple PHY from a single regmap, and we also want to apply the
+same encoding format, the regmap max_register will be the same for the 2
+regmap making it redundant to have 2.
+
+I think this is the blocking part that unlocks everything else.
+Understand what is the preferable way to handle multiple PHY.
+
+For C45 encoding is a MUST, and with encoding you get the side
+effect/bonus feature that you can inject more info.
+
+Hope you can give some guidance about this! Happy to split this once we
+find a common point on how to proceed with this.
 
 -- 
 	Ansuel
