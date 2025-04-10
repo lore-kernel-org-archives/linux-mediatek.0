@@ -4,108 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F180C369A9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 18:31:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FA8BC369AA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 18:31:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pFjKItarHUEZIrjo0ZjhvTOl5jmnWBzUA0dauVIkn30=; b=R0UrkubHfrqmdvIoMcvIFPr3lh
-	CXJiJBiyiZa9/Dst6AY+1kRTkIFrxbCyS0JG/yxfwyPF5+rytTEhs3NZIy1pH9HBiSmwVBmIj4TPH
-	S6AMO8yRL259jaIgbBH2dSSG9jy13hnscM+TtFERVN/a1b1l45uSYO37ed8mIA+8f2La8QN+NWxXF
-	xdfCxNJDQUtOLXDiXmH0tp+TttqmoM9ge3/fWePorWyl7phK6HM9LrF+S83pTqPD4kVszU+GJNnHb
-	Qo0J1Moj9lYfdf+fAMR+r+CQUyg5xWWr+K0dMqE5FVD+e+RoFLXZ/nRUDkynnl2YFZvzYL92pSWqN
-	dqA71SjA==;
+	bh=Cnx4OebNvscgLUnjsl3TmGloIkUAMbbfRDLKnM/gyf8=; b=X+bt371P5wqZZ8jVEIpNMxZX1z
+	epgRejrivBAj2tTZu511FP32ZyUWcrrE5sParTV3nYfxMng6aGHZdq6DmVLDSQWe9deZfm9LuQyiT
+	ivEwGP2Nyku3GFz4No7Cj4B3Q8TBYr917KRPSfvkIQ4Y+RjC9tBniCQVDpezisrXOGkPsCplNh7of
+	+hz1M7oFYMqM1NbQvbAQIHEejo1G267NGowbqodwL4w6FjitquBQt7i7FV9Hf/MUzH28hyDM2DOzX
+	/ViQACGDyC3FbxFsGnwDUKtXXBTQ7l7QvSAhWAXo1izZeEX9zlD7j0JAyIXGt/Nfw02CxlbSCANXJ
+	auCPGwpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2wgO-0000000BWQl-2eZ0;
-	Thu, 10 Apr 2025 18:31:24 +0000
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+	id 1u2wgQ-0000000BWSS-1RjE;
+	Thu, 10 Apr 2025 18:31:26 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2vsl-0000000BPYR-0uSz;
-	Thu, 10 Apr 2025 17:40:08 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-39c1efc457bso684900f8f.2;
-        Thu, 10 Apr 2025 10:40:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744306806; x=1744911606; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=pFjKItarHUEZIrjo0ZjhvTOl5jmnWBzUA0dauVIkn30=;
-        b=WMqlRWMtocjQrFCa+LnuD+6y4zgd8OsShhoeLB0yFao92VMQ4EnF+VrJJAoU0BTZ/w
-         msZp/BgRh1RXZSAjPYGiUuK0IZ7OSdUNUzlGf2uXxYSf0WWjLCAeTbcSzdtDt8W4TKlc
-         1FSc1D2Zt0jV/t+mWRcwvIpq/CHOwupm6J2hyucvliPcJItbDF0u1oDH5aPRs6zk6+Va
-         xIm90aEameSPE+8zoAZrxah25/ikG2bFl4/+IZFob/EbdlRo4oT9jUSFHkqUFSazlPUw
-         9kcWL5FE3Y+It+xSqbtNrWbBj0CsUXpLtxVIugJUbQjRgcq+krGAzlDvs8OIMRVHWPa4
-         unsA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744306806; x=1744911606;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=pFjKItarHUEZIrjo0ZjhvTOl5jmnWBzUA0dauVIkn30=;
-        b=lPJ0xR46tBBqoOo4IdKYZ9E0IpcUDYLgQ3baMi0hK6wX2tM4Ch1vCa7Xx/eN7W+t7J
-         4v1tEWiIOqzvtx7cVjrYZp7nKCQttiozJhJ5I/XJWYP1zJsLEfYw83DbaOc6qOj9IMtm
-         I4bLWgK/sj0zpkZG8c1u3oLv1YMLfpxUIPeDgQsEaTFbNUuXLYBliADs9Hleywwsde62
-         +UUa2oPqTGoMIau63PH/sTvjsMLL/mfMemSmmbxqmRCE+9URwc8HXSTfITZu7PovSWiv
-         N79TDmg1L6sR83OTmAW9KVR3bHrDWNysViYNFu+M1+B3kYm4pVQJg1p4TUmwf+Wh5Dgo
-         CORA==
-X-Forwarded-Encrypted: i=1; AJvYcCVrYJGbPX7stkdBQusYKnEoTh6qH+a7+oTGKNropIRZzm2qN0AsDwKHYv4jZCaPSu6LbGkx7y6yFQe0WhuMNbE=@lists.infradead.org, AJvYcCXZnJz4G0SHm1p2CWdv9h/SK6EpWHPh2wBzmS9ryxOTC5VbAI7MF3UEh+4ZLX+zproiXISZtQLw9XHS/UJRhazf@lists.infradead.org
-X-Gm-Message-State: AOJu0YxE3nmK14qLFOl7ILon6dy7dvpb4DRspPaBDhYcnTAnGFlnwmTl
-	yTrl7YgBCtB2cGEDGWZhmDrlKAFAtt/bXuu2kmDavyQoCVF/aK5c
-X-Gm-Gg: ASbGnct9g7+1TKNIkjtsumRsaGtUJ9L+eU8vYkx4SVcUyncGrR6qESMZUWzFt0htIrb
-	6wNjrkUmYwNk50wEqX9zhnXifZa+479cOsYCNt/t/5mSWU3/DaMDDb1ZSVvSdeQfbtIQFJeDrjW
-	eH/RTTRvtNh14my4lS6rUy87TIoMHy9aqAyEPaKlUapJADGDvhW2Y8l/kn90DDLg3AST6qQ+RTg
-	edIv+PdLJ7YVsz9LYmt0TAi4uL9MaMaXLBRmBuSU9hxQLzr4a92+QCNP1nnKn43l+CtkuSKRcOv
-	uRzSufrerzn9jPZJqXC0byj0ZtVpVje3MYo+gQB+/k8S5V2MYSz3gA30emYH2NLgah8ULBEvLt5
-	idt0m928=
-X-Google-Smtp-Source: AGHT+IFv4THUajH089YkeOkRes3LsTf9KDOb0k8QeqOxF6+NTBvRT51OO4QNQNiPc57IIpsOupZZ1w==
-X-Received: by 2002:a05:6000:2204:b0:391:40bd:6222 with SMTP id ffacd0b85a97d-39d8f46daecmr3242955f8f.22.1744306805615;
-        Thu, 10 Apr 2025 10:40:05 -0700 (PDT)
-Received: from Ansuel-XPS. (93-34-88-225.ip49.fastwebnet.it. [93.34.88.225])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39d893f0a80sm5568993f8f.68.2025.04.10.10.40.04
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Apr 2025 10:40:05 -0700 (PDT)
-Message-ID: <67f80275.df0a0220.39b09a.dd38@mx.google.com>
-X-Google-Original-Message-ID: <Z_gCcun1WNIjfxbM@Ansuel-XPS.>
-Date: Thu, 10 Apr 2025 19:40:02 +0200
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	"Chester A. Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>, Simon Horman <horms@kernel.org>,
+	id 1u2w2w-0000000BReO-3s9D;
+	Thu, 10 Apr 2025 17:50:40 +0000
+Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 1ADA2352;
+	Thu, 10 Apr 2025 19:48:38 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1744307318;
+	bh=LU5dwri1TjU740CvlReL/wlTOs+9Az6hmBvzPrhh88E=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=PDX8KAwgi86ce2bRZRSSM1USB2zOndffk2GMIjRwwbDCSqGWV1F3a+IZni7iRoXln
+	 RYCqrRdwWQ2Y2IvcJWA/HS9azfvtog9PlEbC/ge0EEZyJUoa4DaurTI2AnfiVlXwoc
+	 sKXutYrzfCLnsHz2Rb4v83vflzuJZ4lomlBoCaFw=
+Date: Thu, 10 Apr 2025 20:50:10 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Cc: Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Hans Verkuil <hverkuil@xs4all.nl>,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	upstream@airoha.com
-Subject: Re: [net-next PATCH v14 07/16] net: mdio: regmap: add support for
- C45 read/write
-References: <20250408095139.51659-1-ansuelsmth@gmail.com>
- <20250408095139.51659-8-ansuelsmth@gmail.com>
- <50c7328d-b8f7-4b07-9e34-6d7c34923335@lunn.ch>
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel@collabora.com,
+	linux-media@vger.kernel.org,
+	Sebastian Fricke <sebastian.fricke@collabora.com>
+Subject: Re: [PATCH v2 1/5] media: mc: add manual request completion
+Message-ID: <20250410175010.GF27870@pendragon.ideasonboard.com>
+References: <20250410-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v2-0-5b99ec0450e6@collabora.com>
+ <20250410-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v2-1-5b99ec0450e6@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <50c7328d-b8f7-4b07-9e34-6d7c34923335@lunn.ch>
+In-Reply-To: <20250410-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v2-1-5b99ec0450e6@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250410_104007_258128_16727F22 
-X-CRM114-Status: GOOD (  39.48  )
+X-CRM114-CacheID: sfid-20250410_105039_102518_F7522EB0 
+X-CRM114-Status: GOOD (  41.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,101 +76,208 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 10, 2025 at 07:08:53PM +0200, Andrew Lunn wrote:
-> On Tue, Apr 08, 2025 at 11:51:14AM +0200, Christian Marangi wrote:
-> > Add support for C45 read/write for mdio regmap. This can be done
-> > by enabling the support_encoded_addr bool in mdio regmap config and by
-> > using the new API devm_mdio_regmap_init to init a regmap.
-> > 
-> > To support C45, additional info needs to be appended to the regmap
-> > address passed to regmap OPs.
-> > 
-> > The logic applied to the regmap address value:
-> > - First the regnum value (20, 16)
-> > - Second the devnum value (25, 21)
-> > - A bit to signal if it's C45 (26)
-> > 
-> > devm_mdio_regmap_init MUST be used to register a regmap for this to
-> > correctly handle internally the encode/decode of the address.
-> > 
-> > Drivers needs to define a mdio_regmap_init_config where an optional regmap
-> > name can be defined and MUST define C22 OPs (mdio_read/write).
-> > To support C45 operation also C45 OPs (mdio_read/write_c45).
-> > 
-> > The regmap from devm_mdio_regmap_init will internally decode the encoded
-> > regmap address and extract the various info (addr, devnum if C45 and
-> > regnum). It will then call the related OP and pass the extracted values to
-> > the function.
-> > 
-> > Example for a C45 read operation:
-> > - With an encoded address with C45 bit enabled, it will call the
-> >   .mdio_read_c45 and addr, devnum and regnum will be passed.
-> >   .mdio_read_c45 will then return the val and val will be stored in the
-> >   regmap_read pointer and will return 0. If .mdio_read_c45 returns
-> >   any error, then the regmap_read will return such error.
-> > 
-> > With support_encoded_addr enabled, also C22 will encode the address in
-> > the regmap address and .mdio_read/write will called accordingly similar
-> > to C45 operation.
+Hi Nicolas,
+
+Thank you for the patch.
+
+On Thu, Apr 10, 2025 at 11:39:56AM -0400, Nicolas Dufresne wrote:
+> From: Hans Verkuil <hverkuil@xs4all.nl>
 > 
-> This patchset needs pulling apart, there are two many things going on.
+> By default when the last request object is completed, the whole
+> request completes as well.
 > 
-> You are adding at least two different features here. The current code
-> only supports a single device on the bus, and it assumes the regmap
-> provider knows what device that is. That is probably because all
-> current users only have a single device. You now appear to want to
-> pass that address to the regmap provider. I don't see the need for
-> that, since it is still a single device on the bus. So adding this
-> feature on its own, with a good commit message, will explain that.
->
+> But sometimes you want to manually complete a request in a driver,
+> so add a manual complete mode for this.
 
-Thing is that for C45 some kind of encoding/decoding is needed anyway
-and with the suggested encoding (in previous patches) also C22 needs
-special handling to extract the right address.
+I didn't immediately understand this was about delaying completion of
+the request. It would be nice to make that more explicit in the commit
+message and in the documentation of
+media_request_mark_manual_completion(). A sample use case would also
+help.
 
-> You want to add C45 support. So that is another patch.
+> In req_queue the driver marks the request for manual completion by
+> calling media_request_mark_manual_completion, and when the driver
+> wants to manually complete the request it calls
+> media_request_manual_complete().
 > 
-
-I decided to implement C45 first as it would indirectly add support for
-multiple register as for C45 you need to encode the PHY address anyway
-(even if it's always the same) (making the next patch trivial as
-everything will be already in place and just need to enable it by
-passing a valid_addr_mask)
-
-> C22 and C45 are different address spaces. To me, it seems logical to
-> have different regmaps. That makes the regmap provider simpler. A C22
-> regmap provider probably is just a straight access. A C45 regmap
-> provider might need to handle the hardware having a sparse register
-> map, only some of these 32 block of 65536 are implemented, etc.
+> Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+> Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+> ---
+>  drivers/media/mc/mc-request.c | 38 ++++++++++++++++++++++++++++++++++++--
+>  include/media/media-request.h | 36 +++++++++++++++++++++++++++++++++++-
+>  2 files changed, 71 insertions(+), 3 deletions(-)
 > 
-> So i think:
-> 
-> struct mdio_regmap_config {
->         struct device *parent;
->         struct regmap *regmap;
->         char name[MII_BUS_ID_SIZE];
->         u8 valid_addr;
->         bool autoscan;
-> };
-> 
-> should be extended with a second regmap, used for C45.
+> diff --git a/drivers/media/mc/mc-request.c b/drivers/media/mc/mc-request.c
+> index 5edfc2791ce7c7485def5db675bbf53ee223d837..398d0806d1d274eb8c454fc5c37b77476abe1e74 100644
+> --- a/drivers/media/mc/mc-request.c
+> +++ b/drivers/media/mc/mc-request.c
+> @@ -54,6 +54,7 @@ static void media_request_clean(struct media_request *req)
+>  	req->access_count = 0;
+>  	WARN_ON(req->num_incomplete_objects);
+>  	req->num_incomplete_objects = 0;
+> +	req->manual_completion = false;
+>  	wake_up_interruptible_all(&req->poll_wait);
+>  }
+>  
+> @@ -313,6 +314,7 @@ int media_request_alloc(struct media_device *mdev, int *alloc_fd)
+>  	req->mdev = mdev;
+>  	req->state = MEDIA_REQUEST_STATE_IDLE;
+>  	req->num_incomplete_objects = 0;
+> +	req->manual_completion = false;
+>  	kref_init(&req->kref);
+>  	INIT_LIST_HEAD(&req->objects);
+>  	spin_lock_init(&req->lock);
+> @@ -459,7 +461,7 @@ void media_request_object_unbind(struct media_request_object *obj)
+>  
+>  	req->num_incomplete_objects--;
+>  	if (req->state == MEDIA_REQUEST_STATE_QUEUED &&
+> -	    !req->num_incomplete_objects) {
+> +	    !req->num_incomplete_objects && !req->manual_completion) {
+>  		req->state = MEDIA_REQUEST_STATE_COMPLETE;
+>  		completed = true;
+>  		wake_up_interruptible_all(&req->poll_wait);
+> @@ -488,7 +490,7 @@ void media_request_object_complete(struct media_request_object *obj)
+>  	    WARN_ON(req->state != MEDIA_REQUEST_STATE_QUEUED))
+>  		goto unlock;
+>  
+> -	if (!--req->num_incomplete_objects) {
+> +	if (!--req->num_incomplete_objects && !req->manual_completion) {
+>  		req->state = MEDIA_REQUEST_STATE_COMPLETE;
+>  		wake_up_interruptible_all(&req->poll_wait);
+>  		completed = true;
+> @@ -499,3 +501,35 @@ void media_request_object_complete(struct media_request_object *obj)
+>  		media_request_put(req);
+>  }
+>  EXPORT_SYMBOL_GPL(media_request_object_complete);
+> +
+> +void media_request_manual_complete(struct media_request *req)
+> +{
+> +	unsigned long flags;
+> +	bool completed = false;
+> +
+> +	if (WARN_ON(!req))
+> +		return;
+> +	if (WARN_ON(!req->manual_completion))
+> +		return;
+> +
+> +	spin_lock_irqsave(&req->lock, flags);
+> +	if (WARN_ON(req->state != MEDIA_REQUEST_STATE_QUEUED))
+> +		goto unlock;
+> +
+> +	req->manual_completion = false;
+> +	/*
+> +	 * It is expected that all other objects in this request are
+> +	 * completed when this function is called. WARN if that is
+> +	 * not the case.
+> +	 */
+> +	if (!WARN_ON(req->num_incomplete_objects)) {
+> +		req->state = MEDIA_REQUEST_STATE_COMPLETE;
+> +		wake_up_interruptible_all(&req->poll_wait);
+> +		completed = true;
+> +	}
+> +unlock:
+> +	spin_unlock_irqrestore(&req->lock, flags);
+> +	if (completed)
+> +		media_request_put(req);
+> +}
+> +EXPORT_SYMBOL_GPL(media_request_manual_complete);
+> diff --git a/include/media/media-request.h b/include/media/media-request.h
+> index d4ac557678a78372222704400c8c96cf3150b9d9..645d18907be7148ca50dcc9248ff06bd8ccdf953 100644
+> --- a/include/media/media-request.h
+> +++ b/include/media/media-request.h
+> @@ -56,6 +56,10 @@ struct media_request_object;
+>   * @access_count: count the number of request accesses that are in progress
+>   * @objects: List of @struct media_request_object request objects
+>   * @num_incomplete_objects: The number of incomplete objects in the request
+> + * @manual_completion: if true, then the request won't be marked as completed
+> + * when @num_incomplete_objects reaches 0. Call media_request_manual_complete()
+> + * to set this field to false and complete the request
 
-So you are suggesting 2 regmap with dedicated read/write function.
+I'd drop "set this field to false and " here.
 
-The thing is that if the final target is to permit this driver to
-support multiple PHY from a single regmap, and we also want to apply the
-same encoding format, the regmap max_register will be the same for the 2
-regmap making it redundant to have 2.
+> + * if @num_incomplete_objects == 0.
 
-I think this is the blocking part that unlocks everything else.
-Understand what is the preferable way to handle multiple PHY.
+ * after @num_incomplete_objects reaches 0.
 
-For C45 encoding is a MUST, and with encoding you get the side
-effect/bonus feature that you can inject more info.
+>   * @poll_wait: Wait queue for poll
+>   * @lock: Serializes access to this struct
+>   */
+> @@ -68,6 +72,7 @@ struct media_request {
+>  	unsigned int access_count;
+>  	struct list_head objects;
+>  	unsigned int num_incomplete_objects;
+> +	bool manual_completion;
+>  	wait_queue_head_t poll_wait;
+>  	spinlock_t lock;
+>  };
+> @@ -218,6 +223,35 @@ media_request_get_by_fd(struct media_device *mdev, int request_fd);
+>  int media_request_alloc(struct media_device *mdev,
+>  			int *alloc_fd);
+>  
+> +/**
+> + * media_request_mark_manual_completion - Set manual_completion to true
+> + *
+> + * @req: The request
+> + *
+> + * Mark that the request has to be manually completed by calling
+> + * media_request_manual_complete().
+> + *
+> + * This function should be called in the req_queue callback.
 
-Hope you can give some guidance about this! Happy to split this once we
-find a common point on how to proceed with this.
+s/should/shall/ unless it's not a hard requirement. Any way to catch
+incorrect call patterns ?
+
+> + */
+> +static inline void
+> +media_request_mark_manual_completion(struct media_request *req)
+> +{
+> +	req->manual_completion = true;
+> +}
+> +
+> +/**
+> + * media_request_manual_complete - Set manual_completion to false
+
+The main purpose of the function is to complete the request, not setting
+manual_completion to false.
+
+> + *
+> + * @req: The request
+> + *
+> + * Set @manual_completion to false, and if @num_incomplete_objects
+> + * is 0, then mark the request as completed.
+> + *
+> + * If there are still incomplete objects in the request, then
+> + * WARN for that since that suggests a driver error.
+
+If that's an error then I'd document it more explicitly, as the first
+sentence makes it sound that both cases are valid. Maybe
+
+ * This function completes a request that was marked for manual completion by an
+ * earlier call to media_request_mark_manual_completion(). The request's
+ * @manual_completion flag is reset to false.
+ *
+ * All objects contained in the request must have been completed previously. It
+ * is an error to call this function otherwise. The request will not be
+ * completed in that case, and the function will WARN.
+
+> + */
+> +void media_request_manual_complete(struct media_request *req);
+> +
+>  #else
+>  
+>  static inline void media_request_get(struct media_request *req)
+> @@ -336,7 +370,7 @@ void media_request_object_init(struct media_request_object *obj);
+>   * @req: The media request
+>   * @ops: The object ops for this object
+>   * @priv: A driver-specific priv pointer associated with this object
+> - * @is_buffer: Set to true if the object a buffer object.
+> + * @is_buffer: Set to true if the object is a buffer object.
+>   * @obj: The object
+>   *
+>   * Bind this object to the request and set the ops and priv values of
 
 -- 
-	Ansuel
+Regards,
+
+Laurent Pinchart
 
