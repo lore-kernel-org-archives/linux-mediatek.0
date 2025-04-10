@@ -4,89 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1C28C3601E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 08:43:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C795C3601E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 11:16:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vyRnA4Q+yFbS2ZBT7zMPT+jHN8phVJhU2QuGyNS6f34=; b=MAmZZN7MLrtsmyj2deD0OI2061
-	CPlNzfQcNv2JmSnyGwDFf81BYFgRd374sdU7SCSfI3SGoH4PVd7hmv3dtTHbd4wOHbJDOVc9mIr0L
-	YyOvYQmZPZhE7TBajxU4J2FL7zP7rmECG9dXGiV85TFRzk/1EgyrCuo+X3UDKL/QVL9s5LYpDD6tP
-	EN/jDxdiioIqYY2veznMupVK6UmAQ/ooRZlYor1kUPDoEU64CfbG0wQFiD0kA9imlgxaFKS4iZPGj
-	twWYmmLYjsB1LdOfE9lPgdoU3c8LKTp2BNcjIIowwmkFLCPbH7mGPSLtC38XhOhr4/RWKun2MemxX
-	Q8cc6l7w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ee6LsVDDTHsvKI/YOpZeHH6mP+kh8OeNoQudrAcoQfA=; b=WrLuIQIMOSk4jOp7+Q98MAQgPh
+	yHIJ2qiL3AgT+zpiMsYIr/BzQoTWyqaTON8+bYhw5zU97l9c3m8nCwN74sb1p9snDMIR3h0T21cbl
+	0lwwVBb7puunJFEax9U9ybZoL1uoZw8n2DtTWzXSu4MLpWXYrCQQUdRR9VLvqgqDNx7k40I0eABvn
+	2m7sMYfCOxzKfI8SxQ3Q8MlqayTcSNWbi6ZoV16G5gACYDMId9AjyNMqJg1tnmE16gQu+NxL/xJyQ
+	WFZRHoM7yKgqeRj6ojkR0uOsWzWoyVlhm6rgol6sPRxhszE7Kh8uYtmpRDuhsO7bQRMq3TniMUkQT
+	iJZqfV3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2nV2-00000009n6y-0A53;
-	Thu, 10 Apr 2025 08:43:04 +0000
-Received: from mgamail.intel.com ([198.175.65.20])
+	id 1u2ptc-0000000ACVY-3u3M;
+	Thu, 10 Apr 2025 11:16:36 +0000
+Received: from mgamail.intel.com ([198.175.65.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2lzk-00000009TPp-1232;
-	Thu, 10 Apr 2025 07:06:41 +0000
+	id 1u2oD4-00000009wQg-42R8;
+	Thu, 10 Apr 2025 09:28:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1744268800; x=1775804800;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=eVtQY8JBtI7OBFxIa1E1PA3pS0GE/8DYWFULSp6JaHg=;
-  b=SWy+MEIxIKFI7gK7TTRI0dl9vEhB5kZYtSvbIx1zTCCFbwdUkRDmDNLW
-   9VkPKNBtuePT0FPjCdKwCutxVx3symAarTYa32DY3Kkf7s2DvzG9kUTuz
-   hcLZ5YNpfhqm/GHUNV1RpnE/x/4LzwWGYnRidLNOY3Z0a/JQr2ZTyWW+2
-   PC4Ri7bYGA/1jRIWRW++ytGTJ0EEuuZLae963uSlzyEL5I5DHA051GGXn
-   Zt47L/ZoAX6H9bKA4ENBD5X2kwkRu9uHIgV7eLTjQM6dzA/5KJb8OziYu
-   U6nx3km/e3BhnrEFt9pEKitqgIsgvcWQentYvcuE07cZpgRj+0k8EmX4O
-   g==;
-X-CSE-ConnectionGUID: V27z1nB+STSlsqswaxjU4A==
-X-CSE-MsgGUID: xBncpXWARnSHc5Az+xsx/A==
-X-IronPort-AV: E=McAfee;i="6700,10204,11399"; a="45484786"
+  t=1744277315; x=1775813315;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=grsUTpdnhqvjd0Hm7iEVppv5u0om2yQPbXAfzbCduKs=;
+  b=mlQDxoIhehzkUmFzOf/0/yMuiFQiCrGYUn6FCcsi1Wnov6BEcWmejwbb
+   3FZbYbACsF175OprtXjItzI+PUORJP19VmIBMwKJwe5tu/NQpb6Wz5f0Q
+   uAJMnaZU6Ig9FwhtLT3N4JMt8LowEhKTVfoOr4iMQFNfMMZbmtQJ8yvQF
+   +6/jaYa5uKvEFHGOkfqL+FwqFXXY9UC7M4IIDSGSv14S6NrCAuittt/Ea
+   OUYNpcLTYa/pHXtRmVeJj/3g/C2vV2FXtrKzX8pjsWVGfSvMDeHUTBsl3
+   nEfer02PQOL9UuaiIwIjDCRjiWKDuWoduJIicu1Sx4HJvyiTFb1tgehSx
+   w==;
+X-CSE-ConnectionGUID: q9xwGGC1T26wbZ+a0jpgXA==
+X-CSE-MsgGUID: oL+Sr9HsQzef4uUmZQj5PQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11399"; a="57154701"
 X-IronPort-AV: E=Sophos;i="6.15,202,1739865600"; 
-   d="scan'208";a="45484786"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
-  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Apr 2025 00:06:39 -0700
-X-CSE-ConnectionGUID: kVTH2jZVTbeS/zX/rcXnvA==
-X-CSE-MsgGUID: BorZ3DaiT8GsjoUcY7tKvA==
+   d="scan'208";a="57154701"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+  by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Apr 2025 02:28:33 -0700
+X-CSE-ConnectionGUID: HTOMgKl7QMKOdgpykKC3QQ==
+X-CSE-MsgGUID: aWnZQ6t4QfuhR77cbVIRBA==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.15,202,1739865600"; 
-   d="scan'208";a="128791501"
-Received: from turnipsi.fi.intel.com (HELO kekkonen.fi.intel.com) ([10.237.72.44])
-  by fmviesa007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Apr 2025 00:06:36 -0700
-Received: from punajuuri.localdomain (punajuuri.localdomain [192.168.240.130])
-	by kekkonen.fi.intel.com (Postfix) with ESMTP id AAD2D11FA2F;
-	Thu, 10 Apr 2025 10:06:33 +0300 (EEST)
-Received: from sailus by punajuuri.localdomain with local (Exim 4.96)
-	(envelope-from <sakari.ailus@linux.intel.com>)
-	id 1u2lzd-00FQT7-28;
-	Thu, 10 Apr 2025 10:06:33 +0300
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: linux-crypto@vger.kernel.org
-Cc: Olivia Mackall <olivia@selenic.com>,
-	Herbert Xu <herbert@gondor.apana.org.au>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Sean Wang <sean.wang@mediatek.com>,
+   d="scan'208";a="133968976"
+Received: from lkp-server01.sh.intel.com (HELO b207828170a5) ([10.239.97.150])
+  by fmviesa004.fm.intel.com with ESMTP; 10 Apr 2025 02:28:30 -0700
+Received: from kbuild by b207828170a5 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1u2oCy-0009s3-03;
+	Thu, 10 Apr 2025 09:28:28 +0000
+Date: Thu, 10 Apr 2025 17:28:08 +0800
+From: kernel test robot <lkp@intel.com>
+To: yiru zhang <yiru.zhang@mediatek.com>,
+	Suzuki K Poulose <suzuki.poulose@arm.com>,
+	Mike Leach <mike.leach@linaro.org>,
+	James Clark <james.clark@linaro.org>,
+	Alexander Shishkin <alexander.shishkin@linux.intel.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Avi Fishman <avifishman70@gmail.com>,
-	Tomer Maimon <tmaimon77@gmail.com>,
-	Tali Perry <tali.perry1@gmail.com>,
-	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	openbmc@lists.ozlabs.org
-Subject: [PATCH 1/3] hwrng: atmel - Add a local variable for struct device pointer
-Date: Thu, 10 Apr 2025 10:06:21 +0300
-Message-Id: <20250410070623.3676647-2-sakari.ailus@linux.intel.com>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250410070623.3676647-1-sakari.ailus@linux.intel.com>
-References: <20250410070623.3676647-1-sakari.ailus@linux.intel.com>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	coresight@lists.linaro.org, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	yiru zhang <yiru.zhang@mediatek.com>
+Subject: Re: [PATCH] [Patch v2]Add ETE devarch condition in
+ etm4_init_iomem_access
+Message-ID: <202504101759.7Ls0Uy4o-lkp@intel.com>
+References: <20250409032917.7580-1-yiru.zhang@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250409032917.7580-1-yiru.zhang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250410_000640_320045_E7038501 
-X-CRM114-Status: GOOD (  11.62  )
+X-CRM114-CacheID: sfid-20250410_022835_038115_76B987A5 
+X-CRM114-Status: GOOD (  11.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,47 +95,93 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a local variable for a struct device pointer instead of obtaining the
-hwrng priv field and casting it as a struct device pointer whenever it's
-needed.
+Hi yiru,
 
-Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
----
- drivers/char/hw_random/atmel-rng.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+kernel test robot noticed the following build warnings:
 
-diff --git a/drivers/char/hw_random/atmel-rng.c b/drivers/char/hw_random/atmel-rng.c
-index 143406bc6939..5192c39ebaeb 100644
---- a/drivers/char/hw_random/atmel-rng.c
-+++ b/drivers/char/hw_random/atmel-rng.c
-@@ -56,12 +56,13 @@ static int atmel_trng_read(struct hwrng *rng, void *buf, size_t max,
- 			   bool wait)
- {
- 	struct atmel_trng *trng = container_of(rng, struct atmel_trng, rng);
-+	struct device *dev = (struct device *)trng->rng.priv;
- 	u32 *data = buf;
- 	int ret;
- 
--	ret = pm_runtime_get_sync((struct device *)trng->rng.priv);
-+	ret = pm_runtime_get_sync(dev);
- 	if (ret < 0) {
--		pm_runtime_put_sync((struct device *)trng->rng.priv);
-+		pm_runtime_put_sync(dev);
- 		return ret;
- 	}
- 
-@@ -79,8 +80,8 @@ static int atmel_trng_read(struct hwrng *rng, void *buf, size_t max,
- 	ret = 4;
- 
- out:
--	pm_runtime_mark_last_busy((struct device *)trng->rng.priv);
--	pm_runtime_put_sync_autosuspend((struct device *)trng->rng.priv);
-+	pm_runtime_mark_last_busy(dev);
-+	pm_runtime_put_sync_autosuspend(dev);
- 	return ret;
- }
- 
+[auto build test WARNING on soc/for-next]
+[also build test WARNING on linus/master v6.15-rc1 next-20250410]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/yiru-zhang/Add-ETE-devarch-condition-in-etm4_init_iomem_access/20250409-113037
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/soc/soc.git for-next
+patch link:    https://lore.kernel.org/r/20250409032917.7580-1-yiru.zhang%40mediatek.com
+patch subject: [PATCH] [Patch v2]Add ETE devarch condition in etm4_init_iomem_access
+config: arm64-randconfig-002-20250410 (https://download.01.org/0day-ci/archive/20250410/202504101759.7Ls0Uy4o-lkp@intel.com/config)
+compiler: clang version 21.0.0git (https://github.com/llvm/llvm-project 92c93f5286b9ff33f27ff694d2dc33da1c07afdd)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250410/202504101759.7Ls0Uy4o-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202504101759.7Ls0Uy4o-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+>> drivers/hwtracing/coresight/coresight-etm4x-core.c:1144:9: warning: format specifies type 'unsigned int' but the argument has type 'unsigned long' [-Wformat]
+    1143 |                 pr_warn_once("Unknown ETM architecture: %x\n",
+         |                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         |                                                         %lx
+    1144 |                              devarch & ETM_DEVARCH_ID_MASK);
+         |                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   include/linux/printk.h:659:42: note: expanded from macro 'pr_warn_once'
+     659 |         printk_once(KERN_WARNING pr_fmt(fmt), ##__VA_ARGS__)
+         |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+   include/linux/printk.h:640:30: note: expanded from macro 'printk_once'
+     640 |         DO_ONCE_LITE(printk, fmt, ##__VA_ARGS__)
+         |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+   include/linux/once_lite.h:11:32: note: expanded from macro 'DO_ONCE_LITE'
+      11 |         DO_ONCE_LITE_IF(true, func, ##__VA_ARGS__)
+         |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+   include/linux/once_lite.h:31:9: note: expanded from macro 'DO_ONCE_LITE_IF'
+      31 |                         func(__VA_ARGS__);                              \
+         |                         ~~~~~^~~~~~~~~~~~
+   include/linux/printk.h:501:60: note: expanded from macro 'printk'
+     501 | #define printk(fmt, ...) printk_index_wrap(_printk, fmt, ##__VA_ARGS__)
+         |                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+   include/linux/printk.h:473:19: note: expanded from macro 'printk_index_wrap'
+     473 |                 _p_func(_fmt, ##__VA_ARGS__);                           \
+         |                         ~~~~    ^~~~~~~~~~~
+   1 warning generated.
+
+
+vim +1144 drivers/hwtracing/coresight/coresight-etm4x-core.c
+
+  1121	
+  1122	static bool etm4_init_iomem_access(struct etmv4_drvdata *drvdata,
+  1123					   struct csdev_access *csa)
+  1124	{
+  1125		u32 devarch = readl_relaxed(drvdata->base + TRCDEVARCH);
+  1126	
+  1127		if (!is_coresight_device(drvdata->base) || !is_devtype_cpu_trace(drvdata->base))
+  1128			return false;
+  1129	
+  1130		/*
+  1131		 * All ETMs must implement TRCDEVARCH to indicate that
+  1132		 * the component is an ETMv4. Even though TRCIDR1 also
+  1133		 * contains the information, it is part of the "Trace"
+  1134		 * register and must be accessed with the OSLK cleared,
+  1135		 * with MMIO. But we cannot touch the OSLK until we are
+  1136		 * sure this is an ETM. So rely only on the TRCDEVARCH.
+  1137		 */
+  1138		switch (devarch & ETM_DEVARCH_ID_MASK) {
+  1139		case ETM_DEVARCH_ETMv4x_ARCH:
+  1140		case ETM_DEVARCH_ETE_ARCH:
+  1141			break;
+  1142		default:
+  1143			pr_warn_once("Unknown ETM architecture: %x\n",
+> 1144				     devarch & ETM_DEVARCH_ID_MASK);
+  1145			return false;
+  1146		}
+  1147		drvdata->arch = etm_devarch_to_arch(devarch);
+  1148		*csa = CSDEV_ACCESS_IOMEM(drvdata->base);
+  1149		return true;
+  1150	}
+  1151	
+
 -- 
-2.39.5
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
