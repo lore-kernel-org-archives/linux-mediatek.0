@@ -4,58 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F365BC369A2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 15:58:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 666FCC3601E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 16:06:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WOVxH9t50z2mxC0bReHcwFEZS+zI/QXisi8z9/R9uFA=; b=Xw1mluDjZo7wRH
-	QAYvppBHdf4iCbvzyaltAw4ivcCwb0XlMysMAu8hrciirCJhrmLoOUdLAAGgxSX0mNCOLc5vv4cdz
-	Es56cj3AXGpGqrRqtdabd4hPWX49b3jHYaRChVr1ngtwd8t8XOSzr0TA3j6JnJxU35Xj/KQnBkKZP
-	RDdXVwqFmaXLQksJkneL9A0N/59Hx+9axZNFVB9sCoptTnSjbPZ9f0UKRCXkekd7QUqOu2wjl7Wl6
-	yqEh7UxvXvXgfCJ0/dtOePvYWIl5XNApRTa0z6zB8FTSl8Layg2zE9zs0Cc4VmDn0Gvtyp92NCkw5
-	z1Aefc1JLvyLkRfKhvhw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GGBRp/mJ44odAQ+DK3ZQeuktW6/k2UiJ6GrDt9QhUkQ=; b=ZacAp5vNt61qvPSiRkXVZn9eAH
+	lYJ7iJUD9QQs3QmeQBgd0pse8WRvB6zm09EB61d4iT7xroWWSZJEEpBbYK17Se+KlzbJvu3ci4G7P
+	3oQuotJ6jHgnnjUJlXbMtyYyYvD/+GtF7bPuhU86jTFUHpb1N3OwHPBfw8sDE3U8l+U3M9+E3TXLN
+	WbDO0J+zmy7gNrf0e2SN5no3H4NuYKGK/MQu+l/wGBDCAAJT2nVwi8ZD7yKBXAGyEywnPUe5jV/bF
+	32FWvuHuoO/lgLcddaVEztJSIXA6rcSixTbofpqJmZNNyEAF3LDxvFvqW6Xenvunc1DSakkInXLTH
+	sU6I7wwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2uI3-0000000B6kt-1qzL;
-	Thu, 10 Apr 2025 15:58:07 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1u2uPn-0000000B7sc-1i4b;
+	Thu, 10 Apr 2025 16:06:07 +0000
+Received: from mgamail.intel.com ([192.198.163.13])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2t4M-0000000AsKC-2scO;
-	Thu, 10 Apr 2025 14:39:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1744295993;
-	bh=UM8eRGMMrRlZ9igteIR0+9yJOLiReCR0kDQJdYbv4lA=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ZmOQdVz9NGS7NtFcyLuTddjNxN/VL6lXI10K5TmTGBFSR+g4LggqeFGpH3bYffs96
-	 zCVbGjwNHHlKNUictGQELTvAUbebWiIf34aCRUGIuiInyxvI7NFmLqc8fE8A2ZMSSI
-	 0c+eqKx4Rv5aqtfEnVli1ceZntCv2/RbvJGr2e6kpuVbLbEjEz/cQHJNIWGU3ZhvmT
-	 Ls3Bb5mZnSEMQ6k5aHgu1BKThYHDFzd7cflyMd9pKMivsqHKi7zmvjPnaTQuG0AGZt
-	 BBZ0o6uVJpwK2WDqTzftQJrpY4Hsr6yss4Rr/hFGxiJuK17OYFDagSwog/J+/k0Kqt
-	 eVGcsYEuJNobg==
-Received: from IcarusMOD.eternityproject.eu (fi-19-199-243.service.infuturo.it [151.19.199.243])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 45AD717E0CA7;
-	Thu, 10 Apr 2025 16:39:51 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: robh@kernel.org
-Subject: [PATCH v1 1/3] dt-bindings: power: mediatek: Support Dimensity 1200 MT6893 MTCMOS
-Date: Thu, 10 Apr 2025 16:39:42 +0200
-Message-ID: <20250410143944.475773-2-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250410143944.475773-1-angelogioacchino.delregno@collabora.com>
-References: <20250410143944.475773-1-angelogioacchino.delregno@collabora.com>
+	id 1u2tce-0000000Aymv-1UtY;
+	Thu, 10 Apr 2025 15:15:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1744298120; x=1775834120;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=V4GHZJ8ckeMnMp0rIGnPoc0LafTsnMm513zi7ZBVHVQ=;
+  b=CROV4MqHXSGRrysn0smbGdwbh+/D7iWjm6THt1yJxbQ/YVZ7YTPK55in
+   Dtd7hacN4FxRk/ng3DwDV5cfaRu7VnpKgAP5IWnBbuCOwCxOdyVYMeRYQ
+   Z64I1dwezzk3RMwcK0xGHLIqU15Tw5zrWFtOr2m9bQ01CasZPhGcaFCdu
+   l37do29E9a32b0LJXFqQXS1uCRp0A+QTNMTKlZLYfGWstAFn0C7M+Uj5q
+   om67Yduxrdb3lsb/XTr89ILMY7dgNrs2HueHdDxjcBpHPSzQ7fJEkrHyw
+   NdPxHrK8zXDoxigbQmZM2IkffjHWmES2WIQKxTgFMpDqdGQrR4zPlDcYV
+   w==;
+X-CSE-ConnectionGUID: PuDLA/e7TyalFsI+T7E1DA==
+X-CSE-MsgGUID: SbqTe0BXSTSM+xYDplzTwg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11400"; a="48534422"
+X-IronPort-AV: E=Sophos;i="6.15,202,1739865600"; 
+   d="scan'208";a="48534422"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+  by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Apr 2025 08:15:18 -0700
+X-CSE-ConnectionGUID: vQ7lhxf+QZ2w5KQxjMC4EQ==
+X-CSE-MsgGUID: XLyoK8lKQ9C7x/NfnQcgNg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,202,1739865600"; 
+   d="scan'208";a="128912597"
+Received: from turnipsi.fi.intel.com (HELO kekkonen.fi.intel.com) ([10.237.72.44])
+  by fmviesa007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Apr 2025 08:15:15 -0700
+Received: from kekkonen.localdomain (localhost [127.0.0.1])
+	by kekkonen.fi.intel.com (Postfix) with SMTP id CE9BF11F74E;
+	Thu, 10 Apr 2025 18:15:12 +0300 (EEST)
+Date: Thu, 10 Apr 2025 15:15:12 +0000
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: Herbert Xu <herbert@gondor.apana.org.au>
+Cc: linux-crypto@vger.kernel.org, Olivia Mackall <olivia@selenic.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Avi Fishman <avifishman70@gmail.com>,
+	Tomer Maimon <tmaimon77@gmail.com>,
+	Tali Perry <tali.perry1@gmail.com>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@baylibre.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org
+Subject: Re: [PATCH 1/3] hwrng: atmel - Add a local variable for struct
+ device pointer
+Message-ID: <Z_fggNyPaotb2mYh@kekkonen.localdomain>
+References: <20250410070623.3676647-1-sakari.ailus@linux.intel.com>
+ <20250410070623.3676647-2-sakari.ailus@linux.intel.com>
+ <Z_d2fcuWPiel_OnT@gondor.apana.org.au>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <Z_d2fcuWPiel_OnT@gondor.apana.org.au>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250410_073954_875136_B89CAB7C 
-X-CRM114-Status: GOOD (  10.98  )
+X-CRM114-CacheID: sfid-20250410_081520_413032_BF75D5B4 
+X-CRM114-Status: GOOD (  16.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,82 +95,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, conor+dt@kernel.org, mbrugger@suse.com, y.oudjana@protonmail.com, linux-pm@vger.kernel.org, ulf.hansson@linaro.org, linux-kernel@vger.kernel.org, mandyjh.liu@mediatek.com, lihongbo22@huawei.com, wenst@chromium.org, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, krzk+dt@kernel.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for the Power Domains (MTCMOS) integrated into the
-MediaTek Dimensity 1200 (MT6893) SoC.
+Hi Herbert,
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../power/mediatek,power-controller.yaml      |  2 ++
- .../dt-bindings/power/mediatek,mt6893-power.h | 35 +++++++++++++++++++
- 2 files changed, 37 insertions(+)
- create mode 100644 include/dt-bindings/power/mediatek,mt6893-power.h
+On Thu, Apr 10, 2025 at 03:42:53PM +0800, Herbert Xu wrote:
+> On Thu, Apr 10, 2025 at 10:06:21AM +0300, Sakari Ailus wrote:
+> > Add a local variable for a struct device pointer instead of obtaining the
+> > hwrng priv field and casting it as a struct device pointer whenever it's
+> > needed.
+> > 
+> > Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+> > ---
+> >  drivers/char/hw_random/atmel-rng.c | 9 +++++----
+> >  1 file changed, 5 insertions(+), 4 deletions(-)
+> > 
+> > diff --git a/drivers/char/hw_random/atmel-rng.c b/drivers/char/hw_random/atmel-rng.c
+> > index 143406bc6939..5192c39ebaeb 100644
+> > --- a/drivers/char/hw_random/atmel-rng.c
+> > +++ b/drivers/char/hw_random/atmel-rng.c
+> > @@ -56,12 +56,13 @@ static int atmel_trng_read(struct hwrng *rng, void *buf, size_t max,
+> >  			   bool wait)
+> >  {
+> >  	struct atmel_trng *trng = container_of(rng, struct atmel_trng, rng);
+> > +	struct device *dev = (struct device *)trng->rng.priv;
+> 
+> Please stop using the priv field and instead add a struct device
+> pointer to struct atmel_trng.
 
-diff --git a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-index 591a080ca3ff..9c7cc632abee 100644
---- a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-+++ b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-@@ -25,6 +25,7 @@ properties:
-     enum:
-       - mediatek,mt6735-power-controller
-       - mediatek,mt6795-power-controller
-+      - mediatek,mt6893-power-controller
-       - mediatek,mt8167-power-controller
-       - mediatek,mt8173-power-controller
-       - mediatek,mt8183-power-controller
-@@ -88,6 +89,7 @@ $defs:
-         description: |
-           Power domain index. Valid values are defined in:
-               "include/dt-bindings/power/mt6795-power.h" - for MT8167 type power domain.
-+              "include/dt-bindings/power/mediatek,mt6893-power.h" - for MT6893 type power domain.
-               "include/dt-bindings/power/mt8167-power.h" - for MT8167 type power domain.
-               "include/dt-bindings/power/mt8173-power.h" - for MT8173 type power domain.
-               "include/dt-bindings/power/mt8183-power.h" - for MT8183 type power domain.
-diff --git a/include/dt-bindings/power/mediatek,mt6893-power.h b/include/dt-bindings/power/mediatek,mt6893-power.h
-new file mode 100644
-index 000000000000..aeab51bb2ad8
---- /dev/null
-+++ b/include/dt-bindings/power/mediatek,mt6893-power.h
-@@ -0,0 +1,35 @@
-+/* SPDX-License-Identifier: (GPL-2.0 OR MIT) */
-+/*
-+ * Copyright (c) 2025 Collabora Ltd
-+ *                    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+ */
-+
-+#ifndef _DT_BINDINGS_POWER_MT6893_POWER_H
-+#define _DT_BINDINGS_POWER_MT6893_POWER_H
-+
-+#define MT6893_POWER_DOMAIN_CONN		0
-+#define MT6893_POWER_DOMAIN_MFG0		1
-+#define MT6893_POWER_DOMAIN_MFG1		2
-+#define MT6893_POWER_DOMAIN_MFG2		3
-+#define MT6893_POWER_DOMAIN_MFG3		4
-+#define MT6893_POWER_DOMAIN_MFG4		5
-+#define MT6893_POWER_DOMAIN_MFG5		6
-+#define MT6893_POWER_DOMAIN_MFG6		7
-+#define MT6893_POWER_DOMAIN_ISP			8
-+#define MT6893_POWER_DOMAIN_ISP2		9
-+#define MT6893_POWER_DOMAIN_IPE			10
-+#define MT6893_POWER_DOMAIN_VDEC0		11
-+#define MT6893_POWER_DOMAIN_VDEC1		12
-+#define MT6893_POWER_DOMAIN_VENC0		13
-+#define MT6893_POWER_DOMAIN_VENC1		14
-+#define MT6893_POWER_DOMAIN_MDP			15
-+#define MT6893_POWER_DOMAIN_DISP		16
-+#define MT6893_POWER_DOMAIN_AUDIO		17
-+#define MT6893_POWER_DOMAIN_ADSP		18
-+#define MT6893_POWER_DOMAIN_CAM			19
-+#define MT6893_POWER_DOMAIN_CAM_RAWA		20
-+#define MT6893_POWER_DOMAIN_CAM_RAWB		21
-+#define MT6893_POWER_DOMAIN_CAM_RAWC		22
-+#define MT6893_POWER_DOMAIN_DP_TX		23
-+
-+#endif /* _DT_BINDINGS_POWER_MT6893_POWER_H */
+Thanks for the review. I'll do that in v2.
+
 -- 
-2.49.0
+Regards,
 
+Sakari Ailus
 
