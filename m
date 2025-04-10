@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6748CC369A9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 17:07:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36D72C369A2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 17:09:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W1xA4iUf9Nf9g0nzG+K3sFTl8XJA4R6QYV4xdfo6Xx0=; b=jk/UWYcauM70N8W+bqCN3tvHdm
-	pcVq5nKhks2eKxpNiwZsHL/qkzcIhTy7PNOpeJYxm2i8jIg9luU7fX2A6KJI0zEuzbosBwqwV2JVX
-	k7DF27I47McF16dv4I3I3l1lWR3965QdjIBmoMmNhpQ+VaCMM7dRE+E1IsMzaYRQ4X8JQvRhpLp85
-	4bwiXzEZ8xpPyMsQ82IU2dyoiXaJ0CrgMcbk9Ao5UScKmCFYVg3X9M25GSkGRF8qnzR5XtCYTPkuM
-	h/Zi7hNbvX1yBPst6v/iGyVBu+w7D99uIXOCuvP5xxhtuejBZTsxf1eyTx13pnSbtLpSq5gtln07s
-	tTW+E57Q==;
+	bh=/WnS+rp6vT50A3JJ3ssMiqM6mQIpNm1UaXoxLrvMKsE=; b=AN1sUIX3CeF18rJ7mcr3XOMd8q
+	6Xv3QMYWfc8+5zYCiSFK/YrCBEoLn3wSaX0rwYYoV8qpnMSnnoWO36sHULfWxZZtprQUxnKROpWhB
+	pNjHq5s0KbiDPajMp0rMKRt70CgVrwr4epBMP+0Nov8Zh0EV+IsK1FIlrNFrT/qR2mpytwO/UDrHl
+	hWFSTDNUMzalf2Z/kwBiwOHvTNrBq/eBaYK2R+09KTKMZh10I987z8YfFeBjpRAW8pn67iEaIVtkY
+	pleLN9xIl5w+wtpeWjTJgMTqHlMKm7x6UANqu+XAsjOTyMGItHKwyyjappPs9vlwwktvwuxzxvGlY
+	aEclAL6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2vNY-0000000BJjn-23Yi;
-	Thu, 10 Apr 2025 17:07:52 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1u2vPQ-0000000BK7n-10bc;
+	Thu, 10 Apr 2025 17:09:48 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2u8K-0000000B54A-1RWp;
-	Thu, 10 Apr 2025 15:48:05 +0000
+	id 1u2u8M-0000000B54u-27P3;
+	Thu, 10 Apr 2025 15:48:07 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 0839CA4A925;
-	Thu, 10 Apr 2025 15:42:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 007AAC4CEDD;
-	Thu, 10 Apr 2025 15:48:02 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 08C1943C4A;
+	Thu, 10 Apr 2025 15:48:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 74791C4CEDD;
+	Thu, 10 Apr 2025 15:48:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744300083;
-	bh=08ZHSMoqcp6muzXlw3I6sj8QXRZ+fQyHgNMZj1SSrdY=;
+	s=k20201202; t=1744300084;
+	bh=dKAOoXa8SCYRYEZ5DexCu2UhSLqHH8rlgSZklM08q94=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=hvr+MRXWz6zZDqbGyKtarK07qSeX1tVPFXSoarGPEnD0U89TtphwqxdOSRLJUGR8s
-	 ijse85CijxUfmz4anXLpHxCZKbQPb/AX1QQ1dN4FedmWWau4+rvqXhgNFDAbFrPvhw
-	 YJWwW+1vted2FUTHOwDNhA8UGfbMx+nKhAZ19SWkUTR1SsMURjrv54YmGB6PV9SS9Z
-	 1khj6/sx3iSVKSHhelpuYN7tfbIQtVcdGpfcBIKLpQ/MjxraUlaGtpNhleFxFwq1Ku
-	 QimonuVOeh0Zwbj5EUUOk5DYIoJ/qmzM2cUcj12IC6hrggz5lNM2kXaBE3kWR3MwXo
-	 cL4uCcB7HchBA==
+	b=l2gIODf+ANFVlqZ9CulzWNQFCDEoQRk9OTYtBUUUmUr+0KRxQ+QpqorLHa6YLWbl8
+	 v3Oi2r0xr7ARSLLOMqYg5AZWNrArNFy1udHWR+bJVRxAxFquzbOBL3NmlJ561hNlLA
+	 fgqJ3BYhZfnGst0as+dG+23NMcPorSF+hKBPcg2XZk1HNLWkLkkH51tNlODcQCvckQ
+	 4LSBDn59C62j13sYFO/xz4YPyXOa0LmbDztipsCo3yE50CeVEm/RfpOSRPmrotfBrH
+	 QjFjYrdKte/IjRM21kzYTJi9VvedUeiF+JT+R2BNFy99OSpj3GB9FUVaTetGmcoZq2
+	 18/BEZEbZraOA==
 From: "Rob Herring (Arm)" <robh@kernel.org>
-Date: Thu, 10 Apr 2025 10:47:33 -0500
-Subject: [PATCH v2 12/17] dt-bindings: arm/cpus: Add schemas for
- "enable-method" dependencies
+Date: Thu, 10 Apr 2025 10:47:34 -0500
+Subject: [PATCH v2 13/17] dt-bindings: arm/cpus: Re-wrap 'description'
+ entries
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250410-dt-cpu-schema-v2-12-63d7dc9ddd0a@kernel.org>
+Message-Id: <20250410-dt-cpu-schema-v2-13-63d7dc9ddd0a@kernel.org>
 References: <20250410-dt-cpu-schema-v2-0-63d7dc9ddd0a@kernel.org>
 In-Reply-To: <20250410-dt-cpu-schema-v2-0-63d7dc9ddd0a@kernel.org>
 To: Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -87,8 +87,8 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  Sudeep Holla <sudeep.holla@arm.com>
 X-Mailer: b4 0.15-dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250410_084804_520098_BEB8269B 
-X-CRM114-Status: GOOD (  15.66  )
+X-CRM114-CacheID: sfid-20250410_084806_595448_43DE9EA6 
+X-CRM114-Status: GOOD (  18.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,163 +103,177 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Replace the prose for properties dependent on specific "enable-method"
-values with schemas defining the same requirements.
-
-Both "qcom,acc" and "qcom,saw" properties appear to be required for any
-of the Qualcomm enable-method values, so the schema is a bit simpler
-than what the text said. The properties are also needed on some Qualcomm
-platforms with other enable-method values. It's limited to Cortex A53
-based platforms so use that to disable the properties. The references
-to arm/msm/qcom,saw2.txt and arm/msm/qcom,kpss-acc.txt are out of date,
-so just drop them.
+Some of the 'description' entries have odd line wrapping and incorrect
+YAML block modifiers. The 'description' entries should typically wrap
+at 80 chars. Reformat the entries to follow that along with using '>'
+modifiers as appropriate.
 
 Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
 Reviewed-by: Sudeep Holla <sudeep.holla@arm.com>
 ---
-v2:
- - Only disallow qcom,acc and qcom,saw on !cortex-a53
- - Fix example in qcom,saw2.yaml
----
- Documentation/devicetree/bindings/arm/cpus.yaml    | 91 ++++++++++++++--------
- .../devicetree/bindings/soc/qcom/qcom,saw2.yaml    |  3 +-
- 2 files changed, 60 insertions(+), 34 deletions(-)
+ Documentation/devicetree/bindings/arm/cpus.yaml | 85 +++++++++++--------------
+ 1 file changed, 36 insertions(+), 49 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/arm/cpus.yaml b/Documentation/devicetree/bindings/arm/cpus.yaml
-index 2e666b2a4dcd..351be2f77581 100644
+index 351be2f77581..acf38b3518dd 100644
 --- a/Documentation/devicetree/bindings/arm/cpus.yaml
 +++ b/Documentation/devicetree/bindings/arm/cpus.yaml
-@@ -273,8 +273,6 @@ properties:
-     description:
-       The DT specification defines this as 64-bit always, but some 32-bit Arm
-       systems have used a 32-bit value which must be supported.
--      Required for systems that have an "enable-method"
--        property value of "spin-table".
+@@ -10,9 +10,9 @@ maintainers:
+   - Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
  
-   cpu-idle-states:
+ description: |+
+-  The device tree allows to describe the layout of CPUs in a system through
+-  the "cpus" node, which in turn contains a number of subnodes (ie "cpu")
+-  defining properties for every cpu.
++  The device tree allows to describe the layout of CPUs in a system through the
++  "cpus" node, which in turn contains a number of subnodes (ie "cpu") defining
++  properties for every cpu.
+ 
+   Bindings for CPU nodes follow the Devicetree Specification, available from:
+ 
+@@ -41,45 +41,40 @@ description: |+
+ properties:
+   reg:
+     maxItems: 1
+-    description: |
+-      Usage and definition depend on ARM architecture version and
+-      configuration:
++    description: >
++      Usage and definition depend on ARM architecture version and configuration:
+ 
+-      On uniprocessor ARM architectures previous to v7
+-      this property is required and must be set to 0.
++      On uniprocessor ARM architectures previous to v7 this property is required
++      and must be set to 0.
+ 
+-      On ARM 11 MPcore based systems this property is
+-        required and matches the CPUID[11:0] register bits.
++      On ARM 11 MPcore based systems this property is required and matches the
++      CPUID[11:0] register bits.
+ 
+-        Bits [11:0] in the reg cell must be set to
+-        bits [11:0] in CPU ID register.
++        Bits [11:0] in the reg cell must be set to bits [11:0] in CPU ID register.
+ 
+         All other bits in the reg cell must be set to 0.
+ 
+-      On 32-bit ARM v7 or later systems this property is
+-        required and matches the CPU MPIDR[23:0] register
+-        bits.
++      On 32-bit ARM v7 or later systems this property is required and matches
++      the CPU MPIDR[23:0] register bits.
+ 
+-        Bits [23:0] in the reg cell must be set to
+-        bits [23:0] in MPIDR.
++        Bits [23:0] in the reg cell must be set to bits [23:0] in MPIDR.
+ 
+         All other bits in the reg cell must be set to 0.
+ 
+-      On ARM v8 64-bit systems this property is required
+-        and matches the MPIDR_EL1 register affinity bits.
++      On ARM v8 64-bit systems this property is required and matches the
++      MPIDR_EL1 register affinity bits.
+ 
+         * If cpus node's #address-cells property is set to 2
+ 
+-          The first reg cell bits [7:0] must be set to
+-          bits [39:32] of MPIDR_EL1.
++          The first reg cell bits [7:0] must be set to bits [39:32] of
++          MPIDR_EL1.
+ 
+-          The second reg cell bits [23:0] must be set to
+-          bits [23:0] of MPIDR_EL1.
++          The second reg cell bits [23:0] must be set to bits [23:0] of
++          MPIDR_EL1.
+ 
+         * If cpus node's #address-cells property is set to 1
+ 
+-          The reg cell bits [23:0] must be set to bits [23:0]
+-          of MPIDR_EL1.
++          The reg cell bits [23:0] must be set to bits [23:0] of MPIDR_EL1.
+ 
+       All other bits in the reg cells must be set to 0.
+ 
+@@ -278,29 +273,26 @@ properties:
      $ref: /schemas/types.yaml#/definitions/phandle-array
-@@ -333,24 +331,13 @@ properties:
- 
-   qcom,saw:
-     $ref: /schemas/types.yaml#/definitions/phandle
+     items:
+       maxItems: 1
 -    description: |
--      Specifies the SAW* node associated with this CPU.
--
--      Required for systems that have an "enable-method" property
--      value of "qcom,kpss-acc-v1" or "qcom,kpss-acc-v2"
--
--      * arm/msm/qcom,saw2.txt
+-      List of phandles to idle state nodes supported
+-      by this cpu (see ./idle-states.yaml).
 +    description:
-+      Specifies the SAW node associated with this CPU.
++      List of phandles to idle state nodes supported by this cpu (see
++      ./idle-states.yaml).
  
-   qcom,acc:
-     $ref: /schemas/types.yaml#/definitions/phandle
--    description: |
--      Specifies the ACC* node associated with this CPU.
--
--      Required for systems that have an "enable-method" property
--      value of "qcom,kpss-acc-v1", "qcom,kpss-acc-v2", "qcom,msm8226-smp" or
--      "qcom,msm8916-smp".
--
--      * arm/msm/qcom,kpss-acc.txt
-+    description:
-+      Specifies the ACC node associated with this CPU.
+   capacity-dmips-mhz:
+     description:
+       u32 value representing CPU capacity (see ../cpu/cpu-capacity.txt) in
+-      DMIPS/MHz, relative to highest capacity-dmips-mhz
+-      in the system.
++      DMIPS/MHz, relative to highest capacity-dmips-mhz in the system.
+ 
+   cci-control-port: true
+ 
+   dynamic-power-coefficient:
+     $ref: /schemas/types.yaml#/definitions/uint32
+-    description:
+-      A u32 value that represents the running time dynamic
+-      power coefficient in units of uW/MHz/V^2. The
+-      coefficient can either be calculated from power
++    description: >
++      A u32 value that represents the running time dynamic power coefficient in
++      units of uW/MHz/V^2. The coefficient can either be calculated from power
+       measurements or derived by analysis.
+ 
+-      The dynamic power consumption of the CPU  is
+-      proportional to the square of the Voltage (V) and
+-      the clock frequency (f). The coefficient is used to
++      The dynamic power consumption of the CPU  is proportional to the square of
++      the Voltage (V) and the clock frequency (f). The coefficient is used to
+       calculate the dynamic power as below -
+ 
+       Pdyn = dynamic-power-coefficient * V^2 * f
+@@ -309,10 +301,6 @@ properties:
+ 
+   performance-domains:
+     maxItems: 1
+-    description:
+-      List of phandles and performance domain specifiers, as defined by
+-      bindings of the performance domain provider. See also
+-      dvfs/performance-domain.yaml.
+ 
+   power-domains:
+     description:
+@@ -341,22 +329,21 @@ properties:
  
    rockchip,pmu:
      $ref: /schemas/types.yaml#/definitions/phandle
-@@ -378,22 +365,60 @@ properties:
-       formed by encoding the target CPU id into the low bits of the
-       physical start address it should jump to.
+-    description: |
++    description: >
+       Specifies the syscon node controlling the cpu core power domains.
  
--if:
--  # If the enable-method property contains one of those values
--  properties:
--    enable-method:
--      contains:
--        enum:
--          - brcm,bcm11351-cpu-method
--          - brcm,bcm23550
--          - brcm,bcm-nsp-smp
--  # and if enable-method is present
--  required:
--    - enable-method
--
--then:
--  required:
--    - secondary-boot-reg
-+allOf:
-+  - if:
-+      # If the enable-method property contains one of those values
-+      properties:
-+        enable-method:
-+          contains:
-+            enum:
-+              - brcm,bcm11351-cpu-method
-+              - brcm,bcm23550
-+              - brcm,bcm-nsp-smp
-+      # and if enable-method is present
-+      required:
-+        - enable-method
-+    then:
-+      required:
-+        - secondary-boot-reg
-+  - if:
-+      properties:
-+        enable-method:
-+          enum:
-+            - spin-table
-+            - renesas,r9a06g032-smp
-+      required:
-+        - enable-method
-+    then:
-+      required:
-+        - cpu-release-addr
-+  - if:
-+      properties:
-+        enable-method:
-+          enum:
-+            - qcom,kpss-acc-v1
-+            - qcom,kpss-acc-v2
-+            - qcom,msm8226-smp
-+            - qcom,msm8916-smp
-+      required:
-+        - enable-method
-+    then:
-+      required:
-+        - qcom,acc
-+        - qcom,saw
-+  - if:
-+      # 2 Qualcomm platforms bootloaders need qcom,acc and qcom,saw yet use
-+      # "spin-table" or "psci" enable-methods. Disallowing the properties for
-+      # all other CPUs is the best we can do as there's not any way to
-+      # distinguish these Qualcomm platforms.
-+      not:
-+        properties:
-+          compatible:
-+            const: arm,cortex-a53
-+    then:
-+      properties:
-+        qcom,acc: false
-+        qcom,saw: false
+-      Optional for systems that have an "enable-method"
+-      property value of "rockchip,rk3066-smp"
+-      While optional, it is the preferred way to get access to
+-      the cpu-core power-domains.
++      Optional for systems that have an "enable-method" property value of
++      "rockchip,rk3066-smp". While optional, it is the preferred way to get
++      access to the cpu-core power-domains.
  
- required:
-   - device_type
-diff --git a/Documentation/devicetree/bindings/soc/qcom/qcom,saw2.yaml b/Documentation/devicetree/bindings/soc/qcom/qcom,saw2.yaml
-index ca4bce817273..c2f1f5946cfa 100644
---- a/Documentation/devicetree/bindings/soc/qcom/qcom,saw2.yaml
-+++ b/Documentation/devicetree/bindings/soc/qcom/qcom,saw2.yaml
-@@ -73,9 +73,10 @@ examples:
-         #size-cells = <0>;
+   secondary-boot-reg:
+     $ref: /schemas/types.yaml#/definitions/uint32
+-    description: |
++    description: >
+       Required for systems that have an "enable-method" property value of
+       "brcm,bcm11351-cpu-method", "brcm,bcm23550" or "brcm,bcm-nsp-smp".
  
-         cpu@0 {
--            compatible = "qcom,kryo";
-+            compatible = "arm,cortex-a53";
-             device_type = "cpu";
-             enable-method = "qcom,kpss-acc-v2";
-+            qcom,acc = <&acc0>;
-             qcom,saw = <&saw0>;
-             reg = <0x0>;
-             operating-points-v2 = <&cpu_opp_table>;
+-      This includes the following SoCs: |
+-      BCM11130, BCM11140, BCM11351, BCM28145, BCM28155, BCM21664, BCM23550
++      This includes the following SoCs:
++      BCM11130, BCM11140, BCM11351, BCM28145, BCM28155, BCM21664, BCM23550,
+       BCM58522, BCM58525, BCM58535, BCM58622, BCM58623, BCM58625, BCM88312
+ 
+       The secondary-boot-reg property is a u32 value that specifies the
 
 -- 
 2.47.2
