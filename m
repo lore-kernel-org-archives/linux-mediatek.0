@@ -4,64 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D6D3C3601E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 11:37:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A7CDC369A6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 12:03:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Subject:References:In-Reply-To:Message-Id:Cc:To:From:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k6nd/ocisDTqslfqChrh1TkuKhin7w/00xiipHWw5zk=; b=CItE5AZcEJbJqtP/OOTnnIYUuy
-	iyquXKDNcy6YczwRY/1vpW4YI8rkikZ/zvT2JT+2crcSXqzPjVLScUgXVfXiQOChOMoREIA2LOJoq
-	1P19OXVNMnvGPIyk6hB2wXN/0luCbYUgd37QjWKU00AjbdRneUP1kYXFzMxk3QW6t3N/67LRS2e8B
-	ROssSmcoUcHSYYv0K0iXXr3872h9IKfOminyrpQtGqm4GUVChcT+DLw7ppCIGISlw0uATXNrTcdst
-	BMxBLOtK5jbdfwXPzx2VKE/GQrZcJIwWKJyD/hgQSHHqNV6L8gmCXjmHkiBk4EaNy9oND2VV4N/Ej
-	CwDI+JLg==;
+	bh=gl9oaGaRIsYt/WyBdN7UO9fsD1iIFpw+hRE7Ip3gDTM=; b=RRmcAOL0j7JKqBaXVnFAxA4pLs
+	YwlaeIcJKKQaRGmV7+NV8r46eqwEr4PKn5sc1C4wFP8Qq9Bgtd8b6KuDjtjJUplOXYdtrGeq9kjIG
+	iVHYIGRMNeOoyWkO8FRl+EM7+5HRUAdXYKm3FAsSyyAdQMC123IJs+hzMW4RSagVSJJ8UkJ5ICT8O
+	+pNQOxJbizMw6KelmnyVfHWDA/i62XoYevZ35AYMAmnbvjNj2xBXnUVtzRwfo8APa2ZhQrEdKHKRW
+	oGMyDyKYw/w2Hlwu4zvuI9JOPp5uu6CrnU2N110xAsMwun9xc6yjZmPIVsFEAUcey2P2ZZtBxcdTa
+	no3vfSzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2qEC-0000000AKCc-2anK;
-	Thu, 10 Apr 2025 11:37:52 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2pry-0000000AAvL-0hpA;
-	Thu, 10 Apr 2025 11:14:55 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id E943E106F;
-	Thu, 10 Apr 2025 04:14:52 -0700 (PDT)
-Received: from [10.1.196.40] (e121345-lin.cambridge.arm.com [10.1.196.40])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id DE7B73F6A8;
-	Thu, 10 Apr 2025 04:14:50 -0700 (PDT)
-Message-ID: <2e2ad90b-9e48-4711-a8da-85668493259b@arm.com>
-Date: Thu, 10 Apr 2025 12:14:48 +0100
+	id 1u2qdI-0000000AQcy-2FMQ;
+	Thu, 10 Apr 2025 12:03:48 +0000
+Received: from fout-b2-smtp.messagingengine.com ([202.12.124.145])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1u2qbT-0000000APzP-23Tv;
+	Thu, 10 Apr 2025 12:01:57 +0000
+Received: from phl-compute-05.internal (phl-compute-05.phl.internal [10.202.2.45])
+	by mailfout.stl.internal (Postfix) with ESMTP id 8903511400E8;
+	Thu, 10 Apr 2025 08:01:53 -0400 (EDT)
+Received: from phl-imap-11 ([10.202.2.101])
+  by phl-compute-05.internal (MEProxy); Thu, 10 Apr 2025 08:01:54 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
+	:cc:content-transfer-encoding:content-type:content-type:date
+	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to; s=fm1; t=1744286513;
+	 x=1744372913; bh=gl9oaGaRIsYt/WyBdN7UO9fsD1iIFpw+hRE7Ip3gDTM=; b=
+	dfg+YRcn27ujd2Kv89PNH28iSsx/7J18F2jg5wmmBRf8pCwvQaPjV1o7P8x/kROs
+	vvkaEZGKh4Yqj/RLXvclFPtu4fPBMK93Enw9GPRzzd22JO5qVvYm0yiIY2OM+VUY
+	LDtnq75Oz7w9eYYD91Bign6GT4zSA/4zm6MROyaMlWAFiKWre29U84VLxU2FSPkE
+	NT8uPtszkU/yY7WEuAAw1X0JSKFJVmEtqK9qOtv7PpM0LtNOCaMPhVbAQg2Wt2kj
+	ehPfW65hcdqzweofIQJwcG/YCyhN2fBlCluT87167OUV386sVeQu/JcMKerWhegc
+	iyUPtZcAywhDc6RVXB7nUg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:content-type:date:date:feedback-id:feedback-id
+	:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to:x-me-proxy
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1744286513; x=
+	1744372913; bh=gl9oaGaRIsYt/WyBdN7UO9fsD1iIFpw+hRE7Ip3gDTM=; b=r
+	8Zp9VEODKfutsmRAEbgUnrmBP3s0vdxVjQ8hpakmL3zjajt6qqTpVw916454vjfD
+	MYCRUzOEQP66c9+jX4v3aRjSpzYdR3Pn2o6ABlec/Jb5b5J0FuSN3zDzgEJncxJG
+	mr3wzL6l/A6SV4p+IF4pP1V3cyE2ZJRzIm2kkXP9GowfJB2Gkb15nmC3EMZTHmhu
+	EvaIZiuyGZoiFUksZ6ewc3NIgmf17tWIdAfOXtj2hf/Yh/2erVvJqYsgVmYyw70p
+	WL9b1Dpt3dH/1I6j59XUt7MntbL0AAiWiX/QrDcuw9gI8Sh+Gq2BMb8rn81QmirA
+	MEVWkzxStZrSeZgYJBRtA==
+X-ME-Sender: <xms:MLP3Z3ZzkHrptGtQOUk4WRvDyC57tPhsZw9eTxDP4-DVo3giJ-5fBg>
+    <xme:MLP3Z2ZJ-wOZhDIeQ-61FKaOu6linY8MUS3ia6cJ4zjA8_UAANbvmqWCqELvg8xO-
+    G4GclEPSZT2KHJX96Y>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvtdekkeehucetufdoteggodetrf
+    dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggv
+    pdfurfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpih
+    gvnhhtshculddquddttddmnecujfgurhepofggfffhvfevkfgjfhfutgfgsehtjeertder
+    tddtnecuhfhrohhmpedftehrnhguuceuvghrghhmrghnnhdfuceorghrnhgusegrrhhnug
+    gsrdguvgeqnecuggftrfgrthhtvghrnhephfdthfdvtdefhedukeetgefggffhjeeggeet
+    fefggfevudegudevledvkefhvdeinecuvehluhhsthgvrhfuihiivgepudenucfrrghrrg
+    hmpehmrghilhhfrhhomheprghrnhgusegrrhhnuggsrdguvgdpnhgspghrtghpthhtohep
+    udelpdhmohguvgepshhmthhpohhuthdprhgtphhtthhopehlihhnuhigsegrrhhmlhhinh
+    hugidrohhrghdruhhkpdhrtghpthhtoheprghnghgvlhhoghhiohgrtggthhhinhhordgu
+    vghlrhgvghhnohestgholhhlrggsohhrrgdrtghomhdprhgtphhtthhopegurghvvghmse
+    gurghvvghmlhhofhhtrdhnvghtpdhrtghpthhtoheprghnshhuvghlshhmthhhsehgmhgr
+    ihhlrdgtohhmpdhrtghpthhtohepughqfhgvgihtsehgmhgrihhlrdgtohhmpdhrtghpth
+    htohephhhkrghllhifvghithdusehgmhgrihhlrdgtohhmpdhrtghpthhtohepmhgrthht
+    hhhirghsrdgsghhgsehgmhgrihhlrdgtohhmpdhrtghpthhtohepvgguuhhmrgiivghtse
+    hgohhoghhlvgdrtghomhdprhgtphhtthhopehrughunhhlrghpsehinhhfrhgruggvrggu
+    rdhorhhg
+X-ME-Proxy: <xmx:MLP3Z588WIt1trNXStRldSHp7GGw67WcEJeidMURVp7sO9bDhwqc0Q>
+    <xmx:MLP3Z9oVgKRh86jQsy2Z2YvyqQrLhGfsSpuomX5U0Ip0M10L_vEhqg>
+    <xmx:MLP3ZyruZoteQa0f9aj6BpwIy6D1WAEC9Mg7V3M4simfzGzh1FZ-wA>
+    <xmx:MLP3ZzTAa1BWV4e7XYPfF-qLN-dK0NxTmJItaIgjsgO8qeTPamDZjw>
+    <xmx:MbP3Z_j0t2xgFRutTCp2TfvmslhP_6FnsCjYr9_pkLwdxVg5p1L3TQFr>
+Feedback-ID: i56a14606:Fastmail
+Received: by mailuser.phl.internal (Postfix, from userid 501)
+	id 2B1352220073; Thu, 10 Apr 2025 08:01:52 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] iommu/mediatek: Fix NULL pointer deference in
- mtk_iommu_device_group
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Joerg Roedel <joro@8bytes.org>,
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
- Yong Wu <yong.wu@mediatek.com>, Will Deacon <will@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Bjorn Helgaas <bhelgaas@google.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- "Rob Herring (Arm)" <robh@kernel.org>, kernel@collabora.com,
- Joerg Roedel <jroedel@suse.de>, Jason Gunthorpe <jgg@ziepe.ca>,
- iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-References: <20250403-fix-mtk-iommu-error-v2-1-fe8b18f8b0a8@collabora.com>
- <CAGXv+5HJpTYmQ2h-GD7GjyeYT7bL9EBCvu0mz5LgpzJZtzfW0w@mail.gmail.com>
- <2792b9df-fc82-4252-af64-cf888a36f561@arm.com>
- <CAGXv+5E=NhFcS0fG_kbLTnF6xfTkBOHQwsNxszHDcgWfn3zFiA@mail.gmail.com>
-From: Robin Murphy <robin.murphy@arm.com>
-Content-Language: en-GB
-In-Reply-To: <CAGXv+5E=NhFcS0fG_kbLTnF6xfTkBOHQwsNxszHDcgWfn3zFiA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+X-ThreadId: T2340d8c52bdbc82d
+Date: Thu, 10 Apr 2025 14:01:31 +0200
+From: "Arnd Bergmann" <arnd@arndb.de>
+To: "Christian Marangi" <ansuelsmth@gmail.com>
+Cc: "Andrew Lunn" <andrew@lunn.ch>, "Heiner Kallweit" <hkallweit1@gmail.com>,
+ "Russell King" <linux@armlinux.org.uk>,
+ "David S . Miller" <davem@davemloft.net>,
+ "Eric Dumazet" <edumazet@google.com>, "Jakub Kicinski" <kuba@kernel.org>,
+ "Paolo Abeni" <pabeni@redhat.com>, "Daniel Golle" <daniel@makrotopia.org>,
+ "Qingfang Deng" <dqfext@gmail.com>,
+ "SkyLake Huang" <SkyLake.Huang@mediatek.com>,
+ "Matthias Brugger" <matthias.bgg@gmail.com>,
+ "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
+ "Randy Dunlap" <rdunlap@infradead.org>, "Simon Horman" <horms@kernel.org>,
+ Netdev <netdev@vger.kernel.org>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Message-Id: <0b5c6443-f50f-47a1-b5f5-900d70b69e06@app.fastmail.com>
+In-Reply-To: <67f7a119.050a0220.b15d0.3df3@mx.google.com>
+References: <20250410100410.348-1-ansuelsmth@gmail.com>
+ <c108aee9-f668-4cd7-b276-d5e0a266eaa4@app.fastmail.com>
+ <67f7a015.df0a0220.287b40.53b2@mx.google.com>
+ <67f7a119.050a0220.b15d0.3df3@mx.google.com>
+Subject: Re: [net-next PATCH v2 1/2] net: phy: mediatek: permit to compile test GE SOC
+ PHY driver
+Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250410_041454_290508_99F68D3A 
-X-CRM114-Status: GOOD (  33.14  )
+X-CRM114-CacheID: sfid-20250410_050155_585983_03651F2D 
+X-CRM114-Status: UNSURE (   8.34  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,121 +129,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 08/04/2025 5:46 am, Chen-Yu Tsai wrote:
-> On Mon, Apr 7, 2025 at 8:38 PM Robin Murphy <robin.murphy@arm.com> wrote:
->>
->> On 2025-04-07 6:17 am, Chen-Yu Tsai wrote:
->>> Hi,
->>>
->>> On Thu, Apr 3, 2025 at 6:24 PM Louis-Alexis Eyraud
->>> <louisalexis.eyraud@collabora.com> wrote:
->>>>
->>>> Currently, mtk_iommu calls during probe iommu_device_register before
->>>> the hw_list from driver data is initialized. Since iommu probing issue
->>>> fix, it leads to NULL pointer dereference in mtk_iommu_device_group when
->>>> hw_list is accessed with list_first_entry (not null safe).
->>>>
->>>> So, change the call order to ensure iommu_device_register is called
->>>> after the driver data are initialized.
->>>>
->>>> Fixes: 9e3a2a643653 ("iommu/mediatek: Adapt sharing and non-sharing pgtable case")
->>>> Fixes: bcb81ac6ae3c ("iommu: Get DT/ACPI parsing into the proper probe path")
->>>> Reviewed-by: Yong Wu <yong.wu@mediatek.com>
->>>> Tested-by: Chen-Yu Tsai <wenst@chromium.org> # MT8183 Juniper, MT8186 Tentacruel
->>>> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>>> Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>>> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
->>>> ---
->>>> This patch fixes a NULL pointer dereference that occurs during the
->>>> mtk_iommu driver probe and observed at least on several Mediatek Genio boards:
->>>> ```
->>>> Unable to handle kernel NULL pointer dereference at virtual address 0000000000000000
->>>
->>> This is a reminder to please land this and send to Linus ASAP.
->>>
->>> This fixes the v6.15-rc1 kernel on all the MediaTek Chromebook platforms,
->>> except for MT8188, which seems to have another issue in iommu_get_dma_domain()
->>> used from the DRM driver:
->>>
->>>       Disabling lock debugging due to kernel taint
->>>       Unable to handle kernel NULL pointer dereference at virtual
->>> address 0000000000000158
->>
->>   From the offset and the stacktrace code dump, this would appear to be
->> the dereference of dev->iommu_group->default_domain, when
->> dev->iommu_group is NULL (and CONFIG_DEBUG_LOCK_ALLOC makes the mutex
->> really big). Which is a bit weird, as to get into iommu-dma at all in
->> that state would suggest that whatever device this is has been removed
->> and had its group torn down again after iommu_setup_dma_ops() has run...
->> but either way that implies the DRM driver is passing an arbitrary
->> device to the DMA API without making sure it's actualy valid.
->>
->> Trying to trace the provenance of dma_dev from mtk_gem_create() back
->> through the rest of the driver is quite the rabbit-hole, but it seems
->> like in at least one case it can lead back to an
->> of_find_device_by_node() in ovl_adaptor_comp_init(), which definitely
->> looks sufficiently sketchy.
-> 
-> It kind of makes sense since the "display controller" is composed of
-> many individual hardware blocks. The struct device tied to the DRM
-> driver is more or less just a place holder. Only the first block,
-> either the OVL (overlay compositing engine) or RDMA (scanout engine)
-> accesses memory, so I think it makes sense to use that as the dma_dev.
+On Thu, Apr 10, 2025, at 12:44, Christian Marangi wrote:
+> On Thu, Apr 10, 2025 at 12:40:15PM +0200, Christian Marangi wrote:
+>
+> Also 99% I could be wrong but from what I can see in NVMEM kconfig,
+> NVMEM is not tristate but only bool? So NVMEM=m is not a thing?
 
-I'm not disputing whether the choice of dma_dev is semantically 
-appropriate, I'm just saying that the method of pulling a struct device 
-reference out of the DT topology shows no *obvious* guarantee that that 
-specific device will have a driver bound and be validly configured 
-before that dma_dev can be used via any other path. Especially when it's 
-all happening off the back of another fake device created by the fake 
-DRM device itself.
+Ah, I missed that. In this case your patches are both fine.
 
-Maybe there's some hidden magic in all the component stuff which makes 
-it work out fine, I don't know. This was just an observation since I 
-went looking for potential bugs and found something which at first 
-glance *looks* rather fragile, compared to, say, if mtk_mdp_rdma's own 
-probe() or bind() were to directly set itself as the DMA device.
-
-> With some more logs, I did find something else fishy. Here the IOMMU
-> for the second display pipeline fails to probe:
-> 
->      mtk-iommu 1c028000.iommu: error -EINVAL: Failed to register IOMMU
->      mtk-iommu 1c028000.iommu: probe with driver mtk-iommu failed with error -22
-> 
-> Then later on, deferred probe times out, and the display pipeline is
-> brought up regardless:
-> 
->      mediatek-disp-ovl 1c000000.ovl: deferred probe timeout, ignoring dependency
->      mediatek-disp-ovl 1c000000.ovl: Adding to IOMMU failed: -110
->      mediatek-disp-rdma 1c002000.rdma: deferred probe timeout, ignoring
-> dependency
->      mediatek-disp-rdma 1c002000.rdma: Adding to IOMMU failed: -110
->      (repeats for all the individual components of the display pipeline)
->      mediatek-drm mediatek-drm.16.auto: bound 1c000000.ovl (ops
-> mtk_disp_ovl_component_ops)
->      mediatek-drm mediatek-drm.16.auto: bound 1c002000.rdma (ops
-> mtk_disp_rdma_component_ops)
->      (repeats for all the individual components of the display pipeline)
->      mediatek-drm mediatek-drm.16.auto: DMA device is 1c000000.ovl
->      [drm] Initialized mediatek 1.0.0 for mediatek-drm.16.auto on minor 1
-> 
-> And all without a functional IOMMU.
-
-Ah, that I was not expecting, and it does indeed explain how things get 
-into that state.
-
-> So I think this brings up two more questions:
-> 
-> 1. Why is the IOMMU failing to probe?
-> 2. Why is the core code still going the IOMMU DMA alloc path if there
->     is no usable IOMMU?
-> 
-> I'll look into the first question first. Insights welcome for the second
-> one.
-
-I had a think about it, and although there's very much a historical mess 
-in this area, I'm inclined to agree that we could do better. Patch sent.
-
-Cheers,
-Robin.
+Acked-by: Arnd Bergmann <arnd@arndb.de>
 
