@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 678DDC369A9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 18:08:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54012C3601E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 18:31:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dAc+8MmXaPw82AK614idcCEM+ZCB9j3mz3cx8QDG7lg=; b=QnXjKJYuFAcLdfu2lDuXbKgNv/
-	B56vtv7/WsOvuxY/83Gp6cjTCmMmiC24JVdwuMc2QkxO6Kec2IIVrot1GjpAta2kdFNZHfu/4VDk/
-	75hin60XmqDsDIgmpmxmL4jk20Jsk8ufLYvz2AqTYG/+gXSAl36tH+Ek6z4s0wd+guCM4r+W8fM3i
-	pCCTiMy4OLHCqSeH5xWZrBL5QIVmCFGuNH4jde/CDEgFP15ZlvfbBQIm2qiwWt5ME1yfNgToSU6kn
-	AG1/h6IFP4dpEUUvxNQlwuN/uPaBXKH3Fnyowt93L2Hc1Xm7mYUXAukv8NOLZVSkjSk8q7VrX4LK3
-	+vVjFTjg==;
+	bh=RVEmfdcIK+nAC24P6F8Ud5S0YAAGuFYjRvgCZ39ZrCQ=; b=vq1qntUo8bz3dHws9iCxAD/N4w
+	mm6WgO3RM+bapro8Ti4MKYYkwCD2ijwQMZxIZZQSqkILNT0GVeybBZ/g6MZtgZsuah7bYPZaXC9mt
+	aDU/XVhgMWlA7W+Z1N1+W3Ihx6rb5aTPmt32Qjaawu2o32WtTirVrYvLG6aV9V4VmdAlTfJZcnJWm
+	906uqE/Kikdr/FXjTBPUkBgnVnqANuKYbux9xuL2aFevFSVRbmeMFM5FfhFekf8tPdBZwZnP9sP5K
+	Bqj0zNbGHQmtJJ4LlCjsNfvNpwppsI25WcXDNEprI0LcSeUx2q3TiVu4gRtFQZlxMP+sFDkDx8aXC
+	0h6hqNyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2wKQ-0000000BUMX-1u93;
-	Thu, 10 Apr 2025 18:08:42 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1u2wgI-0000000BWLv-1Iu9;
+	Thu, 10 Apr 2025 18:31:18 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2vbB-0000000BMFV-00mC;
-	Thu, 10 Apr 2025 17:21:58 +0000
-Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-43cf0d787eeso12619905e9.3;
-        Thu, 10 Apr 2025 10:21:56 -0700 (PDT)
+	id 1u2vd8-0000000BMa0-1K9W;
+	Thu, 10 Apr 2025 17:23:59 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-39c2688619bso665324f8f.1;
+        Thu, 10 Apr 2025 10:23:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744305715; x=1744910515; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1744305836; x=1744910636; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:subject:cc
          :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=dAc+8MmXaPw82AK614idcCEM+ZCB9j3mz3cx8QDG7lg=;
-        b=QtJXuOHnVLK0vMHL4p4RMwdRP/MiQQDqrk5JbofYsqYfiRKcHg9/kMdmtVUu2s6Zl2
-         JDXQIU3zurvKjtbzMGm8vW2sSDJMmJIDCwJimAZZ6F49xKRfSu8dUXCeAHoHjPv3q5Kl
-         wINyNETSIRVXj6VKFsxt0vqXaDEiGr41GA7iSu/MwBTuDJJbDvv5YLzyiNpipC6Zxaqr
-         LwXJUztA+fThT3O5OQ0pPBR4dXCTzjcZBqBSylADnWJq80bwXb0kA1Rjx0y/+xj5Naa1
-         CyaE4AOTdT1P7AOS6nbLzvsKZE5NnguoO+CWBkpP2tjYGynDu6W93s9wpBPvu/ZPHqAo
-         s4aA==
+        bh=RVEmfdcIK+nAC24P6F8Ud5S0YAAGuFYjRvgCZ39ZrCQ=;
+        b=m9t/RrWfzN3ejrUcFLtu3NGpbdNof2lwVq6Ts7pt9fdrlw4rx7t+Lg9Ho2nxt9FxFu
+         Bw5ueHMh0hoG4UsCcBpY5b4njIeNAEqRXWAfBbKkN15OpLScPOLDF0TkmcoGN/S0Qiue
+         SKJRedAmgWo0FvfRg2n3Kz5Dqh8VLZKccOUZzq/Dw/otzoNwpYBONJn3oREe+nERxfdx
+         7DA+ACPx+vuQPuvfDO/7C3ytPl6Nx78LBZS6Ssp3uyo9roE+LCO7bdYPED3oy6nw0UJP
+         r2CQmeooIRyUSCWe6Tazom5kASNhhnIDB2v/EELc67vHsw1W8/CyEVdgkuKyUkGJf/4r
+         +l9Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744305715; x=1744910515;
+        d=1e100.net; s=20230601; t=1744305836; x=1744910636;
         h=in-reply-to:content-disposition:mime-version:references:subject:cc
          :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=dAc+8MmXaPw82AK614idcCEM+ZCB9j3mz3cx8QDG7lg=;
-        b=M6PODQ8dG/NWdUWuwIFEL0+n1PrJ3+fO80i7+ejcvgNs3MOKOhOFuRWnn3n7k45bpE
-         HWg2CJjJiLVZUddqZwdtQTlJUPhpXABSE+PmS5A3HjIJlOlKk0uU5t+5ukAzUlaM4Rka
-         IwRvzPqlqlXNdtQbzXmzeGVgABKHv/c9F0TTlwnyCeLeGF3ntuXaudnO5y997AZkyTri
-         /iet01R11CyL2di4q3maNaJZDafP8Sb21IOTiQtUY2dtPs+YYNJ5+Yn00h2DRHKJz2Vi
-         LT4TGrb6pJykppmpzUGK2mdkjyJE7zik9k5058S5gjezC+HdENal6JFmomy5lPg2QokW
-         ZwIw==
-X-Forwarded-Encrypted: i=1; AJvYcCWBgn1wf5YWO7LRllfPtY7DF8V+c6j43f3VA6ZDTw+DSSEsnJwWu+mYsA4CQoMkB6oQmL1haEMBZppcMX2kWQw=@lists.infradead.org, AJvYcCX/0d3uDMktykdcGFGUV306CCjiMQzaqEbygha074QPDSoFARW3lkSXw89uCyd3HAki0vvrUkPuUPS+eoCW5ltO@lists.infradead.org
-X-Gm-Message-State: AOJu0YxDEljp2Lh8Sl8vQuA7dijyNc5P+qAqUJzCDVu1a3zBVpWt9Fm9
-	r1g3/3MLwfMSPcwD4GkRhmVebBpE4X4Z+/BZxIYB5WpB57trXS9y
-X-Gm-Gg: ASbGncs/hVvuvACJa+V+W8rFbtlmaW2xPS++cglpdQ6cJy0VC0G39TldYPr5dbwRVvW
-	LcXo1aVbb9a/XxQr8ULL/mXlWpSEoc4C22mrMyH/y6kdJiph7MAptYFFluuWPnEhVE0VJ6taxPX
-	+wV7c3KK7PTrFYgZEe4AxDnt32cYBDH3P6G46RIaa2NUFjmQOzYYYpmrvh6cEAyYK38VMiwvrrh
-	hZvcRc4a6ENO7UJR/e3NnaOSGyfgzC6NljxOWZYnzahLjkla6DMVaJ2zUYnP2MOdC+64dyC1uvl
-	vU2+Fu5gFjYhEEbGr662IzcxuN05baXWvMVGKdQH7Wyo89mU1W07Trxk+xpQNczq+SIbKJMi
-X-Google-Smtp-Source: AGHT+IH9Q8JVxZ+OtPlHUwBVz66fYYqdFxCdjwnV7YZ5WdP6zgznnwKgqIHbad9mCS+gFQ4yfd7yUg==
-X-Received: by 2002:a05:600c:35cf:b0:43d:aed:f7de with SMTP id 5b1f17b1804b1-43f2ff9c1c8mr27833405e9.21.1744305715155;
-        Thu, 10 Apr 2025 10:21:55 -0700 (PDT)
+        bh=RVEmfdcIK+nAC24P6F8Ud5S0YAAGuFYjRvgCZ39ZrCQ=;
+        b=tKO/2gSRHbabXXvRAzhZIQaGIBSOtNlIlDx4nbT0YNUwv2gxG6o/iAmE4RXzmOl6um
+         J7CpJ0pXBQr7JfoFd8XQCQSB3rPnSYWESR0VIOyYyeFHAbMR/ILWp9wYdzobzx933fvJ
+         GBfdWCDe2AVTiJRgVU7cybPHO2RqE0qL4uJFI7auc7OZtS2Q0abpUu+ljvO/IIuSLYH0
+         mv/RnpaJv2Eyzzbzegzk3NVpMkRIvEIve/2pOj8/uHtPy6DoTyVY7aTtwOCtcbq6OzNA
+         m7zzIpq9gYAXC07YNIbYTEqD+SqYA5WCN+nHamv5gLIqc37jj29h/RGfi1ELrRJP1QM0
+         h6KQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVmjsQ8pjpB/jzN9cQPVLUGYbMV52SU+7tDbYtZLdfZvtT1W5YTDvGrbMlYtpUmdJtsj9wTuo8kKA6vFZNrnFfM@lists.infradead.org, AJvYcCWxX28uuZWXtmQzU13dS7t7srDT5B6aVTR+eYF6uMvYJl04YMQqDOFNi58ZyQBrBcvxgpBFUZHzrLqzwqZalds=@lists.infradead.org
+X-Gm-Message-State: AOJu0YweetLD3LNAp1qPXdNb1Smz7n1Hzn+WIslX5V3BLGnceUd4wVS3
+	H0TiXMamw+zSpJ/T3Wmyi+AM5XHzgCeoI9nz9UcYgUJ/R51S5dLo
+X-Gm-Gg: ASbGnctL4Aj4OCLCbpRJt+wc6JgmZUX5jyXBHAq6TgDNBYzz5S1/IacqvOFfhvJ0q/e
+	mwadNT4DcaryqLea6jjv3308pk+7xZOMC+jhQUajloO3I/DxQrUVmaW2nyicRhsZAqc3ixodLBQ
+	KIbIDX1HGXrMrYwAVAJqzO6Kv8oaVSaKOTc98h5HPa3R7RfUmNAu/y3JpwcHcb4zgr2yuw8s4WQ
+	2u1xMh9hzqpPgDWuYg461jPaPUBVUYgSNJTslKhbpvXiNsktu471v56BHdELnb/RIHctCgW28/q
+	Y5keXluCnrvDB5KZX4T8VOpxXhaWhuisQo5QvgzMIZrfQ2Kw/P+XqY1U4jeULJvDnGNl5fr8NN1
+	soTKFToE=
+X-Google-Smtp-Source: AGHT+IFqhoIbl8rG6Xm1pydrcNvSBmIecSBYlMaEofFIFMZzgUR9B34igWvZcOG2E52kzZjCqGGyAw==
+X-Received: by 2002:a05:6000:2586:b0:391:3aaf:1d5d with SMTP id ffacd0b85a97d-39d8f47497bmr3207232f8f.27.1744305836300;
+        Thu, 10 Apr 2025 10:23:56 -0700 (PDT)
 Received: from Ansuel-XPS. (93-34-88-225.ip49.fastwebnet.it. [93.34.88.225])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43f2075fc99sm62515765e9.29.2025.04.10.10.21.53
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39d893f0a75sm5495874f8f.62.2025.04.10.10.23.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Apr 2025 10:21:54 -0700 (PDT)
-Message-ID: <67f7fe32.050a0220.130904.08f8@mx.google.com>
-X-Google-Original-Message-ID: <Z_f-MLd5pX41-Zh6@Ansuel-XPS.>
-Date: Thu, 10 Apr 2025 19:21:52 +0200
+        Thu, 10 Apr 2025 10:23:55 -0700 (PDT)
+Message-ID: <67f7feab.df0a0220.40a6f.c911@mx.google.com>
+X-Google-Original-Message-ID: <Z_f-qflwHutRYS6_@Ansuel-XPS.>
+Date: Thu, 10 Apr 2025 19:23:53 +0200
 From: Christian Marangi <ansuelsmth@gmail.com>
 To: Andrew Lunn <andrew@lunn.ch>
 Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
@@ -97,14 +98,14 @@ Subject: Re: [net-next PATCH v14 06/16] net: mdio: regmap: prepare support
  for multiple valid addr
 References: <20250408095139.51659-1-ansuelsmth@gmail.com>
  <20250408095139.51659-7-ansuelsmth@gmail.com>
- <fc1ee916-c34f-4a73-bdf6-6344846d561b@lunn.ch>
+ <6f29a01d-35da-4d51-b309-a1799950a707@lunn.ch>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <fc1ee916-c34f-4a73-bdf6-6344846d561b@lunn.ch>
+In-Reply-To: <6f29a01d-35da-4d51-b309-a1799950a707@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250410_102157_040583_3E27266F 
-X-CRM114-Status: GOOD (  15.84  )
+X-CRM114-CacheID: sfid-20250410_102358_352031_D81C3030 
+X-CRM114-Status: GOOD (  17.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,22 +120,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 10, 2025 at 07:13:34PM +0200, Andrew Lunn wrote:
+On Thu, Apr 10, 2025 at 07:18:02PM +0200, Andrew Lunn wrote:
 > On Tue, Apr 08, 2025 at 11:51:13AM +0200, Christian Marangi wrote:
 > > Rework the valid_addr and convert it to a mask in preparation for mdio
 > > regmap to support multiple valid addr in the case the regmap can support
 > > it.
-> >  	mr = mii->priv;
-> >  	mr->regmap = config->regmap;
-> > -	mr->valid_addr = config->valid_addr;
-> > +	mr->valid_addr_mask = BIT(config->valid_addr);
 > 
-> I don't see how this allows you to support multiple addresses. You
-> still only have one bit set in mr->valid_addr_mask.
+> I think it would be good to pull these MDIO regmap patches out into a
+> series of their own. We know there is a user, so i'm happy for us the
+> accept it without that user. But this code needs further discusion,
+> which will be irrelevant for the switch.
 >
 
-This is really a preparation patch for the next 2 and split from the
-other to better evaluate the change for the mask.
+Ok so how you would like to proceed for the remaining patch? Repost as RFC?
+
+Still waiting feedback for nvmem and mfd so I would love to get feedback
+for them (that are also irrelevant to the switch)
 
 -- 
 	Ansuel
