@@ -4,118 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91541C3601E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 07:12:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38E0CC369A2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 07:12:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YV128qhGuAyvX2XLDTOXX2NTQVmvho5pgSBUUl0uM3I=; b=uMDEYN4Zbqcya4H5zSIpL5mvgF
-	t/9gcKESufboNyaT04raRwgwYCzKL3jTkMOSbkV/IruocuyENZVMTXO8lUYhND0BlqYwEgRfZUMVo
-	1Tm1309Oea+O0IttecKscaVwqXG/mtmyxyimJqLtSuv+E3NhdSK1DzI8pYBfjEqAxXSCyo/vVZBBf
-	LRPABZH+WW9Mm6YtO1UIrf4DZvUoYUHpoI9OeruGlDZjY7Sa+P3Uk8XLjksmDY1LzZNbBNRACIeKb
-	dAhCpqiMJwate5jmnttHuakqatV9iP72jBt1Co7KfIiFESr29Da2olcXi+q4HCzRnZJXMbCRx9li6
-	vvfeN4kA==;
+	bh=HZpwQYi0LcWC3/4dCKnkownlqBa9y91eskNU6i1GdHY=; b=yZxfPlESHDp9zK6JusPPwLxPzh
+	7u/SkSQCwW8e3SxwI4222+WVpXZvSRHrfxpPTlUVTt77WPq/gOnyYe6OmAufawQEABP5jUNhWxjTZ
+	G4y9rI8SsySD9P3eR+MZSy3UybWyYSWKLGvAmu/Ehta+fIJreS/Kahy24c/pEdFqFxPSEA+BjjoOh
+	LIm4p9G+UjKroyHp2Ip8aDZAIqQRczG6uz7VEtF+w500KEsL0DdWDsFhK7t9bAgFzFu3HEwE75r4W
+	iIHbJa+HgjDkCyw+wIOLSMDQ9ogdDeZSZDv7rc5sm45cKinytAfuYL3FXDtdyWg5Zw756sf6HBmM6
+	JgZ+QTTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2m4v-00000009UQV-2Aga;
-	Thu, 10 Apr 2025 07:12:01 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1u2m4w-00000009URM-3hLQ;
+	Thu, 10 Apr 2025 07:12:02 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2ldm-00000009PVU-0PpU;
-	Thu, 10 Apr 2025 06:43:59 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-43d04ea9d9aso1895475e9.3;
-        Wed, 09 Apr 2025 23:43:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744267437; x=1744872237; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=YV128qhGuAyvX2XLDTOXX2NTQVmvho5pgSBUUl0uM3I=;
-        b=WAjDAjoY26qldf6iW0wQQkbkU4K8v6tO1nei1I3ylypxoedCNKxR0jh8eFvtcbrKMZ
-         2mQbIMo5um9iYJmhSiJMT6jNmzJ92b43rBJAn2y8tGPkr0Maext+1X7/UhT4Nst7bR/+
-         Avg4y9J/60DR+U/gosC5Sc0SadXARHMMlpsmlcLdGxuPhSdzmDiTGedXsdjX6RBVCIE0
-         3ruxe7BlbG3oB7d0YqglfAI3vcxDcheb+M0cwIyRxCdj91YDBt2p1W/Mf3Dvl3FkqkqN
-         2XMPEBEpPUID35q7IYzYKTG2+gsa+4TbaPCUw5awiXVXnAWvbihtDq928fPBrUy+U1SZ
-         LEwQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744267437; x=1744872237;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=YV128qhGuAyvX2XLDTOXX2NTQVmvho5pgSBUUl0uM3I=;
-        b=WoANAZGbidbqk7XpQPoOFv6Hzkph9pvsTlTSyaPwc518agVmOAHBOO7vVaBIquV5yC
-         ZmM5EKWMgHxB0Z7wzCbTRXKNNm0QQDJvwupKroRt4SAcHzO6/WAW5IRyZavS1gBjwAQ9
-         GTdlVqeMbLt+3k+vMqvAXSCT0nVh4mZxGFADWTw4VVREMPuHbDgFhGSR6iJ2WD8XakHo
-         J3UYmdDeOzcG2wdgkm9yFrsw4ACgtq+W/OyoCMVi8bCnxVE43PPCyX4BwgLC5snaB6BR
-         aAxU6U40pImNq1jDYB4Usk8l5ReN41h+E62KsGKLf6J/88R7zc1Ao7avVAMfZYgxZ2pn
-         0B5Q==
-X-Forwarded-Encrypted: i=1; AJvYcCUwb0cHGnE2zhBimh2xVfS5U4ZuWsyPrCbcDAJJ41MOh4ge8Q3bOZh9cotIt1HLEzM+o+auT7BqCvkLz31dlvRVpw==@lists.infradead.org, AJvYcCVcsv89ozJTjZhJBlVIjxvaz9jBsYw1T9vZo7quD1Q8HuSehGCtYQ5gSo8dM3DVsyTtALJxTBMNPOq/zUDJVrQ=@lists.infradead.org, AJvYcCVuJfbFJq2PbT98aoj3xyL/3gpHUmOdwOdRjWUle9CXdL1dNUHnhb+p84qJ/twi1OGgLP/FSNYzvjp+mC67@lists.infradead.org, AJvYcCWPRupjcCOca7L7OEZycUTaALTRyePtJqVDLsCZg7FoShUA86bohDYj5PfnFQxfQMT2pInD8EcY3Jsjv54MVZo=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzF1X7t8tBkRKqSur5jx2KDSuieBartv+uzwaDbXu/6EJajQMRx
-	JYaYBhEQaEzFOKcIyw7mtOiz5B8Wm6j2Ew90Drx269aVMxFCoT2X
-X-Gm-Gg: ASbGnct3TknRp0Qmzxz7FuOwyvy9Q1Mj6RYXrdA2w7zA2qShM58/MiY2ZXA027KAFGn
-	F9VoU6tieMUh24NXaqstrLzuh0kUdb90DEIwQ3nx/g1JsaCwPFpGFn8YCkCTDzlrGUT9bJ+zBv0
-	t9k+c5bvHdc9IHtyD21pdD90AXiVQ6w9Z5rf0AxGAmHNZ1tSa3g2UB4W72a1eQJYsdheG4cUufF
-	itqb1kbKNFHUtH+38uflUn+lL/nJCt9tJQMg19NT1lwp3YHSzlvTlk15acMESHFbYUCS+aKpbF5
-	m+QUlDmCoFT4q0c3+woCk5ZRzMbDqOiIEnig8nLdEMoFs6/WFgZmngAg1Pk4dF4ou7XfKIm/kBa
-	fTjatvZYbhNSVPX9m
-X-Google-Smtp-Source: AGHT+IEL1gPJzOAzRp7flPkyN4Ef+Ndtjxrjlvobznu4GMFiYPht20jH1k+dVvg8c3EBb+I0DiJViw==
-X-Received: by 2002:a05:600c:3512:b0:43c:f689:dd with SMTP id 5b1f17b1804b1-43f2d7e9229mr11997625e9.19.1744267436516;
-        Wed, 09 Apr 2025 23:43:56 -0700 (PDT)
-Received: from jernej-laptop.localnet (86-58-6-171.dynamic.telemach.net. [86.58.6.171])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43f207cb692sm46662105e9.40.2025.04.09.23.43.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 09 Apr 2025 23:43:56 -0700 (PDT)
-From: Jernej =?UTF-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
-To: Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
- Samuel Holland <samuel@sholland.org>,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- Viresh Kumar <viresh.kumar@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Vincenzo Frascino <vincenzo.frascino@arm.com>,
- Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konradybcio@kernel.org>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Viresh Kumar <vireshk@kernel.org>, Nishanth Menon <nm@ti.com>,
- Stephen Boyd <sboyd@kernel.org>, zhouyanjie@wanyeetech.com,
- Conor Dooley <conor@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>,
- Claudiu Beznea <claudiu.beznea@tuxon.dev>,
- Steen Hegelund <Steen.Hegelund@microchip.com>,
- Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Magnus Damm <magnus.damm@gmail.com>, "Rob Herring (Arm)" <robh@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
- linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-mips@vger.kernel.org,
- imx@lists.linux.dev, linux-rockchip@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org
-Subject: Re: [PATCH 01/19] arm64: dts: allwinner: h5/h6: Drop spurious
- 'clock-latency-ns' properties
-Date: Thu, 10 Apr 2025 08:43:52 +0200
-Message-ID: <4999502.31r3eYUQgx@jernej-laptop>
-In-Reply-To: <20250403-dt-cpu-schema-v1-1-076be7171a85@kernel.org>
-References: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org>
- <20250403-dt-cpu-schema-v1-1-076be7171a85@kernel.org>
+	id 1u2lfS-00000009Pl4-0s2i;
+	Thu, 10 Apr 2025 06:45:43 +0000
+X-UUID: 45dd097e15d511f0a1e849db4cc18d44-20250409
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=HZpwQYi0LcWC3/4dCKnkownlqBa9y91eskNU6i1GdHY=;
+	b=FTIGni76I5sz5j2dS/AEBdgKhDxokU9QW16z0p15AfXOkIUDwCWHngtstMV1OaQ77MqKhISyaMSM6B7jMscXPVN/TntPlmtTaGFHy1b3D8cdpW8ctqqNe7YlJKVX4JPioTH5lD6XR9CeY4tMbOp1wuspMK9aenPo8BpTepIBzAU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:ce10c7ec-1c3d-4938-aff5-7352c4df4885,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:039c138b-0afe-4897-949e-8174746b1932,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
+	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
+	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 5,DFT|NGT
+X-CID-BAS: 5,DFT|NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 45dd097e15d511f0a1e849db4cc18d44-20250409
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
+	(envelope-from <kyrie.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2078116620; Wed, 09 Apr 2025 23:30:19 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Thu, 10 Apr 2025 14:30:17 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Thu, 10 Apr 2025 14:30:16 +0800
+From: kyrie.wu <kyrie.wu@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
+	<krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, kyrie wu
+	<kyrie.wu@mediatek.corp-partner.google.com>, <linux-media@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: kyrie.wu <kyrie.wu@mediatek.com>
+Subject: [PATCH v2 07/12] media: mediatek: jpeg: refactor jpeg dst buffer layout
+Date: Thu, 10 Apr 2025 14:30:00 +0800
+Message-ID: <20250410063006.5313-8-kyrie.wu@mediatek.com>
+X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20250410063006.5313-1-kyrie.wu@mediatek.com>
+References: <20250410063006.5313-1-kyrie.wu@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250409_234358_139252_B30C5FCD 
-X-CRM114-Status: UNSURE (   6.59  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250409_234542_256548_816C3415 
+X-CRM114-Status: GOOD (  13.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,18 +90,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dne petek, 4. april 2025 ob 04:59:22 Srednjeevropski poletni =C4=8Das je Ro=
-b Herring (Arm) napisal(a):
-> 'clock-latency-ns' is not a valid property for CPU nodes. It belongs in
-> OPP table (which has it). Drop them from the CPU nodes.
->=20
-> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+1. change dst buffer size to same as struct mtk_jpeg_src_buf
+to make sure all params of mtk_jpeg_src_buf could get a memory.
+2. For memory alloc operation:
+the v4l2 framework malloc a memory, the base addr is vb2_buffer and
+the size is sizeof(struct mtk_jpeg_src_buf), mtk_jpeg_src_buf could get
+itself addr by container_of like that:
+vb2_buffer -> vb2_v4l2_buffer -> mtk_jpeg_src_buf.
+vb2_v4l2_buffer must keep on the top of mtk_jpeg_src_buf.
 
-Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
+Signed-off-by: kyrie.wu <kyrie.wu@mediatek.com>
+---
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 2 +-
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-Best regards,
-Jernej
-
-
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index 3b386ec44b36..79a47a59caba 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -1102,7 +1102,7 @@ static int mtk_jpeg_queue_init(void *priv, struct vb2_queue *src_vq,
+ 	dst_vq->type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
+ 	dst_vq->io_modes = VB2_DMABUF | VB2_MMAP;
+ 	dst_vq->drv_priv = ctx;
+-	dst_vq->buf_struct_size = sizeof(struct v4l2_m2m_buffer);
++	dst_vq->buf_struct_size = sizeof(struct mtk_jpeg_src_buf);
+ 	dst_vq->ops = jpeg->variant->qops;
+ 	dst_vq->mem_ops = &vb2_dma_contig_memops;
+ 	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+index cff156697603..25ba21d80de7 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+@@ -86,10 +86,10 @@ struct mtk_jpeg_variant {
+ };
+ 
+ struct mtk_jpeg_src_buf {
+-	u32 frame_num;
+ 	struct vb2_v4l2_buffer b;
+ 	struct list_head list;
+ 	u32 bs_size;
++	u32 frame_num;
+ 	struct mtk_jpeg_dec_param dec_param;
+ 
+ 	struct mtk_jpeg_ctx *curr_ctx;
+-- 
+2.46.0
 
 
