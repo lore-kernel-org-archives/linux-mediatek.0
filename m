@@ -4,45 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 603AFC3601E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 15:07:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF96DC3601E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 15:09:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hdXiA9YW1oQ9qfGLI3cXZ90EaDzZP6hVqbuOJs1BOD8=; b=zu8b/CKb4m7kMJuKm9/n65zPC1
-	TS5p9zT/KhRO1F6s7oaVtDKoUqiPskWjHIwCjOEkHWAPXRHbqjHAi4Z/doQ3E7P25yyLcDp7f/goa
-	QxN+jl52g3ftD/OTV4VEyWk4M7b1S01K7cHM8DwL6cXTdqLXnKhP29q0Rn2UXE8MUcj2I/XhPCVh6
-	EVeiDwKDxwmohIOeeUt1fP53Q7f/1X1ARGfcQFoJSY7o5TMVbx5/KyeB3waQKTtucmnfZldgHH1hh
-	q1s1Tseu1sXQFu0eH3GwkRwdr/FUooKcc8eb7Ocb2hZZybgYRz2X2WCgEUXxADaY9QLJ2B/8/7MzX
-	RZjpu3nA==;
+	bh=6qAiFntSOocLWKkMNczyCHDhGt8ueuTtAdLO0x/eeYg=; b=GTWOTUeSXa5DSzCZn6RRkZth/K
+	AYm4C8Pg2UIs9f0bpteiqS7h719vrg14PKG+x9v+C6DOkFegrhswGqFntzjZVqaD/RNGJqxdBvzoD
+	+ifHpaJgkeVdCv00R4UCK/l5Nr6HHM69jEK4UQYArCqhFh6NdYLCn7mFSMrJTxsr5gdsbFX/+jltk
+	aPAA2jkPxT3BhnicmggYiGou8pl1Wu74yhcGXkJm62LQrgWIDlqERCDgnDVPAm/nFzcfxAANffLJj
+	vaVlj1cVP/cF+05xrbxJZ9MLgWEOx4WlPj+VyK+11nnXPeB+Ty98SHhbqAmEO76hr0S18wgmH4/+/
+	ACRW4DpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2tV2-0000000AxLS-1Kvc;
-	Thu, 10 Apr 2025 15:07:28 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1u2tWw-0000000Axm7-35E5;
+	Thu, 10 Apr 2025 15:09:26 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2t4w-0000000AsUo-2RiW;
-	Thu, 10 Apr 2025 14:40:32 +0000
+	id 1u2t50-0000000AsWC-3V7Z;
+	Thu, 10 Apr 2025 14:40:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=6qAiFntSOocLWKkMNczyCHDhGt8ueuTtAdLO0x/eeYg=; b=VqoqOyuEQsPVhPE1RvHI88fVrv
+	mnQcXb/p0SeM63mJOApel1n1XUFnewmUYpRG68ZI7Nzed1STOpYtkiX7MmXCXKk7IJdofnn7FTGqp
+	QKZ2XYlCDiyTMgzdEY90hBHXrL9l7trhKDoJj52QgdU30BzsCS4wheF/3JHq0RMDVzWxbCOpS3ugM
+	h4zFAzvyaT4L3/RfW9DaI37pPXFX5unYP2b+wzY/Ji53UlCY3SpDLtSrQMgYtU4Gpt34nwGjfTXKZ
+	XpPuFRp62heZcT013xPVvI2ksH5Ec1vvn/S2bEGz3yUVoZzu2VzmrydtVCjs2u1eXOAdn9BWJ5NCx
+	5JfS2l9g==;
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1u2t4y-00000008pkS-05y3;
+	Thu, 10 Apr 2025 14:40:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1744296029;
-	bh=wjB41mY8Agm1B+wcC7r0Il4fMM8tvGoJYe6ytb01tmw=;
+	s=mail; t=1744296031;
+	bh=kqSJ93vK2S4mqV0ElW2RKyULJci/G30jK+JAfppUqTA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=VLTWx86QgKdoUzErZBD3QDCORWSWgAjJSRhVs96MHlsSIuGebgDNrnIuVxy0CcSna
-	 0mK816okYVbgnhI02cEockT4dUjuSe13021NaAgp2mU89esN2S57iA4/m8A5xtwWeX
-	 s7c4wVpdilA4yNEgk6ElYFeUjyc1jG2MsnvyLdj9blOE4dMYobK3OPbYMqj3VEvbmo
-	 e80CbrFpbIcOxRx0sDNQtm3A4VxzEInA/0t/mYelMAw7mMirzZeMFJu/PFyf+MVEel
-	 BovQcr8Z9fT+dFyQcTiNyrPdbi2UxCwLtqsI92fytl+LpqdfTePpUw13V9ij3zqRJ7
-	 /ZteNHx27kR1g==
+	b=ZT/QaPsG4Fd/55L3wCh3wfRZTv3uf06znLWMLhAe+nvshFSt5X1jsusd//qD6iUO1
+	 RSuRbBSVRDdj3XbXGhs2d/dysi2l2P9g2FNr/qNBBHYlp6y2su+xX9OvfESoLE/8rU
+	 yNX66qQ3utbXRdpwKQ+wZ80X0ek/LkRbawO8g6lJZancmwEd5eb63V8+pwqm3/vaeD
+	 1IC5QnsUK0+b6gvWX/meLc3y/pbVIKVnr5zq/TJ1IiVrs4OT+62IDioGGBMUSX25wN
+	 rxa55xws+sm3XIqpVo/0GDoZ2clazWwnK6Gb4hH5BFIip8KS7V4rr4sEW2O1MqwIK0
+	 jqD/RCGRUy9Ew==
 Received: from IcarusMOD.eternityproject.eu (fi-19-199-243.service.infuturo.it [151.19.199.243])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 27F0C17E0CA7;
-	Thu, 10 Apr 2025 16:40:28 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9004F17E1072;
+	Thu, 10 Apr 2025 16:40:29 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: linux-mediatek@lists.infradead.org
 Cc: lgirdwood@gmail.com,
@@ -57,17 +71,17 @@ Cc: lgirdwood@gmail.com,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH v1 4/5] soc: mediatek: mtk-dvfsrc: Rename and move bw constraints data
-Date: Thu, 10 Apr 2025 16:40:18 +0200
-Message-ID: <20250410144019.475930-5-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v1 5/5] soc: mediatek: mtk-dvfsrc: Add support for Dimensity 1200 MT6893
+Date: Thu, 10 Apr 2025 16:40:19 +0200
+Message-ID: <20250410144019.475930-6-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250410144019.475930-1-angelogioacchino.delregno@collabora.com>
 References: <20250410144019.475930-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250410_074030_777960_8A0AB957 
-X-CRM114-Status: GOOD (  12.00  )
+X-CRM114-CacheID: sfid-20250410_154032_218376_1C120E9A 
+X-CRM114-Status: GOOD (  10.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,64 +96,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Rename the MT8183 and MT8195 bandwidth constraints data structure
-to, respectively, dvfsrc_bw_constr_v1 and dvfsrc_bw_constr_v2, as
-the actual constraints are depending on the DVFSRC version rather
-than on the SoC.
-
-While at it, to prepare for adding a new SoC, also move the two
-structures at the start of the platform data code section.
+Add support for the MediaTek Dimensity 1200 (MT6893) SoC's DVFSRC
+v2 hardware: the only difference between this and the only other
+supported DVFSRCv2 SoC (MT8195) is the VCore-DRAM OPP array.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/soc/mediatek/mtk-dvfsrc.c | 13 +++++++++----
- 1 file changed, 9 insertions(+), 4 deletions(-)
+ drivers/soc/mediatek/mtk-dvfsrc.c | 40 +++++++++++++++++++++++++++++++
+ 1 file changed, 40 insertions(+)
 
 diff --git a/drivers/soc/mediatek/mtk-dvfsrc.c b/drivers/soc/mediatek/mtk-dvfsrc.c
-index 83bf46fdcf2d..65c7d7bf743e 100644
+index 65c7d7bf743e..d24010b88c33 100644
 --- a/drivers/soc/mediatek/mtk-dvfsrc.c
 +++ b/drivers/soc/mediatek/mtk-dvfsrc.c
-@@ -446,6 +446,13 @@ static int mtk_dvfsrc_probe(struct platform_device *pdev)
- 	return 0;
- }
+@@ -453,6 +453,45 @@ static const struct dvfsrc_bw_constraints dvfsrc_bw_constr_v2 = {
+ 	.max_dram_hrt_bw = 1023,
+ };
  
-+static const struct dvfsrc_bw_constraints dvfsrc_bw_constr_v1 = { 0, 0, 0 };
-+static const struct dvfsrc_bw_constraints dvfsrc_bw_constr_v2 = {
++static const struct dvfsrc_opp dvfsrc_opp_mt6893_lp4[] = {
++	{ 0, 0 }, { 1, 0 }, { 2, 0 }, { 3, 0 },
++	{ 0, 1 }, { 1, 1 }, { 2, 1 }, { 3, 1 },
++	{ 0, 2 }, { 1, 2 }, { 2, 2 }, { 3, 2 },
++	{ 0, 3 }, { 1, 3 }, { 2, 3 }, { 3, 3 },
++	{ 1, 4 }, { 2, 4 }, { 3, 4 }, { 2, 5 },
++	{ 3, 5 }, { 3, 6 }, { 4, 6 }, { 4, 7 },
++};
++
++static const struct dvfsrc_opp_desc dvfsrc_opp_mt6893_desc[] = {
++	[0] = {
++		.opps = dvfsrc_opp_mt6893_lp4,
++		.num_opp = ARRAY_SIZE(dvfsrc_opp_mt6893_lp4),
++	}
++};
++
++static const struct dvfsrc_bw_constraints dvfsrc_bw_constr_mt6893 = {
 +	.max_dram_nom_bw = 255,
 +	.max_dram_peak_bw = 255,
 +	.max_dram_hrt_bw = 1023,
 +};
 +
++static const struct dvfsrc_soc_data mt6893_data = {
++	.opps_desc = dvfsrc_opp_mt6893_desc,
++	.regs = dvfsrc_mt8195_regs,
++	.get_target_level = dvfsrc_get_target_level_v2,
++	.get_current_level = dvfsrc_get_current_level_v2,
++	.get_vcore_level = dvfsrc_get_vcore_level_v2,
++	.get_vscp_level = dvfsrc_get_vscp_level_v2,
++	.set_dram_bw = dvfsrc_set_dram_bw_v1,
++	.set_dram_peak_bw = dvfsrc_set_dram_peak_bw_v1,
++	.set_dram_hrt_bw = dvfsrc_set_dram_hrt_bw_v1,
++	.set_vcore_level = dvfsrc_set_vcore_level_v2,
++	.set_vscp_level = dvfsrc_set_vscp_level_v2,
++	.wait_for_opp_level = dvfsrc_wait_for_opp_level_v2,
++	.wait_for_vcore_level = dvfsrc_wait_for_vcore_level_v1,
++	.bw_constraints = &dvfsrc_bw_constr_v2,
++};
++
  static const struct dvfsrc_opp dvfsrc_opp_mt8183_lp4[] = {
  	{ 0, 0 }, { 0, 1 }, { 0, 2 }, { 1, 2 },
  };
-@@ -469,8 +476,6 @@ static const struct dvfsrc_opp_desc dvfsrc_opp_mt8183_desc[] = {
- 	}
- };
- 
--static const struct dvfsrc_bw_constraints dvfsrc_bw_constr_mt8183 = { 0, 0, 0 };
--
- static const struct dvfsrc_soc_data mt8183_data = {
- 	.opps_desc = dvfsrc_opp_mt8183_desc,
- 	.regs = dvfsrc_mt8183_regs,
-@@ -482,7 +487,7 @@ static const struct dvfsrc_soc_data mt8183_data = {
- 	.set_vcore_level = dvfsrc_set_vcore_level_v1,
- 	.wait_for_opp_level = dvfsrc_wait_for_opp_level_v1,
- 	.wait_for_vcore_level = dvfsrc_wait_for_vcore_level_v1,
--	.bw_constraints = &dvfsrc_bw_constr_mt8183,
-+	.bw_constraints = &dvfsrc_bw_constr_v1,
- };
- 
- static const struct dvfsrc_opp dvfsrc_opp_mt8195_lp4[] = {
-@@ -521,7 +526,7 @@ static const struct dvfsrc_soc_data mt8195_data = {
- 	.set_vscp_level = dvfsrc_set_vscp_level_v2,
- 	.wait_for_opp_level = dvfsrc_wait_for_opp_level_v2,
- 	.wait_for_vcore_level = dvfsrc_wait_for_vcore_level_v1,
--	.bw_constraints = &dvfsrc_bw_constr_mt8195,
-+	.bw_constraints = &dvfsrc_bw_constr_v2,
+@@ -530,6 +569,7 @@ static const struct dvfsrc_soc_data mt8195_data = {
  };
  
  static const struct of_device_id mtk_dvfsrc_of_match[] = {
++	{ .compatible = "mediatek,mt6893-dvfsrc", .data = &mt6893_data },
+ 	{ .compatible = "mediatek,mt8183-dvfsrc", .data = &mt8183_data },
+ 	{ .compatible = "mediatek,mt8195-dvfsrc", .data = &mt8195_data },
+ 	{ /* sentinel */ }
 -- 
 2.49.0
 
