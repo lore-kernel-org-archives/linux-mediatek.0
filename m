@@ -4,71 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69DC1C369A4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 08:28:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C163C3601E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 08:30:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WqiQ8qbQ1G6uJzpLAbbf4sPZSyQhabuZFh8cQQ07tiQ=; b=YlepN+belH1dYAjJua47/bXsJr
-	bz4E+bdFLfz/7F9Izs8DwzFVvnaMCYAKNj8e3MnHyCZHcJOsmySAV9zgWJoP7228WdH6TRXAqfNzE
-	Adtz5uptNgE/Ozu9w18ojPmNsGddcz9XLDiGO64IRizk50da+o0rLtX7FE+dQAKOJcdaFOC2vdRos
-	570L7xGqr2FvOAiearZm4XK4g5uUA5+h+Z7naE6cvZzGX0WZyE+gnGuu0C5Z5DWtZZmlTLZCgX9sN
-	GjL9XFhTac93n0XiAKseeKNw1ioxu+1upJgrVqc+srtWlzIPmOFOj8ofptZB/jP538ZUW2IRZpwZN
-	3Mdr6v1g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Tvm+drxaFLk25NxNGK6leQFz6UBSeg5ou+cb6osDu1M=; b=hR+veUfDFMPQ3wAY9TXpfPrgVx
+	z4FzDSQVxbgfBA/phvhRanxR3NyQH7CPYHriqKVqMximEuOpiMLXRxqRKNomIuhxUf3iXbOFFLSlS
+	LKoo2TJkgUpa+/sddFy5b+2FjoFljz4vrPGkyGbMzHmcfbZInxswYgxMCBJmt4+SIyvu2XCYcMIDl
+	avmsWNOET05ODSoZbaB8t6LWWnT1UupRD0iGERDDpixLXJ4iYBvfxygihSG6Zh/js5XtrBGlc9GoA
+	8bPf4n6rEnYv1680BiJpzQHqD7tVci7+Pg528/TEo/D+9ZZpsFCBHMMGqAAOBun1yiHv2xBsVDvzp
+	hV5vybIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2nGc-00000009kFr-1a9j;
-	Thu, 10 Apr 2025 08:28:10 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1u2nIQ-00000009khd-1emQ;
+	Thu, 10 Apr 2025 08:30:02 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2met-00000009cja-0rTK;
-	Thu, 10 Apr 2025 07:49:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1744271349;
-	bh=ivk3g2xuuWzp02wJHrEL79rm/ijdgS0pYE3iPtcnQ94=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=jbx9V4Z6DWUoU2FXPTLYMh8Baz0STBgWnytWTfreUVWvbr0cTFRO4VZYiZ9al2LOI
-	 giTpUXroI3ZQtJur1zlcFZx5s8tBcHfswO1hrY5UjZadLnG9b8c//71sQ4OdNRYjfO
-	 YV5yPWulenhUJJ5FlzZF8J5nOl3xYmVaQPYL2UXW+FqmN3DYK2VOpu8tNg/ODZDfyg
-	 q1QU1nZ+FRiJCbn2gt5w3137KFG8+LgQ7VWHgJFfkOYZ+9M+y9TzR0/A+Cw40euUat
-	 7wDME0UQw4PTNRjrYRfltKx/ixnbDGw3TaCm7oxyQR8QoOP6dmnbBttUUH7onIQpcQ
-	 ncq3vrwIqSg/w==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 92A2417E0402;
-	Thu, 10 Apr 2025 09:49:08 +0200 (CEST)
-Message-ID: <7e77b50c-1808-49fa-a711-956a570ad208@collabora.com>
-Date: Thu, 10 Apr 2025 09:49:07 +0200
+	id 1u2mj2-00000009dMp-0cY1;
+	Thu, 10 Apr 2025 07:53:29 +0000
+X-UUID: df02cfde15e011f083f2a1c9db70dae0-20250410
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Tvm+drxaFLk25NxNGK6leQFz6UBSeg5ou+cb6osDu1M=;
+	b=MZhgFVaZA4LfxPGca9jXrpLBNGPxDIGUR/fdehXTmMQ8KFzpTSlax7L+ECgI/atLDTR5hQM6s97gVjl0FzNfuq1VvL1lMwIBFZ8Fm6UE1us4Qa0RxQ1gFY9HMTLPJezGY21jRzblIDHhJ/pNmKt6Rh5FY4HcHCbPe1Yp77AcPvs=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:57ba4899-2c96-4fea-a015-5b9c42b08dae,IP:0,UR
+	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-25
+X-CID-META: VersionHash:0ef645f,CLOUDID:2413e9a5-c619-47e3-a41b-90eedbf5b947,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: df02cfde15e011f083f2a1c9db70dae0-20250410
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
+	(envelope-from <axe.yang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1560231312; Thu, 10 Apr 2025 00:53:20 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Thu, 10 Apr 2025 15:53:18 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Thu, 10 Apr 2025 15:53:17 +0800
+From: Axe Yang <axe.yang@mediatek.com>
+To: Chaotian Jing <chaotian.jing@mediatek.com>, Ulf Hansson
+	<ulf.hansson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	<yong.mao@mediatek.com>, <qingliang.li@mediatek.com>,
+	<andy-ld.lu@mediatek.com>, Wenbin Mei <wenbin.mei@mediatek.com>
+CC: <linux-mmc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Axe Yang <axe.yang@mediatek.com>
+Subject: [PATCH v2] mmc: mtk-sd: Add condition to enable 'single' burst type
+Date: Thu, 10 Apr 2025 15:52:47 +0800
+Message-ID: <20250410075314.6439-1-axe.yang@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 1/3] dt-bindings: pinctrl: mediatek: Add support for
- mt8196
-To: Cathy Xu <ot_cathy.xu@mediatek.com>,
- Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Sean Wang <sean.wang@kernel.org>, Lei Xue <lei.xue@mediatek.com>
-Cc: linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, yong.mao@mediatek.com,
- Axe.Yang@mediatek.com, Jimin.Wang@mediatek.com, Wenbin.Mei@mediatek.com,
- Andy-ld.Lu@mediatek.com, Guodong Liu <guodong.liu@mediatek.com>
-References: <20250401054837.1551-1-ot_cathy.xu@mediatek.com>
- <20250401054837.1551-2-ot_cathy.xu@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250401054837.1551-2-ot_cathy.xu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250410_004911_395669_49AC3546 
-X-CRM114-Status: GOOD (  12.97  )
+X-CRM114-CacheID: sfid-20250410_005328_188939_36D50544 
+X-CRM114-Status: GOOD (  13.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,83 +87,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 01/04/25 07:48, Cathy Xu ha scritto:
-> Add the new binding document for pinctrl on MediaTek mt8196.
-> 
-> Signed-off-by: Guodong Liu <guodong.liu@mediatek.com>
-> Signed-off-by: Cathy Xu <ot_cathy.xu@mediatek.com>
-> ---
->   .../pinctrl/mediatek,mt8196-pinctrl.yaml      | 220 ++++++++++++++++++
->   1 file changed, 220 insertions(+)
->   create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt8196-pinctrl.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8196-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8196-pinctrl.yaml
-> new file mode 100644
-> index 000000000000..cef7e0321722
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8196-pinctrl.yaml
-> @@ -0,0 +1,220 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/pinctrl/mediatek,mt8196-pinctrl.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek MT8196 Pin Controller
-> +
-> +maintainers:
-> +  - Lei Xue <lei.xue@mediatek.com>
-> +  - Cathy Xu <ot_cathy.xu@mediatek.com>
-> +
-> +description:
-> +  The MediaTek's MT8196 Pin controller is used to control SoC pins.
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,mt8196-pinctrl
-> +
-> +  reg:
-> +    items:
-> +      - description: gpio base
-> +      - description: rt group IO
-> +      - description: rm1 group IO
-> +      - description: rm2 group IO
-> +      - description: rb group IO
-> +      - description: bm1 group IO
-> +      - description: bm2 group IO
-> +      - description: bm3 group IO
-> +      - description: lt group IO
-> +      - description: lm1 group IO
-> +      - description: lm2 group IO
-> +      - description: lb1 group IO
-> +      - description: lb2 group IO
-> +      - description: tm1 group IO
-> +      - description: tm2 group IO
-> +      - description: tm3 group IO
-> +
-> +  reg-names:
-> +    items:
-> +      - const: base
-> +      - const: rt
-> +      - const: rm1
-> +      - const: rm2
-> +      - const: rb
-> +      - const: bm1
-> +      - const: bm2
-> +      - const: bm3
-> +      - const: lt
-> +      - const: lm1
-> +      - const: lm2
-> +      - const: lb1
-> +      - const: lb2
-> +      - const: tm1
-> +      - const: tm2
-> +      - const: tm3
+This change add a condition for 'single' burst type selection.
 
-Why is there no EINT iospace?
+Read AXI_LEN field from EMMC50_CFG2(AHB2AXI wrapper) register, if the
+value is not 0, it means the HWIP is using AXI as AMBA bus, which do
+not support 'single' burst type.
 
-Regards,
-Angelo
+Signed-off-by: Axe Yang <axe.yang@mediatek.com>
+---
+This change dependents on 'mmc: mtk-sd: Cleanups for register R/W':
 
+https://patchwork.kernel.org/project/linux-mediatek/cover/20250325110701.52623-1-angelogioacchino.delregno@collabora.com/
+---
+ drivers/mmc/host/mtk-sd.c | 16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index ceeae1aeac94..2e4bd5166c17 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -84,6 +84,7 @@
+ #define EMMC51_CFG0	 0x204
+ #define EMMC50_CFG0      0x208
+ #define EMMC50_CFG1      0x20c
++#define EMMC50_CFG2      0x21c
+ #define EMMC50_CFG3      0x220
+ #define SDC_FIFO_CFG     0x228
+ #define CQHCI_SETTING	 0x7fc
+@@ -306,7 +307,10 @@
+ /* EMMC50_CFG1 mask */
+ #define EMMC50_CFG1_DS_CFG        BIT(28)  /* RW */
+ 
+-#define EMMC50_CFG3_OUTS_WR       GENMASK(4, 0)  /* RW */
++/* EMMC50_CFG2 mask */
++#define EMMC50_CFG2_AXI_SET_LEN   GENMASK(27, 24) /* RW */
++
++#define EMMC50_CFG3_OUTS_WR       GENMASK(4, 0)   /* RW */
+ 
+ #define SDC_FIFO_CFG_WRVALIDSEL   BIT(24)  /* RW */
+ #define SDC_FIFO_CFG_RDVALIDSEL   BIT(25)  /* RW */
+@@ -1917,9 +1921,13 @@ static void msdc_init_hw(struct msdc_host *host)
+ 	pb1_val |= FIELD_PREP(MSDC_PATCH_BIT1_CMDTA, 1);
+ 	pb1_val |= MSDC_PB1_DDR_CMD_FIX_SEL;
+ 
+-	/* Set single burst mode, auto sync state clear, block gap stop clk */
+-	pb1_val |= MSDC_PB1_SINGLE_BURST | MSDC_PB1_RSVD20 |
+-		   MSDC_PB1_AUTO_SYNCST_CLR | MSDC_PB1_MARK_POP_WATER;
++	/* Support 'single' burst type only when AXI_LEN is 0 */
++	sdr_get_field(host->base + EMMC50_CFG2, EMMC50_CFG2_AXI_SET_LEN, &val);
++	if (!val)
++		pb1_val |= MSDC_PB1_SINGLE_BURST;
++
++	/* Set auto sync state clear, block gap stop clk */
++	pb1_val |= MSDC_PB1_RSVD20 | MSDC_PB1_AUTO_SYNCST_CLR | MSDC_PB1_MARK_POP_WATER;
+ 
+ 	/* Set low power DCM, use HCLK for GDMA, use MSDC CLK for everything else */
+ 	pb1_val |= MSDC_PB1_LP_DCM_EN | MSDC_PB1_RSVD3 |
+-- 
+2.46.0
 
 
