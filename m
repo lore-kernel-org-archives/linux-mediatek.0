@@ -4,156 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2783C369A9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 17:15:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE59BC3601E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Apr 2025 17:36:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zR4+XiWiYcCAIsEskE+Pa3uKadOj7H5b8EyZw08afF4=; b=w9+f1Ahl1hw6HJrf9doYpBIq2u
-	hN74GqXdwGYzmnIEBag/Mty3lB8NNmK50YR2iRyBIlPd02ig9x4CuaH4tAxoYQzsSHfJwmZh9BhE/
-	QGhzj0LcwsHbqaMkKzzXAYKaQe6iKydCCFA0ShGFic/K7t0h8ss/rptf/601rBU8r2TGawrk2/IDE
-	CtRPuI5h6O8Pu2mYyCJIZqPjIayJQ/+2sMHSlMLkSc9kxnQK92cxy/pWyqjmyEWvzmawdpGFDblHd
-	BVGoyHkAqJVqQEI6Wq4r+jYEVr8cBoYJBPm9N/PIlMA3bn61f9ahlkPPiuQGdqp4BR+Mm6/Kspw/q
-	0VbW6EDg==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XQTDX8Alv29qulK4sXrqEmrdIZusnQjdpDN5F5ZMILw=; b=SpRrkK2DivHvgpcgiYCUJbbbPr
+	P5d27AKdm8SiRnOKS/n6gX5hOBzb4mNb810fBsTViN7QIMMKLjcCbNDJMM5OELMnjyI8006BTr3pB
+	KrPtaVFsUSib61peGXF8m8wTdHIVtn5LmC6qJ7jSrzJvGOafLYZ1KAvajJlNH6s/alNjzxKYCDC2K
+	+4ew88Zgf56I41mfuKm1n3wS/mIIXnPuNvSGulXYL2dYXQUa5KNYs+bMsLMyUwqgFO9wGMqSAhGST
+	JcJr/HE/PYohF/tH4y7Tlp6biy14YhBm1pXMUMaw/yIS1VDmV+3LxJV0b/TSgWzxivpf/IHP/rsBv
+	hNLrfImQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2vUS-0000000BLEI-1w6R;
-	Thu, 10 Apr 2025 17:15:00 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1u2vpU-0000000BOl1-3MSc;
+	Thu, 10 Apr 2025 17:36:44 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u2uiP-0000000BBOR-1GtP
-	for linux-mediatek@lists.infradead.org;
-	Thu, 10 Apr 2025 16:25:23 +0000
-Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 53AFh4BK008193
-	for <linux-mediatek@lists.infradead.org>; Thu, 10 Apr 2025 16:25:20 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	zR4+XiWiYcCAIsEskE+Pa3uKadOj7H5b8EyZw08afF4=; b=DRKNXxAb/WCjQgrY
-	hz9jTbcUmyc+6kpdmMafLPwR+le4Cq1jMeyTjCxsCejceOyQfmi7oALTlTQNZWmt
-	HZ6ObdJEu2UlNJkxKLh981hjfDcheQK0YO0wpLYTB3oAE0bD7z6wPJkf39uMqmv3
-	CuXvn7AHdYvhyvsQsOt9vExk3T9+laF7gO/oW+l2c7/SeICL+lhWMeaeZjtfRw2b
-	SiKNTFqzXURqsJ0+m/R/jLELMHOJ18HrzMql88kcjtfnQ+hgcZkTDD8CVSedDpi7
-	E+HHxl/0WDpxjk88guiiXC047QSHSRPQvoSO7HNYuo0vrP/LcMl7CKsMAUYEQ12n
-	hZULkA==
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com [209.85.222.198])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 45twd07p56-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Thu, 10 Apr 2025 16:25:20 +0000 (GMT)
-Received: by mail-qk1-f198.google.com with SMTP id af79cd13be357-7c555d4ad75so21278585a.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 10 Apr 2025 09:25:19 -0700 (PDT)
+	id 1u2unm-0000000BClO-3QOi;
+	Thu, 10 Apr 2025 16:30:55 +0000
+Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-3995ff6b066so539940f8f.3;
+        Thu, 10 Apr 2025 09:30:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1744302653; x=1744907453; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=XQTDX8Alv29qulK4sXrqEmrdIZusnQjdpDN5F5ZMILw=;
+        b=Tc9GO5HeLnDcMNotU5QXX7D/4onW4WoW73I9sd4vZ+MaYYnhrsiwN0o4M9Zj71xruq
+         Lnlmu+zsp2IzjvTEjXJxLoFzdzPVo30Cn4baYzS18TI+chTN3jqCWgL0IgMEVqNm07Fi
+         B/S1RzyHXEzHjmkoMFUtFuqvqJHMtUuxgtJ9V6Cp2bKRd1Hwb2jk9wu0oH6ak18gzg0H
+         0LXlPBO0eOSDS7myE7Bh5u0DBemycuBKuV95+bcq6HvpJAFL7YkE+bwHvhJhOmJ+Sasd
+         mYLh8/Yzu1TPz+MxaPnexE/ykzv8JUHarw0wgOGl5rSA43o7usjBjL5dP9nqoS8bprxw
+         GSHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744302319; x=1744907119;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=zR4+XiWiYcCAIsEskE+Pa3uKadOj7H5b8EyZw08afF4=;
-        b=i/mooTMy+uBzQ2PuswOwvv7T5r+hzdERah6xTHTuXwfoS2rpvtiabiOeWTQhPbr1vd
-         3auaUJybVTq55/a+/O+R3kU+6crnUE8CyYb5CuSl/Bk2R+ihcQgWgtYXV8gd8sTmANjO
-         6doQfBGvcpvt0aG4FfSy/q/+3qsHb87/jE9qBon/htwDdKSSuWGi1PwYQbX9Lwhzqhgi
-         2/wZ6b8jyTYlrgeIhqyUhJUeHzjyN5LCwQqysve6TMRtPjzDkxnWAbLj/teCKCiDk1GJ
-         9lS3AnI+c5htMSd/J0vkff0yp4dbsA+fKINaW5an7PQb1/SN9kISVsLRiPysuc5PyG0Y
-         VPRw==
-X-Forwarded-Encrypted: i=1; AJvYcCUNtxpNkXmkPl2K6dPAkCjqHoDXuJLCCUZ0N+7qmBFMvMKGXZhZ/yXzvodz3ht8AV9c6NZJ7E0sAU+o25q28A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxmYZIuuemANtrihEj/4QOez/M+G5WKAOiUdwTWkM03ojVPRoHZ
-	2nVHs69lDjwYyGkHQ7sl+uTZOdLFMJGn3Aite5howW2cbIPRDK7Q+UFm+NH9MpP3EIXqYeOOw6R
-	tQIVjrWXvTKMqRZ79q4L8c7tHwXu4tQT0CWFZF+lMDpoSpl51tqDYcaHDkZN1siW/bPnCcLI=
-X-Gm-Gg: ASbGncvBZDVaS/+14xjajbZ35pQX1zHmgS1kK45f1tev18rLBMVuMqmsJjP885JJ8fX
-	NNAahoR1KdDEWsaxSUh/ws9uNIRFftJveOyklr5yFnmAU1jVtQ4aalMiXZvyzTPaeEdpTjqkMV1
-	oO0kViVQDdcys/2ILGgilmklwE/4shQNWlykkuo9NCjKbI4HxGt5UwMhmso2SwttvqCPy8/s523
-	FW9AnWYWtKyVHCz6U8iBGJ4ICNVmtmzSdTSZYtXHK8/WmQ/VmwG0PQv7fw/OLCILIjM4Qao5Z6q
-	4UdG60SihYOCnbxwyvzE/Om3FJkj7f6hGzqMKqp18Y9sp+SHkEmpvft9EQIE6PoQOQ==
-X-Received: by 2002:a05:620a:f11:b0:7c5:8f37:1eb2 with SMTP id af79cd13be357-7c79cbed7e5mr390017685a.9.1744302319225;
-        Thu, 10 Apr 2025 09:25:19 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFGh0TA+XXGeyGhF/XKIz0cXHA6zoUdAUUcHCD76IoGVEG3eLbl5iKlo88Yqsik48pUsXmHeg==
-X-Received: by 2002:a05:620a:f11:b0:7c5:8f37:1eb2 with SMTP id af79cd13be357-7c79cbed7e5mr390015185a.9.1744302318810;
-        Thu, 10 Apr 2025 09:25:18 -0700 (PDT)
-Received: from [192.168.65.90] (078088045245.garwolin.vectranet.pl. [78.88.45.245])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-acaa1ce818bsm297826166b.182.2025.04.10.09.25.12
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 10 Apr 2025 09:25:18 -0700 (PDT)
-Message-ID: <898bebc3-e2b1-4819-9869-05b783509146@oss.qualcomm.com>
-Date: Thu, 10 Apr 2025 18:25:11 +0200
+        d=1e100.net; s=20230601; t=1744302653; x=1744907453;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=XQTDX8Alv29qulK4sXrqEmrdIZusnQjdpDN5F5ZMILw=;
+        b=kjDJhtjVSaRHRoYDqwcLLecZm8SMz0M0+niw+0UCDip0HFFlA0BlaNSxl1tnFikK9p
+         1OZknLiz0KIDKpeUl7M1vWtP9ouTHh5Zoh2rzXpmDn/IGHIexWv9Z6bdjSbSdWex+yUC
+         i2naZEsMBJrOzO/cFhGPruwxw4q+bj98BM8lojsdVvSd27OGj+SeAyDlneVEM7lkdGBG
+         Qwo/0IdxpgPsx+U6+po4i24POAQVY3ow9Ei9ezKNY4CwGSaifztxz6WL8fj/ZbTOK/ps
+         u3KK8DFtoeTMctlFNfOm/qgetqMuA5z6cEWN4LMt5xV/KHMl5pIOpQxcfBFOtm/I4Q+c
+         Jzmg==
+X-Forwarded-Encrypted: i=1; AJvYcCUonfr6UfQALcOimyOmnUDnuqbL10gfx/S7XJwg26td71G8S5wlGNRsrpeqvhlaBVeQ83FR6YXGuOG4FGUNERY=@lists.infradead.org, AJvYcCUzmhUYRNBiARPaBXipQs7dxht9TVuBeDhKsT/CZh4eQjjtRvEOPdutnXund1HQd8yAOeeChVHin+l3DkY7jW2D@lists.infradead.org
+X-Gm-Message-State: AOJu0YyC7h00S3SO9Erxuxz1J84Rrq5/LFBnHVRnusFqTgpqJTpBbZny
+	5Cm2rj0TjWXbmDh1TBvIvNq2M1sWr55acIbccpsY5WJInftInw28
+X-Gm-Gg: ASbGnctU8OO3A72ez9sAdMNZTExds68Br/ZsMcKjPRmEt83VzyU9HKV2jEkhX0gKowt
+	7xu9Iz0sokGGatyElcVMAEs53ljvjztfz0B5M69C09t5IiTxgg3KHFbxe8AgqK7oJkRv4vH7Bc3
+	uWuBx5nGE5KlICs6Kpxkh3/rSnzdA44srYoXF+Id9+GP1o96R9gC0RSZjqv/vqFCHYFhGLtM9dd
+	U0dEQbk0yFcTFcEIYm1SoJQbzIjBMG2aQvNaE2n0gwQHcvbLntChuuIVOMcLZmxd5qpMTQFKKaU
+	QUT63y9IhTf3RRj08iIbaPQSfkFe6gje7u7ZTtrPqis/+eVJ5d4IuLaFE/gfa38Kvz2CdCrDn8G
+	W3EQuNXKrkw==
+X-Google-Smtp-Source: AGHT+IEkC+tTadCXFScLP1G32ei1mC9Yd5VZfiGai+LcT2Iz3BJBKI8tPw+x/jngazgY6l86z4MM/Q==
+X-Received: by 2002:a5d:648f:0:b0:39c:1257:c7a3 with SMTP id ffacd0b85a97d-39d8f50227emr3137236f8f.59.1744302653117;
+        Thu, 10 Apr 2025 09:30:53 -0700 (PDT)
+Received: from localhost.localdomain (93-34-88-225.ip49.fastwebnet.it. [93.34.88.225])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-39d893f0a75sm5374033f8f.62.2025.04.10.09.30.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 10 Apr 2025 09:30:52 -0700 (PDT)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: "Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Christian Marangi <ansuelsmth@gmail.com>
+Subject: [net-next PATCH 0/6] net: dsa: mt7530: modernize MIB handling + fix
+Date: Thu, 10 Apr 2025 18:30:08 +0200
+Message-ID: <20250410163022.3695-1-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 09/19] arm: dts: qcom: sdx55/sdx65: Fix CPU
- power-domain-names
-To: Stephan Gerhold <stephan.gerhold@linaro.org>,
-        Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>,
-        "Rob Herring (Arm)"
- <robh@kernel.org>,
-        Krzysztof Kozlowski <krzk+dt@kernel.org>,
-        Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
-        Jernej Skrabec <jernej.skrabec@gmail.com>,
-        Samuel Holland <samuel@sholland.org>,
-        "Rafael J. Wysocki"
- <rafael@kernel.org>,
-        Viresh Kumar <viresh.kumar@linaro.org>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Vincenzo Frascino <vincenzo.frascino@arm.com>,
-        Liviu Dudau <liviu.dudau@arm.com>, Sudeep Holla <sudeep.holla@arm.com>,
-        Lorenzo Pieralisi <lpieralisi@kernel.org>,
-        Bjorn Andersson <andersson@kernel.org>,
-        Konrad Dybcio <konradybcio@kernel.org>,
-        Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
-        Viresh Kumar <vireshk@kernel.org>, Nishanth Menon <nm@ti.com>,
-        Stephen Boyd <sboyd@kernel.org>, zhouyanjie@wanyeetech.com,
-        Conor Dooley <conor@kernel.org>,
-        Nicolas Ferre
- <nicolas.ferre@microchip.com>,
-        Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-        Steen Hegelund <Steen.Hegelund@microchip.com>,
-        Daniel Machon <daniel.machon@microchip.com>,
-        UNGLinuxDriver@microchip.com, Shawn Guo <shawnguo@kernel.org>,
-        Sascha Hauer <s.hauer@pengutronix.de>,
-        Pengutronix Kernel Team <kernel@pengutronix.de>,
-        Fabio Estevam <festevam@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
-        Neil Armstrong <neil.armstrong@linaro.org>,
-        Kevin Hilman <khilman@baylibre.com>,
-        Jerome Brunet <jbrunet@baylibre.com>,
-        Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-        Geert Uytterhoeven <geert+renesas@glider.be>,
-        Magnus Damm <magnus.damm@gmail.com>, devicetree@vger.kernel.org,
-        linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
-        linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
-        linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-        linux-mips@vger.kernel.org, imx@lists.linux.dev,
-        linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org,
-        linux-renesas-soc@vger.kernel.org,
-        Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-References: <20250403-dt-cpu-schema-v1-0-076be7171a85@kernel.org>
- <20250403-dt-cpu-schema-v1-9-076be7171a85@kernel.org>
- <03011a33-174b-4027-bdd2-043aa685380b@oss.qualcomm.com>
- <CAPDyKFoZ7NfN+pkCPnusvTOEaxbQhr=1FJqzdDGrLcKAzBpGyQ@mail.gmail.com>
- <66f8d957-f7a5-4aec-b8e7-5bcc7ff7f569@oss.qualcomm.com>
- <Z_dvAT7LdR7xbH45@linaro.org>
-Content-Language: en-US
-From: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-In-Reply-To: <Z_dvAT7LdR7xbH45@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Proofpoint-ORIG-GUID: nPdtzoXQ1kD3x8CQvfpMqRMDN8KUkeSQ
-X-Authority-Analysis: v=2.4 cv=Q4vS452a c=1 sm=1 tr=0 ts=67f7f0f0 cx=c_pps a=qKBjSQ1v91RyAK45QCPf5w==:117 a=FpWmc02/iXfjRdCD7H54yg==:17 a=IkcTkHD0fZMA:10 a=XR8D0OoHHMoA:10 a=VwQbUJbxAAAA:8 a=EUspDBNiAAAA:8 a=KKAkSRfTAAAA:8 a=LizfDJ_PtI4Zq51CQE4A:9
- a=QEXdDO2ut3YA:10 a=NFOGd7dJGGMPyQGDc5-O:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-GUID: nPdtzoXQ1kD3x8CQvfpMqRMDN8KUkeSQ
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1095,Hydra:6.0.680,FMLib:17.12.68.34
- definitions=2025-04-10_04,2025-04-10_01,2024-11-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 priorityscore=1501
- impostorscore=0 lowpriorityscore=0 spamscore=0 clxscore=1015 phishscore=0
- bulkscore=0 adultscore=0 malwarescore=0 mlxscore=0 suspectscore=0
- mlxlogscore=999 classifier=spam authscore=0 authtc=n/a authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2502280000
- definitions=main-2504100119
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250410_092521_489635_50413FDB 
-X-CRM114-Status: GOOD (  22.37  )
+X-CRM114-CacheID: sfid-20250410_093054_855413_E74AFE64 
+X-CRM114-Status: UNSURE (   6.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -168,50 +109,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 4/10/25 9:10 AM, Stephan Gerhold wrote:
-> On Wed, Apr 09, 2025 at 08:35:29PM +0200, Konrad Dybcio wrote:
->> On 4/7/25 6:27 PM, Ulf Hansson wrote:
->>> On Fri, 4 Apr 2025 at 22:41, Konrad Dybcio
->>> <konrad.dybcio@oss.qualcomm.com> wrote:
->>>>
->>>> On 4/4/25 4:59 AM, Rob Herring (Arm) wrote:
->>>>> "rpmhpd" is not documented nor used anywhere. As the enable-method is
->>>>> "psci" use "psci" for the power-domain name.
->>>>>
->>>>> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
->>>>> ---
->>>>
->>>> "psci" is what we want here, but these platforms require some more
->>>> massaging..
->>>
->>> So this isn't for CPU performance scaling?
->>
->> Nope!
->>
-> 
-> Huh, this is definitely "perf" (= cpufreq) and not "psci" (= cpuidle).
-> If you run blame on this line you get to:
-> 
-> commit 0ec7bde7b590f8efa5823df3b52b32dd373060ff
-> Author: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-> Date:   Thu Apr 8 22:34:45 2021 +0530
-> 
->     ARM: dts: qcom: sdx55: Add CPUFreq support
-> 
->     Add CPUFreq support to SDX55 platform using the cpufreq-dt driver.
->     There is no dedicated hardware block available on this platform to
->     carry on the CPUFreq duties. Hence, it is accomplished using the CPU
->     clock and regulators tied together by the operating points table.
-> 
-> https://web.git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0ec7bde7b590f8efa5823df3b52b32dd373060ff
-> 
-> The OPP table looks like it's supposed to set SDX55_CX performance
-> states according to the chosen CPU frequency. MSM8909 has a similar
-> setup where the CPU is supplied directly by VDDCX and we describe that
-> with "perf" too [1].
+This small series modernize MIB handling for MT7530 and also
+implement .get_stats64.
 
-Ohh right I was under the impression that qcom,cpufreq-hw is used on
-those too, but apparently not..
+It was reported that kernel and Switch MIB desync in scenario where
+a packet is forwarded from a port to another. In such case, the
+forwarding is offloaded and the kernel is not aware of the
+transmitted packet. To handle this, read the counter directly
+from Switch registers.
 
-Konrad
+Christian Marangi (6):
+  net: dsa: mt7530: generalize read port stats logic
+  net: dsa: mt7530: move pkt size and rx err MIB counter to rmon stats
+    API
+  net: dsa: mt7530: move pause MIB counter to eth_ctrl stats API
+  net: dsa: mt7530: move pkt stats and err MIB counter to eth_mac stats
+    API
+  net: dsa: mt7530: move remaining MIB counter to define
+  net: dsa: mt7530: implement .get_stats64
+
+ drivers/net/dsa/mt7530.c | 246 +++++++++++++++++++++++++++++++--------
+ drivers/net/dsa/mt7530.h |  42 +++++++
+ 2 files changed, 239 insertions(+), 49 deletions(-)
+
+-- 
+2.48.1
+
 
