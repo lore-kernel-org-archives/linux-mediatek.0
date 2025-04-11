@@ -4,81 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 712ECC36010
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Apr 2025 14:22:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDB44C36010
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Apr 2025 14:33:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iWl/qqJnW4YKy7fD9Y1Bq2qyKwnzAfjOsHSpc/KwuOE=; b=h9ohuCDFaOBjd594mqBPeJgjNE
-	O0Rbjr1I9Z/eSD76RuHo/sLmNEqsfNHa7cP6oVvjbnN08H84AteVe7JQHPyv0Mg3s15tFE4ssG2O1
-	gH4MuAnx2LqfREu+CzukBtbcBzBXF73QDAqD7A5nHeUnXwJJNC1rSEfYs9/uhkuS0lZRrFR/XYQyQ
-	bUAeNQQjwZjq2vugoqpTihgpFn8LP4wpaqz9edB/Dkv8lHEdrHd0Dw2HBAqiSIRoXSCmQRlsGkXMY
-	kLcdj1aFaPpjpLulalDZiy1/R3SMekxMSAex5aezX+4g3lzF4JzW75fLga9TtZL2Q536SJ42Nky4h
-	8J7xGVgg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rdBe+uF56KhkOuabVb/m7WvzCAHrcIAYgMQIeJhFnuo=; b=VXfDWTpe+i8cUcvmBnlNYN6HsU
+	kXduukdC45Z/agxKe5kjCUuq4DXvWSOKEXp1nIIQxU5/iKSoDs+2sClABKLKguw+zfzKR74anrXMO
+	k4ADkP67p0Y8snuV1bpOTEZLptAFeckR37ND11hu6vx2DZleNhTs5owxnK0t88NlGTfIxcuDZNiqs
+	69mohkbs+X+vCcaoeJUYFJlLMut2cFrocFPoeLiDIjIEPDAmPzX8ht0sjx601aCZ5aass7U4VNI+E
+	Em64lhlxkbaAs2WxHiHzRaH2YjOL1JDDUboHKfDbVn0tDTEXRlCGt4APoHIwVrOX+EbNi3yzHu46E
+	Gd+oVI9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u3FH5-0000000E4Yh-1ueM;
-	Fri, 11 Apr 2025 14:22:31 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1u3FRo-0000000E6hA-1nHO;
+	Fri, 11 Apr 2025 14:33:36 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u3F1v-0000000E1r3-0XfW
+	id 1u3FEs-0000000E4Dd-1I14
 	for linux-mediatek@lists.infradead.org;
-	Fri, 11 Apr 2025 14:06:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1744380409;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=iWl/qqJnW4YKy7fD9Y1Bq2qyKwnzAfjOsHSpc/KwuOE=;
-	b=CTcRpXW4vhweJEESb62akEFsV/r2uZgUE2bbV+Dup9lDcAI2MQr8lmV//N/DSrt4Orer5+
-	FuRTHXNPYHOriHcADDWYxmgmaddG1LLwhS//Jucs0CHSltP4et7zEo/8Z/aFbLmsd0D0Zu
-	7kOdYNhpXVjkGLJDRnqyHksXGPRcnQg=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-411-Ov1DihxHMLSVa6UZohL51w-1; Fri,
- 11 Apr 2025 10:06:46 -0400
-X-MC-Unique: Ov1DihxHMLSVa6UZohL51w-1
-X-Mimecast-MFC-AGG-ID: Ov1DihxHMLSVa6UZohL51w_1744380404
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id D80F3195608D;
-	Fri, 11 Apr 2025 14:06:43 +0000 (UTC)
-Received: from dhcp-27-174.brq.redhat.com (unknown [10.45.224.222])
-	by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with SMTP id C4DCA180175D;
-	Fri, 11 Apr 2025 14:06:38 +0000 (UTC)
-Received: by dhcp-27-174.brq.redhat.com (nbSMTP-1.00) for uid 1000
-	oleg@redhat.com; Fri, 11 Apr 2025 16:06:08 +0200 (CEST)
-Date: Fri, 11 Apr 2025 16:06:02 +0200
-From: Oleg Nesterov <oleg@redhat.com>
-To: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
-Cc: Christian Brauner <brauner@kernel.org>,
-	Andrew Morton <akpm@linux-foundation.org>,
-	wsd_upstream@mediatek.com, bobule.chang@mediatek.com,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	chenqiwu <chenqiwu@xiaomi.com>, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Breno Leitao <leitao@debian.org>, Mateusz Guzik <mjguzik@gmail.com>
-Subject: Re: [RFC PATCH] exit: Skip panic in do_exit() during poweroff
-Message-ID: <20250411140601.GG5322@redhat.com>
-References: <20250410143937.1829272-1-Tze-nan.Wu@mediatek.com>
- <20250410210507.GD15280@redhat.com>
+	Fri, 11 Apr 2025 14:20:16 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-39ac8e7688aso1226993f8f.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 11 Apr 2025 07:20:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1744381212; x=1744986012; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=rdBe+uF56KhkOuabVb/m7WvzCAHrcIAYgMQIeJhFnuo=;
+        b=FPb3GoFiIChJ9dFmTRzCGLEvH84MfRVO0Dtm/S2g2CSuE86wWAvCdC7IL6dWqYxWAC
+         zkQmop7Ry9EwK/EhecfuzXnrHYGT/wLKmY2qR/KvynONCoZxZojAhIH+Zl7aoyY90dpw
+         RqKdwwEsJcfowcp/ldWEB1uGJfp4bCUO5R6ItisHU+qA/qUNUYROIgLBjkBe7c7XBJx8
+         bTmxtJaDOZKObTM/2J0kFrT82ezu6bTTqXp9nUAtrjIjepxg4iDfYUUJS0eFfoebMf6G
+         IVndALcYC1jnMExK3HVDBTRUgZ+NS2CrRmKxiUrIW8zs7RkzAHPFad6l1EjOuPvxbHiN
+         XOyw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1744381212; x=1744986012;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=rdBe+uF56KhkOuabVb/m7WvzCAHrcIAYgMQIeJhFnuo=;
+        b=Bu7UQY7QKdl782WLpK9tXi5DPMKXvzwNhH7fxSy3baNtO0DgO3U9DZd6HagSZ28qUr
+         rx0J4w2kKPzjbU4STTsOMpSz7r5dFX++fkrDLZN5W8wzd8D8ZzenvL1nJQvgedhPFfZ0
+         gXihYzvy+yCym3ESNIxUprQJL6hVQsfq31DMmN0gFLdF8njtoSIfwxa1IyBh+z1I7sN9
+         JQwVXdC3NPiM0Sf+ucNqThpwKWcgHzLRQFQ/dWLZG5gYwF0ZN5s06cYEPQi4/qLQu2nI
+         08vKgChORJWCOCoXCwQ3hmHTDCl9N+D72MD3uD385baPo/e+M/1vCZACx0j8vkuIc05S
+         5S7A==
+X-Forwarded-Encrypted: i=1; AJvYcCXvGY2fFhrrF+ssBVcZnlVqS6NrZbujxp9X1jNjPL6+ggs/Q6pbL+ds+8MxwDNNdqHs4i+vUEhN/Ft+M+eVgw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwiGAs9NTN6aZhgH26Rknmh6upH8K9Mns6F6Q3Q8B0+CDlEdSEM
+	9329E9A8YIp1fN0S9ugdzM7auw3XbQurJzlV3rEjYMT0SEsdVXLqcHAUEyf1H4o=
+X-Gm-Gg: ASbGnctoq9DCVHDEDKpd40KSaeO5/ejDVhkhri2Hikbg//dR6hldzaCZ3194fut5LoJ
+	vVXgdFgjbX3GWWABqBdK6nBZY39guQRwHLIOXyUQBirMPAaPpR6cBC1r7UCcGdjBmEq5LxNrJ08
+	sYKwLDLSmG1rP5D2Nz6SwtrTgfqyoybi+NzUMl0rt5yV50reIH8onHzsjorF4dPIjzCfnMaQ/69
+	DqJLkBH6cuN+At1HNEP7Aj+AEMK+rG/boGhpTs4aRRwTbYMniEbIpOHRxC8QyJ32QzTS3FdI5Cx
+	q53JvdJu4mzayUMZnqN32giZf44hgF2sfxgEmIIAOwY2v4pOlngn8rHEo+OPwjSxB/GuC5PHw2Y
+	yadXYfdSVqw==
+X-Google-Smtp-Source: AGHT+IFZ4lJFn1G3FTPM3/pefChplb5Ul1NZ2T59kDMMnV2Japyqu1iF66jX5ixamcxpq9HuXW+pSg==
+X-Received: by 2002:a05:6000:1a8a:b0:391:1139:2653 with SMTP id ffacd0b85a97d-39eaaec9e98mr2481396f8f.52.1744381212408;
+        Fri, 11 Apr 2025 07:20:12 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:5ee:79d0:cf9d:bb30:5951:692? ([2a01:e0a:5ee:79d0:cf9d:bb30:5951:692])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39eaf43cb43sm2138998f8f.65.2025.04.11.07.20.11
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 11 Apr 2025 07:20:12 -0700 (PDT)
+Message-ID: <8ea16b0a-85aa-4ff7-8531-9eb253a9575a@baylibre.com>
+Date: Fri, 11 Apr 2025 16:20:11 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250410210507.GD15280@redhat.com>
-User-Agent: Mutt/1.5.24 (2015-08-30)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/2] rtc: mt6397: Fix mt6357 RTC year offset handling
+ for hwclock commands
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Eddie Huang <eddie.huang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Macpaul Lin <macpaul.lin@mediatek.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-rtc@vger.kernel.org, linux-kernel@vger.kernel.org
+References: <20250109-enable-rtc-v2-0-d7ddc3e73c57@baylibre.com>
+ <20250109-enable-rtc-v2-2-d7ddc3e73c57@baylibre.com>
+ <4d916221-d9ea-4e08-8d22-1be1982323ee@collabora.com>
+Content-Language: en-US
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <4d916221-d9ea-4e08-8d22-1be1982323ee@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250411_070651_250444_70E182C6 
-X-CRM114-Status: GOOD (  42.84  )
+X-CRM114-CacheID: sfid-20250411_072014_349934_947F820A 
+X-CRM114-Status: GOOD (  20.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,166 +107,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add cc'es.
 
-A similar problem was recently reported,
-https://lore.kernel.org/all/20250403-exit-v1-1-8e9266bfc4b7@debian.org/
-and I didn't realize this is another thread.
 
-On 04/10, Oleg Nesterov wrote:
->
-> Well...
->
-> Let me repeat. I don't understand the kernel/reboot.c paths, you can
-> safely ignore me.
->
-> But I still think that you target the wrong goal. Quite possibly I am
-> wrong.
->
-> On 04/10, Tze-nan Wu wrote:
-> >
-> > If PID 1 exits due to the unreliable userspace after kernel_power_off()
-> > invoked,
->
-> Why. Why the global init does do_exit()? It should not, that is all.
-> It doesn't matter if it is single threaded or not.
->
-> As for sys_reboot(), I think that kernel_power_off() must be __noreturn,
-> and sys_reboot() should use BUG() after LINUX_REBOOT_CMD_POWER_OFF/_HALT
-> instead of do_exit().
->
-> If nothing else. do_exit() also does debug_check_no_locks_held() and
-> sys_reboot() calls do_exit() with system_transition_mutex held.
->
-> IOW. IMO, it is not that do_exit() needs some changes. The very fact
-> that the global init does do_exit() is wrong, this should be fixed.
->
-> But again, again, I can't really comment.
->
-> Oleg.
->
-> > the panic follow by the last thread of global init exited in
-> > do_exit() will stop the kernel_power_off() procedure, turn a shutdown
-> > behavior into panic flow(reboot).
-> >
-> > Add a condition check to ensure that the panic triggered by the last
-> > thread of the global init exiting, only occurs while:
-> > ( system_state != SYSTEM_POWER_OFF and system_state != SYSTEM_RESTART).
-> > Otherwise, WARN() instead.
-> >
-> > [On Android 16 with arm64 arch]
-> > Here's a scenario where the global init exits during kernel_power_off:
-> > If PID 1 encounters a page fault after kernel_power_off() has been
-> > invoked, the kernel will fail to handle the page fault because the
-> > disk(UFS) has already shut down.
-> > Consequently, the kernel will send a SIGBUS to PID 1 to indicate the
-> > page fault failure, and ultimately, the panic will occur after PID 1
-> > exits due to receiving the SIGBUS.
-> >
-> >             cpu1                           cpu2
-> >           ----------                     ----------
-> >     kernel_power_off() start
-> >         UFS shutdown
-> >             ...                	       PID 1 page fault
-> >             ...                    page fault handle failure
-> >             ...			             PID 1 received SIGBUS
-> >             ...                             panic
-> >    kernel_power_off() not done
-> >
-> > Backtrace while PID 1 received signal 7:
-> >    init-1 [007] d..1 41239.922385: \
-> >       signal_generate: sig=7 errno=0 code=2 comm=init pid=1 grp=0 res=0
-> >    init-1 [007] d..1 41239.922389: kernel_stack: <stack trace>
-> >    => __send_signal_locked
-> >    => send_signal_locked
-> >    => force_sig_info_to_task
-> >    => force_sig_fault
-> >    => arm64_force_sig_fault
-> >    => do_page_fault
-> >    => do_translation_fault
-> >    => do_mem_abort
-> >    => el0_ia
-> >    => el0t_64_sync_handler
-> >
-> > Simplified kernel log:
-> > kernel_power_off() invoked by pt_notify_thread.
-> > [41239.526109] pt_notify_threa: reboot set flag, old value 0x********,
-> > *.
-> > [41239.526114] pt_notify_threa: reboot set flag new value 0x********.
-> > UFS reject I/O after kerenl_power_off.
-> > [41239.686411]  scsi +scsi******** apexd: sd* ******** rejecting I/O to
-> > offline device.
-> > Lots of I/O error & erofs error happened after kernel_power_off().
-> > [41239.690312] apexd: I/O error, dev sdc, sector ******* op ***:(READ)
-> > flags 0x**** phys_seg ** prio class 0.
-> > [41239.690465] apexd: I/O error, dev sdc, sector ******* op ***:(READ)
-> > flags 0x**** phys_seg ** prio class 0.
-> > ...
-> > ...
-> > [41239.922265] init: erofs: (device ****): z_erofs_read_folio: read
-> > error * @ *** of nid ********.
-> > [41239.922341] init: erofs: (device ****): z_erofs_read_folio: read
-> > error * @ *** of nid ********.
-> > Finally device panic due to PID 1 received SIGBUS.
-> > [41239.923789] init: Kernel panic - not syncing: Attempted to kill init!
-> > exitcode=0x00000007
-> >
-> > Fixes: 43cf75d96409 ("exit: panic before exit_mm() on global init exit")
-> > Link: https://lore.kernel.org/all/20191219104223.xvk6ppfogoxrgmw6@wittgenstein/
-> > Signed-off-by: Tze-nan Wu <Tze-nan.Wu@mediatek.com>
-> > ---
-> >
-> > I am also wondering if this patch is reasonable?
-> >
-> > From my perspective, there are two reasons not to trigger such panic
-> > during kernel_power_off() or kernel_restart():
-> >   1. It is not worthwhile to interrupt kernel_power_off() by a panic
-> >      resulted from userspace instability.
-> >   2. The panic in do_exit() was originally designed to ensure a usable
-> >      coredump if the last thread of the global init process exited.
-> > 	 However, capture a coredump triggered by userspace crash after
-> >      kernel_power_off() seems not particularly useful, in my opinion.
-> >
-> > In certain scenarios, a kernel module may need to directly power off
-> > from kernel space to protect hardware (e.g., thermal protection).
-> > In my opinion, rather than causing a panic during kernel_power_off(),
-> > it sounds better to allow the device to complete its power-off process.
-> >
-> > Appreciate for any comment on this, if there's any better way to
-> > handle this panic, please point me out.
-> >
-> > ---
-> >  kernel/exit.c | 14 ++++++++++----
-> >  1 file changed, 10 insertions(+), 4 deletions(-)
-> >
-> > diff --git a/kernel/exit.c b/kernel/exit.c
-> > index 1dcddfe537ee..23cb6b42a1f1 100644
-> > --- a/kernel/exit.c
-> > +++ b/kernel/exit.c
-> > @@ -901,11 +901,17 @@ void __noreturn do_exit(long code)
-> >  	if (group_dead) {
-> >  		/*
-> >  		 * If the last thread of global init has exited, panic
-> > -		 * immediately to get a useable coredump.
-> > +		 * immediately to get a usable coredump, except when the
-> > +		 * device is currently powering off or restarting.
-> >  		 */
-> > -		if (unlikely(is_global_init(tsk)))
-> > -			panic("Attempted to kill init! exitcode=0x%08x\n",
-> > -				tsk->signal->group_exit_code ?: (int)code);
-> > +		if (unlikely(is_global_init(tsk))) {
-> > +			if (system_state != SYSTEM_POWER_OFF &&
-> > +			    system_state != SYSTEM_RESTART)
-> > +				panic("Attempted to kill init! exitcode=0x%08x\n",
-> > +				      tsk->signal->group_exit_code ?: (int)code);
-> > +			WARN(1, "Attempted to kill init! exitcode=0x%08x\n",
-> > +			     tsk->signal->group_exit_code ?: (int)code);
-> > +		}
-> >
-> >  #ifdef CONFIG_POSIX_TIMERS
-> >  		hrtimer_cancel(&tsk->signal->real_timer);
-> > --
-> > 2.45.2
-> >
+On 02/04/2025 15:03, AngeloGioacchino Del Regno wrote:
+> Il 02/04/25 12:51, Alexandre Mergnat ha scritto:
+>> The mt6357 RTC was failing when using the `hwclock -r --verbose` command,
+>> despite reading correctly through sysfs. There is high chance for other
+>> platform to be impacted by the year offset handling issue.
+>>
+>> The hardware RTC registers store years relative to 1968, but the driver
+>> wasn't consistently applying the offset when converting between
+>> hardware and Linux time representation.
+>>
+>> This inconsistency caused alarm rollover failures during device
+>> registration, with the error "alarm rollover not handled -22" in the
+>> logs, causing hwclock commands to fail.
+>>
+>> The ioctl interface used by the hwclock command requires proper time
+>> range validation that wasn't happening with the inconsistent year
+>> offsets.
+>>
+>> Fixes the issue by applying the year offset in all operations:
+>>     - Adding (RTC_MIN_YEAR - RTC_BASE_YEAR) when reading from hardware
+>>     - Subtracting the same offset when writing to hardware
+>>     - Using the same logic for both regular time and alarm operations
+>>
+>> With these changes, the hwclock command works correctly and time
+>> values are consistently handled across all interfaces.
+>>
+>> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+>> ---
+>>   drivers/rtc/rtc-mt6397.c | 13 ++++++++-----
+>>   1 file changed, 8 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
+>> index 692c00ff544b2..ba52e225dc8fa 100644
+>> --- a/drivers/rtc/rtc-mt6397.c
+>> +++ b/drivers/rtc/rtc-mt6397.c
+>> @@ -77,7 +77,8 @@ static int __mtk_rtc_read_time(struct mt6397_rtc *rtc,
+>>       tm->tm_mday = data[RTC_OFFSET_DOM];
+>>       tm->tm_wday = data[RTC_OFFSET_DOW];
+>>       tm->tm_mon = data[RTC_OFFSET_MTH] & RTC_TC_MTH_MASK;
+>> -    tm->tm_year = data[RTC_OFFSET_YEAR];
+>> +    /* The RTC registers store years since 1968 (hardware's base year) */
+>> +    tm->tm_year = data[RTC_OFFSET_YEAR] + (RTC_MIN_YEAR - RTC_BASE_YEAR);
+> 
+> This patch received a NACK because of RTC_MIN_YEAR_OFFSET.
+> 
+> What you're doing here is avoiding to use the "RTC_MIN_YEAR_OFFSET" definition name
+> but otherwise doing the very same thing that was NACKed before.
 
+You're right sorry. In my mind, the rtc framework was working well, then I try-hard to
+fix the issue in this driver... but I was wrong. :(
+The RTC framework have issues so fixes should be in the framework directly. My next suggestion:
+https://lore.kernel.org/r/20250109-enable-rtc-v3-0-f003e8144419@baylibre.com
+
+
+-- 
+Regards,
+Alexandre
 
