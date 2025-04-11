@@ -4,78 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C5F7C369A8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Apr 2025 12:45:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DBC9C36010
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Apr 2025 12:47:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3IG4g6G6O5d0C+h1ORyM98qH6q+iKpuRjuLFaymrvAM=; b=sBbssZtJE3lIZfeetaGFMWQlTz
-	YVgAPOJ/5degS1Pd88yxyXIOSLBiOL2y7hatdZrx9Vfaqh8mwwKtDUcs42PkuHc39LY3xuMGpLlax
-	UDmWcIz+ODk/ov2LnVd2gHW6IJ7CI3pnX9pvzKn3PE3ViJJTTtzOqX/7JcVf7VJQ6dboHOdDacda0
-	JkWEk1ihXJjKxbreox3iYug/dUM+iksqPteoMVh3qIoHh/c6ndumpk48E4gReN5YkAYVFpvCCiATs
-	+OFlcH0L+qCLGTzG9Wr5Cd7tfeGJ2EbfamJ+S0/YBw3SEqhNuhL7dabPj1XJ8LHgr2xqS+9PhhRc2
-	JFT5XDXQ==;
+	bh=wWvOtZ2Ij96tOi1o1hUr0b9qGVWu80vcBedKzsseg9k=; b=H5l2ooVmYMIpSzqL0KHIM05wqa
+	7ZVUIHoydLkpuMqqbZw2sNNaIvepRYkc2gd7oZVdxzjgKns5H3Y9F89q1wD9qk16SVrxMlBYsnAkK
+	pS5uNlg2ndgazMyK8sNgAQ36/SGTxdNOyIP0zCkEbYezMVkTwToYFpvTP0NWPaZP7Df69E7nBIRBf
+	Tw4gS0KmLE9iii7COtsJYLs1ujmut1WhPpESd40tPVW2Iu5kEfGmw85UH9hmdQW2FwabFVG05Wu3q
+	rDilKZoECJMktHaMo8LdfR6fM0MIhX+oiFFPXj+E6c1EB7Uz72aawARIvGiUtaInmCTiWlfhu3Ekh
+	m8D1BqJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u3DlJ-0000000Dn2I-0dzY;
-	Fri, 11 Apr 2025 12:45:37 +0000
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+	id 1u3Dn6-0000000DnMr-2XdR;
+	Fri, 11 Apr 2025 12:47:28 +0000
+Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u3Dca-0000000DlHF-3bzD
+	id 1u3Dci-0000000DlK3-0n0d
 	for linux-mediatek@lists.infradead.org;
-	Fri, 11 Apr 2025 12:36:38 +0000
-Received: by mail-pf1-x435.google.com with SMTP id d2e1a72fcca58-73712952e1cso1818723b3a.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 11 Apr 2025 05:36:36 -0700 (PDT)
+	Fri, 11 Apr 2025 12:36:45 +0000
+Received: by mail-pf1-x431.google.com with SMTP id d2e1a72fcca58-736a72220edso1982213b3a.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 11 Apr 2025 05:36:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1744374996; x=1744979796; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1744375003; x=1744979803; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=3IG4g6G6O5d0C+h1ORyM98qH6q+iKpuRjuLFaymrvAM=;
-        b=yTDRvz0CQlrN/NyReUXdbnAVxw1Y6IYle+vUY/wI74TqFyUnmZUGxG40IjE8CYsp9E
-         XfiofXHSP3GoykiCqjY3mPYluV8QFFXa3mpu8Rja+CYqBQFKducUSppQKHPIvDzGgi86
-         ARucjeXMkMVGmjL8olCCj8syh2bZyj9zDfmoLITk89uF/FK6zHe/5xxl0bbv0Z6PogPy
-         BAEMb7CGw2gnqERcAeWEMYbM75LHrU83XKaXeN2nRkN2o4G5/4n/wfCI4IioKV5lFYpg
-         Mk3Eq3VWtsZ5PM1DLpjyff95Tjo9J/rxifzlRqYVyJCzvAtQonxCB3mAjvaOW0kH2jRa
-         6L0w==
+        bh=wWvOtZ2Ij96tOi1o1hUr0b9qGVWu80vcBedKzsseg9k=;
+        b=LYvELdZRx+CbQ3JrBI9MemKZM2o7zFC/fPg5ql6jtXpEdLLYW4VtBy2wpMRHHlWEJ6
+         KXhxhgy9CEhOn+AJuOglnpVaKrzsTH4lChcX5EmE4cegRRHfEpVdYWc3+m55wWEuAF1E
+         mf8i2pdQvwFda2d48Lx86Tr6+3AdWt54cDSFeZ3gnraXB1YTJjRCezHwykCaDtiBRYOt
+         kzMXWogINdabQ3Ye0r2ERHZqj9yUyK+7txbzt3aLB50+WPBeMAop82kUcJLNV9aeIYxl
+         ya0XN9NjuBI+wVeMwm1b7JRlku5xEHUo4YHagoWOP5cTKSV9dfIZQ0MMlB4azILE11tt
+         SwUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744374996; x=1744979796;
+        d=1e100.net; s=20230601; t=1744375003; x=1744979803;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=3IG4g6G6O5d0C+h1ORyM98qH6q+iKpuRjuLFaymrvAM=;
-        b=bHWyCVdRZebYEdyrJwQ3mY/ljaAiF/kMRTeJHIGBwIUiTmu5CLfJoLH3PWBDyxVHDx
-         5lJwSOdtMxQoXBGrY1HGvmx2MFki1ii2pWbagfL3MzS4eu/JC+KsefVuQJ0TlJAgAYTr
-         gnrThb44raxAuZtNbByPo3uhqV1En69taFgYv/gqWwCQBHNhLacLuMiwzfZ4ETe4vT8A
-         EAgEQlvnWD9WQ37Q+4HyRkaSmDqiYL7l6b+0FsC2BdxUYci+1REKvIXaaiPAsZx8Y4US
-         ARRzESywNMSEk8NZpeO+aVaIIxGcCU4nRnmw5eUUCoqoMILt+ArhawrzByehJBef36tI
-         VTPA==
-X-Forwarded-Encrypted: i=1; AJvYcCWqBw7invZlr8hwWv17ShWR1fsvoKAHXFR2xTiU3N7eH1WrwBXq7eFnSIipx11VMSTXCu2AhJjX/P49NP18Hg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw2OHyKP4r2Q6KGYmW8y+r3GwlOROqIBhbG9zJZ1BaU7LbHmhTi
-	yZQ6TTuPxnnVzX2a49WbREkoChtHiWcNY3EoleKx2+r55mITGEOB5j5ACbYLlDw=
-X-Gm-Gg: ASbGncstREbq9f8MUejv/5YsgIKq6YiW4vhkwbKu5G6q9ywx38YQQtp0pmtv6gyBNtD
-	cLKmzLId22TKTAcVp81sDhhoInDMeycmcGern2Wn7zfRtxoYRVNarFuUOO49eiHYiPvY7seli1O
-	Z26RtjDfsrsZXeAkSapd5PhBRoH1MGiIsWJtVXRa+mNKLjG36ceR0MuigazWWZBxhcmBhGCHmjM
-	POEb+k7wYFXa/YwTHZj8ld9JfACgj4PhuSGcO3QnB6aDVnVKfwB+d3dR0Jip6TofVD4HeDaKScL
-	KpiHxXfILzmFe9j2c0PQJs304vVnoaaR5hQEBexS0RY=
-X-Google-Smtp-Source: AGHT+IFsg0ZCckIXxc+IHljq9KDD7/UlDwl63B9XFgkbLhB3RqdDeYk2J9Ou9a3sdf+9kaQpQwYZGg==
-X-Received: by 2002:a05:6a20:6f06:b0:1f5:8622:5ecb with SMTP id adf61e73a8af0-2017996f524mr5486935637.34.1744374995986;
-        Fri, 11 Apr 2025 05:36:35 -0700 (PDT)
+        bh=wWvOtZ2Ij96tOi1o1hUr0b9qGVWu80vcBedKzsseg9k=;
+        b=w+jt2Klv/+Ju7U6YWE90FMY3zQfrDNm2sp+nJj8xkfnYLk05uoD7G/soFn64/ge/wM
+         DyCkuEiSEWYH+P3w3yjBkvNXcW+sK2+8tzBO3/9BpdpM0yArOWmJUroJSWndKsUoeT+d
+         x/cI9hAe2gVP+4ltSKQ3LvYFJ2R0s62aa4RHyhFVuUHvuZcoww0cra9tfFIQV1+qjqbY
+         RoXZqnisSIb7fpNmy7IROs55zg8X8VIiFim5xmP1I1pM44zmYQbHEA4oR6WyVRmoebTm
+         BvCkt3NBKNC7glVabUoGV4q8zZt6KbGSbq2gZSF9D9dkPWU+Wi3vVi6UZbJislZ0+fZX
+         jSLw==
+X-Forwarded-Encrypted: i=1; AJvYcCWFYWWsK4UmRtZmroLet9sDF8ahYQ1hsn0PcyfPdAYWBlbiU30nlZstu4JtkiPSf+SXpEP53VEqy1kUeCmtPw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxlURNCWzWbhAn4uXsMTXFeDgWNAajCVqBA5FAoOQPXPp/V7SDH
+	yU7U3rghdchXQC0ud7IfIJyfGvy1/RtXAf/Zf6e/HbLoLvlEoO9NM6F8w7bZs3Q=
+X-Gm-Gg: ASbGncscMhe99IjX5g4KrQuCz+u688ZwkCUK8rrwhsM8lfwfsdeRVqT3dIrnGbPj2QU
+	RVGfsYaw8ws78RsBnyzIsSB96Y6DZGH2Gn6XlM8gu57T2RwicmPQ33kIhk5+C5WXW5dOkul+eXM
+	UNTbQ/iaq0/uaV73z2iAnIDS/migOV9QCBJWBOgNlhKoCX4chySr4jW+ogn/P9xTLprtvoskdV7
+	sEhe3tJcEzEaUK//4KfhzoZ6rBrI07nijRrVl2cvI/qI8A74ks/F97mq3ad2VawCk1OLQhd29qj
+	IDtn5qLqGyRTBG2anY3DBKdinR/b7ZdI5YrgiivZOKM=
+X-Google-Smtp-Source: AGHT+IHHr6PfcniD19K70c7n3k5QYjLiwj66+qa8B+xXfSPCuWN5/YZWkukIqVWOva+qdLyKiB11mg==
+X-Received: by 2002:a05:6a00:3908:b0:736:5822:74b4 with SMTP id d2e1a72fcca58-73bd129c6d1mr3275598b3a.21.1744375003638;
+        Fri, 11 Apr 2025 05:36:43 -0700 (PDT)
 Received: from [127.0.1.1] ([2a01:e0a:5ee:79d0:cf9d:bb30:5951:692])
-        by smtp.googlemail.com with ESMTPSA id d2e1a72fcca58-73bd22f8253sm1408292b3a.93.2025.04.11.05.36.28
+        by smtp.googlemail.com with ESMTPSA id d2e1a72fcca58-73bd22f8253sm1408292b3a.93.2025.04.11.05.36.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 11 Apr 2025 05:36:35 -0700 (PDT)
+        Fri, 11 Apr 2025 05:36:43 -0700 (PDT)
 From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Fri, 11 Apr 2025 14:35:55 +0200
-Subject: [PATCH v3 2/5] rtc: Add handling of pre-1970 dates in time
- conversion functions
+Date: Fri, 11 Apr 2025 14:35:56 +0200
+Subject: [PATCH v3 3/5] rtc: Fix the RTC time comparison issues adding cast
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250109-enable-rtc-v3-2-f003e8144419@baylibre.com>
+Message-Id: <20250109-enable-rtc-v3-3-f003e8144419@baylibre.com>
 References: <20250109-enable-rtc-v3-0-f003e8144419@baylibre.com>
 In-Reply-To: <20250109-enable-rtc-v3-0-f003e8144419@baylibre.com>
 To: Eddie Huang <eddie.huang@mediatek.com>, 
@@ -90,24 +89,24 @@ Cc: linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
  Alexandre Mergnat <amergnat@baylibre.com>
 X-Mailer: b4 0.12.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3599; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=tyu764S29y/vhFyNtYKo1iTVWCgv8kwvcYIcevIAdQU=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBn+Qy+3CiQcNMagXuWDXp22y2fLo6SR/giORhsb2jL
- j0l2Rq+JAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZ/kMvgAKCRArRkmdfjHURTB5D/
- oD+VRGtB9vanDklEZ0FOkM4AmBfEcomkMxEDgrwUagbw2dNBqsBDibhbpl+Sfv8LRErcT0R2SZFxrp
- RtKYr6GJex551wXHt1dKOuzkiwjjkQGGjkiMz+TiZl8EIkrta/RocTjEfge7N4L6OoD5NaFKz55+jX
- DvEoKYEFAoRThw2/D2suWlaWpSHLdghBIsl/klG9QtRORclyp3HujfG0tvxr6jVmK/QGyQoCwf+LqW
- pdAFz9vCGnFBX2sPbt3LKO3Gz8EctYNidjvItdLLiGh35/l+eicEv+l5H/9C/Cxp16Uhbuv4M6M72k
- V+SnyE6EBtp/M17/nXlLAFGA2FhGXsyTJI1JKiICr9trYFGVONewVdRMfBAAx/LNpVs8Iyhyq6AlUE
- fptqtoE5GZ5yngSLsMZxYzyPKrfq0Jn1O71MWTQ/oxB/B0YrrAxAaMyzgT0qni9cNCFO6PBHxhyxJ9
- 3PH3bSZZUTYQLp2hq1tAFWNPWVtTRmareCUcNJ5ICuMxF0cyNOeiR0klJxiUOvVNiob/78WIIkHE77
- PDAMkXx5z0Dscs7Vq0qwJflmgG9ccXA8U7czRYuErgYMYtVQYDhMJ6a53gbeMumYFwlK1Z1KGHV+pP
- KLlRSR1FEgbNLnKO2j53929m8ZuE3EPJHDvWf+VXU1F/cbUYSk27vJnWk4xA==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3840; i=amergnat@baylibre.com;
+ h=from:subject:message-id; bh=vGUfgBYd/nqdiWhakMrxzcEEIqB0t/sqp/diq7LMGlc=;
+ b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBn+Qy+G925gTSnI2f/g5RRp1mmiZxGxczjO4K3kNYm
+ 9g+lrSyJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCZ/kMvgAKCRArRkmdfjHURcl9D/
+ wP0ww2kkK7+Wdz6lCWG8tR0wOKrrvr2qjTu4xuKN9SRbZGSWhA9QmDb/dWzu4/0eAm8sl3qJMEk5Yk
+ 72cNB66JOZpwVfgY4Xp+ppUa5CNpHWBGe3QOQegRAvq9iSOBZ0Befi0rR5kfl788zp72w+3x1VXO7E
+ R1BFLx8c2FhBePEp0TmhPL/thzoVTQhUv/11ONiQwlSewTu3UTlymMfTRZ8D6pSsM3pfNhSLzDLCh1
+ yybqickSMBVYd4qqOnp08M4WsDnTHYsFYb51RyUczq3CSXrZ7Tw3/8rnGoaMFfRoe+9a2GaVNfcena
+ LCt1tD6kBkx31OUdTCgi2xU4TbUkN0KBgcGLu8G6MH2r4Zj/Ul3Dd8BAHPtQdYc1qL86ylvzmkLCT+
+ XZ04Bh+xraV8u4h7iUkZAoDEn12HInoSfG5xk2AIlsUP6jWf5w1VGcBHbwuBvVfUQr4IF3WsZNJb5p
+ +iS8HHZgWKGNJaC7hsERyf63bEwLaYX/v9yCj9JsPBJ8kN+CnJ9QvKUqS39GqOS0fNyH34jfvnBUSv
+ eX9nVxrWHyd4x5cifMm5s4lhMt2iZinXa7klv9V8rXsvW5aXOUmt9iBd0RF3YBmxDj+xcv5XUVKG6H
+ MPHZrxIA9oPg2KHF1+4pye8NG1q1tx7stersv89cat7tXtLmaMbi2Fs7UNbQ==
 X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
  fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250411_053636_910524_9ADD8532 
-X-CRM114-Status: GOOD (  18.66  )
+X-CRM114-CacheID: sfid-20250411_053644_234573_542A1B90 
+X-CRM114-Status: GOOD (  17.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,107 +121,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Linux RTC subsystem's time conversion functions couldn't properly handle
-dates before January 1, 1970 (negative time64_t values). This affected
-offset calculations, causing incorrect time translations for RTCs with
-pre-1970 base years like those using a 1900 epoch.
+The RTC subsystem was experiencing comparison issues between signed and
+unsigned time values. When comparing time64_t variables (signed) with
+potentially unsigned range values, incorrect results could occur leading
+to runtime errors.
 
-The original rtc_time64_to_tm() function produced incorrect dates for
-pre-1970 inputs and rtc_valid_tm() rejected all years before 1970 as
-invalid, even if they were within the hardware's capabilities. For
-example, converting January 1, 1942 2:36:47 is equal to -883603393.
-converting it back resulted in wildly incorrect values
-=> January 2, 1942 1193025:5:3.
+Adds explicit type casts to time64_t for critical RTC time comparisons
+in both class.c and interface.c files. The changes ensure proper
+handling of negative time values during range validation and offset
+calculations, particularly when dealing with timestamps before 1970.
 
-These issues made it impossible to correctly use RTCs with pre-1970 base
-years, particularly affecting embedded systems using hardware like the
-MT6357 RTC.
-
-Modify rtc_time64_to_tm to implement special handling for negative
-time values, properly calculating days and seconds for dates before
-1970. It also removes the tm_year < 70 restriction in rtc_valid_tm to
-allow pre-1970 dates to be validated correctly, ensuring accurate
-conversion between hardware and system time across the full range of
-RTC hardware capabilities.
+The previous implementation might incorrectly interpret negative values
+as extremely large positive values, causing unexpected behavior in the
+RTC hardware abstraction logic.
 
 Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- drivers/rtc/lib.c | 38 ++++++++++++++++++++++++++++++++------
- 1 file changed, 32 insertions(+), 6 deletions(-)
+ drivers/rtc/class.c     | 6 +++---
+ drivers/rtc/interface.c | 8 ++++----
+ 2 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/rtc/lib.c b/drivers/rtc/lib.c
-index fe361652727a3..2014a86499e02 100644
---- a/drivers/rtc/lib.c
-+++ b/drivers/rtc/lib.c
-@@ -46,7 +46,6 @@ EXPORT_SYMBOL(rtc_year_days);
-  * rtc_time64_to_tm - converts time64_t to rtc_time.
-  *
-  * @time:	The number of seconds since 01-01-1970 00:00:00.
-- *		(Must be positive.)
-  * @tm:		Pointer to the struct rtc_time.
-  */
- void rtc_time64_to_tm(time64_t time, struct rtc_time *tm)
-@@ -59,11 +58,39 @@ void rtc_time64_to_tm(time64_t time, struct rtc_time *tm)
- 		day_of_year, month, day;
- 	bool is_Jan_or_Feb, is_leap_year;
+diff --git a/drivers/rtc/class.c b/drivers/rtc/class.c
+index e31fa0ad127e9..1ee3f609f92ea 100644
+--- a/drivers/rtc/class.c
++++ b/drivers/rtc/class.c
+@@ -282,7 +282,7 @@ static void rtc_device_get_offset(struct rtc_device *rtc)
+ 	 * then we can not expand the RTC range by adding or subtracting one
+ 	 * offset.
+ 	 */
+-	if (rtc->range_min == rtc->range_max)
++	if (rtc->range_min == (time64_t)rtc->range_max)
+ 		return;
  
--	/* time must be positive */
--	days = div_s64_rem(time, 86400, &secs);
-+	bool is_negative = false;
-+
-+	/* Handle negative time values (dates before 1970-01-01) */
-+	if (time < 0) {
-+		/* Store that we had a negative value */
-+		is_negative = true;
-+
-+		/* Convert to positive value for the algorithm, but
-+		 * we'll subtract one more day to handle the boundary correctly
-+		 */
-+		time = -time;
-+
-+		/* Get days and seconds */
-+		days = div_s64_rem(time, 86400, &secs);
-+
-+		/* If we have seconds, we need to adjust to the previous day */
-+		if (secs > 0) {
-+			days += 1;
-+			secs = 86400 - secs;
-+		}
-+
-+		/* Make days negative again */
-+		days = -days;
-+	} else {
-+		/* Positive time value - normal case */
-+		days = div_s64_rem(time, 86400, &secs);
-+	}
+ 	ret = device_property_read_u32(rtc->dev.parent, "start-year",
+@@ -299,7 +299,7 @@ static void rtc_device_get_offset(struct rtc_device *rtc)
+ 	if (!rtc->set_start_time)
+ 		return;
  
- 	/* day of the week, 1970-01-01 was a Thursday */
- 	tm->tm_wday = (days + 4) % 7;
-+	/* Ensure tm_wday is always positive */
-+	if (tm->tm_wday < 0)
-+		tm->tm_wday += 7;
+-	range_secs = rtc->range_max - rtc->range_min + 1;
++	range_secs = (time64_t)rtc->range_max - rtc->range_min + 1;
  
  	/*
- 	 * The following algorithm is, basically, Proposition 6.3 of Neri
-@@ -93,7 +120,7 @@ void rtc_time64_to_tm(time64_t time, struct rtc_time *tm)
- 	 * thus, is slightly different from [1].
+ 	 * If the start_secs is larger than the maximum seconds (rtc->range_max)
+@@ -327,7 +327,7 @@ static void rtc_device_get_offset(struct rtc_device *rtc)
+ 	 *
+ 	 * Otherwise the offset seconds should be 0.
  	 */
+-	if (rtc->start_secs > rtc->range_max ||
++	if (rtc->start_secs > (time64_t)rtc->range_max ||
+ 	    rtc->start_secs + range_secs - 1 < rtc->range_min)
+ 		rtc->offset_secs = rtc->start_secs - rtc->range_min;
+ 	else if (rtc->start_secs > rtc->range_min)
+diff --git a/drivers/rtc/interface.c b/drivers/rtc/interface.c
+index aaf76406cd7d7..93bdf06807f23 100644
+--- a/drivers/rtc/interface.c
++++ b/drivers/rtc/interface.c
+@@ -37,7 +37,7 @@ static void rtc_add_offset(struct rtc_device *rtc, struct rtc_time *tm)
+ 	 */
+ 	if ((rtc->start_secs > rtc->range_min && secs >= rtc->start_secs) ||
+ 	    (rtc->start_secs < rtc->range_min &&
+-	     secs <= (rtc->start_secs + rtc->range_max - rtc->range_min)))
++	     secs <= (time64_t)(rtc->start_secs + rtc->range_max - rtc->range_min)))
+ 		return;
  
--	udays		= ((u32) days) + 719468;
-+	udays		= days + 719468;
+ 	rtc_time64_to_tm(secs + rtc->offset_secs, tm);
+@@ -58,7 +58,7 @@ static void rtc_subtract_offset(struct rtc_device *rtc, struct rtc_time *tm)
+ 	 * device. Otherwise we need to subtract the offset to make the time
+ 	 * values are valid for RTC hardware device.
+ 	 */
+-	if (secs >= rtc->range_min && secs <= rtc->range_max)
++	if (secs >= rtc->range_min && secs <= (time64_t)rtc->range_max)
+ 		return;
  
- 	u32tmp		= 4 * udays + 3;
- 	century		= u32tmp / 146097;
-@@ -146,8 +173,7 @@ EXPORT_SYMBOL(rtc_time64_to_tm);
-  */
- int rtc_valid_tm(struct rtc_time *tm)
+ 	rtc_time64_to_tm(secs - rtc->offset_secs, tm);
+@@ -66,7 +66,7 @@ static void rtc_subtract_offset(struct rtc_device *rtc, struct rtc_time *tm)
+ 
+ static int rtc_valid_range(struct rtc_device *rtc, struct rtc_time *tm)
  {
--	if (tm->tm_year < 70 ||
--	    tm->tm_year > (INT_MAX - 1900) ||
-+	if (tm->tm_year > (INT_MAX - 1900) ||
- 	    ((unsigned int)tm->tm_mon) >= 12 ||
- 	    tm->tm_mday < 1 ||
- 	    tm->tm_mday > rtc_month_days(tm->tm_mon,
+-	if (rtc->range_min != rtc->range_max) {
++	if (rtc->range_min != (time64_t)rtc->range_max) {
+ 		time64_t time = rtc_tm_to_time64(tm);
+ 		time64_t range_min = rtc->set_start_time ? rtc->start_secs :
+ 			rtc->range_min;
+@@ -74,7 +74,7 @@ static int rtc_valid_range(struct rtc_device *rtc, struct rtc_time *tm)
+ 			(rtc->start_secs + rtc->range_max - rtc->range_min) :
+ 			rtc->range_max;
+ 
+-		if (time < range_min || time > range_max)
++		if (time < range_min || time > (time64_t)range_max)
+ 			return -ERANGE;
+ 	}
+ 
 
 -- 
 2.25.1
