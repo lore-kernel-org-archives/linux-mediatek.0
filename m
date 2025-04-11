@@ -4,81 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E609AC36010
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Apr 2025 15:13:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77443C369A2
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Apr 2025 15:44:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4+lhjfPz71eCEuGxN89X4itySV64JY5cuombe2gZzeM=; b=OilDRyDw7P3f0G9ifL65eAGI46
-	oMumTgJsTjcEMqgKtfqNLdt6fvuwBfzgb/WxlK5FTEuS258ngMXkAJiUfJy/ci2NBEvT8NaIQn1zQ
-	Gl9Rqy4DJBns0jvvD3f04nimvTnogBW95Y0ACuHPU2dASkjqj4WgEHvOsHG05j4+upWhpPWLKylat
-	f/TB+L60dVwEV3sTBG+W2fcMNSJKIo27H82XR0qmiCs4NBbL+xybPvkD3UDyrxlt4mVTTn14HvlNs
-	o+ilHAFlxog/VXVsfgFBYrao0Yo+73zgcmun1VFb0uMfwcWv2inZModgOn9TVlqmAAbdhr85aQyHD
-	ZdLLNUYg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TwIXuSKph5abeBsn7LRskNpTYICDS/exidG2ywTRuq0=; b=pHaymImewld2IOKIsk/V9XNFGp
+	Sbe3hoDK8omBb2h4/xNYFc7UNHuBtEI9D4Ks9BQvRrKsujtfJ9Xmfet4H93vFhuNQ54hkZnval3ve
+	IlKCGa8vQtzSKAJmacz/fG/SoHJXqkltYhGDJFNgwO10xltBiZW9f7tr/JY0sJOS9Bt5sHM3kRw7/
+	Osg2pFc6m0THAsvML2Az6nJIonH/nZM4x4VG2UburRqU7cMbm2VWKrNvfW7pzOU+kT/cjUy2k9gQJ
+	j7tDs8XgPBQKU+tMbxf35gW1B1PXhTjbE9dBrt0FSIvxVkliQZifp1F4XWSLCxNb7x/Q0fenEd8em
+	zT4Vy/zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u3G48-0000000ED3M-471B;
-	Fri, 11 Apr 2025 15:13:12 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1u3GYb-0000000EHIO-1Udd;
+	Fri, 11 Apr 2025 15:44:41 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u3G1B-0000000ECXH-3EZ8;
-	Fri, 11 Apr 2025 15:10:11 +0000
+	id 1u3GYZ-0000000EHHl-2zeK;
+	Fri, 11 Apr 2025 15:44:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 072F25C631D;
-	Fri, 11 Apr 2025 15:07:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 66AB4C4CEE2;
-	Fri, 11 Apr 2025 15:10:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744384208;
-	bh=nV7QUsY7pocrTLl7+krZ9Vjz4uByyHrtuPWZ3jHggtc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=k8+ON3jDxuMhAktXI7jzW1oXlfLzIB/wn/r3nc+Dk4EvAvRM4zw0hS5E8lQgzb5sO
-	 dhhX27snOzoNVidZH4vEhTERLUI8mcDyGIswXt3IY5A4Zw1paxXHqD4ZKwwSnTM9c4
-	 pnn/+PZ74C+6gb9TOSa17oOdk+fH6s7xH11L1YSKqr5rdjIF0yLwVEFc62ezEK0Aaz
-	 Gi1cff+pQIe0pNxrSCsMlycjFDmTkxKYfIMd2VQH5BJcNZH4AnnHsPKG07vnGDRRgg
-	 KMlyNp9vrDGh9IKpm+XYkSpLQu2lTXW6xEBwT809wncke0+Mm10Xwut9NJbuDlVCGj
-	 cljYUFggYDwSA==
-Date: Fri, 11 Apr 2025 10:10:07 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Lee Jones <lee@kernel.org>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
-	Simon Horman <horms@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	devicetree@vger.kernel.org, Vladimir Oltean <olteanv@gmail.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>, upstream@airoha.com,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org, Paolo Abeni <pabeni@redhat.com>,
-	netdev@vger.kernel.org,
-	"Chester A. Unal" <chester.a.unal@arinc9.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Eric Dumazet <edumazet@google.com>,
-	Russell King <linux@armlinux.org.uk>,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	Jakub Kicinski <kuba@kernel.org>,
-	Daniel Golle <daniel@makrotopia.org>
-Subject: Re: [net-next PATCH v14 05/16] dt-bindings: mfd: Document support
- for Airoha AN8855 Switch SoC
-Message-ID: <174438420580.3258271.14505351039830543579.robh@kernel.org>
-References: <20250408095139.51659-1-ansuelsmth@gmail.com>
- <20250408095139.51659-6-ansuelsmth@gmail.com>
+	by tor.source.kernel.org (Postfix) with ESMTP id CBA4D68466;
+	Fri, 11 Apr 2025 15:44:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8A794C4CEE9;
+	Fri, 11 Apr 2025 15:44:38 +0000 (UTC)
+Received: from wens.tw (localhost [127.0.0.1])
+	by wens.tw (Postfix) with ESMTP id F10975FCDB;
+	Fri, 11 Apr 2025 23:44:35 +0800 (CST)
+From: Chen-Yu Tsai <wens@csie.org>
+To: Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Samuel Holland <samuel@sholland.org>, Conor Dooley <conor@kernel.org>, 
+ Nicolas Ferre <nicolas.ferre@microchip.com>, 
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
+ Steen Hegelund <Steen.Hegelund@microchip.com>, 
+ Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, 
+ Bjorn Andersson <andersson@kernel.org>, 
+ Konrad Dybcio <konradybcio@kernel.org>, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, Heiko Stuebner <heiko@sntech.de>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+ Geert Uytterhoeven <geert+renesas@glider.be>, 
+ Magnus Damm <magnus.damm@gmail.com>, 
+ Lorenzo Pieralisi <lpieralisi@kernel.org>, Andy Gross <agross@kernel.org>, 
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>, 
+ Viresh Kumar <vireshk@kernel.org>, Nishanth Menon <nm@ti.com>, 
+ Stephen Boyd <sboyd@kernel.org>, zhouyanjie@wanyeetech.com, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ "Rafael J. Wysocki" <rafael@kernel.org>, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
+ Stephan Gerhold <stephan.gerhold@linaro.org>, 
+ "Rob Herring (Arm)" <robh@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org, 
+ linux-arm-msm@vger.kernel.org, imx@lists.linux.dev, 
+ linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+ linux-renesas-soc@vger.kernel.org, linux-mips@vger.kernel.org, 
+ linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ Andre Przywara <andre.przywara@arm.com>, 
+ =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
+ Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>, 
+ Sudeep Holla <sudeep.holla@arm.com>, Viresh Kumar <viresh.kumar@linaro.org>, 
+ Ulf Hansson <ulf.hansson@linaro.org>
+In-Reply-To: <20250410-dt-cpu-schema-v2-0-63d7dc9ddd0a@kernel.org>
+References: <20250410-dt-cpu-schema-v2-0-63d7dc9ddd0a@kernel.org>
+Subject: Re: (subset) [PATCH v2 00/17] Arm cpu schema clean-ups
+Message-Id: <174438627597.2569515.3740142615905391643.b4-ty@csie.org>
+Date: Fri, 11 Apr 2025 23:44:35 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250408095139.51659-6-ansuelsmth@gmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250411_081009_865851_3639C411 
-X-CRM114-Status: GOOD (  11.07  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.14.2
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,21 +97,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, 10 Apr 2025 10:47:21 -0500, Rob Herring (Arm) wrote:
+> The Arm cpu.yaml schema fails to restrict allowed properties in 'cpu'
+> nodes. The result, not surprisely, is a number of additional properties
+> and errors in .dts files. This series resolves those issues.
+> 
+> There's still more properties in arm32 DTS files which I have not
+> documented. Mostly yet more supply names and "fsl,soc-operating-points".
+> What's a few more warnings on the 10000s of warnings...
+> 
+> [...]
 
-On Tue, 08 Apr 2025 11:51:12 +0200, Christian Marangi wrote:
-> Document support for Airoha AN8855 Switch SoC. This SoC expose various
-> peripherals like an Ethernet Switch, a NVMEM provider and Ethernet PHYs.
-> 
-> It does also support i2c and timers but those are not currently
-> supported/used.
-> 
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> ---
->  .../bindings/mfd/airoha,an8855.yaml           | 175 ++++++++++++++++++
->  1 file changed, 175 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mfd/airoha,an8855.yaml
-> 
+Applied to dt-for-6.16 in git@github.com:linux-sunxi/linux-sunxi.git, thanks!
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+[01/17] arm64: dts: allwinner: h5/h6: Drop spurious 'clock-latency-ns' properties
+        commit: 4df05f4a5fead4e5fc7e3c39cae74e5c0dc5282a
+
+Best regards,
+-- 
+Chen-Yu Tsai <wens@csie.org>
 
 
