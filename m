@@ -4,68 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0FEEC369A2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Apr 2025 07:30:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23058C36010
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Apr 2025 08:19:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ErTbfgk4++UzzfQU2Tcn5izzwnAui7RchY5ANmXLCgY=; b=BU4hIo8zWQGvQ1TojiyCU1hJ2n
-	Zws8KIf2LKYUle28wFduuvSYxxiIbsUYr+7zc3md7CM8npODtE3gxdEhHi6CMrWJruTQrt6ZIy1Mg
-	GzUKKDTKrdPjEpy0IctQKI5+TFPNCmaILnR7SUVmtKUrgeSssUlE3Q9uXwK0VRr5+LebiEHXcdNnI
-	FrO9l4Zsc4wg6wz8iBcyhysA56Gf6KW03krJ65geTooPhuL0+x0rDFGmgfvY88pUWKI3uf2/e4rKS
-	xs/U/4Z16tS85estXifm54uq6BxDC0wz+t/uXzYB5jTAAffP2f9kVpGHjbC3X3oKoPcZ9k9IIjglr
-	0jPFfkzQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=COht1CALZmZz8MRkow5xVDQUyVzx29Nu6ozA/Y0jgb4=; b=dvUC2diS3rq6rvyUiITZvHiCwZ
+	K152cljJelpFTK1xMRwctG2n9hbcwW7O6IWoz75dKQELXc6gQgu6gwypLkjRiVSR1vefOsLM4vMHt
+	zmJhCzmZbR1VTT9f0P9xHhl7OIuxd36tz6ktUYbqArqu732Jx20LzlNwcuxvvkWf6T4uAdYeWJ/2c
+	t6FhJTY1hKQJo0Zk23z1FqZUSivbmxgpT631Ej/+NuSECjGk7ZXP8gFf2IxycGKeT/kvEUlgT7iap
+	7Z69Bw8bKf7UFHI5WoFEMi9IHPNmpQ/spunFPWkTuC+Wta+A8zaBFjWOATNEb0KpNs4fchw9DlnRc
+	PeF5/9qw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u38qZ-0000000CsJs-41Ds;
-	Fri, 11 Apr 2025 07:30:44 +0000
-Received: from mail.8bytes.org ([85.214.250.239])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u38mt-0000000Cr53-0SLW;
-	Fri, 11 Apr 2025 07:26:56 +0000
-Received: from 8bytes.org (p4ffe03ae.dip0.t-ipconnect.de [79.254.3.174])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.8bytes.org (Postfix) with ESMTPSA id 4304E4685C;
-	Fri, 11 Apr 2025 09:26:50 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=8bytes.org;
-	s=default; t=1744356410;
-	bh=oHJGD3DokWMMFOM+gMK6+SM9h2XRccCtdD4g4aHqNRc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Dhz9SsFMPKWl5jEsp+m2UYPQM3kNyhFqbKE3vrWSUFMsNQlrSrLZ4mp2uaIPH4mF6
-	 8wSoxJNJJoCmYIpkWcf+OkpIqMfVhKNdpEBR3aiJ2tgiel02mjj5D8RWGxvEl4DB/q
-	 IDhJZG0qV+LKbRgSWh9PISbRbvQdBoVlZ8VXKsATnqd1mDaLTGDSfIZzd05snhbDOo
-	 e7AXrhm0mdRuAE4cmm0zE+psiqEYWTgy29v/UTl3VQo/yk2CTpuUCQC0rgfkNP05Mg
-	 d7cK2J8VPIup+M9B1jTn35pRM8o9or9ookpMLlbKnVP/7ZCYPHmdpmNYjsF8mWLsFV
-	 46iSyf7xOfe1g==
-Date: Fri, 11 Apr 2025 09:26:49 +0200
-From: Joerg Roedel <joro@8bytes.org>
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: Yong Wu <yong.wu@mediatek.com>, Will Deacon <will@kernel.org>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	"Rob Herring (Arm)" <robh@kernel.org>, kernel@collabora.com,
-	Joerg Roedel <jroedel@suse.de>, Jason Gunthorpe <jgg@ziepe.ca>,
-	iommu@lists.linux.dev, linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH] iommu/mediatek: Fix NULL pointer deference in
- mtk_iommu_device_group
-Message-ID: <Z_jEOVDofe1P9f9d@8bytes.org>
-References: <20250327-fix-mtk-iommu-error-v1-1-df969158e752@collabora.com>
+	id 1u39bI-0000000CziU-0Zfp;
+	Fri, 11 Apr 2025 08:19:00 +0000
+Received: from mail.commetro.pl ([217.61.16.142])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1u39bE-0000000Czi6-0EkI
+	for linux-mediatek@lists.infradead.org;
+	Fri, 11 Apr 2025 08:18:58 +0000
+Received: by mail.commetro.pl (Postfix, from userid 1002)
+	id 0D437860B1; Fri, 11 Apr 2025 10:05:54 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=commetro.pl; s=mail;
+	t=1744358764; bh=COht1CALZmZz8MRkow5xVDQUyVzx29Nu6ozA/Y0jgb4=;
+	h=Date:From:To:Subject:From;
+	b=o3k+zVeVcpx8WA+CgVOsjsXwWyKBmE5DybmkjHEJBlCLsD6nzIPvWpSTlHMdtsu7J
+	 zQELNYOXCgQ4JnlAXoPBJ3E62hjuk2KCEOAJBOTg8XLw6HLed4B5F9R06qOosR76/c
+	 Vh+rcMfIAbyd341evSKV1bhnFchNpjNROdiQkTen4bswTuYhEkJCZKqRJAp2SzlJfs
+	 YWbQ+UOKSMgySbxuXLcC3HULmcnFipdRkJB+P/gTiCBHiAC2oRvFJFdG8AKvir0TE8
+	 RYGjbwUJcDKFHaeTle4PDrPFAEKxnIgElQSpi7XhO3e4FCotMjgzmkm+zqIgh+T//6
+	 nXAuXXWcT3cBQ==
+Received: by mail.commetro.pl for <linux-mediatek@lists.infradead.org>; Fri, 11 Apr 2025 08:05:47 GMT
+Message-ID: <20250411084500-0.1.1y.mua4.0.f5b12rmad1@commetro.pl>
+Date: Fri, 11 Apr 2025 08:05:47 GMT
+From: =?UTF-8?Q?"Jaros=C5=82aw_Kownacki"?= <jaroslaw.kownacki@commetro.pl>
+To: <linux-mediatek@lists.infradead.org>
+Subject: =?UTF-8?Q?Pytanie_o_ofert=C4=99?=
+X-Mailer: mail.commetro.pl
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250327-fix-mtk-iommu-error-v1-1-df969158e752@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250411_002655_289721_18CD4A1D 
-X-CRM114-Status: UNSURE (   7.32  )
+X-CRM114-CacheID: sfid-20250411_011856_760929_6AA2C8B6 
+X-CRM114-Status: UNSURE (   0.07  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,9 +66,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 27, 2025 at 11:46:31AM +0100, Louis-Alexis Eyraud wrote:
->  drivers/iommu/mtk_iommu.c | 25 +++++++++++++------------
->  1 file changed, 13 insertions(+), 12 deletions(-)
+Dzie=C5=84 dobry,
 
-Applied, thanks.
+Czy potrzebuj=C4=85 Pa=C5=84stwo aktualnie nowych klient=C3=B3w ?
+
+Skutecznie pomagamy rozpoczyna=C4=87 rozmowy handlowe z klientami zainter=
+esowanymi Pa=C5=84stwa ofert=C4=85.
+
+Zapraszam do kontaktu zwrotnego.
+
+
+Pozdrawiam serdecznie
+Jaros=C5=82aw Kownacki
 
