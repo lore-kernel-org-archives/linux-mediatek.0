@@ -4,75 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59515C36010
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Apr 2025 06:06:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4138AC369A9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Apr 2025 06:47:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=B5tqHLMKf7g8Wxc9Q71D/XsmV0B59emr8eOs+ci5NQI=; b=Jaqarlx+YVxGE8E0Tc9siOQsk2
-	r4NSByB2Khk7wHZWZsdPpOxiSuiRyfhhC7DwpqQ19X0v5xrEy4eMXRZ5xF5IvJdjDBqmJ8frQBwwE
-	993s/hE66LAxHLto7WQ2ys4d9EnJ5cZTQlewfgXSd1Eup2tkoEOOG2VmxhuMck9DPK4FYunj3zt1r
-	wEOsPovr1PpxKNPU65FehtgR3eyEDuMdqrGZ+C2fkLqe52nO0rxqbh+PWZV5Xi/XG2X7/xBlhyZHL
-	1PKW36C8ax8e/GOoxishYf1o7XxSpbz1/k2BHxIVpjPqQcbos7l5Hp7fBb+fv+MX9v/xg+oNsX1S/
-	Lw82yEjg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Rpr7zLsilOkeFZ8KyL6VCOpWsoP2qA7voab7QpdM/m0=; b=jmJqdynDHuwHPBVKCKxGyb0Ny3
+	3+1J65s1WH+ymcAFECgykLJNjzk3XHvE4+BTtXiVmcXZ7UYyKGlAQbvLU5jlAjhXqHligLUCcxRdG
+	P8ayLqHzLjdSmsI1IoJXd1fjRvI1bXaDgaQmUWLnrzMy17zlEeLUXXI7Jl9teACYg/nll8XA5dbMt
+	kRURaQNikHM7W5HksQ0Ll0XfucEIgE/PrjN0H9yo1wdV04O7q91peBd+pR6YpH7RVa7GAz4fh9lRH
+	12FgPD1/MKrUX99knEOAAgir03rxp8/dtO49k+TsuJ8e40oF5HjC8onwS6h9ybaXGNkIkDtAWCdR5
+	hFlF62yQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u37Wk-0000000CfLo-0XLP;
-	Fri, 11 Apr 2025 06:06:10 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1u38AR-0000000CmH9-19E8;
+	Fri, 11 Apr 2025 06:47:11 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u3797-0000000CZWP-2Iic;
-	Fri, 11 Apr 2025 05:41:47 +0000
-X-UUID: a4fad3f6169711f0a1e849db4cc18d44-20250410
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=B5tqHLMKf7g8Wxc9Q71D/XsmV0B59emr8eOs+ci5NQI=;
-	b=ZGSORI51ENGs8HTKctwhcJLU9SjYQXPhMCKsU0P5/Dp9cS32kGG1T0AKhZNeskanlGGicOVSESf9z9DJViPw3ROYboFuRqEYJ6qvWUxkGCImhqVR8WJG6d+6YBxW3fxPu7ixwrXQ1JCk3kX8HQ1ux5YmSgVmFbmfxrzzweaaVWY=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:24edb5f2-bb47-4614-8789-180b6418674e,IP:0,UR
-	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-25
-X-CID-META: VersionHash:0ef645f,CLOUDID:a00b1f8b-0afe-4897-949e-8174746b1932,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_ULS,TF_CID_SPAM_SNR
-X-UUID: a4fad3f6169711f0a1e849db4cc18d44-20250410
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
-	(envelope-from <axe.yang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1899495937; Thu, 10 Apr 2025 22:41:41 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Fri, 11 Apr 2025 13:41:38 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Fri, 11 Apr 2025 13:41:37 +0800
-From: Axe Yang <axe.yang@mediatek.com>
-To: Chaotian Jing <chaotian.jing@mediatek.com>, Ulf Hansson
-	<ulf.hansson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	<yong.mao@mediatek.com>, <qingliang.li@mediatek.com>,
-	<andy-ld.lu@mediatek.com>, Wenbin Mei <wenbin.mei@mediatek.com>
-CC: <linux-mmc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	Axe Yang <axe.yang@mediatek.com>
-Subject: [RESEND v2] mmc: mtk-sd: Add condition to enable 'single' burst type
-Date: Fri, 11 Apr 2025 13:40:25 +0800
-Message-ID: <20250411054134.31822-1-axe.yang@mediatek.com>
-X-Mailer: git-send-email 2.46.0
+	id 1u37ut-0000000CjNW-1GHh;
+	Fri, 11 Apr 2025 06:31:07 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 2C9ED615EB;
+	Fri, 11 Apr 2025 06:30:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2FE51C4CEE5;
+	Fri, 11 Apr 2025 06:31:03 +0000 (UTC)
+Message-ID: <95cc14a7-bfcb-446b-869c-1a14edf01032@xs4all.nl>
+Date: Fri, 11 Apr 2025 08:31:01 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/5] media: mc: add manual request completion
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, kernel@collabora.com,
+ linux-media@vger.kernel.org,
+ Sebastian Fricke <sebastian.fricke@collabora.com>
+References: <20250410-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v2-0-5b99ec0450e6@collabora.com>
+ <20250410-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v2-1-5b99ec0450e6@collabora.com>
+ <20250410175010.GF27870@pendragon.ideasonboard.com>
+ <bb1f8d1581169bdf2e04be67883ee3ae03488680.camel@collabora.com>
+Content-Language: en-US, nl
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Autocrypt: addr=hverkuil@xs4all.nl; keydata=
+ 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
+In-Reply-To: <bb1f8d1581169bdf2e04be67883ee3ae03488680.camel@collabora.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250410_224145_603361_83340699 
-X-CRM114-Status: GOOD (  13.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,65 +115,246 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This change add a condition for 'single' burst type selection.
+On 10/04/2025 22:31, Nicolas Dufresne wrote:
+> Replying on the code comment, sorry for missing some bit earlier ...
+> 
+> Le jeudi 10 avril 2025 à 20:50 +0300, Laurent Pinchart a écrit :
+>> Hi Nicolas,
+>>
+>> Thank you for the patch.
+>>
+>> On Thu, Apr 10, 2025 at 11:39:56AM -0400, Nicolas Dufresne wrote:
+>>> From: Hans Verkuil <hverkuil@xs4all.nl>
+>>>
+>>> By default when the last request object is completed, the whole
+>>> request completes as well.
+>>>
+>>> But sometimes you want to manually complete a request in a driver,
+>>> so add a manual complete mode for this.
+>>
+>> I didn't immediately understand this was about delaying completion of
+>> the request. It would be nice to make that more explicit in the commit
+>> message and in the documentation of
+>> media_request_mark_manual_completion(). A sample use case would also
+>> help.
+>>
+>>> In req_queue the driver marks the request for manual completion by
+>>> calling media_request_mark_manual_completion, and when the driver
+>>> wants to manually complete the request it calls
+>>> media_request_manual_complete().
+>>>
+>>> Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+>>> Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+>>> ---
+>>>  drivers/media/mc/mc-request.c | 38 ++++++++++++++++++++++++++++++++++++--
+>>>  include/media/media-request.h | 36 +++++++++++++++++++++++++++++++++++-
+>>>  2 files changed, 71 insertions(+), 3 deletions(-)
+>>>
+>>> diff --git a/drivers/media/mc/mc-request.c b/drivers/media/mc/mc-request.c
+>>> index 5edfc2791ce7c7485def5db675bbf53ee223d837..398d0806d1d274eb8c454fc5c37b77476abe1e74 100644
+>>> --- a/drivers/media/mc/mc-request.c
+>>> +++ b/drivers/media/mc/mc-request.c
+>>> @@ -54,6 +54,7 @@ static void media_request_clean(struct media_request *req)
+>>>  	req->access_count = 0;
+>>>  	WARN_ON(req->num_incomplete_objects);
+>>>  	req->num_incomplete_objects = 0;
+>>> +	req->manual_completion = false;
+>>>  	wake_up_interruptible_all(&req->poll_wait);
+>>>  }
+>>>  
+>>> @@ -313,6 +314,7 @@ int media_request_alloc(struct media_device *mdev, int *alloc_fd)
+>>>  	req->mdev = mdev;
+>>>  	req->state = MEDIA_REQUEST_STATE_IDLE;
+>>>  	req->num_incomplete_objects = 0;
+>>> +	req->manual_completion = false;
+>>>  	kref_init(&req->kref);
+>>>  	INIT_LIST_HEAD(&req->objects);
+>>>  	spin_lock_init(&req->lock);
+>>> @@ -459,7 +461,7 @@ void media_request_object_unbind(struct media_request_object *obj)
+>>>  
+>>>  	req->num_incomplete_objects--;
+>>>  	if (req->state == MEDIA_REQUEST_STATE_QUEUED &&
+>>> -	    !req->num_incomplete_objects) {
+>>> +	    !req->num_incomplete_objects && !req->manual_completion) {
+>>>  		req->state = MEDIA_REQUEST_STATE_COMPLETE;
+>>>  		completed = true;
+>>>  		wake_up_interruptible_all(&req->poll_wait);
+>>> @@ -488,7 +490,7 @@ void media_request_object_complete(struct media_request_object *obj)
+>>>  	    WARN_ON(req->state != MEDIA_REQUEST_STATE_QUEUED))
+>>>  		goto unlock;
+>>>  
+>>> -	if (!--req->num_incomplete_objects) {
+>>> +	if (!--req->num_incomplete_objects && !req->manual_completion) {
+>>>  		req->state = MEDIA_REQUEST_STATE_COMPLETE;
+>>>  		wake_up_interruptible_all(&req->poll_wait);
+>>>  		completed = true;
+>>> @@ -499,3 +501,35 @@ void media_request_object_complete(struct media_request_object *obj)
+>>>  		media_request_put(req);
+>>>  }
+>>>  EXPORT_SYMBOL_GPL(media_request_object_complete);
+>>> +
+>>> +void media_request_manual_complete(struct media_request *req)
+>>> +{
+>>> +	unsigned long flags;
+>>> +	bool completed = false;
+>>> +
+>>> +	if (WARN_ON(!req))
+>>> +		return;
+>>> +	if (WARN_ON(!req->manual_completion))
+>>> +		return;
+>>> +
+>>> +	spin_lock_irqsave(&req->lock, flags);
+>>> +	if (WARN_ON(req->state != MEDIA_REQUEST_STATE_QUEUED))
+>>> +		goto unlock;
+>>> +
+>>> +	req->manual_completion = false;
+>>> +	/*
+>>> +	 * It is expected that all other objects in this request are
+>>> +	 * completed when this function is called. WARN if that is
+>>> +	 * not the case.
+>>> +	 */
+>>> +	if (!WARN_ON(req->num_incomplete_objects)) {
+>>> +		req->state = MEDIA_REQUEST_STATE_COMPLETE;
+>>> +		wake_up_interruptible_all(&req->poll_wait);
+>>> +		completed = true;
+>>> +	}
+>>> +unlock:
+>>> +	spin_unlock_irqrestore(&req->lock, flags);
+>>> +	if (completed)
+>>> +		media_request_put(req);
+>>> +}
+>>> +EXPORT_SYMBOL_GPL(media_request_manual_complete);
+>>> diff --git a/include/media/media-request.h b/include/media/media-request.h
+>>> index d4ac557678a78372222704400c8c96cf3150b9d9..645d18907be7148ca50dcc9248ff06bd8ccdf953 100644
+>>> --- a/include/media/media-request.h
+>>> +++ b/include/media/media-request.h
+>>> @@ -56,6 +56,10 @@ struct media_request_object;
+>>>   * @access_count: count the number of request accesses that are in progress
+>>>   * @objects: List of @struct media_request_object request objects
+>>>   * @num_incomplete_objects: The number of incomplete objects in the request
+>>> + * @manual_completion: if true, then the request won't be marked as completed
+>>> + * when @num_incomplete_objects reaches 0. Call media_request_manual_complete()
+>>> + * to set this field to false and complete the request
+>>
+>> I'd drop "set this field to false and " here.
+> 
+> I agree, it sounds like an invitation to write it directly, we don't
+> really want this. If Hans is fine I'll drop it.
 
-Read AXI_LEN field from EMMC50_CFG2(AHB2AXI wrapper) register, if the
-value is not 0, it means the HWIP is using AXI as AMBA bus, which do
-not support 'single' burst type.
+Yes, that's better. Just drop that part.
 
-Suggested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Axe Yang <axe.yang@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
-This change dependents on 'mmc: mtk-sd: Cleanups for register R/W':
+> 
+>>
+>>> + * if @num_incomplete_objects == 0.
+>>
+>>  * after @num_incomplete_objects reaches 0.
+>>
+>>>   * @poll_wait: Wait queue for poll
+>>>   * @lock: Serializes access to this struct
+>>>   */
+>>> @@ -68,6 +72,7 @@ struct media_request {
+>>>  	unsigned int access_count;
+>>>  	struct list_head objects;
+>>>  	unsigned int num_incomplete_objects;
+>>> +	bool manual_completion;
+>>>  	wait_queue_head_t poll_wait;
+>>>  	spinlock_t lock;
+>>>  };
+>>> @@ -218,6 +223,35 @@ media_request_get_by_fd(struct media_device *mdev, int request_fd);
+>>>  int media_request_alloc(struct media_device *mdev,
+>>>  			int *alloc_fd);
+>>>  
+>>> +/**
+>>> + * media_request_mark_manual_completion - Set manual_completion to true
+>>> + *
+>>> + * @req: The request
+>>> + *
+>>> + * Mark that the request has to be manually completed by calling
+>>> + * media_request_manual_complete().
+>>> + *
+>>> + * This function should be called in the req_queue callback.
+>>
+>> s/should/shall/ unless it's not a hard requirement. Any way to catch
+>> incorrect call patterns ?
+> 
+> I think we should be more strict, I can edit to shall.
 
-https://patchwork.kernel.org/project/linux-mediatek/cover/20250325110701.52623-1-angelogioacchino.delregno@collabora.com/
----
- drivers/mmc/host/mtk-sd.c | 16 ++++++++++++----
- 1 file changed, 12 insertions(+), 4 deletions(-)
+Yes, that should be 'shall'.
 
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index ceeae1aeac94..2e4bd5166c17 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -84,6 +84,7 @@
- #define EMMC51_CFG0	 0x204
- #define EMMC50_CFG0      0x208
- #define EMMC50_CFG1      0x20c
-+#define EMMC50_CFG2      0x21c
- #define EMMC50_CFG3      0x220
- #define SDC_FIFO_CFG     0x228
- #define CQHCI_SETTING	 0x7fc
-@@ -306,7 +307,10 @@
- /* EMMC50_CFG1 mask */
- #define EMMC50_CFG1_DS_CFG        BIT(28)  /* RW */
- 
--#define EMMC50_CFG3_OUTS_WR       GENMASK(4, 0)  /* RW */
-+/* EMMC50_CFG2 mask */
-+#define EMMC50_CFG2_AXI_SET_LEN   GENMASK(27, 24) /* RW */
-+
-+#define EMMC50_CFG3_OUTS_WR       GENMASK(4, 0)   /* RW */
- 
- #define SDC_FIFO_CFG_WRVALIDSEL   BIT(24)  /* RW */
- #define SDC_FIFO_CFG_RDVALIDSEL   BIT(25)  /* RW */
-@@ -1917,9 +1921,13 @@ static void msdc_init_hw(struct msdc_host *host)
- 	pb1_val |= FIELD_PREP(MSDC_PATCH_BIT1_CMDTA, 1);
- 	pb1_val |= MSDC_PB1_DDR_CMD_FIX_SEL;
- 
--	/* Set single burst mode, auto sync state clear, block gap stop clk */
--	pb1_val |= MSDC_PB1_SINGLE_BURST | MSDC_PB1_RSVD20 |
--		   MSDC_PB1_AUTO_SYNCST_CLR | MSDC_PB1_MARK_POP_WATER;
-+	/* Support 'single' burst type only when AXI_LEN is 0 */
-+	sdr_get_field(host->base + EMMC50_CFG2, EMMC50_CFG2_AXI_SET_LEN, &val);
-+	if (!val)
-+		pb1_val |= MSDC_PB1_SINGLE_BURST;
-+
-+	/* Set auto sync state clear, block gap stop clk */
-+	pb1_val |= MSDC_PB1_RSVD20 | MSDC_PB1_AUTO_SYNCST_CLR | MSDC_PB1_MARK_POP_WATER;
- 
- 	/* Set low power DCM, use HCLK for GDMA, use MSDC CLK for everything else */
- 	pb1_val |= MSDC_PB1_LP_DCM_EN | MSDC_PB1_RSVD3 |
--- 
-2.46.0
+> 
+> About ways to check, perhaps I can add a lockdep_assert_held() on the
+> mdev->req_queue_mutex along with checking that the state is QUEUED. The
+> state check would catch trying to do so in req_validate().
 
+A WARN_ON doesn't hurt.
+
+> 
+>>
+>>> + */
+>>> +static inline void
+>>> +media_request_mark_manual_completion(struct media_request *req)
+>>> +{
+>>> +	req->manual_completion = true;
+>>> +}
+>>> +
+>>> +/**
+>>> + * media_request_manual_complete - Set manual_completion to false
+>>
+>> The main purpose of the function is to complete the request, not setting
+>> manual_completion to false.
+> 
+> Indeed, that's documenting an implementation detail.
+
+Change to: "Enable manual completion"
+
+> 
+>>
+>>> + *
+>>> + * @req: The request
+>>> + *
+>>> + * Set @manual_completion to false, and if @num_incomplete_objects
+>>> + * is 0, then mark the request as completed.
+>>> + *
+>>> + * If there are still incomplete objects in the request, then
+>>> + * WARN for that since that suggests a driver error.
+>>
+>> If that's an error then I'd document it more explicitly, as the first
+>> sentence makes it sound that both cases are valid. Maybe
+> 
+> Its a programming error, I should rephrase this in the next version.
+
+suggests -> is
+
+> 
+>>
+>>  * This function completes a request that was marked for manual completion by an
+>>  * earlier call to media_request_mark_manual_completion(). The request's
+>>  * @manual_completion flag is reset to false.
+>>  *
+>>  * All objects contained in the request must have been completed previously. It
+>>  * is an error to call this function otherwise. The request will not be
+>>  * completed in that case, and the function will WARN.
+>>
+>>> + */
+>>> +void media_request_manual_complete(struct media_request *req);
+>>> +
+>>>  #else
+>>>  
+>>>  static inline void media_request_get(struct media_request *req)
+>>> @@ -336,7 +370,7 @@ void media_request_object_init(struct media_request_object *obj);
+>>>   * @req: The media request
+>>>   * @ops: The object ops for this object
+>>>   * @priv: A driver-specific priv pointer associated with this object
+>>> - * @is_buffer: Set to true if the object a buffer object.
+>>> + * @is_buffer: Set to true if the object is a buffer object.
+>>>   * @obj: The object
+>>>   *
+>>>   * Bind this object to the request and set the ops and priv values of
+> 
+> thanks a lot for the review,
+> 
+
+Regards,
+
+	Hans
 
