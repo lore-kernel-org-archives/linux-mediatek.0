@@ -4,100 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5957C369A2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Apr 2025 17:04:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66421C369A2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Apr 2025 18:13:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KqFT3PKAxBM7aneYNA4QM0R7Gd1DemUhbyEfOOJZdwc=; b=dksY7J8MMFaP9bcE3KIq7szpHh
-	ObBHRwi4R7is8aq0nTbOJXIVwrT49NisdB7h3JyTa8e3l9dhKNQu3s/kza93sXM8hl6L6fFKoUHB7
-	bu8OHkxWNXT4+23pyXKuuDQeJlalx6JlJxNy2wN//JvR20s7KE7/faDNUK/dIyEngs7m6Lx0nwbIs
-	jYVuFzIdJazsUaMnF12X5DqAYgnd27oVYAGGyONUJ9sKWblFevlQXmFkadP/tjGbzI1laBqROKLmZ
-	Jk32009ol5MIPUdRPEH01qGEKk0Tz4w2MjKujgemb0ddljrSVepPyOdGvma0G/JPwW5sUBgwrD1pm
-	uikGmY8g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=CNaJ+TUXHuS+8BUbr3hVVc9p4W+Xe+7+Z2FFKhOC+Vw=; b=PRX+QAa2GIyHvFkvsvGGllcXeJ
+	HgM5KrEmawsLGOBrXFWcEee9nBhVgT3nX6WE0t0BnzsAPR/wH70yIX2IC/64OzTeISrzwvizckH0m
+	udFNwkEcIszT/Pu5DZQcYxYxanAuFfpeCJ0iA1WM0kCT1JAwCXH/SSROtCGIvnuZ1DrFVpl4SElwm
+	LQ8F9g7MHyFR3X35IWHCub7n7InprteZ0aDodgeTjwUy1kVB88PRkhsqPaC4ME6hannXD2LLxqS1f
+	3le1m0HjNNjbD24yzZEim/ux1pa1MyuzO6DupqhbcUMG9ue7RU2M4PusYFk+0o9D/B3FIgqbmMnPG
+	qWTkorng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4NEg-00000002saD-2YlY;
-	Mon, 14 Apr 2025 17:04:42 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1u4OJQ-000000033nN-0VLa;
+	Mon, 14 Apr 2025 18:13:40 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4NCn-00000002sL1-46LI;
-	Mon, 14 Apr 2025 17:02:47 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 461C4A4A0C4;
-	Mon, 14 Apr 2025 16:57:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1BD4FC4CEEB;
-	Mon, 14 Apr 2025 17:02:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744650164;
-	bh=KqFT3PKAxBM7aneYNA4QM0R7Gd1DemUhbyEfOOJZdwc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=haXXUUQ5j7/xdMK6YjwHt6lr9C50Nl/g7bFmEYMZvNiz+gF0wIYn0k0JlsN7AgIIr
-	 4iu+74zlC0pGVbnny4GpZcvFCtRv7UbXiLj/Jktoz55Xw4OI0gFEF9IMr5JRkbS89a
-	 FWUp+fMSf5UkmLfyLJ4Oh8mMhzRX4zRBtIyxizLmg1yK8LXnD6fzQ4a/5VdOID9XcX
-	 dE75rVIJSiBbQRqIjkmlXD+Sz1tODj0aRj329Hqs8wN3tRMUOekPmkiQJuBXhlIRBs
-	 zzEUQdKKdZxKbNiIRzd4lVHI7DTVE6ie+lpUtXY7UaT3cQKWd5+rfYxv5sIPEdod6N
-	 ZZHwk4psw8ppw==
-Date: Mon, 14 Apr 2025 18:02:33 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Rob Herring <robh@kernel.org>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Steen Hegelund <Steen.Hegelund@microchip.com>,
-	Daniel Machon <daniel.machon@microchip.com>,
-	UNGLinuxDriver@microchip.com,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konradybcio@kernel.org>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Andy Gross <agross@kernel.org>,
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
-	Viresh Kumar <vireshk@kernel.org>, Nishanth Menon <nm@ti.com>,
-	Stephen Boyd <sboyd@kernel.org>, zhouyanjie@wanyeetech.com,
+	id 1u4OHW-000000033PK-1GYN;
+	Mon, 14 Apr 2025 18:11:43 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.98.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1u4OHE-000000003xa-28sl;
+	Mon, 14 Apr 2025 18:11:24 +0000
+Date: Mon, 14 Apr 2025 19:11:20 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Bo-Cun Chen <bc-bocun.chen@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	Stephan Gerhold <stephan.gerhold@linaro.org>,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org, imx@lists.linux.dev,
-	linux-rockchip@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org, linux-mips@vger.kernel.org,
-	linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 03/17] arm64: dts: microchip: sparx5: Fix CPU node
- "enable-method" property dependencies
-Message-ID: <20250414-fragile-same-9cd06114cd85@spud>
-References: <20250410-dt-cpu-schema-v2-0-63d7dc9ddd0a@kernel.org>
- <20250410-dt-cpu-schema-v2-3-63d7dc9ddd0a@kernel.org>
- <20250411-ebay-exerciser-392c42daf5ba@spud>
- <CAL_JsqJza-bufzjZ415THyDDQaOfk8F+JRFvFxzNwObG=NKVJQ@mail.gmail.com>
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net 1/5] net: ethernet: mtk_eth_soc: revise mdc divider
+ configuration
+Message-ID: <08498e31e830cf0ee1ceb4fc1313d5c528a69150.1744654076.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="pt+1yttKuNYLWgzQ"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CAL_JsqJza-bufzjZ415THyDDQaOfk8F+JRFvFxzNwObG=NKVJQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250414_100246_147340_ED1ACF19 
-X-CRM114-Status: GOOD (  19.89  )
+X-CRM114-CacheID: sfid-20250414_111142_345422_97E1E10E 
+X-CRM114-Status: GOOD (  14.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,47 +70,114 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Bo-Cun Chen <bc-bocun.chen@mediatek.com>
 
---pt+1yttKuNYLWgzQ
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+In the current method, the MDC divider was reset to the default setting
+of 2.5MHz after the NETSYS SER. Therefore, we need to move the MDC
+divider configuration function to mtk_hw_init().
 
-On Fri, Apr 11, 2025 at 03:26:50PM -0500, Rob Herring wrote:
-> On Fri, Apr 11, 2025 at 11:22=E2=80=AFAM Conor Dooley <conor@kernel.org> =
-wrote:
-> >
-> > On Thu, Apr 10, 2025 at 10:47:24AM -0500, Rob Herring (Arm) wrote:
-> > > The "spin-table" enable-method requires "cpu-release-addr" property,
-> > > so add a dummy entry. It is assumed the bootloader will fill in the
-> > > correct values.
-> > >
-> > > Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
-> > > Reviewed-by: Daniel Machon <daniel.machon@microchip.com>
-> > > Tested-by: Daniel Machon <daniel.machon@microchip.com>
-> >
-> > This is already applied, guess I forgot to merge it into the branch that
-> > appears in linux next. I'll do that now..
->=20
-> Sometimes I check next, but in this case I just looked at replies for
-> which there were none. I dislike submitting dts changes because it's a
-> range of AWOL maintainers, only applying around some rcN (so up to 2
-> months later), silently applying, and applied but never in linux-next
-> (until in soc tree).
+Fixes: c0a440031d431 ("net: ethernet: mtk_eth_soc: set MDIO bus clock frequency")
+Signed-off-by: Bo-Cun Chen <bc-bocun.chen@mediatek.com>
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 60 ++++++++++++++-------
+ 1 file changed, 42 insertions(+), 18 deletions(-)
 
-Let's add "send the b4 ty email" to the list of things that I did not
-do, but thought that I had done.
-
---pt+1yttKuNYLWgzQ
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZ/0/qQAKCRB4tDGHoIJi
-0llIAQCfeSIfGZefusGStXxy21uaJUGlki/H/XzQ1dq4t278oAD9GMv/CXNEj8CG
-oPoSllLdscFoA/5qVRjJh0erPiNF8gA=
-=q+yA
------END PGP SIGNATURE-----
-
---pt+1yttKuNYLWgzQ--
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 43197b28b3e74..fd643cc1b7dd2 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -871,11 +871,11 @@ static const struct phylink_mac_ops mtk_phylink_ops = {
+ 	.mac_enable_tx_lpi = mtk_mac_enable_tx_lpi,
+ };
+ 
+-static int mtk_mdio_init(struct mtk_eth *eth)
++static int mtk_mdio_config(struct mtk_eth *eth)
+ {
+ 	unsigned int max_clk = 2500000, divider;
+ 	struct device_node *mii_np;
+-	int ret;
++	int ret = 0;
+ 	u32 val;
+ 
+ 	mii_np = of_get_available_child_by_name(eth->dev->of_node, "mdio-bus");
+@@ -884,22 +884,6 @@ static int mtk_mdio_init(struct mtk_eth *eth)
+ 		return -ENODEV;
+ 	}
+ 
+-	eth->mii_bus = devm_mdiobus_alloc(eth->dev);
+-	if (!eth->mii_bus) {
+-		ret = -ENOMEM;
+-		goto err_put_node;
+-	}
+-
+-	eth->mii_bus->name = "mdio";
+-	eth->mii_bus->read = mtk_mdio_read_c22;
+-	eth->mii_bus->write = mtk_mdio_write_c22;
+-	eth->mii_bus->read_c45 = mtk_mdio_read_c45;
+-	eth->mii_bus->write_c45 = mtk_mdio_write_c45;
+-	eth->mii_bus->priv = eth;
+-	eth->mii_bus->parent = eth->dev;
+-
+-	snprintf(eth->mii_bus->id, MII_BUS_ID_SIZE, "%pOFn", mii_np);
+-
+ 	if (!of_property_read_u32(mii_np, "clock-frequency", &val)) {
+ 		if (val > MDC_MAX_FREQ || val < MDC_MAX_FREQ / MDC_MAX_DIVIDER) {
+ 			dev_err(eth->dev, "MDIO clock frequency out of range");
+@@ -922,6 +906,42 @@ static int mtk_mdio_init(struct mtk_eth *eth)
+ 
+ 	dev_dbg(eth->dev, "MDC is running on %d Hz\n", MDC_MAX_FREQ / divider);
+ 
++err_put_node:
++	of_node_put(mii_np);
++	return ret;
++}
++
++static int mtk_mdio_init(struct mtk_eth *eth)
++{
++	struct device_node *mii_np;
++	int ret;
++
++	mii_np = of_get_child_by_name(eth->dev->of_node, "mdio-bus");
++	if (!mii_np) {
++		dev_err(eth->dev, "no %s child node found", "mdio-bus");
++		return -ENODEV;
++	}
++
++	if (!of_device_is_available(mii_np)) {
++		ret = -ENODEV;
++		goto err_put_node;
++	}
++
++	eth->mii_bus = devm_mdiobus_alloc(eth->dev);
++	if (!eth->mii_bus) {
++		ret = -ENOMEM;
++		goto err_put_node;
++	}
++
++	eth->mii_bus->name = "mdio";
++	eth->mii_bus->read = mtk_mdio_read_c22;
++	eth->mii_bus->write = mtk_mdio_write_c22;
++	eth->mii_bus->read_c45 = mtk_mdio_read_c45;
++	eth->mii_bus->write_c45 = mtk_mdio_write_c45;
++	eth->mii_bus->priv = eth;
++	eth->mii_bus->parent = eth->dev;
++
++	snprintf(eth->mii_bus->id, MII_BUS_ID_SIZE, "%pOFn", mii_np);
+ 	ret = of_mdiobus_register(eth->mii_bus, mii_np);
+ 
+ err_put_node:
+@@ -3974,6 +3994,10 @@ static int mtk_hw_init(struct mtk_eth *eth, bool reset)
+ 	else
+ 		mtk_hw_reset(eth);
+ 
++	/* No MT7628/88 support yet */
++	if (!MTK_HAS_CAPS(eth->soc->caps, MTK_SOC_MT7628))
++		mtk_mdio_config(eth);
++
+ 	if (mtk_is_netsys_v3_or_greater(eth)) {
+ 		/* Set FE to PDMAv2 if necessary */
+ 		val = mtk_r32(eth, MTK_FE_GLO_MISC);
+-- 
+2.49.0
 
