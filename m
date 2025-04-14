@@ -4,94 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33F44C369B2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Apr 2025 13:16:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD2BBC369A2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Apr 2025 13:58:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PYtZof1JpAgYgjbf7Rfsjlu1zvZsWl5iqqO93SvjAxA=; b=S+hcb7203xUJjsXx6+vTOfhkPk
-	tz5YgQ96dIC0wREHU+7stOwHjtz0R69wH8OCHgov8s5hAVRsIfp7cPoDcp19O1KANMk7VRowABw1X
-	ztdrxRONqmo98pjsg4wlf1RqjjfWJMwioueS2IA+ok0cRl7BWxsw38KeD/pYsV2+thYY4naxeitym
-	WwPTRt8a70PyfcfsXXlnrWQPyn0UQ1RZ/VTkcqYzINBZnyBsSvThXphs+QYWmIdkrhQK0zLos2fM2
-	aTbrnj9dJfSUmz9oXPsJmb83glMC0qCpVoN1wwQdBbXT7R/R8lu1wtCU8ywDrCrDnre6MQjTAYHoY
-	WGbEKfMQ==;
+	bh=wSPX/TbzronNETf+6T1qob9Fj8RgDBqBjqNXnAsD94g=; b=kiX4lsc71rG/CdlWlikqtzN1A2
+	ocTJppB5uxxRteHTbh0rMtmhSv54wCzhMqyPHraU0IPtOtujcUfsi2LqAhhrtfj6cgUSgbuysLrV6
+	VR+RToqsXzeB4Bcg+QqNu5EVN7JDCaHWBUJimK3E0KfkLHZ+MoRy/+O784zWnhZ2dYrsC++qJATEz
+	fV124MmBoSzcpgZK1uM3EUPHKhBgK2005Ym2HlHm9fZXnT0U6svIAAU+PU/UgueI4xLZX/tSeZDPq
+	sJLJ3XKIHO3GVk4hviXy8V3LjUUVDkA0ikQaz1Qs6gdj3BXOAd/vwJeQfjFX0oZNu0L08sDmi0N6H
+	67Sp+pqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4Jfi-000000025Gg-10ER;
-	Mon, 14 Apr 2025 13:16:22 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1u4KKC-00000002GCT-3G96;
+	Mon, 14 Apr 2025 13:58:12 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4JcU-000000024Tt-2rsk;
-	Mon, 14 Apr 2025 13:13:02 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7C9126116E;
-	Mon, 14 Apr 2025 13:12:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C7FB0C4AF0B;
-	Mon, 14 Apr 2025 13:13:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744636381;
-	bh=PYtZof1JpAgYgjbf7Rfsjlu1zvZsWl5iqqO93SvjAxA=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=JlWkqhAkffqQUy7ti9hPGnnhvDvKTOIcBCWG5k12bTxqHOWceJcjpt5DeZaOX9rw5
-	 k+O9UNs2yN2I6WSh2xKCbB4XVsecud69yS8bjL5Y8UU9gIARpwj73EyxX7g4ig3qCt
-	 ZGkzxEHlqjBXBzdCQD9Ko6UrhuiLbOKl81GrD/x2+OSzK+V/nuktrJv/jg741qEMwZ
-	 RD8RKyrLwy5p2AlJdFVY40Ijv1jkSEbec9JTX0ytX9dFaVkfdTswxHvU+BOvgm0E6A
-	 GeKI7tyrJs2Gvgp+z44jolI6wm3kaWUT/y4B8GJgV5v4h4KlH9bVHS+6MCDetWtoeu
-	 /Vf69sMXYQO+w==
-Received: by mail-ed1-f41.google.com with SMTP id 4fb4d7f45d1cf-5ed43460d6bso6836945a12.0;
-        Mon, 14 Apr 2025 06:13:01 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCVBJ08JFUXI6NauIAWQEg4uJWR/gv9A3K+loxOHE9OTc0aZuqA63pyDQwdeQRdYTtAaBJQVihoXf5sNFAsLompXVw==@lists.infradead.org, AJvYcCVeo6Ys2yvnvIxfAklyBHmLfGTcC8h3VW8GlfoHg0+7SD+vurlpFwbpfCsoFwGvVChT30hevNBQlpKkFmcmQ90=@lists.infradead.org, AJvYcCVr39aJaVYd/e5ijsQrbXvBRwk0/BNhLRhtoOEQKf2Ib0K41ju1cgxRR+K2yGMrONb1BBQSuGOjpsHPTysa@lists.infradead.org, AJvYcCWUXUOoQtAI6JMmonieKlj0vW0Nq+CiJ7N+XWUlLygx73x4MSJH0gsVANKn86GVaenyEq8DYRf831SFqZRXvhk=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw2PFjPIwrHe1jrMeSElEPdfu6WJYe5hJaY2LbLnyH1oNS/vBWX
-	qgrYt1qyb+zzNSf2ths+0WOCo0epFjjhIrz9EWBzBIHBkvWxZDJcgO5bSHTJV33sdYEtMPggVTf
-	upnWjMQrU+JVdcHbrgva34BwhYQ==
-X-Google-Smtp-Source: AGHT+IGD1RjwJGslsl4TZQ3wfuNijXDBc01yF9Y4gnZ5DJt+B5EtvoBjX+ECQxWRz+SZvCEqXEVdeGMo7Gts//oS3Co=
-X-Received: by 2002:a05:6402:1d4d:b0:5ee:497:67d6 with SMTP id
- 4fb4d7f45d1cf-5f36ff1c023mr10307363a12.33.1744636380328; Mon, 14 Apr 2025
- 06:13:00 -0700 (PDT)
+	id 1u4KIJ-00000002Fid-15jo
+	for linux-mediatek@lists.infradead.org;
+	Mon, 14 Apr 2025 13:56:16 +0000
+Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-43cfebc343dso33150255e9.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 14 Apr 2025 06:56:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1744638973; x=1745243773; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=wSPX/TbzronNETf+6T1qob9Fj8RgDBqBjqNXnAsD94g=;
+        b=yuebA3yYY1KB9ZrFWBqIPcf7NeSdqN7/bZcCp2yZtfxOuat7M9NA2fN0H63/9HW7M1
+         CQLhWZ+ouyfoU3rMFbXFYlDfli2mQM3uUGHsnakZGyZlXTKPk53wJtPeWQPmWGlf3sAb
+         15fu7A/PHUVghZXI6PduytYknCVpa5JrccJTju1jq7tyvL86xrTvOQdY2F9saIT/V0so
+         ygtT2jrwbi2mGnnAAgrPRiX2Ah5kbOS/fCJ8RX2/86ZHIgQdIh7rGlE/QTS2Ty48r+5H
+         EkkPSkvBMbdsG2DP1g7gJiZEOZLJMwjFQ7XTaNwZRGdAx23anq0MDr0XJLSm/mI6mAhX
+         RrEQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1744638973; x=1745243773;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=wSPX/TbzronNETf+6T1qob9Fj8RgDBqBjqNXnAsD94g=;
+        b=xEjOL6Wctsz6d+jxi1hhogR2mX27IKGBN+qqBUdv4UOJVVqrDqxxsIuKLV8rmS1MfV
+         q/k+eO6ZLGhDVbeG5idn56XBaAI+Y/CDXaSrk/sAGmLzRUcSR2fMN2YYONPZl+7eWYf2
+         4LyWq9e3s0DeOX28VP8Luyx+B7nEfdGC2GZViiIaCDbA7EC59z9IJCM764vZnKxzxHeU
+         9qAIYppPgiiwItPQ8VIdWKQYkqHYEGsThC7c5gb2xfh0DrU1KcbysC6yhXYW7RbnoMZH
+         +k/KepR4CTtdC7E4wZMujGJMIc5r/40TZ5SRZIXhtI7NZecmG6qXFZsIrF96mWZUq97Z
+         QnAw==
+X-Forwarded-Encrypted: i=1; AJvYcCVL3EGdipBfOfSr1fFimaD7QuiiOzB4EuOyw2MR9H/aU3NEolGXLQIM9FkhTOGIrYcsIKZfdbSy1tqYPETobA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxwI7bDbzEb9eHYyJ2zDX2G5IxTIdEV05x2eH/Sj3HHxytpHYmw
+	dkdJzKP6xLF6cdHmpwFlP7cdfBg4SIi0YqMuRhoP15U28XFtXcxtdIQuq0XfHcI=
+X-Gm-Gg: ASbGnctqPzC/0UcIcMMIUYAnfhP1FaXslQX1Nhkh+SRT2fXRMJAsDEZ5b1kjN4z5mK4
+	dU9NaTosocxwyPLnD6s/3/0d2xqcIJdI+LuFzjkGjCy6Tqbt2euh4KFbwmNiNYaqFRqPjEPcEMO
+	lloTmpEI+J+9nJJsBwbmWUdwuizh+ReNM2BXWM/hcOQ90x5XZvJGQ+5tWl7V+kFfo5xTlcR/Ecy
+	23eZapCw20j4EDVQISKDOkTLZGXEWOYMchgQA+z6klUHK0HbXqwtaaVUi2hmzokjZm4P7TBZ+Yj
+	oSkVxOQFROYLaId/Z2vLCDSe9+jzx5e8oIYuHyhtPxMGZFcdin4S1fZWj1Jx3mFTZVBEVra4+tb
+	kRakYdxt1ibIH
+X-Google-Smtp-Source: AGHT+IEiisaCyzTv/c4YGT/191xkPS9XSCL07GXPd0MhBX6X1cLo7SxgbsZldJJbAyTaapzLfN0VMA==
+X-Received: by 2002:a05:6000:2507:b0:391:6fd:bb65 with SMTP id ffacd0b85a97d-39ea51eef37mr9727002f8f.9.1744638973332;
+        Mon, 14 Apr 2025 06:56:13 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:5ee:79d0:2dda:96f4:b94d:164c? ([2a01:e0a:5ee:79d0:2dda:96f4:b94d:164c])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39eae97751fsm11004403f8f.41.2025.04.14.06.56.12
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 14 Apr 2025 06:56:12 -0700 (PDT)
+Message-ID: <97cfeafe-7044-4f06-b2e6-e4a158419473@baylibre.com>
+Date: Mon, 14 Apr 2025 15:56:11 +0200
 MIME-Version: 1.0
-References: <20250410-dt-cpu-schema-v2-0-63d7dc9ddd0a@kernel.org>
- <20250410-dt-cpu-schema-v2-2-63d7dc9ddd0a@kernel.org> <0ce8559d-5c7d-43a0-8177-7704969fd334@gmail.com>
-In-Reply-To: <0ce8559d-5c7d-43a0-8177-7704969fd334@gmail.com>
-From: Rob Herring <robh@kernel.org>
-Date: Mon, 14 Apr 2025 08:12:47 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqJi+8-WdYEyrGjb=cQXPEb07Lkcj90a32d38ChvYJAA-Q@mail.gmail.com>
-X-Gm-Features: ATxdqUHJKQLq2A74uSC_bdg-o7xbFw7BNZs9YlgJy-cREnL8L5s0aEVjMNnl6WA
-Message-ID: <CAL_JsqJi+8-WdYEyrGjb=cQXPEb07Lkcj90a32d38ChvYJAA-Q@mail.gmail.com>
-Subject: Re: [PATCH v2 02/17] arm64: dts: broadcom: bcm2712: Use "l2-cache"
- for L2 cache node names
-To: Florian Fainelli <f.fainelli@gmail.com>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>, Conor Dooley <conor@kernel.org>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
-	Steen Hegelund <Steen.Hegelund@microchip.com>, Daniel Machon <daniel.machon@microchip.com>, 
-	UNGLinuxDriver@microchip.com, Bjorn Andersson <andersson@kernel.org>, 
-	Konrad Dybcio <konradybcio@kernel.org>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
-	Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Andy Gross <agross@kernel.org>, 
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Viresh Kumar <vireshk@kernel.org>, 
-	Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>, zhouyanjie@wanyeetech.com, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	"Rafael J. Wysocki" <rafael@kernel.org>, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
-	Stephan Gerhold <stephan.gerhold@linaro.org>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev, 
-	linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
-	imx@lists.linux.dev, linux-rockchip@lists.infradead.org, 
-	linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
-	linux-mips@vger.kernel.org, linux-pm@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 4/5] rtc: mt6397: Remove start time parameters
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>
+Cc: Eddie Huang <eddie.huang@mediatek.com>, Sean Wang
+ <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-rtc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
+References: <20250109-enable-rtc-v3-0-f003e8144419@baylibre.com>
+ <20250109-enable-rtc-v3-4-f003e8144419@baylibre.com>
+ <20250411133609a1295543@mail.local> <202504111339359e840246@mail.local>
+ <968001f7-96d1-4ad5-8c36-28cac5dc30f1@collabora.com>
+Content-Language: en-US
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <968001f7-96d1-4ad5-8c36-28cac5dc30f1@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250414_065615_292132_5B6DF607 
+X-CRM114-Status: GOOD (  22.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,34 +108,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 11, 2025 at 6:37=E2=80=AFPM Florian Fainelli <f.fainelli@gmail.=
-com> wrote:
->
-> On 4/10/25 08:47, Rob Herring (Arm) wrote:
-> > There's no need include the CPU number in the L2 cache node names as
-> > the names are local to the CPU nodes. The documented node name is
-> > also just "l2-cache".
-> >
-> > Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
-> > Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
->
-> Not sure how you had intended for me to pick up that patch without
-> copying the maintainers.
-
-Looks like there is a problem in MAINTAINERS. This matches what b4 runs:
-
-$ git show cca91c99fe14 | scripts/get_maintainer.pl --nogit
---nogit-fallback --nogit-chief-penguins --norolestats
-Rob Herring <robh@kernel.org>
-Krzysztof Kozlowski <krzk+dt@kernel.org>
-Conor Dooley <conor+dt@kernel.org>
-devicetree@vger.kernel.org
-linux-kernel@vger.kernel.org
 
 
-> Applied nonetheless, thanks!
+On 14/04/2025 13:09, AngeloGioacchino Del Regno wrote:
+> Il 11/04/25 15:39, Alexandre Belloni ha scritto:
+>> On 11/04/2025 15:36:12+0200, Alexandre Belloni wrote:
+>>> On 11/04/2025 14:35:57+0200, Alexandre Mergnat wrote:
+>>>> The start time parameters is currently hardcoded to the driver, but
+>>>> it may not fit with all equivalent RTC that driver is able to support.
+>>>>
+>>>> Remove the start_secs and set_start_time value setup because it
+>>>> will be handled by the rtc_device_get_offset function using the
+>>>> start-year DTS property.
+>>>>
+>>>> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+>>>> ---
+>>>>   drivers/rtc/rtc-mt6397.c | 2 --
+>>>>   1 file changed, 2 deletions(-)
+>>>>
+>>>> diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
+>>>> index 692c00ff544b2..d47626d47602f 100644
+>>>> --- a/drivers/rtc/rtc-mt6397.c
+>>>> +++ b/drivers/rtc/rtc-mt6397.c
+>>>> @@ -291,8 +291,6 @@ static int mtk_rtc_probe(struct platform_device *pdev)
+>>>>       rtc->rtc_dev->ops = &mtk_rtc_ops;
+>>>>       rtc->rtc_dev->range_min = RTC_TIMESTAMP_BEGIN_1900;
+>>>>       rtc->rtc_dev->range_max = mktime64(2027, 12, 31, 23, 59, 59);
+>>>> -    rtc->rtc_dev->start_secs = mktime64(1968, 1, 2, 0, 0, 0);
+>>>> -    rtc->rtc_dev->set_start_time = true;
+>>>
+>>> This is going to break the time for people upgrading their kernel, you
+>>> are unfortunately stuck with this.
+>>>
+>>
+>> To be clear, the breakage will happen when upgrading the kernel but not
+>> the device tree with 5/5
+>>
+> 
+> Yes, you're stuck with this. Devicetree has to be retrocompatible.
+> 
+> Besides, this start_secs is what gets used by default, and the start-year
+> devicetree property should take precedence and effectively override the
+> start_secs default.
+> 
+> Just keep it there.... :-)
 
-Thanks.
+When you boot your board for the first time, is the date January 2nd 1968 ? If not, that mean it is 
+used as a finetune offset year.
+IMHO, mktime64(1968, 1, 2, 0, 0, 0) is a workaround for the rtc framework issue we try to solve in 
+this serie because start_secs is negative (1968 < 1970). Now framework handle the negative value 
+properly, even if you keep mktime64(1968, 1, 2, 0, 0, 0) , the device time will change. I prefer to 
+notify you.  :)
 
-Rob
+
+TBH, it's hard to follow the logic, so I've a question:
+If I push in my V4 a framework fix that drivers using year < 1970 will need to have a new start_secs 
+or start-year value to stay aligned with there previous value, do you will accept it ?
+
+Because drivers implementation are based on a bugged framework, so it's impossible, IMHO, to fix the 
+framework without impacting date values.
+
+If you don't want to touch framework, then consider offset year in the drivers to reach above 1970 :)
+
+If you have a solution to keep "rtc->rtc_dev->start_secs = mktime64(1968, 1, 2, 0, 0, 0);" without 
+having the date changed, don't hesitate to tell me, I'm not forcing for a specific one, just tell me 
+what you prefer for the V4.
+
+Regards,
+Alex
+
+
+-- 
+Regards,
+Alexandre
 
