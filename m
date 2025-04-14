@@ -4,67 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9500EC369B2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Apr 2025 10:04:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0274C369B2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Apr 2025 10:09:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KNK4tbSvQf0/jG5oxSYz4fI1SNH3RORlMp6yrXcQtOk=; b=bsFb7zzwAWOrt7kVAnsUDQUMNt
-	OyKd1xxWKKX0u8fcmYz7CaxPqgya9n1aTDx/2nSPgX5P4fm8QqUQjzeq1vngvUFmBk/Ru7raDt0gU
-	xN+yy9540wwT3SbOLyI0xA4Ge808vmX+F+J7p8XNmhIPS1f4TwpNdhGhMU/LCdXE20/ZHAXnfRXDa
-	4IHvNrzCzxkTKs6WmxQJppS7TQB3dsJDlsG/S6MB8fhExLH8D6TDba/ItFthffwDd5oGlIWjRtMHC
-	9JAA2u9ZrCz1WJbOEoUFkEqgpq86D39cF7hObsG26142IfVIWHiwWC8mvrs2cZatwnhv/3TmMSYAr
-	pXlbXXBg==;
+	bh=99x0tGbdw38C85IX3JD4zPDfiWMWW2a9teZScj+Y1hM=; b=cKaBnro7Hw3b/Ws0cFqqRdy3MF
+	MCayKkD3IA/01bLi8Kz5kL8hz0mjaaf4OU2wcxPFm9uR0zUHX6X/twhCZRg8gPlLFC/DYAUpPUq6H
+	IyjOWfmpsUn0e7VN8yQZEAIAXOfNtlTw0Hx2zZLeRq6cP8O4/04PXjEGFpG0GaLWZIgBuE9fTfZ03
+	NEvPndAohmn3OWkEq8OKTXiOjrwvEE50ievvLtpqI9rMxNUi7nnea0sakpgRpqMdZgEAqPMWh+2xL
+	kQK4I/j5y0ceNzaUXnLR19ZdZDcYWGsrjA0vne9aqFErgCWoGoBSQsTYodRUw3vgFzOgIfz2CioN0
+	giRhxjnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4Gfp-00000001OYS-2g16;
-	Mon, 14 Apr 2025 10:04:17 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1u4GlD-00000001Qga-3oyC;
+	Mon, 14 Apr 2025 10:09:51 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4GV8-00000001M8e-0B4A;
-	Mon, 14 Apr 2025 09:53:15 +0000
+	id 1u4GXB-00000001MgV-1wzM;
+	Mon, 14 Apr 2025 09:55:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1744624392;
-	bh=7yiHK60DhprzKhGNIX1fruwTLFwzej2Kyqv50AvzX/A=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=UHkhIsaJB6swO6iBEaBg97cIqBfUw5fvjWLH5IqGHi//QVBxpsW6osgfuIUHkMLyL
-	 KTkTSJ+prcsD/WgWyCQmzdhQ0wWU+spd5TE24gBHwIhYgflHl2CzGDGJhp/8JtKvJw
-	 6NjVQswHTGaAAp+DTQZyUadsZTdr8NNsO20Rtqx6GC3Bp+ewQwnssiVor+iVs5g4c/
-	 GHMeuuhXB58VtcBCgAYnAAxfL2Sv7aYB5oM0Wkt/Iqbu7hHAjhp6xQIWL2UIBYKxP9
-	 wln6TeLn0Ym0uEbjrp1Q0L8yBSza/otXcJ8pA24BCJAb5jG+W3/+dY5YI/uMs1+dct
-	 KVZROnRkw7ugg==
+	s=mail; t=1744624520;
+	bh=T4ONN1Yz2fGzXLrkieW4iad4t1ImsJfvVmB6Bgbe1kk=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=R2ZS19znVleLmVEzPH8Mx7/PHjELy3JlvA3R+Y1tDL1ZgZLaT7S+NxAvawocHksgV
+	 KWuCAEG3E9fvh8IS+v+C+b6RcZXDux4UDZypOV+L+uove+NA8o1jCzzU8wV/VurEjY
+	 XhmKiIG37Qaj1R+AwOqhVRoDvxVvivy+2wn3AmxKprp3jszdEXIdt1y9B8ipdRunDS
+	 bClxquv5mL1ZzuDgd0EsaqF6sRxxEwi1vhe7IUUK+S3BUo1XggGvh0E1Wv2HcQqF+X
+	 XgIQXgsftC+CnTwxfM+p5Vkoo2uqL8Qq+jVGMeDm4D/s5RB/6MnmG88mqVOsQ4TvPx
+	 bq64wTDZfnQQA==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 23B9617E14EF;
-	Mon, 14 Apr 2025 11:53:12 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5629B17E0809;
+	Mon, 14 Apr 2025 11:55:19 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
-In-Reply-To: <20250304-genio700-accdet-dts-v1-1-86d77c5cc745@collabora.com>
-References: <20250304-genio700-accdet-dts-v1-1-86d77c5cc745@collabora.com>
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8390-genio-common: Add jack
- detection with accdet
-Message-Id: <174462439206.45420.6727023772221653939.b4-ty@collabora.com>
-Date: Mon, 14 Apr 2025 11:53:12 +0200
+To: linux-mediatek@lists.infradead.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: lgirdwood@gmail.com,
+	broonie@kernel.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	henryc.chen@mediatek.com,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com
+Subject: Re: (subset) [PATCH v1 0/5] MediaTek Dimensity 1200 - Add DVFSRC support
+Date: Mon, 14 Apr 2025 11:55:11 +0200
+Message-ID: <174462444556.45823.17207667106071511415.b4-ty@collabora.com>
+X-Mailer: git-send-email 2.49.0
+In-Reply-To: <20250410144019.475930-1-angelogioacchino.delregno@collabora.com>
+References: <20250410144019.475930-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250414_025314_221659_AB5F9703 
-X-CRM114-Status: UNSURE (   8.36  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250414_025521_647022_031EB437 
+X-CRM114-Status: GOOD (  11.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,23 +83,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 04 Mar 2025 18:43:49 -0300, Nícolas F. R. A. Prado wrote:
-> Enable audio jack detection for the Genio 700 and 510 EVK boards. This
-> is handled by the MT6359 ACCDET block, which on these boards has the
-> HP_EINT pin pulled high and connected to a normally open 3.5mm jack.
+On Thu, 10 Apr 2025 16:40:14 +0200, AngeloGioacchino Del Regno wrote:
+> In preparation for adding basic support for the OnePlus Nord 2 5G
+> DN2103 smartphone, this series adds support for the DVFSRC regulators
+> and prepares the DVFSRC driver to also set bandwidth limits for the
+> DVFSRC EMI Interconnect found in the MediaTek Dimensity 1200 (MT6893)
+> SoC.
 > 
-> Add a phandle to the accdet in the sound card node so the machine sound
-> driver can initialize the accdet.
+> The interconnect driver wasn't touched at all because the intended
+> change here was to enable support for the DVFSRC regulators but, as
+> those anyway required new platform data, laying the groundwork for
+> the interconnect came natural and would've been unreasonable to just
+> skip that as it anyway consists in one small struct and nothing else.
 > 
 > [...]
 
-Applied to v6.15-next/dts64, thanks!
+Applied to v6.15-next/soc, thanks!
 
-[1/1] arm64: dts: mediatek: mt8390-genio-common: Add jack detection with accdet
-      commit: 691712b065d349bde7d5561aa8e1857d38b7c65a
+[1/5] dt-bindings: soc: mediatek: dvfsrc: Add support for MT6893
+      commit: ba3297872a237c8949e812ffa72c64e81da38cec
+[4/5] soc: mediatek: mtk-dvfsrc: Rename and move bw constraints data
+      commit: b06785283ec1c24fadce95390047feb9db840051
+[5/5] soc: mediatek: mtk-dvfsrc: Add support for Dimensity 1200 MT6893
+      commit: e5ea18102c9d3bc2fcb186a6e9f43c5a4aba4f98
+
+Patch 5/5: Fixed to remove unused dvfsrc_bw_constr_mt6893 before applying.
 
 Cheers,
 Angelo
-
 
 
