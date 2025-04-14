@@ -4,87 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECE3AC369B2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Apr 2025 20:28:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55A63C369B2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Apr 2025 21:36:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eNfZjFUF8tiixZr4lIXwI64Yf2XFIFSD4HDG3uAfy5Y=; b=nr5JHEusXX/RkP2T5kes59tw+2
-	Rr7gTHQ/WxsJIfabqHJYqxPbfCFRfc2/uOf5eAmIho2Wc4hZTr8GKaJpuiyFwpmd25dpS+eNniZk+
-	WAEFHQHG9y2TczSZTrWDm6YY9s8uPfH9D8k7ZeIabCpFC5SJCOVwJobc2J1T8BU0cwiK0zK5aWIOf
-	xaH897zmc3ocIsPK/CCSjNPuqgO83Xt4Hdl3mWORyKuguRc8vc3ENAvBrBU5fK96inOIGPNPSOUYk
-	1augs/X0xZOCFn6xqpk11vhrbb7iSzBjhMPe68LzDjI4uX2ff/p7ZFuoDZfATBSsTNvRlBnvYMTvA
-	CX3jbZqA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=S7BZi7HnKfbbt9TH74oPDg7WDBebYy2OSaVokgDUUbg=; b=bPD7ighCnS5Xl95zz8VHHEI3be
+	24lsZg34hv+U2FG+Bsr4a+YAUv28UsO8s3QEgGAl1o+5tp24K7DdVDG1bmWaytReMQbNQ84hgn81c
+	O5pu87qOrvp+28eLU1G87/TYs/lilddMhZdpZenBv9Qw0KzpOap4tsrosQK6aQRpAf8yVf+PPbUwp
+	/jG9N47/tJMc+3oVdg42NdYkmlB9a1crPF4wl/RFCtuxFB8q/JEr4II2kZYPrDTJq7Pj0M7bWTX7Y
+	/gWRPpSFHU1oBU8oriznwWkEBuqzVBLz38cww8ozk+enm8NdHZlfPqB0TtH4T5cKG0aP4xNKjBO3O
+	hZ37kPbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4QPg-00000003Shj-2fZx;
-	Mon, 14 Apr 2025 20:28:16 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1u4RTz-00000003ZyS-4Bkg;
+	Mon, 14 Apr 2025 21:36:48 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4PMD-00000003J4n-3Wom;
-	Mon, 14 Apr 2025 19:20:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=eNfZjFUF8tiixZr4lIXwI64Yf2XFIFSD4HDG3uAfy5Y=; b=kUmTJcBf49jnaaAA65j/OijLqa
-	0DYEVpxMghWUTpwJ5XokvdswnECl0d9mxLB3BTJnDS3j+2yGlBE2sHsY21e7HsuHYc0LJnqv/NKHn
-	cxoW9sivYaBpGZQOSqAWsmAtQtzXZJSYCcLDRzA/r1DWWzn0wFVJwbE3LUj+s4UyphQRZjnttrN4I
-	SMEELfIAIOM+MkHPlJoaVCNANPTSFUGDVjDKq9u9XGd+rv+vvYCuLw9J3PRN4ukHEecMA+LZAJHK/
-	8ky4X2KWOD9N3cXJ1nQVp6W+JnTCZ53g0WVtDv3tddmVG7Lje9jSoO3LzD/ojguiKBJknJOOWiBqG
-	DqiK5jeA==;
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u4PLw-00000009lBO-339F;
-	Mon, 14 Apr 2025 19:20:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1744658390;
-	bh=5OW4OtjtSyBB2oKPfpNX3Y7CKOSwuIZGdOJ/RR0idGo=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=f25TF4Y0FfGGEJNhRUjHuzeTyxe6aUlb6CUP4s97f12LFRjBK7jeu8bEuSL1NJUVT
-	 eF2FKvulL4465Z2GVwWeSGBSx38bn5In78T0Qmf0ym0CSUl9daYBiBI9xpb+lB7ofa
-	 ajtwNypoUMig5CIwQegKtxeS1dIoKSnNi3mWpiJVmkK9/rnHPKCQDCNEmDGqq5uM+d
-	 vUFjyGClwgbiynHhHX6E15j2KQiU1rXm4yUbky0fpItXCDA3nq+9wpDlGUMp/nB/Bp
-	 w6aw3kelbOy1Vay9YLQ9FwVxzam/gKiXPatuKJsq+NrI3w5y6/edkstBOwgKYoLWAL
-	 kg56Xvc7LsKSQ==
-Received: from [IPv6:2606:6d00:11:e976::c41] (unknown [IPv6:2606:6d00:11:e976::c41])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AAF2517E0FD5;
-	Mon, 14 Apr 2025 21:19:48 +0200 (CEST)
-Message-ID: <4052616c2ee6dafe1c8889454df73da2c4452f04.camel@collabora.com>
-Subject: Re: [PATCH v2 4/5] media: vcodec: Implement manual request
- completion
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Sakari Ailus <sakari.ailus@linux.intel.com>, Laurent Pinchart
- <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Tiffany Lin
- <tiffany.lin@mediatek.com>,  Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>, Matthias Brugger	
- <matthias.bgg@gmail.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, kernel@collabora.com, 
-	linux-media@vger.kernel.org, Sebastian Fricke
- <sebastian.fricke@collabora.com>
-Date: Mon, 14 Apr 2025 15:19:47 -0400
-In-Reply-To: <d3da96bf-d1c8-4bf8-a22a-21a43f78f27d@collabora.com>
-References: <20250410-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v2-0-5b99ec0450e6@collabora.com>
-	 <20250410-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v2-4-5b99ec0450e6@collabora.com>
-	 <d3da96bf-d1c8-4bf8-a22a-21a43f78f27d@collabora.com>
-Organization: Collabora Canada
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.56.0 (3.56.0-1.fc42) 
+	id 1u4RSA-00000003ZnE-14lo
+	for linux-mediatek@lists.infradead.org;
+	Mon, 14 Apr 2025 21:34:56 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-5e8be1c6ff8so8910805a12.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 14 Apr 2025 14:34:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1744666491; x=1745271291; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=S7BZi7HnKfbbt9TH74oPDg7WDBebYy2OSaVokgDUUbg=;
+        b=0Z+AaAJ+gi0HklMWs3WqxC7zZbNG/xkjYq2Qzw8F8iAw2llCu7EISvz3a9jwOnaXAN
+         qHqpP66S1NppAfcGFySiYH8Hr9V+c+Uy0gvbvW96Ly6TL4tn6xvjfqlaWxZy7PkC0g2b
+         Jfe6lZRRLBgtpxVEVn4XVamZpyXi1CPddbP+pOCql0cCJQtCfnpoNVfBqrpRoz4YiaGa
+         aTlzRDAsvGLHyfucA1HO3hLAZWhquhu2BDkXHh00Th6ecy/vnBCmz7PAL5msnEH54aoe
+         jUnmOwieXFcHNsWcp/HtD0E7YxN1m2ThubyhXx6/kVcBRtQUksQ4AIc0Kv9qd/CcVNmr
+         DsxA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1744666491; x=1745271291;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=S7BZi7HnKfbbt9TH74oPDg7WDBebYy2OSaVokgDUUbg=;
+        b=HgmW51w0TvuOH2yVKbzP+nsIiY+frEocIcUdinRJsSEC8VXCniM54Sj2q8KRSkCyxN
+         g3W7ea721Fpdwn8dxtHgaIgSSRAu8Lb3tT7cC2CvUxIl4e9em4c7lkoA5cLBQ7O6nWtp
+         tUThH7+PoewN++QTKofDGP76n+GDNdu2Md3p8YaaUTyC+iZzJOdghiQWgyZcg1KZIuRS
+         jyGqyGXXwDp8BMtGBNUFJcJpe++FyBmrOJ0sYqxAlgT38wszZca0C2p9fAXAlgeU9PTi
+         ppOKgIn8m6Vz4soR37ZH7pAGohEPSlH5lImXZqSMlvGnHepCa2VaoQlh+n9TkWcnzLKM
+         Xb4Q==
+X-Forwarded-Encrypted: i=1; AJvYcCVbkfN4UfzTk4zi/zPZ2Lybwe6PCTafC07QcKaDmNtZ1tIJsLEJKS5iGj9ARLsQf/HGCEzjYwI81D97kqJNog==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwWVDISIyXSRUB9L/cGJsURsLgJDe93IKxq5JCdXa8BlWg1MwqD
+	NwXUAFC+v0dGZ5bsKBIOPAT0UCqUo3H7ltvKpsXty2VEXxWjAgUhbcUccwOABS8=
+X-Gm-Gg: ASbGncsTxQUvD73KfWfdi+smgcnjbIE669iJguvyBKKF7Sgu3Bcz4eYxcf0u/JsyJ/j
+	dMSaN4UVTwfvmxBr6BnIS7vovaBb9FpYnehVtnXLmSLfayqSY+Efsk+2ycrv/4q8WJDlPoYVHkg
+	rAij9lzXOrz8b1ie6whSlHzRMtvThcdQEZCcXRw9oDW0RHbWntJJauyY+jaHCvnpCLamSOtm0Ye
+	JeXumgFe+oQBgFM6uoh77u6vE/cNlOOicVMM8uuWShmgl4Wy/MzTpkP9Kc/jpP7JZ1UXaR4VN5U
+	o9MAVIn7WQcMKpKkXEklqQ7Hwp4/vD5X3Jo9bRAFa+qTrA==
+X-Google-Smtp-Source: AGHT+IG/kDZsmoxinyBq4n/Im69g3ys9L3BT2wiv3DJKobRUo+Jzgfnpx2t+FVw18cLid5H4hJIEjA==
+X-Received: by 2002:a05:6402:1ec9:b0:5f3:8171:a4e2 with SMTP id 4fb4d7f45d1cf-5f38171a75amr12298487a12.18.1744666491385;
+        Mon, 14 Apr 2025 14:34:51 -0700 (PDT)
+Received: from localhost ([2a02:8071:b783:6940:36f3:9aff:fec2:7e46])
+        by smtp.gmail.com with UTF8SMTPSA id 4fb4d7f45d1cf-5f36f506425sm5554281a12.53.2025.04.14.14.34.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 14 Apr 2025 14:34:50 -0700 (PDT)
+Date: Mon, 14 Apr 2025 23:34:48 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
+To: Alexandre Mergnat <amergnat@baylibre.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Eddie Huang <eddie.huang@mediatek.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-rtc@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH v3 4/5] rtc: mt6397: Remove start time parameters
+Message-ID: <vpf4apahhpovhrqje4i647nldszen2pglbm5fdmar7bsyg7uao@3ymuod45ftlj>
+References: <20250109-enable-rtc-v3-0-f003e8144419@baylibre.com>
+ <20250109-enable-rtc-v3-4-f003e8144419@baylibre.com>
+ <20250411133609a1295543@mail.local>
+ <202504111339359e840246@mail.local>
+ <968001f7-96d1-4ad5-8c36-28cac5dc30f1@collabora.com>
+ <97cfeafe-7044-4f06-b2e6-e4a158419473@baylibre.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="xgxword5effrvsfi"
+Content-Disposition: inline
+In-Reply-To: <97cfeafe-7044-4f06-b2e6-e4a158419473@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250414_202021_954298_2FBD4B72 
-X-CRM114-Status: GOOD (  31.82  )
+X-CRM114-CacheID: sfid-20250414_143454_516529_EF2CA282 
+X-CRM114-Status: GOOD (  31.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,205 +107,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le lundi 14 avril 2025 à 11:11 +0200, AngeloGioacchino Del Regno a écrit :
-> Il 10/04/25 17:39, Nicolas Dufresne ha scritto:
-> > From: Sebastian Fricke <sebastian.fricke@collabora.com>
-> > 
-> > Rework how requests are completed in the MediaTek VCodec driver, by
-> > implementing the new manual request completion feature, which allows to
-> > keep a request open while allowing to add new bitstream data.
-> > This is useful in this case, because the hardware has a LAT and a core
-> > decode work, after the LAT decode the bitstream isn't required anymore
-> > so the source buffer can be set done and the request stays open until
-> > the core decode work finishes.
-> > 
-> > Signed-off-by: Sebastian Fricke <sebastian.fricke@collabora.com>
-> > Co-developed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-> > Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-> 
-> This patch is great - but looks like it's worsening naming consistency across the
-> driver.
-> 
-> Please look below.
-> 
-> > ---
-> >   .../mediatek/vcodec/common/mtk_vcodec_cmn_drv.h    | 13 +++++
-> >   .../mediatek/vcodec/decoder/mtk_vcodec_dec.c       |  4 +-
-> >   .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c   | 50 +++++++++++++++++
-> >   .../mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h   | 19 +++++++
-> >   .../vcodec/decoder/mtk_vcodec_dec_stateless.c      | 63 +++++++++++++---------
-> >   5 files changed, 124 insertions(+), 25 deletions(-)
-> > 
-> > diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_cmn_drv.h b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_cmn_drv.h
-> > index 6087e27bd604d24e5d37b48de5bb37eab86fc1ab..c5fd37cb60ca0cc5fd09c9243b36fbc716c56454 100644
-> > --- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_cmn_drv.h
-> > +++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_cmn_drv.h
-> > @@ -105,6 +105,19 @@ enum mtk_instance_state {
-> >   	MTK_STATE_ABORT = 4,
-> >   };
-> >   
-> > +/**
-> > + * enum mtk_request_state - Stages of processing a request
-> > + * @MTK_REQUEST_RECEIVED: Hardware prepared for the LAT decode
-> > + * @MTK_REQUEST_LAT_DONE: LAT decode finished, the bitstream is not
-> > + *		      needed anymore
-> > + * @MTK_REQUEST_CORE_DONE: CORE decode finished
-> > + */
-> > +enum mtk_request_state {
-> > +	MTK_REQUEST_RECEIVED = 0,
-> > +	MTK_REQUEST_LAT_DONE = 1,
-> > +	MTK_REQUEST_CORE_DONE = 2,
-> > +};
-> > +
-> >   enum mtk_fmt_type {
-> >   	MTK_FMT_DEC = 0,
-> >   	MTK_FMT_ENC = 1,
-> > diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-> > index 98838217b97d45ed2b5431fdf87c94e0ff79fc57..036ad191a9c3e644fe99b4ce25d6a089292f1e57 100644
-> > --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-> > +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec.c
-> > @@ -889,8 +889,10 @@ void vb2ops_vdec_stop_streaming(struct vb2_queue *q)
-> >   					src_buf->vb2_buf.req_obj.req;
-> >   				v4l2_m2m_buf_done(src_buf,
-> >   						VB2_BUF_STATE_ERROR);
-> > -				if (req)
-> > +				if (req) {
-> >   					v4l2_ctrl_request_complete(req, &ctx->ctrl_hdl);
-> > +					media_request_manual_complete(req);
-> > +				}
-> >   			}
-> >   		}
-> >   		return;
-> > diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-> > index 9247d92d431d8570609423156b989878f7901f1c..c80c1db509eaadd449bfd183c5eb9db0a1fc22bd 100644
-> > --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-> > +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-> > @@ -26,6 +26,56 @@
-> >   #include "mtk_vcodec_dec_pm.h"
-> >   #include "../common/mtk_vcodec_intr.h"
-> >   
-> > +static const char *state_to_str(enum mtk_request_state state)
-> 
-> static const char *mtk_vcodec_req_state_to_str(enum mtk_request_state state)
 
-I'd keep this one an exception, its local to this C file.
+--xgxword5effrvsfi
+Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v3 4/5] rtc: mt6397: Remove start time parameters
+MIME-Version: 1.0
 
-> 
-> > +{
-> > +	switch (state) {
-> > +	case MTK_REQUEST_RECEIVED:
-> > +		return "RECEIVED";
-> > +	case MTK_REQUEST_LAT_DONE:
-> > +		return "LAT_DONE";
-> > +	case MTK_REQUEST_CORE_DONE:
-> > +		return "CORE_DONE";
-> > +	default:
-> > +		return "UNKNOWN";
-> > +	}
-> > +}
-> > +
-> > +void mtk_request_complete(struct mtk_vcodec_dec_ctx *ctx, enum mtk_request_state state,
-> 
-> void mtk_vcodec_request_complete( ....)
+Hello Alex,
 
-Ack, though the namspace here seems to be "mtk_vcodec_dec", so I'll opt
-for that.
+On Mon, Apr 14, 2025 at 03:56:11PM +0200, Alexandre Mergnat wrote:
+> On 14/04/2025 13:09, AngeloGioacchino Del Regno wrote:
+> > Il 11/04/25 15:39, Alexandre Belloni ha scritto:
+> > > On 11/04/2025 15:36:12+0200, Alexandre Belloni wrote:
+> > > > On 11/04/2025 14:35:57+0200, Alexandre Mergnat wrote:
+> > > > > diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
+> > > > > index 692c00ff544b2..d47626d47602f 100644
+> > > > > --- a/drivers/rtc/rtc-mt6397.c
+> > > > > +++ b/drivers/rtc/rtc-mt6397.c
+> > > > > @@ -291,8 +291,6 @@ static int mtk_rtc_probe(struct platform_devi=
+ce *pdev)
+> > > > > =A0=A0=A0=A0=A0 rtc->rtc_dev->ops =3D &mtk_rtc_ops;
+> > > > > =A0=A0=A0=A0=A0 rtc->rtc_dev->range_min =3D RTC_TIMESTAMP_BEGIN_1=
+900;
+> > > > > =A0=A0=A0=A0=A0 rtc->rtc_dev->range_max =3D mktime64(2027, 12, 31=
+, 23, 59, 59);
+> > > > > -=A0=A0=A0 rtc->rtc_dev->start_secs =3D mktime64(1968, 1, 2, 0, 0=
+, 0);
+> > > > > -=A0=A0=A0 rtc->rtc_dev->set_start_time =3D true;
+> > > >=20
+> > > > This is going to break the time for people upgrading their kernel, =
+you
+> > > > are unfortunately stuck with this.
+> > >=20
+> > > To be clear, the breakage will happen when upgrading the kernel but n=
+ot
+> > > the device tree with 5/5
+> >
+> > Yes, you're stuck with this. Devicetree has to be retrocompatible.
+> >=20
+> > Besides, this start_secs is what gets used by default, and the start-ye=
+ar
+> > devicetree property should take precedence and effectively override the
+> > start_secs default.
+> >=20
+> > Just keep it there.... :-)
 
-> 
-> 
-> > +			  enum vb2_buffer_state buffer_state, struct media_request *src_buf_req)
-> > +{
-> > +	struct mtk_request *req = req_to_mtk_req(src_buf_req);
-> > +	struct vb2_v4l2_buffer *src_buf, *dst_buf;
-> > +
-> > +	mutex_lock(&ctx->lock);
-> > +
-> > +	if (req->req_state >= state) {
-> > +		mutex_unlock(&ctx->lock);
-> > +		return;
-> > +	}
-> > +
-> > +	switch (req->req_state) {
-> > +	case MTK_REQUEST_RECEIVED:
-> > +		v4l2_ctrl_request_complete(src_buf_req, &ctx->ctrl_hdl);
-> > +		src_buf = v4l2_m2m_src_buf_remove(ctx->m2m_ctx);
-> > +		v4l2_m2m_buf_done(src_buf, buffer_state);
-> > +		if (state == MTK_REQUEST_LAT_DONE)
-> > +			break;
-> > +		fallthrough;
-> > +	case MTK_REQUEST_LAT_DONE:
-> > +		dst_buf = v4l2_m2m_dst_buf_remove(ctx->m2m_ctx);
-> > +		v4l2_m2m_buf_done(dst_buf, buffer_state);
-> > +		media_request_manual_complete(src_buf_req);
-> > +		break;
-> > +	default:
-> > +		break;
-> > +	}
-> > +
-> > +	mtk_v4l2_vdec_dbg(3, ctx, "Switch state from %s to %s.\n",
-> > +			  state_to_str(req->req_state), state_to_str(state));
-> > +	req->req_state = state;
-> > +	mutex_unlock(&ctx->lock);
-> > +}
-> > +
-> >   static int mtk_vcodec_get_hw_count(struct mtk_vcodec_dec_ctx *ctx, struct mtk_vcodec_dec_dev *dev)
-> >   {
-> >   	switch (dev->vdec_pdata->hw_arch) {
-> > diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-> > index ac568ed14fa257d25b533b6fd6b3cd341227ecc2..cd61bf46de6918c27ed39ba64162e5f2637f93b2 100644
-> > --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-> > +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
-> > @@ -126,6 +126,17 @@ struct mtk_vcodec_dec_pdata {
-> >   	bool uses_stateless_api;
-> >   };
-> >   
-> > +/**
-> > + * struct mtk_request - Media request private data.
-> > + *
-> > + * @req_state: Request completion state
-> > + * @req: Media Request structure
-> > + */
-> > +struct mtk_request {
-> 
-> Maybe mtk_vcodec_dec_request? :-)
+It would work to keep setting start_secs but allow overwriting that
+value in the device tree. But see below.
+=20
+> When you boot your board for the first time, is the date January 2nd 1968=
+ ?
+> If not, that mean it is used as a finetune offset year.
+> IMHO, mktime64(1968, 1, 2, 0, 0, 0) is a workaround for the rtc framework
+> issue we try to solve in this serie because start_secs is negative (1968 <
+> 1970). Now framework handle the negative value properly, even if you keep
+> mktime64(1968, 1, 2, 0, 0, 0) , the device time will change. I prefer to
+> notify you.  :)
 
-Ack.
+I don't understand everything you wrote here, but as far as I see it,
+rtc_time64_to_tm() not being able to handle dates before 1970 is the
+main issue here. This is of course only relevant, because your hardware
+occasionally contains such a date. The technically right fix is to
+extend rtc_time64_to_tm() to work for dates >=3D 1900-01-01. (An
+alternative would be to assume that a hardware read returning a date
+before 1970 is invalid. If you refuse to write dates before 1970 that
+should give a consistent behaviour. But the original approach is the
+nicer one.)
 
-> 
-> > +	enum mtk_request_state req_state;
-> > +	struct media_request req;
-> > +};
-> > +
-> >   /**
-> >    * struct mtk_vcodec_dec_ctx - Context (instance) private data.
-> >    *
-> > @@ -317,6 +328,11 @@ static inline struct mtk_vcodec_dec_ctx *ctrl_to_dec_ctx(struct v4l2_ctrl *ctrl)
-> >   	return container_of(ctrl->handler, struct mtk_vcodec_dec_ctx, ctrl_hdl);
-> >   }
-> >   
-> > +static inline struct mtk_request *req_to_mtk_req(struct media_request *req)
-> 
-> ...and this could become req_to_dec_req ... but no strong opinions on this one
-> specifically, so feel free to keep this as it is.
+> TBH, it's hard to follow the logic, so I've a question:
+> If I push in my V4 a framework fix that drivers using year < 1970 will ne=
+ed
+> to have a new start_secs or start-year value to stay aligned with there
+> previous value, do you will accept it ?
 
-Something like that, very subtle at this point.
+Doesn't the need to shift the start year simply goes away once
+rtc_time64_to_tm() is fixed for negative time values?
 
-> 
-> > +{
-> > +	return container_of(req, struct mtk_request, req);
-> > +}
-> > +
-> >   /* Wake up context wait_queue */
-> >   static inline void
-> >   wake_up_dec_ctx(struct mtk_vcodec_dec_ctx *ctx, unsigned int reason, unsigned int hw_id)
-> 
-> After which....
-> 
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+So I would expect that going forward with just patches #1 and #2 should
+result in a fixed driver regarding the breakage you're seeing. (I'm
+unsure about patch #3, I'll address that in a reply to the respective
+mail.)
 
-thanks,
+Best regards
+Uwe
 
--- 
-Nicolas Dufresne
-Principal Engineer at Collabora
+--xgxword5effrvsfi
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmf9f3UACgkQj4D7WH0S
+/k6kAwgAn7QiSrVS5Jy5qEwJYxUOj7XozPsN8Zq0zgKKYBqm8IWz+mS1nyNSrfl5
+oZQooSYT9XLLkgxOZJjHUV47P8G3ClP+nR+PvatZa7ukJTHU32GEOWNEtAd1NZ6k
+EbH7z1BFqU+zXbNp4lCwS4bXpp0JH3j4r727u/UD5rg1yrO7HACF+VoNUYKpcKuw
+aEVAFy51VngHisOufxAY3JYnQMtwhLN03t1UpwWrm/dhcukyWsBQGgJHs3cQMK0r
+JJhVftzvihK98K3vv94fjlc8tr51LJIl8HVqMSZkVp/C9QwkaFHUy9bV9UGWqhQO
+wBdR79PYhwox2zLOU50JR6euQ/yhFw==
+=Kl2H
+-----END PGP SIGNATURE-----
+
+--xgxword5effrvsfi--
 
