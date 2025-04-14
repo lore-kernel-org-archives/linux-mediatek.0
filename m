@@ -4,98 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAF0AC369B5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Apr 2025 11:08:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 737D5C369B9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Apr 2025 11:16:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Dox/3saUSMc6oBn1CpgQrpJElpnKUg5l+Q9XBb5++k4=; b=17ftJq9KrMi4ge
-	SMefBr4UjUeUuNDey0J9vnN+GYN+Eg947nymS7HEHUUSY2hWl/DJcCu8b8Xt4npYBHpP9fu+rTZSH
-	7AIk3cCP4iGch3p8NzF7ZPyiL0SxxmKVqkpfIYLP520NpJWODzWz+bCGxaq9P9SZeeohrLxvyCT48
-	SRLbO0wjHqLRPFPdKuGeAiZqIF6AnvAPh8nFQny2Ux/QKS+NzcdgIKjUVWis7YghHG0dT4KqwWes/
-	GWZ6/j+E/vGW4Gl9J5o5w2q2jmoC02WLeNbEKlGDc5+KWhF8Sgpk5cZ8I/JCvX+cjtYvkl12bfLk4
-	iZYaz8/17lDHrTdYqC7Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rGJveFqFdd4rg7V6pj5VRC0DXtHbP4pqzHJWTyABUE0=; b=jkumxRW9nWBuf2TXvsPogBSXGr
+	jSv1RcAC2yxaztE3OfM+Kr53ZSnzO/Fx6nOTgucbSK2grqI/dKq/s92LEkSsxf02FlUNqP5ws0Qgn
+	ufzdWsAK8+2DCFqhojpjTX3R2ObWqoP7I7H4DpqZBgjoWsVdt0SBsapJBm8ZB4afBUEbUh/kVkfdn
+	j3viAik/XkCR/1rWoCCqi/CVxdS084mUC1ERfmF6HcEkRfzzJwimfmLVrOhJFxOyY1XUaMctFvkAv
+	J+DGmSIhYygHs96rbRTJIqiKybXZfL/g8TN/mYnwLbGtAGEXe00ywlC4GCi22VdIwSU2PPwk4Evvt
+	zKKUiVBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4Hfn-00000001g0Z-3jd1;
-	Mon, 14 Apr 2025 11:08:19 +0000
-Received: from mout.gmx.net ([212.227.17.21])
+	id 1u4HnG-00000001ihF-2f7u;
+	Mon, 14 Apr 2025 11:16:02 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4HVM-00000001dDl-1xcT;
-	Mon, 14 Apr 2025 10:57:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1744628230; x=1745233030; i=frank-w@public-files.de;
-	bh=Dox/3saUSMc6oBn1CpgQrpJElpnKUg5l+Q9XBb5++k4=;
-	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
-	 References:Message-ID:MIME-Version:Content-Type:
-	 Content-Transfer-Encoding:cc:content-transfer-encoding:
-	 content-type:date:from:message-id:mime-version:reply-to:subject:
-	 to;
-	b=qYm6Eu8HjkxRq+gksNLYnlblLxQeP/SfqiGgjk/IZYaMAvhpdeEKBD9rMyZAM5xM
-	 ZpcQ+vcehLK7IxyovlXIBVVFEUd8IxJvIjwaBm49zeZul6hi7HhDUthrdxKaTGwG6
-	 0gP/fq4PhkH8BHtcXWDMCBjI+S33NCPZshFiJpS5vbkwPQdri2p1Vx24T4Ed/3jr6
-	 Eif0GWfm4Wv3TeW6uUj3j6qIpM2ZVvZXI8faJ2LDGiQDV8Y4bvlNlxZ0Ol8Mx+ddq
-	 4ISXphfQS1gzcPKL3o0G8NmKWHIT5jT1tCCUobengwlg7TGYmxNoDjtdf+A0ei20N
-	 IyWxTr2+4dX8LBIQ+w==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [127.0.0.1] ([217.61.148.208]) by mail.gmx.net (mrgmx105
- [212.227.17.168]) with ESMTPSA (Nemesis) id 1ML9yc-1tnA5U2KKg-00KTDb; Mon, 14
- Apr 2025 12:57:10 +0200
-Date: Mon, 14 Apr 2025 12:57:06 +0200
-From: Frank Wunderlich <frank-w@public-files.de>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Frank Wunderlich <linux@fw-web.de>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-CC: Daniel Golle <daniel@makrotopia.org>, Sam Shih <sam.shih@mediatek.com>,
- MandyJH Liu <mandyjh.liu@mediatek.com>, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: =?US-ASCII?Q?Re=3A_=5BRFC_5/5=5D_arm64=3A_dts=3A_mediatek=3A?=
- =?US-ASCII?Q?_mt7988=3A_Add_xsphy_for_ssusb0/pcie2?=
-User-Agent: K-9 Mail for Android
-In-Reply-To: <e243cca4-40d7-4cd6-804a-7e63bb5581b0@collabora.com>
-References: <20250413085806.8544-1-linux@fw-web.de> <20250413085806.8544-6-linux@fw-web.de> <e243cca4-40d7-4cd6-804a-7e63bb5581b0@collabora.com>
-Message-ID: <E469EB89-A879-4B03-A3DF-C96D207E946D@public-files.de>
+	id 1u4Hgj-00000001gFv-2ZtH;
+	Mon, 14 Apr 2025 11:09:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1744628955;
+	bh=wjnJnWMkojXnEo1V8ScaOLq3IF7OMdLybc1gyWhzlmI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=bm83xP1tD0JnIrATrbQIMEtpktlE/Z1bIw1eXJGyGVv1ngWG1Hro9fHFlmCy7g/GX
+	 Qn2A4ntb4XnkqFJO0J+0h6YAodB5abD4pjeEQFiWvtwApTKkShnIIGIWWCNW9JZRQk
+	 FofNz1nxl8itoPV4dRoHgYmBdVqvdpesiUk6Rdaq/ElUPqHUry2ysa2Vvyjef3+Izj
+	 mG6OX0Zp9gSUX/IM5z5qt4kRMKAFCJO+JXeaKmZ9wJ1ltT0atdhHTWMI8ql3yYLIv8
+	 vBUTkP96MILKzAH01LORDHQipJUWx60mLLoLArD2OGq9ubX64BsrE44tyo780JFp8j
+	 rreUitkY3193w==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 224D717E00AC;
+	Mon, 14 Apr 2025 13:09:15 +0200 (CEST)
+Message-ID: <968001f7-96d1-4ad5-8c36-28cac5dc30f1@collabora.com>
+Date: Mon, 14 Apr 2025 13:09:14 +0200
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:yi7cluxJXDq4OrQaFqXXh5JHsaAJJapY8vwQzCpkAbguc1XlrM5
- 4Sdn2WvMB5StASOjsrQk4j+LwJh6ZnFxqayr4OGRuIqK9fj8sF9hXDWUfm5Rsy/dbM+Oabn
- uQ+J6oY5hVmp/Z+sdVHpMBXBdn3FghQBYSG6OyH7gCdIbYf62ADzYgd8c5SUNpVoP84n9wR
- qBqeARj2vXUvi9LqpESCg==
-UI-OutboundReport: notjunk:1;M01:P0:8QFW5mxT33E=;p9eKydGBnkydZTV5Tm8SBn3MzjQ
- zrEOtq6nYRDx84ugB0KbO22SzU8HCOwAg3QP8DZSk7r0aksEaBJ+3rapipjBW4neZOHrTfRsn
- Qp9r3s1mQiPQ1okWqdXSxl4rVC5z/GhSrqbO5keQrh9MjF6Q0YqGRr+EM/RwYveBlYaqY4xrS
- NMrH6uN4b5tBsxBhLWcVY3UzIm0BToz4iDgid1e76Pt4ivZJ/K7mQvFdCBQ1m2U0QQe28mZSj
- yqTKfrezqLu2Yzc9ANdjtT1gWriDSkUcBMsBQX/gUqIP0urMzKFiL2t2L+7WEtea77nkSsJ17
- Q1ep/vfvqrxhGL1fkBWPfDyGGP7k+gtCu3S/g81VdA3AN1msv2RRA5GSX97vf2cR6YBtSjZfe
- vkQig0b/U/J/Kv+sJlrcuAB13QbU03LMVzox6dSsIZh1PGOkk52NwffcoqmfLLL+5G5DNidvw
- zkadNDsfhN1xCmfF28SA0B7qB58b5S/55ihNqeVExyMp6GPJu0wvmX/fkEOGt6CJABqYXLSLR
- X78yJFURF4Ww6Vh7W3KI7vzCR103tAQuRVQKHD1YN7D93HaN+x8yp1K+GOoLxLRwwz2p4Qsb8
- 5FwYv8ktLf2rcHw2jTQcZhuktJOnBlbldXWuPP+y5B5uS2Q/HIE1bcgPviLx/zeBmmFY1dH42
- 82Sy9JAV1Kdc4Yj652ONnQ+4VjSLDxS3H/ht8vY50qAP+UIn4GcUVxRW9mNlLW5rUcKrNz2Ts
- UAYv27mou96tsYraliQ+BUDmkWnYJsS0d+d0dUKKEpTcB5+/XLSmOaGqCyJnWclA+x6lg2LBJ
- AuzMOLLBabSvIVXkgBCvPORzdGtdcjkIu8Dnks8JHvr4uTiFNavC4WSj2GwO3z3eKz9QOoiRk
- tS93ukqYYyoSxZm8cgcDwZ+25NT4IfO2s1KRcoSI+zB6PCaunoSEyvyO0ytN0EPmKrT4LJFrn
- vgleb0Mv9nQlOv76GFkxE6FKETr/n3/qOEdLJTyDbWkf9ZsTXzPpNVO1VwGJvSnJTa+V/k4ba
- X4X6Dpq0lUm3biCw6fEyyYP1oZ42NjCZTfGXAAVPMA5GR3+jzAyEgzSPp/qzL0iK5c8NYPrXi
- nb216mq/VAyxIkf7g3LuJdoBfWD8ZLwDhQTIx6WDzXvidxxPvixxl0BNO5TZYv4nwz6XuRI7b
- HXOmUg70tx8YJLTJLKTuCxPeKV/SAXc4E0dP3whvXmOJfF7H/4sOgqWtEKRoYjSgPmPdyRxnz
- szIAvbEjsLCsbNzZ9iuEtYFOsf9eHW7kUi7+husJIWa2dNFKHhVfkpv4gOrRZpiZ73av0QgY3
- h4PTdgydjIwkIJGUf6kQqfJ+teC9TtFSoL4G/opL5viSTh6Nr3+J+iaIzFx3Kxbbac5WvfBxh
- EC1qdOY4yCcJpv2LjqVGG04rTbkntjSThe1e4gpUfwYYfgXfcEetgU0tD4NsqWFV1Ur4vrK80
- DaUL2EXDN5eAncNe5vWCtYPBbzbiWOn25KJRQBbCxrMevMQrH
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 4/5] rtc: mt6397: Remove start time parameters
+To: Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Eddie Huang <eddie.huang@mediatek.com>, Sean Wang
+ <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-rtc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
+References: <20250109-enable-rtc-v3-0-f003e8144419@baylibre.com>
+ <20250109-enable-rtc-v3-4-f003e8144419@baylibre.com>
+ <20250411133609a1295543@mail.local> <202504111339359e840246@mail.local>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <202504111339359e840246@mail.local>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250414_035732_822386_8C693177 
-X-CRM114-Status: UNSURE (   5.20  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250414_040917_803551_D3BA1412 
+X-CRM114-Status: GOOD (  14.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,40 +78,68 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 14=2E April 2025 12:27:30 MESZ schrieb AngeloGioacchino Del Regno <angel=
-ogioacchino=2Edelregno@collabora=2Ecom>:
->Il 13/04/25 10:58, Frank Wunderlich ha scritto:
->> From: Frank Wunderlich <frank-w@public-files=2Ede>
+Il 11/04/25 15:39, Alexandre Belloni ha scritto:
+> On 11/04/2025 15:36:12+0200, Alexandre Belloni wrote:
+>> On 11/04/2025 14:35:57+0200, Alexandre Mergnat wrote:
+>>> The start time parameters is currently hardcoded to the driver, but
+>>> it may not fit with all equivalent RTC that driver is able to support.
+>>>
+>>> Remove the start_secs and set_start_time value setup because it
+>>> will be handled by the rtc_device_get_offset function using the
+>>> start-year DTS property.
+>>>
+>>> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+>>> ---
+>>>   drivers/rtc/rtc-mt6397.c | 2 --
+>>>   1 file changed, 2 deletions(-)
+>>>
+>>> diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
+>>> index 692c00ff544b2..d47626d47602f 100644
+>>> --- a/drivers/rtc/rtc-mt6397.c
+>>> +++ b/drivers/rtc/rtc-mt6397.c
+>>> @@ -291,8 +291,6 @@ static int mtk_rtc_probe(struct platform_device *pdev)
+>>>   	rtc->rtc_dev->ops = &mtk_rtc_ops;
+>>>   	rtc->rtc_dev->range_min = RTC_TIMESTAMP_BEGIN_1900;
+>>>   	rtc->rtc_dev->range_max = mktime64(2027, 12, 31, 23, 59, 59);
+>>> -	rtc->rtc_dev->start_secs = mktime64(1968, 1, 2, 0, 0, 0);
+>>> -	rtc->rtc_dev->set_start_time = true;
+>>>   
+>>
+>> This is going to break the time for people upgrading their kernel, you
+>> are unfortunately stuck with this.
+>>
+> 
+> To be clear, the breakage will happen when upgrading the kernel but not
+> the device tree with 5/5
+> 
 
->> +		xs-phy@11e10000 {
->
->That shall be just "phy@addr"
+Yes, you're stuck with this. Devicetree has to be retrocompatible.
 
-Ok
+Besides, this start_secs is what gets used by default, and the start-year
+devicetree property should take precedence and effectively override the
+start_secs default.
 
->> +			compatible =3D "mediatek,mt7988-xsphy",
->> +				     "mediatek,xsphy";
->> +			#address-cells =3D <2>;
->> +			#size-cells =3D <2>;
->> +			ranges;
->> +			status =3D "disabled";
->> +
->> +			xphyu2port0: usb-phy@11e10000 {
->
->Perhaps just u2port0/u3port0 like done on the other MediaTek SoC DTs is b=
-etter
->for consistency :-)
+Just keep it there.... :-)
 
-Mt7988 also have a tphy where we have it named tphyu3port=2E Leaving this =
-imho would increase confusion=2E
+Cheers,
+Angelo
 
->Cheers!
->
+>>>   	return devm_rtc_register_device(rtc->rtc_dev);
+>>>   }
+>>>
+>>> -- 
+>>> 2.25.1
+>>>
+>>
+>> -- 
+>> Alexandre Belloni, co-owner and COO, Bootlin
+>> Embedded Linux and Kernel engineering
+>> https://bootlin.com
+> 
 
 
-regards Frank
+
 
