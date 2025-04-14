@@ -4,63 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E25DC369B6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Apr 2025 09:43:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13219C369B2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Apr 2025 09:55:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oQty0lcT26LGD7pF2bpOzeJUHivvlWxMoP2U/JsFOg4=; b=3gAqZ/83/9uOAX
-	jPq2ILoz2KYutw1Rt2sZYkQzmQZzjjrNou3iTi/7LxyEax1BIA3z54jQCBbIpDq8CNPwmpp0m0uzC
-	tJlA7V66cf1tTh1PX6+Xgd0YDp5ItCWyPfOZPD/j7ejE2kCt7PDMkklDZwV4qytvJbHxlUwXr7pJK
-	l50t7ifjjJ4yaNvUSIXHwJoHY0Oh+VSOjT4+B8HZKpawAfZ4FcX1ZGttBRlju74nXOfchuaYcfkRy
-	+LlKi923McPbcw/cKVn4o3ZRFzEb5T0/i1BlcH96N+JH06Xlufn5nb+aG7NvCI4b5xYlIKDEGb9kF
-	EfKFyf0enWVEdBO0ia0A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EQgPEoNql6vdXUVm0t2k2eF33b/Tyd9zVdy+1ffDg0E=; b=sqcm+a1NiGSJiB5oy2Mu7uh0d1
+	fs+AFUXu+wXaDLEw2KIdjvu2k+7V12JcQYx7KML119rYw6jHnabfaODlg6b4tAmS9QtR+DI4fDxLv
+	JcLkZa5MaGHOFF/PTcVWhJfDHPkm8z+S9vIbOdUq59+jeTUTS27akPSORScKZwfGgZhO/XKnYNvPd
+	twT8DNTTjcTISmM5D4LCorlCeYAJUUIHhLemr4p79vi2MxjxFwvp30CrgXvjkgzJBxV3iFtA+c/Eg
+	ehMIQkcO1zTnSSNODJizqP3Tlm+Va8xirf3JhCVgYnPhu/nR0VNCICXoQ3CHimn2gwM5trqcCuU4v
+	tdTSUD5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4GLO-00000001JNk-0vbo;
-	Mon, 14 Apr 2025 09:43:10 +0000
+	id 1u4GWu-00000001MYX-0YBv;
+	Mon, 14 Apr 2025 09:55:04 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4G6A-00000001GtE-0T7B;
-	Mon, 14 Apr 2025 09:27:27 +0000
+	id 1u4GV4-00000001M6R-0iL7;
+	Mon, 14 Apr 2025 09:53:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1744622844;
-	bh=k9z8u+21LVEgAfkjUSJ5SSMbZtKhyPUmMn4Bg55YBOg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=hzICPuV94bxD6HHKvy/Wd4B91VbG1VXczdYg7fWy6kGa3jUKFAZWHaPsNPorYGECV
-	 cjIkUZMjROI0HtHVyY/EPyfcVqKG8Jndcmw5iuf2UDTj+UQa/rHrF02K3qfWB/kxNu
-	 x2bNEshdtao6xCP8hai/B/4DsXNoP5H/WpAX+Pn+g/kUurso5XfOIX/rJ/F3y8fJlq
-	 BFOVsmfPYPcRyJQmgOFNPmt2NmLUOLT7Lm+pgFybA7ElUOmmcgwlaNIucpDHLG3dY7
-	 uxpQABkS2x7MTjZOxYkJ45laKd89jROk2Epkx6jxGyHGe5zZ7G+mWlMLi/2CgrAsof
-	 f/blUgmhEqlFA==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	s=mail; t=1744624388;
+	bh=j2SzmPPwkVr+GnHaMaOl0CKRdroaM8UZJyrHL1hnC30=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=odvUkYLxZ8YkiJfbG2sJ3UiFMZHrSXey5sdciD5Llb35EwBflcosn0pilMoLJseEG
+	 E+5AtdWCC2GZ5e/iLatIwpUomH51Eto4SER+t8W1BbI7u0zvfELBv7GNX6HcLAiu9b
+	 DsYwM3ac0/1iljXCpNH7r1qPGwIHeCSdxozsL4Xvp3JjBq7Asn+Hvrjq+IjEtBYbXi
+	 kDJbDybJ/3l+qq2f/Y3sgkZKmcsSb4pMqLLjeSg0HXgYq/R8xGFj+/J88AYNUJenIC
+	 lmpkeFbTLmehft3lLTXAxToVvl8oZfnDQGzfEZwpReHW0kownW5booaWDbFUBXz795
+	 7xMh4ZNE+USmQ==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A90AA17E0F85;
-	Mon, 14 Apr 2025 11:27:23 +0200 (CEST)
-Message-ID: <c8f9f019-a238-47c8-a900-9ca48ce09503@collabora.com>
-Date: Mon, 14 Apr 2025 11:27:23 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] arm64: dts: mediatek: mt7988a-bpi-r4: allow hw
- variants of bpi-r4
-To: Frank Wunderlich <linux@fw-web.de>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
-References: <20250412102109.101094-1-linux@fw-web.de>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 15F9A17E0809;
+	Mon, 14 Apr 2025 11:53:08 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250412102109.101094-1-linux@fw-web.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+ Chen-Yu Tsai <wenst@chromium.org>
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ "Chengci . Xu" <chengci.xu@mediatek.com>, Yong Wu <yong.wu@mediatek.com>, 
+ Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <20250408092303.3563231-1-wenst@chromium.org>
+References: <20250408092303.3563231-1-wenst@chromium.org>
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8188: Fix IOMMU device for
+ rdma0
+Message-Id: <174462438799.45420.5429446309371613057.b4-ty@collabora.com>
+Date: Mon, 14 Apr 2025 11:53:07 +0200
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250414_022726_346486_6C3B9CB8 
-X-CRM114-Status: GOOD (  17.83  )
+X-CRM114-CacheID: sfid-20250414_025310_358387_EC5DFEC5 
+X-CRM114-Status: UNSURE (   7.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,102 +75,27 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 12/04/25 12:21, Frank Wunderlich ha scritto:
-> From: Frank Wunderlich <frank-w@public-files.de>
+On Tue, 08 Apr 2025 17:23:02 +0800, Chen-Yu Tsai wrote:
+> Based on the comments in the MT8188 IOMMU binding header, the rdma0
+> device specifies the wrong IOMMU device for the IOMMU port it is
+> tied to:
 > 
-> Sinovoip has released other variants of Bananapi-R4 board.
-> The known changes affecting only the LAN SFP+ slot which is replaced
-> by a 2.5G phy with optional PoE.
+>     This SoC have two MM IOMMU HWs, this is the connected information:
+>     iommu-vdo: larb0/2/5/9/10/11A/11C/13/16B/17B/19/21
+>     iommu-vpp: larb1/3/4/6/7/11B/12/14/15/16A/17A/23/27
 > 
-> Just move the common parts to a new dtsi and keep differences (only
-> i2c for lan-sfp) in dts.
-> 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
-> v2:
-> - added basic dts for 2g5 variant
-> - moved i2c used for sfp-lan to board dts
-> ---
->   arch/arm64/boot/dts/mediatek/Makefile         |   2 +
->   .../mediatek/mt7988a-bananapi-bpi-r4-2g5.dts  |   5 +
->   .../dts/mediatek/mt7988a-bananapi-bpi-r4.dts  | 404 +-----------------
->   .../dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi | 403 +++++++++++++++++
->   4 files changed, 414 insertions(+), 400 deletions(-)
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-> index 58484e830063..a1ebc9aa4ba6 100644
-> --- a/arch/arm64/boot/dts/mediatek/Makefile
-> +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> @@ -22,6 +22,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-sd.dtbo
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-rfb.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986b-rfb.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4.dtb
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4-2g5.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4-emmc.dtbo
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4-sd.dtbo
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8167-pumpkin.dtb
-> @@ -107,4 +108,5 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8516-pumpkin.dtb
->   DTC_FLAGS_mt7986a-bananapi-bpi-r3 := -@
->   DTC_FLAGS_mt7986a-bananapi-bpi-r3-mini := -@
->   DTC_FLAGS_mt7988a-bananapi-bpi-r4 := -@
-> +DTC_FLAGS_mt7988a-bananapi-bpi-r4-2g5 := -@
->   DTC_FLAGS_mt8395-radxa-nio-12l := -@
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts
-> new file mode 100644
-> index 000000000000..76eca976b968
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts
-> @@ -0,0 +1,5 @@
-> +// SPDX-License-Identifier: GPL-2.0-only OR MIT
-> +
-> +/dts-v1/;
-> +
-> +#include "mt7988a-bananapi-bpi-r4.dtsi"
+> [...]
 
-This should at least have some different compatible, if not probably also a
-different model string - as it's a different device.
+Applied to v6.15-next/dts64, thanks!
 
-	compatible = "bananapi,bpi-r4-2g5", "bananapi,bpi-r4", "mediatek,mt7988a";
-	model = "Banana Pi BPI-R4 (2.5GbE)";
-	chassis-type = "embedded";
-
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
-> index 6623112c24c7..431bf066fffb 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
-
-..snip..
-
-a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi 
-b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
-> new file mode 100644
-> index 000000000000..1ab09ed2f151
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
-> @@ -0,0 +1,403 @@
-> +// SPDX-License-Identifier: GPL-2.0-only OR MIT
-> +
-> +/dts-v1/;
-> +
-> +#include <dt-bindings/gpio/gpio.h>
-> +#include <dt-bindings/regulator/richtek,rt5190a-regulator.h>
-> +
-> +#include "mt7988a.dtsi"
-> +
-> +/ {
-> +	compatible = "bananapi,bpi-r4", "mediatek,mt7988a";
-> +	model = "Banana Pi BPI-R4";
-> +	chassis-type = "embedded";
-
-Please keep compatible/model/chassis-type in dts files.
-
+[1/1] arm64: dts: mediatek: mt8188: Fix IOMMU device for rdma0
+      commit: 267623000d11f6d483214be2484555f600393a12
 
 Cheers,
 Angelo
+
+
 
