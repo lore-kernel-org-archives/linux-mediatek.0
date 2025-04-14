@@ -4,122 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22391C369B2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Apr 2025 12:09:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0CAFC369B2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Apr 2025 12:36:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6eDrva91+oYsLlm8owRR+H12h68infK939ZqEniiI2Q=; b=4dmWC6ZUsxm4Qe8EZqJ7BePiUf
-	NZeHdq+nYXT3JL446HuysLRVaGv98QdZu5nvHYPiHgymev6vL0DiWo29Och1hTNrA/qjCkHz1Gnbb
-	7jsdXSLyfzQ0GDMiTNPNX/egd9eCfdjdZ0TvO54siFsa9Nb1UQcY3sAC3zxU5IamBH4q4muvtZyHF
-	L664FnOqj3xyF7scBwZHlVfuRaxORPjYtaQuWNjFyAu4601P8JJZWYEoSRaXIG4LSVZTsMMOl++ic
-	DfN0SbdCRwQNKm4jDlAlOCL/4fIlHNSnfqV3m27jJubJAexLjK9JesKJXW01tlzjbB9T6gtcIKS0M
-	JbZAlI5Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9umxLTWLSfrtnjYZ/+GeUmdRtMBqJiviwaDawIz4Ngw=; b=LfKhmiGlg3LQ9sd8/AQfNUy3Hi
+	VwgLKy426Mkut3WwVk1NdOWmMPdc8yedqwDgz6ZhCTNMi2e8S722bVMJaVf8g4mDRQgC0YIOI18Uh
+	6qN7Vm+kGh86RQdi6vES4fG5jWCX4hmrwBecTRnOXzKQFcEhbUOujpb1j6jYeaBUyZUDCwPpW6G7V
+	kAjmQAfKI0z53FgcQnYjTwyHs3z4YfnpEf9SPQiQFuGgc3O9vdnNlTaaCuw6YsG21EH6BXHTHV/5D
+	ag6c2iokwRRiUFQe+jRBc8CTeJPQOGGmMf5nBiD0xaeyjZf0cfBbuwktUFcKuJW3AzwclxYF7188Y
+	Vp3PGcBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4IcZ-00000001tKh-0CGc;
-	Mon, 14 Apr 2025 12:09:03 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1u4J2n-00000001xjX-2rgA;
+	Mon, 14 Apr 2025 12:36:09 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4IXJ-00000001s9s-1dA5;
-	Mon, 14 Apr 2025 12:03:38 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B62F85C1365;
-	Mon, 14 Apr 2025 12:01:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C732EC4CEEC;
-	Mon, 14 Apr 2025 12:03:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744632216;
-	bh=/bxomSJIGHyvt+5hFy0R5oVEwYMlY3ZvIOs419TYitg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=L440nwe+sacWG4uCza+Iytyk2p5qHKHSdHROmIU1GcbXyBeQxTN2hAKUY3MzlTQPY
-	 W6uE5taQxcqTkIt9mTWCwfBSD13ZvyAzC7x7Li5GrGDDQisMA2nw07zSZpPgeGfAZj
-	 hR6XU1XCD1Y0C/jE/0NCX5tbCym7skZTxQyAXEqly+bxOLnvCi0vnqKh7+MSKBvdb4
-	 +lNrQd9vtxPQO9rXfTi0yhA7dOo7c3Smz3MLwuLjlJYg5PbqBMZaA+R6EZ9AGgCDeS
-	 RoccKY24x8jV03i3FGD22harPZ9J4LV9E6onlOdlqjCaMsONOX3e7M6b2GPYTTcwUO
-	 cOkZAZTdI60xA==
-Message-ID: <bb24afca-61c9-4c37-b98d-b2316ed79f98@kernel.org>
-Date: Mon, 14 Apr 2025 14:03:29 +0200
+	id 1u4Izt-00000001xGE-02PG;
+	Mon, 14 Apr 2025 12:33:10 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.98.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1u4Izh-0000000016s-3E1k;
+	Mon, 14 Apr 2025 12:32:57 +0000
+Date: Mon, 14 Apr 2025 13:32:54 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2] arm64: dts: mediatek: mt7988a-bpi-r4: allow hw
+ variants of bpi-r4
+Message-ID: <Z_0AdtyvehR9SHnU@pidgin.makrotopia.org>
+References: <20250412102109.101094-1-linux@fw-web.de>
+ <c8f9f019-a238-47c8-a900-9ca48ce09503@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 11/11] ASoC: dt-bindings: mediatek,mt8196-mt6681: add
- mt8196-mt6681 document
-To: =?UTF-8?B?RGFycmVuIFllICjlj7bpo54p?= <Darren.Ye@mediatek.com>,
- "linus.walleij@linaro.org" <linus.walleij@linaro.org>,
- "broonie@kernel.org" <broonie@kernel.org>, "brgl@bgdev.pl" <brgl@bgdev.pl>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>, "tiwai@suse.com"
- <tiwai@suse.com>, "robh@kernel.org" <robh@kernel.org>,
- "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>, "perex@perex.cz"
- <perex@perex.cz>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-sound@vger.kernel.org" <linux-sound@vger.kernel.org>,
- "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>
-References: <20250407120708.26495-1-darren.ye@mediatek.com>
- <20250407120708.26495-12-darren.ye@mediatek.com>
- <6a9bd37e-ffec-4365-891a-64259c0cc115@kernel.org>
- <b67a231529c2f8cf0053d8180df95da94ef6d6d2.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <b67a231529c2f8cf0053d8180df95da94ef6d6d2.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <c8f9f019-a238-47c8-a900-9ca48ce09503@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250414_050337_518403_2CFE1868 
-X-CRM114-Status: UNSURE (   9.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250414_053309_046099_41171894 
+X-CRM114-Status: GOOD (  21.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,46 +58,74 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Frank Wunderlich <linux@fw-web.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 14/04/2025 09:08, Darren Ye (叶飞) wrote:
-> On Mon, 2025-04-07 at 15:12 +0200, Krzysztof Kozlowski wrote:
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
->>
->>
->> On 07/04/2025 14:06, Darren.Ye wrote:
->>> +
->>> +allOf:
->>> +  - $ref: sound-card-common.yaml#
->>> +
->>> +properties:
->>> +  compatible:
->>> +    oneOf:
->>
->> Drop
+On Mon, Apr 14, 2025 at 11:27:23AM +0200, AngeloGioacchino Del Regno wrote:
+> Il 12/04/25 12:21, Frank Wunderlich ha scritto:
+> > From: Frank Wunderlich <frank-w@public-files.de>
+> > 
+> > Sinovoip has released other variants of Bananapi-R4 board.
+> > The known changes affecting only the LAN SFP+ slot which is replaced
+> > by a 2.5G phy with optional PoE.
+> > 
+> > Just move the common parts to a new dtsi and keep differences (only
+> > i2c for lan-sfp) in dts.
+> > 
+> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> > ---
+> > v2:
+> > - added basic dts for 2g5 variant
+> > - moved i2c used for sfp-lan to board dts
+> > ---
+> >   arch/arm64/boot/dts/mediatek/Makefile         |   2 +
+> >   .../mediatek/mt7988a-bananapi-bpi-r4-2g5.dts  |   5 +
+> >   .../dts/mediatek/mt7988a-bananapi-bpi-r4.dts  | 404 +-----------------
+> >   .../dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi | 403 +++++++++++++++++
+> >   4 files changed, 414 insertions(+), 400 deletions(-)
+> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts
+> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
+> > 
+> > diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+> > index 58484e830063..a1ebc9aa4ba6 100644
+> > --- a/arch/arm64/boot/dts/mediatek/Makefile
+> > +++ b/arch/arm64/boot/dts/mediatek/Makefile
+> > @@ -22,6 +22,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-sd.dtbo
+> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-rfb.dtb
+> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986b-rfb.dtb
+> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4.dtb
+> > +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4-2g5.dtb
+> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4-emmc.dtbo
+> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4-sd.dtbo
+> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8167-pumpkin.dtb
+> > @@ -107,4 +108,5 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8516-pumpkin.dtb
+> >   DTC_FLAGS_mt7986a-bananapi-bpi-r3 := -@
+> >   DTC_FLAGS_mt7986a-bananapi-bpi-r3-mini := -@
+> >   DTC_FLAGS_mt7988a-bananapi-bpi-r4 := -@
+> > +DTC_FLAGS_mt7988a-bananapi-bpi-r4-2g5 := -@
+> >   DTC_FLAGS_mt8395-radxa-nio-12l := -@
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts
+> > new file mode 100644
+> > index 000000000000..76eca976b968
+> > --- /dev/null
+> > +++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts
+> > @@ -0,0 +1,5 @@
+> > +// SPDX-License-Identifier: GPL-2.0-only OR MIT
+> > +
+> > +/dts-v1/;
+> > +
+> > +#include "mt7988a-bananapi-bpi-r4.dtsi"
 > 
-> Drop oneOf ?
+> This should at least have some different compatible, if not probably also a
+> different model string - as it's a different device.
+> 
+> 	compatible = "bananapi,bpi-r4-2g5", "bananapi,bpi-r4", "mediatek,mt7988a";
 
-Yes
+Imho it doesn't make sense to declare compatibility with the
+"bananapi,bpi-r4" as the "bananapi,bpi-r4-2g5" is NOT compatible with the
+"bananapi,bpi-r4". It's a different board and using firmware meant for the
+"bananapi,bpi-r4-2g5" on the "bananapi,bpi-r4" (or vice versa) will result
+in a non-working Ethernet port.
 
->>> +
->>> +examples:
->>> +  - |
->>> +    sound {
->>> +        compatible = "mediatek,mt8196-mt6681-sound";
->>> +        model = "mt8196-mt6681";
->>> +        mediatek,platform = <&afe>;
->>
->> Make the example complete.
-> mt8196 pinctrl in mt8196-afe, does it have to be set in the machine
-> driver?
-
-I don't understand what do you ask me. Machine driver is not relevant to
-this and I did not mention it. You have in the binding few properties
-which are not present in DTS example. Why?
-
-Best regards,
-Krzysztof
 
