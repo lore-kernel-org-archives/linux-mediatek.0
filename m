@@ -4,96 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16DB1C369B5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Apr 2025 11:04:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAF0AC369B5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Apr 2025 11:08:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eQeOb9Qy+K52HTOoxzaFzGj3ukur32nTu1ttrDF5hoQ=; b=2V1ksMMNtDUpgf3g5jTt9oyTnk
-	1o0169jonG5EHNI5Uf8Hy3YDixnKcwvVW7XHbmOudQOfSV6zxkp0v3wcRGfkQZhji7c1OLaWrZVuf
-	9V59BYk0/YuBOq+K50r5MIGFcEuGG8bfIZFRSGmcUyHiHgVLyKZ0PocOmzjcOH6sSs1ZRaemd89kh
-	b02oC8t8hNX9gqLXcQTsM01zdHaX/0Zpies2Uhp7cPeS6EV8pnS8c8rS+EvUN4LaSuj4G37W80HQa
-	Xy6MwHjrEMx3GuuRngpDTAr0J1BeLxVpNZBXlc/tuCEvEXwFZBFDjj4Ybr/XTVBJmvXBDVeL95ZKy
-	SKcRPSqA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Dox/3saUSMc6oBn1CpgQrpJElpnKUg5l+Q9XBb5++k4=; b=17ftJq9KrMi4ge
+	SMefBr4UjUeUuNDey0J9vnN+GYN+Eg947nymS7HEHUUSY2hWl/DJcCu8b8Xt4npYBHpP9fu+rTZSH
+	7AIk3cCP4iGch3p8NzF7ZPyiL0SxxmKVqkpfIYLP520NpJWODzWz+bCGxaq9P9SZeeohrLxvyCT48
+	SRLbO0wjHqLRPFPdKuGeAiZqIF6AnvAPh8nFQny2Ux/QKS+NzcdgIKjUVWis7YghHG0dT4KqwWes/
+	GWZ6/j+E/vGW4Gl9J5o5w2q2jmoC02WLeNbEKlGDc5+KWhF8Sgpk5cZ8I/JCvX+cjtYvkl12bfLk4
+	iZYaz8/17lDHrTdYqC7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4Hc3-00000001eaK-4Aod;
-	Mon, 14 Apr 2025 11:04:27 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1u4Hfn-00000001g0Z-3jd1;
+	Mon, 14 Apr 2025 11:08:19 +0000
+Received: from mout.gmx.net ([212.227.17.21])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4HKQ-00000001bPp-3YWL
-	for linux-mediatek@lists.infradead.org;
-	Mon, 14 Apr 2025 10:46:17 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-43cf0d787eeso47633915e9.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 14 Apr 2025 03:46:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1744627573; x=1745232373; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=eQeOb9Qy+K52HTOoxzaFzGj3ukur32nTu1ttrDF5hoQ=;
-        b=SXYQLDmzcNhp/0crMoXZwnsRErkN2vZg4TMhbVzC8pnVuzpSlEfMLYsVcfR6il8+gn
-         0QjLnh0s1TXXB7XnZ8avZk5yF8PxaA8RouBdoFFZ8Fe/KECDeqiDnsde83nwnEHxEySn
-         K/1ez10Ph6jfwqD+D/Lp1LpZb4ZNKbtApmdM5+eTo5NELOA82YmLAMmsDFiWoNhYsU66
-         Dl3gG+IVIrBngwqYz37uQPtKwX2AjyAjx4gvieBWPx9LYv31CeaeS3XQdq6cxOlPTdJv
-         96Yya9ZiSUaCA/Y0r/oFG7VVLxG+6bh80kNPkxZsWiha7JzbbuzQAAHJWofgexbDlVGN
-         7KGw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744627573; x=1745232373;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=eQeOb9Qy+K52HTOoxzaFzGj3ukur32nTu1ttrDF5hoQ=;
-        b=qwd1MHcGrjjzgmE7amT20dUtLacJb6YZ/HFjwr0LaTlPJp7wnR+iuxHYV1CZFBdRei
-         CO0XU5FQvprjy/sMYqgd4SWrtV/IsZ+ggOIbtfkwibT6Lj3JflUGdKg+gIykQcQlhCUK
-         e0h9lEtLkViBomjbyFZBItAoGqcoB9h0pRQTEGhrNVH+X+2SXXU6yK38q1K0aV2LnYmf
-         vewVzM4Df9yHxpJLseHqaskyjuUwe8ws+vxbqCSl8hnYPg+wFJoF6fnGDePdRnXmghk+
-         UnsJT0mtJSIUHmAGvRaYvO7OHWcfV9B2GwjlYbFmDhj2g5mxVdFfXNKyKtbm92sF68Hk
-         msRg==
-X-Forwarded-Encrypted: i=1; AJvYcCUXe3/1L168ajS4uF8P2q5caE98k+XqEADeLCZVEXpdMK8AS3jpNgCnB5YO90J3tMsIsZrtDW0FfliF8gdPdA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yykc8TKQgWcyM1cmtDwS+n8pA8YK/iUFspcr5vkG+mAE9USMTux
-	ScsOHeLggqXYesOwTqelzgvFrU5z3/RrQ15sYCvSRtPmkkeCa8WEOwyZkNsxzbU=
-X-Gm-Gg: ASbGncuSiMayen8koEhR87WepN672fiIjGCEsSMyoIj5xsKTJahNg5ksCQTiEc+REpF
-	0xFQEbkQxeTdwKWJZhFDEFvr7+cT7xYoLKQk61TN3J8vof33nvcwXES977hcGOqvh3HkHWFn8aG
-	d7HH2u1rFvLDbgE2BSVl+PNu7X3B6CvoOz4wZvs//PT/Ixb7I+aM+QkgYMS61BPS0PpekdfZYKl
-	qQsQXdsBMDt21Og8P80LvMgIUI1tMcITooLWo2M4Eg1cRurttLiEALS9gdPrnMJCniPlEUvBm3S
-	aFaefZiZBW8WPjdAT+Zx7MsgymyPFA6RKS9rdy74HO90SEG+Atxz7oEqPTKqEsbMsva13ET8Xn9
-	Ho6rzBaWwGMa1
-X-Google-Smtp-Source: AGHT+IEmlVyIZCmc7s6u9Mvm5ekiBlQHJoP4+G1Yv7tVnhDgdM9pPkqdPRM+lbmSVeVP2abLwsQOOg==
-X-Received: by 2002:a05:600c:a04:b0:43c:ef55:f1e8 with SMTP id 5b1f17b1804b1-43f3a93f7c6mr99598855e9.13.1744627572680;
-        Mon, 14 Apr 2025 03:46:12 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:5ee:79d0:2dda:96f4:b94d:164c? ([2a01:e0a:5ee:79d0:2dda:96f4:b94d:164c])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39eae964002sm10490898f8f.8.2025.04.14.03.46.11
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 14 Apr 2025 03:46:12 -0700 (PDT)
-Message-ID: <a36aa4a4-9e00-4b98-8b98-db182ee9bd80@baylibre.com>
-Date: Mon, 14 Apr 2025 12:46:11 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 3/5] rtc: Fix the RTC time comparison issues adding
- cast
-To: Alexandre Belloni <alexandre.belloni@bootlin.com>
-Cc: Eddie Huang <eddie.huang@mediatek.com>, Sean Wang
- <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	id 1u4HVM-00000001dDl-1xcT;
+	Mon, 14 Apr 2025 10:57:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1744628230; x=1745233030; i=frank-w@public-files.de;
+	bh=Dox/3saUSMc6oBn1CpgQrpJElpnKUg5l+Q9XBb5++k4=;
+	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
+	 References:Message-ID:MIME-Version:Content-Type:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=qYm6Eu8HjkxRq+gksNLYnlblLxQeP/SfqiGgjk/IZYaMAvhpdeEKBD9rMyZAM5xM
+	 ZpcQ+vcehLK7IxyovlXIBVVFEUd8IxJvIjwaBm49zeZul6hi7HhDUthrdxKaTGwG6
+	 0gP/fq4PhkH8BHtcXWDMCBjI+S33NCPZshFiJpS5vbkwPQdri2p1Vx24T4Ed/3jr6
+	 Eif0GWfm4Wv3TeW6uUj3j6qIpM2ZVvZXI8faJ2LDGiQDV8Y4bvlNlxZ0Ol8Mx+ddq
+	 4ISXphfQS1gzcPKL3o0G8NmKWHIT5jT1tCCUobengwlg7TGYmxNoDjtdf+A0ei20N
+	 IyWxTr2+4dX8LBIQ+w==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [127.0.0.1] ([217.61.148.208]) by mail.gmx.net (mrgmx105
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 1ML9yc-1tnA5U2KKg-00KTDb; Mon, 14
+ Apr 2025 12:57:10 +0200
+Date: Mon, 14 Apr 2025 12:57:06 +0200
+From: Frank Wunderlich <frank-w@public-files.de>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Frank Wunderlich <linux@fw-web.de>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-rtc@vger.kernel.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
-References: <20250109-enable-rtc-v3-0-f003e8144419@baylibre.com>
- <20250109-enable-rtc-v3-3-f003e8144419@baylibre.com>
- <202504111338408af44d7b@mail.local>
-Content-Language: en-US
-From: Alexandre Mergnat <amergnat@baylibre.com>
-In-Reply-To: <202504111338408af44d7b@mail.local>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+ Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+CC: Daniel Golle <daniel@makrotopia.org>, Sam Shih <sam.shih@mediatek.com>,
+ MandyJH Liu <mandyjh.liu@mediatek.com>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: =?US-ASCII?Q?Re=3A_=5BRFC_5/5=5D_arm64=3A_dts=3A_mediatek=3A?=
+ =?US-ASCII?Q?_mt7988=3A_Add_xsphy_for_ssusb0/pcie2?=
+User-Agent: K-9 Mail for Android
+In-Reply-To: <e243cca4-40d7-4cd6-804a-7e63bb5581b0@collabora.com>
+References: <20250413085806.8544-1-linux@fw-web.de> <20250413085806.8544-6-linux@fw-web.de> <e243cca4-40d7-4cd6-804a-7e63bb5581b0@collabora.com>
+Message-ID: <E469EB89-A879-4B03-A3DF-C96D207E946D@public-files.de>
+MIME-Version: 1.0
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:yi7cluxJXDq4OrQaFqXXh5JHsaAJJapY8vwQzCpkAbguc1XlrM5
+ 4Sdn2WvMB5StASOjsrQk4j+LwJh6ZnFxqayr4OGRuIqK9fj8sF9hXDWUfm5Rsy/dbM+Oabn
+ uQ+J6oY5hVmp/Z+sdVHpMBXBdn3FghQBYSG6OyH7gCdIbYf62ADzYgd8c5SUNpVoP84n9wR
+ qBqeARj2vXUvi9LqpESCg==
+UI-OutboundReport: notjunk:1;M01:P0:8QFW5mxT33E=;p9eKydGBnkydZTV5Tm8SBn3MzjQ
+ zrEOtq6nYRDx84ugB0KbO22SzU8HCOwAg3QP8DZSk7r0aksEaBJ+3rapipjBW4neZOHrTfRsn
+ Qp9r3s1mQiPQ1okWqdXSxl4rVC5z/GhSrqbO5keQrh9MjF6Q0YqGRr+EM/RwYveBlYaqY4xrS
+ NMrH6uN4b5tBsxBhLWcVY3UzIm0BToz4iDgid1e76Pt4ivZJ/K7mQvFdCBQ1m2U0QQe28mZSj
+ yqTKfrezqLu2Yzc9ANdjtT1gWriDSkUcBMsBQX/gUqIP0urMzKFiL2t2L+7WEtea77nkSsJ17
+ Q1ep/vfvqrxhGL1fkBWPfDyGGP7k+gtCu3S/g81VdA3AN1msv2RRA5GSX97vf2cR6YBtSjZfe
+ vkQig0b/U/J/Kv+sJlrcuAB13QbU03LMVzox6dSsIZh1PGOkk52NwffcoqmfLLL+5G5DNidvw
+ zkadNDsfhN1xCmfF28SA0B7qB58b5S/55ihNqeVExyMp6GPJu0wvmX/fkEOGt6CJABqYXLSLR
+ X78yJFURF4Ww6Vh7W3KI7vzCR103tAQuRVQKHD1YN7D93HaN+x8yp1K+GOoLxLRwwz2p4Qsb8
+ 5FwYv8ktLf2rcHw2jTQcZhuktJOnBlbldXWuPP+y5B5uS2Q/HIE1bcgPviLx/zeBmmFY1dH42
+ 82Sy9JAV1Kdc4Yj652ONnQ+4VjSLDxS3H/ht8vY50qAP+UIn4GcUVxRW9mNlLW5rUcKrNz2Ts
+ UAYv27mou96tsYraliQ+BUDmkWnYJsS0d+d0dUKKEpTcB5+/XLSmOaGqCyJnWclA+x6lg2LBJ
+ AuzMOLLBabSvIVXkgBCvPORzdGtdcjkIu8Dnks8JHvr4uTiFNavC4WSj2GwO3z3eKz9QOoiRk
+ tS93ukqYYyoSxZm8cgcDwZ+25NT4IfO2s1KRcoSI+zB6PCaunoSEyvyO0ytN0EPmKrT4LJFrn
+ vgleb0Mv9nQlOv76GFkxE6FKETr/n3/qOEdLJTyDbWkf9ZsTXzPpNVO1VwGJvSnJTa+V/k4ba
+ X4X6Dpq0lUm3biCw6fEyyYP1oZ42NjCZTfGXAAVPMA5GR3+jzAyEgzSPp/qzL0iK5c8NYPrXi
+ nb216mq/VAyxIkf7g3LuJdoBfWD8ZLwDhQTIx6WDzXvidxxPvixxl0BNO5TZYv4nwz6XuRI7b
+ HXOmUg70tx8YJLTJLKTuCxPeKV/SAXc4E0dP3whvXmOJfF7H/4sOgqWtEKRoYjSgPmPdyRxnz
+ szIAvbEjsLCsbNzZ9iuEtYFOsf9eHW7kUi7+husJIWa2dNFKHhVfkpv4gOrRZpiZ73av0QgY3
+ h4PTdgydjIwkIJGUf6kQqfJ+teC9TtFSoL4G/opL5viSTh6Nr3+J+iaIzFx3Kxbbac5WvfBxh
+ EC1qdOY4yCcJpv2LjqVGG04rTbkntjSThe1e4gpUfwYYfgXfcEetgU0tD4NsqWFV1Ur4vrK80
+ DaUL2EXDN5eAncNe5vWCtYPBbzbiWOn25KJRQBbCxrMevMQrH
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250414_034615_026126_53300833 
-X-CRM114-Status: UNSURE (   9.99  )
+X-CRM114-CacheID: sfid-20250414_035732_822386_8C693177 
+X-CRM114-Status: UNSURE (   5.20  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -106,50 +107,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Am 14=2E April 2025 12:27:30 MESZ schrieb AngeloGioacchino Del Regno <angel=
+ogioacchino=2Edelregno@collabora=2Ecom>:
+>Il 13/04/25 10:58, Frank Wunderlich ha scritto:
+>> From: Frank Wunderlich <frank-w@public-files=2Ede>
+
+>> +		xs-phy@11e10000 {
+>
+>That shall be just "phy@addr"
+
+Ok
+
+>> +			compatible =3D "mediatek,mt7988-xsphy",
+>> +				     "mediatek,xsphy";
+>> +			#address-cells =3D <2>;
+>> +			#size-cells =3D <2>;
+>> +			ranges;
+>> +			status =3D "disabled";
+>> +
+>> +			xphyu2port0: usb-phy@11e10000 {
+>
+>Perhaps just u2port0/u3port0 like done on the other MediaTek SoC DTs is b=
+etter
+>for consistency :-)
+
+Mt7988 also have a tphy where we have it named tphyu3port=2E Leaving this =
+imho would increase confusion=2E
+
+>Cheers!
+>
 
 
-On 11/04/2025 15:38, Alexandre Belloni wrote:
-> On 11/04/2025 14:35:56+0200, Alexandre Mergnat wrote:
->> The RTC subsystem was experiencing comparison issues between signed and
->> unsigned time values. When comparing time64_t variables (signed) with
->> potentially unsigned range values, incorrect results could occur leading
->> to runtime errors.
->>
->> Adds explicit type casts to time64_t for critical RTC time comparisons
->> in both class.c and interface.c files. The changes ensure proper
->> handling of negative time values during range validation and offset
->> calculations, particularly when dealing with timestamps before 1970.
->>
->> The previous implementation might incorrectly interpret negative values
->> as extremely large positive values, causing unexpected behavior in the
->> RTC hardware abstraction logic.
->>
-> range_max is explicitly unsigned, casting it to a signed value will
-> break drivers.
-
-Ok, It should be fine for all drivers using range_max =
-   U32_MAX
-   RTC_TIMESTAMP_END_2099
-   RTC_TIMESTAMP_END_9999
-   (1 << 14) * 86400ULL - 1
-
-Whereas drivers using range_max = U64_MAX going in trouble:
-   rtc-goldfish.c
-   rtc-ps3.c
-   rtc-st-lpc.c
-   rtc-sun4v.c
-
-Is it ok for you if I fix the drivers to avoid issue with signed range_max ? Because, at the end, 
-you can't keep comparison operations between signed and unsigned variable, it lead to future issues.
-
-Otherwise, I've another working implementation which remove all comparison operation and drivers 
-doesn't require to be modify.
-
-
--- 
-Regards,
-Alexandre
+regards Frank
 
