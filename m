@@ -4,69 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 737D5C369B9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Apr 2025 11:16:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59FEBC369B8
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Apr 2025 11:28:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rGJveFqFdd4rg7V6pj5VRC0DXtHbP4pqzHJWTyABUE0=; b=jkumxRW9nWBuf2TXvsPogBSXGr
-	jSv1RcAC2yxaztE3OfM+Kr53ZSnzO/Fx6nOTgucbSK2grqI/dKq/s92LEkSsxf02FlUNqP5ws0Qgn
-	ufzdWsAK8+2DCFqhojpjTX3R2ObWqoP7I7H4DpqZBgjoWsVdt0SBsapJBm8ZB4afBUEbUh/kVkfdn
-	j3viAik/XkCR/1rWoCCqi/CVxdS084mUC1ERfmF6HcEkRfzzJwimfmLVrOhJFxOyY1XUaMctFvkAv
-	J+DGmSIhYygHs96rbRTJIqiKybXZfL/g8TN/mYnwLbGtAGEXe00ywlC4GCi22VdIwSU2PPwk4Evvt
-	zKKUiVBg==;
+	bh=y+/aFzsUjGCWKExjIVE+0gWA+iOhpCqaaqFw26f8f0M=; b=ahDldWier9L2iaBFQQvNjZaVU3
+	njlvEd/QeaVPgTiJolCbrN7wX+BM8H4ERZYI/deNm3qvrM9xVnFDTKLEPO9hcpbichQI9WkcRFOVx
+	uuKF9Xyrhx2m3cTQfFpfF14r70b3DLmPZWDpi/+8eBXykSDxgU6nL6+smvosSmpcAVWXJnBQj9RyK
+	kwvhN/yG696p5DVt09oQmcBGdnIU41Rjf07/MMCGoFM/xTsMd+p1rczQ2OzrlqFrieKv+q1Kk1zgK
+	lL92EiWbinxGBa4vOYrG0CtiPiwQGTAUoqnsGpJqIXWilm5SuaQrib11lgdMds01wUi3YtjoJB6vi
+	WdwgxNbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4HnG-00000001ihF-2f7u;
-	Mon, 14 Apr 2025 11:16:02 +0000
+	id 1u4Hz2-00000001lhK-1Emo;
+	Mon, 14 Apr 2025 11:28:12 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4Hgj-00000001gFv-2ZtH;
-	Mon, 14 Apr 2025 11:09:19 +0000
+	id 1u4HrA-00000001jxY-3Xc1;
+	Mon, 14 Apr 2025 11:20:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1744628955;
-	bh=wjnJnWMkojXnEo1V8ScaOLq3IF7OMdLybc1gyWhzlmI=;
+	s=mail; t=1744629603;
+	bh=me7hnFUemACg5+LWnK3v5vg7rKKJpQlwUnNnkLHu5c4=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=bm83xP1tD0JnIrATrbQIMEtpktlE/Z1bIw1eXJGyGVv1ngWG1Hro9fHFlmCy7g/GX
-	 Qn2A4ntb4XnkqFJO0J+0h6YAodB5abD4pjeEQFiWvtwApTKkShnIIGIWWCNW9JZRQk
-	 FofNz1nxl8itoPV4dRoHgYmBdVqvdpesiUk6Rdaq/ElUPqHUry2ysa2Vvyjef3+Izj
-	 mG6OX0Zp9gSUX/IM5z5qt4kRMKAFCJO+JXeaKmZ9wJ1ltT0atdhHTWMI8ql3yYLIv8
-	 vBUTkP96MILKzAH01LORDHQipJUWx60mLLoLArD2OGq9ubX64BsrE44tyo780JFp8j
-	 rreUitkY3193w==
+	b=a+bDrffThoN0yZarfWiV9G2YLin0HKv3155Brcsi8AVvEXhtw0YpnqbWvmHV1Qeaq
+	 X+ISyMvLGulm0sFjohN1PfNn2S877H/92jq6OjP5P8m5giZ79aNNhyA8AaW4tYL6fr
+	 Fc1/BXRaBG9TY29btQb/Bn9gz63FNwGMJJ8hxWWPFTxPfGek7PTH6Zhn+Ws7B0voHc
+	 u5sHHXPi5zsfVM+VrCEuaX9vUMf2EUYkh2JiLMpIbj46FnCtGdARMMzO7NiPaZNjjh
+	 B3lv0tpQccDa4Q2XqhBFTw1/LnGhhWgy1KTKwjwApaWU1hnA3IoQpnukU0MwryFi58
+	 o1UXdZoo+3AMQ==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 224D717E00AC;
-	Mon, 14 Apr 2025 13:09:15 +0200 (CEST)
-Message-ID: <968001f7-96d1-4ad5-8c36-28cac5dc30f1@collabora.com>
-Date: Mon, 14 Apr 2025 13:09:14 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9F57D17E0F85;
+	Mon, 14 Apr 2025 13:20:02 +0200 (CEST)
+Message-ID: <70231f99-5b41-4be4-8046-c73e32c68841@collabora.com>
+Date: Mon, 14 Apr 2025 13:20:02 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 4/5] rtc: mt6397: Remove start time parameters
-To: Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Alexandre Mergnat <amergnat@baylibre.com>
-Cc: Eddie Huang <eddie.huang@mediatek.com>, Sean Wang
- <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-rtc@vger.kernel.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
-References: <20250109-enable-rtc-v3-0-f003e8144419@baylibre.com>
- <20250109-enable-rtc-v3-4-f003e8144419@baylibre.com>
- <20250411133609a1295543@mail.local> <202504111339359e840246@mail.local>
+Subject: Re: [PATCH v2] arm64: dts: mediatek: mt7988a-bpi-r4: allow hw
+ variants of bpi-r4
+To: frank-w@public-files.de, Frank Wunderlich <linux@fw-web.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ Daniel Golle <daniel@makrotopia.org>
+References: <20250412102109.101094-1-linux@fw-web.de>
+ <c8f9f019-a238-47c8-a900-9ca48ce09503@collabora.com>
+ <4469DD7C-1C73-4767-867B-729819C2E1B4@public-files.de>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <202504111339359e840246@mail.local>
+In-Reply-To: <4469DD7C-1C73-4767-867B-729819C2E1B4@public-files.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250414_040917_803551_D3BA1412 
-X-CRM114-Status: GOOD (  14.96  )
+X-CRM114-CacheID: sfid-20250414_042005_032817_CB199783 
+X-CRM114-Status: GOOD (  16.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,65 +80,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/04/25 15:39, Alexandre Belloni ha scritto:
-> On 11/04/2025 15:36:12+0200, Alexandre Belloni wrote:
->> On 11/04/2025 14:35:57+0200, Alexandre Mergnat wrote:
->>> The start time parameters is currently hardcoded to the driver, but
->>> it may not fit with all equivalent RTC that driver is able to support.
+Il 14/04/25 12:19, Frank Wunderlich ha scritto:
+> Am 14. April 2025 11:27:23 MESZ schrieb AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>:
+>> Il 12/04/25 12:21, Frank Wunderlich ha scritto:
+>>> From: Frank Wunderlich <frank-w@public-files.de>
 >>>
->>> Remove the start_secs and set_start_time value setup because it
->>> will be handled by the rtc_device_get_offset function using the
->>> start-year DTS property.
->>>
->>> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
->>> ---
->>>   drivers/rtc/rtc-mt6397.c | 2 --
->>>   1 file changed, 2 deletions(-)
->>>
->>> diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
->>> index 692c00ff544b2..d47626d47602f 100644
->>> --- a/drivers/rtc/rtc-mt6397.c
->>> +++ b/drivers/rtc/rtc-mt6397.c
->>> @@ -291,8 +291,6 @@ static int mtk_rtc_probe(struct platform_device *pdev)
->>>   	rtc->rtc_dev->ops = &mtk_rtc_ops;
->>>   	rtc->rtc_dev->range_min = RTC_TIMESTAMP_BEGIN_1900;
->>>   	rtc->rtc_dev->range_max = mktime64(2027, 12, 31, 23, 59, 59);
->>> -	rtc->rtc_dev->start_secs = mktime64(1968, 1, 2, 0, 0, 0);
->>> -	rtc->rtc_dev->set_start_time = true;
->>>   
+> snip
+>> This should at least have some different compatible, if not probably also a
+>> different model string - as it's a different device.
 >>
->> This is going to break the time for people upgrading their kernel, you
->> are unfortunately stuck with this.
+>> 	compatible = "bananapi,bpi-r4-2g5", "bananapi,bpi-r4", "mediatek,mt7988a";
+>> 	model = "Banana Pi BPI-R4 (2.5GbE)";
+>> 	chassis-type = "embedded";
 >>
+>> ..snip..
+>>
+>> a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
+>>> new file mode 100644
+>>> index 000000000000..1ab09ed2f151
+>>> --- /dev/null
+>>> +++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
+>>> @@ -0,0 +1,403 @@
+>>> +// SPDX-License-Identifier: GPL-2.0-only OR MIT
+>>> +
+>>> +/dts-v1/;
+>>> +
+>>> +#include <dt-bindings/gpio/gpio.h>
+>>> +#include <dt-bindings/regulator/richtek,rt5190a-regulator.h>
+>>> +
+>>> +#include "mt7988a.dtsi"
+>>> +
+>>> +/ {
+>>> +	compatible = "bananapi,bpi-r4", "mediatek,mt7988a";
+>>> +	model = "Banana Pi BPI-R4";
+>>> +	chassis-type = "embedded";
+>>
+>> Please keep compatible/model/chassis-type in dts files.
 > 
-> To be clear, the breakage will happen when upgrading the kernel but not
-> the device tree with 5/5
-> 
-
-Yes, you're stuck with this. Devicetree has to be retrocompatible.
-
-Besides, this start_secs is what gets used by default, and the start-year
-devicetree property should take precedence and effectively override the
-start_secs default.
-
-Just keep it there.... :-)
-
-Cheers,
-Angelo
-
->>>   	return devm_rtc_register_device(rtc->rtc_dev);
->>>   }
->>>
->>> -- 
->>> 2.25.1
->>>
->>
->> -- 
->> Alexandre Belloni, co-owner and COO, Bootlin
->> Embedded Linux and Kernel engineering
->> https://bootlin.com
+> Ok, should i add specific compatible to existing board (like 2sfp)? Just thinking how binding should look like.
 > 
 
+No, the existing board compatibles should not be touched.
+
+I would imagine the bootloader reading the compatibles of all DTs and:
+
+- On the 2G5 device, prefer a devicetree having that machine compatible;
+   - 2G5: If no 2G5 specific DT exists, fall back to using bananapi,bpi-r4
+- On the 2sfp device, use DT that has bananapi,bpi-r4 but not the 2g5 compat.
+
+So all of the DTs can be present, and the bootloader chooses the right one for
+whatever device it is running on.
+If it's not possible for the bootloader to do so... well, that still doesn't
+change anything: you need two different DTS with a difference in machine compatible
+because those are two different machines :-)
+
+> Else is there an example for adding optional compatible without adding a complete block in binding?
+
+I'm not sure if you can nest oneOf statements in bindings... but that anyway
+doesn't really solve anything, so just add a full block....
+
+Just to be sure, though:
+
+krzk/Rob/Conor, am I right on this?
+
+Thanks!>
+>> Cheers,
+>> Angelo
+> 
+> 
+> regards Frank
 
 
 
