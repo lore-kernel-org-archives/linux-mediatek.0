@@ -4,89 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADCE0C369B6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Apr 2025 09:09:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 206FEC369B2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Apr 2025 09:13:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FMQai05fnMzG1+ZLdemAe/l6jrB3pJN1CqWIPECMVd4=; b=1wbUcTGAuK4IEsBkW4nHYcCNFq
-	XInkpO59StM6tBjeERTf73hcLy7ksTpsgRU04qoYlBnXvUcTXmwi+KRB4ddsVd4rPIKjsnjtdmqCt
-	YEYF+9UahnYgCY54u4jkTIW2RdPL96AEf0pXjHiCFd+bH4eLA2qTyDNtbgDqZ0Hz4nVO+Kn2ygWtu
-	/7ojTwjt2T5j3QaA5zdxQjE8CXYyx0RK3M5879KarbSP6bFd5MwpCpzcgHObm/S7IJwI0uoceSp69
-	z+ifYz0mIVcBUJSwLr/2wwr3nm/09kYyxaB+ukNa/XI3KIXMcZ7ReeX4F/U/7TCD+g3DrqGuNozjl
-	fG9bZuTg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=KYJWpcm80GWs45Q4a62R/BJuN0ukztFixJ7xVAURG3g=; b=IVaTDKfnpYihAuCInptXxRXwc2
+	xFKR+WqXTf5fMcU6uf31X8iIMFa3CN4nHj3FdqmqclXhOomdQYm2PXVOuhJQZpLTUpnaFYzfCUa52
+	qw0uN+3Y/4t4DQbHN39LsultelodblcHx/7aoRr6awz6IGsznezJ7PPKYM1VyzdPO8DSW2GbkjoSj
+	CoLbVWL7m7DSYklQbP+pdjoZBjEPf+U17eVGg640A85GFj0XXfnx1POSWpuEZoOsQxs6cIUR4hkVi
+	D/hPLrwCPD8iK6niDANRECZUC/1R1sj5PkvkvYheZQnEL5R9TUehniYPxSqDJKvNe2Y+Ed6l7tCG+
+	lMs+UrKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4Foa-00000001E8X-38JF;
-	Mon, 14 Apr 2025 09:09:16 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1u4FsC-00000001Eqf-0Pxw;
+	Mon, 14 Apr 2025 09:13:00 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4FYi-00000001B7J-2nRJ;
-	Mon, 14 Apr 2025 08:52:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1744620770;
-	bh=InbklK980sc2Hl5l2LdpFp3sTcyRxx81UWaVcsxBvAs=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Ndvzx4QpjvxRLVd/JpqTOQGcOTkRKjRxNoUTlHu+HJb/APV2XF33Fp6Rt3g72youU
-	 JhVm5LhxHUFxGB/or1l5DQDcfJrKltBQhY8EErlj6nodXX7b3Kfo96rv2TScFzUwT4
-	 1Wvqil1NVJFZLoFnMnKAACV+ZDVaQvfMb0cysSJCWJYnxzX2+AlZmxrnM3o5o/xQHh
-	 eIeI6MHhV7uKdCX5AWoA00QVMBsch0NohzOaJznNCmMqkhV26ArInXUuKQYJ7BKuJc
-	 TIm3W3qpMFDKPpUPWhokZV63FwLY/yq3IStFoSMqeM8+bE6yeKexpRm3CBboUz2vkX
-	 WLYKA21xJ0Qiw==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D406B17E0702;
-	Mon, 14 Apr 2025 10:52:48 +0200 (CEST)
-Message-ID: <bc6e0c12-2af8-4608-a05a-3d04209a4325@collabora.com>
-Date: Mon, 14 Apr 2025 10:52:48 +0200
+	id 1u4FjJ-00000001Cxm-3KXy;
+	Mon, 14 Apr 2025 09:03:51 +0000
+X-UUID: 5f285e8c190f11f083f2a1c9db70dae0-20250414
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=KYJWpcm80GWs45Q4a62R/BJuN0ukztFixJ7xVAURG3g=;
+	b=HlFUZ5Rf/i/mB1+LrYVUp2HoT0caQYChwGeIqF20wlQOJ9MI1hfjn9tiGz3g1y9e5CxKWpIaPm8oaxRAf9u4s8Z+9fnSa+jfA2W9Oi/uY+93fH24KvC5lQa6Z85UoGrTepcU6lFPPkeS6RzGeyNdsy0r8Ls6NS9QdwfhkkUKIgg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:4f8ace44-66a4-4439-95c4-d4d220daa64e,IP:0,UR
+	L:0,TC:0,Content:0,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-30
+X-CID-META: VersionHash:0ef645f,CLOUDID:bfd8388b-0afe-4897-949e-8174746b1932,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:2,IP:nil
+	,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:
+	1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 5f285e8c190f11f083f2a1c9db70dae0-20250414
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <ot_cathy.xu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 703456583; Mon, 14 Apr 2025 02:03:46 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Mon, 14 Apr 2025 17:03:43 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Mon, 14 Apr 2025 17:03:42 +0800
+From: Cathy Xu <ot_cathy.xu@mediatek.com>
+To: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Sean Wang <sean.wang@kernel.org>,
+	Lei Xue <lei.xue@mediatek.com>
+CC: <linux-gpio@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <yong.mao@mediatek.com>,
+	<Axe.Yang@mediatek.com>, <Andy-ld.Lu@mediatek.com>,
+	<Wenbin.Mei@mediatek.com>, <Jimin.Wang@mediatek.com>, Cathy Xu
+	<ot_cathy.xu@mediatek.com>
+Subject: [PATCH v7 0/3] pinctrl: mediatek: Add pinctrl driver on mt8196
+Date: Mon, 14 Apr 2025 16:59:25 +0800
+Message-ID: <20250414090215.16091-1-ot_cathy.xu@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 16/23] drm/mediatek: mtk_hdmi: Split driver and add
- common probe function
-To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
-Cc: "robh@kernel.org" <robh@kernel.org>,
- "jie.qiu@mediatek.com" <jie.qiu@mediatek.com>,
- "tzimmermann@suse.de" <tzimmermann@suse.de>,
- "simona@ffwll.ch" <simona@ffwll.ch>, "mripard@kernel.org"
- <mripard@kernel.org>, =?UTF-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?=
- <jitao.shi@mediatek.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "kernel@collabora.com" <kernel@collabora.com>,
- "dmitry.baryshkov@linaro.org" <dmitry.baryshkov@linaro.org>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
- =?UTF-8?B?TGV3aXMgTGlhbyAo5buW5p+P6YieKQ==?= <Lewis.Liao@mediatek.com>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- =?UTF-8?B?VG9tbXlZTCBDaGVuICjpmbPlvaXoia8p?= <TommyYL.Chen@mediatek.com>,
- =?UTF-8?B?SXZlcyBDaGVuamggKOmZs+S/iuW8mCk=?= <Ives.Chenjh@mediatek.com>,
- "airlied@gmail.com" <airlied@gmail.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
- "junzhi.zhao@mediatek.com" <junzhi.zhao@mediatek.com>
-References: <20250409131318.108690-1-angelogioacchino.delregno@collabora.com>
- <20250409131318.108690-17-angelogioacchino.delregno@collabora.com>
- <b9eafca53149fec817433da3d10bf06a6c96f959.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <b9eafca53149fec817433da3d10bf06a6c96f959.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250414_015252_867531_85AEE56B 
-X-CRM114-Status: GOOD (  24.18  )
+X-CRM114-CacheID: sfid-20250414_020349_848524_ACAA4272 
+X-CRM114-Status: GOOD (  10.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,104 +89,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/04/25 10:18, CK Hu (胡俊光) ha scritto:
-> On Wed, 2025-04-09 at 15:13 +0200, AngeloGioacchino Del Regno wrote:
->> External email : Please do not click links or open attachments until you have verified the sender or the content.
->>
->>
->> In preparation for adding a new driver for the HDMI TX v2 IP,
->> split out the functions that will be common between the already
->> present mtk_hdmi (v1) driver and the new one.
->>
->> Since the probe flow for both drivers is 90% similar, add a common
->> probe function that will be called from each driver's .probe()
->> callback, avoiding lots of code duplication.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   drivers/gpu/drm/mediatek/Kconfig           |  11 +-
->>   drivers/gpu/drm/mediatek/Makefile          |   1 +
->>   drivers/gpu/drm/mediatek/mtk_hdmi.c        | 542 +--------------------
->>   drivers/gpu/drm/mediatek/mtk_hdmi_common.c | 426 ++++++++++++++++
->>   drivers/gpu/drm/mediatek/mtk_hdmi_common.h | 188 +++++++
->>   5 files changed, 633 insertions(+), 535 deletions(-)
->>   create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_common.c
->>   create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_common.h
->>
->> diff --git a/drivers/gpu/drm/mediatek/Kconfig b/drivers/gpu/drm/mediatek/Kconfig
->> index e47debd60619..994b48b82d44 100644
->> --- a/drivers/gpu/drm/mediatek/Kconfig
->> +++ b/drivers/gpu/drm/mediatek/Kconfig
->> @@ -30,9 +30,18 @@ config DRM_MEDIATEK_DP
->>          help
->>            DRM/KMS Display Port driver for MediaTek SoCs.
->>
->> +config DRM_MEDIATEK_HDMI_COMMON
->> +       tristate
->> +       depends on DRM_MEDIATEK
->> +       select DRM_DISPLAY_HDMI_HELPER
->> +       select DRM_DISPLAY_HELPER
->> +       select SND_SOC_HDMI_CODEC if SND_SOC
->> +       help
->> +         MediaTek SoC HDMI common library
->> +
->>   config DRM_MEDIATEK_HDMI
->>          tristate "DRM HDMI Support for Mediatek SoCs"
->>          depends on DRM_MEDIATEK
->> -       select SND_SOC_HDMI_CODEC if SND_SOC
->> +       select DRM_MEDIATEK_HDMI_COMMON
->>          help
->>            DRM/KMS HDMI driver for Mediatek SoCs
->> diff --git a/drivers/gpu/drm/mediatek/Makefile b/drivers/gpu/drm/mediatek/Makefile
->> index 43afd0a26d14..78cf2d4fc85f 100644
->> --- a/drivers/gpu/drm/mediatek/Makefile
->> +++ b/drivers/gpu/drm/mediatek/Makefile
->> @@ -21,6 +21,7 @@ mediatek-drm-y := mtk_crtc.o \
->>
->>   obj-$(CONFIG_DRM_MEDIATEK) += mediatek-drm.o
->>
->> +obj-$(CONFIG_DRM_MEDIATEK_HDMI_COMMON) += mtk_hdmi_common.o
-> 
-> The whole patch looks good to me.
-> But make common part to a module looks a little bit more modularized.
-> Let things to be simple, I would like the whole MediaTek hdmi driver be a single module.
-> For MediaTek drm driver, it is already broken to mediatek-drm, hdmi, dp modules.
-> Maybe someday dsi or dpi would be broken to modules.
-> So I would like hdmi to be a single module which include v1, v2 and common part.
-> If someday we need to optimize code size, then send patch to break hdmi module.
-> 
+Changes in v7:
+- Add eint registers in dt-binding.
 
-Hello CK,
+Changes in v6:
+- Simplify the register description and adjust the order of properties
+  in dt-binding.
 
-The HDMIv1 and HDMIv2 drivers are handling two *very* different IPs that can never
-be *both* present at the same time on one SoC: having one Kconfig for both would
-not only add unnecessary bloat (especially on older SoCs!!), but would actually be
-wrong.
+Changes in v5:
+- Remove header file to fix dt-binding check error.
+- Add /* sentinel */ in pinctrl-mt8196.c.
 
-Also, please be aware that old LK bootloaders (smartphones/tablets) have a very
-limited RAM carveout for kernel + ramdisk that should be around 8MB if I recall
-correctly.
+Changes in v4:
+- Add rsel-resistence-in-si-unit and remove RSEL macro magic
+  number in mediatek,mt8196-pinctrl.yaml.
+- Add values in SI units option to |struct mtk_pin_soc| in
+  pinctrl-mt8196.c.
+- Move pinmux macro header file to arch/arm64/boot/dts/mediatek.
 
-Remember as well that these devices *cannot* run different bootloaders as those
-are only able to run *OEM signed* binaries in the early bootchain, so replacing
-the bootloader is not a viable solution.
+Changes in v3:
+- Remove drive-strength-microamp & rsel-resistence-in-si-unit
+  related description in mediatek,mt8196-pinctrl.yaml.
+- Use pm_sleep_ptr() in pinctrl-mt8196.c to fix build error.
 
-It's true, people can (and most probably want to and will) build this as a module
-but, in my opinion, freedom should be given to have the HDMI driver built-in even
-in these cases - and that's another good reason to keep them split.
+Changes in v2:
+- Fix driver file's coding style.
+- Add pinctrl binding document.
 
-This is done to avoid being hostile to old platforms, in full upstream spirit.
+Cathy Xu (3):
+  dt-bindings: pinctrl: mediatek: Add support for mt8196
+  arm64: dts: mediatek: mt8196: Add pinmux macro header file
+  pinctrl: mediatek: Add pinctrl driver on mt8196
 
-Regards,
-Angelo
+ .../pinctrl/mediatek,mt8196-pinctrl.yaml      |  236 ++
+ arch/arm64/boot/dts/mediatek/mt8196-pinfunc.h | 1574 ++++++++++
+ drivers/pinctrl/mediatek/Kconfig              |   12 +
+ drivers/pinctrl/mediatek/Makefile             |    1 +
+ drivers/pinctrl/mediatek/pinctrl-mt8196.c     | 1859 +++++++++++
+ drivers/pinctrl/mediatek/pinctrl-mtk-mt8196.h | 2789 +++++++++++++++++
+ 6 files changed, 6471 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt8196-pinctrl.yaml
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8196-pinfunc.h
+ create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt8196.c
+ create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-mt8196.h
 
-> Regards,
-> CK
-> 
->>   obj-$(CONFIG_DRM_MEDIATEK_HDMI) += mtk_cec.o
->>   obj-$(CONFIG_DRM_MEDIATEK_HDMI) += mtk_hdmi.o
->>   obj-$(CONFIG_DRM_MEDIATEK_HDMI) += mtk_hdmi_ddc.o
->> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> 
+-- 
+2.45.2
 
 
