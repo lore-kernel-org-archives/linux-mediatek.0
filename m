@@ -4,66 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86C18C369B5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Apr 2025 08:46:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52175C369B4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Apr 2025 10:09:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P7HE16cTWh0LIBUy6fN5rL+qHRcRB8SMkm0Cp3E+ZQI=; b=LWcvW39kiRUAIpMGrjqJGZsHQT
-	xKMlxVieQMLM+lYCqc9d2zGonBo1eHDay/afSn8WUzOVkINqf02LLs9DKGB4gouCnMhMcnUr+gDKN
-	CexwAt/n6ZEwyOMvCdKXx+q4KSKU58PwpfpldqgiQgZV9JGNtJqAyl7GJJMQkTdVRMPbkWM7pTHfp
-	xybV00/E0/i2DQFz48vn5GMdVw4sR1xwwB8C8cuC5DKGTh+4P/67mOeBaNQ/5L7rUd0yvamFqlqdE
-	HmnE0KVNWRe63ekeDhuilLkEzAHDsFfLOb2XtLTY229B2G2oxdH61VAsSaqmQUDu0qDWFNhxgw0m7
-	UedGqXOA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Q+JckBEpsrRgqh5xztZTHuIFUl86FPQgA/jK6oZPRJI=; b=dCSLTh5me6wWfD
+	gLfogTo58BI3VgevzmJjZZAFtrQCXFpRYy6vNR9MIGrxvCxhlxzoy61iyizlaXIoFPvVDFy/1iijW
+	zBduO0bORIExzWtKP77+oMlJvCPTUbgkgD+32FkgImJ8iO7pRT8gNNzD69QNYsbBSxwYlsVsuwzwF
+	OZ7ax/1Av1dUTThKDU1E4ogevEys3tS6a4e29kEH6Pzn33/yGMjP9DdjwrHa7PnR2Z3iGpowsuqqc
+	O0njyvQjd1JooplNCaj6MjupOMgStDgqfMImUEmpmHJVOeMTYLIHOlT09mlNzXwQflgWvetDfmyfW
+	uEgOGjEFrRxc6k6SLCTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4bwH-000000053Ks-2zEK;
-	Tue, 15 Apr 2025 08:46:41 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1u4dEL-00000005HCg-25WV;
+	Tue, 15 Apr 2025 10:09:25 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4br6-000000052YW-06MK;
-	Tue, 15 Apr 2025 08:41:21 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9C03843982;
-	Tue, 15 Apr 2025 08:41:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0AB10C4CEDD;
-	Tue, 15 Apr 2025 08:41:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744706478;
-	bh=sFvm3RtqxguiraxwSRB7QMxvnv4/oCgDX/PU1J6QmSE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=vJDuH9/PABQLF1dtJg+CLTitXeFrpR69LUsMzYRdS4h7m5RVORYgSJyHIVUQIuc4d
-	 NPYC3ZfTn8RtWMzksNNoHPnTxwpMGfLlNgy9tkpvXGgaPtGrRiAR5i7JxNdhhXQeZt
-	 7YG8YK6GW39QEFN3C8slLJej93DIQcZkOGJYM6Ab19ipOExb5/SqYzVhYPdsiEikn9
-	 +9vru6wf6oiCHuyMCkIDpuJsl98sGtxiRVwR3F+eUceu6Rf+UAR1HX64PUQWKJ2Z/x
-	 8RfRVko5RF03697bXs2j2M0UYG/6nQvfC1Of2OBGv7GDlwFR9zYT1Ew9oiVZzKwPVr
-	 V4zF9amJhKGKA==
-Date: Tue, 15 Apr 2025 10:41:13 +0200
-From: Christian Brauner <brauner@kernel.org>
-To: Oleg Nesterov <oleg@redhat.com>
-Cc: Tze-nan Wu =?utf-8?B?KOWQs+a+pOWNlyk=?= <Tze-nan.Wu@mediatek.com>, 
-	Bobule Chang =?utf-8?B?KOW8teW8mOe+qSk=?= <bobule.chang@mediatek.com>, "akpm@linux-foundation.org" <akpm@linux-foundation.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, wsd_upstream <wsd_upstream@mediatek.com>, 
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "chenqiwu@xiaomi.com" <chenqiwu@xiaomi.com>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
-Subject: Re: [RFC PATCH] exit: Skip panic in do_exit() during poweroff
-Message-ID: <20250415-speichel-heften-2eeb4ef264f1@brauner>
-References: <20250410143937.1829272-1-Tze-nan.Wu@mediatek.com>
- <20250410210507.GD15280@redhat.com>
- <249567d33e088a340780456c7ecd3ef3ee1433a1.camel@mediatek.com>
- <20250414165043.GG28345@redhat.com>
+	id 1u4cxw-00000005DUP-3Ylu;
+	Tue, 15 Apr 2025 09:52:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:MIME-Version:Message-ID:References:In-Reply-To:Reply-to:Subject:CC:To:From:
+	Date:Sender:Content-ID:Content-Description;
+	bh=Q+JckBEpsrRgqh5xztZTHuIFUl86FPQgA/jK6oZPRJI=; b=puhrsH64UOH7gBdx9FyroNJmSB
+	J3CrOo6B2YckL8oOKPHK0yC7Skq0VETi4LtXR47nB3E0+89uaZtLzELkQ8Jcw5nmZ6s4+wJO4Nmjl
+	ub2YNhGnzJMeQtjlcI8poRVrUirc++asVTR59FckuilYOm6eFOOutVb2G216Hun9xjFbWCjslN4gC
+	/vvv1ixg8XtZpZZ8KDP7wWI5Jif7+//LuQaxmZObpVMfax0gLDrrqdR1pqsMJ7lw3k4H8Fys/DWxA
+	3oNjfdeaAu979xNk2ez6oAEKs9XaxjDaXc4bzrZNs/J1Ix6INl0pT8w0xjXIJ9wEEbU9H/jHWGxb7
+	7BpnZ54w==;
+Received: from mout.gmx.net ([212.227.15.19])
+	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1u4cxs-00000009qeM-2Tng;
+	Tue, 15 Apr 2025 09:52:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1744710739; x=1745315539; i=frank-w@public-files.de;
+	bh=Q+JckBEpsrRgqh5xztZTHuIFUl86FPQgA/jK6oZPRJI=;
+	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
+	 References:Message-ID:MIME-Version:Content-Type:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=bLhOgagtIW/xrGe5Nq/eT10+fZL8R9146+562WV+19hEvp0m7LLIPpLGoQOaaZHO
+	 0exsQBy34S+clURVRsFvn72m0tvnPd3HWlwkv2sNYgJ9MKSDYaP45u+oRCzNA8YXI
+	 nHHCj5z9JdXGda+7Fhjgf4V7dWD6pwzccFQ6DXScBl1gBV66l5U25iBbohq7/wopV
+	 kq8h3eSBqOiQfGPwTTdpn1DFUI6+1QbKv4DY12M5RRM2Q+HWKypRGIltIliw8T7xp
+	 1rlbboCruan5kxl3GsRUMzk3IROhb+9XbMM1XPB3/5RnMSQi/WAy81AQPlsc5frQQ
+	 pnEc9YdM80A9d08pQQ==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [127.0.0.1] ([217.61.148.30]) by mail.gmx.net (mrgmx004
+ [212.227.17.190]) with ESMTPSA (Nemesis) id 1MK3Rs-1tjEjN2Nri-00WfPz; Tue, 15
+ Apr 2025 11:52:19 +0200
+Date: Tue, 15 Apr 2025 11:52:19 +0200
+From: Frank Wunderlich <frank-w@public-files.de>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Frank Wunderlich <linux@fw-web.de>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+CC: Daniel Golle <daniel@makrotopia.org>, Sam Shih <sam.shih@mediatek.com>,
+ MandyJH Liu <mandyjh.liu@mediatek.com>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: =?US-ASCII?Q?Re=3A_=5BRFC_3/5=5D_dt-bindings=3A_power=3A_Add_binding?=
+ =?US-ASCII?Q?_for_MediaTek_MT7988_topmisc_power_controller?=
+User-Agent: K-9 Mail for Android
+In-Reply-To: <700af1ab-f43e-4583-8f0e-27e5d4424338@collabora.com>
+References: <20250413085806.8544-1-linux@fw-web.de> <20250413085806.8544-4-linux@fw-web.de> <700af1ab-f43e-4583-8f0e-27e5d4424338@collabora.com>
+Message-ID: <2EA2BDB0-E1C9-49BC-98FC-5048905AA036@public-files.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250414165043.GG28345@redhat.com>
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:MDFMwq9Ryka5EQJIRTUvtko9P8AePKbzPUmE9xDrQQAss83aXKG
+ STQ21SuCC3A5uykYtRZaAicAhA1RltYfOdeAToH7BRl+YKP3qTUx0a6e4kSZJLqAI9f3JhH
+ mmHa9PT41UQI4sFR00UU7pvbVse2JVC0ngcXy0evqylC+5T+BVSCrJSZaPfuYBNICBOCFvc
+ 9JesmxM19WSuIqrNJAuig==
+UI-OutboundReport: notjunk:1;M01:P0:VK/pb+WoYXA=;bPDdGMYPFqQHNaVWNdlgFR7Fp8y
+ rWQIkRE4B0iktDbhYZVOJ/v+gBRvcvY/3aV9Wha4vYf2j0y/nv6MBybsVgCLw/KbEmhUFN+EC
+ miXg2SbKxGRQYeQoiJJmcq3Jgt51pe5Iqdix7p3Dw59AJhcYlwGpMkzomNa3nrXNWJDOgfOeW
+ V01cIc1eZbqLgU3mCtfzWvVTCdb0Vdb9WvctQ2b7NlkoFBRNZf/EKpMZ0iPSyM0sxfx+Tzjcr
+ KxUi06ed7sJBrAg3JGFYyfPFnNGBbjqaaSEhaawnu2xaF9ED0bXwS9gEcvBKH1v1Fz6JHQKn8
+ BQzFd8lPgYKYP++r4ZPip1MJhfP5z6Il6IfZgmkaCkFosHYHDE8nikNQFCRnpl1gJ4hGGNf6Q
+ 8gQYev9dAz+1G0a2YviaQAaGVAVXj2iqUXX/nCtvTUKB+dO6LHGEB6VSGV/4La3anEZWfFFMs
+ fN7yana8+8OUlMDV+WmGHlDZHvXB4F5B/Z6NwMjJ9hxWm9W94O8U+UxpR+w8nJO7k4ngJc3/g
+ 1+0IHh54E7Z56ZWhWaOlDvT44ur47m4t9pkjRffWkmNbnKejJu3SzoZ7fBTVkquCPdtkXK3Po
+ ds4Y2phhrjfoonw741eFyci8ZxTo4RnVXouL6WDf8lPAHo1w1tr1tsJwkx0iDHjRzkEVZ4VHB
+ B859Os0XrOCUTHnWupGSNKMhUoYBO2sxBXTv8cWCZFNaJbw2PbVSIEzSCvVPdhllmAXIRa1y2
+ SSoJfBx9zFiLHbSxYK0bh2U0MqcogQ3+HM8sfvX5Nt3ltmviqw/x8+bTaRayOc72BdMGIwgA+
+ KSFEvM6mtwtmv4AR/WVQx87VcEkk4BbuUOge/fxXMx5MIAAzUJYmu0/TjHzqchOmdYwsKbs1/
+ SkeXC01UCbo8//5K4kdSnF7Y1i29xHLT1m/XzjXjcV7XtVzt2Qgs/BoAs35wVJ+VxKBpZM4YR
+ MCenaYaG+lCQ/lFcN0T0Yvq5NM+Q9BLN1xSgcJeY2Jy83rs3bWA/LdgvXcVifRlrIqCWyB0b1
+ OVA2v2pstzt2XYbGbjyfr7M0qcIf44KofgGOZFhf1gpOEemS6ocydFx3zoCk1bAPzowZ8gpgi
+ t6eIUjG9sn8zBDoy/hWN9XdI3/4ULnfoXWZk9kBh9Xvini4EtbEcc0elP3kJokaVoKomC0t/y
+ xwX72h+Pl50fFFvyu5sgKINi4DL6LmF3XBALJ+7xN/aUD3FcIa0EilzBLOQME3cCtZhgK1SjV
+ W3+ALpBPt4DJ7o3eIBmrvOApT3W7qR5P/2dse8rSNipSBhYExhPlf5QyNpY6vAiPCCH59KkNk
+ a3c3KYko2/Ln0PVgJf14fKP/85eO6Cs1mkFc1mq8fxxUs64kKZOkNNkXSfYGJfo5TKJHrqXHq
+ 1+EwjzhS91yh/KUqfzxpURFlVfsKa/dOiWxElJF0RIaQON+l4o4bxXXtzm5prRmXLCheCmEKL
+ //Dmaufb4GZf9Zbp0NzkLsYdERI/JEmzLGHHvJ08LpZAQEaj2O+seThgZ6keyZBvTytMRSS6O
+ jjmEHWUwYJ9+s2qCwJc=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250415_014120_083457_E456D1B8 
-X-CRM114-Status: GOOD (  19.64  )
+X-CRM114-CacheID: sfid-20250415_105224_957368_286298CA 
+X-CRM114-Status: UNSURE (   8.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,38 +122,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 14, 2025 at 06:50:44PM +0200, Oleg Nesterov wrote:
-> On 04/14, Tze-nan Wu (吳澤南) wrote:
-> >
-> > On Thu, 2025-04-10 at 23:05 +0200, Oleg Nesterov wrote:
-> > > 
-> > > As for sys_reboot(), I think that kernel_power_off() must be
-> > > __noreturn,
-> > > and sys_reboot() should use BUG() after
-> > > LINUX_REBOOT_CMD_POWER_OFF/_HALT
-> > > instead of do_exit().
-> > > 
-> > 
-> > Yes, kernel_power_off() should not return, but this is the case only if
-> > kernel_power_off() is invoked by PID 1 through sys_reboot().
-> > If kernel_power_off() is invoked by a kernel thread (e.g., the thermal
-> > kernel module) other than PID 1, then do_exit() could possibly be
-> > invoked by PID 1 after kernel_power_off() on another CPU.
-> 
-> Yes sure, this is clear.
-> 
-> I have mentioned sys_reboot() because (unless I am totally confused)
-> this connects to the previous report from Breno.
-> 
-> And I agree that we should do stop_other_cpus() first, but let me
-> say this again: I can't help ;)
-> 
-> But in any case, rightly or not I still think that the init process
-> should not exit/crash due to POWER_OFF/HALT. We should not mask this
-> problem in do_exit().
+Hi Angelo,
 
-I agree.
+Am 14=2E April 2025 12:25:23 MESZ schrieb AngeloGioacchino Del Regno <ange=
+logioacchino=2Edelregno@collabora=2Ecom>:
+>Il 13/04/25 10:58, Frank Wunderlich ha scritto:
+>> From: Frank Wunderlich <frank-w@public-files=2Ede>
+>>=20
+>> Topmisc is a systemcontroller used for xs-phy and ethernet on  mt7988=
+=2E
+>> Add binding for it=2E
+>
+>That's the wrong binding=2E=2E=2E check mfd/syscon=2Eyaml :-)
+>
+>P=2ES=2E: Is there any reset controller in topmisc? Any clock?
+>      If yes, syscon=2Eyaml is also wrong, and you need a driver for that=
+=2E
+>      Remember: If it turns out *later* that this has clk/resets and the
+>      bindings are already set for just a syscon, it's gonna be way harde=
+r!
+>
+>Cheers,
+>Angelo
+
+Ok based on the power-domain-cells property i guessed powercontroller is t=
+he right place=2E
+
+But based on your suggestion i tried moving compatible to syscon binding a=
+nd made dtbs_check here=2E
+
+I can confirm dropping the unexpected properties reported by syscon bindin=
+g (power-domain-cells,clock-cells,adress-cells and size-cells) are not need=
+ed for function (xsphy and ethernet)=2E
+
+For verifying that there are really no clocks/resets in topmisc (have not =
+found it in public available register documents) i asked mtk (waiting for a=
+nswer)=2E
+
+Also got it working without the syscon compatible by changing ethernet dri=
+ver too (after this change xsphy was also working)=2E
+
+Eth:
+https://github=2Ecom/frank-w/BPI-Router-Linux/commit/d866e648717800b6f6395=
+ad36c38f9effcf0498d
+Xsphy:
+<https://github=2Ecom/frank-w/BPI-Router-Linux/commit/0121a94df99700487704=
+ca056b210b13db07e90c>
+
+regards Frank
 
