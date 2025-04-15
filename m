@@ -4,90 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85FB8C369AB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Apr 2025 10:19:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE774C369B5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Apr 2025 10:32:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QsG1T4j3H1rmWv/R1QZBJpKu8PHH3LDSWe8LQRzkGjk=; b=0kvYOpEvmkRiFIaAsSUiVbi9MN
-	jgOYdoiFR426JegZjILOpKEH7d6+DPlbMfZUtXvDo/XSxBJdYSpKNw9aPh0aYgAnSL5Sdx1NQBwhJ
-	CrEWsnUJZhE6++kih48woeU8blDSig1wTaqcqPZck4BuiKLg8aNaiqA/EgNszB0nKu3/YGBhTOIGI
-	tEdEl31eRQN+LdDv/TGEuKXh1EDQoQI1Z6ftm2No6FRcrmvjiZzazfwUaj7ojwmXwtcwhWmqimOh4
-	7PuX0LHSLsp81cft/1aO/YjtZ3XxUcW+cCZ7dv8ARhoepnJwmlvcN2FBKfyYYrl1i5/FKKRYlVFTb
-	owafVL9g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=WgqIUu9ojr7beR3hG5sdV5nNo9HnDoiSsjOcC+kJudY=; b=jtp2nBcO44zGaM
+	KXAx5bmf4G2n9KVNSoez//HHpHWENxOHMJ4Mrfspw7VKPijuF2LoP6HIyzzbe8J7/Q2DqFSTzqkXL
+	WUZBt6c6NQp+wEssW2N81LMIGtqUu5g/EGUXxLIs7O17IuFZH8RVkXhFkQXEE0oMPCvowjrlc4WYv
+	5QvMuLdbnRqr4qXXzleHOy6jv1j64pqDF+GfIXlimn5uDmYV1Ic14VJUESIUaddujJCvk9b6dHhUX
+	tuc1DiE+XOyr2jqIioc5YxM4mMEjgNPOiF/CRblT+5jZwIYVZBmnm0vbux6+iTdoHZDAv5JgdbgAc
+	z1b767eyhQySgzVSB8nw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4dNt-00000005InY-2VPP;
-	Tue, 15 Apr 2025 10:19:17 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1u4daX-00000005LNa-2iO9;
+	Tue, 15 Apr 2025 10:32:21 +0000
+Received: from mout.gmx.net ([212.227.17.21])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4d5Q-00000005FCN-2vVw;
-	Tue, 15 Apr 2025 10:00:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1744711210;
-	bh=9yw0Qzz1F9KcriheuD2Lay5nFwu3/DTc+aJ7BlFLoTg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=DwHUv9d1qTN+uPe8HwwTS+BIN8TB0IIPrqWppWKEa6OHF2/zGpdeH4DkkM0vnOxk5
-	 1n3kY72+9K554uTmWtJxThiJFOYDc5/815u3xZE2/nFY0dPOMRJ/1mZrWiL4QvqoWh
-	 V8xmlhAcLRoeBoT3g8wIzoVgot/pahpErOJH4iyXlPUeOPCqgliBAcZkoAa0xq8eBc
-	 D0fvajYGv5N5b896UpLKVs7PwhcTiNr//tm8zPltooPJG2pr2HjQaBquBP+OyBEWP4
-	 ZfX96iMBdrhAySsvZrSgDdy8IWjHnrjbQBbH4tCeus4czUZbE9Jre50OmW40KyINOt
-	 ZdzKBlFhlQjaQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8BF1F17E0FA7;
-	Tue, 15 Apr 2025 12:00:09 +0200 (CEST)
-Message-ID: <385e75f7-9b45-46cf-9202-1951c7e0fe5e@collabora.com>
-Date: Tue, 15 Apr 2025 12:00:09 +0200
+	id 1u4dZE-00000005L4z-20RB;
+	Tue, 15 Apr 2025 10:31:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1744713033; x=1745317833; i=frank-w@public-files.de;
+	bh=WgqIUu9ojr7beR3hG5sdV5nNo9HnDoiSsjOcC+kJudY=;
+	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
+	 References:Message-ID:MIME-Version:Content-Type:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=KBKRB/+hV4VwsG13/u+SDHwxEdTIc5MWNOTLfsAfmiAiNisKI8u2qYTwxuFKDrao
+	 uGrl8cjZPYN4epfmln5w1JjkV1R7ikHrz18h2HRljODfQR7RS4qhfBPcuxg9JkD7L
+	 Skc3m+Qb35/kbDbzvEdLippNpkeS9J7K0uM/f00RIPcAOwxo7/UF3skIXcCugbYEm
+	 bOQPNAqrdmz8G/BNq76ohSfeZjIksLA0WjqkojRDK3bqVbj+NnfcOvIKjcJhwf8cL
+	 HQgyxpOg9ExgGvS1YY8MV7jYBU/Dzj6zNiokB306hs274Rs0Ltji+HPxbKFobOTBu
+	 YdPRRjMDtQcP2e0/Qw==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [127.0.0.1] ([217.61.148.30]) by mail.gmx.net (mrgmx105
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 1MPogF-1tiPqk3DHP-00P9pF; Tue, 15
+ Apr 2025 12:30:33 +0200
+Date: Tue, 15 Apr 2025 12:30:34 +0200
+From: Frank Wunderlich <frank-w@public-files.de>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Daniel Golle <daniel@makrotopia.org>
+CC: Frank Wunderlich <linux@fw-web.de>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v2=5D_arm64=3A_dts=3A_mediatek=3A_mt7?=
+ =?US-ASCII?Q?988a-bpi-r4=3A_allow_hw_variants_of_bpi-r4?=
+User-Agent: K-9 Mail for Android
+In-Reply-To: <8fe762e3-a9eb-4a9c-81a2-b7a10539b615@collabora.com>
+References: <20250412102109.101094-1-linux@fw-web.de> <c8f9f019-a238-47c8-a900-9ca48ce09503@collabora.com> <Z_0AdtyvehR9SHnU@pidgin.makrotopia.org> <36fe0778-399a-4406-8516-54b968cd9073@collabora.com> <D7682B25-5BEF-46D1-A5FD-32D2AAF84EFF@public-files.de> <8fe762e3-a9eb-4a9c-81a2-b7a10539b615@collabora.com>
+Message-ID: <48DEC6CC-A81B-4DD7-9F55-CA1179FBA2F2@public-files.de>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 23/23] drm/mediatek/hdmi: Use
- syscon_regmap_lookup_by_phandle_args
-To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
-Cc: "robh@kernel.org" <robh@kernel.org>,
- "jie.qiu@mediatek.com" <jie.qiu@mediatek.com>,
- "tzimmermann@suse.de" <tzimmermann@suse.de>,
- "simona@ffwll.ch" <simona@ffwll.ch>, "mripard@kernel.org"
- <mripard@kernel.org>, =?UTF-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?=
- <jitao.shi@mediatek.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "kernel@collabora.com" <kernel@collabora.com>,
- "dmitry.baryshkov@linaro.org" <dmitry.baryshkov@linaro.org>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
- =?UTF-8?B?TGV3aXMgTGlhbyAo5buW5p+P6YieKQ==?= <Lewis.Liao@mediatek.com>,
- "krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- =?UTF-8?B?VG9tbXlZTCBDaGVuICjpmbPlvaXoia8p?= <TommyYL.Chen@mediatek.com>,
- =?UTF-8?B?SXZlcyBDaGVuamggKOmZs+S/iuW8mCk=?= <Ives.Chenjh@mediatek.com>,
- "airlied@gmail.com" <airlied@gmail.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
- "junzhi.zhao@mediatek.com" <junzhi.zhao@mediatek.com>
-References: <20250409131318.108690-1-angelogioacchino.delregno@collabora.com>
- <20250409131318.108690-24-angelogioacchino.delregno@collabora.com>
- <a73ae86c406de1002c7fcff9f34c2eeaaa5f03dc.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <a73ae86c406de1002c7fcff9f34c2eeaaa5f03dc.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:lLJIj65VGXw+6G0LOY49tgPACHjwE3VmkBrGn+7shtl1EW3b2pG
+ 87M+pcoS5dfrkhJV1oEnCSXo883Gg8iJB2t6prExwVn2sOM3ym2YdLBEYKOI5iEwjOakmPD
+ Jiuflz9K6fxopQjHYtG4qCcgMKu4raqvuQX5r0l4Zllzf0MSihg2UOE1sScINe55K1NQX1w
+ sok0WiGqjFLEmC4tC77lg==
+UI-OutboundReport: notjunk:1;M01:P0:/3vDsJWtv0o=;QGAKzf3I6xXFSnXdXYw9JtixUZR
+ v/Jr3O2zcgq4wWSgbg4j7rPEJCpMei+48d83imI29JgDOWg9lz6V0i5tC19RalvNnijHfk6rl
+ NDW4jtZRx9QEsTUC7hi4xXaxedKIuCE859QJltFtOIV0J7hmL5N2KPlbD0QJVUevkC889cNRt
+ og15QY5/wcG6ch1JonLkOAXPdcqndUoll/z8AVVFAqwR5DwU4MZhFhM34BrXxzJgAm0kFL8JF
+ 0so6of1X+oJ2QBRx/Es7x/pm07/WqK9SJt/bs8SH7LtLgOjlAjXzeEOPIFGm1pZnEV42+CI8U
+ Rcs0cj86+H3P42qZj6Yz1k909PHeWNonkZl4h6Dk5qJhgtIirqmbEjhwgpROjJhKYQGkU2GCN
+ vk+E+Nvg+BSEJplTExpi2Oy12Q7gMcEi5MotIiGkelR1xITAlMKwoX1cy2QYo+djgmkq8d1xN
+ 35znS0oLfjAbB18q6ive0ToCOEBeMV7MbaddZrO9wOtYCMLP6m5DK7lfcovO8iYk55U2FfASD
+ sZs4UhadMLYNehBEhEmqFDPkq2b7Erl5K1uaGFD01dC/yCpiLCgnmktTRkKwKKAchR1MCiXnl
+ g8B/fuN1XDlLFt7D/wbQ51NfO0vN8NbB5qimULGNSv6EzU1oacQ4zyVIlyi6YeLO5FCvFrchk
+ pLLLWQLMMmkIK4CgsbUdjFu3rlCxC1dxw5rfUhX5Nla1yZgQmcsUttwViseLP/PLPvIxrakUj
+ Fwdvh9/mQBdSKblK4rDYKT5j2F5wgoiRnQI5jAD3i0K4RdfOqZvWwzEFBK5STLotoGVvqvrW+
+ VlSJJkkO6KqFZ/T+saf3jXPdGEF4JD+DEbdUgQ7Qyt+8/kEJlQpM0bjBpoCQkixi732vl4ojO
+ fROZQ11i3MRv2ldocIREGhbEgytuHDMkmWWj5P3ny+9HX07+K77JOkD73DA8dsaQNNx4ahl8N
+ v7g1ugZ1Ku/ybZhZgFlFfJ6YBVPa6daB4/o9NbkxMgA0wwJ62SIoZKXXsViWPXg/cVz9XISYp
+ TV52ckCzlEdPk1ClGjqwVrqxZkzM3U9+jNhKyx1MO8gnHzbVQJrhdMWAxnHD15ZJrRBZvSBPM
+ 6BRodsAokbbMx8UVFZWcSbu1F8ZaSD7knRomIVZNLcIVxs+JHAGmmE1mJOUQUATynKJNl+Hq1
+ iK58dagAlTZe6rAmD4iruqKkiRd7uAm3x0C1719njucipZUwASy4yU+KH9LuOTKnFgTAAwbqQ
+ k0Zo68MIyg5YSzNnc1XUr5Zi040LFFC+qtFK6OOy7Ra2ojz2zKFrQevatMAim7Gje9XRAVGPM
+ sjN1UozOIs1ydU63P9H9+6sauUJHn3ObOT+3l1czMTL87fT3YHBa/UbM99wqQsPbuKFMWt7N3
+ V0QW1p3QBWVVnNDWyNq20Hk5ZLNx2SF7qP7i2Qe0vICZMUy/A9kJayzcSQBG00TOCncczpaNv
+ WSjEKuEdR8yRUPQukvhe8prWqaQ2tZ2MnuG/2n2UJRMwAaUcj
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250415_030012_877480_E4E64ADD 
-X-CRM114-Status: GOOD (  17.06  )
+X-CRM114-CacheID: sfid-20250415_033100_945933_D2D615F2 
+X-CRM114-Status: GOOD (  18.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,74 +103,100 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 15/04/25 10:14, CK Hu (胡俊光) ha scritto:
-> Hi, Angelo:
-> 
-> On Wed, 2025-04-09 at 15:13 +0200, AngeloGioacchino Del Regno wrote:
->> External email : Please do not click links or open attachments until you have verified the sender or the content.
->>
->>
->> From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
->>
->> Use syscon_regmap_lookup_by_phandle_args() which is a wrapper over
->> syscon_regmap_lookup_by_phandle() combined with getting the syscon
->> argument.  Except simpler code this annotates within one line that given
->> phandle has arguments, so grepping for code would be easier.
->>
->> There is also no real benefit in printing errors on missing syscon
->> argument, because this is done just too late: runtime check on
->> static/build-time data.  Dtschema and Devicetree bindings offer the
->> static/build-time check for this already.
-> 
-> Please rebase this patch to the first patch of this series.
-> I would like to apply refinement patch first then apply hdmi v2 patches.
-> 
+Am 15=2E April 2025 11:56:37 MESZ schrieb AngeloGioacchino Del Regno <angel=
+ogioacchino=2Edelregno@collabora=2Ecom>:
+>Il 15/04/25 10:07, Frank Wunderlich ha scritto:
+>> Am 15=2E April 2025 09:36:43 MESZ schrieb AngeloGioacchino Del Regno <a=
+ngelogioacchino=2Edelregno@collabora=2Ecom>:
+>>> Il 14/04/25 14:32, Daniel Golle ha scritto:
+>>>> On Mon, Apr 14, 2025 at 11:27:23AM +0200, AngeloGioacchino Del Regno =
+wrote:
+>>>>> Il 12/04/25 12:21, Frank Wunderlich ha scritto:
+>>>>>> From: Frank Wunderlich <frank-w@public-files=2Ede>
+>>>>>>=20
+>>>>>> Sinovoip has released other variants of Bananapi-R4 board=2E
+>>>>>> The known changes affecting only the LAN SFP+ slot which is replace=
+d
+>>>>>> by a 2=2E5G phy with optional PoE=2E
+>>>>>>=20
+>>>>>> Just move the common parts to a new dtsi and keep differences (only
+>>>>>> i2c for lan-sfp) in dts=2E
+>>=20
+>>>>> This should at least have some different compatible, if not probably=
+ also a
+>>>>> different model string - as it's a different device=2E
+>>>>>=20
+>>>>> 	compatible =3D "bananapi,bpi-r4-2g5", "bananapi,bpi-r4", "mediatek,=
+mt7988a";
+>>>>=20
+>>>> Imho it doesn't make sense to declare compatibility with the
+>>>> "bananapi,bpi-r4" as the "bananapi,bpi-r4-2g5" is NOT compatible with=
+ the
+>>>> "bananapi,bpi-r4"=2E It's a different board and using firmware meant =
+for the
+>>>> "bananapi,bpi-r4-2g5" on the "bananapi,bpi-r4" (or vice versa) will r=
+esult
+>>>> in a non-working Ethernet port=2E
+>>>>=20
+>>>=20
+>>> Is this device a BananaPi R4 variant, or is it a completely different =
+device?
+>>=20
+>> The only difference is that sfp-lan is replaced by RJ45 socket with mt7=
+988 internal phy=2E
+>>=20
+>
+>Perfect, then:
+> - The only difference is one routing
+>   - The base board is the same
+>   - Same hw project
+>     - The two machines are compatible with each other
+>       =2E=2E=2Ebar one difference
+>
+>=2E=2E=2Ethen the compatibles shall be as I said before :-)
+>
+>>> If this is a completely different device, then it's not even a BananaP=
+i R4,
+>>> otherwise this is compatible with BananaPi R4, with a small variation =
+:-)
+>>=20
+>> Sinovoip now announces a R4Pro with some more changes (e=2Eg=2E an exte=
+rnal 2=2E5g switch),but we have no detailed shematic yet=2E It looks they a=
+lso plan a R4lite which is based on different SoC (afair mt7987),but this i=
+s for sure different device (and so not using this bpi-r4=2Edtsi)=2E
+>
+>In that case, R4Lite shall not be compatible with R4, as the name may be =
+the
+>same, but in practice it's a different machine=2E
+>
+>>=20
+>> But basicly all are named BPi-R4=2E I guess R4Pro will also get own dts=
+ as too much changed=2E
+>
+>If R4pro is a redesign of the R4 board, that would not be compatible, as =
+it
+>would not be the same base design; otherwise, I'm sure you have well unde=
+rstood
+>how it works for the compatibles, anyway :D
 
-Please use the original patch if it still applies, then:
+Yes, should i use 3 const in the binding (as i do not expect another hw va=
+riant of current R4) or still enum for the first compatible?
 
-20250112134708.46100-1-krzysztof.kozlowski@linaro.org
-
-Cheers,
-Angelo
-
-> Regards,
-> CK
-> 
->>
->> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
->> [Angelo: Rebased over HDMIv2/DDCv2 series cleanups]
->> Reviewed-by: CK Hu <ck.hu@mediatek.com>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   drivers/gpu/drm/mediatek/mtk_hdmi_common.c | 7 ++-----
->>   1 file changed, 2 insertions(+), 5 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_common.c b/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
->> index 784bc05c9541..00a638a3caf4 100644
->> --- a/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
->> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
->> @@ -269,12 +269,9 @@ static int mtk_hdmi_get_cec_dev(struct mtk_hdmi *hdmi, struct device *dev, struc
->>           * MMSYS_CONFIG device and the register offset of the HDMI_SYS_CFG
->>           * registers it contains.
->>           */
->> -       hdmi->sys_regmap = syscon_regmap_lookup_by_phandle(np, "mediatek,syscon-hdmi");
->> +       hdmi->sys_regmap = syscon_regmap_lookup_by_phandle_args(np, "mediatek,syscon-hdmi",
->> +                                                               1, &hdmi->sys_offset);
->>          if (IS_ERR(hdmi->sys_regmap))
->> -               return PTR_ERR(hdmi->sys_regmap);
->> -
->> -       ret = of_property_read_u32_index(np, "mediatek,syscon-hdmi", 1, &hdmi->sys_offset);
->> -       if (ret)
->>                  return dev_err_probe(dev, ret,
->>                                       "Failed to get system configuration registers\n");
->>
->> --
->> 2.49.0
->>
-> 
+>Cheers!
+>
+>>=20
+>>> Cheers,
+>>> Angelo
+>>=20
+>>=20
+>> regards Frank
+>
+>
 
 
+regards Frank
 
