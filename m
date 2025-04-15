@@ -4,73 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CDE2C369AB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Apr 2025 11:33:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DBDEC369AB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Apr 2025 11:39:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=68uuCchRlgkTvYsAsaec3UreWs7xrz+smQbSmpGulzM=; b=OomqdWDIv8iFN1UqvfCSsdn1KL
-	DRU4sbiXwk11oQMdLNwHs/uSJf/PdLgPOPzdbWlgTTZdZ/wFoN0lxGmklch5KpnmAQHESEwI/PaPe
-	UMuzKcX6Xhj+sURzB3m4AkN361DF4tPPKIT2qy8UmGx9bg47MxZNhY6BoCX1f3BU6JVYizrfsl5e+
-	XP3WaHsZosWdnTcMurqF6N4CievH+acnS6xXCQIOmOQLnKWLzZsGk+r6Zbegqb/Q/mwyPYlTulils
-	LlvFknBdi5Wck/rKChbVfCHPGJGK7OxzRUxdJT1z4W+V0RSr9zqEmYYBVhFpX5qpKPE0/YVy9PQNH
-	E/SEFOVw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=uQ/sNjG6+jopWKiMcxNEdpFMYBYSU6NzwaXfhYsGhCM=; b=MIZrj3BUKP/TW20DZCXyBeGZzy
+	QYMXrVeoQNnTY+43ll2eLcsclcoXFVu5cZPIFJS52x3d08HN1+N1jT6U2v8XhCZMBc+sBh98Zn3Pc
+	/PwN6FS78qZSlqTpf05kGSas6avSpc/MCMU0QPMqNqd2+X7/v/4VyKNvSg2eir8Udu3D+xQsErfQ2
+	nyhUftLCpZQipdIYxZLFFhTIdfowp1Nw6TCJJ1WNIIH8XB/XvuhpgxK1ehKbS8TN+brFwq6CNVMU3
+	26Nna0z0/aIH1YpQ6bmhvAuJqYmQz6wcvDKhWoef0A4obQNo8vo3Yl2w8RXCjyC5N1+j4zS/rVre3
+	NuzgQPWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4eXz-00000005YzA-0f7f;
-	Tue, 15 Apr 2025 11:33:47 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1u4edO-00000005aDT-2GEJ;
+	Tue, 15 Apr 2025 11:39:22 +0000
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4dq8-00000005Oxy-3gHx;
-	Tue, 15 Apr 2025 10:48:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1744714107;
-	bh=CgTZtSnpeBEZpCMbBFIaZGn3QwWWlHR/mJgp6BEyfeI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Z1Z5ubmsLjUbXF45H/YDyate0WEabrgAxtWqnITNe4AZe8+b4Ke3aUNvnzNa6M+jf
-	 0Lr/j/xOs8miKATlJEsQCnnDINXtXLJPhvpR3iV4k2noMV7X3Ii9t0LRLZeCsenJrZ
-	 X0fg1LRNTAUDCzundGbkKCLQGV6lmAYvFrfvahKBiBKkfBd+Yjq3MKUsCg5oOCXAFL
-	 BHdDaXENi6hf1QoTYs6jtpoBO4WdPUNgN/J2G51nv8ggueii5kTBhzJKYwd5GYcBLG
-	 hiwjeMpuSpUgbuSnvJNrmcakF5nAoHSGwE0ovGdp2qw3UPs0YcfGIbk6LRNrj2nzI8
-	 spay6QgJ9m8sQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 40E9917E09B5;
-	Tue, 15 Apr 2025 12:48:26 +0200 (CEST)
-Message-ID: <bc094a07-2a4c-4048-8c15-b096db62f142@collabora.com>
-Date: Tue, 15 Apr 2025 12:48:25 +0200
+	id 1u4dvI-00000005QJb-0BVi;
+	Tue, 15 Apr 2025 10:53:49 +0000
+Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-39c0e0bc733so4630950f8f.1;
+        Tue, 15 Apr 2025 03:53:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1744714426; x=1745319226; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=uQ/sNjG6+jopWKiMcxNEdpFMYBYSU6NzwaXfhYsGhCM=;
+        b=PO5ctOh6UotiVOxxXwqDiOH18gd2BSRBSXVlOW2jksa0k+YreSyB5L/wiHTSW3OKhA
+         wStPB+GdRvCiMlN50Ulg5kFUEr9lEMtDipKn16mKuq41cy+NlCOPbIizuE/Z6HpH9mVm
+         wc3uqOE2t2s1OfdyWEQtuumIYWdu7Fl72vv8zoCsVHF8FOI8Zs6wVxsaAuKxoruwDHR2
+         bqvDAascklCXUcpyNtkk27k4TGYvj88cJbEB/VPCL9rrd/hlufTqtI2LY1FV10UNJPIp
+         DrAccymtC8nIJnnzGuCHg72YO/6xXHX1TJMua533Y6fhdjfZzced+7TtllkalIY7fAgm
+         b74w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1744714426; x=1745319226;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=uQ/sNjG6+jopWKiMcxNEdpFMYBYSU6NzwaXfhYsGhCM=;
+        b=FDy5c183Q5IePVGKEK1UemcY92PD3nmQ7I3lPkHzHcg/HXeNH+97Ksbt4tcQWkFwZH
+         Y7tuMQA4PP2LavolMq05AImuIqxELRl+oaQGasF7tg0IRNqhE/k+T3jnKA4wczZ4cLAv
+         wB7iVJfIsCU4yaqo7hqEBDPuNXYZwIKMyn09JgIg6l9TNAuG8/HbXs4Uecavd1gTVD9h
+         HBGf07zTs9FTpa8SMaqL2SFy431/XdSawFwzk3br1ez2jx3qNHv7Xop+Q60KHNWlmMsM
+         vPD0GWp+iX3sgrU7sDMYLbyDouuoP4YQYcsQi2itlR/4WcldVBnmdrTW6p4A5an6JVCJ
+         TyOQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWGKoWFLJFKkeLcb2U9q3FWLL0QqYSjq+58Su5VeTyY+sAI6+ep+NArYbUK/UvM5zQdC/YQzlKS1JoE1dQfRvU=@lists.infradead.org, AJvYcCXEqyBv+v++01O4Rzq+km7dt1t9FctqSCwstxHWHKZDgGIZpKa9l0+4y5HrPvcIv4gYnhB300hVaUUNjf6dVmKz@lists.infradead.org
+X-Gm-Message-State: AOJu0YwcrogG4H9hKwrYo8NmCm1payxIPRxuHlD7cGvQ/91c7C04aT5C
+	IdptjC9/ylnnl3gK6EDNJig6JLAB7l7qHfgsVS8dVaCP9QFSYrnX
+X-Gm-Gg: ASbGncvdQJ96gWYBPEwuSzpdF1aPBYLIncU8G/KPrwZqrbGfPDPFXEbilzPXTOBxwyD
+	tIiGo5OwdVoUDPsXOjzLilxpkft+clZXMb8JGQDJShb4fwT5NAaFlC0ngVrU0LpqSd/VNAGBUXd
+	Fuw+umLw1NV36oRLLX9kY5DM4gjpIWIpnXB6a5v+cfuUUoqzpAbg0fx/XqK4SvFeDGrMG2ShdXX
+	Zs8RerDTcDIdQ5mGWUxzLH+B81/t/+L4KtbqBROE3fR4LK08eXuo1MGkT+bpFP0lua0kux7XHF+
+	mJB6TChsQR0pyosHuYu6yDoWAvEJa4H+XRRL+XZmynrMWBVOUXryrwasONqsghm8Z0ze+05RN2z
+	Q2Mm9Yovmrn0+v3Zjs3OkaVy2YA==
+X-Google-Smtp-Source: AGHT+IHAKzbyn3QbO27Y4E/NIYe0sT0rh6l92PwWJFTu6yx26yYGsnbr5xQHCgxMSU5AqBF3VEZhFw==
+X-Received: by 2002:a05:6000:2504:b0:38c:2745:2df3 with SMTP id ffacd0b85a97d-39eaaec7564mr12366347f8f.37.1744714425663;
+        Tue, 15 Apr 2025 03:53:45 -0700 (PDT)
+Received: from localhost.localdomain (host-95-249-95-100.retail.telecomitalia.it. [95.249.95.100])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-39eae963c15sm14199021f8f.13.2025.04.15.03.53.44
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 15 Apr 2025 03:53:45 -0700 (PDT)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Daniel Golle <daniel@makrotopia.org>,
+	Qingfang Deng <dqfext@gmail.com>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Simon Horman <horms@kernel.org>
+Subject: [net-next PATCH] net: phy: mediatek: init val in .phy_led_polarity_set for AN7581
+Date: Tue, 15 Apr 2025 12:53:05 +0200
+Message-ID: <20250415105313.3409-1-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 17/23] drm/mediatek: mtk_hdmi: Split driver and add
- common probe function
-To: chunkuang.hu@kernel.org
-Cc: p.zabel@pengutronix.de, airlied@gmail.com, simona@ffwll.ch,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, ck.hu@mediatek.com, jitao.shi@mediatek.com,
- jie.qiu@mediatek.com, junzhi.zhao@mediatek.com,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
- dmitry.baryshkov@linaro.org, lewis.liao@mediatek.com,
- ives.chenjh@mediatek.com, tommyyl.chen@mediatek.com,
- jason-jh.lin@mediatek.com
-References: <20250415104321.51149-1-angelogioacchino.delregno@collabora.com>
- <20250415104321.51149-18-angelogioacchino.delregno@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250415104321.51149-18-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250415_034829_063876_97F36785 
-X-CRM114-Status: GOOD (  11.99  )
+X-CRM114-CacheID: sfid-20250415_035348_080076_7649DEAB 
+X-CRM114-Status: GOOD (  12.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,37 +109,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 15/04/25 12:43, AngeloGioacchino Del Regno ha scritto:
-> In preparation for adding a new driver for the HDMI TX v2 IP,
-> split out the functions that will be common between the already
-> present mtk_hdmi (v1) driver and the new one.
-> 
-> Since the probe flow for both drivers is 90% similar, add a common
-> probe function that will be called from each driver's .probe()
-> callback, avoiding lots of code duplication.
-> 
-> Reviewed-by: CK Hu <ck.hu@mediatek.com>
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->   drivers/gpu/drm/mediatek/Kconfig           |   11 +-
->   drivers/gpu/drm/mediatek/Makefile          |    1 +
->   drivers/gpu/drm/mediatek/mtk_hdmi.c        |  538 +-----
->   drivers/gpu/drm/mediatek/mtk_hdmi.c.orig   | 1769 ++++++++++++++++++++
->   drivers/gpu/drm/mediatek/mtk_hdmi_common.c |  422 +++++
->   drivers/gpu/drm/mediatek/mtk_hdmi_common.h |  188 +++
->   6 files changed, 2398 insertions(+), 531 deletions(-)
->   create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi.c.orig
+Fix smatch warning for uninitialised val in .phy_led_polarity_set for
+AN7581 driver.
 
-CK, I just acknowledged that a .orig file slipped through and got sent out with
-this patch....
+Correctly init to 0 to set polarity high by default.
 
-Truly sorry for that, can you please fix that up while applying without having me
-send another patchbomb?
+Reported-by: Simon Horman <horms@kernel.org>
+Fixes: 6a325aed130b ("net: phy: mediatek: add Airoha PHY ID to SoC driver")
+Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+---
+ drivers/net/phy/mediatek/mtk-ge-soc.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-Many thanks,
-Angelo
+diff --git a/drivers/net/phy/mediatek/mtk-ge-soc.c b/drivers/net/phy/mediatek/mtk-ge-soc.c
+index fd0e447ffce7..cd09684780a4 100644
+--- a/drivers/net/phy/mediatek/mtk-ge-soc.c
++++ b/drivers/net/phy/mediatek/mtk-ge-soc.c
+@@ -1432,8 +1432,8 @@ static int an7581_phy_probe(struct phy_device *phydev)
+ static int an7581_phy_led_polarity_set(struct phy_device *phydev, int index,
+ 				       unsigned long modes)
+ {
++	u16 val = 0;
+ 	u32 mode;
+-	u16 val;
+ 
+ 	if (index >= MTK_PHY_MAX_LEDS)
+ 		return -EINVAL;
+@@ -1444,7 +1444,6 @@ static int an7581_phy_led_polarity_set(struct phy_device *phydev, int index,
+ 			val = MTK_PHY_LED_ON_POLARITY;
+ 			break;
+ 		case PHY_LED_ACTIVE_HIGH:
+-			val = 0;
+ 			break;
+ 		default:
+ 			return -EINVAL;
+-- 
+2.48.1
 
->   create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_common.c
->   create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_common.h
-> 
 
