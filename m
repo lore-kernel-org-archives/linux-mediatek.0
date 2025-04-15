@@ -4,66 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4CF6C369BA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Apr 2025 07:39:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AE33C369AB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Apr 2025 07:52:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=R/Xwq/YuCy3XA1wByMp5BQ+pr92YGZrlAGA2bO7k9aA=; b=AhtF7w1PNHCkxTYcNYLuxknKgJ
-	+VmwYF/CNgGqb6Qq+Ua/bANc1lY6k0DZfGJ0aR6L5hT6K42lf2fWDlPrjjWH/JHWGKcXaAfV+oaaQ
-	9UblR1jhQhEMON//FzlSZRO5RiZMQOA61XNMuSnmgmC+phD0u7YCTVNaCGOihd3G2ZA0YdEbWA0Rb
-	zJxkuhy7La3MqIGmUK0UP+VCNJuHsIKtSItBg/AgQzTe+RBZ3zw8tQkL7LM778KwHAS7XxXT2l6FB
-	ifQ9qp8S9JHSosJ/W3Z6imQxu5sZTAbnVpPG4+mlHJDJfodPbQ4oAUBsFZPRPD6KxJe6rC+kKdSVb
-	IV/auMRQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=B9lIO30gqRBW0y/a78+ENmC3GbSysBdrk9cFsGss7QQ=; b=zoEifbUW0Lh1qv
+	/7mowGPUi1r+dGXwyKZ7ATjME5YZyS9cYcjQNAwxOn6JNymhkXNUIVipYKieipfhiwk2AmrLWRwi8
+	NQEF/5BpT/YpzxBexb+vp4pbEWZtKzJ4EEw4RxVs6Szkogw2KhcI8RLGGxqS5yItgohp1+E5HS/kp
+	6IkMicrWxcl+6c9lD8td/acslZkm2iT3/SEwW0dCfrE8PPvO1APCum/21bo0JESm2AKz4zqMqbsw4
+	/jsC0VU1244BnWIQ4nwr6gDzQCuX7qT0qzXYjd7ttdH2p2I7+G8ca3Avk5Ichvam7XCBKudIA7VdO
+	0yD8mgOiASmTX8ZvUgFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4aso-00000004poa-3X67;
-	Tue, 15 Apr 2025 07:39:02 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1u4b5O-00000004sqf-1pAE;
+	Tue, 15 Apr 2025 07:52:02 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4ahl-00000004nd6-1zBR;
-	Tue, 15 Apr 2025 07:27:40 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2851E4A5D8;
-	Tue, 15 Apr 2025 07:27:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8CAA4C4CEEB;
-	Tue, 15 Apr 2025 07:27:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744702057;
-	bh=dZQ8SDSY3nzADxdIRyPbZ5ANl2eO50k1qUuqFn6sLA0=;
-	h=From:Date:Subject:To:Cc:From;
-	b=ZIHV8i1W9FGUePD4u+PqfvHLcQbG9YgPnZjc6Z6evvRS4FDVZOJbbn6FxovjxNQmm
-	 23Ms2LpW90vehb9IIMoeatWG6U7o4Q0iuP+9FOipsyO6hyABb4y8RoiR/xNdsVtYMt
-	 mqltHezMSMb1A74MLAzRZdM0xfOC5ZBnpPqzrf/n3UvXZpMDWhCyrqclS0+Uga9N8+
-	 7A0EuiDSqxYWu/vUqw1AssT16yt55qUOdJJvkt5XeWx6pXRzvViVpmP4rtWaA/6Db9
-	 sMol9VqDP62m4LECbplj5zLtjQMpjpzxGDGlPEJNpJ5TjsXx7c3NlJtH5SNQUjT8SL
-	 U+g9S4K9nqLpw==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Tue, 15 Apr 2025 09:27:21 +0200
-Subject: [PATCH net-next] net: airoha: Add missing filed to ppe_mbox_data
- struct
+	id 1u4aqc-00000004pPh-1HG9;
+	Tue, 15 Apr 2025 07:36:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1744702604;
+	bh=Gyqan9yP4T12N6ZMRWgle82MYUjBp6SE0Fd8GLFRa4M=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=OQ3cErnZenuC4mmP4FMwxHNVrjpN86+MlVyREFmpaMcqiJW6/QPaM5zgBvCTGlcRz
+	 +SfMEAGeHUnnHdBxDDG63RKjzzejYguNsvJUaXv6rTrQlMTQDGca9oOFnCRnHrZyCr
+	 VsKCs3qi/vAwzwbxKKBMnlIpo1vlH7wv+LuHwviH3ODapO4eJAsyQ/LUTv2JhPOSLi
+	 75p6CGbfqiCqBxfC40Ri1eUKg2jhuktbjcUPWtKSYyL8tcafGLJszA41FaQONzB9y/
+	 8zmN4vyB8j31+WKo3qwZTId7ip+8GnEgwi69/uGNDKFpgopnMv2fVBlXtp8eFaQ+XU
+	 5BHXEWTRojqTw==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id BDC8C17E0ABE;
+	Tue, 15 Apr 2025 09:36:43 +0200 (CEST)
+Message-ID: <36fe0778-399a-4406-8516-54b968cd9073@collabora.com>
+Date: Tue, 15 Apr 2025 09:36:43 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] arm64: dts: mediatek: mt7988a-bpi-r4: allow hw
+ variants of bpi-r4
+To: Daniel Golle <daniel@makrotopia.org>
+References: <20250412102109.101094-1-linux@fw-web.de>
+ <c8f9f019-a238-47c8-a900-9ca48ce09503@collabora.com>
+ <Z_0AdtyvehR9SHnU@pidgin.makrotopia.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <Z_0AdtyvehR9SHnU@pidgin.makrotopia.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250415-airoha-en7581-fix-ppe_mbox_data-v1-1-4408c60ba964@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAFgK/mcC/x2N0QqEIBAAfyX2uQUVK+lXImKv1msfTkUjgujfT
- 3ocGGZuKJyFC4zNDZlPKRJDBd02sO4UvoyyVQajTKestkiS407IYeicRi8XpsTL7xOvZaOD0Hj
- tnPKDdf0KtZIyV+k9TPPz/AFrMhxAcQAAAA==
-X-Change-ID: 20250414-airoha-en7581-fix-ppe_mbox_data-2f1880f7486c
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250415_002737_532160_0D7C6154 
-X-CRM114-Status: UNSURE (   9.21  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250415_003646_526669_E8FDAC0D 
+X-CRM114-Status: GOOD (  18.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,40 +72,83 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Frank Wunderlich <linux@fw-web.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The official Airoha EN7581 firmware requires adding max_packet filed in
-ppe_mbox_data struct while the unofficial one used to develop the Airoha
-EN7581 flowtable offload does not require this field. This patch fixes
-just a theoretical bug since the Airoha EN7581 firmware is not posted to
-linux-firware or other repositories (e.g. OpenWrt) yet.
+Il 14/04/25 14:32, Daniel Golle ha scritto:
+> On Mon, Apr 14, 2025 at 11:27:23AM +0200, AngeloGioacchino Del Regno wrote:
+>> Il 12/04/25 12:21, Frank Wunderlich ha scritto:
+>>> From: Frank Wunderlich <frank-w@public-files.de>
+>>>
+>>> Sinovoip has released other variants of Bananapi-R4 board.
+>>> The known changes affecting only the LAN SFP+ slot which is replaced
+>>> by a 2.5G phy with optional PoE.
+>>>
+>>> Just move the common parts to a new dtsi and keep differences (only
+>>> i2c for lan-sfp) in dts.
+>>>
+>>> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+>>> ---
+>>> v2:
+>>> - added basic dts for 2g5 variant
+>>> - moved i2c used for sfp-lan to board dts
+>>> ---
+>>>    arch/arm64/boot/dts/mediatek/Makefile         |   2 +
+>>>    .../mediatek/mt7988a-bananapi-bpi-r4-2g5.dts  |   5 +
+>>>    .../dts/mediatek/mt7988a-bananapi-bpi-r4.dts  | 404 +-----------------
+>>>    .../dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi | 403 +++++++++++++++++
+>>>    4 files changed, 414 insertions(+), 400 deletions(-)
+>>>    create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts
+>>>    create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
+>>>
+>>> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+>>> index 58484e830063..a1ebc9aa4ba6 100644
+>>> --- a/arch/arm64/boot/dts/mediatek/Makefile
+>>> +++ b/arch/arm64/boot/dts/mediatek/Makefile
+>>> @@ -22,6 +22,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-sd.dtbo
+>>>    dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-rfb.dtb
+>>>    dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986b-rfb.dtb
+>>>    dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4.dtb
+>>> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4-2g5.dtb
+>>>    dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4-emmc.dtbo
+>>>    dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4-sd.dtbo
+>>>    dtb-$(CONFIG_ARCH_MEDIATEK) += mt8167-pumpkin.dtb
+>>> @@ -107,4 +108,5 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8516-pumpkin.dtb
+>>>    DTC_FLAGS_mt7986a-bananapi-bpi-r3 := -@
+>>>    DTC_FLAGS_mt7986a-bananapi-bpi-r3-mini := -@
+>>>    DTC_FLAGS_mt7988a-bananapi-bpi-r4 := -@
+>>> +DTC_FLAGS_mt7988a-bananapi-bpi-r4-2g5 := -@
+>>>    DTC_FLAGS_mt8395-radxa-nio-12l := -@
+>>> diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts
+>>> new file mode 100644
+>>> index 000000000000..76eca976b968
+>>> --- /dev/null
+>>> +++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts
+>>> @@ -0,0 +1,5 @@
+>>> +// SPDX-License-Identifier: GPL-2.0-only OR MIT
+>>> +
+>>> +/dts-v1/;
+>>> +
+>>> +#include "mt7988a-bananapi-bpi-r4.dtsi"
+>>
+>> This should at least have some different compatible, if not probably also a
+>> different model string - as it's a different device.
+>>
+>> 	compatible = "bananapi,bpi-r4-2g5", "bananapi,bpi-r4", "mediatek,mt7988a";
+> 
+> Imho it doesn't make sense to declare compatibility with the
+> "bananapi,bpi-r4" as the "bananapi,bpi-r4-2g5" is NOT compatible with the
+> "bananapi,bpi-r4". It's a different board and using firmware meant for the
+> "bananapi,bpi-r4-2g5" on the "bananapi,bpi-r4" (or vice versa) will result
+> in a non-working Ethernet port.
+> 
 
-Fixes: 23290c7bc190d ("net: airoha: Introduce Airoha NPU support")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_npu.c | 1 +
- 1 file changed, 1 insertion(+)
+Is this device a BananaPi R4 variant, or is it a completely different device?
 
-diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ethernet/airoha/airoha_npu.c
-index 7a5710f9ccf6a4a4f555ab63d67cb6b318de9b52..16201b5ce9f27866896226c3611b4a154d19bc2c 100644
---- a/drivers/net/ethernet/airoha/airoha_npu.c
-+++ b/drivers/net/ethernet/airoha/airoha_npu.c
-@@ -104,6 +104,7 @@ struct ppe_mbox_data {
- 			u8 xpon_hal_api;
- 			u8 wan_xsi;
- 			u8 ct_joyme4;
-+			u8 max_packet;
- 			int ppe_type;
- 			int wan_mode;
- 			int wan_sel;
+If this is a completely different device, then it's not even a BananaPi R4,
+otherwise this is compatible with BananaPi R4, with a small variation :-)
 
----
-base-commit: 23f09f01b495cc510a19b30b6093fb4cb0284aaf
-change-id: 20250414-airoha-en7581-fix-ppe_mbox_data-2f1880f7486c
-
-Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
-
+Cheers,
+Angelo
 
