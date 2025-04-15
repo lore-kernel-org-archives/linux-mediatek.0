@@ -4,69 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69B39C369B9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Apr 2025 07:53:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 134A4C369B8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Apr 2025 07:57:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZSVm0Sg4JNsS2Z+oM/y7piT/XSs97tEGm0noAA2h7bw=; b=SVLDNUjD65XiF3pqw17bb36z4v
-	W3UpmyC8ttyE/OscOsTLdDAqcpYmGNxFZKyFA56YpdcByYXNff7Xagnt4IMI11j/CrEZa1Sn0Ios+
-	T0q8cPbqHwPH0iTCLgPSI4it1l8E4bIYBh6EOAaBKRr7K0bzWGCyGRBCAqdViej8vP/AjSszSrQ9S
-	FfMqt22jnafNW+tJSr9DRQSfyXDB0WXPo2LHRzY0yGrcNz2ZYdgrdqY/RbQbVTT6Ef6Bn6uMWGZ58
-	ZbNqFJNW1RufMcayOYTJ7IJD8A6Ki1BMIlCU2fSJmG1fhlIZjwo6q0nJIPHZrpxj2nn8I1qKftbkp
-	lS1uBIZg==;
+	bh=M+gAob39nS5ihi78nDHJOLc9y+ZJq108PESH1zUJ2uU=; b=E1UtzM0E8tD2yxY5+Esp1tZXzd
+	p+b8r/OxS0Vlgn9MF7Qe+fZSdihGhw8C0yO9CpucB+hgCkRcvlaIc9HwhCQnr2yhJPw8l0G+vnCFW
+	MdTBBiwoZlfWqIzJKL6BM93IkqDdo6/vtDCP7zYUoDuPCqFK8y0zjIKJdDz5ASiOj/A0QLqT2jIxZ
+	AufP7WULLG2+PNN1f20KJu8cUtJ/+G1T6aN6wZ+KAaXiQAuUjRwBIpiqJrlup+KXAfbPFouzRm5P0
+	MOavmhFX7YJ4B4SdxrsSD7FokbyAEp4wnlZo1VQKXhi0tUhJdjCqHiAjIzQ+XYPvgH0tYtvUc8ssC
+	g/XteJjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4b7B-00000004tC0-1yLc;
-	Tue, 15 Apr 2025 07:53:53 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1u4bAm-00000004tlz-0DAw;
+	Tue, 15 Apr 2025 07:57:36 +0000
+Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4as0-00000004pgl-1G2i;
-	Tue, 15 Apr 2025 07:38:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1744702690;
-	bh=voe72fPOWYDOgKbHC5pT7xXAC4bwfo9UuMDzcL8nkW4=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=jcmq4UsiCrCdB57TvR1j9uL06+uNAWSu32krqKm+keC4y0zXQLoMjN0x06AZAD5WG
-	 pbg9rRGMBM2YLbv+qADCCpO7E+OBB8H/iFh8c5S5Xhgi8XzS8+Sfrm5N+BniqBFuCx
-	 DXoOd0zYqfWuSjpZCQPSXJ5K7eJw9Kpf7Z56v1AudCc/jyizzfXtw3eJncl/rcySMJ
-	 7MkUPGTFis/mCv+LrGeQBM0S2orCbfLrdw0XDdSz38O3lARniX8hdB6Pw4oMNH5vxj
-	 dl9MWULi1K6pHVsYuOpNZRQWVC4Jbp6ZHFWWXyPjo7jcUaVJjgUp3nOpA+4l9UaD/D
-	 uOr8Cnz534Lhg==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AF36017E0CA7;
-	Tue, 15 Apr 2025 09:38:09 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: chunkuang.hu@kernel.org, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: p.zabel@pengutronix.de, airlied@gmail.com, simona@ffwll.ch, 
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de, 
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
- mchehab@kernel.org, matthias.bgg@gmail.com, moudy.ho@mediatek.com, 
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- kernel@collabora.com, sebastian.fricke@collabora.com, 
- macpaul.lin@mediatek.com
-In-Reply-To: <20241218105320.38980-1-angelogioacchino.delregno@collabora.com>
-References: <20241218105320.38980-1-angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v1 0/3] MediaTek MT8188 MDP3 Enablement
-Message-Id: <174470268964.14740.2655102858243748239.b4-ty@collabora.com>
-Date: Tue, 15 Apr 2025 09:38:09 +0200
+	id 1u4azV-00000004r5M-3XRq
+	for linux-mediatek@lists.infradead.org;
+	Tue, 15 Apr 2025 07:45:59 +0000
+Received: by mail-lj1-x22c.google.com with SMTP id 38308e7fff4ca-30db1bd3bddso51147651fa.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 15 Apr 2025 00:45:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1744703156; x=1745307956; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=M+gAob39nS5ihi78nDHJOLc9y+ZJq108PESH1zUJ2uU=;
+        b=lTAjF7yg/yuIao2MwZe8EUkydVFFiV9U8wv5lzhmGYbN9t8csfiV2TYkUv8rYhQUdP
+         2djXdLhAok+TThvRy4BCURPnyoeTXaInyx//O/JTqADEuS/Tn6YTfLhu1WJvMxFx/+Nz
+         2GstnejW9ZujAGKe3JKeHTfb6Uj1t+/SE6SI3/aIX+haYbIKGDlMCo0Bh9zIx8fpMc63
+         BlCbXOFWuwg5vwhTMMDxlKXwnzw5GhRfe3tF7Z/GlciQOkb7YIjqfBvdS1qSbaGBZ8/l
+         MkWaItvwuAca4yC7POB+4JNvSWwuUFDslhVddsxW/Pc3fZGP+SNmYJPoDVVFCOHCJPgu
+         EkNQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1744703156; x=1745307956;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=M+gAob39nS5ihi78nDHJOLc9y+ZJq108PESH1zUJ2uU=;
+        b=E9fCh0sWwq8wuPEYWA1lm785QRmV45eo9J0gihKfHCOKJh3v2PlRH7Ye90+0Q7/1Ml
+         2e5uUCt27+FWGKGVTEyKCrLjV8+mx1InHmhApb9zBB4qlGObqtC0C8fROeGcN8vjuxNB
+         Cfabwb6GgdUHc9iyQMZ/fUE8vZp7VHdt8Iv6tfVWa4oQsaX4abhIofy1oomQ48oiOT2r
+         IzzoJ9dvg+Twj22ek6+CrF3Xxd2FfsOII5Qg3e/0h2BPpJpA07WTmg8Qs3jkGOE7DDEn
+         wkcgozgkHh5JkdLE7bsytWogALNFpN1isuK29JhT/tzD42LqJorUVAszxEbUm4dzyqVo
+         U+jQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWcKU+aMBqyIYuEOYFaCKkTAKVy2HHwvTmofGWtH3lUVvyHw2gkEQgmgccwUO1+SaIsxWOKCOgusl8bYVqwWQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxg1g3Bp2MosoXovhekZk9rH33VZyJiOPtQ+Uurp2xmXTD6lqR7
+	veP2MTQy/69KTz4OyGC+6OP0MlFOjICmx1mrwoTZpy8ziQXASI/xpvg5ojH/ZHpQi99g8BROQk2
+	HF4TQBhtOD8zzFf0cr2wNyaBfloZlUmgmEtuYqA==
+X-Gm-Gg: ASbGncv/NvMEYS30urGMLM/5ebc37RnUJ321eZxJus6Vy2CVDRiN7dfyuEC1mev+vQf
+	5bjX/RDfPoTTItwhIVtpwzwHWGkfb4XJihN6zCFM5wxkdMu1PFU5dzInEDDQbouWjly6BTv01Lu
+	OOrLRnJARMH6uvdqWgdzyQwg==
+X-Google-Smtp-Source: AGHT+IFwAAfaAAzhBH2j7GeY25vZiQ/zwPAChqOV+UPITlwOewIZwKKaiN+msHLAb3VJXQqUL+3/Bv4el3h6PxyLHRE=
+X-Received: by 2002:a2e:ab0c:0:b0:30b:edfc:5d8a with SMTP id
+ 38308e7fff4ca-31049509fd6mr47883131fa.0.1744703156150; Tue, 15 Apr 2025
+ 00:45:56 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.14.2
+References: <20250329024533.5279-1-ot_chhao.chang@mediatek.com>
+In-Reply-To: <20250329024533.5279-1-ot_chhao.chang@mediatek.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Tue, 15 Apr 2025 09:45:45 +0200
+X-Gm-Features: ATxdqUH5lAyNEtt8NGqYFFPuzudR5N372Pir1OcHVfPuTb8kB94RThH28hJgscw
+Message-ID: <CACRpkdajcn9XCy1L=EKEodTQRnaWqe3zdD4+dmt7rBoKS_n=Bw@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: mediatek: Fix the invalid conditions
+To: Hao Chang <ot_chhao.chang@mediatek.com>
+Cc: Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Wenbin Mei <wenbin.mei@mediatek.com>, Axe Yang <axe.yang@mediatek.com>, 
+	Qingliang Li <qingliang.li@mediatek.com>, Hanks Chen <hanks.chen@mediatek.com>, 
+	Chunhui Li <chunhui.li@mediatek.com>, linux-mediatek@lists.infradead.org, 
+	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250415_003812_486961_FEAEFF4E 
-X-CRM114-Status: UNSURE (   6.17  )
+X-CRM114-CacheID: sfid-20250415_004557_896485_5740380F 
+X-CRM114-Status: UNSURE (   7.41  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,31 +100,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 18 Dec 2024 11:53:17 +0100, AngeloGioacchino Del Regno wrote:
-> This series adds the necessary bindings and devicetree nodes to enable
-> the entire Multimedia Data Path 3 (MDP3) macro-block, found in MediaTek's
-> MT8188 SoC.
-> 
-> This was tested on a MediaTek Genio 700 EVK board.
-> 
-> AngeloGioacchino Del Regno (3):
->   dt-bindings: display: mediatek: Add compatibles for MT8188 MDP3
->   dt-bindings: media: mediatek: mdp3: Add compatibles for MT8188 MDP3
->   arm64: dts: mediatek: mt8188: Add all Multimedia Data Path 3 nodes
-> 
-> [...]
+On Sat, Mar 29, 2025 at 3:45=E2=80=AFAM Hao Chang <ot_chhao.chang@mediatek.=
+com> wrote:
 
-Applied to v6.15-next/dts64, thanks!
+> The variable count_reg_names is defined as an int type and cannot be
+> directly compared to an unsigned int. To resolve this issue,
+> first verify the correctness of count_reg_names.
+>
+> https://lore.kernel.org/all/5ae93d42e4c4e70fb33bf35dcc37caebf324c8d3.came=
+l@mediatek.com/T/
+> Signed-off-by: Hao Chang <ot_chhao.chang@mediatek.com>
+> Signed-off-by: Qingliang Li <qingliang.li@mediatek.com>
 
-[1/3] dt-bindings: display: mediatek: Add compatibles for MT8188 MDP3
-      commit: 2971de063fa56c18b2720ab19bdebca23cd96471
-[2/3] dt-bindings: media: mediatek: mdp3: Add compatibles for MT8188 MDP3
-      commit: cfb00dfa1b778a8037faf6973cca226e5ad4f45a
-[3/3] arm64: dts: mediatek: mt8188: Add all Multimedia Data Path 3 nodes
-      commit: f0935480253ede5405045a4e733f4476343cbb91
+Patch applied as nonurgent fix.
 
-Cheers,
-Angelo
-
-
+Yours,
+Linus Walleij
 
