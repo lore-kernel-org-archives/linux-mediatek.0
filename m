@@ -4,97 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DBDEC369AB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Apr 2025 11:39:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65FEAC369AB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Apr 2025 11:43:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=uQ/sNjG6+jopWKiMcxNEdpFMYBYSU6NzwaXfhYsGhCM=; b=MIZrj3BUKP/TW20DZCXyBeGZzy
-	QYMXrVeoQNnTY+43ll2eLcsclcoXFVu5cZPIFJS52x3d08HN1+N1jT6U2v8XhCZMBc+sBh98Zn3Pc
-	/PwN6FS78qZSlqTpf05kGSas6avSpc/MCMU0QPMqNqd2+X7/v/4VyKNvSg2eir8Udu3D+xQsErfQ2
-	nyhUftLCpZQipdIYxZLFFhTIdfowp1Nw6TCJJ1WNIIH8XB/XvuhpgxK1ehKbS8TN+brFwq6CNVMU3
-	26Nna0z0/aIH1YpQ6bmhvAuJqYmQz6wcvDKhWoef0A4obQNo8vo3Yl2w8RXCjyC5N1+j4zS/rVre3
-	NuzgQPWw==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xBqbHZcs8CPykMaJ/HWYWA6kXU7/l1yWnnmjytgc6vo=; b=bsNjuWzmS+MNRVgBdpu7G4Bagk
+	5YCv+XCdIIWvyOlBGP0OxonfT4ddARmm1YBD8WEAeXikrxS7/3VGYqrveo6tIqyoi7D47KKY7zesp
+	JpIqaDJ1FG/jYCnGgGqMnu/zty2ytx+d/SKnCNi0Qd2LlRgk4qPgoKZHvLf02FVPjTpvZIbVcL2nD
+	SFjjJDYN57r3j583Gwpfm1T2dWnAUVJzVcz3pK873hYeRQ8eWVoM6/WguQgw9nLOTfcgOKP/aEPSG
+	XERPVLrZV8IgJSD6HjJsvSOhNrdmfXZtdpBX7woZIcfDyB9EfM3pwy7Vsu1o4SkUKPDbBVN0VZNuY
+	udPoDppQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4edO-00000005aDT-2GEJ;
-	Tue, 15 Apr 2025 11:39:22 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1u4eh0-00000005b56-1sBh;
+	Tue, 15 Apr 2025 11:43:06 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4dvI-00000005QJb-0BVi;
-	Tue, 15 Apr 2025 10:53:49 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-39c0e0bc733so4630950f8f.1;
-        Tue, 15 Apr 2025 03:53:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744714426; x=1745319226; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=uQ/sNjG6+jopWKiMcxNEdpFMYBYSU6NzwaXfhYsGhCM=;
-        b=PO5ctOh6UotiVOxxXwqDiOH18gd2BSRBSXVlOW2jksa0k+YreSyB5L/wiHTSW3OKhA
-         wStPB+GdRvCiMlN50Ulg5kFUEr9lEMtDipKn16mKuq41cy+NlCOPbIizuE/Z6HpH9mVm
-         wc3uqOE2t2s1OfdyWEQtuumIYWdu7Fl72vv8zoCsVHF8FOI8Zs6wVxsaAuKxoruwDHR2
-         bqvDAascklCXUcpyNtkk27k4TGYvj88cJbEB/VPCL9rrd/hlufTqtI2LY1FV10UNJPIp
-         DrAccymtC8nIJnnzGuCHg72YO/6xXHX1TJMua533Y6fhdjfZzced+7TtllkalIY7fAgm
-         b74w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744714426; x=1745319226;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=uQ/sNjG6+jopWKiMcxNEdpFMYBYSU6NzwaXfhYsGhCM=;
-        b=FDy5c183Q5IePVGKEK1UemcY92PD3nmQ7I3lPkHzHcg/HXeNH+97Ksbt4tcQWkFwZH
-         Y7tuMQA4PP2LavolMq05AImuIqxELRl+oaQGasF7tg0IRNqhE/k+T3jnKA4wczZ4cLAv
-         wB7iVJfIsCU4yaqo7hqEBDPuNXYZwIKMyn09JgIg6l9TNAuG8/HbXs4Uecavd1gTVD9h
-         HBGf07zTs9FTpa8SMaqL2SFy431/XdSawFwzk3br1ez2jx3qNHv7Xop+Q60KHNWlmMsM
-         vPD0GWp+iX3sgrU7sDMYLbyDouuoP4YQYcsQi2itlR/4WcldVBnmdrTW6p4A5an6JVCJ
-         TyOQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWGKoWFLJFKkeLcb2U9q3FWLL0QqYSjq+58Su5VeTyY+sAI6+ep+NArYbUK/UvM5zQdC/YQzlKS1JoE1dQfRvU=@lists.infradead.org, AJvYcCXEqyBv+v++01O4Rzq+km7dt1t9FctqSCwstxHWHKZDgGIZpKa9l0+4y5HrPvcIv4gYnhB300hVaUUNjf6dVmKz@lists.infradead.org
-X-Gm-Message-State: AOJu0YwcrogG4H9hKwrYo8NmCm1payxIPRxuHlD7cGvQ/91c7C04aT5C
-	IdptjC9/ylnnl3gK6EDNJig6JLAB7l7qHfgsVS8dVaCP9QFSYrnX
-X-Gm-Gg: ASbGncvdQJ96gWYBPEwuSzpdF1aPBYLIncU8G/KPrwZqrbGfPDPFXEbilzPXTOBxwyD
-	tIiGo5OwdVoUDPsXOjzLilxpkft+clZXMb8JGQDJShb4fwT5NAaFlC0ngVrU0LpqSd/VNAGBUXd
-	Fuw+umLw1NV36oRLLX9kY5DM4gjpIWIpnXB6a5v+cfuUUoqzpAbg0fx/XqK4SvFeDGrMG2ShdXX
-	Zs8RerDTcDIdQ5mGWUxzLH+B81/t/+L4KtbqBROE3fR4LK08eXuo1MGkT+bpFP0lua0kux7XHF+
-	mJB6TChsQR0pyosHuYu6yDoWAvEJa4H+XRRL+XZmynrMWBVOUXryrwasONqsghm8Z0ze+05RN2z
-	Q2Mm9Yovmrn0+v3Zjs3OkaVy2YA==
-X-Google-Smtp-Source: AGHT+IHAKzbyn3QbO27Y4E/NIYe0sT0rh6l92PwWJFTu6yx26yYGsnbr5xQHCgxMSU5AqBF3VEZhFw==
-X-Received: by 2002:a05:6000:2504:b0:38c:2745:2df3 with SMTP id ffacd0b85a97d-39eaaec7564mr12366347f8f.37.1744714425663;
-        Tue, 15 Apr 2025 03:53:45 -0700 (PDT)
-Received: from localhost.localdomain (host-95-249-95-100.retail.telecomitalia.it. [95.249.95.100])
-        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-39eae963c15sm14199021f8f.13.2025.04.15.03.53.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 15 Apr 2025 03:53:45 -0700 (PDT)
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Daniel Golle <daniel@makrotopia.org>,
-	Qingfang Deng <dqfext@gmail.com>,
-	SkyLake Huang <SkyLake.Huang@mediatek.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Simon Horman <horms@kernel.org>
-Subject: [net-next PATCH] net: phy: mediatek: init val in .phy_led_polarity_set for AN7581
-Date: Tue, 15 Apr 2025 12:53:05 +0200
-Message-ID: <20250415105313.3409-1-ansuelsmth@gmail.com>
-X-Mailer: git-send-email 2.48.1
+	id 1u4dyh-00000005RE8-20HG;
+	Tue, 15 Apr 2025 10:57:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1744714638;
+	bh=I4v2Dk3UXXCfyD10RjI9laeeZkWMimGScChJK688VCE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=os9JNntIE8193OeW6CQMrCMc8/CUvgVYvmEzYGxuN95MMzFM5t5niYaZgYnfFl7W0
+	 TqKcv5Nug8q8ZKutEzdoSAtZIpJdETZZa71/3h3Dw6lai6zmplII4OphofJwgx0VJk
+	 W4yx5o1p8Doh0ocJoy84PFrtW2EYQ2EHEIkHTQyxX3nJJMwoDITgiOI5bmKJeQhUUQ
+	 OlODgGe8c1XdZN69zlA/Fghhlicp8ZBcD2u/oakoDIeZAAfMq4fGMXUysc24FejvWx
+	 rlZxRPFzs/xZnzlw8p+w2sm44d4QxsuBEsA7iUkTf6CIbZmpvz4bZGPiEeUbYMjwhq
+	 6ACYLBwKhzM9Q==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 590C017E03B6;
+	Tue, 15 Apr 2025 12:57:17 +0200 (CEST)
+Message-ID: <71cc71a2-7872-419f-8413-dba3b7313894@collabora.com>
+Date: Tue, 15 Apr 2025 12:57:16 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] arm64: dts: mediatek: mt7988a-bpi-r4: allow hw
+ variants of bpi-r4
+To: frank-w@public-files.de, Daniel Golle <daniel@makrotopia.org>
+Cc: Frank Wunderlich <linux@fw-web.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org
+References: <20250412102109.101094-1-linux@fw-web.de>
+ <c8f9f019-a238-47c8-a900-9ca48ce09503@collabora.com>
+ <Z_0AdtyvehR9SHnU@pidgin.makrotopia.org>
+ <36fe0778-399a-4406-8516-54b968cd9073@collabora.com>
+ <D7682B25-5BEF-46D1-A5FD-32D2AAF84EFF@public-files.de>
+ <8fe762e3-a9eb-4a9c-81a2-b7a10539b615@collabora.com>
+ <48DEC6CC-A81B-4DD7-9F55-CA1179FBA2F2@public-files.de>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <48DEC6CC-A81B-4DD7-9F55-CA1179FBA2F2@public-files.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250415_035348_080076_7649DEAB 
-X-CRM114-Status: GOOD (  12.32  )
+X-CRM114-CacheID: sfid-20250415_035719_665373_BBEBC5FD 
+X-CRM114-Status: GOOD (  20.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,41 +85,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix smatch warning for uninitialised val in .phy_led_polarity_set for
-AN7581 driver.
+Il 15/04/25 12:30, Frank Wunderlich ha scritto:
+> Am 15. April 2025 11:56:37 MESZ schrieb AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>:
+>> Il 15/04/25 10:07, Frank Wunderlich ha scritto:
+>>> Am 15. April 2025 09:36:43 MESZ schrieb AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>:
+>>>> Il 14/04/25 14:32, Daniel Golle ha scritto:
+>>>>> On Mon, Apr 14, 2025 at 11:27:23AM +0200, AngeloGioacchino Del Regno wrote:
+>>>>>> Il 12/04/25 12:21, Frank Wunderlich ha scritto:
+>>>>>>> From: Frank Wunderlich <frank-w@public-files.de>
+>>>>>>>
+>>>>>>> Sinovoip has released other variants of Bananapi-R4 board.
+>>>>>>> The known changes affecting only the LAN SFP+ slot which is replaced
+>>>>>>> by a 2.5G phy with optional PoE.
+>>>>>>>
+>>>>>>> Just move the common parts to a new dtsi and keep differences (only
+>>>>>>> i2c for lan-sfp) in dts.
+>>>
+>>>>>> This should at least have some different compatible, if not probably also a
+>>>>>> different model string - as it's a different device.
+>>>>>>
+>>>>>> 	compatible = "bananapi,bpi-r4-2g5", "bananapi,bpi-r4", "mediatek,mt7988a";
+>>>>>
+>>>>> Imho it doesn't make sense to declare compatibility with the
+>>>>> "bananapi,bpi-r4" as the "bananapi,bpi-r4-2g5" is NOT compatible with the
+>>>>> "bananapi,bpi-r4". It's a different board and using firmware meant for the
+>>>>> "bananapi,bpi-r4-2g5" on the "bananapi,bpi-r4" (or vice versa) will result
+>>>>> in a non-working Ethernet port.
+>>>>>
+>>>>
+>>>> Is this device a BananaPi R4 variant, or is it a completely different device?
+>>>
+>>> The only difference is that sfp-lan is replaced by RJ45 socket with mt7988 internal phy.
+>>>
+>>
+>> Perfect, then:
+>> - The only difference is one routing
+>>    - The base board is the same
+>>    - Same hw project
+>>      - The two machines are compatible with each other
+>>        ...bar one difference
+>>
+>> ...then the compatibles shall be as I said before :-)
+>>
+>>>> If this is a completely different device, then it's not even a BananaPi R4,
+>>>> otherwise this is compatible with BananaPi R4, with a small variation :-)
+>>>
+>>> Sinovoip now announces a R4Pro with some more changes (e.g. an external 2.5g switch),but we have no detailed shematic yet. It looks they also plan a R4lite which is based on different SoC (afair mt7987),but this is for sure different device (and so not using this bpi-r4.dtsi).
+>>
+>> In that case, R4Lite shall not be compatible with R4, as the name may be the
+>> same, but in practice it's a different machine.
+>>
+>>>
+>>> But basicly all are named BPi-R4. I guess R4Pro will also get own dts as too much changed.
+>>
+>> If R4pro is a redesign of the R4 board, that would not be compatible, as it
+>> would not be the same base design; otherwise, I'm sure you have well understood
+>> how it works for the compatibles, anyway :D
+> 
+> Yes, should i use 3 const in the binding (as i do not expect another hw variant of current R4) or still enum for the first compatible?
 
-Correctly init to 0 to set polarity high by default.
+Use 3 consts please :-)
 
-Reported-by: Simon Horman <horms@kernel.org>
-Fixes: 6a325aed130b ("net: phy: mediatek: add Airoha PHY ID to SoC driver")
-Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
----
- drivers/net/phy/mediatek/mtk-ge-soc.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+Besides, if a variant comes up later, we can always change the first const
+to an enum, so no worries.
 
-diff --git a/drivers/net/phy/mediatek/mtk-ge-soc.c b/drivers/net/phy/mediatek/mtk-ge-soc.c
-index fd0e447ffce7..cd09684780a4 100644
---- a/drivers/net/phy/mediatek/mtk-ge-soc.c
-+++ b/drivers/net/phy/mediatek/mtk-ge-soc.c
-@@ -1432,8 +1432,8 @@ static int an7581_phy_probe(struct phy_device *phydev)
- static int an7581_phy_led_polarity_set(struct phy_device *phydev, int index,
- 				       unsigned long modes)
- {
-+	u16 val = 0;
- 	u32 mode;
--	u16 val;
- 
- 	if (index >= MTK_PHY_MAX_LEDS)
- 		return -EINVAL;
-@@ -1444,7 +1444,6 @@ static int an7581_phy_led_polarity_set(struct phy_device *phydev, int index,
- 			val = MTK_PHY_LED_ON_POLARITY;
- 			break;
- 		case PHY_LED_ACTIVE_HIGH:
--			val = 0;
- 			break;
- 		default:
- 			return -EINVAL;
--- 
-2.48.1
+> 
+>> Cheers!
+>>
+>>>
+>>>> Cheers,
+>>>> Angelo
+>>>
+>>>
+>>> regards Frank
+>>
+>>
+> 
+> 
+> regards Frank
+
 
 
