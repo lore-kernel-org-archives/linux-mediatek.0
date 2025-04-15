@@ -4,76 +4,176 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A7E6C369B5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Apr 2025 14:48:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79E39C369AB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Apr 2025 16:27:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ih162YHjO+futTLMvQ90LXbwI/0tV/yvLe/GkW8W1p8=; b=yy2USHNbzuK5C+cauUEKIuz66b
-	XpqJxuN0JhJg55O3FvAZ6tLn3mCjjWI/mAQko7yrNDxuQsexmmwTbC+0MUegnijOFGp4CnAogi7QJ
-	dwgUEcmoHv0DK8Ylryoppa4BB+D4ZSqHL5nKEbP1vdi7kCh3tUJdIaU31WZP4MVmURrJHDvAH5S5G
-	94OJK4XXNKLggWhdcU0s4dZktA9OJTqo5tHMenPoueoVGYCMSAY22kPOeZBdXEPD9PD+8+o5VQeUY
-	qXIHXZxYU7Q0F56qXyrufTPhVmC+mPEpoZJgTQhECQCECQS5mQdZqEi/qOV+wQC62JDLLsJMYCeR5
-	I9byVvJQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Subject:To:From:Cc:Date:Message-ID:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=HHLYkhy4of8I51P+Yzfjhv/a3Ltk2KWEHxYJUkSLnsw=; b=tvlstzq+mWKpFxEIjDhU2UB89g
+	TO5sXJ2zrqPcRX1yc9Hhgy418EYTyqT8ye2pP9oO3cx/BLL40nfNS8k1u4mECYu9jSgYMLvMs0uqQ
+	6CcTWah0NYFG5dYlew+r3ve1AjBEjSfovDJxyMN4rYLnAxpBUOEgTq3lOqS/TBhmwYdrcd3v+6Cfm
+	c0ck5sFbRN0/JezIiK8Xpfb6ia+BL+n4wEN1tqm9yZs8vU7gunGKaAQEmZLz1WOkOBLX8rfuOwoBe
+	5nYG+2DQrkUQY1ag5n1QoCL5DHZQNQOzWHvVt9Yd04mhUXtLkcx5ECZaEzdLlgBfb8NnRgBnTHN7a
+	Rwf/QKpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4haZ-00000006920-0ap4;
-	Tue, 15 Apr 2025 14:48:39 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1u4j8Q-00000006PYn-1ZYA;
+	Tue, 15 Apr 2025 16:27:42 +0000
+Received: from mail-japanwestazolkn190100000.outbound.protection.outlook.com ([2a01:111:f403:d406::] helo=OS0P286CU011.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4hYf-000000068jO-0Ln6;
-	Tue, 15 Apr 2025 14:46:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1744728399;
-	bh=wuKlZj6Aoilb/BQZMcgIKBY0tDRSbY8JgYY0fnGBOSk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=nlBrnwjLKqzxmN4C1Z7HmwFU/5GgsDxkAlTCNoFm50iWatYZx+V7+wZqDYS9bSPD8
-	 5/Z9bP6jqtl+2cqxLYbNKRWsb8ZUVwv00HlY68ZfsKkWXOorq2aQ7IF4QYm0BCkcwx
-	 4N/p8vF2i49AfZsSSrUt4iLI1R2DX6pvPBllkHfo/iEaihZAUCVHmMtT/h/q5rSlf9
-	 wyj6+uHm6EL+NQev4v1Hajb9yE6DQqPpQ63phvfb+reEFbst9dx2xirEZG6IaRnJI4
-	 LfEj0MW9j0e7OrsQE6jxFqpGFhzpzJ7bvT1uZPT2+eouQmfF2m6Tu9hxdeRoXglOLy
-	 UyrexcyQtC3Qg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0DC2617E1134;
-	Tue, 15 Apr 2025 16:46:37 +0200 (CEST)
-Message-ID: <d38921cc-a565-4a79-9ecb-bfba85c3ab25@collabora.com>
-Date: Tue, 15 Apr 2025 16:46:37 +0200
-MIME-Version: 1.0
+	id 1u4ia5-00000006K0j-05yj
+	for linux-mediatek@lists.infradead.org;
+	Tue, 15 Apr 2025 15:52:14 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=rjDV60ADmcwqFo96jKhPGmrqYJOEPoY4iuZJ9UycfqCpFXlid9cKpHugkOWJe5Xy8pY+ayFZH/16RVj/8RMDiSic4QZnNaCIT6xQ3wCLB2D0tYlTspjBXX6yYukOuH1IfY07F6RWJkiykz815cKIbWZ5WWQtFDMrhm8jaY7L8bU3a4ew/zfbIctrf5dlvE/FGpjIVAAbXPmLmusNNasfZMfOeMRobfKni8CXKe8KpRlf1VEkQ6skhqvAWI4WbM5HltyZm6P0VV5WiiKfEZg6WDBOOFbEOrQJZdnDLAFi6YgQWWtVpFK5hn1wnKUyabs4HGndABdqY2uBsIBjI6H7CQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=HHLYkhy4of8I51P+Yzfjhv/a3Ltk2KWEHxYJUkSLnsw=;
+ b=AL84GwJf2XrYZ641ENoBuZviwud7pQkCWX6fFXU983j5BDAVkhu8NBiGXugD150n/p14W3hZgk3uRRhJWCdR1YxiWtvMFd5ud3mgRCgOwXJkshgGM+Ml5KyNAQrc/Pk+4sPf6cSfQFP5YEA8BL/FV5wBumYAEkL8zIxzRFnz825CR6moKjYHSTPHmlf7EcAn8HDTK/0eybp96TNjRXW5jrVM+Zeb7oGUF/79VBtweaG4qJSjqkSJFEqNjywryu9x36sHtw2swVi0Re9g58D9f0jfHY6RLG6r2oy0/XBQln/7EIcvkV7Gdq8rj/tSpJFXomQKqgq3asjBUiJjMsQgow==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=HHLYkhy4of8I51P+Yzfjhv/a3Ltk2KWEHxYJUkSLnsw=;
+ b=eSKuHHw1f2PFM6KQ8BnpZrWMlcdHVFPpqGmmytlI15XQ14fb1iY7k5mCp27CnMci3RqXR47ozoZWHt4fod27UBRRoPuoDWkMcPmcQPngHM6u34K/wOeuJrjqWKvvocZu9HObyHrVuut2fhq/fYagMUXAr8fqowuTgl6mBSNXAFu6MMn+h08EdxcYOkKz45yv2i4G0wrzTORl85HBeT3CtFblZZVZV0u6RBVEArbgCSze59FEasUc8h3lJ+7FvLRzKNRprZoLBEqVvg9HQ/bSoFeJkvP37ev5IjkS2aUE3OIxjZEayItCL9x7nHHzcEnqC40Be6GFDg1Q/9/LXB0cTQ==
+Received: from TYCPR01MB8437.jpnprd01.prod.outlook.com (2603:1096:400:156::5)
+ by TYCPR01MB6319.jpnprd01.prod.outlook.com (2603:1096:400:7f::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8632.36; Tue, 15 Apr
+ 2025 15:52:02 +0000
+Received: from TYCPR01MB8437.jpnprd01.prod.outlook.com
+ ([fe80::83e7:751f:f3af:768f]) by TYCPR01MB8437.jpnprd01.prod.outlook.com
+ ([fe80::83e7:751f:f3af:768f%3]) with mapi id 15.20.8632.036; Tue, 15 Apr 2025
+ 15:52:01 +0000
+Message-ID: <TYCPR01MB8437DD90C8825B785787C58298B22@TYCPR01MB8437.jpnprd01.prod.outlook.com>
+Date: Tue, 15 Apr 2025 23:51:56 +0800
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 2/3] drm/panel: startek-kd070fhfid015: add another init
- step
-To: Alexandre Mergnat <amergnat@baylibre.com>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Jessica Zhang <quic_jesszhan@quicinc.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-References: <20231023-display-support-v8-0-c2dd7b0fb2bd@baylibre.com>
- <20231023-display-support-v8-2-c2dd7b0fb2bd@baylibre.com>
- <d70b62f8-e24e-4a10-8c6b-18d2e19f1337@collabora.com>
- <fb72f1f5-dc94-4e33-a20c-d46a081091bc@baylibre.com>
- <1ed38e6b-8d43-4cbc-9c27-58ec3c0e4dbc@baylibre.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: wiagn233@outlook.com
 Content-Language: en-US
-In-Reply-To: <1ed38e6b-8d43-4cbc-9c27-58ec3c0e4dbc@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+From: Shengyu Qu <wiagn233@outlook.com>
+To: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Sean Wang <sean.wang@mediatek.com>
+Subject: MT7927 support?
+Autocrypt: addr=wiagn233@outlook.com; keydata=
+ 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
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="------------S75HCA80WGt81gqe0OTh9JsF"
+X-ClientProxiedBy: SI2P153CA0028.APCP153.PROD.OUTLOOK.COM (2603:1096:4:190::9)
+ To TYCPR01MB8437.jpnprd01.prod.outlook.com (2603:1096:400:156::5)
+X-Microsoft-Original-Message-ID: <3223f9bc-6c36-4f37-8301-b293e6f2024a@outlook.com>
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: TYCPR01MB8437:EE_|TYCPR01MB6319:EE_
+X-MS-Office365-Filtering-Correlation-Id: f3e9e3ee-5729-4887-b88c-08dd7c35763d
+X-Microsoft-Antispam: BCL:0;ARA:14566002|5062599005|461199028|12121999004|8060799006|19110799003|5072599009|7092599003|15080799006|6092099012|13095399003|440099028|3412199025|26104999006|26115399003|1710799026;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?DduE3v/YQ6TYHPQhploJlaUnPht1ag/m2pI272i5XM+wvBApZtgd30gPcxfK?=
+ =?us-ascii?Q?2VoFL+At6+sAtt6PzDf+WSjX85GROTCYzUqi/elfDzj5neenvPosw1yNWsBm?=
+ =?us-ascii?Q?/T9luldIZDubFC+8d29cD3pfQhGVB1tb5SiMOZ35m2jERFaj1ChNPpB377RM?=
+ =?us-ascii?Q?ziwJ5d2vzgM40kRleX+iPCQpn9gCij9a2aWmEvH/HZmsDHNDdi534ShVBfW+?=
+ =?us-ascii?Q?PGxh2CuenFoZ08o7iP9XTYQ1itRiau3wOtLygYl9QYtayUCEbWh1/uS8dH30?=
+ =?us-ascii?Q?fjMDQthinY5/I3qn4WwI0PI6CwzYSNyM4IWCHAdG6BtRc+/7YEkhpzPzHacz?=
+ =?us-ascii?Q?V7FSycASFoLIRcTIIqYfV8mOdfnUJh5cBTA+08jXDDvdUpR1HCc04gg47AUL?=
+ =?us-ascii?Q?lnPJlhtG94GA5ceRLqDHP7w8PHFbgo6K4B/r1p/md6xxtO5bn3jauNz/jMZK?=
+ =?us-ascii?Q?VvIUolLCVtz9LLPsBSfbq2YTLxWXqBQguHc9lKQMFprVW2OIwwmnEDdYinsG?=
+ =?us-ascii?Q?hmqSpgTIS2FL39zyHGysJkAdiV10d2Elacx1MevN2BMQgFnMgIhA+ePmeG83?=
+ =?us-ascii?Q?Xp5L8/T0HLM6OsLA1uAcmX925nJ25ftEYbSXZa5oVZjIyPOerEgr5/1sGd1Q?=
+ =?us-ascii?Q?HX4GKQQ08ms278RbUvJD9cTgZU8+4xWDhnvxBs5dSEVsK6hh2c5/Qdp6HTpa?=
+ =?us-ascii?Q?/c52f3Ss2ZLa07d3zikoSzE/YbeeLntODXRe9ek4qNCTkGvKJagUKh0YAhPu?=
+ =?us-ascii?Q?iyG36MB4Mlk+WCP40XCrecAfsGeXfbXYB1GyM/yfGURs45bFZ4h2puj2baLf?=
+ =?us-ascii?Q?IICxV2xJldMyIwqiuHNEw0UpJKbACjC3waoCymgL43De5UoCtXZz0sTFB1lk?=
+ =?us-ascii?Q?/KGOS0HTnHf3xzBA7Xs8hYiRUFxqnvXqKJTrLRr8/22B8yW5LhmmGws2QZgA?=
+ =?us-ascii?Q?dxsV4BXfVCzJpCUMUjfTeMUaYE2jNn04x9XY2Eyl0fnZ+d9uwTtW5l3xCwn3?=
+ =?us-ascii?Q?Hfj5v2QSo1sZ/FJpUzJndw1efk2yxMMoxAya6VZ70m8Hrtu3HC7S3bXT/6QE?=
+ =?us-ascii?Q?w+NDOvfUzpz65Dxz76dDc4/JM3zyAwBnH1kvZM4mxbxcCHrU1MtJB5vztg2L?=
+ =?us-ascii?Q?eEQ83gmEbycFKvNmqZNmnT/72mkyCPIPri2hUD8TYFiPPPQMP7r7kdC/NU20?=
+ =?us-ascii?Q?/zSiq/poIC/iLK28I6m3yflzrPL17OV43gpKmf9qwmxQPuGp2rF5DEo4/hgb?=
+ =?us-ascii?Q?M23RXyL3wbLW0rv9ipTugo/oGeEHMnjHiZA/5/DadzahY8rkGfZfcL5I/9+k?=
+ =?us-ascii?Q?ouTKHupyeZ+c5EM9RqDIbTtqykQMQxJR7O3ZGSJPFyZZsw=3D=3D?=
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?2IqaeY/7EFhIY5jqF0HWV5u9HS3+gSaEaCKsaTsR3bqmvUUggLmzt7wYMXqg?=
+ =?us-ascii?Q?rlds48SNlvWJeIruert2FPpUSdLoeiVwDGgr5/RgA+qN+OVbEY2bkv+NI1rV?=
+ =?us-ascii?Q?8KqMI2aoQ3KP5vSZ3VgjpPbVZKX3Fixo6cQ/9WIhqbUDPjWaUYLt733UZ188?=
+ =?us-ascii?Q?LE9gauQ9qEnC+MZllHUK3K94cHjVbiVaqytKZ564y3fHuM1KYkkhXtj9Yhs/?=
+ =?us-ascii?Q?uJyLJqR/hFqxGTSOoc1clSzOvuwczZ0iufjqxWHXP24FTYttx4l8oYF4BvC0?=
+ =?us-ascii?Q?yYidIZMK+S4Swr4PMEsq+ttpYSyBH0EgV803bRJbbK5raW9I71wK/4PHFdo2?=
+ =?us-ascii?Q?DcaXrPJKYFxdAXxtKW/h6DQuaxNNF5m5q7e+LM5eaZ37HhGTT65IUW/E7mUB?=
+ =?us-ascii?Q?F75B5Uyr4U3z1nLSIJoRzPITS2mPm6m5ZSc0eov3eOseJMUiO9kpNuM+yCJc?=
+ =?us-ascii?Q?pkVXIqZETBL5uP+5kfb82Udx6mVrQ7bb8ZUVx1ppM1qDXETzX1ufsoMOU8Cf?=
+ =?us-ascii?Q?+BN1WtCM7SBlCIzmQGC6dCtOFTmN0tlQjrXomf5ra/1XkLV6jpeLtZLtjKUb?=
+ =?us-ascii?Q?tJO/Y8StBXn74AXYHYxmSNVQyBC8LbIhooQu6XR8YlyOT7qFTDsnCvNMrfRx?=
+ =?us-ascii?Q?xIlOBjyiCYOmz25yqSCQE9DboE+UUtglEzQUXrZA0Wvn6v3be+Ildh6ID6c1?=
+ =?us-ascii?Q?PfEyPDhdBbRbdBZtw/RXqjYx3ixUdbFnLqt9RcP28oN+ZvtKEjm4GrhJZ/rV?=
+ =?us-ascii?Q?JoEBSkWzvclGO0qzQ4A0AVLGroEJjdoSMumcx+25VulEck+0HuCDP+7iAwlb?=
+ =?us-ascii?Q?jV5HcIAvafdMkF2xAyxhQgeBafzCCTT45hQsPaUqXLP51XBxdWIZmTHCAN+Y?=
+ =?us-ascii?Q?+JRSGQ11ULwaUQJhp5cSi7bRt1yI/Sppa7n1/LJJaorKAVCuiG+330Ivp7Ct?=
+ =?us-ascii?Q?bdp+bB9W+gU02ctZe3YBAWZ0X9o+xqPm64J/xpyReRh49fviR50zNVUlq2AY?=
+ =?us-ascii?Q?MDzRFK80QcOajDySAWzzyZb6zUrskmiITfLNdD+Zm4yk9K7zay2yuyx0/H1L?=
+ =?us-ascii?Q?pm2zWvanDJdgEX7+TvyQNDXe8k5Pk/xflBaIgSpRz8RxQd9MlHyJSK0Fa3XG?=
+ =?us-ascii?Q?pTx/9dm6ZDKExKrjzYHx08eoKc83FBe5tl4MhOlOahc6CBqhZCIs5NgWlPku?=
+ =?us-ascii?Q?YSlZuL748v/thyacUkYGy86TQ22+nHEE6mQxxJCxEGIOFBkpLxj1OkfRAxUl?=
+ =?us-ascii?Q?cIzTvQkgf9UZ02MQWj3w74eA9X8U34j+++Tpr5aE0TwmQflrFtgGAVo0er1O?=
+ =?us-ascii?Q?5kM=3D?=
+X-OriginatorOrg: outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f3e9e3ee-5729-4887-b88c-08dd7c35763d
+X-MS-Exchange-CrossTenant-AuthSource: TYCPR01MB8437.jpnprd01.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Apr 2025 15:52:01.9016
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYCPR01MB6319
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250415_074641_318131_E72D91EA 
-X-CRM114-Status: GOOD (  31.33  )
+X-CRM114-CacheID: sfid-20250415_085213_198905_E6E205E8 
+X-CRM114-Status: UNSURE (   4.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,222 +188,168 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 15/04/25 16:13, Alexandre Mergnat ha scritto:
-> Hi Angelo,
-> 
-> Gentle ping
-> 
-> Let me shortly summarize my problem: I see the panel driver sending commands to the 
-> display before it is ready. My approach to prevent that is to delay sending 
-> commands until bridge enable. Your concern was that during the panel's .prepare() 
-> the panel driver should already be able to send commands through the bridge. Can 
-> you please clarify what you think should be the approach to fix that?
-> 
+--------------S75HCA80WGt81gqe0OTh9JsF
+Content-Type: multipart/mixed; boundary="------------NER8SGXhPpP6z2qOaZjMgTLJ";
+ protected-headers="v1"
+From: Shengyu Qu <wiagn233@outlook.com>
+To: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Sean Wang <sean.wang@mediatek.com>
+Cc: wiagn233@outlook.com
+Message-ID: <3223f9bc-6c36-4f37-8301-b293e6f2024a@outlook.com>
+Subject: MT7927 support?
 
-Please don't top post.
+--------------NER8SGXhPpP6z2qOaZjMgTLJ
+Content-Type: multipart/mixed; boundary="------------YGmx39wX06kIot5oNus9VS69"
 
-Anyway - sorry but I missed your reply, that wasn't intentional - thanks for the
-ping (or I wouldn't have replied, duh!).
+--------------YGmx39wX06kIot5oNus9VS69
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: base64
 
-What is not ready? The Startek display or the MediaTek display controller?
+SGVsbG8sDQoNCkl0J3MgYmVlbiBhIGxvbmcgdGltZSBzaW5jZSBNVDc5MjcgaGFzIGxhbmRl
+ZCB0byBtYXJrZXQsIGJ1dCB3aGVyZSBpcyANCml0cyBsaW51eCBkcml2ZXI/IERvZXMgbWVk
+aWF0ZWsgbm90IHdhbnQgdG8gc3VwcG9ydCBpdCB1bmRlciBsaW51eD8gT3IgDQp3ZSBqdXN0
+IGhhdmUgdG8gd2FpdCBmb3Igc29tZSB0aW1lPw0KDQpCZXN0IHJlZ2FyZHMsDQpTaGVuZ3l1
+DQo=
+--------------YGmx39wX06kIot5oNus9VS69
+Content-Type: application/pgp-keys; name="OpenPGP_0xE3520CC91929C8E7.asc"
+Content-Disposition: attachment; filename="OpenPGP_0xE3520CC91929C8E7.asc"
+Content-Description: OpenPGP public key
+Content-Transfer-Encoding: quoted-printable
 
-The display controller shall be able to send commands when the *panel*'s .prepare()
-callback gets executed - if not, there's something wrong at the display controller
-side (driver).
+-----BEGIN PGP PUBLIC KEY BLOCK-----
 
-You're probably getting confused by the bridge en/disable callbacks, btw... please
-check include/drm/drm_panel.h, struct drm_panel_funcs.
+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
+scUnWnv8sErY943hM8MUsMQ5D0P2
+=3DUrys
+-----END PGP PUBLIC KEY BLOCK-----
 
-In short, the panel's prepare() should be used for whatever setup is required by
-the panel to become available to *receive the video transmission* from the display
-controller: this implies that if the panel needs DSI commands for setup, this is
-allowed and it's a perfectly fine case.
+--------------YGmx39wX06kIot5oNus9VS69--
 
-So, if you are unable to "turn the panel on and wait for it to become ready" in
-the panel's .prepare() callback, there's something wrong either in your panel
-driver, on in the display controller (the DSI driver) instead.
+--------------NER8SGXhPpP6z2qOaZjMgTLJ--
 
-Since this wasn't happening before your mtk_dsi cleanup, this probably means that
-the cleanup is done wrong - and that removing the .start/.stop custom callbacks
-from that driver needs you to do something more than just that in order to avoid
-regressions.
+--------------S75HCA80WGt81gqe0OTh9JsF
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature.asc"
 
-Unfortunately, I'm pretty busy these days, otherwise I would've gladly made some
-research to try and give you some more hints.. but eh :-)
+-----BEGIN PGP SIGNATURE-----
 
-Cheers,
-Angelo
+wsF5BAABCAAjFiEET/yoGP3p5Zl+RKVuX75KBAfJsRkFAmf+gJ0FAwAAAAAACgkQX75KBAfJsRlB
+sBAAmcmjPw2e9gALxoGXD7krkJuER7Qi2KzLkH4MPWMo8oejkWQ0yTdkXESEpVK98vUeMO3LwLJk
+9xskPTcCO0yNp2Ul74gxFcDSKlTRqJSX+q08/IbAnWdkAyvmFZE1ZDY4pWK4BAN3CO28WArvNigX
+f04Hx9xACi4HpAxkdtDYsykIZlvicddEHp4u1T/p3ZUGgpW49XHyP96zIADLTLDd/DEd8QXEJgtP
+5Srh1Fo9A5sCy2zljED2mHBEZcWchZc34DtZ5tEGK7H125Ra5vQXoqPSao4DcgQFbEWfW5DWGXcH
+J6IdMAFqsgfZ167+Q5qh+U9u668QNaHfYeYkJlI9C0zU1tFgSQBhjujWX2wZGGH4645XDguDUH2D
+6rvGznduBYNHzaGmswNsApPMu60HLxrFworpK9iig50A6tvV5TxTwsgnbcFW94RGK1DSU4mRNVWN
+K5Oo6dDwdvqAnikE8XsrG67pK/CBcwowbVH47tkJVF/SKuGlOjoZhT/3bV5phnp13F0c4aVGqbNs
+CFAN6V5BLZDaR8YDuL7ZP3uHqc0eQ1JfZUBfo+Elp8StgjbLlDeFrD/u/6xzfMdFCSbFtIRlI/+h
+fE8t8kfNdYjb3yF0ynbP9UBdgHRrvDeyuaSOkcURtlVE3QyN+YoegboG46l23RvVOFEpvHHHOxpz
+bpI=
+=/Mru
+-----END PGP SIGNATURE-----
 
-> Regards,
-> Alexandre
-> 
-> On 21/03/2025 10:19, Alexandre Mergnat wrote:
->> Hi Angelo,
->> Thanks for the fast feedback :)
->>
->> On 20/03/2025 13:37, AngeloGioacchino Del Regno wrote:
->>> Il 20/03/25 09:48, Alexandre Mergnat ha scritto:
->>>> Currently, the panel set power, set gpio and enable the display link
->>>> in stk_panel_prepare, pointed by drm_panel_funcs.prepare, called by
->>>> panel_bridge_atomic_pre_enable, pointed by
->>>> drm_bridge_funcs.atomic_pre_enable. According to the drm_bridge.h,
->>>> atomic_pre_enable must not enable the display link
->>>>
->>>> Since the DSI driver is properly inited by the DRM, the panel try to
->>>> communicate with the panel before DSI is powered on.
->>>>
->>>
->>> The panel driver shall still be able to send commands in the .prepare() callback
->>> and if this is not happening anymore... well, there's a problem!
->>
->> Sorry I don't think so, according to that def:
->>      /**
->>       * @pre_enable:
->>       *
->>       * This callback should enable the bridge. It is called right before
->>       * the preceding element in the display pipe is enabled. If the
->>       * preceding element is a bridge this means it's called before that
->>       * bridge's @pre_enable function. If the preceding element is a
->>       * &drm_encoder it's called right before the encoder's
->>       * &drm_encoder_helper_funcs.enable, &drm_encoder_helper_funcs.commit or
->>       * &drm_encoder_helper_funcs.dpms hook.
->>       *
->>       * The display pipe (i.e. clocks and timing signals) feeding this bridge
->>       * will not yet be running when this callback is called. The bridge must
->>       * not enable the display link feeding the next bridge in the chain (if
->>       * there is one) when this callback is called.
->>       *
->>       * The @pre_enable callback is optional.
->>       *
->>       * NOTE:
->>       *
->>       * This is deprecated, do not use!
->>       * New drivers shall use &drm_bridge_funcs.atomic_pre_enable.
->>       */
->>      void (*pre_enable)(struct drm_bridge *bridge);
->>
->>      /**
->>       * @enable:
->>       *
->>       * This callback should enable the bridge. It is called right after
->>       * the preceding element in the display pipe is enabled. If the
->>       * preceding element is a bridge this means it's called after that
->>       * bridge's @enable function. If the preceding element is a
->>       * &drm_encoder it's called right after the encoder's
->>       * &drm_encoder_helper_funcs.enable, &drm_encoder_helper_funcs.commit or
->>       * &drm_encoder_helper_funcs.dpms hook.
->>       *
->>       * The bridge can assume that the display pipe (i.e. clocks and timing
->>       * signals) feeding it is running when this callback is called. This
->>       * callback must enable the display link feeding the next bridge in the
->>       * chain if there is one.
->>       *
->>       * The @enable callback is optional.
->>       *
->>       * NOTE:
->>       *
->>       * This is deprecated, do not use!
->>       * New drivers shall use &drm_bridge_funcs.atomic_enable.
->>       */
->>      void (*enable)(struct drm_bridge *bridge);
->>
->> => "The bridge must not enable the display link feeding the next bridge in the
->> => chain (if there is one) when this callback is called."
->>
->> Additionally, you ask for something impossible because here is the init order
->> fixed by the framework:
->>
->> [   10.753139] panel_bridge_atomic_pre_enable
->> [   10.963505] mtk_dsi_bridge_atomic_pre_enable
->> [   10.963518] mtk_dsi_bridge_atomic_enable
->> [   10.963527] panel_bridge_atomic_enable
->> [   10.963532] drm_panel_enable
->>
->> If panel want to use the DSI link in panel_bridge_atomic_pre_enable, nothing
->> will happen and  you will get a timeout.
->>
->> So, IMHO, this patch make sense.
->>
->>>
->>>> To solve that, use stk_panel_enable to enable the display link because
->>>> it's called after the mtk_dsi_bridge_atomic_pre_enable which is power
->>>> on the DSI.
->>>>
->>>> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
->>>> ---
->>>>   .../gpu/drm/panel/panel-startek-kd070fhfid015.c    | 25 +++++++++++++---------
->>>>   1 file changed, 15 insertions(+), 10 deletions(-)
->>>>
->>>> diff --git a/drivers/gpu/drm/panel/panel-startek-kd070fhfid015.c b/drivers/gpu/ 
->>>> drm/panel/panel-startek-kd070fhfid015.c
->>>> index c0c95355b7435..bc3c4038bf4f5 100644
->>>> --- a/drivers/gpu/drm/panel/panel-startek-kd070fhfid015.c
->>>> +++ b/drivers/gpu/drm/panel/panel-startek-kd070fhfid015.c
->>>> @@ -135,19 +135,9 @@ static int stk_panel_prepare(struct drm_panel *panel)
->>>>       gpiod_set_value(stk->enable_gpio, 1);
->>>>       mdelay(20);
->>>>       gpiod_set_value(stk->reset_gpio, 1);
->>>> -    mdelay(10);
->>>> -    ret = stk_panel_init(stk);
->>>> -    if (ret < 0)
->>>> -        goto poweroff;
->>>
->>> Also, you're moving both init and set_display_on to the enable callback...
->>> this is suboptimal.
->>>
->>> You should do the DrIC setup in .prepare() (can include SLEEP OUT), and then you
->>> should have a .enable() callback that calls DISP ON, a .disable() callback that
->>> calls DISP OFF, and .unprepare() that turns everything off.
->>
->> This is not what I understand from the pre_enable's definition above, and also
->> the function call order by the framework. :)
->>
->>>
->>> Cheers,
->>> Angelo
->>>
->>>> -
->>>> -    ret = stk_panel_on(stk);
->>>> -    if (ret < 0)
->>>> -        goto poweroff;
->>>>       return 0;
->>>> -poweroff:
->>>> -    regulator_disable(stk->supplies[POWER].consumer);
->>>>   iovccoff:
->>>>       regulator_disable(stk->supplies[IOVCC].consumer);
->>>>       gpiod_set_value(stk->reset_gpio, 0);
->>>> @@ -156,6 +146,20 @@ static int stk_panel_prepare(struct drm_panel *panel)
->>>>       return ret;
->>>>   }
->>>> +static int stk_panel_enable(struct drm_panel *panel)
->>>> +{
->>>> +    struct stk_panel *stk = to_stk_panel(panel);
->>>> +    int ret;
->>>> +
->>>> +    ret = stk_panel_init(stk);
->>>> +    if (ret < 0)
->>>> +        return ret;
->>>> +
->>>> +    ret = stk_panel_on(stk);
->>>> +
->>>> +    return ret;
->>>> +}
->>>> +
->>>>   static const struct drm_display_mode default_mode = {
->>>>           .clock = 163204,
->>>>           .hdisplay = 1200,
->>>> @@ -239,6 +243,7 @@ drm_panel_create_dsi_backlight(struct mipi_dsi_device *dsi)
->>>>   }
->>>>   static const struct drm_panel_funcs stk_panel_funcs = {
->>>> +    .enable = stk_panel_enable,
->>>>       .unprepare = stk_panel_unprepare,
->>>>       .prepare = stk_panel_prepare,
->>>>       .get_modes = stk_panel_get_modes,
->>>>
->>>
->>>
->>>
->>
-> 
-
+--------------S75HCA80WGt81gqe0OTh9JsF--
 
