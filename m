@@ -4,70 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AB88C369B4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Apr 2025 11:43:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A54DC369AB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Apr 2025 12:21:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MRuXrPBW/chMOMwl0EQaQVFmxdvAMs4cWLYBDeeV3FA=; b=ea35FJ3/tPyKYYHbJK2y4MGSBw
-	ksfF0aKUmRunV1zL80eb9gR3wkZVQaT85DB39a7v4YdAfQJsC4U2HDID3hHldQVTQob/cFbbuRht/
-	XAQ30FlsqhuUh9mgZB9kvDFUQJJgNY0QcWmseDfcjlvRYmXV9Z/4jzSqtCdbpPIpaeGKs507NYiaJ
-	99T8zq1plwspipS2Tc2fqgVnLj2FfUTXH7Dsvczj//fZhR3BaoOhWIu7HTJmm2vl7lyt4GT8ua9qP
-	gynmoDN/6t7OAGpM1LYta6jRlKUv+AKZKfoeaLr0h7gL2s9ZmJWzpiBD10CbNrRBtPGABczI5Dqe8
-	x+RXvTEA==;
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=xqiBmH3cXQhVO3Oi9TyesxzQNNmvWhKNONR9ZJLERQE=; b=Mt139w85Z1OQk3xDMduEpemw2h
+	3e3o2GTdd9WRvoC2HtokzvEdmMwWml/cR2wEoGt/cSWN+bsh5QC/Y3WHhcIiFFJF7w5qgYP8+fmCb
+	d1rz1GsRR/6txCJcJa4V0c7h9auCrjXd1dS2gPx/0Bsd2uzsid/t77p2Vph52QcvcEWKm3nrOyroc
+	CjrfgqRYb5+5hnQ/6I7qGENh0AEo5AHESDf3WoC8NvsjA9ahpqv/+WgJlC3KWxDxU2di95m5ECpop
+	UNwfuTJ6O2m9KOf1N+g7G528YFQChsK9fGNdCsvj5lzsThH/fsWzDbCmJ3ZsMwWzAA2Xe2V9NR+HC
+	r/wiXpsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4ehh-00000005bHx-0bUa;
-	Tue, 15 Apr 2025 11:43:49 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1u4fHf-00000005iAy-218Q;
+	Tue, 15 Apr 2025 12:20:59 +0000
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4e56-00000005Rzf-2Jpx;
-	Tue, 15 Apr 2025 11:03:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1744715035;
-	bh=lUToVI8Z/K9zO1OtdRIhMl49m6xry/jiX60OGbZaB2k=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=YB2LeLK53zM5wnal3/5LdwZuEdiAdT6qJeQDYro80Ax9Xfju3AE5UYo53K5ZVlP1N
-	 P71Z5m12GuH2SU6nOKGx1TFoiBrEPQj455/XXZd68Eo0rYAllkLu10H0a8w7d7B8AK
-	 DdPcjsQQzLqfFitTp8VsYcpMA5Yzalxw5YnDeylb5koIkmblOwfvoT9BNxHXkeY8MJ
-	 LRr64TSiXxaulbM6yCnRAPdzFCcbdj5yjXMpOHMqlewuBBz71K8rreuEGhUOJ3kmeg
-	 GuBnBhHNKLehg+EAtoyG0hfQLNC4exwT1+hAaNMPB4Ke9ubV3ghwPWz0qN9v1hSkAi
-	 Iz3JOSY8GUzWA==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0FEDA17E0B2D;
-	Tue, 15 Apr 2025 13:03:54 +0200 (CEST)
-Message-ID: <b29cfa5e-da21-4c6a-be44-dd091e109650@collabora.com>
-Date: Tue, 15 Apr 2025 13:03:53 +0200
+	id 1u4eOH-00000005WIM-33qX
+	for linux-mediatek@lists.infradead.org;
+	Tue, 15 Apr 2025 11:23:47 +0000
+Received: by mail-pf1-x430.google.com with SMTP id d2e1a72fcca58-73bb647eb23so4767278b3a.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 15 Apr 2025 04:23:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1744716224; x=1745321024; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=xqiBmH3cXQhVO3Oi9TyesxzQNNmvWhKNONR9ZJLERQE=;
+        b=YEuWuOkC4FZu/PeSL56ckBLZqQx9egdNhshXBC5Zs9KnLKFseRwWpVsI2OWrBJBBDd
+         /dTzYAYNmT479QKNXAbRtWtLqJyvu8Mp2g9TDb3mF5F4EDC586KOzE3aHXM7Y3W4I7Xn
+         84bu0Pcz+DkEcLp2RCriATmTyhXN/cymPi8Xw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1744716224; x=1745321024;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=xqiBmH3cXQhVO3Oi9TyesxzQNNmvWhKNONR9ZJLERQE=;
+        b=SzuL0i/h8elGjvhwPM3FAiorC9xIy/08QHp/PpRT8CikLv2b2oO28m8eykCQPCtRhW
+         izazS7HLKIVpXYoIRmWlBpsDPEeQE95tXTQ+FcBY7xDYQOoAWAI8ED/ejHWC985qcVlK
+         4EP22UotEYfknwp5n1rD+N6GRcl1Td5iT3T/2CWkYsVuOFneugeo0jUfzUmqKPJ93vkT
+         ip/FLkJ+6tOfSxHh9T/ZLKkK3IHH+gErrMuFsQiPqLkJ9fPsFXUaKBn6pu6/HJFlGa7o
+         o3pnik6chMJ4vZGUSRUY6aKRyEvLTuu5fGfQ1u3G82vfL8/oJyKpte2OcI3VOoH0mdh8
+         jTBA==
+X-Forwarded-Encrypted: i=1; AJvYcCV/8ssLksh65q/mVpoVRUt5QWsP3T06T3fnc89rH0vYPUIjEt/nXDsujtx6bc7FL0TF2w8DxITqhRZRoIW5Xw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw8Kdf14ysTxf/tj77U6CIzms/mgGtaS8aOm0QXFrerg+NzalqY
+	yA1FBMi5exu+IUNOGFiW5yH0ob52SlQbEveNIUfjVi/UoIr5HGStNoHSUC8/Tg==
+X-Gm-Gg: ASbGncuaNh6vnBPQ9uGK231kaFnDO3WnOgiefslSSdiYIB2+Dd26DSyi9NlzmZgv+Uq
+	c3uuhtdhyvryot3Q19L4Bd0pgVWLbuBA7Ovgm/BGwf5NTOXS6JAQsh0UI8fJv86P5MkIJBt69RU
+	B4GyMsFkeLdOvLR/3Z0NDRQ8C+6errCNJPJOq699XH4jMtf2WP2jxFM3pciNdnuxXFWD8kh1s2E
+	/IIUGbFlOLJrJDmfFs4h6IY3BiLVCIEXaG4fxTMhblYB2m1cHgWFmts2qfO2HhRp7IbYAiUX4HR
+	IafZb9iMUsJ0NS/um6jL1o+xuMLON4xiTuSeKJkubQb+/+8ZVf3nCbSFnA==
+X-Google-Smtp-Source: AGHT+IHLztgc2AXA8MRVXKVLULr5aHlO9vKzoTKy2KAhml+hRnJpGVjxL+/NKMKFeR5E/N1M9tqKmA==
+X-Received: by 2002:a05:6a00:1481:b0:736:ab1e:b1ab with SMTP id d2e1a72fcca58-73bd0e97a1emr19543011b3a.0.1744716224175;
+        Tue, 15 Apr 2025 04:23:44 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:558:e14a:ece3:dc28])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73bd22f105asm8244136b3a.116.2025.04.15.04.23.41
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 15 Apr 2025 04:23:43 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Sean Wang <sean.wang@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	linux-mediatek@lists.infradead.org,
+	linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
+	Hao Chang <ot_chhao.chang@mediatek.com>,
+	Qingliang Li <qingliang.li@mediatek.com>
+Subject: [PATCH] pinctrl: mediatek: common-v1: Fix EINT breakage on older controllers
+Date: Tue, 15 Apr 2025 19:23:37 +0800
+Message-ID: <20250415112339.2385454-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.49.0.604.gff1f9ca942-goog
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [net-next PATCH] net: phy: mediatek: init val in
- .phy_led_polarity_set for AN7581
-To: Christian Marangi <ansuelsmth@gmail.com>,
- Daniel Golle <daniel@makrotopia.org>, Qingfang Deng <dqfext@gmail.com>,
- SkyLake Huang <SkyLake.Huang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
- Heiner Kallweit <hkallweit1@gmail.com>, Russell King
- <linux@armlinux.org.uk>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: Simon Horman <horms@kernel.org>
-References: <20250415105313.3409-1-ansuelsmth@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250415105313.3409-1-ansuelsmth@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250415_040356_743208_CD2F1D30 
-X-CRM114-Status: GOOD (  14.65  )
+X-CRM114-CacheID: sfid-20250415_042345_760022_DAA05D44 
+X-CRM114-Status: GOOD (  12.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,59 +101,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 15/04/25 12:53, Christian Marangi ha scritto:
-> Fix smatch warning for uninitialised val in .phy_led_polarity_set for
-> AN7581 driver.
-> 
-> Correctly init to 0 to set polarity high by default.
-> 
-> Reported-by: Simon Horman <horms@kernel.org>
-> Fixes: 6a325aed130b ("net: phy: mediatek: add Airoha PHY ID to SoC driver")
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> ---
->   drivers/net/phy/mediatek/mtk-ge-soc.c | 3 +--
->   1 file changed, 1 insertion(+), 2 deletions(-)
-> 
-> diff --git a/drivers/net/phy/mediatek/mtk-ge-soc.c b/drivers/net/phy/mediatek/mtk-ge-soc.c
-> index fd0e447ffce7..cd09684780a4 100644
-> --- a/drivers/net/phy/mediatek/mtk-ge-soc.c
-> +++ b/drivers/net/phy/mediatek/mtk-ge-soc.c
-> @@ -1432,8 +1432,8 @@ static int an7581_phy_probe(struct phy_device *phydev)
->   static int an7581_phy_led_polarity_set(struct phy_device *phydev, int index,
->   				       unsigned long modes)
->   {
-> +	u16 val = 0;
->   	u32 mode;
-> -	u16 val;
+When EINT support for multiple addresses was introduced, the driver
+library for the older generations (pinctrl-mtk-common) was not fixed
+together. This resulted in invalid pointer accesses.
 
-....but that's double initialization then, so....
+Fix up the filled in |struct mtk_eint| in pinctrl-mtk-common to match
+what is now expected by the mtk-eint library.
 
+Reported-by: "Uwe Kleine-König" <u.kleine-koenig@baylibre.com>
+Closes: https://lore.kernel.org/all/43nd5jxpk7b7fv46frqlfjnqfh5jlpqsemeoakqzd4wdi3df6y@w7ycd3k5ezvn/
+Fixes: 3ef9f710efcb ("pinctrl: mediatek: Add EINT support for multiple addresses")
+Cc: Hao Chang <ot_chhao.chang@mediatek.com>
+Cc: Qingliang Li <qingliang.li@mediatek.com>
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+Stepped on this today on an MT8173 Chromebook. Thanks goes out to Uwe
+for pointing out what was broken.
 
-	u32 mode;
-	u16 val;
+This should be applied and sent to Torvald's tree ASAP.
 
-	if (index >= MTK_PHY_MAX_LEDS)
-		return -EINVAL;
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
-	if (modes == 0)
-		val = 0;
-
-	for_each_set_bit(.....
-
-Cheers,
-Angelo
-
-
->   
->   	if (index >= MTK_PHY_MAX_LEDS)
->   		return -EINVAL;
-> @@ -1444,7 +1444,6 @@ static int an7581_phy_led_polarity_set(struct phy_device *phydev, int index,
->   			val = MTK_PHY_LED_ON_POLARITY;
->   			break;
->   		case PHY_LED_ACTIVE_HIGH:
-> -			val = 0;
->   			break;
->   		default:
->   			return -EINVAL;
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+index 91edb539925a..7585de11854b 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+@@ -1015,7 +1015,13 @@ static int mtk_eint_init(struct mtk_pinctrl *pctl, struct platform_device *pdev)
+ 	if (!pctl->eint)
+ 		return -ENOMEM;
+ 
+-	pctl->eint->base = devm_platform_ioremap_resource(pdev, 0);
++	pctl->eint->nbase = 1;
++	/* mtk-eint expects an array */
++	pctl->eint->base = devm_kzalloc(pctl->dev, sizeof(pctl->eint->base), GFP_KERNEL);
++	if (IS_ERR(pctl->eint->base))
++		return -ENOMEM;
++
++	pctl->eint->base[0] = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(pctl->eint->base))
+ 		return PTR_ERR(pctl->eint->base);
+ 
+-- 
+2.49.0.604.gff1f9ca942-goog
 
 
