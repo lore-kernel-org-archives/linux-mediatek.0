@@ -4,69 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7793C369AB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Apr 2025 12:34:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C4C8C369AB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Apr 2025 14:07:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PCsUjldb4db3iq2Cf3MidpG2bUQw4RzaBYc+Xse0Bc0=; b=k9mEKfErmOwzEtpyRwerCQ4k8B
-	bgbYE0MjV+4j2LJHHRmZQWKzPBhchnP+SNLZh7I/NrORVHdKKNC3DhxZvYT8GGcBzLqA6lOWQGbRe
-	apTUjSYuckW8n3CRwjlCMThXoyiSVegOd7S24pgNkIEiWrcnIG87py6OhZJenq0kvboPXfAs7KNgQ
-	zGVr0DzH+RK0s4d8aUwcM0OQHwLnRz1Gk9iEEk++Z2bnE2qrPO49ygcJHFY0WKk+lQfa2U9wldyov
-	b23astF3swNV80CldcGSEvfg8z/B+Hl3Ltpup/UUUbvEqm1vqcvg4imdEwoP6UBCOvWOfyrpJCYZN
-	oHML8Z/A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=AJATmyjm2eijeuuPsjt7QjMYsSq4CG6lw+58QD8jKh0=; b=fFXVQzBIiqKv6c
+	cEdsiuLaTeT+fJ0sJRi8nSxknv6YF8YgqrRkPsXhDCbApaEsz2zv+el9Mtc1GalKfluzvqjb/7m3m
+	8Gv0cQnyQ/Q9OOsuvJknRzJMdiuJdF2zj9dVqD6nw3jmPXAjYj7nXlG/XBs+Qyk+tyKs5dIQOYjao
+	5QcC9ETNhYvP0k7DBE9nm1CAHkQ9A95pOhSLAb2ZGWtphJkj4ostYMRmeejrLeKzo/IueEgQZdjCp
+	dc2Gy4WYSqnqqNCgMIRMXuqVKisStuR5RD0Fc15d1sPhe+rsH+Ru8lEWPPCX3aSDlbaTqFXjcbq30
+	1SAajcgOe4wCecw3SMfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4fUG-00000005l54-3I8J;
-	Tue, 15 Apr 2025 12:34:00 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1u4gwj-000000062Z8-1WKw;
+	Tue, 15 Apr 2025 14:07:29 +0000
+Received: from mout.gmx.net ([212.227.15.19])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4ebT-00000005ZkP-48zE;
-	Tue, 15 Apr 2025 11:37:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1744717042;
-	bh=LL2E+u91dO99wB41wuqyXT2j19QaB9gNRGI2R7/b5YQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=OIw6Wy9e+R7VZf18fWQAN7uWonzzfJXvfUPULmxni+zAEvAbUSPu4wFgV1x8Jo/YN
-	 2KVmpk3L296/aMW+vmusHHvUCiqcInGNYexO+3bITYSFxCGwZR7Imge4ArE94dvKih
-	 25NKYIeh0R6M+wXAv/fdnZ3IcFn/W4FQBrtWVy2ri4bbm42RPIt8dN2c5ZzbmkGz5c
-	 U50PruUlqwudkueNNS1OZI+XqxqHoh5TMf0a1Sj/R7zopgf4NYYDKLD8zuk6DbJE9P
-	 O+Lku6ssL0tg6mpKFuBIENzpjYgrX9NIOS/zKOK3cLwMzfZu/Bpm1laYEZRQeLotaH
-	 tqtYa/LZCXtcg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9B9AD17E03B6;
-	Tue, 15 Apr 2025 13:37:21 +0200 (CEST)
-Message-ID: <c648c4f3-f20a-4255-93eb-69a80c695fa7@collabora.com>
-Date: Tue, 15 Apr 2025 13:37:21 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] pinctrl: mediatek: common-v1: Fix EINT breakage on older
- controllers
-To: Chen-Yu Tsai <wenst@chromium.org>, Sean Wang <sean.wang@kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>,
+	id 1u4gsm-000000061c3-1aar;
+	Tue, 15 Apr 2025 14:03:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1744725782; x=1745330582; i=frank-w@public-files.de;
+	bh=AJATmyjm2eijeuuPsjt7QjMYsSq4CG6lw+58QD8jKh0=;
+	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
+	 References:Message-ID:MIME-Version:Content-Type:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=nYmUjMHXFsev/dNDJDi7pjjPr1EsqhdfzUnQAB7/a+X1gNhe9qs0AnAOEtsUYRz+
+	 MIitZ1TDPeS7nBA/kMXTFa+oIIIGoNZviTiHmTbETCpqNMf1OggPyzPllSR/aNJFs
+	 S8xyUEISv78LA16U1u2V4K3Ko2v8Q0qmxEgQV9MygL2WnXZT7IOTa8W7Z7cTpda9A
+	 LcML4t+cx0XGT7cL/6qqiNu8t7xcW8QqprEIiJdCi0MVW4aDjeeVgPTVRKOFz8rdM
+	 NrCkuX3n1nSstOx0VsqBgZhJQ0cyPDGVkbY8Oc42h9PNYrzpjRwTNbZ9+rJ6mfamw
+	 u9C/XLTWdiiWcHkJXg==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [127.0.0.1] ([217.61.148.30]) by mail.gmx.net (mrgmx004
+ [212.227.17.190]) with ESMTPSA (Nemesis) id 1M7sDg-1tzkvP3too-00Bho5; Tue, 15
+ Apr 2025 16:03:02 +0200
+Date: Tue, 15 Apr 2025 16:03:02 +0200
+From: Frank Wunderlich <frank-w@public-files.de>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Frank Wunderlich <linux@fw-web.de>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
- Hao Chang <ot_chhao.chang@mediatek.com>,
- Qingliang Li <qingliang.li@mediatek.com>
-References: <20250415112339.2385454-1-wenst@chromium.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250415112339.2385454-1-wenst@chromium.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+CC: Daniel Golle <daniel@makrotopia.org>, Sam Shih <sam.shih@mediatek.com>,
+ MandyJH Liu <mandyjh.liu@mediatek.com>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: =?US-ASCII?Q?Re=3A_=5BRFC_3/5=5D_dt-bindings=3A_power=3A_Add_binding?=
+ =?US-ASCII?Q?_for_MediaTek_MT7988_topmisc_power_controller?=
+User-Agent: K-9 Mail for Android
+In-Reply-To: <bbb81e79-95da-4cf9-9eef-7cbaea191ebb@collabora.com>
+References: <20250413085806.8544-1-linux@fw-web.de> <20250413085806.8544-4-linux@fw-web.de> <700af1ab-f43e-4583-8f0e-27e5d4424338@collabora.com> <2EA2BDB0-E1C9-49BC-98FC-5048905AA036@public-files.de> <bbb81e79-95da-4cf9-9eef-7cbaea191ebb@collabora.com>
+Message-ID: <AC7CF61A-A8A0-40B7-B5B5-51C56A1D3E81@public-files.de>
+MIME-Version: 1.0
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:pEE0QNLaCjGOh1Q3A+m2eGYrUmWJexG4y4QniLuUTqDVWg4CIOB
+ 84GmAnGh6QGkVbhwiumdWdvKVApuC2JIYMqVYiI2UJ8kXwUFnoleHNXl7yc7QrRK2yKcCIA
+ 3I5SoqqnMHQ4CVxWJe3F86siWLEd074Se1G0CnkRyrhWEsyWM91xeQei1J++PcvHaZSDvtG
+ xrOEUf4OgwvpgvHHD/pBA==
+UI-OutboundReport: notjunk:1;M01:P0:7lIXNkQsibE=;ecACNA+AaIzPbg8w5bjKrIo/tsr
+ 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
+ pKptU6VyxXIk2QK7Kx481TFV0HrsMyhgeJ
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250415_043724_193567_6EF816E1 
-X-CRM114-Status: UNSURE (   8.82  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250415_070324_723280_89B3FC05 
+X-CRM114-Status: GOOD (  12.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,24 +129,92 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 15/04/25 13:23, Chen-Yu Tsai ha scritto:
-> When EINT support for multiple addresses was introduced, the driver
-> library for the older generations (pinctrl-mtk-common) was not fixed
-> together. This resulted in invalid pointer accesses.
-> 
-> Fix up the filled in |struct mtk_eint| in pinctrl-mtk-common to match
-> what is now expected by the mtk-eint library.
-> 
-> Reported-by: "Uwe Kleine-König" <u.kleine-koenig@baylibre.com>
-> Closes: https://lore.kernel.org/all/43nd5jxpk7b7fv46frqlfjnqfh5jlpqsemeoakqzd4wdi3df6y@w7ycd3k5ezvn/
-> Fixes: 3ef9f710efcb ("pinctrl: mediatek: Add EINT support for multiple addresses")
-> Cc: Hao Chang <ot_chhao.chang@mediatek.com>
-> Cc: Qingliang Li <qingliang.li@mediatek.com>
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+Am 15=2E April 2025 11:59:06 MESZ schrieb AngeloGioacchino Del Regno <angel=
+ogioacchino=2Edelregno@collabora=2Ecom>:
+>Il 15/04/25 11:52, Frank Wunderlich ha scritto:
+>> Hi Angelo,
+>>=20
+>> Am 14=2E April 2025 12:25:23 MESZ schrieb AngeloGioacchino Del Regno <a=
+ngelogioacchino=2Edelregno@collabora=2Ecom>:
+>>> Il 13/04/25 10:58, Frank Wunderlich ha scritto:
+>>>> From: Frank Wunderlich <frank-w@public-files=2Ede>
+>>>>=20
+>>>> Topmisc is a systemcontroller used for xs-phy and ethernet on  mt7988=
+=2E
+>>>> Add binding for it=2E
+>>>=20
+>>> That's the wrong binding=2E=2E=2E check mfd/syscon=2Eyaml :-)
+>>>=20
+>>> P=2ES=2E: Is there any reset controller in topmisc? Any clock?
+>>>       If yes, syscon=2Eyaml is also wrong, and you need a driver for t=
+hat=2E
+>>>       Remember: If it turns out *later* that this has clk/resets and t=
+he
+>>>       bindings are already set for just a syscon, it's gonna be way ha=
+rder!
+>>>=20
+>>> Cheers,
+>>> Angelo
+>>=20
+>> Ok based on the power-domain-cells property i guessed powercontroller i=
+s the right place=2E
+>
+>power-domain-cells, but without any power domain assignment, so that was =
+wrong :)))
+>
+>>=20
+>> But based on your suggestion i tried moving compatible to syscon bindin=
+g and made dtbs_check here=2E
+>>=20
+>> I can confirm dropping the unexpected properties reported by syscon bin=
+ding (power-domain-cells,clock-cells,adress-cells and size-cells) are not n=
+eeded for function (xsphy and ethernet)=2E
+>>=20
+>> For verifying that there are really no clocks/resets in topmisc (have n=
+ot found it in public available register documents) i asked mtk (waiting fo=
+r answer)=2E
+>>=20
+>> Also got it working without the syscon compatible by changing ethernet =
+driver too (after this change xsphy was also working)=2E
+>
+>Perfect, a bit of a cleanup and you're done, then!
+>
+>Cheers!
+>
+>>=20
+>> Eth:
+>> https://github=2Ecom/frank-w/BPI-Router-Linux/commit/d866e648717800b6f6=
+395ad36c38f9effcf0498d
+>> Xsphy:
+>> <https://github=2Ecom/frank-w/BPI-Router-Linux/commit/0121a94df99700487=
+704ca056b210b13db07e90c>
+>>=20
+>> regards Frank
+>
+>
+>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Got response from MTK and basicly topmisc contains a powercontroller (for =
+cpu and internal 2g5) but currently not needed because ATF already switch t=
+his on=2E The second part is the pcs/phy muxing and 3rd some unneeded switc=
+hes (where i have no detailed information)=2E But no clocks or resets as th=
+ese are handled in the connected platform driver (xsphy/ethernet)=2E
 
+So my original binding imho made more sense=2E
+
+The syscon binding seems to need syscon fallback and shows error about une=
+xpected "compatible" property=2E The binding itself does not contain any pr=
+operties but references syscon-common where iiuc compatible property must h=
+ave at least 2 items and requires the "syscon" fallback=2E
+
+Mtk suggests splitting topmisc into the 2 blocks by only using the mux par=
+t as syscon with splitting the reg=2E If powerdomain really is needed then =
+a second topmisc node could be added and bound to a new driver=2E
+
+But this would need a bit more of testing=2E
+regards Frank
 
