@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03578C369AB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Apr 2025 11:05:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B7DEC369AB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Apr 2025 11:07:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f9hHQKhtm1MnpFBShYKlmn3Yw9T8iFqweptkZtVYG/Q=; b=c5RgkEPzV28Qa91amckxDGGfJ1
-	SzC6QxlN9bG0IrQjxoDu8ivTnvJqrHVbDnVvlp499ldp6lteH+owqP6s163PdEuy66cW0k1ugFW5a
-	Jh5Ut8JqnBTjiQUiH0il4Jtx1SkknZNBsmhSHoncLn7HiPHtbzijdjM/Qi27SX44rNZDYATqVtCFw
-	74RdSf2sqhYb1HsKHSUsUddcMYq+G6K/THVl1ZQd0o2xD2cFMvaU8AgI6dnFZqdsx6NOR8DWwU9+2
-	epMingR9lsjdJGU1FoCu0lzilXu+RpR0celx2OHkLt0TqNB97ZbRgQ/ZYdOC9X1TCdFV+nh2OzE1u
-	mODMHclg==;
+	bh=9PBDQkBQgmC4PFJImKboLkglMJoGtOzuf+h34KSc2U8=; b=4bsx6QXwaPevD4HmVmTBbd2YWV
+	JQPtEinhF2UBHeF+QhX/jGNY5n1Gypg+OKKhQIB1V4B4aPrCXdAJXgihR5THPPGcS8xtiPPczEC6/
+	ZSzYi38QFf8pPsy89kJVPMGmnzAC1gILvlGzNtRXCkRRenKBkYQsrCA8l6/yVf5TqvFz8zMSCkmlY
+	KrzLUUzV56gFIa3/53qhsIUhiRjGqhi56TuQJtfiNvk1KhvFyAi6Jwfh5P2gclFmE7YsV/14/moig
+	77U+kYdEKfdvl44gHnRLJzaHHvpZCPY9UWjOJkvFLWoSaN6wBUKE1n9Vkv/CNmV4Nk0UdMPHt/2La
+	7qLhsw7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4e6w-00000005SMn-081J;
-	Tue, 15 Apr 2025 11:05:50 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1u4e8k-00000005SfO-0V1D;
+	Tue, 15 Apr 2025 11:07:42 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4dlb-00000005NQU-3Zhc;
-	Tue, 15 Apr 2025 10:43:50 +0000
+	id 1u4dld-00000005NSc-3D66;
+	Tue, 15 Apr 2025 10:43:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1744713826;
-	bh=cvpc/8MORNWWHgQBMcaiPbaTmMTg3aTrEh08x8WPRtU=;
+	s=mail; t=1744713828;
+	bh=XfKa/nBZ3BP2uRN0ayGxBx0GOxkKJPowuF01+8IacLY=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=G0sBrNFQGGl6X1hh8KrQ3M0U2kQxfQB4RHBY+F5D7YlkSD0ekhhtIAvf3Or8UZcWX
-	 hjT9UAJfPuw1vgLZv+4PZY5JLbCq2v6a420hC2kseiGScvOARdKRyIespjqWCzGCPA
-	 cJE/dxgHziMy5y2hWDfOtoH3FPajvDpNveSArqUEwU0WE3yvUeLrQRU3sqLJpOpwdO
-	 fKVuI5Nh2i74uC2MYXW12YVDRYnzYlgfDkNKGfKKIuPuqQPS+pdBfs81l6VXEMLi5Y
-	 vsLIO3ckPTQrCXs/I/G1W6RlMNlXX3b7XNp9TptoHDQtp7O+bQnRoyKFeesgy2uRHu
-	 n3Jzc7KBASoqg==
+	b=fl306YCdgR11k+ZPR67wzumuqJU1jrm1lqtHTXsrBNx5whPfbr1+c0aFprK0wN8Yu
+	 1pl8WEbS1A5r65P2ne+A7HygiBgOk8Y0wtDFFjgHqiRyeze04ncF9TdVntYoBPbLaf
+	 i/v7u6/3YvzUwQ2QWLNR7HCaLxQrfDucd7gv/xSyWAaYdIvn5h+o7NvYqioxM7JGPw
+	 XGNFn7dt78ZjzfozCIyIqXKBa8CtX+eF/N9T1rqd64khHM4JnmmtSTIi511pv8jrzd
+	 iT5F2+2RyOOODhvS/3+aRM5k5Z5R8F956/+MvGUNkQxfEtCH1Qe6/Fi9/0xyKlAQUf
+	 pNWMOTRfksDrQ==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0841917E0B2D;
-	Tue, 15 Apr 2025 12:43:44 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B5F6D17E1022;
+	Tue, 15 Apr 2025 12:43:46 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -71,17 +71,17 @@ Cc: p.zabel@pengutronix.de,
 	ives.chenjh@mediatek.com,
 	tommyyl.chen@mediatek.com,
 	jason-jh.lin@mediatek.com
-Subject: [PATCH v9 10/23] drm/mediatek: mtk_hdmi: Move plugged_cb/codec_dev setting to new function
-Date: Tue, 15 Apr 2025 12:43:08 +0200
-Message-ID: <20250415104321.51149-11-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v9 11/23] drm/mediatek: mtk_hdmi: Move N/CTS setting to new function
+Date: Tue, 15 Apr 2025 12:43:09 +0200
+Message-ID: <20250415104321.51149-12-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250415104321.51149-1-angelogioacchino.delregno@collabora.com>
 References: <20250415104321.51149-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250415_034348_044162_8C133BD1 
-X-CRM114-Status: GOOD (  10.30  )
+X-CRM114-CacheID: sfid-20250415_034349_979831_3CDBFFDC 
+X-CRM114-Status: GOOD (  10.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,47 +96,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In preparation for splitting common bits of this driver, move the
-mutex-protected cable plugged callback and codec device setting
-to a new function called mtk_hdmi_audio_set_plugged_cb().
+In preparation for splitting common bits of this driver, moving
+the hdmi_rec_n_table struct array, and the hdmi_recommended_n(),
+hdmi_mode_clock_to_hz(), hdmi_expected_cts() functions, add one
+function called mtk_hdmi_get_ncts() that sets both N and CTS in
+a single call.
 
 Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_hdmi.c | 13 +++++++++----
- 1 file changed, 9 insertions(+), 4 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_hdmi.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-index 697508edfa41..60ec16f6827f 100644
+index 60ec16f6827f..0933b22b81ff 100644
 --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
 +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-@@ -1582,17 +1582,22 @@ static int mtk_hdmi_audio_get_eld(struct device *dev, void *data, uint8_t *buf,
- 	return 0;
+@@ -675,6 +675,13 @@ static unsigned int hdmi_expected_cts(unsigned int audio_sample_rate,
+ 				     128 * audio_sample_rate);
  }
  
--static int mtk_hdmi_audio_hook_plugged_cb(struct device *dev, void *data,
--					  hdmi_codec_plugged_cb fn,
-+static void mtk_hdmi_audio_set_plugged_cb(struct mtk_hdmi *hdmi, hdmi_codec_plugged_cb fn,
- 					  struct device *codec_dev)
- {
--	struct mtk_hdmi *hdmi = data;
--
- 	mutex_lock(&hdmi->update_plugged_status_lock);
- 	hdmi->plugged_cb = fn;
- 	hdmi->codec_dev = codec_dev;
- 	mutex_unlock(&hdmi->update_plugged_status_lock);
++static void mtk_hdmi_get_ncts(unsigned int sample_rate, unsigned int clock,
++			      unsigned int *n, unsigned int *cts)
++{
++	*n = hdmi_recommended_n(sample_rate, clock);
++	*cts = hdmi_expected_cts(sample_rate, clock, *n);
 +}
 +
-+static int mtk_hdmi_audio_hook_plugged_cb(struct device *dev, void *data,
-+					  hdmi_codec_plugged_cb fn,
-+					  struct device *codec_dev)
-+{
-+	struct mtk_hdmi *hdmi = data;
+ static void do_hdmi_hw_aud_set_ncts(struct mtk_hdmi *hdmi, unsigned int n,
+ 				    unsigned int cts)
+ {
+@@ -705,8 +712,7 @@ static void mtk_hdmi_hw_aud_set_ncts(struct mtk_hdmi *hdmi,
+ {
+ 	unsigned int n, cts;
  
-+	mtk_hdmi_audio_set_plugged_cb(hdmi, fn, codec_dev);
- 	mtk_hdmi_update_plugged_status(hdmi);
+-	n = hdmi_recommended_n(sample_rate, clock);
+-	cts = hdmi_expected_cts(sample_rate, clock, n);
++	mtk_hdmi_get_ncts(sample_rate, clock, &n, &cts);
  
- 	return 0;
+ 	dev_dbg(hdmi->dev, "%s: sample_rate=%u, clock=%d, cts=%u, n=%u\n",
+ 		__func__, sample_rate, clock, n, cts);
 -- 
 2.49.0
 
