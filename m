@@ -4,107 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91DFAC369B2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Apr 2025 03:02:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE799C369AB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Apr 2025 06:20:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Pp23HWM/nq+b12u/Io5KeiiGhXx++ShIh5kXkvlTJMY=; b=rI1YAXSl5b784VbfmrOmiFY30Y
-	rOWGXkJ45XSzRRgddgSkIhFWAUFsnPQqaUbsArOirm0Hn0TaQ0pJiUHje2dDtbXf+jgOvO2oQSdWy
-	wMxrCHLqF6BqF5ga1LcNiJ+82mmWoKn0hHoQGAdQquQkyUBM7kq/e4eWRShNamZtZBMNLHQsduKTN
-	ahG312Ucae22I15osCVzFeiB8eAJwc2y9xFOmnbo+QpN66LLthIASwoLr5zJdTDVOS1Zf/73JtLIP
-	JoGV9/MnaACmGn8F5vdx1e6jaKmk5lBuYCTpDOpADlrvk1weqiFJju1fyuaekO8TT0F4bLu/+iPbw
-	TxF+jx9w==;
+	bh=oTt43XJFM8d74lWj5+YE+mCHEBEmob8rG+QikYcC3hM=; b=1ZGA32S3V14zMDAVmqP5SOGxR1
+	hhvIduV8tQ282ssQwzqa6EpCqZw/6P4KnPDuEAz9x/eb0Fxli3tfmmISDiMA/BW5AtuxThoG2bVHw
+	XH9RkCuZwaqWwEXOKpkhTV0zvWKK24voiCiI8QMpuNiHcSm/MRtTetn1M1ET4k7npZBaIUA/6AP1R
+	pHNZygoPrHegk4uMcxHRm5WDMKhuSctIhSMdEbSKHdcbbf1RKLCSALcVdfaEc9CAE9ZcqkNrYTNkx
+	CPRdKkhHvn2H3MQAniq9jMJCt7P0W7VO3hlWUZkDcFpICUT+iYui3k+6ZnquurjEjr+dK9l3cazYG
+	RkQlO11Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4WZN-00000004GeJ-2NPE;
-	Tue, 15 Apr 2025 03:02:41 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1u4ZfE-00000004eoj-1mmF;
+	Tue, 15 Apr 2025 06:20:56 +0000
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4WPr-00000004FJp-33dh;
-	Tue, 15 Apr 2025 02:52:51 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id AD1FD61136;
-	Tue, 15 Apr 2025 02:52:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BDD8BC4CEF0;
-	Tue, 15 Apr 2025 02:52:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744685570;
-	bh=S7Tbw1ancnS17xgUm3xXxIxS9F8JptfwmG5wu66abzI=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=J/FGjbrP7Ps3XNUKwsWzzHkZY95xSQCDX8olOmOvxlT1iR8OfpXsqVRk2+I8BhfvM
-	 jNKv/vl+F5DfRRUqSLuijvoU9lChcs+FYUWw5x5OB+/i6kjOMgcgpmQkbYb5L71jyZ
-	 zQjmeo69gXP6+BKQ7Oq6R1gyNQzC4Z+oxPciHVYcYnYiPQ2sX1/mzJ2zjyqHZ35T7U
-	 EAJwKKed5e8zZcYJyGBEdRcd7hP+xq60hv5l0SlXbh6uO7hp+IP45/wSfpNiUNUNNv
-	 hMREt00OicERarFeGV8p4FADAYRtbGx7z4sB8NJH0edzPYWnPRx13Sexa78HuowgtJ
-	 M1HqL+QTLN+qA==
-From: Bjorn Andersson <andersson@kernel.org>
-To: Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Conor Dooley <conor@kernel.org>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Steen Hegelund <Steen.Hegelund@microchip.com>,
-	Daniel Machon <daniel.machon@microchip.com>,
-	UNGLinuxDriver@microchip.com,
-	Konrad Dybcio <konradybcio@kernel.org>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Andy Gross <agross@kernel.org>,
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
-	Viresh Kumar <vireshk@kernel.org>,
-	Nishanth Menon <nm@ti.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	zhouyanjie@wanyeetech.com,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	Stephan Gerhold <stephan.gerhold@linaro.org>,
-	"Rob Herring (Arm)" <robh@kernel.org>
-Cc: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-sunxi@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org,
-	imx@lists.linux.dev,
-	linux-rockchip@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-mips@vger.kernel.org,
-	linux-pm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	Andre Przywara <andre.przywara@arm.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>,
-	Sudeep Holla <sudeep.holla@arm.com>,
-	Viresh Kumar <viresh.kumar@linaro.org>,
-	Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: (subset) [PATCH v2 00/17] Arm cpu schema clean-ups
-Date: Mon, 14 Apr 2025 21:52:40 -0500
-Message-ID: <174468553423.331095.11490981905578175154.b4-ty@kernel.org>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250410-dt-cpu-schema-v2-0-63d7dc9ddd0a@kernel.org>
-References: <20250410-dt-cpu-schema-v2-0-63d7dc9ddd0a@kernel.org>
+	id 1u4ZfB-00000004ens-1ZB0
+	for linux-mediatek@lists.infradead.org;
+	Tue, 15 Apr 2025 06:20:54 +0000
+Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-5edc468a7daso646895a12.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 14 Apr 2025 23:20:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1744698051; x=1745302851; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:date:message-id:subject
+         :references:in-reply-to:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=oTt43XJFM8d74lWj5+YE+mCHEBEmob8rG+QikYcC3hM=;
+        b=kULbMQMbOJ0srNJXBXk5vbsME+h1ISijKCOyvTaUHFRUhDGlV8rUDKT2Sd5KpAHiZK
+         P9urYIjW+1f7q6ZmgQKEtY0Mtuc8lQOkdQDo8DakVKk19gn7XoJ89/f5niM7zG/pVJO7
+         hXwI7XHJ5br1CYE6t/h5ZF51/pWOF8VCf/8AkB3Q+KESi83tCKK6ylErjABPr3pHWYPU
+         SB61aX/vtElim0HSfO6XFwBTe+KOsZOIsyR2k05KEGQIYi5WCm8EyGpoVV/GGDVKU0wu
+         jl1B9+/xM12vrhrCuJOoKyYTbRSIdPMUW5W83qBTPQjPcR6h5/Wq9/aYgHysu1HNayRE
+         S3Yg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1744698051; x=1745302851;
+        h=content-transfer-encoding:mime-version:date:message-id:subject
+         :references:in-reply-to:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=oTt43XJFM8d74lWj5+YE+mCHEBEmob8rG+QikYcC3hM=;
+        b=nKPPXabhfkSxlQIsCPr0pGE5goEreP78dmA+jVoWybSXFn3OgRmkzvSpPnlfgEMaP6
+         dhBlown8pDbmh7HlHCD7s0hLarrnVRb72k7a9PHb28FMaqRQtrMWfejYQsauOI95M2E4
+         wePmlbk7wHPF3x/0XiSokz5AiiegR/Ob2hHaGEAUfI61J0ycYLkvPt9nSjzcDbf6GIe6
+         XtWjtxRmLW+/UYhSx6aueOtlktHeYsf7Q5yLJQDi9PYTl0ObPkB1SBRWAxzrUPHnbjoR
+         YNUsxiwzKGC4uFALtvV6Lb9SumUZHOf4wrLDWKP8vQipBHqzXC1ZD4fS1PqIgZTTmj/R
+         7XEA==
+X-Forwarded-Encrypted: i=1; AJvYcCVt9/SKNJkIagaXrUSigQ9kg1HiqwVKSYUQxuhYNd0GYww/q2glIgK516ajc1hnQRXAHeKsRj4/axc3BHxk4w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwLfPD5OtBvHYgMgUDGqMt7bpnLWAdSxyJwyJoryFFzEgQuCAy9
+	fp65xogN/f7vquboRJfIeOSIudjOLZgi7BYYOuOIoo4FMRae1ejoUOfT+aMUQIg=
+X-Gm-Gg: ASbGncvo9faGJbR+lxbXdHyrD1i+qZxhCKdmszkxxu5YIl2GVUvj7pSB5IVBn0z0hpM
+	Xad5N++uNskBSBFLN3IAG1ajO1+3iOQzjUsZxv3lmhld49cR03yVUZaTHBcD6FCb343+cdx28A1
+	1fjUC4Y0iNopKdxD6KTYhdFf6Sr0W2dZ2QEIFoNLCpcMpg7LRbOj7ai8OiomCyqSxe4flto0CnC
+	ZQ/QI2I9vVt96WSLVBwLuNhJNPI1FyoSJt+lXwPQov1XbZql8DoB1fsSHYddSNAgH4v8+w0S0Ar
+	rHIACJoIv8k7jtV3HSzt7bBWfG/xaPUq5+m/1wxC35FwPuDud9wHJSCCwQmJ7+FdvmnWDh+qrfc
+	071gv7WpFDT+fe6E=
+X-Google-Smtp-Source: AGHT+IEN0ddkfxeUgfcu3uOUBPG5D5WB3HL16m1L/qkNsUmiRD8iOuxqK/rPwSxrQiytFN9HNB8I7Q==
+X-Received: by 2002:a17:907:bc87:b0:ac0:b71e:44e0 with SMTP id a640c23a62f3a-acad34d87admr480746866b.9.1744698051564;
+        Mon, 14 Apr 2025 23:20:51 -0700 (PDT)
+Received: from [192.168.1.26] (46.150.74.144.lvv.nat.volia.net. [46.150.74.144])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-acaa1cb4129sm1053861866b.98.2025.04.14.23.20.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 14 Apr 2025 23:20:51 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: yong.wu@mediatek.com, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: krzk@kernel.org, robh@kernel.org, conor+dt@kernel.org, 
+ matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, kernel@collabora.com
+In-Reply-To: <20250410143958.475846-1-angelogioacchino.delregno@collabora.com>
+References: <20250410143958.475846-1-angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v1 0/2] MediaTek Dimensity 1200 - Add SMI support
+Message-Id: <174469805024.15476.6855555365246052771.b4-ty@linaro.org>
+Date: Tue, 15 Apr 2025 08:20:50 +0200
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.14.2
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250414_232053_443032_6AEE15EA 
+X-CRM114-Status: UNSURE (   7.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,23 +104,26 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 10 Apr 2025 10:47:21 -0500, Rob Herring (Arm) wrote:
-> The Arm cpu.yaml schema fails to restrict allowed properties in 'cpu'
-> nodes. The result, not surprisely, is a number of additional properties
-> and errors in .dts files. This series resolves those issues.
+On Thu, 10 Apr 2025 16:39:56 +0200, AngeloGioacchino Del Regno wrote:
+> In preparation for adding basic support for the OnePlus Nord 2 5G
+> DN2103 smartphone, this series adds support for the Smart Multimedia
+> Interface and Local Arbiters of the MediaTek Dimensity 1200 (MT6893) SoC.
 > 
-> There's still more properties in arm32 DTS files which I have not
-> documented. Mostly yet more supply names and "fsl,soc-operating-points".
-> What's a few more warnings on the 10000s of warnings...
+> AngeloGioacchino Del Regno (2):
+>   dt-bindings: memory: mtk-smi: Add support for MT6893
+>   memory: mtk-smi: Add support for Dimensity 1200 MT6893 SMI
 > 
 > [...]
 
 Applied, thanks!
 
-[07/17] arm: dts: qcom: sdx55/sdx65: Fix CPU power-domain-names
-        commit: ae33b874fc81bfb60bdda5a350c0635f98e6d747
+[1/2] dt-bindings: memory: mtk-smi: Add support for MT6893
+      https://git.kernel.org/krzk/linux-mem-ctrl/c/98a4109320f9b7007475a9d6706d3434cd8aafb4
+[2/2] memory: mtk-smi: Add support for Dimensity 1200 MT6893 SMI
+      https://git.kernel.org/krzk/linux-mem-ctrl/c/bd4f5f6c84d074d9347b55731891729f136d35c8
 
 Best regards,
 -- 
-Bjorn Andersson <andersson@kernel.org>
+Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
 
