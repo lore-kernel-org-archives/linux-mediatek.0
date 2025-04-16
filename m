@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B193C369AB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Apr 2025 00:53:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40073C369AB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Apr 2025 00:58:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=XIpkQAKOSwPd+uiBrJiQRFiw70sh7kBbQn2HiXdRLoM=; b=NPzefL52at+4gz5wjQJ2mV9st4
-	7dta+RTDJ02ufYiKC9ODWyl3FmaOJmxFNm2kAf1iNC+wPJnlYhU1DxbjrsVCLUZToS4aUNtmJzoGo
-	IgYXZ6CaV29lo+Iln/cf9mcsGvBvEOfc9sSBypsJ648IYBTCXmnqvXYpV9A4gJB2jRMvGe+tvaZg2
-	WyOJaVyPVLzkmkJ29U8VTrITdYhWyrSLhGdqWVZDFFwNsCQtlZWnUTRz82ZvnzQxCTaCi+dOA7I6k
-	MXrHgqQGMU5qgtHrC9gseZ5ihWBP9wRkpy03tDvQtA3NaguLXmcKF8b76EdD9TRsUPrLJ/1I05uIM
-	+OelFOQA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Pmq0gKwjPdUWLQWi6+Iss58yTq3ELIvWqz5Da6Pn798=; b=MKJxm5jSBD7BVS5+GCByhVrJqF
+	VHlTtxCX3P9eUvrhMQEDXW1/mUpOdT+cp4l2s2EmE6miihl1jd44rjP9nMSqj9A17IWxZUfJLebwA
+	b61+SlgkDVWpJSBzU/uTkSZwqz8EnE0s33wgCZuY+Rv+EShglnkwWhN/oftJw8674K1vv2KCw2TSE
+	8m5PfInlcP0Lc5R1/poxkme+VgatqKiAtcdbK9bi8mXecZsy570XOD1fLU5bhcOc/Edm9GvfXRQul
+	ToFg8bhzdqIxhYWqIgsIlhLelioOiZ+8wF/vaVB5/0t+moTlNhOA6mZI1e3i0l0QNwwvoJNVwMtec
+	UiN6NNiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4r1W-00000007hs8-0uUb;
-	Wed, 16 Apr 2025 00:53:06 +0000
+	id 1u4r79-00000007j3p-18ik;
+	Wed, 16 Apr 2025 00:58:55 +0000
 Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4qzb-00000007hO3-3UZm;
-	Wed, 16 Apr 2025 00:51:09 +0000
+	id 1u4r0K-00000007haN-3REw;
+	Wed, 16 Apr 2025 00:51:54 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.98.2)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1u4qwl-000000001SU-3xn7;
-	Wed, 16 Apr 2025 00:50:49 +0000
-Date: Wed, 16 Apr 2025 01:50:46 +0100
+	id 1u4qxf-000000001Tx-3dKZ;
+	Wed, 16 Apr 2025 00:51:45 +0000
+Date: Wed, 16 Apr 2025 01:51:42 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
 	Lorenzo Bianconi <lorenzo@kernel.org>,
@@ -46,15 +46,17 @@ To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
 	Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH net v2 1/5] net: ethernet: mtk_eth_soc: reapply mdc divider
- on reset
-Message-ID: <8ab7381447e6cdcb317d5b5a6ddd90a1734efcb0.1744764277.git.daniel@makrotopia.org>
+Subject: [PATCH net v2 4/5] net: ethernet: mtk_eth_soc: net: revise NETSYSv3
+ hardware configuration
+Message-ID: <28929b5bb2bfd45e040a07c0efefb29e57a77513.1744764277.git.daniel@makrotopia.org>
+References: <8ab7381447e6cdcb317d5b5a6ddd90a1734efcb0.1744764277.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <8ab7381447e6cdcb317d5b5a6ddd90a1734efcb0.1744764277.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250415_175107_871202_B3F95B1E 
-X-CRM114-Status: GOOD (  15.48  )
+X-CRM114-CacheID: sfid-20250415_175152_860094_014FFE4E 
+X-CRM114-Status: GOOD (  12.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,100 +73,81 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Bo-Cun Chen <bc-bocun.chen@mediatek.com>
 
-In the current method, the MDC divider was reset to the default setting
-of 2.5MHz after the NETSYS SER. Therefore, we need to reapply the MDC
-divider configuration function in mtk_hw_init() after reset.
+Change hardware configuration for the NETSYSv3.
+ - Enable PSE dummy page mechanism for the GDM1/2/3
+ - Enable PSE drop mechanism when the WDMA Rx ring full
+ - Enable PSE no-drop mechanism for packets from the WDMA Tx
+ - Correct PSE free drop threshold
+ - Correct PSE CDMA high threshold
 
-Fixes: c0a440031d431 ("net: ethernet: mtk_eth_soc: set MDIO bus clock frequency")
+Fixes: 1953f134a1a8b ("net: ethernet: mtk_eth_soc: add NETSYS_V3 version support")
 Signed-off-by: Bo-Cun Chen <bc-bocun.chen@mediatek.com>
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
-v2: * only parse DT once, store divider in struct mtk_eth
-    * make sure MDC is configured before calling of_mdiobus_register()
-    * reapply after reset
+v2: no change
 
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 39 +++++++++++++--------
- drivers/net/ethernet/mediatek/mtk_eth_soc.h |  1 +
- 2 files changed, 25 insertions(+), 15 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 20 ++++++++++++++++----
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h |  7 ++++++-
+ 2 files changed, 22 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 43197b28b3e74..1a235283b0e9b 100644
+index bdb98c9d8b1c1..338849b488cae 100644
 --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
 +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -871,9 +871,25 @@ static const struct phylink_mac_ops mtk_phylink_ops = {
- 	.mac_enable_tx_lpi = mtk_mac_enable_tx_lpi,
- };
+@@ -4043,11 +4043,23 @@ static int mtk_hw_init(struct mtk_eth *eth, bool reset)
+ 	mtk_w32(eth, 0x21021000, MTK_FE_INT_GRP);
  
-+static void mtk_mdio_config(struct mtk_eth *eth)
-+{
-+	u32 val;
-+
-+	/* Configure MDC Divider */
-+	val = FIELD_PREP(PPSC_MDC_CFG, eth->mdc_divider);
-+
-+	/* Configure MDC Turbo Mode */
-+	if (mtk_is_netsys_v3_or_greater(eth))
-+		mtk_m32(eth, 0, MISC_MDC_TURBO, MTK_MAC_MISC_V3);
-+	else
-+		val |= PPSC_MDC_TURBO;
-+
-+	mtk_m32(eth, PPSC_MDC_CFG, val, MTK_PPSC);
-+}
-+
- static int mtk_mdio_init(struct mtk_eth *eth)
- {
--	unsigned int max_clk = 2500000, divider;
-+	unsigned int max_clk = 2500000;
- 	struct device_node *mii_np;
- 	int ret;
- 	u32 val;
-@@ -908,20 +924,9 @@ static int mtk_mdio_init(struct mtk_eth *eth)
- 		}
- 		max_clk = val;
- 	}
--	divider = min_t(unsigned int, DIV_ROUND_UP(MDC_MAX_FREQ, max_clk), 63);
--
--	/* Configure MDC Turbo Mode */
--	if (mtk_is_netsys_v3_or_greater(eth))
--		mtk_m32(eth, 0, MISC_MDC_TURBO, MTK_MAC_MISC_V3);
--
--	/* Configure MDC Divider */
--	val = FIELD_PREP(PPSC_MDC_CFG, divider);
--	if (!mtk_is_netsys_v3_or_greater(eth))
--		val |= PPSC_MDC_TURBO;
--	mtk_m32(eth, PPSC_MDC_CFG, val, MTK_PPSC);
--
--	dev_dbg(eth->dev, "MDC is running on %d Hz\n", MDC_MAX_FREQ / divider);
--
-+	eth->mdc_divider = min_t(unsigned int, DIV_ROUND_UP(MDC_MAX_FREQ, max_clk), 63);
-+	mtk_mdio_config(eth);
-+	dev_dbg(eth->dev, "MDC is running on %d Hz\n", MDC_MAX_FREQ / eth->mdc_divider);
- 	ret = of_mdiobus_register(eth->mii_bus, mii_np);
- 
- err_put_node:
-@@ -3974,6 +3979,10 @@ static int mtk_hw_init(struct mtk_eth *eth, bool reset)
- 	else
- 		mtk_hw_reset(eth);
- 
-+	/* No MT7628/88 support yet */
-+	if (reset && !MTK_HAS_CAPS(eth->soc->caps, MTK_SOC_MT7628))
-+		mtk_mdio_config(eth);
-+
  	if (mtk_is_netsys_v3_or_greater(eth)) {
- 		/* Set FE to PDMAv2 if necessary */
- 		val = mtk_r32(eth, MTK_FE_GLO_MISC);
+-		/* PSE should not drop port1, port8 and port9 packets */
+-		mtk_w32(eth, 0x00000302, PSE_DROP_CFG);
++		/* PSE dummy page mechanism */
++		mtk_w32(eth, PSE_DUMMY_WORK_GDM(1) | PSE_DUMMY_WORK_GDM(2) |
++			PSE_DUMMY_WORK_GDM(3) | DUMMY_PAGE_THR, PSE_DUMY_REQ);
++
++		/* PSE free buffer drop threshold */
++		mtk_w32(eth, 0x00600009, PSE_IQ_REV(8));
++
++		/* PSE should not drop port8, port9 and port13 packets from WDMA Tx */
++		mtk_w32(eth, 0x00002300, PSE_DROP_CFG);
++
++		/* PSE should drop packets to port8, port9 and port13 on WDMA Rx ring full */
++		mtk_w32(eth, 0x00002300, PSE_PPE_DROP(0));
++		mtk_w32(eth, 0x00002300, PSE_PPE_DROP(1));
++		mtk_w32(eth, 0x00002300, PSE_PPE_DROP(2));
+ 
+ 		/* GDM and CDM Threshold */
+-		mtk_w32(eth, 0x00000707, MTK_CDMW0_THRES);
++		mtk_w32(eth, 0x08000707, MTK_CDMW0_THRES);
+ 		mtk_w32(eth, 0x00000077, MTK_CDMW1_THRES);
+ 
+ 		/* Disable GDM1 RX CRC stripping */
+@@ -4064,7 +4076,7 @@ static int mtk_hw_init(struct mtk_eth *eth, bool reset)
+ 		mtk_w32(eth, 0x00000300, PSE_DROP_CFG);
+ 
+ 		/* PSE should drop packets to port 8/9 on WDMA Rx ring full */
+-		mtk_w32(eth, 0x00000300, PSE_PPE0_DROP);
++		mtk_w32(eth, 0x00000300, PSE_PPE_DROP(0));
+ 
+ 		/* PSE Free Queue Flow Control  */
+ 		mtk_w32(eth, 0x01fa01f4, PSE_FQFC_CFG2);
 diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 90a377ab4359e..39709649ea8d1 100644
+index 39709649ea8d1..eaa96c8483b70 100644
 --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
 +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -1271,6 +1271,7 @@ struct mtk_eth {
- 	struct clk			*clks[MTK_CLK_MAX];
+@@ -151,7 +151,12 @@
+ #define PSE_FQFC_CFG1		0x100
+ #define PSE_FQFC_CFG2		0x104
+ #define PSE_DROP_CFG		0x108
+-#define PSE_PPE0_DROP		0x110
++#define PSE_PPE_DROP(x)		(0x110 + ((x) * 0x4))
++
++/* PSE Last FreeQ Page Request Control */
++#define PSE_DUMY_REQ		0x10C
++#define PSE_DUMMY_WORK_GDM(x)	BIT(16 + (x))
++#define DUMMY_PAGE_THR		0x1
  
- 	struct mii_bus			*mii_bus;
-+	unsigned int			mdc_divider;
- 	struct work_struct		pending_work;
- 	unsigned long			state;
- 
+ /* PSE Input Queue Reservation Register*/
+ #define PSE_IQ_REV(x)		(0x140 + (((x) - 1) << 2))
 -- 
 2.49.0
 
