@@ -4,90 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FABEC369BA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Apr 2025 16:55:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 335FEC369BA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Apr 2025 17:29:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6gIfY2O9SRNMsf8TpU0oXNbXomtsGMw4EUG+PlvfsPM=; b=bM22INrm42c06i6Dq7YnofEtN9
-	ipZXfWXKAzeU+oZR9wakiHJfQUahFzQdy33YcnxqS23oycGlAaSmJRs1vYweOaQLj88HWykmrSD2r
-	4DLow4uM0j1IqNlXc7bis7HcMi9DQQ8Ro7YluGm0FlBWuGH8ym6+AevDeRtF/ez1pgk1c9gzE54RB
-	/DCdECtreMh1FjeNEp8VSdfsajYeO3ruCeOO8uPG8JyYEwP9QdxqDY4Mi4tQ5f2F6JVDvFG3pqT/j
-	b1CB9Evpg5PWFSZ4kYIiE33OF1VZv6DXOGPAjr93XEBox4JqXDGqttMtrD60//4FZRkik/wdxzhsn
-	r0HocOAw==;
+	bh=A2nkQ8kggNLvP40t1bwGaEEkhe1SwVi5A/FCvejGF4o=; b=VgJh3IhvBZpq/P+kA8k2gK+Cnj
+	cyukzv9zPx2FED7225MsVCEj0UhUBzPkPoy7szJhjmQBhRt2uM1gtpg9QdpVFN4HTh+KxnIVjKTt9
+	Bgjgl/YUR+LtiomUf4g6CRXr0FERdTfM+1Ojz0VS6I1GB8sjqUJJhFZc8hQoX/RgZ315gZ1mPmFvb
+	U9wYvyvUODiMCdKgiH/78r8+nvpXDnzLailDmxpWuI0l70khN5Wx8Jpy3lC6LPwXTr5pOlutbnR4j
+	FoC5IMIcigXAyRx86K9UsFWq8hzxRBHxwUQx/nj+0nq2Eusu4jECsL4xEm1zha0mRtaBlvUsn9yOf
+	5grbSObw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u563A-0000000AKp8-0VLy;
-	Wed, 16 Apr 2025 16:55:48 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1u56Zw-0000000AQ5s-3jwz;
+	Wed, 16 Apr 2025 17:29:40 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u55KP-0000000AC0x-2a1K
-	for linux-mediatek@lists.infradead.org;
-	Wed, 16 Apr 2025 16:09:36 +0000
-Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-43cf034d4abso75800005e9.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 16 Apr 2025 09:09:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1744819771; x=1745424571; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=6gIfY2O9SRNMsf8TpU0oXNbXomtsGMw4EUG+PlvfsPM=;
-        b=uBD6ej2fym4DHnoAmf4Ts1sUn4ZOJxNk3TTCsegicwdsg+Tz7HfCFl9fHGX+eYWz7n
-         SAGDR9pghy7XabsnNJqMDueLWmVmsLq/I/wkNZnVWLHitkf6aoagmGhmQDy89iJwHLja
-         OxZP2N6Bim/i48MmYBwtlCOZ/PwZOl7IOlo7Rii1BYPPs00O9MCbU9c3DMGwSGLe8lD9
-         GKw9CMkOwdgyWDLz7Pp67VcIOiOA7Rt8B2ckMPP4A5Rafx42GwFqUzW2ZCa0ZBMyloQH
-         59CwKzg0kGwy9j44jOeqi3jJu1icY095G0oxldfRbWR7nTfuLs28H2VgvrQKvIMGwWHU
-         /q1w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744819771; x=1745424571;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=6gIfY2O9SRNMsf8TpU0oXNbXomtsGMw4EUG+PlvfsPM=;
-        b=pcLzRq29bF6D77nC4GGyvWG1Zbtsso2Ok5iSKwQmEBEWFQSdh7fxD/fvjbrZPceFW9
-         ggjOSIKYXL+PWIpbdPPMISIFNZlUzVJmqwoE0MuxWgKpuRrWUf4m7F7PSevrEVM8fFbI
-         GMn3nTvVf2yR+2SEHRU4ScnveWK0tsGNIBGaoOh1Q5yDHCiyMacYovqblOurjNF1M1RE
-         lGYn9cY1WVpKIWgYig64ytvLWsMPtP0Ob1Y+AtfL4FztNnKJxNxrNIPZN2pRWVEwEe1T
-         G1Y0Hl0y9bzbtsWkMdz6SSut6Wx/lwPWKvO6Ig8C7hayVXwhz+y0qn9iJD9Yxwhp2eg5
-         wWbg==
-X-Forwarded-Encrypted: i=1; AJvYcCWhYoJSzLWawXPodDlEsCMyq8IJxJ2A/2Tdyw3+2Srn+ZG5j1acb0EamqGT0SdglGmpDe95rtEWideeqVPDlQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy24hJn3u1+ZyReor5m8N0pYlRYTHGhMIKKehnVdUpls94REZi1
-	L/lJ92Ut98jvCOp3n1M3jt2QyQXtnGHYahOepGpVRSzULPjA9fq08YAB3c+ZccA=
-X-Gm-Gg: ASbGncuS1/my/4dP5SrQx27ff7Gf86/qxvw+mWAQ7za/V8rM7n4vp0vCparrchhIBuq
-	veIpdrq7ySbVZ/2LGlgSUTmp/whg4oKEIvVoik0QKvrkKhpj3ousaLL8+Bz4TL4swCMAQmLonyR
-	Ia/31QGJZVA5l5MEN6wqCHfekfPXJEddxewRLusYzWgVqXaRghTPBkmI/TXfCsvBWfWA/myKs27
-	E8ULJjVVAnksFa4lv8AjvodTTicrRL3FYqxskfj5XxG/bxRw28bgPCMED4/K2wBg1N2ugmPKC9y
-	gs7De9aUmtkO2oyICbgtEYesEv8BG5oS/be7coXZyW1ajcpOMVtDj15YgI2MReKPHE1CvbodWIF
-	3XzmTRVo=
-X-Google-Smtp-Source: AGHT+IF3ZHpE7zJB9IQ2y8x59SUdSUcwVopqWk1Zp0WNiDguj5I7CqqTziJa38Gb4iY+V+RufRzqeg==
-X-Received: by 2002:a05:600c:3ecb:b0:43c:fa24:873e with SMTP id 5b1f17b1804b1-4405d625054mr30574145e9.13.1744819771461;
-        Wed, 16 Apr 2025 09:09:31 -0700 (PDT)
-Received: from localhost (p200300f65f13aa0400000000000001b9.dip0.t-ipconnect.de. [2003:f6:5f13:aa04::1b9])
-        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-4405b4f3df8sm25248205e9.24.2025.04.16.09.09.30
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Apr 2025 09:09:30 -0700 (PDT)
-Date: Wed, 16 Apr 2025 18:09:29 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Sean Wang <sean.wang@kernel.org>, 
-	Linus Walleij <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	Hao Chang <ot_chhao.chang@mediatek.com>, Qingliang Li <qingliang.li@mediatek.com>
-Subject: Re: [PATCH] pinctrl: mediatek: common-v1: Fix EINT breakage on older
- controllers
-Message-ID: <n3pyida4e4qhzzeyp4rpswiwiomgumgqeci7lwuimr6r4m5mxy@5s3w2ab3p75p>
-References: <20250415112339.2385454-1-wenst@chromium.org>
+	id 1u56Bw-0000000AMJP-3fuE;
+	Wed, 16 Apr 2025 17:04:54 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id B362549E55;
+	Wed, 16 Apr 2025 17:04:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E0242C4CEE2;
+	Wed, 16 Apr 2025 17:04:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1744823091;
+	bh=X+hdtTE3I9nqlJM1Kle+k2xO66KF4y9d+l1InnmbIiY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=awnWpg25stPGEkodW2n6rnQ3VmVbQtYG8CCZIlZiliFhJs+7xUGxTVNYwRtZvAmJm
+	 yNpebVgMFRsUHholtmTylAm/4Th5ePfNID6jHsIkEPlBJMet3GGkIfEKgCNgSwGGVc
+	 TdleW0HW23lgmrc5+EA8yXUTZKsFdQ2yONvZs2yiC4xrRnJOD/p83Bo4s8K5gxpi9R
+	 IOsjBMM1EdXotdADKeszaGnEH6TapkcQ6v3nLUL7Kx4ZYM8xKH6adys86BhHPsXmQ4
+	 qg0moAdibw6QADJc1jxLzUbeBG8u2fNQhmUb94fc+NkERqTRZsYsSjH/YQuNGLWQmh
+	 ONEPE20yPI4aw==
+Date: Wed, 16 Apr 2025 18:04:47 +0100
+From: Simon Horman <horms@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net-next] net: airoha: Add missing filed to ppe_mbox_data
+ struct
+Message-ID: <20250416170447.GU395307@horms.kernel.org>
+References: <20250415-airoha-en7581-fix-ppe_mbox_data-v1-1-4408c60ba964@kernel.org>
+ <20250416154144.GT395307@horms.kernel.org>
+ <Z__S_m9fBEKmoos1@lore-desk>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ed2ffzrhvzkyt6i3"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250415112339.2385454-1-wenst@chromium.org>
+In-Reply-To: <Z__S_m9fBEKmoos1@lore-desk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250416_090933_919246_831E09DC 
-X-CRM114-Status: GOOD (  14.01  )
+X-CRM114-CacheID: sfid-20250416_100452_949399_B542B42D 
+X-CRM114-Status: GOOD (  32.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,55 +77,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wed, Apr 16, 2025 at 05:55:42PM +0200, Lorenzo Bianconi wrote:
+> > On Tue, Apr 15, 2025 at 09:27:21AM +0200, Lorenzo Bianconi wrote:
+> > > The official Airoha EN7581 firmware requires adding max_packet filed in
+> > > ppe_mbox_data struct while the unofficial one used to develop the Airoha
+> > > EN7581 flowtable offload does not require this field. This patch fixes
+> > > just a theoretical bug since the Airoha EN7581 firmware is not posted to
+> > > linux-firware or other repositories (e.g. OpenWrt) yet.
+> > > 
+> > > Fixes: 23290c7bc190d ("net: airoha: Introduce Airoha NPU support")
+> > > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > > ---
+> > >  drivers/net/ethernet/airoha/airoha_npu.c | 1 +
+> > >  1 file changed, 1 insertion(+)
+> > > 
+> > > diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ethernet/airoha/airoha_npu.c
+> > > index 7a5710f9ccf6a4a4f555ab63d67cb6b318de9b52..16201b5ce9f27866896226c3611b4a154d19bc2c 100644
+> > > --- a/drivers/net/ethernet/airoha/airoha_npu.c
+> > > +++ b/drivers/net/ethernet/airoha/airoha_npu.c
+> > > @@ -104,6 +104,7 @@ struct ppe_mbox_data {
+> > >  			u8 xpon_hal_api;
+> > >  			u8 wan_xsi;
+> > >  			u8 ct_joyme4;
+> > > +			u8 max_packet;
+> > >  			int ppe_type;
+> > >  			int wan_mode;
+> > >  			int wan_sel;
+> > 
+> > Hi Lorenzo,
+> > 
+> > I'm a little confused by this.
+> > 
+> > As I understand it ppe_mbox_data is sent as the data of a mailbox message
+> > send to the device.  But by adding the max_packet field the layout is
+> > changed. The size of the structure changes. And perhaps more importantly
+> > the offset of fields after max_packet, e.g.  wan_mode, change.
+> > 
+> > Looking at how this is used, f.e. in the following code, I'm unclear on
+> > how this change is backwards compatible.
+> 
+> you are right Simon, this change is not backwards compatible but the fw
+> is not publicly available yet and the official fw version will use this
+> new layout (the previous one was just a private version I used to develop
+> the driver).  Can we use this simple approach or do you think we should
+> differentiate the two firmware version in some way? (even if the previous
+> one will never be used).
 
---ed2ffzrhvzkyt6i3
-Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH] pinctrl: mediatek: common-v1: Fix EINT breakage on older
- controllers
-MIME-Version: 1.0
+Hi Lorenzo,
 
-On Tue, Apr 15, 2025 at 07:23:37PM +0800, Chen-Yu Tsai wrote:
-> When EINT support for multiple addresses was introduced, the driver
-> library for the older generations (pinctrl-mtk-common) was not fixed
-> together. This resulted in invalid pointer accesses.
->=20
-> Fix up the filled in |struct mtk_eint| in pinctrl-mtk-common to match
-> what is now expected by the mtk-eint library.
->=20
-> Reported-by: "Uwe Kleine-K=F6nig" <u.kleine-koenig@baylibre.com>
-> Closes: https://lore.kernel.org/all/43nd5jxpk7b7fv46frqlfjnqfh5jlpqsemeoa=
-kqzd4wdi3df6y@w7ycd3k5ezvn/
-> Fixes: 3ef9f710efcb ("pinctrl: mediatek: Add EINT support for multiple ad=
-dresses")
-> Cc: Hao Chang <ot_chhao.chang@mediatek.com>
-> Cc: Qingliang Li <qingliang.li@mediatek.com>
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+Sorry, I misunderstood the commit message.
 
-I confirm this fixes the booting issue on the mt8365-evk.
+Yes, I think this simple approach is fine if there is no
+compatibility issue wrt firmwares we can reasonably expect
+in the wild. Which seems to be the case here.
 
-If it's not too late for that:
+Reviewed-by: Simon Horman <horms@kernel.org>
 
-Tested-by: Uwe Kleine-K=F6nig <u.kleine-koenig@baylibre.com>
 
-Thanks
-Uwe
-
---ed2ffzrhvzkyt6i3
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmf/1jcACgkQj4D7WH0S
-/k5aXAf/UP6i2a3y5UocoQPs0pyP+rVPxb+aRfLPNEEqjbC2EfKVw3TBePDcSXYw
-62fTt6kjxzOwm4tDzLbKcDzMIqHEIs2W2mE87RbAtUcp8Kobd1qUPJD++4lcIfjO
-isr+ZlQXT3mG0xCiZF5AHmhgzz4c3Ggc8RqeGDYCxzD3hj30XznRrOTTCv2wovzt
-Rlnu37XuzkHOGMJly86gPc5LSJHDUMyNs/66hNb5h+1v95Hpe8YZ+ZXreQsE9+8T
-9QnXW/NtxHg37nY1XIxdE6pBbUbz1jF8Woe83eBWDIwciCTpAeQ+WOFk1bLKf7Fg
-wRAaujOB3aa0qRpq3UL0vErWjNaMzg==
-=PJFt
------END PGP SIGNATURE-----
-
---ed2ffzrhvzkyt6i3--
 
