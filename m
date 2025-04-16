@@ -4,85 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21BF9C369B1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Apr 2025 07:21:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 328FEC369BA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Apr 2025 07:28:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CFJXzkHk3Kj2IxuOJ/Ep1Of/eMdCvzxnv7r1gWoCH1U=; b=v4tyywHewimTwctoQqV3IsRZKa
-	RvgWvVzH+KubIV7LTkClEcOS/d4zj1YV0BZ/harswc/HLTyw/qJhtu4uHUJTIImEv0MWfz8FjMTiN
-	Mx6LkgDdnikqiFsQ6aHzs0AkImeaYY/nlzAjkmhyggseTlAgMLuSqgYlBg8PT0rhpC4KOptsmk9Q8
-	iiGwJFlEjO5ols9gIJvNAyURz0Am7mnxVWs1sTIm6S268HdqkJsH1MM8deY5D7SAddrf3yA6EIApH
-	6RisQgOmbVDW8MpXaqo8X7jMccmuyGK9daikQcheuCDBYvvZ/Xk+r8tHOoJvEfzygI0/Vr2SLuLxQ
-	dIlolgKA==;
+	bh=xWD5DtO8Zmjj8hm/jgNeXXYBfzD9O0HKgWcyYm/pe+g=; b=1c8DGFwvSmG6+oNwlX2yIhgTMJ
+	q3fA/ht0BoaaeKEAbvk/tiY5qBQtZLgeoS8DXlRJkWpWe9CmyqCuB2ebl2wlPnper+ij58IdSbHTO
+	uLqYTGcyNuu8LfoPz2dQoDUSWMJwOJkvIP9QCFeX/SUufEiwSzmHZGnBX07VUpBKW2NvCGybxhDtF
+	q9tNa1D5/HLfMCAbJWLk8Q5oyLGQUvuh91HK4DrExE5VkwuphLWDwYzCoNe6afieBXQMy+vkoQkIK
+	MnyqyCPUpIpHuICKxvDKH8aEYYEmLcmBju4fA1VA0LY6aI9qA10e8wR/fiAZl4lbguUNW3/KfBztO
+	QwFeUkZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4x4t-00000008aeC-03aK;
-	Wed, 16 Apr 2025 07:20:59 +0000
-Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
+	id 1u4xC7-00000008c8H-19Vw;
+	Wed, 16 Apr 2025 07:28:27 +0000
+Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4x30-00000008aAt-3LTz
+	id 1u4x6e-00000008b3V-23WX
 	for linux-mediatek@lists.infradead.org;
-	Wed, 16 Apr 2025 07:19:04 +0000
-Received: by mail-lj1-x22e.google.com with SMTP id 38308e7fff4ca-30bf7d0c15eso66419601fa.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 16 Apr 2025 00:19:02 -0700 (PDT)
+	Wed, 16 Apr 2025 07:22:49 +0000
+Received: by mail-lj1-x236.google.com with SMTP id 38308e7fff4ca-30c461a45f8so56365501fa.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 16 Apr 2025 00:22:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1744787941; x=1745392741; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1744788166; x=1745392966; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=CFJXzkHk3Kj2IxuOJ/Ep1Of/eMdCvzxnv7r1gWoCH1U=;
-        b=O0iq+PeWmcF86l+qtbP3XlqLlE368IaaFH/gBVQx/Svd+9h4G9ltXMAZc0mxWXbhZ0
-         pUs/KE1VVQvw4jxTVRPqhp/Fnb7zecxBO3UXInzJyj7MPjy9mQEJUfZAlFtqsFg+9ITu
-         +GMiiyORVtkIavCmv4j7kSFEdxcQ+wgaSQifFXJxmzq+BTfE4pykjYBG/BQ+3Oqtv4jz
-         FEdK12pdhSd9zSYotEXr4Uryh4WtInBCahVHMaa0yfycoJMMJyeqqvJg9S+9smfZr9K5
-         g+2ktD0rzGWFkU1W+2yajv5yyJLRXorURpQDhbQ39Rtrtyafam62WZGYqy15bSFH1NXh
-         gxTw==
+        bh=xWD5DtO8Zmjj8hm/jgNeXXYBfzD9O0HKgWcyYm/pe+g=;
+        b=SQ2JhPr5W7ircCiYq+TjJ2UiNiLictiljDv++6ZgfLBYCO3qRA46askCnodROHRNKf
+         imen+o8KHd9saZzTzDHOPdwqr/DxzlMn322KOAEW4i0RzSagP454W+mto8/aOE0NqRqr
+         SfGYGQs3kyP8Hx7uI6fdoeaqY/68KDX+Mr9/9Allz4kJOz5zpHNMyDsZ8ROIO0YgvGsS
+         u/JCOMleuX90kzUm1b0ZsvjsmTrSA2jN5aQCFaBg990RNcRWVjFvTpxzvWUN/fRWSC6z
+         1+FZg0/WitVq/NeGorsEyM87q/ED5rY5AejA0Jbhy1GSWyZbFrEB0jyTHBOxQqI0NWgl
+         syBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744787941; x=1745392741;
+        d=1e100.net; s=20230601; t=1744788166; x=1745392966;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=CFJXzkHk3Kj2IxuOJ/Ep1Of/eMdCvzxnv7r1gWoCH1U=;
-        b=tnJTezwC+seNWuhz3ujRdBjjXMar117Z1XWsA9SXqyNJ5JKSETIBsBBM2kOABKW29g
-         +fRwZ5yl7ixQdXKxNn2ODntaRCB3e7FWx9zlsfQMT0F9kLCreDtupJPvb0z9Q+m/TFAm
-         mNr47C4UTKhckY6hWfTvnJbnRh6uIOrKdrljhha5uIPTW9s3zxE3mcaHrkoOMDuIyqhC
-         MIZqTUCNIg4S7etbnz0aqfuYPy5a8VXAwBdQI5ng8DBkkIFsFJQlW2lB4MR1K2a+LNC8
-         9OQpj73ysq2Oc1mbdtrroY27FTfVqVgxdMSqAg+jjs2LorJlVicwHcwU74fhP4my8895
-         B/zQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUcNgzl/aD5+dX5iR4g4l6d16r2XTc6ZIIbJXaJ0jGAnmDRrTvMZ/GUtjo1cg9A409pwl7PHlZ3WOSvS0Wriw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzdRwFqGiYnvf3Q1aHgCCotoVeNNqEpJTz3FxWhCkovIpDNI9lh
-	ZG39XIYnLIHKOaGsqDvGCXpIPw2dCfS6eVOpCkZm/aFiIIKKAOXRlLNdRkvhZUy7og9AJ5EYQac
-	TnN6ZvSN4SgPXOqRIx9Pi+urBym/ZfvJZxw2BHg==
-X-Gm-Gg: ASbGncvOhy7o6p9gxf6bEyUXsyb6YLb3zq7gX7GM/6dVBwgdlvNj6kWCQpZT1z3LZ+o
-	M0ojOh48G+6t8DC557a2oPpreZkQukV0NCv0iBM07FZznB3+wWOr8Dw0B3NKsUOBdlXA/5pUikv
-	GeZjUoA4X3ITmXzChrZwGMrtY/g2gXY3NK
-X-Google-Smtp-Source: AGHT+IEwGuf6I9l4WitaTnVvA0VbevlCNH9pw1Uf1YwESFwjIdIWV04UPwa2Rl6g3j8USJoLTzOTQddgM+ExezMBQpQ=
-X-Received: by 2002:a05:651c:12c1:b0:30b:ed5a:6f3c with SMTP id
- 38308e7fff4ca-3107f6bcf91mr2027921fa.10.1744787940653; Wed, 16 Apr 2025
- 00:19:00 -0700 (PDT)
+        bh=xWD5DtO8Zmjj8hm/jgNeXXYBfzD9O0HKgWcyYm/pe+g=;
+        b=jQCGBVTYSjvtsMfiZDXZ00Su/A4d4raWc4DpJrIFg9UaX0HoCJD/rUrmb4Fty8sqmA
+         d3MXMbF+hXsv3vxnhIrRRYfDolqljPXcKc3/7UdnQNNo9Mrq/7a2xl8lB6/qD2nvOWeh
+         iuBjbv+/KuLcjL9+rcuHXiSVr+rB0X8Ohrz2r3b9Rd8aU1W7MDEg6FCJLADYaqMqNG0V
+         34wvveud/bkUmqILD0HhK4JppcucWqbOvjYaG+I4hMnEV2zHClwnvLVi/CFzMA9QKcrX
+         zhhS7OJBC3cI46QoaejyRJpsIWUBmNDWfeblDXb9MD0+N8gj6K86w8TRa0YJ4nLDVtcZ
+         DTrQ==
+X-Forwarded-Encrypted: i=1; AJvYcCV+KTcaShp6NIrYE7jgPc8fvajRMo40esxFWy5nF6/KHJYbIql6UrYT20ayqWGaiLv2zECT9+m9JRV6EL778w==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz5+IX3e0amRZSQlby+eKn+nsSq2B7oU5R2rmETxoIxWLzyerVS
+	aut+UToA9isjQC4JuJLqcxNi1nN2ug1RYeeUgRV18qrhymVid+gkIKkIeq5Q0lIGW9byRMZWISf
+	Ot8/LzheS30MXo6VYJzBUGVrVSixmJwlY6prqww==
+X-Gm-Gg: ASbGncu5wPXskE0BbZhoataYN6HGNlg9nfnto87Ei87KQJDKAft7/Tst4OhAuW5/8wq
+	YTMvxeKORsnarFPb7TsOjTh/2qXaD7ZlEuxwgvDfmx9ZeE56+8dgfeZ6Yu7y62WUzcLRM/djb/b
+	NxWBm5B0JS2UvR1GcUPUPs2w==
+X-Google-Smtp-Source: AGHT+IFJzy+zttruUfUSE7DAKwZxb0lvHyIXLpWKETv/eqQTmvTOtmlAPv2KPiXrE9yHLzHL0bc/wktEHBwODzsfibQ=
+X-Received: by 2002:a05:651c:243:b0:309:2ed:72df with SMTP id
+ 38308e7fff4ca-3107f6ceca2mr1915221fa.24.1744788166445; Wed, 16 Apr 2025
+ 00:22:46 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250410144044.476060-1-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20250410144044.476060-1-angelogioacchino.delregno@collabora.com>
+References: <20250414090215.16091-1-ot_cathy.xu@mediatek.com>
+In-Reply-To: <20250414090215.16091-1-ot_cathy.xu@mediatek.com>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Wed, 16 Apr 2025 09:18:49 +0200
-X-Gm-Features: ATxdqUHFBx4p6s8-l7d5L0o8ZWLKTNSVqhv1VO0pGzs9J7s5wacyrKjxAz3vpys
-Message-ID: <CACRpkdbKXfQVNGm=QoCHE8xeMKDi5Z1jCmk18XAaTzCcWCDjuA@mail.gmail.com>
-Subject: Re: [PATCH v1 0/3] MediaTek Dimensity 1200 - Add Pin Controller support
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
-	matthias.bgg@gmail.com, sean.wang@kernel.org, linux-gpio@vger.kernel.org, 
+Date: Wed, 16 Apr 2025 09:22:35 +0200
+X-Gm-Features: ATxdqUGunV3YCOGXGIOJ9QSL-oTOhWVqzDgVFDf8RsYkNrat6ruPMmmT7W9km-0
+Message-ID: <CACRpkdYUqHzid4Rnuv4arC9wu9fmpcGR22Jc5JzJhyr7fABMCw@mail.gmail.com>
+Subject: Re: [PATCH v7 0/3] pinctrl: mediatek: Add pinctrl driver on mt8196
+To: Cathy Xu <ot_cathy.xu@mediatek.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sean Wang <sean.wang@kernel.org>, 
+	Lei Xue <lei.xue@mediatek.com>, linux-gpio@vger.kernel.org, 
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	kernel@collabora.com
+	yong.mao@mediatek.com, Axe.Yang@mediatek.com, Andy-ld.Lu@mediatek.com, 
+	Wenbin.Mei@mediatek.com, Jimin.Wang@mediatek.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250416_001902_845150_2C673716 
-X-CRM114-Status: GOOD (  10.16  )
+X-CRM114-CacheID: sfid-20250416_002248_523486_2A20A2C6 
+X-CRM114-Status: UNSURE (   8.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,23 +101,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 10, 2025 at 4:40=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
+Thanks Cathy, this version looks finished!
 
-> In preparation for adding basic support for the OnePlus Nord 2 5G
-> DN2103 smartphone, this series adds support for the pin controller
-> of the MediaTek Dimensity 1200 (MT6893) SoC.
->
-> AngeloGioacchino Del Regno (3):
->   dt-bindings: pinctrl: mediatek: Add support for MT6893
->   pinctrl: mediatek: Add pinctrl driver for MT6893 Dimensity 1200
+On Mon, Apr 14, 2025 at 11:03=E2=80=AFAM Cathy Xu <ot_cathy.xu@mediatek.com=
+> wrote:
 
-Patches 1 & 2 are clean and simple to understand, so
-I applied them to the pinctrl tree!
+>   dt-bindings: pinctrl: mediatek: Add support for mt8196
+>   pinctrl: mediatek: Add pinctrl driver on mt8196
 
->   arm64: dts: mediatek: Add MT6893 pinmux macro header file
+I applied thes two patches to the pinctrl tree.
 
-Please apply this through the SoC tree.
+>   arm64: dts: mediatek: mt8196: Add pinmux macro header file
+
+Please apply this patch to the SoC tree.
 
 Yours,
 Linus Walleij
