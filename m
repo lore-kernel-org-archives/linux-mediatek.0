@@ -4,86 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACB95C369B1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Apr 2025 07:32:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C94DBC369B1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Apr 2025 07:47:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:To:
+	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Vu1Z1iNyXH/P0QywYALzynooSIZlETxbTzFpRmXM8t0=; b=gXCesFDrVfjPdiD1Gn0zqr26VT
-	iA3u4U4EiJW0dFGz1A1H/I+9UQkjK3bz1ofcUI0zc/deHj1L4OzGOUkHm6+JrTie0NTbcY3pdYrJ8
-	NWiNWMTuD3qBwPCG5vBdL4tg8C+tYJrSpG25Ijvq0EQFJrT/JkGD0x+G2VFJY1oJ5r3prkgNTCPSo
-	G+NgcDDaNlraWM0fi8ZHMyYyy7jCOih8rTDrcQfx+SMWt22FsKVy5vH9rd3WnFyUm8lHxe501gWqA
-	C5rR0DkUh/Qe8HS0P/pDL893UNQnR28/NSHxOidSqFsFXgWPb69mth/H280PRiZ13fYHiq+X/+sXm
-	D1n4kPzg==;
+	bh=abI2JFnN51Fprcf7bwh8hgubrVutcDKlmiL/HsbIAiw=; b=qn1RgIzfCeKUi17L4OoSjFo3vd
+	Ma+ZaxIO/ditrBUrZHW1Oies5DwKmldBYxe+BxBYIJxRCw2gybNuxRrUA+j3UTy9X5xPLwCofNuPI
+	f8b2Vfn6sBJSYvmB/VutGTzOvn6BLgQ+gdtIJjQ3bL0gfx1kCXKz8uPaQDIRvsFNrPZhZYukuIlYT
+	F73l9MkMyEMH8W0/pWIBF3gAn904M0guhm7VOybTyRwxzkDj4bwqR97WQ4BSRcQ4rSMP+xWTC8FsN
+	OKat4qTymsZSt+hk1pkXmVVyFPlTs0ufRLcmm2aSYkNIBRLtp1xcIOttjH7MC/xiCk8bEnxDk5xeU
+	S7w7jKtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4xFk-00000008cuL-2auW;
-	Wed, 16 Apr 2025 07:32:12 +0000
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+	id 1u4xUr-00000008gPf-3Zgt;
+	Wed, 16 Apr 2025 07:47:49 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4xDW-00000008cUQ-0HOO
+	id 1u4xOo-00000008fCx-0Iwk
 	for linux-mediatek@lists.infradead.org;
-	Wed, 16 Apr 2025 07:29:55 +0000
-Received: by mail-lf1-x133.google.com with SMTP id 2adb3069b0e04-54addb5a139so7195863e87.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 16 Apr 2025 00:29:53 -0700 (PDT)
+	Wed, 16 Apr 2025 07:41:35 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-ac79fa6e1c2so103457866b.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 16 Apr 2025 00:41:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1744788592; x=1745393392; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Vu1Z1iNyXH/P0QywYALzynooSIZlETxbTzFpRmXM8t0=;
-        b=qOkQqmKAG7j1+0XdwLHQj3xlj1tCW16HwdHoRpdbEzTchiDnQ7NWjcy8pl+aXzRUEF
-         N+zz1zY/wnAE5vn2M+xKdiRrx10SzPBEj2OKHEIi5n0quOp4gSIHv61RZBp1Y6lP27Tv
-         FWDv7j3pJ8ELZ0i5ni9pKzHo0XCZJ4ytSACwra5oY5Jig7GBjF/qpMXLDlmG6ZpzxwiT
-         p8FxGaZ5Owq1DfSIEYYkj2YcpUHs4wkYSLtgSex56IJficECkesHcWTZPA/1SKxRO1Ku
-         ldx7BP1Dqyq/XJ0WC06Lc1oFd/vV9F98WLhXPNGvJA81hnoiE0kiolg9KKDpGO1PG1ni
-         8Edw==
+        d=linaro.org; s=google; t=1744789292; x=1745394092; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:date:message-id:subject
+         :references:in-reply-to:to:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=abI2JFnN51Fprcf7bwh8hgubrVutcDKlmiL/HsbIAiw=;
+        b=NyBimBmzyeIdChUW7/PYK6nVW0fwvW4HDC0xdUQhnFHeNwqEtLxaoT6EXzOyKBSi10
+         ugfymjmJ+9yj/htsV6aaPaMw3e9wHRQ+g/gM41Abgl0+FHrz2dcUP0P4FAEklND8LvVm
+         Bhh1RB+Qbtl9ArSanm4RFj5lpeJOOz7nF3OydCUinzXrN1eKS9M0qYj55O60p9jpnBtZ
+         myp66vHQACayIzFsaqMviSVgHDo+sWZh55cWocIC6SUDqzF2qwrx93ACCSvO9CmMmNmM
+         Ny2d/rSnRabOrYFb/q1YDeap2I4v3MZ/p9Gl3p09bQeepv3snaXkkWp7ytIOMfw9KfZm
+         76iQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744788592; x=1745393392;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20230601; t=1744789292; x=1745394092;
+        h=content-transfer-encoding:mime-version:date:message-id:subject
+         :references:in-reply-to:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Vu1Z1iNyXH/P0QywYALzynooSIZlETxbTzFpRmXM8t0=;
-        b=pdw8C6felvc1X9PsvrDU11PoyW9GgihBhDE9vXXQhwEhD9SuAJKVnqfNZX/ASnMIhu
-         rRmp6SWCg6ek25wL4gGPBJrrnffpgTYyQ/IK6cjbWJAqfuYyg9GklfBwmXyIH7mT9MML
-         h925DQwTcDCgkb0lixgvgm0NzeIhP6MisKWqg2c8gWy14+KRtTC3rURWT3lp6Fi66S1s
-         pKRl0tp8khF47fCrDZep4Qun86VeCd5ZTDna5jb/02q7I0rc+MTwt2Mq5I8G6+v6rDh5
-         cfS6RJyDeAsPhmkKT6/2eoXsZjaSVPU1wgYz8wONrFCZAJufjVhk/84miS550EB7kWab
-         fsVg==
-X-Forwarded-Encrypted: i=1; AJvYcCXC6O8N+wtTAYxMFEklxNTUYimDvvo5oUqr7JLC+90J8RIGfzo5sV+/6zugInX3EkQccGrtTHMdQlfI308gJA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwLd+uzgFyVpibYqRsMsesGc4b3e0VU2VOH60O48Cc3TVyqtdxV
-	7qybr6DLM0g2cC9VODpfV0Xx4rlCBi1Pn2rt7qybE9q3UfGSYMjNGoEZ1pmyvn3nXHhWaLMPBhl
-	i4sDISsOxxeSATfpC5Gg6JLdv59bc87SYoAa0Fg==
-X-Gm-Gg: ASbGncsTdc1uW/U4waiYrGQMRYU1nPx7d/sajD0FkcU4idScCERjkSMhhK4aILhGofj
-	aDhsihi/+Qqu0nGDAymh3I82ksR/uuQkheTZXMEUIbYdGE/rHefDSjImuzd0d5k/HmXqKPvUdcc
-	RujA0T8l+GuqO16/KLMhWhyw==
-X-Google-Smtp-Source: AGHT+IFIpyoa4b37GuE7bShcO/RCUjBlfmU/mTjYO4extyxyEAUNDPyqKbiJFcyUDnd++AOe+MPmtXvLY9f9jwMpHVM=
-X-Received: by 2002:a05:6512:108e:b0:54a:c835:cc4b with SMTP id
- 2adb3069b0e04-54d64aea449mr196703e87.45.1744788592107; Wed, 16 Apr 2025
- 00:29:52 -0700 (PDT)
+        bh=abI2JFnN51Fprcf7bwh8hgubrVutcDKlmiL/HsbIAiw=;
+        b=mu9FADlsM+hPOTygzS963WH7ycd2A855A5ijrO35rPdg5Qi4iWkRcbbR5bodjzHu3H
+         Wxh72xix7lT5tmnmj9gVdUkbF5a5Q8cKajoZKc6uqLomaeoKqBuGbJkm8EQQDoAKEo1g
+         uO9q4R4FTA4oiUyNC4JlU+L2zirA5uNwT7lENriizIRpZ790vu96FDppIyLMidvHQVcz
+         Ggq5pzzGyIbYoZxYMpbpHJcYmc32r+kJAk9qrNVTlKQL8/dFKsdBmOL+6qBH+7eoRB/e
+         IaRUU3wkT9ogHZS+IhXMd8cD70sG6+hFfgTbFGhlsNfUP7IgLJcsdrkz/QCAdjYFHIjP
+         SIMw==
+X-Forwarded-Encrypted: i=1; AJvYcCV6qGYrB1ABeldnO3F6Q9ZN6Z0QpI03ydQHgYTwE8f9i8wYt/icysDEqdBTPygs9Cl8v8sMsWFlCEJAN67ovw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxJNeUMbbkjqIl4ukVLtfZfkb0BqpQusoJjRGRMBI74mjFcyVip
+	brmhrv2gAnq8AhB70yVW6usjYunRGgC6eluL1/hZgmrbSeuMm7Ryk0RoJ1Cx4yY=
+X-Gm-Gg: ASbGncttHnIuaJu9KBLYX2Ua/mrIdcHkBDDrYMkSSLJ/uMiusxjnCfjQ+cL5YYrJK4L
+	XWlKnpPra6wVXuc3dj0lc/9j+wIxXBI16G9urB7urc/YIhQfT3hVORHnm/c4lopkWmyeWS6sQj/
+	8Pjbn/TqOhmMDr51OWi/QuhHJNyPXgrHyCVUptCYbNBEh0QHHUPCosLjxFM3mYcFxTF+jVDzJ9e
+	XkYVKC2yU9A5q6D9JSE9H+yXF173qrfQSs9bIK8qYV0YVlX/0codocblOvXx/SqMD0QmcDqK0s5
+	kSaHrB6ctgjDN3O0ruMowriBL7h8imR5O9v4HjYBBosoU6IY4oMktZJ9mU7+KJg9A4/TEwhPcY6
+	9E7tUwWcHdDBFC/8=
+X-Google-Smtp-Source: AGHT+IE8h6ZIusbOx2fa72lKxk2qdTusNLhfSvFACqZPuu8uuX7bjmdba+8fMR+GvnuolveGcRCPWA==
+X-Received: by 2002:a17:907:7e81:b0:ac7:3910:17b9 with SMTP id a640c23a62f3a-acb42c8e771mr17201766b.16.1744789292298;
+        Wed, 16 Apr 2025 00:41:32 -0700 (PDT)
+Received: from [192.168.1.26] (46.150.74.144.lvv.nat.volia.net. [46.150.74.144])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-acb3d1cce01sm74205266b.160.2025.04.16.00.41.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 16 Apr 2025 00:41:31 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20250115211801.194247-1-krzysztof.kozlowski@linaro.org>
+References: <20250115211801.194247-1-krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH] arm64: dts: mediatek: mt7622: Align GPIO hog name with
+ bindings
+Message-Id: <174478929099.20468.14418379313255979226.b4-ty@linaro.org>
+Date: Wed, 16 Apr 2025 09:41:30 +0200
 MIME-Version: 1.0
-References: <20250415112339.2385454-1-wenst@chromium.org>
-In-Reply-To: <20250415112339.2385454-1-wenst@chromium.org>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Wed, 16 Apr 2025 09:29:41 +0200
-X-Gm-Features: ATxdqUGsaRj7mRwORGwu-YQfJxqBlwgA7akp1LopdnGat1Af2KKfApGkes9E8jA
-Message-ID: <CACRpkda0HVd1auh1zmyX8QdDCL6jNVb+JYj7hbZrdg+v26BQWw@mail.gmail.com>
-Subject: Re: [PATCH] pinctrl: mediatek: common-v1: Fix EINT breakage on older controllers
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	=?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@baylibre.com>, 
-	Hao Chang <ot_chhao.chang@mediatek.com>, Qingliang Li <qingliang.li@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250416_002954_106903_5550BD4D 
-X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-CacheID: sfid-20250416_004134_157199_1C369274 
+X-CRM114-Status: UNSURE (   5.97  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -99,27 +105,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 15, 2025 at 1:23=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.org> w=
-rote:
 
-> When EINT support for multiple addresses was introduced, the driver
-> library for the older generations (pinctrl-mtk-common) was not fixed
-> together. This resulted in invalid pointer accesses.
->
-> Fix up the filled in |struct mtk_eint| in pinctrl-mtk-common to match
-> what is now expected by the mtk-eint library.
->
-> Reported-by: "Uwe Kleine-K=C3=B6nig" <u.kleine-koenig@baylibre.com>
-> Closes: https://lore.kernel.org/all/43nd5jxpk7b7fv46frqlfjnqfh5jlpqsemeoa=
-kqzd4wdi3df6y@w7ycd3k5ezvn/
-> Fixes: 3ef9f710efcb ("pinctrl: mediatek: Add EINT support for multiple ad=
-dresses")
-> Cc: Hao Chang <ot_chhao.chang@mediatek.com>
-> Cc: Qingliang Li <qingliang.li@mediatek.com>
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+On Wed, 15 Jan 2025 22:18:01 +0100, Krzysztof Kozlowski wrote:
+> Bindings expect GPIO hog names to end with 'hog' suffix, so correct it
+> to fix dtbs_check warning:
+> 
+>   mt7622-bananapi-bpi-r64.dtb: asm_sel: $nodename:0: 'asm_sel' does not match '^(hog-[0-9]+|.+-hog(-[0-9]+)?)$'
+> 
+> 
 
-Patch applied for fixes.
+Applied, thanks!
 
-Yours,
-Linus Walleij
+[1/1] arm64: dts: mediatek: mt7622: Align GPIO hog name with bindings
+      https://git.kernel.org/krzk/linux-dt/c/6e3b067d3c5e00dea2e38c609fcd247baa74dec4
+
+Best regards,
+-- 
+Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
 
