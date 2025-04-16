@@ -4,90 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 068E4C369C7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Apr 2025 10:31:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75B3FC369BD
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Apr 2025 10:31:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DXCImHbhgaHYD5NXAki2E5LHyVFHbeqj7RL6q2PIT+U=; b=BIc2g/cWZeP+B4YjxqmF6FTOj3
-	MIfi1S1ux0cOLUK9k1EjbPVOfMHrT5jtErr/gZHsSeBqojEEeMtiMrdjBAZ5+FvAbzoA7pZqaR85C
-	pZac+QpMaSoNmbnKql0PS/4aZmvoDAVzqlbPWgNoshrdufvTnMeY5cxHaILszitDk/8jORYRUXNBj
-	qnLetr0tI4r9f4hwok94q770PxKvhnmgeYNlFNqjdyPjka5ucl/HNSSgay68TNOnrqRwwaKUv2DE/
-	/Qv92b3oGR5ZdfPG+gbeqiLy3RACIBHohfANLswT3t6LGNsPJfwAxxQ+zq47HmDIFrDaCOTrWrrK0
-	sZ9Px7Aw==;
+	bh=xqJhOsBVsWyVYfnqK0uV7I58LupVbknyuOuIXchLiwY=; b=zA+WLRPn4gMKR3LiP5aL1iYB3f
+	GJ5g+T+a/qgnu5AcGokhTrCVKyU1fnyGtJDIu9xckr25g/5n3dm/lyFhZaxGRlfizrJj0/jDyvulT
+	ob3+Hb3ETQTRrWQ/vVq8DgSQISclO/b8/milcqLd2O6QtWES1xPLI1bKDr9way+FK+LAja7xx5AEp
+	0uotkcgV5TICDj/IBPnYaRpgtgDKuA96K/tkLJBxi2SY8DJ0wNydsCZ60RBUeAtKO0mDFqJ9SBlQJ
+	QN8UHJf1XqGeZxCjPGRG13cXaaZ5jFogPsqw+Ak3L43lCpLcRa426CAqgkYgtxZHAoyOE12KiLDuW
+	BbWe22rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u502v-000000098uz-1iN3;
-	Wed, 16 Apr 2025 10:31:09 +0000
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+	id 1u502s-000000098p0-1ELr;
+	Wed, 16 Apr 2025 10:31:06 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4yGO-00000008qTV-3Yl4
-	for linux-mediatek@lists.infradead.org;
-	Wed, 16 Apr 2025 08:36:58 +0000
-Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-5499614d3d2so7305138e87.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 16 Apr 2025 01:36:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1744792615; x=1745397415; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=DXCImHbhgaHYD5NXAki2E5LHyVFHbeqj7RL6q2PIT+U=;
-        b=Mk4R82EaKhkISjJ5NZT3bSFh7UtnZQLNIn5D73p95oZej6t5HBad5qf+oVIGrDvxxQ
-         hpip8KDF3gF43LbQOFUui5MFxoOLXYP7YAdQAL5zMidcCkiCvaI6Orozyo2UTPMhbEim
-         8G/9i2cJxynI68a1mPSyaygQ2ZSV0b3Cr1OLvqRw8cT1aeiBjFYmUkKqOUG/oyk1jacx
-         ZIuYKUazTZ1QDiY2DV74TOxAxU9UjXMVuhjzqfGPeoH6cqXdc4iv7qWF+opLzDhQkL9X
-         3oH7GaDrvuqU7gSNUQbM4gJT1/qeoupwoQ8Tn+npEW8Q4H16smpm9cj35OxRi6QupKbT
-         8E0A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744792615; x=1745397415;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=DXCImHbhgaHYD5NXAki2E5LHyVFHbeqj7RL6q2PIT+U=;
-        b=lH1cOeNVqIr400cl1ZpyESaUKp4IOelZ0tLpR3Brol/DRP/AMmrc9fSsXDKhNtoET+
-         E/HaLSLXGqM26ixGdCaulXslo3YatKemB3GcrTwf0isdAAw874n+0Y+pHpMLyhKavFSl
-         mrVeoXQxrTTm+vOyd25PGuELPPYoDRqlKmkn9GczJj2SNVkV0VTASaPisYIDLuzJN3vG
-         pvPu8LmzxKSw7f7gpZ7VbyVe7wxmKLkGmAVFnzzoYmXDnj7JLjGhn3ySpPKAZFboyNqt
-         HotRtoPpU37HRJ1pPU3O266Y0c0bGar7iaBIHSTqppBohnkWhY5+JrzNUOM8tpWF0XVK
-         Ic3g==
-X-Forwarded-Encrypted: i=1; AJvYcCUJJeZQcdrmKFDQG5HB6xSUn3bh4CFVuFtuwZDz8TlU1XV9mllw1E1M+n9JZz8yMbvsGT3BRmm/+/ufrF/pcg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx2mN2ekfBHp3eunnwbIJwGv3/bpRtjun0cysvqZJPHol0lLLHp
-	oUHlR5cwitZjCxfOCLsMso2RM0up7XS62F0ypHkbiW5R7fNX2Sb6ziwXhEOm4t1WodYY22DNNat
-	MUdi8AFoV3atcSOhBWbKqJtiyforFN4I/vFKCcg==
-X-Gm-Gg: ASbGncuwU1jvAWwTMBk2wbOEVvpU7gS9tmcYj3XsDIqqX8qKxbWeY2pTfUIBzGPBV1x
-	uT1Z6cHndlg2jj5w/8uX3Pz1KpRuz3JtMEQaj5xVBtmyU4D8ld6SvTdeC57iprqFSupfiKjy9i4
-	CYWDW3nk3aovLnGisVnRtgMW+nLFzKQjXB
-X-Google-Smtp-Source: AGHT+IFnTyulj/0oGbeIikzilFJSE7sEuMb0JSQLD2qCkdI3QvGlZH639PCmqr2wKnbHsJXFbiOa8zKp3Mk8GGtQ/fo=
-X-Received: by 2002:a05:6512:3d02:b0:549:5802:b32d with SMTP id
- 2adb3069b0e04-54d64a7ae44mr362901e87.3.1744792614952; Wed, 16 Apr 2025
- 01:36:54 -0700 (PDT)
+	id 1u4yFy-00000008qOy-2Rne;
+	Wed, 16 Apr 2025 08:36:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1744792588;
+	bh=1d2N2Qn/JW5QWfjpDUYk7isFPV0A5T0sy4jRKhZximY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=A1Svrby0uVBqHw5jN3tu1pxER4Q8GYXwnq/a2p/Aa0ic3o8l9+2cLEejsDTplQlUC
+	 khUk2yP43g20pxuwiH2RSN6TwBfhBMKk80Cjo7Oti15szIGgPuH/y+BB6bbickqFDA
+	 IQE4JZDFrklcWSFmEF8T5MT/4rUSjQxvkTJt9scFUmEUlwkv3131viA6d3dWbB2DUT
+	 CmISE3zyQkgLfLa3MHvIH3/EIDo2ovLtG8HPuPcaUCqvmUA9JXMpqHW0JZ0DKymAIE
+	 qcmrnF0gwPdQvllMcZiM26tm9cQWmsD0D2osWJNHLRsAet43omk40PSZvyX1Xk8qQu
+	 8z1DXtLNrwwFg==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4212117E1034;
+	Wed, 16 Apr 2025 10:36:27 +0200 (CEST)
+Message-ID: <7f4015b1-9151-4964-88bb-55a6448b96dc@collabora.com>
+Date: Wed, 16 Apr 2025 10:36:26 +0200
 MIME-Version: 1.0
-References: <20250322035307.4811-1-ot_chhao.chang@mediatek.com>
- <20250322035307.4811-2-ot_chhao.chang@mediatek.com> <43nd5jxpk7b7fv46frqlfjnqfh5jlpqsemeoakqzd4wdi3df6y@w7ycd3k5ezvn>
-In-Reply-To: <43nd5jxpk7b7fv46frqlfjnqfh5jlpqsemeoakqzd4wdi3df6y@w7ycd3k5ezvn>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Wed, 16 Apr 2025 10:36:42 +0200
-X-Gm-Features: ATxdqUG40hdym0n5Q2fxGBsUSS0OPVO8ybbpsBi47RVMjHapZZipAk2JRY_FG-A
-Message-ID: <CACRpkdbhGJhmNhoS-rqWEtqvH=D_2Q2+djaXWmyEu3o8UEcaZQ@mail.gmail.com>
-Subject: Re: [PATCH v5 1/1] pinctrl: mediatek: Add EINT support for multiple addresses
-To: =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@baylibre.com>
-Cc: Hao Chang <ot_chhao.chang@mediatek.com>, Sean Wang <sean.wang@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Wenbin Mei <wenbin.mei@mediatek.com>, Axe Yang <axe.yang@mediatek.com>, 
-	Qingliang Li <qingliang.li@mediatek.com>, Hanks Chen <hanks.chen@mediatek.com>, 
-	Chunhui Li <chunhui.li@mediatek.com>, linux-mediatek@lists.infradead.org, 
-	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, regressions@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v9 17/23] drm/mediatek: mtk_hdmi: Split driver and add
+ common probe function
+To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
+Cc: "robh@kernel.org" <robh@kernel.org>,
+ "jie.qiu@mediatek.com" <jie.qiu@mediatek.com>,
+ "tzimmermann@suse.de" <tzimmermann@suse.de>,
+ "simona@ffwll.ch" <simona@ffwll.ch>, "mripard@kernel.org"
+ <mripard@kernel.org>, =?UTF-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?=
+ <jitao.shi@mediatek.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "kernel@collabora.com" <kernel@collabora.com>,
+ "dmitry.baryshkov@linaro.org" <dmitry.baryshkov@linaro.org>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ =?UTF-8?B?TGV3aXMgTGlhbyAo5buW5p+P6YieKQ==?= <Lewis.Liao@mediatek.com>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ =?UTF-8?B?VG9tbXlZTCBDaGVuICjpmbPlvaXoia8p?= <TommyYL.Chen@mediatek.com>,
+ =?UTF-8?B?SXZlcyBDaGVuamggKOmZs+S/iuW8mCk=?= <Ives.Chenjh@mediatek.com>,
+ "airlied@gmail.com" <airlied@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
+ "junzhi.zhao@mediatek.com" <junzhi.zhao@mediatek.com>
+References: <20250415104321.51149-1-angelogioacchino.delregno@collabora.com>
+ <20250415104321.51149-18-angelogioacchino.delregno@collabora.com>
+ <bc094a07-2a4c-4048-8c15-b096db62f142@collabora.com>
+ <01872a8318e2c87b124631822785d3ea494030f0.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <01872a8318e2c87b124631822785d3ea494030f0.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250416_013656_884211_A85789C6 
-X-CRM114-Status: UNSURE (   8.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250416_013630_805411_EE4E9E68 
+X-CRM114-Status: GOOD (  13.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,19 +102,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 14, 2025 at 4:57=E2=80=AFPM Uwe Kleine-K=C3=B6nig
-<u.kleine-koenig@baylibre.com> wrote:
+Il 16/04/25 08:44, CK Hu (胡俊光) ha scritto:
+> On Tue, 2025-04-15 at 12:48 +0200, AngeloGioacchino Del Regno wrote:
+>> External email : Please do not click links or open attachments until you have verified the sender or the content.
+>>
+>>
+>> Il 15/04/25 12:43, AngeloGioacchino Del Regno ha scritto:
+>>> In preparation for adding a new driver for the HDMI TX v2 IP,
+>>> split out the functions that will be common between the already
+>>> present mtk_hdmi (v1) driver and the new one.
+>>>
+>>> Since the probe flow for both drivers is 90% similar, add a common
+>>> probe function that will be called from each driver's .probe()
+>>> callback, avoiding lots of code duplication.
+>>>
+>>> Reviewed-by: CK Hu <ck.hu@mediatek.com>
+>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>> ---
+>>>    drivers/gpu/drm/mediatek/Kconfig           |   11 +-
+>>>    drivers/gpu/drm/mediatek/Makefile          |    1 +
+>>>    drivers/gpu/drm/mediatek/mtk_hdmi.c        |  538 +-----
+>>>    drivers/gpu/drm/mediatek/mtk_hdmi.c.orig   | 1769 ++++++++++++++++++++
+>>>    drivers/gpu/drm/mediatek/mtk_hdmi_common.c |  422 +++++
+>>>    drivers/gpu/drm/mediatek/mtk_hdmi_common.h |  188 +++
+>>>    6 files changed, 2398 insertions(+), 531 deletions(-)
+>>>    create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi.c.orig
+>>
+>> CK, I just acknowledged that a .orig file slipped through and got sent out with
+>> this patch....
+>>
+>> Truly sorry for that, can you please fix that up while applying without having me
+>> send another patchbomb?
+> 
+> I would drop mtk_hdmi.c.orig when apply this patch.
+> 
 
-> this patch became commit 3ef9f710efcb in v6.15-rc1. It breaks booting a
-> mt8365-evk.
->
-> With earlycon it's possible to see a null pointer exception:
+Very much appreciated!
 
-Argh, does this patch fix it:
-https://lore.kernel.org/all/20250415112339.2385454-1-wenst@chromium.org/
+Thanks again,
+Angelo
 
-I have applied that one for fixes.
+> Regards,
+> CK
+> 
+>>
+>> Many thanks,
+>> Angelo
+>>
+>>>    create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_common.c
+>>>    create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_common.h
+>>>
+> 
 
-Yours,
-Linus Walleij
+
 
