@@ -4,89 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A36AEC369BD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Apr 2025 22:12:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B193C369AB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Apr 2025 00:53:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=31qWf8KQERvl8g/dbn9h2rj4EmG6eTFJ1VCVzlLhv5w=; b=P8xcmibg2aZ5daaV5wX4vx+XoL
-	1Mcw9RG2tblIoxafMyGMbE/XBm2s4zjQPYjIa+Ua2bVviGwHge37/2PLQ701rgwvwwYHp15xMJ4Et
-	ll2AI30fnoFEN2FsiCN2dbWn03bymTxdPqlwjK3Ifl83sPSqipDn81mpbaC4PWUiGA1FLbnDmkvb6
-	wzRc6sQTexFm6lca1kWZYQEm2btB2S2L24CBG46eTeMnWe2ZruXNFLS0w+DBLQdyHy+RVD/V7lV3B
-	PDewLNfnpcxNk2Cps0n8KH6OjrZGfrTiBdN6wbMdkTnn4EvyEhKGP+xbLQBitGyyEAdZUM6DQKcSX
-	O2SkAa4A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XIpkQAKOSwPd+uiBrJiQRFiw70sh7kBbQn2HiXdRLoM=; b=NPzefL52at+4gz5wjQJ2mV9st4
+	7dta+RTDJ02ufYiKC9ODWyl3FmaOJmxFNm2kAf1iNC+wPJnlYhU1DxbjrsVCLUZToS4aUNtmJzoGo
+	IgYXZ6CaV29lo+Iln/cf9mcsGvBvEOfc9sSBypsJ648IYBTCXmnqvXYpV9A4gJB2jRMvGe+tvaZg2
+	WyOJaVyPVLzkmkJ29U8VTrITdYhWyrSLhGdqWVZDFFwNsCQtlZWnUTRz82ZvnzQxCTaCi+dOA7I6k
+	MXrHgqQGMU5qgtHrC9gseZ5ihWBP9wRkpy03tDvQtA3NaguLXmcKF8b76EdD9TRsUPrLJ/1I05uIM
+	+OelFOQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4oVi-00000007IKs-1SnC;
-	Tue, 15 Apr 2025 22:12:06 +0000
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+	id 1u4r1W-00000007hs8-0uUb;
+	Wed, 16 Apr 2025 00:53:06 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4oUa-00000007IA0-3dTo
-	for linux-mediatek@lists.infradead.org;
-	Tue, 15 Apr 2025 22:10:58 +0000
-Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-54298ec925bso5319813e87.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 15 Apr 2025 15:10:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1744755055; x=1745359855; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=31qWf8KQERvl8g/dbn9h2rj4EmG6eTFJ1VCVzlLhv5w=;
-        b=lVT8fQXmc63YO9wMs75pVgMuUNbJmv2qioIA3bz42sHuccwll/JmW5R+IfzK/eYCYz
-         GM0oHycfyyxxQJkYIciuta1zBevwEiW243e/KzfARq4PbPmmsCofaSprqR0WDll1K3yP
-         4f5jRlrKJ0dU9OwokUtwA6Jn0S+VQetLn3oyTk/6ZClhmZQF7ZaWbVOkdSVc3HapPcrr
-         t4WfSSTHpOxWuQtS3AYy/B1WArTdDUB/OW6KooMdR1Zym6jrkBLMMcMrZeXPe6SokRI3
-         naGDh1eimmJYUdtrh8CG07vSeZfGyBuaaHxd8/McCv684v/USAoudfmT2aLPzid96tB3
-         vmRQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744755055; x=1745359855;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=31qWf8KQERvl8g/dbn9h2rj4EmG6eTFJ1VCVzlLhv5w=;
-        b=OPQLDnJ0dg8zdpvqmRevq+LepNM2cy98npplCwaJgBz/I2AkKMD3aK7hexUEwDBbbn
-         FQljR9VoY41G1jnpFoJou/GvqmANk18jeq47NYXqT2jlTNWPZtfVqfNi1eM7Ez/yEPs/
-         VlyiXOoWPrd3Sg8QvoiDh6Joi42JY5r5J2P5fFb51lWn2EEdBKbmZ+wvNMBMad0mG6G0
-         VMeGLOXIPaKL7ZgJfEgu3Y+HrOaLkRXxY4BK+LgLfhPGY77pSof8j1u81kcz1DMN/BJy
-         bX4e5DfGc1o6MHQ805jsi4DrCTvmEsOWjzvWujd2JCuwnB3fJUUFVMyZMPmGxh2Qb0Rj
-         VGUw==
-X-Forwarded-Encrypted: i=1; AJvYcCXIdQOTtdIH3irm8FpZPBiUgcA4gZ6/P4sqC+AQxcIWvRUatWmLyahAZL7NGxJZDOjb7blumfmd4addMKPZKA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxjNtacJ4aSbCvfXo7K561YNPXNSqgJ8y7DHvjncqvBv7vIYzSx
-	B8dK8FOf3kvYaO3fELNX3CpMGBu40a6W66CIZKpBjYGIwQNg4mmfcBWLHpY+BBJR9oZatIPsznv
-	Gz8L4G79mxpyinSw077s67tWNyEINAO7aZJXVIA==
-X-Gm-Gg: ASbGncvJ0NGrRJ2AIp0Ea/ijSkRjfbMHtrZUOxKP0LCSK+pUajHBX/BnBYK+AfC94Gl
-	8J83tQs80FzXNO8991afxGQ9YjhObGhW4SPq82XxUnsGJfoPye5EAkw5SIvCp+wPFwm28H+vh9K
-	VDMFrXO0IxMnzHTBdYTikPhw==
-X-Google-Smtp-Source: AGHT+IGZJzLOwnZ9qpiWHcIF+V8TMR3nGOqkOptHc/Gl4TE7Nw9LgOL4ju4wMFEnKHYqcQfWgSEgPkmfn705OlR6U1Q=
-X-Received: by 2002:a2e:be2c:0:b0:30d:e104:cd55 with SMTP id
- 38308e7fff4ca-3107c35dcf8mr1584751fa.38.1744755054882; Tue, 15 Apr 2025
- 15:10:54 -0700 (PDT)
+	id 1u4qzb-00000007hO3-3UZm;
+	Wed, 16 Apr 2025 00:51:09 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.98.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1u4qwl-000000001SU-3xn7;
+	Wed, 16 Apr 2025 00:50:49 +0000
+Date: Wed, 16 Apr 2025 01:50:46 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net v2 1/5] net: ethernet: mtk_eth_soc: reapply mdc divider
+ on reset
+Message-ID: <8ab7381447e6cdcb317d5b5a6ddd90a1734efcb0.1744764277.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-References: <20250324125105.81774-1-krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20250324125105.81774-1-krzysztof.kozlowski@linaro.org>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Wed, 16 Apr 2025 00:10:43 +0200
-X-Gm-Features: ATxdqUEUFUOJ2tt2s7fnA8fXcqPXcCQqJSFMlzS_sbWB5FOT4EwR_LV0iDgZ9D8
-Message-ID: <CACRpkdZC40M9p0VsygE4fWeybdHYD6OJ2b4BJufbCA4LVW1z5Q@mail.gmail.com>
-Subject: Re: [PATCH 1/2] dt-bindings: pinctrl: mediatek: Drop unrelated nodes
- from DTS example
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Sean Wang <sean.wang@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Andy Teng <andy.teng@mediatek.com>, linux-mediatek@lists.infradead.org, 
-	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250415_151056_908583_3DFECDCF 
-X-CRM114-Status: UNSURE (   7.48  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250415_175107_871202_B3F95B1E 
+X-CRM114-Status: GOOD (  15.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,17 +69,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 24, 2025 at 1:51=E2=80=AFPM Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> wrote:
+From: Bo-Cun Chen <bc-bocun.chen@mediatek.com>
 
-> Binding example should not contain other nodes, e.g. consumers of
-> pinctrl of, because this is completely redundant and adds unnecessary
-> bloat.
->
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In the current method, the MDC divider was reset to the default setting
+of 2.5MHz after the NETSYS SER. Therefore, we need to reapply the MDC
+divider configuration function in mtk_hw_init() after reset.
 
-Both patches applied, thanks!
+Fixes: c0a440031d431 ("net: ethernet: mtk_eth_soc: set MDIO bus clock frequency")
+Signed-off-by: Bo-Cun Chen <bc-bocun.chen@mediatek.com>
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+v2: * only parse DT once, store divider in struct mtk_eth
+    * make sure MDC is configured before calling of_mdiobus_register()
+    * reapply after reset
 
-Yours,
-Linus Walleij
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 39 +++++++++++++--------
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h |  1 +
+ 2 files changed, 25 insertions(+), 15 deletions(-)
+
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 43197b28b3e74..1a235283b0e9b 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -871,9 +871,25 @@ static const struct phylink_mac_ops mtk_phylink_ops = {
+ 	.mac_enable_tx_lpi = mtk_mac_enable_tx_lpi,
+ };
+ 
++static void mtk_mdio_config(struct mtk_eth *eth)
++{
++	u32 val;
++
++	/* Configure MDC Divider */
++	val = FIELD_PREP(PPSC_MDC_CFG, eth->mdc_divider);
++
++	/* Configure MDC Turbo Mode */
++	if (mtk_is_netsys_v3_or_greater(eth))
++		mtk_m32(eth, 0, MISC_MDC_TURBO, MTK_MAC_MISC_V3);
++	else
++		val |= PPSC_MDC_TURBO;
++
++	mtk_m32(eth, PPSC_MDC_CFG, val, MTK_PPSC);
++}
++
+ static int mtk_mdio_init(struct mtk_eth *eth)
+ {
+-	unsigned int max_clk = 2500000, divider;
++	unsigned int max_clk = 2500000;
+ 	struct device_node *mii_np;
+ 	int ret;
+ 	u32 val;
+@@ -908,20 +924,9 @@ static int mtk_mdio_init(struct mtk_eth *eth)
+ 		}
+ 		max_clk = val;
+ 	}
+-	divider = min_t(unsigned int, DIV_ROUND_UP(MDC_MAX_FREQ, max_clk), 63);
+-
+-	/* Configure MDC Turbo Mode */
+-	if (mtk_is_netsys_v3_or_greater(eth))
+-		mtk_m32(eth, 0, MISC_MDC_TURBO, MTK_MAC_MISC_V3);
+-
+-	/* Configure MDC Divider */
+-	val = FIELD_PREP(PPSC_MDC_CFG, divider);
+-	if (!mtk_is_netsys_v3_or_greater(eth))
+-		val |= PPSC_MDC_TURBO;
+-	mtk_m32(eth, PPSC_MDC_CFG, val, MTK_PPSC);
+-
+-	dev_dbg(eth->dev, "MDC is running on %d Hz\n", MDC_MAX_FREQ / divider);
+-
++	eth->mdc_divider = min_t(unsigned int, DIV_ROUND_UP(MDC_MAX_FREQ, max_clk), 63);
++	mtk_mdio_config(eth);
++	dev_dbg(eth->dev, "MDC is running on %d Hz\n", MDC_MAX_FREQ / eth->mdc_divider);
+ 	ret = of_mdiobus_register(eth->mii_bus, mii_np);
+ 
+ err_put_node:
+@@ -3974,6 +3979,10 @@ static int mtk_hw_init(struct mtk_eth *eth, bool reset)
+ 	else
+ 		mtk_hw_reset(eth);
+ 
++	/* No MT7628/88 support yet */
++	if (reset && !MTK_HAS_CAPS(eth->soc->caps, MTK_SOC_MT7628))
++		mtk_mdio_config(eth);
++
+ 	if (mtk_is_netsys_v3_or_greater(eth)) {
+ 		/* Set FE to PDMAv2 if necessary */
+ 		val = mtk_r32(eth, MTK_FE_GLO_MISC);
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index 90a377ab4359e..39709649ea8d1 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -1271,6 +1271,7 @@ struct mtk_eth {
+ 	struct clk			*clks[MTK_CLK_MAX];
+ 
+ 	struct mii_bus			*mii_bus;
++	unsigned int			mdc_divider;
+ 	struct work_struct		pending_work;
+ 	unsigned long			state;
+ 
+-- 
+2.49.0
 
