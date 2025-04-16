@@ -4,77 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0744C369C2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Apr 2025 10:34:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CDC2C369BD
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Apr 2025 11:15:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
-	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=M8M+j71R+PmQzROfFMQrSEmQk4KpBHTgVm1xyrexVTI=; b=zF1WB/ae8j9diaKgDBCdDObeju
-	nWg6U513KbXtaWqFbvPcAA+iFdjqy9lqebgIo7cRnRIfRsYBRJ7yzxkPC7E3cO3gWvsOvSifC+9hy
-	UWgjfjwdDXE+rod/lnqYt2tF8e7xrlQ4xXQ7iJWhl7tvmafda+mPMjE5VnksZrF+2VgHtz+ifDfQx
-	vHUFJaSRL9HJySL+tL5YM8I0LMwFKDHU7L/A7tIBH273xkccO/XwUfABUs665DF/T+CPi0tVFOhGc
-	ppm4jFYLuuH8DY8ivWAiZZQtZAktHklW5Yjnpacho1FHNZlkd5sDQEBO1tF7tOyhBaInVT0oPIazs
-	p5DN0IYQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MocR616+VqlYQgKAO9looh+5bl/oUxpGHWgrj7ut1gY=; b=Zcxu7tFCHSjUQ/bpxUkFC64WYf
+	ki6C3yBh1IPPV/MiGsiKxZGokZPFtjoAZLxUDTLH99QM/22lNocNyA1+oolc3V36kb7gV857ln2x4
+	P0FQLyin0X2CLl86hdmPD2HIZMbKPWek/PEO/93S4IU1pklHCFRK9yaG4R4kjeKfgyB20/Xiurhce
+	5sgd2409lblo4LY4yBZHRwp83H8tDr3X4Ce+1MQNcIvO6th/JcolGCluH3ppFQDITOoDrjk6NNi6k
+	rx+Ewz+RnuiFj5Zq8SSkNsEj1Km3xzQsjYfIVcrCJspP7vlUwu/rRnbrwvHspZwRgMmGmy9xmwyeV
+	TK0wAhFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u505x-00000009DbP-0hSH;
-	Wed, 16 Apr 2025 10:34:17 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1u50jY-00000009Jhl-1OsF;
+	Wed, 16 Apr 2025 11:15:12 +0000
+Received: from mail-ua1-f50.google.com ([209.85.222.50])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u4zzW-000000097la-3GxH;
-	Wed, 16 Apr 2025 10:27:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:Reply-To:Content-ID
-	:Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:
-	Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=M8M+j71R+PmQzROfFMQrSEmQk4KpBHTgVm1xyrexVTI=; b=T0hEdLtEyL0J619DdQWOqxM4UO
-	xBB1qJH9adpPP5NggnFTmHlD6zQr7pbj6x28w5wiF+qH78SSWa3nsB4sAiiwT2EY7wEZl/CUM7By/
-	9ylxn4P2kYNz126W/fOZNgEWvb6RjN45LGdtpvuwr2S67cZcVHmMKnlOOc5qz+ofgsCs867BEjj/o
-	29z5XmyseJ1j7beBK9Y/gzsYwS/Lmy+ijQ7ux5GM2TGTMNA8h6AHyB3vEikWDyJuplszMMGYKTKwN
-	VbXWWJNr2iQcTl6k3g83ROrZYAq0oEY6q/BxF/w38XjrKvS58wPlxopvGLF9DZGoCNvY0nZJIv/CB
-	Bh9e1VMA==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:41926 helo=rmk-PC.armlinux.org.uk)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <rmk@armlinux.org.uk>)
-	id 1u4zzJ-00012Q-2v;
-	Wed, 16 Apr 2025 11:27:25 +0100
-Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
-	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1u4zyh-000xVE-PG; Wed, 16 Apr 2025 11:26:47 +0100
-From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-To: Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>
-Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>
-Subject: [PATCH net-next] net: stmmac: mediatek: stop initialising
- plat->mac_interface
+	id 1u50hg-00000009JSf-0dXy;
+	Wed, 16 Apr 2025 11:13:17 +0000
+Received: by mail-ua1-f50.google.com with SMTP id a1e0cc1a2514c-873a2ba6f7cso2519598241.3;
+        Wed, 16 Apr 2025 04:13:15 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1744801992; x=1745406792;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=MocR616+VqlYQgKAO9looh+5bl/oUxpGHWgrj7ut1gY=;
+        b=mVLb2lf2w4rU6mpKsgS96b5qRJmcd+tUa9nU1n4JcWfmIjYPSEd0qYfxpiu8wc2ayX
+         UU+1WM2T6fZbSLyRyZJG4IT8apnojZbBPTH7dY0BB/aRJO3sykf4QqdXZMO0hIwFJ0J7
+         F0gvJjspFrwcPcicUkNctChiudRquoU3bGEn+8QdynDdv1fQiJBmWucE3EaJzsZzMhlC
+         ZiypAbu+e9+CloSMJsSfgKKivjllyA4buG9SWSZzWVfLDFLeeFPM4mjoVJZY5fGexyd6
+         eDz9V1WFDK+SjuZKN28P/kCW2rgtpwwt00E7BpVB9gN6GcMUXKJ86qyvLhWEbWUnuG5y
+         70DA==
+X-Forwarded-Encrypted: i=1; AJvYcCUYf70LnZnj60xHtkWWDnSaS4oe/Vu+DWvxfs2jIfu8p/RPt7uYM+spI8pxSbu5s2ozZzGAzr5b6oNPeTfcFxg=@lists.infradead.org, AJvYcCXo/EJE1UvIgksNb293YwiWEjerGvz1egkXBlRbjCn+HR60e7jvOkb6+TL7LOWU2En2ct6gasnY3A2kSpm9zAGF@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw1T/5SbEujfxPoJJir/OmnhGiIGMIGmPDPgRQXoLI8TRIHFUdU
+	KknKjpDP0NqPA6jTJjzl8iwZ48LIxUdD7TzRQrXcS6tYEdC4JHV4YCWn3j8w
+X-Gm-Gg: ASbGncufPC0JyEC+HPvAlXH9hTVUeNucOwrkBfqm0CCc8UI1BgNHtCo+Am8Lyg56gBh
+	WSNWJ70aYTDoKyrq+szm95A9IxaW2+QjvjUKK3fFMEVXKmODUCw2UeBnyl3/dzYNIbPUbfSWzWm
+	j/D+GXzzFbz9ktBNRII7XXff7GVvS/5ziIqcmolSJGN+TsXNulr90qnWTnHeu9y92kRyD2+TuGS
+	8vuka3J7zF4x/E4YeJiz+/EPjc2elh3Bgql8EK7ojK1sY+/KxpMAqbDf/DguyQLbrmaZjSNP/BJ
+	SC2xA4a+v8fe3BkcfZpq3U5scGVKRf+jqKsiM21XcUMjYWVdDJ/1Cq9YrcRlO40Ie8hL2Axl6pw
+	oISk=
+X-Google-Smtp-Source: AGHT+IE58K1Yf1PJTZo/0tMXFtdGPqqowIiLIrcrGqkyn29glLmVPnXVShLan7FrgRbRyPIcwm8ZZw==
+X-Received: by 2002:a05:6102:5c19:b0:4b2:c391:7d16 with SMTP id ada2fe7eead31-4cb591e5fbfmr369456137.7.1744801991841;
+        Wed, 16 Apr 2025 04:13:11 -0700 (PDT)
+Received: from mail-ua1-f45.google.com (mail-ua1-f45.google.com. [209.85.222.45])
+        by smtp.gmail.com with ESMTPSA id ada2fe7eead31-4c9c98edc91sm3025623137.29.2025.04.16.04.13.10
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 16 Apr 2025 04:13:11 -0700 (PDT)
+Received: by mail-ua1-f45.google.com with SMTP id a1e0cc1a2514c-873a2ba6f7cso2519579241.3;
+        Wed, 16 Apr 2025 04:13:10 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCUCpWt493H3qI779/1OoVgFTRL4ZluQrV5b5wa2a354jb3lHtYqEVvYoq7gEmRteWyslmEpmwueJVYP2XV3Z4LC@lists.infradead.org, AJvYcCWpyE9/CbclvU64hxoydXd4zHrF9HF4oIoc/1wGVhxWrMypzbPvlXNLgkdIHLak5J/lyTuR/+CuqH8xAdyQsHE=@lists.infradead.org
+X-Received: by 2002:a05:6102:2991:b0:4c3:9b0:9e6b with SMTP id
+ ada2fe7eead31-4cb591e784bmr414553137.10.1744801990755; Wed, 16 Apr 2025
+ 04:13:10 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="utf-8"
-Message-Id: <E1u4zyh-000xVE-PG@rmk-PC.armlinux.org.uk>
-Date: Wed, 16 Apr 2025 11:26:47 +0100
+References: <20250109-enable-rtc-v3-0-f003e8144419@baylibre.com>
+ <20250109-enable-rtc-v3-3-f003e8144419@baylibre.com> <erttkpna2hzg7zuddzlocaou2wqcwmgcxfhldwdt55yleie6dm@nfg374fv66fq>
+In-Reply-To: <erttkpna2hzg7zuddzlocaou2wqcwmgcxfhldwdt55yleie6dm@nfg374fv66fq>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Wed, 16 Apr 2025 13:12:58 +0200
+X-Gmail-Original-Message-ID: <CAMuHMdX3u97MtDiPuJgFtO5YTRuLeDHgs4tx7004CScLO11WkQ@mail.gmail.com>
+X-Gm-Features: ATxdqUHjMszLt95drNgnUajxAYkWqRme3b0HzHSYcdCgcByHGIiSYzx7n6CDpNY
+Message-ID: <CAMuHMdX3u97MtDiPuJgFtO5YTRuLeDHgs4tx7004CScLO11WkQ@mail.gmail.com>
+Subject: Re: [PATCH v3 3/5] rtc: Fix the RTC time comparison issues adding cast
+To: =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@baylibre.com>
+Cc: Alexandre Mergnat <amergnat@baylibre.com>, Eddie Huang <eddie.huang@mediatek.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-rtc@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	devicetree@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250416_032738_820437_D406C77A 
-X-CRM114-Status: UNSURE (   9.23  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250416_041316_213249_55E739CE 
+X-CRM114-Status: GOOD (  36.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,28 +100,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Mediatek doesn't make use of mac_interface, and none of the in-tree
-DT files use the mac-mode property. Therefore, mac_interface already
-follows phy_interface. Remove this unnecessary assignment.
+Hi Uwe,
 
-Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
----
- drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c | 1 -
- 1 file changed, 1 deletion(-)
+On Tue, 15 Apr 2025 at 00:30, Uwe Kleine-K=C3=B6nig
+<u.kleine-koenig@baylibre.com> wrote:
+> On Fri, Apr 11, 2025 at 02:35:56PM +0200, Alexandre Mergnat wrote:
+> > The RTC subsystem was experiencing comparison issues between signed and
+> > unsigned time values. When comparing time64_t variables (signed) with
+> > potentially unsigned range values, incorrect results could occur leadin=
+g
+> > to runtime errors.
+> >
+> > Adds explicit type casts to time64_t for critical RTC time comparisons
+> > in both class.c and interface.c files. The changes ensure proper
+> > handling of negative time values during range validation and offset
+> > calculations, particularly when dealing with timestamps before 1970.
+> >
+> > The previous implementation might incorrectly interpret negative values
+> > as extremely large positive values, causing unexpected behavior in the
+> > RTC hardware abstraction logic.
+> >
+> > Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> > ---
+> >  drivers/rtc/class.c     | 6 +++---
+> >  drivers/rtc/interface.c | 8 ++++----
+> >  2 files changed, 7 insertions(+), 7 deletions(-)
+> >
+> > diff --git a/drivers/rtc/class.c b/drivers/rtc/class.c
+> > index e31fa0ad127e9..1ee3f609f92ea 100644
+> > --- a/drivers/rtc/class.c
+> > +++ b/drivers/rtc/class.c
+> > @@ -282,7 +282,7 @@ static void rtc_device_get_offset(struct rtc_device=
+ *rtc)
+> >        * then we can not expand the RTC range by adding or subtracting =
+one
+> >        * offset.
+> >        */
+> > -     if (rtc->range_min =3D=3D rtc->range_max)
+> > +     if (rtc->range_min =3D=3D (time64_t)rtc->range_max)
+> >               return;
+>
+> For which values of range_min and range_max does this change result in a
+> different semantic?
+>
+> Trying to answer that question myself I wrote two functions:
+>
+>         #include <stdint.h>
+>
+>         int compare_unsigned(uint64_t a, int64_t b)
+>         {
+>                 return a =3D=3D b;
+>         }
+>
+>         int compare_signed(uint64_t a, int64_t b)
+>         {
+>                 return (int64_t)a =3D=3D b;
+>         }
+>
+> When I compile this (with gcc -Os) the assembly for both functions is
+> the same (tested for x86_64 and arm32).
+>
+> >       ret =3D device_property_read_u32(rtc->dev.parent, "start-year",
+> > @@ -299,7 +299,7 @@ static void rtc_device_get_offset(struct rtc_device=
+ *rtc)
+> >       if (!rtc->set_start_time)
+> >               return;
+> >
+> > -     range_secs =3D rtc->range_max - rtc->range_min + 1;
+> > +     range_secs =3D (time64_t)rtc->range_max - rtc->range_min + 1;
+>
+> In the case where no overflow (or underflow) happens, the result is the
+> same, isn't it? If there is an overflow, the unsigned variant is
+> probably the better choice because overflow for signed variables is
+> undefined behaviour (UB).
+>
+> Respective demo program looks as follows:
+>
+>         #include <stdint.h>
+>
+>         int test_unsigned(uint64_t a)
+>         {
+>                 return a + 3 > a;
+>         }
+>
+>         int test_signed(int64_t a)
+>         {
+>                 return a + 3 > a;
+>         }
+>
+> Using again `gcc -Os`, the signed variant is compiled to a function that
+> returns true unconditionally while the unsigned one implements the
+> expected semantic.
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-index d178d5ddc7c7..39421d6a34e4 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-@@ -581,7 +581,6 @@ static int mediatek_dwmac_common_data(struct platform_device *pdev,
- 	int i;
- 
- 	priv_plat->phy_mode = plat->phy_interface;
--	plat->mac_interface = priv_plat->phy_mode;
- 	if (priv_plat->mac_wol)
- 		plat->flags &= ~STMMAC_FLAG_USE_PHY_WOL;
- 	else
--- 
-2.30.2
+Hence that is why the kernel is compiled with -fwrapv...
 
+Gr{oetje,eeting}s,
+
+                        Geert
+
+--=20
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
+.org
+
+In personal conversations with technical people, I call myself a hacker. Bu=
+t
+when I'm talking to journalists I just say "programmer" or something like t=
+hat.
+                                -- Linus Torvalds
 
