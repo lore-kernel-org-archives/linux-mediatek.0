@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F046AC369B2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Apr 2025 15:53:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5688FC369B2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Apr 2025 16:18:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XWBkAP2A212iHPTYTtwDXTZq/RgrJx1ZYtlYJrlP9S8=; b=o3rHqfsvza1y3zReWcN2f/3u6l
-	uLsCVXmPnpVX/0SPR/jVeTRuxSZEToeGinOyicu8fZxT5DbH8WC24QwqAD1Qzp5ZPO3OGgEUIXLhT
-	ju4WPJfgmd+4UUpiFR6i5H5YdvAXeQOy5r+da9ivIsSUlOeAx/rAONsQVjLw5S2ZsHCAD2bm6fmql
-	N1b+mRTKVoXZzsArtoedPeXtzVb1yhzSQj3Mf94srjpzvFe+3yzGD+opoCflQjMVV0PVREBaUbSFm
-	0UL7Z9fRjnCBhnjMhg4jQKyQqfZWwpirUTLL0dSKwyT5ttYDiU9AzUGt4iBWXsSoQZi6KWTcSupr1
-	YjaM7kvw==;
+	bh=RDZAUrd6NRutmlohcpBajtWgWqhY6Z8CRqs5nInrP0k=; b=awu3Zs+rNuDjspDkC6MmCBrmh6
+	jBGbsA1Z1b76nGcY16Gpg5i8/D370SUmZI00kTVnsNu8Lg5WMbI3oPnNxCvfgp7y1U/Vu7J2Tm8nq
+	fjPbd3hlDMJIZzQrTRHKtRPmY8TqX3mFq9BqK+3e1q4XqaG0bhc6/Us27azMqCkig6nd9DkV0GXSR
+	3IcbtkgtAJbz3P4wGgxO6vkzrNs3zAlI/7YTYx7W9X3qhAI1AfTm6zcXdZT/VCF9wo4HR3la8SHI0
+	pPY7So0JZ9GfpIbktyWDPvsrJvxDnmxw5ZJRHIEgszYCRd5J9B4DUffI3zUuVG55/0ckW2Vp3l3Ti
+	yxi2ofWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5RYa-0000000Da8A-0CSe;
-	Thu, 17 Apr 2025 15:53:40 +0000
+	id 1u5RwO-0000000Ddu3-1pxZ;
+	Thu, 17 Apr 2025 16:18:16 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5Qvg-0000000DSYS-05p1;
-	Thu, 17 Apr 2025 15:13:29 +0000
+	id 1u5RC3-0000000DWTn-1cFd;
+	Thu, 17 Apr 2025 15:30:24 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 58BCB49EC2;
-	Thu, 17 Apr 2025 15:13:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B9BE8C4CEE4;
-	Thu, 17 Apr 2025 15:13:26 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id E290E44557;
+	Thu, 17 Apr 2025 15:30:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E67DEC4CEE4;
+	Thu, 17 Apr 2025 15:30:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744902807;
-	bh=vDbkTIHc0zXTAQW1oy0wD2cr80Dbn7VA7qtXP2ydKjY=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=djt00QHqYgsHYUVrBdoVCvURtrC+CMCxIT/lZiGZsqCUApnoRK35Ks6D2PjVB7YMH
-	 bxoP+RxujXuPqfm+YwF4JJAa8E6bN87A10k9iIUnK/s5m6caOsPHBGPMmh9ag08+MD
-	 gAC1EbYxT2s3OHFRLVzHmIzbVbJ60IYZL1xaoeLRLHqJtbn04zy4jwvAr4UGB4dgzB
-	 zEd70H3SChtnOxGKEyqa+CFkGh4owK4d+PsxwWTok1gDGQW8xxJMZFHomRsW0vxNrU
-	 nB7+i2VpZ8i8A4dSwjQaCYERAJKxOaEYJ2QA8desbiVmn2IcqxKlQDC/4nAeQ5f8oS
-	 G0DiHBvBDjuRg==
-Date: Thu, 17 Apr 2025 08:13:25 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Florian Fainelli
- <f.fainelli@gmail.com>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net v2 5/5] net: ethernet: mtk_eth_soc: convert cap_bit
- in mtk_eth_muxc struct to u64
-Message-ID: <20250417081325.0e0345ee@kernel.org>
-In-Reply-To: <99177094f957c7ad66116aba0ef877df42590dec.1744764277.git.daniel@makrotopia.org>
-References: <8ab7381447e6cdcb317d5b5a6ddd90a1734efcb0.1744764277.git.daniel@makrotopia.org>
-	<99177094f957c7ad66116aba0ef877df42590dec.1744764277.git.daniel@makrotopia.org>
+	s=k20201202; t=1744903823;
+	bh=iIwq3SepiLZOW3+bHC9Ee86Ar1qvIl3ZCPXcm+Gnlxs=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=duBEkN2dyHx6WeI6lWcGRUk+VJbfJ9TusBkSmL0/DqZyPtXuwuOyRI3ldPAOk76/i
+	 FpU2MNJsPf2EYmm13g+MjUWTt1x9VF96ROOr+szjwtj9zmEpO0lQvzysJ5OiPxbJjh
+	 aSPHSbR0J0lR2JrBv8nopXjiuIe/HGeIvP+Q4yT1tqqpgLkSCugkjvmAzJai9EAJWd
+	 dGHvsQzMW/LgmAcdTbMfy4j8RHqNfSg7QyL/CYMv7kH7E1KrnrjreAHuFsuydK1Y1r
+	 nX0X7499t3/a6siu49RylwDl5hk1KX+fmE8NdeABD94VA1q7XQ2b9YVd7LKazr9O5K
+	 eI5tMLEqtBlnw==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 33E47380664C;
+	Thu, 17 Apr 2025 15:31:02 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net v2 1/5] net: ethernet: mtk_eth_soc: reapply mdc divider
+ on reset
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <174490386075.4117078.7252062901146226930.git-patchwork-notify@kernel.org>
+Date: Thu, 17 Apr 2025 15:31:00 +0000
+References: <8ab7381447e6cdcb317d5b5a6ddd90a1734efcb0.1744764277.git.daniel@makrotopia.org>
+In-Reply-To: <8ab7381447e6cdcb317d5b5a6ddd90a1734efcb0.1744764277.git.daniel@makrotopia.org>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: nbd@nbd.name, sean.wang@mediatek.com, lorenzo@kernel.org,
+ andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, f.fainelli@gmail.com,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250417_081328_084056_F3F9A6CF 
-X-CRM114-Status: GOOD (  13.59  )
+X-CRM114-CacheID: sfid-20250417_083023_447063_95BFBCC2 
+X-CRM114-Status: GOOD (  10.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,18 +78,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 16 Apr 2025 01:52:03 +0100 Daniel Golle wrote:
-> The capabilities bitfield was converted to a 64-bit value, but a cap_bit
-> in struct mtk_eth_muxc which is used to store a full bitfield (rather
-> than the bit number, as the name would suggest) still holds only a
-> 32-bit value.
-> 
-> Change the type of cap_bit to u64 in order to avoid truncating the
-> bitfield which results in path selection to not work with capabilities
-> above the 32-bit limit.
+Hello:
 
-Could you please be more specific and name a bit or a field that goes
-over 32b? Since this is a fix ideally we'd also have impact to the user
-described in the commit message. But having enough info for the reviewer
-to quickly validate the change is the bare minimum.
+This series was applied to netdev/net.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Wed, 16 Apr 2025 01:50:46 +0100 you wrote:
+> From: Bo-Cun Chen <bc-bocun.chen@mediatek.com>
+> 
+> In the current method, the MDC divider was reset to the default setting
+> of 2.5MHz after the NETSYS SER. Therefore, we need to reapply the MDC
+> divider configuration function in mtk_hw_init() after reset.
+> 
+> Fixes: c0a440031d431 ("net: ethernet: mtk_eth_soc: set MDIO bus clock frequency")
+> Signed-off-by: Bo-Cun Chen <bc-bocun.chen@mediatek.com>
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> 
+> [...]
+
+Here is the summary with links:
+  - [net,v2,1/5] net: ethernet: mtk_eth_soc: reapply mdc divider on reset
+    https://git.kernel.org/netdev/net/c/6bc2b6c6f16d
+  - [net,v2,2/5] net: ethernet: mtk_eth_soc: correct the max weight of the queue limit for 100Mbps
+    https://git.kernel.org/netdev/net/c/6b02eb372c67
+  - [net,v2,3/5] net: ethernet: mtk_eth_soc: revise QDMA packet scheduler settings
+    https://git.kernel.org/netdev/net/c/1b66124135f5
+  - [net,v2,4/5] net: ethernet: mtk_eth_soc: net: revise NETSYSv3 hardware configuration
+    (no matching commit)
+  - [net,v2,5/5] net: ethernet: mtk_eth_soc: convert cap_bit in mtk_eth_muxc struct to u64
+    (no matching commit)
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
