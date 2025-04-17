@@ -4,67 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CAD5C369B2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Apr 2025 09:06:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA37FC369B2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Apr 2025 09:12:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kK++4KEjopzd3vOO1qiwbVaUdMG+Eelxb/pNE2LdhjI=; b=BvCKPcIGHLnpcPgeic+ZXqmkM6
-	q2Xbdx9PWTZHFGkft0NOJT2qfpZ7dC9QOl3F9PBGAKmJVcD3zW0BJolYNunVIJhGD4F6Y/8+IjqHo
-	fhjW1hG/rS6xay10vPbjYTNmFKzK5Km2N6YgiAUrsbF5QJEn5KngP6mv/+ZFMyNu8gHqrK3cREIOU
-	yQXaO4qcIlpF4BJQQ2jQNXDyxeNGzTO7FfY4YNTlE/DjB2vwtWmoy2leuGq1jEVunHYCxsy6kmI1l
-	Jvr893ZUfnPa99mcXsrrQLWieQjD6iyax2chFBSbECg8R9d+gcMMjxOY7wCK/RnxcRrzl2UpvDpdG
-	6MGLMzWQ==;
+	bh=xCjT1cG1V8R2NiZdozk7UnxEH7mkeu1dA8rHULc1hRI=; b=bGJNtmIWSOeUR4bZkHwCjEBIHW
+	W2BBe04O7nt9oP3LfVbZOkT33Y6z4GyYlf+ldyQYu4IKKkK0G8yGqGVV0lEsPYBS2Vcq53g7lIisM
+	VutIyh6JwygkZxe/UqZAeuobMVXMqRuQtnBaon4Xv2ENFTqsXJk7pYFm5YRGd9n+8rUaejSg0He+3
+	rKMg1BVU8BdCHa5FZ0dd78ZRhcwuupT2+U+iVPPA67SCPT0egqQ+rejMrpIoGxKmz60JPy8f9ctnK
+	CVlKDPp+bfpq2LJFX56TrzmK3CkppPOFL2I93iBkJALRmJflt4nil/9gQEZj4CWTYMdUqXFlD0QPW
+	7Eqi3B6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5LCX-0000000CNlm-0xb1;
-	Thu, 17 Apr 2025 09:06:29 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1u5LHz-0000000COoD-36ng;
+	Thu, 17 Apr 2025 09:12:07 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5KrS-0000000CJgQ-0zh2;
-	Thu, 17 Apr 2025 08:44:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1744879480;
-	bh=VVe96Sxh4UjB+6wWfJmCsejUrl/4lubhEpkWMcF5TxE=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=h2covrb2IhbfW59GvSoOFxkmnZvmdOyCqEgVB9EilghDYKRaF9/4A3wHrTKFTjdnS
-	 B4I3PWS+mVqD3po1lpLjwK1SpnHUsv2/vffyylgdncBUOTmh4NQMjDY8piZjpVVP5u
-	 WsdDwvvamTaYvMdYCAj+pobs6txy8rtoEcjDDR+HzVDXE7TrAjCfTDVIlm1FKAj9HT
-	 L7s1ydd+r7hnISFYwSJMHQCuM6puGXZ7KZmRp3IT1R8+SjaX51mRqgIOQQ5TX5i1HC
-	 wbOy85UgIWEGRa6D23OMqjYO7G0L/4Yn6amGpHzRvjUDUX/T1smeo4Z1IInRpfy8bg
-	 SadijCsK+DJNQ==
-Received: from apertis-1.home (2a01cb0892F2d600c8f85Cf092d4af51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: jmassot)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 26F0B17E0FA7;
-	Thu, 17 Apr 2025 10:44:40 +0200 (CEST)
-From: Julien Massot <julien.massot@collabora.com>
-Date: Thu, 17 Apr 2025 10:44:37 +0200
-Subject: [PATCH 6/6] mt8395-radxa-nio-12l: Add sound node for headphone
-MIME-Version: 1.0
+	id 1u5Kwe-0000000CKlj-1ZrR;
+	Thu, 17 Apr 2025 08:50:04 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id F37F668430;
+	Thu, 17 Apr 2025 08:49:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 51613C4CEE4;
+	Thu, 17 Apr 2025 08:50:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1744879803;
+	bh=TF9L75xMsJl/rRW4x9jHA8OF3aCS+Rflmlav7hk7J34=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=d7cMblumKw5PUaAaELfYAtBpe1o4sOiT5AzMbq+sIInTgwhjBZTAl3MT1q3nibiAZ
+	 SksU5Vc106vHExpdOFRylG/goTMWsYyisHBVxfScrPrv+cYEg5gQ5B5v7O4OPpgWHR
+	 UA9sKhqhqJnWjElEA4EHeJni9CM3QipGdnjpfkYsd1A1i+F/cGHC96HiRqrrZgzCso
+	 nxMNYM5A0LCYHB25By/8mbhxrN5ShPKUPRyJaI6BBZa4a4OsUIKrn3ddCXxHLuLVQd
+	 zaBcKeUVdfVjDf1B2hSwTvzQjJjGhMH2axfKoaBRpdqzVuEjLQjWwgK+iTccXMixAw
+	 x9QCvvkxjDWog==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 70C043822D65;
+	Thu, 17 Apr 2025 08:50:42 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250417-mt8395-audio-sof-v1-6-30587426e5dd@collabora.com>
-References: <20250417-mt8395-audio-sof-v1-0-30587426e5dd@collabora.com>
-In-Reply-To: <20250417-mt8395-audio-sof-v1-0-30587426e5dd@collabora.com>
-To: kernel@collabora.com, Liam Girdwood <lgirdwood@gmail.com>, 
- Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, 
- Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Trevor Wu <trevor.wu@mediatek.com>
-Cc: linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- devicetree@vger.kernel.org, Julien Massot <julien.massot@collabora.com>
-X-Mailer: b4 0.14.2
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250417_014442_422585_A555597F 
-X-CRM114-Status: GOOD (  11.17  )
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next v4] net: airoha: Add matchall filter offload
+ support
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <174487984117.3994493.2854347625667503650.git-patchwork-notify@kernel.org>
+Date: Thu, 17 Apr 2025 08:50:41 +0000
+References: <20250415-airoha-hw-rx-ratelimit-v4-1-03458784fbc3@kernel.org>
+In-Reply-To: <20250415-airoha-hw-rx-ratelimit-v4-1-03458784fbc3@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+ dcaratti@redhat.com, horms@kernel.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,110 +73,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-- Add memory-region based on mt8390-genio-common
-- Enable adsp node
-- Enable afe node
-- Declare the required pins
-- Add sound node for headphone output routing
+Hello:
 
-Signed-off-by: Julien Massot <julien.massot@collabora.com>
----
- .../boot/dts/mediatek/mt8395-radxa-nio-12l.dts     | 58 +++++++++++++++++++++-
- 1 file changed, 56 insertions(+), 2 deletions(-)
+This patch was applied to netdev/net-next.git (main)
+by Paolo Abeni <pabeni@redhat.com>:
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-index f2eb1b683eb76f783f5a13f28a78f6e33238b5f0..329c60cc6a6be0b4be8c0b8bb033b32d35302804 100644
---- a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-@@ -139,9 +139,21 @@ bl31_secmon_mem: memory@54600000 {
- 			no-map;
- 		};
- 
--		afe_mem: memory@60000000 {
-+		adsp_mem: memory@60000000 {
- 			compatible = "shared-dma-pool";
--			reg = <0 0x60000000 0 0x1100000>;
-+			reg = <0 0x60000000 0 0xf00000>;
-+			no-map;
-+		};
-+
-+		afe_dma_mem: memory@60f00000 {
-+			compatible = "shared-dma-pool";
-+			reg = <0 0x60f00000 0 0x100000>;
-+			no-map;
-+		};
-+
-+		adsp_dma_mem: memory@61000000 {
-+			compatible = "shared-dma-pool";
-+			reg = <0 0x61000000 0 0x100000>;
- 			no-map;
- 		};
- 
-@@ -152,6 +164,16 @@ apu_mem: memory@62000000 {
- 	};
- };
- 
-+&adsp {
-+	memory-region = <&adsp_dma_mem>, <&adsp_mem>;
-+	status = "okay";
-+};
-+
-+&afe {
-+	memory-region = <&afe_dma_mem>;
-+	status = "okay";
-+};
-+
- &cpu0 {
- 	cpu-supply = <&mt6359_vcore_buck_reg>;
- };
-@@ -514,6 +536,18 @@ &mt6359_vsram_others_ldo_reg {
- &pio {
- 	mediatek,rsel-resistance-in-si-unit;
- 
-+	audio_default_pins: audio-default-pins {
-+		pins-cmd-dat {
-+			pinmux = <PINMUX_GPIO70__FUNC_AUD_SYNC_MOSI>,
-+				 <PINMUX_GPIO69__FUNC_AUD_CLK_MOSI>,
-+				 <PINMUX_GPIO71__FUNC_AUD_DAT_MOSI0>,
-+				 <PINMUX_GPIO72__FUNC_AUD_DAT_MOSI1>,
-+				 <PINMUX_GPIO73__FUNC_AUD_DAT_MISO0>,
-+				 <PINMUX_GPIO74__FUNC_AUD_DAT_MISO1>,
-+				 <PINMUX_GPIO75__FUNC_AUD_DAT_MISO2>;
-+		};
-+	};
-+
- 	dsi0_backlight_pins: dsi0-backlight-pins {
- 		pins-backlight-en {
- 			pinmux = <PINMUX_GPIO107__FUNC_GPIO107>;
-@@ -854,6 +888,26 @@ &scp {
- 	status = "okay";
- };
- 
-+&sound {
-+	compatible = "mediatek,mt8195_mt6359";
-+	model = "mt8395-evk";
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&audio_default_pins>;
-+	audio-routing =
-+		"Headphone", "Headphone L",
-+		"Headphone", "Headphone R";
-+	mediatek,adsp = <&adsp>;
-+	status = "okay";
-+
-+	headphone-dai-link {
-+		link-name = "DL_SRC_BE";
-+
-+		codec {
-+			sound-dai = <&pmic 0>;
-+		};
-+	};
-+};
-+
- &spi1 {
- 	/* Exposed at 40 pin connector */
- 	pinctrl-0 = <&spi1_pins>;
+On Tue, 15 Apr 2025 09:14:34 +0200 you wrote:
+> Introduce tc matchall filter offload support in airoha_eth driver.
+> Matchall hw filter is used to implement hw rate policing via tc action
+> police:
+> 
+> $tc qdisc add dev eth0 handle ffff: ingress
+> $tc filter add dev eth0 parent ffff: matchall action police \
+>  rate 100mbit burst 1000k drop
+> 
+> [...]
 
+Here is the summary with links:
+  - [net-next,v4] net: airoha: Add matchall filter offload support
+    https://git.kernel.org/netdev/net-next/c/df8398fb7bb7
+
+You are awesome, thank you!
 -- 
-2.49.0
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
