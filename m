@@ -4,66 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5688FC369B2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Apr 2025 16:18:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80381C369B2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Apr 2025 16:25:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RDZAUrd6NRutmlohcpBajtWgWqhY6Z8CRqs5nInrP0k=; b=awu3Zs+rNuDjspDkC6MmCBrmh6
-	jBGbsA1Z1b76nGcY16Gpg5i8/D370SUmZI00kTVnsNu8Lg5WMbI3oPnNxCvfgp7y1U/Vu7J2Tm8nq
-	fjPbd3hlDMJIZzQrTRHKtRPmY8TqX3mFq9BqK+3e1q4XqaG0bhc6/Us27azMqCkig6nd9DkV0GXSR
-	3IcbtkgtAJbz3P4wGgxO6vkzrNs3zAlI/7YTYx7W9X3qhAI1AfTm6zcXdZT/VCF9wo4HR3la8SHI0
-	pPY7So0JZ9GfpIbktyWDPvsrJvxDnmxw5ZJRHIEgszYCRd5J9B4DUffI3zUuVG55/0ckW2Vp3l3Ti
-	yxi2ofWQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dk0pKMZHgLqXmfq0hZZxA2/oOZWEQiI7RTNz6E930mE=; b=WqN6rpIde4MlMGGhB3hnVAItol
+	OtXY6O7G6b9F0okvXp6ULGxdZs1alCe+yIigd4D8PGkUVK2+r+c/WcwAiqXZjJ258gl9rJt75Tp2P
+	mkJkZLqboZ6v74Wc8km2eJs85iPP/UzZz1cegieurNYT1S/RQ3dcSZ2EUoMt6ony+GVy3ydlO6jPA
+	VV1X0RA6PyDUXG9a55eEJkWB2DFNo1fmuo5j+qKOKkzkbk++b//vVkrUeIbgNBpM6OnFx8WQ6erCX
+	MeiLJxHdAK1bR8MWvydCPR+6nNBPHr53lwKQla5lBF7d4Jq0p0ldfxkrt7Yk5NkAl2Rd2YTG1HwZG
+	vso9q/tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5RwO-0000000Ddu3-1pxZ;
-	Thu, 17 Apr 2025 16:18:16 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1u5S3h-0000000DfCN-2AET;
+	Thu, 17 Apr 2025 16:25:49 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5RC3-0000000DWTn-1cFd;
-	Thu, 17 Apr 2025 15:30:24 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E290E44557;
-	Thu, 17 Apr 2025 15:30:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E67DEC4CEE4;
-	Thu, 17 Apr 2025 15:30:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744903823;
-	bh=iIwq3SepiLZOW3+bHC9Ee86Ar1qvIl3ZCPXcm+Gnlxs=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=duBEkN2dyHx6WeI6lWcGRUk+VJbfJ9TusBkSmL0/DqZyPtXuwuOyRI3ldPAOk76/i
-	 FpU2MNJsPf2EYmm13g+MjUWTt1x9VF96ROOr+szjwtj9zmEpO0lQvzysJ5OiPxbJjh
-	 aSPHSbR0J0lR2JrBv8nopXjiuIe/HGeIvP+Q4yT1tqqpgLkSCugkjvmAzJai9EAJWd
-	 dGHvsQzMW/LgmAcdTbMfy4j8RHqNfSg7QyL/CYMv7kH7E1KrnrjreAHuFsuydK1Y1r
-	 nX0X7499t3/a6siu49RylwDl5hk1KX+fmE8NdeABD94VA1q7XQ2b9YVd7LKazr9O5K
-	 eI5tMLEqtBlnw==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 33E47380664C;
-	Thu, 17 Apr 2025 15:31:02 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net v2 1/5] net: ethernet: mtk_eth_soc: reapply mdc divider
- on reset
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <174490386075.4117078.7252062901146226930.git-patchwork-notify@kernel.org>
-Date: Thu, 17 Apr 2025 15:31:00 +0000
+	id 1u5RT2-0000000DZBi-1EeO;
+	Thu, 17 Apr 2025 15:47:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=dk0pKMZHgLqXmfq0hZZxA2/oOZWEQiI7RTNz6E930mE=; b=Oe/vYen1053KI0Y3kOco0V9WqM
+	5dMvdFSGjHpOQ4FCWEy4olmw+Fnvb5OMoHK022/WyMdEvr+cgRITJFuTPeH5yd5Bh9ipADnFwPx+K
+	QvpbHInALtRwpoqKvyOrEHY5M9xt1+ySKiQz0obs47y5osbg2uL0t4QdSTtjFxtTUvtA531sGbslc
+	yWN7dyjBPv1h6BES0E7BI0VNO2Z+JWmC+EpROwbRzwkFHpcYE0RFyv7hD1MQ9C9YoVlwey8xwj7EH
+	EtWqMgzuGVE1W1+7bZ9zXlPbGHMUHFh8swHQitcYbA/YSYMtmN+ZpWgTCFC5DDf7iI4N4tLrRyyNT
+	gGMCuypw==;
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1u5RSz-0000000AKG7-0FyR;
+	Thu, 17 Apr 2025 15:47:55 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.98.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1u5RNv-000000001vT-3TbA;
+	Thu, 17 Apr 2025 15:45:17 +0000
+Date: Thu, 17 Apr 2025 16:45:14 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Florian Fainelli <f.fainelli@gmail.com>, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net v2 4/5] net: ethernet: mtk_eth_soc: net: revise
+ NETSYSv3 hardware configuration
+Message-ID: <aAEiCjdJdsqH6EAU@makrotopia.org>
 References: <8ab7381447e6cdcb317d5b5a6ddd90a1734efcb0.1744764277.git.daniel@makrotopia.org>
-In-Reply-To: <8ab7381447e6cdcb317d5b5a6ddd90a1734efcb0.1744764277.git.daniel@makrotopia.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: nbd@nbd.name, sean.wang@mediatek.com, lorenzo@kernel.org,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, f.fainelli@gmail.com,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+ <28929b5bb2bfd45e040a07c0efefb29e57a77513.1744764277.git.daniel@makrotopia.org>
+ <20250417081055.1bda2ff6@kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250417081055.1bda2ff6@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250417_083023_447063_95BFBCC2 
-X-CRM114-Status: GOOD (  10.01  )
+X-CRM114-CacheID: sfid-20250417_164753_230634_DCF429BA 
+X-CRM114-Status: GOOD (  16.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,40 +86,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This series was applied to netdev/net.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
-
-On Wed, 16 Apr 2025 01:50:46 +0100 you wrote:
-> From: Bo-Cun Chen <bc-bocun.chen@mediatek.com>
+On Thu, Apr 17, 2025 at 08:10:55AM -0700, Jakub Kicinski wrote:
+> On Wed, 16 Apr 2025 01:51:42 +0100 Daniel Golle wrote:
+> > +		/* PSE should not drop port8, port9 and port13 packets from WDMA Tx */
+> > +		mtk_w32(eth, 0x00002300, PSE_DROP_CFG);
+> > +
+> > +		/* PSE should drop packets to port8, port9 and port13 on WDMA Rx ring full */
 > 
-> In the current method, the MDC divider was reset to the default setting
-> of 2.5MHz after the NETSYS SER. Therefore, we need to reapply the MDC
-> divider configuration function in mtk_hw_init() after reset.
+> nit: please try to wrap at 80 chars. There's really no need to go over
+> on comments. Some of us stick to 80 char terminals. 
+
+Too late now to send another revision...
+
+> > [...]
+> > diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+> > index 39709649ea8d1..eaa96c8483b70 100644
+> > --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+> > +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+> > @@ -151,7 +151,12 @@
+> >  #define PSE_FQFC_CFG1		0x100
+> >  #define PSE_FQFC_CFG2		0x104
+> >  #define PSE_DROP_CFG		0x108
+> > -#define PSE_PPE0_DROP		0x110
+> > +#define PSE_PPE_DROP(x)		(0x110 + ((x) * 0x4))
+> > +
+> > +/* PSE Last FreeQ Page Request Control */
+> > +#define PSE_DUMY_REQ		0x10C
 > 
-> Fixes: c0a440031d431 ("net: ethernet: mtk_eth_soc: set MDIO bus clock frequency")
-> Signed-off-by: Bo-Cun Chen <bc-bocun.chen@mediatek.com>
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> 
-> [...]
+> This really looks like misspelling of DUMMY, is it really supposed 
+> to have one 'M' ?
 
-Here is the summary with links:
-  - [net,v2,1/5] net: ethernet: mtk_eth_soc: reapply mdc divider on reset
-    https://git.kernel.org/netdev/net/c/6bc2b6c6f16d
-  - [net,v2,2/5] net: ethernet: mtk_eth_soc: correct the max weight of the queue limit for 100Mbps
-    https://git.kernel.org/netdev/net/c/6b02eb372c67
-  - [net,v2,3/5] net: ethernet: mtk_eth_soc: revise QDMA packet scheduler settings
-    https://git.kernel.org/netdev/net/c/1b66124135f5
-  - [net,v2,4/5] net: ethernet: mtk_eth_soc: net: revise NETSYSv3 hardware configuration
-    (no matching commit)
-  - [net,v2,5/5] net: ethernet: mtk_eth_soc: convert cap_bit in mtk_eth_muxc struct to u64
-    (no matching commit)
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+I also thought that when I first saw that and have told MediaTek engineers
+about it, they told me that the register is called like that also in their
+datasheet and hence they want the name to be consistent in the driver.
 
