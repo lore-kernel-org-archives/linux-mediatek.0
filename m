@@ -4,103 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5343C369C9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Apr 2025 20:48:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA11BC369CA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Apr 2025 22:30:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AkhkFAogJf6rcZdrKyxj+n2pOOqU53PozCIK3xijJrY=; b=ECSQ9JVxc12yUlgp3LSRsB1Ssi
-	xnJTCqP3bc6ExiL0yWFqqyV/HzEBVggn/bGsd0OZKo344dQXDL9Mkpk9HRddXtwlKh99pWjv9WnqE
-	CPKvGuxodhckbDtpNqR00743I3yzXDfIgiNUlmAC2ppgWfDzU5U3ZpPYYRSs50sekOv5FLeBNwArL
-	XYE7sE8anh3adLPA1xmTriWHty80xARuQrfmLRddd/yeqWO4UFiBJUYyj+UcWnrgrgwG2ccR9dQqO
-	wW7ipJ53xGMhkbUw87y8ei4qL29clwwtbRhY5gCHrsOw9C5jzlwdWPl23QQLyJIUhyiMizJp4YcsY
-	12uxZseg==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=s81pV5jIkn/GlgtQ08lcgCCxshbcpxyENaufyDqFoXU=; b=cpCBaKm6KZMDHik4uNJOyxtJGg
+	Y0s52YCXdbgBy4P3KObtVO4BJNSiwDQq/mUtMnAf03JK12YBpXnMnTGejDeo36Cu4sGvwPiOB/5Kj
+	bk9Zcbus840qluTW/Gg0Cm30uJ9NGyUjv6ArfaaEy+CiwN2bzzrpqoTZbEwuAEDzm1ViCTwi1KtgL
+	KyeubnnX9olLXlJ27L6jF/3DuM1ChkBqr9WsU8zKVrl8kAgTx/ExeUHCrb2HFtHgULQbwkPs+Cmz3
+	hVSVv7D4Xig/xBG5eSFCPgsj1zuVXcEW2kCiDAMYnVuLslNYZbApXvYUag7+eGNelrtsclc99rcyG
+	+F/nFFvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5WAJ-0000000EJPf-1xKi;
-	Thu, 17 Apr 2025 20:48:55 +0000
-Received: from mail-oi1-x22d.google.com ([2607:f8b0:4864:20::22d])
+	id 1u5XkW-0000000ESXH-07Y9;
+	Thu, 17 Apr 2025 22:30:24 +0000
+Received: from smtp-17.smtpout.orange.fr ([80.12.242.17] helo=smtp.smtpout.orange.fr)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5WAG-0000000EJOT-2dwV
-	for linux-mediatek@lists.infradead.org;
-	Thu, 17 Apr 2025 20:48:54 +0000
-Received: by mail-oi1-x22d.google.com with SMTP id 5614622812f47-3f8ae3ed8adso629255b6e.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 17 Apr 2025 13:48:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1744922931; x=1745527731; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:content-language:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=AkhkFAogJf6rcZdrKyxj+n2pOOqU53PozCIK3xijJrY=;
-        b=O2Sz4rc95b+hEzC+cmjdXbg5rVZQmmP74DVPIOuezm6bh5MFJFUcPYawfkQ+o7I3Cn
-         yiMbcAPT65Kjd1UBbjk9lWR6Kewl50B+01u7CS0pvG4MYJJo5HS8EjsPFdA2lVStNc3q
-         eTwYfsyDui+jqpkj3R+Bqz+UUR0zD97ELCinU9ijBMtHWkYfelbSqmRi1RZ/iezIOlzs
-         /5pdjEUe1sS6XkRQHND0RqerftpgnWZpeMiCvtL/CYjcQMr7A6W548SpiCT0XpiNa2fr
-         pXgUs6k+lip9jZJdxuTRqrItjCn+fmlgfIB6ct5cKcGw7L1g+en82lzkqtNRQh+7GsFg
-         Zpdg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744922931; x=1745527731;
-        h=content-transfer-encoding:in-reply-to:content-language:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=AkhkFAogJf6rcZdrKyxj+n2pOOqU53PozCIK3xijJrY=;
-        b=nhbuD32k4HvOWQJ6FHnsWUbmCD+hmipnoNh8xqMMYgYR+Y6qGjjSxsd7CRSe/Gc42u
-         dgXtpfeoSly3ApyymnVaFd963R7RLwNG+QH9tmz9jK2sqUejPbQtcCVbhrFuZmbwA3XM
-         FJBMdnPFQg8xNGeU5oONncHEU6Q863KbvM13MWGBpxwRvUBka30pD2KJ6YmZkVTgLZtI
-         xi1LfsqPDgC6fEKS1JyXm/pQSCbUo2YeCHUKSyXuCmNE/PUzwEIOut2xDN98IZ7fuBxb
-         8LuIB8Bvh6Lz+zVmeX/5iTPTn/bxVa4gXDsC1C9lrlzEtNxNQEuS4/WCd1g8LP9z0rsK
-         BuzA==
-X-Forwarded-Encrypted: i=1; AJvYcCWl/3HhB7p36qANv5j7VkjW1u5XnMBDmc3UXYydnbDQHMY4AkSKxocuD9SOwK2PFMj1UCjyxNuVCUrkYTcPag==@lists.infradead.org
-X-Gm-Message-State: AOJu0YytW4itOZCH7Wf02PNbgbjXhXNnIvub6NTZMzfRi7t5GjkmK3kp
-	otiUIjOhUxsn+KLYpeUmCu6JOTvSicZEdqMSUxWZujkjwPasPyTidab8V4QqANY=
-X-Gm-Gg: ASbGnctT3XyvZB3t69quR+EKHr8Za3AuntdltDgmMg1S0ApXjByJko3X9WtjzR1a8s/
-	wnHCB6iU85+6z12sumo1C0kpHd4WLn2DuJX6wNnVEsqP60MMajrG5qL6Hb5dxvpXPKvrynN9t+6
-	a8LOxadv8A6OnHSkecFYSIeKAYbyY8S/bfxey48FLqgWpOUQI82uz/5pqOLcZwx54TSo2mkxobf
-	TO89VOSm1H6Vn2C71BODsqIX0XoLSx55TvsNwP2z212YHMvknuUe5S60pOZp5CCokzCIJZ4HNf2
-	5J2jeqCOJSkE1oa4ujC4+zRy78Z5h9pCwwtd0zR1L8V4p5+xkJNMUekd96QB+54lNnmi7VBWP8r
-	LVoAh3MaRA1FNa0nChQ==
-X-Google-Smtp-Source: AGHT+IF7ZjPtLD+LrakaPKE8P6Ie7Z9AHBDyOGjvviQeXkjr+Jv27cdNwkf/cTlSFR3UJfutg615hw==
-X-Received: by 2002:a05:6808:4a84:b0:401:2e2d:cb54 with SMTP id 5614622812f47-401c0c3f94bmr111311b6e.29.1744922928611;
-        Thu, 17 Apr 2025 13:48:48 -0700 (PDT)
-Received: from ?IPV6:2600:8803:e7e4:1d00:c91b:eea3:7afd:2dee? ([2600:8803:e7e4:1d00:c91b:eea3:7afd:2dee])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-2d52135b8b4sm115918fac.17.2025.04.17.13.48.45
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 17 Apr 2025 13:48:47 -0700 (PDT)
-Message-ID: <651b1f91-fd5e-4d59-b78b-fdd7f89247e4@baylibre.com>
-Date: Thu, 17 Apr 2025 15:48:44 -0500
+	id 1u5Xie-0000000ESOG-0Wfw;
+	Thu, 17 Apr 2025 22:28:29 +0000
+Received: from localhost.localdomain ([90.11.132.44])
+	by smtp.orange.fr with ESMTPA
+	id 5XiQuDWqjETiN5XiTu2OP2; Fri, 18 Apr 2025 00:28:19 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
+	s=t20230301; t=1744928899;
+	bh=s81pV5jIkn/GlgtQ08lcgCCxshbcpxyENaufyDqFoXU=;
+	h=From:To:Subject:Date:Message-ID:MIME-Version;
+	b=A3bMACpVFPDO5ND/TN1ebf1eXSQbRYcajI4fSEkK2EuoyaXRJJCMQ0DKuRg2pLwbo
+	 VS1SzNTDU/QGlLRK48q+hfy70nXkrjVOqvXJKy6cLUbuEmyYjeKVb4yZiNp4q4xI9z
+	 b0dPos/V77rW4wUyHfKM78m5ODsUUU5X9kN0umDf6ayTHUVAoBfriVwuJe26uXzeSx
+	 IUjLF5Hup2fcvgXBmGKCEY1Oslxt/Kb+scpWif99qpgTVtRXPtI6FNJkgekmY1blZT
+	 Bj0fQxlre8TwyfBdis+sqsWCTNYZkwGVlZXi4+paEie7bjPRQMN1PR2mw+jQefOL/+
+	 jJjypGAjhMriA==
+X-ME-Helo: localhost.localdomain
+X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
+X-ME-Date: Fri, 18 Apr 2025 00:28:19 +0200
+X-ME-IP: 90.11.132.44
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-kernel@vger.kernel.org,
+	kernel-janitors@vger.kernel.org,
+	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+	linux-wireless@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] wifi: mt76: Remove an unneeded local variable in mt76x02_dma_init()
+Date: Fri, 18 Apr 2025 00:28:01 +0200
+Message-ID: <e86d5602bdd8b6bd22258ee69536992f39470bf5.1744928865.git.christophe.jaillet@wanadoo.fr>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 6/8] iio: imu: adis16550: align buffers for timestamp
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Cc: Andy Shevchenko <andy@kernel.org>, Jonathan Cameron <jic23@kernel.org>,
- =?UTF-8?Q?Nuno_S=C3=A1?= <nuno.sa@analog.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Lars-Peter Clausen <lars@metafoo.de>,
- Michael Hennerich <Michael.Hennerich@analog.com>,
- Cosmin Tanislav <cosmin.tanislav@analog.com>,
- Tomasz Duszynski <tduszyns@gmail.com>,
- Jean-Baptiste Maneyrol <jean-baptiste.maneyrol@tdk.com>,
- Andreas Klinger <ak@it-klinger.de>, Petre Rodan
- <petre.rodan@subdimension.ro>, linux-iio@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20250417-iio-more-timestamp-alignment-v1-0-eafac1e22318@baylibre.com>
- <20250417-iio-more-timestamp-alignment-v1-6-eafac1e22318@baylibre.com>
- <aAEzeY_p6a8Pr-zn@smile.fi.intel.com>
- <f4db1a95-106f-4fa4-9318-3ee172e29cdb@baylibre.com>
- <20250417184429.00002403@huawei.com>
-From: David Lechner <dlechner@baylibre.com>
-Content-Language: en-US
-In-Reply-To: <20250417184429.00002403@huawei.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250417_134852_866303_B9EEE8E7 
-X-CRM114-Status: GOOD (  15.32  )
+X-CRM114-CacheID: sfid-20250417_152828_299639_4624795B 
+X-CRM114-Status: UNSURE (   8.74  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,44 +81,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 4/17/25 12:44 PM, Jonathan Cameron wrote:
-> On Thu, 17 Apr 2025 12:07:37 -0500
-> David Lechner <dlechner@baylibre.com> wrote:
-> 
->> On 4/17/25 11:59 AM, Andy Shevchenko wrote:
->>> On Thu, Apr 17, 2025 at 11:52:38AM -0500, David Lechner wrote:  
->>>> Align the buffers used with iio_push_to_buffers_with_timestamp() to
->>>> ensure the s64 timestamp is aligned to 8 bytes.
->>>>
->>>>  drivers/iio/accel/bmc150-accel.h | 2 +-
->>>>  drivers/iio/imu/adis16550.c      | 2 +-  
->>>
->>> Looks like a stray squash of the two independent commits.  
->>
->> Oops, sure enough.
->>
->>>
->>> ...
->>>   
->>>>  	struct bmc150_accel_trigger triggers[BMC150_ACCEL_TRIGGERS];
->>>>  	struct mutex mutex;
->>>>  	u8 fifo_mode, watermark;
->>>> -	s16 buffer[8];
->>>> +	s16 buffer[8] __aligned(8);  
->>>
->>> As for the code, would it be possible to convert to actually use a sturcture
->>> rather than an array?  
->>
->> I do personally prefer the struct pattern, but there are very many other drivers
->> using this buffer pattern that I was not tempted to try to start converting them.
-> 
-> For drivers like this one where there is no room for the timestamp
-> to sit earlier for minimal channels I think it is worth that conversion
-> if we are touching them anyway. 
-> 
-> Jonathan
-> 
-There is actually a lot more wrong in this driver, so will save that for a
-separate series.
+Remove 't' which is unneeded since commit f3950a414143 ("mt76: set
+txwi_size according to the driver value")
+
+This slightly simplifies the code.
+
+Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+---
+ drivers/net/wireless/mediatek/mt76/mt76x02_mmio.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_mmio.c b/drivers/net/wireless/mediatek/mt76/mt76x02_mmio.c
+index a82c75ba26e6..a683d53c7ceb 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_mmio.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_mmio.c
+@@ -174,7 +174,6 @@ static int mt76x02_poll_tx(struct napi_struct *napi, int budget)
+ 
+ int mt76x02_dma_init(struct mt76x02_dev *dev)
+ {
+-	struct mt76_txwi_cache __maybe_unused *t;
+ 	int i, ret, fifo_size;
+ 	struct mt76_queue *q;
+ 	void *status_fifo;
+-- 
+2.49.0
 
 
