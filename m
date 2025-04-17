@@ -4,65 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 335FEC369BA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Apr 2025 17:29:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A2ADC369BD
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Apr 2025 01:45:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=A2nkQ8kggNLvP40t1bwGaEEkhe1SwVi5A/FCvejGF4o=; b=VgJh3IhvBZpq/P+kA8k2gK+Cnj
-	cyukzv9zPx2FED7225MsVCEj0UhUBzPkPoy7szJhjmQBhRt2uM1gtpg9QdpVFN4HTh+KxnIVjKTt9
-	Bgjgl/YUR+LtiomUf4g6CRXr0FERdTfM+1Ojz0VS6I1GB8sjqUJJhFZc8hQoX/RgZ315gZ1mPmFvb
-	U9wYvyvUODiMCdKgiH/78r8+nvpXDnzLailDmxpWuI0l70khN5Wx8Jpy3lC6LPwXTr5pOlutbnR4j
-	FoC5IMIcigXAyRx86K9UsFWq8hzxRBHxwUQx/nj+0nq2Eusu4jECsL4xEm1zha0mRtaBlvUsn9yOf
-	5grbSObw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TEBA25GBXNvf+seUWKb3vv8yQAjf5q61VLohScAL30o=; b=IbzK8PAcYWrS1rshhywhn07ors
+	q/c99b/sWVZ2kEGmvnBf6FKVv+HZb1RIbkCSNeTkzm5Q8tbKCIPUkotM1bR4JjaGkWupe+De57jAm
+	v44rRka8Tgk2+PkTRrxMwBOtHLOfSEwCtZY9TFjT1ppdX/ka66VkhQMaZPetkCtwwZMDCBaOQBJqG
+	Dfspp3qEWGHAkgqwst46FzKIWc7P81NZLl64BxZtu3bO/1XDh0eX0G3BD1hKyeipVtLe4HDiTd0dP
+	9dXpqX6Z4VR1rhSJoD+xtnscDaL3MPSg2BF9O1/9ZtxpV13u7dQs09GEXEacQeblt+t56aPTfP5ct
+	g8Nv2j7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u56Zw-0000000AQ5s-3jwz;
-	Wed, 16 Apr 2025 17:29:40 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1u5EJn-0000000BT3f-2I2Z;
+	Thu, 17 Apr 2025 01:45:31 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u56Bw-0000000AMJP-3fuE;
-	Wed, 16 Apr 2025 17:04:54 +0000
+	id 1u5EEn-0000000BSSh-2XDN;
+	Thu, 17 Apr 2025 01:40:23 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B362549E55;
-	Wed, 16 Apr 2025 17:04:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E0242C4CEE2;
-	Wed, 16 Apr 2025 17:04:49 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 059915C567A;
+	Thu, 17 Apr 2025 01:38:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AA2F6C4CEE2;
+	Thu, 17 Apr 2025 01:40:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744823091;
-	bh=X+hdtTE3I9nqlJM1Kle+k2xO66KF4y9d+l1InnmbIiY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=awnWpg25stPGEkodW2n6rnQ3VmVbQtYG8CCZIlZiliFhJs+7xUGxTVNYwRtZvAmJm
-	 yNpebVgMFRsUHholtmTylAm/4Th5ePfNID6jHsIkEPlBJMet3GGkIfEKgCNgSwGGVc
-	 TdleW0HW23lgmrc5+EA8yXUTZKsFdQ2yONvZs2yiC4xrRnJOD/p83Bo4s8K5gxpi9R
-	 IOsjBMM1EdXotdADKeszaGnEH6TapkcQ6v3nLUL7Kx4ZYM8xKH6adys86BhHPsXmQ4
-	 qg0moAdibw6QADJc1jxLzUbeBG8u2fNQhmUb94fc+NkERqTRZsYsSjH/YQuNGLWQmh
-	 ONEPE20yPI4aw==
-Date: Wed, 16 Apr 2025 18:04:47 +0100
-From: Simon Horman <horms@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net-next] net: airoha: Add missing filed to ppe_mbox_data
- struct
-Message-ID: <20250416170447.GU395307@horms.kernel.org>
-References: <20250415-airoha-en7581-fix-ppe_mbox_data-v1-1-4408c60ba964@kernel.org>
- <20250416154144.GT395307@horms.kernel.org>
- <Z__S_m9fBEKmoos1@lore-desk>
+	s=k20201202; t=1744854020;
+	bh=ET/4I+nNRcyKeeXS5wbO1KsqaFhtwKBA1fxuw2rYgrA=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=Mj0GBV6PCqcsXOwQcMHMyGdH76LRzaN2qg5riNQaNW7zhJHiVQJ7wMlYLtzMuZlHS
+	 dTmjkMRUZ4Yia463BvC1gUAD6vdhLH8nG6lfvfYP5nfkdbphmNtUrpz0hosD5RNPlk
+	 l11S+qiR4dOz/zgaKLvKEa3UJf/V7BpYvj2D51Pmc1WCy0KgQoMQvXhy0LBz8qXe9Z
+	 GtlJ6S2rDLW110r7gbjMFaDACDNg/gwXrynXlKKVtGVtXT9d8bPKgG+H+csy3JpU7H
+	 S06Nep9enp6PlznQJfsdrG6JJBWxt91S43GLFyznRX+mpRqhAGs7InAalH4FTLqalL
+	 K9JSebfprPWZQ==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id EAD2C3822D5A;
+	Thu, 17 Apr 2025 01:40:59 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Z__S_m9fBEKmoos1@lore-desk>
+Content-Transfer-Encoding: 8bit
+Subject: Re: [net-next PATCH] net: phy: mediatek: init val in
+ .phy_led_polarity_set for AN7581
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <174485405850.3559972.15890998079426748195.git-patchwork-notify@kernel.org>
+Date: Thu, 17 Apr 2025 01:40:58 +0000
+References: <20250415105313.3409-1-ansuelsmth@gmail.com>
+In-Reply-To: <20250415105313.3409-1-ansuelsmth@gmail.com>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: daniel@makrotopia.org, dqfext@gmail.com, SkyLake.Huang@mediatek.com,
+ andrew@lunn.ch, hkallweit1@gmail.com, linux@armlinux.org.uk,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ horms@kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250416_100452_949399_B542B42D 
-X-CRM114-Status: GOOD (  32.30  )
+X-CRM114-CacheID: sfid-20250416_184021_695350_B2C8C560 
+X-CRM114-Status: UNSURE (   7.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,61 +80,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 16, 2025 at 05:55:42PM +0200, Lorenzo Bianconi wrote:
-> > On Tue, Apr 15, 2025 at 09:27:21AM +0200, Lorenzo Bianconi wrote:
-> > > The official Airoha EN7581 firmware requires adding max_packet filed in
-> > > ppe_mbox_data struct while the unofficial one used to develop the Airoha
-> > > EN7581 flowtable offload does not require this field. This patch fixes
-> > > just a theoretical bug since the Airoha EN7581 firmware is not posted to
-> > > linux-firware or other repositories (e.g. OpenWrt) yet.
-> > > 
-> > > Fixes: 23290c7bc190d ("net: airoha: Introduce Airoha NPU support")
-> > > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > > ---
-> > >  drivers/net/ethernet/airoha/airoha_npu.c | 1 +
-> > >  1 file changed, 1 insertion(+)
-> > > 
-> > > diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ethernet/airoha/airoha_npu.c
-> > > index 7a5710f9ccf6a4a4f555ab63d67cb6b318de9b52..16201b5ce9f27866896226c3611b4a154d19bc2c 100644
-> > > --- a/drivers/net/ethernet/airoha/airoha_npu.c
-> > > +++ b/drivers/net/ethernet/airoha/airoha_npu.c
-> > > @@ -104,6 +104,7 @@ struct ppe_mbox_data {
-> > >  			u8 xpon_hal_api;
-> > >  			u8 wan_xsi;
-> > >  			u8 ct_joyme4;
-> > > +			u8 max_packet;
-> > >  			int ppe_type;
-> > >  			int wan_mode;
-> > >  			int wan_sel;
-> > 
-> > Hi Lorenzo,
-> > 
-> > I'm a little confused by this.
-> > 
-> > As I understand it ppe_mbox_data is sent as the data of a mailbox message
-> > send to the device.  But by adding the max_packet field the layout is
-> > changed. The size of the structure changes. And perhaps more importantly
-> > the offset of fields after max_packet, e.g.  wan_mode, change.
-> > 
-> > Looking at how this is used, f.e. in the following code, I'm unclear on
-> > how this change is backwards compatible.
+Hello:
+
+This patch was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Tue, 15 Apr 2025 12:53:05 +0200 you wrote:
+> Fix smatch warning for uninitialised val in .phy_led_polarity_set for
+> AN7581 driver.
 > 
-> you are right Simon, this change is not backwards compatible but the fw
-> is not publicly available yet and the official fw version will use this
-> new layout (the previous one was just a private version I used to develop
-> the driver).  Can we use this simple approach or do you think we should
-> differentiate the two firmware version in some way? (even if the previous
-> one will never be used).
+> Correctly init to 0 to set polarity high by default.
+> 
+> Reported-by: Simon Horman <horms@kernel.org>
+> Fixes: 6a325aed130b ("net: phy: mediatek: add Airoha PHY ID to SoC driver")
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> 
+> [...]
 
-Hi Lorenzo,
+Here is the summary with links:
+  - [net-next] net: phy: mediatek: init val in .phy_led_polarity_set for AN7581
+    https://git.kernel.org/netdev/net-next/c/00868d034818
 
-Sorry, I misunderstood the commit message.
-
-Yes, I think this simple approach is fine if there is no
-compatibility issue wrt firmwares we can reasonably expect
-in the wild. Which seems to be the case here.
-
-Reviewed-by: Simon Horman <horms@kernel.org>
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
 
 
