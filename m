@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FE08C369CA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06552C369B2
 	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Apr 2025 16:51:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,27 +12,27 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=tkue/4+hu0S9ZaDD6fCJs7PwlF+zNqiChA9SYC0EsVc=; b=VU17rd59LISjrBFuapCkCm+e0N
-	iWp+yh+05PvfhGT09onBG7xxzUkUc8/tYfN+0XgRrgf1DzuR3p53MvZsQHwNBEkfO504G7fGFi1Sj
-	dehBlcyGHRjd53GfLyNkpZhfqbFMhnntPqNVGIcW9eCV28rWPCgLGvjNoQfrZUd8oBJ6DRCYLSo64
-	vwtWkwsIFqWL9bIEtj3PS3nV971rV9kBu2XAkSL85u7jqi4BIZZpz/jLlnIqxYdAJbeH3WfSrp5Tj
-	GKZf2RhtQR+F/vMDT5bnLsYJ8YzDvSDwlVQJ7sxcA3F3nqAhgjkJpIo3E2gmMs2CC5iK50F7NP5QY
-	8vizT0xg==;
+	bh=QAhlePhlNEMZ6YCCSCi0dd5idcD/6+SpAk/nraO4a9U=; b=mx77h3zBqPbWAZSYZj/MFLEY8/
+	3naXxeqc0CjBkxrmhtuEIw0LS3fc88nmnni0h+fit4blwV33qoriE8znZ+imorgCZwjUurv4/uIxA
+	RwoNOrkrbJfkb21QdUoybfd+u9KDQ2AUUA3Uu2QAmdQg/kka/T+Kx5fLS4VPPSs0GVNgy92QuRaNr
+	32SyGk6AzbNL2IbsNbgKbqouc4r5whVX7vJ2NwlNqdf+DCVHFsWLidEUSSMAmVGjwj36hkPXUCVtz
+	hU0DeOIfZMsig0jgOUYJSw8nXsMp+3dN9pwydXJM6divnRT/8J4DzqhNfnRn4A0xI8BsCVZ2wbQ4v
+	jRNte6iA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5SSY-0000000Dj9y-0F8D;
-	Thu, 17 Apr 2025 16:51:30 +0000
+	id 1u5SSX-0000000Dj9B-0qcA;
+	Thu, 17 Apr 2025 16:51:29 +0000
 Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5SJk-0000000DhiN-1Id5;
-	Thu, 17 Apr 2025 16:42:25 +0000
+	id 1u5SIj-0000000DhY5-0GZj;
+	Thu, 17 Apr 2025 16:41:22 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.98.2)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1u5SH7-000000002ZV-1ibD;
-	Thu, 17 Apr 2025 16:42:19 +0000
-Date: Thu, 17 Apr 2025 17:42:16 +0100
+	id 1u5SG0-000000002Yi-3JBN;
+	Thu, 17 Apr 2025 16:41:10 +0000
+Date: Thu, 17 Apr 2025 17:41:07 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
 	Lorenzo Bianconi <lorenzo@kernel.org>,
@@ -45,15 +45,15 @@ To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
 	Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next v3] net: ethernet: mtk_eth_soc: convert cap_bit in
-  mtk_eth_muxc struct to u64
-Message-ID: <d6d3f9421baa85cdb7ff56cd06a9fc97ba0a77f9.1744907886.git.daniel@makrotopia.org>
+Subject: [PATCH net v3] net: ethernet: mtk_eth_soc: net: revise NETSYSv3
+ hardware  configuration
+Message-ID: <b71f8fd9d4bb69c646c4d558f9331dd965068606.1744907886.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250417_094224_357445_562188E4 
-X-CRM114-Status: GOOD (  12.52  )
+X-CRM114-CacheID: sfid-20250417_094121_101267_81CD5599 
+X-CRM114-Status: GOOD (  11.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,58 +70,86 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Bo-Cun Chen <bc-bocun.chen@mediatek.com>
 
-The capabilities bitfield was converted to a 64-bit value, but a cap_bit
-in struct mtk_eth_muxc which is used to store a full bitfield (rather
-than the bit number, as the name would suggest) still holds only a
-32-bit value.
+Change hardware configuration for the NETSYSv3.
+ - Enable PSE dummy page mechanism for the GDM1/2/3
+ - Enable PSE drop mechanism when the WDMA Rx ring full
+ - Enable PSE no-drop mechanism for packets from the WDMA Tx
+ - Correct PSE free drop threshold
+ - Correct PSE CDMA high threshold
 
-Change the type of cap_bit to u64 in order to avoid truncating the
-bitfield which results in path selection to not work with capabilities
-above the 32-bit limit.
-
-The values currently stored in the cap_bit field are
-MTK_ETH_MUX_GDM1_TO_GMAC1_ESW:
- BIT_ULL(18) | BIT_ULL(5)
-
-MTK_ETH_MUX_GMAC2_GMAC0_TO_GEPHY:
- BIT_ULL(19) | BIT_ULL(5) | BIT_ULL(6)
-
-MTK_ETH_MUX_U3_GMAC2_TO_QPHY:
- BIT_ULL(20) | BIT_ULL(5) | BIT_ULL(6)
-
-MTK_ETH_MUX_GMAC1_GMAC2_TO_SGMII_RGMII:
- BIT_ULL(20) | BIT_ULL(5) | BIT_ULL(7)
-
-MTK_ETH_MUX_GMAC12_TO_GEPHY_SGMII:
- BIT_ULL(21) | BIT_ULL(5)
-
-While all those values are currently still within 32-bit boundaries,
-the addition of new capabilities of MT7988 as well as future SoC's
-like MT7987 will exceed them. Also, the use of a 32-bit 'int' type to
-store the result of a BIT_ULL(...) is misleading.
-
-Fixes: 51a4df60db5c2 ("net: ethernet: mtk_eth_soc: convert caps in mtk_soc_data struct to u64")
+Fixes: 1953f134a1a8b ("net: ethernet: mtk_eth_soc: add NETSYS_V3 version support")
 Signed-off-by: Bo-Cun Chen <bc-bocun.chen@mediatek.com>
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
-v3: improve commit message, target net-next instead of net tree
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 24 +++++++++++++++++----
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h | 10 ++++++++-
+ 2 files changed, 29 insertions(+), 5 deletions(-)
 
- drivers/net/ethernet/mediatek/mtk_eth_path.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_path.c b/drivers/net/ethernet/mediatek/mtk_eth_path.c
-index 7c27a19c4d8f4..6fbfb16438a51 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_path.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_path.c
-@@ -14,7 +14,7 @@
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index bdb98c9d8b1c1..47807b2023104 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -4043,11 +4043,27 @@ static int mtk_hw_init(struct mtk_eth *eth, bool reset)
+ 	mtk_w32(eth, 0x21021000, MTK_FE_INT_GRP);
  
- struct mtk_eth_muxc {
- 	const char	*name;
--	int		cap_bit;
-+	u64		cap_bit;
- 	int		(*set_path)(struct mtk_eth *eth, u64 path);
- };
+ 	if (mtk_is_netsys_v3_or_greater(eth)) {
+-		/* PSE should not drop port1, port8 and port9 packets */
+-		mtk_w32(eth, 0x00000302, PSE_DROP_CFG);
++		/* PSE dummy page mechanism */
++		mtk_w32(eth, PSE_DUMMY_WORK_GDM(1) | PSE_DUMMY_WORK_GDM(2) |
++			PSE_DUMMY_WORK_GDM(3) | DUMMY_PAGE_THR, PSE_DUMY_REQ);
++
++		/* PSE free buffer drop threshold */
++		mtk_w32(eth, 0x00600009, PSE_IQ_REV(8));
++
++		/* PSE should not drop port8, port9 and port13 packets from
++		 * WDMA Tx
++		 */
++		mtk_w32(eth, 0x00002300, PSE_DROP_CFG);
++
++		/* PSE should drop packets to port8, port9 and port13 on WDMA Rx
++		 * ring full
++		 */
++		mtk_w32(eth, 0x00002300, PSE_PPE_DROP(0));
++		mtk_w32(eth, 0x00002300, PSE_PPE_DROP(1));
++		mtk_w32(eth, 0x00002300, PSE_PPE_DROP(2));
  
+ 		/* GDM and CDM Threshold */
+-		mtk_w32(eth, 0x00000707, MTK_CDMW0_THRES);
++		mtk_w32(eth, 0x08000707, MTK_CDMW0_THRES);
+ 		mtk_w32(eth, 0x00000077, MTK_CDMW1_THRES);
+ 
+ 		/* Disable GDM1 RX CRC stripping */
+@@ -4064,7 +4080,7 @@ static int mtk_hw_init(struct mtk_eth *eth, bool reset)
+ 		mtk_w32(eth, 0x00000300, PSE_DROP_CFG);
+ 
+ 		/* PSE should drop packets to port 8/9 on WDMA Rx ring full */
+-		mtk_w32(eth, 0x00000300, PSE_PPE0_DROP);
++		mtk_w32(eth, 0x00000300, PSE_PPE_DROP(0));
+ 
+ 		/* PSE Free Queue Flow Control  */
+ 		mtk_w32(eth, 0x01fa01f4, PSE_FQFC_CFG2);
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index 39709649ea8d1..88ef2e9c50fc1 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -151,7 +151,15 @@
+ #define PSE_FQFC_CFG1		0x100
+ #define PSE_FQFC_CFG2		0x104
+ #define PSE_DROP_CFG		0x108
+-#define PSE_PPE0_DROP		0x110
++#define PSE_PPE_DROP(x)		(0x110 + ((x) * 0x4))
++
++/* PSE Last FreeQ Page Request Control */
++#define PSE_DUMY_REQ		0x10C
++/* PSE_DUMY_REQ is not a typo but actually called like that also in
++ * MediaTek's datasheet
++ */
++#define PSE_DUMMY_WORK_GDM(x)	BIT(16 + (x))
++#define DUMMY_PAGE_THR		0x1
+ 
+ /* PSE Input Queue Reservation Register*/
+ #define PSE_IQ_REV(x)		(0x140 + (((x) - 1) << 2))
 -- 
 2.49.0
 
