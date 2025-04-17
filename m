@@ -4,69 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98F8FC369B2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Apr 2025 16:27:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDD07C369C2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Apr 2025 16:27:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TE4JWE+8eZzNTxMrSC0k6gJEb4igX4fhxodY5PL3rpg=; b=qosT4gqBqoyRJhhcJPGEVHvDxG
-	J6EPREn0jNtAckE/mbFsC5sP2yNJxr+FxyiQaMWFKorffhHEa5ZyH+TufKYFxO4JPx6VeEDaNWfjL
-	QPqo+zyl1VLYhoudw/l1tgEl47bQCywO9He/ZRn+xEqxP6z6GB3DIQPl7pl41GZlEpuOFSDFjy/26
-	ojFAjoAn14c7qKr/So2MhN6LZ0h8hD8e0eSa8cG0vUav0/KyUEN6eRXtW626hCajyD05DOPblU/1m
-	iJEN1mgAYWmfKFgnkRtBilM3qfiIiapQBIufNRO4XVB874gOY8LCDDI/JbFqzc5jY4q/xU3WgNtLa
-	J9vQiY4A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=f5cCZAWKDm6+Qeuwa/9YylW4qKECvxAC2UN1OjNfOxQ=; b=kzOoHwDITonezsFXwbs0IV62/u
+	OSDYkb/XHEvKQ+kUOLYgj6jAiY5nj0P28+BCtecZHaJ1SLi62132HT7SvA+ZJFJnX4buxDuiUK+FO
+	BMTiTeezvCpj7bfZjs8H6izhtgR16wlNkuE4LdzmaYermk7YcTZ03BZA6Xmjbra+5v7zTAEIqaEzY
+	cKBdXJ6ITivNpfE9Q9uoj2eMLDrkfid/RS+DRlxzL1s5901X2tV4zHGV9CYYCmYpH5Cj4r49MJYdx
+	2Qbg7SLQTOpzaNybrM51JcNhOz1kyahWqIx9Vr8O0XC4vSDvVmpOgrid0m4w9BtZ7cMf+QN/PXsau
+	88DACSPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5S5W-0000000DfPq-2Rja;
-	Thu, 17 Apr 2025 16:27:42 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1u5S5g-0000000DfSj-3qJb;
+	Thu, 17 Apr 2025 16:27:52 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5ReZ-0000000DbAp-17ar;
-	Thu, 17 Apr 2025 15:59:52 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7D42C4A141;
-	Thu, 17 Apr 2025 15:59:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D0DC8C4CEE4;
-	Thu, 17 Apr 2025 15:59:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744905590;
-	bh=hHSlbiPaRGPDFDdALuBGMJLctXSjXushS0Thr9FD/Zw=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=SKKDzDFa8yz//vN87vlFbNealPS3RLJ8/IeYYoE/jxcPJqA9v7cTkd7J6AxzsO/Nv
-	 SK3KnF6MDlGl2yM8TXsAF+hB8FfzOIL1ncZnOmTEuoTiYVF/l4Lezbcre9F8MvCsge
-	 8CIKfGV1Y3zG7kyfSCfQYFt/tTYAQhSjZ3N+BH4HDcdAybxH6d3i/N1Oqpm3LgizXe
-	 94+0ObpQDBGx0z1z34t9XGYj5YTpiguRIS94Xs/EtMwMkC0NqgPXGrn3NcBI/Y1bR9
-	 0+0OtUSjhS8HwdDxZ8+Gt9dnfQ+1sv0L9E5aQgqyOStp2KaWMFejEUuLMR9GdV0O+p
-	 gP+zNb10VHHSw==
-Date: Thu, 17 Apr 2025 08:59:48 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Daniel Golle <daniel@makrotopia.org>
+	id 1u5Rls-0000000DcAu-0bOL;
+	Thu, 17 Apr 2025 16:07:25 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.98.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1u5Ra5-000000001zt-0Tra;
+	Thu, 17 Apr 2025 15:57:51 +0000
+Date: Thu, 17 Apr 2025 16:57:48 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Jakub Kicinski <kuba@kernel.org>
 Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Florian Fainelli
- <f.fainelli@gmail.com>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net v2 4/5] net: ethernet: mtk_eth_soc: net: revise
- NETSYSv3 hardware configuration
-Message-ID: <20250417085948.35b0ec5a@kernel.org>
-In-Reply-To: <aAEiCjdJdsqH6EAU@makrotopia.org>
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Florian Fainelli <f.fainelli@gmail.com>, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net v2 5/5] net: ethernet: mtk_eth_soc: convert cap_bit
+ in mtk_eth_muxc struct to u64
+Message-ID: <aAEk_J9JCi3lkuGD@makrotopia.org>
 References: <8ab7381447e6cdcb317d5b5a6ddd90a1734efcb0.1744764277.git.daniel@makrotopia.org>
-	<28929b5bb2bfd45e040a07c0efefb29e57a77513.1744764277.git.daniel@makrotopia.org>
-	<20250417081055.1bda2ff6@kernel.org>
-	<aAEiCjdJdsqH6EAU@makrotopia.org>
+ <99177094f957c7ad66116aba0ef877df42590dec.1744764277.git.daniel@makrotopia.org>
+ <20250417081325.0e0345ee@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250417081325.0e0345ee@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250417_085951_330591_8DD03E72 
-X-CRM114-Status: GOOD (  20.94  )
+X-CRM114-CacheID: sfid-20250417_090724_180428_005C8B16 
+X-CRM114-Status: GOOD (  20.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,43 +72,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 17 Apr 2025 16:45:14 +0100 Daniel Golle wrote:
-> On Thu, Apr 17, 2025 at 08:10:55AM -0700, Jakub Kicinski wrote:
-> > On Wed, 16 Apr 2025 01:51:42 +0100 Daniel Golle wrote:  
-> > > +		/* PSE should not drop port8, port9 and port13 packets from WDMA Tx */
-> > > +		mtk_w32(eth, 0x00002300, PSE_DROP_CFG);
-> > > +
-> > > +		/* PSE should drop packets to port8, port9 and port13 on WDMA Rx ring full */  
+On Thu, Apr 17, 2025 at 08:13:25AM -0700, Jakub Kicinski wrote:
+> On Wed, 16 Apr 2025 01:52:03 +0100 Daniel Golle wrote:
+> > The capabilities bitfield was converted to a 64-bit value, but a cap_bit
+> > in struct mtk_eth_muxc which is used to store a full bitfield (rather
+> > than the bit number, as the name would suggest) still holds only a
+> > 32-bit value.
 > > 
-> > nit: please try to wrap at 80 chars. There's really no need to go over
-> > on comments. Some of us stick to 80 char terminals.   
+> > Change the type of cap_bit to u64 in order to avoid truncating the
+> > bitfield which results in path selection to not work with capabilities
+> > above the 32-bit limit.
 > 
-> Too late now to send another revision...
+> Could you please be more specific and name a bit or a field that goes
+> over 32b? Since this is a fix ideally we'd also have impact to the user
+> described in the commit message. But having enough info for the reviewer
+> to quickly validate the change is the bare minimum.
 
-I only applied the first 3 :)
+I reckon it's too late to include that information in the commit
+description. However, let me still illustrate the problem here now:
 
-> > > [...]
-> > > diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> > > index 39709649ea8d1..eaa96c8483b70 100644
-> > > --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> > > +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> > > @@ -151,7 +151,12 @@
-> > >  #define PSE_FQFC_CFG1		0x100
-> > >  #define PSE_FQFC_CFG2		0x104
-> > >  #define PSE_DROP_CFG		0x108
-> > > -#define PSE_PPE0_DROP		0x110
-> > > +#define PSE_PPE_DROP(x)		(0x110 + ((x) * 0x4))
-> > > +
-> > > +/* PSE Last FreeQ Page Request Control */
-> > > +#define PSE_DUMY_REQ		0x10C  
-> > 
-> > This really looks like misspelling of DUMMY, is it really supposed 
-> > to have one 'M' ?  
-> 
-> I also thought that when I first saw that and have told MediaTek engineers
-> about it, they told me that the register is called like that also in their
-> datasheet and hence they want the name to be consistent in the driver.
+In mtk_eth_soc.h:
 
-Hm, maybe add a comment ? It confused both of us, probably going 
-to confuse most people later on
+enum mkt_eth_capabilities {
+	MTK_RGMII_BIT = 0,
+	MTK_TRGMII_BIT,
+	MTK_SGMII_BIT,
+	MTK_USXGMII_BIT,
+	MTK_2P5GPHY_BIT,
+	MTK_ESW_BIT,
+	MTK_GEPHY_BIT,
+	MTK_MUX_BIT,
+	MTK_INFRA_BIT,
+	MTK_SHARED_SGMII_BIT,
+	MTK_HWLRO_BIT,
+	MTK_RSS_BIT,
+	MTK_SHARED_INT_BIT,
+	MTK_PDMA_INT_BIT,
+	MTK_TRGMII_MT7621_CLK_BIT,
+	MTK_QDMA_BIT,
+	MTK_SOC_MT7628_BIT,
+	MTK_RSTCTRL_PPE1_BIT,
+	MTK_RSTCTRL_PPE2_BIT,
+	MTK_U3_COPHY_V2_BIT,
+	MTK_SRAM_BIT,
+	MTK_36BIT_DMA_BIT,
+
+	/* MUX BITS*/
+	MTK_ETH_MUX_GDM1_TO_GMAC1_ESW_BIT,
+	MTK_ETH_MUX_GMAC2_GMAC0_TO_GEPHY_BIT,
+	MTK_ETH_MUX_U3_GMAC2_TO_QPHY_BIT,
+	MTK_ETH_MUX_GMAC2_TO_2P5GPHY_BIT,
+	MTK_ETH_MUX_GMAC1_GMAC2_TO_SGMII_RGMII_BIT,
+	MTK_ETH_MUX_GMAC12_TO_GEPHY_SGMII_BIT,
+	MTK_ETH_MUX_GMAC123_TO_GEPHY_SGMII_BIT,
+	MTK_ETH_MUX_GMAC123_TO_USXGMII_BIT,
+
+	/* PATH BITS */
+	MTK_ETH_PATH_GMAC1_RGMII_BIT,
+	MTK_ETH_PATH_GMAC1_TRGMII_BIT,
+	MTK_ETH_PATH_GMAC1_SGMII_BIT,
+	MTK_ETH_PATH_GMAC2_RGMII_BIT,
+	MTK_ETH_PATH_GMAC2_SGMII_BIT,
+	MTK_ETH_PATH_GMAC2_2P5GPHY_BIT,
+	MTK_ETH_PATH_GMAC2_GEPHY_BIT,
+	MTK_ETH_PATH_GMAC3_SGMII_BIT,
+	MTK_ETH_PATH_GDM1_ESW_BIT,
+	MTK_ETH_PATH_GMAC1_USXGMII_BIT,
+	MTK_ETH_PATH_GMAC2_USXGMII_BIT,
+	MTK_ETH_PATH_GMAC3_USXGMII_BIT,
+};
+
+...
+
+#define MTK_ETH_MUX_GDM1_TO_GMAC1_ESW		\
+	BIT_ULL(MTK_ETH_MUX_GDM1_TO_GMAC1_ESW_BIT)
+#define MTK_ETH_MUX_GMAC2_GMAC0_TO_GEPHY	\
+	BIT_ULL(MTK_ETH_MUX_GMAC2_GMAC0_TO_GEPHY_BIT)
+#define MTK_ETH_MUX_U3_GMAC2_TO_QPHY		\
+	BIT_ULL(MTK_ETH_MUX_U3_GMAC2_TO_QPHY_BIT)
+#define MTK_ETH_MUX_GMAC2_TO_2P5GPHY		\
+	BIT_ULL(MTK_ETH_MUX_GMAC2_TO_2P5GPHY_BIT)
+#define MTK_ETH_MUX_GMAC1_GMAC2_TO_SGMII_RGMII	\
+	BIT_ULL(MTK_ETH_MUX_GMAC1_GMAC2_TO_SGMII_RGMII_BIT)
+#define MTK_ETH_MUX_GMAC12_TO_GEPHY_SGMII	\
+	BIT_ULL(MTK_ETH_MUX_GMAC12_TO_GEPHY_SGMII_BIT)
+#define MTK_ETH_MUX_GMAC123_TO_GEPHY_SGMII	\
+	BIT_ULL(MTK_ETH_MUX_GMAC123_TO_GEPHY_SGMII_BIT)
+#define MTK_ETH_MUX_GMAC123_TO_USXGMII	\
+	BIT_ULL(MTK_ETH_MUX_GMAC123_TO_USXGMII_BIT)
+
+The above MTK_ETH_MUX_* macros are the ones used as values for cap_bit in
+mtk_eth_path.c.
+So technically MTK_ETH_MUX_GMAC123_TO_USXGMII == BIT_ULL(29)
+which is still fine for a 32-bit value, but never the less BIT_ULL returns
+a 64-bit type and hence using a 32-bit type to store the result is at
+least misleading.
+
+However, you are right that with the currently supported SoCs this doesn't
+result in an actual bug (but it will with the upcoming addition of newer SoC
+like MT7987).
 
