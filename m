@@ -4,67 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A2ADC369BD
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Apr 2025 01:45:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA351C369CA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Apr 2025 06:31:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TEBA25GBXNvf+seUWKb3vv8yQAjf5q61VLohScAL30o=; b=IbzK8PAcYWrS1rshhywhn07ors
-	q/c99b/sWVZ2kEGmvnBf6FKVv+HZb1RIbkCSNeTkzm5Q8tbKCIPUkotM1bR4JjaGkWupe+De57jAm
-	v44rRka8Tgk2+PkTRrxMwBOtHLOfSEwCtZY9TFjT1ppdX/ka66VkhQMaZPetkCtwwZMDCBaOQBJqG
-	Dfspp3qEWGHAkgqwst46FzKIWc7P81NZLl64BxZtu3bO/1XDh0eX0G3BD1hKyeipVtLe4HDiTd0dP
-	9dXpqX6Z4VR1rhSJoD+xtnscDaL3MPSg2BF9O1/9ZtxpV13u7dQs09GEXEacQeblt+t56aPTfP5ct
-	g8Nv2j7A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oog4OxBxKWiQtqD4HSeX9KLpN0j6tdACPCd+y8x7fug=; b=KDn8ptxQyAXOeprgQNppt8QnkZ
+	Ib8/0rfGmp3HyxbxDe+TdvUxdZ1uqIP3DLzl+o5VgBd4hiqiC0YpMYpRg6crW3KJaCYyIR9g4Xe52
+	3DQeUfSufB70x2z87ttDfRtstd8aow6/+mm2EZ+SkrM2Ug1uxj6lf8uFTONnGM8KLvJFzUwftsTu9
+	v0imDYpy9bKC67hXKzV9hL8zd+ck3zcesFzyxdWVz6UGjTn1rROxqBCESWLMVRNhA0nTGx0RRCIAW
+	ICeQmoJqihA9DmzqOwaFLJZrxfaEGkNYIK3OIelvHPwcD3IIvjQQhW8vVIZRy9bEtQJDR0E8b9zGv
+	RfBuaTjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5EJn-0000000BT3f-2I2Z;
-	Thu, 17 Apr 2025 01:45:31 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1u5Ime-0000000Buhs-3WXW;
+	Thu, 17 Apr 2025 06:31:36 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5EEn-0000000BSSh-2XDN;
-	Thu, 17 Apr 2025 01:40:23 +0000
+	id 1u5IkC-0000000BuOt-1eyT;
+	Thu, 17 Apr 2025 06:29:05 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 059915C567A;
-	Thu, 17 Apr 2025 01:38:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AA2F6C4CEE2;
-	Thu, 17 Apr 2025 01:40:20 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 5A029A4B17F;
+	Thu, 17 Apr 2025 06:23:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C96E3C4CEE7;
+	Thu, 17 Apr 2025 06:29:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744854020;
-	bh=ET/4I+nNRcyKeeXS5wbO1KsqaFhtwKBA1fxuw2rYgrA=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=Mj0GBV6PCqcsXOwQcMHMyGdH76LRzaN2qg5riNQaNW7zhJHiVQJ7wMlYLtzMuZlHS
-	 dTmjkMRUZ4Yia463BvC1gUAD6vdhLH8nG6lfvfYP5nfkdbphmNtUrpz0hosD5RNPlk
-	 l11S+qiR4dOz/zgaKLvKEa3UJf/V7BpYvj2D51Pmc1WCy0KgQoMQvXhy0LBz8qXe9Z
-	 GtlJ6S2rDLW110r7gbjMFaDACDNg/gwXrynXlKKVtGVtXT9d8bPKgG+H+csy3JpU7H
-	 S06Nep9enp6PlznQJfsdrG6JJBWxt91S43GLFyznRX+mpRqhAGs7InAalH4FTLqalL
-	 K9JSebfprPWZQ==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id EAD2C3822D5A;
-	Thu, 17 Apr 2025 01:40:59 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1744871343;
+	bh=7IAS7u/qyeDA+3kCVGKykpqGrK/XcXN5eUwS62reNK4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=XgFcS3y3UHQw9SyyZDhs8yKzZcuIEoe57HITDLImj6A11NPPAyrHQSJ9xUg/AFuFe
+	 xOLpwLraz8ffZcLpYyyyGF0como1vwUQvXhYFRLmfNOOomn7obPIhTAKjouuUrCrYd
+	 +UwlcZGslCBWCMrUyueRUD4aVASK7sggMb1Jmx/k7S05AdSqcowupyn9XUAMA4wL59
+	 tjfzjPP987AIoUMM7NYFD00DgbqU4xvofP+Ey2tfzVogiJW6bIa4uMLAUTo+Yt9ttG
+	 +7qZeJPNyE9VsEiVwYdy6kPfDRKUvbpuGqTZW7+omMmdBXv0pQNyJR26D6XLizcpBc
+	 ttBso8DqragWA==
+Date: Thu, 17 Apr 2025 08:28:58 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Frank Wunderlich <linux@fw-web.de>
+Subject: Re: [PATCH v3 1/8] dt-bindings: arm: mediatek: add bpi-r4 2g5 phy
+ variant
+Message-ID: <20250417-red-smilodon-of-aurora-e5beaf@shite>
+References: <20250416095402.90543-1-linux@fw-web.de>
+ <20250416095402.90543-2-linux@fw-web.de>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [net-next PATCH] net: phy: mediatek: init val in
- .phy_led_polarity_set for AN7581
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <174485405850.3559972.15890998079426748195.git-patchwork-notify@kernel.org>
-Date: Thu, 17 Apr 2025 01:40:58 +0000
-References: <20250415105313.3409-1-ansuelsmth@gmail.com>
-In-Reply-To: <20250415105313.3409-1-ansuelsmth@gmail.com>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: daniel@makrotopia.org, dqfext@gmail.com, SkyLake.Huang@mediatek.com,
- andrew@lunn.ch, hkallweit1@gmail.com, linux@armlinux.org.uk,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- horms@kernel.org
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20250416095402.90543-2-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250416_184021_695350_B2C8C560 
-X-CRM114-Status: UNSURE (   7.88  )
+X-CRM114-CacheID: sfid-20250416_232904_494309_CBED9F8F 
+X-CRM114-Status: UNSURE (   9.93  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,34 +68,28 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, Lee Jones <lee@kernel.org>, Daniel Golle <daniel@makrotopia.org>, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Vinod Koul <vkoul@kernel.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, devicetree@vger.kernel.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This patch was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
-
-On Tue, 15 Apr 2025 12:53:05 +0200 you wrote:
-> Fix smatch warning for uninitialised val in .phy_led_polarity_set for
-> AN7581 driver.
+On Wed, Apr 16, 2025 at 11:53:53AM GMT, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> Correctly init to 0 to set polarity high by default.
+> Add new compatible for Bananapi R4 with 2.5G phy.
+> Base board is compatible with existing BPI-R4 only 1 SFP is replaced
+> by RJ45 port and use mt7988 internal phy.
 > 
-> Reported-by: Simon Horman <horms@kernel.org>
-> Fixes: 6a325aed130b ("net: phy: mediatek: add Airoha PHY ID to SoC driver")
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> 
-> [...]
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+> v3:
+> - new patch adding compatible for 2.5g variant
+> ---
+>  Documentation/devicetree/bindings/arm/mediatek.yaml | 4 ++++
+>  1 file changed, 4 insertions(+)
 
-Here is the summary with links:
-  - [net-next] net: phy: mediatek: init val in .phy_led_polarity_set for AN7581
-    https://git.kernel.org/netdev/net-next/c/00868d034818
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+Best regards,
+Krzysztof
 
 
