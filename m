@@ -4,62 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D80DC369B2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Apr 2025 16:28:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EC1BC369B2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Apr 2025 16:28:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F74nRVGkd2m8J5KZtzQY737upkU+XgKU1j7nwBIitzA=; b=v3pAQRHSs9Y1q+JK9VNg6G/KIK
-	Bbk33zFgQaMT/mZkMjliXERUxmJ3iWXyGGndIIPQMNo+ockZbef7YLEKGM7SSl7qlh6UzPOdx5Rei
-	OjNLJ1IK6AdMRm+O7et6cvDU2Y6LBcYPPofDcawJxJyvV2cJgiMznc6B2eGwAa3YL8vYB8T3/VAXx
-	GVsF/IewiXUPPmcRjvHSz8WPiieWzUxfDIzv4VVcNPcxV4LBuyFNcxmysS38siiXjQo14b53t+sRn
-	prXfI6dITqqYCVTQeo0tM8KaCBJM9va/1rLmqTKUCZRoF5XRIAFcPQtCMm7+U/1cqksIKDRXwnYg6
-	NY27HxGg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iVsgJT5RhEgV3Eqa+I0I3zR0WygrWSAY69sId6E4QFg=; b=gPhbXhLn5Eyc2I2/bH/RCy3pEN
+	vgu/wm5rrKpCmpJ94LdvnbOhWqrpMj8pE7+EaQmkLknsVg/uOXy6uoZkZ3g67gW9H8H/uR9wBhQ8D
+	ZuFZB81Nr5wpPeev5yiDwBsnbaKYTNjtgmoMtjkfDQXC8TJmWLaZtDGuF6R8EDrSfNxldSRm7cXzs
+	7e6i3UBw1ZzrPiqhEAUY88sxgcUNHQFpz4kFV2cDOEut6pW6gos0eNBboWIvNAcMZ7Mgpze2OME+h
+	90spxOIOuEtML0Yg+rMlQwHSeg1//CDD77u2sAwmCejA9juhyRMeha6DHFUWlhscnmFs+8Z+Lbcti
+	8Te1lkpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5S61-0000000DfYh-0ybP;
-	Thu, 17 Apr 2025 16:28:13 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1u5S6O-0000000DfkE-2BmN;
+	Thu, 17 Apr 2025 16:28:36 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5Rv7-0000000Ddij-2rjF;
-	Thu, 17 Apr 2025 16:16:58 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.98.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1u5RsR-000000002Q4-0DCF;
-	Thu, 17 Apr 2025 16:16:49 +0000
-Date: Thu, 17 Apr 2025 17:16:45 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Florian Fainelli <f.fainelli@gmail.com>, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net v2 4/5] net: ethernet: mtk_eth_soc: net: revise
- NETSYSv3 hardware configuration
-Message-ID: <aAEpbV-IvbfaPwwL@makrotopia.org>
-References: <8ab7381447e6cdcb317d5b5a6ddd90a1734efcb0.1744764277.git.daniel@makrotopia.org>
- <28929b5bb2bfd45e040a07c0efefb29e57a77513.1744764277.git.daniel@makrotopia.org>
- <20250417081055.1bda2ff6@kernel.org>
- <aAEiCjdJdsqH6EAU@makrotopia.org>
- <20250417085948.35b0ec5a@kernel.org>
+	id 1u5Rzx-0000000DebV-2pJG;
+	Thu, 17 Apr 2025 16:21:59 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id B9E32A4A525;
+	Thu, 17 Apr 2025 16:16:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A666EC4CEE4;
+	Thu, 17 Apr 2025 16:21:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1744906916;
+	bh=2x+9YZNT7bxe9lhwnR1Ay+d7g2a7nS8Raa3g1b8LHR4=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=YuC1nQ5T76pPqq8GWl13jmGTwr47Mj8+GpH3kmE6f4v3O5Yc+akjec0zYM/Ev2dqT
+	 +oSXklOdzj0yzfjqwV1tgWDSdhj41uB2ztP1vLv/3jC6zujqSuzANknWto+onfFPo6
+	 4IR1MvDJNDhwo/JKLEEfEfN5McvGsuzGnag9zll7Bh/+1ob5UZbljLKfPmPt5QzWHS
+	 ve6GbOFdwmwM1Gi4/X82ZdL4BD7shouDCxSAcI2nTIchzDok+1z5YFDT13BdHD6ua8
+	 8YVTT6gHFd+Nw3Njoo91BhpBadfWYdGd564PauQzRdqq91oDFbyUGKCMo0xEfTCF/Z
+	 Iz0AH2gsw1Gmg==
+From: Mark Brown <broonie@kernel.org>
+To: kernel@collabora.com, Liam Girdwood <lgirdwood@gmail.com>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Trevor Wu <trevor.wu@mediatek.com>, 
+ Julien Massot <julien.massot@collabora.com>
+Cc: linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ devicetree@vger.kernel.org
+In-Reply-To: <20250417-mt8395-audio-sof-v1-0-30587426e5dd@collabora.com>
+References: <20250417-mt8395-audio-sof-v1-0-30587426e5dd@collabora.com>
+Subject: Re: (subset) [PATCH 0/6] ASoC: mt8195: Add support for MT8395
+ Radxa NIO 12L with MT6359 codec
+Message-Id: <174490691335.121189.17592023292811582537.b4-ty@kernel.org>
+Date: Thu, 17 Apr 2025 17:21:53 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250417085948.35b0ec5a@kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.15-dev-c25d1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250417_091657_722295_CCAEDB97 
-X-CRM114-Status: GOOD (  22.63  )
+X-CRM114-CacheID: sfid-20250417_092157_842848_01EA5998 
+X-CRM114-Status: GOOD (  15.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,51 +79,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 17, 2025 at 08:59:48AM -0700, Jakub Kicinski wrote:
-> On Thu, 17 Apr 2025 16:45:14 +0100 Daniel Golle wrote:
-> > On Thu, Apr 17, 2025 at 08:10:55AM -0700, Jakub Kicinski wrote:
-> > > On Wed, 16 Apr 2025 01:51:42 +0100 Daniel Golle wrote:  
-> > > > +		/* PSE should not drop port8, port9 and port13 packets from WDMA Tx */
-> > > > +		mtk_w32(eth, 0x00002300, PSE_DROP_CFG);
-> > > > +
-> > > > +		/* PSE should drop packets to port8, port9 and port13 on WDMA Rx ring full */  
-> > > 
-> > > nit: please try to wrap at 80 chars. There's really no need to go over
-> > > on comments. Some of us stick to 80 char terminals.   
-> > 
-> > Too late now to send another revision...
+On Thu, 17 Apr 2025 10:44:31 +0200, Julien Massot wrote:
+> This patch series adds support for audio playback on the MT8395-based Radxa NIO 12L platform, which uses the integrated MT6359 codec via internal DAI links.
 > 
-> I only applied the first 3 :)
-
-Perfect, so I'll roll up the remaining two with the changes suggested.
-
+> Key additions:
+> - Support for a new `mediatek,mt8195_mt6359` card configuration that does not rely on external codecs like rt5682.
+> - Proper memory region declarations and pinctrl setup for the audio front-end (AFE) and audio DSP (ADSP).
+> - A device tree sound node for headphone audio routing using `DL_SRC_BE` and `AIF1`.
+> - Enhancements to the DT bindings to document the new compatible string, missing link-name, and additional audio routes (Headphone L/R).
 > 
-> > > > [...]
-> > > > diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> > > > index 39709649ea8d1..eaa96c8483b70 100644
-> > > > --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> > > > +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> > > > @@ -151,7 +151,12 @@
-> > > >  #define PSE_FQFC_CFG1		0x100
-> > > >  #define PSE_FQFC_CFG2		0x104
-> > > >  #define PSE_DROP_CFG		0x108
-> > > > -#define PSE_PPE0_DROP		0x110
-> > > > +#define PSE_PPE_DROP(x)		(0x110 + ((x) * 0x4))
-> > > > +
-> > > > +/* PSE Last FreeQ Page Request Control */
-> > > > +#define PSE_DUMY_REQ		0x10C  
-> > > 
-> > > This really looks like misspelling of DUMMY, is it really supposed 
-> > > to have one 'M' ?  
-> > 
-> > I also thought that when I first saw that and have told MediaTek engineers
-> > about it, they told me that the register is called like that also in their
-> > datasheet and hence they want the name to be consistent in the driver.
-> 
-> Hm, maybe add a comment ? It confused both of us, probably going 
-> to confuse most people later on
+> [...]
 
-Ok, will do and send v3.
+Applied to
 
-Thank you!
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+
+Thanks!
+
+[1/6] ASoC: mediatek: mt8195: Move rt5682 specific dapm routes
+      commit: 0cb1975c717528b662f096b2874e4dae8a9a2d2e
+[2/6] ASoC: mediatek: mt8195: Set ETDM1/2 IN/OUT to COMP_DUMMY()
+      commit: 7af317f7faaab09d5a78f24605057d11f5955115
+[3/6] ASoC: mediatek: mt8195: Add mt8195-mt6359 card
+      commit: 3046e16d0605765ff0c5b99f1fa13fa35312eae9
+[4/6] ASoC: dt-bindings: mt8195: add compatible mt8195_mt6359
+      commit: 95f6208b20e4d0b427d32e5881be4257a3aab3c8
+[5/6] ASoC: dt-bindings: mt8195: add missing audio routing and link-name
+      commit: 5b974f53424d16165b606e2e2f9208d450a5723c
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
