@@ -4,105 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 176E5C369CA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Apr 2025 08:01:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70C69C369B2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Apr 2025 08:55:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=g3FaD1mfcP0CXL4z+w85lnoeXGpSHECpWHmGX7EuvUE=; b=QKHKRBVFMdq4at
-	CI9Om6iZLC4Uyip/7ENS3Zy4TBiKMV0GB8IDxfxjjxqaWqhjG9DtGucefBGdzJNsC2uKvaRo3BhJd
-	ya9/LhNzcVW85MTgu/ySHKYctd79T1suemobriS9i8MYGRdsvoksCbQNpDJwzCf0o4IfdvI5LAfgu
-	cULxYkBxeGtIzPJ8l5PJnY5zuA9C2OfDy8N5NVI13hu3eKXIGUZdvEteUdE+WvJ2/wCFl7UmpYe9+
-	qxa6b8k1vE2vulgx0q9MWzdySr0eRI298puXRVL0H0vDKaTHjPOwo20TrXU2yNtMuzJw8/Rc6sgDF
-	/cvZNv++hDylOC/YJ3aA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Pgz/ITbfkZSN0vK7zINoFs1WSTDtBwDQ4q5LKkyjsCc=; b=XP9l0GKPo/jwyM
+	6Tljmh49/Gcx/ZU0lugdxifRP/Z+4lVnxq4xyQCk9jmxIp1SuQFopvN28WL97X4rVltsYf96WMLz7
+	gwoQMe/6FN8eaUstLZW+wfxw/uJnYWNHIAP5zReTTGts9PWy32uVhjBCRPEvSknu4V4cYKb1QRBqa
+	ApOJ4WvQChfYe+5JSoYdIIZSc1m+6KPfsTZ7g2p0Ces+INkTsyb5Z9fng+Aa7/jqxCzA8XC2gg4PN
+	IxRnGWP58wzZWhF5Ia+r+D9eSBo3hCuXh42VvOrGbTStQwP2jKwXG18LryvR3Uc8+zLdYkCt1OPFg
+	maywAsqcSRiZxX+eaZvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5KBM-0000000CCtu-0OsV;
-	Thu, 17 Apr 2025 08:01:12 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1u5L1b-0000000CLgW-36c8;
+	Thu, 17 Apr 2025 08:55:11 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5K9U-0000000CCXb-2EuX;
-	Thu, 17 Apr 2025 07:59:17 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 69E89A4B1FB;
-	Thu, 17 Apr 2025 07:53:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3AE67C4CEE4;
-	Thu, 17 Apr 2025 07:59:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744876755;
-	bh=ltOSBA1CpfWUytOEeCBbrYTdHgz8H9UN/rQ4NISs/Wk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=mL5Paba83xIKR3EQKPY8iqdamc2Dd5Lhk8p/SjYOXJfH5D6MQNyvET/OzVp+ACKXQ
-	 /47yQdngZ+/xmalOw+7HAlqHvF9Jl9gPwuS6rLiXzzoayO+K9YZvpNGUdcddq5JY/A
-	 wDFODj9bivjqOk+5ovE+AGpOKcrJxpsM3EYcsZ5v2jLBr8vlsf8Z6qAD0YXdLcAEO4
-	 dB46vOLaGO+7cYAc2LK5rtg7tgq7eiNqiW6oXR5Xg7wAzOvj++g5oPvoC3wJ1jXU46
-	 ulJVPTeV+EEH5KaYwxar9suTlEYxvNKiVgvt9kURnwnXDJ+7HTOjJotM3zlBREeN+4
-	 ftl3Idu/9eIuA==
-Message-ID: <caf3da77-f35d-4a39-9102-9592d722d900@kernel.org>
-Date: Thu, 17 Apr 2025 09:59:07 +0200
+	id 1u5KrN-0000000CJdS-3f8d;
+	Thu, 17 Apr 2025 08:44:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1744879475;
+	bh=oaWT++y0OSwcpZmlTIyBCOuZGKUE0+SBgo9PMt1ddV8=;
+	h=From:Subject:Date:To:Cc:From;
+	b=b9+tPYR8aGgbxYUPn0moeEHifiE7zSORuK2Yf9fXzymoNjorIS2ecYwnPGyQ93b4f
+	 +PwYbftaWJIX+e+UTbRXdp+e377R8x94BbilGEvdgxtsCIvvb/jOtX8cn5eO/Oekwt
+	 FnBDcvRNq5k5gQV95VKiDh/aohIOz16yewFotG7do+JxXmO0xtX9Fq4tXdI9yWKq1/
+	 xMEDRmlThS5IGYRbobFC49XGx1/n9afyA6ftJLxObZLwEisMGHts69IZMJFR+cHkO/
+	 E/Vbkamu0AwKyPxfklhMyHQPpF8acheWSxP9eh3vj3L0m5XBsfZ/YCje9+fn53UurL
+	 73R2cCXueTAkA==
+Received: from apertis-1.home (2a01cb0892F2d600c8f85Cf092d4af51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: jmassot)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id ACE6317E0FA7;
+	Thu, 17 Apr 2025 10:44:34 +0200 (CEST)
+From: Julien Massot <julien.massot@collabora.com>
+Subject: [PATCH 0/6] ASoC: mt8195: Add support for MT8395 Radxa NIO 12L
+ with MT6359 codec
+Date: Thu, 17 Apr 2025 10:44:31 +0200
+Message-Id: <20250417-mt8395-audio-sof-v1-0-30587426e5dd@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 4/8] dt-bindings: phy: mtk-xs-phy: support type switch
- by pericfg
-To: "Frank Wunderlich (linux)" <linux@fw-web.de>
-References: <20250416095402.90543-1-linux@fw-web.de>
- <20250416095402.90543-5-linux@fw-web.de>
- <20250417-competent-rattlesnake-of-intensity-98d6ff@kuoka>
- <d2da81ccb6b9b267288a3d2f5b1bb977@fw-web.de>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
- cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
- JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
- gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
- J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
- NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
- BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
- vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
- Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
- TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
- S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
- FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJgPO8PBQkUX63hAAoJEBuTQ307
- QWKbBn8P+QFxwl7pDsAKR1InemMAmuykCHl+XgC0LDqrsWhAH5TYeTVXGSyDsuZjHvj+FRP+
- gZaEIYSw2Yf0e91U9HXo3RYhEwSmxUQ4Fjhc9qAwGKVPQf6YuQ5yy6pzI8brcKmHHOGrB3tP
- /MODPt81M1zpograAC2WTDzkICfHKj8LpXp45PylD99J9q0Y+gb04CG5/wXs+1hJy/dz0tYy
- iua4nCuSRbxnSHKBS5vvjosWWjWQXsRKd+zzXp6kfRHHpzJkhRwF6ArXi4XnQ+REnoTfM5Fk
- VmVmSQ3yFKKePEzoIriT1b2sXO0g5QXOAvFqB65LZjXG9jGJoVG6ZJrUV1MVK8vamKoVbUEe
- 0NlLl/tX96HLowHHoKhxEsbFzGzKiFLh7hyboTpy2whdonkDxpnv/H8wE9M3VW/fPgnL2nPe
- xaBLqyHxy9hA9JrZvxg3IQ61x7rtBWBUQPmEaK0azW+l3ysiNpBhISkZrsW3ZUdknWu87nh6
- eTB7mR7xBcVxnomxWwJI4B0wuMwCPdgbV6YDUKCuSgRMUEiVry10xd9KLypR9Vfyn1AhROrq
- AubRPVeJBf9zR5UW1trJNfwVt3XmbHX50HCcHdEdCKiT9O+FiEcahIaWh9lihvO0ci0TtVGZ
- MCEtaCE80Q3Ma9RdHYB3uVF930jwquplFLNF+IBCn5JRzsFNBFVDXDQBEADNkrQYSREUL4D3
- Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
- MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
- OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
- GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
- 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
- YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
- 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
- BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
- JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
- 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
- YpsFAmA872oFCRRflLYACgkQG5NDfTtBYpvScw/9GrqBrVLuJoJ52qBBKUBDo4E+5fU1bjt0
- Gv0nh/hNJuecuRY6aemU6HOPNc2t8QHMSvwbSF+Vp9ZkOvrM36yUOufctoqON+wXrliEY0J4
- ksR89ZILRRAold9Mh0YDqEJc1HmuxYLJ7lnbLYH1oui8bLbMBM8S2Uo9RKqV2GROLi44enVt
- vdrDvo+CxKj2K+d4cleCNiz5qbTxPUW/cgkwG0lJc4I4sso7l4XMDKn95c7JtNsuzqKvhEVS
- oic5by3fbUnuI0cemeizF4QdtX2uQxrP7RwHFBd+YUia7zCcz0//rv6FZmAxWZGy5arNl6Vm
- lQqNo7/Poh8WWfRS+xegBxc6hBXahpyUKphAKYkah+m+I0QToCfnGKnPqyYIMDEHCS/RfqA5
- t8F+O56+oyLBAeWX7XcmyM6TGeVfb+OZVMJnZzK0s2VYAuI0Rl87FBFYgULdgqKV7R7WHzwD
- uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
- 7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
- 5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <d2da81ccb6b9b267288a3d2f5b1bb977@fw-web.de>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAG+/AGgC/x3MTQqAIBBA4avErBsw7f8q0cJyrFmUoRWBdPek5
+ bd4L0IgzxSgzyJ4ujmw2xOKPIN51ftCyCYZpJCVKIsGt7NVXYX6MuwwOIuT1nKuZSuUsZCyw5P
+ l518O4/t+lwsrSGIAAAA=
+X-Change-ID: 20250417-mt8395-audio-sof-baa2c62803df
+To: kernel@collabora.com, Liam Girdwood <lgirdwood@gmail.com>, 
+ Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Trevor Wu <trevor.wu@mediatek.com>
+Cc: linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ devicetree@vger.kernel.org, Julien Massot <julien.massot@collabora.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250417_005916_702750_68445F8D 
-X-CRM114-Status: GOOD (  11.05  )
+X-CRM114-CacheID: sfid-20250417_014438_065647_F533AB70 
+X-CRM114-Status: GOOD (  10.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,55 +79,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Kishon Vijay Abraham I <kishon@kernel.org>, Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, Lee Jones <lee@kernel.org>, Daniel Golle <daniel@makrotopia.org>, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Vinod Koul <vkoul@kernel.org>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, devicetree@vger.kernel.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17/04/2025 09:52, Frank Wunderlich (linux) wrote:
->>>
->>> +      mediatek,syscon-type:
->>> +        $ref: /schemas/types.yaml#/definitions/phandle-array
->>> +        maxItems: 1
->>> +        description:
->>> +          A phandle to syscon used to access the register of type 
->>> switch,
->>> +          the field should always be 3 cells long.
->>> +        items:
->>> +          items:
->>
->> Missing -, because you have one phandle.
-> 
-> ok, then i need to drop MaxItems and indent 2 spaces more, but no 
-> problem
+This patch series adds support for audio playback on the MT8395-based Radxa NIO 12L platform, which uses the integrated MT6359 codec via internal DAI links.
 
-I missed that maxItems - should not be placed above description, but
-immediately around items.
+Key additions:
+- Support for a new `mediatek,mt8195_mt6359` card configuration that does not rely on external codecs like rt5682.
+- Proper memory region declarations and pinctrl setup for the audio front-end (AFE) and audio DSP (ADSP).
+- A device tree sound node for headphone audio routing using `DL_SRC_BE` and `AIF1`.
+- Enhancements to the DT bindings to document the new compatible string, missing link-name, and additional audio routes (Headphone L/R).
 
-> 
->>> +            - description:
->>> +                The first cell represents a phandle to syscon
->>
->> Don't repeat constraints in free form text. "Foo bar system controller"
->> or "Phandle to foo bar system controller"
-> 
-> i would write only "phandle to system controller". on mt7988 it is the 
-> topmisc syscon, but maybe on
-> other SoC it is different name.
+Signed-off-by: Julien Massot <julien.massot@collabora.com>
+---
+Julien Massot (6):
+      ASoC: mediatek: mt8195: Move rt5682 specific dapm routes
+      ASoC: mediatek: mt8195: Set ETDM1/2 IN/OUT to COMP_DUMMY()
+      ASoC: mediatek: mt8195: Add mt8195-mt6359 card
+      ASoC: dt-bindings: mt8195: add compatible mt8195_mt6359
+      ASoC: dt-bindings: mt8195: add missing audio routing and link-name
+      mt8395-radxa-nio-12l: Add sound node for headphone
 
-This must be specific to what sort of system controller you point. You
-are not interested in phandle to any system controller.
-
-> 
->>> +            - description:
->>> +                The second cell represents the register offset
->>
->> "Baz register offset"
-> 
-> same here, only "register offset".
-
-Also not. You need specific register, not any register.
-
+ .../devicetree/bindings/sound/mt8195-mt6359.yaml   |  4 ++
+ .../boot/dts/mediatek/mt8395-radxa-nio-12l.dts     | 58 +++++++++++++++++++++-
+ sound/soc/mediatek/mt8195/mt8195-mt6359.c          | 39 ++++++++++++---
+ 3 files changed, 92 insertions(+), 9 deletions(-)
+---
+base-commit: f660850bc246fef15ba78c81f686860324396628
+change-id: 20250417-mt8395-audio-sof-baa2c62803df
 
 Best regards,
-Krzysztof
+-- 
+Julien Massot <julien.massot@collabora.com>
+
 
