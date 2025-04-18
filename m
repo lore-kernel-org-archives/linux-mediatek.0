@@ -4,95 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1F70C369AB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Apr 2025 10:23:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94E0DC369CF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Apr 2025 10:23:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6JnbYNgpq8QEYxht1353W0il/coYdog3puA39+m94LY=; b=Xjf0++dNYn/SbjqTx0K79VzmcA
-	9qLV01Cx+U2P/d0MMcG/VZneZn+InMPq+Cbo4vhS8fo6u9N82wGhEIFLGVw/0Ra5asNFG+Vr2BzHc
-	hWo3+HJdGzLb6jReTSqDgGlkn/Et7rzpMg0MXsNsI4RBZ4O+P6uAqDOkix3rhONHJZYvShwv+FsAa
-	5YIfgsEUkqZLCavH2DXkC2iSLaTYjpycWWOyQAGJ0Pt1I4n8aCysxbUdy0AaobpDirgZHK4q2bZFk
-	CIS3Cy7EA1Lz2+KHH4/q7R6vgd4ehVN5S9X5mPv6R39XzdF59OF2a9rxzGMdXQkLMsyguPKAc2SM2
-	T4l9pHgQ==;
+	bh=IiDBnIbN2ErdrAZnJdVTPEl8ORr2jBX+0bJeY940wkA=; b=NI2EZZW/VdxCEXsl6oY6fbiTyn
+	RfQn/vlrc2P1JINtZwB2cfUJ4u0qPvpSUr0rqh0NAQTF53KurMmbtg7b9OWmMZbpRR36yw7pSbZq0
+	jnxwv5BhbNoKcWPg/yUuAQoIACNpuQvkwGqEo29nQotyXfk5mVvX6xJMIdyMy7PC3dAUm0Zwj1NEe
+	ThiEam3box0j3I0gZ438U9o5ZHF5qjIXepw2r9Vxx7cAzDZg/s6NR6++0wDJHX0DgJ5751w+oaEtG
+	NrX7cbhGWy+J8F4ZidUj4A9qqeqcWbpnPaZs3ufp7hdkc/dt8vu6PqV5RIgVwyhJ4uQ5vpokqqjfR
+	K2zkqp/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5isI-0000000Fqxf-2yvH;
-	Fri, 18 Apr 2025 10:23:10 +0000
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+	id 1u5isJ-0000000Fqyg-2lco;
+	Fri, 18 Apr 2025 10:23:11 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5io5-0000000FqXu-2JHO;
-	Fri, 18 Apr 2025 10:18:50 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-39ee623fe64so1488613f8f.1;
-        Fri, 18 Apr 2025 03:18:49 -0700 (PDT)
+	id 1u5irq-0000000FquL-21mS
+	for linux-mediatek@lists.infradead.org;
+	Fri, 18 Apr 2025 10:22:44 +0000
+Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-5eb92df4fcbso3159676a12.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 18 Apr 2025 03:22:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744971528; x=1745576328; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=6JnbYNgpq8QEYxht1353W0il/coYdog3puA39+m94LY=;
-        b=fSt+Lo99VC8+HznUG155bvcRutnBNau/htnSLTNKGpMNxLzcuKVCtg6QL7OilzO+Lk
-         x+KSVgEecIYZPyNqLnXIruxy8IHTpBISaWEmnFE/8R4YStvA90afMSJTrHmBUg8i/DvW
-         PsytImgD66lgCprD5qTRqY2i6Zk8UX1eDN+W+UVzcJTnEakR/0XTLjJ4s5t/ErSLvpsR
-         acZsnXWlkq/Ll42XIH+CUADuex8KfCwHgWtQ/eZrSOmK8z+t6ZnHAKW94K+pVHAhwCbB
-         VwEBLTc+sUZ9gV/KM7s0ECN7utfC/cKkCIYInNDU4Lx1/Bvs83bDN7dHm3HXIaqXDKH0
-         jI1g==
+        d=linaro.org; s=google; t=1744971761; x=1745576561; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=IiDBnIbN2ErdrAZnJdVTPEl8ORr2jBX+0bJeY940wkA=;
+        b=Lk43pGCiIqcETDOHw/EE+8lqpooM/mW1LgbvWD/Cpw9HTz9FEFNowaYS6v/zBZ9/2f
+         /r8tVDbo1XdkngqUxUUmyk/PcAcMmmOfLp5GEGj2Da1/QQWh0a8aHz4No0qvoAXCCfv4
+         oTNLfsKi2r8QTU/JpFE9jcWvLZAEhphIXp2rE2AOkdhkm9mM94KUga16BfTozmQzVm/0
+         h2TcaUIE+FOiqbxppqF+3DidEGNaPXu26oF0cU5+S7/9mHW3zG2pRTLhWQ2K3HGQWQ4O
+         ZnpeMFlcyXAqJfZPcB5/BStzUDuZR4n88e648Pk4GvDx68jooNofIpJ7FUT6CyjhUO+s
+         S6sA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744971528; x=1745576328;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=6JnbYNgpq8QEYxht1353W0il/coYdog3puA39+m94LY=;
-        b=mrOSmAwLSO8F8jOvmST6BjBMiwTzn/PR4Vu9Koc6HDmiKwKvIzM7Zm+doCYsZbGl8h
-         A2401FwqkdHqWfrRcaU8cTgbPpoJSWzE7NYbQZCImYsJpTeH4DyfEQsKyPP76sBPSs9V
-         ee+WeEaT41qtO3KvnE2vUYZFuiNhWR7SqyJUhXeN0y7/u8srKBLeh2rp/0jntzDVcshJ
-         dGEtJGwMRBrC8wjRnhIO6PNK421ccoYqq6cYadaz38pxX++ftMBXnPWUMPbTUKOwgvkj
-         UmnjmZb6Hc8YM4eWedkpBXbpryn1fW4kDS/0xDlG9H0ISJkNLMThERNvVw7ETNPMHVJR
-         12/Q==
-X-Forwarded-Encrypted: i=1; AJvYcCVA07RZnjEnYxK35Etp//kaXp2+iGWYyJX++RRoUvZFG/ul1JCiGtgHDK9yUeg2AlGWkuhE2POo9IoKJ2H9ilq+@lists.infradead.org, AJvYcCW+wx7kq8/S6P+kxm1Oyo8lO7HZHlEJ0tepa8nNUpOSNkGpvzFDcObEHX5GC0IRcWVMwLJDqqYJlW0Itwm8qNw=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy+WV+HwdNxTx82ND0HfYJx7xfVmcmc3Ak+c+HeYyWefuh/H+C8
-	RGgjh+C39vXFICxWk5dw+1pLBq0dw2O7ao1uTt1oChuNnCgpAbBAjMOq1FV4
-X-Gm-Gg: ASbGnctLeg3jgbQ4OaYXsN4596vumGpbpgTBMwI9xPBt4qumqVtoyG7Ex8RolL+3aG6
-	WuXYiAWPY5vA+8JgNdb2tWCpAjnBkq2i0YT3/H6Si8FGDlTlZxL2YnePomffrZw2uDHfBPLs4qt
-	Qps89MY0fRYsvqtrLeHT+21zdcJwMgnmL7A7sMiEBblBy8XqRccU/dHxCeG/MDRALgIpAMy5CY0
-	xG2OwLhKBxGX/7BpJUkx0MA65Dbx1EEMOqp5NA3PopEbkA9oLQ1IRQ59ATxxoxrmG/h5c+wAswb
-	LlkG3/TGGKq7UxJ8KkIeGphKVnNkSLlAqPTw9/nMuJuxnwOgJPwT8upO6xUj+DryiPsMnuoOtkq
-	t3iUBy+cmQzuIYXU=
-X-Google-Smtp-Source: AGHT+IG9XuTCmPLVk2umtFfxUnIxxKIA2Xaugc9G5OZzls8mvgzpV5pXnzR7Jt8N8XgwxqLl/robOg==
-X-Received: by 2002:a5d:648c:0:b0:390:e62e:f31f with SMTP id ffacd0b85a97d-39efba2638cmr1792786f8f.3.1744970208853;
-        Fri, 18 Apr 2025 02:56:48 -0700 (PDT)
-Received: from ?IPv6:2001:818:ea56:d000:56e0:ceba:7da4:6673? ([2001:818:ea56:d000:56e0:ceba:7da4:6673])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39efa43d07csm2323159f8f.58.2025.04.18.02.56.47
+        d=1e100.net; s=20230601; t=1744971761; x=1745576561;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=IiDBnIbN2ErdrAZnJdVTPEl8ORr2jBX+0bJeY940wkA=;
+        b=WpbUzWPYbRmGIsPGpgO15qbGTk38/77+3Wd4SlKx1Qj4DRyq11Epw0ucxieqh1U6pw
+         6Z6teUJ+yy8in6SeRZVwwGW9qn/nZbHKvz5BzjR1v3h364UfP6PT09M0Gnh6wG51djI6
+         rmS/yr1ZAeWycoTD8abl+krq7qg0lxCGl3/9M0m7uRbkINnT6oJmd9oqKcc4L5ySQlzu
+         LYRlIkKFazEmgPX0tBGgjaLG7m54CNZPXs0NH3oT6sfTNlWNH6ZzcAyilrjKvzn5ycM7
+         AIwlD/bTyTe8pnfXaX/9EPxs6aIoEHRSYco5Xiafk7NIZHgqto6uNKaLHoI0ePctrIL0
+         zYTw==
+X-Forwarded-Encrypted: i=1; AJvYcCVEtKBDUUuuQpLpg8yFbR2Taps3WvKtx/Eaw3nFDcHi2VOY/MUPdukkwv/cBWzenOsi6vo47vIx6GXZziQhbw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw4inFwPTt3XTkKpcIapKfb+nQPdZEDyKWCOeFR7hNNFJcbk8jN
+	lZWH7GA3ZuMStWaG/3/I0FlIEFUS+xltuamvtCeiTdE9YTwU75M13BlWY7u5HDN+ehPfbx3LbNg
+	l/LM=
+X-Gm-Gg: ASbGncuSVm3v+pbw0cBxSvr129iD/FjvV616NoXfIi/piuzJIOocQvYuttl1OMFFDss
+	TNzt7ByjpScvOefZIsi5urA5jeM1mJ9CAbOqDKel4bdgY3dlR8quXLPw1xte482ggW4YXHzRLPN
+	ze5dEC80LjRJJz1o9m5LeB6GWtHV92ys5kldmUItTt3YXKW1PZBh0ULBRujROXUShwAEd3Wz9gz
+	Yjjs5DwKcmLI1brDVqsyJLDTZ8lc+ZgfTP/WzCiePI1/9ySuhqLin4hsylqrxfKwUC5GslCy7vc
+	hvPu/zlGFKTRI9jVxLiIJEKDzTdZK6g8CcaVO52h6tN9okQmgDpDITLlKPVvfFHAj8lom0kcFgK
+	Cgtk=
+X-Google-Smtp-Source: AGHT+IEhVsv0Ij1c7fYpfyCnxhTynvdaKQ/MYv7KemDDNjedaaUCumCbBnsf/IltIZ7kk3yXig1l8w==
+X-Received: by 2002:a05:6000:2489:b0:39c:11c0:eb95 with SMTP id ffacd0b85a97d-39efba460e6mr1527952f8f.17.1744971382884;
+        Fri, 18 Apr 2025 03:16:22 -0700 (PDT)
+Received: from mai.linaro.org (146725694.box.freepro.com. [130.180.211.218])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39efa493377sm2340627f8f.62.2025.04.18.03.16.22
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 18 Apr 2025 02:56:48 -0700 (PDT)
-Message-ID: <d3800b1fc2430d897750541219e39fd43216b199.camel@gmail.com>
-Subject: Re: [PATCH 2/8] iio: adc: mt6360-adc: use aligned_s64 for timestamp
-From: Nuno =?ISO-8859-1?Q?S=E1?= <noname.nuno@gmail.com>
-To: David Lechner <dlechner@baylibre.com>, Jonathan Cameron
- <jic23@kernel.org>,  Nuno =?ISO-8859-1?Q?S=E1?= <nuno.sa@analog.com>, Andy
- Shevchenko <andy@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Lars-Peter Clausen <lars@metafoo.de>,  Michael Hennerich
- <Michael.Hennerich@analog.com>, Cosmin Tanislav
- <cosmin.tanislav@analog.com>, Tomasz Duszynski <tduszyns@gmail.com>,
- Jean-Baptiste Maneyrol <jean-baptiste.maneyrol@tdk.com>,  Andreas Klinger
- <ak@it-klinger.de>, Petre Rodan <petre.rodan@subdimension.ro>
-Cc: linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Date: Fri, 18 Apr 2025 09:57:09 +0100
-In-Reply-To: <20250417-iio-more-timestamp-alignment-v1-2-eafac1e22318@baylibre.com>
-References: <20250417-iio-more-timestamp-alignment-v1-0-eafac1e22318@baylibre.com>
-	 <20250417-iio-more-timestamp-alignment-v1-2-eafac1e22318@baylibre.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.52.4 (3.52.4-2.fc40) 
+        Fri, 18 Apr 2025 03:16:22 -0700 (PDT)
+Date: Fri, 18 Apr 2025 12:16:20 +0200
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: rafael@kernel.org, rui.zhang@intel.com, lukasz.luba@arm.com,
+	matthias.bgg@gmail.com, npitre@baylibre.com, jpanis@baylibre.com,
+	nfraprado@collabora.com, wenst@chromium.org, bchihi@baylibre.com,
+	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH] thermal/drivers/mediatek/lvts: Fix debugfs unregister on
+ failure
+Message-ID: <aAImdJFvfLTKe-TY@mai.linaro.org>
+References: <20250402083852.20624-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250402083852.20624-1-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250418_031849_585087_30BCEA7F 
-X-CRM114-Status: GOOD (  14.05  )
+X-CRM114-CacheID: sfid-20250418_032242_523452_F0A08400 
+X-CRM114-Status: GOOD (  11.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,39 +103,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2025-04-17 at 11:52 -0500, David Lechner wrote:
-> Follow the pattern of other drivers and use aligned_s64 for the
-> timestamp. This will ensure that the timestamp is correctly aligned on
-> all architectures. It also ensures that the struct itself it also 8-byte
-> aligned so we can drop the explicit __aligned(8) attribute.
->=20
-> Signed-off-by: David Lechner <dlechner@baylibre.com>
+On Wed, Apr 02, 2025 at 10:38:52AM +0200, AngeloGioacchino Del Regno wrote:
+> When running the probe function for this driver, the function
+> lvts_debugfs_init() gets called in lvts_domain_init() which, in
+> turn, gets called in lvts_probe() before registering threaded
+> interrupt handlers.
+> 
+> Even though it's unlikely, the last call may fail and, if it does,
+> there's nothing removing the already created debugfs folder and
+> files.
+> 
+> In order to fix that, instead of calling the lvts debugfs cleanup
+> function upon failure, register a devm action that will take care
+> of calling that upon failure or driver removal.
+> 
+> Since devm was used, also delete the call to lvts_debugfs_exit()
+> in the lvts_remove() callback, as now that's done automatically.
+> 
+> Fixes: f5f633b18234 ("thermal/drivers/mediatek: Add the Low Voltage Thermal Sensor driver")
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
 
-Reviewed-by: Nuno S=C3=A1 <nuno.sa@analog.com>
-
-> =C2=A0drivers/iio/adc/mt6360-adc.c | 4 ++--
-> =C2=A01 file changed, 2 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/iio/adc/mt6360-adc.c b/drivers/iio/adc/mt6360-adc.c
-> index
-> 4eb2455d6ffacb8f09a404df4490b5a11e49660d..f8e98b6fa7e923c6b73bedf9ca1c466=
-e7a9c3c47
-> 100644
-> --- a/drivers/iio/adc/mt6360-adc.c
-> +++ b/drivers/iio/adc/mt6360-adc.c
-> @@ -263,8 +263,8 @@ static irqreturn_t mt6360_adc_trigger_handler(int irq=
-, void *p)
-> =C2=A0	struct mt6360_adc_data *mad =3D iio_priv(indio_dev);
-> =C2=A0	struct {
-> =C2=A0		u16 values[MT6360_CHAN_MAX];
-> -		int64_t timestamp;
-> -	} data __aligned(8);
-> +		aligned_s64 timestamp;
-> +	} data;
-> =C2=A0	int i =3D 0, bit, val, ret;
-> =C2=A0
-> =C2=A0	memset(&data, 0, sizeof(data));
->=20
-
+Applied, thanks
 
