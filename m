@@ -4,64 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE7E9C369AB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Apr 2025 15:17:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72779C369AB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Apr 2025 16:13:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wzXJHRI4Nv+Jdosxy97jHtP9UCAHfFRdyvLWEtu7VQY=; b=Rw3SpOrmBa/D4Fg3KO+oliGLGj
-	4IWpHnfcbxLdw3s7IWYBO/OPMt8JR3xqu4BD0bZxWAQiy7PhKy73pnpTpjKvW/W27UplP5/aVMzKz
-	Zp8SZS0Ggf5NY8cXG2GCcgco8OiPjarB0ZRbAYNgKvR3P21aafPgFtY37y/YFhvh1KH5NRcoEwF/F
-	48Zf5bvSs9XcaSNSXRT9EwoJP7T/L2CC3PrGoVvtSr7aLzH3Vc2wIZoMNCD/dT0wWaNevbkjrSdm5
-	/9/VzSZ66NqCdyQ+bRvfGRw17HEZVIVDxbPIxE/NYpjVzR/0/ytIFcGainP2eZI0lPvz4JfwvWNfO
-	1MwP2lFg==;
+	bh=alUgsH5oqgqePgoF/9tZ8EZruI/VR2Lka7gVu683YBo=; b=G2xN26tYJezt4hSYL72L+/CNOB
+	Y0XImWBOHxticFBBH3+9wyq6BxYbRCqJnF07l4IlV6iG60w0mYF6jGc3Mx59B31oc+FrN/8DzCzFG
+	qoAI5eBzDO3r7kiDL1sng1TmwLSaR/t1OPoJjbTUcwM8K+mnD/e/xItUaFK7xzLcSYUDCUJBO7T+i
+	wKbcUizbFG6op1ph4gRxqxnV4tyhY2tmaVUm5V5veTFDDGdjdEaHuAP6aOYuYGUwwIjZsQDtC6AGc
+	jbLp3tqAvCqRGccDT7dI6XkkOMAxrqrUlB3TDnRDxjaIabh26SfzoQMQWw6hisTUGYw6yj/tWt2K1
+	U31MMpFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5nTG-0000000GdP0-3iTc;
-	Fri, 18 Apr 2025 15:17:38 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1u5oLY-0000000Grjq-0mEg;
+	Fri, 18 Apr 2025 16:13:44 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5nO4-0000000GbRr-0IkK;
-	Fri, 18 Apr 2025 15:12:16 +0000
+	id 1u5nEw-0000000GZQ5-3fgT;
+	Fri, 18 Apr 2025 15:02:52 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 9949161120;
-	Fri, 18 Apr 2025 15:11:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DB1EDC4CEE2;
-	Fri, 18 Apr 2025 15:12:09 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 5AA0D4361A;
+	Fri, 18 Apr 2025 15:02:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E0B5BC4CEE2;
+	Fri, 18 Apr 2025 15:02:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1744989135;
-	bh=3zBMbevmftHKgtZjXChlH+4wGCH2oPPjVAd5sR/b+a8=;
+	s=k20201202; t=1744988570;
+	bh=w2SpzO0xz6fx5J/fpntEEf1UqwhZaVfP36baHvy0z+4=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=XmmkpSQg9Be6kXQaDSItIU+t/NedTQxFVGDKh2Xee68mDbgHJs7aoYzuE1Roej7NC
-	 zfUBEFqp60rjQ/HmJ/aVpERhug+/TBUtXBRwYDRpZXNaO2Xhfh8CD/MyJ6QAdrHMCn
-	 8JJBa8hD3/FFezgjrDkFV5M+PxVr0lMCLIYxx6uC6pcx7nXofbpO/zgzZWvzBozPTQ
-	 6ZxvJ1Hx+0vbnrvcTPYdiQxdWKw22zjbhDvss+lK6nw6OJc8xYy+dnhhgTj4xRrbQJ
-	 n5Nh+AUmzWbbnijWxaJ17cPGqyZQt1FHUPZjdjmRoGmt9iNRNUD8053yroEvDu9apJ
-	 oP2+caXkZk2SA==
-Date: Fri, 18 Apr 2025 16:12:05 +0100
+	b=mEwhf/fzByQdSLeT3Cu00zEzaaOGeQnOsE8nqnjaQioNNFWBeo4YURAhkgXffpi2W
+	 hnT9ZrvKsEpJaQs4Q5p1UIU0nK/DHdfHyQQMWSbcg09goV0uTlBLCoRKXLgRPT3P1R
+	 8+ik9tBNd8aSreN+sX9TOb445OFww7oWo3ICiCCA3JBvgzkcMq8m6M0DC6zMGXwDbA
+	 WDU6SQo647rlTslsurH7D7xF029OAGqfTgH/Xm3V70F13gFetzh1C56cHqS+JX9djB
+	 A+0Eedl8HHYigtnzfgDJAYilMm777v0sKsD5fqvIqgJCm9THRSQ0XKMkHVBXMqGPnl
+	 wFZi67jUe48Gg==
+Date: Fri, 18 Apr 2025 16:02:38 +0100
 From: Jonathan Cameron <jic23@kernel.org>
-To: David Lechner <dlechner@baylibre.com>
-Cc: Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>, Andy Shevchenko
- <andy@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Lars-Peter Clausen <lars@metafoo.de>, Michael Hennerich
- <Michael.Hennerich@analog.com>, Cosmin Tanislav
- <cosmin.tanislav@analog.com>, Tomasz Duszynski <tduszyns@gmail.com>,
- Jean-Baptiste Maneyrol <jean-baptiste.maneyrol@tdk.com>, Andreas Klinger
- <ak@it-klinger.de>, Petre Rodan <petre.rodan@subdimension.ro>,
- linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 0/8] iio: more timestamp alignment
-Message-ID: <20250418161205.23a30da9@jic23-huawei>
-In-Reply-To: <20250417-iio-more-timestamp-alignment-v1-0-eafac1e22318@baylibre.com>
+To: Jean-Baptiste Maneyrol <Jean-Baptiste.Maneyrol@tdk.com>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Andy Shevchenko
+ <andy@kernel.org>, David Lechner <dlechner@baylibre.com>, Nuno
+ =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Lars-Peter Clausen
+ <lars@metafoo.de>, Michael Hennerich <Michael.Hennerich@analog.com>, Cosmin
+ Tanislav <cosmin.tanislav@analog.com>, Tomasz Duszynski
+ <tduszyns@gmail.com>, Andreas Klinger <ak@it-klinger.de>, Petre Rodan
+ <petre.rodan@subdimension.ro>, "linux-iio@vger.kernel.org"
+ <linux-iio@vger.kernel.org>, "linux-kernel@vger.kernel.org"
+ <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH 7/8] iio: imu: inv_mpu6050: align buffer for timestamp
+Message-ID: <20250418160238.204701e7@jic23-huawei>
+In-Reply-To: <FR3P281MB175712512B0A88FAC9DFA009CEBF2@FR3P281MB1757.DEUP281.PROD.OUTLOOK.COM>
 References: <20250417-iio-more-timestamp-alignment-v1-0-eafac1e22318@baylibre.com>
+	<20250417-iio-more-timestamp-alignment-v1-7-eafac1e22318@baylibre.com>
+	<aAEzlZoZTsQuWgZa@smile.fi.intel.com>
+	<20250417184620.00006ae6@huawei.com>
+	<FR3P281MB175712512B0A88FAC9DFA009CEBF2@FR3P281MB1757.DEUP281.PROD.OUTLOOK.COM>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.48; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250418_080250_958734_53238D3B 
+X-CRM114-Status: GOOD (  23.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,45 +86,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 17 Apr 2025 11:52:32 -0500
-David Lechner <dlechner@baylibre.com> wrote:
+On Fri, 18 Apr 2025 11:26:39 +0000
+Jean-Baptiste Maneyrol <Jean-Baptiste.Maneyrol@tdk.com> wrote:
 
-> Wile reviewing [1], I noticed a few more cases where we can use
-> aligned_s64 or need __aligned(8) on data structures used with
-> iio_push_to_buffers_with_timestamp().
+> On Thu, 17 Apr 2025 19:46:00, Jonathan Cameron wrote:
+> > On Thu, 17 Apr 2025 20:00:05 +0300
+> > Andy Shevchenko <andy@kernel.org> wrote:
+> >   
+> > > On Thu, Apr 17, 2025 at 11:52:39AM -0500, David Lechner wrote:  
+> > > > Align the buffer used with iio_push_to_buffers_with_timestamp() to
+> > > > ensure the s64 timestamp is aligned to 8 bytes.    
+> > > 
+> > > Same question as per previous patch.
+> > >   
+> > In this case I don't think we know the position of the timestamp
+> > so a structure would be misleading.
+> > 
+> > The comment above the define certainly suggests it is variable..  
 > 
-> [1]: https://lore.kernel.org/linux-iio/20250413103443.2420727-1-jic23@kernel.org/
-I picked up via one or other branch all but 1 (as that was already fixed), 6 and 8
+> I confirm timestamp position is changing depending on channels enabled. It
+> can be at address 8, 16 or 24.
+> 
+> If there is only 1 sensor enabled (6 bytes of data), timestamp is at address
+> 8. 2 sensors (12 bytes of data), timestamp will be at address 16. 3 sensors
+> for MPU-9xxx (19 bytes of data), timestamp will be at address 24.
+> 
+> If the buffer is aligned on 8 bytes, it will always work without any problem.
+> 
+> > 
+> > /*
+> >  * Maximum of 6 + 6 + 2 + 7 (for MPU9x50) = 21 round up to 24 and plus 8.
+> >  * May be less if fewer channels are enabled, as long as the timestamp
+> >  * remains 8 byte aligned
+> >  */
+> > #define INV_MPU6050_OUTPUT_DATA_SIZE         32  
+> 
+> Thanks,
+> JB
+
+I applied this one as it stands with fixes tag and +CC stable.
+
+Fixes: 0829edc43e0a ("iio: imu: inv_mpu6050: read the full fifo when processing data")
+
+I thought about seeing if all the cases that are fixes are separable enough
+to take through togreg-fixes whilst the with_ts() series goes through togreg
+in parallel.  I might see if that is doable easily.
 
 Jonathan
-
-> 
-> Signed-off-by: David Lechner <dlechner@baylibre.com>
-> ---
-> David Lechner (8):
->       iio: adc: dln2-adc: use aligned_s64 for timestamp
->       iio: adc: mt6360-adc: use aligned_s64 for timestamp
->       iio: addac: ad74413r: use aligned_s64 for timestamp
->       iio: chemical: pms7003: use aligned_s64 for timestamp
->       iio: chemical: sps30: use aligned_s64 for timestamp
->       iio: imu: adis16550: align buffers for timestamp
->       iio: imu: inv_mpu6050: align buffer for timestamp
->       iio: pressure: mprls0025pa: use aligned_s64 for timestamp
-> 
->  drivers/iio/accel/bmc150-accel.h           | 2 +-
->  drivers/iio/adc/dln2-adc.c                 | 2 +-
->  drivers/iio/adc/mt6360-adc.c               | 4 ++--
->  drivers/iio/addac/ad74413r.c               | 5 +++--
->  drivers/iio/chemical/pms7003.c             | 5 +++--
->  drivers/iio/chemical/sps30.c               | 2 +-
->  drivers/iio/imu/adis16550.c                | 2 +-
->  drivers/iio/imu/inv_mpu6050/inv_mpu_ring.c | 2 +-
->  drivers/iio/pressure/mprls0025pa.h         | 2 +-
->  9 files changed, 14 insertions(+), 12 deletions(-)
-> ---
-> base-commit: 3159d40a2ca0ae14e69e1cae8b12f04c933d0445
-> change-id: 20250416-iio-more-timestamp-alignment-6c6c6a87ebda
-> 
-> Best regards,
-
 
