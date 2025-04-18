@@ -4,68 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA11BC369CA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Apr 2025 22:30:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD325C369CF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Apr 2025 02:13:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=s81pV5jIkn/GlgtQ08lcgCCxshbcpxyENaufyDqFoXU=; b=cpCBaKm6KZMDHik4uNJOyxtJGg
-	Y0s52YCXdbgBy4P3KObtVO4BJNSiwDQq/mUtMnAf03JK12YBpXnMnTGejDeo36Cu4sGvwPiOB/5Kj
-	bk9Zcbus840qluTW/Gg0Cm30uJ9NGyUjv6ArfaaEy+CiwN2bzzrpqoTZbEwuAEDzm1ViCTwi1KtgL
-	KyeubnnX9olLXlJ27L6jF/3DuM1ChkBqr9WsU8zKVrl8kAgTx/ExeUHCrb2HFtHgULQbwkPs+Cmz3
-	hVSVv7D4Xig/xBG5eSFCPgsj1zuVXcEW2kCiDAMYnVuLslNYZbApXvYUag7+eGNelrtsclc99rcyG
-	+F/nFFvA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kFHtaJodxwz1mx8bk60hMvbTvv3gKZ5tkOidz2SelHE=; b=AlUQUxKhnxxSGXHFmZMHgOCWYg
+	dmqmzMzK2FRckmJ+2oYG90L0OBgQ4qTNtzyjJi9khcjpjlW4zm00ezZJYdOlbHG3m5Hawjg1MJ76S
+	J7BJ20CbIymDLtjyCUd02JtyopYSjuv2Lhibu7WTIhwDuT5OLol9EPYDn/iKr5B/d4sEVSlHwmnTO
+	8KMNGch6krfuFSSUcIanxiinZ9jnHCRrv5+HHX5Hlh4kNPYVqny74rocooAMu6XCvS0snPk7fHJtM
+	ZOLVw1Xot4+OcGBmMKBhlAXpKjBUSmvm1bA3AyCQDQlcYOFeKnVxle0WOpqMICKonNK6JNAmBZPpF
+	cMSzOYaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5XkW-0000000ESXH-07Y9;
-	Thu, 17 Apr 2025 22:30:24 +0000
-Received: from smtp-17.smtpout.orange.fr ([80.12.242.17] helo=smtp.smtpout.orange.fr)
+	id 1u5bEk-0000000Eqaq-2foN;
+	Fri, 18 Apr 2025 02:13:50 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u5Xie-0000000ESOG-0Wfw;
-	Thu, 17 Apr 2025 22:28:29 +0000
-Received: from localhost.localdomain ([90.11.132.44])
-	by smtp.orange.fr with ESMTPA
-	id 5XiQuDWqjETiN5XiTu2OP2; Fri, 18 Apr 2025 00:28:19 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
-	s=t20230301; t=1744928899;
-	bh=s81pV5jIkn/GlgtQ08lcgCCxshbcpxyENaufyDqFoXU=;
-	h=From:To:Subject:Date:Message-ID:MIME-Version;
-	b=A3bMACpVFPDO5ND/TN1ebf1eXSQbRYcajI4fSEkK2EuoyaXRJJCMQ0DKuRg2pLwbo
-	 VS1SzNTDU/QGlLRK48q+hfy70nXkrjVOqvXJKy6cLUbuEmyYjeKVb4yZiNp4q4xI9z
-	 b0dPos/V77rW4wUyHfKM78m5ODsUUU5X9kN0umDf6ayTHUVAoBfriVwuJe26uXzeSx
-	 IUjLF5Hup2fcvgXBmGKCEY1Oslxt/Kb+scpWif99qpgTVtRXPtI6FNJkgekmY1blZT
-	 Bj0fQxlre8TwyfBdis+sqsWCTNYZkwGVlZXi4+paEie7bjPRQMN1PR2mw+jQefOL/+
-	 jJjypGAjhMriA==
-X-ME-Helo: localhost.localdomain
-X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
-X-ME-Date: Fri, 18 Apr 2025 00:28:19 +0200
-X-ME-IP: 90.11.132.44
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-kernel@vger.kernel.org,
-	kernel-janitors@vger.kernel.org,
-	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
-	linux-wireless@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] wifi: mt76: Remove an unneeded local variable in mt76x02_dma_init()
-Date: Fri, 18 Apr 2025 00:28:01 +0200
-Message-ID: <e86d5602bdd8b6bd22258ee69536992f39470bf5.1744928865.git.christophe.jaillet@wanadoo.fr>
-X-Mailer: git-send-email 2.49.0
+	id 1u5bB4-0000000EqCc-33uD;
+	Fri, 18 Apr 2025 02:10:04 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 25FE65C5876;
+	Fri, 18 Apr 2025 02:07:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D48ABC4CEEA;
+	Fri, 18 Apr 2025 02:10:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1744942201;
+	bh=GrNXNsg8thhryFhRIZCHfkYBELHVyUHwQRQ/n00IPGk=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=rDLXCb100h//SVUpdcl4UQ585zMo4am7V5N+BpZ74niCtsqXgpOIRdxVwKJ6I7vq0
+	 ID1qTakmi412HtyqO4khIdD2v+RDbYJd1HHLHNM4e2P8eTrpyQxtjRmmFQobgclXua
+	 Vd3xzZGOURAN2wwZ74EfPc1YfDvROY1EG+VehMMrH/vgKBI0bQnbYVOAbcwujaUn5x
+	 XMFw0JNwHZojNHzr1sBN8FGQgnvhH3+mX7GkM1cKUBSEVNAPxqSrcs1KvoZ8gX8qEW
+	 pU2WLW0d3ZDSLWX2XPhQkerStPNLe27skPsbEjFzuCwa3KI931dhX3ykfcqsWbhTlz
+	 Oc4vnJcWlKMJg==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 3483A380AAEB;
+	Fri, 18 Apr 2025 02:10:41 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next] net: stmmac: mediatek: stop initialising
+ plat->mac_interface
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <174494223974.79616.7693576407987445072.git-patchwork-notify@kernel.org>
+Date: Fri, 18 Apr 2025 02:10:39 +0000
+References: <E1u4zyh-000xVE-PG@rmk-PC.armlinux.org.uk>
+In-Reply-To: <E1u4zyh-000xVE-PG@rmk-PC.armlinux.org.uk>
+To: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+Cc: andrew@lunn.ch, hkallweit1@gmail.com, alexandre.torgue@foss.st.com,
+ andrew+netdev@lunn.ch, angelogioacchino.delregno@collabora.com,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, matthias.bgg@gmail.com,
+ mcoquelin.stm32@gmail.com, netdev@vger.kernel.org, pabeni@redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250417_152828_299639_4624795B 
-X-CRM114-Status: UNSURE (   8.74  )
+X-CRM114-CacheID: sfid-20250417_191002_807988_518F1EF8 
+X-CRM114-Status: UNSURE (   9.74  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,29 +79,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove 't' which is unneeded since commit f3950a414143 ("mt76: set
-txwi_size according to the driver value")
+Hello:
 
-This slightly simplifies the code.
+This patch was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
----
- drivers/net/wireless/mediatek/mt76/mt76x02_mmio.c | 1 -
- 1 file changed, 1 deletion(-)
+On Wed, 16 Apr 2025 11:26:47 +0100 you wrote:
+> Mediatek doesn't make use of mac_interface, and none of the in-tree
+> DT files use the mac-mode property. Therefore, mac_interface already
+> follows phy_interface. Remove this unnecessary assignment.
+> 
+> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+> ---
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c | 1 -
+>  1 file changed, 1 deletion(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_mmio.c b/drivers/net/wireless/mediatek/mt76/mt76x02_mmio.c
-index a82c75ba26e6..a683d53c7ceb 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x02_mmio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x02_mmio.c
-@@ -174,7 +174,6 @@ static int mt76x02_poll_tx(struct napi_struct *napi, int budget)
- 
- int mt76x02_dma_init(struct mt76x02_dev *dev)
- {
--	struct mt76_txwi_cache __maybe_unused *t;
- 	int i, ret, fifo_size;
- 	struct mt76_queue *q;
- 	void *status_fifo;
+Here is the summary with links:
+  - [net-next] net: stmmac: mediatek: stop initialising plat->mac_interface
+    https://git.kernel.org/netdev/net-next/c/01be295b485a
+
+You are awesome, thank you!
 -- 
-2.49.0
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
