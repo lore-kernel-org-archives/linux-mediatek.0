@@ -4,91 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3ACE4C369BD
-	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Apr 2025 08:02:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58DD6C369BD
+	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Apr 2025 08:37:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WtsNl1fcy+KN7+fQwF4kuj0vIWZJpYuY4JBOl93rLt8=; b=UnqyUfWVJHplNo62mujGi5wBpD
-	jNudwXKb/VQvwpz2d9syEhDAqzJFc9rnk9/LvmHNMePvAQtzDqexiupr8cUXJqX6PQoczJxdVes7Y
-	ZXzITuxd35ANh85BKfAfd3mNy4AlO2sA89U/naiFCor2MmhkFIGqix649veCmPJ5/1HN7/qn9gt91
-	2QGir/2jzwEOU+Tdy0dAmdzBiAMCbR1U2o77svCJTgeCcumUWZkhk1MYBrQdMCmWexJC3IpRk8KcA
-	D9BwC7pCTcHAUHBCRpPJOhYVrywHvd7j1sp2ZfSWEsr38JGqTh82Xr5kdmDLeboKmVn6YRzsGz+rI
-	z+1WFUPA==;
+	bh=hWIuLilHx+0m0PNW09Z0k4xV/guGg8/Qmv8ZqaHqGFA=; b=iokAB+lRwLVCf+4Vy7ba3KVvL/
+	8Bo+qYun/8yUq1k+Awyl8jDYDOChArqKp583EJSHzyVn4Ji6zmoYC9U5v8RHnim0uLbyQI9GHReye
+	hOmf0MQN3OMG/CY0j9jF2twoEKrwJpeyLSzY3QK3gNRykRlZIPoKn9Fe3Qhov438FzUZWlT/vG/hP
+	Fl2en5sk6TBs5LaIB7zW5jSI/7LAVs3ZifV9JBdKd1XXtjO89yPuYBt3j72WT2VgLkwyQx2fF3hDq
+	D7txpL8Z8nYZ6K7GhVccMe2frgg6IdVNt2qXdrbLuWmju8HkuSQBOHNWK8PfOH5AHiY7bUDxpj5dV
+	+5MTlwPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u639b-000000010i7-0mo0;
-	Sat, 19 Apr 2025 08:02:23 +0000
-Received: from mgamail.intel.com ([192.198.163.8])
+	id 1u63h4-000000012bX-1Bcn;
+	Sat, 19 Apr 2025 08:36:58 +0000
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u639T-000000010fS-2SvI;
-	Sat, 19 Apr 2025 08:02:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1745049736; x=1776585736;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=gu3UJl0aItqWmYBuG3huHdt4smLIHOEuFU2Tib4TjfY=;
-  b=SFUs3n6Fp2nI9WuccSsTPdnXAcDf40Le2JeaDVLJvkmjnPq3HQXc+V4o
-   upDXiGPm4cqS54uVy0tkihxf3/u39BW/dVdph3kG67Xed4/hUTXqINmGv
-   bOKIYCGFgTrUYbmknJP30WHdzEdVm5L5nW1z5DwHJ7mwvSQLT8+E1J/U5
-   O0i8bg9X4NofB2DeW81BNc3FRl2CRzn4UXZRqt8JAKSIKP00y2C0jyHEJ
-   awAiZFxql7VLm9ZaPBnhdn/4poatqAlFbKIp0kVlW5ow7/ZXLYPa+0Qxn
-   mVKyopppKw64Xo7J7Abj+loGdAuMsvS/ANaS2XZwpHLoXR2kW5bOVm77J
-   w==;
-X-CSE-ConnectionGUID: LQW5JwzsQvS3TDGk8R6OYg==
-X-CSE-MsgGUID: 5/tkCvRsT9GjxSkgvZp4sw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11407"; a="64202025"
-X-IronPort-AV: E=Sophos;i="6.15,223,1739865600"; 
-   d="scan'208";a="64202025"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
-  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Apr 2025 01:02:12 -0700
-X-CSE-ConnectionGUID: qUyVFIkwRgmVu+ARhTMvmA==
-X-CSE-MsgGUID: pFudtNrlS5uHIXm/wHMgbQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,223,1739865600"; 
-   d="scan'208";a="131869810"
-Received: from lkp-server01.sh.intel.com (HELO 61e10e65ea0f) ([10.239.97.150])
-  by orviesa007.jf.intel.com with ESMTP; 19 Apr 2025 01:02:06 -0700
-Received: from kbuild by 61e10e65ea0f with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1u639H-0003hc-2K;
-	Sat, 19 Apr 2025 08:02:03 +0000
-Date: Sat, 19 Apr 2025 16:01:57 +0800
-From: kernel test robot <lkp@intel.com>
-To: Bincai Liu <bincai.liu@mediatek.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Jitao shi <jitao.shi@mediatek.com>, CK Hu <ck.hu@mediatek.com>
-Cc: oe-kbuild-all@lists.linux.dev, dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-phy@lists.infradead.org, Bincai Liu <bincai.liu@mediatek.com>
-Subject: Re: [PATCH 3/5] drm/mediatek: Add dvo driver for mt8196
-Message-ID: <202504191549.ufJBsMvZ-lkp@intel.com>
-References: <20250418065313.8972-4-bincai.liu@mediatek.com>
+	id 1u63h1-000000012a9-2svn
+	for linux-mediatek@lists.infradead.org;
+	Sat, 19 Apr 2025 08:36:56 +0000
+Received: by mail-pf1-x430.google.com with SMTP id d2e1a72fcca58-736dd9c4b40so3258563b3a.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 19 Apr 2025 01:36:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1745051815; x=1745656615; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=hWIuLilHx+0m0PNW09Z0k4xV/guGg8/Qmv8ZqaHqGFA=;
+        b=GsP0I+oNLhKdxue3j4wtkzzCCSJzxm5tb5+7+D2hmBVFtiDZcfvrSEoelhFkRX9DLn
+         HTtQaqPhR13fsBTOBKNmB1V8Ow6IV1oAM5IMIVgLuk9NA5X5lzHS/JR5hVQOB/Rfm8HC
+         jC0egWzreRnE2F066m3bcFpw6UVAJceP03x5T45YzrI/EMGa78gmqvZ+pKJpwBnFHWym
+         DaH0lVa39YtjR7wwsk6SF7fvs1wTW2ofI6osDDNTqTRYmqOT60FJauy12n4dNi0Vyf7L
+         MmNUaXYWDqn5KUe0M8Q4YO5qVXVY256EBzCa4a19cPzA9T5ccs9WTGlJL8FeEO6L1OnY
+         iMOw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1745051815; x=1745656615;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=hWIuLilHx+0m0PNW09Z0k4xV/guGg8/Qmv8ZqaHqGFA=;
+        b=JM+FozXfYnLD92+xz/fAiv9B1OMox0/zW/frb/TzOAj7cAuAUc87nAST1em3NN4Hxa
+         kd4+Kc11QphgxCJCzW792pGvmXMVi6BB3+FtTy/CZxX1YQoEJrINZPN9jxUdEzAwqN/F
+         sYvfX97E2V5i7iJC5dhaxS09Z+/sqVFzqw8qDWUy1jh5BiODl08betOyxObHs/gYLHvv
+         +ti/MdQbkTami/ZrdLaxxDlO2ybgHvglsgBa23bPqvW4ib8djqJ6p8TvVGizlWxtaEy9
+         Z5/gqGGlqr19jEN0tHQBDuXLUdDLYsr5f5BLra7hcXEG7Q4Iq5YF95NoInMloukscQBo
+         80YQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVtkbw7WaUCW+HJgHroisBcJTVUld5JB+Tc0wHwhUY0g49CFIyqbNhRfFrPZYFz1BmRooNENB8Qsnt16/9DGQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxqlne4QcylGKk49Nvj1WXlu+9HOPFL+MrS0ACRiPy7sWcIPin1
+	A7ur9fYkMJwxralPPhJWg3CKpeWjzYZoxIQVxG7WdRHyI0sUhOFKjWHHHMsxrw==
+X-Gm-Gg: ASbGnctIPolsWBhEmGHVtev6oFZamgb1FGQaTeSL9hZdizKUSk2MoRYbNfEEvIW2RuC
+	M+Y0VAGCx3jxz5RHhhL0FvUR+OtUVggtDx9eq8t3YutizHwOUcrbwwAvWGjyReqbpMrdB/1oXXI
+	b6djI/PbB8wzvYGo4aOM/W2UTZW5C8G7zr6WP0r6wBrNrhhA2cqPh/Jw8SUOsvL9iMleJ4Pxi9q
+	xU+nLGS4Kh3IGmu6KD02dRdvrzKODETPFF/LOoTjo+H+4Xp93JDuO/DoESm33W4Ih0H1QsVuYcY
+	T1wdcxuRfPsFlCBgMCfqZdC3k2q2RCfNMTOzGksZlkYUW/bgrgLoSemnzDyq9A==
+X-Google-Smtp-Source: AGHT+IH3NDcdNNb8pbSv2t3bDQf2H8zk313Y64ucJBKvLy8gNjS7N5oRSvDjpG+wLPNMUPr2fDtP/Q==
+X-Received: by 2002:a05:6a20:9c9a:b0:1f3:20be:c18a with SMTP id adf61e73a8af0-203cc60880bmr6254890637.10.1745051814740;
+        Sat, 19 Apr 2025 01:36:54 -0700 (PDT)
+Received: from thinkpad ([36.255.17.167])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b0db14488casm2467771a12.56.2025.04.19.01.36.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 19 Apr 2025 01:36:54 -0700 (PDT)
+Date: Sat, 19 Apr 2025 14:06:49 +0530
+From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+To: Jianjun Wang <jianjun.wang@mediatek.com>
+Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>, Rob Herring <robh@kernel.org>, 
+	Bjorn Helgaas <bhelgaas@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-pci@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH] PCI: mediatek: Remove the usage of virt_to_phys
+Message-ID: <oiwee2kiwex6dz3scmvpwc2x25tq4qmdah6kcvgqhhukmku3uj@va465i7ofstd>
+References: <20250107052108.8643-1-jianjun.wang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20250418065313.8972-4-bincai.liu@mediatek.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20250107052108.8643-1-jianjun.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250419_010215_670610_0C1B18E8 
-X-CRM114-Status: GOOD (  13.11  )
+X-CRM114-CacheID: sfid-20250419_013655_738257_5A74B8C2 
+X-CRM114-Status: GOOD (  22.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,95 +102,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Bincai,
+On Tue, Jan 07, 2025 at 01:20:58PM +0800, Jianjun Wang wrote:
+> Remove the usage of virt_to_phys, as it will cause sparse warnings when
+> building on some platforms.
+> 
+> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
 
-kernel test robot noticed the following build errors:
+I'm changing the status of this patch as 'Changes Requested' in patchwork. Feel
+free to submit the next iteration incorporating review comments.
 
-[auto build test ERROR on robh/for-next]
-[also build test ERROR on pza/reset/next linus/master v6.15-rc2 next-20250417]
-[cannot apply to pza/imx-drm/next]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+- Mani
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Bincai-Liu/dt-bindings-eDP-mediatek-add-eDP-yaml-for-mt8196/20250418-145911
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
-patch link:    https://lore.kernel.org/r/20250418065313.8972-4-bincai.liu%40mediatek.com
-patch subject: [PATCH 3/5] drm/mediatek: Add dvo driver for mt8196
-config: i386-buildonly-randconfig-001-20250419 (https://download.01.org/0day-ci/archive/20250419/202504191549.ufJBsMvZ-lkp@intel.com/config)
-compiler: gcc-11 (Debian 11.3.0-12) 11.3.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250419/202504191549.ufJBsMvZ-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202504191549.ufJBsMvZ-lkp@intel.com/
-
-All error/warnings (new ones prefixed by >>):
-
->> drivers/gpu/drm/mediatek/mtk_ddp_comp.c:476:10: error: 'DDP_COMPONENT_DVO0' undeclared here (not in a function); did you mean 'DDP_COMPONENT_OVL0'?
-     476 |         [DDP_COMPONENT_DVO0]            = { MTK_DVO,                    0, &ddp_dpi },
-         |          ^~~~~~~~~~~~~~~~~~
-         |          DDP_COMPONENT_OVL0
->> drivers/gpu/drm/mediatek/mtk_ddp_comp.c:476:10: error: array index in initializer not of integer type
-   drivers/gpu/drm/mediatek/mtk_ddp_comp.c:476:10: note: (near initialization for 'mtk_ddp_matches')
---
->> drivers/gpu/drm/mediatek/mtk_dpi.c:201: warning: Function parameter or struct member 'out_np_sel' not described in 'mtk_dpi_conf'
->> drivers/gpu/drm/mediatek/mtk_dpi.c:201: warning: Function parameter or struct member 'dpi_ver' not described in 'mtk_dpi_conf'
-
-
-vim +476 drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-
-   456	
-   457	static const struct mtk_ddp_comp_match mtk_ddp_matches[DDP_COMPONENT_DRM_ID_MAX] = {
-   458		[DDP_COMPONENT_AAL0]		= { MTK_DISP_AAL,		0, &ddp_aal },
-   459		[DDP_COMPONENT_AAL1]		= { MTK_DISP_AAL,		1, &ddp_aal },
-   460		[DDP_COMPONENT_BLS]		= { MTK_DISP_BLS,		0, NULL },
-   461		[DDP_COMPONENT_CCORR]		= { MTK_DISP_CCORR,		0, &ddp_ccorr },
-   462		[DDP_COMPONENT_COLOR0]		= { MTK_DISP_COLOR,		0, &ddp_color },
-   463		[DDP_COMPONENT_COLOR1]		= { MTK_DISP_COLOR,		1, &ddp_color },
-   464		[DDP_COMPONENT_DITHER0]		= { MTK_DISP_DITHER,		0, &ddp_dither },
-   465		[DDP_COMPONENT_DP_INTF0]	= { MTK_DP_INTF,		0, &ddp_dpi },
-   466		[DDP_COMPONENT_DP_INTF1]	= { MTK_DP_INTF,		1, &ddp_dpi },
-   467		[DDP_COMPONENT_DPI0]		= { MTK_DPI,			0, &ddp_dpi },
-   468		[DDP_COMPONENT_DPI1]		= { MTK_DPI,			1, &ddp_dpi },
-   469		[DDP_COMPONENT_DRM_OVL_ADAPTOR]	= { MTK_DISP_OVL_ADAPTOR,	0, &ddp_ovl_adaptor },
-   470		[DDP_COMPONENT_DSC0]		= { MTK_DISP_DSC,		0, &ddp_dsc },
-   471		[DDP_COMPONENT_DSC1]		= { MTK_DISP_DSC,		1, &ddp_dsc },
-   472		[DDP_COMPONENT_DSI0]		= { MTK_DSI,			0, &ddp_dsi },
-   473		[DDP_COMPONENT_DSI1]		= { MTK_DSI,			1, &ddp_dsi },
-   474		[DDP_COMPONENT_DSI2]		= { MTK_DSI,			2, &ddp_dsi },
-   475		[DDP_COMPONENT_DSI3]		= { MTK_DSI,			3, &ddp_dsi },
- > 476		[DDP_COMPONENT_DVO0]            = { MTK_DVO,                    0, &ddp_dpi },
-   477		[DDP_COMPONENT_GAMMA]		= { MTK_DISP_GAMMA,		0, &ddp_gamma },
-   478		[DDP_COMPONENT_MERGE0]		= { MTK_DISP_MERGE,		0, &ddp_merge },
-   479		[DDP_COMPONENT_MERGE1]		= { MTK_DISP_MERGE,		1, &ddp_merge },
-   480		[DDP_COMPONENT_MERGE2]		= { MTK_DISP_MERGE,		2, &ddp_merge },
-   481		[DDP_COMPONENT_MERGE3]		= { MTK_DISP_MERGE,		3, &ddp_merge },
-   482		[DDP_COMPONENT_MERGE4]		= { MTK_DISP_MERGE,		4, &ddp_merge },
-   483		[DDP_COMPONENT_MERGE5]		= { MTK_DISP_MERGE,		5, &ddp_merge },
-   484		[DDP_COMPONENT_OD0]		= { MTK_DISP_OD,		0, &ddp_od },
-   485		[DDP_COMPONENT_OD1]		= { MTK_DISP_OD,		1, &ddp_od },
-   486		[DDP_COMPONENT_OVL0]		= { MTK_DISP_OVL,		0, &ddp_ovl },
-   487		[DDP_COMPONENT_OVL1]		= { MTK_DISP_OVL,		1, &ddp_ovl },
-   488		[DDP_COMPONENT_OVL_2L0]		= { MTK_DISP_OVL_2L,		0, &ddp_ovl },
-   489		[DDP_COMPONENT_OVL_2L1]		= { MTK_DISP_OVL_2L,		1, &ddp_ovl },
-   490		[DDP_COMPONENT_OVL_2L2]		= { MTK_DISP_OVL_2L,		2, &ddp_ovl },
-   491		[DDP_COMPONENT_POSTMASK0]	= { MTK_DISP_POSTMASK,		0, &ddp_postmask },
-   492		[DDP_COMPONENT_PWM0]		= { MTK_DISP_PWM,		0, NULL },
-   493		[DDP_COMPONENT_PWM1]		= { MTK_DISP_PWM,		1, NULL },
-   494		[DDP_COMPONENT_PWM2]		= { MTK_DISP_PWM,		2, NULL },
-   495		[DDP_COMPONENT_RDMA0]		= { MTK_DISP_RDMA,		0, &ddp_rdma },
-   496		[DDP_COMPONENT_RDMA1]		= { MTK_DISP_RDMA,		1, &ddp_rdma },
-   497		[DDP_COMPONENT_RDMA2]		= { MTK_DISP_RDMA,		2, &ddp_rdma },
-   498		[DDP_COMPONENT_RDMA4]		= { MTK_DISP_RDMA,		4, &ddp_rdma },
-   499		[DDP_COMPONENT_UFOE]		= { MTK_DISP_UFOE,		0, &ddp_ufoe },
-   500		[DDP_COMPONENT_WDMA0]		= { MTK_DISP_WDMA,		0, NULL },
-   501		[DDP_COMPONENT_WDMA1]		= { MTK_DISP_WDMA,		1, NULL },
-   502	};
-   503	
+> ---
+>  drivers/pci/controller/pcie-mediatek.c | 19 ++++++++++++-------
+>  1 file changed, 12 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+> index 3bcfc4e58ba2..dc1e5fd6c7aa 100644
+> --- a/drivers/pci/controller/pcie-mediatek.c
+> +++ b/drivers/pci/controller/pcie-mediatek.c
+> @@ -178,6 +178,7 @@ struct mtk_pcie_soc {
+>   * @phy: pointer to PHY control block
+>   * @slot: port slot
+>   * @irq: GIC irq
+> + * @msg_addr: MSI message address
+>   * @irq_domain: legacy INTx IRQ domain
+>   * @inner_domain: inner IRQ domain
+>   * @msi_domain: MSI IRQ domain
+> @@ -198,6 +199,7 @@ struct mtk_pcie_port {
+>  	struct phy *phy;
+>  	u32 slot;
+>  	int irq;
+> +	phys_addr_t msg_addr;
+>  	struct irq_domain *irq_domain;
+>  	struct irq_domain *inner_domain;
+>  	struct irq_domain *msi_domain;
+> @@ -393,12 +395,10 @@ static struct pci_ops mtk_pcie_ops_v2 = {
+>  static void mtk_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
+>  {
+>  	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
+> -	phys_addr_t addr;
+>  
+>  	/* MT2712/MT7622 only support 32-bit MSI addresses */
+> -	addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
+>  	msg->address_hi = 0;
+> -	msg->address_lo = lower_32_bits(addr);
+> +	msg->address_lo = lower_32_bits(port->msg_addr);
+>  
+>  	msg->data = data->hwirq;
+>  
+> @@ -510,10 +510,8 @@ static int mtk_pcie_allocate_msi_domains(struct mtk_pcie_port *port)
+>  static void mtk_pcie_enable_msi(struct mtk_pcie_port *port)
+>  {
+>  	u32 val;
+> -	phys_addr_t msg_addr;
+>  
+> -	msg_addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
+> -	val = lower_32_bits(msg_addr);
+> +	val = lower_32_bits(port->msg_addr);
+>  	writel(val, port->base + PCIE_IMSI_ADDR);
+>  
+>  	val = readl(port->base + PCIE_INT_MASK);
+> @@ -913,6 +911,7 @@ static int mtk_pcie_parse_port(struct mtk_pcie *pcie,
+>  	struct mtk_pcie_port *port;
+>  	struct device *dev = pcie->dev;
+>  	struct platform_device *pdev = to_platform_device(dev);
+> +	struct resource *regs;
+>  	char name[10];
+>  	int err;
+>  
+> @@ -921,12 +920,18 @@ static int mtk_pcie_parse_port(struct mtk_pcie *pcie,
+>  		return -ENOMEM;
+>  
+>  	snprintf(name, sizeof(name), "port%d", slot);
+> -	port->base = devm_platform_ioremap_resource_byname(pdev, name);
+> +	regs = platform_get_resource_byname(pdev, IORESOURCE_MEM, name);
+> +	if (!regs)
+> +		return -EINVAL;
+> +
+> +	port->base = devm_ioremap_resource(dev, regs);
+>  	if (IS_ERR(port->base)) {
+>  		dev_err(dev, "failed to map port%d base\n", slot);
+>  		return PTR_ERR(port->base);
+>  	}
+>  
+> +	port->msg_addr = regs->start + PCIE_MSI_VECTOR;
+> +
+>  	snprintf(name, sizeof(name), "sys_ck%d", slot);
+>  	port->sys_ck = devm_clk_get(dev, name);
+>  	if (IS_ERR(port->sys_ck)) {
+> -- 
+> 2.46.0
+> 
 
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+மணிவண்ணன் சதாசிவம்
 
