@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9A93C369AB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Apr 2025 10:26:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15FD1C369AB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Apr 2025 10:30:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fI4INpVmKKLQ+GnUwLC8BM3GpY4ldbDIRRh2dXHIFMs=; b=0r9qY+RiPQ8Doo88I1AdOKPQh5
-	BcFizb23WEomfIkMvXVWph6ExyKjvQg0I7dqXY6hMDqj00NPT0oMFkmo6P+mQU7uZSo4G3SG59KgI
-	RbPbyc9N8zAZrCE6zZ/tH+eDCm6wcOhiehUmFP9TTFFsSvgFXAWLRRTsMV17P/yPBc3r/Fr4vPAJy
-	S7D1XMufcXWxBid52xHMnkF5kHgN3mcpbmyj4hZ0tmxWnKDaNZhzGgmP+zENJtVpzYVZaOLV0saHM
-	bHn4JJiD2aUYFQFoTV7htylB4gFjrh9X6hEDZu5B51dlyD0TqQI7Vdigg755N+sgCvZ3HiK99scbp
-	Kv+N3n3g==;
+	bh=JlRUONHPgdRG0yBjPS5/nMKjk95rCFAaXubE+yQQ9K0=; b=YONnyecUxXKc3KMRQCApbhFDn8
+	i0PQfJ88ByxXA+Wme93lLIf2Jfr6KCv7UQ6aqy/hLg3hqduSFk9oHZHagmP7UgxIoidRvKMTIm3wI
+	D/Nq1NW8fRz8ymdNbxRUugDtb8w+4Zc5e3CebnVnPhxrvMYQq9YuXij5+7ZRZLgbAUkzw08nDuy7N
+	Di+a8xYBhgV5CNQLqz7erdKTP0gzEpKajj7nX3ZOLwAKKl8jhIB1g9/RS0/0VKpgv+2afW6PRUTci
+	MTXRCds/0xmF1jfKJCmc5zY9aPUt6MdruxtoPtx4NJFEJ1pO4TWA/V9h9z/9MgGmuiOP4ytYlnuC+
+	lfK+eREw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u6oM5-000000045hG-31yV;
-	Mon, 21 Apr 2025 10:26:25 +0000
-Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
+	id 1u6oPm-000000046FY-0FiZ;
+	Mon, 21 Apr 2025 10:30:14 +0000
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u6o9U-000000044B9-3lcM
+	id 1u6o9b-000000044DM-1LtY
 	for linux-mediatek@lists.infradead.org;
-	Mon, 21 Apr 2025 10:13:26 +0000
-Received: by mail-pg1-x531.google.com with SMTP id 41be03b00d2f7-b03bc416962so2651978a12.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 21 Apr 2025 03:13:24 -0700 (PDT)
+	Mon, 21 Apr 2025 10:13:32 +0000
+Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-2240b4de12bso55715535ad.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 21 Apr 2025 03:13:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1745230404; x=1745835204; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1745230411; x=1745835211; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=fI4INpVmKKLQ+GnUwLC8BM3GpY4ldbDIRRh2dXHIFMs=;
-        b=NNAi0VS9+juKEETjPKQAg+BMzjrCcFA2gmedFSmFUv+evodMehU3DD3c/nX9LlzOrv
-         9kdxlVkx4KZM8nRc+3RchYWdX2a3VkYjltq77cLV58rNyHKaaehrsDn/2nJ5WxhSn+OV
-         qP6dCgmPmV09m+cVOpEgN/VpAqDaz5V3a2Jyw=
+        bh=JlRUONHPgdRG0yBjPS5/nMKjk95rCFAaXubE+yQQ9K0=;
+        b=GIJ/Svha4Zr+vaQjx42Ifa2gDpeoKSFy6eWniTSiLZlmnu+uupYhpahkvxcbsK3tHJ
+         cvkkNkVScdTORt+eBHckFq/C3tk7xPz9/3WVl0HhLyGUkp4UtwxASsimqjjTwcyJPz5l
+         stxkdUCFQCjBnzVSPT2Iue3mCLMl9LqCaAQbE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745230404; x=1745835204;
+        d=1e100.net; s=20230601; t=1745230411; x=1745835211;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=fI4INpVmKKLQ+GnUwLC8BM3GpY4ldbDIRRh2dXHIFMs=;
-        b=NcVzGup3VM7zlMrZ5nyemUlQ3jCeDB++crZT8G90L5RXhkrTwYroUKmYpd8flcj9dJ
-         451Bxn+oGRMZx2d6d1DN3k8LBQBozPM7kLoupS14XGFWrxrF1mREbDCOBl+ZRUqN8UHZ
-         HTzRUcNqwNq8GXvzfEvp1FFtcOVxoXkSu738r6iZWjAPHUDgnmSe1z272eDUR+jEn0tH
-         QxDVR2bZJC7H4ChUvgKlc4G3Q2jXSjl3r95p6QMiLE3Q6qE59QGuTcy6A2VMrwxMXwOh
-         34Z+39XrQEEhZ/psAxgf6M7TUnlh5ko0/A9HQNzQlHVlFcGUOwUQ4lIxEYaQxZERKVtA
-         vnag==
-X-Forwarded-Encrypted: i=1; AJvYcCXWbbdwar0puW33AldWWrweE6q/x7jQRDV89Q7wgAV9IsMdX0yaads1W9msa1myJ0QxehTwwSxb+N1gXkMktA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxmpJ82Y1Ytn/Ht7xA+7v6sZ/G8Fx1J2AHN5jlNIrTwn4+mnF1V
-	WEaSXggPEpiAcvMBHRRSmZBuemx2D9huivPE5lYkdq9KbmaO1+kgRF1WqM0U4w==
-X-Gm-Gg: ASbGncu2fEclCmyOqjBSeeJwvZ5j9jm9BAfJU3fT95/LnWQS+Erix5G9uFDHwJTh2mM
-	iY62BqA1X/JrRMhSIyFCRyK30n16RmT5RJH0ykppJdPPBx5+a2HB0ppWDxoQHDG2Vdc5hol8WNd
-	xY7aqc6iYJSMufL+QJZGOGUvR7+qJIVr5l1Ys/k39p8ngzmOf8xAwwtZ1hkcSuOl+fz+7fV4bes
-	gusRGu0vL8yiWyfoKyc2QRbvn0oP09scK0eZmE7V3FfuUeuVqlg8kZpMKfyuIh8ymsF4QNlTOKw
-	KAue2WPuCa7IuXeoITNLoD+3vXgOp1tGaWcClO+NE7rY8zgvEr5TwPHEbjE=
-X-Google-Smtp-Source: AGHT+IGEkbtC/fVUVtuk0XcjS/PS+i1YOa/LJMDWAqNFAJ0mD3J0gKfEIcrJJeHWHk1BOZIZJkjZmQ==
-X-Received: by 2002:a17:902:d48f:b0:227:ac2a:1dcf with SMTP id d9443c01a7336-22c535bf828mr153722745ad.23.1745230404197;
-        Mon, 21 Apr 2025 03:13:24 -0700 (PDT)
+        bh=JlRUONHPgdRG0yBjPS5/nMKjk95rCFAaXubE+yQQ9K0=;
+        b=oO8Q8G6hPP7vZRo6mdqo2XPNcV9zcG4/KmRSRqt3gDXGVIDJfWxORlziILIYArzjde
+         pIBxT09bF9Y0giedgK2+3PlBShFmFca7CNwAbRcLBCUUsHYNkoOUy+b4o9vQoedZ3n+E
+         OrIyIGkCKj4AjmPH0WeOwgZorRjuAnhpYWxrZVtQCKCrgrCL+TWRhvqYzOWA+zrsMXis
+         PS5W2xHNvdTRW1n+oT0OHJGcDkOdfuKeGwjcgPUAnemv+EbXA3tbrFzUeI/IZxb8XwM2
+         ywgq9gQNT28C7umbT+noobCvVlXm06v9HpW/CJ6+wXmi3X7wc2DbQgDpUhTRKylV96ak
+         29Ow==
+X-Forwarded-Encrypted: i=1; AJvYcCUW4RXFrjCXKdcXWEdB1kEC2UB1syAy8aZz988X/la70IRV238DdEyj/IaQa6HgfO91Nwm54iLDWHPcZw7aWQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyxrZR6YhQeJ1AMtYSOmASqpn4ck+t/c/B/OQZ5T/wZBqt5h4gR
+	i5bpUXj5ECzSxXBk9cQqUGZkqkInKWbA3HjRdzjzxeQ1YP//EcfPzB0iLam5Tg==
+X-Gm-Gg: ASbGncvETfmBd8DmzqXvQm6CLCcXbkkmPR5vxcGihBlrI45DLScRcGyN3iXO8cGEHfk
+	duagKdFdFhO4aQRTv7To69cldtMGd3xxVM496ac74wdjf6RYkOZbNUpGs/LPnxSiNArIHw5//vA
+	tS1tm/ZE2qEEdkrcHL8r857mHlqpivs/DkdcntaZzBk9dI0TxAKVMSiEQjoGJBValn/RFBpt8qV
+	VCEKqKYGy39sfQBshEJxq5n6Y1rfxY5YAUP9+havnu3cvdUK8mO/ZiXaWWvz6Swq3f2D3ajPD3F
+	fbszauyfMgn9Co0aO/8NvD/Ok0kU3fcr97WwKaxRJqzpmIH2b9u6J3dgkoU=
+X-Google-Smtp-Source: AGHT+IGaSj2NjUkLJYtvrXbaniU4ZUkVXBRJQywqY5KHy1I4U9ywfY/tOoiirvNsMeMMe1Zel8Bsug==
+X-Received: by 2002:a17:902:ce86:b0:220:c143:90a0 with SMTP id d9443c01a7336-22c535a7254mr159468475ad.24.1745230410702;
+        Mon, 21 Apr 2025 03:13:30 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:7633:f42a:d31d:3f9c])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22d78db8b04sm38985205ad.238.2025.04.21.03.13.21
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22d78db8b04sm38985205ad.238.2025.04.21.03.13.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 21 Apr 2025 03:13:23 -0700 (PDT)
+        Mon, 21 Apr 2025 03:13:30 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -82,17 +82,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	chrome-platform@lists.linux.dev,
 	linux-input@vger.kernel.org,
 	Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH v2 6/8] arm64: dts: mediatek: mt8186: Add Squirtle Chromebooks
-Date: Mon, 21 Apr 2025 18:12:44 +0800
-Message-ID: <20250421101248.426929-7-wenst@chromium.org>
+Subject: [PATCH v2 8/8] platform/chrome: of_hw_prober: Support touchscreen probing on Squirtle
+Date: Mon, 21 Apr 2025 18:12:46 +0800
+Message-ID: <20250421101248.426929-9-wenst@chromium.org>
 X-Mailer: git-send-email 2.49.0.805.g082f7c87e0-goog
 In-Reply-To: <20250421101248.426929-1-wenst@chromium.org>
 References: <20250421101248.426929-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250421_031324_939968_7C754532 
-X-CRM114-Status: GOOD (  15.94  )
+X-CRM114-CacheID: sfid-20250421_031331_360014_BC96F03D 
+X-CRM114-Status: GOOD (  11.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,156 +107,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a device tree for the MT8186 based Squirtle Chromebooks, also known
-as the Acer Chromebook Spin 311 (R724T). The device is a 2-in-1
-convertible.
+The MT8186 Squirtle Chromebook is built with one of two possible
+touchscreens. Let the prober probe for them.
 
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- arch/arm64/boot/dts/mediatek/Makefile         |   1 +
- .../dts/mediatek/mt8186-corsola-squirtle.dts  | 107 ++++++++++++++++++
- .../dts/mediatek/mt8186-corsola-steelix.dtsi  |   2 +-
- 3 files changed, 109 insertions(+), 1 deletion(-)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-squirtle.dts
+ drivers/platform/chrome/chromeos_of_hw_prober.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index ff67931e7821..77ce29608170 100644
---- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -65,6 +65,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-magneton-sku393216.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-magneton-sku393217.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-magneton-sku393218.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-rusty-sku196608.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-squirtle.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-starmie-sku0.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-starmie-sku1.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-steelix-sku131072.dtb
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-squirtle.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-squirtle.dts
-new file mode 100644
-index 000000000000..f721ad4e5c97
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-squirtle.dts
-@@ -0,0 +1,107 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright 2024 Google LLC
-+ */
-+
-+/dts-v1/;
-+#include "mt8186-corsola-voltorb.dtsi"
-+
-+/ {
-+	model = "Google squirtle board";
-+	compatible = "google,squirtle", "mediatek,mt8186";
-+	chassis-type = "convertible";
-+};
-+
-+&i2c1 {
-+	touchscreen@10 {
-+		compatible = "elan,ekth6915";
-+		reg = <0x10>;
-+		interrupts-extended = <&pio 12 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&touchscreen_pins>;
-+		reset-gpios = <&pio 60 GPIO_ACTIVE_LOW>;
-+		vcc33-supply = <&pp3300_s3>;
-+		status = "fail-needs-probe";
-+	};
-+
-+	touchscreen@16 {
-+		compatible = "elan,ekth8d18", "elan,ekth6a12nay";
-+		reg = <0x16>;
-+		interrupts-extended = <&pio 12 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&touchscreen_pins>;
-+		reset-gpios = <&pio 60 GPIO_ACTIVE_LOW>;
-+		vcc33-supply = <&pp3300_s3>;
-+		status = "fail-needs-probe";
-+	};
-+};
-+
-+&i2c2 {
-+	trackpad@68 {
-+		compatible = "hid-over-i2c";
-+		reg = <0x68>;
-+		hid-descr-addr = <0x20>;
-+		interrupts-extended = <&pio 11 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&trackpad_pin>;
-+		vdd-supply = <&pp3300_s3>;
-+		wakeup-source;
-+		status = "fail-needs-probe";
-+	};
-+};
-+
-+&i2c5 {
-+	clock-frequency = <400000>;
-+
-+	/delete-node/ codec@1a;
-+
-+	rt5650: codec@1a {
-+		compatible = "realtek,rt5650";
-+		reg = <0x1a>;
-+		interrupts-extended = <&pio 17 IRQ_TYPE_EDGE_BOTH>;
-+		avdd-supply = <&mt6366_vio18_reg>;
-+		cpvdd-supply = <&mt6366_vio18_reg>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&speaker_codec_pins_default>;
-+		cbj-sleeve-gpios = <&pio 150 GPIO_ACTIVE_HIGH>;
-+		#sound-dai-cells = <0>;
-+		realtek,dmic1-data-pin = <2>;
-+		realtek,jd-mode = <2>;
-+	};
-+};
-+
-+&sound {
-+	compatible = "mediatek,mt8186-mt6366-rt5650-sound";
-+	model = "mt8186_rt5650";
-+
-+	audio-routing =
-+		"Headphone", "HPOL",
-+		"Headphone", "HPOR",
-+		"HDMI1", "TX";
-+
-+	hs-playback-dai-link {
-+		codec {
-+			sound-dai = <&rt5650>;
-+		};
-+	};
-+
-+	hs-capture-dai-link {
-+		codec {
-+			sound-dai = <&rt5650>;
-+		};
-+	};
-+
-+	spk-hdmi-playback-dai-link {
-+		codec {
-+			sound-dai = <&it6505dptx>;
-+		};
-+	};
-+};
-+
-+&speaker_codec {
-+	status = "disabled";
-+};
-+
-+&trackpad_steelix {
-+	status = "disabled";
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix.dtsi b/arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix.dtsi
-index 822a177e7c19..8a196dc9a96b 100644
---- a/arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix.dtsi
-@@ -118,7 +118,7 @@ &i2c2 {
- 	i2c-scl-internal-delay-ns = <22000>;
+diff --git a/drivers/platform/chrome/chromeos_of_hw_prober.c b/drivers/platform/chrome/chromeos_of_hw_prober.c
+index 10dbaede0541..f3cd612e5584 100644
+--- a/drivers/platform/chrome/chromeos_of_hw_prober.c
++++ b/drivers/platform/chrome/chromeos_of_hw_prober.c
+@@ -59,6 +59,7 @@ static int chromeos_i2c_component_prober(struct device *dev, const void *_data)
+ DEFINE_CHROMEOS_I2C_PROBE_DATA_DUMB_BY_TYPE(touchscreen);
+ DEFINE_CHROMEOS_I2C_PROBE_DATA_DUMB_BY_TYPE(trackpad);
  
- 	/* second source component */
--	trackpad@2c {
-+	trackpad_steelix: trackpad@2c {
- 		compatible = "hid-over-i2c";
- 		reg = <0x2c>;
- 		hid-descr-addr = <0x20>;
++DEFINE_CHROMEOS_I2C_PROBE_CFG_SIMPLE_BY_TYPE(touchscreen);
+ DEFINE_CHROMEOS_I2C_PROBE_CFG_SIMPLE_BY_TYPE(trackpad);
+ 
+ static const struct chromeos_i2c_probe_data chromeos_i2c_probe_hana_trackpad = {
+@@ -76,6 +77,17 @@ static const struct chromeos_i2c_probe_data chromeos_i2c_probe_hana_trackpad = {
+ 	},
+ };
+ 
++static const struct chromeos_i2c_probe_data chromeos_i2c_probe_squirtle_touchscreen = {
++	.cfg = &chromeos_i2c_probe_simple_touchscreen_cfg,
++	.opts = &(const struct i2c_of_probe_simple_opts) {
++		.res_node_compatible = "elan,ekth6a12nay",
++		.supply_name = "vcc33",
++		.gpio_name = "reset",
++		.post_power_on_delay_ms = 10,
++		.post_gpio_config_delay_ms = 300,
++	},
++};
++
+ static const struct hw_prober_entry hw_prober_platforms[] = {
+ 	{
+ 		.compatible = "google,hana",
+@@ -93,6 +105,10 @@ static const struct hw_prober_entry hw_prober_platforms[] = {
+ 		.compatible = "google,squirtle",
+ 		.prober = chromeos_i2c_component_prober,
+ 		.data = &chromeos_i2c_probe_dumb_trackpad,
++	}, {
++		.compatible = "google,squirtle",
++		.prober = chromeos_i2c_component_prober,
++		.data = &chromeos_i2c_probe_squirtle_touchscreen,
+ 	}, {
+ 		.compatible = "google,steelix",
+ 		.prober = chromeos_i2c_component_prober,
 -- 
 2.49.0.805.g082f7c87e0-goog
 
