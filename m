@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E7A3C369AB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Apr 2025 20:53:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5DA7C369AB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Apr 2025 20:55:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4F73MhPknyh6RrkOFfdpIYVBvQdv2srA1Aiavw/rPjY=; b=EiRvvb9AhaMzUOJOrOYdxu1LU4
-	rWPHDdUUw35InJeYxUNEISKA73yXP0NqAz52z+vup6TQSammcm3z/XYF9skc9ENUR0e3ZGkT37JkH
-	IM6SK2qHIeSvQ0CVoRUeG8hWDCmUycw8nwEXymwHWxNubUl97z8PyBmiEXEB7M5mABsM1xFlFk7T0
-	BG2PH/5QCkNCDA8JOBDiuY95j0+gJi1iBA4yW8+c3KH8gAuE3xhjtUghvpHETCLcrzSItOtV4JCwR
-	+TnokKByT7XljzeGhQYiXlOVFrxbjp/tXUtyjB8VfazvQvheEEX5gjx2ANp5SBNGHgL4Kh9V/duxF
-	7Wx1ekRg==;
+	bh=bttrdYW9NPCZmBWNy4/8H69WhPWRHFORooDImgluoDI=; b=uUNfVO4yiRM+ypErrJV9EsoSfA
+	3oqWH2QxDh7zJkiL6VsHr7or60euBbdbe3cMFW7wkfc95UHFDwdKccuPKAbQawUFyby/Utt/S84AY
+	uIX6T6UHbmqRHmWEaAHcdL7TXabIXmu4sFnrI8DchlDL7JVzWeIjSVtLQS2wx4KoOi7ukCceGFvPm
+	ogtmwoNTE1Y1x7nQ27o0YCRG4m0eh8ymRf/FNLWHrqGPAQNP59uZa5VUn9+GopUMdd7J+4evdWlI5
+	y4YPAlygV9dexcoJuC1WmHZaWl4aLMHIW+Bf3m48vIdBAlsOFILHpFTlSZXFysSTCCUknZzS+S1tf
+	9gWen2+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u6y8n-000000058B4-2w5I;
-	Mon, 21 Apr 2025 20:53:21 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1u6yAd-000000058NA-3zBI;
+	Mon, 21 Apr 2025 20:55:15 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u6y56-000000057cv-041P;
-	Mon, 21 Apr 2025 20:49:33 +0000
+	id 1u6y59-000000057dd-2lXK;
+	Mon, 21 Apr 2025 20:49:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1745268570;
-	bh=XxnyUlhOLmgJSyUzXhTEsswDEQueWFydV1G3E4gpjvk=;
+	s=mail; t=1745268573;
+	bh=1wIDWPEibG09Jj0SDTOitc8WPtvsWbMRGzVMJKc/3OQ=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=RK4LqL/NA3r/DD3HMf9ARqzI2tJN36zWf5IKjYlWz7ZG5pB/H/smnyLrV1N+PduEg
-	 BfxWgb+mxsAwgEFL2RWjurcpHjuFREOjOqYqAquOWPNSmueSiCXwRJhxziDwbYaOzF
-	 dAJO+BNzU3w2CBX5XgJoRfmuEuJrKYJO/7sHMn5qwaUVznxdoBiJKyDC3QIZjFx5EP
-	 MWo9K0ZlOG2NPmWUWSmQDrrboJFT5xzjHrsB5EsAGEg9vjv/If6D1m084ms/X+kgiW
-	 0/EmPOvp4t6n9hBcwOGLgYFVQxUB7qC66EaX0juajfOmpvQjDxqhjRacAZQOv31GBM
-	 y6V1Pqfv9I49g==
+	b=M6y2QRed+ZGlksJm+Purl5Bs7WbVSSBr91Kkv6uVY6KTuX0UhtyQEZdXQ5uh2cjbR
+	 6h1t3d0C3jz18vXmy3mgcVRY9NfIkt3fUzzXqPSNxFx6J9l2mXnInj751O39YzyK3E
+	 JAUM3s4sDSMxMvasDo2AajPNUC09CXuQrAFk6Zqgk+A9mYXxBY6ZuyC6nYvJQxYBV2
+	 l05vPUZUS/FYQpy3ysUpPKYlxyRpKA9EpauP116VbjKLXc6ABKZOGh6KcuPdZ9cL3w
+	 8XILwUuABJXYrS/6FtRbbsEKwkdZtS2rOUBUlyObGophE4ewyR9dTyCSdEGmGXNp1b
+	 npJz8Sc/9F4Gw==
 Received: from [192.168.1.63] (unknown [70.107.117.78])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 96AF217E078A;
-	Mon, 21 Apr 2025 22:49:27 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B5A1D17E09B5;
+	Mon, 21 Apr 2025 22:49:30 +0200 (CEST)
 From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Mon, 21 Apr 2025 16:49:04 -0400
-Subject: [PATCH v2 1/5] dt-bindings: remoteproc: mediatek: Add missing
- minItems for 8192/8195
+Date: Mon, 21 Apr 2025 16:49:05 -0400
+Subject: [PATCH v2 2/5] dt-bindings: remoteproc: mediatek: Remove l1tcm for
+ dual-core MT8188 SCP
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20250421-scp-dual-core-mt8390-v2-1-c84117a959a9@collabora.com>
+Message-Id: <20250421-scp-dual-core-mt8390-v2-2-c84117a959a9@collabora.com>
 References: <20250421-scp-dual-core-mt8390-v2-0-c84117a959a9@collabora.com>
 In-Reply-To: <20250421-scp-dual-core-mt8390-v2-0-c84117a959a9@collabora.com>
 To: Bjorn Andersson <andersson@kernel.org>, 
@@ -68,8 +68,8 @@ Cc: kernel@collabora.com, linux-remoteproc@vger.kernel.org,
  =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250421_134932_225284_5DAE2075 
-X-CRM114-Status: UNSURE (   8.77  )
+X-CRM114-CacheID: sfid-20250421_134935_840861_E28D879B 
+X-CRM114-Status: UNSURE (   9.82  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,30 +85,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Both MT8192 and MT8195 have an L1TCM memory, so it should be described
-in reg, and therefore reg's minItems should be 3, as is already implicit
-by reg-names being three entries long. However minItems is currently
-unset for mt8192/mt8195, resulting in it being equal to 2, from the base
-schema. Fix reg minItems for MT8192 and MT8195 by setting it to 3.
+The SCP present on MT8188 does not have an L1TCM memory region, but the
+binding incorrectly requires one for the dual-core description of the
+MT8188 SCP. Remove that requirement. Also update the minimum number of
+reg and reg-names to 1, since as this is a multi-core SCP with no
+L1TCM memory, only the CFG memory region is present in the parent node.
 
-Fixes: 6b55b1e2fd7f ("dt-bindings: remoteproc: mediatek: Support MT8195 dual-core SCP")
+Fixes: 91e0d560b9fd ("dt-bindings: remoteproc: mediatek: Support MT8188 dual-core SCP")
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 ---
- Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ .../devicetree/bindings/remoteproc/mtk,scp.yaml       | 19 ++++++++++++++++---
+ 1 file changed, 16 insertions(+), 3 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-index adc6b3f36fde49eb3fa7ed3f08b0fa9e7f331162..ee33c233e44f3d51f0851b35697a24208c87f68a 100644
+index ee33c233e44f3d51f0851b35697a24208c87f68a..04348cfcb0424dc78ff1ddd77665285a052925e9 100644
 --- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
 +++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-@@ -185,6 +185,7 @@ allOf:
+@@ -28,11 +28,11 @@ properties:
+     description:
+       Should contain the address ranges for memory regions SRAM, CFG, and,
+       on some platforms, L1TCM.
+-    minItems: 2
++    minItems: 1
+     maxItems: 3
+ 
+   reg-names:
+-    minItems: 2
++    minItems: 1
+     maxItems: 3
+ 
+   clocks:
+@@ -171,6 +171,7 @@ allOf:
      then:
        properties:
          reg:
-+          minItems: 3
-           maxItems: 3
++          minItems: 2
+           maxItems: 2
          reg-names:
            items:
+@@ -196,16 +197,28 @@ allOf:
+       properties:
+         compatible:
+           enum:
+-            - mediatek,mt8188-scp-dual
+             - mediatek,mt8195-scp-dual
+     then:
+       properties:
+         reg:
++          minItems: 2
+           maxItems: 2
+         reg-names:
+           items:
+             - const: cfg
+             - const: l1tcm
++  - if:
++      properties:
++        compatible:
++          enum:
++            - mediatek,mt8188-scp-dual
++    then:
++      properties:
++        reg:
++          maxItems: 1
++        reg-names:
++          items:
++            - const: cfg
+ 
+ additionalProperties: false
+ 
 
 -- 
 2.49.0
