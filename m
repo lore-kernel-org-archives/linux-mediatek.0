@@ -4,91 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C41EEC369AB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Apr 2025 11:28:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4FFCC369AB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Apr 2025 13:39:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=DywDJj+TP6Fy0BegsYxCLBJnBZZmwEA8i9S4As70Fkc=; b=tCfFZKeSON7AqDWG9XAhK6svAj
-	b4QDbmyuVxMNYqV7aO0gAa+0pt+9Q9qWx0r1oVuj6z1Xp8pKKYuEmt5xTuSDsVTeshfJYI+NXLsYj
-	a0YkNmpuwIYQrsc8d1/gqk3u3aM8zNW1tdPi9lRj0De0ZlW4bXaA5MjT6+PZs9wj8uXOLAGUwc1iB
-	AZqj0tku2iH0oYG8ml441UVhqmxCotzBKTSqLacfFktPw00VBHpNKOKQwo50OuhDjQqv5w9NeorXA
-	IgFSN/3E2rOn67KnuBpPK/NpPW8eoY4+NZ8cFmPdK+Bky+rar66Fr4D6Rs2CbpE4s8C7RcuIzULXh
-	hNi5A0bQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=n1S2sn2Zw4m74xU2SnlkSl9s1Nh2/IMvJnx8Ky8v+XQ=; b=1LIieAeDUkPw5mf20DDjs7RxKC
+	pTnjD4obt0Nn1Driz6Q3XI5PyUjyk8/S3FtyUDaE+SRg810oYTPjMa9RkS+vABDoDNTeXYIPzYT+h
+	Be3ptrrxgcL21tXZ4RD7vhjoTdOQRCpb1NA40SbztXHVDtwLFoBsyaUwPzB04tUKYq2hmciudDGOY
+	ivJnPwyvgc0xWb+PyyES0HRYvTdiNvAd4bHjJMTig9jqP9fsFKwVKRzgNnEIsXLGJ9X49ER3c4kAN
+	R6g6OK+TCbPc53Fi8qN+MWaWQPJ+dDt1GBeEpJhOZ9aYWNN/6lKdpK2ondMp05K4YeCQoRtH6rJqb
+	NQJzjxXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u6pJi-00000004CER-2Xc3;
-	Mon, 21 Apr 2025 11:28:02 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1u6rMU-00000004M3I-3KwM;
+	Mon, 21 Apr 2025 13:39:02 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u6pHp-00000004C2y-2wkS;
-	Mon, 21 Apr 2025 11:26:06 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-43d2d952eb1so28703515e9.1;
-        Mon, 21 Apr 2025 04:26:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1745234764; x=1745839564; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=DywDJj+TP6Fy0BegsYxCLBJnBZZmwEA8i9S4As70Fkc=;
-        b=gyFXjXP2ExCOjKjuN+qzY3YoE88PxgWn8O38dzQclqBUgi2k9B/vFASSbrmBqevxEb
-         gaLGBocjdRCiANBkv68b9k8QegQZletgKSSOzODFcKTSft3mq7AWr03YeqB9/bFTrmGQ
-         gbjbw6IOx174VDqsKZky+EoiVLZqgsAS1bVB+tl2Iti4XA7Q57Soi4UIqiTs6YyUGNDF
-         P5podbwLaulldorLIXyeFksr4t78YySO1dz/m/QqxhOL7nTv2kjAIfFSgsXIWUjDxY6e
-         z0zpr6lGuwSx151CiE5S7guXFieGv/v+GDL5d4H/mAjHdeawFq2G4GXCCI7KDx8yIBps
-         qZig==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745234764; x=1745839564;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=DywDJj+TP6Fy0BegsYxCLBJnBZZmwEA8i9S4As70Fkc=;
-        b=o13Hs+EvMTXl1TtDCTGZmV7FlLNkSGv6JLkf0L0t7OiqDCYWPFmVWsHTYib0QKnpr1
-         IrIAB+cLHRrQl3B8R0IIMDXCuSmXrtON9pQRb2HGvMjOMRfpOQUHcfm3zPcbLTItqQIN
-         QoXVcAtWYMeuUEN9+GIDlZfCIBMdcYNKFRZ+WqFBhRyNfc8+p4HnhBIy7HmhdBctrCNs
-         XY0oNIovdQkNOOfrrQ5Hg349OAYB/8PN1Tm0t4NVmijWTt6JMpPPi3nfKuCQ1pjx5pwu
-         fGAxC1ZvF9FsZBdm3+TNdM2EIjCxrJdLpxVd5/UjtBwGBt7hp1LRHjTzWRkFEB0Fko0V
-         lzjg==
-X-Forwarded-Encrypted: i=1; AJvYcCX4pKcVCg0gMBn9pAtzGWTn0Uo+WOyVixAIyMXhvFsg1bNw7neLaNUWfBwLDT8X7zmciR32ap5iAbmZyalQQ2k=@lists.infradead.org, AJvYcCXYXZvodh8VB8QmrWgAH0FNK0aIDekzUoYffbsxofq3FdC8BxnmgL/mBOwVx/Hq9dDDWvXdeFcULVhZcR49obVO@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy1RzJSi5HIBeILybeozmHMCx1ZKUjvsqBlHRX38pO8TTPkipSQ
-	toDDg2ZLS7gHGVOiShhoyzJjwZA9zL50dTn5ONrLUF8ioNIEJ4bs
-X-Gm-Gg: ASbGncshemuek858hf/urxMenvJy2IegGGUcXSXtYq7Em8ABYDZVk28sfOJL7tTsxcM
-	5yZXLgi/OCjOdbS3Kjeapo1+/0qAsS1Wvr0jrMFoPJ/yNQOSKlRZuzNTFLYTXlrD3Lv1BDjLkuR
-	33y7nm5W2jXeqqK/jH+H1XErvziUpjOHf87V2+69nCbYuhzt9qaSDCwtBuTzZCIwZCSvIHBBwky
-	wIllWO/cEkZQVhK71V+LeXc13CtAKwZ+xpr1ZZ2bWVD2uXpFvdQt2yWVlzfQM4C2mRABVZBlP/w
-	WsIJKiwTiVyPgmbwZfnvV4WjgSAMtz6X13kuPvQrsc1nwUaaOuaoZxG+6ODLQ6tAdA==
-X-Google-Smtp-Source: AGHT+IEyd/gCLe6uVv+NRUValpX0NFG/QctCP0805z/W9pjLxvuoIW7drtqziovnyPlzm17OYnq17g==
-X-Received: by 2002:a05:600c:1c8f:b0:43d:fa58:700e with SMTP id 5b1f17b1804b1-4406ac21897mr78319485e9.33.1745234763686;
-        Mon, 21 Apr 2025 04:26:03 -0700 (PDT)
-Received: from localhost.localdomain ([2a02:c7c:6696:8300:fc11:84a0:480d:20a0])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39efa4207e6sm11450879f8f.7.2025.04.21.04.26.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 21 Apr 2025 04:26:03 -0700 (PDT)
-From: Qasim Ijaz <qasdev00@gmail.com>
-To: nbd@nbd.name,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com,
-	sean.wang@mediatek.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	chui-hao.chiu@mediatek.com,
-	Bo.Jiao@mediatek.com
-Cc: linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH RESEND] wifi: mt76: mt7996: avoid NULL pointer dereference in mt7996_set_monitor()
-Date: Mon, 21 Apr 2025 12:25:44 +0100
-Message-Id: <20250421112544.13430-1-qasdev00@gmail.com>
-X-Mailer: git-send-email 2.39.5
+	id 1u6rMS-00000004M1L-2C28;
+	Mon, 21 Apr 2025 13:39:01 +0000
+X-UUID: f953144c1eb511f0a2405d5ef59ce188-20250421
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=n1S2sn2Zw4m74xU2SnlkSl9s1Nh2/IMvJnx8Ky8v+XQ=;
+	b=XzCOq9SELCXUcm5jceDNgyPbs7vakBgXXHq53M0Cj9S8VArzY7CrPd5C8hvBCvZWjZfGkBFWWyQrAYSKOFXS2ZX5aUakkrAIxC/Xhjya5gQgtzxX7JzJGlPXMn3d6OKLRE/l0okyVMClbPwC6F0/bdMDB7ie60Wj4lW9Wi4Jjxw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:41b74fa9-e1ce-40e9-b8c8-80ad24ae658d,IP:0,UR
+	L:0,TC:0,Content:-5,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-35
+X-CID-META: VersionHash:0ef645f,CLOUDID:9d75d3c7-16da-468a-87f7-8ca8d6b3b9f7,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:2,
+	IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:
+	0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: f953144c1eb511f0a2405d5ef59ce188-20250421
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
+	(envelope-from <sunny.shen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1619342356; Mon, 21 Apr 2025 06:38:56 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Mon, 21 Apr 2025 21:38:53 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Mon, 21 Apr 2025 21:38:53 +0800
+From: Sunny Shen <sunny.shen@mediatek.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 4/5] drm/mediatek: Add MDP-RSZ component support for MT8196
+Date: Mon, 21 Apr 2025 21:38:31 +0800
+Message-ID: <20250421133835.508863-5-sunny.shen@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20250421133835.508863-1-sunny.shen@mediatek.com>
+References: <20250421133835.508863-1-sunny.shen@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250421_042605_739421_6B7A3E63 
-X-CRM114-Status: GOOD (  10.97  )
+X-CRM114-CacheID: sfid-20250421_063900_571615_CF136FCF 
+X-CRM114-Status: GOOD (  13.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,41 +80,109 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: "Jason-JH . Lin" <jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Pin-yen Lin <treapking@chromium.org>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, "Paul
+ Chen --cc=devicetree @ vger . kernel . org" <paul-pl.chen@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Sunny Shen <sunny.shen@mediatek.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The function mt7996_set_monitor() dereferences phy before
-the NULL sanity check.
+Add MDP-RSZ component support for MT8196.
 
-Fix this to avoid NULL pointer dereference by moving the
-dereference after the check.
-
-Fixes: 69d54ce7491d ("wifi: mt76: mt7996: switch to single multi-radio wiphy")
-Signed-off-by: Qasim Ijaz <qasdev00@gmail.com>
+Signed-off-by: Sunny Shen <sunny.shen@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7996/main.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.c | 24 ++++++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.h |  1 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c  |  2 ++
+ 3 files changed, 27 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-index 91c64e3a0860..32846da51cbc 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-@@ -414,11 +414,13 @@ static void mt7996_phy_set_rxfilter(struct mt7996_phy *phy)
+diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
+index 6628f5cd732a..04f13ca3601b 100644
+--- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
+@@ -46,6 +46,9 @@
+ #define DSC_BYPASS				BIT(4)
+ #define DSC_UFOE_SEL				BIT(16)
  
- static void mt7996_set_monitor(struct mt7996_phy *phy, bool enabled)
- {
--	struct mt7996_dev *dev = phy->dev;
-+	struct mt7996_dev *dev;
- 
- 	if (!phy)
- 		return;
- 
-+	dev = phy->dev;
++#define DISP_REG_MDP_RSZ_INPUT_SIZE		0x0010
++#define DISP_REG_MDP_RSZ_OUTPUT_SIZE		0x0014
 +
- 	if (enabled == !(phy->rxfilter & MT_WF_RFCR_DROP_OTHER_UC))
- 		return;
+ #define DISP_REG_OD_EN				0x0000
+ #define DISP_REG_OD_CFG				0x0020
+ #define OD_RELAYMODE				BIT(0)
+@@ -235,6 +238,19 @@ static void mtk_od_start(struct device *dev)
+ 	writel(1, priv->regs + DISP_REG_OD_EN);
+ }
+ 
++static void mtk_mdp_rsz_config(struct device *dev, unsigned int w,
++			       unsigned int h, unsigned int vrefresh,
++			       unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
++{
++	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
++
++	/* Set size = 0 for bypass mode */
++	mtk_ddp_write(cmdq_pkt, 0, &priv->cmdq_reg, priv->regs,
++		      DISP_REG_MDP_RSZ_INPUT_SIZE);
++	mtk_ddp_write(cmdq_pkt, 0, &priv->cmdq_reg, priv->regs,
++		      DISP_REG_MDP_RSZ_OUTPUT_SIZE);
++}
++
+ static void mtk_postmask_config(struct device *dev, unsigned int w,
+ 				unsigned int h, unsigned int vrefresh,
+ 				unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
+@@ -393,6 +409,12 @@ static const struct mtk_ddp_comp_funcs ddp_ovlsys_adaptor = {
+ 	.get_num_formats = mtk_ovlsys_adaptor_get_num_formats,
+ };
+ 
++static const struct mtk_ddp_comp_funcs ddp_mdp_rsz = {
++	.clk_enable = mtk_ddp_clk_enable,
++	.clk_disable = mtk_ddp_clk_disable,
++	.config = mtk_mdp_rsz_config,
++};
++
+ static const struct mtk_ddp_comp_funcs ddp_postmask = {
+ 	.clk_enable = mtk_ddp_clk_enable,
+ 	.clk_disable = mtk_ddp_clk_disable,
+@@ -456,6 +478,7 @@ static const char * const mtk_ddp_comp_stem[MTK_DDP_COMP_TYPE_MAX] = {
+ 	[MTK_DISP_DITHER] = "dither",
+ 	[MTK_DISP_DSC] = "dsc",
+ 	[MTK_DISP_GAMMA] = "gamma",
++	[MTK_DISP_MDP_RSZ] = "mdp-rsz",
+ 	[MTK_DISP_MERGE] = "merge",
+ 	[MTK_DISP_MUTEX] = "mutex",
+ 	[MTK_DISP_OD] = "od",
+@@ -515,6 +538,7 @@ static const struct mtk_ddp_comp_match mtk_ddp_matches[DDP_COMPONENT_DRM_ID_MAX]
+ 	[DDP_COMPONENT_DSI2]		= { MTK_DSI,			2, &ddp_dsi },
+ 	[DDP_COMPONENT_DSI3]		= { MTK_DSI,			3, &ddp_dsi },
+ 	[DDP_COMPONENT_GAMMA]		= { MTK_DISP_GAMMA,		0, &ddp_gamma },
++	[DDP_COMPONENT_MDP_RSZ0]	= { MTK_DISP_MDP_RSZ,		0, &ddp_mdp_rsz},
+ 	[DDP_COMPONENT_MERGE0]		= { MTK_DISP_MERGE,		0, &ddp_merge },
+ 	[DDP_COMPONENT_MERGE1]		= { MTK_DISP_MERGE,		1, &ddp_merge },
+ 	[DDP_COMPONENT_MERGE2]		= { MTK_DISP_MERGE,		2, &ddp_merge },
+diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
+index badb42bd4f7c..87f573fcc903 100644
+--- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
++++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
+@@ -36,6 +36,7 @@ enum mtk_ddp_comp_type {
+ 	MTK_DISP_OVLSYS_ADAPTOR,
+ 	MTK_DISP_OVL_2L,
+ 	MTK_DISP_OVL_ADAPTOR,
++	MTK_DISP_MDP_RSZ,
+ 	MTK_DISP_POSTMASK,
+ 	MTK_DISP_PWM,
+ 	MTK_DISP_RDMA,
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 70a7e6d06d4f..aa7eec1fc7e6 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -975,6 +975,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+ 	  .data = (void *)MTK_DSI },
+ 	{ .compatible = "mediatek,mt8188-dsi",
+ 	  .data = (void *)MTK_DSI },
++	{ .compatible = "mediatek,mt8196-mdp-rsz",
++	  .data = (void *)MTK_DISP_MDP_RSZ },
+ 	{ }
+ };
  
 -- 
-2.39.5
+2.45.2
 
 
