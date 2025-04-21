@@ -4,95 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15FD1C369AB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Apr 2025 10:30:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3293C369AB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Apr 2025 11:20:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JlRUONHPgdRG0yBjPS5/nMKjk95rCFAaXubE+yQQ9K0=; b=YONnyecUxXKc3KMRQCApbhFDn8
-	i0PQfJ88ByxXA+Wme93lLIf2Jfr6KCv7UQ6aqy/hLg3hqduSFk9oHZHagmP7UgxIoidRvKMTIm3wI
-	D/Nq1NW8fRz8ymdNbxRUugDtb8w+4Zc5e3CebnVnPhxrvMYQq9YuXij5+7ZRZLgbAUkzw08nDuy7N
-	Di+a8xYBhgV5CNQLqz7erdKTP0gzEpKajj7nX3ZOLwAKKl8jhIB1g9/RS0/0VKpgv+2afW6PRUTci
-	MTXRCds/0xmF1jfKJCmc5zY9aPUt6MdruxtoPtx4NJFEJ1pO4TWA/V9h9z/9MgGmuiOP4ytYlnuC+
-	lfK+eREw==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=YcOUVWVG1AAUU/kF4IJvSl+9zDVrwqBtFVUW2rq0rjY=; b=etxdu3Si1lIxMg8SPwqi8xez5d
+	drQgjMyX5Sp++bCf6FUe4Yz2exlmm0rcGomMFDY6co1KXykmW735j+S7sU64ykNos4X1Xf7HAR+CP
+	rcRHmqco2UZpKmGmP0VvY8DKRVYwRnL1ZgaTi4UPW4Xhikm1eHO0csQLvUwKZUj8cefDES+NsogjU
+	08ryiSw/9orXsLta8ILhJ5iBsAqEhnmYk5o/kRJ7w7Rl0MHGkRHrOKVmQx8miWGY9CQBhOcDTKG4e
+	qEDftEoDf3jLPbWSzYZ4DrXQ1pVZgxCAPghNoXWYIIM2vUWp9fKP987grGddW5mjct9LWCD/nNJDa
+	+PWtu5gg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u6oPm-000000046FY-0FiZ;
-	Mon, 21 Apr 2025 10:30:14 +0000
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+	id 1u6pCk-00000004BXH-2mYC;
+	Mon, 21 Apr 2025 11:20:50 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u6o9b-000000044DM-1LtY
-	for linux-mediatek@lists.infradead.org;
-	Mon, 21 Apr 2025 10:13:32 +0000
-Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-2240b4de12bso55715535ad.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 21 Apr 2025 03:13:31 -0700 (PDT)
+	id 1u6p68-00000004AuR-2OJI;
+	Mon, 21 Apr 2025 11:14:01 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-43cfdc2c8c9so21775745e9.2;
+        Mon, 21 Apr 2025 04:13:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1745230411; x=1745835211; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=JlRUONHPgdRG0yBjPS5/nMKjk95rCFAaXubE+yQQ9K0=;
-        b=GIJ/Svha4Zr+vaQjx42Ifa2gDpeoKSFy6eWniTSiLZlmnu+uupYhpahkvxcbsK3tHJ
-         cvkkNkVScdTORt+eBHckFq/C3tk7xPz9/3WVl0HhLyGUkp4UtwxASsimqjjTwcyJPz5l
-         stxkdUCFQCjBnzVSPT2Iue3mCLMl9LqCaAQbE=
+        d=gmail.com; s=20230601; t=1745234038; x=1745838838; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=YcOUVWVG1AAUU/kF4IJvSl+9zDVrwqBtFVUW2rq0rjY=;
+        b=YDUoL9uyYSNMQrKymjpaMDOvUHGMXdJXWnJxZRvWKMeEOkLYTuQM6mosRnkMzYEU0X
+         z5/6jonYt/ir3zMZcgrTo5nl2cEiuwlMW2gqAB4IKYD4hPVaDRh/ykeS8rXCis7yQ02f
+         CFCrqit3ft1oeh0SD7iAnVlXEgeXcThGVRRMWzFSrWME8acjT/fmpACCnRmX0zkS6YaE
+         1Nu2Xi0ze4tSoNTLyhf0mNYWd8mTZPl35bIedaso1nSe10Fq49tBIaTZH4eJmEUD+jId
+         sKJaH10HV9+7sj1ETL6wliPWXzhit6cOd8c+vYrRMUsBNPBpx6nwAmj2/hXON/8Oy/6/
+         NFKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745230411; x=1745835211;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=JlRUONHPgdRG0yBjPS5/nMKjk95rCFAaXubE+yQQ9K0=;
-        b=oO8Q8G6hPP7vZRo6mdqo2XPNcV9zcG4/KmRSRqt3gDXGVIDJfWxORlziILIYArzjde
-         pIBxT09bF9Y0giedgK2+3PlBShFmFca7CNwAbRcLBCUUsHYNkoOUy+b4o9vQoedZ3n+E
-         OrIyIGkCKj4AjmPH0WeOwgZorRjuAnhpYWxrZVtQCKCrgrCL+TWRhvqYzOWA+zrsMXis
-         PS5W2xHNvdTRW1n+oT0OHJGcDkOdfuKeGwjcgPUAnemv+EbXA3tbrFzUeI/IZxb8XwM2
-         ywgq9gQNT28C7umbT+noobCvVlXm06v9HpW/CJ6+wXmi3X7wc2DbQgDpUhTRKylV96ak
-         29Ow==
-X-Forwarded-Encrypted: i=1; AJvYcCUW4RXFrjCXKdcXWEdB1kEC2UB1syAy8aZz988X/la70IRV238DdEyj/IaQa6HgfO91Nwm54iLDWHPcZw7aWQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyxrZR6YhQeJ1AMtYSOmASqpn4ck+t/c/B/OQZ5T/wZBqt5h4gR
-	i5bpUXj5ECzSxXBk9cQqUGZkqkInKWbA3HjRdzjzxeQ1YP//EcfPzB0iLam5Tg==
-X-Gm-Gg: ASbGncvETfmBd8DmzqXvQm6CLCcXbkkmPR5vxcGihBlrI45DLScRcGyN3iXO8cGEHfk
-	duagKdFdFhO4aQRTv7To69cldtMGd3xxVM496ac74wdjf6RYkOZbNUpGs/LPnxSiNArIHw5//vA
-	tS1tm/ZE2qEEdkrcHL8r857mHlqpivs/DkdcntaZzBk9dI0TxAKVMSiEQjoGJBValn/RFBpt8qV
-	VCEKqKYGy39sfQBshEJxq5n6Y1rfxY5YAUP9+havnu3cvdUK8mO/ZiXaWWvz6Swq3f2D3ajPD3F
-	fbszauyfMgn9Co0aO/8NvD/Ok0kU3fcr97WwKaxRJqzpmIH2b9u6J3dgkoU=
-X-Google-Smtp-Source: AGHT+IGaSj2NjUkLJYtvrXbaniU4ZUkVXBRJQywqY5KHy1I4U9ywfY/tOoiirvNsMeMMe1Zel8Bsug==
-X-Received: by 2002:a17:902:ce86:b0:220:c143:90a0 with SMTP id d9443c01a7336-22c535a7254mr159468475ad.24.1745230410702;
-        Mon, 21 Apr 2025 03:13:30 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:7633:f42a:d31d:3f9c])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22d78db8b04sm38985205ad.238.2025.04.21.03.13.27
+        d=1e100.net; s=20230601; t=1745234038; x=1745838838;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=YcOUVWVG1AAUU/kF4IJvSl+9zDVrwqBtFVUW2rq0rjY=;
+        b=V2z5XvrJffOu7XXmbOpGzQYp2nfaAE9mJHFLnI+zHa5vZUhqtCc3jRqtJIKtd5T9yM
+         si2mB4+oe7w29NqU3ue10BpYvEncnbycL5hcBTQC6loDO9GDIf7fy6v+ayw2Vpw/9vUB
+         K/yIWl5kONo02grUYpNIvUpKTLZ2nKkJ3cvqfB05+JRpqh7bDLRKxP2nxyEgz1tCFHGE
+         x3guqqOuxXdksjVBk4Qwhavo5O7EakocUsY6iht0UayGd1fELHLQ4HgSmPDR2YgmTUBJ
+         sQGWEq0TBfw7hjvj2laBEL/CmEYTSudLkDnL90Vgd8DdKbHuznEX+lBnrV6Bq5fn/cc0
+         IQlA==
+X-Forwarded-Encrypted: i=1; AJvYcCXODQ1gO72gcMFzxjzqqjCH55qwIYlIYBRKTMjzHJLfjWZTqs8TxlkRKhcABckAEfgmgiBm8AqW2qVzO4Hb2vOx@lists.infradead.org, AJvYcCXszvwxF1YOjj1i6CuzMycMCt6zAtTTokiz9QHjKFVF7W/oe7Pr5EwDssGBrojWOhtKynOZ1aHKQ7Vk74Us3AI=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx/BuPkbhEiAskuNKUw3zVI4kONNo3PfScUSGmfFaSvX35KkMFb
+	seZTmh1DfiCyVBYaSTca9ISvtjetKG/UDhKDM9wLyDtLAYLg+ziM
+X-Gm-Gg: ASbGncs32WYiB0oLsYtXjaSBf4jWIpbYW6uqMOvT8N2XCzZQvvxlEUegA3fNjQM0Zza
+	D0XzXzAbDkiDJBD2tXVc/ajbU2Oz8fCMxOZXhOBZxctPxANDYWu07WxF7WGKzxyEE98XKVWaN7q
+	an7edzpCzEcY+JnD2Uo2DEVTniqPfTQA5WWY93Dyo9lc/VeGlfwrZBwZBMKCQcBiQY7idupuomZ
+	xcsAJ3tn314CiI2IInsT+YHVtf3rh9+4dUjqJAy5HnHCN7aAf0+X1IvTIgeFX1c7oJaeVwaZb8E
+	P50xT89gjkhtCJ9MGN+GYxwcVvBdKVf3QuGwTeDXf7kjU6Hdeh3rengrMGYa+JGLrg==
+X-Google-Smtp-Source: AGHT+IGG5pvhTvxUXN9hKzMCBUViCI/TKQPbUz9Hd/bpbRnURHd9ELf6tKypqvzOgo2WE7hDsvf+gw==
+X-Received: by 2002:a05:600c:358d:b0:43d:7588:6687 with SMTP id 5b1f17b1804b1-4406ab96945mr102781655e9.12.1745234038247;
+        Mon, 21 Apr 2025 04:13:58 -0700 (PDT)
+Received: from localhost.localdomain ([2a02:c7c:6696:8300:fc11:84a0:480d:20a0])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39efa4330d8sm11848418f8f.33.2025.04.21.04.13.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 21 Apr 2025 03:13:30 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	devicetree@vger.kernel.org,
+        Mon, 21 Apr 2025 04:13:57 -0700 (PDT)
+From: Qasim Ijaz <qasdev00@gmail.com>
+To: nbd@nbd.name,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	chui-hao.chiu@mediatek.com,
+	Bo.Jiao@mediatek.com
+Cc: linux-wireless@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	chrome-platform@lists.linux.dev,
-	linux-input@vger.kernel.org,
-	Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH v2 8/8] platform/chrome: of_hw_prober: Support touchscreen probing on Squirtle
-Date: Mon, 21 Apr 2025 18:12:46 +0800
-Message-ID: <20250421101248.426929-9-wenst@chromium.org>
-X-Mailer: git-send-email 2.49.0.805.g082f7c87e0-goog
-In-Reply-To: <20250421101248.426929-1-wenst@chromium.org>
-References: <20250421101248.426929-1-wenst@chromium.org>
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH RESEND] wifi: mt76: mt7996: avoid null deref in mt7996_stop_phy()
+Date: Mon, 21 Apr 2025 12:13:44 +0100
+Message-Id: <20250421111344.11484-1-qasdev00@gmail.com>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250421_031331_360014_BC96F03D 
-X-CRM114-Status: GOOD (  11.47  )
+X-CRM114-CacheID: sfid-20250421_041400_608674_710297DA 
+X-CRM114-Status: GOOD (  11.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,56 +103,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT8186 Squirtle Chromebook is built with one of two possible
-touchscreens. Let the prober probe for them.
+In mt7996_stop_phy() the mt7996_phy structure is 
+dereferenced before the null sanity check which could 
+lead to a null deref.
 
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+Fix by moving the dereference operation after the 
+sanity check.
+
+Fixes: 69d54ce7491d ("wifi: mt76: mt7996: switch to single multi-radio wiphy")
+Signed-off-by: Qasim Ijaz <qasdev00@gmail.com>
 ---
- drivers/platform/chrome/chromeos_of_hw_prober.c | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt7996/main.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/platform/chrome/chromeos_of_hw_prober.c b/drivers/platform/chrome/chromeos_of_hw_prober.c
-index 10dbaede0541..f3cd612e5584 100644
---- a/drivers/platform/chrome/chromeos_of_hw_prober.c
-+++ b/drivers/platform/chrome/chromeos_of_hw_prober.c
-@@ -59,6 +59,7 @@ static int chromeos_i2c_component_prober(struct device *dev, const void *_data)
- DEFINE_CHROMEOS_I2C_PROBE_DATA_DUMB_BY_TYPE(touchscreen);
- DEFINE_CHROMEOS_I2C_PROBE_DATA_DUMB_BY_TYPE(trackpad);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+index 66575698aef1..88e013577c0d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+@@ -68,11 +68,13 @@ static int mt7996_start(struct ieee80211_hw *hw)
  
-+DEFINE_CHROMEOS_I2C_PROBE_CFG_SIMPLE_BY_TYPE(touchscreen);
- DEFINE_CHROMEOS_I2C_PROBE_CFG_SIMPLE_BY_TYPE(trackpad);
+ static void mt7996_stop_phy(struct mt7996_phy *phy)
+ {
+-	struct mt7996_dev *dev = phy->dev;
++	struct mt7996_dev *dev;
  
- static const struct chromeos_i2c_probe_data chromeos_i2c_probe_hana_trackpad = {
-@@ -76,6 +77,17 @@ static const struct chromeos_i2c_probe_data chromeos_i2c_probe_hana_trackpad = {
- 	},
- };
+ 	if (!phy || !test_bit(MT76_STATE_RUNNING, &phy->mt76->state))
+ 		return;
  
-+static const struct chromeos_i2c_probe_data chromeos_i2c_probe_squirtle_touchscreen = {
-+	.cfg = &chromeos_i2c_probe_simple_touchscreen_cfg,
-+	.opts = &(const struct i2c_of_probe_simple_opts) {
-+		.res_node_compatible = "elan,ekth6a12nay",
-+		.supply_name = "vcc33",
-+		.gpio_name = "reset",
-+		.post_power_on_delay_ms = 10,
-+		.post_gpio_config_delay_ms = 300,
-+	},
-+};
++	dev = phy->dev;
 +
- static const struct hw_prober_entry hw_prober_platforms[] = {
- 	{
- 		.compatible = "google,hana",
-@@ -93,6 +105,10 @@ static const struct hw_prober_entry hw_prober_platforms[] = {
- 		.compatible = "google,squirtle",
- 		.prober = chromeos_i2c_component_prober,
- 		.data = &chromeos_i2c_probe_dumb_trackpad,
-+	}, {
-+		.compatible = "google,squirtle",
-+		.prober = chromeos_i2c_component_prober,
-+		.data = &chromeos_i2c_probe_squirtle_touchscreen,
- 	}, {
- 		.compatible = "google,steelix",
- 		.prober = chromeos_i2c_component_prober,
+ 	cancel_delayed_work_sync(&phy->mt76->mac_work);
+ 
+ 	mutex_lock(&dev->mt76.mutex);
 -- 
-2.49.0.805.g082f7c87e0-goog
+2.39.5
 
 
