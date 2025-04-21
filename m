@@ -4,63 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC87DC369AB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Apr 2025 17:11:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F418C369D3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Apr 2025 19:18:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8bR4w4w+rvs6ov0KHOAszI5SgWh2IY/Tx10eFtuUhFY=; b=MPzW1TrLP2UyWUjytg2p1XP8gx
-	SzQotMHOJKaNVgkFZfdbsJ4JtzKcYy6qobILhKdgY1YW3RYL8URfszX4N1t0ZklgkAtCKeDTUEmh6
-	9e96HY07aPrcU/S3lMaLXveesqcY3RGAupiIDR+heJ/cDKGd2tKCrCE8W2xNpfo1D7Pk2+G4Ht2Kh
-	88iJBWicn9X19d8bXmk2o1Bi7q3qNSzwIhCD7H7Jhz2nbXEHML5HiMP1vPBV0Btu3rHuUI49TMCQD
-	50t4dBGqcJzsBhcOaKkQkylsZmmd7fyaRVMWBSvidl9nDkykLy8XkQv267QViIL6v2Ng5JapALJtd
-	imGN1xvg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=utVDdpxrgjnfN0h4lobydcS8PzzalhnEHxW9nCf1r/E=; b=YTDPhSH+Dek7SGc+Fvt5fedWcR
+	mzPuAxDG6aO/wI4pT1ZdkpI+PB56QPnB04p3ZSkCKiavlBFp/Belif5IYH/zVmuS88JAwmlE7Yc7Q
+	AY7XLttUBrZOdX4Qosl3jCto9bi0ZgRU2rkC4RngqehhEz6sJom7xM2KNsnaNTInDKCSS2bObX9dD
+	1lHxgxQx4o2SRKsrco+Xh1U9BVJ5gsXWPRrzZdt+LMpPJIJIACa0KeSD4P1DiytBod4qFYZcn0Cyl
+	uPofDbz8+t526+I3LKRQGPZBaStCxvubisCwETeWOkMNyReN513QS3Jj/TDu+VOtTmyjqdow2ffKt
+	h6Ksa2Xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u6ufa-00000004nxB-2Cwi;
-	Mon, 21 Apr 2025 17:10:58 +0000
-Received: from mail.cjdns.fr ([5.135.140.105])
+	id 1u6wfF-000000050zO-45lU;
+	Mon, 21 Apr 2025 19:18:45 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u6ufW-00000004nwg-430x
+	id 1u6wdM-000000050i5-3129
 	for linux-mediatek@lists.infradead.org;
-	Mon, 21 Apr 2025 17:10:56 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id CADBF754A0;
-	Mon, 21 Apr 2025 19:10:46 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
-	t=1745255449; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=8bR4w4w+rvs6ov0KHOAszI5SgWh2IY/Tx10eFtuUhFY=;
-	b=pb6oPNTAHpmYwpWBxw/xka0wMMt+qA153aFarogn5dcQRC9sjFlsZMNifDU3mhXStj+BbG
-	I7TZ2leGa622+vjq2di4gTf2yqDiHFXK5/MEuD6yOa2VdWd581QsCNU2f1zQwmz4Tykh4q
-	mcmyBrw1gmW2/UDYMllnN4/tbAxXKKhkFZddOAn0AA/JUXO1wh++hZQHogoyXl7TytBsEa
-	yIrm33kXppUPwGajaVzHX5+iu8qs/8XGX8ghr2nEjgdWez20EQ53p/obg6bEgx3pkGIXBH
-	OlVXryFAc/MNKEy5S9Dsgu6lSNoiHhaYWU3FwR2hdz1NCBqdvcOykTJSdoO21w==
-Message-ID: <0758a293-abf6-4b98-86c5-2f11fad8c9ca@cjdns.fr>
-Date: Mon, 21 Apr 2025 19:10:45 +0200
+	Mon, 21 Apr 2025 19:16:50 +0000
+Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 53LIgAX7013828
+	for <linux-mediatek@lists.infradead.org>; Mon, 21 Apr 2025 19:16:47 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to; s=qcppdkim1; bh=utVDdpxrgjnfN0h4lobydcS8
+	PzzalhnEHxW9nCf1r/E=; b=MY6S0EQskGWy8rz4Cee7XeMpzfOvMJ93mAyoiOC1
+	WquXJufkxDsZ7wa6jAPKbLyvquclJ2I33dS4ZoMvAQE+47H1EB+OBp2s/ZvRKWRD
+	VTogoGE9ZOLR8NVTZFOD64meJPRApGvUwhU0S6J05yTzRVmggxafSMA5JQhZBXnM
+	gFU/Poi00CG0bNrRtNV/mulpZJSdpKQhZn/Qdl+63ore+tOnYW+O+b3pd1RtM+ZV
+	eS5d/vYgtrnBpMjrUxD56y7uCbZiJq80CK+3Z3i0zakN8Touqbur09T0Worq5oJa
+	4VSq2zvd4D1Oj/5GhIOK1rY3jmmIpaXuxLwkX3Ps0xoGTg==
+Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com [209.85.222.200])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4643wwn5gg-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Mon, 21 Apr 2025 19:16:47 +0000 (GMT)
+Received: by mail-qk1-f200.google.com with SMTP id af79cd13be357-7c5d9d8890fso947894985a.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 21 Apr 2025 12:16:47 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1745263007; x=1745867807;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=utVDdpxrgjnfN0h4lobydcS8PzzalhnEHxW9nCf1r/E=;
+        b=EdFyn1hHBsEqbLpdflGP5xc23vqFjw567YT3AnbFEF2BGwUDf70Q9Uc60S5paSxZpc
+         //K5ko6fpSqxsBR0UrM3DDbBmAKJQQmuK+Gn/hqhCu10Yy7UJQIsyK9qh1jAI1qTnkjm
+         KJrOHTX4FYHDxS48yNCe2q05zOXSiP9EKFVQh0EluDPjGkll+7VnPMv2rSPK+MxY7tlr
+         OCI5KV/QKzvIl7Po1RiRrQl4IDoAKNOD4NG5s6n+6gJKhBSZkX6OzQFtEpb5bt2cJwP4
+         Y2R2kdUOLBpmTxis7XkeXOjLERk9Z5p23+mKLxx8LZ/vkjXAfVrCPHXr1zHNjTrtb3xQ
+         bHpQ==
+X-Forwarded-Encrypted: i=1; AJvYcCU1yls1R+Rnwwl1o+iZ3M2yuPYLg3TLWKrqA2tR4eEacTEvNqy7j8MV6ICPu1yGWDsu9qwTuAEK7UPN/QQsuw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwzJYgfqLS/QkSa3d6kEfDDocZw8ZTRenvjDDUc/DHyNuZj6gZJ
+	FTYC2O/uAvkDsSG5OXRh8G8cKnfqhEVRRVpmL8Z3CMsZDzqtxhX0PAz2+xbDH6bgTRtbw844DEt
+	3pTZ8CdlCJat4B9oQ+Y9cutz0yHuCjgxbi1TSQq88mGgiYhrhlZ2qEC/EtyCaOW5Ij0e53RM=
+X-Gm-Gg: ASbGncsstNxxXUcBwqix96ZYy0QHfiWOlvjiwcK7JBazW2NaoEbyPPNKplRPFT06D/P
+	zvP1by8yyB8KP5Yf+cdDI/QiIeArmbdcFpk64Dic7RNgQmegiTCyp2t0ptSIYX6Kpsq9pocWaHl
+	Zn3nVm6RdSMGppNbiZb5jOHvGt3ChJm8bzCMUK9PFArt0UOj6Q4CyQ/F4gNOl+sP0JZvZNG861L
+	BkkAiHCnZ7IiZWZZ/dbkrWVN5+uvkp2q7ZN9QyjkeWG8+q51fUpX6no3gZLdm3rmyHHlOc9klfx
+	670YD5ALAWrOcKoz8Yuanqc1fHUx2NAZJ1AYOKjZhPADcpVUP0FZlLAWjqGI2pVDCyzTkwu4xjE
+	=
+X-Received: by 2002:a05:620a:3707:b0:7c9:142d:3c66 with SMTP id af79cd13be357-7c92565eeb9mr2626998985a.0.1745263006765;
+        Mon, 21 Apr 2025 12:16:46 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEwsaWGw4uh2u7lX7Z9kxeE1gU+aUICLwSlmuNpDpcbTieu7XF0j4yvIIDpkValfcGqijWYKA==
+X-Received: by 2002:a05:620a:3707:b0:7c9:142d:3c66 with SMTP id af79cd13be357-7c92565eeb9mr2626993785a.0.1745263006368;
+        Mon, 21 Apr 2025 12:16:46 -0700 (PDT)
+Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--7a1.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::7a1])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-54d6e5242a2sm1005685e87.2.2025.04.21.12.16.44
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 21 Apr 2025 12:16:45 -0700 (PDT)
+Date: Mon, 21 Apr 2025 22:16:43 +0300
+From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
+        simona@ffwll.ch, maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+        tzimmermann@suse.de, robh@kernel.org, krzk+dt@kernel.org,
+        conor+dt@kernel.org, matthias.bgg@gmail.com, ck.hu@mediatek.com,
+        jitao.shi@mediatek.com, jie.qiu@mediatek.com, junzhi.zhao@mediatek.com,
+        dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+        devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
+        dmitry.baryshkov@linaro.org, lewis.liao@mediatek.com,
+        ives.chenjh@mediatek.com, tommyyl.chen@mediatek.com,
+        jason-jh.lin@mediatek.com
+Subject: Re: [PATCH v9 22/23] drm/mediatek: Introduce HDMI/DDC v2 for
+ MT8195/MT8188
+Message-ID: <aestmu2rblcrcz77tuqgkimaj4stg24skyp2avdstahwr3aa3i@cfv5ov2qjcf6>
+References: <20250415104321.51149-1-angelogioacchino.delregno@collabora.com>
+ <20250415104321.51149-23-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird Beta
-Subject: Re: [PATCH v3 05/10] clocksource/drivers: Add EcoNet Timer HPT driver
-To: linux-mips@vger.kernel.org
-Cc: Thomas Gleixner <tglx@linutronix.de>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, benjamin.larsson@genexis.eu,
- linux-mediatek@lists.infradead.org
-References: <20250330170306.2584136-1-cjd@cjdns.fr>
- <20250330170306.2584136-6-cjd@cjdns.fr>
-Content-Language: en-US
-From: Caleb James DeLisle <cjd@cjdns.fr>
-In-Reply-To: <20250330170306.2584136-6-cjd@cjdns.fr>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Last-TLS-Session-Version: TLSv1.3
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250415104321.51149-23-angelogioacchino.delregno@collabora.com>
+X-Authority-Analysis: v=2.4 cv=IpEecK/g c=1 sm=1 tr=0 ts=6806999f cx=c_pps a=hnmNkyzTK/kJ09Xio7VxxA==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10 a=XR8D0OoHHMoA:10 a=mpaa-ttXAAAA:8 a=QX4gbG5DAAAA:8 a=VUQ5xn941hO9jOC13tcA:9 a=CjuIK1q_8ugA:10
+ a=PEH46H7Ffwr30OY-TuGO:22 a=AbAUZ8qAyYyZVLSsDulk:22
+X-Proofpoint-GUID: ve2ngHVfsieq3pYBCaSSK7rFuXz9KrgM
+X-Proofpoint-ORIG-GUID: ve2ngHVfsieq3pYBCaSSK7rFuXz9KrgM
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1095,Hydra:6.0.680,FMLib:17.12.68.34
+ definitions=2025-04-21_09,2025-04-21_02,2024-11-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowpriorityscore=0
+ spamscore=0 adultscore=0 clxscore=1015 bulkscore=0 malwarescore=0
+ suspectscore=0 priorityscore=1501 mlxscore=0 mlxlogscore=804
+ impostorscore=0 phishscore=0 classifier=spam authscore=0 authtc=n/a
+ authcc= route=outbound adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2502280000 definitions=main-2504210150
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250421_101055_416628_E3D87666 
-X-CRM114-Status: GOOD (  30.46  )
+X-CRM114-CacheID: sfid-20250421_121648_879280_6432958E 
+X-CRM114-Status: GOOD (  35.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,287 +129,195 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On 30/03/2025 19:03, Caleb James DeLisle wrote:
-> Introduce a clocksource driver for the so-called high-precision timer (HPT)
-> in the EcoNet EN751221 MIPS SoC.
->
-> Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
-
-
-Hello all,
-
-It's been a couple of weeks and I wanted to check if this is good and/or
-if there's anything I can do to help make the process easier.
-
-Thanks to Tglx, Rob, Krzysztof, and Sergey for your time reviewing my code.
-In v3 I updated this patch in accordance with feedback I received on the
-interrupt controller. Unless there's advice to do otherwise, I can resend
-the remaining patches later on this week.
-
-Thanks,
-
-Caleb
-
-
+On Tue, Apr 15, 2025 at 12:43:20PM +0200, AngeloGioacchino Del Regno wrote:
+> Add support for the newer HDMI-TX (Encoder) v2 and DDC v2 IPs
+> found in MediaTek's MT8195, MT8188 SoC and their variants, and
+> including support for display modes up to 4k60 and for HDMI
+> Audio, as per the HDMI 2.0 spec.
+> 
+> HDCP and CEC functionalities are also supported by this hardware,
+> but are not included in this commit and that also poses a slight
+> difference between the V2 and V1 controllers in how they handle
+> Hotplug Detection (HPD).
+> 
+> While the v1 controller was using the CEC controller to check
+> HDMI cable connection and disconnection, in this driver the v2
+> one does not.
+> 
+> This is due to the fact that on parts with v2 designs, like the
+> MT8195 SoC, there is one CEC controller shared between the HDMI
+> Transmitter (HDMI-TX) and Receiver (HDMI-RX): before eventually
+> adding support to use the CEC HW to wake up the HDMI controllers
+> it is necessary to have support for one TX, one RX *and* for both
+> at the same time.
+> 
+> Reviewed-by: CK Hu <ck.hu@mediatek.com>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->   drivers/clocksource/Kconfig                 |   8 +
->   drivers/clocksource/Makefile                |   1 +
->   drivers/clocksource/timer-econet-en751221.c | 216 ++++++++++++++++++++
->   3 files changed, 225 insertions(+)
->   create mode 100644 drivers/clocksource/timer-econet-en751221.c
->
-> diff --git a/drivers/clocksource/Kconfig b/drivers/clocksource/Kconfig
-> index 487c85259967..976afb0b2312 100644
-> --- a/drivers/clocksource/Kconfig
-> +++ b/drivers/clocksource/Kconfig
-> @@ -73,6 +73,14 @@ config DW_APB_TIMER_OF
->   	select DW_APB_TIMER
->   	select TIMER_OF
->   
-> +config ECONET_EN751221_TIMER
-> +	bool "EcoNet EN751221 High Precision Timer" if COMPILE_TEST
-> +	depends on HAS_IOMEM
-> +	select CLKSRC_MMIO
-> +	select TIMER_OF
-> +	help
-> +	  Support for CPU timer found on EcoNet MIPS based SoCs.
+>  drivers/gpu/drm/mediatek/Kconfig            |    7 +
+>  drivers/gpu/drm/mediatek/Makefile           |    2 +
+>  drivers/gpu/drm/mediatek/mtk_hdmi_common.c  |    4 +
+>  drivers/gpu/drm/mediatek/mtk_hdmi_common.h  |    9 +
+>  drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c  |  385 +++++
+>  drivers/gpu/drm/mediatek/mtk_hdmi_regs_v2.h |  263 ++++
+>  drivers/gpu/drm/mediatek/mtk_hdmi_v2.c      | 1396 +++++++++++++++++++
+>  7 files changed, 2066 insertions(+)
+>  create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c
+>  create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_regs_v2.h
+>  create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
+> 
 > +
->   config FTTMR010_TIMER
->   	bool "Faraday Technology timer driver" if COMPILE_TEST
->   	depends on HAS_IOMEM
-> diff --git a/drivers/clocksource/Makefile b/drivers/clocksource/Makefile
-> index 43ef16a4efa6..d2998601eda5 100644
-> --- a/drivers/clocksource/Makefile
-> +++ b/drivers/clocksource/Makefile
-> @@ -17,6 +17,7 @@ obj-$(CONFIG_CLKBLD_I8253)	+= i8253.o
->   obj-$(CONFIG_CLKSRC_MMIO)	+= mmio.o
->   obj-$(CONFIG_DAVINCI_TIMER)	+= timer-davinci.o
->   obj-$(CONFIG_DIGICOLOR_TIMER)	+= timer-digicolor.o
-> +obj-$(CONFIG_ECONET_EN751221_TIMER)	+= timer-econet-en751221.o
->   obj-$(CONFIG_OMAP_DM_TIMER)	+= timer-ti-dm.o
->   obj-$(CONFIG_OMAP_DM_SYSTIMER)	+= timer-ti-dm-systimer.o
->   obj-$(CONFIG_DW_APB_TIMER)	+= dw_apb_timer.o
-> diff --git a/drivers/clocksource/timer-econet-en751221.c b/drivers/clocksource/timer-econet-en751221.c
-> new file mode 100644
-> index 000000000000..9cfeead09377
-> --- /dev/null
-> +++ b/drivers/clocksource/timer-econet-en751221.c
-> @@ -0,0 +1,216 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Timer present on EcoNet EN75xx MIPS based SoCs.
-> + *
-> + * Copyright (C) 2025 by Caleb James DeLisle <cjd@cjdns.fr>
-> + */
-> +
-> +#include <linux/io.h>
-> +#include <linux/cpumask.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/clockchips.h>
-> +#include <linux/sched_clock.h>
-> +#include <linux/of.h>
-> +#include <linux/of_irq.h>
-> +#include <linux/of_address.h>
-> +#include <linux/cpuhotplug.h>
-> +#include <linux/clk.h>
-> +
-> +#define ECONET_BITS			32
-> +#define ECONET_MIN_DELTA		0x00001000
-> +#define ECONET_MAX_DELTA		GENMASK(ECONET_BITS - 2, 0)
-> +/* 34Kc hardware has 1 block and 1004Kc has 2. */
-> +#define ECONET_NUM_BLOCKS		DIV_ROUND_UP(NR_CPUS, 2)
-> +
-> +static struct {
-> +	void __iomem	*membase[ECONET_NUM_BLOCKS];
-> +	u32		freq_hz;
-> +} econet_timer __ro_after_init;
-> +
-> +static DEFINE_PER_CPU(struct clock_event_device, econet_timer_pcpu);
-> +
-> +/* Each memory block has 2 timers, the order of registers is:
-> + * CTL, CMR0, CNT0, CMR1, CNT1
-> + */
-> +static inline void __iomem *reg_ctl(u32 timer_n)
+> +static int mtk_hdmi_v2_setup_audio_infoframe(struct mtk_hdmi *hdmi)
 > +{
-> +	return econet_timer.membase[timer_n >> 1];
-> +}
+> +	struct hdmi_codec_params *params = &hdmi->aud_param.codec_params;
+> +	struct hdmi_audio_infoframe frame;
+> +	u8 buffer[14];
+> +	ssize_t ret;
 > +
-> +static inline void __iomem *reg_compare(u32 timer_n)
-> +{
-> +	return econet_timer.membase[timer_n >> 1] + (timer_n & 1) * 0x08 + 0x04;
-> +}
+> +	memcpy(&frame, &params->cea, sizeof(frame));
 > +
-> +static inline void __iomem *reg_count(u32 timer_n)
-> +{
-> +	return econet_timer.membase[timer_n >> 1] + (timer_n & 1) * 0x08 + 0x08;
-> +}
-> +
-> +static inline u32 ctl_bit_enabled(u32 timer_n)
-> +{
-> +	return 1U << (timer_n & 1);
-> +}
-> +
-> +static inline u32 ctl_bit_pending(u32 timer_n)
-> +{
-> +	return 1U << ((timer_n & 1) + 16);
-> +}
-> +
-> +static bool cevt_is_pending(int cpu_id)
-> +{
-> +	return ioread32(reg_ctl(cpu_id)) & ctl_bit_pending(cpu_id);
-> +}
-> +
-> +static irqreturn_t cevt_interrupt(int irq, void *dev_id)
-> +{
-> +	struct clock_event_device *dev = this_cpu_ptr(&econet_timer_pcpu);
-> +	int cpu = cpumask_first(dev->cpumask);
-> +
-> +	if (!cevt_is_pending(cpu)) {
-> +		pr_debug("%s IRQ %d on CPU %d is not pending\n", __func__, irq, cpu);
-> +		return IRQ_NONE;
-> +	}
-> +
-> +	iowrite32(ioread32(reg_count(cpu)), reg_compare(cpu));
-> +	dev->event_handler(dev);
-> +	return IRQ_HANDLED;
-> +}
-> +
-> +static int cevt_set_next_event(ulong delta, struct clock_event_device *dev)
-> +{
-> +	u32 next;
-> +	int cpu;
-> +
-> +	cpu = cpumask_first(dev->cpumask);
-> +	next = ioread32(reg_count(cpu)) + delta;
-> +	iowrite32(next, reg_compare(cpu));
-> +
-> +	if ((s32)(next - ioread32(reg_count(cpu))) < ECONET_MIN_DELTA / 2)
-> +		return -ETIME;
-> +
-> +	return 0;
-> +}
-> +
-> +static int cevt_init_cpu(uint cpu)
-> +{
-> +	struct clock_event_device *cd = &per_cpu(econet_timer_pcpu, cpu);
-> +	u32 reg;
-> +
-> +	pr_info("%s: Setting up clockevent for CPU %d\n", cd->name, cpu);
-> +
-> +	reg = ioread32(reg_ctl(cpu)) | ctl_bit_enabled(cpu);
-> +	iowrite32(reg, reg_ctl(cpu));
-> +
-> +	enable_percpu_irq(cd->irq, IRQ_TYPE_NONE);
-> +
-> +	/* Do this last because it synchronously configures the timer */
-> +	clockevents_config_and_register(
-> +		cd, econet_timer.freq_hz,
-> +		ECONET_MIN_DELTA, ECONET_MAX_DELTA);
-> +
-> +	return 0;
-> +}
-> +
-> +static u64 notrace sched_clock_read(void)
-> +{
-> +	/* Always read from clock zero no matter the CPU */
-> +	return (u64)ioread32(reg_count(0));
-> +}
-> +
-> +/* Init */
-> +
-> +static void __init cevt_dev_init(uint cpu)
-> +{
-> +	iowrite32(0, reg_count(cpu));
-> +	iowrite32(U32_MAX, reg_compare(cpu));
-> +}
-> +
-> +static int __init cevt_init(struct device_node *np)
-> +{
-> +	int i, irq, ret;
-> +
-> +	irq = irq_of_parse_and_map(np, 0);
-> +	if (irq <= 0) {
-> +		pr_err("%pOFn: irq_of_parse_and_map failed", np);
-> +		return -EINVAL;
-> +	}
-> +
-> +	ret = request_percpu_irq(irq, cevt_interrupt, np->name, &econet_timer_pcpu);
-> +
-> +	if (ret < 0) {
-> +		pr_err("%pOFn: IRQ %d setup failed (%d)\n", np, irq, ret);
-> +		goto err_unmap_irq;
-> +	}
-> +
-> +	for_each_possible_cpu(i) {
-> +		struct clock_event_device *cd = &per_cpu(econet_timer_pcpu, i);
-> +
-> +		cd->rating		= 310,
-> +		cd->features		= CLOCK_EVT_FEAT_ONESHOT |
-> +					  CLOCK_EVT_FEAT_C3STOP |
-> +					  CLOCK_EVT_FEAT_PERCPU;
-> +		cd->set_next_event	= cevt_set_next_event;
-> +		cd->irq			= irq;
-> +		cd->cpumask		= cpumask_of(i);
-> +		cd->name		= np->name;
-> +
-> +		cevt_dev_init(i);
-> +	}
-> +
-> +	cpuhp_setup_state(CPUHP_AP_MIPS_GIC_TIMER_STARTING,
-> +			  "clockevents/en75/timer:starting",
-> +			  cevt_init_cpu, NULL);
-> +	return 0;
-> +
-> +err_unmap_irq:
-> +	irq_dispose_mapping(irq);
-> +	return ret;
-> +}
-> +
-> +static int __init timer_init(struct device_node *np)
-> +{
-> +	int num_blocks = DIV_ROUND_UP(num_possible_cpus(), 2);
-> +	struct clk *clk;
-> +	int ret;
-> +
-> +	clk = of_clk_get(np, 0);
-> +	if (IS_ERR(clk)) {
-> +		pr_err("%pOFn: Failed to get CPU clock from DT %ld\n", np, PTR_ERR(clk));
-> +		return PTR_ERR(clk);
-> +	}
-> +
-> +	econet_timer.freq_hz = clk_get_rate(clk);
-> +
-> +	for (int i = 0; i < num_blocks; i++) {
-> +		econet_timer.membase[i] = of_iomap(np, i);
-> +		if (!econet_timer.membase[i]) {
-> +			pr_err("%pOFn: failed to map register [%d]\n", np, i);
-> +			return -ENXIO;
-> +		}
-> +	}
-> +
-> +	/* For clocksource purposes always read clock zero, whatever the CPU */
-> +	ret = clocksource_mmio_init(reg_count(0), np->name,
-> +				    econet_timer.freq_hz, 301, ECONET_BITS,
-> +				    clocksource_mmio_readl_up);
-> +	if (ret) {
-> +		pr_err("%pOFn: clocksource_mmio_init failed: %d", np, ret);
-> +		return ret;
-> +	}
-> +
-> +	ret = cevt_init(np);
+> +	ret = hdmi_audio_infoframe_pack(&frame, buffer, sizeof(buffer));
 > +	if (ret < 0)
 > +		return ret;
+
+This should really be done via
+drm_atomic_helper_connector_hdmi_update_audio_infoframe() or
+drm_atomic_helper_connector_hdmi_clear_audio_infoframe().
+
+Ideally this should come from the .hw_params() / .prepare() calls so
+that you don't need to store the params in the driver data.
+
 > +
-> +	sched_clock_register(sched_clock_read, ECONET_BITS,
-> +			     econet_timer.freq_hz);
-> +
-> +	pr_info("%pOFn: using %u.%03u MHz high precision timer\n", np,
-> +		econet_timer.freq_hz / 1000000,
-> +		(econet_timer.freq_hz / 1000) % 1000);
+> +	mtk_hdmi_v2_hw_write_audio_infoframe(hdmi, buffer);
 > +
 > +	return 0;
 > +}
 > +
-> +TIMER_OF_DECLARE(econet_timer_hpt, "econet,en751221-timer", timer_init);
+> +static inline void mtk_hdmi_v2_hw_gcp_avmute(struct mtk_hdmi *hdmi, bool mute)
+> +{
+> +	u32 val;
+> +
+> +	regmap_read(hdmi->regs, TOP_CFG01, &val);
+> +	val &= ~(CP_CLR_MUTE_EN | CP_SET_MUTE_EN);
+> +
+> +	if (mute) {
+> +		val |= CP_SET_MUTE_EN;
+> +		val &= ~CP_CLR_MUTE_EN;
+> +	} else {
+> +		val |= CP_CLR_MUTE_EN;
+> +		val &= ~CP_SET_MUTE_EN;
+> +	}
+> +	regmap_write(hdmi->regs, TOP_CFG01, val);
+> +
+> +	regmap_set_bits(hdmi->regs, TOP_INFO_RPT, CP_RPT_EN);
+> +	regmap_set_bits(hdmi->regs, TOP_INFO_EN, CP_EN | CP_EN_WR);
+> +}
+> +
+> +static void mtk_hdmi_v2_hw_ncts_enable(struct mtk_hdmi *hdmi, bool enable)
+> +{
+> +	if (enable)
+> +		regmap_set_bits(hdmi->regs, AIP_CTRL, CTS_SW_SEL);
+> +	else
+> +		regmap_clear_bits(hdmi->regs, AIP_CTRL, CTS_SW_SEL);
+> +}
+> +
+> +static void mtk_hdmi_v2_hw_aud_set_channel_status(struct mtk_hdmi *hdmi)
+> +{
+> +	u8 *ch_status = hdmi->aud_param.codec_params.iec.status;
+> +
+> +	/* Only the first 5 to 7 bytes of Channel Status contain useful information */
+> +	regmap_write(hdmi->regs, AIP_I2S_CHST0, mtk_hdmi_v2_format_hw_packet(&ch_status[0], 4));
+> +	regmap_write(hdmi->regs, AIP_I2S_CHST1, mtk_hdmi_v2_format_hw_packet(&ch_status[4], 3));
+> +}
+> +
+> +static void mtk_hdmi_v2_hw_aud_set_ncts(struct mtk_hdmi *hdmi,
+> +				     unsigned int sample_rate,
+> +				     unsigned int clock)
+> +{
+> +	unsigned int n, cts;
+> +
+> +	mtk_hdmi_get_ncts(sample_rate, clock, &n, &cts);
+
+drm_hdmi_acr_get_n_cts() ?
+
+> +
+> +	regmap_write(hdmi->regs, AIP_N_VAL, n);
+> +	regmap_write(hdmi->regs, AIP_CTS_SVAL, cts);
+> +}
+> +
+
+[...]
+
+> +
+> +static int mtk_hdmi_v2_audio_hw_params(struct device *dev, void *data,
+> +				       struct hdmi_codec_daifmt *daifmt,
+> +				       struct hdmi_codec_params *params)
+> +{
+> +	struct mtk_hdmi *hdmi = dev_get_drvdata(dev);
+> +
+> +	if (hdmi->audio_enable) {
+> +		mtk_hdmi_audio_params(hdmi, daifmt, params);
+> +		mtk_hdmi_v2_aud_output_config(hdmi, &hdmi->mode);
+> +	}
+> +	return 0;
+> +}
+> +
+> +static int mtk_hdmi_v2_audio_startup(struct device *dev, void *data)
+> +{
+> +	struct mtk_hdmi *hdmi = dev_get_drvdata(dev);
+> +
+> +	mtk_hdmi_v2_hw_aud_enable(hdmi, true);
+> +	hdmi->audio_enable = true;
+> +
+> +	return 0;
+> +}
+> +
+> +static void mtk_hdmi_v2_audio_shutdown(struct device *dev, void *data)
+> +{
+> +	struct mtk_hdmi *hdmi = dev_get_drvdata(dev);
+> +
+> +	hdmi->audio_enable = false;
+> +	mtk_hdmi_v2_hw_aud_enable(hdmi, false);
+
+Most likely you need to stop sending the AUDIO packet too. Or is it dome
+by the hardware?
+
+> +}
+> +
+> +static int mtk_hdmi_v2_audio_mute(struct device *dev, void *data, bool enable, int dir)
+> +{
+> +	struct mtk_hdmi *hdmi = dev_get_drvdata(dev);
+> +
+> +	mtk_hdmi_v2_hw_aud_mute(hdmi, enable);
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct hdmi_codec_ops mtk_hdmi_v2_audio_codec_ops = {
+> +	.hw_params = mtk_hdmi_v2_audio_hw_params,
+> +	.audio_startup = mtk_hdmi_v2_audio_startup,
+> +	.audio_shutdown = mtk_hdmi_v2_audio_shutdown,
+> +	.mute_stream = mtk_hdmi_v2_audio_mute,
+> +	.get_eld = mtk_hdmi_audio_get_eld,
+> +	.hook_plugged_cb = mtk_hdmi_v2_audio_hook_plugged_cb,
+> +};
+
+Do you plan to switch to the OP_HDMI_AUDIO? I'd really like to see
+bridges use the framework instead of implementing everthing on their
+own.
+
+> +
+> +static __maybe_unused int mtk_hdmi_v2_suspend(struct device *dev)
+> +{
+> +	struct mtk_hdmi *hdmi = dev_get_drvdata(dev);
+> +
+> +	mtk_hdmi_v2_disable(hdmi);
+> +
+> +	return 0;
+> +}
+> +
+
+-- 
+With best wishes
+Dmitry
 
