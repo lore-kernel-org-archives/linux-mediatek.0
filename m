@@ -4,90 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58DD6C369BD
-	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Apr 2025 08:37:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0380C369AB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Apr 2025 03:59:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hWIuLilHx+0m0PNW09Z0k4xV/guGg8/Qmv8ZqaHqGFA=; b=iokAB+lRwLVCf+4Vy7ba3KVvL/
-	8Bo+qYun/8yUq1k+Awyl8jDYDOChArqKp583EJSHzyVn4Ji6zmoYC9U5v8RHnim0uLbyQI9GHReye
-	hOmf0MQN3OMG/CY0j9jF2twoEKrwJpeyLSzY3QK3gNRykRlZIPoKn9Fe3Qhov438FzUZWlT/vG/hP
-	Fl2en5sk6TBs5LaIB7zW5jSI/7LAVs3ZifV9JBdKd1XXtjO89yPuYBt3j72WT2VgLkwyQx2fF3hDq
-	D7txpL8Z8nYZ6K7GhVccMe2frgg6IdVNt2qXdrbLuWmju8HkuSQBOHNWK8PfOH5AHiY7bUDxpj5dV
-	+5MTlwPg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=/1VmN4dVZC6QitL81EwDWdsbp7Ol4HqNNMgrSzo39II=; b=VCDn+UbOCcLW2yr8oAauN4p500
+	EkkpG92BAhfJ27A2XniCjzVyehV+Xj94R1W/D2i4KNwnkcaw6zc2lwgU0V3SxBdAdYqOoWpFOM4pP
+	BoU+wS4e5lmnAHix1EE0Z/WSdduJUXeYqc0ivTTZKwTwXjxUwiKnW1q6uIeCywT7sgLIKC5e3jx01
+	5vlQp1Zb/l6oO5nQmNiBzua3lX8VaAlYWIxaIxbX2K34SwbCOAZJqa8PrsUUNXMVDRYNCz240oRpb
+	etudyjkZRF2IC1uE2r6GsMXCI32J2XUdzChnQ6IabLbZN0Vy64/CgVRmTXWKTqH9MRpZwX2/g18PP
+	Vfvp6kPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u63h4-000000012bX-1Bcn;
-	Sat, 19 Apr 2025 08:36:58 +0000
-Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
+	id 1u6iJ7-00000003XaM-3rTR;
+	Mon, 21 Apr 2025 03:58:57 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u63h1-000000012a9-2svn
-	for linux-mediatek@lists.infradead.org;
-	Sat, 19 Apr 2025 08:36:56 +0000
-Received: by mail-pf1-x430.google.com with SMTP id d2e1a72fcca58-736dd9c4b40so3258563b3a.0
-        for <linux-mediatek@lists.infradead.org>; Sat, 19 Apr 2025 01:36:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1745051815; x=1745656615; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=hWIuLilHx+0m0PNW09Z0k4xV/guGg8/Qmv8ZqaHqGFA=;
-        b=GsP0I+oNLhKdxue3j4wtkzzCCSJzxm5tb5+7+D2hmBVFtiDZcfvrSEoelhFkRX9DLn
-         HTtQaqPhR13fsBTOBKNmB1V8Ow6IV1oAM5IMIVgLuk9NA5X5lzHS/JR5hVQOB/Rfm8HC
-         jC0egWzreRnE2F066m3bcFpw6UVAJceP03x5T45YzrI/EMGa78gmqvZ+pKJpwBnFHWym
-         DaH0lVa39YtjR7wwsk6SF7fvs1wTW2ofI6osDDNTqTRYmqOT60FJauy12n4dNi0Vyf7L
-         MmNUaXYWDqn5KUe0M8Q4YO5qVXVY256EBzCa4a19cPzA9T5ccs9WTGlJL8FeEO6L1OnY
-         iMOw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745051815; x=1745656615;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=hWIuLilHx+0m0PNW09Z0k4xV/guGg8/Qmv8ZqaHqGFA=;
-        b=JM+FozXfYnLD92+xz/fAiv9B1OMox0/zW/frb/TzOAj7cAuAUc87nAST1em3NN4Hxa
-         kd4+Kc11QphgxCJCzW792pGvmXMVi6BB3+FtTy/CZxX1YQoEJrINZPN9jxUdEzAwqN/F
-         sYvfX97E2V5i7iJC5dhaxS09Z+/sqVFzqw8qDWUy1jh5BiODl08betOyxObHs/gYLHvv
-         +ti/MdQbkTami/ZrdLaxxDlO2ybgHvglsgBa23bPqvW4ib8djqJ6p8TvVGizlWxtaEy9
-         Z5/gqGGlqr19jEN0tHQBDuXLUdDLYsr5f5BLra7hcXEG7Q4Iq5YF95NoInMloukscQBo
-         80YQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVtkbw7WaUCW+HJgHroisBcJTVUld5JB+Tc0wHwhUY0g49CFIyqbNhRfFrPZYFz1BmRooNENB8Qsnt16/9DGQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxqlne4QcylGKk49Nvj1WXlu+9HOPFL+MrS0ACRiPy7sWcIPin1
-	A7ur9fYkMJwxralPPhJWg3CKpeWjzYZoxIQVxG7WdRHyI0sUhOFKjWHHHMsxrw==
-X-Gm-Gg: ASbGnctIPolsWBhEmGHVtev6oFZamgb1FGQaTeSL9hZdizKUSk2MoRYbNfEEvIW2RuC
-	M+Y0VAGCx3jxz5RHhhL0FvUR+OtUVggtDx9eq8t3YutizHwOUcrbwwAvWGjyReqbpMrdB/1oXXI
-	b6djI/PbB8wzvYGo4aOM/W2UTZW5C8G7zr6WP0r6wBrNrhhA2cqPh/Jw8SUOsvL9iMleJ4Pxi9q
-	xU+nLGS4Kh3IGmu6KD02dRdvrzKODETPFF/LOoTjo+H+4Xp93JDuO/DoESm33W4Ih0H1QsVuYcY
-	T1wdcxuRfPsFlCBgMCfqZdC3k2q2RCfNMTOzGksZlkYUW/bgrgLoSemnzDyq9A==
-X-Google-Smtp-Source: AGHT+IH3NDcdNNb8pbSv2t3bDQf2H8zk313Y64ucJBKvLy8gNjS7N5oRSvDjpG+wLPNMUPr2fDtP/Q==
-X-Received: by 2002:a05:6a20:9c9a:b0:1f3:20be:c18a with SMTP id adf61e73a8af0-203cc60880bmr6254890637.10.1745051814740;
-        Sat, 19 Apr 2025 01:36:54 -0700 (PDT)
-Received: from thinkpad ([36.255.17.167])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b0db14488casm2467771a12.56.2025.04.19.01.36.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 19 Apr 2025 01:36:54 -0700 (PDT)
-Date: Sat, 19 Apr 2025 14:06:49 +0530
-From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-To: Jianjun Wang <jianjun.wang@mediatek.com>
-Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>, Rob Herring <robh@kernel.org>, 
-	Bjorn Helgaas <bhelgaas@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-pci@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH] PCI: mediatek: Remove the usage of virt_to_phys
-Message-ID: <oiwee2kiwex6dz3scmvpwc2x25tq4qmdah6kcvgqhhukmku3uj@va465i7ofstd>
-References: <20250107052108.8643-1-jianjun.wang@mediatek.com>
+	id 1u6iHF-00000003XSh-30T5;
+	Mon, 21 Apr 2025 03:57:02 +0000
+X-UUID: aa2386641e6411f0b1a74d0c5e11a509-20250420
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=/1VmN4dVZC6QitL81EwDWdsbp7Ol4HqNNMgrSzo39II=;
+	b=VnpKC4sab2ypsBi0hMYsQYiyYoC8zrZAm+j7DNbQJpPyv3r+k3H7vy4Yooc3S3Qw4Yzw+qQLBCcUq2mEoFvnKhma5eXnkev1Eu0nYCtSFbbcndIPF7kQGFUQ+TtxJM3wkLQ/BTHleTWklBB+iBnGIRbF4Ft4ZzVbBX5cxL0m0ls=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:94d05bb3-ce15-4a0a-8544-f34936b2c1c8,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:12d44ea6-c619-47e3-a41b-90eedbf5b947,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: aa2386641e6411f0b1a74d0c5e11a509-20250420
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 272225859; Sun, 20 Apr 2025 20:56:54 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Mon, 21 Apr 2025 11:56:51 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Mon, 21 Apr 2025 11:56:51 +0800
+From: Jason-JH Lin <jason-jh.lin@mediatek.com>
+To: Jassi Brar <jassisinghbrar@gmail.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Jason-JH Lin
+	<jason-jh.lin@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, Singo Chang
+	<singo.chang@mediatek.com>, Xavier Chang <xavier.chang@mediatek.com>,
+	Xiandong Wang <xiandong.wang@mediatek.com>, Sirius Wang
+	<sirius.wang@mediatek.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>
+Subject: [PATCH v3] mailbox: mtk-cmdq: Refine GCE_GCTL_VALUE setting
+Date: Mon, 21 Apr 2025 11:55:47 +0800
+Message-ID: <20250421035650.441383-1-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250107052108.8643-1-jianjun.wang@mediatek.com>
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250419_013655_738257_5A74B8C2 
-X-CRM114-Status: GOOD (  22.54  )
+X-CRM114-CacheID: sfid-20250420_205701_794310_2D21668E 
+X-CRM114-Status: GOOD (  15.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,99 +90,142 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 07, 2025 at 01:20:58PM +0800, Jianjun Wang wrote:
-> Remove the usage of virt_to_phys, as it will cause sparse warnings when
-> building on some platforms.
-> 
-> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+Add cmdq_gctl_value_toggle() to configure GCE_CTRL_BY_SW and GCE_DDR_EN
+together in the same GCE_GCTL_VALUE register.
 
-I'm changing the status of this patch as 'Changes Requested' in patchwork. Feel
-free to submit the next iteration incorporating review comments.
+For the SoCs whose GCE is located in MMINFRA and uses MMINFRA_AO power,
+this allows it to be written without enabling the clocks. Otherwise, all
+GCE registers should be written after the GCE clocks are enabled.
+Move this function into cmdq_runtime_resume() and cmdq_runtime_suspend()
+to ensure it is called when the GCE clock is enabled.
 
-- Mani
+Fixes: 7abd037aa581 ("mailbox: mtk-cmdq: add gce ddr enable support flow")
+Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
 
-> ---
->  drivers/pci/controller/pcie-mediatek.c | 19 ++++++++++++-------
->  1 file changed, 12 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-> index 3bcfc4e58ba2..dc1e5fd6c7aa 100644
-> --- a/drivers/pci/controller/pcie-mediatek.c
-> +++ b/drivers/pci/controller/pcie-mediatek.c
-> @@ -178,6 +178,7 @@ struct mtk_pcie_soc {
->   * @phy: pointer to PHY control block
->   * @slot: port slot
->   * @irq: GIC irq
-> + * @msg_addr: MSI message address
->   * @irq_domain: legacy INTx IRQ domain
->   * @inner_domain: inner IRQ domain
->   * @msi_domain: MSI IRQ domain
-> @@ -198,6 +199,7 @@ struct mtk_pcie_port {
->  	struct phy *phy;
->  	u32 slot;
->  	int irq;
-> +	phys_addr_t msg_addr;
->  	struct irq_domain *irq_domain;
->  	struct irq_domain *inner_domain;
->  	struct irq_domain *msi_domain;
-> @@ -393,12 +395,10 @@ static struct pci_ops mtk_pcie_ops_v2 = {
->  static void mtk_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
->  {
->  	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
-> -	phys_addr_t addr;
->  
->  	/* MT2712/MT7622 only support 32-bit MSI addresses */
-> -	addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
->  	msg->address_hi = 0;
-> -	msg->address_lo = lower_32_bits(addr);
-> +	msg->address_lo = lower_32_bits(port->msg_addr);
->  
->  	msg->data = data->hwirq;
->  
-> @@ -510,10 +510,8 @@ static int mtk_pcie_allocate_msi_domains(struct mtk_pcie_port *port)
->  static void mtk_pcie_enable_msi(struct mtk_pcie_port *port)
->  {
->  	u32 val;
-> -	phys_addr_t msg_addr;
->  
-> -	msg_addr = virt_to_phys(port->base + PCIE_MSI_VECTOR);
-> -	val = lower_32_bits(msg_addr);
-> +	val = lower_32_bits(port->msg_addr);
->  	writel(val, port->base + PCIE_IMSI_ADDR);
->  
->  	val = readl(port->base + PCIE_INT_MASK);
-> @@ -913,6 +911,7 @@ static int mtk_pcie_parse_port(struct mtk_pcie *pcie,
->  	struct mtk_pcie_port *port;
->  	struct device *dev = pcie->dev;
->  	struct platform_device *pdev = to_platform_device(dev);
-> +	struct resource *regs;
->  	char name[10];
->  	int err;
->  
-> @@ -921,12 +920,18 @@ static int mtk_pcie_parse_port(struct mtk_pcie *pcie,
->  		return -ENOMEM;
->  
->  	snprintf(name, sizeof(name), "port%d", slot);
-> -	port->base = devm_platform_ioremap_resource_byname(pdev, name);
-> +	regs = platform_get_resource_byname(pdev, IORESOURCE_MEM, name);
-> +	if (!regs)
-> +		return -EINVAL;
-> +
-> +	port->base = devm_ioremap_resource(dev, regs);
->  	if (IS_ERR(port->base)) {
->  		dev_err(dev, "failed to map port%d base\n", slot);
->  		return PTR_ERR(port->base);
->  	}
->  
-> +	port->msg_addr = regs->start + PCIE_MSI_VECTOR;
-> +
->  	snprintf(name, sizeof(name), "sys_ck%d", slot);
->  	port->sys_ck = devm_clk_get(dev, name);
->  	if (IS_ERR(port->sys_ck)) {
-> -- 
-> 2.46.0
-> 
+Change in v3:
+- Move cmdq_gctl_value_toggle() after the public API cmdq_get_shift_pa().
 
+---
+ drivers/mailbox/mtk-cmdq-mailbox.c | 51 +++++++++++++-----------------
+ 1 file changed, 22 insertions(+), 29 deletions(-)
+
+diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+index d186865b8dce..ab4e8d1954a1 100644
+--- a/drivers/mailbox/mtk-cmdq-mailbox.c
++++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+@@ -92,18 +92,6 @@ struct gce_plat {
+ 	u32 gce_num;
+ };
+ 
+-static void cmdq_sw_ddr_enable(struct cmdq *cmdq, bool enable)
+-{
+-	WARN_ON(clk_bulk_enable(cmdq->pdata->gce_num, cmdq->clocks));
+-
+-	if (enable)
+-		writel(GCE_DDR_EN | GCE_CTRL_BY_SW, cmdq->base + GCE_GCTL_VALUE);
+-	else
+-		writel(GCE_CTRL_BY_SW, cmdq->base + GCE_GCTL_VALUE);
+-
+-	clk_bulk_disable(cmdq->pdata->gce_num, cmdq->clocks);
+-}
+-
+ u8 cmdq_get_shift_pa(struct mbox_chan *chan)
+ {
+ 	struct cmdq *cmdq = container_of(chan->mbox, struct cmdq, mbox);
+@@ -112,6 +100,19 @@ u8 cmdq_get_shift_pa(struct mbox_chan *chan)
+ }
+ EXPORT_SYMBOL(cmdq_get_shift_pa);
+ 
++static void cmdq_gctl_value_toggle(struct cmdq *cmdq, bool ddr_enable)
++{
++	u32 val = cmdq->pdata->control_by_sw ? GCE_CTRL_BY_SW : 0;
++
++	if (!cmdq->pdata->control_by_sw && !cmdq->pdata->sw_ddr_en)
++		return;
++
++	if (cmdq->pdata->sw_ddr_en && ddr_enable)
++		val |= GCE_DDR_EN;
++
++	writel(val, cmdq->base + GCE_GCTL_VALUE);
++}
++
+ static int cmdq_thread_suspend(struct cmdq *cmdq, struct cmdq_thread *thread)
+ {
+ 	u32 status;
+@@ -140,16 +141,10 @@ static void cmdq_thread_resume(struct cmdq_thread *thread)
+ static void cmdq_init(struct cmdq *cmdq)
+ {
+ 	int i;
+-	u32 gctl_regval = 0;
+ 
+ 	WARN_ON(clk_bulk_enable(cmdq->pdata->gce_num, cmdq->clocks));
+-	if (cmdq->pdata->control_by_sw)
+-		gctl_regval = GCE_CTRL_BY_SW;
+-	if (cmdq->pdata->sw_ddr_en)
+-		gctl_regval |= GCE_DDR_EN;
+ 
+-	if (gctl_regval)
+-		writel(gctl_regval, cmdq->base + GCE_GCTL_VALUE);
++	cmdq_gctl_value_toggle(cmdq, true);
+ 
+ 	writel(CMDQ_THR_ACTIVE_SLOT_CYCLES, cmdq->base + CMDQ_THR_SLOT_CYCLES);
+ 	for (i = 0; i <= CMDQ_MAX_EVENT; i++)
+@@ -315,14 +310,21 @@ static irqreturn_t cmdq_irq_handler(int irq, void *dev)
+ static int cmdq_runtime_resume(struct device *dev)
+ {
+ 	struct cmdq *cmdq = dev_get_drvdata(dev);
++	int ret;
+ 
+-	return clk_bulk_enable(cmdq->pdata->gce_num, cmdq->clocks);
++	ret = clk_bulk_enable(cmdq->pdata->gce_num, cmdq->clocks);
++	if (ret)
++		return ret;
++
++	cmdq_gctl_value_toggle(cmdq, true);
++	return 0;
+ }
+ 
+ static int cmdq_runtime_suspend(struct device *dev)
+ {
+ 	struct cmdq *cmdq = dev_get_drvdata(dev);
+ 
++	cmdq_gctl_value_toggle(cmdq, false);
+ 	clk_bulk_disable(cmdq->pdata->gce_num, cmdq->clocks);
+ 	return 0;
+ }
+@@ -347,9 +349,6 @@ static int cmdq_suspend(struct device *dev)
+ 	if (task_running)
+ 		dev_warn(dev, "exist running task(s) in suspend\n");
+ 
+-	if (cmdq->pdata->sw_ddr_en)
+-		cmdq_sw_ddr_enable(cmdq, false);
+-
+ 	return pm_runtime_force_suspend(dev);
+ }
+ 
+@@ -360,9 +359,6 @@ static int cmdq_resume(struct device *dev)
+ 	WARN_ON(pm_runtime_force_resume(dev));
+ 	cmdq->suspended = false;
+ 
+-	if (cmdq->pdata->sw_ddr_en)
+-		cmdq_sw_ddr_enable(cmdq, true);
+-
+ 	return 0;
+ }
+ 
+@@ -370,9 +366,6 @@ static void cmdq_remove(struct platform_device *pdev)
+ {
+ 	struct cmdq *cmdq = platform_get_drvdata(pdev);
+ 
+-	if (cmdq->pdata->sw_ddr_en)
+-		cmdq_sw_ddr_enable(cmdq, false);
+-
+ 	if (!IS_ENABLED(CONFIG_PM))
+ 		cmdq_runtime_suspend(&pdev->dev);
+ 
 -- 
-மணிவண்ணன் சதாசிவம்
+2.43.0
+
 
