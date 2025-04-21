@@ -4,87 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10750C369AB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Apr 2025 19:20:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DD7EC369AB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Apr 2025 20:51:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GGSXO/dPI5+jUcYdtbCw4JQ75NbzfN4qotDsVJGePCc=; b=XrbucUKxhQzFnIiWMd1omsHZ7d
-	Xu2sntujxn5ueLBzW+IloiDLkebC5cTuoExrnTyeakPQDM70Qkd5DHcvMQplcBLKilOvrBQJwiNiu
-	w7/Nllw/JJDHi1yXnFDDcsAH5Nd2pTlFsXfbj4qR2hzxHy0xle/iYObJzhvN8DP1XZ1HiA4deqEP2
-	q5dh/u+eT1z/D21a0wPG3peKPuIWb3935qbfikLa7zsiI/24OI2Nn7PhN7ybOxSyxvwUiQ0q8doF4
-	OW/YhehUHAz/L+OT3lAabxu1yxe95SsCKmtf1gas6lLmALRvieu8gPePEb+hZ2o8okEUC51+97UyY
-	ZRWfajfg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Qif5EcVLg6WdPZOgwwmN+cGbgPvTYXMg6rg8yQFUfLo=; b=T7Gqh57mWwx/c1
+	5k32G4CSbPebRkxWRL++6Vd+cLzIrY7R5FTKtC6C2hdi7AUvtGh94m3Rtu3R8fa4cirsnfK565Wrq
+	rIWXSz3A74acny4lWjnj8Mtcs5BcaD7KDre0achDnp34+z1iIaVOLWVn13hbKinWpF5smOhrF7/YT
+	5ontdo6CTTkespo9ac3S77Tk7mV7UWPUmIFIa/G+dOplZfyN9rdjxoW39H76UMGo46lKxNkTBWjet
+	3HML0aEq2w0+Cy7R4Cyl4STS7HJyla8+ZVJXlkLd+gMQUh2iULRFyy1MP8WNJgx+uhuSesSp9NyJV
+	Q6dAVSBzkcmtXqURotEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u6wgb-000000051Ov-0NbA;
-	Mon, 21 Apr 2025 19:20:09 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1u6y6x-000000057xR-3Al5;
+	Mon, 21 Apr 2025 20:51:27 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u6wgY-000000051N5-147w
-	for linux-mediatek@lists.infradead.org;
-	Mon, 21 Apr 2025 19:20:07 +0000
-Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-54c090fc7adso4664048e87.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 21 Apr 2025 12:20:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1745263204; x=1745868004; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=GGSXO/dPI5+jUcYdtbCw4JQ75NbzfN4qotDsVJGePCc=;
-        b=C5lRHS+nvamVNTV+0FOJgQ+N71bofzyjFU602rXJI97v+W5BrNiMsqEp3oY/LQ1Npw
-         19mZGTgFzHy47/9MccBDbfaF+TNuT6ksE+iu74ISmjoZKuhGhEi4Q5esJ6MyhRHDYV+t
-         h2klVk/dCXomHTMR4s5IfuPfSNKgEA0I+B0AVK7jdM1KY4c76kyi54Y9+Y0Wf4ML859Q
-         zNIZnODfzIDePtm/L6coHjJah9WPgnkkxMiHhdWP6evPnYHYupd/0m7jF//BO+y6pEzU
-         444q3IYUWdz1CxsucoDU3rA0F4QaRX3gbXB7Kh6W4NTzghqa49vPhHdFDWzlsjK3XRVd
-         2pBQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745263204; x=1745868004;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=GGSXO/dPI5+jUcYdtbCw4JQ75NbzfN4qotDsVJGePCc=;
-        b=bgmNDZmEcWkYRVD+WDHVO+Hg/xbIF8SE3iyx+I6QB9pxYMMHayk+j1Y8rUmoOVr2iJ
-         jVUtXtxLNm073RZgSBKwEsnNx3xXHmhIaA6UHyWSmCzsl+GYTn3MO5x+k/54zUk8NkD6
-         iE8OYtvlOVr2OJVQxHXsJU/4IsR0hT2W5I6QEhRI3VBpjhF9uKChva/YoeaGdbxQYK3y
-         vqgJv7emWZ/plvw7vrGOWy8UStOVYGZ8prLgRVBByhwVG3DgxVKoFYbmwJmpO4xdxYk0
-         YqC2B5KKMnHTmNidmpqCH21BLesiOVxzf+kZ62WtcYXrrQrvrWFYn+0/xMLKuQOfhWy0
-         OXqw==
-X-Forwarded-Encrypted: i=1; AJvYcCXLFMwdSovzWeR5w22gzyOG8OqKxbjoFSUAq7fN1luaHVWWPoKwWt4UTpxSHU+k/Iwf0uHh5OUneE43RnAUOQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx0Vj0aNySeGzdfWlbFvOK0kJ55DIHPLoADR1qePxYo3zB0FokF
-	VqyzS5EijDIG4G6NATnBpjcn2GR2rzqyInjwHY8L1CQS86TuL3EC0Q6OdZatV+g2aO1kyh/RsMU
-	YpSTkzEh6Ag4V7SeOU5yqGFgUCBA=
-X-Gm-Gg: ASbGncunyuqeZJGVIEv0kPujhljekUe7Jc24DS5/G21UufhmRX0mnXa9H25Wc/XEqci
-	7TDVY+BNIYj22zWtSXsNlvJO4Agjb4jcNGsyvybL435eiRUpjyZHw6SQYVO3YS7CKD3E8VoTvxA
-	r/Na5aYfAGrtwJyJDUJfv5deMjTAdzAU8=
-X-Google-Smtp-Source: AGHT+IGWThofn9kjjT1rYmsVcaPR8mJeAZVdYEgrHXFQvPh13eYbpQ/cssZm6gZPLFnSLYTrbE/DfygAH4fyrYRssLM=
-X-Received: by 2002:a05:6512:3b93:b0:54d:6574:faec with SMTP id
- 2adb3069b0e04-54d6e62b403mr3576751e87.20.1745263204132; Mon, 21 Apr 2025
- 12:20:04 -0700 (PDT)
+	id 1u6y54-000000057cd-1h1L;
+	Mon, 21 Apr 2025 20:49:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1745268567;
+	bh=ZxOqVHlDEVfTiLyrrefIfTOsNiW0JRs2HVHhpijxbyw=;
+	h=From:Subject:Date:To:Cc:From;
+	b=PU5fYWackXwqBFQlGat6jTpSiWH61hepmTzwZeeM/bQQCBaSpHrdjIPXGt6NsuqTX
+	 +Rogx+VghK9rQbYNJ9DIpdFTgziwF+UsLgYE/T7rI4E6uoxbkoPoivvre57aHy9VNj
+	 SdIHurnQWax0tBKXxvFAy1UnVO8TkYDqHz8e13FRacQVNrxnQxINuU4Z3CiJh9xySj
+	 xKP1md+LAgDTs5RECH58wWmpceTX9QMiQx42R8SHKAxhvsOs7BotIHaTFJDpDns3m+
+	 vBWTDW1+3gqSVOeN1fqeimahcbbTO+ZtMhwpLSEGPt/agK0kEd/hj65YmdXOTf7Ohf
+	 4Z3cGTfYk3ZTw==
+Received: from [192.168.1.63] (unknown [70.107.117.78])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C667E17E00FC;
+	Mon, 21 Apr 2025 22:49:24 +0200 (CEST)
+From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Subject: [PATCH v2 0/5] Describe MT8188's SCP as dual-core
+Date: Mon, 21 Apr 2025 16:49:03 -0400
+Message-Id: <20250421-scp-dual-core-mt8390-v2-0-c84117a959a9@collabora.com>
 MIME-Version: 1.0
-References: <20250421072914.466092-1-chris.lu@mediatek.com> <20250421072914.466092-3-chris.lu@mediatek.com>
-In-Reply-To: <20250421072914.466092-3-chris.lu@mediatek.com>
-From: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
-Date: Mon, 21 Apr 2025 15:19:51 -0400
-X-Gm-Features: ATxdqUGeWWnEGKGhSE2EeBxAvnphjMU67tQYCCQZGa1NbEsf5e652QVfEsmaqSg
-Message-ID: <CABBYNZLb_yqUsnRzcUxxtFnqEYwhD4hRXaAn-QwT8s6cZvTv_A@mail.gmail.com>
-Subject: Re: [PATCH v1 2/2] Bluetooth: btmtksdio: Do close if SDIO card
- removed without close
-To: Chris Lu <chris.lu@mediatek.com>
-Cc: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg <johan.hedberg@gmail.com>, 
-	Sean Wang <sean.wang@mediatek.com>, Jiande Lu <jiande.lu@mediatek.com>, 
-	Will Lee <will-cy.lee@mediatek.com>, SS Wu <ss.wu@mediatek.com>, 
-	Steve Lee <steve.lee@mediatek.com>, linux-bluetooth <linux-bluetooth@vger.kernel.org>, 
-	linux-kernel <linux-kernel@vger.kernel.org>, 
-	linux-mediatek <linux-mediatek@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-B4-Tracking: v=1; b=H4sIAD+vBmgC/4WNQQqDMBBFryKz7pRkQlG76j3ERRzHGlAjiQ0t4
+ t2beoEu34P//g5RgpMI92KHIMlF55cMdCmAR7s8BV2fGUjRTRldYeQV+5edkH0QnLfK1AorGXS
+ naKC+JsjTNcjg3me2aTOPLm4+fM6XpH/2TzBpzNXSGNE1MZfmwX6abOeDvbKfoT2O4wvWvCUov
+ AAAAA==
+X-Change-ID: 20250318-scp-dual-core-mt8390-8ef1b02f2d92
+To: Bjorn Andersson <andersson@kernel.org>, 
+ Mathieu Poirier <mathieu.poirier@linaro.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Tinghan Shen <tinghan.shen@mediatek.com>, 
+ Olivia Wen <olivia.wen@mediatek.com>
+Cc: kernel@collabora.com, linux-remoteproc@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
+ Jason Chen <jason-ch.chen@mediatek.corp-partner.google.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250421_122006_294548_99064B4C 
-X-CRM114-Status: GOOD (  15.73  )
+X-CRM114-CacheID: sfid-20250421_134930_631979_24ABF93D 
+X-CRM114-Status: UNSURE (   8.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,52 +88,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Chris,
+This series updates the MT8188 SCP description to dual-core and prepares
+its usage. Patch 4 updates the MT8188 DT to describe the SCP as a dual
+core cluster and patch 5 adds the firmware-name property so the firmware
+can be loaded. Patches 1 through 3 are dt-binding fixes for the SCP.
 
-On Mon, Apr 21, 2025 at 3:29=E2=80=AFAM Chris Lu <chris.lu@mediatek.com> wr=
-ote:
->
-> To prevent Bluetooth SDIO card from being physically removed suddenly,
-> driver needs to ensure btmtksdio_close is called before btmtksdio_remove
-> to disable interrupts and txrx workqueue.
->
-> Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+Changes in v2:
+- Added patch 3 removing redundant reg maxItems
+- Clarified commit message for patch 1
+- Rebased now that MDP3 series dependency has been merged
+- Link to v1: https://lore.kernel.org/r/20250318-scp-dual-core-mt8390-v1-0-8733e192cc73@collabora.com
 
-Ditto, please add Fixes tag.
+---
+Nícolas F. R. A. Prado (5):
+      dt-bindings: remoteproc: mediatek: Add missing minItems for 8192/8195
+      dt-bindings: remoteproc: mediatek: Remove l1tcm for dual-core MT8188 SCP
+      dt-bindings: remoteproc: mediatek: Drop redundant maxItems for mt8192/95
+      arm64: dts: mediatek: mt8188: Describe SCP as a cluster with two cores
+      arm64: dts: mediatek: mt8390-genio-common: Add firmware-name for scp0
 
-> ---
->  drivers/bluetooth/btmtksdio.c | 8 ++++++--
->  1 file changed, 6 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.=
-c
-> index 3c66e3ee9834..c16a3518b8ff 100644
-> --- a/drivers/bluetooth/btmtksdio.c
-> +++ b/drivers/bluetooth/btmtksdio.c
-> @@ -1447,11 +1447,15 @@ static void btmtksdio_remove(struct sdio_func *fu=
-nc)
->         if (!bdev)
->                 return;
->
-> +       hdev =3D bdev->hdev;
-> +
-> +       /* Make sure to call btmtksdio_close before removing sdio card */
-> +       if (test_bit(BTMTKSDIO_FUNC_ENABLED, &bdev->tx_state))
-> +               btmtksdio_close(hdev);
-> +
->         /* Be consistent the state in btmtksdio_probe */
->         pm_runtime_get_noresume(bdev->dev);
->
-> -       hdev =3D bdev->hdev;
-> -
->         sdio_set_drvdata(func, NULL);
->         hci_unregister_dev(hdev);
->         hci_free_dev(hdev);
-> --
-> 2.45.2
->
+ .../devicetree/bindings/remoteproc/mtk,scp.yaml    | 21 ++++++++++---
+ arch/arm64/boot/dts/mediatek/mt8188-evb.dts        |  6 +++-
+ arch/arm64/boot/dts/mediatek/mt8188.dtsi           | 36 ++++++++++++++++------
+ .../boot/dts/mediatek/mt8390-genio-common.dtsi     |  7 ++++-
+ 4 files changed, 55 insertions(+), 15 deletions(-)
+---
+base-commit: bc8aa6cdadcc00862f2b5720e5de2e17f696a081
+change-id: 20250318-scp-dual-core-mt8390-8ef1b02f2d92
 
+Best regards,
+-- 
+Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
---=20
-Luiz Augusto von Dentz
 
