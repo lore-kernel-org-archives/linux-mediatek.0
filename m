@@ -4,80 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB01DC369AB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Apr 2025 14:11:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED160C369C2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Apr 2025 15:14:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ubJM8MS7/gKS3ZsjfdQz7evp9hBJp3GB1TUeMn7GoGg=; b=2plEfZ+c0vnVcMu1Obf9EOMl58
-	Uh//TVvVnAd5coDkvdiHoJZSdDQ9V9RSuqI5ZnxwzR0moAWVfKwAWAJXYWiQTonq65HQHGF5KjUqp
-	/66Xz76Hkf3lKGQGYBnOcFkKAcwLGFL1ORtuopmucKCDvMIqHS+ayy3PG9A39Gfr40lJtf276/snC
-	Uvry7nKG3Czh+4mPh6ueAlbRFKgZAnIeBSHzCLbN5ZfSu9x2gEjO9Vrdl5xNDcS36Ftt5RknKcPLK
-	CNp+ckYrjVjv0aaHwNCqwph8fkhGkeYN5sI9ORUFeQtMVt7cK/StJccMU9fG1vfJW2sWnG4q/W/VO
-	wxT0L5CA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0nzgjSnII7gQ+iWpSmA9wkL9kXhQVA8NGz0aFRA7zpU=; b=Vq0o+6PmnVRvaXXRvCJXG1uu5N
+	vcbrIh9lYlixsFtama1gIGh+4dcX5ptecSJdzqIMNQsJ6nH9AK7hJEfX5VuAn6BFq92SGIr766WKU
+	PobzJa/tvbYXy1dmcJNSyODYW075HSzQXh6MzlO8ZVTHu9zZVNBoo/O0h/u90vYdFrcWr5sjKuAfD
+	Gy074MG88KJHA4tBwtxuufJEHsxZFP8kVyW77nR/fNy67Cqj/WJc7peeFIF3qFfwe/So/UxEjPJHv
+	dgX5RSqi+bzglpKRXpkiNqEr8d2gCdIvDbl8ED/CZzlbSz4DlAU/xd5M7+tJizb87hQ3xu3BprUDi
+	0uHdrhlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u6rrq-00000004QHB-2jBS;
-	Mon, 21 Apr 2025 14:11:26 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1u6sqn-00000004ZCh-3yhc;
+	Mon, 21 Apr 2025 15:14:25 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u6rpy-00000004Q5x-0xn4;
-	Mon, 21 Apr 2025 14:09:31 +0000
+	id 1u6skI-00000004Y5B-2Ct8;
+	Mon, 21 Apr 2025 15:07:42 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id A7C82A4BCFC;
-	Mon, 21 Apr 2025 14:04:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7371CC4CEE4;
-	Mon, 21 Apr 2025 14:09:28 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id F108F614AC;
+	Mon, 21 Apr 2025 15:07:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8CE09C4CEEA;
+	Mon, 21 Apr 2025 15:07:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1745244568;
-	bh=WYXRdWWnpgKTBUjE3p3Mz4j6ZPQ5w+kSpIXksD6tN68=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=tKOto67RaYFfUzDqmXLJK8aJvIy6sKsvTmLnTsCMOs1O56tH9Vo7gIqyO4PVryOVx
-	 CEyJ+toAkHjPasJBv0Z3DXpxfFqHrbFljL43OR4d6crPNgIMej7BUXfdTN9WGaeZAN
-	 66LtIk5lebiXDOASN6aXc6yVX9HCcieeI/c0+urJtsyFl8MW75Tmkb344gDvsq2onb
-	 /RlUMqZTyMiy5nWzFScGFVrrB65pBBJdefuMoEtDx/XAQB3Fqo5GhQmRH7/v0K+XE5
-	 eU5M9RUToJ66L5zJz9u6nQkG+dTwd4P13vVRfpXEDEnDOMXDOYozSV6SYRg221jsi1
-	 KBRyzu4ByURVg==
-Received: by mail-pg1-f174.google.com with SMTP id 41be03b00d2f7-b00e3c87713so3300873a12.2;
-        Mon, 21 Apr 2025 07:09:28 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCUcUvxZl9gLR3f+DfcT1PoLqf6AWOhWRBjoiAycX/d40Ubjz0W3zTPCMFxNdTUdM9l94V92TXSA5rC1eWFWJCuK@lists.infradead.org, AJvYcCXXET9vPbaBCObDLlQnpyb5v5FxjSDgCaOmNxqrlhpDdFVvuXN+dfRhR7fK9nBqTHjouB/iIS99YPFQiTZMCEo=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzmz3GydBoNheWUErDzqyiCcGd5RVKuuVFDjZ5+a0RzL8mj7RF9
-	8y3A3eAX2Rx0hjxzkt3rhms1yP7OLvWa76LGvoB89YN/w7qxPMIn2bRjuj5UwuN2aYGgb90j2z8
-	ltSthm3dW0man9M8JdFLl2eT1Wg==
-X-Google-Smtp-Source: AGHT+IGS9uz21hRPGhlJ4UMeP7sf9taxpboldIRO54ve55gM+l4Zm966plB6VQpw/Y3RbDZK4VoWG7AVra1mhRruBl4=
-X-Received: by 2002:a17:90b:248e:b0:309:cf0b:cb37 with SMTP id
- 98e67ed59e1d1-309cf0bcb7amr532295a91.7.1745244568069; Mon, 21 Apr 2025
- 07:09:28 -0700 (PDT)
+	s=k20201202; t=1745248061;
+	bh=lc5bcB2qS+BayGAd67CTq4rDRW3vovdCcVtSqCmpb44=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=Cr3TZhNvwmMUJ/5U8n99+jGNWC4DSKVZNDIWmg+ISk8Fek2esnCH3kqwdOVmqiD4o
+	 BcLniD9UC/zRaQNBCbPnn2+1i2DatdPiaqH0ykCfZeYknmwEcXHHB13FCNigg6vc4Y
+	 IIEm5an35XL3v5/XTiFx8mvbz3puSfnNR6Hsw9JHMARMsTurT2cMLMLCoIfwEyKVq3
+	 +Kbo5z5xkNS5GUWDvBCusCmx2kCXjFVcx5u6sIMVSMOS5sz2hoI5oWdPmkKKLu5JyR
+	 5gERLoA2lbr1oCfGx5LfpxQLKcoQVEK+20y/EaXrgX2SUG7bJFhB7CYLEXyak/guC9
+	 A5BkryMbnmpeQ==
+Date: Mon, 21 Apr 2025 10:07:39 -0500
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-References: <20250415104321.51149-1-angelogioacchino.delregno@collabora.com> <20250415104321.51149-16-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20250415104321.51149-16-angelogioacchino.delregno@collabora.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Mon, 21 Apr 2025 22:10:25 +0800
-X-Gmail-Original-Message-ID: <CAAOTY__Tvrx2vfss16jecTQsQU2oSjEmTGoFZZq5ZJZmgyypqg@mail.gmail.com>
-X-Gm-Features: ATxdqUGktFaFTj-3L_NPDr-W-E9d8SqAjhcUgYMe9iV6oOSARNcqSrzlMtbkNXg
-Message-ID: <CAAOTY__Tvrx2vfss16jecTQsQU2oSjEmTGoFZZq5ZJZmgyypqg@mail.gmail.com>
-Subject: Re: [PATCH v9 15/23] drm/mediatek: mtk_hdmi: Improve
- mtk_hdmi_get_all_clk() flexibility
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
-	simona@ffwll.ch, maarten.lankhorst@linux.intel.com, mripard@kernel.org, 
-	tzimmermann@suse.de, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
-	matthias.bgg@gmail.com, ck.hu@mediatek.com, jitao.shi@mediatek.com, 
-	jie.qiu@mediatek.com, junzhi.zhao@mediatek.com, 
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com, 
-	dmitry.baryshkov@linaro.org, lewis.liao@mediatek.com, 
-	ives.chenjh@mediatek.com, tommyyl.chen@mediatek.com, 
-	jason-jh.lin@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250421_070930_411175_91597482 
-X-CRM114-Status: GOOD (  23.29  )
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ linux-arm-kernel@lists.infradead.org, 
+ Douglas Anderson <dianders@chromium.org>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-input@vger.kernel.org, 
+ Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Benson Leung <bleung@chromium.org>, devicetree@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, Tzung-Bi Shih <tzungbi@kernel.org>, 
+ chrome-platform@lists.linux.dev
+To: Chen-Yu Tsai <wenst@chromium.org>
+In-Reply-To: <20250421101248.426929-1-wenst@chromium.org>
+References: <20250421101248.426929-1-wenst@chromium.org>
+Message-Id: <174524752509.2425965.7536195118424945972.robh@kernel.org>
+Subject: Re: [PATCH v2 0/8] arm64: mediatek: mt8186-corsola: Consolidate
+ and add new devices
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,142 +76,122 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Angelo:
 
-AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> =E6=96=
-=BC
-2025=E5=B9=B44=E6=9C=8815=E6=97=A5 =E9=80=B1=E4=BA=8C =E4=B8=8B=E5=8D=886:4=
-4=E5=AF=AB=E9=81=93=EF=BC=9A
->
-> In preparation for splitting common bits of this driver and for
-> introducing a new version of the MediaTek HDMI Encoder IP, improve
-> the flexibility of function mtk_hdmi_get_all_clk() by adding a
-> pointer to the clock names array and size of it to its parameters.
->
-> Also change the array of struct clock pointers in the mtk_hdmi
-> structure to be dynamically allocated, and allocate it in probe.
-
-Build error happen,
-
-../drivers/gpu/drm/mediatek/mtk_hdmi.c: In function
-\u2018mtk_hdmi_get_cec_dev\u2019:
-../drivers/gpu/drm/mediatek/mtk_hdmi.c:1353:15: error: too few
-arguments to function \u2018mtk_hdmi_get_all_clk\u2019
- 1353 |         ret =3D mtk_hdmi_get_all_clk(hdmi, np);
-      |               ^~~~~~~~~~~~~~~~~~~~
-../drivers/gpu/drm/mediatek/mtk_hdmi.c:1075:12: note: declared here
- 1075 | static int mtk_hdmi_get_all_clk(struct mtk_hdmi *hdmi, struct
-device_node *np,
-      |            ^~~~~~~~~~~~~~~~~~~~
-
-I've apply some patches of this series to mediatek-drm-next [1], and
-I've already fixed some build error.
-I wonder how many error would happen in rest patches,
-so please fix the build error in rest patches and resend patches.
-
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
-log/?h=3Dmediatek-drm-next
-
-Regards,
-Chun-Kuang.
-
->
-> Reviewed-by: CK Hu <ck.hu@mediatek.com>
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_hdmi.c | 26 ++++++++++++++++----------
->  1 file changed, 16 insertions(+), 10 deletions(-)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediat=
-ek/mtk_hdmi.c
-> index b4fbd2e60089..b17f8df145eb 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> @@ -159,7 +159,7 @@ struct mtk_hdmi {
->         struct phy *phy;
->         struct device *cec_dev;
->         struct i2c_adapter *ddc_adpt;
-> -       struct clk *clk[MTK_HDMI_CLK_COUNT];
-> +       struct clk **clk;
->         struct drm_display_mode mode;
->         bool dvi_mode;
->         struct regmap *sys_regmap;
-> @@ -1072,17 +1072,18 @@ static const char * const mtk_hdmi_clk_names[MTK_=
-HDMI_CLK_COUNT] =3D {
->         [MTK_HDMI_CLK_AUD_SPDIF] =3D "spdif",
->  };
->
-> -static int mtk_hdmi_get_all_clk(struct mtk_hdmi *hdmi,
-> -                               struct device_node *np)
-> +static int mtk_hdmi_get_all_clk(struct mtk_hdmi *hdmi, struct device_nod=
-e *np,
-> +                               const char * const *clock_names, size_t n=
-um_clocks)
->  {
->         int i;
->
-> -       for (i =3D 0; i < ARRAY_SIZE(mtk_hdmi_clk_names); i++) {
-> -               hdmi->clk[i] =3D of_clk_get_by_name(np,
-> -                                                 mtk_hdmi_clk_names[i]);
-> +       for (i =3D 0; i < num_clocks; i++) {
-> +               hdmi->clk[i] =3D of_clk_get_by_name(np, clock_names[i]);
-> +
->                 if (IS_ERR(hdmi->clk[i]))
->                         return PTR_ERR(hdmi->clk[i]);
->         }
-> +
->         return 0;
->  }
->
-> @@ -1377,15 +1378,15 @@ static int mtk_hdmi_get_cec_dev(struct mtk_hdmi *=
-hdmi, struct device *dev, struc
->         return 0;
->  }
->
-> -static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
-> -                                  struct platform_device *pdev)
-> +static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi, struct platfor=
-m_device *pdev,
-> +                                  const char * const *clk_names, size_t =
-num_clocks)
->  {
->         struct device *dev =3D &pdev->dev;
->         struct device_node *np =3D dev->of_node;
->         struct device_node *remote, *i2c_np;
->         int ret;
->
-> -       ret =3D mtk_hdmi_get_all_clk(hdmi, np);
-> +       ret =3D mtk_hdmi_get_all_clk(hdmi, np, clk_names, num_clocks);
->         if (ret)
->                 return dev_err_probe(dev, ret, "Failed to get clocks\n");
->
-> @@ -1634,6 +1635,7 @@ static int mtk_hdmi_probe(struct platform_device *p=
-dev)
->  {
->         struct mtk_hdmi *hdmi;
->         struct device *dev =3D &pdev->dev;
-> +       const int num_clocks =3D MTK_HDMI_CLK_COUNT;
->         int ret;
->
->         hdmi =3D devm_kzalloc(dev, sizeof(*hdmi), GFP_KERNEL);
-> @@ -1643,7 +1645,11 @@ static int mtk_hdmi_probe(struct platform_device *=
-pdev)
->         hdmi->dev =3D dev;
->         hdmi->conf =3D of_device_get_match_data(dev);
->
-> -       ret =3D mtk_hdmi_dt_parse_pdata(hdmi, pdev);
-> +       hdmi->clk =3D devm_kcalloc(dev, num_clocks, sizeof(*hdmi->clk), G=
-FP_KERNEL);
-> +       if (!hdmi->clk)
-> +               return -ENOMEM;
-> +
-> +       ret =3D mtk_hdmi_dt_parse_pdata(hdmi, pdev, mtk_hdmi_clk_names, n=
-um_clocks);
->         if (ret)
->                 return ret;
->
+On Mon, 21 Apr 2025 18:12:38 +0800, Chen-Yu Tsai wrote:
+> Hi everyone,
+> 
+> This is v2 of my "component probe for Corsola devices" series.
+> 
+> Changes since v1:
+> - Reworded commit message for Elan I2C-HID binding change
+> - Dropped I2C address constraint from Elan I2C-HID binding completely
+> - Dropped enum from new compatible string entry in Elan I2C-HID binding
+> - Picked up Rob's ack on two binding changes
+> - Rebased onto next-20250417, resolving conflicts with "spherion
+>   component prober" changes
+> - Link to v1:
+>   https://lore.kernel.org/all/20250312104344.3084425-1-wenst@chromium.org/
+> 
+> Here's a follow up series of the I2C component probers for Chromebooks.
+> This series enables the component prober for the Corsola series of
+> devices, combines the two existing Voltorb SKUs, and adds a new
+> device, codename Squirtle.
+> 
+> Patch 1 adds a new HID-over-I2C touchscreen from Elan.
+> 
+> Patch 2 merges the Voltorb entries in the device tree bindings into one.
+> 
+> Patch 3 adds a new entry for the Squirtle device to the bindings.
+> 
+> Patch 4 fixes up the existing device trees for the component prober to
+> be active.
+> 
+> Patch 5 merges the device trees for the Voltorb device.
+> 
+> Patch 6 adds a device tree file for the Squirtle device, with I2C
+> components ready to be probed by the prober.
+> 
+> Patch 7 enables the prober to probe trackpads on some devices in the
+> Corsola family.
+> 
+> Patch 8 enables the prober to probe touchscreens on Squirtle.
+> 
+> Please take a look.
+> 
+> 
+> Thanks
+> ChenYu
+> 
+> 
+> Chen-Yu Tsai (8):
+>   dt-bindings: HID: i2c-hid: elan: Introduce Elan eKTH8D18
+>   dt-bindings: arm: mediatek: Merge MT8186 Voltorb entries
+>   dt-bindings: arm: mediatek: Add MT8186 Squirtle Chromebooks
+>   arm64: dts: mediatek: mt8186-steelix: Mark second source components
+>     for probing
+>   arm64: dts: mediatek: mt8186: Merge Voltorb device trees
+>   arm64: dts: mediatek: mt8186: Add Squirtle Chromebooks
+>   platform/chrome: of_hw_prober: Support trackpad probing on Corsola
+>     family
+>   platform/chrome: of_hw_prober: Support touchscreen probing on Squirtle
+> 
+>  .../devicetree/bindings/arm/mediatek.yaml     |   7 +-
+>  .../bindings/input/elan,ekth6915.yaml         |  12 +-
+>  arch/arm64/boot/dts/mediatek/Makefile         |   4 +-
+>  .../dts/mediatek/mt8186-corsola-squirtle.dts  | 107 ++++++++++++++++++
+>  .../dts/mediatek/mt8186-corsola-steelix.dtsi  |   9 +-
+>  .../mt8186-corsola-tentacool-sku327683.dts    |   2 +
+>  .../mt8186-corsola-tentacruel-sku262148.dts   |   2 +
+>  .../mt8186-corsola-voltorb-sku589824.dts      |  13 ---
+>  ...u589825.dts => mt8186-corsola-voltorb.dts} |   5 +-
+>  .../boot/dts/mediatek/mt8186-corsola.dtsi     |  10 +-
+>  .../platform/chrome/chromeos_of_hw_prober.c   |  29 +++++
+>  11 files changed, 167 insertions(+), 33 deletions(-)
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-squirtle.dts
+>  delete mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-voltorb-sku589824.dts
+>  rename arch/arm64/boot/dts/mediatek/{mt8186-corsola-voltorb-sku589825.dts => mt8186-corsola-voltorb.dts} (76%)
+> 
 > --
-> 2.49.0
->
+> 2.49.0.805.g082f7c87e0-goog
+> 
+> 
+> 
+
+
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
+
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
+
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+This patch series was applied (using b4) to base:
+ Base: attempting to guess base-commit...
+ Base: tags/next-20250417 (exact match)
+
+If this is not the correct base, please add 'base-commit' tag
+(or use b4 which does this automatically)
+
+New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/mediatek/' for 20250421101248.426929-1-wenst@chromium.org:
+
+arch/arm64/boot/dts/mediatek/mt8186-corsola-voltorb.dtb: spmi@10015000 (mediatek,mt8186-spmi): Unevaluated properties are not allowed ('interrupts' was unexpected)
+	from schema $id: http://devicetree.org/schemas/spmi/mtk,spmi-mtk-pmif.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-voltorb.dtb: sound (mediatek,mt8186-mt6366-rt5682s-max98360-sound): 'model' is a required property
+	from schema $id: http://devicetree.org/schemas/sound/mt8186-mt6366-rt1019-rt5682s.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix-sku131072.dtb: sound (mediatek,mt8186-mt6366-rt1019-rt5682s-sound): 'model' is a required property
+	from schema $id: http://devicetree.org/schemas/sound/mt8186-mt6366-rt1019-rt5682s.yaml#
+arch/arm64/boot/dts/mediatek/mt8186-corsola-squirtle.dtb: spmi@10015000 (mediatek,mt8186-spmi): Unevaluated properties are not allowed ('interrupts' was unexpected)
+	from schema $id: http://devicetree.org/schemas/spmi/mtk,spmi-mtk-pmif.yaml#
+
+
+
+
+
 
