@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7294C369AB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Apr 2025 10:20:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 392CCC369D5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Apr 2025 10:20:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4d0RlzVUiZ/GjheYPmzU3+xaXB4NRkzjoXsemgEHtik=; b=hvYg1EomMvB3LoeEJic7rimHXE
-	/UA+EbKQ/XzzDYz1kjH/ES3RYy4aSoVDXJNVEtahzS3cUnbBwBWNcYR7wq2wq9WZn+fmXcWgqFeGb
-	OdQA2G1FjHNioKPSWMtXDJxfWGzsX6OpVpRRg6wjYdFQgov1yAbcJb3NGCLHPztS+LN0FVw/xlmiT
-	rD9bF/5M0sRLh6LhnEH1l63wRpyLpanic09jFbyMD+GNfb5qUJGNzo4uuzkLJ0vxD2Pq//Rysnb4Q
-	lOSCW5OktuCuj3CUZO32Za+/lp1zWKilzBKAG8ylrwcOCGwWKr/89TpTXyHbr7ZvKQwkPpVlydgqG
-	fxaJ18Ag==;
+	bh=QpytMjpN9gDZuQ/F9dqqmXXp6n+OWf7Vs6AgeBOpoF8=; b=HgFNsXntiBM0mGTHcaHszsZfEK
+	cTxavwCQYxvM8vg5boBy6dpylFqlTFGEyFETDZaq1tJlKLtS3Tde7pKi5Oc3nAGGyYqF8/5bBelEW
+	5WX+ajv6WsyZSH5KXzeGFT/fckUo9QME9lpE7RzHOIWkiUMifouH1szmzyzePePVAsWlQr6P5ezhL
+	F6OBIIyHWPH21s0qnXIMILwtWTLS4oVB7vOSlRKFeiNtSPGlasb09YfNh7j6eun5AnRpi4k3FzR1Y
+	azM/mNaqRnFE8UhHxLsPUwHpglVMJ9bOffzksYt4dbjvszHaJdUPPBocsOCyEQP0Bm9RdKzKpq07R
+	Xd7l7g4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u6oGa-0000000453T-47MI;
-	Mon, 21 Apr 2025 10:20:44 +0000
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+	id 1u6oGb-0000000453f-19lt;
+	Mon, 21 Apr 2025 10:20:45 +0000
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u6o9L-0000000446h-2xrP
+	id 1u6o9O-0000000448C-2RhN
 	for linux-mediatek@lists.infradead.org;
-	Mon, 21 Apr 2025 10:13:17 +0000
-Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-223fd89d036so46038845ad.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 21 Apr 2025 03:13:15 -0700 (PDT)
+	Mon, 21 Apr 2025 10:13:19 +0000
+Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-225df540edcso48904305ad.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 21 Apr 2025 03:13:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1745230395; x=1745835195; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1745230398; x=1745835198; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=4d0RlzVUiZ/GjheYPmzU3+xaXB4NRkzjoXsemgEHtik=;
-        b=MOkq6fTZzYwuTlHW5vfVdeE5r6bDnFQ8HreY8FLdAX7vMePmth+xjVLGoVC2OhCOV/
-         x0MWGnWDq0hy0Rwmiizu9h6Gh9yvVqznvGsueY7tYOoshmxymloC6dx4IMt6gBge412t
-         eoEPBnynAXdzmXCI2Rzl+SDiq3DNm1nRlQxWI=
+        bh=QpytMjpN9gDZuQ/F9dqqmXXp6n+OWf7Vs6AgeBOpoF8=;
+        b=LhVSJk118dEB60KZzvm9K0SjaWU8Mp5hfw9F1/VZ3SR2Dt17yZf84bJ9HD+TbGfG2v
+         /0DKDp8JTnoudHO265XaJWYnsIPXwgZL2JuHqzRcTp+KdJPfspWdd5iO6/H6uhZjCqIW
+         J+Mnci8cGsLbrGlD+R2dCfrldICBjNbi6fsqQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745230395; x=1745835195;
+        d=1e100.net; s=20230601; t=1745230398; x=1745835198;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=4d0RlzVUiZ/GjheYPmzU3+xaXB4NRkzjoXsemgEHtik=;
-        b=oYxV4KcQUyf07vwUt+08FGR4JSoy36YX8lvDXnjHElJy6/18HP3vJ6UiUsBAVWHnOS
-         5xQgJhOYNWZSHf4Lnwke5b4fX/YHYQqWOpYXYUn7e7OjD/fWT4z5Mi3C0ykwBbdWA750
-         uV2fs8KXsumJMsMnwWJ6loUCo8Y0sl9nbtmM4Vqe2cWC8yYBT/RrsQ5xYvQYnS3QPvCw
-         s2HbvzUWObb8mAXRjEgtPPJotcTxZB3vPz7v6zu33FIPFaeyB++5yguybhpRDVQaUdK7
-         XInNzXtJZMCjkk6uNKfIye5y/YyPAGGZMhanHM9jZwYTQpCHnuBdrGa+p/ZmFA/h4cG8
-         l/9g==
-X-Forwarded-Encrypted: i=1; AJvYcCV2kZi6VzAIeLmsBb9yi42dJOC17nZ8qtC4G1SexpUm5AnfAt5YCVc1rho6bl6fjCQNQW65iczjL04UAOKIig==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxvuZUSEBrR62Qm/WdQTfLZIKmmmm4UgWyyCHUw0hr0cYjWuK2o
-	EeJiQ9VzwTfi8LdCoamg/T0eXxWTuWGuon9Hgco7HKPLOHRh96vjRPqxNhLYxQ==
-X-Gm-Gg: ASbGncuSioyxnoJqBcXj8NMLeMNq6+j3U6SKAI1dAifg/soPhM6QEw4fwPiUQ37o1Ih
-	ANwLCLZLzz1JpaE7eE7YnwMgbzWaN1Jr2vYOefI64Sx9MxR8DOVqy2YmfdlLsbopI0lkcJE8LQq
-	sWIhbq8EHZOAyq3vNE1vHkoSbAQqW7xmEoPGLwer1icstREAO0S1q2HOPDwzQU9jZS9Ip5wPcBC
-	6dfkFss+AosmaKIdOUCMm7edaqzl6S/jWUX/5hty3Oi/p3HGk3lI0lmr+DkMd6YQub/rpHapfCV
-	G0eiehv9hOWN4OahmLizlGg1BwFocDbPm/sWqNl3oOFB2vrTsxtWKBUX9ww=
-X-Google-Smtp-Source: AGHT+IF+AnZFOOLJPlbiAxkDb/YuGPI7JP89xIJch2irCDOD6BFYAkiFyfLLQWgKCePZd7wiHYd+Wg==
-X-Received: by 2002:a17:903:3c6b:b0:227:eb61:34b8 with SMTP id d9443c01a7336-22c535a7eecmr173618945ad.25.1745230394801;
-        Mon, 21 Apr 2025 03:13:14 -0700 (PDT)
+        bh=QpytMjpN9gDZuQ/F9dqqmXXp6n+OWf7Vs6AgeBOpoF8=;
+        b=gefd3/z5g/5RCkgsrjznFNZSnvbvKjyYzT+L5X8MZXXK9x6E0NcCE5tLujKphXklp5
+         VfN/a1USIDHVwCCVnUUCgwYEseTkGBxgcQynF2shBjUF+k9K449yIraT3+nRMfyYlcWI
+         RLL76pVqjihvRxIfVUn8JFBOLdK01KST+mmFyxQdf3v7L8fsa1sh16A0qhNn/G6GjjIU
+         FdPky6HYUyLSeVzrv/fDR4K7M2Z8BJKDJsEkuW2najZw6iXSGT2I7abT7u9Rs+BsZEKk
+         VsYqY/O+hTiAaBnpj0dg/ZqvCvQ664ACJGKRRJVvBD5xvM4uNkDbVWOlCpNLdfAMVJeL
+         BoTQ==
+X-Forwarded-Encrypted: i=1; AJvYcCV6YzDdVhkznVgcaEo9sUqWOcB3jFE6MlpKMaCNumY062IGBe6pHKytoV3b0REzW9dUCFqw/mCoNsklI+/Ijg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz5sg0zOoXKbHtZ1S4fEqJHjyUKpvP29AV7qeyfb54XJ5UKdeGk
+	ha2ZmKmHquGEDef9289Mhw42YfNz6/g5M6Xzw9PSk53DSn/aXpXhE8szJZC6gw==
+X-Gm-Gg: ASbGncuhiWV+vvnw+4a+BurmIH/AdLTSfQTDqU+KHp/Qi55jxyz3/SVXmfZ1orWezCZ
+	NJNS41ylDpbfabPz3J6gBjlb/mvE5+HSx0UDhZqLuuupYhE0xZ+yH2KZBVy4RA+1Q0ekHZRK0xg
+	1PeNxkEWDgUQ9EMDqs8hFgWc+FqlGVHngaYFnEsNxU0wKtIYewGN80v5Unv/7LMtwDztKgOJtx9
+	8QoGuWRbyu8rdMIHlKpH+xwk1CfclX7VyB0jFPc0ZxSLPwP5Af22Ety/i6juPWfY90DGInQEqjP
+	yqSHCQzV8PRF8+9yIAhSxoanZYLLIOtOtn2Gmk/wE2fBjGWlj20gof0cfAaep5ZRDPLyJA==
+X-Google-Smtp-Source: AGHT+IF6rGXrSzCpvaNGhX4xciML4WX1Qp+Xf99qU1svwwhGPd2mOXprUmL/S+UqQYoWzSfytulsaw==
+X-Received: by 2002:a17:902:f644:b0:224:7a4:b31 with SMTP id d9443c01a7336-22c53e38f33mr139591965ad.6.1745230398086;
+        Mon, 21 Apr 2025 03:13:18 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:7633:f42a:d31d:3f9c])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22d78db8b04sm38985205ad.238.2025.04.21.03.13.12
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22d78db8b04sm38985205ad.238.2025.04.21.03.13.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 21 Apr 2025 03:13:14 -0700 (PDT)
+        Mon, 21 Apr 2025 03:13:17 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -81,19 +81,19 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-mediatek@lists.infradead.org,
 	chrome-platform@lists.linux.dev,
 	linux-input@vger.kernel.org,
-	Douglas Anderson <dianders@chromium.org>
-Subject: [PATCH v2 3/8] dt-bindings: arm: mediatek: Add MT8186 Squirtle Chromebooks
-Date: Mon, 21 Apr 2025 18:12:41 +0800
-Message-ID: <20250421101248.426929-4-wenst@chromium.org>
+	Douglas Anderson <dianders@chromium.org>,
+	stable+noautosel@kernel.org
+Subject: [PATCH v2 4/8] arm64: dts: mediatek: mt8186-steelix: Mark second source components for probing
+Date: Mon, 21 Apr 2025 18:12:42 +0800
+Message-ID: <20250421101248.426929-5-wenst@chromium.org>
 X-Mailer: git-send-email 2.49.0.805.g082f7c87e0-goog
 In-Reply-To: <20250421101248.426929-1-wenst@chromium.org>
 References: <20250421101248.426929-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250421_031315_741484_4515873F 
-X-CRM114-Status: UNSURE (   9.72  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250421_031318_613906_D1F1C40A 
+X-CRM114-Status: GOOD (  13.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,33 +108,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add an entry for the MT8186 based Squirtle Chromebooks, also known as the
-Acer Chromebook Spin 311 (R724T). The device is a 2-in-1 convertible.
+Steelix design has two possible trackpad component sources. Currently
+they are all marked as available, along with having workarounds for
+shared pinctrl muxing and GPIOs.
 
+Instead, mark them all as "fail-needs-probe" and have the implementation
+try to probe which one is present.
+
+Also remove the shared resource workaround by moving the pinctrl entry
+for the trackpad interrupt line back into the individual trackpad nodes.
+
+Cc: <stable+noautosel@kernel.org> # Needs accompanying new driver to work
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
 ---
-Changes since v1:
-- Added Rob's ack
----
- Documentation/devicetree/bindings/arm/mediatek.yaml | 4 ++++
- 1 file changed, 4 insertions(+)
+ .../boot/dts/mediatek/mt8186-corsola-steelix.dtsi      |  7 +++++++
+ .../mediatek/mt8186-corsola-tentacool-sku327683.dts    |  2 ++
+ .../mediatek/mt8186-corsola-tentacruel-sku262148.dts   |  2 ++
+ arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi       | 10 ++++------
+ 4 files changed, 15 insertions(+), 6 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-index 49ddc504c160..f0b4ccd81c4d 100644
---- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-@@ -291,6 +291,10 @@ properties:
-           - const: google,steelix-sku196608
-           - const: google,steelix
-           - const: mediatek,mt8186
-+      - description: Google Squirtle (Acer Chromebook Spin 311 (R724T)
-+        items:
-+          - const: google,squirtle
-+          - const: mediatek,mt8186
-       - description: Google Starmie (ASUS Chromebook Enterprise CM30 (CM3001))
-         items:
-           - const: google,starmie-sku0
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix.dtsi b/arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix.dtsi
+index e74e886a00cb..822a177e7c19 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-steelix.dtsi
+@@ -123,8 +123,11 @@ trackpad@2c {
+ 		reg = <0x2c>;
+ 		hid-descr-addr = <0x20>;
+ 		interrupts-extended = <&pio 11 IRQ_TYPE_LEVEL_LOW>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&trackpad_pin>;
+ 		vdd-supply = <&pp3300_s3>;
+ 		wakeup-source;
++		status = "fail-needs-probe";
+ 	};
+ };
+ 
+@@ -197,3 +200,7 @@ pins-vreg-en {
+ 		};
+ 	};
+ };
++
++&trackpad {
++	status = "fail-needs-probe";
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacool-sku327683.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacool-sku327683.dts
+index c3ae6f9616c8..4dbf2cb73a81 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacool-sku327683.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacool-sku327683.dts
+@@ -17,6 +17,8 @@ trackpad@15 {
+ 		compatible = "hid-over-i2c";
+ 		reg = <0x15>;
+ 		interrupts-extended = <&pio 11 IRQ_TYPE_LEVEL_LOW>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&trackpad_pin>;
+ 		hid-descr-addr = <0x0001>;
+ 		vdd-supply = <&pp3300_s3>;
+ 		wakeup-source;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-sku262148.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-sku262148.dts
+index 447b57b12b41..ee5bc2cd9e9f 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-sku262148.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-tentacruel-sku262148.dts
+@@ -19,6 +19,8 @@ trackpad@15 {
+ 		compatible = "hid-over-i2c";
+ 		reg = <0x15>;
+ 		interrupts-extended = <&pio 11 IRQ_TYPE_LEVEL_LOW>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&trackpad_pin>;
+ 		hid-descr-addr = <0x0001>;
+ 		vdd-supply = <&pp3300_s3>;
+ 		wakeup-source;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
+index cebb134331fb..918f17385ba5 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
+@@ -390,19 +390,17 @@ &i2c1 {
+ 
+ &i2c2 {
+ 	pinctrl-names = "default";
+-	/*
+-	 * Trackpad pin put here to work around second source components
+-	 * sharing the pinmux in steelix designs.
+-	 */
+-	pinctrl-0 = <&i2c2_pins>, <&trackpad_pin>;
++	pinctrl-0 = <&i2c2_pins>;
+ 	clock-frequency = <400000>;
+ 	i2c-scl-internal-delay-ns = <10000>;
+ 	status = "okay";
+ 
+-	trackpad@15 {
++	trackpad: trackpad@15 {
+ 		compatible = "elan,ekth3000";
+ 		reg = <0x15>;
+ 		interrupts-extended = <&pio 11 IRQ_TYPE_LEVEL_LOW>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&trackpad_pin>;
+ 		vcc-supply = <&pp3300_s3>;
+ 		wakeup-source;
+ 	};
 -- 
 2.49.0.805.g082f7c87e0-goog
 
