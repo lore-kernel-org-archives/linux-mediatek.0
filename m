@@ -4,76 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0387C369AB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Apr 2025 07:44:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 376E0C369AB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Apr 2025 09:11:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MVirZaX7mqDjLeR4gMWjacsh/SmBHOzvxK+omyEcQhA=; b=w6ZIILDXlzYsxjtg9jwWEKFoeO
-	TpJ18v5T2mwJQjrRGIVB14jKFmlkT8ZYMv9G8q/q8X3FErV12GPLa6NQsSjx+vu7JXa2OAZ0FNs7O
-	6nLeApFO98bhyv9xmCwPulEuNAJd6DIyhOcl4oTsfAxkXi07yf67zuNfVJdHgo3cydXpAq9YdQbYk
-	/zLg/miX/WMr7hSaLiCbO+hfiqXFgpDSEjWc2B6wjzDPphy7HCXFI2xDRSK3Yyg+gwwfDLoRyzPCB
-	G39e8zYKV6H+4qh9nN8tGj+lOvLWHeJGSkfrA43Taws4LrDrLFJWgKt7DMQqXBrEIQfkITLe+nRNj
-	WoMTxcIg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=xw8UIDvZBCcr83U5CXKVA2bqzTMOFGkmm5WFSkBADIc=; b=1xaOrbV8P10I55OzvRT2tjTXtn
+	XWKthPVfVW7YD/lFe2QMn0O1CgcMG9ut/8iCABUbNdOgyZz5Uw720myXzOq+GPeq1zM4rX89TQDTX
+	TA2IKMtG6TS8JbWhpd5bC9CkmA1wZX8bjvwqNdg6KC3+eEHrOL+7u/EjeYRS3yg1X076LhVS3wfJW
+	ZwwqZ8bqsg/HvTjQD2AE5Kw2bxqlgrNsU7FIhQFGiD968WIcVvt2iXWeUVZEdDNKvwOF0FblOcoU2
+	ZuE00npHE/XUUfuee+420/obsrSUjN/LecnfxJc2JWkanb6f6oeyBk8XcrIeTrPOSu8NBYDY07ksd
+	/28rRmEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u6lpX-00000003p8L-3SjL;
-	Mon, 21 Apr 2025 07:44:39 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1u6nBx-00000003y1x-3tvb;
+	Mon, 21 Apr 2025 09:11:53 +0000
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u6lpW-00000003p7n-0yNu
+	id 1u6nA5-00000003xpG-2flN
 	for linux-mediatek@lists.infradead.org;
-	Mon, 21 Apr 2025 07:44:39 +0000
-X-UUID: 588f75b01e8211f0b1a74d0c5e11a509-20250421
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=MVirZaX7mqDjLeR4gMWjacsh/SmBHOzvxK+omyEcQhA=;
-	b=Yxms9N0oPngqv0fZExw8/nmeYtcNkPhUEVR8TXPzXwbG5lFF2NHc9Jx2hpReiJFhj2k2Sojgj+oK9U+BRYUxt16cuXUTZLnJMBqh/JYGPIs+MoPpoPAhFk2XAKz+5eEk9H2J5ej0gJa+MTe1OLr2OZHAOdxg4L76uSyDv0/eq/A=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:16b1f686-c147-4ac1-948b-51f213e9fbe5,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:0ef645f,CLOUDID:6d05d98d-f5b8-47d5-8cf3-b68fe7530c9a,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
-	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
-	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 588f75b01e8211f0b1a74d0c5e11a509-20250421
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <chris.lu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1802200245; Mon, 21 Apr 2025 00:29:22 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Mon, 21 Apr 2025 15:29:20 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Mon, 21 Apr 2025 15:29:20 +0800
-From: Chris Lu <chris.lu@mediatek.com>
-To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
-	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Jiande Lu <jiande.lu@mediatek.com>,
-	Will Lee <will-cy.lee@mediatek.com>, SS Wu <ss.wu@mediatek.com>, Steve Lee
-	<steve.lee@mediatek.com>, linux-bluetooth <linux-bluetooth@vger.kernel.org>,
-	linux-kernel <linux-kernel@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
-Subject: [PATCH v1 2/2] Bluetooth: btmtksdio: Do close if SDIO card removed without close
-Date: Mon, 21 Apr 2025 15:29:14 +0800
-Message-ID: <20250421072914.466092-3-chris.lu@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20250421072914.466092-1-chris.lu@mediatek.com>
-References: <20250421072914.466092-1-chris.lu@mediatek.com>
+	Mon, 21 Apr 2025 09:09:58 +0000
+Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-22622ddcc35so55786765ad.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 21 Apr 2025 02:09:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1745226596; x=1745831396; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=xw8UIDvZBCcr83U5CXKVA2bqzTMOFGkmm5WFSkBADIc=;
+        b=JcP/wEkBUvTjAAq8x2ykkmhybpqiZcbbSlDco2OIPDF+6Wz5O0JAo+Szm7ot2EdR0Z
+         vi5h35loPl4NZyRngg6HrBYcaIfFErYOj7vMhq4/0CYJVZjdouJveinKD/6ASHTEIZDa
+         x2Jk715OV4xr/JTjrIj136F5IvvHygbqY0dn4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1745226596; x=1745831396;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=xw8UIDvZBCcr83U5CXKVA2bqzTMOFGkmm5WFSkBADIc=;
+        b=UAFMdB/w8oYqIdOgawWtQS6EvzejuX0dsDP/gTLq6mmeJIIURO0nkZBDoJvgj9txVs
+         y4fk6gHmTTLV4fnSvsO+1hXmEGK+sOtufzvYjd947V73KwSoacGZPwDd2A7aPLdJPuw/
+         nVtkGoXLQklGlXIXmKGXozhm2w0ZQHpK78I7j3RNQWORdQjznSuuHp2FaJE05pDUR7Hb
+         83/8Bws02LY3B0sdt6mBaEG/oAZlgNhmKBwWTpdEHCSJJU7ZM8vUTGWcxfNSp0usmC/k
+         shb7a67DJjUAlGYIq2vLykFQ5Qr1AQGVd6qn6TglrLbNmVe4LNQBzw66MzGteKymnBFp
+         Zz0A==
+X-Forwarded-Encrypted: i=1; AJvYcCVIeTpTv7y5yscDNwX2ReKJ2heQ2XuXLXjqZFq4Xk+hVON3/1tfugkzL9Fiq9ezMCY0HXKH484+DgoJKveKKw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyJooQO25HGMf8DuoNKuS17Tqd37ZaeLqfogM7UmZvMerW0kBnp
+	hYElv/nJIJo3CKRsl7xHaMOfbvTbFR5U6uP/yYxSCCPdJ63lBM2M/QG4FxMKtQ==
+X-Gm-Gg: ASbGnctfAFkxsDohHe0KuvaqoFJGSry17GKkzGSvoZ8KhI1e5md3tOSt6ZgdLx580RL
+	clqAMNeLiGOO+iBdBVKf6rTOKirpTWVtqIvmuoV+5DNSNHULFhrxUcXjFja95SNE6dCmG52dsjf
+	zAnjY8S4/PNGM36RUjcTfP2y8HtbyxIcsm0mVmHol6QecUitm3FEhrb03d5wiSByexOCPYKhnjP
+	aCm2FU4aqLMbG8ZPw/pkpxgc67nPpk7e9Q1BVQXp397itXyEJ63UbnuI9IztYUdW3ki4lGT9G9E
+	r3oBi0tDRIPLEPv/nHUXbAlN3LSzScLr2WkAua/m8dyRIuGLlnr5/87U6nFP93tB4EKDPw==
+X-Google-Smtp-Source: AGHT+IHDl/Ex7FBzvgMFPAFFoh7YhHYfxUvKL5Gx49McL1TrmyCRhCWjmqZwJhpIy+Bel/jx902Q6g==
+X-Received: by 2002:a17:903:2ca:b0:224:1609:a747 with SMTP id d9443c01a7336-22c535cbfb0mr168110325ad.31.1745226596121;
+        Mon, 21 Apr 2025 02:09:56 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:7633:f42a:d31d:3f9c])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73dbf8e3d4asm6113079b3a.70.2025.04.21.02.09.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 21 Apr 2025 02:09:55 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Ulf Hansson <ulf.hansson@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	linux-pm@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] pmdomain: mediatek: Add error messages for missing regmaps
+Date: Mon, 21 Apr 2025 17:09:50 +0800
+Message-ID: <20250421090951.395467-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.49.0.805.g082f7c87e0-goog
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250421_004438_285647_6F63B57C 
-X-CRM114-Status: GOOD (  10.39  )
+X-CRM114-CacheID: sfid-20250421_020957_666924_A664116D 
+X-CRM114-Status: GOOD (  11.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,38 +96,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-To prevent Bluetooth SDIO card from being physically removed suddenly,
-driver needs to ensure btmtksdio_close is called before btmtksdio_remove
-to disable interrupts and txrx workqueue.
+A recent change to the syscon regmap API caused the MediaTek power
+controller drivers to fail, as the required regmap could no longer be
+retrieved. The error did not have an accompanying message, making the
+failure less obvious. The aforementioned change has since been reverted.
 
-Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+Add error messages to all the regmap retrievals, thereby making all
+error paths in scpsys_add_one_domain() have visible error messages.
+
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/bluetooth/btmtksdio.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ drivers/pmdomain/mediatek/mtk-pm-domains.c | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-index 3c66e3ee9834..c16a3518b8ff 100644
---- a/drivers/bluetooth/btmtksdio.c
-+++ b/drivers/bluetooth/btmtksdio.c
-@@ -1447,11 +1447,15 @@ static void btmtksdio_remove(struct sdio_func *func)
- 	if (!bdev)
- 		return;
+diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+index b866b006af69..22cdd34ed008 100644
+--- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
++++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+@@ -397,20 +397,26 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
  
-+	hdev = bdev->hdev;
-+
-+	/* Make sure to call btmtksdio_close before removing sdio card */
-+	if (test_bit(BTMTKSDIO_FUNC_ENABLED, &bdev->tx_state))
-+		btmtksdio_close(hdev);
-+
- 	/* Be consistent the state in btmtksdio_probe */
- 	pm_runtime_get_noresume(bdev->dev);
+ 	pd->infracfg = syscon_regmap_lookup_by_phandle_optional(node, "mediatek,infracfg");
+ 	if (IS_ERR(pd->infracfg))
+-		return ERR_CAST(pd->infracfg);
++		return dev_err_cast_probe(scpsys->dev, pd->infracfg,
++					  "%pOF: failed to get infracfg regmap\n",
++					  node);
  
--	hdev = bdev->hdev;
--
- 	sdio_set_drvdata(func, NULL);
- 	hci_unregister_dev(hdev);
- 	hci_free_dev(hdev);
+ 	smi_node = of_parse_phandle(node, "mediatek,smi", 0);
+ 	if (smi_node) {
+ 		pd->smi = device_node_to_regmap(smi_node);
+ 		of_node_put(smi_node);
+ 		if (IS_ERR(pd->smi))
+-			return ERR_CAST(pd->smi);
++			return dev_err_cast_probe(scpsys->dev, pd->smi,
++						  "%pOF: failed to get SMI regmap\n",
++						  node);
+ 	}
+ 
+ 	if (MTK_SCPD_CAPS(pd, MTK_SCPD_HAS_INFRA_NAO)) {
+ 		pd->infracfg_nao = syscon_regmap_lookup_by_phandle(node, "mediatek,infracfg-nao");
+ 		if (IS_ERR(pd->infracfg_nao))
+-			return ERR_CAST(pd->infracfg_nao);
++			return dev_err_cast_probe(scpsys->dev, pd->infracfg_nao,
++						  "%pOF: failed to get infracfg-nao regmap\n",
++						  node);
+ 	} else {
+ 		pd->infracfg_nao = NULL;
+ 	}
 -- 
-2.45.2
+2.49.0.805.g082f7c87e0-goog
 
 
