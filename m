@@ -4,117 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F418C369D3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Apr 2025 19:18:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A25C4C369D5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Apr 2025 19:19:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=utVDdpxrgjnfN0h4lobydcS8PzzalhnEHxW9nCf1r/E=; b=YTDPhSH+Dek7SGc+Fvt5fedWcR
-	mzPuAxDG6aO/wI4pT1ZdkpI+PB56QPnB04p3ZSkCKiavlBFp/Belif5IYH/zVmuS88JAwmlE7Yc7Q
-	AY7XLttUBrZOdX4Qosl3jCto9bi0ZgRU2rkC4RngqehhEz6sJom7xM2KNsnaNTInDKCSS2bObX9dD
-	1lHxgxQx4o2SRKsrco+Xh1U9BVJ5gsXWPRrzZdt+LMpPJIJIACa0KeSD4P1DiytBod4qFYZcn0Cyl
-	uPofDbz8+t526+I3LKRQGPZBaStCxvubisCwETeWOkMNyReN513QS3Jj/TDu+VOtTmyjqdow2ffKt
-	h6Ksa2Xw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KJcRqfa5CCPmTaOo2sTvJJGxZ9DlOMCI9iLuHheiPr8=; b=teKWfIlwfKZe2kRdxlTPqBV6+X
+	lWrdMG8Gt9qQUwkslWEKzvMdrGpJ+V+Tq/u30VU35xb3/FE84/a4GKICG0Cd8EcB0Y/9wpVS0OSNR
+	oQew406okuqst8yOID0Kz0ff2mMOq8Uji+QgPXnIzWRFNP/ysJa/US4e06M42U6pErNupl1bCnnBN
+	9RyTCwVfYNe5sr0fpBoXpdvCL9sG4K+JxA42QfcbfTbmnU2ogbpt00qxcosNB+cXxQ8wwRb/Wb4Rr
+	ed9axJ5CsAanjE2HpNft+YRHTB9o4SE2YfGS31Z1afbyQRQL9eJ3Qh0Kcps+vXuQ+CGJoIwkp0PwQ
+	pQZsIGXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u6wfF-000000050zO-45lU;
-	Mon, 21 Apr 2025 19:18:45 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1u6wfm-0000000517M-36qR;
+	Mon, 21 Apr 2025 19:19:18 +0000
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u6wdM-000000050i5-3129
+	id 1u6wfj-0000000515u-37Vp
 	for linux-mediatek@lists.infradead.org;
-	Mon, 21 Apr 2025 19:16:50 +0000
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 53LIgAX7013828
-	for <linux-mediatek@lists.infradead.org>; Mon, 21 Apr 2025 19:16:47 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to; s=qcppdkim1; bh=utVDdpxrgjnfN0h4lobydcS8
-	PzzalhnEHxW9nCf1r/E=; b=MY6S0EQskGWy8rz4Cee7XeMpzfOvMJ93mAyoiOC1
-	WquXJufkxDsZ7wa6jAPKbLyvquclJ2I33dS4ZoMvAQE+47H1EB+OBp2s/ZvRKWRD
-	VTogoGE9ZOLR8NVTZFOD64meJPRApGvUwhU0S6J05yTzRVmggxafSMA5JQhZBXnM
-	gFU/Poi00CG0bNrRtNV/mulpZJSdpKQhZn/Qdl+63ore+tOnYW+O+b3pd1RtM+ZV
-	eS5d/vYgtrnBpMjrUxD56y7uCbZiJq80CK+3Z3i0zakN8Touqbur09T0Worq5oJa
-	4VSq2zvd4D1Oj/5GhIOK1rY3jmmIpaXuxLwkX3Ps0xoGTg==
-Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com [209.85.222.200])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4643wwn5gg-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Mon, 21 Apr 2025 19:16:47 +0000 (GMT)
-Received: by mail-qk1-f200.google.com with SMTP id af79cd13be357-7c5d9d8890fso947894985a.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 21 Apr 2025 12:16:47 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745263007; x=1745867807;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+	Mon, 21 Apr 2025 19:19:17 +0000
+Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-5493b5bc6e8so6020863e87.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 21 Apr 2025 12:19:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1745263153; x=1745867953; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=utVDdpxrgjnfN0h4lobydcS8PzzalhnEHxW9nCf1r/E=;
-        b=EdFyn1hHBsEqbLpdflGP5xc23vqFjw567YT3AnbFEF2BGwUDf70Q9Uc60S5paSxZpc
-         //K5ko6fpSqxsBR0UrM3DDbBmAKJQQmuK+Gn/hqhCu10Yy7UJQIsyK9qh1jAI1qTnkjm
-         KJrOHTX4FYHDxS48yNCe2q05zOXSiP9EKFVQh0EluDPjGkll+7VnPMv2rSPK+MxY7tlr
-         OCI5KV/QKzvIl7Po1RiRrQl4IDoAKNOD4NG5s6n+6gJKhBSZkX6OzQFtEpb5bt2cJwP4
-         Y2R2kdUOLBpmTxis7XkeXOjLERk9Z5p23+mKLxx8LZ/vkjXAfVrCPHXr1zHNjTrtb3xQ
-         bHpQ==
-X-Forwarded-Encrypted: i=1; AJvYcCU1yls1R+Rnwwl1o+iZ3M2yuPYLg3TLWKrqA2tR4eEacTEvNqy7j8MV6ICPu1yGWDsu9qwTuAEK7UPN/QQsuw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwzJYgfqLS/QkSa3d6kEfDDocZw8ZTRenvjDDUc/DHyNuZj6gZJ
-	FTYC2O/uAvkDsSG5OXRh8G8cKnfqhEVRRVpmL8Z3CMsZDzqtxhX0PAz2+xbDH6bgTRtbw844DEt
-	3pTZ8CdlCJat4B9oQ+Y9cutz0yHuCjgxbi1TSQq88mGgiYhrhlZ2qEC/EtyCaOW5Ij0e53RM=
-X-Gm-Gg: ASbGncsstNxxXUcBwqix96ZYy0QHfiWOlvjiwcK7JBazW2NaoEbyPPNKplRPFT06D/P
-	zvP1by8yyB8KP5Yf+cdDI/QiIeArmbdcFpk64Dic7RNgQmegiTCyp2t0ptSIYX6Kpsq9pocWaHl
-	Zn3nVm6RdSMGppNbiZb5jOHvGt3ChJm8bzCMUK9PFArt0UOj6Q4CyQ/F4gNOl+sP0JZvZNG861L
-	BkkAiHCnZ7IiZWZZ/dbkrWVN5+uvkp2q7ZN9QyjkeWG8+q51fUpX6no3gZLdm3rmyHHlOc9klfx
-	670YD5ALAWrOcKoz8Yuanqc1fHUx2NAZJ1AYOKjZhPADcpVUP0FZlLAWjqGI2pVDCyzTkwu4xjE
-	=
-X-Received: by 2002:a05:620a:3707:b0:7c9:142d:3c66 with SMTP id af79cd13be357-7c92565eeb9mr2626998985a.0.1745263006765;
-        Mon, 21 Apr 2025 12:16:46 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEwsaWGw4uh2u7lX7Z9kxeE1gU+aUICLwSlmuNpDpcbTieu7XF0j4yvIIDpkValfcGqijWYKA==
-X-Received: by 2002:a05:620a:3707:b0:7c9:142d:3c66 with SMTP id af79cd13be357-7c92565eeb9mr2626993785a.0.1745263006368;
-        Mon, 21 Apr 2025 12:16:46 -0700 (PDT)
-Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--7a1.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::7a1])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-54d6e5242a2sm1005685e87.2.2025.04.21.12.16.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 21 Apr 2025 12:16:45 -0700 (PDT)
-Date: Mon, 21 Apr 2025 22:16:43 +0300
-From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
-        simona@ffwll.ch, maarten.lankhorst@linux.intel.com, mripard@kernel.org,
-        tzimmermann@suse.de, robh@kernel.org, krzk+dt@kernel.org,
-        conor+dt@kernel.org, matthias.bgg@gmail.com, ck.hu@mediatek.com,
-        jitao.shi@mediatek.com, jie.qiu@mediatek.com, junzhi.zhao@mediatek.com,
-        dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
-        devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-        linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
-        dmitry.baryshkov@linaro.org, lewis.liao@mediatek.com,
-        ives.chenjh@mediatek.com, tommyyl.chen@mediatek.com,
-        jason-jh.lin@mediatek.com
-Subject: Re: [PATCH v9 22/23] drm/mediatek: Introduce HDMI/DDC v2 for
- MT8195/MT8188
-Message-ID: <aestmu2rblcrcz77tuqgkimaj4stg24skyp2avdstahwr3aa3i@cfv5ov2qjcf6>
-References: <20250415104321.51149-1-angelogioacchino.delregno@collabora.com>
- <20250415104321.51149-23-angelogioacchino.delregno@collabora.com>
+        bh=KJcRqfa5CCPmTaOo2sTvJJGxZ9DlOMCI9iLuHheiPr8=;
+        b=QWFmaCepZKl92xPiGNk7RkQlVzlNLtrqGH9ESWARvc5EcLF1/3p/cn80zLwuYS7PKc
+         FtL7ZOFjCdqJsbm4ECUA45jOe3A4xSCeS00Pid77+hGN4qAXYNcLpcWb7VSBK1Zi1FkB
+         fZRo+Lctuik1Y8CDzIzXrcShdBNOzc6lvjSD+TKC0GU7+JLSm2Dmgaw3PJmass3IdUAl
+         m6p1VPvINyI76LjEMHDFkx0rnQb2HMGhWvkFPrWqnaLRO3ZH/CvYyB7mVfY4A8LbRHSt
+         qHzKvqMYmlaJh1wNHuDaql6T2Fj8QxRnx+IQWTsMfrC+jfQX9LPAhgTrJFnwldzKAj0P
+         frUg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1745263153; x=1745867953;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=KJcRqfa5CCPmTaOo2sTvJJGxZ9DlOMCI9iLuHheiPr8=;
+        b=LYETNZbwpx2IrxcjzyaCpBpcKCgTTpNCAnI+ciyB6jIv/eV1EdVutKHXHiFBCrGBoD
+         fAdc9EnGlwM8FcUA6dNdFsJ4olLFaOKxd76Xhmd6FQzIcTD1wVfRz8GDzSBmNCOxah6U
+         PIIBfAOe6PgXBOZNjV5sZcqntyS58yNeMghYg1axjXw9pOdiLzjDg1UfUiWhA6Yoz3jJ
+         azIyoG7TWwZoIRnTRvlWDxioyqi9NkR8ztgUt9SVvRqIDNBbStAGXvKo/OdE2b7I3eVA
+         gnSeDnkFvajfifhSjf5+D7WxpawkB1/qVH/u+iQpSQxE/aG9Ji+NHC3/qhYhi1D50PrE
+         MLfw==
+X-Forwarded-Encrypted: i=1; AJvYcCXbCXXC0h4ngi7+XfFBl7fqL/VqdNlcZOaz0HHGlIqzPdr57wxxqM3ye14XApPtz0T8OxQorqQlF+EQx03i0Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwEOc+M+c1ZnUlX7IVTzregYi/oXkDSmQgwHeVliSTjotvVhQLB
+	CgIaC0lpCo4VvkjnXy4q1/pRZziT+FesSEWcwCI4oEOHF9oBec2Kxv694F8C0aoXOo8+XPI5hCo
+	lyXaMs7p2j2yg9sQ+OrCjRto+Wlg=
+X-Gm-Gg: ASbGncsR/ubUqNCfBcwI8wjkhfYiIde0wrlnrBOMr3Q0tHvxe8bUlna8Ul/GyM+DwFT
+	r5xrjCeqWPeX7OiauHNYXQSweL4KK6/CcQjJtfhNR9DbO5DO/GKazM2RSfQqAnJz7wyy1aEBnO1
+	QWmoXEwVpAw0TN3RO5kWf7
+X-Google-Smtp-Source: AGHT+IHXHFlrF4EijWInQ0q6byiERQ/3YNIJpnij63pytbHmgcPlJabHpsS0ZaHrvX3ER21PDg85XpuTKP5mo+QMWuE=
+X-Received: by 2002:a05:6512:4020:b0:54c:a49:d3de with SMTP id
+ 2adb3069b0e04-54d6e61ba8amr3683500e87.10.1745263152985; Mon, 21 Apr 2025
+ 12:19:12 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250415104321.51149-23-angelogioacchino.delregno@collabora.com>
-X-Authority-Analysis: v=2.4 cv=IpEecK/g c=1 sm=1 tr=0 ts=6806999f cx=c_pps a=hnmNkyzTK/kJ09Xio7VxxA==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10 a=XR8D0OoHHMoA:10 a=mpaa-ttXAAAA:8 a=QX4gbG5DAAAA:8 a=VUQ5xn941hO9jOC13tcA:9 a=CjuIK1q_8ugA:10
- a=PEH46H7Ffwr30OY-TuGO:22 a=AbAUZ8qAyYyZVLSsDulk:22
-X-Proofpoint-GUID: ve2ngHVfsieq3pYBCaSSK7rFuXz9KrgM
-X-Proofpoint-ORIG-GUID: ve2ngHVfsieq3pYBCaSSK7rFuXz9KrgM
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1095,Hydra:6.0.680,FMLib:17.12.68.34
- definitions=2025-04-21_09,2025-04-21_02,2024-11-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowpriorityscore=0
- spamscore=0 adultscore=0 clxscore=1015 bulkscore=0 malwarescore=0
- suspectscore=0 priorityscore=1501 mlxscore=0 mlxlogscore=804
- impostorscore=0 phishscore=0 classifier=spam authscore=0 authtc=n/a
- authcc= route=outbound adjust=0 reason=mlx scancount=1
- engine=8.19.0-2502280000 definitions=main-2504210150
+References: <20250421072914.466092-1-chris.lu@mediatek.com> <20250421072914.466092-2-chris.lu@mediatek.com>
+In-Reply-To: <20250421072914.466092-2-chris.lu@mediatek.com>
+From: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
+Date: Mon, 21 Apr 2025 15:19:00 -0400
+X-Gm-Features: ATxdqUGL3FDMyjw1v0Rvzf5QBxrifSLl3fT6ELdaZgKRxwz3EqxSIe_IBUO2sh0
+Message-ID: <CABBYNZLZ7tx6nm1=gzuShgrp5xV4_4AT4_Y=kvAg8zbWjTR5dQ@mail.gmail.com>
+Subject: Re: [PATCH v1 1/2] Bluetooth: btmtksdio: Check function enabled
+ before doing close
+To: Chris Lu <chris.lu@mediatek.com>
+Cc: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg <johan.hedberg@gmail.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Jiande Lu <jiande.lu@mediatek.com>, 
+	Will Lee <will-cy.lee@mediatek.com>, SS Wu <ss.wu@mediatek.com>, 
+	Steve Lee <steve.lee@mediatek.com>, linux-bluetooth <linux-bluetooth@vger.kernel.org>, 
+	linux-kernel <linux-kernel@vger.kernel.org>, 
+	linux-mediatek <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250421_121648_879280_6432958E 
-X-CRM114-Status: GOOD (  35.05  )
+X-CRM114-CacheID: sfid-20250421_121915_780152_A45CC23E 
+X-CRM114-Status: GOOD (  13.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,195 +99,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 15, 2025 at 12:43:20PM +0200, AngeloGioacchino Del Regno wrote:
-> Add support for the newer HDMI-TX (Encoder) v2 and DDC v2 IPs
-> found in MediaTek's MT8195, MT8188 SoC and their variants, and
-> including support for display modes up to 4k60 and for HDMI
-> Audio, as per the HDMI 2.0 spec.
-> 
-> HDCP and CEC functionalities are also supported by this hardware,
-> but are not included in this commit and that also poses a slight
-> difference between the V2 and V1 controllers in how they handle
-> Hotplug Detection (HPD).
-> 
-> While the v1 controller was using the CEC controller to check
-> HDMI cable connection and disconnection, in this driver the v2
-> one does not.
-> 
-> This is due to the fact that on parts with v2 designs, like the
-> MT8195 SoC, there is one CEC controller shared between the HDMI
-> Transmitter (HDMI-TX) and Receiver (HDMI-RX): before eventually
-> adding support to use the CEC HW to wake up the HDMI controllers
-> it is necessary to have support for one TX, one RX *and* for both
-> at the same time.
-> 
-> Reviewed-by: CK Hu <ck.hu@mediatek.com>
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Hi Chris,
+
+On Mon, Apr 21, 2025 at 3:29=E2=80=AFAM Chris Lu <chris.lu@mediatek.com> wr=
+ote:
+>
+> Check BTMTKSDIO_FUNC_ENABLED flag before doing close to prevent
+> btmtksdio_close been called twice.
+>
+> Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+
+Please add Fixes tag.
+
 > ---
->  drivers/gpu/drm/mediatek/Kconfig            |    7 +
->  drivers/gpu/drm/mediatek/Makefile           |    2 +
->  drivers/gpu/drm/mediatek/mtk_hdmi_common.c  |    4 +
->  drivers/gpu/drm/mediatek/mtk_hdmi_common.h  |    9 +
->  drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c  |  385 +++++
->  drivers/gpu/drm/mediatek/mtk_hdmi_regs_v2.h |  263 ++++
->  drivers/gpu/drm/mediatek/mtk_hdmi_v2.c      | 1396 +++++++++++++++++++
->  7 files changed, 2066 insertions(+)
->  create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c
->  create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_regs_v2.h
->  create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
-> 
+>  drivers/bluetooth/btmtksdio.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+>
+> diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.=
+c
+> index 566c136e83bf..3c66e3ee9834 100644
+> --- a/drivers/bluetooth/btmtksdio.c
+> +++ b/drivers/bluetooth/btmtksdio.c
+> @@ -723,6 +723,10 @@ static int btmtksdio_close(struct hci_dev *hdev)
+>  {
+>         struct btmtksdio_dev *bdev =3D hci_get_drvdata(hdev);
+>
+> +       /* Skip btmtksdio_close if BTMTKSDIO_FUNC_ENABLED isn't set */
+> +       if (!test_bit(BTMTKSDIO_FUNC_ENABLED, &bdev->tx_state))
+> +               return 0;
 > +
-> +static int mtk_hdmi_v2_setup_audio_infoframe(struct mtk_hdmi *hdmi)
-> +{
-> +	struct hdmi_codec_params *params = &hdmi->aud_param.codec_params;
-> +	struct hdmi_audio_infoframe frame;
-> +	u8 buffer[14];
-> +	ssize_t ret;
-> +
-> +	memcpy(&frame, &params->cea, sizeof(frame));
-> +
-> +	ret = hdmi_audio_infoframe_pack(&frame, buffer, sizeof(buffer));
-> +	if (ret < 0)
-> +		return ret;
+>         sdio_claim_host(bdev->func);
+>
+>         /* Disable interrupt */
+> --
+> 2.45.2
+>
 
-This should really be done via
-drm_atomic_helper_connector_hdmi_update_audio_infoframe() or
-drm_atomic_helper_connector_hdmi_clear_audio_infoframe().
 
-Ideally this should come from the .hw_params() / .prepare() calls so
-that you don't need to store the params in the driver data.
-
-> +
-> +	mtk_hdmi_v2_hw_write_audio_infoframe(hdmi, buffer);
-> +
-> +	return 0;
-> +}
-> +
-> +static inline void mtk_hdmi_v2_hw_gcp_avmute(struct mtk_hdmi *hdmi, bool mute)
-> +{
-> +	u32 val;
-> +
-> +	regmap_read(hdmi->regs, TOP_CFG01, &val);
-> +	val &= ~(CP_CLR_MUTE_EN | CP_SET_MUTE_EN);
-> +
-> +	if (mute) {
-> +		val |= CP_SET_MUTE_EN;
-> +		val &= ~CP_CLR_MUTE_EN;
-> +	} else {
-> +		val |= CP_CLR_MUTE_EN;
-> +		val &= ~CP_SET_MUTE_EN;
-> +	}
-> +	regmap_write(hdmi->regs, TOP_CFG01, val);
-> +
-> +	regmap_set_bits(hdmi->regs, TOP_INFO_RPT, CP_RPT_EN);
-> +	regmap_set_bits(hdmi->regs, TOP_INFO_EN, CP_EN | CP_EN_WR);
-> +}
-> +
-> +static void mtk_hdmi_v2_hw_ncts_enable(struct mtk_hdmi *hdmi, bool enable)
-> +{
-> +	if (enable)
-> +		regmap_set_bits(hdmi->regs, AIP_CTRL, CTS_SW_SEL);
-> +	else
-> +		regmap_clear_bits(hdmi->regs, AIP_CTRL, CTS_SW_SEL);
-> +}
-> +
-> +static void mtk_hdmi_v2_hw_aud_set_channel_status(struct mtk_hdmi *hdmi)
-> +{
-> +	u8 *ch_status = hdmi->aud_param.codec_params.iec.status;
-> +
-> +	/* Only the first 5 to 7 bytes of Channel Status contain useful information */
-> +	regmap_write(hdmi->regs, AIP_I2S_CHST0, mtk_hdmi_v2_format_hw_packet(&ch_status[0], 4));
-> +	regmap_write(hdmi->regs, AIP_I2S_CHST1, mtk_hdmi_v2_format_hw_packet(&ch_status[4], 3));
-> +}
-> +
-> +static void mtk_hdmi_v2_hw_aud_set_ncts(struct mtk_hdmi *hdmi,
-> +				     unsigned int sample_rate,
-> +				     unsigned int clock)
-> +{
-> +	unsigned int n, cts;
-> +
-> +	mtk_hdmi_get_ncts(sample_rate, clock, &n, &cts);
-
-drm_hdmi_acr_get_n_cts() ?
-
-> +
-> +	regmap_write(hdmi->regs, AIP_N_VAL, n);
-> +	regmap_write(hdmi->regs, AIP_CTS_SVAL, cts);
-> +}
-> +
-
-[...]
-
-> +
-> +static int mtk_hdmi_v2_audio_hw_params(struct device *dev, void *data,
-> +				       struct hdmi_codec_daifmt *daifmt,
-> +				       struct hdmi_codec_params *params)
-> +{
-> +	struct mtk_hdmi *hdmi = dev_get_drvdata(dev);
-> +
-> +	if (hdmi->audio_enable) {
-> +		mtk_hdmi_audio_params(hdmi, daifmt, params);
-> +		mtk_hdmi_v2_aud_output_config(hdmi, &hdmi->mode);
-> +	}
-> +	return 0;
-> +}
-> +
-> +static int mtk_hdmi_v2_audio_startup(struct device *dev, void *data)
-> +{
-> +	struct mtk_hdmi *hdmi = dev_get_drvdata(dev);
-> +
-> +	mtk_hdmi_v2_hw_aud_enable(hdmi, true);
-> +	hdmi->audio_enable = true;
-> +
-> +	return 0;
-> +}
-> +
-> +static void mtk_hdmi_v2_audio_shutdown(struct device *dev, void *data)
-> +{
-> +	struct mtk_hdmi *hdmi = dev_get_drvdata(dev);
-> +
-> +	hdmi->audio_enable = false;
-> +	mtk_hdmi_v2_hw_aud_enable(hdmi, false);
-
-Most likely you need to stop sending the AUDIO packet too. Or is it dome
-by the hardware?
-
-> +}
-> +
-> +static int mtk_hdmi_v2_audio_mute(struct device *dev, void *data, bool enable, int dir)
-> +{
-> +	struct mtk_hdmi *hdmi = dev_get_drvdata(dev);
-> +
-> +	mtk_hdmi_v2_hw_aud_mute(hdmi, enable);
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct hdmi_codec_ops mtk_hdmi_v2_audio_codec_ops = {
-> +	.hw_params = mtk_hdmi_v2_audio_hw_params,
-> +	.audio_startup = mtk_hdmi_v2_audio_startup,
-> +	.audio_shutdown = mtk_hdmi_v2_audio_shutdown,
-> +	.mute_stream = mtk_hdmi_v2_audio_mute,
-> +	.get_eld = mtk_hdmi_audio_get_eld,
-> +	.hook_plugged_cb = mtk_hdmi_v2_audio_hook_plugged_cb,
-> +};
-
-Do you plan to switch to the OP_HDMI_AUDIO? I'd really like to see
-bridges use the framework instead of implementing everthing on their
-own.
-
-> +
-> +static __maybe_unused int mtk_hdmi_v2_suspend(struct device *dev)
-> +{
-> +	struct mtk_hdmi *hdmi = dev_get_drvdata(dev);
-> +
-> +	mtk_hdmi_v2_disable(hdmi);
-> +
-> +	return 0;
-> +}
-> +
-
--- 
-With best wishes
-Dmitry
+--=20
+Luiz Augusto von Dentz
 
