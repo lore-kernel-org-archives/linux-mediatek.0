@@ -4,71 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CC29C369C2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 08:37:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 382E7C369CB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 08:40:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=s4Yu/0eedyirCVG2wNYEo4XaHlcrDummMxSyiwWhFHQ=; b=SvH4tQAlWGcX3UinpvUU98xUHG
-	gnbrShHkERmVz8aQ8ycCr2FGe9nRpaEQt9skMcoSr/L0RkPXoNF+9GJZFri3PjBaXP6e2iXPTyx2U
-	9ec8EuC8itB5WtSQHvv+h182FxoJ+y4ewgb5XJIlvEWFTgAPOqBLx5ge0Axkahjt8xCQWllGS0WR1
-	QFmoGIAoO9iHH73ML3mSoMp7bpkAJF31ELEh4TrDxVWTUUCuHPBPpud9N7cH7kpHmwCj+EmS5CCai
-	+5/Cll10rMgRYmxpvbYSTRt7kMZ+ksQwE6sQ0TzxfMzXdTaEnSTIIymBYIEsOsaXc6n5DIPPZhlC/
-	VKD/1aWQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:
+	Content-Type:Content-Transfer-Encoding:References:In-Reply-To:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3CR+/f2NiMSAagT+V1OjsdLfNcuUb59reoY8+3eCTCo=; b=uvE/FAPW40dpPiWMfTAkWGiWhF
+	/ApH6XKGaq7rfuQGh6ghx+ahwwVvfkO4tx43ViCTZA44gGjepLn06i8/OdbXeaqh7/i7YVlaJAf8I
+	HzyYT7AOJx+rtfUzQWAUequy8Gj1K71gnEXSB94zqeR3i5Zmq0ju0XLRgjf0puRgcm/S48cCMKObH
+	Bi77ypBJKF5KIEtNal+knVE2JvAwXNJEneGZV+Sp0h/Ywrjd/GllF31RbHgaoOp6hfmAgV9WN1JNi
+	wGMaQyzagneRApZnSVX5CT+CHWb1VVxPmVwjZP3t9CKZP+Bjmy0LB+NfzbvKtUN6bVYBI5ZmGLZVW
+	3ezoSBPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u798N-00000006Lww-0gyq;
-	Tue, 22 Apr 2025 08:37:39 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u78SI-00000006BpX-01u6;
-	Tue, 22 Apr 2025 07:54:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1745308447;
-	bh=s4Yu/0eedyirCVG2wNYEo4XaHlcrDummMxSyiwWhFHQ=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=ODXopuCIQWF5J/3tiGk80rrxR73WRS0SHN2K9NjeAcfVlyCJsmSxNxC5iyfX1iYCj
-	 JdhgZI7dLSuc+ZrTBJRA4SZub65pc1V2k6PWyItWbXj1G9kPzITt0mVs4tt5P4RUtc
-	 ZEDEqxB7QsaeIlOUQFPz02eIkQsZU739jeuXF4UjVjpX4EVcTw/tDYl22wzHie0D+l
-	 4chO/6uzAiM9Kd510GFxpOm/0hw7sVoEWq3sl63it9qEZP7X8LgIjqOVOMamjERpul
-	 G/CarlWfJFUCgoYrYd8EenVq0ZehmV6nolBtYL8m4725vVx1JXHZpuRKQ14vExDpvf
-	 dwfmSW77ufowA==
-Received: from apertis-1.home (2a01cb0892f2D600C8F85Cf092d4aF51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: jmassot)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id F1ED917E087F;
-	Tue, 22 Apr 2025 09:54:06 +0200 (CEST)
-Message-ID: <f0ff95074b74eb3e7fb5832ce83568a07974b67d.camel@collabora.com>
-Subject: Re: [PATCH 4/6] ASoC: dt-bindings: mt8195: add compatible
- mt8195_mt6359
-From: Julien Massot <julien.massot@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	kernel@collabora.com, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown
-	 <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai
-	 <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
-	 <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
-	 <conor+dt@kernel.org>, Trevor Wu <trevor.wu@mediatek.com>
-Cc: linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	devicetree@vger.kernel.org
-Date: Tue, 22 Apr 2025 09:54:06 +0200
-In-Reply-To: <8ffa4ba2-6d22-4ca8-b5c9-04f91d45456b@collabora.com>
-References: <20250417-mt8395-audio-sof-v1-0-30587426e5dd@collabora.com>
-	 <20250417-mt8395-audio-sof-v1-4-30587426e5dd@collabora.com>
-	 <8ffa4ba2-6d22-4ca8-b5c9-04f91d45456b@collabora.com>
-Organization: Collabora Ltd.
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.54.3 (3.54.3-1.fc41) 
+	id 1u79BN-00000006O0a-0Xgy;
+	Tue, 22 Apr 2025 08:40:45 +0000
+Received: from m16.mail.163.com ([117.135.210.5])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1u78Y0-00000006DI7-2n77
+	for linux-mediatek@lists.infradead.org;
+	Tue, 22 Apr 2025 08:00:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
+	Message-ID; bh=0/6nEFrgS1C04Ibd4G7cvNL9wRLiPUrNDF6gwaEK1B4=; b=p
+	sAeqVoPySESnzmUVTK4aza7vwvLgunqAAY/En8AQLpv1FFiqv+yOtXhPxWiYk3KI
+	iK98sKhWxw/jKvgpUCPlQMXDk/BeEe27ep2hzNPzjqlUlvrd1r9KjxBTPkQDm+30
+	AzaZYLUhnWPuCl5qXIBFqEoqI+RM10mV0MPkeobP5Q=
+Received: from andyshrk$163.com ( [58.22.7.114] ) by
+ ajax-webmail-wmsvr-40-102 (Coremail) ; Tue, 22 Apr 2025 15:59:27 +0800
+ (CST)
+X-Originating-IP: [58.22.7.114]
+Date: Tue, 22 Apr 2025 15:59:27 +0800 (CST)
+From: "Andy Yan" <andyshrk@163.com>
+To: "Dmitry Baryshkov" <dmitry.baryshkov@oss.qualcomm.com>,
+	"Maxime Ripard" <mripard@kernel.org>
+Cc: lumag@kernel.org, neil.armstrong@linaro.org,
+	dri-devel@lists.freedesktop.org, dianders@chromium.org,
+	jani.nikula@intel.com, lyude@redhat.com, jonathanh@nvidia.com,
+	p.zabel@pengutronix.de, simona@ffwll.ch, victor.liu@nxp.com,
+	rfoss@kernel.org, chunkuang.hu@kernel.org,
+	cristian.ciocaltea@collabora.com, Laurent.pinchart@ideasonboard.com,
+	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org, freedreno@lists.freedesktop.org,
+	"Andy Yan" <andy.yan@rock-chips.com>
+Subject: Re:Re: [PATCH 1/1] drm/bridge: Pass down connector to drm bridge
+ detect hook
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
+ Copyright (c) 2002-2025 www.mailtech.cn 163com
+In-Reply-To: <20250321-optimistic-prompt-civet-bdcdba@houat>
+References: <20250321085345.136380-1-andyshrk@163.com>
+ <20250321085345.136380-2-andyshrk@163.com>
+ <20250321-optimistic-prompt-civet-bdcdba@houat>
+X-NTES-SC: AL_Qu2fB/+bt08t4SmeY+kfmkcVgOw9UcO5v/Qk3oZXOJF8jCzp8D4yf1JTEnDy1fCDKg+MkAiHYjpJ8Pt0f7d2fYwujCqEY09RcV7NnzuMedMx4g==
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset=UTF-8
 MIME-Version: 1.0
+Message-ID: <1bb549f4.746e.1965c8256e4.Coremail.andyshrk@163.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: ZigvCgAnjYdgTAdoaPGbAA--.58451W
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0gA3XmgHRzC35wACsx
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250422_005410_193421_2A50CA30 
-X-CRM114-Status: GOOD (  10.51  )
+X-CRM114-CacheID: sfid-20250422_010005_039232_2E6ED1C3 
+X-CRM114-Status: UNSURE (   9.10  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,23 +86,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi AngeloGioacchino,
-
-Thanks for the review.
-On Thu, 2025-04-17 at 12:20 +0200, AngeloGioacchino Del Regno wrote:
-> Il 17/04/25 10:44, Julien Massot ha scritto:
-> > Make it also compatible for platform without external
-> > codecs.
-> >=20
-> > Signed-off-by: Julien Massot <julien.massot@collabora.com>
->=20
-> For the next time - please remember that bindings commits should come bef=
-ore
-> driver changes :-)
-
-Since I'm about to send a V2 I will reorder the patches the correct way :)
-
-Regards,
---=20
-Julien
+CkhpIGFsbCwKCkF0IDIwMjUtMDMtMjEgMTc6NDg6MDQsICJNYXhpbWUgUmlwYXJkIiA8bXJpcGFy
+ZEBrZXJuZWwub3JnPiB3cm90ZToKPk9uIEZyaSwgTWFyIDIxLCAyMDI1IGF0IDA0OjUzOjM4UE0g
+KzA4MDAsIEFuZHkgWWFuIHdyb3RlOgo+PiBGcm9tOiBBbmR5IFlhbiA8YW5keS55YW5Acm9jay1j
+aGlwcy5jb20+Cj4+IAo+PiBJbiBzb21lIGFwcGxpY2F0aW9uIHNjZW5hcmlvcywgd2UgaG9wZSB0
+byBnZXQgdGhlIGNvcnJlc3BvbmRpbmcKPj4gY29ubmVjdG9yIHdoZW4gdGhlIGJyaWRnZSdzIGRl
+dGVjdCBob29rIGlzIGludm9rZWQuCj4+IAo+PiBJbiBtb3N0IGNhc2VzLCB3ZSBjYW4gZ2V0IHRo
+ZSBjb25uZWN0b3IgYnkgZHJtX2F0b21pY19nZXRfY29ubmVjdG9yX2Zvcl9lbmNvZGVyCj4+IGlm
+IHRoZSBlbmNvZGVyIGF0dGFjaGVkIHRvIHRoZSBicmlkZ2UgaXMgZW5hYmxlZCwgaG93ZXZlciB0
+aGVyZSB3aWxsCj4+IHN0aWxsIGJlIHNvbWUgc2NlbmFyaW9zIHdoZXJlIHRoZSBkZXRlY3QgaG9v
+ayBvZiB0aGUgYnJpZGdlIGlzIGNhbGxlZAo+PiBidXQgdGhlIGNvcnJlc3BvbmRpbmcgZW5jb2Rl
+ciBoYXMgbm90IGJlZW4gZW5hYmxlZCB5ZXQuIEZvciBpbnN0YW5jZSwKPj4gdGhpcyBvY2N1cnMg
+d2hlbiB0aGUgZGV2aWNlIGlzIGhvdCBwbHVnIGluIGZvciB0aGUgZmlyc3QgdGltZS4KPj4gCj4+
+IFNpbmNlIHRoZSBjYWxsIHRvIGJyaWRnZSdzIGRldGVjdCBpcyBpbml0aWF0ZWQgYnkgdGhlIGNv
+bm5lY3RvciwgcGFzc2luZwo+PiBkb3duIHRoZSBjb3JyZXNwb25kaW5nIGNvbm5lY3RvciBkaXJl
+Y3RseSB3aWxsIG1ha2UgdGhpbmdzIHNpbXBsZXIuCj4+IAo+PiBTaWduZWQtb2ZmLWJ5OiBBbmR5
+IFlhbiA8YW5keS55YW5Acm9jay1jaGlwcy5jb20+Cj4KPkZUUiwgSSdtIGFnYWluc3QgaXQgYW5k
+IHdvdWxkIGhhdmUgYXBwcmVjaWF0ZWQgdGhhdCB5b3Ugd2FpdCBmb3IgYQo+bWVhbmluZ2Z1bCBj
+bG9zdXJlIHRvIHRoZSBkaXNjdXNzaW9uIHdlJ3ZlIGhhZCBvbiB0aGlzLgoKQ2FuIHdlIHN0YXJ0
+IHRvIHJldmlldyB0aGlzIHBhdGNoPyBTaW5jZSBpdCdzIGJlZW4gYWxtb3N0IGEgbW9udGggbm93
+IGFuZApubyBvbmUgaGFzIHJhaXNlZCBhbnkgb2JqZWN0aW9uIHRvIERtaXRyeSdzIHN1Z2dlc3Rp
+b25bMV0uCgoKWzFdaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvZHJpLWRldmVsL3Z3Mm5jZG9teDNy
+d2x0YjJ4bG82bmYzcmFwZ2NkdGNqY29kb2ZnbWVjcnp6YWJmN2ppQHB5YnNmdjI3amtxMi8KCgo+
+Cj5NYXhpbWUK
 
