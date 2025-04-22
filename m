@@ -4,76 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A42FFC369D5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 01:22:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB0DDC369AB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 01:38:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LHg++wVwu7rAWNcnfLB+Cxv53wQgr8/KD3uyGZpAuJI=; b=Qji4Hucy4BMQRLEGfYYnBrLZ/L
-	a6vVRk2lMp5wDutllOGwJizrSriMDvjZ6GKlz3ry3OaQHKoMhyTBHQ9KGHSEgs0ARIfSyiC7Be9UD
-	BK5EY7CQiolbYYZIt6blbs0in8l3M1X4IHiH2NCinttgeRB7kAd6RZguDebdFBe7mLKz0c3BooDwQ
-	6hmxH3PFFhJjXFppgnqPoLhlFuUrWn+JEkg2jOUFXhMBX3iomF7l9u2Zm7vjDoPr0/RVkbLUrdR+G
-	93Tjx+f1nG50SypcgE4EPRyo2AA6ieB15slDRoHyge25eborqybc9Mz4E3HZGjnB7ZdcHS9KSUS41
-	l7XHuwAQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hC/z/4E/Ef+kmXVay18/hupG3zTwpJG1mTK3YvHMXFA=; b=DXaO4Ku2NSOqJ1mbXanY/KtL1m
+	JWEn2b7/Rudwykj6GfWM4p26Zb+gGAxSM9c0AcGhLdr2c8+Iq7UoMgz660mAx4mIzQC3NJI/O5732
+	QOqkrny0D1XNNnYfZtXW2BdXcPYgvuAWfcxzbI9hwZVbKDVWcLjUhYtb2fFULj3XJKrylfQL1jZRx
+	aA/S9XSwFIubAYc7xZcdJNqh5bHZuNxX5VoFe6ePFmtwYLi0o4CwSVqnXwMRF+7vFfSTN7TOgpwbD
+	xrcB88SNBhFTOB9Ni/RCES94y6TiY5MnJz1lvkQkW0maQBY1wQuSZ8VJvqWMNBJq5v3eorvEekccu
+	NIazFVAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u72Ky-00000005VbT-2TBh;
-	Tue, 22 Apr 2025 01:22:12 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1u72aO-00000005WkC-48h0;
+	Tue, 22 Apr 2025 01:38:08 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u72Kv-00000005Va8-1xqr
-	for linux-mediatek@lists.infradead.org;
-	Tue, 22 Apr 2025 01:22:10 +0000
-X-UUID: 334e40101f1811f0a2405d5ef59ce188-20250421
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=LHg++wVwu7rAWNcnfLB+Cxv53wQgr8/KD3uyGZpAuJI=;
-	b=pIH6BJOIXNHV/g20gxu3KbmF5vNBL0r8vaO1Xp3QpzQyrWu3EcT3b7FlPuWjYnFhBmVvG2VNtOzFT8qdmAgMDvsWgm2t7BF4rgrRDrOcZTzFPglAWsfqewBsla30aExdYntqmf0ByMjZT1CnTqmmGClGR08M1NayXnnMiBTHVxE=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:3097bf23-f834-4d3c-af5f-3aec38b78c2e,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:0ef645f,CLOUDID:5b5b58a6-c619-47e3-a41b-90eedbf5b947,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
-	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
-	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 334e40101f1811f0a2405d5ef59ce188-20250421
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
-	(envelope-from <chris.lu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1289200925; Mon, 21 Apr 2025 18:22:04 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Tue, 22 Apr 2025 09:22:02 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Tue, 22 Apr 2025 09:22:02 +0800
-From: Chris Lu <chris.lu@mediatek.com>
-To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
-	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Jiande Lu <jiande.lu@mediatek.com>,
-	Will Lee <will-cy.lee@mediatek.com>, SS Wu <ss.wu@mediatek.com>, Steve Lee
-	<steve.lee@mediatek.com>, linux-bluetooth <linux-bluetooth@vger.kernel.org>,
-	linux-kernel <linux-kernel@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
-Subject: [PATCH v2 2/2] Bluetooth: btmtksdio: Do close if SDIO card removed without close
-Date: Tue, 22 Apr 2025 09:21:56 +0800
-Message-ID: <20250422012156.586600-3-chris.lu@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20250422012156.586600-1-chris.lu@mediatek.com>
-References: <20250422012156.586600-1-chris.lu@mediatek.com>
+	id 1u72YW-00000005WYf-251Z;
+	Tue, 22 Apr 2025 01:36:13 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id A218BA4BE8F;
+	Tue, 22 Apr 2025 01:30:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1A678C4CEE4;
+	Tue, 22 Apr 2025 01:36:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1745285771;
+	bh=jaSaaz4fD7gmy5u/L+9Ywg1JbN6BK11zXKoZ4GqzkRg=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=gYQau24O5eGvmuufDN0rW0XBs9GPjVVDtpPYw/mZeJsyIofS5cjPRsvIhuiwoO3R9
+	 B3k6pTHPt0XMREAyEL1xd1ZuOLIObVNsgF9vgDzFu3VzvB3WZuY50qo9blGBwBM+8+
+	 FQpN8Hy/a6+wIkf/xMN4YI0QNg/VQb12oOJLk8E/cAyhJpyqx0ZGJdGF7xJ5fgN5VS
+	 zxwWDsX7xCRIKCJocSEOYiDXm16TunVszZc6rZE2VcPkkp84Nit+meTPkrajJ42XGd
+	 j3EgOGeCn/Ufuwgq8uWWXckstGmlqVZZQQ9tmEm2n8gTuv1LAar7ei9DkWPSS4kDa/
+	 v7ZVSYrH7o9hA==
+Date: Mon, 21 Apr 2025 18:36:10 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
+ <pabeni@redhat.com>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, Simon Horman
+ <horms@kernel.org>
+Subject: Re: [PATCH net-next v2] net: airoha: Add missing filed to
+ ppe_mbox_data struct
+Message-ID: <20250421183610.7bad877c@kernel.org>
+In-Reply-To: <20250417-airoha-en7581-fix-ppe_mbox_data-v2-1-43433cfbe874@kernel.org>
+References: <20250417-airoha-en7581-fix-ppe_mbox_data-v2-1-43433cfbe874@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250421_182209_505925_116ADA30 
-X-CRM114-Status: GOOD (  11.33  )
+X-CRM114-CacheID: sfid-20250421_183612_602908_8418802C 
+X-CRM114-Status: GOOD (  13.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,39 +74,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-To prevent Bluetooth SDIO card from be physically removed suddenly,
-driver needs to ensure btmtksdio_close is called before
-btmtksdio_remove to disable interrupts and txrx workqueue.
+On Thu, 17 Apr 2025 11:30:47 +0200 Lorenzo Bianconi wrote:
+> The official Airoha EN7581 firmware requires adding max_packet filed in
+> ppe_mbox_data struct while the unofficial one used to develop the Airoha
+> EN7581 flowtable support does not require this field.
+> This patch does not introduce any real backwards compatible issue since
+> EN7581 fw is not publicly available in linux-firmware or other
+> repositories (e.g. OpenWrt) yet and the official fw version will use this
+> new layout. For this reason this change needs to be backported.
+> 
+> Fixes: 23290c7bc190d ("net: airoha: Introduce Airoha NPU support")
 
-Fixes: c4233afb9a ("Bluetooth: btmtksdio: Prevent enabling interrupts after IRQ handler removal")
-Signed-off-by: Chris Lu <chris.lu@mediatek.com>
----
- drivers/bluetooth/btmtksdio.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-index 3c66e3ee9834..c16a3518b8ff 100644
---- a/drivers/bluetooth/btmtksdio.c
-+++ b/drivers/bluetooth/btmtksdio.c
-@@ -1447,11 +1447,15 @@ static void btmtksdio_remove(struct sdio_func *func)
- 	if (!bdev)
- 		return;
- 
-+	hdev = bdev->hdev;
-+
-+	/* Make sure to call btmtksdio_close before removing sdio card */
-+	if (test_bit(BTMTKSDIO_FUNC_ENABLED, &bdev->tx_state))
-+		btmtksdio_close(hdev);
-+
- 	/* Be consistent the state in btmtksdio_probe */
- 	pm_runtime_get_noresume(bdev->dev);
- 
--	hdev = bdev->hdev;
--
- 	sdio_set_drvdata(func, NULL);
- 	hci_unregister_dev(hdev);
- 	hci_free_dev(hdev);
+I'm not sure I agree with this fixes tag. The fixes tag should point 
+to the earliest commit where any problem may be visible. IIUC you're
+targeting net-next because the structure is not used in net. So the
+Fixes tag should also point to some commit in net-next...
+If we leave it as is after the merge window stable bot will pull this
+commit into 6.15 for no good reason.
 -- 
-2.45.2
-
+pw-bot: cr
 
