@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3B42C369D3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 15:12:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D4FCC369C2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 15:12:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0pTgJhhKSfWgtlyauDGLv+vZMYoubt2de+/WZsSCVb4=; b=p3PX2kqzu+2pPM49uQKeX1DjPv
-	TKFcHQidsYmo1ls/qxKplfpjNvg5jzAaJahsGfrmpquvOneebUd5pm2XMOrafasmzeR7GrTxTu7Yg
-	R8ThPoqtkm4FCjqFsI3+nH+maHGI32luHbd2mb8oAfAewbaPDMmE8uxvfQYAT0GrD4XFXXA0ZJ3Xp
-	MgFTybhakYPS8GEvKazmb3erOv3xJLu7OqFyNUVpyEaXW/dbn6SfXYuhItPi+RP7vhCPLpXja4JME
-	CTjGH4l6AJOo2HHVia4TavgSZkKP1o14vx0zhb3gGAL5QA+2Dtsj/z2je0CTgUhz6mg+SLjMod7cS
-	M0PvSZrg==;
+	bh=PSaJ6hAGPpxWKoSB3uDzVT+laxWcwPInbVlAuogRFUg=; b=4gWSc7YRNvu8FHXCOo66M+GBm6
+	0fel2sWmnKr0SXA5Mv/4odzq5JT2F4F5ngQr/dC946W9x16upzG65e7VhZr+CwamGmR4ag0qdh3ew
+	1IoD2LkIDpYgh8n75Z4bmqgjeqQ3GS1YMudz6K7tp+KQaEMqO/W5tgfqvoRxKYq2XVJJUcA9pKsHl
+	YXFBD3J35bb92LKJNzZwZpziVp8XgGLKBhza9JLQIcIs3vYwTrB0pAbu8lgKOwkgKzaPoGEqiOYvF
+	P2DdZNO9gx+LVTtfNJxjVayrDAfANfTCPwj/ao27jbFfUhPFIZZUzpoGqCW2qmy7BYXnZ58ZN1VNp
+	q/7G3u5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7FIJ-00000007enc-3XXz;
-	Tue, 22 Apr 2025 15:12:19 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1u7FIg-00000007exd-21M9;
+	Tue, 22 Apr 2025 15:12:42 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7E7j-00000007ORl-16JA;
-	Tue, 22 Apr 2025 13:57:20 +0000
+	id 1u7E7l-00000007OSb-1WPW;
+	Tue, 22 Apr 2025 13:57:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1745330237;
-	bh=BLr1Iiik2vEEXPZBT2XxibrJ3gHHLcnn4LfvqfMJQ5k=;
+	s=mail; t=1745330240;
+	bh=t7nOXqE4tlbUoj6BmNiVFgKSUV9qTZl5Ay/HW3Xp1K8=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=oe0CVLPRxvOuXTqdrn5jptO2HwBGymkZb3BchyMPPsVVgo6HjlUP3kBCeya+9gkPk
-	 2211W/G/IGQFaxLMi5A7dXX5BbWB7/eoD0P6XBJRIKoSGbsPSiCzYeE/Rc0ZwbGObL
-	 e4F8cPmPCbtqp1wkFMAbJpp+XXPHRPNjJt3m82ZGs2Flu65zEwo/wC9vn/xvfrMuq2
-	 05FWeSS6dfh/nu3rFkGFT1OTouSHZxWBTCEnFrHLnsGs+osoyUgVeE7TG5fCau/mmi
-	 Qg/OIKdn+k+HEqqALzYmgqmd9rMI49wwV+qIWC0nUBeB0KlZ7WdDU/m1nTQMJ3+S9u
-	 qQbo9uPqrnStA==
+	b=MjylqTvi+L1qqKxxF0boEP8g/2kSCHawLIDiEo+gs7N+9IlOjUw9Lax4cjb1trsYY
+	 0u5DoItprRmDafebGTqMkqmkS6Mhj9wvT/BFVG4QlHMu31ZO8e1p0AcLGJDb4lmJni
+	 OlzVoRjIqjyHWHr988f3jUEDlYjPIXpMpsiEDJg0R21K6QmXoTWBMT+KWwOlVbS+Pl
+	 CfanzmJPqud3KnPcpc8KuLi3AYu5vCZ+V9dFhb7X/SY506vTK4SSxuLVxbahzZmlc1
+	 DSJIqfCNFJ9eychDUZcka2c1nv4Fiyd5h8ymY+axHjwkPuM8evtu1ANAXi3Pr73yNy
+	 2AXQq1vZDotsA==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C8C2817E157E;
-	Tue, 22 Apr 2025 15:57:16 +0200 (CEST)
-Message-ID: <e9d8c9e2-9d54-411f-85e5-ece70886bdcc@collabora.com>
-Date: Tue, 22 Apr 2025 15:57:16 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3FB9817E3626;
+	Tue, 22 Apr 2025 15:57:19 +0200 (CEST)
+Message-ID: <50124f4e-fcc5-45d0-9677-dd1327e0077c@collabora.com>
+Date: Tue, 22 Apr 2025 15:57:17 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 6/8] arm64: dts: mediatek: mt8186: Add Squirtle
- Chromebooks
+Subject: Re: [PATCH v2 4/8] arm64: dts: mediatek: mt8186-steelix: Mark second
+ source components for probing
 To: Chen-Yu Tsai <wenst@chromium.org>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
@@ -57,18 +57,17 @@ To: Chen-Yu Tsai <wenst@chromium.org>, Rob Herring <robh@kernel.org>,
 Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  chrome-platform@lists.linux.dev, linux-input@vger.kernel.org,
- Douglas Anderson <dianders@chromium.org>
+ Douglas Anderson <dianders@chromium.org>, stable+noautosel@kernel.org
 References: <20250421101248.426929-1-wenst@chromium.org>
- <20250421101248.426929-7-wenst@chromium.org>
+ <20250421101248.426929-5-wenst@chromium.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250421101248.426929-7-wenst@chromium.org>
+In-Reply-To: <20250421101248.426929-5-wenst@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250422_065719_475048_C726A71F 
-X-CRM114-Status: UNSURE (   7.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250422_065721_549307_AF9CE340 
+X-CRM114-Status: GOOD (  10.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,14 +83,20 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 21/04/25 12:12, Chen-Yu Tsai ha scritto:
-> Add a device tree for the MT8186 based Squirtle Chromebooks, also known
-> as the Acer Chromebook Spin 311 (R724T). The device is a 2-in-1
-> convertible.
+> Steelix design has two possible trackpad component sources. Currently
+> they are all marked as available, along with having workarounds for
+> shared pinctrl muxing and GPIOs.
 > 
+> Instead, mark them all as "fail-needs-probe" and have the implementation
+> try to probe which one is present.
+> 
+> Also remove the shared resource workaround by moving the pinctrl entry
+> for the trackpad interrupt line back into the individual trackpad nodes.
+> 
+> Cc: <stable+noautosel@kernel.org> # Needs accompanying new driver to work
 > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
 
 
 
