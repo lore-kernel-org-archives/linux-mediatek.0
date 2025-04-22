@@ -4,70 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 167CBC369C2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 16:22:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D2CEC369D7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 16:22:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k7vrpOBzU1CNfKbjohZHM/Pmwjdmw6ezgwKO5j1s1R0=; b=qC+Y62WbkJMuzMYFUEknxDiWAV
-	0MnozrdLeq/KBd3vO+Iq2dDf+BPxcUi8ojDJ58Qn1G7/tBAcu+jqbn9wSPHhxuKUqVzRxLU/LQPGW
-	uDYxKVNStuz6+pO73ldBO0WPHFmEFlLDNHjY4bXUE0DWqvZ8VEjVbgLsY0iYtes+vjvC3DspMkgVO
-	u+wV5yBo3Uh7q76g5PH7vqlFQLxWbpnWS2HhnPVFt91ES+j8hgcfiV0qs7zThiO30jP5jmjE1m8cY
-	I1jTQQrDegJDHjMW80GYFcnrl+KaH8xOVzVCD5f2VNN8ExB0+z5zV5w+YQChUfvolTOQEIx9OIOz+
-	l7h9k9AQ==;
+	bh=5wQBSXq5gMB9p0PSlyEcreJi6xlp1HfzxXyQ7iVhE8Q=; b=PvIRch6Py3rl5Y+Sdlj6vLHcDt
+	JFPtYxz4HHmY4f8EcE4TG07bkiY3SD4XHbMt+8HfjgmhnWtJnCFVVvFg3B5ex8ARD9YdbVFmEbdls
+	uXdCVem2en5Wde7s9dkZl+Nunr9m5uDf3usQ+b+17TJZgoFaK8JwSbcrJiOWLXd9PhnXv9wbqkL49
+	E5/2YJJwkaMFiwyg4PVgAPR0c1m+hoQ2YRWvwxZv6AQjJsalYSFAtJcS6UVHSlwV8vpIdBk9HJnHj
+	YnGGatNGf8r56n9aSt7OC1A6PePsZYHe2CyYfHtpmsRcXUohf4ZjvqM30hEupntCVF9kVuWcVKeKD
+	bXg5LoEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7GNl-00000007svM-46Ee;
-	Tue, 22 Apr 2025 16:22:01 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1u7GNn-00000007swE-1UB3;
+	Tue, 22 Apr 2025 16:22:03 +0000
+Received: from relay2-d.mail.gandi.net ([217.70.183.194])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7E7k-00000007OS9-1W9U;
-	Tue, 22 Apr 2025 13:57:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1745330238;
-	bh=sOIwe0VS+sWfFtU7zCZZgIQ6EcmnnSJDBcSZ+saj2wY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=cVwKyuQRCH48gIXlHPOJnAc1Kp33JadQEXAnwPdP1tWYP+L1CYt9+b9V/CqKzwoer
-	 qIb4ErAUugPpbDsKULxUxf8ra68C8d4tidGYOxuRsLEAGqJ3T9olxc8qsxQAcB3n/a
-	 xP5FEU6x0W4XKReZ4ErNgm0bg2ohKaN9Dg9plA/iFRjWLbzYmwtu+DbDnD9BWzx+CL
-	 Aiw6B4TT37LG5K2+K5T39OZqwjgBda9Y8dWQDAbTuArPJUhNjlPmmXzNMkTU6ykMtg
-	 okBUUchJh9sL6wJpARRYSH+0dTeNJM1yvfSxiLj8sf/1M/tlonDtCnPnVfqdm40kJ2
-	 MjpuAZI4WQFjw==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1999617E35E8;
-	Tue, 22 Apr 2025 15:57:18 +0200 (CEST)
-Message-ID: <748082be-2850-4ad3-8fba-eaaa859e8d1c@collabora.com>
-Date: Tue, 22 Apr 2025 15:57:17 +0200
+	id 1u7EHS-00000007Qct-0e2w;
+	Tue, 22 Apr 2025 14:07:24 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 4D08E438B8;
+	Tue, 22 Apr 2025 14:07:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1745330839;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=5wQBSXq5gMB9p0PSlyEcreJi6xlp1HfzxXyQ7iVhE8Q=;
+	b=GVrP4kufEZOfGy/tFnOMdXAbL6gaybEyWDMLGZCYQ/fFdj4b5H/ZekXPJpZ/Ki+gmoPhUh
+	L4pS/IhCwrddCrYuK1xRcbtzNcLESF2KUJJPpDYgD9FJGp8h7/ABLh+LcJe1tB9jNFkNWY
+	TneYE+e4JvIaPkJnvRqS8zk3xVjI7I3OGURn61KMED7wAnLgcyAU3hFnOhOIk7SNQ0r359
+	/FrBaXE17Sg5Etx0fd3fsmvZ7ZP/dk65Y4fZoMETcYd6rlxiIzDWGuglBNUvlJy/RA4rQP
+	cryNSs+C3asamzoSJTCVO828IJkIfAWCMDSqTT/bUnwp14GjlwthHkj3s5pKcQ==
+Date: Tue, 22 Apr 2025 16:07:16 +0200
+From: Maxime Chevallier <maxime.chevallier@bootlin.com>
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet
+ <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+ <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Biao
+ Huang <biao.huang@mediatek.com>, Yinghua Pan <ot_yinghua.pan@mediatek.com>,
+ kernel@collabora.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 2/2] net: ethernet: mtk-star-emac: rearm interrupts in
+ rx_poll only when advised
+Message-ID: <20250422160716.71a16b1a@fedora.home>
+In-Reply-To: <20250422-mtk_star_emac-fix-spinlock-recursion-issue-v1-2-1e94ea430360@collabora.com>
+References: <20250422-mtk_star_emac-fix-spinlock-recursion-issue-v1-0-1e94ea430360@collabora.com>
+	<20250422-mtk_star_emac-fix-spinlock-recursion-issue-v1-2-1e94ea430360@collabora.com>
+Organization: Bootlin
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 5/8] arm64: dts: mediatek: mt8186: Merge Voltorb device
- trees
-To: Chen-Yu Tsai <wenst@chromium.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- chrome-platform@lists.linux.dev, linux-input@vger.kernel.org,
- Douglas Anderson <dianders@chromium.org>
-References: <20250421101248.426929-1-wenst@chromium.org>
- <20250421101248.426929-6-wenst@chromium.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250421101248.426929-6-wenst@chromium.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
+X-GND-State: clean
+X-GND-Score: -100
+X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvgeefleefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvvefukfgjfhhoofggtgfgsehtjeertdertddvnecuhfhrohhmpeforgigihhmvgcuvehhvghvrghllhhivghruceomhgrgihimhgvrdgthhgvvhgrlhhlihgvrhessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnhepgeevledtvdevueehhfevhfelhfekveeftdfgiedufeffieeltddtgfefuefhueeknecukfhppedvrgdtudemtggsudelmeekugegheemgeeltddtmeeiheeikeemvdelsgdumeelvghfheemvgektgejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepvdgrtddumegtsgduleemkegugeehmeegledttdemieehieekmedvlegsudemlegvfhehmegvkegtjedphhgvlhhopehfvgguohhrrgdrhhhomhgvpdhmrghilhhfrhhomhepmhgrgihimhgvrdgthhgvvhgrlhhlihgvrhessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepudekpdhrtghpthhtoheplhhouhhishgrlhgvgihishdrvgihrhgruhgusegtohhllhgrsghorhgrrdgtohhmpdhrtghpthhtohepnhgsugesnhgsugdrnhgrmhgvpdhrtghpthhtohepshgvrghnrdifrghnghesmhgvughir
+ ghtvghkrdgtohhmpdhrtghpthhtoheplhhorhgvnhiioheskhgvrhhnvghlrdhorhhgpdhrtghpthhtoheprghnughrvgifodhnvghtuggvvheslhhunhhnrdgthhdprhgtphhtthhopegurghvvghmsegurghvvghmlhhofhhtrdhnvghtpdhrtghpthhtohepvgguuhhmrgiivghtsehgohhoghhlvgdrtghomhdprhgtphhtthhopehkuhgsrgeskhgvrhhnvghlrdhorhhg
+X-GND-Sasl: maxime.chevallier@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250422_065720_572879_6B8D7D7A 
-X-CRM114-Status: UNSURE (   9.97  )
+X-CRM114-CacheID: sfid-20250422_070722_330949_F21A4FDC 
+X-CRM114-Status: UNSURE (   9.57  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,19 +86,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 21/04/25 12:12, Chen-Yu Tsai ha scritto:
-> There are only two different SKUs of Voltorb, and the only difference
-> between them is whether a touchscreen is present or not. This can be
-> detected by a simple I2C transfer to the address, instead of having
-> separate device trees.
-> 
-> Merge the two device trees together and simplify the compatible string
-> list. The dtsi is still kept separate since there is an incoming device
-> that shares the same design, but with slightly difference components.
-> 
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+Hi Louis-Alexis,
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+On Tue, 22 Apr 2025 15:03:39 +0200
+Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com> wrote:
 
+> In mtk_star_rx_poll function, on event processing completion, the
+> mtk_star_emac driver calls napi_complete_done but ignores its return
+> code and enable RX DMA interrupts inconditionally. This return code
+> gives the info if a device should avoid rearming its interrupts or not,
+> so fix this behaviour by taking it into account.
+> 
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+
+Patch looks correct, however is it fixing a problematic behaviour
+you've seen ? I'm asking because it lacks a Fixes: tag, as well as
+targetting one of the net/net-next trees :)
+
+Thanks,
+
+Maxime
 
 
