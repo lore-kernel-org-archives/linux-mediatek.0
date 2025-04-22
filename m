@@ -4,67 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 622B4C369D7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 15:04:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36732C369D8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 15:04:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xkwUbEszkHOBEK2wcGSJLn69QX+/oSTxVt8BVr7zbYY=; b=dvP1DpryBMWk0K
-	VbAQmy/SFLSybpbkA27wQsEwEPhsoYwhi2GD8KOK7dqYloHQFm2hiONnoQIpIVBupFfIn26G2zNYI
-	pFA/6xBXpBLQxe4syzEoENaSFKtIWLXMQqzVL/nWI5SAQHW+rDZGuG1qEU+eiPNotSGeXmx9U1gAn
-	gXaJBmPyQ+onbMG2dLu5oc7yBmqf1vQUtZyg2Fp71m4mCWCsaROTT1X19jh1/6gdnd9xxRQ4qw2AI
-	l7weC7UmZXmNZX6qJHXKIU1eYNy1vdI3WK0t5RGNFPpSL0swuoy07g2VQuNY+1vHFaTkVjjTpugPQ
-	ur2tDzLBhWxQkoWDFItQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DTKf8+H3Th8cO9MLGzCdQobHATUhsx4CnQGDz8OIdU0=; b=ZjGnjc+qEf2Hk1IcccHQTJ5Oy1
+	ZV1ZGczoweFgWSYi/jn0x/WctMlC4MtQvIjlv6z8afvlRO3FNwi2zhFdOx+ehRS6pcTEjw8g0ju/H
+	KdCgnYkZcDGQ/00TEKz6715wsQRIU+vUxr1FwY9uEgx9mns9YHsUKt1L5JuLRPl6gTCOGGCrkXD4G
+	pdf3C11e4UYugW9W5Vv4AFfLiLnfs/Cvn0Iew7srHIN/8tMpMaBQ6ipViLwIkB9fkIPDPORi3AAfX
+	Ptq0JYL8YbPBARQjM/YEoH/JHp1mPuePN9fo58oqE88T7dbh2X2lAAhLtB1c1z6o8YDt3UaSeDIaE
+	8M7H1AyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7FAz-00000007clD-1yYv;
-	Tue, 22 Apr 2025 15:04:45 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1u7FB0-00000007clp-06eP;
+	Tue, 22 Apr 2025 15:04:46 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7Dh9-00000007Iu9-1v0Y;
-	Tue, 22 Apr 2025 13:29:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1745328589;
-	bh=PS9A2so4Ht/r0sk6C7KPxy+lOlrbJ9bDV6SgknfZNy0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=IvYnRjFWbSZamcdfKDfe1bpuO1ZOxCPLlQu1QNggSf2YBfYRvA4xgyl1IOTF104Pq
-	 w/9lGvG8Dr214i+diVRHUuAkif3NeDHkW8IEx+qn1fxAPW1xLpbwhf64P5GfrahQvC
-	 i+w484vblnIJYfIPSGcJ0VQGfVGyyWqVI3Z58EtVjkhgg2g6iU4m0vamPmSiw9Ptqd
-	 4PKOpySmYTH0S7FR9KuOWONk1pgL32WY5W+3ntdhfFnfOVQ7oRf7ioG6o91Lv51/ct
-	 E6QvUxNp+C5KXgHUJEaiVNYQeDID0IaixsrU1pn1bnW5zpnwSYfyzO0UCAr6DbsUiD
-	 /OYX/TgNmfrdA==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id CBA9D17E0B9D;
-	Tue, 22 Apr 2025 15:29:48 +0200 (CEST)
-Message-ID: <e086c8aa-944d-42db-b163-023571dcc740@collabora.com>
-Date: Tue, 22 Apr 2025 15:29:48 +0200
+	id 1u7DhG-00000007IwI-0EJd
+	for linux-mediatek@lists.infradead.org;
+	Tue, 22 Apr 2025 13:29:59 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id B30B5438D4;
+	Tue, 22 Apr 2025 13:29:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 12137C4CEE9;
+	Tue, 22 Apr 2025 13:29:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1745328597;
+	bh=CL2ckKdWyQEF03LN3BXjBPax5VKKfrOO3/dC6q0A6Wc=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=qgVoomws5FoccIq04RK627QjiVSuWooOhRpAh4HGP9GEm7ab8JFMOtKPZ11j55qdV
+	 zO7iYO69Hg1OLxv8oTf7+dxdDEZu7XVgspN1qSwi91elD9garjcQ0xfa9v0kBbSXEj
+	 ceJxhYaO7L7CKXug1zS2xTads/zg6RtA/yZqrXfx4qYEhstwt/5imF6h1kRu9CzPsS
+	 d0sLlmFPifC7Z+0u/w4x4za1zM5TMIRSpnEjJ4o0MYjnyvznvX/ew0ddnrkGzrQURJ
+	 rAgwvcPN9OnC1nR0Y4Ts8QvMkdtBzlWZoqkvKD4E7K+Zbjm4kLk+8vu/gslanveD0f
+	 0/qg8JeDG08GA==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id ADDB0380CEF4;
+	Tue, 22 Apr 2025 13:30:36 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/8] arm64: dts: mediatek: mt7988a-bpi-r4: allow hw
- variants of bpi-r4
-To: Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Lee Jones <lee@kernel.org>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-References: <20250422132438.15735-1-linux@fw-web.de>
- <20250422132438.15735-3-linux@fw-web.de>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250422132438.15735-3-linux@fw-web.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH v2 0/2] Bluetooth: btmtksdio: ensure btmtksdio_close is
+ executed before btmtksdio_remove
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id: <174532863556.1909182.13691276348024740432.git-patchwork-notify@kernel.org>
+Date: Tue, 22 Apr 2025 13:30:35 +0000
+References: <20250422012156.586600-1-chris.lu@mediatek.com>
+In-Reply-To: <20250422012156.586600-1-chris.lu@mediatek.com>
+To: Chris Lu <chris.lu@mediatek.com>
+Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
+ sean.wang@mediatek.com, jiande.lu@mediatek.com, will-cy.lee@mediatek.com,
+ ss.wu@mediatek.com, steve.lee@mediatek.com, linux-bluetooth@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250422_062951_685115_552D6A71 
-X-CRM114-Status: UNSURE (   7.08  )
+X-CRM114-CacheID: sfid-20250422_062958_113962_B6B63CD2 
+X-CRM114-Status: UNSURE (   8.68  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,23 +75,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, linux-mediatek@lists.infradead.org, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 22/04/25 15:24, Frank Wunderlich ha scritto:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> Sinovoip has released other variants of Bananapi-R4 board.
-> The known changes affecting only the LAN SFP+ slot which is replaced
-> by a 2.5G phy with optional PoE.
-> 
-> Just move the common parts to a new dtsi and keep differences (only
-> i2c for lan-sfp) in dts.
-> 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Hello:
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogiaocchino.delregno@collabora.com>
+This series was applied to bluetooth/bluetooth-next.git (master)
+by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
+
+On Tue, 22 Apr 2025 09:21:54 +0800 you wrote:
+> If Bluetooth SDIO card is unexpectedly removed due to hardware removal
+> or SDIO issue, it is possible for remove to be called before close.
+> If an interrupt occurs during this process, it may cause kernel panic.
+> Therefore, it is necessary to ensure that close is executed before
+> remove to stop interrupts and cancel txrx workqueue.
+> 
+> Chris Lu (2):
+>   Bluetooth: btmtksdio: Check function enabled before doing close
+>   Bluetooth: btmtksdio: Do close if SDIO card removed without close
+> 
+> [...]
+
+Here is the summary with links:
+  - [v2,1/2] Bluetooth: btmtksdio: Check function enabled before doing close
+    https://git.kernel.org/bluetooth/bluetooth-next/c/04c96a7ace25
+  - [v2,2/2] Bluetooth: btmtksdio: Do close if SDIO card removed without close
+    https://git.kernel.org/bluetooth/bluetooth-next/c/e0af21b30c82
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
