@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3B70C369D7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 19:45:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9AAEC369D1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 19:47:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mm8jKNoMQLTj7h4D3shZTuTnR9xrsJK49611Y0xfWkk=; b=EpuIpvFx7pbsxUvKUOaDYj+CF9
-	bpFaovsSbmyJ1c8ck5OryiGxNjWozaE3YGQzYmMOo63Qd3nY5PIGxGR0Q6bVKoiKqkrr2gKT1vB8k
-	jXWl4ufojmV9V/w1RnbiJFXXcOMXjHGHeKYc/Av3GWLRAqm0L0Y7gNdlML8ieiosAiA6sYULJysO2
-	h3WA0ffFONIkV4ImKwTlqUVeLLQJ2MBhjQ5gn+h04blwv8cMryZBuahrzoa63xS7uqxPJIczd5eSx
-	Lj2Xb1B+KbQQbVIUjcPH4pIhh8z1A0rK2rtGdtPIF4I+oZ2LnLExYtckCkJ6aTFEQG3SPeow4jM3i
-	7+ruAvuw==;
+	bh=IvX1FkkZsJf9Lb7HwxTn2b2PE4IwhR2wqCju/NgIX8c=; b=Y/IpDJlRYS9U7KaIPVZ2tFVYr9
+	mUbTDvPL28NV8fzcbwFEmqGvpsyOjfeINBkuN2vHN25QpAgpjG1fd43Fgr/BAbr2U7c4lcpNDja5M
+	vgyTC4CAz94WyoLnJJOy0RPHuczvEdb/p7IClmaU9W4mI9T2+q0aLpZXq1F76wBjQnJ+g3WyL8PaV
+	mvGr612dX2OHYCvi2lTs8TAe3TAW9rvgyIHppWw8b4gCaKWHcLMNHVY4jT4CMqzIfN90FSbvimEtP
+	KQbtPEm7KEVZk4FGMI/xBqZ10WJT4ny0NxUZgW5uE0QNvTfS9K4IAIU553RH8d5huS9kyAI3bqw8U
+	PT8i/qaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7JYV-00000008L5i-3Dsf;
-	Tue, 22 Apr 2025 19:45:19 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1u7Jau-00000008MEc-3BFB;
+	Tue, 22 Apr 2025 19:47:48 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7Fr5-00000007mwb-3PK7;
-	Tue, 22 Apr 2025 15:48:17 +0000
+	id 1u7H0L-00000007zBH-4BjM;
+	Tue, 22 Apr 2025 17:01:54 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 5C85DA4BA9A;
-	Tue, 22 Apr 2025 15:42:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9ACCEC4CEE9;
-	Tue, 22 Apr 2025 15:48:13 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 3BADC61129;
+	Tue, 22 Apr 2025 17:01:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4254BC4CEE9;
+	Tue, 22 Apr 2025 17:01:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1745336894;
-	bh=nqFcG+6F2hXaL5zy+yH+SQePgNZ/EcZEbOmErrH/3vs=;
+	s=k20201202; t=1745341313;
+	bh=fWsF0GzHzlvgBL9N9CUgvfUgXQvfItKvtkOWsRSc+bo=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=IBCmOnDRYXMwdoo3rBgTGRHgMCDl35w7qmEdpl1zUZsxAeSve8j5KRVYfQyiwJIRA
-	 ca2B1b8/CqrQPNKef292AjDWZEAa94YysfNqLj6xDxZdXSHHSBnTP92BnVz8oIPHDE
-	 MugYkchaJaFaGq6rB+ShjZAVuitfqSMOW1syaBNE0lEOOTMG1JPyrxSzUBc17pqr5d
-	 +sL5h0gOTAv/ltxa/RsfkStymPiyAn8/eo4DMicwA5oQeHywIetxGo0q/28x9r7yiQ
-	 g8KfDA5B+/3+u62CLztkjoPY6Iqa4LIWXcsRez+8vjZaiJJMLCgskS2cSPqEQMOvSG
-	 z0p8RB9v5NGow==
-Date: Tue, 22 Apr 2025 17:48:11 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+	b=rss73jhJ0CKIlbRiAaKJHj2//3AaDHJ5IrR8Cd9T7hfaNA1GdgiAIjGp3HUSxWCzb
+	 cU2MzG7R0obgILiH3ftg3wxow0dUQS46vFM2fJlQV58NX62gd8SJ0xMvf1re77cXaD
+	 3hDzfuPEPSGbXtSYKrGBbJWJFBgWGoW25TvJ4TTbzyYnt3B6qBk/Z/F8NHPkvuq1fi
+	 o+JDmN9LrYL6prgG0bW6Dpu7mForovlR48291c/KA1MKQU6Db3ruymz5nNTbi2VSBP
+	 /Y/hB+v3PcivBpFx9cXGZPasqJeLNkodMel4JPc164ryHsKoYMklIuDJjgHqlLmMhq
+	 ev2eOWEeTzzag==
+Date: Tue, 22 Apr 2025 18:01:48 +0100
+From: Simon Horman <horms@kernel.org>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH 2/2] arm64: dts: airoha: en7581: Add gpio-ranges property
- for gpio controller
-Message-ID: <aAe6O8qB3d7MjT0-@lore-desk>
-References: <20250307-en7581-gpio-range-v1-0-de1262105428@kernel.org>
- <20250307-en7581-gpio-range-v1-2-de1262105428@kernel.org>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net v3] net: ethernet: mtk_eth_soc: net: revise NETSYSv3
+ hardware  configuration
+Message-ID: <20250422170148.GK2843373@horms.kernel.org>
+References: <b71f8fd9d4bb69c646c4d558f9331dd965068606.1744907886.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="StZJEBqIgxJBqt0I"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250307-en7581-gpio-range-v1-2-de1262105428@kernel.org>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250422_084815_914051_500195C3 
-X-CRM114-Status: GOOD (  14.39  )
+In-Reply-To: <b71f8fd9d4bb69c646c4d558f9331dd965068606.1744907886.git.daniel@makrotopia.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,62 +77,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, Apr 17, 2025 at 05:41:07PM +0100, Daniel Golle wrote:
+> From: Bo-Cun Chen <bc-bocun.chen@mediatek.com>
+> 
+> Change hardware configuration for the NETSYSv3.
+>  - Enable PSE dummy page mechanism for the GDM1/2/3
+>  - Enable PSE drop mechanism when the WDMA Rx ring full
+>  - Enable PSE no-drop mechanism for packets from the WDMA Tx
+>  - Correct PSE free drop threshold
+>  - Correct PSE CDMA high threshold
+> 
+> Fixes: 1953f134a1a8b ("net: ethernet: mtk_eth_soc: add NETSYS_V3 version support")
+> Signed-off-by: Bo-Cun Chen <bc-bocun.chen@mediatek.com>
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
---StZJEBqIgxJBqt0I
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+I agree that this addresses the review of v2.
+And otherwise looks good to me too.
 
-On Mar 07, Lorenzo Bianconi wrote:
-> Introduce missing gpio-ranges property for Airoha EN7581 gpio controller
->=20
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  arch/arm64/boot/dts/airoha/en7581-evb.dts | 4 ++++
->  1 file changed, 4 insertions(+)
->=20
-> diff --git a/arch/arm64/boot/dts/airoha/en7581-evb.dts b/arch/arm64/boot/=
-dts/airoha/en7581-evb.dts
-> index d53b72d18242e3cee8b37c7b1b719d662fd6db8d..a8f8a9f0b807a2ee4fd11f841=
-8b8e810a6945d73 100644
-> --- a/arch/arm64/boot/dts/airoha/en7581-evb.dts
-> +++ b/arch/arm64/boot/dts/airoha/en7581-evb.dts
-> @@ -65,6 +65,10 @@ reserved_bmt@7e00000 {
->  	};
->  };
-> =20
-> +&en7581_pinctrl {
-> +	gpio-ranges =3D <&en7581_pinctrl 0 13 47>;
-> +};
-> +
->  &i2c0 {
->  	status =3D "okay";
->  };
-
-Hi Angelo and Matthias,
-
-Do you have any update about this patch? I have some queued patches depende=
-nt
-on this one. Thanks in advance.
-
-Regards,
-Lorenzo
-
->=20
-> --=20
-> 2.48.1
->=20
-
---StZJEBqIgxJBqt0I
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaAe6OwAKCRA6cBh0uS2t
-rK1DAP94bjHgjK6yU6Qawm+loboc0KNNR7UGKdg8qSO90HxTAwD+N8axwL0ELrpP
-0ix+uolfAGojTy4Ky9LnSmhkOymJiw4=
-=5EBn
------END PGP SIGNATURE-----
-
---StZJEBqIgxJBqt0I--
+Reviewed-by: Simon Horman <horms@kernel.org>
 
