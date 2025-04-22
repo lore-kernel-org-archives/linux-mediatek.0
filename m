@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C19FDC369DC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 15:12:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E042C369C2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 15:12:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DiGCvTHLpmr8XkR8bYlXUNZvSbP6/6H4eoRmvVHs188=; b=MOFL8Jrx2v+YC6wvJm0mkwTE/A
-	o91pw3aFnJtOiSBsE+6cHVg/BCE74oaMLbk+kHv1FGjzOF13VVJ86/xbupA/fDu2JgF6eVarwgde/
-	ikEX8X0QyqaoZ3vobLmHHpyk2gVWcBIKHBrvVun8dVTC+Moqz2ccnd9/W7m4ZDs7tzEETV5TrVeRu
-	ZUpZeqk1m6pF9J+52b8b+yDk/fjS1PcxUjuoBiKBEhKQTv/HGNt3N9SHUtekziC9TeO0A0ntMUdkm
-	p+1hTlb+yKHgukiIImY1p7jqKoqyyHO0Blo917ikEgE0nXVL/uNCBENEvEHi5S8huXoVsY18lWyC8
-	VXSuwTtg==;
+	bh=hOP8a0zUNBSDNas30QcpFTJALpG5+AVtASrsxcpYhhI=; b=I/lzfbdjEuNdgbmdvCYKGHwxum
+	i6YLwYHPSqzQTspf3kAVXC2CT/Lw9N0gb+vllaFj09sVC87+QtI6ZMmqH4W5xQcxhTspmxzeesLJh
+	M1vJy9EJhNQnpWOnTJSFkvlVYRC0h1yiFlly4DExUEe3N/JIr6IlMX2O3GYhVfsT81sjldVCKSsuV
+	wYIqzqgEd80ldo5mnv//9y39BDLgNfZETN4axCclKMZl37wP+xq9EUG/ZqUgHgr1rAcKDRZeJCgz4
+	7zQMDbT+e3SFjtvsmZbyhpNDmKLiy9duQuU99UaW6JLUCU8IEBLPLrLxg/2mpevhY+BSPsgwDwjVX
+	pE9bN2bw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7FHz-00000007egU-3op6;
-	Tue, 22 Apr 2025 15:11:59 +0000
+	id 1u7FI9-00000007eke-2AiW;
+	Tue, 22 Apr 2025 15:12:09 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7E7T-00000007ONr-35NC;
-	Tue, 22 Apr 2025 13:57:05 +0000
+	id 1u7E7h-00000007ORV-3k55;
+	Tue, 22 Apr 2025 13:57:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1745330222;
-	bh=P0PnNjNfw5TonK4bC7HdNBzKGNWZw94cWOwyHMvPVFY=;
+	s=mail; t=1745330236;
+	bh=pEYZNWoFEdBBLfTxI8KEWcSIIsXy0HkCrm/lKlOqgRs=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=b9Jp1fuJAapiaX2kjyp4dWMOiazs8Kv9ItszrwLVpXIiMlA5nQr7G42j+GjN58P4f
-	 uZlXBoJyWbyN4X4lwAGds8Omwc84K4jIsJgdZwilJvbVXNiUwXoasKJNZnAqa9g66m
-	 q74ZgOE23mnb/WkeysVBPPUdI+de1eHEHw4DJRuV9YfJTlilZ5/cP3UUvPL9aMchk6
-	 0PbKc8UIOcSDUs1wa27K8Ef1GaBp2zNRw8HjHyo24gRGC+PlGxQ9Ipqy/Nnux09Qls
-	 bi72io72BGcLU3RRiC6rHdcE75s/1OZLZspwo2XSfsOVPeL7bq01SpuSuFikOW/BjX
-	 YO8Xc77SC0KYA==
+	b=GA1kGS+axLianLnoYAw3+24QgQ4Ss+cR227t5EjGyUjm/zcczQrtALsXa8nz4TuCf
+	 jM1kD4r/ZTZM2VK9yCG9blTjEFPolBsXKgq6/hnBC5AFY6fD+sBwEnGFSfOcAKXu7J
+	 DJBpgXHqaolvT6CrPYr/B7dv9ftsgK22GqeLbDOkXkhQexuMN/UI45KK3BUjMyw+KQ
+	 EYHsOV48jdHfXyX0zsutLEA7XJcaJjutaO/PkHLyPd+dbdMPH5a3T5j1sMyXkm1WxQ
+	 drymcvxRfVxU1DSdAxx9E69Lj0pnlO2J9wm3ZssP0iPQnFmVfwFPdAAZBLPnwtcyp9
+	 F2VByXFpKfOVQ==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 87AAB17E155C;
-	Tue, 22 Apr 2025 15:57:01 +0200 (CEST)
-Message-ID: <a201bb4d-1dbc-4f21-b742-18ca3d35e1fa@collabora.com>
-Date: Tue, 22 Apr 2025 15:57:00 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 969DC17E155C;
+	Tue, 22 Apr 2025 15:57:15 +0200 (CEST)
+Message-ID: <71a0c25d-5168-40ae-9957-1e1782e7765f@collabora.com>
+Date: Tue, 22 Apr 2025 15:57:15 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 7/8] platform/chrome: of_hw_prober: Support trackpad
- probing on Corsola family
+Subject: Re: [PATCH v2 8/8] platform/chrome: of_hw_prober: Support touchscreen
+ probing on Squirtle
 To: Chen-Yu Tsai <wenst@chromium.org>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
@@ -59,15 +59,15 @@ Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  chrome-platform@lists.linux.dev, linux-input@vger.kernel.org,
  Douglas Anderson <dianders@chromium.org>
 References: <20250421101248.426929-1-wenst@chromium.org>
- <20250421101248.426929-8-wenst@chromium.org>
+ <20250421101248.426929-9-wenst@chromium.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250421101248.426929-8-wenst@chromium.org>
+In-Reply-To: <20250421101248.426929-9-wenst@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250422_065703_920331_C6A98738 
-X-CRM114-Status: UNSURE (   8.26  )
+X-CRM114-CacheID: sfid-20250422_065718_076841_A0AFA426 
+X-CRM114-Status: UNSURE (   6.37  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,12 +84,8 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 21/04/25 12:12, Chen-Yu Tsai ha scritto:
-> Various MT8186 Corsola Chromebooks (squirtle, steelix and voltorb
-> families) have second source trackpads that need to be probed.
-> The power supply for these are always on and their reset/enable
-> lines are not exposed.
-> 
-> Add them to the probing list.
+> The MT8186 Squirtle Chromebook is built with one of two possible
+> touchscreens. Let the prober probe for them.
 > 
 > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
