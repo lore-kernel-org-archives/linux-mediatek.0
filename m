@@ -4,78 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08672C369D8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 15:52:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 167CBC369C2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 16:22:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1/nUILl1rbwYJBR4G5H+Hbb4tWylblKY0R1biHQllag=; b=M9IDsA0iO17HTgkai+T6Lyza+z
-	elB0rjHPc3QIQbwo0je1X+3fcBwaLuKlgka0kVtm6rxmFHo8rybXiFGg7K1OWTVLeI9YZf9GVecuu
-	sGgSSllnL/Fawo0BmvUa7elSNP06sXZvEbjyCdWprH/3kmNZ39FFkPyDUvPeowsoQE0ybaoSFT4l0
-	GcmPpfPugyTJ85rrbgbZb7vSsWWRkaMkVgbCTriZS/G3nVgqH+Xs/KFFnF+C6VC2EzY5O/HbozBDy
-	5kjhb6zAe3ANulQjMhBzw46zah7Yay/IG2fMx/JV53fuGVloDjMNrJb/UDwi355ZfdFDt5hF2nH+U
-	RkJafFkg==;
+	bh=k7vrpOBzU1CNfKbjohZHM/Pmwjdmw6ezgwKO5j1s1R0=; b=qC+Y62WbkJMuzMYFUEknxDiWAV
+	0MnozrdLeq/KBd3vO+Iq2dDf+BPxcUi8ojDJ58Qn1G7/tBAcu+jqbn9wSPHhxuKUqVzRxLU/LQPGW
+	uDYxKVNStuz6+pO73ldBO0WPHFmEFlLDNHjY4bXUE0DWqvZ8VEjVbgLsY0iYtes+vjvC3DspMkgVO
+	u+wV5yBo3Uh7q76g5PH7vqlFQLxWbpnWS2HhnPVFt91ES+j8hgcfiV0qs7zThiO30jP5jmjE1m8cY
+	I1jTQQrDegJDHjMW80GYFcnrl+KaH8xOVzVCD5f2VNN8ExB0+z5zV5w+YQChUfvolTOQEIx9OIOz+
+	l7h9k9AQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7Fuk-00000007o58-0gIu;
-	Tue, 22 Apr 2025 15:52:02 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1u7GNl-00000007svM-46Ee;
+	Tue, 22 Apr 2025 16:22:01 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7DIo-00000007EBL-3SHj;
-	Tue, 22 Apr 2025 13:04:44 +0000
+	id 1u7E7k-00000007OS9-1W9U;
+	Tue, 22 Apr 2025 13:57:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1745327081;
-	bh=2BfuZjYMCmcDmQUT4/JMvErl11vKdHBV8VcQI6mn2AQ=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=aKZZZFeHPnIAUsQkJ4WPfca8Qm/SQvUHQCet0Tai6i2WOGIFrZp8n/bYF66kY4hjh
-	 y8oZ0j3ZtL90iw69BI6R8+dGpmfinYwlADisz5ViKvNhLFzKFh96gxyrgsv7VowAzx
-	 FtIhoDEVhY+nzeKMOFnsuyKohzxiX2fnfp7rBgoyo7Db6t6uIXMbthIuyTtvGTHWZ+
-	 fHJYsOnEKP3TlOnz3w7tHpDaTEEADoq8leX197xcpKEkSkTej463fy+jIZ+WnRrAzm
-	 RAjBMDGnXLLJJo1LLgkSKoaUvM4zZjpn6NDW33WheSqKoJrWyCmNuQj77s/gKOqg40
-	 2+zyc3pFfsH6g==
-Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	s=mail; t=1745330238;
+	bh=sOIwe0VS+sWfFtU7zCZZgIQ6EcmnnSJDBcSZ+saj2wY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=cVwKyuQRCH48gIXlHPOJnAc1Kp33JadQEXAnwPdP1tWYP+L1CYt9+b9V/CqKzwoer
+	 qIb4ErAUugPpbDsKULxUxf8ra68C8d4tidGYOxuRsLEAGqJ3T9olxc8qsxQAcB3n/a
+	 xP5FEU6x0W4XKReZ4ErNgm0bg2ohKaN9Dg9plA/iFRjWLbzYmwtu+DbDnD9BWzx+CL
+	 Aiw6B4TT37LG5K2+K5T39OZqwjgBda9Y8dWQDAbTuArPJUhNjlPmmXzNMkTU6ykMtg
+	 okBUUchJh9sL6wJpARRYSH+0dTeNJM1yvfSxiLj8sf/1M/tlonDtCnPnVfqdm40kJ2
+	 MjpuAZI4WQFjw==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
-	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id CD51217E0FF6;
-	Tue, 22 Apr 2025 15:04:39 +0200 (CEST)
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Tue, 22 Apr 2025 15:03:38 +0200
-Subject: [PATCH 1/2] net: ethernet: mtk-star-emac: fix spinlock recursion
- issues on rx/tx poll
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1999617E35E8;
+	Tue, 22 Apr 2025 15:57:18 +0200 (CEST)
+Message-ID: <748082be-2850-4ad3-8fba-eaaa859e8d1c@collabora.com>
+Date: Tue, 22 Apr 2025 15:57:17 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 5/8] arm64: dts: mediatek: mt8186: Merge Voltorb device
+ trees
+To: Chen-Yu Tsai <wenst@chromium.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ chrome-platform@lists.linux.dev, linux-input@vger.kernel.org,
+ Douglas Anderson <dianders@chromium.org>
+References: <20250421101248.426929-1-wenst@chromium.org>
+ <20250421101248.426929-6-wenst@chromium.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250421101248.426929-6-wenst@chromium.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250422-mtk_star_emac-fix-spinlock-recursion-issue-v1-1-1e94ea430360@collabora.com>
-References: <20250422-mtk_star_emac-fix-spinlock-recursion-issue-v1-0-1e94ea430360@collabora.com>
-In-Reply-To: <20250422-mtk_star_emac-fix-spinlock-recursion-issue-v1-0-1e94ea430360@collabora.com>
-To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Biao Huang <biao.huang@mediatek.com>, 
- Yinghua Pan <ot_yinghua.pan@mediatek.com>
-Cc: kernel@collabora.com, netdev@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1745327078; l=3669;
- i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=2BfuZjYMCmcDmQUT4/JMvErl11vKdHBV8VcQI6mn2AQ=;
- b=MT1r2QzXSns6F++sEvZ+90jp97Y5XxnyFS9SejefszlI5XxnfMYqcjc4Il7ZXvdZWekybRWXU
- K1rJczbtmU6AwyQ6k1//28Yo30WnyHZgq8JFggFt5/x0Y6BOSRpqtHP
-X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
- pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250422_060443_011766_205337BF 
-X-CRM114-Status: GOOD (  11.97  )
+X-CRM114-CacheID: sfid-20250422_065720_572879_6B8D7D7A 
+X-CRM114-Status: UNSURE (   9.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,113 +83,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use spin_lock_irqsave and spin_unlock_irqrestore instead of spin_lock
-and spin_unlock in mtk_star_emac driver to avoid spinlock recursion
-occurrence that can happen when enabling the DMA interrupts again in
-rx/tx poll.
+Il 21/04/25 12:12, Chen-Yu Tsai ha scritto:
+> There are only two different SKUs of Voltorb, and the only difference
+> between them is whether a touchscreen is present or not. This can be
+> detected by a simple I2C transfer to the address, instead of having
+> separate device trees.
+> 
+> Merge the two device trees together and simplify the compatible string
+> list. The dtsi is still kept separate since there is an incoming device
+> that shares the same design, but with slightly difference components.
+> 
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
-```
-BUG: spinlock recursion on CPU#0, swapper/0/0
- lock: 0xffff00000db9cf20, .magic: dead4ead, .owner: swapper/0/0,
-    .owner_cpu: 0
-CPU: 0 UID: 0 PID: 0 Comm: swapper/0 Not tainted
-    6.15.0-rc2-next-20250417-00001-gf6a27738686c-dirty #28 PREEMPT
-Hardware name: MediaTek MT8365 Open Platform EVK (DT)
-Call trace:
- show_stack+0x18/0x24 (C)
- dump_stack_lvl+0x60/0x80
- dump_stack+0x18/0x24
- spin_dump+0x78/0x88
- do_raw_spin_lock+0x11c/0x120
- _raw_spin_lock+0x20/0x2c
- mtk_star_handle_irq+0xc0/0x22c [mtk_star_emac]
- __handle_irq_event_percpu+0x48/0x140
- handle_irq_event+0x4c/0xb0
- handle_fasteoi_irq+0xa0/0x1bc
- handle_irq_desc+0x34/0x58
- generic_handle_domain_irq+0x1c/0x28
- gic_handle_irq+0x4c/0x120
- do_interrupt_handler+0x50/0x84
- el1_interrupt+0x34/0x68
- el1h_64_irq_handler+0x18/0x24
- el1h_64_irq+0x6c/0x70
- regmap_mmio_read32le+0xc/0x20 (P)
- _regmap_bus_reg_read+0x6c/0xac
- _regmap_read+0x60/0xdc
- regmap_read+0x4c/0x80
- mtk_star_rx_poll+0x2f4/0x39c [mtk_star_emac]
- __napi_poll+0x38/0x188
- net_rx_action+0x164/0x2c0
- handle_softirqs+0x100/0x244
- __do_softirq+0x14/0x20
- ____do_softirq+0x10/0x20
- call_on_irq_stack+0x24/0x64
- do_softirq_own_stack+0x1c/0x40
- __irq_exit_rcu+0xd4/0x10c
- irq_exit_rcu+0x10/0x1c
- el1_interrupt+0x38/0x68
- el1h_64_irq_handler+0x18/0x24
- el1h_64_irq+0x6c/0x70
- cpuidle_enter_state+0xac/0x320 (P)
- cpuidle_enter+0x38/0x50
- do_idle+0x1e4/0x260
- cpu_startup_entry+0x34/0x3c
- rest_init+0xdc/0xe0
- console_on_rootfs+0x0/0x6c
- __primary_switched+0x88/0x90
-```
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Fixes: 0a8bd81fd6aa ("net: ethernet: mtk-star-emac: separate tx/rx handling with two NAPIs")
-Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
----
- drivers/net/ethernet/mediatek/mtk_star_emac.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-index 76f202d7f05537642ec294811ace2ad4a7eae383..41d6af31027f4d827dbfdfecdb7de44326bb3de1 100644
---- a/drivers/net/ethernet/mediatek/mtk_star_emac.c
-+++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-@@ -1163,6 +1163,7 @@ static int mtk_star_tx_poll(struct napi_struct *napi, int budget)
- 	struct net_device *ndev = priv->ndev;
- 	unsigned int head = ring->head;
- 	unsigned int entry = ring->tail;
-+	unsigned long flags = 0;
- 
- 	while (entry != head && count < (MTK_STAR_RING_NUM_DESCS - 1)) {
- 		ret = mtk_star_tx_complete_one(priv);
-@@ -1182,9 +1183,9 @@ static int mtk_star_tx_poll(struct napi_struct *napi, int budget)
- 		netif_wake_queue(ndev);
- 
- 	if (napi_complete(napi)) {
--		spin_lock(&priv->lock);
-+		spin_lock_irqsave(&priv->lock, flags);
- 		mtk_star_enable_dma_irq(priv, false, true);
--		spin_unlock(&priv->lock);
-+		spin_unlock_irqrestore(&priv->lock, flags);
- 	}
- 
- 	return 0;
-@@ -1342,15 +1343,16 @@ static int mtk_star_rx_poll(struct napi_struct *napi, int budget)
- {
- 	struct mtk_star_priv *priv;
- 	int work_done = 0;
-+	unsigned long flags = 0;
- 
- 	priv = container_of(napi, struct mtk_star_priv, rx_napi);
- 
- 	work_done = mtk_star_rx(priv, budget);
- 	if (work_done < budget) {
- 		napi_complete_done(napi, work_done);
--		spin_lock(&priv->lock);
-+		spin_lock_irqsave(&priv->lock, flags);
- 		mtk_star_enable_dma_irq(priv, true, false);
--		spin_unlock(&priv->lock);
-+		spin_unlock_irqrestore(&priv->lock, flags);
- 	}
- 
- 	return work_done;
-
--- 
-2.49.0
 
 
