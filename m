@@ -4,67 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68BACC369C2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 15:10:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA306C369C2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 15:10:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+nG65IMJGU90LIp+KPu1A94jltMOWp+N9pJ0I889NC4=; b=Nun0zYf4Pt7HV42wGCQtMPZ1tQ
-	PFRSAS440o99TNOBmlP3zmpoVjsMO2mN/7PLmjMfxTQjF2lwD54guYtB0ypcBfGJId84CUORvJNvO
-	x9n34mzA8LAKY/2fTmeaF83m05eIg766jrHr2qTHbIsum/B4qGHU9zvroV1YjS+AsYWvz1EW/fx3o
-	0gEi9QSn94k60zvyQKegr75HmL7fbKWv5FJXjv2aWnoBEUbwe3lzif7E+HebCDzXkc8PEh8nYQrhT
-	zRMBvg6MBMAZnY5p3w5mBTDwOqF/x1fB2nMMyCkEdypjgmmmf5gpWrl+DAe4W7Bgxlv/56/SQoNOb
-	3ySN84AQ==;
+	bh=kbMt1L1BOwhCgVxGj+UJaD0R9pmk3Y0rLTHSDJkQCjo=; b=0EfkKwjj4rEk6RJuSidzKz0Phv
+	pLuY8SNxh7d7quXXdLog+DAWlRAg5QWhKd/BcKgV24h46B+3MWfZjOgGbN4exrzVTLfWWOrhStovJ
+	nbTWhnV0N89HF6z+IHR7NqkIX3NA5EImw7z5/iO4sDBGpiJUolWpYzhO3SyTGt7jy/+XgYtCDhnfM
+	u8Nv74FbmD1db0HaeBA7jpa02nOcKmpXq0cJmdQ9r/gONIMXQIF6snrg+fmC+W9wSJpFRgAVwu7oO
+	wOhr9OJ3oSjPWnOCiw2VRPt1/EHuuWu6J8JrMVD8nIPN9ly9fOaznXguMBSTnZKu4vxLGiVHpRzmv
+	MU8KuS5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7FGa-00000007eEv-1MHV;
-	Tue, 22 Apr 2025 15:10:32 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1u7FGw-00000007eKO-48zX;
+	Tue, 22 Apr 2025 15:10:54 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7Duv-00000007LuJ-3nE1;
-	Tue, 22 Apr 2025 13:44:07 +0000
+	id 1u7Dvg-00000007M52-3x4b;
+	Tue, 22 Apr 2025 13:44:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1745329444;
-	bh=4DLjZ0GtZDfpf9Y+X2fCfeTSaPWs41kU9nP2/X/cyNQ=;
+	s=mail; t=1745329491;
+	bh=WynR8L5BQ92M+53aOKAzVzpk7FToQpWuQOuOQxLXzcw=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=J1IHv8tU3VNYbRw81M3WLG61BspSVXRPAMqt1cHr7qQ7MUvmm1t7TdYn+ZzuOksJG
-	 quEMnv9lDyFzOvHLPVoDogC1M+3+SnkMNsTOhIY9vyzCST4ot8aYVcXpaMtl3hgTYR
-	 wf+Q6A9iFdOUMZyUFJgrzx7QvKzmouCx3iTT25yBOoMd2ci2Z6ws2dvbUSHv8sfqlp
-	 HdDHDiVcZkLxk/r0y7vAoh4KqXgtF+KCO2NW5cb0EWK5u8ctyTiatgHnRDGtDT7aeX
-	 zgOWyzkWJAGhFdB/OdYy8pG0axAzSBNr0d5uEMEOtXbeOxfVMDLaOQ9Vv7WoK6D7Br
-	 C5QmxkLJ/yANw==
+	b=PMzTCiA9hbuk02gOjtxpO1b65EoMoX7GSYJyrM9J50+woyI73LBx5V2ZfD71//djs
+	 bUS2BWXxkC9rfgKcgmJb8yp3G5qGq/Sfnxx4sGevmGrM6VxtvaLtY12K9+s7/e/FNa
+	 2WmloGZwoDILBXMOQ/8xIThZ6+GhsrjocFsySpl1AOZWYh+3WOXH6z9UEvQxNWGwUZ
+	 1QHlDJiVaJTUbUV94vjI+Vz5ZLXCxrQ7SuQ13z0T0r7D2NN5AF9IikDDKfuzIq/n2u
+	 AicTOiL/M073aAdz3pBTB/34jIJnY5+Sy47w/9Vh7UzpJW7zcnkoFt63rwPmk6Ehxx
+	 BXFvWcJ1Pj5Rw==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C1EAA17E0B9D;
-	Tue, 22 Apr 2025 15:44:03 +0200 (CEST)
-Message-ID: <4f4a1761-dbb3-4c95-8c68-359c7e9ae6b4@collabora.com>
-Date: Tue, 22 Apr 2025 15:44:03 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 74A6517E0B9D;
+	Tue, 22 Apr 2025 15:44:50 +0200 (CEST)
+Message-ID: <d86e6559-3b85-43f6-a8b6-8906a7b66b0b@collabora.com>
+Date: Tue, 22 Apr 2025 15:44:49 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] dt-bindings: mailbox: mediatek,gce-mailbox: Add support
- for MT6893
-To: Rob Herring <robh@kernel.org>
-Cc: jassisinghbrar@gmail.com, krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, houlong.wei@mediatek.com,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+Subject: Re: [PATCH v2 1/5] dt-bindings: remoteproc: mediatek: Add missing
+ minItems for 8192/8195
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Mathieu Poirier <mathieu.poirier@linaro.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Tinghan Shen <tinghan.shen@mediatek.com>,
+ Olivia Wen <olivia.wen@mediatek.com>
+Cc: kernel@collabora.com, linux-remoteproc@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com
-References: <20250416120230.147844-1-angelogioacchino.delregno@collabora.com>
- <20250421213833.GA2966253-robh@kernel.org>
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+References: <20250421-scp-dual-core-mt8390-v2-0-c84117a959a9@collabora.com>
+ <20250421-scp-dual-core-mt8390-v2-1-c84117a959a9@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250421213833.GA2966253-robh@kernel.org>
+In-Reply-To: <20250421-scp-dual-core-mt8390-v2-1-c84117a959a9@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250422_064406_090972_7E73E0A4 
-X-CRM114-Status: GOOD (  12.85  )
+X-CRM114-CacheID: sfid-20250422_064453_152392_8D291D78 
+X-CRM114-Status: UNSURE (   8.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,57 +85,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 21/04/25 23:38, Rob Herring ha scritto:
-> On Wed, Apr 16, 2025 at 02:02:30PM +0200, AngeloGioacchino Del Regno wrote:
->> Add a compatible string for the MediaTek Dimensity 1200 (MT6893)
->> SoC using MT8195 as a fallback, and add a header for the GCE
->> mailbox found in MT6893.
->>
->> Similarly to MT8195, this SoC has two GCE hardware instances, but
->> the event values are different (hence requiring its own header).
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   .../mailbox/mediatek,gce-mailbox.yaml         |   4 +
->>   include/dt-bindings/gce/mediatek,mt6893-gce.h | 312 ++++++++++++++++++
->>   2 files changed, 316 insertions(+)
->>   create mode 100644 include/dt-bindings/gce/mediatek,mt6893-gce.h
->>
->> diff --git a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
->> index 73d6db34d64a..277d290d852b 100644
->> --- a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
->> +++ b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
->> @@ -19,6 +19,7 @@ properties:
->>       oneOf:
->>         - enum:
->>             - mediatek,mt6779-gce
->> +          - mediatek,mt6893-gce
->>             - mediatek,mt8173-gce
->>             - mediatek,mt8183-gce
->>             - mediatek,mt8186-gce
->> @@ -29,6 +30,9 @@ properties:
->>         - items:
->>             - const: mediatek,mt6795-gce
->>             - const: mediatek,mt8173-gce
->> +      - items:
->> +          - const: mediatek,mt6893-gce
->> +          - const: mediatek,mt8195-gce
+Il 21/04/25 22:49, Nícolas F. R. A. Prado ha scritto:
+> Both MT8192 and MT8195 have an L1TCM memory, so it should be described
+> in reg, and therefore reg's minItems should be 3, as is already implicit
+> by reg-names being three entries long. However minItems is currently
+> unset for mt8192/mt8195, resulting in it being equal to 2, from the base
+> schema. Fix reg minItems for MT8192 and MT8195 by setting it to 3.
 > 
-> You shouldn't have with and without a fallback.
-> 
+> Fixes: 6b55b1e2fd7f ("dt-bindings: remoteproc: mediatek: Support MT8195 dual-core SCP")
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-OOOPS! Sorry, that wasn't intentional - I was meaning to add mt6893-gce to the
-enum only, without that mt8195 fallback.
-
-Will send a v2, thanks for pointing out!
-
-Cheers,
-Angelo
-
->>   
->>     "#mbox-cells":
->>       const: 2
-
-
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
