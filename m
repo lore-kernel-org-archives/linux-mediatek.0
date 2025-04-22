@@ -4,100 +4,203 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C519C369C2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 21:09:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C49FEC369C2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 22:32:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=45H/AloEC5EQosKI+fEptjCF1JCPdnHEO37xdJvt3C0=; b=TX8v4bixsTCxIh76O55fsig1X9
-	5WcpLcWEU0ThX+665hoMVsrX9mmq8yhUezubdk6MI6x4PyUL6xFAH+GPCmcEcTygdmGFnTw7Mpv7T
-	XWd8/kPHWhRFf4QpbmzJ1E1EoZpXLbQi3UiA9DGvDkGAqh7BqUxoubrg2GL6oaEtcgxCSrPanDuFn
-	mMm8QMY7sqnf0ms6RsvKpKH/KRNDGBSb7s4CLmYoJFMzURTF3EJ3q3wqoF3Iv1ExaCNrpYRixJIdS
-	8ESZ1GJ7+gc3LwrMFPHrTrPSeHp6XL7YPUxJ1A2NJ1zEYaFjxoYH7jnDrLl32E/eCMUnv/vlWjVyS
-	Da9ce+RA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LA30F3uqC92ERBMTu2R+zVxc9kZkqOS+PMzrwWpLXCk=; b=WNpmntI01Ajvd+3cg/s3BI6F8r
+	M7VedA806wsWTuayLzcSGxE9ZU/dz8OtiGrBV3y3RtiJys6GAzHYUE+r1q+qbgKIA1oEJpsq4VskI
+	u2i3vTI7HrTZOBkU3bhWvttS20AykaExNxAX00RJQketRy+oHL7JHAqLOHQ5rRsBx3pc++07rCyN3
+	EFJBZYCyYjeiykQsndNj8N30kJ9YielnveF+cUCp7dORezLqciVIuVneXaL+dWEe2PsF+z/twuFPP
+	5JlKLnOuam38p5l0zjsmnSRafLDRJevLlaA8WCmH6Nrr7KuXvA8knmuhZAfbTLqA4D8ByMiCd/DnG
+	VmzUvbeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7KsP-00000008YI5-2iAh;
-	Tue, 22 Apr 2025 21:09:57 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1u7MAJ-00000008jJx-1oVs;
+	Tue, 22 Apr 2025 22:32:31 +0000
+Received: from mgamail.intel.com ([192.198.163.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7KqX-00000008YAL-0Wch
-	for linux-mediatek@bombadil.infradead.org;
-	Tue, 22 Apr 2025 21:08:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=45H/AloEC5EQosKI+fEptjCF1JCPdnHEO37xdJvt3C0=; b=Iz7jgOafzA/JtKdtv4NNfkNKDQ
-	Kb262bKYCWao74EDrZDAN+ELVJa1CLSSTaS4Jrcw7mfzkIR4/5nYUBidPWKmGUkC0BvjZXNkI8MVr
-	IRKv1UehdLZ5yNskpXDAB7ZQvBOsci9ihAiI0rQ4eEf8F3ZxfbdA9HTP5/owgVUjF/X8N8/FP0z8h
-	B3FlDYChVQpLLlc7nNqx0eRJT1Eaj2OcAfKaMbpUkVGDYuIk+UzlzlhMF3Fqc2gWfqylUadbAyugz
-	+KmAjhwx2XBmRoYoP8JYDel8dXfn9k8nu1ErXW+6TGYZ5o8T6lkXK9v8vKudwxAWCiYoDhxhQG7eZ
-	gILyYaFQ==;
-Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
-	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u7KqQ-0000000BKZ4-2YXg
-	for linux-mediatek@lists.infradead.org;
-	Tue, 22 Apr 2025 21:07:57 +0000
-Received: by mail-pg1-x52e.google.com with SMTP id 41be03b00d2f7-7fd581c2bf4so4674993a12.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 22 Apr 2025 14:07:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1745356070; x=1745960870; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=45H/AloEC5EQosKI+fEptjCF1JCPdnHEO37xdJvt3C0=;
-        b=Fmvq3k1HZqDseZZhLg3dxq79dER1lVTOKyN5OaSrIzGCsy/RrsNlkOnk+fMUpl+Lqs
-         AxYhLuecqYGXoF+CwB/laHmz7yo3MG5FhYAAvL8kRCEvhQICd9aySxnT2E8y+MyDwtdi
-         Ix2AbzqK30MuZBTF0+BItd2AVqS7eku7626ik=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745356070; x=1745960870;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=45H/AloEC5EQosKI+fEptjCF1JCPdnHEO37xdJvt3C0=;
-        b=t5ell5PTYTHOpGP88CiV8nUU7TqLPb84isIaLiiHz9wlgJfkWt2xeXBX7rGbIuGzad
-         ZYnnz8IvyQU21K97+//MLKiZf7ILvI8k7RzJeZKGwjpzpdjbjCqyzVcGstXILJJt8cXf
-         +Ic4+/f3gObDvDaNS4AiTEyReWn8+OOd8u882UvpDyCfwIvJI1Fr3k63z5xx88r5gBSu
-         123qcoOffZjzj7NlkE06Fv8zUvtQkGWE/Fm1oPRb/9VE9AEluW4/mSRZFhS2+ezE8FpY
-         vzDnHqBOPO3yleeHG+NZZ11ExHbOkOh90xvGN6/RRrdFpJsvkh6mRm3OKOjeCHR8RVTP
-         9X4A==
-X-Forwarded-Encrypted: i=1; AJvYcCWPP9ZXj0FBOn5EwFjrxNvY59ULGVK7f3agpR6zrXsScUJchwNo9zC+Pt6nCGd8bruDOZRjxs4LLE0atOYlpg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyG/TWfv5I8qrXRTu7KLDkhyzlg2ob/9/UHl4FJ3LEh6ccAtr80
-	kBHfif0QyF+e6E4JYoiA5dpdIZA8CsCpxMHxDD8dxYRvhemLlAo/aOHR+PwXkAgjIUk0HDmK2SF
-	7HsYEb4UOl/QIfeZpjoZWFSHj4d0V7Mu7xOPH
-X-Gm-Gg: ASbGncsVH6K9Z9NWq3K8ALqW1olPHGnzPm5/YNEM5VLgs8ircqzNxj2oEnYc07TuGUa
-	ElXrISXzuMvIkMmdn1eZLKH90dHS4CBpOmjxguVc4XemOJ4jsOLT/vitSrBpmIBVXNifbzKgeaA
-	ZbhBgdZiJZ2noC67wG3c1lJnE/BhhaLMRUVMNrk7bHm9rPzORpBfq4kSpdYpT7Mn4=
-X-Google-Smtp-Source: AGHT+IGltlrXXX5WKjfs3az+RLOdT3RUOZ4pgUz3pzyv9A2wvBoVRwdKL4WWPasLspXHid4QoIa/QcaTAyeY1aVtvOw=
-X-Received: by 2002:a17:90b:1f8c:b0:2ff:5ed8:83d0 with SMTP id
- 98e67ed59e1d1-3087bb631d7mr27536082a91.16.1745356070047; Tue, 22 Apr 2025
- 14:07:50 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250211-enable_hevc_still_picture-v1-1-0c06c0c9add2@chromium.org>
- <f257832e823d23c8324a9eaf7890dd4b6d50a6f0.camel@ndufresne.ca>
- <1f1e41700b16eef7fe790b9b14d6ccfd157f67ad.camel@ndufresne.ca> <a2cb7a26f120558ab7b84a6f954188c8e61f37a8.camel@ndufresne.ca>
-In-Reply-To: <a2cb7a26f120558ab7b84a6f954188c8e61f37a8.camel@ndufresne.ca>
-From: Nathan Hebert <nhebert@chromium.org>
-Date: Tue, 22 Apr 2025 14:07:39 -0700
-X-Gm-Features: ATxdqUGjCZHeQwn5h4Wm7IoTgUdcsGQStAHC2clGfbY2_C-9n3g3PH2xVEW8YXs
-Message-ID: <CANHAJhE--nOrMnCHPEEmRyTvd6mK5GoC+J7TdX64VEX+OJ69Kw@mail.gmail.com>
-Subject: Re: [PATCH] media: mediatek: vcodec: Enable HEVC main still picture decode
-To: Nicolas Dufresne <nicolas@ndufresne.ca>
-Cc: Yunfei Dong <yunfei.dong@mediatek.com>, Tiffany Lin <tiffany.lin@mediatek.com>, 
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+	id 1u7M8Q-00000008jCu-1DSz;
+	Tue, 22 Apr 2025 22:30:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1745361034; x=1776897034;
+  h=message-id:date:subject:to:cc:references:from:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=/a4ISEOOCEaxx6ERvpW8WaxVk7f2kQ5WoGZM7/6wNE8=;
+  b=QnL+u+nVCCeSzLjtNVpW2BnsRnyg/Oy0N56zj2xhcUaNMf9mfP3mBkPX
+   bRfPRfmd19D3hxib5k9n4cjAM7pBPc9LrAAW5dC89NBFcjc4b/4BdF28P
+   lON0ZLuIpO+gqYI/XwsFY04v2g7MdrCXJ5rArMt5YCSl6ANfQyNAAd7NV
+   tcgZOYTtevQN3ca0CBLvc6UpCu4fuvXouDFfl+fU7XODW/iQ5IJqbTsfb
+   yND5FWRqELSgWsRftzgF3HPfhpXurWjZY0guUjAvco89qtc3tUW3650H9
+   e7DX/p+MBMV8+Hi0WJRIiQ/nCb1LzRr9E04sX71EqITYdJOwbGv5BJo/q
+   w==;
+X-CSE-ConnectionGUID: /5CwKi7MSPeHPXI8t2lY9A==
+X-CSE-MsgGUID: jFF9tKTwTu6XUn+ZaFAj6A==
+X-IronPort-AV: E=McAfee;i="6700,10204,11411"; a="57594999"
+X-IronPort-AV: E=Sophos;i="6.15,232,1739865600"; 
+   d="scan'208";a="57594999"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Apr 2025 15:30:33 -0700
+X-CSE-ConnectionGUID: /FwKvTTlRSe+cusvAydNzA==
+X-CSE-MsgGUID: b8ndhFcvTWKGd339k3aTtw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,232,1739865600"; 
+   d="scan'208";a="132032567"
+Received: from orsmsx902.amr.corp.intel.com ([10.22.229.24])
+  by orviesa010.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Apr 2025 15:30:33 -0700
+Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.14; Tue, 22 Apr 2025 15:30:24 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.14 via Frontend Transport; Tue, 22 Apr 2025 15:30:24 -0700
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.44) by
+ edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.44; Tue, 22 Apr 2025 15:30:24 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=cdb5ZpnT9hvTnrJ0PfNVgF447K2f69vt16L7J5PwqZDZ6VIGcJsbnfAH5BEY/Mg7cN9yw/6t/zkYQP08ySzla+BckXoAg/mxgSbU9y7vwjpVJy5O/Dx8So+L/5w2z7n6wyXitd8bLT0x8wDkR/g1COIwMIEr5GDIYpUEhh9IDi/j9HATe8S0WyZ7z5crEf16WMWfavZsjWOx/056f3q0+Du69STYuWRuMQd2XiqNvHFZSt1h3KW4VAoShA7jHNUZ2KkxZCI5nm2SrBtw62K5QocWJ0CVvIA7NiKYXgXJ+fDKYyhVDyJjcc+a/zHZAGcXDp7U/4JmxSWKLYjKc3zshA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=LA30F3uqC92ERBMTu2R+zVxc9kZkqOS+PMzrwWpLXCk=;
+ b=s5/mNIT+pu0+YsnQVEqu9nj4sRTWS1lv9bzY9pmkTyPHlPKgXS2B7HHqMyDFwWQ74tRakiu5cvg9J+VngyeIXncTyU9VU3LJzqHO7v/q0YFBx1IcKHb/xavZP01q0Vs+wlxdxiC2WUFyeBU5k2X/wh20tz/ZFFbfGcoc7WPzycSetpc200j+DzGwi1rZnCYIFdkzC67BuoRqWpIY4lx2OtfVn2MgYX/MRRQGccp6JoNrcYOas+jEnShum48iqDar1OLienVRxWw/2au4yhhr8ntpcOezs0Dna402h7Z0UARTquB1Hr9YXLlw9CT1SLB7e1+NCSFjC5VNyEbx/tfAJg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Received: from CO1PR11MB5089.namprd11.prod.outlook.com (2603:10b6:303:9b::16)
+ by PH7PR11MB8033.namprd11.prod.outlook.com (2603:10b6:510:246::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8655.35; Tue, 22 Apr
+ 2025 22:29:10 +0000
+Received: from CO1PR11MB5089.namprd11.prod.outlook.com
+ ([fe80::7de8:e1b1:a3b:b8a8]) by CO1PR11MB5089.namprd11.prod.outlook.com
+ ([fe80::7de8:e1b1:a3b:b8a8%4]) with mapi id 15.20.8655.025; Tue, 22 Apr 2025
+ 22:29:10 +0000
+Message-ID: <c34ef8a0-20fd-4d0b-84cc-8f829f4be675@intel.com>
+Date: Tue, 22 Apr 2025 15:29:07 -0700
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net v3] net: airoha: Add missing filed to ppe_mbox_data
+ struct
+To: Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn
+	<andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, "Eric
+ Dumazet" <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+	<pabeni@redhat.com>
+CC: <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <netdev@vger.kernel.org>, Simon Horman
+	<horms@kernel.org>
+References: <20250422-airoha-en7581-fix-ppe_mbox_data-v3-1-87dd50d2956e@kernel.org>
+Content-Language: en-US
+From: Jacob Keller <jacob.e.keller@intel.com>
+In-Reply-To: <20250422-airoha-en7581-fix-ppe_mbox_data-v3-1-87dd50d2956e@kernel.org>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: MW4PR03CA0287.namprd03.prod.outlook.com
+ (2603:10b6:303:b5::22) To CO1PR11MB5089.namprd11.prod.outlook.com
+ (2603:10b6:303:9b::16)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CO1PR11MB5089:EE_|PH7PR11MB8033:EE_
+X-MS-Office365-Filtering-Correlation-Id: 442bd43a-e41d-4cf1-d501-08dd81ed1a59
+X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|366016|1800799024|7053199007;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?V2o1ZUUyTWRBN1JkN0ZZMk1kWjY0dEF1UmhhZmZFQ2F4NXQ4eTRTbzNxZ0dp?=
+ =?utf-8?B?VVJQQm1EYVRYM3c5ckpLMGJrTjZLR2dyNEZTVjZsT1IzODBOQWNSbHpSSVlV?=
+ =?utf-8?B?RUp2VGlEZWRIWGJkMS9BQ1p5RlZPVStEQjY5RnY5b1NjcXFDUHplNFhWRzV6?=
+ =?utf-8?B?aVZ4SlZ0Z2pGaUJlcGNWSjJZVDNPeU1TdC90VnZBWkJLd1BBMytVLzVneHV0?=
+ =?utf-8?B?di9RTzI5blZYYk85NGVUbFRSamlRZHFLekdXMUE3Umd6enFZd2Z6ZkJRLzQy?=
+ =?utf-8?B?bGdzS1U1dytLd0ZxYUJ1dUw4S0FJR0NaOCtNMS9EWjZvYUhwUkh6QWM2NnM4?=
+ =?utf-8?B?NDM4NHVJS3k0UjlDcmk3anlrZktrUjhiMURvcmR0WUlRR2g2SnUyR2NZdTJn?=
+ =?utf-8?B?cCtlUjNsTm5nWUgxRUR4T2Z4YWM3b241cTVIMUVSV2NPaVlqdVlxalJkOEVt?=
+ =?utf-8?B?TG1zQXU3dUxlVmViZi9pUVZqQ0hvMUZTZk85eHQwemwrc2czTGo0U09uMWtl?=
+ =?utf-8?B?c0hSbHVMcEdVb1V3UVBUbzV1TFF3MVRCTG8yaUZuMUZSZTNxNGNNdW9JT05V?=
+ =?utf-8?B?WlArVS9oQ0VwbGxnS1J6VkpYcHJFNUp6OUVFRlh5d2s5YnJsY2FSS3FpcEtu?=
+ =?utf-8?B?dStjbUVXOWNPcDFDdVpnTmVHT1hkNHovV244N29iNmYrVUkwbXNWUm55ZkV2?=
+ =?utf-8?B?SjRUazRKVGdsRFU1T0pQSXIzNXR5TFdTakZOS0l5T1NmQ2JsVkVXRURMdXkv?=
+ =?utf-8?B?SDF5WUVBVVNhdU40ZDh6Zll2aVNadk9IdHBuU2dQbVZKWjd3cGtUMFE2ZFNh?=
+ =?utf-8?B?QU5wRDAvakJmNVg3OGh0VitxNFhMcitXMEt4eDI0MEVNT2FnNHQrMkVmSHZs?=
+ =?utf-8?B?SHJCWXljeWt1MHlSemdHRUEwNUUrVmVTNDN0NnM2M3cwVm5acEdsMjNRaTlF?=
+ =?utf-8?B?KzZTL21ESWdiMmpxSmtxTkNnK041ei92ZGpNK0ZRbE4wSyt4MExkYnFmTFNt?=
+ =?utf-8?B?TnVLNE4vNVE0MzZQTWpFUEpmUHdtRk94SWhNdmhFZnJhSVZzM1NwbjI0WC9K?=
+ =?utf-8?B?SVIxRlo1U3FRWFBPWnNQQ2dMQWJUajNxTVF1Vkg3OE1TcXJPd0pMOWxVUDNs?=
+ =?utf-8?B?SkJGSzgxTW1Gc1FhVGgraVBRRTJEZDlyeFpxeE1IR09uTklvRUdJQjQ1ZTdF?=
+ =?utf-8?B?a3BHa0paS21hM29QcGtnY3NQUHVieEc0dlF3UFJJQkg5UnNveEc4cTQrd3hi?=
+ =?utf-8?B?bUNLTWtTMHV6cnA5M1g1b1Y1ZWNhcys1cUwxUXVvcHlzclpFR05PVXVTYm5L?=
+ =?utf-8?B?TEcwNGE0T004b2NUTDFaTndXak9UTjVWMGF2RXovdkppbGN2SGNMWXh5dEt3?=
+ =?utf-8?B?MmFZMEF3UFVrUWJkcDNERkhLSUZuS0NrQW93ZmFyVGU4VUcvOUdaZkhGT21u?=
+ =?utf-8?B?V1VaYVdTTGl2VUlEdzZwTElXcTNqS00rdmhZSWRPdCtLeHMxZTN2dVFwMHlS?=
+ =?utf-8?B?YS9SUVdhUVJnN1dyc1FpcmZrT2tTOUZsQzdCeERrZ1hiTnZiRkxrUjhMWkxY?=
+ =?utf-8?B?Z1ZiVFlxS0pFeTF5RlVHTzY4OGdjYll5K0JJalBHRFlPbEVFTU5LVVkyaWF2?=
+ =?utf-8?B?UUw4ay9OeEtGTzg3UjBWVlU3WE9xMktHVHpmNDRCMTB0ckd6RStWK2dOSE9x?=
+ =?utf-8?B?SGhMSDd5U1FtTTAwT0NScGdzVDV6czVFWmVMVWRkRDQvOWZ3N0Fodzd4YUI4?=
+ =?utf-8?B?U0JoR2ZodDRCL0ZjYm1VbndUWFRpUmNiMXZURWxTSzdVM0dEaFRzQ0cvTnFZ?=
+ =?utf-8?B?S3RiSkNNcElVWW90ZVlRNEJqUzY5d0VxbEFMdWxsV3hWVERPaTFqeituYnVW?=
+ =?utf-8?B?Ujh5QnNlRS9iclpYNFpqRnlJMnZyTGZ5QVUydzJEZTlvYzRFNmxHRmdvTWRI?=
+ =?utf-8?Q?JMZdeLBacpo=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CO1PR11MB5089.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(366016)(1800799024)(7053199007);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?S0tOeDdOK05UcUM0c3RjZlNEeDk1bkxJd2FwTFRrWFFQRERKa3NSNTNJYXdt?=
+ =?utf-8?B?OVRkT2hJUzVLb0dCUFMwTjIvejJxeUhnbitKSjQ2UUQ4QS9qOTZnNU9OMXBK?=
+ =?utf-8?B?c2t3ZGdrTXBzUm9ScGpKQW51YW9sTDZQRzBCRXlhamwyUUNWT2VZWXBsME5y?=
+ =?utf-8?B?QmZpU3Ryd3hwQ0xLNG5qY2NYd0FaUFl1eHB5SlFUOFFGTUZLU2hEalExWkRi?=
+ =?utf-8?B?bnJKckxEakczc1RGektuM0dZQmRRV2lJckV5MGZ4alJzeUZxc0Q4d0hZNlA1?=
+ =?utf-8?B?eWxHdEg4UHhQNkJ1OHFKZUU3bC9PR2xJYnJlR1d0dEtVUVJhTWRTTlhzRUls?=
+ =?utf-8?B?bEFsK05EbFZTbGRweURxTnpVUk9jb0dwNGhrN0E0NGk3cWc1WXNWVllScGZ5?=
+ =?utf-8?B?MDNlRVpyRkt0Vmt6ZE9oTzl2R0E1RlJsNnpIWUNFRHN3dk1KQkluNW45WHkr?=
+ =?utf-8?B?Y2NoNnhUNHpaODRCaDNmR0pJVG9MSENUNkgwUC9ISmd3eHlKSnFiQkVCbi83?=
+ =?utf-8?B?Qkl6cHV6V1pWdVpIQXlZd2RNcEhNcnZlSmVaNGpZNGJqV2lZY3RxcHZkUjNz?=
+ =?utf-8?B?L21XTGkzbklyM2tkUmd5eHNXL3BYd1ZJWmRaU05qL2NhclRYRGFIcnk5dFIz?=
+ =?utf-8?B?ZmEwSkt2OVJEUGQ3WHJzaG5VT0dReEtzK1dhcHducFZvMzcyWE9jeUFwc0FP?=
+ =?utf-8?B?eStLcWdHT0pvbnU0UXY4NGxyM2VIejdPeXBnZ1d4M3FBazhpa2lnRlljUDRU?=
+ =?utf-8?B?bU1IVnBESUkwblZ5aEY0T0NuNVcyTzFWVDV0RlJPQzdjNFhROFFLTHNtSnB6?=
+ =?utf-8?B?cU1CWUpJb09uTThjMmlNdUFBd2FNMUZacG5LVmF5WXd2UERHUGp2UGxiL1J4?=
+ =?utf-8?B?cVVNcndydG1NVFVYRXVuSlRNWnBjVVF2c2F0WEdyQlMxaHVMT25EWGpkQmZh?=
+ =?utf-8?B?dVRJazZ0WWltMHQ3L2ZpdTdOYnJxZ2t0S2w4YzhRYlZFWlJHRW9BZzdMOXpv?=
+ =?utf-8?B?N20xLzJaNXBJR2I3RTEvUDZYY3lmVG5mRzNwMmRXZzRlM0o4N3k0bERQV0l3?=
+ =?utf-8?B?NlVMdFRMSTZMT3pFRHBwM3l3cjdNaXN5MkRFTFZCbFpWL1o1Q2wva0JrcE1L?=
+ =?utf-8?B?NHBZL0V6RGVYRnZrY3U3Rkd2UFNBT3hRN2pYTGtlSVFZY3dnYlc2Q0loNlJD?=
+ =?utf-8?B?NnVwQTdFNFM5SkpUZnBqaHJneit2NTZ0OVFHNTVabUpzMkFQajVyTzFobUov?=
+ =?utf-8?B?aUFvQmN0OTRCQlVPdkl6TS9yaU43bHEyZ0lFdEhmdEZxVnhQNkV6UWFvL0ts?=
+ =?utf-8?B?U05Jclc1c0FWNkFNOGV6NllQZnEvMTh1dnBVTUo0S0NoUmZwOGhrRGM5b0pG?=
+ =?utf-8?B?NUV0ZkV5Zy9xYjNkdSs4RStjaXlvalA3Y1kxS1R4M2hnL2syeXdSdkxpdUE2?=
+ =?utf-8?B?cU82WVRtOUtGdkk1QzVrbFZHbktrUzJyd3FiWkd0aGR0U1ljTlBqZzR6SXkx?=
+ =?utf-8?B?SmNpWXhwVlVGVUVYc2FDaU5oWGtDUWdFeFQ1dmVzejdUMGdLY3VrV1hlVGFz?=
+ =?utf-8?B?VDkrSEpiVUs5Y3FJS1YrcWhrOTZqSnRaaEFJc053dGFwSkNwajFKTmhtSy9i?=
+ =?utf-8?B?Q3FrR0dFZDdDS2F1d0ZDTUxNSVhDUHZKTVpwTDdkaDFGT1JOQkl6OFN5MW45?=
+ =?utf-8?B?VXZkTlBkM2d0NHdhcTJlUFFzY1J2Sm1PWm1veEJmTytMNUdXN1YveXBaVkFX?=
+ =?utf-8?B?UnFnSlB1bVVRUkl3Z2Q1YXlacXY3MTQveTM5MTBOYnBXenEyQkdHT1MvMytn?=
+ =?utf-8?B?ckpvVFprQmFCaGxOcm5sOFY1UWZkRnl0TEdjQ0NZVVorOThXWU9qMVI1VVRC?=
+ =?utf-8?B?a3pYZVZkZ0wzMkdIdE11dzNTY09OQ2VqeThGZmJMaGR5U054STFqY0hieDBZ?=
+ =?utf-8?B?SGhlSkllU1EyVXlTUnJlUGR4RUVjQnhPWWVqUUxLTGZzTys0b0FRemY4UGU4?=
+ =?utf-8?B?VVF3eFpGNHRuOXFPeGN0L2doUmowQStRUE5Wb3pMSmZxTXRUMlZtTUVGbDhl?=
+ =?utf-8?B?b0NyanM5NFhnTjRidVN3ZHdWSWlUTzMwRDZxNUFLOFVrSE1lTUV0aTlJWjFD?=
+ =?utf-8?B?RXJObTAxbG10QnVUTE4xd3VuSnluL1R0OUI2QlI3SXZaRTNscVdEeWNla1pT?=
+ =?utf-8?B?VkE9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 442bd43a-e41d-4cf1-d501-08dd81ed1a59
+X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB5089.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Apr 2025 22:29:10.7079
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: xhqTU3f4i+X9wAlfFOxknN6e6Rk1SQTa2QqzI8lqPHoiVuX6A89f9Pr6T2DTXwf4mRixrSuCljGAqNinPje1PHT+mS2gPUoFqgzQ4OvPuos=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR11MB8033
+X-OriginatorOrg: intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250422_220754_913864_965BD55C 
-X-CRM114-Status: GOOD (  31.49  )
+X-CRM114-CacheID: sfid-20250422_153034_357518_067A360C 
+X-CRM114-Status: GOOD (  22.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,100 +215,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 22, 2025 at 1:54=E2=80=AFPM Nicolas Dufresne <nicolas@ndufresne=
-.ca> wrote:
->
-> Le lundi 17 f=C3=A9vrier 2025 =C3=A0 14:28 -0500, Nicolas Dufresne a =C3=
-=A9crit :
-> > aLe lundi 17 f=C3=A9vrier 2025 =C3=A0 13:45 -0500, Nicolas Dufresne a =
-=C3=A9crit :
-> > > Hi Nathan,
-> > >
-> > > Le mardi 11 f=C3=A9vrier 2025 =C3=A0 16:34 -0800, Nathan Hebert a =C3=
-=A9crit :
-> > > > Mediatek devices that support HEVC also support the main still pict=
-ure
-> > > > profile, but today, the main still picture profile is excluded.
-> > > >
-> > > > This removes the skip mask for HEVC, and enables the main still
-> > > > picture profile decoding.
-> > > >
-> > > > Signed-off-by: Nathan Hebert <nhebert@chromium.org>
-> > > > ---
-> > > > On Mediatek devices that support HEVC decoding, HEVC Main Still Pic=
-ture
-> > > > profile is also supported by the SOC and firmware. However, this
-> > > > capability is turned off in the vcodec driver.
-> > > >
-> > > > This removes the code that disables HEVC Main Still Picture profile
-> > > > decoding. Validation of the decoder has been done via V4L2-backed
-> > > > Android CTS tests on an MT8196 device.
-> > >
-> > > While its nice to know that you are working on upcoming SoC, we need
-> > > confirmation that this is working on all the upstream stateless
-> > > decoders supported: 8183, 8186, 8192, 8195. Ideally testing on 8188,
-> > > which I can see has merged support without the linux-firmware file to
-> > > go with it.
-> > >
-> > > I'll wait for that and Yunfei's ack before picking it. Yunfei, please
-> > > fix the situation with 8188 in linux-firmware, and CC me.
-> >
-> > In case this is useful, we recommend providing fluster scores for the
-> > codec, which in that case runs some public ITU conformance vectors.
-> > Since most of the testing has been done with GStreamer, you may be able
-> > to find old report and confirm it it works. GStreamer does not
-> > currently filter the profile/level (on my todo), so it will try anyway.
-> > IPRED_B_Nokia_3 is the one vector in the base suite that expose that
-> > profile.
-> >
-> > resources/JCT-VC-HEVC_V1/IPRED_B_Nokia_3/IPRED_B_Nokia_3.bit
-> >   Stream #0:0: Video: hevc (Main Still Picture), none, 1920x1080, 25 fp=
-s, 1200k tbr, 1200k tbn
->
-> Ran the test myself on MT8195 and can confirm it passes if you ignore
-> the profiles.
-Thank you for checking, Nicholas. I apologise for slow action on my
-end. My work priorities have pushed this back in the queue.
->
-> Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
->
-> >
-> > regards,
-> > Nicolas
-> >
-> > >
-> > > regards,
-> > > Nicolas
-> > >
-> > > > ---
-> > > >  .../media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateles=
-s.c   | 2 --
-> > > >  1 file changed, 2 deletions(-)
-> > > >
-> > > > diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vco=
-dec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vc=
-odec_dec_stateless.c
-> > > > index afa224da0f41..d873159b9b30 100644
-> > > > --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec=
-_stateless.c
-> > > > +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec=
-_stateless.c
-> > > > @@ -152,8 +152,6 @@ static const struct mtk_stateless_control mtk_s=
-tateless_controls[] =3D {
-> > > >                   .id =3D V4L2_CID_MPEG_VIDEO_HEVC_PROFILE,
-> > > >                   .def =3D V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN,
-> > > >                   .max =3D V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_10,
-> > > > -                 .menu_skip_mask =3D
-> > > > -                         BIT(V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_STI=
-LL_PICTURE),
-> > > >           },
-> > > >           .codec_type =3D V4L2_PIX_FMT_HEVC_SLICE,
-> > > >   },
-> > > >
-> > > > ---
-> > > > base-commit: ffd294d346d185b70e28b1a28abe367bbfe53c04
-> > > > change-id: 20250211-enable_hevc_still_picture-26b35eb08270
-> > > >
-> > > > Best regards,
-> > >
+
+
+On 4/22/2025 8:59 AM, Lorenzo Bianconi wrote:
+> The official Airoha EN7581 firmware requires adding max_packet filed in
+> ppe_mbox_data struct while the unofficial one used to develop the Airoha
+> EN7581 flowtable support does not require this field.
+> This patch does not introduce any real backwards compatible issue since
+> EN7581 fw is not publicly available in linux-firmware or other
+> repositories (e.g. OpenWrt) yet and the official fw version will use this
+> new layout. For this reason this change needs to be backported.
+> 
+
+To clarify if I understand correctly:
+
+The original data structure without max_packet is for an unreleased
+version of firmware which is unofficial and which is not released publicly.
+
+Then, the official public release will include this additional field,
+and thus won't work with the current kernel code.
+
+Of course anyone who happens to have the unofficial firmware will need
+to work around this, but that should only include a small handful of
+folks with development images?
+
+> Fixes: 23290c7bc190d ("net: airoha: Introduce Airoha NPU support")
+> Reviewed-by: Simon Horman <horms@kernel.org>
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+> Changes in v3:
+> - resend targeting net tree
+> - Link to v2: https://lore.kernel.org/r/20250417-airoha-en7581-fix-ppe_mbox_data-v2-1-43433cfbe874@kernel.org
+> 
+> Changes in v2:
+> - Add more details to commit log
+> - Link to v1: https://lore.kernel.org/r/20250415-airoha-en7581-fix-ppe_mbox_data-v1-1-4408c60ba964@kernel.org
+> ---
+>  drivers/net/ethernet/airoha/airoha_npu.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ethernet/airoha/airoha_npu.c
+> index 7a5710f9ccf6a4a4f555ab63d67cb6b318de9b52..16201b5ce9f27866896226c3611b4a154d19bc2c 100644
+> --- a/drivers/net/ethernet/airoha/airoha_npu.c
+> +++ b/drivers/net/ethernet/airoha/airoha_npu.c
+> @@ -104,6 +104,7 @@ struct ppe_mbox_data {
+>  			u8 xpon_hal_api;
+>  			u8 wan_xsi;
+>  			u8 ct_joyme4;
+> +			u8 max_packet;
+>  			int ppe_type;
+>  			int wan_mode;
+>  			int wan_sel;
+> 
+
+One oddity here is that the structure is not marked __packed. This
+addition of a u8 means there will be a 3-byte gap on platforms which
+have a 4-byte integer... It feels very weird these are ints and not s32
+or something to fully clarify the sizes.
+
+Regardless, assuming the correctness that the unofficial firmware is
+only available to developers and isn't widely available:
+
+Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
+
+> ---
+> base-commit: c03a49f3093a4903c8a93c8b5c9a297b5343b169
+> change-id: 20250422-airoha-en7581-fix-ppe_mbox_data-56df12d4df72
+> 
+> Best regards,
+
 
