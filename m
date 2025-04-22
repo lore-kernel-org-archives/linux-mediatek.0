@@ -4,72 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B02BAC369D3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 15:11:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E3C9C369C2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 15:11:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5fjKAhslNglvYZYv0ye7T1kfLt8KwcsoUk76FCP3Nyg=; b=EjtYhL0NmdFAiB+trKTLceFirW
-	dlHLQ+I2ZRC+phaFRXS1IXovfWICAeYXzNDTC+65dAPDcIwkKZ/D7b/33QjQpFwnVbXLw/tREtFLo
-	tkTN/6FGspOhnhLowedC0ahxEGt7zxl2K/IrCOl6p8NAafCmqhLR2PRbWxTbUyvOl7iXUmuiIrZpA
-	kRAwjxjwZC9+PpprRlHVo8E4ZORv+ICl3TeVWVCG3K4eDY68s4Xvwg14EdxsDc5a822Jxa1gzGsnc
-	0RP4Deb6MqhhnHE1m5P24NNxhfOuYPICS7D7Qt2Skosz4zIayiULIZjkFF/nRjbk45paHI1bFXgSa
-	he38npZA==;
+	bh=MIr6ZBbNdW/MX0m9GW6VChIYaQIXGalw4WkHUD0vUec=; b=XfoD9FHF4zL7+vMpntassxaqbT
+	dRS0mp4tXTqwER/iYriIPosrOcgqmRNmVkCSXURkAfqZl790DFNpRxLvf8BJQvD5CUrGbNuaQBd9d
+	ItHAitnu9kGaOXNx06MoWryEO21950ynqpB7ZCymg9g8TeiwEf5bHQfVyvci85M+tNtoJHY6twj+d
+	KcbDCgv9W5gCSIOKoyCE/7CqApb96iCToi4P5PzW//ziWGqGN8EkcI1ytakqn0g62o3753cPrYkqQ
+	x8nhb+20H4405STbSz7pTY+5OFsxJTeIb+ZUyfBXAPGVObKC6eyTmZXk1A3uyooyvUmaD7FWC7REa
+	GPOmn9jQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7FH6-00000007ePO-3J55;
-	Tue, 22 Apr 2025 15:11:04 +0000
+	id 1u7FHo-00000007ebZ-3fMm;
+	Tue, 22 Apr 2025 15:11:48 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7DyT-00000007MdV-01ib;
-	Tue, 22 Apr 2025 13:47:46 +0000
+	id 1u7E4J-00000007NcB-1ZR7;
+	Tue, 22 Apr 2025 13:53:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1745329663;
-	bh=r/2jQ92IbgEzNppnARIsVhMwo1Q4nrZsUcwAE/C6P9k=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=T/j40MmimszjMC5SdsG/9amraFDtsO0jL7pw4tU4CEzqr3yFaUPSBlvzAnwYF5A8t
-	 N7eXubSLtoif2uoNOqf74HjjMqsaPjBxox34EF3AqGW3Amip0AqVXaBusCC2bOP3ma
-	 2hiE9XOIQNRSrjEO7Etg2wfanBNPNtUCqq0fu7wYSDhvNuB7iMkXuG1ptuqrIHR46B
-	 d768fchLO93JZPWY4ug0gNvathrfDL+FEZW/TEfOu3wfcOn+hHPGKT2w04d3Jfagoc
-	 Ex0yntyehehm0VhJdjcTjmvW8dhVvRKG2nHOrCAhMMzXrNHbtq7oXjbEXu5bF22JMO
-	 ZUlKOlENt954A==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	s=mail; t=1745330025;
+	bh=eiFHy0TD6ojLHrM6IgI2opGeeWPGapwMgujChqNE3Xw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=G/wBOQYudLddk7OOF5sCI5SQJzSZbnlpkgWSDAJms7sqo/autmUNrS7xlyI0IzDDm
+	 ceVH3EEjml+WY6L/+awdJJYerRLvRm8UUwMdV9relT7QJqfwgLjuS2j19GR7S1bQ4K
+	 82tuVBf1lTVWmbyVHBvbkuXeMpVUbZUcgpZ1VzMy9tXoUaqjduZJVhOK8fyR4UNRix
+	 eJ7jLyDwqJXN0Vj9rs41R3fPAKjvj57x9irAVbV2B3714m4WF9kjY8ZuyaIf6wzJSd
+	 um98ujwUZ/1rFPDIsiOQQFr2ru/4EQTepMhVEtXlPLhQlPm3JsdMsZv/wgO6snv9E8
+	 0H3EgD5e7FFKA==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A98DA17E078A;
-	Tue, 22 Apr 2025 15:47:42 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Bjorn Andersson <andersson@kernel.org>, 
- Mathieu Poirier <mathieu.poirier@linaro.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Tinghan Shen <tinghan.shen@mediatek.com>, 
- Olivia Wen <olivia.wen@mediatek.com>, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Cc: kernel@collabora.com, linux-remoteproc@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
- Jason Chen <jason-ch.chen@mediatek.corp-partner.google.com>
-In-Reply-To: <20250421-scp-dual-core-mt8390-v2-0-c84117a959a9@collabora.com>
-References: <20250421-scp-dual-core-mt8390-v2-0-c84117a959a9@collabora.com>
-Subject: Re: (subset) [PATCH v2 0/5] Describe MT8188's SCP as dual-core
-Message-Id: <174532966260.97079.6264214242905276667.b4-ty@collabora.com>
-Date: Tue, 22 Apr 2025 15:47:42 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5C61217E0DD1;
+	Tue, 22 Apr 2025 15:53:44 +0200 (CEST)
+Message-ID: <7b3713d1-df18-4da1-a1e2-16dcff08fe66@collabora.com>
+Date: Tue, 22 Apr 2025 15:53:43 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.14.2
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v9 22/23] drm/mediatek: Introduce HDMI/DDC v2 for
+ MT8195/MT8188
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
+ simona@ffwll.ch, maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+ tzimmermann@suse.de, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, matthias.bgg@gmail.com, ck.hu@mediatek.com,
+ jitao.shi@mediatek.com, jie.qiu@mediatek.com, junzhi.zhao@mediatek.com,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
+ dmitry.baryshkov@linaro.org, lewis.liao@mediatek.com,
+ ives.chenjh@mediatek.com, tommyyl.chen@mediatek.com,
+ jason-jh.lin@mediatek.com
+References: <20250415104321.51149-1-angelogioacchino.delregno@collabora.com>
+ <20250415104321.51149-23-angelogioacchino.delregno@collabora.com>
+ <aestmu2rblcrcz77tuqgkimaj4stg24skyp2avdstahwr3aa3i@cfv5ov2qjcf6>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <aestmu2rblcrcz77tuqgkimaj4stg24skyp2avdstahwr3aa3i@cfv5ov2qjcf6>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250422_064745_190683_516A47E2 
-X-CRM114-Status: UNSURE (   7.56  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250422_065347_568709_6FE31CAE 
+X-CRM114-Status: GOOD (  38.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,20 +86,203 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 21 Apr 2025 16:49:03 -0400, Nícolas F. R. A. Prado wrote:
-> This series updates the MT8188 SCP description to dual-core and prepares
-> its usage. Patch 4 updates the MT8188 DT to describe the SCP as a dual
-> core cluster and patch 5 adds the firmware-name property so the firmware
-> can be loaded. Patches 1 through 3 are dt-binding fixes for the SCP.
+Il 21/04/25 21:16, Dmitry Baryshkov ha scritto:
+> On Tue, Apr 15, 2025 at 12:43:20PM +0200, AngeloGioacchino Del Regno wrote:
+>> Add support for the newer HDMI-TX (Encoder) v2 and DDC v2 IPs
+>> found in MediaTek's MT8195, MT8188 SoC and their variants, and
+>> including support for display modes up to 4k60 and for HDMI
+>> Audio, as per the HDMI 2.0 spec.
+>>
+>> HDCP and CEC functionalities are also supported by this hardware,
+>> but are not included in this commit and that also poses a slight
+>> difference between the V2 and V1 controllers in how they handle
+>> Hotplug Detection (HPD).
+>>
+>> While the v1 controller was using the CEC controller to check
+>> HDMI cable connection and disconnection, in this driver the v2
+>> one does not.
+>>
+>> This is due to the fact that on parts with v2 designs, like the
+>> MT8195 SoC, there is one CEC controller shared between the HDMI
+>> Transmitter (HDMI-TX) and Receiver (HDMI-RX): before eventually
+>> adding support to use the CEC HW to wake up the HDMI controllers
+>> it is necessary to have support for one TX, one RX *and* for both
+>> at the same time.
+>>
+>> Reviewed-by: CK Hu <ck.hu@mediatek.com>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   drivers/gpu/drm/mediatek/Kconfig            |    7 +
+>>   drivers/gpu/drm/mediatek/Makefile           |    2 +
+>>   drivers/gpu/drm/mediatek/mtk_hdmi_common.c  |    4 +
+>>   drivers/gpu/drm/mediatek/mtk_hdmi_common.h  |    9 +
+>>   drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c  |  385 +++++
+>>   drivers/gpu/drm/mediatek/mtk_hdmi_regs_v2.h |  263 ++++
+>>   drivers/gpu/drm/mediatek/mtk_hdmi_v2.c      | 1396 +++++++++++++++++++
+>>   7 files changed, 2066 insertions(+)
+>>   create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c
+>>   create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_regs_v2.h
+>>   create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
+>>
+>> +
+>> +static int mtk_hdmi_v2_setup_audio_infoframe(struct mtk_hdmi *hdmi)
+>> +{
+>> +	struct hdmi_codec_params *params = &hdmi->aud_param.codec_params;
+>> +	struct hdmi_audio_infoframe frame;
+>> +	u8 buffer[14];
+>> +	ssize_t ret;
+>> +
+>> +	memcpy(&frame, &params->cea, sizeof(frame));
+>> +
+>> +	ret = hdmi_audio_infoframe_pack(&frame, buffer, sizeof(buffer));
+>> +	if (ret < 0)
+>> +		return ret;
 > 
+> This should really be done via
+> drm_atomic_helper_connector_hdmi_update_audio_infoframe() or
+> drm_atomic_helper_connector_hdmi_clear_audio_infoframe().
+> 
+> Ideally this should come from the .hw_params() / .prepare() calls so
+> that you don't need to store the params in the driver data.
 > 
 
-Applied to v6.15-next/dts64, thanks!
+When switching to the new hdmi audio helpers yes, but I was planning to do that
+later.....
 
-[4/5] arm64: dts: mediatek: mt8188: Describe SCP as a cluster with two cores
-      commit: b1e157c61db5e6f8d9c35e8ebc714ab6ce02ee41
-[5/5] arm64: dts: mediatek: mt8390-genio-common: Add firmware-name for scp0
-      commit: 2f0066dae66f30386ecd6408410e27a4d6818c15
+>> +
+>> +	mtk_hdmi_v2_hw_write_audio_infoframe(hdmi, buffer);
+>> +
+>> +	return 0;
+>> +}
+>> +
+>> +static inline void mtk_hdmi_v2_hw_gcp_avmute(struct mtk_hdmi *hdmi, bool mute)
+>> +{
+>> +	u32 val;
+>> +
+>> +	regmap_read(hdmi->regs, TOP_CFG01, &val);
+>> +	val &= ~(CP_CLR_MUTE_EN | CP_SET_MUTE_EN);
+>> +
+>> +	if (mute) {
+>> +		val |= CP_SET_MUTE_EN;
+>> +		val &= ~CP_CLR_MUTE_EN;
+>> +	} else {
+>> +		val |= CP_CLR_MUTE_EN;
+>> +		val &= ~CP_SET_MUTE_EN;
+>> +	}
+>> +	regmap_write(hdmi->regs, TOP_CFG01, val);
+>> +
+>> +	regmap_set_bits(hdmi->regs, TOP_INFO_RPT, CP_RPT_EN);
+>> +	regmap_set_bits(hdmi->regs, TOP_INFO_EN, CP_EN | CP_EN_WR);
+>> +}
+>> +
+>> +static void mtk_hdmi_v2_hw_ncts_enable(struct mtk_hdmi *hdmi, bool enable)
+>> +{
+>> +	if (enable)
+>> +		regmap_set_bits(hdmi->regs, AIP_CTRL, CTS_SW_SEL);
+>> +	else
+>> +		regmap_clear_bits(hdmi->regs, AIP_CTRL, CTS_SW_SEL);
+>> +}
+>> +
+>> +static void mtk_hdmi_v2_hw_aud_set_channel_status(struct mtk_hdmi *hdmi)
+>> +{
+>> +	u8 *ch_status = hdmi->aud_param.codec_params.iec.status;
+>> +
+>> +	/* Only the first 5 to 7 bytes of Channel Status contain useful information */
+>> +	regmap_write(hdmi->regs, AIP_I2S_CHST0, mtk_hdmi_v2_format_hw_packet(&ch_status[0], 4));
+>> +	regmap_write(hdmi->regs, AIP_I2S_CHST1, mtk_hdmi_v2_format_hw_packet(&ch_status[4], 3));
+>> +}
+>> +
+>> +static void mtk_hdmi_v2_hw_aud_set_ncts(struct mtk_hdmi *hdmi,
+>> +				     unsigned int sample_rate,
+>> +				     unsigned int clock)
+>> +{
+>> +	unsigned int n, cts;
+>> +
+>> +	mtk_hdmi_get_ncts(sample_rate, clock, &n, &cts);
+> 
+> drm_hdmi_acr_get_n_cts() ?
+> 
+
+I'd have to update both HDMI drivers to use that instead, and I was planning to do
+that at a later time when switching to the HDMI audio helpers.
+
+>> +
+>> +	regmap_write(hdmi->regs, AIP_N_VAL, n);
+>> +	regmap_write(hdmi->regs, AIP_CTS_SVAL, cts);
+>> +}
+>> +
+> 
+> [...]
+> 
+>> +
+>> +static int mtk_hdmi_v2_audio_hw_params(struct device *dev, void *data,
+>> +				       struct hdmi_codec_daifmt *daifmt,
+>> +				       struct hdmi_codec_params *params)
+>> +{
+>> +	struct mtk_hdmi *hdmi = dev_get_drvdata(dev);
+>> +
+>> +	if (hdmi->audio_enable) {
+>> +		mtk_hdmi_audio_params(hdmi, daifmt, params);
+>> +		mtk_hdmi_v2_aud_output_config(hdmi, &hdmi->mode);
+>> +	}
+>> +	return 0;
+>> +}
+>> +
+>> +static int mtk_hdmi_v2_audio_startup(struct device *dev, void *data)
+>> +{
+>> +	struct mtk_hdmi *hdmi = dev_get_drvdata(dev);
+>> +
+>> +	mtk_hdmi_v2_hw_aud_enable(hdmi, true);
+>> +	hdmi->audio_enable = true;
+>> +
+>> +	return 0;
+>> +}
+>> +
+>> +static void mtk_hdmi_v2_audio_shutdown(struct device *dev, void *data)
+>> +{
+>> +	struct mtk_hdmi *hdmi = dev_get_drvdata(dev);
+>> +
+>> +	hdmi->audio_enable = false;
+>> +	mtk_hdmi_v2_hw_aud_enable(hdmi, false);
+> 
+> Most likely you need to stop sending the AUDIO packet too. Or is it dome
+> by the hardware?
+> 
+
+The call to `mtk_hdmi_v2_hw_aud_enable(hdmi, false)` will set HW registers to both
+mute and stop sending the audio packet.
+
+>> +}
+>> +
+>> +static int mtk_hdmi_v2_audio_mute(struct device *dev, void *data, bool enable, int dir)
+>> +{
+>> +	struct mtk_hdmi *hdmi = dev_get_drvdata(dev);
+>> +
+>> +	mtk_hdmi_v2_hw_aud_mute(hdmi, enable);
+>> +
+>> +	return 0;
+>> +}
+>> +
+>> +static const struct hdmi_codec_ops mtk_hdmi_v2_audio_codec_ops = {
+>> +	.hw_params = mtk_hdmi_v2_audio_hw_params,
+>> +	.audio_startup = mtk_hdmi_v2_audio_startup,
+>> +	.audio_shutdown = mtk_hdmi_v2_audio_shutdown,
+>> +	.mute_stream = mtk_hdmi_v2_audio_mute,
+>> +	.get_eld = mtk_hdmi_audio_get_eld,
+>> +	.hook_plugged_cb = mtk_hdmi_v2_audio_hook_plugged_cb,
+>> +};
+> 
+> Do you plan to switch to the OP_HDMI_AUDIO? I'd really like to see
+> bridges use the framework instead of implementing everthing on their
+> own.
+> 
+
+I do, but since I've already reached v9, I really don't want to do that right now
+and delay this driver for another two months.
+
+I plan to do the switch after we at least get this in: as the V1 driver would also
+need the same cleanup, I may even find a way to throw more stuff in the hdmi_common
+when cleaning up both at the same time.
 
 Cheers,
 Angelo
