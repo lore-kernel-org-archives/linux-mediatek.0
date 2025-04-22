@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4156BC369AB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 01:22:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E1DCC369D6
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 01:22:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=bxJ9xVr+bWsUPq5pZ49UQFeAPTX6wfXQHs3mOpxc1y0=; b=ZUo8w7mTrIM3Pr258WjqQKS8rh
-	ziSr20mUiKXoB1X9s9r4dsn3J++nRCzUSZnLPrfHr5yVWHauG8HS/ruIi2lm5W5CsOa1G05e436w3
-	GkaM6/rdRHOpXwDsEzmVeK19HQGx1Qo9RPS+gl7Qy133C4l3X+wPlrPbg+nrdKqFkHu27M7CjNzWI
-	mhLnIrJkJgsMaIFfOCGz+my2ifm4+hPhR7dcjNbua/o00Q4mhrTMCWNlRHlDYfUdJqa+qALhB5/DM
-	A3LsN401wz64Ise/pfxNC4iDCD12qR1aRaounW8Q2/7foB5CcY2i9B8Y0H0AreN9i5bW+UPEXJBTl
-	5Yn2l2rA==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xmyijcP5S2sV/ccF3DyXRzQkQCOzGZ8LtuwtyLN4L88=; b=zi4rpbrXn7yxie1fCS7yxRYk5J
+	QjTN0YJMHgJyHlmdIbQU8qqTc/203MubEFQl43S7eM0l4p5r0AvvwFeJKWr3qgwQd0VX5SiPsjys+
+	dXFN14nXGWrNGs3MbSxo6SMJD7AlkyTMQn8KvF6r98KX7026VBJEbgPwzNYAJOQC0I4R/8eBOOZGX
+	WxdCGKKVFLiqNRstP9/BLS8IrgVP8rSrBdrMQadNouMtLjrfT2cB9UWpjl4T9IYfmJBtREcQ8eTUM
+	1wUeBOdCmkXgxB12C4VnZmf9gW0WoFwN7XATRDoHzOuJeExU5Xi8ayvtX9yBQs7CZkj5gRIoGr3vJ
+	7gEjQBmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u72Kv-00000005VaO-44Fv;
-	Tue, 22 Apr 2025 01:22:09 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1u72Ky-00000005Vb0-17lF;
+	Tue, 22 Apr 2025 01:22:12 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u72Kt-00000005VZX-1lvj
+	id 1u72Ku-00000005VZo-3sCv
 	for linux-mediatek@lists.infradead.org;
-	Tue, 22 Apr 2025 01:22:08 +0000
-X-UUID: 315150861f1811f0b1a74d0c5e11a509-20250421
+	Tue, 22 Apr 2025 01:22:10 +0000
+X-UUID: 326790341f1811f0a2405d5ef59ce188-20250421
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=bxJ9xVr+bWsUPq5pZ49UQFeAPTX6wfXQHs3mOpxc1y0=;
-	b=tMFBaXbNxxwf9OgFiTzoYrMlMRznRhe4tMFtmWqtTVK1KrLor6X017UEnYugo70vT4dgwzZ1HoPy+kkpvrmVACUsu7XAyu59cmxPoARw1Q8lHrkynzwTUQFzGANgPdT0AHXccW31MBYq8Ci4dLOcwINAttv2dYqTeAl1KymjoSA=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=xmyijcP5S2sV/ccF3DyXRzQkQCOzGZ8LtuwtyLN4L88=;
+	b=JiZWUFFClsTHw/KvoJZfIfhDY+fbf3d+T9V4UUdZBwoFl5Jec8SEjLu6mzspu8cJcj1ZyMTlbQwJI2VFTcpEH1pO/QlfFlE5H8cbdcapOlVOFAidndxhm8PSnAYy5EiPq6croBWlEblE4JkxyS0juoJ1V0OQ98rIYBAy248AVFI=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:dea7fa91-2700-44a3-98af-820b0047290b,IP:0,UR
+X-CID-O-INFO: VERSION:1.2.1,REQID:94994c77-d50e-4975-87ed-10ba201713b3,IP:0,UR
 	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
 	elease,TS:0
-X-CID-META: VersionHash:0ef645f,CLOUDID:3c5b58a6-c619-47e3-a41b-90eedbf5b947,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
+X-CID-META: VersionHash:0ef645f,CLOUDID:f32ee08d-f5b8-47d5-8cf3-b68fe7530c9a,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
+	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
+	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 315150861f1811f0b1a74d0c5e11a509-20250421
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+X-UUID: 326790341f1811f0a2405d5ef59ce188-20250421
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
 	(envelope-from <chris.lu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2081691204; Mon, 21 Apr 2025 18:22:01 -0700
+	with ESMTP id 299997322; Mon, 21 Apr 2025 18:22:03 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Tue, 22 Apr 2025 09:21:58 +0800
+ 15.2.1258.39; Tue, 22 Apr 2025 09:22:00 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Tue, 22 Apr 2025 09:21:58 +0800
+ 15.2.1258.39 via Frontend Transport; Tue, 22 Apr 2025 09:22:00 +0800
 From: Chris Lu <chris.lu@mediatek.com>
 To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
 	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
@@ -62,16 +62,18 @@ CC: Sean Wang <sean.wang@mediatek.com>, Jiande Lu <jiande.lu@mediatek.com>,
 	<steve.lee@mediatek.com>, linux-bluetooth <linux-bluetooth@vger.kernel.org>,
 	linux-kernel <linux-kernel@vger.kernel.org>, linux-mediatek
 	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
-Subject: [PATCH v2 0/2] Bluetooth: btmtksdio: ensure btmtksdio_close is executed before btmtksdio_remove
-Date: Tue, 22 Apr 2025 09:21:54 +0800
-Message-ID: <20250422012156.586600-1-chris.lu@mediatek.com>
+Subject: [PATCH v2 1/2] Bluetooth: btmtksdio: Check function enabled before doing close
+Date: Tue, 22 Apr 2025 09:21:55 +0800
+Message-ID: <20250422012156.586600-2-chris.lu@mediatek.com>
 X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20250422012156.586600-1-chris.lu@mediatek.com>
+References: <20250422012156.586600-1-chris.lu@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250421_182207_463133_77BF516C 
-X-CRM114-Status: UNSURE (   6.45  )
+X-CRM114-CacheID: sfid-20250421_182208_966961_DCE50F49 
+X-CRM114-Status: UNSURE (   9.89  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,19 +89,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If Bluetooth SDIO card is unexpectedly removed due to hardware removal
-or SDIO issue, it is possible for remove to be called before close.
-If an interrupt occurs during this process, it may cause kernel panic.
-Therefore, it is necessary to ensure that close is executed before
-remove to stop interrupts and cancel txrx workqueue.
+Check BTMTKSDIO_FUNC_ENABLED flag before doing close to prevent
+btmtksdio_close been called twice.
 
-Chris Lu (2):
-  Bluetooth: btmtksdio: Check function enabled before doing close
-  Bluetooth: btmtksdio: Do close if SDIO card removed without close
+Fixes: c4233afb9a ("Bluetooth: btmtksdio: Prevent enabling interrupts after IRQ handler removal")
+Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+---
+ drivers/bluetooth/btmtksdio.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
- drivers/bluetooth/btmtksdio.c | 12 ++++++++++--
- 1 file changed, 10 insertions(+), 2 deletions(-)
-
+diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
+index 566c136e83bf..3c66e3ee9834 100644
+--- a/drivers/bluetooth/btmtksdio.c
++++ b/drivers/bluetooth/btmtksdio.c
+@@ -723,6 +723,10 @@ static int btmtksdio_close(struct hci_dev *hdev)
+ {
+ 	struct btmtksdio_dev *bdev = hci_get_drvdata(hdev);
+ 
++	/* Skip btmtksdio_close if BTMTKSDIO_FUNC_ENABLED isn't set */
++	if (!test_bit(BTMTKSDIO_FUNC_ENABLED, &bdev->tx_state))
++		return 0;
++
+ 	sdio_claim_host(bdev->func);
+ 
+ 	/* Disable interrupt */
 -- 
 2.45.2
 
