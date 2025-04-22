@@ -4,74 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 382E7C369CB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 08:40:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D81FCC369C2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 13:23:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:
-	Content-Type:Content-Transfer-Encoding:References:In-Reply-To:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3CR+/f2NiMSAagT+V1OjsdLfNcuUb59reoY8+3eCTCo=; b=uvE/FAPW40dpPiWMfTAkWGiWhF
-	/ApH6XKGaq7rfuQGh6ghx+ahwwVvfkO4tx43ViCTZA44gGjepLn06i8/OdbXeaqh7/i7YVlaJAf8I
-	HzyYT7AOJx+rtfUzQWAUequy8Gj1K71gnEXSB94zqeR3i5Zmq0ju0XLRgjf0puRgcm/S48cCMKObH
-	Bi77ypBJKF5KIEtNal+knVE2JvAwXNJEneGZV+Sp0h/Ywrjd/GllF31RbHgaoOp6hfmAgV9WN1JNi
-	wGMaQyzagneRApZnSVX5CT+CHWb1VVxPmVwjZP3t9CKZP+Bjmy0LB+NfzbvKtUN6bVYBI5ZmGLZVW
-	3ezoSBPA==;
+	bh=IDkLAWQRNpsJfzFfKZyPr4d1GbMEnucSMGS/IOzfTCU=; b=V//NbD01x9AdMyWYhXOmJQJeU+
+	h6W37JgjI8QlEu90sNt5Zdz6GxJ8YTRNhmZUkSdGIvpSnKolBdWoEuRYaIlETsLYL2BNuE4Lekil/
+	jj4NiAHYpWiN+sCMHvXqCPMfIUXAE4to3wfzOjm9IUMidjHsqny+ItlNWtDWx8+zgeVIpasDn/n3i
+	ZwqA5M5wmtc1/VK9yBviShvoD/bVbmaG2PYiFx9FTj82hJybG2P3YahWiRhsiEfSzhzFQCtDYwVvW
+	5R+kXOmZAL5vpyrjs943MEKPsYVAoH6VeTDPMQRbS0j+V6czf/VEZ4lysX3uoz+bZJT9Ho3JhHtCC
+	GVdpazbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u79BN-00000006O0a-0Xgy;
-	Tue, 22 Apr 2025 08:40:45 +0000
-Received: from m16.mail.163.com ([117.135.210.5])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u78Y0-00000006DI7-2n77
-	for linux-mediatek@lists.infradead.org;
-	Tue, 22 Apr 2025 08:00:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=0/6nEFrgS1C04Ibd4G7cvNL9wRLiPUrNDF6gwaEK1B4=; b=p
-	sAeqVoPySESnzmUVTK4aza7vwvLgunqAAY/En8AQLpv1FFiqv+yOtXhPxWiYk3KI
-	iK98sKhWxw/jKvgpUCPlQMXDk/BeEe27ep2hzNPzjqlUlvrd1r9KjxBTPkQDm+30
-	AzaZYLUhnWPuCl5qXIBFqEoqI+RM10mV0MPkeobP5Q=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-102 (Coremail) ; Tue, 22 Apr 2025 15:59:27 +0800
- (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Tue, 22 Apr 2025 15:59:27 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Dmitry Baryshkov" <dmitry.baryshkov@oss.qualcomm.com>,
-	"Maxime Ripard" <mripard@kernel.org>
-Cc: lumag@kernel.org, neil.armstrong@linaro.org,
-	dri-devel@lists.freedesktop.org, dianders@chromium.org,
-	jani.nikula@intel.com, lyude@redhat.com, jonathanh@nvidia.com,
-	p.zabel@pengutronix.de, simona@ffwll.ch, victor.liu@nxp.com,
-	rfoss@kernel.org, chunkuang.hu@kernel.org,
-	cristian.ciocaltea@collabora.com, Laurent.pinchart@ideasonboard.com,
-	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org, freedreno@lists.freedesktop.org,
-	"Andy Yan" <andy.yan@rock-chips.com>
-Subject: Re:Re: [PATCH 1/1] drm/bridge: Pass down connector to drm bridge
- detect hook
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.14 build 20240801(9da12a7b)
- Copyright (c) 2002-2025 www.mailtech.cn 163com
-In-Reply-To: <20250321-optimistic-prompt-civet-bdcdba@houat>
-References: <20250321085345.136380-1-andyshrk@163.com>
- <20250321085345.136380-2-andyshrk@163.com>
- <20250321-optimistic-prompt-civet-bdcdba@houat>
-X-NTES-SC: AL_Qu2fB/+bt08t4SmeY+kfmkcVgOw9UcO5v/Qk3oZXOJF8jCzp8D4yf1JTEnDy1fCDKg+MkAiHYjpJ8Pt0f7d2fYwujCqEY09RcV7NnzuMedMx4g==
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset=UTF-8
+	id 1u7Dae-00000007HWz-3Ctq;
+	Tue, 22 Apr 2025 13:23:08 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1u7DIp-00000007EBm-3qAJ;
+	Tue, 22 Apr 2025 13:04:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1745327082;
+	bh=VicifB7VK+9MAEZJZiYpDrTf/SXS78yQinhMpvll6nE=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=eLIK4u4fy9xYuK2GLzl0Xy+K9/gX1SpsRVVlDTSJYRg0MWkwAV0LKDaPATkupHB40
+	 R2ZHe9J5EhbfTeshuJrqqYa6Br052zAwP1qWG4ktMUahvzGAYNOdbCTg8xjPJYDsbv
+	 lWnzPdKO9/MZxHyL3vpPzrZ0pgybMvyg2OwSB4cVAFUxTEGmimr5fbeIdc1YDGYhr+
+	 j6S00hVbZCfgexsd1BFiRBFimnUpbi7NzqUg3Zz6+v92I+wcV6wvbA1ZX692XjQ08Q
+	 YPeOfbHw2jDGR9wZ+rHmszhRyXGZ248Npw97uMD5flnTo5vht9qDFToVxTtD7ZXKHz
+	 vuO3b8klEqdSA==
+Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: laeyraud)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 445C717E35E8;
+	Tue, 22 Apr 2025 15:04:41 +0200 (CEST)
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Date: Tue, 22 Apr 2025 15:03:39 +0200
+Subject: [PATCH 2/2] net: ethernet: mtk-star-emac: rearm interrupts in
+ rx_poll only when advised
 MIME-Version: 1.0
-Message-ID: <1bb549f4.746e.1965c8256e4.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: ZigvCgAnjYdgTAdoaPGbAA--.58451W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbB0gA3XmgHRzC35wACsx
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250422-mtk_star_emac-fix-spinlock-recursion-issue-v1-2-1e94ea430360@collabora.com>
+References: <20250422-mtk_star_emac-fix-spinlock-recursion-issue-v1-0-1e94ea430360@collabora.com>
+In-Reply-To: <20250422-mtk_star_emac-fix-spinlock-recursion-issue-v1-0-1e94ea430360@collabora.com>
+To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Biao Huang <biao.huang@mediatek.com>, 
+ Yinghua Pan <ot_yinghua.pan@mediatek.com>
+Cc: kernel@collabora.com, netdev@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1745327078; l=1312;
+ i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
+ bh=VicifB7VK+9MAEZJZiYpDrTf/SXS78yQinhMpvll6nE=;
+ b=h+C8WOIsNCCwo9YNFF/mpsmLgIGPv9dYOw9qMsKPfUUl7/JCKwmHtEcr/3tBvI+PgqUYsYk/W
+ ucvmmuAEK3HCs2K/PKTAdMxINxC4OYISaELdqnXTRFhUv87KCtqQF8P
+X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
+ pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250422_010005_039232_2E6ED1C3 
-X-CRM114-Status: UNSURE (   9.10  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250422_060444_108550_AB6E125F 
+X-CRM114-Status: GOOD (  12.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,27 +90,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-CkhpIGFsbCwKCkF0IDIwMjUtMDMtMjEgMTc6NDg6MDQsICJNYXhpbWUgUmlwYXJkIiA8bXJpcGFy
-ZEBrZXJuZWwub3JnPiB3cm90ZToKPk9uIEZyaSwgTWFyIDIxLCAyMDI1IGF0IDA0OjUzOjM4UE0g
-KzA4MDAsIEFuZHkgWWFuIHdyb3RlOgo+PiBGcm9tOiBBbmR5IFlhbiA8YW5keS55YW5Acm9jay1j
-aGlwcy5jb20+Cj4+IAo+PiBJbiBzb21lIGFwcGxpY2F0aW9uIHNjZW5hcmlvcywgd2UgaG9wZSB0
-byBnZXQgdGhlIGNvcnJlc3BvbmRpbmcKPj4gY29ubmVjdG9yIHdoZW4gdGhlIGJyaWRnZSdzIGRl
-dGVjdCBob29rIGlzIGludm9rZWQuCj4+IAo+PiBJbiBtb3N0IGNhc2VzLCB3ZSBjYW4gZ2V0IHRo
-ZSBjb25uZWN0b3IgYnkgZHJtX2F0b21pY19nZXRfY29ubmVjdG9yX2Zvcl9lbmNvZGVyCj4+IGlm
-IHRoZSBlbmNvZGVyIGF0dGFjaGVkIHRvIHRoZSBicmlkZ2UgaXMgZW5hYmxlZCwgaG93ZXZlciB0
-aGVyZSB3aWxsCj4+IHN0aWxsIGJlIHNvbWUgc2NlbmFyaW9zIHdoZXJlIHRoZSBkZXRlY3QgaG9v
-ayBvZiB0aGUgYnJpZGdlIGlzIGNhbGxlZAo+PiBidXQgdGhlIGNvcnJlc3BvbmRpbmcgZW5jb2Rl
-ciBoYXMgbm90IGJlZW4gZW5hYmxlZCB5ZXQuIEZvciBpbnN0YW5jZSwKPj4gdGhpcyBvY2N1cnMg
-d2hlbiB0aGUgZGV2aWNlIGlzIGhvdCBwbHVnIGluIGZvciB0aGUgZmlyc3QgdGltZS4KPj4gCj4+
-IFNpbmNlIHRoZSBjYWxsIHRvIGJyaWRnZSdzIGRldGVjdCBpcyBpbml0aWF0ZWQgYnkgdGhlIGNv
-bm5lY3RvciwgcGFzc2luZwo+PiBkb3duIHRoZSBjb3JyZXNwb25kaW5nIGNvbm5lY3RvciBkaXJl
-Y3RseSB3aWxsIG1ha2UgdGhpbmdzIHNpbXBsZXIuCj4+IAo+PiBTaWduZWQtb2ZmLWJ5OiBBbmR5
-IFlhbiA8YW5keS55YW5Acm9jay1jaGlwcy5jb20+Cj4KPkZUUiwgSSdtIGFnYWluc3QgaXQgYW5k
-IHdvdWxkIGhhdmUgYXBwcmVjaWF0ZWQgdGhhdCB5b3Ugd2FpdCBmb3IgYQo+bWVhbmluZ2Z1bCBj
-bG9zdXJlIHRvIHRoZSBkaXNjdXNzaW9uIHdlJ3ZlIGhhZCBvbiB0aGlzLgoKQ2FuIHdlIHN0YXJ0
-IHRvIHJldmlldyB0aGlzIHBhdGNoPyBTaW5jZSBpdCdzIGJlZW4gYWxtb3N0IGEgbW9udGggbm93
-IGFuZApubyBvbmUgaGFzIHJhaXNlZCBhbnkgb2JqZWN0aW9uIHRvIERtaXRyeSdzIHN1Z2dlc3Rp
-b25bMV0uCgoKWzFdaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvZHJpLWRldmVsL3Z3Mm5jZG9teDNy
-d2x0YjJ4bG82bmYzcmFwZ2NkdGNqY29kb2ZnbWVjcnp6YWJmN2ppQHB5YnNmdjI3amtxMi8KCgo+
-Cj5NYXhpbWUK
+In mtk_star_rx_poll function, on event processing completion, the
+mtk_star_emac driver calls napi_complete_done but ignores its return
+code and enable RX DMA interrupts inconditionally. This return code
+gives the info if a device should avoid rearming its interrupts or not,
+so fix this behaviour by taking it into account.
+
+Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+---
+ drivers/net/ethernet/mediatek/mtk_star_emac.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c b/drivers/net/ethernet/mediatek/mtk_star_emac.c
+index 41d6af31027f4d827dbfdfecdb7de44326bb3de1..b0ffe9b926c3d8dfaea3e11accae6d01e3ea2c4a 100644
+--- a/drivers/net/ethernet/mediatek/mtk_star_emac.c
++++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
+@@ -1348,8 +1348,7 @@ static int mtk_star_rx_poll(struct napi_struct *napi, int budget)
+ 	priv = container_of(napi, struct mtk_star_priv, rx_napi);
+ 
+ 	work_done = mtk_star_rx(priv, budget);
+-	if (work_done < budget) {
+-		napi_complete_done(napi, work_done);
++	if (work_done < budget && napi_complete_done(napi, work_done)) {
+ 		spin_lock_irqsave(&priv->lock, flags);
+ 		mtk_star_enable_dma_irq(priv, true, false);
+ 		spin_unlock_irqrestore(&priv->lock, flags);
+
+-- 
+2.49.0
+
 
