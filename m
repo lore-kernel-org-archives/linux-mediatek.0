@@ -4,65 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9AAEC369D1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 19:47:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C6BEC369C2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 20:56:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IvX1FkkZsJf9Lb7HwxTn2b2PE4IwhR2wqCju/NgIX8c=; b=Y/IpDJlRYS9U7KaIPVZ2tFVYr9
-	mUbTDvPL28NV8fzcbwFEmqGvpsyOjfeINBkuN2vHN25QpAgpjG1fd43Fgr/BAbr2U7c4lcpNDja5M
-	vgyTC4CAz94WyoLnJJOy0RPHuczvEdb/p7IClmaU9W4mI9T2+q0aLpZXq1F76wBjQnJ+g3WyL8PaV
-	mvGr612dX2OHYCvi2lTs8TAe3TAW9rvgyIHppWw8b4gCaKWHcLMNHVY4jT4CMqzIfN90FSbvimEtP
-	KQbtPEm7KEVZk4FGMI/xBqZ10WJT4ny0NxUZgW5uE0QNvTfS9K4IAIU553RH8d5huS9kyAI3bqw8U
-	PT8i/qaw==;
+	bh=h2racLDTZ4BkogFjHmNJhfnBse5H17sx7z3H/zKT9ZY=; b=1JjX3ZJZCBeuT4ZJ0tIXX9Wbn9
+	mZXzMnYZmtaRNRtCif7/V1gkk/ic1Qaim83vZLijqK4lG5x/ThrQKYuQ8yAf7g45FkilExKTIkkrI
+	qCVS4X+6WOD0hqTkiUGh4AqxGhmkH3PBv+TBJmBZkqBp92UYuIYDuO8YZe6HB35fafTQ8brYmiIKC
+	8YuWcO9kHGmGYLmUXwhI4Xp03bLarkcKllvn++FDO8tn4FN/2kBV8fwKCJmU5uFQ9GTy9o2oQrm8h
+	71xVSnYSsEggABNImTf1/b9gnoEOegKw6X2atGWxtIfgFXR5fRZJR5oko+KXgph21SeZc5fdy6sJL
+	WSywV5OA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7Jau-00000008MEc-3BFB;
-	Tue, 22 Apr 2025 19:47:48 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1u7KfU-00000008X3g-1LLz;
+	Tue, 22 Apr 2025 20:56:36 +0000
+Received: from mail-qk1-x730.google.com ([2607:f8b0:4864:20::730])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7H0L-00000007zBH-4BjM;
-	Tue, 22 Apr 2025 17:01:54 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 3BADC61129;
-	Tue, 22 Apr 2025 17:01:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4254BC4CEE9;
-	Tue, 22 Apr 2025 17:01:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1745341313;
-	bh=fWsF0GzHzlvgBL9N9CUgvfUgXQvfItKvtkOWsRSc+bo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=rss73jhJ0CKIlbRiAaKJHj2//3AaDHJ5IrR8Cd9T7hfaNA1GdgiAIjGp3HUSxWCzb
-	 cU2MzG7R0obgILiH3ftg3wxow0dUQS46vFM2fJlQV58NX62gd8SJ0xMvf1re77cXaD
-	 3hDzfuPEPSGbXtSYKrGBbJWJFBgWGoW25TvJ4TTbzyYnt3B6qBk/Z/F8NHPkvuq1fi
-	 o+JDmN9LrYL6prgG0bW6Dpu7mForovlR48291c/KA1MKQU6Db3ruymz5nNTbi2VSBP
-	 /Y/hB+v3PcivBpFx9cXGZPasqJeLNkodMel4JPc164ryHsKoYMklIuDJjgHqlLmMhq
-	 ev2eOWEeTzzag==
-Date: Tue, 22 Apr 2025 18:01:48 +0100
-From: Simon Horman <horms@kernel.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net v3] net: ethernet: mtk_eth_soc: net: revise NETSYSv3
- hardware  configuration
-Message-ID: <20250422170148.GK2843373@horms.kernel.org>
-References: <b71f8fd9d4bb69c646c4d558f9331dd965068606.1744907886.git.daniel@makrotopia.org>
+	id 1u7Kdq-00000008Wsq-2xdB
+	for linux-mediatek@lists.infradead.org;
+	Tue, 22 Apr 2025 20:54:56 +0000
+Received: by mail-qk1-x730.google.com with SMTP id af79cd13be357-7c597760323so524324985a.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 22 Apr 2025 13:54:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1745355293; x=1745960093; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=h2racLDTZ4BkogFjHmNJhfnBse5H17sx7z3H/zKT9ZY=;
+        b=OpY8RTixHKUWwyOvzxz0CSKjDF5yUkIAeltj8hzfl+fKiopSwlJARCxCfcRMthi8uY
+         VQ4B7RBkXaU/kOKVC7W0uRC86S6jWP+oLxRCS5zaJzw5oR7stoTfPkYe71zP1v5obMuu
+         jkug26KraS5tZdtEiAEpOEJ7rZL9h4EwXxoDNv2NGZ1ZhwoECQ8GDz7b8mgUgHWMGSVL
+         aLKCkwjIEP9Z/X8OFNfDyoqJ6BtlEx4koax/MnJs78BXjGxopmhoOpHkttdoqQ321Qdj
+         mT6SP88MvXTN7LvaaSY/M+Zil5bKbKqFwZf52H1EdTgr169GmX9DpLCZKEL6ZibWY64Y
+         tCtw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1745355293; x=1745960093;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=h2racLDTZ4BkogFjHmNJhfnBse5H17sx7z3H/zKT9ZY=;
+        b=srJJDqxtEBlYWtVM8ctdrQMwtht7DKLJKhELO/+UQn1UMTSz9w/PTrJIB7FfpeSipK
+         1Vb28FmJuWiueRYnZxjQv0EdBuEDy/4m2WJ4N5WUpApJ3mK5V76vO6Ar/oLONLHVugop
+         HAIxBpvhryV4V3FgsjdymKUq6KCv4mVouKVd8qIDHeKJ9hiouO9p1RfneEBkdoxcBfS9
+         wwaKvsKMdETFuRYVhfk3t4ZX3sUSWJgrle611M2Q1SpLebf+vmoF416hsIEEgyBu0Xr8
+         dWoNpaYLYyUv8Gc+IW9R/dXHf7GzNuv3hKwqvP5VwrFkEdjaofyqe5GE2fltr61SJq+T
+         9Uqw==
+X-Gm-Message-State: AOJu0YzdSdKgQUbhEmaIq6/Oh1SO7cMhnTHWdXM8aJVuOFQSx0Kuspbc
+	EWC+rOgbi0MhfYKT1AGqX6PTmc8Rtnjw/nOzWolOflBY+xtiL2m+LzJ9484aUKk=
+X-Gm-Gg: ASbGncsZyNcqSF1FCC62ZSFF1DgagceZB+g+JKvr9IoqJl8zBMIYsG+MKe0Ck81drHA
+	fkNJ2jzlbh2IIGtNMiJc/DK8HfS7x62isGeoZDJbeoB8DstRPxGmiTRY8qllu3GoJTAwJLwFMu0
+	jutMXkNBEAPJdcW9FCgWtuLkzL6vuhJaJ2DKDDA/uJCngZa5iEKc4Ca6KuK9E6bZ7UfOVNOkFuN
+	onFOvNR0XKAeXu5jL7bbbbcCQD43WSsXdCpPlYRhQ3wFG1OXZXjg9fwe9NFuT8j2VNlKo+QT8JE
+	grgN3QZpuP5mJR7RbZkvZqRl2+exLmTX2pD6q4ddMB1GJQ==
+X-Google-Smtp-Source: AGHT+IG7H1gakbIZ84kGicq0NVQy0jmgb+jY1czwu6X0ujlQIaddI3Iuf1eaCrSBqUaX2okXmWyUXQ==
+X-Received: by 2002:a05:620a:bc4:b0:7c5:562d:ccf8 with SMTP id af79cd13be357-7c927f76f3cmr2993734385a.8.1745355293398;
+        Tue, 22 Apr 2025 13:54:53 -0700 (PDT)
+Received: from ?IPv6:2606:6d00:15:9913::5ac? ([2606:6d00:15:9913::5ac])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-7c925b778b5sm595240385a.102.2025.04.22.13.54.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 22 Apr 2025 13:54:52 -0700 (PDT)
+Message-ID: <a2cb7a26f120558ab7b84a6f954188c8e61f37a8.camel@ndufresne.ca>
+Subject: Re: [PATCH] media: mediatek: vcodec: Enable HEVC main still picture
+ decode
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Nathan Hebert <nhebert@chromium.org>, Yunfei Dong
+ <yunfei.dong@mediatek.com>,  Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Date: Tue, 22 Apr 2025 16:54:51 -0400
+In-Reply-To: <1f1e41700b16eef7fe790b9b14d6ccfd157f67ad.camel@ndufresne.ca>
+References: <20250211-enable_hevc_still_picture-v1-1-0c06c0c9add2@chromium.org>
+		 <f257832e823d23c8324a9eaf7890dd4b6d50a6f0.camel@ndufresne.ca>
+	 <1f1e41700b16eef7fe790b9b14d6ccfd157f67ad.camel@ndufresne.ca>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.0 (3.56.0-1.fc42) 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <b71f8fd9d4bb69c646c4d558f9331dd965068606.1744907886.git.daniel@makrotopia.org>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250422_135454_984396_F6B26087 
+X-CRM114-Status: GOOD (  26.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,22 +104,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 17, 2025 at 05:41:07PM +0100, Daniel Golle wrote:
-> From: Bo-Cun Chen <bc-bocun.chen@mediatek.com>
-> 
-> Change hardware configuration for the NETSYSv3.
->  - Enable PSE dummy page mechanism for the GDM1/2/3
->  - Enable PSE drop mechanism when the WDMA Rx ring full
->  - Enable PSE no-drop mechanism for packets from the WDMA Tx
->  - Correct PSE free drop threshold
->  - Correct PSE CDMA high threshold
-> 
-> Fixes: 1953f134a1a8b ("net: ethernet: mtk_eth_soc: add NETSYS_V3 version support")
-> Signed-off-by: Bo-Cun Chen <bc-bocun.chen@mediatek.com>
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+Le lundi 17 f=C3=A9vrier 2025 =C3=A0 14:28 -0500, Nicolas Dufresne a =C3=A9=
+crit=C2=A0:
+> aLe lundi 17 f=C3=A9vrier 2025 =C3=A0 13:45 -0500, Nicolas Dufresne a =C3=
+=A9crit=C2=A0:
+> > Hi Nathan,
+> >=20
+> > Le mardi 11 f=C3=A9vrier 2025 =C3=A0 16:34 -0800, Nathan Hebert a =C3=
+=A9crit=C2=A0:
+> > > Mediatek devices that support HEVC also support the main still pictur=
+e
+> > > profile, but today, the main still picture profile is excluded.
+> > >=20
+> > > This removes the skip mask for HEVC, and enables the main still
+> > > picture profile decoding.
+> > >=20
+> > > Signed-off-by: Nathan Hebert <nhebert@chromium.org>
+> > > ---
+> > > On Mediatek devices that support HEVC decoding, HEVC Main Still Pictu=
+re
+> > > profile is also supported by the SOC and firmware. However, this
+> > > capability is turned off in the vcodec driver.
+> > >=20
+> > > This removes the code that disables HEVC Main Still Picture profile
+> > > decoding. Validation of the decoder has been done via V4L2-backed
+> > > Android CTS tests on an MT8196 device.
+> >=20
+> > While its nice to know that you are working on upcoming SoC, we need
+> > confirmation that this is working on all the upstream stateless
+> > decoders supported: 8183, 8186, 8192, 8195. Ideally testing on 8188,
+> > which I can see has merged support without the linux-firmware file to
+> > go with it.
+> >=20
+> > I'll wait for that and Yunfei's ack before picking it. Yunfei, please
+> > fix the situation with 8188 in linux-firmware, and CC me.
+>=20
+> In case this is useful, we recommend providing fluster scores for the
+> codec, which in that case runs some public ITU conformance vectors.
+> Since most of the testing has been done with GStreamer, you may be able
+> to find old report and confirm it it works. GStreamer does not
+> currently filter the profile/level (on my todo), so it will try anyway.
+> IPRED_B_Nokia_3 is the one vector in the base suite that expose that
+> profile.
+>=20
+> resources/JCT-VC-HEVC_V1/IPRED_B_Nokia_3/IPRED_B_Nokia_3.bit
+> =C2=A0 Stream #0:0: Video: hevc (Main Still Picture), none, 1920x1080, 25=
+ fps, 1200k tbr, 1200k tbn
 
-I agree that this addresses the review of v2.
-And otherwise looks good to me too.
+Ran the test myself on MT8195 and can confirm it passes if you ignore
+the profiles.
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+
+>=20
+> regards,
+> Nicolas
+>=20
+> >=20
+> > regards,
+> > Nicolas
+> >=20
+> > > ---
+> > > =C2=A0.../media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_state=
+less.c=C2=A0=C2=A0 | 2 --
+> > > =C2=A01 file changed, 2 deletions(-)
+> > >=20
+> > > diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcode=
+c_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcod=
+ec_dec_stateless.c
+> > > index afa224da0f41..d873159b9b30 100644
+> > > --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_s=
+tateless.c
+> > > +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_s=
+tateless.c
+> > > @@ -152,8 +152,6 @@ static const struct mtk_stateless_control mtk_sta=
+teless_controls[] =3D {
+> > > =C2=A0			.id =3D V4L2_CID_MPEG_VIDEO_HEVC_PROFILE,
+> > > =C2=A0			.def =3D V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN,
+> > > =C2=A0			.max =3D V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_10,
+> > > -			.menu_skip_mask =3D
+> > > -				BIT(V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_STILL_PICTURE),
+> > > =C2=A0		},
+> > > =C2=A0		.codec_type =3D V4L2_PIX_FMT_HEVC_SLICE,
+> > > =C2=A0	},
+> > >=20
+> > > ---
+> > > base-commit: ffd294d346d185b70e28b1a28abe367bbfe53c04
+> > > change-id: 20250211-enable_hevc_still_picture-26b35eb08270
+> > >=20
+> > > Best regards,
+> >=20
 
