@@ -4,78 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D81FCC369C2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 13:23:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD5D3C369C2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 14:39:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IDkLAWQRNpsJfzFfKZyPr4d1GbMEnucSMGS/IOzfTCU=; b=V//NbD01x9AdMyWYhXOmJQJeU+
-	h6W37JgjI8QlEu90sNt5Zdz6GxJ8YTRNhmZUkSdGIvpSnKolBdWoEuRYaIlETsLYL2BNuE4Lekil/
-	jj4NiAHYpWiN+sCMHvXqCPMfIUXAE4to3wfzOjm9IUMidjHsqny+ItlNWtDWx8+zgeVIpasDn/n3i
-	ZwqA5M5wmtc1/VK9yBviShvoD/bVbmaG2PYiFx9FTj82hJybG2P3YahWiRhsiEfSzhzFQCtDYwVvW
-	5R+kXOmZAL5vpyrjs943MEKPsYVAoH6VeTDPMQRbS0j+V6czf/VEZ4lysX3uoz+bZJT9Ho3JhHtCC
-	GVdpazbg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=zRgDtNzjWlmBlKxgWUbFr0kAVAlRPqY5m6T9fKKPW3o=; b=U1Fy73mq6w2os/
+	dAAX0lP+78yC6lfCp+LoAxNwAVKIoS34gtUrXJoN415ig1b3/izX9WR+3xPwRqJjg+A9OS/K1/C5v
+	M2dyHX2IFvJcExHckCjPcIbg8t+FsNVL1f3BB1crgCi31PfdNe3HPcd7uZTq5K18NT81A06G23bCH
+	rjJeNBnLrfvdTr+HZZcDVzQvHBbZAz5ME0yh464SG4lmL5f+FvKGvpvOTGlgjsDbPoK+3f9CQgsCN
+	kMD1UdtWjAl0wzxPWY9dXIe/Zln23YUApSNR3QV0HL73fhN+DeNjfTAOaIE3xdeuS3hhlpnVJl0W+
+	yGP5za4TXExeR0/nC9zQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7Dae-00000007HWz-3Ctq;
-	Tue, 22 Apr 2025 13:23:08 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1u7Emv-00000007XoH-2r9X;
+	Tue, 22 Apr 2025 14:39:53 +0000
+Received: from mxout3.routing.net ([134.0.28.8])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7DIp-00000007EBm-3qAJ;
-	Tue, 22 Apr 2025 13:04:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1745327082;
-	bh=VicifB7VK+9MAEZJZiYpDrTf/SXS78yQinhMpvll6nE=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=eLIK4u4fy9xYuK2GLzl0Xy+K9/gX1SpsRVVlDTSJYRg0MWkwAV0LKDaPATkupHB40
-	 R2ZHe9J5EhbfTeshuJrqqYa6Br052zAwP1qWG4ktMUahvzGAYNOdbCTg8xjPJYDsbv
-	 lWnzPdKO9/MZxHyL3vpPzrZ0pgybMvyg2OwSB4cVAFUxTEGmimr5fbeIdc1YDGYhr+
-	 j6S00hVbZCfgexsd1BFiRBFimnUpbi7NzqUg3Zz6+v92I+wcV6wvbA1ZX692XjQ08Q
-	 YPeOfbHw2jDGR9wZ+rHmszhRyXGZ248Npw97uMD5flnTo5vht9qDFToVxTtD7ZXKHz
-	 vuO3b8klEqdSA==
-Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 445C717E35E8;
-	Tue, 22 Apr 2025 15:04:41 +0200 (CEST)
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Tue, 22 Apr 2025 15:03:39 +0200
-Subject: [PATCH 2/2] net: ethernet: mtk-star-emac: rearm interrupts in
- rx_poll only when advised
+	id 1u7DcN-00000007HnH-0laD;
+	Tue, 22 Apr 2025 13:24:56 +0000
+Received: from mxbox4.masterlogin.de (unknown [192.168.10.79])
+	by mxout3.routing.net (Postfix) with ESMTP id 2BF2561533;
+	Tue, 22 Apr 2025 13:24:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1745328291;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=zRgDtNzjWlmBlKxgWUbFr0kAVAlRPqY5m6T9fKKPW3o=;
+	b=dHL7NjiA8amuAFu6yBPSJyGRV2Xc4f5iapRfCA6kBrRytrXMqaXIZ5FEDM+JI9AZ1HQbXW
+	KKbn+vRVMb4kf7g6PCIL/uPQr2uexGgzeZDsCN0VmPi73soRHtIj0t2H/hZBJKHxgBks3l
+	yFhOGuZ4jpnPz7Y3OsBKhZIpCofp/z0=
+Received: from frank-u24.. (fttx-pool-217.61.156.53.bambit.de [217.61.156.53])
+	by mxbox4.masterlogin.de (Postfix) with ESMTPSA id 5273180318;
+	Tue, 22 Apr 2025 13:24:50 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Lee Jones <lee@kernel.org>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v4 1/8] dt-bindings: arm: mediatek: add bpi-r4 2g5 phy variant
+Date: Tue, 22 Apr 2025 15:24:24 +0200
+Message-ID: <20250422132438.15735-2-linux@fw-web.de>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250422132438.15735-1-linux@fw-web.de>
+References: <20250422132438.15735-1-linux@fw-web.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250422-mtk_star_emac-fix-spinlock-recursion-issue-v1-2-1e94ea430360@collabora.com>
-References: <20250422-mtk_star_emac-fix-spinlock-recursion-issue-v1-0-1e94ea430360@collabora.com>
-In-Reply-To: <20250422-mtk_star_emac-fix-spinlock-recursion-issue-v1-0-1e94ea430360@collabora.com>
-To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Biao Huang <biao.huang@mediatek.com>, 
- Yinghua Pan <ot_yinghua.pan@mediatek.com>
-Cc: kernel@collabora.com, netdev@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1745327078; l=1312;
- i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=VicifB7VK+9MAEZJZiYpDrTf/SXS78yQinhMpvll6nE=;
- b=h+C8WOIsNCCwo9YNFF/mpsmLgIGPv9dYOw9qMsKPfUUl7/JCKwmHtEcr/3tBvI+PgqUYsYk/W
- ucvmmuAEK3HCs2K/PKTAdMxINxC4OYISaELdqnXTRFhUv87KCtqQF8P
-X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
- pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
+Content-Transfer-Encoding: 8bit
+X-Mail-ID: 70918b30-8a60-4b29-a71b-ede4dba2605d
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250422_060444_108550_AB6E125F 
-X-CRM114-Status: GOOD (  12.07  )
+X-CRM114-CacheID: sfid-20250422_062455_508330_9788CC1A 
+X-CRM114-Status: UNSURE (   8.01  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,36 +76,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, linux-mediatek@lists.infradead.org, =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In mtk_star_rx_poll function, on event processing completion, the
-mtk_star_emac driver calls napi_complete_done but ignores its return
-code and enable RX DMA interrupts inconditionally. This return code
-gives the info if a device should avoid rearming its interrupts or not,
-so fix this behaviour by taking it into account.
+From: Frank Wunderlich <frank-w@public-files.de>
 
-Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Add new compatible for Bananapi R4 with 2.5G phy.
+Base board is compatible with existing BPI-R4 only 1 SFP is replaced
+by RJ45 port and use mt7988 internal phy.
+
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 ---
- drivers/net/ethernet/mediatek/mtk_star_emac.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+v3:
+- new patch adding compatible for 2.5g variant
+---
+ Documentation/devicetree/bindings/arm/mediatek.yaml | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-index 41d6af31027f4d827dbfdfecdb7de44326bb3de1..b0ffe9b926c3d8dfaea3e11accae6d01e3ea2c4a 100644
---- a/drivers/net/ethernet/mediatek/mtk_star_emac.c
-+++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-@@ -1348,8 +1348,7 @@ static int mtk_star_rx_poll(struct napi_struct *napi, int budget)
- 	priv = container_of(napi, struct mtk_star_priv, rx_napi);
- 
- 	work_done = mtk_star_rx(priv, budget);
--	if (work_done < budget) {
--		napi_complete_done(napi, work_done);
-+	if (work_done < budget && napi_complete_done(napi, work_done)) {
- 		spin_lock_irqsave(&priv->lock, flags);
- 		mtk_star_enable_dma_irq(priv, true, false);
- 		spin_unlock_irqrestore(&priv->lock, flags);
-
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+index 108ae5e0185d..3aed03df0e3c 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+@@ -104,6 +104,10 @@ properties:
+           - enum:
+               - bananapi,bpi-r4
+           - const: mediatek,mt7988a
++      - items:
++          - const: bananapi,bpi-r4-2g5
++          - const: bananapi,bpi-r4
++          - const: mediatek,mt7988a
+       - items:
+           - enum:
+               - mediatek,mt8127-moose
 -- 
-2.49.0
+2.43.0
 
 
