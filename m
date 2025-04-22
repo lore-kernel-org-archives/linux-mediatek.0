@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACDBBC369D3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 15:12:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CDEAC369D3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 15:13:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8hiI5QIZrrN15o0DUeYwvOScFEJsnyCdfLzYl+6Zgjs=; b=QsbfFoNGRgwy5EtEJp2n07anvF
-	AqPdNgbjAKFsgoWQ7c5iM+6NusgD1XzHevF8T7Rsxgf+x1whz4KQP830ssON2HoA5YG1SqQeGdhg1
-	9v8aAMUBbGqJZX4ZzI6VYNo9j+QyOuQsnaKZKEI+6NoZKiWcfei6a0B5OpHYq46+91N+UZ8/VbyCx
-	4nCMXwBwTwMIkBRT71k8WYepNDncgFYlzgHmw0xxnOZGDwkGhTJT9KBijUyVSy6XZ/nMOVeC0en+r
-	Rzb9ZzT9XClK4jWkcQGiTjaDXWDk868XRgfn7zirt63yCEPC+3s+7LkaMoaPS0nGgMZTVT1PSL0rt
-	3nxatM/Q==;
+	bh=ZtUOvBv2Y7K/78sQ6cpAsMK8t03fGl9wxRA2oLgd73g=; b=0FftdyVgyrrPAs/IVJfcbt0I1V
+	UXkA5+tcv3X8nkEIIf8u5lDLYDuPcnDYFafzQR3+9djv2G5xhA57uDj/Fj8zxz8aSA3uJ+L9+OkS4
+	wjh5UaT8VEfW/RVcqZE9NEmPc9V4ODBZLhXuxUukhuKJDhtLlfar0Ln/MJ/9tO9+mAt0+s/lKV/hm
+	suhRuPY+rkColdJDdshBhv0zi0hHGCEvEMRjM51U/4p1xDi9QTv+Zlse27L/GlVhEA0AZYIJx9I3q
+	0gc7ZHQbr1J7sErPSR0ARxFp1KXOOIJRx5YqEDmEF/v8fPAO8fDfwnuTnHCvbQC4qlHXbc7+ebwgC
+	YUHMq6Lw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7FIp-00000007ezX-3JgZ;
-	Tue, 22 Apr 2025 15:12:51 +0000
+	id 1u7FJ0-00000007f2J-2uxa;
+	Tue, 22 Apr 2025 15:13:02 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7E7m-00000007OT0-1ssz;
-	Tue, 22 Apr 2025 13:57:23 +0000
+	id 1u7E7n-00000007OTs-2hIo;
+	Tue, 22 Apr 2025 13:57:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1745330241;
-	bh=sRX4HfUJdU7lcgcSh/8xeDqOhZ8/zUxPhEsiu2cBQm8=;
+	s=mail; t=1745330242;
+	bh=3HjoS5e3QU+v9bALr5IEVa7suvzaGRQTCuFxHuwIrxk=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=cky0Yhy2DIsuOtweyefTTMgSOzhbcOp9Z9JmboN5FQUCMjy2TZiKWIef9tcVIA1+T
-	 /QoI4yEmASecn0JZsXuNEyvrGpBGDgbcqs5ihc+o69m9mR0EpeKG+8z1QCwpnagTAi
-	 aEmARG91n8nfF9/tRas5SbBIntzpOYyPyLcBIrwoQL/Y98tBUc7kJTu1r+/v5AyLzE
-	 mh27OR0WwbIFaKyWGQ0skmcB3uRWeVz2VBm5R3elvjzuLnZannrN8OsmCBdMQDtIdU
-	 +lKkwKysIPevQxr4gR0AHW7A+7jwe5XENMV4lLCS8DAvsArn+k2HppHdFPWLbVzw39
-	 GkM1VNXkHNf4Q==
+	b=Km9AvSw9k5xL11mRoZYS5VzbLI1joRRwhbv/LaEKn5JNVa7OSwKlVWakqGSky4suM
+	 za3cIYBfmZMmv/o5JnQWHTNeJ5Zux1xffnlw6er3fathERGpQrGUYpVYCYWQCQmoje
+	 lU0jlrilxRP5ZPdBccl3s6bKXo8bG1fHExHfDj696IABrfwHzbzkXFHJeyYDVboeDp
+	 sycEd91TMj8U86InbEJhAWd7oYxnVMH63NU6EDRay+/3parwiY/pqoPZQorKW+XHPa
+	 ctIxhHIwVkB/dzvUqbgtLQcaJvlv63+ZGz/3GnvGfeFkNNrZXmL/LWdV2vbD9wNvMy
+	 6AeNqjfwyXs/A==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3C5F317E362C;
-	Tue, 22 Apr 2025 15:57:20 +0200 (CEST)
-Message-ID: <c0df9d60-5cda-4e7d-81fa-6f385bea7cd7@collabora.com>
-Date: Tue, 22 Apr 2025 15:57:19 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 583AD17E155C;
+	Tue, 22 Apr 2025 15:57:21 +0200 (CEST)
+Message-ID: <58b7df32-9d08-4281-9532-d374cf096eab@collabora.com>
+Date: Tue, 22 Apr 2025 15:57:20 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/8] dt-bindings: HID: i2c-hid: elan: Introduce Elan
- eKTH8D18
+Subject: Re: [PATCH v2 3/8] dt-bindings: arm: mediatek: Add MT8186 Squirtle
+ Chromebooks
 To: Chen-Yu Tsai <wenst@chromium.org>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
@@ -59,15 +59,16 @@ Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  chrome-platform@lists.linux.dev, linux-input@vger.kernel.org,
  Douglas Anderson <dianders@chromium.org>
 References: <20250421101248.426929-1-wenst@chromium.org>
- <20250421101248.426929-2-wenst@chromium.org>
+ <20250421101248.426929-4-wenst@chromium.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250421101248.426929-2-wenst@chromium.org>
+In-Reply-To: <20250421101248.426929-4-wenst@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250422_065722_633441_BCF090DD 
-X-CRM114-Status: GOOD (  12.25  )
+X-CRM114-CacheID: sfid-20250422_065723_847633_026D8902 
+X-CRM114-Status: UNSURE (   7.27  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,23 +84,11 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 21/04/25 12:12, Chen-Yu Tsai ha scritto:
-> The Elan eKTH8D18 touchscreen controller is an I2C HID device with a
-> longer boot-up time. Power sequence timing wise it is compatible with
-> the eKTH6A12NAY, with a power-on delay of at least 5ms, 20ms
-> out-of-reset for I2C ack response, and 150ms out-of-reset for I2C HID
-> enumeration, both shorter than what the eKTH6A12NAY requires.
-> Enumeration and subsequent operation follows the I2C HID standard.
-> 
-> Add a compatible string for it with the ekth6a12nay one as a fallback.
-> No enum was used as it is rare to actually add new entries. These
-> chips are commonly completely backward compatible, and unless the
-> power sequencing delays change, there is no real effort being made to
-> keep track of new parts, which come out constantly.
-> 
-> Also drop the constraints on the I2C address since it's not really
-> part of the binding.
+> Add an entry for the MT8186 based Squirtle Chromebooks, also known as the
+> Acer Chromebook Spin 311 (R724T). The device is a 2-in-1 convertible.
 > 
 > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
