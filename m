@@ -4,51 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8351CC369C2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 15:09:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F2BBC369D7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 15:09:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=umOVT4FeVOl2w8yNucaECKFA1vz3TUyzGEid6DFtUEA=; b=rEtJvlaD1mNUKc
-	RRoTKmpFBlPW/DnKqzqp4S2gAFJmn2y6dk8Aw+mnq1bsGX5duyWRBlTTgKgcFwJY9ogSiKP7Vy787
-	kj/HZP0yuMYyd39YUlT747/VYg1TV8Nw+enZajsmbh+J3ewKSwecf9piuTeCs+VJWmKJRIb3+z+SN
-	m/hHx0XdU8Op9IrU4gpkOM/n7/jnkQ8L9dHxBYejS4ovvD3/X9bBrPM0OqM282PUBtkao7AAcC4OK
-	r09kXsQ+uBYfbd2O1E1cDAKJyoZS6Iq3Ir6wiHWbDbbdMllMCpQUygav7l1cB9Xgnt9xoEm7AjNmE
-	8muxKrfcV3KT7X/EjPVA==;
+	List-Owner; bh=ax92qNfk0o3f4jBGi6r0hS9ZQOL534BggnVtYherRnI=; b=m2xamRegUaMXeA
+	XqIjauupTjEaTeyhwvIRAd8b3igywQdfvcmePoxrn5wkojzyZr41sdfiJPpJh+QoKimSpNQFps//6
+	E6F6QKNdcG35CV+FOFJjtvWy09nnikVumVvYwgxRebg2uTGshbMI8t66SLtVD6M8AcPBdNCtzfpWd
+	Jdrp4Ba7WtOunHur7LkhUC7INu9Rhtqv9fs7Te5VeiQXIJ3x5x6kXdSE5F2Sp+UpbAlKKm2Zmp1ZO
+	60w1zl+4m7fzCOT16rkg06meqXS14H7ZEGCGtPpcKRmDJvUxrukH8qXiWku1grnTkagCgY6syI9eB
+	C+3Oft3qt2MOb42leNfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7FFL-00000007dpU-2Mkk;
-	Tue, 22 Apr 2025 15:09:15 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1u7FFX-00000007dsg-0XOZ;
+	Tue, 22 Apr 2025 15:09:27 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7DjK-00000007JQ1-10bN;
-	Tue, 22 Apr 2025 13:32:07 +0000
+	id 1u7DjT-00000007JRU-19u2;
+	Tue, 22 Apr 2025 13:32:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1745328724;
-	bh=LKMZUu3lsZhsa211mHfM7d9uBlEp2aX25uT7PabbRUg=;
+	s=mail; t=1745328733;
+	bh=a3TPpkp3dVLMhX0tMuwCmJmM7PVgdf6PB6QGOLrovas=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=hqUwLXL5sCew5VGG9VlKawU3nK/XKVmyT8J3g9Kvz2cTRySHgL8LlMbcQlm+kZ0ph
-	 VgSfxHwIOC7nDXdogrzLE2iwjdWXg7FocoCD0eYEGrY4Pdq+OsH34Hdru74vrwvvoO
-	 qWD19ETYw5FxnPrjZfDPdzWAQ9dtrvR3/xdgn4Srk0yvnyTvfZZbMjb47v0qfs9wxn
-	 o3MmrZD98OG7d1nVH8MXn0MBYx5XCUL38N3RMJY6E28fCqqVybyGv1gR7H/RnWZn6O
-	 CfiYggqhpedC/9aqq0UuScuUQpxLlDP1qYj9WOgrWEWFUeEN9QcOTIFX8/iYnItDAn
-	 CVffwIyyHyxYw==
+	b=YUBtroK/3p8k8uHM5z6Cxtc7xtjzoqpysmVKAjTwndu7tgXEBuhSQjtxkxMpgScmT
+	 29TVMZplVlL169BEJPbfbphTUXVwRKSxNmoShfAns7m/OVq4qsSfLIzQayc9DuAQTd
+	 uC7Cu8TfDrKu85ibkgwKdW/D48myOPHMnTIvsSQ5ViJBMkDS/eA0YfnqH/J+m2Xuyt
+	 G+ZnkVaipXffimU20ICLHI41jGHxlT6kr22w+PaRn78wqfWf/FxeCaKLfsdh0Oj7F6
+	 xmut/4fbjSpoUIH5bkq+EBLfg9rX9IF1QpY9/oI1JFFtk9KovbKZaDoY4eCwnEy9wG
+	 zCIwqwx0nOPKQ==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B4BC917E0CAB;
-	Tue, 22 Apr 2025 15:32:03 +0200 (CEST)
-Message-ID: <6f7f922e-1a25-4546-b081-835b5140aac8@collabora.com>
-Date: Tue, 22 Apr 2025 15:32:02 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DD8E817E02BE;
+	Tue, 22 Apr 2025 15:32:12 +0200 (CEST)
+Message-ID: <950f38bd-4156-49c4-9b28-2e57d162fe48@collabora.com>
+Date: Tue, 22 Apr 2025 15:32:12 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 7/8] arm64: dts: mediatek: mt7988: Add xsphy for
- ssusb0/pcie2
+Subject: Re: [PATCH v4 8/8] arm64: dts: mediatek: mt7988a-bpi-r4: enable xsphy
 To: Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Lee Jones <lee@kernel.org>,
@@ -56,15 +55,15 @@ To: Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>,
  Kishon Vijay Abraham I <kishon@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>
 References: <20250422132438.15735-1-linux@fw-web.de>
- <20250422132438.15735-8-linux@fw-web.de>
+ <20250422132438.15735-9-linux@fw-web.de>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250422132438.15735-8-linux@fw-web.de>
+In-Reply-To: <20250422132438.15735-9-linux@fw-web.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250422_063206_454380_98DC468A 
-X-CRM114-Status: UNSURE (   5.30  )
+X-CRM114-CacheID: sfid-20250422_063215_460019_AB054AC0 
+X-CRM114-Status: UNSURE (   5.13  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,8 +83,7 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Il 22/04/25 15:24, Frank Wunderlich ha scritto:
 > From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> First usb and third pcie controller on mt7988 need a xs-phy to work
-> properly.
+> Enable XS-Phy on Bananapi R4 for pcie2.
 > 
 > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 
