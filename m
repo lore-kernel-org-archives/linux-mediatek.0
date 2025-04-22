@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CDEAC369D3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 15:13:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC0E5C369C2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Apr 2025 15:13:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZtUOvBv2Y7K/78sQ6cpAsMK8t03fGl9wxRA2oLgd73g=; b=0FftdyVgyrrPAs/IVJfcbt0I1V
-	UXkA5+tcv3X8nkEIIf8u5lDLYDuPcnDYFafzQR3+9djv2G5xhA57uDj/Fj8zxz8aSA3uJ+L9+OkS4
-	wjh5UaT8VEfW/RVcqZE9NEmPc9V4ODBZLhXuxUukhuKJDhtLlfar0Ln/MJ/9tO9+mAt0+s/lKV/hm
-	suhRuPY+rkColdJDdshBhv0zi0hHGCEvEMRjM51U/4p1xDi9QTv+Zlse27L/GlVhEA0AZYIJx9I3q
-	0gc7ZHQbr1J7sErPSR0ARxFp1KXOOIJRx5YqEDmEF/v8fPAO8fDfwnuTnHCvbQC4qlHXbc7+ebwgC
-	YUHMq6Lw==;
+	bh=/g9QGJTU7LjHiabygo8K4O3ZYzxgGEroQTtNik/ARyg=; b=deXTUrT1N4yoJHzLMOjijefVRj
+	yTKtGRmN22HLP6ctu04FRvYUrCia0skQb16VQhWr3IccgKjWclrdWRTMUSn+assoyrgk2Cifznf4D
+	2b+XbFM+GHC+fWgZ8jOmV2LQZ5Tvim802VZKrgvrJ8PDzE/MpvrLDAlNH04m/qI16/VU3QkY6RioI
+	DtBtHcN5voO0JxWli6HlFPLphuwn5rTYHU4B7q/pswn4am872CsvOlvkr2sjZ+Cf3rfn2Jg1hMeM8
+	rx0z7hLwMv/vmOZ9FmzA/3Ndf3BkbS8l9Re9mj/UujOPNUsaDZM7Hxjm+Ij/MdNN3HzHrlkIdNFC+
+	uT3uz8qQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7FJ0-00000007f2J-2uxa;
-	Tue, 22 Apr 2025 15:13:02 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1u7FJB-00000007f48-04m8;
+	Tue, 22 Apr 2025 15:13:13 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7E7n-00000007OTs-2hIo;
+	id 1u7E7o-00000007OTx-2ALm;
 	Tue, 22 Apr 2025 13:57:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1745330242;
-	bh=3HjoS5e3QU+v9bALr5IEVa7suvzaGRQTCuFxHuwIrxk=;
+	s=mail; t=1745330243;
+	bh=g7WNVJHclvSj1E2AwbocpEvXvRSkv9UNMU2PgjrPJOc=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Km9AvSw9k5xL11mRoZYS5VzbLI1joRRwhbv/LaEKn5JNVa7OSwKlVWakqGSky4suM
-	 za3cIYBfmZMmv/o5JnQWHTNeJ5Zux1xffnlw6er3fathERGpQrGUYpVYCYWQCQmoje
-	 lU0jlrilxRP5ZPdBccl3s6bKXo8bG1fHExHfDj696IABrfwHzbzkXFHJeyYDVboeDp
-	 sycEd91TMj8U86InbEJhAWd7oYxnVMH63NU6EDRay+/3parwiY/pqoPZQorKW+XHPa
-	 ctIxhHIwVkB/dzvUqbgtLQcaJvlv63+ZGz/3GnvGfeFkNNrZXmL/LWdV2vbD9wNvMy
-	 6AeNqjfwyXs/A==
+	b=MWo+vVJYRfk7c9rAarBXaDJbhgJAw6zdNajEpHhQtIXVfuaS7FfN3H/8FEjrycj1o
+	 4FtlL+sU1iHJgH6MVb57VNzAoBQknaxje3CalTenCHPmNDe4W63jz8sUFqB2vokBC4
+	 9VoeSm1aoCRsvH6+sMlU+vYFeMX/6/sQBqETv+T5srm9PLXSj1txRcLrAC+6L1S/Kt
+	 42J+Wb2csC0ReauZ5w4RXI70XRlhwvRkpPxaEECnC24fBl6NBeYoYsFAKnY4zw7syr
+	 Q8AaSxemKQMBcbtPlN0+0j73SyM91DU05UiZD0MJoUDAdFFHU/TMYax2dQx7BbbRQI
+	 1Xfmc0eUnm2yw==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 583AD17E155C;
-	Tue, 22 Apr 2025 15:57:21 +0200 (CEST)
-Message-ID: <58b7df32-9d08-4281-9532-d374cf096eab@collabora.com>
-Date: Tue, 22 Apr 2025 15:57:20 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8068417E157E;
+	Tue, 22 Apr 2025 15:57:22 +0200 (CEST)
+Message-ID: <26b9b027-b880-4880-9c12-844bd36bcd44@collabora.com>
+Date: Tue, 22 Apr 2025 15:57:21 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/8] dt-bindings: arm: mediatek: Add MT8186 Squirtle
- Chromebooks
+Subject: Re: [PATCH v2 2/8] dt-bindings: arm: mediatek: Merge MT8186 Voltorb
+ entries
 To: Chen-Yu Tsai <wenst@chromium.org>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
@@ -59,15 +59,15 @@ Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  chrome-platform@lists.linux.dev, linux-input@vger.kernel.org,
  Douglas Anderson <dianders@chromium.org>
 References: <20250421101248.426929-1-wenst@chromium.org>
- <20250421101248.426929-4-wenst@chromium.org>
+ <20250421101248.426929-3-wenst@chromium.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250421101248.426929-4-wenst@chromium.org>
+In-Reply-To: <20250421101248.426929-3-wenst@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250422_065723_847633_026D8902 
-X-CRM114-Status: UNSURE (   7.27  )
+X-CRM114-CacheID: sfid-20250422_065724_699358_38B890C9 
+X-CRM114-Status: UNSURE (   8.67  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,8 +84,13 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 21/04/25 12:12, Chen-Yu Tsai ha scritto:
-> Add an entry for the MT8186 based Squirtle Chromebooks, also known as the
-> Acer Chromebook Spin 311 (R724T). The device is a 2-in-1 convertible.
+> There are only two different SKUs of Voltorb, and the only difference
+> between them is whether a touchscreen is present or not. This can be
+> detected by a simple I2C transfer to the address, instead of having
+> separate compatible strings and device trees.
+> 
+> Drop the SKU-specific compatible strings and just keep the generic
+> "google,voltorb" one.
 > 
 > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 > Acked-by: Rob Herring (Arm) <robh@kernel.org>
