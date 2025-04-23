@@ -4,61 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0A56C369CB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Apr 2025 17:41:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BA5AC369CB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Apr 2025 17:43:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=BzRbmbdVH64WkPtUMsoKFbvdXYbRjm6+e5C6pk5/ync=; b=euv+eST3rrQDpltipIEqnS+ZAA
-	C3vGwOLe2PGspBQXhUbf88u/SQ2hrsxUrivRmgChwJTt8YehyCFRMrzKNUIKGUhM3jmK/cEAB7hwQ
-	Lm9f6SI55Ngq/TYWCQbiIVntKhpGpZLTYSazyrAV4G1c/MvFneajvmrBrP1oxL4ZdMOEYTKpvBJqU
-	Ia3Tc5ZNqxmLWaN54K09yPq3ytnoclxrkfjcnM2SS0DnTRbKehEnRmHDhFSXF5UhWNzQlzgwbzxi+
-	VdZMxVhpzzNwPqU3/TtytzHngibEFOPMNZxMbhSkxjfmRyZA2eYLHaHKCll7p9du0JSmary8SBjHe
-	dOlrK5lg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=889diwO9PL1y9ETu/yua/lKy33nZelj3yWdSXwg/JkA=; b=VUr5feUJZnYVJ4q6xibGmixFJc
+	cb0Z4S5QGYKbmJB9YMz71ts34f+qYhdpUl8LH8fhZRqc9UIrn8upHhK/5Xsqqe5RXV7LFWBWubAJA
+	dMaqbXlcDcCjB1UPkK3U9XwcoafoeFWFJGe+9qO+jn5XHEBq0Lul4/nW70CYkdH2wpBHvsOxrFGOL
+	ZKdf4r5DRDyvvitQlHzearp34TzjO39dkIkmpVqEbEKm5DMTLnrVN+FQNzD34HIpsBVd4sVXIYJvs
+	BWlup8Q1r1oQS92I92PVh2t+LovM6Xeomn+22EK/CKeLbpYxFAxKgFSQfUw8b+jIR6NrBtVqP/ErV
+	tG+4YSIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7e6E-0000000BJbe-0MrV;
-	Wed, 23 Apr 2025 17:41:30 +0000
-Received: from s3.sipsolutions.net ([2a01:4f8:242:246e::2] helo=sipsolutions.net)
+	id 1u7e8W-0000000BNTu-01cH;
+	Wed, 23 Apr 2025 17:43:52 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7bi5-0000000AukZ-1fS1;
-	Wed, 23 Apr 2025 15:08:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=sipsolutions.net; s=mail; h=Content-Transfer-Encoding:MIME-Version:
-	Message-ID:Date:Subject:Cc:To:From:Content-Type:Sender:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-To:Resent-Cc:
-	Resent-Message-ID:In-Reply-To:References;
-	bh=BzRbmbdVH64WkPtUMsoKFbvdXYbRjm6+e5C6pk5/ync=; t=1745420903; x=1746630503; 
-	b=UhkEMdVUFOYtZ1jyHCmrTl+0cZv/AbXH1cz0CaMtbecxNTtf8it8q835MxAVK4o0sKKwDfKQhmV
-	KlErgQOzAa54BIJsUTTRTDqL8DGcBBl3LnkWqUoX+IvNpVCNn8uaePbdDgqVTdYK86iHaLXQ6pSBi
-	6CRjqcvoSd/gcvs2NjJfHVyHf/G5HScXUvSk8D6nXbCwFvVM8DK7jqyD9T4wxYWgtIYjRwaCXWQc1
-	90Q2bmAC8ccO2KaN03CaaDMNB36C7eLPFwNyhOxjmjlOdm9Rwe42n6p9dTnwFqr1XNogwaZycKVss
-	0AWM8bWiRko5ODKdyIocKbrww0W+FeqRqR6g==;
-Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
-	(Exim 4.98.1)
-	(envelope-from <johannes@sipsolutions.net>)
-	id 1u7bhz-0000000Em2o-10Yf;
-	Wed, 23 Apr 2025 17:08:19 +0200
-From: Johannes Berg <johannes@sipsolutions.net>
-To: netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1u7cID-0000000B0mq-0p8K;
+	Wed, 23 Apr 2025 15:45:45 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 66259615ED;
+	Wed, 23 Apr 2025 15:45:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3897C4CEE2;
+	Wed, 23 Apr 2025 15:45:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1745423144;
+	bh=uXGY1VAD0ezdy/ybNS4JN/GqOzUTWI23//dv6QmQUdA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=R0f0eh/2LvsfL4iutKlrnN7chSnjyw9pMqdFl73WtrDzgT2ZydtvcA8ApMRrfVIYy
+	 0CZgrRPJS++EmO8LsVSliQHDPcJ4RjdLHd80VCSoQOqGK2G/sxQPoZ0XojLkat0gbl
+	 X9euuD1yjltFR9FrI4sj7wt/r4snbcmpPCPgsfGpPE6QkuX0XI/6o5kEQETPqu2/NC
+	 34NzBeNuKsBs5HwcJNh7E93sOIpOuLw5h5wZ4lGRL6HeCBSSF4EK6B1Vxc96zgxjOV
+	 XwqUIMgq4hiEEAgxXOvGPFodHikCT0z4VCIUYX0Ma0thcWjIropdyYMZw+iZRxy4cb
+	 R0dclULDW9zZA==
+Date: Wed, 23 Apr 2025 10:45:42 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: linux-mediatek@lists.infradead.org, linux-input@vger.kernel.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+	Tzung-Bi Shih <tzungbi@kernel.org>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Douglas Anderson <dianders@chromium.org>,
+	Benson Leung <bleung@chromium.org>, chrome-platform@lists.linux.dev,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Johannes Berg <johannes.berg@intel.com>
-Subject: [PATCH net-next] net: ethernet: mtk_wed: annotate RCU release in attach()
-Date: Wed, 23 Apr 2025 17:08:08 +0200
-Message-ID: <20250423150811.456205-2-johannes@sipsolutions.net>
-X-Mailer: git-send-email 2.49.0
+	Krzysztof Kozlowski <krzk+dt@kernel.org>
+Subject: Re: [PATCH v2 1/8] dt-bindings: HID: i2c-hid: elan: Introduce Elan
+ eKTH8D18
+Message-ID: <174542314188.576994.12974029497689302557.robh@kernel.org>
+References: <20250421101248.426929-1-wenst@chromium.org>
+ <20250421101248.426929-2-wenst@chromium.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250423_080825_436275_ED42728A 
-X-CRM114-Status: GOOD (  12.42  )
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250421101248.426929-2-wenst@chromium.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,33 +77,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Johannes Berg <johannes.berg@intel.com>
 
-There are some sparse warnings in wifi, and it seems that
-it's actually possible to annotate a function pointer with
-__releases(), making the sparse warnings go away. In a way
-that also serves as documentation that rcu_read_unlock()
-must be called in the attach method, so add that annotation.
+On Mon, 21 Apr 2025 18:12:39 +0800, Chen-Yu Tsai wrote:
+> The Elan eKTH8D18 touchscreen controller is an I2C HID device with a
+> longer boot-up time. Power sequence timing wise it is compatible with
+> the eKTH6A12NAY, with a power-on delay of at least 5ms, 20ms
+> out-of-reset for I2C ack response, and 150ms out-of-reset for I2C HID
+> enumeration, both shorter than what the eKTH6A12NAY requires.
+> Enumeration and subsequent operation follows the I2C HID standard.
+> 
+> Add a compatible string for it with the ekth6a12nay one as a fallback.
+> No enum was used as it is rare to actually add new entries. These
+> chips are commonly completely backward compatible, and unless the
+> power sequencing delays change, there is no real effort being made to
+> keep track of new parts, which come out constantly.
+> 
+> Also drop the constraints on the I2C address since it's not really
+> part of the binding.
+> 
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+> Changes since v1:
+> - Reworded commit message
+> - Dropped the enum for the new compatible string entry
+> - Dropped constraint on I2C address completely
+> ---
+>  .../devicetree/bindings/input/elan,ekth6915.yaml     | 12 +++++++-----
+>  1 file changed, 7 insertions(+), 5 deletions(-)
+> 
 
-Signed-off-by: Johannes Berg <johannes.berg@intel.com>
----
- include/linux/soc/mediatek/mtk_wed.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/include/linux/soc/mediatek/mtk_wed.h b/include/linux/soc/mediatek/mtk_wed.h
-index a476648858a6..d8949a4ed0dc 100644
---- a/include/linux/soc/mediatek/mtk_wed.h
-+++ b/include/linux/soc/mediatek/mtk_wed.h
-@@ -192,7 +192,7 @@ struct mtk_wed_device {
- };
- 
- struct mtk_wed_ops {
--	int (*attach)(struct mtk_wed_device *dev);
-+	int (*attach)(struct mtk_wed_device *dev) __releases(RCU);
- 	int (*tx_ring_setup)(struct mtk_wed_device *dev, int ring,
- 			     void __iomem *regs, bool reset);
- 	int (*rx_ring_setup)(struct mtk_wed_device *dev, int ring,
--- 
-2.49.0
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
 
