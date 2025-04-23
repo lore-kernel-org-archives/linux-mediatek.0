@@ -4,66 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B3E3C369CB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Apr 2025 13:05:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7376C369CB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Apr 2025 13:51:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HpK2LnX7Q7WDgovRNBLrKGGcCTj7BpdNu3cUAtygDW0=; b=CwsnMQLOBoF3QIDs5QoH0j4Mjq
-	Aqkj0y8Gw1Yf8WgVZxzOtG/H1yXPh9Zl25TP6qT5iO4oW+A9tpQgome40fg73cg5/hpE3jRJGxag/
-	5X4px0es7DKxpMY1FADbC/pzfY7aDaNDQ3lW/fXbsR2mji/Xx85DTA/CXUOMGsMol6/wFBDSyeGds
-	L89SKxFQ6Va403mkzEbNOEDYhk4+IqIWADSOLrGJ+DDrUqsDu5bdnsA/07Kylfyklwhkkx5XOqAzh
-	3bWabmSTaPRUXLBtQtiyRCgi9xOFVlnt6/hF52X9f2mapZ7aIzoJRFfBcp0DbhtuvQxUDg8BvGb7K
-	YyvwCqMA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IrE4k5yUN8YhN1Re6kD09gbzE6UdPZPB/Ke9OiMPaPY=; b=4rhxiIh7M3/ww6qHDpSUfMomSZ
+	I/HANXs7sDH5ZeN5UWKJ6wyI9TNJ3Eyg0VOXubQU3DZiD7tQdPjds8bFU73K3Z4qmb1RSgf6JKMne
+	hIgCKcfYwnQF6UcchO5G0LS/MRs5e33JWHme4b50m7euMomjH67zAHnIkr6q3XDopIrmfyri81vtr
+	USfalr7TBHvww6SKL0N5oJjVbx4GvUIU1JTOgGHk04cQwW88Fzb43qUrKi6r78NZV0KDSGw6Spgv/
+	pKzINEUF8o9Cl2PfHT0r7KG+XfRkkCDCES155LwLKLPaRpjzpZC5Kd3RQlOEsWkWJhBNFuhyzQL1T
+	dUK3h2EA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7ZnF-0000000AXK7-3ggj;
-	Wed, 23 Apr 2025 13:05:37 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1u7aVw-0000000AfeB-2RT8;
+	Wed, 23 Apr 2025 13:51:48 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7Y9m-0000000AKW3-2Kfs;
-	Wed, 23 Apr 2025 11:20:47 +0000
+	id 1u7Ynq-0000000APxf-1dQC
+	for linux-mediatek@lists.infradead.org;
+	Wed, 23 Apr 2025 12:02:12 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id BD5A85C613B;
-	Wed, 23 Apr 2025 11:18:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4CE80C4CEEF;
-	Wed, 23 Apr 2025 11:20:45 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 0831DA4CEA3;
+	Wed, 23 Apr 2025 11:56:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A1161C4CEE2;
+	Wed, 23 Apr 2025 12:02:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1745407245;
-	bh=65P2yTpP9ikdQkaNusQHi/VQHjNJozPS2sRudLvmzb4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=opRbMOShB0/OUYO0pvUAhd7824ICrNR9B2Y4lsnbFb1F1y64mTQifjGSDwfQ+KCpJ
-	 heovBjRnk6jFOXaMwAh67fBadX3dTv8p+wCSzRNwypkKyzqelaBy/jSbVwjOTLIFFJ
-	 XRov3yvdHJSB1EE+s9uLVi7exNAdSy1oDsyvYVoMmMtQUGjHK5A5lQqdjw7qRLFDCt
-	 9q9eqAugc3+SIjt9kJYYPxsyh+uFJvMQNW3Y6Qql5UBtLnf/p+6WaKfNoppOCABkwu
-	 M6kPVrol6u/97p1avxJU1EPvbtAgmf2z3/YkZ/JzA73rbbchI+iNm/6Yq0rnpsr4dB
-	 6MUBh7ydzGAXw==
-Date: Wed, 23 Apr 2025 13:20:43 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Jacob Keller <jacob.e.keller@intel.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	Simon Horman <horms@kernel.org>
-Subject: Re: [PATCH net v3] net: airoha: Add missing filed to ppe_mbox_data
- struct
-Message-ID: <aAjNC7zUrhc2Ma0z@lore-desk>
-References: <20250422-airoha-en7581-fix-ppe_mbox_data-v3-1-87dd50d2956e@kernel.org>
- <c34ef8a0-20fd-4d0b-84cc-8f829f4be675@intel.com>
+	s=k20201202; t=1745409728;
+	bh=0nzwQLtEHyNu/7/CKM0ZVwpRTIEm+zb35CC9woF3LVg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=BicpC+SW6jsQVvZDY4P3/K1ZYD9yv3Nb4aVjxvOzhdalNeiPLXe1GYUMz2cUW4V/z
+	 nEMLfVF1MhN8J28ogaxUKxwp1hJobsFpeXE8PptO5g/8OdWTYmJnf5HTeeRfLb0klY
+	 C/rJBtHzMZLdpuW3XBFM7c7rfA5ZQpG30CpBZAjBcRayerhFPHdCN3imsND1POPALU
+	 iQLy75pwgeThzmanfZ4fApIjkefjJa3zaNh92R84awnvCkPpIcw2sJ4apntKN+BzMc
+	 MuB2kONuwsMuHgJfnV58GfXyh6g1Fv7enE1Uw5Ia8e2NAD9qrdUIqs7wwhg6O73VZM
+	 c66Xk24JswzBg==
+Message-ID: <7988146f-cbc0-465b-af3b-b16562e163ce@kernel.org>
+Date: Wed, 23 Apr 2025 14:02:03 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="8KAiwfBxBw0HvHWB"
-Content-Disposition: inline
-In-Reply-To: <c34ef8a0-20fd-4d0b-84cc-8f829f4be675@intel.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v10 2/2] arm64: dts: mediatek: Add MT8186 Ponyta
+ Chromebooks
+To: Jianeng Ceng <cengjianeng@huaqin.corp-partner.google.com>,
+ sam@ravnborg.org, neil.armstrong@linaro.org, daniel@ffwll.ch,
+ dianders@google.com, hsinyi@google.com,
+ angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com,
+ robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ knoxchiou@google.com
+Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20250423093647.4074135-1-cengjianeng@huaqin.corp-partner.google.com>
+ <20250423093647.4074135-3-cengjianeng@huaqin.corp-partner.google.com>
+Content-Language: en-US, ca-ES, es-ES
+From: Matthias Brugger <matthias.bgg@kernel.org>
+In-Reply-To: <20250423093647.4074135-3-cengjianeng@huaqin.corp-partner.google.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250423_042046_692037_EC2C1221 
-X-CRM114-Status: GOOD (  28.34  )
+X-CRM114-CacheID: sfid-20250423_050210_577128_19A72026 
+X-CRM114-Status: GOOD (  15.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,118 +80,176 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 23/04/2025 11:36, Jianeng Ceng wrote:
+> MT8186 ponyta, known as huaqin custom label, is a
+> MT8186 based laptop. It is based on the "corsola" design.
+> It includes LTE, touchpad combinations.
+> 
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Jianeng Ceng <cengjianeng@huaqin.corp-partner.google.com>
 
---8KAiwfBxBw0HvHWB
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
->=20
->=20
-> On 4/22/2025 8:59 AM, Lorenzo Bianconi wrote:
-> > The official Airoha EN7581 firmware requires adding max_packet filed in
-> > ppe_mbox_data struct while the unofficial one used to develop the Airoha
-> > EN7581 flowtable support does not require this field.
-> > This patch does not introduce any real backwards compatible issue since
-> > EN7581 fw is not publicly available in linux-firmware or other
-> > repositories (e.g. OpenWrt) yet and the official fw version will use th=
-is
-> > new layout. For this reason this change needs to be backported.
-> >=20
->=20
-> To clarify if I understand correctly:
->=20
-> The original data structure without max_packet is for an unreleased
-> version of firmware which is unofficial and which is not released publicl=
-y.
+> ---
+> Changes in v10:
+> - No change.
+> 
+> Changes in v9:
+> - PATCH 2/2: Add sound model to fix the warning.
+> - Link to v8:https://lore.kernel.org/all/20240914063122.1622196-3-cengjianeng@huaqin.corp-partner.google.com/
+> 
+> Changes in v8:
+> - PATCH 2/2: Change the commit about ponyta.
+> - Link to v7:https://lore.kernel.org/all/20240913031505.372868-3-cengjianeng@huaqin.corp-partner.google.com/
+> 
+> Changes in v7:
+> - PATCH 2/2: Remove prototype sku.
+> - PATCH 2/2: Disable the other trackpad to enable one of them.
+> - Link to v5:https://lore.kernel.org/all/20240909023148.1677936-3-cengjianeng@huaqin.corp-partner.google.com/
+> 
+> Changes in v6:
+> - No change.
+> 
+> Changes in v5:
+> - PATCH 2/2: Remove sku2147483647.
+> - Link to v4:https://lore.kernel.org/all/20240906085739.1322676-3-cengjianeng@huaqin.corp-partner.google.com/
+> 
+> Chage since v3:
+> - No change.
+> 
+> Changes in v2:
+> - PATCH 2/2: Modify the dtb name without rev2.
+> - Link to v1:https://lore.kernel.org/all/20240902125502.1844374-1-cengjianeng@huaqin.corp-partner.google.com/
+> 
+> ---
+>   arch/arm64/boot/dts/mediatek/Makefile         |  2 +
+>   .../mediatek/mt8186-corsola-ponyta-sku0.dts   | 18 +++++++
+>   .../mediatek/mt8186-corsola-ponyta-sku1.dts   | 22 +++++++++
+>   .../dts/mediatek/mt8186-corsola-ponyta.dtsi   | 49 +++++++++++++++++++
+>   4 files changed, 91 insertions(+)
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku0.dts
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku1.dts
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta.dtsi
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+> index 58484e830063..3aa06476c6c0 100644
+> --- a/arch/arm64/boot/dts/mediatek/Makefile
+> +++ b/arch/arm64/boot/dts/mediatek/Makefile
+> @@ -64,6 +64,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-chinchou-sku16.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-magneton-sku393216.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-magneton-sku393217.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-magneton-sku393218.dtb
+> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-ponyta-sku0.dtb
+> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-ponyta-sku1.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-rusty-sku196608.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-starmie-sku0.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8186-corsola-starmie-sku1.dtb
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku0.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku0.dts
+> new file mode 100644
+> index 000000000000..986498af4c70
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku0.dts
+> @@ -0,0 +1,18 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright 2023 Google LLC
+> + */
+> +
+> +/dts-v1/;
+> +#include "mt8186-corsola-ponyta.dtsi"
+> +
+> +/ {
+> +	model = "Google Ponyta sku0 board";
+> +	compatible = "google,ponyta-sku0", "google,ponyta", "mediatek,mt8186";
+> +};
+> +
+> +&i2c2 {
+> +	trackpad@15 {
+> +		status = "disabled";
+> +	};
+> +};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku1.dts b/arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku1.dts
+> new file mode 100644
+> index 000000000000..ff5eea0ddeb4
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku1.dts
+> @@ -0,0 +1,22 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright 2023 Google LLC
+> + */
+> +
+> +/dts-v1/;
+> +#include "mt8186-corsola-ponyta.dtsi"
+> +
+> +/ {
+> +	model = "Google Ponyta sku1 board";
+> +	compatible = "google,ponyta-sku1", "google,ponyta", "mediatek,mt8186";
+> +};
+> +
+> +&i2c2 {
+> +	trackpad@2c {
+> +		status = "disabled";
+> +	};
+> +};
+> +
+> +&usb_c1 {
+> +	status = "disabled";
+> +};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta.dtsi b/arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta.dtsi
+> new file mode 100644
+> index 000000000000..0abf69077089
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta.dtsi
+> @@ -0,0 +1,49 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright 2023 Google LLC
+> + */
+> +
+> +/dts-v1/;
+> +#include "mt8186-corsola-steelix.dtsi"
+> +
+> +&keyboard_controller {
+> +	function-row-physmap = <
+> +		MATRIX_KEY(0x00, 0x02, 0)	/* T1 */
+> +		MATRIX_KEY(0x03, 0x02, 0)	/* T2 */
+> +		MATRIX_KEY(0x02, 0x02, 0)	/* T3 */
+> +		MATRIX_KEY(0x01, 0x02, 0)	/* T4 */
+> +		MATRIX_KEY(0x03, 0x04, 0)	/* T5 */
+> +		MATRIX_KEY(0x02, 0x04, 0)	/* T6 */
+> +		MATRIX_KEY(0x01, 0x04, 0)	/* T7 */
+> +		MATRIX_KEY(0x00, 0x04, 0)	/* T8 */
+> +		MATRIX_KEY(0x00, 0x01, 0)	/* T9 */
+> +		MATRIX_KEY(0x02, 0x09, 0)	/* T10 */
+> +		MATRIX_KEY(0x01, 0x09, 0)	/* T11 */
+> +		MATRIX_KEY(0x01, 0x05, 0)	/* T12 */
+> +	>;
+> +
+> +	linux,keymap = <
+> +		CROS_STD_MAIN_KEYMAP
+> +		MATRIX_KEY(0x00, 0x02, KEY_BACK)
+> +		MATRIX_KEY(0x03, 0x02, KEY_REFRESH)
+> +		MATRIX_KEY(0x02, 0x02, KEY_ZOOM)
+> +		MATRIX_KEY(0x01, 0x02, KEY_SCALE)
+> +		MATRIX_KEY(0x03, 0x04, KEY_SYSRQ)
+> +		MATRIX_KEY(0x02, 0x04, KEY_BRIGHTNESSDOWN)
+> +		MATRIX_KEY(0x01, 0x04, KEY_BRIGHTNESSUP)
+> +		MATRIX_KEY(0x00, 0x04, KEY_PLAYPAUSE)
+> +		MATRIX_KEY(0x00, 0x01, KEY_MICMUTE)
+> +		MATRIX_KEY(0x02, 0x09, KEY_MUTE)
+> +		MATRIX_KEY(0x01, 0x09, KEY_VOLUMEDOWN)
+> +		MATRIX_KEY(0x01, 0x05, KEY_VOLUMEUP)
+> +	>;
+> +};
+> +
+> +&mt6366codec {
+> +	mediatek,dmic-mode = <1>; /* one-wire */
+> +};
+> +
+> +&sound {
+> +	model = "mt8186_rt1019_rt5682s";
+> +};
+> +
 
-correct
-
->=20
-> Then, the official public release will include this additional field,
-> and thus won't work with the current kernel code.
-
-correct
-
->=20
-> Of course anyone who happens to have the unofficial firmware will need
-> to work around this, but that should only include a small handful of
-> folks with development images?
-
-yes, right
-
->=20
-> > Fixes: 23290c7bc190d ("net: airoha: Introduce Airoha NPU support")
-> > Reviewed-by: Simon Horman <horms@kernel.org>
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > ---
-> > Changes in v3:
-> > - resend targeting net tree
-> > - Link to v2: https://lore.kernel.org/r/20250417-airoha-en7581-fix-ppe_=
-mbox_data-v2-1-43433cfbe874@kernel.org
-> >=20
-> > Changes in v2:
-> > - Add more details to commit log
-> > - Link to v1: https://lore.kernel.org/r/20250415-airoha-en7581-fix-ppe_=
-mbox_data-v1-1-4408c60ba964@kernel.org
-> > ---
-> >  drivers/net/ethernet/airoha/airoha_npu.c | 1 +
-> >  1 file changed, 1 insertion(+)
-> >=20
-> > diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/eth=
-ernet/airoha/airoha_npu.c
-> > index 7a5710f9ccf6a4a4f555ab63d67cb6b318de9b52..16201b5ce9f27866896226c=
-3611b4a154d19bc2c 100644
-> > --- a/drivers/net/ethernet/airoha/airoha_npu.c
-> > +++ b/drivers/net/ethernet/airoha/airoha_npu.c
-> > @@ -104,6 +104,7 @@ struct ppe_mbox_data {
-> >  			u8 xpon_hal_api;
-> >  			u8 wan_xsi;
-> >  			u8 ct_joyme4;
-> > +			u8 max_packet;
-> >  			int ppe_type;
-> >  			int wan_mode;
-> >  			int wan_sel;
-> >=20
->=20
-> One oddity here is that the structure is not marked __packed. This
-> addition of a u8 means there will be a 3-byte gap on platforms which
-> have a 4-byte integer... It feels very weird these are ints and not s32
-> or something to fully clarify the sizes.
-
-yes, you are right. Let's hold on for a while with this patch and let me ask
-Airoha folks if we can "pack" the struct in the NPU firmware binary so we c=
-an use
-__packed attribute here. In any case I will use "u32" instead of "int" in t=
-he next
-version.
-
-Regards,
-Lorenzo
-
->=20
-> Regardless, assuming the correctness that the unofficial firmware is
-> only available to developers and isn't widely available:
->=20
-> Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
->=20
-> > ---
-> > base-commit: c03a49f3093a4903c8a93c8b5c9a297b5343b169
-> > change-id: 20250422-airoha-en7581-fix-ppe_mbox_data-56df12d4df72
-> >=20
-> > Best regards,
->=20
-
---8KAiwfBxBw0HvHWB
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaAjNCwAKCRA6cBh0uS2t
-rPiDAQDU27iVGbvQTRUgJz0etHDsJYWRsxVCk2Tpnk7nMfcGxAD+PGrxpM04Unxu
-AM7bzNBJaFr0+ApT2IbNYFPvCJfa1wA=
-=w26b
------END PGP SIGNATURE-----
-
---8KAiwfBxBw0HvHWB--
 
