@@ -4,68 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48FA9C369D3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Apr 2025 17:43:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8429C369CB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Apr 2025 17:44:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jt87a8LfxJPviekB7k5u6RJsXtO1RirRfUFOkTaWN5I=; b=DZyhmvcCMByR9Ft9PvCfStaF3A
-	WEdPft13fmQHYN2+4jqMOATvdMM0ttPEBzHRPZFOjX65LP7U+Wql4ku4H81GL4l8vc32wFzTx0V2Q
-	pqIKWLYEcFRHDwkkdwlsCqqLy1X8aRzf3bJtD5Ne6OXGhtYrC+ZVhJ7hnrTN3geSHjl2E+kjn5eW7
-	HQWNizwN1MhSIBmH41P98I4h6/uaju33BgHKrgTkuupqSXoITntuhlj0V1uw6JChxo6i8wIMYS+df
-	bIkoQbWFApumPIb4SNbosR6fnacqGLOgrlvMvOmCSo+sQR2Qg8mj8Fs4VaRSl+B1DJmaHZa4/MwG+
-	j7wOS+fQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ZQ4F7kGt6pV/zzUb5uMaILzlgimsXYfSNCl5wYcsv4s=; b=XaHywOGoVyFTC3NpBjYberFppj
+	hu+yei9zOdr3EfzDoKrl4s5R27B+YrB85jfDrHFEFZlfVghFx++3CNdZs7iyyrYzcx7BEvVYh7pcT
+	6wJv9Gotzykop475im9H0S5fA5na2AAURpGpyQYNEdaYMSDLyM2cx6Y4LCacETEYijOyejVrpb92n
+	3b2u7Ojh7ieKcrg4VvwvHScTuOM9et8+6334o/UAlLB6Q1mJZk9k50UFpP31PSDta7m2oHAfNQGDG
+	5n/BQXitUcP/vqI87IHM0E+9vu5ifPZd44qh+/W2td4spicjZNMwbdyr7bC9QMThD+brX0uKzxiYU
+	n03YkUGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7e8b-0000000BNf5-3IzD;
-	Wed, 23 Apr 2025 17:43:57 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1u7e8i-0000000BNra-2b6e;
+	Wed, 23 Apr 2025 17:44:04 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7cO3-0000000B1gE-04Ex;
-	Wed, 23 Apr 2025 15:51:47 +0000
+	id 1u7cz5-0000000B8J5-0R99;
+	Wed, 23 Apr 2025 16:30:03 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 520F1615ED;
-	Wed, 23 Apr 2025 15:51:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BBFD3C4CEE2;
-	Wed, 23 Apr 2025 15:51:45 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 64BAE61569;
+	Wed, 23 Apr 2025 16:29:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F861C4CEE2;
+	Wed, 23 Apr 2025 16:30:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1745423506;
-	bh=Q6PcQ8O3FSmUk2TwPF7gCzpyOKQyy07Lo0eWC7IuJ7U=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KmgPy7oNLM0uB7pP3DNkeEMd8gByPbo3asds+AarzLLyrC3Gzj86gGQNq1pVjbJ5N
-	 g7JU98A9UbuJuyqi5Y6icJSXeVltbtdDoNSSSD3NIs/gc8XhO6WMPuR2VlZauZq4du
-	 eB/3iqRuz7qJJLIP0ICaiq6y7u4sXqy807rLeUWT2bxgBphAHgJ3xMF8jzwjdMlgz8
-	 7tPFVgLqnQAVM5l90H6TJirFaT+OExzULT45LJJP4s1qRoriaeZyiUEgK8BQ0QkFH6
-	 Vv0q3Te2Xe4j3ElXN0hJgRQ4eRVm7sNcyMLIRoGCL5dFl22cXQDstZE8m8KRY9WhhL
-	 xIg4IxhWm7z2w==
-Date: Wed, 23 Apr 2025 10:51:44 -0500
-From: Rob Herring <robh@kernel.org>
-To: =?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>
-Cc: Bjorn Andersson <andersson@kernel.org>,
-	Mathieu Poirier <mathieu.poirier@linaro.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Tinghan Shen <tinghan.shen@mediatek.com>,
-	Olivia Wen <olivia.wen@mediatek.com>, kernel@collabora.com,
-	linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: Re: [PATCH v2 3/5] dt-bindings: remoteproc: mediatek: Drop redundant
- maxItems for mt8192/95
-Message-ID: <20250423155144.GA581441-robh@kernel.org>
-References: <20250421-scp-dual-core-mt8390-v2-0-c84117a959a9@collabora.com>
- <20250421-scp-dual-core-mt8390-v2-3-c84117a959a9@collabora.com>
+	s=k20201202; t=1745425802;
+	bh=N0YsuSsw6LR3Wlo+UHK1R+dAY9Z0n1sTB1iAGMETzA8=;
+	h=From:To:Cc:Subject:Date:From;
+	b=RU/7KPp4/suA/UnOfYAmeq4B9hf8W31UfZR5LRkYWcxfLFZYBDMKjvgXLGyReWrX8
+	 cS2SyM3sVpgpl6SGTACLiUHe627IB58+zUmIQm2SrtID4W4+frlAS5ouaQwYz+ktdF
+	 0u04e7SzXOt6kRrvWwOJQrmzJ/51E5u553kRkWOgcgCDBfWsub/zNq44crTNxZEN6U
+	 S6pUqfqOKKlTWe5EeQf6cegnxJMg3ajfGPjLmGuve0FZbJ4XNNiUol+ZBlaeecm7zU
+	 Bgip2TS4nNfEwva/VftKSzlzirD5f8Y6BgTBrrVdeM0F42a55oy5/2KfecU22d5DOo
+	 j7zCE+QlnwIDQ==
+From: Arnd Bergmann <arnd@kernel.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Arnd Bergmann <arnd@arndb.de>,
+	Georgi Djakov <djakov@kerenl.org>,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] soc: mediatek: mtk-dvfsrc: remove an unused variable
+Date: Wed, 23 Apr 2025 18:29:52 +0200
+Message-Id: <20250423162958.2223689-1-arnd@kernel.org>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250421-scp-dual-core-mt8390-v2-3-c84117a959a9@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,28 +69,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 21, 2025 at 04:49:06PM -0400, Nícolas F. R. A. Prado wrote:
-> reg's maxItems is already defined as 3 in the base schema. Remove the
-> redundant assignment in the if branch for mt8192/mt8195.
-> 
-> Suggested-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> ---
->  Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml | 1 -
->  1 file changed, 1 deletion(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> index 04348cfcb0424dc78ff1ddd77665285a052925e9..82c7edd5a2fbb8610315881a4033a3a43198162e 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-> @@ -187,7 +187,6 @@ allOf:
->        properties:
->          reg:
->            minItems: 3
-> -          maxItems: 3
+From: Arnd Bergmann <arnd@arndb.de>
 
-Sigh. I would squash this as using maxItems was the error in the first 
-place. But either way:
+This structure was left unused by a previous patch:
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+drivers/soc/mediatek/mtk-dvfsrc.c:542:43: error: unused variable 'dvfsrc_bw_constr_mt8195' [-Werror,-Wunused-const-variable]
+
+Fixes: b06785283ec1 ("soc: mediatek: mtk-dvfsrc: Rename and move bw constraints data")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+---
+ drivers/soc/mediatek/mtk-dvfsrc.c | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/drivers/soc/mediatek/mtk-dvfsrc.c b/drivers/soc/mediatek/mtk-dvfsrc.c
+index 7b8486ce1c66..41add5636b03 100644
+--- a/drivers/soc/mediatek/mtk-dvfsrc.c
++++ b/drivers/soc/mediatek/mtk-dvfsrc.c
+@@ -539,12 +539,6 @@ static const struct dvfsrc_opp_desc dvfsrc_opp_mt8195_desc[] = {
+ 	}
+ };
+ 
+-static const struct dvfsrc_bw_constraints dvfsrc_bw_constr_mt8195 = {
+-	.max_dram_nom_bw = 255,
+-	.max_dram_peak_bw = 255,
+-	.max_dram_hrt_bw = 1023,
+-};
+-
+ static const struct dvfsrc_soc_data mt8195_data = {
+ 	.opps_desc = dvfsrc_opp_mt8195_desc,
+ 	.regs = dvfsrc_mt8195_regs,
+-- 
+2.39.5
+
 
