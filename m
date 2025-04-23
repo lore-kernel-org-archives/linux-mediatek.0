@@ -4,203 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B011C369CB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Apr 2025 17:44:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F2FEC369CB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Apr 2025 19:13:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sPhmr9FpiiMeyei/dzpRPDTrLbwUcYDcqUqzW15PpHY=; b=W864zGs3xgsnbbLe9oO1DnYhnN
-	CzCNJLrIB6FFrkJ9aEVn79KJPiVvAXKr/uRy0RAnu8VnE63sByI4hF3FXmr9VTIjl1GCByOy7adkD
-	vDcWvUQn11NLFCdRgh49XIHNXRjUT7DwT24ipIqE3EdFoneJfQOy6Leb8ZlObbIr7gDNWg71vVIZJ
-	WiAGKLc/YSP4oPX5UZBz7H+BrOcfci7EJnKT0EsEhWMlRJ4TWLD0/lukJO0PyqDtgGfomsjAzTDIj
-	ticqh6sLXEQyJ5RfytnJCv8DyhIECPzmvOITLn2FykhZthev6vT+MPkVX83KrUfBI8hkI1OlLRTJ6
-	5Ua9cOaw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Subject:From:Cc:To:MIME-Version:Date:Message-ID:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=gh3gRBy3ivQHjbEOXKNRnjUwr8qDBlOi2525SM98dvk=; b=NTCQKwNGWaCifFszeKJ7v5N9hN
+	Wnp2CYj9y2txTHHuSoTqii0uBJ47Tu/VanCG+5bz4aUE8Sgku/49VOI8JpWbKNmm9SAWwsNxt6bkC
+	m7Ob+9x6dmpLXmNmz+9lIfIwPIxG5aV7UKhXVQVnC46XlIsQySmGO4iVG7A4vSHOBgJkX6ueTWtNQ
+	SQYWexHcH/eUTzMt357QXi/ttoSJukkvQnKxdnM2eDID45MpZqEbYAbXWRkcUP4bUaiEq1RWIiZH0
+	8ui4FW4PwaA8BuiX5hpEE3p841i8xJ69H03KuMXp8c6lBIaSo6SBj0wl9w6T3yQpgd30XD0mGUEw4
+	/Z270NRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7e8q-0000000BO5p-15vi;
-	Wed, 23 Apr 2025 17:44:12 +0000
-Received: from mgamail.intel.com ([198.175.65.15])
+	id 1u7fXV-0000000BhyS-01Hi;
+	Wed, 23 Apr 2025 19:13:45 +0000
+Received: from mx-out.tlen.pl ([193.222.135.158])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7d4L-0000000B9YH-2VzH;
-	Wed, 23 Apr 2025 16:35:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1745426130; x=1776962130;
-  h=message-id:date:subject:to:cc:references:from:
-   in-reply-to:content-transfer-encoding:mime-version;
-  bh=gECksuVsSSFC28XWi+XZeS5UKBq2iW0+pk0lehY8URM=;
-  b=K5WP3Zy312wiZc+zmzFFStWYVZsxZyD/ZF4qKS78geTJfF4vcNkRaOW2
-   4byVquCly2fObwdOotJvfDXRLPyoJlptSBO/0fQt4ndWr/GBKSIbUwMWw
-   7WDD7LzcJhmKltjlSYojDJ9WcBQTUzMR4gdv2XX81AmSH/7v2pEaehA0B
-   sMrinAGdewKcAqtpCTpAFPn+tMBdF2Dpv7bF8T6FyZRU5379FmJJgeWWy
-   m8f782Qmn2NN1zmWYadh17NCbEB1DAaUvuaw26cO/YsbQx0I8OiVETVeB
-   iXMiB5Fj61mLmw1ayIip5RTw5YucEGc7UWjzfoUmGew3WL5ITMVIGLZLY
-   w==;
-X-CSE-ConnectionGUID: OSTFwVo5QiyaKmudq7oH4A==
-X-CSE-MsgGUID: nRZfrImDQYqGrptMMeaHyw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11412"; a="50693114"
-X-IronPort-AV: E=Sophos;i="6.15,233,1739865600"; 
-   d="scan'208";a="50693114"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
-  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Apr 2025 09:35:27 -0700
-X-CSE-ConnectionGUID: oRxeDTiJSNid8bDJHarPlQ==
-X-CSE-MsgGUID: TmrS7c0gR8SKciDtnV+2Gw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,233,1739865600"; 
-   d="scan'208";a="132111476"
-Received: from orsmsx903.amr.corp.intel.com ([10.22.229.25])
-  by orviesa009.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Apr 2025 09:35:27 -0700
-Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
- ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.14; Wed, 23 Apr 2025 09:35:26 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.14 via Frontend Transport; Wed, 23 Apr 2025 09:35:26 -0700
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.48) by
- edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.44; Wed, 23 Apr 2025 09:35:26 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=pQwGoV9i8Z8c83TUsMDIWXXEuEAc3DrMz/pYH8nfazdS+dvkFp+kGC0dST93YTcNN/3MYrc43InxL+tvjRfTvKjzYChtyKFrh+O9+MY+HdYajsmLiGMkbAb0dGUd5iRLYxUCLOEPwLOCTE7L4nPlF73LiYdYJS3IEsxksA4Ee1XZal7ia96LuhOC4urJOGUUJaeV8No4D4Vw7HwzDpn0g40r2bbaJ53AkZli3apu0XVJpeCMlyW3z+L+XMuPJMc2/2wK1pDpG80umZp0yfZhMbzKujSauaKS27too4zx5+UoI32cA9sf8ayJLQrCUaEeHob+gzkCkDrk9kswwVymeA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=sPhmr9FpiiMeyei/dzpRPDTrLbwUcYDcqUqzW15PpHY=;
- b=HBLdIjL/ABHWBmmDXXyE3aMXK61H8VFZF9Te/3AAr3C8ND+xCLlQbNccYWakRzSPGzZRiV/n8abHwEK+TQNsBgsJgsWl9CvXAB+RGpIWOVOCY/FRhGGacT2ZmtHex5PfHt9jr2ye0iP8/C4zuy4l7l6g2c44EQ0UyfYjrYfced4GKrilauynnEwbVoPbTXIQhTwiq1IBAKp3pNBSjHvRR+382E2yDnhRJq3Ku2MrXI+fOGlAOz+fBNQJ/sxyPc9EzmBYfXJkvH4J76O9L/g9bFWgOk8CfXhJ9VQhjMvH16llUB60hcoUgALR6FQMmTec7QZVyJ67cAYyJuRg1n5JPg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from CO1PR11MB5089.namprd11.prod.outlook.com (2603:10b6:303:9b::16)
- by IA1PR11MB7680.namprd11.prod.outlook.com (2603:10b6:208:3fb::21) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8655.35; Wed, 23 Apr
- 2025 16:34:52 +0000
-Received: from CO1PR11MB5089.namprd11.prod.outlook.com
- ([fe80::7de8:e1b1:a3b:b8a8]) by CO1PR11MB5089.namprd11.prod.outlook.com
- ([fe80::7de8:e1b1:a3b:b8a8%4]) with mapi id 15.20.8655.025; Wed, 23 Apr 2025
- 16:34:52 +0000
-Message-ID: <b3ad22c0-bc58-41e5-8d62-a3bc8d7dccbe@intel.com>
-Date: Wed, 23 Apr 2025 09:34:49 -0700
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net v3] net: airoha: Add missing filed to ppe_mbox_data
- struct
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-CC: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
-	<davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
-	<kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<netdev@vger.kernel.org>, Simon Horman <horms@kernel.org>
-References: <20250422-airoha-en7581-fix-ppe_mbox_data-v3-1-87dd50d2956e@kernel.org>
- <c34ef8a0-20fd-4d0b-84cc-8f829f4be675@intel.com> <aAjNC7zUrhc2Ma0z@lore-desk>
-Content-Language: en-US
-From: Jacob Keller <jacob.e.keller@intel.com>
-In-Reply-To: <aAjNC7zUrhc2Ma0z@lore-desk>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: MW4PR02CA0014.namprd02.prod.outlook.com
- (2603:10b6:303:16d::29) To CO1PR11MB5089.namprd11.prod.outlook.com
- (2603:10b6:303:9b::16)
+	id 1u7fVW-0000000BhlP-26Z3
+	for linux-mediatek@lists.infradead.org;
+	Wed, 23 Apr 2025 19:11:44 +0000
+Received: (wp-smtpd smtp.tlen.pl 4687 invoked from network); 23 Apr 2025 21:11:37 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=o2.pl; s=20241105;
+          t=1745435497; bh=gh3gRBy3ivQHjbEOXKNRnjUwr8qDBlOi2525SM98dvk=;
+          h=To:Cc:From:Subject;
+          b=B3av/kz0lE/lkj4n9/N71NupjwdPvyUCpeajhkY0c4gRPmW/lBXQx0+BPO9/5OKZZ
+           w+QPb4Q+p9yOvmahlgkRWff1uBqWPK1TLIZytSvQjYbnTlkFl1+BULH5JaWk0nhRiG
+           tpirFmKK6sq8SxTMZVjVALG5NYQv6X/hP3+1d7sVe/bpKc89wbFPZ2rMYdpwX+2dAV
+           OVnqJYqf18/st8jVlHYLDGG9EpwWagofNHiViNZ3Rwhv8quMzr8u4/u8k5qfTt4R8E
+           RpDIDkcug8p88cRaE10tMzALibycJZnuTrLJ3eIdRd5FPhCbzbhtNkkek2Cx+MlSWR
+           PBmV1HsVfFhjA==
+Received: from apn-78-30-75-233.dynamic.gprs.plus.pl (HELO [192.168.1.22]) (mat.jonczyk@o2.pl@[78.30.75.233])
+          (envelope-sender <mat.jonczyk@o2.pl>)
+          by smtp.tlen.pl (WP-SMTPD) with ECDHE-RSA-AES256-GCM-SHA384 encrypted SMTP
+          for <dqfext@gmail.com>; 23 Apr 2025 21:11:37 +0200
+Message-ID: <c0411979-bf71-4695-ab7e-9213c339603e@o2.pl>
+Date: Wed, 23 Apr 2025 21:11:36 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CO1PR11MB5089:EE_|IA1PR11MB7680:EE_
-X-MS-Office365-Filtering-Correlation-Id: 75acbf77-08f6-4f05-d3a6-08dd8284c5ae
-X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|376014|1800799024|366016;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?NnFEa1h0Y2Jrd1ZHSWJ6THBNVFVHQW5QYVNNTDdOY1Y2MWlBQkhub1h4K3Z3?=
- =?utf-8?B?SENkcHNaTFRJRUhsc0ZhVmQ1Ny9wZlM1NG9lc2hFOVVvWWk1UWV5Unlrc1FY?=
- =?utf-8?B?ZjRRbFBjUDBwUW5oNGpESExwVFNUTFVIWStVeEh0QmtoWW5MamJCcWlmQnJS?=
- =?utf-8?B?a2phc05EY3hYdk9rcHZuVklhcFgvdWNReVhDWU94YjdsWTdwYXU4MFNBdDJp?=
- =?utf-8?B?cUtBeW9wSFp6QnBUdXJtbG92cGtIcTJkTllSaXZNMldTbm5wbHU0U1lKS0Nj?=
- =?utf-8?B?dUlzdkE1ZTkzcVVkNHpWREtacTZNaGV1bGljbllYbitvdjRmMjhFQjZqb25t?=
- =?utf-8?B?NXMwQlRoNExDSUJQSXFtdUF6NU84WjlIVU1xMHJhRFhyUUF5YkdwQXVaMGVQ?=
- =?utf-8?B?WCt4T1VHdXFJdXZRUng4U2tWamhTeGRDUXBVckpqVjBRcGZUcWRCUXczSk5t?=
- =?utf-8?B?QThCNlFwSjFIRjE2UU1KaTJYdTBxRGg3a1hPdENjN1NqM0tha2dwU0paSnps?=
- =?utf-8?B?SVJnYlBZRTJuUzNZdnVDR3IvTktCbGY2N21ETVR4cUdOWE1GMzlKZmNIREY5?=
- =?utf-8?B?SndmdVZqUTV3YjlUdkc1Y3dNeGpldmthT0tlMU9pNEwyclgxTldKYjZubWUv?=
- =?utf-8?B?VVlPYjBHM1hPQUdKMzhka1JselhuTWhQeDVuWWxMV3dOS2cvLzFOYWxtV2tZ?=
- =?utf-8?B?WG5qMWJNQ0RnRnJ6cjl4Y2REdEUzWUExR2xLK01zSjFPaDNzSThQM3V1OXR3?=
- =?utf-8?B?ZGRpcE5YRnVEUnRzSDJSbCtFRWFtdmpaaUtoWHBQZ2xhclJmRnJtSzFtRllo?=
- =?utf-8?B?V2hZV0Z2cm1OZGhYSTZjb1cyQk5SWVZtczhmeXZvVzlmRkVZcmduNnpRUFc4?=
- =?utf-8?B?MzVjd3hjY3ZSb1dzVUl5M1A4MzM0UHNmVTcyRFgyYjV2Yzk5clZIaWRHUC9E?=
- =?utf-8?B?a0YrTXk0ajRCYWtFOSszcFpGV1FCMXdYSlFpeUd5QmZaWlhacm1USmxpbWx6?=
- =?utf-8?B?Wmxrd2lJcUhwNGwvUWQ0K0FvZG5scm13aUUvT1ZMQzgxUXM3YU90MGlKZE01?=
- =?utf-8?B?NWhqWUNKSHlEcXJsTU9qWitoV25QeTc2cVBwUmRNWVExa09ubUwzaDJsZk9R?=
- =?utf-8?B?U3JLSUd4T2VZTFQ3a3lXNHNqQTZ6UXp5N3Bnd1ZrYlIyUHR3Sm9icFJxald1?=
- =?utf-8?B?SFRjUW9UQWJieUxwZWJ2UVpoWlo3Ym43ODhwRDYvN1JxdHZDOVQwYXlKK0lF?=
- =?utf-8?B?c01LK3RrNnZsNXlMYU41ZjRvS3B2OStOOFJ5L1d1MGZxTnNQZUdBem80anBY?=
- =?utf-8?B?eEUwR1FuM3ZLdHdjS1NnQ0xtb1Q1OUIyb1JNUjJZTjEzelRUM3N1Y3poUjQv?=
- =?utf-8?B?cGQ2Y1dKdE9LL2tFZUhrMzltRGE1dHRXVzhaQlRBaldLR2x6NmhISzdxYTRU?=
- =?utf-8?B?aW5URlI4Q2lJVDgyZVZ6RHV4TzAzb2hsYlROSUt0VjZSY09MZC8xUjFuVlBz?=
- =?utf-8?B?VGQ1L1FRaGVIb1p2ZlZscGYvaEk0MGVYa0RBZG5SREx1eVNXazNsL2w1MGJU?=
- =?utf-8?B?dklRdVJYZSsyWUhqRktFT0UxVUxSMjFyNmYxUVZtcDBnUTVTZThRYVVHYXRp?=
- =?utf-8?B?U0lGSVdwYWxtaFY3TDJVVXdmOEVGUEFDbThGejViUjJuRXpOcUhTN2Y1M3Jk?=
- =?utf-8?B?aFY4T2RPamgyd2lubFJ6cklDWVJNWWxkb285eXB3ME5lUmVPWEpwbDY4cHJD?=
- =?utf-8?B?ZFpsSWhJRWV6N1Rod3JCaFZpRHpoTk55Ti9tUGRwYXhJZzYrQ1VCZXV5OUwv?=
- =?utf-8?B?eDZuZXZyNmQ2M3U4Zmd1T1J4OHhLbWJ0UVU3V3Zsb2k1RURBOGlQRWN1V1Rj?=
- =?utf-8?B?cHFRdzRyeFp1QmsyUWdTVjVyZGhGby9ic2wwT2UxZ0NLMmx0YjhPaXhkYnIz?=
- =?utf-8?Q?8DYKB35nOI8=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CO1PR11MB5089.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(1800799024)(366016);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?b09xbUgwbVEzbkhYK1dFYWhxWmdNWURoQU1HRm5KeFZLL0JHZkZ0UTNPSkdV?=
- =?utf-8?B?T2dlRURxMDB6L3ZOMXdLUFlCREhKQkF2RTQvanIxbE5CSnZBb3YydzJISUVN?=
- =?utf-8?B?ZTV3MnpvbWF1N2VzOGh0L2lYZ0pQM0JNTElnQUZJZzk0dk5OTnN3eEh4U3dY?=
- =?utf-8?B?Z3lQUFR6dDdEMW5GSXdlUGJJeTdDNEJpOXZvQTFHblVtcHhldjhXYTNSNFM3?=
- =?utf-8?B?THVsV0RmQkRxM25Fa0xpWWduOVd0Q2VVaEJRSnlPRldKY29oMGRQR3ZuUjZE?=
- =?utf-8?B?cFN0UjAvdzZ0MEhNVHArSzFvZ0dEUW5xN2Q3RTM1YUptMlplRlJNT1ZqWDUx?=
- =?utf-8?B?UndHV1NaYUZYd2IvTno2Ym1Hcy9mSGVBaHZBVVpVNEoxMXdJR3ZBYUZOYmxr?=
- =?utf-8?B?dTlTK1Nmc0dqRDBLSmh4d2ptdFRHcGJaMFlvRGFpWklVS2JtSHMvNXlHNFNS?=
- =?utf-8?B?OFlueG9LREc3aEtMVnBpRDRqWHRwbmtnajU0ekdPcEE5TXVUSGE0d2NrZXRU?=
- =?utf-8?B?VXZHQzFCOWJQUDVoT0d3SDJ0ZmZCMHdvN3RlZkpBUVFiaDVSMlpSbTRlOGVh?=
- =?utf-8?B?bXE3ZFExOWQvbVFVSTlRdldLOFRvbUVCY3czMW1uSHozeWw2K1hnYTh5UWUx?=
- =?utf-8?B?QVBCTklUVHo1aFJFbk9LVzNuYWRVTzB4a0Z6ZXpDSWhac3ZDbFh6Q0lTSERu?=
- =?utf-8?B?RUNMakh1Wjc5RnlyUXBHb2d5Q3c3UmovRDk0M2g5elhMdkwrb3BTTGZNdjVi?=
- =?utf-8?B?MldObE5SWGJuRllVN00yajZ5R0tleERpUGVxc0FuS29TZDZ4TTdLQUYraDBn?=
- =?utf-8?B?ZldGYlFxbmtTeXVlQi9lUnBZQkpqVzlKeFBLdVU2RThoOUV1MWc1Vlc4SmRF?=
- =?utf-8?B?NWFpZk9OYzZybEx0OVhOdlRxWFQ4N2RxcnlGT1JhWkhnZEhkU3hDUXRBNGpq?=
- =?utf-8?B?NUMxVUZjb0drbkM3M2ZDWXNlMFR6cXRNbVJnRUtRL1NlUENsTHd4VnlTM1dJ?=
- =?utf-8?B?UXA5YjZ0MG14VEthb0V5aUUvaWh1WDlaZXV0cXhEL3JKY05nTEM1UklhZDRs?=
- =?utf-8?B?aGdCN3dHZ1dpeWZGMEhGRXlPM1dXck9JdWFFREhRMEJqdTlOQmlaaHZlQWNx?=
- =?utf-8?B?VVZpeHdMSGNXMHNpZDEvZ3Axc09xck9OMjhaQ1BpTTR3cDIyU1lqMm1YWmFt?=
- =?utf-8?B?QmJWT1l1NFRKSkZSTVFWNHZabi84VHFKTFdpNjZoUVVXWHg0b2tTRjNWcXpE?=
- =?utf-8?B?QWRjcXBoRFlRWlRBNFFyYXk2QnJ0ZWM2TVZxYlYxM1AwbTJDbWNjVlA0cEtj?=
- =?utf-8?B?YUJJK1FRSzA1WVd1cHlML1hxVkRJMXNWOUF5WnBPcmJVcGdqaW5pSEJhRFdG?=
- =?utf-8?B?KzN0QTIzV2Uzdm8rVnFzbnhxTklxVjdNVVg5QkJYZXdhZFRBOWNVV2ZXNlBK?=
- =?utf-8?B?bTBYcTlNVGFvalVheHAxWmQ4akU4NFlvaExGRWc1NEtVeHJMMlZXTjN6T3VN?=
- =?utf-8?B?dnRJZGQrS3YyendTQ0ZtVytuUmVNSFZ5YTdPWkJrb25rZEVJUDZFeE50dmEv?=
- =?utf-8?B?Ym1yWmVqOHBBSWRGWDVnMWNJSUlRN1M3N2ZIMlB3bE84ZnVyWnJXK254N0dk?=
- =?utf-8?B?ZkxvOE9lUzZhS2szVDMxL2RRRHhOYndIK1FpUzJDY3pIbW1GUENBb3RNcDR1?=
- =?utf-8?B?U3FzVmhYZmFDNyt3M0xRWWlYZGFMMVI0QTc5cEY3dmdPUjVMQk5zV1JyemdS?=
- =?utf-8?B?THVpOFlGaEhVN2d2aTM4Y2Uzb0gvdzdBOFFpbnVRYzgrMWZMWGVyRlo5cXo4?=
- =?utf-8?B?T1FMWHdvalA2VTNMb2kvLzRYMERMRTlLQWQvQTZKWHNvWS9ieEFOUGFmY0x3?=
- =?utf-8?B?cEVEWFlDZkFlYjhyUk9Pd0pNa0RYWUVGU3hhaTk1blN5N3ZDNnNETUIrVXhE?=
- =?utf-8?B?YkQ4c1Q5SjAwd3I4WEpJRkNWc3F6RUdtbTJIZnI2TXZUZTNoRzZUYlZmbjBG?=
- =?utf-8?B?bVZYd0VXbjBFbmVLbG1ST2V0UzEvN1ZDd05CMjRsOTNEcTZVcjNOaStPK0JS?=
- =?utf-8?B?SXNEQ05EZjg2b0tKREQwOXBJZUp5eGQ2QW9WNnI1b1pmMVAwRlZmUkhFTjN6?=
- =?utf-8?B?NUNYV0VBWWZ2WTliMXdCUUFMYjl3MzYzVS9nYTB2TEVIY2pVRTh5VnI0dW9J?=
- =?utf-8?B?YVE9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 75acbf77-08f6-4f05-d3a6-08dd8284c5ae
-X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB5089.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Apr 2025 16:34:52.2003
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: aBCkEJajNdIJGioMmCGGp0dsfOwL20kp87zk5KncZJIWlQeVr3/Pm1THl0gqgEPliUOZDjZqIogZDN+J+gzvI6xSChmCJ7e3MwKTxbghl3Q=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR11MB7680
-X-OriginatorOrg: intel.com
+User-Agent: Mozilla Thunderbird
+Content-Language: en-GB, pl
+To: DENG Qingfang <dqfext@gmail.com>, Landen Chao <Landen.Chao@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>,
+ SkyLake Huang <SkyLake.Huang@mediatek.com>,
+ Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>
+Cc: linux-mediatek@lists.infradead.org,
+ "Chester A. Unal" <chester.a.unal@arinc9.com>,
+ openwrt-devel@lists.openwrt.org,
+ Felix Baumann <felix.baumann@freifunk-aachen.de>,
+ =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+ =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+ Daniel Golle <daniel@makrotopia.org>
+From: =?UTF-8?Q?Mateusz_Jo=C5=84czyk?= <mat.jonczyk@o2.pl>
+Subject: Mediatek: EEE problems with the MT7530 PHYs on OpenWRT 24.10
+Autocrypt: addr=mat.jonczyk@o2.pl; keydata=
+ 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
+ TANkZ3QqXNX2
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-WP-MailID: b9fb9519b3d0f0745f28ecd25db33e1c
+X-WP-AV: skaner antywirusowy Poczty o2
+X-WP-SPAM: NO 0000000 [EVNh]                               
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250423_093529_703634_194BB6B3 
-X-CRM114-Status: GOOD (  12.76  )
+X-CRM114-CacheID: sfid-20250423_121142_984220_71B19958 
+X-CRM114-Status: UNSURE (   5.38  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -215,41 +125,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hello,
 
+Multiple users have reported a regression [1] in OpenWRT 24.10
+(Linux 6.6) with the ramips/mt7621 target and the MT7530 PHYs:
+the Ethernet link is periodically going down for a brief period
+of time. It was determined that:
 
-On 4/23/2025 4:20 AM, Lorenzo Bianconi wrote:
+1. The symptoms stop after disabling EEE.
 
->> One oddity here is that the structure is not marked __packed. This
->> addition of a u8 means there will be a 3-byte gap on platforms which
->> have a 4-byte integer... It feels very weird these are ints and not s32
->> or something to fully clarify the sizes.
-> 
-> yes, you are right. Let's hold on for a while with this patch and let me ask
-> Airoha folks if we can "pack" the struct in the NPU firmware binary so we can use
-> __packed attribute here. In any case I will use "u32" instead of "int" in the next
-> version.
->> Regards,
-> Lorenzo
-> 
+2. EEE is enabled by default for these devices in OpenWRT 24.10
+    whereas in the previous version (OpenWRT 23.05, Linux 5.15) it
+    was not.
 
-Sure. Also, if firmware already has this layout fixed, you could add the
-3 padding bytes marked as reserved to make it more obvious they exist
-without needing to remember the rules for how the members will align.
+3. In Linux 6.6, the PHY driver tries to disable EEE in
+    mtk_gephy_config_init() in drivers/net/phy/mediatek-ge.c:
 
-Thanks,
-Jake
+         /* Disable EEE */
+         phy_write_mmd(phydev, MDIO_MMD_AN, MDIO_AN_EEE_ADV, 0);
 
->>
->> Regardless, assuming the correctness that the unofficial firmware is
->> only available to developers and isn't widely available:
->>
->> Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
->>
->>> ---
->>> base-commit: c03a49f3093a4903c8a93c8b5c9a297b5343b169
->>> change-id: 20250422-airoha-en7581-fix-ppe_mbox_data-56df12d4df72
->>>
->>> Best regards,
->>
+    but this is later overridden by a subsequent execution of the
+    genphy_c45_write_eee_adv() function, which enables every EEE mode
+    supported.
+
+In 2021, Landen Chao wrote [2]:
+
+> EEE of the 10-year-old MT7530 internal gephy has many IOT problems, so
+> it is recommended to disable its EEE.
+
+I'd like to ask Mediatek to clarify whether it is possible to fine-tune
+the EEE of this PHY in some way, or rather that it should be hard-disabled
+by setting:
+
+     phydev->eee_broken_modes = -1;
+
+in the PHY driver, like it is in ksz9477_config_init() in
+drivers/net/phy/micrel.c.
+
+Greetings,
+
+Mateusz
+
+[1] https://github.com/openwrt/openwrt/issues/17351
+
+[2] https://lore.kernel.org/all/0adde34f936a2dafca40b06b408d82afe0852327.camel@mediatek.com/
 
 
