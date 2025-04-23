@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91775C369D7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Apr 2025 14:30:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0A56C369CB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Apr 2025 17:41:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hdJG21TL+AvOeJeTB8RJ+cFa9H+iGGwKryVw2CrsL0k=; b=2yuiHnRH1dX46c
-	0hxsLND2hkRPmAsJpwuhSpDHzv6k7z8QwvTyqD3iq/UWHNgjGL4rdI9DWW/0lQPx0oZypE5MyypNU
-	58gtV3JPJl3Wsd3yNC4iCFUKG1yd+S3UJ1kw4f0cucwt5kUXK53bBMKiMJ+CY8bM4c2LQOF0YANq8
-	qmfQ5ZnPD7s41lua1nTcQo1SmyLS+OQ/B8QgU3lZ1z000QATkfYt0S6eOkGSlckI96KCyhd9aBaYi
-	8BfoHwKiSk7RwTvYLDQK6fkKXS76BtkigXdS1SRX7LWFVdKPOI5/hWD4uj5SFx4lLpiWLlbAUl7R+
-	97rFFEe8mMJ9xBmVUI0A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=BzRbmbdVH64WkPtUMsoKFbvdXYbRjm6+e5C6pk5/ync=; b=euv+eST3rrQDpltipIEqnS+ZAA
+	C3vGwOLe2PGspBQXhUbf88u/SQ2hrsxUrivRmgChwJTt8YehyCFRMrzKNUIKGUhM3jmK/cEAB7hwQ
+	Lm9f6SI55Ngq/TYWCQbiIVntKhpGpZLTYSazyrAV4G1c/MvFneajvmrBrP1oxL4ZdMOEYTKpvBJqU
+	Ia3Tc5ZNqxmLWaN54K09yPq3ytnoclxrkfjcnM2SS0DnTRbKehEnRmHDhFSXF5UhWNzQlzgwbzxi+
+	VdZMxVhpzzNwPqU3/TtytzHngibEFOPMNZxMbhSkxjfmRyZA2eYLHaHKCll7p9du0JSmary8SBjHe
+	dOlrK5lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7b7R-0000000Aprm-2bpa;
-	Wed, 23 Apr 2025 14:30:33 +0000
-Received: from mxout3.routing.net ([2a03:2900:1:a::8])
+	id 1u7e6E-0000000BJbe-0MrV;
+	Wed, 23 Apr 2025 17:41:30 +0000
+Received: from s3.sipsolutions.net ([2a01:4f8:242:246e::2] helo=sipsolutions.net)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7aS5-0000000Af6F-1kxy;
-	Wed, 23 Apr 2025 13:47:51 +0000
-Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
-	by mxout3.routing.net (Postfix) with ESMTP id 28C5961667;
-	Wed, 23 Apr 2025 13:47:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1745416063;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=hdJG21TL+AvOeJeTB8RJ+cFa9H+iGGwKryVw2CrsL0k=;
-	b=JzGmmKZgT3R57Pwt0GXRMMsCtFazMoMWkuqMY2D9xQOuB/NE14E7uWC74E3A77pWXlqw1e
-	QuosA8MFdJteMooqttO5xwm6HcODZ8FDCeF2ppRJL+GU/zvn1S3g7UkMLdvJBMXGoC6kxV
-	LU2dsNj/nY/0lXQ+YCJZXB3+ZKiVvjU=
-Received: from [IPv6:::1] (unknown [IPv6:2a01:599:a06:ae47:924d:415c:d602:5492])
-	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id AE5951005B4;
-	Wed, 23 Apr 2025 13:47:41 +0000 (UTC)
-Date: Wed, 23 Apr 2025 15:47:41 +0200
-From: Frank Wunderlich <linux@fw-web.de>
-To: Rob Herring <robh@kernel.org>
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v4_1/8=5D_dt-bindings=3A_arm=3A?=
- =?US-ASCII?Q?_mediatek=3A_add_bpi-r4_2g5_phy_variant?=
-User-Agent: K-9 Mail for Android
-In-Reply-To: <20250423123339.GA191369-robh@kernel.org>
-References: <20250422132438.15735-1-linux@fw-web.de> <20250422132438.15735-2-linux@fw-web.de> <20250423123339.GA191369-robh@kernel.org>
-Message-ID: <D036900A-79D2-4C87-9D77-DBF443E12028@fw-web.de>
+	id 1u7bi5-0000000AukZ-1fS1;
+	Wed, 23 Apr 2025 15:08:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=sipsolutions.net; s=mail; h=Content-Transfer-Encoding:MIME-Version:
+	Message-ID:Date:Subject:Cc:To:From:Content-Type:Sender:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-To:Resent-Cc:
+	Resent-Message-ID:In-Reply-To:References;
+	bh=BzRbmbdVH64WkPtUMsoKFbvdXYbRjm6+e5C6pk5/ync=; t=1745420903; x=1746630503; 
+	b=UhkEMdVUFOYtZ1jyHCmrTl+0cZv/AbXH1cz0CaMtbecxNTtf8it8q835MxAVK4o0sKKwDfKQhmV
+	KlErgQOzAa54BIJsUTTRTDqL8DGcBBl3LnkWqUoX+IvNpVCNn8uaePbdDgqVTdYK86iHaLXQ6pSBi
+	6CRjqcvoSd/gcvs2NjJfHVyHf/G5HScXUvSk8D6nXbCwFvVM8DK7jqyD9T4wxYWgtIYjRwaCXWQc1
+	90Q2bmAC8ccO2KaN03CaaDMNB36C7eLPFwNyhOxjmjlOdm9Rwe42n6p9dTnwFqr1XNogwaZycKVss
+	0AWM8bWiRko5ODKdyIocKbrww0W+FeqRqR6g==;
+Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+	(Exim 4.98.1)
+	(envelope-from <johannes@sipsolutions.net>)
+	id 1u7bhz-0000000Em2o-10Yf;
+	Wed, 23 Apr 2025 17:08:19 +0200
+From: Johannes Berg <johannes@sipsolutions.net>
+To: netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Johannes Berg <johannes.berg@intel.com>
+Subject: [PATCH net-next] net: ethernet: mtk_wed: annotate RCU release in attach()
+Date: Wed, 23 Apr 2025 17:08:08 +0200
+Message-ID: <20250423150811.456205-2-johannes@sipsolutions.net>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Mail-ID: c11d15a8-4a69-4433-87de-3e7ec32e89b2
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250423_064749_623063_AAFE1234 
-X-CRM114-Status: UNSURE (   5.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250423_080825_436275_ED42728A 
+X-CRM114-Status: GOOD (  12.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,25 +70,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Kishon Vijay Abraham I <kishon@kernel.org>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, Lee Jones <lee@kernel.org>, Daniel Golle <daniel@makrotopia.org>, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, Vinod Koul <vkoul@kernel.org>, linux-mediatek@lists.infradead.org, =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?= <rafal@milecki.pl>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 23=2E April 2025 14:33:39 MESZ schrieb Rob Herring <robh@kernel=2Eorg>:
->On Tue, Apr 22, 2025 at 03:24:24PM +0200, Frank Wunderlich wrote:
->> From: Frank Wunderlich <frank-w@public-files=2Ede>
->>=20
->> Add new compatible for Bananapi R4 with 2=2E5G phy=2E
->> Base board is compatible with existing BPI-R4 only 1 SFP is replaced
->> by RJ45 port and use mt7988 internal phy=2E
->>=20
->> Signed-off-by: Frank Wunderlich <frank-w@public-files=2Ede>
->
->You didn't add Krzysztof's acks on these patches=2E
+From: Johannes Berg <johannes.berg@intel.com>
 
-Sorry,i thought i've added them in my local branch before running format-p=
-atch,but it seems i missed that somehow, possibly dropped these changes whi=
-le aborting rebase=2E
+There are some sparse warnings in wifi, and it seems that
+it's actually possible to annotate a function pointer with
+__releases(), making the sparse warnings go away. In a way
+that also serves as documentation that rcu_read_unlock()
+must be called in the attach method, so add that annotation.
 
-regards Frank
+Signed-off-by: Johannes Berg <johannes.berg@intel.com>
+---
+ include/linux/soc/mediatek/mtk_wed.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/linux/soc/mediatek/mtk_wed.h b/include/linux/soc/mediatek/mtk_wed.h
+index a476648858a6..d8949a4ed0dc 100644
+--- a/include/linux/soc/mediatek/mtk_wed.h
++++ b/include/linux/soc/mediatek/mtk_wed.h
+@@ -192,7 +192,7 @@ struct mtk_wed_device {
+ };
+ 
+ struct mtk_wed_ops {
+-	int (*attach)(struct mtk_wed_device *dev);
++	int (*attach)(struct mtk_wed_device *dev) __releases(RCU);
+ 	int (*tx_ring_setup)(struct mtk_wed_device *dev, int ring,
+ 			     void __iomem *regs, bool reset);
+ 	int (*rx_ring_setup)(struct mtk_wed_device *dev, int ring,
+-- 
+2.49.0
+
 
