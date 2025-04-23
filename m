@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA28AC369D3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Apr 2025 11:09:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32D96C369D3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Apr 2025 11:13:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S83gvmQyh65eRxiM3Qr44B2Mozm3wxxawwnOgnnPPHA=; b=n7hpQcha5euptp2W2Wwfd8uKuq
-	TgDdjjrziE1IWtLFDSV8RMMqGS2L0ilh63GKM2N5lG2xiQ9RdEA3NVzknwGmfX4felV5YCZwkjTmU
-	L16v4vm6EIdQJiSTtuyykoer5LEnp4mfDmj4Etx0oVjOKvfFC/vGUVd5jHIM6o4deX6qfFgGcfc7u
-	DPGDOvpXJGT2ayXWa7c9C5U4Kgc9owTFMHcJLoiqbIeYE7Z72lUUMr5UHW9RHsHMukRtDdkiSBtC8
-	Jg05u52jkMYcjtDT5czibIgeEs3QVkptZ0BxwN4f2DltG4be+isUxzemt0EA/2v2N6zl6qMUE46cO
-	ld9hIGqg==;
+	bh=pEl5lZ9LyepmTBdXl12N472xKmz4Z5x/uqpO/P2xlZU=; b=vGQv2tV2WyKfiF/7FEqot5TJjb
+	jMDgjrUdFxmiCrXoSrU0KiwOSQiiEoYxOvVs6a6Mi9Z8fOcRCEC0bur3BDxVMZxahP0hM92ANdo3W
+	5IXwo6CZIKJSgRHJJTEYj6q1znMRoa7f8eoqzML0dHPtjwPFwWbgud3x9FoYyB993suJxn8JegT3d
+	oFJsoYhTptPbyIpDRVm168uy5nxWhkj67m3uF1AyPmYGjbGHFMtTM4xYAWouRLGGHLaABllyjXTR0
+	/0BZmdtPL4nPXztq2O0prjieLfA/o+tWTDT1VsNzYrUzOpSjTDzoNt9ugqW6xJillxO2Fu0yn7Mb8
+	x+NgxogQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7Xyk-0000000AGJD-33d5;
-	Wed, 23 Apr 2025 11:09:22 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1u7Y2h-0000000AHFF-0KfS;
+	Wed, 23 Apr 2025 11:13:27 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7XCS-0000000A8yC-3KEV;
-	Wed, 23 Apr 2025 10:19:30 +0000
+	id 1u7XO6-0000000AAUS-06zy
+	for linux-mediatek@lists.infradead.org;
+	Wed, 23 Apr 2025 10:31:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1745403567;
-	bh=EErdEvkJZMomWj346FuTips4HSCS6BxlmBws21IXYso=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=SZg4ekLb9WzZnjsZFcLoTYV7rwAq3ALY3FMkS9R1RbijO8AqgtNq7raPnsv+bgkAN
-	 GrCSO8Aiqqu52TYlhkzF9Icz5vv98EW0ER4EdXfUiG8gJBFcZFXEXcVeYV41tfRuIV
-	 XHZ63x7jm1E5fQO4TdkjSGc1zUpdQHrQDT45Av4juFw2XZRRMMHf1CQujJKx7DQXCl
-	 g8Zj+mlB+WUKDCH6y5MtVd/bHm6+ypsczbuFxnn30o3YkYzuSEwvyeYt9DW79+GyQq
-	 zzG8SnDUR5olrdoXXf5ERp3PX7ljipA+PKlCUBvJ/GiS4T8nHyOQy9vqKDcalMMXhx
-	 Ok+IrPwSoUqFA==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	s=mail; t=1745404287;
+	bh=2MOPD1NtJjgVsrkU9nVN0H7gbMjIGR+VdbWECswCz20=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=GYQmfbjR6TCGVUI2c8dGCF8FIN7PRJn1iy+yUvHmasoaJbM7hUjT7M+9QxCd4JyTy
+	 NiF2tLE0R7BILbzvHWa/L2uNu30ZiMdF613BgqCqQQdjomjIpoSAyWPj+Yd9P28mp2
+	 1gyXwpUoQz/Khb3EVDPOkhYd4EKlGDXpkYSt5O0kGa3pXAIXNJl/RWDS47VVLHR6rw
+	 ITA9mkU4QjJdhQagldE/OklTC5T2gs+ZQTQdpcYELSfCw9maLHKhksH34ShfU612at
+	 WjHDDhFazs09Rhkmm047l/bQ4D5mz+fWZsSyTl9eA7ac/znxZWKVYYsezb8jIkQZye
+	 3K0gMPSdc9HDQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C8BD017E0B56;
-	Wed, 23 Apr 2025 12:19:26 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: kernel@collabora.com, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Julien Massot <julien.massot@collabora.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20250423-mt8395-audio-sof-v2-1-5e6dc7fba0fc@collabora.com>
-References: <20250423-mt8395-audio-sof-v2-1-5e6dc7fba0fc@collabora.com>
-Subject: Re: [PATCH v2] arm64: dts: mediatek: mt8395-nio-12l: Enable Audio
- DSP and sound card
-Message-Id: <174540356673.70458.18087445471288730073.b4-ty@collabora.com>
-Date: Wed, 23 Apr 2025 12:19:26 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8F57417E0C10;
+	Wed, 23 Apr 2025 12:31:27 +0200 (CEST)
+Message-ID: <2ddff946-9c4c-4fb5-a8e7-b2fc413ae281@collabora.com>
+Date: Wed, 23 Apr 2025 12:31:26 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.14.2
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] dts: arm64: mediatek: mt8188: add more thermal trip
+ points
+To: Nicolas Pitre <npitre@baylibre.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, linux-pm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <s2sp5o57-o534-qso0-2733-o0prs6028por@onlyvoer.pbz>
+ <dcc62684-0579-4d03-a430-d4a276153ca1@collabora.com>
+ <85710oso-p1pp-647q-498p-23583s7nnn45@onlyvoer.pbz>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <85710oso-p1pp-647q-498p-23583s7nnn45@onlyvoer.pbz>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250423_031928_986191_B31C00B3 
-X-CRM114-Status: UNSURE (   8.42  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250423_033130_215537_7021FF30 
+X-CRM114-Status: GOOD (  18.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,23 +79,141 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 23 Apr 2025 10:53:13 +0200, Julien Massot wrote:
-> Add memory regions for the Audio DSP (ADSP) and Audio Front-End (AFE),
-> and enable both components in the device tree.
+Il 13/03/25 19:30, Nicolas Pitre ha scritto:
+> On Thu, 13 Mar 2025, AngeloGioacchino Del Regno wrote:
 > 
-> Also, define the required pin configuration and add a sound card node
-> configured to use the ADSP. This enables audio output through the 3.5mm
-> headphone jack available on the board.
+>> Il 13/03/25 16:43, Nicolas Pitre ha scritto:
+>>> Provide the "switch on" thermal trip point to be used by the power
+>>> allocator governor.
+>>>
+>>
+>> As far as I know, the power allocation is not supposed to be
+>> SoC-global, as that does play with sustainable power values...
+>>
+>> Sustainable power depends on multiple factors - besides the power that
+>> is actually sustainable by intrinsic properties of the silicon, this
+>> mostly depends on the PCB that it is soldered to.
+>>
+>> Translated, this depends on the heat capacity of the copper layer(s)
+>> and of the eventual additional passive heatsink, which is a physical
+>> property relative to a board and not to the SoC by itself.
+>>
+>> ....which means.... that those nodes shall go to board specific devicetrees
+>> and
+>> not to the SoC devicetree :-)
+>>
+>> Unless I'm wrong - but if I am, please explain why :-)
 > 
-> [...]
+> I agree with everything you wrote above.
+> 
+> But this patch isn't about power allocation. This is about temperature
+> thresholds. And temperature tolerance is rather SOC specific, no?
+> 
+> 
 
-Applied to v6.15-next/dts64, thanks!
+Sorry for letting this slip through the cracks - that wasn't intentional.
 
-[1/1] arm64: dts: mediatek: mt8395-nio-12l: Enable Audio DSP and sound card
-      commit: 2521f47606eaffb2e477ea0b2985d2d8e31aa563
+Agreed that temperature tolerance is SoC specific, but that's taken care of with
+the other trip points, so that's not a concern here.
+
+On the other hand, it's guaranteed that the SoC can "keep crunching numbers" at
+full power when the CPUs are at 68-70°C without entering any actual danger zone,
+temperature-speaking.
+
+Remember that a machine may be designed to keep it at even 70°C for a prolonged
+amount of time - depending on the cooling solution.
+
+If you're doing this for a specific board, I'm happy to accept the addition to
+the specific board (file) that you're doing this for.
 
 Cheers,
 Angelo
 
+>>> diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+>>> b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+>>> index 338120930b..262eab8fd3 100644
+>>> --- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+>>> +++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+>>> @@ -472,6 +472,12 @@ cpu-little0-thermal {
+>>>       thermal-sensors = <&lvts_mcu MT8188_MCU_LITTLE_CPU0>;
+>>>    
+>>>    			trips {
+>>> +				cpu_little0_switch_on: trip-switch-on {
+>>> +					temperature = <68000>;
+>>> +					hysteresis = <2000>;
+>>> +					type = "passive";
+>>> +				};
+>>> +
+>>>        cpu_little0_alert0: trip-alert0 {
+>>>         temperature = <85000>;
+>>>         hysteresis = <2000>;
+>>> @@ -510,6 +516,12 @@ cpu-little1-thermal {
+>>>       thermal-sensors = <&lvts_mcu MT8188_MCU_LITTLE_CPU1>;
+>>>    
+>>>    			trips {
+>>> +				cpu_little1_switch_on: trip-switch-on {
+>>> +					temperature = <68000>;
+>>> +					hysteresis = <2000>;
+>>> +					type = "passive";
+>>> +				};
+>>> +
+>>>        cpu_little1_alert0: trip-alert0 {
+>>>         temperature = <85000>;
+>>>         hysteresis = <2000>;
+>>> @@ -548,6 +560,12 @@ cpu-little2-thermal {
+>>>       thermal-sensors = <&lvts_mcu MT8188_MCU_LITTLE_CPU2>;
+>>>    
+>>>    			trips {
+>>> +				cpu_little2_switch_on: trip-switch-on {
+>>> +					temperature = <68000>;
+>>> +					hysteresis = <2000>;
+>>> +					type = "passive";
+>>> +				};
+>>> +
+>>>        cpu_little2_alert0: trip-alert0 {
+>>>         temperature = <85000>;
+>>>         hysteresis = <2000>;
+>>> @@ -586,6 +604,12 @@ cpu-little3-thermal {
+>>>       thermal-sensors = <&lvts_mcu MT8188_MCU_LITTLE_CPU3>;
+>>>    
+>>>    			trips {
+>>> +				cpu_little3_switch_on: trip-switch-on {
+>>> +					temperature = <68000>;
+>>> +					hysteresis = <2000>;
+>>> +					type = "passive";
+>>> +				};
+>>> +
+>>>        cpu_little3_alert0: trip-alert0 {
+>>>         temperature = <85000>;
+>>>         hysteresis = <2000>;
+>>> @@ -624,6 +648,12 @@ cpu-big0-thermal {
+>>>       thermal-sensors = <&lvts_mcu MT8188_MCU_BIG_CPU0>;
+>>>    
+>>>    			trips {
+>>> +				cpu_big0_switch_on: trip-switch-on {
+>>> +					temperature = <68000>;
+>>> +					hysteresis = <2000>;
+>>> +					type = "passive";
+>>> +				};
+>>> +
+>>>        cpu_big0_alert0: trip-alert0 {
+>>>         temperature = <85000>;
+>>>         hysteresis = <2000>;
+>>> @@ -658,6 +688,12 @@ cpu-big1-thermal {
+>>>       thermal-sensors = <&lvts_mcu MT8188_MCU_BIG_CPU1>;
+>>>    
+>>>    			trips {
+>>> +				cpu_big1_switch_on: trip-switch-on {
+>>> +					temperature = <68000>;
+>>> +					hysteresis = <2000>;
+>>> +					type = "passive";
+>>> +				};
+>>> +
+>>>        cpu_big1_alert0: trip-alert0 {
+>>>         temperature = <85000>;
+>>>         hysteresis = <2000>;
+>>
+>>
+>>
 
 
