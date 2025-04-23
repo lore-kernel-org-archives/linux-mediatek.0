@@ -4,88 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A79A0C369CB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Apr 2025 09:51:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F39FC369CB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Apr 2025 09:59:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1AT3w9qrvqNQ7asAkLzicRanFyPBT5NT85+7uOTViCI=; b=D15RxdL0IOR8nRe4S9ZyrMBg9T
-	n7+4+YjgClImMZb+Ex++8SsItBRZmrsQx9FLb75IWj5yVbBYYqxsqlBhsolduA7GI+CZ1r+aOlFTY
-	quTT2DdC3ZqHpxQrSm9Uf7ED0Fjyphl7eLv/ErGTMI0D/pH7JDeZwdLM7mCbstTKytIey9UtQjGYt
-	9rVGU0Yy5IDw27xna1MYd792Ic+2ZC59A/Kr6N6s7x7NWK2wMtJ+LggPcwyFj6OaohDUQbH9RGfFM
-	2wG7Lm5mq15WJTfrquTjJlTgMEND8exYz/Sy4QcdK/nuU5/xnOSMXl/CHPIKU3h2sPUadOaYuZkw+
-	mt9U8UKg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ZzoNnU6a2yxot9Cx3CONPS/k4Nfm1sUyrGPDWYEUCbg=; b=svj43Gln5Ti/S31v8aIAlbzkT2
+	ale+QgzQyubzhA2dL5smOFyuKtZknG65hz++FdPnnc4DG1LHCbmasjJI3CkDvlCXCvmcjt4Z78gdg
+	Yso9GhoEpejDWUpoIuCcxv9Di2/hBZYUCLxAerMkYsMI5BlzvW8KPILcQEb/MghvdRylvZ5t3oIio
+	XkDiycgbbGB7WNSbzugBvofRDV/mVYY1XjFIcGiZ+LkQ6G8rJ2rRxpDQRmj015oMD6bC0xuryRq1a
+	IPMfQ27Bfq/joKt81dI2CNuT1laNq7qDYzUPFsnmHA9dXAKlpJEY9YafxLUlf4YrjbQHevvMZjSWM
+	pK6/s/4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7WlO-0000000A45l-2j6e;
-	Wed, 23 Apr 2025 09:51:30 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1u7WtE-0000000A5Vc-0cDj;
+	Wed, 23 Apr 2025 09:59:36 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7Vk2-00000009oXd-1r7f
-	for linux-mediatek@lists.infradead.org;
-	Wed, 23 Apr 2025 08:46:04 +0000
-Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-5493b5bc6e8so8127407e87.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 23 Apr 2025 01:46:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1745397960; x=1746002760; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=1AT3w9qrvqNQ7asAkLzicRanFyPBT5NT85+7uOTViCI=;
-        b=I7XmTEW0db3rtKwVh2gsRm2DCybNaAiTtkf62GuTL8AMWZiUmdxp+cQBWHSXhMJ8Rv
-         ufBUvXuPdB/GzbgkAbbB2UdreymKPe0YfTpWtLXIiT1rVywBjYaznD9hPjKVo6r7k4RW
-         6D3edZlZNAJUrOTI54CQ+suoUp3IqT9ouZs2lp8jZcICQNVL62PQ/uHygNY4Ye7IGjDV
-         rkk8v2MELAAoIjZ15GfbyKiMprSJuY9DFzvK4Bb+JOQZphtF6sbAJcGfdj+bJhnVaLju
-         Gng3n7Ut+6dmf9sOaYQ+5vs8Uh6BC5/IXMa6ItDdVc7JjUyJo2doRlJwTPgUosVEB44G
-         ey+w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745397960; x=1746002760;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=1AT3w9qrvqNQ7asAkLzicRanFyPBT5NT85+7uOTViCI=;
-        b=u/lpt3npnRhHLZlt8qoAZdpX0ci7oTYMmbFP8/sN/xQl6ZSrIL/P8evKFXIbzfYYJP
-         4Yho1YYSbdx88gn0KDNE1yL7Lc7DuVdaokMmeIzDz0+KHEc06EHRm0YcX8P1cwyvtjA8
-         gtXO+A6MUMMcVA1rkP4hjkJn7bXhj7uNjmZLWJ8j/Np5uxNG6WAGk1oxgXf/LZtMbOIj
-         KE9PYN2OEZE1FG++9ewBDtVdBTcdCmQHs0LUvC0GT60wu0K3W4Gq5KzF1yZzEEoMMD1h
-         Eqcl0UdCVzsMEKiRJaS9nmT/zLpOhn06iZ5W3KTarJ88Q7YlyFDOB+hFMlXoDIot29sH
-         MF6A==
-X-Forwarded-Encrypted: i=1; AJvYcCUvC0/GKc9yhajB6b+hT4Kulo0L/s70I7QlU5dxGcvSUVSY71Fp1EGtZHfzfkNa+3gsDelcIJJvs8UXfR3JNA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy3gTgKsDZXsBW+hA2rkSEPhUlSi6phOCLSKSV0njHyr3QHkOK7
-	BVDAd7MINV4EIuRKe0WU/mNiglY0jk/7EQhi3TgTGJLT2eJ7H2/dc8sz5jyRBtJHDG6AKKt39xp
-	X32tXFWz1eOprd82sMxkF3aV3ki02Qzhjb+Q+xQ==
-X-Gm-Gg: ASbGncvX6maZiD2LqsZfvgBhO+oWwb1SBvEUOZJ0ZjhpuEQIavZYpcHba9q0fi4QGDA
-	kOf0/Hius2m53nOpWsSg0Jjjnn7ADyTmrba56TnZ4OCfZ0/sBia484nylXeYwDbXTQWZ5NuROVb
-	8ZfSExSgiNa2iC7S/b6JiavA==
-X-Google-Smtp-Source: AGHT+IEM2sVrDJg1K3kkQKCG4hk7fklAp9PkKiypjTL5amBPKHe2ZUe0WuA6o3v/r3NttNzUZAhfuvsRPZ08Q44dSBc=
-X-Received: by 2002:a05:6512:3b93:b0:545:154:52b0 with SMTP id
- 2adb3069b0e04-54d6e62bd7cmr4837714e87.22.1745397960493; Wed, 23 Apr 2025
- 01:46:00 -0700 (PDT)
+	id 1u7Vr4-00000009pbU-1npV;
+	Wed, 23 Apr 2025 08:53:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1745398396;
+	bh=KD9Cl3NthrDkg28+cyb3nHO/tjJn3qP+nuv9lHaS+YE=;
+	h=From:Date:Subject:To:Cc:From;
+	b=Z6ssTRoySSu3OVlfvIDl9j04yp9RSXUNLJboOF/eMsbAibPM1LQuA+fDT+Q2V4Zod
+	 q4M5sddll854+FuVbxLoj+Xv+PtOPQ3uC6cUCy830q33HFbAHCZixzdCsaHryibEo6
+	 sPeokSI/13wnOJjcHrbeuGy6DUPnM+lPre68C+/JZLSywXE3Nfm6Yh09hIkadQeMqe
+	 Y9ZviPcZKlAQ3aPinwbetw1GLwEaXhNnti433ayGTCP5L0yjyDfxARkoMHP2s2WVVp
+	 FHlLHoxznnt/c/rnAJWKsEIZVM++uc8udHSVL6fn19/R/VuzyT3nnuQhXaMLaQ+Vif
+	 U75JlmtAGZX6A==
+Received: from apertis-1.home (2a01cb0892F2D600c8f85cf092d4Af51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: jmassot)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 905DC17E0CAB;
+	Wed, 23 Apr 2025 10:53:15 +0200 (CEST)
+From: Julien Massot <julien.massot@collabora.com>
+Date: Wed, 23 Apr 2025 10:53:13 +0200
+Subject: [PATCH v2] arm64: dts: mediatek: mt8395-nio-12l: Enable Audio DSP
+ and sound card
 MIME-Version: 1.0
-References: <20250422075216.14073-1-ot_chhao.chang@mediatek.com>
-In-Reply-To: <20250422075216.14073-1-ot_chhao.chang@mediatek.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Wed, 23 Apr 2025 10:45:49 +0200
-X-Gm-Features: ATxdqUE2HM1GEgTnOYS1QVQsQ7fnZaFaPHwIcG2bQqgtWcyPZI7J9UPs7LEWcpg
-Message-ID: <CACRpkdb2shemvCLHuvKvSo0s62-=Qjmpxb-aTKjc_CEoFecywg@mail.gmail.com>
-Subject: Re: [PATCH] pinctrl: mediatek: Fix new design debounce issue
-To: Hao Chang <ot_chhao.chang@mediatek.com>
-Cc: Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Wenbin Mei <wenbin.mei@mediatek.com>, Axe Yang <axe.yang@mediatek.com>, 
-	Qingliang Li <qingliang.li@mediatek.com>, Hanks Chen <hanks.chen@mediatek.com>, 
-	Chunhui Li <chunhui.li@mediatek.com>, linux-mediatek@lists.infradead.org, 
-	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250423-mt8395-audio-sof-v2-1-5e6dc7fba0fc@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAHiqCGgC/32NTQ6CMBBGr0Jm7ZhSKKAr72FYlP7IJMCYFomG9
+ O5WDuDyveR73w7RBXIRrsUOwW0UiZcM8lSAGfXycEg2M0ghlajLFue1qy4K9csSY2SPg9bSNLI
+ TlfWQZ8/gPL2P5L3PPFJcOXyOh6382T+xrUSBlVBdW8vGKWtvhqdJDxz02fAMfUrpC+w9lgG0A
+ AAA
+X-Change-ID: 20250417-mt8395-audio-sof-baa2c62803df
+To: kernel@collabora.com, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Julien Massot <julien.massot@collabora.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250423_014602_502109_4DB3157E 
-X-CRM114-Status: UNSURE (   6.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250423_015318_654281_3A9083F8 
+X-CRM114-Status: GOOD (  16.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,18 +82,129 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 22, 2025 at 9:52=E2=80=AFAM Hao Chang <ot_chhao.chang@mediatek.=
-com> wrote:
+Add memory regions for the Audio DSP (ADSP) and Audio Front-End (AFE),
+and enable both components in the device tree.
 
-> Calculate the true offset of eint according to index.
->
-> Fixes: 3ef9f710efcb ("pinctrl: mediatek: Add EINT support for multiple ad=
-dresses")
-> Signed-off-by: Hao Chang <ot_chhao.chang@mediatek.com>
-> Signed-off-by: Qingliang Li <qingliang.li@mediatek.com>
+Also, define the required pin configuration and add a sound card node
+configured to use the ADSP. This enables audio output through the 3.5mm
+headphone jack available on the board.
 
-Looks like a serious issue, patch applied to fixes.
+Signed-off-by: Julien Massot <julien.massot@collabora.com>
+---
+This patch series adds support for audio playback on the MT8395-based Radxa NIO 12L platform, which uses the integrated MT6359 codec via internal DAI links.
 
-Yours,
-Linus Walleij
+Key additions:
+- Support for a new `mediatek,mt8195_mt6359` card configuration that does not rely on external codecs like rt5682.
+- Proper memory region declarations and pinctrl setup for the audio front-end (AFE) and audio DSP (ADSP).
+- A device tree sound node for headphone audio routing using `DL_SRC_BE` and `AIF1`.
+- Enhancements to the DT bindings to document the new compatible string, missing link-name, and additional audio routes (Headphone L/R).
+---
+Changes in v2:
+- The first five commits have already been merged into linux-next; only one remains pending.
+- Improved the commit description of the former patch 6/6, now labeled as 1/1.
+- Link to v1: https://lore.kernel.org/r/20250417-mt8395-audio-sof-v1-0-30587426e5dd@collabora.com
+---
+ .../boot/dts/mediatek/mt8395-radxa-nio-12l.dts     | 58 +++++++++++++++++++++-
+ 1 file changed, 56 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
+index f2eb1b683eb76f783f5a13f28a78f6e33238b5f0..329c60cc6a6be0b4be8c0b8bb033b32d35302804 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
+@@ -139,9 +139,21 @@ bl31_secmon_mem: memory@54600000 {
+ 			no-map;
+ 		};
+ 
+-		afe_mem: memory@60000000 {
++		adsp_mem: memory@60000000 {
+ 			compatible = "shared-dma-pool";
+-			reg = <0 0x60000000 0 0x1100000>;
++			reg = <0 0x60000000 0 0xf00000>;
++			no-map;
++		};
++
++		afe_dma_mem: memory@60f00000 {
++			compatible = "shared-dma-pool";
++			reg = <0 0x60f00000 0 0x100000>;
++			no-map;
++		};
++
++		adsp_dma_mem: memory@61000000 {
++			compatible = "shared-dma-pool";
++			reg = <0 0x61000000 0 0x100000>;
+ 			no-map;
+ 		};
+ 
+@@ -152,6 +164,16 @@ apu_mem: memory@62000000 {
+ 	};
+ };
+ 
++&adsp {
++	memory-region = <&adsp_dma_mem>, <&adsp_mem>;
++	status = "okay";
++};
++
++&afe {
++	memory-region = <&afe_dma_mem>;
++	status = "okay";
++};
++
+ &cpu0 {
+ 	cpu-supply = <&mt6359_vcore_buck_reg>;
+ };
+@@ -514,6 +536,18 @@ &mt6359_vsram_others_ldo_reg {
+ &pio {
+ 	mediatek,rsel-resistance-in-si-unit;
+ 
++	audio_default_pins: audio-default-pins {
++		pins-cmd-dat {
++			pinmux = <PINMUX_GPIO70__FUNC_AUD_SYNC_MOSI>,
++				 <PINMUX_GPIO69__FUNC_AUD_CLK_MOSI>,
++				 <PINMUX_GPIO71__FUNC_AUD_DAT_MOSI0>,
++				 <PINMUX_GPIO72__FUNC_AUD_DAT_MOSI1>,
++				 <PINMUX_GPIO73__FUNC_AUD_DAT_MISO0>,
++				 <PINMUX_GPIO74__FUNC_AUD_DAT_MISO1>,
++				 <PINMUX_GPIO75__FUNC_AUD_DAT_MISO2>;
++		};
++	};
++
+ 	dsi0_backlight_pins: dsi0-backlight-pins {
+ 		pins-backlight-en {
+ 			pinmux = <PINMUX_GPIO107__FUNC_GPIO107>;
+@@ -854,6 +888,26 @@ &scp {
+ 	status = "okay";
+ };
+ 
++&sound {
++	compatible = "mediatek,mt8195_mt6359";
++	model = "mt8395-evk";
++	pinctrl-names = "default";
++	pinctrl-0 = <&audio_default_pins>;
++	audio-routing =
++		"Headphone", "Headphone L",
++		"Headphone", "Headphone R";
++	mediatek,adsp = <&adsp>;
++	status = "okay";
++
++	headphone-dai-link {
++		link-name = "DL_SRC_BE";
++
++		codec {
++			sound-dai = <&pmic 0>;
++		};
++	};
++};
++
+ &spi1 {
+ 	/* Exposed at 40 pin connector */
+ 	pinctrl-0 = <&spi1_pins>;
+
+---
+base-commit: bc8aa6cdadcc00862f2b5720e5de2e17f696a081
+change-id: 20250417-mt8395-audio-sof-baa2c62803df
+
+Best regards,
+-- 
+Julien Massot <julien.massot@collabora.com>
+
 
