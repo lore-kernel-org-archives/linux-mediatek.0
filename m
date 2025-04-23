@@ -4,77 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8267AC369D3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Apr 2025 09:38:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40A0EC369D3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Apr 2025 09:46:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G1j8PYHcrNhQFqwI+btrCagt/+/2s6uq2LXIr8341kM=; b=nASv/opS7q49syks85cZsBR4d3
-	mffvxbKkJNt8jbjrDyKpO5+nl09dgNLXSFY6WB5eUd8gdq+jUZ3O3hriev/0o1az+pT19YqWcPHD2
-	kcuJZlkuOAghcDR8cJbcR7t/6ShZaKFgahIqsgirrYAAAX9t9IL5uKs8ghBwdlmTDcC5jn+SXjkRl
-	Lqob6/uf8h60LbeTnMNs2YpC0ENVOM+Gc0UlkAt/E3C/4gPCC8I9U/zP7L807OOEAJBZXiEvK/DHb
-	gGERTMNlVrvEFtNdlGUZ7GmBNaBDwy6aVJjSbr/VrnpTXmnnfEPZLYAIXPBSKMFCkXhXOGsfVrvyK
-	+SR2DFHw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ZvxsiEPvdpb5l2WB/p6Z/my19eCAalsXZfsDJGPws1k=; b=QnkvWVn0JnLDZn73KLZSntmLPY
+	g/A2wXZBjLRLKolHz4xv3IoTFTQothKuc7SmKEMjCSbpB6Ua8u8EBNJobVl0lucVDXxXPIWMd+9Fk
+	1GEm02gpSUoR+oVOniJ162V16x1tPVIOcNcT2VaW2SU2Zwzhx2az+MOLw562T+RCa7RN927aOSI30
+	zsxpnod7EAOhC0gh4SH2Npbe2E5LUvrOe9QzXK8MRkVA0i7RrrIhG1ZZUDa02JIWP4Px1aM94Hr1f
+	3Ip/7/gvPjGTDbCsxBzxIS+gOM/nv0bWBJB8mV77hcwVl0BQiDS7i4vwIZutO67kD60XCO8Z2j+Sr
+	ny0nHBbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7WYi-0000000A0Ms-3sYc;
-	Wed, 23 Apr 2025 09:38:24 +0000
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
+	id 1u7Wgm-0000000A2we-0UqK;
+	Wed, 23 Apr 2025 09:46:44 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7VLV-00000009hZ9-3fZB;
-	Wed, 23 Apr 2025 08:20:43 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1745396424; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=YpNkN/pgf05gdme5+SmEoxgIpTRcwbXhKWK7mhcpVskQoM8Sq8/FJry5KcIip0QNC6Iz75imDO0NKmWUCYVt2SbZykmh7qMlHWQVBpHkcBXo7HXACFed2Oq3mNrNMLkxdhb/1mwdTkncyuodkJ2OWVnOxI1vEYJmxq0m4TqY2CU=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1745396424; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=G1j8PYHcrNhQFqwI+btrCagt/+/2s6uq2LXIr8341kM=; 
-	b=lCfjYTHbja/eTRgBlQwBC/4w/1KOq0DjHRYJK5mZLDDuaNKhzP+zhNqECX9Ha/0unqOcGP+ywF2PBcqnjrEqJWAIqEA3NRwfslvZEtCj190T/lfmXbKdAzzQsVEQb9vygCVREx6iLt9tZEZnfL3223J3j4/jsnxAKHVsCwLBrAo=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
-	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1745396424;
-	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
-	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=G1j8PYHcrNhQFqwI+btrCagt/+/2s6uq2LXIr8341kM=;
-	b=RZ56arMHO8C8+mqDRUiyaCnAOcOnoC5BNhsvBbXBIcQcVJHW8MAirtsFs5yQbP8g
-	1QZNnexv+YodMsp9qqZoCNiyMLNsHwfHaq7QjvvqYSNdyvex0ftAlzISAWs2a1kyfPJ
-	1ttsYrrQ9O6HtYFOEUMp/BzreXoaMXMqH36BIdWY=
-Received: by mx.zohomail.com with SMTPS id 1745396422848172.7246656316138;
-	Wed, 23 Apr 2025 01:20:22 -0700 (PDT)
-Message-ID: <11d6b91a73b69924e954defe613eef7c4af45c56.camel@collabora.com>
-Subject: Re: [PATCH 1/2] net: ethernet: mtk-star-emac: fix spinlock
- recursion issues on rx/tx poll
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-To: Maxime Chevallier <maxime.chevallier@bootlin.com>
-Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>,  Eric Dumazet
- <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
- <pabeni@redhat.com>,  Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,  Biao
- Huang <biao.huang@mediatek.com>, Yinghua Pan <ot_yinghua.pan@mediatek.com>,
- kernel@collabora.com, 	netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Date: Wed, 23 Apr 2025 10:20:17 +0200
-In-Reply-To: <20250422160046.73aa854a@fedora.home>
-References: <20250422-mtk_star_emac-fix-spinlock-recursion-issue-v1-0-1e94ea430360@collabora.com>
-		<20250422-mtk_star_emac-fix-spinlock-recursion-issue-v1-1-1e94ea430360@collabora.com>
-	 <20250422160046.73aa854a@fedora.home>
-Organization: Collabora Ltd
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.54.3 (3.54.3-1.fc41) 
+	id 1u7VO5-00000009ibU-18vX
+	for linux-mediatek@lists.infradead.org;
+	Wed, 23 Apr 2025 08:23:22 +0000
+Received: by mail-wr1-x432.google.com with SMTP id ffacd0b85a97d-39ee5a5bb66so4289377f8f.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 23 Apr 2025 01:23:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1745396599; x=1746001399; darn=lists.infradead.org;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=ZvxsiEPvdpb5l2WB/p6Z/my19eCAalsXZfsDJGPws1k=;
+        b=a0C66j6RZv2yJDJuNIRdaHfKUpctHqVOTmutM2HrkT02Mm7dytigAB/EfHEc25fVKZ
+         JhxrK/jL9gaRIpuRZTB+Umyjh27vFg8G1ELN6yKfFIJgCLB9Hjy1WRS/yvnvPF3H2rp1
+         js3uf4LeBfsiQlQOwYlfHWQ5k3ngZ70xf1Lvusbtgj9Sm47pVN6Ri/JFa6P4NsZtgR/u
+         Bx2OfYQgdwn7j2J/QbrrLLSxMWUpdJd+mWFKoEmkD76onDX2xD+mh453PmnYB57GYvJc
+         1P9qj5y/ItRoo7i1hVayM5GiCofru35tJSmxHEl2lUmc/ThGhCkaO/7/KcxovqMJXCzs
+         MSmA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1745396599; x=1746001399;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ZvxsiEPvdpb5l2WB/p6Z/my19eCAalsXZfsDJGPws1k=;
+        b=XTfsYzksOZ81Vh7grfuy9v4Tv0Grs0vVNzUe3BmMIrHXN/K4bzJ07mGR1uuYdVz3oV
+         soAt8VKFz3Ak3pGBMPlzUQPicxZb5U9gET4Zt2LfTUgP5F2egENGhI6936w7zYydvYT+
+         AKNYOZZTeEAo9H6agMxvATF/hW+dAHBPDR8rAIutXb/3KDN1M62oPrTa/NGVrwj6FuT3
+         LvPgRmp2U3bmk1guG37LbkWVRWGky6wQkDs4nSn1s/+BNSpf/T6kaX93VM2jxqv+BIwd
+         BqYBjFlKKJraKRclrYhR7AR96BfsPIrKe9sp/o7Mg3bcCFRo4ou+udGxBntQ1/CGmgnM
+         hNVQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUp+LTMXVmFieFtnuLCuZCgGHom13sPyn36Y3jtdrofZsyqDONFRGyyYQfRb+Q4qXU7tUTILRMvqvhh7JcS4g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyxU4GZ7Aiz38ds94QLM1IDLLkoEeO76iuFMqsuYgt5klp1rOtj
+	mR0A+ym3a8DNHVlVcS2kMJNPt/AoCdNrbvK9W7rhx1oviVi0W9ERP8tbHs9C8+s=
+X-Gm-Gg: ASbGncsvdXwU3BSdyWtgGrNEQ0PKF2GQY0g/g/6B6wl2LjIko3x3YdLN5eUJGhjHSRl
+	EaucJ7k9easBP1pT8KBnQmT+X6VAMtLFH6HPUxSPop6T1zM6e4YWpvlgyXRTVmcfR1ldzyyTBeb
+	V+q5GIgCLKtuizR5fgpAZqJWaRswfc1blj0o+XD+QxmUSusE/2euXxhJQRmN3EqujfGO5X59foC
+	w8U2pi7XZ08N4I5tnAY+o1mpwyzDk/nrit1h1MALWU4devg0X77vXrwDyTGD9cOxncvSxkapmTQ
+	sdoQHZCST6lXJBuN/2O0NhLTGlkHBJgCzo/yxpKqjCkusw==
+X-Google-Smtp-Source: AGHT+IEelUJ/5v3FltvPfU2HhobryVrZIBwS3AI8/YV8yIZfhl1ShQPfo3U4FD8Ljf8SiRZZYW9GyA==
+X-Received: by 2002:a05:6000:2510:b0:39c:30f9:339c with SMTP id ffacd0b85a97d-39efba5a84dmr14374721f8f.28.1745396599114;
+        Wed, 23 Apr 2025 01:23:19 -0700 (PDT)
+Received: from localhost ([196.207.164.177])
+        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-44092d4707csm16964585e9.40.2025.04.23.01.23.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 23 Apr 2025 01:23:18 -0700 (PDT)
+Date: Wed, 23 Apr 2025 11:23:15 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Sean Wang <sean.wang@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	kernel-janitors@vger.kernel.org
+Subject: [PATCH next] pinctrl: mediatek: common-v1: Fix error checking in
+ mtk_eint_init()
+Message-ID: <aAijc10fHka1WAMX@stanley.mountain>
 MIME-Version: 1.0
-X-ZohoMailClient: External
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+X-Mailer: git-send-email haha only kidding
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250423_012041_956184_E2DAC953 
-X-CRM114-Status: GOOD (  24.41  )
+X-CRM114-CacheID: sfid-20250423_012321_304007_BF9A72A8 
+X-CRM114-Status: GOOD (  11.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,164 +100,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Maxime,
+The devm_kzalloc() function doesn't return error pointers, it returns
+NULL on error.  Then on the next line it checks the same pointer again
+by mistake, "->base" instead of "->base[0]".
 
-On Tue, 2025-04-22 at 16:00 +0200, Maxime Chevallier wrote:
-> Hi Louis-Alexis :)
->=20
-> On Tue, 22 Apr 2025 15:03:38 +0200
-> Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com> wrote:
->=20
-> > Use spin_lock_irqsave and spin_unlock_irqrestore instead of
-> > spin_lock
-> > and spin_unlock in mtk_star_emac driver to avoid spinlock recursion
-> > occurrence that can happen when enabling the DMA interrupts again
-> > in
-> > rx/tx poll.
-> >=20
-> > ```
-> > BUG: spinlock recursion on CPU#0, swapper/0/0
-> > =C2=A0lock: 0xffff00000db9cf20, .magic: dead4ead, .owner: swapper/0/0,
-> > =C2=A0=C2=A0=C2=A0 .owner_cpu: 0
-> > CPU: 0 UID: 0 PID: 0 Comm: swapper/0 Not tainted
-> > =C2=A0=C2=A0=C2=A0 6.15.0-rc2-next-20250417-00001-gf6a27738686c-dirty #=
-28 PREEMPT
-> > Hardware name: MediaTek MT8365 Open Platform EVK (DT)
-> > Call trace:
-> > =C2=A0show_stack+0x18/0x24 (C)
-> > =C2=A0dump_stack_lvl+0x60/0x80
-> > =C2=A0dump_stack+0x18/0x24
-> > =C2=A0spin_dump+0x78/0x88
-> > =C2=A0do_raw_spin_lock+0x11c/0x120
-> > =C2=A0_raw_spin_lock+0x20/0x2c
-> > =C2=A0mtk_star_handle_irq+0xc0/0x22c [mtk_star_emac]
-> > =C2=A0__handle_irq_event_percpu+0x48/0x140
-> > =C2=A0handle_irq_event+0x4c/0xb0
-> > =C2=A0handle_fasteoi_irq+0xa0/0x1bc
-> > =C2=A0handle_irq_desc+0x34/0x58
-> > =C2=A0generic_handle_domain_irq+0x1c/0x28
-> > =C2=A0gic_handle_irq+0x4c/0x120
-> > =C2=A0do_interrupt_handler+0x50/0x84
-> > =C2=A0el1_interrupt+0x34/0x68
-> > =C2=A0el1h_64_irq_handler+0x18/0x24
-> > =C2=A0el1h_64_irq+0x6c/0x70
-> > =C2=A0regmap_mmio_read32le+0xc/0x20 (P)
-> > =C2=A0_regmap_bus_reg_read+0x6c/0xac
-> > =C2=A0_regmap_read+0x60/0xdc
-> > =C2=A0regmap_read+0x4c/0x80
-> > =C2=A0mtk_star_rx_poll+0x2f4/0x39c [mtk_star_emac]
-> > =C2=A0__napi_poll+0x38/0x188
-> > =C2=A0net_rx_action+0x164/0x2c0
-> > =C2=A0handle_softirqs+0x100/0x244
-> > =C2=A0__do_softirq+0x14/0x20
-> > =C2=A0____do_softirq+0x10/0x20
-> > =C2=A0call_on_irq_stack+0x24/0x64
-> > =C2=A0do_softirq_own_stack+0x1c/0x40
-> > =C2=A0__irq_exit_rcu+0xd4/0x10c
-> > =C2=A0irq_exit_rcu+0x10/0x1c
-> > =C2=A0el1_interrupt+0x38/0x68
-> > =C2=A0el1h_64_irq_handler+0x18/0x24
-> > =C2=A0el1h_64_irq+0x6c/0x70
-> > =C2=A0cpuidle_enter_state+0xac/0x320 (P)
-> > =C2=A0cpuidle_enter+0x38/0x50
-> > =C2=A0do_idle+0x1e4/0x260
-> > =C2=A0cpu_startup_entry+0x34/0x3c
-> > =C2=A0rest_init+0xdc/0xe0
-> > =C2=A0console_on_rootfs+0x0/0x6c
-> > =C2=A0__primary_switched+0x88/0x90
-> > ```
-> >=20
-> > Fixes: 0a8bd81fd6aa ("net: ethernet: mtk-star-emac: separate tx/rx
-> > handling with two NAPIs")
-> > Signed-off-by: Louis-Alexis Eyraud
-> > <louisalexis.eyraud@collabora.com>
->=20
-> As this is a fix, you need to indicate in your subject that you're
-> targetting the "net" tree, something like :
->=20
-> [PATCH net 1/2] net: ethernet: mtk-star-emac: fix spinlock recursion
-> issues on rx/tx poll
->=20
-> > ---
-> > =C2=A0drivers/net/ethernet/mediatek/mtk_star_emac.c | 10 ++++++----
-> > =C2=A01 file changed, 6 insertions(+), 4 deletions(-)
-> >=20
-> > diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c
-> > b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-> > index
-> > 76f202d7f05537642ec294811ace2ad4a7eae383..41d6af31027f4d827dbfdfecd
-> > b7de44326bb3de1 100644
-> > --- a/drivers/net/ethernet/mediatek/mtk_star_emac.c
-> > +++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-> > @@ -1163,6 +1163,7 @@ static int mtk_star_tx_poll(struct
-> > napi_struct *napi, int budget)
-> > =C2=A0	struct net_device *ndev =3D priv->ndev;
-> > =C2=A0	unsigned int head =3D ring->head;
-> > =C2=A0	unsigned int entry =3D ring->tail;
-> > +	unsigned long flags =3D 0;
->=20
-> You don't need to init flags to 0
->=20
-> > =C2=A0
-> > =C2=A0	while (entry !=3D head && count < (MTK_STAR_RING_NUM_DESCS -
-> > 1)) {
-> > =C2=A0		ret =3D mtk_star_tx_complete_one(priv);
-> > @@ -1182,9 +1183,9 @@ static int mtk_star_tx_poll(struct
-> > napi_struct *napi, int budget)
-> > =C2=A0		netif_wake_queue(ndev);
-> > =C2=A0
-> > =C2=A0	if (napi_complete(napi)) {
-> > -		spin_lock(&priv->lock);
-> > +		spin_lock_irqsave(&priv->lock, flags);
-> > =C2=A0		mtk_star_enable_dma_irq(priv, false, true);
-> > -		spin_unlock(&priv->lock);
-> > +		spin_unlock_irqrestore(&priv->lock, flags);
-> > =C2=A0	}
-> > =C2=A0
-> > =C2=A0	return 0;
-> > @@ -1342,15 +1343,16 @@ static int mtk_star_rx_poll(struct
-> > napi_struct *napi, int budget)
-> > =C2=A0{
-> > =C2=A0	struct mtk_star_priv *priv;
-> > =C2=A0	int work_done =3D 0;
-> > +	unsigned long flags =3D 0;
->=20
-> There's a rule in netdev that definitions must be ordered from
-> longest
-> to shortest lines (reverse xmas tree, or RCT), so you should have in
-> the end :
->=20
-> struct mtk_star_priv *priv;
-> unsigned long flags;
-> int work_done =3D 0;
->=20
-> > =C2=A0
-> > =C2=A0	priv =3D container_of(napi, struct mtk_star_priv, rx_napi);
-> > =C2=A0
-> > =C2=A0	work_done =3D mtk_star_rx(priv, budget);
-> > =C2=A0	if (work_done < budget) {
-> > =C2=A0		napi_complete_done(napi, work_done);
-> > -		spin_lock(&priv->lock);
-> > +		spin_lock_irqsave(&priv->lock, flags);
-> > =C2=A0		mtk_star_enable_dma_irq(priv, true, false);
-> > -		spin_unlock(&priv->lock);
-> > +		spin_unlock_irqrestore(&priv->lock, flags);
-> > =C2=A0	}
-> > =C2=A0
-> > =C2=A0	return work_done;
-> >=20
->=20
-> Besides these small comments, the patch looks correct to me :)
->=20
-> Regards,
->=20
-> Maxime
+Fixes: fe412e3a6c97 ("pinctrl: mediatek: common-v1: Fix EINT breakage on older controllers")
+Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
+---
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-Thanks for the review, Maxime.
-I'll add the missing subject prefix and fix the other issues in the v2
-patchset.
-
-Regards,
-Louis-Alexis
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+index 7585de11854b..8596f3541265 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+@@ -1018,12 +1018,12 @@ static int mtk_eint_init(struct mtk_pinctrl *pctl, struct platform_device *pdev)
+ 	pctl->eint->nbase = 1;
+ 	/* mtk-eint expects an array */
+ 	pctl->eint->base = devm_kzalloc(pctl->dev, sizeof(pctl->eint->base), GFP_KERNEL);
+-	if (IS_ERR(pctl->eint->base))
++	if (!pctl->eint->base)
+ 		return -ENOMEM;
+ 
+ 	pctl->eint->base[0] = devm_platform_ioremap_resource(pdev, 0);
+-	if (IS_ERR(pctl->eint->base))
+-		return PTR_ERR(pctl->eint->base);
++	if (IS_ERR(pctl->eint->base[0]))
++		return PTR_ERR(pctl->eint->base[0]);
+ 
+ 	pctl->eint->irq = irq_of_parse_and_map(np, 0);
+ 	if (!pctl->eint->irq)
+-- 
+2.47.2
 
 
