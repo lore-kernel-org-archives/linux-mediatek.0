@@ -4,115 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5963C369CB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Apr 2025 06:59:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8267AC369D3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Apr 2025 09:38:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9Pv/UqOlGAz6M6uYoscsoU17c6hsgoL6aNA1kJI82qs=; b=P9m8qQyFDntgp7
-	tImrtksY37TSdPC7rbI8dQpjkJWtlAj5z97jqvFhUxVP2Zm0YNvM+JzMAuZtYnEQa0VUekkJSVi5p
-	7BSC/nx1I8svFjebooWRnHjtk2GDbljs5mYQT5+30oIzuU1ylSKV8XhdaXnOZDeE86aN4/Kd6tXGC
-	+GzDJbQMFEpEBpQC/PItmuJgCh2TnkUwqcQzTbH5R9TSwyZD/GW82EmnVzrtQsuvYXYjc9TL9VBim
-	ESsyDqqsW3oZ8ARMrXXLSBuj1eWBR2gaGWaocy3b8EVOJLSajTGD5SO/v5XHie7sdSWFxPHYoOlTi
-	2uXQkjqgyv4f9NeFahig==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=G1j8PYHcrNhQFqwI+btrCagt/+/2s6uq2LXIr8341kM=; b=nASv/opS7q49syks85cZsBR4d3
+	mffvxbKkJNt8jbjrDyKpO5+nl09dgNLXSFY6WB5eUd8gdq+jUZ3O3hriev/0o1az+pT19YqWcPHD2
+	kcuJZlkuOAghcDR8cJbcR7t/6ShZaKFgahIqsgirrYAAAX9t9IL5uKs8ghBwdlmTDcC5jn+SXjkRl
+	Lqob6/uf8h60LbeTnMNs2YpC0ENVOM+Gc0UlkAt/E3C/4gPCC8I9U/zP7L807OOEAJBZXiEvK/DHb
+	gGERTMNlVrvEFtNdlGUZ7GmBNaBDwy6aVJjSbr/VrnpTXmnnfEPZLYAIXPBSKMFCkXhXOGsfVrvyK
+	+SR2DFHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7U51-00000009QoG-3gj4;
-	Wed, 23 Apr 2025 06:59:35 +0000
-Received: from cornsilk.maple.relay.mailchannels.net ([23.83.214.40])
+	id 1u7WYi-0000000A0Ms-3sYc;
+	Wed, 23 Apr 2025 09:38:24 +0000
+Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7TwE-00000009OAK-20Lw;
-	Wed, 23 Apr 2025 06:50:32 +0000
-X-Sender-Id: hostingeremail|x-authuser|chester.a.unal@arinc9.com
-Received: from relay.mailchannels.net (localhost [127.0.0.1])
-	by relay.mailchannels.net (Postfix) with ESMTP id 8F84B8439E0;
-	Wed, 23 Apr 2025 06:50:25 +0000 (UTC)
-Received: from fr-int-smtpout9.hostinger.io (trex-9.trex.outbound.svc.cluster.local [100.113.64.21])
-	(Authenticated sender: hostingeremail)
-	by relay.mailchannels.net (Postfix) with ESMTPA id 853AD8454F4;
-	Wed, 23 Apr 2025 06:50:22 +0000 (UTC)
-ARC-Seal: i=1; s=arc-2022; d=mailchannels.net; t=1745391025; a=rsa-sha256;
-	cv=none;
-	b=qb188cWjCtdZiVZpRIaoNuQW3H0UKtf7otGdFXrbvLzX9aoJPDUeTZU9aTZdydp2u7q/22
-	xGa2ZIUDQAcdI/TqYrrZmAvqHXPIpgBSgH4MZVyE+QjQsoBJ+DtOMS3KwxWymZMa3UDk/g
-	ukMnxM0q7kPB0Ibm5SLS8X7bHfgB5zLqB9shoMnOyrSkCP24iy6a6yr/I8HC/iw6ShT/Ex
-	U5+hlUxiA0CI5ojAWeC5O5hROuKHLpKs7BE/CBf96XgzJy9epJFwC3uE1ZXIqGhE2dQhRZ
-	flgctoRv7vvSxJUgvf+2c9oBb/TKSoN3hJyVIWtpEfaupoS+yO6lfXxYu0xy5A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mailchannels.net;
-	s=arc-2022; t=1745391025;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:dkim-signature;
-	bh=9Pv/UqOlGAz6M6uYoscsoU17c6hsgoL6aNA1kJI82qs=;
-	b=axu470fjexr5bBgpmPZCQ2/FBnMxiy0wl7SLsnALI/P/egdVmRWUKd99dKA0WDabNZiyFx
-	r6sncISV6RL7ej5JUUv1O/vqLC1QGhX4emtL97N6ZMFeSrLtcMdLlEszq/8jjoXYpcBH+u
-	eXGflSWVo7WrbTeMcydps5giED9lvdwPlINjFU4MJvRbOVBR0vQO+ckn7hjfESpyDL7ysv
-	fRWA/ZwV4n07I5NfKZIO92egYRZkH/N7Cy/uzrYdi6wIe31BPoV5UQ4B/ug/hR13YM8eQK
-	bxBjPQtXfyRbUVyRyfdrOZKGm/g216jKAl4JmjQLIsvZhLtjXoFl5MjIfs0wBQ==
-ARC-Authentication-Results: i=1;
-	rspamd-5cfcf5665-kj6cg;
-	auth=pass smtp.auth=hostingeremail smtp.mailfrom=chester.a.unal@arinc9.com
-X-Sender-Id: hostingeremail|x-authuser|chester.a.unal@arinc9.com
-X-MC-Relay: Neutral
-X-MailChannels-SenderId: hostingeremail|x-authuser|chester.a.unal@arinc9.com
-X-MailChannels-Auth-Id: hostingeremail
-X-Madly-Rock: 5ce5863d4316f6a1_1745391025410_3471300557
-X-MC-Loop-Signature: 1745391025409:59469947
-X-MC-Ingress-Time: 1745391025409
-Received: from fr-int-smtpout9.hostinger.io (fr-int-smtpout9.hostinger.io
- [89.116.146.43])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384)
-	by 100.113.64.21 (trex/7.0.3);
-	Wed, 23 Apr 2025 06:50:25 +0000
-Received: from [127.0.0.1] (unknown [82.165.193.131])
-	(Authenticated sender: chester.a.unal@arinc9.com)
-	by smtp.hostinger.com (smtp.hostinger.com) with ESMTPSA id 4Zj8qv5Zy7zH9gKF;
-	Wed, 23 Apr 2025 06:50:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arinc9.com;
-	s=hostingermail-a; t=1745391020;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=9Pv/UqOlGAz6M6uYoscsoU17c6hsgoL6aNA1kJI82qs=;
-	b=rRvB7UGLlhnr2BbHcKSDyclrFwluPsInB4qipbV+vlBsPug9CFdnHftTOskq2E/dCz2xUp
-	AcLog4x5bbhEaidnEpJdHReYT5zNwyBRIQbAwZnC1VYkjQUSPC136hBUFskj0dKs4Us7gx
-	ozVSucH4wd/TpmTrkeu6wM0CDc9oi5P2nsNy1xxxv8VN4kz5pb83jTx5ohx1sI2tNDpvQX
-	FyRIWOa8FOKrneq42GIaa735xlx05dCACwg72o0LfCXWYtmOCYEZ+qCltD14Mvt9T3k0cq
-	P9A1Y3GxWaeFOQdQ0WU7vNeGo9Ts62fghjqPtPWJxJmR/BhPzCguHzPo31M6lQ==
-From: "Chester A. Unal" <chester.a.unal@arinc9.com>
-To: Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
- Neal Yen <neal.yen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_net=5D_net=3A_dsa=3A_mt7530=3A_sync_dr?=
- =?US-ASCII?Q?iver-specific_behavior_of_MT7531_variants?=
-User-Agent: Thunderbird for Android
-In-Reply-To: <89ed7ec6d4fa0395ac53ad2809742bb1ce61ed12.1745290867.git.daniel@makrotopia.org>
-References: <89ed7ec6d4fa0395ac53ad2809742bb1ce61ed12.1745290867.git.daniel@makrotopia.org>
-Message-ID: <F9390C07-3C4F-47FD-A89F-FB5A90D38A84@arinc9.com>
-MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
+	id 1u7VLV-00000009hZ9-3fZB;
+	Wed, 23 Apr 2025 08:20:43 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1745396424; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=YpNkN/pgf05gdme5+SmEoxgIpTRcwbXhKWK7mhcpVskQoM8Sq8/FJry5KcIip0QNC6Iz75imDO0NKmWUCYVt2SbZykmh7qMlHWQVBpHkcBXo7HXACFed2Oq3mNrNMLkxdhb/1mwdTkncyuodkJ2OWVnOxI1vEYJmxq0m4TqY2CU=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1745396424; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=G1j8PYHcrNhQFqwI+btrCagt/+/2s6uq2LXIr8341kM=; 
+	b=lCfjYTHbja/eTRgBlQwBC/4w/1KOq0DjHRYJK5mZLDDuaNKhzP+zhNqECX9Ha/0unqOcGP+ywF2PBcqnjrEqJWAIqEA3NRwfslvZEtCj190T/lfmXbKdAzzQsVEQb9vygCVREx6iLt9tZEZnfL3223J3j4/jsnxAKHVsCwLBrAo=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
+	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1745396424;
+	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
+	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
+	bh=G1j8PYHcrNhQFqwI+btrCagt/+/2s6uq2LXIr8341kM=;
+	b=RZ56arMHO8C8+mqDRUiyaCnAOcOnoC5BNhsvBbXBIcQcVJHW8MAirtsFs5yQbP8g
+	1QZNnexv+YodMsp9qqZoCNiyMLNsHwfHaq7QjvvqYSNdyvex0ftAlzISAWs2a1kyfPJ
+	1ttsYrrQ9O6HtYFOEUMp/BzreXoaMXMqH36BIdWY=
+Received: by mx.zohomail.com with SMTPS id 1745396422848172.7246656316138;
+	Wed, 23 Apr 2025 01:20:22 -0700 (PDT)
+Message-ID: <11d6b91a73b69924e954defe613eef7c4af45c56.camel@collabora.com>
+Subject: Re: [PATCH 1/2] net: ethernet: mtk-star-emac: fix spinlock
+ recursion issues on rx/tx poll
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+To: Maxime Chevallier <maxime.chevallier@bootlin.com>
+Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,  Eric Dumazet
+ <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+ <pabeni@redhat.com>,  Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,  Biao
+ Huang <biao.huang@mediatek.com>, Yinghua Pan <ot_yinghua.pan@mediatek.com>,
+ kernel@collabora.com, 	netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Date: Wed, 23 Apr 2025 10:20:17 +0200
+In-Reply-To: <20250422160046.73aa854a@fedora.home>
+References: <20250422-mtk_star_emac-fix-spinlock-recursion-issue-v1-0-1e94ea430360@collabora.com>
+		<20250422-mtk_star_emac-fix-spinlock-recursion-issue-v1-1-1e94ea430360@collabora.com>
+	 <20250422160046.73aa854a@fedora.home>
+Organization: Collabora Ltd
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Date: Wed, 23 Apr 2025 06:50:19 +0000 (UTC)
-X-CM-Analysis: v=2.4 cv=Vv1xAP2n c=0 sm=1 tr=0 ts=68088dac p=VT4XjZGOAAAA:8 a=TIbRxBwJK3FFcHPSi+5Ynw==:117 a=TIbRxBwJK3FFcHPSi+5Ynw==:17 a=IkcTkHD0fZMA:10 a=puQWGBksFvoA:10 a=mpaa-ttXAAAA:8
-X-CM-Envelope: MS4xfF7jBa0YSLhlk6TV6ePe0WqoEsEHXS/cCyxaL7CiN4ZJkDGyZ+GqpqGiK5D+idyg+8D8/oDxxYUsTDDfLVfPAJS+bN6nhtEqFUDRvS7JSJujUR6lyArD umz16IOW50tygTML3dnxJ/Ax9NSrfrkKHctd+ZAXuDTP6A+pbEamzCG8T7CJxcIW2QfGEdWvL9FIkMfJSkzpbHmf4W5kcxkqMr12YPKtnSnFUZrzYtrNRGK1 X8cbF+cP/MOjv0UfEDkG9c5yuU1qIJluG86fbzi9kZ6GfO0McKSWn8FSWNwgYw2ziPbaDJmzHIFf0UVaQzJ8ADXCKBk9tPCCWIFbSW+2ui6M3qfgzZrBVfDq xMoH6IQHrW5wt8uT8dakwQ7OhBTXGB8LP2DK43Fo5DKcT/IimXk16yutnIQ6Vry5FxKsU1AzNjXZWwRoEpxEsvuK6MhTVrT7l9C60DUwrbyu7qSAhaeGooQi X3w11FSs70oyJHslOoksrjK0AR2BptQDW5j+LrWsU+jg9NivyRf21mIroMbMQ+NV+VdKmHdKt+kIKbgseAYtZlsLaVm8u2KQBtsfblT74ZT+sCLXehykNvpK JceIUJKaPv0SGPjKQbsHQS7TktJrHIK22G+QOng0ZCWYiZ2hiJkuj0ho/h5vOzWt2L+fl9+UZ3RuD8e1mcLBgOdu+XnoQaLl+aehny0T/1WsKyb+OtZ1Fwor EwWeHCjocX5uSJ352MjgzzdoNkd1IOez
-X-AuthUser: chester.a.unal@arinc9.com
+User-Agent: Evolution 3.54.3 (3.54.3-1.fc41) 
+MIME-Version: 1.0
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250422_235030_945711_85F3C58D 
-X-CRM114-Status: UNSURE (   3.74  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250423_012041_956184_E2DAC953 
+X-CRM114-Status: GOOD (  24.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,27 +89,164 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 22 April 2025 06:10:20 GMT+03:00, Daniel Golle <daniel@makrotopia=2Eorg>=
- wrote:
->MT7531 standalone and MMIO variants found in MT7988 and EN7581 share
->most basic properties=2E Despite that, assisted_learning_on_cpu_port and
->mtu_enforcement_ingress were only applied for MT7531 but not for MT7988
->or EN7581, causing the expected issues on MMIO devices=2E
->
->Apply both settings equally also for MT7988 and EN7581 by moving both
->assignments form mt7531_setup() to mt7531_setup_common()=2E
->
->This fixes unwanted flooding of packets due to unknown unicast
->during DA lookup, as well as issues with heterogenous MTU settings=2E
->
->Fixes: 7f54cc9772ce ("net: dsa: mt7530: split-off common parts from mt753=
-1_setup")
->Signed-off-by: Daniel Golle <daniel@makrotopia=2Eorg>
->---
->See also https://git01=2Emediatek=2Ecom/plugins/gitiles/openwrt/feeds/mtk=
--openwrt-feeds/+/b4204fb062d60ac57791c90a11d05cf75269dcbd
+Hi Maxime,
 
-Reviewed-by: Chester A=2E Unal <chester=2Ea=2Eunal@arinc9=2Ecom>
+On Tue, 2025-04-22 at 16:00 +0200, Maxime Chevallier wrote:
+> Hi Louis-Alexis :)
+>=20
+> On Tue, 22 Apr 2025 15:03:38 +0200
+> Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com> wrote:
+>=20
+> > Use spin_lock_irqsave and spin_unlock_irqrestore instead of
+> > spin_lock
+> > and spin_unlock in mtk_star_emac driver to avoid spinlock recursion
+> > occurrence that can happen when enabling the DMA interrupts again
+> > in
+> > rx/tx poll.
+> >=20
+> > ```
+> > BUG: spinlock recursion on CPU#0, swapper/0/0
+> > =C2=A0lock: 0xffff00000db9cf20, .magic: dead4ead, .owner: swapper/0/0,
+> > =C2=A0=C2=A0=C2=A0 .owner_cpu: 0
+> > CPU: 0 UID: 0 PID: 0 Comm: swapper/0 Not tainted
+> > =C2=A0=C2=A0=C2=A0 6.15.0-rc2-next-20250417-00001-gf6a27738686c-dirty #=
+28 PREEMPT
+> > Hardware name: MediaTek MT8365 Open Platform EVK (DT)
+> > Call trace:
+> > =C2=A0show_stack+0x18/0x24 (C)
+> > =C2=A0dump_stack_lvl+0x60/0x80
+> > =C2=A0dump_stack+0x18/0x24
+> > =C2=A0spin_dump+0x78/0x88
+> > =C2=A0do_raw_spin_lock+0x11c/0x120
+> > =C2=A0_raw_spin_lock+0x20/0x2c
+> > =C2=A0mtk_star_handle_irq+0xc0/0x22c [mtk_star_emac]
+> > =C2=A0__handle_irq_event_percpu+0x48/0x140
+> > =C2=A0handle_irq_event+0x4c/0xb0
+> > =C2=A0handle_fasteoi_irq+0xa0/0x1bc
+> > =C2=A0handle_irq_desc+0x34/0x58
+> > =C2=A0generic_handle_domain_irq+0x1c/0x28
+> > =C2=A0gic_handle_irq+0x4c/0x120
+> > =C2=A0do_interrupt_handler+0x50/0x84
+> > =C2=A0el1_interrupt+0x34/0x68
+> > =C2=A0el1h_64_irq_handler+0x18/0x24
+> > =C2=A0el1h_64_irq+0x6c/0x70
+> > =C2=A0regmap_mmio_read32le+0xc/0x20 (P)
+> > =C2=A0_regmap_bus_reg_read+0x6c/0xac
+> > =C2=A0_regmap_read+0x60/0xdc
+> > =C2=A0regmap_read+0x4c/0x80
+> > =C2=A0mtk_star_rx_poll+0x2f4/0x39c [mtk_star_emac]
+> > =C2=A0__napi_poll+0x38/0x188
+> > =C2=A0net_rx_action+0x164/0x2c0
+> > =C2=A0handle_softirqs+0x100/0x244
+> > =C2=A0__do_softirq+0x14/0x20
+> > =C2=A0____do_softirq+0x10/0x20
+> > =C2=A0call_on_irq_stack+0x24/0x64
+> > =C2=A0do_softirq_own_stack+0x1c/0x40
+> > =C2=A0__irq_exit_rcu+0xd4/0x10c
+> > =C2=A0irq_exit_rcu+0x10/0x1c
+> > =C2=A0el1_interrupt+0x38/0x68
+> > =C2=A0el1h_64_irq_handler+0x18/0x24
+> > =C2=A0el1h_64_irq+0x6c/0x70
+> > =C2=A0cpuidle_enter_state+0xac/0x320 (P)
+> > =C2=A0cpuidle_enter+0x38/0x50
+> > =C2=A0do_idle+0x1e4/0x260
+> > =C2=A0cpu_startup_entry+0x34/0x3c
+> > =C2=A0rest_init+0xdc/0xe0
+> > =C2=A0console_on_rootfs+0x0/0x6c
+> > =C2=A0__primary_switched+0x88/0x90
+> > ```
+> >=20
+> > Fixes: 0a8bd81fd6aa ("net: ethernet: mtk-star-emac: separate tx/rx
+> > handling with two NAPIs")
+> > Signed-off-by: Louis-Alexis Eyraud
+> > <louisalexis.eyraud@collabora.com>
+>=20
+> As this is a fix, you need to indicate in your subject that you're
+> targetting the "net" tree, something like :
+>=20
+> [PATCH net 1/2] net: ethernet: mtk-star-emac: fix spinlock recursion
+> issues on rx/tx poll
+>=20
+> > ---
+> > =C2=A0drivers/net/ethernet/mediatek/mtk_star_emac.c | 10 ++++++----
+> > =C2=A01 file changed, 6 insertions(+), 4 deletions(-)
+> >=20
+> > diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c
+> > b/drivers/net/ethernet/mediatek/mtk_star_emac.c
+> > index
+> > 76f202d7f05537642ec294811ace2ad4a7eae383..41d6af31027f4d827dbfdfecd
+> > b7de44326bb3de1 100644
+> > --- a/drivers/net/ethernet/mediatek/mtk_star_emac.c
+> > +++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
+> > @@ -1163,6 +1163,7 @@ static int mtk_star_tx_poll(struct
+> > napi_struct *napi, int budget)
+> > =C2=A0	struct net_device *ndev =3D priv->ndev;
+> > =C2=A0	unsigned int head =3D ring->head;
+> > =C2=A0	unsigned int entry =3D ring->tail;
+> > +	unsigned long flags =3D 0;
+>=20
+> You don't need to init flags to 0
+>=20
+> > =C2=A0
+> > =C2=A0	while (entry !=3D head && count < (MTK_STAR_RING_NUM_DESCS -
+> > 1)) {
+> > =C2=A0		ret =3D mtk_star_tx_complete_one(priv);
+> > @@ -1182,9 +1183,9 @@ static int mtk_star_tx_poll(struct
+> > napi_struct *napi, int budget)
+> > =C2=A0		netif_wake_queue(ndev);
+> > =C2=A0
+> > =C2=A0	if (napi_complete(napi)) {
+> > -		spin_lock(&priv->lock);
+> > +		spin_lock_irqsave(&priv->lock, flags);
+> > =C2=A0		mtk_star_enable_dma_irq(priv, false, true);
+> > -		spin_unlock(&priv->lock);
+> > +		spin_unlock_irqrestore(&priv->lock, flags);
+> > =C2=A0	}
+> > =C2=A0
+> > =C2=A0	return 0;
+> > @@ -1342,15 +1343,16 @@ static int mtk_star_rx_poll(struct
+> > napi_struct *napi, int budget)
+> > =C2=A0{
+> > =C2=A0	struct mtk_star_priv *priv;
+> > =C2=A0	int work_done =3D 0;
+> > +	unsigned long flags =3D 0;
+>=20
+> There's a rule in netdev that definitions must be ordered from
+> longest
+> to shortest lines (reverse xmas tree, or RCT), so you should have in
+> the end :
+>=20
+> struct mtk_star_priv *priv;
+> unsigned long flags;
+> int work_done =3D 0;
+>=20
+> > =C2=A0
+> > =C2=A0	priv =3D container_of(napi, struct mtk_star_priv, rx_napi);
+> > =C2=A0
+> > =C2=A0	work_done =3D mtk_star_rx(priv, budget);
+> > =C2=A0	if (work_done < budget) {
+> > =C2=A0		napi_complete_done(napi, work_done);
+> > -		spin_lock(&priv->lock);
+> > +		spin_lock_irqsave(&priv->lock, flags);
+> > =C2=A0		mtk_star_enable_dma_irq(priv, true, false);
+> > -		spin_unlock(&priv->lock);
+> > +		spin_unlock_irqrestore(&priv->lock, flags);
+> > =C2=A0	}
+> > =C2=A0
+> > =C2=A0	return work_done;
+> >=20
+>=20
+> Besides these small comments, the patch looks correct to me :)
+>=20
+> Regards,
+>=20
+> Maxime
 
-Chester A=2E
+Thanks for the review, Maxime.
+I'll add the missing subject prefix and fix the other issues in the v2
+patchset.
+
+Regards,
+Louis-Alexis
+
 
