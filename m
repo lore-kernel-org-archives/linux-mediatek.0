@@ -4,65 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BA5AC369CB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Apr 2025 17:43:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D778C369D7
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Apr 2025 17:43:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=889diwO9PL1y9ETu/yua/lKy33nZelj3yWdSXwg/JkA=; b=VUr5feUJZnYVJ4q6xibGmixFJc
-	cb0Z4S5QGYKbmJB9YMz71ts34f+qYhdpUl8LH8fhZRqc9UIrn8upHhK/5Xsqqe5RXV7LFWBWubAJA
-	dMaqbXlcDcCjB1UPkK3U9XwcoafoeFWFJGe+9qO+jn5XHEBq0Lul4/nW70CYkdH2wpBHvsOxrFGOL
-	ZKdf4r5DRDyvvitQlHzearp34TzjO39dkIkmpVqEbEKm5DMTLnrVN+FQNzD34HIpsBVd4sVXIYJvs
-	BWlup8Q1r1oQS92I92PVh2t+LovM6Xeomn+22EK/CKeLbpYxFAxKgFSQfUw8b+jIR6NrBtVqP/ErV
-	tG+4YSIg==;
+	bh=eTNKdJFc8hmYXhBJNFqCfUQ6mW4SbkRAnLiE2mina4s=; b=YN1yG7B7Lswt3ZZPoS8rQ3KoLV
+	j+hOUUN98HF8TyiGxgFkrF4OZAmAVXWCuagl4mBdEiWyjnrJD3uQTZBgbPQW0ZFrng8k1XzWyPkFV
+	CWXN+a0UKn43kW9kCPsOhFMMCbz8/cd4R+JzntuW2734nOKWDrcae8Vrl6MlvP3Z2SwKqwMiqyapN
+	a/YOZZRnNeKyCJ2Ak8mp7bl0gt4xPk72Vwr+h9uaovnD0HquRNzlsuim/d+gFPrwt0njfxq/M5VWL
+	tOdzJj5afWJ0xLULyeydFYI+28DP2f7kDMsgpGTlQ/wOgeH5SKMbZZdgJahiyXWwxD4ao415zRRVa
+	gLbp/g7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7e8W-0000000BNTu-01cH;
-	Wed, 23 Apr 2025 17:43:52 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1u7e8a-0000000BNdN-3JMo;
+	Wed, 23 Apr 2025 17:43:56 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7cID-0000000B0mq-0p8K;
-	Wed, 23 Apr 2025 15:45:45 +0000
+	id 1u7cLt-0000000B1O8-0B7E;
+	Wed, 23 Apr 2025 15:49:34 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 66259615ED;
-	Wed, 23 Apr 2025 15:45:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3897C4CEE2;
-	Wed, 23 Apr 2025 15:45:43 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 36B4449F2F;
+	Wed, 23 Apr 2025 15:49:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6031FC4CEE2;
+	Wed, 23 Apr 2025 15:49:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1745423144;
-	bh=uXGY1VAD0ezdy/ybNS4JN/GqOzUTWI23//dv6QmQUdA=;
+	s=k20201202; t=1745423372;
+	bh=Rd6C0AT8kRiDT9Gitf5UOmK5rHvXSI/4LUIbOAcAcWE=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=R0f0eh/2LvsfL4iutKlrnN7chSnjyw9pMqdFl73WtrDzgT2ZydtvcA8ApMRrfVIYy
-	 0CZgrRPJS++EmO8LsVSliQHDPcJ4RjdLHd80VCSoQOqGK2G/sxQPoZ0XojLkat0gbl
-	 X9euuD1yjltFR9FrI4sj7wt/r4snbcmpPCPgsfGpPE6QkuX0XI/6o5kEQETPqu2/NC
-	 34NzBeNuKsBs5HwcJNh7E93sOIpOuLw5h5wZ4lGRL6HeCBSSF4EK6B1Vxc96zgxjOV
-	 XwqUIMgq4hiEEAgxXOvGPFodHikCT0z4VCIUYX0Ma0thcWjIropdyYMZw+iZRxy4cb
-	 R0dclULDW9zZA==
-Date: Wed, 23 Apr 2025 10:45:42 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: linux-mediatek@lists.infradead.org, linux-input@vger.kernel.org,
+	b=Y0PG0OWAI+2W/ge4r1n+ZVwPbQIzUTMG9Qfvf8bmuuEHZ0COTIPA7+Oyv91NxxUgM
+	 lVM2/9F/ssXzOPY4Xu/DuoJEKfQwxn3vHV0aEgY4VRgx/uqjvuqeSsOZnrjM+11tHm
+	 9+1YkjLtIcWSuqqM1LT3WQaz+KmkuavW/gAySngz7Uqz5SLAPyH7AghzKlclsuZsa6
+	 xlg5r5SzgF2gqi0oer+43A009BlYknBI/xG1/azywsD3pCc+7t8lVSELM/S5v6vKD4
+	 e/hdUXBhfo1mHahkpeyAHd0BjMMZ+VIVwVVAMrQAhG5ZPqT72kGWcQdTRomOFaKt2l
+	 6iOCE4JorUREQ==
+Date: Wed, 23 Apr 2025 10:49:30 -0500
+From: Rob Herring <robh@kernel.org>
+To: =?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>
+Cc: Bjorn Andersson <andersson@kernel.org>,
+	Mathieu Poirier <mathieu.poirier@linaro.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
-	Tzung-Bi Shih <tzungbi@kernel.org>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Douglas Anderson <dianders@chromium.org>,
-	Benson Leung <bleung@chromium.org>, chrome-platform@lists.linux.dev,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>
-Subject: Re: [PATCH v2 1/8] dt-bindings: HID: i2c-hid: elan: Introduce Elan
- eKTH8D18
-Message-ID: <174542314188.576994.12974029497689302557.robh@kernel.org>
-References: <20250421101248.426929-1-wenst@chromium.org>
- <20250421101248.426929-2-wenst@chromium.org>
+	Tinghan Shen <tinghan.shen@mediatek.com>,
+	Olivia Wen <olivia.wen@mediatek.com>, kernel@collabora.com,
+	linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH v2 1/5] dt-bindings: remoteproc: mediatek: Add missing
+ minItems for 8192/8195
+Message-ID: <20250423154930.GA579807-robh@kernel.org>
+References: <20250421-scp-dual-core-mt8390-v2-0-c84117a959a9@collabora.com>
+ <20250421-scp-dual-core-mt8390-v2-1-c84117a959a9@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <20250421101248.426929-2-wenst@chromium.org>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20250421-scp-dual-core-mt8390-v2-1-c84117a959a9@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250423_084933_104412_386CE420 
+X-CRM114-Status: GOOD (  15.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,35 +83,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Mon, 21 Apr 2025 18:12:39 +0800, Chen-Yu Tsai wrote:
-> The Elan eKTH8D18 touchscreen controller is an I2C HID device with a
-> longer boot-up time. Power sequence timing wise it is compatible with
-> the eKTH6A12NAY, with a power-on delay of at least 5ms, 20ms
-> out-of-reset for I2C ack response, and 150ms out-of-reset for I2C HID
-> enumeration, both shorter than what the eKTH6A12NAY requires.
-> Enumeration and subsequent operation follows the I2C HID standard.
+On Mon, Apr 21, 2025 at 04:49:04PM -0400, Nícolas F. R. A. Prado wrote:
+> Both MT8192 and MT8195 have an L1TCM memory, so it should be described
+> in reg, and therefore reg's minItems should be 3, as is already implicit
+> by reg-names being three entries long. However minItems is currently
+> unset for mt8192/mt8195, resulting in it being equal to 2, from the base
+> schema. Fix reg minItems for MT8192 and MT8195 by setting it to 3.
 > 
-> Add a compatible string for it with the ekth6a12nay one as a fallback.
-> No enum was used as it is rare to actually add new entries. These
-> chips are commonly completely backward compatible, and unless the
-> power sequencing delays change, there is no real effort being made to
-> keep track of new parts, which come out constantly.
-> 
-> Also drop the constraints on the I2C address since it's not really
-> part of the binding.
-> 
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> Fixes: 6b55b1e2fd7f ("dt-bindings: remoteproc: mediatek: Support MT8195 dual-core SCP")
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 > ---
-> Changes since v1:
-> - Reworded commit message
-> - Dropped the enum for the new compatible string entry
-> - Dropped constraint on I2C address completely
-> ---
->  .../devicetree/bindings/input/elan,ekth6915.yaml     | 12 +++++++-----
->  1 file changed, 7 insertions(+), 5 deletions(-)
+>  Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml | 1 +
+>  1 file changed, 1 insertion(+)
 > 
+> diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
+> index adc6b3f36fde49eb3fa7ed3f08b0fa9e7f331162..ee33c233e44f3d51f0851b35697a24208c87f68a 100644
+> --- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
+> +++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
+> @@ -185,6 +185,7 @@ allOf:
+>      then:
+>        properties:
+>          reg:
+> +          minItems: 3
+>            maxItems: 3
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+As the max is already 3 at the top-level, you should drop maxItems here.
 
+>          reg-names:
+>            items:
+> 
+> -- 
+> 2.49.0
+> 
 
