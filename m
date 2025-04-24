@@ -4,68 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C627C369DE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Apr 2025 08:37:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF210C369AB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Apr 2025 08:37:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tyaxou+85fD5CRHoMBs6T9/ZLdEfWSGeQPqjUeW0l9k=; b=X4q8Tbf5OeumevQV/GOccFa+/I
-	8EZksaag1P2qoEz8bf2kR1+GGzM/TUFIml01gOOIY98pZ3r4jihPf2hznaKPRfvtGDWVQhQX0cZtT
-	0SOlZpiuBYHgfGUOZspT2NTkhNj/aOg9MUrojbhxh7kewgWqvouU73Wc4mVgqI6PaqNuUHfT+MHsd
-	UXIOxVU6TVgs5bp4vessVc2q2nS50GHpDRmZ37dj4w676fLU7WoD6Y3GBksoSSbkLmX7Pp58lc85I
-	xVkGXwnL0qWQN3ivZAjtPXnLkSeo8VzMZ/lAF0h/uOGw0cl1K+c9sNbTZO0xj2KN5GhoVwebbRogD
-	Vzpr7beQ==;
+	bh=x1Db7gNvoR8IanW8NAmy3JDaY3pQsa/khDNF6Eb775Q=; b=J2HSShEax/E2aGcsYiwYERa9ZG
+	z/zGuwwLza3tLAMrB4FV9diYnxWpjz7R8OdK+97jUd58ZJ+OMnWF1uTre1g/MQi0yiuOS0gJwMxJl
+	m2N/Lsp+zur+eIRV2guXm2Ni9mnPwDNQmogFyygi7NE+pvG0umX1WG1CR9lhxsuruTDxnG80fr+1I
+	xXrey+l7Y829xz8nADXD6S0Ei9bLI78WyROWxqMFBDvSIj1UD6weBCQJyTDejwfiMmtrQNj1taESu
+	3LNif6jvIXP9eji9EcA4RU/SkSu6sWnlsU6rkGbRayQP7JTgbjcGkCffZjQAUZUJ4RteXu/5r5xzs
+	mZveONLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7s5F-0000000DLfg-1PdE;
-	Thu, 24 Apr 2025 08:37:25 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1u7s5J-0000000DLmr-2qjm;
+	Thu, 24 Apr 2025 08:37:29 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7qwq-0000000DAQJ-35ex;
-	Thu, 24 Apr 2025 07:24:42 +0000
+	id 1u7qyD-0000000DAqI-16lk
+	for linux-mediatek@lists.infradead.org;
+	Thu, 24 Apr 2025 07:26:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1745479479;
-	bh=TrAcmBN6lYfQHtdSnYmDwJwiksUZsL1Y2yFtmp2AxNg=;
+	s=mail; t=1745479562;
+	bh=L3sPTbyHOQBsE9r1lkpVZmPXCDuy0OrlWFtecvsFdxU=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=d4mBnTPCkhGkmkL6MG3tORhqckVQKeUum9QYt2CKbeafi2L/P/jEo/DTXD9opnqWM
-	 AnB+FFRQWvSOZHILTx5opYylQi9sfFLBTlZzfeaSRoEbmgXJSFsZah/DPd/IONQFfz
-	 q4c+bZom/5KruvlWgx6dXzvvHYogQ2SvZsQS+8IK9ZkurBhsaPgZ6wPUP6tw5c3DE4
-	 Ub3524o9344Ifs3Y/gSH1lpxliW8KWn2XkmeQlpen2Bggc+7RpjGf4GnskWSMAi0O8
-	 SNywYTdhxXNJciyr/JiFd/4IieZNALuoJjN2omWk4YnDpwlC4dggywnJUbO5ByLaJO
-	 NzVT6ZbMKXoLg==
+	b=fFwo/qrPuvk7TruqJfD20DxBUmV9hj3nAQJhWySZiBK4aHo7shziI/PulmpJ+jzj8
+	 rb8YT/bZ/t3vxxI55sKFmXpFR+Kvd6hJg8Lz6s0epgHulQb++7c5eCFGDvSqgt1nW0
+	 Zr9gVVijGzt2uUqxPOTCsezOCEEm+wTvAhvcKioIjc+2VcHq03oYlSJtDnUKzvs3UQ
+	 XV6U92MuzQjbEavpJ/8HfTu5CGER/dq6hMv32Vs2/BUMhlTuDSX50po48HKb91gH11
+	 O6L6GP3XBLMmKgxztAhWlFuQ08ziFCRJG+XbZtUPyOzTT0WOgNvyh08ty4Tjbax2Oh
+	 wZcYDItkfASlg==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 86B0C17E0808;
-	Thu, 24 Apr 2025 09:24:38 +0200 (CEST)
-Message-ID: <eb350c96-379a-46db-8a54-e1b9c71be431@collabora.com>
-Date: Thu, 24 Apr 2025 09:24:38 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C745117E065E;
+	Thu, 24 Apr 2025 09:26:01 +0200 (CEST)
+Message-ID: <32b3ebcd-a015-4866-9529-25abbe1c9f2d@collabora.com>
+Date: Thu, 24 Apr 2025 09:26:01 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8390-genio-common: Force ssusb2
- dual role mode to host
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, kernel@collabora.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20250331-mtk-genio-510-700-fix-bt-detection-v1-1-34ea2cf137f3@collabora.com>
- <2da6560b-8444-48ae-bb01-397756cecbc0@notapiano>
+Subject: Re: [PATCH v11 1/2] dt-bindings: arm: mediatek: Add MT8186 Ponyta
+ Chromebook
+To: Jianeng Ceng <cengjianeng@huaqin.corp-partner.google.com>,
+ sam@ravnborg.org, neil.armstrong@linaro.org, daniel@ffwll.ch,
+ dianders@google.com, hsinyi@google.com, matthias.bgg@gmail.com,
+ robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ knoxchiou@google.com
+Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20250424010850.994288-1-cengjianeng@huaqin.corp-partner.google.com>
+ <20250424010850.994288-2-cengjianeng@huaqin.corp-partner.google.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <2da6560b-8444-48ae-bb01-397756cecbc0@notapiano>
+In-Reply-To: <20250424010850.994288-2-cengjianeng@huaqin.corp-partner.google.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250424_002440_929554_B65E4943 
-X-CRM114-Status: GOOD (  26.27  )
+X-CRM114-CacheID: sfid-20250424_002605_484747_34E72E47 
+X-CRM114-Status: GOOD (  10.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,65 +81,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 23/04/25 22:48, Nícolas F. R. A. Prado ha scritto:
-> On Mon, Mar 31, 2025 at 11:25:52AM +0200, Louis-Alexis Eyraud wrote:
->> On the Mediatek Genio 510-EVK and 700-EVK boards, ssusb2 controller is
->> one but has two ports: one is routed to the M.2 slot, the other is on
->> the RPi header who does support full OTG.
->> Since Mediatek Genio 700-EVK USB support was added, dual role mode
->> property is set to otg for ssusb2. This config prevents the M.2
->> Wifi/Bluetooth module, present on those boards and exposing Bluetooth
->> as an USB device to be properly detected at startup, so configure for
->> the ssusb2 dr_mode property as host instead.
->>
->> Fixes: 1afaeca17238 ("arm64: dts: mediatek: mt8390-genio-700: Add USB, TypeC Controller, MUX")
->> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
->> ---
->> I've tested this patch on Mediatek Genio 510-EVK board with a kernel
->> based on linux-next (tag: next-20250331).
->> ---
->>   arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi | 8 +++++++-
->>   1 file changed, 7 insertions(+), 1 deletion(-)
->>
->> diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
->> index 60139e6dffd8e0e326690d922f3360d829ed026b..3a9d429f0f14b501ae41551dfe7272f242345138 100644
->> --- a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
->> +++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
->> @@ -1199,7 +1199,13 @@ xhci_ss_ep: endpoint {
->>   };
->>   
->>   &ssusb2 {
->> -	dr_mode = "otg";
->> +	/*
->> +	 * the ssusb2 controller is one but we got two ports : one is routed
->> +	 * to the M.2 slot, the other is on the RPi header who does support
->> +	 * full OTG but we keep it disabled otherwise the BT on the M.2 slot
->> +	 * USB line goes obviously dead if switching to gadget mode.
->> +	 */
->> +	dr_mode = "host";
+Il 24/04/25 03:08, Jianeng Ceng ha scritto:
+> Ponyta is a custom label Chromebook based on MT8186. It is a
+> self-developed project of Huaqin and has no fixed OEM.
 > 
-> Hi,
-> 
-> while I agree with this change, now that this controller is fixed to host mode,
-> the connector child node here which is supposed to probe with driver
-> usb-conn-gpio, which would monitor the ID and VBUS lines and change the USB role
-> as needed, will fail to probe with:
-> 
->    platform 112a1000.usb:connector: deferred probe pending: usb-conn-gpio: failed to get role switch
-> 
-> as indeed there no longer is a role switch registered.
-> 
-> For that reason, I believe as part of this commit you should also disable the
-> connector. Since role switching is no longer supported by this controller,
-> there's no sense in even trying to probe this driver.
-> 
-> Thanks,
-> Nícolas
+> Signed-off-by: Jianeng Ceng <cengjianeng@huaqin.corp-partner.google.com>
 
-Can we instead go for role-switch-default-mode = "host", with a big comment
-in the devicetree saying that the controller is shared between BT and the other
-port? :-)
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Cheers,
-Angelo
+> ---
+> Changes in v11:
+> - PATCH 1/2: Remove redundant items.
+> - Link to v10:https://lore.kernel.org/all/20250423093647.4074135-2-cengjianeng@huaqin.corp-partner.google.com/
+> 
+> Changes in v10:
+> - PATCH 1/2: Add enum for ponyta sku.
+> - Link to v9:https://lore.kernel.org/all/20250328094034.3400233-2-cengjianeng@huaqin.corp-partner.google.com/
+> 
+> Chage in V9:
+> - No change.
+> 
+> Changes in v8:
+> - PATCH 1/2: Remove custom label.
+> - Link to v7:https://lore.kernel.org/all/01020191ea98a643-2d0be5d1-e00b-48e0-b823-bfe2c65b0d00-000000@eu-west-1.amazonses.com/
+> 
+> Chage since V6:
+> - No change.
+> 
+> Changes in v5:
+> - PATCH 1/2: Remove sku2147483647.
+> - Link to v4:https://lore.kernel.org/all/20240906085739.1322676-2-cengjianeng@huaqin.corp-partner.google.com/
+> 
+> Changes in v4:
+> - PATCH 1/2: Add more info for Ponyta custom label in commit.
+> - Link to v3:https://lore.kernel.org/all/20240904081501.2060933-1-cengjianeng@huaqin.corp-partner.google.com/
+> 
+> Changes in v3:
+> - PATCH 1/2: Modify lable to label.
+> - Link to v2:https://lore.kernel.org/all/20240903061603.3007289-1-cengjianeng@huaqin.corp-partner.google.com/
+> 
+> Chage since V2:
+> - No change.
+> 
+> ---
+>   Documentation/devicetree/bindings/arm/mediatek.yaml | 7 +++++++
+>   1 file changed, 7 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> index 108ae5e0185d..fa1646bc0bac 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
+> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> @@ -285,6 +285,13 @@ properties:
+>             - const: google,steelix-sku393218
+>             - const: google,steelix
+>             - const: mediatek,mt8186
+> +      - description: Google Ponyta
+> +        items:
+> +          - enum:
+> +              - google,ponyta-sku0
+> +              - google,ponyta-sku1
+> +          - const: google,ponyta
+> +          - const: mediatek,mt8186
+>         - description: Google Rusty (Lenovo 100e Chromebook Gen 4)
+>           items:
+>             - const: google,steelix-sku196609
+
+
 
