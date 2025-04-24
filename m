@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03189C369AB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Apr 2025 07:59:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C627C369DE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Apr 2025 08:37:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tPbn3E5rk/85EJB4nz6HGJEWex7LLTjASkhyzjq35G0=; b=PY7hlxpyoe660aF4uCtZkX6uqa
-	cS4Zc2P1+oSV28lesC91Mv+SAu4IZgRXyVlLNF5l1kEnAWwlqP9dooR0VzoTteR8+PcrNmh76VwcB
-	pt2xWijfyTRqikhzmv8lOJ0IXSGzyEVGRs+6y42y0FWLR/pNNd0cIM5pqKkUVqy3jWoj0vpghBv1p
-	Mq9j/THe6mbb2bK0qkgyZQVBumoBvNi62mJvsc/fvwxglzvT+6EFB6YOy10aloMfrlHGsE61u6qqt
-	6qKfs9kEmn6Vyrz9Fd7M3pzkqwBzBSsnE+LrouPk/AOMtkLxlUQeH10KUo8DC/UQz7QG4DKEpAXB2
-	JS0W6nZw==;
+	bh=tyaxou+85fD5CRHoMBs6T9/ZLdEfWSGeQPqjUeW0l9k=; b=X4q8Tbf5OeumevQV/GOccFa+/I
+	8EZksaag1P2qoEz8bf2kR1+GGzM/TUFIml01gOOIY98pZ3r4jihPf2hznaKPRfvtGDWVQhQX0cZtT
+	0SOlZpiuBYHgfGUOZspT2NTkhNj/aOg9MUrojbhxh7kewgWqvouU73Wc4mVgqI6PaqNuUHfT+MHsd
+	UXIOxVU6TVgs5bp4vessVc2q2nS50GHpDRmZ37dj4w676fLU7WoD6Y3GBksoSSbkLmX7Pp58lc85I
+	xVkGXwnL0qWQN3ivZAjtPXnLkSeo8VzMZ/lAF0h/uOGw0cl1K+c9sNbTZO0xj2KN5GhoVwebbRogD
+	Vzpr7beQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7rUs-0000000DGiC-3vvc;
-	Thu, 24 Apr 2025 07:59:50 +0000
+	id 1u7s5F-0000000DLfg-1PdE;
+	Thu, 24 Apr 2025 08:37:25 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7rUD-0000000DGds-12fG
-	for linux-mediatek@lists.infradead.org;
-	Thu, 24 Apr 2025 07:59:10 +0000
+	id 1u7qwq-0000000DAQJ-35ex;
+	Thu, 24 Apr 2025 07:24:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1745481547;
-	bh=EkRGMXV61mxS1Jr+5BweoZLfS5HQIMfM2iHDQZfDtgs=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=iR53X055QzTaG7CuxiPOpdr/6nFMLEZ9Um8oMTyaTdS5eibjpOq0Ol+tKricl9S1F
-	 uqncnA0BBgwBns1Dcwl61zFvyjPHwMAj3OCc/5QMFAGKoFgCmlY9G+R/n7FOdfGrO7
-	 SaMIJWYEGJdCILI7NQb/WTbQjjFA9jkvGp5Vkmo3Q9I4W0wTIR/+7sbuPwz3OrgrpV
-	 Jq++GRuR6cyfv9zfbabX2h479qabjzFxZMy78tLqqPwFoo2UpVYmvLnb+0lbnYCtXe
-	 6VFj0Kb2v8qjpDn63hzB+UMn8sPBDWdOO5sK4k6kfUc4tVPldTIg3GapwCpphg33OS
-	 4O2lGkPLCNMAA==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	s=mail; t=1745479479;
+	bh=TrAcmBN6lYfQHtdSnYmDwJwiksUZsL1Y2yFtmp2AxNg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=d4mBnTPCkhGkmkL6MG3tORhqckVQKeUum9QYt2CKbeafi2L/P/jEo/DTXD9opnqWM
+	 AnB+FFRQWvSOZHILTx5opYylQi9sfFLBTlZzfeaSRoEbmgXJSFsZah/DPd/IONQFfz
+	 q4c+bZom/5KruvlWgx6dXzvvHYogQ2SvZsQS+8IK9ZkurBhsaPgZ6wPUP6tw5c3DE4
+	 Ub3524o9344Ifs3Y/gSH1lpxliW8KWn2XkmeQlpen2Bggc+7RpjGf4GnskWSMAi0O8
+	 SNywYTdhxXNJciyr/JiFd/4IieZNALuoJjN2omWk4YnDpwlC4dggywnJUbO5ByLaJO
+	 NzVT6ZbMKXoLg==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id CA15217E0C96;
-	Thu, 24 Apr 2025 09:59:06 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: sam@ravnborg.org, neil.armstrong@linaro.org, dianders@google.com, 
- hsinyi@google.com, matthias.bgg@gmail.com, robh@kernel.org, 
- krzk+dt@kernel.org, conor+dt@kernel.org, knoxchiou@google.com, 
- Simona Vetter <simona.vetter@ffwll.ch>, 
- Jianeng Ceng <cengjianeng@huaqin.corp-partner.google.com>
-Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20250424010850.994288-1-cengjianeng@huaqin.corp-partner.google.com>
-References: <20250424010850.994288-1-cengjianeng@huaqin.corp-partner.google.com>
-Subject: Re: [PATCH v11 0/2]
-Message-Id: <174548154674.22041.7217055615854393236.b4-ty@collabora.com>
-Date: Thu, 24 Apr 2025 09:59:06 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 86B0C17E0808;
+	Thu, 24 Apr 2025 09:24:38 +0200 (CEST)
+Message-ID: <eb350c96-379a-46db-8a54-e1b9c71be431@collabora.com>
+Date: Thu, 24 Apr 2025 09:24:38 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.14.2
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8390-genio-common: Force ssusb2
+ dual role mode to host
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, kernel@collabora.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20250331-mtk-genio-510-700-fix-bt-detection-v1-1-34ea2cf137f3@collabora.com>
+ <2da6560b-8444-48ae-bb01-397756cecbc0@notapiano>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <2da6560b-8444-48ae-bb01-397756cecbc0@notapiano>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250424_005909_444064_5A8E2139 
-X-CRM114-Status: UNSURE (   3.80  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250424_002440_929554_B65E4943 
+X-CRM114-Status: GOOD (  26.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,19 +80,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 24 Apr 2025 09:08:48 +0800, Jianeng Ceng wrote:
-> This is v11 of the MT8186 Chromebook device tree series.
+Il 23/04/25 22:48, Nícolas F. R. A. Prado ha scritto:
+> On Mon, Mar 31, 2025 at 11:25:52AM +0200, Louis-Alexis Eyraud wrote:
+>> On the Mediatek Genio 510-EVK and 700-EVK boards, ssusb2 controller is
+>> one but has two ports: one is routed to the M.2 slot, the other is on
+>> the RPi header who does support full OTG.
+>> Since Mediatek Genio 700-EVK USB support was added, dual role mode
+>> property is set to otg for ssusb2. This config prevents the M.2
+>> Wifi/Bluetooth module, present on those boards and exposing Bluetooth
+>> as an USB device to be properly detected at startup, so configure for
+>> the ssusb2 dr_mode property as host instead.
+>>
+>> Fixes: 1afaeca17238 ("arm64: dts: mediatek: mt8390-genio-700: Add USB, TypeC Controller, MUX")
+>> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+>> ---
+>> I've tested this patch on Mediatek Genio 510-EVK board with a kernel
+>> based on linux-next (tag: next-20250331).
+>> ---
+>>   arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi | 8 +++++++-
+>>   1 file changed, 7 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
+>> index 60139e6dffd8e0e326690d922f3360d829ed026b..3a9d429f0f14b501ae41551dfe7272f242345138 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
+>> +++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
+>> @@ -1199,7 +1199,13 @@ xhci_ss_ep: endpoint {
+>>   };
+>>   
+>>   &ssusb2 {
+>> -	dr_mode = "otg";
+>> +	/*
+>> +	 * the ssusb2 controller is one but we got two ports : one is routed
+>> +	 * to the M.2 slot, the other is on the RPi header who does support
+>> +	 * full OTG but we keep it disabled otherwise the BT on the M.2 slot
+>> +	 * USB line goes obviously dead if switching to gadget mode.
+>> +	 */
+>> +	dr_mode = "host";
 > 
+> Hi,
+> 
+> while I agree with this change, now that this controller is fixed to host mode,
+> the connector child node here which is supposed to probe with driver
+> usb-conn-gpio, which would monitor the ID and VBUS lines and change the USB role
+> as needed, will fail to probe with:
+> 
+>    platform 112a1000.usb:connector: deferred probe pending: usb-conn-gpio: failed to get role switch
+> 
+> as indeed there no longer is a role switch registered.
+> 
+> For that reason, I believe as part of this commit you should also disable the
+> connector. Since role switching is no longer supported by this controller,
+> there's no sense in even trying to probe this driver.
+> 
+> Thanks,
+> Nícolas
 
-Applied to v6.15-next/dts64, thanks!
-
-[1/2] dt-bindings: arm: mediatek: Add MT8186 Ponyta Chromebook
-      commit: ce8ec1f8c8b363c2511332c909d06df7ae01f1b3
-[2/2] arm64: dts: mediatek: Add MT8186 Ponyta Chromebooks
-      commit: ed34944cc3bc5602c1151effdb6aced9f2f992a6
+Can we instead go for role-switch-default-mode = "host", with a big comment
+in the devicetree saying that the controller is shared between BT and the other
+port? :-)
 
 Cheers,
 Angelo
-
-
 
