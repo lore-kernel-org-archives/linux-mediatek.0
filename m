@@ -4,87 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 610C1C369AB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Apr 2025 20:11:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4FE3C369AB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Apr 2025 20:16:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=niStr1UyYcsPEVwEau4DeLWfBUyNV/FG3uJnGBzz1SY=; b=1BiaEkgw0Tlp+EyFx9counImOt
-	29Q0voh/CL1zLa6SMhJltm2yKfsWbTJtFKzGRJq7uwc+qA1RxFAS0DpGFD2/E+DAR/8dfke6iAbVn
-	pDmP5jddZ/9rExrfM39l5aNp/ouNdxtwiJiKbQVFn7A6UqUt6r68uACwUFI1pk7IAOBQwF9OK9o07
-	Nn0pmbk8+8LBVyoX7sma6ymSL+KXvEDYcT/dOvqHhi+8DWlYfAsIhDKodQ93jgakXYVmE1V7YFIGg
-	5kcB8HS72pzw7bnhYfyc3vBbi7OfXHzyonStRukFgUShrqbGYn2dPUqkT6DNWYqSb+KzXRrFt2Yqp
-	wkpPPz9A==;
+	bh=09PG+fxuKesOM/kP22ajuEbhOQfehjAeduUbezP82Mg=; b=jwCD/Gz1Sh3kNnckgjHq36T9j7
+	dRYRsNN3HPelkEdGy30whwg6yhEUh/pXUhhvQnYjtYs8Y11uk14WvJUJ5Typ/lt0WVfv8Fd56prYA
+	yDsDrWzefaKz3gGU7mE14NheoSNQLA9AvKptmEyX5LUHx5GobkuNy9KSmLt0ho2Ds+XCbx1tCYxra
+	zBrya7YieY8AhwJ5cx1fWqFNKvyCoBApUD5us/7bowZFdx4fZ5PIXP5bTFifQhrtQKMVrizGI1VFT
+	5H3VSSE+2mw+xtO/hqzpzaNPI9H6xk1aNzGFm4fuhdTpVrxps/6KsVy/ksZWvF5Unoa2KLumJcJIb
+	CoICmzIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u82ui-0000000FIED-1tpN;
-	Thu, 24 Apr 2025 20:11:16 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1u830B-0000000FJ6x-3bXR;
+	Thu, 24 Apr 2025 20:16:55 +0000
+Received: from relay5-d.mail.gandi.net ([2001:4b98:dc4:8::225])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u823v-0000000F9vm-2fx2;
-	Thu, 24 Apr 2025 19:16:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1745522201;
-	bh=BeGRHNVg6BvIeAlm3dPnlkLRvWWekhEyXNNMSQVYXzQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=WsBvaANTHgbnS3+9c5su2ftn0YjtROxchfOZzyFaP0OViUemYI5shQEMQmVffBzVt
-	 PmZ1MDn9UmcJ/gFKtl2U8lfYMtj01Gt9COqI5kqweExVTk3aMT1FwVND/4YfW6Hmba
-	 y2t6w4FPZOUbhTdXwGAAe9gbe5AVCNKJQMf8jZqJBo5Oj1YEOqtWoFpDevbw1eFUdo
-	 sY0IjJmv+TO0YtHLQYbptz8R5Ek6CyGZYRJEk9cyJci7Uj/10jM8vZaMY20SFaguo9
-	 PIkIVhmRyfnbns6cTEHyX6nNZOkHygBUCY42F9sn/DC4Re3KRdIjGG5cBIITsgLPOv
-	 Rp1VkPawFdPjg==
-Received: from [192.168.1.90] (unknown [82.76.59.226])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 708F717E0402;
-	Thu, 24 Apr 2025 21:16:39 +0200 (CEST)
-Message-ID: <25de7fc3-2628-42c9-8d66-b1cab2896c3d@collabora.com>
-Date: Thu, 24 Apr 2025 22:16:38 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 11/34] drm/bridge: dw-hdmi: convert to
- devm_drm_bridge_alloc() API
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Jagan Teki <jagan@amarulasolutions.com>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Douglas Anderson
- <dianders@chromium.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Anusha Srivatsa <asrivats@redhat.com>,
- Paul Kocialkowski <paulk@sys-base.io>, Dmitry Baryshkov <lumag@kernel.org>,
- Hui Pu <Hui.Pu@gehealthcare.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- dri-devel@lists.freedesktop.org, asahi@lists.linux.dev,
- linux-kernel@vger.kernel.org, chrome-platform@lists.linux.dev,
- imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-renesas-soc@vger.kernel.org, platform-driver-x86@vger.kernel.org,
- linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- freedreno@lists.freedesktop.org, linux-stm32@st-md-mailman.stormreply.com
+	id 1u82v3-0000000FIH6-0QNd;
+	Thu, 24 Apr 2025 20:11:38 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 8F2A043A53;
+	Thu, 24 Apr 2025 20:11:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1745525494;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=09PG+fxuKesOM/kP22ajuEbhOQfehjAeduUbezP82Mg=;
+	b=MDQiMXwM5Q6Bw/oa/uvytc0mvtbv7DY7eO7AgzCRzcWizRHKKKcSnyc0iJLbNVTw3Wsr6J
+	lTOqEIBpBUTVqeWYByUkK9Vr4B1fufwPqZl7YxYRoWAyaBP1xMe1FKuin1fkR2amiI8dF0
+	g4m6ihEA5Sz5uKfTe90sT+P+hHpzDS0N1w8Eup2LzDQrQMZHVyRc/xdFInUSbca9eev8lk
+	S91hJDIYFe8zBrsqAHK0miPfASgOMYTye6Z7W6eIE6MEXvKIMHHApCEBVFDrzlDwCSVoJ3
+	qsOh05OZ4XanGRLXUXv1Kzadf2o8Wr2tXbrVszd0YlKh6k3OKd9EvxoaBkoDbQ==
+From: Luca Ceresoli <luca.ceresoli@bootlin.com>
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jagan Teki <jagan@amarulasolutions.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Douglas Anderson <dianders@chromium.org>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Anusha Srivatsa <asrivats@redhat.com>,
+	Paul Kocialkowski <paulk@sys-base.io>,
+	Dmitry Baryshkov <lumag@kernel.org>,
+	Hui Pu <Hui.Pu@gehealthcare.com>,
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+	dri-devel@lists.freedesktop.org,
+	asahi@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	chrome-platform@lists.linux.dev,
+	imx@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org,
+	platform-driver-x86@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org,
+	freedreno@lists.freedesktop.org,
+	linux-stm32@st-md-mailman.stormreply.com
+Subject: [PATCH v2 34/34] drm/bridge: panel: convert to devm_drm_bridge_alloc() API
+Date: Thu, 24 Apr 2025 22:05:49 +0200
+Message-ID: <20250424-drm-bridge-convert-to-alloc-api-v2-34-8f91a404d86b@bootlin.com>
+X-Mailer: git-send-email 2.49.0
+In-Reply-To: <20250424-drm-bridge-convert-to-alloc-api-v2-0-8f91a404d86b@bootlin.com>
 References: <20250424-drm-bridge-convert-to-alloc-api-v2-0-8f91a404d86b@bootlin.com>
- <20250424-drm-bridge-convert-to-alloc-api-v2-11-8f91a404d86b@bootlin.com>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <20250424-drm-bridge-convert-to-alloc-api-v2-11-8f91a404d86b@bootlin.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+X-Mailer: b4 0.14.2
+Content-Transfer-Encoding: 8bit
+X-GND-State: clean
+X-GND-Score: -100
+X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvhedtfeelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvfevufffkffojghfgggtoffgsehtkeertdertdejnecuhfhrohhmpefnuhgtrgcuvegvrhgvshholhhiuceolhhutggrrdgtvghrvghsohhlihessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnhepudffiefgvdfftdffkeejjefhffduleejleeuieetieetgeehtefhjedtgeegieegnecukfhppedvrgdtvdemieejtdemvddtvddtmegvrgdtudemrgegiedvmedusgguugemledutddumedvleegfhenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpedvrgdtvdemieejtdemvddtvddtmegvrgdtudemrgegiedvmedusgguugemledutddumedvleegfhdphhgvlhhopegsohhothihrdhfrhhithiirdgsohigpdhmrghilhhfrhhomheplhhutggrrdgtvghrvghsohhlihessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepfeelpdhrtghpthhtohepmhgrrghrthgvnhdrlhgrnhhkhhhorhhstheslhhinhhugidrihhnthgvlhdrtghomhdprhgtphhtthhopehmrhhiphgrrhgusehkvghrnhgvlhdrohhrghdprhgtphhtthhopehtiihimhhmvghrmhgrnhhnsehsuhhsvgdru
+ ggvpdhrtghpthhtoheprghirhhlihgvugesghhmrghilhdrtghomhdprhgtphhtthhopehsihhmohhnrgesfhhffihllhdrtghhpdhrtghpthhtoheprghnughriigvjhdrhhgrjhgurgesihhnthgvlhdrtghomhdprhgtphhtthhopehnvghilhdrrghrmhhsthhrohhngheslhhinhgrrhhordhorhhgpdhrtghpthhtoheprhhfohhssheskhgvrhhnvghlrdhorhhg
+X-GND-Sasl: luca.ceresoli@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250424_121643_858254_C46ABFA5 
-X-CRM114-Status: UNSURE (   8.24  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250424_131137_310368_B537CFFB 
+X-CRM114-Status: GOOD (  13.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,17 +112,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 4/24/25 9:59 PM, Luca Ceresoli wrote:
-> This is the new API for allocating DRM bridges.
-> 
-> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
-> 
-> ---
-> 
-> Cc: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> ---
->  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 7 +++----
->  1 file changed, 3 insertions(+), 4 deletions(-)
+This is the new API for allocating DRM bridges.
 
-Reviewed-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+The devm lifetime management of this driver is peculiar. The underlying
+device for the panel_bridge is the panel, and the devm lifetime is tied the
+panel device (panel->dev). However the panel_bridge allocation is not
+performed by the panel driver, but rather by a separate entity (typically
+the previous bridge in the encoder chain).
+
+Thus when that separate entoty is destroyed, the panel_bridge is not
+removed automatically by devm, so it is rather done explicitly by calling
+drm_panel_bridge_remove(). This is the function that does devm_kfree() the
+panel_bridge in current code, so update it as well to put the bridge
+reference instead.
+
+Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+---
+ drivers/gpu/drm/bridge/panel.c | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/panel.c b/drivers/gpu/drm/bridge/panel.c
+index 79b009ab9396048eac57ad47631a902e949d77c6..ddd1e91970d09b93aa64f50cd9155939a12a2c6f 100644
+--- a/drivers/gpu/drm/bridge/panel.c
++++ b/drivers/gpu/drm/bridge/panel.c
+@@ -287,15 +287,14 @@ struct drm_bridge *drm_panel_bridge_add_typed(struct drm_panel *panel,
+ 	if (!panel)
+ 		return ERR_PTR(-EINVAL);
+ 
+-	panel_bridge = devm_kzalloc(panel->dev, sizeof(*panel_bridge),
+-				    GFP_KERNEL);
+-	if (!panel_bridge)
+-		return ERR_PTR(-ENOMEM);
++	panel_bridge = devm_drm_bridge_alloc(panel->dev, struct panel_bridge, bridge,
++					     &panel_bridge_bridge_funcs);
++	if (IS_ERR(panel_bridge))
++		return (void *)panel_bridge;
+ 
+ 	panel_bridge->connector_type = connector_type;
+ 	panel_bridge->panel = panel;
+ 
+-	panel_bridge->bridge.funcs = &panel_bridge_bridge_funcs;
+ 	panel_bridge->bridge.of_node = panel->dev->of_node;
+ 	panel_bridge->bridge.ops = DRM_BRIDGE_OP_MODES;
+ 	panel_bridge->bridge.type = connector_type;
+@@ -327,7 +326,7 @@ void drm_panel_bridge_remove(struct drm_bridge *bridge)
+ 	panel_bridge = drm_bridge_to_panel_bridge(bridge);
+ 
+ 	drm_bridge_remove(bridge);
+-	devm_kfree(panel_bridge->panel->dev, bridge);
++	devm_drm_put_bridge(panel_bridge->panel->dev, bridge);
+ }
+ EXPORT_SYMBOL(drm_panel_bridge_remove);
+ 
+
+-- 
+2.49.0
+
 
