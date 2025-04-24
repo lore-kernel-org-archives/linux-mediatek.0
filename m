@@ -4,69 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF210C369AB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Apr 2025 08:37:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A680C369D8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Apr 2025 08:37:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=x1Db7gNvoR8IanW8NAmy3JDaY3pQsa/khDNF6Eb775Q=; b=J2HSShEax/E2aGcsYiwYERa9ZG
-	z/zGuwwLza3tLAMrB4FV9diYnxWpjz7R8OdK+97jUd58ZJ+OMnWF1uTre1g/MQi0yiuOS0gJwMxJl
-	m2N/Lsp+zur+eIRV2guXm2Ni9mnPwDNQmogFyygi7NE+pvG0umX1WG1CR9lhxsuruTDxnG80fr+1I
-	xXrey+l7Y829xz8nADXD6S0Ei9bLI78WyROWxqMFBDvSIj1UD6weBCQJyTDejwfiMmtrQNj1taESu
-	3LNif6jvIXP9eji9EcA4RU/SkSu6sWnlsU6rkGbRayQP7JTgbjcGkCffZjQAUZUJ4RteXu/5r5xzs
-	mZveONLw==;
+	bh=0Nw5aseHOhIbLTKLOXIlzEwQhv70Jz8gP9ue3vYG3VA=; b=4TcSC972OlS7rexciuP50ytMw1
+	Dk+ORINBQOGXdrztyfiEvYwRbu2m52Q/F19fxgChoP8yHPAWlVAo7r4f3z3iMC/dUKLTgydAsjkXj
+	L3/62V8UhjAUNIOcy2fZXFBXJd0eB74hBh3fRY8SoYk05uy1UTsfq7VU/wDaZjHFVj9xTpJKhyjOH
+	qqyVtsFPXpOoMStpxuMcDBDoJNQ81hwnVBnI+5+FHb3ffsARuMw5TnvvS5gBjcykNo9hUJ9HyqUQe
+	E7DUKk2irf3UbRa1R3ZWUc+jmm/46eKOvgliiUUrquaDy6DepvYkhJWgNfkxnn7WAHEp5XAIQ9b/w
+	IjcSH8XQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7s5J-0000000DLmr-2qjm;
-	Thu, 24 Apr 2025 08:37:29 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1u7s5K-0000000DLo7-0XNQ;
+	Thu, 24 Apr 2025 08:37:30 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7qyD-0000000DAqI-16lk
-	for linux-mediatek@lists.infradead.org;
-	Thu, 24 Apr 2025 07:26:06 +0000
+	id 1u7qzI-0000000DB1y-3nfw;
+	Thu, 24 Apr 2025 07:27:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=0Nw5aseHOhIbLTKLOXIlzEwQhv70Jz8gP9ue3vYG3VA=; b=TxQeL6WMnTTBtWK7rOSZxEmN3G
+	1LQVmKbBxjnbtAtYk/Ls/XxPvPcLleDGjBODxisVCk/SNaeu5ZjIQZgXgcmN2M3RlnhoL1euzNRXf
+	Xhpn8DDvnDdHi/RCoeRcNwRL0JzS4jAgT8DKA29YSAWGaH7It/vsd7Xy2rwgGUgdC8tF6KglcP36k
+	5WNXr+DcjSNoIgB0qxwpjO60xMEmzgUPv/A6+InEBY+YR2y6Pfcd3iOCQ5sE24sOFLmRyJtozFCbh
+	/r7D7XssVfOoIfk85brCLjtpcl0bnONAehCXn0WStjNxA71LRk0CG3BeQnuqf+FaGZNb3uKoxaNOo
+	gbvvjTZA==;
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1u7qzF-0000000BYCz-3miW;
+	Thu, 24 Apr 2025 07:27:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1745479562;
-	bh=L3sPTbyHOQBsE9r1lkpVZmPXCDuy0OrlWFtecvsFdxU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=fFwo/qrPuvk7TruqJfD20DxBUmV9hj3nAQJhWySZiBK4aHo7shziI/PulmpJ+jzj8
-	 rb8YT/bZ/t3vxxI55sKFmXpFR+Kvd6hJg8Lz6s0epgHulQb++7c5eCFGDvSqgt1nW0
-	 Zr9gVVijGzt2uUqxPOTCsezOCEEm+wTvAhvcKioIjc+2VcHq03oYlSJtDnUKzvs3UQ
-	 XV6U92MuzQjbEavpJ/8HfTu5CGER/dq6hMv32Vs2/BUMhlTuDSX50po48HKb91gH11
-	 O6L6GP3XBLMmKgxztAhWlFuQ08ziFCRJG+XbZtUPyOzTT0WOgNvyh08ty4Tjbax2Oh
-	 wZcYDItkfASlg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	s=mail; t=1745479624;
+	bh=ljhJbQLJJ86qgaZxYsvXbNm6MCq8nLzlJBcZNJhB7ww=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=czB6Z5PcJq38V/WRS9lzymYte5sDUYePs29i48bee56SfP5Ek4WFa5LlIW/Gk/sko
+	 IEEJaERWEUV9xJs0frGN/UEYRleYGtPB/TyY7MFepxu+E/R9JZ2UyOtTIBoE5mcnA9
+	 L/PhHPpu7r7WCgsXFV/RFSiCQpo/E+KPYGnWAQLKlLj7xNRon9LUVDV8FhKGFkAqzg
+	 QpaZ1pZyrE83Y1qd74GZUuZlhrPCF/8Ynu2n2UEI5yJdTMC45bvs9TiO19F1IEtaC1
+	 FT67ui3LtHrEWjRtxbOw/250wWG2uAYXjhWKkTWM6EZ6WF6urvr3F2xAQ8p/vDQ//6
+	 enag0pi9tPg2g==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C745117E065E;
-	Thu, 24 Apr 2025 09:26:01 +0200 (CEST)
-Message-ID: <32b3ebcd-a015-4866-9529-25abbe1c9f2d@collabora.com>
-Date: Thu, 24 Apr 2025 09:26:01 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v11 1/2] dt-bindings: arm: mediatek: Add MT8186 Ponyta
- Chromebook
-To: Jianeng Ceng <cengjianeng@huaqin.corp-partner.google.com>,
- sam@ravnborg.org, neil.armstrong@linaro.org, daniel@ffwll.ch,
- dianders@google.com, hsinyi@google.com, matthias.bgg@gmail.com,
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- knoxchiou@google.com
-Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20250424010850.994288-1-cengjianeng@huaqin.corp-partner.google.com>
- <20250424010850.994288-2-cengjianeng@huaqin.corp-partner.google.com>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2BFC217E0808;
+	Thu, 24 Apr 2025 09:27:04 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250424010850.994288-2-cengjianeng@huaqin.corp-partner.google.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, yong.mao@mediatek.com, 
+ qingliang.li@mediatek.com, andy-ld.lu@mediatek.com, 
+ Wenbin Mei <wenbin.mei@mediatek.com>, Axe Yang <axe.yang@mediatek.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+In-Reply-To: <20250424013603.32351-1-axe.yang@mediatek.com>
+References: <20250424013603.32351-1-axe.yang@mediatek.com>
+Subject: Re: [RESEND] arm64: dts: mediatek: mt8186-corsola: make SDIO card
+ removable
+Message-Id: <174547962408.16683.11392020991480921546.b4-ty@collabora.com>
+Date: Thu, 24 Apr 2025 09:27:04 +0200
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250424_002605_484747_34E72E47 
-X-CRM114-Status: GOOD (  10.87  )
+X-CRM114-CacheID: sfid-20250424_082710_110278_3063C7B6 
+X-CRM114-Status: UNSURE (   6.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,70 +94,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 24/04/25 03:08, Jianeng Ceng ha scritto:
-> Ponyta is a custom label Chromebook based on MT8186. It is a
-> self-developed project of Huaqin and has no fixed OEM.
+On Thu, 24 Apr 2025 09:34:35 +0800, Axe Yang wrote:
+> Under specific conditions, the SDIO function driver needs to
+> remove/add SDIO card to perform a reset. Remove the non-removable
+> property to support this scenario.
 > 
-> Signed-off-by: Jianeng Ceng <cengjianeng@huaqin.corp-partner.google.com>
+> 
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Applied to v6.15-next/dts64, thanks!
 
-> ---
-> Changes in v11:
-> - PATCH 1/2: Remove redundant items.
-> - Link to v10:https://lore.kernel.org/all/20250423093647.4074135-2-cengjianeng@huaqin.corp-partner.google.com/
-> 
-> Changes in v10:
-> - PATCH 1/2: Add enum for ponyta sku.
-> - Link to v9:https://lore.kernel.org/all/20250328094034.3400233-2-cengjianeng@huaqin.corp-partner.google.com/
-> 
-> Chage in V9:
-> - No change.
-> 
-> Changes in v8:
-> - PATCH 1/2: Remove custom label.
-> - Link to v7:https://lore.kernel.org/all/01020191ea98a643-2d0be5d1-e00b-48e0-b823-bfe2c65b0d00-000000@eu-west-1.amazonses.com/
-> 
-> Chage since V6:
-> - No change.
-> 
-> Changes in v5:
-> - PATCH 1/2: Remove sku2147483647.
-> - Link to v4:https://lore.kernel.org/all/20240906085739.1322676-2-cengjianeng@huaqin.corp-partner.google.com/
-> 
-> Changes in v4:
-> - PATCH 1/2: Add more info for Ponyta custom label in commit.
-> - Link to v3:https://lore.kernel.org/all/20240904081501.2060933-1-cengjianeng@huaqin.corp-partner.google.com/
-> 
-> Changes in v3:
-> - PATCH 1/2: Modify lable to label.
-> - Link to v2:https://lore.kernel.org/all/20240903061603.3007289-1-cengjianeng@huaqin.corp-partner.google.com/
-> 
-> Chage since V2:
-> - No change.
-> 
-> ---
->   Documentation/devicetree/bindings/arm/mediatek.yaml | 7 +++++++
->   1 file changed, 7 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> index 108ae5e0185d..fa1646bc0bac 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> @@ -285,6 +285,13 @@ properties:
->             - const: google,steelix-sku393218
->             - const: google,steelix
->             - const: mediatek,mt8186
-> +      - description: Google Ponyta
-> +        items:
-> +          - enum:
-> +              - google,ponyta-sku0
-> +              - google,ponyta-sku1
-> +          - const: google,ponyta
-> +          - const: mediatek,mt8186
->         - description: Google Rusty (Lenovo 100e Chromebook Gen 4)
->           items:
->             - const: google,steelix-sku196609
+[1/1] arm64: dts: mediatek: mt8186-corsola: make SDIO card removable
+      commit: ab394a9785f0339fd6617cd51ca4e2982a82cd87
+
+Cheers,
+Angelo
 
 
 
