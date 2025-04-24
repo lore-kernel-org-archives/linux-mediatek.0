@@ -4,79 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5504BC369AB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Apr 2025 10:22:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09714C369AB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Apr 2025 11:07:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QwsccYOs8XpweMfP9XrYjw7+Hr76yPGkvSua0F/kNyA=; b=Th83n/96l9Fp2JamJCsu9crptI
-	lNPr2sgR74lus7+PGv1w14BcI4LfnnpxkFKaT113MNHg4bbZC5ZeIFF37W/LxDDl0TT/CwKkptZp4
-	33YeY80wiWIxdw0VNZVqDTudPanp6Gft52Vx3alHrZM6Jip0MBH9URRgHfvR/4owvBYflF4folxN8
-	08MEqrdAW1A7VcTs4kUdxszUtUYYqXsQVbv4IvFrEV/Vbq84zy+KQSM1Kxx04twQ1lK2fenhSGn5e
-	l6npm7dVfEY6WUXL1Wh6DO4dMGg3LGQJmhoY/QOyLVXtBXyzFtRVXASPqLYEqYqeXV3wSXiRgSKWf
-	aJ9CQtrQ==;
+	bh=qfTMyxnIB01quA/V2nunnWHVUVFti2y/BX9X/pdrGWY=; b=KbDMWV1pbvcUG10LP1xO8ZZjAa
+	rxCADtwF/5WE04a/VwRpcppkwPlsH/+oJlb7Hynjn+eN2TYqjM1WUS16L0DPlQ6m6Qf8kFJ5P9i6Q
+	v2bg7BbeAmFc3drVtUywyAJR4uXYegf5PEvvgYv6oSV33V0tAq8qX1n6t8Elk7V1mF67auJ54Q07E
+	LsNxA6oNBBhNMEcePOqr3vjvmc4cjoRbp1LP4++uZR+HQatuI81KgBibqzo4nFDTiN8iGExJW7NdE
+	C3bA3e9i1xzw/9FXYXovlEPJ9x+ug6Ht2QJQLoBwkPg3azF1vaNTQVqUnZ36sFkE0DzHFbu7tKSEq
+	QxhSofkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7til-0000000DepW-1BGp;
-	Thu, 24 Apr 2025 10:22:19 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1u7uQQ-0000000Dngz-07vy;
+	Thu, 24 Apr 2025 11:07:26 +0000
+Received: from relay5-d.mail.gandi.net ([2001:4b98:dc4:8::225])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7s8N-0000000DNNN-09Ki;
-	Thu, 24 Apr 2025 08:40:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1745484037;
-	bh=ugQ0tZbuUVl+tPGqAtdti5tfLPe5fA3E0Vgs3DqrikU=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=fZYjIxnS47q+VH6NYF04apROnIEhJhkS9k0VgkbabkklKQ4ufvlZ45j1AEZf+gnlt
-	 NYnN3Nhli3jPUuo50W41Nb+drlKFFC4phPEGvcmfDCwgq0k88a0Rt0V7OQaR90ENP4
-	 HjsRJAPOuy1cgmFjd9qkZ26UieC8Q0y+O7E8N1dwx5NOPwEjQkkC4TfoKy3sWwTCLq
-	 Ny17PXQT7Pd9tnuZnpe0os+RTiDi0IOlDFYWuuriPV1zIJD2hIr17eutNPy3f1JD1q
-	 SoPAWY+j/Uh912f2twKS79PcW2vDA3ivUEFxnOVpzMiNrOWdiHdgkX6L2KxvAQ3suK
-	 PH6Thld8ONPlg==
-Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1BE3317E3610;
-	Thu, 24 Apr 2025 10:40:36 +0200 (CEST)
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Thu, 24 Apr 2025 10:38:49 +0200
-Subject: [PATCH net v2 2/2] net: ethernet: mtk-star-emac: rearm interrupts
- in rx_poll only when advised
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250424-mtk_star_emac-fix-spinlock-recursion-issue-v2-2-f3fde2e529d8@collabora.com>
+	id 1u7sh3-0000000DTMI-2xJH;
+	Thu, 24 Apr 2025 09:16:31 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id E5C60439EB;
+	Thu, 24 Apr 2025 09:16:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1745486186;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=qfTMyxnIB01quA/V2nunnWHVUVFti2y/BX9X/pdrGWY=;
+	b=jOzEvNZEShCzsxTs+NkBn1qOJdqxA8tHkP08L2Lg6qAXRL/5ijL0AN/edPlIv/jmiSmARl
+	NS8waoNweatYVMlJWYeHqQ4afL9NF36QodTJy5W/g3V3N+bfMFZ9pEL9xyF6Q4/NXGPMAu
+	zreIAtnVZ73Ff1kZzA+DZb4UsChwu9yPMkmp6eDzvmVymwn9GHvUkLgDmk+ZIPh/sbPdDI
+	abEzn7l+jHbpLFF2IsSSutGq8smCtIwtFMVqCrx6d+eT+MUKvvaEetsN82PPVjK9cTe+xs
+	y4BKUkoBslN4Uq/+QWbZcxGwXZpJe4eHVUq7z7Oqb0NZ8I1loxiTym8acAgUyA==
+Date: Thu, 24 Apr 2025 11:16:23 +0200
+From: Maxime Chevallier <maxime.chevallier@bootlin.com>
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet
+ <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+ <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Biao
+ Huang <biao.huang@mediatek.com>, Yinghua Pan <ot_yinghua.pan@mediatek.com>,
+ Bartosz Golaszewski <brgl@bgdev.pl>, kernel@collabora.com,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net v2 2/2] net: ethernet: mtk-star-emac: rearm
+ interrupts in rx_poll only when advised
+Message-ID: <20250424111623.706c1acc@device-40.home>
+In-Reply-To: <20250424-mtk_star_emac-fix-spinlock-recursion-issue-v2-2-f3fde2e529d8@collabora.com>
 References: <20250424-mtk_star_emac-fix-spinlock-recursion-issue-v2-0-f3fde2e529d8@collabora.com>
-In-Reply-To: <20250424-mtk_star_emac-fix-spinlock-recursion-issue-v2-0-f3fde2e529d8@collabora.com>
-To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Biao Huang <biao.huang@mediatek.com>, 
- Yinghua Pan <ot_yinghua.pan@mediatek.com>, 
- Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: kernel@collabora.com, netdev@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1745484033; l=1378;
- i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=ugQ0tZbuUVl+tPGqAtdti5tfLPe5fA3E0Vgs3DqrikU=;
- b=2+hlGTGLX4IvBZ7LMo2FNCbo3oFL2H2kxu7qLhPFrDccvEuTJxAjMod/qdQ3c3A5HlMBD2F4u
- GHsPaXAAj0vCNg+4VSDcGo0Mk6xifVU44tFqSzxp3vXitubG5ipHv6p
-X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
- pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
+	<20250424-mtk_star_emac-fix-spinlock-recursion-issue-v2-2-f3fde2e529d8@collabora.com>
+Organization: Bootlin
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-GND-State: clean
+X-GND-Score: -100
+X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvgeeltdekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvvefukfgjfhhoofggtgfgsehtjeertdertddvnecuhfhrohhmpeforgigihhmvgcuvehhvghvrghllhhivghruceomhgrgihimhgvrdgthhgvvhgrlhhlihgvrhessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnhepgeevledtvdevueehhfevhfelhfekveeftdfgiedufeffieeltddtgfefuefhueeknecukfhppedvrgdtudemtggsudelmeekugegheemgeeltddtmeeiheeikeemvdelsgdumeelvghfheemvgektgejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepvdgrtddumegtsgduleemkegugeehmeegledttdemieehieekmedvlegsudemlegvfhehmegvkegtjedphhgvlhhopeguvghvihgtvgdqgedtrdhhohhmvgdpmhgrihhlfhhrohhmpehmrgigihhmvgdrtghhvghvrghllhhivghrsegsohhothhlihhnrdgtohhmpdhnsggprhgtphhtthhopeduledprhgtphhtthhopehlohhuihhsrghlvgigihhsrdgvhihrrghuugestgholhhlrggsohhrrgdrtghomhdprhgtphhtthhopehnsggusehnsggurdhnrghmvgdprhgtphhtthhopehsvggrnhdrfigrnhhgsehmv
+ gguihgrthgvkhdrtghomhdprhgtphhtthhopehlohhrvghniihosehkvghrnhgvlhdrohhrghdprhgtphhtthhopegrnhgurhgvfidonhgvthguvghvsehluhhnnhdrtghhpdhrtghpthhtohepuggrvhgvmhesuggrvhgvmhhlohhfthdrnhgvthdprhgtphhtthhopegvughumhgriigvthesghhoohhglhgvrdgtohhmpdhrtghpthhtohepkhhusggrsehkvghrnhgvlhdrohhrgh
+X-GND-Sasl: maxime.chevallier@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250424_014039_224438_50F55FC4 
-X-CRM114-Status: GOOD (  11.72  )
+X-CRM114-CacheID: sfid-20250424_021629_902965_188FB16B 
+X-CRM114-Status: GOOD (  11.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,34 +86,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In mtk_star_rx_poll function, on event processing completion, the
-mtk_star_emac driver calls napi_complete_done but ignores its return
-code and enable RX DMA interrupts inconditionally. This return code
-gives the info if a device should avoid rearming its interrupts or not,
-so fix this behaviour by taking it into account.
+Hi,
 
-Fixes: 8c7bd5a454ff ("net: ethernet: mtk-star-emac: new driver")
-Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
----
- drivers/net/ethernet/mediatek/mtk_star_emac.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+On Thu, 24 Apr 2025 10:38:49 +0200
+Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com> wrote:
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-index 23115881d8e892a622b34b593cf38e2c8bed4082..b175119a6a7da517f20267fde7b2005d6c0bbadd 100644
---- a/drivers/net/ethernet/mediatek/mtk_star_emac.c
-+++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-@@ -1348,8 +1348,7 @@ static int mtk_star_rx_poll(struct napi_struct *napi, int budget)
- 	priv = container_of(napi, struct mtk_star_priv, rx_napi);
- 
- 	work_done = mtk_star_rx(priv, budget);
--	if (work_done < budget) {
--		napi_complete_done(napi, work_done);
-+	if (work_done < budget && napi_complete_done(napi, work_done)) {
- 		spin_lock_irqsave(&priv->lock, flags);
- 		mtk_star_enable_dma_irq(priv, true, false);
- 		spin_unlock_irqrestore(&priv->lock, flags);
+> In mtk_star_rx_poll function, on event processing completion, the
+> mtk_star_emac driver calls napi_complete_done but ignores its return
+> code and enable RX DMA interrupts inconditionally. This return code
+> gives the info if a device should avoid rearming its interrupts or not,
+> so fix this behaviour by taking it into account.
+> 
+> Fixes: 8c7bd5a454ff ("net: ethernet: mtk-star-emac: new driver")
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
--- 
-2.49.0
+I'm unsure wether this counts as a bugfix, as no bug was
+seen, and there are quite a few divers that already ignore the return
+from napi_complete_done().
 
+I don't think the patch is wrong, but maybe it should be sent to
+net-next :/
+
+Maxime
 
