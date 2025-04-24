@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D570DC369D1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Apr 2025 08:37:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7CB0C369AB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Apr 2025 08:52:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
 	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=R5BBPXfTs/GUDM8oI1RSx5D4ei4IZTiTQ2sAvTMcsJE=; b=wcaOfxDVhRyHH4X8tsWHNgUkot
-	Wn4ff2s5Ye+mh9Bo8oHcMmG5bJsMa28/QREVlbX4ma/1/lotsYm/wtG9T7gXc4TI4B5oWBamBkd+c
-	RXt10I/LVlFPJ7Fr9HFPF/niWMDTfqzPehq55lSDDF5xGnecjhffH76NE5dnNtjTGhiXpBb+bWffl
-	wZM6TGVy2zg33hO6Iggr+pPjFly4fUx0QiicOdwmYGhcylW17QLG0SNIZucy8iuT68CkbCMqxw5rR
-	bm12U2akF89Ce9FTvgFsWqINof4OuX+/k6ZS3UMGJLC0znI/ZHcuWW5ezqnU4YgrbRADZ/swISSos
-	wfsVNqYA==;
+	bh=uCh/WX1mQoeLExdHM8LcV20/efpx6n7QXqNaqXMfdQk=; b=WnZuOSFcpCDoge5ZWpQqD8uAjU
+	PsG5b6Y3ZkOy7EZjV/xpGcHAADBwNQoZYTr1q3KshzuRMaogV6sy97hMEQf3CCU1GMfvhy5OnnxiE
+	P2qOFI82RcH9uNP59eixxSC0eSDsniWWNO3JpBCpBQHB8pFCn+FXIWJ4kWNI+rmSOY9GzMi28eogQ
+	yeJuO6YP1UpRGN+otL6W+CBiQxJVAXCvAnZK125eCEjyFhMnbX+1o7eUDePrzOOC3r/gmnAh18ALb
+	s1WuB/lUiqwA4mSqi0DtZKSijpwXvuti1gDf6lltyNOD89olqVuTHq8uIkfz6OSUjJ/QukUBawj9M
+	btlqzjXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7s5P-0000000DLvq-1n4d;
-	Thu, 24 Apr 2025 08:37:35 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1u7sJd-0000000DPar-39SZ;
+	Thu, 24 Apr 2025 08:52:17 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7r6H-0000000DCR6-07mI;
-	Thu, 24 Apr 2025 07:34:26 +0000
+	id 1u7r75-0000000DCf4-1Pn5;
+	Thu, 24 Apr 2025 07:35:16 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 36A285C5C5A;
-	Thu, 24 Apr 2025 07:32:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 66F84C4CEE3;
-	Thu, 24 Apr 2025 07:34:23 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 86AA25C6268;
+	Thu, 24 Apr 2025 07:32:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E5402C4CEE3;
+	Thu, 24 Apr 2025 07:35:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1745480064;
-	bh=rGl4QjSoKK2+SbhVWRRtNC1El4VOWXYBbVc1P2EXWdQ=;
+	s=k20201202; t=1745480114;
+	bh=kqdftvwo3yqYPI14qAH7mrwpx4M3j6MZCFUBG/sb9Ck=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=kJHH5w0bCFhjooGe42U2kOEnmwjLmprQMBr8Ek5a1J6cl8auMWUbV/SKfHaE8131E
-	 08IU14q+hwb8HU4b3Dr+JjuSOS1CnIcHp6Tv0rb3K4Q00HRoGONZ1hgt2LgvghVarM
-	 4mai/E98rBTkBKCzPmXImX9G0nIPjtk55U9jqwOccWP7IPGNN/n+OiuanIwP8O4Tsg
-	 K3iSL4DX+Algi3n2I+qW4NoJSh3wygFTYtY7Q8y3aplQqTmuxfzMRp94Vc96tMXqZC
-	 GuKRyKuEKOL7nJ+eJ2PvPGfrwqUOStWE4NE+/WK1pB3brOXqKay/dYUnyd8pt9MK74
-	 Ef9oye6LNchzw==
-Date: Thu, 24 Apr 2025 09:34:21 +0200
+	b=mJDumgVWKKh/Ap6cT++S2/pVQcEExv4/jB5AxGOOqueaKcGEs3Oxn7oXWBC7q01MM
+	 HQFltblZJwBePcq8wdYGQEWzr5xeF0hrMpq6gjlJZlPshX7K9fOWSKGX/kev2nx2u4
+	 vvayvzC8nchfrKa55JdJvo1d4NJ6aaa2/pagtgTGOXcAH4YC1tjsY290umFRKFhYlQ
+	 e/DLkkg5+1sG+hMweDNikHzws0SdZtZEPxDu/9RC26D0cIW5ix2D9OcH1TxdlnO71V
+	 TsxndLYHZ32gn6qMcQKMRaM74OgXbKaU5WSN/coPP0bBLoZHkv1y7b+3JZkk81yyeb
+	 NcEwhCMx7EAfQ==
+Date: Thu, 24 Apr 2025 09:35:11 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Frank Wunderlich <linux@fw-web.de>
 Subject: Re: [PATCH v4 4/8] dt-bindings: phy: mtk-xs-phy: support type switch
  by pericfg
-Message-ID: <20250424-witty-outrageous-parakeet-7c93cc@kuoka>
+Message-ID: <20250424-auspicious-boisterous-pheasant-7d1f9f@kuoka>
 References: <20250422132438.15735-1-linux@fw-web.de>
  <20250422132438.15735-5-linux@fw-web.de>
 MIME-Version: 1.0
@@ -54,9 +54,8 @@ Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 In-Reply-To: <20250422132438.15735-5-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250424_003425_112649_CF90B974 
-X-CRM114-Status: UNSURE (   9.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250424_003515_415696_D09AA612 
+X-CRM114-Status: GOOD (  13.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,8 +84,19 @@ On Tue, Apr 22, 2025 at 03:24:27PM GMT, Frank Wunderlich wrote:
 > ---
 >  .../devicetree/bindings/phy/mediatek,xsphy.yaml   | 15 +++++++++++++++
 >  1 file changed, 15 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml
+> index 3b5253659e6f..0bed847bb4ad 100644
+> --- a/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml
+> +++ b/Documentation/devicetree/bindings/phy/mediatek,xsphy.yaml
+> @@ -151,6 +151,21 @@ patternProperties:
+>          minimum: 1
+>          maximum: 31
+>  
+> +      mediatek,syscon-type:
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Although this should be probably mediatek,phy-type-syscon, because now
+it feels like you define here type of syscon. Anyway, keep Rb tag.
 
 Best regards,
 Krzysztof
