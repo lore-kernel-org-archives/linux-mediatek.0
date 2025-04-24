@@ -4,74 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09714C369AB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Apr 2025 11:07:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 191C1C369AB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Apr 2025 11:28:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qfTMyxnIB01quA/V2nunnWHVUVFti2y/BX9X/pdrGWY=; b=KbDMWV1pbvcUG10LP1xO8ZZjAa
-	rxCADtwF/5WE04a/VwRpcppkwPlsH/+oJlb7Hynjn+eN2TYqjM1WUS16L0DPlQ6m6Qf8kFJ5P9i6Q
-	v2bg7BbeAmFc3drVtUywyAJR4uXYegf5PEvvgYv6oSV33V0tAq8qX1n6t8Elk7V1mF67auJ54Q07E
-	LsNxA6oNBBhNMEcePOqr3vjvmc4cjoRbp1LP4++uZR+HQatuI81KgBibqzo4nFDTiN8iGExJW7NdE
-	C3bA3e9i1xzw/9FXYXovlEPJ9x+ug6Ht2QJQLoBwkPg3azF1vaNTQVqUnZ36sFkE0DzHFbu7tKSEq
-	QxhSofkg==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ZiphZyoVbuU2HXJVLii+SRj3OxrxBVUtbZVtTcIK3L0=; b=DFzU4cu3ImyTDWz3wAMKNgkz7+
+	YsPLRaNNt7Yj5mlCdh+Gq4C7f9VYcPRriXJ+/YoXhToPJYtMI7Qp0crLgW5m3zwRU4+TnYJsuwRe9
+	5aWiw4iaEvcf7D5ci5raY3vH/aEt+LadlVbnk4begba4oUhHjtuYIKa0k5CyCYPLBvHyxJu0bIlcz
+	ee5PuhRuTpZQ8DAU8NGhY7m99YZP0TfB4fNpc8oBTAQiRpbqjr1FaSqn91ekoBNnEm+cOeovLXcEq
+	r2faV4spJmmtWD3zXdarhAAr6oYgteUOGh1ZcSukDLdeKVn8DyCkhHiDhCiVAtYsX7TgtnhHAsPsv
+	aUgYB5LA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7uQQ-0000000Dngz-07vy;
-	Thu, 24 Apr 2025 11:07:26 +0000
-Received: from relay5-d.mail.gandi.net ([2001:4b98:dc4:8::225])
+	id 1u7ul3-0000000Dr9E-006n;
+	Thu, 24 Apr 2025 11:28:45 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7sh3-0000000DTMI-2xJH;
-	Thu, 24 Apr 2025 09:16:31 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id E5C60439EB;
-	Thu, 24 Apr 2025 09:16:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1745486186;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=qfTMyxnIB01quA/V2nunnWHVUVFti2y/BX9X/pdrGWY=;
-	b=jOzEvNZEShCzsxTs+NkBn1qOJdqxA8tHkP08L2Lg6qAXRL/5ijL0AN/edPlIv/jmiSmARl
-	NS8waoNweatYVMlJWYeHqQ4afL9NF36QodTJy5W/g3V3N+bfMFZ9pEL9xyF6Q4/NXGPMAu
-	zreIAtnVZ73Ff1kZzA+DZb4UsChwu9yPMkmp6eDzvmVymwn9GHvUkLgDmk+ZIPh/sbPdDI
-	abEzn7l+jHbpLFF2IsSSutGq8smCtIwtFMVqCrx6d+eT+MUKvvaEetsN82PPVjK9cTe+xs
-	y4BKUkoBslN4Uq/+QWbZcxGwXZpJe4eHVUq7z7Oqb0NZ8I1loxiTym8acAgUyA==
-Date: Thu, 24 Apr 2025 11:16:23 +0200
-From: Maxime Chevallier <maxime.chevallier@bootlin.com>
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
- <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Biao
- Huang <biao.huang@mediatek.com>, Yinghua Pan <ot_yinghua.pan@mediatek.com>,
- Bartosz Golaszewski <brgl@bgdev.pl>, kernel@collabora.com,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net v2 2/2] net: ethernet: mtk-star-emac: rearm
- interrupts in rx_poll only when advised
-Message-ID: <20250424111623.706c1acc@device-40.home>
-In-Reply-To: <20250424-mtk_star_emac-fix-spinlock-recursion-issue-v2-2-f3fde2e529d8@collabora.com>
-References: <20250424-mtk_star_emac-fix-spinlock-recursion-issue-v2-0-f3fde2e529d8@collabora.com>
-	<20250424-mtk_star_emac-fix-spinlock-recursion-issue-v2-2-f3fde2e529d8@collabora.com>
-Organization: Bootlin
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+	id 1u7tlm-0000000DfQk-3yB7
+	for linux-mediatek@bombadil.infradead.org;
+	Thu, 24 Apr 2025 10:25:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=ZiphZyoVbuU2HXJVLii+SRj3OxrxBVUtbZVtTcIK3L0=; b=pRMLVmbRPMbPBdXEU8ULobWewW
+	NSLgp4CQJ1K+xc/kbqP/jyFXPKjYau6VDGDKW/EML8kTJYOpD5T1mgOyk7TRDiP7UZdds4BBgZzD/
+	LEIzjsj1Mz9ldryanFvedjptt8/X/wjK1izxE14eCcEuMwasy5NYLdWsflz6T7sQ6JcFfjRXe+R49
+	pgFUQnYT9ryrTE/EISGUcEsu8f7SUBNcPB3EG21t5Nn4gq8P5i/Ie6dKcdcsVshWpE7cnDeNn2qK6
+	OzmmKju0e6QqW/qRc6MQuZyO0HCTkewRVJ42EHx0ENvznWWLDXxFR0Ewq6OJE3mcA6uXYuPjajb4p
+	SFLgnJpw==;
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1u7tli-0000000BjTH-3UvT
+	for linux-mediatek@lists.infradead.org;
+	Thu, 24 Apr 2025 10:25:24 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-224191d92e4so8013305ad.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 24 Apr 2025 03:25:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1745490320; x=1746095120; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=ZiphZyoVbuU2HXJVLii+SRj3OxrxBVUtbZVtTcIK3L0=;
+        b=M8/PRZa5vXI1Tho12TeU1tD/Q0xTAcaCcMcqd/4xUlfpJcfthdg0AB4YmNaQF2cRxQ
+         rOdGUPh8NWbuzEUwNmIM+vqgRxRY3JomBVuod7yTjyOyyjJBQ/Rh0GSQCar63lh8GJYO
+         nXWfDy4OwWV6YZBw6IleQQlAPXz3IKj//RiVQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1745490320; x=1746095120;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ZiphZyoVbuU2HXJVLii+SRj3OxrxBVUtbZVtTcIK3L0=;
+        b=EI3nShUTN57z11gLycKaVSj0qJXKvC4cSI+G+2RhT3AqmoSraWIiPdYpALNM0nV2zu
+         mKQT3C7xxvwlnhy/yYFQVV5jEPtufr0O4ClckKNxk38VgQoelu7bPJCt82/YmlVN20fA
+         a7IfMs48qCi81KQOs5A098VP9YcQM/B0jj0N2LQNum3wbceoLWKdeOZpclyvaotlGD+Z
+         aLubLp7c+CyJIrdYa4ocLCW3Ky+oShMIc6nxMmfJcGleeFNGN/umOPZRqgRNKQMSFM3+
+         lnhgNKNBPfXjFoSvkdN+gljQ3NPOuH8bPWhH8PEmOvQZvqAbyF1M/PkI/hofWHfuqtT+
+         hq3Q==
+X-Forwarded-Encrypted: i=1; AJvYcCVb8qq+44JTKURszFFUVGyIy5B11UPcv8MUBcYctNUjL0chvn/2gbEpRluCV0T66y7cG8iQ0A0oOg63jP2M8A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzidItaOdFAhG/71Pb7xgRlQ42Bxg0BHkJp9twS/lLLqoZxngKp
+	h0TTOebgpOCp4rR0ZWb5XOa+loSyDBRzsb/loNUszVVMy8+k8K5nLdYw1Qh91A==
+X-Gm-Gg: ASbGncuzhAjqvO15JNEHBvIW2GMJrkFH80aKzzIloh6RDKr6zbn23RcD9KQou9mblJ0
+	WOaaDH8hYw1eOVfvxQOqjiX/FkV4V1ega628qb3e7tZrMEVwlIJYmRJGEkAFkiudCRwFgEb7BWC
+	pDGwJluBIex+KlCwUUPfmIPgnQ/pAHC++WY/R0VBebWxypWzFo7CONOHdIT30veO/tzT5YsaWI0
+	yfdIZaxfI1lftHfnM0WSMr3Lu4FFANyuztEqPy4RR3zDdCGMfWOdn0wedMiCAikXMII0IYVEcAS
+	3uAFrWAglLWlNl7qrDBaZADqhO1VQsmZXIYC9989A0QuTUvvw6tPo8ktgg==
+X-Google-Smtp-Source: AGHT+IHKZn/4E+ABRHWYqcKrwGD2nSNg3ytsgaiTlsNEp51ItpCCjFOn8apfWFbXf/8tif5QwDiKig==
+X-Received: by 2002:a17:902:d50e:b0:215:b473:1dc9 with SMTP id d9443c01a7336-22db3daee3emr27358095ad.46.1745490319801;
+        Thu, 24 Apr 2025 03:25:19 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:fa13:e633:684b:257])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22db4dda40fsm9680305ad.104.2025.04.24.03.25.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 24 Apr 2025 03:25:19 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Jiaxin Yu <jiaxin.yu@mediatek.com>,
+	linux-sound@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2 00/13] ASoC: mediatek: use reserved memory or enable buffer pre-allocation
+Date: Thu, 24 Apr 2025 18:24:54 +0800
+Message-ID: <20250424102509.1083185-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.49.0.805.g082f7c87e0-goog
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-GND-State: clean
-X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvgeeltdekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvvefukfgjfhhoofggtgfgsehtjeertdertddvnecuhfhrohhmpeforgigihhmvgcuvehhvghvrghllhhivghruceomhgrgihimhgvrdgthhgvvhgrlhhlihgvrhessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnhepgeevledtvdevueehhfevhfelhfekveeftdfgiedufeffieeltddtgfefuefhueeknecukfhppedvrgdtudemtggsudelmeekugegheemgeeltddtmeeiheeikeemvdelsgdumeelvghfheemvgektgejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepvdgrtddumegtsgduleemkegugeehmeegledttdemieehieekmedvlegsudemlegvfhehmegvkegtjedphhgvlhhopeguvghvihgtvgdqgedtrdhhohhmvgdpmhgrihhlfhhrohhmpehmrgigihhmvgdrtghhvghvrghllhhivghrsegsohhothhlihhnrdgtohhmpdhnsggprhgtphhtthhopeduledprhgtphhtthhopehlohhuihhsrghlvgigihhsrdgvhihrrghuugestgholhhlrggsohhrrgdrtghomhdprhgtphhtthhopehnsggusehnsggurdhnrghmvgdprhgtphhtthhopehsvggrnhdrfigrnhhgsehmv
- gguihgrthgvkhdrtghomhdprhgtphhtthhopehlohhrvghniihosehkvghrnhgvlhdrohhrghdprhgtphhtthhopegrnhgurhgvfidonhgvthguvghvsehluhhnnhdrtghhpdhrtghpthhtohepuggrvhgvmhesuggrvhgvmhhlohhfthdrnhgvthdprhgtphhtthhopegvughumhgriigvthesghhoohhglhgvrdgtohhmpdhrtghpthhtohepkhhusggrsehkvghrnhgvlhdrohhrgh
-X-GND-Sasl: maxime.chevallier@bootlin.com
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250424_021629_902965_188FB16B 
-X-CRM114-Status: GOOD (  11.69  )
+X-CRM114-CacheID: sfid-20250424_112523_017649_0A72DDC6 
+X-CRM114-Status: GOOD (  21.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,26 +119,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi everyone,
 
-On Thu, 24 Apr 2025 10:38:49 +0200
-Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com> wrote:
+This is v2 of what was just a single patch "ASoC: mediatek: re-enable
+buffer pre-allocation on some platforms". Link to v1:
 
-> In mtk_star_rx_poll function, on event processing completion, the
-> mtk_star_emac driver calls napi_complete_done but ignores its return
-> code and enable RX DMA interrupts inconditionally. This return code
-> gives the info if a device should avoid rearming its interrupts or not,
-> so fix this behaviour by taking it into account.
-> 
-> Fixes: 8c7bd5a454ff ("net: ethernet: mtk-star-emac: new driver")
-> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+    https://lore.kernel.org/all/20250401085659.1222008-1-wenst@chromium.org/
 
-I'm unsure wether this counts as a bugfix, as no bug was
-seen, and there are quite a few divers that already ignore the return
-from napi_complete_done().
+Angelo requested that these platforms use reserved memory regions if
+possible, and fall back to pre-allocated buffers only if that fails,
+to align with other MediaTek SoCs / platforms that already use reserved
+memory. The series covers MediaTek's MT8173, MT8183, MT8186, and MT8192
+SoCs.
 
-I don't think the patch is wrong, but maybe it should be sent to
-net-next :/
+There are three parts to the series:
 
-Maxime
+- Part one (patches 1 through 5) update the DT bindings to allow having
+  a memory region. The text binding for the MT8173 was converted to YAML
+  and also aligned with current usage by addition of a power domain.
+
+  Note that the MT8183 text binding was _not_ converted. It is
+  drastically different from what was landed in the device trees. Some
+  time is needed to work out the differences. I might try to recombine
+  the audio clocks (which are actually part of the same hardware block)
+  as well.
+
+- Part two (patches 6 through 9) update the audio frontend drivers for
+  the various platforms covered in this series.
+
+  - Patch 6 is the evolution of version 1, now defaulting to reserved
+    memory if possible.
+
+  - Patch 7 adds support for >32 bit DMA addresses to the MT8183 driver.
+    This was missing, and prevents the memory regions, which are
+    allocated from the top end of main memory by default, from working.
+
+  - Patch 8 and 9 are just some minor cleanups to reduce the number of
+    "&pdev->dev" style dereferences. They are placed after the other
+    changes to make it easier for the fixes to be backported.
+
+- Part three (patches 10 through 13) add a reserved memory region for
+  the audio frontend on the various platforms.
+
+  For the MT8173, the change covers the whole platform. In practice
+  there are only ChromeOS devices.
+
+  For the other platforms, only the ChromeOS devices are covered. These
+  are what I have available for testing.
+
+
+Please have a look. I assume the DT binding and driver changes will go
+through the ASoC tree, while the device tree changes will go through the
+MediaTek tree.
+
+
+Thanks
+ChenYu
+
+
+Chen-Yu Tsai (13):
+  ASoC: dt-bindings: Convert MT8173 AFE binding to dt-schema
+  ASoC: dt-bindings: mt8173-afe-pcm: Add power domain
+  ASoC: dt-bindings: mt8173-afe-pcm: Allow specifying reserved memory
+    region
+  ASoC: dt-bindings: mt8186-afe-pcm: Allow specifying reserved memory
+    region
+  ASoC: dt-bindings: mt8192-afe-pcm: Allow specifying reserved memory
+    region
+  ASoC: mediatek: use reserved memory or enable buffer pre-allocation
+  ASoC: mediatek: mt8183-afe-pcm: Support >32 bit DMA addresses
+  ASoC: mediatek: mt8173-afe-pcm: use local `dev` pointer in driver
+    callbacks
+  ASoC: mediatek: mt8183-afe-pcm: use local `dev` pointer in driver
+    callbacks
+  arm64: dts: mediatek: mt8173: Reserve memory for audio frontend
+  arm64: dts: mediatek: mt8183-kukui: Reserve memory for audio frontend
+  arm64: dts: mediatek: mt8186-corsola: Reserve memory for audio
+    frontend
+  arm64: dts: mediatek: mt8192-asurada: Reserve memory for audio
+    frontend
+
+ .../sound/mediatek,mt8173-afe-pcm.yaml        | 98 +++++++++++++++++++
+ .../bindings/sound/mt8186-afe-pcm.yaml        |  5 +
+ .../bindings/sound/mt8192-afe-pcm.yaml        |  5 +
+ .../devicetree/bindings/sound/mtk-afe-pcm.txt | 45 ---------
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi      |  9 ++
+ .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 11 +++
+ .../boot/dts/mediatek/mt8186-corsola.dtsi     |  8 ++
+ .../boot/dts/mediatek/mt8192-asurada.dtsi     | 11 +++
+ .../mediatek/common/mtk-afe-platform-driver.c |  4 +-
+ sound/soc/mediatek/common/mtk-base-afe.h      |  1 +
+ sound/soc/mediatek/mt8173/mt8173-afe-pcm.c    | 66 +++++++------
+ sound/soc/mediatek/mt8183/mt8183-afe-pcm.c    | 83 ++++++++++++----
+ sound/soc/mediatek/mt8186/mt8186-afe-pcm.c    |  7 ++
+ sound/soc/mediatek/mt8192/mt8192-afe-pcm.c    |  7 ++
+ 14 files changed, 266 insertions(+), 94 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8173-afe-pcm.yaml
+ delete mode 100644 Documentation/devicetree/bindings/sound/mtk-afe-pcm.txt
+
+-- 
+2.49.0.805.g082f7c87e0-goog
+
 
