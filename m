@@ -4,67 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66A6AC369D5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Apr 2025 20:51:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C831FC369CB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Apr 2025 01:12:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nC1pt0OHsgKYpZibz4D3aP8DAn0vUsf1V79tARY7X9c=; b=f7yAyIav7am8Sv5pFRRNql1LX0
-	OCBInsboImlIceJyrpJW+NdI88UWj23nJ3p1nYnUFqwcbGYTUXjDRMC8mp0uEd1uffAclh3XmbEnX
-	0hlvoSGxPu9ibFP9KAijipsZAEmX70hztJmBKPvDe0ZbHdK5fKLIy2elBKbnfROUikrWRSgxPQ8vi
-	dPvoWfskEmDq5By4PfVKncjpz9xVUWJKO4zNPejlNYjED7f2+LNZ2+5PmXXd85CtSjBZqvnYZCMdP
-	k8bBujBtEoVZqqCgf/g0UZyoiOwzBVCAfd/fM0th3Es5aTk+dZ97svLNdfsiNKkuX7oO7XSX2+Nq9
-	eGizIfYQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=96K+mNY7OtOPr52dzDB019LRxvI9XjhygxeglXZ6I3Y=; b=X+ZWEot1pP1Dcte1OLCxDunQqM
+	p/7GLiMtJJgZ/PIq9Zdz5EYPc/eZ4IbPFmYqYr9FmimaatjaEgdNDZaBwQm8PHxW5ceXSp68CAZOQ
+	bmVmG4eBLhHzyc6O2Rthfjw4uxkCmpUBIywSupx1IgJ5OJRJGAvG/KISVJXPKUUpK1wxGvnFHrsqm
+	e8Hl7KLzac/jfAy6UH9kGQ5uSUKqwg7UFnAuaTLCKaTKdLs+rg3Op0uImCj/MjudggKnxHosaQyUk
+	tMk9bq5Gi7fbwuysEOqZBTNz4ajqW1tBoSYE/pgLfoxVjWmgngjHU8uLp0o2enGL2u0SKAyL3WNhd
+	FnfmKlnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7h3f-0000000C0yG-2cFr;
-	Wed, 23 Apr 2025 20:51:03 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1u7l8z-0000000CUaD-37zX;
+	Thu, 24 Apr 2025 01:12:49 +0000
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7h1e-0000000C0hU-47fS;
-	Wed, 23 Apr 2025 20:49:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1745441336;
-	bh=5RGhKAeaBreTh9VWG4EzD+6h2QPBnL+J7yh0wfrjIk0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=dkoOvwuDSavrmBG4/mjqPJmqID78hvqezOcjLGZfV+fI2+XSq2hg+ZOO3graW23Cc
-	 jmuhsAjPqiFrIMFMjWa6048+3NJg/A3SlQlP5VvFqnvuIeBmXHH+tRcPKh8H7cQNBu
-	 Yv0c1Pqo8kzR5gtk5HnPiEBW65EDtcPH6RpgEshfkKo62D2wgMXbSQiXLrrYgG46n8
-	 Tk9903y7h+3OnSMUvKiWM6ALi8jFD/kUe8Cv6F0uJkVC/YBYb5IV/xYWRiIq4aYxsN
-	 foqHrbq1lfwbfCJUpTdtNomL6WhByRulyCm/MbHp+3LRk1+ASMaVKDafQszTK9Qor+
-	 2nZ+9115szOYw==
-Received: from notapiano (unknown [70.107.117.78])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EF7A217E0649;
-	Wed, 23 Apr 2025 22:48:53 +0200 (CEST)
-Date: Wed, 23 Apr 2025 16:48:51 -0400
-From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	kernel@collabora.com, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8390-genio-common: Force ssusb2
- dual role mode to host
-Message-ID: <2da6560b-8444-48ae-bb01-397756cecbc0@notapiano>
-References: <20250331-mtk-genio-510-700-fix-bt-detection-v1-1-34ea2cf137f3@collabora.com>
+	id 1u7l5F-0000000CTqy-1Sr5
+	for linux-mediatek@lists.infradead.org;
+	Thu, 24 Apr 2025 01:08:59 +0000
+Received: by mail-pf1-x42e.google.com with SMTP id d2e1a72fcca58-73712952e1cso403558b3a.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 23 Apr 2025 18:08:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=huaqin-corp-partner-google-com.20230601.gappssmtp.com; s=20230601; t=1745456936; x=1746061736; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=96K+mNY7OtOPr52dzDB019LRxvI9XjhygxeglXZ6I3Y=;
+        b=UNHLnQ1FQlcjmzcpNmw/BgHx+Ju2NfhFD67xnouLBECCp9bF401lLtGsApus9QqRg7
+         tus10BVAtIxRU/rQdiS8VKiKsTAdOxogdhHo6z3PH5e9dTaxhUQKQWKGs1HSpobJMwL/
+         ZbbUqFatN1rw/DSX7dEvIppm+1Lb+rnQTX2RLqSBa6tXMeuz4A5pmLnvyRl32qf6qHWD
+         LD5yKa8Ly7eL755GBrcP6/GY42EJgn9ylvzeeNxXOeZ00kAywVU50onP6u9T47XjxFDR
+         Eh0hathSZE6dl3cF3IHrimCJSccP2l9I2vpD+dJx0EW0ddue7JIq9YzXtRLeM5Qv4NGJ
+         FZag==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1745456936; x=1746061736;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=96K+mNY7OtOPr52dzDB019LRxvI9XjhygxeglXZ6I3Y=;
+        b=LLodEX7ElOqc2vDFdUwCbrZR325wJ2cM/HeFARRCotajGct+1BoWhXCEGZ5cD2gcfl
+         cFLdCOKjdCTY8jeb2F+SYPAPMLVJe/w4zPf8RWOkBCJi7NKczzpKAuJ+eArhokdjvxEQ
+         XYpWmZZ2PUsgceaPPa0to5B8CPSgG/ELPCyMrMFeYRAE9QOvKh3O273j1xRRzw3H2zBE
+         r8uVEtb4hKSFroJ2gw6UlHb/+J3JGRxcdyBkCmfl8D6wn45U3TtjX90Bir38UUT9OO/h
+         GMIhS6aJhj097xucGGgjbqih4GlPXocra5nvBC6ifJ/mF+PjMgCd/DJkASNTvXyMF4Ee
+         /Y0A==
+X-Forwarded-Encrypted: i=1; AJvYcCW3pJCI0mi8bR/xEdtkvDzUd2LUplCObydNQFkHXbNeap708rMn0EhdPGQ0RJuYzLliIa8Wy3O7ZYOlNbnNBg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz4Zo5ka1nft9xaMLHcn8SJ84qo36+6nZ2Zh+U9AcHoim/w+Fat
+	WjFEoNRf4MTPdZYnbBoDG7Ve2iKKgJOiiU7ENG57qA7Pe1iGdjwqFr+ET7CmSoQ=
+X-Gm-Gg: ASbGncsj+63kX5TeT5+zpp5pQ5vx3owpE8Uy7Z6pxhF5WHlj8qWeaZ3BH8sNMfLKySW
+	NWGaEAFg2CgHhCHbO3vrLpbjLYbOKAspj8RbXUpZrHEUKvZ/IckByM9UJnoaYFE8/fm9QzgameX
+	fA3hWCv05DhRbnoaDlcw5qpxA5JVsklWTYXRnb3usE8o3VfV+0sSjK6A4dICrY/BP2MkftRCivB
+	3ZAQVg9gPNvhHi0GTCeDGtBek4tDCF2pAynr0+iH9gSqXC/OIh0cWA25rg068nHwMfxA/gokgmm
+	KMkSkFlRxoJFr7CLSBAVSrGqz5/mRssL4cxiucv+LGGTcPdI88e3M3o0/mqu2kyNuAKpmWlOpKo
+	=
+X-Google-Smtp-Source: AGHT+IEjab817v1eaoeZEkx35Op0t9qrF1r28YyBnzNAO8gZBkkFNiR9lKADu4oJ6ffW4g43dcuz5A==
+X-Received: by 2002:a05:6a00:1d81:b0:736:5725:59b4 with SMTP id d2e1a72fcca58-73e245c09bemr1272531b3a.3.1745456936651;
+        Wed, 23 Apr 2025 18:08:56 -0700 (PDT)
+Received: from zjn.huaqin.com ([116.66.212.162])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73e25941d65sm236071b3a.63.2025.04.23.18.08.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 23 Apr 2025 18:08:56 -0700 (PDT)
+From: Jianeng Ceng <cengjianeng@huaqin.corp-partner.google.com>
+To: sam@ravnborg.org,
+	neil.armstrong@linaro.org,
+	daniel@ffwll.ch,
+	dianders@google.com,
+	hsinyi@google.com,
+	angelogioacchino.delregno@collabora.com,
+	matthias.bgg@gmail.com,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	knoxchiou@google.com
+Cc: dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Jianeng Ceng <cengjianeng@huaqin.corp-partner.google.com>
+Subject: [PATCH v11 0/2]
+Date: Thu, 24 Apr 2025 09:08:48 +0800
+Message-Id: <20250424010850.994288-1-cengjianeng@huaqin.corp-partner.google.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250331-mtk-genio-510-700-fix-bt-detection-v1-1-34ea2cf137f3@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250423_134859_183584_0EC7AFF4 
-X-CRM114-Status: GOOD (  27.58  )
+X-CRM114-CacheID: sfid-20250423_180857_672587_3129DE86 
+X-CRM114-Status: UNSURE (   8.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,57 +109,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 31, 2025 at 11:25:52AM +0200, Louis-Alexis Eyraud wrote:
-> On the Mediatek Genio 510-EVK and 700-EVK boards, ssusb2 controller is
-> one but has two ports: one is routed to the M.2 slot, the other is on
-> the RPi header who does support full OTG.
-> Since Mediatek Genio 700-EVK USB support was added, dual role mode
-> property is set to otg for ssusb2. This config prevents the M.2
-> Wifi/Bluetooth module, present on those boards and exposing Bluetooth
-> as an USB device to be properly detected at startup, so configure for
-> the ssusb2 dr_mode property as host instead.
-> 
-> Fixes: 1afaeca17238 ("arm64: dts: mediatek: mt8390-genio-700: Add USB, TypeC Controller, MUX")
-> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-> ---
-> I've tested this patch on Mediatek Genio 510-EVK board with a kernel
-> based on linux-next (tag: next-20250331).
-> ---
->  arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi | 8 +++++++-
->  1 file changed, 7 insertions(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-> index 60139e6dffd8e0e326690d922f3360d829ed026b..3a9d429f0f14b501ae41551dfe7272f242345138 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-> @@ -1199,7 +1199,13 @@ xhci_ss_ep: endpoint {
->  };
->  
->  &ssusb2 {
-> -	dr_mode = "otg";
-> +	/*
-> +	 * the ssusb2 controller is one but we got two ports : one is routed
-> +	 * to the M.2 slot, the other is on the RPi header who does support
-> +	 * full OTG but we keep it disabled otherwise the BT on the M.2 slot
-> +	 * USB line goes obviously dead if switching to gadget mode.
-> +	 */
-> +	dr_mode = "host";
+This is v11 of the MT8186 Chromebook device tree series.
+---
+Changes in v11:
+- PATCH 1/2: Remove redundant items.
+- Link to v10:https://lore.kernel.org/all/20250423093647.4074135-2-cengjianeng@huaqin.corp-partner.google.com/
 
-Hi,
+Changes in v10:
+- PATCH 1/2: Add enum for ponyta sku.
+- Link to v9:https://lore.kernel.org/all/20250328094034.3400233-2-cengjianeng@huaqin.corp-partner.google.com/
 
-while I agree with this change, now that this controller is fixed to host mode,
-the connector child node here which is supposed to probe with driver
-usb-conn-gpio, which would monitor the ID and VBUS lines and change the USB role
-as needed, will fail to probe with:
+Changes in v9:
+- PATCH 2/2: Add sound model to fix the warning.
+- Link to v8:https://lore.kernel.org/all/20240914063122.1622196-1-cengjianeng@huaqin.corp-partner.google.com/
 
-  platform 112a1000.usb:connector: deferred probe pending: usb-conn-gpio: failed to get role switch
+Changes in v8:
+- PATCH 1/2: Remove custom label.
+- PATCH 2/2: Change the commit about ponyta.
+- Link to v7:https://lore.kernel.org/all/20240913031505.372868-1-cengjianeng@huaqin.corp-partner.google.com/
 
-as indeed there no longer is a role switch registered.
+Changes in v7:
+- PATCH 2/2: Remove prototype sku.
+- PATCH 2/2: Disable the other trackpad to enable one of them.
+- Link to v5:https://lore.kernel.org/all/20240913015503.4192806-1-cengjianeng@huaqin.corp-partner.google.com/
 
-For that reason, I believe as part of this commit you should also disable the
-connector. Since role switching is no longer supported by this controller,
-there's no sense in even trying to probe this driver.
+Changes in v6:
+- No change.
 
-Thanks,
-Nícolas
+Changes in v5:
+- PATCH 1/2: Remove sku2147483647.
+- PATCH 2/2: Remove sku2147483647.
+- Link to v4:https://lore.kernel.org/all/20240906085739.1322676-1-cengjianeng@huaqin.corp-partner.google.com/
+
+Changes in v4:
+- PATCH 1/2: Add more info for Ponyta custom label in commit.
+- Link to v3:https://lore.kernel.org/all/20240904081501.2060933-1-cengjianeng@huaqin.corp-partner.google.com/
+
+Changes in v3:
+- PATCH 0/2: Add the modify records.
+- PATCH 1/2: Modify lable to label.
+- Link to v2:https://lore.kernel.org/all/20240903061603.3007289-1-cengjianeng@huaqin.corp-partner.google.com/
+
+Changes in v2:
+- PATCH 2/2: Modify the dtb name without rev2.
+- Link to v1:https://lore.kernel.org/all/20240902125502.1844374-1-cengjianeng@huaqin.corp-partner.google.com/
+
+Jianeng Ceng (2):
+  dt-bindings: arm: mediatek: Add MT8186 Ponyta Chromebook
+  arm64: dts: mediatek: Add MT8186 Ponyta Chromebooks
+
+ .../devicetree/bindings/arm/mediatek.yaml     |  7 +++
+ arch/arm64/boot/dts/mediatek/Makefile         |  2 +
+ .../mediatek/mt8186-corsola-ponyta-sku0.dts   | 18 +++++++
+ .../mediatek/mt8186-corsola-ponyta-sku1.dts   | 22 +++++++++
+ .../dts/mediatek/mt8186-corsola-ponyta.dtsi   | 49 +++++++++++++++++++
+ 5 files changed, 98 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku0.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku1.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta.dtsi
+
+-- 
+2.34.1
+
 
