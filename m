@@ -4,82 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A008BC369AB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Apr 2025 11:32:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6BBFC369D7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Apr 2025 11:36:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=s6fx4MUr4te9jDkTy05iUwkmlLiv1scjMrYy23qe190=; b=qo5dpv4c7gR+F2X//w2N9ghrfN
-	uJBHlnReloIbboZeCIjp4bByJivUMTQmiJw1JIPfjJekXJXu13NSUxWdAJKNm9IyDMM36ws/zrFJX
-	vFKaBxK57OYdWPl7uLUaHV7Hql3JzxHL0ih6ZbvXDC3PXwjOdQ5kv/LtG7dX1aadWijfzloUiL4Xw
-	6WMFTjBIZgKrJuCQPLLEfdhrASk3wbxTCYl9FDuind2lbYTf3wwnD6PIAjB+5h2xG4zwtoMuDwopy
-	onhUfavnd+6+cFM61r+mv2VCt3/fdaX3AK3V+vGzgSCRCwGal9aEhCDl6+7RX9BsG3DWvLVecmu8X
-	6jzUSq2w==;
+	bh=HOVuiI+8mSRH7O/02K1BDgrIMTx/XasOhwMXr41vKIE=; b=a+Trfk7FFlBdqf4bVfp9imx5fk
+	UX7DTXXtpEL0HEm/WpyfS1cDncg4gt+GEa/1Ip6mUx4fasYVCcjQFoF0vEWSsABr0LUwAtIF25fX9
+	LS7yG0o3uOizKsz/z4jRiJItig5auZtNr9LjGeWtY2HJZnN0Lcgtbycoc029iIlDQXHH30ZfWZGb7
+	VRyoFhiD6UGQvamuu9sPbL7XxE7UepSLATkqWUdNxvqo+u5klOkzTaL2X3B5LhiFuMJGM4I+gdW7F
+	yhXz02j3ubVH5Wks0dYg5jC045ae/9UrAApWCWYERiZAVMUSAkHk86d/fKFi8a7ZS+JSgnyVdoL/9
+	hdf/0qwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7uog-0000000Droy-2UNx;
-	Thu, 24 Apr 2025 11:32:30 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7tlt-0000000DfS2-2BxV
-	for linux-mediatek@bombadil.infradead.org;
-	Thu, 24 Apr 2025 10:25:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=s6fx4MUr4te9jDkTy05iUwkmlLiv1scjMrYy23qe190=; b=Jj0jAm+WULslT3FNJQ3n8K7RhG
-	FKVucKVVnITdurpZN3crJNoofs/hWV95e0fKzlgoP3RF3j5YnEr/ZcKkrOjGVRs98L0c9vvTQJnF+
-	0VYhuRZdMaaAcwFPYE1MtJHjOpHRQuNDwXSAwPUicip2zV2M73tIuv0fvFcII/gxZy0Pe+bmyEGqo
-	HyeLa0DIFNW0Ml6ku4PO2ZcpGtHmSN7tnTKiopR4Af706qyVJJBaTQVlUeF3TdBt2v//yY/6jr4VY
-	3Wc5pCAAPE7NtyR1bTTrnWLQ1YSEkV3qBKFYSv3iAUidB3cZnZ+UfN8v7ldW2OrbC4Z3qhmo8w1ih
-	wHTWtNrA==;
+	id 1u7usL-0000000Dsat-2bgs;
+	Thu, 24 Apr 2025 11:36:17 +0000
 Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
-	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u7tlq-0000000BjUm-02nv
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1u7tlu-0000000DfSF-35fJ
 	for linux-mediatek@lists.infradead.org;
-	Thu, 24 Apr 2025 10:25:32 +0000
-Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-227cf12df27so7735155ad.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 24 Apr 2025 03:25:28 -0700 (PDT)
+	Thu, 24 Apr 2025 10:25:35 +0000
+Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-2254e0b4b79so13077055ad.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 24 Apr 2025 03:25:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1745490326; x=1746095126; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1745490333; x=1746095133; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=s6fx4MUr4te9jDkTy05iUwkmlLiv1scjMrYy23qe190=;
-        b=EcTdTVvIGuBBfQBX02UU1JkMbdxpOZPWABIaoUcGs5Ars85ySJ89UL/+/csYot8C6+
-         e7MlN7uJxVpNlWoEJ2vFa7tB2hy0SNh0JOxWRxipf4b0Qj2vAuCDde6s5ANJ2209f8Hb
-         9nhXeydHtp4WF4crhqghyTiXctBknrBs3LUvE=
+        bh=HOVuiI+8mSRH7O/02K1BDgrIMTx/XasOhwMXr41vKIE=;
+        b=F0HscKVhiGRqfC1tSTuOPUCaJpMmgrxC94WKsNOhi1jlwGaSd0U54Pa6srlPLLn0gM
+         IJsW6zXTkKLkmHL/nghZdB9J1nvI/bz5HtWfgek6cg99TOmaNdnJ4H35pk44kFh35+in
+         sT0y23uUyri6feNmzhH6Wd9hmBiGWjOscbb3g=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745490326; x=1746095126;
+        d=1e100.net; s=20230601; t=1745490333; x=1746095133;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=s6fx4MUr4te9jDkTy05iUwkmlLiv1scjMrYy23qe190=;
-        b=UC+WOzLkWj6KHdgYgGjzk/bc9APum7fhX73y5oQJZZ6TGi75CMOlzVMCsOAP8POjgY
-         kwxc59lFAwz7ACxh8geBK/MKABvXk/W0o0jBf0yn4tecstgC/RoV+gjhXWHT/G3eednn
-         F5eLQXSA/RmT3Wgke05TbPvNgua+xJ2J1I1I3Ss9kEFXMjubyOjAu+rPQ73hP5bFuF0w
-         hbGbPPKN2B+8BC0kY5YkkwsIpWb01cW/1tTRfqED++YGReSO8/9R30flYhjbcH14aqFx
-         Jy3yBZFeWKqI2Ov/lfHVgV3zPh7LstTLxuipxOoJRKQOfI8hbgHYIutdORmDLi1ztWje
-         mGlw==
-X-Forwarded-Encrypted: i=1; AJvYcCX2MKEjsRRA6tdYxwPLn2RtM6gzah6FJZUr3i29pPuZAfPK9ng9g8/uT5Oc18QMukwCXbW2k3gWplKbPmQkOA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzMxQSoFVV99CD44pMkCjcxjN18PToD2K4LVPJDegJ9Ik5+nLK3
-	Faw3yXcTNlKMLrJvq9jB9jkYplCmW8+IKSKBYgb0HNYuY7taEatMXGF92m1rug==
-X-Gm-Gg: ASbGncu9nxADH3ztdEWJMChl4lLJ9yVjKww7KAYu67EJHkOotJUKWWA79B2Gh9XevVH
-	8ACIDPfviS62rYkfdOmU6acnPq7+3N3x8HpUjaK+ZH/7GBczb+2RELdyt3wlK8FGIcwA2YHJn4H
-	x6wqLFUzFP4WP5OVuqx3JgCHLA3NldRLqu48thHduILyThr7KCte3GBX2MTX7tz7DQ1pSwAxGRt
-	66VCdbdij91wSGBeqdKP1gKo/mOa73hqmNBEXWrU49hVjDdQZmDAAJtlUYSxKkkGpq5DKIl2Tpt
-	NYj9rL4AT8SNe7S1L3ZlcuuyDtcHAsPxh5I+PTFiU4cseEzeRr+5iMpNKg==
-X-Google-Smtp-Source: AGHT+IFNflA0jQPNmROa9h8mKkta9N2LCXUl+MkxIZxkk1EuSqHoA4OT4/Txgj+BWOug6XhvWUVquw==
-X-Received: by 2002:a17:902:ec84:b0:220:e91f:4408 with SMTP id d9443c01a7336-22db499755emr24690085ad.22.1745490326648;
-        Thu, 24 Apr 2025 03:25:26 -0700 (PDT)
+        bh=HOVuiI+8mSRH7O/02K1BDgrIMTx/XasOhwMXr41vKIE=;
+        b=Piu+GRpD6VYatgMekjhLYK+flxKYQ3H0sRfFn2/eDFEM9RrDUKTCLG7p5nyUTtnTWJ
+         VUBchUHVPlNKTg64LgbYbrlaNxIQN2iJ/gdL3BjP0Awp5H+lmycTiPezj4E6XdtArL1+
+         8NQKm7fDRfjA2MQ3zEsJlEnj5HkBlcKZ4k3nfLyuObgwP5zfyffklIOHBiN9+5W1mXA5
+         ZeXQt4JhhHUE25UFDrIbTGJKhgBPBr7UB34MN6n+gI6IAyK9auzO/NyJB/QHGKv4P8u8
+         2D4l4ZA0IQ8tsGcvrcIqN++sTsPiO/NOVrKpWJetzzv6mvdMDg4aihUWM0BZrjPmN+Vq
+         1hQw==
+X-Forwarded-Encrypted: i=1; AJvYcCXwYSm4/RS0TiOo+G9Nc6fLetle461a5I6e+HgllF8jeqCxWg4wmyF7a0+PEMBdaH72diOR3AgR/jLNJp3BLA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyjnmxgFpkpeGANXxMbuofqqscXJja47B1oBibKL8YW/e6SDJQh
+	f1DRlf3kd33l/My8eL7G8VAbHwDn//ZgY/+s0ptcdrt7AXKAMdZQoOfFl1KqXQ==
+X-Gm-Gg: ASbGnctL/oU3QoIgZ0E05DQ7cYHn+U2dYuuHqiQ1OZkdjl1+zUb/E/qmV4DLlXcga9q
+	MWaRcDH8g10/IMrr9QPq9n97v05PvSUU4zT0mubov58sKR+os6HUQIS3neubNjidyZQQYQ0NpCL
+	XW/qLJ02sWctU6UnAsfutm3BfmvdFpv+VoL+cXNkOZVd6OJLDtwuE8WH7c84ONADkFwb2Xm2twX
+	x9prZ00Nw6jdscpG23Ndi7FHEuyTB25681E6WYxdeQNrAAkdcz1rGgkqchQbe3BZsthtUhUUUtn
+	cen1aoYhorZ1ZbOCnoc/VysVy62HX70+l6CIhe/dnb/DTHNNeT7gN7eRIA==
+X-Google-Smtp-Source: AGHT+IGD0vIug8Nt9qcP/TU1PZMvFZmtESOf6amtEN+pO0sojtfEbRYqEQc7zpWOQxTNCIuHa8wc2g==
+X-Received: by 2002:a17:903:24f:b0:220:e655:d77 with SMTP id d9443c01a7336-22db3db14ecmr31506645ad.36.1745490332983;
+        Thu, 24 Apr 2025 03:25:32 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:fa13:e633:684b:257])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22db4dda40fsm9680305ad.104.2025.04.24.03.25.23
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22db4dda40fsm9680305ad.104.2025.04.24.03.25.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 24 Apr 2025 03:25:25 -0700 (PDT)
+        Thu, 24 Apr 2025 03:25:32 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Liam Girdwood <lgirdwood@gmail.com>,
 	Mark Brown <broonie@kernel.org>,
@@ -97,18 +82,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 02/13] ASoC: dt-bindings: mt8173-afe-pcm: Add power domain
-Date: Thu, 24 Apr 2025 18:24:56 +0800
-Message-ID: <20250424102509.1083185-3-wenst@chromium.org>
+Subject: [PATCH v2 04/13] ASoC: dt-bindings: mt8186-afe-pcm: Allow specifying reserved memory region
+Date: Thu, 24 Apr 2025 18:24:58 +0800
+Message-ID: <20250424102509.1083185-5-wenst@chromium.org>
 X-Mailer: git-send-email 2.49.0.805.g082f7c87e0-goog
 In-Reply-To: <20250424102509.1083185-1-wenst@chromium.org>
 References: <20250424102509.1083185-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250424_112530_099016_3E44146D 
-X-CRM114-Status: UNSURE (   9.42  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250424_032534_773406_C99B7E4C 
+X-CRM114-Status: GOOD (  10.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,50 +107,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The audio subsystem sits under a controllable power domain.
+It is desirable to reserve memory for the audio frontend.
 
-Add it to the binding.
+Allow the "memory-region" property, to be used to point to a reserved
+memory region.
 
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- .../devicetree/bindings/sound/mediatek,mt8173-afe-pcm.yaml  | 6 ++++++
- 1 file changed, 6 insertions(+)
+ Documentation/devicetree/bindings/sound/mt8186-afe-pcm.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8173-afe-pcm.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8173-afe-pcm.yaml
-index a95215ba6361..666408d32f5c 100644
---- a/Documentation/devicetree/bindings/sound/mediatek,mt8173-afe-pcm.yaml
-+++ b/Documentation/devicetree/bindings/sound/mediatek,mt8173-afe-pcm.yaml
-@@ -45,12 +45,16 @@ properties:
-       - const: i2s3_m
-       - const: i2s3_b
+diff --git a/Documentation/devicetree/bindings/sound/mt8186-afe-pcm.yaml b/Documentation/devicetree/bindings/sound/mt8186-afe-pcm.yaml
+index 7fe85b08f9df..f5af2cf18158 100644
+--- a/Documentation/devicetree/bindings/sound/mt8186-afe-pcm.yaml
++++ b/Documentation/devicetree/bindings/sound/mt8186-afe-pcm.yaml
+@@ -25,6 +25,10 @@ properties:
+   reset-names:
+     const: audiosys
  
-+  power-domains:
++  memory-region:
++    description: memory region for audio DMA buffers
 +    maxItems: 1
 +
- required:
-   - compatible
-   - reg
-   - interrupts
-   - clocks
-   - clock-names
-+  - power-domains
+   mediatek,apmixedsys:
+     $ref: /schemas/types.yaml#/definitions/phandle
+     description: The phandle of the mediatek apmixedsys controller
+@@ -170,6 +174,7 @@ examples:
+                       "top_apll12_div_tdm",
+                       "top_mux_audio_h",
+                       "top_clk26m_clk";
++        memory-region = <&afe_dma_mem>;
+     };
  
- additionalProperties: false
- 
-@@ -59,11 +63,13 @@ examples:
-     #include <dt-bindings/clock/mt8173-clk.h>
-     #include <dt-bindings/interrupt-controller/arm-gic.h>
-     #include <dt-bindings/interrupt-controller/irq.h>
-+    #include <dt-bindings/power/mt8173-power.h>
- 
-     mt8173-afe-pcm@11220000 {
-         compatible = "mediatek,mt8173-afe-pcm";
-         reg = <0x11220000 0x1000>;
-         interrupts = <GIC_SPI 134 IRQ_TYPE_EDGE_FALLING>;
-+        power-domains = <&spm MT8173_POWER_DOMAIN_AUDIO>;
-         clocks = <&infracfg CLK_INFRA_AUDIO>,
-                  <&topckgen CLK_TOP_AUDIO_SEL>,
-                  <&topckgen CLK_TOP_AUD_INTBUS_SEL>,
+ ...
 -- 
 2.49.0.805.g082f7c87e0-goog
 
