@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D666C369AB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Apr 2025 19:24:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6230AC369AB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Apr 2025 19:26:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wNQT85T+7+9AjV83YQvJO9I+uKD11TX9ebUaRnD7heU=; b=Ew++1HL2VtOsGRd9tyeJIMPOAe
-	CXJv0pT4/yeAKn9Y9TuUnK2IJsfSD7FmLtAYp3J3LgaKSNqHnpYyAxf4q9JwC3DC3WFKMvvD1Sqyi
-	baumEu6YTlvFbw81uI0q1krfAkdB86LTOht3wqUqIa4H7fihm8Of4DL2Q4Gx3peHNH91uTbk9htpz
-	pXC2VD2cB9FtiZc1xAheC47cuJ19W8T6ygWDo3vI9rmS4gny7/NY/YmTnOqwrFW+2V/Eq2BHHbM5d
-	+o/tCPd2WvrGkA3cDWVOOQpV2/GC1nBMUmLqrIkq8K9GJ/VCnsH3gFF4xdFIxKEDMkucMgAc4qLbi
-	kKoU/RPA==;
+	bh=awOAgPr+q9DGYzVpOVBJHCkywDHS7z4YfF9zqbhhY3E=; b=Sb4DCzJZLNI/RiAsPJH6o0nV+c
+	yQ9s49FkeDWfx8VQJBG0WgDbX13jJLw0DYoieFYvkmpT2pdQzY//+cF1m/i0dz4Uuejx968tw2pVI
+	GjbdFzNtPeYuF4dOBOjEQ6pIKhQQFDROsstFUYiB4sGNXiOFTWFxg87LzuT5PvP7rLnrYPPMMWEey
+	ak/Xmt7rAiJv+MWWTC6OPtQENvSCeXpE9VucVv7ni+lB9QoP7+OKyz+XTH9OTS9Abazmc3Xc72AXz
+	POuIHl/YDcH/je9iFn3gFuVCtUhPoEmtI4T2OUNcK2As9d1FxkgJt2qc2IUEbA/6o7hNizWrYWXGw
+	n4sH1Pjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u82BC-0000000FBCk-0dcM;
-	Thu, 24 Apr 2025 19:24:14 +0000
-Received: from relay4-d.mail.gandi.net ([2001:4b98:dc4:8::224])
+	id 1u82D1-0000000FBog-1r8w;
+	Thu, 24 Apr 2025 19:26:07 +0000
+Received: from relay4-d.mail.gandi.net ([217.70.183.196])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u81o8-0000000F6Kk-4AJX;
-	Thu, 24 Apr 2025 19:00:26 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 47211443B1;
-	Thu, 24 Apr 2025 19:00:18 +0000 (UTC)
+	id 1u81oB-0000000F6LP-45R9;
+	Thu, 24 Apr 2025 19:00:29 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id E319A443B3;
+	Thu, 24 Apr 2025 19:00:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1745521222;
+	t=1745521226;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=wNQT85T+7+9AjV83YQvJO9I+uKD11TX9ebUaRnD7heU=;
-	b=UAz4SObvbtkvDgcH6u3L5l3CsmjtC0aZ6RZ4tswe9Cw8Klxo8N78t2eAmrTIfYXcPFBKDq
-	e8UlCcC0yg3RppFRNNGf0YZN2zB0zAbcYQ9iAe1f2+kQ+fUIFZKWTGHPrDMSgip4Y2n6It
-	8keeDfkvxXQDdg8xjmSPPdOr+JceR3CfyRt9H0V4CEIFWsspbO+l9d4m0wxQkfACk9uK7Q
-	gFddOwCVIUIrZFgc9V8lPXE3cMFSs2SVIaM6WtEcpV53IOh6Y2TAIeTRZ8Vq8loHz+wgN2
-	uOsUa709oCACY+babH7r1HH7tDNLs8SMtVhI3EU6/zubgrh7WQQYTYqAW0GhmQ==
+	bh=awOAgPr+q9DGYzVpOVBJHCkywDHS7z4YfF9zqbhhY3E=;
+	b=pQMczLILzKuJkaulIGp6r0PStM9jRLLxTMnQ06sHx7IYAmzZXBpo+b13XmiaQpvYCrIvqx
+	l0MazCepyoM9jhjV81zKU/5+cNO8q4pJLjNmuM1tjsCTIN7DSANOnwVIu2xfl3MNk3cuTq
+	kY6nvJw64X5OSYJpkh8lcwKwzzD7NLFyME58qdpKa03R1dd5bgkbLVSEibVIaD063JwWnd
+	mN3Hm8xNCAGEQbs6kW7kzqJPI0MO3EoSOB8QnxoUmBzC2SlVxHukTeflJ7V+7hOMny1QbL
+	9a3InPCYjbeVLMD24XZA2hpHqoXj/EuEFi6WppyM4GjxWl+SvpcEowmGDxctVg==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Thu, 24 Apr 2025 20:59:23 +0200
-Subject: [PATCH v2 16/34] drm/msm/dp: convert to devm_drm_bridge_alloc()
+Date: Thu, 24 Apr 2025 20:59:24 +0200
+Subject: [PATCH v2 17/34] drm/msm/dsi: convert to devm_drm_bridge_alloc()
  API
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250424-drm-bridge-convert-to-alloc-api-v2-16-8f91a404d86b@bootlin.com>
+Message-Id: <20250424-drm-bridge-convert-to-alloc-api-v2-17-8f91a404d86b@bootlin.com>
 References: <20250424-drm-bridge-convert-to-alloc-api-v2-0-8f91a404d86b@bootlin.com>
 In-Reply-To: <20250424-drm-bridge-convert-to-alloc-api-v2-0-8f91a404d86b@bootlin.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -78,18 +78,17 @@ Cc: Anusha Srivatsa <asrivats@redhat.com>,
  Luca Ceresoli <luca.ceresoli@bootlin.com>, 
  Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
  Abhinav Kumar <quic_abhinavk@quicinc.com>, 
- Bjorn Andersson <quic_bjorande@quicinc.com>, 
  Marijn Suijten <marijn.suijten@somainline.org>, 
  Rob Clark <robdclark@gmail.com>, Sean Paul <sean@poorly.run>
 X-Mailer: b4 0.14.2
 X-GND-State: clean
 X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvhedtvdehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhfffugggtgffkfhgjvfevofesthejredtredtjeenucfhrhhomhepnfhutggrucevvghrvghsohhlihcuoehluhgtrgdrtggvrhgvshholhhisegsohhothhlihhnrdgtohhmqeenucggtffrrghtthgvrhhnpeeiieeuvdfftefgueduleehueetgffgjeeitedtteetkeeuueeuueekveevvdeuveenucfkphepvdgrtddvmeeijedtmedvtddvtdemvggrtddumegrgeeivdemudgsuggumeeluddtudemvdelgehfnecuvehluhhsthgvrhfuihiivgepudefnecurfgrrhgrmhepihhnvghtpedvrgdtvdemieejtdemvddtvddtmegvrgdtudemrgegiedvmedusgguugemledutddumedvleegfhdphhgvlhhopegludelvddrudeikedrudejkedruddukegnpdhmrghilhhfrhhomheplhhutggrrdgtvghrvghsohhlihessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepgeehpdhrtghpthhtohepshgvrghnsehpohhorhhlhidrrhhunhdprhgtphhtthhopehkrhiikheskhgvrhhnvghlrdhorhhgpdhrtghpthhtoheprghnughriigvjhdrhhgrjhgurgesihhnthgvlhdrtghomhdprhgtphhtthhopehjrghgrghns
+X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvhedtvdehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhfffugggtgffkfhgjvfevofesthejredtredtjeenucfhrhhomhepnfhutggrucevvghrvghsohhlihcuoehluhgtrgdrtggvrhgvshholhhisegsohhothhlihhnrdgtohhmqeenucggtffrrghtthgvrhhnpeeiieeuvdfftefgueduleehueetgffgjeeitedtteetkeeuueeuueekveevvdeuveenucfkphepvdgrtddvmeeijedtmedvtddvtdemvggrtddumegrgeeivdemudgsuggumeeluddtudemvdelgehfnecuvehluhhsthgvrhfuihiivgepudegnecurfgrrhgrmhepihhnvghtpedvrgdtvdemieejtdemvddtvddtmegvrgdtudemrgegiedvmedusgguugemledutddumedvleegfhdphhgvlhhopegludelvddrudeikedrudejkedruddukegnpdhmrghilhhfrhhomheplhhutggrrdgtvghrvghsohhlihessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepgeegpdhrtghpthhtohepshgvrghnsehpohhorhhlhidrrhhunhdprhgtphhtthhopehkrhiikheskhgvrhhnvghlrdhorhhgpdhrtghpthhtoheprghnughriigvjhdrhhgrjhgurgesihhnthgvlhdrtghomhdprhgtphhtthhopehjrghgrghns
  egrmhgrrhhulhgrshholhhuthhiohhnshdrtghomhdprhgtphhtthhopehquhhitggprggshhhinhgrvhhksehquhhitghinhgtrdgtohhmpdhrtghpthhtohepihhmgieslhhishhtshdrlhhinhhugidruggvvhdprhgtphhtthhopehmrggrrhhtvghnrdhlrghnkhhhohhrshhtsehlihhnuhigrdhinhhtvghlrdgtohhmpdhrtghpthhtohepnfgruhhrvghnthdrphhinhgthhgrrhhtsehiuggvrghsohhnsghorghrugdrtghomh
 X-GND-Sasl: luca.ceresoli@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250424_120025_233785_2F8991DE 
-X-CRM114-Status: UNSURE (   9.27  )
+X-CRM114-CacheID: sfid-20250424_120028_147446_2DC4A9C9 
+X-CRM114-Status: UNSURE (   9.47  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -112,38 +111,37 @@ Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 ---
 
 Cc: Abhinav Kumar <quic_abhinavk@quicinc.com>
-Cc: Bjorn Andersson <quic_bjorande@quicinc.com>
 Cc: Marijn Suijten <marijn.suijten@somainline.org>
 Cc: Rob Clark <robdclark@gmail.com>
 Cc: Sean Paul <sean@poorly.run>
 ---
- drivers/gpu/drm/msm/dp/dp_drm.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+ drivers/gpu/drm/msm/dsi/dsi_manager.c | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/gpu/drm/msm/dp/dp_drm.c b/drivers/gpu/drm/msm/dp/dp_drm.c
-index cca57e56c906255a315e759e85a5af5982c80e9c..293f4745f1e20ba67da1d3fc218da3d90e1be588 100644
---- a/drivers/gpu/drm/msm/dp/dp_drm.c
-+++ b/drivers/gpu/drm/msm/dp/dp_drm.c
-@@ -296,14 +296,15 @@ int msm_dp_bridge_init(struct msm_dp *msm_dp_display, struct drm_device *dev,
- 	struct msm_dp_bridge *msm_dp_bridge;
- 	struct drm_bridge *bridge;
+diff --git a/drivers/gpu/drm/msm/dsi/dsi_manager.c b/drivers/gpu/drm/msm/dsi/dsi_manager.c
+index 72ada9f2f043d2278e3ff2ff499fb52502330c68..ca400924d4eea89732905997d087e442ba9f336e 100644
+--- a/drivers/gpu/drm/msm/dsi/dsi_manager.c
++++ b/drivers/gpu/drm/msm/dsi/dsi_manager.c
+@@ -462,15 +462,14 @@ int msm_dsi_manager_connector_init(struct msm_dsi *msm_dsi,
+ 	struct drm_connector *connector;
+ 	int ret;
  
--	msm_dp_bridge = devm_kzalloc(dev->dev, sizeof(*msm_dp_bridge), GFP_KERNEL);
--	if (!msm_dp_bridge)
+-	dsi_bridge = devm_kzalloc(msm_dsi->dev->dev,
+-				sizeof(*dsi_bridge), GFP_KERNEL);
+-	if (!dsi_bridge)
 -		return -ENOMEM;
-+	msm_dp_bridge = devm_drm_bridge_alloc(dev->dev, struct msm_dp_bridge, bridge,
-+					      msm_dp_display->is_edp ? &msm_edp_bridge_ops :
-+					      &msm_dp_bridge_ops);
-+	if (IS_ERR(msm_dp_bridge))
-+		return PTR_ERR(msm_dp_bridge);
++	dsi_bridge = devm_drm_bridge_alloc(msm_dsi->dev->dev, struct dsi_bridge, base,
++					   &dsi_mgr_bridge_funcs);
++	if (IS_ERR(dsi_bridge))
++		return PTR_ERR(dsi_bridge);
  
- 	msm_dp_bridge->msm_dp_display = msm_dp_display;
+ 	dsi_bridge->id = msm_dsi->id;
  
- 	bridge = &msm_dp_bridge->bridge;
--	bridge->funcs = msm_dp_display->is_edp ? &msm_edp_bridge_ops : &msm_dp_bridge_ops;
- 	bridge->type = msm_dp_display->connector_type;
- 	bridge->ycbcr_420_allowed = yuv_supported;
+ 	bridge = &dsi_bridge->base;
+-	bridge->funcs = &dsi_mgr_bridge_funcs;
  
+ 	ret = devm_drm_bridge_add(msm_dsi->dev->dev, bridge);
+ 	if (ret)
 
 -- 
 2.49.0
