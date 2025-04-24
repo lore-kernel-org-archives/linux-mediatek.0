@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 675EDC369AB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Apr 2025 11:45:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85255C369AB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Apr 2025 11:45:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aSScOVwhUO+K0/3KqN7maXbkfUTR6/cC4fz9TlS9l30=; b=rSA64Om0gkWt66SOQGQO1V/mV7
-	yj5PVVI7R6VPceKdFigeDI+JovxKwTlk9XmHK+BTlh1DmfUh5cPKLQY4EXiggznjgpSuiT7lhwYhB
-	SD1eNKjd2Frydz5dlJj6DW6kYn8rC1kfZ6fMog3g3PUj5VsFW/ijIo0zcxNo6l710jA0UA4HY14TH
-	unvdDxkchEom1I2BqoNLAb5TyeQYsEgOpwiHpbS7pV6ki+5FKKhZewsosZ8Ac/ijOnLS9MhDZQaCJ
-	UGQiPFeSV2hOh8hHfUZEo/PD0YAbuwthfc100DiPPPCF46i2x6FNOOBmg0aBYJtB/6sqB5hAcq6rn
-	y4Cz/pWg==;
+	bh=FmVpDCANpDWXjfc77hOC3nlqo3wLCB+cB+2xYUcVaDA=; b=gVMlDQ/PHIjFT+9LUk7U16H6n7
+	dOrU2c7SICWdy4N2dYszpPt7Wot4Qsg+rzIzLdD4dCgiC0ZPtDgjzkhjndk/wW8FCDZ6sUCnxhN9n
+	EWymSeTKb+UZSiofUYqirnxsiRsTWpfAi4nHwsAWqPV9BsbTHOKXs6K1qzP1ohfBxoSXYkuWDLkMq
+	NmAYV+WOKHowVyETYWFopvBiNhOT3LtoZIqmpg7DxeqGSw7NqFYTeedawoYJ0/CLGvwdP0LOXjmrj
+	LlfxTgIkrYEUDSIHaB+ynoCDqczLnteyeBWo4GZ78cEtE7YPmbYjzxwIyZi+jVxaJDgjEKcJZol97
+	I5It/saw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7v0p-0000000DuKJ-0mo7;
-	Thu, 24 Apr 2025 11:45:03 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1u7v0z-0000000DuLf-26Zy;
+	Thu, 24 Apr 2025 11:45:13 +0000
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7tmF-0000000Dfbn-3o9E
+	id 1u7tmJ-0000000Dfcz-2INc
 	for linux-mediatek@lists.infradead.org;
-	Thu, 24 Apr 2025 10:25:57 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-224341bbc1dso9313845ad.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 24 Apr 2025 03:25:55 -0700 (PDT)
+	Thu, 24 Apr 2025 10:26:01 +0000
+Received: by mail-pl1-x633.google.com with SMTP id d9443c01a7336-223fd89d036so9368605ad.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 24 Apr 2025 03:25:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1745490355; x=1746095155; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1745490358; x=1746095158; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=aSScOVwhUO+K0/3KqN7maXbkfUTR6/cC4fz9TlS9l30=;
-        b=mzfaIMR0BXWHld/TNlkseSxqnFEhU2mFApsiuw30sdU/zP1niMtHEfSqV2EZMcJH/E
-         T6QdnRbl/LH9hmGHUmJH4hcr+jZnQGp6q6eOIlEQv6P+gF0Ohq1OS5jAhiZ6e+4oGpjn
-         bZ1xu/A/i+85e8B5p4j8f09+rMJ8SernmYjFE=
+        bh=FmVpDCANpDWXjfc77hOC3nlqo3wLCB+cB+2xYUcVaDA=;
+        b=JC9uoW4kSaCTWO7B5OfhVwr3rNqvfDx09n1pLRMDXyB6KXj3uC1OZQ/3CTbi8tR8gF
+         DCvy7msa98A0LLJLftnYtj8r4933/jA2Hp6Z+dtY8YvaQKueLyBcra7eRi6Fg/Mk+Oq3
+         tIqySEdhZlVsvnTlN76JwRlwxkVpAcR+7SwoI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745490355; x=1746095155;
+        d=1e100.net; s=20230601; t=1745490358; x=1746095158;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=aSScOVwhUO+K0/3KqN7maXbkfUTR6/cC4fz9TlS9l30=;
-        b=W2q6c0S0McbPIW+ji9UvhOn+91u5YdE0WnRm4x3svB3oNwhesJnLAjLdyKMf+k1JD8
-         YzMnyDNx05Ollial5KXhfisp0kkcZFc7QfUDiRKQvommCGFMkVNghoDAd37agzgpgRkY
-         Oku4kL3Ua6u9c0oToWHmNT/XSzq81sUZLscYZIaKyWmOrleJZVXR0lJe8qbOhO4qReZc
-         pLTs33bzHmzPmnYs6Ild1HFZ1WuzTLpqL9lbx1CBUuLrIlOADoO6cCS4lpJJylg7we0E
-         fcl8Y8u3U1kFMYeqMS3YlUKo7kNmHWtSBCeNtJdkkLTAS34YH5nwx+d6nn6K2u+6e3SY
-         DZ1w==
-X-Forwarded-Encrypted: i=1; AJvYcCXCBS78Y//2twGnTOwOTB/LExLzul1VFjtQsvCBZI32FSugAgNqyqf5fRpioVXBdKDgR7ftlwNihawVZAoWew==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yyw+4I5ncCZapeu60J9lk0Z/Bljeym8tX4/wXds3/kE/ca8CGG4
-	vnV2p3BCkKDobvJKHlyycpUhoT5w49q3rSL/wR96GTCrkFqLk1RtpmvV9a2LHg==
-X-Gm-Gg: ASbGncuc1cIV56KlG7v+OCWmjfRh/3D4ap3+rjP3OOKJ9DM9wmTK3rw7ULFDJLJW715
-	xKO3LgYdqyy9z8DRiyPGNW9Kj+xv6RjrqaQnXlVszoyOWIzAezOm69jzBWsoUx+6U2WTLkf8Cm2
-	pScuqey8N2NGTq/auH4wnIrdUis9157Ry2ySw0Q4AWyFbH1MPeogvvrrBqi0BBx+pH/Xkmj5mPN
-	kKqrZShxEPC/Sn/95/fd75U17tLq0OvkEmtjaH3ZIcj4obnNN6eLLtMhBjQ1tPEoWv2kFgPz+TE
-	kHQrczB7Xh7hxBtmlUFDW36daAYqlZaIKX17jXZYCicGOkkbwKxZwR+TDQ==
-X-Google-Smtp-Source: AGHT+IGVWgP+9f44cPO1R7mfB5z1uFUey5yQnac/oTnGNxfAaOr9FFOdDrHbUFBI3ie8mEMC8Jfp1w==
-X-Received: by 2002:a17:903:17ce:b0:223:5e76:637a with SMTP id d9443c01a7336-22db3c0e722mr27960035ad.23.1745490355124;
-        Thu, 24 Apr 2025 03:25:55 -0700 (PDT)
+        bh=FmVpDCANpDWXjfc77hOC3nlqo3wLCB+cB+2xYUcVaDA=;
+        b=ocGB5tevoutKqBheMNePy7ECkuaJ+MuccRd50h4grIX5d37SuyTGDf79igwu4zTVqH
+         sqdBSgNmhYu+JQnmh4g72jhSeG6zZTLEMqkVebYnJDJ2TL4F1wX9ENH1dOsm/FhnEMLQ
+         aBl0OSgh5RAMjgXQciKoVTXaqm/cR7/7PSnOxrIWJZIF4vaeBE73ubvBPKaRuWPJjvto
+         HuDXC9Gm+zLa/bolPGIi9WjY1YOsBT6YOTRRB2pRP24a8Uo1R0pL4n6LQfRl8jAJ1Rsx
+         3VQUjc/SAzo8/VG0zVpkUANxBT4QsSps1efUC+etb7FX2f+xn3YO7vAO4ClZfMHLUqRn
+         KAmA==
+X-Forwarded-Encrypted: i=1; AJvYcCUnpj39RTkiEBdD9ybeohyQZx2ERsuFKhTdjLmhNSVm5RPljrN4zveava1Sn9GfhXNgA7UBwvmjNreZGbYwoQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YygFlVkk40hMkh08yxvj7xIzG0ldyFTI/ZUMNaHUmqOf+37C2d9
+	NwtUIQsIe53HVMlv0UQzyF+eqCYSHjl1nwJZCKx0VRa0D6GVQ75BKwtTVT+RvsshBkUk4JrMVqA
+	=
+X-Gm-Gg: ASbGncstFCwdqqS/8zt0zg+OYAIjmWX/9fiXThAEgAwKyGn1wwmn7yZsO1oQHq525UX
+	FkTZewoJoHqG3VAybvbQ/y6bVTvZBmgx2mnejtDZA0G5FpnnZ24MSFP1Ar2aZ6eAFPQ51W0+w5P
+	MR0mirnDs3MHFeiNL+XQHkNYqu2B9mqGCeuew8nn6D5Lz/Dn7NgDRLrapbkEtMhYDblb4E06tch
+	9pRZjOvYK2YVaJdEE5z81GchvBNX5RRpBUoOEm4/YfSAcLnSiofCnuq4MZ0uvvJDoMdlgPnnD2Y
+	+mWNUZRzdTqwafUnpSvmlpcj4Y+hutQW89DshyytjC5jEq0duBy9v13jzA==
+X-Google-Smtp-Source: AGHT+IFNUWW8GiZ4JqKUF9pP/L7lY/ZM2afy9ZsZUC4Qoy35aYMkl4OZHCBcklsXj7mBYosm+Ajr0Q==
+X-Received: by 2002:a17:903:3c48:b0:229:1717:882a with SMTP id d9443c01a7336-22db3bae48bmr32665265ad.4.1745490358416;
+        Thu, 24 Apr 2025 03:25:58 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:fa13:e633:684b:257])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22db4dda40fsm9680305ad.104.2025.04.24.03.25.52
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22db4dda40fsm9680305ad.104.2025.04.24.03.25.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 24 Apr 2025 03:25:54 -0700 (PDT)
+        Thu, 24 Apr 2025 03:25:57 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Liam Girdwood <lgirdwood@gmail.com>,
 	Mark Brown <broonie@kernel.org>,
@@ -82,17 +83,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 11/13] arm64: dts: mediatek: mt8183-kukui: Reserve memory for audio frontend
-Date: Thu, 24 Apr 2025 18:25:05 +0800
-Message-ID: <20250424102509.1083185-12-wenst@chromium.org>
+Subject: [PATCH v2 12/13] arm64: dts: mediatek: mt8186-corsola: Reserve memory for audio frontend
+Date: Thu, 24 Apr 2025 18:25:06 +0800
+Message-ID: <20250424102509.1083185-13-wenst@chromium.org>
 X-Mailer: git-send-email 2.49.0.805.g082f7c87e0-goog
 In-Reply-To: <20250424102509.1083185-1-wenst@chromium.org>
 References: <20250424102509.1083185-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250424_032555_950118_5F995CDD 
-X-CRM114-Status: GOOD (  13.36  )
+X-CRM114-CacheID: sfid-20250424_032559_581658_DE0BC5B6 
+X-CRM114-Status: GOOD (  13.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,21 +113,21 @@ audio frontend. These platforms reserve it at a fixed address, though it
 is unclear if that is due to hardware access restrictions or simply
 compacting the reserved memory blocks together.
 
-Reserve the same size of memory on the MT8183 Kukui & Jacuzzi families
-as well, to align with the other MediaTek-based ChromeOS platforms. This
-also helps with memory starvation as these devices commonly end up in
-low memory conditions.
+Reserve the same size of memory on the MT8186 Corsola family as well, to
+align with the other MediaTek-based ChromeOS platforms. This also helps
+with memory starvation as these devices sometimes end up in low memory
+conditions.
 
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-index 0fe9f2d1b912..00b97cfa0eec 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-@@ -85,6 +85,13 @@ reserved_memory: reserved-memory {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
+index c864ed495702..b139588ae246 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
+@@ -161,6 +161,13 @@ reserved_memory: reserved-memory {
  		#size-cells = <2>;
  		ranges;
  
@@ -137,20 +138,17 @@ index 0fe9f2d1b912..00b97cfa0eec 100644
 +			no-map;
 +		};
 +
- 		scp_mem_reserved: memory@50000000 {
+ 		adsp_dma_mem: memory@61000000 {
  			compatible = "shared-dma-pool";
- 			reg = <0 0x50000000 0 0x2900000>;
-@@ -198,6 +205,10 @@ tboard_thermistor2: thermal-sensor2 {
- 	};
+ 			reg = <0 0x61000000 0 0x100000>;
+@@ -310,6 +317,7 @@ &adsp {
  };
  
-+&afe {
+ &afe {
 +	memory-region = <&afe_dma_mem>;
-+};
-+
- &auxadc {
  	status = "okay";
  };
+ 
 -- 
 2.49.0.805.g082f7c87e0-goog
 
