@@ -4,81 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 191C1C369AB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Apr 2025 11:28:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A008BC369AB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Apr 2025 11:32:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ZiphZyoVbuU2HXJVLii+SRj3OxrxBVUtbZVtTcIK3L0=; b=DFzU4cu3ImyTDWz3wAMKNgkz7+
-	YsPLRaNNt7Yj5mlCdh+Gq4C7f9VYcPRriXJ+/YoXhToPJYtMI7Qp0crLgW5m3zwRU4+TnYJsuwRe9
-	5aWiw4iaEvcf7D5ci5raY3vH/aEt+LadlVbnk4begba4oUhHjtuYIKa0k5CyCYPLBvHyxJu0bIlcz
-	ee5PuhRuTpZQ8DAU8NGhY7m99YZP0TfB4fNpc8oBTAQiRpbqjr1FaSqn91ekoBNnEm+cOeovLXcEq
-	r2faV4spJmmtWD3zXdarhAAr6oYgteUOGh1ZcSukDLdeKVn8DyCkhHiDhCiVAtYsX7TgtnhHAsPsv
-	aUgYB5LA==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=s6fx4MUr4te9jDkTy05iUwkmlLiv1scjMrYy23qe190=; b=qo5dpv4c7gR+F2X//w2N9ghrfN
+	uJBHlnReloIbboZeCIjp4bByJivUMTQmiJw1JIPfjJekXJXu13NSUxWdAJKNm9IyDMM36ws/zrFJX
+	vFKaBxK57OYdWPl7uLUaHV7Hql3JzxHL0ih6ZbvXDC3PXwjOdQ5kv/LtG7dX1aadWijfzloUiL4Xw
+	6WMFTjBIZgKrJuCQPLLEfdhrASk3wbxTCYl9FDuind2lbYTf3wwnD6PIAjB+5h2xG4zwtoMuDwopy
+	onhUfavnd+6+cFM61r+mv2VCt3/fdaX3AK3V+vGzgSCRCwGal9aEhCDl6+7RX9BsG3DWvLVecmu8X
+	6jzUSq2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7ul3-0000000Dr9E-006n;
-	Thu, 24 Apr 2025 11:28:45 +0000
+	id 1u7uog-0000000Droy-2UNx;
+	Thu, 24 Apr 2025 11:32:30 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7tlm-0000000DfQk-3yB7
+	id 1u7tlt-0000000DfS2-2BxV
 	for linux-mediatek@bombadil.infradead.org;
-	Thu, 24 Apr 2025 10:25:27 +0000
+	Thu, 24 Apr 2025 10:25:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=ZiphZyoVbuU2HXJVLii+SRj3OxrxBVUtbZVtTcIK3L0=; b=pRMLVmbRPMbPBdXEU8ULobWewW
-	NSLgp4CQJ1K+xc/kbqP/jyFXPKjYau6VDGDKW/EML8kTJYOpD5T1mgOyk7TRDiP7UZdds4BBgZzD/
-	LEIzjsj1Mz9ldryanFvedjptt8/X/wjK1izxE14eCcEuMwasy5NYLdWsflz6T7sQ6JcFfjRXe+R49
-	pgFUQnYT9ryrTE/EISGUcEsu8f7SUBNcPB3EG21t5Nn4gq8P5i/Ie6dKcdcsVshWpE7cnDeNn2qK6
-	OzmmKju0e6QqW/qRc6MQuZyO0HCTkewRVJ42EHx0ENvznWWLDXxFR0Ewq6OJE3mcA6uXYuPjajb4p
-	SFLgnJpw==;
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=s6fx4MUr4te9jDkTy05iUwkmlLiv1scjMrYy23qe190=; b=Jj0jAm+WULslT3FNJQ3n8K7RhG
+	FKVucKVVnITdurpZN3crJNoofs/hWV95e0fKzlgoP3RF3j5YnEr/ZcKkrOjGVRs98L0c9vvTQJnF+
+	0VYhuRZdMaaAcwFPYE1MtJHjOpHRQuNDwXSAwPUicip2zV2M73tIuv0fvFcII/gxZy0Pe+bmyEGqo
+	HyeLa0DIFNW0Ml6ku4PO2ZcpGtHmSN7tnTKiopR4Af706qyVJJBaTQVlUeF3TdBt2v//yY/6jr4VY
+	3Wc5pCAAPE7NtyR1bTTrnWLQ1YSEkV3qBKFYSv3iAUidB3cZnZ+UfN8v7ldW2OrbC4Z3qhmo8w1ih
+	wHTWtNrA==;
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
 	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u7tli-0000000BjTH-3UvT
+	id 1u7tlq-0000000BjUm-02nv
 	for linux-mediatek@lists.infradead.org;
-	Thu, 24 Apr 2025 10:25:24 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-224191d92e4so8013305ad.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 24 Apr 2025 03:25:21 -0700 (PDT)
+	Thu, 24 Apr 2025 10:25:32 +0000
+Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-227cf12df27so7735155ad.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 24 Apr 2025 03:25:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1745490320; x=1746095120; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZiphZyoVbuU2HXJVLii+SRj3OxrxBVUtbZVtTcIK3L0=;
-        b=M8/PRZa5vXI1Tho12TeU1tD/Q0xTAcaCcMcqd/4xUlfpJcfthdg0AB4YmNaQF2cRxQ
-         rOdGUPh8NWbuzEUwNmIM+vqgRxRY3JomBVuod7yTjyOyyjJBQ/Rh0GSQCar63lh8GJYO
-         nXWfDy4OwWV6YZBw6IleQQlAPXz3IKj//RiVQ=
+        d=chromium.org; s=google; t=1745490326; x=1746095126; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=s6fx4MUr4te9jDkTy05iUwkmlLiv1scjMrYy23qe190=;
+        b=EcTdTVvIGuBBfQBX02UU1JkMbdxpOZPWABIaoUcGs5Ars85ySJ89UL/+/csYot8C6+
+         e7MlN7uJxVpNlWoEJ2vFa7tB2hy0SNh0JOxWRxipf4b0Qj2vAuCDde6s5ANJ2209f8Hb
+         9nhXeydHtp4WF4crhqghyTiXctBknrBs3LUvE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745490320; x=1746095120;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ZiphZyoVbuU2HXJVLii+SRj3OxrxBVUtbZVtTcIK3L0=;
-        b=EI3nShUTN57z11gLycKaVSj0qJXKvC4cSI+G+2RhT3AqmoSraWIiPdYpALNM0nV2zu
-         mKQT3C7xxvwlnhy/yYFQVV5jEPtufr0O4ClckKNxk38VgQoelu7bPJCt82/YmlVN20fA
-         a7IfMs48qCi81KQOs5A098VP9YcQM/B0jj0N2LQNum3wbceoLWKdeOZpclyvaotlGD+Z
-         aLubLp7c+CyJIrdYa4ocLCW3Ky+oShMIc6nxMmfJcGleeFNGN/umOPZRqgRNKQMSFM3+
-         lnhgNKNBPfXjFoSvkdN+gljQ3NPOuH8bPWhH8PEmOvQZvqAbyF1M/PkI/hofWHfuqtT+
-         hq3Q==
-X-Forwarded-Encrypted: i=1; AJvYcCVb8qq+44JTKURszFFUVGyIy5B11UPcv8MUBcYctNUjL0chvn/2gbEpRluCV0T66y7cG8iQ0A0oOg63jP2M8A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzidItaOdFAhG/71Pb7xgRlQ42Bxg0BHkJp9twS/lLLqoZxngKp
-	h0TTOebgpOCp4rR0ZWb5XOa+loSyDBRzsb/loNUszVVMy8+k8K5nLdYw1Qh91A==
-X-Gm-Gg: ASbGncuzhAjqvO15JNEHBvIW2GMJrkFH80aKzzIloh6RDKr6zbn23RcD9KQou9mblJ0
-	WOaaDH8hYw1eOVfvxQOqjiX/FkV4V1ega628qb3e7tZrMEVwlIJYmRJGEkAFkiudCRwFgEb7BWC
-	pDGwJluBIex+KlCwUUPfmIPgnQ/pAHC++WY/R0VBebWxypWzFo7CONOHdIT30veO/tzT5YsaWI0
-	yfdIZaxfI1lftHfnM0WSMr3Lu4FFANyuztEqPy4RR3zDdCGMfWOdn0wedMiCAikXMII0IYVEcAS
-	3uAFrWAglLWlNl7qrDBaZADqhO1VQsmZXIYC9989A0QuTUvvw6tPo8ktgg==
-X-Google-Smtp-Source: AGHT+IHKZn/4E+ABRHWYqcKrwGD2nSNg3ytsgaiTlsNEp51ItpCCjFOn8apfWFbXf/8tif5QwDiKig==
-X-Received: by 2002:a17:902:d50e:b0:215:b473:1dc9 with SMTP id d9443c01a7336-22db3daee3emr27358095ad.46.1745490319801;
-        Thu, 24 Apr 2025 03:25:19 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1745490326; x=1746095126;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=s6fx4MUr4te9jDkTy05iUwkmlLiv1scjMrYy23qe190=;
+        b=UC+WOzLkWj6KHdgYgGjzk/bc9APum7fhX73y5oQJZZ6TGi75CMOlzVMCsOAP8POjgY
+         kwxc59lFAwz7ACxh8geBK/MKABvXk/W0o0jBf0yn4tecstgC/RoV+gjhXWHT/G3eednn
+         F5eLQXSA/RmT3Wgke05TbPvNgua+xJ2J1I1I3Ss9kEFXMjubyOjAu+rPQ73hP5bFuF0w
+         hbGbPPKN2B+8BC0kY5YkkwsIpWb01cW/1tTRfqED++YGReSO8/9R30flYhjbcH14aqFx
+         Jy3yBZFeWKqI2Ov/lfHVgV3zPh7LstTLxuipxOoJRKQOfI8hbgHYIutdORmDLi1ztWje
+         mGlw==
+X-Forwarded-Encrypted: i=1; AJvYcCX2MKEjsRRA6tdYxwPLn2RtM6gzah6FJZUr3i29pPuZAfPK9ng9g8/uT5Oc18QMukwCXbW2k3gWplKbPmQkOA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzMxQSoFVV99CD44pMkCjcxjN18PToD2K4LVPJDegJ9Ik5+nLK3
+	Faw3yXcTNlKMLrJvq9jB9jkYplCmW8+IKSKBYgb0HNYuY7taEatMXGF92m1rug==
+X-Gm-Gg: ASbGncu9nxADH3ztdEWJMChl4lLJ9yVjKww7KAYu67EJHkOotJUKWWA79B2Gh9XevVH
+	8ACIDPfviS62rYkfdOmU6acnPq7+3N3x8HpUjaK+ZH/7GBczb+2RELdyt3wlK8FGIcwA2YHJn4H
+	x6wqLFUzFP4WP5OVuqx3JgCHLA3NldRLqu48thHduILyThr7KCte3GBX2MTX7tz7DQ1pSwAxGRt
+	66VCdbdij91wSGBeqdKP1gKo/mOa73hqmNBEXWrU49hVjDdQZmDAAJtlUYSxKkkGpq5DKIl2Tpt
+	NYj9rL4AT8SNe7S1L3ZlcuuyDtcHAsPxh5I+PTFiU4cseEzeRr+5iMpNKg==
+X-Google-Smtp-Source: AGHT+IFNflA0jQPNmROa9h8mKkta9N2LCXUl+MkxIZxkk1EuSqHoA4OT4/Txgj+BWOug6XhvWUVquw==
+X-Received: by 2002:a17:902:ec84:b0:220:e91f:4408 with SMTP id d9443c01a7336-22db499755emr24690085ad.22.1745490326648;
+        Thu, 24 Apr 2025 03:25:26 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:fa13:e633:684b:257])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22db4dda40fsm9680305ad.104.2025.04.24.03.25.16
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22db4dda40fsm9680305ad.104.2025.04.24.03.25.23
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 24 Apr 2025 03:25:19 -0700 (PDT)
+        Thu, 24 Apr 2025 03:25:25 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Liam Girdwood <lgirdwood@gmail.com>,
 	Mark Brown <broonie@kernel.org>,
@@ -96,15 +97,18 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 00/13] ASoC: mediatek: use reserved memory or enable buffer pre-allocation
-Date: Thu, 24 Apr 2025 18:24:54 +0800
-Message-ID: <20250424102509.1083185-1-wenst@chromium.org>
+Subject: [PATCH v2 02/13] ASoC: dt-bindings: mt8173-afe-pcm: Add power domain
+Date: Thu, 24 Apr 2025 18:24:56 +0800
+Message-ID: <20250424102509.1083185-3-wenst@chromium.org>
 X-Mailer: git-send-email 2.49.0.805.g082f7c87e0-goog
+In-Reply-To: <20250424102509.1083185-1-wenst@chromium.org>
+References: <20250424102509.1083185-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250424_112523_017649_0A72DDC6 
-X-CRM114-Status: GOOD (  21.87  )
+X-CRM114-CacheID: sfid-20250424_112530_099016_3E44146D 
+X-CRM114-Status: UNSURE (   9.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,104 +123,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi everyone,
+The audio subsystem sits under a controllable power domain.
 
-This is v2 of what was just a single patch "ASoC: mediatek: re-enable
-buffer pre-allocation on some platforms". Link to v1:
+Add it to the binding.
 
-    https://lore.kernel.org/all/20250401085659.1222008-1-wenst@chromium.org/
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ .../devicetree/bindings/sound/mediatek,mt8173-afe-pcm.yaml  | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-Angelo requested that these platforms use reserved memory regions if
-possible, and fall back to pre-allocated buffers only if that fails,
-to align with other MediaTek SoCs / platforms that already use reserved
-memory. The series covers MediaTek's MT8173, MT8183, MT8186, and MT8192
-SoCs.
-
-There are three parts to the series:
-
-- Part one (patches 1 through 5) update the DT bindings to allow having
-  a memory region. The text binding for the MT8173 was converted to YAML
-  and also aligned with current usage by addition of a power domain.
-
-  Note that the MT8183 text binding was _not_ converted. It is
-  drastically different from what was landed in the device trees. Some
-  time is needed to work out the differences. I might try to recombine
-  the audio clocks (which are actually part of the same hardware block)
-  as well.
-
-- Part two (patches 6 through 9) update the audio frontend drivers for
-  the various platforms covered in this series.
-
-  - Patch 6 is the evolution of version 1, now defaulting to reserved
-    memory if possible.
-
-  - Patch 7 adds support for >32 bit DMA addresses to the MT8183 driver.
-    This was missing, and prevents the memory regions, which are
-    allocated from the top end of main memory by default, from working.
-
-  - Patch 8 and 9 are just some minor cleanups to reduce the number of
-    "&pdev->dev" style dereferences. They are placed after the other
-    changes to make it easier for the fixes to be backported.
-
-- Part three (patches 10 through 13) add a reserved memory region for
-  the audio frontend on the various platforms.
-
-  For the MT8173, the change covers the whole platform. In practice
-  there are only ChromeOS devices.
-
-  For the other platforms, only the ChromeOS devices are covered. These
-  are what I have available for testing.
-
-
-Please have a look. I assume the DT binding and driver changes will go
-through the ASoC tree, while the device tree changes will go through the
-MediaTek tree.
-
-
-Thanks
-ChenYu
-
-
-Chen-Yu Tsai (13):
-  ASoC: dt-bindings: Convert MT8173 AFE binding to dt-schema
-  ASoC: dt-bindings: mt8173-afe-pcm: Add power domain
-  ASoC: dt-bindings: mt8173-afe-pcm: Allow specifying reserved memory
-    region
-  ASoC: dt-bindings: mt8186-afe-pcm: Allow specifying reserved memory
-    region
-  ASoC: dt-bindings: mt8192-afe-pcm: Allow specifying reserved memory
-    region
-  ASoC: mediatek: use reserved memory or enable buffer pre-allocation
-  ASoC: mediatek: mt8183-afe-pcm: Support >32 bit DMA addresses
-  ASoC: mediatek: mt8173-afe-pcm: use local `dev` pointer in driver
-    callbacks
-  ASoC: mediatek: mt8183-afe-pcm: use local `dev` pointer in driver
-    callbacks
-  arm64: dts: mediatek: mt8173: Reserve memory for audio frontend
-  arm64: dts: mediatek: mt8183-kukui: Reserve memory for audio frontend
-  arm64: dts: mediatek: mt8186-corsola: Reserve memory for audio
-    frontend
-  arm64: dts: mediatek: mt8192-asurada: Reserve memory for audio
-    frontend
-
- .../sound/mediatek,mt8173-afe-pcm.yaml        | 98 +++++++++++++++++++
- .../bindings/sound/mt8186-afe-pcm.yaml        |  5 +
- .../bindings/sound/mt8192-afe-pcm.yaml        |  5 +
- .../devicetree/bindings/sound/mtk-afe-pcm.txt | 45 ---------
- arch/arm64/boot/dts/mediatek/mt8173.dtsi      |  9 ++
- .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 11 +++
- .../boot/dts/mediatek/mt8186-corsola.dtsi     |  8 ++
- .../boot/dts/mediatek/mt8192-asurada.dtsi     | 11 +++
- .../mediatek/common/mtk-afe-platform-driver.c |  4 +-
- sound/soc/mediatek/common/mtk-base-afe.h      |  1 +
- sound/soc/mediatek/mt8173/mt8173-afe-pcm.c    | 66 +++++++------
- sound/soc/mediatek/mt8183/mt8183-afe-pcm.c    | 83 ++++++++++++----
- sound/soc/mediatek/mt8186/mt8186-afe-pcm.c    |  7 ++
- sound/soc/mediatek/mt8192/mt8192-afe-pcm.c    |  7 ++
- 14 files changed, 266 insertions(+), 94 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8173-afe-pcm.yaml
- delete mode 100644 Documentation/devicetree/bindings/sound/mtk-afe-pcm.txt
-
+diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8173-afe-pcm.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8173-afe-pcm.yaml
+index a95215ba6361..666408d32f5c 100644
+--- a/Documentation/devicetree/bindings/sound/mediatek,mt8173-afe-pcm.yaml
++++ b/Documentation/devicetree/bindings/sound/mediatek,mt8173-afe-pcm.yaml
+@@ -45,12 +45,16 @@ properties:
+       - const: i2s3_m
+       - const: i2s3_b
+ 
++  power-domains:
++    maxItems: 1
++
+ required:
+   - compatible
+   - reg
+   - interrupts
+   - clocks
+   - clock-names
++  - power-domains
+ 
+ additionalProperties: false
+ 
+@@ -59,11 +63,13 @@ examples:
+     #include <dt-bindings/clock/mt8173-clk.h>
+     #include <dt-bindings/interrupt-controller/arm-gic.h>
+     #include <dt-bindings/interrupt-controller/irq.h>
++    #include <dt-bindings/power/mt8173-power.h>
+ 
+     mt8173-afe-pcm@11220000 {
+         compatible = "mediatek,mt8173-afe-pcm";
+         reg = <0x11220000 0x1000>;
+         interrupts = <GIC_SPI 134 IRQ_TYPE_EDGE_FALLING>;
++        power-domains = <&spm MT8173_POWER_DOMAIN_AUDIO>;
+         clocks = <&infracfg CLK_INFRA_AUDIO>,
+                  <&topckgen CLK_TOP_AUDIO_SEL>,
+                  <&topckgen CLK_TOP_AUD_INTBUS_SEL>,
 -- 
 2.49.0.805.g082f7c87e0-goog
 
