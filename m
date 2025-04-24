@@ -4,67 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5EC3C369CB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Apr 2025 01:51:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF9CAC369AB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Apr 2025 03:25:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=A2rSncuWJmG5TRj0ydDHEcM9iT/ZWLPSphWRD7EqlEs=; b=dOt/1RkH4EX0YxWQjJGpydq4ac
-	cYmtwV8GvyJW6Dp9kRnOeCasNeu3WkcvxLzDkaKYd4jdl/3Sz30H/5AZXiG3BP2EotJJTSUYLIIxQ
-	i8OJqV6mrbw2UjG3vySmbVBjrYgLkVcr/vme7XVkWTGAZIwsq+mlZ22rHeECJ6u+wXNIKJLDjx/K5
-	t3zU6QdjBqWdAAC/GEk5nRyKEbbMmkYtS9BZUaq7WWoXb9G6Oi5+DWSJfToyCIlqIk87npz+PI17E
-	H3B3/y4eomvHglutOVzW2M59PJsWIGx3H/YQOXjxYBrr4zBJPh6Ul3q8hLPOr0T3SltuQi/jA6coI
-	PnR7oBtQ==;
+	bh=lm6fgchcfVrIoTbYF8HjVQc55WI83UqWvrYwf6Qmcoo=; b=rb9sbhbU4NvUsjMst174joShWW
+	0/aHzzEj72I7iM9tfpNhEb2ggwhTGMDswo2QDazcuKuojgyoPf+KdpF6TKAj9g1hu147JN/5mVm3j
+	MN2weokVO1EWa7Jjdn8QUM1bcQRthN9tDVXgp0tUvJL3D0E99gphocaZr0dt1sGJjAP55ThEXE+gu
+	pI8XPI+qVga7Rj61fPmlldLdPVvQy3KvnqCBhvEapUEUB+OukPwv/Ku1fYSCQulxFyVCsfZzcm6SG
+	/hgM53Bigwu+Udf4ABsG0k3HJkFzfaA54PP0/V6eCzOrPUHdrZsGfo4IzBz2co3ZdAmalGBgrs3t2
+	j3EeRbyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7lks-0000000CZWq-3OW4;
-	Thu, 24 Apr 2025 01:51:58 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1u7nDn-0000000CjQJ-2fjq;
+	Thu, 24 Apr 2025 03:25:55 +0000
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u7lip-0000000CZ78-2oDg;
-	Thu, 24 Apr 2025 01:49:53 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id C03125C593C;
-	Thu, 24 Apr 2025 01:47:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 75A68C4CEEA;
-	Thu, 24 Apr 2025 01:49:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1745459390;
-	bh=okAdnUMdkt77fPNOGoNov2VzUCP19KzZkGl46/1y+w8=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=YIPvj4BLeYeqMXk0isir7s8Yu2WBUBo1eModjU8uNIXQn3QFOw5gaLqgkwZBTN/dd
-	 OHkZKKCrB/7v0p4xQqGqKLyN8zfNfjDG/0xwxY2ODJ8eQY5fRHyhrkdEE8qa/dAK1R
-	 YWPRKbovTAsm3hJkSnMwsuu6y09Ocn+F9HPZUl7J628Sx/MhnsNxEJiolbu7eVV3ZK
-	 vvGDISucdRKhKXodmfxj2iH1uGOoVrmAxL7mKuTfQplKieAhtmBnxDaK8Qri5mSkQe
-	 lBVqaIGkFCnkmxTDElagKq45fTO4uIlYyo1gHFNmUrJ9Gx0JnVGTmFhX08FSNXSHM9
-	 Q8ckLFRJ4tMLg==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 33B77380CED9;
-	Thu, 24 Apr 2025 01:50:30 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1u7nBn-0000000Cj6v-1Jvp;
+	Thu, 24 Apr 2025 03:23:53 +0000
+Received: by mail-lj1-x243.google.com with SMTP id 38308e7fff4ca-317f68d0dffso973351fa.2;
+        Wed, 23 Apr 2025 20:23:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1745465029; x=1746069829; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=lm6fgchcfVrIoTbYF8HjVQc55WI83UqWvrYwf6Qmcoo=;
+        b=OD19lP+DvCWdBrr6zGMwpE0ObL7+z73i/Ibtqmc1FUGI6QW8smvjveJ5hZXIClZTMu
+         pwyN3nFF+4bE2Atx5EQP+1u7Eya29Lm5UOzDHkcfWr4p7BkQhqLgoePHDmflKEzNko5U
+         c3DAlBmSlxDhs8jXBfS09Yxaaqiv88mIRUQGF63Ne8cY5hYqAkUYjVOomu/xO6dYC2LK
+         5446x2H3vDZ6Vmogg+h7aaaXEhqOWeyKvtORGB8Vg/ADWPkwedkq5F3rvI/egFq8GPls
+         mbO6CURRVCbX4c1aLV19tGaSrJKFCat5CapPBdlaiv9CO09/QWXUa/ILE/Bliekf5ArJ
+         DMkg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1745465029; x=1746069829;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=lm6fgchcfVrIoTbYF8HjVQc55WI83UqWvrYwf6Qmcoo=;
+        b=c9JHxTlD8AY5U+7FiccLoAp3V4PXIyppMfvNEZmI7Up7N7aSKrabdo5OazgEcXI3hK
+         Uqb0RjQE/2dHSDYsdoQ7h+L0/YdIJSX0moPihGVFGmFQAub6QW2dTBTy4kWla6gF23dB
+         X5hZ+fSkzLu4QQxVmKkDc5f4+uLSrB5ByS0gBLGmpeA/kX227UmCkf5o7tR5Adt378kH
+         DNHNzby4/JSvW/uPaMu7T9hw6nHaT/sHThd9cYa+L0kHPHJfSpH/nGvoo0KPIKX5dsqI
+         jtxHYT8CsbBBF9JJJUk/lPGSsi52P3pr8sksVxH+pV2visrxW9nbnST5JgahoZXpc5aV
+         73mw==
+X-Forwarded-Encrypted: i=1; AJvYcCWPkkhzqMwK/u9/j6kDy0jcBzNjs9apOUxLamk4gAdVHKNeRcmvodIQTp5/XdSXKeCvRJIKmJ0o5R2SIpWDZ78=@lists.infradead.org, AJvYcCXuOd1Bkdj8W5/CqKlk0Xg9Ew5VekOFL/f+dA8llpLjIRkR7HhIbSDDpP1sxxXeZLkmxpG8upjF42s3tJyXj05e@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx4w5N7HDqM2cVvy372SDM+1t7G8jKSsD0adQE77dhEJt1firdR
+	VR23NU2tMyI+qpMEBimtKyWKQ/Galvw2e140zihmyneYt8018dqhss20mo8ByVJIUPDHBouKyjN
+	k6yAfYGZBJ4yK5BgmJuztjDYFXA0=
+X-Gm-Gg: ASbGncvq/qB560VdEDJu+64g7zXWFuAwpiwQOnIB+gtA3FRKFsQKJfELjiilgCr9Ur+
+	yt8sL0mRsL3I5qs2fjx39wXjHNfxKgrSLR8jzRhH/f2zzyHT4obQDCZ9WOlfVepROk0CKwvo5og
+	StY0gbfH/PBO7kQYQ6UWqJtiYYf7GeiJm4
+X-Google-Smtp-Source: AGHT+IHpA2IlBQgHwPHIfvZ0vrqa0XeHqBHX/F/8jy+/sFcXwLmevs5nk9hDPwg0SpLGxpuTEIuCYu/XuIPdjNdHMlE=
+X-Received: by 2002:a05:651c:1603:b0:30b:c96a:775 with SMTP id
+ 38308e7fff4ca-3179e5e3f4amr2733571fa.14.1745465029230; Wed, 23 Apr 2025
+ 20:23:49 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net] net: dsa: mt7530: sync driver-specific behavior of
- MT7531 variants
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <174545942875.2829412.8607382949348037647.git-patchwork-notify@kernel.org>
-Date: Thu, 24 Apr 2025 01:50:28 +0000
-References: <89ed7ec6d4fa0395ac53ad2809742bb1ce61ed12.1745290867.git.daniel@makrotopia.org>
-In-Reply-To: <89ed7ec6d4fa0395ac53ad2809742bb1ce61ed12.1745290867.git.daniel@makrotopia.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: chester.a.unal@arinc9.com, dqfext@gmail.com, neal.yen@mediatek.com,
- sean.wang@mediatek.com, andrew@lunn.ch, olteanv@gmail.com,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20250407032349.83360-1-bsdhenrymartin@gmail.com>
+In-Reply-To: <20250407032349.83360-1-bsdhenrymartin@gmail.com>
+From: henry martin <bsdhenrymartin@gmail.com>
+Date: Thu, 24 Apr 2025 11:23:39 +0800
+X-Gm-Features: ATxdqUEHu3299Lh20GzTqgUT9Pu1Hxw92kjaOjVxuPDzebfVP7Ppk-ZRHXIQRRQ
+Message-ID: <CAEnQdOrroDzrz+Y4ch8EGTP6T798-zwLpMJi5eNaW_S+Ew+BtQ@mail.gmail.com>
+Subject: Re: [PATCH v2] wifi: mt76: mt7996: Fix null-ptr-deref in mt7996_mmio_wed_init()
+To: nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com, 
+	shayne.chen@mediatek.com, sean.wang@mediatek.com, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, chui-hao.chiu@mediatek.com, 
+	bsdhenrymartin@gmail.com, rex.lu@mediatek.com
+Cc: linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250423_184951_753080_B9EAB0F3 
-X-CRM114-Status: UNSURE (   8.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250423_202351_357976_4D9EF46D 
+X-CRM114-Status: GOOD (  16.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,30 +96,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Hi all,
 
-This patch was applied to netdev/net.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+I=E2=80=99d like to kindly follow up on my previous patch submission to che=
+ck if there
+are any additional feedback or suggestions for improvement. If there are
+further changes needed, I=E2=80=99ll be happy to address them and send a v3=
+.
 
-On Tue, 22 Apr 2025 04:10:20 +0100 you wrote:
-> MT7531 standalone and MMIO variants found in MT7988 and EN7581 share
-> most basic properties. Despite that, assisted_learning_on_cpu_port and
-> mtu_enforcement_ingress were only applied for MT7531 but not for MT7988
-> or EN7581, causing the expected issues on MMIO devices.
-> 
-> Apply both settings equally also for MT7988 and EN7581 by moving both
-> assignments form mt7531_setup() to mt7531_setup_common().
-> 
-> [...]
+Please let me know if you have any comments. Thanks for your time and revie=
+w!
 
-Here is the summary with links:
-  - [net] net: dsa: mt7530: sync driver-specific behavior of MT7531 variants
-    https://git.kernel.org/netdev/net/c/497041d76301
+Best regards,
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+Henry Martin <bsdhenrymartin@gmail.com> =E4=BA=8E2025=E5=B9=B44=E6=9C=887=
+=E6=97=A5=E5=91=A8=E4=B8=80 11:24=E5=86=99=E9=81=93=EF=BC=9A
+>
+> devm_ioremap() returns NULL on error. Currently, mt7996_mmio_wed_init()
+> does not check for this case, which results in a NULL pointer
+> dereference.
+>
+> Prevent null pointer dereference in mt7996_mmio_wed_init()
+>
+> Fixes: 83eafc9251d6 ("wifi: mt76: mt7996: add wed tx support")
+> Signed-off-by: Henry Martin <bsdhenrymartin@gmail.com>
+> ---
+> V1 -> V2: Add a blank after the check and correct the summary.
+>
+>  drivers/net/wireless/mediatek/mt76/mt7996/mmio.c | 3 +++
+>  1 file changed, 3 insertions(+)
+>
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mmio.c b/drivers/n=
+et/wireless/mediatek/mt76/mt7996/mmio.c
+> index 13b188e281bd..af9169030bad 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7996/mmio.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mmio.c
+> @@ -323,6 +323,9 @@ int mt7996_mmio_wed_init(struct mt7996_dev *dev, void=
+ *pdev_ptr,
+>         wed->wlan.base =3D devm_ioremap(dev->mt76.dev,
+>                                       pci_resource_start(pci_dev, 0),
+>                                       pci_resource_len(pci_dev, 0));
+> +       if (!wed->wlan.base)
+> +               return -ENOMEM;
+> +
+>         wed->wlan.phy_base =3D pci_resource_start(pci_dev, 0);
+>
+>         if (hif2) {
+> --
+> 2.34.1
+>
 
