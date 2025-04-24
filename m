@@ -4,49 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 566CCC369AB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Apr 2025 19:52:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EBD6C369AB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Apr 2025 19:54:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S/6Zj+wUweRTx+VHVK1CTlVxOlTH40bx6xBYT/U2MxM=; b=scpLcxfMjRavMsnccSQy2h/vh7
-	lhjbDPpvbboyfkzQyEX6CtXKqfU3V3sP9MydmLPnk/kAcvONC8343ydfHlIDhA1Ue+N13mb1dv/Jy
-	a0wXeT90qGjMfnwCcc1z+0K5sXdkYuXUnHCPUz43H9nj8YzdId7PcTG0Kypj4ZtUPx0myhFiFyhfb
-	aBF1DvBk4QgL8V/LF9RSXcV/VXYzMYiUiOpVX8bvKe9RnWbVBJAcLwAIQjq+5BKDoXYRhhkvFenCt
-	hOxwBsiqdF0wtTn5PYuO4OjfRszV6vl/knyLyXFj8O8q4KqF+KlENn9CtzYQRLxVkIp8velv6CySr
-	rx/QL0rw==;
+	bh=3+Yzp90os1B1+K7TxmcOkUZ2pL98oF+RE1fH12ahofw=; b=3/iy7sOKtKK9Vp44F/XWzzH+sf
+	yRpzjyknLhOoTF89T+7uC3ANQPrVLxrza9jOtJfzQ3dqtGZVXqg25cVjf0GIqRhhKiPc85lNP+4F2
+	gC4sdKYTblynnQVWYOOzdxosfLQ2sDJmZG9b26fXcznK/mbi8GUXtHrjHUMcHKiJ6vimueM+v8Q0f
+	TwpaqBhRyMl8tZMpCqzy/4hDrl6VA1L2VyqPWqON4mMjAHcyx0xH19TFJyMoMPoyGLpxyMZCEg1sU
+	2l62e/v4oWVd/b5jc5E5MFyUbJsIT+b0KuMUDU8S2g9q8HrOeYhuRGh7ZEpGfaM3skNZHhqVz+EuU
+	ibMpQOcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u82cS-0000000FFAk-1ehG;
-	Thu, 24 Apr 2025 19:52:24 +0000
+	id 1u82eJ-0000000FFuH-0IfS;
+	Thu, 24 Apr 2025 19:54:19 +0000
 Received: from relay4-d.mail.gandi.net ([217.70.183.196])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u81p3-0000000F6fM-0D1F;
-	Thu, 24 Apr 2025 19:01:22 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 6A6C64439D;
-	Thu, 24 Apr 2025 19:01:16 +0000 (UTC)
+	id 1u81p6-0000000F6go-1QlB;
+	Thu, 24 Apr 2025 19:01:25 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 92AAF43B6C;
+	Thu, 24 Apr 2025 19:01:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1745521279;
+	t=1745521282;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=S/6Zj+wUweRTx+VHVK1CTlVxOlTH40bx6xBYT/U2MxM=;
-	b=gQDDO6peFD+MeoI/74dTBBtnqibz0ajwpOD6hA379Dlwkj8gyJ1ZuG4Joul5jS46/Bcmwe
-	6tZhghLt8TzyEA9SQi0+HGiTKpHKM/GWIYwv3tqz2h9qm3bN9y/FLbaSwcxepoGlcUIy+p
-	AcIktOmce3cZK3joICgcRsf1c5HGqeUQqvAEcLPXHO3rKvnhH7JePomK23u6cKK27GXoZF
-	4i63+MMSbHHZac4oeLP/LHROm8sys3wsU5lOXfpQn9fXZLK3fYA2rjt0brvZBz2tIFIoms
-	yrt97216v1rEf1bGQ+5Vyw/QLeWnpqyNTrc7oZ82yNjcr4Oub8dwXSlWv4eD3Q==
+	bh=3+Yzp90os1B1+K7TxmcOkUZ2pL98oF+RE1fH12ahofw=;
+	b=IFXC3lNWyXZGNzdP409CinsAQprI06XEoz6Cvmh8rCSxhJ5/ak1dFIr6r+FHWhnLNmfvP6
+	DOdskDihbRAyNyEWBdZXbdakoWSVm3DhKCXoPY/o9XW+zNCSq7ASnD8rLZZZ8PKKOWYW03
+	W5i6YpoFcmC9mzRuwFmgYyjuRsnUCi/yWvvtzp+uJBhwRjrtYrA7bbfvVwYeInfmRsQ0Is
+	KdOxSgVMxkIuWk5ewfCnNgz5ahF3hVCnJhWNcyR1GT6GjiWqEezk40lzWa7B/Yh2NNnPoN
+	Vj/PZEz5sps6brrDrvVxLXuQYbRAqxlM39+rziK+9Zi5DiUIHm8aP7U/ebvj+Q==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Thu, 24 Apr 2025 20:59:34 +0200
-Subject: [PATCH v2 27/34] drm/vc4: convert to devm_drm_bridge_alloc() API
+Date: Thu, 24 Apr 2025 20:59:35 +0200
+Subject: [PATCH v2 28/34] drm/sti: dvo: convert to devm_drm_bridge_alloc()
+ API
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20250424-drm-bridge-convert-to-alloc-api-v2-27-8f91a404d86b@bootlin.com>
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250424-drm-bridge-convert-to-alloc-api-v2-28-8f91a404d86b@bootlin.com>
 References: <20250424-drm-bridge-convert-to-alloc-api-v2-0-8f91a404d86b@bootlin.com>
 In-Reply-To: <20250424-drm-bridge-convert-to-alloc-api-v2-0-8f91a404d86b@bootlin.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -75,18 +76,17 @@ Cc: Anusha Srivatsa <asrivats@redhat.com>,
  linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
  freedreno@lists.freedesktop.org, linux-stm32@st-md-mailman.stormreply.com, 
  Luca Ceresoli <luca.ceresoli@bootlin.com>, 
- =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
- Dave Stevenson <dave.stevenson@raspberrypi.com>, 
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
+ Alain Volmat <alain.volmat@foss.st.com>, 
+ Raphael Gallais-Pou <rgallaispou@gmail.com>
 X-Mailer: b4 0.14.2
 X-GND-State: clean
 X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvhedtvdehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhfffugggtgffkfhgjvfevofesthekredtredtjeenucfhrhhomhepnfhutggrucevvghrvghsohhlihcuoehluhgtrgdrtggvrhgvshholhhisegsohhothhlihhnrdgtohhmqeenucggtffrrghtthgvrhhnpefffffgfefghfettedtfeehgfdtveekhfekudeiueetkeehleetveetjeffhedugeenucfkphepvdgrtddvmeeijedtmedvtddvtdemvggrtddumegrgeeivdemudgsuggumeeluddtudemvdelgehfnecuvehluhhsthgvrhfuihiivgepvdenucfrrghrrghmpehinhgvthepvdgrtddvmeeijedtmedvtddvtdemvggrtddumegrgeeivdemudgsuggumeeluddtudemvdelgehfpdhhvghloheplgduledvrdduieekrddujeekrdduudekngdpmhgrihhlfhhrohhmpehluhgtrgdrtggvrhgvshholhhisegsohhothhlihhnrdgtohhmpdhnsggprhgtphhtthhopeegvddprhgtphhtthhopehkrhiikheskhgvrhhnvghlrdhorhhgpdhrtghpthhtoheprghnughriigvjhdrhhgrjhgurgesihhnthgvlhdrtghomhdprhgtphhtthhopegurghvvgdrshhtvghvvghnshhonhesrhgrshhpsggvrhhrhihpihdrtghom
- hdprhgtphhtthhopehjrghgrghnsegrmhgrrhhulhgrshholhhuthhiohhnshdrtghomhdprhgtphhtthhopehimhigsehlihhsthhsrdhlihhnuhigrdguvghvpdhrtghpthhtohepmhgrrghrthgvnhdrlhgrnhhkhhhorhhstheslhhinhhugidrihhnthgvlhdrtghomhdprhgtphhtthhopefnrghurhgvnhhtrdhpihhntghhrghrthesihguvggrshhonhgsohgrrhgurdgtohhmpdhrtghpthhtoheplhhinhhugidqmhgvughirghtvghksehlihhsthhsrdhinhhfrhgruggvrggurdhorhhg
+X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvhedtvdehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhfffugggtgffkfhgjvfevofesthejredtredtjeenucfhrhhomhepnfhutggrucevvghrvghsohhlihcuoehluhgtrgdrtggvrhgvshholhhisegsohhothhlihhnrdgtohhmqeenucggtffrrghtthgvrhhnpeeiieeuvdfftefgueduleehueetgffgjeeitedtteetkeeuueeuueekveevvdeuveenucfkphepvdgrtddvmeeijedtmedvtddvtdemvggrtddumegrgeeivdemudgsuggumeeluddtudemvdelgehfnecuvehluhhsthgvrhfuihiivgepvdegnecurfgrrhgrmhepihhnvghtpedvrgdtvdemieejtdemvddtvddtmegvrgdtudemrgegiedvmedusgguugemledutddumedvleegfhdphhgvlhhopegludelvddrudeikedrudejkedruddukegnpdhmrghilhhfrhhomheplhhutggrrdgtvghrvghsohhlihessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepgedupdhrtghpthhtohepkhhriihksehkvghrnhgvlhdrohhrghdprhgtphhtthhopegrnhgurhiivghjrdhhrghjuggrsehinhhtvghlrdgtohhmpdhrtghpthhtohepjhgrghgrnhesrghmrghruhhlrghsohhluhhtihhonhhsrdgtohhmpdhrt
+ ghpthhtoheprhhgrghllhgrihhsphhouhesghhmrghilhdrtghomhdprhgtphhtthhopehimhigsehlihhsthhsrdhlihhnuhigrdguvghvpdhrtghpthhtohepmhgrrghrthgvnhdrlhgrnhhkhhhorhhstheslhhinhhugidrihhnthgvlhdrtghomhdprhgtphhtthhopefnrghurhgvnhhtrdhpihhntghhrghrthesihguvggrshhonhgsohgrrhgurdgtohhmpdhrtghpthhtoheplhhinhhugidqmhgvughirghtvghksehlihhsthhsrdhinhhfrhgruggvrggurdhorhhg
 X-GND-Sasl: luca.ceresoli@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250424_120121_218043_D215A200 
-X-CRM114-Status: GOOD (  14.83  )
+X-CRM114-CacheID: sfid-20250424_120124_512749_49B2F383 
+X-CRM114-Status: GOOD (  16.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,106 +103,104 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 This is the new API for allocating DRM bridges.
 
-This driver already implements refcounting of the struct vc4_dsi, which
-embeds struct drm_bridge. Now this is a duplicate of the refcounting
-implemented by the DRM bridge core, so convert the vc4_dsi_get/put() calls
-into drm_bridge_get/put() calls and get rid of the driver-specific
-refcounting implementation.
+This driver allocates the DRM bridge separately from the main driver
+private struct, which prevents using the new devm_drm_bridge_alloc()
+API. Simplify the code by replacing the struct drm_bridge pointer with an
+embedded struct drm_bridge inside the private struct, to make use of the
+new API with the same code flow.
 
 Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 
 ---
 
-Cc: "Maíra Canal" <mcanal@igalia.com>
-Cc: Dave Stevenson <dave.stevenson@raspberrypi.com>
-Cc: Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
+Cc: Alain Volmat <alain.volmat@foss.st.com>
+Cc: Raphael Gallais-Pou <rgallaispou@gmail.com>
 
 Changed in v2:
-- fix error code checking
+- fix typos in commit message
 ---
- drivers/gpu/drm/vc4/vc4_dsi.c | 34 +++++-----------------------------
- 1 file changed, 5 insertions(+), 29 deletions(-)
+ drivers/gpu/drm/sti/sti_dvo.c | 29 +++++++++++------------------
+ 1 file changed, 11 insertions(+), 18 deletions(-)
 
-diff --git a/drivers/gpu/drm/vc4/vc4_dsi.c b/drivers/gpu/drm/vc4/vc4_dsi.c
-index efc6f6078b026764c59cfb2a33b28a88b7018c3a..458e5d9879645f18bcbcaeeb71b5f1038f9581da 100644
---- a/drivers/gpu/drm/vc4/vc4_dsi.c
-+++ b/drivers/gpu/drm/vc4/vc4_dsi.c
-@@ -552,8 +552,6 @@ struct vc4_dsi {
- 	struct vc4_encoder encoder;
- 	struct mipi_dsi_host dsi_host;
+diff --git a/drivers/gpu/drm/sti/sti_dvo.c b/drivers/gpu/drm/sti/sti_dvo.c
+index 74a1eef4674eeabc445b53b380e325f785242024..7484d3c3f4ed5fac7eab408e30cbe2f6b87f27e5 100644
+--- a/drivers/gpu/drm/sti/sti_dvo.c
++++ b/drivers/gpu/drm/sti/sti_dvo.c
+@@ -97,7 +97,7 @@ struct sti_dvo {
+ 	struct dvo_config *config;
+ 	bool enabled;
+ 	struct drm_encoder *encoder;
+-	struct drm_bridge *bridge;
++	struct drm_bridge bridge;
+ };
  
--	struct kref kref;
--
- 	struct platform_device *pdev;
+ struct sti_dvo_connector {
+@@ -439,7 +439,6 @@ static int sti_dvo_bind(struct device *dev, struct device *master, void *data)
+ 	struct drm_encoder *encoder;
+ 	struct sti_dvo_connector *connector;
+ 	struct drm_connector *drm_connector;
+-	struct drm_bridge *bridge;
+ 	int err;
  
- 	struct drm_bridge *out_bridge;
-@@ -1622,29 +1620,11 @@ static void vc4_dsi_dma_chan_release(void *ptr)
- 	dsi->reg_dma_chan = NULL;
- }
+ 	/* Set the drm device handle */
+@@ -455,20 +454,14 @@ static int sti_dvo_bind(struct device *dev, struct device *master, void *data)
  
--static void vc4_dsi_release(struct kref *kref)
--{
--	struct vc4_dsi *dsi =
--		container_of(kref, struct vc4_dsi, kref);
--
--	kfree(dsi);
--}
--
--static void vc4_dsi_get(struct vc4_dsi *dsi)
--{
--	kref_get(&dsi->kref);
--}
--
--static void vc4_dsi_put(struct vc4_dsi *dsi)
--{
--	kref_put(&dsi->kref, &vc4_dsi_release);
--}
--
- static void vc4_dsi_release_action(struct drm_device *drm, void *ptr)
- {
- 	struct vc4_dsi *dsi = ptr;
+ 	connector->dvo = dvo;
  
--	vc4_dsi_put(dsi);
-+	drm_bridge_put(&dsi->bridge);
- }
- 
- static int vc4_dsi_bind(struct device *dev, struct device *master, void *data)
-@@ -1655,7 +1635,7 @@ static int vc4_dsi_bind(struct device *dev, struct device *master, void *data)
- 	struct drm_encoder *encoder = &dsi->encoder.base;
- 	int ret;
- 
--	vc4_dsi_get(dsi);
-+	drm_bridge_get(&dsi->bridge);
- 
- 	ret = drmm_add_action_or_reset(drm, vc4_dsi_release_action, dsi);
- 	if (ret)
-@@ -1810,15 +1790,12 @@ static int vc4_dsi_dev_probe(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	struct vc4_dsi *dsi;
- 
--	dsi = kzalloc(sizeof(*dsi), GFP_KERNEL);
--	if (!dsi)
+-	bridge = devm_kzalloc(dev, sizeof(*bridge), GFP_KERNEL);
+-	if (!bridge)
 -		return -ENOMEM;
-+	dsi = devm_drm_bridge_alloc(&pdev->dev, struct vc4_dsi, bridge, &vc4_dsi_bridge_funcs);
-+	if (IS_ERR(dsi))
-+		return PTR_ERR(dsi);
- 	dev_set_drvdata(dev, dsi);
- 
--	kref_init(&dsi->kref);
 -
- 	dsi->pdev = pdev;
--	dsi->bridge.funcs = &vc4_dsi_bridge_funcs;
- #ifdef CONFIG_OF
- 	dsi->bridge.of_node = dev->of_node;
- #endif
-@@ -1836,7 +1813,6 @@ static void vc4_dsi_dev_remove(struct platform_device *pdev)
- 	struct vc4_dsi *dsi = dev_get_drvdata(dev);
+-	bridge->driver_private = dvo;
+-	bridge->funcs = &sti_dvo_bridge_funcs;
+-	bridge->of_node = dvo->dev.of_node;
+-	drm_bridge_add(bridge);
++	dvo->bridge.driver_private = dvo;
++	dvo->bridge.of_node = dvo->dev.of_node;
++	drm_bridge_add(&dvo->bridge);
  
- 	mipi_dsi_host_unregister(&dsi->dsi_host);
--	vc4_dsi_put(dsi);
+-	err = drm_bridge_attach(encoder, bridge, NULL, 0);
++	err = drm_bridge_attach(encoder, &dvo->bridge, NULL, 0);
+ 	if (err)
+ 		return err;
+ 
+-	dvo->bridge = bridge;
+ 	connector->encoder = encoder;
+ 	dvo->encoder = encoder;
+ 
+@@ -490,7 +483,7 @@ static int sti_dvo_bind(struct device *dev, struct device *master, void *data)
+ 	return 0;
+ 
+ err_sysfs:
+-	drm_bridge_remove(bridge);
++	drm_bridge_remove(&dvo->bridge);
+ 	return -EINVAL;
  }
  
- struct platform_driver vc4_dsi_driver = {
+@@ -499,7 +492,7 @@ static void sti_dvo_unbind(struct device *dev,
+ {
+ 	struct sti_dvo *dvo = dev_get_drvdata(dev);
+ 
+-	drm_bridge_remove(dvo->bridge);
++	drm_bridge_remove(&dvo->bridge);
+ }
+ 
+ static const struct component_ops sti_dvo_ops = {
+@@ -515,10 +508,10 @@ static int sti_dvo_probe(struct platform_device *pdev)
+ 
+ 	DRM_INFO("%s\n", __func__);
+ 
+-	dvo = devm_kzalloc(dev, sizeof(*dvo), GFP_KERNEL);
+-	if (!dvo) {
+-		DRM_ERROR("Failed to allocate memory for DVO\n");
+-		return -ENOMEM;
++	dvo = devm_drm_bridge_alloc(dev, struct sti_dvo, bridge, &sti_dvo_bridge_funcs);
++	if (IS_ERR(dvo)) {
++		DRM_ERROR("Failed to allocate DVO\n");
++		return PTR_ERR(dvo);
+ 	}
+ 
+ 	dvo->dev = pdev->dev;
 
 -- 
 2.49.0
