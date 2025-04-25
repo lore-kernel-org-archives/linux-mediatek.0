@@ -4,66 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F13EC369AB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Apr 2025 00:21:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2ECEC369AB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Apr 2025 02:25:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eqBpraoTOXGCxb8ozEAVpLizx6kqjiDpQ/OrLy3vvKE=; b=cv5mODb8iHFdKrIH5BkHV3UhbZ
-	Tw09L3fxDgbwD7KqCnln8OkDErCVjqScrHd4RRC3Sj/gfH7O9+JHFweoVl4bDKt8AthVbJOwjtVlz
-	2k8db5hXhbOYaGjRVbdPA7C6fQ8FS/lVVXALXjkxk9fULLYbUG6BpYwN1CvjGCvKEnMYVcBlPXoGK
-	ftAdtPC6FhtgvJXZnhDbbirr7V83+C5YcmbV3GA/+8p+DT0dQe2+nou930RVubZ10WL8rm/UBkLis
-	+M5+y1kMc0vJiO9ZdW++T0mYeav4CY4L41qz/WbZ7Nvy7JnEQJBm47zZZtScZh/DDVGeX7MNNueMN
-	dqWsBzFg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BAUVLahP3g/MVtZbnTbpZXr+mslUpqcmHR98NsFw+W8=; b=T4rH0EGKcEo1dt7Le0EPk0L3OH
+	sTj6g1TlFYdnXqYCLW5F8z1tR5Mx0aGb7c4ArEJbqJmVS20Crv1sXruMboVPCKiBicR3WBtaHy9de
+	aEgHzii5V9okCzPyMWOhN70cED2ggZx1MXesqGlvma0x7Q7Y5CA7SRJ3QT320nDzcL9OE3Drzck9H
+	m0L6jOrI5AOgOUPbUusK3yNKMCI6ntVTx82KgKd1iv3QzovMGG5VMcDIMirJXTgmmsdqyGnWi5Vu+
+	yrnkxCGdmXs4TbJdjopopAmQo+RV60fIpbonx0QqdYHgC66K+A1LAMDP3S7kPmBRsFUXDpvEb7tZS
+	bNPK6M1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u86pF-0000000FbxN-0dXl;
-	Fri, 25 Apr 2025 00:21:53 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1u88ka-0000000FmA5-2OcI;
+	Fri, 25 Apr 2025 02:25:12 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u86nO-0000000Fbeq-2KxL;
-	Fri, 25 Apr 2025 00:19:59 +0000
+	id 1u88gS-0000000Fljh-2zJF;
+	Fri, 25 Apr 2025 02:20:58 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id CE1384A737;
-	Fri, 25 Apr 2025 00:19:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 57518C4CEE3;
-	Fri, 25 Apr 2025 00:19:57 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 4AB70A4BD21;
+	Fri, 25 Apr 2025 02:15:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C24A5C4CEEB;
+	Fri, 25 Apr 2025 02:20:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1745540397;
-	bh=mmlr8E+H2BDZ4gjGcxUcUsDxQyLSFFeNX6bcoSlckCk=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=bpmvdOz3hpFfd9dFJJ+Cm04wvVLxiAHWnQTe6CBbj62VG4MWXjgDdslVkHee6hqzJ
-	 8qOm2AqSkP2hrsHAxOEDGwjnO7Hg6bM3/d0qV/ujpi6HST1RpLlwa7wyZA8CnxN+wc
-	 ns0Fhmma9AVyKsmovC89lWFoO8pUSpN43UkZGIXt1tM8Fi+lwAekX2VA9wKxjRTP0I
-	 JINyV2k8lLHKrv7d26Djn8j1s8qZjKRFrMO44Hve/sLCLLC8PFVkoSpQJFqQUeQwk1
-	 2zbodRONWWR19noqWVfzb1b/rV5Epf+5VIwuUx0VUY2h4T9c8AvF9y/BKmyS2uFN0s
-	 VbekrryogvMLA==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 33DA2380CFD9;
-	Fri, 25 Apr 2025 00:20:37 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1745547655;
+	bh=vjhWnE+yweRc5pNFfcwxO1w2ynyuzXYUEPFlulFeJ2I=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=dFuKctuTRC/wLg2WplGSQaP3gn0tPb1bIpva9sc7+v5tf5gi9XbehbR9D9Hyu+NG8
+	 3FGiJSvA7lbYEqpCNJJka2LngmB+muAaZwoCxKOmvUH1dGRd7Q0WhDAfbETuwzA91G
+	 Rb7zTo3fH+zlvnj6AjFBsZP4kvTppCOQE9jLwhmg4pPYX2BOOP7/F0vISy2SznbRGV
+	 YEBq5X/rw1b31LpFU6khV8CEnNagoBDz8apMe4zf6QI20rNXIPM9N4A7l50HlUaL/8
+	 1FZS8P9m+pSifbhUT4bt0OvBdLWjaukoFkYLXRlSl+DcXScZPDGk0mVgIgBTAlNBv9
+	 9jnG8QCTAVk2A==
+Date: Fri, 25 Apr 2025 02:20:50 +0000
+From: Tzung-Bi Shih <tzungbi@kernel.org>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Benson Leung <bleung@chromium.org>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, chrome-platform@lists.linux.dev,
+	linux-input@vger.kernel.org,
+	Douglas Anderson <dianders@chromium.org>
+Subject: Re: (subset) [PATCH v2 0/8] arm64: mediatek: mt8186-corsola:
+ Consolidate and add new devices
+Message-ID: <aArxgrBkFvHwr_Gj@google.com>
+References: <20250421101248.426929-1-wenst@chromium.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next v3] net: ethernet: mtk_eth_soc: convert cap_bit in
- mtk_eth_muxc struct to u64
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <174554043598.3528880.12217864359987980717.git-patchwork-notify@kernel.org>
-Date: Fri, 25 Apr 2025 00:20:35 +0000
-References: <ded98b0d716c3203017a7a92151516ec2bf1abee.1745369249.git.daniel@makrotopia.org>
-In-Reply-To: <ded98b0d716c3203017a7a92151516ec2bf1abee.1745369249.git.daniel@makrotopia.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: nbd@nbd.name, sean.wang@mediatek.com, lorenzo@kernel.org,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250421101248.426929-1-wenst@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250424_171958_613583_D013AA22 
-X-CRM114-Status: GOOD (  10.23  )
+X-CRM114-CacheID: sfid-20250424_192056_817536_7CA9281F 
+X-CRM114-Status: UNSURE (   9.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,30 +81,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This patch was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
-
-On Wed, 23 Apr 2025 01:48:02 +0100 you wrote:
-> From: Bo-Cun Chen <bc-bocun.chen@mediatek.com>
+On Mon, Apr 21, 2025 at 06:12:38PM +0800, Chen-Yu Tsai wrote:
+> This is v2 of my "component probe for Corsola devices" series.
 > 
-> With commit 51a4df60db5c2 ("net: ethernet: mtk_eth_soc: convert caps in
-> mtk_soc_data struct to u64") the capabilities bitfield was converted to
-> a 64-bit value, but a cap_bit in struct mtk_eth_muxc which is used to
-> store a full bitfield (rather than the bit number, as the name would
-> suggest) still holds only a 32-bit value.
+> Changes since v1:
+> - Reworded commit message for Elan I2C-HID binding change
+> - Dropped I2C address constraint from Elan I2C-HID binding completely
+> - Dropped enum from new compatible string entry in Elan I2C-HID binding
+> - Picked up Rob's ack on two binding changes
+> - Rebased onto next-20250417, resolving conflicts with "spherion
+>   component prober" changes
+> - Link to v1:
+>   https://lore.kernel.org/all/20250312104344.3084425-1-wenst@chromium.org/
 > 
 > [...]
 
-Here is the summary with links:
-  - [net-next,v3] net: ethernet: mtk_eth_soc: convert cap_bit in mtk_eth_muxc struct to u64
-    https://git.kernel.org/netdev/net-next/c/ffb0c5c4cf66
+Applied to
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+    https://git.kernel.org/pub/scm/linux/kernel/git/chrome-platform/linux.git for-next
 
+[7/8] platform/chrome: of_hw_prober: Support trackpad probing on Corsola family
+      commit: 73d32c3e74e1bd679617b9b9c06d806dedd7c055
+[8/8] platform/chrome: of_hw_prober: Support touchscreen probing on Squirtle
+      commit: fb8bfb48a4d11efb9b3e492d7c5e9ae7478786ce
 
+Thanks!
 
