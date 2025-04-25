@@ -4,68 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2ECEC369AB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Apr 2025 02:25:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C86FC369D1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Apr 2025 04:32:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BAUVLahP3g/MVtZbnTbpZXr+mslUpqcmHR98NsFw+W8=; b=T4rH0EGKcEo1dt7Le0EPk0L3OH
-	sTj6g1TlFYdnXqYCLW5F8z1tR5Mx0aGb7c4ArEJbqJmVS20Crv1sXruMboVPCKiBicR3WBtaHy9de
-	aEgHzii5V9okCzPyMWOhN70cED2ggZx1MXesqGlvma0x7Q7Y5CA7SRJ3QT320nDzcL9OE3Drzck9H
-	m0L6jOrI5AOgOUPbUusK3yNKMCI6ntVTx82KgKd1iv3QzovMGG5VMcDIMirJXTgmmsdqyGnWi5Vu+
-	yrnkxCGdmXs4TbJdjopopAmQo+RV60fIpbonx0QqdYHgC66K+A1LAMDP3S7kPmBRsFUXDpvEb7tZS
-	bNPK6M1Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=tn3L1G5Wlda9/YbaT1i8BRl1XQjkwIaEqUSfDfIxF1o=; b=sDwpZXmGYr0dBtkD/Tysfavzc2
+	MCZQJkKXj3Dj1esxEa0P8ZjkxXdFaiptyjWBqTHKhQ1zce8n0+j8fKP49f2+W4Qd706gZ8je7dAiw
+	QykEPGdWDAv0gRLXbeIlsfwsrI3T/FanQtZT4d4nXFi4q8nsU6QlDjrZgP+enJIaFbrw0bhqT5zlF
+	D1koxOFiqYSh24pgjhOksR3fJdbx3gNJ8+GyVFmAea1CToKhh0VQQLH7ITJFHz5lOWL04PESbmWQy
+	4jyutMD8sHys9cPB9u8jvS844bvl+MSfBvWGGeljLbgcsmvN+5fLHG2U2Pb0nx4y50ovqH/eTCdlR
+	3er6yIEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u88ka-0000000FmA5-2OcI;
-	Fri, 25 Apr 2025 02:25:12 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1u8Ajb-0000000FvI1-3aN3;
+	Fri, 25 Apr 2025 04:32:19 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u88gS-0000000Fljh-2zJF;
-	Fri, 25 Apr 2025 02:20:58 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 4AB70A4BD21;
-	Fri, 25 Apr 2025 02:15:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C24A5C4CEEB;
-	Fri, 25 Apr 2025 02:20:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1745547655;
-	bh=vjhWnE+yweRc5pNFfcwxO1w2ynyuzXYUEPFlulFeJ2I=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=dFuKctuTRC/wLg2WplGSQaP3gn0tPb1bIpva9sc7+v5tf5gi9XbehbR9D9Hyu+NG8
-	 3FGiJSvA7lbYEqpCNJJka2LngmB+muAaZwoCxKOmvUH1dGRd7Q0WhDAfbETuwzA91G
-	 Rb7zTo3fH+zlvnj6AjFBsZP4kvTppCOQE9jLwhmg4pPYX2BOOP7/F0vISy2SznbRGV
-	 YEBq5X/rw1b31LpFU6khV8CEnNagoBDz8apMe4zf6QI20rNXIPM9N4A7l50HlUaL/8
-	 1FZS8P9m+pSifbhUT4bt0OvBdLWjaukoFkYLXRlSl+DcXScZPDGk0mVgIgBTAlNBv9
-	 9jnG8QCTAVk2A==
-Date: Fri, 25 Apr 2025 02:20:50 +0000
-From: Tzung-Bi Shih <tzungbi@kernel.org>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+	id 1u8Ahk-0000000Fv8D-0sO0;
+	Fri, 25 Apr 2025 04:30:25 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.98.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1u8Abe-000000006IQ-1KFU;
+	Fri, 25 Apr 2025 04:30:01 +0000
+Date: Fri, 25 Apr 2025 05:29:53 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Benson Leung <bleung@chromium.org>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, chrome-platform@lists.linux.dev,
-	linux-input@vger.kernel.org,
-	Douglas Anderson <dianders@chromium.org>
-Subject: Re: (subset) [PATCH v2 0/8] arm64: mediatek: mt8186-corsola:
- Consolidate and add new devices
-Message-ID: <aArxgrBkFvHwr_Gj@google.com>
-References: <20250421101248.426929-1-wenst@chromium.org>
+	Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net] net: ethernet: mtk_eth_soc: sync mtk_clks_source_name
+ array
+Message-ID: <d075e706ff1cebc07f9ec666736d0b32782fd487.1745555321.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250421101248.426929-1-wenst@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250424_192056_817536_7CA9281F 
-X-CRM114-Status: UNSURE (   9.78  )
+X-CRM114-CacheID: sfid-20250424_213024_247857_D38B14EF 
+X-CRM114-Status: UNSURE (   8.53  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,29 +69,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 21, 2025 at 06:12:38PM +0800, Chen-Yu Tsai wrote:
-> This is v2 of my "component probe for Corsola devices" series.
-> 
-> Changes since v1:
-> - Reworded commit message for Elan I2C-HID binding change
-> - Dropped I2C address constraint from Elan I2C-HID binding completely
-> - Dropped enum from new compatible string entry in Elan I2C-HID binding
-> - Picked up Rob's ack on two binding changes
-> - Rebased onto next-20250417, resolving conflicts with "spherion
->   component prober" changes
-> - Link to v1:
->   https://lore.kernel.org/all/20250312104344.3084425-1-wenst@chromium.org/
-> 
-> [...]
+When removing the clock bits for clocks which aren't used by the
+Ethernet driver their names should also have been removed from the
+mtk_clks_source_name array.
 
-Applied to
+Remove them now as enum mtk_clks_map needs to match the
+mtk_clks_source_name array so the driver can make sure that all required
+clocks are present and correctly name missing clocks.
 
-    https://git.kernel.org/pub/scm/linux/kernel/git/chrome-platform/linux.git for-next
+Fixes: 887b1d1adb2e ("net: ethernet: mtk_eth_soc: drop clocks unused by Ethernet driver")
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 4 ----
+ 1 file changed, 4 deletions(-)
 
-[7/8] platform/chrome: of_hw_prober: Support trackpad probing on Corsola family
-      commit: 73d32c3e74e1bd679617b9b9c06d806dedd7c055
-[8/8] platform/chrome: of_hw_prober: Support touchscreen probing on Squirtle
-      commit: fb8bfb48a4d11efb9b3e492d7c5e9ae7478786ce
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 47807b202310..83068925c589 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -269,12 +269,8 @@ static const char * const mtk_clks_source_name[] = {
+ 	"ethwarp_wocpu2",
+ 	"ethwarp_wocpu1",
+ 	"ethwarp_wocpu0",
+-	"top_usxgmii0_sel",
+-	"top_usxgmii1_sel",
+ 	"top_sgm0_sel",
+ 	"top_sgm1_sel",
+-	"top_xfi_phy0_xtal_sel",
+-	"top_xfi_phy1_xtal_sel",
+ 	"top_eth_gmii_sel",
+ 	"top_eth_refck_50m_sel",
+ 	"top_eth_sys_200m_sel",
+-- 
+2.49.0
 
-Thanks!
 
