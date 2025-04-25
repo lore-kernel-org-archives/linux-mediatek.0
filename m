@@ -4,78 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D24E1C369C2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Apr 2025 09:16:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D97E5C369C2
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Apr 2025 09:57:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=z398VQxRsNmOcxE+Jv3vnHLwKr1LbzbwB9Vmlu2AsS8=; b=ONHq+PHxpadmKD0lQ5vHGcLy2z
-	/5AME+cl6+/iDrxXJhXeHV2HBtnaXqPCJdwy1ibJds+MzeXMuxKXzG6pwLvWPjjKwTmFYhfw/HBqI
-	CV0bF2tL6BfFomjyMuWH6qFZbdOxuoCEeIOU9Wehnq7G8sxrq8aYyvwph20LiyJjmr2cwSSGExYTL
-	C+TT8fsIrP76JN1pEDxr3QYlGNBWtS/HeIejSR6ThzNb9C2piQyFdZtXyzzaHM/KXmmzwEbY5D6eZ
-	MnNkq01Ax/Q1oezx3yD4pMQKSKuLTXYa1cF4a1gXkooFbFD3cdnUUFgy8l2iLzzzvQu2Bz7bCD1fa
-	7aaZDs9g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=86MPQpP9DYDVUcUDU5TkbLJWYglOE/j2zaAMUX/6YP0=; b=g/jaSSKVOxt9LQ
+	VHcTseKBC2YFw9EsroSz4PGDipUedGbldFxdxEX0TNWp2zeZjaOswgKWGhxXQJZhI9aTzMKuoE76Y
+	frPn+VWOq2KZSWcjcGhKQvcN1iq17nSCgmXJx2/SaS/6Wr+vzs3b3GqlnVdHpGd/fC9wdt8qeezL0
+	LwKd7tM+AHyCiJoqHHrRaYIXJjFEIT/9EpRgFtwgY23GAjNPypmedhL3luZJmqUdBC73pEMLpalcz
+	SnNMJpXt2ZlwAeQwYJuTmakmz2qCzYJ6X/IFOcYzNaBi/k8pO/W6AMur3Gd526949Q8XXah6WNjna
+	JVpP5W3/JRnSjhUakrpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u8FAY-0000000GVVC-3cff;
-	Fri, 25 Apr 2025 09:16:26 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1u8Foh-0000000Gda8-3GBh;
+	Fri, 25 Apr 2025 09:57:55 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u8Eof-0000000GQVu-2sKs;
-	Fri, 25 Apr 2025 08:53:50 +0000
-X-UUID: ca1a80ac21b211f0a2405d5ef59ce188-20250425
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=z398VQxRsNmOcxE+Jv3vnHLwKr1LbzbwB9Vmlu2AsS8=;
-	b=sqBQle6e/nkj9raz2YIdUHJonJshXVnAWhJdCKlKgT636zDppb5aSTVMYZlID0oj//bxTtT+gEPCzGMdLiiRKr2+/nvnKON4jpl0Kpjm3ib67RjnqdXC7viHB6ogHlwhTQ7AE5U5xk3u+6vcV7yxtIvqXSgHBtr6Hj2A4hjiKPk=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:2d415da4-f426-4e5a-ab2f-aa119e9640e1,IP:0,UR
-	L:0,TC:0,Content:0,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-30
-X-CID-META: VersionHash:0ef645f,CLOUDID:c6c8ca76-5fec-4b3e-b8cb-933843551e81,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:2,
-	IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:
-	0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 5,DFT
-X-CID-BAS: 5,DFT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: ca1a80ac21b211f0a2405d5ef59ce188-20250425
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
-	(envelope-from <kyrie.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 809278958; Fri, 25 Apr 2025 01:53:42 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Fri, 25 Apr 2025 16:53:41 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Fri, 25 Apr 2025 16:53:40 +0800
-From: Kyrie Wu <kyrie.wu@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
-	<krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, kyrie wu
-	<kyrie.wu@mediatek.corp-partner.google.com>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: Kyrie Wu <kyrie.wu@mediatek.com>
-Subject: [PATCH v3 10/12] media: mediatek: jpeg: fix decoding buffer number setting timing issue
-Date: Fri, 25 Apr 2025 16:53:26 +0800
-Message-ID: <20250425085328.16929-11-kyrie.wu@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20250425085328.16929-1-kyrie.wu@mediatek.com>
-References: <20250425085328.16929-1-kyrie.wu@mediatek.com>
+	id 1u8Evk-0000000GSWZ-0SxQ
+	for linux-mediatek@lists.infradead.org;
+	Fri, 25 Apr 2025 09:01:10 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-39ac56756f6so1936939f8f.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 25 Apr 2025 02:01:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1745571666; x=1746176466; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=86MPQpP9DYDVUcUDU5TkbLJWYglOE/j2zaAMUX/6YP0=;
+        b=U/UGwCHPSSuwY1sOaj31njTptnFDrAIlNpACxG7k/ZIs9tNB8ZY3znYpDgKzmixbFj
+         f2Z7kV465IRmCVT97NlGsWdVtQbgYLBVXhPxyIHtCev1LTUocliI/p1ffVKWnDGLIUvG
+         /QsHjvzf4gRJ11wTirznFPf0T9ab79Z/s5QlAAkUODe3i52Zyigg9QG6YcAJgvaoAukT
+         L6Q6OQu3y8cROJ7Df5fJlDIx8o6Nq716xzSnq7RC0mMRDouppu2JMlox7JNc2ag1vgVI
+         dFTl9ScLClBxRfZqt8lkt0qragjjD01P62kp++2u0+x+5yrJyscvuqkvoAFhTFotcev1
+         xjKA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1745571666; x=1746176466;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=86MPQpP9DYDVUcUDU5TkbLJWYglOE/j2zaAMUX/6YP0=;
+        b=B7qvVI6KQH4SQKm5O513fvaSoSLqiTMNXavOxARC9q1QGeHRWA/i2KC3lys4/ex3ll
+         HAm8oVq73MGtVW9UjmkEy4btU/9aQoNJIObh08IYtELSqebZ5s7ZSLFH95KPVVjUsXwZ
+         laFjRkHqZk17IRsKSLORrEBYmzv34tvFry5RGDcI8oiTT+oq/iZt3/OiNXeIvfQIczra
+         HndOadg0yNQNE5UaRVwUpYudyy11jrV4M1kZczMfzLNgKM27KDr4yk5Fbh/pdKECREYu
+         6GuwbXZMtjEy579bLZJ6guuaUEq29BPDbFjz3l1+e+G51Z5uEIZ99xjmKdQ6tAaAv0n3
+         atHA==
+X-Gm-Message-State: AOJu0YyFRJQqRhagh0r7fvYcTS4/DhawlV3zeIhithkRV/ItS2u4tX+8
+	aEePsVlWVBPJuLusVpm581geqs08hh4LJjMOH1lhvVxPcNySFBa+iyhP28eYFPY=
+X-Gm-Gg: ASbGncuN7IrkJTtI9C//BvC6AEurEPdCtibhUMUEfz4bE/Pm4NdFQ6Bim+IJHU3IndX
+	otcx0XoDPJj6KjVuwrnsvXW7nKR9a3hMDLlgsXTO//9p8VEuw50xfKvpf66YcjEj+lT/eqmkRUw
+	+pQvNKZOy2C1+wnvf7cTGoAy3fUIjco/kabHScG1zSGJh44gaj03ckJkbZWtUVUAHXla4OrVfRJ
+	D0KrtSXbvVzUvxRBrz/NYHkV4968Cw3lYQ/cJQlZurCR3g51QMKPOWuCM58VPE1GYNhqFTbRHtx
+	/EmBwrHPt7I+zTqd3XvRPJcRUDYNfCMWId5BZ8rcm644
+X-Google-Smtp-Source: AGHT+IH3OnIubuFCBwHvzDU6+k3f9N9mzQaSt1HB4QUYIlDhLHCrYidDLJkaQB3hjNSR8q+IxbksRA==
+X-Received: by 2002:a05:6000:402c:b0:39e:f51d:9cf9 with SMTP id ffacd0b85a97d-3a074f42e7amr1207472f8f.48.1745571665602;
+        Fri, 25 Apr 2025 02:01:05 -0700 (PDT)
+Received: from [127.0.1.1] ([2a01:cb1d:dc:7e00:3f35:2b31:c543:726d])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a073c8c95dsm1696571f8f.3.2025.04.25.02.01.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 25 Apr 2025 02:01:05 -0700 (PDT)
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Subject: [PATCH 0/5] pinctrl: mediatek: convert GPIO chips to using new
+ value setters
+Date: Fri, 25 Apr 2025 11:00:56 +0200
+Message-Id: <20250425-gpiochip-set-rv-pinctrl-mediatek-v1-0-93e6a01855e7@linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAEhPC2gC/x3NwQqDMAyA4VeRnA2YTnH4KuKhNFHDtlrSIgPx3
+ Vd2/C7/f0EWU8kwNReYnJr1iBXUNhB2HzdB5WpwnRu63g24JT3CrgmzFLQTk8ZQ7I0fYfVFXkj
+ Mzwf5nmkkqJlksur3v5iX+/4BviB2NHIAAAA=
+To: Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
+ Linus Walleij <linus.walleij@linaro.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Bartosz Golaszewski <brgl@bgdev.pl>
+Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+X-Mailer: b4 0.14.1
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1272;
+ i=bartosz.golaszewski@linaro.org; h=from:subject:message-id;
+ bh=gcgSAGCf9S1xTbI3gVnPSPqXssP4QvQGlqxWgMXBtSY=;
+ b=owEBbQKS/ZANAwAKARGnLqAUcddyAcsmYgBoC09LShA4FFFs7FxYzWMo/1MzGZYVAv/t/XsCr
+ XI6PnVu6PeJAjMEAAEKAB0WIQQWnetsC8PEYBPSx58Rpy6gFHHXcgUCaAtPSwAKCRARpy6gFHHX
+ ci3cD/9iJ/xVDYLFM7DCh189mq6iSH435TREA5mvwF1xWjo5k+b1ttZTjFnkyQHXyQCVmygSLBq
+ Z9xZ3BHypbpwD8ykxvnDZ2IOP5QkvXArTwYU7SsqEAOzsLQ1woH8qCK06dOj0fXfjuBxyjY0PGw
+ w2iSbbza3dIiabeuu7ed8uAJmgBuf+qrUQon1gGImTXwyYRKJSIfMZ8GwIhD5sdVbj7IF+NqVv8
+ DzQMC2pOQ8/uyaoz7DDypiT8QZ4VqNyIS0YCU0qAFOsud0U3LesVVNIr7x6SViXRDaeAvF5C0vN
+ xK3cd28bek61r1sYczNp5XAWFZZbZE1JanSfO/Ra1m3UFNWhxrbsPuccrAvlUHcBd+fhP6AwVwz
+ 7ODzLYWquoOtJDLDMeGfZTaNmenKqsQZKEfw+5aryPpWSCrESUbP9AnejrJ2gpDGpdXaya6s84i
+ YLIEB+KusN8gNbzPOy5+x2MF40OlbYfdA2479FscfDcvG3OIpn0AQox+enlI+1jVX1kX996qELm
+ 3kpMjMSqIMO5RaCKGxkyiWzmkBocfOG6W6iGco1FeARqFlZB7dOn8TNzQT/X2tlgOz91ag6PvPD
+ 3qfrDaI1aDWXGHlQWAT66D2q+8ZxvUHrB/4Qk0w/B/D7JwV+XE6BYhnDA9bR34WHbb9R7fzDspS
+ GBnZdlnyiNYYxjg==
+X-Developer-Key: i=bartosz.golaszewski@linaro.org; a=openpgp;
+ fpr=169DEB6C0BC3C46013D2C79F11A72EA01471D772
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250425_015349_731149_1A435BDC 
-X-CRM114-Status: GOOD (  12.45  )
+X-CRM114-CacheID: sfid-20250425_020108_402343_D2952F44 
+X-CRM114-Status: UNSURE (   6.30  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,75 +121,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-move decoding buffer increase code into spinlock
-protecting aera for multi-core
+struct gpio_chip now has callbacks for setting line values that return
+an integer, allowing to indicate failures. We're in the process of
+converting all GPIO drivers to using the new API. This series converts
+all the mediatek pinctrl GPIO controllers.
 
-Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
+Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 ---
- drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c   | 9 +++------
- drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c | 1 +
- drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c | 1 +
- 3 files changed, 5 insertions(+), 6 deletions(-)
+Bartosz Golaszewski (5):
+      pinctrl: mediatek: airoha: use new GPIO line value setter callbacks
+      pinctrl: mediatek: paris: don't double-check the GPIO number
+      pinctrl: mediatek: paris: use new GPIO line value setter callbacks
+      pinctrl: mediatek: moore: use new GPIO line value setter callbacks
+      pinctrl: mediatek: common: use new GPIO line value setter callbacks
 
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-index c1d2de92f125..795916206c7c 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-@@ -1782,7 +1782,6 @@ static void mtk_jpegdec_worker(struct work_struct *work)
- 
- 	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
- 	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(&src_buf->vb2_buf);
--	jpeg_dst_buf = mtk_jpeg_vb2_to_srcbuf(&dst_buf->vb2_buf);
- 
- 	if (mtk_jpeg_check_resolution_change(ctx,
- 					     &jpeg_src_buf->dec_param)) {
-@@ -1791,11 +1790,6 @@ static void mtk_jpegdec_worker(struct work_struct *work)
- 		goto getbuf_fail;
- 	}
- 
--	jpeg_src_buf->curr_ctx = ctx;
--	jpeg_src_buf->frame_num = ctx->total_frame_num;
--	jpeg_dst_buf->curr_ctx = ctx;
--	jpeg_dst_buf->frame_num = ctx->total_frame_num;
--
- 	mtk_jpegdec_set_hw_param(ctx, hw_id, src_buf, dst_buf);
- 	ret = pm_runtime_resume_and_get(comp_jpeg[hw_id]->dev);
- 	if (ret < 0) {
-@@ -1820,6 +1814,9 @@ static void mtk_jpegdec_worker(struct work_struct *work)
- 			      msecs_to_jiffies(MTK_JPEG_HW_TIMEOUT_MSEC));
- 
- 	spin_lock_irqsave(&comp_jpeg[hw_id]->hw_lock, flags);
-+	jpeg_dst_buf = mtk_jpeg_vb2_to_srcbuf(&dst_buf->vb2_buf);
-+	jpeg_dst_buf->curr_ctx = ctx;
-+	jpeg_dst_buf->frame_num = ctx->total_frame_num;
- 	ctx->total_frame_num++;
- 	mtk_jpeg_dec_reset(comp_jpeg[hw_id]->reg_base);
- 
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-index 5d9a247f0360..2dd5543fb02e 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-@@ -516,6 +516,7 @@ static void mtk_jpegdec_put_buf(struct mtk_jpegdec_comp_dev *jpeg)
- 				v4l2_m2m_buf_done(&tmp_dst_done_buf->b,
- 						  VB2_BUF_STATE_DONE);
- 				ctx->last_done_frame_num++;
-+				break;
- 			}
- 		}
- 	}
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-index 75cd3627c5ae..f5f11ae9c92a 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-@@ -245,6 +245,7 @@ static void mtk_jpegenc_put_buf(struct mtk_jpegenc_comp_dev *jpeg)
- 				v4l2_m2m_buf_done(&tmp_dst_done_buf->b,
- 						  VB2_BUF_STATE_DONE);
- 				ctx->last_done_frame_num++;
-+				break;
- 			}
- 		}
- 	}
+ drivers/pinctrl/mediatek/pinctrl-airoha.c     | 19 ++++++++----------
+ drivers/pinctrl/mediatek/pinctrl-moore.c      | 18 +++++++++--------
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 13 ++++++++----
+ drivers/pinctrl/mediatek/pinctrl-paris.c      | 29 +++++++--------------------
+ 4 files changed, 34 insertions(+), 45 deletions(-)
+---
+base-commit: 393d0c54cae31317deaa9043320c5fd9454deabc
+change-id: 20250425-gpiochip-set-rv-pinctrl-mediatek-1dd831a4d171
+
+Best regards,
 -- 
-2.46.0
+Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 
 
