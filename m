@@ -4,74 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B7D6C369C2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Apr 2025 11:12:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DA9EC369D5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Apr 2025 11:59:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GQl/YiIdeRPhl67I4Zpxnr6kriP+nAmiMFbyhkMZ9UU=; b=oTJC8UZEFpUIvKG1QTckRyruzu
-	fL8/QSGs39toNKLWKaETO+YJwM1bWft/5t/hxEwls3cIu0iZyAh0x0zqTiwrLUbngdMZD3/ieT7dJ
-	U4NucAt48Qs2FzfEFGthGBsXHPAjDT7En8r1Z6q+D8/OTBODt0z9TPiww89PuZgND7kJyzuF7PF4b
-	mjp3Uo3uGUl879hQeysmsAx/c0ssKeVctBJcxn+NESPRY6ADQgplJRm8YJMmC1+521/M7+Jb8vr0I
-	QYc3IYcBYEQPzDFcBKpQnL5uOnmt+lhsZ7PSNMV3+4Fa7ZwN7/vMVzaFzOcSiIgkkivbxQC3ShHW8
-	/RPUv6kA==;
+	bh=JgXBBnWi0uIkNeEB5o6NTaG1+2XeK+GQm7cn+WLAW74=; b=p1E0kphHa5obeSSTIvTJsc7xwS
+	nLzsLwY1dhatg/axjyK/JPBpB2CC2Vvu510GYDfsYh5td5+Iv8iwLUfUIiy0pvUT/4+4B3p6FacX3
+	c85Sdw4xYi3adp6dEWLz6fwl7vPYa7RCi4F3/RZb/Gq/DSMCl52YxOaXwBmwzyL+aPgjJyCFZ1c+I
+	q+KXraalH2THiOSCBS8xX7cuxOwcIlVxyY1thb7Ef1xEWBi5sebiQbgWZefZQgV4f4JBsGqAZs5ZZ
+	cF69HIQSe/dM7ur/aIbbSQob/TJIkv3Nd7Ggw8HsgFdLQd+MdkQZReiluCk8TjY8DsuJxI6ZZfyHz
+	LlpwzYWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u8Gyc-0000000Gt8q-10TF;
-	Fri, 25 Apr 2025 11:12:14 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1u8HiZ-0000000H2pr-2Sw1;
+	Fri, 25 Apr 2025 11:59:43 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u8FfA-0000000GbfN-3CYq;
-	Fri, 25 Apr 2025 09:48:05 +0000
-X-UUID: 3bce71fe21b811f0a2405d5ef59ce188-20250425
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=GQl/YiIdeRPhl67I4Zpxnr6kriP+nAmiMFbyhkMZ9UU=;
-	b=FmMcAAxA6lPDlRv8mswIOehvGttkYvqmgCK/+3/brWUCW7cOTGSk6at04NvN86XIFadfVgykAbvkMoFd/OW0w+JSRKwroy0buzevOMNvnuoubHjH+7mvANCDyDNXCEzTXjtISEHP6P6FCfAqH+VsbzmaaHjQa8mZEELSNLnMZrI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:18504962-ba9f-47ca-9af7-02f9029560f8,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:0ef645f,CLOUDID:9b1d9df0-ff26-40e8-a637-f0e9524b171a,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
-	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
-	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 3bce71fe21b811f0a2405d5ef59ce188-20250425
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
-	(envelope-from <jason-jh.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1463521077; Fri, 25 Apr 2025 02:32:40 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Fri, 25 Apr 2025 17:32:38 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Fri, 25 Apr 2025 17:32:38 +0800
-From: Jason-JH Lin <jason-jh.lin@mediatek.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Jassi Brar <jassisinghbrar@gmail.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>
-Subject: [PATCH v5 01/19] arm64: dts: mediatek: Add GCE header for MT8196
-Date: Fri, 25 Apr 2025 17:28:33 +0800
-Message-ID: <20250425093237.1543918-2-jason-jh.lin@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20250425093237.1543918-1-jason-jh.lin@mediatek.com>
-References: <20250425093237.1543918-1-jason-jh.lin@mediatek.com>
+	id 1u8GB1-0000000Gi71-1EOO;
+	Fri, 25 Apr 2025 10:20:59 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 63F6860007;
+	Fri, 25 Apr 2025 10:20:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D8471C4CEEB;
+	Fri, 25 Apr 2025 10:20:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1745576454;
+	bh=jcAtdlYTfa1RC2cu9dSkGODwfuS/DqnkQIJyB/0DwRY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=NdlX7sD02k7fzLbQiCInydO04W7vNrrsSFK46wdHTBwTPZqMbEB24s9kLeSGsLHmI
+	 m2ALbZgzluFz8vkpMwt1JsUjPJCkkDzWfFnmE3QoazXWQALiM8lMu8iPbnmPR2bte0
+	 0hilI4WmcaAphIiYWf4Ilnj32DR9ln6y53qULzVIz3J4rCkimtfGXhZfb3NMnxy2HI
+	 cqDbc7MJKHXc7jIPAQ1k8eK7ImF7jevVYdOYqnCMJdIxsV/HXWDR5MAGtUR8c6TDPS
+	 7agCVTMwigx5V92d4pFvMyu8mfk9IXs6PCqLKQjeUcLz7g6DO2kfL4kQ7QKF+deZ1J
+	 xKQ6HeRgQxMpQ==
+Date: Fri, 25 Apr 2025 11:20:50 +0100
+From: Simon Horman <horms@kernel.org>
+To: Johannes Berg <johannes@sipsolutions.net>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Johannes Berg <johannes.berg@intel.com>
+Subject: Re: [PATCH net-next] net: ethernet: mtk_wed: annotate RCU release in
+ attach()
+Message-ID: <20250425102050.GO3042781@horms.kernel.org>
+References: <20250423150811.456205-2-johannes@sipsolutions.net>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250425_024804_809201_8A20BA9D 
-X-CRM114-Status: GOOD (  16.82  )
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250423150811.456205-2-johannes@sipsolutions.net>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,638 +69,33 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Moudy Ho <moudy.ho@mediatek.com>, Xiandong Wang <xiandong.wang@mediatek.com>, Jason-JH Lin <jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Sirius Wang <sirius.wang@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Chen-yu Tsai <wenst@chromium.org>, Xavier Chang <xavier.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Paul-PL Chen <pual-pl.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add GCE header define for GCE Thread Priority and GCE Event IDs
-that used in the MT8196 dtsi.
+On Wed, Apr 23, 2025 at 05:08:08PM +0200, Johannes Berg wrote:
+> From: Johannes Berg <johannes.berg@intel.com>
+> 
+> There are some sparse warnings in wifi, and it seems that
+> it's actually possible to annotate a function pointer with
+> __releases(), making the sparse warnings go away. In a way
+> that also serves as documentation that rcu_read_unlock()
+> must be called in the attach method, so add that annotation.
+> 
+> Signed-off-by: Johannes Berg <johannes.berg@intel.com>
 
-Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8196-gce.h | 612 ++++++++++++++++++++++
- 1 file changed, 612 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8196-gce.h
+Reviewed-by: Simon Horman <horms@kernel.org>
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8196-gce.h b/arch/arm64/boot/dts/mediatek/mt8196-gce.h
-new file mode 100644
-index 000000000000..457dc73aeed3
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8196-gce.h
-@@ -0,0 +1,612 @@
-+/* SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause */
-+/*
-+ * Copyright (c) 2025 MediaTek Inc.
-+ *
-+ */
-+
-+#ifndef __DTS_GCE_MT8196_H
-+#define __DTS_GCE_MT8196_H
-+
-+/* GCE Thread Priority
-+ * The GCE core has multiple GCE threads, each of which can independently
-+ * execute its own sequence of instructions.
-+ * However, the GCE threads on the same core cannot run in parallel.
-+ * Different GCE threads can determine thread priority based on the scenario,
-+ * thereby serving different user needs.
-+ *
-+ * Low priority thread is executed when no high priority thread is active.
-+ * Same priority thread is scheduled by round robin.
-+ */
-+#define CMDQ_THR_PRIO_LOWEST	0
-+#define CMDQ_THR_PRIO_1		1
-+#define CMDQ_THR_PRIO_2		2
-+#define CMDQ_THR_PRIO_3		3
-+#define CMDQ_THR_PRIO_4		4
-+#define CMDQ_THR_PRIO_5		5
-+#define CMDQ_THR_PRIO_6		6
-+#define CMDQ_THR_PRIO_HIGHEST	7
-+
-+/*
-+ * GCE0 Hardware Event IDs
-+ * Different SoCs will have varying numbers of hardware event signals,
-+ * which are sent from the corresponding hardware to the GCE.
-+ * Each hardware event signal corresponds to an event ID in the GCE.
-+ * The CMDQ driver can use the following event ID definitions to allow
-+ * the client driver to use wait and clear APIs provided by CMDQ, enabling
-+ * the GCE to execute operations in the instructions for that event ID.
-+ *
-+ * The event IDs of GCE0 are mainly used by display hardware.
-+ */
-+/* CMDQ_EVENT_DISP0_STREAM_SOF0 ~ 15: 0 ~ 15 */
-+#define CMDQ_EVENT_DISP0_STREAM_SOF(n)						(0 + (n))
-+/* CMDQ_EVENT_DISP0_FRAME_DONE_SEL0 ~ 15: 16 ~ 31 */
-+#define CMDQ_EVENT_DISP0_FRAME_DONE_SEL(n)					(16 + (n))
-+#define CMDQ_EVENT_DISP0_DISP_WDMA0_TARGET_LINE_END_ENG_EVENT			32
-+#define CMDQ_EVENT_DISP0_DISP_WDMA0_SW_RST_DONE_ENG_EVENT			33
-+#define CMDQ_EVENT_DISP0_DISP_POSTMASK1_RST_DONE_ENG_EVENT			34
-+#define CMDQ_EVENT_DISP0_DISP_POSTMASK0_RST_DONE_ENG_EVENT			35
-+#define CMDQ_EVENT_DISP0_DISP_MUTEX0_TIMEOUT_ENG_EVENT				36
-+/* CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT0 ~ 15: 37 ~ 52 */
-+#define CMDQ_EVENT_DISP0_DISP_MUTEX0_REG_UPDATE_ENG_EVENT(n)			(37 + (n))
-+#define CMDQ_EVENT_DISP0_DISP_MUTEX0_GET_RELEASE_ENG_EVENT			53
-+#define CMDQ_EVENT_DISP0_DISP_MDP_RDMA0_SW_RST_DONE_ENG_EVENT			54
-+/* CMDQ_EVENT_DISP1_STREAM_SOF0 ~ 15: 55 ~ 70 */
-+#define CMDQ_EVENT_DISP1_STREAM_SOF(n)						(55 + (n))
-+/* CMDQ_EVENT_DISP1_FRAME_DONE_SEL0 ~ 15: 71 ~ 86 */
-+#define CMDQ_EVENT_DISP1_FRAME_DONE_SEL(n)					(71 + (n))
-+/* CMDQ_EVENT_DISP1_STREAM_DONE_ENG_EVENT0 ~ 15: 87 ~ 102 */
-+#define CMDQ_EVENT_DISP1_STREAM_DONE_ENG_EVENT(n)				(87 + (n))
-+/* CMDQ_EVENT_DISP1_REG_UPDATE_DONE_ENG_EVENT0 ~ 15: 103 ~ 118 */
-+#define CMDQ_EVENT_DISP1_REG_UPDATE_DONE_ENG_EVENT(n)				(103 + (n))
-+#define CMDQ_EVENT_DISP1_OCIP_SUBSYS_SRAM_ISOINT_ENG_EVENT			119
-+#define CMDQ_EVENT_DISP1_DISP_WDMA4_TARGET_LINE_END_ENG_EVENT			120
-+#define CMDQ_EVENT_DISP1_DISP_WDMA4_SW_RST_DONE_ENG_EVENT			121
-+#define CMDQ_EVENT_DISP1_DISP_WDMA3_TARGET_LINE_END_ENG_EVENT			122
-+#define CMDQ_EVENT_DISP1_DISP_WDMA3_SW_RST_DONE_ENG_EVENT			123
-+#define CMDQ_EVENT_DISP1_DISP_WDMA2_TARGET_LINE_END_ENG_EVENT			124
-+#define CMDQ_EVENT_DISP1_DISP_WDMA2_SW_RST_DONE_ENG_EVENT			125
-+#define CMDQ_EVENT_DISP1_DISP_WDMA1_TARGET_LINE_END_ENG_EVENT			126
-+#define CMDQ_EVENT_DISP1_DISP_WDMA1_SW_RST_DONE_ENG_EVENT			127
-+#define CMDQ_EVENT_DISP1_DISP_MUTEX0_TIMEOUT_ENG_EVENT				128
-+#define CMDQ_EVENT_DISP1_DISP_MUTEX0_GET_RLZ_ENG_EVENT				129
-+#define CMDQ_EVENT_DISP1_DISP_MDP_RDMA1_SW_RST_DONE_ENG_EVENT			130
-+#define CMDQ_EVENT_DISP1_DISP_GDMA0_SW_RST_DONE_ENG_EVENT			131
-+#define CMDQ_EVENT_DISP1_DISP_DVO0_DVO_INT_TG_VSYNC_START_ENG_EVENT		132
-+#define CMDQ_EVENT_DISP1_DISP_DVO0_DVO_INT_TG_VSYNC_END_ENG_EVENT		133
-+#define CMDQ_EVENT_DISP1_DISP_DVO0_DVO_INT_TG_VRR_VFP_LAST_SAFE_BLANK_ENG_EVENT	134
-+#define CMDQ_EVENT_DISP1_DISP_DVO0_DVO_INT_TG_VFP_START_ENG_EVENT		135
-+#define CMDQ_EVENT_DISP1_DISP_DVO0_DVO_INT_TG_VFP_LAST_LINE_ENG_EVENT		136
-+#define CMDQ_EVENT_DISP1_DISP_DVO0_DVO_INT_TG_VDE_END_ENG_EVENT			137
-+#define CMDQ_EVENT_DISP1_DISP_DVO0_DVO_INT_TG_TRIGGER_LOOP_CLR_ENG_EVENT	138
-+#define CMDQ_EVENT_DISP1_DISP_DVO0_DVO_INT_TG_TARGET_LINE1_ENG_EVENT		139
-+#define CMDQ_EVENT_DISP1_DISP_DVO0_DVO_INT_TG_TARGET_LINE0_ENG_EVENT		140
-+#define CMDQ_EVENT_DISP1_DISP_DVO0_DVO_EXT_TG_VSYNC_START_ENG_EVENT		141
-+#define CMDQ_EVENT_DISP1_DISP_DVO0_DVO_EXT_TG_VSYNC_END_ENG_EVENT		142
-+#define CMDQ_EVENT_DISP1_DISP_DVO0_DVO_EXT_TG_VDE_START_ENG_EVENT		143
-+#define CMDQ_EVENT_DISP1_DISP_DVO0_DVO_EXT_TG_VDE_END_ENG_EVENT			144
-+/* CMDQ_EVENT_DISP1_DISP_DSI2_ENG_EVENT0 ~ 10: 145 ~ 155 */
-+#define CMDQ_EVENT_DISP1_DISP_DSI2_ENG_EVENT(n)					(145 + (n))
-+/* CMDQ_EVENT_DISP1_DISP_DSI1_ENG_EVENT0 ~ 21: 156 ~ 177 */
-+#define CMDQ_EVENT_DISP1_DISP_DSI1_ENG_EVENT(n)					(156 + (n))
-+/* CMDQ_EVENT_DISP1_DISP_DSI0_ENG_EVENT0 ~ 10: 178 ~ 188 */
-+#define CMDQ_EVENT_DISP1_DISP_DSI0_ENG_EVENT(n)					(178 + (n))
-+#define CMDQ_EVENT_DISP1_DISP_DP_INTF1_VSYNC_START_ENG_EVENT			189
-+#define CMDQ_EVENT_DISP1_DISP_DP_INTF1_VSYNC_END_ENG_EVENT			190
-+#define CMDQ_EVENT_DISP1_DISP_DP_INTF1_VDE_START_ENG_EVENT			191
-+#define CMDQ_EVENT_DISP1_DISP_DP_INTF1_VDE_END_ENG_EVENT			192
-+#define CMDQ_EVENT_DISP1_DISP_DP_INTF1_TARGET_LINE_ENG_EVENT			193
-+#define CMDQ_EVENT_DISP1_DISP_DP_INTF0_VSYNC_START_ENG_EVENT			194
-+#define CMDQ_EVENT_DISP1_DISP_DP_INTF0_VSYNC_END_ENG_EVENT			195
-+#define CMDQ_EVENT_DISP1_DISP_DP_INTF0_VDE_START_ENG_EVENT			196
-+#define CMDQ_EVENT_DISP1_DISP_DP_INTF0_VDE_END_ENG_EVENT			197
-+#define CMDQ_EVENT_DISP1_DISP_DP_INTF0_TARGET_LINE_ENG_EVENT			198
-+/* CMDQ_EVENT_DISP1_BUF_UNDERRUN_ENG_EVENT0 ~ 10: 199 ~ 209 */
-+#define CMDQ_EVENT_DISP1_BUF_UNDERRUN_ENG_EVENT(n)				(199 + (n))
-+/* CMDQ_EVENT_MML0_STREAM_SOF0 ~ 15: 210 ~ 225 */
-+#define CMDQ_EVENT_MML0_STREAM_SOF(n)						(210 + (n))
-+/* CMDQ_EVENT_MML0_FRAME_DONE_SEL0 ~ 15: 226 ~ 241 */
-+#define CMDQ_EVENT_MML0_FRAME_DONE_SEL(n)					(226 + (n))
-+/* CMDQ_EVENT_MML0_REG_UPDATE_DONE_ENG_EVENT0 ~ 15: 242 ~ 257 */
-+#define CMDQ_EVENT_MML0_REG_UPDATE_DONE_ENG_EVENT(n)				(242 + (n))
-+#define CMDQ_EVENT_MML0_MDP_WROT2_SW_RST_DONE_ENG_EVENT				258
-+#define CMDQ_EVENT_MML0_MDP_WROT1_SW_RST_DONE_ENG_EVENT				259
-+#define CMDQ_EVENT_MML0_MDP_WROT0_SW_RST_DONE_ENG_EVENT				260
-+#define CMDQ_EVENT_MML0_MDP_RROT0_SW_RST_DONE_ENG_EVENT				261
-+#define CMDQ_EVENT_MML0_MDP_RDMA2_SW_RST_DONE_ENG_EVENT				262
-+#define CMDQ_EVENT_MML0_MDP_RDMA1_SW_RST_DONE_ENG_EVENT				263
-+#define CMDQ_EVENT_MML0_MDP_RDMA0_SW_RST_DONE_ENG_EVENT				264
-+#define CMDQ_EVENT_MML0_MDP_MERGE0_SW_RST_DONE_ENG_EVENT			265
-+#define CMDQ_EVENT_MML0_DISP_MUTEX0_TIMEOUT_ENG_EVENT				266
-+#define CMDQ_EVENT_MML0_DISP_MUTEX0_GET_RLZ_ENG_EVENT				267
-+/* CMDQ_EVENT_MML1_STREAM_SOF0 ~ 15: 268 ~ 283 */
-+#define CMDQ_EVENT_MML1_STREAM_SOF(n)						(268 + (n))
-+/* CMDQ_EVENT_MML1_FRAME_DONE_SEL0 ~ 15: 284 ~ 299 */
-+#define CMDQ_EVENT_MML1_FRAME_DONE_SEL(n)					(284 + (n))
-+/* CMDQ_EVENT_MML1_REG_UPDATE_DONE_ENG_EVENT0 ~ 15: 300 ~ 315 */
-+#define CMDQ_EVENT_MML1_REG_UPDATE_DONE_ENG_EVENT0				(300 + (n))
-+#define CMDQ_EVENT_MML1_MDP_WROT2_SW_RST_DONE_ENG_EVENT				316
-+#define CMDQ_EVENT_MML1_MDP_WROT1_SW_RST_DONE_ENG_EVENT				317
-+#define CMDQ_EVENT_MML1_MDP_WROT0_SW_RST_DONE_ENG_EVENT				318
-+#define CMDQ_EVENT_MML1_MDP_RROT0_SW_RST_DONE_ENG_EVENT				319
-+#define CMDQ_EVENT_MML1_MDP_RDMA2_SW_RST_DONE_ENG_EVENT				320
-+#define CMDQ_EVENT_MML1_MDP_RDMA1_SW_RST_DONE_ENG_EVENT				321
-+#define CMDQ_EVENT_MML1_MDP_RDMA0_SW_RST_DONE_ENG_EVENT				322
-+#define CMDQ_EVENT_MML1_MDP_MERGE0_SW_RST_DONE_ENG_EVENT			323
-+#define CMDQ_EVENT_MML1_DISP_MUTEX0_TIMEOUT_ENG_EVENT				324
-+#define CMDQ_EVENT_MML1_DISP_MUTEX0_GET_RLZ_ENG_EVENT				325
-+/* CMDQ_EVENT_OVL0_STREAM_SOF0 ~ 15: 326 ~ 341 */
-+#define CMDQ_EVENT_OVL0_STREAM_SOF(n)						(326 + (n))
-+/* CMDQ_EVENT_OVL0_FRAME_DONE_SEL0 ~ 15: 342 ~ 357 */
-+#define CMDQ_EVENT_OVL0_FRAME_DONE_SEL(n)					(342 + (n))
-+#define CMDQ_EVENT_OVL0_OVL_UFBC_WDMA0_TARGET_LINE_END_ENG_EVENT		358
-+#define CMDQ_EVENT_OVL0_OVL_MUTEX0_TIMEOUT_ENG_EVENT				359
-+/* CMDQ_EVENT_OVL0_OVL_MUTEX0_REG_UPDATE_DONE_ENG_EVENT0 ~ 15: 360 ~ 375 */
-+#define CMDQ_EVENT_OVL0_OVL_MUTEX0_REG_UPDATE_DONE_ENG_EVENT(n)			(360 + (n))
-+#define CMDQ_EVENT_OVL0_OVL_MUTEX0_GET_RELEASE_ENG_EVENT			376
-+#define CMDQ_EVENT_OVL0_OVL_MDP_RDMA1_SW_RST_DONE_ENG_EVENT			377
-+#define CMDQ_EVENT_OVL0_OVL_MDP_RDMA0_SW_RST_DONE_ENG_EVENT			378
-+#define CMDQ_EVENT_OVL0_OVL_EXDMA9_FRAME_RESET_DONE_ENG_EVENT			379
-+#define CMDQ_EVENT_OVL0_OVL_EXDMA8_FRAME_RESET_DONE_ENG_EVENT			380
-+#define CMDQ_EVENT_OVL0_OVL_EXDMA7_FRAME_RESET_DONE_ENG_EVENT			381
-+#define CMDQ_EVENT_OVL0_OVL_EXDMA6_FRAME_RESET_DONE_ENG_EVENT			382
-+#define CMDQ_EVENT_OVL0_OVL_EXDMA5_FRAME_RESET_DONE_ENG_EVENT			383
-+#define CMDQ_EVENT_OVL0_OVL_EXDMA4_FRAME_RESET_DONE_ENG_EVENT			384
-+#define CMDQ_EVENT_OVL0_OVL_EXDMA3_FRAME_RESET_DONE_ENG_EVENT			385
-+#define CMDQ_EVENT_OVL0_OVL_EXDMA2_FRAME_RESET_DONE_ENG_EVENT			386
-+#define CMDQ_EVENT_OVL0_OVL_EXDMA1_FRAME_RESET_DONE_ENG_EVENT			387
-+#define CMDQ_EVENT_OVL0_OVL_EXDMA0_FRAME_RESET_DONE_ENG_EVENT			388
-+#define CMDQ_EVENT_OVL0_OVL_DISP_WDMA1_TARGET_LINE_END_ENG_EVENT		389
-+#define CMDQ_EVENT_OVL0_OVL_DISP_WDMA1_SW_RST_DONE_END_ENG_EVENT		390
-+#define CMDQ_EVENT_OVL0_OVL_DISP_WDMA0_TARGET_LINE_END_ENG_EVENT		391
-+#define CMDQ_EVENT_OVL0_OVL_DISP_WDMA0_SW_RST_DONE_END_ENG_EVENT		392
-+#define CMDQ_EVENT_OVL0_OVL_BWM0_FRAME_RESET_DONE_ENG_EVENT			393
-+/* CMDQ_EVENT_OVL1_STREAM_SOF0 ~ 15: 394 ~ 409 */
-+#define CMDQ_EVENT_OVL1_STREAM_SOF(n)						(394 + (n))
-+/* CMDQ_EVENT_OVL1_FRAME_DONE_SEL0 ~ 15: 410 ~ 425 */
-+#define CMDQ_EVENT_OVL1_FRAME_DONE_SEL(n)					(410 + (n))
-+#define CMDQ_EVENT_OVL1_OVL_UFBC_WDMA0_TARGET_LINE_END_ENG_EVENT		426
-+#define CMDQ_EVENT_OVL1_OVL_MUTEX0_TIMEOUT_ENG_EVENT				427
-+/* CMDQ_EVENT_OVL1_OVL_MUTEX0_REG_UPDATE_DONE_ENG_EVENT0 ~ 15: 428 ~ 443 */
-+#define CMDQ_EVENT_OVL1_OVL_MUTEX0_REG_UPDATE_DONE_ENG_EVENT(n)			(428 + (n))
-+#define CMDQ_EVENT_OVL1_OVL_MUTEX0_GET_RELEASE_ENG_EVENT			444
-+#define CMDQ_EVENT_OVL1_OVL_MDP_RDMA1_SW_RST_DONE_ENG_EVENT			445
-+#define CMDQ_EVENT_OVL1_OVL_MDP_RDMA0_SW_RST_DONE_ENG_EVENT			446
-+#define CMDQ_EVENT_OVL1_OVL_EXDMA9_FRAME_RESET_DONE_ENG_EVENT			447
-+#define CMDQ_EVENT_OVL1_OVL_EXDMA8_FRAME_RESET_DONE_ENG_EVENT			448
-+#define CMDQ_EVENT_OVL1_OVL_EXDMA7_FRAME_RESET_DONE_ENG_EVENT			449
-+#define CMDQ_EVENT_OVL1_OVL_EXDMA6_FRAME_RESET_DONE_ENG_EVENT			450
-+#define CMDQ_EVENT_OVL1_OVL_EXDMA5_FRAME_RESET_DONE_ENG_EVENT			451
-+#define CMDQ_EVENT_OVL1_OVL_EXDMA4_FRAME_RESET_DONE_ENG_EVENT			452
-+#define CMDQ_EVENT_OVL1_OVL_EXDMA3_FRAME_RESET_DONE_ENG_EVENT			453
-+#define CMDQ_EVENT_OVL1_OVL_EXDMA2_FRAME_RESET_DONE_ENG_EVENT			454
-+#define CMDQ_EVENT_OVL1_OVL_EXDMA1_FRAME_RESET_DONE_ENG_EVENT			455
-+#define CMDQ_EVENT_OVL1_OVL_EXDMA0_FRAME_RESET_DONE_ENG_EVENT			456
-+#define CMDQ_EVENT_OVL1_OVL_DISP_WDMA1_TARGET_LINE_END_ENG_EVENT		457
-+#define CMDQ_EVENT_OVL1_OVL_DISP_WDMA1_SW_RST_DONE_END_ENG_EVENT		458
-+#define CMDQ_EVENT_OVL1_OVL_DISP_WDMA0_TARGET_LINE_END_ENG_EVENT		459
-+#define CMDQ_EVENT_OVL1_OVL_DISP_WDMA0_SW_RST_DONE_END_ENG_EVENT		460
-+#define CMDQ_EVENT_OVL1_OVL_BWM0_FRAME_RESET_DONE_ENG_EVENT			461
-+#define CMDQ_EVENT_DPC_DT_DONE0							462
-+#define CMDQ_EVENT_DPC_DT_DONE1							463
-+#define CMDQ_EVENT_DPC_DT_DONE2_0_MERGE						464
-+#define CMDQ_EVENT_DPC_DT_DONE2_1_MERGE						465
-+#define CMDQ_EVENT_DPC_DT_DONE2_2_MERGE						466
-+#define CMDQ_EVENT_DPC_DT_DONE2_3_MERGE						467
-+#define CMDQ_EVENT_DPC_DT_DONE3							468
-+#define CMDQ_EVENT_DPC_DT_DONE4_MERGE						469
-+#define CMDQ_EVENT_DPC_DT_DONE5							470
-+#define CMDQ_EVENT_DPC_DT_DONE6_0_MERGE						471
-+#define CMDQ_EVENT_DPC_DT_DONE6_1_MERGE						472
-+#define CMDQ_EVENT_DPC_DT_DONE6_2_MERGE						473
-+#define CMDQ_EVENT_DPC_DT_DONE6_3_MERGE						474
-+#define CMDQ_EVENT_DPC_DT_DONE7							475
-+#define CMDQ_EVENT_DPC_DT_DONE32_MERGE						476
-+#define CMDQ_EVENT_DPC_DT_DONE33						477
-+#define CMDQ_EVENT_DPC_DT_DONE34_0						478
-+#define CMDQ_EVENT_DPC_DT_DONE35						479
-+#define CMDQ_EVENT_DPC_DISP_SSYS_DT_ERR_ON_BEFORE_OFF				480
-+#define CMDQ_EVENT_DPC_DISP_SSYS_DT_ERR_PRETE_BEFORE_ON				481
-+#define CMDQ_EVENT_DPC_DISP_DVFS_DT_ERR_ON_BEFORE_OFF				482
-+#define CMDQ_EVENT_DPC_DISP_DVFS_DT_ERR_PRETE_BEFORE_ON				483
-+#define CMDQ_EVENT_DPC_DISP_SB_DT_ERR_ON_BEFORE_OFF				484
-+#define CMDQ_EVENT_DPC_DISP_SB_DT_ERR_PRETE_BEFORE_ON				485
-+#define CMDQ_EVENT_DPC_DISP_SW_CONFIG_WHEN_MTCMOS_OFF				486
-+#define CMDQ_EVENT_DPC_MML_SSYS_DT_ERR_ON_BEFORE_OFF				487
-+#define CMDQ_EVENT_DPC_MML_SSYS_DT_ERR_PRETE_BEFORE_ON				488
-+#define CMDQ_EVENT_DPC_MML_DVFS_DT_ERR_ON_BEFORE_OFF				489
-+#define CMDQ_EVENT_DPC_MML_DVFS_DT_ERR_PRETE_BEFORE_ON				490
-+#define CMDQ_EVENT_DPC_MML_SB_DT_ERR_ON_BEFORE_OFF				491
-+#define CMDQ_EVENT_DPC_MML_SB_DT_ERR_PRETE_BEFORE_ON				492
-+#define CMDQ_EVENT_DPC_MML_SW_CONFIG_WHEN_MTCMOS_OFF				493
-+/* CMDQ_EVENT_DPTX_DPTX_EVENT0 ~ 3: 494 ~ 497 */
-+#define CMDQ_EVENT_DPTX_DPTX_EVENT(n)						(494 + (n))
-+/* CMDQ_EVENT_EDPTX_EDPTX_EVENT0 ~ 1: 498 ~ 499 */
-+#define CMDQ_EVENT_EDPTX_EDPTX_EVENT(n)						(498 + (n))
-+
-+#define CMDQ_EVENT_DSI0_TE_I_DSI0_TE_I						898
-+#define CMDQ_EVENT_DSI1_TE_I_DSI1_TE_I						899
-+#define CMDQ_EVENT_DSI2_TE_I_DSI2_TE_I						900
-+/* CMDQ_EVENT_POWEREVENT_GCE_EVENT_SUBSYS_PWR_ACK0 ~ 23: 901 ~ 924 */
-+#define CMDQ_EVENT_POWEREVENT_GCE_EVENT_SUBSYS_PWR_ACK(n)			(901 + (n))
-+/* CMDQ_EVENT_GCE_EVENT_DPTX_GCE_EVENT_DPTX0 ~ 1: 925 ~ 926 */
-+#define CMDQ_EVENT_GCE_EVENT_DPTX_GCE_EVENT_DPTX(n)				(925 + (n))
-+/* CMDQ_EVENT_GCE_EVENT_DPTX_P1_GCE_EVENT_DPTX_P10 ~ 1: 927 ~ 928 */
-+#define CMDQ_EVENT_GCE_EVENT_DPTX_P1_GCE_EVENT_DPTX_P1(n)			(927 + (n))
-+/* CMDQ_EVENT_GCE_EVENT_EDPTX_GCE_EVENT_EDPTX0 ~ 1: 929 ~ 930 */
-+#define CMDQ_EVENT_GCE_EVENT_EDPTX_GCE_EVENT_EDPTX(n)				(929 + (n))
-+#define CMDQ_EVENT_DSI3_TE_I_DSI3_TE_I						931
-+#define CMDQ_EVENT_SPI0_FINISH_EVENT_DSI4_TE_I					932
-+#define CMDQ_EVENT_SPI0_EVENT_EVENT_DSI5_TE_I					933
-+
-+/*
-+ * GCE1 Hardware Event IDs
-+ * Different SoCs will have varying numbers of hardware event signals,
-+ * which are sent from the corresponding hardware to the GCE.
-+ * Each hardware event signal corresponds to an event ID in the GCE.
-+ * The CMDQ driver can use the following event ID definitions to allow
-+ * the client driver to use wait and clear APIs provided by CMDQ, enabling
-+ * the GCE to execute operations in the instructions for that event ID.
-+ *
-+ * The event IDs of GCE1 are mainly used by non-display hardware.
-+ */
-+#define CMDQ_EVENT_VENC3_VENC_RESERVED						0
-+#define CMDQ_EVENT_VENC3_VENC_FRAME_DONE					1
-+#define CMDQ_EVENT_VENC3_VENC_PAUSE_DONE					2
-+#define CMDQ_EVENT_VENC3_JPGENC_DONE						3
-+#define CMDQ_EVENT_VENC3_VENC_MB_DONE						4
-+#define CMDQ_EVENT_VENC3_VENC_128BYTE_DONE					5
-+#define CMDQ_EVENT_VENC3_JPGDEC_DONE						6
-+#define CMDQ_EVENT_VENC3_JPGDEC_C1_DONE						7
-+#define CMDQ_EVENT_VENC3_JPGDEC_INSUFF_DONE					8
-+#define CMDQ_EVENT_VENC3_JPGDEC_C1_INSUFF_DONE					9
-+#define CMDQ_EVENT_VENC3_WP_2ND_STAGE_DONE					10
-+#define CMDQ_EVENT_VENC3_WP_3RD_STAGE_DONE					11
-+#define CMDQ_EVENT_VENC3_PPS_HEADER_DONE					12
-+#define CMDQ_EVENT_VENC3_SPS_HEADER_DONE					13
-+#define CMDQ_EVENT_VENC3_VPS_HEADER_DONE					14
-+#define CMDQ_EVENT_VENC3_VENC_SLICE_DONE					15
-+#define CMDQ_EVENT_VENC3_VENC_SOC_SLICE_DONE					16
-+#define CMDQ_EVENT_VENC3_VENC_SOC_FRAME_DONE					17
-+
-+#define CMDQ_EVENT_VENC2_VENC_FRAME_DONE					33
-+#define CMDQ_EVENT_VENC2_VENC_PAUSE_DONE					34
-+#define CMDQ_EVENT_VENC2_JPGENC_DONE						35
-+#define CMDQ_EVENT_VENC2_VENC_MB_DONE						36
-+#define CMDQ_EVENT_VENC2_VENC_128BYTE_DONE					37
-+#define CMDQ_EVENT_VENC2_JPGDEC_DONE						38
-+#define CMDQ_EVENT_VENC2_JPGDEC_C1_DONE						39
-+#define CMDQ_EVENT_VENC2_JPGDEC_INSUFF_DONE					40
-+#define CMDQ_EVENT_VENC2_JPGDEC_C1_INSUFF_DONE					41
-+#define CMDQ_EVENT_VENC2_WP_2ND_STAGE_DONE					42
-+#define CMDQ_EVENT_VENC2_WP_3RD_STAGE_DONE					43
-+#define CMDQ_EVENT_VENC2_PPS_HEADER_DONE					44
-+#define CMDQ_EVENT_VENC2_SPS_HEADER_DONE					45
-+#define CMDQ_EVENT_VENC2_VPS_HEADER_DONE					46
-+#define CMDQ_EVENT_VENC2_VENC_SLICE_DONE					47
-+#define CMDQ_EVENT_VENC2_VENC_SOC_SLICE_DONE					48
-+#define CMDQ_EVENT_VENC2_VENC_SOC_FRAME_DONE					49
-+
-+#define CMDQ_EVENT_VENC1_VENC_FRAME_DONE					65
-+#define CMDQ_EVENT_VENC1_VENC_PAUSE_DONE					66
-+#define CMDQ_EVENT_VENC1_JPGENC_DONE						67
-+#define CMDQ_EVENT_VENC1_VENC_MB_DONE						68
-+#define CMDQ_EVENT_VENC1_VENC_128BYTE_DONE					69
-+#define CMDQ_EVENT_VENC1_JPGDEC_DONE						70
-+#define CMDQ_EVENT_VENC1_JPGDEC_C1_DONE						71
-+#define CMDQ_EVENT_VENC1_JPGDEC_INSUFF_DONE					72
-+#define CMDQ_EVENT_VENC1_JPGDEC_C1_INSUFF_DONE					73
-+#define CMDQ_EVENT_VENC1_WP_2ND_STAGE_DONE					74
-+#define CMDQ_EVENT_VENC1_WP_3RD_STAGE_DONE					75
-+#define CMDQ_EVENT_VENC1_PPS_HEADER_DONE					76
-+#define CMDQ_EVENT_VENC1_SPS_HEADER_DONE					77
-+#define CMDQ_EVENT_VENC1_VPS_HEADER_DONE					78
-+#define CMDQ_EVENT_VENC1_VENC_SLICE_DONE					79
-+#define CMDQ_EVENT_VENC1_VENC_SOC_SLICE_DONE					80
-+#define CMDQ_EVENT_VENC1_VENC_SOC_FRAME_DONE					81
-+
-+#define CMDQ_EVENT_VDEC1_VDEC_LINE_CNT_INT					192
-+#define CMDQ_EVENT_VDEC1_VDEC_INT						193
-+#define CMDQ_EVENT_VDEC1_VDEC1_EVENT_2						194
-+#define CMDQ_EVENT_VDEC1_VDEC_DEC_ERR						195
-+#define CMDQ_EVENT_VDEC1_VDEC_BUSY_OVERFLOW					196
-+#define CMDQ_EVENT_VDEC1_VDEC1_EVENT_5						197
-+#define CMDQ_EVENT_VDEC1_VDEC_INI_FETCH_RDY					198
-+#define CMDQ_EVENT_VDEC1_VDEC1_EVENT_7						199
-+#define CMDQ_EVENT_VDEC1_VDEC1_EVENT_8						200
-+#define CMDQ_EVENT_VDEC1_VDEC1_EVENT_9						201
-+#define CMDQ_EVENT_VDEC1_VDEC1_EVENT_10						202
-+#define CMDQ_EVENT_VDEC1_VDEC1_EVENT_11						203
-+
-+#define CMDQ_EVENT_VDEC1_VDEC_GCE_CNT_OP_THR					207
-+
-+#define CMDQ_EVENT_VDEC1_VDEC1_EVENT_32						224
-+#define CMDQ_EVENT_VDEC1_VDEC_LAT_INT						225
-+#define CMDQ_EVENT_VDEC1_VDEC1_EVENT_34						226
-+#define CMDQ_EVENT_VDEC1_VDEC_LAT_DEC_ERR					227
-+#define CMDQ_EVENT_VDEC1_VDEC_LAT_BUSY_OVERFLOW					228
-+#define CMDQ_EVENT_VDEC1_VDEC1_EVENT_37						229
-+#define CMDQ_EVENT_VDEC1_VDEC_LAT_INI_FETCH_RDY					230
-+#define CMDQ_EVENT_VDEC1_VDEC1_EVENT_39						231
-+#define CMDQ_EVENT_VDEC1_VDEC1_EVENT_40						232
-+#define CMDQ_EVENT_VDEC1_VDEC1_EVENT_41						233
-+#define CMDQ_EVENT_VDEC1_VDEC1_EVENT_42						234
-+#define CMDQ_EVENT_VDEC1_VDEC1_EVENT_43						235
-+
-+#define CMDQ_EVENT_VDEC1_VDEC_LAT_GCE_CNT_OP_THR				239
-+
-+#define CMDQ_EVENT_IMG_IMG_EVENT_0						256
-+/* CMDQ_EVENT_IMG_TRAW0_CQ_THR_DONE_TRAW0_0 ~ 5: 257 ~  262 */
-+#define CMDQ_EVENT_IMG_TRAW0_CQ_THR_DONE_TRAW0(n)				(257 + (n))
-+#define CMDQ_EVENT_IMG_TRAW0_DMA_ERR_EVENT					263
-+#define CMDQ_EVENT_IMG_TRAW0_DUMMY_0						264
-+/* CMDQ_EVENT_IMG_TRAW1_CQ_THR_DONE_TRAW0_0 ~ 5: 265 ~ 270 */
-+#define CMDQ_EVENT_IMG_TRAW1_CQ_THR_DONE_TRAW0(n)				(265 + (n))
-+#define CMDQ_EVENT_IMG_TRAW1_DMA_ERR_EVENT					271
-+#define CMDQ_EVENT_IMG_ADL_TILE_DONE_EVENT					272
-+#define CMDQ_EVENT_IMG_ADLWR0_TILE_DONE_EVENT					273
-+#define CMDQ_EVENT_IMG_ADLWR1_TILE_DONE_EVENT					274
-+#define CMDQ_EVENT_IMG_IMGSYS_IPE_ME_DONE					275
-+#define CMDQ_EVENT_IMG_IMGSYS_IPE_MMG_DONE					276
-+/* CMDQ_EVENT_IMG_QOF_ACK_EVENT0 ~ 19: 277 ~ 296 */
-+#define CMDQ_EVENT_IMG_QOF_ACK_EVENT(n)						(277 + (n))
-+/* CMDQ_EVENT_IMG_QOF_ON_EVENT0 ~ 4: 297 ~ 301 */
-+#define CMDQ_EVENT_IMG_QOF_ON_EVENT(n)						(297 + (n))
-+/* CMDQ_EVENT_IMG_QOF_OFF_EVENT0 ~ 4: 302 ~ 306 */
-+#define CMDQ_EVENT_IMG_QOF_OFF_EVENT(n)						(302 + (n))
-+/* CMDQ_EVENT_IMG_QOF_SAVE_EVENT0 ~ 4: 307 ~ 311 */
-+#define CMDQ_EVENT_IMG_QOF_SAVE_EVENT(n)					(307 + (n))
-+/* CMDQ_EVENT_IMG_QOF_RESTORE_EVENT0 ~ 4: 312 ~ 316 */
-+#define CMDQ_EVENT_IMG_QOF_RESTORE_EVENT(n)					(312 + (n))
-+/* CMDQ_EVENT_IMG_DIP_CQ_THR_DONE_P20~5: 317 ~ 322 */
-+#define CMDQ_EVENT_IMG_DIP_CQ_THR_DONE_P2(n)					(317 + (n))
-+#define CMDQ_EVENT_IMG_DIP_DMA_ERR_EVENT					323
-+#define CMDQ_EVENT_IMG_DIP_NR_DMA_ERR_EVENT					324
-+#define CMDQ_EVENT_IMG_DIP_DUMMY_0						325
-+#define CMDQ_EVENT_IMG_WPE_EIS_GCE_FRAME_DONE					326
-+#define CMDQ_EVENT_IMG_WPE_EIS_DONE_SYNC_OUT					327
-+/* CMDQ_EVENT_IMG_WPE_EIS_CQ_THR_DONE_P20 ~ 5: 328 ~ 333 */
-+#define CMDQ_EVENT_IMG_WPE_EIS_CQ_THR_DONE_P2(n)				(328 + (n))
-+/* CMDQ_EVENT_IMG_PQDIP_A_CQ_THR_DONE_P20 ~ 5: 334 ~ 339 */
-+#define CMDQ_EVENT_IMG_PQDIP_A_CQ_THR_DONE_P2(n)				(334 + (n))
-+#define CMDQ_EVENT_IMG_PQA_DMA_ERR_EVENT					340
-+/* CMDQ_EVENT_IMG_WPE0_DUMMY0~2: 341 ~ 343 */
-+#define CMDQ_EVENT_IMG_WPE0_DUMMY(n)						(341 + (n))
-+#define CMDQ_EVENT_IMG_OMC_TNR_GCE_FRAME_DONE					344
-+#define CMDQ_EVENT_IMG_OMC_TNR_DONE_SYNC_OUT					345
-+/* CMDQ_EVENT_IMG_OMC_TNR_CQ_THR_DONE_P20 ~ 5: 346 ~ 351 */
-+#define CMDQ_EVENT_IMG_OMC_TNR_CQ_THR_DONE_P2(n)				(346 + (n))
-+/* CMDQ_EVENT_IMG_PQDIP_B_CQ_THR_DONE_P20 ~ 5: 352 ~ 357 */
-+#define CMDQ_EVENT_IMG_PQDIP_B_CQ_THR_DONE_P2(n)				(352 + (n))
-+#define CMDQ_EVENT_IMG_PQB_DMA_ERR_EVENT					358
-+/* CMDQ_EVENT_IMG_WPE1_DUMMY0 ~ 2: 359 ~ 361 */
-+#define CMDQ_EVENT_IMG_WPE1_DUMMY(n)						(359 + (n))
-+#define CMDQ_EVENT_IMG_WPE_LITE_GCE_FRAME_DONE					362
-+#define CMDQ_EVENT_IMG_WPE_LITE_DONE_SYNC_OUT					363
-+/* CMDQ_EVENT_IMG_WPE_LITE_CQ_THR_DONE_P20 ~ 5: 364 ~ 369 */
-+#define CMDQ_EVENT_IMG_WPE_LITE_CQ_THR_DONE_P2(n)				(364 + (n))
-+#define CMDQ_EVENT_IMG_OMC_LITE_GCE_FRAME_DONE					370
-+#define CMDQ_EVENT_IMG_OMC_LITE_DONE_SYNC_OUT					371
-+/* CMDQ_EVENT_IMG_OMC_LITE_CQ_THR_DONE_P20 ~ 5: 372 ~ 377 */
-+#define CMDQ_EVENT_IMG_OMC_LITE_CQ_THR_DONE_P2(n)				(372 + (n))
-+/* CMDQ_EVENT_IMG_WPE2_DUMMY0 ~ 2: 378 ~ 380 */
-+#define CMDQ_EVENT_IMG_WPE2_DUMMY(n)						(378 + (n))
-+#define CMDQ_EVENT_IMG_IMGSYS_IPE_FDVT0_DONE					381
-+#define CMDQ_EVENT_IMG_IMG_EVENT_126						382
-+#define CMDQ_EVENT_IMG_IMG_EVENT_127						383
-+#define CMDQ_EVENT_CAM_CAM_EVENT_0						384
-+#define CMDQ_EVENT_CAM_CAM_SUBA_SW_PASS1_DONE					385
-+#define CMDQ_EVENT_CAM_CAM_SUBB_SW_PASS1_DONE					386
-+#define CMDQ_EVENT_CAM_CAM_SUBC_SW_PASS1_DONE					387
-+#define CMDQ_EVENT_CAM_CAM_SUBA_TFMR_PASS1_DONE					388
-+#define CMDQ_EVENT_CAM_CAM_SUBB_TFMR_PASS1_DONE					389
-+#define CMDQ_EVENT_CAM_CAM_SUBC_TFMR_PASS1_DONE					390
-+/* CMDQ_EVENT_CAM_CAMSV_A_SW_PASS1_DONE0 ~ 3: 391 ~ 394 */
-+#define CMDQ_EVENT_CAM_CAMSV_A_SW_PASS1_DONE(n)					(391 + (n))
-+/* CMDQ_EVENT_CAM_CAMSV_B_SW_PASS1_DONE0 ~ 3: 395 ~ 398 */
-+#define CMDQ_EVENT_CAM_CAMSV_B_SW_PASS1_DONE(n)					(395 + (n))
-+/* CMDQ_EVENT_CAM_CAMSV_C_SW_PASS1_DONE0 ~ 3: 399 + 402 */
-+#define CMDQ_EVENT_CAM_CAMSV_C_SW_PASS1_DONE(n)					(399 + (n))
-+/* CMDQ_EVENT_CAM_CAMSV_D_SW_PASS1_DONE0 ~ 3: 403 ~ 406 */
-+#define CMDQ_EVENT_CAM_CAMSV_D_SW_PASS1_DONE(n)					(403 + (n))
-+/* CMDQ_EVENT_CAM_CAMSV_E_SW_PASS1_DONE0 ~ 3: 407 ~ 409 */
-+#define CMDQ_EVENT_CAM_CAMSV_E_SW_PASS1_DONE(n)					(407 + (n))
-+/* CMDQ_EVENT_CAM_CAMSV_F_SW_PASS1_DONE0 ~ 3: 411 ~ 413 */
-+#define CMDQ_EVENT_CAM_CAMSV_F_SW_PASS1_DONE(n)					(411 + (n))
-+#define CMDQ_EVENT_CAM_MRAW0_SW_PASS1_DONE					415
-+#define CMDQ_EVENT_CAM_MRAW1_SW_PASS1_DONE					416
-+#define CMDQ_EVENT_CAM_MRAW2_SW_PASS1_DONE					417
-+#define CMDQ_EVENT_CAM_MRAW3_SW_PASS1_DONE					418
-+#define CMDQ_EVENT_CAM_UISP_SW_PASS1_DONE					419
-+#define CMDQ_EVENT_CAM_TG_MRAW0_OUT_SOF						420
-+#define CMDQ_EVENT_CAM_TG_MRAW1_OUT_SOF						421
-+#define CMDQ_EVENT_CAM_TG_MRAW2_OUT_SOF						422
-+#define CMDQ_EVENT_CAM_TG_MRAW3_OUT_SOF						423
-+#define CMDQ_EVENT_CAM_PDA0_IRQO_EVENT_DONE_D1					424
-+#define CMDQ_EVENT_CAM_PDA1_IRQO_EVENT_DONE_D1					425
-+#define CMDQ_EVENT_CAM_DPE_DVP_CMQ_EVENT					426
-+#define CMDQ_EVENT_CAM_DPE_DVS_CMQ_EVENT					427
-+#define CMDQ_EVENT_CAM_DPE_DVFG_CMQ_EVENT					428
-+#define CMDQ_EVENT_CAM_CAM_EVENT_45						429
-+#define CMDQ_EVENT_CAM_CAM_EVENT_46						430
-+#define CMDQ_EVENT_CAM_CAM_EVENT_47						431
-+#define CMDQ_EVENT_CAM_CAM_EVENT_48						432
-+/* CMDQ_EVENT_CAM_CAM_SUBA_TG_INT1 ~ 4: 433 ~ 436 */
-+#define CMDQ_EVENT_CAM_CAM_SUBA_TG_INT(n)					(433 + (n) - 1)
-+/* CMDQ_EVENT_CAM_CAM_SUBB_TG_INT1 ~ 4: 437 ~ 440 */
-+#define CMDQ_EVENT_CAM_CAM_SUBB_TG_INT(n)					(437 + (n) - 1)
-+/* CMDQ_EVENT_CAM_CAM_SUBC_TG_INT1 ~ 4: 441 ~ 444 */
-+#define CMDQ_EVENT_CAM_CAM_SUBC_TG_INT(n)					(441 + (n) - 1)
-+#define CMDQ_EVENT_CAM_RAW_O_SOF_SUBA						445
-+#define CMDQ_EVENT_CAM_RAW_O_SOF_SUBB						446
-+#define CMDQ_EVENT_CAM_RAW_O_SOF_SUBC						447
-+#define CMDQ_EVENT_CAM_TFMR_RAW_O_SOF_SUBA					448
-+#define CMDQ_EVENT_CAM_TFMR_RAW_O_SOF_SUBB					449
-+#define CMDQ_EVENT_CAM_TFMR_RAW_O_SOF_SUBC					450
-+#define CMDQ_EVENT_CAM_RAW_SEL_SOF_UISP						451
-+#define CMDQ_EVENT_CAM_CAM_SUBA_RING_BUFFER_OVERFLOW_INT_IN			452
-+#define CMDQ_EVENT_CAM_CAM_SUBB_RING_BUFFER_OVERFLOW_INT_IN			453
-+#define CMDQ_EVENT_CAM_CAM_SUBC_RING_BUFFER_OVERFLOW_INT_IN			454
-+#define CMDQ_EVENT_CAM_CAM_EVENT_71						455
-+#define CMDQ_EVENT_CAM_ADL_WR_FRAME_DONE					456
-+#define CMDQ_EVENT_CAM_ADL_RD_FRAME_DONE					457
-+#define CMDQ_EVENT_CAM_QOF_RAWA_POWER_ON_EVENT					458
-+#define CMDQ_EVENT_CAM_QOF_RAWB_POWER_ON_EVENT					459
-+#define CMDQ_EVENT_CAM_QOF_RAWC_POWER_ON_EVENT					460
-+#define CMDQ_EVENT_CAM_QOF_RAWA_POWER_OFF_EVENT					461
-+#define CMDQ_EVENT_CAM_QOF_RAWB_POWER_OFF_EVENT					462
-+#define CMDQ_EVENT_CAM_QOF_RAWC_POWER_OFF_EVENT					463
-+#define CMDQ_EVENT_CAM_QOF_RAWA_SAVE_EVENT					464
-+#define CMDQ_EVENT_CAM_QOF_RAWB_SAVE_EVENT					465
-+#define CMDQ_EVENT_CAM_QOF_RAWC_SAVE_EVENT					466
-+#define CMDQ_EVENT_CAM_QOF_RAWA_RESTORE_EVENT					467
-+#define CMDQ_EVENT_CAM_QOF_RAWB_RESTORE_EVENT					468
-+#define CMDQ_EVENT_CAM_QOF_RAWC_RESTORE_EVENT					469
-+/* CMDQ_EVENT_CAM_QOF_CAM_EVENT0 ~ 11: 470 ~ 481 */
-+#define CMDQ_EVENT_CAM_QOF_CAM_EVENT(n)						(470 + (n))
-+/* CMDQ_EVENT_CAM_SENINF_CFG_DONE_EVENT0 ~ 11: 482 ~ 495 */
-+#define CMDQ_EVENT_CAM_SENINF_CFG_DONE_EVENT(n)					(482 + (n))
-+#define CMDQ_EVENT_CAM_CCU0_TO_GCE_NON_SEC_IRQ					496
-+#define CMDQ_EVENT_CAM_CCU0_TO_GCE_SEC_IRQ					497
-+#define CMDQ_EVENT_CAM_CCU0_TO_GCE_VM_IRQ					498
-+#define CMDQ_EVENT_CAM_CCU0_TO_GCE_EXCH_VM_IRQ					499
-+#define CMDQ_EVENT_CAM_CCU1_TO_GCE_NON_SEC_IRQ					500
-+#define CMDQ_EVENT_CAM_CCU1_TO_GCE_SEC_IRQ					501
-+#define CMDQ_EVENT_CAM_CCU1_TO_GCE_VM_IRQ					502
-+#define CMDQ_EVENT_CAM_CCU1_TO_GCE_EXCH_VM_IRQ					503
-+/* CMDQ_EVENT_CAM_I2C_CH2_EVENT0 ~ 4: 504 ~ 509 */
-+#define CMDQ_EVENT_CAM_I2C_CH2_EVENT(n)						(504 + (n))
-+#define CMDQ_EVENT_CAM_CAM_EVENT_125						509
-+#define CMDQ_EVENT_CAM_CAM_EVENT_126						510
-+#define CMDQ_EVENT_CAM_CAM_EVENT_127						511
-+
-+#define CMDQ_EVENT_SMI_EVENT_MMINFRA_SMI_MMSRAM_COMM_SMIASSER			898
-+#define CMDQ_EVENT_SMI_EVENT_MMINFRA_SMI_MDP_COMM_SMIASSER			899
-+#define CMDQ_EVENT_SMI_EVENT_MMINFRA_SMI_DISP_COMM_SMIASSER			900
-+
-+/*
-+ * GCE Software Tokens
-+ * Apart from the event IDs that are already bound to hardware event signals,
-+ * the remaining event IDs can be used as software tokens.
-+ * This allows the client driver to name and operate them independently,
-+ * and their usage is the same as that of hardware events.
-+ */
-+/* Begin of GCE0 software token */
-+/* Config thread notify trigger thread */
-+#define CMDQ_SYNC_TOKEN_CONFIG_DIRTY			640
-+/* Trigger thread notify config thread */
-+#define CMDQ_SYNC_TOKEN_STREAM_EOF			641
-+/* Block Trigger thread until the ESD check finishes */
-+#define CMDQ_SYNC_TOKEN_ESD_EOF				642
-+#define CMDQ_SYNC_TOKEN_STREAM_BLOCK			643
-+/* Check CABC setup finish */
-+#define CMDQ_SYNC_TOKEN_CABC_EOF			644
-+/* VFP period token for Msync */
-+#define CMDQ_SYNC_TOKEN_VFP_PERIOD			645
-+/* Software sync token for dual display */
-+#define CMDQ_SYNC_TOKEN_CONFIG_DIRTY_1			694
-+#define CMDQ_SYNC_TOKEN_STREAM_EOF_1			695
-+#define CMDQ_SYNC_TOKEN_ESD_EOF_1			696
-+#define CMDQ_SYNC_TOKEN_STREAM_BLOCK_1			697
-+#define CMDQ_SYNC_TOKEN_CABC_EOF_1			698
-+
-+/*
-+ * GPR access tokens (for HW register backup)
-+ * There are 15 32-bit GPR, form 3 GPR as a set
-+ * (64-bit for address, 32-bit for value)
-+ *
-+ * CMDQ_SYNC_TOKEN_GPR_SET0 ~ 4: 700 ~ 704
-+ */
-+#define CMDQ_SYNC_TOKEN_GPR_SET(n)			(700 + (n))
-+#define CMDQ_SYNC_TOKEN_TE_0				705
-+#define CMDQ_SYNC_TOKEN_PREFETCH_TE_0			706
-+#define CMDQ_SYNC_TOKEN_VIDLE_POWER_ON			707
-+#define CMDQ_SYNC_TOKEN_CHECK_TRIGGER_MERGE		708
-+
-+/* Resource lock event to control resource in GCE thread */
-+#define CMDQ_SYNC_RESOURCE_WROT0			710
-+#define CMDQ_SYNC_RESOURCE_WROT1			711
-+/* Hardware TRACE software token */
-+#define CMDQ_SYNC_TOKEN_HW_TRACE_WAIT			712
-+#define CMDQ_SYNC_TOKEN_HW_TRACE_LOCK			713
-+/* Software sync token for dual display */
-+#define CMDQ_SYNC_TOKEN_CONFIG_DIRTY_3			714
-+#define CMDQ_SYNC_TOKEN_STREAM_EOF_3			715
-+#define CMDQ_SYNC_TOKEN_ESD_EOF_3			716
-+#define CMDQ_SYNC_TOKEN_STREAM_BLOCK_3			717
-+#define CMDQ_SYNC_TOKEN_CABC_EOF_3			718
-+/* End of GCE0 software token */
-+
-+/* Begin of GCE1 software token */
-+/* CMDQ_SYNC_TOKEN_IMGSYS_POOL0 ~ 300: 512 ~ 812 */
-+#define	CMDQ_SYNC_TOKEN_IMGSYS_POOL(n)			(512 + (n))
-+/* ISP software token */
-+#define CMDQ_SYNC_TOKEN_IMGSYS_WPE_EIS			813
-+#define CMDQ_SYNC_TOKEN_IMGSYS_OMC_TNR			814
-+#define CMDQ_SYNC_TOKEN_IMGSYS_WPE_LITE			815
-+#define CMDQ_SYNC_TOKEN_IMGSYS_TRAW			816
-+#define CMDQ_SYNC_TOKEN_IMGSYS_LTRAW			817
-+#define CMDQ_SYNC_TOKEN_IMGSYS_XTRAW			818
-+#define CMDQ_SYNC_TOKEN_IMGSYS_DIP			819
-+#define CMDQ_SYNC_TOKEN_IMGSYS_PQDIP_A			820
-+#define CMDQ_SYNC_TOKEN_IMGSYS_PQDIP_B			821
-+#define CMDQ_SYNC_TOKEN_IPESYS_ME			822
-+#define CMDQ_SYNC_TOKEN_APUSYS_APU			823
-+#define CMDQ_SYNC_TOKEN_IMGSYS_VSS_TRAW			824
-+#define CMDQ_SYNC_TOKEN_IMGSYS_VSS_LTRAW		825
-+#define CMDQ_SYNC_TOKEN_IMGSYS_VSS_XTRAW		826
-+#define CMDQ_SYNC_TOKEN_IMGSYS_VSS_DIP			827
-+#define CMDQ_SYNC_TOKEN_IMGSYS_OMC_LITE			828
-+/* IMG software token for QoS */
-+#define CMDQ_SYNC_TOKEN_IMGSYS_QOS_LOCK			829
-+/* IMG software token for Qof */
-+#define CMDQ_SYNC_TOKEN_DIP_POWER_CTRL			830
-+#define CMDQ_SYNC_TOKEN_DIP_TRIG_PWR_ON			831
-+#define CMDQ_SYNC_TOKEN_DIP_PWR_ON			832
-+#define CMDQ_SYNC_TOKEN_DIP_TRIG_PWR_OFF		833
-+#define CMDQ_SYNC_TOKEN_DIP_PWR_OFF			834
-+#define CMDQ_SYNC_TOKEN_DIP_PWR_HAND_SHAKE		835
-+#define CMDQ_SYNC_TOKEN_TRAW_POWER_CTRL			836
-+#define CMDQ_SYNC_TOKEN_TRAW_TRIG_PWR_ON		837
-+#define CMDQ_SYNC_TOKEN_TRAW_PWR_ON			838
-+#define CMDQ_SYNC_TOKEN_TRAW_TRIG_PWR_OFF		839
-+#define CMDQ_SYNC_TOKEN_TRAW_PWR_OFF			840
-+#define CMDQ_SYNC_TOKEN_TRAW_PWR_HAND_SHAKE		841
-+/* End of GCE1 software token */
-+
-+/* Begin of common software token */
-+/*
-+ * Notify normal CMDQ there are some secure task done
-+ * MUST NOT CHANGE, this token sync with secure world
-+ */
-+#define CMDQ_SYNC_SECURE_THR_EOF			940
-+/* CMDQ use software token */
-+#define CMDQ_SYNC_TOKEN_USER_0				941
-+#define CMDQ_SYNC_TOKEN_USER_1				942
-+#define CMDQ_SYNC_TOKEN_POLL_MONITOR			943
-+#define CMDQ_SYNC_TOKEN_TPR_LOCK			942
-+/* TZMP software token */
-+#define CMDQ_SYNC_TOKEN_TZMP_DISP_WAIT			943
-+#define CMDQ_SYNC_TOKEN_TZMP_DISP_SET			944
-+#define CMDQ_SYNC_TOKEN_TZMP_ISP_WAIT			945
-+#define CMDQ_SYNC_TOKEN_TZMP_ISP_SET			946
-+#define CMDQ_SYNC_TOKEN_TZMP_AIE_WAIT			947
-+#define CMDQ_SYNC_TOKEN_TZMP_AIE_SET			948
-+#define CMDQ_SYNC_TOKEN_TZMP_ADL_WAIT			949
-+#define CMDQ_SYNC_TOKEN_TZMP_ADL_SET			950
-+/* PREBUILT software token */
-+#define CMDQ_SYNC_TOKEN_PREBUILT_MDP_LOCK		951
-+#define CMDQ_SYNC_TOKEN_PREBUILT_MML_LOCK		952
-+#define CMDQ_SYNC_TOKEN_PREBUILT_VFMT_LOCK		953
-+#define CMDQ_SYNC_TOKEN_PREBUILT_DISP_LOCK		954
-+#define CMDQ_SYNC_TOKEN_DISP_VA_START			955
-+#define CMDQ_SYNC_TOKEN_DISP_VA_END			956
-+
-+/*
-+ * Event for GPR timer, used in sleep and poll with timeout
-+ *
-+ * CMDQ_TOKEN_GPR_TIMER_R0~15: 994 ~ 1009
-+ */
-+#define CMDQ_TOKEN_GPR_TIMER_R(n)			(994 + (n))
-+/* End of common software token */
-+
-+#endif
--- 
-2.43.0
+Thinking out loud:
 
+* Without this patch I see the following, but with this patch I do not.
+
+  .../mt7915/mmio.c:636:5: warning: context imbalance in 'mt7915_mmio_wed_init' - wrong count at exit
+  .../mt7996/mmio.c:302:5: warning: context imbalance in 'mt7996_mmio_wed_init' - wrong count at exit
+
+* The only implementation of this callback I found is mtk_wed_attach
+  which is already annotated as __releases(RCU);
+
+* The only caller of this callback I could find is mtk_wed_device_attach()
+  which takes rcu_read_unlock(). And the the callback needs to release it
+  to avoid imbalance.
 
