@@ -4,64 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F18A9C369C2
-	for <linux-mediatek@archiver.kernel.org>; Sat, 26 Apr 2025 02:21:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CB53C369CB
+	for <linux-mediatek@archiver.kernel.org>; Sat, 26 Apr 2025 08:20:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mphni7JuGZqNx9UeyLJ3yHdLdZmD9rfMP8nxjkS2mZM=; b=dHhFoojvysZEJ4a/4w3BJ85UNR
-	oiFIAk/yX6ATvFelUPRd/ZODmBEX5e2AzUF4wrwoi6+ZAZzdkkSZtHdrPIK0jZCmew++HPzRv/Ll1
-	kxluC0OSP6Fdnc5Wh0U1i5jzXUVhIpYShWEDOojVnHquk0ksG3lxmxLsGr3aAuMMOoNtRwuUigx99
-	E4hbdfpq+1YXBEJoT6Vquoy49I5nwNRbOSGSPGqtZ8r6ZyUrngdGsQBJHXQI3jWY9jtUh8YgiD7bN
-	COGQ6TLtyBZgSqlHuIH2FdvFoYY/tBMmB9YvH7/905PEjCgSf6rLS7fT51HNNXSWrHg8lJJgXjYGQ
-	L4kE5BpQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=QUmW/UxxLiRthI3rc4btwWDIo6V+L0AVY/1vBn7MiLA=; b=soH3upoLwsanUxE0jkuPYOE22C
+	yOSzZMN5kC/VS3x4bYgWULWvvPXdnu41rOs6lW44u3HAllldD2aUG6N7vGM4cBROPc+o1VjrjT9eR
+	AC2cnQ3i7FlaYqxPVjuTzqZylrWE1Gm1N9L/hKaSeoYS4XLskwBIIOqgDqoxNVyzLlZsSA58NRCrn
+	XcLnNKXt2qKGuYxOcg3vtBuZtyT1XodFahP2a0QQwo7xh8Q+iyTiKlXPCY7R1ob7aAwjoMXLaYVZT
+	QEdzTSJSz7HjHd/AyImnrwJCPVvLIEP66FdsBsm307lz3eVQaLNsjIoWXDRm4q2hGJDIxyt+xvOrH
+	WYgkp3hQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u8VAt-00000001JJh-0FNv;
-	Sat, 26 Apr 2025 02:21:51 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1u8am9-00000001iXf-3HTO;
+	Sat, 26 Apr 2025 08:20:41 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u8V91-00000001J6w-0zDu;
-	Sat, 26 Apr 2025 02:19:55 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 8AB2168442;
-	Sat, 26 Apr 2025 02:19:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C8ABAC4CEEA;
-	Sat, 26 Apr 2025 02:19:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1745633993;
-	bh=QI3VQECJ4VOdlU50ySozc+hha6S8Kroa22KH3HCcmkY=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=GL7UsMEX78Zh+N77JaSubzMfpgbC7dG50JkgdpHT9X6GDrhJsm2OXUCUv+leRCp1I
-	 Lst+qsLvXScNVjc0RYGvzz2sfM0dJQ/QAyapQsORbGwf/ENLKkAbegU09OXGCZXGNE
-	 wDGa4qotkivXOx6mkmOZmv6wdQRyTbYoc31YfqrLlhplALHByyDnQciVo0hFp5i5gW
-	 n8lganKfeVf85MBZpJCQUG9fGiZQpwzhrocn2pETrR2wquHCJMufS4Ma8t60X2lsWw
-	 uKTPvyFpl9sDTlY/mB/dJsnHV4wVdfpvGJhiUYnkMSjXgWSij51/ttJV8SJIMfkiyJ
-	 BboJhJeRHNoCg==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id ADF6E380CFDC;
-	Sat, 26 Apr 2025 02:20:33 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1u8am6-00000001iXB-2Kgw;
+	Sat, 26 Apr 2025 08:20:39 +0000
+X-UUID: 51f8c690227711f0a2405d5ef59ce188-20250426
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=QUmW/UxxLiRthI3rc4btwWDIo6V+L0AVY/1vBn7MiLA=;
+	b=riU3YVVchC+JDvnHU401sXW69UvXvcJkdfLjR5UVvIRWPjOnhOsrn8p/VMQNtuHR3JH3jVUG1WpYjVubUpAyl8f+4VstS1GYLJDxsorFD7w29VwISGo9G3OjdrG3H4x4R/fOhr/Kn9KM92BF+DiAJSP9QgqVkwKCII+OIsCFN3g=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:4635f21c-0015-482d-b23c-6c4a0115ef3c,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:414d1107-829c-41bc-b3dd-83387f72f90e,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-UUID: 51f8c690227711f0a2405d5ef59ce188-20250426
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <jianhua.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1726132743; Sat, 26 Apr 2025 01:20:32 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Sat, 26 Apr 2025 16:20:29 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Sat, 26 Apr 2025 16:20:28 +0800
+From: Jianhua Lin <jianhua.lin@mediatek.com>
+To: <mchehab@kernel.org>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>
+CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jianhua Lin
+	<jianhua.lin@mediatek.com>
+Subject: [PATCH 1/1] media: mediatek: jpeg: add compatible for MT8188 SoC
+Date: Sat, 26 Apr 2025 16:19:28 +0800
+Message-ID: <20250426081928.27351-1-jianhua.lin@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net v2 0/2] net: ethernet: mtk-star-emac: fix several
- issues on rx/tx poll
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <174563403253.3902866.2022861799721968649.git-patchwork-notify@kernel.org>
-Date: Sat, 26 Apr 2025 02:20:32 +0000
-References: <20250424-mtk_star_emac-fix-spinlock-recursion-issue-v2-0-f3fde2e529d8@collabora.com>
-In-Reply-To: <20250424-mtk_star_emac-fix-spinlock-recursion-issue-v2-0-f3fde2e529d8@collabora.com>
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: nbd@nbd.name, sean.wang@mediatek.com, lorenzo@kernel.org,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, biao.huang@mediatek.com,
- ot_yinghua.pan@mediatek.com, brgl@bgdev.pl, kernel@collabora.com,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250426_012038_601618_5D71875F 
+X-CRM114-Status: UNSURE (   9.85  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,85 +85,88 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Add jpeg decoder and encoder compatible for MediaTek MT8188 SoC,
+and enable support_34bit.
 
-This series was applied to netdev/net.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+Signed-off-by: Jianhua Lin <jianhua.lin@mediatek.com>
+---
+This series patches dependent on:
+[1]
+https://patchwork.linuxtv.org/project/linux-media/patch/20250424090824.5309-1-jianhua.lin@mediatek.com/
 
-On Thu, 24 Apr 2025 10:38:47 +0200 you wrote:
-> This patchset fixes two issues with the mtk-star-emac driver.
-> 
-> The first patch fixes spin lock recursion issues I've observed on the
-> Mediatek Genio 350-EVK board using this driver when the Ethernet
-> functionality is enabled on the board (requires a correct jumper and
-> DIP switch configuration, as well as enabling the device in the
-> devicetree).
-> The issues can be easily reproduced with apt install or ssh commands
-> especially and with the CONFIG_DEBUG_SPINLOCK parameter, when
-> one occurs, there is backtrace similar to this:
-> ```
-> BUG: spinlock recursion on CPU#0, swapper/0/0
->  lock: 0xffff00000db9cf20, .magic: dead4ead, .owner: swapper/0/0,
-> 	.owner_cpu: 0
-> CPU: 0 UID: 0 PID: 0 Comm: swapper/0 Not tainted
-> 	6.15.0-rc2-next-20250417-00001-gf6a27738686c-dirty #28 PREEMPT
-> Hardware name: MediaTek MT8365 Open Platform EVK (DT)
-> Call trace:
->  show_stack+0x18/0x24 (C)
->  dump_stack_lvl+0x60/0x80
->  dump_stack+0x18/0x24
->  spin_dump+0x78/0x88
->  do_raw_spin_lock+0x11c/0x120
->  _raw_spin_lock+0x20/0x2c
->  mtk_star_handle_irq+0xc0/0x22c [mtk_star_emac]
->  __handle_irq_event_percpu+0x48/0x140
->  handle_irq_event+0x4c/0xb0
->  handle_fasteoi_irq+0xa0/0x1bc
->  handle_irq_desc+0x34/0x58
->  generic_handle_domain_irq+0x1c/0x28
->  gic_handle_irq+0x4c/0x120
->  do_interrupt_handler+0x50/0x84
->  el1_interrupt+0x34/0x68
->  el1h_64_irq_handler+0x18/0x24
->  el1h_64_irq+0x6c/0x70
->  regmap_mmio_read32le+0xc/0x20 (P)
->  _regmap_bus_reg_read+0x6c/0xac
->  _regmap_read+0x60/0xdc
->  regmap_read+0x4c/0x80
->  mtk_star_rx_poll+0x2f4/0x39c [mtk_star_emac]
->  __napi_poll+0x38/0x188
->  net_rx_action+0x164/0x2c0
->  handle_softirqs+0x100/0x244
->  __do_softirq+0x14/0x20
->  ____do_softirq+0x10/0x20
->  call_on_irq_stack+0x24/0x64
->  do_softirq_own_stack+0x1c/0x40
->  __irq_exit_rcu+0xd4/0x10c
->  irq_exit_rcu+0x10/0x1c
->  el1_interrupt+0x38/0x68
->  el1h_64_irq_handler+0x18/0x24
->  el1h_64_irq+0x6c/0x70
->  cpuidle_enter_state+0xac/0x320 (P)
->  cpuidle_enter+0x38/0x50
->  do_idle+0x1e4/0x260
->  cpu_startup_entry+0x34/0x3c
->  rest_init+0xdc/0xe0
->  console_on_rootfs+0x0/0x6c
->  __primary_switched+0x88/0x90
-> ```
-> 
-> [...]
+ .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 44 +++++++++++++++++++
+ 1 file changed, 44 insertions(+)
 
-Here is the summary with links:
-  - [net,v2,1/2] net: ethernet: mtk-star-emac: fix spinlock recursion issues on rx/tx poll
-    https://git.kernel.org/netdev/net/c/6fe086601448
-  - [net,v2,2/2] net: ethernet: mtk-star-emac: rearm interrupts in rx_poll only when advised
-    https://git.kernel.org/netdev/net/c/e54b4db35e20
-
-You are awesome, thank you!
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index 23692cd91e2c..0ed1c352bc0f 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -1869,6 +1869,10 @@ static struct clk_bulk_data mtk_jpeg_clocks[] = {
+ 	{ .id = "jpgenc" },
+ };
+ 
++static struct clk_bulk_data mtk_jpeg_dec_clocks[] = {
++	{ .id = "jpgdec" },
++};
++
+ static struct clk_bulk_data mt8173_jpeg_dec_clocks[] = {
+ 	{ .id = "jpgdec-smi" },
+ 	{ .id = "jpgdec" },
+@@ -1931,6 +1935,38 @@ static const struct mtk_jpeg_variant mtk8195_jpegdec_drvdata = {
+ 	.jpeg_worker = mtk_jpegdec_worker,
+ };
+ 
++static const struct mtk_jpeg_variant mtk8188_jpegenc_drvdata = {
++	.clks = mtk_jpeg_clocks,
++	.num_clks = ARRAY_SIZE(mtk_jpeg_clocks),
++	.formats = mtk_jpeg_enc_formats,
++	.num_formats = MTK_JPEG_ENC_NUM_FORMATS,
++	.qops = &mtk_jpeg_enc_qops,
++	.irq_handler = mtk_jpeg_enc_irq,
++	.hw_reset = mtk_jpeg_enc_reset,
++	.m2m_ops = &mtk_jpeg_enc_m2m_ops,
++	.dev_name = "mtk-jpeg-enc",
++	.ioctl_ops = &mtk_jpeg_enc_ioctl_ops,
++	.out_q_default_fourcc = V4L2_PIX_FMT_YUYV,
++	.cap_q_default_fourcc = V4L2_PIX_FMT_JPEG,
++	.support_34bit = true,
++};
++
++static const struct mtk_jpeg_variant mtk8188_jpegdec_drvdata = {
++	.clks = mtk_jpeg_dec_clocks,
++	.num_clks = ARRAY_SIZE(mtk_jpeg_dec_clocks),
++	.formats = mtk_jpeg_dec_formats,
++	.num_formats = MTK_JPEG_DEC_NUM_FORMATS,
++	.qops = &mtk_jpeg_dec_qops,
++	.irq_handler = mtk_jpeg_dec_irq,
++	.hw_reset = mtk_jpeg_dec_reset,
++	.m2m_ops = &mtk_jpeg_dec_m2m_ops,
++	.dev_name = "mtk-jpeg-dec",
++	.ioctl_ops = &mtk_jpeg_dec_ioctl_ops,
++	.out_q_default_fourcc = V4L2_PIX_FMT_JPEG,
++	.cap_q_default_fourcc = V4L2_PIX_FMT_YUV420M,
++	.support_34bit = true,
++};
++
+ static const struct of_device_id mtk_jpeg_match[] = {
+ 	{
+ 		.compatible = "mediatek,mt8173-jpgdec",
+@@ -1952,6 +1988,14 @@ static const struct of_device_id mtk_jpeg_match[] = {
+ 		.compatible = "mediatek,mt8195-jpgdec",
+ 		.data = &mtk8195_jpegdec_drvdata,
+ 	},
++	{
++		.compatible = "mediatek,mt8188-jpgenc",
++		.data = &mtk8188_jpegenc_drvdata,
++	},
++	{
++		.compatible = "mediatek,mt8188-jpgdec",
++		.data = &mtk8188_jpegdec_drvdata,
++	},
+ 	{},
+ };
+ 
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.46.0
 
 
