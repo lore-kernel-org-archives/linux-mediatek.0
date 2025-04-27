@@ -4,74 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1221BC369CB
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Apr 2025 01:48:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D424FC369D5
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Apr 2025 08:17:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rSyjwgHmK5I+pd1M52xmmRHCzAj4gkXerhDj4y/bZ3E=; b=BSHh0lbq/AUxRd0yHomMZVjiag
-	bIfU/He92BBfvCMwJCbwlglf8X40lIBg0Nmd4l9qikD8Ugvk7ah5D425IqnnqTC9urlMcAC5aZnXw
-	kJUKzF8EFr53OSpzdy63yt+yUKeOG+3dexJ1tVWjZj+omLsuDsvED7H1NGVCIb8yCF7l6mPsmmI+0
-	5dcSFn5ZzAYJvns+grr459a/1go4Ji2PchgV3/iW1+kktQHSOuopoRvo7OH2gDjeaR2TBfVale1s3
-	abwEUH2ouyLVSeChr9cNkhcdi5HXSWOxw4SzRUkAcj065TthgaKMI7V+3/RsyBTNB9gYqDiS2c83/
-	Xt7uM+fg==;
+	bh=Lbqq24M/Ux40LvkCpduFkVyXMFtWO1BJAG+CznhRMrg=; b=IHjjB0BrOoU7xm1FhVOMlqwwA8
+	M8pg94d8nay/qdBD8d/xJI43wEzaw9tASy1ApTT3cPUaQzg4qu1m/mvXZP4MW5ylpOY6GH/FLFAJg
+	0T6KZ58PQ5VGvjT/6bTUQLd4t2zR5wc0x4Nb61X3VIjbVSu3UPY3rTVDkTQq0S8bpcjCNfO0c8gBO
+	i1lhc7IKJRt//C3Tuu5g9VQWucA5GJngc6Lp38co50bpKhGoAAuBfprVlMriSj9PESAK3ew9o/q6C
+	GNErWGcWj4lxWmJvSShibfEkSBrIotUk2wDmEV6x0g+Z/VMtiCxh1HpGRu5bmfmf7Pbp675Wiqs3E
+	H+Z17uig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u8r8T-00000002kE3-3VKy;
-	Sun, 27 Apr 2025 01:48:49 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1u8xCD-000000039tH-3vaf;
+	Sun, 27 Apr 2025 08:17:05 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u8r6W-00000002k4i-1eZh;
-	Sun, 27 Apr 2025 01:46:49 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 8B7F8A4A596;
-	Sun, 27 Apr 2025 01:41:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0F9B9C4AF09;
-	Sun, 27 Apr 2025 01:46:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1745718407;
-	bh=SnY0OVfoDmbXp5koX1Ut+7k1dmo/CROGEsXd1gmHnO0=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=OjxSi1cn6I5f6ICjrjhXad56TRK1i+y/AHQUc/5otvDDX7e8TDm1YRqpkH4hH/fyH
-	 0YFMywvkD/ZkBq/p7QXyE7sQFYbfvlTbECFwj1fRASa5Ffu1GHwJUtWXlOzEdR/8BF
-	 WBIT8efXIoqHNb9FLAnQreDsJLDiRFPlTUY05MZh/0jSH4YF8mToo4nuPrxNmT1K+2
-	 +MvbLrUEaIIvlAKsKRlTGJB/G3y0xRhWBd4TZ8+xfBs18SV6LKPdxtiux/pA95X32x
-	 lEeECD631518qCrdROzHls1T3vX6194Fr4Cy7239dOcsEkt0LyidiDrBnf6URhFngi
-	 3yDVgCn/TYSwg==
-Received: by mail-ed1-f47.google.com with SMTP id 4fb4d7f45d1cf-5e5e22e6ed2so5520462a12.3;
-        Sat, 26 Apr 2025 18:46:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCUjRVDBh11mP6q8eQV6grTRHztNjy+356ahql8LVU1OhUqPmZsqFiF2OB2xdJ6mPZtrZb3ZM5JgwAOELm9EPTL2@lists.infradead.org, AJvYcCVKmTXutGnijEwlbWoBhYAi+M7I0Rx4QLvmF+LTwTjREQMuVcf9lnvCOpwXt3/P7UkRWvFiPW1/Y3YHSMeKka0=@lists.infradead.org
-X-Gm-Message-State: AOJu0YyXLB5tIIgCi0kIlTmT3pCzLDpPPRmUtUrLrkE9xhwukirgy6LM
-	sgPlJNhHpU3CoRTZMd30g7VF+CK0G89QiJ6V836dbn8Y7VdY1vPQihr9cp7NEAbW4/cbe0Idhxl
-	1UpCK2yE/T/YQIrUIFCkuleS8Gw==
-X-Google-Smtp-Source: AGHT+IHwFnZmrXrm96vl8R7jE4+InC0lzNGtdGV49DZM/HkH0U6QBLErQWPSVSddA8htDu0Z5bOVhme32UVMcNPgYiE=
-X-Received: by 2002:a05:6402:3582:b0:5f4:370d:96bc with SMTP id
- 4fb4d7f45d1cf-5f722673ab2mr5556823a12.2.1745718405627; Sat, 26 Apr 2025
- 18:46:45 -0700 (PDT)
+	id 1u8xAG-000000039an-0w8h;
+	Sun, 27 Apr 2025 08:15:05 +0000
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 53QMQuLn028040;
+	Sun, 27 Apr 2025 08:14:45 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	Lbqq24M/Ux40LvkCpduFkVyXMFtWO1BJAG+CznhRMrg=; b=hviUbNP1WkT4L6Cl
+	TeMFp/y8yFaBQ0iEtWxgbXvoD97b1BgD4eD7zPifVnSMuamnC0GMBanw3WBhjouQ
+	NwivsIqRujQdkSBBs/MiCIiGYK+2jElLdLAlF4qeOOWfpPKt52HhBuMy62/ajbgV
+	NjFyPAab4D7jSkeWlIlMhRf+rmkQbP7T4WgMBgI1eH3S8c6tCEbltTckKOI769yy
+	CDN68HaOdMouprdnOvLd7/xcUnj/xtxeQsqew2djQi2ac3od6p6dksOm7cKS6thZ
+	RQSTxsAoBZ1GTMjUw318BjFSSvS4DRGBd7tDxUt3oIhJR75fTD2EPXEFsH0Zsf7q
+	u/ZQ8A==
+Received: from nasanppmta03.qualcomm.com (i-global254.qualcomm.com [199.106.103.254])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 468rnmu73g-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Sun, 27 Apr 2025 08:14:45 +0000 (GMT)
+Received: from nasanex01b.na.qualcomm.com (nasanex01b.na.qualcomm.com [10.46.141.250])
+	by NASANPPMTA03.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTPS id 53R8EinN022865
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Sun, 27 Apr 2025 08:14:44 GMT
+Received: from [10.239.155.136] (10.80.80.8) by nasanex01b.na.qualcomm.com
+ (10.46.141.250) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Sun, 27 Apr
+ 2025 01:14:40 -0700
+Message-ID: <df287609-a095-4234-b23b-d335b474a130@quicinc.com>
+Date: Sun, 27 Apr 2025 16:14:37 +0800
 MIME-Version: 1.0
-References: <20250409131306.108635-1-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20250409131306.108635-1-angelogioacchino.delregno@collabora.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Sun, 27 Apr 2025 09:47:35 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_-YRTsGZc6BK+Z55S8vDtyRiK8+YmH5ot9S-0uZ74ZvLQ@mail.gmail.com>
-X-Gm-Features: ATxdqUFIcH_9J8n0sw5vPGyhuF-f63RdB61FF-kV0-kFcASs5EUXu7xSvR6Jfcg
-Message-ID: <CAAOTY_-YRTsGZc6BK+Z55S8vDtyRiK8+YmH5ot9S-0uZ74ZvLQ@mail.gmail.com>
-Subject: Re: [PATCH v1 0/5] MediaTek DPI: Cleanups and add support for more formats
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
-	simona@ffwll.ch, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com, 
-	lewis.liao@mediatek.com, ives.chenjh@mediatek.com, tommyyl.chen@mediatek.com, 
-	jason-jh.lin@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 0/8] Support Multi-frequency scale for UFS
+To: Luca Weiss <luca.weiss@fairphone.com>, <quic_cang@quicinc.com>,
+        <bvanassche@acm.org>, <mani@kernel.org>, <beanhuo@micron.com>,
+        <avri.altman@wdc.com>, <junwoo80.lee@samsung.com>,
+        <martin.petersen@oracle.com>, <quic_nguyenb@quicinc.com>,
+        <quic_nitirawa@quicinc.com>, <peter.wang@mediatek.com>,
+        <quic_rampraka@quicinc.com>
+CC: <linux-arm-msm@vger.kernel.org>, <linux-scsi@vger.kernel.org>,
+        "Neil
+ Armstrong" <neil.armstrong@linaro.org>,
+        Matthias Brugger
+	<matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>,
+        "open list:ARM/Mediatek SoC
+ support:Keyword:mediatek" <linux-kernel@vger.kernel.org>,
+        "moderated
+ list:ARM/Mediatek SoC support:Keyword:mediatek"
+	<linux-arm-kernel@lists.infradead.org>,
+        "moderated list:ARM/Mediatek SoC
+ support:Keyword:mediatek" <linux-mediatek@lists.infradead.org>
+References: <20250213080008.2984807-1-quic_ziqichen@quicinc.com>
+ <D9FZ9U3AEXW4.1I12FX3YQ3JPW@fairphone.com>
+Content-Language: en-US
+From: Ziqi Chen <quic_ziqichen@quicinc.com>
+In-Reply-To: <D9FZ9U3AEXW4.1I12FX3YQ3JPW@fairphone.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nasanex01b.na.qualcomm.com (10.46.141.250)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: lFvji37wv4xtfm_F5Wf2kgIrqNMKD_iJ
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNDI3MDA2NSBTYWx0ZWRfXyeSi3DIebcyu wI9VJLPSF79+Ik+T4tOJP8qSGaR7jZQPnmTXuHodSQIAHCOKCFOuPCTzZJIc/K6KQAtXAHO6SW7 vifv4qg+NKzdXKOBqgNJ8V6hceifslXXFsXVHIaxgsPzREtMymnF3bJS9YNiexW6/XcujEoN0qn
+ 59ZU2uJRDj5PsjgH8NpoJWwQmXFqHFileyv78R9krpIj3omzDm+e12i1E3+/SnpiUUthH78UcNM QMnOGBEJ/CfGQpI8yJe0CZZKyitoKcSe+p5JdNG2Aq5EwvE2leeqi4iHe3ARGJBHW2nLdjAPh+W z06AAixhIm9bIJBNAFKvw8aJOVBuXb+mN5EWRx7kh7rDClVlbTZTSJSZ+sqQjys7W2IQkDBh0M9
+ 3ODkBuPorBc/1j1uQxqBuoq4AeaZvy4guhq0ILbM8jEJ6lEriubv937RmbEX6jwkeOx96bxk
+X-Proofpoint-GUID: lFvji37wv4xtfm_F5Wf2kgIrqNMKD_iJ
+X-Authority-Analysis: v=2.4 cv=V9990fni c=1 sm=1 tr=0 ts=680de775 cx=c_pps a=JYp8KDb2vCoCEuGobkYCKw==:117 a=JYp8KDb2vCoCEuGobkYCKw==:17 a=GEpy-HfZoHoA:10 a=IkcTkHD0fZMA:10 a=XR8D0OoHHMoA:10 a=VwQbUJbxAAAA:8 a=6H0WHjuAAAAA:8 a=cA56n_0BHuVisEfHO2oA:9
+ a=QEXdDO2ut3YA:10 a=Soq9LBFxuPC4vsCAQt-j:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.0.736,FMLib:17.12.80.40
+ definitions=2025-04-27_03,2025-04-24_02,2025-02-21_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 malwarescore=0 suspectscore=0
+ adultscore=0 mlxlogscore=999 impostorscore=0 lowpriorityscore=0
+ priorityscore=1501 bulkscore=0 clxscore=1011 phishscore=0 mlxscore=0
+ spamscore=0 classifier=spam authscore=0 authtc=n/a authcc= route=outbound
+ adjust=0 reason=mlx scancount=1 engine=8.19.0-2504070000
+ definitions=main-2504270065
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250426_184648_564185_36694C88 
-X-CRM114-Status: GOOD (  13.39  )
+X-CRM114-CacheID: sfid-20250427_011504_296344_A4AED2D1 
+X-CRM114-Status: GOOD (  16.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,47 +121,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Angelo:
+Hi Luca,
 
-AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> =E6=96=
-=BC
-2025=E5=B9=B44=E6=9C=889=E6=97=A5 =E9=80=B1=E4=B8=89 =E4=B8=8B=E5=8D=889:13=
-=E5=AF=AB=E9=81=93=EF=BC=9A
->
-> This series adds support to configure the MediaTek DPI IP to output
-> more formats, such as YUV422 8/10/12 bits, YUV444 8/10 bits, BGR 8bits,
-> and RGB 10 bits, and also performs some cleanups that improve the code
-> readability when those are added.
->
-> Even though some of those formats are also supported by MT8173, MT8183,
-> MT8186 and MT8192, I am enabling them only for MT8195/MT8188 as those
-> are the only two that I was able to test.
+Thanks for your report.
+Really,  6350 is a special platform that the UFS_PHY_AXI_CLK doesn't
+match to the UFS_PHY_UNIPRO_CORE_CLK. We already found out the root
+cause and discussing the fix. We will submit change to fix this corner
+case.
 
-The whole series is applied to mediatek-drm-next [1], thanks.
+BRs
+Ziqi
 
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
-log/?h=3Dmediatek-drm-next
+On 4/26/2025 3:48 AM, Luca Weiss wrote:
+> Hi Ziqi,
+> 
+> On Thu Feb 13, 2025 at 9:00 AM CET, Ziqi Chen wrote:
+>> With OPP V2 enabled, devfreq can scale clocks amongst multiple frequency
+>> plans. However, the gear speed is only toggled between min and max during
+>> clock scaling. Enable multi-level gear scaling by mapping clock frequencies
+>> to gear speeds, so that when devfreq scales clock frequencies we can put
+>> the UFS link at the appropraite gear speeds accordingly.
+> 
+> I believe this series is causing issues on SM6350:
+> 
+> [    0.859449] ufshcd-qcom 1d84000.ufshc: ufs_qcom_freq_to_gear_speed: Unsupported clock freq : 200000000
+> [    0.886668] ufshcd-qcom 1d84000.ufshc: UNIPRO clk freq 200 MHz not supported
+> [    0.903791] devfreq 1d84000.ufshc: dvfs failed with (-22) error
+> 
+> That's with this patch, I actually haven't tried without on v6.15-rc3
+> https://lore.kernel.org/all/20250314-sm6350-ufs-things-v1-2-3600362cc52c@fairphone.com/
+> 
+> I believe the issue appears because core clk and unipro clk rates don't
+> match on this platform, so this 200 MHz for GCC_UFS_PHY_AXI_CLK is not a
+> valid unipro clock rate, but for GCC_UFS_PHY_UNIPRO_CORE_CLK it's
+> specified to 150 MHz in the opp table.
+> 
+> Regards
+> Luca
+> 
+>>
+>> This series has been tested on below platforms -
+>> sm8550 mtp + UFS3.1
+>> SM8650 MTP + UFS3.1
+>> SM8750 MTP + UFS4.0
 
-Regards,
-Chun-Kuang.
-
->
-> This was tested on:
->  - MT8195 Tomato Chromebook
->  - MT8395 Radxa NIO-12L
->  - MT8390 MediaTek Genio 700 EVK
->
-> AngeloGioacchino Del Regno (5):
->   drm/mediatek: mtk_dpi: Use switch in mtk_dpi_config_color_format()
->   drm/mediatek: mtk_dpi: Add local helpers for bus format parameters
->   drm/mediatek: mtk_dpi: Add support for additional output formats
->   drm/mediatek: mtk_dpi: Allow additional output formats on MT8195/88
->   drm/mediatek: mtk_dpi: Rename output fmts array for MT8195 DP_INTF
->
->  drivers/gpu/drm/mediatek/mtk_dpi.c | 117 +++++++++++++++++++++++++----
->  1 file changed, 102 insertions(+), 15 deletions(-)
->
-> --
-> 2.49.0
->
 
