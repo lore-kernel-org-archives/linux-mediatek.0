@@ -4,58 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 968E2C369CB
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Apr 2025 01:09:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1221BC369CB
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Apr 2025 01:48:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=nsXiywyFn+aHLkLR2Mr/sXYQMCbJv/rE4RD1qaw4loc=; b=kRSCi1EHhz3ZMMBuNVoOpYB1hH
-	E1RtrVjbHeSDHXndskXxAhZ4kpkADVXeddGIp24d3iVSJ1hLTJrP/4Kb7uC86iQD+uTBGJItje4Gq
-	xtB8e7EBAdMi0143/BHQ+O9jAavcZOd1E3De9cR8+7rRxLrr5WhuwnZiD+ADC2+ZFTkHGip1KxLBo
-	pWbISmapybVl1+1AjERV/2gdxm0RVIWuXTqjZH558irii+C8FAp26pZYXmQAOsHy1ssmty9kPupoH
-	56gujQ6h13kK91lNctvgmqZbkt4QfYFQzI6Z8zSdO0jZzs0DWReDW/jeoQa9hPVS4M6O1iPocbAK8
-	ueJVvGYA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rSyjwgHmK5I+pd1M52xmmRHCzAj4gkXerhDj4y/bZ3E=; b=BSHh0lbq/AUxRd0yHomMZVjiag
+	bIfU/He92BBfvCMwJCbwlglf8X40lIBg0Nmd4l9qikD8Ugvk7ah5D425IqnnqTC9urlMcAC5aZnXw
+	kJUKzF8EFr53OSpzdy63yt+yUKeOG+3dexJ1tVWjZj+omLsuDsvED7H1NGVCIb8yCF7l6mPsmmI+0
+	5dcSFn5ZzAYJvns+grr459a/1go4Ji2PchgV3/iW1+kktQHSOuopoRvo7OH2gDjeaR2TBfVale1s3
+	abwEUH2ouyLVSeChr9cNkhcdi5HXSWOxw4SzRUkAcj065TthgaKMI7V+3/RsyBTNB9gYqDiS2c83/
+	Xt7uM+fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u8qWU-00000002haW-2i0X;
-	Sun, 27 Apr 2025 01:09:34 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1u8r8T-00000002kE3-3VKy;
+	Sun, 27 Apr 2025 01:48:49 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u8qTH-00000002h8z-1bDa;
-	Sun, 27 Apr 2025 01:06:16 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.98.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1u8qNO-000000006ZO-2KL7;
-	Sun, 27 Apr 2025 01:06:06 +0000
-Date: Sun, 27 Apr 2025 02:05:44 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Chad Monroe <chad@monroe.io>, Felix Fietkau <nbd@nbd.name>,
-	Bc-Bocun Chen <bc-bocun.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net v2] net: ethernet: mtk_eth_soc: fix SER panic with 4GB+
- RAM
-Message-ID: <4adc2aaeb0fb1b9cdc56bf21cf8e7fa328daa345.1745715843.git.daniel@makrotopia.org>
+	id 1u8r6W-00000002k4i-1eZh;
+	Sun, 27 Apr 2025 01:46:49 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 8B7F8A4A596;
+	Sun, 27 Apr 2025 01:41:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0F9B9C4AF09;
+	Sun, 27 Apr 2025 01:46:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1745718407;
+	bh=SnY0OVfoDmbXp5koX1Ut+7k1dmo/CROGEsXd1gmHnO0=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=OjxSi1cn6I5f6ICjrjhXad56TRK1i+y/AHQUc/5otvDDX7e8TDm1YRqpkH4hH/fyH
+	 0YFMywvkD/ZkBq/p7QXyE7sQFYbfvlTbECFwj1fRASa5Ffu1GHwJUtWXlOzEdR/8BF
+	 WBIT8efXIoqHNb9FLAnQreDsJLDiRFPlTUY05MZh/0jSH4YF8mToo4nuPrxNmT1K+2
+	 +MvbLrUEaIIvlAKsKRlTGJB/G3y0xRhWBd4TZ8+xfBs18SV6LKPdxtiux/pA95X32x
+	 lEeECD631518qCrdROzHls1T3vX6194Fr4Cy7239dOcsEkt0LyidiDrBnf6URhFngi
+	 3yDVgCn/TYSwg==
+Received: by mail-ed1-f47.google.com with SMTP id 4fb4d7f45d1cf-5e5e22e6ed2so5520462a12.3;
+        Sat, 26 Apr 2025 18:46:46 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCUjRVDBh11mP6q8eQV6grTRHztNjy+356ahql8LVU1OhUqPmZsqFiF2OB2xdJ6mPZtrZb3ZM5JgwAOELm9EPTL2@lists.infradead.org, AJvYcCVKmTXutGnijEwlbWoBhYAi+M7I0Rx4QLvmF+LTwTjREQMuVcf9lnvCOpwXt3/P7UkRWvFiPW1/Y3YHSMeKka0=@lists.infradead.org
+X-Gm-Message-State: AOJu0YyXLB5tIIgCi0kIlTmT3pCzLDpPPRmUtUrLrkE9xhwukirgy6LM
+	sgPlJNhHpU3CoRTZMd30g7VF+CK0G89QiJ6V836dbn8Y7VdY1vPQihr9cp7NEAbW4/cbe0Idhxl
+	1UpCK2yE/T/YQIrUIFCkuleS8Gw==
+X-Google-Smtp-Source: AGHT+IHwFnZmrXrm96vl8R7jE4+InC0lzNGtdGV49DZM/HkH0U6QBLErQWPSVSddA8htDu0Z5bOVhme32UVMcNPgYiE=
+X-Received: by 2002:a05:6402:3582:b0:5f4:370d:96bc with SMTP id
+ 4fb4d7f45d1cf-5f722673ab2mr5556823a12.2.1745718405627; Sat, 26 Apr 2025
+ 18:46:45 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+References: <20250409131306.108635-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250409131306.108635-1-angelogioacchino.delregno@collabora.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Sun, 27 Apr 2025 09:47:35 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_-YRTsGZc6BK+Z55S8vDtyRiK8+YmH5ot9S-0uZ74ZvLQ@mail.gmail.com>
+X-Gm-Features: ATxdqUFIcH_9J8n0sw5vPGyhuF-f63RdB61FF-kV0-kFcASs5EUXu7xSvR6Jfcg
+Message-ID: <CAAOTY_-YRTsGZc6BK+Z55S8vDtyRiK8+YmH5ot9S-0uZ74ZvLQ@mail.gmail.com>
+Subject: Re: [PATCH v1 0/5] MediaTek DPI: Cleanups and add support for more formats
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
+	simona@ffwll.ch, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, kernel@collabora.com, 
+	lewis.liao@mediatek.com, ives.chenjh@mediatek.com, tommyyl.chen@mediatek.com, 
+	jason-jh.lin@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250426_180615_425885_757EA7E9 
-X-CRM114-Status: GOOD (  10.73  )
+X-CRM114-CacheID: sfid-20250426_184648_564185_36694C88 
+X-CRM114-Status: GOOD (  13.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,55 +86,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Chad Monroe <chad@monroe.io>
+Hi, Angelo:
 
-If the mtk_poll_rx() function detects the MTK_RESETTING flag, it will
-jump to release_desc and refill the high word of the SDP on the 4GB RFB.
-Subsequently, mtk_rx_clean will process an incorrect SDP, leading to a
-panic.
+AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> =E6=96=
+=BC
+2025=E5=B9=B44=E6=9C=889=E6=97=A5 =E9=80=B1=E4=B8=89 =E4=B8=8B=E5=8D=889:13=
+=E5=AF=AB=E9=81=93=EF=BC=9A
+>
+> This series adds support to configure the MediaTek DPI IP to output
+> more formats, such as YUV422 8/10/12 bits, YUV444 8/10 bits, BGR 8bits,
+> and RGB 10 bits, and also performs some cleanups that improve the code
+> readability when those are added.
+>
+> Even though some of those formats are also supported by MT8173, MT8183,
+> MT8186 and MT8192, I am enabling them only for MT8195/MT8188 as those
+> are the only two that I was able to test.
 
-Add patch from MediaTek's SDK to resolve this.
+The whole series is applied to mediatek-drm-next [1], thanks.
 
-Fixes: 2d75891ebc09 ("net: ethernet: mtk_eth_soc: support 36-bit DMA addressing on MT7988")
-Link: https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/71f47ea785699c6aa3b922d66c2bdc1a43da25b1
-Signed-off-by: Chad Monroe <chad@monroe.io>
----
-Changes since v1:
- * fix Link:
- * improve formatting
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
+log/?h=3Dmediatek-drm-next
 
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 14 +++++++++-----
- 1 file changed, 9 insertions(+), 5 deletions(-)
+Regards,
+Chun-Kuang.
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 47807b202310..a817fdf468d4 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -2252,14 +2252,18 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 		ring->data[idx] = new_data;
- 		rxd->rxd1 = (unsigned int)dma_addr;
- release_desc:
-+		if (MTK_HAS_CAPS(eth->soc->caps, MTK_36BIT_DMA)) {
-+			if (unlikely(dma_addr == DMA_MAPPING_ERROR))
-+				addr64 = FIELD_GET(RX_DMA_ADDR64_MASK,
-+						   rxd->rxd2);
-+			else
-+				addr64 = RX_DMA_PREP_ADDR64(dma_addr);
-+		}
-+
- 		if (MTK_HAS_CAPS(eth->soc->caps, MTK_SOC_MT7628))
- 			rxd->rxd2 = RX_DMA_LSO;
- 		else
--			rxd->rxd2 = RX_DMA_PREP_PLEN0(ring->buf_size);
--
--		if (MTK_HAS_CAPS(eth->soc->caps, MTK_36BIT_DMA) &&
--		    likely(dma_addr != DMA_MAPPING_ERROR))
--			rxd->rxd2 |= RX_DMA_PREP_ADDR64(dma_addr);
-+			rxd->rxd2 = RX_DMA_PREP_PLEN0(ring->buf_size) | addr64;
- 
- 		ring->calc_idx = idx;
- 		done++;
--- 
-2.49.0
-
+>
+> This was tested on:
+>  - MT8195 Tomato Chromebook
+>  - MT8395 Radxa NIO-12L
+>  - MT8390 MediaTek Genio 700 EVK
+>
+> AngeloGioacchino Del Regno (5):
+>   drm/mediatek: mtk_dpi: Use switch in mtk_dpi_config_color_format()
+>   drm/mediatek: mtk_dpi: Add local helpers for bus format parameters
+>   drm/mediatek: mtk_dpi: Add support for additional output formats
+>   drm/mediatek: mtk_dpi: Allow additional output formats on MT8195/88
+>   drm/mediatek: mtk_dpi: Rename output fmts array for MT8195 DP_INTF
+>
+>  drivers/gpu/drm/mediatek/mtk_dpi.c | 117 +++++++++++++++++++++++++----
+>  1 file changed, 102 insertions(+), 15 deletions(-)
+>
+> --
+> 2.49.0
+>
 
