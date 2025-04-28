@@ -4,124 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 571DCC369DC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Apr 2025 14:33:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F14DC369D5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Apr 2025 15:03:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=bQYI98eNYPuBxf9D7Ml3+p+5IYpNd9AgbjcYArr6koc=; b=CLPAfLfXYIaaK1osJeL3AoC25T
-	Tisz3bhhIhvp/1yHtnYRydePyCm105/qG0EexWleBWcho+aQIApO10/DeijqINBt0DNKLqtw6r7Aa
-	aQte09/vI/oDSLdsWB0xH7+4omC6iU0CJxbDKWBQAfLx4FeSjckLWq4IEtQBmwetHZPe/VMhuFRou
-	AO4v9IjjA2JjXk3NGMXo/nrBTRYIOCzCXmxmJKHFGZS5jTX9TR6rA2jUgM7FTik5MpxWfOcM55EPo
-	6VJPq2wPIxEiJ3XfF2tostWw867VktY4Ag8OSUQNv31g9aYvRkCRxD6rPoWkh1iER9swKYgQ3Weyz
-	vfhFcYuw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=l/KM50XoeWonitoxoMaOHFeoOtZjamWkVO4Sfztxz2s=; b=SvpY8Jw8dhX4vQ6Z19/ABz3Ech
+	9TMwU54S1JLmp7ypHx2K7mXgeT5ovw8Z5rVhPFAxb8VOFDCJSRpasVgv0K0koYE9NDDa7+B7FNCyz
+	B8g79duKi1U/3r95oh4nnfUMehHFoiUbJ6sRwZUhjJatz7wvjt2yWEs+isE66jIv4Gta1SEyjCa1E
+	A2uey9sIGhgxjCpZCFg5oRmeZQ153TSm92U+6LNtI5GavrmSO+n1x6I2S9mt//HkXBbVNwMtAEt1c
+	fPrnTaf/bHYHIc9pMQZu7/YC6v63Gn5xngeLKpS1YEW6eeAYg1vgFIr2ymTfHv3SPMLJoKlCiX6Ps
+	4CvaIQEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9PXi-00000006e5z-0zVw;
-	Mon, 28 Apr 2025 14:33:10 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1u9Q0g-00000006i2k-0E2t;
+	Mon, 28 Apr 2025 15:03:06 +0000
+Received: from relay6-d.mail.gandi.net ([2001:4b98:dc4:8::226])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9PUl-00000006djF-2IoI
-	for linux-mediatek@bombadil.infradead.org;
-	Mon, 28 Apr 2025 14:30:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender:
-	Reply-To:Content-ID:Content-Description:In-Reply-To:References;
-	bh=bQYI98eNYPuBxf9D7Ml3+p+5IYpNd9AgbjcYArr6koc=; b=jCU4hGxwoXxsPCrWqQsdopohg2
-	aLJqc8yF2/TcpHyESN0sGBrQnMFLFyCmRhlBAClNpm0L6X8Dc4jVSsMVjS252Rtn9klwLBf8Ie4bY
-	iDY/wugyKoUJBG0/Vut4bFfHhOvjNHXou8YhfLGEvbm5D5GllrUkxxp65b9tuAklaphWjZlDNQf91
-	a9mBUY/3xTPWDveM8EVcQNRwujEiixWgnuhVLdnyDNTTr3KgwsRUn9gNEeuJi6ImlcS9syonbKEk6
-	VMuKbkdzUREmYT7y5MsTZBM98sZ9VFNxFPdkvsfdysemw3KZQzXR8I22wGfjNYEt2cm+zv+t3nIp7
-	/CTkS+kg==;
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
-	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u9PUh-0000000Cny8-2qVQ
-	for linux-mediatek@lists.infradead.org;
-	Mon, 28 Apr 2025 14:30:06 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-43cfe574976so33561905e9.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 28 Apr 2025 07:30:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1745850601; x=1746455401; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=bQYI98eNYPuBxf9D7Ml3+p+5IYpNd9AgbjcYArr6koc=;
-        b=FH/WYb/i3qXhJi17U158XRZIKKy0B5o01WHuxCkjQPgnlcKzMv6SPU9Iq1XKpWCeVM
-         pV3G4tHzbwawj/r1u2rWdm6yCl4dtQf7nNwZGJwSpEsocBPPQ9rVyIhx79jZkwXjRF20
-         5dLA+TaAUaWXWYsPWNb5pm4PT9KYz0I5TcdOG/Ts77uu8YwoMzvIFMcv1QDwed3UxGgU
-         OMRXNN9YtrJsP4Ny8Jw/5LFJVT1P3XFuOb8NCMYzD+Na3MFqzKZiAWpVZfTjKpkdBIHc
-         llE7bx8OvB5KfSRYKdePD43EQ7u0t00dhsADjFYHPOXUynGRd81N28Cr5tEZK2QGvBrn
-         RUJA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745850601; x=1746455401;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=bQYI98eNYPuBxf9D7Ml3+p+5IYpNd9AgbjcYArr6koc=;
-        b=KzlqiquQJOpA7DlyNkU/yIDxzbLWdN/uOSYa1KjeXIVUKfYE6N0ek6S1qrypOOyktv
-         CrYglu6VViAGChzGfQPGitjXBTCuq2y5Wo43fcgyqkB1V/D0Qsp9oNTVybj/dHaTlCcW
-         qZJ0Ip9NxYFMiEiFIi8g8mnU+mTjPugMAOhPZ/wFcvpc7B2l2u17XN88xb9mTFo5G51E
-         QmyS3mhflxEbDQv24nWoe3WYYQKPQ4U70d8MwNcm5HL9Mg2LZsrOhtwmZSP9C5sYiKGq
-         4WNdlun9Ho5hbImsQ+MaqmJmmKfLzzC22FvusOe4AVFLc9aIwPsKu24rV7G8PrplroXm
-         aOFg==
-X-Forwarded-Encrypted: i=1; AJvYcCX2yyP4IM1q4O317JlvT4s184v4P1Ln+NUK/k69QH/ilMz4ZXKuRc/xGd3co3NgNTqsWg3JT54WvkQkn+JTCw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YylzJMxaNuALLJN5B9I/yiT2/9/W71Mc6iwVb98jEZ5c19Nuo1y
-	+Omp4ea3+1Y0D+HPI12YOO3tCEi480pp79JAd2Xr+PSYTIlGggU/ADd15BkgrEA=
-X-Gm-Gg: ASbGncsLIqiWLk9qULfVBidWxZa3Pmo/83kCt+hunD7U7Vol2gbGm7/HX0FV435nvOV
-	hoiJ8umBClicPO7ai8aavYQaXsCiJ9973/C8JqQNp/ESx4easAIgx3NJE32gXsf9Pb6VkN5r2QB
-	+EKwYXznW1VgfXTx91iYIikRKLemn7iKGTjFdd17hiXjhMg0l+yjQi4+9618N+2NnB1rTxEeNsW
-	CBiwGBi98Tt8ND/V8Z5H2bKnX5PTJuTL6bjLSKLpJO1KnMkJ0ew+33aUWtqUAripTs4f55av/la
-	+XiccGU8nXsH+lvci8Ug4yrEk/EZAa9QgPWQxq0NZ0ui47iixiiqY4NNdUWIygbOqLrZ2RMcW1f
-	6qcWZ
-X-Google-Smtp-Source: AGHT+IFMzYA4rBwAp8XMm/VmBHtuPN7YejTTJCLHH0ds3UH44CvH+BTUCP1eWOoIxr4fWxmL+Mot/Q==
-X-Received: by 2002:a05:600d:3:b0:43d:ed:ad07 with SMTP id 5b1f17b1804b1-440aa5c57d2mr71982045e9.29.1745850600617;
-        Mon, 28 Apr 2025 07:30:00 -0700 (PDT)
-Received: from [192.168.5.157] (88-127-185-231.subs.proxad.net. [88.127.185.231])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-440a538f4aasm124616395e9.38.2025.04.28.07.29.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Apr 2025 07:30:00 -0700 (PDT)
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Mon, 28 Apr 2025 16:29:55 +0200
-Subject: [PATCH] rtc: mt6359: Add mt6357 support
+	id 1u9Pyk-00000006hmE-0Y8Q;
+	Mon, 28 Apr 2025 15:01:11 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 4F84F4397F;
+	Mon, 28 Apr 2025 15:00:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1745852455;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=l/KM50XoeWonitoxoMaOHFeoOtZjamWkVO4Sfztxz2s=;
+	b=cTAHqyDfWqZQRajnA0jCJJTRWgntMZ9qCGKU473NOxESwutCLvKkGP9L3GMlUIUf1TVfoJ
+	rSml0e13bS9W5xL7vpWnRG/Gf8DwWyNIkXZ07glmnEui2hZC2Xoq/8/xjrvJp5r3ePSFuU
+	njtoTq8LUpcrENa9NLXi3tWAr4COusan12TyNUvMZQZfaHrdfuVf/DcDoxsqC3HUZd6Oxa
+	xFrGUT/PhDw09LZJgn+fTcnrJMlbI4kHX39u8mbqL16gwmh6HE2DuFmuNLvVbhBpuVI1WK
+	hOs5l7kG8ZpIdaFhDwnEIRvdHjqsZaRpzN9lTpgipOlJKjv7cuiqF1qRk9Zf2g==
+Date: Mon, 28 Apr 2025 17:00:45 +0200
+From: Luca Ceresoli <luca.ceresoli@bootlin.com>
+To: "Andy Yan" <andyshrk@163.com>
+Cc: "Maarten Lankhorst" <maarten.lankhorst@linux.intel.com>, "Maxime Ripard"
+ <mripard@kernel.org>, "Thomas Zimmermann" <tzimmermann@suse.de>, "David
+ Airlie" <airlied@gmail.com>, "Simona Vetter" <simona@ffwll.ch>, "Andrzej
+ Hajda" <andrzej.hajda@intel.com>, "Neil Armstrong"
+ <neil.armstrong@linaro.org>, "Robert Foss" <rfoss@kernel.org>, "Laurent
+ Pinchart" <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman"
+ <jonas@kwiboo.se>, "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Jagan
+ Teki" <jagan@amarulasolutions.com>, "Shawn Guo" <shawnguo@kernel.org>,
+ "Sascha Hauer" <s.hauer@pengutronix.de>, "Pengutronix Kernel Team"
+ <kernel@pengutronix.de>, "Fabio Estevam" <festevam@gmail.com>, "Douglas
+ Anderson" <dianders@chromium.org>, "Chun-Kuang Hu"
+ <chunkuang.hu@kernel.org>, "Krzysztof Kozlowski" <krzk@kernel.org>, "Anusha
+ Srivatsa" <asrivats@redhat.com>, "Paul Kocialkowski" <paulk@sys-base.io>,
+ "Dmitry Baryshkov" <lumag@kernel.org>, "Hui Pu" <Hui.Pu@gehealthcare.com>,
+ "Thomas Petazzoni" <thomas.petazzoni@bootlin.com>,
+ dri-devel@lists.freedesktop.org, asahi@lists.linux.dev,
+ linux-kernel@vger.kernel.org, chrome-platform@lists.linux.dev,
+ imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-renesas-soc@vger.kernel.org, platform-driver-x86@vger.kernel.org,
+ linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ freedreno@lists.freedesktop.org, linux-stm32@st-md-mailman.stormreply.com,
+ "Adam Ford" <aford173@gmail.com>, "Adrien Grassein"
+ <adrien.grassein@gmail.com>, "Aleksandr Mishin" <amishin@t-argos.ru>, "Andy
+ Yan" <andy.yan@rock-chips.com>, "AngeloGioacchino Del Regno"
+ <angelogioacchino.delregno@collabora.com>, "Benson Leung"
+ <bleung@chromium.org>, "Biju Das" <biju.das.jz@bp.renesas.com>, "Christoph
+ Fritz" <chf.fritz@googlemail.com>, "Cristian Ciocaltea"
+ <cristian.ciocaltea@collabora.com>, "Detlev Casanova"
+ <detlev.casanova@collabora.com>, "Dharma Balasubiramani"
+ <dharma.b@microchip.com>, "Guenter Roeck" <groeck@chromium.org>, "Heiko
+ Stuebner" <heiko@sntech.de>, "Jani Nikula" <jani.nikula@intel.com>, "Janne
+ Grunau" <j@jannau.net>, "Jerome Brunet" <jbrunet@baylibre.com>, "Jesse Van
+ Gavere" <jesseevg@gmail.com>, "Kevin Hilman" <khilman@baylibre.com>,
+ "Kieran Bingham" <kieran.bingham+renesas@ideasonboard.com>, "Liu Ying"
+ <victor.liu@nxp.com>, "Manikandan Muralidharan"
+ <manikandan.m@microchip.com>, "Martin Blumenstingl"
+ <martin.blumenstingl@googlemail.com>, "Matthias Brugger"
+ <matthias.bgg@gmail.com>, "Philipp Zabel" <p.zabel@pengutronix.de>, "Phong
+ LE" <ple@baylibre.com>, "Sasha Finkelstein" <fnkl.kernel@gmail.com>, "Sugar
+ Zhang" <sugar.zhang@rock-chips.com>, "Sui Jingfeng"
+ <sui.jingfeng@linux.dev>, "Tomi Valkeinen"
+ <tomi.valkeinen+renesas@ideasonboard.com>, "Vitalii Mordan"
+ <mordan@ispras.ru>
+Subject: Re: [PATCH v2 01/34] drm: convert many bridge drivers from
+ devm_kzalloc() to devm_drm_bridge_alloc() API
+Message-ID: <20250428170045.5ca315ce@booty>
+In-Reply-To: <656e493e.a551.1967c6d0c53.Coremail.andyshrk@163.com>
+References: <20250424-drm-bridge-convert-to-alloc-api-v2-0-8f91a404d86b@bootlin.com>
+	<20250424-drm-bridge-convert-to-alloc-api-v2-1-8f91a404d86b@bootlin.com>
+	<656e493e.a551.1967c6d0c53.Coremail.andyshrk@163.com>
+Organization: Bootlin
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250428-rtc-mt6357-v1-1-31f673b0a723@baylibre.com>
-X-B4-Tracking: v=1; b=H4sIAOKQD2gC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDI1MDEyML3aKSZN3cEjNjU3NdYxPDxBRDoyQTi+REJaCGgqLUtMwKsGHRsbW
- 1AAzLrJhcAAAA
-X-Change-ID: 20250428-rtc-mt6357-341ad12b48ca
-To: Eddie Huang <eddie.huang@mediatek.com>, 
- Sean Wang <sean.wang@mediatek.com>, 
- Alexandre Belloni <alexandre.belloni@bootlin.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-rtc@vger.kernel.org, linux-kernel@vger.kernel.org, 
- Alexandre Mergnat <amergnat@baylibre.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1456; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=ruIK2ZYu6lVtSOA1q39QxovEfdKMM9srBG4DrMyVUf8=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBoD5DnDmynJWGB3fQ71YEwcfouWK8V/j+TJRIOazo6
- JTbxnCqJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCaA+Q5wAKCRArRkmdfjHURdFbD/
- 9SapbkaXzKJQv+9ANc35lhlI2QPX54DfEfjZjVAsUPn1ZRjXdtm9WR41IyzztGdGfpRmT6JitqlK2N
- XSue5F/P7bNCF1nboTy8/bssi5w2NdJIJv9onhgr8e+VJK2IWTWLATwdJ3IIdI8b/g9V06yUkOZr9A
- 8PRLwmOu3hkFBqh279hQRA+DVclO6MhZbMUkEYkLoOrqCAnlSOoHW9XbFbbT/4/heej9DCwJLBBBdM
- KLJfufLks3tBLoU/e1jJwHenVVTAL2R5g29cnknxL2NsSMJOxM6giESU4jKrf6BP7pcIVB0YJpqzqt
- CxFysyaZEH916/YYkpj3XZ76uUfqFm7WzR8yVOXBLbgLaB/M51msZSyAVj0HDU2nmC3qaQ9NZ1sngL
- +2uiLVXZj2dhNFuj/VMFtojm3KI3Cjd6nIymlOOV8ZTU/OhHWMHYvPYEwlPpZ7nuH+nl2vj/JIhlyv
- cuVGNJai+xMc25fD6pJ4Tm78MCePjXxAORRDV3TWyF3KbAtyxTvyKwpnkS6Ghu7/hVw9ALCl3T2cDh
- wX/PiNYmdNqBLIhq2InUWrPfuyAhEnv6rhXW+b87E6u+FgMHTH+0CChOb2gno3JR21JwTYbj8o4+pf
- 0GTaX6z2uIjtLHzQmQ5phDZVJ+ML70x25abikqmGttA4S3mTKaZzyVw9GOEA==
-X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
- fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
+X-GND-State: clean
+X-GND-Score: -100
+X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvieduvdehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvvefukfgjfhhoofggtgfgsehtjeertdertddvnecuhfhrohhmpefnuhgtrgcuvegvrhgvshholhhiuceolhhutggrrdgtvghrvghsohhlihessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnhepgeelffefgfehhfdtvdefueefieevkefggfelkeeiudetkeektedvhedukefgvddvnecuffhomhgrihhnpegsohhothhlihhnrdgtohhmnecukfhppedvrgdtvdemieejtdemvddtvddtmegvrgdtudemsggvgedumeelhegvjeemfeegfeemledufegvnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepvdgrtddvmeeijedtmedvtddvtdemvggrtddumegsvgegudemleehvgejmeefgeefmeeludefvgdphhgvlhhopegsohhothihpdhmrghilhhfrhhomheplhhutggrrdgtvghrvghsohhlihessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepieelpdhrtghpthhtoheprghnugihshhhrhhkseduieefrdgtohhmpdhrtghpthhtohepmhgrrghrthgvnhdrlhgrnhhkhhhorhhstheslhhinhhugidrihhnthgvlhdrtghomhdprhgtphhtthhopehmrhhiphgrrhgusehkvghrn
+ hgvlhdrohhrghdprhgtphhtthhopehtiihimhhmvghrmhgrnhhnsehsuhhsvgdruggvpdhrtghpthhtoheprghirhhlihgvugesghhmrghilhdrtghomhdprhgtphhtthhopehsihhmohhnrgesfhhffihllhdrtghhpdhrtghpthhtoheprghnughriigvjhdrhhgrjhgurgesihhnthgvlhdrtghomhdprhgtphhtthhopehnvghilhdrrghrmhhsthhrohhngheslhhinhgrrhhordhorhhg
+X-GND-Sasl: luca.ceresoli@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250428_153004_104707_841DD939 
-X-CRM114-Status: GOOD (  11.23  )
+X-CRM114-CacheID: sfid-20250428_080106_955251_A97B4270 
+X-CRM114-Status: GOOD (  13.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -136,41 +121,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT6357 PMIC contains the same RTC as MT6358 which allows to add
-support for it trivially by just complementing the list of compatibles.
+Hallo Andy,
 
-Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
----
-The `arch/arm64/boot/dts/mediatek/mt6357.dtsi` file already contains both
-"mediatek,mt6357" and "mediatek,mt6357-rtc" which are documented in the
-`Documentation/devicetree/bindings/mfd/mediatek,mt6357.yaml` file.
+On Mon, 28 Apr 2025 20:44:03 +0800 (CST)
+"Andy Yan" <andyshrk@163.com> wrote:
 
-This serie come from another splitted serie [1]
+> Hi ,
+> 
+> At 2025-04-25 02:59:08, "Luca Ceresoli" <luca.ceresoli@bootlin.com> wrote:
+> >devm_drm_bridge_alloc() is the new API to be used for allocating (and
+> >partially initializing) a private driver struct embedding a struct
+> >drm_bridge.
+> >
+> >For many drivers having a simple code flow in the probe function, this
+> >commit does a mass conversion automatically with the following semantic
+> >patch. The changes have been reviewed manually for correctness as well as
+> >to find any false positives.
+> >
+> >  @@
+> >  type T;
+> >  identifier C;
+> >  identifier BR;
+> >  expression DEV;
+> >  expression FUNCS;
+> >  @@
+> >  -T *C;
+> >  +T *C;
+> >   ...
+> >  (
+> >  -C = devm_kzalloc(DEV, ...);
+> >  -if (!C)
+> >  -    return -ENOMEM;
+> >  +C = devm_drm_bridge_alloc(DEV, T, BR, FUNCS);
+> >  +if (IS_ERR(C))
+> >  +     return PTR_ERR(C);
+> >  |
+> >  -C = devm_kzalloc(DEV, ...);
+> >  -if (!C)
+> >  -    return ERR_PTR(-ENOMEM);
+> >  +C = devm_drm_bridge_alloc(DEV, T, BR, FUNCS);
+> >  +if (IS_ERR(C))
+> >  +     return PTR_ERR(C);
+> >  )
+> >   ...
+> >  -C->BR.funcs = FUNCS;
+> >
+> >Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 
-[1]: https://lore.kernel.org/r/20250428-enable-rtc-v4-0-2b2f7e3f9349@baylibre.com
----
- drivers/rtc/rtc-mt6397.c | 1 +
- 1 file changed, 1 insertion(+)
+[...]
 
-diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
-index 6979d225a78e47f73b7652159e73f70c43b4fcde..692c00ff544b22b471b51f115dded9fcea432de3 100644
---- a/drivers/rtc/rtc-mt6397.c
-+++ b/drivers/rtc/rtc-mt6397.c
-@@ -332,6 +332,7 @@ static const struct mtk_rtc_data mt6397_rtc_data = {
- 
- static const struct of_device_id mt6397_rtc_of_match[] = {
- 	{ .compatible = "mediatek,mt6323-rtc", .data = &mt6397_rtc_data },
-+	{ .compatible = "mediatek,mt6357-rtc", .data = &mt6358_rtc_data },
- 	{ .compatible = "mediatek,mt6358-rtc", .data = &mt6358_rtc_data },
- 	{ .compatible = "mediatek,mt6397-rtc", .data = &mt6397_rtc_data },
- 	{ }
+> >diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+> >index 5e5f8c2f95be1f5c4633f1093b17a00f9425bb37..9b1dfdb5e7ee528c876c01916c9821d550cad679 100644
+> >--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+> >+++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+> >@@ -1045,9 +1045,10 @@ struct dw_hdmi_qp *dw_hdmi_qp_bind(struct platform_device *pdev,
+> > 		return ERR_PTR(-ENODEV);
+> > 	}
+> > 
+> >-	hdmi = devm_kzalloc(dev, sizeof(*hdmi), GFP_KERNEL);
+> >-	if (!hdmi)
+> >-		return ERR_PTR(-ENOMEM);
+> >+	hdmi = devm_drm_bridge_alloc(dev, struct dw_hdmi_qp, bridge,
+> >+				     &dw_hdmi_qp_bridge_funcs);
+> >+	if (IS_ERR(hdmi))
+> >+		return PTR_ERR(hdmi);  
+> 
+>            This should return hdmi or ERR_CAST(hdmi);
 
----
-base-commit: 424dfcd441f035769890e6d1faec2081458627b9
-change-id: 20250428-rtc-mt6357-341ad12b48ca
+Indeed, thanks!
 
-Best regards,
+My coccinelle patch is clearly not clever enough. I'll see whether I
+can fix it, otherwise I'll handle these 3 special cases manually, along
+with another similar one (imx/imx-legacy-bridge.c) I just spotted after
+your report.
+
+Luca
+
 -- 
-Alexandre Mergnat <amergnat@baylibre.com>
-
+Luca Ceresoli, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
