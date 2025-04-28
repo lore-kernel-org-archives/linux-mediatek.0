@@ -4,61 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9C6AC369D5
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BAD8C3ABA4
 	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Apr 2025 15:50:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dMxALCQJVftdP+JJJ+PiOCyApjMRHebCH9haNBk4Hd4=; b=GQ1XHWz1ZbTMaB4fHR6b+SttOQ
-	R3Tuk76GgrQQIccQxu7aw0kXf9YozgX2tcWB6S8rsqZLdjpzOcsCx7iX/S0hdg+hkuAuXl1YASSoU
-	Iim/qiCpZBCFUf51gv6IceF/TqulW8QpHY3ClyQvpEaXhLUhljgyZdWWjcMvrq3oXWNFRTzG9rDYU
-	cL34OIAJFM8HI724h14OHDiTgHo5OjB6FenRuGj2ckARH9aZzD+sv8Zcb2xTeIPgd/o47D2LrIYF8
-	NERLZZdRVr2J8GE5peo8+saGRlGuhVpFTyjAKAI9ioYQ2723DQdrl7aQAwlwsC6MFBQlwhd5h1MFG
-	fWsxOmyQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PU/sixtY71LvEi4Fz6DQo24QLlRpV93TUetQH3mfBu0=; b=FW8R8bTY8enQpod4mhaVdtm7EI
+	pApwV6u6zDH3G9thJkzuuM1PSuh4tyLjROEiaQYmcxvkah4Pl7DHZNbUuzuQONMC3XsIfKXt+lW3a
+	gON6Q8PjAS70f95JRyutuRfc51uV7wAe1nzQ87mILj8YE8w65ZMDkYUYRKHDuk+f1Qu5LVVPMDlXV
+	LMBABf+vH2nwAiC3/qX1HwYXFjH0auxwZ3DlFUM9d5JNsqTByrx8mubOV0GfWCVcanVGGQJsGZ34x
+	NgIcmN93eCquTbjoBoloorYi27JjUX3xyszI2EIJg2fCjtFUPtKySq63ltQlLGnBEgP/2HTVjy5Qc
+	AGJOR56w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9QkQ-00000006pAn-2ijv;
+	id 1u9QkQ-00000006pB0-48v5;
 	Mon, 28 Apr 2025 15:50:22 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9Qd8-00000006nqm-1nWO;
-	Mon, 28 Apr 2025 15:42:51 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id ECD3343873;
-	Mon, 28 Apr 2025 15:42:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CEECBC4CEE4;
-	Mon, 28 Apr 2025 15:42:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1745854969;
-	bh=v1wxPJqJwcRBd+Zf9DhXdrSlgaAgxRvLpZcQSS65jKg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Pu+kSF+BladpeWcXiuiENFdFn46ujOtJFltyRXiwYjBEcQIbAkLc0J1YCDGvMzbqY
-	 S73DdgdDQdz2n6gaLUsVTaplCP+E84bCG5dmhdsDfDXy1WCTrvRLp2frlKVbKUtcYU
-	 p/7d+fKwIZReS0i5+txm3aiNrIs6Z4iNCG37cuj7LKmo6MbMLwBGOUGHNDkY6opwsk
-	 4p4IWycnZP+a6DYdHrMKljYfQVBj36+gENfIFSO2IHFhUFAjuW9KovC+UDDdm36qWO
-	 iQkg18SHzakolr2QfubyS7cW/AnEAqdsocrmBM4+o4gP+Vt1vHbjGPGfb4uPxz67E+
-	 21ywqGpVUibhA==
-Date: Mon, 28 Apr 2025 17:42:46 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, Jagan Teki <jagan@amarulasolutions.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, Douglas Anderson <dianders@chromium.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Anusha Srivatsa <asrivats@redhat.com>, Paul Kocialkowski <paulk@sys-base.io>, Dmitry Baryshkov <lumag@kernel.org>, Hui Pu <Hui.Pu@gehealthcare.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, dri-devel@lists.freedesktop.org, asahi@lists.linux.dev, linux-kernel@vger.kernel.org, chrome-platform@lists.linux.dev, imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org, platform-driver-x86@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org, linux-stm32@st-md-mailman.stormreply.com, Adam Ford <aford173@gmail.com>, Adrien Grassein <adrien.grassein@gmail.com>, Aleksandr Mishin <amishin@t-argos.ru>, Andy Yan <andy.yan@rock-chips.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Benson Leung <bleung@chromium.org>, Biju Das <biju.das.jz@bp.renesas.com>, Christoph Fritz <chf.fritz@googlemail.com>, Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, Detlev Casanova <detlev.casanova@collabora.com>, Dharma Balasubiramani <dharma.b@microchip.com>, Guenter Roeck <groeck@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Jani Nikula <jani.nikula@intel.com>, Janne Grunau <j@jannau.net>, Jerome Brunet <jbrunet@baylibre.com>, Jesse Van Gavere <jesseevg@gmail.com>, Kevin Hilman <khilman@baylibre.com>, Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, Liu Ying <victor.liu@nxp.com>, Manikandan Muralidharan <manikandan.m@microchip.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, Phong LE <ple@baylibre.com>, Sasha Finkelstein <fnkl.kernel@gmail.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, Sui Jingfeng <sui.jingfeng@linux.dev>, Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, Vitalii Mordan <mordan@ispras.ru>, Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>, Bryan O'Donoghue <bryan.odonoghue@linaro.org>, Hans de Goede <hdegoede@redhat.com>, Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, "Rob Herring (Arm)" <robh@kernel.org>, Hsin-Te Yuan <yuanhsinte@chromium.org>, Pin-yen Lin <treapking@chromium.org>, Xin Ji <xji@analogixsemi.com>, Aradhya Bhatia <a-bhatia1@ti.com>, Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, Ian Ray <ian.ray@ge.com>, Martyn Welch <martyn.welch@collabora.co.uk>, Peter Senna Tschudin <peter.senna@gmail.com>, Russell King <linux@armlinux.org.uk>, Herve Codina <herve.codina@bootlin.com>, Alim Akhtar <alim.akhtar@samsung.com>, Inki Dae <inki.dae@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Linus Walleij <linus.walleij@linaro.org>, Abhinav Kumar <quic_abhinavk@quicinc.com>, Bjorn Andersson <quic_bjorande@quicinc.com>, Marijn Suijten <marijn.suijten@somainline.org>, Rob Clark <robdclark@gmail.com>, Sean Paul <sean@poorly.run>, Helge Deller <deller@gmx.de>, Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
- Philippe Cornu <philippe.cornu@foss.st.com>, Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>, Yannick Fertre <yannick.fertre@foss.st.com>, =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, Dave Stevenson <dave.stevenson@raspberrypi.com>, Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Alain Volmat <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>, Michal Simek <michal.simek@amd.com>
-Subject: Re: [PATCH v2 00/34] drm: convert all bridges to
- devm_drm_bridge_alloc()
-Message-ID: <20250428-colossal-fiery-alpaca-8c5fee@houat>
-References: <20250424-drm-bridge-convert-to-alloc-api-v2-0-8f91a404d86b@bootlin.com>
- <20250428172457.23e23df5@booty>
+	id 1u9Qfd-00000006oJk-3sOm
+	for linux-mediatek@lists.infradead.org;
+	Mon, 28 Apr 2025 15:45:27 +0000
+Received: by mail-yb1-xb34.google.com with SMTP id 3f1490d57ef6-e7311e66a8eso3478711276.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 28 Apr 2025 08:45:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=raspberrypi.com; s=google; t=1745855124; x=1746459924; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=PU/sixtY71LvEi4Fz6DQo24QLlRpV93TUetQH3mfBu0=;
+        b=hDGWxTAKgoNHmssjd0ZblOP7iVduzYc9lactbLBWtt842FyFSKLFRNViZ6DA1BEluI
+         QjLs3vVRwf9cAvRrS6gYydWXuiXOuBIpvPCUnhZEKZFc3M0I3zPxDvLGmzkSvJAC75og
+         uJlMl7pMY93hOzaNWO6EMwyiZinEbke0Ykq7p0jAyd/+RNfE1PyEdIFHLaBTNE/mvoZG
+         iUv8oosM9NfPRwPTeGbYWHW5CGTG9RpVu7oUgoI6aX1zKejz1anspvoVEbbjhhivA2s3
+         d4VIUi/krwmNtoJfxfR2kUS1LFMwCl0T5ESmo4Dm4BxyGQUB7HgWhvT7AlGxW8WGTHDU
+         ffaQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1745855124; x=1746459924;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=PU/sixtY71LvEi4Fz6DQo24QLlRpV93TUetQH3mfBu0=;
+        b=dQtznN0ecxKECdq23DE31ahDtcrd8OJYkMEtXMuXp0+U+6/uy2v6f21UN4d5AeQ0qX
+         KQoNLw7Pfm/ho4hdYQ1H8BSwV3cSg65ElV1Quilo70KMdD6bWyG/UgTERIrIMRg55yof
+         hLbIihUITQG2kdgQZjfPr86UrXT9/m1HgGd9yBq+gm7Kp3EfdUgLr1webeB0WkQPBXLs
+         Ye1vfGxkUaWNGWMpliVJBxImvksPhe18U3plv9YUXBHkAxgn5kotQNHpr+goPB2Uodfe
+         d4hn0GXem2DySXCY0YYYEe8KXUOHeUK/yE4dZpIv+HGToZmr0UXJ4qWbzipOlf4NfX/p
+         nT7w==
+X-Forwarded-Encrypted: i=1; AJvYcCVyzEFRjPCuK2lgJ59nbFZnfiGKwD4ha5W9ooVPm/MBDRXLCmqTinhoHLNcj87Px3z5Ra3Jj5n2AshKXqg7XQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz15vQfo4Qu52rq/XqlFxsgF+ilOc7a8SivmO+GaCLpw1p3a9dE
+	BMLlUhL0Jbi4wuaUqUVqryB9UkQssSDPeD7FFf54nvAwStuO3V0wW/NMn0Lv98JTNv6/N8IXvN2
+	B5V2rDKZgvHUJaoz2JA9K9ABskdZsBhKVNNsOwg==
+X-Gm-Gg: ASbGncvsX3odo/SLzZ4UeB1QJhCSiYp0IWI8476g2OH+JJc4YZrTLB85AO7LV+Qg+44
+	hF871Lnt0Eog/uMbkbTJdDaxlZFmqJXy7wCCilMazcRk/voh3Z2pF3eDvtoq7PRDXyOfC+MzN8V
+	01lrT5pqLTI6FGNzsWCHVA+SjF+1JCYhADBrOTjJwNGsaWDxYB4WgOS7dADPs2UcY=
+X-Google-Smtp-Source: AGHT+IEF9MSlc844cuGTIRN/jaSQKExcmjeU1UeJwf54mw2x30vI+iBpqqWrdgOqbrjU+FD8mBfkUxmgGRAbgf2Y+6M=
+X-Received: by 2002:a05:6902:2701:b0:e72:d88e:7a9a with SMTP id
+ 3f1490d57ef6-e73500e777emr136870276.45.1745855124717; Mon, 28 Apr 2025
+ 08:45:24 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="2raebolozc6scwuc"
-Content-Disposition: inline
-In-Reply-To: <20250428172457.23e23df5@booty>
+References: <20250424-drm-bridge-convert-to-alloc-api-v2-0-8f91a404d86b@bootlin.com>
+ <20250424-drm-bridge-convert-to-alloc-api-v2-27-8f91a404d86b@bootlin.com>
+In-Reply-To: <20250424-drm-bridge-convert-to-alloc-api-v2-27-8f91a404d86b@bootlin.com>
+From: Dave Stevenson <dave.stevenson@raspberrypi.com>
+Date: Mon, 28 Apr 2025 16:45:08 +0100
+X-Gm-Features: ATxdqUF8zRJ18UCRRqpYogjOFDok1I-AvafpDPPJcxH-STXodhofR9H1CLM8tQg
+Message-ID: <CAPY8ntDwK0DZ6sThryDRBUgjTb+muNHtRNp+LohTs6+FWeB5TQ@mail.gmail.com>
+Subject: Re: [PATCH v2 27/34] drm/vc4: convert to devm_drm_bridge_alloc() API
+To: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Jagan Teki <jagan@amarulasolutions.com>, Shawn Guo <shawnguo@kernel.org>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
+	Fabio Estevam <festevam@gmail.com>, Douglas Anderson <dianders@chromium.org>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, 
+	Anusha Srivatsa <asrivats@redhat.com>, Paul Kocialkowski <paulk@sys-base.io>, 
+	Dmitry Baryshkov <lumag@kernel.org>, Hui Pu <Hui.Pu@gehealthcare.com>, 
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>, dri-devel@lists.freedesktop.org, 
+	asahi@lists.linux.dev, linux-kernel@vger.kernel.org, 
+	chrome-platform@lists.linux.dev, imx@lists.linux.dev, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
+	platform-driver-x86@vger.kernel.org, linux-samsung-soc@vger.kernel.org, 
+	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org, 
+	linux-stm32@st-md-mailman.stormreply.com, =?UTF-8?B?TWHDrXJhIENhbmFs?= <mcanal@igalia.com>, 
+	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250428_084250_507949_5FAC435E 
-X-CRM114-Status: GOOD (  27.85  )
+X-CRM114-CacheID: sfid-20250428_084526_045745_FD7FD0C2 
+X-CRM114-Status: GOOD (  20.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,85 +113,126 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---2raebolozc6scwuc
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v2 00/34] drm: convert all bridges to
- devm_drm_bridge_alloc()
-MIME-Version: 1.0
-
-On Mon, Apr 28, 2025 at 05:24:57PM +0200, Luca Ceresoli wrote:
-> Hi Maxime, other DRM maintainers,
->=20
-> On Thu, 24 Apr 2025 20:59:07 +0200
-> Luca Ceresoli <luca.ceresoli@bootlin.com> wrote:
->=20
-> > devm_drm_bridge_alloc() [0] is the new API to allocate and initialize a=
- DRM
-> > bridge, and the only one supported from now on. It is also necessary for
-> > implementing reference counting and thus needed to support removal of
-> > bridges from a still existing DRM pipeline without use-after-free.
-> >=20
-> > This series converts all DRM bridges to the new API.
-> >=20
-> > Patch 1 uses a coccinelle semantic patch to mass-convert some of those
-> > drivers -- thanks Maxime for having suggested the patch that served as a
-> > starting point for me. I was unable to come up with a better patch
-> > converting more drivers though, so I converted all others manually. Mos=
-t of
-> > them were trivial. I left the non-trivial ones at the end of the series=
- to
-> > help reviewers know where to look at more carefully.
-> >=20
-> > Due to the large number of touched files, the list of recipients genera=
-ted
-> > by get_maintainers (b4 actually) was huge, 60~70 people (not counting
-> > mailing lists), so I took the liberty of trimming the list as reasonabl=
-y as
-> > I could to DRM maintainers and frequent contributors, and added all oth=
-er
-> > recipients individually per-patch. I hope this is fine. Don't hesitate =
-to
-> > suggest more people which should be Cc-ed in a future series, or a bett=
-er
-> > Cc policy.
-> >=20
-> > Current plan and status of the DRM bridge refcounting work:
-> >=20
-> >  A. =E2=9C=94 add new alloc API and refcounting -> (now in drm-misc-nex=
-t)
-> >  B. =E2=9E=9C convert all bridge drivers to new API (this series)
-> >  C. =E2=80=A6 documentation, kunit tests, debugfs improvements (v1 unde=
-r discussion)
-> >  D. after (B), add get/put to drm_bridge_add/remove() + attach/detech()
-> >  E. after (B), convert accessors; this is a large work and can be done
-> >     in chunks
+On Thu, 24 Apr 2025 at 20:01, Luca Ceresoli <luca.ceresoli@bootlin.com> wro=
+te:
 >
-> Maintaining this long series is quite painful. Do you think at least
-> patches with a R-by or T-by tag could be merged before I send v3, so
-> we can relieve the maintenance effort, mail servers, and everybody's
-> inboxes?
+> This is the new API for allocating DRM bridges.
+>
+> This driver already implements refcounting of the struct vc4_dsi, which
+> embeds struct drm_bridge. Now this is a duplicate of the refcounting
+> implemented by the DRM bridge core, so convert the vc4_dsi_get/put() call=
+s
+> into drm_bridge_get/put() calls and get rid of the driver-specific
+> refcounting implementation.
+>
+> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 
-Yes?
+Acked-by: Dave Stevenson <dave.stevenson@raspberrypi.com>
 
-What's stopping you though? You have at least a colleague that can apply
-them, and you could just as well apply for commit rights yourself.
+Thanks.
 
-Maxime
-
---2raebolozc6scwuc
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaA+h8QAKCRAnX84Zoj2+
-dgkUAX9tFFbvseMFaQXzWUw2OjrRYi8WG/Yp2SJ+OTXVeByAp2uwMV+kec7LR3tM
-jzFzO5ABf0/CNdY6/kmufsxoaKp4Uok0FEFCQQDlpYtNbGVMZZEfpl0A+QVfRQbR
-RD4U9HjfrQ==
-=6DAB
------END PGP SIGNATURE-----
-
---2raebolozc6scwuc--
+> ---
+>
+> Cc: "Ma=C3=ADra Canal" <mcanal@igalia.com>
+> Cc: Dave Stevenson <dave.stevenson@raspberrypi.com>
+> Cc: Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
+>
+> Changed in v2:
+> - fix error code checking
+> ---
+>  drivers/gpu/drm/vc4/vc4_dsi.c | 34 +++++-----------------------------
+>  1 file changed, 5 insertions(+), 29 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/vc4/vc4_dsi.c b/drivers/gpu/drm/vc4/vc4_dsi.=
+c
+> index efc6f6078b026764c59cfb2a33b28a88b7018c3a..458e5d9879645f18bcbcaeeb7=
+1b5f1038f9581da 100644
+> --- a/drivers/gpu/drm/vc4/vc4_dsi.c
+> +++ b/drivers/gpu/drm/vc4/vc4_dsi.c
+> @@ -552,8 +552,6 @@ struct vc4_dsi {
+>         struct vc4_encoder encoder;
+>         struct mipi_dsi_host dsi_host;
+>
+> -       struct kref kref;
+> -
+>         struct platform_device *pdev;
+>
+>         struct drm_bridge *out_bridge;
+> @@ -1622,29 +1620,11 @@ static void vc4_dsi_dma_chan_release(void *ptr)
+>         dsi->reg_dma_chan =3D NULL;
+>  }
+>
+> -static void vc4_dsi_release(struct kref *kref)
+> -{
+> -       struct vc4_dsi *dsi =3D
+> -               container_of(kref, struct vc4_dsi, kref);
+> -
+> -       kfree(dsi);
+> -}
+> -
+> -static void vc4_dsi_get(struct vc4_dsi *dsi)
+> -{
+> -       kref_get(&dsi->kref);
+> -}
+> -
+> -static void vc4_dsi_put(struct vc4_dsi *dsi)
+> -{
+> -       kref_put(&dsi->kref, &vc4_dsi_release);
+> -}
+> -
+>  static void vc4_dsi_release_action(struct drm_device *drm, void *ptr)
+>  {
+>         struct vc4_dsi *dsi =3D ptr;
+>
+> -       vc4_dsi_put(dsi);
+> +       drm_bridge_put(&dsi->bridge);
+>  }
+>
+>  static int vc4_dsi_bind(struct device *dev, struct device *master, void =
+*data)
+> @@ -1655,7 +1635,7 @@ static int vc4_dsi_bind(struct device *dev, struct =
+device *master, void *data)
+>         struct drm_encoder *encoder =3D &dsi->encoder.base;
+>         int ret;
+>
+> -       vc4_dsi_get(dsi);
+> +       drm_bridge_get(&dsi->bridge);
+>
+>         ret =3D drmm_add_action_or_reset(drm, vc4_dsi_release_action, dsi=
+);
+>         if (ret)
+> @@ -1810,15 +1790,12 @@ static int vc4_dsi_dev_probe(struct platform_devi=
+ce *pdev)
+>         struct device *dev =3D &pdev->dev;
+>         struct vc4_dsi *dsi;
+>
+> -       dsi =3D kzalloc(sizeof(*dsi), GFP_KERNEL);
+> -       if (!dsi)
+> -               return -ENOMEM;
+> +       dsi =3D devm_drm_bridge_alloc(&pdev->dev, struct vc4_dsi, bridge,=
+ &vc4_dsi_bridge_funcs);
+> +       if (IS_ERR(dsi))
+> +               return PTR_ERR(dsi);
+>         dev_set_drvdata(dev, dsi);
+>
+> -       kref_init(&dsi->kref);
+> -
+>         dsi->pdev =3D pdev;
+> -       dsi->bridge.funcs =3D &vc4_dsi_bridge_funcs;
+>  #ifdef CONFIG_OF
+>         dsi->bridge.of_node =3D dev->of_node;
+>  #endif
+> @@ -1836,7 +1813,6 @@ static void vc4_dsi_dev_remove(struct platform_devi=
+ce *pdev)
+>         struct vc4_dsi *dsi =3D dev_get_drvdata(dev);
+>
+>         mipi_dsi_host_unregister(&dsi->dsi_host);
+> -       vc4_dsi_put(dsi);
+>  }
+>
+>  struct platform_driver vc4_dsi_driver =3D {
+>
+> --
+> 2.49.0
+>
 
