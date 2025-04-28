@@ -4,99 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9638C369DC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Apr 2025 19:34:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20284C369D5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Apr 2025 19:40:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mfzpR+XCt8jA2E6ve9YtKygB0tbO6iFuLJbvzZ6DwIk=; b=FssukADL4JAz21mu1khpwGD4Wn
-	d1mV/IPB1MH/Yrxv7HapSWDMNQLzHLSd2gkDDK+teqg2keJaaK/7Y0KVboxseyNTFKimJRDOxhjpc
-	HICZm2k5WHei8yE5wkGJKj+/Ll5n7nLiARvNvbHlEkanjrR+PJNhvZtVsAxzqBxKsRpRuKEE1SQyX
-	D/xlOoLNkvpTw7azJ/dGDtas7xvFNlUiHZ7rXCy8d9HH9gzrsr6y/Xv1P/F18z7n0+07xP8xJyj8y
-	aNEDMCGCbzPkI/1906+hFWw02Ogxrlc1wYbTB4ef3vmMvmoKu1hqo7dguPjuvgRsiMotZ98A+8AXe
-	hjTSQABA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kZL+y4O4nVB6WkTciMzCG9+Q8Gw1aprj/ilNSB+S7lA=; b=sVFgkE3TcKUZcwrkVELlNpnAIE
+	+BfieY7PWV1n4YJpfqtLZvzUXn0DjlIm+/ytmNQMUNSVh5noP0H3ZzibaloKtadBzt8SPDT0/eUKq
+	Q6mIhX/PeaVuzCyFJgUscZ7Vgz4/Jd+0K2J1eL1s1TuPraFJcU7rHn7JWoXPeNxNvMjs6TcFvATSD
+	1NgQ5tWqfgVFxh8S/37g20/7h7ES4b6JQmEzozJ4cDUddUm+Hl1A5s13S3tr2W/n6FplziP0tGOlc
+	kmH/t6BOc4vuxc6wqSkRP+1LBwhPD0bD38KDU6IFOWx0v03c9wJQtpknW4hM3ViNSA5AgLB3Byr3/
+	o9aaB4CA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9UFj-00000007M3k-2724;
-	Mon, 28 Apr 2025 19:34:55 +0000
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+	id 1u9UKq-00000007N1y-0m7w;
+	Mon, 28 Apr 2025 19:40:12 +0000
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9UDk-00000007Lod-3oLN
+	id 1u9UIr-00000007Mk0-2BWI
 	for linux-mediatek@lists.infradead.org;
-	Mon, 28 Apr 2025 19:32:54 +0000
-Received: by mail-pf1-x434.google.com with SMTP id d2e1a72fcca58-72d3b48d2ffso4814685b3a.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 28 Apr 2025 12:32:52 -0700 (PDT)
+	Mon, 28 Apr 2025 19:38:11 +0000
+Received: by mail-pl1-x62a.google.com with SMTP id d9443c01a7336-22c3407a87aso77631055ad.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 28 Apr 2025 12:38:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1745868771; x=1746473571; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=mfzpR+XCt8jA2E6ve9YtKygB0tbO6iFuLJbvzZ6DwIk=;
-        b=YG3pQW6aMH8dUtnuoq9pMf4LCQSYKKZBlSsnc4QXqEBVBiDbPe1D1L6lr1lRiNQaAD
-         kPYCF2BM2akvd7bcOkph2Qyt49R3PYINxX4GU3P+JnJQ88B6jo1NGXPR9FlPFitxMWAg
-         RnOwoSE0WZxyg232Ge0AogF1XXzs8tPnvvOyk=
+        d=google.com; s=20230601; t=1745869088; x=1746473888; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=kZL+y4O4nVB6WkTciMzCG9+Q8Gw1aprj/ilNSB+S7lA=;
+        b=IszaJKvlI+d/2NsvkC2n13BWmDGhKbZRYiYhdMBZR7vGelN/SuPh3WyOYWkb7wrFaH
+         bHhZNisIPHUz7TmFx2UElHiRozQXTLcM9xTBhOhlZ0cPNyU6e4EMp69NSH4aT1hdcV0b
+         vIY0tAwFO7DoSLaw5ZlfnLY2VDVr80buNNL3fd05xzi0Uuo4JvApaRs/H1raaqkPUAt6
+         v+hbt8jUnBzv8dHjqlb+pEFmdDqu5HBGd6gDlAScxbAM+CPIubdxCGb4pYjsxlOGOvcC
+         U/rx2YOM/GZRWE3lw0a9PgW+FtFgRmLupNY1P81wKf1oOmZ2cA8IGgVpchdekS+BKta0
+         9JBA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745868771; x=1746473571;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=mfzpR+XCt8jA2E6ve9YtKygB0tbO6iFuLJbvzZ6DwIk=;
-        b=Xr+/nZjxa0GVSnj0ZzL1avwYpktw0J5eYQRaB1ogTbLjJq2dkN6r6qVYzEKLwNApdD
-         fkBrcBhGP1IUZJYZP3X9I/lHni+ZjcqDmseOFVFICKJEG37FTo/9MaLvV6TWBsCJ2o6a
-         5eVHtFs4lKxVW6ku2xl6OmjFTptGHoywlaf9LOcQh2qFwrbqsyenyOf++k6f4hqVqmHS
-         HM0DM+5ggFZO/TkdjYDYgfBpf675i2FhqmK7MmJ9+IF92T4NbZ/Z2tH/HPhpbUhLFdKO
-         PavFQGqBFxw4avw73n44O/ZvpF/yc2YnTNXS/cTyraZY/Ktko7NsfTgpcPOSF/RhTBM8
-         IVqQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVHXGwPQUMM8dJkcB9X5REnbRodltNdyGQZ40NkF4bZB/92/F4I9efe96/r0oXUTpFSbpdwFOs/Q1B1BSpmKQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxx/OwNL/WwOtI9fRhGNW4KCJ6K3aBOIsdfGGgk4T2y3YtgaBYM
-	YC8yOrUygnMQD9aSOP3Uutyd4y4UNKkwxThrQIhIRs0EcG7hd0tinUeLaRY3bnZTfMu5OlveXRQ
+        d=1e100.net; s=20230601; t=1745869088; x=1746473888;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=kZL+y4O4nVB6WkTciMzCG9+Q8Gw1aprj/ilNSB+S7lA=;
+        b=bF6PrGh9xfBVCy7FXASyk4obULPa0cR95w2k8mNh9OelbsHYmZoKMoBKrHx7xONcfA
+         RcrJT26+OeqlLhpFG9+MEkNPB962N9qE4hyQG+2mq7d/oOOgeMsT1IIljiIA3AbBFor5
+         NxccgSWBzEvL1iNFENrCx+pxi5llpKKFZTbvdHoHRa8S7T7+kc7wfMeAoAFeQEQN8t9Q
+         gDIL7XG7ZehGA4jgZO7tgitdxLHhG0/zj73R876WiteKeJBG8anRpXeiAPYbQRcTBZsB
+         RVgLh+V3YEsdmSn8YdYZFQBNi8VbhNeIBMKfh/zXAHw49ldi/gKtdk0h5J2zpAgjx2Ik
+         D2Sw==
+X-Forwarded-Encrypted: i=1; AJvYcCULo2j7QlUoLSAYCBWI95HPtjzJ6KGFUkB+NAFPV/ShCqAWwJ9Vk0W1UgX550WzchfHar7a+Jg8ORv5Gm/M1A==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywb1oZjXbAkV13gKFTRa8LofxHEHTg8tRfHIdmzLfE1px05SQdu
+	rqnudkItzCStrCfoCafxyinDOno8TBfFORccOPXzxDbB+d50qdVXYDX1GGn/lg==
+X-Gm-Gg: ASbGncu+jy7i3Rt4PdVeJv9jjPHKr9QuNZJCE6ZzNsj3g3CUUZ27tgOd+/HqJcuPONp
+	95VVh/1372FUTkzT0hT90ifoFlzi8wEVuz3RWoBeY638y0mojXCqTu2p/TL14L/oNU9vvxpWiTa
+	NxhClaAD2vmvyUIQURX3/omV2Njqm7BOdkYPXyIQ840jqqnKOyo48x0Pg00UHz7+dIWjXkw8Dve
+	p4LbOwSIUcrft3nnl0hQnWsPjkO1cjavbFsdBppEb/UETokLPDQLEfIH9neEncVLI+LwxGNnYjp
+	nxbOAwk+I3Hb0DQlQFh3hGVPQczx64aIilrKligLj/f0I320VxyvFsjZFUJ6+BGTAVwp3Jr1PA=
 	=
-X-Gm-Gg: ASbGnct/ObRg07qTbFdrELL66loNRVtSp5uGM9/oQG2B9JLIeNsUrp95BKmeLbLqH4U
-	5R33MI2fYvcMlNY9XiC2MfgacMBSYwvYAezjcsiMtcGV0yBOPJoneAIcIEMLSBhEbp6YQNQoI8c
-	whhFnIYHu3+k3gf5y6sRxxBe/S4WiTAMBw6asvUlNIZUBgaRidUqhwrWqxMTi1jbu+nwpyJe9Hm
-	s3RPE6aCbZTz6FEU7M79fexO6VETZ99mzFAx5QqGHhtcQiYNkuibzHCL/ZCTarRvHo35wWYMRsC
-	0eipDehcPO4v2kjGu+48j/PT8a1vwipraHxYlY3JxGLO3fafq0G0KVVLSEBLhhbBP+NlDQ6tQx0
-	R99EQ+4Qpy1A0w34yErI=
-X-Google-Smtp-Source: AGHT+IGYJhPA1i8ZvxDlPFO0sAtXZ52pxkDfXlcsM0ZsEnniHw2CPC+dOw6a86PLJSotHSN5amNE6g==
-X-Received: by 2002:a05:6a00:ac2:b0:73c:b86:b47f with SMTP id d2e1a72fcca58-73ff7246ffamr14503650b3a.4.1745868771674;
-        Mon, 28 Apr 2025 12:32:51 -0700 (PDT)
-Received: from mail-pg1-f179.google.com (mail-pg1-f179.google.com. [209.85.215.179])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73e25a6a995sm8393862b3a.112.2025.04.28.12.32.51
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 28 Apr 2025 12:32:51 -0700 (PDT)
-Received: by mail-pg1-f179.google.com with SMTP id 41be03b00d2f7-b06e9bcc986so4049116a12.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 28 Apr 2025 12:32:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCW8iu9cVORGocQC5QcMWzKKRq/9Pg377a6ih9oqGHtbelcKzLrIVmDLU4UPJ+/rKSOCcPmzpY4w5h31sksPvg==@lists.infradead.org
-X-Received: by 2002:a17:90b:5490:b0:309:f5c6:4c5c with SMTP id
- 98e67ed59e1d1-30a01398884mr14674637a91.25.1745868770606; Mon, 28 Apr 2025
- 12:32:50 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250421101248.426929-1-wenst@chromium.org> <20250421101248.426929-2-wenst@chromium.org>
-In-Reply-To: <20250421101248.426929-2-wenst@chromium.org>
-From: Doug Anderson <dianders@chromium.org>
-Date: Mon, 28 Apr 2025 12:32:39 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=XLonF5qM+f6diESvnqAHKm4Y7wwPsNssdNqZfkn2OzSw@mail.gmail.com>
-X-Gm-Features: ATxdqUEnTKoRxhC-TaBEXil7UFoCr2GvfRCzsqwspS2g_INzWAwlvG_Di1SAl68
-Message-ID: <CAD=FV=XLonF5qM+f6diESvnqAHKm4Y7wwPsNssdNqZfkn2OzSw@mail.gmail.com>
-Subject: Re: [PATCH v2 1/8] dt-bindings: HID: i2c-hid: elan: Introduce Elan eKTH8D18
+X-Google-Smtp-Source: AGHT+IEb7sjPxHBoM6DBUpDHrBYIpIDFqqlG7FLfEAc+dm0pnpCG2yrmeVJ4VnqTunSOtGlfHUdVJg==
+X-Received: by 2002:a17:903:4405:b0:21f:164d:93fe with SMTP id d9443c01a7336-22de608f23emr13724175ad.53.1745869087882;
+        Mon, 28 Apr 2025 12:38:07 -0700 (PDT)
+Received: from google.com (28.67.125.34.bc.googleusercontent.com. [34.125.67.28])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22db4dbdb4bsm87169915ad.92.2025.04.28.12.38.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 28 Apr 2025 12:38:06 -0700 (PDT)
+Date: Mon, 28 Apr 2025 19:38:02 +0000
+From: Benson Leung <bleung@google.com>
 To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, chrome-platform@lists.linux.dev, 
-	linux-input@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Benson Leung <bleung@chromium.org>,
+	Tzung-Bi Shih <tzungbi@kernel.org>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, chrome-platform@lists.linux.dev,
+	linux-input@vger.kernel.org,
+	Douglas Anderson <dianders@chromium.org>
+Subject: Re: [PATCH v2 2/8] dt-bindings: arm: mediatek: Merge MT8186 Voltorb
+ entries
+Message-ID: <aA_ZGndUwSLY9yQ3@google.com>
+References: <20250421101248.426929-1-wenst@chromium.org>
+ <20250421101248.426929-3-wenst@chromium.org>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="coaj1VmWJVD9+zVN"
+Content-Disposition: inline
+In-Reply-To: <20250421101248.426929-3-wenst@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250428_123252_940301_9964BD5C 
-X-CRM114-Status: GOOD (  17.66  )
+X-CRM114-CacheID: sfid-20250428_123809_552560_D3AA4468 
+X-CRM114-Status: GOOD (  16.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,36 +110,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
 
-On Mon, Apr 21, 2025 at 3:13=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org> w=
-rote:
->
-> The Elan eKTH8D18 touchscreen controller is an I2C HID device with a
-> longer boot-up time. Power sequence timing wise it is compatible with
-> the eKTH6A12NAY, with a power-on delay of at least 5ms, 20ms
-> out-of-reset for I2C ack response, and 150ms out-of-reset for I2C HID
-> enumeration, both shorter than what the eKTH6A12NAY requires.
-> Enumeration and subsequent operation follows the I2C HID standard.
->
-> Add a compatible string for it with the ekth6a12nay one as a fallback.
-> No enum was used as it is rare to actually add new entries. These
-> chips are commonly completely backward compatible, and unless the
-> power sequencing delays change, there is no real effort being made to
-> keep track of new parts, which come out constantly.
->
-> Also drop the constraints on the I2C address since it's not really
-> part of the binding.
->
+--coaj1VmWJVD9+zVN
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Apr 21, 2025 at 06:12:40PM +0800, Chen-Yu Tsai wrote:
+> There are only two different SKUs of Voltorb, and the only difference
+> between them is whether a touchscreen is present or not. This can be
+> detected by a simple I2C transfer to the address, instead of having
+> separate compatible strings and device trees.
+>=20
+> Drop the SKU-specific compatible strings and just keep the generic
+> "google,voltorb" one.
+>=20
 > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> Acked-by: Rob Herring (Arm) <robh@kernel.org>
+
+Reviewed-by: Benson Leung <bleung@chromium.org>
+
 > ---
 > Changes since v1:
-> - Reworded commit message
-> - Dropped the enum for the new compatible string entry
-> - Dropped constraint on I2C address completely
+> - Added Rob's ack
 > ---
->  .../devicetree/bindings/input/elan,ekth6915.yaml     | 12 +++++++-----
->  1 file changed, 7 insertions(+), 5 deletions(-)
+>  Documentation/devicetree/bindings/arm/mediatek.yaml | 3 ---
+>  1 file changed, 3 deletions(-)
+>=20
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Docume=
+ntation/devicetree/bindings/arm/mediatek.yaml
+> index 108ae5e0185d..49ddc504c160 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
+> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> @@ -339,9 +339,6 @@ properties:
+>            - const: mediatek,mt8186
+>        - description: Google Voltorb (Acer Chromebook 311 C723/C732T)
+>          items:
+> -          - enum:
+> -              - google,voltorb-sku589824
+> -              - google,voltorb-sku589825
+>            - const: google,voltorb
+>            - const: mediatek,mt8186
+>        - items:
+> --=20
+> 2.49.0.805.g082f7c87e0-goog
+>=20
 
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
+--coaj1VmWJVD9+zVN
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQQCtZK6p/AktxXfkOlzbaomhzOwwgUCaA/ZGgAKCRBzbaomhzOw
+wnOoAQDrlivFR72rlTsDjXpRDqb5IDQN68oHJxMoVtwn/gvj5QEAwGk6b5hoLf1D
+239knHKArUipas1DEpyXfJVjZk3+VQ0=
+=L6Rm
+-----END PGP SIGNATURE-----
+
+--coaj1VmWJVD9+zVN--
 
