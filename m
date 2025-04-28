@@ -4,85 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BBBAC3ABA4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Apr 2025 16:45:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA639C369D5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Apr 2025 18:48:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5DagT191PUrxqNoIjJ1w3Cfp9IxiWt5tMd8A85d8XbY=; b=S05nP45Ajj1NwaARrSk94I6cVm
-	I9jGLCyRmK107ZgWs8TeZJWNxETh+y86kJQg1XUArJEMiAFIG0npUz6PDczYOICT7qHYVEMF4J3mt
-	VrlVE3X5DRe6xeTdW6cfVk+BP85skkjBcgWp/fHgK5GDFrr5UyNYDtStJeQ1m/dUbHWmuqqOxn3bR
-	gYyLJYkJ9y/DD/yE8zbLsewZGh/WgqmM263ax9IZYEZXs2gh/x91xXUu5xZKPbLmxlUy0XoEwUPDr
-	HAAwg4c1KkDmmD6xX5BVx4GeiaCQU57ORKN+LUeOjMOphnZGj3r2y667VYtav/AExcOJ2x8YEzPF4
-	TKyDaYPA==;
+	bh=C5PyhSBtLGsuIRqq3Wnao3XAIXhZyuUQyTbhMf8dn6A=; b=hfWcETv5rZSXYsR817J9O/qGLH
+	mOKWjJjmnfPthZzYYVACzEyyzasl7t4y+J/BSwjsh63ZRnk42xN1FDqv+MvbxitpuHb6WNMqtcTk7
+	a8Js20TYilKNFzUjz3Bebk9ppvc6C3Y/kfuw2mJifZEytqfoUambMA/zRUkz/2H5J+KHhDclsZWNJ
+	rfvRIcjhr4u43pgQ+XssbkI2h9XtTJ2f7Q/NxwfGoaByFoZLF2/o1SNqdL199BkQ7pBrUvHp0Ra58
+	vBeavEAjcHDOX0PXd5U3TcTrEngheIl2cFmmvwnfI5Vf9D+lUYj4AgX83CazkEyX72jpscthGFhbG
+	EBge9DGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9Rbk-00000006yLX-0rue;
-	Mon, 28 Apr 2025 16:45:28 +0000
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+	id 1u9TWm-00000007GVx-0vVw;
+	Mon, 28 Apr 2025 18:48:28 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9RYa-00000006xzT-28V8
-	for linux-mediatek@lists.infradead.org;
-	Mon, 28 Apr 2025 16:42:13 +0000
-Received: by mail-pj1-x1035.google.com with SMTP id 98e67ed59e1d1-2ff784dc055so4691008a91.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 28 Apr 2025 09:42:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1745858531; x=1746463331; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=5DagT191PUrxqNoIjJ1w3Cfp9IxiWt5tMd8A85d8XbY=;
-        b=Aso/0/Inzf6xFZAS++j1ZvagZiZ27xqCUjRwxreZ0DQnF9JhT7YuwqxF0L1icbfoEx
-         kvczgMB4QgxFJnrCi/2MemWhIS70wRKzAPPrXkP7Dy9pAKSakfHbYRsZ2WyBSqGfaAZw
-         YT9FcfiyW5Jf+uLXVpdg22ROhHWRP3eQ/hbDkW+T/mpsvBiY9K4CD5LgWZQrpDNk6oHJ
-         FrnTjis6vswvkOOQ4wyy8ndgTKzqpqF2MZzp1bM8E0lm84sEJVk5ABxxbrCefCi2HMyw
-         9Ii0pMN9JLMT9x7KkiSm0D6KVLLJ028Bo1KL8QRVl6JbyMTfL4VMx5u311sOtd39zsFv
-         MnHQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745858531; x=1746463331;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=5DagT191PUrxqNoIjJ1w3Cfp9IxiWt5tMd8A85d8XbY=;
-        b=Tw8jtATlDmezQhUIRdsBWcT0iQZi1kp/RPfO/4YNtC4SELKZ7ZMpDtCIZ35TwiPGa1
-         ssOiggsyU4ULSHfNWyFdPYromZJODUklmp1p2d5yxal1iJBgJ2Vb7eh4zAX4MNurvCGj
-         aQDXK05ChMJyB7H4OfEqPrpKBuokC4mVubfb/8vy25vSOTJ2kttWv1nYtZv9aqWpyyG1
-         xoHS4InKua4RBDh4UyGDd5+ZvkrXopk8p63Eettn7oGMBLv7ttqKonoyXaRi4O4O/9Ru
-         HIKrFULSRTeY7ul7LQbilX9Qahl33TV1Cm0M234k5cePlFnXTgmQsjN+UkZY9u8HxCF9
-         wVFg==
-X-Forwarded-Encrypted: i=1; AJvYcCXSX4ndrgWEmCp8i01gWsTSGB+vd9oN2fK980dqr6zsR/c/JhMwuqfcIu0uRws8kMwaWJ1XwgOy6Y80io5WYA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yyrr0X7V2lqflxQUPyZmwVwtpDeDquWGEgY1w/2AiMX8tzwMzCM
-	tkqOGmmn+0idDCGTY3Dr1Zs7vwOMkl/teJo+YYlvvtNcYjCT+Bw5pY+Bww==
-X-Gm-Gg: ASbGncu3UJg0oHFQmRVuICbJ0nOnsw5SUGgTtQWDXoiVoQVhQk5XL8Ko4S7VfkD5pG3
-	7gKZuuYtSBN29ucx3Yibj+H234K4vC6Iv8vxwi6ba05zYtkALUcm8i6Dhp64iHk6mRW8VyjAWLM
-	ajI+qRSxfbLAsNkLIH+4YryyY9MKculeXJJUqdY7xJzy9l4FHwJvsADZrDGtZOusrDYVNoLjPeq
-	QBDhQdj95f8/KCPRQaLVvdeYvkW+rWmwBamGUYq735NymmYl0Riq3vMLi+qHThrkucI7JJ0dFzf
-	3C4Zoty5VKnzpC+AA5Xhe1tDnfgis2pVRqW5KQhz
-X-Google-Smtp-Source: AGHT+IHtkkcAiAjErI22upOMtY/779xLxpGrsL6Tvz8VbAlABPzIvN91V7aqT4IXp3nDp8Jr5JDPQw==
-X-Received: by 2002:a17:90a:be0c:b0:30a:fe:140f with SMTP id 98e67ed59e1d1-30a00fe141bmr10741164a91.28.1745858531367;
-        Mon, 28 Apr 2025 09:42:11 -0700 (PDT)
-Received: from google.com ([2620:15c:9d:2:67d:4372:d1e6:def0])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-309f77371efsm8287434a91.9.2025.04.28.09.42.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Apr 2025 09:42:11 -0700 (PDT)
-Date: Mon, 28 Apr 2025 09:42:08 -0700
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: Mattijs Korpershoek <mkorpershoek@kernel.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	linux-input@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH RESEND] MAINTAINERS: .mailmap: update Mattijs
- Korpershoek's email address
-Message-ID: <aaudepakzqnbbda5vynji77uuxvfmw7e3r5odfqowbtppkokmn@tbymrf3mohrz>
-References: <20250428-keypad-maintainers-v1-1-4e9c4afba415@kernel.org>
+	id 1u9TUn-00000007GO1-30OV;
+	Mon, 28 Apr 2025 18:46:26 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id B213F5C5B4C;
+	Mon, 28 Apr 2025 18:44:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D976EC4CEE4;
+	Mon, 28 Apr 2025 18:46:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1745865984;
+	bh=eg2rhi0L3VMr8m4UZ0QPZtf2aVXg+cv9p7DYcqzOc+E=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=nwQ/uJirTeuEwbzEq35HzL0lhukH2fGVnWgA0xvyKMAKApCs7eQKnUgIHU7VWTM1z
+	 Z7clnXZlmMDwtZVmyO5DHHqq9YcbhMqttevow3Q+agRCh5lsKO3u8mw3q9eYpJs7/1
+	 onMgQ28y7+7Un/zt0I1LGwFSuAJ8nYmQnyBtVDbc37L/ZwKqJgqCfzXjPhtarXMU7+
+	 4EVngi8i1xpiiQy5R41NB50pKGpWYG52jGgdB+rn+IHxIXamDzJF8yp1C9M8NNeuJP
+	 3OOwNXp441BywuQ9SVRWqe+AvMBIvUUX4Km14gQ6g8GwKPkwAX9VC36pxB0ynHFKW3
+	 oKyMJRYdrFMdQ==
+Date: Mon, 28 Apr 2025 19:46:19 +0100
+From: Simon Horman <horms@kernel.org>
+To: Kuniyuki Iwashima <kuniyu@amazon.com>
+Cc: shiming.cheng@mediatek.com, angelogioacchino.delregno@collabora.com,
+	davem@davemloft.net, dsahern@kernel.org, edumazet@google.com,
+	jibin.zhang@mediatek.com, kuba@kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+	netdev@vger.kernel.org, pabeni@redhat.com
+Subject: Re: [PATCH v2] net: use inet_twsk_put() when sk_state is
+ TCP_TIME_WAIT
+Message-ID: <20250428184619.GH3339421@horms.kernel.org>
+References: <20250425123354.29254-1-shiming.cheng@mediatek.com>
+ <20250425203624.43634-1-kuniyu@amazon.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250428-keypad-maintainers-v1-1-4e9c4afba415@kernel.org>
+In-Reply-To: <20250425203624.43634-1-kuniyu@amazon.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250428_094212_544965_1DD5C5E9 
-X-CRM114-Status: UNSURE (   6.93  )
+X-CRM114-CacheID: sfid-20250428_114625_811968_614CDD96 
+X-CRM114-Status: UNSURE (   9.17  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -98,13 +77,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 28, 2025 at 10:40:17AM +0200, Mattijs Korpershoek wrote:
-> Update Mattijs Korpershoek's email address to @kernel.org.
+On Fri, Apr 25, 2025 at 01:34:08PM -0700, Kuniyuki Iwashima wrote:
+
+...
+
+> From: Shiming Cheng <shiming.cheng@mediatek.com>
+> Date: Fri, 25 Apr 2025 20:33:48 +0800
+> > From: Jibin Zhang <jibin.zhang@mediatek.com>
+
+...
+
+
+> > Signed-off-by: Jibin Zhang <jibin.zhang@mediatek.com>
 > 
-> Signed-off-by: Mattijs Korpershoek <mkorpershoek@kernel.org>
+> I guess the sender's SOB tag is also needed here when the author
+> is different ?
 
-Applied, thank you.
+Yes, I think so too.
 
--- 
-Dmitry
+...
 
