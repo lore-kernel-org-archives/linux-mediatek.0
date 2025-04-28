@@ -4,65 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA639C369D5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Apr 2025 18:48:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9638C369DC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Apr 2025 19:34:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=C5PyhSBtLGsuIRqq3Wnao3XAIXhZyuUQyTbhMf8dn6A=; b=hfWcETv5rZSXYsR817J9O/qGLH
-	mOKWjJjmnfPthZzYYVACzEyyzasl7t4y+J/BSwjsh63ZRnk42xN1FDqv+MvbxitpuHb6WNMqtcTk7
-	a8Js20TYilKNFzUjz3Bebk9ppvc6C3Y/kfuw2mJifZEytqfoUambMA/zRUkz/2H5J+KHhDclsZWNJ
-	rfvRIcjhr4u43pgQ+XssbkI2h9XtTJ2f7Q/NxwfGoaByFoZLF2/o1SNqdL199BkQ7pBrUvHp0Ra58
-	vBeavEAjcHDOX0PXd5U3TcTrEngheIl2cFmmvwnfI5Vf9D+lUYj4AgX83CazkEyX72jpscthGFhbG
-	EBge9DGQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mfzpR+XCt8jA2E6ve9YtKygB0tbO6iFuLJbvzZ6DwIk=; b=FssukADL4JAz21mu1khpwGD4Wn
+	d1mV/IPB1MH/Yrxv7HapSWDMNQLzHLSd2gkDDK+teqg2keJaaK/7Y0KVboxseyNTFKimJRDOxhjpc
+	HICZm2k5WHei8yE5wkGJKj+/Ll5n7nLiARvNvbHlEkanjrR+PJNhvZtVsAxzqBxKsRpRuKEE1SQyX
+	D/xlOoLNkvpTw7azJ/dGDtas7xvFNlUiHZ7rXCy8d9HH9gzrsr6y/Xv1P/F18z7n0+07xP8xJyj8y
+	aNEDMCGCbzPkI/1906+hFWw02Ogxrlc1wYbTB4ef3vmMvmoKu1hqo7dguPjuvgRsiMotZ98A+8AXe
+	hjTSQABA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9TWm-00000007GVx-0vVw;
-	Mon, 28 Apr 2025 18:48:28 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1u9UFj-00000007M3k-2724;
+	Mon, 28 Apr 2025 19:34:55 +0000
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9TUn-00000007GO1-30OV;
-	Mon, 28 Apr 2025 18:46:26 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B213F5C5B4C;
-	Mon, 28 Apr 2025 18:44:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D976EC4CEE4;
-	Mon, 28 Apr 2025 18:46:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1745865984;
-	bh=eg2rhi0L3VMr8m4UZ0QPZtf2aVXg+cv9p7DYcqzOc+E=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=nwQ/uJirTeuEwbzEq35HzL0lhukH2fGVnWgA0xvyKMAKApCs7eQKnUgIHU7VWTM1z
-	 Z7clnXZlmMDwtZVmyO5DHHqq9YcbhMqttevow3Q+agRCh5lsKO3u8mw3q9eYpJs7/1
-	 onMgQ28y7+7Un/zt0I1LGwFSuAJ8nYmQnyBtVDbc37L/ZwKqJgqCfzXjPhtarXMU7+
-	 4EVngi8i1xpiiQy5R41NB50pKGpWYG52jGgdB+rn+IHxIXamDzJF8yp1C9M8NNeuJP
-	 3OOwNXp441BywuQ9SVRWqe+AvMBIvUUX4Km14gQ6g8GwKPkwAX9VC36pxB0ynHFKW3
-	 oKyMJRYdrFMdQ==
-Date: Mon, 28 Apr 2025 19:46:19 +0100
-From: Simon Horman <horms@kernel.org>
-To: Kuniyuki Iwashima <kuniyu@amazon.com>
-Cc: shiming.cheng@mediatek.com, angelogioacchino.delregno@collabora.com,
-	davem@davemloft.net, dsahern@kernel.org, edumazet@google.com,
-	jibin.zhang@mediatek.com, kuba@kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
-	netdev@vger.kernel.org, pabeni@redhat.com
-Subject: Re: [PATCH v2] net: use inet_twsk_put() when sk_state is
- TCP_TIME_WAIT
-Message-ID: <20250428184619.GH3339421@horms.kernel.org>
-References: <20250425123354.29254-1-shiming.cheng@mediatek.com>
- <20250425203624.43634-1-kuniyu@amazon.com>
+	id 1u9UDk-00000007Lod-3oLN
+	for linux-mediatek@lists.infradead.org;
+	Mon, 28 Apr 2025 19:32:54 +0000
+Received: by mail-pf1-x434.google.com with SMTP id d2e1a72fcca58-72d3b48d2ffso4814685b3a.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 28 Apr 2025 12:32:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1745868771; x=1746473571; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=mfzpR+XCt8jA2E6ve9YtKygB0tbO6iFuLJbvzZ6DwIk=;
+        b=YG3pQW6aMH8dUtnuoq9pMf4LCQSYKKZBlSsnc4QXqEBVBiDbPe1D1L6lr1lRiNQaAD
+         kPYCF2BM2akvd7bcOkph2Qyt49R3PYINxX4GU3P+JnJQ88B6jo1NGXPR9FlPFitxMWAg
+         RnOwoSE0WZxyg232Ge0AogF1XXzs8tPnvvOyk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1745868771; x=1746473571;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=mfzpR+XCt8jA2E6ve9YtKygB0tbO6iFuLJbvzZ6DwIk=;
+        b=Xr+/nZjxa0GVSnj0ZzL1avwYpktw0J5eYQRaB1ogTbLjJq2dkN6r6qVYzEKLwNApdD
+         fkBrcBhGP1IUZJYZP3X9I/lHni+ZjcqDmseOFVFICKJEG37FTo/9MaLvV6TWBsCJ2o6a
+         5eVHtFs4lKxVW6ku2xl6OmjFTptGHoywlaf9LOcQh2qFwrbqsyenyOf++k6f4hqVqmHS
+         HM0DM+5ggFZO/TkdjYDYgfBpf675i2FhqmK7MmJ9+IF92T4NbZ/Z2tH/HPhpbUhLFdKO
+         PavFQGqBFxw4avw73n44O/ZvpF/yc2YnTNXS/cTyraZY/Ktko7NsfTgpcPOSF/RhTBM8
+         IVqQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVHXGwPQUMM8dJkcB9X5REnbRodltNdyGQZ40NkF4bZB/92/F4I9efe96/r0oXUTpFSbpdwFOs/Q1B1BSpmKQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxx/OwNL/WwOtI9fRhGNW4KCJ6K3aBOIsdfGGgk4T2y3YtgaBYM
+	YC8yOrUygnMQD9aSOP3Uutyd4y4UNKkwxThrQIhIRs0EcG7hd0tinUeLaRY3bnZTfMu5OlveXRQ
+	=
+X-Gm-Gg: ASbGnct/ObRg07qTbFdrELL66loNRVtSp5uGM9/oQG2B9JLIeNsUrp95BKmeLbLqH4U
+	5R33MI2fYvcMlNY9XiC2MfgacMBSYwvYAezjcsiMtcGV0yBOPJoneAIcIEMLSBhEbp6YQNQoI8c
+	whhFnIYHu3+k3gf5y6sRxxBe/S4WiTAMBw6asvUlNIZUBgaRidUqhwrWqxMTi1jbu+nwpyJe9Hm
+	s3RPE6aCbZTz6FEU7M79fexO6VETZ99mzFAx5QqGHhtcQiYNkuibzHCL/ZCTarRvHo35wWYMRsC
+	0eipDehcPO4v2kjGu+48j/PT8a1vwipraHxYlY3JxGLO3fafq0G0KVVLSEBLhhbBP+NlDQ6tQx0
+	R99EQ+4Qpy1A0w34yErI=
+X-Google-Smtp-Source: AGHT+IGYJhPA1i8ZvxDlPFO0sAtXZ52pxkDfXlcsM0ZsEnniHw2CPC+dOw6a86PLJSotHSN5amNE6g==
+X-Received: by 2002:a05:6a00:ac2:b0:73c:b86:b47f with SMTP id d2e1a72fcca58-73ff7246ffamr14503650b3a.4.1745868771674;
+        Mon, 28 Apr 2025 12:32:51 -0700 (PDT)
+Received: from mail-pg1-f179.google.com (mail-pg1-f179.google.com. [209.85.215.179])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73e25a6a995sm8393862b3a.112.2025.04.28.12.32.51
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 28 Apr 2025 12:32:51 -0700 (PDT)
+Received: by mail-pg1-f179.google.com with SMTP id 41be03b00d2f7-b06e9bcc986so4049116a12.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 28 Apr 2025 12:32:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCW8iu9cVORGocQC5QcMWzKKRq/9Pg377a6ih9oqGHtbelcKzLrIVmDLU4UPJ+/rKSOCcPmzpY4w5h31sksPvg==@lists.infradead.org
+X-Received: by 2002:a17:90b:5490:b0:309:f5c6:4c5c with SMTP id
+ 98e67ed59e1d1-30a01398884mr14674637a91.25.1745868770606; Mon, 28 Apr 2025
+ 12:32:50 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250425203624.43634-1-kuniyu@amazon.com>
+References: <20250421101248.426929-1-wenst@chromium.org> <20250421101248.426929-2-wenst@chromium.org>
+In-Reply-To: <20250421101248.426929-2-wenst@chromium.org>
+From: Doug Anderson <dianders@chromium.org>
+Date: Mon, 28 Apr 2025 12:32:39 -0700
+X-Gmail-Original-Message-ID: <CAD=FV=XLonF5qM+f6diESvnqAHKm4Y7wwPsNssdNqZfkn2OzSw@mail.gmail.com>
+X-Gm-Features: ATxdqUEnTKoRxhC-TaBEXil7UFoCr2GvfRCzsqwspS2g_INzWAwlvG_Di1SAl68
+Message-ID: <CAD=FV=XLonF5qM+f6diESvnqAHKm4Y7wwPsNssdNqZfkn2OzSw@mail.gmail.com>
+Subject: Re: [PATCH v2 1/8] dt-bindings: HID: i2c-hid: elan: Introduce Elan eKTH8D18
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, chrome-platform@lists.linux.dev, 
+	linux-input@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250428_114625_811968_614CDD96 
-X-CRM114-Status: UNSURE (   9.17  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250428_123252_940301_9964BD5C 
+X-CRM114-Status: GOOD (  17.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,23 +111,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 25, 2025 at 01:34:08PM -0700, Kuniyuki Iwashima wrote:
+Hi,
 
-...
+On Mon, Apr 21, 2025 at 3:13=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org> w=
+rote:
+>
+> The Elan eKTH8D18 touchscreen controller is an I2C HID device with a
+> longer boot-up time. Power sequence timing wise it is compatible with
+> the eKTH6A12NAY, with a power-on delay of at least 5ms, 20ms
+> out-of-reset for I2C ack response, and 150ms out-of-reset for I2C HID
+> enumeration, both shorter than what the eKTH6A12NAY requires.
+> Enumeration and subsequent operation follows the I2C HID standard.
+>
+> Add a compatible string for it with the ekth6a12nay one as a fallback.
+> No enum was used as it is rare to actually add new entries. These
+> chips are commonly completely backward compatible, and unless the
+> power sequencing delays change, there is no real effort being made to
+> keep track of new parts, which come out constantly.
+>
+> Also drop the constraints on the I2C address since it's not really
+> part of the binding.
+>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+> Changes since v1:
+> - Reworded commit message
+> - Dropped the enum for the new compatible string entry
+> - Dropped constraint on I2C address completely
+> ---
+>  .../devicetree/bindings/input/elan,ekth6915.yaml     | 12 +++++++-----
+>  1 file changed, 7 insertions(+), 5 deletions(-)
 
-> From: Shiming Cheng <shiming.cheng@mediatek.com>
-> Date: Fri, 25 Apr 2025 20:33:48 +0800
-> > From: Jibin Zhang <jibin.zhang@mediatek.com>
-
-...
-
-
-> > Signed-off-by: Jibin Zhang <jibin.zhang@mediatek.com>
-> 
-> I guess the sender's SOB tag is also needed here when the author
-> is different ?
-
-Yes, I think so too.
-
-...
+Reviewed-by: Douglas Anderson <dianders@chromium.org>
 
