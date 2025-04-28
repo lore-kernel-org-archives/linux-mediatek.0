@@ -4,75 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97377C369DC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Apr 2025 16:07:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 576C0C369DC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Apr 2025 16:21:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=r3PDk0kE6Pq6FLmLOY/JDwc7lEcgFrVSKJD43x+V3Uo=; b=wcNV+zuHiW1N4c+AqRNYj1V5iU
-	w7NENmF/uodQZboGbuIrAy/ckVXMY3O/ZUFqebUZOFjYOCuRR6TvTHo8z5/bYKJiiY/Yp32dRwK3u
-	OOkMXf1nv+jCqburKJtiw1Hf1NhSSUc8E+cZn9aXnRhS/OOLcUWW0xl4DLgMda5IBIlSsH149sX+u
-	wP9AnZrHXg30FpW+4k8bWO/TC8duMDZYg3S0TG3hqP9465R4u6D2RalWS5q0/LidoUURTjFkov3jk
-	9u9Sfs5TrSiTn0/ThXwi8STXkToxHxwG1K4v9M1MNqxXLwtJXbLf9uiALqhLJ7O2by4lvVVQA9NU9
-	58YxPiZg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ozyYaD4uyMvYAeC6ThRYIW6+h6QCpMFE1Z79BTTe4Ys=; b=XFpB0m3eJyBXgZeiUVNUFRhLBJ
+	jheGelnpfi6zjbxNIY3RZKXjOnntTlDag/0C5WZEXLdPXYxtkCZuSbzoXUHw0y0+ZyfE+mmKnNFts
+	Gjlg3reQdx26eb+3mfcj0lDnov6nbkn2vIioVe0QSmhrh1ihwRgi7HNfAlTbj8L0PUZnwUNxK6CDN
+	MEcpNMAEGLkRZ6aDFU4Y3NG25nTXIPp05PdCXXOSvjGUffxTk2P3cZDqalTpnKcigBLNh6mk4y3o1
+	GLxcH1OZAVmzODTXwPdHAFcU6RN3Jv1XE2QV8ceDVaQ+NV6t5Ge0JC7x4QE0SIiM+hOX1QeX3bI26
+	dq3UsToA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9R0W-00000006rK1-2gxW;
-	Mon, 28 Apr 2025 16:07:00 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1u9REl-00000006u7o-1hrl;
+	Mon, 28 Apr 2025 16:21:43 +0000
+Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9QyY-00000006r3q-1DYS;
-	Mon, 28 Apr 2025 16:04:59 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id C134D4A11F;
-	Mon, 28 Apr 2025 16:04:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B6576C4CEE4;
-	Mon, 28 Apr 2025 16:04:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1745856297;
-	bh=7XLdbWmNFskoiToXzoYEkGfsOw/zohiTcP2XkykS74o=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=AM9L7fZuEJv8GJopbMAaCLzul2dtTfFJkqqJ7BqfmbmCyAf10FdcxcWA/Ng3eUspe
-	 UKicT9AHwF0xcV/7M0JEceXTD6wy5YgRoC81Xvjy79aPqtv7WHhmosG1kwNnZj+PLQ
-	 2VPm3GAdNQ/sMv5301JJTyBVGb6HJCDTMgEfBTGBNwTEG1novG/AMwvccQDP+V02UL
-	 6M2s58ruhrpoQeJ4Es/bu5G7f3ZtgwS+SGoA+tcjE4DAcR3OLIp/2evQhbeM4E5aT3
-	 EWlDsmGGqb/fAJ8ea7L7+HLZKI31nwe0JS5bb6+xZWMHe17K24pRXJPO1j7sRq1rPL
-	 i00uL7SUG/KTQ==
-Received: by mail-ed1-f41.google.com with SMTP id 4fb4d7f45d1cf-5f728aeedacso4967240a12.2;
-        Mon, 28 Apr 2025 09:04:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCVxSJRD+JhDzCbQ591THjyZAoP/uifG/8ZBL9l/+ECMFCPtum5Mc1IwNTkPw32Kep5n+lgSFg3A545eVnmZCFKx@lists.infradead.org, AJvYcCXvdCoFivc2V9Gkbpst8y0qnWKQlRbUGs+S/RjGyNRCGsEDHiFq3F5mocszJVXBFOYqniNeIIu4wmEWyQMVW9k=@lists.infradead.org
-X-Gm-Message-State: AOJu0YxpLtYfZ/NzQI9ucSrvkG7VwVFFIFS8xavfc9rmRPgdq15ZvMe/
-	1e1hVINiKLBsMzbx8P9qOPeDcraBePtc+TPZYu2Ca/t+e06w5hAgZgZwCRLgYFIrP12LTf7Rhlp
-	odARk8R9hBVFI4uAZUHfGkdSA/g==
-X-Google-Smtp-Source: AGHT+IHqyjiiOUZc7O0PTXr4PU21+O3T0XNzhaZ1i8yWNd5TokGg/Wq4TNREu/IzrAIDEiBQ7J/8fcTB66uLEb2Z3jg=
-X-Received: by 2002:a05:6402:40c6:b0:5dc:7643:4f3d with SMTP id
- 4fb4d7f45d1cf-5f83809e106mr113428a12.1.1745856296286; Mon, 28 Apr 2025
- 09:04:56 -0700 (PDT)
+	id 1u9REj-00000006u6e-3UPA
+	for linux-mediatek@lists.infradead.org;
+	Mon, 28 Apr 2025 16:21:42 +0000
+Received: by mail-yw1-x112c.google.com with SMTP id 00721157ae682-703cd93820fso43049487b3.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 28 Apr 2025 09:21:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1745857301; x=1746462101; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=ozyYaD4uyMvYAeC6ThRYIW6+h6QCpMFE1Z79BTTe4Ys=;
+        b=MlmTv+8Qjifz7gcNndMWmd/VfUlgHdIWLBbCpo4zA+26beQh6kzVmk5PK81tkhVbOn
+         DiI2I5xAwMQykmWAMatC8HBXnymdVJNHT2Dx0fdzEzgsBCL4bGAxCYcgVtPn1zc26shp
+         vXuq94cmbcJ18N+2j2WYXvE+lwNvxkrmcSoca4VGArTKdiOPD6+IwpMaFPEKpy8fPkuV
+         AWZXOgfLx+kH9haVsgneQydsbzlOCBp0sLMe0F2obI5YVqaVRVPg5bSIe0+FWLSzCzVE
+         CjtEWMHOM6O3ptozfCVy7NDZWGJvxyvgiGNB1NrZ8hJ2cPW/30HJg8WrjSu/2cuDFntn
+         TBAw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1745857301; x=1746462101;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ozyYaD4uyMvYAeC6ThRYIW6+h6QCpMFE1Z79BTTe4Ys=;
+        b=jaUVrNI8WhR0YWBjxkw3FHlhk4wvUGlc31b50J3b5ZirhHGPEQE37fkKdq69HTqhT4
+         ZNv4XiJBOUyTKOUTIuAx5uikz+hCXQVRatGjFhXKc9ozXTLuwwTKpFOCeNClRntvpGa4
+         oWYAGVUf1OX+vzcZwo5Y1ZiCvEdPB5XFtpMYR/1vxR8y1Pmt7B7mCt2Gt7xyYDaGsKPc
+         spUzwfijcx1AaJvKe9l9Ks1TwniRQgqFPJZlugBSrRqUsqViFAlo09ll/wuO+PfeIOWJ
+         UFmdO3D9qTworZoLieowE5r38iYP/C6m50lpndDyn8//8U2PAcoyfi7B+UFqbS3rOrFj
+         NIBA==
+X-Forwarded-Encrypted: i=1; AJvYcCXarHQuQU3bgztaaxw9lRXXmrVgrFuSoV1b4J+b5/3cewIlEJL/jNdDZc1Bh7HRE8LCp7weFHvVNFQGnAUu5g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwlrddbPhwn45NKmik6AHEz0evCEq7cDvzFXAiZ2uzSbUWWGbht
+	hqV/7ttqGNei1C4OSKjVoygjNXivcneiuNS+VzB5BDg66/j/fih+AGNljvBFMjVY8SMjcbUv6J8
+	Hiz7dciEXSbPll3/KzmPXjDLVmYJE6kZtmVfJxg==
+X-Gm-Gg: ASbGncvGYdnnl3hLDSftPcfVUfRGeWitAa0353keREtZP8cEH2oavtJ8WN7HVyDOpV6
+	+z7XIcUjz8f/KezfSAYDWegzfyA9Udpnjd37fxzEKeHtK1F54I72/0V24NiEdI0ktbnHGemW3AG
+	XCLiG/rBAbVrQMiLOwxJ/bDvU=
+X-Google-Smtp-Source: AGHT+IF3Nj6mWpTWBj/+o4tJL25s0CN8hYakvk9PwN70OV0ov5/0UD6xzNyRF97ztJi6m2LHGnOwz76IAO3Cf/tDFG0=
+X-Received: by 2002:a05:690c:7304:b0:708:170c:a699 with SMTP id
+ 00721157ae682-7085f239adamr122430517b3.27.1745857300782; Mon, 28 Apr 2025
+ 09:21:40 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250410144008.475888-1-angelogioacchino.delregno@collabora.com>
- <aAETI0hrOiQZDKh2@8bytes.org> <20250428160227.GA1322286-robh@kernel.org>
-In-Reply-To: <20250428160227.GA1322286-robh@kernel.org>
-From: Rob Herring <robh@kernel.org>
-Date: Mon, 28 Apr 2025 11:04:44 -0500
-X-Gmail-Original-Message-ID: <CAL_Jsq+pE2c3GzdrgRO97Ee=ajOVAMzNtqyujD3PXyNE6Ad9vA@mail.gmail.com>
-X-Gm-Features: ATxdqUHw7IfXnRL7JJPy7HyVs4hLK90IaG__j7ETIyndbfex7BJvjd7AGV1APf0
-Message-ID: <CAL_Jsq+pE2c3GzdrgRO97Ee=ajOVAMzNtqyujD3PXyNE6Ad9vA@mail.gmail.com>
-Subject: Re: [PATCH v1 0/2] MediaTek Dimensity 1200 - Add IOMMU support
-To: Joerg Roedel <joro@8bytes.org>, yong.wu@mediatek.com
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, will@kernel.org, 
-	robin.murphy@arm.com, krzk+dt@kernel.org, conor+dt@kernel.org, 
-	matthias.bgg@gmail.com, iommu@lists.linux.dev, 
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+References: <20250416120245.147951-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250416120245.147951-1-angelogioacchino.delregno@collabora.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Mon, 28 Apr 2025 18:21:05 +0200
+X-Gm-Features: ATxdqUG1v-Vp3M3iAycu00z5_FRl29-cbPTsX6LqWTtDPHUaj3lI0F-RZsKBbmI
+Message-ID: <CAPDyKFrjaEk49O4T1dfaxmA1OSsFaF_iH3U73mq-fWnbBiRaVw@mail.gmail.com>
+Subject: Re: [PATCH] dt-bindings: mmc: mtk-sd: Add support for Dimensity 1200 MT6893
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: chaotian.jing@mediatek.com, robh@kernel.org, krzk+dt@kernel.org, 
+	conor+dt@kernel.org, matthias.bgg@gmail.com, wenbin.mei@mediatek.com, 
+	linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, 
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	kernel@collabora.com
+	linux-mediatek@lists.infradead.org, kernel@collabora.com
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250428_090458_353222_CBDC954E 
-X-CRM114-Status: GOOD (  15.56  )
+X-CRM114-CacheID: sfid-20250428_092141_871194_A03EBADB 
+X-CRM114-Status: GOOD (  14.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,34 +95,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 28, 2025 at 11:02=E2=80=AFAM Rob Herring <robh@kernel.org> wrot=
-e:
+On Wed, 16 Apr 2025 at 14:02, AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
 >
-> On Thu, Apr 17, 2025 at 04:41:39PM +0200, Joerg Roedel wrote:
-> > On Thu, Apr 10, 2025 at 04:40:06PM +0200, AngeloGioacchino Del Regno wr=
-ote:
-> > > In preparation for adding basic support for the OnePlus Nord 2 5G
-> > > DN2103 smartphone, this series adds support for the IOMMU found in
-> > > the MediaTek Dimensity 1200 (MT6893) SoC.
-> > >
-> > > AngeloGioacchino Del Regno (2):
-> > >   dt-bindings: iommu: mediatek: Add binding for MT6893 MM IOMMU
-> > >   iommu/mediatek: Add support for Dimensity 1200 MT6893 MM IOMMU
-> > >
-> > >  .../bindings/iommu/mediatek,iommu.yaml        |   4 +
-> > >  drivers/iommu/mtk_iommu.c                     |  37 ++-
-> > >  .../memory/mediatek,mt6893-memory-port.h      | 288 ++++++++++++++++=
-++
-> > >  3 files changed, 318 insertions(+), 11 deletions(-)
-> > >  create mode 100644 include/dt-bindings/memory/mediatek,mt6893-memory=
--port.h
-> >
-> > Applied, thanks.
+> Add a compatible for the MediaTek Dimensity 1200 (MT6893) SoC.
+> All of the MMC/SD controllers in this chip are compatible with
+> the ones found in MT8183, but do also make use of an optional
+> crypto clock when enabling HW disk encryption.
 >
-> It looks like you missed the binding change for this.
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Actually, upon closer look, the driver's compatible string has a typo.
-The period should be a comma.
+Applied for next, thanks!
 
-Rob
+Kind regards
+Uffe
+
+
+> ---
+>  Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 2 ++
+>  1 file changed, 2 insertions(+)
+>
+> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> index 0debccbd6519..6dd26ad31491 100644
+> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> @@ -32,6 +32,7 @@ properties:
+>            - const: mediatek,mt2701-mmc
+>        - items:
+>            - enum:
+> +              - mediatek,mt6893-mmc
+>                - mediatek,mt8186-mmc
+>                - mediatek,mt8188-mmc
+>                - mediatek,mt8192-mmc
+> @@ -299,6 +300,7 @@ allOf:
+>        properties:
+>          compatible:
+>            enum:
+> +            - mediatek,mt6893-mmc
+>              - mediatek,mt8186-mmc
+>              - mediatek,mt8188-mmc
+>              - mediatek,mt8195-mmc
+> --
+> 2.49.0
+>
 
