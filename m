@@ -4,83 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 576C0C369DC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Apr 2025 16:21:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18593C369D5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Apr 2025 16:31:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ozyYaD4uyMvYAeC6ThRYIW6+h6QCpMFE1Z79BTTe4Ys=; b=XFpB0m3eJyBXgZeiUVNUFRhLBJ
-	jheGelnpfi6zjbxNIY3RZKXjOnntTlDag/0C5WZEXLdPXYxtkCZuSbzoXUHw0y0+ZyfE+mmKnNFts
-	Gjlg3reQdx26eb+3mfcj0lDnov6nbkn2vIioVe0QSmhrh1ihwRgi7HNfAlTbj8L0PUZnwUNxK6CDN
-	MEcpNMAEGLkRZ6aDFU4Y3NG25nTXIPp05PdCXXOSvjGUffxTk2P3cZDqalTpnKcigBLNh6mk4y3o1
-	GLxcH1OZAVmzODTXwPdHAFcU6RN3Jv1XE2QV8ceDVaQ+NV6t5Ge0JC7x4QE0SIiM+hOX1QeX3bI26
-	dq3UsToA==;
+	bh=XV4yjXWpsfgvi2gIF5WipGrZ8nMjBf4R4GhF3QGKVo4=; b=mfpuyipGME/55aM/h+Mgh9zz5U
+	Kfrf0PuzNoQHRd+L4EI+mCwOvpNVF3rcB5L6dJdYbWOUHS+S7rH1G3zRK5q8/jy0t5AZkApFgTlHb
+	nHrZyOWbkNxik0zMxg3KadHm/Se9YB3CBeGZ5liZ9g0eMLMjDWIWGfPxTcpH3rGnYWTflmJe7sGPx
+	6W2X3V6ozeVlK8TzFWVeehPCUBc8jXFpA8BVq8Gj/Xl3YaOh8IplZHzSSPlYWZ9y/5VQZTL9jBa2s
+	2aKRsvLY3Mmuubn7/1ebUE2qYEHicFB8eD/R1CgTwZx2N3fi5vqoFpxbLFITicikIex/J3RNmhNnY
+	qcQw44VQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9REl-00000006u7o-1hrl;
-	Mon, 28 Apr 2025 16:21:43 +0000
-Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
+	id 1u9ROX-00000006wTu-48wa;
+	Mon, 28 Apr 2025 16:31:49 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9REj-00000006u6e-3UPA
+	id 1u9RJA-00000006vU6-384k
 	for linux-mediatek@lists.infradead.org;
-	Mon, 28 Apr 2025 16:21:42 +0000
-Received: by mail-yw1-x112c.google.com with SMTP id 00721157ae682-703cd93820fso43049487b3.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 28 Apr 2025 09:21:41 -0700 (PDT)
+	Mon, 28 Apr 2025 16:26:19 +0000
+Received: by mail-wm1-x335.google.com with SMTP id 5b1f17b1804b1-43cfa7e7f54so33715125e9.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 28 Apr 2025 09:26:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1745857301; x=1746462101; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=ozyYaD4uyMvYAeC6ThRYIW6+h6QCpMFE1Z79BTTe4Ys=;
-        b=MlmTv+8Qjifz7gcNndMWmd/VfUlgHdIWLBbCpo4zA+26beQh6kzVmk5PK81tkhVbOn
-         DiI2I5xAwMQykmWAMatC8HBXnymdVJNHT2Dx0fdzEzgsBCL4bGAxCYcgVtPn1zc26shp
-         vXuq94cmbcJ18N+2j2WYXvE+lwNvxkrmcSoca4VGArTKdiOPD6+IwpMaFPEKpy8fPkuV
-         AWZXOgfLx+kH9haVsgneQydsbzlOCBp0sLMe0F2obI5YVqaVRVPg5bSIe0+FWLSzCzVE
-         CjtEWMHOM6O3ptozfCVy7NDZWGJvxyvgiGNB1NrZ8hJ2cPW/30HJg8WrjSu/2cuDFntn
-         TBAw==
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1745857575; x=1746462375; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=XV4yjXWpsfgvi2gIF5WipGrZ8nMjBf4R4GhF3QGKVo4=;
+        b=fuaCuTozgB7TVpMX+PiP+RXvLHM2FiZaymVJj40U/ZOSBTciB+0oKgavSaUE7zoCBU
+         HtLXWZBKXILJhO9XdV9u1raHO2tcQO2Ovyqro8cCDBf9u587uTxPB/57p09z5MDXCdDx
+         EsTIrWnK/5nh+DH64ULA3qpNG1FQLESCSNohgSYR1aXn5h/16/8n22dAYWpai5YjHfKI
+         /6ueXyCj39q6MDKVocC/J5FMR25ZnvNVx4V4DeSI5rqOCfK8lYvwwdnXFONVcTx2o6uW
+         9JlbibCW+4jerhZxBBpbrUxUjTDrVMdhGQKghMxysVSHf41DgdexJSQtWtgxnPv8EOsX
+         ceyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745857301; x=1746462101;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ozyYaD4uyMvYAeC6ThRYIW6+h6QCpMFE1Z79BTTe4Ys=;
-        b=jaUVrNI8WhR0YWBjxkw3FHlhk4wvUGlc31b50J3b5ZirhHGPEQE37fkKdq69HTqhT4
-         ZNv4XiJBOUyTKOUTIuAx5uikz+hCXQVRatGjFhXKc9ozXTLuwwTKpFOCeNClRntvpGa4
-         oWYAGVUf1OX+vzcZwo5Y1ZiCvEdPB5XFtpMYR/1vxR8y1Pmt7B7mCt2Gt7xyYDaGsKPc
-         spUzwfijcx1AaJvKe9l9Ks1TwniRQgqFPJZlugBSrRqUsqViFAlo09ll/wuO+PfeIOWJ
-         UFmdO3D9qTworZoLieowE5r38iYP/C6m50lpndDyn8//8U2PAcoyfi7B+UFqbS3rOrFj
-         NIBA==
-X-Forwarded-Encrypted: i=1; AJvYcCXarHQuQU3bgztaaxw9lRXXmrVgrFuSoV1b4J+b5/3cewIlEJL/jNdDZc1Bh7HRE8LCp7weFHvVNFQGnAUu5g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwlrddbPhwn45NKmik6AHEz0evCEq7cDvzFXAiZ2uzSbUWWGbht
-	hqV/7ttqGNei1C4OSKjVoygjNXivcneiuNS+VzB5BDg66/j/fih+AGNljvBFMjVY8SMjcbUv6J8
-	Hiz7dciEXSbPll3/KzmPXjDLVmYJE6kZtmVfJxg==
-X-Gm-Gg: ASbGncvGYdnnl3hLDSftPcfVUfRGeWitAa0353keREtZP8cEH2oavtJ8WN7HVyDOpV6
-	+z7XIcUjz8f/KezfSAYDWegzfyA9Udpnjd37fxzEKeHtK1F54I72/0V24NiEdI0ktbnHGemW3AG
-	XCLiG/rBAbVrQMiLOwxJ/bDvU=
-X-Google-Smtp-Source: AGHT+IF3Nj6mWpTWBj/+o4tJL25s0CN8hYakvk9PwN70OV0ov5/0UD6xzNyRF97ztJi6m2LHGnOwz76IAO3Cf/tDFG0=
-X-Received: by 2002:a05:690c:7304:b0:708:170c:a699 with SMTP id
- 00721157ae682-7085f239adamr122430517b3.27.1745857300782; Mon, 28 Apr 2025
- 09:21:40 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1745857575; x=1746462375;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=XV4yjXWpsfgvi2gIF5WipGrZ8nMjBf4R4GhF3QGKVo4=;
+        b=EuPprj+FVtgzdjK9kXDh1zna8u5drW/OQDaLai8PP64Sdr/njdiFKWnVjXADcWtaVe
+         SDixVVRnj/SpICfdQYynFVifF1ow3/KrMt8s9AsIQJbtdsRcfDCdixYZSY0dva4CdlaJ
+         U4ivlSw9qXqCWJ8WoBQ5TaoO1scRcGQJX4bylm436DM38N/QuRlHtgfcBu8Va11kQ58A
+         1iKtwgVm3WyORTWPt5CG9mJ9zmb5NYYwOkkRDMTJk80nSEyWvUYftlVFP1nd70CD5YpT
+         R/FQCfAX4Z24uVv0BUcat4KRjKjR8SHNWXZrrFCvtqmXZ22K9urtt545W7lUPhfzj7mw
+         wLTw==
+X-Forwarded-Encrypted: i=1; AJvYcCWDal6ms3etRUOLxtxUzoWivl3CrA/v26zNIurKAiDYAR5cFctY91Itr85TWT+HcPpb3Yd8PC+CMp4LbXM2LQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywhs7ScrNl/D34XpuA4vaGBQ5e1B4b8z8mf1RM/wdqBZOFdYcRw
+	Wbck875EkuxErg5qNohGiu+wfe0rhUeJI0e85o99WK2fslfMrngpg1e2sO/VjKs=
+X-Gm-Gg: ASbGnctVEIn6xjON2rIk5bHVQEw8dvzqS1wvQE45+MfulAxZqejsgKcDuVMgQ9v80XN
+	tZygtgXz1T9QJbWvnYuoc9rIDFQxm91R/t/4jYVE3ynJ9iZO7CtgF39NuEayvksG679BxpQKZ+G
+	ymi68SCD5vjMRncIyzOfdqHusEQA8QLNNnMwiyveg2EMqs20RudvWABJhf2jDi73KgpXWpnYAyZ
+	5okVmCVKidsN9zA68lbAiTR2xD/8yqelZJ3yyLdZ0Algch5r6aLfKIrPYA6Y0gmp6YF3yIidqV7
+	V5jOdDmjjrS9L/xNFapgFcjwx8IxToh6eSqu4WkMovvHTf+3XvrjRZHrCuqo8PVjXmu2f+gzt39
+	8QC6Gmn4=
+X-Google-Smtp-Source: AGHT+IEP8H3aiAFda5s5dKpOrFeQRMJEIdcZabiUZJB78eZVPzFrS+hWt+HhXg2/aWcVvb4/lTgz0g==
+X-Received: by 2002:a05:600c:55c7:b0:43b:4829:8067 with SMTP id 5b1f17b1804b1-4409c4615e0mr119997455e9.6.1745857574733;
+        Mon, 28 Apr 2025 09:26:14 -0700 (PDT)
+Received: from localhost (p200300f65f00780800000000000001b9.dip0.t-ipconnect.de. [2003:f6:5f00:7808::1b9])
+        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-440a5310a8fsm131672255e9.22.2025.04.28.09.26.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 28 Apr 2025 09:26:14 -0700 (PDT)
+Date: Mon, 28 Apr 2025 18:26:12 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
+To: Alexandre Mergnat <amergnat@baylibre.com>
+Cc: Eddie Huang <eddie.huang@mediatek.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-rtc@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] rtc: mt6359: Add mt6357 support
+Message-ID: <darxi3ojg6c6uhzyzb3224sb4lmpqcwx72pvoaam5qn5b6v5du@36zqss6i46ig>
+References: <20250428-rtc-mt6357-v1-1-31f673b0a723@baylibre.com>
 MIME-Version: 1.0
-References: <20250416120245.147951-1-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20250416120245.147951-1-angelogioacchino.delregno@collabora.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Mon, 28 Apr 2025 18:21:05 +0200
-X-Gm-Features: ATxdqUG1v-Vp3M3iAycu00z5_FRl29-cbPTsX6LqWTtDPHUaj3lI0F-RZsKBbmI
-Message-ID: <CAPDyKFrjaEk49O4T1dfaxmA1OSsFaF_iH3U73mq-fWnbBiRaVw@mail.gmail.com>
-Subject: Re: [PATCH] dt-bindings: mmc: mtk-sd: Add support for Dimensity 1200 MT6893
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chaotian.jing@mediatek.com, robh@kernel.org, krzk+dt@kernel.org, 
-	conor+dt@kernel.org, matthias.bgg@gmail.com, wenbin.mei@mediatek.com, 
-	linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, kernel@collabora.com
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="xvyefmwg7jcr7kfx"
+Content-Disposition: inline
+In-Reply-To: <20250428-rtc-mt6357-v1-1-31f673b0a723@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250428_092141_871194_A03EBADB 
-X-CRM114-Status: GOOD (  14.81  )
+X-CRM114-CacheID: sfid-20250428_092616_854563_A17A066B 
+X-CRM114-Status: GOOD (  11.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,47 +101,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 16 Apr 2025 at 14:02, AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Add a compatible for the MediaTek Dimensity 1200 (MT6893) SoC.
-> All of the MMC/SD controllers in this chip are compatible with
-> the ones found in MT8183, but do also make use of an optional
-> crypto clock when enabling HW disk encryption.
->
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Applied for next, thanks!
+--xvyefmwg7jcr7kfx
+Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH] rtc: mt6359: Add mt6357 support
+MIME-Version: 1.0
 
-Kind regards
-Uffe
+On Mon, Apr 28, 2025 at 04:29:55PM +0200, Alexandre Mergnat wrote:
+> The MT6357 PMIC contains the same RTC as MT6358 which allows to add
+> support for it trivially by just complementing the list of compatibles.
+>=20
+> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 
+Acked-by: Uwe Kleine-K=F6nig <u.kleine-koenig@baylibre.com>
+Tested-by: Uwe Kleine-K=F6nig <u.kleine-koenig@baylibre.com>
 
-> ---
->  Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 2 ++
->  1 file changed, 2 insertions(+)
->
-> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> index 0debccbd6519..6dd26ad31491 100644
-> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-> @@ -32,6 +32,7 @@ properties:
->            - const: mediatek,mt2701-mmc
->        - items:
->            - enum:
-> +              - mediatek,mt6893-mmc
->                - mediatek,mt8186-mmc
->                - mediatek,mt8188-mmc
->                - mediatek,mt8192-mmc
-> @@ -299,6 +300,7 @@ allOf:
->        properties:
->          compatible:
->            enum:
-> +            - mediatek,mt6893-mmc
->              - mediatek,mt8186-mmc
->              - mediatek,mt8188-mmc
->              - mediatek,mt8195-mmc
-> --
-> 2.49.0
->
+Thanks a lot!
+
+Uwe
+
+--xvyefmwg7jcr7kfx
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmgPrCIACgkQj4D7WH0S
+/k5uzggAkQji5a5MAOBNxwmFwsge9xxOpHA0xqM5HwRUZBCYeca34VWPG6n6U0GA
+bVXWEN1KWJBrgdsv/505roy1O5c3HcRRroWFLF4euSrMAl7kKfPvKbCb92TMLNwt
+KO/BFcz7rRZ60I3Re6vmSTR+tW8915S5vXOV6PNh/YgvNMCnGCtIH2lCzdE8dc49
+F2tW/utynBHpBiUnDE0UgFr18FyM3PQtpSCJWVpUaGwp54yVfozTDv19k4p9e4sP
+XdJBBDNhi8yhT/855addjBUKSFWAW7cxCx64lq7Agwx7yZMcaaoEgdEOq75R+8Lg
+SZ4wlhsxQ3BXN7P43l5g6dm94TzLZA==
+=TwLE
+-----END PGP SIGNATURE-----
+
+--xvyefmwg7jcr7kfx--
 
