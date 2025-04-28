@@ -4,65 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9280C36005
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Apr 2025 07:07:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3D9CC369D3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Apr 2025 07:43:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QcR4jgsUgO9y4hZfM1aV9dZtN9n3YnM7f2ewmOGhJn4=; b=VxdGtR3Gn7/eIxWeNQrblkMb4Z
-	3Jl7IRVPKuaAlf3mTmqYMS3cB3q2GHyZwmkimVr2DlfPt4OA/lMN7NUwi5u6oCALC/KzGi0R/79HL
-	2VF1i/jw3L4pXGF3PD4VJk/MtX27VkFT0ZHUWvlC6ab23SDkdgJBYIvaaF6EwXcoy7/Zv5IeJYxg8
-	JfoqYkvMpHFOBudTJ1xFpExAyLEBksQMCtK77E9o/q1eKfpBk+ZzbYS//c2lPZBM+Cwy/SeGj7jLT
-	jpjQBV1nz36eaLIP2qTD3GdywzNjOn53qMHrU0mAYSRkoIg0p0iLKd2Hsl4sW2AW/p6+ngq28g2GH
-	cJjUBy4w==;
+	bh=RlkfpiiiIXxsB3aodHr1+NjmmokSlAI7VNh135fP0KE=; b=0Fc/vfICb05JANFU9cv2Kn+Of0
+	bU8LFR4EzbjVcxdmFF/Path59tw1K0xdqMs21PdLD9nOKwX2Ct3wmmqVmKJpDcw2/2JXICZ/mJjCu
+	yrXGMFY7XvmOao0MHHePTXLOj+9t++ptEjSOtufFlSTowbXHD1qwnCLzNfhCljU6YFFp7q6S8yOWv
+	fzeZHUX392y8kMU/K62mNnqbKCyBRjjL3f2v+SfsG7s/6Y8TJoZQlmdEIwTl1q+wg5ojfphI3HD/o
+	+VgmmuTfMyXLqUuM4wQ8m4GYkxGvQ3fcyERdN01bHdHQMRjAxoIU5F22PYTcndbThoEhd/gw7LqSF
+	AWnMqXMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9Iac-00000005C3D-43rF;
-	Mon, 28 Apr 2025 07:07:42 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1u9J9b-00000005Hzo-3fTs;
+	Mon, 28 Apr 2025 07:43:51 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9IXf-00000005BWE-2ZHD;
-	Mon, 28 Apr 2025 07:04:40 +0000
+	id 1u9Iqy-00000005EsG-1LOD;
+	Mon, 28 Apr 2025 07:24:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=RlkfpiiiIXxsB3aodHr1+NjmmokSlAI7VNh135fP0KE=; b=aJTHGXE4LofHmKaPAdLB7nlm/o
+	TcXjeXhWs+DfeN+y7FFetR9wEfrvF2MkWEbn0pV5dvAqRQPLr2nDH9t1H2Rnw5pPp0Qu850A3NJ+D
+	gi0VX6Y3g1ouu/xwD4PxXJSK37eL2rl+d9HaAvbO49swYc8z/LZLlinhBcVYGHK+Gd+AehLINnE/h
+	yV+qS1MyFcmAzWpGzAeOTcZG6htm546lX6um0givS4rXYPwy7cN1xbr57ssU6OJa6oytEDBEa74lq
+	jutK7XCuDnkFM4Q/SX/cvdPTcoiIF3YdXPsdhoyKxiSd2/DR+G+nFKjkDB+YX8X1dNwIJnyfxolFf
+	CKgZX7/w==;
+Received: from sea.source.kernel.org ([172.234.252.31])
+	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1u9Iqv-0000000Ca1O-0t9z;
+	Mon, 28 Apr 2025 07:24:35 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id F1694A49DA0;
-	Mon, 28 Apr 2025 06:59:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E1B8CC4CEE4;
-	Mon, 28 Apr 2025 07:04:37 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 183FF4361F;
+	Mon, 28 Apr 2025 07:24:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 67F53C4CEE4;
+	Mon, 28 Apr 2025 07:24:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1745823878;
-	bh=ksWJoUKCRMosr0m1b32vuD5ejeinFrZWyYqhNBswWbg=;
+	s=k20201202; t=1745825070;
+	bh=l2Q0gVsxUqyisBJ2iI60NbNxaAxhgA/lnFVxrp9bRkQ=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=c/xoAUJ4LZPVh5VizqyD3gbO2s09ZDqU1wPh19+oMmyWWojlL8mKFDkxa+Q15oMeI
-	 L1dEd/V0AiS3KoRjxjxup80+QASz5RbQWHuKcFoi4bLqYFWwDH5PX7wK6I4RmdH0f+
-	 fip6+xAr9ioYGWoHoxyuEQYI8GDDSY2zFzrm41Kskh77Eyw9l9g+iVZpQn6QvMtUk0
-	 fiujIG4CskPuW5SX8Af/PcxP/h92disrCm/HeFOXwPrO64zDCQjOTtNEE9sgTb02cx
-	 bTKhfx0BPxA+F5QMF6Kz5iF8GnoJOJsC0cx1mRA52jWTK2VblPZ9jLCHz3KsjPvls/
-	 oxUWl/VMDOeeg==
-Date: Mon, 28 Apr 2025 09:04:35 +0200
+	b=l8mUjBEX3qghyYxxSLaMxhfEAUelgqIa9poC9QElj8JHQ+ydGZJfRC4p7TfqmBb0N
+	 o1/MTx3M6+coi8AxWIslo93Bb66PERi7D9k44xGPLZflp8SD5SWrvyMFBXbGk+WCJs
+	 5MmxyH+s+Dzdhr8pi3xbMM98IsTSVDLXUm7vGUiTHxrZJhb6++yPoRHTWhNKadFQdS
+	 c9Vm3ENcA8+LgKdrPlT6Lk3wnWvvd2XrrkS/oLPGvot1Fy/zIfXyG/2SuSpCDzxvQ/
+	 c3bXW3WNYvT8+G456CTP8Zoqd3jY0dFsxdKmFlY+e0uPH/EXcaeAjOH71LillOekLR
+	 kRsa2sUwZednA==
+Date: Mon, 28 Apr 2025 09:24:27 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Kyrie Wu <kyrie.wu@mediatek.com>
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>, 
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v3 01/12] dt-bindings: media: mediatek,jpeg: Add
- mediatek, mt8196-jpgdec compatible
-Message-ID: <20250428-ambitious-deer-of-plenty-2a553a@kuoka>
-References: <20250425085328.16929-1-kyrie.wu@mediatek.com>
- <20250425085328.16929-2-kyrie.wu@mediatek.com>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Jiaxin Yu <jiaxin.yu@mediatek.com>, linux-sound@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Trevor Wu <trevor.wu@mediatek.com>
+Subject: Re: [PATCH v2 01/13] ASoC: dt-bindings: Convert MT8173 AFE binding
+ to dt-schema
+Message-ID: <20250428-remarkable-authentic-mink-74cef6@kuoka>
+References: <20250424102509.1083185-1-wenst@chromium.org>
+ <20250424102509.1083185-2-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20250425085328.16929-2-kyrie.wu@mediatek.com>
+In-Reply-To: <20250424102509.1083185-2-wenst@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250428_000439_707876_82E79730 
-X-CRM114-Status: GOOD (  10.21  )
+X-CRM114-CacheID: sfid-20250428_082433_546621_DE3D39D2 
+X-CRM114-Status: GOOD (  11.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,19 +92,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 25, 2025 at 04:53:17PM GMT, Kyrie Wu wrote:
-> Compared to the previous generation IC, the MT8196 uses SMMU
-> instead of IOMMU and supports features such as dynamic voltage
-> and frequency scaling. Therefore, add "mediatek,mt8196-jpgdec"
-> compatible to the binding document.
+On Thu, Apr 24, 2025 at 06:24:55PM GMT, Chen-Yu Tsai wrote:
+> Convert the MT8173 AFE (audio frontend) binding from text to dt-schema
+> in YAML. "clocks" is added to the list of required properties to match
+> "clock-names". And the example was slightly fixed up in style. Otherwise
+> everything is as before.
 > 
-> Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
+> A contributer and maintainer for a recently added MediaTek audio binding
+> was chosen instead of the original submitter.
+> 
+> Cc: Trevor Wu <trevor.wu@mediatek.com>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+>  .../sound/mediatek,mt8173-afe-pcm.yaml        | 87 +++++++++++++++++++
+>  .../devicetree/bindings/sound/mtk-afe-pcm.txt | 45 ----------
 
-I gave you a link to the exact part of documentation about prefixes to
-read. I do not see improvements, so I do not believe you read it. I could
-imagine people skip reading entire doc (who would listen to the
-reviewer, right?), but if I give direct link to specific chapter and
-still not following it, makes me feel quite dissapointed.
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Best regards,
 Krzysztof
