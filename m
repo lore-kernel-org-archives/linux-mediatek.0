@@ -4,75 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EFF4C369DC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Apr 2025 10:22:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A78E5C369DC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Apr 2025 12:00:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=m019dz0Vu0FhN5Uc/YnLMS0+LpGIsE3NAZfLzWrw9Yo=; b=Of7bZHd57a+J3DnyhF8SB3lL6t
-	bLQfEzLr/fWxrhHuU4bdwZe/H0m2thH51wzkXelPHmBCjUlUY0ka0MPFtU/PRbWXCKvAPMZ92xX5u
-	ctjhg22OLQpyQfPgG8y0Kt+R+ZhGNa2FERvARLKYpIYB3I2gI+YG1hAVoaShTq5J79QgIy3gMBHjk
-	qcw8reCMmmc4+wsBsPSryqigjwgDLVrnn1mtRkvIPUlyVsq4Y+uJeo/rDOUJga1jsRDSRHBQmTEc1
-	TrOAbLywdFG5aeEUYlStn6buQh4LwV8Y2GISiAUkWWJh1sSIB6N22FkTaxBpn2Qn7AP96r+sET/LS
-	b7d1Yn9g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YC2LGGpE70kiPFeCCi72EkYRfCk+pYT/yGe+VdlkBmI=; b=xoZPjQgzCpHrxhCU/Oh5g64Tg/
+	PkGYbIMHfcSmYCqavRpCMLDP8DLLZKfMuCnN8hsNv2vBEQgUzLT1Cu0bmd0H9JQfWFS7RXJe5vB3t
+	s6SQB420JJf09JhEzMByXg1sNMxcHPsU4gUcypXyaBee70L3CUfbQF13pR/kAwvIROUXpyar0027P
+	boFZDCVak9flSZxUbh4zbo85ke5UTQ9fKoVsCCRui+Tuz6GLuHopNt0wmgOnR2+Z4kDp9/xgKp7ez
+	+My9rzmDeTbVL/n16nWtfVqebnsbOyj61YS2eNRuQfxaoCTWloU/AE1tWtXyGfSVKWir7SCpQ3p1E
+	1UIxeubA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9i6V-00000009I4y-168a;
-	Tue, 29 Apr 2025 10:22:19 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1u9jdP-00000009aaz-00h8;
+	Tue, 29 Apr 2025 12:00:23 +0000
+Received: from mail-yb1-f170.google.com ([209.85.219.170])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9i0g-00000009GoM-14y5
-	for linux-mediatek@lists.infradead.org;
-	Tue, 29 Apr 2025 10:16:19 +0000
-X-UUID: f9cadeea24e211f0a2405d5ef59ce188-20250429
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=m019dz0Vu0FhN5Uc/YnLMS0+LpGIsE3NAZfLzWrw9Yo=;
-	b=rtbVFjrZS8JQdht+//s5bJaevxjzbhWosUBfeHpmHhxX74GdsPQSn6hN7UTECyX37Jfhcc/S9ZE0gdz/aW7/SObuL3NYKtlwnngtoaD+BRCLBx8mRIV9dI0M/Oexfp1PbvdawS1CNzH0WLkq/CzDJwTKfPL9+Qvrb2dQRpMJ24g=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:0ac5702c-f77e-4c43-93a2-4198ca845d5f,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:0ef645f,CLOUDID:788cff6f-e08c-41ab-89e8-3ba0a33da853,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: f9cadeea24e211f0a2405d5ef59ce188-20250429
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
-	(envelope-from <jiande.lu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1600488185; Tue, 29 Apr 2025 03:16:12 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Tue, 29 Apr 2025 18:16:09 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Tue, 29 Apr 2025 18:16:09 +0800
-From: Jiande Lu <jiande.lu@mediatek.com>
-To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
-	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Chris Lu <chris.lu@mediatek.com>, Will
- Lee <will-cy.lee@mediatek.com>, SS Wu <ss.wu@mediatek.com>, Steve Lee
-	<steve.lee@mediatek.com>, linux-bluetooth <linux-bluetooth@vger.kernel.org>,
-	linux-kernel <linux-kernel@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Jiande Lu <jiande.lu@mediatek.com>
-Subject: [PATCH v1] Bluetooth: btusb: Add new VID/PID 13d3/3630 for MT7925
-Date: Tue, 29 Apr 2025 18:16:05 +0800
-Message-ID: <20250429101605.2862004-1-jiande.lu@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1u9jbP-00000009aIq-0NE7;
+	Tue, 29 Apr 2025 11:58:20 +0000
+Received: by mail-yb1-f170.google.com with SMTP id 3f1490d57ef6-e6e2971f79fso4564281276.0;
+        Tue, 29 Apr 2025 04:58:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1745927897; x=1746532697; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=YC2LGGpE70kiPFeCCi72EkYRfCk+pYT/yGe+VdlkBmI=;
+        b=BCcw++fGJudhrYs7H0oY4t/SPNNhk+mKuEzOY5QnM6UnwPVPWC/CvvuBktontzFxz7
+         apXnTy5yx6Jc6+BZ78j5YFpJXdJGmecqnOIRHzkg7lPEk9klHgLYfRvuZhGcL84HtXeR
+         i5jQyqv/5vAYNG8yyd988gktebpzPTajy3dKc3z3jVvmUdoNLEL35LAxfMBVr33UHTkG
+         lQP7HGj/tMq0XuB8iDtDiaJrPrNzt/hVZlzZ9jA6N61HlG1yltPqpzXasSANBXKWlCkN
+         fbKsn+hSaMYUTEKT/x8489nDyVfkDridPeUoEdF/Fwt7nlpV5zdp5Y7+mSJtI2rD74Pr
+         aIVQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1745927897; x=1746532697;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=YC2LGGpE70kiPFeCCi72EkYRfCk+pYT/yGe+VdlkBmI=;
+        b=FD6FOWUpSnz3x7oNyxsKVXz2XTvWS5qySWVVmk26bQM5wtMRYIC7Bt/VeNDBv43Bdj
+         FjPQ3r6gu2bUiqBvdGCQJXeNwypOrAhIr3W2goZ5wT9u3DILK1PMmaimDAq1GiDkDjff
+         89zQ88lmp0KzNqDQdp27sXyduY5h84ZyvA+dEyEoLZV7iPIk4oa3JYsSSoOjDGQYtDNa
+         KFhKGC19UUgUXxRm5EiBbiuawKbzoY3CWQYpNWm999U3dUna+EONlWAttu3MZQ2wOEr7
+         uXq4+c6LCJqnsM/Msaqow8j09Xf9zgV4bnuhN1saXoT04oSCsqwaSDbHRlanBf6Md+0o
+         7/8Q==
+X-Forwarded-Encrypted: i=1; AJvYcCV5BMhbVntJKYxZRZcDEU/hw8e31EUQzJGcxg6OYfWvfRq0e0EmI0H/P93KggUDSE7KISn6pN4ireEz@lists.infradead.org, AJvYcCWCX+2NI4tp4jdFXVFnoLLkNZeCUpvMigR4ZX520cCvTsLfhMMZoCF3T+2+kNuu3PXqRjBO/nNj1rvWYpdE9Ld+@lists.infradead.org, AJvYcCX11qCEBPmlJbd427DJNWLaw6e1OoMjd+8uITFlxfWhs+NTArt94bauGKtcMGRHEt+C1R+cYdqvTvYYzxYe2iI=@lists.infradead.org
+X-Gm-Message-State: AOJu0YzL0iz3F4eFClS2by28btPoYwL/oidRwXyPdD1/nzGQbk5Xafel
+	idlERKItvWC1zBpmlvR+saG0ZVLuc089Y7SGUy98mpzvAhI7O7crD+NHSBIBksEWfmLkrMGKSbm
+	DYX56G4C58tKpwRb7eq4TWl2VQTA=
+X-Gm-Gg: ASbGncthGey3N0JGet+8ekA+GkIC0n5BAmLy8CcXvOw23XgZMYvBVOEqWphNnAF4K1R
+	XyeI/3jmhTtrrKam6MKFbDHOoz8I3X7A1tB6xBYncd8IE3V1s19u+MgFfoG2oh4DFDSusUfirSr
+	joVp8v9QLcPh12NcaqACp/fg==
+X-Google-Smtp-Source: AGHT+IFZuUpUcT0FpWh/xFcN7YV8mTmhhmd1TfDP2Xpd6GzqIj7t/GP6ENv//lBM+JolYrLZVqHMwRl7cIw868ZvG+I=
+X-Received: by 2002:a05:6902:2085:b0:e73:9d0:1823 with SMTP id
+ 3f1490d57ef6-e7323472933mr17628295276.47.1745927897185; Tue, 29 Apr 2025
+ 04:58:17 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+References: <20241119093949.3014-1-SkyLake.Huang@mediatek.com>
+ <871pymtab3.fsf@bootlin.com> <c1e2d8ea-1b37-479d-8239-cb9bf0efdcaf@gmail.com> <87bjsfv0x1.fsf@bootlin.com>
+In-Reply-To: <87bjsfv0x1.fsf@bootlin.com>
+From: Chuanhong Guo <gch981213@gmail.com>
+Date: Tue, 29 Apr 2025 19:58:05 +0800
+X-Gm-Features: ATxdqUFw156jElhjP-eZDXnKLbf_YdyLPXPeNQmy3SBNzsMbmjDF-l2toZGqZGM
+Message-ID: <CAJsYDVKiMeYY2rw_BxuW4BAxvMcq5hDwzhiPoAR=tkXzZpRYiw@mail.gmail.com>
+Subject: Re: [PATCH nand/next] mtd: nand: spi: Use write_cache first and then
+ update_cache in write operation
+To: Miquel Raynal <miquel.raynal@bootlin.com>
+Cc: Sky Huang <SkyLake.Huang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, Daniel Golle <daniel@makrotopia.org>, 
+	Chia-Lin Kao <acelan.kao@canonical.com>, Cheng Ming Lin <chengminglin@mxic.com.tw>, 
+	Christophe JAILLET <christophe.jaillet@wanadoo.fr>, Pratyush Yadav <pratyush@kernel.org>, 
+	linux-kernel@vger.kernel.org, linux-mtd@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Steven Liu <Steven.Liu@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250429_031618_465929_889D3175 
-X-CRM114-Status: GOOD (  10.27  )
+X-CRM114-CacheID: sfid-20250429_045819_133153_A6093AA5 
+X-CRM114-Status: GOOD (  34.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,70 +101,133 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add VID 13d3 & PID 3630 for MediaTek MT7925 USB Bluetooth chip.
+Hello, Miquel!
 
-The information in /sys/kernel/debug/usb/devices about the Bluetooth
-device is listed as the below.
+On Tue, Apr 29, 2025 at 4:15=E2=80=AFPM Miquel Raynal <miquel.raynal@bootli=
+n.com> wrote:
+>
+> Hello,
+>
+> On 22/04/2025 at 09:38:26 +08, Chuanhong Guo <gch981213@gmail.com> wrote:
+>
+> > Hello!
+> > =E5=9C=A8 2024/12/5 23:32, Miquel Raynal =E5=86=99=E9=81=93:
+> >> Hello,
+> >> On 19/11/2024 at 17:39:49 +08, Sky Huang <SkyLake.Huang@mediatek.com>
+> >> wrote:
+> >>
+> >>> From: Sky Huang <skylake.huang@mediatek.com>
+> >>>
+> >>> According to discussion with Miquel Raynal <miquel.raynal@bootlin.com=
+>
+> >>> and Chuanhong Guo <gch981213@gmail.com> on FORESEE F35SQA002G patch,
+> >>> Chuanhong recommmends that we can use the following sequence in
+> >>> spinand_write_to_cache_op():
+> >>>
+> >>> x1 mode:
+> >>> 02H(program data load) -> 84H(random program data load) -> 84H ...
+> >>>
+> >>> x4 mode:
+> >>> 32H(program data load x4) -> 34H(random program data load x4) -> 34H =
+...
+> >>>
+> >>> 02H or 32H commands will clear cache buffer on SPI-NAND and load
+> >>> data to it. For those SPI controllers which can't finish transmission
+> >>> in single step, 84H or 34H will be triggered for the rest data.
+> >>>
+> >>> We observe that some current SPI-NANDs, including FORESEE F35SQA001G =
+and
+> >>> F35SQA002G, must use 02H or 32H to reset cache buffer in flash before
+> >>> using 84H or 34H. Or users may encounter program failure issue. This =
+issue
+> >>> is not always reproducible, but it may occur and cause system instabi=
+lity.
+> >>>
+> >>> This sequence should work on all SPI-NANDs nowadays. I also check wit=
+h
+> >>> Foresee that the sequence can solve the above program failure issue.
+> >>>
+> >>> On my test platform (MT7988), SPI driver is drivers/spi/spi-mt65xx.c.
+> >>> And I limit MTK_SPI_IPM_PACKET_SIZE to SZ_1K to simulate lightweight =
+SPI
+> >>> controller which can only transmit 1024 bytes.
+> >>>
+> >>> The test step is the following:
+> >>> - mtd erase /dev/mtd2
+> >>> - dd if=3D/dev/zero bs=3D2048 count=3D1 | tr '\0' '\xA5' > output.bin
+> >>> - mtd write output.bin /dev/mtd2
+> >>>
+> >>> Before applying this patch, write operation uses only 34H(update_cach=
+e):
+> >>> [78.937720] OP code: 0x34, addr val: 0x0, data nbytes: 1020, data 1st=
+ byte: 0xa5
+> >>> [78.945297] OP code: 0x34, addr val: 0x3fc, data nbytes: 1020, data 1=
+st byte: 0xa5
+> >>> [78.954251] OP code: 0x34, addr val: 0x7f8, data nbytes: 72, data 1st=
+ byte: 0xa5
+> >>> [78.962966] OP code: 0x10, addr val: 0x300
+> >>> [78.968816] OP code: 0x34, addr val: 0x0, data nbytes: 1020, data 1st=
+ byte: 0xff
+> >>> [78.977233] OP code: 0x34, addr val: 0x3fc, data nbytes: 1020, data 1=
+st byte: 0xff
+> >>> [78.985124] OP code: 0x34, addr val: 0x7f8, data nbytes: 72, data 1st=
+ byte: 0xff
+> >>> [78.992527] OP code: 0x10, addr val: 0x301
+> >>> [78.996981] OP code: 0x34, addr val: 0x0, data nbytes: 1020, data 1st=
+ byte: 0xff
+> >>> [79.004416] OP code: 0x34, addr val: 0x3fc, data nbytes: 1020, data 1=
+st byte: 0xff
+> >>> [79.012031] OP code: 0x34, addr val: 0x7f8, data nbytes: 72, data 1st=
+ byte: 0xff
+> >>> [79.019435] OP code: 0x10, addr val: 0x302
+> >> I am sorry but above you said that we should not perform:
+> >>      0x32, 0x32, 0x32...
+> >> because the second time it would clear the cache again. And here
+> >> you tell us that actually the core already handles that by performing
+> >> instead:
+> >>      0x34, 0x34, 0x34...
+> >> So what is the problem?
+> >> Or maybe I misunderstood the issue, but I think Chuanhong raised an
+> >> issue that is already solved? Isn't it?
+> >>
+> >
+> > The issue is that the FORESEE NANDs require the first cache writing
+> > instruction to be WRITE_CACHE instead of UPDATE_CACHE. i.e. it needs a
+> > command sequence of:
+> >     0x32, 0x34, 0x34, 0x34...
+>
+> So Foresee NANDs do not support update_cache, why are they advertised in
+> the first place? Could you we have a less impacting solution for the
+> other NANDs?
+>
+> > This patch does exactly that, making the first instruction issued 0x32.
+> > It should be applied to fix the issue above.
+>
+> My understanding is that this is very specific to FORESEE NANDs and you
+> are changing this for all NANDs. I have fears that it will break
+> everywhere else.
 
-T:  Bus=07 Lev=01 Prnt=01 Port=10 Cnt=02 Dev#=  2 Spd=480  MxCh= 0
-D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-P:  Vendor=13d3 ProdID=3630 Rev= 1.00
-S:  Manufacturer=MediaTek Inc.
-S:  Product=Wireless_Device
-S:  SerialNumber=000000000
-C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
-A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
-I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
-E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
-E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
-I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
-E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
+I just checked a few datasheets of SPI-NANDs from
+Toshiba/Winbond/Etron/ESMT/GigaDevice/Macronix.
+All of them specify the programming sequence to be:
+write_enable->write_cache->update_cache if needed->
+program_execute->poll status.
+Some of them mentions that the only difference between write_cache
+and update_cache is whether the page cache is cleared before
+writing (Winbond), while others don't specifically say that.
 
-Signed-off-by: Jiande Lu <jiande.lu@mediatek.com>
----
- drivers/bluetooth/btusb.c | 2 ++
- 1 file changed, 2 insertions(+)
+The original sequence doesn't seem to be following any manufacturers'
+instructions. We just haven't run into any problems until this FORESEE
+one.
 
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 1dddc78e16ad..357b18dae8de 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -721,6 +721,8 @@ static const struct usb_device_id quirks_table[] = {
- 						     BTUSB_WIDEBAND_SPEECH },
- 	{ USB_DEVICE(0x13d3, 0x3628), .driver_info = BTUSB_MEDIATEK |
- 						     BTUSB_WIDEBAND_SPEECH },
-+	{ USB_DEVICE(0x13d3, 0x3630), .driver_info = BTUSB_MEDIATEK |
-+						     BTUSB_WIDEBAND_SPEECH },
- 
- 	/* Additional Realtek 8723AE Bluetooth devices */
- 	{ USB_DEVICE(0x0930, 0x021d), .driver_info = BTUSB_REALTEK },
--- 
-2.45.2
+>
+> Overall I understand the problem, but I disagree with the fix. Could you
+> propose something less impacting as hinted above?
+>
+> Thanks and sorry for the delay.
+> Miqu=C3=A8l
 
+--=20
+Regards,
+Chuanhong Guo
 
