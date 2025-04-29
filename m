@@ -4,100 +4,147 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 864C5C369DC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Apr 2025 08:45:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FE3AC369DC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Apr 2025 09:29:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KyAtXWPUARsz+iDauIm3noZwAgvzeeeL/6Xih7T8GDE=; b=Pwo6IzHr2rfzvJsItZ+GCfGrm2
-	a02hqBXtdYn2zlJ+0FVwgNk5yepDzKA9/VBXhwDj85WnNdHik2wMOGk0F6BJfQRWyWC7yvg2yDR0S
-	m6JcT/7cbvhP/PY0bu0dJ60nrzudlzUwm6PI2uTMsb7LexW621MkGFq4HZMGvgJUfwRsHDo1fgMU5
-	iXOzCWf9l0U8KqbaOi9iajqa1+WyWXNi8mCc0IJoRgWSWvQYmJpWlzRCvGuGmDFQ1advPVCHOk3On
-	q1rvhnqzaUCiL69JNqH8gs/8fPB8Sz37eqgU3qu50mstjihYJNYxmpq+X6d7eyDyqcQA5IRJwKj/Y
-	lfiboMEw==;
+	bh=kdpP6+IZV0QYmrFxTy58B29gyyja9aTG1LwyoYVwA54=; b=mwOro2efv8xmAwG4/sjomu/kNV
+	sCLDc2DiqKfAaNxoTvm8Z3vqLY5IeIeteQdZeMekgKCGMB/k4QLNm0PsXDG/0t4X6pFre0WJFR+/q
+	j1Hh/wSWni4z4frZTwSq/21T0pA8Fhwnx38IvM3tQy9TBLXFOk8HBOTMh7NHCc0K5G0wmyI9TRe72
+	1i4Z+N0cpIVKTX1IfoGXOBXI3Vssp7qOFFYXWWKabishlD6c15Zmu8a3Kjo4+A0uoA5xS5iQ+hylW
+	Q1eXZQNApfZD42A0ILzSdEhl5RlZwF9znG7uoxPF1Qkq3SghwPfkQxRup+Z5TyIchG7U8u+YbtZXt
+	O4wDM1sA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9gat-00000008zCj-1wyZ;
-	Tue, 29 Apr 2025 08:45:35 +0000
-Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
+	id 1u9hHm-000000098oB-2Wr1;
+	Tue, 29 Apr 2025 09:29:54 +0000
+Received: from relay4-d.mail.gandi.net ([2001:4b98:dc4:8::224])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9gWL-00000008yXP-3uzB
-	for linux-mediatek@lists.infradead.org;
-	Tue, 29 Apr 2025 08:40:55 +0000
-Received: by mail-lj1-x22b.google.com with SMTP id 38308e7fff4ca-30ddad694c1so63175121fa.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 29 Apr 2025 01:40:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1745916052; x=1746520852; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=KyAtXWPUARsz+iDauIm3noZwAgvzeeeL/6Xih7T8GDE=;
-        b=AKfDRRjgvVLEd8BjDO8BEft0/sbUc+IYaqPUP1cMuuXzKXB0dFRYFWKbDicFXjlJz1
-         LBU96/EExesDIHuhjZN2s+Ksk9mhBno0rILWjs2TkvzbR45Tc5ujnWTd04+sbVbTqTlp
-         CizMEU0/72KTvShFHYi1EjrW3cvgLsv7ZN3QPFdAUvUu00Gdv8mUvnvmAQ8k8BPJFFDm
-         9gCOwlUf9CyE4wtBrNepGr3gECOKQUgbNOVinIuCfMfT8f+/ZocrfSvljFEt2czU5agH
-         DVtlgZmdyIxEo0jjq+4RjhiksyjmecoShrM7H/UI4C9lQ5BBZmO5qL7eGMV/sCB2+yvB
-         CTxA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745916052; x=1746520852;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=KyAtXWPUARsz+iDauIm3noZwAgvzeeeL/6Xih7T8GDE=;
-        b=lfsRwIfLsOILsZzMv073XEgHhZZYcTtzUTOMyt1+7AjjoXDp9SHtSskT97MiHP3YxH
-         T37t+N6akQzm5xM5Sy6d+N2FQHaiWt2NARDT3OlC4+teHmcoyafBxdB23AY++YzL0SdE
-         n9dAV+JcypItvfX+iGPr6J1NnBcbsZFehMLVU9K6oB6tZ38KnJqXy3Tzl4NQWquXYrhm
-         kcygq8kye1ZzKj7NYNMR2rzyKHoQxYZ484irU6S62TPfpsXWwrPt9CrjXFdWJgYgMA8G
-         3HugMPncGmsG1Vmoqs6WBvSCTdObzlCh13cgjpOMhwYALYWTf38XvPCnix7pkMUwP80Y
-         z0Gg==
-X-Forwarded-Encrypted: i=1; AJvYcCXBSTaWWvjkpMhp8wkVK95Tz4PRHpCFfw3jyy8545HCej8aQQ8ZOATWpHN4V1U2k6SksBTTfHsttXorduAV2g==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxkzlg2DOYubx0y9YLMM5ogFVqtGAS4F4ZDC7+X9L3H6yub7uYd
-	a7Rk6JBQsi5rsmAsaCwAcnC9k0xAQR2b51qj4wQjd1rhaCGb+Bp1GFl2nLfw4pc1VJL8axgwtw6
-	ECkcTT2s545/vBsTVxRxBrkMNSe8iEWIrVgscAg==
-X-Gm-Gg: ASbGncuri/xY34/aMcHkqoNTAcpeksGOEgeJ5mm4kCYKADmrswENNfmXMwHuzQQdZgw
-	vRdtbdBXBTokwANk7DL/LiPU2ANUj29c8Wy0mKjWZZcETjcmEeH9IaziH3EL3xYfpU37jG2A3PX
-	cBxpA2v3uScc3wIVASpp4DKw==
-X-Google-Smtp-Source: AGHT+IEUiqYB296CVrwZ+xxBw7BC+pTcJa/x+6Bu5GNB2EvNhnBwa7BLSUJNRUMp+Ehtf1mLBoE9JSmzpMhMYJBukms=
-X-Received: by 2002:a2e:bc0b:0:b0:30d:894a:a538 with SMTP id
- 38308e7fff4ca-31d34b6c243mr8766341fa.21.1745916052135; Tue, 29 Apr 2025
- 01:40:52 -0700 (PDT)
-MIME-Version: 1.0
+	id 1u9hG1-000000098S6-0sUv;
+	Tue, 29 Apr 2025 09:28:06 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 9DE5D43AD6;
+	Tue, 29 Apr 2025 09:27:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1745918880;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=kdpP6+IZV0QYmrFxTy58B29gyyja9aTG1LwyoYVwA54=;
+	b=b3QffBEWXOkepRbRJBAxG56ebIFGpWNAlbC+KLQo0RM4CJOdHofw9LcRaXOlQzjEbdB3RX
+	Z+03iDitY3AAR93mhf5d6WLE4XuT3QGY7QachEbLrEI4kcECt5/wn0GKM7h1OqhW4SjOpz
+	HOTdVe7S/cZE605Z0+HeFU5eI+Z3o6g8ShHK76B/FqbRAkibTMzruH5CF/IoUuGm4GYVXs
+	sFtz6X9pJP9Yj6BYgD109FXC4ES1/uz4pLgGybsGQHMDOgyJx5zG6q/WG2yh6+/TQM4XDc
+	hqGRyOgKhSdGaqn9GMqCPbl95bREdu4X3Ttbed9zcOzDQJjjJUJriSfQHcCMEg==
+From: Louis Chauvet <louis.chauvet@bootlin.com>
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Jagan Teki <jagan@amarulasolutions.com>, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, 
+ Douglas Anderson <dianders@chromium.org>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>
+Cc: Anusha Srivatsa <asrivats@redhat.com>, 
+ Paul Kocialkowski <paulk@sys-base.io>, Dmitry Baryshkov <lumag@kernel.org>, 
+ Hui Pu <Hui.Pu@gehealthcare.com>, 
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+ dri-devel@lists.freedesktop.org, asahi@lists.linux.dev, 
+ linux-kernel@vger.kernel.org, chrome-platform@lists.linux.dev, 
+ imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+ linux-renesas-soc@vger.kernel.org, platform-driver-x86@vger.kernel.org, 
+ linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
+ freedreno@lists.freedesktop.org, linux-stm32@st-md-mailman.stormreply.com, 
+ Adam Ford <aford173@gmail.com>, Adrien Grassein <adrien.grassein@gmail.com>, 
+ Aleksandr Mishin <amishin@t-argos.ru>, Andy Yan <andy.yan@rock-chips.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Benson Leung <bleung@chromium.org>, Biju Das <biju.das.jz@bp.renesas.com>, 
+ Christoph Fritz <chf.fritz@googlemail.com>, 
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, 
+ Detlev Casanova <detlev.casanova@collabora.com>, 
+ Dharma Balasubiramani <dharma.b@microchip.com>, 
+ Guenter Roeck <groeck@chromium.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Jani Nikula <jani.nikula@intel.com>, Janne Grunau <j@jannau.net>, 
+ Jerome Brunet <jbrunet@baylibre.com>, Jesse Van Gavere <jesseevg@gmail.com>, 
+ Kevin Hilman <khilman@baylibre.com>, 
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
+ Liu Ying <victor.liu@nxp.com>, 
+ Manikandan Muralidharan <manikandan.m@microchip.com>, 
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, Phong LE <ple@baylibre.com>, 
+ Sasha Finkelstein <fnkl.kernel@gmail.com>, 
+ Sugar Zhang <sugar.zhang@rock-chips.com>, 
+ Sui Jingfeng <sui.jingfeng@linux.dev>, 
+ Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, 
+ Vitalii Mordan <mordan@ispras.ru>, 
+ =?utf-8?q?Ilpo_J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>, 
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
+ Hans de Goede <hdegoede@redhat.com>, 
+ =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
+ "Rob Herring (Arm)" <robh@kernel.org>, 
+ Hsin-Te Yuan <yuanhsinte@chromium.org>, 
+ Pin-yen Lin <treapking@chromium.org>, Xin Ji <xji@analogixsemi.com>, 
+ Aradhya Bhatia <a-bhatia1@ti.com>, 
+ Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, Ian Ray <ian.ray@ge.com>, 
+ Martyn Welch <martyn.welch@collabora.co.uk>, 
+ Peter Senna Tschudin <peter.senna@gmail.com>, 
+ Russell King <linux@armlinux.org.uk>, 
+ Herve Codina <herve.codina@bootlin.com>, 
+ Alim Akhtar <alim.akhtar@samsung.com>, Inki Dae <inki.dae@samsung.com>, 
+ Kyungmin Park <kyungmin.park@samsung.com>, 
+ Seung-Woo Kim <sw0312.kim@samsung.com>, 
+ Linus Walleij <linus.walleij@linaro.org>, 
+ Abhinav Kumar <quic_abhinavk@quicinc.com>, 
+ Bjorn Andersson <quic_bjorande@quicinc.com>, 
+ Marijn Suijten <marijn.suijten@somainline.org>, 
+ Rob Clark <robdclark@gmail.com>, Sean Paul <sean@poorly.run>, 
+ Helge Deller <deller@gmx.de>, 
+ Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, 
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Philippe Cornu <philippe.cornu@foss.st.com>, 
+ Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>, 
+ Yannick Fertre <yannick.fertre@foss.st.com>, 
+ =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
+ Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
+ Alain Volmat <alain.volmat@foss.st.com>, 
+ Raphael Gallais-Pou <rgallaispou@gmail.com>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Michal Simek <michal.simek@amd.com>
+In-Reply-To: <20250424-drm-bridge-convert-to-alloc-api-v2-0-8f91a404d86b@bootlin.com>
 References: <20250424-drm-bridge-convert-to-alloc-api-v2-0-8f91a404d86b@bootlin.com>
- <20250424-drm-bridge-convert-to-alloc-api-v2-15-8f91a404d86b@bootlin.com>
-In-Reply-To: <20250424-drm-bridge-convert-to-alloc-api-v2-15-8f91a404d86b@bootlin.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Tue, 29 Apr 2025 10:40:41 +0200
-X-Gm-Features: ATxdqUEhPh2HxY_cKMawBJnfuogL8n7jPhFvg8U9jTR5km8hYrNkb1VPdIYXtGQ
-Message-ID: <CACRpkdZt8zem0hFUiq3-Z1feNZHRh3R=Y0cEtK=pVt=bJ9Qf1g@mail.gmail.com>
-Subject: Re: [PATCH v2 15/34] drm/mcde: convert to devm_drm_bridge_alloc() API
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Jagan Teki <jagan@amarulasolutions.com>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, Douglas Anderson <dianders@chromium.org>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, 
-	Anusha Srivatsa <asrivats@redhat.com>, Paul Kocialkowski <paulk@sys-base.io>, 
-	Dmitry Baryshkov <lumag@kernel.org>, Hui Pu <Hui.Pu@gehealthcare.com>, 
-	Thomas Petazzoni <thomas.petazzoni@bootlin.com>, dri-devel@lists.freedesktop.org, 
-	asahi@lists.linux.dev, linux-kernel@vger.kernel.org, 
-	chrome-platform@lists.linux.dev, imx@lists.linux.dev, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
-	platform-driver-x86@vger.kernel.org, linux-samsung-soc@vger.kernel.org, 
-	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org, 
-	linux-stm32@st-md-mailman.stormreply.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Subject: Re: (subset) [PATCH v2 00/34] drm: convert all bridges to
+ devm_drm_bridge_alloc()
+Message-Id: <174591887152.961603.7706063017853945511.b4-ty@bootlin.com>
+Date: Tue, 29 Apr 2025 11:27:51 +0200
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.15-dev
+X-GND-State: clean
+X-GND-Score: -100
+X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvieefgeehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvfevjghfuffkffggtgfgofesthejredtredtjeenucfhrhhomhepnfhouhhishcuvehhrghuvhgvthcuoehlohhuihhsrdgthhgruhhvvghtsegsohhothhlihhnrdgtohhmqeenucggtffrrghtthgvrhhnpeejheeiledvkeeigeeluddtleejvdfhleefleffffeitdetvdeltddttddtgfelteenucfkphepledtrdekledrudeifedruddvjeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpeeltddrkeelrdduieefrdduvdejpdhhvghloheplgdujedvrddukedrtddrudgnpdhmrghilhhfrhhomheplhhouhhishdrtghhrghuvhgvthessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepuddutddprhgtphhtthhopehmrghtthhhihgrshdrsghgghesghhmrghilhdrtghomhdprhgtphhtthhopehjsghruhhnvghtsegsrgihlhhisghrvgdrtghomhdprhgtphhtthhopehfnhhklhdrkhgvrhhnvghlsehgmhgrihhlrdgtohhmpdhrtghpthhtohepphdriigrsggvlhesphgvnhhguhhtrhhonhhigidruggvpdhrtghpthhtoheprghirhhlihgvugesghhmrghilhdrtghomhdprhgtp
+ hhtthhopeguvghllhgvrhesghhmgidruggvpdhrtghpthhtoheprhhgrghllhgrihhsphhouhesghhmrghilhdrtghomhdprhgtphhtthhopehlihhnuhigqdgrrhhmqdhmshhmsehvghgvrhdrkhgvrhhnvghlrdhorhhg
+X-GND-Sasl: louis.chauvet@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250429_014053_966566_3AD0297E 
-X-CRM114-Status: UNSURE (   8.01  )
+X-CRM114-CacheID: sfid-20250429_022805_588646_60E943E7 
+X-CRM114-Status: UNSURE (   9.87  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -113,15 +160,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 24, 2025 at 9:00=E2=80=AFPM Luca Ceresoli <luca.ceresoli@bootli=
-n.com> wrote:
 
-> This is the new API for allocating DRM bridges.
->
-> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+On Thu, 24 Apr 2025 20:59:07 +0200, Luca Ceresoli wrote:
+> devm_drm_bridge_alloc() [0] is the new API to allocate and initialize a DRM
+> bridge, and the only one supported from now on. It is also necessary for
+> implementing reference counting and thus needed to support removal of
+> bridges from a still existing DRM pipeline without use-after-free.
+> 
+> This series converts all DRM bridges to the new API.
+> 
+> [...]
 
-Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+Applied, thanks!
 
-Yours,
-Linus Walleij
+[02/34] platform: arm64: acer-aspire1-ec: convert to devm_drm_bridge_alloc() API
+        commit: 411465d35bc56877c33e2498ac697acfcf484e6b
+[03/34] drm/bridge: analogix-anx6345: convert to devm_drm_bridge_alloc() API
+        commit: 53ddeb25159781b029fda404226af600e76f975f
+[06/34] drm/bridge: display-connector: convert to devm_drm_bridge_alloc() API
+        commit: 4e90a3d96a6185e143041273f9867a1092dd4a71
+[07/34] drm/bridge: lt9611uxc: convert to devm_drm_bridge_alloc() API
+        commit: 6287ffd9eff6eea65865e64b9d4c45e115fa5ecf
+[11/34] drm/bridge: dw-hdmi: convert to devm_drm_bridge_alloc() API
+        commit: ed6987b674185873ebed7a619a646da6dd1a78fa
+[12/34] drm/bridge: tda998x: convert to devm_drm_bridge_alloc() API
+        commit: 7fe58bf1a9a24b533875c262a3222581a3f759e4
+[13/34] drm/bridge: ti-sn65dsi86: convert to devm_drm_bridge_alloc() API
+        commit: a4754ae9cfa76fbce79f023c268a5bac56f36321
+[14/34] drm/exynos: mic: convert to devm_drm_bridge_alloc() API
+        commit: 91c5c7b5bb2dd09b43b025bce6d790d3c79f4518
+[15/34] drm/mcde: convert to devm_drm_bridge_alloc() API
+        commit: 40c25b9ec641f43ba17c7b788ac16ec23f8daaa8
+[16/34] drm/msm/dp: convert to devm_drm_bridge_alloc() API
+        commit: b2aabe5c6b65516d88214aba4b12ce2ca78bac6c
+[17/34] drm/msm/dsi: convert to devm_drm_bridge_alloc() API
+        commit: fffc8847743e45604c4478f554d628481b985556
+[18/34] drm/msm/hdmi: convert to devm_drm_bridge_alloc() API
+        commit: e11532be87e437648521a8ed5358c56df11933b4
+[27/34] drm/vc4: convert to devm_drm_bridge_alloc() API
+        commit: 9545c91ed75ff65e114761a7729de0e1b440aec6
+[31/34] drm/bridge: imx8*-ldb: convert to devm_drm_bridge_alloc() API
+        commit: e74b84cd83962e357329a695ba348b3dfe37395c
+
+Best regards,
+-- 
+Louis Chauvet <louis.chauvet@bootlin.com>
+
 
