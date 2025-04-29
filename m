@@ -4,148 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FE3AC369DC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Apr 2025 09:29:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EFF4C369DC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Apr 2025 10:22:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kdpP6+IZV0QYmrFxTy58B29gyyja9aTG1LwyoYVwA54=; b=mwOro2efv8xmAwG4/sjomu/kNV
-	sCLDc2DiqKfAaNxoTvm8Z3vqLY5IeIeteQdZeMekgKCGMB/k4QLNm0PsXDG/0t4X6pFre0WJFR+/q
-	j1Hh/wSWni4z4frZTwSq/21T0pA8Fhwnx38IvM3tQy9TBLXFOk8HBOTMh7NHCc0K5G0wmyI9TRe72
-	1i4Z+N0cpIVKTX1IfoGXOBXI3Vssp7qOFFYXWWKabishlD6c15Zmu8a3Kjo4+A0uoA5xS5iQ+hylW
-	Q1eXZQNApfZD42A0ILzSdEhl5RlZwF9znG7uoxPF1Qkq3SghwPfkQxRup+Z5TyIchG7U8u+YbtZXt
-	O4wDM1sA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=m019dz0Vu0FhN5Uc/YnLMS0+LpGIsE3NAZfLzWrw9Yo=; b=Of7bZHd57a+J3DnyhF8SB3lL6t
+	bLQfEzLr/fWxrhHuU4bdwZe/H0m2thH51wzkXelPHmBCjUlUY0ka0MPFtU/PRbWXCKvAPMZ92xX5u
+	ctjhg22OLQpyQfPgG8y0Kt+R+ZhGNa2FERvARLKYpIYB3I2gI+YG1hAVoaShTq5J79QgIy3gMBHjk
+	qcw8reCMmmc4+wsBsPSryqigjwgDLVrnn1mtRkvIPUlyVsq4Y+uJeo/rDOUJga1jsRDSRHBQmTEc1
+	TrOAbLywdFG5aeEUYlStn6buQh4LwV8Y2GISiAUkWWJh1sSIB6N22FkTaxBpn2Qn7AP96r+sET/LS
+	b7d1Yn9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9hHm-000000098oB-2Wr1;
-	Tue, 29 Apr 2025 09:29:54 +0000
-Received: from relay4-d.mail.gandi.net ([2001:4b98:dc4:8::224])
+	id 1u9i6V-00000009I4y-168a;
+	Tue, 29 Apr 2025 10:22:19 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9hG1-000000098S6-0sUv;
-	Tue, 29 Apr 2025 09:28:06 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 9DE5D43AD6;
-	Tue, 29 Apr 2025 09:27:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1745918880;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=kdpP6+IZV0QYmrFxTy58B29gyyja9aTG1LwyoYVwA54=;
-	b=b3QffBEWXOkepRbRJBAxG56ebIFGpWNAlbC+KLQo0RM4CJOdHofw9LcRaXOlQzjEbdB3RX
-	Z+03iDitY3AAR93mhf5d6WLE4XuT3QGY7QachEbLrEI4kcECt5/wn0GKM7h1OqhW4SjOpz
-	HOTdVe7S/cZE605Z0+HeFU5eI+Z3o6g8ShHK76B/FqbRAkibTMzruH5CF/IoUuGm4GYVXs
-	sFtz6X9pJP9Yj6BYgD109FXC4ES1/uz4pLgGybsGQHMDOgyJx5zG6q/WG2yh6+/TQM4XDc
-	hqGRyOgKhSdGaqn9GMqCPbl95bREdu4X3Ttbed9zcOzDQJjjJUJriSfQHcCMEg==
-From: Louis Chauvet <louis.chauvet@bootlin.com>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Jagan Teki <jagan@amarulasolutions.com>, Shawn Guo <shawnguo@kernel.org>, 
- Sascha Hauer <s.hauer@pengutronix.de>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, 
- Douglas Anderson <dianders@chromium.org>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Krzysztof Kozlowski <krzk@kernel.org>, 
- Luca Ceresoli <luca.ceresoli@bootlin.com>
-Cc: Anusha Srivatsa <asrivats@redhat.com>, 
- Paul Kocialkowski <paulk@sys-base.io>, Dmitry Baryshkov <lumag@kernel.org>, 
- Hui Pu <Hui.Pu@gehealthcare.com>, 
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
- dri-devel@lists.freedesktop.org, asahi@lists.linux.dev, 
- linux-kernel@vger.kernel.org, chrome-platform@lists.linux.dev, 
- imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, 
- linux-renesas-soc@vger.kernel.org, platform-driver-x86@vger.kernel.org, 
- linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
- freedreno@lists.freedesktop.org, linux-stm32@st-md-mailman.stormreply.com, 
- Adam Ford <aford173@gmail.com>, Adrien Grassein <adrien.grassein@gmail.com>, 
- Aleksandr Mishin <amishin@t-argos.ru>, Andy Yan <andy.yan@rock-chips.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Benson Leung <bleung@chromium.org>, Biju Das <biju.das.jz@bp.renesas.com>, 
- Christoph Fritz <chf.fritz@googlemail.com>, 
- Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, 
- Detlev Casanova <detlev.casanova@collabora.com>, 
- Dharma Balasubiramani <dharma.b@microchip.com>, 
- Guenter Roeck <groeck@chromium.org>, Heiko Stuebner <heiko@sntech.de>, 
- Jani Nikula <jani.nikula@intel.com>, Janne Grunau <j@jannau.net>, 
- Jerome Brunet <jbrunet@baylibre.com>, Jesse Van Gavere <jesseevg@gmail.com>, 
- Kevin Hilman <khilman@baylibre.com>, 
- Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
- Liu Ying <victor.liu@nxp.com>, 
- Manikandan Muralidharan <manikandan.m@microchip.com>, 
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>, Phong LE <ple@baylibre.com>, 
- Sasha Finkelstein <fnkl.kernel@gmail.com>, 
- Sugar Zhang <sugar.zhang@rock-chips.com>, 
- Sui Jingfeng <sui.jingfeng@linux.dev>, 
- Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, 
- Vitalii Mordan <mordan@ispras.ru>, 
- =?utf-8?q?Ilpo_J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>, 
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
- Hans de Goede <hdegoede@redhat.com>, 
- =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>, 
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
- "Rob Herring (Arm)" <robh@kernel.org>, 
- Hsin-Te Yuan <yuanhsinte@chromium.org>, 
- Pin-yen Lin <treapking@chromium.org>, Xin Ji <xji@analogixsemi.com>, 
- Aradhya Bhatia <a-bhatia1@ti.com>, 
- Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, Ian Ray <ian.ray@ge.com>, 
- Martyn Welch <martyn.welch@collabora.co.uk>, 
- Peter Senna Tschudin <peter.senna@gmail.com>, 
- Russell King <linux@armlinux.org.uk>, 
- Herve Codina <herve.codina@bootlin.com>, 
- Alim Akhtar <alim.akhtar@samsung.com>, Inki Dae <inki.dae@samsung.com>, 
- Kyungmin Park <kyungmin.park@samsung.com>, 
- Seung-Woo Kim <sw0312.kim@samsung.com>, 
- Linus Walleij <linus.walleij@linaro.org>, 
- Abhinav Kumar <quic_abhinavk@quicinc.com>, 
- Bjorn Andersson <quic_bjorande@quicinc.com>, 
- Marijn Suijten <marijn.suijten@somainline.org>, 
- Rob Clark <robdclark@gmail.com>, Sean Paul <sean@poorly.run>, 
- Helge Deller <deller@gmx.de>, 
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, 
- Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
- Alexandre Torgue <alexandre.torgue@foss.st.com>, 
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
- Philippe Cornu <philippe.cornu@foss.st.com>, 
- Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>, 
- Yannick Fertre <yannick.fertre@foss.st.com>, 
- =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
- Dave Stevenson <dave.stevenson@raspberrypi.com>, 
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
- Alain Volmat <alain.volmat@foss.st.com>, 
- Raphael Gallais-Pou <rgallaispou@gmail.com>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Michal Simek <michal.simek@amd.com>
-In-Reply-To: <20250424-drm-bridge-convert-to-alloc-api-v2-0-8f91a404d86b@bootlin.com>
-References: <20250424-drm-bridge-convert-to-alloc-api-v2-0-8f91a404d86b@bootlin.com>
-Subject: Re: (subset) [PATCH v2 00/34] drm: convert all bridges to
- devm_drm_bridge_alloc()
-Message-Id: <174591887152.961603.7706063017853945511.b4-ty@bootlin.com>
-Date: Tue, 29 Apr 2025 11:27:51 +0200
+	id 1u9i0g-00000009GoM-14y5
+	for linux-mediatek@lists.infradead.org;
+	Tue, 29 Apr 2025 10:16:19 +0000
+X-UUID: f9cadeea24e211f0a2405d5ef59ce188-20250429
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=m019dz0Vu0FhN5Uc/YnLMS0+LpGIsE3NAZfLzWrw9Yo=;
+	b=rtbVFjrZS8JQdht+//s5bJaevxjzbhWosUBfeHpmHhxX74GdsPQSn6hN7UTECyX37Jfhcc/S9ZE0gdz/aW7/SObuL3NYKtlwnngtoaD+BRCLBx8mRIV9dI0M/Oexfp1PbvdawS1CNzH0WLkq/CzDJwTKfPL9+Qvrb2dQRpMJ24g=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:0ac5702c-f77e-4c43-93a2-4198ca845d5f,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:788cff6f-e08c-41ab-89e8-3ba0a33da853,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: f9cadeea24e211f0a2405d5ef59ce188-20250429
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <jiande.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1600488185; Tue, 29 Apr 2025 03:16:12 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Tue, 29 Apr 2025 18:16:09 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Tue, 29 Apr 2025 18:16:09 +0800
+From: Jiande Lu <jiande.lu@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Chris Lu <chris.lu@mediatek.com>, Will
+ Lee <will-cy.lee@mediatek.com>, SS Wu <ss.wu@mediatek.com>, Steve Lee
+	<steve.lee@mediatek.com>, linux-bluetooth <linux-bluetooth@vger.kernel.org>,
+	linux-kernel <linux-kernel@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Jiande Lu <jiande.lu@mediatek.com>
+Subject: [PATCH v1] Bluetooth: btusb: Add new VID/PID 13d3/3630 for MT7925
+Date: Tue, 29 Apr 2025 18:16:05 +0800
+Message-ID: <20250429101605.2862004-1-jiande.lu@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.15-dev
-X-GND-State: clean
-X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvieefgeehucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvfevjghfuffkffggtgfgofesthejredtredtjeenucfhrhhomhepnfhouhhishcuvehhrghuvhgvthcuoehlohhuihhsrdgthhgruhhvvghtsegsohhothhlihhnrdgtohhmqeenucggtffrrghtthgvrhhnpeejheeiledvkeeigeeluddtleejvdfhleefleffffeitdetvdeltddttddtgfelteenucfkphepledtrdekledrudeifedruddvjeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpeeltddrkeelrdduieefrdduvdejpdhhvghloheplgdujedvrddukedrtddrudgnpdhmrghilhhfrhhomheplhhouhhishdrtghhrghuvhgvthessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepuddutddprhgtphhtthhopehmrghtthhhihgrshdrsghgghesghhmrghilhdrtghomhdprhgtphhtthhopehjsghruhhnvghtsegsrgihlhhisghrvgdrtghomhdprhgtphhtthhopehfnhhklhdrkhgvrhhnvghlsehgmhgrihhlrdgtohhmpdhrtghpthhtohepphdriigrsggvlhesphgvnhhguhhtrhhonhhigidruggvpdhrtghpthhtoheprghirhhlihgvugesghhmrghilhdrtghomhdprhgtp
- hhtthhopeguvghllhgvrhesghhmgidruggvpdhrtghpthhtoheprhhgrghllhgrihhsphhouhesghhmrghilhdrtghomhdprhgtphhtthhopehlihhnuhigqdgrrhhmqdhmshhmsehvghgvrhdrkhgvrhhnvghlrdhorhhg
-X-GND-Sasl: louis.chauvet@bootlin.com
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250429_022805_588646_60E943E7 
-X-CRM114-Status: UNSURE (   9.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250429_031618_465929_889D3175 
+X-CRM114-Status: GOOD (  10.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -160,50 +87,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Add VID 13d3 & PID 3630 for MediaTek MT7925 USB Bluetooth chip.
 
-On Thu, 24 Apr 2025 20:59:07 +0200, Luca Ceresoli wrote:
-> devm_drm_bridge_alloc() [0] is the new API to allocate and initialize a DRM
-> bridge, and the only one supported from now on. It is also necessary for
-> implementing reference counting and thus needed to support removal of
-> bridges from a still existing DRM pipeline without use-after-free.
-> 
-> This series converts all DRM bridges to the new API.
-> 
-> [...]
+The information in /sys/kernel/debug/usb/devices about the Bluetooth
+device is listed as the below.
 
-Applied, thanks!
+T:  Bus=07 Lev=01 Prnt=01 Port=10 Cnt=02 Dev#=  2 Spd=480  MxCh= 0
+D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
+P:  Vendor=13d3 ProdID=3630 Rev= 1.00
+S:  Manufacturer=MediaTek Inc.
+S:  Product=Wireless_Device
+S:  SerialNumber=000000000
+C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
+A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
+I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
+E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
+E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
+E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
+I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
+E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
+E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
 
-[02/34] platform: arm64: acer-aspire1-ec: convert to devm_drm_bridge_alloc() API
-        commit: 411465d35bc56877c33e2498ac697acfcf484e6b
-[03/34] drm/bridge: analogix-anx6345: convert to devm_drm_bridge_alloc() API
-        commit: 53ddeb25159781b029fda404226af600e76f975f
-[06/34] drm/bridge: display-connector: convert to devm_drm_bridge_alloc() API
-        commit: 4e90a3d96a6185e143041273f9867a1092dd4a71
-[07/34] drm/bridge: lt9611uxc: convert to devm_drm_bridge_alloc() API
-        commit: 6287ffd9eff6eea65865e64b9d4c45e115fa5ecf
-[11/34] drm/bridge: dw-hdmi: convert to devm_drm_bridge_alloc() API
-        commit: ed6987b674185873ebed7a619a646da6dd1a78fa
-[12/34] drm/bridge: tda998x: convert to devm_drm_bridge_alloc() API
-        commit: 7fe58bf1a9a24b533875c262a3222581a3f759e4
-[13/34] drm/bridge: ti-sn65dsi86: convert to devm_drm_bridge_alloc() API
-        commit: a4754ae9cfa76fbce79f023c268a5bac56f36321
-[14/34] drm/exynos: mic: convert to devm_drm_bridge_alloc() API
-        commit: 91c5c7b5bb2dd09b43b025bce6d790d3c79f4518
-[15/34] drm/mcde: convert to devm_drm_bridge_alloc() API
-        commit: 40c25b9ec641f43ba17c7b788ac16ec23f8daaa8
-[16/34] drm/msm/dp: convert to devm_drm_bridge_alloc() API
-        commit: b2aabe5c6b65516d88214aba4b12ce2ca78bac6c
-[17/34] drm/msm/dsi: convert to devm_drm_bridge_alloc() API
-        commit: fffc8847743e45604c4478f554d628481b985556
-[18/34] drm/msm/hdmi: convert to devm_drm_bridge_alloc() API
-        commit: e11532be87e437648521a8ed5358c56df11933b4
-[27/34] drm/vc4: convert to devm_drm_bridge_alloc() API
-        commit: 9545c91ed75ff65e114761a7729de0e1b440aec6
-[31/34] drm/bridge: imx8*-ldb: convert to devm_drm_bridge_alloc() API
-        commit: e74b84cd83962e357329a695ba348b3dfe37395c
+Signed-off-by: Jiande Lu <jiande.lu@mediatek.com>
+---
+ drivers/bluetooth/btusb.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Best regards,
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 1dddc78e16ad..357b18dae8de 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -721,6 +721,8 @@ static const struct usb_device_id quirks_table[] = {
+ 						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x13d3, 0x3628), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x13d3, 0x3630), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH },
+ 
+ 	/* Additional Realtek 8723AE Bluetooth devices */
+ 	{ USB_DEVICE(0x0930, 0x021d), .driver_info = BTUSB_REALTEK },
 -- 
-Louis Chauvet <louis.chauvet@bootlin.com>
+2.45.2
 
 
