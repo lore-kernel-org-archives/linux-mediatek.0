@@ -4,65 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83E01C3ABA5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Apr 2025 16:46:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5826C3ABA5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Apr 2025 17:01:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1NjCYglNkm1Zl4iApsrgmqE3oBvV4Fa8v5fivAhosNk=; b=F0v4FTrvGwzQXiNc1AwHOfbYx4
-	lR7w4uT+FO8ISmJZ5tGWP6Cz5ZxO6XuMhsi68ZSCkw67c6ug8aM9obGbs1gW8h47sNADrcGSUeDQh
-	kuMJpWNQxp/lDHP66O7zbAEG9KbRIE+btDor1XCxRC/XmZOu+5074KD3MMGIAO/KQ40fnS8Lwma/f
-	5BaLUtLiCzTYSiEg/2jqcC+jKmx0HSyN0Ynkea5lNGKlF2S67V9qM1hL7m4QhsZVvqga9bDotjAp6
-	F6VxlQCqHu4YlqyppQ3JZDSx9GMJ7+fB8VEdEWOE+pYmni1gEcTVzyiJtjsReCh0QsvI2540EHCnM
-	B1qF9Mmg==;
+	bh=oAsgzzElHtUApNEoBgprTPUFakQkDKBE5GMF7B1Uav8=; b=u1mejyEKC6qqU+iyEf+SNdJsIl
+	PpiJBG4fhr8M1YsvMhXz0OkYZD2G1IjStY8Mm7IxFb/TcDOFOERpbI2Z7e50mZnJrSnCgzbN99N8O
+	tbF/BmR8FrUdEwJ5qngKhzdJ/DhJHkbCPWUEoUBGlsLSYzh1SCiQUWlr6f5/gihnSWc6N7mTyOGDm
+	GECw2GI2YxJhwq5No/RPsYnrKZnKeV/oTj/v7sl5nr+yHd6sm19gEv4A6JOxa0LFZFzD/8e9JsXDM
+	SeZCwLcJMsTKC9cVkJmbu0NXzR38ZkXvgN+HGo/yX5ffRbJoXkWLQJSXu5rmocVMnf1hhjJIJDjLE
+	K/YnRUcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9o65-0000000AIYe-2jrs;
-	Tue, 29 Apr 2025 16:46:17 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1u9oKb-0000000ALSI-3bUL;
+	Tue, 29 Apr 2025 17:01:17 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9lqj-00000009wS7-0Qov;
-	Tue, 29 Apr 2025 14:22:18 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 5646CA4B3F3;
-	Tue, 29 Apr 2025 14:16:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B844C4CEE3;
-	Tue, 29 Apr 2025 14:22:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1745936535;
-	bh=Hn26jb1aZXYejporzmo9DyB26YCJ0sQN1ZLh9FSFMwY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=poAzvqd9eURiN3jHfL6W1FWeIh2XPHdSkTOF9+NePUCEE0nzrSuN1fjK3bW/7ZGwy
-	 Ir9/VDJas1weKrZiNqb6UU/su4AjVwwtrL8sl48e55NyCHfHCF8wO38ljtClLcA5uI
-	 EaLQwyZ2k88ED96kVWNRgqY0sZMPwnq6p/SHSYXo6AtoLiMOmcukV03EhbfElFnd9o
-	 N/lFzou9P83ffhnPzX/isaPcgPwHRhnmzT9G/iq8P8BB4qDQS8K65z42MtijnppqFR
-	 /FHkzILlOymDkVoEtFLSsK0XLe4KZ2EXAll0Y/ncxY1nSCK8vwxbpIEsUByFzG9lX3
-	 3JE9LbbW+xNEQ==
-Date: Tue, 29 Apr 2025 16:22:13 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	id 1u9mnI-0000000A6n5-1e8p;
+	Tue, 29 Apr 2025 15:22:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=oAsgzzElHtUApNEoBgprTPUFakQkDKBE5GMF7B1Uav8=; b=n0LNZHSzsoTp3/5XuhPHNmSl7T
+	2oJmNZpbrms9myGV4Kgf2UCAM0E/hVx3v/QXdZi7neeURYhAS/gmxO2s9Gw+EbJIqrIMFWRGOULTE
+	LWCeQu/sYP3v10VswWe8IiOeuzanncaFFfZ+joTNvtjPaNGgnNMfseT5npUA3lG+5QKWkCAW+aicH
+	cwp/YTF5WiTzfb+pNDv76xeBIOXYyp9sSmdiVt8P2N4EkzbMIAE0xSXyquOstUpBRWZ76yVbV17hH
+	Z0FBa5M0yONTY/qoarZlB7i5sfwId7gMg2/Pf0apoHdygUgKPbvb24oyaJqouutkN6AXkPeh/UJLY
+	iK/rxEpA==;
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1u9mnE-0000000DRKS-3L0W;
+	Tue, 29 Apr 2025 15:22:47 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.98.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1u9mhG-000000005QV-3RYH;
+	Tue, 29 Apr 2025 15:22:30 +0000
+Date: Tue, 29 Apr 2025 16:22:26 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: linux-mediatek@lists.infradead.org, Felix Fietkau <nbd@nbd.name>,
+	John Crispin <john@phrozen.org>,
+	Eric Woudstra <ericwouds@gmail.com>, Elad Yifee <eladwf@gmail.com>,
+	Bo-Cun Chen <bc-bocun.chen@mediatek.com>,
+	Sky Huang <skylake.huang@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH] net: airoha: Fix an error handling path in airoha_probe()
-Message-ID: <aBDglZH4VaBlWU2a@lore-desk>
-References: <f4a420f3a8b4a6fe72798f9774ec9aff2291522d.1744977434.git.christophe.jaillet@wanadoo.fr>
- <aAJFgqrOFL_xAqtW@lore-desk>
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH net-next] net: ethernet: mtk_eth_soc: add support for
+ MT7988 internal 2.5G PHY
+Message-ID: <aBDusgnaJUmZrp_v@makrotopia.org>
+References: <ab77dc679ed7d9669e82d8efeab41df23b524b1f.1745617638.git.daniel@makrotopia.org>
+ <aAwV4AOKYs3TljM0@makrotopia.org>
+ <687380A7-A580-41EB-8278-73B9942E4280@public-files.de>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Cs66MFCPOyZ/spK5"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <aAJFgqrOFL_xAqtW@lore-desk>
+In-Reply-To: <687380A7-A580-41EB-8278-73B9942E4280@public-files.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250429_072217_271463_E0C737F8 
-X-CRM114-Status: GOOD (  19.83  )
+X-CRM114-CacheID: sfid-20250429_162244_958012_C9DC6E99 
+X-CRM114-Status: GOOD (  23.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,91 +91,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Apr 29, 2025 at 04:12:19PM +0200, Frank Wunderlich wrote:
+> Am 26. April 2025 01:08:16 MESZ schrieb Daniel Golle <daniel@makrotopia.org>:
+> >On Fri, Apr 25, 2025 at 10:51:18PM +0100, Daniel Golle wrote:
+> >> The MediaTek MT7988 SoC comes with an single built-in Ethernet PHY
+> >> supporting 2500Base-T/1000Base-T/100Base-TX/10Base-T link partners in
+> >> addition to the built-in MT7531-like 1GE switch. The built-in PHY only
+> >> supports full duplex.
+> >> 
+> >> Add muxes allowing to select GMAC2->2.5G PHY path and add basic support
+> >> for XGMAC as the built-in 2.5G PHY is internally connected via XGMII.
+> >> The XGMAC features will also be used by 5GBase-R, 10GBase-R and USXGMII
+> >> SerDes modes which are going to be added once support for standalone PCS
+> >> drivers is in place.
+> >> 
+> >> In order to make use of the built-in 2.5G PHY the appropriate PHY driver
+> >> as well as (proprietary) PHY firmware has to be present as well.
+> >> 
+> >> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> >> ---
+> >> [...]
+> >> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+> >> index 88ef2e9c50fc..e3a8b24dd3d3 100644
+> >> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+> >> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+> >> [...]
+> >> @@ -587,6 +603,10 @@
+> >>  #define GEPHY_MAC_SEL          BIT(1)
+> >>  
+> >>  /* Top misc registers */
+> >> +#define TOP_MISC_NETSYS_PCS_MUX	0x84
+> >
+> >This offset still assumes topmisc syscon to start at 0x11d10000.
+> >If the pending series[1] adding that syscon at 0x11d10084 gets merged
+> >first, this offset will have to be changed to
+> >#define TOP_MISC_NETSYS_PCS_MUX	0x0
+> >
+> >[1]: https://patchwork.kernel.org/project/linux-mediatek/patch/20250422132438.15735-8-linux@fw-web.de/
+> 
+> Imho this should be changed as well
+> 
+> #define USB_PHY_SWITCH_REG	0x218
+> 
+> To
+> 
+> 0x194
+> 
+> It is used in mtk_eth_path.c set_mux_u3_gmac2_to_qphy
 
---Cs66MFCPOyZ/spK5
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This depends on how we define topmisc for MT7981, as the MTK_U3_COPHY_V2
+capability flag is set only for the MT7981 SoC (and hence I would not touch
+it in a commit regarding the MT7988 SoC).
 
-> > If an error occurs after a successful airoha_hw_init() call,
-> > airoha_ppe_deinit() needs to be called as already done in the remove
-> > function.
-> >=20
-> > Fixes: 00a7678310fe ("net: airoha: Introduce flowtable offload support")
-> > Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-> > ---
-> > Compile tested-only
-> > ---
-> >  drivers/net/ethernet/airoha/airoha_eth.c | 2 ++
-> >  1 file changed, 2 insertions(+)
-> >=20
-> > diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/eth=
-ernet/airoha/airoha_eth.c
-> > index 69e523dd4186..252b32ceb064 100644
-> > --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> > +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> > @@ -2631,6 +2631,8 @@ static int airoha_probe(struct platform_device *p=
-dev)
-> >  		}
-> >  	}
-> >  	free_netdev(eth->napi_dev);
-> > +
-> > +	airoha_ppe_deinit(eth);
-> >  	platform_set_drvdata(pdev, NULL);
-> > =20
-> >  	return err;
-> > --=20
-> > 2.49.0
-> >=20
->=20
-> Hi Christophe,
->=20
-> I agree we are missing a airoha_ppe_deinit() call in the probe error path,
-> but we should move it above after stopping the NAPI since if airoha_hw_in=
-it()
-> fails we will undo the work done by airoha_ppe_init(). Something like:
->=20
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
-net/airoha/airoha_eth.c
-> index 16c7896f931f..37d9678798d1 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> @@ -2959,6 +2959,7 @@ static int airoha_probe(struct platform_device *pde=
-v)
->  error_napi_stop:
->  	for (i =3D 0; i < ARRAY_SIZE(eth->qdma); i++)
->  		airoha_qdma_stop_napi(&eth->qdma[i]);
-> +	airoha_ppe_init(eth);
->  error_hw_cleanup:
->  	for (i =3D 0; i < ARRAY_SIZE(eth->qdma); i++)
->  		airoha_hw_cleanup(&eth->qdma[i]);
->=20
-
-Hi Christophe,
-
-any plan to repost this fix?
-
-Regards,
-Lorenzo
-
->=20
-> Agree?
->=20
-> Regards,
-> Lorenzo
-
-
-
---Cs66MFCPOyZ/spK5
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaBDglQAKCRA6cBh0uS2t
-rHX6APwIvo/4Y3dZRr6TbMAZgufdsaVik6rZZyhOrTPpqe6ybwEAhi4Y5iLOE9C4
-os6h8aHQ7FIIGzhvOp1QYkFsEvZ0TQI=
-=ylrk
------END PGP SIGNATURE-----
-
---Cs66MFCPOyZ/spK5--
+In MediaTek's SDK, it is defined as
+    topmisc: topmisc@11d10000 {
+            compatible = "mediatek,mt7981-topmisc", "syscon";
+            reg = <0 0x11d10000 0 0x10000>;
+            #clock-cells = <1>;
+    };
 
