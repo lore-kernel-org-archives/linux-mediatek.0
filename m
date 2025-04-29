@@ -4,203 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D24C8C369DC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Apr 2025 14:59:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92F81C369DC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Apr 2025 15:01:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fco6If506JVVl/CwS40j9p/UWZVx4RSzMC6sZOCuvSU=; b=EOyQebrl3C4L6ekCEab4NNBfqZ
-	xVpnmttNbcdsB/KHhNvfBoLdTKSBWOR22sE0xvHBiUk7RTPcgcVJmLWUP+iM0Gk7kvpgOyN6J9feA
-	niohPQSEs2b/w4ZZ3qZVOi8wJ4Vu/K97HxA0O3W4zbSgnPakelnU5xDtsf7Xip2bNucoIo3iQbQIQ
-	rJCjLQzuQ6PmRvta53pQiqysaxlwNC2OfwvWKeS9K1HeLf/49JT3FfAJeUrQEkod8FJd2LW7isi3M
-	pgV/3WSIkUBW42gHlcqCzUnJYMHj+kljmEaYO7laROEJvG8qto/vGWiB3d21Jhr1/sugT5MIR0+YQ
-	PpweIRBw==;
+	bh=fBCQ7yC4DZE+Brh4t/wNH1fz7LCB0Tusx2dGusJqi60=; b=OixZnwLfuNKCvjQgZp7wW5pL6Q
+	LawBDXV/dFQ2lO15hEeoQXL5w+ENmQrDqvV98sFib+sfsh0yEuTsciQ6O66PkWXmBmMbevVCPOyTm
+	vKVcl6CrfNkBO2BZMsaZVoqh86JG/fRam/kC2g/lalJat+iQ5Xse0dRGurcN1oI3IlVucANGQP3dN
+	snekVCVygsWqTpwH67FH3WFGVCsVSCRL3IWx+etGocFkA7zUnAoq1ogH822cnHNjYm6+xM+9Tq0vE
+	wTHsDpod0VafisFZC7iksBx2aMicE4LuaWh2s97K7sZbGCweSQg2/oGwe72AyKa1KBs1n7I2sbQ7E
+	RXDTuUcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9mQZ-0000000A2YA-3RXi;
-	Tue, 29 Apr 2025 14:59:19 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1u9mSV-0000000A2wv-1n3G;
+	Tue, 29 Apr 2025 15:01:19 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9m2e-00000009yRW-08JU;
-	Tue, 29 Apr 2025 14:34:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Type:
-	Content-Transfer-Encoding:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=fco6If506JVVl/CwS40j9p/UWZVx4RSzMC6sZOCuvSU=; b=Hf0zrx0l1PA0bSRkn1NAOv8Blq
-	4gqRBLqvXZZbZoYUJLRvIQIOKudArMLusp8smKhp8z1QQ0GbgLKTtoLYMSx+KGoM441h9EDHWUU7O
-	qRTfPcWogV9oXQh3W+fV6FtcKYLzkNMe6OaIDONfnIhXqFCs6eTFLTFP7vFHmiOQlCUebbL2NwqqH
-	pFo6YG4qBxhCQlBuJAoiIGskxLLqrmRrm9YnuTBVPRXY7A9t8TET752OKLZWw2ZOJJvlBdTPjG17A
-	tRgL6WQfxdrwirmIcEUZdMK2v1Bh5+tuSMWzI5sHFEHRWPCZNFfN2CRY4zyElsCzZiOf2MQCt7GDG
-	KxVTUDQg==;
-Received: from mail-dm6nam12on20600.outbound.protection.outlook.com ([2a01:111:f403:2417::600] helo=NAM12-DM6-obe.outbound.protection.outlook.com)
-	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u9m2Z-0000000DORf-3Txi;
-	Tue, 29 Apr 2025 14:34:34 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=zSJ2C3jP8ziXosodvGeIvtc2OvasjbZB49zTnR1MWBHROqZtb2gev/QW97jV6RnwlOOJmJMoq3uu58QUh+gUEH3qn8GjcFFYtD/nfbAGgIcaIP1XRkY0tMPTYbthZd5ENHDe6LuQxEY6JRrWLeFiEERwxMZThtzJEnqrVUmNDK8OUj3NaVTwi2N0xIlBsvA3HKQZF7HO2MTL9J6yXUtLx8p/ZOcNPRuJV5taWeuwofkMiirxXUKUI6q0dpnKTPBzdJjhMlTu/QnbaXSvv1+woq8S2mJvyyjo4Ac87MlocV0pj1ulRVqeJjckTQ6oYUAZ1wl5qYTRl0B0yxOK/ySeQQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=fco6If506JVVl/CwS40j9p/UWZVx4RSzMC6sZOCuvSU=;
- b=KVwnD+UsP/JTFlgj40rxwtwT0ovaE6HiDqDoSZZOcaBTYC8nJ1MNIgw+HIHH+XRnlfU5d2It5vmJFSxj+UdodprdRYshsbLVIcCol+7huzkDJfSS+75LPE7kRHJqIR3pwc7z0D2w2NboSyKsGKLCsPk+QsvFOp5QK5nMVd35YE9MgEGVw3yKfyi7W6Vv5gFIFrbTU8pVRdIPk7Qrhuyz4tLLSEPZE6dE5uH1oGDbYKMVv2H20j9x3AudHa/amXhbX2dX7NA+96BSfN+eSI5er3T8IzN7xjpcgIJzufB+3IH1T9HbEYlocH/wXqmIBxJMZ8/aZsZPgQ8Zts9UQ7NoyQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=fco6If506JVVl/CwS40j9p/UWZVx4RSzMC6sZOCuvSU=;
- b=NHl3Vqyd/gcXtWfH9TuDKLyWwuK8WM/moPmaXN79nsElBUs3m+yOVWo4c0AD9N2ziM0FdMRryxsdBiyDB6RigHDY/t9j1bQqtOfJY+bpbTCgFVMM/tD3DG/1KfEu3WyVRJLC7rVB6nOKUUWHUxcplDdTHBmvHW3H0dkk2r8Jd1DxM0wTpXbZTQz0YAMIkYlqoW1ezmBpoZlZzs/XImIlkfIRU1ZWOH9IRp0RJC1C8l11MefKt+w0KRbv+kR0bOxn942floLT1FWKCOBonEJezPnqnMI5m8PAoXAPBnRaqB9lSdwvlxHIBPQycpDQaVecUS8PjGWp8HPkI0qvjU3sYA==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from CH3PR12MB8659.namprd12.prod.outlook.com (2603:10b6:610:17c::13)
- by CH3PR12MB7523.namprd12.prod.outlook.com (2603:10b6:610:148::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8699.19; Tue, 29 Apr
- 2025 14:34:25 +0000
-Received: from CH3PR12MB8659.namprd12.prod.outlook.com
- ([fe80::6eb6:7d37:7b4b:1732]) by CH3PR12MB8659.namprd12.prod.outlook.com
- ([fe80::6eb6:7d37:7b4b:1732%4]) with mapi id 15.20.8678.028; Tue, 29 Apr 2025
- 14:34:25 +0000
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Alexandre Ghiti <alex@ghiti.fr>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Albert Ou <aou@eecs.berkeley.edu>,
-	asahi@lists.linux.dev,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Lu Baolu <baolu.lu@linux.intel.com>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	iommu@lists.linux.dev,
-	Janne Grunau <j@jannau.net>,
-	Jean-Philippe Brucker <jean-philippe@linaro.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Joerg Roedel <joro@8bytes.org>,
-	Kevin Tian <kevin.tian@intel.com>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-riscv@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-s390@vger.kernel.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Matthew Rosato <mjrosato@linux.ibm.com>,
-	Neal Gompa <neal@gompa.dev>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Rob Clark <robdclark@gmail.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Niklas Schnelle <schnelle@linux.ibm.com>,
-	Sven Peter <sven@svenpeter.dev>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Tomasz Jeznach <tjeznach@rivosinc.com>,
-	Krishna Reddy <vdumpa@nvidia.com>,
-	virtualization@lists.linux.dev,
-	Chen-Yu Tsai <wens@csie.org>,
-	Will Deacon <will@kernel.org>,
-	Yong Wu <yong.wu@mediatek.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>
-Cc: patches@lists.linux.dev
-Subject: [PATCH 7/7] iommu: Remove ops->pgsize_bitmap
-Date: Tue, 29 Apr 2025 11:34:17 -0300
-Message-ID: <7-v1-7c5282b0c334+2db-iommu_rm_ops_pgsize_jgg@nvidia.com>
-In-Reply-To: <0-v1-7c5282b0c334+2db-iommu_rm_ops_pgsize_jgg@nvidia.com>
-References: 
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: MN0PR03CA0011.namprd03.prod.outlook.com
- (2603:10b6:208:52f::13) To CH3PR12MB8659.namprd12.prod.outlook.com
- (2603:10b6:610:17c::13)
+	id 1u9m2t-00000009yV1-2mFV
+	for linux-mediatek@lists.infradead.org;
+	Tue, 29 Apr 2025 14:34:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1745937289;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=fBCQ7yC4DZE+Brh4t/wNH1fz7LCB0Tusx2dGusJqi60=;
+	b=etcDz7JQcxASr818JR3UxlOVWGDJ5Dwa7nCFieb8vSXCEfeM2jRhhPmOns88ybs2BCogHD
+	ObFEtS8/9/AFzURh9NUl/xgvItpVOn8jS9FYTT+RSTU16Hq+VlZngSpG4Ik245Y/pHXzjf
+	I7vfvParOOWaKZT6Scd+Vm6+4iDW+U8=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-508-7KBbjxq8O4KxkB1KJH_isw-1; Tue, 29 Apr 2025 10:34:47 -0400
+X-MC-Unique: 7KBbjxq8O4KxkB1KJH_isw-1
+X-Mimecast-MFC-AGG-ID: 7KBbjxq8O4KxkB1KJH_isw_1745937286
+Received: by mail-wm1-f69.google.com with SMTP id 5b1f17b1804b1-440667e7f92so30181425e9.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 29 Apr 2025 07:34:47 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1745937286; x=1746542086;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=fBCQ7yC4DZE+Brh4t/wNH1fz7LCB0Tusx2dGusJqi60=;
+        b=Kb4kk0kGSAoT1NnFTr9WZWQ4M0e4aaAPASkG3TU+DYT/4AqM2MmWjTOZDTSHpbCRx9
+         jC4ipqoLnmg3E4KoFr/oeV55/31X+CWkIJVADI0fd4/c8H85MCYuLcw0NL8so75HaNXr
+         xHiAqUOW6L/HqONJ6pKuudDMZSA0nR/CmRUlQFgeaJOo3LNEDgISRPQwwOUhbC3ohAgB
+         1mUVHSNtWrLm5xo/8y4QYUwIWnFfssOgnFTtxJSCEYHQKKZuyNp3qQu77T6/kk+X4Gsm
+         OXdEnb925akTw6a2lou9suFWgA2Us6D0pJv1kpt1RsXL6QVhPXZEKbI6Oc5OpXI9Q9Xg
+         5CDQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVpHCwkIiGMpTZfFpq1wF5eBQh90OA1T94zObt1R6WdnAw+LcJrc9uBZUpyHTTlZBF3MnxS0e1bzelXBxM80A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxUnaLunwf8aoYELwEuQygLGNvRMJ1Giell0uLlWspsf2PIN5H+
+	ptB4WzOeueXOuzQXJxkVt71JfeDvQW0gMhGgATvLg++1Hl0zq4TE24IGEd3ReIRK03z/URIRLqw
+	nLCdXbLkyZpcg4UOZ65C8qaPcXpk9HRc6NDph9HCBNtIBbgzWootJUc7iYg7CAwf634AO9w==
+X-Gm-Gg: ASbGnctV6q8r6ELUKKGfcNSxjw71PFd4zojY4cqVxIOnK+a6LwD5+sJ9XfKKHW2LihN
+	91+cESyOdCz21cgrR8qqh5m0IbvWZ7YS6Glz0b2bjBgo67gAqPwATxlgFW4d1IbkKpuS+vn4aAZ
+	czp+KAmvnVWOVekuNzlLyoexdriRZNL52q6gAvt3lU7ro/pScVyDjrC1TwFUomrSHtyMk1u6Hac
+	52dRrkNuMdmT8kJ6NAkUuuB24RMSclukCo386d0FwHA4IJcEx1ckC2Bw7u8TYdkgyrLSFFY2d/s
+	H1tb7Qd8QWPAG/vBm/g=
+X-Received: by 2002:a05:600c:1e0e:b0:43c:fcbc:9680 with SMTP id 5b1f17b1804b1-441ac88acb9mr28922535e9.25.1745937286068;
+        Tue, 29 Apr 2025 07:34:46 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEzFC7JTH1cCKfCoD0KtL/PJnk0rLhxxGRVYh+6Vv8ZU7rmNtMiOe/2tPKSMhGhjoS8cjz9Pw==
+X-Received: by 2002:a05:600c:1e0e:b0:43c:fcbc:9680 with SMTP id 5b1f17b1804b1-441ac88acb9mr28922245e9.25.1745937285632;
+        Tue, 29 Apr 2025 07:34:45 -0700 (PDT)
+Received: from ?IPV6:2a0d:3344:2726:1910::f39? ([2a0d:3344:2726:1910::f39])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-440a0692a22sm177630795e9.2.2025.04.29.07.34.44
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 29 Apr 2025 07:34:45 -0700 (PDT)
+Message-ID: <06953a63-7309-40d4-b515-ffc56e751559@redhat.com>
+Date: Tue, 29 Apr 2025 16:34:43 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH3PR12MB8659:EE_|CH3PR12MB7523:EE_
-X-MS-Office365-Filtering-Correlation-Id: eec11c9f-d130-4cb5-f3db-08dd872aee0b
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|7416014|376014|366016|921020;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?yLtK6yd8a83GlQBCtYa3e7MH1tOm7y5cTHrsopM0EDfJCVVo+dOa6PM6ZUTh?=
- =?us-ascii?Q?oNxLWtor1aSm7TwdGu0lhitA1ODYRd1gEe65slbmdk8tw8o/5jWXXqTYC4QT?=
- =?us-ascii?Q?3SKNbxSLGmFUjnyosNFcv61hKPQAPFO0/ejjQ9jqu+LMK9ggoHCmy561F4Wd?=
- =?us-ascii?Q?NI42IoBee1BwOSR+GcP96U/gWTPREmd2UdwBsEmF/zFMWy3lLKOdHKRF9tUq?=
- =?us-ascii?Q?xDce9ecf0FVbB3Isnjgfni6ZW9e8cmqulOF2ugAAlpMM5zcxPccu3CncaLz9?=
- =?us-ascii?Q?kS6r7+Jm2IxuaPKMwBYDEfgD+/91PFiXJjavG5L1YfHgbXXolRWwOTsjJ9xG?=
- =?us-ascii?Q?66cyGNbZzhAVVQ23XzVYq3XMt/mSlaobtz8ZwStN50z/EPM8dONGPk8p6qyn?=
- =?us-ascii?Q?Pbwl9ZprtvVqcCk6ys5jKJqUFoiyBSw4Kt+GccRjeEnZZG+4T7bCCerXyFlg?=
- =?us-ascii?Q?RuWV5ASv3KLDvx8n57rg1p5m+zzPmSXilR/iwnaDcpoS3KKeCGM91NQzjB3t?=
- =?us-ascii?Q?S0/ZPbqRNPZp6R4jZXqYRnlhSrW1eVW7re4GzpkV+lZ7GN/u7xorLkH3Ni5v?=
- =?us-ascii?Q?UdZwjDpDUnVaaOkC+8Yedyp8VueEshdHOetxtKI8gVuUOi1ZQfkX3ctW6XJk?=
- =?us-ascii?Q?PD7WubNK7l7G4tpYHLlxEozt4y1K2cW47Y9KhwBBu8BA9E3Kue8aamt/q3bM?=
- =?us-ascii?Q?2/KVzwNyXRx5UrRxX76Rti/O3j/CV0bxjLq4PErQUGSzmtEKqA2Y0+Nuclnj?=
- =?us-ascii?Q?opgGCMkgdznOLRK0AyNnWyV34GRl+jr41xW6+ieFbE/DKPmS9VkFu82TDepo?=
- =?us-ascii?Q?2XDRv0al2yzhQuy6HA5vLsMmKSfHQi0sCazIYG8PpB5dLhbeXmFpmUXacXGF?=
- =?us-ascii?Q?8v2oLA/fVxjhddSEa4QbwkURn8prizrJHy30qkZHjRaqFu8KY0gHMsK1L24e?=
- =?us-ascii?Q?iOR6Og5r7Uip5UbDFhPM8EfJpxKggQAPNXZXIF7h/k7k9biw36TQJTYZW6kO?=
- =?us-ascii?Q?tmmoS7dSkET9LSCJmMFJQFxCupP7yDIJWSJaS3HwmabS9IJ2oFSjihj/V1tD?=
- =?us-ascii?Q?meZ8KDx0ZitNvgqNLq0HHQWnMOX0IP/2MAV8vjW9FU8il1kQ/cEGY4yA2Q5Q?=
- =?us-ascii?Q?wz93ihNC5bzOhNEhdIqBe7tYijw/idDx9JsYTDG+m/W3cGojiXYhwF6EGtB3?=
- =?us-ascii?Q?wCxm0Fe1RAaEogISnv2NVy56SOhT9RDWs8z6+Z3VruYfz2TH7AwueP/vs5Bd?=
- =?us-ascii?Q?xDWIVARZ/dkU1rylwpdjDotVgowmtwR7SHzrLK3FBMSKsZ5Fx1niyuXUfA7c?=
- =?us-ascii?Q?Oq4jadFyneujI7rliM/Q1GBmmT4yVPMlNe012fyqJCcnIekyl1XEjDK5G4/C?=
- =?us-ascii?Q?hojSh69zqp9NZfXCcPZBTsCbs4U5m3H78L5qEhRLoFihSqmxCWbl8pw9r1Fd?=
- =?us-ascii?Q?EzoE0YkjPQRJq2A7xchIiJ7ZW0Mw5bmAAvJ2uZQNCWEZuTFqB0Z1qQ=3D=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH3PR12MB8659.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(7416014)(376014)(366016)(921020);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?jEkZhI4I1BPSVn1MYmGIeMv0bCD7tzNPKe4ILut9N63fKfeK/8JMGYE6zf73?=
- =?us-ascii?Q?q5lEhCVBpps2Dj0TBbOhsevYFu7DsVerNNnlohNJWhzJrDCDfTq8aqBkcY6j?=
- =?us-ascii?Q?4gxMG4/XkQtNTHbVJxHI6hNOawgbfITDcYKO9ZD4Y2XsagPl6hq3NYNvBrZu?=
- =?us-ascii?Q?MTQFI0SipZMto7auhSagUpjELIC42WIjNVPkEIPS/KI5r4ID/r92DSn3Bdfh?=
- =?us-ascii?Q?g90sLEooNdpYGi8SbCW7L/AsaZQ4EIn5/WKwChjWiXJqYtIHfk4qnzc9tt8G?=
- =?us-ascii?Q?2Dpr928W5R8rDqKIaBl59dDF3mK98hulf2ZxGTh3xyDTVLQB8f6ZPFj9Erd/?=
- =?us-ascii?Q?pWAViFXnGkla4vTmJrDeTAGAjJPFq+C+DYTA2OKIt+0il7KACgcc47mEWgSm?=
- =?us-ascii?Q?BjgXqp69EUf3nnkUwBSreU4tSv1TN4VbKZuacYDp8uSnlej4Q6kJg8EeAYL2?=
- =?us-ascii?Q?9AWqG8thdX8wXvQGwKaOt07mo5JiH3BFEV3uQmWqpu3N4orP9ebP654dVejF?=
- =?us-ascii?Q?CriC4QhyDN05009zmDclyq345KB7+Q/kPmfZgs5mWmdZbmoLLEwLRc1abao8?=
- =?us-ascii?Q?8Gxp/DFLzFMrlDHtic+xyf27G80rxdhsARDAfHxRYh3VX9Y9Cq0aWeizsgg+?=
- =?us-ascii?Q?KxK78Lpte79x/ByqHtDAgV5v+Tt45BKdfvlexjqcDC7PYcA304Sno7ND/FuW?=
- =?us-ascii?Q?NLfeQ5+KBJujtyi0YQEey+et0mjBUl0YB3ouz9ZrIKKY7M46OI0FQHa/ii+P?=
- =?us-ascii?Q?vStG1cVkPNT+DrHuXYbv++mm+uDOZqkKmIPZSeFOPpBIZ1gi/dFHbdXZzwgL?=
- =?us-ascii?Q?MPnbmvrfxsHRDXP3yKnksNFhuvvG+zYe7ws6oEwmHqPmIxqx+CJIQe+zf3Ey?=
- =?us-ascii?Q?QyqQjCJB9J7mRX2H9Djp3cDqe9UECDvRK7Yn1u9RPayW6TgSuIjXaV/BBGQz?=
- =?us-ascii?Q?ASchSwSnalkIutOWseaqeXTjMe9+jx13JU3fQD6ehilUFudSsPlqtoMaGiCk?=
- =?us-ascii?Q?7l/cx37IHAfrPC+A9frVHtItKo0ZELBYm//YOb65ZT0qvb1hAxJVrPCOnL/o?=
- =?us-ascii?Q?momkBMdDDMEoWoR6o5KOGA2gW++GRR3P+0iIVo9orHe0a6aGwjPEq4XTSJ8H?=
- =?us-ascii?Q?/Y0+RWCntqb8k86Ty783NrBbZV9EjGjiS+m76yEZ2VxQwCqtJ1vE1G6yEvdC?=
- =?us-ascii?Q?IzggSHPDh3Pi8f1yzk/b4a9/RgTPqNo8LVZcovcI/eytuBh3laihhxK/+4fZ?=
- =?us-ascii?Q?oguruiLH0ge7C+hW++MPt8YsYThpUrKVUZmEsnxszdvmA5MyIu8v3NjHC0Y/?=
- =?us-ascii?Q?W6aEylbnijaIcWywqEBroDi9kgBIKq5wxK0HXJKGxH3NNY93+qZ+vmi/7X8N?=
- =?us-ascii?Q?z9f1CUELAokN2Dh26Imnllnhag51e5AqkxgXlamjez6pzQJ904H0GU9VB2a8?=
- =?us-ascii?Q?ALPTTJr8qwpi4wSw4idUeQB4t4e21QiRC8XHRttx4emPtYYIHSvTwt19h0Ax?=
- =?us-ascii?Q?1rIf+pezPccoL0DfHL4SwojyQrKUonDTUgod/Ov62StinblNpTErvhS48Kly?=
- =?us-ascii?Q?BNvFLpQ9djnzFla7ZtwnXMcSWbf0PIha/wfOy6/j?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: eec11c9f-d130-4cb5-f3db-08dd872aee0b
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB8659.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Apr 2025 14:34:23.0453
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: r3BPbtN9k4K1Wmh18Oz+QiubVEXRNjEyT/ZCgkr4koIfmVH50HpHwaDza9/Aqff7
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR12MB7523
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] net: call inet_twsk_put() on TIMEWAIT sockets It is
+ possible for a pointer of type struct inet_timewait_sock to be returned from
+ the functions __inet_lookup_established() and __inet6_lookup_established().
+ This can cause a crash when the returned pointer is of type struct
+ inet_timewait_sock and sock_put() is called on it. The following is a crash
+ call stack that shows sk->sk_wmem_alloc being accessed in sk_free() during
+ the call to sock_put() on a struct inet_timewait_sock pointer. To avoid this
+ issue, use inet_twsk_put() instead of sock_put() when sk->sk_state is
+ TCP_TIME_WAIT.
+To: Shiming Cheng <shiming.cheng@mediatek.com>, edumazet@google.com,
+ davem@davemloft.net, dsahern@kernel.org, kuba@kernel.org, horms@kernel.org,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Cc: Jibin Zhang <jibin.zhang@mediatek.com>
+References: <20250425073120.28195-1-shiming.cheng@mediatek.com>
+From: Paolo Abeni <pabeni@redhat.com>
+In-Reply-To: <20250425073120.28195-1-shiming.cheng@mediatek.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: I6Dk8Ix0WXm2byS9GMPM7dMuUFT4OL3m2gIGRAyO-MA_1745937286
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250429_153431_926617_11E2CF9A 
-X-CRM114-Status: GOOD (  12.83  )
+X-CRM114-CacheID: sfid-20250429_073451_778010_A8295C14 
+X-CRM114-Status: GOOD (  16.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -215,53 +120,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-No driver uses it now, remove the core code.
+On 4/25/25 9:31 AM, Shiming Cheng wrote:
+> From: Jibin Zhang <jibin.zhang@mediatek.com>
+> 
+> mrdump.ko        ipanic() + 120
+> vmlinux          notifier_call_chain(nr_to_call=-1, nr_calls=0) + 132
+> vmlinux          atomic_notifier_call_chain(val=0) + 56
+> vmlinux          panic() + 344
+> vmlinux          add_taint() + 164
+> vmlinux          end_report() + 136
+> vmlinux          kasan_report(size=0) + 236
+> vmlinux          report_tag_fault() + 16
+> vmlinux          do_tag_recovery() + 16
+> vmlinux          __do_kernel_fault() + 88
+> vmlinux          do_bad_area() + 28
+> vmlinux          do_tag_check_fault() + 60
+> vmlinux          do_mem_abort() + 80
+> vmlinux          el1_abort() + 56
+> vmlinux          el1h_64_sync_handler() + 124
+> vmlinux        > 0xFFFFFFC080011294()
+> vmlinux          __lse_atomic_fetch_add_release(v=0xF2FFFF82A896087C)
+> vmlinux          __lse_atomic_fetch_sub_release(v=0xF2FFFF82A896087C)
+> vmlinux          arch_atomic_fetch_sub_release(i=1, v=0xF2FFFF82A896087C)
+> + 8
+> vmlinux          raw_atomic_fetch_sub_release(i=1, v=0xF2FFFF82A896087C)
+> + 8
+> vmlinux          atomic_fetch_sub_release(i=1, v=0xF2FFFF82A896087C) + 8
+> vmlinux          __refcount_sub_and_test(i=1, r=0xF2FFFF82A896087C,
+> oldp=0) + 8
+> vmlinux          __refcount_dec_and_test(r=0xF2FFFF82A896087C, oldp=0) + 8
+> vmlinux          refcount_dec_and_test(r=0xF2FFFF82A896087C) + 8
+> vmlinux          sk_free(sk=0xF2FFFF82A8960700) + 28
+> vmlinux          sock_put() + 48
+> vmlinux          tcp6_check_fraglist_gro() + 236
+> vmlinux          tcp6_gro_receive() + 624
+> vmlinux          ipv6_gro_receive() + 912
+> vmlinux          dev_gro_receive() + 1116
+> vmlinux          napi_gro_receive() + 196
+> ccmni.ko         ccmni_rx_callback() + 208
+> ccmni.ko         ccmni_queue_recv_skb() + 388
+> ccci_dpmaif.ko   dpmaif_rxq_push_thread() + 1088
+> vmlinux          kthread() + 268
+> vmlinux          0xFFFFFFC08001F30C()
 
-Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
----
- drivers/iommu/iommu.c | 7 -------
- include/linux/iommu.h | 2 --
- 2 files changed, 9 deletions(-)
+Part of the commit message landed inside the patch subject, the stack
+trace should be decoded, the patch should target the 'net' tree and
+include a suitable fixes tag.
 
-diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
-index 900fb782c3a6a1..db23093c9fa856 100644
---- a/drivers/iommu/iommu.c
-+++ b/drivers/iommu/iommu.c
-@@ -2002,13 +2002,6 @@ static void iommu_domain_init(struct iommu_domain *domain, unsigned int type,
- 	domain->owner = ops;
- 	if (!domain->ops)
- 		domain->ops = ops->default_domain_ops;
--
--	/*
--	 * If not already set, assume all sizes by default; the driver
--	 * may override this later
--	 */
--	if (!domain->pgsize_bitmap)
--		domain->pgsize_bitmap = ops->pgsize_bitmap;
- }
- 
- static struct iommu_domain *
-diff --git a/include/linux/iommu.h b/include/linux/iommu.h
-index 1785caee597778..1c2ddf62a672e2 100644
---- a/include/linux/iommu.h
-+++ b/include/linux/iommu.h
-@@ -606,7 +606,6 @@ iommu_copy_struct_from_full_user_array(void *kdst, size_t kdst_entry_size,
-  *                It is required to call iommufd_viommu_alloc() helper for
-  *                a bundled allocation of the core and the driver structures,
-  *                using the given @ictx pointer.
-- * @pgsize_bitmap: bitmap of all possible supported page sizes
-  * @owner: Driver module providing these ops
-  * @identity_domain: An always available, always attachable identity
-  *                   translation.
-@@ -661,7 +660,6 @@ struct iommu_ops {
- 		struct iommufd_ctx *ictx, unsigned int viommu_type);
- 
- 	const struct iommu_domain_ops *default_domain_ops;
--	unsigned long pgsize_bitmap;
- 	struct module *owner;
- 	struct iommu_domain *identity_domain;
- 	struct iommu_domain *blocked_domain;
--- 
-2.43.0
+Please have an accurate read at the process documentation under:
+
+Documentation/process/
+
+and especially to Documentation/process/maintainer-netdev.rst before the
+next submission.
+
+> 
+> Signed-off-by: Jibin Zhang <jibin.zhang@mediatek.com>
+> ---
+>  net/ipv4/tcp_offload.c   | 8 ++++++--
+>  net/ipv6/tcpv6_offload.c | 8 ++++++--
+>  2 files changed, 12 insertions(+), 4 deletions(-)
+> 
+> diff --git a/net/ipv4/tcp_offload.c b/net/ipv4/tcp_offload.c
+> index 2308665b51c5..95d7cbf6a2b5 100644
+> --- a/net/ipv4/tcp_offload.c
+> +++ b/net/ipv4/tcp_offload.c
+> @@ -431,8 +431,12 @@ static void tcp4_check_fraglist_gro(struct list_head *head, struct sk_buff *skb,
+>  				       iph->daddr, ntohs(th->dest),
+>  				       iif, sdif);
+>  	NAPI_GRO_CB(skb)->is_flist = !sk;
+> -	if (sk)
+> -		sock_put(sk);
+> +	if (sk) {
+> +		if (sk->sk_state == TCP_TIME_WAIT)
+> +			inet_twsk_put(inet_twsk(sk));
+> +		else
+> +			sock_put(sk);
+
+You can simply use sock_gen_put() instead
+
+/P
 
 
