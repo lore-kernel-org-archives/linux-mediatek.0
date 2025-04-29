@@ -4,49 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C259C369CB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Apr 2025 07:42:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F6C1C3ABA4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Apr 2025 07:46:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NAu2WNUCHXUCUgePNj4lFNl/2NVDFwvO6ERCQ6DYrFg=; b=L5fI8p1LigvDi1vLj3d7uYTft9
-	OqShbJBLOr4vlw0XDdBS2FCfvKT5OaVLmrhgsHpUi+4AVPclQWuHIsqBCaLWs2oGbDAikt3k2ZKjQ
-	YOsHPHHi3uwbb36JIcE8UUB3CxQMsApwUQ+XuzfHKhii3sLtd47y3UhuRajM010MUypwnF0hSZRiq
-	JpWchL4LBnafbG/9vevTz5mONf16Az+jWYlQecLD0aJf4e1htfpnwERJ3vCFYM1Bae8RUX7YTwAAO
-	kHpqELYHsv5Hl8dLp++81VJq2kYxlVMGqioRxcj3RWSol3M4LXY9kN5+goytyt6pu5YNq4flS3y9o
-	fWBwhQ8A==;
+	bh=2nQtzhpIi44uw/z/MiwqoekLgmP9CvcmPUZmn2r+gcQ=; b=BRdRoHVn+uCQBcUf9u6SdJlhmu
+	5XJgT/0OWxN2RDkGVf87arYwlf0Sse/U1tQrGC0ihAqnoe02fZKqmzTqzC1KSKqi7xumBQLolZwhR
+	jAOgs1EYf7GNonz2mvsVsAo5v15QKdigiXI4DO4dkD8bv5qwbAPTBcgUTxS/hS/eHTsQx/YIHnqn/
+	mhn231cYXeb96sAiG+Uc6caFqFvgwkXjYOJ0kcYzg5xzvZI660UrvTEdF7xczajXy6NkAtJUKw68s
+	98dZXQPBIV04mWfPtZQwzsh7oPFGpPNZhb2ZTsRbZHnM1xQWSyTPd96Kod4g1/VVM69BKSjJbB7bb
+	tzwoLQRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9fbt-00000008nTL-2PQe;
-	Tue, 29 Apr 2025 07:42:33 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1u9ffg-00000008oPJ-1KA1;
+	Tue, 29 Apr 2025 07:46:28 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9fTg-00000008loq-0FVP;
-	Tue, 29 Apr 2025 07:34:04 +0000
+	id 1u9fUA-00000008lw6-1UXW;
+	Tue, 29 Apr 2025 07:34:35 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id CC838615EF;
-	Tue, 29 Apr 2025 07:33:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E2EEEC4CEE3;
-	Tue, 29 Apr 2025 07:33:59 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 2A6B343E41;
+	Tue, 29 Apr 2025 07:34:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EC7ABC4CEED;
+	Tue, 29 Apr 2025 07:34:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1745912043;
-	bh=AWHwOkxPLCPVcRAn+OvCKLaXrFu45lDYY/h0fhMkB/k=;
+	s=k20201202; t=1745912073;
+	bh=1FIwLwyQulKxxFP/ujnEVpEdgFJ8AVSMc5D8iY1ISc4=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=nNYPd70yujGIFFK0ZVi+gz/MfJtlpbQCqt2pgzNxvgzQkcStedybJfBBuMa3R18Zb
-	 roLeGn3Jvqt2e6p5v0AIFy+8oXRonJMnoFUwbCnYRB+pn9T9YEgM7qCXazZxfKUsjM
-	 Evwzk3sFaN6nrO2gF5bW9OYc8LiVMCEwkv2VJ7sYxUu3VfeOvCDKhGZ2QO1N7wqsYb
-	 y5svy7oTBQnQVSxuM8tfKhCHjgXrPCOKho6PysWh11q6Tn2jFPpV7s8x10EKoMyQw4
-	 /RacTzllwUc0BNRnqGX9k+/DkQ/qhIzyPWe75tnAGA8JYqaBgnb2KWfSLr1ejIFFrq
-	 LU+a2oHhgrxTg==
-Message-ID: <2044b305-8786-49b9-82e2-aa294434c24e@kernel.org>
-Date: Tue, 29 Apr 2025 09:33:58 +0200
+	b=jaRZw/fwNa8P6+yoOBvuASueTp81mAvevIGO5h2y3NT2ac5rUzI7PPeMzY0x4wxeP
+	 hsbfxzfMJkWNqo9JVcuP/FLvwIFPlCg7L/QmeLfBN8XfbeTQBSzORgASauE7opb+46
+	 VJNq9eT4v+TM0tE6DKElhVpHQDq7eKqXrlL5LshoR4eLWID9VkFbroFF4gvsXEZ0WU
+	 pKXeWm9LqtGIyfEvWy1FjvCXxUs2q5VFV+M1HjAIXccYZ5jj8PLQBcTc2Qjmn541BP
+	 r1OpbM0jqZoe9cvTTy+fybg46f0Pm2vV7wx/VhuVKihv9SkERJn7TBnd1YO3k0WUwk
+	 WdxIQJKLCpN5g==
+Message-ID: <4557dde5-c0fe-4339-8c4c-291b186ee86f@kernel.org>
+Date: Tue, 29 Apr 2025 09:34:28 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 01/12] dt-bindings: media: mediatek,jpeg: Add mediatek,
- mt8196-jpgdec compatible
+Subject: Re: [PATCH v3 00/12] Enable jpeg enc & dec multi-hardwares for MT8196
 To: =?UTF-8?B?S3lyaWUgV3UgKOWQtOaZlyk=?= <Kyrie.Wu@mediatek.com>
 Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
  "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
@@ -64,9 +63,8 @@ Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
  "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 References: <20250425085328.16929-1-kyrie.wu@mediatek.com>
- <20250425085328.16929-2-kyrie.wu@mediatek.com>
- <20250428-ambitious-deer-of-plenty-2a553a@kuoka>
- <5b6e70181b417f1b25df6fc1838b0ad600e29e9c.camel@mediatek.com>
+ <20250428-inescapable-smiling-oriole-bfbe3e@kuoka>
+ <5735ebabb8b049bd7c8700a433bf5b073dde66ad.camel@mediatek.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -112,9 +110,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <5b6e70181b417f1b25df6fc1838b0ad600e29e9c.camel@mediatek.com>
+In-Reply-To: <5735ebabb8b049bd7c8700a433bf5b073dde66ad.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250429_003434_431164_CC34A565 
+X-CRM114-Status: GOOD (  11.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,51 +130,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 28/04/2025 10:19, Kyrie Wu (吴晗) wrote:
-> On Mon, 2025-04-28 at 09:04 +0200, Krzysztof Kozlowski wrote:
+On 28/04/2025 10:10, Kyrie Wu (吴晗) wrote:
+> On Mon, 2025-04-28 at 09:01 +0200, Krzysztof Kozlowski wrote:
 >> External email : Please do not click links or open attachments until
 >> you have verified the sender or the content.
 >>
 >>
->> On Fri, Apr 25, 2025 at 04:53:17PM GMT, Kyrie Wu wrote:
->>> Compared to the previous generation IC, the MT8196 uses SMMU
->>> instead of IOMMU and supports features such as dynamic voltage
->>> and frequency scaling. Therefore, add "mediatek,mt8196-jpgdec"
->>> compatible to the binding document.
+>> On Fri, Apr 25, 2025 at 04:53:16PM GMT, Kyrie Wu wrote:
+>>> This series adds support for mt8196 multi-hardwares jpeg enc & dec,
+>>> by first adding mt8196 jpegdec and jpegenc compatible to install
+>>> kernel driver. Add smmu setting to support smmu and iommu at the
+>>> same time.
+>>> Secondly refactor buffer and clock setting to support multi-hw jpeg
+>>> working.
+>>> Lastly, fix some bugs, including resolution change handleing, stop
+>>> streaming sw flow and others.
 >>>
->>> Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
+>>> This series has been tested with MT8196 tast test.
+>>> Encoding and decoding worked for this chip.
+>>>
+>>> Patches 1-3 Adds jpeg encoder and decoder compatible.
+>>> Patches 4 add jpeg smmu sid setting.
+>>> Patches 5 fix jpeg hw count setting to support different chips.
+>>> Patches 6 refactor jpeg buffer payload setting to handle buffer
+>>> size bug while resolution changed.
+>>> Patches 7 reconstruct jpeg dst buffer layout.
+>>> Patches 8 fix multi-core stop streaming flow
+>>> Patches 9 refactor multi-core clk suspend/resume setting
+>>> Patches 10 fix decoding buffer number setting timing issue
+>>> Patches 11 refactor decoding resolution change operation
+>>> Patches 12 fix remove buffer operation
+>>>
+>>> ---
+>>> This series patches dependent on:
+>>> [1]
+>>>
+> https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/patch/20250424090824.5309-1-jianhua.lin@mediatek.com/__;!!CTRNKA9wMg0ARbw!hDjzydf2blyIhdAkYs_NbqpEaaWTuolLbaHLDw8hLg4BJ87r7ePzKkET-uDw24U6YXAqmbSxItem1Q$
+>>>
+>>> Changes compared with v2:
+>>> --refactor smmu sid setting function interface
+>>> --Some modifications for patch v2's review comments.
 >>
->> I gave you a link to the exact part of documentation about prefixes
->> to
->> read. I do not see improvements, so I do not believe you read it. I
->> could
->> imagine people skip reading entire doc (who would listen to the
->> reviewer, right?), but if I give direct link to specific chapter and
->> still not following it, makes me feel quite dissapointed.
->>
->> Best regards,
->> Krzysztof
->>
+>> This is very vague. What exactly changed.
+> 
 > Dear Krzysztof,
 > 
-> I would like to apologize to you again here. I am very sorry for
-> wasting your precious time. I changed the subject from "dt-bindings:
-> mediatek: XXX" to "dt-bindings: media: mediatek,jpeg: XXX" in V3. This
-> change is based on your previous suggestion. Use this command, git log
-> --oneline --
-> Documentation/devicetree/bindings/media/, obtained. But this
-> modification does not meet your requirements. Should I change the
-> subject to "media: dt-bindings: mediatek,jpeg: XXX"?
-> 
-> Another question I need to ask you:
-> MT8195 and MT8196 both have multi-core hardware architectures. Do we
-> need to change the yaml file name from 'mediatek,mt8195-jpegenc.yaml'
-> to 'mediatek,multi-core-jpegenc.yaml'? In my opinion, this is more
-> appropriate. What is your suggestion?
-I asked above about link to documentation. You ignored that part, so
-let's be specific:
+> Sorry for the shortly descriptions. The main changing in V3 is fixed
+> dt-bindings comments by you.
 
-Did you or did you not read the doc I linked last time?
+
+What changed? What comments? Again way too vague.
+
 
 Best regards,
 Krzysztof
