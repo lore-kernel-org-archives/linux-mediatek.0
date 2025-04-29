@@ -4,85 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54350C369DC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Apr 2025 16:35:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B96A5C369DC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Apr 2025 16:46:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kV54NwFT6iZkwZlyhbM/53RtCc7p3xgDGL6ZU6s+YaI=; b=Oko1j4VWqeoNDIKPirj81yd8hf
-	M0MI55mdLqw+FR8b6layB2+amcdd5C/QGdl6joKFZVs0tNdiXA+hNMsS57hWkdZYhjjOlTsF9wVA0
-	69XaTiNrPwOLOO1wqYE4LYGh06/3hgM2MlJO287ZNdSMm1XHp9QdWTZqgRyr3SFBfeciSCFOObvvC
-	A6yr/qjBKxxL2le+3L3IfiXGLOxQK2NCcCHo/VJJ9wCgZejRix1OGSlBoUmfspCV/xHKZVj6Gidpm
-	kgMudm9hcN2/xFTw+ajp/mGFQn4rJabxL/+0OHHmoTcmElIeqviZXYjjRIUgglCBF60f9VoYcNlNM
-	qIlVs/AA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8RFqKNAaAANf36DZ+QmypkHiiueccecSj9PhWODZLjo=; b=BJo7pgwDztQbqVTlBEEeycx/4p
+	NOygl6X4+ZSz2xtqnOk2iI3YM3pk6dqZ4i/QTwcYsTDOR4rWrEq3yXGj2OfIm3B14i9QGCdJHydaE
+	fOZVfTq5oLEeCkfQCrk8g05o4PfxRrPJD4umxxO9/8GbKZHPpsS0b+P2JR+s4XsKN3Z/xnuF6m2uu
+	Potl5yNfwjlHxQqYnnbT92MEF5DP4aC7ooggGArWk4ZPkGnukMau/AuYe4fV49ELtgEagBGLgarzG
+	MT9aXN5v/9z+luzw5bWeuXK57O0onBqENwCtaF2XmB8d3V2+kGomXqLjuMFjxcvUYmjYBQ6Fyd37q
+	55pXKgzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9nv9-0000000AGoj-3X7T;
-	Tue, 29 Apr 2025 16:34:59 +0000
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+	id 1u9o63-0000000AIXJ-3tTx;
+	Tue, 29 Apr 2025 16:46:15 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9nq4-0000000AFx0-1R57
-	for linux-mediatek@lists.infradead.org;
-	Tue, 29 Apr 2025 16:29:45 +0000
-Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-22c33677183so65271765ad.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 29 Apr 2025 09:29:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1745944183; x=1746548983; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=kV54NwFT6iZkwZlyhbM/53RtCc7p3xgDGL6ZU6s+YaI=;
-        b=VLKYR4rDxlWg92bsr9vmtzRaoTVnfe31yppvGV57VWY5/kbeT0S/Ou3vG80ChO/VHl
-         31hglfoqlSf2K0uTEq+aQLwVfZ1WfYI6Fpt3b859whVUgmaoUfjOPYrtu4Y/EB8qsm6c
-         RpRuwFQ4JCDthfwSTnf/pe/lsE+jGDMjLycDT/XfuDinbTqjUKj4oO2qC4B1UWaCCUV0
-         jmIqOORmtCiACaAanDfTg7d8R1GvnwOLx9xhoVUkiSRJw7jbzAOs9sYhvEGCTcIHH00m
-         O2N0jeMf1ncan1qd96I5VH2hvX9CtWJzZGe+ZS3moEQVL/3qNaFFMyqMRHgXbWNRNb3V
-         Y9BQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1745944183; x=1746548983;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=kV54NwFT6iZkwZlyhbM/53RtCc7p3xgDGL6ZU6s+YaI=;
-        b=XWPuAOucCwNr4yvppwr7OXaSWgqNzYuA3NAzdap50FUghDoonQH+QtsFcFrWXrEn+i
-         pNDjjL87FEXSFcbiLGbLpa9jNezGBKiPHledKuam1mEs02pjr8Iv9EAcGtSggcNL5lEf
-         rOJdUQUjFs4xiH0riw/kSf66hojFi1L0Rzvl0xoSq0TNBBYwYPGwXt6jy8AGdllbQXaW
-         XG8+dKjy82Xk7CBemo8tr9kKpY9FYF10QfFuUEslKOymHpRzydl1Q6da3BmaoMjedY6J
-         crEhoaFwc1Dq5BTYuiq+vtyN3HbeUjZxWjgVW4+N+rIT3pEJWgfNILMXlEQHpOrbsdcZ
-         vlwQ==
-X-Forwarded-Encrypted: i=1; AJvYcCX9Pk52hKM/dwqt3lRY3Bmzzhxeiux4CEwWB37SPv9Tc/nrQfFiYajZFaWPV1ZRl24kPvhJNtinDbiLDkvNgg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwQBTDvsmTMEskKT83tdOGt1O7nhwjgKZVlSB9TNvsBXKekD2rk
-	Ij+l8kLNlQUWTdGUbOS1dll3xIsx3mJ+jBiJwp4Nswql6EnhiyP7xVJJrw==
-X-Gm-Gg: ASbGncvnpouzzZb5m+83rYstXQUKs9VkxUYcyzk75wdeiT2r0cyUnDiMd9FangEHZnD
-	oshV9VQUl+zGZiowrFLLFyI/d3F95Ro+ngbHhOFJdAHPwFtgWMAncx4HXUVVErmUygHo/F1LY+n
-	g0i4F+hhJxw+GP9dTSP+Vm/DUki+kvkhuFJPIhzY7XnfzUxMI6MSGH+DYt3ykn1JUn4TNyKYdVE
-	qLWu9v6YunoTAbecPW390CM3yRGMjarEgXx6vRoqVMNtKOQwYaD76TJix+jpB2cVjyaqOFZH0yt
-	HGQyHJXVi2FQ+8gCATnOYd8JTM7Ei6KMnUG5JaHPVw==
-X-Google-Smtp-Source: AGHT+IH7S2ba85QY5A3S71xSkb4HSg57bgRGtTvcCIed7g4fF8lrRFgDVMh3VVGTcfWTqLUWKDpqOQ==
-X-Received: by 2002:a17:903:32c9:b0:223:53fb:e1dd with SMTP id d9443c01a7336-22df3534f10mr200405ad.9.1745944183295;
-        Tue, 29 Apr 2025 09:29:43 -0700 (PDT)
-Received: from google.com ([2620:15c:9d:2:adc2:8397:4f51:d5a0])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-22db4dbd6ebsm104941775ad.80.2025.04.29.09.29.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 29 Apr 2025 09:29:42 -0700 (PDT)
-Date: Tue, 29 Apr 2025 09:29:40 -0700
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: Gary Bisson <bisson.gary@gmail.com>
-Cc: angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com, 
-	linux-input@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] Input: mtk-pmic-keys - fix possible null pointer
- dereference
-Message-ID: <3hpxs4acz4bgef7t3mvdhc2xr6o54vsxthwrpobmaxljo6lryw@lxpeojs5afk2>
-References: <20250429122815.72724-1-bisson.gary@gmail.com>
+	id 1u9lmO-00000009w41-0Bm6;
+	Tue, 29 Apr 2025 14:17:49 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 62F544A8AA;
+	Tue, 29 Apr 2025 14:17:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1BB69C4AF0D;
+	Tue, 29 Apr 2025 14:17:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1745936267;
+	bh=/BXoGZJ5icxIf4fvbX8yXHFsbB3xN9Dr6k/WLaLOqkc=;
+	h=From:Date:Subject:To:Cc:From;
+	b=dMoRaJlLwsODhJQEKwlHMT8OZ1/x0gOgHYC5rEa6dDmD6aKhf4i0YZEe+fQ54jjsW
+	 6u+b8ObfzBHoBoAirSi5BBYdsJ+4HKe9vHxfi0SzblihaL9BeGu1zuxAZJ4TVwyB6x
+	 K3KGD5yNXV6myj3tPkfG1BsBujzSGnFi+MJQdb2jCjECS+pJ3FUiMKU1dLRQtjnuwq
+	 4dyMXl54Ck/GO7tFAzHJquO6QQ28cXOP1km6NBq9DtDaQtfNDsnkzyi5+23PXG9sVc
+	 iyUcEbOpGQyi65N0vFk0LZfkOX6RD7NLnXMC9lySFe4LQYZM5IzcJ5YJyja7ZSUmZa
+	 QPzs0mIXk4/0A==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Tue, 29 Apr 2025 16:17:41 +0200
+Subject: [PATCH net v4] net: airoha: Add missing filed to ppe_mbox_data
+ struct
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250429122815.72724-1-bisson.gary@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250429-airoha-en7581-fix-ppe_mbox_data-v4-1-d2a8b901dad0@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAITfEGgC/42NQQ6CMBBFr0Jm7RgoFNCV9zCEVGeAidKSlhAM4
+ e5WTuDy/fy8t0FgLxzgmmzgeZEgzkYoTgk8B2N7RqHIoFKl00IpNOLdYJBtpesMO1lxmrgdH25
+ tycwGdUldpqigrlIQLZPneDoK9ybyIGF2/nMEl/y3/u9ecsywroh0SuqiS7692Ft+n53vodn3/
+ QtYKHlszwAAAA==
+X-Change-ID: 20250422-airoha-en7581-fix-ppe_mbox_data-56df12d4df72
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ Simon Horman <horms@kernel.org>, Jacob Keller <jacob.e.keller@intel.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250429_092944_378333_55ADBE44 
-X-CRM114-Status: GOOD (  13.80  )
+X-CRM114-CacheID: sfid-20250429_071748_130521_F23C84C0 
+X-CRM114-Status: GOOD (  12.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,23 +79,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 29, 2025 at 02:28:15PM +0200, Gary Bisson wrote:
-> In mtk_pmic_keys_probe, the regs parameter is only set if the button is
-> parsed in the device tree. However, on hardware where the button is left
-> floating, that node will most likely be removed not to enable that
-> input. In that case the code will try to dereference a null pointer.
-> 
-> Let's use the regs struct instead as it is defined for all supported
-> platforms. Note that it is ok setting the key reg even if that latter is
-> disabled as the interrupt won't be enabled anyway.
-> 
-> Fixes: b581acb49aec5 ("Input: mtk-pmic-keys - transfer per-key bit in
-> mtk_pmic_keys_regs")
-> 
-> Signed-off-by: Gary Bisson <bisson.gary@gmail.com>
+The official Airoha EN7581 firmware requires adding max_packet filed in
+ppe_mbox_data struct while the unofficial one used to develop the Airoha
+EN7581 flowtable support does not require this field.
+This patch does not introduce any real backwards compatible issue since
+EN7581 fw is not publicly available in linux-firmware or other
+repositories (e.g. OpenWrt) yet and the official fw version will use this
+new layout. For this reason this change needs to be backported.
+Moreover, add __packed attribute to ppe_mbox_data struct definition and
+make the fw layout padding explicit in init_info struct.
+At the same time use u32 instead of int for init_info and set_info
+struct definitions in ppe_mbox_data struct.
 
-Applied, thank you.
+Fixes: 23290c7bc190d ("net: airoha: Introduce Airoha NPU support")
+Reviewed-by: Simon Horman <horms@kernel.org>
+Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+Changes in v4:
+- use u32 instead of int in ppe_mbox_data struct
+- add __packed attribute to struct definitions and make the fw layout
+  padding explicit in init_info struct
+- Link to v3: https://lore.kernel.org/r/20250422-airoha-en7581-fix-ppe_mbox_data-v3-1-87dd50d2956e@kernel.org
 
+Changes in v3:
+- resend targeting net tree
+- Link to v2: https://lore.kernel.org/r/20250417-airoha-en7581-fix-ppe_mbox_data-v2-1-43433cfbe874@kernel.org
+
+Changes in v2:
+- Add more details to commit log
+- Link to v1: https://lore.kernel.org/r/20250415-airoha-en7581-fix-ppe_mbox_data-v1-1-4408c60ba964@kernel.org
+---
+ drivers/net/ethernet/airoha/airoha_npu.c | 16 +++++++++-------
+ 1 file changed, 9 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ethernet/airoha/airoha_npu.c
+index 7a5710f9ccf6a4a4f555ab63d67cb6b318de9b52..c81e25139d5ff4b6c52ce8802dd9c9b9b6c8c721 100644
+--- a/drivers/net/ethernet/airoha/airoha_npu.c
++++ b/drivers/net/ethernet/airoha/airoha_npu.c
+@@ -104,17 +104,19 @@ struct ppe_mbox_data {
+ 			u8 xpon_hal_api;
+ 			u8 wan_xsi;
+ 			u8 ct_joyme4;
+-			int ppe_type;
+-			int wan_mode;
+-			int wan_sel;
+-		} init_info;
++			u8 max_packet;
++			u8 rsv[3]; /* align to fw layout */
++			u32 ppe_type;
++			u32 wan_mode;
++			u32 wan_sel;
++		} __packed init_info;
+ 		struct {
+-			int func_id;
++			u32 func_id;
+ 			u32 size;
+ 			u32 data;
+-		} set_info;
++		} __packed set_info;
+ 	};
+-};
++} __packed;
+ 
+ static int airoha_npu_send_msg(struct airoha_npu *npu, int func_id,
+ 			       void *p, int size)
+
+---
+base-commit: d4cb1ecc22908ef46f2885ee2978a4f22e90f365
+change-id: 20250422-airoha-en7581-fix-ppe_mbox_data-56df12d4df72
+
+Best regards,
 -- 
-Dmitry
+Lorenzo Bianconi <lorenzo@kernel.org>
+
 
