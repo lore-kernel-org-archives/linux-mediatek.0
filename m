@@ -4,67 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CA5FC369DC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Apr 2025 21:45:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 055F6C369DC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Apr 2025 21:52:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pI1fP3SU9RDRfMl978btmIIMu2VXIi0IDq22V71qH48=; b=zDzz1wgKz3NPRKcPntP+Cx8OMv
-	wMGkxicpUJ4vTE4zJ5ofWAO5HahVo5UCdE5LDNa/do45YKRH2gKZnYvWMWrDY3/rvTS3GK5ui50tm
-	a8YyeCM2EOjja2zKXi4hkgN5HrMea0k0OSmWRmWNHgy1N9nJQ2v2MUVNRYTCPNAaBb/y/72OanSwP
-	cm//WqIZbA7/sFSQXV4Gd9/sOsQ61soDdeFodAxHXdzCNpfKRHMdg2RRZgZVeari280BHrpKGk5Sg
-	LBORQ5S6ZcIefqFtp3gmWvv7rH/fnKdpZpc9wDUUymZgm2iB+0u34oNJU4Oq2l1kiKPy5JT+lA5gE
-	sS5ul7Tg==;
+	bh=Cc3/R3Euwbm7OhCzZ3fvuhaxMZqGqpKCKZRSJU3pbKw=; b=sLdnzo4xfDwcC+YrRdSsMy1Op6
+	arnbTZojyp4xat+0j0/kd4w4UcWdSO3D2nDMPWOf/jUTCU8og8DFvf7ff20OHQ9Y/UvEo0zERINaP
+	jMJQ5wUMkXgdmP5Mh16ikKtl7GPeboNvieO5eZ/ZgzHBsi+WbCwmtGxMOo5HJLj+xURXXzwXU+PzE
+	ow9ZExaNM5n8Nd7SnOHwiE8BAXR7Fp6qpH2+sRsyQUBly3tfUGkeZgzr9M9PTHzF8hnAa2pog6kpB
+	92xtPL9dB8RkbwWxc96Nt0CeLsqcEiuZslMnO6ouQ5PXrziK+rWrF4lB9BAiMOra9UR6MgBX+3JXS
+	sDZkbx6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9slD-0000000AtSi-263U;
-	Tue, 29 Apr 2025 21:45:03 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1u9ssm-0000000AueJ-0WLY;
+	Tue, 29 Apr 2025 21:52:52 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9sic-0000000At8w-2peb;
-	Tue, 29 Apr 2025 21:42:23 +0000
+	id 1u9spu-0000000AuIx-3SDe;
+	Tue, 29 Apr 2025 21:49:54 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B5E9744FCC;
-	Tue, 29 Apr 2025 21:42:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1C0DFC4CEE3;
-	Tue, 29 Apr 2025 21:42:21 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id CC42D68469;
+	Tue, 29 Apr 2025 21:49:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CAF52C4CEEA;
+	Tue, 29 Apr 2025 21:49:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1745962941;
-	bh=ZcjOsmCvWQ9kEExyzI58z4KQxafFY5Y4gSQ0njQDjII=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=udVGbX89zU8DeYmtFGU+gzWJlcMtURBcxIH4Psb+cVWjOfnZupIH1yPFYAcfS2wpH
-	 8vxF5+/cJtINC7hRKLxvR8VVewkoJjKdxjFpi/3OFf+rs43TeGnIo72DrUTimtSMEP
-	 NWnq94MKjTZvke7TabGqu/VEfkZZ1Dgb8JUPz5r5gyKaNClUv3kHTP7BI84oaSRpLR
-	 uHZlXnMon8R4kZjlXXXlwPxWCQ3qI1E8cuPwEBWJXYNeVMP6na6Ne5cgbE3hG1IpK0
-	 p+CAet7cAUBatY9HTflZ3Lm4C22ZXKusib7ZZ6WvnspIt8R7UK2u1tK/snOxJ2lgBQ
-	 A6YG+6b3YwIsA==
-Date: Tue, 29 Apr 2025 14:42:20 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Chad Monroe <chad@monroe.io>, Felix Fietkau <nbd@nbd.name>, Bc-Bocun
- Chen <bc-bocun.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net v2] net: ethernet: mtk_eth_soc: fix SER panic with
- 4GB+ RAM
-Message-ID: <20250429144220.5d22fc1f@kernel.org>
-In-Reply-To: <4adc2aaeb0fb1b9cdc56bf21cf8e7fa328daa345.1745715843.git.daniel@makrotopia.org>
-References: <4adc2aaeb0fb1b9cdc56bf21cf8e7fa328daa345.1745715843.git.daniel@makrotopia.org>
+	s=k20201202; t=1745963393;
+	bh=UjdCZlm7WDqcusIhWqtA1R5cnw9YVjL6XEiRR7s38DE=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=S7B2W2CxVfXVIXga/XZ/s1ih+xgEKADkxWQ/pNgSYjJasHsvyS44SQLnbh9hc+XXQ
+	 sZIMGbYibbNXdJsTXvNDUpY7FcRkH3XIhL/kQ+OsoUlcGJSmDTfBAGeM4aVpXEYaws
+	 hIE6GE+I340K1X20xw33PiR3bjam4jpjOvj/GFMv9R8vWQCMw0zzB+vVRxbzsri/5m
+	 TynzfVg0vvL4bpwr9nRu8Ue6qaq7iNQb7Ox8ufY1bmS8Rw42y7Wt0CIMCmWdn2oYCa
+	 HLwqSH36HjtLKGMMeO3qhaZE02MvyDvMmV3YDRWga7v/XL/PPTxAqQTEGu6uRJNyy3
+	 o59MpG71+cyZQ==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id EB01B3822D4E;
+	Tue, 29 Apr 2025 21:50:33 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250429_144222_732674_DC2655B7 
-X-CRM114-Status: UNSURE (   9.51  )
-X-CRM114-Notice: Please train this message.
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net v2] net: ethernet: mtk_eth_soc: fix SER panic with 4GB+
+ RAM
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <174596343260.1806681.7860771179526030169.git-patchwork-notify@kernel.org>
+Date: Tue, 29 Apr 2025 21:50:32 +0000
+References: <4adc2aaeb0fb1b9cdc56bf21cf8e7fa328daa345.1745715843.git.daniel@makrotopia.org>
+In-Reply-To: <4adc2aaeb0fb1b9cdc56bf21cf8e7fa328daa345.1745715843.git.daniel@makrotopia.org>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: chad@monroe.io, nbd@nbd.name, bc-bocun.chen@mediatek.com,
+ sean.wang@mediatek.com, lorenzo@kernel.org, andrew+netdev@lunn.ch,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,19 +75,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 27 Apr 2025 02:05:44 +0100 Daniel Golle wrote:
-> +		if (MTK_HAS_CAPS(eth->soc->caps, MTK_36BIT_DMA)) {
-> +			if (unlikely(dma_addr =3D=3D DMA_MAPPING_ERROR))
-> +				addr64 =3D FIELD_GET(RX_DMA_ADDR64_MASK,
-> +						   rxd->rxd2);
-> +			else
-> +				addr64 =3D RX_DMA_PREP_ADDR64(dma_addr);
+Hello:
 
-I guess it's correct but FWIW it reads slightly weird that in one
-branch we use FIELD_GET() and in the other "PREP". I get that the
-macros are a bit complicated but to the reader its not obvious whether
-the value stored in addr64 is expected to be shifted or not =F0=9F=A4=B7=EF=
-=B8=8F
+This patch was applied to netdev/net.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-> + rxd->rxd2 =3D RX_DMA_PREP_PLEN0(ring->buf_size) | addr64;=20
+On Sun, 27 Apr 2025 02:05:44 +0100 you wrote:
+> From: Chad Monroe <chad@monroe.io>
+> 
+> If the mtk_poll_rx() function detects the MTK_RESETTING flag, it will
+> jump to release_desc and refill the high word of the SDP on the 4GB RFB.
+> Subsequently, mtk_rx_clean will process an incorrect SDP, leading to a
+> panic.
+> 
+> [...]
+
+Here is the summary with links:
+  - [net,v2] net: ethernet: mtk_eth_soc: fix SER panic with 4GB+ RAM
+    https://git.kernel.org/netdev/net/c/6e0490fc36cd
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
