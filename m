@@ -4,75 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF1D1C369DC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Apr 2025 02:37:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81E90C369D9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Apr 2025 03:46:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0MUPcI9cmqC3aUypbZqtXOEO2f8CqTwiFzHdEbsgWe4=; b=QoPkkSFAWj5yzMIvA/6+f/Jc6A
-	Yjqh5QNwcMcA0Fh7/pVNnjCTsRLIdCCdaoJ4P9sylsCC1k0apy/OZG90+SEY24XaFs50nJ2hco93z
-	O+EExEpDmtqkLFdaM2etaoqIvhg6FRPzKc8Go3VLzGeLyOLg+cR3RgibFeObdcPYXjd9Vk2YdoiNw
-	S/HIJwuvbw7cWAQ6hW3+xHww8KXb2+hIQtfffopkbK5fENr+RqdYfW8iaw7uo4XF2z7jzDhtvXuJK
-	s2Jwp6LfjVRPN0l2x4Hd5sY09hcFr02fmf4BHs5GH6NUjdG8al0mm/WMfLr79bO0UzEVyYuellJJ4
-	Zo2VRfdA==;
+	bh=fhAb2mT+fyT8upg5XD0EI120EbN8Z5ps/VEsYnNlyR4=; b=mSWHZJNk2rgaeC1I9bc4ROQ7Eb
+	uQ+WF69BWqVWORYJV3/dJmPKd2FR83lYizRuxSieJ8SgDCaftRFxJDamF2wZCQiVGxsVhH2LNx6Qb
+	ALU1JLjzfM8vo5yrKsenZdaPSyEZMbVx378RQP3vqnx6dcYnttCZrbTivyGzA8ipuNmWf4F+o9ndZ
+	M8YKwKaRvD51vXhl0Bp2DE0rb4UB5gL4U0KYcA71wvleW0aJS7DVhI8MdnP58PJFU3rDqMehBpbUz
+	IhjODHnoXcwcn3vH7u2O4n27CFeP1D8qho/yLk0To6pOkyWdX4TTKZSOTpbEu1cATXCcVQcRtGVBH
+	FLz9KQfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9xK3-0000000BWdv-3cZL;
-	Wed, 30 Apr 2025 02:37:19 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1u9xK2-0000000BWdb-1WfQ;
-	Wed, 30 Apr 2025 02:37:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=0MUPcI9cmqC3aUypbZqtXOEO2f8CqTwiFzHdEbsgWe4=; b=CH560dFcfvsSzCjcwDUUnutBwU
-	rSNBPbO77t0wdN4iqKCw71y7gKWhWrB2+UBX+LOAJe+toQiK2myALsUROjEIz6GR1aiJvLFXpqC7J
-	gcBhb5Thn8qpXn3shfDCSfsiZGvh6Pdu/QL9+PwdaikZeVHm7iV+7r//mA82mUI2BEJhWKQ/D3cqk
-	MIrBovuQbuPflMEcUF7VilPyI+UETppH13mUa5x4H3Rh9j8oAMhoi3A40TxjQzeO+AnZVjiwDp2LA
-	aJ8mrgL43mh03FCVcFKv+roPdhrUp2/XtLruABXXdIt6l4ncsp3Vc544NY390nhpXGSOeeVyD0SNL
-	3XisVGSw==;
+	id 1u9yOs-0000000Bbyj-23xk;
+	Wed, 30 Apr 2025 03:46:22 +0000
 Received: from mgamail.intel.com ([198.175.65.14])
-	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1u9xJy-0000000De8r-3fI6;
-	Wed, 30 Apr 2025 02:37:17 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1u9xLN-0000000BWiQ-1hn3;
+	Wed, 30 Apr 2025 02:38:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1745980635; x=1777516635;
+  t=1745980721; x=1777516721;
   h=message-id:date:mime-version:subject:to:cc:references:
    from:in-reply-to:content-transfer-encoding;
-  bh=UeVWVQMtCSgoY6I17XEsqNEXKT0TWbHaFTIMLOeTnTs=;
-  b=kQPC8tLSmMmROAf3PSFKKgM88usvOiueYDPvESnp+ogBfLU63eybnHh8
-   RtMUTsJcPbUWIf3r0iSMCbw6QeEQRJ41KnLaGmt8UeeL+mzClM8LzFUd2
-   qYjxFRoAWp3lCVQQ0Oq7pGn6ZWx816gSxHw8reLo6MfR6yoqH5RsT/xAK
-   rxWy0flmFAXoUj7nQYcNtVBMjlpo7WXpbfWq9WzBoMejYe9lyS0q77NYL
-   dDbtM8nbcKcnhRMheUQL8Tx0Rva5Vm/V3Qye0UzpKkHbUt1LWA18i9wcb
-   UENU6ZQhdM4utDpLkw6YcKX17QP4RTmZUkq3EKN3yQCUiNmZAkL8DHTbx
-   w==;
-X-CSE-ConnectionGUID: fb4fMSmqQ86HmlySG60Kiw==
-X-CSE-MsgGUID: lueR3U/hQXaGuKjVieY/Xg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11418"; a="51445222"
+  bh=z6s3YPMqRWDP6hk7iOLyjE8AjXiCVoO/HzYvSsyvfgc=;
+  b=jyBh+egfB5TtqaKouTV8ZdiPsvsTM9tLTelFFyJzbIyXKWvBNmw6LHFu
+   /XrujNg+DBlAfcpFY/zzaHSz8+VFcKvXr1Nz2o3rQJzwIUMa0TVgkmseG
+   egZx7XybZcfw13PRVCFzqM5QFgIU6KvVP0Ga8Faa17pGd0VxOtIOQ85P4
+   vT3El3l/hk+MyU0u7A8BlF3DkeoOo8yjABbe+xc2PgNU7hVlllRZ42NWA
+   i7VoDwgCGCF5w4IvXm0/tnH1q90UlQMKYl0u5EMbEmUajj5RYUA/BCWDd
+   e96NrAdmtt/frkYGwJvDgNYyNvhichLK28Iy/5XazLujbpKt2HLsvmI+s
+   Q==;
+X-CSE-ConnectionGUID: dFWLqJvjTC+yp0WYgR/6PA==
+X-CSE-MsgGUID: IkxIIHdrTFCEvPvAwR5CpQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11418"; a="51445366"
 X-IronPort-AV: E=Sophos;i="6.15,250,1739865600"; 
-   d="scan'208";a="51445222"
+   d="scan'208";a="51445366"
 Received: from fmviesa010.fm.intel.com ([10.60.135.150])
-  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Apr 2025 19:37:10 -0700
-X-CSE-ConnectionGUID: rPKpQb86Qv+hi9Gbn/bOCw==
-X-CSE-MsgGUID: eN7Ab3jZTbWZDraScrUmnA==
+  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Apr 2025 19:38:40 -0700
+X-CSE-ConnectionGUID: x1GszayAR3umhh+jpQ6E4A==
+X-CSE-MsgGUID: PISqLkxoS+KMge4QNm3Eqg==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.15,250,1739865600"; 
-   d="scan'208";a="134508430"
+   d="scan'208";a="134508627"
 Received: from allen-sbox.sh.intel.com (HELO [10.239.159.30]) ([10.239.159.30])
-  by fmviesa010-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Apr 2025 19:37:00 -0700
-Message-ID: <0a5f2f46-f474-49d3-baee-59f2ad0a6f0a@linux.intel.com>
-Date: Wed, 30 Apr 2025 10:32:46 +0800
+  by fmviesa010-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Apr 2025 19:38:26 -0700
+Message-ID: <75c7d479-5310-4e1d-bb0e-71ea363fcc90@linux.intel.com>
+Date: Wed, 30 Apr 2025 10:34:13 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/7] iommu: Remove ops.pgsize_bitmap from drivers that
- don't use it
+Subject: Re: [PATCH 7/7] iommu: Remove ops->pgsize_bitmap
 To: Jason Gunthorpe <jgg@nvidia.com>, Alexandre Ghiti <alex@ghiti.fr>,
  Alim Akhtar <alim.akhtar@samsung.com>,
  Alyssa Rosenzweig <alyssa@rosenzweig.io>,
@@ -103,15 +88,16 @@ To: Jason Gunthorpe <jgg@nvidia.com>, Alexandre Ghiti <alex@ghiti.fr>,
  Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
  Chunyan Zhang <zhang.lyra@gmail.com>
 Cc: patches@lists.linux.dev
-References: <3-v1-7c5282b0c334+2db-iommu_rm_ops_pgsize_jgg@nvidia.com>
+References: <7-v1-7c5282b0c334+2db-iommu_rm_ops_pgsize_jgg@nvidia.com>
 Content-Language: en-US
 From: Baolu Lu <baolu.lu@linux.intel.com>
-In-Reply-To: <3-v1-7c5282b0c334+2db-iommu_rm_ops_pgsize_jgg@nvidia.com>
+In-Reply-To: <7-v1-7c5282b0c334+2db-iommu_rm_ops_pgsize_jgg@nvidia.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250430_033715_447465_9734B9EF 
-X-CRM114-Status: GOOD (  10.50  )
+X-CRM114-CacheID: sfid-20250429_193841_534899_29A6D662 
+X-CRM114-Status: UNSURE (   6.20  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,20 +113,9 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 4/29/25 22:34, Jason Gunthorpe wrote:
-> These drivers all set the domain->pgsize_bitmap in their
-> domain_alloc_paging() functions, so the ops value is never used. Delete
-> it.
+> No driver uses it now, remove the core code.
 > 
 > Signed-off-by: Jason Gunthorpe<jgg@nvidia.com>
-> ---
->   drivers/iommu/apple-dart.c       | 1 -
->   drivers/iommu/intel/iommu.c      | 1 -
->   drivers/iommu/iommufd/selftest.c | 1 -
->   drivers/iommu/riscv/iommu.c      | 1 -
->   drivers/iommu/virtio-iommu.c     | 6 ++----
->   5 files changed, 2 insertions(+), 8 deletions(-)
-
-For intel vt-d driver,
 
 Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
 
