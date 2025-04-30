@@ -4,179 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FA12C369D9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Apr 2025 13:26:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A411DC369D9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Apr 2025 13:36:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=A+fCeK3RhMW9cQNdcJHiBgPzuG0Sz1KdHFjmMHD6i2o=; b=diubWeAAZnjMfxF4zbgyXZDIUc
-	4N6ezdpyt97Yk8bIYtWpUf29I2fLIxhFcBBaceksK+V3sqvr+HmAiw2PWGHIg1dW9td7z1jo5f5nF
-	gdWSyCLucNvOswv2Zb9Y86RIWchI/iQwLiDxlYNPIpXDWYkYJwKw3wDX5M6WlNmwYv88Nm+GVmxV+
-	b+/Nk9wC6nP9s4ilFbd53i8cQe5fgwcRDBDNG8lidktmJn8aF5JJ1iRNPRa5HLiLf6UiruDS2xNyZ
-	CQEsWnVfpCVya2iNDMvvyEnIru3NoVOyrVaj/SN8y3806l9Q/iTdK0NWjnxtNoNkIIM9bccj6muSZ
-	iCjcnLwQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=/36ujSLIAfT1/bczMYnnhA2ecNfiw2Pfe9nP6xpk+jc=; b=uTvujh3Z97zHOmtka170cXGRTR
+	ksmF1pnYxkKoqt3kAINrgeWaHdHaCWLmIqp38c75+6NICxP4G8FMtAF5vrySyblNPVCsw83nbpQWd
+	/73H+0CUi9M3IYWynSEnv578DzbjP9s1fVwkR0w5EwZwiIGeUHWNmAnJ4Z1j7LPK0IjlpT6xLZLG4
+	QLixFb+/ylLEp2vtNdY82Rm+30oHmwT2IJZJm7lMZv2U2LNQzfChH7tp/8zglobVG3y9mZfZSox4L
+	Dp0wnB2YhI2Wrt6HtD+W78LeVKWK3LRFa/ukWgAoGH0JdeMzxw6cvMooqDvB7eX/7YcTxaayB3E4y
+	atj1hzuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uA7Rx-0000000Czef-0VUZ;
-	Wed, 30 Apr 2025 13:26:09 +0000
-Received: from mail-bn8nam04on2060c.outbound.protection.outlook.com ([2a01:111:f403:2408::60c] helo=NAM04-BN8-obe.outbound.protection.outlook.com)
+	id 1uA7cA-0000000D1E9-1xuJ;
+	Wed, 30 Apr 2025 13:36:42 +0000
+Received: from mail.cjdns.fr ([5.135.140.105])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uA7Ng-0000000Cyzo-0eee;
-	Wed, 30 Apr 2025 13:21:47 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=onTszF8WQovRS879qkfdSv1SpXaAZa7fn1gO5+Ikvvg5YOmEjezCyEc//wiwk3nMgguuMXQ/zh7D7zjxt5UOnpr8bCvm+7/KsOuE9cVskyf1eq0358N4hZR/N1V59X5WOa6VI8E3yeFgExvoaQQzTbx2sMKDXU9iXSi2iOOkD2iNge5EUe30F33o340ugqV+tbhOeufPtY6WfKpy91fY91eAeOvOep+KZ93MIhd7ZQByi7ifY24Oazb5xhTPyEocIldVR4xrGg/+/nWw5cDDiyAGzX1sQkFcl1nO6Vxaa4Tg3YZQX9lNMqWlJ1o2RnW3++j2h04d3DJHNRt32t0xgw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=A+fCeK3RhMW9cQNdcJHiBgPzuG0Sz1KdHFjmMHD6i2o=;
- b=XahR1YZhCN5k4m9Upqc1jBwq7/f2U5FqfCNtNqMli+37c61+j3Aq6U9f1GPmPjyMZ2sMiG+xy4RVvbUpFPCykBj8yaOW/tqgEFi+/fRvGHoNndbRGgHbH9DxRIZWY8N/aXSlFIEoShe1dBf8KANX7QNQGucizDfWxiXrDl8MsA02yemEjaz9Koo18pPd4V+NqWK2digeHWDvDKQH4xJ+A3FHKNHv9vs+naNmaZAJTV9kyZXIYhumbEXFsng64z0Mba7t7aj8PBroDPaWS3lh7SzN7T0Jd3e37PxeUNQc8j6UwZtM4TpEAn2iAdoYUQJHnZDMVaUoCPYJ+TZTsLp1oQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=A+fCeK3RhMW9cQNdcJHiBgPzuG0Sz1KdHFjmMHD6i2o=;
- b=tBg6iagrWUTfl9bqVBD8B0/GkBJ4BGH3AjrJjvMZz5/vh9RRHATmW0av00WKEdY9TfDUoaXYCRFMRzLvVhK1VbolV9EHfuRdfPAus4voQFeDbS4QYYU7kVBRiPmNIp4PlPDIBVxNysjwfOEmEjFKlyIfvLk9uQ/TqLN8XSH3Df7QTD/JFK4m5hiU9venN4Fn27P4vZu8THNOXbrm5IoGLB832CwgUPce4ixEINEkMS1Q0UaX8jieDacGqciA2/HQlVyGjWyUx4wG3AKgNdU4ga0EMsFWbyJaGpda2CnqN6Jc9LrnbKyz50ZCRjqI1ehVThDPLjLeHmbbD2NKyjWhrQ==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from CH3PR12MB8659.namprd12.prod.outlook.com (2603:10b6:610:17c::13)
- by DM4PR12MB8522.namprd12.prod.outlook.com (2603:10b6:8:18f::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8678.31; Wed, 30 Apr
- 2025 13:21:37 +0000
-Received: from CH3PR12MB8659.namprd12.prod.outlook.com
- ([fe80::6eb6:7d37:7b4b:1732]) by CH3PR12MB8659.namprd12.prod.outlook.com
- ([fe80::6eb6:7d37:7b4b:1732%4]) with mapi id 15.20.8678.028; Wed, 30 Apr 2025
- 13:21:37 +0000
-Date: Wed, 30 Apr 2025 10:21:35 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Niklas Schnelle <schnelle@linux.ibm.com>
-Cc: Alexandre Ghiti <alex@ghiti.fr>, Alim Akhtar <alim.akhtar@samsung.com>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Albert Ou <aou@eecs.berkeley.edu>, asahi@lists.linux.dev,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Lu Baolu <baolu.lu@linux.intel.com>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
-	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
-	Janne Grunau <j@jannau.net>,
-	Jean-Philippe Brucker <jean-philippe@linaro.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Joerg Roedel <joro@8bytes.org>, Kevin Tian <kevin.tian@intel.com>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Matthew Rosato <mjrosato@linux.ibm.com>,
-	Neal Gompa <neal@gompa.dev>, Orson Zhai <orsonzhai@gmail.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Rob Clark <robdclark@gmail.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Sven Peter <sven@svenpeter.dev>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Tomasz Jeznach <tjeznach@rivosinc.com>,
-	Krishna Reddy <vdumpa@nvidia.com>, virtualization@lists.linux.dev,
-	Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>,
-	Yong Wu <yong.wu@mediatek.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>, patches@lists.linux.dev
-Subject: Re: [PATCH 4/7] iommu: Remove iommu_ops pgsize_bitmap from simple
- drivers
-Message-ID: <20250430132135.GG2260709@nvidia.com>
-References: <4-v1-7c5282b0c334+2db-iommu_rm_ops_pgsize_jgg@nvidia.com>
- <176e3870fd0284a05a19d424ad1a56e73120573c.camel@linux.ibm.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <176e3870fd0284a05a19d424ad1a56e73120573c.camel@linux.ibm.com>
-X-ClientProxiedBy: BN8PR15CA0070.namprd15.prod.outlook.com
- (2603:10b6:408:80::47) To CH3PR12MB8659.namprd12.prod.outlook.com
- (2603:10b6:610:17c::13)
+	id 1uA7aO-0000000D0zM-2S4J
+	for linux-mediatek@lists.infradead.org;
+	Wed, 30 Apr 2025 13:34:54 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 5F4EB90C65;
+	Wed, 30 Apr 2025 15:34:44 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
+	t=1746020087; h=from:subject:date:message-id:to:cc:mime-version:
+	 content-transfer-encoding; bh=/36ujSLIAfT1/bczMYnnhA2ecNfiw2Pfe9nP6xpk+jc=;
+	b=FAqiWrIAIiODWGrPVUG5Vg9b+hG2ncDybQkKTcP2PcNzfpDKszMTRDNFNDqPVAmNrQG+XN
+	IkfckDQOA7DFa0+HN33OxV/dA6/KLDmh71aNPWkV4OpJ9HVKh9iFF+VUEaErL1nr0f/Ygo
+	ZWc/Rfy+kmWB/Mucvsr1vJcSPnzJLdIt87KbZQFlycctPGQtLIiredNBia3mDabaC1u16a
+	IrpE4RfimtdY3WJlkzbxtX//dM8Q+n5Zs0G/OJ+5HCnf9Pd7uM0bLgyhj2guiouNQRS7NJ
+	j7Y/cw72OlfZ4Z8bkpysxPqy/nUD6ATouCwOltQ74ppqVHApjODu63fSYsSqIg==
+From: Caleb James DeLisle <cjd@cjdns.fr>
+To: linux-mips@vger.kernel.org
+Cc: tglx@linutronix.de,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	tsbogend@alpha.franken.de,
+	daniel.lezcano@linaro.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	benjamin.larsson@genexis.eu,
+	linux-mediatek@lists.infradead.org,
+	cjd@cjdns.fr
+Subject: [PATCH v4 0/7] Add EcoNet EN751221 MIPS platform support
+Date: Wed, 30 Apr 2025 13:34:26 +0000
+Message-Id: <20250430133433.22222-1-cjd@cjdns.fr>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH3PR12MB8659:EE_|DM4PR12MB8522:EE_
-X-MS-Office365-Filtering-Correlation-Id: 03ce9bde-ed6c-495f-4b8b-08dd87e9ef59
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|7416014|366016;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?nmyVf1prK4Fhwddws/K2pvUhD5zfy+83pP3Tbc/G9MPD7vnU2bro6MThENIp?=
- =?us-ascii?Q?HF/qKf/wFlhxkE+KZ/qzsjdUxmgbkmbif+x7YoeYHKguw0ISuqVxrGjtjMVn?=
- =?us-ascii?Q?rH8eX/rlyBbRum3QvMhVaTIlBwL+GZMa1bdjdJyPilPaDs+yZsbqOaQH7lqG?=
- =?us-ascii?Q?zjEWSfKVtwiQ0prWCV5qvrBMckZ/bs5Crl8vbquokp9zSkZP8urGh4bdAb6j?=
- =?us-ascii?Q?C7unmHqWL8C24bR/GilFeqAkgmf57so9dR1sZeyM5ln6PfsYDZOjDcUPR5y7?=
- =?us-ascii?Q?oLgR6zr1RVXE+77QBTePU7sc8uyUGT6WwfkdTLjmmBKvSADqF0Wxa35Kmwev?=
- =?us-ascii?Q?5jav1dFDNorPNfYYhRPg5/yqoe5QNBCyUBmapu3i9F+YmaUBRD5zJegFidCX?=
- =?us-ascii?Q?CPyVc8MpsLKw/FTVJ1ySwUUBTT6cD40wyc8MBjWGxkpqOlruuhFLnPo0KFfZ?=
- =?us-ascii?Q?6uCHw8RVnCMXRn9Uxpi8Ss1IjJnWWMDXJtQaP87GCCIck4Zps1GzvmauTFKr?=
- =?us-ascii?Q?9Qk66ccGIUO0CcA3SuPP8gsTG59gkv8QRIVUk20BShqdNCsVpVRQHfxXTo2s?=
- =?us-ascii?Q?XSt6qmU4gbY1s0eoTVLCPI8yyy/c6Gm+1uX9PG5o33i7fw/tMOtofiM+L60Z?=
- =?us-ascii?Q?VKpTZqATphBxaemOXZKZhEVGnCPGh3s9GjII4NjcaqHOhJj6+F+QawNjYyl1?=
- =?us-ascii?Q?X3672dEGBBp9Ev2RmiTbgn6q6uFNVNMAJOrZCjj6FwLdlxJNq18lp1zJ46X2?=
- =?us-ascii?Q?vLptU8PNGzouQy9g4mSpuPoC+O18nYZvLE+vlr9kP8T7iV480RngH5eZQN3/?=
- =?us-ascii?Q?c+k/BmRlmm5JCiDVYwZnOyiljR/d5yCVsf8j+Odpa8IGbYoC3dqm4OTRvXzn?=
- =?us-ascii?Q?6+1hs4B23IjtNE6LyLx3c8Z8rAxvG/lLzQ1P6uuoyFKSg73LEXU3PxR4923K?=
- =?us-ascii?Q?aJYnHRpw65Rn7COQo+z/jz0mkAokGvff3B4Iio34LYLKxnlUYx2X/FjuDL4h?=
- =?us-ascii?Q?yi0GegiKWQCkinlb4fWZZQN+jVtRTIYdKMs67xmBHj4QC8J7dGSlN0PS9etU?=
- =?us-ascii?Q?1s67gt/AUlDBlZO7yvhRkCGlvTf289Qoi3e0YGDQN0B2lGPDkB340Nq5Bq1G?=
- =?us-ascii?Q?+TS5IiqFBnBqOiOjpZaLroHyZkbsP3QrZwwEVSuUSI/Js/EBrsFRzXDs2EP6?=
- =?us-ascii?Q?0XmLsiDxNXMvp0dCV8fWfQl3E/OHvSq4tLPJj7vI1uXs9BmKnFX+R2D/MQ/d?=
- =?us-ascii?Q?TnyKzR+uBz6lhVSN00QMw+YetVMF6lbO7fYsdgl/HrKcOw+23F0kquBB4oC4?=
- =?us-ascii?Q?iEyD4zV4lFUWhwEZSgv4hajc2meoeicIZ667h8+Qy3ZJluvwKLDq0SmH8Ech?=
- =?us-ascii?Q?LohitAtyEzyYFs6szhaQD983zhyEtE+9tdXb15f9H7J4q/+3G9jZTWfemboH?=
- =?us-ascii?Q?s/8inVSGeBw=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH3PR12MB8659.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(7416014)(366016);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?keIDy9IanXwRRIHvFt9kCLIrVd1vwiYLPGzd9YrbdVMSFYOyryOmUcLYp+Q6?=
- =?us-ascii?Q?Yv/Cc2O7MpeMk9tpFgchzeVp7tOfJg0kApZgScCHoc/JlvHkWGsl3mnELL0v?=
- =?us-ascii?Q?i9GKhB3chQM5zBNyz8+zfYMvmKmWcbjkDsc/X3jB8QT/9dhOqWA9mFrAOI0a?=
- =?us-ascii?Q?pmBV1IzP7YAu5q6NzgnRDKHfymNWmkFSyFF2ktr7dBXAarAK6p8gCu4lzPQC?=
- =?us-ascii?Q?+FYMQC7yK/crgrVC8+3UdQoYo9CSXvtZR2PKQH5AYZspZ3FZe5GDfHUFMyms?=
- =?us-ascii?Q?kNYGuDFRxderGoBYzcgd5qI6sOfZzqha7KuDptv8l0klfSaDkfWD7Lv63i/t?=
- =?us-ascii?Q?RNlf5+NGoLhmRqQw1AABR3Lyh+wHopATb/mRv2c3qe00BwDxWfmnPXqtXNCh?=
- =?us-ascii?Q?d79/tKNrHegrAHHf39gXdjICYe8INBrxPGUsLS3UzI4y3IMLs64yM57MvPv6?=
- =?us-ascii?Q?uDUK358ObpmU8KKG0lF/QprReQSkIWUI87yVBH9FMluZJgjOw8n9lbWpjWTL?=
- =?us-ascii?Q?aO06OMfkLEu2UV4syGZ4votnguLC2ZYqE3bjjlBOUpOFfTUBvCtTue8BxHPF?=
- =?us-ascii?Q?j53jgmKYTyfWqk0UwXnW+w59p9C7RMhmwQrMKcSp/2R46Yg+RL2C9g8FuNGK?=
- =?us-ascii?Q?1p2SD+NLivOQNo1hh36uwLke0BT7j5O21/YdXbdyQnV00H82zERejPsGJZIw?=
- =?us-ascii?Q?xDBtkkKUHW9yyWhlPmPUkEIzs2SHZGGqpQTowSdnsHmlp6BnqsBsDqGAslk7?=
- =?us-ascii?Q?XiYRSLc4z806YTGswICtLX1CmknCWDLi7NCJIUk3X5lfKy+DysO0SH5/u9yU?=
- =?us-ascii?Q?rC6NVBG6UoUtyyo9lZ2zpR1cI0TK1bVAkORqyjSXlR2HDGjNE8oSWgC1tPKp?=
- =?us-ascii?Q?rP4Gsn/NOcq9L7NEsOzxIuWNxFqic0D6tJmZzNDkzW2Syo1VxyCCp2bZBa0W?=
- =?us-ascii?Q?QkqyRAcXV5lN9LCgoh4dtPhNBeYIEdlna68Mrb9YCmwPW/8WVARBhTL02IQs?=
- =?us-ascii?Q?pfeJiKymFJOzIkSJvDPoVou3LOKEqXUeJcoddEihTW4YAg66RnfKB2LittWF?=
- =?us-ascii?Q?AQw3MlEZJdqV3uBdNA9U9zfkt4dlcNNX65aVMw/a3fqRAgEg6kL7C0+hBjdT?=
- =?us-ascii?Q?MODHKV5D4LFwTRxlKP4fhJ2w2lgAQpO12BLbE8PbCsDcPoYyrMMhG9K2mGDs?=
- =?us-ascii?Q?BzpTFt1SQ7MAlIx2pWFn3BaBJ8F0k6piOUF+nvTto4h5flnAwyokxV2xnVla?=
- =?us-ascii?Q?DGMqGf5K917wz9U7Ocj1Pbu/ABmEoZO0r/0rYw3yvi5ZJVAsVyGPFg3MJLbr?=
- =?us-ascii?Q?wfaggqEHQPFfuOhdPvsO1cW8gQY9YWlhhLl5TM3n5sQkN8gTQzHn16BqqGaj?=
- =?us-ascii?Q?Y6wGqKqI8pZov1+txhI+igB4WetzLgD9hH0ZIHc6KGdE4j2/ePybCDX78QLb?=
- =?us-ascii?Q?vHg5ISn3x4Xn0wPViClpaqgmLCEFl6WxvI5a1Q9+3IGfnimVbVLRP04TRIhf?=
- =?us-ascii?Q?wRA24ysfdzpszk4IQXbjz/DRDkK73yBFhG3XfYcPTmpBxdO3ctwqEYRs00yp?=
- =?us-ascii?Q?GPHnZN/YvcJf4NjWxnj0s2IvL4kZsGYPqo7Ubf5w?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 03ce9bde-ed6c-495f-4b8b-08dd87e9ef59
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB8659.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Apr 2025 13:21:37.2346
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: +FPWT5G/ObIgONcmu4tE3WiX723coE2zL41KFmtxdX7YvxJB1RYqaIuUAOsvV1MH
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB8522
+Content-Transfer-Encoding: 8bit
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250430_062144_195665_5E7E7A0A 
-X-CRM114-Status: GOOD (  15.34  )
+X-CRM114-CacheID: sfid-20250430_063452_998430_0E76203A 
+X-CRM114-Status: GOOD (  11.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -191,35 +73,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 30, 2025 at 03:15:14PM +0200, Niklas Schnelle wrote:
-> > diff --git a/drivers/iommu/s390-iommu.c b/drivers/iommu/s390-iommu.c
-> > index 433b59f435302b..9c80d61deb2c0b 100644
-> > --- a/drivers/iommu/s390-iommu.c
-> > +++ b/drivers/iommu/s390-iommu.c
-> > @@ -557,6 +557,7 @@ static struct iommu_domain *s390_domain_alloc_paging(struct device *dev)
-> >  	}
-> >  	zdev->end_dma = zdev->start_dma + aperture_size - 1;
-> >  
-> > +	s390_domain->domain.pgsize_bitmap = SZ_4K;
-> >  	s390_domain->domain.geometry.force_aperture = true;
-> >  	s390_domain->domain.geometry.aperture_start = 0;
-> >  	s390_domain->domain.geometry.aperture_end = max_tbl_size(s390_domain);
-> > @@ -1158,7 +1159,6 @@ static struct iommu_domain blocking_domain = {
-> >  	.domain_alloc_paging = s390_domain_alloc_paging, \
-> >  	.probe_device = s390_iommu_probe_device, \
-> >  	.device_group = generic_device_group, \
-> > -	.pgsize_bitmap = SZ_4K, \
-> >  	.get_resv_regions = s390_iommu_get_resv_regions, \
-> >  	.default_domain_ops = &(const struct iommu_domain_ops) { \
-> >  		.attach_dev	= s390_iommu_attach_device, \
-> 
-> I'm guessing there's no particular thought behind not adding an empty
-> line for s390-iommu.c like for the others? I slightly prefer not having
-> an empty line here but would be fine with it too, so just curious.
+EcoNet MIPS SoCs are big endian machines based on 34Kc and 1004Kc
+processors. They are found in xDSL and xPON modems, and contain PCM
+(VoIP), Ethernet, USB, GPIO, I2C, SPI (Flash), UART, and PCIe.
 
-I think it was just done at a different time, I had to rebase this
-hunk..
+The EcoNet MIPS SoCs are divided broadly into two families, the
+EN751221 family based on the 34Kc, and the EN751627 family based on
+the 1004Kc. Individual SoCs within a family are very similar, only
+with different peripherals.
 
-Thanks,
-Jason
+This patchset adds basic "boots to a console" support for the EN751221
+family and adds SmartFiber XP8421-B, a low cost commercially available
+board that is useful for testing and development.
+
+Note that Airoha (AN7523, AN7581) is similar to EcoNet in terms of
+peripherals, and for historical reasons Airoha chips are sometimes
+referred to with the EN75xx prefix. However this is a different
+platform because Airoha chips are ARM based.
+
+This patchset is against mips-next.
+
+v3 -> v4
+* Rebase to 3b3704261e851e25983860e4c352f1f73786f4ab
+* Omit already accepted patches (thanks guys!):
+  - https://patchwork.kernel.org/project/linux-mips/patch/20250330170306.2584136-2-cjd@cjdns.fr/
+  - https://patchwork.kernel.org/project/linux-mips/patch/20250330170306.2584136-3-cjd@cjdns.fr/
+  - https://patchwork.kernel.org/project/linux-mips/patch/20250330170306.2584136-4-cjd@cjdns.fr/
+
+v2 -> v3
+* econet,en751221-timer.yaml -> Improve code style
+* vendor-prefixes.yaml -> Correct alphabetic order
+* en751221.dtsi
+  - interrupt-controller code style
+  - serial: Explain reason for clock-frequency = <1843200>
+* v3->v3 diff provided for reference
+  - https://gist.github.com/cjdelisle/21c9f0cd225f499bdff3c574c7f185f2
+* CC: linux-mediatek@lists.infradead.org who may be interested.
+
+v1 -> v2
+* Codestyle
+  - Apply codestyle from "The tip tree handbook" and recommendations
+  - Remove "_rai" and "_m" symbol suffixes which are not standard
+* irq-econet-en751221.c
+  - Use cleanup.h _guard() and _free()
+  - Separate irq_domain_ops from irq_chip, eliminating econet_intc struct
+  - Remove irqsave in econet_wreg, irqs are already disabled in mask/unmask
+  - Add explainatory comments
+  - Refactor shadow logic for clarity, e.g. INTC_NO_SHADOW -> NOT_PERCPU
+  - Improve error handling in case of invalid DTS
+* econet,timer-hpt.yaml
+  - Rename to econet,timer-en751221.yaml
+  - Impose rule: "reg" must have 1 item on EN751221 and 2 on EN751627
+* timer-econet-hpt.c
+  - Rename to timer-econet-en751221.c to follow naming scheme from DT
+* econet,en751221-intc.yaml
+  - Fix validation error from required: interrupt-parent
+  - shadow-interrupts -> switch to uint32-matrix for list of pairs
+* MAINTAINERS -> Fixed accidental F: MAINTAINERS
+* Replace "test image" with device SmartFiber-XP8421-B
+* Restructure arch/mips/econet/Kconfig per arch/mips/ralink example
+* v1->v2 diff is offered for reference:
+  - https://gist.github.com/cjdelisle/bb3acab78b5f70dcdfe5dd6338293efe
+
+
+Caleb James DeLisle (7):
+  dt-bindings: timer: Add EcoNet EN751221 "HPT" CPU Timer
+  clocksource/drivers: Add EcoNet Timer HPT driver
+  dt-bindings: mips: Add EcoNet platform binding
+  mips: Add EcoNet MIPS platform support
+  dt-bindings: vendor-prefixes: Add SmartFiber
+  mips: dts: Add EcoNet DTS with EN751221 and SmartFiber XP8421-B board
+  MAINTAINERS: Add entry for newly added EcoNet platform.
+
+ .../devicetree/bindings/mips/econet.yaml      |  26 +++
+ .../bindings/timer/econet,en751221-timer.yaml |  80 +++++++
+ .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
+ MAINTAINERS                                   |  12 +
+ arch/mips/Kbuild.platforms                    |   1 +
+ arch/mips/Kconfig                             |  25 ++
+ arch/mips/boot/compressed/uart-16550.c        |   5 +
+ arch/mips/boot/dts/Makefile                   |   1 +
+ arch/mips/boot/dts/econet/Makefile            |   2 +
+ arch/mips/boot/dts/econet/en751221.dtsi       |  67 ++++++
+ .../econet/en751221_smartfiber_xp8421-b.dts   |  19 ++
+ arch/mips/econet/Kconfig                      |  48 ++++
+ arch/mips/econet/Makefile                     |   2 +
+ arch/mips/econet/Platform                     |   5 +
+ arch/mips/econet/init.c                       |  78 +++++++
+ drivers/clocksource/Kconfig                   |   8 +
+ drivers/clocksource/Makefile                  |   1 +
+ drivers/clocksource/timer-econet-en751221.c   | 216 ++++++++++++++++++
+ 18 files changed, 598 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/mips/econet.yaml
+ create mode 100644 Documentation/devicetree/bindings/timer/econet,en751221-timer.yaml
+ create mode 100644 arch/mips/boot/dts/econet/Makefile
+ create mode 100644 arch/mips/boot/dts/econet/en751221.dtsi
+ create mode 100644 arch/mips/boot/dts/econet/en751221_smartfiber_xp8421-b.dts
+ create mode 100644 arch/mips/econet/Kconfig
+ create mode 100644 arch/mips/econet/Makefile
+ create mode 100644 arch/mips/econet/Platform
+ create mode 100644 arch/mips/econet/init.c
+ create mode 100644 drivers/clocksource/timer-econet-en751221.c
+
+-- 
+2.39.5
+
 
