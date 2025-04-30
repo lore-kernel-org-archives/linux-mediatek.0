@@ -4,87 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CA4CC369D9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Apr 2025 09:53:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C2C8C369DC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Apr 2025 10:28:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2OzPyycrHdBOFNYlaedmLd2bDrUmkg8qhEXCLfUTANg=; b=1wpZXWSXxACAnzuHHZCQRBVfSh
-	TtqUASDPbhVBtCtIOhGkCZQ+R7d2xoIfpDtKWH230yR9ChLDw023e9fmbFGbaj1Iin1qwdeFRlxJd
-	Mrkk4IfUY1A/HVA8BSAGshrBylPvphzhFPtvy4lhFh9YHn3z6xqxu8bUWx01siYt1wn6BDF2fhh3m
-	WSDAwV8d+jzhvX96jQDpkm+Vzr/dHard16ZzmXqvO0wHVT79JAWEiiE7V+nZw1nDVuxeT9IBb8HeH
-	eSMia74/OpjLrXNTY9xk0r5qb4HPstMsvGxVnhUFYj17tSfs9BtODBTh2xYedq9/Hu5X4VRzGMVmN
-	ASUdZYlw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oETm/pYIYSrsCUZOG9P0GWCOTnaCfqB/rOTt5dgFQow=; b=eIiBnIyhXheCE51fJNrFdbdk93
+	FETAGBpVaA9dRvvYFgsRhYzn6JN+8lAZlxJZtNLz08YTyio+4+6AXmNhgJP/JmL2yqCEjM+vOBEXS
+	dz94llcrJfDzAzFDXaEEz1QbYpbXyQoMHadvhVvNWHLvoipWs3FOrgVhlQqQQS8NEBgjUcstMT9GW
+	j1462PnbuJUV+EbhXMNyH092zHDYKWxN2iC2fcU9ErkBKlE0I6MIiZx2HcfinIVGfKK1hAwGK9KWs
+	y9m/mdwtlcLw+yW24nDlTs5FYklf7A00t3n3xq29EtMGOr8T4b4xLd00LzCqJsSCecF5vksX0arlR
+	e0spJ1YA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uA47i-0000000CRPe-1Lje;
-	Wed, 30 Apr 2025 09:53:02 +0000
-Received: from relay2-d.mail.gandi.net ([217.70.183.194])
+	id 1uA4fv-0000000CWga-3XKD;
+	Wed, 30 Apr 2025 10:28:23 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uA3lM-0000000CMpg-3PDB;
-	Wed, 30 Apr 2025 09:29:58 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 960FF43181;
-	Wed, 30 Apr 2025 09:29:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1746005390;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=2OzPyycrHdBOFNYlaedmLd2bDrUmkg8qhEXCLfUTANg=;
-	b=KDDKM6cWxY7JZnVAYB2Fe3yny9Ai6C/bj2+8pZ79gBRIscyJX9q9/yxRPRMz7jDbDiCK19
-	LBw4sl41yaYp4vJvsFJLkqBBLb4Wvgr4pWnnuVi3NP1NI1muVlKtaI7KGn5DvsJ9wHfxCG
-	JOe6Io0gNCwYu/IgfJrsBcVWExhWe2WEiYnd9XVp/9nC1fVunvLSleF51EWyO5GhF6Miom
-	FkzHk/vmdWl8AsmX9ofhuCEM5VQswUKDevi6PScwlD4A2RoCCYkQ6xrbpkobZ39eyxfLbH
-	rKLfZff+JNJkiILxnoR0IF6QCQsvwFbUr9SKw1dIjdPIJI/6hrPhPWoXC2y1TQ==
-Date: Wed, 30 Apr 2025 11:29:44 +0200
-From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-To: Liu Ying <victor.liu@nxp.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
- <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie
- <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Andrzej Hajda
- <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>,
- Robert Foss <rfoss@kernel.org>, Laurent Pinchart
- <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>,
- Jernej Skrabec <jernej.skrabec@gmail.com>, Jagan Teki
- <jagan@amarulasolutions.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer
- <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Douglas Anderson
- <dianders@chromium.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Krzysztof
- Kozlowski <krzk@kernel.org>, Anusha Srivatsa <asrivats@redhat.com>, Paul
- Kocialkowski <paulk@sys-base.io>, Dmitry Baryshkov <lumag@kernel.org>, Hui
- Pu <Hui.Pu@gehealthcare.com>, Thomas Petazzoni
- <thomas.petazzoni@bootlin.com>, dri-devel@lists.freedesktop.org,
- asahi@lists.linux.dev, linux-kernel@vger.kernel.org,
- chrome-platform@lists.linux.dev, imx@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
- platform-driver-x86@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
- linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH v2 30/34] drm/bridge: imx8qxp-pixel-combiner: convert to
- devm_drm_bridge_alloc() API
-Message-ID: <20250430112944.1b39caab@booty>
-In-Reply-To: <553d62ed-976a-4e17-9678-cdc3d40ce4a7@nxp.com>
-References: <20250424-drm-bridge-convert-to-alloc-api-v2-0-8f91a404d86b@bootlin.com>
-	<20250424-drm-bridge-convert-to-alloc-api-v2-30-8f91a404d86b@bootlin.com>
-	<553d62ed-976a-4e17-9678-cdc3d40ce4a7@nxp.com>
-Organization: Bootlin
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+	id 1uA40q-0000000CQAg-4AIz;
+	Wed, 30 Apr 2025 09:45:59 +0000
+X-UUID: e78d6dc225a711f0bed96b30c12bc3d6-20250430
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=oETm/pYIYSrsCUZOG9P0GWCOTnaCfqB/rOTt5dgFQow=;
+	b=m/I2eGehfaSpL20sGaZo6zlNW+MLYMmZQ2sWPHMYRbq1ztsY3U4CLWwD77qCMM6pSRbSXp1+KJ9OjL5EHyUgbotwOHQ5i4MuVRN/2eYOHiWMq3Z/wNN8SvdQn5aNWXU9KYufhzL/eK3Cu3ribmcw6QKSzPWgHG0s5u8fhJ/IZr0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:5f3af85c-6d53-4abb-821c-bb93c4cb3bfc,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:5d39c57f-99e0-42db-8543-075f2c30d73f,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
+	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
+	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: e78d6dc225a711f0bed96b30c12bc3d6-20250430
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
+	(envelope-from <friday.yang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2127751523; Wed, 30 Apr 2025 02:45:52 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Wed, 30 Apr 2025 17:45:49 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Wed, 30 Apr 2025 17:45:48 +0800
+From: Friday Yang <friday.yang@mediatek.com>
+To: Yong Wu <yong.wu@mediatek.com>, Krzysztof Kozlowski <krzk@kernel.org>,
+	"Rob Herring" <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+	"Matthias Brugger" <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Philipp Zabel
+	<p.zabel@pengutronix.de>
+CC: Friday Yang <friday.yang@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v7 1/2] dt-bindings: memory: mediatek: Add SMI reset and clamp for MT8188
+Date: Wed, 30 Apr 2025 17:45:30 +0800
+Message-ID: <20250430094545.23932-2-friday.yang@mediatek.com>
+X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20250430094545.23932-1-friday.yang@mediatek.com>
+References: <20250430094545.23932-1-friday.yang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-GND-State: clean
-X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvieeifeegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvvefukfgjfhhoofggtgfgsehtjeertdertddvnecuhfhrohhmpefnuhgtrgcuvegvrhgvshholhhiuceolhhutggrrdgtvghrvghsohhlihessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnhepgeelffefgfehhfdtvdefueefieevkefggfelkeeiudetkeektedvhedukefgvddvnecuffhomhgrihhnpegsohhothhlihhnrdgtohhmnecukfhppedvrgdtvdemieejtdemvddtvddtmegvrgdtudemsggvgedumeelhegvjeemfeegfeemledufegvnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepvdgrtddvmeeijedtmedvtddvtdemvggrtddumegsvgegudemleehvgejmeefgeefmeeludefvgdphhgvlhhopegsohhothihpdhmrghilhhfrhhomheplhhutggrrdgtvghrvghsohhlihessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepfeelpdhrtghpthhtohepvhhitghtohhrrdhlihhusehngihprdgtohhmpdhrtghpthhtohepmhgrrghrthgvnhdrlhgrnhhkhhhorhhstheslhhinhhugidrihhnthgvlhdrtghomhdprhgtphhtthhopehmrhhiphgrrhgusehkv
- ghrnhgvlhdrohhrghdprhgtphhtthhopehtiihimhhmvghrmhgrnhhnsehsuhhsvgdruggvpdhrtghpthhtoheprghirhhlihgvugesghhmrghilhdrtghomhdprhgtphhtthhopehsihhmohhnrgesfhhffihllhdrtghhpdhrtghpthhtoheprghnughriigvjhdrhhgrjhgurgesihhnthgvlhdrtghomhdprhgtphhtthhopehnvghilhdrrghrmhhsthhrohhngheslhhinhgrrhhordhorhhg
-X-GND-Sasl: luca.ceresoli@bootlin.com
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250430_022957_156888_E905DA14 
-X-CRM114-Status: GOOD (  26.41  )
+X-CRM114-CacheID: sfid-20250430_024557_042345_4D405DE3 
+X-CRM114-Status: GOOD (  11.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,124 +89,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Liu,
+From: "Friday Yang" <friday.yang@mediatek.com>
 
-On Tue, 29 Apr 2025 10:10:55 +0800
-Liu Ying <victor.liu@nxp.com> wrote:
+Add 'resets' and 'reset-names' properties for SMI LARBs to support
+SMI reset operations.
+On the MediaTek platform, some SMI LARBs are directly connected to
+the SMI Common, while others are connected to the SMI Sub-Common,
+which in turn is connected to the SMI Common. The hardware block
+diagram can be described as follows.
 
-> Hi,
-> 
-> On 04/25/2025, Luca Ceresoli wrote:
-> > This is the new API for allocating DRM bridges.
-> > 
-> > This driver embeds an array of channels in the main struct, and each
-> > channel embeds a drm_bridge. This prevents dynamic, refcount-based
-> > deallocation of the bridges.
-> > 
-> > To make the new, dynamic bridge allocation possible:
-> > 
-> >  * change the array of channels into an array of channel pointers
-> >  * allocate each channel using devm_drm_bridge_alloc()
-> >  * adapt the code wherever using the channels
-> > 
-> > Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+             SMI-Common(Smart Multimedia Interface Common)
+                 |
+         +----------------+------------------+
+         |                |                  |
+         |                |                  |
+         |                |                  |
+         |                |                  |
+         |                |                  |
+       larb0       SMI-Sub-Common0     SMI-Sub-Common1
+                   |      |     |      |             |
+                  larb1  larb2 larb3  larb7       larb9
 
-[...]
+Signed-off-by: Friday Yang <friday.yang@mediatek.com>
+Tested-by: Friday Yang <friday.yang@mediatek.com>
+Reviewed-by: Yong Wu <yong.wu@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Acked-by: Rob Herring <robh@kernel.org>
 
-> > @@ -345,8 +351,8 @@ static int imx8qxp_pc_bridge_probe(struct platform_device *pdev)
-> >  free_child:
-> >  	of_node_put(child);
-> >  
-> > -	if (i == 1 && pc->ch[0].next_bridge)
-> > -		drm_bridge_remove(&pc->ch[0].bridge);
-> > +	if (i == 1 && pc->ch[0]->next_bridge)  
-> 
-> Since this patch makes pc->ch[0] and pc->ch[1] be allocated separately,
-> pc->ch[0] could be NULL if channel0 is not available, hence a NULL pointer
-> dereference here...
+---
+ .../mediatek,smi-common.yaml                  |  2 ++
+ .../memory-controllers/mediatek,smi-larb.yaml | 19 +++++++++++++++++++
+ 2 files changed, 21 insertions(+)
 
-See below for this.
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+index 0762e0ff66ef..3d98c08b2149 100644
+--- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+@@ -40,6 +40,7 @@ properties:
+           - mediatek,mt8186-smi-common
+           - mediatek,mt8188-smi-common-vdo
+           - mediatek,mt8188-smi-common-vpp
++          - mediatek,mt8188-smi-sub-common
+           - mediatek,mt8192-smi-common
+           - mediatek,mt8195-smi-common-vdo
+           - mediatek,mt8195-smi-common-vpp
+@@ -108,6 +109,7 @@ allOf:
+         compatible:
+           contains:
+             enum:
++              - mediatek,mt8188-smi-sub-common
+               - mediatek,mt8195-smi-sub-common
+     then:
+       required:
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+index 2e7fac4b5094..fc5feb2eac1f 100644
+--- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+@@ -70,6 +70,12 @@ properties:
+     description: the hardware id of this larb. It's only required when this
+       hardware id is not consecutive from its M4U point of view.
 
-> > +		drm_bridge_remove(&pc->ch[0]->bridge);
-> >  
-> >  	pm_runtime_disable(dev);
-> >  	return ret;
-> > @@ -359,7 +365,7 @@ static void imx8qxp_pc_bridge_remove(struct platform_device *pdev)
-> >  	int i;
-> >  
-> >  	for (i = 0; i < 2; i++) {
-> > -		ch = &pc->ch[i];
-> > +		ch = pc->ch[i];
-> >  
-> >  		if (!ch->is_available)  
-> 
-> ...and here too.
++  resets:
++    maxItems: 1
++
++  reset-names:
++    const: larb
++
+ required:
+   - compatible
+   - reg
+@@ -126,6 +132,19 @@ allOf:
+       required:
+         - mediatek,larb-id
 
-This is indeed a bug, I should have checked the pointer for being
-non-NULL.
++  - if:  # only for image, camera and ipe subsys
++      properties:
++        compatible:
++          const: mediatek,mt8188-smi-larb
++        mediatek,larb-id:
++          enum:
++            [ 9, 10, 11, 12, 13, 16, 17, 18, 19, 20 ]
++
++    then:
++      required:
++        - resets
++        - reset-names
++
+ additionalProperties: false
 
-Looking at that more closely, I think the is_available flag can be
-entirely removed now. The allocation itself (ch != NULL) now is
-equivalent. Do you think my reasoning is correct?
+ examples:
+--
+2.46.0
 
-Ouch! After writing the previous paragraph I realized you proposed this
-a few lines below! OK, removing is_available. :)
-
-[...]
-
-> On top of this patch series, this issue doesn't happen if I apply the below
-> change:
-
-[...]
-
-> @@ -351,7 +349,7 @@ static int imx8qxp_pc_bridge_probe(struct platform_device *pdev)
->  free_child:
->         of_node_put(child);
->  
-> -       if (i == 1 && pc->ch[0]->next_bridge)
-> +       if (i == 1 && pc->ch[0])
->                 drm_bridge_remove(&pc->ch[0]->bridge);
-
-Unrelated to this patch, but as I looked at it more in depth now, I'm
-not sure this whole logic is robust, even in the original code.
-
-The 'i == 1' check here seems to mean "if some error happened when
-handling channel@1, that means channel@0 was successfully initialized,
-so let's clean up channel 0".
-
-However my understanding of the bindings is that device tree is allowed
-to have the channel@1 node before the channel@0 node (or even channel@1
-without channel@0, but that's less problematic here).
-
-In such case (channel@1 before channel@0), this would happen:
-
- 1. alloc and init ch[1], all OK
- 2. alloc and init ch[0], an error happens
-    (e.g. of_graph_get_remote_node() fails)
-
-So we'd reach the free_child: label, and we should call
-drm_bridge_remove() for ch[1]->bridge, but there's no code to do that.
-
-To be robust in such a case, I think both channels need to be checked
-independently, as the status of one does not imply the status of the
-other. E.g.:
-
-  for (i = 0; i < 2; i++)
-      if (pc->ch[i] && pc->ch[i]->next_bridge)
-          drm_bridge_remove(&pc->ch[i]->bridge);
-
-(which is similar to what .remove() does after the changes discussed in
-this thread, and which I have queued for v3)
-
-What's your opinion? Do you think I missed anything?
-
-Thanks for taking the time to dig into this!
-
-Best regards,
-Luca
-
--- 
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
 
