@@ -4,90 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4FA3C369DC
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 May 2025 15:52:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6B16C369DC
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 May 2025 16:04:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e/gkyM3oFDnDmiC4diCmIxvY145pRyMQi2rIkFSJT9c=; b=vjpT6stJ6aUO2/JNWeLXZAIjcG
-	CgmfJ8X7HSl2OPs66eOx3/T2Qm63HLHrkAev+N10tgz0dQ96UZQuO7ieiug0xEuI5XqAPa+VUa83v
-	FeGnNijXGSmbvccpOPLD0JZ92Q/NTWfXaOkwpYjUdYlCzbJs3ZUMDvDIbtjOr4m0Y+os0lMuPhuDM
-	yCY/x7DoW9aZ6BSVqFylLn5d7v6Hlwns7lLoAO6JytGmSjG5qbPxeqqe92IackFbIO7SgGrwEtt0c
-	HexRMIDhMjhiIfUlo30WqAAb+OJ/73FUcPEEmFQ87J3B6nw9KD771xodQa+QbuIs73PTeJIzN7U6P
-	kv9+lvcw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=AHBhDJr9lHxrn2vY9UPMIfGx/gl5O7ayeNtcPr9WFCU=; b=pPsLqVZK20JHaUqBGuGkyMR2zP
+	c46wxtzXM8RI3An6i1bdfjbMjM9A+wx4DLwHG0sPeDLVNy8OruIrn5AuLW349Tmywx0dgdbQe+B9F
+	1kIvGRbBfZ+Iv7RhG3JdRCTfsdJ90coPyNCcLqlAfnmUDqNg5G7Mds0hDViyd9Zcrk3DlCdMduf39
+	qfY0ehAzeNCC1po4rgpzT9aN9F6/1pOgCb98VAcjsJmdx3G3Ot1xKUzugIBY9kzYHuWzVq3IYG4WE
+	TywBo6p7AceG6uzjp7Q2vk3QV2PCy7WpUlxSJvzza1cqY8y0UsxClPZ7opoNORWrAMvzZRtHP7UwK
+	0noFOXXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAWDC-0000000G7gy-3RnU;
-	Thu, 01 May 2025 15:52:34 +0000
-Received: from mail-qv1-xf30.google.com ([2607:f8b0:4864:20::f30])
+	id 1uAWOW-0000000G95c-2xRL;
+	Thu, 01 May 2025 16:04:16 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAWBI-0000000G7Sz-1n5W;
-	Thu, 01 May 2025 15:50:37 +0000
-Received: by mail-qv1-xf30.google.com with SMTP id 6a1803df08f44-6f0c30a1cf8so17661336d6.2;
-        Thu, 01 May 2025 08:50:36 -0700 (PDT)
+	id 1uAWMr-0000000G8qH-1E5n
+	for linux-mediatek@lists.infradead.org;
+	Thu, 01 May 2025 16:02:34 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-43cf861f936so2046065e9.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 01 May 2025 09:02:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1746114635; x=1746719435; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=e/gkyM3oFDnDmiC4diCmIxvY145pRyMQi2rIkFSJT9c=;
-        b=b3hKo8igwR+jRoPEBVP4umzG2qtBqt6apNZkQWAHtdT0x6FFiBUJnKqnShyUC7O8aJ
-         5sMPGvF7BjFfp03n/rTp3f4tKhzHQiEA8ARH/p9eIcxzSMh155AMdIiTK8hs6Y8jlNbO
-         OZQV6j79gGSzE5IGFsrri+YJ8VQBEt9ogGvXJshkTGs7/Gw/15dbuHgh9Qk0JnhIuLnk
-         TMooDB/O9aDs7tBhygyOYY/G+puEp6KOzzOE7jnGVpiPOVfbpx6PD+0qDb5Bs0fZPGA1
-         7PbWOfyUR4he3zRLWl50kOPqQaES6l+jUUxkPcI7P2bL5K/cnwurnNZhpjMnGf0LPjQg
-         V8rg==
+        d=linaro.org; s=google; t=1746115351; x=1746720151; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=AHBhDJr9lHxrn2vY9UPMIfGx/gl5O7ayeNtcPr9WFCU=;
+        b=XSjsRWTqSBWNnX8INpcusnOPgCwUDp6Br0iK5fh1J6aQeiyROpyOSC51c93vb2vSQm
+         yY6OG+5e8g/5l6KAntpm+h5XGrJofpOQ8tqWY95ik1Wbf2s3c0sePobZMEU8wh9UfcKi
+         Jms7BYgjADJkvUALUId5xur/T6QtK3nNXG3bcAX0wo74BH02xSNs68NvjXoZCFonv9a4
+         ZeMLevxHdFjSYXZQ5/9N4m2P+UW1N6osjH8ios2vtUFX1cBiyXyHYtjjC/t08qS02114
+         TH7Eg6WoR2hE1pj+A+5pIxY7TPHzRS7piSWeb34OBNQ+4gGysVEk8/gQSMQw2zmR9CQj
+         whVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1746114635; x=1746719435;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=e/gkyM3oFDnDmiC4diCmIxvY145pRyMQi2rIkFSJT9c=;
-        b=GfLec2fvO5tr8UhyDd1zn71My0n020rXnY22EqFsd8Mr0fzDzNj+OP2cwcCzzo5tMx
-         B4WS7bKpvu1up0nRCeDvxLBTmlyLAbyOIkabPbviXMfQz/iF09AjABqIiXC2kHv59kDv
-         VBljB+jaLe9gIAxKLjHTBk8Gpxa2ObfmY+nsmZU1EVpDFjXEB+dVK7OkSBYhOOmo/Qpm
-         XpOoxus3iBKdcKsBcm5nZHSRgA8AlSnyhH/ymPx4lZAFOrfiMy+kA0u5wvdYDzryVc5X
-         txzSqTYRrBjlpfIQ04LIO5szL/xyXvVrp5WvYqCJnahOfNnnbswAYjpJZbBKAE83mBfq
-         6FyA==
-X-Forwarded-Encrypted: i=1; AJvYcCWa3lUqdENmxy7vH9kgyTPUTRysQcXGbtIR79O2W+tBr0SY4tDZd0A7uwUHgehQQ9BN1Pw51bv5qAwfXH8dwAI=@lists.infradead.org, AJvYcCXqkxoN1ibpU3+fTKHtids97F67Ninrnv+8Nl8e0g6/mKbwJjqBEMfn8MWvnyl0PlEXtwfxRJMjE5PJf2sYefVn@lists.infradead.org
-X-Gm-Message-State: AOJu0Yyt99lDM0IS1zVSB9Rjf6PPH09K47doCnwwzpFaJ01MQzT8qdOH
-	ZmKV0iZYD/s2X5onqDhxhDHZphDoqlh7yIhvjwJzzL2tErkPbf8xtoayF4/TMA8jLgjdaXvPSkt
-	WIybEvFbpQGU58WUj2URN2eDILn8=
-X-Gm-Gg: ASbGnctiyKx+we4cA2E1ioP+kAgBirpnvD9YXcU83cQQFscs0vZO7p4R0ax0wBB75Hp
-	M02EIKO5bd3OIQEUO9p5Cak9RmIAxlhkT8IWqSKxsEOUWGTqEwiSpPjQp03iDEgQ+XoKO51xWxS
-	UqnruFGAJW4EtNI4KV7JJ2c6o=
-X-Google-Smtp-Source: AGHT+IHO/1JjpQlA3vZ2eRSDQvhzoweYMhYgCYf17uHdH7Vil20W5pGnhp9djE4FSIg3al8nnvRqCoV7aBjmQR5yuEs=
-X-Received: by 2002:a05:6214:d85:b0:6ed:122c:7da7 with SMTP id
- 6a1803df08f44-6f50a8fa520mr51081636d6.5.1746114635123; Thu, 01 May 2025
- 08:50:35 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1746115351; x=1746720151;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=AHBhDJr9lHxrn2vY9UPMIfGx/gl5O7ayeNtcPr9WFCU=;
+        b=uzdZ+TD/tuaFsJlhCa1czfrS83adzgqIclLVY4jXRMLpQyCiUdyx3x3onv0u56e71a
+         SHipt9PZVRr3ND/zXAaeiLBjraL2pL7YepjaBXpYYYrIY43CRKMiWJeDfKaKqvp/hUVR
+         dYDklIVLDWtgpXyfUB5UK4IzrqwvG/qLSnRwcXdgFqAyqGe98KAw80iYMsqueO67sVi/
+         a3jaI/Cbkp5/f8lgYVaahT2ZxNaC6OUpDpIzEhYVypx/+dWFV1Qy/LaVxkJbKsck53TN
+         /fOoBIKGMLtW4nAKZFNyyclcR/gtegk3y0ClmrKGPVonOYB7Vn5e2cgix3/XgLuTyXnF
+         I6Jg==
+X-Forwarded-Encrypted: i=1; AJvYcCUUqSwWnYqkiUl7cUYAPTquziWOmuM0ompA7GO1Z2J6HA3KwRUq50u/M/BKyZ+iFt8hLUUEvxaquAHIu/Itqw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxNB66j9YuOTMKFLQIGVsN7s3iv9GpMZRXjOI+TKO1TOcRiz8XH
+	/3jrcTFxsHuuVrnZlBiRdee9sZ07YJAX3m/yBsvLGyBW1n1wFAVv3FKvAa46vltvZtL3wlNETth
+	l
+X-Gm-Gg: ASbGncunA0QmBiheLxah3CjGuj/n0OA5I9/xQ1t7YwLjMwn15FowcT5bllA8oGftgzy
+	Exu6S8fLPGg2YnerRCee1rXcScADxlP6aIUxQNMWKbd9mGSDrnWDgJksRPdBSEuIXsebYxSRT9D
+	ZOFjaDJlqDtq2Xyu7I05+ShhU5nhfAkRW5rfdXbt/7cfz8ZvDRSUHdW+HgI3OmPqhZhW/x1ea4t
+	bG/sCktzNNxK9y2aUVM0FEn0W2jVp9EZOChePrGdwBQsdSQ1lVou5sRUee6kVxsA4noF/xlum5T
+	hk8YMb9XWWRySZwAhleP+jqWbkKWnTe+emJqUD0cWysc3e8TrzwdEgI2o5Kt
+X-Google-Smtp-Source: AGHT+IFv6+BkJpDpCldaI1QMFxLx2QRvznPegaig/IEHjKtay4AMQqYqpupZvjAUZH9aHFXpPyrmmw==
+X-Received: by 2002:a05:6000:310c:b0:3a0:7a00:61e9 with SMTP id ffacd0b85a97d-3a0940033b3mr872751f8f.0.1746115351533;
+        Thu, 01 May 2025 09:02:31 -0700 (PDT)
+Received: from kuoka.. ([178.197.207.88])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a095a88298sm1163557f8f.62.2025.05.01.09.02.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 01 May 2025 09:02:31 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH RESEND] arm64: dts: mediatek: mt8183: Switch to undeprecated qcom,calibration-variant
+Date: Thu,  1 May 2025 18:02:28 +0200
+Message-ID: <20250501160227.96609-2-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-References: <20250430082651.3152444-1-qun-wei.lin@mediatek.com>
-In-Reply-To: <20250430082651.3152444-1-qun-wei.lin@mediatek.com>
-From: Nhat Pham <nphamcs@gmail.com>
-Date: Thu, 1 May 2025 08:50:24 -0700
-X-Gm-Features: ATxdqUGn8eYuPIj4I1IzzOIEq-VCYnYbbowQLijhdEqfyu9by8KrA7NerQXniyA
-Message-ID: <CAKEwX=MNVwd_Z1PyBt7swd2VhUVivRN-5E+kHm-3XAPka0d84w@mail.gmail.com>
-Subject: Re: [PATCH] mm: Add Kcompressd for accelerated memory compression
-To: Qun-Wei Lin <qun-wei.lin@mediatek.com>
-Cc: Andrew Morton <akpm@linux-foundation.org>, Mike Rapoport <rppt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Sergey Senozhatsky <senozhatsky@chromium.org>, Minchan Kim <minchan@kernel.org>, linux-mm@kvack.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, Casper Li <casper.li@mediatek.com>, 
-	Chinwen Chang <chinwen.chang@mediatek.com>, Andrew Yang <andrew.yang@mediatek.com>, 
-	James Hsu <james.hsu@mediatek.com>, Barry Song <21cnbao@gmail.com>, 
-	Johannes Weiner <hannes@cmpxchg.org>, Yosry Ahmed <yosry.ahmed@linux.dev>, 
-	Chengming Zhou <chengming.zhou@linux.dev>, Shakeel Butt <shakeel.butt@linux.dev>, 
-	Kairui Song <ryncsn@gmail.com>, Joshua Hahn <joshua.hahnjy@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+X-Developer-Signature: v=1; a=openpgp-sha256; l=9360; i=krzysztof.kozlowski@linaro.org;
+ h=from:subject; bh=QNMj9c7xzZA7s922XwLPN1HkAdbTpiqetXxKdDoDB+U=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBoE5sTib8djgM1Gu0yA8gFWoHk1YSKSWcphXXwG
+ H+pTqw6bi+JAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaBObEwAKCRDBN2bmhouD
+ 14BqD/0U9iFpl95iwFEjx2lYIrm78gyjk1DvaU4sK6rYr55Ab8wA2q35YGM3znYvpwIg/EigUjQ
+ VvSpmVLWCdHF8FoHtnz6p3hD+OsUHYBNC6fvrOF0/u1pJgVKu1K8cRTUGaI8NeoySFPMr0DeRH9
+ qmGNjKuzpRJCoUuo/P96jK6Lpc+4zETPiFKjtFz1dDGmrZa30RqHYsGUafrUutJSyqIGwRfUyyv
+ Ai+tb+wUr4vslzoW9l4gKwSmfAtUEAm4igL9ocrFuOFulURgfkMMLnqObAK395Q/rirFPNxdUHJ
+ avhJJiEEJkUTe1MVESjPnL3Dsfwt0pQcm6W54nIub/LSkBznHyn8gByubGS0CU/bKgCbu/dzgeF
+ glrodZj0lJ+RMNJVXnu9I3d9lkWK9Py84Dmt9ks1mfGFPrraOZX9xX6CNMSOJlgteemwqbv2J5r
+ UBwoT48Hxkzt43qWOCgueGsCWeiE9tEYWR77FzlphPb73bYYbibQpDwqqxP0vrrg69QfAdDYnf6
+ B//1C8maHftbk/GaZwtkexRhnJ+6u+6PQb8X6FeAMMMwWDdSircOCYInf9ysz3FruTSRJwd/8iR
+ rmcPPHF4nIkMsDnvwKuvW+Hpx6tFNjVjSknPeMa32cRNlWEnliETQSNCAnFH6ZrzKmqDY+pBhYL 0xsgjkC+wVFkT3w==
+X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp; fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250501_085036_471000_AECDDFD4 
-X-CRM114-Status: GOOD (  15.04  )
+X-CRM114-CacheID: sfid-20250501_090233_332726_49460111 
+X-CRM114-Status: UNSURE (   9.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,111 +117,232 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 30, 2025 at 1:27=E2=80=AFAM Qun-Wei Lin <qun-wei.lin@mediatek.c=
-om> wrote:
->
-> This patch series introduces a new mechanism called kcompressd to
-> improve the efficiency of memory reclaiming in the operating system.
->
-> Problem:
->   In the current system, the kswapd thread is responsible for both scanni=
-ng
->   the LRU pages and handling memory compression tasks (such as those
->   involving ZSWAP/ZRAM, if enabled). This combined responsibility can lea=
-d
->   to significant performance bottlenecks, especially under high memory
->   pressure. The kswapd thread becomes a single point of contention, causi=
-ng
->   delays in memory reclaiming and overall system performance degradation.
->
-> Solution:
->   Introduced kcompressd to handle asynchronous compression during memory
->   reclaim, improving efficiency by offloading compression tasks from
->   kswapd. This allows kswapd to focus on its primary task of page reclaim
->   without being burdened by the additional overhead of compression.
->
-> In our handheld devices, we found that applying this mechanism under high
-> memory pressure scenarios can increase the rate of pgsteal_anon per secon=
-d
-> by over 260% compared to the situation with only kswapd. Additionally, we
-> observed a reduction of over 50% in page allocation stall occurrences,
-> further demonstrating the effectiveness of kcompressd in alleviating memo=
-ry
-> pressure and improving system responsiveness.
->
+The property qcom,ath10k-calibration-variant was deprecated in favor of
+recently introduced generic qcom,calibration-variant, common to all
+Qualcomm Atheros WiFi bindings.
 
-Oh btw, testing this on a simple kernel building task triggers this:
+Change will affect out of tree users, like other projects, of this DTS.
 
-[  133.349908] WARNING: CPU: 0 PID: 50 at mm/memcontrol.c:5330
-obj_cgroup_charge_zswap+0x22e/0x250
-[  133.350505] Modules linked in: virtio_net pata_acpi net_failover
-failover virtio_rng rng_core ata_piix libata scsi_mod scsi_common
-[  133.351366] CPU: 0 UID: 0 PID: 50 Comm: kcompressd0 Not tainted
-6.14.0-ge65b549702a5 #218
-[  133.351940] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996),
-BIOS rel-1.16.0-0-gd239552ce722-prebuilt.qemu.org 04/01/2014
-[  133.352717] RIP: 0010:obj_cgroup_charge_zswap+0x22e/0x250
-[  133.353118] Code: d2 ff 85 c0 0f 85 7a fe ff ff be ff ff ff ff 48
-c7 c7 88 da f1 91 e8 a1 b4 a3 00 85 c0 0f 85 61 fe ff ff 0f 0b e9 5a
-fe ff ff <0f> 0b e9 f5 fd ff ff e8 36 ae a3 00 e9 78 fe ff ff e8 2c ae
-a3 00
-[  133.354372] RSP: 0018:ffff9f99803bbc00 EFLAGS: 00010246
-[  133.354782] RAX: ffff970f42a9a900 RBX: 000000000000013e RCX: 00000000000=
-00002
-[  133.355269] RDX: 0000000000000000 RSI: 000000000000013e RDI: ffff970f475=
-eab40
-[  133.355774] RBP: ffff970f475eab40 R08: 0000000000000000 R09: 00000000000=
-00000
-[  133.356269] R10: ffffffff90a21205 R11: ffffffff90a211ab R12: ffffffff90a=
-21205
-[  133.356782] R13: ffffc4984041ff40 R14: ffff970f42e66000 R15: 00000000000=
-0013e
-[  133.357279] FS:  0000000000000000(0000) GS:ffff970fbdc00000(0000)
-knlGS:0000000000000000
-[  133.357807] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[  133.358186] CR2: 00007f33950c5030 CR3: 00000000038ea000 CR4: 00000000000=
-006f0
-[  133.358656] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 00000000000=
-00000
-[  133.359121] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 00000000000=
-00400
-[  133.359597] Call Trace:
-[  133.359767]  <TASK>
-[  133.359914]  ? __warn+0x94/0x190
-[  133.360136]  ? obj_cgroup_charge_zswap+0x22e/0x250
-[  133.360476]  ? report_bug+0x168/0x170
-[  133.360742]  ? handle_bug+0x53/0x90
-[  133.360982]  ? exc_invalid_op+0x18/0x70
-[  133.361240]  ? asm_exc_invalid_op+0x1a/0x20
-[  133.361536]  ? zswap_store+0x755/0xf80
-[  133.361798]  ? zswap_store+0x6fb/0xf80
-[  133.362071]  ? zswap_store+0x755/0xf80
-[  133.362338]  ? obj_cgroup_charge_zswap+0x22e/0x250
-[  133.362661]  ? zswap_store+0x755/0xf80
-[  133.362943]  zswap_store+0x7e7/0xf80
-[  133.363203]  ? __pfx_kcompressd+0x10/0x10
-[  133.363472]  kcompressd+0xb1/0x180
-[  133.363724]  ? __pfx_autoremove_wake_function+0x10/0x10
-[  133.364082]  kthread+0xef/0x230
-[  133.364298]  ? __pfx_kthread+0x10/0x10
-[  133.364548]  ret_from_fork+0x34/0x50
-[  133.364810]  ? __pfx_kthread+0x10/0x10
-[  133.365063]  ret_from_fork_asm+0x1a/0x30
-[  133.365321]  </TASK>
-[  133.365471] irq event stamp: 18
-[  133.365680] hardirqs last  enabled at (17): [<ffffffff914bd0ef>]
-_raw_spin_unlock_irqrestore+0x4f/0x60
-[  133.366289] hardirqs last disabled at (18): [<ffffffff914b2031>]
-__schedule+0x6b1/0xe80
-[  133.366824] softirqs last  enabled at (0): [<ffffffff906b1caf>]
-copy_process+0x9af/0x2b50
-[  133.367366] softirqs last disabled at (0): [<0000000000000000>] 0x0
-[  133.367844] ---[ end trace 0000000000000000 ]---
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
 
-Seems like we're trigger this warning in the zswap cgroup check (see
-obj_cgroup_may_zswap() in mm/memcontrol.c for more details):
+Resending with tag after dependency got merged. This can be applied as
+is.
+---
+ arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cozmo.dts     | 2 +-
+ arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts      | 2 +-
+ .../boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dts      | 2 +-
+ .../boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku6.dts      | 2 +-
+ .../boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku7.dts      | 2 +-
+ .../boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14-sku2.dts    | 2 +-
+ arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14.dts  | 2 +-
+ arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper.dtsi  | 2 +-
+ .../boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku0.dts      | 2 +-
+ .../boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku1.dts      | 2 +-
+ arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow.dtsi   | 2 +-
+ arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi           | 2 +-
+ arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku32.dts       | 2 +-
+ arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku38.dts       | 2 +-
+ arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi           | 2 +-
+ arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi            | 2 +-
+ 16 files changed, 16 insertions(+), 16 deletions(-)
 
-VM_WARN_ON_ONCE(!(current->flags & PF_MEMALLOC));
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cozmo.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cozmo.dts
+index 83bbcfe62083..f2303d9f125f 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cozmo.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cozmo.dts
+@@ -35,5 +35,5 @@ trackpad@2c {
+ };
+ 
+ &qca_wifi {
+-	qcom,ath10k-calibration-variant = "GO_COZMO";
++	qcom,calibration-variant = "GO_COZMO";
+ };
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
+index 7bc7c2687d6f..ebcfaa0498f9 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
+@@ -28,7 +28,7 @@ &mt6358codec {
+ };
+ 
+ &qca_wifi {
+-	qcom,ath10k-calibration-variant = "GO_DAMU";
++	qcom,calibration-variant = "GO_DAMU";
+ };
+ 
+ &i2c2 {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dts
+index 863f3e403de8..21d1a80125ca 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dts
+@@ -36,6 +36,6 @@ &touchscreen {
+ };
+ 
+ &qca_wifi {
+-	qcom,ath10k-calibration-variant = "GO_FENNEL";
++	qcom,calibration-variant = "GO_FENNEL";
+ };
+ 
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku6.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku6.dts
+index e0a583ce4a0b..5280ba22b96d 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku6.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku6.dts
+@@ -24,6 +24,6 @@ &touchscreen {
+ 
+ 
+ &qca_wifi {
+-	qcom,ath10k-calibration-variant = "GO_FENNEL";
++	qcom,calibration-variant = "GO_FENNEL";
+ };
+ 
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku7.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku7.dts
+index 7874c9a20e12..f3049f3f51f9 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku7.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku7.dts
+@@ -24,6 +24,6 @@ &touchscreen {
+ 
+ 
+ &qca_wifi {
+-	qcom,ath10k-calibration-variant = "GO_FENNEL";
++	qcom,calibration-variant = "GO_FENNEL";
+ };
+ 
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14-sku2.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14-sku2.dts
+index 877256eab262..3a81786084da 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14-sku2.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14-sku2.dts
+@@ -14,5 +14,5 @@ / {
+ };
+ 
+ &qca_wifi {
+-	qcom,ath10k-calibration-variant = "GO_FENNEL14";
++	qcom,calibration-variant = "GO_FENNEL14";
+ };
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14.dts
+index b981dd31a430..959c4d3d9707 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14.dts
+@@ -14,5 +14,5 @@ / {
+ };
+ 
+ &qca_wifi {
+-	qcom,ath10k-calibration-variant = "GO_FENNEL14";
++	qcom,calibration-variant = "GO_FENNEL14";
+ };
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper.dtsi
+index 078bc765646f..4788edaeab87 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper.dtsi
+@@ -22,6 +22,6 @@ trackpad@2c {
+ };
+ 
+ &qca_wifi {
+-	qcom,ath10k-calibration-variant = "GO_JUNIPER";
++	qcom,calibration-variant = "GO_JUNIPER";
+ };
+ 
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku0.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku0.dts
+index ddb993521bbf..01cd59993a7c 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku0.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku0.dts
+@@ -14,7 +14,7 @@ / {
+ };
+ 
+ &qca_wifi {
+-	qcom,ath10k-calibration-variant = "GO_FENNEL14";
++	qcom,calibration-variant = "GO_FENNEL14";
+ };
+ 
+ &mmc1_pins_uhs {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku1.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku1.dts
+index 10c4f920a7d8..c939ef3965ec 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku1.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-makomo-sku1.dts
+@@ -14,7 +14,7 @@ / {
+ };
+ 
+ &qca_wifi {
+-	qcom,ath10k-calibration-variant = "GO_FENNEL14";
++	qcom,calibration-variant = "GO_FENNEL14";
+ };
+ 
+ &mmc1_pins_uhs {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow.dtsi
+index c942e461a177..14d03419b92c 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow.dtsi
+@@ -37,5 +37,5 @@ trackpad@2c {
+ };
+ 
+ &qca_wifi {
+-	qcom,ath10k-calibration-variant = "GO_JUNIPER";
++	qcom,calibration-variant = "GO_JUNIPER";
+ };
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
+index ff02f63bac29..c4c08c0f715e 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
+@@ -370,7 +370,7 @@ keyboard-controller {
+ };
+ 
+ &qca_wifi {
+-	qcom,ath10k-calibration-variant = "GO_KAKADU";
++	qcom,calibration-variant = "GO_KAKADU";
+ };
+ 
+ &panel {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku32.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku32.dts
+index 2b5a8d1f900e..7428efec95a0 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku32.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku32.dts
+@@ -32,5 +32,5 @@ &panel {
+ };
+ 
+ &qca_wifi {
+-	qcom,ath10k-calibration-variant = "GO_KATSU";
++	qcom,calibration-variant = "GO_KATSU";
+ };
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku38.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku38.dts
+index 75fadf2c7059..a36b6ddb71f6 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku38.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku38.dts
+@@ -32,7 +32,7 @@ &panel {
+ };
+ 
+ &qca_wifi {
+-	qcom,ath10k-calibration-variant = "GO_KATSU";
++	qcom,calibration-variant = "GO_KATSU";
+ };
+ 
+ &sound {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
+index da6e767b4cee..2b283a55f653 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
+@@ -349,7 +349,7 @@ keyboard-controller {
+ };
+ 
+ &qca_wifi {
+-	qcom,ath10k-calibration-variant = "GO_KODAMA";
++	qcom,calibration-variant = "GO_KODAMA";
+ };
+ 
+ &i2c_tunnel {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
+index 8b56b8564ed7..00da50a41574 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
+@@ -353,7 +353,7 @@ keyboard-controller {
+ };
+ 
+ &qca_wifi {
+-	qcom,ath10k-calibration-variant = "LE_Krane";
++	qcom,calibration-variant = "LE_Krane";
+ };
+ 
+ &sound {
+-- 
+2.45.2
 
-Might wanna fix this...
 
