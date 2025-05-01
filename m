@@ -4,87 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5A3AC369DC
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 May 2025 15:21:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4FA3C369DC
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 May 2025 15:52:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xQYoQ6blzMcLADqk42repQh467cCu5FADPOPWsPwKR4=; b=h1Ap/mOK/5pinSd+86OCl970T7
-	cnP4wGlDTGpEYp4E1OaI4SvBaa7cy5/GqthElTBiCfnoD9KOyOVCgagec+ISixoQi29MqcfkeuzfJ
-	UskveACCH39A5UGNwTe79y9T9D9ELmdgH7+osT9JVjE49OqTRncR7cWJPowLwu2fddi4E68pByq7h
-	f3TjeK4bBF2sgSULJiLFHDJeOVEklzbrj0bcxRLjLWlRBRJh2+mBSVJDtSfjiiIGr1WWGD7f1N2Ex
-	lDhECLt9zl0f+MeO4Hyta4SVCSl0q/vof9zfEcMpOcbWuXRtk7l2Dnq4Tr9EjeQn45RckgfFdZOx7
-	xxXIjx2Q==;
+	bh=e/gkyM3oFDnDmiC4diCmIxvY145pRyMQi2rIkFSJT9c=; b=vjpT6stJ6aUO2/JNWeLXZAIjcG
+	CgmfJ8X7HSl2OPs66eOx3/T2Qm63HLHrkAev+N10tgz0dQ96UZQuO7ieiug0xEuI5XqAPa+VUa83v
+	FeGnNijXGSmbvccpOPLD0JZ92Q/NTWfXaOkwpYjUdYlCzbJs3ZUMDvDIbtjOr4m0Y+os0lMuPhuDM
+	yCY/x7DoW9aZ6BSVqFylLn5d7v6Hlwns7lLoAO6JytGmSjG5qbPxeqqe92IackFbIO7SgGrwEtt0c
+	HexRMIDhMjhiIfUlo30WqAAb+OJ/73FUcPEEmFQ87J3B6nw9KD771xodQa+QbuIs73PTeJIzN7U6P
+	kv9+lvcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAVid-0000000G4XB-1vpQ;
-	Thu, 01 May 2025 15:20:59 +0000
-Received: from mail-qv1-xf33.google.com ([2607:f8b0:4864:20::f33])
+	id 1uAWDC-0000000G7gy-3RnU;
+	Thu, 01 May 2025 15:52:34 +0000
+Received: from mail-qv1-xf30.google.com ([2607:f8b0:4864:20::f30])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAVau-0000000G3QS-2l78;
-	Thu, 01 May 2025 15:13:01 +0000
-Received: by mail-qv1-xf33.google.com with SMTP id 6a1803df08f44-6ecf99dd567so16258516d6.0;
-        Thu, 01 May 2025 08:13:00 -0700 (PDT)
+	id 1uAWBI-0000000G7Sz-1n5W;
+	Thu, 01 May 2025 15:50:37 +0000
+Received: by mail-qv1-xf30.google.com with SMTP id 6a1803df08f44-6f0c30a1cf8so17661336d6.2;
+        Thu, 01 May 2025 08:50:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1746112380; x=1746717180; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1746114635; x=1746719435; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=xQYoQ6blzMcLADqk42repQh467cCu5FADPOPWsPwKR4=;
-        b=XHqH5oyM9+7zuQJHxO0BlItpIM8y/d6mAPuDgV2rU+52laoSzSBnTOC1xAUtKtft7U
-         3eZtYx4a42RLDo+eVKFV6bJ/p8kgjm1+xtvTZVAGNl4hzmzasPrWIyEbdMK1B0SHxCnM
-         TjEhWQe0E88tQOB0SLX0dc9xqZHhvs0Cj68jPuG5rtUCLkASc7pIX4ShIMBnUtZE8SXt
-         QeoWBh4VoYcTbWXEerTZ2/qlpMAZPYTkt1V4UW3TagM+emKApBDKoP4+RDoj5inB6IGE
-         DPXlcI0scrLgOB+Xc2m46hXYCKHzWnvfem5w4WwCriR8B45T+suV7kG6iIZhIkXYsXYw
-         R0UA==
+        bh=e/gkyM3oFDnDmiC4diCmIxvY145pRyMQi2rIkFSJT9c=;
+        b=b3hKo8igwR+jRoPEBVP4umzG2qtBqt6apNZkQWAHtdT0x6FFiBUJnKqnShyUC7O8aJ
+         5sMPGvF7BjFfp03n/rTp3f4tKhzHQiEA8ARH/p9eIcxzSMh155AMdIiTK8hs6Y8jlNbO
+         OZQV6j79gGSzE5IGFsrri+YJ8VQBEt9ogGvXJshkTGs7/Gw/15dbuHgh9Qk0JnhIuLnk
+         TMooDB/O9aDs7tBhygyOYY/G+puEp6KOzzOE7jnGVpiPOVfbpx6PD+0qDb5Bs0fZPGA1
+         7PbWOfyUR4he3zRLWl50kOPqQaES6l+jUUxkPcI7P2bL5K/cnwurnNZhpjMnGf0LPjQg
+         V8rg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1746112380; x=1746717180;
+        d=1e100.net; s=20230601; t=1746114635; x=1746719435;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=xQYoQ6blzMcLADqk42repQh467cCu5FADPOPWsPwKR4=;
-        b=a0chHKR1x8EFd3hZc0J69oa1jRjVcVjGIXW3urkiMUXcsWR7bExZKP4QW/4HI+5oQQ
-         VDDWu1mLD4nP60qQQC7+oWN7fXIMPRQshN2/UvXZ3sHepfTw1k5vaaWAKmMUDGmBdz11
-         G7U+OrVMyNXZKx/NWqvy2GVc8Pau2NbBREn/b+gcMmzlaJ3u/kCncCBW3h/HwX3xUhKu
-         jUK2fDqMdnfcG+vcNzUtXOTbVhDRiH8emh8wEHHxdXKeTa6BftCXYwJK2KgOu3x8efHZ
-         jjIoWpeyorIIJZxK0Fq8IkL9Ozqn44XJ9PCTOvTZuN6vCYyDaPCxt1+7a6lsl1qXOKNE
-         DAEA==
-X-Forwarded-Encrypted: i=1; AJvYcCVzs6qFxChUpztYT/AN5VE7wCUzrOGO1GK5LEa6zuq50dMU+VppRQ/+qKcmDqGo8RRy3zlbK5W4kdIylMZXFYXt@lists.infradead.org, AJvYcCWdB2qadnc85gJFB3Zca9pBSst+jpUpv5LPgUeG3MqMII7bbdEjdpLmtBQfNSqmgANvKuqMd6NAnfStX3U11Lo=@lists.infradead.org
-X-Gm-Message-State: AOJu0YyBatRRtKrntme9PlGkNP3TLXXOnT45ajvhHYh4uoQYve8RSzxa
-	upNNdqUDbcEnkZDRLVhrLrwH5/onDA+zPvbbia8kwLOgLT4YgIIfoY5u/igzQ1fXghaLgUG91uN
-	24DqN74o100byFG7QjEeLhxlhb9Y=
-X-Gm-Gg: ASbGncthl6OJtWg2CAsaZ2r9qg/1IE2P8H09e6o0W8lf+lwZF2Iz9j/RYXTKd9Z7kKb
-	/0erHsfWrg7+ekYMkofl+71HIvPNkJqH/UKqBDS7SFZXJNt9iwkv4YvCRGk6OI43OgMM8bLjENN
-	43nXr1A8TmfZXTahm1+8FMqnw=
-X-Google-Smtp-Source: AGHT+IGAdTAkywowhkq9htFUL863njyM7arTMBHIbku24t5R7jVNw6BjMXmXswwZnPdgrERB600zafxI6/iVqN/kPo4=
-X-Received: by 2002:a05:6214:410d:b0:6e8:fbb7:6769 with SMTP id
- 6a1803df08f44-6f50a91ffbbmr48422286d6.14.1746112379547; Thu, 01 May 2025
- 08:12:59 -0700 (PDT)
+        bh=e/gkyM3oFDnDmiC4diCmIxvY145pRyMQi2rIkFSJT9c=;
+        b=GfLec2fvO5tr8UhyDd1zn71My0n020rXnY22EqFsd8Mr0fzDzNj+OP2cwcCzzo5tMx
+         B4WS7bKpvu1up0nRCeDvxLBTmlyLAbyOIkabPbviXMfQz/iF09AjABqIiXC2kHv59kDv
+         VBljB+jaLe9gIAxKLjHTBk8Gpxa2ObfmY+nsmZU1EVpDFjXEB+dVK7OkSBYhOOmo/Qpm
+         XpOoxus3iBKdcKsBcm5nZHSRgA8AlSnyhH/ymPx4lZAFOrfiMy+kA0u5wvdYDzryVc5X
+         txzSqTYRrBjlpfIQ04LIO5szL/xyXvVrp5WvYqCJnahOfNnnbswAYjpJZbBKAE83mBfq
+         6FyA==
+X-Forwarded-Encrypted: i=1; AJvYcCWa3lUqdENmxy7vH9kgyTPUTRysQcXGbtIR79O2W+tBr0SY4tDZd0A7uwUHgehQQ9BN1Pw51bv5qAwfXH8dwAI=@lists.infradead.org, AJvYcCXqkxoN1ibpU3+fTKHtids97F67Ninrnv+8Nl8e0g6/mKbwJjqBEMfn8MWvnyl0PlEXtwfxRJMjE5PJf2sYefVn@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyt99lDM0IS1zVSB9Rjf6PPH09K47doCnwwzpFaJ01MQzT8qdOH
+	ZmKV0iZYD/s2X5onqDhxhDHZphDoqlh7yIhvjwJzzL2tErkPbf8xtoayF4/TMA8jLgjdaXvPSkt
+	WIybEvFbpQGU58WUj2URN2eDILn8=
+X-Gm-Gg: ASbGnctiyKx+we4cA2E1ioP+kAgBirpnvD9YXcU83cQQFscs0vZO7p4R0ax0wBB75Hp
+	M02EIKO5bd3OIQEUO9p5Cak9RmIAxlhkT8IWqSKxsEOUWGTqEwiSpPjQp03iDEgQ+XoKO51xWxS
+	UqnruFGAJW4EtNI4KV7JJ2c6o=
+X-Google-Smtp-Source: AGHT+IHO/1JjpQlA3vZ2eRSDQvhzoweYMhYgCYf17uHdH7Vil20W5pGnhp9djE4FSIg3al8nnvRqCoV7aBjmQR5yuEs=
+X-Received: by 2002:a05:6214:d85:b0:6ed:122c:7da7 with SMTP id
+ 6a1803df08f44-6f50a8fa520mr51081636d6.5.1746114635123; Thu, 01 May 2025
+ 08:50:35 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250430082651.3152444-1-qun-wei.lin@mediatek.com> <20250501140226.GE2020@cmpxchg.org>
-In-Reply-To: <20250501140226.GE2020@cmpxchg.org>
+References: <20250430082651.3152444-1-qun-wei.lin@mediatek.com>
+In-Reply-To: <20250430082651.3152444-1-qun-wei.lin@mediatek.com>
 From: Nhat Pham <nphamcs@gmail.com>
-Date: Thu, 1 May 2025 08:12:48 -0700
-X-Gm-Features: ATxdqUHwMXp9jU8G8_cQ9P3g5XjhCdDwSp9AbCfZOwreqQLiBgW7BVs0NuAIwgQ
-Message-ID: <CAKEwX=MsP6LGjMRNyaHnO5MkE_ne-u-cKLbGfVQcSR-ALoxBwA@mail.gmail.com>
+Date: Thu, 1 May 2025 08:50:24 -0700
+X-Gm-Features: ATxdqUGn8eYuPIj4I1IzzOIEq-VCYnYbbowQLijhdEqfyu9by8KrA7NerQXniyA
+Message-ID: <CAKEwX=MNVwd_Z1PyBt7swd2VhUVivRN-5E+kHm-3XAPka0d84w@mail.gmail.com>
 Subject: Re: [PATCH] mm: Add Kcompressd for accelerated memory compression
-To: Johannes Weiner <hannes@cmpxchg.org>
-Cc: Qun-Wei Lin <qun-wei.lin@mediatek.com>, Andrew Morton <akpm@linux-foundation.org>, 
-	Mike Rapoport <rppt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+To: Qun-Wei Lin <qun-wei.lin@mediatek.com>
+Cc: Andrew Morton <akpm@linux-foundation.org>, Mike Rapoport <rppt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
 	Sergey Senozhatsky <senozhatsky@chromium.org>, Minchan Kim <minchan@kernel.org>, linux-mm@kvack.org, 
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-mediatek@lists.infradead.org, Casper Li <casper.li@mediatek.com>, 
 	Chinwen Chang <chinwen.chang@mediatek.com>, Andrew Yang <andrew.yang@mediatek.com>, 
-	James Hsu <james.hsu@mediatek.com>, Barry Song <21cnbao@gmail.com>
+	James Hsu <james.hsu@mediatek.com>, Barry Song <21cnbao@gmail.com>, 
+	Johannes Weiner <hannes@cmpxchg.org>, Yosry Ahmed <yosry.ahmed@linux.dev>, 
+	Chengming Zhou <chengming.zhou@linux.dev>, Shakeel Butt <shakeel.butt@linux.dev>, 
+	Kairui Song <ryncsn@gmail.com>, Joshua Hahn <joshua.hahnjy@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250501_081300_694747_29105E77 
-X-CRM114-Status: GOOD (  10.27  )
+X-CRM114-CacheID: sfid-20250501_085036_471000_AECDDFD4 
+X-CRM114-Status: GOOD (  15.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,20 +102,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 1, 2025 at 7:02=E2=80=AFAM Johannes Weiner <hannes@cmpxchg.org>=
- wrote:
+On Wed, Apr 30, 2025 at 1:27=E2=80=AFAM Qun-Wei Lin <qun-wei.lin@mediatek.c=
+om> wrote:
 >
+> This patch series introduces a new mechanism called kcompressd to
+> improve the efficiency of memory reclaiming in the operating system.
 >
-> The way you implemented this adds time-and-space overhead even on
-> systems that don't have any sort of swap compression enabled.
+> Problem:
+>   In the current system, the kswapd thread is responsible for both scanni=
+ng
+>   the LRU pages and handling memory compression tasks (such as those
+>   involving ZSWAP/ZRAM, if enabled). This combined responsibility can lea=
+d
+>   to significant performance bottlenecks, especially under high memory
+>   pressure. The kswapd thread becomes a single point of contention, causi=
+ng
+>   delays in memory reclaiming and overall system performance degradation.
 >
-> That seems unnecessary. There is an existing method for asynchronous
-> writeback, and pageout() is naturally fully set up to handle this.
+> Solution:
+>   Introduced kcompressd to handle asynchronous compression during memory
+>   reclaim, improving efficiency by offloading compression tasks from
+>   kswapd. This allows kswapd to focus on its primary task of page reclaim
+>   without being burdened by the additional overhead of compression.
 >
-> IMO the better way to do this is to make zswap_store() (and
-> zram_bio_write()?) asynchronous. Make those functions queue the work
-> and wake the compression daemon, and then have the daemon call
-> folio_end_writeback() / bio_endio() when it's done with it.
+> In our handheld devices, we found that applying this mechanism under high
+> memory pressure scenarios can increase the rate of pgsteal_anon per secon=
+d
+> by over 260% compared to the situation with only kswapd. Additionally, we
+> observed a reduction of over 50% in page allocation stall occurrences,
+> further demonstrating the effectiveness of kcompressd in alleviating memo=
+ry
+> pressure and improving system responsiveness.
+>
 
-+1.
+Oh btw, testing this on a simple kernel building task triggers this:
+
+[  133.349908] WARNING: CPU: 0 PID: 50 at mm/memcontrol.c:5330
+obj_cgroup_charge_zswap+0x22e/0x250
+[  133.350505] Modules linked in: virtio_net pata_acpi net_failover
+failover virtio_rng rng_core ata_piix libata scsi_mod scsi_common
+[  133.351366] CPU: 0 UID: 0 PID: 50 Comm: kcompressd0 Not tainted
+6.14.0-ge65b549702a5 #218
+[  133.351940] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996),
+BIOS rel-1.16.0-0-gd239552ce722-prebuilt.qemu.org 04/01/2014
+[  133.352717] RIP: 0010:obj_cgroup_charge_zswap+0x22e/0x250
+[  133.353118] Code: d2 ff 85 c0 0f 85 7a fe ff ff be ff ff ff ff 48
+c7 c7 88 da f1 91 e8 a1 b4 a3 00 85 c0 0f 85 61 fe ff ff 0f 0b e9 5a
+fe ff ff <0f> 0b e9 f5 fd ff ff e8 36 ae a3 00 e9 78 fe ff ff e8 2c ae
+a3 00
+[  133.354372] RSP: 0018:ffff9f99803bbc00 EFLAGS: 00010246
+[  133.354782] RAX: ffff970f42a9a900 RBX: 000000000000013e RCX: 00000000000=
+00002
+[  133.355269] RDX: 0000000000000000 RSI: 000000000000013e RDI: ffff970f475=
+eab40
+[  133.355774] RBP: ffff970f475eab40 R08: 0000000000000000 R09: 00000000000=
+00000
+[  133.356269] R10: ffffffff90a21205 R11: ffffffff90a211ab R12: ffffffff90a=
+21205
+[  133.356782] R13: ffffc4984041ff40 R14: ffff970f42e66000 R15: 00000000000=
+0013e
+[  133.357279] FS:  0000000000000000(0000) GS:ffff970fbdc00000(0000)
+knlGS:0000000000000000
+[  133.357807] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  133.358186] CR2: 00007f33950c5030 CR3: 00000000038ea000 CR4: 00000000000=
+006f0
+[  133.358656] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 00000000000=
+00000
+[  133.359121] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 00000000000=
+00400
+[  133.359597] Call Trace:
+[  133.359767]  <TASK>
+[  133.359914]  ? __warn+0x94/0x190
+[  133.360136]  ? obj_cgroup_charge_zswap+0x22e/0x250
+[  133.360476]  ? report_bug+0x168/0x170
+[  133.360742]  ? handle_bug+0x53/0x90
+[  133.360982]  ? exc_invalid_op+0x18/0x70
+[  133.361240]  ? asm_exc_invalid_op+0x1a/0x20
+[  133.361536]  ? zswap_store+0x755/0xf80
+[  133.361798]  ? zswap_store+0x6fb/0xf80
+[  133.362071]  ? zswap_store+0x755/0xf80
+[  133.362338]  ? obj_cgroup_charge_zswap+0x22e/0x250
+[  133.362661]  ? zswap_store+0x755/0xf80
+[  133.362943]  zswap_store+0x7e7/0xf80
+[  133.363203]  ? __pfx_kcompressd+0x10/0x10
+[  133.363472]  kcompressd+0xb1/0x180
+[  133.363724]  ? __pfx_autoremove_wake_function+0x10/0x10
+[  133.364082]  kthread+0xef/0x230
+[  133.364298]  ? __pfx_kthread+0x10/0x10
+[  133.364548]  ret_from_fork+0x34/0x50
+[  133.364810]  ? __pfx_kthread+0x10/0x10
+[  133.365063]  ret_from_fork_asm+0x1a/0x30
+[  133.365321]  </TASK>
+[  133.365471] irq event stamp: 18
+[  133.365680] hardirqs last  enabled at (17): [<ffffffff914bd0ef>]
+_raw_spin_unlock_irqrestore+0x4f/0x60
+[  133.366289] hardirqs last disabled at (18): [<ffffffff914b2031>]
+__schedule+0x6b1/0xe80
+[  133.366824] softirqs last  enabled at (0): [<ffffffff906b1caf>]
+copy_process+0x9af/0x2b50
+[  133.367366] softirqs last disabled at (0): [<0000000000000000>] 0x0
+[  133.367844] ---[ end trace 0000000000000000 ]---
+
+Seems like we're trigger this warning in the zswap cgroup check (see
+obj_cgroup_may_zswap() in mm/memcontrol.c for more details):
+
+VM_WARN_ON_ONCE(!(current->flags & PF_MEMALLOC));
+
+Might wanna fix this...
 
