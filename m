@@ -4,87 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5A2EC369D9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Apr 2025 22:52:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 250FDC369DC
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 May 2025 10:58:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nbpbINSrxfUumV9lwyjlqLA8g7akUpbSjiCjBJP9b4Q=; b=mn33Yxfc/OgLNCFcTOjJPGwbhz
-	fPrZ7DLZiNzay98fyYBKJEjJcG8UdnIzKgVKsTeIJacA3UZnIK/1UMxXR3TqSwBsXZCMNUBmok4k0
-	7IqrllFHtRfi9DZm0qMDPsEeuoOSG80ec/Z/rCzJudTLcv91lwSwJnTzgj2nYtcVnErM1Q38PmO8D
-	wYk1W4Eng7SZW2AWDLepyZYGf4Vwk88rhmfTe9ZHZqKga8doqZgLaZyQOOb2mhSPaH7dH9BNLMJCS
-	oEuvGO8eXoYFMdBLKyTz/Py5q1l4FVSUTzfQMSO7HkEGOZoF9YDZRugizr1hDjP8hipOEcXaLr2cE
-	R3R/ncJw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mLAShVW67EGOZXxd6g0OjLIXhZRJLHtvTzOQD8VdYx0=; b=WAidaIRe8mDt+MMuRqhWY1qB0v
+	mcDG4ItkQ2FiN+KXlKW8gArGhdVJ2jiOJ/9AIbtRcrUmHZqKMMJotMc2WpcbkcKIpJsyi+Xyi5g5Y
+	b2Leu4BuC07pykCeljWNjKC888LngBuYZ4W0D3GGC9flVDhc82sffcikkJPm7DMKPohXrpV4lcW6z
+	sNsNylMfoPMRMic+krB7oo4Z470nkX89Y9PG8eomN2tLGhx3YJefwmw5WvOMXFMpRTiiI3DfXYHHb
+	FSZA4eVNQUi1kwWvBBLJspSGJXjx52nQ6lxRXwyV87xF8fntN9Zz3Md60ntvjcMbkKwFkO8wcv5+H
+	gFNlHTjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAGHc-0000000ECI8-2Qbs;
-	Wed, 30 Apr 2025 22:52:04 +0000
-Received: from mail-vs1-xe34.google.com ([2607:f8b0:4864:20::e34])
+	id 1uARd1-0000000FEih-0YHW;
+	Thu, 01 May 2025 10:58:55 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAGFf-0000000EC2z-1FAS;
-	Wed, 30 Apr 2025 22:50:04 +0000
-Received: by mail-vs1-xe34.google.com with SMTP id ada2fe7eead31-4c34dcdaf88so123200137.2;
-        Wed, 30 Apr 2025 15:50:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1746053401; x=1746658201; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=nbpbINSrxfUumV9lwyjlqLA8g7akUpbSjiCjBJP9b4Q=;
-        b=Ow8GEJgXR2Bu4RXZhOIkXvIITOyvQLPMreCc3JI0ONmOU6jY6R9lrgKDMvQvdrVav+
-         JB4sUXQRMc1sjqWXPBjRjnFIKf4xmMpSXv7UyUi6SlaCXY1ZQnlZOn+2fHQUXSY0chak
-         QY9Z9gqQSFoo51TOKzx92dknxKcNPe+iCci1gIIo3h+EtPgDdvm+XLX84marKqtOOWgm
-         NMdyOkXLpVNFErN661eSWJxCSd90xisX+lZUAo6y70lHpUwFHxh6+WhIHxCERANC0JfE
-         foRqZtoFDf90Y2BPCYO9XJ/HH2IjVPJ87G2EVYy9EjEXDjXN0rk5uqD3dGJA4HFcU9Pm
-         pLIQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1746053401; x=1746658201;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=nbpbINSrxfUumV9lwyjlqLA8g7akUpbSjiCjBJP9b4Q=;
-        b=JTpvB+jQ+zQICS6iKYZwDequHe/b+PIY4hjtFYMenhkGpjcHqw6Q5RSAsud5jGqrdu
-         Om4jCsFDt7h/8UaO15uQ+zcPP3iPAC8ZRdLN7WfLjkKLHrwz2bwnQxk4G4iQzmsZi4Lo
-         +vyeD1gv4fQAgHmtVciSeVOojgfg2e3HOWQ5ubIFQa2vu4qWiuIab6GZit+Shng2sj00
-         4cBaH6lnDUbR0jbpg5qLTklg6cKQwkP+7t/+AngQxDQ2IYmgqkOmXiTbNrUHGdW7Wwv6
-         CUgiM0+hDUvN+IRo4mTY1KUN3RBeDe6lDgjl58VkexRWkVyqn/ZEk9/S/VZ8ocSKjwCV
-         Jtpg==
-X-Forwarded-Encrypted: i=1; AJvYcCVVRg/QPciOtJ/IPah8kBT8NotMiSgGpT+H4KUNSCLBG0okkFbekeghffxh+8kWYBF3pp5ZIXJCJjgnUhklkoln@lists.infradead.org, AJvYcCXW9+D1xJ4aVGZjiJau0D5gSnjZ849bmceq2cFZVK+aUQ0PIKGenbXSPEYIYKx7JHuoBUKby0+WmujYEKZXgWk=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy+NcW9gNeEka6PZeS7K59et7ODnp+NiiMGnj34SAZRYnOY3dct
-	NLNnd2m+uIeJ6ZTnJN5ucln4xYHqBzkap7tRdn4KO0D2Wuzmlfv3CuvjUZ5RJtRisfUcp+m/Ete
-	fWOxwG+px/bRQ2P3XoN7rRqlPt/I=
-X-Gm-Gg: ASbGncsR9eVUiYQ4iqScdUcs4c5GIal4MtOuDlWb9zExfiywkHQRUGwSdMfrfvIIzyJ
-	Br3X7f5lEyr7WW1Npp3X4KvxJOFJama74OinAyDjfm4xGkqSgGRmxlhEgt6kCiEOnQTvJ55cRAF
-	bNygIZw/XLOr0wEPeIxeiAOOsxxiNAyBz7
-X-Google-Smtp-Source: AGHT+IGzkaGVgrKTVWAg6uYcHiRtwbA0R/supqUwGLiy3GtgazMGGDJF+F5gy1Ww2dKzbjTsV1APhcaThlpXeBvRPg8=
-X-Received: by 2002:a05:6102:3e8d:b0:4c4:e018:326f with SMTP id
- ada2fe7eead31-4dae53bb727mr916415137.10.1746053401317; Wed, 30 Apr 2025
- 15:50:01 -0700 (PDT)
+	id 1uARcy-0000000FEiB-0oUO
+	for linux-mediatek@lists.infradead.org;
+	Thu, 01 May 2025 10:58:53 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 4FC145C546A;
+	Thu,  1 May 2025 10:56:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A1EC4C4CEE3;
+	Thu,  1 May 2025 10:58:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1746097131;
+	bh=fOPI1vRY7umuBn+S/P9hMul1fSPdaHJ81MJBCEDAOto=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=G4kbdGbb5Ttos7413Y9NRKDgW9LAD6g3OLKHMJHzdqOkufj89zfhI1K/vK872+YWD
+	 Ji3r3IcpHV1lO8l3J9Dc2Lf+aTaW2OFrSj1/KLtwkMY4LzriyrZpcF2k6aGfLgoeDo
+	 LVKR5uO8px3oWIpV9WZBwq+SaROVF7vvilxAXMDG7W2Gs+nDl0G1WbDfhqGA2tB2Uw
+	 dCJxhavYP92r0DTN9IAV3tAwyP9ii3arplTRgX02vriYnpVg5bSK2ABmigqie0RvVx
+	 Mzs3AmGVr/3Ko65RKjUtQgV/p/aplBuDvIz5dx2O6O/4dOGN+LwylQ+71GFQV7tWz5
+	 UKdNw5fBPxSNg==
+Date: Thu, 1 May 2025 12:58:48 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Caleb James DeLisle <cjd@cjdns.fr>
+Cc: linux-mips@vger.kernel.org, tglx@linutronix.de, robh@kernel.org, 
+	krzk+dt@kernel.org, conor+dt@kernel.org, tsbogend@alpha.franken.de, 
+	daniel.lezcano@linaro.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	benjamin.larsson@genexis.eu, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v4 1/7] dt-bindings: timer: Add EcoNet EN751221 "HPT" CPU
+ Timer
+Message-ID: <20250501-ludicrous-idealistic-camel-7bf8aa@kuoka>
+References: <20250430133433.22222-1-cjd@cjdns.fr>
+ <20250430133433.22222-2-cjd@cjdns.fr>
 MIME-Version: 1.0
-References: <20250430082651.3152444-1-qun-wei.lin@mediatek.com> <20250430145106.8ce79a05d35cec72aa02baa6@linux-foundation.org>
-In-Reply-To: <20250430145106.8ce79a05d35cec72aa02baa6@linux-foundation.org>
-From: Barry Song <21cnbao@gmail.com>
-Date: Thu, 1 May 2025 10:49:50 +1200
-X-Gm-Features: ATxdqUGvtOD0hW5rJBr5f2DF6ZxtN6Be6JTfSzIEhz5_WOzsDzAADbdK5XApyCE
-Message-ID: <CAGsJ_4wLuJNe9uPE3-fBNLdiCPBpKt4a1ytuf7-+oiS5rBrg_w@mail.gmail.com>
-Subject: Re: [PATCH] mm: Add Kcompressd for accelerated memory compression
-To: Andrew Morton <akpm@linux-foundation.org>
-Cc: Qun-Wei Lin <qun-wei.lin@mediatek.com>, Mike Rapoport <rppt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Nhat Pham <nphamcs@gmail.com>, 
-	Sergey Senozhatsky <senozhatsky@chromium.org>, Minchan Kim <minchan@kernel.org>, linux-mm@kvack.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, Casper Li <casper.li@mediatek.com>, 
-	Chinwen Chang <chinwen.chang@mediatek.com>, Andrew Yang <andrew.yang@mediatek.com>, 
-	James Hsu <james.hsu@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20250430133433.22222-2-cjd@cjdns.fr>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250430_155003_341118_26A692C5 
-X-CRM114-Status: GOOD (  25.24  )
+X-CRM114-CacheID: sfid-20250501_035852_286526_4E8013D2 
+X-CRM114-Status: GOOD (  13.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,105 +75,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 1, 2025 at 9:51=E2=80=AFAM Andrew Morton <akpm@linux-foundation=
-.org> wrote:
->
-> On Wed, 30 Apr 2025 16:26:41 +0800 Qun-Wei Lin <qun-wei.lin@mediatek.com>=
- wrote:
->
-> > This patch series introduces a new mechanism called kcompressd to
-> > improve the efficiency of memory reclaiming in the operating system.
-> >
-> > Problem:
-> >   In the current system, the kswapd thread is responsible for both scan=
-ning
-> >   the LRU pages and handling memory compression tasks (such as those
-> >   involving ZSWAP/ZRAM, if enabled). This combined responsibility can l=
-ead
-> >   to significant performance bottlenecks, especially under high memory
-> >   pressure. The kswapd thread becomes a single point of contention, cau=
-sing
-> >   delays in memory reclaiming and overall system performance degradatio=
-n.
-> >
-> > Solution:
-> >   Introduced kcompressd to handle asynchronous compression during memor=
-y
-> >   reclaim, improving efficiency by offloading compression tasks from
-> >   kswapd. This allows kswapd to focus on its primary task of page recla=
-im
-> >   without being burdened by the additional overhead of compression.
-> >
-> > In our handheld devices, we found that applying this mechanism under hi=
-gh
-> > memory pressure scenarios can increase the rate of pgsteal_anon per sec=
-ond
-> > by over 260% compared to the situation with only kswapd. Additionally, =
-we
-> > observed a reduction of over 50% in page allocation stall occurrences,
-> > further demonstrating the effectiveness of kcompressd in alleviating me=
-mory
-> > pressure and improving system responsiveness.
->
-> It's a significant change and I'm thinking that broader performance
-> testing across a broader range of machines is needed before we can
-> confidently upstream such a change.
+On Wed, Apr 30, 2025 at 01:34:27PM GMT, Caleb James DeLisle wrote:
+> Add device tree bindings for the so-called high-precision timer (HPT)
+> in the EcoNet EN751221 SoC.
+> 
+> Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
+> ---
+>  .../bindings/timer/econet,en751221-timer.yaml | 80 +++++++++++++++++++
+>  1 file changed, 80 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/timer/econet,en751221-timer.yaml
+> 
 
-We ran the same test on our phones and saw the same results as Qun-Wei.
-The async compression significantly reduces allocation stalls and improves
-reclamation speed. However, I agree that broader testing is needed, and
-we=E2=80=99ll also need the zswap team=E2=80=99s help with testing zswap ca=
-ses.
+What changed? Nothing explains dropping the tag.
 
->
-> Also, it's presumably a small net loss on single-CPU machines (do these
-> exist any more?).  Is it hard to disable this feature on such machines?
+<form letter>
+This is a friendly reminder during the review process.
 
-A net loss is possible, but kswapd can sometimes enter sleep contexts,
-allowing the parallel kcompressd thread to continue compression.
-This could actually be a win. But I agree that additional testing on
-single-CPU machines may be necessary.
+It looks like you received a tag and forgot to add it.
 
-It could be disabled by the following if we discover any regression on
-single-CPU machines?
+If you do not know the process, here is a short explanation:
+Please add Acked-by/Reviewed-by/Tested-by tags when posting new
+versions of patchset, under or above your Signed-off-by tag, unless
+patch changed significantly (e.g. new properties added to the DT
+bindings). Tag is "received", when provided in a message replied to you
+on the mailing list. Tools like b4 can help here. However, there's no
+need to repost patches *only* to add the tags. The upstream maintainer
+will do that for tags received on the version they apply.
 
-if (num_online_cpus() =3D=3D 1)
-     return false;
+Please read:
+https://elixir.bootlin.com/linux/v6.12-rc3/source/Documentation/process/submitting-patches.rst#L577
 
->
-> >
-> > +static bool swap_sched_async_compress(struct folio *folio)
-> > +{
-> > +     struct swap_info_struct *sis =3D swp_swap_info(folio->swap);
-> > +     int nid =3D numa_node_id();
-> > +     pg_data_t *pgdat =3D NODE_DATA(nid);
-> > +
-> > +     if (unlikely(!pgdat->kcompressd))
-> > +             return false;
-> > +
-> > +     if (!current_is_kswapd())
-> > +             return false;
-> > +
-> > +     if (!folio_test_anon(folio))
-> > +             return false;
->
-> Are you sure the above three tests are really needed?
+If a tag was not added on purpose, please state why and what changed.
+</form letter>
 
-Currently, it runs as a per-node thread mainly to accelerate asynchronous
-reclamation, which effectively reduces direct reclamation. Since direct
-reclamation already follows the slow path, asynchronous compression offers
-limited additional benefit in that context. Moreover, it's difficult
-to determine
-the optimal number of threads for direct reclamation, whereas the  compress=
-ion
-in the current direct reclamation allows it to utilize all CPUs.
+Best regards,
+Krzysztof
 
-The first condition checks whether kcompressd is present. The second
-ensures that we're in kswapd asynchronous reclamation, not direct
-reclamation. The third condition might be optimized or dropped, at least fo=
-r
-swap-backed shmem, and similar cases.
-
-Thanks
-Barry
 
