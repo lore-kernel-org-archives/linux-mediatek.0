@@ -4,108 +4,136 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5603AC3ABAA
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 May 2025 16:43:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62FA6C369DC
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 May 2025 16:47:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+72BTk3p7hLtQaCti3cuxoq+C9cJepOLj5FSJpxepws=; b=r2FQJq79ltt6r/gmWLxJ/Zx21o
-	XbgsiK4AvVMRW7eukLDkmiDpPIY2EFI79bk1o9mXFhUmuE/lBS8UYvVU1vy5OeRYyMlE9+r9L2IU1
-	w9Lg9YeNINKKhhfreyukifCru7La34wMGPkDyn7b6GeWtZ1G21oNViIv6sKucoElAvkyIT0PKBrNU
-	zhv8SjbeC9QtYWb4KLlr9LsTcKSiVsPw5toOqKdysPk0cOO400rm8xImbPoDTcJRqD9MC9mdPvnYD
-	l5yBgiDfiiiwdNlAfG3agqqPgcOMkqaS8gIDutG8qoSUilUwkLYOqaDc+tucpOOEk7HeC01+uk6PJ
-	d30fNTTQ==;
+	bh=blFO9nj94W2sQqi74hSHTooSl7uV3ZKhQoJ+90nLCFw=; b=12hAiDGSxRSuB3r3VnBPGwvdVJ
+	U0OQfeLPfYyQ1w2x4/+H60QYUCuygver/ixBGhgY4HScBDxv1JChRe8tV7JgiPtx5rCJVr6af//Hn
+	vLbzP5NLCjF9QTZFuqVCCTYx4htQygAkKPFvhYSuCwM9GygzY03n77bGE+gY5oVCoYAyoRO2FpP3/
+	W+/R5j3jlKZKeXS3SIRtxWkYxN3klcLBAApH3mYRKVqOz8I96AOOygFB5s31ZiM7zFgtL4/EVdyvy
+	8FcpdTyJ0tllOQ5tMOUbN3qBsXULIDu+g6XRv7lz2bBNbq5DWG4/lB6+hxvHX+13IVCESYvl7i/c6
+	a2KG8raQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAX09-0000000GCrS-1ncf;
-	Thu, 01 May 2025 16:43:09 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1uAX3s-0000000GDJQ-1olH;
+	Thu, 01 May 2025 16:47:00 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAWuY-0000000GBxJ-1J2y
+	id 1uAWwI-0000000GCFJ-00dk
 	for linux-mediatek@lists.infradead.org;
-	Thu, 01 May 2025 16:37:23 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-43ce4e47a85so1641485e9.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 01 May 2025 09:37:22 -0700 (PDT)
+	Thu, 01 May 2025 16:39:11 +0000
+Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-43cf825f46bso1485545e9.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 01 May 2025 09:39:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1746117441; x=1746722241; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=+72BTk3p7hLtQaCti3cuxoq+C9cJepOLj5FSJpxepws=;
-        b=VUPt7GWVZQnpLigTK59TDhxzh6pnvxh9hGxVuNFkKoEW3nXWdUkoz1P76eq7B54Vyx
-         itC61uJydcEmnyXqoWkBS9P8rsKpy/lClKzhPuJfjBueZGgZwYZv+x9nj2X1esBVi0da
-         dDNL6H2dGveYtKYP1pfAgaZRtfoX68S6N94Ppzgtet1ie9N6ewU+pZnXCtY16k4EKsTy
-         /IAz0GwUL2zUHgGydb/qXeQ0GAnp3jkulv+fv/WFf/3HSer61dd1C6OqwKpfkqrnMXOs
-         aMAgLI4Lk16aEfujAsoQhvYqhOKsmo1v+nGwJKsNf7RA4ZKRA8FB4wUTIEjQ+WVyf7yu
-         F64Q==
+        d=linaro.org; s=google; t=1746117548; x=1746722348; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=blFO9nj94W2sQqi74hSHTooSl7uV3ZKhQoJ+90nLCFw=;
+        b=Qye/+Yr6UXHeCWWU4eYZV1Pjol4tgnsMeWdwkcKFDrrv4qcWAFHcq9L4YfgDDfTVlY
+         pojleAKAzZpoGpyn5Q82Mv263hKQFbi4Komo5frcMls72P2VegkkX3iOjaDfPjT5/K56
+         tSYTuqkgYTnFSGoHTQRoEos+60OWKgZipL8znEdtc81tVU1ux5IrkndEwAxFgcmpynRO
+         kTZt5iHbPF4776+nwhRrVUSFde+aSNWtC83Rb9iP50xR035/4BJ/zECaphKcoDyq58Vb
+         k0pvO9c56kdXNQ/DXh59dnCRRVqrcX9zDdggbZ9NCm7UGZsG06PGuHSncSHBvDHdNAHn
+         rU8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1746117441; x=1746722241;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=+72BTk3p7hLtQaCti3cuxoq+C9cJepOLj5FSJpxepws=;
-        b=CTilTK+THrNGordzr9qFjpk51mDf5pxOgh7GwiMRZkUYOrP19NYdl2gR4ArOWZdfG7
-         0ZFOk+dlx2j2wMT0XAm7DQuNvk7wTHCV7aWu8gb02sZU7oV27J3Dk6zLbRTT6fdernY1
-         /PlY5IdNi6p+f7qYlWjfrRTZAvX/zqy256EmB5afPqdu0J26ZcAKzX/KhEgcUuHyqgXe
-         v8CPMNhMZya3Lxm2lCHfArYnA0Y6/KEZDj4dxK4mz+4KDsXtGTile7OETLoWNZsku+MX
-         n5JVZL6f+N1KI2F2rlu+ErXVxgntXu0hxWUXNJs61JjyZy+pbikB94zR1CCRVE5TWMLA
-         ptsQ==
-X-Forwarded-Encrypted: i=1; AJvYcCX4YS2b2lcJr2Rt0rcSJtRP/J85zTGyYml8bAOo5QzKgthFfJh2Fwj29KTtJUS1kWvCjtR/2mYEp4MQ0HsRrA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwaluUb51HLqOoyLPn9JlzM7PsOe5phV7SWiImaFYHIJ2KP5e8o
-	g3zEwCi01U0Qz6Izem0cxeSQSof/EA0rqv0xK5n/BInIA7Ytw9DOYRWCm9E5TRQ=
-X-Gm-Gg: ASbGncuaYWkPWRJ1wyBNZWI4RKcANOm7fhm5TLse6Erc1yVWOJTtMhUmY0E/Jl2/dk8
-	AL9dFtxhU7OxcY5rtEdEb97ks5BZQtAaRN38ut0qPk+r0Drbt9ZkrEwp/Qq6pJOl3shJ+souRrH
-	ysgeojCzpmOpmKI3hf57OT6lCSWW3PMX9++tChwVF7FE/UeeiO+zOMiAN9X8xEYaHIEEQOTB2r0
-	LTRK5LT/wseNjzPLGdCM1ziq7KsPyFpai0hFuclQ2FRVeWcGAiaVjJLtedH8mbuNKpKh2ST3FT1
-	hsVQ462qRgme+sGKqAT5JnW78aSMtfy82EvhauziXv9noldE60WdhMs2BruQcap/vBtsLw==
-X-Google-Smtp-Source: AGHT+IFZ4wq/YC5Z8Q1DORspcfBal0TXZZSb4qQ5i2LX5qoWo7ODXYSBY0H6naDeevzu7XX1zCwGJA==
-X-Received: by 2002:a05:600c:8712:b0:43b:c962:ad29 with SMTP id 5b1f17b1804b1-441b2c6fe2cmr22011025e9.1.1746117441032;
-        Thu, 01 May 2025 09:37:21 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1746117548; x=1746722348;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=blFO9nj94W2sQqi74hSHTooSl7uV3ZKhQoJ+90nLCFw=;
+        b=j0s5JRrUdLCD2Y1S84CopZpuRPPSO8F2I6uA8/EtyFl2FiSqUgh5dnpW5VWT9GUgST
+         ppRJAK2BxxqxdP2MjsFloORlNhEcc7qj/k6lpoJqgFMyKPkn4XTXN/0ofqLym5kfRfMw
+         lpo8OI83S4lAn8+NxFO3bwoxes2vM3+R5oUeir/Z7ulcunmIhGje0nElXAILKTX1HZv8
+         BsdX0DydU0FqDIKVIJmnJlSDxYlnPpRx80EVSti/5jELsXNxypRiuGHc3MxG9OihqMyb
+         W7FTobLYNq25W/oo5x15gl4tU4iWXQXbgYZ89SDkJFf7jkwQTshlbQQ+nxXdVOPCgOYn
+         0c9g==
+X-Forwarded-Encrypted: i=1; AJvYcCVP+YgeSIdmoYycVBG1NskjWaLmBwPK1ra2/+VkEffxZIQmZ8LI3fRWfnXyRfPLKkA49AO4Yy8fVxF43wa38g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxjIGH4dtCsjpfOq99dGXAcpb9/94K91Kz5HLAU8WbY+RRoNOPn
+	aYZPmX/XylkZJhzwgkSrqOxSS6lUCeBVuESnwjyFLkQ6KIBimKq4IVdV/Wj12TE=
+X-Gm-Gg: ASbGncsxfSZnkwMOtfqzCmD3Qvv87RXVmPOYEiA7WH3w4rSSM0oCtTXsCxa1GXenghz
+	msYFhjRTSnfcPICGiFcqqgQsZRqzDO+7nKpakuuXAytjOBCu1ReCa+lZNa/o2uGhkkjt6J3J9Dp
+	M8nfjsfPtOwRM2UnUMX2W6ql/o6fAgEMIev7JyYyLuGY7AV8TqPLNprzKcbn52er5CTKpqIKBVf
+	z8uXca+MgDCX154ELdRvHQDaz+KrK/H8gqGSKeV+BrX/vJDrblkRWB0oLrxg3GFtrUsl5AbLbDb
+	Rzde/Co7hOorlBUNqMQ62aEHLG4my/jo8I+uDQSl9EMfG1T66b/I/50XzOQsTNdECIhdAw==
+X-Google-Smtp-Source: AGHT+IGyNaNrDJUN4KrX6FLJUPQ7uE9Qq/8rComdsxtYw1MA/vRdRpy2qCoOwiHYoDt0Ee2LtLh7RA==
+X-Received: by 2002:a05:6000:430c:b0:391:277e:c400 with SMTP id ffacd0b85a97d-3a09009aadfmr2159212f8f.13.1746117548514;
+        Thu, 01 May 2025 09:39:08 -0700 (PDT)
 Received: from [192.168.1.28] ([178.197.207.88])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-441b8a288f0sm17166175e9.27.2025.05.01.09.37.19
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 01 May 2025 09:37:20 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Date: Thu, 01 May 2025 18:36:57 +0200
-Subject: [PATCH RESEND v2 3/3] iommu: mtk_iommu_v1: Simplify by dropping
- local 'mtk_mapping' variable
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a095a46b23sm1258988f8f.34.2025.05.01.09.39.07
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 01 May 2025 09:39:08 -0700 (PDT)
+Message-ID: <af3e3007-edfc-4fdc-82cb-38457ba60d3f@linaro.org>
+Date: Thu, 1 May 2025 18:39:06 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250501-syscon-phandle-args-iommu-v2-3-5a3cab296972@linaro.org>
-References: <20250501-syscon-phandle-args-iommu-v2-0-5a3cab296972@linaro.org>
-In-Reply-To: <20250501-syscon-phandle-args-iommu-v2-0-5a3cab296972@linaro.org>
-To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, 
- Robin Murphy <robin.murphy@arm.com>, Yong Wu <yong.wu@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH RESEND v2 0/3] iommu: omap: Simplify few things
+To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>, Yong Wu <yong.wu@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: iommu@lists.linux.dev, linux-kernel@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1469;
- i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
- bh=br7GZJo/Y+jEEdWoRzjynfLSYE2qWMF71yGrpCFWlfM=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBoE6M4CJameWdIEbaKrhQD0ut81+1BXWRWUnwFO
- 97Wgb7lxumJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaBOjOAAKCRDBN2bmhouD
- 14SOD/45uy0MY8VGk4ZvKE/H0R7CNE2ft3oLP9XOQRzm6XJHx2Z9QXmTT/RSuKn7rZ+bMTOw+Ir
- GPQ0iGcxYbbvzawOd5YGQVIPk0Zb1+shoVoyBFJqmuoRll36W3jRmfIN3GL0YaUjZhpnA1jcZAy
- TTuqnfYHXInALgDOecbSNWc79Uy8+ClQ3E4L+KOy4pdGjft7nSX7JXTtTXy37QxGkhpekH0JM5e
- Ny0iwkeJTtgXi7Exa1K2spOHRlROyoBC4SbhIwSnR1ht7QkzuV/dDELMLU+rjhbANXDRvhLD3Vu
- jzqfOzDuiChfqmVO8WAS80b7a7MORPmXVhl/foe3JeyXchF2/AdA0IG31LiCwkryPkD2k75l3rn
- CEazjbiTy4jsN8ZLcGWs8/1s6FpePznAdTmg4Xwg85K+Un2AibmOI8+XJXVQYQflmXwe2cvAcxq
- dYBhTZwXoJ+HdUEjmJpq+DC1veARGn0blUPddRTXMqveUNQP6ieZY53tCYDKJH3dsXH3cU+rmSn
- 2touTUB0YumibIzZdFmfF4BKTwSMHWDE0A4ZrLuaeQ2PdEdjI39x0BCE2NLbYI+Ra1JtWEZ7mgq
- vVTfWQER71C4Hc8d4JZLENH1I4xL8uQFlnxuZ0maHo0+4z4H03ObcnJNhOE7y1NWCKkOEVpBT7F
- DmneETwpwZMjFiw==
-X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
- fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
+Cc: iommu@lists.linux.dev, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+References: <20250501-syscon-phandle-args-iommu-v2-0-5a3cab296972@linaro.org>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Content-Language: en-US
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ D2GYIS41Kv4Isx2dEFh+/Q==
+In-Reply-To: <20250501-syscon-phandle-args-iommu-v2-0-5a3cab296972@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250501_093722_356929_A53ECC78 
-X-CRM114-Status: GOOD (  11.85  )
+X-CRM114-CacheID: sfid-20250501_093910_036342_5CDCF0C4 
+X-CRM114-Status: UNSURE (   8.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,50 +148,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Storing 'data->mapping' in local variable in
-mtk_iommu_v1_probe_finalize() does not make the code easier to read.
-Use the 'data->mapping' directly.
+On 01/05/2025 18:36, Krzysztof Kozlowski wrote:
+> Changes in v2:
+> - Combine patches #1 and #2, add dev_err_probe() and drop the comment
+>   (resolving Robin's comment)
+> - New patch: iommu: mtk_iommu_v1: Simplify by dropping local 'mtk_mapping' variable
+> - Rb tag
+> - Link to resend of v1: https://lore.kernel.org/r/20250212-syscon-phandle-args-iommu-v1-0-c3fab486b426@linaro.org
+> - Link to v1: https://lore.kernel.org/r/20250111-syscon-phandle-args-iommu-v1-0-3767dee585a6@linaro.org
+> 
+> Few code simplifications without functional impact.  Not tested on
+> hardware.
 
-ARM64 W=1 builds also complain with:
+I forgot to drop the subject prefix from b4 - this is not a resend, just
+v2. Apologies.
 
-  mtk_iommu_v1.c:512:28: error: variable 'mtk_mapping' set but not used [-Werror,-Wunused-but-set-variable]
-
-but this is not being fixed here and 'data' still won't be used in such
-compile test.
-
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
----
-
-Old warning is change now to:
-
-  error: variable 'data' set but not used [-Werror,-Wunused-but-set-variable]
----
- drivers/iommu/mtk_iommu_v1.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
-
-diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-index 66824982e05fbfdda224276ad41b90f9d5f9ca4e..bbe3e9d901c69ac6405d9549a4481fc80f1adb80 100644
---- a/drivers/iommu/mtk_iommu_v1.c
-+++ b/drivers/iommu/mtk_iommu_v1.c
-@@ -509,14 +509,12 @@ static struct iommu_device *mtk_iommu_v1_probe_device(struct device *dev)
- 
- static void mtk_iommu_v1_probe_finalize(struct device *dev)
- {
--	struct dma_iommu_mapping *mtk_mapping;
- 	struct mtk_iommu_v1_data *data;
- 	int err;
- 
- 	data        = dev_iommu_priv_get(dev);
--	mtk_mapping = data->mapping;
- 
--	err = arm_iommu_attach_device(dev, mtk_mapping);
-+	err = arm_iommu_attach_device(dev, data->mapping);
- 	if (err)
- 		dev_err(dev, "Can't create IOMMU mapping - DMA-OPS will not work\n");
- }
-
--- 
-2.45.2
-
+Best regards,
+Krzysztof
 
