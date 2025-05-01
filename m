@@ -4,61 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A34D3C3ABA3
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0804C369DC
 	for <linux-mediatek@archiver.kernel.org>; Thu,  1 May 2025 19:13:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Subject:References:In-Reply-To:Message-Id:Cc:To:From:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HboL1inph612c/117YiZElK3qjEwVJK9ilc054gg7/s=; b=O73iqAddjrtqgOt2XbmNte0AGC
-	5YTOw9ofTHd9xOuO2mmsn/b9Ai1wgc/ecINgh1k1fZaHERGEHW/vWJ4JWvXciyCipiL36wAeznXAs
-	xoHgYqtPtJTAOqogqCmLYrnajE9d3DXmvLEWrSlyOLHN8euEUWf0BeM45b+D03uSQMtR7iyL26Iis
-	nle+Q3P9s8W0zExh+4WJ1DVJ+BplZfNhJvlDk46ty5eytuLzCgjWHDcuFoS9v3DfaSlB2bgh7eN0G
-	GxDT/mMn4bJH1QJaePR3/TwmCwQa9dK0MTXREuT/NQMFTFH4EAYnPmgn+L0jQUvo+jOS218hdtBxZ
-	HpbGShhQ==;
+	bh=uy2Z23D4UX2pb4MGng/RS7Rc0DqXehjPgXYL1GZyHEA=; b=EyqbaU3a2QYNjXVo2M9TZcm8gd
+	nnMjMCMRcZ84dF7s+YfeHAJ30FiUqBmgWAnK7weldPCV1EcV/QQpZIclf5+MNBCAtgDr/Wh3aKdnY
+	1tdVqbL7hK19+La0O4oZN0LX37OKfXbJf/i6fAieMjj/cuVi7ls09q8i0IynDSEj//R64OruOdFfS
+	7qYt2mU39Emuag0RzuRSdO4SNcyjAhn5iHAqH/QuB8/f/PoLSXY4RfoHi6CXrjKFojQTNyLmnB0J4
+	1U9Ova2LkVtb7yKAUs8AUVNnlFkRd9x2+OvMIsWd9CEiCGJsTS6ziew5YVrMLjUpenmm1X7uR0e1I
+	6MK58BLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAZLg-0000000GSgU-3fjF;
-	Thu, 01 May 2025 19:13:32 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uAZLf-0000000GSfw-2xga;
+	Thu, 01 May 2025 19:13:31 +0000
+Received: from flow-a8-smtp.messagingengine.com ([103.168.172.143])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAZI6-0000000GSKP-1XZE
-	for linux-mediatek@lists.infradead.org;
-	Thu, 01 May 2025 19:09:50 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 8252F68443;
-	Thu,  1 May 2025 19:09:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2A3F8C4CEE3;
-	Thu,  1 May 2025 19:09:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746126589;
-	bh=w5oQGsL5WVbxAnOLzbr4QxMJ0KAY+AvOJhyFU9NztRs=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=TV04T+3ZCAfB/UqTFExArQJ7o8xyrRomHxpy8WMkw5I7VbO9aBYp4SRpRSvZBfr9r
-	 cAqR8IdWhQ1oywXI0Bb/EXZFVijKhnbglCiFAmKz4JJeOnO/Z/qfyLScOZfJtf1+HW
-	 jCRUohUUx3dtzbJ0dR0iy+PY09slNgGdSpOtsMzpoEC78Ocf/GqTQTDYzljBfWaAJJ
-	 CRdllFluIyFSZ0rKK8YICn2V/gJymgUNVwFbYve7ucHu4spzpmqutOp9l5eamTbVU0
-	 NtsG902OSLPY6EoodGMzOAhX7Z+5BG57AglvkjETPJR3wKa1MuBj13vZVsuL8znq97
-	 34Tp75blb+bVA==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 70BD13822D59;
-	Thu,  1 May 2025 19:10:29 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1uAZGV-0000000GSBy-0kzP;
+	Thu, 01 May 2025 19:08:12 +0000
+Received: from phl-compute-04.internal (phl-compute-04.phl.internal [10.202.2.44])
+	by mailflow.phl.internal (Postfix) with ESMTP id 2F84F2007A6;
+	Thu,  1 May 2025 15:08:09 -0400 (EDT)
+Received: from phl-imap-07 ([10.202.2.97])
+  by phl-compute-04.internal (MEProxy); Thu, 01 May 2025 15:08:09 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=svenpeter.dev;
+	 h=cc:cc:content-transfer-encoding:content-type:content-type
+	:date:date:from:from:in-reply-to:in-reply-to:message-id
+	:mime-version:references:reply-to:subject:subject:to:to; s=fm1;
+	 t=1746126489; x=1746133689; bh=uy2Z23D4UX2pb4MGng/RS7Rc0DqXehjP
+	gXYL1GZyHEA=; b=gMWu11vIGwyUkebQS6FfJoMbvmG1K5I4PcYPfgos/+3IKTG9
+	gplwSngSdL9b0tzDvioUBprhL4wfVkOmTpNtoAAODeB28Xg6R/kwHB7dvxSuftFL
+	yhPHuhfnyZhbGy1Hk4LH0DS38ZnX4s0nqvPXJdj6j6YsCbSDjUNCmIVLH/A/20KP
+	oo3/VMPCqW0WLap/EGtkYjtqLqADG6I7601JRBgJjC9L0IW/fnmqPmRfywBz38B2
+	l4rECgxFIIXyjmPcKpJ3MKrLDuuogSY9AnqaHJ7N27iyCvQLDrLJO+Uzbvq2a1Ob
+	z/jW7mFvVIaWGr7pr0l6vyW2GdTQ2Hejj4c04Q==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:content-type:date:date:feedback-id:feedback-id
+	:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to:x-me-proxy
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1746126489; x=
+	1746133689; bh=uy2Z23D4UX2pb4MGng/RS7Rc0DqXehjPgXYL1GZyHEA=; b=k
+	RRWrsXtBP2dGvKqi4W7O8NcUE4T3criJTN4RNqnwM3jvVZB6DFHHOoJRSzF4WwTC
+	zyfSgrVfEAEZo6Ar3KWwXFFgpo9OcSnMRAJNahqn3nlXJrX0g/PcOryetxJVwBdg
+	bMvCV+WGJfrIwElsLCpZTQGf+AFh+vAPQIz7pR9L3B7fo46k+1htBqhXoVi3Nr6i
+	iPfXM7t0uPbUxV6yQuN2xxuUHDxXOhwyx1GBr0m/YPvpPLJFGrE4r55Y1vhjLJkG
+	EYbgK2ov6OqW9yBM/N3vWdDrYa4RmB3gucHV7PaTEJHhJOlijJtkhtTp35Hug9Lp
+	KdTUch2CHWx/XAiNccw8Q==
+X-ME-Sender: <xms:lMYTaGgjwoD9jvvLQF3kWWQqAITXOwX2J_Tz44npf0_rwZTz5vZWuA>
+    <xme:lMYTaHCfTlr4IcDYYP9mfLiZVIcfetmb5w7EMXV6Z0z5aHP8l6w5d06NcLSmpdfDF
+    y_HHxOzjxiGRzZWmjM>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvjedtfeekucetufdoteggodetrf
+    dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggv
+    pdfurfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpih
+    gvnhhtshculddquddttddmnecujfgurhepofggfffhvfevkfgjfhfutgfgsehtjeertder
+    tddtnecuhfhrohhmpedfufhvvghnucfrvghtvghrfdcuoehsvhgvnhesshhvvghnphgvth
+    gvrhdruggvvheqnecuggftrfgrthhtvghrnhepleefteeugeduudeuudeuhfefheegveek
+    ueefffdvffektdffffelveffvddvueffnecuvehluhhsthgvrhfuihiivgeptdenucfrrg
+    hrrghmpehmrghilhhfrhhomhepshhvvghnsehsvhgvnhhpvghtvghrrdguvghvpdhnsggp
+    rhgtphhtthhopeegledpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtohepjhhorhhose
+    eksgihthgvshdrohhrghdprhgtphhtthhopehrohgsihhnrdhmuhhrphhhhiesrghrmhdr
+    tghomhdprhgtphhtthhopegrnhhgvghlohhgihhorggttghhihhnohdruggvlhhrvghgnh
+    hosegtohhllhgrsghorhgrrdgtohhmpdhrtghpthhtohepfigvnhhssegtshhivgdrohhr
+    ghdprhgtphhtthhopehprghlmhgvrhesuggrsggsvghlthdrtghomhdprhgtphhtthhope
+    grohhusegvvggtshdrsggvrhhkvghlvgihrdgvughupdhrtghpthhtoheprghlvgigsehg
+    hhhithhirdhfrhdprhgtphhtthhopehjvghrnhgvjhdrshhkrhgrsggvtgesghhmrghilh
+    drtghomhdprhgtphhtthhopehmrghtthhhihgrshdrsghgghesghhmrghilhdrtghomh
+X-ME-Proxy: <xmx:lMYTaOHaWClXa7praEdCDETzg-YVo8ghBfqAEKgcYyCNv-z3uiOvlg>
+    <xmx:lMYTaPTDyplPkZ6QrXRyRgI6CFJO6g9IDexaTEMgKEAyXB5CcIWOgQ>
+    <xmx:lMYTaDxrliDpH1IiImjsat2Qz56tDsozwSqIgW3l_ha48UqBCKavYA>
+    <xmx:lMYTaN4smmith_jw1KGBc7w4dLVQ7r3zWaP24jB2SlIhLdcRPVRmOw>
+    <xmx:mcYTaH2ZstH58KGLmGnY3MmWQlgQtyVkrQuLwkep4LE-hnCp6R9N54B6>
+Feedback-ID: i51094778:Fastmail
+Received: by mailuser.phl.internal (Postfix, from userid 501)
+	id 6CE25BA0070; Thu,  1 May 2025 15:08:04 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH v1] Bluetooth: btusb: Add new VID/PID 13d3/3630 for MT7925
-From: patchwork-bot+bluetooth@kernel.org
-Message-Id: <174612662826.3052720.2548130502833643921.git-patchwork-notify@kernel.org>
-Date: Thu, 01 May 2025 19:10:28 +0000
-References: <20250429101605.2862004-1-jiande.lu@mediatek.com>
-In-Reply-To: <20250429101605.2862004-1-jiande.lu@mediatek.com>
-To: Jiande Lu <jiande.lu@mediatek.com>
-Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
- sean.wang@mediatek.com, chris.lu@mediatek.com, will-cy.lee@mediatek.com,
- ss.wu@mediatek.com, steve.lee@mediatek.com, linux-bluetooth@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+X-ThreadId: T5b013bf7ff4edb46
+Date: Thu, 01 May 2025 21:07:44 +0200
+From: "Sven Peter" <sven@svenpeter.dev>
+To: "Jason Gunthorpe" <jgg@nvidia.com>, "Alexandre Ghiti" <alex@ghiti.fr>,
+ "Alim Akhtar" <alim.akhtar@samsung.com>,
+ "Alyssa Rosenzweig" <alyssa@rosenzweig.io>,
+ "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
+ "Albert Ou" <aou@eecs.berkeley.edu>, asahi@lists.linux.dev,
+ "Baolin Wang" <baolin.wang@linux.alibaba.com>,
+ "Lu Baolu" <baolu.lu@linux.intel.com>,
+ "David Woodhouse" <dwmw2@infradead.org>,
+ "Gerald Schaefer" <gerald.schaefer@linux.ibm.com>,
+ "Heiko Stuebner" <heiko@sntech.de>, iommu@lists.linux.dev,
+ "Janne Grunau" <j@jannau.net>,
+ "Jean-Philippe Brucker" <jean-philippe@linaro.org>,
+ "Jernej Skrabec" <jernej.skrabec@gmail.com>,
+ "Jonathan Hunter" <jonathanh@nvidia.com>,
+ "Joerg Roedel" <joro@8bytes.org>, "Kevin Tian" <kevin.tian@intel.com>,
+ "Krzysztof Kozlowski" <krzk@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
+ linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
+ linux-tegra@vger.kernel.org,
+ "Marek Szyprowski" <m.szyprowski@samsung.com>,
+ "Matthias Brugger" <matthias.bgg@gmail.com>,
+ "Matthew Rosato" <mjrosato@linux.ibm.com>, "Neal Gompa" <neal@gompa.dev>,
+ "Orson Zhai" <orsonzhai@gmail.com>,
+ "Palmer Dabbelt" <palmer@dabbelt.com>,
+ "Paul Walmsley" <paul.walmsley@sifive.com>,
+ "Rob Clark" <robdclark@gmail.com>, "Robin Murphy" <robin.murphy@arm.com>,
+ "Samuel Holland" <samuel@sholland.org>,
+ "Niklas Schnelle" <schnelle@linux.ibm.com>,
+ "Thierry Reding" <thierry.reding@gmail.com>,
+ "Tomasz Jeznach" <tjeznach@rivosinc.com>,
+ "Krishna Reddy" <vdumpa@nvidia.com>, virtualization@lists.linux.dev,
+ "Chen-Yu Tsai" <wens@csie.org>, "Will Deacon" <will@kernel.org>,
+ "Yong Wu" <yong.wu@mediatek.com>,
+ "Chunyan Zhang" <zhang.lyra@gmail.com>
+Cc: patches@lists.linux.dev
+Message-Id: <38706b77-4e58-4dfb-add3-814746f4a3c5@app.fastmail.com>
+In-Reply-To: <3-v1-7c5282b0c334+2db-iommu_rm_ops_pgsize_jgg@nvidia.com>
+References: <3-v1-7c5282b0c334+2db-iommu_rm_ops_pgsize_jgg@nvidia.com>
+Subject: Re: [PATCH 3/7] iommu: Remove ops.pgsize_bitmap from drivers that don't use it
+Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250501_120811_687166_49A030F5 
+X-CRM114-Status: GOOD (  13.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,67 +147,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+On Tue, Apr 29, 2025, at 16:34, Jason Gunthorpe wrote:
+> These drivers all set the domain->pgsize_bitmap in their
+> domain_alloc_paging() functions, so the ops value is never used. Delete
+> it.
+>
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> ---
+>  drivers/iommu/apple-dart.c       | 1 -
+>  drivers/iommu/intel/iommu.c      | 1 -
+>  drivers/iommu/iommufd/selftest.c | 1 -
+>  drivers/iommu/riscv/iommu.c      | 1 -
+>  drivers/iommu/virtio-iommu.c     | 6 ++----
+>  5 files changed, 2 insertions(+), 8 deletions(-)
+>
+> diff --git a/drivers/iommu/apple-dart.c b/drivers/iommu/apple-dart.c
+> index 757d24f67ad45a..190f28d7661515 100644
+> --- a/drivers/iommu/apple-dart.c
+> +++ b/drivers/iommu/apple-dart.c
+> @@ -991,7 +991,6 @@ static const struct iommu_ops apple_dart_iommu_ops = {
+>  	.of_xlate = apple_dart_of_xlate,
+>  	.def_domain_type = apple_dart_def_domain_type,
+>  	.get_resv_regions = apple_dart_get_resv_regions,
+> -	.pgsize_bitmap = -1UL, /* Restricted during dart probe */
+>  	.owner = THIS_MODULE,
+>  	.default_domain_ops = &(const struct iommu_domain_ops) {
+>  		.attach_dev	= apple_dart_attach_dev_paging,
 
-This patch was applied to bluetooth/bluetooth-next.git (master)
-by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
-
-On Tue, 29 Apr 2025 18:16:05 +0800 you wrote:
-> Add VID 13d3 & PID 3630 for MediaTek MT7925 USB Bluetooth chip.
-> 
-> The information in /sys/kernel/debug/usb/devices about the Bluetooth
-> device is listed as the below.
-> 
-> T:  Bus=07 Lev=01 Prnt=01 Port=10 Cnt=02 Dev#=  2 Spd=480  MxCh= 0
-> D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-> P:  Vendor=13d3 ProdID=3630 Rev= 1.00
-> S:  Manufacturer=MediaTek Inc.
-> S:  Product=Wireless_Device
-> S:  SerialNumber=000000000
-> C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
-> A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
-> I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
-> E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-> I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-> I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-> I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-> I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-> I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-> I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-> I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-> E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
-> E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
-> I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-> E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
-> E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
-> 
-> [...]
-
-Here is the summary with links:
-  - [v1] Bluetooth: btusb: Add new VID/PID 13d3/3630 for MT7925
-    https://git.kernel.org/bluetooth/bluetooth-next/c/c03e896217f7
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+Reviewed-by: Sven Peter <sven@svenpeter.dev> # for Apple DART
 
 
+
+Best,
+
+
+Sven
 
