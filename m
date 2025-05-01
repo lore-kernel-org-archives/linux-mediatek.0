@@ -4,62 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 848C2C3ABA9
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 May 2025 12:31:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11697C369DC
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 May 2025 13:01:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aTNwb4rImB7g18TxsqHFcDnqMMLrX8555tm+zk++cj8=; b=sRN+uhJ3OHYEhc
-	DmYrbn59OUQx2Ix2zqYoNHz+KZby3k4FyDj443+NCRtydCUNzkrja+aS1D52lH9Ssseq8Z0UzzzWg
-	FB+QOvZEO1RRiHVnXW+2Iq7REflm6mcPs7T12aGw0r/x9H3oI7T3+kOo19PEzWQzei4jCNx8U8ixI
-	J3u95BMza1784Gpu7+f6ujz+9S1GHl1MCMnAxboo6P4TAdWOIQmM56zgu82cEJyQZabZyeMcsKsFt
-	qQ/+/Hwwi6cDANMWxb4PmMnxTyYSDRho9k0b0c29KW1OkkqQQzRWZYjeNIr5kHrD0Lfmg/y3B3gXu
-	iNUdRKgwpx6n1qpWYmTg==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=NnoUbMfttFzwRrbX8cLNmCp9Iqdu1NA79G+j70FEH9Y=; b=G4lgdC+0C50D9/
+	ZnIRULgeNUIrXHVkcmJ2ct2wA5uTUYWihXTeF2fBU0p9Wi14B7x++S+aWMoav95ChzcqHdUYXuQvP
+	H5ONt4DQe0PH6ZsGWVM4dfF84kr5LPUt8UBUpp2t4wFhMFrAHAB3tL8JCT+AzOTzZcWdwqcJ6/tSW
+	2Qtc1T3byyZGgfs5y7ckNmlw/7hD6SmROFIyvhrQKlhN3xufIgaf0n5g/WUwskDFk4UJkcoFFU0wb
+	KWCegiMpKrpihqSEon7Mnbn/kKl1TWw0GwxOXFrYDlFasr4wbmZQvZnTb1ICLL0+7IUIwYmZFx/c3
+	OFxlS7BruqLtCX3Q0cTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAT4Q-0000000Fg6O-20oJ;
-	Thu, 01 May 2025 12:31:18 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uATXi-0000000FlTQ-3SO6;
+	Thu, 01 May 2025 13:01:34 +0000
+Received: from mxout3.routing.net ([2a03:2900:1:a::8])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uASaK-0000000FKoA-1BJ9;
-	Thu, 01 May 2025 12:00:12 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 586B768468;
-	Thu,  1 May 2025 11:59:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3DA6CC4CEE4;
-	Thu,  1 May 2025 12:00:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746100810;
-	bh=z2F6Iq0+hrQEpIkV1fcg1WaUZezRhDU2gz0ArU4vrno=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=FYsGrvFLffhiha4aqHkEGShXosDNpziWGUHgvmVDigxpuGtwUNOvtBoSTZDyYxdep
-	 SZSx8/9SSh3vE39cBtXXqVDlyjm3+eLy+BoqTf+h5cIVkcJkwYfx+odlikVY+hgyfd
-	 wXoOc71APf3R7yHeCOFcur+WgJq4lOF3LZIBavk2ngkmdxUc/SKG5eqgG6h+nzYTlo
-	 VqREdJ/WFQXkkV52JcMGsj5+dtEAGoQIlh0H0KiDq0T3jqgCco3uXMTwXpQHb86Pth
-	 l5ggML4+v6nvlahSCh2YLw99hh04tQdqnqOHwAQt+adta+U2bLYP38Bj0IsBvj7s4t
-	 +bTbCajpFU7aQ==
-From: Lee Jones <lee@kernel.org>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Lee Jones <lee@kernel.org>, 
- Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
- Kishon Vijay Abraham I <kishon@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Frank Wunderlich <linux@fw-web.de>
-In-Reply-To: <20250422132438.15735-6-linux@fw-web.de>
-References: <20250422132438.15735-1-linux@fw-web.de>
- <20250422132438.15735-6-linux@fw-web.de>
-Subject: Re: (subset) [PATCH v4 5/8] dt-bindings: mfd: syscon: Add
- mt7988-topmisc
-Message-Id: <174610080698.3792828.16129247055603832189.b4-ty@kernel.org>
-Date: Thu, 01 May 2025 13:00:06 +0100
+	id 1uATTh-0000000Fk9E-28PH;
+	Thu, 01 May 2025 12:57:27 +0000
+Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
+	by mxout3.routing.net (Postfix) with ESMTP id DDC836047C;
+	Thu,  1 May 2025 12:57:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1746104242;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=NnoUbMfttFzwRrbX8cLNmCp9Iqdu1NA79G+j70FEH9Y=;
+	b=iWXRWv1eeaVcFFtQWWjrMohgOyUY6glLempu1AWxYbDqZ0zfcmH6k+H/xjEsKgFBTTKU8I
+	guqoMJkRD5pV/BrwkReJMVWQZjXfX9601Ngplj8RKXIgC8+7UEB6WjmV3rcNd/qXfyaPCK
+	Bw6hf2KJsL6csJxH9y+3ZijsFzA5gHw=
+Received: from frank-u24.. (fttx-pool-157.180.225.138.bambit.de [157.180.225.138])
+	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id A245D10010F;
+	Thu,  1 May 2025 12:57:20 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: Daniel Golle <daniel@makrotopia.org>,
+	Qingfang Deng <dqfext@gmail.com>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [RFC,net-next v1] net: phy: mediatek: do not require syscon compatible for pio property
+Date: Thu,  1 May 2025 14:57:02 +0200
+Message-ID: <20250501125703.55224-1-linux@fw-web.de>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.15-dev-39345
+X-Mail-ID: 7d9196f7-2e8a-481a-ba32-0e3d88cab2b5
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250501_055725_705990_C462BC6C 
+X-CRM114-Status: GOOD (  12.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,27 +75,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, linux-mediatek@lists.infradead.org, =?utf-8?q?Rafa=C5=82_Mi=C5=82ecki?= <rafal@milecki.pl>, linux-arm-kernel@lists.infradead.org
+Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 22 Apr 2025 15:24:28 +0200, Frank Wunderlich wrote:
-> Add compatible for Mediatek mt7988 topmisc syscon.
-> This hardware block contains 2 functional blocks
-> 
-> - a powercontroller which is not needed (switched by atf)
-> - a multiplexer for high-speed Combo-Phy
-> 
-> This compatible is only for the multiplexer part.
-> 
-> [...]
+From: Frank Wunderlich <frank-w@public-files.de>
 
-Applied, thanks!
+Current implementation requires syscon compatible for pio property
+which is used for driving the switch leds on mt7988.
 
-[5/8] dt-bindings: mfd: syscon: Add mt7988-topmisc
-      commit: 4d54ce40400c215127ce24aa3a684a20e7d8493a
+Replace syscon_regmap_lookup_by_phandle with of_parse_phandle and
+device_node_to_regmap to get the regmap already assigned by pinctrl
+driver.
 
---
-Lee Jones [李琼斯]
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+---
+ drivers/net/phy/mediatek/mtk-ge-soc.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/phy/mediatek/mtk-ge-soc.c b/drivers/net/phy/mediatek/mtk-ge-soc.c
+index 175cf5239bba..21975ef946d5 100644
+--- a/drivers/net/phy/mediatek/mtk-ge-soc.c
++++ b/drivers/net/phy/mediatek/mtk-ge-soc.c
+@@ -7,6 +7,7 @@
+ #include <linux/pinctrl/consumer.h>
+ #include <linux/phy.h>
+ #include <linux/regmap.h>
++#include <linux/of.h>
+ 
+ #include "../phylib.h"
+ #include "mtk.h"
+@@ -1319,6 +1320,7 @@ static int mt7988_phy_probe_shared(struct phy_device *phydev)
+ {
+ 	struct device_node *np = dev_of_node(&phydev->mdio.bus->dev);
+ 	struct mtk_socphy_shared *shared = phy_package_get_priv(phydev);
++	struct device_node *pio_np;
+ 	struct regmap *regmap;
+ 	u32 reg;
+ 	int ret;
+@@ -1336,7 +1338,13 @@ static int mt7988_phy_probe_shared(struct phy_device *phydev)
+ 	 * The 4 bits in TPBANK0 are kept as package shared data and are used to
+ 	 * set LED polarity for each of the LED0.
+ 	 */
+-	regmap = syscon_regmap_lookup_by_phandle(np, "mediatek,pio");
++	pio_np = of_parse_phandle(np, "mediatek,pio", 0);
++	if (!pio_np)
++		return -ENODEV;
++
++	regmap = device_node_to_regmap(pio_np);
++	of_node_put(pio_np);
++
+ 	if (IS_ERR(regmap))
+ 		return PTR_ERR(regmap);
+ 
+-- 
+2.43.0
 
 
