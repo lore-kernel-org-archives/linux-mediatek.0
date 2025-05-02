@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B3A1C3ABB0
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 May 2025 17:23:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F926C3ABB2
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 May 2025 17:23:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vavMTR2D1KCOOD6m+5FBBXoIqxt2okFOaC8013/6GF0=; b=0dvHZm5oOwovJ2r4DaKajyEaiD
-	BihJRq8Os+FGHgU/UApxOsAMGBP4NA78UwfvL6cH1cdJ4DTJhAg5g2an2AN+vXF/ZUravf3hReXze
-	Dxglst6AWYElEj8dhHq6MCZGATjcZ+YPgIP9YMv9AvNrQPoezlqGqYFrgwseGJgQaomc0v0go6/SJ
-	9K2eGaIe5pJvFEc14XtqUp21Il7MZ6kuxXToDsVj8m4SJO9Sqw5QwEQJOgPA+aqYx6cRKfa758j4s
-	yhPjcFrOPV7TS/jJGmnl9oYItENDc5ORVrLR7QAKoucBjpCatPVDL2OLJqsSmyb2um91vR42hoK8v
-	bEMTaa6g==;
+	bh=JgGRTDjgzyBASmXyqLVxIYbx3Q9UYKd/CzI0L2LV1d4=; b=DWzID1bw3cPzQI596SH4N0Or5G
+	Fc/fkurmu16wIbxVKw9T/W4g/mvNzk5QbcHQPUf6rIXONMmY+UttsNVFb/y0TrvfGhwttgGznvCdI
+	/pbpXem/+q0Zp7h8vmR7b9GKxasJbPmbeprdhgSmiBNWfFtfdzObS5siftDTlg34rRf9EKqGMcmcn
+	OFUw+5TR+/8uOIRuE6j7ntuEsBRuWs0O2vteE9wksxJraOj3u2FX+QjQInooLvI30X0vcf8+PlkSN
+	wyHK4Iy9CoRgBP5mfcAYN5VZK30klWzGOTI6Ag2y5k7TVptUPO3B8B/VB2Hk0/B0dsWEOMDme9AOk
+	iiuyIzeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAu6O-00000002dwz-2CJV;
-	Fri, 02 May 2025 17:23:08 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uAu6P-00000002dz6-1xGn;
+	Fri, 02 May 2025 17:23:09 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAtU2-00000002YPJ-04od;
-	Fri, 02 May 2025 16:43:31 +0000
+	id 1uAtU3-00000002YPe-1Wlq;
+	Fri, 02 May 2025 16:43:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1746204207;
-	bh=X2Ng3agimfiOa3XjrZaTTRUXoUq+StkbsTQYQSI5kBU=;
+	s=mail; t=1746204210;
+	bh=ygx2bzlBgpHjz1t7Ya2NDxpOQ/Eveinyd42eds817pg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=ZVqt8R7hTEtpyGw29k2ISovDQgjRLUBeIRsJtt7SHFM/kjQuWgidGNN9bxjosfC3u
-	 +GxffksQhGqNVVu8CSg3UZwAper72bRhraZcSy/b5Si4WGO66AgmqALFuEl9l+k112
-	 +DRfEVy9NwFmVV2VgArnldMYxm6O1k2FX8V9Y/0yLRjNWcP79kFV8JQChpmdt7L75P
-	 z/j3g8I4ec1Q20H1iqIqQuQGNkcUZ8QHpZ+1tPJgXk2bNCVQKIM6sjWndkuhf+AbyP
-	 2h3PwAOgqm1kGnfqdMsmZvRHS6SIRBTqLpAIHJhRJ21t40myHKqQ9egvHzySuYsndj
-	 JPNMn9wdHLJ6A==
+	b=q1B+zzkpLiAT/IBpIvW7htAZx20VHLTySJOBTzYHqwk+TH6dQ0Pe6AiPO20GtF+FO
+	 sgvYCFkgNFm1sCbT/KBekn5a2/oxtB6g/LDSOhGlFQ+fsG5IskGTEAs7MTE8hGDySt
+	 uCakBdm8dsU0mOu5xjcN16OIPtgGEMtpn5kP9S6WrlGhe34bzrLPXuNk3TKbfGFxR6
+	 yWcF+Q5HkbEVQ9c3doQW6RR62S2INKAa/O0SXSU3zD0JYST73UJf615bBRCR0XVbue
+	 ph8cvwttJlHntLirMQ9iEyNBO2eIj2vk7U2eifOxk+lFWDOdRGKAgTs5vWjJkitR7D
+	 EWqy+WTxvnQ5g==
 Received: from [192.168.1.63] (unknown [70.107.117.78])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6B05D17E1062;
-	Fri,  2 May 2025 18:43:25 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id EDDB817E125D;
+	Fri,  2 May 2025 18:43:27 +0200 (CEST)
 From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Fri, 02 May 2025 12:43:21 -0400
-Subject: [PATCH 1/2] dt-bindings: mfd: syscon: Add
- mediatek,mt8365-infracfg-nao
+Date: Fri, 02 May 2025 12:43:22 -0400
+Subject: [PATCH 2/2] arm64: dts: mediatek: mt8365: Describe infracfg-nao as
+ a pure syscon
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20250502-mt8365-infracfg-nao-compatible-v1-1-e40394573f98@collabora.com>
+Message-Id: <20250502-mt8365-infracfg-nao-compatible-v1-2-e40394573f98@collabora.com>
 References: <20250502-mt8365-infracfg-nao-compatible-v1-0-e40394573f98@collabora.com>
 In-Reply-To: <20250502-mt8365-infracfg-nao-compatible-v1-0-e40394573f98@collabora.com>
 To: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, 
@@ -68,9 +68,8 @@ Cc: kernel@collabora.com, devicetree@vger.kernel.org,
  =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250502_094330_224304_82CF4420 
-X-CRM114-Status: UNSURE (   9.09  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250502_094331_551898_A2A8E72F 
+X-CRM114-Status: GOOD (  13.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,30 +84,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The register space described by DT node of compatible
-mediatek,mt8365-infracfg-nao exposes a variety of unrelated registers,
-including registers for controlling bus protection on the MT8365 SoC,
-which is used by the power domain controller through a syscon.
+The infracfg-nao register space at 0x1020e000 has different registers
+than the infracfg space at 0x10001000, and most importantly, doesn't
+contain any clock controls. Therefore it shouldn't use the same
+compatible used for the mt8365 infracfg clocks driver:
+mediatek,mt8365-infracfg. Since it currently does, probe errors are
+reported in the kernel logs:
 
-Add this compatible to the syscon binding.
+  [    0.245959] Failed to register clk ifr_pmic_tmr: -EEXIST
+  [    0.245998] clk-mt8365 1020e000.infracfg: probe with driver clk-mt8365 failed with error -17
 
+This register space is used only as a syscon for bus control by the
+power domain controller, so in order to properly describe it and fix the
+errors, set its compatible to a distinct compatible used exclusively as
+a syscon, drop the clock-cells, and while at it rename the node to
+'syscon' following the naming convention.
+
+Fixes: 6ff945376556 ("arm64: dts: mediatek: Initial mt8365-evk support")
 Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 ---
- Documentation/devicetree/bindings/mfd/syscon.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm64/boot/dts/mediatek/mt8365.dtsi | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Documentation/devicetree/bindings/mfd/syscon.yaml
-index c6bbb19c3e3e2245b4a823df06e7f361da311000..f655ec18cc2d96028d17e19d704b62f6d898fea4 100644
---- a/Documentation/devicetree/bindings/mfd/syscon.yaml
-+++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
-@@ -190,6 +190,7 @@ properties:
-           - mediatek,mt8135-pctl-a-syscfg
-           - mediatek,mt8135-pctl-b-syscfg
-           - mediatek,mt8173-pctl-a-syscfg
-+          - mediatek,mt8365-infracfg-nao
-           - mediatek,mt8365-syscfg
-           - microchip,lan966x-cpu-syscon
-           - microchip,mpfs-sysreg-scb
+diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
+index e6d2b3221a3b7a855129258b379ae4bc2fd05449..49ad4dee9c4cf563743dc55d5e0b055cfb69986a 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8365.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
+@@ -495,10 +495,9 @@ iommu: iommu@10205000 {
+ 			#iommu-cells = <1>;
+ 		};
+ 
+-		infracfg_nao: infracfg@1020e000 {
+-			compatible = "mediatek,mt8365-infracfg", "syscon";
++		infracfg_nao: syscon@1020e000 {
++			compatible = "mediatek,mt8365-infracfg-nao", "syscon";
+ 			reg = <0 0x1020e000 0 0x1000>;
+-			#clock-cells = <1>;
+ 		};
+ 
+ 		rng: rng@1020f000 {
 
 -- 
 2.49.0
