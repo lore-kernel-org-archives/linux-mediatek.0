@@ -4,57 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADBBBC3ABAA
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 May 2025 17:23:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B3A1C3ABB0
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 May 2025 17:23:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=mIoGoh4sIDM3c+NpeCHr7wsQQg2d3tD2xjHc8WXc64Q=; b=Bx8dht5U2o69cK
-	1QCFCO1N7je68SzACmTP6qFtq5fFON0y+r8BF6o1yTwuRhLLoNXZP4j+5dqBJEVg9W3Pg41yAB60E
-	WieGf/Eaw5E5rvK0z19qApBu1ZsqiOiCaYdp37R3r8pzhDS4ElEzNcmV9qrJ3TYam9FWiOVGDhDyF
-	HK1U0jsNRoTO5cFL9MlAPHCq6y9Z8Rfz2oK7aTS/D/mCA6UCuS+LqRDVyX4J2ILkg5/QHa7jcWyg7
-	RW9+J7FdDmnRLVdGI0SDVyGeVkO+ZRfNt6No23FBkbYpeXpf5C4QCMI0fRW22pV2/7p41U7jt3g9z
-	l38TaS/3hsBCv68x/Ysw==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vavMTR2D1KCOOD6m+5FBBXoIqxt2okFOaC8013/6GF0=; b=0dvHZm5oOwovJ2r4DaKajyEaiD
+	BihJRq8Os+FGHgU/UApxOsAMGBP4NA78UwfvL6cH1cdJ4DTJhAg5g2an2AN+vXF/ZUravf3hReXze
+	Dxglst6AWYElEj8dhHq6MCZGATjcZ+YPgIP9YMv9AvNrQPoezlqGqYFrgwseGJgQaomc0v0go6/SJ
+	9K2eGaIe5pJvFEc14XtqUp21Il7MZ6kuxXToDsVj8m4SJO9Sqw5QwEQJOgPA+aqYx6cRKfa758j4s
+	yhPjcFrOPV7TS/jJGmnl9oYItENDc5ORVrLR7QAKoucBjpCatPVDL2OLJqsSmyb2um91vR42hoK8v
+	bEMTaa6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAu6N-00000002dv1-1Qwr;
-	Fri, 02 May 2025 17:23:07 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uAu6O-00000002dwz-2CJV;
+	Fri, 02 May 2025 17:23:08 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAtTz-00000002YOd-0BQN;
-	Fri, 02 May 2025 16:43:28 +0000
+	id 1uAtU2-00000002YPJ-04od;
+	Fri, 02 May 2025 16:43:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1746204205;
-	bh=yw1w5T04gn1gvO0Eacj6I5K1Un/3y0OZ9jtnwYuxfQs=;
-	h=From:Subject:Date:To:Cc:From;
-	b=ZlhKchsbqYhfIVV4s70fGnYsp+E1osDveIH6MLobr/hdKC9sDWd1sDPYepOJ86Nvr
-	 A5zbLtspETWeaG9Rwnk6UGMnZHSrbVDnSZvsiOajp0nFU2y1u5Yv+J8+MI6qI3jcRl
-	 zg3+DK5SwEUk4cSVHzyxX/XQDZOgtrBo+YuBIo4WHXhUDduMWsu+VlHGE255GmU6uW
-	 HE/N5PgfrWAi6VM5foTbQqnioTobveP2kjZQ3uX1inOKNXZXNzUTjgbwR6Ahe7m/lo
-	 I/+vq99PmhPF97LS3r/tEEnCUb6yR53qB62yhaypSEKa3cARlwgyUR8FQSZQ3wc/pD
-	 1lnmAZs4SHhxQ==
+	s=mail; t=1746204207;
+	bh=X2Ng3agimfiOa3XjrZaTTRUXoUq+StkbsTQYQSI5kBU=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=ZVqt8R7hTEtpyGw29k2ISovDQgjRLUBeIRsJtt7SHFM/kjQuWgidGNN9bxjosfC3u
+	 +GxffksQhGqNVVu8CSg3UZwAper72bRhraZcSy/b5Si4WGO66AgmqALFuEl9l+k112
+	 +DRfEVy9NwFmVV2VgArnldMYxm6O1k2FX8V9Y/0yLRjNWcP79kFV8JQChpmdt7L75P
+	 z/j3g8I4ec1Q20H1iqIqQuQGNkcUZ8QHpZ+1tPJgXk2bNCVQKIM6sjWndkuhf+AbyP
+	 2h3PwAOgqm1kGnfqdMsmZvRHS6SIRBTqLpAIHJhRJ21t40myHKqQ9egvHzySuYsndj
+	 JPNMn9wdHLJ6A==
 Received: from [192.168.1.63] (unknown [70.107.117.78])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 42A1517E0858;
-	Fri,  2 May 2025 18:43:23 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6B05D17E1062;
+	Fri,  2 May 2025 18:43:25 +0200 (CEST)
 From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Subject: [PATCH 0/2] Correct MT8365's infracfg-nao DT node description as a
- pure syscon
-Date: Fri, 02 May 2025 12:43:20 -0400
-Message-Id: <20250502-mt8365-infracfg-nao-compatible-v1-0-e40394573f98@collabora.com>
+Date: Fri, 02 May 2025 12:43:21 -0400
+Subject: [PATCH 1/2] dt-bindings: mfd: syscon: Add
+ mediatek,mt8365-infracfg-nao
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-B4-Tracking: v=1; b=H4sIACj2FGgC/x3NQQqDMBBA0avIrDsQ00SLVykuYjKjAzWRREQQ7
- 97g8m3+v6BQFiowNBdkOqRIihXtqwG/uDgTSqgGrbRVVmlc98+7syiRs/M8Y3QJfVo3t8v0IzR
- dMGHq2RruoUa2TCznM/iO9/0HdP/nXXAAAAA=
-X-Change-ID: 20250502-mt8365-infracfg-nao-compatible-46d4db7f54f7
+Message-Id: <20250502-mt8365-infracfg-nao-compatible-v1-1-e40394573f98@collabora.com>
+References: <20250502-mt8365-infracfg-nao-compatible-v1-0-e40394573f98@collabora.com>
+In-Reply-To: <20250502-mt8365-infracfg-nao-compatible-v1-0-e40394573f98@collabora.com>
 To: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, 
  Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, 
@@ -70,8 +68,8 @@ Cc: kernel@collabora.com, devicetree@vger.kernel.org,
  =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250502_094327_226485_73F1D8DE 
-X-CRM114-Status: UNSURE (   7.57  )
+X-CRM114-CacheID: sfid-20250502_094330_224304_82CF4420 
+X-CRM114-Status: UNSURE (   9.09  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,25 +85,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce a new compatible to the binding and use it in the infracfg-nao
-node in the mt8365.dtsi to correctly describe the node and prevent probe
-errors.
+The register space described by DT node of compatible
+mediatek,mt8365-infracfg-nao exposes a variety of unrelated registers,
+including registers for controlling bus protection on the MT8365 SoC,
+which is used by the power domain controller through a syscon.
+
+Add this compatible to the syscon binding.
 
 Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 ---
-Nícolas F. R. A. Prado (2):
-      dt-bindings: mfd: syscon: Add mediatek,mt8365-infracfg-nao
-      arm64: dts: mediatek: mt8365: Describe infracfg-nao as a pure syscon
-
  Documentation/devicetree/bindings/mfd/syscon.yaml | 1 +
- arch/arm64/boot/dts/mediatek/mt8365.dtsi          | 5 ++---
- 2 files changed, 3 insertions(+), 3 deletions(-)
----
-base-commit: 37ff6e9a2ce321b7932d3987701757fb4d87b0e6
-change-id: 20250502-mt8365-infracfg-nao-compatible-46d4db7f54f7
+ 1 file changed, 1 insertion(+)
 
-Best regards,
+diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Documentation/devicetree/bindings/mfd/syscon.yaml
+index c6bbb19c3e3e2245b4a823df06e7f361da311000..f655ec18cc2d96028d17e19d704b62f6d898fea4 100644
+--- a/Documentation/devicetree/bindings/mfd/syscon.yaml
++++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
+@@ -190,6 +190,7 @@ properties:
+           - mediatek,mt8135-pctl-a-syscfg
+           - mediatek,mt8135-pctl-b-syscfg
+           - mediatek,mt8173-pctl-a-syscfg
++          - mediatek,mt8365-infracfg-nao
+           - mediatek,mt8365-syscfg
+           - microchip,lan966x-cpu-syscon
+           - microchip,mpfs-sysreg-scb
+
 -- 
-Nícolas F. R. A. Prado <nfraprado@collabora.com>
+2.49.0
 
 
