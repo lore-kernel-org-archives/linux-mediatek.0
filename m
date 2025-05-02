@@ -4,77 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AC39C3ABAA
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 May 2025 13:19:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7343DC3ABAA
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 May 2025 15:05:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=rwAjIo5Lh5M2Q0rNiBTOLYKehD+GC52HGXX9wMhyRRA=; b=ahOUXRThTPmhHr0hPch1uKTEcK
-	tBGvV4/gRUWjvDhjakVS+fKeZSrzVdjc2Vo2Vu6mf0p01r1VTSevm+NKCC0ChQtqg4QZ7aEHrVODo
-	0b2SsbtXouhHsC5QVUTm5A3j4DkF+AB9l/YaBuZLE4vh1jgahCVl5jHyR3qgJxBoKAhUliIEMswuQ
-	6DWfIzsMnT8Fj5NxyDXbTgFQrnQxelwsNXWQohwYPyCEFN+d/K0VieBiNd122CkC7evxIfB7uEPmQ
-	DEloX0KpWa1qMgMp5c4zx7d7fPsEttSg74vnaYdBqq1TaqQNhCqe+Le5z6t+i0LxYpyIrjUzTrikH
-	L7xE/Z9g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=WjZ/X+9NMMif7OyiK71JbAQs+u2dkiGWcjzAyUuvLBE=; b=a7oaK2BtK67iLFdcqlRTHB/s9k
+	TF5rPBRedJBiF6dXOVX1BXfmzeuaoRIckv4abjAckTlJnrR/Mi6Y821xhbuHP2UL5thupgYiRvlE0
+	ko6debhNJLzR2Zi+/rmLqDfh3OiFxiI/wBJpqKwcCoKJ9Q2woP8Wl5YnG5KnRhQZY+KHcuJlQMc7l
+	7voDOToowLFQAPby8z3RK+WANpWiltszgjPc6fJRGkmMhhq77fbM/hrbLrlYo3HTUZ14Ga2FYads2
+	Md0+6XIgGHV2Kr04g93NjzCu9hkU4LE1usNhEt1p9iiOkG3tIxABElCF7i7uYhaltgRbBsmRK9nJH
+	i6BbM73g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAqIk-000000021dc-2mNK;
-	Fri, 02 May 2025 13:19:38 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uArx2-00000002GqY-2EuQ;
+	Fri, 02 May 2025 15:05:20 +0000
+Received: from smtp-72.smtpout.orange.fr ([80.12.242.72] helo=smtp.smtpout.orange.fr)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAqGm-000000021Kx-1Q81;
-	Fri, 02 May 2025 13:17:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1746191854;
-	bh=Zz5tEQSp2nyOEYwbhv7kdI9iSPvJ55sNnhWZna4qC2w=;
-	h=From:Date:Subject:To:Cc:From;
-	b=hCDXlrcmQCqkshuy5FbnW+qRrOFZcVDu6heaJSZluW0SfEA6nVRnwRupgEfTwLdvR
-	 RiEMt3lZ6jBB2kN4j2PEuWn+FRBPmf7r/iGqbGWVn6/paZ2GGQDUo9jhzG/n4L9SCp
-	 CsVXjrI5qNc4EOWAAZoI1mRA1PXLD9r0TCiI2abgvunQte40Wr7+bYB5sco/REv2gR
-	 RkI3RGB0syVPa3SvjGVHiCZ3Oh50yjscHWJAoUDTnVFOtSw6Yj1YoCniYHeAFrj/zS
-	 CR19i3tuKEJragLwX3lH/eBEE4NNqSO4Of1J7PVIKJ+A0uKopB6ki28Lxx1YOc/dtI
-	 bOmSmt/IrjbMA==
-Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4D16117E05D9;
-	Fri,  2 May 2025 15:17:33 +0200 (CEST)
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Fri, 02 May 2025 15:17:19 +0200
-Subject: [PATCH v2] arm64: dts: mediatek: mt8390-genio-common: Set ssusb2
- default dual role mode to host
+	id 1uArjw-00000002FR3-1vLn;
+	Fri, 02 May 2025 14:51:51 +0000
+Received: from localhost.localdomain ([90.11.132.44])
+	by smtp.orange.fr with ESMTPA
+	id ArjhuI7RsSMUrArjkuJEbc; Fri, 02 May 2025 16:51:38 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
+	s=t20230301; t=1746197498;
+	bh=WjZ/X+9NMMif7OyiK71JbAQs+u2dkiGWcjzAyUuvLBE=;
+	h=From:To:Subject:Date:Message-ID:MIME-Version;
+	b=sjMryabDPp3Mn5I/w6t+4ZGxjGnRvLA5GTEcOeCkqKLheOAxYapN5MAMkZERbzquh
+	 TkCOBHPRIJY0b0AdgrebihxkMK9OS5ca+C3UAruXgUiU8tyCtQIr5b/HqjiU5yOrvG
+	 096tcr91wUm/QjeEqQNG+V9DXmZiZX8DIaBeJkNYUg/PMGF6E1Nu5wT1tHKWfilj7B
+	 lX+LtLMti9wgy+KcXXg+PTOrfu/koKViCBjKbeeUzzAB9AEqIoEzqeQUvxifp6aXsf
+	 JixqSrCg5LUJA9LSqN4VgX3WQ78XEVSeRikJSXAOwLkzBgb7haJwUjNA5/WMDJYeNi
+	 snSrYBV9RGG9w==
+X-ME-Helo: localhost.localdomain
+X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
+X-ME-Date: Fri, 02 May 2025 16:51:38 +0200
+X-ME-IP: 90.11.132.44
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: Lee Jones <lee@kernel.org>,
+	Pavel Machek <pavel@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-kernel@vger.kernel.org,
+	kernel-janitors@vger.kernel.org,
+	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+	linux-leds@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] leds: rgb: leds-mt6370-rgb: Improve definition of some struct linear_range
+Date: Fri,  2 May 2025 16:51:22 +0200
+Message-ID: <1ce4245107e0a51dce502a007a69899bda018d5f.1746197460.git.christophe.jaillet@wanadoo.fr>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250502-mtk-genio-510-700-fix-bt-detection-v2-1-870aa2145480@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAN7FFGgC/42OTQ6CMBCFr0Jm7Zj+QDCuvIdh0ZYBGoFqWwmGc
- HdruYDLN5nvfW+DQN5SgGuxgafFBuvmFMSpADOouSe0bcogmKiYFBec4gN7mq3DijOsGcPOrqg
- jthTJxISjqDk32mgtqIRU9PSUfrLk3hzZ0+udXPE4glaB0LhpsvFazLRGzL6KCfgBgw3R+U8eu
- fBMHHsk/2fPwpGjLEkJ03FZd/Jm3Dgq7bw6Jyk0+75/AbbVXZsJAQAA
-X-Change-ID: 20250328-mtk-genio-510-700-fix-bt-detection-2711cbcbb2e4
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1746191853; l=3055;
- i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=Zz5tEQSp2nyOEYwbhv7kdI9iSPvJ55sNnhWZna4qC2w=;
- b=qvb9qzrAn2vsXJAvQj69b8+UXVaTVio8Hm708kWHhI+mQMfO873wEv5CANPz4boCtv+vMqzJe
- NQj6VshybcQBcF7urOCeUk+8teXSTkam9xVVHVUA68fS/MkMnCa3y7e
-X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
- pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250502_061736_575069_7C13F993 
-X-CRM114-Status: GOOD (  21.04  )
+X-CRM114-CacheID: sfid-20250502_075148_626282_845A1685 
+X-CRM114-Status: GOOD (  10.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,77 +77,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On the Mediatek Genio 510-EVK and 700-EVK boards, ssusb2 controller is
-one but has two ports: one is routed to the M.2 slot, the other is on
-the RPi header who does support full OTG.
-Since Mediatek Genio 700-EVK USB support was added, dual role mode
-property is set to otg for ssusb2. This config prevents the M.2
-Wifi/Bluetooth module, present on those boards and exposing Bluetooth
-as an USB device to be properly detected at startup as the default role
-is device.
-To keep the OTG functionality and make the M.2 module be detected at
-the same time, add role-switch-default-mode property set to host and
-also fix the polarity of GPIO associated to the USB connector, so the
-ssusb2 controller role is properly set to host when the other port is
-unused.
+Use LINEAR_RANGE() instead of hand-writing it. It is more robust, should
+the layout of the structure change one day.
 
-Fixes: 1afaeca17238 ("arm64: dts: mediatek: mt8390-genio-700: Add USB, TypeC Controller, MUX")
-Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
 ---
-I've tested this patch on Mediatek Genio 510-EVK board with a kernel
-based on linux-next (tag: next-20250502).
----
-Changes in v2:
-- Remove dr_mode property change and add role-switch-default-mode one
-  instead, as suggested by AngeloGioacchino Del Regno
-- Fix USB connector GPIO polarity
-- Reword comment in ssusb2 node to match v2 fix
-- Reword commit message and title
-- Rebase on linux-next (tag: next-20250502)
-- Link to v1: https://lore.kernel.org/r/20250331-mtk-genio-510-700-fix-bt-detection-v1-1-34ea2cf137f3@collabora.com
----
- arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi | 12 +++++++++++-
- 1 file changed, 11 insertions(+), 1 deletion(-)
+ drivers/leds/rgb/leds-mt6370-rgb.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-index 127764c4d6be81767ef534a7cb228989f471b3bd..aa8dd12a84ea9d8e0e879067c45f59563455b077 100644
---- a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-@@ -1333,8 +1333,18 @@ xhci_ss_ep: endpoint {
+diff --git a/drivers/leds/rgb/leds-mt6370-rgb.c b/drivers/leds/rgb/leds-mt6370-rgb.c
+index ebd3ba878dd5..c5927d0eb830 100644
+--- a/drivers/leds/rgb/leds-mt6370-rgb.c
++++ b/drivers/leds/rgb/leds-mt6370-rgb.c
+@@ -199,17 +199,17 @@ static const struct reg_field mt6372_reg_fields[F_MAX_FIELDS] = {
+ 
+ /* Current unit: microamp, time unit: millisecond */
+ static const struct linear_range common_led_ranges[R_MAX_RANGES] = {
+-	[R_LED123_CURR]	= { 4000, 1, 6, 4000 },
+-	[R_LED4_CURR]	= { 2000, 1, 3, 2000 },
+-	[R_LED_TRFON]	= { 125, 0, 15, 200 },
+-	[R_LED_TOFF]	= { 250, 0, 15, 400 },
++	[R_LED123_CURR]	= LINEAR_RANGE(4000, 1, 6, 4000),
++	[R_LED4_CURR]	= LINEAR_RANGE(2000, 1, 3, 2000),
++	[R_LED_TRFON]	= LINEAR_RANGE(125, 0, 15, 200),
++	[R_LED_TOFF]	= LINEAR_RANGE(250, 0, 15, 400),
  };
  
- &ssusb2 {
-+	/*
-+	 * the ssusb2 controller is one but we got two ports : one is routed
-+	 * to the M.2 slot, the other is on the RPi header who does support
-+	 * full OTG.
-+	 * As the controller is shared between them, the role switch default
-+	 * mode is set to host to make any peripheral inserted in the M.2
-+	 * slot (i.e BT/WIFI module) be detected when the other port is
-+	 * unused.
-+	 */
- 	dr_mode = "otg";
- 	maximum-speed = "high-speed";
-+	role-switch-default-mode = "host";
- 	usb-role-switch;
- 	vusb33-supply = <&mt6359_vusb_ldo_reg>;
- 	wakeup-source;
-@@ -1345,7 +1355,7 @@ &ssusb2 {
- 	connector {
- 		compatible = "gpio-usb-b-connector", "usb-b-connector";
- 		type = "micro";
--		id-gpios = <&pio 89 GPIO_ACTIVE_HIGH>;
-+		id-gpios = <&pio 89 GPIO_ACTIVE_LOW>;
- 		vbus-supply = <&usb_p2_vbus>;
- 	};
+ static const struct linear_range mt6372_led_ranges[R_MAX_RANGES] = {
+-	[R_LED123_CURR]	= { 2000, 1, 14, 2000 },
+-	[R_LED4_CURR]	= { 2000, 1, 14, 2000 },
+-	[R_LED_TRFON]	= { 125, 0, 15, 250 },
+-	[R_LED_TOFF]	= { 250, 0, 15, 500 },
++	[R_LED123_CURR]	= LINEAR_RANGE(2000, 1, 14, 2000),
++	[R_LED4_CURR]	= LINEAR_RANGE(2000, 1, 14, 2000),
++	[R_LED_TRFON]	= LINEAR_RANGE(125, 0, 15, 250),
++	[R_LED_TOFF]	= LINEAR_RANGE(250, 0, 15, 500),
  };
-
----
-base-commit: 1c51b1ba38c07e4f999802eb708bf798dd5f5d1b
-change-id: 20250328-mtk-genio-510-700-fix-bt-detection-2711cbcbb2e4
-
-Best regards,
+ 
+ static const unsigned int common_tfreqs[] = {
 -- 
-Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+2.49.0
 
 
