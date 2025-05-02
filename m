@@ -4,57 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D285C3ABAA
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 May 2025 12:45:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AC39C3ABAA
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 May 2025 13:19:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=JnawuQ2x/o6rFMG2kyBxxSvC4FZLLhQSJtf3J4LCED4=; b=RgKNrHQTie1m4JPIp3p8EQ9aKh
-	WKqWXjhURvkk56+NU4eSezbP8fPIlRC3paGnZcDCoOieOsENPNdVkAbwsaWyB14sYoyEibuomNCCv
-	hLCLeBdVYcHd/2nvF7gIjdbEPZ65adWtAVYfPj/Ht9lFZ9UBlsGKIfoTDJcljkaaiAc9hKEONycNg
-	x4mIhnAe8XK9hIjCibxea/iFjpPy0anRsf67Q3bfdArG1KpAsY3fJ2zg3UlWj8kQG93mrA9fmTJAV
-	TlpPvwm5kEnCCajdFm1IzHEz8ne3pTxPis1cwa+aXD2RsSa1ITFq8VnB14SURNyWsr6Fs9Q6J08X0
-	5YBH2jjA==;
+	bh=rwAjIo5Lh5M2Q0rNiBTOLYKehD+GC52HGXX9wMhyRRA=; b=ahOUXRThTPmhHr0hPch1uKTEcK
+	tBGvV4/gRUWjvDhjakVS+fKeZSrzVdjc2Vo2Vu6mf0p01r1VTSevm+NKCC0ChQtqg4QZ7aEHrVODo
+	0b2SsbtXouhHsC5QVUTm5A3j4DkF+AB9l/YaBuZLE4vh1jgahCVl5jHyR3qgJxBoKAhUliIEMswuQ
+	6DWfIzsMnT8Fj5NxyDXbTgFQrnQxelwsNXWQohwYPyCEFN+d/K0VieBiNd122CkC7evxIfB7uEPmQ
+	DEloX0KpWa1qMgMp5c4zx7d7fPsEttSg74vnaYdBqq1TaqQNhCqe+Le5z6t+i0LxYpyIrjUzTrikH
+	L7xE/Z9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAplf-00000001xC5-1MmU;
-	Fri, 02 May 2025 12:45:27 +0000
+	id 1uAqIk-000000021dc-2mNK;
+	Fri, 02 May 2025 13:19:38 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uApji-00000001wkQ-1RKh;
-	Fri, 02 May 2025 12:43:27 +0000
+	id 1uAqGm-000000021Kx-1Q81;
+	Fri, 02 May 2025 13:17:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1746189804;
-	bh=miKYsAgcz+q2XvZ4Cs30fspOBVQgxjgsR9aXuexv4qs=;
+	s=mail; t=1746191854;
+	bh=Zz5tEQSp2nyOEYwbhv7kdI9iSPvJ55sNnhWZna4qC2w=;
 	h=From:Date:Subject:To:Cc:From;
-	b=kiwMpLqNuk97bJJM3h4OAExIQos7f7C/MfrlltGlrWZgXq4KxwP/9OayX3xzTGSYA
-	 p3FCIG9n+CCE4LYnV2rJnU3sFuDD43RNyJ9mQL3qtJ9+AdL94KgdXJbi1JFWiOIPLZ
-	 pGWl7V6+T5+sC6CJ6vltJXy1yIAs/WzmC6gjEynYUHFxh/5sdgyM8T0mbPTlEVcxnv
-	 ePbls8y6vG7h7v4AYTNtLKbc9XihGNVCQfcT1GvUyHl9JJLpR7HG/7osrDKBcwZ/Us
-	 mnn6NDC5uJe3c3s05+6XFmQ4hnQpeMxIA7jnOKHuDA6BRiXZZm4D5h80oUkkA5iFfD
-	 0nbAUak3+JrGg==
-Received: from [192.168.1.63] (unknown [70.107.117.78])
+	b=hCDXlrcmQCqkshuy5FbnW+qRrOFZcVDu6heaJSZluW0SfEA6nVRnwRupgEfTwLdvR
+	 RiEMt3lZ6jBB2kN4j2PEuWn+FRBPmf7r/iGqbGWVn6/paZ2GGQDUo9jhzG/n4L9SCp
+	 CsVXjrI5qNc4EOWAAZoI1mRA1PXLD9r0TCiI2abgvunQte40Wr7+bYB5sco/REv2gR
+	 RkI3RGB0syVPa3SvjGVHiCZ3Oh50yjscHWJAoUDTnVFOtSw6Yj1YoCniYHeAFrj/zS
+	 CR19i3tuKEJragLwX3lH/eBEE4NNqSO4Of1J7PVIKJ+A0uKopB6ki28Lxx1YOc/dtI
+	 bOmSmt/IrjbMA==
+Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5531F17E0649;
-	Fri,  2 May 2025 14:43:22 +0200 (CEST)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Fri, 02 May 2025 08:42:56 -0400
-Subject: [PATCH] arm64: dts: mediatek: mt8395-genio-1200-evk: Disable
- unused backlight
+	(Authenticated sender: laeyraud)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4D16117E05D9;
+	Fri,  2 May 2025 15:17:33 +0200 (CEST)
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Date: Fri, 02 May 2025 15:17:19 +0200
+Subject: [PATCH v2] arm64: dts: mediatek: mt8390-genio-common: Set ssusb2
+ default dual role mode to host
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20250502-genio-1200-disable-backlight-lcd1-v1-1-c021d2c9e48e@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAM+9FGgC/x3NPQrDMAxA4asEzRVIIl56ldDBP4ojYpxil1IIu
- XtMx29574SuzbTDczqh6de6HXWAHxPEzdesaGkYhMSRI8Gs1Q5kIcJk3YeiGHzci+XtgyUmxsC
- kK80ye8cwOu+mq/3+j+V1XTfUTrmfcwAAAA==
-X-Change-ID: 20250502-genio-1200-disable-backlight-lcd1-b10ef0424a51
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250502-mtk-genio-510-700-fix-bt-detection-v2-1-870aa2145480@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAN7FFGgC/42OTQ6CMBCFr0Jm7Zj+QDCuvIdh0ZYBGoFqWwmGc
+ HdruYDLN5nvfW+DQN5SgGuxgafFBuvmFMSpADOouSe0bcogmKiYFBec4gN7mq3DijOsGcPOrqg
+ jthTJxISjqDk32mgtqIRU9PSUfrLk3hzZ0+udXPE4glaB0LhpsvFazLRGzL6KCfgBgw3R+U8eu
+ fBMHHsk/2fPwpGjLEkJ03FZd/Jm3Dgq7bw6Jyk0+75/AbbVXZsJAQAA
+X-Change-ID: 20250328-mtk-genio-510-700-fix-bt-detection-2711cbcbb2e4
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -62,12 +63,18 @@ To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-mediatek@lists.infradead.org, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1746191853; l=3055;
+ i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
+ bh=Zz5tEQSp2nyOEYwbhv7kdI9iSPvJ55sNnhWZna4qC2w=;
+ b=qvb9qzrAn2vsXJAvQj69b8+UXVaTVio8Hm708kWHhI+mQMfO873wEv5CANPz4boCtv+vMqzJe
+ NQj6VshybcQBcF7urOCeUk+8teXSTkam9xVVHVUA68fS/MkMnCa3y7e
+X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
+ pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250502_054326_570901_11C42B25 
-X-CRM114-Status: UNSURE (   8.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250502_061736_575069_7C13F993 
+X-CRM114-Status: GOOD (  21.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,35 +89,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The builtin panel on the Genio 1200 EVK board uses the backlight_lcm0
-node for its backlight. Though the backlight_lcd1 is currently left
-enabled, it is unused, and its pwm input, disp_pwm1, is disabled, so it
-fails probe. Disable this unused node.
+On the Mediatek Genio 510-EVK and 700-EVK boards, ssusb2 controller is
+one but has two ports: one is routed to the M.2 slot, the other is on
+the RPi header who does support full OTG.
+Since Mediatek Genio 700-EVK USB support was added, dual role mode
+property is set to otg for ssusb2. This config prevents the M.2
+Wifi/Bluetooth module, present on those boards and exposing Bluetooth
+as an USB device to be properly detected at startup as the default role
+is device.
+To keep the OTG functionality and make the M.2 module be detected at
+the same time, add role-switch-default-mode property set to host and
+also fix the polarity of GPIO associated to the USB connector, so the
+ssusb2 controller role is properly set to host when the other port is
+unused.
 
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Fixes: 1afaeca17238 ("arm64: dts: mediatek: mt8390-genio-700: Add USB, TypeC Controller, MUX")
+Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts | 1 +
- 1 file changed, 1 insertion(+)
+I've tested this patch on Mediatek Genio 510-EVK board with a kernel
+based on linux-next (tag: next-20250502).
+---
+Changes in v2:
+- Remove dr_mode property change and add role-switch-default-mode one
+  instead, as suggested by AngeloGioacchino Del Regno
+- Fix USB connector GPIO polarity
+- Reword comment in ssusb2 node to match v2 fix
+- Reword commit message and title
+- Rebase on linux-next (tag: next-20250502)
+- Link to v1: https://lore.kernel.org/r/20250331-mtk-genio-510-700-fix-bt-detection-v1-1-34ea2cf137f3@collabora.com
+---
+ arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-index dc884e2e95c70309407798e6a51b595e441e6369..be5e5f339e811728e91b1ffec45ada25f9b0208b 100644
---- a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-@@ -106,6 +106,7 @@ backlight_lcd1: backlight-lcd1 {
- 		brightness-levels = <0 1023>;
- 		num-interpolated-steps = <1023>;
- 		default-brightness-level = <576>;
-+		status = "disabled";
- 	};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
+index 127764c4d6be81767ef534a7cb228989f471b3bd..aa8dd12a84ea9d8e0e879067c45f59563455b077 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
+@@ -1333,8 +1333,18 @@ xhci_ss_ep: endpoint {
+ };
  
- 	can_clk: can-clk {
+ &ssusb2 {
++	/*
++	 * the ssusb2 controller is one but we got two ports : one is routed
++	 * to the M.2 slot, the other is on the RPi header who does support
++	 * full OTG.
++	 * As the controller is shared between them, the role switch default
++	 * mode is set to host to make any peripheral inserted in the M.2
++	 * slot (i.e BT/WIFI module) be detected when the other port is
++	 * unused.
++	 */
+ 	dr_mode = "otg";
+ 	maximum-speed = "high-speed";
++	role-switch-default-mode = "host";
+ 	usb-role-switch;
+ 	vusb33-supply = <&mt6359_vusb_ldo_reg>;
+ 	wakeup-source;
+@@ -1345,7 +1355,7 @@ &ssusb2 {
+ 	connector {
+ 		compatible = "gpio-usb-b-connector", "usb-b-connector";
+ 		type = "micro";
+-		id-gpios = <&pio 89 GPIO_ACTIVE_HIGH>;
++		id-gpios = <&pio 89 GPIO_ACTIVE_LOW>;
+ 		vbus-supply = <&usb_p2_vbus>;
+ 	};
+ };
 
 ---
-base-commit: 37ff6e9a2ce321b7932d3987701757fb4d87b0e6
-change-id: 20250502-genio-1200-disable-backlight-lcd1-b10ef0424a51
+base-commit: 1c51b1ba38c07e4f999802eb708bf798dd5f5d1b
+change-id: 20250328-mtk-genio-510-700-fix-bt-detection-2711cbcbb2e4
 
 Best regards,
 -- 
-Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
 
