@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FB1BC369C2
-	for <linux-mediatek@archiver.kernel.org>; Sat,  3 May 2025 15:26:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76461C369C2
+	for <linux-mediatek@archiver.kernel.org>; Sat,  3 May 2025 16:31:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=q3+ijAzJpiWAfgBL+5Wcti/Seqo+rIe3JjI9kcuB/GQ=; b=d0wvBdgjk95FwLLESoBnZhZARD
-	wQAYSXt6d6cTMn+3SjgavlNJyJ69xpm5EKXZ1Olw/5pBco7BH5JmcAOdevrD+vvV4g24705pbFAKm
-	m7/1qB825f9WNBko8Y0HPWrEvQEhO2wBcOHdPWxGG6kZuc9C0awROzj/gyXZ0mBnL1dFek12tflHT
-	ECSrYfxkQpZ1vEiekx/1EzuJJs/y3Z8qfX2bhADKj7DFO41YnSTUo9QQj6f9PLQo6TgrYuP1B9r23
-	t0b1qU4lvE5EWifMtg5l0sph0dVEwWYiidN3oP5+ebWOmgjjjCOYRxkg4NppXwYdcM3KwpwWOcxyL
-	45e7Kkew==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iOWcPn2Xo15C6LDFsoztjz1ImKEofp8C5Y1+Vm62XvI=; b=ej4SAfv1/p+j8iAZA+JRv24qOC
+	FlSKTwwt7c+6sn2nXKk1baXwG4YvP4IO2gsqtNvHpB8TrakJXObEinlvM4cvPNCwxyS7oigYiM7SK
+	cH6q1u++9smyyKsOfZLSNCZUW+bHNl+nzmgisXQxcxbdaKM+PtlcfNObX2iF27L9qfpUcKyExjt+7
+	0mdb5xQyoj3cz8c8jNyHQwwj2Vaji4hN54icZHMgGLk95h9rrjA8qCkRh7I7zPhlXk2AD5BIzr3an
+	qdU23QaSZ7xnEI9pzGu5N3XgpMi6AP5isTlyBWHz/XR4QcrTsIPDqLO/JCdcCRwt1hSgvfMIwvNQ9
+	9qEP/ILA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBEl0-000000042D8-06m8;
-	Sat, 03 May 2025 15:26:26 +0000
+	id 1uBFmH-00000004Btl-2hTY;
+	Sat, 03 May 2025 16:31:49 +0000
 Received: from pidgin.makrotopia.org ([185.142.180.65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBEj2-0000000423V-2WxU;
-	Sat, 03 May 2025 15:24:25 +0000
+	id 1uBEj6-0000000423y-4Av6;
+	Sat, 03 May 2025 15:24:30 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.98.2)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1uBEd0-000000005hU-2PCp;
-	Sat, 03 May 2025 15:24:06 +0000
-Date: Sat, 3 May 2025 16:24:02 +0100
+	id 1uBEdI-000000005ht-3H7E;
+	Sat, 03 May 2025 15:24:24 +0000
+Date: Sat, 3 May 2025 16:24:21 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
 	Lorenzo Bianconi <lorenzo@kernel.org>,
@@ -45,15 +45,18 @@ To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
 	Elad Yifee <eladwf@gmail.com>, netdev@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH net 1/2] net: ethernet: mtk_eth_soc: reset all TX queues on
- DMA free
-Message-ID: <27713d0004ead6e57d070f9e19c0d13709ba2512.1746285649.git.daniel@makrotopia.org>
+Subject: [PATCH net 2/2] net: mediatek: do not reset PSE when seting FE
+ register
+Message-ID: <226fada6d179db1655751e689ab30a1cbd682f49.1746285649.git.daniel@makrotopia.org>
+References: <27713d0004ead6e57d070f9e19c0d13709ba2512.1746285649.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <27713d0004ead6e57d070f9e19c0d13709ba2512.1746285649.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250503_082424_642843_3030D025 
-X-CRM114-Status: GOOD (  12.30  )
+X-CRM114-CacheID: sfid-20250503_082429_034829_15341E1C 
+X-CRM114-Status: UNSURE (   9.21  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,55 +71,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The purpose of resetting the TX queue is to reset the
-byte and packet count as well as to clear the software
-flow control XOFF bit.
+From: Frank Wunderlich <frank-w@public-files.de>
 
-MediaTek developers pointed out that netdev_reset_queue would only
-resets queue 0 of the network device.
+Remove redundant PSE reset.
+When setting FE register there is no need to reset PSE,
+doing so may cause FE to work abnormal.
 
-Queues that are not reset may cause unexpected issues.
-
-Packets may stop being sent after reset and "transmit timeout" log may
-be displayed.
-
-Import fix from MediaTek's SDK to resolve this issue.
-
-Link: https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/319c0d9905579a46dc448579f892f364f1f84818
-Fixes: f63959c7eec31 ("net: ethernet: mtk_eth_soc: implement multi-queue support for per-port queues")
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+Link: https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/3a5223473e086a4b54a2b9a44df7d9ddcc2bc75a
+Fixes: dee4dd10c79aa ("net: ethernet: mtk_eth_soc: ppe: add support for multiple PPEs")
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 16 ++++++++++++----
- 1 file changed, 12 insertions(+), 4 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
 diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 217355d79bbb7..d6d4c2daebab0 100644
+index d6d4c2daebab0..6b5f36ccb3fec 100644
 --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
 +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -3274,11 +3274,19 @@ static int mtk_dma_init(struct mtk_eth *eth)
- static void mtk_dma_free(struct mtk_eth *eth)
- {
- 	const struct mtk_soc_data *soc = eth->soc;
--	int i;
-+	int i, j, txqs = 1;
-+
-+	if (MTK_HAS_CAPS(eth->soc->caps, MTK_QDMA))
-+		txqs = MTK_QDMA_NUM_QUEUES;
-+
-+	for (i = 0; i < MTK_MAX_DEVS; i++) {
-+		if (!eth->netdev[i])
-+			continue;
-+
-+		for (j = 0; j < txqs; j++)
-+			netdev_tx_reset_queue(netdev_get_tx_queue(eth->netdev[i], j));
-+	}
+@@ -3561,9 +3561,6 @@ static int mtk_open(struct net_device *dev)
+ 			}
+ 			mtk_gdm_config(eth, target_mac->id, gdm_config);
+ 		}
+-		/* Reset and enable PSE */
+-		mtk_w32(eth, RST_GL_PSE, MTK_RST_GL);
+-		mtk_w32(eth, 0, MTK_RST_GL);
  
--	for (i = 0; i < MTK_MAX_DEVS; i++)
--		if (eth->netdev[i])
--			netdev_reset_queue(eth->netdev[i]);
- 	if (!MTK_HAS_CAPS(soc->caps, MTK_SRAM) && eth->scratch_ring) {
- 		dma_free_coherent(eth->dma_dev,
- 				  MTK_QDMA_RING_SIZE * soc->tx.desc_size,
+ 		napi_enable(&eth->tx_napi);
+ 		napi_enable(&eth->rx_napi);
 -- 
 2.49.0
 
