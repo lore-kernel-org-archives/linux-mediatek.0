@@ -4,68 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39BB0C369C2
-	for <linux-mediatek@archiver.kernel.org>; Sat,  3 May 2025 17:16:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7276C3ABAA
+	for <linux-mediatek@archiver.kernel.org>; Sat,  3 May 2025 22:40:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AqLjDszkCs88e23lghcMuWdKdhG4ziY/zsyUntUvNR0=; b=VBhtQ2Mfna7+o5os1p6Mk/5R3w
-	78LZEdGtkSauOHCu8114KAR1Mc0SPwXDd0/WSFBRM1v7pw/jUQwmYrEoqBHNmzfdiv/S1lcipFhcV
-	j6IAUF/T+i3lQouSKTnsTIVcAWcWiCaZU4aeuJAVij6coy+bMWvxdOTX0xfJqc7KBOZPLyNhM5v7O
-	NDFG700L0T6/8a5hEwjAeHkZZELlQQygbdUK7UzWTiuE972tlo4TL7tmFx0/UtLM1mtqFU0BMsMW7
-	EFwaj4TiBJC7VCuKYifbfWXjtvSn2WvSShwBSj+lW/hlwk7/5Go1fjPTbkkdMSEkBh1XJ1xcNF/fb
-	KQ7uTwfA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=q/xAnCXUh7gKnEZY83rtkQmLm5+SBilPqhFLOnA9tCc=; b=4mhwhyqyUuvfe2SRp1goXeYbYf
+	NS1bKiqkAjc4ZYyQyt9/Tk5RvWqEo+ustpGSWDHASTXmH5Sq2dbQFH58dq45L4zPYpzvaRWvFM+rt
+	Z2Dwa+sRQPxB6JObFCFSmGWYDj+KQDNmI9D3MB2ny4W6JRpZx0NQJ16z6FMIh67E2Bg7kAFUYjuzE
+	IQK7yLXmxTTy2nMG3rEaWXHbvHUejQ0PPBGxF0i8OMjcx4cAuEgq7tnVv7q4MfoiA+XHs/5amJF1B
+	O0Q+7N8kB5AWQCOGVpvD1htGaYsiHtER/L/VYVGrs4UPAifjKNT5ZbM6esgLDOG6SUcM0/H91TKju
+	aIx5bCfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBGTf-00000004IZy-3hiR;
-	Sat, 03 May 2025 17:16:39 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1uBLWa-00000004ZKV-3h6j;
+	Sat, 03 May 2025 22:40:00 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBGRi-00000004ISf-3e85;
-	Sat, 03 May 2025 17:14:40 +0000
+	id 1uBLWY-00000004ZJr-2Ab4
+	for linux-mediatek@lists.infradead.org;
+	Sat, 03 May 2025 22:39:59 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 18459A4B621;
-	Sat,  3 May 2025 17:09:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 24DAEC4CEE3;
-	Sat,  3 May 2025 17:14:36 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 42BC65C06D4;
+	Sat,  3 May 2025 22:37:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2D60FC4CEE3;
+	Sat,  3 May 2025 22:39:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746292477;
-	bh=TO0GFJ0GhL304hsOhpjSdH3o1D4SYQYquYsY9RZQ6fs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=NVNRyeU/8qZCUHMRmqHsxd5g3wj3Um9s0fPqjmF5GJy0xnk6UdVnLE3sQFHlaeyhH
-	 zLZ2LMG7iSw1jV21YXZZIntyIOzxPIVxMPUBSeP6M4B3rWXGiRp2/RzgsSZ6GalLQ7
-	 Fy2CysyqQe2BR4bVNvFHxoL5QdtV9qWiXhaX8xaBdAI9IQDCffFWTb2HqsGh2ifmSN
-	 YG9NdFDUC93Y3SiJs32tmhMhEF826K6+hsMzufCcNKwJCfnPIUeSQFi22IGCQ90we1
-	 /jNiPrzHvFDLIANuISVIYQpEolSAIm3ZIV2cQ6pJDa0Wf06n1YYmOEUlgrK9Qg9E8A
-	 4jEBTpDVdslKA==
-Date: Sat, 3 May 2025 19:14:34 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Elad Yifee <eladwf@gmail.com>, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net 1/2] net: ethernet: mtk_eth_soc: reset all TX queues
- on DMA free
-Message-ID: <aBZO-nmFoKLx5E5w@lore-desk>
-References: <27713d0004ead6e57d070f9e19c0d13709ba2512.1746285649.git.daniel@makrotopia.org>
+	s=k20201202; t=1746311997;
+	bh=q/xAnCXUh7gKnEZY83rtkQmLm5+SBilPqhFLOnA9tCc=;
+	h=Subject:From:Reply-To:To:Cc:Date:In-Reply-To:References:From;
+	b=DvcK7mTkvKmWGxzoRf9hCH1JhrQTgb2jv2whuFoqqKpflpZKLD3Ngz3jHjnDWZxj4
+	 O9qfOFXAFPN9FlJsNhATlg2xM690ZevuWT1K0H2EzAJHKHs0OnGgoeOQuHZrj7iQXF
+	 QSGPvxaV9mEzP9/pyKH+faQUrxgw5N2cpJn4QePSKkYuAotHLiSBmC6tUpx1KJyygi
+	 8ZHfeaWwT/8M0enFKllfh8NwDlbvQJTCZH280co1jzKPuVp7wY1nScU8IqxfdejtdF
+	 0j9QsWR5IjUg6pNDr0KTdwffoqDYSph/HC3ZCRckMbd1vkePbUuOXc8mS9PxmKjIjr
+	 5OFIr4EC54VvQ==
+Message-ID: <5ae1ef34c9844d6d0f5fb167dd596a4c43321367.camel@kernel.org>
+Subject: Re: [REGRESSION][BISECTED][STABLE] MT7925: mDNS and IPv6 broken in
+ kernel 6.14.3 and above
+From: Niklas Schnelle <niks@kernel.org>
+To: Mingyen Hsieh =?UTF-8?Q?=28=E8=AC=9D=E6=98=8E=E8=AB=BA=29?=	
+ <Mingyen.Hsieh@mediatek.com>, "stable@vger.kernel.org"
+ <stable@vger.kernel.org>,  "fossben@pm.me"	 <fossben@pm.me>
+Cc: "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>, 
+ "linux-mediatek@lists.infradead.org"
+	 <linux-mediatek@lists.infradead.org>, Allan Wang
+ =?UTF-8?Q?=28=E7=8E=8B=E5=AE=B6=E5=81=89=29?=
+	 <Allan.Wang@mediatek.com>, "linux-kernel@vger.kernel.org"
+	 <linux-kernel@vger.kernel.org>, "regressions@lists.linux.dev"
+	 <regressions@lists.linux.dev>
+Date: Sun, 04 May 2025 00:39:52 +0200
+In-Reply-To: <f73dec60b60dd7bb3be40c1feefbe223c7afe19b.camel@mediatek.com>
+References: <EmWnO5b-acRH1TXbGnkx41eJw654vmCR-8_xMBaPMwexCnfkvKCdlU5u19CGbaapJ3KRu-l3B-tSUhf8CCQwL0odjo6Cd5YG5lvNeB-vfdg=@pm.me>
+	 <f73dec60b60dd7bb3be40c1feefbe223c7afe19b.camel@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.1 
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Rv+qQaaENS0fon55"
-Content-Disposition: inline
-In-Reply-To: <27713d0004ead6e57d070f9e19c0d13709ba2512.1746285649.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250503_101439_035265_0F80B9E9 
-X-CRM114-Status: GOOD (  20.45  )
+X-CRM114-CacheID: sfid-20250503_153958_669973_6ABDEE76 
+X-CRM114-Status: GOOD (  34.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,86 +78,104 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: niks@kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---Rv+qQaaENS0fon55
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> The purpose of resetting the TX queue is to reset the
-> byte and packet count as well as to clear the software
-> flow control XOFF bit.
+On Wed, 2025-04-30 at 06:47 +0000, Mingyen Hsieh (=E8=AC=9D=E6=98=8E=E8=AB=
+=BA) wrote:
+> On Wed, 2025-04-30 at 01:14 +0000, fossben@pm.me wrote:
+> >=20
+> > External email : Please do not click links or open attachments until
+> > you have verified the sender or the content.
+> >=20
+> >=20
+> > Hello all,
+> >=20
+> > After upgrading to 6.14.3 on my PC with a MT7925 chip, I noticed that
+> > I could no longer ping *.local addresses provided by Avahi. In
+> > addition, I also noticed that I was not able to get a DHCP IPv6
+> > address from my router, no matter how many times I rebooted the
+> > router or reconnected with NetworkManager.
+> >=20
+> > Reverting to 6.14.2 fixes both mDNS and IPv6 addresses immediately.
+> > Going back to 6.14.3 immediately breaks mDNS again, but the IPv6
+> > address will stay there for a while before disappearing later,
+> > possibly because the DHCP lease expired? I am not sure exactly when
+> > it stops working.
+> >=20
+> > I've done a kernel bisect between 6.14.2 and 6.14.3 and found the
+> > offending commit that causes mDNS to fail:
+> >=20
+> > commit 80007d3f92fd018d0a052a706400e976b36e3c87
+> > Author: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+> > Date:=C2=A0=C2=A0 Tue Mar 4 16:08:50 2025 -0800
+> >=20
+> > =C2=A0=C2=A0=C2=A0 wifi: mt76: mt7925: integrate *mlo_sta_cmd and *sta_=
+cmd
+> >=20
+> > =C2=A0=C2=A0=C2=A0 commit cb1353ef34735ec1e5d9efa1fe966f05ff1dc1e1 upst=
+ream.
+> >=20
+> > =C2=A0=C2=A0=C2=A0 Integrate *mlo_sta_cmd and *sta_cmd for the MLO firm=
+ware.
+> >=20
+> > =C2=A0=C2=A0=C2=A0 Fixes: 86c051f2c418 ("wifi: mt76: mt7925: enabling M=
+LO when the
+> > firmware supports it")
+> >=20
+> > =C2=A0drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 59 ++++--------=
+---
+> > --------------------------------------------
+> > =C2=A01 file changed, 4 insertions(+), 55 deletions(-)
+> >=20
+> > I do not know if this same commit is also causing the IPv6 issues as
+> > testing that requires quite a bit of time to reproduce. What I do
+> > know with certainty as of this moment is that it definitely breaks in
+> > kernel 6.14.3.
+> >=20
+> > I've attached my hardware info as well as dmesg logs from the last
+> > working kernel from the bisect and 6.14.4 which exhibits the issue.
+> > Please let me know if there's any other info you need.
+> >=20
+> > Thanks!
+> > Benjamin Xiao
 >=20
-> MediaTek developers pointed out that netdev_reset_queue would only
-> resets queue 0 of the network device.
+> Hi,
 >=20
-> Queues that are not reset may cause unexpected issues.
+> Thanks for reporting this issue, we will aim into this.
 >=20
-> Packets may stop being sent after reset and "transmit timeout" log may
-> be displayed.
+> Can you provide me with your testing steps?
 >=20
-> Import fix from MediaTek's SDK to resolve this issue.
+> Best Regards,
+> Yen.
 >=20
-> Link: https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwr=
-t-feeds/+/319c0d9905579a46dc448579f892f364f1f84818
-> Fixes: f63959c7eec31 ("net: ethernet: mtk_eth_soc: implement multi-queue =
-support for per-port queues")
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> ---
->  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 16 ++++++++++++----
->  1 file changed, 12 insertions(+), 4 deletions(-)
->=20
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/et=
-hernet/mediatek/mtk_eth_soc.c
-> index 217355d79bbb7..d6d4c2daebab0 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> @@ -3274,11 +3274,19 @@ static int mtk_dma_init(struct mtk_eth *eth)
->  static void mtk_dma_free(struct mtk_eth *eth)
->  {
->  	const struct mtk_soc_data *soc =3D eth->soc;
-> -	int i;
-> +	int i, j, txqs =3D 1;
-> +
-> +	if (MTK_HAS_CAPS(eth->soc->caps, MTK_QDMA))
-> +		txqs =3D MTK_QDMA_NUM_QUEUES;
-> +
-> +	for (i =3D 0; i < MTK_MAX_DEVS; i++) {
-> +		if (!eth->netdev[i])
-> +			continue;
-> +
-> +		for (j =3D 0; j < txqs; j++)
-> +			netdev_tx_reset_queue(netdev_get_tx_queue(eth->netdev[i], j));
 
-nit: you can use netdev_tx_reset_subqueue() here.
+Hi Yan,
 
-Regards,
-Lorenzo
+I see the same IPv6 issue on my Framework 13 (Ryzen 5 AI 340) with an
+mt7925e WiFI module.=C2=A0My setup is just a home router with native IPv6
+both for my uplink and in the LAN. The problems with IPv6 can already
+be seen just in the LAN for example by checking which IP was used for
+SSH, in my setup it should always be IPv6 but falls back to IPv4 in the
+broken state.
 
-> +	}
-> =20
-> -	for (i =3D 0; i < MTK_MAX_DEVS; i++)
-> -		if (eth->netdev[i])
-> -			netdev_reset_queue(eth->netdev[i]);
->  	if (!MTK_HAS_CAPS(soc->caps, MTK_SRAM) && eth->scratch_ring) {
->  		dma_free_coherent(eth->dma_dev,
->  				  MTK_QDMA_RING_SIZE * soc->tx.desc_size,
-> --=20
-> 2.49.0
+As another data point, I tried reverting cb1353ef3473 ("wifi: mt76:
+mt7925: integrate *mlo_sta_cmd and *sta_cmd") on top of 6.15.-rc4. This
+fully restores IPv6 for me. Also note I'm running this with the mt7925
+firmware version 20250425073330 from linux-firmware's master branch as
+I had some dropped connections with earlier firmware.
 
---Rv+qQaaENS0fon55
-Content-Type: application/pgp-signature; name=signature.asc
+So it definitely looks like that commit also broke IPv6 and not just
+mDNS. Note that if if I use DHCPv6 instead of router advertisements, on
+the latest firmware, but without the revert, I get a global IPv6
+address added to the interface but then native IPv6 addresses are still
+uncreachable. With the offending patch reverted my SSH session to an
+IPv6 only host works fine and is stable. Also I'd be willing to test a
+proper fix as I rely on IPv6 heavily due to having to use CGNAT for
+IPv4 but not for IPv6.
 
------BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaBZO+gAKCRA6cBh0uS2t
-rE0aAQDxoKadhJgML6RMtuWFIuS6nXVqip1kMkzOx8SOecG8mAEAu48++YTfL3y+
-spXzcEGZDYYHs2oCuQXYweAp4NW2YAI=
-=Q4YT
------END PGP SIGNATURE-----
-
---Rv+qQaaENS0fon55--
+Thanks,
+Niklas
 
