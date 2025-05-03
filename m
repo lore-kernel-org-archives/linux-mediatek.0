@@ -4,72 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F926C3ABB2
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 May 2025 17:23:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 956F5C3ABAA
+	for <linux-mediatek@archiver.kernel.org>; Sat,  3 May 2025 01:14:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JgGRTDjgzyBASmXyqLVxIYbx3Q9UYKd/CzI0L2LV1d4=; b=DWzID1bw3cPzQI596SH4N0Or5G
-	Fc/fkurmu16wIbxVKw9T/W4g/mvNzk5QbcHQPUf6rIXONMmY+UttsNVFb/y0TrvfGhwttgGznvCdI
-	/pbpXem/+q0Zp7h8vmR7b9GKxasJbPmbeprdhgSmiBNWfFtfdzObS5siftDTlg34rRf9EKqGMcmcn
-	OFUw+5TR+/8uOIRuE6j7ntuEsBRuWs0O2vteE9wksxJraOj3u2FX+QjQInooLvI30X0vcf8+PlkSN
-	wyHK4Iy9CoRgBP5mfcAYN5VZK30klWzGOTI6Ag2y5k7TVptUPO3B8B/VB2Hk0/B0dsWEOMDme9AOk
-	iiuyIzeQ==;
+	bh=RuALrCa1fl0g7gnPmhFHGWBMiBMxzjAeqX7STCFkzAs=; b=G67OFyKP+xerfRFTkQaWCcSN8k
+	hXRMcI3zxZOrtWDxYxjXL85IfU560Ki83Jle5l5gJC8IkelmrcLo9gm/l+RpbyG8e4Phcu1mnYoaS
+	1G044Dts8P8CHIeFbT6GHCevYP7VLlIBiuMqYZSfTBMV+G29PbkPhAYgWYvXKn/4kURjeiSqXRdZ7
+	DRT0Gv09wrkWVC9aHHLsh0QULBS2hzjx4vVcer3Af9GvqjDj6R0JuOK2kmrOzPiPzMsf4I/ZmUJWw
+	GarqgGEne18sZHbNc+ciEHhK5rMhS+/19P8nuSnjyz2O9k+DY37PqUtvOjvlHe+W/fGm+Bwc1PZ6d
+	bGLJIF7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAu6P-00000002dz6-1xGn;
-	Fri, 02 May 2025 17:23:09 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uB1SG-00000003MuV-15kK;
+	Sat, 03 May 2025 01:14:12 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uAtU3-00000002YPe-1Wlq;
-	Fri, 02 May 2025 16:43:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1746204210;
-	bh=ygx2bzlBgpHjz1t7Ya2NDxpOQ/Eveinyd42eds817pg=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=q1B+zzkpLiAT/IBpIvW7htAZx20VHLTySJOBTzYHqwk+TH6dQ0Pe6AiPO20GtF+FO
-	 sgvYCFkgNFm1sCbT/KBekn5a2/oxtB6g/LDSOhGlFQ+fsG5IskGTEAs7MTE8hGDySt
-	 uCakBdm8dsU0mOu5xjcN16OIPtgGEMtpn5kP9S6WrlGhe34bzrLPXuNk3TKbfGFxR6
-	 yWcF+Q5HkbEVQ9c3doQW6RR62S2INKAa/O0SXSU3zD0JYST73UJf615bBRCR0XVbue
-	 ph8cvwttJlHntLirMQ9iEyNBO2eIj2vk7U2eifOxk+lFWDOdRGKAgTs5vWjJkitR7D
-	 EWqy+WTxvnQ5g==
-Received: from [192.168.1.63] (unknown [70.107.117.78])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EDDB817E125D;
-	Fri,  2 May 2025 18:43:27 +0200 (CEST)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Fri, 02 May 2025 12:43:22 -0400
-Subject: [PATCH 2/2] arm64: dts: mediatek: mt8365: Describe infracfg-nao as
- a pure syscon
+	id 1uB1QK-00000003MpI-316i;
+	Sat, 03 May 2025 01:12:12 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id AE6B061126;
+	Sat,  3 May 2025 01:11:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE6DDC4CEE4;
+	Sat,  3 May 2025 01:12:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1746234731;
+	bh=UCr5T6K4CJuDDgOx4gvr+YTWhICDbwksYel5Qz0G/ng=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=AHFGKKQhpOZXZ/n7SGpLF/QCisoPwAqzpozhOycDocS5gOxf186yPAauYsHGK5biY
+	 8FMrsrQ0+stIWdv0B5CLELBHuflTxnuLDNj4vuzYxkKNoSlybhnQ1SwTgxOTkujlZd
+	 4P+9tz+d3PAU4xVlSZWglYPuZS1H6oiaqBpDNlOM9RBbtysLef2nYD0MIbo8h0WzhY
+	 ERQP6/Bd6/hATAx59HPXWQUOnTk3zxu0dUbDl2FPQRFSrIUotHvJGsA48YgUGcs7iL
+	 0m7/LvWt/y4AemE0+mtSFFbFYKAbU79sUWq8jvULjwSo5quMkrpkWvN0bryy87Zf0s
+	 lBe8flKVmEJhA==
+Date: Fri, 2 May 2025 18:12:10 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
+ <pabeni@redhat.com>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, Simon Horman
+ <horms@kernel.org>, Jacob Keller <jacob.e.keller@intel.com>
+Subject: Re: [PATCH net v4] net: airoha: Add missing filed to ppe_mbox_data
+ struct
+Message-ID: <20250502181210.75b9d144@kernel.org>
+In-Reply-To: <aBRzQaonAK0IyAsu@lore-desk>
+References: <20250429-airoha-en7581-fix-ppe_mbox_data-v4-1-d2a8b901dad0@kernel.org>
+	<20250501071518.50c92e8c@kernel.org>
+	<aBPdyn580lxUMJKz@lore-desk>
+	<20250501174140.6dc31b36@kernel.org>
+	<aBRzQaonAK0IyAsu@lore-desk>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20250502-mt8365-infracfg-nao-compatible-v1-2-e40394573f98@collabora.com>
-References: <20250502-mt8365-infracfg-nao-compatible-v1-0-e40394573f98@collabora.com>
-In-Reply-To: <20250502-mt8365-infracfg-nao-compatible-v1-0-e40394573f98@collabora.com>
-To: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Alexandre Mergnat <amergnat@baylibre.com>, 
- Amjad Ouled-Ameur <aouledameur@baylibre.com>, 
- =?utf-8?q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>, 
- Fabien Parent <fparent@baylibre.com>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-X-Mailer: b4 0.14.2
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250502_094331_551898_A2A8E72F 
-X-CRM114-Status: GOOD (  13.60  )
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,47 +75,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The infracfg-nao register space at 0x1020e000 has different registers
-than the infracfg space at 0x10001000, and most importantly, doesn't
-contain any clock controls. Therefore it shouldn't use the same
-compatible used for the mt8365 infracfg clocks driver:
-mediatek,mt8365-infracfg. Since it currently does, probe errors are
-reported in the kernel logs:
+On Fri, 2 May 2025 09:24:49 +0200 Lorenzo Bianconi wrote:
+> > > What I mean here is the padding in the ppe_mbox_data struct used by the fw running
+> > > on the NPU, not in the version used by the airoha_eth driver, got my point?
+> > > Sorry, re-reading it, it was not so clear, I agree.  
+> > 
+> > You mean adding the "u8 rsv[3];" ? that is fine.
+> > I don't get why we also need to add the 3 __packed  
+> 
+> I agree the __packed attributes are not mandatory at the moment, we just agreed
+> with Jacob that is fine to add them. Do you prefer to get rid of them?
 
-  [    0.245959] Failed to register clk ifr_pmic_tmr: -EEXIST
-  [    0.245998] clk-mt8365 1020e000.infracfg: probe with driver clk-mt8365 failed with error -17
-
-This register space is used only as a syscon for bus control by the
-power domain controller, so in order to properly describe it and fix the
-errors, set its compatible to a distinct compatible used exclusively as
-a syscon, drop the clock-cells, and while at it rename the node to
-'syscon' following the naming convention.
-
-Fixes: 6ff945376556 ("arm64: dts: mediatek: Initial mt8365-evk support")
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt8365.dtsi | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-index e6d2b3221a3b7a855129258b379ae4bc2fd05449..49ad4dee9c4cf563743dc55d5e0b055cfb69986a 100644
---- a/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-@@ -495,10 +495,9 @@ iommu: iommu@10205000 {
- 			#iommu-cells = <1>;
- 		};
- 
--		infracfg_nao: infracfg@1020e000 {
--			compatible = "mediatek,mt8365-infracfg", "syscon";
-+		infracfg_nao: syscon@1020e000 {
-+			compatible = "mediatek,mt8365-infracfg-nao", "syscon";
- 			reg = <0 0x1020e000 0 0x1000>;
--			#clock-cells = <1>;
- 		};
- 
- 		rng: rng@1020f000 {
-
--- 
-2.49.0
-
+Yes, they also imply the structure may not be aligned, AFAIU.
+__packed used to be one of DaveM's big no-nos back in the day.
+Especially in vendor drivers it gets sprinkled everywhere without
+thinking. So maybe it's all school of me, but yes, please remove.
 
