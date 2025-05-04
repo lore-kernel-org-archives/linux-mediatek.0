@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 889C9C369DC
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 May 2025 13:42:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B19E1C369DC
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 May 2025 13:44:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SCGx9CgPB6BGH62YzvL8iTi2dpN2dSBNu1ebmgOzCJk=; b=19ZlgB2nQ15omsuqYnTAHnu7ZX
-	ODCApepONJK7ED9HCz3+sKj1WfTKSRGiIK4Qdg+oIPvA8O3iAHy6D79VRZu7eh7S4kNpu3YuxUPDU
-	cBVMh+SA6pfMrkHM45TwtZv5oY065uj4TIV7heWMQaZxk7ISh1MZtgTa6gSswZ8RuifGHFCTdtq5y
-	As9QscnnHKFkY0+Zn/l4ulWoeD8fzu4wu2GHZRR0qfWqKJPgjQMiCgMNQukRIJVmytIfeHTs439Qj
-	n6X+QjLJSohCb3Om9BHyt5odgohtPHoMSsSDcIMqtjFx3mDb1uaQbCvHeevn5Y8MTwDCdK5JTdvJU
-	RlczSeSg==;
+	bh=tGmNjlGx33NyPOj06YUbYH2uFWV2dgca9MipUorG0yY=; b=ZZD9nFgkruQdCFuktvHHik1qQx
+	nXWG2CT8iUHnVxktBioKfSTocCZbymfWGTGQsiFlASSUq9Tim+Gmwtf6DacestmQOuNrh7aEZPii9
+	FghqtGgyIww1EAexHeqBPLK7HtqoPc7bSrVmSM+wzaORQGw/OWtIjYNL4Ut/P1q23zAM2huTvaUyl
+	ZUU694WeQhOmP5P7fWSsKQ/+iBZeXbaPNm4gz6nFMzvlwyK5iFEGIipq4Dm9r0JUy9LT2Z/a7zi5Y
+	+nvWjgyZBVtkeI/7IAeZH7ddzH5Hu0r/ovtVr204tFrudVoYKoLq70cs3TShOMrgT/QKyo/NBHb6x
+	MnDKe6nA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBZc7-00000005LRY-3Pvs;
-	Sun, 04 May 2025 13:42:39 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1uBZe0-00000005Ljq-3E2x;
+	Sun, 04 May 2025 13:44:36 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBZaB-00000005L8e-2Ewo;
-	Sun, 04 May 2025 13:40:40 +0000
+	id 1uBZbz-00000005LOx-13xl;
+	Sun, 04 May 2025 13:42:32 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 4F215A4B8E3;
-	Sun,  4 May 2025 13:35:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 62319C4CEE7;
-	Sun,  4 May 2025 13:40:34 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 1A64F5C2511;
+	Sun,  4 May 2025 13:40:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E8850C4CEE7;
+	Sun,  4 May 2025 13:42:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746366037;
-	bh=dJnUiR5cNsLfSQ1Zv/Y9/lkRQtOf+Fcf9zsiIdzVeic=;
+	s=k20201202; t=1746366148;
+	bh=EMK/6xmQIcvv2VW+k/kKz7387ntE3glyvmCjdd/cTcE=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=H3EKaEIo8kU+67i0Qh3t/GtoHfnzFXaz4fcsGFTFbz/gV1gvbmNyfUzX4nG9BwKS1
-	 PiTRC8d8hy2f7g92FmOp+cusFYMU67tplM/99CAprHhbtSfZLsLYeIHxMoYJyo6yro
-	 QqQJHE3BtkZzfU9XANezLLITtvC90W/yGAlGSxqBgcMcmUQW/xxoNeOOWF3j34Ify2
-	 2A/c/GqtdUVnlBaeZBp+kqYkGhrssxOyY9t8/r+0e6yz3tZIGOBslbgzVHmSBa4CUY
-	 Y9AVJHAXMdjMVy102O7w3PR0T/vZ+yCk4BGIsHwKh268+EGje8zxkLwO9nTUE9j0Ge
-	 hn/v/dRu4o5rg==
-Message-ID: <9f01a9a4-89b2-4bfc-97cd-827be989ef16@kernel.org>
-Date: Sun, 4 May 2025 15:40:32 +0200
+	b=hD9w529LF7g0Iy9+MAsiTXXNqH/W0/em4qm0THlCqruYq3CFS0moqg9XscHtK1ALj
+	 SIeMlJ6uUFbYm7nJnWEChFkRROJmmeiJPuTQTtYMPKfHs4j4p7fjy7Kaotwkz48Xyt
+	 9oSBqD1I8+1bPPMnJ7up2oj9r46GAQESU4KAfN2dFcYP3ymM/B4jfIHTLgfM46Yy/D
+	 GXQXG8fRrEkFo2IABkSbtJJwFn8RuDaMirmdpI+AzZG/KfQKHLv9XpJzXWF6OBH3qn
+	 jjnHMyKPZK6yCOwCYDYtcxft3OBAY2THzqA5sg7RV6J0S8k3iutFoxDwV7eZSTpSrC
+	 k2GiFvb2lIsGw==
+Message-ID: <c448ce68-16e9-41b7-a69d-e28c1043f8ae@kernel.org>
+Date: Sun, 4 May 2025 15:42:23 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 2/2] memory: mtk-smi: mt8188: Add SMI reset and clamp
- for MT8188
+Subject: Re: [PATCH v7 1/2] dt-bindings: memory: mediatek: Add SMI reset and
+ clamp for MT8188
 To: Friday Yang <friday.yang@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
  Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
@@ -56,7 +56,7 @@ Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20250430094545.23932-1-friday.yang@mediatek.com>
- <20250430094545.23932-3-friday.yang@mediatek.com>
+ <20250430094545.23932-2-friday.yang@mediatek.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -102,13 +102,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20250430094545.23932-3-friday.yang@mediatek.com>
+In-Reply-To: <20250430094545.23932-2-friday.yang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250504_064039_715952_B59523DE 
-X-CRM114-Status: UNSURE (   8.35  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250504_064231_384448_EFFB0E20 
+X-CRM114-Status: GOOD (  11.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,30 +125,37 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On 30/04/2025 11:45, Friday Yang wrote:
 > From: "Friday Yang" <friday.yang@mediatek.com>
 > 
-> To prevent handling glitch signals during MTCMOS on/off transitions,
-> SMI requires clamp and reset operations. Parse the reset settings for
-> SMI LARBs and the clamp settings for the SMI Sub-Common. Register
-> genpd callback for the SMI LARBs located in image, camera and IPE
-> subsystems, and apply reset and clamp operations within the callback.
+> Add 'resets' and 'reset-names' properties for SMI LARBs to support
+> SMI reset operations.
+> On the MediaTek platform, some SMI LARBs are directly connected to
+> the SMI Common, while others are connected to the SMI Sub-Common,
+> which in turn is connected to the SMI Common. The hardware block
+> diagram can be described as follows.
+> 
+>              SMI-Common(Smart Multimedia Interface Common)
+>                  |
+>          +----------------+------------------+
+>          |                |                  |
+>          |                |                  |
+>          |                |                  |
+>          |                |                  |
+>          |                |                  |
+>        larb0       SMI-Sub-Common0     SMI-Sub-Common1
+>                    |      |     |      |             |
+>                   larb1  larb2 larb3  larb7       larb9
 > 
 > Signed-off-by: Friday Yang <friday.yang@mediatek.com>
 > Tested-by: Friday Yang <friday.yang@mediatek.com>
 
-How is this possible? Are you claiming that none of other authors test
-their patches? How testing would be not implied by authorship?
+That's not possible. Otherwise explain me how do you test bindings (and
+using static checkers is not testing).
+
 
 > Reviewed-by: Yong Wu <yong.wu@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Acked-by: Rob Herring <robh@kernel.org>
 
-Changelog says that v7 has only following changes:
+Where? Provide lore link. That's a v7 so I expect all your work to be
+done public.
 
-  - Remove the 'devm_pm_runtime_enable' change.
-
-While v6 had no such tags.
-
-No clue what happened here, but looks like mess with the tags and really
-incomplete changelog.
 
 Best regards,
 Krzysztof
