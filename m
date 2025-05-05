@@ -4,75 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91416C3ABBF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 May 2025 23:47:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6531DC3ABBF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 May 2025 23:53:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wAC7DmidNulJOBup7aM1oW8WELNxd+TDXiKRIAkrxGU=; b=WQgAfrof/6Q57YaV7PpwdS7qvX
-	VgeixuAouy7dY/yUuczbpK2awAdcCkxAGUSzHU4EpjybnVakaz4GhJDv4pO/wCxxsy8o+QVEUeVZd
-	ac7KQ0RrX28VxwynVHUXclpm2+iZJjwowDn4vkjrBXlBYRRFZPtKDvf5wZ0gkpMK3OlXcl4mRJ10q
-	Pcp+wIYzhyS9dnFF2IUkGSRZUXGXkcl8Ks7wBe5x0go/vj/J+6nBVorzAdL2ZGtqD9UEmeg8q9u7h
-	JdGlrcqLj5Oi9Z/UN2ffCj94TaMY7gxbx2aLRxhK3qvzUs3x04F9or6K3fxWgtF7YY2e/PFPJAeMG
-	C+ND71dg==;
+	bh=OJB1YFPC0nVify2Y5ZH3pBqyt9nMgIDD3ryrf4UN16I=; b=kM6onFMdTa7vMK+e6i1OukbsVG
+	VmuWES8pD00q/aRT7JtJZZU7lXyi++vBOONlYVYgfxtJt4Qqbk3TFnD8ggw3wTRBKSbegayXeZ5K3
+	4bcGc9C83CkSs3GcbfNxL03WE8Rg01c2pUAarJ06AVw2ia6QmGKXRZGQPG2nGgh59iGNNY2ZquyNl
+	locffvkRfh57NrH6n/70cBgyhgeSt05BTrqx/H5+g9HTWRqvppGSxRNuaxtEdnnU45+BW0WhkUHCA
+	UX/Ic7nZfm3E1fzktZLFc5SFUKL6WLwWD3py9kcQKoxetgDffoeW3wtImrKhAVXS++tW+DfMrJRb4
+	mDWgcKNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uC5WX-00000009881-24WS;
-	Mon, 05 May 2025 23:47:01 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1uC5cO-000000099Z8-1m5K;
+	Mon, 05 May 2025 23:53:04 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uC4Ge-00000008l69-1mHA;
-	Mon, 05 May 2025 22:26:33 +0000
+	id 1uC4Ha-00000008lOK-2i6X;
+	Mon, 05 May 2025 22:27:31 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 223F9A4CD1F;
-	Mon,  5 May 2025 22:21:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 62B0DC4CEF2;
-	Mon,  5 May 2025 22:26:29 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id EB8E65C04D4;
+	Mon,  5 May 2025 22:25:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0311BC4CEEE;
+	Mon,  5 May 2025 22:27:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746483991;
-	bh=DXfYW3r1DBrCeuxs2FZqkes4nI1/Zin0FtfeaKoIqGE=;
+	s=k20201202; t=1746484049;
+	bh=O2mn++1uinwWnkH+yXKQUTW2RQxr5fSjFwSzt/Zof3A=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=o/qDpzABwBWFNSrq1oqAlehBbf3G15yzPlixl+px0POMaT9ZlUrsLFPwvHD98r7ej
-	 XLJRkHNLJqZ6GHk+T3IDO1Bx+PvfDCZ2E2m3Jycan5wDh712n4nq4hssddvhGb31B4
-	 EgV7f3iYYAVdLxzg3Ik5zIaLFqsPQAk8yI+j0CtDsyhg2SZ3Z66prsyypm48YnE0vw
-	 PT5uB2nVkz3FkRmjufB1gGDuKne0TMx/BsJTEErNnFLtiHQ7B5kZT+7lf+o7meIhQ9
-	 Dm5QB32GWW7RrRDOuhqJ5LP3t+oBxFAe0MHPIZVk9rBNMMJXVWUoMS8/uWFOKhrmDZ
-	 KSMFGmZhpXQFw==
+	b=oUe0sSJ+XKyxl4qs3xU5BRxi+hmw+bh1G+S2GNH2V/bqcZ0Bq3QeMK9diLwCR64Xg
+	 O0iiHfFH8AvZLTG+ZA4Ftzx6r0JCAJSkUqeYUdnobwBVQ2/14G0/uInYfeVaOkDZ+L
+	 bEBOX2HOjrQRMwM8K6CfStFLuLd9b9KXMNwUF8mwHB8ZI6DoUpXnaTnoYABC4xmwoI
+	 hi+qQ+AkXoxloZNJoOYi5+4tZvmfHPQJZsnBvSg7Aw1Htow4exTvZB2cz79tpd6YcC
+	 KzD+PTaHhtYXEhg8+Sr3lu87yZgDijOr1FkUX+tDnPK7Tdxn7511nVQLHk8IlxGomI
+	 n6digc7vayjvQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Eric Woudstra <ericwouds@gmail.com>,
-	Paolo Abeni <pabeni@redhat.com>,
+Cc: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Mark Brown <broonie@kernel.org>,
 	Sasha Levin <sashal@kernel.org>,
-	nbd@nbd.name,
-	sean.wang@mediatek.com,
-	lorenzo@kernel.org,
-	andrew+netdev@lunn.ch,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
+	lgirdwood@gmail.com,
+	perex@perex.cz,
+	tiwai@suse.com,
 	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	netdev@vger.kernel.org,
+	ckeepax@opensource.cirrus.com,
+	Parker.Yang@mediatek.com,
+	yr.yang@mediatek.com,
+	krzysztof.kozlowski@linaro.org,
+	linux-sound@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.14 308/642] net: ethernet: mtk_ppe_offload: Allow QinQ, double ETH_P_8021Q only
-Date: Mon,  5 May 2025 18:08:44 -0400
-Message-Id: <20250505221419.2672473-308-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.14 327/642] ASoC: mediatek: mt8188: Treat DMIC_GAINx_CUR as non-volatile
+Date: Mon,  5 May 2025 18:09:03 -0400
+Message-Id: <20250505221419.2672473-327-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250505221419.2672473-1-sashal@kernel.org>
 References: <20250505221419.2672473-1-sashal@kernel.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-stable-base: Linux 6.14.5
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250505_152632_590260_A8CD7AB9 
-X-CRM114-Status: GOOD (  15.04  )
+X-CRM114-CacheID: sfid-20250505_152730_731159_B1DD513A 
+X-CRM114-Status: GOOD (  13.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,86 +88,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Eric Woudstra <ericwouds@gmail.com>
+From: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-[ Upstream commit 7fe0353606d77a32c4c7f2814833dd1c043ebdd2 ]
+[ Upstream commit 7d87bde21c73731ddaf15e572020f80999c38ee3 ]
 
-mtk_foe_entry_set_vlan() in mtk_ppe.c already supports double vlan
-tagging, but mtk_flow_offload_replace() in mtk_ppe_offload.c only allows
-for 1 vlan tag, optionally in combination with pppoe and dsa tags.
+The DMIC_GAINx_CUR registers contain the current (as in present) gain of
+each DMIC. During capture, this gain will ramp up until a target value
+is reached, and therefore the register is volatile since it is updated
+automatically by hardware.
 
-However, mtk_foe_entry_set_vlan() only allows for setting the vlan id.
-The protocol cannot be set, it is always ETH_P_8021Q, for inner and outer
-tag. This patch adds QinQ support to mtk_flow_offload_replace(), only in
-the case that both inner and outer tags are ETH_P_8021Q.
+However, after capture the register's value returns to the value that
+was written to it. So reading these registers returns the current gain,
+and writing configures the initial gain for every capture.
 
-Only PPPoE-in-Q (as before) and Q-in-Q are allowed. A combination
-of PPPoE and Q-in-Q is not allowed.
+>From an audio configuration perspective, reading the instantaneous gain
+is not really useful. Instead, reading back the initial gain that was
+configured is the desired behavior. For that reason, consider the
+DMIC_GAINx_CUR registers as non-volatile, so the regmap's cache can be
+used to retrieve the values, rather than requiring pm runtime resuming
+the device.
 
-Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
-Link: https://patch.msgid.link/20250225201509.20843-1-ericwouds@gmail.com
-Signed-off-by: Paolo Abeni <pabeni@redhat.com>
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Link: https://patch.msgid.link/20250225-genio700-dmic-v2-3-3076f5b50ef7@collabora.com
+Signed-off-by: Mark Brown <broonie@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- .../net/ethernet/mediatek/mtk_ppe_offload.c   | 22 +++++++++----------
- 1 file changed, 11 insertions(+), 11 deletions(-)
+ sound/soc/mediatek/mt8188/mt8188-afe-pcm.c | 4 ----
+ 1 file changed, 4 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-index f20bb390df3ad..c855fb799ce14 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-@@ -34,8 +34,10 @@ struct mtk_flow_data {
- 	u16 vlan_in;
- 
- 	struct {
--		u16 id;
--		__be16 proto;
-+		struct {
-+			u16 id;
-+			__be16 proto;
-+		} vlans[2];
- 		u8 num;
- 	} vlan;
- 	struct {
-@@ -349,18 +351,19 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f,
- 		case FLOW_ACTION_CSUM:
- 			break;
- 		case FLOW_ACTION_VLAN_PUSH:
--			if (data.vlan.num == 1 ||
-+			if (data.vlan.num + data.pppoe.num == 2 ||
- 			    act->vlan.proto != htons(ETH_P_8021Q))
- 				return -EOPNOTSUPP;
- 
--			data.vlan.id = act->vlan.vid;
--			data.vlan.proto = act->vlan.proto;
-+			data.vlan.vlans[data.vlan.num].id = act->vlan.vid;
-+			data.vlan.vlans[data.vlan.num].proto = act->vlan.proto;
- 			data.vlan.num++;
- 			break;
- 		case FLOW_ACTION_VLAN_POP:
- 			break;
- 		case FLOW_ACTION_PPPOE_PUSH:
--			if (data.pppoe.num == 1)
-+			if (data.pppoe.num == 1 ||
-+			    data.vlan.num == 2)
- 				return -EOPNOTSUPP;
- 
- 			data.pppoe.sid = act->pppoe.sid;
-@@ -450,12 +453,9 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f,
- 	if (offload_type == MTK_PPE_PKT_TYPE_BRIDGE)
- 		foe.bridge.vlan = data.vlan_in;
- 
--	if (data.vlan.num == 1) {
--		if (data.vlan.proto != htons(ETH_P_8021Q))
--			return -EOPNOTSUPP;
-+	for (i = 0; i < data.vlan.num; i++)
-+		mtk_foe_entry_set_vlan(eth, &foe, data.vlan.vlans[i].id);
- 
--		mtk_foe_entry_set_vlan(eth, &foe, data.vlan.id);
--	}
- 	if (data.pppoe.num == 1)
- 		mtk_foe_entry_set_pppoe(eth, &foe, data.pppoe.sid);
- 
+diff --git a/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c b/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
+index 73e5c63aeec87..d36520c6272dd 100644
+--- a/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
++++ b/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
+@@ -2855,10 +2855,6 @@ static bool mt8188_is_volatile_reg(struct device *dev, unsigned int reg)
+ 	case AFE_DMIC3_SRC_DEBUG_MON0:
+ 	case AFE_DMIC3_UL_SRC_MON0:
+ 	case AFE_DMIC3_UL_SRC_MON1:
+-	case DMIC_GAIN1_CUR:
+-	case DMIC_GAIN2_CUR:
+-	case DMIC_GAIN3_CUR:
+-	case DMIC_GAIN4_CUR:
+ 	case ETDM_IN1_MONITOR:
+ 	case ETDM_IN2_MONITOR:
+ 	case ETDM_OUT1_MONITOR:
 -- 
 2.39.5
 
