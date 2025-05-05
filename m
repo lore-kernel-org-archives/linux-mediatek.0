@@ -4,62 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC4F4C3ABBC
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 May 2025 02:29:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C1B8C3ABBC
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 May 2025 02:41:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IuQHtEa7q/NILkWN9zF2BYwBivRxQ28/ZkFh2lkCbRg=; b=TTYrdKAcFOT5FzMOWj4aZejep0
-	Y42xiQBN9HCYyFrad2Ng0gxigbi9PBGRqlJp6SdZxEnvhAvOXEnZQWfX1jVCStW+2zcObLBM8bPZe
-	/VR1sPyKHSrFIYChxdhfImJJ96q5VrtlZI2JmSofdCX01jGjKXUNKxbdOLLqFVCCMsSoTCX5JvESY
-	Mk7Khj5JCxbLd4BmgZjtqPVsf3jpIIgw2Fg4Rxi+vww3s6slMnZ8YxVSj/PnJ9LiwUJMFtB/voZMJ
-	nPGowRpjwMAdTXccQKo6Je4hXVmOhts8y9lZk4B0WZM00B5O4tNbWdFgnfvP/U5AhAJ217YlKNN+y
-	fkG6tv9g==;
+	bh=EpfFYaiA3te/wZXoWN3VUKrG56DC1TmdA/m3utQmehk=; b=lB49earQS7eCWiTwr2AHwaVZEz
+	YelHpYaWxPft4lYU8ubNbiDEz3S4zsjiyTMD7v95m+4fzPI/5VXWwOdYlBATpxo/lNpVkvczPohgl
+	1pWim45J6z2tBy9MCcyVfiOw8yaMJG8b+mDP5vfxinDFssne21S08x30lU4KJwQ2QhZy7GtF2MpPC
+	GPybVjMRTAn2igaIg0QPPpvOKS7mSumE5E0tPJ7E4f5OD7PR3/mZ9QYj+vLeggqyf734ezBerkCTH
+	pnqNmnXyWPUgJTqnMy63xqyHWCclg2JYm9IlC7FpabGvQ4UFFpsvMPSvxMnhDXfJd6Nqi8NZkae7t
+	emhTJgug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uC83J-00000009l5Y-2xXq;
-	Tue, 06 May 2025 02:29:01 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1uC8FJ-00000009oED-1ytL;
+	Tue, 06 May 2025 02:41:25 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uC4l0-00000008uzS-28GK;
-	Mon, 05 May 2025 22:57:55 +0000
+	id 1uC4n1-00000008vSp-2aqt;
+	Mon, 05 May 2025 22:59:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=EpfFYaiA3te/wZXoWN3VUKrG56DC1TmdA/m3utQmehk=; b=OTeT6p4m/6uPQWWtvuXLmmiBR0
+	wSl47Fd5gyAc9+mEW34Q7bOFQ1RNBJvRHElbsGlBWimtkDpyGkb17JW2cemBS8meDM28/HOlgj9H8
+	+lcFMva0H2MWmXRIyc5l8rIifsjSDOQGxevmTpbesiC2T5qMTc11959TjCvzges+FHGCGpoIgZ96K
+	NdaZm+mWWY7gR/H8iSZYAKlsKNOqI8VPBYQz7XfIlBvnaxrv06+wL6lgTf60ZCgOvapayhVD3Gq0o
+	FVukh+1p8SpIRMbwznl5OpwepAH7L4liqoJpAP8id+qAb9NO8OvaC8P8YwJWFJ8HREEeOMDWl4vo+
+	hTEtEApA==;
+Received: from nyc.source.kernel.org ([147.75.193.91])
+	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1uC4ky-0000000FZ4F-0znf;
+	Mon, 05 May 2025 22:59:57 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 28F40A4D2A6;
-	Mon,  5 May 2025 22:52:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DD437C4CEED;
-	Mon,  5 May 2025 22:57:51 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 44C80A4D2A3;
+	Mon,  5 May 2025 22:52:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C4A0CC4CEE4;
+	Mon,  5 May 2025 22:57:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746485873;
-	bh=qZz2XKaHDkoWIJpIga3brULNK+YXlIUjkrF7iAjl0+4=;
+	s=k20201202; t=1746485870;
+	bh=p25o4cPOgtbNcaJdtjxvdexJ48gX+J/KIj4fRxWBDTA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=nHQDQ0V1XaxNQCB2l39tNsOwZ6DRyXH02uePo9HYxhhjBTS9Tvg84vY3ifhmRug41
-	 G7AlxJdB2OjL+jmFmIqBkua0ygyoEQEtm6KWZXqEAX9AQKm0sWJWFagv3K9hFmB2Tk
-	 k6P9FVjnkVmEH2/iyOypWaW2w+Lf5BLaivFPbnGKFZBG/3+/bMVYG6FZ2YRhFVGviJ
-	 Jdca3jHLzRE0oShIRogjRZPmSjF2+YRJBvCGP00ZerjKzuacrtfWkdb76OgWD2G76U
-	 WT+4fVBM6/0vMIoyfyiGaF1JpFRAbTAzH0MY5/xb93xri7GJSBvRsVG2AaHOHwyI1M
-	 QDsC+5lupj62g==
+	b=CJYiFnuLictTqYcOeVI+JeUC9USS6yfmwJycQrfcMDOy1VSzSjyvpWd4khChH1mhh
+	 9xos7V1wzRY/Rw35P7sWk9NzNkajMmGwBz1Fgf+zsHn64k07SAelsM8PeG90M/3h6U
+	 BVso5EEI5bGfm9CdToFU/KgFkmneRTP1xEQinuxhFrS5zaP9UItyEJheberAw7r7W8
+	 hD6DyNYo9W+yrsQpdrVrosvu+0YyuwXdRzd+aCc2087hrArGOHCBoWRpmEnGqdmpCR
+	 jDGkxd9QU9dhSH6nkKwqCkiv/u1NiW4pdSdkpNRHbtStJ2ugiPz8h/j4lufRRwaBGc
+	 tV6sp8RJsJNDQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Benjamin Lin <benjamin-jw.lin@mediatek.com>,
-	Felix Fietkau <nbd@nbd.name>,
+Cc: Felix Fietkau <nbd@nbd.name>,
 	Sasha Levin <sashal@kernel.org>,
 	lorenzo@kernel.org,
 	ryder.lee@mediatek.com,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	shayne.chen@mediatek.com,
-	chui-hao.chiu@mediatek.com,
-	Bo.Jiao@mediatek.com,
+	kuba@kernel.org,
+	johannes.berg@intel.com,
+	edumazet@google.com,
+	emmanuel.grumbach@intel.com,
+	miriam.rachel.korenblit@intel.com,
+	uwu@icenowy.me,
 	linux-wireless@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.6 039/294] wifi: mt76: mt7996: revise TXS size
-Date: Mon,  5 May 2025 18:52:19 -0400
-Message-Id: <20250505225634.2688578-39-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.6 038/294] wifi: mt76: only mark tx-status-failed frames as ACKed on mt76x0/2
+Date: Mon,  5 May 2025 18:52:18 -0400
+Message-Id: <20250505225634.2688578-38-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250505225634.2688578-1-sashal@kernel.org>
 References: <20250505225634.2688578-1-sashal@kernel.org>
@@ -69,8 +85,8 @@ X-Patchwork-Hint: Ignore
 X-stable-base: Linux 6.6.89
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250505_155754_672762_D2EBDB07 
-X-CRM114-Status: GOOD (  11.27  )
+X-CRM114-CacheID: sfid-20250505_235757_079898_8681E246 
+X-CRM114-Status: GOOD (  13.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,59 +101,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Benjamin Lin <benjamin-jw.lin@mediatek.com>
+From: Felix Fietkau <nbd@nbd.name>
 
-[ Upstream commit 593c829b4326f7b3b15a69e97c9044ecbad3c319 ]
+[ Upstream commit 0c5a89ceddc1728a40cb3313948401dd70e3c649 ]
 
-Size of MPDU/PPDU TXS is 12 DWs.
-In mt7996/mt7992, last 4 DWs are reserved, so TXS size was mistakenly
-considered to be 8 DWs. However, in mt7990, 9th DW of TXS starts to be used.
+The interrupt status polling is unreliable, which can cause status events
+to get lost. On all newer chips, txs-timeout is an indication that the
+packet was either never sent, or never acked.
+Fixes issues with inactivity polling.
 
-Signed-off-by: Benjamin Lin <benjamin-jw.lin@mediatek.com>
-Link: https://patch.msgid.link/20250311103646.43346-1-nbd@nbd.name
+Link: https://patch.msgid.link/20250311103646.43346-6-nbd@nbd.name
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76_connac3_mac.h | 3 +++
- drivers/net/wireless/mediatek/mt76/mt7996/mac.c       | 4 ++--
- 2 files changed, 5 insertions(+), 2 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt76.h       | 1 +
+ drivers/net/wireless/mediatek/mt76/mt76x0/pci.c | 3 ++-
+ drivers/net/wireless/mediatek/mt76/mt76x0/usb.c | 3 ++-
+ drivers/net/wireless/mediatek/mt76/mt76x2/pci.c | 3 ++-
+ drivers/net/wireless/mediatek/mt76/mt76x2/usb.c | 3 ++-
+ drivers/net/wireless/mediatek/mt76/tx.c         | 3 ++-
+ 6 files changed, 11 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac3_mac.h b/drivers/net/wireless/mediatek/mt76/mt76_connac3_mac.h
-index 87bfa441a9374..4979012d5abfa 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac3_mac.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac3_mac.h
-@@ -280,6 +280,9 @@ enum tx_mgnt_type {
- #define MT_TXFREE_INFO_COUNT		GENMASK(27, 24)
- #define MT_TXFREE_INFO_STAT		GENMASK(29, 28)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 8b620d4fed439..df0ea638370b5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -439,6 +439,7 @@ struct mt76_hw_cap {
+ #define MT_DRV_RX_DMA_HDR		BIT(3)
+ #define MT_DRV_HW_MGMT_TXQ		BIT(4)
+ #define MT_DRV_AMSDU_OFFLOAD		BIT(5)
++#define MT_DRV_IGNORE_TXS_FAILED	BIT(6)
  
-+#define MT_TXS_HDR_SIZE			4 /* Unit: DW */
-+#define MT_TXS_SIZE			12 /* Unit: DW */
-+
- #define MT_TXS0_BW			GENMASK(31, 29)
- #define MT_TXS0_TID			GENMASK(28, 26)
- #define MT_TXS0_AMPDU			BIT(25)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-index 73d46ec1181ae..35d9673ec0d8f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-@@ -1354,7 +1354,7 @@ bool mt7996_rx_check(struct mt76_dev *mdev, void *data, int len)
- 		mt7996_mac_tx_free(dev, data, len);
- 		return false;
- 	case PKT_TYPE_TXS:
--		for (rxd += 4; rxd + 8 <= end; rxd += 8)
-+		for (rxd += MT_TXS_HDR_SIZE; rxd + MT_TXS_SIZE <= end; rxd += MT_TXS_SIZE)
- 			mt7996_mac_add_txs(dev, rxd);
- 		return false;
- 	case PKT_TYPE_RX_FW_MONITOR:
-@@ -1391,7 +1391,7 @@ void mt7996_queue_rx_skb(struct mt76_dev *mdev, enum mt76_rxq_id q,
- 		mt7996_mcu_rx_event(dev, skb);
- 		break;
- 	case PKT_TYPE_TXS:
--		for (rxd += 4; rxd + 8 <= end; rxd += 8)
-+		for (rxd += MT_TXS_HDR_SIZE; rxd + MT_TXS_SIZE <= end; rxd += MT_TXS_SIZE)
- 			mt7996_mac_add_txs(dev, rxd);
- 		dev_kfree_skb(skb);
- 		break;
+ struct mt76_driver_ops {
+ 	u32 drv_flags;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c b/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
+index 9277ff38b7a22..57ae362dad50b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
+@@ -152,7 +152,8 @@ mt76x0e_probe(struct pci_dev *pdev, const struct pci_device_id *id)
+ 	static const struct mt76_driver_ops drv_ops = {
+ 		.txwi_size = sizeof(struct mt76x02_txwi),
+ 		.drv_flags = MT_DRV_TX_ALIGNED4_SKBS |
+-			     MT_DRV_SW_RX_AIRTIME,
++			     MT_DRV_SW_RX_AIRTIME |
++			     MT_DRV_IGNORE_TXS_FAILED,
+ 		.survey_flags = SURVEY_INFO_TIME_TX,
+ 		.update_survey = mt76x02_update_channel,
+ 		.tx_prepare_skb = mt76x02_tx_prepare_skb,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
+index 0422c332354a1..520fd46227a7b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
+@@ -210,7 +210,8 @@ static int mt76x0u_probe(struct usb_interface *usb_intf,
+ 			 const struct usb_device_id *id)
+ {
+ 	static const struct mt76_driver_ops drv_ops = {
+-		.drv_flags = MT_DRV_SW_RX_AIRTIME,
++		.drv_flags = MT_DRV_SW_RX_AIRTIME |
++			     MT_DRV_IGNORE_TXS_FAILED,
+ 		.survey_flags = SURVEY_INFO_TIME_TX,
+ 		.update_survey = mt76x02_update_channel,
+ 		.tx_prepare_skb = mt76x02u_tx_prepare_skb,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2/pci.c b/drivers/net/wireless/mediatek/mt76/mt76x2/pci.c
+index df85ebc6e1df0..7e2475b3c278e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2/pci.c
+@@ -22,7 +22,8 @@ mt76x2e_probe(struct pci_dev *pdev, const struct pci_device_id *id)
+ 	static const struct mt76_driver_ops drv_ops = {
+ 		.txwi_size = sizeof(struct mt76x02_txwi),
+ 		.drv_flags = MT_DRV_TX_ALIGNED4_SKBS |
+-			     MT_DRV_SW_RX_AIRTIME,
++			     MT_DRV_SW_RX_AIRTIME |
++			     MT_DRV_IGNORE_TXS_FAILED,
+ 		.survey_flags = SURVEY_INFO_TIME_TX,
+ 		.update_survey = mt76x02_update_channel,
+ 		.tx_prepare_skb = mt76x02_tx_prepare_skb,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c b/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
+index d804309992196..70d3895762b4c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
+@@ -29,7 +29,8 @@ static int mt76x2u_probe(struct usb_interface *intf,
+ 			 const struct usb_device_id *id)
+ {
+ 	static const struct mt76_driver_ops drv_ops = {
+-		.drv_flags = MT_DRV_SW_RX_AIRTIME,
++		.drv_flags = MT_DRV_SW_RX_AIRTIME |
++			     MT_DRV_IGNORE_TXS_FAILED,
+ 		.survey_flags = SURVEY_INFO_TIME_TX,
+ 		.update_survey = mt76x02_update_channel,
+ 		.tx_prepare_skb = mt76x02u_tx_prepare_skb,
+diff --git a/drivers/net/wireless/mediatek/mt76/tx.c b/drivers/net/wireless/mediatek/mt76/tx.c
+index 1809b03292c3d..47cdccdbed6aa 100644
+--- a/drivers/net/wireless/mediatek/mt76/tx.c
++++ b/drivers/net/wireless/mediatek/mt76/tx.c
+@@ -100,7 +100,8 @@ __mt76_tx_status_skb_done(struct mt76_dev *dev, struct sk_buff *skb, u8 flags,
+ 		return;
+ 
+ 	/* Tx status can be unreliable. if it fails, mark the frame as ACKed */
+-	if (flags & MT_TX_CB_TXS_FAILED) {
++	if (flags & MT_TX_CB_TXS_FAILED &&
++	    (dev->drv->drv_flags & MT_DRV_IGNORE_TXS_FAILED)) {
+ 		info->status.rates[0].count = 0;
+ 		info->status.rates[0].idx = -1;
+ 		info->flags |= IEEE80211_TX_STAT_ACK;
 -- 
 2.39.5
 
