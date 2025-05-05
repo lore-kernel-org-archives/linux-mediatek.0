@@ -4,110 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B19E1C369DC
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 May 2025 13:44:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58038C369DC
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 May 2025 01:09:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tGmNjlGx33NyPOj06YUbYH2uFWV2dgca9MipUorG0yY=; b=ZZD9nFgkruQdCFuktvHHik1qQx
-	nXWG2CT8iUHnVxktBioKfSTocCZbymfWGTGQsiFlASSUq9Tim+Gmwtf6DacestmQOuNrh7aEZPii9
-	FghqtGgyIww1EAexHeqBPLK7HtqoPc7bSrVmSM+wzaORQGw/OWtIjYNL4Ut/P1q23zAM2huTvaUyl
-	ZUU694WeQhOmP5P7fWSsKQ/+iBZeXbaPNm4gz6nFMzvlwyK5iFEGIipq4Dm9r0JUy9LT2Z/a7zi5Y
-	+nvWjgyZBVtkeI/7IAeZH7ddzH5Hu0r/ovtVr204tFrudVoYKoLq70cs3TShOMrgT/QKyo/NBHb6x
-	MnDKe6nA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=SikJNgzF8qbrWfeaoAzxbaXvQMUBhZ0SeB5mvJ0AwRI=; b=mfHiDWsQAKC3zZmiUFoIdiUx85
+	9w4tU7RGAWrpN9kZwweURKBjavkHGplfG1B901lHG4b/UE5CMvpCB+wS5eO92ENuzzc4R+71niUJE
+	bH8/O7JAB3RH+xg+xHCxz/MAgk3Ldfy4XNKSRySr4Y8azx2Y0JfPBcIHtEPYoxxaUmLSGtqpqdQb8
+	QzXhEhx+UfJ4tdOkC3M1QYCRVlBkI6sOGAqVFW0a8kySJVvDZsLcfurJ3bUovkSreplR5r1bgrHpP
+	jGvG3DOsTBmWEVx8AypN9qH7bb6y2CrKGc31czNHhyVzm9IxOKOUEaN1b1y15icn0G0l8cgC44tkU
+	pITpmsQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBZe0-00000005Ljq-3E2x;
-	Sun, 04 May 2025 13:44:36 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uBkLD-00000006DxL-0to5;
+	Mon, 05 May 2025 01:09:55 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBZbz-00000005LOx-13xl;
-	Sun, 04 May 2025 13:42:32 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 1A64F5C2511;
-	Sun,  4 May 2025 13:40:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E8850C4CEE7;
-	Sun,  4 May 2025 13:42:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746366148;
-	bh=EMK/6xmQIcvv2VW+k/kKz7387ntE3glyvmCjdd/cTcE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=hD9w529LF7g0Iy9+MAsiTXXNqH/W0/em4qm0THlCqruYq3CFS0moqg9XscHtK1ALj
-	 SIeMlJ6uUFbYm7nJnWEChFkRROJmmeiJPuTQTtYMPKfHs4j4p7fjy7Kaotwkz48Xyt
-	 9oSBqD1I8+1bPPMnJ7up2oj9r46GAQESU4KAfN2dFcYP3ymM/B4jfIHTLgfM46Yy/D
-	 GXQXG8fRrEkFo2IABkSbtJJwFn8RuDaMirmdpI+AzZG/KfQKHLv9XpJzXWF6OBH3qn
-	 jjnHMyKPZK6yCOwCYDYtcxft3OBAY2THzqA5sg7RV6J0S8k3iutFoxDwV7eZSTpSrC
-	 k2GiFvb2lIsGw==
-Message-ID: <c448ce68-16e9-41b7-a69d-e28c1043f8ae@kernel.org>
-Date: Sun, 4 May 2025 15:42:23 +0200
+	id 1uBkJH-00000006DbV-1WB4;
+	Mon, 05 May 2025 01:07:56 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.98.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1uBkDE-000000004ZL-12PW;
+	Mon, 05 May 2025 01:07:35 +0000
+Date: Mon, 5 May 2025 02:07:32 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Elad Yifee <eladwf@gmail.com>, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net v2 1/2] net: ethernet: mtk_eth_soc: reset all TX queues
+ on DMA free
+Message-ID: <c9ff9adceac4f152239a0f65c397f13547639175.1746406763.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 1/2] dt-bindings: memory: mediatek: Add SMI reset and
- clamp for MT8188
-To: Friday Yang <friday.yang@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
- Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Philipp Zabel <p.zabel@pengutronix.de>
-Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20250430094545.23932-1-friday.yang@mediatek.com>
- <20250430094545.23932-2-friday.yang@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20250430094545.23932-2-friday.yang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250504_064231_384448_EFFB0E20 
-X-CRM114-Status: GOOD (  11.35  )
+X-CRM114-CacheID: sfid-20250504_180755_397329_D30B800D 
+X-CRM114-Status: GOOD (  12.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,41 +68,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 30/04/2025 11:45, Friday Yang wrote:
-> From: "Friday Yang" <friday.yang@mediatek.com>
-> 
-> Add 'resets' and 'reset-names' properties for SMI LARBs to support
-> SMI reset operations.
-> On the MediaTek platform, some SMI LARBs are directly connected to
-> the SMI Common, while others are connected to the SMI Sub-Common,
-> which in turn is connected to the SMI Common. The hardware block
-> diagram can be described as follows.
-> 
->              SMI-Common(Smart Multimedia Interface Common)
->                  |
->          +----------------+------------------+
->          |                |                  |
->          |                |                  |
->          |                |                  |
->          |                |                  |
->          |                |                  |
->        larb0       SMI-Sub-Common0     SMI-Sub-Common1
->                    |      |     |      |             |
->                   larb1  larb2 larb3  larb7       larb9
-> 
-> Signed-off-by: Friday Yang <friday.yang@mediatek.com>
-> Tested-by: Friday Yang <friday.yang@mediatek.com>
+The purpose of resetting the TX queue is to reset the byte and packet
+count as well as to clear the software flow control XOFF bit.
 
-That's not possible. Otherwise explain me how do you test bindings (and
-using static checkers is not testing).
+MediaTek developers pointed out that netdev_reset_queue would only
+resets queue 0 of the network device.
 
+Queues that are not reset may cause unexpected issues.
 
-> Reviewed-by: Yong Wu <yong.wu@mediatek.com>
+Packets may stop being sent after reset and "transmit timeout" log may
+be displayed.
 
-Where? Provide lore link. That's a v7 so I expect all your work to be
-done public.
+Import fix from MediaTek's SDK to resolve this issue.
 
+Link: https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/319c0d9905579a46dc448579f892f364f1f84818
+Fixes: f63959c7eec31 ("net: ethernet: mtk_eth_soc: implement multi-queue support for per-port queues")
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+v2: Use netdev_tx_reset_subqueue()
 
-Best regards,
-Krzysztof
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 8fda4ce80d811..53c39561b6d9a 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -3186,11 +3186,19 @@ static int mtk_dma_init(struct mtk_eth *eth)
+ static void mtk_dma_free(struct mtk_eth *eth)
+ {
+ 	const struct mtk_soc_data *soc = eth->soc;
+-	int i;
++	int i, j, txqs = 1;
++
++	if (MTK_HAS_CAPS(eth->soc->caps, MTK_QDMA))
++		txqs = MTK_QDMA_NUM_QUEUES;
++
++	for (i = 0; i < MTK_MAX_DEVS; i++) {
++		if (!eth->netdev[i])
++			continue;
++
++		for (j = 0; j < txqs; j++)
++			netdev_tx_reset_subqueue(eth->netdev[i], j);
++	}
+ 
+-	for (i = 0; i < MTK_MAX_DEVS; i++)
+-		if (eth->netdev[i])
+-			netdev_reset_queue(eth->netdev[i]);
+ 	if (!MTK_HAS_CAPS(soc->caps, MTK_SRAM) && eth->scratch_ring) {
+ 		dma_free_coherent(eth->dma_dev,
+ 				  MTK_QDMA_RING_SIZE * soc->tx.desc_size,
+-- 
+2.49.0
 
