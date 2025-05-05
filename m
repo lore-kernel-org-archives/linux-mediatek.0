@@ -4,75 +4,125 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9392FC3ABB0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 May 2025 12:21:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C2C0C3ABB0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 May 2025 12:38:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PDrjQLrgCOGlD1G5NZ3v24S+BslDmlzYRM05njM6UbE=; b=VB8bmExXOR1UnLXnHI1cpfU8Al
-	Y7tQujzfC/0jk+IdW+WKPusOEO+RtRZWT0tevmrnbnPkIrfXrrIHYHHbeBqUrsEskR9uQoUPtpJjE
-	qXw/GEWb9IkW22sgLMSxTizStw/Dh0yMVxOUFWVzPuAkmLdLteliCwl6iuwMYIBwi4H/nn8XPga7d
-	9L4E2PGmYrFotiVGIT5V6jjDGGlulL+nFBG6kFEu/JsUCYWWX5X9jI4+c/vbC1ReZpbwpV4LoMfpf
-	dkHvYkNxUMbiehgerKCpcEs/kzYs/mh+NQ36xLcV5gHxSd23Ri+JiMMFKsSgrkmb4LedkT01TjKcL
-	Wz7EXUPw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=t8GmbzWzwjKBF6Grm3MhKIQ4eVv3NPu5Y9A5XIPvDcA=; b=iETCkCEiQdXyfNv62sS98km205
+	U4h6gLbzHA1RJ9FhyJVTKfHiiOtY03rNKxjj61INZo+6xSiKVYWr8t8v7/o4a4QMOm0JZnU2kOKOl
+	ov8RQiPEM831cNGXy9giBsUr7iYGiiyvxC8mXRwV51KEnHtJcCR1JhcSTRID1W5OOShwSeBr+PcR/
+	ijxlkllHglwsQrCmefKoQ9iGHQLySMQdJ+eM+FRAmsRROKMuz5SHFyDSYYbc/YvEPdHUj7reBmjhL
+	kp3LGnnidISk4+bpUNWZnFSMRJ4HH79eZfGmQ1VRsUmrch0Yp+i0rAhmwIP8TbVZlWzlHCQ+bJYyb
+	FsikPGyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBuoy-00000007ITK-1sIA;
-	Mon, 05 May 2025 12:21:20 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1uBv5G-00000007LU6-2Oaw;
+	Mon, 05 May 2025 12:38:10 +0000
+Received: from relay9-d.mail.gandi.net ([2001:4b98:dc4:8::229])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBukq-00000007HYI-3ON1;
-	Mon, 05 May 2025 12:17:05 +0000
-X-UUID: d71bfc7229aa11f0bed96b30c12bc3d6-20250505
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=PDrjQLrgCOGlD1G5NZ3v24S+BslDmlzYRM05njM6UbE=;
-	b=HzfDfvDMhSFcJ8UhfRKgd4Wzi2xlqBivigDdLwOnXZVPF4q5rxS2Cuiqer9kw88I7BBGWix6so2s2dyQdKUEcRutAwa5SrjTaSDJ1IrY9bmv0Niwg4jpeOCa6cPIDNzW9vcmt+yP5/F3QROWwhExuMwY/CNSHa6MN5FcOxXp2Yw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:234c1134-18e3-423d-8a91-606872a8e7fd,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:0ef645f,CLOUDID:be12ec7f-99e0-42db-8543-075f2c30d73f,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
-	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
-	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: d71bfc7229aa11f0bed96b30c12bc3d6-20250505
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
-	(envelope-from <sirius.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1766431854; Mon, 05 May 2025 05:16:57 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Mon, 5 May 2025 20:16:55 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Mon, 5 May 2025 20:16:55 +0800
-From: Sirius Wang <sirius.wang@mediatek.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Sean Wang <sean.wang@mediatek.com>
-CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<wenst@chromium.org>, Sirius Wang <sirius.wang@mediatek.com>
-Subject: [PATCH 2/2] WIP: arm64: dts: mt8189: Add mt8189 dts evaluation board and Mafefile
-Date: Mon, 5 May 2025 20:15:46 +0800
-Message-ID: <20250505121627.3944728-3-sirius.wang@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20250505121627.3944728-1-sirius.wang@mediatek.com>
-References: <20250505121627.3944728-1-sirius.wang@mediatek.com>
+	id 1uBuzW-00000007KEm-05GJ;
+	Mon, 05 May 2025 12:32:16 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id B6D95439CF;
+	Mon,  5 May 2025 12:32:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1746448330;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=t8GmbzWzwjKBF6Grm3MhKIQ4eVv3NPu5Y9A5XIPvDcA=;
+	b=hjAbYQVeSBenLJHyzNnH+29VE8aQu5NdvGcBu901d4KAVGGIH73+xJRtOkMBvPMxod408f
+	46cJ1FSSVEaihm6e4YRyxwK6H9vqKbZsH6FeNdjG6qHuFuPEj6MXQaHOvyeCuws3FaQ4ZJ
+	tyEO3Rm3oNF8VG/6gKRuTcpBY8uLXdkn1k8zdS9iBbYepUeyI1mPnliHP5HbYAMf8SxYgc
+	gh87HvhVyGIZKypBQt9lGmUGqhDD0V6ogc/9QAW1FprShOP2PTeLVdqhZJSU2GFelqS2IN
+	VCutWhQebpQ3qtFA8QsGOMpeGLhJbitY4xZjYFl5bgwg7lvllwMgOkM9Yioomg==
+Date: Mon, 5 May 2025 14:31:58 +0200
+From: Luca Ceresoli <luca.ceresoli@bootlin.com>
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Cc: Inki Dae <inki.dae@samsung.com>, Kyungmin Park
+ <kyungmin.park@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Alim
+ Akhtar <alim.akhtar@samsung.com>, Maxime Ripard <mripard@kernel.org>, Louis
+ Chauvet <louis.chauvet@bootlin.com>, Maarten Lankhorst
+ <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann
+ <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter
+ <simona@ffwll.ch>, Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong
+ <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, Laurent
+ Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman
+ <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, Jagan Teki
+ <jagan@amarulasolutions.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer
+ <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Douglas Anderson
+ <dianders@chromium.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Krzysztof
+ Kozlowski <krzk@kernel.org>, Anusha Srivatsa <asrivats@redhat.com>, Paul
+ Kocialkowski <paulk@sys-base.io>, Dmitry Baryshkov <lumag@kernel.org>, Hui
+ Pu <Hui.Pu@gehealthcare.com>, Thomas Petazzoni
+ <thomas.petazzoni@bootlin.com>, dri-devel@lists.freedesktop.org,
+ asahi@lists.linux.dev, linux-kernel@vger.kernel.org,
+ chrome-platform@lists.linux.dev, imx@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
+ platform-driver-x86@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
+ linux-stm32@st-md-mailman.stormreply.com, Adam Ford <aford173@gmail.com>,
+ Adrien Grassein <adrien.grassein@gmail.com>, Aleksandr Mishin
+ <amishin@t-argos.ru>, Andy Yan <andy.yan@rock-chips.com>, AngeloGioacchino
+ Del Regno <angelogioacchino.delregno@collabora.com>, Benson Leung
+ <bleung@chromium.org>, Biju Das <biju.das.jz@bp.renesas.com>, Christoph
+ Fritz <chf.fritz@googlemail.com>, Cristian Ciocaltea
+ <cristian.ciocaltea@collabora.com>, Detlev Casanova
+ <detlev.casanova@collabora.com>, Dharma Balasubiramani
+ <dharma.b@microchip.com>, Guenter Roeck <groeck@chromium.org>, Heiko
+ Stuebner <heiko@sntech.de>, Jani Nikula <jani.nikula@intel.com>, Janne
+ Grunau <j@jannau.net>, Jerome Brunet <jbrunet@baylibre.com>, Jesse Van
+ Gavere <jesseevg@gmail.com>, Kevin Hilman <khilman@baylibre.com>, Kieran
+ Bingham <kieran.bingham+renesas@ideasonboard.com>, Liu Ying
+ <victor.liu@nxp.com>, Manikandan Muralidharan <manikandan.m@microchip.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, Phong LE
+ <ple@baylibre.com>, Sasha Finkelstein <fnkl.kernel@gmail.com>, Sugar Zhang
+ <sugar.zhang@rock-chips.com>, Sui Jingfeng <sui.jingfeng@linux.dev>, Tomi
+ Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, Vitalii Mordan
+ <mordan@ispras.ru>, Ilpo =?UTF-8?B?SsOkcnZpbmVu?=
+ <ilpo.jarvinen@linux.intel.com>, Bryan O'Donoghue
+ <bryan.odonoghue@linaro.org>, Hans de Goede <hdegoede@redhat.com>, Uwe
+ =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <u.kleine-koenig@baylibre.com>, "Rob
+ Herring (Arm)" <robh@kernel.org>, Hsin-Te Yuan <yuanhsinte@chromium.org>,
+ Pin-yen Lin <treapking@chromium.org>, Xin Ji <xji@analogixsemi.com>,
+ Aradhya Bhatia <a-bhatia1@ti.com>, Tomi Valkeinen
+ <tomi.valkeinen@ideasonboard.com>, Ian Ray <ian.ray@ge.com>, Martyn Welch
+ <martyn.welch@collabora.co.uk>, Peter Senna Tschudin
+ <peter.senna@gmail.com>, Russell King <linux@armlinux.org.uk>, Herve Codina
+ <herve.codina@bootlin.com>, Linus Walleij <linus.walleij@linaro.org>,
+ Abhinav Kumar <quic_abhinavk@quicinc.com>, Bjorn Andersson
+ <quic_bjorande@quicinc.com>, Marijn Suijten
+ <marijn.suijten@somainline.org>, Rob Clark <robdclark@gmail.com>
+Subject: Re: (subset) [PATCH v2 00/34] drm: convert all bridges to
+ devm_drm_bridge_alloc()
+Message-ID: <20250505143158.75541d7c@booty>
+In-Reply-To: <9afd098c-edd3-44fa-8efe-99f2e9c9a525@oss.qualcomm.com>
+References: <20250424-drm-bridge-convert-to-alloc-api-v2-0-8f91a404d86b@bootlin.com>
+	<174591887152.961603.7706063017853945511.b4-ty@bootlin.com>
+	<832a9db0-cf8a-4d35-8a98-08053fbd6723@bootlin.com>
+	<20250430-arrogant-marmoset-of-justice-92ced3@houat>
+	<20250505130648.22ec8716@booty>
+	<9afd098c-edd3-44fa-8efe-99f2e9c9a525@oss.qualcomm.com>
+Organization: Bootlin
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-GND-State: clean
+X-GND-Score: -100
+X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvkeduuddtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvvefukfgjfhhoofggtgfgsehtjeertdertddvnecuhfhrohhmpefnuhgtrgcuvegvrhgvshholhhiuceolhhutggrrdgtvghrvghsohhlihessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnheptdeljeejuddvudetffdtudelfedugfduledtueffuedufefgudegkeegtdeihedunecuffhomhgrihhnpehkvghrnhgvlhdrohhrghdpsghoohhtlhhinhdrtghomhenucfkphepvdgrtddvmeeijedtmedvtddvtdemvggrtddumegsvgegudemleehvgejmeefgeefmeeludefvgenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpedvrgdtvdemieejtdemvddtvddtmegvrgdtudemsggvgedumeelhegvjeemfeegfeemledufegvpdhhvghlohepsghoohhthidpmhgrihhlfhhrohhmpehluhgtrgdrtggvrhgvshholhhisegsohhothhlihhnrdgtohhmpdhnsggprhgtphhtthhopeelgedprhgtphhtthhopegumhhithhrhidrsggrrhihshhhkhhovhesohhsshdrqhhurghltghomhhmrdgtohhmpdhrtghpthhtohepihhnkhhirdgurggvsehsrghmshhunhhgrdgtohhmpdhrtghpt
+ hhtohepkhihuhhnghhmihhnrdhprghrkhesshgrmhhsuhhnghdrtghomhdprhgtphhtthhopehsfidtfeduvddrkhhimhesshgrmhhsuhhnghdrtghomhdprhgtphhtthhopegrlhhimhdrrghkhhhtrghrsehsrghmshhunhhgrdgtohhmpdhrtghpthhtohepmhhrihhprghrugeskhgvrhhnvghlrdhorhhgpdhrtghpthhtoheplhhouhhishdrtghhrghuvhgvthessghoohhtlhhinhdrtghomhdprhgtphhtthhopehmrggrrhhtvghnrdhlrghnkhhhohhrshhtsehlihhnuhigrdhinhhtvghlrdgtohhm
+X-GND-Sasl: luca.ceresoli@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250505_051704_856267_ED5C1983 
-X-CRM114-Status: GOOD (  14.89  )
+X-CRM114-CacheID: sfid-20250505_053214_599567_F3549B67 
+X-CRM114-Status: GOOD (  25.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,509 +137,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT8189 is a SoC based on 64bit ARMv8 architecture. It contains 6 CA55
-and 2 CA78 cores. MT8189 share many HW IP with MT8188 series.
+Hi Dmitry,
 
-We add basic chip support for MediaTek MT8189 on evaluation board.
+On Mon, 5 May 2025 14:58:58 +0300
+Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com> wrote:
 
-BUG=b:387230785
-TEST=emerge-skywalker chromeos-kernel-6_6
+> On 05/05/2025 14:06, Luca Ceresoli wrote:
+> > Inki, Kyungmin, Seung-Woo, Alim,
+> > 
+> > On Wed, 30 Apr 2025 10:08:14 +0200
+> > Maxime Ripard <mripard@kernel.org> wrote:
+> >   
+> >> Inki, Kyungmin, Seung-Woo, sorry for the mishap. Do you agree with the
+> >> following patch, and it going through drm-misc?
+> >>
+> >> https://lore.kernel.org/dri-devel/20250424-drm-bridge-convert-to-alloc-api-v2-14-8f91a404d86b@bootlin.com/
+> >>
+> >> If not, we'll revert.  
+> > 
+> > Did you have a chance to have a look at the patch mentioned by Maxime?
+> > 
+> > It was applied to drm-misc-next by mistake. Not your mistake of course,
+> > but now it's there so if you don't reply anything it will have to be
+> > reverted, and then sent again to go through all the review process to
+> > be hopefully re-applied in the future.
+> > 
+> > If you agree with keeping it in drm-misc-next, that would be less noise
+> > for everybody.
+> > 
+> > I'm going to send v3 very soon, so it would be good to decide what to
+> > do before that.  
+> 
+> For the record: even though I'm not happy with msm-related patches going 
+> through drm-misc without additional ack from our side, I think reverting 
+> those and reapplying them later will create a bigger mess. So, I'm fine 
+> with keeping drm/msm/* bridged patches in.
 
-Signed-off-by: Sirius Wang <sirius.wang@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/Makefile       |   1 +
- arch/arm64/boot/dts/mediatek/mt8189-evb.dts |  20 +
- arch/arm64/boot/dts/mediatek/mt8189.dtsi    | 441 ++++++++++++++++++++
- 3 files changed, 462 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8189-evb.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8189.dtsi
+That was my understanding of your previous e-mail, but thanks for
+having made it explicit.
 
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index 3aa06476c6c0..ad2ac9e1bb79 100644
---- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -87,6 +87,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8188-geralt-ciri-sku4.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8188-geralt-ciri-sku5.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8188-geralt-ciri-sku6.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8188-geralt-ciri-sku7.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt8189-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-asurada-hayato-r1.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-asurada-spherion-r0.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-evb.dtb
-diff --git a/arch/arm64/boot/dts/mediatek/mt8189-evb.dts b/arch/arm64/boot/dts/mediatek/mt8189-evb.dts
-new file mode 100644
-index 000000000000..e5d9ce1b8e61
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8189-evb.dts
-@@ -0,0 +1,20 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright (C) 2025 MediaTek Inc.
-+ * Author: Sirius Wang <sirius.wang@mediatek.com>
-+ */
-+/dts-v1/;
-+#include "mt8189.dtsi"
-+
-+/ {
-+	model = "MediaTek MT8189 evaluation board";
-+	compatible = "mediatek,mt8189-evb", "mediatek,mt8189";
-+
-+	chosen: chosen {
-+		stdout-path = "serial0:115200n8";
-+	};
-+};
-+
-+&uart0 {
-+	status = "okay";
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8189.dtsi b/arch/arm64/boot/dts/mediatek/mt8189.dtsi
-new file mode 100644
-index 000000000000..de59d858bcf3
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8189.dtsi
-@@ -0,0 +1,441 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright (c) 2025 MediaTek Inc.
-+ */
-+
-+#include <dt-bindings/interrupt-controller/arm-gic.h>
-+#include <dt-bindings/interrupt-controller/irq.h>
-+#include <dt-bindings/phy/phy.h>
-+#include <dt-bindings/reset/ti-syscon.h>
-+
-+/ {
-+	compatible = "mediatek,mt8189";
-+	interrupt-parent = <&gic>;
-+	#address-cells = <2>;
-+	#size-cells = <2>;
-+
-+	aliases {
-+		serial0 = &uart0;
-+	};
-+
-+	cpus {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		cpu0: cpu@0 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a55";
-+			reg = <0x000>;
-+			enable-method = "psci";
-+			clock-frequency = <2000000000>;
-+			capacity-dmips-mhz = <742>;
-+			cpu-idle-states = <&cpuoff_l &clusteroff_l &mcusysoff_l &system_vcore &s2idle>;
-+			i-cache-size = <32768>;
-+			i-cache-line-size = <64>;
-+			i-cache-sets = <128>;
-+			d-cache-size = <32768>;
-+			d-cache-line-size = <64>;
-+			d-cache-sets = <128>;
-+			next-level-cache = <&l2_0>;
-+			performance-domains = <&performance 0>;
-+			#cooling-cells = <2>;
-+		};
-+
-+		cpu1: cpu@100 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a55";
-+			reg = <0x100>;
-+			enable-method = "psci";
-+			clock-frequency = <2000000000>;
-+			capacity-dmips-mhz = <742>;
-+			cpu-idle-states = <&cpuoff_l &clusteroff_l &mcusysoff_l &system_vcore &s2idle>;
-+			i-cache-size = <32768>;
-+			i-cache-line-size = <64>;
-+			i-cache-sets = <128>;
-+			d-cache-size = <32768>;
-+			d-cache-line-size = <64>;
-+			d-cache-sets = <128>;
-+			next-level-cache = <&l2_0>;
-+			performance-domains = <&performance 0>;
-+			#cooling-cells = <2>;
-+		};
-+
-+		cpu2: cpu@200 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a55";
-+			reg = <0x200>;
-+			enable-method = "psci";
-+			clock-frequency = <2000000000>;
-+			capacity-dmips-mhz = <742>;
-+			cpu-idle-states = <&cpuoff_l &clusteroff_l &mcusysoff_l &system_vcore &s2idle>;
-+			i-cache-size = <32768>;
-+			i-cache-line-size = <64>;
-+			i-cache-sets = <128>;
-+			d-cache-size = <32768>;
-+			d-cache-line-size = <64>;
-+			d-cache-sets = <128>;
-+			next-level-cache = <&l2_0>;
-+			performance-domains = <&performance 0>;
-+			#cooling-cells = <2>;
-+		};
-+
-+		cpu3: cpu@300 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a55";
-+			reg = <0x300>;
-+			enable-method = "psci";
-+			clock-frequency = <2000000000>;
-+			capacity-dmips-mhz = <742>;
-+			cpu-idle-states = <&cpuoff_l &clusteroff_l &mcusysoff_l &system_vcore &s2idle>;
-+			i-cache-size = <32768>;
-+			i-cache-line-size = <64>;
-+			i-cache-sets = <128>;
-+			d-cache-size = <32768>;
-+			d-cache-line-size = <64>;
-+			d-cache-sets = <128>;
-+			next-level-cache = <&l2_0>;
-+			performance-domains = <&performance 0>;
-+			#cooling-cells = <2>;
-+		};
-+
-+		cpu4: cpu@400 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a55";
-+			reg = <0x400>;
-+			enable-method = "psci";
-+			clock-frequency = <2000000000>;
-+			capacity-dmips-mhz = <742>;
-+			cpu-idle-states = <&cpuoff_l &clusteroff_l &mcusysoff_l &system_vcore &s2idle>;
-+			i-cache-size = <32768>;
-+			i-cache-line-size = <64>;
-+			i-cache-sets = <128>;
-+			d-cache-size = <32768>;
-+			d-cache-line-size = <64>;
-+			d-cache-sets = <128>;
-+			next-level-cache = <&l2_0>;
-+			performance-domains = <&performance 0>;
-+			#cooling-cells = <2>;
-+		};
-+
-+		cpu5: cpu@500 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a55";
-+			reg = <0x500>;
-+			enable-method = "psci";
-+			clock-frequency = <2000000000>;
-+			capacity-dmips-mhz = <742>;
-+			cpu-idle-states = <&cpuoff_l &clusteroff_l &mcusysoff_l &system_vcore &s2idle>;
-+			i-cache-size = <32768>;
-+			i-cache-line-size = <64>;
-+			i-cache-sets = <128>;
-+			d-cache-size = <32768>;
-+			d-cache-line-size = <64>;
-+			d-cache-sets = <128>;
-+			next-level-cache = <&l2_0>;
-+			performance-domains = <&performance 0>;
-+			#cooling-cells = <2>;
-+		};
-+
-+		cpu6: cpu@600 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a78";
-+			reg = <0x600>;
-+			enable-method = "psci";
-+			clock-frequency = <3000000000>;
-+			capacity-dmips-mhz = <958>;
-+			cpu-idle-states = <&cpuoff_m &clusteroff_m &mcusysoff_m &system_vcore &s2idle>;
-+			i-cache-size = <65536>;
-+			i-cache-line-size = <64>;
-+			i-cache-sets = <256>;
-+			d-cache-size = <65536>;
-+			d-cache-line-size = <64>;
-+			d-cache-sets = <256>;
-+			next-level-cache = <&l2_1>;
-+			performance-domains = <&performance 1>;
-+			#cooling-cells = <2>;
-+		};
-+
-+		cpu7: cpu@700 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a78";
-+			reg = <0x700>;
-+			enable-method = "psci";
-+			clock-frequency = <3000000000>;
-+			capacity-dmips-mhz = <958>;
-+			cpu-idle-states = <&cpuoff_m &clusteroff_m &mcusysoff_m &system_vcore &s2idle>;
-+			i-cache-size = <65536>;
-+			i-cache-line-size = <64>;
-+			i-cache-sets = <256>;
-+			d-cache-size = <65536>;
-+			d-cache-line-size = <64>;
-+			d-cache-sets = <256>;
-+			next-level-cache = <&l2_1>;
-+			performance-domains = <&performance 1>;
-+			#cooling-cells = <2>;
-+		};
-+
-+		cpu-map {
-+			cluster0 {
-+				core0 {
-+					cpu = <&cpu0>;
-+				};
-+				core1 {
-+					cpu = <&cpu1>;
-+				};
-+				core2 {
-+					cpu = <&cpu2>;
-+				};
-+				core3 {
-+					cpu = <&cpu3>;
-+				};
-+				core4 {
-+					cpu = <&cpu4>;
-+				};
-+				core5 {
-+					cpu = <&cpu5>;
-+				};
-+			};
-+
-+			cluster1 {
-+				core0 {
-+					cpu = <&cpu6>;
-+				};
-+				core1 {
-+					cpu = <&cpu7>;
-+				};
-+			};
-+		};
-+
-+		idle-states {
-+			entry-method = "arm,psci";
-+
-+			cpuoff_l: cpuoff-l {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x00010000>;
-+				local-timer-stop;
-+				entry-latency-us = <97>;
-+				exit-latency-us = <252>;
-+				min-residency-us = <6710>;
-+			};
-+
-+			cpuoff_m: cpuoff-m {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x00010000>;
-+				local-timer-stop;
-+				entry-latency-us = <53>;
-+				exit-latency-us = <143>;
-+				min-residency-us = <2120>;
-+			};
-+
-+			cpuoff_b: cpuoff-b {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x00010000>;
-+				local-timer-stop;
-+				entry-latency-us = <40>;
-+				exit-latency-us = <107>;
-+				min-residency-us = <2580>;
-+			};
-+
-+			clusteroff_l: clusteroff-l {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x01010001>;
-+				local-timer-stop;
-+				entry-latency-us = <109>;
-+				exit-latency-us = <325>;
-+				min-residency-us = <6710>;
-+			};
-+
-+			clusteroff_m: clusteroff-m {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x01010001>;
-+				local-timer-stop;
-+				entry-latency-us = <59>;
-+				exit-latency-us = <188>;
-+				min-residency-us = <2120>;
-+			};
-+
-+			clusteroff_b: clusteroff-b {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x01010001>;
-+				local-timer-stop;
-+				entry-latency-us = <43>;
-+				exit-latency-us = <138>;
-+				min-residency-us = <2580>;
-+			};
-+
-+			mcusysoff_l: mcusysoff-l {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x02010007>;
-+				local-timer-stop;
-+				entry-latency-us = <1357>;
-+				exit-latency-us = <835>;
-+				min-residency-us = <6710>;
-+			};
-+
-+			mcusysoff_m: mcusysoff-m {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x02010007>;
-+				local-timer-stop;
-+				entry-latency-us = <1202>;
-+				exit-latency-us = <679>;
-+				min-residency-us = <2120>;
-+			};
-+
-+			mcusysoff_b: mcusysoff-b {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x02010007>;
-+				local-timer-stop;
-+				entry-latency-us = <1143>;
-+				exit-latency-us = <611>;
-+				min-residency-us = <2580>;
-+			};
-+
-+			system_vcore: system-vcore {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x020100ff>;
-+				local-timer-stop;
-+				entry-latency-us = <940>;
-+				exit-latency-us = <3500>;
-+				min-residency-us = <35200>;
-+			};
-+
-+			s2idle: s2idle {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x020180ff>;
-+				local-timer-stop;
-+				entry-latency-us = <10000>;
-+				exit-latency-us = <10000>;
-+				min-residency-us = <4294967295>;
-+			};
-+		};
-+
-+		l2_0: l2-cache0 {
-+			compatible = "cache";
-+			cache-level = <2>;
-+			cache-size = <131072>;
-+			cache-line-size = <64>;
-+			cache-sets = <512>;
-+			next-level-cache = <&l3_0>;
-+			cache-unified;
-+		};
-+
-+		l2_1: l2-cache1 {
-+			compatible = "cache";
-+			cache-level = <2>;
-+			cache-size = <262144>;
-+			cache-line-size = <64>;
-+			cache-sets = <512>;
-+			next-level-cache = <&l3_0>;
-+			cache-unified;
-+		};
-+
-+		l3_0: l3-cache {
-+			compatible = "cache";
-+			cache-level = <3>;
-+			cache-size = <1048576>;
-+			cache-line-size = <64>;
-+			cache-sets = <2048>;
-+			cache-unified;
-+		};
-+	};
-+
-+	psci {
-+		compatible = "arm,psci-1.0";
-+		method = "smc";
-+	};
-+
-+	clocks {
-+		clk_null: clk-null {
-+			compatible = "fixed-clock";
-+			#clock-cells = <0>;
-+			clock-frequency = <0>;
-+		};
-+
-+		clk32k: clk32k {
-+			compatible = "fixed-clock";
-+			#clock-cells = <0>;
-+			clock-frequency = <32000>;
-+		};
-+
-+		clk26m: clk26m {
-+			compatible = "fixed-clock";
-+			#clock-cells = <0>;
-+			clock-frequency = <26000000>;
-+		};
-+
-+		clk13m: clk13m {
-+			compatible = "fixed-clock";
-+			#clock-cells = <0>;
-+			clock-frequency = <13000000>;
-+		};
-+
-+		ulposc: ulposc {
-+			compatible = "fixed-clock";
-+			#clock-cells = <0>;
-+			clock-frequency = <520000000>;
-+		};
-+
-+		ulposc3: ulposc3 {
-+			compatible = "fixed-clock";
-+			#clock-cells = <0>;
-+			clock-frequency = <26000000>;
-+		};
-+
-+		clk104m: clk104m {
-+			compatible = "fixed-clock";
-+			#clock-cells = <0>;
-+			clock-frequency = <104000000>;
-+		};
-+	};
-+
-+	memory: memory {
-+		device_type = "memory";
-+		reg = <0 0x40000000 0 0xC0000000>;
-+	};
-+
-+	timer: timer {
-+		compatible = "arm,armv8-timer";
-+		interrupt-parent = <&gic>;
-+		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_HIGH 0>,
-+				<GIC_PPI 14 IRQ_TYPE_LEVEL_HIGH 0>,
-+				<GIC_PPI 11 IRQ_TYPE_LEVEL_HIGH 0>,
-+				<GIC_PPI 10 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clock-frequency = <13000000>;
-+	};
-+
-+	soc {
-+		compatible = "simple-bus";
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		ranges;
-+		dma-ranges = <0x0 0x0 0x0 0x0 0x10 0x0>;
-+
-+		performance: performance-controller@11bc10 {
-+			compatible = "mediatek,cpufreq-hw";
-+			reg = <0 0x0011bc10 0 0x120>, <0 0x0011bd30 0 0x120>;
-+			#performance-domain-cells = <1>;
-+		};
-+
-+		gic: interrupt-controller@c000000 {
-+			compatible = "arm,gic-v3";
-+			#interrupt-cells = <4>;
-+			#address-cells = <2>;
-+			#size-cells = <2>;
-+			#redistributor-regions = <1>;
-+			interrupt-parent = <&gic>;
-+			interrupt-controller;
-+			reg = <0 0xc000000 0 0x40000>, /* distributor */
-+			      <0 0xc040000 0 0x200000>; /* redistributor */
-+			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH 0>;
-+		};
-+
-+		uart0: serial@11001000 {
-+			compatible = "mediatek,mt6577-uart";
-+			reg = <0 0x11001000 0 0x1000>;
-+			interrupts = <GIC_SPI 397 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>;
-+			clock-names = "baud", "bus";
-+			uart-line = <0>;
-+		};
-+	};
-+};
+Luca
+
 -- 
-2.45.2
-
+Luca Ceresoli, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
