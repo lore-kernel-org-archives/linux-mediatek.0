@@ -4,59 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD0BDC369DC
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 May 2025 01:11:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 366DEC369C2
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 May 2025 05:23:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ISfmgL0pGPDsruyGgJ3iPh5wWjp5R0YXLtpcNoGLwTA=; b=k6fOvDxpA4eEtxcQX6pctjk2Hx
-	/aswI9+UCyYq+hMDOKKNyrJR8xKW0KDqHXN4IeunPSz5RmGWEgW63nbP5oRIo6FcPOsIOc5+xi3MS
-	4zePPJHvanlGDsw9Cewlnv5tqMx/MEqML0P0106HJs1dF07iIhpMe+oPxVvpnILZOx+uH7+jegrgZ
-	rNYW1fL3+W/BDVPx246iKFAgvr9KOZGCOBNBKTuS/0rPC3W9H8ijSD7YXHeHfNiwnurmc04X9A0T5
-	0E+mPUYZhABJ4WMwlUFwPXmrivl/ry/IkGeZklyOye18Z4tWmAQyObw56Nyh+Tg2J46d8hDukOMuD
-	Oit7UZTA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=syttJyt/Lir9Mf4QY//fRoVilpsEyO/rCWOHDim8BNU=; b=5CX8+yQ8WCPA9BiB8S8p5eKsmU
+	u2o1/iSZqpIfB4EsATmN2Ghv90WFF576s6tcRuoS2QYa6LDonH6H9YSAJH++60uJGA6kpdL/ibjoo
+	fK2aJWwvZZu4NKH1kvO9JD3wkicHa78+LKH035lE/nWRU9T0+6eQ2rfWyBKUP5gOUH+yO7etvD7v0
+	cj4urpb1aagZ5QVv6OKXlrsKiyDRp35C10zpbuiBmpkNjM+pvKpAue5VrTpQmMR3/159+BR9NL1g9
+	fz3Cnowfg8YAa+kG6/mZ1H33b6R9SuPO6AMHye0yrk99fcg3DTss8y5LNXuWXMPIHrkwgb4aG6Nz5
+	//kABDwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBkN6-00000006E87-3Iw3;
-	Mon, 05 May 2025 01:11:52 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1uBoIP-00000006Qvj-2JH8;
+	Mon, 05 May 2025 05:23:17 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBkJU-00000006Dfy-3J1a;
-	Mon, 05 May 2025 01:08:10 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.98.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1uBkDd-000000004Zc-3m28;
-	Mon, 05 May 2025 01:08:01 +0000
-Date: Mon, 5 May 2025 02:07:58 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	id 1uBoGO-00000006Qh0-1cVk;
+	Mon, 05 May 2025 05:21:12 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 68B1E61126;
+	Mon,  5 May 2025 05:20:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9358DC4CEE4;
+	Mon,  5 May 2025 05:21:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1746422471;
+	bh=eFUNJz44umhXOHrb3M8tG09Hn9kgygwm89YtP0GIyOk=;
+	h=From:To:Cc:Subject:Date:From;
+	b=j5Kr3f5558Cu0uGP7jS1QGHwsAcFOt5cbr8JZHzqZq21yX1qU6YrdAJU/GWazYj4m
+	 PrGK6QZXEy3ZE+uW89sYOQruR6G+9IyPPwyigS3IXgx/98Cc2+Otpl3y1+zLO/bWHI
+	 exIiGxegMJaCQX6GXkIN1YUGy8eR6oFJoswGvXSh84uUCuysabLEhngAcUyBIHr2jl
+	 O3dxTQiRQeVIZe5GW6lBfEyJPO18wGHQQOSXB9wwlUkjoz8oWvOW4Ne8c2wYpE3nes
+	 24XB7cdY1kk9nhYBaG53d3LKuZubPEgAJRdVN8oR1p/tpwl5ECoMKDYMErd3c93TKq
+	 WqQc2KQQLhWXg==
+From: Arnd Bergmann <arnd@kernel.org>
+To: Mark Brown <broonie@kernel.org>
+Cc: Arnd Bergmann <arnd@arndb.de>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Elad Yifee <eladwf@gmail.com>, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	Alexandre Mergnat <amergnat@baylibre.com>,
+	Zoran Zhan <zoran.zhan@mediatek.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
+	linux-sound@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH net v2 2/2] net: ethernet: mtk_eth_soc: do not reset PSE when
- setting FE
-Message-ID: <18f0ac7d83f82defa3342c11ef0d1362f6b81e88.1746406763.git.daniel@makrotopia.org>
-References: <c9ff9adceac4f152239a0f65c397f13547639175.1746406763.git.daniel@makrotopia.org>
+Subject: [PATCH] ASoC: mediatek: mt8188-mt6359: select CONFIG_SND_SOC_MT6359_ACCDET
+Date: Mon,  5 May 2025 07:20:52 +0200
+Message-Id: <20250505052106.1811802-1-arnd@kernel.org>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <c9ff9adceac4f152239a0f65c397f13547639175.1746406763.git.daniel@makrotopia.org>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250504_180808_927412_1B9863A1 
-X-CRM114-Status: UNSURE (   9.37  )
-X-CRM114-Notice: Please train this message.
+Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,35 +76,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+From: Arnd Bergmann <arnd@arndb.de>
 
-Remove redundant PSE reset.
-When setting FE register there is no need to reset PSE,
-doing so may cause FE to work abnormal.
+The driver support was added without selecting the codec, which leads to
+a link failure:
 
-Link: https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/3a5223473e086a4b54a2b9a44df7d9ddcc2bc75a
-Fixes: dee4dd10c79aa ("net: ethernet: mtk_eth_soc: ppe: add support for multiple PPEs")
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+aarch64-linux-ld: sound/soc/mediatek/mt8188/mt8188-mt6359.o: in function `mt8188_mt6359_init':
+mt8188-mt6359.c:(.text+0x19f0): undefined reference to `mt6359_accdet_enable_jack_detect'
+
+Fixes: f35d834d67ad ("ASoC: mediatek: mt8188-mt6359: Add accdet headset jack detect support")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 ---
-v2: fix commit title
+ sound/soc/mediatek/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 3 ---
- 1 file changed, 3 deletions(-)
-
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 53c39561b6d9a..22a532695fb0d 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -3473,9 +3473,6 @@ static int mtk_open(struct net_device *dev)
- 			}
- 			mtk_gdm_config(eth, target_mac->id, gdm_config);
- 		}
--		/* Reset and enable PSE */
--		mtk_w32(eth, RST_GL_PSE, MTK_RST_GL);
--		mtk_w32(eth, 0, MTK_RST_GL);
- 
- 		napi_enable(&eth->tx_napi);
- 		napi_enable(&eth->rx_napi);
+diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
+index 3033e2d3fe16..e148d4d94160 100644
+--- a/sound/soc/mediatek/Kconfig
++++ b/sound/soc/mediatek/Kconfig
+@@ -229,6 +229,7 @@ config SND_SOC_MT8188_MT6359
+ 	tristate "ASoC Audio driver for MT8188 with MT6359 and I2S codecs"
+ 	depends on SND_SOC_MT8188 && MTK_PMIC_WRAP
+ 	depends on I2C
++	select SND_SOC_MT6359_ACCDET
+ 	select SND_SOC_MT6359
+ 	select SND_SOC_HDMI_CODEC
+ 	select SND_SOC_DMIC
 -- 
-2.49.0
+2.39.5
+
 
