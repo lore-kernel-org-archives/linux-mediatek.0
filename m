@@ -4,69 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F8B0C3ABBF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 May 2025 23:55:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA8E2C3ABB6
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 May 2025 00:47:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AmKWY7YWAVkOYYVYO3fr0vcmy5ygysA6VFcTfqw86Dc=; b=y/4JsVrIaLrZ0qkj2UBv3E1q2p
-	VxfrzzYx6XBlTL4VLId3jcmzSSG2EM9Zqlyz741C5ipgDUOLGOhn5ugHVSzmT8iwf3JcCeQr2TkJd
-	yIVdhyaUhbZHaJK3gcXE0y6ZFrEZXw1FzIMtDhBI/rRaHiL4Ya+yLkus+VuI2TFbbOHdgXomGYons
-	tocXI7SmyjsEZzvqusXKA79fbA+JeiP20+G3iHjv/GHdx9ROGLhd97pc3Vaw6fPCSPUUTKcGeWSTS
-	3xg8W8H/ywonmu55WJdcvz6Nq9i1MA/UfkMfslIkVqnA8LCAVMLe30uQtW0QaTVOjDBXFwDCQChGL
-	+wbdGS9A==;
+	bh=uS1F9ctkBfA7METnPIIJqxJfRYVuvu+3kOoBHHUnNAM=; b=BFpy3jSmL0QOsyTAm51D0mEIFS
+	3Skyg0M/K1/XBsVRpiqfbvmJMD3Ic00xoZC4wXtskFLNpAyi5/3pmP+zsa9bID34JhgwdVrBG7Q1T
+	2fwjrxW7tftMGeKxDCv+v+4pP/jBO0/D4vDm+A5wTB4uXsR3qLonDvNMA1O6vcNkiflF9Vh6vyYWT
+	SQivCoVlOL+CfTQfQL/DrYa+DDxdwhwS4zO03F5IVsX2k28k32SQv8PsgTU2RCpKrSu4Yeyt34Ykh
+	HPPsZm9/KQ/2hn2RpYuY+RpAqUZ5lurH2IW3rTBCDwBtBma1A9DL4Zyb7MjID6ZA2o6Su+EWWTeMd
+	I/FDkDHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uC5eM-00000009A4T-2E6C;
-	Mon, 05 May 2025 23:55:06 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uC6TG-00000009Mux-3TfC;
+	Tue, 06 May 2025 00:47:42 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uC4Hd-00000008lQ0-3HrV;
-	Mon, 05 May 2025 22:27:33 +0000
+	id 1uC4UE-00000008pRO-1xiX;
+	Mon, 05 May 2025 22:40:35 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5E3B7629C2;
-	Mon,  5 May 2025 22:27:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 791F8C4CEEF;
-	Mon,  5 May 2025 22:27:31 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 7B07343E57;
+	Mon,  5 May 2025 22:40:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6B0BEC4CEE4;
+	Mon,  5 May 2025 22:40:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746484052;
-	bh=LrT/BzsEdzbAPHh6GUB5YHHxutK4sZM6h/Bma2CUFEc=;
+	s=k20201202; t=1746484834;
+	bh=KIgy7Ibl/ZmptAPTdNDHWeodw8H4ZjskznkbvsrWrJM=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ifEiYg4Vy9qkuuHby54cAgfNtGMFgLRCxIFWNHvBYYHXOp1CCPy1hX5vgMhFRyY87
-	 lK6PLf+tXYZAbnE1SD12yxwquHMV0hN6TU11m5G2dMZ773DgV/B9/UKbUCHR5x3Kpq
-	 /DsCQTffiPCIdvIgaxKOEiBJmwyCFLUPGkqF/YP3EG1Xc5RdJW8AAVJPHMawmqsQEO
-	 6nxLC6Lz5NCTANBsjZ52kw4m2oAJVRIKiK3PNtZF1fnNYzrvbREt2O9E4LvJsSo8jW
-	 LsT3M4o6W5EhH1rg47MbgOuC+0iOG2hffA3Zs2Fr73/W4QwqFI1rBps/JH8QA7m4wM
-	 IB0TsBtiZhvPw==
+	b=pueKcerevEWNPUUbFI8Fo0PIcExpqVxNRggpBDBHDLOjuYnkljavmdI1tvrP3GmCA
+	 rewbwgUFVahXsUad7OiQiK4it+7fWgotWEO998nJd1E9YMXBd+6UgwYHOVmNucAQH5
+	 ibraaj3ntTBJZofQbWEmVC4LE/9EE/QULIgqjLcunn+uApctEJcRwDbRb+nrEqkUsx
+	 PV9O+bjLK/fZ2jinZ3827PnWC9AAiWzY7ouzVRGVV6nkI3x1OhcEiKsvBiOLKmSyC4
+	 wPQbbLzfbDJ9h7UpFWSMNZpQTvYTPNzhyFzitj+mm1VIUam4WBfV4PjEKnflXi3NLZ
+	 jjLvGdzvfoNtQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
 Cc: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Mark Brown <broonie@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@linaro.org>,
 	Sasha Levin <sashal@kernel.org>,
-	lgirdwood@gmail.com,
-	perex@perex.cz,
-	tiwai@suse.com,
+	rafael@kernel.org,
 	matthias.bgg@gmail.com,
-	linux-sound@vger.kernel.org,
+	jpanis@baylibre.com,
+	npitre@baylibre.com,
+	colin.i.king@gmail.com,
+	u.kleine-koenig@baylibre.com,
+	wenst@chromium.org,
+	linux-pm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.14 328/642] ASoC: mediatek: mt8188: Add reference for dmic clocks
-Date: Mon,  5 May 2025 18:09:04 -0400
-Message-Id: <20250505221419.2672473-328-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.12 037/486] thermal/drivers/mediatek/lvts: Start sensor interrupts disabled
+Date: Mon,  5 May 2025 18:31:53 -0400
+Message-Id: <20250505223922.2682012-37-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250505221419.2672473-1-sashal@kernel.org>
-References: <20250505221419.2672473-1-sashal@kernel.org>
+In-Reply-To: <20250505223922.2682012-1-sashal@kernel.org>
+References: <20250505223922.2682012-1-sashal@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.14.5
+X-stable-base: Linux 6.12.26
 Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250505_154034_528446_DC82F6B3 
+X-CRM114-Status: GOOD (  10.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,61 +89,43 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-[ Upstream commit bf1800073f4d55f08191b034c86b95881e99b6fd ]
+[ Upstream commit 2738fb3ec6838a10d2c4ce65cefdb3b90b11bd61 ]
 
-Add the names for the dmic clocks, aud_afe_dmic* and aud_dmic_hires*, so
-they can be acquired and enabled by the platform driver.
+Interrupts are enabled per sensor in lvts_update_irq_mask() as needed,
+there's no point in enabling all of them during initialization. Change
+the MONINT register initial value so all sensor interrupts start
+disabled.
 
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Link: https://patch.msgid.link/20250225-genio700-dmic-v2-2-3076f5b50ef7@collabora.com
-Signed-off-by: Mark Brown <broonie@kernel.org>
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Link: https://lore.kernel.org/r/20250113-mt8192-lvts-filtered-suspend-fix-v2-4-07a25200c7c6@collabora.com
+Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- sound/soc/mediatek/mt8188/mt8188-afe-clk.c | 8 ++++++++
- sound/soc/mediatek/mt8188/mt8188-afe-clk.h | 8 ++++++++
- 2 files changed, 16 insertions(+)
+ drivers/thermal/mediatek/lvts_thermal.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/sound/soc/mediatek/mt8188/mt8188-afe-clk.c b/sound/soc/mediatek/mt8188/mt8188-afe-clk.c
-index e69c1bb2cb239..7f411b8577823 100644
---- a/sound/soc/mediatek/mt8188/mt8188-afe-clk.c
-+++ b/sound/soc/mediatek/mt8188/mt8188-afe-clk.c
-@@ -58,7 +58,15 @@ static const char *aud_clks[MT8188_CLK_NUM] = {
- 	[MT8188_CLK_AUD_ADC] = "aud_adc",
- 	[MT8188_CLK_AUD_DAC_HIRES] = "aud_dac_hires",
- 	[MT8188_CLK_AUD_A1SYS_HP] = "aud_a1sys_hp",
-+	[MT8188_CLK_AUD_AFE_DMIC1] = "aud_afe_dmic1",
-+	[MT8188_CLK_AUD_AFE_DMIC2] = "aud_afe_dmic2",
-+	[MT8188_CLK_AUD_AFE_DMIC3] = "aud_afe_dmic3",
-+	[MT8188_CLK_AUD_AFE_DMIC4] = "aud_afe_dmic4",
- 	[MT8188_CLK_AUD_ADC_HIRES] = "aud_adc_hires",
-+	[MT8188_CLK_AUD_DMIC_HIRES1] = "aud_dmic_hires1",
-+	[MT8188_CLK_AUD_DMIC_HIRES2] = "aud_dmic_hires2",
-+	[MT8188_CLK_AUD_DMIC_HIRES3] = "aud_dmic_hires3",
-+	[MT8188_CLK_AUD_DMIC_HIRES4] = "aud_dmic_hires4",
- 	[MT8188_CLK_AUD_I2SIN] = "aud_i2sin",
- 	[MT8188_CLK_AUD_TDM_IN] = "aud_tdm_in",
- 	[MT8188_CLK_AUD_I2S_OUT] = "aud_i2s_out",
-diff --git a/sound/soc/mediatek/mt8188/mt8188-afe-clk.h b/sound/soc/mediatek/mt8188/mt8188-afe-clk.h
-index ec53c171c170a..c6c78d684f3ee 100644
---- a/sound/soc/mediatek/mt8188/mt8188-afe-clk.h
-+++ b/sound/soc/mediatek/mt8188/mt8188-afe-clk.h
-@@ -54,7 +54,15 @@ enum {
- 	MT8188_CLK_AUD_ADC,
- 	MT8188_CLK_AUD_DAC_HIRES,
- 	MT8188_CLK_AUD_A1SYS_HP,
-+	MT8188_CLK_AUD_AFE_DMIC1,
-+	MT8188_CLK_AUD_AFE_DMIC2,
-+	MT8188_CLK_AUD_AFE_DMIC3,
-+	MT8188_CLK_AUD_AFE_DMIC4,
- 	MT8188_CLK_AUD_ADC_HIRES,
-+	MT8188_CLK_AUD_DMIC_HIRES1,
-+	MT8188_CLK_AUD_DMIC_HIRES2,
-+	MT8188_CLK_AUD_DMIC_HIRES3,
-+	MT8188_CLK_AUD_DMIC_HIRES4,
- 	MT8188_CLK_AUD_I2SIN,
- 	MT8188_CLK_AUD_TDM_IN,
- 	MT8188_CLK_AUD_I2S_OUT,
+diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+index 4b3225377e8f8..3295b27ab70d2 100644
+--- a/drivers/thermal/mediatek/lvts_thermal.c
++++ b/drivers/thermal/mediatek/lvts_thermal.c
+@@ -65,7 +65,6 @@
+ #define LVTS_HW_FILTER				0x0
+ #define LVTS_TSSEL_CONF				0x13121110
+ #define LVTS_CALSCALE_CONF			0x300
+-#define LVTS_MONINT_CONF			0x0300318C
+ 
+ #define LVTS_MONINT_OFFSET_SENSOR0		0xC
+ #define LVTS_MONINT_OFFSET_SENSOR1		0x180
+@@ -929,7 +928,7 @@ static int lvts_irq_init(struct lvts_ctrl *lvts_ctrl)
+ 	 * The LVTS_MONINT register layout is the same as the LVTS_MONINTSTS
+ 	 * register, except we set the bits to enable the interrupt.
+ 	 */
+-	writel(LVTS_MONINT_CONF, LVTS_MONINT(lvts_ctrl->base));
++	writel(0, LVTS_MONINT(lvts_ctrl->base));
+ 
+ 	return 0;
+ }
 -- 
 2.39.5
 
