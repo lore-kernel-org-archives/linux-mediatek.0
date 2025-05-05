@@ -4,72 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EDBCC3ABAC
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 May 2025 03:59:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D7B7C3ABC2
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 May 2025 04:13:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XFZcvKW+QWExH/idRe1aBQb6I3bAOLOOrM7ulDIZ5bw=; b=Ar4dm7TVFljuxJOgwKYaIVN7DW
-	Wu7GyppwJnWWm+OE969vo7x3/rowvEYpTFBwrFVQ6qyeg0WJwobW3eiTwDPAQg1+vrQsisKPuqTGB
-	bmGctygHQBL7YdBabHqfgCV6uAj73QluPa5X+DuhBwhhuMu/pdmZ/3uLM+ThxEMJY37YNDdwJD4Np
-	XyyMxVUxfsZtZGrklGAPEDQcxGCwd9wGrsdhC5HVhpJpMqyHsPtCevoFryUlsHRCOBS/Z6Tx3J2iP
-	jCE5f+MeB1IV9SsP3WqVWsvs/wurXNCqXfz8/Q3YuJKEC9sAkOgplPXh74vXi+xBgvt67XePAi7r1
-	ayILOhlQ==;
+	bh=TojGnUz3IwTZa9OIf+N0YDXWQvZUC26A0YuQsFHuLrw=; b=STl7C8OXpoUKzWhP9bD+tB99ei
+	UWRGkQeDEuqohhvOVVsm76hwQGEDbek2ui5E+0LTlmsroRmJsE0ZKEEV6CVhzD/j51iYnMPSiBPY8
+	1WXT3iqSmO/950jRSWtPbF9aoNfWqZ6L9+UyRPjk5t1gV3xd8En9fSa/C4YbRTbkRYTztEDSdPq8O
+	YgQ2igUJwjqZrCDSdVXDMaragyw2dU7uSOasLcLdspbS4m8K8VB1b6Of5bz9TiQ82c7FEXi+6AE96
+	bjninlRzER82Lx5liBzYJXG+F9zVr9V6edU1/Z8PeG/A7Z7eYodgN3xUqr7HYXUVH5EY1l5FHwaAQ
+	TqDMD3rA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uC9Sa-0000000A6oe-1GI7;
-	Tue, 06 May 2025 03:59:12 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uC9gY-0000000AA0c-2ImY;
+	Tue, 06 May 2025 04:13:38 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uC4ww-00000008yOW-04fg;
-	Mon, 05 May 2025 23:10:14 +0000
+	id 1uC50j-00000008zPx-1WP3;
+	Mon, 05 May 2025 23:14:10 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 96503629C8;
-	Mon,  5 May 2025 23:09:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 62FA5C4CEF1;
-	Mon,  5 May 2025 23:10:11 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 144B4A4D3C5;
+	Mon,  5 May 2025 23:08:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A74B2C4CEE4;
+	Mon,  5 May 2025 23:14:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746486613;
-	bh=aWAaNwhV/x0DOI5AMVG//fIxQeAHIm2Mo3OcOCuYYfU=;
+	s=k20201202; t=1746486848;
+	bh=rH6Xn0SJcQS1MM/vS4ASPbuFDq59MeY/FWg+wOEC1RE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ElR7jyKIL8u/HSDGnAGKW6B5a6hK4dXCOU528IhH7XXokOfx8fLaI74ywOPouMt3C
-	 wL4BXAphZjl5lDnM3MY0d/ygStNZskyqWs9Z/mA9ES2QmNbZRc17JfYkTcVaGZAohS
-	 prnaBBajVcZpPJu6zN2EnU8Nhf7eXSeAFvUzr6OMjbwNV0AX4zmPvlIKQ3iXCcuiTS
-	 sCoJLPtNxih98xmucUY23l0y7XUSsBp7jKalsRY0uroUrNc+tWqGL/GkoZCYGu76oc
-	 dlzsLQJc4NytKqxmOsAiSLEBqTKp+ThdrAjSWRaCvdk/gqe8tlJ9fEfDQud7urmGp9
-	 15zg6ogMn1ACA==
+	b=EIk16YJswGjq1qMnjHdWrN2xOq2mqN9d7U2mcmuWcmxeWVwSiyCQEeozFhp12A1Fb
+	 5Amj0UBnimpgbzpgIh9Z5mP1Ww4jfGUnUn4f9gSycpuk1ED6LMlRbdvrb0AyF2Wdwu
+	 /9Un/9K0fskxMvrkJIztmRPKFUkWCXMhsphegKiFZ1CbdKMa1Bzt3wRN/BCybiWceO
+	 +CzPVkVlXEGtRrm04zAxFzF21fko7EUK5UTqqVeO0ii3nBzjwHolIxX029sa+OSrF/
+	 3wbzp9tbbzrgSpSbkbRRl6Ca6RVnqzpc/J7KwHlZXCynUAUmUbPjJhrs5VxCxbieCp
+	 ezcniWV/rJptQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Eric Woudstra <ericwouds@gmail.com>,
-	Paolo Abeni <pabeni@redhat.com>,
+Cc: Felix Fietkau <nbd@nbd.name>,
 	Sasha Levin <sashal@kernel.org>,
-	nbd@nbd.name,
-	sean.wang@mediatek.com,
 	lorenzo@kernel.org,
-	andrew+netdev@lunn.ch,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
+	ryder.lee@mediatek.com,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	netdev@vger.kernel.org,
+	edumazet@google.com,
+	kuba@kernel.org,
+	johannes.berg@intel.com,
+	emmanuel.grumbach@intel.com,
+	miriam.rachel.korenblit@intel.com,
+	uwu@icenowy.me,
+	linux-wireless@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.1 118/212] net: ethernet: mtk_ppe_offload: Allow QinQ, double ETH_P_8021Q only
-Date: Mon,  5 May 2025 19:04:50 -0400
-Message-Id: <20250505230624.2692522-118-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.15 021/153] wifi: mt76: only mark tx-status-failed frames as ACKed on mt76x0/2
+Date: Mon,  5 May 2025 19:11:08 -0400
+Message-Id: <20250505231320.2695319-21-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250505230624.2692522-1-sashal@kernel.org>
-References: <20250505230624.2692522-1-sashal@kernel.org>
+In-Reply-To: <20250505231320.2695319-1-sashal@kernel.org>
+References: <20250505231320.2695319-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.1.136
+X-stable-base: Linux 5.15.181
 Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250505_161409_527492_6654C5DE 
+X-CRM114-Status: GOOD (  13.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,86 +87,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Eric Woudstra <ericwouds@gmail.com>
+From: Felix Fietkau <nbd@nbd.name>
 
-[ Upstream commit 7fe0353606d77a32c4c7f2814833dd1c043ebdd2 ]
+[ Upstream commit 0c5a89ceddc1728a40cb3313948401dd70e3c649 ]
 
-mtk_foe_entry_set_vlan() in mtk_ppe.c already supports double vlan
-tagging, but mtk_flow_offload_replace() in mtk_ppe_offload.c only allows
-for 1 vlan tag, optionally in combination with pppoe and dsa tags.
+The interrupt status polling is unreliable, which can cause status events
+to get lost. On all newer chips, txs-timeout is an indication that the
+packet was either never sent, or never acked.
+Fixes issues with inactivity polling.
 
-However, mtk_foe_entry_set_vlan() only allows for setting the vlan id.
-The protocol cannot be set, it is always ETH_P_8021Q, for inner and outer
-tag. This patch adds QinQ support to mtk_flow_offload_replace(), only in
-the case that both inner and outer tags are ETH_P_8021Q.
-
-Only PPPoE-in-Q (as before) and Q-in-Q are allowed. A combination
-of PPPoE and Q-in-Q is not allowed.
-
-Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
-Link: https://patch.msgid.link/20250225201509.20843-1-ericwouds@gmail.com
-Signed-off-by: Paolo Abeni <pabeni@redhat.com>
+Link: https://patch.msgid.link/20250311103646.43346-6-nbd@nbd.name
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- .../net/ethernet/mediatek/mtk_ppe_offload.c   | 22 +++++++++----------
- 1 file changed, 11 insertions(+), 11 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt76.h       | 1 +
+ drivers/net/wireless/mediatek/mt76/mt76x0/pci.c | 3 ++-
+ drivers/net/wireless/mediatek/mt76/mt76x0/usb.c | 3 ++-
+ drivers/net/wireless/mediatek/mt76/mt76x2/pci.c | 3 ++-
+ drivers/net/wireless/mediatek/mt76/mt76x2/usb.c | 3 ++-
+ drivers/net/wireless/mediatek/mt76/tx.c         | 3 ++-
+ 6 files changed, 11 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-index 6a72687d5b83f..8cb8d47227f51 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-@@ -34,8 +34,10 @@ struct mtk_flow_data {
- 	u16 vlan_in;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 27f04fb2796d7..5a90fa556203f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -345,6 +345,7 @@ struct mt76_hw_cap {
+ #define MT_DRV_RX_DMA_HDR		BIT(3)
+ #define MT_DRV_HW_MGMT_TXQ		BIT(4)
+ #define MT_DRV_AMSDU_OFFLOAD		BIT(5)
++#define MT_DRV_IGNORE_TXS_FAILED	BIT(6)
  
- 	struct {
--		u16 id;
--		__be16 proto;
-+		struct {
-+			u16 id;
-+			__be16 proto;
-+		} vlans[2];
- 		u8 num;
- 	} vlan;
- 	struct {
-@@ -321,18 +323,19 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f)
- 		case FLOW_ACTION_CSUM:
- 			break;
- 		case FLOW_ACTION_VLAN_PUSH:
--			if (data.vlan.num == 1 ||
-+			if (data.vlan.num + data.pppoe.num == 2 ||
- 			    act->vlan.proto != htons(ETH_P_8021Q))
- 				return -EOPNOTSUPP;
+ struct mt76_driver_ops {
+ 	u32 drv_flags;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c b/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
+index b795e7245c075..3255f9c0ef71f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
+@@ -151,7 +151,8 @@ mt76x0e_probe(struct pci_dev *pdev, const struct pci_device_id *id)
+ 	static const struct mt76_driver_ops drv_ops = {
+ 		.txwi_size = sizeof(struct mt76x02_txwi),
+ 		.drv_flags = MT_DRV_TX_ALIGNED4_SKBS |
+-			     MT_DRV_SW_RX_AIRTIME,
++			     MT_DRV_SW_RX_AIRTIME |
++			     MT_DRV_IGNORE_TXS_FAILED,
+ 		.survey_flags = SURVEY_INFO_TIME_TX,
+ 		.update_survey = mt76x02_update_channel,
+ 		.tx_prepare_skb = mt76x02_tx_prepare_skb,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
+index f2b2fa7338457..7a4d62bff28ff 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/usb.c
+@@ -209,7 +209,8 @@ static int mt76x0u_probe(struct usb_interface *usb_intf,
+ 			 const struct usb_device_id *id)
+ {
+ 	static const struct mt76_driver_ops drv_ops = {
+-		.drv_flags = MT_DRV_SW_RX_AIRTIME,
++		.drv_flags = MT_DRV_SW_RX_AIRTIME |
++			     MT_DRV_IGNORE_TXS_FAILED,
+ 		.survey_flags = SURVEY_INFO_TIME_TX,
+ 		.update_survey = mt76x02_update_channel,
+ 		.tx_prepare_skb = mt76x02u_tx_prepare_skb,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2/pci.c b/drivers/net/wireless/mediatek/mt76/mt76x2/pci.c
+index 5cd0379d86de8..4e369bd87c900 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2/pci.c
+@@ -22,7 +22,8 @@ mt76x2e_probe(struct pci_dev *pdev, const struct pci_device_id *id)
+ 	static const struct mt76_driver_ops drv_ops = {
+ 		.txwi_size = sizeof(struct mt76x02_txwi),
+ 		.drv_flags = MT_DRV_TX_ALIGNED4_SKBS |
+-			     MT_DRV_SW_RX_AIRTIME,
++			     MT_DRV_SW_RX_AIRTIME |
++			     MT_DRV_IGNORE_TXS_FAILED,
+ 		.survey_flags = SURVEY_INFO_TIME_TX,
+ 		.update_survey = mt76x02_update_channel,
+ 		.tx_prepare_skb = mt76x02_tx_prepare_skb,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c b/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
+index 9369515f36a3a..09b01e09bcfe0 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
+@@ -29,7 +29,8 @@ static int mt76x2u_probe(struct usb_interface *intf,
+ 			 const struct usb_device_id *id)
+ {
+ 	static const struct mt76_driver_ops drv_ops = {
+-		.drv_flags = MT_DRV_SW_RX_AIRTIME,
++		.drv_flags = MT_DRV_SW_RX_AIRTIME |
++			     MT_DRV_IGNORE_TXS_FAILED,
+ 		.survey_flags = SURVEY_INFO_TIME_TX,
+ 		.update_survey = mt76x02_update_channel,
+ 		.tx_prepare_skb = mt76x02u_tx_prepare_skb,
+diff --git a/drivers/net/wireless/mediatek/mt76/tx.c b/drivers/net/wireless/mediatek/mt76/tx.c
+index 134a735a06329..3fbf0153d13ca 100644
+--- a/drivers/net/wireless/mediatek/mt76/tx.c
++++ b/drivers/net/wireless/mediatek/mt76/tx.c
+@@ -93,7 +93,8 @@ __mt76_tx_status_skb_done(struct mt76_dev *dev, struct sk_buff *skb, u8 flags,
+ 	__skb_unlink(skb, &dev->status_list);
  
--			data.vlan.id = act->vlan.vid;
--			data.vlan.proto = act->vlan.proto;
-+			data.vlan.vlans[data.vlan.num].id = act->vlan.vid;
-+			data.vlan.vlans[data.vlan.num].proto = act->vlan.proto;
- 			data.vlan.num++;
- 			break;
- 		case FLOW_ACTION_VLAN_POP:
- 			break;
- 		case FLOW_ACTION_PPPOE_PUSH:
--			if (data.pppoe.num == 1)
-+			if (data.pppoe.num == 1 ||
-+			    data.vlan.num == 2)
- 				return -EOPNOTSUPP;
- 
- 			data.pppoe.sid = act->pppoe.sid;
-@@ -422,12 +425,9 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f)
- 	if (offload_type == MTK_PPE_PKT_TYPE_BRIDGE)
- 		foe.bridge.vlan = data.vlan_in;
- 
--	if (data.vlan.num == 1) {
--		if (data.vlan.proto != htons(ETH_P_8021Q))
--			return -EOPNOTSUPP;
-+	for (i = 0; i < data.vlan.num; i++)
-+		mtk_foe_entry_set_vlan(eth, &foe, data.vlan.vlans[i].id);
- 
--		mtk_foe_entry_set_vlan(eth, &foe, data.vlan.id);
--	}
- 	if (data.pppoe.num == 1)
- 		mtk_foe_entry_set_pppoe(eth, &foe, data.pppoe.sid);
- 
+ 	/* Tx status can be unreliable. if it fails, mark the frame as ACKed */
+-	if (flags & MT_TX_CB_TXS_FAILED) {
++	if (flags & MT_TX_CB_TXS_FAILED &&
++	    (dev->drv->drv_flags & MT_DRV_IGNORE_TXS_FAILED)) {
+ 		info->status.rates[0].count = 0;
+ 		info->status.rates[0].idx = -1;
+ 		info->flags |= IEEE80211_TX_STAT_ACK;
 -- 
 2.39.5
 
