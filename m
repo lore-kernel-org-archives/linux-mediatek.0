@@ -4,54 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D140EC3ABBF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 May 2025 01:26:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D8D8C3ABBE
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 May 2025 01:37:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zQK7my/uVRmtZo4bwrmWl8ViLGRMQloVOEhmjyHVRfM=; b=Z/oAXmKcqu4eKvsj0rSMgBH7eE
-	HbrIBp7bmDsyU2EFBNpWCR49ifB3dTJK88muOjxlc1COCdloD/zQIXRUhfAUn+0RjdYCZEZbENJRe
-	V09w3JLPhA4YSq69dA8RLLJnRw6EwdNn1v7FV04B0Mza/fdV9ek2eByy6Zfr22369r4Pu18t9P1fz
-	0h06GBOffQso2Ly8vrutrvZ9CAq3E9S8ecXCWHTSEsysVB8z/ZFaxnGH3O0SyTD9INv4R5srZKes5
-	SOUDJoSYBmxa5G3dsl17LAxiZDM8Vx3OK4IEq17GALob9AIiqkpufkGOO812JVeoWj7kRUl974jbU
-	tP3go1/Q==;
+	bh=Zk7Y5MvmnW5UHXUx06CUpTYAbzdVCLGEMzI/7Nxgqrk=; b=4ya78NwmITLIBK1Pxry+yDSj+v
+	fg6FBDujHd6ZD6nRw4Vcyg4mQwg2P5DGL4t5+FX2ifY2iUI19KBXMETEfIOIYaLL3byunZSBQF/9r
+	OA4L2pQMkDdasyZs5nTuez3EjjX518plefwGEVM7ZtwwmKuqc7lwNbtnx7PIpYSOeArvQhnME9d8C
+	s1tBdjHina+YR7epzx2tEtpkHyzOkD5w8RWlbo8sLdRPtoJlf/vuV9/DTm1ZeF9w411bFnbOLLQBN
+	ejjjJ5sPphcum5YGUm3mztSoYqptj6YTQh7M5sur6Fdj75dux08gp0QGgQd0euYpEgJAQC2nK8twv
+	LjPeqvJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uC754-00000009VrJ-3Vmo;
-	Tue, 06 May 2025 01:26:46 +0000
+	id 1uC7FA-00000009YH3-0Lm9;
+	Tue, 06 May 2025 01:37:12 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uC4ZR-00000008r1U-0Lqr;
-	Mon, 05 May 2025 22:45:58 +0000
+	id 1uC4ai-00000008rTh-05Fz;
+	Mon, 05 May 2025 22:47:17 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2139E49CDB;
-	Mon,  5 May 2025 22:45:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DA434C4CEF1;
-	Mon,  5 May 2025 22:45:55 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 0DF3343EAF;
+	Mon,  5 May 2025 22:47:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 39445C4CEED;
+	Mon,  5 May 2025 22:47:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746485156;
-	bh=BGOI489bdY00iXxdONJ68NPbmk9zDk85Z0+dGBRltEM=;
+	s=k20201202; t=1746485235;
+	bh=98FQmpAUpXuvUdgOGxz4jofi+Xev3uvncrd6eCdYIKQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=hR+VqgbMMedWHzMIG7brGj6BJD0e/2YTyVs29NTzCxrg/EQp/koCMT6bmukPJ6geV
-	 7x5CXOOicjN0ec6oWFBInk2OX66WgL8Ddhnx3MVoLDeOhqc6ekgmeXuNoZUgkIOn4M
-	 Ujlv8p/L1prJRmxDBEd2C+wZcmkLNpl57QXoe5FjZsVtJfw/f63pduuqraQBuGAqEF
-	 8B4ytN+onLyOwmXkEJxWc6GWgTBqxs+9CuAlCC2J2ASVydKmlPEdcV2ODp/dkeGOQo
-	 oDRjemhGy+7iLvEDru5h92m0PSgLYZKpqmJZ6i/x7X17YMsEvdiDUMG03Mio/zMtoP
-	 B//2DTUvAVW8g==
+	b=kH2BLxitkNWyzr4GTSJl7wA2DqXLO67aUykwirWEr3Aio+uedQWA2XyDiiZZre599
+	 zIXffCE5NdjsoMkNXmdU2Bn2b9HINYQcobY+ZoEvw+jo81Wpzl/bocRBJLoiqXvLOM
+	 vXj51X/CFb7/MpQx+rOXHqmnQkARwBgTkN+kxrfM82/dvdRGpQjJW8Z8FYuU6hX7u3
+	 hvtMRx5DQYvlaA2a/VkBRNVc+nTHB6GPZEw8jEx10S18V+9hCO5+Q2Pp1AzJ6loiAT
+	 vBX21qluFG4UBgZrx/BuTT+PxTt0V3a+Sfhlpzue+pn5wK+YshppHdofOTkVA3wItL
+	 GQ7G7Hlhmo+jw==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
 Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	CK Hu <ck.hu@mediatek.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 	Sasha Levin <sashal@kernel.org>,
+	p.zabel@pengutronix.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
 	matthias.bgg@gmail.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.12 190/486] soc: mediatek: mtk-mutex: Add DPI1 SOF/EOF to MT8188 mutex tables
-Date: Mon,  5 May 2025 18:34:26 -0400
-Message-Id: <20250505223922.2682012-190-sashal@kernel.org>
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.12 226/486] drm/mediatek: mtk_dpi: Add checks for reg_h_fre_con existence
+Date: Mon,  5 May 2025 18:35:02 -0400
+Message-Id: <20250505223922.2682012-226-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250505223922.2682012-1-sashal@kernel.org>
 References: <20250505223922.2682012-1-sashal@kernel.org>
@@ -61,9 +67,8 @@ X-Patchwork-Hint: Ignore
 X-stable-base: Linux 6.12.26
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250505_154557_158909_B9F14C10 
-X-CRM114-Status: UNSURE (   9.16  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250505_154716_078955_C2441C2C 
+X-CRM114-Status: GOOD (  13.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,65 +85,47 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-[ Upstream commit 694e0b7c1747603243da874de9cbbf8cb806ca44 ]
+[ Upstream commit 8c9da7cd0bbcc90ab444454fecf535320456a312 ]
 
-MT8188 uses DPI1 to output to the HDMI controller: add the
-Start of Frame and End of Frame configuration for the DPI1
-IP to the tables to unblock generation and sending of these
-signals to the GCE.
+In preparation for adding support for newer DPI instances which
+do support direct-pin but do not have any H_FRE_CON register,
+like the one found in MT8195 and MT8188, add a branch to check
+if the reg_h_fre_con variable was declared in the mtk_dpi_conf
+structure for the probed SoC DPI version.
 
-Link: https://lore.kernel.org/r/20250212100012.33001-2-angelogioacchino.delregno@collabora.com
+As a note, this is useful specifically only for cases in which
+the support_direct_pin variable is true, so mt8195-dpintf is
+not affected by any issue.
+
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Link: https://patchwork.kernel.org/project/dri-devel/patch/20250217154836.108895-6-angelogioacchino.delregno@collabora.com/
+Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/soc/mediatek/mtk-mutex.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
-index 5250c1d702eb9..aaa965d4b050a 100644
---- a/drivers/soc/mediatek/mtk-mutex.c
-+++ b/drivers/soc/mediatek/mtk-mutex.c
-@@ -155,6 +155,7 @@
- #define MT8188_MUTEX_MOD_DISP1_VPP_MERGE3	23
- #define MT8188_MUTEX_MOD_DISP1_VPP_MERGE4	24
- #define MT8188_MUTEX_MOD_DISP1_DISP_MIXER	30
-+#define MT8188_MUTEX_MOD_DISP1_DPI1		38
- #define MT8188_MUTEX_MOD_DISP1_DP_INTF1		39
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index 9c11d3158324c..20a50180d4d49 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -410,12 +410,13 @@ static void mtk_dpi_config_swap_input(struct mtk_dpi *dpi, bool enable)
  
- #define MT8195_MUTEX_MOD_DISP_OVL0		0
-@@ -289,6 +290,7 @@
- #define MT8188_MUTEX_SOF_DSI0			1
- #define MT8188_MUTEX_SOF_DP_INTF0		3
- #define MT8188_MUTEX_SOF_DP_INTF1		4
-+#define MT8188_MUTEX_SOF_DPI1			5
- #define MT8195_MUTEX_SOF_DSI0			1
- #define MT8195_MUTEX_SOF_DSI1			2
- #define MT8195_MUTEX_SOF_DP_INTF0		3
-@@ -301,6 +303,7 @@
- #define MT8188_MUTEX_EOF_DSI0			(MT8188_MUTEX_SOF_DSI0 << 7)
- #define MT8188_MUTEX_EOF_DP_INTF0		(MT8188_MUTEX_SOF_DP_INTF0 << 7)
- #define MT8188_MUTEX_EOF_DP_INTF1		(MT8188_MUTEX_SOF_DP_INTF1 << 7)
-+#define MT8188_MUTEX_EOF_DPI1			(MT8188_MUTEX_SOF_DPI1 << 7)
- #define MT8195_MUTEX_EOF_DSI0			(MT8195_MUTEX_SOF_DSI0 << 7)
- #define MT8195_MUTEX_EOF_DSI1			(MT8195_MUTEX_SOF_DSI1 << 7)
- #define MT8195_MUTEX_EOF_DP_INTF0		(MT8195_MUTEX_SOF_DP_INTF0 << 7)
-@@ -472,6 +475,7 @@ static const u8 mt8188_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_PWM0] = MT8188_MUTEX_MOD2_DISP_PWM0,
- 	[DDP_COMPONENT_DP_INTF0] = MT8188_MUTEX_MOD_DISP_DP_INTF0,
- 	[DDP_COMPONENT_DP_INTF1] = MT8188_MUTEX_MOD_DISP1_DP_INTF1,
-+	[DDP_COMPONENT_DPI1] = MT8188_MUTEX_MOD_DISP1_DPI1,
- 	[DDP_COMPONENT_ETHDR_MIXER] = MT8188_MUTEX_MOD_DISP1_DISP_MIXER,
- 	[DDP_COMPONENT_MDP_RDMA0] = MT8188_MUTEX_MOD_DISP1_MDP_RDMA0,
- 	[DDP_COMPONENT_MDP_RDMA1] = MT8188_MUTEX_MOD_DISP1_MDP_RDMA1,
-@@ -686,6 +690,8 @@ static const u16 mt8188_mutex_sof[DDP_MUTEX_SOF_MAX] = {
- 	[MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
- 	[MUTEX_SOF_DSI0] =
- 		MT8188_MUTEX_SOF_DSI0 | MT8188_MUTEX_EOF_DSI0,
-+	[MUTEX_SOF_DPI1] =
-+		MT8188_MUTEX_SOF_DPI1 | MT8188_MUTEX_EOF_DPI1,
- 	[MUTEX_SOF_DP_INTF0] =
- 		MT8188_MUTEX_SOF_DP_INTF0 | MT8188_MUTEX_EOF_DP_INTF0,
- 	[MUTEX_SOF_DP_INTF1] =
+ static void mtk_dpi_config_2n_h_fre(struct mtk_dpi *dpi)
+ {
+-	mtk_dpi_mask(dpi, dpi->conf->reg_h_fre_con, H_FRE_2N, H_FRE_2N);
++	if (dpi->conf->reg_h_fre_con)
++		mtk_dpi_mask(dpi, dpi->conf->reg_h_fre_con, H_FRE_2N, H_FRE_2N);
+ }
+ 
+ static void mtk_dpi_config_disable_edge(struct mtk_dpi *dpi)
+ {
+-	if (dpi->conf->edge_sel_en)
++	if (dpi->conf->edge_sel_en && dpi->conf->reg_h_fre_con)
+ 		mtk_dpi_mask(dpi, dpi->conf->reg_h_fre_con, 0, EDGE_SEL_EN);
+ }
+ 
 -- 
 2.39.5
 
