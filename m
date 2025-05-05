@@ -4,54 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04511C3ABB6
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 May 2025 08:07:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 097F6C3ABB6
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 May 2025 08:21:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=lA009qM0j4YRzFUfPgrXk13BGm3QuXjamWZpOmZ+a7M=; b=nRdSuar1Uc0XhZOsm21d1wSXr5
-	Bw1bz9yKRBecoNciRzeMtWjoqthXBQSOeOEQduhAUJbtPexLZZ0SFg+u0eTN5GGT89wbppM0kijOp
-	rl8b4eWFk4EwdeI9wRZPsLX2sI0evYVc+nv3E2tLXsZiIxV+KNDetWHeELCvljVgh2qBzzahlB2Hf
-	fLJtREd7MAn/3NKEj8d4Er9/EH287RYdQKT/BaFQfzuAJj3hcscVS0JOUvApg8JIYm4gGRj33QV8i
-	u3q2T7I9OICLoSHw1yKXtYtYJ4/j9+Be8J+SxPgnzLcXReIZiN/eVfJBn2z7hMU/id9rl/NXJhM+e
-	kQ714yMA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=h4P39E1QGiODNj6DPGFAGPEV/IZtN/MIkl9xBL7KDoI=; b=KmmBVSzqL9DDeS2UlPDS8RXg8I
+	yTZSF08/ETtAqK/xSELm63kzGgBZ2QkrzvnsJ5eCxiTBHBnC+ATqOBF7wu+XJE/8ZJnonxFxogpzk
+	laZLXMIT4jv3LFjvtw3zKSOlVqutNMobXHNuqD/DUlXHIyG/IPv5rpaUK9Do5sLXWm5gYYS1cI422
+	0tOZG/+B87WO2CpEY5y2dcheulgCXkBW7gOYopnMP3cc8235XVG5JkSAF/FwHk9yXTOcckpFGpwjN
+	uNrWUygV/d00FWpkeVtXO48ZrA2f+MfVzosSra/V9x1E6TFOzM5cVkiO5qipdw8cL4vK41s92h+zZ
+	gHSt8H4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBqrm-00000006kAR-0qHn;
-	Mon, 05 May 2025 08:07:58 +0000
-Received: from mail.bizotrix.pl ([217.61.97.166])
+	id 1uBr4U-00000006lm5-3etL;
+	Mon, 05 May 2025 08:21:06 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBqrb-00000006k8D-0Bvb
+	id 1uBr3g-00000006ldq-2nGv
 	for linux-mediatek@lists.infradead.org;
-	Mon, 05 May 2025 08:07:48 +0000
-Received: by mail.bizotrix.pl (Postfix, from userid 1002)
-	id 04CE883764; Mon,  5 May 2025 10:00:57 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=bizotrix.pl; s=mail;
-	t=1746432058; bh=lA009qM0j4YRzFUfPgrXk13BGm3QuXjamWZpOmZ+a7M=;
-	h=Date:From:To:Subject:From;
-	b=e3bYbbNNBeTBy3D/Lmdhf8rckCIvqc3h2DzkAE63srS3b+RQD6D0RS5mae/HcXqxi
-	 fVGKFYAGHZshE6K3ipWYIDjNpxYkL6br2p3Ee0Db8dSN70Rd0namY9BjKgU3gZFRPr
-	 Jr4ED9ZwXeKf0d2Jt8v7qaBkeemwVc9cNf2Cf0TuszF2I65a2hqwM6JjetgIKus4Rq
-	 R9tiVm3WOzc28CKwR4E2B0x+EY29lia9IkW11F7bkhTtkheV2jFwWC2wPCmnX5p9YM
-	 /vL9mHy8DGrlgcuf5CAmb+t8TBatUKWbl3cyoJvrUP5/8NfB2ICMMpYJ0RvDkhkGqv
-	 S6fGOXu3jk3YQ==
-Received: by mail.bizotrix.pl for <linux-mediatek@lists.infradead.org>; Mon,  5 May 2025 08:00:54 GMT
-Message-ID: <20250505084500-0.1.9x.k2i5.0.smbkmfr9tw@bizotrix.pl>
-Date: Mon,  5 May 2025 08:00:54 GMT
-From: "Filip Gerlowski" <filip.gerlowski@bizotrix.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: =?UTF-8?Q?S=C5=82owa_kluczowe_do_wypozycjonowania_?=
-X-Mailer: mail.bizotrix.pl
+	Mon, 05 May 2025 08:20:17 +0000
+X-UUID: c38f194e298911f0bed96b30c12bc3d6-20250505
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=h4P39E1QGiODNj6DPGFAGPEV/IZtN/MIkl9xBL7KDoI=;
+	b=dH5jH/7LdDaV11OU/48hhSmt6jTMSXFv0Tex16A0uNfV7o3w+6tWaSMrVL00xA+FhQZH9vGdCvTHM0y4t6zire5PLWllpbMOuSqinl2ap8xG2bzdFqhtfhqMe/OvOt+xk7fi9WzObeJt36EL0AqODY9SWr/ttgmGY8pBmylZ/x4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:2888156b-7368-4298-994f-0954dc662202,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:f254c42b-be47-4281-8f30-e6479b5e1210,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: c38f194e298911f0bed96b30c12bc3d6-20250505
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <michael-cy.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1411322854; Mon, 05 May 2025 01:20:11 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Mon, 5 May 2025 16:20:09 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Mon, 5 May 2025 16:20:09 +0800
+From: Michael-CY Lee <michael-cy.lee@mediatek.com>
+To: linux-wireless <linux-wireless@vger.kernel.org>
+CC: Johannes Berg <johannes@sipsolutions.net>, Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, Money Wang <money.wang@mediatek.com>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>, Michael-CY Lee
+	<michael-cy.lee@mediatek.com>
+Subject: [PATCH] wifi: mac80211: fix the type of status_code for negotiated TID to Link Mapping
+Date: Mon, 5 May 2025 16:19:46 +0800
+Message-ID: <20250505081946.3927214-1-michael-cy.lee@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250505_010747_211914_64DDF5BE 
-X-CRM114-Status: UNSURE (   0.32  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250505_012016_712285_1EE37B3B 
+X-CRM114-Status: GOOD (  11.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,20 +86,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dzie=C5=84 dobry,
+The status code should be type of __le16.
 
-zapozna=C5=82em si=C4=99 z Pa=C5=84stwa stron=C4=85 i z przyjemno=C5=9Bci=
-=C4=85 przyznaj=C4=99, =C5=BCe przyci=C4=85ga uwag=C4=99 i zach=C4=99ca d=
-o dalszych rozm=C3=B3w.=20
+Fixes: 83e897a961b8 ("wifi: ieee80211: add definitions for negotiated TID to Link map")
+Fixes: 8f500fbc6c65 ("wifi: mac80211: process and save negotiated TID to Link mapping request")
+Signed-off-by: Michael-CY Lee <michael-cy.lee@mediatek.com>
+---
+ include/linux/ieee80211.h |  2 +-
+ net/mac80211/mlme.c       | 13 +++++++------
+ 2 files changed, 8 insertions(+), 7 deletions(-)
 
-Pomy=C5=9Bla=C5=82em, =C5=BCe mo=C5=BCe m=C3=B3g=C5=82bym mie=C4=87 sw=C3=
-=B3j wk=C5=82ad w Pa=C5=84stwa rozw=C3=B3j i pom=C3=B3c dotrze=C4=87 z t=C4=
-=85 ofert=C4=85 do wi=C4=99kszego grona odbiorc=C3=B3w. Pozycjonuj=C4=99 =
-strony www, dzi=C4=99ki czemu generuj=C4=85 =C5=9Bwietny ruch w sieci.
+diff --git a/include/linux/ieee80211.h b/include/linux/ieee80211.h
+index 508d466de1cc..457b4fba88bd 100644
+--- a/include/linux/ieee80211.h
++++ b/include/linux/ieee80211.h
+@@ -1526,7 +1526,7 @@ struct ieee80211_mgmt {
+ 				struct {
+ 					u8 action_code;
+ 					u8 dialog_token;
+-					u8 status_code;
++					__le16 status_code;
+ 					u8 variable[];
+ 				} __packed ttlm_res;
+ 				struct {
+diff --git a/net/mac80211/mlme.c b/net/mac80211/mlme.c
+index c010bb3d24e3..5d1cd42160a0 100644
+--- a/net/mac80211/mlme.c
++++ b/net/mac80211/mlme.c
+@@ -7675,6 +7675,7 @@ ieee80211_send_neg_ttlm_res(struct ieee80211_sub_if_data *sdata,
+ 	int hdr_len = offsetofend(struct ieee80211_mgmt, u.action.u.ttlm_res);
+ 	int ttlm_max_len = 2 + 1 + sizeof(struct ieee80211_ttlm_elem) + 1 +
+ 		2 * 2 * IEEE80211_TTLM_NUM_TIDS;
++	u16 status_code;
+ 
+ 	skb = dev_alloc_skb(local->tx_headroom + hdr_len + ttlm_max_len);
+ 	if (!skb)
+@@ -7697,19 +7698,18 @@ ieee80211_send_neg_ttlm_res(struct ieee80211_sub_if_data *sdata,
+ 		WARN_ON(1);
+ 		fallthrough;
+ 	case NEG_TTLM_RES_REJECT:
+-		mgmt->u.action.u.ttlm_res.status_code =
+-			WLAN_STATUS_DENIED_TID_TO_LINK_MAPPING;
++		status_code = WLAN_STATUS_DENIED_TID_TO_LINK_MAPPING;
+ 		break;
+ 	case NEG_TTLM_RES_ACCEPT:
+-		mgmt->u.action.u.ttlm_res.status_code = WLAN_STATUS_SUCCESS;
++		status_code = WLAN_STATUS_SUCCESS;
+ 		break;
+ 	case NEG_TTLM_RES_SUGGEST_PREFERRED:
+-		mgmt->u.action.u.ttlm_res.status_code =
+-			WLAN_STATUS_PREF_TID_TO_LINK_MAPPING_SUGGESTED;
++		status_code = WLAN_STATUS_PREF_TID_TO_LINK_MAPPING_SUGGESTED;
+ 		ieee80211_neg_ttlm_add_suggested_map(skb, neg_ttlm);
+ 		break;
+ 	}
+ 
++	mgmt->u.action.u.ttlm_res.status_code = cpu_to_le16(status_code);
+ 	ieee80211_tx_skb(sdata, skb);
+ }
+ 
+@@ -7875,7 +7875,8 @@ void ieee80211_process_neg_ttlm_res(struct ieee80211_sub_if_data *sdata,
+ 	 * This can be better implemented in the future, to handle request
+ 	 * rejections.
+ 	 */
+-	if (mgmt->u.action.u.ttlm_res.status_code != WLAN_STATUS_SUCCESS)
++	if (le16_to_cpu(mgmt->u.action.u.ttlm_res.status_code) !=
++	    WLAN_STATUS_SUCCESS)
+ 		__ieee80211_disconnect(sdata);
+ }
+ 
+-- 
+2.25.1
 
-Mo=C5=BCemy porozmawia=C4=87 w najbli=C5=BCszym czasie?
-
-
-Pozdrawiam
-Filip Gerlowski
 
