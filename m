@@ -4,60 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 335FEC3ABBC
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 May 2025 02:50:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB7EFC3ABBC
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 May 2025 03:05:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=v3wI5eKOFGGxx07Gq+WhkB62Zq4Ga8cGPrOUWuJegy8=; b=pSpWcAfW9lJwPx1RUesi9JEpUF
-	iLvkFFuJtzGAkuDQmlMr2veLByV449ZDnmEX28ZVHen7/IuUuIvs2amcQ9SM0yulewmyrxUy0IZ0n
-	19eqfqFc8heiedd9l1dYMDA2b20sAJ6M/Vq48sUjoiVKbTCTrmskqrZLZ3/HvHkZGHmmvvh5TmN54
-	aYABC+NQMTkLWw6eWArpaJ0tf3aXRd49rWQQO3rP3Ohrgn3ATcsn/lX8/MH6Qb0wAJIdJuau8DYR9
-	kvpuxKBJmza2uQ+R3LJDmdLGXqhUWbZRTglirQZDYgR2gl2RE2KYDIp2S+CdcepQv47mYiDVHtLdT
-	/PrvTvog==;
+	bh=RGsXniVNM78lSqeZo8PB6y5IveM0CDRKFBYryBrDeA8=; b=g/rFtB/yE+m3qIzOab0/Mru/Fz
+	TgMwcJ8Yg7GBVRH70GYM9VFW2vPatEoyHlFYmz8AWl8LFArDSFmMMVcOIPImKHeWw07eIC6zZOocZ
+	tdts+1W3O/R+5Z2nR/mpZnLk9lUafK4gdhaTJxfGCrGtIdy31/TUPKgq3Aw3tFeCgPWwBMkpk068q
+	U3E9i/mSCOR17g7nqMLONrXlm1Ha7gobxzdske6svKi6BZdL30iPcnaVdSQZxpP6GuGRyFPrAdwzw
+	V4lMh/oDbwlpIvt0k98kfA7L4vlAYvwRBjxFx5PP7S7cAeM3zWvE0jqxQeTZtNBQ341zjqnHwSVqA
+	PEE/+lLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uC8Nx-00000009qKX-1Awu;
-	Tue, 06 May 2025 02:50:21 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1uC8cF-00000009trP-3Uvr;
+	Tue, 06 May 2025 03:05:07 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uC4o4-00000008vnU-0PMU;
-	Mon, 05 May 2025 23:01:06 +0000
+	id 1uC4oR-00000008vuS-3jh0;
+	Mon, 05 May 2025 23:01:28 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id BCBE8A4D25B;
-	Mon,  5 May 2025 22:55:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B2B8FC4CEED;
-	Mon,  5 May 2025 23:01:01 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 71B06629CE;
+	Mon,  5 May 2025 23:00:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 40FD6C4CEED;
+	Mon,  5 May 2025 23:01:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746486063;
-	bh=MXOQDxvoxZwCvztOb/nRkBb3IOyqdqZ21qE1mtIk2Y8=;
+	s=k20201202; t=1746486087;
+	bh=BpFM42YEpVEK+w9jwsAluXPgJE5xWhTxX355y0AvYwI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=hF86d9FDOiBVeE9HMhQHLs0ZH9vStAtZAqnNkZedsnb49GHXerc6lVi1qrpeRXde6
-	 dbi53iamv59P1l7yepaiZziaZ4OvVx7eS0YK8u52SESXuHgw+n1Ui7IRnoh1T+980o
-	 8f/UoC3aIOF6syLKi7n8LEYYddr/QmtMJPRzQmmE9/VE/e6QrMjzpfzmm/MMhiGQg8
-	 t1QhuRkoGbs3Bw51Zm6KnTXSvdbrIKdMhQCY+KLCHDI0d9sJuIdQ8wmtgtKFyaDjv5
-	 GO5V+Qy+t9qoMm/Obp8egsaP2qU8XrIkiSUgISVOGv4fkDuWnpMhQcBCS4V2w1lxGn
-	 DWx3cqKfLQEHg==
+	b=IM2CGwBaDep6UUmNbU1dRkSMGr9nhAUjZ/4Z9rK+/b7J9FD0zmUeFQ1uWDMXlWPwo
+	 0Uv3omaBnl2gJS8hY/nJaA4AgBFXZ3mRGxSfk8LBgtA+bzHf29m8hBR3h7GJGBZxLS
+	 AgqfctebzCRkvKvFMrGAjcg5WIbq4VZUJbyri0Dcx7NXwpPdbWrtFwbBv7nSFEU65W
+	 4plmoibiqsenrjaza7/RQTRm1qaRzDX+5ZHS5Ihx6ulxjNPnd3X4AIBMUjuq7az+2k
+	 4lBBP8wk+b8RTv598SaFXHz90V8+2QQw2eBlT6/nkpRcY/ip624UsTOFPhlYC/mBpe
+	 ySztZpwSgfD5w==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	CK Hu <ck.hu@mediatek.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+Cc: Eric Woudstra <ericwouds@gmail.com>,
+	Paolo Abeni <pabeni@redhat.com>,
 	Sasha Levin <sashal@kernel.org>,
-	p.zabel@pengutronix.de,
-	airlied@gmail.com,
-	simona@ffwll.ch,
+	nbd@nbd.name,
+	sean.wang@mediatek.com,
+	lorenzo@kernel.org,
+	andrew+netdev@lunn.ch,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
 	matthias.bgg@gmail.com,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.6 134/294] drm/mediatek: mtk_dpi: Add checks for reg_h_fre_con existence
-Date: Mon,  5 May 2025 18:53:54 -0400
-Message-Id: <20250505225634.2688578-134-sashal@kernel.org>
+	angelogioacchino.delregno@collabora.com,
+	netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.6 148/294] net: ethernet: mtk_ppe_offload: Allow QinQ, double ETH_P_8021Q only
+Date: Mon,  5 May 2025 18:54:08 -0400
+Message-Id: <20250505225634.2688578-148-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250505225634.2688578-1-sashal@kernel.org>
 References: <20250505225634.2688578-1-sashal@kernel.org>
@@ -66,9 +70,6 @@ X-stable: review
 X-Patchwork-Hint: Ignore
 X-stable-base: Linux 6.6.89
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250505_160104_199136_6055BB9F 
-X-CRM114-Status: GOOD (  13.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,48 +84,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+From: Eric Woudstra <ericwouds@gmail.com>
 
-[ Upstream commit 8c9da7cd0bbcc90ab444454fecf535320456a312 ]
+[ Upstream commit 7fe0353606d77a32c4c7f2814833dd1c043ebdd2 ]
 
-In preparation for adding support for newer DPI instances which
-do support direct-pin but do not have any H_FRE_CON register,
-like the one found in MT8195 and MT8188, add a branch to check
-if the reg_h_fre_con variable was declared in the mtk_dpi_conf
-structure for the probed SoC DPI version.
+mtk_foe_entry_set_vlan() in mtk_ppe.c already supports double vlan
+tagging, but mtk_flow_offload_replace() in mtk_ppe_offload.c only allows
+for 1 vlan tag, optionally in combination with pppoe and dsa tags.
 
-As a note, this is useful specifically only for cases in which
-the support_direct_pin variable is true, so mt8195-dpintf is
-not affected by any issue.
+However, mtk_foe_entry_set_vlan() only allows for setting the vlan id.
+The protocol cannot be set, it is always ETH_P_8021Q, for inner and outer
+tag. This patch adds QinQ support to mtk_flow_offload_replace(), only in
+the case that both inner and outer tags are ETH_P_8021Q.
 
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Link: https://patchwork.kernel.org/project/dri-devel/patch/20250217154836.108895-6-angelogioacchino.delregno@collabora.com/
-Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Only PPPoE-in-Q (as before) and Q-in-Q are allowed. A combination
+of PPPoE and Q-in-Q is not allowed.
+
+Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
+Link: https://patch.msgid.link/20250225201509.20843-1-ericwouds@gmail.com
+Signed-off-by: Paolo Abeni <pabeni@redhat.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/gpu/drm/mediatek/mtk_dpi.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ .../net/ethernet/mediatek/mtk_ppe_offload.c   | 22 +++++++++----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index 54fc3f819577e..6391afdf202e2 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -410,12 +410,13 @@ static void mtk_dpi_config_swap_input(struct mtk_dpi *dpi, bool enable)
+diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
+index a4efbeb162084..889fd26843e60 100644
+--- a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
++++ b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
+@@ -34,8 +34,10 @@ struct mtk_flow_data {
+ 	u16 vlan_in;
  
- static void mtk_dpi_config_2n_h_fre(struct mtk_dpi *dpi)
- {
--	mtk_dpi_mask(dpi, dpi->conf->reg_h_fre_con, H_FRE_2N, H_FRE_2N);
-+	if (dpi->conf->reg_h_fre_con)
-+		mtk_dpi_mask(dpi, dpi->conf->reg_h_fre_con, H_FRE_2N, H_FRE_2N);
- }
+ 	struct {
+-		u16 id;
+-		__be16 proto;
++		struct {
++			u16 id;
++			__be16 proto;
++		} vlans[2];
+ 		u8 num;
+ 	} vlan;
+ 	struct {
+@@ -330,18 +332,19 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f,
+ 		case FLOW_ACTION_CSUM:
+ 			break;
+ 		case FLOW_ACTION_VLAN_PUSH:
+-			if (data.vlan.num == 1 ||
++			if (data.vlan.num + data.pppoe.num == 2 ||
+ 			    act->vlan.proto != htons(ETH_P_8021Q))
+ 				return -EOPNOTSUPP;
  
- static void mtk_dpi_config_disable_edge(struct mtk_dpi *dpi)
- {
--	if (dpi->conf->edge_sel_en)
-+	if (dpi->conf->edge_sel_en && dpi->conf->reg_h_fre_con)
- 		mtk_dpi_mask(dpi, dpi->conf->reg_h_fre_con, 0, EDGE_SEL_EN);
- }
+-			data.vlan.id = act->vlan.vid;
+-			data.vlan.proto = act->vlan.proto;
++			data.vlan.vlans[data.vlan.num].id = act->vlan.vid;
++			data.vlan.vlans[data.vlan.num].proto = act->vlan.proto;
+ 			data.vlan.num++;
+ 			break;
+ 		case FLOW_ACTION_VLAN_POP:
+ 			break;
+ 		case FLOW_ACTION_PPPOE_PUSH:
+-			if (data.pppoe.num == 1)
++			if (data.pppoe.num == 1 ||
++			    data.vlan.num == 2)
+ 				return -EOPNOTSUPP;
+ 
+ 			data.pppoe.sid = act->pppoe.sid;
+@@ -431,12 +434,9 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f,
+ 	if (offload_type == MTK_PPE_PKT_TYPE_BRIDGE)
+ 		foe.bridge.vlan = data.vlan_in;
+ 
+-	if (data.vlan.num == 1) {
+-		if (data.vlan.proto != htons(ETH_P_8021Q))
+-			return -EOPNOTSUPP;
++	for (i = 0; i < data.vlan.num; i++)
++		mtk_foe_entry_set_vlan(eth, &foe, data.vlan.vlans[i].id);
+ 
+-		mtk_foe_entry_set_vlan(eth, &foe, data.vlan.id);
+-	}
+ 	if (data.pppoe.num == 1)
+ 		mtk_foe_entry_set_pppoe(eth, &foe, data.pppoe.sid);
  
 -- 
 2.39.5
