@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7A52C3ABB0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 May 2025 13:31:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8D5CC3ABB0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 May 2025 13:33:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G+gRw9FOHgEYDzTJA2iDeew6vIrhFn5bDPchI3jGWAY=; b=dgMzrVtXF/+lPyEyttDevyMONW
-	BvbiKvWDUe2wF+7TzaMY7S3QVU7b7VpWvZOAcyF7yowEIxbPubWfECwJ5+ihYBid+n1MbO7vJsC/m
-	H/7UljYrtmA/tlNefgJjF2ck7Ar4BNev6nJhRtdc/FbY/8/VpRcYKeIcM/j+fViRJBACY0C7hY6Tw
-	2cZQeUd6qTbUN3DV4HFoZ//vEw7FmWhws1HC0v7Lze5Mlik53Crp8EnuRAII3S7j7Vtoce7kNlHz5
-	bcePaFZH4x5X7mVF3ZJ7X1C1SHQiT6GJQeEnViVl0bxpZ+AaJtsyFHKojUN81s4UN4DPG7C0WxyvG
-	P9HLLkDA==;
+	bh=cvPYufrP/1EV6i56uj2/nNKKJp6O0SV6WGjVeeSw6YM=; b=Q5HGF03JrCozRLJftZAMG+mZYo
+	kmo7jmIYW1EJ/L+5y+oZY4QxalASGZ3FX+xEN8N9BNZ4scKwGJ9fOhxAAqcFzTCYLhG19asyNkDVY
+	NBsLmA6YBe7HQQC78aXRzSrcYyc252BV2uQNRLXxK9hqX+7ouMQoHsBlD6RTZ7OqJWOlslEcZG874
+	nHpBNFn9qjOT1nn6qmSoMg8PcJ5oa5XH9LPAB5hJ4mymD+PsOxGtcQIlHKZpvNRxOjyfFYScqa4Nf
+	l7QecnX6Q6h8r1Ga1WE27KYN0B6rlo+MbI3xGFkeFHY8kRTJMH7Nqn2DnDvoLrlx93K1F3IVz5Q2g
+	LjIWIOcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBvum-00000007VIF-34wi;
-	Mon, 05 May 2025 13:31:24 +0000
+	id 1uBvwj-00000007VS5-3BWq;
+	Mon, 05 May 2025 13:33:25 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBvnX-00000007U2M-38Ou;
-	Mon, 05 May 2025 13:23:57 +0000
+	id 1uBvnY-00000007U32-3qjB;
+	Mon, 05 May 2025 13:23:58 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1746451434;
-	bh=eEJO55YjbQngvVS+dntTpGHmo93HKjd8WwbZDOmlhOs=;
+	s=mail; t=1746451435;
+	bh=UUF6OZ9i9Tm/nhtDH7uONCtGgsGZwxjobJ9R/ceAdZY=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=gLCqE+GoWXxTw4O2Cw0Iy9LGUMNgTkbP4GTSa5DsyQfs0tQgNCvcnoXFueLf1hMLr
-	 cA5nENicyg01HhOYYQiyHL/fOBvZ3Sm+U1wNn491aUEMDH8fXJ0ky2tYqj+yd5HH+C
-	 yE+pbnutzxA+5G23cRCuIGLLGaLhDCBqh4MHQYpbmVRENCb1MhJqcYeTv0wYDSWgAg
-	 QkqtKcR/rFzHzI0UIcMbfZVAGGBdeodZwunYRmIc4e0Begd01D/spYLnWZfcUrt/BY
-	 HzCkfSgjjSUCVs1z3L6d+MG8xuAJrUr/OA29DJs5j2ICj8BCV+4isaQLvr6A3Pvxjh
-	 Q9hh1Ejkkbsqw==
+	b=Q4Tn2UJQV6TYUvvnHDC1FOSpPYqJHiuotCFrAjGc8KzTebBPOAbvcxtRDuQdoInh8
+	 +/Lxh7rarAEDU6kD21+1ssi0Sj2rYOn73U6IYOpCm4bx2ruKwibQQD20zsnKFx3fpW
+	 aplKlKS6leqLBRrHgW8TPONL9E2LkGtFpjriZ2q4pYF42bmtypf+YdDnw4jXyDNOzj
+	 Xi290W50r3DeVEyr4F1t3E3lvMUoSznajHeAPHr/I7uWc5R8FZKVIy8IdW97IlSGg2
+	 dkyCSN6wvs3e9DyBGQt9K2xciTLtgCtJeXnalC9EAgK2jJi2SVYXjIm61Vzy2teSe0
+	 C5PoQCQShMBmQ==
 Received: from apertis-1.home (2a01cb0892F2D600C8f85CF092d4aF51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: jmassot)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5918E17E0858;
-	Mon,  5 May 2025 15:23:53 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7920D17E1503;
+	Mon,  5 May 2025 15:23:54 +0200 (CEST)
 From: Julien Massot <julien.massot@collabora.com>
-Date: Mon, 05 May 2025 15:23:38 +0200
-Subject: [PATCH 2/4] dt-bindings: iommu: mediatek: mt8195 Accept up to 5
- interrupts
+Date: Mon, 05 May 2025 15:23:39 +0200
+Subject: [PATCH 3/4] arm64: dts: mt6359: Add missing 'compatible' property
+ to regulators node
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250505-mt8395-dtb-errors-v1-2-9c4714dcdcdb@collabora.com>
+Message-Id: <20250505-mt8395-dtb-errors-v1-3-9c4714dcdcdb@collabora.com>
 References: <20250505-mt8395-dtb-errors-v1-0-9c4714dcdcdb@collabora.com>
 In-Reply-To: <20250505-mt8395-dtb-errors-v1-0-9c4714dcdcdb@collabora.com>
 To: kernel@collabora.com, Sen Chu <sen.chu@mediatek.com>, 
@@ -71,9 +71,8 @@ Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
  Julien Massot <julien.massot@collabora.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250505_062355_933585_D7DDE7FB 
-X-CRM114-Status: UNSURE (   9.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250505_062357_111046_14B1DBFC 
+X-CRM114-Status: GOOD (  10.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,34 +87,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some Mediatek IOMMU can have up to five interrupts so increase
-the 'maxItems' to 5.
+The 'compatible' property is required by the
+'mfd/mediatek,mt6397.yaml' binding. Add it to fix the following
+dtb-check error:
+mediatek/mt8395-radxa-nio-12l.dtb: pmic: regulators:
+'compatible' is a required property
 
-Fix the following dtb-check error:
-
-mediatek/mt8395-radxa-nio-12l.dtb: infra-iommu@10315000: interrupts:
-[[0, 795, 4, 0], [0, 796, 4, 0], [0, 797, 4, 0], [0, 798, 4, 0], [0, 799, 4, 0]] is too long
-
-Fixes: 3b5838d1d82e3 ("arm64: dts: mt8195: Add iommu and smi nodes")
+Fixes: 3b7d143be4b7 ("arm64: dts: mt6359: add PMIC MT6359 related nodes")
 Signed-off-by: Julien Massot <julien.massot@collabora.com>
 ---
- Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/mediatek/mt6359.dtsi | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-index 75750c64157c868725c087500ac81be4e282c829..035941c2db32170e9a69a5363d8c05ef767bb251 100644
---- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-+++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-@@ -97,7 +97,8 @@ properties:
-     maxItems: 1
+diff --git a/arch/arm64/boot/dts/mediatek/mt6359.dtsi b/arch/arm64/boot/dts/mediatek/mt6359.dtsi
+index 7b10f9c59819a9ad02319f00938f35c931091f9f..0c479404b3fe3adc9789386e34bda4dc580b5abd 100644
+--- a/arch/arm64/boot/dts/mediatek/mt6359.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt6359.dtsi
+@@ -20,6 +20,8 @@ mt6359codec: audio-codec {
+ 		};
  
-   interrupts:
--    maxItems: 1
-+    minItems: 1
-+    maxItems: 5
- 
-   clocks:
-     items:
+ 		regulators {
++			compatible = "mediatek,mt6359-regulator";
++
+ 			mt6359_vs1_buck_reg: buck_vs1 {
+ 				regulator-name = "vs1";
+ 				regulator-min-microvolt = <800000>;
 
 -- 
 2.49.0
