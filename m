@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FEB2C3ABAC
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 May 2025 04:26:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E039DC3ABAC
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 May 2025 04:44:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=V78wiHJK7C6LCmCsXW3ZN9gnDYx5YydQa1s5Pxm5Iu8=; b=QzBQ63VU1b+EdXA6fM8lMwlsD5
-	3Ap7DeI09BaJiCjEPHhONwzYLtTJmooJltVzA2UrJZokopma0JWDbUB3Yayalom06yosLbGMWqwmt
-	iG0d1Oj3VSAspcpZSb4vODbkS7yt35vvl5PDFVLA0UTGZsUdgiETfBWEaxOmDXKx8C4UytwpB7qcX
-	bQHP9l3/WqaXTghBtRMsLQuS22cqqsmumc27OEJzTpMlOYtix0sw3jnLGhEvEwItKeOIFZaCoGyCF
-	QHf/kP7obQef5gz1lECktJ2kAdneePM7OfCgyRXmzNRMZd4OozY6U8OXziGXnSJmJrEhEVfrMuOjZ
-	cfNtKwUQ==;
+	bh=mCVraURyClqSY6JHQyb1XFmwizIymPMfijM2JxZPfCg=; b=Iyh37YWy+aGI808HHS3ZgZva3n
+	JuOeGLmrxLq0/YurkiAx0tEZHPr9yDf6xGf3yw51gPwG7zqBbGaFKehpOVWLioPqZqpjro4zbBTfv
+	milYpKcYrVc4avamD+8kwwVoOqnKJzx9GD7YKzKjjgD52Efvrs5OwkvNrs+sn3I+XY9IOXDM5vzUy
+	2JB4gdjJ4sHXPqzxHFN6br/zR0CYWeGLyd+sqFQ2tQ+IuRi67YZsT/IiVztgsQV6ZPYJYsun4NEwO
+	ty+2Lozr5fQvtKC6RiRf/b5WZ7fMqiBsrRGA7+96uWErx1Bc/ICFl3bQnI4xQKyaR1YWvJXww+MP4
+	kqvo3yng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uC9sY-0000000ACoA-1ceE;
-	Tue, 06 May 2025 04:26:02 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1uCAAl-0000000AHE5-3X93;
+	Tue, 06 May 2025 04:44:51 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uC52R-00000008zwg-2asv;
-	Mon, 05 May 2025 23:15:56 +0000
+	id 1uC56R-0000000918A-3wvW;
+	Mon, 05 May 2025 23:20:05 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id EA5635C5B75;
-	Mon,  5 May 2025 23:13:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 787C2C4CEED;
-	Mon,  5 May 2025 23:15:53 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id F202344E75;
+	Mon,  5 May 2025 23:20:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 278E4C4CEEF;
+	Mon,  5 May 2025 23:20:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746486954;
-	bh=n+WcpgTdYvcRSBPw43R7b05A4ZbCqYfL3djMTnnT/Iw=;
+	s=k20201202; t=1746487203;
+	bh=IXXHiVnUA/V4FGI1fhktHwjm0WNVqBGhcWQhRX+M5lo=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=MG72koGQ6SowhUfTjvfvDvmsNDl6gIZMUuWQYMt2Hk9UEyZqsqF8xIjATFv1WKjLO
-	 hoNMPInDVA4AFuo6e1Il8AOSSYxdSNKjGgws2YfpvH3UFWN6YRVWaonSYoRvwa36D8
-	 V4vwRgxvMv/2VsTB15yAJLDKwKXKDDMAj4nESHhS2zNLFmTUGsfCjOlhnAnvO4wV8K
-	 iwmdg6/F1NxSQS+m2hK2qBMXL33k6TVZeXrMPB+vEzp7KkBYoTUxOnfP6VyNjvwRD1
-	 k1NOsOHMO6Dlehj30xHK7xVgv0nd1RiHkz/3wEFdEVFB6+9gpCyWG4MRhhmrthM0Fs
-	 /A/T+P4Qzx5Hw==
+	b=Pgl75MKZn/NgTS+Vv2IQuDamTo4FqA7YeE7ynVs3e5KzyV1aGjO6UWX1OxY7haokc
+	 PFsDneoujHzzFUqQFR7fejLDUhT4gxi9pKv8jB9mi9pmqdCVUGszFyrsROMfO0ciMG
+	 YxE19X5Z+1yaiXAGMH4JGlv7Ry3PU3j2Mr0QMzJEsIhNCZKgvXErkXWcTzwriOZIU1
+	 HIfkyTaX3Tdp0+4ny1CKXGUkIokMbKsb4QhXBKlms8Es69H7N4GZiInvniqjHU2i2L
+	 7nb+1bhnQrwOWaIoJfRzEzD05iSg/Vya4jWyL06qLChBG5L0DONellAg7z8CknYrmv
+	 LJpnx/U7dmZYw==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -55,19 +55,19 @@ Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	dri-devel@lists.freedesktop.org,
 	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.15 077/153] drm/mediatek: mtk_dpi: Add checks for reg_h_fre_con existence
-Date: Mon,  5 May 2025 19:12:04 -0400
-Message-Id: <20250505231320.2695319-77-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.10 055/114] drm/mediatek: mtk_dpi: Add checks for reg_h_fre_con existence
+Date: Mon,  5 May 2025 19:17:18 -0400
+Message-Id: <20250505231817.2697367-55-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250505231320.2695319-1-sashal@kernel.org>
-References: <20250505231320.2695319-1-sashal@kernel.org>
+In-Reply-To: <20250505231817.2697367-1-sashal@kernel.org>
+References: <20250505231817.2697367-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 5.15.181
+X-stable-base: Linux 5.10.237
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250505_161555_699430_2B64EE65 
+X-CRM114-CacheID: sfid-20250505_162004_000305_3392C3CC 
 X-CRM114-Status: GOOD (  13.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -107,10 +107,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index 9518672dc21b3..3f39109b69154 100644
+index ac75c10aed2f6..3a58d3dfd558f 100644
 --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
 +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -346,12 +346,13 @@ static void mtk_dpi_config_swap_input(struct mtk_dpi *dpi, bool enable)
+@@ -340,12 +340,13 @@ static void mtk_dpi_config_swap_input(struct mtk_dpi *dpi, bool enable)
  
  static void mtk_dpi_config_2n_h_fre(struct mtk_dpi *dpi)
  {
