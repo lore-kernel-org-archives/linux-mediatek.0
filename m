@@ -4,90 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30C88C3ABBC
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 May 2025 17:01:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 758DAC3ABBC
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 May 2025 17:29:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=koqGT0gVjE9PGUxoG6q0TSOc5EHYN/CahOru8Ed0etM=; b=IRmFB6+JS9eLABcY6sFneS1wVH
-	jx1E/7GOIQetGFnUQHolK/n6X5E06SbWd5ftzR7FwKPRZXLFITXBupSBzOh8sO9wknnbwmox5DByf
-	hoU8keHdOppII0vx+z1E3grlRrYUcP+Sma1eJdwd7PLWW1wiGAt20bcf2WC96C2xq8kAXjjebNEwz
-	x72KW8II0zH2gmoW5fTW+CbGpB2phgOpN/N4WaJ9EnOQb0gtg838KS3F74m1sE79Cnq3y59N2g+fE
-	Sl6eXzV/CdPabuRVvTTJ0uiSF5O3LnMBu9J+2oybMIb/Vu7DxWXraCTHNtGUyKsoMZ01iBwTO73OJ
-	DdaQ/Ygg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qpPZhMXPJ6bl1wt0L0ce+615Vlv6RlFahKmvBBdBPts=; b=EXmNhjirhC7GSlWIjUKUAAst6X
+	ZWGr/eUGSRIwexb3KtqEfq2iSumxjfM5LFIOigxhNnuMoleRzQu4wH0IIDacJNj5SEyH8lLDRJ2Ll
+	WPJnHQUE7ASpWRkazrcPdd+vD7MMxU4mwPmn9prYh09uTyMh6DNuOZRC2T6CEIe0Xn8c0wRQ2UtPM
+	92Qt0HqrXN54HKZBznW9PPmZTEaIQ5zMa+/FkRm99SAMLl/qHG1NwhYPaKy6IiaGNiFqpsZwAIFB+
+	HVIdgw+qlwfw4m08rzw84E/sxSm2daXNncTe4dFUVU9A3U/HmfRuoawdfi6q3nJaYwNaWoxXxIHI2
+	sLjHDAcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBzBk-0000000856a-2Ula;
-	Mon, 05 May 2025 17:01:08 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1uBzdA-000000089Sw-1sSq;
+	Mon, 05 May 2025 17:29:28 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBynq-000000080gI-1HX2
+	id 1uBzSc-000000087il-3jZh
 	for linux-mediatek@lists.infradead.org;
-	Mon, 05 May 2025 16:36:28 +0000
-Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-43edecbfb94so38451265e9.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 05 May 2025 09:36:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1746462984; x=1747067784; darn=lists.infradead.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=koqGT0gVjE9PGUxoG6q0TSOc5EHYN/CahOru8Ed0etM=;
-        b=iF1+enKBW31Ng+iK3gMAMDASVKIxITGJQzI8FuNDQbe9ZvfRtC78ng3CqMYSZlevNV
-         u4gzNtjqnDGXFY889txX5cOfh9EVtpMmQPlJMe+FMfnUEKg9l5HDeRTWV4hRm4ExpSDO
-         cGP+NbzOq0+L1Mnf2eCMycu17PKLFzRfZ7yzzFdepXcMhSUE+IbgSzgmskrHzckh4U+1
-         B5hFRZcZXbHKyempQXD7hsl+nTc1MnvDiACQF8ZG04YbY3EZRxln1lAA8qJFv8bpoyHI
-         9l77R7Vi8XaxkWRAKUvVJV7KyfgUZtIIJ0ArGEQqxx//7AToI3B6P5asjvkT8f5wFXLj
-         MWWA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1746462984; x=1747067784;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=koqGT0gVjE9PGUxoG6q0TSOc5EHYN/CahOru8Ed0etM=;
-        b=ZDcF6Q/4YXE69A6xA7Xv+7+buDHyd88Zai42EncGEps83aPe09frvOD966AbRg01Wd
-         ZfaWogoJg4SjYXixx4ChE4Wct8aLCtccPTQ9JbS3vPOurrirNJP+Bs5xmqFyAmHJkSkC
-         alvRbshUWYuvPmwx/IZKofMgJI6HK+Utg3zmER2S2KF3Zpz3B3sTJ3bacQK44tMkdu0R
-         n0alfOie5wtnvP+EjSfJQRq6jmA70QVL5c6fa6aWF4suv2QVey0kxs6APaQNkzkhUTNK
-         hlbHqGLai7mSsexTn/SJ0Mf9VDZxaJjuBfbu82oq/HoTjiAoCmm+6ssGyZIDjBr9rNbr
-         gQew==
-X-Forwarded-Encrypted: i=1; AJvYcCWpwDTb8OEcgFJ5yr13vD+NRPTGIuCMJofdl/9KEE8NdFfDx/BxRl/UBM6GIQFB9984UxmwwOU5OW1HQygZpA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxsaD/HGKdMNW8DSnxKf1og6p/ATxbxsDkpttnDEWZXZ1c/lQS6
-	RObYqYzYYyhVY3CYXrFcuUmnk2Ka3fjHtOiY7xttSQAYPBMaImq2z6qciDS46XU=
-X-Gm-Gg: ASbGnctCTMhEF1Wfzp8WaRHZYClATPOFsib0aqPMiQn1Pb/dfW+R9Swe4/kzgusWgWd
-	sKsAmQ/sEvFh7O9bkO8XZflRvC+Ojm0VnJpSZOCm+OKiP0e/BplDAK9oIEZBGAYsA1yml7QzFa5
-	6mSOJs1sqwesZEtQ6VA10r1ovQXkl3eA0SfGcmvVgIBuK5sV0Ffpfpd++pc+nVbI7hug7MiDTIm
-	pfZ8Bkz15x4JFZeTV4vF7VGRBzxGbXcfXEFX4Z+2tzOM9JijMx3nHEdjG213qQvn5f8mJ3RXtNL
-	sk+ISoO199lFaeaomDmHwuHH0FvQV2Q2z8ca+zJk4+4ZwUlv0CMrRwna+5WnCyBXGkF80Er2OfL
-	c9NFAHi7yvmj8Mg==
-X-Google-Smtp-Source: AGHT+IFchRoVKF/xsztzmfNA9fw/Ao/ExThSQoz71pUINx5xaDyoilrc0corCct8iZlxbPSgK6N83Q==
-X-Received: by 2002:a05:600c:3494:b0:43c:f5fe:5c26 with SMTP id 5b1f17b1804b1-441c48aa314mr78001765e9.4.1746462984537;
-        Mon, 05 May 2025 09:36:24 -0700 (PDT)
-Received: from mai.linaro.org (146725694.box.freepro.com. [130.180.211.218])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-441b23c5e14sm132222885e9.0.2025.05.05.09.36.23
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 05 May 2025 09:36:23 -0700 (PDT)
-Date: Mon, 5 May 2025 18:36:22 +0200
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-To: Caleb James DeLisle <cjd@cjdns.fr>
-Cc: linux-mips@vger.kernel.org, tglx@linutronix.de, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, tsbogend@alpha.franken.de,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	benjamin.larsson@genexis.eu, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v4 2/7] clocksource/drivers: Add EcoNet Timer HPT driver
-Message-ID: <aBjpBpJAIP89oiit@mai.linaro.org>
-References: <20250430133433.22222-1-cjd@cjdns.fr>
- <20250430133433.22222-3-cjd@cjdns.fr>
+	Mon, 05 May 2025 17:18:39 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id B14EF5C433A;
+	Mon,  5 May 2025 17:16:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 97E03C4CEEE;
+	Mon,  5 May 2025 17:18:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1746465513;
+	bh=zAYILOUuPLzGJcE+H/qrkjNUK62hvMnUtpZ+b93J6PE=;
+	h=Subject:From:Reply-To:To:Cc:Date:In-Reply-To:References:From;
+	b=bKjhSY1ZFAKpkyxZ4vBD4W9x8dCZDJZkQW3reZNSIuF9qTqh99PTq+rQLO5ew/UaW
+	 5JNE8HkQuTds+5Tn+9CvaMY9gymsMbyj3i5/EmvwSZPmxZgPW9DqHrml3NzsMKXtEU
+	 +ps5924p/evGCsh4iPrg72kBsA5O6myVmHYewV8vaiPAIOEDYgmWfGvwOEekHQSCEn
+	 RZZNXRi47qVPxCtEjJvTXcbU70cEnY6BCEBu+M+K/5QNw07fAX9Us3h4IWx4ICWu3O
+	 86NPJFX87m6u/VLensYpuY8u+kZyPikBwfvofCEVJpaZunpT1M+F8unJ9P2KVQ+4jO
+	 6TExxeLdUQpyw==
+Message-ID: <0736898d8d53e6249d5be637c9b7e7c81398218a.camel@kernel.org>
+Subject: Re: [REGRESSION][BISECTED][STABLE] MT7925: mDNS and IPv6 broken in
+ kernel 6.14.3 and above
+From: Niklas Schnelle <niks@kernel.org>
+To: Mingyen Hsieh =?UTF-8?Q?=28=E8=AC=9D=E6=98=8E=E8=AB=BA=29?=	
+ <Mingyen.Hsieh@mediatek.com>, "stable@vger.kernel.org"
+ <stable@vger.kernel.org>,  "fossben@pm.me"	 <fossben@pm.me>
+Cc: "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>, 
+ "linux-mediatek@lists.infradead.org"
+	 <linux-mediatek@lists.infradead.org>, Allan Wang
+ =?UTF-8?Q?=28=E7=8E=8B=E5=AE=B6=E5=81=89=29?=
+	 <Allan.Wang@mediatek.com>, "linux-kernel@vger.kernel.org"
+	 <linux-kernel@vger.kernel.org>, "regressions@lists.linux.dev"
+	 <regressions@lists.linux.dev>
+Date: Mon, 05 May 2025 19:18:29 +0200
+In-Reply-To: <28ef2cc608d071d1530902d7b5df045555ab5651.camel@mediatek.com>
+References: <EmWnO5b-acRH1TXbGnkx41eJw654vmCR-8_xMBaPMwexCnfkvKCdlU5u19CGbaapJ3KRu-l3B-tSUhf8CCQwL0odjo6Cd5YG5lvNeB-vfdg=@pm.me>
+				 <f73dec60b60dd7bb3be40c1feefbe223c7afe19b.camel@mediatek.com>
+				 <5ae1ef34c9844d6d0f5fb167dd596a4c43321367.camel@kernel.org>
+			 <28ef2cc608d071d1530902d7b5df045555ab5651.camel@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.1 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250430133433.22222-3-cjd@cjdns.fr>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250505_093626_359251_F8CB5C34 
-X-CRM114-Status: GOOD (  32.93  )
+X-CRM114-CacheID: sfid-20250505_101835_029257_35C7F8B4 
+X-CRM114-Status: GOOD (  53.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,297 +80,190 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: niks@kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 30, 2025 at 01:34:28PM +0000, Caleb James DeLisle wrote:
-> Introduce a clocksource driver for the so-called high-precision timer (HPT)
-> in the EcoNet EN751221 MIPS SoC.
+On Mon, 2025-05-05 at 05:48 +0000, Mingyen Hsieh (=E8=AC=9D=E6=98=8E=E8=AB=
+=BA) wrote:
+> On Sun, 2025-05-04 at 00:39 +0200, Niklas Schnelle wrote:
+> >=20
+> > External email : Please do not click links or open attachments until
+> > you have verified the sender or the content.
+> >=20
+> >=20
+> > On Wed, 2025-04-30 at 06:47 +0000, Mingyen Hsieh (=E8=AC=9D=E6=98=8E=E8=
+=AB=BA) wrote:
+> > > On Wed, 2025-04-30 at 01:14 +0000, fossben@pm.me=C2=A0wrote:
+> > > >=20
+> > > > External email : Please do not click links or open attachments
+> > > > until
+> > > > you have verified the sender or the content.
+> > > >=20
+> > > >=20
+> > > > Hello all,
+> > > >=20
+> > > > After upgrading to 6.14.3 on my PC with a MT7925 chip, I noticed
+> > > > that
+> > > > I could no longer ping *.local addresses provided by Avahi. In
+> > > > addition, I also noticed that I was not able to get a DHCP IPv6
+> > > > address from my router, no matter how many times I rebooted the
+> > > > router or reconnected with NetworkManager.
+> > > >=20
+> > > > Reverting to 6.14.2 fixes both mDNS and IPv6 addresses
+> > > > immediately.
+> > > > Going back to 6.14.3 immediately breaks mDNS again, but the IPv6
+> > > > address will stay there for a while before disappearing later,
+> > > > possibly because the DHCP lease expired? I am not sure exactly
+> > > > when
+> > > > it stops working.
+> > > >=20
+> > > > I've done a kernel bisect between 6.14.2 and 6.14.3 and found the
+> > > > offending commit that causes mDNS to fail:
+> > > >=20
+> > > > commit 80007d3f92fd018d0a052a706400e976b36e3c87
+> > > > Author: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+> > > > Date:=C2=A0=C2=A0 Tue Mar 4 16:08:50 2025 -0800
+> > > >=20
+> > > > =C2=A0=C2=A0=C2=A0 wifi: mt76: mt7925: integrate *mlo_sta_cmd and *=
+sta_cmd
+> > > >=20
+> > > > =C2=A0=C2=A0=C2=A0 commit cb1353ef34735ec1e5d9efa1fe966f05ff1dc1e1 =
+upstream.
+> > > >=20
+> > > > =C2=A0=C2=A0=C2=A0 Integrate *mlo_sta_cmd and *sta_cmd for the MLO =
+firmware.
+> > > >=20
+> > > > =C2=A0=C2=A0=C2=A0 Fixes: 86c051f2c418 ("wifi: mt76: mt7925: enabli=
+ng MLO when
+> > > > the
+> > > > firmware supports it")
+> > > >=20
+> > > > =C2=A0drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 59 ++++----=
+---
+> > > > ----
+> > > > --------------------------------------------
+> > > > =C2=A01 file changed, 4 insertions(+), 55 deletions(-)
+> > > >=20
+> > > > I do not know if this same commit is also causing the IPv6 issues
+> > > > as
+> > > > testing that requires quite a bit of time to reproduce. What I do
+> > > > know with certainty as of this moment is that it definitely
+> > > > breaks in
+> > > > kernel 6.14.3.
+> > > >=20
+> > > > I've attached my hardware info as well as dmesg logs from the
+> > > > last
+> > > > working kernel from the bisect and 6.14.4 which exhibits the
+> > > > issue.
+> > > > Please let me know if there's any other info you need.
+> > > >=20
+> > > > Thanks!
+> > > > Benjamin Xiao
+> > >=20
+> > > Hi,
+> > >=20
+> > > Thanks for reporting this issue, we will aim into this.
+> > >=20
+> > > Can you provide me with your testing steps?
+> > >=20
+> > > Best Regards,
+> > > Yen.
+> > >=20
+> >=20
+> > Hi Yan,
+> >=20
+> > I see the same IPv6 issue on my Framework 13 (Ryzen 5 AI 340) with an
+> > mt7925e WiFI module. My setup is just a home router with native IPv6
+> > both for my uplink and in the LAN. The problems with IPv6 can already
+> > be seen just in the LAN for example by checking which IP was used for
+> > SSH, in my setup it should always be IPv6 but falls back to IPv4 in
+> > the
+> > broken state.
+> >=20
+> > As another data point, I tried reverting cb1353ef3473 ("wifi: mt76:
+> > mt7925: integrate *mlo_sta_cmd and *sta_cmd") on top of 6.15.-rc4.
+> > This
+> > fully restores IPv6 for me. Also note I'm running this with the
+> > mt7925
+> > firmware version 20250425073330 from linux-firmware's master branch
+> > as
+> > I had some dropped connections with earlier firmware.
+> >=20
+> > So it definitely looks like that commit also broke IPv6 and not just
+> > mDNS. Note that if if I use DHCPv6 instead of router advertisements,
+> > on
+> > the latest firmware, but without the revert, I get a global IPv6
+> > address added to the interface but then native IPv6 addresses are
+> > still
+> > uncreachable. With the offending patch reverted my SSH session to an
+> > IPv6 only host works fine and is stable. Also I'd be willing to test
+> > a
+> > proper fix as I rely on IPv6 heavily due to having to use CGNAT for
+> > IPv4 but not for IPv6.
+> >=20
+> >=20
+> > Thanks,
+> > Niklas
+>=20
+> Hi Benjamin & Niklas,
+>=20
+> Can you help to try this patch? I can get IPv6 address through this
+> patch.
+>=20
+> If it can work at your environment as well, i will upstream it and add
+> test tag with you.
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+> b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+> index a42b584634ab..fd756f0d18f8 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+> @@ -2183,14 +2183,14 @@ mt7925_mcu_sta_cmd(struct mt76_phy *phy,
+>                         mt7925_mcu_sta_mld_tlv(skb, info->vif, info-
+> > link_sta->sta);
+>                         mt7925_mcu_sta_eht_mld_tlv(skb, info->vif,
+> info->link_sta->sta);
+>                 }
+> -
+> -               mt7925_mcu_sta_hdr_trans_tlv(skb, info->vif, info-
+> > link_sta);
+>         }
+>=20
+>         if (!info->enable) {
+>                 mt7925_mcu_sta_remove_tlv(skb);
+>                 mt76_connac_mcu_add_tlv(skb, STA_REC_MLD_OFF,
+>                                         sizeof(struct tlv));
+> +       } else {
+> +               mt7925_mcu_sta_hdr_trans_tlv(skb, info->vif, info-
+> > link_sta);
+>         }
+>=20
+>         return mt76_mcu_skb_send_msg(dev, skb, info->cmd, true);
+>=20
+>=20
+> Thanks~
+> Yen.
+>=20
 
-As a new driver, please document the timer (up - down ?, SPI/PPI, etc
-...) that will help to understand the code more easily, especially the
-reg_* functions (purposes?).
+Hi Yen,
 
-> Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
-> ---
->  drivers/clocksource/Kconfig                 |   8 +
->  drivers/clocksource/Makefile                |   1 +
->  drivers/clocksource/timer-econet-en751221.c | 216 ++++++++++++++++++++
->  3 files changed, 225 insertions(+)
->  create mode 100644 drivers/clocksource/timer-econet-en751221.c
-> 
-> diff --git a/drivers/clocksource/Kconfig b/drivers/clocksource/Kconfig
-> index 487c85259967..976afb0b2312 100644
-> --- a/drivers/clocksource/Kconfig
-> +++ b/drivers/clocksource/Kconfig
-> @@ -73,6 +73,14 @@ config DW_APB_TIMER_OF
->  	select DW_APB_TIMER
->  	select TIMER_OF
->  
-> +config ECONET_EN751221_TIMER
-> +	bool "EcoNet EN751221 High Precision Timer" if COMPILE_TEST
-> +	depends on HAS_IOMEM
-> +	select CLKSRC_MMIO
-> +	select TIMER_OF
-> +	help
-> +	  Support for CPU timer found on EcoNet MIPS based SoCs.
-> +
->  config FTTMR010_TIMER
->  	bool "Faraday Technology timer driver" if COMPILE_TEST
->  	depends on HAS_IOMEM
-> diff --git a/drivers/clocksource/Makefile b/drivers/clocksource/Makefile
-> index 43ef16a4efa6..d2998601eda5 100644
-> --- a/drivers/clocksource/Makefile
-> +++ b/drivers/clocksource/Makefile
-> @@ -17,6 +17,7 @@ obj-$(CONFIG_CLKBLD_I8253)	+= i8253.o
->  obj-$(CONFIG_CLKSRC_MMIO)	+= mmio.o
->  obj-$(CONFIG_DAVINCI_TIMER)	+= timer-davinci.o
->  obj-$(CONFIG_DIGICOLOR_TIMER)	+= timer-digicolor.o
-> +obj-$(CONFIG_ECONET_EN751221_TIMER)	+= timer-econet-en751221.o
->  obj-$(CONFIG_OMAP_DM_TIMER)	+= timer-ti-dm.o
->  obj-$(CONFIG_OMAP_DM_SYSTIMER)	+= timer-ti-dm-systimer.o
->  obj-$(CONFIG_DW_APB_TIMER)	+= dw_apb_timer.o
-> diff --git a/drivers/clocksource/timer-econet-en751221.c b/drivers/clocksource/timer-econet-en751221.c
-> new file mode 100644
-> index 000000000000..9cfeead09377
-> --- /dev/null
-> +++ b/drivers/clocksource/timer-econet-en751221.c
-> @@ -0,0 +1,216 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Timer present on EcoNet EN75xx MIPS based SoCs.
-> + *
-> + * Copyright (C) 2025 by Caleb James DeLisle <cjd@cjdns.fr>
-> + */
-> +
-> +#include <linux/io.h>
-> +#include <linux/cpumask.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/clockchips.h>
-> +#include <linux/sched_clock.h>
-> +#include <linux/of.h>
-> +#include <linux/of_irq.h>
-> +#include <linux/of_address.h>
-> +#include <linux/cpuhotplug.h>
-> +#include <linux/clk.h>
-> +
-> +#define ECONET_BITS			32
-> +#define ECONET_MIN_DELTA		0x00001000
-> +#define ECONET_MAX_DELTA		GENMASK(ECONET_BITS - 2, 0)
-> +/* 34Kc hardware has 1 block and 1004Kc has 2. */
-> +#define ECONET_NUM_BLOCKS		DIV_ROUND_UP(NR_CPUS, 2)
-> +
-> +static struct {
-> +	void __iomem	*membase[ECONET_NUM_BLOCKS];
-> +	u32		freq_hz;
-> +} econet_timer __ro_after_init;
-> +
-> +static DEFINE_PER_CPU(struct clock_event_device, econet_timer_pcpu);
-> +
-> +/* Each memory block has 2 timers, the order of registers is:
-> + * CTL, CMR0, CNT0, CMR1, CNT1
-> + */
-> +static inline void __iomem *reg_ctl(u32 timer_n)
-> +{
-> +	return econet_timer.membase[timer_n >> 1];
-> +}
-> +
-> +static inline void __iomem *reg_compare(u32 timer_n)
-> +{
-> +	return econet_timer.membase[timer_n >> 1] + (timer_n & 1) * 0x08 + 0x04;
-> +}
-> +
-> +static inline void __iomem *reg_count(u32 timer_n)
-> +{
-> +	return econet_timer.membase[timer_n >> 1] + (timer_n & 1) * 0x08 + 0x08;
-> +}
-> +
-> +static inline u32 ctl_bit_enabled(u32 timer_n)
-> +{
-> +	return 1U << (timer_n & 1);
-> +}
-> +
-> +static inline u32 ctl_bit_pending(u32 timer_n)
-> +{
-> +	return 1U << ((timer_n & 1) + 16);
-> +}
-> +
-> +static bool cevt_is_pending(int cpu_id)
-> +{
-> +	return ioread32(reg_ctl(cpu_id)) & ctl_bit_pending(cpu_id);
-> +}
-> +
-> +static irqreturn_t cevt_interrupt(int irq, void *dev_id)
-> +{
-> +	struct clock_event_device *dev = this_cpu_ptr(&econet_timer_pcpu);
-> +	int cpu = cpumask_first(dev->cpumask);
-> +
-> +	if (!cevt_is_pending(cpu)) {
-> +		pr_debug("%s IRQ %d on CPU %d is not pending\n", __func__, irq, cpu);
-> +		return IRQ_NONE;
-> +	}
+As the patch didn't apply, I edited mt7925_mcu_sta_cmd() manually on
+top of v6.15-rc5 according to the diff. With that IPv6 works fine for
+me.
 
-How this can happen ? Can this interrupt be shared ?
+If it were me, I'd probably structure the if different. I'd leave
+the=C2=A0mt7925_mcu_sta_hdr_trans_tlv() where it is but have an inner if
+(info->link_sta) inside just if (!info->enable), then the !info->enable
+case becomes just an else. I'd maybe even put the if (info->link_sta)
+body in its own static function if that makes sense semantically, but I
+don't know enough (anything) about the driver to know. Anyway, that's
+all a matter of taste and actually makes the patch quite a bit larger.
 
-The system will account this as a spurious interrupt, the debug
-message is not needed.
+So whichever way you decide on feel free to add:
 
-> +	iowrite32(ioread32(reg_count(cpu)), reg_compare(cpu));
-> +	dev->event_handler(dev);
-> +	return IRQ_HANDLED;
-> +}
-> +
-> +static int cevt_set_next_event(ulong delta, struct clock_event_device *dev)
-> +{
-> +	u32 next;
-> +	int cpu;
-> +
-> +	cpu = cpumask_first(dev->cpumask);
-> +	next = ioread32(reg_count(cpu)) + delta;
-> +	iowrite32(next, reg_compare(cpu));
-> +
-> +	if ((s32)(next - ioread32(reg_count(cpu))) < ECONET_MIN_DELTA / 2)
-> +		return -ETIME;
-> +
-> +	return 0;
-> +}
-> +
-> +static int cevt_init_cpu(uint cpu)
-> +{
-> +	struct clock_event_device *cd = &per_cpu(econet_timer_pcpu, cpu);
-> +	u32 reg;
-> +
-> +	pr_info("%s: Setting up clockevent for CPU %d\n", cd->name, cpu);
+Tested-by: Niklas Schnelle <niks@kernel.org>
 
-That is more debug information
-
-> +	reg = ioread32(reg_ctl(cpu)) | ctl_bit_enabled(cpu);
-> +	iowrite32(reg, reg_ctl(cpu));
-> +
-> +	enable_percpu_irq(cd->irq, IRQ_TYPE_NONE);
-> +
-> +	/* Do this last because it synchronously configures the timer */
-> +	clockevents_config_and_register(
-> +		cd, econet_timer.freq_hz,
-> +		ECONET_MIN_DELTA, ECONET_MAX_DELTA);
-> +
-> +	return 0;
-> +}
-> +
-> +static u64 notrace sched_clock_read(void)
-> +{
-> +	/* Always read from clock zero no matter the CPU */
-> +	return (u64)ioread32(reg_count(0));
-> +}
-> +
-> +/* Init */
-> +
-> +static void __init cevt_dev_init(uint cpu)
-> +{
-> +	iowrite32(0, reg_count(cpu));
-> +	iowrite32(U32_MAX, reg_compare(cpu));
-> +}
-> +
-> +static int __init cevt_init(struct device_node *np)
-> +{
-> +	int i, irq, ret;
-> +
-> +	irq = irq_of_parse_and_map(np, 0);
-> +	if (irq <= 0) {
-> +		pr_err("%pOFn: irq_of_parse_and_map failed", np);
-> +		return -EINVAL;
-> +	}
-> +
-> +	ret = request_percpu_irq(irq, cevt_interrupt, np->name, &econet_timer_pcpu);
-> +
-> +	if (ret < 0) {
-> +		pr_err("%pOFn: IRQ %d setup failed (%d)\n", np, irq, ret);
-> +		goto err_unmap_irq;
-> +	}
-> +
-> +	for_each_possible_cpu(i) {
-> +		struct clock_event_device *cd = &per_cpu(econet_timer_pcpu, i);
-> +
-> +		cd->rating		= 310,
-> +		cd->features		= CLOCK_EVT_FEAT_ONESHOT |
-> +					  CLOCK_EVT_FEAT_C3STOP |
-> +					  CLOCK_EVT_FEAT_PERCPU;
-> +		cd->set_next_event	= cevt_set_next_event;
-> +		cd->irq			= irq;
-> +		cd->cpumask		= cpumask_of(i);
-> +		cd->name		= np->name;
-> +
-> +		cevt_dev_init(i);
-> +	}
-> +
-> +	cpuhp_setup_state(CPUHP_AP_MIPS_GIC_TIMER_STARTING,
-> +			  "clockevents/en75/timer:starting",
-> +			  cevt_init_cpu, NULL);
-
-cpuhp_setup_state(CPUHP_AP_ONLINE_DYN, ... ) ?
-
-> +	return 0;
-> +
-> +err_unmap_irq:
-> +	irq_dispose_mapping(irq);
-> +	return ret;
-> +}
-> +
-> +static int __init timer_init(struct device_node *np)
-> +{
-> +	int num_blocks = DIV_ROUND_UP(num_possible_cpus(), 2);
-> +	struct clk *clk;
-> +	int ret;
-> +
-> +	clk = of_clk_get(np, 0);
-> +	if (IS_ERR(clk)) {
-> +		pr_err("%pOFn: Failed to get CPU clock from DT %ld\n", np, PTR_ERR(clk));
-> +		return PTR_ERR(clk);
-> +	}
-> +
-> +	econet_timer.freq_hz = clk_get_rate(clk);
-> +
-> +	for (int i = 0; i < num_blocks; i++) {
-> +		econet_timer.membase[i] = of_iomap(np, i);
-> +		if (!econet_timer.membase[i]) {
-> +			pr_err("%pOFn: failed to map register [%d]\n", np, i);
-> +			return -ENXIO;
-> +		}
-> +	}
-> +
-> +	/* For clocksource purposes always read clock zero, whatever the CPU */
-> +	ret = clocksource_mmio_init(reg_count(0), np->name,
-> +				    econet_timer.freq_hz, 301, ECONET_BITS,
-> +				    clocksource_mmio_readl_up);
-> +	if (ret) {
-> +		pr_err("%pOFn: clocksource_mmio_init failed: %d", np, ret);
-> +		return ret;
-> +	}
-> +
-> +	ret = cevt_init(np);
-> +	if (ret < 0)
-> +		return ret;
-> +
-> +	sched_clock_register(sched_clock_read, ECONET_BITS,
-> +			     econet_timer.freq_hz);
-> +
-> +	pr_info("%pOFn: using %u.%03u MHz high precision timer\n", np,
-> +		econet_timer.freq_hz / 1000000,
-> +		(econet_timer.freq_hz / 1000) % 1000);
-> +
-> +	return 0;
-> +}
-> +
-> +TIMER_OF_DECLARE(econet_timer_hpt, "econet,en751221-timer", timer_init);
-> -- 
-> 2.39.5
-> 
-
--- 
-
- <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+Thanks,
+Niklas
 
