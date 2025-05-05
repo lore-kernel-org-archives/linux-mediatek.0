@@ -4,125 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C2C0C3ABB0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 May 2025 12:38:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 775F6C3ABB0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 May 2025 13:27:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t8GmbzWzwjKBF6Grm3MhKIQ4eVv3NPu5Y9A5XIPvDcA=; b=iETCkCEiQdXyfNv62sS98km205
-	U4h6gLbzHA1RJ9FhyJVTKfHiiOtY03rNKxjj61INZo+6xSiKVYWr8t8v7/o4a4QMOm0JZnU2kOKOl
-	ov8RQiPEM831cNGXy9giBsUr7iYGiiyvxC8mXRwV51KEnHtJcCR1JhcSTRID1W5OOShwSeBr+PcR/
-	ijxlkllHglwsQrCmefKoQ9iGHQLySMQdJ+eM+FRAmsRROKMuz5SHFyDSYYbc/YvEPdHUj7reBmjhL
-	kp3LGnnidISk4+bpUNWZnFSMRJ4HH79eZfGmQ1VRsUmrch0Yp+i0rAhmwIP8TbVZlWzlHCQ+bJYyb
-	FsikPGyg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=0IuXk1SrFGJMTtnEAnwibUqheBYpfG8XrfKmWbN3cUM=; b=2U8yLCOPFfHcpB
+	rb/J+448TUXNcwmzt9UDpQqqmtgOEcFKif9oXeslPyCwyMbU/RgaOIS9tYRR56kBCItcFakuqqmNZ
+	ugXsqhWR2h7u6Pm4VVTJpvf0At0ZvMyD/sPTBVNbKAeEA7gv7ILMj3+CyiRH6GmlFxZiOF/dK6t0O
+	C777LAu0ob9j3fHKIU59oBkBMh7KVhfJtVpr/fkykUtwoKx6bKtn6L+bVOiLtk2fdqmP32yGXG2as
+	wBg8BSvAJPZFZRT/GOjnF+8Kgjm3Pr2hhK+YgX0SVAghMFly+BgQaMVbNiV9HAS8PceKFzhC0oi6m
+	vVeE6HThV1asTC32yhsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBv5G-00000007LU6-2Oaw;
-	Mon, 05 May 2025 12:38:10 +0000
-Received: from relay9-d.mail.gandi.net ([2001:4b98:dc4:8::229])
+	id 1uBvqt-00000007Uhz-26fe;
+	Mon, 05 May 2025 13:27:23 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBuzW-00000007KEm-05GJ;
-	Mon, 05 May 2025 12:32:16 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id B6D95439CF;
-	Mon,  5 May 2025 12:32:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1746448330;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=t8GmbzWzwjKBF6Grm3MhKIQ4eVv3NPu5Y9A5XIPvDcA=;
-	b=hjAbYQVeSBenLJHyzNnH+29VE8aQu5NdvGcBu901d4KAVGGIH73+xJRtOkMBvPMxod408f
-	46cJ1FSSVEaihm6e4YRyxwK6H9vqKbZsH6FeNdjG6qHuFuPEj6MXQaHOvyeCuws3FaQ4ZJ
-	tyEO3Rm3oNF8VG/6gKRuTcpBY8uLXdkn1k8zdS9iBbYepUeyI1mPnliHP5HbYAMf8SxYgc
-	gh87HvhVyGIZKypBQt9lGmUGqhDD0V6ogc/9QAW1FprShOP2PTeLVdqhZJSU2GFelqS2IN
-	VCutWhQebpQ3qtFA8QsGOMpeGLhJbitY4xZjYFl5bgwg7lvllwMgOkM9Yioomg==
-Date: Mon, 5 May 2025 14:31:58 +0200
-From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Cc: Inki Dae <inki.dae@samsung.com>, Kyungmin Park
- <kyungmin.park@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Alim
- Akhtar <alim.akhtar@samsung.com>, Maxime Ripard <mripard@kernel.org>, Louis
- Chauvet <louis.chauvet@bootlin.com>, Maarten Lankhorst
- <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann
- <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter
- <simona@ffwll.ch>, Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong
- <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, Laurent
- Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman
- <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, Jagan Teki
- <jagan@amarulasolutions.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer
- <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Douglas Anderson
- <dianders@chromium.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Krzysztof
- Kozlowski <krzk@kernel.org>, Anusha Srivatsa <asrivats@redhat.com>, Paul
- Kocialkowski <paulk@sys-base.io>, Dmitry Baryshkov <lumag@kernel.org>, Hui
- Pu <Hui.Pu@gehealthcare.com>, Thomas Petazzoni
- <thomas.petazzoni@bootlin.com>, dri-devel@lists.freedesktop.org,
- asahi@lists.linux.dev, linux-kernel@vger.kernel.org,
- chrome-platform@lists.linux.dev, imx@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
- platform-driver-x86@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
- linux-stm32@st-md-mailman.stormreply.com, Adam Ford <aford173@gmail.com>,
- Adrien Grassein <adrien.grassein@gmail.com>, Aleksandr Mishin
- <amishin@t-argos.ru>, Andy Yan <andy.yan@rock-chips.com>, AngeloGioacchino
- Del Regno <angelogioacchino.delregno@collabora.com>, Benson Leung
- <bleung@chromium.org>, Biju Das <biju.das.jz@bp.renesas.com>, Christoph
- Fritz <chf.fritz@googlemail.com>, Cristian Ciocaltea
- <cristian.ciocaltea@collabora.com>, Detlev Casanova
- <detlev.casanova@collabora.com>, Dharma Balasubiramani
- <dharma.b@microchip.com>, Guenter Roeck <groeck@chromium.org>, Heiko
- Stuebner <heiko@sntech.de>, Jani Nikula <jani.nikula@intel.com>, Janne
- Grunau <j@jannau.net>, Jerome Brunet <jbrunet@baylibre.com>, Jesse Van
- Gavere <jesseevg@gmail.com>, Kevin Hilman <khilman@baylibre.com>, Kieran
- Bingham <kieran.bingham+renesas@ideasonboard.com>, Liu Ying
- <victor.liu@nxp.com>, Manikandan Muralidharan <manikandan.m@microchip.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, Phong LE
- <ple@baylibre.com>, Sasha Finkelstein <fnkl.kernel@gmail.com>, Sugar Zhang
- <sugar.zhang@rock-chips.com>, Sui Jingfeng <sui.jingfeng@linux.dev>, Tomi
- Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, Vitalii Mordan
- <mordan@ispras.ru>, Ilpo =?UTF-8?B?SsOkcnZpbmVu?=
- <ilpo.jarvinen@linux.intel.com>, Bryan O'Donoghue
- <bryan.odonoghue@linaro.org>, Hans de Goede <hdegoede@redhat.com>, Uwe
- =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <u.kleine-koenig@baylibre.com>, "Rob
- Herring (Arm)" <robh@kernel.org>, Hsin-Te Yuan <yuanhsinte@chromium.org>,
- Pin-yen Lin <treapking@chromium.org>, Xin Ji <xji@analogixsemi.com>,
- Aradhya Bhatia <a-bhatia1@ti.com>, Tomi Valkeinen
- <tomi.valkeinen@ideasonboard.com>, Ian Ray <ian.ray@ge.com>, Martyn Welch
- <martyn.welch@collabora.co.uk>, Peter Senna Tschudin
- <peter.senna@gmail.com>, Russell King <linux@armlinux.org.uk>, Herve Codina
- <herve.codina@bootlin.com>, Linus Walleij <linus.walleij@linaro.org>,
- Abhinav Kumar <quic_abhinavk@quicinc.com>, Bjorn Andersson
- <quic_bjorande@quicinc.com>, Marijn Suijten
- <marijn.suijten@somainline.org>, Rob Clark <robdclark@gmail.com>
-Subject: Re: (subset) [PATCH v2 00/34] drm: convert all bridges to
- devm_drm_bridge_alloc()
-Message-ID: <20250505143158.75541d7c@booty>
-In-Reply-To: <9afd098c-edd3-44fa-8efe-99f2e9c9a525@oss.qualcomm.com>
-References: <20250424-drm-bridge-convert-to-alloc-api-v2-0-8f91a404d86b@bootlin.com>
-	<174591887152.961603.7706063017853945511.b4-ty@bootlin.com>
-	<832a9db0-cf8a-4d35-8a98-08053fbd6723@bootlin.com>
-	<20250430-arrogant-marmoset-of-justice-92ced3@houat>
-	<20250505130648.22ec8716@booty>
-	<9afd098c-edd3-44fa-8efe-99f2e9c9a525@oss.qualcomm.com>
-Organization: Bootlin
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
+	id 1uBvnW-00000007U1e-0mhm;
+	Mon, 05 May 2025 13:23:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1746451432;
+	bh=QbkkmaHyuZnAj+y3SRqnQ7lx5DMjnVPYMxS1NGgHdQs=;
+	h=From:Subject:Date:To:Cc:From;
+	b=LKvNofMEwOWJfNjV8DSgo3WC7lqIRzc+emoZdyzefyZvjBPQs7q8EfbnQ4xsS26tY
+	 rfYPeEMTYjDyV786Bfgmp4DoPpoutZP73w1DaZHxMQUNf8awO7oz4Q4N2ytYm3qLme
+	 7ezsdHGfYjuC+/xD83kH38J4JJhtNCiyqgMeeXWbjnWyoIQVNqbkxwMSS9IUvySuL3
+	 J49viIy3cBJEvpa5HE91d5dFVqronQyeBGDSt9sCfQ92R974VUQOzD7/LTMmFP1fuj
+	 uGjlohK3cM6h5aEX+yiJVEyfzFu8DnGaCb6l9G5bNTbXe0ghvfsiAXK13j/xiDP1bG
+	 WP9aKbXs3HKqA==
+Received: from apertis-1.home (2a01cb0892F2D600C8f85CF092d4aF51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: jmassot)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0CCDF17E02BE;
+	Mon,  5 May 2025 15:23:51 +0200 (CEST)
+From: Julien Massot <julien.massot@collabora.com>
+Subject: [PATCH 0/4] mt8395/mt6359: Fix several dtb-check errors
+Date: Mon, 05 May 2025 15:23:36 +0200
+Message-Id: <20250505-mt8395-dtb-errors-v1-0-9c4714dcdcdb@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-GND-State: clean
-X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvkeduuddtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvvefukfgjfhhoofggtgfgsehtjeertdertddvnecuhfhrohhmpefnuhgtrgcuvegvrhgvshholhhiuceolhhutggrrdgtvghrvghsohhlihessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnheptdeljeejuddvudetffdtudelfedugfduledtueffuedufefgudegkeegtdeihedunecuffhomhgrihhnpehkvghrnhgvlhdrohhrghdpsghoohhtlhhinhdrtghomhenucfkphepvdgrtddvmeeijedtmedvtddvtdemvggrtddumegsvgegudemleehvgejmeefgeefmeeludefvgenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpedvrgdtvdemieejtdemvddtvddtmegvrgdtudemsggvgedumeelhegvjeemfeegfeemledufegvpdhhvghlohepsghoohhthidpmhgrihhlfhhrohhmpehluhgtrgdrtggvrhgvshholhhisegsohhothhlihhnrdgtohhmpdhnsggprhgtphhtthhopeelgedprhgtphhtthhopegumhhithhrhidrsggrrhihshhhkhhovhesohhsshdrqhhurghltghomhhmrdgtohhmpdhrtghpthhtohepihhnkhhirdgurggvsehsrghmshhunhhgrdgtohhmpdhrtghpt
- hhtohepkhihuhhnghhmihhnrdhprghrkhesshgrmhhsuhhnghdrtghomhdprhgtphhtthhopehsfidtfeduvddrkhhimhesshgrmhhsuhhnghdrtghomhdprhgtphhtthhopegrlhhimhdrrghkhhhtrghrsehsrghmshhunhhgrdgtohhmpdhrtghpthhtohepmhhrihhprghrugeskhgvrhhnvghlrdhorhhgpdhrtghpthhtoheplhhouhhishdrtghhrghuvhgvthessghoohhtlhhinhdrtghomhdprhgtphhtthhopehmrggrrhhtvghnrdhlrghnkhhhohhrshhtsehlihhnuhigrdhinhhtvghlrdgtohhm
-X-GND-Sasl: luca.ceresoli@bootlin.com
+X-B4-Tracking: v=1; b=H4sIANi7GGgC/x2MuwqAMAwAf0UyG2hrxeqviIOPVDPYSioiiP9uk
+ ZtuuHsgkTAl6IoHhC5OHEMWXRYwb2NYCXnJDkaZWmVwP13V1ricE5JIlITK2cb7WRtvLeTuEPJ
+ 8/89+eN8PmWY0omMAAAA=
+X-Change-ID: 20250505-mt8395-dtb-errors-0847ffc12f44
+To: kernel@collabora.com, Sen Chu <sen.chu@mediatek.com>, 
+ Sean Wang <sean.wang@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>, 
+ Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
+ Hui Liu <hui.liu@mediatek.com>, Yong Wu <yong.wu@mediatek.com>, 
+ Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, 
+ Robin Murphy <robin.murphy@arm.com>, 
+ Tinghan Shen <tinghan.shen@mediatek.com>
+Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, iommu@lists.linux.dev, 
+ Julien Massot <julien.massot@collabora.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250505_053214_599567_F3549B67 
-X-CRM114-Status: GOOD (  25.10  )
+X-CRM114-CacheID: sfid-20250505_062354_390957_89512433 
+X-CRM114-Status: UNSURE (   9.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,49 +89,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Dmitry,
+Hi,
+This patch series addresses several dtb-check errors reported for the mt8395-genio-1200-evk.dtb and mt8395-radxa-nio-12l.dtb device trees.
 
-On Mon, 5 May 2025 14:58:58 +0300
-Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com> wrote:
+The fixes include:
+- Adding the missing #sound-dai-cells property in the mt6397 binding.
+- Allowing up to 5 interrupts in the MediaTek IOMMU binding to support MT8395 properly.
+- Defining the required compatible property in the regulators node of the mt6359.dtsi.
+- Renaming the rtc node to match expected schema naming.
 
-> On 05/05/2025 14:06, Luca Ceresoli wrote:
-> > Inki, Kyungmin, Seung-Woo, Alim,
-> > 
-> > On Wed, 30 Apr 2025 10:08:14 +0200
-> > Maxime Ripard <mripard@kernel.org> wrote:
-> >   
-> >> Inki, Kyungmin, Seung-Woo, sorry for the mishap. Do you agree with the
-> >> following patch, and it going through drm-misc?
-> >>
-> >> https://lore.kernel.org/dri-devel/20250424-drm-bridge-convert-to-alloc-api-v2-14-8f91a404d86b@bootlin.com/
-> >>
-> >> If not, we'll revert.  
-> > 
-> > Did you have a chance to have a look at the patch mentioned by Maxime?
-> > 
-> > It was applied to drm-misc-next by mistake. Not your mistake of course,
-> > but now it's there so if you don't reply anything it will have to be
-> > reverted, and then sent again to go through all the review process to
-> > be hopefully re-applied in the future.
-> > 
-> > If you agree with keeping it in drm-misc-next, that would be less noise
-> > for everybody.
-> > 
-> > I'm going to send v3 very soon, so it would be good to decide what to
-> > do before that.  
-> 
-> For the record: even though I'm not happy with msm-related patches going 
-> through drm-misc without additional ack from our side, I think reverting 
-> those and reapplying them later will create a bigger mess. So, I'm fine 
-> with keeping drm/msm/* bridged patches in.
+Signed-off-by: Julien Massot <julien.massot@collabora.com>
+---
+Julien Massot (4):
+      dt-bindings: mfd: mediatek: mt6397: Add #sound-dai-cells property
+      dt-bindings: iommu: mediatek: mt8195 Accept up to 5 interrupts
+      arm64: dts: mt6359: Add missing 'compatible' property to regulators node
+      arm64: dts: mt6359: Rename RTC node to match binding expectations
 
-That was my understanding of your previous e-mail, but thanks for
-having made it explicit.
+ Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml | 3 ++-
+ Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml  | 3 +++
+ arch/arm64/boot/dts/mediatek/mt6359.dtsi                    | 4 +++-
+ 3 files changed, 8 insertions(+), 2 deletions(-)
+---
+base-commit: 407f60a151df3c44397e5afc0111eb9b026c38d3
+change-id: 20250505-mt8395-dtb-errors-0847ffc12f44
 
-Luca
-
+Best regards,
 -- 
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+Julien Massot <julien.massot@collabora.com>
+
 
