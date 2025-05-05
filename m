@@ -4,70 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03311C3ABB0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 May 2025 11:07:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AA74C3ABB6
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 May 2025 11:17:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4MhGsI2EbyH3hc3EXge2Ok/O3ysmCRWNeiIpRKl0bo4=; b=M2QFdNX0jx2EarsDnhsOHsxkWz
-	4cB+70fhEclKJhFlyCaiHGhkuZKjnbo8lZKWOXZ2JWjZ0x6cDXn2h1AL+WgXdaXbohb/9B/4wYlzR
-	ERQMzGMPfUXzrzWpQpkBtLwSSBzTX5pF05nVJdRGapNi8CRCH6sOyCiXr0a2uITfWFqUDpbN1CW47
-	G3J6jZgbQIOz2xPXdRVFVWTyVL+bvxwVt7o8OwpuXbkRG70y1L4cmwIw1sVMs4DzE0JA5THAVq6Iz
-	VDcd6VKfv+kLQlCrJeNReBSBINu80utciNIKjAyG2C5BhcAz3viuZv72hdKtt2Fle1qQjdAkFpNhz
-	FiXW3Rxw==;
+	bh=PR/1TFPITj+MSR2NV1inwmG355HiaGH8G5lNmd8tBP4=; b=MNU8UVnpLiS3wayQ/neFesPyFp
+	Lfr0Hf3yPIl92Cjg4keiqMnoCpDp6pgJBO5dDiKIxRvxJehfzgOfLx/gHLwqsetTPdH/+4a7TG1zA
+	jss31XZG2XQteJO45T1yhnYz0neYeZkiWjS21MUXl8811k6w8koxsENZgfxuz+1f32BWNwlH9e9lM
+	r2/u52tFK9BjBIAYevM4Sxe9GAeBKUZByiLrLLwRj+uS4gjd8lkAyAPyRlynMFGZVI1D1+KtqoW/U
+	hkyJTmsu+r3VMzyrpc3kn3EoohS+E/ldwzOYnmnBgxM0HTgN/gbDrU6br/7wfwYysUxOK+UhcFqFk
+	LvVCDDrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBtfG-000000076iw-05zK;
-	Mon, 05 May 2025 11:07:14 +0000
-Received: from relay7-d.mail.gandi.net ([2001:4b98:dc4:8::227])
+	id 1uBtoo-000000078gJ-2hiC;
+	Mon, 05 May 2025 11:17:06 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBtfC-000000076hz-2PZv;
-	Mon, 05 May 2025 11:07:12 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 433D443233;
-	Mon,  5 May 2025 11:06:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1746443223;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=4MhGsI2EbyH3hc3EXge2Ok/O3ysmCRWNeiIpRKl0bo4=;
-	b=EOb3oUa1DKhQxgB28CR2wdYNZDkW5kb7zZ+egfQDcKeyUiJ+3s5hrBQEK32Laci8oYNbEM
-	OF/6FJ81JC9ER9MCDPfm3DJKwHYwXvm9BFTaPpPRJkeu41eU3spHBce9bmliA0oBhYQ4ze
-	AGnzKk/cFNK4Y5+5A5JlPp1NRYHjQhQRsnA5X075tHVNLg6fzWimigCoP/wbk9BZGNPFyy
-	25st1+P47zeaWIOGIRg2XJ8un3lPPyWU24XEhUwgjQ6SYDxjHrCI4cq3aTiRtC60imY1yW
-	ST70x6y44sWQ/Lz+O1QYqD7FEKTW135y6myH23veuat+2D3xlhpkPgCUnizCfQ==
-Date: Mon, 5 May 2025 13:06:48 +0200
-From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-To: Inki Dae <inki.dae@samsung.com>, Kyungmin Park
- <kyungmin.park@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, Alim
- Akhtar <alim.akhtar@samsung.com>
-Cc: Maxime Ripard <mripard@kernel.org>, Louis Chauvet <louis.chauvet@bootlin.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, Jagan Teki <jagan@amarulasolutions.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, Douglas Anderson <dianders@chromium.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Anusha Srivatsa <asrivats@redhat.com>, Paul Kocialkowski <paulk@sys-base.io>, Dmitry Baryshkov <lumag@kernel.org>, Hui Pu <Hui.Pu@gehealthcare.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, dri-devel@lists.freedesktop.org, asahi@lists.linux.dev, linux-kernel@vger.kernel.org, chrome-platform@lists.linux.dev, imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org, platform-driver-x86@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org, linux-stm32@st-md-mailman.stormreply.com, Adam Ford <aford173@gmail.com>, Adrien Grassein <adrien.grassein@gmail.com>, Aleksandr Mishin <amishin@t-argos.ru>, Andy Yan <andy.yan@rock-chips.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Benson Leung <bleung@chromium.org>, Biju Das <biju.das.jz@bp.renesas.com>, Christoph Fritz <chf.fritz@googlemail.com>, Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, Detlev Casanova <detlev.casanova@collabora.com>, Dharma Balasubiramani <dharma.b@microchip.com>, Guenter Roeck <groeck@chromium.org>, Heiko Stuebner <heiko@sntech.de>, Jani Nikula <jani.nikula@intel.com>, Janne Grunau <j@jannau.net>, Jerome Brunet <jbrunet@baylibre.com>, Jesse Van Gavere <jesseevg@gmail.com>, Kevin Hilman <khilman@baylibre.com>, Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, Liu Ying <victor.liu@nxp.com>, Manikandan Muralidharan <manikandan.m@microchip.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, Phong LE <ple@baylibre.com>, Sasha Finkelstein <fnkl.kernel@gmail.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, Sui Jingfeng <sui.jingfeng@linux.dev>, Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, Vitalii Mordan <mordan@ispras.ru>, Ilpo =?UTF-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>, Bryan O'Donoghue <bryan.odonoghue@linaro.org>, Hans de Goede <hdegoede@redhat.com>, Uwe =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <u.kleine-koenig@baylibre.com>, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, "Rob Herring (Arm)" <robh@kernel.org>, Hsin-Te Yuan <yuanhsinte@chromium.org>, Pin-yen Lin <treapking@chromium.org>, Xin Ji <xji@analogixsemi.com>, Aradhya Bhatia <a-bhatia1@ti.com>, Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, Ian Ray <ian.ray@ge.com>, Martyn Welch <martyn.welch@collabora.co.uk>, Peter Senna Tschudin <peter.senna@gmail.com>, Russell King <linux@armlinux.org.uk>, Herve Codina <herve.codina@bootlin.com>, Alim Akhtar <alim.akhtar@samsung.com>, Linus Walleij <linus.walleij@linaro.org>, Abhinav Kumar <quic_abhinavk@quicinc.com>, Bjorn Andersson <quic_bjorande@quicinc.com>, Marijn Suijten <marijn.suijten@somainline.org>, Rob Clark <robdclark@gmail.com>, Sean Paul <sean@poorly.run>, Helge Deller <deller@gmx.de>, Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Philippe Cornu <philippe.cornu@foss.st.com>, Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>, Yannick Fertre
- <yannick.fertre@foss.st.com>, =?UTF-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, Dave Stevenson <dave.stevenson@raspberrypi.com>, Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Alain Volmat <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>, Michal Simek <michal.simek@amd.com>
-Subject: Re: (subset) [PATCH v2 00/34] drm: convert all bridges to
- devm_drm_bridge_alloc()
-Message-ID: <20250505130648.22ec8716@booty>
-In-Reply-To: <20250430-arrogant-marmoset-of-justice-92ced3@houat>
-References: <20250424-drm-bridge-convert-to-alloc-api-v2-0-8f91a404d86b@bootlin.com>
-	<174591887152.961603.7706063017853945511.b4-ty@bootlin.com>
-	<832a9db0-cf8a-4d35-8a98-08053fbd6723@bootlin.com>
-	<20250430-arrogant-marmoset-of-justice-92ced3@houat>
-Organization: Bootlin
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
+	id 1uBtom-000000078er-1rpd
+	for linux-mediatek@lists.infradead.org;
+	Mon, 05 May 2025 11:17:05 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-43edecbfb94so35102445e9.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 05 May 2025 04:17:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1746443822; x=1747048622; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=PR/1TFPITj+MSR2NV1inwmG355HiaGH8G5lNmd8tBP4=;
+        b=cQ5HgKwFBHnqV4aTk4rGj2YHBp8B9zJ8WdbStrbwaUG/UI670LYLyw7IVEDCGXeA0W
+         6KApkw/DMQQBs2mFTtPDPK7EGs2czNQOu/+4lYNySbLgRha9NyhN1SxKe3asBO2JywR0
+         a0xaIji474nZH55Rfcmsu26KM8yDRCRr6oNVwjcpbpv69TViMf8kf8RQ60kwuD0311YP
+         j4HZpcQH6ivEisHvQPkhXr38HFqwo2Kq30vW+pWLxo8lah4WSGIcG1K352BO/T44lCsj
+         MoM/MJkv7SpoRYK9YoSlcR59QSMQTLX5OZDDuZiUfSXW43PcZtOZKGkVmWLD5FkVdXQn
+         a+ew==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1746443822; x=1747048622;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=PR/1TFPITj+MSR2NV1inwmG355HiaGH8G5lNmd8tBP4=;
+        b=oPxTbJpabTnWSegqY5qAk0m+aTz9sdT4MYhQ1EmVysEGOMS74MdufLWYHJ1KGTDo1C
+         z/LNyRx2b99VRjPH7OxSwL2zPmGI2++CnrTVR8EMj5Qjkn0eQWnjXvcQkYbRC108+iT7
+         kqSQG/t+m3xqsfU0A/NN5ftjRA1eYWL/wAH5X7CU7wI+u9GmRKRpX7p7WpNxlSWrcxan
+         cTtca3bAdK/Ej5hTGE653hEQefkKyIZ0D5evpQcRBQzpG1vy4qRW2IMoVECYLWmEhTb/
+         s+A1BH9kwudoPevpd8ypXdrggmnmpmk1xn7Bp+LyIIWi9wVYeuOn9Gtj9AkZuDd8TIIs
+         MD9A==
+X-Forwarded-Encrypted: i=1; AJvYcCWlHMNJVwdnrDDtxX1dCnI6wrj+HczJfkr7rlTldSosDLrDFfYdIBrlL9m4DHoixEqEZ2DBMzyRlh7FaZ91zg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw7AHbRGvGp8oFak/tohDQ1tK20nxmiAC5dZZp+czb/3GE1m37A
+	JX5Fx189rn6MTDKgOgiAnGZU1yYy2jTyLLnbevkVY+ijuuUcatRHHU4tdAJjkRs=
+X-Gm-Gg: ASbGncuG7uFXwsOp5qEhKABxABP3ikjqTEfwiKn5XBxsDBtG6WQ8/4B2DrqQLUHaG9v
+	DNU5tAa5L0nbtUuFfQp71iNhmqw9smx6z5LEGTqqDJOa2puwb0a6TUOP5a8mN4p65nYrpArFQnf
+	GAefwpWgC3UNyqzZemh/FZQ206GVd7BGz6I7MF00cORjoeZLzkrbyvbPqKE0zwnT3XNvZ5ULtkv
+	2yEbLAUWAiiMMzw08WFmLLqCoLnVBPGIB6EELYymJreDYaRl1nn4XzxRdW0btbQTqGF8fy7YSCL
+	qJJXrPzXRFLnA92fT+BwkbmDMOMRa10l4XqAN2DNhC4YPAagZOyTmzSGktUII4jP0ycNTewmxP4
+	=
+X-Google-Smtp-Source: AGHT+IFXGyrq6AF4eSKBqMr0ZHG5ODbF+SMMKNV3Hl/UrsQRAKrSSv09aRoM2DkTJis6kpOovgBnAg==
+X-Received: by 2002:a05:600c:83cd:b0:43c:fcb1:528a with SMTP id 5b1f17b1804b1-441c48aa481mr62039405e9.6.1746443821195;
+        Mon, 05 May 2025 04:17:01 -0700 (PDT)
+Received: from [10.194.152.213] (71.86.95.79.rev.sfr.net. [79.95.86.71])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-441b2b20c3fsm177760595e9.28.2025.05.05.04.16.59
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 05 May 2025 04:17:00 -0700 (PDT)
+Message-ID: <9b93c67c-b163-4026-be7a-a8761a0f21f0@linaro.org>
+Date: Mon, 5 May 2025 13:16:58 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-GND-State: clean
-X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvkedtleefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvvefukfgjfhhoofggtgfgsehtjeertdertddvnecuhfhrohhmpefnuhgtrgcuvegvrhgvshholhhiuceolhhutggrrdgtvghrvghsohhlihessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnheptdeljeejuddvudetffdtudelfedugfduledtueffuedufefgudegkeegtdeihedunecuffhomhgrihhnpehkvghrnhgvlhdrohhrghdpsghoohhtlhhinhdrtghomhenucfkphepvdgrtddvmeeijedtmedvtddvtdemvggrtddumegsvgegudemleehvgejmeefgeefmeeludefvgenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpedvrgdtvdemieejtdemvddtvddtmegvrgdtudemsggvgedumeelhegvjeemfeegfeemledufegvpdhhvghlohepsghoohhthidpmhgrihhlfhhrohhmpehluhgtrgdrtggvrhgvshholhhisegsohhothhlihhnrdgtohhmpdhnsggprhgtphhtthhopedutdelpdhrtghpthhtohepmhhrihhprghrugeskhgvrhhnvghlrdhorhhgpdhrtghpthhtoheplhhouhhishdrtghhrghuvhgvthessghoohhtlhhinhdrtghomhdprhgtphhtthhopehinhhkihdru
- ggrvgesshgrmhhsuhhnghdrtghomhdprhgtphhtthhopehkhihunhhgmhhinhdrphgrrhhksehsrghmshhunhhgrdgtohhmpdhrtghpthhtohepshiftdefuddvrdhkihhmsehsrghmshhunhhgrdgtohhmpdhrtghpthhtohepmhgrrghrthgvnhdrlhgrnhhkhhhorhhstheslhhinhhugidrihhnthgvlhdrtghomhdprhgtphhtthhopehtiihimhhmvghrmhgrnhhnsehsuhhsvgdruggvpdhrtghpthhtoheprghirhhlihgvugesghhmrghilhdrtghomh
-X-GND-Sasl: luca.ceresoli@bootlin.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 5/7] dt-bindings: vendor-prefixes: Add SmartFiber
+To: Caleb James DeLisle <cjd@cjdns.fr>, linux-mips@vger.kernel.org
+Cc: tglx@linutronix.de, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, tsbogend@alpha.franken.de, daniel.lezcano@linaro.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ benjamin.larsson@genexis.eu, linux-mediatek@lists.infradead.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+References: <20250430133433.22222-1-cjd@cjdns.fr>
+ <20250430133433.22222-6-cjd@cjdns.fr>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250430133433.22222-6-cjd@cjdns.fr>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250505_040711_248248_CBAD881B 
-X-CRM114-Status: GOOD (  13.33  )
+X-CRM114-CacheID: sfid-20250505_041704_499058_25D871FA 
+X-CRM114-Status: UNSURE (   5.85  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,36 +105,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Inki, Kyungmin, Seung-Woo, Alim,
-
-On Wed, 30 Apr 2025 10:08:14 +0200
-Maxime Ripard <mripard@kernel.org> wrote:
-
-> Inki, Kyungmin, Seung-Woo, sorry for the mishap. Do you agree with the
-> following patch, and it going through drm-misc?
+On 30/4/25 15:34, Caleb James DeLisle wrote:
+> Add "smartfiber" vendor prefix for manufactorer of EcoNet based boards.
 > 
-> https://lore.kernel.org/dri-devel/20250424-drm-bridge-convert-to-alloc-api-v2-14-8f91a404d86b@bootlin.com/
-> 
-> If not, we'll revert.
+> Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> ---
+>   Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
+>   1 file changed, 2 insertions(+)
 
-Did you have a chance to have a look at the patch mentioned by Maxime?
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-It was applied to drm-misc-next by mistake. Not your mistake of course,
-but now it's there so if you don't reply anything it will have to be
-reverted, and then sent again to go through all the review process to
-be hopefully re-applied in the future.
-
-If you agree with keeping it in drm-misc-next, that would be less noise
-for everybody.
-
-I'm going to send v3 very soon, so it would be good to decide what to
-do before that.
-
-Best regards,
-Luca
-
--- 
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
 
