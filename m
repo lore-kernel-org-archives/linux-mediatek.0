@@ -4,66 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23DAAC3ABB0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 May 2025 14:48:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8307EC3ABB0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 May 2025 14:54:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
 	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
 	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1ZMcQOTPYoY/XJg7a6fu3p2pg9ybeKv//hymv08vTd8=; b=IktJPuFPD5phyS5Qsdp3D3CcIf
-	F91bYby9z2LIGkfd9HnqejIdUUtwXnPGNvHaj4iquvH5Mwygu9i9r72T70YhKv6IAfq4Fxhs1DRaJ
-	Okk2KqYpMuexirU3Zbm9y+gmUxKqPFjCJjDi9e1sPwaM7cKoIrUGoBEY8kC1gGMzbAX4VMhPOVU3d
-	eDtieYQOzEDde3GpY7qoig4jkwq9C+Pu55pFINMucSw/+iFZcpVWhhPY0TajX+K0d+ouC2ejxY5J6
-	Rcy/IYEEbIOrazQMGGk5livHaj4z06yq6lodih+AHz6qaDpUBBEwVBb9eJwsd3CViw9BeNPPa858m
-	OqaUuvJg==;
+	bh=paLcn7Ld5gLCLJS2ckZV+xVFlksQwjxjh3Jth9hvDrE=; b=z5C9U7VjcuukdIwaKuPrChVPiM
+	0/t993H2YIA5C/ras8TwxBwhe7n4ndXrQmgJAi1CD0zXITLbpZrc0dK15ctix+n74V0RAn+0v6c6M
+	1pXmN4j/AIzlMOzuzkh27R0efXJl/9jyX72ic3BAuLCjcZhiFZFiSxlmZRKGSZg8t+oNquk1/hEcB
+	7j1Wv700PkQa+qeUYSi7at+5AdgFRc6S7YxP7dOwMQVIVv/E5bfIs3xNvcCaC4D0APGTehkgoz8kr
+	uWR1tuXTOPXZxhAWwdBRNmeB/FQOiGS71q9aq1TXzzK6pQ8wFP5zMTDuIwE9HMBGvFDQDWiXKuVix
+	NcJigmtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBx72-00000007gHZ-0871;
-	Mon, 05 May 2025 14:48:08 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uBxCu-00000007hqZ-2Vf2;
+	Mon, 05 May 2025 14:54:12 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBx38-00000007fOM-3WQF;
-	Mon, 05 May 2025 14:44:08 +0000
+	id 1uBx3E-00000007fPY-2r6e;
+	Mon, 05 May 2025 14:44:12 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 193804A664;
-	Mon,  5 May 2025 14:44:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 640C8C4CEE4;
-	Mon,  5 May 2025 14:44:05 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 889BA6115D;
+	Mon,  5 May 2025 14:43:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 80F22C4CEF0;
+	Mon,  5 May 2025 14:44:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746456245;
-	bh=XsyivJj8/un8VajWm2cVmFTi84AikoNwIsIU5NgM5So=;
+	s=k20201202; t=1746456251;
+	bh=vkzC9zv68KsWIrMeAfc6iXVzA8iO3cgRRySvwrwTtVI=;
 	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=YXF5Q6SzRH9qrIY5ncAnSzsiL62jyn0YxgTdye0LjCXXI1mmJgMJwdUL8OlWxBPWu
-	 3/rPuQkd0Q4IqficksX/VSMcaxxcq9Q+i7nerRKCFSD7ciQ0EE8mrX84ZokGjkCB1O
-	 4Bn2SFkAVD4TkxRTZNGJuqzu+xsh+68RvtUc0MwF3gwXYlhL64EGGqOTZSAN+6jGIu
-	 x5KrhQuYdT5YXjY6y3fmNIwuLZr2gKA7KdT+hkkBtGID+VYAChgu8yULSx1dxbsnIE
-	 UawoMF82T+c6uEEHxKhUgd15sI1DRAfycMiYPh0BDi2OnMlTrcO3Onwn0pHeT0TKnq
-	 anlTXuBKiHM0g==
-Date: Mon, 05 May 2025 09:44:04 -0500
+	b=AJBFrTr8gRuydAYqiTXhh0btD+lTuqY2jzFE3q1LbzL+Kff56DrNpOwwjBJXJZebl
+	 OFsbjEIhFh0Rwqumqr+6lKj3l8ggzeY7mC8pziOk+hLvibCM6ya40ueCcpjQYBbT+B
+	 sFbdPeXh945g/Ema75fQGhpi6S1xN1mFFik1PK+9R4sHnF8jzZznStJqYH72yRfbMZ
+	 mvrBXfl1BNVl/HG8sePzywo8sFBtR0xNqwY5T9X2+9YlSrMpqYQTng5O6DnKrJz7uu
+	 2LBpJsaJnsUuwdAvJBfqRzx+TGV/zZrHrf9XUgGNQGZvlDIAaRou/QcyAKHZV3dvvZ
+	 2PhUqqpgJfn9A==
+Date: Mon, 05 May 2025 09:44:10 -0500
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
 From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, kernel@collabora.com, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, 
- Alexandre Mergnat <amergnat@baylibre.com>, 
+Cc: linux-kernel@vger.kernel.org, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Fabien Parent <fparent@baylibre.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
+ Sean Wang <sean.wang@mediatek.com>, linux-mediatek@lists.infradead.org, 
+ Matthias Brugger <matthias.bgg@gmail.com>, wenst@chromium.org, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, devicetree@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org
-To: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-In-Reply-To: <20250502-mt6357-regulator-fixed-compatibles-removal-v1-1-a582c16743fe@collabora.com>
-References: <20250502-mt6357-regulator-fixed-compatibles-removal-v1-1-a582c16743fe@collabora.com>
-Message-Id: <174645593877.1245991.13955388800540703785.robh@kernel.org>
-Subject: Re: [PATCH] arm64: dts: mediatek: mt6357: Drop regulator-fixed
- compatibles
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250505_074406_928143_4B35E7BB 
-X-CRM114-Status: GOOD (  15.60  )
+To: Sirius Wang <sirius.wang@mediatek.com>
+In-Reply-To: <20250505121627.3944728-1-sirius.wang@mediatek.com>
+References: <20250505121627.3944728-1-sirius.wang@mediatek.com>
+Message-Id: <174645594319.1246809.14814085003624998764.robh@kernel.org>
+Subject: Re: [PATCH 0/2] Add mt8189 dts evaluation board and Mafefile
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,25 +73,30 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Fri, 02 May 2025 11:32:10 -0400, Nícolas F. R. A. Prado wrote:
-> Some of the regulators in the MT6357 PMIC dtsi have compatible set to
-> regulator-fixed, even though they don't serve any purpose: all those
-> regulators are handled as a whole by the mt6357-regulator driver. In
-> fact this is the only dtsi in this family of chips where this is the
-> case: mt6359 and mt6358 don't have any such compatibles.
+On Mon, 05 May 2025 20:15:44 +0800, Sirius Wang wrote:
+> MT8189 is a SoC based on 64bit ARMv8 architecture. It contains 6 CA55
+> and 2 CA78 cores. MT8189 share many HW IP with MT8188 series.
 > 
-> A side-effect caused by this is that the DT kselftest, which is supposed
-> to identify nodes with compatibles that can be probed, but haven't,
-> shows these nodes as failures.
+> We add basic chip support for MediaTek MT8189 on evaluation board.
 > 
-> Remove the useless compatibles to move the dtsi in line with the others
-> in its family and fix the DT kselftest failures.
+> In this series, we also add dt-bindings document definition for MT8189.
 > 
-> Fixes: 55749bb478f8 ("arm64: dts: mediatek: add mt6357 device-tree")
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> ---
->  arch/arm64/boot/dts/mediatek/mt6357.dtsi | 10 ----------
->  1 file changed, 10 deletions(-)
+> Sirius Wang (2):
+>   WIP: dt-bindings: arm: Add compatible for MediaTek MT8189
+>   WIP: arm64: dts: mt8189: Add mt8189 dts evaluation board and Mafefile
+> 
+>  .../devicetree/bindings/arm/mediatek.yaml     |   4 +
+>  arch/arm64/boot/dts/mediatek/Makefile         |   1 +
+>  arch/arm64/boot/dts/mediatek/mt8189-evb.dts   |  20 +
+>  arch/arm64/boot/dts/mediatek/mt8189.dtsi      | 441 ++++++++++++++++++
+>  4 files changed, 466 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8189-evb.dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8189.dtsi
+> 
+> --
+> 2.45.2
+> 
+> 
 > 
 
 
@@ -116,93 +115,22 @@ make sure dt-schema is up to date:
 
 
 This patch series was applied (using b4) to base:
- Base: using specified base-commit 37ff6e9a2ce321b7932d3987701757fb4d87b0e6
+ Base: attempting to guess base-commit...
+ Base: tags/next-20250505 (exact match)
 
 If this is not the correct base, please add 'base-commit' tag
 (or use b4 which does this automatically)
 
-New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/mediatek/' for 20250502-mt6357-regulator-fixed-compatibles-removal-v1-1-a582c16743fe@collabora.com:
+New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/mediatek/' for 20250505121627.3944728-1-sirius.wang@mediatek.com:
 
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vfe28: 'clocks' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vfe28: 'power-domains' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vfe28: 'required-opps' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vfe28: 'compatible' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vrf18: 'clocks' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vrf18: 'power-domains' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vrf18: 'required-opps' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vrf18: 'compatible' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vrf12: 'clocks' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vrf12: 'power-domains' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vrf12: 'required-opps' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vrf12: 'compatible' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vcn28: 'clocks' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vcn28: 'power-domains' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vcn28: 'required-opps' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vcn28: 'compatible' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vcn18: 'clocks' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vcn18: 'power-domains' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vcn18: 'required-opps' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vcn18: 'compatible' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vcamio18: 'clocks' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vcamio18: 'power-domains' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vcamio18: 'required-opps' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vcamio18: 'compatible' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vaux18: 'clocks' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vaux18: 'power-domains' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vaux18: 'required-opps' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vaux18: 'compatible' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vaud28: 'clocks' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vaud28: 'power-domains' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vaud28: 'required-opps' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vaud28: 'compatible' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vio28: 'clocks' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vio28: 'power-domains' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vio28: 'required-opps' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vio28: 'compatible' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vio18: 'clocks' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vio18: 'power-domains' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vio18: 'required-opps' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
-arch/arm64/boot/dts/mediatek/mt8365-evk.dtb: pmic (mediatek,mt6357): regulators:ldo-vio18: 'compatible' is a required property
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6357.yaml#
+arch/arm64/boot/dts/mediatek/mt8189-evb.dtb: / (mediatek,mt8189-evb): memory: False schema does not allow {'device_type': ['memory'], 'reg': [[0, 1073741824, 0, 3221225472]]}
+	from schema $id: http://devicetree.org/schemas/root-node.yaml#
+arch/arm64/boot/dts/mediatek/mt8189-evb.dtb: idle-states: 'clusteroff-b', 'clusteroff-l', 'clusteroff-m', 'cpuoff-b', 'cpuoff-l', 'cpuoff-m', 'mcusysoff-b', 'mcusysoff-l', 'mcusysoff-m', 's2idle', 'system-vcore' do not match any of the regexes: '^(cpu|cluster)-', '^pinctrl-[0-9]+$'
+	from schema $id: http://devicetree.org/schemas/cpu/idle-states.yaml#
+arch/arm64/boot/dts/mediatek/mt8189-evb.dtb: idle-states: entry-method:0: 'psci' was expected
+	from schema $id: http://devicetree.org/schemas/cpu/idle-states.yaml#
+arch/arm64/boot/dts/mediatek/mt8189-evb.dtb: serial@11001000 (mediatek,mt6577-uart): Unevaluated properties are not allowed ('uart-line' was unexpected)
+	from schema $id: http://devicetree.org/schemas/serial/mediatek,uart.yaml#
 
 
 
