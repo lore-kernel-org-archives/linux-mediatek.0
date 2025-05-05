@@ -4,73 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B013FC3ABB6
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 May 2025 03:29:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47C28C3ABAC
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 May 2025 03:48:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q696hS+vsZRkW0Vep7Qzgc3VE0/8wcIkbDDUiw2ga4M=; b=fx+HcVpD+Jsn+p0L0sYXlZjfEI
-	i9LwHHJ4jM6jflk75uDjA8co6N7X/9XE8AG3ar9RceHDDWU9Z/MOQfrqTdWtlnje9X5yImqiOmix2
-	VGzW6NXN+TpRXgCjycdV6RdmDzMAThPE2guqNFAJhfBeH+6FR21EHB54gC6oszZLZ2T9inzobe0P8
-	1VC2A7F51fgTnIpLIxx0EgF94sRvnaBFlLJQ8LfLapZsZOIDGuJW7ZtFVCpMAqkMiZmyfBVrkx8Dx
-	LaR8x9Eq5awZq4nWCM4kXd1CMCvRzJ6Aamv0K6h81JBa0gok2aTWFoqo1sf0kRxSsb1P2v1G6KUNr
-	zF6+SklQ==;
+	bh=J5g9XfBF+pgznthD23myAemBU4swzG9EwYfekwxdWxg=; b=LsDH8g/DZyg6y8LkWYjYBm14T8
+	XJYE6PzSz5vr1GKjwH3AG/mKqAIObA0yyUHDoxDTAJn29hbrigQiqZTm+SIXmZwQPmY1ZYpF/QO2/
+	LyZhuvBiwXZzbzKBpavsKLI0CdDnXWsQkUpsA0W+9mJJ7MONKQCQeuqmUZxzvRoY+e8B4aNSfo15G
+	8lJL+vidWHIxC7dWWR/fIzWiqPtjXjXRA/VzsKSoOUv9UJEwv3FRLPRms/ijzzO23oIxsJArCoYME
+	b3jojqLzw9C0bLICslFs3CWw1LUJhL+2tSU1/X4FUXkBxwH0NHL/n8hudBUs8VyQyGCNg4Rm7O2Z+
+	5s77s3TQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uC90F-0000000A01a-31Ze;
-	Tue, 06 May 2025 03:29:55 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1uC9II-0000000A4KX-1XL2;
+	Tue, 06 May 2025 03:48:34 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uC4ur-00000008xkn-3cou;
-	Mon, 05 May 2025 23:08:07 +0000
+	id 1uC4wb-00000008yFx-0Kxp;
+	Mon, 05 May 2025 23:09:53 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 73489A4D33D;
-	Mon,  5 May 2025 23:02:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 57836C4CEE4;
-	Mon,  5 May 2025 23:08:03 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id A4B77629C3;
+	Mon,  5 May 2025 23:09:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D0A12C4CEE4;
+	Mon,  5 May 2025 23:09:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746486484;
-	bh=QZJg/qnDtIKPDm96Agh/Xj3Gqhe9xZPuYljzuQiAzTY=;
+	s=k20201202; t=1746486592;
+	bh=Be4GReE/g1z05i5QPUuyha8uEEyp4SlEvIx2eE1o4SU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=GrGMm+Gu7A//lbkE1XWiuJuAkKK6lxAa3Jxe2DkV7cPzZpAWvKv5CEaQ2Ugy3A6eR
-	 bBl3ssMSXY3MtM510LGq8C2qqn1LRtZ9KW0F9AJtokfUlmliP4wspv3Tlu/Xwz09Eu
-	 5Ebyks4rGxpGrOT13a5plsWdiFOwzgkKR8JCDsrC4q+h4I+5/tnnMIU6/E6wI0UBtu
-	 CLssR5JSXdnXRcipYik+TlmRwTOWJR8sLiNKQGsawqS3vOOt2hmP+qwzzdKiQ8QFyp
-	 t5RUGm9jAn47tjqql0wJM+oCjX2N4SFQu1G0bmtKZZY0k487Zt27nIEIiFYhSalaQQ
-	 1zczHSa0n9Y/w==
+	b=G2Jo3sLCy2stjLd5AzSFvZ5zjHnG4WuhnGjKiIVV7qRmPVaAiIVDkeFhrDeO6wJIB
+	 +Wq13SMCup4WvUwXjrVmL689F+jxBDd1+5oL6DIVAIld6seJmwTQOzsteOlC6mv7gm
+	 62mCrFadG2pFZZudO6i8QSH1V03YPj5WIrC5uG28+pnKAe8P0fkJ7nRtu51k7M/7yS
+	 eHpO0OI+4fTcH814dweQOCuoENAtpuqbYOr2yhqqaSesjE/FIOIdDIwcfvhiybo77T
+	 qbS0DT0wad+UufvBy5GgnydCbjsOKUjt1lN7uJ+sXQ18QLZ9m907PMRe+CsShGx5Ev
+	 2mhxGOwRLoYEQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Mark Brown <broonie@kernel.org>,
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	CK Hu <ck.hu@mediatek.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
 	Sasha Levin <sashal@kernel.org>,
-	lgirdwood@gmail.com,
-	perex@perex.cz,
-	tiwai@suse.com,
+	p.zabel@pengutronix.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
 	matthias.bgg@gmail.com,
-	linux-sound@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.1 054/212] ASoC: mediatek: mt6359: Add stub for mt6359_accdet_enable_jack_detect
-Date: Mon,  5 May 2025 19:03:46 -0400
-Message-Id: <20250505230624.2692522-54-sashal@kernel.org>
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.1 106/212] drm/mediatek: mtk_dpi: Add checks for reg_h_fre_con existence
+Date: Mon,  5 May 2025 19:04:38 -0400
+Message-Id: <20250505230624.2692522-106-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250505230624.2692522-1-sashal@kernel.org>
 References: <20250505230624.2692522-1-sashal@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-stable-base: Linux 6.1.136
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250505_160805_963140_CA938C0A 
-X-CRM114-Status: UNSURE (   8.88  )
-X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,43 +80,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-[ Upstream commit 0116a7d84b32537a10d9bea1fd1bfc06577ef527 ]
+[ Upstream commit 8c9da7cd0bbcc90ab444454fecf535320456a312 ]
 
-Add a stub for mt6359_accdet_enable_jack_detect() to prevent linker
-failures in the machine sound drivers calling it when
-CONFIG_SND_SOC_MT6359_ACCDET is not enabled.
+In preparation for adding support for newer DPI instances which
+do support direct-pin but do not have any H_FRE_CON register,
+like the one found in MT8195 and MT8188, add a branch to check
+if the reg_h_fre_con variable was declared in the mtk_dpi_conf
+structure for the probed SoC DPI version.
 
-Suggested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-Link: https://patch.msgid.link/20250306-mt8188-accdet-v3-3-7828e835ff4b@collabora.com
-Signed-off-by: Mark Brown <broonie@kernel.org>
+As a note, this is useful specifically only for cases in which
+the support_direct_pin variable is true, so mt8195-dpintf is
+not affected by any issue.
+
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Link: https://patchwork.kernel.org/project/dri-devel/patch/20250217154836.108895-6-angelogioacchino.delregno@collabora.com/
+Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- sound/soc/codecs/mt6359-accdet.h | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/sound/soc/codecs/mt6359-accdet.h b/sound/soc/codecs/mt6359-accdet.h
-index c234f2f4276a1..78ada3a5bfae5 100644
---- a/sound/soc/codecs/mt6359-accdet.h
-+++ b/sound/soc/codecs/mt6359-accdet.h
-@@ -123,6 +123,15 @@ struct mt6359_accdet {
- 	struct workqueue_struct *jd_workqueue;
- };
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index 1fa958e8c40a1..5ad9c384046cb 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -406,12 +406,13 @@ static void mtk_dpi_config_swap_input(struct mtk_dpi *dpi, bool enable)
  
-+#if IS_ENABLED(CONFIG_SND_SOC_MT6359_ACCDET)
- int mt6359_accdet_enable_jack_detect(struct snd_soc_component *component,
- 				     struct snd_soc_jack *jack);
-+#else
-+static inline int
-+mt6359_accdet_enable_jack_detect(struct snd_soc_component *component,
-+				 struct snd_soc_jack *jack)
-+{
-+	return -EOPNOTSUPP;
-+}
-+#endif
- #endif
+ static void mtk_dpi_config_2n_h_fre(struct mtk_dpi *dpi)
+ {
+-	mtk_dpi_mask(dpi, dpi->conf->reg_h_fre_con, H_FRE_2N, H_FRE_2N);
++	if (dpi->conf->reg_h_fre_con)
++		mtk_dpi_mask(dpi, dpi->conf->reg_h_fre_con, H_FRE_2N, H_FRE_2N);
+ }
+ 
+ static void mtk_dpi_config_disable_edge(struct mtk_dpi *dpi)
+ {
+-	if (dpi->conf->edge_sel_en)
++	if (dpi->conf->edge_sel_en && dpi->conf->reg_h_fre_con)
+ 		mtk_dpi_mask(dpi, dpi->conf->reg_h_fre_con, 0, EDGE_SEL_EN);
+ }
+ 
 -- 
 2.39.5
 
