@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB4DEC3ABB9
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 May 2025 22:25:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EECDC3ABB9
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 May 2025 22:31:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BSn9PSWy2SrSLqWDjm6YbrJUcmqXkbwi51MYVoJ6LVI=; b=tTOrr34MbhgMnZQypWVveFWwIc
-	beRrJsySRXjwfJci/0/LlMfOjK5brb3RJSV8AkrY7nkxUHpEM4Nniidf/6h421qQk+Zo+OKmGiiK4
-	Cxnfm+aMZultoLevWVOEl9sHYo/MAavyOpfsZBNBh3Kd5m/XqSjjeoquMeNfwsmu3/Byx5oyryMt8
-	pMyy7kqK5+bpfCjvYLCfDpBCiB07nfQE9TyXWhuepAsrqVAs6TicwMeBg+Qco2bT7DjZYLG/0WhgB
-	bp1nsBMRoK1of/OJa5FKBKfJwLR021Tj0YXIeFWC7hkIp+asky9mOOVhwC3lQmDmVv5wca+90+XtH
-	9Q11KGQA==;
+	bh=Ga66tI7ZBv/7mBhdJQc1HXQoEY3zEWmy/qJWiwMUdZA=; b=WfflmZyswSKq/F9GK3BjHVf5S/
+	c5UTXpOfzNK7wqxPhDskEaGt4LYugPSodlX8vgaTZz/CBAziyYwVoUkE1rAVsoFOdJ0hTu2kr3pN8
+	F4oAJX6UVxjRhGwBW6MwI1SG1rX2P1nLKUKFNgbfNFgdxYyEp+4Si1PLoIp2Vzj/lWFAuGVvr8O/Z
+	U0tfqBsRGBahVeMbzYdFNS4h8MZaPrW8tQky/XXq6E6tjZFw8NHGN0xZaog24MYEpsx0ppAeybKSV
+	69KBrrx6b72WAQHmmfuyU4b6AFqmP5CP4TAyzvoGeIJ/T43pifWY8D9aJU/pabPpEtt6sGucML5Lh
+	M9gTiMCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uC4FM-00000008kUK-04AJ;
-	Mon, 05 May 2025 22:25:12 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uC4LL-00000008mZZ-2fdW;
+	Mon, 05 May 2025 22:31:23 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uC46B-00000008hog-2ek1;
-	Mon, 05 May 2025 22:15:44 +0000
+	id 1uC47I-00000008i51-143Y;
+	Mon, 05 May 2025 22:16:53 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9747843D05;
-	Mon,  5 May 2025 22:15:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E45ECC4CEEF;
-	Mon,  5 May 2025 22:15:41 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id D94BB629C3;
+	Mon,  5 May 2025 22:16:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C9FF7C4CEEF;
+	Mon,  5 May 2025 22:16:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746483343;
-	bh=8Cl/GBsCTdLlv+kKPgDPHaXk+owKpFJLtSRPbqZ7ywI=;
+	s=k20201202; t=1746483411;
+	bh=immGtHOQNAjbPw7pNkpPl9yR0ILfPCW0XuJiUmFodqk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=XJxdmRYvSaIFAX+wBRFjJih907Z/b0VONKPjcUyNp54+H4L+7lWv2MLsv/qrRwW4g
-	 s06RMwBbv6ZV+RT3MNGz3HORFufjnZ5BDbpl0Y/WobCN5OHXaO99rBgHpPThvUZAiH
-	 rrzRBHzxUstUskzxRB+agZU/pYUI7N/D+LAUsjLoUhnuk5Op+vb+2DgTM+D8Oqfv3v
-	 LAlWvKPCnApKts6CpVPMpkbqOzOznWOFc1P3OlgqrokBmMGFEAb3Xw5x3soaTkZeLX
-	 L9HiCvdUcXEaJjc9nYCytGgtuPZZA/atBH9XKPjcOu/1VYWxHlbAUdpTesjArKSKuE
-	 nNQ7cnnfmwBuA==
+	b=g3xKHW86fKdCJcarEJf8NkWmuldJEcWx277LGx2iE6v0tXJPjndNzCB4nUmN81dJQ
+	 BRHH80X+HldsSN2Z1AF6Cffxj3cr08ZmN2VligF3BxIirL+G/UITvwqXg1ikx5cGnl
+	 ua9D+KeUHevH2Mgv2Kf+jUbxgBk8kkiO6Qe4liMZNRsIu6kX+0kFbGgkf7x3/BCIPS
+	 BeZfoaDVyBvKYa/HXAD0KvBF4SnhYyVXsQULcuVI9AL8xmIeBxhU/Eh2vE3mNdBQfd
+	 2/caui0LOsB1iJIcfg3/BLtFr3FHPyYv2Jr2Uc+VeWEw3PkWYkXqAsMRqMmVcU/ju0
+	 J2Xwur5gGAn9g==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Hao Qin <hao.qin@mediatek.com>,
-	Luiz Augusto von Dentz <luiz.von.dentz@intel.com>,
+Cc: Shayne Chen <shayne.chen@mediatek.com>,
+	Felix Fietkau <nbd@nbd.name>,
 	Sasha Levin <sashal@kernel.org>,
-	marcel@holtmann.org,
-	luiz.dentz@gmail.com,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	linux-bluetooth@vger.kernel.org,
+	linux-wireless@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.14 044/642] Bluetooth: btmtk: Remove the resetting step before downloading the fw
-Date: Mon,  5 May 2025 18:04:20 -0400
-Message-Id: <20250505221419.2672473-44-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.14 072/642] wifi: mt76: Check link_conf pointer in mt76_connac_mcu_sta_basic_tlv()
+Date: Mon,  5 May 2025 18:04:48 -0400
+Message-Id: <20250505221419.2672473-72-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250505221419.2672473-1-sashal@kernel.org>
 References: <20250505221419.2672473-1-sashal@kernel.org>
@@ -65,10 +65,6 @@ X-stable: review
 X-Patchwork-Hint: Ignore
 X-stable-base: Linux 6.14.5
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250505_151543_704004_14FDEB14 
-X-CRM114-Status: UNSURE (   9.97  )
-X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,52 +79,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Hao Qin <hao.qin@mediatek.com>
+From: Shayne Chen <shayne.chen@mediatek.com>
 
-[ Upstream commit 33634e2ab7c6369391e0ca4b9b97dc861e33d20e ]
+[ Upstream commit 9890624c1b3948c1c7f1d0e19ef0bb7680b8c80d ]
 
-Remove the resetting step before downloading the fw, as it may cause
-other usb devices to fail to initialise when connected during boot
-on kernels 6.11 and newer.
+This is a preliminary patch to introduce MLO support for MT7996 driver.
 
-Signed-off-by: Hao Qin <hao.qin@mediatek.com>
-Signed-off-by: Luiz Augusto von Dentz <luiz.von.dentz@intel.com>
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+Link: https://patch.msgid.link/20250311-mt7996-mlo-v2-10-31df6972519b@kernel.org
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/bluetooth/btmtk.c | 10 ----------
- 1 file changed, 10 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-index 68846c5bd4f79..4390fd571dbd1 100644
---- a/drivers/bluetooth/btmtk.c
-+++ b/drivers/bluetooth/btmtk.c
-@@ -1330,13 +1330,6 @@ int btmtk_usb_setup(struct hci_dev *hdev)
- 		break;
- 	case 0x7922:
- 	case 0x7925:
--		/* Reset the device to ensure it's in the initial state before
--		 * downloading the firmware to ensure.
--		 */
--
--		if (!test_bit(BTMTK_FIRMWARE_LOADED, &btmtk_data->flags))
--			btmtk_usb_subsys_reset(hdev, dev_id);
--		fallthrough;
- 	case 0x7961:
- 		btmtk_fw_get_filename(fw_bin_name, sizeof(fw_bin_name), dev_id,
- 				      fw_version, fw_flavor);
-@@ -1345,12 +1338,9 @@ int btmtk_usb_setup(struct hci_dev *hdev)
- 						btmtk_usb_hci_wmt_sync);
- 		if (err < 0) {
- 			bt_dev_err(hdev, "Failed to set up firmware (%d)", err);
--			clear_bit(BTMTK_FIRMWARE_LOADED, &btmtk_data->flags);
- 			return err;
- 		}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index d0e49d68c5dbf..bafcf5a279e23 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -391,7 +391,7 @@ void mt76_connac_mcu_sta_basic_tlv(struct mt76_dev *dev, struct sk_buff *skb,
+ 		basic->conn_type = cpu_to_le32(CONNECTION_INFRA_BC);
  
--		set_bit(BTMTK_FIRMWARE_LOADED, &btmtk_data->flags);
--
- 		/* It's Device EndPoint Reset Option Register */
- 		err = btmtk_usb_uhw_reg_write(hdev, MTK_EP_RST_OPT,
- 					      MTK_EP_RST_IN_OUT_OPT);
+ 		if (vif->type == NL80211_IFTYPE_STATION &&
+-		    !is_zero_ether_addr(link_conf->bssid)) {
++		    link_conf && !is_zero_ether_addr(link_conf->bssid)) {
+ 			memcpy(basic->peer_addr, link_conf->bssid, ETH_ALEN);
+ 			basic->aid = cpu_to_le16(vif->cfg.aid);
+ 		} else {
 -- 
 2.39.5
 
