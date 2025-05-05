@@ -4,60 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8307EC3ABB0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 May 2025 14:54:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C1C3C3ABB0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 May 2025 15:22:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=paLcn7Ld5gLCLJS2ckZV+xVFlksQwjxjh3Jth9hvDrE=; b=z5C9U7VjcuukdIwaKuPrChVPiM
-	0/t993H2YIA5C/ras8TwxBwhe7n4ndXrQmgJAi1CD0zXITLbpZrc0dK15ctix+n74V0RAn+0v6c6M
-	1pXmN4j/AIzlMOzuzkh27R0efXJl/9jyX72ic3BAuLCjcZhiFZFiSxlmZRKGSZg8t+oNquk1/hEcB
-	7j1Wv700PkQa+qeUYSi7at+5AdgFRc6S7YxP7dOwMQVIVv/E5bfIs3xNvcCaC4D0APGTehkgoz8kr
-	uWR1tuXTOPXZxhAWwdBRNmeB/FQOiGS71q9aq1TXzzK6pQ8wFP5zMTDuIwE9HMBGvFDQDWiXKuVix
-	NcJigmtA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=u9TG3OmSzS8fUS1eTfStK5VQAKwBeZ4see00hs7EtDk=; b=nkZ5sxy5UipeKJZjBjuG9uwZ2K
+	JAf1XrBu3d37s0iDQYbKtvPWJi8kWrC5j0ZI1f6m8ITybQ15g/zD8ng+0TdEOSKVJamNswH1+uQTX
+	6VoiPPvOZYl+1CLP71tlyhUO8cMi6r1gwZRHJIHPfQL8xRwyOXESReJXfgZG4ChXF5sgKFSZ0WuTQ
+	mz1MIS3786221zDf0mi2FhY7nLWyxDh6bIlzYI3Dd0TUIJkHF1Qt6G7pXV8OaItES6+F0wTHX/0Ee
+	Ptg+vROSiT8xoF9EbnVX8SV9q7bAkLr+DFxh9vo6tUPnMZ10KXO90acgMeOguBgcvfUktS2G6DY5u
+	t5wSG6eQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBxCu-00000007hqZ-2Vf2;
-	Mon, 05 May 2025 14:54:12 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uBxeU-00000007oQk-2Znn;
+	Mon, 05 May 2025 15:22:42 +0000
+Received: from relay9-d.mail.gandi.net ([217.70.183.199])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBx3E-00000007fPY-2r6e;
-	Mon, 05 May 2025 14:44:12 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 889BA6115D;
-	Mon,  5 May 2025 14:43:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 80F22C4CEF0;
-	Mon,  5 May 2025 14:44:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746456251;
-	bh=vkzC9zv68KsWIrMeAfc6iXVzA8iO3cgRRySvwrwTtVI=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=AJBFrTr8gRuydAYqiTXhh0btD+lTuqY2jzFE3q1LbzL+Kff56DrNpOwwjBJXJZebl
-	 OFsbjEIhFh0Rwqumqr+6lKj3l8ggzeY7mC8pziOk+hLvibCM6ya40ueCcpjQYBbT+B
-	 sFbdPeXh945g/Ema75fQGhpi6S1xN1mFFik1PK+9R4sHnF8jzZznStJqYH72yRfbMZ
-	 mvrBXfl1BNVl/HG8sePzywo8sFBtR0xNqwY5T9X2+9YlSrMpqYQTng5O6DnKrJz7uu
-	 2LBpJsaJnsUuwdAvJBfqRzx+TGV/zZrHrf9XUgGNQGZvlDIAaRou/QcyAKHZV3dvvZ
-	 2PhUqqpgJfn9A==
-Date: Mon, 05 May 2025 09:44:10 -0500
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1uBxcS-00000007o0E-1qAy;
+	Mon, 05 May 2025 15:20:38 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 389214398E;
+	Mon,  5 May 2025 15:20:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1746458432;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=u9TG3OmSzS8fUS1eTfStK5VQAKwBeZ4see00hs7EtDk=;
+	b=IsYdCFfoHd/qOi+gYYbWTZx9rAYgOwGSN0Eo0YXJnG9B/edlJPMStRCvc+FLKq4wqI/fPT
+	1o0tp81lbGpBiMxcF7EkxBNQLTJ4AW8TE1s3h+3Ao+ryG1FR1N7lvwzYWEpMgHLMK1rp98
+	XLYJTZyxXDkzfobqUvTulr2czf0EOlP64GFNT5AXkWvxB73odvQWCI/huAFffxIc01O/x+
+	jInLvozRhnoxnrD5dAmxc9jlW2nmyCQlvuE4hqgOHFPF/9cYlCwYazKn2p5pp5dpHdAi5j
+	SFvCWFSAfDRERL7wOxHamZgj6g3QGMXJO/fr/76NFpGY1qnmq1cAlxnaFpAo5A==
+Date: Mon, 5 May 2025 17:20:27 +0200
+From: Luca Ceresoli <luca.ceresoli@bootlin.com>
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann
+ <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter
+ <simona@ffwll.ch>, Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong
+ <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, Laurent
+ Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman
+ <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, Jagan Teki
+ <jagan@amarulasolutions.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer
+ <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Douglas Anderson
+ <dianders@chromium.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Krzysztof
+ Kozlowski <krzk@kernel.org>, Anusha Srivatsa <asrivats@redhat.com>, Paul
+ Kocialkowski <paulk@sys-base.io>, Dmitry Baryshkov <lumag@kernel.org>, Hui
+ Pu <Hui.Pu@gehealthcare.com>, Thomas Petazzoni
+ <thomas.petazzoni@bootlin.com>, dri-devel@lists.freedesktop.org,
+ asahi@lists.linux.dev, linux-kernel@vger.kernel.org,
+ chrome-platform@lists.linux.dev, imx@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
+ platform-driver-x86@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
+ linux-stm32@st-md-mailman.stormreply.com
+Subject: Re: [PATCH v2 34/34] drm/bridge: panel: convert to
+ devm_drm_bridge_alloc() API
+Message-ID: <20250505172027.25af7721@booty>
+In-Reply-To: <20250505-beneficial-fossa-of-weather-67c676@houat>
+References: <20250424-drm-bridge-convert-to-alloc-api-v2-0-8f91a404d86b@bootlin.com>
+	<20250424-drm-bridge-convert-to-alloc-api-v2-34-8f91a404d86b@bootlin.com>
+	<20250428-wild-condor-of-defiance-cadf60@houat>
+	<20250428172516.79058e22@booty>
+	<20250505-beneficial-fossa-of-weather-67c676@houat>
+Organization: Bootlin
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: linux-kernel@vger.kernel.org, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Sean Wang <sean.wang@mediatek.com>, linux-mediatek@lists.infradead.org, 
- Matthias Brugger <matthias.bgg@gmail.com>, wenst@chromium.org, 
- Conor Dooley <conor+dt@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org
-To: Sirius Wang <sirius.wang@mediatek.com>
-In-Reply-To: <20250505121627.3944728-1-sirius.wang@mediatek.com>
-References: <20250505121627.3944728-1-sirius.wang@mediatek.com>
-Message-Id: <174645594319.1246809.14814085003624998764.robh@kernel.org>
-Subject: Re: [PATCH 0/2] Add mt8189 dts evaluation board and Mafefile
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-GND-State: clean
+X-GND-Score: -100
+X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvkedugeegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvvefukfgjfhhoofggtgfgsehtjeertdertddvnecuhfhrohhmpefnuhgtrgcuvegvrhgvshholhhiuceolhhutggrrdgtvghrvghsohhlihessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnheptdeljeejuddvudetffdtudelfedugfduledtueffuedufefgudegkeegtdeihedunecuffhomhgrihhnpehkvghrnhgvlhdrohhrghdpsghoohhtlhhinhdrtghomhenucfkphepvdgrtddvmeeijedtmedvtddvtdemvggrtddumegsvgegudemleehvgejmeefgeefmeeludefvgenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpedvrgdtvdemieejtdemvddtvddtmegvrgdtudemsggvgedumeelhegvjeemfeegfeemledufegvpdhhvghlohepsghoohhthidpmhgrihhlfhhrohhmpehluhgtrgdrtggvrhgvshholhhisegsohhothhlihhnrdgtohhmpdhnsggprhgtphhtthhopeefkedprhgtphhtthhopehmrhhiphgrrhgusehkvghrnhgvlhdrohhrghdprhgtphhtthhopehmrggrrhhtvghnrdhlrghnkhhhohhrshhtsehlihhnuhigrdhinhhtvghlrdgtohhmpdhrtghpthhto
+ hepthiiihhmmhgvrhhmrghnnhesshhushgvrdguvgdprhgtphhtthhopegrihhrlhhivggusehgmhgrihhlrdgtohhmpdhrtghpthhtohepshhimhhonhgrsehffhiflhhlrdgthhdprhgtphhtthhopegrnhgurhiivghjrdhhrghjuggrsehinhhtvghlrdgtohhmpdhrtghpthhtohepnhgvihhlrdgrrhhmshhtrhhonhhgsehlihhnrghrohdrohhrghdprhgtphhtthhopehrfhhoshhssehkvghrnhgvlhdrohhrgh
+X-GND-Sasl: luca.ceresoli@bootlin.com
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250505_082037_095102_56C8040A 
+X-CRM114-Status: GOOD (  28.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,68 +100,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, 5 May 2025 08:23:26 +0200
+Maxime Ripard <mripard@kernel.org> wrote:
 
-On Mon, 05 May 2025 20:15:44 +0800, Sirius Wang wrote:
-> MT8189 is a SoC based on 64bit ARMv8 architecture. It contains 6 CA55
-> and 2 CA78 cores. MT8189 share many HW IP with MT8188 series.
+> On Mon, Apr 28, 2025 at 05:25:16PM +0200, Luca Ceresoli wrote:
+> > Hi Maxime,
+> > 
+> > On Mon, 28 Apr 2025 13:39:23 +0200
+> > Maxime Ripard <mripard@kernel.org> wrote:
+> >   
+> > > On Thu, Apr 24, 2025 at 10:05:49PM +0200, Luca Ceresoli wrote:  
+> > > > This is the new API for allocating DRM bridges.
+> > > > 
+> > > > The devm lifetime management of this driver is peculiar. The underlying
+> > > > device for the panel_bridge is the panel, and the devm lifetime is tied the
+> > > > panel device (panel->dev). However the panel_bridge allocation is not
+> > > > performed by the panel driver, but rather by a separate entity (typically
+> > > > the previous bridge in the encoder chain).
+> > > > 
+> > > > Thus when that separate entoty is destroyed, the panel_bridge is not
+> > > > removed automatically by devm, so it is rather done explicitly by calling
+> > > > drm_panel_bridge_remove(). This is the function that does devm_kfree() the
+> > > > panel_bridge in current code, so update it as well to put the bridge
+> > > > reference instead.
+> > > > 
+> > > > Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>    
+> > > 
+> > > This looks fine, but we need a TODO entry to clean this up later on, and
+> > > a comment on devm_drm_put_bridge that this is inherently unsafe and
+> > > must not be used.  
+> > 
+> > Ah, I see, OK.
+> > 
+> > Quick draft:
+> > 
+> >  /**
+> >   * devm_drm_put_bridge - Release a bridge reference obtained via devm
+> >   * @dev: device that got the bridge via devm
+> >   * @bridge: pointer to a struct drm_bridge obtained via devm
+> >   *
+> >   * Same as drm_bridge_put() for bridge pointers obtained via devm functions
+> >   * such as devm_drm_bridge_alloc().
+> > + *
+> > + * This function is a temporary workaround and MUST NOT be used. Manual
+> > + * handling of bridge lifetime is inherently unsafe.
+> >   */  
 > 
-> We add basic chip support for MediaTek MT8189 on evaluation board.
+> That part looks good to me
 > 
-> In this series, we also add dt-bindings document definition for MT8189.
+> > and:
+> > 
+> > -	devm_kfree(panel_bridge->panel->dev, bridge);
+> > +       /* TODO remove this after reworking panel_bridge lifetime */
+> > +	devm_drm_put_bridge(panel_bridge->panel->dev, bridge);
+> >  }
+> > 
+> > Does it look good enough?  
 > 
-> Sirius Wang (2):
->   WIP: dt-bindings: arm: Add compatible for MediaTek MT8189
->   WIP: arm64: dts: mt8189: Add mt8189 dts evaluation board and Mafefile
-> 
->  .../devicetree/bindings/arm/mediatek.yaml     |   4 +
->  arch/arm64/boot/dts/mediatek/Makefile         |   1 +
->  arch/arm64/boot/dts/mediatek/mt8189-evb.dts   |  20 +
->  arch/arm64/boot/dts/mediatek/mt8189.dtsi      | 441 ++++++++++++++++++
->  4 files changed, 466 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8189-evb.dts
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8189.dtsi
-> 
-> --
-> 2.45.2
-> 
-> 
-> 
+> That too, but I was talking about an entry in
+> https://www.kernel.org/doc/html/latest/gpu/todo.html
 
+Ah, sure!
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
+I queued this for v3, if you have better suggestions don't hesitate to
+let me know:
 
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
+-----8<-----
 
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
+Remove devm_drm_put_bridge()
+----------------------------
 
-  pip3 install dtschema --upgrade
+Due to how the panel bridge handles the drm_bridge object lifetime, special
+care must be taken to dispose of the drm_bridge object when the
+panel_bridge is removed. This is currently managed using
+devm_drm_put_bridge(), but that is an unsafe, temporary workaround. To fix
+that, the DRM panel lifetime needs to be reworked. After the rework is
+done, remove devm_drm_put_bridge() and the TODO in drm_panel_bridge_remove().
 
+Contact: Maxime Ripard <mripard@kernel.org>,
+         Luca Ceresoli <luca.ceresoli@bootlin.com>
 
-This patch series was applied (using b4) to base:
- Base: attempting to guess base-commit...
- Base: tags/next-20250505 (exact match)
+Level: Intermediate
 
-If this is not the correct base, please add 'base-commit' tag
-(or use b4 which does this automatically)
+-----8<-----
 
-New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/mediatek/' for 20250505121627.3944728-1-sirius.wang@mediatek.com:
+Luca
 
-arch/arm64/boot/dts/mediatek/mt8189-evb.dtb: / (mediatek,mt8189-evb): memory: False schema does not allow {'device_type': ['memory'], 'reg': [[0, 1073741824, 0, 3221225472]]}
-	from schema $id: http://devicetree.org/schemas/root-node.yaml#
-arch/arm64/boot/dts/mediatek/mt8189-evb.dtb: idle-states: 'clusteroff-b', 'clusteroff-l', 'clusteroff-m', 'cpuoff-b', 'cpuoff-l', 'cpuoff-m', 'mcusysoff-b', 'mcusysoff-l', 'mcusysoff-m', 's2idle', 'system-vcore' do not match any of the regexes: '^(cpu|cluster)-', '^pinctrl-[0-9]+$'
-	from schema $id: http://devicetree.org/schemas/cpu/idle-states.yaml#
-arch/arm64/boot/dts/mediatek/mt8189-evb.dtb: idle-states: entry-method:0: 'psci' was expected
-	from schema $id: http://devicetree.org/schemas/cpu/idle-states.yaml#
-arch/arm64/boot/dts/mediatek/mt8189-evb.dtb: serial@11001000 (mediatek,mt6577-uart): Unevaluated properties are not allowed ('uart-line' was unexpected)
-	from schema $id: http://devicetree.org/schemas/serial/mediatek,uart.yaml#
-
-
-
-
-
+-- 
+Luca Ceresoli, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
