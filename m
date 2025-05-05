@@ -4,74 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 097F6C3ABB6
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 May 2025 08:21:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D0F7C3ABB7
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 May 2025 08:21:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=h4P39E1QGiODNj6DPGFAGPEV/IZtN/MIkl9xBL7KDoI=; b=KmmBVSzqL9DDeS2UlPDS8RXg8I
-	yTZSF08/ETtAqK/xSELm63kzGgBZ2QkrzvnsJ5eCxiTBHBnC+ATqOBF7wu+XJE/8ZJnonxFxogpzk
-	laZLXMIT4jv3LFjvtw3zKSOlVqutNMobXHNuqD/DUlXHIyG/IPv5rpaUK9Do5sLXWm5gYYS1cI422
-	0tOZG/+B87WO2CpEY5y2dcheulgCXkBW7gOYopnMP3cc8235XVG5JkSAF/FwHk9yXTOcckpFGpwjN
-	uNrWUygV/d00FWpkeVtXO48ZrA2f+MfVzosSra/V9x1E6TFOzM5cVkiO5qipdw8cL4vK41s92h+zZ
-	gHSt8H4g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
+	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PPmY1q+mDq92unxZt7p8cEaDwhs2YRbB62LoxxnlFpE=; b=eifDA8IbWVj1sOAPCmscNih4PE
+	QlJWzeNgy4lFVqvelnKhaStMfUe3i37F/ERlaGvy23RATZdCoydhjba8gckd6daHCKiqITCWofGZh
+	q2lkNVCZmSbtftSALPi6fz65iUQkxtfwCEJKL4x+iJa3lBjSzCNTVSVKeaXcZUHexXLOrwiM5iwqL
+	4pZ0r9TwvDo0/JwBhZyFMKE79SkoIGnDfX0EhvJGLbrt+tb0J6Xx8WpuTfYvICMAx+ffFM9sZSJxx
+	x9aLlgJmPQxd6rADSgrYBBdepSkmKg9Bkt+J17EQsbjPniHBU4+HunWWXxzQp8b7xhIitF65FILUj
+	QkyxbtFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBr4U-00000006lm5-3etL;
-	Mon, 05 May 2025 08:21:06 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1uBr4V-00000006lmD-0hD8;
+	Mon, 05 May 2025 08:21:07 +0000
+Received: from mail-24417.protonmail.ch ([109.224.244.17])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uBr3g-00000006ldq-2nGv
+	id 1uBr3o-00000006lg4-2W9y
 	for linux-mediatek@lists.infradead.org;
-	Mon, 05 May 2025 08:20:17 +0000
-X-UUID: c38f194e298911f0bed96b30c12bc3d6-20250505
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=h4P39E1QGiODNj6DPGFAGPEV/IZtN/MIkl9xBL7KDoI=;
-	b=dH5jH/7LdDaV11OU/48hhSmt6jTMSXFv0Tex16A0uNfV7o3w+6tWaSMrVL00xA+FhQZH9vGdCvTHM0y4t6zire5PLWllpbMOuSqinl2ap8xG2bzdFqhtfhqMe/OvOt+xk7fi9WzObeJt36EL0AqODY9SWr/ttgmGY8pBmylZ/x4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:2888156b-7368-4298-994f-0954dc662202,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:0ef645f,CLOUDID:f254c42b-be47-4281-8f30-e6479b5e1210,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: c38f194e298911f0bed96b30c12bc3d6-20250505
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <michael-cy.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1411322854; Mon, 05 May 2025 01:20:11 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Mon, 5 May 2025 16:20:09 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Mon, 5 May 2025 16:20:09 +0800
-From: Michael-CY Lee <michael-cy.lee@mediatek.com>
-To: linux-wireless <linux-wireless@vger.kernel.org>
-CC: Johannes Berg <johannes@sipsolutions.net>, Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>, Evelyn Tsai
-	<evelyn.tsai@mediatek.com>, Money Wang <money.wang@mediatek.com>,
-	linux-mediatek <linux-mediatek@lists.infradead.org>, Michael-CY Lee
-	<michael-cy.lee@mediatek.com>
-Subject: [PATCH] wifi: mac80211: fix the type of status_code for negotiated TID to Link Mapping
-Date: Mon, 5 May 2025 16:19:46 +0800
-Message-ID: <20250505081946.3927214-1-michael-cy.lee@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	Mon, 05 May 2025 08:20:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pm.me;
+	s=protonmail3; t=1746433220; x=1746692420;
+	bh=PPmY1q+mDq92unxZt7p8cEaDwhs2YRbB62LoxxnlFpE=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector:List-Unsubscribe:List-Unsubscribe-Post;
+	b=pOHlkCF2T1ravadpuvayGDQeSZ/x50ch5YmOm3ewP8GVMn2aegoZ5eQ/WmTsEGd6o
+	 VtySB0xnk+5XpQqit9qXlw8yxfbgxpay7ezwsHcrv+hSL1chyzvZEuhbPhFJJDLQZ4
+	 CEGgn4Yy5Gu4KNvSN1IcI90m/lNT2VQh4+PS6YI+xZnTtI1NP1MkJMel6/tmNHOXlN
+	 daR1dNrHA0AZwjetkfqbrlD9EW3mFaS2b1WJlGCu+sqfGp9wafe31MR8s+Z7Htew3Z
+	 URtcBKqp+u9YK2/xY/tYAka7XJ/YyIwKbg0ib0xpAowPqcfUt2Yl/61QBmJkdgK63j
+	 NgzSGvQNVWEQQ==
+Date: Mon, 05 May 2025 08:20:16 +0000
+To: Mingyen Hsieh <Mingyen.Hsieh@mediatek.com>
+From: fossben@pm.me
+Cc: "stable@vger.kernel.org" <stable@vger.kernel.org>, "niks@kernel.org" <niks@kernel.org>, "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, Allan Wang <Allan.Wang@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "regressions@lists.linux.dev" <regressions@lists.linux.dev>
+Subject: Re: [REGRESSION][BISECTED][STABLE] MT7925: mDNS and IPv6 broken in kernel 6.14.3 and above
+Message-ID: <Q8fBN4506NOX9rrFspv9q0xuQRlE1YcHDbwfRUlXy7if-Lv-kGyIXPrNN2kOMoWENMYCfTmOhAhnSCs4gtUvpzEf0O_JZ_BV__V3B_A7iU8=@pm.me>
+In-Reply-To: <28ef2cc608d071d1530902d7b5df045555ab5651.camel@mediatek.com>
+References: <EmWnO5b-acRH1TXbGnkx41eJw654vmCR-8_xMBaPMwexCnfkvKCdlU5u19CGbaapJ3KRu-l3B-tSUhf8CCQwL0odjo6Cd5YG5lvNeB-vfdg=@pm.me> <f73dec60b60dd7bb3be40c1feefbe223c7afe19b.camel@mediatek.com> <5ae1ef34c9844d6d0f5fb167dd596a4c43321367.camel@kernel.org> <28ef2cc608d071d1530902d7b5df045555ab5651.camel@mediatek.com>
+Feedback-ID: 134317997:user:proton
+X-Pm-Message-ID: fef2514a1a9fdd3fff94770a5f82dde0aa08ad69
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250505_012016_712285_1EE37B3B 
-X-CRM114-Status: GOOD (  11.96  )
+X-CRM114-CacheID: sfid-20250505_012024_794700_090A5F00 
+X-CRM114-Status: GOOD (  52.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,76 +69,175 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The status code should be type of __le16.
+On Monday, May 5th, 2025 at 12:48 AM, Mingyen Hsieh <Mingyen.Hsieh@mediatek=
+.com> wrote:
 
-Fixes: 83e897a961b8 ("wifi: ieee80211: add definitions for negotiated TID to Link map")
-Fixes: 8f500fbc6c65 ("wifi: mac80211: process and save negotiated TID to Link mapping request")
-Signed-off-by: Michael-CY Lee <michael-cy.lee@mediatek.com>
+> On Sun, 2025-05-04 at 00:39 +0200, Niklas Schnelle wrote:
+> >=20
+> > External email : Please do not click links or open attachments until
+> > you have verified the sender or the content.
+> >=20
+> >=20
+> > On Wed, 2025-04-30 at 06:47 +0000, Mingyen Hsieh (=E8=AC=9D=E6=98=8E=
+=E8=AB=BA) wrote:
+> > > On Wed, 2025-04-30 at 01:14 +0000, fossben@pm.me=C2=A0wrote:
+> > > >=20
+> > > > External email : Please do not click links or open attachments
+> > > > until
+> > > > you have verified the sender or the content.
+> > > >=20
+> > > >=20
+> > > > Hello all,
+> > > >=20
+> > > > After upgrading to 6.14.3 on my PC with a MT7925 chip, I noticed
+> > > > that
+> > > > I could no longer ping *.local addresses provided by Avahi. In
+> > > > addition, I also noticed that I was not able to get a DHCP IPv6
+> > > > address from my router, no matter how many times I rebooted the
+> > > > router or reconnected with NetworkManager.
+> > > >=20
+> > > > Reverting to 6.14.2 fixes both mDNS and IPv6 addresses
+> > > > immediately.
+> > > > Going back to 6.14.3 immediately breaks mDNS again, but the IPv6
+> > > > address will stay there for a while before disappearing later,
+> > > > possibly because the DHCP lease expired? I am not sure exactly
+> > > > when
+> > > > it stops working.
+> > > >=20
+> > > > I've done a kernel bisect between 6.14.2 and 6.14.3 and found the
+> > > > offending commit that causes mDNS to fail:
+> > > >=20
+> > > > commit 80007d3f92fd018d0a052a706400e976b36e3c87
+> > > > Author: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+> > > > Date:=C2=A0=C2=A0 Tue Mar 4 16:08:50 2025 -0800
+> > > >=20
+> > > > =C2=A0=C2=A0=C2=A0 wifi: mt76: mt7925: integrate *mlo_sta_cmd and *=
+sta_cmd
+> > > >=20
+> > > > =C2=A0=C2=A0=C2=A0 commit cb1353ef34735ec1e5d9efa1fe966f05ff1dc1e1 =
+upstream.
+> > > >=20
+> > > > =C2=A0=C2=A0=C2=A0 Integrate *mlo_sta_cmd and *sta_cmd for the MLO =
+firmware.
+> > > >=20
+> > > > =C2=A0=C2=A0=C2=A0 Fixes: 86c051f2c418 ("wifi: mt76: mt7925: enabli=
+ng MLO when
+> > > > the
+> > > > firmware supports it")
+> > > >=20
+> > > > =C2=A0drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 59 ++++----=
 ---
- include/linux/ieee80211.h |  2 +-
- net/mac80211/mlme.c       | 13 +++++++------
- 2 files changed, 8 insertions(+), 7 deletions(-)
+> > > > ----
+> > > > --------------------------------------------
+> > > > =C2=A01 file changed, 4 insertions(+), 55 deletions(-)
+> > > >=20
+> > > > I do not know if this same commit is also causing the IPv6 issues
+> > > > as
+> > > > testing that requires quite a bit of time to reproduce. What I do
+> > > > know with certainty as of this moment is that it definitely
+> > > > breaks in
+> > > > kernel 6.14.3.
+> > > >=20
+> > > > I've attached my hardware info as well as dmesg logs from the
+> > > > last
+> > > > working kernel from the bisect and 6.14.4 which exhibits the
+> > > > issue.
+> > > > Please let me know if there's any other info you need.
+> > > >=20
+> > > > Thanks!
+> > > > Benjamin Xiao
+> > >=20
+> > > Hi,
+> > >=20
+> > > Thanks for reporting this issue, we will aim into this.
+> > >=20
+> > > Can you provide me with your testing steps?
+> > >=20
+> > > Best Regards,
+> > > Yen.
+> > >=20
+> >=20
+> > Hi Yan,
+> >=20
+> > I see the same IPv6 issue on my Framework 13 (Ryzen 5 AI 340) with an
+> > mt7925e WiFI module. My setup is just a home router with native IPv6
+> > both for my uplink and in the LAN. The problems with IPv6 can already
+> > be seen just in the LAN for example by checking which IP was used for
+> > SSH, in my setup it should always be IPv6 but falls back to IPv4 in
+> > the
+> > broken state.
+> >=20
+> > As another data point, I tried reverting cb1353ef3473 ("wifi: mt76:
+> > mt7925: integrate *mlo_sta_cmd and *sta_cmd") on top of 6.15.-rc4.
+> > This
+> > fully restores IPv6 for me. Also note I'm running this with the
+> > mt7925
+> > firmware version 20250425073330 from linux-firmware's master branch
+> > as
+> > I had some dropped connections with earlier firmware.
+> >=20
+> > So it definitely looks like that commit also broke IPv6 and not just
+> > mDNS. Note that if if I use DHCPv6 instead of router advertisements,
+> > on
+> > the latest firmware, but without the revert, I get a global IPv6
+> > address added to the interface but then native IPv6 addresses are
+> > still
+> > uncreachable. With the offending patch reverted my SSH session to an
+> > IPv6 only host works fine and is stable. Also I'd be willing to test
+> > a
+> > proper fix as I rely on IPv6 heavily due to having to use CGNAT for
+> > IPv4 but not for IPv6.
+> >=20
+> >=20
+> > Thanks,
+> > Niklas
+>=20
+> Hi Benjamin & Niklas,
+>=20
+> Can you help to try this patch? I can get IPv6 address through this
+> patch.
+>=20
+> If it can work at your environment as well, i will upstream it and add
+> test tag with you.
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+> b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+> index a42b584634ab..fd756f0d18f8 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+> @@ -2183,14 +2183,14 @@ mt7925_mcu_sta_cmd(struct mt76_phy *phy,
+>                         mt7925_mcu_sta_mld_tlv(skb, info->vif, info-
+> >link_sta->sta);
+>                         mt7925_mcu_sta_eht_mld_tlv(skb, info->vif,
+> info->link_sta->sta);
+>                 }
+> -
+> -               mt7925_mcu_sta_hdr_trans_tlv(skb, info->vif, info-
+> >link_sta);
+>         }
+>=20
+>         if (!info->enable) {
+>                 mt7925_mcu_sta_remove_tlv(skb);
+>                 mt76_connac_mcu_add_tlv(skb, STA_REC_MLD_OFF,
+>                                         sizeof(struct tlv));
+> +       } else {
+> +               mt7925_mcu_sta_hdr_trans_tlv(skb, info->vif, info-
+> >link_sta);
+>         }
+>=20
+>         return mt76_mcu_skb_send_msg(dev, skb, info->cmd, true);
+>=20
+>=20
+> Thanks~
+> Yen.
 
-diff --git a/include/linux/ieee80211.h b/include/linux/ieee80211.h
-index 508d466de1cc..457b4fba88bd 100644
---- a/include/linux/ieee80211.h
-+++ b/include/linux/ieee80211.h
-@@ -1526,7 +1526,7 @@ struct ieee80211_mgmt {
- 				struct {
- 					u8 action_code;
- 					u8 dialog_token;
--					u8 status_code;
-+					__le16 status_code;
- 					u8 variable[];
- 				} __packed ttlm_res;
- 				struct {
-diff --git a/net/mac80211/mlme.c b/net/mac80211/mlme.c
-index c010bb3d24e3..5d1cd42160a0 100644
---- a/net/mac80211/mlme.c
-+++ b/net/mac80211/mlme.c
-@@ -7675,6 +7675,7 @@ ieee80211_send_neg_ttlm_res(struct ieee80211_sub_if_data *sdata,
- 	int hdr_len = offsetofend(struct ieee80211_mgmt, u.action.u.ttlm_res);
- 	int ttlm_max_len = 2 + 1 + sizeof(struct ieee80211_ttlm_elem) + 1 +
- 		2 * 2 * IEEE80211_TTLM_NUM_TIDS;
-+	u16 status_code;
- 
- 	skb = dev_alloc_skb(local->tx_headroom + hdr_len + ttlm_max_len);
- 	if (!skb)
-@@ -7697,19 +7698,18 @@ ieee80211_send_neg_ttlm_res(struct ieee80211_sub_if_data *sdata,
- 		WARN_ON(1);
- 		fallthrough;
- 	case NEG_TTLM_RES_REJECT:
--		mgmt->u.action.u.ttlm_res.status_code =
--			WLAN_STATUS_DENIED_TID_TO_LINK_MAPPING;
-+		status_code = WLAN_STATUS_DENIED_TID_TO_LINK_MAPPING;
- 		break;
- 	case NEG_TTLM_RES_ACCEPT:
--		mgmt->u.action.u.ttlm_res.status_code = WLAN_STATUS_SUCCESS;
-+		status_code = WLAN_STATUS_SUCCESS;
- 		break;
- 	case NEG_TTLM_RES_SUGGEST_PREFERRED:
--		mgmt->u.action.u.ttlm_res.status_code =
--			WLAN_STATUS_PREF_TID_TO_LINK_MAPPING_SUGGESTED;
-+		status_code = WLAN_STATUS_PREF_TID_TO_LINK_MAPPING_SUGGESTED;
- 		ieee80211_neg_ttlm_add_suggested_map(skb, neg_ttlm);
- 		break;
- 	}
- 
-+	mgmt->u.action.u.ttlm_res.status_code = cpu_to_le16(status_code);
- 	ieee80211_tx_skb(sdata, skb);
- }
- 
-@@ -7875,7 +7875,8 @@ void ieee80211_process_neg_ttlm_res(struct ieee80211_sub_if_data *sdata,
- 	 * This can be better implemented in the future, to handle request
- 	 * rejections.
- 	 */
--	if (mgmt->u.action.u.ttlm_res.status_code != WLAN_STATUS_SUCCESS)
-+	if (le16_to_cpu(mgmt->u.action.u.ttlm_res.status_code) !=
-+	    WLAN_STATUS_SUCCESS)
- 		__ieee80211_disconnect(sdata);
- }
- 
--- 
-2.25.1
+Hi Yen,
 
+I manually applied the changes on top of 6.14.5 and mDNS seems to work alon=
+g with IPv6! I will do more testing for the rest of the day to see if the i=
+ssue is completely fixed but so far looks good at least for the 5 minutes I=
+'ve been testing it.
+
+Thanks for the fix,
+Ben
 
