@@ -4,73 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13115C3ABBF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 May 2025 08:32:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BE4DC3ABAC
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 May 2025 09:02:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CjrhW+xfT1bi3JyTNKGb801aMZtNGnqQXD1/Vo5czKg=; b=KY7STrzrLFpFfZSMmO8wi+3uay
-	W4AG/+sD8SWECEKKTpsFpN6mdxUyZCfcZFI0iGfZs+W+QjU/Y1Coa0WbtANkE0rq0oY/1EY1tHmbz
-	LUrwAQpuEZ+grlUlFeAciqaAqNvi0ewWYFaMFyoZl0LWMof32tDyywIlWK3x+33FhCAh3Vh4peesy
-	i/Odb5dkXYbedvet1YUFa/bphkWbBk2w/8oubTfFioPbm2ND3yxZ5Dp4BKHiHpWySb7toajd/cNVY
-	dI9Ynu8LN7eYuvcQlSiJmtuWEai9YczWa/x3cagt6zsaUp8ba+d9yk9EpuoAUbWumZNxJhUz3WleJ
-	boSykG8g==;
+	bh=cUby8+oJiTXxmx37zu5laLL2CVtXZ3As/XtzHzaUktQ=; b=B59hY7rmuHbOYtEDTlGlo8nQMO
+	6N2l17bXXzW8xGjPhRGHowuSWNNdqIMZ1hFiee8vgzilnsVD+bqnKhtgJsFBf+i6L2vv6s9kUvny2
+	Su/lB7rvWz566QFgDPesHfDVtZklsLqXMz9mTzM6ds9D1mFWCJbOexZ6wev0wY78p+S7h6Lhtm+dz
+	P05GO75PMHA2QtvWVToo6K/ej2ZjAciUd+JfznwW4u9QZ8wzLWTY8dxfq4nZUADMbxfLlPxDiG8Tv
+	ccmeF/gb00wKitqnruFh8FsPSkvsx46GiuCln4mxNjGKiWK1vXhp+zgTWBazhV3uwS8o4uK4R1GNC
+	Lne0osUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCDjP-0000000BB0C-0l8u;
-	Tue, 06 May 2025 08:32:51 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uCEBx-0000000BG3c-0JhD;
+	Tue, 06 May 2025 09:02:21 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCDdd-0000000B9FM-1ULu;
-	Tue, 06 May 2025 08:26:55 +0000
+	id 1uCDfK-0000000B9zw-01dg;
+	Tue, 06 May 2025 08:28:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1746520011;
-	bh=ad97OQP3nn2YqrRFzD02fywEVWGG5tYkx4QSKxSCpwA=;
+	s=mail; t=1746520115;
+	bh=aKexJcbDf7RX3F6f/GBWM3WTi6g2qAawNgd8dqWrYnk=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=PSEM0vscIDZEYCJakmdi0kRAntYLb0wMyGU6c9qz0Juc7BWnKyWS47x+iU8c6Iohq
-	 YNODsLJ15zrpgMeWLJOoCUzdgAuLr+q6xr3Cd3rVYej9uPvt7R14fVfitnc3XNH5YH
-	 u9asjHeS1kTlgc1VNkOh0ik7QLr31oqHKgi3ZZ9GCZMTP/ogpjkZobGQjZSrZ7RZzE
-	 24JCQMsyeV3fO6G7LEKxUC8MmK5UpZ+kTtdbrFtzA64OzEkuNPrVK0jY5qrFjh4C6G
-	 65tYIaZBsZoxBK51I2o1rLf59muGHUeWdKxrJnyeOIjYst0loXUOvSA1mOFj9Ul/CD
-	 cU4Bbklzo2WWw==
+	b=RyLGBYPq8471eD7UwJB9vj9G6r0qqaxS65kOUFBDqw4QGrLM+TnxnFTJN+X5G8rCB
+	 jpTZttf+CjjWZ+4e2eHvWo6HmZUhunROKFqnYnCkSfjMJaqPtNdVao1Hwjtzgp+FYx
+	 8OCxe0CdGaD2rNtlSQMHryGzRCQpSJzGETCwxwXmScintUXPD0wFiIRuf8NYGxW0CQ
+	 IFobyEtwrMLHWKwYZQTImV1iwTvsEV/l1ObZuo/rkVWicL3HoUlBIn2TO5aUw7BmI1
+	 1CscvnNxDbjzOIyl4dnmkLvTI7sTUJMprgVoLAtmJv7Ns1sZxVONyQnX4KtKStkHpN
+	 sGxLjhXmUp6og==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B3CE117E0B46;
-	Tue,  6 May 2025 10:26:50 +0200 (CEST)
-Message-ID: <ce48bcb3-1881-41bb-aafe-bf90b78d47e4@collabora.com>
-Date: Tue, 6 May 2025 10:26:49 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 720E217E09BE;
+	Tue,  6 May 2025 10:28:34 +0200 (CEST)
+Message-ID: <65012c1f-9888-4231-8e7f-c96b7f09053a@collabora.com>
+Date: Tue, 6 May 2025 10:28:33 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] dt-bindings: mfd: syscon: Add
- mediatek,mt8365-infracfg-nao
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Alexandre Mergnat <amergnat@baylibre.com>,
- Amjad Ouled-Ameur <aouledameur@baylibre.com>,
- =?UTF-8?Q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>,
- Fabien Parent <fparent@baylibre.com>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20250502-mt8365-infracfg-nao-compatible-v1-0-e40394573f98@collabora.com>
- <20250502-mt8365-infracfg-nao-compatible-v1-1-e40394573f98@collabora.com>
+Subject: Re: [PATCH v5 2/3] drm/panfrost: Add support for Mali on the MT8370
+ SoC
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Boris Brezillon <boris.brezillon@collabora.com>,
+ Steven Price <steven.price@arm.com>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20250502-mt8370-enable-gpu-v5-0-98e247b30151@collabora.com>
+ <20250502-mt8370-enable-gpu-v5-2-98e247b30151@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250502-mt8365-infracfg-nao-compatible-v1-1-e40394573f98@collabora.com>
+In-Reply-To: <20250502-mt8370-enable-gpu-v5-2-98e247b30151@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250506_012653_533607_E3D856E4 
-X-CRM114-Status: UNSURE (   8.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250506_012838_190004_9C57FE12 
+X-CRM114-Status: GOOD (  11.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,15 +84,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 02/05/25 18:43, Nícolas F. R. A. Prado ha scritto:
-> The register space described by DT node of compatible
-> mediatek,mt8365-infracfg-nao exposes a variety of unrelated registers,
-> including registers for controlling bus protection on the MT8365 SoC,
-> which is used by the power domain controller through a syscon.
+Il 02/05/25 14:17, Louis-Alexis Eyraud ha scritto:
+> Add a compatible for the MediaTek MT8370 SoC, with an integrated ARM
+> Mali G57 MC2 GPU (Valhall-JM, dual core), with new platform data for
+> its support in the panfrost driver.
+> It uses the same data as MT8186 for the power management features to
+> describe power supplies, pm_domains and enablement (one regulator, two
+> power domains) but also sets the FORCE_AARCH64_PGTABLE flag in the GPU
+> configuration quirks bitfield to enable AARCH64 4K page table format
+> mode.
+> As MT8186 and MT8370 SoC have different GPU architecture (Mali G52 2EE
+> MC2 for MT8186), making them not compatible, and this mode is only
+> enabled for Mediatek SoC that are Mali G57 based (compatible with
+> mediatek,mali-mt8188 or mediatek,mali-8192), having specific platform
+> data allows to set this flag for MT8370 without modifying MT8186
+> configuration and behaviour.
 > 
-> Add this compatible to the syscon binding.
-> 
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
