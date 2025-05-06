@@ -4,63 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7701C3ABAC
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 May 2025 10:39:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A7FCC3ABBF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 May 2025 11:03:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ARuxxOia9DnD5eLftL3vB+MO/nalka1+uklU/qzR4xY=; b=LviXNC+vP6XWiN1n28bTiivWRs
-	CAblRgLl/c02MaS9QQrxKF4OvlCj1B4erxvVxzi8cnHEK0J0tTbdicag+ycFjg8ebnTGQVGFWOqVr
-	8iUublZzNmgx01QacEzi0fmFBxW95DpnmIHf4Ds5Ja/mufIF60+12iGfxFUQ4N02Y5YBMdFQXI3nN
-	ptTixovoTRGesZO/SC2MPYr63nRJ7A98vvHPKpOlJwqKPM/AirJc33eFj1WbUQxa4bCDmFHP+2QCG
-	LzKLo6WDV1YmnawViPxGsyovxtx4LHfa6sG+RXVGwsFfrQh5fuusJFBre28ZLvsD7/0eIUQgAvPFv
-	IAAatjQg==;
+	bh=wxtTsA4QklcizN8YDpNxBKefp4yr2C2T/GjifCCGDUA=; b=MIkt+wSg9HasOnfrhIjUCRLehp
+	/NrXSQQwq9YaPHinpz3cinUOycJHS1Cfx1nE7mdoDqkwgNZXnvvu7jzV669ivW9LJXN6Zo31SLZCJ
+	tpgtVf0jMFLSkusX92ID5Dj7msyEBhIuNIh4MaazWs+MHDYPYLHq6qIVSN9M5rs0KsiSTFkS77CYO
+	FooXvqHzga1y0eEAuGNNTF0J/TVsKEE8g26CCMmMCabw2JP3f4fLnkV9AILiZNauexT/WXu/yGKyz
+	dXs3DdagI0r9r0acHYyHTlykF1EIlyWitc3Qw5SYyMP/l5+MrSUYrLG+RxFGtGQLnfKXTdupMVwia
+	hlWp1LAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCFhl-0000000Bb5t-2Q1D;
-	Tue, 06 May 2025 10:39:17 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uCG5N-0000000BelX-0anv;
+	Tue, 06 May 2025 11:03:41 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCER1-0000000BKPI-1JET;
-	Tue, 06 May 2025 09:17:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1746523073;
-	bh=ILA+Es+srywhqN6T/FxqHIcvCX3dCdoWJHezmXu6Ewo=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=CiHIKccNtfYIsFD9mnybHbn0/VRiEV8Kz1yRVovgMHjVkvse3uzWlXWKXwOs1Vozz
-	 QoTJGdYz89zq9Bz7ArrLsgzjjt2Q0/PnGRg8x3UAlqzeNQcYSRe7xx68L9pUoZC9eM
-	 Rz6Qfij7/0rEp2gG6E0KZwgKMnnkbvDcS5jhpr8TyV5RXWIidT5K9gnELEM2wtWMVo
-	 wR/BIlHtzMz668hENUZkwRe8+dheSbNve+AvLXKflubmfR/TtXHifvODaGu93votM2
-	 OsYLrfm2KtnFdzszMPjRLbJVoM7Dns9sZ6QzFnI9C0dbGJIpVt5UwHNfTkOtrdyuYb
-	 ReMxXcW9enV1g==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7EB4017E088B;
-	Tue,  6 May 2025 11:17:53 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: arm-soc <arm@kernel.org>,
-	soc <soc@kernel.org>
-Cc: matthias.bgg@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [GIT,PULL,2/2] MediaTek driver updates for v6.16
-Date: Tue,  6 May 2025 11:17:33 +0200
-Message-ID: <20250506091736.125733-2-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250506091736.125733-1-angelogioacchino.delregno@collabora.com>
-References: <20250506091736.125733-1-angelogioacchino.delregno@collabora.com>
+	id 1uCEcu-0000000BNlP-2ioZ
+	for linux-mediatek@lists.infradead.org;
+	Tue, 06 May 2025 09:30:15 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-441d1ed827cso2015915e9.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 06 May 2025 02:30:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1746523811; x=1747128611; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=wxtTsA4QklcizN8YDpNxBKefp4yr2C2T/GjifCCGDUA=;
+        b=X1FUKSXVRTh6ey8YXEgZuRGlqbQ1kWC72un7tFmL4HEbrqTRZBvQJwQkMuDJ6Jlhp9
+         pkShOcrgMUPvVnpXcyQbD9q8HiihDDSB66CMl/lJjmWEMUUs5fADPtZD5N4VsQ8zj8HR
+         Ech1oMOUxe4ZcoVDpxfs+T3N5Vlq3f4HkPCkyB1NVxmPxDq6SueUr4RHlp7SdVN1IXIn
+         6SXSjHfj6zngTb2SsFMyEM8YkWEIDHPjMK5V0O31YlHmypVDzgwnCERWjO5fHtIboBtS
+         3ZgSn+zeBBcQ8F8oF2lYq18j9qZxSObWKQ0mvjfwCiHSyuw682tpBWck7dIp4ZAQ4gHt
+         N72w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1746523811; x=1747128611;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=wxtTsA4QklcizN8YDpNxBKefp4yr2C2T/GjifCCGDUA=;
+        b=g182QhzsOVPiV/MKgI2lZ6TDduOD6GuvPP/7U+oPzIDeRQlitjIu/x6TepnvkCyVYj
+         bRjT8ujDzoMYcnJMBSAVgTf0bnq3SHkFTfk4yNXRBQz5at2nFQxwSOqxF/D3tFuL3Tu0
+         VcB1PCaUQGw6Fi23rOT+pN1ugrIDq/4MtgdzOr0NVwwhrpp8NAsI32zKeJ4jL+WfbS3B
+         RKR+OOb1J/wUdzrRvwJvs1p3pgMXAJEC/bCYYxAc2uLVxTgMagAXxRHZWCY6Jy/LqLbJ
+         MOLRhpJiKiZQ4hsWimmv6MF7w++ZRYOPqbokADmedu0CR5WItI0YJmuLwGzF6SS534JW
+         TMpw==
+X-Forwarded-Encrypted: i=1; AJvYcCUTF7rE0RCSTeKO92Fl1fZ0HZ/6dUCxj8Qs85xXVFWAOl0GtnQI08oJjSNJCTHpcj0wmXSlg+kftgaa78gnsw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzRsK95yPOsq+jj/Ut3BJENSTz2CDsFjK72bxpj6V6qBqsCw6Mr
+	8EE1pkKUHMSZ5sDNEQdoz41pMNt5aBT/BGRW4EE0z7mKcbb5+EBNMZCOQeVK29Y=
+X-Gm-Gg: ASbGncvsxQ6eyBmuhKBWnZmX7g9Vy9CuNyDuFxgXfo5PDFkrM+RgTejCzJfGpCActXF
+	ojhxg8yBYiZCC/VnTqIdB/qSsvvu96f9iVuyIZa6v1dMf47RKNtNb5AigLGWVeHIpbyXKYdWWxg
+	vZHvyX+TinfGpxqon788SPEHiv7fxc2/q1E4DsIOs1HurMbCGoa3+nmawhfdLVeNESCu21bJLR7
+	K7BbXTdLUw7YRwJDrBy6uv36o4HM/9hsSKUW6N8CHk30HiyTeunNcoFW8Vu3EzvvSdGA3+3y0ho
+	yX9x36sRwjicAwtoS95DT6rraG4CwDmIxhl/AaT9wRDUoZUQcAHfM4h2+dUWNP9phooKHb7QU56
+	3kAYD
+X-Google-Smtp-Source: AGHT+IFpif+qSrRTApHUVcDoxXrKID7abzqZ2HIETxhr80u7rcgLHGd48r0VmjGtaI8HxmY7d6CElw==
+X-Received: by 2002:a05:6000:200d:b0:3a0:82d4:ba90 with SMTP id ffacd0b85a97d-3a0ac0da280mr1767727f8f.21.1746523810868;
+        Tue, 06 May 2025 02:30:10 -0700 (PDT)
+Received: from [192.168.5.157] (88-127-185-231.subs.proxad.net. [88.127.185.231])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a099b16f92sm12768416f8f.81.2025.05.06.02.30.09
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 06 May 2025 02:30:10 -0700 (PDT)
+Message-ID: <99febf26-2ada-4fed-b4b3-596ac4abf581@baylibre.com>
+Date: Tue, 6 May 2025 11:30:08 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] arm64: dts: mediatek: mt6357: Drop regulator-fixed
+ compatibles
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Fabien Parent <fparent@baylibre.com>, Conor Dooley <conor+dt@kernel.org>
+References: <20250502-mt6357-regulator-fixed-compatibles-removal-v1-1-a582c16743fe@collabora.com>
+ <174652097090.119919.16240846809714782858.b4-ty@collabora.com>
+Content-Language: en-US
+From: Alexandre Mergnat <amergnat@baylibre.com>
+In-Reply-To: <174652097090.119919.16240846809714782858.b4-ty@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250506_021755_494536_541DB904 
-X-CRM114-Status: UNSURE (   7.69  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250506_023012_900918_B336327F 
+X-CRM114-Status: GOOD (  20.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,36 +107,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The following changes since commit 0af2f6be1b4281385b618cb86ad946eded089ac8:
+Hello Nícolas and Angelo,
 
-  Linux 6.15-rc1 (2025-04-06 13:11:33 -0700)
+On 06/05/2025 10:42, AngeloGioacchino Del Regno wrote:
+> On Fri, 02 May 2025 11:32:10 -0400, Nícolas F. R. A. Prado wrote:
+>> Some of the regulators in the MT6357 PMIC dtsi have compatible set to
+>> regulator-fixed, even though they don't serve any purpose: all those
+>> regulators are handled as a whole by the mt6357-regulator driver. In
+>> fact this is the only dtsi in this family of chips where this is the
+>> case: mt6359 and mt6358 don't have any such compatibles.
+>>
+>> A side-effect caused by this is that the DT kselftest, which is supposed
+>> to identify nodes with compatibles that can be probed, but haven't,
+>> shows these nodes as failures.
+>>
+>> [...]
+> 
+> Applied to v6.15-next/dts64, thanks!
+> 
+> [1/1] arm64: dts: mediatek: mt6357: Drop regulator-fixed compatibles
+>        commit: d77e89b7b03fb945b4353f2dcc4a70b34baa7bcb
 
-are available in the Git repository at:
+I'm surprised that patch is applied after the Rob's bot reply.
+Also, I've some concern:
 
-  https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git tags/mtk-soc-for-v6.16
+On 02/05/2025 17:32, Nícolas F. R. A. Prado wrote:
+ > Some of the regulators in the MT6357 PMIC dtsi have compatible set to
+ > regulator-fixed, even though they don't serve any purpose: all those
+ > regulators are handled as a whole by the mt6357-regulator driver. In
+ > fact this is the only dtsi in this family of chips where this is the
+ > case: mt6359 and mt6358 don't have any such compatibles.
+This is the only dtsi in this family to do this, yes. But according to
+all other vendor DTSI, which use regulator-fixed when a regulator can't
+support a range of voltage, IMHO, it make sense to use it, isn't it ?
+If other DTSI from the family of chips doesn't, why don't fix them to be
+aligned with the other families?
 
-for you to fetch changes up to 69d63d19eda7792052f5f694f154898fc00d60ae:
+ >
+ > A side-effect caused by this is that the DT kselftest, which is supposed
+ > to identify nodes with compatibles that can be probed, but haven't,
+ > shows these nodes as failures.
+ >
+I lack of data about kselftest, but according to what is reported here, it
+appear to me this is something which could be fixed in the test itself. It make
+sense for a DTS, but not for a DTSI because it expose HW capability of a
+device, not the board, so it isn't mandatory to probe all DTSI node.
+Again, I'm not an expert, the test shouldn't show the DTSI node as failure,
+but maybe more a warning.
 
-  soc: mediatek: mtk-dvfsrc: remove an unused variable (2025-04-24 09:15:01 +0200)
+ > Remove the useless compatibles to move the dtsi in line with the others
+ > in its family and fix the DT kselftest failures.
+If you remove compatible from these regulators, I think mediatek,mt6357-regulator.yaml
+documentation file should be modified to be consistent and avoid dt-check error.
 
-----------------------------------------------------------------
-MediaTek driver updates for v6.16
+> 
+> Cheers,
+> Angelo
+> 
+> 
 
-This brings some cleanups to the MediaTek DVFSRC driver, commonizing
-the bandwidth constraints platform data, and also adds support for
-the DVFSRC hardware found in the MediaTek Dimensity 1200 MT6893 SoC.
-
-----------------------------------------------------------------
-AngeloGioacchino Del Regno (3):
-      dt-bindings: soc: mediatek: dvfsrc: Add support for MT6893
-      soc: mediatek: mtk-dvfsrc: Rename and move bw constraints data
-      soc: mediatek: mtk-dvfsrc: Add support for Dimensity 1200 MT6893
-
-Arnd Bergmann (1):
-      soc: mediatek: mtk-dvfsrc: remove an unused variable
-
- Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8183-dvfsrc.yaml |  1 +
- drivers/soc/mediatek/mtk-dvfsrc.c                                          | 53 +++++++++++++++++++++++++++++++++++++++++++----------
- 2 files changed, 44 insertions(+), 10 deletions(-)
-
+-- 
+Regards,
+Alexandre
 
