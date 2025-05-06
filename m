@@ -4,78 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB695C3ABBC
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 May 2025 16:05:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31BD1C3ABBC
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 May 2025 18:22:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=InDdJP1K/CvYoSdBcXs4MwVOY78WNNJUgbJvEKFhfOI=; b=hUlwo3My2pUQnze33dVBJ19qYN
-	cnWAIOxRYR2krpO+zn6xB79T7yIOGUHQU6wqSDnLWfREg4nw+MYhJsxWpJIzzGK5nOjtKWLarZ+5s
-	9x6r/iI4513I8OtamvjaFYmqrWXbrh16YGv/CnoPVhNwPWIeJrVlvVxxjE+Fssti7cpyWu1zfjUQt
-	C7CYJt4ilSLVuuqq+yzQZxw0Y+//N2vY8OXGQOc0964n0u44/qr2JiwLvXWg98CNbdu1khZm+y458
-	0/8NmAl3y6AtrQSduqipAyaxyDVWkHWuvkc9+d0ZbEEx0VIk72farc40Cem2rXUcQBsy1NQd4qotA
-	POVMqpLQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BIis3C4CFWwe/Nb/WYKe4dImQBx542mXba7Be46nPPk=; b=0ELcQQvNAZZ7+mjW2g5PN0u9Pn
+	/ecxoBXkMVDvrgh0nQwn0KWxWK05sByE/dVHuptBRzUnKeEEk6+qNQdZbA8j8QMGPw9Po9CeLmwfF
+	OIO23uiCkRVDXUsnX/NVDv6HspLsNhgtwB1PJ+ZZqVhNy11dz52oa4kwOByiYO9co2YBpBrtQTuXs
+	rPUJtk+XL1W3o180l40NyubNybqfrnNB5qmiNc7fIjx1f8LHL4VakkaVFlSjLwKvuN8x4t8w8PSNt
+	qNX3YQJLdkdM0ze48lry3KtbbaowPHT/sbDnMeYeRJWKXFU9iysjFHyJPAtgdIQ1jhUwfYPKDRuwr
+	AvDuWKgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCKnF-0000000CcDx-109Y;
-	Tue, 06 May 2025 16:05:17 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1uCMwP-0000000D15x-03Qn;
+	Tue, 06 May 2025 18:22:53 +0000
+Received: from mail.cjdns.fr ([5.135.140.105])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCHbM-0000000BwyH-3ywf
+	id 1uCJEy-0000000CJTg-38nH
 	for linux-mediatek@lists.infradead.org;
-	Tue, 06 May 2025 12:40:50 +0000
-X-UUID: 5273bb902a7711f0bed96b30c12bc3d6-20250506
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=InDdJP1K/CvYoSdBcXs4MwVOY78WNNJUgbJvEKFhfOI=;
-	b=dTy/Fbx8P4XstKqjN3kNnwe7etjqH4AJNF4o+aBx9ardTe4vCPjppQBQnEl2t8bD8KbH5/G8clGtXJi58vMPNOIwuoidis1vSsztYfQbWV0DUySasFKEsCkxmDVPa+xCAw4c3PmmnThD/Xmcc/WXq2EYKPce/jCf6LnE5CkzMdo=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:55b61e86-7c79-4c2f-a705-5f5c6f9e0ef6,IP:0,UR
-	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:-5
-X-CID-META: VersionHash:0ef645f,CLOUDID:a206120f-8b98-4f2b-bb15-2a2b27a58d28,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 5273bb902a7711f0bed96b30c12bc3d6-20250506
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1818077178; Tue, 06 May 2025 05:40:42 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Tue, 6 May 2025 20:40:39 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Tue, 6 May 2025 20:40:39 +0800
-From: <peter.wang@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
-	<avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
-	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
-	<chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
-	<yi-fan.peng@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>,
-	<tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
-	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>, <bvanassche@acm.org>,
-	<quic_ziqichen@quicinc.com>, <stable@vger.kernel.org>
-Subject: [PATCH v1] ufs: core: fix hwq_id type and value
-Date: Tue, 6 May 2025 20:39:34 +0800
-Message-ID: <20250506124038.4071609-1-peter.wang@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	Tue, 06 May 2025 14:25:50 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id EED13E9408;
+	Tue,  6 May 2025 16:25:42 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
+	t=1746541545; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:content-language:in-reply-to:references;
+	bh=BIis3C4CFWwe/Nb/WYKe4dImQBx542mXba7Be46nPPk=;
+	b=irxMbsQt3aIZkBTMYNb71ndZxm2HmV49EHtCrCq4sSmN4VC6qVpAuQcT8r6vSO/XEtW/CT
+	hJSyvmpYsZwcUDDclOCyzxEx9ZpBvkOpuovMINSWZlUhmZb7ES9nDS3ZF7VnUuQb1eJTLT
+	H+Jpv153lHJuk6CN8be32XLeoAfKtBAtM8vbYxZW+/jN2ZEyeJgW99NUbtylN4/OjNYyWc
+	/GiO6cAF+wPBAQkkKj6CByIhE9DgqkvJoFGIcEKY+uP+tY6GV7hROBKfsug/psWVwvLrUO
+	jLnCxRUI6sOzyeEYU9Z0d7v2fhlnt/HMtiHjMwokS4LsS6hazjaOthyjAxkU9w==
+Message-ID: <ea17e686-68c7-463c-bb9e-bcc9e59a929d@cjdns.fr>
+Date: Tue, 6 May 2025 16:25:41 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird Beta
+Subject: Re: [PATCH v4 2/7] clocksource/drivers: Add EcoNet Timer HPT driver
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: linux-mips@vger.kernel.org, tglx@linutronix.de, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, tsbogend@alpha.franken.de,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ benjamin.larsson@genexis.eu, linux-mediatek@lists.infradead.org
+References: <20250430133433.22222-1-cjd@cjdns.fr>
+ <20250430133433.22222-3-cjd@cjdns.fr> <aBjpBpJAIP89oiit@mai.linaro.org>
+ <92cd3689-3409-4d43-8db1-8633d35f779a@cjdns.fr>
+ <7c08cc9e-f39f-490c-85fe-5738656380e5@linaro.org>
+Content-Language: en-US
+From: Caleb James DeLisle <cjd@cjdns.fr>
+In-Reply-To: <7c08cc9e-f39f-490c-85fe-5738656380e5@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250506_054049_002546_AC64B088 
-X-CRM114-Status: GOOD (  12.19  )
+X-CRM114-CacheID: sfid-20250506_072548_982091_61F69481 
+X-CRM114-Status: GOOD (  17.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,34 +75,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Wang <peter.wang@mediatek.com>
 
-Because the member id of struct ufs_hw_queue is u32 (hwq->id) and
-the trace entry hwq_id is also u32, the type should be changed to u32.
-If mcq is not supported, SDB mode only supports one hardware queue,
-for which setting the hwq_id to 0 is more suitable.
+On 06/05/2025 10:54, Daniel Lezcano wrote:
+> On 05/05/2025 20:09, Caleb James DeLisle wrote:
+>>
+>> On 05/05/2025 18:36, Daniel Lezcano wrote:
+>>> On Wed, Apr 30, 2025 at 01:34:28PM +0000, Caleb James DeLisle wrote:
+>>>> Introduce a clocksource driver for the so-called high-precision 
+>>>> timer (HPT)
+>>>> in the EcoNet EN751221 MIPS SoC.
+>>> As a new driver, please document the timer (up - down ?, SPI/PPI, etc
+>>> ...) that will help to understand the code more easily, especially the
+>>> reg_* functions (purposes?).
+>>
+>>
+>> Sure thing, I can elaborate the comment in the header of
+>> timer-econet-en751221.c. Let me know if you'd like it described
+>> somewhere else as well, such as the help of config 
+>> ECONET_EN751221_TIMER.
+>
+> It is ok in the changelog, so it is possible to get the description 
+> when looking for the patch introducing the new timer.
 
-Fixes: 4a52338bf288 ("scsi: ufs: core: Add trace event for MCQ")
-Cc: <stable@vger.kernel.org>
-Signed-off-by: Peter Wang <peter.wang@mediatek.com>
----
- drivers/ufs/core/ufshcd.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index 7735421e3991..14e4cfbcb9eb 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -432,7 +432,7 @@ static void ufshcd_add_command_trace(struct ufs_hba *hba, unsigned int tag,
- 	u8 opcode = 0, group_id = 0;
- 	u32 doorbell = 0;
- 	u32 intr;
--	int hwq_id = -1;
-+	u32 hwq_id = 0;
- 	struct ufshcd_lrb *lrbp = &hba->lrb[tag];
- 	struct scsi_cmnd *cmd = lrbp->cmd;
- 	struct request *rq = scsi_cmd_to_rq(cmd);
--- 
-2.45.2
+Sounds good.
 
+
+>
+> [ ... ]
+>
+>>>> +
+>>>> +    cpuhp_setup_state(CPUHP_AP_MIPS_GIC_TIMER_STARTING,
+>>>> +              "clockevents/en75/timer:starting",
+>>>> +              cevt_init_cpu, NULL);
+>>> cpuhp_setup_state(CPUHP_AP_ONLINE_DYN, ... ) ?
+>>
+>> I see that Ingenic does this. This is the only timer so until it's up,
+>> sleeping causes a hang. If sleeping is prior to CPUHP_AP_ONLINE_DYN is
+>> considered a bug then this should be okay, but I'm not informed enough
+>> to say whether that is the case so I'll follow your guidance here.
+>
+> Hmm, hard to say without the platform. May be just give a try with 
+> CPUHP_AP_ONLINE_DYN to check if it works otherwise stick on 
+> CPUHP_AP_MIPS_GIC_TIMER_STARTING as it is already defined ?
+
+
+I need a little time for this because I only got SMP on this processor
+
+some time ago in a PoC so I'll need to put that back together in order
+
+to validate the change.
+
+
+Thanks,
+
+Caleb
+
+
+>
+> [ ... ]
+>
+>
 
