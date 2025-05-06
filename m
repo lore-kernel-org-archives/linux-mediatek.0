@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3245CC3ABAC
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 May 2025 09:10:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 337C3C3ABBF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 May 2025 09:12:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BFD92AR0Y1VLqV44xiN3ErUBbtc4PokGh/PPfeg/c/w=; b=N1L/u+D03ztMuBbeCJl3UVZhmf
-	9qA2/cImtNEsvIBpRy8dmuW+CXZF2zH/br4FojVSYl0c8Ngu0p4b3my/FwUrGbbiZqwu2XVW1ppl8
-	gaiQcETgnlUHytRctqQ/13dOHFIhx2Ff0jJXlg+46zwesiTe61ia8nuqNN4USsQjDv8dw3xYaEHlp
-	LSTxb+E6HaMxm5DQqoqjLumu2c+dQnnlKcMPPwQqNERuZuhdPMssciK4LChIZC26WESOAlHsrANPo
-	kflU6NNEwfSClBa5FuBrtu6UyC2D48Vj3XqVd6F1jUrYl3LrY/SoulRw15afy92S4AHUEcm3DV9By
-	34qgBRQw==;
+	bh=U3HhwL24gCp4HJq/1nlbAlN7LC6HzF57a+7QpGaCpLk=; b=sxkJ1aF89Vti/eGgs7GWvp/jzB
+	K4w8MnEgteLddSxQij4f1kKubKiucKV+xOu4r6F9/zsD44h/74DAC11riMoPA+IGJKXklo41zG5fr
+	rqARigMkY7vfiBDioTOpTzCkOZ2ohHYa6mgCvnM2AdujZTi2Nr6Ffh2nPaEfox4Y8c0FjH7ZztifZ
+	23+ZeBNpST71ZN9sXDu/yXp5YANRVnl1IfnPJM7714JgX8482UNT/XI0C3KyydmKT/5UPAGlGn0CF
+	0IKZNcNtLbV2iq2f89DRTa+GQHEM6HvE6Ucdw0OOlNKMjT2YgsCMIQ0YK3W6zV38Ca6Es2KVdfkD6
+	YhrH4hqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCEJZ-0000000BIHa-0rl1;
-	Tue, 06 May 2025 09:10:13 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uCELT-0000000BIpD-0oCa;
+	Tue, 06 May 2025 09:12:11 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCDl7-0000000BBGP-02Fx;
-	Tue, 06 May 2025 08:34:38 +0000
+	id 1uCDli-0000000BBNq-1emi;
+	Tue, 06 May 2025 08:35:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1746520475;
-	bh=DXcqPBwQKvNKiwIbf3ykHJXzbpclDBX7r/K84ILDxNU=;
+	s=mail; t=1746520512;
+	bh=BBvdAXMVgEYi0oX9WlS56l3+uwG46FFNRdWkyntyIAg=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=FwumzGi+5gntUjl9VTLHeo9YpRhrQFuDo/7N9XUl4Ji4ZlM+R0JP8i7XEhW9nNc98
-	 LMf9g+I2IpNLAdGHe4CnfphAHfZg/6G1OkdKxGEfgnQT0p0ygBU9XisvB3ol6dwizW
-	 DJgcDM5ptXRua2KjQyEIYMtMNtbdhRmHjaXkWBHdXgg2oJvf7tT/RwKjoE4qC6jF0O
-	 RnnjAqdPvduITh0qLz1dpzWBTrAf+MVqhVwf/BKg3NwgQetgE8JLomv4QmDk0tAl/2
-	 FjY6s3d8o8McbGb/ir81Qbj8p9Z773VrcCXIPpMQ8CdIFurN8Jzfn36VfTKCo2ncSP
-	 dVMgaJqW7eipw==
+	b=S75PqnQON21L7VWvIiIoKVtbwBvSGSJicBXe9VfLej5E/hviUQSQb/dWf97hEIbLL
+	 Iw6Yc2xRDhObkruFqOqgK/7Z4UZPdFNSMLF7m3wVmVOn0y9UdFulpmJAum32SuunFE
+	 4qvMu62nRe/b/kzbMWexbKgACwk1TepUV5pY7ubnJp3PXFy9xWosNmboIF8FumCEnv
+	 mtwme0Dve6DJbDG2Ao3XeMzrf52/DrA7LxUmadKtzO6sPB0fyD59732wCehzIx2nKV
+	 zYUpmfbzDfzxjkIn8MtE0LFlQO39Lr0WVlD7CT9btgcPiJ3vUCPMd8d6yfqD9tKFzE
+	 /KdO4ZeNUjKsg==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 48EB817E049F;
-	Tue,  6 May 2025 10:34:34 +0200 (CEST)
-Message-ID: <cb715936-3a44-4002-8d64-565f8d31820c@collabora.com>
-Date: Tue, 6 May 2025 10:34:33 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B5DA917E049F;
+	Tue,  6 May 2025 10:35:11 +0200 (CEST)
+Message-ID: <97ceba0b-2a66-4366-8d2e-34dbef0866ea@collabora.com>
+Date: Tue, 6 May 2025 10:35:11 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/4] dt-bindings: iommu: mediatek: mt8195 Accept up to 5
- interrupts
+Subject: Re: [PATCH 4/4] arm64: dts: mt6359: Rename RTC node to match binding
+ expectations
 To: Julien Massot <julien.massot@collabora.com>, kernel@collabora.com,
  Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
  Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
@@ -63,15 +63,16 @@ Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, iommu@lists.linux.dev
 References: <20250505-mt8395-dtb-errors-v1-0-9c4714dcdcdb@collabora.com>
- <20250505-mt8395-dtb-errors-v1-2-9c4714dcdcdb@collabora.com>
+ <20250505-mt8395-dtb-errors-v1-4-9c4714dcdcdb@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250505-mt8395-dtb-errors-v1-2-9c4714dcdcdb@collabora.com>
+In-Reply-To: <20250505-mt8395-dtb-errors-v1-4-9c4714dcdcdb@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250506_013437_193061_3C32C4D3 
-X-CRM114-Status: GOOD (  13.40  )
+X-CRM114-CacheID: sfid-20250506_013514_608638_4F4C074B 
+X-CRM114-Status: UNSURE (   7.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,40 +88,17 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 05/05/25 15:23, Julien Massot ha scritto:
-> Some Mediatek IOMMU can have up to five interrupts so increase
-> the 'maxItems' to 5.
+> Rename the node 'mt6359rtc' to 'rtc', as required by the binding.
 > 
 > Fix the following dtb-check error:
 > 
-> mediatek/mt8395-radxa-nio-12l.dtb: infra-iommu@10315000: interrupts:
-> [[0, 795, 4, 0], [0, 796, 4, 0], [0, 797, 4, 0], [0, 798, 4, 0], [0, 799, 4, 0]] is too long
+> mediatek/mt8395-radxa-nio-12l.dtb: pmic: 'mt6359rtc' do not match
+> any of the regexes: 'pinctrl-[0-9]+'
 > 
-> Fixes: 3b5838d1d82e3 ("arm64: dts: mt8195: Add iommu and smi nodes")
-> Signed-off-by: Julien Massot <julien.massot@collabora.com>
-> ---
->   Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-> index 75750c64157c868725c087500ac81be4e282c829..035941c2db32170e9a69a5363d8c05ef767bb251 100644
-> --- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-> +++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-> @@ -97,7 +97,8 @@ properties:
->       maxItems: 1
->   
->     interrupts:
-> -    maxItems: 1
-> +    minItems: 1
+> Fixes: 3b7d143be4b7 ("arm64: dts: mt6359: add PMIC MT6359 related nodes")
 
-Isn't minItems already implicitly 1? :-)
+Your S-o-B is missing....
 
 Cheers,
 Angelo
-
-> +    maxItems: 5
->   
->     clocks:
->       items:
-> 
-
 
