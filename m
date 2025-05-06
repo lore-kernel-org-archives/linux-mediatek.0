@@ -4,75 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB2F7C3ABAC
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 May 2025 11:51:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28FD2C3ABBF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 May 2025 12:26:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bJyJ7jyIeAMfkphkSNgQEG8wgYNfIHi+6aTP9xuWgv8=; b=AvtiDlivF8Ft2P6vwIldCWpnE0
-	UCmtDdLK8SKJe6OLBURXBzSLkwYL9xvlvxIifUpqOxI2nZF5vP7owohRccIIGmrLOYTvZ6HHJcrAI
-	lDClYN0hO+XOdfg0rNOkPOSZjEvnqUVFCyF+qiRdP4rlad2uStgobwcPzTCPQJr1QCbjUb05EwyqT
-	UA9U/mZOHanIC+MIE7Z0O5foxY1LR8fgoUiTMRRMr8tJo/I1AY/11j6BUD1rxQKtCdDTGWxjkoTdz
-	NXZEuHT5p/n/D+Be7ZFfACLcNhEc19k+uoKxvUGW/3bonGlUvrPdBSYO8LAJeyRNjZfzkcqIQst70
-	U2dvTM/g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RLTFOPBJa/eAcRAwfvM0ORsp8r9sVjS5mMPyhlYqkFA=; b=xojlHJeyn7GjK5ystM7oI7h0sr
+	wHIBOFracFWBjSowvYZE5yJtC9uz3TlXms23U3LIMxd0zZwGLmBFmylBPRFwYjSUBYtBJU2gEDiff
+	L5gjAyoQHfV++scV+KuQJVxL1TAM65b2+l48GkhRphfSg4Obe8DfRXkJcjUxlcgqjh6HtqW8RJsCl
+	Ho9MhGPA6IY3Dibg3bKmoh7iyocHi5/2r42PnM6HETRwo5v4mwFsLAoELWO0/EO02fzhMXmG5PxFr
+	xgvmnYdc5r28Q21GCfGYN2IivD16RM6NA7/hnKHjwEMLWXzTvHHaG+vN3YOYCI6z5z0+3Z7iCnpI8
+	RK8AFbRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCGp9-0000000BnqX-37Yk;
-	Tue, 06 May 2025 11:50:59 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uCHNV-0000000Bu05-03SS;
+	Tue, 06 May 2025 12:26:29 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCF9S-0000000BVN0-3W4e;
-	Tue, 06 May 2025 10:03:53 +0000
+	id 1uCFPu-0000000BY7G-0dah;
+	Tue, 06 May 2025 10:20:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1746525829;
-	bh=bJyJ7jyIeAMfkphkSNgQEG8wgYNfIHi+6aTP9xuWgv8=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=EkpS9PDJ/Fh5iHdAM4qMNFDGXu/z7Y4zulpt9PekKugbvg3VZ8WDRGbRC0xh9cH0l
-	 q3YBP51512gdwfgnKnbqw1XTN9XeeI1zU1F6NNitqWHFrwzeAJDpbgxsTSep5PccBh
-	 PfPd2vWVkH749k/4LmdKmEdZqB6fefI5xFphAw9LzCxRvaQcSkeHXU6R7j2PGMHZUt
-	 En6duHN3Sl7zcS94fCuXe1/4ddC91gp5rC7lQ9ABa9CzSOpDVFJFeIqiNZVAaTEejf
-	 2ui1sci/X+Fisxkdz4DH751jEIBRLqcJDfgXtXkiGRFm5WDzfh2OxIAgAXegJiLqaP
-	 WKpnPFPKFzWCA==
-Received: from apertis-1.home (2a01cb0892f2D600c8F85cf092D4aF51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	s=mail; t=1746526848;
+	bh=cTlctsLV2/rm79eOqeotyVv+FV9QLw5D/EGMnFgswkQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Oic6ZbqMxNknj0hcfe+ZvNlfYvKMruLwQGy/idLjU5+wHNR2dqVkJ+YfCmH1IK6WP
+	 bkuqQJLdrFtkcvwYnNM/MJ+GEBjIlpCFFalEaVWlq/x9f/EQNdTH8gJwtZOeWdCGHk
+	 iAL7PuEQ2kl1x6OLuV3IQVGDmRzUFEZ8K7kJSQU4wI7tOUGhNmpkxFWwV3WRIfCU4i
+	 YQDbrbhm99KAbgZQQLZ2RoZsRevMRvMiMUmC26hB0OsJMyPxrzbgKMcAi6b5B/s1b/
+	 S16uKYZkLIj1dZGqinA4nvSK2rOyrdiBGUiUryzeZtmOxpMPkOJ5obOpVtCVdkrer2
+	 PjxX9fcWQ7OrA==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: jmassot)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2793117E088B;
-	Tue,  6 May 2025 12:03:48 +0200 (CEST)
-Message-ID: <2d3a8e55105526c999b490a2e92dd448c099faab.camel@collabora.com>
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 62EEB17E088B;
+	Tue,  6 May 2025 12:20:47 +0200 (CEST)
+Message-ID: <c8bb938d-5a43-47a2-b7de-695f95b077ad@collabora.com>
+Date: Tue, 6 May 2025 12:20:46 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 2/4] dt-bindings: iommu: mediatek: mt8195 Accept up to 5
  interrupts
-From: Julien Massot <julien.massot@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	kernel@collabora.com, Sen Chu <sen.chu@mediatek.com>, Sean Wang	
- <sean.wang@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones
-	 <lee@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski	
- <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger	
- <matthias.bgg@gmail.com>, =?ISO-8859-1?Q?N=EDcolas?= "F. R. A. Prado"	
- <nfraprado@collabora.com>, Hui Liu <hui.liu@mediatek.com>, Yong Wu	
- <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>, Will Deacon	
- <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Tinghan Shen	
- <tinghan.shen@mediatek.com>
-Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, iommu@lists.linux.dev
-Date: Tue, 06 May 2025 12:03:47 +0200
-In-Reply-To: <cb715936-3a44-4002-8d64-565f8d31820c@collabora.com>
+To: Julien Massot <julien.massot@collabora.com>, kernel@collabora.com,
+ Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?=
+ <nfraprado@collabora.com>, Hui Liu <hui.liu@mediatek.com>,
+ Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+ Tinghan Shen <tinghan.shen@mediatek.com>
+Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, iommu@lists.linux.dev
 References: <20250505-mt8395-dtb-errors-v1-0-9c4714dcdcdb@collabora.com>
-	 <20250505-mt8395-dtb-errors-v1-2-9c4714dcdcdb@collabora.com>
-	 <cb715936-3a44-4002-8d64-565f8d31820c@collabora.com>
-Organization: Collabora Ltd.
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.1 (3.56.1-1.fc42) 
-MIME-Version: 1.0
+ <20250505-mt8395-dtb-errors-v1-2-9c4714dcdcdb@collabora.com>
+ <cb715936-3a44-4002-8d64-565f8d31820c@collabora.com>
+ <2d3a8e55105526c999b490a2e92dd448c099faab.camel@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <2d3a8e55105526c999b490a2e92dd448c099faab.camel@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250506_030351_023395_CE93E903 
-X-CRM114-Status: GOOD (  14.06  )
+X-CRM114-CacheID: sfid-20250506_032050_344443_0DCAA2CC 
+X-CRM114-Status: GOOD (  12.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,52 +88,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo,
+Il 06/05/25 12:03, Julien Massot ha scritto:
+> Hi Angelo,
+> 
+> On Tue, 2025-05-06 at 10:34 +0200, AngeloGioacchino Del Regno wrote:
+>> Il 05/05/25 15:23, Julien Massot ha scritto:
+>>> Some Mediatek IOMMU can have up to five interrupts so increase
+>>> the 'maxItems' to 5.
+>>>
+>>> Fix the following dtb-check error:
+>>>
+>>> mediatek/mt8395-radxa-nio-12l.dtb: infra-iommu@10315000: interrupts:
+>>> [[0, 795, 4, 0], [0, 796, 4, 0], [0, 797, 4, 0], [0, 798, 4, 0], [0, 799, 4, 0]] is too long
+>>>
+>>> Fixes: 3b5838d1d82e3 ("arm64: dts: mt8195: Add iommu and smi nodes")
+>>> Signed-off-by: Julien Massot <julien.massot@collabora.com>
+>>> ---
+>>>    Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml | 3 ++-
+>>>    1 file changed, 2 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+>>> b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+>>> index 75750c64157c868725c087500ac81be4e282c829..035941c2db32170e9a69a5363d8c05ef767bb251 100644
+>>> --- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+>>> +++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+>>> @@ -97,7 +97,8 @@ properties:
+>>>        maxItems: 1
+>>>    
+>>>      interrupts:
+>>> -    maxItems: 1
+>>> +    minItems: 1
+>>
+>> Isn't minItems already implicitly 1? :-)
+>>
+>> Looks not, from my understanding if 'minItems' is omitted then
+> dt-schema is setting it to 'maxItems'.
+> https://github.com/devicetree-org/dt-schema/blob/v2025.02/dtschema/fixups.py#L129
+> 
+> And you will have an error for a one item interrupts:
+> Documentation/devicetree/bindings/iommu/mediatek,iommu.example.dtb: iommu@10205000: interrupts: [[0,
+> 139, 8]] is too short
+> 
 
-On Tue, 2025-05-06 at 10:34 +0200, AngeloGioacchino Del Regno wrote:
-> Il 05/05/25 15:23, Julien Massot ha scritto:
-> > Some Mediatek IOMMU can have up to five interrupts so increase
-> > the 'maxItems' to 5.
-> >=20
-> > Fix the following dtb-check error:
-> >=20
-> > mediatek/mt8395-radxa-nio-12l.dtb: infra-iommu@10315000: interrupts:
-> > [[0, 795, 4, 0], [0, 796, 4, 0], [0, 797, 4, 0], [0, 798, 4, 0], [0, 79=
-9, 4, 0]] is too long
-> >=20
-> > Fixes: 3b5838d1d82e3 ("arm64: dts: mt8195: Add iommu and smi nodes")
-> > Signed-off-by: Julien Massot <julien.massot@collabora.com>
-> > ---
-> > =C2=A0 Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml | 3 =
-++-
-> > =C2=A0 1 file changed, 2 insertions(+), 1 deletion(-)
-> >=20
-> > diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yam=
-l
-> > b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-> > index 75750c64157c868725c087500ac81be4e282c829..035941c2db32170e9a69a53=
-63d8c05ef767bb251 100644
-> > --- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-> > +++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-> > @@ -97,7 +97,8 @@ properties:
-> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 maxItems: 1
-> > =C2=A0=20
-> > =C2=A0=C2=A0=C2=A0 interrupts:
-> > -=C2=A0=C2=A0=C2=A0 maxItems: 1
-> > +=C2=A0=C2=A0=C2=A0 minItems: 1
->=20
-> Isn't minItems already implicitly 1? :-)
->=20
-> Looks not, from my understanding if 'minItems' is omitted then
-dt-schema is setting it to 'maxItems'.
-https://github.com/devicetree-org/dt-schema/blob/v2025.02/dtschema/fixups.p=
-y#L129
+Whoops, you're right.
 
-And you will have an error for a one item interrupts:
-Documentation/devicetree/bindings/iommu/mediatek,iommu.example.dtb: iommu@1=
-0205000: interrupts: [[0,
-139, 8]] is too short
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Regards,
-Julien
+
 
