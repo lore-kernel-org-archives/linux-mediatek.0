@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FFC0C3ABAC
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 May 2025 08:30:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13115C3ABBF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 May 2025 08:32:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W3SRn6Sl+CTkGX0RbpwOkP0TA1+xuWkFfyb2rrtrVdA=; b=5Ekeol+xXU21flolq0I8whLxWf
-	WvKdMUlnwSZ/99lXvt9jrJiXubSjYpivcNe1swJNnrno97zO0meEouZFVSuKfE2myIpmIMaipua/N
-	0d6EaOJwbSuKzWaL8DeEFH0h0a5GoA+a93fAPe9/pWeeuP6GSG1h0iCkPaR7zMvVSEc4rZag3FvHx
-	WVhWdWNwX8+N3uKZKMtBWDy82dhgfEgy46F507L/GE+0HdHlqtZbAvwwztqHfG0dykczoPO9LbYCS
-	SSIuDY2E2buQfqFxJIMwrXvHEr1wo1rhg4wQzJaFmf9KZFrOE/ecDhCb4sFbWGdg8jaLjMYrGy3TZ
-	P34yBKjA==;
+	bh=CjrhW+xfT1bi3JyTNKGb801aMZtNGnqQXD1/Vo5czKg=; b=KY7STrzrLFpFfZSMmO8wi+3uay
+	W4AG/+sD8SWECEKKTpsFpN6mdxUyZCfcZFI0iGfZs+W+QjU/Y1Coa0WbtANkE0rq0oY/1EY1tHmbz
+	LUrwAQpuEZ+grlUlFeAciqaAqNvi0ewWYFaMFyoZl0LWMof32tDyywIlWK3x+33FhCAh3Vh4peesy
+	i/Odb5dkXYbedvet1YUFa/bphkWbBk2w/8oubTfFioPbm2ND3yxZ5Dp4BKHiHpWySb7toajd/cNVY
+	dI9Ynu8LN7eYuvcQlSiJmtuWEai9YczWa/x3cagt6zsaUp8ba+d9yk9EpuoAUbWumZNxJhUz3WleJ
+	boSykG8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCDhV-0000000BAXa-0mbA;
-	Tue, 06 May 2025 08:30:53 +0000
+	id 1uCDjP-0000000BB0C-0l8u;
+	Tue, 06 May 2025 08:32:51 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCDdc-0000000B9FE-404v;
-	Tue, 06 May 2025 08:26:54 +0000
+	id 1uCDdd-0000000B9FM-1ULu;
+	Tue, 06 May 2025 08:26:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1746520010;
-	bh=5/lvtCn4OfSHJYnftDRpHjKKhmJr21mm7IievYxQBb4=;
+	s=mail; t=1746520011;
+	bh=ad97OQP3nn2YqrRFzD02fywEVWGG5tYkx4QSKxSCpwA=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=LLveXn7h/ttAVVmYwDGRrcsuwvaMPFlND0X+9PymIKVpGY20nEPS/SOtUWocGhMis
-	 7ec5hu4g0fshcIjQPVGzrE0II1HTjZxR6Qe+ppNCOrzSQIub7nB6LuNK46YxGW+V1g
-	 6Gr0sfbALi2/RauvU+s2UKJL5pXFQKItXY+SltPSNK+BJQ7/4FncvJaaRwIww4Abah
-	 RB6dDSSunYddR92XjWVNOTSRdQET3BT+tLlW/a1hZd87yD7AwLE22XP3WbTAkR3RDZ
-	 fwdqJGlEAscui8Rrc9a204xzE8CLP/z/w7Ra/wEHikAfyYkrAbeLEq5W6DiJxh07dD
-	 f2L8HyqDzScJA==
+	b=PSEM0vscIDZEYCJakmdi0kRAntYLb0wMyGU6c9qz0Juc7BWnKyWS47x+iU8c6Iohq
+	 YNODsLJ15zrpgMeWLJOoCUzdgAuLr+q6xr3Cd3rVYej9uPvt7R14fVfitnc3XNH5YH
+	 u9asjHeS1kTlgc1VNkOh0ik7QLr31oqHKgi3ZZ9GCZMTP/ogpjkZobGQjZSrZ7RZzE
+	 24JCQMsyeV3fO6G7LEKxUC8MmK5UpZ+kTtdbrFtzA64OzEkuNPrVK0jY5qrFjh4C6G
+	 65tYIaZBsZoxBK51I2o1rLf59muGHUeWdKxrJnyeOIjYst0loXUOvSA1mOFj9Ul/CD
+	 cU4Bbklzo2WWw==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 82DA017E09BE;
-	Tue,  6 May 2025 10:26:49 +0200 (CEST)
-Message-ID: <0fd0c066-d203-437f-940e-ca355100bbc6@collabora.com>
-Date: Tue, 6 May 2025 10:26:48 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B3CE117E0B46;
+	Tue,  6 May 2025 10:26:50 +0200 (CEST)
+Message-ID: <ce48bcb3-1881-41bb-aafe-bf90b78d47e4@collabora.com>
+Date: Tue, 6 May 2025 10:26:49 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] arm64: dts: mediatek: mt8365: Describe infracfg-nao
- as a pure syscon
+Subject: Re: [PATCH 1/2] dt-bindings: mfd: syscon: Add
+ mediatek,mt8365-infracfg-nao
 To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
  Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
@@ -61,15 +61,16 @@ Cc: kernel@collabora.com, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
 References: <20250502-mt8365-infracfg-nao-compatible-v1-0-e40394573f98@collabora.com>
- <20250502-mt8365-infracfg-nao-compatible-v1-2-e40394573f98@collabora.com>
+ <20250502-mt8365-infracfg-nao-compatible-v1-1-e40394573f98@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250502-mt8365-infracfg-nao-compatible-v1-2-e40394573f98@collabora.com>
+In-Reply-To: <20250502-mt8365-infracfg-nao-compatible-v1-1-e40394573f98@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250506_012653_170913_17BF25D2 
-X-CRM114-Status: GOOD (  12.80  )
+X-CRM114-CacheID: sfid-20250506_012653_533607_E3D856E4 
+X-CRM114-Status: UNSURE (   8.60  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,23 +86,13 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 02/05/25 18:43, Nícolas F. R. A. Prado ha scritto:
-> The infracfg-nao register space at 0x1020e000 has different registers
-> than the infracfg space at 0x10001000, and most importantly, doesn't
-> contain any clock controls. Therefore it shouldn't use the same
-> compatible used for the mt8365 infracfg clocks driver:
-> mediatek,mt8365-infracfg. Since it currently does, probe errors are
-> reported in the kernel logs:
+> The register space described by DT node of compatible
+> mediatek,mt8365-infracfg-nao exposes a variety of unrelated registers,
+> including registers for controlling bus protection on the MT8365 SoC,
+> which is used by the power domain controller through a syscon.
 > 
->    [    0.245959] Failed to register clk ifr_pmic_tmr: -EEXIST
->    [    0.245998] clk-mt8365 1020e000.infracfg: probe with driver clk-mt8365 failed with error -17
+> Add this compatible to the syscon binding.
 > 
-> This register space is used only as a syscon for bus control by the
-> power domain controller, so in order to properly describe it and fix the
-> errors, set its compatible to a distinct compatible used exclusively as
-> a syscon, drop the clock-cells, and while at it rename the node to
-> 'syscon' following the naming convention.
-> 
-> Fixes: 6ff945376556 ("arm64: dts: mediatek: Initial mt8365-evk support")
 > Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
