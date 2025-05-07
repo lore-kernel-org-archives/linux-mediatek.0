@@ -4,93 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 178BDC3ABC0
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 May 2025 14:49:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9698DC3ABC0
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 May 2025 15:39:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZUkZFmqLpaya2SvixZMFXiK5vMoC/WgZVFpr9qlTBnY=; b=KZnXtl1Kbb8CQQQ/hhOFU0zHfb
-	+71cOuZMWIRvJzO2ttaMrb4iGAYtMuKTLdxWPYX8I1zI6CpU/fpztLbJh/xnP2jF1jsjAySGUQuLM
-	2hpepMhjhpQqSGXGpqxydVfGIUk8Gand34DaH6tVU8YqMjDyz9IOrTI/yvlZz4dxSu9ZzZN7Ss6GG
-	gl64FlFqNrBMvByn/MJuxIn9csO/2WU3nnESWjMZwYBz/9ba04ZcE487bNPd+fL9SFBEh2e83sla6
-	+9GSeKKfGob8q5JOOkZ5ekpwM0ZmUyz0Os/S79TIDoyf1yozPuoE9EQqD4STdBuXvqOEx/XAhrISK
-	sv0+LIew==;
+	bh=6P88DLJwjZTV6+YJp5PA5/tnjoUbLaNgJShCD98PEJw=; b=vWvkJsQpbwA+Ydy5HijZ3WHmtR
+	RY+sYoGJG0rNokpSeGOZpMXxlpqIv2T8IiDmRf/EMCGntX9Faox1q+3SqHvEGClBs0No2nTOZOJTV
+	lbs5hgHZhygh8Fysd7Sr5Jl1SAl5N5DozjpXRCX8LLN8Zhhu4+vnFbBj0XmqS/z96+B4zVgMHjNId
+	+QKWpkYp8XmZRD0V2ctl0LgZcNoBZI+BCZwuwAlYuqgn2wTRHzkl+wjBAolJeCQqdktqJ2sYu7FvK
+	aDhVGe0VIH2FNty9ah1MKvgCRMpucl07kVYNIF6ms4ZJM4JC3/BwhRnNVselEEjp2V30vuvBb60af
+	Mva0BSCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCg59-0000000FqsA-49Y3;
-	Wed, 07 May 2025 14:49:11 +0000
-Received: from relay5-d.mail.gandi.net ([217.70.183.197])
+	id 1uCgrT-0000000G0CV-3GLw;
+	Wed, 07 May 2025 15:39:07 +0000
+Received: from mail-qv1-xf32.google.com ([2607:f8b0:4864:20::f32])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCfWT-0000000FiZo-2yJg;
-	Wed, 07 May 2025 14:13:24 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id A7A8943A17;
-	Wed,  7 May 2025 14:13:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1746627197;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ZUkZFmqLpaya2SvixZMFXiK5vMoC/WgZVFpr9qlTBnY=;
-	b=adYesO7D1P7ynosW29lwbsjTgJFaCmVyHEon+flnFOa0BvpYbgiRnF+Xmpud0uAtagWCKR
-	3oskQarIGt0LOBcEzJnasoloDFldQLXTPGfiIhzFPFxQ44Bv9OhNB8OfgtRyxM7+9P43cR
-	EkU5M3wIV4eMfygkH8Z49lCMg02BGC3HtUgDaN8q7xI8pIpFMVELZovDj9NLGU/agK2QHw
-	g3CUt2Har990IGmx7V543phmv8Wv4XvzKKsAS8THOhfgcNBUADs19379Lxd8e7/I43vGMD
-	r3WqKePwg6IikvuHOAtVe8FiAWFIlf69nPFcMS8m4pDVEx1m0DuHF1UEztkH0g==
-Date: Wed, 7 May 2025 16:13:11 +0200
-From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-To: Liu Ying <victor.liu@nxp.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
- <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie
- <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Andrzej Hajda
- <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>,
- Robert Foss <rfoss@kernel.org>, Laurent Pinchart
- <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>,
- Jernej Skrabec <jernej.skrabec@gmail.com>, Jagan Teki
- <jagan@amarulasolutions.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer
- <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Douglas Anderson
- <dianders@chromium.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Krzysztof
- Kozlowski <krzk@kernel.org>, Anusha Srivatsa <asrivats@redhat.com>, Paul
- Kocialkowski <paulk@sys-base.io>, Dmitry Baryshkov <lumag@kernel.org>, Hui
- Pu <Hui.Pu@gehealthcare.com>, Thomas Petazzoni
- <thomas.petazzoni@bootlin.com>, dri-devel@lists.freedesktop.org,
- asahi@lists.linux.dev, linux-kernel@vger.kernel.org,
- chrome-platform@lists.linux.dev, imx@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
- platform-driver-x86@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
- linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH v2 30/34] drm/bridge: imx8qxp-pixel-combiner: convert to
- devm_drm_bridge_alloc() API
-Message-ID: <20250507161311.6e434f2f@booty>
-In-Reply-To: <430d497d-45a1-436d-91fd-635854f80c9f@nxp.com>
-References: <20250424-drm-bridge-convert-to-alloc-api-v2-0-8f91a404d86b@bootlin.com>
-	<20250424-drm-bridge-convert-to-alloc-api-v2-30-8f91a404d86b@bootlin.com>
-	<553d62ed-976a-4e17-9678-cdc3d40ce4a7@nxp.com>
-	<20250430112944.1b39caab@booty>
-	<f71d18d2-4271-4bb9-b54f-0e5a585778f3@nxp.com>
-	<20250506224720.5cbcf3e1@booty>
-	<a1abf31a-7a4a-4f8d-bf48-6b826aa01197@nxp.com>
-	<20250507091244.32865a71@booty>
-	<430d497d-45a1-436d-91fd-635854f80c9f@nxp.com>
-Organization: Bootlin
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
+	id 1uCgGp-0000000Fsfs-0uIQ;
+	Wed, 07 May 2025 15:01:17 +0000
+Received: by mail-qv1-xf32.google.com with SMTP id 6a1803df08f44-6f0ad744811so66456d6.1;
+        Wed, 07 May 2025 08:01:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1746630071; x=1747234871; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=6P88DLJwjZTV6+YJp5PA5/tnjoUbLaNgJShCD98PEJw=;
+        b=NxqHzvQjJTPR5eNXJexUiIYdctVGQPK4YUWKjBwxLg+O6aGyPIxEobA+8OxKWXHNdH
+         TtYM41sNdTcKFbWqndXQRw668nRFOhZjoLuhvgi/JTsgsYAITh0MmTDW9EemGkZi4x9J
+         qC6J9z+SaaiGCZVtBzJUr7AJjSPPhsGn2tRlm3Tanx1cV+DTn8N7HjmCl/oPfEHA7BFU
+         JRpIqtsAANT7yyZsYV6qcg99Ficrk8aFV6ezBqf9Dn9SiChYrUf0eZZycn9dwTPvBIR6
+         YMuVS2ANZtqv9hPJpk6VXaxmFUOS7rYgJ09+tKjRf1xr/SDJwXj65AjVTPwMhhwG2ExP
+         SVtA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1746630071; x=1747234871;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=6P88DLJwjZTV6+YJp5PA5/tnjoUbLaNgJShCD98PEJw=;
+        b=vWp5XJ5MLtFzJORqNljhQsBxEbPkWs0XRR3kgeJsPPztjf2fh5Cxx7evPda20fK3b2
+         BE8oYbUOMj+Nq5fXXEU2uCe/6RaU/uaDUGnhRSP0mUC9h4/D2GGAQwI1VLrEFMKuaZRN
+         OgU3sJcmoM4ozMU77qes+kiuzPIlMuOozV+xJ6G3K9IPoYfGvVYJp35BmVNnCMT+ibQ1
+         XCh9RMBzgW6Y+3MCQl05MaU8oYwlbzzTOjEvJuF2eWU2Q1LIDiJD0zCfY+aUOWnfLtog
+         q7CjuKT6yQ/6RqJMKjjl2blEAbp//d+NBWZccQAhFoKbt01hFeqNb/d6652ny42r8cAT
+         EYYQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVZM4II7Vzn4wzU+xGhgN5otla6VncFVAfJ4kvtnt+m1R9p9eYhAoYUeCCuOR8v2SpaGvSs8wEZ2G2uRKKnj08=@lists.infradead.org, AJvYcCWwrhxP0ouF1UusxIH+1uZjLNU+d2Ps+lcs3DtsDNUI532P3ajpK60PChNOT8rCJZBo0ej7xmbcn0PunSdLgn7H@lists.infradead.org
+X-Gm-Message-State: AOJu0YxeRBkCQ8d7bGO2JCimqPnm9DChX/vy9dJN2pANdaVhSCjPL2XJ
+	cdfSIN2qVpwjIujxBQcwPhw00THUPHcuX959P94+r0bP0lGWbZEXlrSIc2a4VQIWmq3/NCuPtd0
+	qiYVQou7lBpT7ybttE3JY/bRPbxw=
+X-Gm-Gg: ASbGncuM7ksITH7YQLOkrKkTwXa6lrG2BQOB3Gls/XydZKVlFF0BPdAO41M3f/LS2bu
+	33FlVu1MVuWSeBMLWVr4929ISWPYsjmA8RLvVQ0TLg1zTbwbvHh1Xu7I038SFun6EKIptQ8u1Yr
+	bfdnXaV//DYzqTE28vYygkEQ0=
+X-Google-Smtp-Source: AGHT+IFFpBEl3tD+vAAO3AKleiaarL+ScnybGt92nCTf5nORPfhlz+Z0Rwo3ogxYQXshqUgF+V+GBVifm7gBsWgoZoE=
+X-Received: by 2002:a05:6214:cc4:b0:6e8:9a55:824f with SMTP id
+ 6a1803df08f44-6f5429b354emr52557756d6.6.1746630070743; Wed, 07 May 2025
+ 08:01:10 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-GND-State: clean
-X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvkeejtdejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvvefukfgjfhhoofggtgfgsehtjeertdertddvnecuhfhrohhmpefnuhgtrgcuvegvrhgvshholhhiuceolhhutggrrdgtvghrvghsohhlihessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnheptdeljeejuddvudetffdtudelfedugfduledtueffuedufefgudegkeegtdeihedunecuffhomhgrihhnpehkvghrnhgvlhdrohhrghdpsghoohhtlhhinhdrtghomhenucfkphepvdgrtddvmeeijedtmedvtddvtdemvggrtddumegsvgegudemleehvgejmeefgeefmeeludefvgenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpedvrgdtvdemieejtdemvddtvddtmegvrgdtudemsggvgedumeelhegvjeemfeegfeemledufegvpdhhvghlohepsghoohhthidpmhgrihhlfhhrohhmpehluhgtrgdrtggvrhgvshholhhisegsohhothhlihhnrdgtohhmpdhnsggprhgtphhtthhopeefledprhgtphhtthhopehvihgtthhorhdrlhhiuhesnhigphdrtghomhdprhgtphhtthhopehmrggrrhhtvghnrdhlrghnkhhhohhrshhtsehlihhnuhigrdhinhhtvghlrdgtohhmpdhrtghpthhto
- hepmhhrihhprghrugeskhgvrhhnvghlrdhorhhgpdhrtghpthhtohepthiiihhmmhgvrhhmrghnnhesshhushgvrdguvgdprhgtphhtthhopegrihhrlhhivggusehgmhgrihhlrdgtohhmpdhrtghpthhtohepshhimhhonhgrsehffhiflhhlrdgthhdprhgtphhtthhopegrnhgurhiivghjrdhhrghjuggrsehinhhtvghlrdgtohhmpdhrtghpthhtohepnhgvihhlrdgrrhhmshhtrhhonhhgsehlihhnrghrohdrohhrgh
-X-GND-Sasl: luca.ceresoli@bootlin.com
+References: <20250430082651.3152444-1-qun-wei.lin@mediatek.com>
+ <aBqzcIteOzC9mRjY@harry> <A3307E1B-B741-4C23-8053-72A1CA04D923@nvidia.com> <CAGsJ_4yBn7j3WpCttPB0PVuRCYTYBcDbW2221AaPNLOHSmKADA@mail.gmail.com>
+In-Reply-To: <CAGsJ_4yBn7j3WpCttPB0PVuRCYTYBcDbW2221AaPNLOHSmKADA@mail.gmail.com>
+From: Nhat Pham <nphamcs@gmail.com>
+Date: Wed, 7 May 2025 08:00:59 -0700
+X-Gm-Features: ATxdqUEizMgKIBqWKtTySGenm7msLmuvbZBCtMD6RABSUsHW1bY0saY3YhYcLjM
+Message-ID: <CAKEwX=NyZnNmiERFzwMUGQ8CJ7Pqm_XqHWMQoPjJKnBQefZkiw@mail.gmail.com>
+Subject: Re: [PATCH] mm: Add Kcompressd for accelerated memory compression
+To: Barry Song <21cnbao@gmail.com>
+Cc: Zi Yan <ziy@nvidia.com>, Harry Yoo <harry.yoo@oracle.com>, 
+	Qun-Wei Lin <qun-wei.lin@mediatek.com>, Andrew Morton <akpm@linux-foundation.org>, 
+	Mike Rapoport <rppt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Sergey Senozhatsky <senozhatsky@chromium.org>, Minchan Kim <minchan@kernel.org>, linux-mm@kvack.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, Casper Li <casper.li@mediatek.com>, 
+	Chinwen Chang <chinwen.chang@mediatek.com>, Andrew Yang <andrew.yang@mediatek.com>, 
+	James Hsu <james.hsu@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250507_071321_881376_2AE9A69E 
-X-CRM114-Status: GOOD (  39.32  )
+X-CRM114-CacheID: sfid-20250507_080115_254340_34D6F145 
+X-CRM114-Status: GOOD (  29.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,108 +101,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Liu,
+On Tue, May 6, 2025 at 7:04=E2=80=AFPM Barry Song <21cnbao@gmail.com> wrote=
+:
+>
+> On Wed, May 7, 2025 at 1:50=E2=80=AFPM Zi Yan <ziy@nvidia.com> wrote:
+> >
+> > On 6 May 2025, at 21:12, Harry Yoo wrote:
+> >
+> > > On Wed, Apr 30, 2025 at 04:26:41PM +0800, Qun-Wei Lin wrote:
+> > >> This patch series introduces a new mechanism called kcompressd to
+> > >> improve the efficiency of memory reclaiming in the operating system.
+> > >>
+> > >> Problem:
+> > >>   In the current system, the kswapd thread is responsible for both s=
+canning
+> > >>   the LRU pages and handling memory compression tasks (such as those
+> > >>   involving ZSWAP/ZRAM, if enabled). This combined responsibility ca=
+n lead
+> > >>   to significant performance bottlenecks, especially under high memo=
+ry
+> > >>   pressure. The kswapd thread becomes a single point of contention, =
+causing
+> > >>   delays in memory reclaiming and overall system performance degrada=
+tion.
+> > >>
+> > >> Solution:
+> > >>   Introduced kcompressd to handle asynchronous compression during me=
+mory
+> > >>   reclaim, improving efficiency by offloading compression tasks from
+> > >>   kswapd. This allows kswapd to focus on its primary task of page re=
+claim
+> > >>   without being burdened by the additional overhead of compression.
+> > >>
+> > >> In our handheld devices, we found that applying this mechanism under=
+ high
+> > >> memory pressure scenarios can increase the rate of pgsteal_anon per =
+second
+> > >> by over 260% compared to the situation with only kswapd. Additionall=
+y, we
+> > >> observed a reduction of over 50% in page allocation stall occurrence=
+s,
+> > >> further demonstrating the effectiveness of kcompressd in alleviating=
+ memory
+> > >> pressure and improving system responsiveness.
+> > >>
+> > >> Co-developed-by: Barry Song <21cnbao@gmail.com>
+> > >> Signed-off-by: Barry Song <21cnbao@gmail.com>
+> > >> Signed-off-by: Qun-Wei Lin <qun-wei.lin@mediatek.com>
+> > >> Reference: Re: [PATCH 0/2] Improve Zram by separating compression co=
+ntext from kswapd - Barry Song
+> > >>           https://lore.kernel.org/lkml/20250313093005.13998-1-21cnba=
+o@gmail.com/
+> > >> ---
+> > >
+> > > +Cc Zi Yan, who might be interested in writing a framework (or improv=
+ing
+> > > the existing one, padata) for parallelizing jobs (e.g. migration/comp=
+ression)
+> >
+> > Thanks.
+> >
+> > I am currently looking into padata [1] to perform multithreaded page mi=
+gration
 
-On Wed, 7 May 2025 18:16:28 +0800
-Liu Ying <victor.liu@nxp.com> wrote:
+TIL about padata :)
 
-[...]
+> > copy job. But based on this patch, it seems that kcompressed is just an=
+ additional
+> > kernel thread of executing zswap_store(). Is there any need for perform=
+ing
+> > compression with multiple threads?
+>
+> The current focus is on enabling kswapd to perform asynchronous compressi=
+on,
+> which can significantly reduce direct reclaim and allocstall events.
+> Therefore, the work begins with supporting a single thread. Supporting
+> multiple threads might be possible in the future, but it could be difficu=
+lt
+> to control=E2=80=94especially on busy phones=E2=80=94since it consumes mo=
+re power and may
+> interfere with other threads impacting user experience.
 
-> >>>> After looking into this patch and patch 31(though I've already provided my A-b)
-> >>>> more closely, I think the imx8qxp_pc and imx8{qm,qxp}_ldb main structures
-> >>>> should have the same life time with the embedded DRM bridges, because for
-> >>>> example the clk_apb clock in struct imx8qxp_pc would be accessed by the
-> >>>> imx8qxp_pc_bridge_mode_set DRM bridge callback.  But, IIUC, your patches extend
-> >>>> the life time for the embedded channel/bridge structures only, but not for the
-> >>>> main structures.  What do you think ?    
-> >>>
-> >>> I see you concern, but I'm sure the change I'm introducing is not
-> >>> creating the problem you are concerned about.
-> >>>
-> >>> The key aspect is that my patch is merely changing the lifetime of the
-> >>> _allocation_ of the drm_bridge, not its usage. On drm_bridge_remove()
-> >>> the bridge is removed from its encoder chain and it is completely not
-> >>> reachable, both before and after my patch. With my patch it is not
-> >>> freed immediately, but it's just a piece of "wasted" memory that is
-> >>> still allocated until elsewhere in the kernel there are pointers to it,
-> >>> to avoid use-after-free.
-> >>>
-> >>> With this explanation, do you think my patch is correct (after fixing
-> >>> the bug we already discussed of course)?    
-> >>
-> >> I tend to say your patch is not correct because we'll eventually make sure
-> >> that removing a bridge module is safe when doing atomic commit,  
-> > 
-> > I think your sentence can be rephrased as "your patch is correct with
-> > the current code base where bridges are not (yet) removable, but there
-> > will be a problem when they start to actually be removable".
-> > 
-> > Is my understanding correct? If it is, I agree on that sentence.  
-> 
-> Nope, I meant your patch should align the life times of the main structures
-> and the DRM bridges, for the sake of the kinda long term goal - remove bridge
-> driver module safely when doing atomic commit.
+Right, yeah.
 
-Again, I don't think there is any bug introduced by this patch (once
-the NULL ptr deref bug we already discussed is fixed). No bridge can be
-removed as of now, with or without this patch.
+>
+> >
+> > BTW, I also notice that zswap IAA compress batching patchset[2] is usin=
+g
+> > hardware accelerator (Intel Analytics Accelerator) to speed up zswap.
+> > I wonder if the handheld devices have similar hardware to get a similar=
+ benefit.
+>
+> Usually, the answer is no. We use zRAM and CPU, but this patch aims to pr=
+ovide
+> a common capability that can be shared by both zRAM and zswap.
+>
 
-You concern that this patch would make things more complex in the
-future, when bridges will actually become removable and they could be
-during atomic updates. But about this...
-
-> > The work to have removable bridges is massive and non-trivial, so it
-> > will need to be tackled in steps. The grand plan [0] is:
-> > 
-> >  1. add refcounting to DRM bridges (struct drm_bridge)
-> >  2. handle gracefully atomic updates during bridge removal
-> >  3. avoid DSI host drivers to have dangling pointers to DSI devices 
-> >  4. finish the hotplug bridge work, removing the "always-disconnected"
-> >     connector, moving code to the core and potentially removing the
-> >     hotplug-bridge itself (this needs to be clarified as points 1-3 are
-> >     developed)  
-> 
-> I'm busy with internal things these days and cannot look into the grand
-> plan and steps closely, sorry about that.
-
-...I'll wait until you have time to look into that more closely. There
-is just no way to understand this whole topic without some dedicated
-attention, which takes time unavoidably.
-
-In the meanwhile I am going to send v3 soon with the known bug fixed,
-so the best version is available to continue this discussion.
-
-> > I am at step 1 right now. Removal during atomic updates is step 2,
-> > ideas about how to implement that are already being discussed [1],
-> > there's a practical plan proposed by Maxime with the goal of reaching
-> > removable bridges without breaking things along the path.
-> > 
-> > [0] https://lore.kernel.org/lkml/20250206-hotplug-drm-bridge-v6-0-9d6f2c9c3058@bootlin.com/
-> > [1] https://lore.kernel.org/all/20250106-vigorous-talented-viper-fa49d9@houat/
-> >   
-> >> which means
-> >> the main structures should have the same life time with the DRM bridges.  
-> > 
-> > The word "lifetime" mean two things for bridges:
-> > 
-> >  * the time span during which memory is allocated for a struct
-> >    drm_bridge (along with the embedding struct)  
-> 
-> Note that with your patch set the imx8*-ldb drivers and this bridge driver
-> won't allocate the DRM bridge along with the embedding struct.
-
-By "embedding struct" I mean the struct imx8qxp_pc_channel that embeds
-the struct drm_bridge. Sorry, I realize my wording was ambiguous.
-
-> This makes
-> me worry, because maybe these drivers are the only "special" ones in this
-> patch set and I don't want them to be "special" after your patch set is
-> applied.
-
-Luca
-
--- 
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+Also, not everyone and every setup has access to hardware compression
+accelerators :) This provides benefits for all users.
 
