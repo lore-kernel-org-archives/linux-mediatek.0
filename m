@@ -4,77 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9698DC3ABC0
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 May 2025 15:39:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 825DEC3ABC0
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 May 2025 15:46:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6P88DLJwjZTV6+YJp5PA5/tnjoUbLaNgJShCD98PEJw=; b=vWvkJsQpbwA+Ydy5HijZ3WHmtR
-	RY+sYoGJG0rNokpSeGOZpMXxlpqIv2T8IiDmRf/EMCGntX9Faox1q+3SqHvEGClBs0No2nTOZOJTV
-	lbs5hgHZhygh8Fysd7Sr5Jl1SAl5N5DozjpXRCX8LLN8Zhhu4+vnFbBj0XmqS/z96+B4zVgMHjNId
-	+QKWpkYp8XmZRD0V2ctl0LgZcNoBZI+BCZwuwAlYuqgn2wTRHzkl+wjBAolJeCQqdktqJ2sYu7FvK
-	aDhVGe0VIH2FNty9ah1MKvgCRMpucl07kVYNIF6ms4ZJM4JC3/BwhRnNVselEEjp2V30vuvBb60af
-	Mva0BSCQ==;
+	bh=zFsVVhebDK1NYCWoS7EgmVQ2tl6qP90tIWoC9j9TLlQ=; b=Ak88ABseHsRe9gcD3xFZjc7JcY
+	Wvwjlx8JtdHjTtRDLJ73eGFiXUdcysjr2Ch4OoqmWekh4+AbmR8CfmaZqWeysyppw/sdG3bU/95/B
+	xaxOgMhCM602eBZv0/XIFvWGFOv/HHAaV5b7KcpKJPkkns8bxm3p2lMMrkeGbdGNBtNGDEgQjqox9
+	laEko9/71/SSiNJPkYle2Btlg+BPDHyUzJsPvPLiVNps3w/4Iu1OVrcw16HiqZHuiFd4GNE/3HykN
+	bpwwhxrmXcQjVyQrOHqjhpEiHmcnECfJUw2gtSRs5XvAAUvaSKl5asTuev2x8w2wyoeCGM627M+kA
+	Xt9BvLgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCgrT-0000000G0CV-3GLw;
-	Wed, 07 May 2025 15:39:07 +0000
-Received: from mail-qv1-xf32.google.com ([2607:f8b0:4864:20::f32])
+	id 1uCgyz-0000000G1nq-2DEJ;
+	Wed, 07 May 2025 15:46:53 +0000
+Received: from mail-qv1-xf2d.google.com ([2607:f8b0:4864:20::f2d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCgGp-0000000Fsfs-0uIQ;
-	Wed, 07 May 2025 15:01:17 +0000
-Received: by mail-qv1-xf32.google.com with SMTP id 6a1803df08f44-6f0ad744811so66456d6.1;
-        Wed, 07 May 2025 08:01:13 -0700 (PDT)
+	id 1uCgR3-0000000FuVD-1Hxr;
+	Wed, 07 May 2025 15:11:50 +0000
+Received: by mail-qv1-xf2d.google.com with SMTP id 6a1803df08f44-6f5496972d3so338906d6.0;
+        Wed, 07 May 2025 08:11:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1746630071; x=1747234871; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1746630708; x=1747235508; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=6P88DLJwjZTV6+YJp5PA5/tnjoUbLaNgJShCD98PEJw=;
-        b=NxqHzvQjJTPR5eNXJexUiIYdctVGQPK4YUWKjBwxLg+O6aGyPIxEobA+8OxKWXHNdH
-         TtYM41sNdTcKFbWqndXQRw668nRFOhZjoLuhvgi/JTsgsYAITh0MmTDW9EemGkZi4x9J
-         qC6J9z+SaaiGCZVtBzJUr7AJjSPPhsGn2tRlm3Tanx1cV+DTn8N7HjmCl/oPfEHA7BFU
-         JRpIqtsAANT7yyZsYV6qcg99Ficrk8aFV6ezBqf9Dn9SiChYrUf0eZZycn9dwTPvBIR6
-         YMuVS2ANZtqv9hPJpk6VXaxmFUOS7rYgJ09+tKjRf1xr/SDJwXj65AjVTPwMhhwG2ExP
-         SVtA==
+        bh=zFsVVhebDK1NYCWoS7EgmVQ2tl6qP90tIWoC9j9TLlQ=;
+        b=OUkN8kMfbQWIqpx9a+AwiVjqQbW+TmZCSJCp87ub13lDJX2zAzGVglXsdGvdG1LfPa
+         6YDdgRP/DbTe47oEt9gYM/9luNLrgydkLRjgIiuizolcj8ahZ56waafazRc7JcEtzS8g
+         RlmuLaLyophI2nM5BYmXjMEFIhwSxWx2MSjzH/eI/25iae5X5xC8cHWFIE3vooMBV1GV
+         WUlhLxxehI5V1PKvGOjdkDYwf2cjWQF4RfrdsD/BCgtKvdIex9/6fG/t86o9JKbHi/XG
+         Ne+IQSdSRQTINCa6IJLAeRFytGfBKT6fHAdem/CQzfkb8GILVKuOGUIBP3/YgObs+Tyu
+         R9gg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1746630071; x=1747234871;
+        d=1e100.net; s=20230601; t=1746630708; x=1747235508;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=6P88DLJwjZTV6+YJp5PA5/tnjoUbLaNgJShCD98PEJw=;
-        b=vWp5XJ5MLtFzJORqNljhQsBxEbPkWs0XRR3kgeJsPPztjf2fh5Cxx7evPda20fK3b2
-         BE8oYbUOMj+Nq5fXXEU2uCe/6RaU/uaDUGnhRSP0mUC9h4/D2GGAQwI1VLrEFMKuaZRN
-         OgU3sJcmoM4ozMU77qes+kiuzPIlMuOozV+xJ6G3K9IPoYfGvVYJp35BmVNnCMT+ibQ1
-         XCh9RMBzgW6Y+3MCQl05MaU8oYwlbzzTOjEvJuF2eWU2Q1LIDiJD0zCfY+aUOWnfLtog
-         q7CjuKT6yQ/6RqJMKjjl2blEAbp//d+NBWZccQAhFoKbt01hFeqNb/d6652ny42r8cAT
-         EYYQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVZM4II7Vzn4wzU+xGhgN5otla6VncFVAfJ4kvtnt+m1R9p9eYhAoYUeCCuOR8v2SpaGvSs8wEZ2G2uRKKnj08=@lists.infradead.org, AJvYcCWwrhxP0ouF1UusxIH+1uZjLNU+d2Ps+lcs3DtsDNUI532P3ajpK60PChNOT8rCJZBo0ej7xmbcn0PunSdLgn7H@lists.infradead.org
-X-Gm-Message-State: AOJu0YxeRBkCQ8d7bGO2JCimqPnm9DChX/vy9dJN2pANdaVhSCjPL2XJ
-	cdfSIN2qVpwjIujxBQcwPhw00THUPHcuX959P94+r0bP0lGWbZEXlrSIc2a4VQIWmq3/NCuPtd0
-	qiYVQou7lBpT7ybttE3JY/bRPbxw=
-X-Gm-Gg: ASbGncuM7ksITH7YQLOkrKkTwXa6lrG2BQOB3Gls/XydZKVlFF0BPdAO41M3f/LS2bu
-	33FlVu1MVuWSeBMLWVr4929ISWPYsjmA8RLvVQ0TLg1zTbwbvHh1Xu7I038SFun6EKIptQ8u1Yr
-	bfdnXaV//DYzqTE28vYygkEQ0=
-X-Google-Smtp-Source: AGHT+IFFpBEl3tD+vAAO3AKleiaarL+ScnybGt92nCTf5nORPfhlz+Z0Rwo3ogxYQXshqUgF+V+GBVifm7gBsWgoZoE=
-X-Received: by 2002:a05:6214:cc4:b0:6e8:9a55:824f with SMTP id
- 6a1803df08f44-6f5429b354emr52557756d6.6.1746630070743; Wed, 07 May 2025
- 08:01:10 -0700 (PDT)
+        bh=zFsVVhebDK1NYCWoS7EgmVQ2tl6qP90tIWoC9j9TLlQ=;
+        b=Nv4usmZbv2nsF067GvtfakINnKSNaMQhrKwYvh+fogYse5QhKE0wApohKGbgnx4smB
+         2f9QZ8wWFIf7iCizsFpg+7hZXr1DFjjFVm+hNo1rT6Nf6oQxoeJgzoONJOtREzMf3Zhh
+         xMfAuuvVISpumrmS2pgdNLoJ0sWAHAlDFoOW2sNqb4djQ+t2WXhhDx4G+xjG+ko0mIkD
+         6FBKeI7NTfPrDiQprJzTVdvAJsG7lSk9dAyUgncuI6aN657UGEMHLwmCxNiho5d/bf5c
+         GJ5s0sVtfdJ6Sqc4yuXVEG1Iw3jDijOitZRPi/HkUVD2DcPOi1Fccf+Hosz45QqyEllF
+         dcHw==
+X-Forwarded-Encrypted: i=1; AJvYcCUvo4qmzmGDICykRpEb3k+HgpFD8EpRK8EEZ3hKKYsJHwGrU06lxB2CDGVJ1NODPsE+QhP1N2asrvP+tNazPjBN@lists.infradead.org, AJvYcCXD9xSS1Ji+GsG0sWXV8WQcsWRYXBYXkTGPHmFaNDz1mye6xp9vSmPs857Tz+pqm80DoTM1FCNsd4y7MoGk26w=@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywe5k5FAL3XvDpcdXDeXZkDVut7ITeOt0daUAoEAda1hoveHJv0
+	4iVJ37TrVifvMPydcrc49DzvztxgJDTbY1D3HkqECkLQX3/k3pR633toJamzwqRZWaLdPjenYI0
+	AsWFh862+kxiu5puxes3FZNAWMKgridkQ
+X-Gm-Gg: ASbGncv81kilIX8IS8j1sm+GOpIy+xDfIEQpQYsKxp13yi8E7J6Z2+RKYKms1y7rQUn
+	CsScPj/7exZT3U2p2V10KjPw1Qrt88bC+f/zLz0MXFZUbbc2ZnYodHAJscePB8UL30OhYGcc0UP
+	iJ6XJfFg162hn68IjRMGoHo3s=
+X-Google-Smtp-Source: AGHT+IGgnreWVGqTX/OGt9t1yjfLukHeVyIawQ7JyQXO4oyNHOjm4AAmpDVZh+WGawWTYtY55suI3sZpRR9Poy5HWxA=
+X-Received: by 2002:ad4:5f88:0:b0:6e4:4164:8baa with SMTP id
+ 6a1803df08f44-6f5429e303fmr49840626d6.6.1746630707997; Wed, 07 May 2025
+ 08:11:47 -0700 (PDT)
 MIME-Version: 1.0
 References: <20250430082651.3152444-1-qun-wei.lin@mediatek.com>
- <aBqzcIteOzC9mRjY@harry> <A3307E1B-B741-4C23-8053-72A1CA04D923@nvidia.com> <CAGsJ_4yBn7j3WpCttPB0PVuRCYTYBcDbW2221AaPNLOHSmKADA@mail.gmail.com>
-In-Reply-To: <CAGsJ_4yBn7j3WpCttPB0PVuRCYTYBcDbW2221AaPNLOHSmKADA@mail.gmail.com>
+ <20250430145106.8ce79a05d35cec72aa02baa6@linux-foundation.org> <CAGsJ_4wLuJNe9uPE3-fBNLdiCPBpKt4a1ytuf7-+oiS5rBrg_w@mail.gmail.com>
+In-Reply-To: <CAGsJ_4wLuJNe9uPE3-fBNLdiCPBpKt4a1ytuf7-+oiS5rBrg_w@mail.gmail.com>
 From: Nhat Pham <nphamcs@gmail.com>
-Date: Wed, 7 May 2025 08:00:59 -0700
-X-Gm-Features: ATxdqUEizMgKIBqWKtTySGenm7msLmuvbZBCtMD6RABSUsHW1bY0saY3YhYcLjM
-Message-ID: <CAKEwX=NyZnNmiERFzwMUGQ8CJ7Pqm_XqHWMQoPjJKnBQefZkiw@mail.gmail.com>
+Date: Wed, 7 May 2025 08:11:36 -0700
+X-Gm-Features: ATxdqUEcu4e-_kxqbjUBLr1u_eNqQEaHZr7zcbF_KTN22201A4BiR4YT9uX5Xs0
+Message-ID: <CAKEwX=PW4YdCx77ZycvqkeW9JXL2PnxyjpseSy3ddtg8QtAKWQ@mail.gmail.com>
 Subject: Re: [PATCH] mm: Add Kcompressd for accelerated memory compression
 To: Barry Song <21cnbao@gmail.com>
-Cc: Zi Yan <ziy@nvidia.com>, Harry Yoo <harry.yoo@oracle.com>, 
-	Qun-Wei Lin <qun-wei.lin@mediatek.com>, Andrew Morton <akpm@linux-foundation.org>, 
+Cc: Andrew Morton <akpm@linux-foundation.org>, Qun-Wei Lin <qun-wei.lin@mediatek.com>, 
 	Mike Rapoport <rppt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
 	Sergey Senozhatsky <senozhatsky@chromium.org>, Minchan Kim <minchan@kernel.org>, linux-mm@kvack.org, 
@@ -85,8 +84,8 @@ Cc: Zi Yan <ziy@nvidia.com>, Harry Yoo <harry.yoo@oracle.com>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250507_080115_254340_34D6F145 
-X-CRM114-Status: GOOD (  29.66  )
+X-CRM114-CacheID: sfid-20250507_081149_346058_1FFCC317 
+X-CRM114-Status: GOOD (  35.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,102 +100,125 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 6, 2025 at 7:04=E2=80=AFPM Barry Song <21cnbao@gmail.com> wrote=
-:
+On Wed, Apr 30, 2025 at 3:50=E2=80=AFPM Barry Song <21cnbao@gmail.com> wrot=
+e:
 >
-> On Wed, May 7, 2025 at 1:50=E2=80=AFPM Zi Yan <ziy@nvidia.com> wrote:
+> On Thu, May 1, 2025 at 9:51=E2=80=AFAM Andrew Morton <akpm@linux-foundati=
+on.org> wrote:
 > >
-> > On 6 May 2025, at 21:12, Harry Yoo wrote:
+> > On Wed, 30 Apr 2025 16:26:41 +0800 Qun-Wei Lin <qun-wei.lin@mediatek.co=
+m> wrote:
 > >
-> > > On Wed, Apr 30, 2025 at 04:26:41PM +0800, Qun-Wei Lin wrote:
-> > >> This patch series introduces a new mechanism called kcompressd to
-> > >> improve the efficiency of memory reclaiming in the operating system.
-> > >>
-> > >> Problem:
-> > >>   In the current system, the kswapd thread is responsible for both s=
-canning
-> > >>   the LRU pages and handling memory compression tasks (such as those
-> > >>   involving ZSWAP/ZRAM, if enabled). This combined responsibility ca=
-n lead
-> > >>   to significant performance bottlenecks, especially under high memo=
-ry
-> > >>   pressure. The kswapd thread becomes a single point of contention, =
-causing
-> > >>   delays in memory reclaiming and overall system performance degrada=
-tion.
-> > >>
-> > >> Solution:
-> > >>   Introduced kcompressd to handle asynchronous compression during me=
-mory
-> > >>   reclaim, improving efficiency by offloading compression tasks from
-> > >>   kswapd. This allows kswapd to focus on its primary task of page re=
-claim
-> > >>   without being burdened by the additional overhead of compression.
-> > >>
-> > >> In our handheld devices, we found that applying this mechanism under=
- high
-> > >> memory pressure scenarios can increase the rate of pgsteal_anon per =
-second
-> > >> by over 260% compared to the situation with only kswapd. Additionall=
-y, we
-> > >> observed a reduction of over 50% in page allocation stall occurrence=
-s,
-> > >> further demonstrating the effectiveness of kcompressd in alleviating=
- memory
-> > >> pressure and improving system responsiveness.
-> > >>
-> > >> Co-developed-by: Barry Song <21cnbao@gmail.com>
-> > >> Signed-off-by: Barry Song <21cnbao@gmail.com>
-> > >> Signed-off-by: Qun-Wei Lin <qun-wei.lin@mediatek.com>
-> > >> Reference: Re: [PATCH 0/2] Improve Zram by separating compression co=
-ntext from kswapd - Barry Song
-> > >>           https://lore.kernel.org/lkml/20250313093005.13998-1-21cnba=
-o@gmail.com/
-> > >> ---
+> > > This patch series introduces a new mechanism called kcompressd to
+> > > improve the efficiency of memory reclaiming in the operating system.
 > > >
-> > > +Cc Zi Yan, who might be interested in writing a framework (or improv=
-ing
-> > > the existing one, padata) for parallelizing jobs (e.g. migration/comp=
-ression)
+> > > Problem:
+> > >   In the current system, the kswapd thread is responsible for both sc=
+anning
+> > >   the LRU pages and handling memory compression tasks (such as those
+> > >   involving ZSWAP/ZRAM, if enabled). This combined responsibility can=
+ lead
+> > >   to significant performance bottlenecks, especially under high memor=
+y
+> > >   pressure. The kswapd thread becomes a single point of contention, c=
+ausing
+> > >   delays in memory reclaiming and overall system performance degradat=
+ion.
+> > >
+> > > Solution:
+> > >   Introduced kcompressd to handle asynchronous compression during mem=
+ory
+> > >   reclaim, improving efficiency by offloading compression tasks from
+> > >   kswapd. This allows kswapd to focus on its primary task of page rec=
+laim
+> > >   without being burdened by the additional overhead of compression.
+> > >
+> > > In our handheld devices, we found that applying this mechanism under =
+high
+> > > memory pressure scenarios can increase the rate of pgsteal_anon per s=
+econd
+> > > by over 260% compared to the situation with only kswapd. Additionally=
+, we
+> > > observed a reduction of over 50% in page allocation stall occurrences=
+,
+> > > further demonstrating the effectiveness of kcompressd in alleviating =
+memory
+> > > pressure and improving system responsiveness.
 > >
-> > Thanks.
-> >
-> > I am currently looking into padata [1] to perform multithreaded page mi=
-gration
-
-TIL about padata :)
-
-> > copy job. But based on this patch, it seems that kcompressed is just an=
- additional
-> > kernel thread of executing zswap_store(). Is there any need for perform=
-ing
-> > compression with multiple threads?
+> > It's a significant change and I'm thinking that broader performance
+> > testing across a broader range of machines is needed before we can
+> > confidently upstream such a change.
 >
-> The current focus is on enabling kswapd to perform asynchronous compressi=
-on,
-> which can significantly reduce direct reclaim and allocstall events.
-> Therefore, the work begins with supporting a single thread. Supporting
-> multiple threads might be possible in the future, but it could be difficu=
-lt
-> to control=E2=80=94especially on busy phones=E2=80=94since it consumes mo=
-re power and may
-> interfere with other threads impacting user experience.
+> We ran the same test on our phones and saw the same results as Qun-Wei.
+> The async compression significantly reduces allocation stalls and improve=
+s
+> reclamation speed. However, I agree that broader testing is needed, and
+> we=E2=80=99ll also need the zswap team=E2=80=99s help with testing zswap =
+cases.
 
-Right, yeah.
+The warning aside (which I got around by setting and unsetting
+PF_MEMALLOC in kcompressd()), I run kernel building tests with zswap.
+There is not much performance difference with and without kcompressd.
+That probably means kernel building is a mediocre benchmark more than
+anything. Ideally, I want to experiment with some real workloads, but
+that is a bit more involved to set up, unfortunately :(
+
+I can try again once you have sent v2 that incorporates our review, at
+least to make sure everything is stable and there is no obvious
+regression. Hopefully I can set up a proper experiment at some point
+too...
 
 >
 > >
-> > BTW, I also notice that zswap IAA compress batching patchset[2] is usin=
-g
-> > hardware accelerator (Intel Analytics Accelerator) to speed up zswap.
-> > I wonder if the handheld devices have similar hardware to get a similar=
- benefit.
+> > Also, it's presumably a small net loss on single-CPU machines (do these
+> > exist any more?).  Is it hard to disable this feature on such machines?
 >
-> Usually, the answer is no. We use zRAM and CPU, but this patch aims to pr=
-ovide
-> a common capability that can be shared by both zRAM and zswap.
+> A net loss is possible, but kswapd can sometimes enter sleep contexts,
+> allowing the parallel kcompressd thread to continue compression.
+> This could actually be a win. But I agree that additional testing on
+> single-CPU machines may be necessary.
 >
-
-Also, not everyone and every setup has access to hardware compression
-accelerators :) This provides benefits for all users.
+> It could be disabled by the following if we discover any regression on
+> single-CPU machines?
+>
+> if (num_online_cpus() =3D=3D 1)
+>      return false;
+>
+> >
+> > >
+> > > +static bool swap_sched_async_compress(struct folio *folio)
+> > > +{
+> > > +     struct swap_info_struct *sis =3D swp_swap_info(folio->swap);
+> > > +     int nid =3D numa_node_id();
+> > > +     pg_data_t *pgdat =3D NODE_DATA(nid);
+> > > +
+> > > +     if (unlikely(!pgdat->kcompressd))
+> > > +             return false;
+> > > +
+> > > +     if (!current_is_kswapd())
+> > > +             return false;
+> > > +
+> > > +     if (!folio_test_anon(folio))
+> > > +             return false;
+> >
+> > Are you sure the above three tests are really needed?
+>
+> Currently, it runs as a per-node thread mainly to accelerate asynchronous
+> reclamation, which effectively reduces direct reclamation. Since direct
+> reclamation already follows the slow path, asynchronous compression offer=
+s
+> limited additional benefit in that context. Moreover, it's difficult
+> to determine
+> the optimal number of threads for direct reclamation, whereas the  compre=
+ssion
+> in the current direct reclamation allows it to utilize all CPUs.
+>
+> The first condition checks whether kcompressd is present. The second
+> ensures that we're in kswapd asynchronous reclamation, not direct
+> reclamation. The third condition might be optimized or dropped, at least =
+for
+> swap-backed shmem, and similar cases.
+>
+> Thanks
+> Barry
 
