@@ -4,111 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9C60C3ABBF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 May 2025 17:26:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D66FC3ABBF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 May 2025 17:26:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZqaZy8x/Dzg4HJuB0SMAp2U1WZzdRPfMEvL2Canl46o=; b=pKkNAB1RAHvPplTa3bivX0K0Ue
-	ctLy/d68nEssDeCBem0Znbj4v0mDYqL/j+kA0oEAZmOSZoiMBzNoFoesel98ACW3ltuzgkc4JD5w4
-	gBIDIYJfdI6LvCL+Z96TrUoJVaWYO4jJneApNtxXGYPvx5AMH133kSeDSxL1k//O2FqVt1u+fZRR8
-	GmAlkDMnjbTcoLSwHgLuQIHImQjdCsAx8s+dYsGCKPIagflrbG5UUEAjvrSCS06CSp6aqXQLCvee5
-	AApLsoeYFpuWiQtS+2g8DHVSXYKysEprIWASJYeEB8hixfuutTkWNGVsBn+WBn3BicSddfpD0JOFy
-	uT599FkA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mD/ZPB49P6LlMknoqD/OaERqdZ8Y09oESPfqDGk4nRo=; b=AfXHhlflkgmc31C3xy4DSv8h5A
+	9LsGI8+M+mw72y8ZMtfyULeTDDeoE5a+SJJKfoQVtDObsvm5yoLfSs8679bQp48TI/lTLxu20lCJl
+	ajhYUrBaQSOGTeKaJVuREjN4QN2/tiuUQH7V/LlOqOpaZncxXuTuGQrX8WXA79bBir2nYjYTOZZWj
+	Y4l+oWmw97AwbwJc/OjHQms8dXQAnEZRUBnx8lrHCmrTl7XCeNH7rZxl48H9WREw/VZGAOOdcYKlR
+	ijLcWsxzdGonO1hpuh9TawVcaSxFsYmLztjwg+jblrYnkTw1+/u1udjQbzhIvUPMyYi2Egv/xG1PO
+	J+HOcomg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCiXZ-0000000GJpx-2ONF;
-	Wed, 07 May 2025 17:26:41 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1uCiXe-0000000GJzk-0KBY;
+	Wed, 07 May 2025 17:26:46 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uChn7-0000000GBNm-26wL;
-	Wed, 07 May 2025 16:38:42 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 89A7A4A536;
-	Wed,  7 May 2025 16:38:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F04D7C4CEEE;
-	Wed,  7 May 2025 16:38:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746635920;
-	bh=TqTyxNTUeXIXIbgbWfv1PyWf194MsWra/G7EgnvKn1E=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=AyIymc2WUwyOA8d+yIafhO3j7UN9ALcm+hJ4nXmJ5aU79oNpfstTIMGLCVRACV2ax
-	 JIEL4T+cYujaPi/vwiJjQPC4CBIueS0dZzALrwNExDGGSWSKFn6qgHn2T76DlSbjQ3
-	 YYukBbrippdZmajPTYXivGbBd+1EJCowJ68J2AOuR+NPZQOBFzORc8QXTv7jvjxdCo
-	 zXkrngaysM8SKMppt6W/7J3mjFcHm61ktJqnwuI1oVgXCG8CPlgpinUZr1TYzdsm/P
-	 +bCJSfEOkxWJvo5tKzdr27ATGxkeHQdH7e93YRxYX4YVB8zau06Vnv6oIxo+rJF1Nf
-	 dc/dJAXbgPo7A==
-From: Bjorn Andersson <andersson@kernel.org>
-To: Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Conor Dooley <conor@kernel.org>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Steen Hegelund <Steen.Hegelund@microchip.com>,
-	Daniel Machon <daniel.machon@microchip.com>,
-	UNGLinuxDriver@microchip.com,
-	Konrad Dybcio <konradybcio@kernel.org>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Andy Gross <agross@kernel.org>,
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
-	Viresh Kumar <vireshk@kernel.org>,
-	Nishanth Menon <nm@ti.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	zhouyanjie@wanyeetech.com,
+	id 1uChpu-0000000GBhF-3rs7;
+	Wed, 07 May 2025 16:41:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1746636091;
+	bh=iu4DqH0BiPBmHQ3Yxxgy5dmtT9CVDW/JTaBvXtsoyVM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=WqmJ7wZCGoPV75a1CSt5fFVV8hrvOqfCXQ0JPVfKoPTPhbHeRx4CnRdrVacfFgkw6
+	 ZyBkuUrakoPGIFob+t4tXeZF0bqBAR0RcoqSw6Lxl4LeFkHhIcZePw8nJUW037Q0l9
+	 +XYqQGkw0UHbU5S80EWBf/miDl1sTjzjwfLTVt4PuE6NyAXbWIIfrYjhUtxERDpUEI
+	 +wNcJ8nnwgIUgcGoWK52d/XXRG8e6n05o3z+UvAgOA8x93+GfjpOERpguPMLhmvj37
+	 dD+3TVjgDSNCoEVQHqicrGFRCMBWH7i3EqXSMya3BBb6oIRG5Q2O+HSnD5lpo19NZ4
+	 flhNyI2SI20kA==
+Received: from notapiano (unknown [70.107.117.78])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id BEA5417E04C0;
+	Wed,  7 May 2025 18:41:29 +0200 (CEST)
+Date: Wed, 7 May 2025 12:41:27 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Arnd Bergmann <arnd@kernel.org>
+Cc: Mark Brown <broonie@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	Stephan Gerhold <stephan.gerhold@linaro.org>,
-	"Rob Herring (Arm)" <robh@kernel.org>
-Cc: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-sunxi@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org,
-	imx@lists.linux.dev,
-	linux-rockchip@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-mips@vger.kernel.org,
-	linux-pm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	Andre Przywara <andre.przywara@arm.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>,
-	Sudeep Holla <sudeep.holla@arm.com>,
-	Viresh Kumar <viresh.kumar@linaro.org>,
-	Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: (subset) [PATCH v2 00/17] Arm cpu schema clean-ups
-Date: Wed,  7 May 2025 09:38:33 -0700
-Message-ID: <174663591275.3531.6906045623469489227.b4-ty@kernel.org>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250410-dt-cpu-schema-v2-0-63d7dc9ddd0a@kernel.org>
-References: <20250410-dt-cpu-schema-v2-0-63d7dc9ddd0a@kernel.org>
+	Alexandre Mergnat <amergnat@baylibre.com>,
+	Zoran Zhan <zoran.zhan@mediatek.com>, linux-sound@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] ASoC: mediatek: mt8188-mt6359: select
+ CONFIG_SND_SOC_MT6359_ACCDET
+Message-ID: <d9642581-3fed-47d8-9661-4335ec1e9c27@notapiano>
+References: <20250505052106.1811802-1-arnd@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <20250505052106.1811802-1-arnd@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250507_093841_576729_ED5EB9FD 
-X-CRM114-Status: UNSURE (   9.40  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250507_094135_124610_862B230D 
+X-CRM114-Status: GOOD (  19.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,24 +81,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Thu, 10 Apr 2025 10:47:21 -0500, Rob Herring (Arm) wrote:
-> The Arm cpu.yaml schema fails to restrict allowed properties in 'cpu'
-> nodes. The result, not surprisely, is a number of additional properties
-> and errors in .dts files. This series resolves those issues.
+On Mon, May 05, 2025 at 07:20:52AM +0200, Arnd Bergmann wrote:
+> From: Arnd Bergmann <arnd@arndb.de>
 > 
-> There's still more properties in arm32 DTS files which I have not
-> documented. Mostly yet more supply names and "fsl,soc-operating-points".
-> What's a few more warnings on the 10000s of warnings...
+> The driver support was added without selecting the codec, which leads to
+> a link failure:
 > 
-> [...]
+> aarch64-linux-ld: sound/soc/mediatek/mt8188/mt8188-mt6359.o: in function `mt8188_mt6359_init':
+> mt8188-mt6359.c:(.text+0x19f0): undefined reference to `mt6359_accdet_enable_jack_detect'
 
-Applied, thanks!
+Hm, I cannot seem to reproduce this. I just tried to build on today's next with
+CONFIG_SND_SOC_MT6359_ACCDET disabled and have tried
+CONFIG_SND_SOC_MT8188_MT6359 both =m and =y, but in both cases it compiles fine.
 
-[09/17] arm: dts: qcom: ipq4019: Drop redundant CPU "clock-latency"
-        commit: 3ea267124573f24e67f0fe47c4a865f0f283f8fc
+I wonder if somehow your tree was missing "ASoC: mediatek: mt6359: Add stub for
+mt6359_accdet_enable_jack_detect" [1], or if it's due to a difference in
+compiler versions used...
 
-Best regards,
--- 
-Bjorn Andersson <andersson@kernel.org>
+(I'm using gcc-linaro-12.3.1-2023.06-x86_64_aarch64-linux-gnu)
+
+Thanks,
+Nícolas
+
+[1] https://lore.kernel.org/all/20250306-mt8188-accdet-v3-3-7828e835ff4b@collabora.com/
+
+> 
+> Fixes: f35d834d67ad ("ASoC: mediatek: mt8188-mt6359: Add accdet headset jack detect support")
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+> ---
+>  sound/soc/mediatek/Kconfig | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
+> index 3033e2d3fe16..e148d4d94160 100644
+> --- a/sound/soc/mediatek/Kconfig
+> +++ b/sound/soc/mediatek/Kconfig
+> @@ -229,6 +229,7 @@ config SND_SOC_MT8188_MT6359
+>  	tristate "ASoC Audio driver for MT8188 with MT6359 and I2S codecs"
+>  	depends on SND_SOC_MT8188 && MTK_PMIC_WRAP
+>  	depends on I2C
+> +	select SND_SOC_MT6359_ACCDET
+>  	select SND_SOC_MT6359
+>  	select SND_SOC_HDMI_CODEC
+>  	select SND_SOC_DMIC
+> -- 
+> 2.39.5
+> 
 
