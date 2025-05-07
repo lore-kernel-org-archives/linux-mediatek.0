@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1590FC3ABBF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BD73C3ABC3
 	for <linux-mediatek@archiver.kernel.org>; Wed,  7 May 2025 13:55:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,32 +12,32 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WFuKeZ2Mgo5yTqNGhX/kKLsejXNkpw0wnwsa5YPEGN4=; b=iANhfP/3J7tAGxTXv6xsdtyUy6
-	ZUi/FPhJoe/zPOzg3dNfgJp7Lj7vBL1EQnJZsDFr5tkLazW8/wAy0an+2fXquYCrPCfTk2G37ioMp
-	dhCb3SLJeZ4AyBAJ8GiJQt9C9N8twGtJt5fsZMCDbM2PYcc0Q78wIXriYVbPc2E0iSnE/ZPUguA1d
-	cs3IRJCQI4tekG7OVCLqwV5Ybj+A2RBw29gGL5EihOKSLO92wgCBrXKBM6Bi0/ab5rhRDM/azJhWN
-	erhff27SPqFJynvKAS4FkOm8+xpD2sKar04+TBIpNrpHdNqW+3j3aD2WPECUqN0jNdAO8uT0fZ6cC
-	Wbrpi59Q==;
+	bh=1zx7YDdH6fuEhBMxor2eO5pbMGS8qLPBBpxZ7MXsTD8=; b=fIvgrkfaK4zUClR3A9xO1vvwaP
+	OsjWJwLh1AZOb/+9pLHrlPi4AMiY+tf2sBefe7R9FALuSbfALIEGHRoLIgbwOVU/iN78xlQKTH3WC
+	u62UVbbaJzhsyRoAXJdFrvVo+K2QlY4R+GCjE4l4kafHUkd0kl+5BPj58TFHc9XHhtBxQSQnb91lk
+	IxAJ2fGOOnXDjTOE2sjCESi8MQzhnCXAqinHiHWg3KNfbNYDw9LppKHbvaR1TjEoB0GRlcPHx7KEr
+	qwJLNvl1bC1S5maHuekXGKcShyIUghL11/sFebFFyllZzUV2thlbJCkpSODRiL+OAcTTxBUfvIS1J
+	vQJfKRRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCfF5-0000000Fem0-31jn;
-	Wed, 07 May 2025 13:55:23 +0000
+	id 1uCfF6-0000000Femd-1Pq6;
+	Wed, 07 May 2025 13:55:24 +0000
 Received: from mail.cjdns.fr ([5.135.140.105])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCf5R-0000000Fc0g-2UA4
+	id 1uCf5T-0000000Fc1k-1PHf
 	for linux-mediatek@lists.infradead.org;
-	Wed, 07 May 2025 13:45:27 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 59ECADCD09;
-	Wed,  7 May 2025 15:45:22 +0200 (CEST)
+	Wed, 07 May 2025 13:45:28 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id F2051DAE5F;
+	Wed,  7 May 2025 15:45:23 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
-	t=1746625523; h=from:subject:date:message-id:to:cc:mime-version:
+	t=1746625525; h=from:subject:date:message-id:to:cc:mime-version:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=WFuKeZ2Mgo5yTqNGhX/kKLsejXNkpw0wnwsa5YPEGN4=;
-	b=ogUM7LJPbnLQIHnxka/HXJbvFDi0SF9Q5Umf+kSJ3t0HLkOvFZiVQ9CHNP94Z3KwdOQ9yJ
-	IciAPUvVkgyQOKgmP0ndh2yyBQQqaI8jx/auNc77qJn8EGQOAcrnQ/qCLAEBp1thUlqz7e
-	wVXt2YUbVAZSzX62q6AzxjBPsr2yAJQyguRPNgtIeksOyl4Bltehn0JSnbxWPF+ZFlSrDf
-	kkzeQ14mcpoA/ghOt/wewUe9Wg27tcRUReI9BMMMgMsyqIHr/y22keNGCgxt1KUQOAbeWX
-	L8wBpThMihowkLaduDvnW8Ieu4urdaMygJvdtLqmrfZbNWKPa2EurWCSWCQk2Q==
+	bh=1zx7YDdH6fuEhBMxor2eO5pbMGS8qLPBBpxZ7MXsTD8=;
+	b=IpSWT+Aj5LZg37tlEwSK9bNtzYj4ltYKJlgRUOKgX3Ju3wuw2kkdgtFERZC5WMy62kAzU4
+	JXGHJw2Kv9Rxm3OcWlsKvKElLpaoSc9vs4lGtpRgX6wkPQFRtaDD3yKg549fVao4zGQPgG
+	GG4DAgNnGo5vs018M324bo/pEpnCbuW1s5FyH4cVgJbkn9r1Y+fMynqzaE45CbhAwqTJTn
+	d7Y51jb9F9ISt/BSMy5g+Ym1ScNFd45qZG4vo3jH5dgc/XWVd7Dg2Haa9BkDtFHCJnslEF
+	X7DJsa8nTvYUW9tK83WfDCcKhzHeQ6ScKIkZKlEK7kKOoWgDl1GKKnHEfxh3Jw==
 From: Caleb James DeLisle <cjd@cjdns.fr>
 To: linux-mips@vger.kernel.org
 Cc: tglx@linutronix.de,
@@ -50,20 +50,18 @@ Cc: tglx@linutronix.de,
 	linux-kernel@vger.kernel.org,
 	benjamin.larsson@genexis.eu,
 	linux-mediatek@lists.infradead.org,
-	cjd@cjdns.fr,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v5 3/7] dt-bindings: mips: Add EcoNet platform binding
-Date: Wed,  7 May 2025 13:44:56 +0000
-Message-Id: <20250507134500.390547-4-cjd@cjdns.fr>
+	cjd@cjdns.fr
+Subject: [PATCH v5 4/7] mips: Add EcoNet MIPS platform support
+Date: Wed,  7 May 2025 13:44:57 +0000
+Message-Id: <20250507134500.390547-5-cjd@cjdns.fr>
 In-Reply-To: <20250507134500.390547-1-cjd@cjdns.fr>
 References: <20250507134500.390547-1-cjd@cjdns.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250507_064525_812571_58E24626 
-X-CRM114-Status: UNSURE (   7.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250507_064527_737383_7CD042B0 
+X-CRM114-Status: GOOD (  15.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,47 +76,240 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Document the top-level device tree binding for EcoNet MIPS-based SoCs.
+Add platform support for EcoNet MIPS SoCs.
 
 Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- .../devicetree/bindings/mips/econet.yaml      | 26 +++++++++++++++++++
- 1 file changed, 26 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/mips/econet.yaml
+ arch/mips/Kbuild.platforms             |  1 +
+ arch/mips/Kconfig                      | 25 +++++++++
+ arch/mips/boot/compressed/uart-16550.c |  5 ++
+ arch/mips/econet/Kconfig               | 37 ++++++++++++
+ arch/mips/econet/Makefile              |  2 +
+ arch/mips/econet/Platform              |  5 ++
+ arch/mips/econet/init.c                | 78 ++++++++++++++++++++++++++
+ 7 files changed, 153 insertions(+)
+ create mode 100644 arch/mips/econet/Kconfig
+ create mode 100644 arch/mips/econet/Makefile
+ create mode 100644 arch/mips/econet/Platform
+ create mode 100644 arch/mips/econet/init.c
 
-diff --git a/Documentation/devicetree/bindings/mips/econet.yaml b/Documentation/devicetree/bindings/mips/econet.yaml
+diff --git a/arch/mips/Kbuild.platforms b/arch/mips/Kbuild.platforms
+index bca37ddf974b..41a00fa860c1 100644
+--- a/arch/mips/Kbuild.platforms
++++ b/arch/mips/Kbuild.platforms
+@@ -11,6 +11,7 @@ platform-$(CONFIG_CAVIUM_OCTEON_SOC)	+= cavium-octeon/
+ platform-$(CONFIG_EYEQ)			+= mobileye/
+ platform-$(CONFIG_MIPS_COBALT)		+= cobalt/
+ platform-$(CONFIG_MACH_DECSTATION)	+= dec/
++platform-$(CONFIG_ECONET)		+= econet/
+ platform-$(CONFIG_MIPS_GENERIC)		+= generic/
+ platform-$(CONFIG_MACH_JAZZ)		+= jazz/
+ platform-$(CONFIG_LANTIQ)		+= lantiq/
+diff --git a/arch/mips/Kconfig b/arch/mips/Kconfig
+index e0e6ce2592b4..c3dbdc808664 100644
+--- a/arch/mips/Kconfig
++++ b/arch/mips/Kconfig
+@@ -391,6 +391,30 @@ config MACH_DECSTATION
+ 
+ 	  otherwise choose R3000.
+ 
++config ECONET
++	bool "EcoNet MIPS family"
++	select BOOT_RAW
++	select CPU_BIG_ENDIAN
++	select DEBUG_ZBOOT
++	select EARLY_PRINTK_8250
++	select ECONET_EN751221_TIMER
++	select SERIAL_OF_PLATFORM
++	select SYS_SUPPORTS_BIG_ENDIAN
++	select SYS_HAS_CPU_MIPS32_R1
++	select SYS_HAS_CPU_MIPS32_R2
++	select SYS_HAS_EARLY_PRINTK
++	select SYS_SUPPORTS_32BIT_KERNEL
++	select SYS_SUPPORTS_MIPS16
++	select SYS_SUPPORTS_ZBOOT_UART16550
++	select USE_GENERIC_EARLY_PRINTK_8250
++	select USE_OF
++	help
++	  EcoNet EN75xx MIPS devices are big endian MIPS machines used
++	  in XPON (fiber) and DSL applications. They have SPI, PCI, USB,
++	  GPIO, and Ethernet, with optional XPON, DSL, and VoIP DSP cores.
++	  Don't confuse these with the Airoha ARM devices sometimes referred
++	  to as "EcoNet", this family is for MIPS based devices only.
++
+ config MACH_JAZZ
+ 	bool "Jazz family of machines"
+ 	select ARC_MEMORY
+@@ -1021,6 +1045,7 @@ source "arch/mips/ath79/Kconfig"
+ source "arch/mips/bcm47xx/Kconfig"
+ source "arch/mips/bcm63xx/Kconfig"
+ source "arch/mips/bmips/Kconfig"
++source "arch/mips/econet/Kconfig"
+ source "arch/mips/generic/Kconfig"
+ source "arch/mips/ingenic/Kconfig"
+ source "arch/mips/jazz/Kconfig"
+diff --git a/arch/mips/boot/compressed/uart-16550.c b/arch/mips/boot/compressed/uart-16550.c
+index db618e72a0c4..529e77a6487c 100644
+--- a/arch/mips/boot/compressed/uart-16550.c
++++ b/arch/mips/boot/compressed/uart-16550.c
+@@ -20,6 +20,11 @@
+ #define PORT(offset) (CKSEG1ADDR(INGENIC_UART_BASE_ADDR) + (4 * offset))
+ #endif
+ 
++#ifdef CONFIG_ECONET
++#define EN75_UART_BASE	0x1fbf0003
++#define PORT(offset)	(CKSEG1ADDR(EN75_UART_BASE) + (4 * (offset)))
++#endif
++
+ #ifndef IOTYPE
+ #define IOTYPE char
+ #endif
+diff --git a/arch/mips/econet/Kconfig b/arch/mips/econet/Kconfig
 new file mode 100644
-index 000000000000..d8181b58c781
+index 000000000000..d03f90f3daa4
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/mips/econet.yaml
-@@ -0,0 +1,26 @@
-+# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/mips/econet.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
++++ b/arch/mips/econet/Kconfig
+@@ -0,0 +1,37 @@
++# SPDX-License-Identifier: GPL-2.0
++if ECONET
 +
-+title: EcoNet MIPS SoCs
++choice
++	prompt "EcoNet SoC selection"
++	default SOC_ECONET_EN751221
++	help
++	  Select EcoNet MIPS SoC type. Individual SoCs within a family are
++	  very similar, so is it enough to select the right family, and
++	  then customize to the specific SoC using the device tree only.
 +
-+maintainers:
-+  - Caleb James DeLisle <cjd@cjdns.fr>
++	config SOC_ECONET_EN751221
++		bool "EN751221 family"
++		select COMMON_CLK
++		select ECONET_EN751221_INTC
++		select IRQ_MIPS_CPU
++		select SMP
++		select SMP_UP
++		select SYS_SUPPORTS_SMP
++		help
++		  The EN751221 family includes EN7512, RN7513, EN7521, EN7526.
++		  They are based on single core MIPS 34Kc processors. To boot
++		  this kernel, you will need a device tree such as
++		  MIPS_RAW_APPENDED_DTB=y, and a root filesystem.
++endchoice
 +
-+properties:
-+  $nodename:
-+    const: '/'
++choice
++	prompt "Devicetree selection"
++	default DTB_ECONET_NONE
++	help
++	  Select the devicetree.
 +
-+  compatible:
-+    oneOf:
-+      - description: Boards with EcoNet EN751221 family SoC
-+        items:
-+          - enum:
-+              - smartfiber,xp8421-b
-+          - const: econet,en751221
++	config DTB_ECONET_NONE
++		bool "None"
++endchoice
 +
-+additionalProperties: true
++endif
+diff --git a/arch/mips/econet/Makefile b/arch/mips/econet/Makefile
+new file mode 100644
+index 000000000000..7e4529e7d3d7
+--- /dev/null
++++ b/arch/mips/econet/Makefile
+@@ -0,0 +1,2 @@
 +
-+...
++obj-y := init.o
+diff --git a/arch/mips/econet/Platform b/arch/mips/econet/Platform
+new file mode 100644
+index 000000000000..ea5616447bcd
+--- /dev/null
++++ b/arch/mips/econet/Platform
+@@ -0,0 +1,5 @@
++# To address a 7.2MB kernel size limit in the EcoNet SDK bootloader,
++# we put the load address well above where the bootloader loads and then use
++# zboot. So please set CONFIG_ZBOOT_LOAD_ADDRESS to the address where your
++# bootloader actually places the kernel.
++load-$(CONFIG_ECONET)	+= 0xffffffff81000000
+diff --git a/arch/mips/econet/init.c b/arch/mips/econet/init.c
+new file mode 100644
+index 000000000000..6f43ffb209cb
+--- /dev/null
++++ b/arch/mips/econet/init.c
+@@ -0,0 +1,78 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * EcoNet setup code
++ *
++ * Copyright (C) 2025 Caleb James DeLisle <cjd@cjdns.fr>
++ */
++
++#include <linux/init.h>
++#include <linux/of_clk.h>
++#include <linux/irqchip.h>
++
++#include <asm/addrspace.h>
++#include <asm/io.h>
++#include <asm/bootinfo.h>
++#include <asm/time.h>
++#include <asm/prom.h>
++#include <asm/smp-ops.h>
++#include <asm/reboot.h>
++
++#define CR_AHB_RSTCR		((void __iomem *)CKSEG1ADDR(0x1fb00040))
++#define RESET			BIT(31)
++
++#define UART_BASE		CKSEG1ADDR(0x1fbf0003)
++#define UART_REG_SHIFT		2
++
++static void hw_reset(char *command)
++{
++	iowrite32(RESET, CR_AHB_RSTCR);
++}
++
++/* 1. Bring up early printk. */
++void __init prom_init(void)
++{
++	setup_8250_early_printk_port(UART_BASE, UART_REG_SHIFT, 0);
++	_machine_restart = hw_reset;
++}
++
++/* 2. Parse the DT and find memory */
++void __init plat_mem_setup(void)
++{
++	void *dtb;
++
++	set_io_port_base(KSEG1);
++
++	dtb = get_fdt();
++	if (!dtb)
++		panic("no dtb found");
++
++	__dt_setup_arch(dtb);
++
++	early_init_dt_scan_memory();
++}
++
++/* 3. Overload __weak device_tree_init(), add SMP_UP ops */
++void __init device_tree_init(void)
++{
++	unflatten_and_copy_device_tree();
++
++	register_up_smp_ops();
++}
++
++const char *get_system_type(void)
++{
++	return "EcoNet-EN75xx";
++}
++
++/* 4. Initialize the IRQ subsystem */
++void __init arch_init_irq(void)
++{
++	irqchip_init();
++}
++
++/* 5. Timers */
++void __init plat_time_init(void)
++{
++	of_clk_init(NULL);
++	timer_probe();
++}
 -- 
 2.39.5
 
