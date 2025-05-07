@@ -4,62 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DA6FC3ABBF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 May 2025 14:43:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 178BDC3ABC0
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 May 2025 14:49:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SHSt8PLTyIztOhz0Nh5K4ab8OFZURXhjGHzDAo03P0Y=; b=Xf1A1clAn6j6rpR/tWu88iSOgi
-	6hkPh2sxtCuToCKcDzkGal+vD2Jfzr7FWR7NBA40QMdl+OYQ6qxUpVakI0iwDZJH9HEq9LlN/Spu6
-	8UaJ79ESviYYleeSlvL1vBJ5p4j9BB5IniQewrEufCFgcN/oC9uP2N5q9l2e7k84cDfAxXVFKXowx
-	RE9vtltau5VxevqDg02f1Fk42JhTG23vy1knyo9c3RPSJYbhTf6fgwCZoiiqlPCykt49T8lLN2/tv
-	DFw2DRjgBhPOhjEgPkhkDj54B/KnR1ag7A0B60MjKprkLTw0R3Y6TYYcaaG3xudb0hSZ0hJbi5P8S
-	ldztfg5A==;
+	bh=ZUkZFmqLpaya2SvixZMFXiK5vMoC/WgZVFpr9qlTBnY=; b=KZnXtl1Kbb8CQQQ/hhOFU0zHfb
+	+71cOuZMWIRvJzO2ttaMrb4iGAYtMuKTLdxWPYX8I1zI6CpU/fpztLbJh/xnP2jF1jsjAySGUQuLM
+	2hpepMhjhpQqSGXGpqxydVfGIUk8Gand34DaH6tVU8YqMjDyz9IOrTI/yvlZz4dxSu9ZzZN7Ss6GG
+	gl64FlFqNrBMvByn/MJuxIn9csO/2WU3nnESWjMZwYBz/9ba04ZcE487bNPd+fL9SFBEh2e83sla6
+	+9GSeKKfGob8q5JOOkZ5ekpwM0ZmUyz0Os/S79TIDoyf1yozPuoE9EQqD4STdBuXvqOEx/XAhrISK
+	sv0+LIew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCfzM-0000000Fpo9-2Zz7;
-	Wed, 07 May 2025 14:43:12 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCfQR-0000000FhQG-3ZeT;
-	Wed, 07 May 2025 14:07:09 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id E6F09339;
-	Wed,  7 May 2025 07:06:54 -0700 (PDT)
-Received: from [10.57.20.214] (unknown [10.57.20.214])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id EB1AF3F5A1;
-	Wed,  7 May 2025 07:07:00 -0700 (PDT)
-Message-ID: <2b85071a-e3e7-4cfc-a471-e81e463b7c37@arm.com>
-Date: Wed, 7 May 2025 15:06:58 +0100
+	id 1uCg59-0000000FqsA-49Y3;
+	Wed, 07 May 2025 14:49:11 +0000
+Received: from relay5-d.mail.gandi.net ([217.70.183.197])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uCfWT-0000000FiZo-2yJg;
+	Wed, 07 May 2025 14:13:24 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id A7A8943A17;
+	Wed,  7 May 2025 14:13:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1746627197;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ZUkZFmqLpaya2SvixZMFXiK5vMoC/WgZVFpr9qlTBnY=;
+	b=adYesO7D1P7ynosW29lwbsjTgJFaCmVyHEon+flnFOa0BvpYbgiRnF+Xmpud0uAtagWCKR
+	3oskQarIGt0LOBcEzJnasoloDFldQLXTPGfiIhzFPFxQ44Bv9OhNB8OfgtRyxM7+9P43cR
+	EkU5M3wIV4eMfygkH8Z49lCMg02BGC3HtUgDaN8q7xI8pIpFMVELZovDj9NLGU/agK2QHw
+	g3CUt2Har990IGmx7V543phmv8Wv4XvzKKsAS8THOhfgcNBUADs19379Lxd8e7/I43vGMD
+	r3WqKePwg6IikvuHOAtVe8FiAWFIlf69nPFcMS8m4pDVEx1m0DuHF1UEztkH0g==
+Date: Wed, 7 May 2025 16:13:11 +0200
+From: Luca Ceresoli <luca.ceresoli@bootlin.com>
+To: Liu Ying <victor.liu@nxp.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
+ <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie
+ <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Andrzej Hajda
+ <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>,
+ Robert Foss <rfoss@kernel.org>, Laurent Pinchart
+ <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>, Jagan Teki
+ <jagan@amarulasolutions.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer
+ <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Douglas Anderson
+ <dianders@chromium.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Krzysztof
+ Kozlowski <krzk@kernel.org>, Anusha Srivatsa <asrivats@redhat.com>, Paul
+ Kocialkowski <paulk@sys-base.io>, Dmitry Baryshkov <lumag@kernel.org>, Hui
+ Pu <Hui.Pu@gehealthcare.com>, Thomas Petazzoni
+ <thomas.petazzoni@bootlin.com>, dri-devel@lists.freedesktop.org,
+ asahi@lists.linux.dev, linux-kernel@vger.kernel.org,
+ chrome-platform@lists.linux.dev, imx@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
+ platform-driver-x86@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
+ linux-stm32@st-md-mailman.stormreply.com
+Subject: Re: [PATCH v2 30/34] drm/bridge: imx8qxp-pixel-combiner: convert to
+ devm_drm_bridge_alloc() API
+Message-ID: <20250507161311.6e434f2f@booty>
+In-Reply-To: <430d497d-45a1-436d-91fd-635854f80c9f@nxp.com>
+References: <20250424-drm-bridge-convert-to-alloc-api-v2-0-8f91a404d86b@bootlin.com>
+	<20250424-drm-bridge-convert-to-alloc-api-v2-30-8f91a404d86b@bootlin.com>
+	<553d62ed-976a-4e17-9678-cdc3d40ce4a7@nxp.com>
+	<20250430112944.1b39caab@booty>
+	<f71d18d2-4271-4bb9-b54f-0e5a585778f3@nxp.com>
+	<20250506224720.5cbcf3e1@booty>
+	<a1abf31a-7a4a-4f8d-bf48-6b826aa01197@nxp.com>
+	<20250507091244.32865a71@booty>
+	<430d497d-45a1-436d-91fd-635854f80c9f@nxp.com>
+Organization: Bootlin
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 2/3] drm/panfrost: Add support for Mali on the MT8370
- SoC
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Boris Brezillon <boris.brezillon@collabora.com>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20250502-mt8370-enable-gpu-v5-0-98e247b30151@collabora.com>
- <20250502-mt8370-enable-gpu-v5-2-98e247b30151@collabora.com>
-From: Steven Price <steven.price@arm.com>
-Content-Language: en-GB
-In-Reply-To: <20250502-mt8370-enable-gpu-v5-2-98e247b30151@collabora.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
+X-GND-State: clean
+X-GND-Score: -100
+X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvkeejtdejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvvefukfgjfhhoofggtgfgsehtjeertdertddvnecuhfhrohhmpefnuhgtrgcuvegvrhgvshholhhiuceolhhutggrrdgtvghrvghsohhlihessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnheptdeljeejuddvudetffdtudelfedugfduledtueffuedufefgudegkeegtdeihedunecuffhomhgrihhnpehkvghrnhgvlhdrohhrghdpsghoohhtlhhinhdrtghomhenucfkphepvdgrtddvmeeijedtmedvtddvtdemvggrtddumegsvgegudemleehvgejmeefgeefmeeludefvgenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpedvrgdtvdemieejtdemvddtvddtmegvrgdtudemsggvgedumeelhegvjeemfeegfeemledufegvpdhhvghlohepsghoohhthidpmhgrihhlfhhrohhmpehluhgtrgdrtggvrhgvshholhhisegsohhothhlihhnrdgtohhmpdhnsggprhgtphhtthhopeefledprhgtphhtthhopehvihgtthhorhdrlhhiuhesnhigphdrtghomhdprhgtphhtthhopehmrggrrhhtvghnrdhlrghnkhhhohhrshhtsehlihhnuhigrdhinhhtvghlrdgtohhmpdhrtghpthhto
+ hepmhhrihhprghrugeskhgvrhhnvghlrdhorhhgpdhrtghpthhtohepthiiihhmmhgvrhhmrghnnhesshhushgvrdguvgdprhgtphhtthhopegrihhrlhhivggusehgmhgrihhlrdgtohhmpdhrtghpthhtohepshhimhhonhgrsehffhiflhhlrdgthhdprhgtphhtthhopegrnhgurhiivghjrdhhrghjuggrsehinhhtvghlrdgtohhmpdhrtghpthhtohepnhgvihhlrdgrrhhmshhtrhhonhhgsehlihhnrghrohdrohhrgh
+X-GND-Sasl: luca.ceresoli@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250507_070708_022273_38B7FDC9 
-X-CRM114-Status: GOOD (  22.53  )
+X-CRM114-CacheID: sfid-20250507_071321_881376_2AE9A69E 
+X-CRM114-Status: GOOD (  39.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,85 +105,108 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 02/05/2025 13:17, Louis-Alexis Eyraud wrote:
-> Add a compatible for the MediaTek MT8370 SoC, with an integrated ARM
-> Mali G57 MC2 GPU (Valhall-JM, dual core), with new platform data for
-> its support in the panfrost driver.
-> It uses the same data as MT8186 for the power management features to
-> describe power supplies, pm_domains and enablement (one regulator, two
-> power domains) but also sets the FORCE_AARCH64_PGTABLE flag in the GPU
-> configuration quirks bitfield to enable AARCH64 4K page table format
-> mode.
-> As MT8186 and MT8370 SoC have different GPU architecture (Mali G52 2EE
-> MC2 for MT8186), making them not compatible, and this mode is only
-> enabled for Mediatek SoC that are Mali G57 based (compatible with
-> mediatek,mali-mt8188 or mediatek,mali-8192), having specific platform
-> data allows to set this flag for MT8370 without modifying MT8186
-> configuration and behaviour.
+Hello Liu,
+
+On Wed, 7 May 2025 18:16:28 +0800
+Liu Ying <victor.liu@nxp.com> wrote:
+
+[...]
+
+> >>>> After looking into this patch and patch 31(though I've already provided my A-b)
+> >>>> more closely, I think the imx8qxp_pc and imx8{qm,qxp}_ldb main structures
+> >>>> should have the same life time with the embedded DRM bridges, because for
+> >>>> example the clk_apb clock in struct imx8qxp_pc would be accessed by the
+> >>>> imx8qxp_pc_bridge_mode_set DRM bridge callback.  But, IIUC, your patches extend
+> >>>> the life time for the embedded channel/bridge structures only, but not for the
+> >>>> main structures.  What do you think ?    
+> >>>
+> >>> I see you concern, but I'm sure the change I'm introducing is not
+> >>> creating the problem you are concerned about.
+> >>>
+> >>> The key aspect is that my patch is merely changing the lifetime of the
+> >>> _allocation_ of the drm_bridge, not its usage. On drm_bridge_remove()
+> >>> the bridge is removed from its encoder chain and it is completely not
+> >>> reachable, both before and after my patch. With my patch it is not
+> >>> freed immediately, but it's just a piece of "wasted" memory that is
+> >>> still allocated until elsewhere in the kernel there are pointers to it,
+> >>> to avoid use-after-free.
+> >>>
+> >>> With this explanation, do you think my patch is correct (after fixing
+> >>> the bug we already discussed of course)?    
+> >>
+> >> I tend to say your patch is not correct because we'll eventually make sure
+> >> that removing a bridge module is safe when doing atomic commit,  
+> > 
+> > I think your sentence can be rephrased as "your patch is correct with
+> > the current code base where bridges are not (yet) removable, but there
+> > will be a problem when they start to actually be removable".
+> > 
+> > Is my understanding correct? If it is, I agree on that sentence.  
 > 
-> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+> Nope, I meant your patch should align the life times of the main structures
+> and the DRM bridges, for the sake of the kinda long term goal - remove bridge
+> driver module safely when doing atomic commit.
 
-With one minor comment fixed below:
+Again, I don't think there is any bug introduced by this patch (once
+the NULL ptr deref bug we already discussed is fixed). No bridge can be
+removed as of now, with or without this patch.
 
-Reviewed-by: Steven Price <steven.price@arm.com>
+You concern that this patch would make things more complex in the
+future, when bridges will actually become removable and they could be
+during atomic updates. But about this...
 
-> ---
->  drivers/gpu/drm/panfrost/panfrost_drv.c | 11 +++++++++++
->  1 file changed, 11 insertions(+)
+> > The work to have removable bridges is massive and non-trivial, so it
+> > will need to be tackled in steps. The grand plan [0] is:
+> > 
+> >  1. add refcounting to DRM bridges (struct drm_bridge)
+> >  2. handle gracefully atomic updates during bridge removal
+> >  3. avoid DSI host drivers to have dangling pointers to DSI devices 
+> >  4. finish the hotplug bridge work, removing the "always-disconnected"
+> >     connector, moving code to the core and potentially removing the
+> >     hotplug-bridge itself (this needs to be clarified as points 1-3 are
+> >     developed)  
 > 
-> diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
-> index f1ec3b02f15a0029d20c7d81046ded59854e885c..8e0a1ae6940c73b7b60233950ae3abdfa843cc8e 100644
-> --- a/drivers/gpu/drm/panfrost/panfrost_drv.c
-> +++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
-> @@ -846,6 +846,16 @@ static const struct panfrost_compatible mediatek_mt8192_data = {
->  	.gpu_quirks = BIT(GPU_QUIRK_FORCE_AARCH64_PGTABLE),
->  };
->  
-> +/* MT8370 uses the same power domains and power supplies as MT8186 */
+> I'm busy with internal things these days and cannot look into the grand
+> plan and steps closely, sorry about that.
 
-This comment is not correct - you've got the power domains of MT8186, 
-but the supplies of MT8183. The comment doesn't actually add much so you 
-could just drop it.
+...I'll wait until you have time to look into that more closely. There
+is just no way to understand this whole topic without some dedicated
+attention, which takes time unavoidably.
 
-If you're feeling adventurous then one option here is to actually clean 
-up the mediatek entries a little. Instead of referring to particular 
-part numbers we could have:
+In the meanwhile I am going to send v3 soon with the known bug fixed,
+so the best version is available to continue this discussion.
 
-static const char * const mediatek_2_pm_domains[] = { "core0", "core1" };
-static const char * const mediatek_3_pm_domains[] = { "core0", "core1", "core2" };
-static const char * const mediatek_5_pm_domains[] = { "core0", "core1", "core2",
-                                                      "core3", "core4" };
-
-Or even just have the mediatek_5_domains[] array (dropping the '5' in
-the name) and not use ARRAY_SIZE().
-
-Equally the supplies arrays could be renamed. We have the one with 
-"sram" for legacy and everything else uses {"mali", NULL} but we have 
-two definitions for it (mt8183_b and mt8192).
-
-Thanks,
-Steve
-
-> +static const struct panfrost_compatible mediatek_mt8370_data = {
-> +	.num_supplies = ARRAY_SIZE(mediatek_mt8183_b_supplies) - 1,
-> +	.supply_names = mediatek_mt8183_b_supplies,
-> +	.num_pm_domains = ARRAY_SIZE(mediatek_mt8186_pm_domains),
-> +	.pm_domain_names = mediatek_mt8186_pm_domains,
-> +	.pm_features = BIT(GPU_PM_CLK_DIS) | BIT(GPU_PM_VREG_OFF),
-> +	.gpu_quirks = BIT(GPU_QUIRK_FORCE_AARCH64_PGTABLE),
-> +};
-> +
->  static const struct of_device_id dt_match[] = {
->  	/* Set first to probe before the generic compatibles */
->  	{ .compatible = "amlogic,meson-gxm-mali",
-> @@ -868,6 +878,7 @@ static const struct of_device_id dt_match[] = {
->  	{ .compatible = "mediatek,mt8186-mali", .data = &mediatek_mt8186_data },
->  	{ .compatible = "mediatek,mt8188-mali", .data = &mediatek_mt8188_data },
->  	{ .compatible = "mediatek,mt8192-mali", .data = &mediatek_mt8192_data },
-> +	{ .compatible = "mediatek,mt8370-mali", .data = &mediatek_mt8370_data },
->  	{ .compatible = "allwinner,sun50i-h616-mali", .data = &allwinner_h616_data },
->  	{}
->  };
+> > I am at step 1 right now. Removal during atomic updates is step 2,
+> > ideas about how to implement that are already being discussed [1],
+> > there's a practical plan proposed by Maxime with the goal of reaching
+> > removable bridges without breaking things along the path.
+> > 
+> > [0] https://lore.kernel.org/lkml/20250206-hotplug-drm-bridge-v6-0-9d6f2c9c3058@bootlin.com/
+> > [1] https://lore.kernel.org/all/20250106-vigorous-talented-viper-fa49d9@houat/
+> >   
+> >> which means
+> >> the main structures should have the same life time with the DRM bridges.  
+> > 
+> > The word "lifetime" mean two things for bridges:
+> > 
+> >  * the time span during which memory is allocated for a struct
+> >    drm_bridge (along with the embedding struct)  
 > 
+> Note that with your patch set the imx8*-ldb drivers and this bridge driver
+> won't allocate the DRM bridge along with the embedding struct.
 
+By "embedding struct" I mean the struct imx8qxp_pc_channel that embeds
+the struct drm_bridge. Sorry, I realize my wording was ambiguous.
+
+> This makes
+> me worry, because maybe these drivers are the only "special" ones in this
+> patch set and I don't want them to be "special" after your patch set is
+> applied.
+
+Luca
+
+-- 
+Luca Ceresoli, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
