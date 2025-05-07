@@ -4,89 +4,203 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1CC5C3ABBC
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 May 2025 02:35:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D649EC3ABC0
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 May 2025 03:46:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NlPsxC11d3qugk3PiiF8rZ2ohueNrS2+jnyIkxmqeRI=; b=To3a/PqsehXcRnuRzW/7ZO0Jfv
-	tesIMAvQhM/5jDQT1qMmkZEhv0FFLBk01X/y7VbFerDafRMmZajU4e8UFeG3gB1X9lQRrVKInHPBO
-	T8NQ4JDRmcdUK3CUrORv5yQYqVDWEdX6oAfvKZ2kFdI3vsOUpl5yxKGoiQ2PJ04KpGJ/jhykJF0TV
-	6yPcerLGphsqctCyVzsvWnrjzKbzWE/i8bsPlhJqBTdi7g0kcIUhxVCHeMSRD5LYBdrDY1Lf6wt0A
-	yDLSgL/XE7B3tsHXOr0oTAgTsONHlMpQhmpE9QzJEp5UY4U66Xoy6XOd6Wj7eoJdSL2xi1Dzg+j8F
-	gxfILTBg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VNEsCiPYN8vEqAkoie0/USExFbqoWsf0828cS63I8es=; b=3un41O6vbFov4GkU1K1wYB5jQa
+	YWe2X1sn7cub1K8zsCwNp1T3vHdfC1S/9oUXJ35orHAT9m2dKTz5MaadOI0IQKGBLAHpL/AnS/Ha9
+	omds3+aE6bOF5PLsVU/mOL9SE3yIwIDwHqyutoENm9AQYAv5t22b7IJr9Ml+FVHvJ5e3EHjIKSQ4i
+	gEx4gddtJ5eymwilRoyeBw0WID0UmNUgtUCJSQ4aS1g+YuMavU+chWHuSikPoX44fZCIb1sRNvhQw
+	HmFvJtZxB8MXV/h+zMet3ygP+zCGdf1kSL3lj0sdfijELaBQEempz2C1IzthBF8fY51EUbe2nsI1Y
+	4tSrhetA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCUda-0000000Dzom-39b0;
-	Wed, 07 May 2025 02:35:58 +0000
-Received: from mail-oi1-x230.google.com ([2607:f8b0:4864:20::230])
+	id 1uCVkD-0000000E7eu-1F0e;
+	Wed, 07 May 2025 03:46:53 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCU9T-0000000Dshj-2Wp1;
-	Wed, 07 May 2025 02:04:52 +0000
-Received: by mail-oi1-x230.google.com with SMTP id 5614622812f47-401e77e5443so3823059b6e.3;
-        Tue, 06 May 2025 19:04:50 -0700 (PDT)
+	id 1uCTZ8-0000000Dr96-3ftg
+	for linux-mediatek@lists.infradead.org;
+	Wed, 07 May 2025 01:27:20 +0000
+X-UUID: 66261c8a2ae211f08d385d50fb11b32d-20250506
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=VNEsCiPYN8vEqAkoie0/USExFbqoWsf0828cS63I8es=;
+	b=fHPC4/mA0IcQJN4LBo0+bib0Hlsfb0JIjTjFPmwxrshcF8cXOLMbf4Pv9OrNsRppF0G+ZgWoiWlDCYX2ciEilbxKo7nbSgrRUyJhFAD+HgGumnQgwaCcS4/KcVMr8cTg1Rnm05r6hgN27jKuL7ZP/EFcYlUW2bwc8yORTmJEP10=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:87027a36-68d2-44ad-b229-f2587feb8e00,IP:0,UR
+	L:0,TC:0,Content:2,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:2
+X-CID-META: VersionHash:0ef645f,CLOUDID:8341160f-8b98-4f2b-bb15-2a2b27a58d28,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111,TC:nil,Conte
+	nt:4|50,EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,
+	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 66261c8a2ae211f08d385d50fb11b32d-20250506
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
+	(envelope-from <mingyen.hsieh@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 792424772; Tue, 06 May 2025 18:27:11 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Wed, 7 May 2025 09:27:08 +0800
+Received: from SEYPR02CU001.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Wed, 7 May 2025 09:27:08 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=d8CCe1nk0PyO/00VyK8rikY/AJp076vEq4qGDc47dL4rfBLGny0KNi5TeMt/vm3TdZcjOeDbdA8l1NcGCUXsDvmGxx/N+2KxTYQCrGXp2vK2Vd4dSIhnEGlX06TAAlZQZwqSBV46ERhKUg2vrAR2G0HNPobIBDPhbLTeknuvsOH5JKdPmYwOdHBoUNXEObBpU21U3Bd5xYPWqA3IC/Xr3FjtUjTumutVo/6eXckvsjtPnMYCC/nx5Lpm/y5P1wmE8aE0EjirTJxV8MCd2JF8sVL4Jv4syJAKqtbuxaqaay2dIuJ8cLtovYthrxqCK00BKvwcgiONxI3JGo6RvueB4w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=VNEsCiPYN8vEqAkoie0/USExFbqoWsf0828cS63I8es=;
+ b=hWqA2RCAw2DnRsWgU8ccjc9bRunsCLEPHH8NACa0fiR9UM7IITekkpiBDUif1oATrqMqsMr5M8NTFaqt5MF20E4Yi9g4ZnqtzUgHMMSBFNTxRm2c6sXZVSjvVKkSwUzAZB144Cjaa4bGFrdISTb2VPGiHdm23AbnibnVPZ0tEaRRQxhLabCNmrNfEueqUxQ/KdLNac9m8xo0/a5DiXc3rOZLds8MwJo+nRPWYfmrkiDYpvNMAf+OzOo1HaLXAmce3LQBmOIh01qeJInslZBdzsI2FzlGDr/Nw/DLz7fqIuExxL96nBuc6/Y5g+t9RsecbNrdp2wQywzMCLTwpAXHHg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1746583489; x=1747188289; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=NlPsxC11d3qugk3PiiF8rZ2ohueNrS2+jnyIkxmqeRI=;
-        b=Yj46v38I6bCaCYY+KAO/vavpoCnlEiejKHQSO8gQKZBIqlGyL/wb+cC28f+dCa6xC0
-         0G4aqAJ46Dm61h/Fx9883CXfU4tz9qaHbgJO9bdLM7W4AyvyQPq9VCXvlE3JhzkfZSzv
-         gyCczKMHmdR+oxZvdF+3DXn+Z7uqvInaqER4yIfZYfPt1bsIrf/EzOr1UYZlXzxVCtCR
-         dKjQEJrXtmdtpHwTU8E8XiZ2CHVa2435vXvsRqLVRVkG7sAsQHpdg7kjTgZ/FDED0E9X
-         fpxK4LP6jdHweL075wXATT38NVKsAXiQ+4l+jSgOkThwAKaXCN6xMvcXaSbIXyKrswdQ
-         zg3w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1746583489; x=1747188289;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=NlPsxC11d3qugk3PiiF8rZ2ohueNrS2+jnyIkxmqeRI=;
-        b=QeEVxe5DM29OsKASM3wW2dMuibX1uUm65Tw1Uzxc6nCvAxaF16Yz6lv5jxdgta3I2R
-         nHSQDXeMFWCHosOUoSa4CQK3zjoMpeKSIjmn7fppY/imx8LLicmOrHoyyUtOpmlmyG7p
-         zH32lQVfGACz8wa6k+u/FUK9oNbUL6DY00DXW/dFt26pr7k8yM5pJBXvppjk77aifK6w
-         vpiLE+erv8jxFDMPAnrWS7EeK6DyzfxPse1OUmNJXq/FKd0QlD3DXprfnpl5LCShNeGb
-         edCrx1VFNRDDqKI7StQ8tmCaZ3iVUDN8cReAHiHIXtI0PciVfKyGJZFt57Lp3wMlR2tT
-         D7Ug==
-X-Forwarded-Encrypted: i=1; AJvYcCVU/gXCfRdi9hUu4+L3HXB4x1qtEcV4Rn5OI4fMPG5TrFYRpySOBf3dIOiyJf502EML0jfRBLBWPU1cL0nI+Kb5@lists.infradead.org, AJvYcCXFtDFqEWjZl953rdvLgrkzjcEnMHiFcERvCfEOLogvMcOmBnUWU7GIMpUHxhxHMJwRQLJ0V9ujeI/HwYs/EF8=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzfWuGRb4Xf4rUmFVDTONYFiK3Ga2N7SatZuLFKhWbXT8nnXbqS
-	jIB+l3G5hlTTC285VdWw8d/1i+Oi7kN1vHe7GDNjO2rOAwLr+QRSuHC8vXREpajYAWXhNLe5uc4
-	irBrYdNUOM7IcQlVtRKaPlFN+kHTQ1FYg
-X-Gm-Gg: ASbGnctgRlWBwkHTKG7YpdFmdALiYoOJjxlNt416g4qlGivSQtGVwWKo75q2IPiPFEn
-	XkilMt4VzftWBfnvBvg57JTmbp9XjdCw5+9wUha/SVtOZo2TvRNDWqWIVv+sa5vmQoWjDpYMOEG
-	PiusKzGSZ3tO2QzcnDdSqrXQSQmYdR9f/q
-X-Google-Smtp-Source: AGHT+IHkoHMO0xYsvp350pbjoRMWgdZnVLWKkLvedDtfBTCi2Y6k7q50Oi7/B2wFj1uQ0BoUIWUzH6GiKF5JtinND5o=
-X-Received: by 2002:a05:6122:551:b0:520:6773:e5ba with SMTP id
- 71dfb90a1353d-52c379a3dc6mr1479504e0c.2.1746583477798; Tue, 06 May 2025
- 19:04:37 -0700 (PDT)
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=VNEsCiPYN8vEqAkoie0/USExFbqoWsf0828cS63I8es=;
+ b=KmEBD+tcb+yDLEaoEXK/VwQgj9oqEfZFv0o9oPcZ9eEnfTbb2IDoQiZMDgw9hhpTaIjSu11TiAxd8XwEu0eab1ew/CLZZ2zBTReT8XHNQwJ0r8tMngO8/eU8s744dmxti+9xgNCuAvBPNgwYSGWJPWyEjl5pYkzRpmvTGUSnCVA=
+Received: from SI2PR03MB5322.apcprd03.prod.outlook.com (2603:1096:4:ef::8) by
+ KU2PPF01B6965E3.apcprd03.prod.outlook.com (2603:1096:d18::404) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.8699.24; Wed, 7 May 2025 01:27:06 +0000
+Received: from SI2PR03MB5322.apcprd03.prod.outlook.com
+ ([fe80::4f8e:6e62:b8a5:5741]) by SI2PR03MB5322.apcprd03.prod.outlook.com
+ ([fe80::4f8e:6e62:b8a5:5741%6]) with mapi id 15.20.8699.026; Wed, 7 May 2025
+ 01:27:06 +0000
+From: =?utf-8?B?TWluZ3llbiBIc2llaCAo6Kyd5piO6Ku6KQ==?=
+	<Mingyen.Hsieh@mediatek.com>
+To: "stable@vger.kernel.org" <stable@vger.kernel.org>, "niks@kernel.org"
+	<niks@kernel.org>, "fossben@pm.me" <fossben@pm.me>
+CC: "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	=?utf-8?B?QWxsYW4gV2FuZyAo546L5a625YGJKQ==?= <Allan.Wang@mediatek.com>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"regressions@lists.linux.dev" <regressions@lists.linux.dev>
+Subject: Re: [REGRESSION][BISECTED][STABLE] MT7925: mDNS and IPv6 broken in
+ kernel 6.14.3 and above
+Thread-Topic: [REGRESSION][BISECTED][STABLE] MT7925: mDNS and IPv6 broken in
+ kernel 6.14.3 and above
+Thread-Index: AQHbuW1RnEt/GbhWjUulnPHycX5tgbO7xLGAgAXBBQCAAgoWgIAAwMmAgAIa1wA=
+Date: Wed, 7 May 2025 01:27:05 +0000
+Message-ID: <d077736aff75bb534e3d6981fd579d8df84fa99d.camel@mediatek.com>
+References: <EmWnO5b-acRH1TXbGnkx41eJw654vmCR-8_xMBaPMwexCnfkvKCdlU5u19CGbaapJ3KRu-l3B-tSUhf8CCQwL0odjo6Cd5YG5lvNeB-vfdg=@pm.me>
+	 <f73dec60b60dd7bb3be40c1feefbe223c7afe19b.camel@mediatek.com>
+	 <5ae1ef34c9844d6d0f5fb167dd596a4c43321367.camel@kernel.org>
+	 <28ef2cc608d071d1530902d7b5df045555ab5651.camel@mediatek.com>
+	 <0736898d8d53e6249d5be637c9b7e7c81398218a.camel@kernel.org>
+In-Reply-To: <0736898d8d53e6249d5be637c9b7e7c81398218a.camel@kernel.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SI2PR03MB5322:EE_|KU2PPF01B6965E3:EE_
+x-ms-office365-filtering-correlation-id: 59b2d110-1552-49ab-b402-08dd8d064730
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|366016|376014|38070700018;
+x-microsoft-antispam-message-info: =?utf-8?B?YmxaSEsxdmt5LzNHQ1kyVVN2cUZPdVFyTlNwUXQ1MWFZVFV1bnFHZDJpTURC?=
+ =?utf-8?B?ODIxY3ZJeE9WRHBYTkR5OUZqVnhLMkRFcEdDT1BYeE5Bc2ZScjRiOW9DTlRr?=
+ =?utf-8?B?cWhwN2g5T2lRVWZFc1NzYWFMWGhhMHRETFplUEdDL0RyVHY2ZHJUS2tQT1dS?=
+ =?utf-8?B?MWhmazhyU0d1QnFZYVpRRDZLR2IyUzNCQ2VaMWtNOU9IVnJ4aUhEMDk0VTBk?=
+ =?utf-8?B?MXF4alJKbHRmVWlxWWRqbm0rM25ldUl1T3Z4V1hyOW5Mb21taGNWOVkzR29i?=
+ =?utf-8?B?K2hiaWMyTXM3eDBmTGF4SVB0NlBGckZScE0xdVNiQk1FNXNYSnVTWERqdFZw?=
+ =?utf-8?B?N1FDNlpCdHBIUTdTdU1VSS9ocGltd0xBYVpSU08zNDBaZnNNSGxWUFpmbkRv?=
+ =?utf-8?B?SDZoRW0zUlBOYkxMR1A3cTZPd1ZjVVJrVVBRcXZRYU9LN3MvVW9FVmJid1dN?=
+ =?utf-8?B?RVlNZ2h4SU80RVZoLzUrZ2VManF2dXBlM1pkQ3g4bnBGTE5WUTdJVkNNZlBC?=
+ =?utf-8?B?RnpOcWJsQjFqMzEzTW9sUEpoeHltZ3VEeGd2SHJBU1NRazVKL1cwQ1I3emow?=
+ =?utf-8?B?aGlTTnpTTkNJK21sWG1NTWdZdUVDR2VGWWxGSVZ6cWtvbjVLMUNKMUplelNZ?=
+ =?utf-8?B?dzJpVHlxYURKUUNib1ZTWU1WR0huOXNUZGc3SUpEY1d0YUY1U1JrL0FhQU85?=
+ =?utf-8?B?dno0cnVVZlZja1FJT010NUpuWGttd0tjWFh5c21IU25wSDRkd201bWpBZzhP?=
+ =?utf-8?B?b2Izc2I4MC9Lb1l4SGt3R0JsdHA1ZUZ0L2lvWGgxUDBEYXB4aDFvblUyK2dN?=
+ =?utf-8?B?Z0xjOU5FMEtSRVlpZS83VVp5Ni9CbTROcUdiMUVXN1JFQlQ4d0NMa2RmeitB?=
+ =?utf-8?B?TnJVb20xUFIwZklEVXdXSmtYbmN4d2UyZVAxdXQ4aGpRMzl2czZMMDZLdVFK?=
+ =?utf-8?B?dTBtc2ZtQ20zZDJSOW03d0xOV3E5S0FPOU85Q29MbWFjVStZaG9RTHBacE5i?=
+ =?utf-8?B?cDdlN1pLOXB5cFlqeEdwMDBqamtYTnRSaFlZQ3d4QlNnb1RkN0pKZmVUSkFF?=
+ =?utf-8?B?dW1OS2JyYjhQam5iOFBBV2E5MjB0aUlSUlJyM0ZHcDZXUVA0YUtiamtRVlBq?=
+ =?utf-8?B?TXRlOFp0bzdHN083SlVGcFNGTmpKa2pIQzY2b1hWQlcveTdJQldlSDBYRjZQ?=
+ =?utf-8?B?RDFwUFBRMjB2c3VSK2x0eDd6NVQwcmZ1d3lYaFloRlZJeGZhaSs1V0ExOXE0?=
+ =?utf-8?B?Sm1UTWMyMlVkMDdHcG4yM25nQll6SGVpMlJQK2JjbGJjWTNEYmU2QUlXbWNw?=
+ =?utf-8?B?NG5Fc1VzVEdUa1hVd2xzV1FUM1JFN2l3Ym1LYVJVZzN1OVZSQmp2Wml5ODEv?=
+ =?utf-8?B?UkFDZkhIV2lIMm90SDlwd0dBUkVCTzU0L0xBTXFXRXlQNElVeXJ5NDZUN3BK?=
+ =?utf-8?B?alRrYVdhb3VrK2NPaHBQcWRwWEh1ZWhTUmc1M1pXYXRnZkN5bUR4bnk4ZVdX?=
+ =?utf-8?B?aU4yL3Qzc2NEdjl4QXBnbnJNZHpkTEFJdXZVSHh5ZEpXdFZEUU5oVnFGQkVH?=
+ =?utf-8?B?MnFYZElaZnlHSFRCanZncDN1SWNoeVFONVdzb2xJNFdEZi90enZsWTVnZHR6?=
+ =?utf-8?B?Zi9hWFp0elZ2Q0RLa3FSSVRPdzBDN1ZMUHY1RVRSd0pNdEh4bnZETWdnL0l3?=
+ =?utf-8?B?alBhMVg3QUhZb2NwYzhueTNBZTdYKzN0MEkxL1NFanNJMjhZcy9idDZwOFor?=
+ =?utf-8?B?Q1IraCt6ZXhZbVcyekFwc3hXaW9xZWhaRTFwZVdmbGR5L1lSeXZUTzlVRVo2?=
+ =?utf-8?B?WlEvYkNGYXBEWEQ2M2U2VlpXdWhzWU1uRW1qVlNWcU83aGhkM3pEVW1iWWwy?=
+ =?utf-8?B?SFlJbXVQQ1RBSzZKT3VkMXY4ZmxHcU5yc0k0TG1pUUhBN2YrbG42K2Jadlpk?=
+ =?utf-8?B?MVM0bGlLUHJIRHE2VnlMaTVkL3o5T3VSc0V5Q3RzL0YvYnJkUWZ4VlFMUG9X?=
+ =?utf-8?Q?heCoAAQeunrtVoLv2wQV1b9gh57/Vs=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SI2PR03MB5322.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014)(38070700018);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?Vnk1ZUg2cWR1eDAyR3E0aDNZMDZRMFJQTzlhRGUyTTR5Tktjb2dCSjFFckxY?=
+ =?utf-8?B?KytkcG9NaTNudStFL1Y5OEJoMWNQWGYzRTFEUk9VeUkxZHVNeHd5RnN1QzRz?=
+ =?utf-8?B?bHZJbUxRaThVNElaeVNCenNCMFpEK3hxMllaL0ZNMG13aWRlb0lacWZDTnFr?=
+ =?utf-8?B?WTNaTjBsWmFqVFlOSjVGSjRJOE1GN3N0MXZaUzJmL3hMdlJKL1RZUkgzVFVs?=
+ =?utf-8?B?OUdUZTZaOXFOT0Z1LzlaQ3ArUzFaRHVHMzIxQ1FmMTJYSTFUV3NwUjdlL1Ru?=
+ =?utf-8?B?bWtGQTRMQUl2WlJDMU1OdWx6QXQ3eUYwdnpWVzNpcHBjTVgwanNiazFTL1h4?=
+ =?utf-8?B?ZFd0WjZwcEsvY1FIUkFFQWE4WFBSNmtYelRoczh4c05xTkc0TUVNY3U1WllV?=
+ =?utf-8?B?VWluSnBVQ3I3ZDdJMFhsWVh4VG9pd2doZmhIdG9rMktrMjk1MGYwQmlWK3Jw?=
+ =?utf-8?B?cmlmNU4wek1nekJDOFRQNThJL0h4MDFRWDg0M0xieURmUVJNejR5N0tubzl0?=
+ =?utf-8?B?UEs4STVZQzY2Z29MckJMUmg1ZEpjUVV2UTFCbTExWnFOR0wxcmhqSDFWMy9F?=
+ =?utf-8?B?WGd6Z3NJMWVPeThhWGpSME1TdzZURjJ5Zy8yRExlSUwyREpsYUFKUEd5Y1Yr?=
+ =?utf-8?B?dGtVZWFGWU4vcVM1cjcxN1N4MElEYWMzZ25hUW4vQTMxbUcyK0VxdWpsTnh0?=
+ =?utf-8?B?Tzczc3VqT3dwN3crZmxZUUN2UTM3eGtQcnR4cHRQVHgvczlNYlA1MjZEbjQ3?=
+ =?utf-8?B?M2t5Z3NNVUhwVy9VRGZMMzBDOU13QWtFOHFlSC9id2RZZ0tpNmYwMXNjZG1u?=
+ =?utf-8?B?c242TllyOVFKNjNuaUcvRjJxbTNDQ09nOFhTUXZVUXhRSVNZU3A2VVRjWUd1?=
+ =?utf-8?B?blNYNU1jZmlEWXUrVTIycGJ4bmxLUjB0THh4K1VCdkxaSGlibWdMeXVkRnJF?=
+ =?utf-8?B?V2xWbDdoTHNrSUh1YzhRcEZTaEtLbzV4TURlZUxIa3VSTFVlUzdGN1pYbFdL?=
+ =?utf-8?B?L1N2enNjUzljUC9KWHlEWUhML0RISHhHampXZXlweE9PSlBOdElWcFFmZDVo?=
+ =?utf-8?B?REZKRmZoTzZzYkVpYjdpckNUOFp2VUU4Qll5OUZLLzBaQXlHVjlEWG1WSlRj?=
+ =?utf-8?B?YzljN0tva0FUMzhtWDB3Qlltb3Q0dTR3SkdPZm0yS210elRrS1A1R1E1MW9m?=
+ =?utf-8?B?bnNHRFc3aFUyeklVb2crd3haWkFEem9pME9vcHhHMXJpd1RXU280NTllN1I0?=
+ =?utf-8?B?ZWY2WkFBMUkrWkpkOE05aUtEbjQrc1VVZWdPamcyMmxGRTZJQ25yekVpaFRW?=
+ =?utf-8?B?NUNvV3FnNTVNWDRDOGQrdmFJdFd5b0hlMmlRZXI0YlVLYTdGVmhCSExaNHNM?=
+ =?utf-8?B?UFVEaUt5MGRLelpnZTJpc3BUUW9mczRjVGJUSHg5dEx1aU9jZVFSNlhRQkZW?=
+ =?utf-8?B?L0wzNVJlN2FTekpNZ1BqTTMwd0kyTW01bzUrTk1tc2M4RDFTQ0F0dTc4Mmdj?=
+ =?utf-8?B?bVV1emljVE5aazlXZS9oVFhLdVBuQTgrOTI4cUl5UXFuZ29wS3hBMHE3UXFU?=
+ =?utf-8?B?aXdtazBjdGlYM0NiTklnVUgxV0NIMVBEdUkwMXRSK1YzL3JsUjdrM090eXdl?=
+ =?utf-8?B?T2pnTy9xUkowSFFFU21qcHZZZVBqdHplQXdPSHdlN1Z5YjE1TlRmaHRIRXdt?=
+ =?utf-8?B?SU5keUZJdmsyb1lFTkRnTmJiKzZFY1pwMUwwek5kS0Q2YXFzODltU3c1RUxM?=
+ =?utf-8?B?YTlkdFVTaHZoNkYwcE81RUtlcnlGL21rR0pVcXFKUUNabjVoOTdsR0pYd0lO?=
+ =?utf-8?B?TWhzNjBHcnUvL3padDFTa0pITUZTOHVhVHBnNXVwa2t3LzZ5eEw2ZUJETlRC?=
+ =?utf-8?B?K3lpNUFsRE9sU01XSHR2aXFQYzcza0VPVnZnNXVQdmQ4S25NdHA0bGpBWUNj?=
+ =?utf-8?B?K3ZRL2ZDUVBnRWhWNkdLVE5OanN1UDlDcVhpaDJheWJOdWVHTzM0bW1lTGJY?=
+ =?utf-8?B?d2ZCc0JVY1A2NU5pYmg0RVNPUUQwekdLc2tIU3J1a1FEcENNVmRJeGo4OGtJ?=
+ =?utf-8?B?RmFWOS8xN29ncEUzdVdWd2VMbDNGM2gyR2JrKzhDNzBMSlExTmN2blJJM2hG?=
+ =?utf-8?B?OE1Kai85VWNmYnJKUGlzajVlWGxZd0RRL1pRRnRhRDFZeEtsVUJpMHU0TmJF?=
+ =?utf-8?B?YUE9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <75F53E416A3E074D8FEB1496769A29FC@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-References: <20250430082651.3152444-1-qun-wei.lin@mediatek.com>
- <aBqzcIteOzC9mRjY@harry> <A3307E1B-B741-4C23-8053-72A1CA04D923@nvidia.com>
-In-Reply-To: <A3307E1B-B741-4C23-8053-72A1CA04D923@nvidia.com>
-From: Barry Song <21cnbao@gmail.com>
-Date: Wed, 7 May 2025 14:04:26 +1200
-X-Gm-Features: ATxdqUH1oP4gvc5AhGcGTGALh-RMubLjfFrIFKil_cBMYlEf1IwwAvlRK2V8GAc
-Message-ID: <CAGsJ_4yBn7j3WpCttPB0PVuRCYTYBcDbW2221AaPNLOHSmKADA@mail.gmail.com>
-Subject: Re: [PATCH] mm: Add Kcompressd for accelerated memory compression
-To: Zi Yan <ziy@nvidia.com>
-Cc: Harry Yoo <harry.yoo@oracle.com>, Qun-Wei Lin <qun-wei.lin@mediatek.com>, 
-	Andrew Morton <akpm@linux-foundation.org>, Mike Rapoport <rppt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Nhat Pham <nphamcs@gmail.com>, 
-	Sergey Senozhatsky <senozhatsky@chromium.org>, Minchan Kim <minchan@kernel.org>, linux-mm@kvack.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, Casper Li <casper.li@mediatek.com>, 
-	Chinwen Chang <chinwen.chang@mediatek.com>, Andrew Yang <andrew.yang@mediatek.com>, 
-	James Hsu <james.hsu@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SI2PR03MB5322.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 59b2d110-1552-49ab-b402-08dd8d064730
+X-MS-Exchange-CrossTenant-originalarrivaltime: 07 May 2025 01:27:05.9556
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: WL1VbuG3cJ5zbECw2qye7cX6GJfyDSrYPfKzmVqhAVL1hXQOXzpnBfUqje7YFcbckFNSJuscoSkitNbOWhZl3bdAkchGFf9yEerq+1jNe2w=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: KU2PPF01B6965E3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250506_190451_645040_2B96E649 
-X-CRM114-Status: GOOD (  41.46  )
+X-CRM114-CacheID: sfid-20250506_182718_969630_014985B4 
+X-CRM114-Status: GOOD (  23.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,340 +215,139 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 7, 2025 at 1:50=E2=80=AFPM Zi Yan <ziy@nvidia.com> wrote:
->
-> On 6 May 2025, at 21:12, Harry Yoo wrote:
->
-> > On Wed, Apr 30, 2025 at 04:26:41PM +0800, Qun-Wei Lin wrote:
-> >> This patch series introduces a new mechanism called kcompressd to
-> >> improve the efficiency of memory reclaiming in the operating system.
-> >>
-> >> Problem:
-> >>   In the current system, the kswapd thread is responsible for both sca=
-nning
-> >>   the LRU pages and handling memory compression tasks (such as those
-> >>   involving ZSWAP/ZRAM, if enabled). This combined responsibility can =
-lead
-> >>   to significant performance bottlenecks, especially under high memory
-> >>   pressure. The kswapd thread becomes a single point of contention, ca=
-using
-> >>   delays in memory reclaiming and overall system performance degradati=
-on.
-> >>
-> >> Solution:
-> >>   Introduced kcompressd to handle asynchronous compression during memo=
-ry
-> >>   reclaim, improving efficiency by offloading compression tasks from
-> >>   kswapd. This allows kswapd to focus on its primary task of page recl=
-aim
-> >>   without being burdened by the additional overhead of compression.
-> >>
-> >> In our handheld devices, we found that applying this mechanism under h=
-igh
-> >> memory pressure scenarios can increase the rate of pgsteal_anon per se=
-cond
-> >> by over 260% compared to the situation with only kswapd. Additionally,=
- we
-> >> observed a reduction of over 50% in page allocation stall occurrences,
-> >> further demonstrating the effectiveness of kcompressd in alleviating m=
-emory
-> >> pressure and improving system responsiveness.
-> >>
-> >> Co-developed-by: Barry Song <21cnbao@gmail.com>
-> >> Signed-off-by: Barry Song <21cnbao@gmail.com>
-> >> Signed-off-by: Qun-Wei Lin <qun-wei.lin@mediatek.com>
-> >> Reference: Re: [PATCH 0/2] Improve Zram by separating compression cont=
-ext from kswapd - Barry Song
-> >>           https://lore.kernel.org/lkml/20250313093005.13998-1-21cnbao@=
-gmail.com/
-> >> ---
-> >
-> > +Cc Zi Yan, who might be interested in writing a framework (or improvin=
-g
-> > the existing one, padata) for parallelizing jobs (e.g. migration/compre=
-ssion)
->
-> Thanks.
->
-> I am currently looking into padata [1] to perform multithreaded page migr=
-ation
-> copy job. But based on this patch, it seems that kcompressed is just an a=
-dditional
-> kernel thread of executing zswap_store(). Is there any need for performin=
-g
-> compression with multiple threads?
-
-The current focus is on enabling kswapd to perform asynchronous compression=
-,
-which can significantly reduce direct reclaim and allocstall events.
-Therefore, the work begins with supporting a single thread. Supporting
-multiple threads might be possible in the future, but it could be difficult
-to control=E2=80=94especially on busy phones=E2=80=94since it consumes more=
- power and may
-interfere with other threads impacting user experience.
-
->
-> BTW, I also notice that zswap IAA compress batching patchset[2] is using
-> hardware accelerator (Intel Analytics Accelerator) to speed up zswap.
-> I wonder if the handheld devices have similar hardware to get a similar b=
-enefit.
-
-Usually, the answer is no. We use zRAM and CPU, but this patch aims to prov=
-ide
-a common capability that can be shared by both zRAM and zswap.
-
->
->
-> [1] https://docs.kernel.org/core-api/padata.html
-> [2] https://lore.kernel.org/linux-crypto/20250303084724.6490-1-kanchana.p=
-.sridhar@intel.com/
-> >
-> >>  include/linux/mmzone.h |  6 ++++
-> >>  mm/mm_init.c           |  1 +
-> >>  mm/page_io.c           | 71 +++++++++++++++++++++++++++++++++++++++++=
-+
-> >>  mm/swap.h              |  6 ++++
-> >>  mm/vmscan.c            | 25 +++++++++++++++
-> >>  5 files changed, 109 insertions(+)
-> >>
-> >> diff --git a/include/linux/mmzone.h b/include/linux/mmzone.h
-> >> index 6ccec1bf2896..93c9195a54ae 100644
-> >> --- a/include/linux/mmzone.h
-> >> +++ b/include/linux/mmzone.h
-> >> @@ -23,6 +23,7 @@
-> >>  #include <linux/page-flags.h>
-> >>  #include <linux/local_lock.h>
-> >>  #include <linux/zswap.h>
-> >> +#include <linux/kfifo.h>
-> >>  #include <asm/page.h>
-> >>
-> >>  /* Free memory management - zoned buddy allocator.  */
-> >> @@ -1398,6 +1399,11 @@ typedef struct pglist_data {
-> >>
-> >>      int kswapd_failures;            /* Number of 'reclaimed =3D=3D 0'=
- runs */
-> >>
-> >> +#define KCOMPRESS_FIFO_SIZE 256
-> >> +    wait_queue_head_t kcompressd_wait;
-> >> +    struct task_struct *kcompressd;
-> >> +    struct kfifo kcompress_fifo;
-> >> +
-> >>  #ifdef CONFIG_COMPACTION
-> >>      int kcompactd_max_order;
-> >>      enum zone_type kcompactd_highest_zoneidx;
-> >> diff --git a/mm/mm_init.c b/mm/mm_init.c
-> >> index 9659689b8ace..49bae1dd4584 100644
-> >> --- a/mm/mm_init.c
-> >> +++ b/mm/mm_init.c
-> >> @@ -1410,6 +1410,7 @@ static void __meminit pgdat_init_internals(struc=
-t pglist_data *pgdat)
-> >>      pgdat_init_kcompactd(pgdat);
-> >>
-> >>      init_waitqueue_head(&pgdat->kswapd_wait);
-> >> +    init_waitqueue_head(&pgdat->kcompressd_wait);
-> >>      init_waitqueue_head(&pgdat->pfmemalloc_wait);
-> >>
-> >>      for (i =3D 0; i < NR_VMSCAN_THROTTLE; i++)
-> >> diff --git a/mm/page_io.c b/mm/page_io.c
-> >> index 4bce19df557b..d85deb494a6a 100644
-> >> --- a/mm/page_io.c
-> >> +++ b/mm/page_io.c
-> >> @@ -233,6 +233,38 @@ static void swap_zeromap_folio_clear(struct folio=
- *folio)
-> >>      }
-> >>  }
-> >>
-> >> +static bool swap_sched_async_compress(struct folio *folio)
-> >> +{
-> >> +    struct swap_info_struct *sis =3D swp_swap_info(folio->swap);
-> >> +    int nid =3D numa_node_id();
-> >> +    pg_data_t *pgdat =3D NODE_DATA(nid);
-> >> +
-> >> +    if (unlikely(!pgdat->kcompressd))
-> >> +            return false;
-> >> +
-> >> +    if (!current_is_kswapd())
-> >> +            return false;
-> >> +
-> >> +    if (!folio_test_anon(folio))
-> >> +            return false;
-> >> +    /*
-> >> +     * This case needs to synchronously return AOP_WRITEPAGE_ACTIVATE
-> >> +     */
-> >> +    if (!mem_cgroup_zswap_writeback_enabled(folio_memcg(folio)))
-> >> +            return false;
-> >> +
-> >> +    sis =3D swp_swap_info(folio->swap);
-> >> +    if (zswap_is_enabled() || data_race(sis->flags & SWP_SYNCHRONOUS_=
-IO)) {
-> >> +            if (kfifo_avail(&pgdat->kcompress_fifo) >=3D sizeof(folio=
-) &&
-> >> +                    kfifo_in(&pgdat->kcompress_fifo, &folio, sizeof(f=
-olio))) {
-> >> +                    wake_up_interruptible(&pgdat->kcompressd_wait);
-> >> +                    return true;
-> >> +            }
-> >> +    }
-> >> +
-> >> +    return false;
-> >> +}
-> >> +
-> >>  /*
-> >>   * We may have stale swap cache pages in memory: notice
-> >>   * them here and get rid of the unnecessary final write.
-> >> @@ -275,6 +307,15 @@ int swap_writepage(struct page *page, struct writ=
-eback_control *wbc)
-> >>               */
-> >>              swap_zeromap_folio_clear(folio);
-> >>      }
-> >> +
-> >> +    /*
-> >> +     * Compression within zswap and zram might block rmap, unmap
-> >> +     * of both file and anon pages, try to do compression async
-> >> +     * if possible
-> >> +     */
-> >> +    if (swap_sched_async_compress(folio))
-> >> +            return 0;
-> >> +
-> >>      if (zswap_store(folio)) {
-> >>              count_mthp_stat(folio_order(folio), MTHP_STAT_ZSWPOUT);
-> >>              folio_unlock(folio);
-> >> @@ -289,6 +330,36 @@ int swap_writepage(struct page *page, struct writ=
-eback_control *wbc)
-> >>      return 0;
-> >>  }
-> >>
-> >> +int kcompressd(void *p)
-> >> +{
-> >> +    pg_data_t *pgdat =3D (pg_data_t *)p;
-> >> +    struct folio *folio;
-> >> +    struct writeback_control wbc =3D {
-> >> +            .sync_mode =3D WB_SYNC_NONE,
-> >> +            .nr_to_write =3D SWAP_CLUSTER_MAX,
-> >> +            .range_start =3D 0,
-> >> +            .range_end =3D LLONG_MAX,
-> >> +            .for_reclaim =3D 1,
-> >> +    };
-> >> +
-> >> +    while (!kthread_should_stop()) {
-> >> +            wait_event_interruptible(pgdat->kcompressd_wait,
-> >> +                            !kfifo_is_empty(&pgdat->kcompress_fifo));
-> >> +
-> >> +            while (!kfifo_is_empty(&pgdat->kcompress_fifo)) {
-> >> +                    if (kfifo_out(&pgdat->kcompress_fifo, &folio, siz=
-eof(folio))) {
-> >> +                            if (zswap_store(folio)) {
-> >> +                                    count_mthp_stat(folio_order(folio=
-), MTHP_STAT_ZSWPOUT);
-> >> +                                    folio_unlock(folio);
-> >> +                                    continue;
-> >> +                            }
-> >> +                            __swap_writepage(folio, &wbc);
-> >> +                    }
-> >> +            }
-> >> +    }
-> >> +    return 0;
-> >> +}
-> >> +
-> >>  static inline void count_swpout_vm_event(struct folio *folio)
-> >>  {
-> >>  #ifdef CONFIG_TRANSPARENT_HUGEPAGE
-> >> diff --git a/mm/swap.h b/mm/swap.h
-> >> index 6f4a3f927edb..3579da413dc2 100644
-> >> --- a/mm/swap.h
-> >> +++ b/mm/swap.h
-> >> @@ -22,6 +22,7 @@ static inline void swap_read_unplug(struct swap_iocb=
- *plug)
-> >>  void swap_write_unplug(struct swap_iocb *sio);
-> >>  int swap_writepage(struct page *page, struct writeback_control *wbc);
-> >>  void __swap_writepage(struct folio *folio, struct writeback_control *=
-wbc);
-> >> +int kcompressd(void *p);
-> >>
-> >>  /* linux/mm/swap_state.c */
-> >>  /* One swap address space for each 64M swap space */
-> >> @@ -199,6 +200,11 @@ static inline int swap_zeromap_batch(swp_entry_t =
-entry, int max_nr,
-> >>      return 0;
-> >>  }
-> >>
-> >> +static inline int kcompressd(void *p)
-> >> +{
-> >> +    return 0;
-> >> +}
-> >> +
-> >>  #endif /* CONFIG_SWAP */
-> >>
-> >>  #endif /* _MM_SWAP_H */
-> >> diff --git a/mm/vmscan.c b/mm/vmscan.c
-> >> index 3783e45bfc92..2d7b9167bfd6 100644
-> >> --- a/mm/vmscan.c
-> >> +++ b/mm/vmscan.c
-> >> @@ -7420,6 +7420,7 @@ unsigned long shrink_all_memory(unsigned long nr=
-_to_reclaim)
-> >>  void __meminit kswapd_run(int nid)
-> >>  {
-> >>      pg_data_t *pgdat =3D NODE_DATA(nid);
-> >> +    int ret;
-> >>
-> >>      pgdat_kswapd_lock(pgdat);
-> >>      if (!pgdat->kswapd) {
-> >> @@ -7433,7 +7434,26 @@ void __meminit kswapd_run(int nid)
-> >>              } else {
-> >>                      wake_up_process(pgdat->kswapd);
-> >>              }
-> >> +            ret =3D kfifo_alloc(&pgdat->kcompress_fifo,
-> >> +                            KCOMPRESS_FIFO_SIZE * sizeof(struct folio=
- *),
-> >> +                            GFP_KERNEL);
-> >> +            if (ret) {
-> >> +                    pr_err("%s: fail to kfifo_alloc\n", __func__);
-> >> +                    goto out;
-> >> +            }
-> >> +
-> >> +            pgdat->kcompressd =3D kthread_create_on_node(kcompressd, =
-pgdat, nid,
-> >> +                            "kcompressd%d", nid);
-> >> +            if (IS_ERR(pgdat->kcompressd)) {
-> >> +                    pr_err("Failed to start kcompressd on node %d=EF=
-=BC=8Cret=3D%ld\n",
-> >> +                                    nid, PTR_ERR(pgdat->kcompressd));
-> >> +                    pgdat->kcompressd =3D NULL;
-> >> +                    kfifo_free(&pgdat->kcompress_fifo);
-> >> +            } else {
-> >> +                    wake_up_process(pgdat->kcompressd);
-> >> +            }
-> >>      }
-> >> +out:
-> >>      pgdat_kswapd_unlock(pgdat);
-> >>  }
-> >>
-> >> @@ -7452,6 +7472,11 @@ void __meminit kswapd_stop(int nid)
-> >>              kthread_stop(kswapd);
-> >>              pgdat->kswapd =3D NULL;
-> >>      }
-> >> +    if (pgdat->kcompressd) {
-> >> +            kthread_stop(pgdat->kcompressd);
-> >> +            pgdat->kcompressd =3D NULL;
-> >> +            kfifo_free(&pgdat->kcompress_fifo);
-> >> +    }
-> >>      pgdat_kswapd_unlock(pgdat);
-> >>  }
-> >>
-> >> --
-> >> 2.45.2
-> >>
-> >>
-> >
-> > --
-> > Cheers,
-> > Harry / Hyeonggon
->
->
-> --
-> Best Regards,
-> Yan, Zi
-
-Thanks
-Barry
+T24gTW9uLCAyMDI1LTA1LTA1IGF0IDE5OjE4ICswMjAwLCBOaWtsYXMgU2NobmVsbGUgd3JvdGU6
+DQo+IA0KPiBFeHRlcm5hbCBlbWFpbCA6IFBsZWFzZSBkbyBub3QgY2xpY2sgbGlua3Mgb3Igb3Bl
+biBhdHRhY2htZW50cyB1bnRpbA0KPiB5b3UgaGF2ZSB2ZXJpZmllZCB0aGUgc2VuZGVyIG9yIHRo
+ZSBjb250ZW50Lg0KPiANCj4gDQo+IE9uIE1vbiwgMjAyNS0wNS0wNSBhdCAwNTo0OCArMDAwMCwg
+TWluZ3llbiBIc2llaCAo6Kyd5piO6Ku6KSB3cm90ZToNCj4gPiBPbiBTdW4sIDIwMjUtMDUtMDQg
+YXQgMDA6MzkgKzAyMDAsIE5pa2xhcyBTY2huZWxsZSB3cm90ZToNCj4gPiA+IA0KPiA+ID4gRXh0
+ZXJuYWwgZW1haWwgOiBQbGVhc2UgZG8gbm90IGNsaWNrIGxpbmtzIG9yIG9wZW4gYXR0YWNobWVu
+dHMNCj4gPiA+IHVudGlsDQo+ID4gPiB5b3UgaGF2ZSB2ZXJpZmllZCB0aGUgc2VuZGVyIG9yIHRo
+ZSBjb250ZW50Lg0KPiA+ID4gDQo+ID4gPiANCj4gPiA+IE9uIFdlZCwgMjAyNS0wNC0zMCBhdCAw
+Njo0NyArMDAwMCwgTWluZ3llbiBIc2llaCAo6Kyd5piO6Ku6KSB3cm90ZToNCj4gPiA+ID4gT24g
+V2VkLCAyMDI1LTA0LTMwIGF0IDAxOjE0ICswMDAwLCBmb3NzYmVuQHBtLm1lwqB3cm90ZToNCj4g
+PiA+ID4gPiANCj4gPiA+ID4gPiBFeHRlcm5hbCBlbWFpbCA6IFBsZWFzZSBkbyBub3QgY2xpY2sg
+bGlua3Mgb3Igb3Blbg0KPiA+ID4gPiA+IGF0dGFjaG1lbnRzDQo+ID4gPiA+ID4gdW50aWwNCj4g
+PiA+ID4gPiB5b3UgaGF2ZSB2ZXJpZmllZCB0aGUgc2VuZGVyIG9yIHRoZSBjb250ZW50Lg0KPiA+
+ID4gPiA+IA0KPiA+ID4gPiA+IA0KPiA+ID4gPiA+IEhlbGxvIGFsbCwNCj4gPiA+ID4gPiANCj4g
+PiA+ID4gPiBBZnRlciB1cGdyYWRpbmcgdG8gNi4xNC4zIG9uIG15IFBDIHdpdGggYSBNVDc5MjUg
+Y2hpcCwgSQ0KPiA+ID4gPiA+IG5vdGljZWQNCj4gPiA+ID4gPiB0aGF0DQo+ID4gPiA+ID4gSSBj
+b3VsZCBubyBsb25nZXIgcGluZyAqLmxvY2FsIGFkZHJlc3NlcyBwcm92aWRlZCBieSBBdmFoaS4N
+Cj4gPiA+ID4gPiBJbg0KPiA+ID4gPiA+IGFkZGl0aW9uLCBJIGFsc28gbm90aWNlZCB0aGF0IEkg
+d2FzIG5vdCBhYmxlIHRvIGdldCBhIERIQ1ANCj4gPiA+ID4gPiBJUHY2DQo+ID4gPiA+ID4gYWRk
+cmVzcyBmcm9tIG15IHJvdXRlciwgbm8gbWF0dGVyIGhvdyBtYW55IHRpbWVzIEkgcmVib290ZWQN
+Cj4gPiA+ID4gPiB0aGUNCj4gPiA+ID4gPiByb3V0ZXIgb3IgcmVjb25uZWN0ZWQgd2l0aCBOZXR3
+b3JrTWFuYWdlci4NCj4gPiA+ID4gPiANCj4gPiA+ID4gPiBSZXZlcnRpbmcgdG8gNi4xNC4yIGZp
+eGVzIGJvdGggbUROUyBhbmQgSVB2NiBhZGRyZXNzZXMNCj4gPiA+ID4gPiBpbW1lZGlhdGVseS4N
+Cj4gPiA+ID4gPiBHb2luZyBiYWNrIHRvIDYuMTQuMyBpbW1lZGlhdGVseSBicmVha3MgbUROUyBh
+Z2FpbiwgYnV0IHRoZQ0KPiA+ID4gPiA+IElQdjYNCj4gPiA+ID4gPiBhZGRyZXNzIHdpbGwgc3Rh
+eSB0aGVyZSBmb3IgYSB3aGlsZSBiZWZvcmUgZGlzYXBwZWFyaW5nDQo+ID4gPiA+ID4gbGF0ZXIs
+DQo+ID4gPiA+ID4gcG9zc2libHkgYmVjYXVzZSB0aGUgREhDUCBsZWFzZSBleHBpcmVkPyBJIGFt
+IG5vdCBzdXJlDQo+ID4gPiA+ID4gZXhhY3RseQ0KPiA+ID4gPiA+IHdoZW4NCj4gPiA+ID4gPiBp
+dCBzdG9wcyB3b3JraW5nLg0KPiA+ID4gPiA+IA0KPiA+ID4gPiA+IEkndmUgZG9uZSBhIGtlcm5l
+bCBiaXNlY3QgYmV0d2VlbiA2LjE0LjIgYW5kIDYuMTQuMyBhbmQgZm91bmQNCj4gPiA+ID4gPiB0
+aGUNCj4gPiA+ID4gPiBvZmZlbmRpbmcgY29tbWl0IHRoYXQgY2F1c2VzIG1ETlMgdG8gZmFpbDoN
+Cj4gPiA+ID4gPiANCj4gPiA+ID4gPiBjb21taXQgODAwMDdkM2Y5MmZkMDE4ZDBhMDUyYTcwNjQw
+MGU5NzZiMzZlM2M4Nw0KPiA+ID4gPiA+IEF1dGhvcjogTWluZyBZZW4gSHNpZWggPG1pbmd5ZW4u
+aHNpZWhAbWVkaWF0ZWsuY29tPg0KPiA+ID4gPiA+IERhdGU6wqDCoCBUdWUgTWFyIDQgMTY6MDg6
+NTAgMjAyNSAtMDgwMA0KPiA+ID4gPiA+IA0KPiA+ID4gPiA+IMKgwqDCoCB3aWZpOiBtdDc2OiBt
+dDc5MjU6IGludGVncmF0ZSAqbWxvX3N0YV9jbWQgYW5kICpzdGFfY21kDQo+ID4gPiA+ID4gDQo+
+ID4gPiA+ID4gwqDCoMKgIGNvbW1pdCBjYjEzNTNlZjM0NzM1ZWMxZTVkOWVmYTFmZTk2NmYwNWZm
+MWRjMWUxIHVwc3RyZWFtLg0KPiA+ID4gPiA+IA0KPiA+ID4gPiA+IMKgwqDCoCBJbnRlZ3JhdGUg
+Km1sb19zdGFfY21kIGFuZCAqc3RhX2NtZCBmb3IgdGhlIE1MTyBmaXJtd2FyZS4NCj4gPiA+ID4g
+PiANCj4gPiA+ID4gPiDCoMKgwqAgRml4ZXM6IDg2YzA1MWYyYzQxOCAoIndpZmk6IG10NzY6IG10
+NzkyNTogZW5hYmxpbmcgTUxPDQo+ID4gPiA+ID4gd2hlbg0KPiA+ID4gPiA+IHRoZQ0KPiA+ID4g
+PiA+IGZpcm13YXJlIHN1cHBvcnRzIGl0IikNCj4gPiA+ID4gPiANCj4gPiA+ID4gPiDCoGRyaXZl
+cnMvbmV0L3dpcmVsZXNzL21lZGlhdGVrL210NzYvbXQ3OTI1L21jdS5jIHwgNTkgKysrKy0tLQ0K
+PiA+ID4gPiA+IC0tLS0NCj4gPiA+ID4gPiAtLS0tDQo+ID4gPiA+ID4gLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0NCj4gPiA+ID4gPiDCoDEgZmlsZSBjaGFuZ2Vk
+LCA0IGluc2VydGlvbnMoKyksIDU1IGRlbGV0aW9ucygtKQ0KPiA+ID4gPiA+IA0KPiA+ID4gPiA+
+IEkgZG8gbm90IGtub3cgaWYgdGhpcyBzYW1lIGNvbW1pdCBpcyBhbHNvIGNhdXNpbmcgdGhlIElQ
+djYNCj4gPiA+ID4gPiBpc3N1ZXMNCj4gPiA+ID4gPiBhcw0KPiA+ID4gPiA+IHRlc3RpbmcgdGhh
+dCByZXF1aXJlcyBxdWl0ZSBhIGJpdCBvZiB0aW1lIHRvIHJlcHJvZHVjZS4gV2hhdA0KPiA+ID4g
+PiA+IEkgZG8NCj4gPiA+ID4gPiBrbm93IHdpdGggY2VydGFpbnR5IGFzIG9mIHRoaXMgbW9tZW50
+IGlzIHRoYXQgaXQgZGVmaW5pdGVseQ0KPiA+ID4gPiA+IGJyZWFrcyBpbg0KPiA+ID4gPiA+IGtl
+cm5lbCA2LjE0LjMuDQo+ID4gPiA+ID4gDQo+ID4gPiA+ID4gSSd2ZSBhdHRhY2hlZCBteSBoYXJk
+d2FyZSBpbmZvIGFzIHdlbGwgYXMgZG1lc2cgbG9ncyBmcm9tIHRoZQ0KPiA+ID4gPiA+IGxhc3QN
+Cj4gPiA+ID4gPiB3b3JraW5nIGtlcm5lbCBmcm9tIHRoZSBiaXNlY3QgYW5kIDYuMTQuNCB3aGlj
+aCBleGhpYml0cyB0aGUNCj4gPiA+ID4gPiBpc3N1ZS4NCj4gPiA+ID4gPiBQbGVhc2UgbGV0IG1l
+IGtub3cgaWYgdGhlcmUncyBhbnkgb3RoZXIgaW5mbyB5b3UgbmVlZC4NCj4gPiA+ID4gPiANCj4g
+PiA+ID4gPiBUaGFua3MhDQo+ID4gPiA+ID4gQmVuamFtaW4gWGlhbw0KPiA+ID4gPiANCj4gPiA+
+ID4gSGksDQo+ID4gPiA+IA0KPiA+ID4gPiBUaGFua3MgZm9yIHJlcG9ydGluZyB0aGlzIGlzc3Vl
+LCB3ZSB3aWxsIGFpbSBpbnRvIHRoaXMuDQo+ID4gPiA+IA0KPiA+ID4gPiBDYW4geW91IHByb3Zp
+ZGUgbWUgd2l0aCB5b3VyIHRlc3Rpbmcgc3RlcHM/DQo+ID4gPiA+IA0KPiA+ID4gPiBCZXN0IFJl
+Z2FyZHMsDQo+ID4gPiA+IFllbi4NCj4gPiA+ID4gDQo+ID4gPiANCj4gPiA+IEhpIFlhbiwNCj4g
+PiA+IA0KPiA+ID4gSSBzZWUgdGhlIHNhbWUgSVB2NiBpc3N1ZSBvbiBteSBGcmFtZXdvcmsgMTMg
+KFJ5emVuIDUgQUkgMzQwKQ0KPiA+ID4gd2l0aCBhbg0KPiA+ID4gbXQ3OTI1ZSBXaUZJIG1vZHVs
+ZS4gTXkgc2V0dXAgaXMganVzdCBhIGhvbWUgcm91dGVyIHdpdGggbmF0aXZlDQo+ID4gPiBJUHY2
+DQo+ID4gPiBib3RoIGZvciBteSB1cGxpbmsgYW5kIGluIHRoZSBMQU4uIFRoZSBwcm9ibGVtcyB3
+aXRoIElQdjYgY2FuDQo+ID4gPiBhbHJlYWR5DQo+ID4gPiBiZSBzZWVuIGp1c3QgaW4gdGhlIExB
+TiBmb3IgZXhhbXBsZSBieSBjaGVja2luZyB3aGljaCBJUCB3YXMgdXNlZA0KPiA+ID4gZm9yDQo+
+ID4gPiBTU0gsIGluIG15IHNldHVwIGl0IHNob3VsZCBhbHdheXMgYmUgSVB2NiBidXQgZmFsbHMg
+YmFjayB0byBJUHY0DQo+ID4gPiBpbg0KPiA+ID4gdGhlDQo+ID4gPiBicm9rZW4gc3RhdGUuDQo+
+ID4gPiANCj4gPiA+IEFzIGFub3RoZXIgZGF0YSBwb2ludCwgSSB0cmllZCByZXZlcnRpbmcgY2Ix
+MzUzZWYzNDczICgid2lmaToNCj4gPiA+IG10NzY6DQo+ID4gPiBtdDc5MjU6IGludGVncmF0ZSAq
+bWxvX3N0YV9jbWQgYW5kICpzdGFfY21kIikgb24gdG9wIG9mIDYuMTUuLQ0KPiA+ID4gcmM0Lg0K
+PiA+ID4gVGhpcw0KPiA+ID4gZnVsbHkgcmVzdG9yZXMgSVB2NiBmb3IgbWUuIEFsc28gbm90ZSBJ
+J20gcnVubmluZyB0aGlzIHdpdGggdGhlDQo+ID4gPiBtdDc5MjUNCj4gPiA+IGZpcm13YXJlIHZl
+cnNpb24gMjAyNTA0MjUwNzMzMzAgZnJvbSBsaW51eC1maXJtd2FyZSdzIG1hc3Rlcg0KPiA+ID4g
+YnJhbmNoDQo+ID4gPiBhcw0KPiA+ID4gSSBoYWQgc29tZSBkcm9wcGVkIGNvbm5lY3Rpb25zIHdp
+dGggZWFybGllciBmaXJtd2FyZS4NCj4gPiA+IA0KPiA+ID4gU28gaXQgZGVmaW5pdGVseSBsb29r
+cyBsaWtlIHRoYXQgY29tbWl0IGFsc28gYnJva2UgSVB2NiBhbmQgbm90DQo+ID4gPiBqdXN0DQo+
+ID4gPiBtRE5TLiBOb3RlIHRoYXQgaWYgaWYgSSB1c2UgREhDUHY2IGluc3RlYWQgb2Ygcm91dGVy
+DQo+ID4gPiBhZHZlcnRpc2VtZW50cywNCj4gPiA+IG9uDQo+ID4gPiB0aGUgbGF0ZXN0IGZpcm13
+YXJlLCBidXQgd2l0aG91dCB0aGUgcmV2ZXJ0LCBJIGdldCBhIGdsb2JhbCBJUHY2DQo+ID4gPiBh
+ZGRyZXNzIGFkZGVkIHRvIHRoZSBpbnRlcmZhY2UgYnV0IHRoZW4gbmF0aXZlIElQdjYgYWRkcmVz
+c2VzIGFyZQ0KPiA+ID4gc3RpbGwNCj4gPiA+IHVuY3JlYWNoYWJsZS4gV2l0aCB0aGUgb2ZmZW5k
+aW5nIHBhdGNoIHJldmVydGVkIG15IFNTSCBzZXNzaW9uIHRvDQo+ID4gPiBhbg0KPiA+ID4gSVB2
+NiBvbmx5IGhvc3Qgd29ya3MgZmluZSBhbmQgaXMgc3RhYmxlLiBBbHNvIEknZCBiZSB3aWxsaW5n
+IHRvDQo+ID4gPiB0ZXN0DQo+ID4gPiBhDQo+ID4gPiBwcm9wZXIgZml4IGFzIEkgcmVseSBvbiBJ
+UHY2IGhlYXZpbHkgZHVlIHRvIGhhdmluZyB0byB1c2UgQ0dOQVQNCj4gPiA+IGZvcg0KPiA+ID4g
+SVB2NCBidXQgbm90IGZvciBJUHY2Lg0KPiA+ID4gDQo+ID4gPiANCj4gPiA+IFRoYW5rcywNCj4g
+PiA+IE5pa2xhcw0KPiA+IA0KPiA+IEhpIEJlbmphbWluICYgTmlrbGFzLA0KPiA+IA0KPiA+IENh
+biB5b3UgaGVscCB0byB0cnkgdGhpcyBwYXRjaD8gSSBjYW4gZ2V0IElQdjYgYWRkcmVzcyB0aHJv
+dWdoIHRoaXMNCj4gPiBwYXRjaC4NCj4gPiANCj4gPiBJZiBpdCBjYW4gd29yayBhdCB5b3VyIGVu
+dmlyb25tZW50IGFzIHdlbGwsIGkgd2lsbCB1cHN0cmVhbSBpdCBhbmQNCj4gPiBhZGQNCj4gPiB0
+ZXN0IHRhZyB3aXRoIHlvdS4NCj4gPiANCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvd2ly
+ZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc5MjUvbWN1LmMNCj4gPiBiL2RyaXZlcnMvbmV0L3dpcmVs
+ZXNzL21lZGlhdGVrL210NzYvbXQ3OTI1L21jdS5jDQo+ID4gaW5kZXggYTQyYjU4NDYzNGFiLi5m
+ZDc1NmYwZDE4ZjggMTAwNjQ0DQo+ID4gLS0tIGEvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0
+ZWsvbXQ3Ni9tdDc5MjUvbWN1LmMNCj4gPiArKysgYi9kcml2ZXJzL25ldC93aXJlbGVzcy9tZWRp
+YXRlay9tdDc2L210NzkyNS9tY3UuYw0KPiA+IEBAIC0yMTgzLDE0ICsyMTgzLDE0IEBAIG10Nzky
+NV9tY3Vfc3RhX2NtZChzdHJ1Y3QgbXQ3Nl9waHkgKnBoeSwNCj4gPiDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIG10NzkyNV9tY3Vfc3RhX21sZF90bHYoc2ti
+LCBpbmZvLT52aWYsDQo+ID4gaW5mby0NCj4gPiA+IGxpbmtfc3RhLT5zdGEpOw0KPiA+IMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgbXQ3OTI1X21jdV9zdGFf
+ZWh0X21sZF90bHYoc2tiLCBpbmZvLT52aWYsDQo+ID4gaW5mby0+bGlua19zdGEtPnN0YSk7DQo+
+ID4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIH0NCj4gPiAtDQo+ID4gLcKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqAgbXQ3OTI1X21jdV9zdGFfaGRyX3RyYW5zX3Rsdihza2IsIGlu
+Zm8tPnZpZiwgaW5mby0NCj4gPiA+IGxpbmtfc3RhKTsNCj4gPiDCoMKgwqDCoMKgwqDCoCB9DQo+
+ID4gDQo+ID4gwqDCoMKgwqDCoMKgwqAgaWYgKCFpbmZvLT5lbmFibGUpIHsNCj4gPiDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgbXQ3OTI1X21jdV9zdGFfcmVtb3ZlX3Rsdihza2IpOw0K
+PiA+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBtdDc2X2Nvbm5hY19tY3VfYWRkX3Rs
+dihza2IsIFNUQV9SRUNfTUxEX09GRiwNCj4gPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgc2l6ZW9m
+KHN0cnVjdCB0bHYpKTsNCj4gPiArwqDCoMKgwqDCoMKgIH0gZWxzZSB7DQo+ID4gK8KgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqAgbXQ3OTI1X21jdV9zdGFfaGRyX3RyYW5zX3Rsdihza2IsIGlu
+Zm8tPnZpZiwgaW5mby0NCj4gPiA+IGxpbmtfc3RhKTsNCj4gPiDCoMKgwqDCoMKgwqDCoCB9DQo+
+ID4gDQo+ID4gwqDCoMKgwqDCoMKgwqAgcmV0dXJuIG10NzZfbWN1X3NrYl9zZW5kX21zZyhkZXYs
+IHNrYiwgaW5mby0+Y21kLCB0cnVlKTsNCj4gPiANCj4gPiANCj4gPiBUaGFua3N+DQo+ID4gWWVu
+Lg0KPiA+IA0KPiANCj4gSGkgWWVuLA0KPiANCj4gQXMgdGhlIHBhdGNoIGRpZG4ndCBhcHBseSwg
+SSBlZGl0ZWQgbXQ3OTI1X21jdV9zdGFfY21kKCkgbWFudWFsbHkgb24NCj4gdG9wIG9mIHY2LjE1
+LXJjNSBhY2NvcmRpbmcgdG8gdGhlIGRpZmYuIFdpdGggdGhhdCBJUHY2IHdvcmtzIGZpbmUgZm9y
+DQo+IG1lLg0KPiANCg0KSGkgTmlrbGFzLA0KDQpUaGFua3MgZm9yIHRlc3RpbmcuDQoNCj4gSWYg
+aXQgd2VyZSBtZSwgSSdkIHByb2JhYmx5IHN0cnVjdHVyZSB0aGUgaWYgZGlmZmVyZW50LiBJJ2Qg
+bGVhdmUNCj4gdGhlIG10NzkyNV9tY3Vfc3RhX2hkcl90cmFuc190bHYoKSB3aGVyZSBpdCBpcyBi
+dXQgaGF2ZSBhbiBpbm5lciBpZg0KPiAoaW5mby0+bGlua19zdGEpIGluc2lkZSBqdXN0IGlmICgh
+aW5mby0+ZW5hYmxlKSwgdGhlbiB0aGUgIWluZm8tDQo+ID5lbmFibGUNCj4gY2FzZSBiZWNvbWVz
+IGp1c3QgYW4gZWxzZS4gSSdkIG1heWJlIGV2ZW4gcHV0IHRoZSBpZiAoaW5mby0+bGlua19zdGEp
+DQo+IGJvZHkgaW4gaXRzIG93biBzdGF0aWMgZnVuY3Rpb24gaWYgdGhhdCBtYWtlcyBzZW5zZSBz
+ZW1hbnRpY2FsbHksIGJ1dA0KPiBJDQo+IGRvbid0IGtub3cgZW5vdWdoIChhbnl0aGluZykgYWJv
+dXQgdGhlIGRyaXZlciB0byBrbm93LiBBbnl3YXksIHRoYXQncw0KPiBhbGwgYSBtYXR0ZXIgb2Yg
+dGFzdGUgYW5kIGFjdHVhbGx5IG1ha2VzIHRoZSBwYXRjaCBxdWl0ZSBhIGJpdA0KPiBsYXJnZXIu
+DQo+IA0KDQpJIHdpbGwgY29uc2lkZXIgYWJvdXQgdGhpcyBhcHByb2FjaCBhbmQgdHJ5IHRvIHJl
+bGVhc2UgdGhlIHBhdGNoIHdpdGhpbg0KdGhlIG5leHQgZmV3IGRheXMuDQoNCj4gU28gd2hpY2hl
+dmVyIHdheSB5b3UgZGVjaWRlIG9uIGZlZWwgZnJlZSB0byBhZGQ6DQo+IA0KPiBUZXN0ZWQtYnk6
+IE5pa2xhcyBTY2huZWxsZSA8bmlrc0BrZXJuZWwub3JnPg0KPiANCj4gVGhhbmtzLA0KPiBOaWts
+YXMNCg0KDQoNCg0K
 
