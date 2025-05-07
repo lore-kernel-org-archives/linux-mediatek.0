@@ -4,76 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B18D0C369DC
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 May 2025 05:31:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 322B6C3ABB6
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 May 2025 05:40:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=pixdk5rgkJ7JFR+t6+4hCwvqh3IN3gRUoapBmNv5Rlw=; b=VOv0ho6Evn4F8AMoTxGO3y/v9J
-	KkZYsWho1c8cUDsuI07MBxdh/PY7U7KySWc1wMqYIT7Lm8B06x3gSnu66jdwVCmk1LG+X4KnhGN4J
-	ts8Ct0KIVRJpY8aWk+mYJOxeKG5Hi5LxIyjFvCn/MNcG4yd7OXc7aLOdaNP/sgHpkubIseJdpLl8N
-	tU0+cvOXsa5AAgjDMnwJwqKeQGrS/n90anm/v5TaXLHIOdZoL4MV+OmxEoPnfuPMuH1oUHZAZ+1Be
-	j7dzY0KiQwIBwQZLCRIHeThZU6xH0AImbwV2eBn3eWjoPitpXSN45Bxi7PNLQ7PI6wtPydF65xfYM
-	386dxdgw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=2wnNtboDgAN3l0RxBXJ7GpvEaa0XgYy7m1/m7BgIkhc=; b=kf6FUMAFqwvLYQ4Rb6AxpdDLkO
+	G5b5wtyMoXkOFxYixmEqn5f6yTMu5c7etDbQ7XotoGp/sG/06fx7vdLAoN1q3OWrsk1fX4URX0pQL
+	bMZ3ztwWFxygCD4GR1eZRZ6dATPUtGQXr9A+U0gKpfN9DJ33PP6eOFe+WRm7gXKl5EahOo3Kb5rfd
+	xuyrh1jo/9weaboIYmdmQ/Bo+Im3r9SF3mTROCygP83Ue5dNo8CHGrhBZABd8fxKeyZ0PRr0LDdBB
+	YszcgHRyb4qvl3LciGFt52lfi9ujnS+6VlYdU3mJJ4xIgMSU6rmtf7xDSW7MoaNW5ix2/DeYCcj0X
+	sGxI5vqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCXNf-0000000EH1I-2fRR;
-	Wed, 07 May 2025 05:31:43 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1uCXVl-0000000EHf7-0VvW;
+	Wed, 07 May 2025 05:40:05 +0000
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCXNc-0000000EH0o-3eJg
-	for linux-mediatek@lists.infradead.org;
-	Wed, 07 May 2025 05:31:41 +0000
-X-UUID: 8b25f61e2b0411f0bed96b30c12bc3d6-20250506
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=pixdk5rgkJ7JFR+t6+4hCwvqh3IN3gRUoapBmNv5Rlw=;
-	b=SqgD5xLTzxmCpE/UXaHqkoPHe32JusTTKwpkX9AigQqJjPrxD4wGXpQD+NV9xJ78NNFPjRv2J0k0+gaaXoZpn6Ft6Z0PlxWD82BbdvzuBmcCUk2A9MmV0dO9nOsfZCo0l+8sQimV9cku/PV8dNkbMcvkgMvgy+uSp475Z85d3Uw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:f8fdd46e-7244-415f-aefd-c92956478945,IP:0,UR
-	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-25
-X-CID-META: VersionHash:0ef645f,CLOUDID:1f6a57b7-6aeb-4a76-9513-22b6350bff3c,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 8b25f61e2b0411f0bed96b30c12bc3d6-20250506
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
-	(envelope-from <allan.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1289049718; Tue, 06 May 2025 22:31:36 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Wed, 7 May 2025 13:31:33 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Wed, 7 May 2025 13:31:33 +0800
-From: Allan Wang <allan.wang@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <deren.wu@mediatek.com>, <mingyen.hsieh@mediatek.com>,
-	<Sean.Wang@mediatek.com>, <Soul.Huang@mediatek.com>, <Leon.Yen@mediatek.com>,
-	<Michael.Lo@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
-	<km.lin@mediatek.com>, <robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>,
-	<posh.sun@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
-	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Allan Wang <allan.wang@mediatek.com>
-Subject: [PATCH v2] wifi: mt76: mt7925: add rfkill_poll for hardware rfkill
-Date: Wed, 7 May 2025 13:31:31 +0800
-Message-ID: <20250507053131.4173691-1-allan.wang@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1uCXTo-0000000EHSg-1IgK;
+	Wed, 07 May 2025 05:38:05 +0000
+Received: by mail-pf1-x444.google.com with SMTP id d2e1a72fcca58-7399a2dc13fso9128436b3a.2;
+        Tue, 06 May 2025 22:38:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1746596283; x=1747201083; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=2wnNtboDgAN3l0RxBXJ7GpvEaa0XgYy7m1/m7BgIkhc=;
+        b=fsifdkdPVD4YR9uLYLNhf4xTBOnLhEjepEL0JdzopTgj7rSeS0GTlvNjxmjXz+fQQa
+         ioWXn2E1LC8g1PTMK7AMHc6dLa+/PUERsDDQ13DIjtItdQbMff7EAJ6VK2B8E4DIYhva
+         pM/6x9m7djKcgceKrDtZbXTPB57+BnJXJcKYNBakkxGLaY3uZ9+shTYC/eKLOvFRokw2
+         vNmZ7V6veO6/f7Iiy4ilEWsbEBC7CqpnFpBPhDTbCuRpKjsxD65lZk/lQMf2SYjB/NOF
+         DW6HiqBvRXImsFTlSZz/C+LxZIUti5qhuSf9QEv3dgc4Wk31G+cEwGq0f/xmwHZMhXVL
+         AIjA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1746596283; x=1747201083;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=2wnNtboDgAN3l0RxBXJ7GpvEaa0XgYy7m1/m7BgIkhc=;
+        b=UP6qGMlnhog0nYnE1gsZ/v/OxydN3ip+hxiEZZAONrolhYMpHfVBPgLDMqNeXoT9NX
+         fgqyOE4D/Bw3p4Ex6eSZNpyRotpQMM3ypU0qcx/2mp/5SE9inYaw9qYasEcxY/V8kyFs
+         RJzsdSF26dbsE8qJ9XpXwu+eOtjW7q2V7DIviHpUG3FO+wJQNlw8FxuX8DSsFhDNYB+o
+         S9FAYfW1pHBfC1Ka4ptsXkKOEHMyhM8Usivjbg9y//8NklhR1uDCiLwol4/9713KubNl
+         06uEOJ2xKLnraqT1rctu62klePU+0OEbLiOrn/YwiXk3iTsW/9rOyu4RoRE87U3zJ+IE
+         6CPw==
+X-Forwarded-Encrypted: i=1; AJvYcCWU8pR+JnJ3tqT9wsTdGws2TJKnJg/XyD8AXqwZdE/oKP5Up7HN7Of/u3PjF/YLbzNPpkp3evYlrjduTVf0lvB8@lists.infradead.org, AJvYcCXu2cppucODzU/9ZmfpkaT95f+658nbKmj1JaMDJ6IzzrPg7sTbGX5YduqYGLXf2moY10SuFo3CufVddLY6O1c=@lists.infradead.org
+X-Gm-Message-State: AOJu0YxfMVdqoGpbywcvMx+eVMvEQFfz4aWs9MF3mHKSdR5EFVKrPzDo
+	TpWPUeYebwnwcuFitfNKqEWDrRKW7SxNFIrpkfNXpuuqYxJ7pbsN
+X-Gm-Gg: ASbGncucNuwu8dDXtrow89DuoNRWewvhF/E3HCF4quEg+cqNTZ0Jf8GiLWHUhS2G/ED
+	c9l67/xNNuZayabJl4jBh+/RSGkeVw1Ug91dXjWpK0Sb8Ovkd3PdCyqbyt7XYj6R87njmy2SEJS
+	wJ1EFv7X7lMQe2k2te8eriLqguakM9ynqnDulrkZzMTTGS4yOQ4X/g5ADxSwOo/sK6EKo1r/w6z
+	IP7cV+pk0B0T+QF08wSzVGK79wjPczGqyfG4Es8fCqCSTZNnGgD3z1+jNK6UYLJzQTh7c6nTw9m
+	iOZ0IbAGZ762sxrfQP/toYRakXcJ/PltMFX1KE4wUewgrzyKCBpe/LKsxhQ=
+X-Google-Smtp-Source: AGHT+IHym5Q+YAPg3jYRVQT1AbcSKrkylIIVQ0nly23ygpo9eo5af0TuH69Syh4K6QEhZQ2OLe4vKA==
+X-Received: by 2002:a05:6a21:3385:b0:1f5:9175:2596 with SMTP id adf61e73a8af0-2148b81ec6amr3152869637.13.1746596282841;
+        Tue, 06 May 2025 22:38:02 -0700 (PDT)
+Received: from tom-QiTianM540-A739.. ([124.127.236.130])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b1fb3b52759sm8714315a12.19.2025.05.06.22.37.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 06 May 2025 22:38:02 -0700 (PDT)
+From: Qiu-ji Chen <chenqiuji666@gmail.com>
+To: sean.wang@mediatek.com,
+	vkoul@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com
+Cc: dmaengine@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	baijiaju1990@gmail.com,
+	Qiu-ji Chen <chenqiuji666@gmail.com>,
+	stable@vger.kernel.org
+Subject: [PATCH] dmaengine: mediatek: Fix a possible deadlock error in mtk_cqdma_tx_status()
+Date: Wed,  7 May 2025 13:37:36 +0800
+Message-Id: <20250507053736.47220-1-chenqiuji666@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250506_223140_914793_6DF1ACE1 
-X-CRM114-Status: GOOD (  14.10  )
+X-CRM114-CacheID: sfid-20250506_223804_349035_44DC05A2 
+X-CRM114-Status: GOOD (  13.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,149 +102,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mac80211 rfkill_poll ops to monitor hardware rfkill state
-and state change will be updated.
+This patch fixes a potential deadlock bug. We observed that in the
+mtk-cqdma.c file, most functions like mtk_cqdma_issue_pending() and
+mtk_cqdma_free_active_desc() follow the correct locking sequence by
+acquiring the pc lock first before taking the vc lock when handling the vc
+and pc fields. However, in mtk_cqdma_tx_status(), the function incorrectly
+acquires the vc lock first before calling mtk_cqdma_find_active_desc(),
+which subsequently acquires the pc lock. This reversed lock acquisition
+order (vc → pc) violates the established sequence (pc → vc) and could
+potentially trigger deadlock scenarios.
 
-Signed-off-by: Allan Wang <allan.wang@mediatek.com>
+To resolve this issue, we have moved the vc lock acquisition code from
+mtk_cqdma_tx_status() into the mtk_cqdma_find_active_desc() function.
+This adjustment ensures proper lock ordering while maintaining
+functionality. Since mtk_cqdma_find_active_desc() is a static function
+with only one call site in mtk_cqdma_tx_status(), this fix effectively
+addresses the deadlock risk without introducing unintended side effects
+to other components.
 
+This possible bug is found by an experimental static analysis tool
+developed by our team. This tool analyzes the locking APIs to extract
+function pairs that can be concurrently executed, and then analyzes the
+instructions in the paired functions to identify possible concurrency bugs
+including data races and atomicity violations.
+
+Fixes: b1f01e48df5a ("dmaengine: mediatek: Add MediaTek Command-Queue DMA controller for MT6765 SoC")
+Cc: stable@vger.kernel.org
+Signed-off-by: Qiu-ji Chen <chenqiuji666@gmail.com>
 ---
-v2: Refine coding style
----
- .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  1 +
- .../net/wireless/mediatek/mt76/mt7925/main.c  | 16 ++++++++
- .../net/wireless/mediatek/mt76/mt7925/mcu.c   | 37 +++++++++++++++++++
- .../wireless/mediatek/mt76/mt7925/mt7925.h    |  1 +
- .../net/wireless/mediatek/mt76/mt7925/pci.c   |  4 ++
- 5 files changed, 59 insertions(+)
+ drivers/dma/mediatek/mtk-cqdma.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-index 478cd1886736..e195d69f61f6 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-@@ -1298,6 +1298,7 @@ enum {
- 	MCU_UNI_CMD_PER_STA_INFO = 0x6d,
- 	MCU_UNI_CMD_ALL_STA_INFO = 0x6e,
- 	MCU_UNI_CMD_ASSERT_DUMP = 0x6f,
-+	MCU_UNI_CMD_RADIO_STATUS = 0x80,
- 	MCU_UNI_CMD_SDO = 0x88,
- };
+diff --git a/drivers/dma/mediatek/mtk-cqdma.c b/drivers/dma/mediatek/mtk-cqdma.c
+index d5ddb4e30e71..656354bccb44 100644
+--- a/drivers/dma/mediatek/mtk-cqdma.c
++++ b/drivers/dma/mediatek/mtk-cqdma.c
+@@ -423,11 +423,14 @@ static struct virt_dma_desc *mtk_cqdma_find_active_desc(struct dma_chan *c,
+ 	unsigned long flags;
  
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-index 83f93f9e002c..e1ea7136751a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-@@ -334,6 +334,9 @@ int __mt7925_start(struct mt792x_phy *phy)
- 	ieee80211_queue_delayed_work(mphy->hw, &mphy->mac_work,
- 				     MT792x_WATCHDOG_TIME);
+ 	spin_lock_irqsave(&cvc->pc->lock, flags);
++	spin_lock_irqsave(&cvc->vc.lock, flags);
+ 	list_for_each_entry(vd, &cvc->pc->queue, node)
+ 		if (vd->tx.cookie == cookie) {
++			spin_unlock_irqrestore(&cvc->vc.lock, flags);
+ 			spin_unlock_irqrestore(&cvc->pc->lock, flags);
+ 			return vd;
+ 		}
++	spin_unlock_irqrestore(&cvc->vc.lock, flags);
+ 	spin_unlock_irqrestore(&cvc->pc->lock, flags);
  
-+	if (phy->chip_cap & MT792x_CHIP_CAP_WF_RF_PIN_CTRL_EVT_EN)
-+		wiphy_rfkill_start_polling(mphy->hw->wiphy);
-+
- 	return 0;
- }
- EXPORT_SYMBOL_GPL(__mt7925_start);
-@@ -2205,6 +2208,18 @@ static void mt7925_unassign_vif_chanctx(struct ieee80211_hw *hw,
- 	mutex_unlock(&dev->mt76.mutex);
- }
+ 	list_for_each_entry(vd, &cvc->vc.desc_issued, node)
+@@ -452,9 +455,7 @@ static enum dma_status mtk_cqdma_tx_status(struct dma_chan *c,
+ 	if (ret == DMA_COMPLETE || !txstate)
+ 		return ret;
  
-+static void mt7925_rfkill_poll(struct ieee80211_hw *hw)
-+{
-+	struct mt792x_phy *phy = mt792x_hw_phy(hw);
-+	int ret;
-+
-+	mt792x_mutex_acquire(phy->dev);
-+	ret = mt7925_mcu_wf_rf_pin_ctrl(phy);
-+	mt792x_mutex_release(phy->dev);
-+
-+	wiphy_rfkill_set_hw_state(hw->wiphy, ret == 0);
-+}
-+
- const struct ieee80211_ops mt7925_ops = {
- 	.tx = mt792x_tx,
- 	.start = mt7925_start,
-@@ -2265,6 +2280,7 @@ const struct ieee80211_ops mt7925_ops = {
- 	.link_info_changed = mt7925_link_info_changed,
- 	.change_vif_links = mt7925_change_vif_links,
- 	.change_sta_links = mt7925_change_sta_links,
-+	.rfkill_poll = mt7925_rfkill_poll,
- };
- EXPORT_SYMBOL_GPL(mt7925_ops);
+-	spin_lock_irqsave(&cvc->vc.lock, flags);
+ 	vd = mtk_cqdma_find_active_desc(c, cookie);
+-	spin_unlock_irqrestore(&cvc->vc.lock, flags);
  
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index 286f602623c0..ec4c4a027922 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -3633,6 +3633,43 @@ int mt7925_mcu_set_rate_txpower(struct mt76_phy *phy)
- 	return 0;
- }
- 
-+int mt7925_mcu_wf_rf_pin_ctrl(struct mt792x_phy *phy)
-+{
-+#define UNI_CMD_RADIO_STATUS_GET	0
-+	struct mt792x_dev *dev = phy->dev;
-+	struct sk_buff *skb;
-+	int ret;
-+	struct {
-+		__le16 tag;
-+		__le16 len;
-+		u8 rsv[4];
-+	} __packed req = {
-+		.tag = UNI_CMD_RADIO_STATUS_GET,
-+		.len = cpu_to_le16(sizeof(req)),
-+	};
-+	struct mt7925_radio_status_event {
-+		__le16 tag;
-+		__le16 len;
-+
-+		u8 data;
-+		u8 rsv[3];
-+	} __packed *status;
-+
-+	ret = mt76_mcu_send_and_get_msg(&dev->mt76,
-+					MCU_UNI_CMD(RADIO_STATUS),
-+					&req, sizeof(req), true, &skb);
-+	if (ret)
-+		return ret;
-+
-+	skb_pull(skb, sizeof(struct tlv));
-+	status = (struct mt7925_radio_status_event *)skb->data;
-+	ret = status->data;
-+
-+	dev_kfree_skb(skb);
-+
-+	return ret;
-+}
-+
- int mt7925_mcu_set_rxfilter(struct mt792x_dev *dev, u32 fif,
- 			    u8 bit_op, u32 bit_map)
- {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
-index 4e50f2597ccd..283a40badd28 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
-@@ -365,5 +365,6 @@ int mt7925_mcu_wtbl_update_hdr_trans(struct mt792x_dev *dev,
- 				     struct ieee80211_vif *vif,
- 				     struct ieee80211_sta *sta,
- 				     int link_id);
-+int mt7925_mcu_wf_rf_pin_ctrl(struct mt792x_phy *phy);
- 
- #endif
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-index c7b5dc1dbb34..b997cd8bf8d0 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-@@ -31,6 +31,10 @@ static void mt7925e_unregister_device(struct mt792x_dev *dev)
- {
- 	int i;
- 	struct mt76_connac_pm *pm = &dev->pm;
-+	struct ieee80211_hw *hw = mt76_hw(dev);
-+
-+	if (dev->phy.chip_cap & MT792x_CHIP_CAP_WF_RF_PIN_CTRL_EVT_EN)
-+		wiphy_rfkill_stop_polling(hw->wiphy);
- 
- 	cancel_work_sync(&dev->init_work);
- 	mt76_unregister_device(&dev->mt76);
+ 	if (vd) {
+ 		cvd = to_cqdma_vdesc(vd);
 -- 
-2.45.2
+2.34.1
 
 
