@@ -4,68 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A0FEC3ABC0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 May 2025 08:41:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29E20C3ABBE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 May 2025 08:49:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YYSdciPYaZv2TJowlHl5Yq1KGj16CbKyIc5/+T+SCec=; b=4x0xZk+/lVvZrDygQOMUc5SVov
-	K7SLdAUDqD8pJmUw6RjuIXbuLCj99u2ockHf39vh7RPC64hC/eEp+S9dfVeZ11c+ketTaohrl3ejt
-	1qlxXeWlrvLlW3nOJaoJDpUmDP3ALldmHkEM08/Pv0vnDYXFCwktSp1vzALc+t0CWmwoExs7opUL+
-	a/MjnLzedUtuE1Mmt56gFTDVqrV5piOQgxOvMFhU3RhXTDyhVE6L207mVY6J1QSci7rtwfaa2Bf9b
-	S8vkrbOt5rn0+lXkx/Dvcud2tiPUMCOXAcZW14rQ/e1f8fXk1ZHVaOzIT14XGnPUXCZp/4QmhGL1i
-	aClqEp8w==;
+	bh=I/6u434npu/OIMFCdOe8U+YX27jiuYdnGSjpPzb6uqs=; b=d4pH12RTlqVmSWQPjO8K1sahly
+	sKaO4+kdUeh1Jnw70SNOZCUDQtKmYkOKa2zLqXs/z6YFFMo2u48G03RYpaPgbzu36UKioHJv/D8XR
+	OkMbrxIflv2NrOQJlci9IBTWTrCGDTqNqJljrQ8OBaPzEigaXJTTgQsBQczN/nG1dD3fPZHTdGcuq
+	0KHWwKcItaZaFsXLxsX3ayoiu8TYbfML279dR3cIM/ESp5Xz/3+ERMZfT73iWu6kOlqKrMTsROWCj
+	V//8P5Z0TN9FRK5H5OTmWKmN5FxxIKUUBzWY0cL+UxQ1qU0D5v4xKlTblRmxcx9Neektls4Wz05gM
+	sZdCj8/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCwpD-000000009X0-2iIq;
-	Thu, 08 May 2025 08:41:51 +0000
+	id 1uCwww-00000000ATn-0rPy;
+	Thu, 08 May 2025 08:49:50 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCwZO-000000006aM-0dxe;
-	Thu, 08 May 2025 08:25:31 +0000
+	id 1uCwiP-000000008BG-1E9R;
+	Thu, 08 May 2025 08:34:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1746692728;
-	bh=X8K9aCfgxVUPIc1Nk89pKNYOpdNIKQWAwjZlX/4fHuI=;
+	s=mail; t=1746693287;
+	bh=/yn0vOBSqs1gT1qgFskCzgf8UxOw44a5QvWI6DwYPmM=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=bK7yllseP/OemvHwWrRiVJohhF767V7j55lg8o4Jv6l17DHqOBHoAhokjUC9qmZLl
-	 tJSQ4zf2AIGQCV87TC0U/7z8EPSPpXQiEVXUtUWgD/y+v1MGvubHRqcAd60v9MAsvE
-	 oLS+BZEIV/4obG6mF+DevW459GErxDSnM8bbCTG1sJ3T2z5xjv3WBrkPCTyWz7l6nN
-	 HOsjDfQ6+KkgIRCnMsSuidXQTGTPlhhn1n6gaSN/FlpjJBJEShjYnwU0SI2UPY8+iw
-	 geT0qj7so72G2Lkw2XpK8TLugpFBHBMQyDGml4653iFCDPZlVMWYBThArtrHji3Pdw
-	 e1RODhPsufHiw==
+	b=lvHX6Jfr7OJ3b9RU2pr9vKKmVzcczO72O3biC5VnlBbkLBYBi4j80YJi2EahlHN1c
+	 6I9FwWK2rI9vTlfgY0vX59fGYaiqUGpGcxReA8po/KwPkXIJBEPYgbVoK27U8P4nkQ
+	 X4QD/QaGCH6DAVicsxmX8fpMRCdFt6D/fag3nmUd43PN/6uB7xi1I6h2Cgt/WTqLpq
+	 SZEaWRHihGqfwPDfI/lIhJzyu9FoTR2A8LrpgfmZCRkdBpb7sSHMCQ9F4OpeDxNYKz
+	 VId7swgQvxQGPbEbgdeQEvtYfy088uRJpCZWNsQMmZX2KRcEXgt4abxmz6xz2/sV+O
+	 wA2RMcDIF2HaA==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 90BC717E02BE;
-	Thu,  8 May 2025 10:25:27 +0200 (CEST)
-Message-ID: <4b12cb42-a1fc-4687-a5d0-07c2c822d778@collabora.com>
-Date: Thu, 8 May 2025 10:25:27 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 62D3417E02BE;
+	Thu,  8 May 2025 10:34:46 +0200 (CEST)
+Message-ID: <ff8da58b-9e87-46d9-b4d2-4059ef05780d@collabora.com>
+Date: Thu, 8 May 2025 10:34:45 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] ASoC: mediatek: mt8188-mt6359: Depend on MT6359_ACCDET
- set or disabled
-To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Zoran Zhan <zoran.zhan@mediatek.com>, Arnd Bergmann <arnd@arndb.de>
-Cc: kernel@collabora.com, linux-sound@vger.kernel.org,
+Subject: Re: [PATCH 2/4] dt-bindings: iommu: mediatek: mt8195 Accept up to 5
+ interrupts
+To: Krzysztof Kozlowski <krzk@kernel.org>,
+ Julien Massot <julien.massot@collabora.com>, kernel@collabora.com,
+ Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?=
+ <nfraprado@collabora.com>, Hui Liu <hui.liu@mediatek.com>,
+ Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+ Tinghan Shen <tinghan.shen@mediatek.com>
+Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Arnd Bergmann <arnd@kernel.org>
-References: <20250507-mt8188-mt6359-accdet-depend-v1-1-aad70ce62964@collabora.com>
+ linux-mediatek@lists.infradead.org, iommu@lists.linux.dev
+References: <20250505-mt8395-dtb-errors-v1-0-9c4714dcdcdb@collabora.com>
+ <20250505-mt8395-dtb-errors-v1-2-9c4714dcdcdb@collabora.com>
+ <baeae909-4d12-4cbd-a063-7ad165304b96@kernel.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250507-mt8188-mt6359-accdet-depend-v1-1-aad70ce62964@collabora.com>
+In-Reply-To: <baeae909-4d12-4cbd-a063-7ad165304b96@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250508_012530_335608_6880C39B 
-X-CRM114-Status: GOOD (  11.70  )
+X-CRM114-CacheID: sfid-20250508_013449_481393_21DFA73B 
+X-CRM114-Status: GOOD (  12.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,30 +88,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 07/05/25 22:14, Nícolas F. R. A. Prado ha scritto:
-> Commit 0116a7d84b32 ("ASoC: mediatek: mt6359: Add stub for
-> mt6359_accdet_enable_jack_detect") added a stub for
-> mt6359_accdet_enable_jack_detect() in order to allow the mt8188-mt6359
-> driver to be enabled without requiring the mt6359-accdet to also be
-> enabled, since it is not always needed.
+Il 08/05/25 08:03, Krzysztof Kozlowski ha scritto:
+> On 05/05/2025 15:23, Julien Massot wrote:
+>>
+>> Fixes: 3b5838d1d82e3 ("arm64: dts: mt8195: Add iommu and smi nodes")
+>> Signed-off-by: Julien Massot <julien.massot@collabora.com>
+>> ---
+>>   Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml | 3 ++-
+>>   1 file changed, 2 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+>> index 75750c64157c868725c087500ac81be4e282c829..035941c2db32170e9a69a5363d8c05ef767bb251 100644
+>> --- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+>> +++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+>> @@ -97,7 +97,8 @@ properties:
+>>       maxItems: 1
+>>   
+>>     interrupts:
+>> -    maxItems: 1
+>> +    minItems: 1
+>> +    maxItems: 5
+>>   
+> Every iommu or just some (as described in commit msg) can have 5
+> interrupts? Looks you miss here proper constraints per variant.
 > 
-> However, in the case that CONFIG_SND_SOC_MT8188_MT6359=y and
-> CONFIG_SND_SOC_MT6359_ACCDET=m, a link error will happen, which commit
-> b19fa45715ce ("ASoC: mediatek: mt8188-mt6359: select
-> CONFIG_SND_SOC_MT6359_ACCDET") solved by selecting
-> CONFIG_SND_SOC_MT6359_ACCDET.
-> 
-> In order to not require CONFIG_SND_SOC_MT6359_ACCDET as originally
-> intended, but also prevent the link error, depend on ACCDET being
-> enabled or disabled (which will force MT8188_MT6359=m if
-> MT6359_ACCDET=m).
-> 
-> Fixes: f35d834d67ad ("ASoC: mediatek: mt8188-mt6359: Add accdet headset jack detect support")
-> Fixes: b19fa45715ce ("ASoC: mediatek: mt8188-mt6359: select CONFIG_SND_SOC_MT6359_ACCDET")
-> Suggested-by: Arnd Bergmann <arnd@kernel.org>
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Technically, all of the IOMMUs can have more than one interrupt - but it's not
+clear which one and why, as documentation is lacking.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Let's restrict this discussion to MT8195 anyway, as it's the only one declaring
+those 5 interrupts...
+...all of the IOMMUs declare just one, and mediatek,mt8195-iommu-infra declares 5.
 
+P.S.: Nice catch!
 
+Cheers,
+Angelo
 
