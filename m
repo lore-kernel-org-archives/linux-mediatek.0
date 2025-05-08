@@ -4,69 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1BB2C3ABC0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 May 2025 15:34:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6196C3ABC0
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 May 2025 15:46:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Subject:References:In-Reply-To:Message-Id:Cc:To:From:Date:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VqDEeskjv204T3o+wE2sZQ84XlTbJJpueq61qTFHyrU=; b=K6Vwoz8Wj5p6DSlTqYZ+ZDG31G
-	pOtWUrFX9d1ZUrWpNYbsHN7o5eQjEHZeUmOXKX+RNTi9YP93ceAzORcekbkPHYhtOFFmUrZ0FdS5L
-	/PNXQKphFvmopzOBmY5X02xxKQWIKVhW+wH8b3kWEJngBlcxh4SMi7abLAco0rU/IgoJyIqdvHK4k
-	Pgd9Gk+TLS9A5NjBiFyiEGgfdQ6RULjw20gpEoEfylQDkrLgrRAjZsch/bmxpewMMu/He/tU32OpQ
-	5E8QE6MVRF9v9twdxRlB8+HwsM5+gWM1b1zpST7whw3qUJaogIwoie5p4c+9Rwz4qO7J978hH4uN1
-	huXev1Xw==;
+	bh=zKwVwHInyFHttKlOYiiRDPcH0afaTJXoOolAu+XDXbo=; b=fbyYPpDwU1HeY/ccD9uND77Qb0
+	IW75YJSd6ZrwUyv7wL5hK3DHXtgJ66vTuGP5100mqCmawFd0P4Czmo2o1EQPWFVyxRrM4TOtS6rPC
+	rklrVknSJlzWqHoe3UNukc358m5h/ikd1NGnltmkoCVB7YJFkqO1qd0n7wTX2OQdE+CQScOP7IX7L
+	KBNdSBdjaKusvIeYoi3vlVB2KF0i8znf8v2Q+ZAsmcj/z8+03jO4IrsiQs3Qo3ByoADyqF7eoIaes
+	tYkzNGod6n3bfQq5DGvLh4AQVhpgNoVgLf6b3vjucWXzWNvVh7DjWxSxTItnex4cz/mcgBIYP2lSE
+	CL79eURw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uD3GS-000000019Ru-32ib;
-	Thu, 08 May 2025 15:34:24 +0000
-Received: from smtp-75.smtpout.orange.fr ([80.12.242.75] helo=smtp.smtpout.orange.fr)
+	id 1uD3SH-00000001BMF-3Gk0;
+	Thu, 08 May 2025 15:46:37 +0000
+Received: from fhigh-a2-smtp.messagingengine.com ([103.168.172.153])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uD2cl-000000010Fx-2xYY;
-	Thu, 08 May 2025 14:53:25 +0000
-Received: from localhost.localdomain ([90.11.132.44])
-	by smtp.orange.fr with ESMTPA
-	id D2cYuomdl816KD2cluwCrp; Thu, 08 May 2025 16:53:23 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
-	s=t20230301; t=1746716003;
-	bh=VqDEeskjv204T3o+wE2sZQ84XlTbJJpueq61qTFHyrU=;
-	h=From:To:Subject:Date:Message-ID:MIME-Version;
-	b=kmer2oUbkAgOhVfov1utjfGjKAfmb/BJ5QcB46zCIaqQYavwLTUu29+A1ZPz5aOSf
-	 T7jQk01ZTHqW0tyOSQ4SDXlSFipu9KTipIfiaP5GKh6YNCkwh2SlIYGFmbMgO1ulMK
-	 41XW59fx5HzeD98srEdzP6BbYD5qAEE1nlPkUsUzAjE3ZZ872L2R6ZvJdSGJWCeKFs
-	 EF7/WzzWvzASRcdldvOC5ee8c//yRhxNxNMklIJIO3Irl0zV1KwSwfdp5En7DwPSZy
-	 tVSeKQPJ17oWKXq1CAsm/mmpXrIw+euQ33DAgvUL+deIzoVMYP6T7dOYMDyplHq924
-	 yiBRZo34NVqKQ==
-X-ME-Helo: localhost.localdomain
-X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
-X-ME-Date: Thu, 08 May 2025 16:53:23 +0200
-X-ME-IP: 90.11.132.44
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-To: Lorenzo Bianconi <lorenzo@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>
-Cc: linux-kernel@vger.kernel.org,
-	kernel-janitors@vger.kernel.org,
-	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	netdev@vger.kernel.org
-Subject: [PATCH v2 4/4] net: airoha: Use dev_err_probe()
-Date: Thu,  8 May 2025 16:52:28 +0200
-Message-ID: <1b67aa9ea0245325c3779d32dde46cdf5c232db9.1746715755.git.christophe.jaillet@wanadoo.fr>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <5c94b9b3850f7f29ed653e2205325620df28c3ff.1746715755.git.christophe.jaillet@wanadoo.fr>
-References: <5c94b9b3850f7f29ed653e2205325620df28c3ff.1746715755.git.christophe.jaillet@wanadoo.fr>
+	id 1uD1hh-00000000pV0-17oq;
+	Thu, 08 May 2025 13:54:27 +0000
+Received: from phl-compute-05.internal (phl-compute-05.phl.internal [10.202.2.45])
+	by mailfhigh.phl.internal (Postfix) with ESMTP id D331A11401B9;
+	Thu,  8 May 2025 09:54:21 -0400 (EDT)
+Received: from phl-imap-12 ([10.202.2.86])
+  by phl-compute-05.internal (MEProxy); Thu, 08 May 2025 09:54:21 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
+	:cc:content-transfer-encoding:content-type:content-type:date
+	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to; s=fm2; t=1746712461;
+	 x=1746798861; bh=zKwVwHInyFHttKlOYiiRDPcH0afaTJXoOolAu+XDXbo=; b=
+	IVQgLZWlVgLU/lJZLr+iFqaSMheF05AC/yD3uJd0BIhy1D5y/PTmDkTl4T2oiPrJ
+	EvFv5pgK+njzB43WRd0mvC8LnivltiQZR3LsCNirUojPOGVlTfIMVK06XI+U4+MN
+	mW+/ILx3zEBt1r2/PVY57IDxIog9txi5p2ZkUq3/8NGV/D3oBQq0Q0F1hQ8kydLp
+	InbjgOsl8hL3UJhRReFsViKbu9PNnHSEhV5L0FQGophIBOpz15tHy3ChIr3tudi3
+	x7UVNkDcdZeBcnbFHnt2mZd9QT5JSjMPoxe4B5TB01yMK68FH7I1F0d5kRgSvhLl
+	Ue3hwtao2XwqhHMjlKtY4w==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:content-type:date:date:feedback-id:feedback-id
+	:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to:x-me-proxy
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1746712461; x=
+	1746798861; bh=zKwVwHInyFHttKlOYiiRDPcH0afaTJXoOolAu+XDXbo=; b=n
+	OzlWj2GGOFn0sYTPX97eTu1g9aWel1P8MgeWhkuCPiqBEv6vHM1qdcw0y0kt9MV0
+	YDHAV02oS2Ddcs5aHpon/3V2hEj6wPNLOKc8VRUnHj9YP+1O3PcaJC7L4I8pE2hD
+	alwUrZLeZ2nUF08mSIHgEhYH6fJVvOx4uPblyLffbS75VLiGTZWkjkMutnwcpT3E
+	itd2k55CJYnPAF4e+oPd/6EtSVJnuXNPJrMTj4EfHTLFkB1WrgpxjX91+ESaV0t4
+	H26hjVJ0HaFvUKkgqUqLTvqtEg0I2PiMvoXiy7y7Fq2SDF/dkZFbNB1RVYASDnUx
+	zVgtnt4O+wuymBPFq1Q5g==
+X-ME-Sender: <xms:jbccaFFUfl4J8bkCxYpNg9kU3xJOFCbTXSj23bHtrL4ERVLUWX5cZA>
+    <xme:jbccaKXILPyFEbRQlNz_JmbQNnjShXpQraFrRwQwe4T0F7OAYDnrPOkdix8AHM8Is
+    _dn7bIKh2eKWFoTatU>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvkeelledvucetufdoteggodetrf
+    dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggv
+    pdfurfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpih
+    gvnhhtshculddquddttddmnecujfgurhepofggfffhvfevkfgjfhfutgfgsehtqhertder
+    tdejnecuhfhrohhmpedftehrnhguuceuvghrghhmrghnnhdfuceorghrnhgusegrrhhnug
+    gsrdguvgeqnecuggftrfgrthhtvghrnhepvdfhvdekueduveffffetgfdvveefvdelhedv
+    vdegjedvfeehtdeggeevheefleejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrg
+    hmpehmrghilhhfrhhomheprghrnhgusegrrhhnuggsrdguvgdpnhgspghrtghpthhtohep
+    udegpdhmohguvgepshhmthhpohhuthdprhgtphhtthhopegrnhhgvghlohhgihhorggttg
+    hhihhnohdruggvlhhrvghgnhhosegtohhllhgrsghorhgrrdgtohhmpdhrtghpthhtohep
+    khgvrhhnvghlsegtohhllhgrsghorhgrrdgtohhmpdhrtghpthhtohepnhhfrhgrphhrrg
+    guohestgholhhlrggsohhrrgdrtghomhdprhgtphhtthhopehlghhirhgufihoohgusehg
+    mhgrihhlrdgtohhmpdhrtghpthhtohepmhgrthhthhhirghsrdgsghhgsehgmhgrihhlrd
+    gtohhmpdhrtghpthhtoheprghrnhgusehkvghrnhgvlhdrohhrghdprhgtphhtthhopegs
+    rhhoohhnihgvsehkvghrnhgvlhdrohhrghdprhgtphhtthhopehlihhnuhigqdgrrhhmqd
+    hkvghrnhgvlheslhhishhtshdrihhnfhhrrgguvggrugdrohhrghdprhgtphhtthhopehl
+    ihhnuhigqdhmvgguihgrthgvkheslhhishhtshdrihhnfhhrrgguvggrugdrohhrgh
+X-ME-Proxy: <xmx:jbccaHIE0qB-gRcBJPF3mx9qcmmsmF3lPvAhWDPZ1jd6yMJp7qoeRQ>
+    <xmx:jbccaLG8ZWNJpxRforzfW626CgfovRMyHHcoyDphFRKPXTf3Mrn--Q>
+    <xmx:jbccaLUhSGeC_PLFQCBI5mms4AWAfZ6kN_mRSmaMzIwsPGg8pqhGvA>
+    <xmx:jbccaGOUwVH610AoyCT6aAPNy9Fkk3mNFCWA1OTn1VOJQHArOTAicw>
+    <xmx:jbccaNKTVBAeYTcqdy_Q7JAsVbVyyZ_U0-T7lgBgM2ZLjsWT0VeCVwAi>
+Feedback-ID: i56a14606:Fastmail
+Received: by mailuser.phl.internal (Postfix, from userid 501)
+	id E83471C20068; Thu,  8 May 2025 09:54:20 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-ThreadId: Td2f4dc7f18582246
+Date: Thu, 08 May 2025 15:54:00 +0200
+From: "Arnd Bergmann" <arnd@arndb.de>
+To: =?UTF-8?Q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>,
+ "Liam Girdwood" <lgirdwood@gmail.com>, "Mark Brown" <broonie@kernel.org>,
+ "Jaroslav Kysela" <perex@perex.cz>, "Takashi Iwai" <tiwai@suse.com>,
+ "Matthias Brugger" <matthias.bgg@gmail.com>,
+ "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
+ "Zoran Zhan" <zoran.zhan@mediatek.com>
+Cc: kernel@collabora.com, linux-sound@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, "Arnd Bergmann" <arnd@kernel.org>
+Message-Id: <518ffd4c-2ea1-4496-b0fd-399ea1db0f57@app.fastmail.com>
+In-Reply-To: <20250507-mt8188-mt6359-accdet-depend-v1-1-aad70ce62964@collabora.com>
+References: <20250507-mt8188-mt6359-accdet-depend-v1-1-aad70ce62964@collabora.com>
+Subject: Re: [PATCH] ASoC: mediatek: mt8188-mt6359: Depend on MT6359_ACCDET set or
+ disabled
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250508_075323_879438_5BBBDE7D 
-X-CRM114-Status: GOOD (  10.76  )
+X-CRM114-CacheID: sfid-20250508_065426_098341_317F7D26 
+X-CRM114-Status: UNSURE (   8.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,67 +122,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use dev_err_probe() to slightly simplify the code.
-It is less verbose, more informational and makes error logging more
-consistent in the probe.
+On Wed, May 7, 2025, at 22:14, N=C3=ADcolas F. R. A. Prado wrote:
+> Commit 0116a7d84b32 ("ASoC: mediatek: mt6359: Add stub for
+> mt6359_accdet_enable_jack_detect") added a stub for
+> mt6359_accdet_enable_jack_detect() in order to allow the mt8188-mt6359
+> driver to be enabled without requiring the mt6359-accdet to also be
+> enabled, since it is not always needed.
+>
+> Fixes: f35d834d67ad ("ASoC: mediatek: mt8188-mt6359: Add accdet headse=
+t=20
+> jack detect support")
+> Fixes: b19fa45715ce ("ASoC: mediatek: mt8188-mt6359: select=20
+> CONFIG_SND_SOC_MT6359_ACCDET")
+> Suggested-by: Arnd Bergmann <arnd@kernel.org>
+> Signed-off-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
 
-Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
----
-Changes in v2:
-  - New patch
-
-Compile tested only.
----
- drivers/net/ethernet/airoha/airoha_eth.c | 21 +++++++++------------
- 1 file changed, 9 insertions(+), 12 deletions(-)
-
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 2335aa59b06f..7404ee894467 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -2896,10 +2896,9 @@ static int airoha_probe(struct platform_device *pdev)
- 	eth->dev = &pdev->dev;
- 
- 	err = dma_set_mask_and_coherent(eth->dev, DMA_BIT_MASK(32));
--	if (err) {
--		dev_err(eth->dev, "failed configuring DMA mask\n");
--		return err;
--	}
-+	if (err)
-+		return dev_err_probe(eth->dev, err,
-+				     "failed configuring DMA mask\n");
- 
- 	eth->fe_regs = devm_platform_ioremap_resource_byname(pdev, "fe");
- 	if (IS_ERR(eth->fe_regs))
-@@ -2912,10 +2911,9 @@ static int airoha_probe(struct platform_device *pdev)
- 	err = devm_reset_control_bulk_get_exclusive(eth->dev,
- 						    ARRAY_SIZE(eth->rsts),
- 						    eth->rsts);
--	if (err) {
--		dev_err(eth->dev, "failed to get bulk reset lines\n");
--		return err;
--	}
-+	if (err)
-+		return dev_err_probe(eth->dev, err,
-+				     "failed to get bulk reset lines\n");
- 
- 	eth->xsi_rsts[0].id = "xsi-mac";
- 	eth->xsi_rsts[1].id = "hsi0-mac";
-@@ -2925,10 +2923,9 @@ static int airoha_probe(struct platform_device *pdev)
- 	err = devm_reset_control_bulk_get_exclusive(eth->dev,
- 						    ARRAY_SIZE(eth->xsi_rsts),
- 						    eth->xsi_rsts);
--	if (err) {
--		dev_err(eth->dev, "failed to get bulk xsi reset lines\n");
--		return err;
--	}
-+	if (err)
-+		return dev_err_probe(eth->dev, err,
-+				     "failed to get bulk xsi reset lines\n");
- 
- 	eth->napi_dev = alloc_netdev_dummy(0);
- 	if (!eth->napi_dev)
--- 
-2.49.0
-
+Acked-by: Arnd Bergmann <arnd@arndb.de>
 
