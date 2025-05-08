@@ -4,70 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1EFBC3ABBF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 May 2025 20:16:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B9DFC3ABC3
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 May 2025 01:21:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+X8jHZ+UCc+Ohu0KXssevYJirrp4bJDPnKlrWI5bAVg=; b=pJiaJVEfBXmRCqme8NExIJBDYe
-	a4BCxlAI82umNYjkgmoSHENKAEol3qlQR9MAKtrvvgbMtrij/AtAhetH5iX6DPwWnQWXOWV9V/GJe
-	0Yfy6Pl627O+bbMvMoNUGuiwD5Yi//WC1RfcaEuuJ9MvC/ZHBJD2fDUXNBSR9FyEA4WCZ/yPKTav6
-	e/mIz+btLjSFb2NCYjotyo0UOA+HjN8IRXTqibFoAj7xZX/xB/zQkx0gazZdBDb1HMDd2J5I7yZUN
-	1vDwR5FwEQSk5OOQHAH6GKLEoSrBJi3p9sdm+T1Az38yI5PoYQ94of16gJJKsntlcH8/18iEN0j4Z
-	AlCM8Nfg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NTbqGrtRHxN/1ty8pp2w6wKlYDTpgyLhjkAhhWBz/jQ=; b=GmgALHzmcfI3N7VIpH/4QHt32L
+	hJlRKkB/mPUtk0v25nHlychuKURaRa5TXdIac2VTq0qQPSaCzlHdsmykhoqQKOPv6YL3rFUR051mZ
+	RyzZ0NxbdjVWlLkolYUpMWjcX017776blr+H0jira0yj5lkZmBCpg7+23n4zzhgV/va5KfxjiB6fM
+	AXIptyuej6t5Ws3yfO7KUhV4ZJNqNrSIXcAZ8GzWgVSRtt0jXIvOsiMDGgD6yVEZD+S1CxpGlk7v5
+	EWZslVG9GTOxea1c0uAx6ZFLOZ/vJ/ju+e6LCu8kN/wKh+QeKD3GkLa1sVOk1JkFag72PsbatPZqo
+	WE9g5JjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uClC3-0000000GfDg-3Akw;
-	Wed, 07 May 2025 20:16:39 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uCpxW-0000000H5at-07TO;
+	Thu, 08 May 2025 01:21:58 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uClA5-0000000GeuL-2xxw;
-	Wed, 07 May 2025 20:14:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1746648874;
-	bh=1wYB6g3HZmLcMhDaWBOpHrS4E4d1M7S0hY8EqdNaB7Y=;
-	h=From:Date:Subject:To:Cc:From;
-	b=JEH0XLuos0G9N9R/Vnss9oT0gjwD78a9Zvy7mAlh49Se033+o/gsmgiu1sPhxpemC
-	 uw5xzDT4GBOS6u+JyKdAivFSP++gi0f7VTtBSzlXXQKfsOBy2Y+RAaV2C4/N4sY6Tf
-	 mB/hPIwR7bf2wN+LZjkpA+8sz1Tmxd8bmtiDJMFMEmX77sL801A4/a2rAn0gLN5WT3
-	 7Xy/3ZvWz6r/qAzkpd5cBMN06NzXB/3hfPYh6csVKN/IJSUXVGwLNT56LByTVgPWoE
-	 z0OInyp/DFrYK6q35hbjVD7i4hnBI8TJ1UmKm0S2stwd29wdSIa8H0M+SS61Sv7bdY
-	 xhcn9e/JIUdfA==
-Received: from [192.168.1.63] (unknown [70.107.117.78])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 37A0717E0707;
-	Wed,  7 May 2025 22:14:32 +0200 (CEST)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Wed, 07 May 2025 16:14:14 -0400
-Subject: [PATCH] ASoC: mediatek: mt8188-mt6359: Depend on MT6359_ACCDET set
- or disabled
-MIME-Version: 1.0
+	id 1uCpvW-0000000H5Vq-1Q5b;
+	Thu, 08 May 2025 01:19:55 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 81BDB5C5910;
+	Thu,  8 May 2025 01:17:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 222C1C4CEE7;
+	Thu,  8 May 2025 01:19:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1746667192;
+	bh=Da/4KA4ru5nuN3AHYoUrLBKV4QSb8eSjgs/JqCWTa34=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=P/FsZKNir1ZMqd27mwt0XvV1hBtrfdlJLHbY8U4GbbErbsdUEq0jozYOGa+WvjUih
+	 FxiATpxZUi1eLMISi3bzY3tKVgG1/FZL7lxcq9y+zJ2COrWm8YP/EUXhq5wUlu0I7C
+	 vEht35Kh994jw5NWIaQZp/AAjXrTvKZEkqsCI360aT+rePAhPiWvafaJP+iUVp4t1Y
+	 B0t60PDe8BcWT36hWcrBOz5Z5vvNKSF55TWqYod9Ajr5nyrsSddSz6uy7IzpTh0oUX
+	 OjaDnSoWUpU9CUGbBThiZXYjm71oJ5bRTzEdqWJSq23FvXe4yT4SMrDC97YWtsVbTX
+	 RUtKjn0+N+hrw==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 33BB2380AA70;
+	Thu,  8 May 2025 01:20:32 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Message-Id: <20250507-mt8188-mt6359-accdet-depend-v1-1-aad70ce62964@collabora.com>
-X-B4-Tracking: v=1; b=H4sIABW/G2gC/x3MQQqDMBBG4avIrB2I0WjqVYqLNPPbzsJUEikF8
- e4NXT2+zTupICsKzc1JGR8t+k4VXdtQfIX0BKtUkzXWGWcm3g7feV8z9u7GIUbBwYIdSXgI0di
- HwyAIVA97xqrf//2+XNcPhNQ/VG0AAAA=
-X-Change-ID: 20250507-mt8188-mt6359-accdet-depend-4ac02b5e4dea
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Zoran Zhan <zoran.zhan@mediatek.com>, Arnd Bergmann <arnd@arndb.de>
-Cc: kernel@collabora.com, linux-sound@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Arnd Bergmann <arnd@kernel.org>, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-X-Mailer: b4 0.14.2
+Subject: Re: [PATCH net v5] net: airoha: Add missing field to ppe_mbox_data
+ struct
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <174666723099.2414619.1850276703791840272.git-patchwork-notify@kernel.org>
+Date: Thu, 08 May 2025 01:20:30 +0000
+References: <20250506-airoha-en7581-fix-ppe_mbox_data-v5-1-29cabed6864d@kernel.org>
+In-Reply-To: <20250506-airoha-en7581-fix-ppe_mbox_data-v5-1-29cabed6864d@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, horms@kernel.org,
+ jacob.e.keller@intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250507_131437_892127_27BF0029 
-X-CRM114-Status: GOOD (  13.59  )
+X-CRM114-CacheID: sfid-20250507_181954_433215_D01EAEF8 
+X-CRM114-Status: GOOD (  13.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,52 +76,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Commit 0116a7d84b32 ("ASoC: mediatek: mt6359: Add stub for
-mt6359_accdet_enable_jack_detect") added a stub for
-mt6359_accdet_enable_jack_detect() in order to allow the mt8188-mt6359
-driver to be enabled without requiring the mt6359-accdet to also be
-enabled, since it is not always needed.
+Hello:
 
-However, in the case that CONFIG_SND_SOC_MT8188_MT6359=y and
-CONFIG_SND_SOC_MT6359_ACCDET=m, a link error will happen, which commit
-b19fa45715ce ("ASoC: mediatek: mt8188-mt6359: select
-CONFIG_SND_SOC_MT6359_ACCDET") solved by selecting
-CONFIG_SND_SOC_MT6359_ACCDET.
+This patch was applied to netdev/net.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-In order to not require CONFIG_SND_SOC_MT6359_ACCDET as originally
-intended, but also prevent the link error, depend on ACCDET being
-enabled or disabled (which will force MT8188_MT6359=m if
-MT6359_ACCDET=m).
+On Tue, 06 May 2025 18:56:47 +0200 you wrote:
+> The official Airoha EN7581 firmware requires adding max_packet field in
+> ppe_mbox_data struct while the unofficial one used to develop the Airoha
+> EN7581 flowtable support does not require this field.
+> This patch does not introduce any real backwards compatible issue since
+> EN7581 fw is not publicly available in linux-firmware or other
+> repositories (e.g. OpenWrt) yet and the official fw version will use this
+> new layout. For this reason this change needs to be backported.
+> Moreover, make explicit the padding added by the compiler introducing
+> the rsv array in init_info struct.
+> At the same time use u32 instead of int for init_info and set_info
+> struct definitions in ppe_mbox_data struct.
+> 
+> [...]
 
-Fixes: f35d834d67ad ("ASoC: mediatek: mt8188-mt6359: Add accdet headset jack detect support")
-Fixes: b19fa45715ce ("ASoC: mediatek: mt8188-mt6359: select CONFIG_SND_SOC_MT6359_ACCDET")
-Suggested-by: Arnd Bergmann <arnd@kernel.org>
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
----
- sound/soc/mediatek/Kconfig | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Here is the summary with links:
+  - [net,v5] net: airoha: Add missing field to ppe_mbox_data struct
+    https://git.kernel.org/netdev/net/c/4a7843cc8a41
 
-diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
-index e148d4d9416011252ddbc37111c3e7b9d59082f9..90e367586493d7a413efade6a8586c4770c459ab 100644
---- a/sound/soc/mediatek/Kconfig
-+++ b/sound/soc/mediatek/Kconfig
-@@ -228,8 +228,8 @@ config SND_SOC_MT8188
- config SND_SOC_MT8188_MT6359
- 	tristate "ASoC Audio driver for MT8188 with MT6359 and I2S codecs"
- 	depends on SND_SOC_MT8188 && MTK_PMIC_WRAP
-+	depends on SND_SOC_MT6359_ACCDET || !SND_SOC_MT6359_ACCDET
- 	depends on I2C
--	select SND_SOC_MT6359_ACCDET
- 	select SND_SOC_MT6359
- 	select SND_SOC_HDMI_CODEC
- 	select SND_SOC_DMIC
-
----
-base-commit: b19fa45715ce9cfcc597ed140df31115e969b39d
-change-id: 20250507-mt8188-mt6359-accdet-depend-4ac02b5e4dea
-
-Best regards,
+You are awesome, thank you!
 -- 
-Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
