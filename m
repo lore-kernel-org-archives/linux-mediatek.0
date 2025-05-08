@@ -4,68 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A94EC3ABC6
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 May 2025 17:21:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1120C3ABBE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 May 2025 22:06:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=i3Zcprdv1SvQj0eiycKQXI51YCMEuANQ9KWCXytXxLs=; b=f/TNl/R9Pz57U6TnyjpluUV7uR
-	Y7I7HpRH0wEPbk8Bu9g5Tv4JtpNK15+iwXIWiFqdnuAQi4PnMbPpNG6lF96G8ek3sxSmHuApVG1Nf
-	IT1czvr4IGwRfte/vfXNPMLvToru4KO7XeKI1zIi2MAq0ssG29j74dhCpxUliXHydqk+Km6SSsHTs
-	1JCLUpFuaYR3ajQBL056wH5eOAQUb+wThTbJ/m/uMAMdyqg/UZ8/XQAkHcZn5YAg/3fwEPlpqPyZO
-	ZDSGW6AyYzAyS3bZsm22GzKi/bxakLa8vKO0R8QkXtmHPEElcW0RvKCjYCVUS78DNpvQIgwrLsO+6
-	NRug04Iw==;
+	bh=aHi8P7pgdSS3IF9nrw7/5IwinNCV664/YxmEOEm+Rjw=; b=iT0ewSqQyk2nvZhCq+dtsDM/l9
+	v6tFh1h5j9vbZgEv6o9e1Qs1T84fwUrufMu97ziDtCeZMv8IHZU3GvC2ae6LjJG/N3ItMRrz98egk
+	8j6keeCKXI18FEti3tfBsdlLXPRWI3RRDr3zGrXPsArvAy7PryEaVGgBbhFC5D5XmKJNeFgyWl5FN
+	xWX0Hh7C3eJ2cvKrL2Z2r89Av72++soJV4SB4qaTKwSe8lg9Tpn0RJYRdYQ+A+z1zKjOwhRuE+1Bf
+	PNQtgIzKlVL9YXdazGhVubo0q5H+VRNvox3nSwM1qZOYThCRtmj9v1H6E+x8+SEOSZ3MrJlJFr3lh
+	xH7FQDWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uD4vd-00000001Mp5-0JPM;
-	Thu, 08 May 2025 17:21:01 +0000
-Received: from smtp-75.smtpout.orange.fr ([80.12.242.75] helo=smtp.smtpout.orange.fr)
+	id 1uD9NY-00000001sph-1PrH;
+	Thu, 08 May 2025 22:06:08 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uD3kZ-00000001EYX-39Yc;
-	Thu, 08 May 2025 16:05:32 +0000
-Received: from [192.168.1.37] ([90.11.132.44])
-	by smtp.orange.fr with ESMTPA
-	id D3kUuhiTn5oOhD3kUuQpGk; Thu, 08 May 2025 18:05:29 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
-	s=t20230301; t=1746720329;
-	bh=i3Zcprdv1SvQj0eiycKQXI51YCMEuANQ9KWCXytXxLs=;
-	h=Message-ID:Date:MIME-Version:Subject:To:From;
-	b=ATwY6ABMjL9h2bymt7e78pl9aKcyh+EW5/LzWCMpLnKdY3A2MnCK2IfN54Cblz188
-	 frUSBSmFo3Mlo+ZWoWEk6Gk6woIflGmSyUb+BEg9JuLGXjzvWEzbQnuhtX9xd8xDN3
-	 1HcGPT8iZJNsZH964+0wBxoS09nQ7HOhHtgS4XMixHUiF8qDVtN16RE8zjFEUeMmve
-	 l9oD4xuiMRY97u+tI1uWtlIPxAgUeGkX1KFYAfUQmJNZp/7IAeCnt6EPJpwUU34YfO
-	 /xiXGagHB/5+fIGOLgaCdeSONbXd0FhUslqS+faTY2gQ/df8VyzjbAtPlQZ4qoOPXS
-	 1G/utI/oMG2Kg==
-X-ME-Helo: [192.168.1.37]
-X-ME-Auth: bWFyaW9uLmphaWxsZXRAd2FuYWRvby5mcg==
-X-ME-Date: Thu, 08 May 2025 18:05:29 +0200
-X-ME-IP: 90.11.132.44
-Message-ID: <68149c51-ba75-4f0f-a86a-bd810d47d684@wanadoo.fr>
-Date: Thu, 8 May 2025 18:05:26 +0200
+	id 1uD9NV-00000001spM-3FtV
+	for linux-mediatek@lists.infradead.org;
+	Thu, 08 May 2025 22:06:07 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id E14034A33E;
+	Thu,  8 May 2025 22:06:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1EE5DC4CEE7;
+	Thu,  8 May 2025 22:05:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1746741963;
+	bh=nJGSya3nk9fSTp7YpGyO3JhSqO1gXL/uAOoUiq4UGgo=;
+	h=Subject:From:Reply-To:To:Cc:Date:In-Reply-To:References:From;
+	b=IN+DE+wuCAWPAELs5oW0EpKs5ORy43kC+oE1Q2vW0wWTQQwY29Op9abjDOt6onAQt
+	 6Ut9bUmgXFuh+1IXL/m7ysUpkC/rhe6i7MrxqhnuU/+TzfpMMtkV28rrryI86j18RF
+	 e3Cc3+28GQ2WCy0U/Rous0UTwRv/vo4y5PXoaO8zeV0rmPmRzAfwq/SqVTdoyKq+MY
+	 dbXI/tF95dqosOSSmgIHom4Frq2mcOWUFPcGIME4Q4u62aPY/OnxzzDv9eoQarkt5Z
+	 b1/2jIYRuD1IOX9x8F0skh/+az+G/LbnTZlnmanbtiH9tIf5mUmdGrnieIPwHOHkQ6
+	 nRNNo290L6UZA==
+Message-ID: <18a80b20916b2f7d73ea29cc67d1389662f9836b.camel@kernel.org>
+Subject: Re: [PATCH v2] wifi: mt76: mt7925: fix missing hdr_trans_tlv
+ command for broadcast wtbl
+From: Niklas Schnelle <niks@kernel.org>
+To: Mingyen Hsieh <mingyen.hsieh@mediatek.com>, nbd@nbd.name, 
+	lorenzo@kernel.org
+Cc: deren.wu@mediatek.com, Sean.Wang@mediatek.com, Leon.Yen@mediatek.com, 
+	Michael.Lo@mediatek.com, allan.wang@mediatek.com,
+ Eric-SY.Chang@mediatek.com, 	km.lin@mediatek.com, Quan.Zhou@mediatek.com,
+ Ryder.Lee@mediatek.com, 	Shayne.Chen@mediatek.com,
+ linux-wireless@vger.kernel.org, 	linux-mediatek@lists.infradead.org,
+ stable@vger.kernel.org, fossben@pm.me
+Date: Fri, 09 May 2025 00:05:57 +0200
+In-Reply-To: <20250508085534.305242-1-mingyen.hsieh@mediatek.com>
+References: <20250508085534.305242-1-mingyen.hsieh@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.1 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/4] net: airoha: Fix an error handling path in
- airoha_alloc_gdm_port()
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org
-References: <5c94b9b3850f7f29ed653e2205325620df28c3ff.1746715755.git.christophe.jaillet@wanadoo.fr>
- <aBzOaiU6Ac3ZTU-4@lore-desk>
-Content-Language: en-US, fr-FR
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-In-Reply-To: <aBzOaiU6Ac3ZTU-4@lore-desk>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250508_090531_925465_80298989 
-X-CRM114-Status: GOOD (  21.95  )
+X-CRM114-CacheID: sfid-20250508_150605_857052_2551FDEA 
+X-CRM114-Status: GOOD (  20.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,86 +75,77 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: niks@kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le 08/05/2025 à 17:31, Lorenzo Bianconi a écrit :
->> If register_netdev() fails, the error handling path of the probe will not
->> free the memory allocated by the previous airoha_metadata_dst_alloc() call
->> because port->dev->reg_state will not be NETREG_REGISTERED.
->>
->> So, an explicit airoha_metadata_dst_free() call is needed in this case to
->> avoid a memory leak.
->>
->> Fixes: af3cf757d5c9 ("net: airoha: Move DSA tag in DMA descriptor")
->> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
->> ---
->> Changes in v2:
->>    - New patch
->>
->> Compile tested only.
->> ---
->>   drivers/net/ethernet/airoha/airoha_eth.c | 10 +++++++++-
->>   1 file changed, 9 insertions(+), 1 deletion(-)
->>
->> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
->> index 16c7896f931f..af8c4015938c 100644
->> --- a/drivers/net/ethernet/airoha/airoha_eth.c
->> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
->> @@ -2873,7 +2873,15 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
->>   	if (err)
->>   		return err;
->>   
->> -	return register_netdev(dev);
->> +	err = register_netdev(dev);
->> +	if (err)
->> +		goto free_metadata_dst;
->> +
->> +	return 0;
->> +
->> +free_metadata_dst:
->> +	airoha_metadata_dst_free(port);
->> +	return err;
->>   }
->>   
->>   static int airoha_probe(struct platform_device *pdev)
->> -- 
->> 2.49.0
->>
-> 
-> I have not tested it but I think the right fix here would be something like:
-> 
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-> index b1ca8322d4eb..33f8926bba25 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> @@ -2996,10 +2996,12 @@ static int airoha_probe(struct platform_device *pdev)
->   	for (i = 0; i < ARRAY_SIZE(eth->ports); i++) {
->   		struct airoha_gdm_port *port = eth->ports[i];
->   
-> -		if (port && port->dev->reg_state == NETREG_REGISTERED) {
-> +		if (!port)
-> +			continue;
+On Thu, 2025-05-08 at 16:55 +0800, Mingyen Hsieh wrote:
+> From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+>=20
+> The hdr_trans_tlv function call has been moved inside the conditional blo=
+ck
+> to ensure it is executed when info->enable is true.
+>=20
+> Cc: stable@vger.kernel.org
+> Fixes: cb1353ef3473 ("wifi: mt76: mt7925: integrate *mlo_sta_cmd and *sta=
+_cmd")
+> Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+> Tested-by: Niklas Schnelle <niks@kernel.org>
+> ---
+> v2:
+>     add tested-by tag
+>=20
 
-I think it works.
+Thanks for adding the tag, appreciate it. If I may add some stylistic
+comments. I saw that this is one of your first independent upstream
+patches so congratulations on that and even better it's an actual
+proper fix. Well done!
 
-We can still have port non NULL and airoha_metadata_dst_alloc() which 
-fails, but airoha_metadata_dst_free() seems to handle it correctly.
+One thing, I noticed though is that your commit message lacks context,
+like this affecting IPv6 and multicast. Basically it just re-iterates
+what I can already see in the code. It also doesn't use the recommended
+imperative tone (see [0]). Moreover, I think this would be a good case
+for using a Link: tag pointing to the thread[1] of Ben's bisect result.
+Relatedly one could also add a Reported-by tag for Ben, I still fondly
+remember getting a Reported-by mention long before I did my first
+kernel contribution. This stuff is hard to balance with getting fixes
+out there and I still screw up some detail with mails sometimes, but
+we're all learning so wanted to give my 5 cents.
 
-CJ
+Thanks,
+Niklas
 
+[0]
+https://www.kernel.org/doc/html/v4.12/process/submitting-patches.html#descr=
+ibe-your-changes
+[1]
+https://lore.kernel.org/lkml/EmWnO5b-acRH1TXbGnkx41eJw654vmCR-8_xMBaPMwexCn=
+fkvKCdlU5u19CGbaapJ3KRu-l3B-tSUhf8CCQwL0odjo6Cd5YG5lvNeB-vfdg=3D@pm.me/
 
-> +
-> +		if (port->dev->reg_state == NETREG_REGISTERED)
->   			unregister_netdev(port->dev);
-> -			airoha_metadata_dst_free(port);
-> -		}
-> +		airoha_metadata_dst_free(port);
->   	}
->   	free_netdev(eth->napi_dev);
->   	platform_set_drvdata(pdev, NULL);
-> 
-> Regards,
-> Lorenzo
-
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7925/mcu.c
+> index a42b584634ab..fd756f0d18f8 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+> @@ -2183,14 +2183,14 @@ mt7925_mcu_sta_cmd(struct mt76_phy *phy,
+>  			mt7925_mcu_sta_mld_tlv(skb, info->vif, info->link_sta->sta);
+>  			mt7925_mcu_sta_eht_mld_tlv(skb, info->vif, info->link_sta->sta);
+>  		}
+> -
+> -		mt7925_mcu_sta_hdr_trans_tlv(skb, info->vif, info->link_sta);
+>  	}
+> =20
+>  	if (!info->enable) {
+>  		mt7925_mcu_sta_remove_tlv(skb);
+>  		mt76_connac_mcu_add_tlv(skb, STA_REC_MLD_OFF,
+>  					sizeof(struct tlv));
+> +	} else {
+> +		mt7925_mcu_sta_hdr_trans_tlv(skb, info->vif, info->link_sta);
+>  	}
+> =20
+>  	return mt76_mcu_skb_send_msg(dev, skb, info->cmd, true);
 
