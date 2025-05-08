@@ -4,64 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B9DFC3ABC3
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 May 2025 01:21:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5EC0C3ABC9
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 May 2025 05:17:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NTbqGrtRHxN/1ty8pp2w6wKlYDTpgyLhjkAhhWBz/jQ=; b=GmgALHzmcfI3N7VIpH/4QHt32L
-	hJlRKkB/mPUtk0v25nHlychuKURaRa5TXdIac2VTq0qQPSaCzlHdsmykhoqQKOPv6YL3rFUR051mZ
-	RyzZ0NxbdjVWlLkolYUpMWjcX017776blr+H0jira0yj5lkZmBCpg7+23n4zzhgV/va5KfxjiB6fM
-	AXIptyuej6t5Ws3yfO7KUhV4ZJNqNrSIXcAZ8GzWgVSRtt0jXIvOsiMDGgD6yVEZD+S1CxpGlk7v5
-	EWZslVG9GTOxea1c0uAx6ZFLOZ/vJ/ju+e6LCu8kN/wKh+QeKD3GkLa1sVOk1JkFag72PsbatPZqo
-	WE9g5JjQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=eB+nig6p0qQNlwfENUx4jlMxAMgQY3TgotzcJmiZERs=; b=4+B9h0c2Pbza45/YCnZabO3a2P
+	RUXFR5i7fQbLTw90zKCmewODySkn37HpkmcQeCm70ozZ/udjS9hYERhMFXDz30uxlillc8wPYFtHp
+	gUFlccXfjsfeukmr81PeHH9fPfr1GHZbS1Iuad5ZBMc0HHUAjTH8r2FhTE3QszzqYonpWi+d1HEeK
+	0/QohiBIeJiBlE0nJxw9+/8/CjfCw1k5PaiaeBZkoCswlR8MRRXsZk+jeBWQd9vxqYle9gwVwyWIn
+	PWLeMdITzIFKI56AUOj384XSP45S0PHKTl7ZCXjTBedrq5Wz2zbwPecqzrq2YcvCZjyhgLGflS2SX
+	6G06CCWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCpxW-0000000H5at-07TO;
-	Thu, 08 May 2025 01:21:58 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1uCtdi-0000000HM3p-23GQ;
+	Thu, 08 May 2025 05:17:46 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCpvW-0000000H5Vq-1Q5b;
-	Thu, 08 May 2025 01:19:55 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 81BDB5C5910;
-	Thu,  8 May 2025 01:17:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 222C1C4CEE7;
-	Thu,  8 May 2025 01:19:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746667192;
-	bh=Da/4KA4ru5nuN3AHYoUrLBKV4QSb8eSjgs/JqCWTa34=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=P/FsZKNir1ZMqd27mwt0XvV1hBtrfdlJLHbY8U4GbbErbsdUEq0jozYOGa+WvjUih
-	 FxiATpxZUi1eLMISi3bzY3tKVgG1/FZL7lxcq9y+zJ2COrWm8YP/EUXhq5wUlu0I7C
-	 vEht35Kh994jw5NWIaQZp/AAjXrTvKZEkqsCI360aT+rePAhPiWvafaJP+iUVp4t1Y
-	 B0t60PDe8BcWT36hWcrBOz5Z5vvNKSF55TWqYod9Ajr5nyrsSddSz6uy7IzpTh0oUX
-	 OjaDnSoWUpU9CUGbBThiZXYjm71oJ5bRTzEdqWJSq23FvXe4yT4SMrDC97YWtsVbTX
-	 RUtKjn0+N+hrw==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 33BB2380AA70;
-	Thu,  8 May 2025 01:20:32 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1uCtcF-0000000HLoi-0aHQ
+	for linux-mediatek@lists.infradead.org;
+	Thu, 08 May 2025 05:16:16 +0000
+X-UUID: 8d72de882bcb11f08d385d50fb11b32d-20250507
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=eB+nig6p0qQNlwfENUx4jlMxAMgQY3TgotzcJmiZERs=;
+	b=TGD6GepWfYa0hdVt16UwAMOJQvjRnVlxMCsuWhqp0uxNbiXXS3/TXH/gLR26fnhxsS35H2q5dz9zPadusRH+MRwzpBasboycwElStFaG89jZJSqud5ZX2wO3V9L8iFwKmshnJByRD78UjA54JO80VRC6iRUxevmGPL39rnPY3DU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:e09abee0-5f09-4103-9ece-98b5e408ca11,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:f396c8f9-d2be-4f65-b354-0f04e3343627,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 8d72de882bcb11f08d385d50fb11b32d-20250507
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
+	(envelope-from <mingyen.hsieh@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1289384166; Wed, 07 May 2025 22:16:09 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Thu, 8 May 2025 13:16:07 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Thu, 8 May 2025 13:16:07 +0800
+From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
+	<Leon.Yen@mediatek.com>, <Michael.Lo@mediatek.com>,
+	<allan.wang@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
+	<km.lin@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
+	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, Ming Yen Hsieh
+	<mingyen.hsieh@mediatek.com>, <stable@vger.kernel.org>
+Subject: [PATCH] wifi: mt76: mt7925: fix missing hdr_trans_tlv command for broadcast wtbl
+Date: Thu, 8 May 2025 13:16:04 +0800
+Message-ID: <20250508051604.280661-1-mingyen.hsieh@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net v5] net: airoha: Add missing field to ppe_mbox_data
- struct
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <174666723099.2414619.1850276703791840272.git-patchwork-notify@kernel.org>
-Date: Thu, 08 May 2025 01:20:30 +0000
-References: <20250506-airoha-en7581-fix-ppe_mbox_data-v5-1-29cabed6864d@kernel.org>
-In-Reply-To: <20250506-airoha-en7581-fix-ppe_mbox_data-v5-1-29cabed6864d@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, horms@kernel.org,
- jacob.e.keller@intel.com
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250507_181954_433215_D01EAEF8 
-X-CRM114-Status: GOOD (  13.00  )
+X-CRM114-CacheID: sfid-20250507_221615_183154_04A9100C 
+X-CRM114-Status: UNSURE (   9.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,34 +89,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 
-This patch was applied to netdev/net.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+The hdr_trans_tlv function call has been moved inside the conditional block
+to ensure it is executed when info->enable is true.
 
-On Tue, 06 May 2025 18:56:47 +0200 you wrote:
-> The official Airoha EN7581 firmware requires adding max_packet field in
-> ppe_mbox_data struct while the unofficial one used to develop the Airoha
-> EN7581 flowtable support does not require this field.
-> This patch does not introduce any real backwards compatible issue since
-> EN7581 fw is not publicly available in linux-firmware or other
-> repositories (e.g. OpenWrt) yet and the official fw version will use this
-> new layout. For this reason this change needs to be backported.
-> Moreover, make explicit the padding added by the compiler introducing
-> the rsv array in init_info struct.
-> At the same time use u32 instead of int for init_info and set_info
-> struct definitions in ppe_mbox_data struct.
-> 
-> [...]
+Cc: stable@vger.kernel.org
+Fixes: cb1353ef3473 ("wifi: mt76: mt7925: integrate *mlo_sta_cmd and *sta_cmd")
+Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Here is the summary with links:
-  - [net,v5] net: airoha: Add missing field to ppe_mbox_data struct
-    https://git.kernel.org/netdev/net/c/4a7843cc8a41
-
-You are awesome, thank you!
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index a42b584634ab..fd756f0d18f8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -2183,14 +2183,14 @@ mt7925_mcu_sta_cmd(struct mt76_phy *phy,
+ 			mt7925_mcu_sta_mld_tlv(skb, info->vif, info->link_sta->sta);
+ 			mt7925_mcu_sta_eht_mld_tlv(skb, info->vif, info->link_sta->sta);
+ 		}
+-
+-		mt7925_mcu_sta_hdr_trans_tlv(skb, info->vif, info->link_sta);
+ 	}
+ 
+ 	if (!info->enable) {
+ 		mt7925_mcu_sta_remove_tlv(skb);
+ 		mt76_connac_mcu_add_tlv(skb, STA_REC_MLD_OFF,
+ 					sizeof(struct tlv));
++	} else {
++		mt7925_mcu_sta_hdr_trans_tlv(skb, info->vif, info->link_sta);
+ 	}
+ 
+ 	return mt76_mcu_skb_send_msg(dev, skb, info->cmd, true);
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.34.1
 
 
