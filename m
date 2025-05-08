@@ -4,76 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5EC0C3ABC9
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 May 2025 05:17:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33CDCC3ABBE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 May 2025 06:03:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=eB+nig6p0qQNlwfENUx4jlMxAMgQY3TgotzcJmiZERs=; b=4+B9h0c2Pbza45/YCnZabO3a2P
-	RUXFR5i7fQbLTw90zKCmewODySkn37HpkmcQeCm70ozZ/udjS9hYERhMFXDz30uxlillc8wPYFtHp
-	gUFlccXfjsfeukmr81PeHH9fPfr1GHZbS1Iuad5ZBMc0HHUAjTH8r2FhTE3QszzqYonpWi+d1HEeK
-	0/QohiBIeJiBlE0nJxw9+/8/CjfCw1k5PaiaeBZkoCswlR8MRRXsZk+jeBWQd9vxqYle9gwVwyWIn
-	PWLeMdITzIFKI56AUOj384XSP45S0PHKTl7ZCXjTBedrq5Wz2zbwPecqzrq2YcvCZjyhgLGflS2SX
-	6G06CCWQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yp2VPPqQVYukwAWYetB7YiabOpfn/VGHrneqXAdRHN4=; b=2VJO5c92Kk99RZKvC5hgeQu3j4
+	e+ZlqVhHAMBnX9Yftb0uHFw7mzcbL1c8Qd+OWi038udtidUZPWkoz9Z1H58pLAaKMcwO5DJB+BHKD
+	bHtyiW2C0j6OwluiXgWNwWuxHF3sBdWbULjRZzykZKJsBoj9RNuxdVZNjtfCsZdL/1LbGeFPCxWWT
+	oHP9cmPcZ3LjEiOWNjlRoZ3BY81wKwQJQT3oxeEAimad/yI3o0md92s8Q+ahSDqkmSCOuecegyc5Y
+	Stj0p9OjAnMnWxCC8NRxC1kMCleixNIrvPs0bt5qzQiN1Pb6L1VG96BaebZW7QpT4LYP54bKYkmjo
+	FetjDcoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCtdi-0000000HM3p-23GQ;
-	Thu, 08 May 2025 05:17:46 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1uCuLv-0000000HQF2-16je;
+	Thu, 08 May 2025 06:03:27 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCtcF-0000000HLoi-0aHQ
-	for linux-mediatek@lists.infradead.org;
-	Thu, 08 May 2025 05:16:16 +0000
-X-UUID: 8d72de882bcb11f08d385d50fb11b32d-20250507
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=eB+nig6p0qQNlwfENUx4jlMxAMgQY3TgotzcJmiZERs=;
-	b=TGD6GepWfYa0hdVt16UwAMOJQvjRnVlxMCsuWhqp0uxNbiXXS3/TXH/gLR26fnhxsS35H2q5dz9zPadusRH+MRwzpBasboycwElStFaG89jZJSqud5ZX2wO3V9L8iFwKmshnJByRD78UjA54JO80VRC6iRUxevmGPL39rnPY3DU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:e09abee0-5f09-4103-9ece-98b5e408ca11,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:0ef645f,CLOUDID:f396c8f9-d2be-4f65-b354-0f04e3343627,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 8d72de882bcb11f08d385d50fb11b32d-20250507
-Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
-	(envelope-from <mingyen.hsieh@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1289384166; Wed, 07 May 2025 22:16:09 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Thu, 8 May 2025 13:16:07 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Thu, 8 May 2025 13:16:07 +0800
-From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
-	<Leon.Yen@mediatek.com>, <Michael.Lo@mediatek.com>,
-	<allan.wang@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
-	<km.lin@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
-	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Ming Yen Hsieh
-	<mingyen.hsieh@mediatek.com>, <stable@vger.kernel.org>
-Subject: [PATCH] wifi: mt76: mt7925: fix missing hdr_trans_tlv command for broadcast wtbl
-Date: Thu, 8 May 2025 13:16:04 +0800
-Message-ID: <20250508051604.280661-1-mingyen.hsieh@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1uCuJw-0000000HQ8D-2sbr;
+	Thu, 08 May 2025 06:01:25 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 8967EA4D8C9;
+	Thu,  8 May 2025 06:01:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E42E0C4CEEB;
+	Thu,  8 May 2025 06:01:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1746684083;
+	bh=yp2VPPqQVYukwAWYetB7YiabOpfn/VGHrneqXAdRHN4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=tIu4DJEw/UkLqGIVrC75kaJFTLViAvSzFiesuQsPHNnThP5bWO1OngxGen1svIsCw
+	 PbgPtFNRaoKpv7zS1ENqvqoR+2/XQ4DaJ/GYklbmSw2BmNNRhlP6IJn4ZmhFC03qK0
+	 JeeBV4WNmN6XD4cV5+dm5p9wUzMFONTsTgx4PZ91cERrirxTfl8oDjH0okTiF1XAkS
+	 sX23epz4d67WciZpW6KCC3EtE4ByfEd5vDp9KwDHQo8WuDuQbh8Uy1voTOnWQUuWu/
+	 /aP/HnOBU8yxLU7vC/HFWzmoZe4fFapbL9d83UEnovEsjhFGY+OyAn+x2JhAecOZfC
+	 TdAuvWNiLsPAw==
+Message-ID: <79148223-d87f-486e-9d51-979f9188a837@kernel.org>
+Date: Thu, 8 May 2025 08:01:16 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/4] dt-bindings: mfd: mediatek: mt6397: Add
+ #sound-dai-cells property
+To: Julien Massot <julien.massot@collabora.com>, kernel@collabora.com,
+ Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Hui Liu <hui.liu@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
+ Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>, Tinghan Shen <tinghan.shen@mediatek.com>
+Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, iommu@lists.linux.dev
+References: <20250505-mt8395-dtb-errors-v1-0-9c4714dcdcdb@collabora.com>
+ <20250505-mt8395-dtb-errors-v1-1-9c4714dcdcdb@collabora.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <20250505-mt8395-dtb-errors-v1-1-9c4714dcdcdb@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250507_221615_183154_04A9100C 
-X-CRM114-Status: UNSURE (   9.56  )
+X-CRM114-CacheID: sfid-20250507_230124_860869_EA80D13D 
+X-CRM114-Status: UNSURE (   7.36  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -89,40 +129,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+On 05/05/2025 15:23, Julien Massot wrote:
+> The 'mt6359.dtsi' file already uses the '#sound-dai-cells' property.
+> Add the corresponding property to the binding to fix the following
+> dtb-check error:
+If this is a DAI, then you miss dai-common reference. If not, you need
+to explain it in commit msg.
 
-The hdr_trans_tlv function call has been moved inside the conditional block
-to ensure it is executed when info->enable is true.
-
-Cc: stable@vger.kernel.org
-Fixes: cb1353ef3473 ("wifi: mt76: mt7925: integrate *mlo_sta_cmd and *sta_cmd")
-Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index a42b584634ab..fd756f0d18f8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -2183,14 +2183,14 @@ mt7925_mcu_sta_cmd(struct mt76_phy *phy,
- 			mt7925_mcu_sta_mld_tlv(skb, info->vif, info->link_sta->sta);
- 			mt7925_mcu_sta_eht_mld_tlv(skb, info->vif, info->link_sta->sta);
- 		}
--
--		mt7925_mcu_sta_hdr_trans_tlv(skb, info->vif, info->link_sta);
- 	}
- 
- 	if (!info->enable) {
- 		mt7925_mcu_sta_remove_tlv(skb);
- 		mt76_connac_mcu_add_tlv(skb, STA_REC_MLD_OFF,
- 					sizeof(struct tlv));
-+	} else {
-+		mt7925_mcu_sta_hdr_trans_tlv(skb, info->vif, info->link_sta);
- 	}
- 
- 	return mt76_mcu_skb_send_msg(dev, skb, info->cmd, true);
--- 
-2.34.1
-
+Best regards,
+Krzysztof
 
