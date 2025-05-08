@@ -4,67 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90AE9C3ABBE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 May 2025 15:07:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50162C3ABC0
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 May 2025 15:28:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fpp/CpJ6xlI15L8sPW0Jp6SE3VDWw42deKh4JBWQdx8=; b=VR9iq5oKZcRZf4Dg0ZvAFlOEZ0
-	q5dSa2Awj3PYwJSpy0QUJ0qWv8iAM8M92OZplgdCqacMdGcUKQZ9V5oDuApA6YgY9tCvy4ijtOZ4B
-	g5jvAQDlEAFcs8IQU4v17nYhbuLzPclZtz0y0jp01yViIK6xG6g20jhMhE1Fwbu/0LMgzTVIITC4/
-	z3ThqhXFoLt6zCXXT3wZjHBevqhvtb8xVUPgVbch83fTS/oWN9DcHh5hL1Snw8saywftvNLBFlsbi
-	+FfEpSdn+ITm6W+EIIYE5aUwG28Qvx+EJDf6Cu0/lo5s2Npv3z5/gIIs9HhGh05rdg5DSVU5zNDhg
-	N/SfT6Pg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0Drowwhz676AU4fo5WHa7IssF83cJ85LmVhU3lcAd78=; b=Z9OjOxn7Ks3GcDFV0P9AH2cMGw
+	r11FFkdsYVUFGRwYz+lWsuaHpEmtMtWE+H1dYdTFijiuYeat2yMqQlYIAeXq2nWFM/yTcjtwVjZ0T
+	bNEfBkSQqNJXNxCm9OeFihC5B2o53tnPo+BzvCQoucknEREjVisiw2gmm6HhYfMl65Tx/LFhB9Y59
+	i7zWEZrQIG5slcR0bsYbeFUOZ8o/i0ec3S2zJoDcsO9B2RbKfrohkh9/ZUmLPqCvywKSNkaZp5AqZ
+	2JjlEgU2kZRPd5youMB51M0fYB2km5lTJ5iqdOpZ+i4raY5n9KF7KsMMF1FsVIbUbyD8zeC0/HsKq
+	d/r2H43g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uD2qn-000000013Z1-1Qox;
-	Thu, 08 May 2025 15:07:53 +0000
-Received: from smtp-29.smtpout.orange.fr ([80.12.242.29] helo=smtp.smtpout.orange.fr)
+	id 1uD3Ae-000000018P1-1NkV;
+	Thu, 08 May 2025 15:28:24 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uD2GM-00000000vUz-3FNr;
-	Thu, 08 May 2025 14:30:16 +0000
-Received: from [192.168.1.37] ([90.11.132.44])
-	by smtp.orange.fr with ESMTPA
-	id D2GEu1z1amoFgD2GEuuBtk; Thu, 08 May 2025 16:30:09 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
-	s=t20230301; t=1746714609;
-	bh=fpp/CpJ6xlI15L8sPW0Jp6SE3VDWw42deKh4JBWQdx8=;
-	h=Message-ID:Date:MIME-Version:Subject:To:From;
-	b=ZrcfFu5n7ZtmYSlFZkMdnsjEPhPDs77wpnjGP7l88XTgLs32YS81aR066EKU2zYhO
-	 nhpTCjZVPyeBmfB4Dl7G8oJ6RswNwQ+6JzetDGryhhKJL3ZfXCPbwO0cnq/3WomdB/
-	 oyZvnMRcojkxdYNtP7zxK14K6jzuGt0xT9Zbl9V59KcrHOmhwzmgs88l+1H2A2vShD
-	 Pi5SYj0VROdx/jM4W2Q+vuG91v5tuNzutrWDAdwMSxV/C8UPvHWvNCx7UaQ9TMARAh
-	 ar8NILkN5znUdVFQ0NG4bqQwzcMY++KF8muR1A7jxDYG/z3MnEJo7VlNwUn6BRONLF
-	 0K8ggDkF+A5Dw==
-X-ME-Helo: [192.168.1.37]
-X-ME-Auth: bWFyaW9uLmphaWxsZXRAd2FuYWRvby5mcg==
-X-ME-Date: Thu, 08 May 2025 16:30:09 +0200
-X-ME-IP: 90.11.132.44
-Message-ID: <f7386884-cf6f-451a-aa39-6ce26ca22832@wanadoo.fr>
-Date: Thu, 8 May 2025 16:30:06 +0200
+	id 1uD2YR-00000000zaj-3y6c;
+	Thu, 08 May 2025 14:48:58 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 3EA7BA4DED9;
+	Thu,  8 May 2025 14:48:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EA04BC4CEE7;
+	Thu,  8 May 2025 14:48:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1746715734;
+	bh=0Drowwhz676AU4fo5WHa7IssF83cJ85LmVhU3lcAd78=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=EHKA3SDnK2Nsa+9kO+2+ccSSrr83mCjYDv5m3fQw2npddWiC6YUJDZ1On1b79OGMo
+	 nVZCWcwHNO88htlv7HDMlDuNudj/iQD9HZzSfFauEEc+ixQtE3jlKczr1+UfBDuAbi
+	 ELzqbfkphJ73EfLc6AshZCJaEFee7JO9PItQGXeEuvhAi85+niAl0cGYUkYZni0AUH
+	 AsplfopCzi+GkKhlf6JCrwrMTNZNseBTcDPwnKht6u5p6ivdOVJBm/aWGoFrIqPM6G
+	 uBO8c0r3cNnpQ04G4adKFW+tzvd2VI8HF+uWL/JRaB/FMgUk9Vtmv7Aw0kjz2oGCVb
+	 3ciLI0hsBjH8A==
+Date: Thu, 8 May 2025 15:48:49 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Sirius Wang <sirius.wang@mediatek.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Jiri Slaby <jirislaby@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, wenst@chromium.org,
+	xavier.chang@mediatek.com
+Subject: Re: [PATCH v2 2/3] dt-bindings: serial: mediatek,uart: Add
+ compatible for MT8189
+Message-ID: <20250508-kisser-kiln-647bbdeb7e29@spud>
+References: <20250508063546.289115-1-sirius.wang@mediatek.com>
+ <20250508063546.289115-3-sirius.wang@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] net: airoha: Fix an error handling path in airoha_probe()
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org
-References: <f4a420f3a8b4a6fe72798f9774ec9aff2291522d.1744977434.git.christophe.jaillet@wanadoo.fr>
- <aAJFgqrOFL_xAqtW@lore-desk>
-Content-Language: en-US, fr-FR
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-In-Reply-To: <aAJFgqrOFL_xAqtW@lore-desk>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="WfsJMtbABQGTO6qR"
+Content-Disposition: inline
+In-Reply-To: <20250508063546.289115-3-sirius.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250508_073015_218954_C28414C7 
-X-CRM114-Status: GOOD (  16.75  )
+X-CRM114-CacheID: sfid-20250508_074856_051265_A202BDE9 
+X-CRM114-Status: UNSURE (   8.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,69 +83,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le 18/04/2025 à 14:28, Lorenzo Bianconi a écrit :
->> If an error occurs after a successful airoha_hw_init() call,
->> airoha_ppe_deinit() needs to be called as already done in the remove
->> function.
->>
->> Fixes: 00a7678310fe ("net: airoha: Introduce flowtable offload support")
->> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
->> ---
->> Compile tested-only
->> ---
->>   drivers/net/ethernet/airoha/airoha_eth.c | 2 ++
->>   1 file changed, 2 insertions(+)
->>
->> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
->> index 69e523dd4186..252b32ceb064 100644
->> --- a/drivers/net/ethernet/airoha/airoha_eth.c
->> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
->> @@ -2631,6 +2631,8 @@ static int airoha_probe(struct platform_device *pdev)
->>   		}
->>   	}
->>   	free_netdev(eth->napi_dev);
->> +
->> +	airoha_ppe_deinit(eth);
->>   	platform_set_drvdata(pdev, NULL);
->>   
->>   	return err;
->> -- 
->> 2.49.0
->>
-> 
-> Hi Christophe,
-> 
-> I agree we are missing a airoha_ppe_deinit() call in the probe error path,
-> but we should move it above after stopping the NAPI since if airoha_hw_init()
-> fails we will undo the work done by airoha_ppe_init(). Something like:
 
-Agreed.
+--WfsJMtbABQGTO6qR
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-I'll send a v2 with as a small series, because of another leak I found 
-while looking at it.
+On Thu, May 08, 2025 at 02:35:41PM +0800, Sirius Wang wrote:
+> Add compatible string for serial on MT8189 SoC.
+>=20
+> Signed-off-by: Sirius Wang <sirius.wang@mediatek.com>
 
-And while at it, I'll propose a few clean-ups.
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
-CJ
+--WfsJMtbABQGTO6qR
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
 
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-> index 16c7896f931f..37d9678798d1 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> @@ -2959,6 +2959,7 @@ static int airoha_probe(struct platform_device *pdev)
->   error_napi_stop:
->   	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
->   		airoha_qdma_stop_napi(&eth->qdma[i]);
-> +	airoha_ppe_init(eth);
->   error_hw_cleanup:
->   	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
->   		airoha_hw_cleanup(&eth->qdma[i]);
-> 
-> 
-> Agree?
-> 
-> Regards,
-> Lorenzo
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaBzEUQAKCRB4tDGHoIJi
+0nd7APkB6knx0CdiMImQ9VIt/mR5kLfe5LYFeudFrOjNwFttrgD9HNC9zC6M2rIX
+AFFQ94oDHrxCJyRP5Yqjbq9t5zq6uwI=
+=wdAJ
+-----END PGP SIGNATURE-----
 
+--WfsJMtbABQGTO6qR--
 
