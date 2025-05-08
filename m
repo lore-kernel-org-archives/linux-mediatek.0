@@ -4,65 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3956AC3ABBE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 May 2025 08:08:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9892C3ABC0
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 May 2025 08:17:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S3egj3xil5t+2kEU59ZiuZ3tI+1HrouwDHvplqD1veg=; b=lfPDS6ByVy6LKhPWzOPTDvqZKs
-	pG67MFKTW5E3uHxOqAyzxo/Yj/8ESkHrAa4t4Xhjk7ICuqLmsfCy5gUUiAcjLF/YML9x0zU2rF60s
-	4KTmibi3gTB3fTPJjEW2SWFvzKIoL+cYojv4hxuIUD2wm8qykzRWmuW9EKdpPQfbv/6E7wpJMmKw6
-	NXlOmNE+9I1DTNCVEe43fYMNtrMK2tDrRWkAICKZ4g2SkdeFm9kLBsu6xxhLytbw0AyMoJm1sZ1ZA
-	OzJlSBHT4JsPKhwBdmZjN8Uxc2uOMh+nfknGQL1oF+TajomOEaqNTF2/pg/PEt2pegH1pWxBn+3pD
-	ikDjJxJA==;
+	bh=Ek8ryArvLht1H0s+GkPPkPDbrTb+X9AKGebgU1XLmxo=; b=BgEJiVhcnnj2bdoz+cuBm7e44w
+	FCBI78GVVHTTSK2K3NmuWS010hq+uIUcclZkSlBhkrT3pimtIamLQeMSn2bgN1CO9irux9GdGCs6E
+	ts1iZbxOqzQTTgQVJFhTStREyZGKA0jevfDT2fVDGbFe9S6spDcSn8L6+26TdHdmWTUdDnOtmbcep
+	2DxgaZeq8kAJ5fn98fecotAmEGW5yrSocJxFveiQT+nPK5bD/72jg+A5oZhigJIYW4uBPxqkNl/MM
+	ogKyZy6mN2eDruXYCH9/SwiWHOzT512OgYokwN894TA5GTUWFAkcL896gu4H/LGUkyPfPwanTALrb
+	2VsYQX3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCwIl-000000004Cj-0uiX;
-	Thu, 08 May 2025 08:08:19 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uCwRr-0000000059L-3bvb;
+	Thu, 08 May 2025 08:17:43 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCwGm-000000003xN-33Xr;
-	Thu, 08 May 2025 08:06:18 +0000
+	id 1uCwPs-000000004pM-0yhz;
+	Thu, 08 May 2025 08:15:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1746691574;
-	bh=ZPSaHnlBmfL989bwMg4ZlSVegQ7uQgB+oa4cG3z5HbU=;
+	s=mail; t=1746692138;
+	bh=lidTZ6yjuirDe4XS/TIVOyFXAWFcpUtoazDqf8uMVKU=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=YCwYQMd9nunF9QpMZjc5MxjW95bgBcb85rbW9F+aY0V8MAL5G7M00D9HhSElzI9T8
-	 hCskk2oIqljr9N61RBRuzKStTv+ojjhGKPT1l0n+HX86ITnD7qreGM/Afvb3sU9DsX
-	 rpF0b3j/jt4jnQST4oOZbWBJuWnLpGM5HOsTSwinSqVGXi5S0kj3d0ykEcyIznorp5
-	 psS8qjwj9456qzway+841+MvwYKPi8AbKqYZagO4QYrc5PYMgj7/IDtIjEWNwOyVfn
-	 1vCm7JWZ9vSPP+qfmU30g0f+x/ER17M2aklGCy3ZAlxsp2DtR7qCryUQzzwBmaXRi5
-	 Bi4+hTskYK3Ww==
+	b=OAM0Dqog6E3cB9oB1/2eFKJkqWDJCs2Vhv5NTciopLc5Obf6y1oaVnp4Wx8IpRfYu
+	 nymrwM37KVZnLNNu6ytXViKnRlvpbAp5GpsuGlR9azu5+b9AwLfWDyB/oNC0FpjanF
+	 P4T+dnHQV8aLra6Q2Rti7sQqXF4z/RQYMIHrxal6VLJ/pU2Jnh1JFMyRafz+xgHBNZ
+	 /oRH0f60y6QsmcxLmxt/PrqREJOjv3Pe7WMYg/4SVd5M65uEsUOoikgs3KN+S2mPEU
+	 At2mJqucAk77LrIohY4BrNuaqs4vqbQBf5+ospreTpgjpXc9nPc/m0Z/q9lzeg31j8
+	 j0yaFtYL8qcJA==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2A34A17E0C0A;
-	Thu,  8 May 2025 10:06:14 +0200 (CEST)
-Message-ID: <fede9d2d-6225-4760-8920-c5963665ca1e@collabora.com>
-Date: Thu, 8 May 2025 10:06:13 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6D82417E0E8E;
+	Thu,  8 May 2025 10:15:37 +0200 (CEST)
+Message-ID: <7abf1685-0dee-4ef4-8e8c-bc01509ed3e3@collabora.com>
+Date: Thu, 8 May 2025 10:15:36 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] dmaengine: mediatek: Fix a possible deadlock error in
- mtk_cqdma_tx_status()
-To: Qiu-ji Chen <chenqiuji666@gmail.com>, sean.wang@mediatek.com,
- vkoul@kernel.org, matthias.bgg@gmail.com
-Cc: dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- baijiaju1990@gmail.com, stable@vger.kernel.org
-References: <20250508073634.3719-1-chenqiuji666@gmail.com>
+Subject: Re: [PATCH v2 3/3] arm64: dts: mt8189: Add mt8189 dts evaluation
+ board and Mafefile
+To: Sirius Wang <sirius.wang@mediatek.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Jiri Slaby <jirislaby@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, wenst@chromium.org,
+ xavier.chang@mediatek.com
+References: <20250508063546.289115-1-sirius.wang@mediatek.com>
+ <20250508063546.289115-4-sirius.wang@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250508073634.3719-1-chenqiuji666@gmail.com>
+In-Reply-To: <20250508063546.289115-4-sirius.wang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250508_010616_920068_B5B41A00 
-X-CRM114-Status: GOOD (  11.40  )
+X-CRM114-CacheID: sfid-20250508_011540_631230_073E2614 
+X-CRM114-Status: GOOD (  16.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,34 +82,513 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/05/25 09:36, Qiu-ji Chen ha scritto:
-> Fix a potential deadlock bug. Observe that in the mtk-cqdma.c
-> file, functions like mtk_cqdma_issue_pending() and
-> mtk_cqdma_free_active_desc() properly acquire the pc lock before the vc
-> lock when handling pc and vc fields. However, mtk_cqdma_tx_status()
-> violates this order by first acquiring the vc lock before invoking
-> mtk_cqdma_find_active_desc(), which subsequently takes the pc lock. This
-> reversed locking sequence (vc → pc) contradicts the established
-> pc → vc order and creates deadlock risks.
+Il 08/05/25 08:35, Sirius Wang ha scritto:
+> Add mt8189 dts evaluation board and Mafefile
 > 
-> Fix the issue by moving the vc lock acquisition code from
-> mtk_cqdma_find_active_desc() to mtk_cqdma_tx_status(). Ensure the pc lock
-> is acquired before the vc lock in the calling function to maintain correct
-> locking hierarchy. Note that since mtk_cqdma_find_active_desc() is a
-> static function with only one caller (mtk_cqdma_tx_status()), this
-> modification safely eliminates the deadlock possibility without affecting
-> other components.
+> Signed-off-by: Sirius Wang <sirius.wang@mediatek.com>
+> ---
+>   arch/arm64/boot/dts/mediatek/Makefile       |   1 +
+>   arch/arm64/boot/dts/mediatek/mt8189-evb.dts |  20 +
+>   arch/arm64/boot/dts/mediatek/mt8189.dtsi    | 430 ++++++++++++++++++++
+>   3 files changed, 451 insertions(+)
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8189-evb.dts
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8189.dtsi
 > 
-> This possible bug is found by an experimental static analysis tool
-> developed by our team. This tool analyzes the locking APIs to extract
-> function pairs that can be concurrently executed, and then analyzes the
-> instructions in the paired functions to identify possible concurrency bugs
-> including deadlocks, data races and atomicity violations.
-> 
-> Fixes: b1f01e48df5a ("dmaengine: mediatek: Add MediaTek Command-Queue DMA controller for MT6765 SoC")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Qiu-ji Chen <chenqiuji666@gmail.com>
+> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+> index 3aa06476c6c0..ad2ac9e1bb79 100644
+> --- a/arch/arm64/boot/dts/mediatek/Makefile
+> +++ b/arch/arm64/boot/dts/mediatek/Makefile
+> @@ -87,6 +87,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8188-geralt-ciri-sku4.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8188-geralt-ciri-sku5.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8188-geralt-ciri-sku6.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8188-geralt-ciri-sku7.dtb
+> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8189-evb.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-asurada-hayato-r1.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-asurada-spherion-r0.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-evb.dtb
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8189-evb.dts b/arch/arm64/boot/dts/mediatek/mt8189-evb.dts
+> new file mode 100644
+> index 000000000000..e5d9ce1b8e61
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt8189-evb.dts
+> @@ -0,0 +1,20 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright (C) 2025 MediaTek Inc.
+> + * Author: Sirius Wang <sirius.wang@mediatek.com>
+> + */
+> +/dts-v1/;
+> +#include "mt8189.dtsi"
+> +
+> +/ {
+> +	model = "MediaTek MT8189 evaluation board";
+> +	compatible = "mediatek,mt8189-evb", "mediatek,mt8189";
+> +
+> +	chosen: chosen {
+> +		stdout-path = "serial0:115200n8";
+> +	};
+> +};
+> +
+> +&uart0 {
+> +	status = "okay";
+> +};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8189.dtsi b/arch/arm64/boot/dts/mediatek/mt8189.dtsi
+> new file mode 100644
+> index 000000000000..50c7a3811e0f
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt8189.dtsi
+> @@ -0,0 +1,430 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright (c) 2025 MediaTek Inc.
+> + */
+> +
+> +#include <dt-bindings/interrupt-controller/arm-gic.h>
+> +#include <dt-bindings/interrupt-controller/irq.h>
+> +
+> +/ {
+> +	compatible = "mediatek,mt8189";
+> +	interrupt-parent = <&gic>;
+> +	#address-cells = <2>;
+> +	#size-cells = <2>;
+> +
+> +	aliases {
+> +		serial0 = &uart0;
+> +	};
+> +
+> +	clk32k: oscillator-clk32k {
+> +		compatible = "fixed-clock";
+> +		#clock-cells = <0>;
+> +		clock-frequency = <32000>;
+> +		clock-output-names = "clk32k";
+> +	};
+> +
+> +	clk13m: oscillator-clk13m {
+> +		compatible = "fixed-factor-clock";
+> +		#clock-cells = <0>;
+> +		clocks = <&clk26m>;
+> +		clock-mult = <1>;
+> +		clock-div = <2>;
+> +		clock-output-names = "clk13m";
+> +	};
+> +
+> +	clk26m: oscillator-clk26m {
+> +		compatible = "fixed-clock";
+> +		#clock-cells = <0>;
+> +		clock-frequency = <26000000>;
+> +		clock-output-names = "clk26m";
+> +	};
+> +
+> +	clk104m: oscillator-clk104m {
+> +		compatible = "fixed-factor-clock";
+> +		#clock-cells = <0>;
+> +		clocks = <&clk26m>;
+> +		clock-mult = <4>;
+> +		clock-div = <1>;
+> +		clock-output-names = "clk104m";
+> +	};
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+ulposc and ulposc3 go here.
+
+> +
+> +	cpus {
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +
+> +		cpu0: cpu@0 {
+> +			device_type = "cpu";
+> +			compatible = "arm,cortex-a55";
+> +			reg = <0x000>;
+> +			enable-method = "psci";
+> +			clock-frequency = <2000000000>;
+> +			capacity-dmips-mhz = <742>;
+> +			cpu-idle-states = <&cpu_off_l>, <&cpu_cluster_off_l>, <&cpu_mcusys_off_l>,
+> +					  <&cpu_system_vcore>, <&cpu_s2idle>;
+> +			i-cache-size = <32768>;
+> +			i-cache-line-size = <64>;
+> +			i-cache-sets = <128>;
+> +			d-cache-size = <32768>;
+> +			d-cache-line-size = <64>;
+> +			d-cache-sets = <128>;
+> +			next-level-cache = <&l2_0>;
+> +			performance-domains = <&performance 0>;
+> +			#cooling-cells = <2>;
+> +		};
+> +
+> +		cpu1: cpu@100 {
+> +			device_type = "cpu";
+> +			compatible = "arm,cortex-a55";
+> +			reg = <0x100>;
+> +			enable-method = "psci";
+> +			clock-frequency = <2000000000>;
+> +			capacity-dmips-mhz = <742>;
+> +			cpu-idle-states = <&cpu_off_l>, <&cpu_cluster_off_l>, <&cpu_mcusys_off_l>,
+> +					  <&cpu_system_vcore>, <&cpu_s2idle>;
+> +			i-cache-size = <32768>;
+> +			i-cache-line-size = <64>;
+> +			i-cache-sets = <128>;
+> +			d-cache-size = <32768>;
+> +			d-cache-line-size = <64>;
+> +			d-cache-sets = <128>;
+> +			next-level-cache = <&l2_0>;
+> +			performance-domains = <&performance 0>;
+> +			#cooling-cells = <2>;
+> +		};
+> +
+> +		cpu2: cpu@200 {
+> +			device_type = "cpu";
+> +			compatible = "arm,cortex-a55";
+> +			reg = <0x200>;
+> +			enable-method = "psci";
+> +			clock-frequency = <2000000000>;
+> +			capacity-dmips-mhz = <742>;
+> +			cpu-idle-states = <&cpu_off_l>, <&cpu_cluster_off_l>, <&cpu_mcusys_off_l>,
+> +					  <&cpu_system_vcore>, <&cpu_s2idle>;
+> +			i-cache-size = <32768>;
+> +			i-cache-line-size = <64>;
+> +			i-cache-sets = <128>;
+> +			d-cache-size = <32768>;
+> +			d-cache-line-size = <64>;
+> +			d-cache-sets = <128>;
+> +			next-level-cache = <&l2_0>;
+> +			performance-domains = <&performance 0>;
+> +			#cooling-cells = <2>;
+> +		};
+> +
+> +		cpu3: cpu@300 {
+> +			device_type = "cpu";
+> +			compatible = "arm,cortex-a55";
+> +			reg = <0x300>;
+> +			enable-method = "psci";
+> +			clock-frequency = <2000000000>;
+> +			capacity-dmips-mhz = <742>;
+> +			cpu-idle-states = <&cpu_off_l>, <&cpu_cluster_off_l>, <&cpu_mcusys_off_l>,
+> +					  <&cpu_system_vcore>, <&cpu_s2idle>;
+> +			i-cache-size = <32768>;
+> +			i-cache-line-size = <64>;
+> +			i-cache-sets = <128>;
+> +			d-cache-size = <32768>;
+> +			d-cache-line-size = <64>;
+> +			d-cache-sets = <128>;
+> +			next-level-cache = <&l2_0>;
+> +			performance-domains = <&performance 0>;
+> +			#cooling-cells = <2>;
+> +		};
+> +
+> +		cpu4: cpu@400 {
+> +			device_type = "cpu";
+> +			compatible = "arm,cortex-a55";
+> +			reg = <0x400>;
+> +			enable-method = "psci";
+> +			clock-frequency = <2000000000>;
+> +			capacity-dmips-mhz = <742>;
+> +			cpu-idle-states = <&cpu_off_l>, <&cpu_cluster_off_l>, <&cpu_mcusys_off_l>,
+> +					  <&cpu_system_vcore>, <&cpu_s2idle>;
+> +			i-cache-size = <32768>;
+> +			i-cache-line-size = <64>;
+> +			i-cache-sets = <128>;
+> +			d-cache-size = <32768>;
+> +			d-cache-line-size = <64>;
+> +			d-cache-sets = <128>;
+> +			next-level-cache = <&l2_0>;
+> +			performance-domains = <&performance 0>;
+> +			#cooling-cells = <2>;
+> +		};
+> +
+> +		cpu5: cpu@500 {
+> +			device_type = "cpu";
+> +			compatible = "arm,cortex-a55";
+> +			reg = <0x500>;
+> +			enable-method = "psci";
+> +			clock-frequency = <2000000000>;
+> +			capacity-dmips-mhz = <742>;
+> +			cpu-idle-states = <&cpu_off_l>, <&cpu_cluster_off_l>, <&cpu_mcusys_off_l>,
+> +					  <&cpu_system_vcore>, <&cpu_s2idle>;
+> +			i-cache-size = <32768>;
+> +			i-cache-line-size = <64>;
+> +			i-cache-sets = <128>;
+> +			d-cache-size = <32768>;
+> +			d-cache-line-size = <64>;
+> +			d-cache-sets = <128>;
+> +			next-level-cache = <&l2_0>;
+> +			performance-domains = <&performance 0>;
+> +			#cooling-cells = <2>;
+> +		};
+> +
+> +		cpu6: cpu@600 {
+> +			device_type = "cpu";
+> +			compatible = "arm,cortex-a78";
+> +			reg = <0x600>;
+> +			enable-method = "psci";
+> +			clock-frequency = <3000000000>;
+> +			capacity-dmips-mhz = <958>;
+> +			cpu-idle-states = <&cpu_off_m>, <&cpu_cluster_off_m>, <&cpu_mcusys_off_m>,
+> +					  <&cpu_system_vcore>, <&cpu_s2idle>;
+> +			i-cache-size = <65536>;
+> +			i-cache-line-size = <64>;
+> +			i-cache-sets = <256>;
+> +			d-cache-size = <65536>;
+> +			d-cache-line-size = <64>;
+> +			d-cache-sets = <256>;
+> +			next-level-cache = <&l2_1>;
+> +			performance-domains = <&performance 1>;
+> +			#cooling-cells = <2>;
+> +		};
+> +
+> +		cpu7: cpu@700 {
+> +			device_type = "cpu";
+> +			compatible = "arm,cortex-a78";
+> +			reg = <0x700>;
+> +			enable-method = "psci";
+> +			clock-frequency = <3000000000>;
+> +			capacity-dmips-mhz = <958>;
+> +			cpu-idle-states = <&cpu_off_m>, <&cpu_cluster_off_m>, <&cpu_mcusys_off_m>,
+> +					  <&cpu_system_vcore>, <&cpu_s2idle>;
+> +			i-cache-size = <65536>;
+> +			i-cache-line-size = <64>;
+> +			i-cache-sets = <256>;
+> +			d-cache-size = <65536>;
+> +			d-cache-line-size = <64>;
+> +			d-cache-sets = <256>;
+> +			next-level-cache = <&l2_1>;
+> +			performance-domains = <&performance 1>;
+> +			#cooling-cells = <2>;
+> +		};
+> +
+> +		cpu-map {
+> +			cluster0 {
+> +				core0 {
+> +					cpu = <&cpu0>;
+> +				};
+> +				core1 {
+> +					cpu = <&cpu1>;
+> +				};
+> +				core2 {
+> +					cpu = <&cpu2>;
+> +				};
+> +				core3 {
+> +					cpu = <&cpu3>;
+> +				};
+> +				core4 {
+> +					cpu = <&cpu4>;
+> +				};
+> +				core5 {
+> +					cpu = <&cpu5>;
+> +				};
+> +			};
+> +
+> +			cluster1 {
+
+Is this really an old-style dual cluster SoC, or is this ARM DynamIQ?
+
+If this is the latter (and I believe it is), this SoC features a "single, fully
+integrated cluster".
+
+
+> +				core0 {
+> +					cpu = <&cpu6>;
+> +				};
+> +				core1 {
+> +					cpu = <&cpu7>;
+> +				};
+> +			};
+> +		};
+> +
+> +		idle-states {
+> +			entry-method = "psci";
+> +
+> +			cpu_off_l: cpu-off-l {
+> +				compatible = "arm,idle-state";
+> +				arm,psci-suspend-param = <0x00010000>;
+> +				local-timer-stop;
+> +				entry-latency-us = <97>;
+> +				exit-latency-us = <252>;
+> +				min-residency-us = <6710>;
+> +			};
+> +
+> +			cpu_off_m: cpu-off-m {
+
+what does "m" stand for?
+
+should this be cpu-off-b (where b==big and l==little) instead?
+
+> +				compatible = "arm,idle-state";
+> +				arm,psci-suspend-param = <0x00010000>;
+> +				local-timer-stop;
+> +				entry-latency-us = <53>;
+> +				exit-latency-us = <143>;
+> +				min-residency-us = <2120>;
+> +			};
+> +
+> +			cpu_cluster_off_l: cpu-cluster-off-l {
+> +				compatible = "arm,idle-state";
+> +				arm,psci-suspend-param = <0x01010001>;
+> +				local-timer-stop;
+> +				entry-latency-us = <109>;
+> +				exit-latency-us = <325>;
+> +				min-residency-us = <6710>;
+> +			};
+> +
+> +			cpu_cluster_off_m: cpu-cluster-off-m {
+> +				compatible = "arm,idle-state";
+> +				arm,psci-suspend-param = <0x01010001>;
+> +				local-timer-stop;
+> +				entry-latency-us = <59>;
+> +				exit-latency-us = <188>;
+> +				min-residency-us = <2120>;
+> +			};
+> +
+> +			cpu_mcusys_off_l: cpu-mcusys-off-l {
+> +				compatible = "arm,idle-state";
+> +				arm,psci-suspend-param = <0x02010007>;
+> +				local-timer-stop;
+> +				entry-latency-us = <1357>;
+> +				exit-latency-us = <835>;
+> +				min-residency-us = <6710>;
+> +			};
+> +
+> +			cpu_mcusys_off_m: cpu-mcusys-off-m {
+> +				compatible = "arm,idle-state";
+> +				arm,psci-suspend-param = <0x02010007>;
+> +				local-timer-stop;
+> +				entry-latency-us = <1202>;
+> +				exit-latency-us = <679>;
+> +				min-residency-us = <2120>;
+> +			};
+> +
+> +			cpu_system_vcore: cpu-system-vcore {
+> +				compatible = "arm,idle-state";
+> +				arm,psci-suspend-param = <0x020100ff>;
+> +				local-timer-stop;
+> +				entry-latency-us = <940>;
+> +				exit-latency-us = <3500>;
+> +				min-residency-us = <35200>;
+> +			};
+> +
+> +			cpu_s2idle: cpu-s2idle {
+> +				compatible = "arm,idle-state";
+> +				arm,psci-suspend-param = <0x020180ff>;
+> +				local-timer-stop;
+> +				entry-latency-us = <10000>;
+> +				exit-latency-us = <10000>;
+> +				min-residency-us = <4294967295>;
+> +			};
+> +		};
+> +
+> +		l2_0: l2-cache0 {
+> +			compatible = "cache";
+> +			cache-level = <2>;
+> +			cache-size = <131072>;
+> +			cache-line-size = <64>;
+> +			cache-sets = <512>;
+> +			next-level-cache = <&l3_0>;
+> +			cache-unified;
+> +		};
+> +
+> +		l2_1: l2-cache1 {
+> +			compatible = "cache";
+> +			cache-level = <2>;
+> +			cache-size = <262144>;
+> +			cache-line-size = <64>;
+> +			cache-sets = <512>;
+> +			next-level-cache = <&l3_0>;
+> +			cache-unified;
+> +		};
+> +
+> +		l3_0: l3-cache {
+> +			compatible = "cache";
+> +			cache-level = <3>;
+> +			cache-size = <1048576>;
+> +			cache-line-size = <64>;
+> +			cache-sets = <2048>;
+> +			cache-unified;
+> +		};
+> +	};
+> +
+> +	psci {
+> +		compatible = "arm,psci-1.0";
+> +		method = "smc";
+> +	};
+> +
+> +	memory: memory@40000000 {
+> +		device_type = "memory";
+> +		reg = <0 0x40000000 0 0xC0000000>;
+> +	};
+> +
+
+psci goes here
+
+Regards,
+Angelo
+
+> +	timer: timer {
+> +		compatible = "arm,armv8-timer";
+> +		interrupt-parent = <&gic>;
+> +		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_HIGH 0>,
+> +			     <GIC_PPI 14 IRQ_TYPE_LEVEL_HIGH 0>,
+> +			     <GIC_PPI 11 IRQ_TYPE_LEVEL_HIGH 0>,
+> +			     <GIC_PPI 10 IRQ_TYPE_LEVEL_HIGH 0>;
+> +	};
+> +
+> +	soc {
+> +		compatible = "simple-bus";
+> +		#address-cells = <2>;
+> +		#size-cells = <2>;
+> +		ranges;
+> +		dma-ranges = <0x0 0x0 0x0 0x0 0x10 0x0>;
+> +
+> +		performance: performance-controller@11bc10 {
+> +			compatible = "mediatek,cpufreq-hw";
+> +			reg = <0 0x0011bc10 0 0x120>, <0 0x0011bd30 0 0x120>;
+> +			#performance-domain-cells = <1>;
+> +		};
+> +
+> +		gic: interrupt-controller@c000000 {
+> +			compatible = "arm,gic-v3";
+> +			#interrupt-cells = <4>;
+> +			#address-cells = <2>;
+> +			#size-cells = <2>;
+> +			interrupt-parent = <&gic>;
+> +			interrupt-controller;
+> +			reg = <0 0xc000000 0 0x40000>, /* distributor */
+> +			      <0 0xc040000 0 0x200000>; /* redistributor */
+> +			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH 0>;
+> +
+> +			ppi-partitions {
+> +				ppi_cluster0: interrupt-partition-0 {
+> +					affinity = <&cpu0 &cpu1 &cpu2 &cpu3 &cpu4 &cpu5>;
+> +				};
+> +
+> +				ppi_cluster1: interrupt-partition-1 {
+> +					affinity = <&cpu6 &cpu7>;
+> +				};
+> +			};
+> +		};
+> +
+> +		uart0: serial@11001000 {
+> +			compatible = "mediatek,mt8189-uart", "mediatek,mt6577-uart";
+> +			reg = <0 0x11001000 0 0x1000>;
+> +			interrupts = <GIC_SPI 397 IRQ_TYPE_LEVEL_HIGH 0>;
+> +			clocks = <&clk26m>, <&clk26m>;
+> +			clock-names = "baud", "bus";
+> +			status = "disabled";
+> +		};
+> +	};
+> +
+> +	ulposc: oscillator-ulposc {
+> +		compatible = "fixed-clock";
+> +		#clock-cells = <0>;
+> +		clock-frequency = <520000000>;
+> +		clock-output-names = "ulposc";
+> +	};
+> +
+> +	ulposc3: oscillator-ulposc3 {
+> +		compatible = "fixed-clock";
+> +		#clock-cells = <0>;
+> +		clock-frequency = <26000000>;
+> +		clock-output-names = "ulposc3";
+> +	};
+> +};
+
 
 
