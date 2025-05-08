@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 105FCC3ABBE
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5088BC3ABC0
 	for <linux-mediatek@archiver.kernel.org>; Thu,  8 May 2025 16:26:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,70 +12,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5wgP8cTHyuHKbaDzZp/SsUfPN8fvBz396Y+2B7V1loY=; b=LVlxkOXBabEoxLXjUDMKBqmBB7
-	NNOuCtfaMhAA8O/1zkCQSKJzKUnEK78s66eott7HOrXRBYzzT7j7IYomwDUDfQ1idshDruif2I3OE
-	lRSBs+UeDwKtYTHvoBZ6TVAdNVjDHNGKRAD3PEQHNH2TlU5GYEwrPbAiPDH33YkfmdoMh2loDDDn+
-	I7afoGiINzTtF+ovVbxANwnCgQ/Cd43Q2X3T8/UkwRuXX5dP7TMhe0vLRGAEQMGnr5f/ErxoHYs8m
-	Sir0qrORFcZhvQ46HROyCiDQ5HRfP51Y4LZfGGOt18iPWo+CLKchDKgf5Nmqxk1yzGibQ8NTXXwHZ
-	nfvKkPJA==;
+	bh=/aqOR78xCKbgwFiDVPw/MgZTZLn+uIVqWHT4kXJ4tLc=; b=dqqIF26rJE3PJ7yaHHlpfJKZ0G
+	jN9bRJSe8qEeLv88YWosvaTyLhscg2NSYyrFA3F42tYiYz/g9vY6UlkIQPFmL6Xm9omD8ddEZYWJw
+	slko5ylwVm1oQA/kFVjYfvpu5tINLMU86QvJ0yxfsh7pTJpjXC7MBFbs7qWMVtKnRvhUHqIC1qhBW
+	n6APxuovCKJNmxNdjszIeaHdTM0Xgx/kJhim2CaB5Vx8yXS2qETC64fBu8eUn+39K4h3jmoqf+RE/
+	dw09V1AOxWnZ1Z6bidFE+RAowQPDnSHDJ8dE2A9tk7CXRNySivf5HDIPfeTR9bZZvZvV4lvYBq9AA
+	Tus9vuRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uD45I-00000001HhA-0Cym;
+	id 1uD45I-00000001HhN-1ZHM;
 	Thu, 08 May 2025 16:26:56 +0000
-Received: from 003.mia.mailroute.net ([199.89.3.6])
+Received: from smtp-19.smtpout.orange.fr ([80.12.242.19] helo=smtp.smtpout.orange.fr)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uD33b-000000017Cr-0hGq
-	for linux-mediatek@lists.infradead.org;
-	Thu, 08 May 2025 15:21:08 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 003.mia.mailroute.net (Postfix) with ESMTP id 4ZtbSK4pT3zltPsg;
-	Thu,  8 May 2025 15:21:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1746717662; x=1749309663; bh=5wgP8cTHyuHKbaDzZp/SsUfP
-	N8fvBz396Y+2B7V1loY=; b=2vqXOL7vn7+uWd0H5sy1bgtiCGZR9tZTgF2q29GU
-	gjaNKeNOaM2o/mC5nw0t0rM/XTHLAmKRJaM2Ahh+CaRNZ5lYaUYPO0w+FU/hBVXU
-	eCeuLuxwQU5hcfzM/x9gmyigRx3PRt9ZW76x2CyMdtce6oSGSiMfow7Los+hEKuf
-	cjCk/yBqs6IH4xOEHvJAefILXumYpb/0QPlNH8CJfRtMl1URezOca1iOiaBB1EUb
-	n/Xep/IuCmRZTwImGa75IrksaHz7P8dxKyWhGfZFQEhMHI3t1iizzghgWN0nfNGD
-	jlpbZpsY0AZT6I4JkegMX95YbLkNscqGGt5MklITuMq3zg==
-X-Virus-Scanned: by MailRoute
-Received: from 003.mia.mailroute.net ([127.0.0.1])
- by localhost (003.mia [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id IMnYJcsWsBHj; Thu,  8 May 2025 15:21:02 +0000 (UTC)
-Received: from [100.66.154.22] (unknown [104.135.204.82])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 003.mia.mailroute.net (Postfix) with ESMTPSA id 4ZtbRv1bRbzlvkT8;
-	Thu,  8 May 2025 15:20:42 +0000 (UTC)
-Message-ID: <b3fb4302-462d-4b92-a6cb-784000cd796c@acm.org>
-Date: Thu, 8 May 2025 08:20:41 -0700
+	id 1uD33i-000000017EO-2jT7;
+	Thu, 08 May 2025 15:21:15 +0000
+Received: from [192.168.1.37] ([90.11.132.44])
+	by smtp.orange.fr with ESMTPA
+	id D33cuMejiCaH2D33cu8B4q; Thu, 08 May 2025 17:21:11 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
+	s=t20230301; t=1746717671;
+	bh=/aqOR78xCKbgwFiDVPw/MgZTZLn+uIVqWHT4kXJ4tLc=;
+	h=Message-ID:Date:MIME-Version:Subject:To:From;
+	b=J8CnUdJwFn5FHAXlFR8ZkPazq64kfzu6rxQfO3bp4oYWlJR9yw7QZga+jkcHw8Lj3
+	 59DlKyXiWVDflM4F3pjSXbdRl8J3n4nmEYwk6cij3i9lBC2dXOv4jHAUS2x2ZLZ4At
+	 J4p289z8w3uB1RTTguqgEIONbMC3RwaVIU9BF5f6yRT56eUo4yOpO14QaYnwU4YTkX
+	 xPEanpuM6dKRpcweXAnz5a4iL6lmWQQtAowORrji8ha6QsrSzbCgwdJ3PXv+Nhbahj
+	 xG+HeZ7o5pMxM3CKoEseHRZwwSATlEKc2RmRq3qwY1HcWszZvxZkLh8zuz9rMTfdU5
+	 R0AYedfcV2qqQ==
+X-ME-Helo: [192.168.1.37]
+X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
+X-ME-Date: Thu, 08 May 2025 17:21:11 +0200
+X-ME-IP: 90.11.132.44
+Message-ID: <23517507-bf1a-47fa-9a96-b27922e1e05f@wanadoo.fr>
+Date: Thu, 8 May 2025 17:21:08 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] ufs: core: behavior change of hwq_id type and value
-To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
- jejb@linux.ibm.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com,
- yi-fan.peng@mediatek.com, qilin.tan@mediatek.com, lin.gui@mediatek.com,
- tun-yu.yu@mediatek.com, eddie.huang@mediatek.com, naomi.chu@mediatek.com,
- ed.tsai@mediatek.com, quic_ziqichen@quicinc.com
-References: <20250508091914.307944-1-peter.wang@mediatek.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20250508091914.307944-1-peter.wang@mediatek.com>
+Subject: Re: [PATCH v2 2/4] net: airoha: Fix an error handling path in
+ airoha_probe()
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org
+References: <5c94b9b3850f7f29ed653e2205325620df28c3ff.1746715755.git.christophe.jaillet@wanadoo.fr>
+ <3791c95da3fa3c3bd2a942210e821d9301362128.1746715755.git.christophe.jaillet@wanadoo.fr>
+ <aBzJZCIvE9u_IAM-@lore-desk>
+Content-Language: en-US, fr-FR
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+In-Reply-To: <aBzJZCIvE9u_IAM-@lore-desk>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250508_082107_291571_D10C613C 
-X-CRM114-Status: UNSURE (   4.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250508_082114_826056_739C3883 
+X-CRM114-Status: GOOD (  15.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,11 +81,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5/8/25 2:18 AM, peter.wang@mediatek.com wrote:
-> From: Peter Wang <peter.wang@mediatek.com>
 
-Patch descriptions, including the subject, should use the imperative
-mood. Anyway:
+Le 08/05/2025 à 17:10, Lorenzo Bianconi a écrit :
+>> If an error occurs after a successful airoha_hw_init() call,
+>> airoha_ppe_deinit() needs to be called as already done in the remove
+>> function.
+>>
+>> Fixes: 00a7678310fe ("net: airoha: Introduce flowtable offload support")
+>> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+>> ---
+>> Changes in v2:
+>>    - Call airoha_ppe_init() at the right place in the error handling path
+>>      of the probe   [Lorenzo Bianconi]
+>>
+>> Compile tested only.
+>> ---
+>>   drivers/net/ethernet/airoha/airoha_eth.c | 1 +
+>>   1 file changed, 1 insertion(+)
+>>
+>> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+>> index af8c4015938c..d435179875df 100644
+>> --- a/drivers/net/ethernet/airoha/airoha_eth.c
+>> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+>> @@ -2967,6 +2967,7 @@ static int airoha_probe(struct platform_device *pdev)
+>>   error_napi_stop:
+>>   	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
+>>   		airoha_qdma_stop_napi(&eth->qdma[i]);
+>> +	airoha_ppe_init(eth);
+> it was actually a typo in my previous email but this should be clearly
+> airoha_ppe_deinit().
 
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+My bad!
+Sorry for not spotting myself it.
+
+We can really trust no one, nowadays ! :)
+
+The good news is that my cocci script would have spotted it the next 
+time I would have run it, because it would still find a 
+airoha_ppe_deinit() in the remove function, but none in the probe.
+
+I give you some time to review the other patches, and I'll a v3 later.
+
+CJ
+
+>
+> Regards,
+> Lorenzo
+>
+>>   error_hw_cleanup:
+>>   	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
+>>   		airoha_hw_cleanup(&eth->qdma[i]);
+>> -- 
+>> 2.49.0
+>>
 
