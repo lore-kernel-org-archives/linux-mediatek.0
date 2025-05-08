@@ -4,65 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91726C3ABBE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 May 2025 16:16:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E61C5C3ABBE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 May 2025 16:20:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=snJFHkDY2E1a08aDHz6n8SxnyGx4Hd3MJM1659jM70U=; b=Breho/ygLytGEOg3WvEkwrnCYD
-	MnPXJuGlNG8VVQ2xN8mRecuWc8HpmdQJKE2dga5wb3d0Kw5jRRAReEfXYrYt0Sz8dbqln9JoFny/k
-	LNZQZwa/Gi6HwrQ/Zq3exKh4cEuapz/p8UfUHHcAytJtRrATUA/GR6MxSz8X5dR6Hweh9wJmvrbLY
-	6ED9M64WTkJYQNtR5HI/RePdrJ1UGy0+AHL4SPJj5Fma/eUD9tTkzAechSTGUVptKIDQ3CyJZNZ3l
-	nC0NQr2EaGJ7DCidvOMPf9G1BD422m/7sctGEiONqH7fz7INdWmnzEfJqkDKPBZO+FOjeNd8L9dbg
-	bJeD4tdg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iaFm3NHs7J9dh90xya+WtwuKBbg4FZwXz0ElhPEvrNQ=; b=Xhum6wd24ZbSJ27zPH6ebZa/O3
+	iGeKOycOcnBK3wSRdd+qhxKJ2HyYQDQ2PooI+/aenE0JJji7oLJ0y+sZROSC3+GOcB1f80QHwGDSh
+	g3IpIrQxd8X0tdvkirhWS966nVc2nusuhH2bYoBu+8ykWVhGTgW2KbDKRJ3gEEILLCfuf2yvE2tnp
+	HfhNXkQiwVUrYp0z6vC5qp8/E2QdlMHdkxmWafuoBAAeYW61Y4aT7MsT4/pGOMr4fGqF6G5w7hXfV
+	gIiDrh9+FTQyperovN1Ppow8ujEE/qHOnmLx0t08GIltg1lnOgqb28ZVuESDptDtWTbyk8TNmX9z5
+	2i6VL+0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uD3vI-00000001Fx6-2eTl;
-	Thu, 08 May 2025 16:16:36 +0000
+	id 1uD3zT-00000001Gce-3rBe;
+	Thu, 08 May 2025 16:20:55 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uD2J2-00000000wFu-19Z8;
-	Thu, 08 May 2025 14:33:01 +0000
+	id 1uD2tL-000000014hE-3U9U;
+	Thu, 08 May 2025 15:10:33 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E9F145C6340;
-	Thu,  8 May 2025 14:30:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 03CB0C4CEE7;
-	Thu,  8 May 2025 14:32:56 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 1799D5C633A;
+	Thu,  8 May 2025 15:08:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A144EC4CEE7;
+	Thu,  8 May 2025 15:10:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746714778;
-	bh=NxGW7N90fDSOJso1seyJ02kkBD8Q8q5t1i2zP+DewbQ=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=FNphbLh+p/iHJGO4w1vz+b+pnDN8vnpU1X/khuU1FqyyQqtMF8Y1NNiPwv50TXq2+
-	 i2OnOQOsktJSkWMGlwy5A3v0ZMJq8dIL0eu0FoFnI09BpNRyGNQtrbQadE3Ntnb6iU
-	 h5kTmoFA0Us1pEpAkjaZHi/aK08Dbid9571r64KdpvzwrjBNS9Ymq1Gj17EIhNibG/
-	 AZIbeLlwbBS4g/VsrQWCHrLbAuckzEPF22Ylxm7Uh40BseiZbMVk13qwgXp/F+0SXD
-	 J571fk6toXXaiG/oWU9+r4ZdIxqermazZoszKU1xDFJ18NW31t93n6QedfYRL/u/Ic
-	 LMeywq/Uv1/TA==
-From: Lee Jones <lee@kernel.org>
-To: Lee Jones <lee@kernel.org>, Pavel Machek <pavel@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Cc: linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org, 
- linux-leds@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
-In-Reply-To: <1ce4245107e0a51dce502a007a69899bda018d5f.1746197460.git.christophe.jaillet@wanadoo.fr>
-References: <1ce4245107e0a51dce502a007a69899bda018d5f.1746197460.git.christophe.jaillet@wanadoo.fr>
-Subject: Re: (subset) [PATCH] leds: rgb: leds-mt6370-rgb: Improve
- definition of some struct linear_range
-Message-Id: <174671477676.2472260.13790392166774211195.b4-ty@kernel.org>
-Date: Thu, 08 May 2025 15:32:56 +0100
+	s=k20201202; t=1746717031;
+	bh=dhECve019k+MAhaJXpnJX0vZpEJhKyOVtBrA+Jc60Gw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=jiLzLgnNY0s2FTPN5+DxCy5Hc10iLZS6vuh/B+dVKZ6zKd/hSyVEe58/lA0bztS7m
+	 ymneFlZ/yNcmS1JXeh8kTaRgTz5yCcTkIK/jUSo8TmuSSw6fO+vGl2Ws+UplUycPtP
+	 lzWp5XeU8zpMwhowNEHlqbONMLjgB6e1qsLi2t6HE+UyGDvaVJNjNtlXqQcl3tQaj7
+	 +0cLGZF/sUQS2BjI1onrqLymbKDVh94UUXp7Dk6Z0OK4CYFRP0j2z6tEjIqCGsOEjb
+	 MmvOmdQFFn4kKRx6jCrBkW98MGqJmDnaMkgff4kBbIdgUaZBASIEA5NmQMfSdH3zOV
+	 M5I/xYSK1H5Yw==
+Date: Thu, 8 May 2025 17:10:28 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH v2 2/4] net: airoha: Fix an error handling path in
+ airoha_probe()
+Message-ID: <aBzJZCIvE9u_IAM-@lore-desk>
+References: <5c94b9b3850f7f29ed653e2205325620df28c3ff.1746715755.git.christophe.jaillet@wanadoo.fr>
+ <3791c95da3fa3c3bd2a942210e821d9301362128.1746715755.git.christophe.jaillet@wanadoo.fr>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.15-dev-39345
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="V+aLiTt/t6jXV4qn"
+Content-Disposition: inline
+In-Reply-To: <3791c95da3fa3c3bd2a942210e821d9301362128.1746715755.git.christophe.jaillet@wanadoo.fr>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250508_073300_385142_95CD5C95 
-X-CRM114-Status: UNSURE (   6.06  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250508_081031_923012_864D38D1 
+X-CRM114-Status: GOOD (  15.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,18 +78,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 02 May 2025 16:51:22 +0200, Christophe JAILLET wrote:
-> Use LINEAR_RANGE() instead of hand-writing it. It is more robust, should
-> the layout of the structure change one day.
-> 
-> 
 
-Applied, thanks!
+--V+aLiTt/t6jXV4qn
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-[1/1] leds: rgb: leds-mt6370-rgb: Improve definition of some struct linear_range
-      commit: 4e055c846de470cb4a9bf4be0811c7d624785abc
+> If an error occurs after a successful airoha_hw_init() call,
+> airoha_ppe_deinit() needs to be called as already done in the remove
+> function.
+>=20
+> Fixes: 00a7678310fe ("net: airoha: Introduce flowtable offload support")
+> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+> ---
+> Changes in v2:
+>   - Call airoha_ppe_init() at the right place in the error handling path
+>     of the probe   [Lorenzo Bianconi]
+>=20
+> Compile tested only.
+> ---
+>  drivers/net/ethernet/airoha/airoha_eth.c | 1 +
+>  1 file changed, 1 insertion(+)
+>=20
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
+net/airoha/airoha_eth.c
+> index af8c4015938c..d435179875df 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.c
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+> @@ -2967,6 +2967,7 @@ static int airoha_probe(struct platform_device *pde=
+v)
+>  error_napi_stop:
+>  	for (i =3D 0; i < ARRAY_SIZE(eth->qdma); i++)
+>  		airoha_qdma_stop_napi(&eth->qdma[i]);
+> +	airoha_ppe_init(eth);
 
---
-Lee Jones [李琼斯]
+it was actually a typo in my previous email but this should be clearly
+airoha_ppe_deinit().
 
+Regards,
+Lorenzo
+
+>  error_hw_cleanup:
+>  	for (i =3D 0; i < ARRAY_SIZE(eth->qdma); i++)
+>  		airoha_hw_cleanup(&eth->qdma[i]);
+> --=20
+> 2.49.0
+>=20
+
+--V+aLiTt/t6jXV4qn
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaBzJZAAKCRA6cBh0uS2t
+rOayAQCaglkROsypWbnoARe9kkq6RYdKaAl4rjlfjKCEB8HWQQEAgs12WF2PhlvU
+iTcoAkcTJX4fuM85cyB9I8L+eeZi/wg=
+=QUnf
+-----END PGP SIGNATURE-----
+
+--V+aLiTt/t6jXV4qn--
 
