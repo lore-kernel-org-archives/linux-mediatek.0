@@ -4,71 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B81AC3ABC0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 May 2025 08:21:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A0FEC3ABC0
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 May 2025 08:41:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sJA8qf/a3/CEnL5BL/9QwlsuH0YIPmI8h5VL5Yt6JbM=; b=jP43aN0WJ3U+UGehJdA9Ty93F6
-	9lanocTIA1i/RJoYV+/CI8iS1R5XRDsO9lAv3sBB6WOV73v8GoRxQBZj4QRZK+5319urj4BKsgaCY
-	jQPVvyVA5efoYKSxprSsRontsJh0GBN4sZBomeBJcutTCCXrmviDXCNYCRuoBsLfvnONQnzf7pJRD
-	EPXfdSjGAMVzK5zMHvNP046qMpDpduDk1QdFI1IageesPRWVQzG1tSKtv2oN0rhOHE/yYdChjC+DF
-	2jXDqqownU1bj/b7FQ5Zzk13d5xtxMvsSurg5LVjBGp5eTiT5XarbvuX1Ea4CF96Wp/xjn9mj6fMd
-	jGcYVFpQ==;
+	bh=YYSdciPYaZv2TJowlHl5Yq1KGj16CbKyIc5/+T+SCec=; b=4x0xZk+/lVvZrDygQOMUc5SVov
+	K7SLdAUDqD8pJmUw6RjuIXbuLCj99u2ockHf39vh7RPC64hC/eEp+S9dfVeZ11c+ketTaohrl3ejt
+	1qlxXeWlrvLlW3nOJaoJDpUmDP3ALldmHkEM08/Pv0vnDYXFCwktSp1vzALc+t0CWmwoExs7opUL+
+	a/MjnLzedUtuE1Mmt56gFTDVqrV5piOQgxOvMFhU3RhXTDyhVE6L207mVY6J1QSci7rtwfaa2Bf9b
+	S8vkrbOt5rn0+lXkx/Dvcud2tiPUMCOXAcZW14rQ/e1f8fXk1ZHVaOzIT14XGnPUXCZp/4QmhGL1i
+	aClqEp8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCwVj-000000005so-13Eg;
-	Thu, 08 May 2025 08:21:43 +0000
+	id 1uCwpD-000000009X0-2iIq;
+	Thu, 08 May 2025 08:41:51 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCwPv-000000004q7-1gOJ;
-	Thu, 08 May 2025 08:15:44 +0000
+	id 1uCwZO-000000006aM-0dxe;
+	Thu, 08 May 2025 08:25:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1746692142;
-	bh=7r6OTGgvged4uco8BW+BLg38bSJrp+WvRqlr9YTSWRU=;
+	s=mail; t=1746692728;
+	bh=X8K9aCfgxVUPIc1Nk89pKNYOpdNIKQWAwjZlX/4fHuI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=bfgaKB4vrzTursOZlFORwMk/wp4advCrn57O6uhdlNElcWsKrQilcXdLZQA5cYlJl
-	 OAKG6Inmp4uKTeuGkeNFlV153FIuunxAuY2iXaBWSvvMdewGtnPLDbkI7+K/LQiDJB
-	 I5oSwtc+AG7YaLGkj9k6W616zq/0E8Q/cvoU9hZdP02Bf3AvhuzzUngWEd685986bb
-	 P23lWwUmd9xuq+HCci8PCoe+lWyjltOo4eYUpfThnaKrcsO7tk393+hEGOD5gls2Cy
-	 meTxEVjbHFbMCTNW6cxIv5LYBphOGAUs7AX49xaiLCycgIv8YZw37sp+tj+pHkyJgv
-	 3M+2lQ+Y8eUZw==
+	b=bK7yllseP/OemvHwWrRiVJohhF767V7j55lg8o4Jv6l17DHqOBHoAhokjUC9qmZLl
+	 tJSQ4zf2AIGQCV87TC0U/7z8EPSPpXQiEVXUtUWgD/y+v1MGvubHRqcAd60v9MAsvE
+	 oLS+BZEIV/4obG6mF+DevW459GErxDSnM8bbCTG1sJ3T2z5xjv3WBrkPCTyWz7l6nN
+	 HOsjDfQ6+KkgIRCnMsSuidXQTGTPlhhn1n6gaSN/FlpjJBJEShjYnwU0SI2UPY8+iw
+	 geT0qj7so72G2Lkw2XpK8TLugpFBHBMQyDGml4653iFCDPZlVMWYBThArtrHji3Pdw
+	 e1RODhPsufHiw==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 47BB117E120C;
-	Thu,  8 May 2025 10:15:41 +0200 (CEST)
-Message-ID: <97ec1373-1662-49e5-aecd-407a2ab2c2aa@collabora.com>
-Date: Thu, 8 May 2025 10:15:41 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 90BC717E02BE;
+	Thu,  8 May 2025 10:25:27 +0200 (CEST)
+Message-ID: <4b12cb42-a1fc-4687-a5d0-07c2c822d778@collabora.com>
+Date: Thu, 8 May 2025 10:25:27 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/3] dt-bindings: arm: Add compatible for MediaTek
- MT8189
-To: Sirius Wang <sirius.wang@mediatek.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Jiri Slaby <jirislaby@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, wenst@chromium.org,
- xavier.chang@mediatek.com
-References: <20250508063546.289115-1-sirius.wang@mediatek.com>
- <20250508063546.289115-2-sirius.wang@mediatek.com>
+Subject: Re: [PATCH] ASoC: mediatek: mt8188-mt6359: Depend on MT6359_ACCDET
+ set or disabled
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Zoran Zhan <zoran.zhan@mediatek.com>, Arnd Bergmann <arnd@arndb.de>
+Cc: kernel@collabora.com, linux-sound@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Arnd Bergmann <arnd@kernel.org>
+References: <20250507-mt8188-mt6359-accdet-depend-v1-1-aad70ce62964@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250508063546.289115-2-sirius.wang@mediatek.com>
+In-Reply-To: <20250507-mt8188-mt6359-accdet-depend-v1-1-aad70ce62964@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250508_011543_587352_84F449B8 
-X-CRM114-Status: UNSURE (   6.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250508_012530_335608_6880C39B 
+X-CRM114-Status: GOOD (  11.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,11 +80,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/05/25 08:35, Sirius Wang ha scritto:
-> This commit adds dt-binding documentation for the MediaTek MT8189
-> reference board.
+Il 07/05/25 22:14, Nícolas F. R. A. Prado ha scritto:
+> Commit 0116a7d84b32 ("ASoC: mediatek: mt6359: Add stub for
+> mt6359_accdet_enable_jack_detect") added a stub for
+> mt6359_accdet_enable_jack_detect() in order to allow the mt8188-mt6359
+> driver to be enabled without requiring the mt6359-accdet to also be
+> enabled, since it is not always needed.
 > 
-> Signed-off-by: Sirius Wang <sirius.wang@mediatek.com>
+> However, in the case that CONFIG_SND_SOC_MT8188_MT6359=y and
+> CONFIG_SND_SOC_MT6359_ACCDET=m, a link error will happen, which commit
+> b19fa45715ce ("ASoC: mediatek: mt8188-mt6359: select
+> CONFIG_SND_SOC_MT6359_ACCDET") solved by selecting
+> CONFIG_SND_SOC_MT6359_ACCDET.
+> 
+> In order to not require CONFIG_SND_SOC_MT6359_ACCDET as originally
+> intended, but also prevent the link error, depend on ACCDET being
+> enabled or disabled (which will force MT8188_MT6359=m if
+> MT6359_ACCDET=m).
+> 
+> Fixes: f35d834d67ad ("ASoC: mediatek: mt8188-mt6359: Add accdet headset jack detect support")
+> Fixes: b19fa45715ce ("ASoC: mediatek: mt8188-mt6359: select CONFIG_SND_SOC_MT6359_ACCDET")
+> Suggested-by: Arnd Bergmann <arnd@kernel.org>
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
