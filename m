@@ -4,76 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29E20C3ABBE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 May 2025 08:49:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8ED2FC3ABC0
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 May 2025 09:17:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=I/6u434npu/OIMFCdOe8U+YX27jiuYdnGSjpPzb6uqs=; b=d4pH12RTlqVmSWQPjO8K1sahly
-	sKaO4+kdUeh1Jnw70SNOZCUDQtKmYkOKa2zLqXs/z6YFFMo2u48G03RYpaPgbzu36UKioHJv/D8XR
-	OkMbrxIflv2NrOQJlci9IBTWTrCGDTqNqJljrQ8OBaPzEigaXJTTgQsBQczN/nG1dD3fPZHTdGcuq
-	0KHWwKcItaZaFsXLxsX3ayoiu8TYbfML279dR3cIM/ESp5Xz/3+ERMZfT73iWu6kOlqKrMTsROWCj
-	V//8P5Z0TN9FRK5H5OTmWKmN5FxxIKUUBzWY0cL+UxQ1qU0D5v4xKlTblRmxcx9Neektls4Wz05gM
-	sZdCj8/g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=lEyZ+D8xZT7McsFHXW2Qp2/8UB4rXLb9GNlZlQlr1nQ=; b=bdzYHm9dguG1qPy4OimoofyhFG
+	pFqk6pCzmIuSW88mJrhCxSpD9CZhr8K26f+oYv77t7p5INKBG/sMh6B/cVklhwBH8mg4lQq7diYDD
+	s3EI4wCl++HlZxKn20W6Dr24j3gayImq0BVeih7GD74a9xk4ecWP545JFw7Wq3vl4BJKoe1vzoDL5
+	Ea1K2CvCz7OyZpxbMxY5XG6yYxOQYXIQfxMCQbke9kgLkZ8AaQd3qfJaYYId0M2ER767alCQmIMDu
+	nR+SM/hrvL53mOb05wYyCAfnjUC4peL/aqsH+xtyOjfIM6eoZktpuQmGdQIVtDNLqSJgxkjWAm73P
+	pc5q2r+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCwww-00000000ATn-0rPy;
-	Thu, 08 May 2025 08:49:50 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uCxO7-00000000Edj-20Fa;
+	Thu, 08 May 2025 09:17:55 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uCwiP-000000008BG-1E9R;
-	Thu, 08 May 2025 08:34:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1746693287;
-	bh=/yn0vOBSqs1gT1qgFskCzgf8UxOw44a5QvWI6DwYPmM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=lvHX6Jfr7OJ3b9RU2pr9vKKmVzcczO72O3biC5VnlBbkLBYBi4j80YJi2EahlHN1c
-	 6I9FwWK2rI9vTlfgY0vX59fGYaiqUGpGcxReA8po/KwPkXIJBEPYgbVoK27U8P4nkQ
-	 X4QD/QaGCH6DAVicsxmX8fpMRCdFt6D/fag3nmUd43PN/6uB7xi1I6h2Cgt/WTqLpq
-	 SZEaWRHihGqfwPDfI/lIhJzyu9FoTR2A8LrpgfmZCRkdBpb7sSHMCQ9F4OpeDxNYKz
-	 VId7swgQvxQGPbEbgdeQEvtYfy088uRJpCZWNsQMmZX2KRcEXgt4abxmz6xz2/sV+O
-	 wA2RMcDIF2HaA==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 62D3417E02BE;
-	Thu,  8 May 2025 10:34:46 +0200 (CEST)
-Message-ID: <ff8da58b-9e87-46d9-b4d2-4059ef05780d@collabora.com>
-Date: Thu, 8 May 2025 10:34:45 +0200
+	id 1uCx2b-00000000BPC-2MAS
+	for linux-mediatek@lists.infradead.org;
+	Thu, 08 May 2025 08:55:42 +0000
+X-UUID: 3662fb5e2bea11f08d385d50fb11b32d-20250508
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=lEyZ+D8xZT7McsFHXW2Qp2/8UB4rXLb9GNlZlQlr1nQ=;
+	b=d0tLTIhd1HF4wrj+rLzlltSe9q8O6iqJ2Twt6sT7u2vEAfMCoyIZGCDE/gg5J2Fm6yv9GP9wMC/vxqwRvUOkMN2HN91zE6PhRsRBEFhEc3TZ97KwzOPoyXvy+nRwmldm+AdoiDO/UQMJMuzxFwUhMlbyQFz+f+kbR9Mc0KeVEKc=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:76f3d831-cc09-46b2-ab81-adcfb74ff049,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:575d6e80-1eec-4f76-b81b-944fecd9abcd,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 3662fb5e2bea11f08d385d50fb11b32d-20250508
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
+	(envelope-from <mingyen.hsieh@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1259379722; Thu, 08 May 2025 01:55:38 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Thu, 8 May 2025 16:55:35 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Thu, 8 May 2025 16:55:35 +0800
+From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
+	<Leon.Yen@mediatek.com>, <Michael.Lo@mediatek.com>,
+	<allan.wang@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
+	<km.lin@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
+	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, Ming Yen Hsieh
+	<mingyen.hsieh@mediatek.com>, <stable@vger.kernel.org>, Niklas Schnelle
+	<niks@kernel.org>
+Subject: [PATCH v2] wifi: mt76: mt7925: fix missing hdr_trans_tlv command for broadcast wtbl
+Date: Thu, 8 May 2025 16:55:34 +0800
+Message-ID: <20250508085534.305242-1-mingyen.hsieh@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/4] dt-bindings: iommu: mediatek: mt8195 Accept up to 5
- interrupts
-To: Krzysztof Kozlowski <krzk@kernel.org>,
- Julien Massot <julien.massot@collabora.com>, kernel@collabora.com,
- Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?=
- <nfraprado@collabora.com>, Hui Liu <hui.liu@mediatek.com>,
- Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
- Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
- Tinghan Shen <tinghan.shen@mediatek.com>
-Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, iommu@lists.linux.dev
-References: <20250505-mt8395-dtb-errors-v1-0-9c4714dcdcdb@collabora.com>
- <20250505-mt8395-dtb-errors-v1-2-9c4714dcdcdb@collabora.com>
- <baeae909-4d12-4cbd-a063-7ad165304b96@kernel.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <baeae909-4d12-4cbd-a063-7ad165304b96@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250508_013449_481393_21DFA73B 
-X-CRM114-Status: GOOD (  12.86  )
+X-CRM114-CacheID: sfid-20250508_015541_610352_387A122F 
+X-CRM114-Status: UNSURE (   9.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,39 +90,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/05/25 08:03, Krzysztof Kozlowski ha scritto:
-> On 05/05/2025 15:23, Julien Massot wrote:
->>
->> Fixes: 3b5838d1d82e3 ("arm64: dts: mt8195: Add iommu and smi nodes")
->> Signed-off-by: Julien Massot <julien.massot@collabora.com>
->> ---
->>   Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml | 3 ++-
->>   1 file changed, 2 insertions(+), 1 deletion(-)
->>
->> diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
->> index 75750c64157c868725c087500ac81be4e282c829..035941c2db32170e9a69a5363d8c05ef767bb251 100644
->> --- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
->> +++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
->> @@ -97,7 +97,8 @@ properties:
->>       maxItems: 1
->>   
->>     interrupts:
->> -    maxItems: 1
->> +    minItems: 1
->> +    maxItems: 5
->>   
-> Every iommu or just some (as described in commit msg) can have 5
-> interrupts? Looks you miss here proper constraints per variant.
-> 
-Technically, all of the IOMMUs can have more than one interrupt - but it's not
-clear which one and why, as documentation is lacking.
+From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 
-Let's restrict this discussion to MT8195 anyway, as it's the only one declaring
-those 5 interrupts...
-...all of the IOMMUs declare just one, and mediatek,mt8195-iommu-infra declares 5.
+The hdr_trans_tlv function call has been moved inside the conditional block
+to ensure it is executed when info->enable is true.
 
-P.S.: Nice catch!
+Cc: stable@vger.kernel.org
+Fixes: cb1353ef3473 ("wifi: mt76: mt7925: integrate *mlo_sta_cmd and *sta_cmd")
+Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+Tested-by: Niklas Schnelle <niks@kernel.org>
+---
+v2:
+    add tested-by tag
+---
+ drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Cheers,
-Angelo
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index a42b584634ab..fd756f0d18f8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -2183,14 +2183,14 @@ mt7925_mcu_sta_cmd(struct mt76_phy *phy,
+ 			mt7925_mcu_sta_mld_tlv(skb, info->vif, info->link_sta->sta);
+ 			mt7925_mcu_sta_eht_mld_tlv(skb, info->vif, info->link_sta->sta);
+ 		}
+-
+-		mt7925_mcu_sta_hdr_trans_tlv(skb, info->vif, info->link_sta);
+ 	}
+ 
+ 	if (!info->enable) {
+ 		mt7925_mcu_sta_remove_tlv(skb);
+ 		mt76_connac_mcu_add_tlv(skb, STA_REC_MLD_OFF,
+ 					sizeof(struct tlv));
++	} else {
++		mt7925_mcu_sta_hdr_trans_tlv(skb, info->vif, info->link_sta);
+ 	}
+ 
+ 	return mt76_mcu_skb_send_msg(dev, skb, info->cmd, true);
+-- 
+2.34.1
+
 
