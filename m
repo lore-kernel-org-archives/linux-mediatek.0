@@ -4,76 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12166C3ABBC
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 May 2025 09:14:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA895C3ABC3
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 May 2025 09:46:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=2QBZdqUD0wmXVQHDoMG3Kt28wCUDOmMZ3X3RH175Sj0=; b=llEUgUhrjyjZyIkZPR9RdPUnh0
-	q4sZhatWJWO+0RJEH0QvcH2hFPNpZFDD/OZMH02wHvy/qO60kfbD020dX17OmXW3jGRpZGDXvtNMz
-	FApfIGHgkfsm7JyU1a/Ekq7HQVtzw1hJJltLa0FpX2v3KXghMlHd0IuP1UAQjzFhXT3NhcadOwIPy
-	LNhlYJRC8eKY5AcoO4tweFOp+6vKoR7o7Gxqvd2nmbyP8LgvakahiFKBgHsgrZO8YRnDyY0xBBq+y
-	adJbmG9HH111apNS9kaA8at15df2KmfmMo6k3IL0/2pVEM3c8eWzpMTJiB6KjIDaE5T9W/K4Tq5p2
-	TRq5RNzw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HRk8EDWehAyjfLYaTwfuNFdcXvNXB2VmmN05x6dRUqY=; b=XJyL61jpREqaLm4HUh76oqZko4
+	46AlBR35Mosg6Z4c9MwBRe9dLIX5jjm1CuOW+gQi1IZKFYlomuGUnK3ewxODJLMFOdDz36Hi0p7MU
+	pI1uGaKlQYpsWMfqIy8m4auaUjy83SVhRa24WzXdJLLRuR9L8p5CdBkChSPYC05CC893r5s7o2dEC
+	nuG0SoJovnVzxkT9hLbhavyWGZaCMnoq/Xq2pV/gH916/H0fHfFBJHm9mc9+v7aTw6T0eSvKV+SCp
+	+3nja85hlVg3Br1JqsUNW+DvCQUxqrJd8kc5AIW0y76vYTzB11aMyEEmdGhIzlmFG7xmrKa4cyn2A
+	Y6RH3+lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDJoX-000000033uA-0GiL;
-	Fri, 09 May 2025 09:14:41 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1uDKJa-000000039fM-2a71;
+	Fri, 09 May 2025 09:46:46 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDJCS-00000002wKn-3TDe
-	for linux-mediatek@lists.infradead.org;
-	Fri, 09 May 2025 08:35:21 +0000
-X-UUID: 88598a562cb011f0bed96b30c12bc3d6-20250509
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=2QBZdqUD0wmXVQHDoMG3Kt28wCUDOmMZ3X3RH175Sj0=;
-	b=hzNkfv1MDhn9IBklXR8EqXdt0aRqgeSl78sVjO/Kc3gaVEFBfwcyASQlkHsYH3/Bg6ouCoSXTHUZYMnpBq5QeO7QHWlQssEyKZ3BRw/HrZQnK5lJ2JuowQmC+mcvrXKMgD8dPK7G0CAEe01CmThtpod33u2NRhK6V26ILiFgwRI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:447bbe11-06e2-4d34-b107-8d1088b6f78f,IP:0,UR
-	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-25
-X-CID-META: VersionHash:0ef645f,CLOUDID:dacad5f9-d2be-4f65-b354-0f04e3343627,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 88598a562cb011f0bed96b30c12bc3d6-20250509
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
-	(envelope-from <mingyen.hsieh@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1174955984; Fri, 09 May 2025 01:35:16 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Fri, 9 May 2025 16:35:13 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Fri, 9 May 2025 16:35:13 +0800
-From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
-	<Leon.Yen@mediatek.com>, <Michael.Lo@mediatek.com>,
-	<allan.wang@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
-	<km.lin@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
-	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Michael Lo <michael.lo@mediatek.com>,
-	<stable@vger.kernel.org>, Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
-Subject: [PATCH] wifi: mt76: mt7925: fix host interrupt register initialization
-Date: Fri, 9 May 2025 16:35:12 +0800
-Message-ID: <20250509083512.455095-1-mingyen.hsieh@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1uDJZB-0000000310r-1kbk;
+	Fri, 09 May 2025 08:58:49 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 8CDDB629E2;
+	Fri,  9 May 2025 08:58:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 062BBC4CEE4;
+	Fri,  9 May 2025 08:58:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1746781128;
+	bh=NUJlMgnUlRyto5/zMHlqn7mzxNUcNXMEpllPFIPNjHE=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=IwyzcisD6hzqPVhmFV/UySvLYxcE8JoriuZ19JQMlr54EzhhzyzjMaUxwqN0+gein
+	 fIGJ1WizkLOGfTorbznQEOgeGpJL4ZIatfk7pxTM1ZWxWjqDhE37FaDQcUrDT0P+gG
+	 6smT4sL2tqOkL4AOq28lI39sWILCKQjrR0WCH2gcaHAZq+IyS3fAaFqR86u6zeuZoJ
+	 7gVL0nFNp8/+sdV+vVOAmn6l7jjgNiE4gOyh6e94cAMRs9da84usTdLdPe6ZT+nYoF
+	 ieuhqHf1d7T6cdn+DLJ0wJ+kh3XDzXttrzM2dJAX5aMWEB6BtIn2KiFiFcYWfAWM2B
+	 tPRxa/hechyVg==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Zoran Zhan <zoran.zhan@mediatek.com>, Arnd Bergmann <arnd@arndb.de>, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Cc: kernel@collabora.com, linux-sound@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Arnd Bergmann <arnd@kernel.org>
+In-Reply-To: <20250507-mt8188-mt6359-accdet-depend-v1-1-aad70ce62964@collabora.com>
+References: <20250507-mt8188-mt6359-accdet-depend-v1-1-aad70ce62964@collabora.com>
+Subject: Re: [PATCH] ASoC: mediatek: mt8188-mt6359: Depend on MT6359_ACCDET
+ set or disabled
+Message-Id: <174678112414.29979.2917402833370390569.b4-ty@kernel.org>
+Date: Fri, 09 May 2025 17:58:44 +0900
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250509_013520_901089_32D2C4B0 
-X-CRM114-Status: GOOD (  10.38  )
+X-Mailer: b4 0.15-dev-c25d1
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,48 +74,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Michael Lo <michael.lo@mediatek.com>
+On Wed, 07 May 2025 16:14:14 -0400, Nícolas F. R. A. Prado wrote:
+> Commit 0116a7d84b32 ("ASoC: mediatek: mt6359: Add stub for
+> mt6359_accdet_enable_jack_detect") added a stub for
+> mt6359_accdet_enable_jack_detect() in order to allow the mt8188-mt6359
+> driver to be enabled without requiring the mt6359-accdet to also be
+> enabled, since it is not always needed.
+> 
+> However, in the case that CONFIG_SND_SOC_MT8188_MT6359=y and
+> CONFIG_SND_SOC_MT6359_ACCDET=m, a link error will happen, which commit
+> b19fa45715ce ("ASoC: mediatek: mt8188-mt6359: select
+> CONFIG_SND_SOC_MT6359_ACCDET") solved by selecting
+> CONFIG_SND_SOC_MT6359_ACCDET.
+> 
+> [...]
 
-ensure proper interrupt handling and aligns with the hardware spec by
-updating the register offset for MT_WFDMA0_HOST_INT_ENA.
+Applied to
 
-Cc: stable@vger.kernel.org
-Fixes: c948b5da6bbe ("wifi: mt76: mt7925: add Mediatek Wi-Fi7 driver for mt7925 chips")
-Signed-off-by: Michael Lo <michael.lo@mediatek.com>
-Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7925/pci.c  | 3 ---
- drivers/net/wireless/mediatek/mt76/mt7925/regs.h | 2 +-
- 2 files changed, 1 insertion(+), 4 deletions(-)
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-index c7b5dc1dbb34..2e20ecc71207 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-@@ -490,9 +490,6 @@ static int mt7925_pci_suspend(struct device *device)
- 
- 	/* disable interrupt */
- 	mt76_wr(dev, dev->irq_map->host_irq_enable, 0);
--	mt76_wr(dev, MT_WFDMA0_HOST_INT_DIS,
--		dev->irq_map->tx.all_complete_mask |
--		MT_INT_RX_DONE_ALL | MT_INT_MCU_CMD);
- 
- 	mt76_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0x0);
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/regs.h b/drivers/net/wireless/mediatek/mt76/mt7925/regs.h
-index 985794a40c1a..547489092c29 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/regs.h
-@@ -28,7 +28,7 @@
- #define MT_MDP_TO_HIF			0
- #define MT_MDP_TO_WM			1
- 
--#define MT_WFDMA0_HOST_INT_ENA		MT_WFDMA0(0x228)
-+#define MT_WFDMA0_HOST_INT_ENA		MT_WFDMA0(0x204)
- #define MT_WFDMA0_HOST_INT_DIS		MT_WFDMA0(0x22c)
- #define HOST_RX_DONE_INT_ENA4		BIT(12)
- #define HOST_RX_DONE_INT_ENA5		BIT(13)
--- 
-2.34.1
+Thanks!
+
+[1/1] ASoC: mediatek: mt8188-mt6359: Depend on MT6359_ACCDET set or disabled
+      commit: b7e3ec4e17e27420ebe976c7714881b64c28d63b
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
