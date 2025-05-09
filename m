@@ -4,62 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B7DCC3ABBC
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 May 2025 11:47:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E50AFC3ABCC
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 May 2025 15:28:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sTjGpotOz0ah61yGha/fxfFkMtDZpqr3hXbPW6WAsUk=; b=QIyVCgWqDVuTp50e6rOKQTwuNE
-	h2rWIidUIxG9wU1f/j/Q7nqQ7peBbUI3VVbG27k05u03ZywMuUt9j0cRNYcSdMrs6LIZ+HJKHPTfE
-	+G/ssxpm8xguEW3NlEoADZPqC4pFhbG9/ehPAgslWm9sHKFCSwKo99kVrtsHmkog4jYe4hyg3ZZFp
-	GOW9Zj8XbhRtDXcRmnOcFGITggxk2/6FxQadsjgO/0wOJtIZCdg+vJAnGOmPkTbclZWYvasaPKP4O
-	Ff1rTdhQ9I+nD8EvXED+e6LYsbOrlCe4OHMZwLkNmaRi+JCaxlNjZRfVcEDJO+KlUqspsYxc2CQvm
-	z5XMKw2Q==;
+	bh=/G3KqtxlSXfSfW8B3iRGOBOyEpiUlfaOey/qzmU2GWI=; b=ADkZraSrYkcn+WB//pGmhxEU3k
+	flMFhbnMbl9OF6XvTQf1TU/16ycxdIKVL0XVMDkyYmbhfI32C3yICtkrN0b0di40zJyPxv7JJSjeS
+	VObqC1N9hJjDYyb5fUmTpgdeH6vHuCi00tHvQkuCuJFlzY2KbMwdimlohiJRGCAkiVbNLn3rtseNz
+	XcLzJ6pfaZqhGDci6MC8AaZPvKca3luS+W4kkAuJRzItOUxKvIySoYYk7br73wJazw419GZbtgvo8
+	0dTaiCH/s2trWoMX4S8QnZH6yN9Dln+5yA9R03RESW7dzJ6YSFgHz7S2eP35ydfdG0hAPmgEG1zsL
+	0KwdJB/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDMCB-00000003Tlr-1opB;
-	Fri, 09 May 2025 11:47:15 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDLRm-00000003MTL-2s2k;
-	Fri, 09 May 2025 10:59:19 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 2DEB31595;
-	Fri,  9 May 2025 03:59:07 -0700 (PDT)
-Received: from [10.1.35.18] (e122027.cambridge.arm.com [10.1.35.18])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 4D9FC3F58B;
-	Fri,  9 May 2025 03:59:15 -0700 (PDT)
-Message-ID: <32dd077c-52db-4bef-8d76-12b7aaff2408@arm.com>
-Date: Fri, 9 May 2025 11:59:15 +0100
+	id 1uDPdt-000000044tO-39SQ;
+	Fri, 09 May 2025 15:28:05 +0000
+Received: from relay4-d.mail.gandi.net ([217.70.183.196])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uDOD2-00000003r7C-3ZCn;
+	Fri, 09 May 2025 13:56:18 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id A2B9043B6E;
+	Fri,  9 May 2025 13:56:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1746798974;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=/G3KqtxlSXfSfW8B3iRGOBOyEpiUlfaOey/qzmU2GWI=;
+	b=XJP79OoaYtWGeYCyQq8UQuCZNTeQVX73vAADasA41VYbHigaxR7osMt3JNRxwwdwd5Exvl
+	q140n8gI2lB5q1mxnUYzO0IO0cCsKzca2bWVDMYLgihiIb+cUitG6cxcLOQgMu/0hqUERA
+	ohl8Cond/+oHox8WV8gt6qq/eXi9YloPZFN3FWIsq5/ByiRQB5FO6l7cx/Xy9KBOCSvttl
+	rv3C29x//yLkKJrSFdVjfTqFP69z0JzkkcTZXYwWmAMaKsk+oOAV93YOEcRWSNXp/7ag4C
+	f8aj6fWKsFedKDSPWG33g3qEso6JGn4/KEmsOkvEpIV2GcA0O7637ejQ9xMgCA==
+From: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Date: Fri, 09 May 2025 15:53:27 +0200
+Subject: [PATCH v3 01/22] Revert "drm/exynos: mic: convert to
+ devm_drm_bridge_alloc() API"
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 3/5] drm/panfrost: Commonize Mediatek power domain
- array definitions
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Boris Brezillon <boris.brezillon@collabora.com>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20250509-mt8370-enable-gpu-v6-0-2833888cb1d3@collabora.com>
- <20250509-mt8370-enable-gpu-v6-3-2833888cb1d3@collabora.com>
-From: Steven Price <steven.price@arm.com>
-Content-Language: en-GB
-In-Reply-To: <20250509-mt8370-enable-gpu-v6-3-2833888cb1d3@collabora.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+Message-Id: <20250509-drm-bridge-convert-to-alloc-api-v3-1-b8bc1f16d7aa@bootlin.com>
+References: <20250509-drm-bridge-convert-to-alloc-api-v3-0-b8bc1f16d7aa@bootlin.com>
+In-Reply-To: <20250509-drm-bridge-convert-to-alloc-api-v3-0-b8bc1f16d7aa@bootlin.com>
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Jagan Teki <jagan@amarulasolutions.com>, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, 
+ Douglas Anderson <dianders@chromium.org>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Anusha Srivatsa <asrivats@redhat.com>, 
+ Paul Kocialkowski <paulk@sys-base.io>, Dmitry Baryshkov <lumag@kernel.org>, 
+ Hui Pu <Hui.Pu@gehealthcare.com>, 
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+ dri-devel@lists.freedesktop.org, asahi@lists.linux.dev, 
+ linux-kernel@vger.kernel.org, chrome-platform@lists.linux.dev, 
+ imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+ linux-renesas-soc@vger.kernel.org, platform-driver-x86@vger.kernel.org, 
+ linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
+ freedreno@lists.freedesktop.org, linux-stm32@st-md-mailman.stormreply.com, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+ Louis Chauvet <louis.chauvet@bootlin.com>, 
+ Alim Akhtar <alim.akhtar@samsung.com>, Inki Dae <inki.dae@samsung.com>, 
+ Kyungmin Park <kyungmin.park@samsung.com>, 
+ Seung-Woo Kim <sw0312.kim@samsung.com>
+X-Mailer: b4 0.14.2
+X-GND-State: clean
+X-GND-Score: -100
+X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvledvjeelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhfffugggtgffkfhgjvfevofesthejredtredtjeenucfhrhhomhepnfhutggrucevvghrvghsohhlihcuoehluhgtrgdrtggvrhgvshholhhisegsohhothhlihhnrdgtohhmqeenucggtffrrghtthgvrhhnpeeiieeuvdfftefgueduleehueetgffgjeeitedtteetkeeuueeuueekveevvdeuveenucfkphepvdgrtddvmeeijedtmedvtddvtdemvggrtddumegsvgegudemleehvgejmeefgeefmeeludefvgenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpedvrgdtvdemieejtdemvddtvddtmegvrgdtudemsggvgedumeelhegvjeemfeegfeemledufegvpdhhvghloheplgduledvrdduieekrddujeekrdduudekngdpmhgrihhlfhhrohhmpehluhgtrgdrtggvrhgvshholhhisegsohhothhlihhnrdgtohhmpdhnsggprhgtphhtthhopeeggedprhgtphhtthhopehjohhnrghssehkfihisghoohdrshgvpdhrtghpthhtohepkhihuhhnghhmihhnrdhprghrkhesshgrmhhsuhhnghdrtghomhdprhgtphhtthhopegrnhgurhiivghjrdhhrghjuggrsehinhhtvghlrdgtohhmpdhrtghpthhto
+ hepihhmgieslhhishhtshdrlhhinhhugidruggvvhdprhgtphhtthhopehlihhnuhigqdgrrhhmqdhmshhmsehvghgvrhdrkhgvrhhnvghlrdhorhhgpdhrtghpthhtohepthiiihhmmhgvrhhmrghnnhesshhushgvrdguvgdprhgtphhtthhopehkvghrnhgvlhesphgvnhhguhhtrhhonhhigidruggvpdhrtghpthhtoheplhhutggrrdgtvghrvghsohhlihessghoohhtlhhinhdrtghomh
+X-GND-Sasl: luca.ceresoli@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250509_035918_812402_5D1846E6 
-X-CRM114-Status: GOOD (  21.36  )
+X-CRM114-CacheID: sfid-20250509_065617_033587_C4621355 
+X-CRM114-Status: GOOD (  11.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,103 +103,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 09/05/2025 11:12, Louis-Alexis Eyraud wrote:
-> In the panfrost driver, the platform data of several Mediatek SoC
-> declares and uses several different power domains arrays according to
-> GPU core number present in the SoC:
-> - mediatek_mt8186_pm_domains (2 cores)
-> - mediatek_mt8183_pm_domains (3 cores)
-> - mediatek_mt8192_pm_domains (5 cores)
-> 
-> As they all are fixed arrays, starting with the same entries and the
-> platform data also has a power domains array length field
-> (num_pm_domains), they can be replaced by a single array, containing
-> all entries, if the num_pm_domains field of the platform data is also
-> set to the matching core number.
-> 
-> So, create a generic power domain array (mediatek_pm_domains) and use
-> it in the mt8183(b), mt8186, mt8188 and mt8192 platform data instead.
-> 
-> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+This reverts commit 3be618fab0e31b086cd6456280293119bb20fd41.
 
-Reviewed-by: Steven Price <steven.price@arm.com>
+This patch has been applied by mistake without needed review/ack by
+maintainers.
 
-> ---
->  drivers/gpu/drm/panfrost/panfrost_drv.c | 27 ++++++++++++---------------
->  1 file changed, 12 insertions(+), 15 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
-> index 7b899a9b2120c608e61dab9ca831ab8e907e8139..21b28bef84015793d9dba6b1e585891dc0dfcb6d 100644
-> --- a/drivers/gpu/drm/panfrost/panfrost_drv.c
-> +++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
-> @@ -789,6 +789,8 @@ static const struct panfrost_compatible amlogic_data = {
->  	.vendor_quirk = panfrost_gpu_amlogic_quirk,
->  };
->  
-> +static const char * const mediatek_pm_domains[] = { "core0", "core1", "core2",
-> +						    "core3", "core4" };
->  /*
->   * The old data with two power supplies for MT8183 is here only to
->   * keep retro-compatibility with older devicetrees, as DVFS will
-> @@ -798,48 +800,43 @@ static const struct panfrost_compatible amlogic_data = {
->   * coupled regulators instead.
->   */
->  static const char * const legacy_supplies[] = { "mali", "sram", NULL };
-> -static const char * const mediatek_mt8183_pm_domains[] = { "core0", "core1", "core2" };
->  static const struct panfrost_compatible mediatek_mt8183_data = {
->  	.num_supplies = ARRAY_SIZE(legacy_supplies) - 1,
->  	.supply_names = legacy_supplies,
-> -	.num_pm_domains = ARRAY_SIZE(mediatek_mt8183_pm_domains),
-> -	.pm_domain_names = mediatek_mt8183_pm_domains,
-> +	.num_pm_domains = 3,
-> +	.pm_domain_names = mediatek_pm_domains,
->  };
->  
->  static const struct panfrost_compatible mediatek_mt8183_b_data = {
->  	.num_supplies = ARRAY_SIZE(default_supplies) - 1,
->  	.supply_names = default_supplies,
-> -	.num_pm_domains = ARRAY_SIZE(mediatek_mt8183_pm_domains),
-> -	.pm_domain_names = mediatek_mt8183_pm_domains,
-> +	.num_pm_domains = 3,
-> +	.pm_domain_names = mediatek_pm_domains,
->  	.pm_features = BIT(GPU_PM_CLK_DIS) | BIT(GPU_PM_VREG_OFF),
->  };
->  
-> -static const char * const mediatek_mt8186_pm_domains[] = { "core0", "core1" };
->  static const struct panfrost_compatible mediatek_mt8186_data = {
->  	.num_supplies = ARRAY_SIZE(default_supplies) - 1,
->  	.supply_names = default_supplies,
-> -	.num_pm_domains = ARRAY_SIZE(mediatek_mt8186_pm_domains),
-> -	.pm_domain_names = mediatek_mt8186_pm_domains,
-> +	.num_pm_domains = 2,
-> +	.pm_domain_names = mediatek_pm_domains,
->  	.pm_features = BIT(GPU_PM_CLK_DIS) | BIT(GPU_PM_VREG_OFF),
->  };
->  
-> -/* MT8188 uses the same power domains and power supplies as MT8183 */
->  static const struct panfrost_compatible mediatek_mt8188_data = {
->  	.num_supplies = ARRAY_SIZE(default_supplies) - 1,
->  	.supply_names = default_supplies,
-> -	.num_pm_domains = ARRAY_SIZE(mediatek_mt8183_pm_domains),
-> -	.pm_domain_names = mediatek_mt8183_pm_domains,
-> +	.num_pm_domains = 3,
-> +	.pm_domain_names = mediatek_pm_domains,
->  	.pm_features = BIT(GPU_PM_CLK_DIS) | BIT(GPU_PM_VREG_OFF),
->  	.gpu_quirks = BIT(GPU_QUIRK_FORCE_AARCH64_PGTABLE),
->  };
->  
-> -static const char * const mediatek_mt8192_pm_domains[] = { "core0", "core1", "core2",
-> -							   "core3", "core4" };
->  static const struct panfrost_compatible mediatek_mt8192_data = {
->  	.num_supplies = ARRAY_SIZE(default_supplies) - 1,
->  	.supply_names = default_supplies,
-> -	.num_pm_domains = ARRAY_SIZE(mediatek_mt8192_pm_domains),
-> -	.pm_domain_names = mediatek_mt8192_pm_domains,
-> +	.num_pm_domains = 5,
-> +	.pm_domain_names = mediatek_pm_domains,
->  	.pm_features = BIT(GPU_PM_CLK_DIS) | BIT(GPU_PM_VREG_OFF),
->  	.gpu_quirks = BIT(GPU_QUIRK_FORCE_AARCH64_PGTABLE),
->  };
-> 
+---
+
+Cc: Louis Chauvet <louis.chauvet@bootlin.com>
+Cc: Alim Akhtar <alim.akhtar@samsung.com>
+Cc: Inki Dae <inki.dae@samsung.com>
+Cc: Kyungmin Park <kyungmin.park@samsung.com>
+Cc: Seung-Woo Kim <sw0312.kim@samsung.com>
+---
+ drivers/gpu/drm/exynos/exynos_drm_mic.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/gpu/drm/exynos/exynos_drm_mic.c b/drivers/gpu/drm/exynos/exynos_drm_mic.c
+index 29a8366513fa70655c6ceec9a09db0158e7bb169..b34ec67283370e3fa836c7df06e12e2fba524622 100644
+--- a/drivers/gpu/drm/exynos/exynos_drm_mic.c
++++ b/drivers/gpu/drm/exynos/exynos_drm_mic.c
+@@ -379,11 +379,11 @@ static int exynos_mic_probe(struct platform_device *pdev)
+ 	struct resource res;
+ 	int ret, i;
+ 
+-	mic = devm_drm_bridge_alloc(dev, struct exynos_mic, bridge, &mic_bridge_funcs);
+-	if (IS_ERR(mic)) {
++	mic = devm_kzalloc(dev, sizeof(*mic), GFP_KERNEL);
++	if (!mic) {
+ 		DRM_DEV_ERROR(dev,
+ 			      "mic: Failed to allocate memory for MIC object\n");
+-		ret = PTR_ERR(mic);
++		ret = -ENOMEM;
+ 		goto err;
+ 	}
+ 
+@@ -421,6 +421,7 @@ static int exynos_mic_probe(struct platform_device *pdev)
+ 
+ 	platform_set_drvdata(pdev, mic);
+ 
++	mic->bridge.funcs = &mic_bridge_funcs;
+ 	mic->bridge.of_node = dev->of_node;
+ 
+ 	drm_bridge_add(&mic->bridge);
+
+-- 
+2.49.0
 
 
