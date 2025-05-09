@@ -4,77 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC996C3ABBC
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 May 2025 10:28:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB789C3ABC3
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 May 2025 10:36:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=fR6bV/VWNkt0/i7Ae/A56SWMRQM5Q06PfZHqyQgKWJk=; b=W3ligcxIkL1+Rl5DPz72c/1CGB
-	nVdrMa092rjJOk6vdoXNCrQF/8yA6ujngOi5LkJsXYdy72SOESZdAGzOdZ8S6kLjuNy0uX4ly1Pr6
-	O//lUA7cEI8XjJAKH5i2pYDg58ou5SGi9IjG8nLWIy3lFIVIGtil6PoE+FeE32xf+KwKvTVNYFvto
-	SI45MyLIqBHJmnVosrZwvRChEjbtXT/on+eyemFf5hDxmPV4ol+aXwU3G3riWcT8ignD2Gy2yqm/h
-	RLPpfncWFchoXgY65hSocCXZgwkPBVQJWiqlsWQA5+7yHEIwUCPY3zFBcU0XQPIUDEgjVLkGJWPx2
-	un+JQC+w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WPafVRB97mEXudr2mY19uShaV1I8VrfBBuok7vkFHyc=; b=4glJOJlO6P/35uSa/ImxBF/mAT
+	mD0nyQBIaRya4KiAmInEn2pYvwlh3EC2HNr9wldHSheaVVNI5K4PMQnvIZ/J3NG39tld8bl8v372p
+	Ag7lqTbvMZWxvKx8stt1Lghb7vaewyAwYJ52bgZTjU4ZjrnNE4Zp9U1QViui+y/Gnme9+mepfqyxt
+	XOfnATw5gdW55VrfHax0fWCQ/YA+FRZLbQQBte0UqxLJqOvQc5wT3Zj2zOzxQE5aaB7FVYXmTfcsH
+	Isg9Sa8q7lLZE5GJk+PyCs2Yr6IPYipgsqoDBsIhhbPUopjXsQFhBhgtKEYSQkcjVV5Rt+1TWDpqU
+	yMZI+Icg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDKyJ-00000003H7W-3wK8;
-	Fri, 09 May 2025 10:28:51 +0000
-Received: from mx0a-0064b401.pphosted.com ([205.220.166.238])
+	id 1uDL63-00000003IQ6-2eLJ;
+	Fri, 09 May 2025 10:36:51 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDK1f-000000036u7-0BIe;
-	Fri, 09 May 2025 09:28:16 +0000
-Received: from pps.filterd (m0250810.ppops.net [127.0.0.1])
-	by mx0a-0064b401.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 5498UaT2012563;
-	Fri, 9 May 2025 02:28:09 -0700
-Received: from ala-exchng02.corp.ad.wrs.com (ala-exchng02.wrs.com [147.11.82.254])
-	by mx0a-0064b401.pphosted.com (PPS) with ESMTPS id 46dee3f05g-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
-	Fri, 09 May 2025 02:28:09 -0700 (PDT)
-Received: from ALA-EXCHNG02.corp.ad.wrs.com (147.11.82.254) by
- ALA-EXCHNG02.corp.ad.wrs.com (147.11.82.254) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.43; Fri, 9 May 2025 02:28:09 -0700
-Received: from pek-lpg-core1.wrs.com (147.11.136.210) by
- ALA-EXCHNG02.corp.ad.wrs.com (147.11.82.254) with Microsoft SMTP Server id
- 15.1.2507.43 via Frontend Transport; Fri, 9 May 2025 02:28:05 -0700
-From: <jianqi.ren.cn@windriver.com>
-To: <gregkh@linuxfoundation.org>, <stable@vger.kernel.org>
-CC: <patches@lists.linux.dev>, <linux-kernel@vger.kernel.org>,
-        <jianqi.ren.cn@windriver.com>, <fullwaywang@outlook.com>,
-        <tiffany.lin@mediatek.com>, <andrew-ct.chen@mediatek.com>,
-        <mchehab@kernel.org>, <matthias.bgg@gmail.com>,
-        <linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-        <linux-mediatek@lists.infradead.org>
-Subject: [PATCH 5.15.y] media: mtk-vcodec: potential null pointer deference in SCP
-Date: Fri, 9 May 2025 17:28:05 +0800
-Message-ID: <20250509092805.3242802-1-jianqi.ren.cn@windriver.com>
-X-Mailer: git-send-email 2.34.1
+	id 1uDKDj-000000038Sk-0kva
+	for linux-mediatek@lists.infradead.org;
+	Fri, 09 May 2025 09:40:44 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id B2072436A8;
+	Fri,  9 May 2025 09:40:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E03E9C4CEE9;
+	Fri,  9 May 2025 09:40:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1746783642;
+	bh=zOi3E5QjZZzh6FbcXdbt+4r97uniOxVsMHgA5rk3t1g=;
+	h=Subject:From:Reply-To:To:Cc:Date:In-Reply-To:References:From;
+	b=EUUM6z2V+hU8XPPcWpu+Hgqk62TvIzPueE/vNsDfR++yS60wS3gLqvyF6b1ynhihi
+	 M7Eo/WMpAZeDB2bucEQReUvEir/D8vpv73h7v8ukhZUloBZrCNJt5PLeSQmAsivm1Z
+	 FaAafYJSr28UJxocLvAMy9ak7x4OdNrY5HZPaY8KoToqJls+03SaLt59+uBqhvoB3y
+	 mDvCM+ajrjvbqCS2Fhx3pTspdk/gT4Pbv1tmdziu8+ijspkDp+UgVD7162NgPo5Vbs
+	 k1H9+FhhZ9SVPe9TTN/ls1zS85thExo6i5t45XqqEx8GubCtbWEAEmUfxXS57PZ0bZ
+	 3x9QW63rTs2wA==
+Message-ID: <534b9a609564c8bb6d90805dca7fb1d3a45a3abf.camel@kernel.org>
+Subject: Re: [PATCH v3] wifi: mt76: mt7925: fix missing hdr_trans_tlv
+ command for broadcast wtbl
+From: Niklas Schnelle <niks@kernel.org>
+To: Mingyen Hsieh <mingyen.hsieh@mediatek.com>, nbd@nbd.name, 
+	lorenzo@kernel.org
+Cc: deren.wu@mediatek.com, Sean.Wang@mediatek.com, Leon.Yen@mediatek.com, 
+	Michael.Lo@mediatek.com, allan.wang@mediatek.com,
+ Eric-SY.Chang@mediatek.com, 	km.lin@mediatek.com, Quan.Zhou@mediatek.com,
+ Ryder.Lee@mediatek.com, 	Shayne.Chen@mediatek.com,
+ linux-wireless@vger.kernel.org, 	linux-mediatek@lists.infradead.org,
+ stable@vger.kernel.org, Benjamin Xiao	 <fossben@pm.me>
+Date: Fri, 09 May 2025 11:40:36 +0200
+In-Reply-To: <20250509010421.403022-1-mingyen.hsieh@mediatek.com>
+References: <20250509010421.403022-1-mingyen.hsieh@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.1 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Proofpoint-ORIG-GUID: JPDXlUU78oy8GWbRgHEFoe2a2inWsnIL
-X-Authority-Analysis: v=2.4 cv=Pd3/hjhd c=1 sm=1 tr=0 ts=681dcaa9 cx=c_pps a=K4BcnWQioVPsTJd46EJO2w==:117 a=K4BcnWQioVPsTJd46EJO2w==:17 a=dt9VzEwgFbYA:10 a=VwQbUJbxAAAA:8 a=UqCG9HQmAAAA:8 a=t7CeM3EgAAAA:8 a=7f2alXSBUxmpNkzq_swA:9 a=FdTzh2GWekK77mhwV6Dw:22
-X-Proofpoint-GUID: JPDXlUU78oy8GWbRgHEFoe2a2inWsnIL
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNTA5MDA5MCBTYWx0ZWRfX0AUpPuVIhF8K 1HdCfPaiGDVHFj2cglJ38I3OcM4xeqGSTn07eE5r9XdZqr6686sT7Gg1PwGY3+c6FBMyYLo3tSM lUzAWuEHXkuNnNONvOwjcC7+HKBL07n3GWpoEMw02jmt2plgGBbUmXoBUkuZO968snYCbtbXf2f
- UhQvsrKK8Dhw6MKafkZhZ8231h6r1hkB5w0y+q9KHuGTVCVRpGvSawD0M81bKs0zLQrZKnncuxe 9YvtzfM5n8dPlMWubMACAR3Jp1Bl2JtF7kEPONa45/hjQ5uWh3YIFvSubthdqNS2idNz8hzDAgK Y+W1sjAK0uOpPe/BP8155ZLPaAoSFyEkMN1TDIbiBDLXKqsD/cc5TuXxiXOWS2CW6YOQ1P+wDSr
- 6NFwhCsQjomRz1HIQFuthMPdWD5He75UHnOsan+RZcNj5+bHzaKi0ytoZuBQHCw53rwQjsH/
-X-Sensitive_Customer_Information: Yes
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.0.736,FMLib:17.12.80.40
- definitions=2025-05-09_03,2025-05-08_04,2025-02-21_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 adultscore=0
- priorityscore=1501 mlxscore=0 suspectscore=0 spamscore=0 malwarescore=0
- impostorscore=0 clxscore=1015 mlxlogscore=999 phishscore=0 bulkscore=0
- lowpriorityscore=0 classifier=spam authscore=0 authtc=n/a authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.21.0-2504070000
- definitions=main-2505090090
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250509_022815_076931_847B4CAD 
-X-CRM114-Status: UNSURE (   9.45  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250509_024043_242040_EB78AA98 
+X-CRM114-Status: GOOD (  13.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,42 +75,57 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: niks@kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Fullway Wang <fullwaywang@outlook.com>
+On Fri, 2025-05-09 at 09:04 +0800, Mingyen Hsieh wrote:
+> From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+>=20
+> Ensure that the hdr_trans_tlv command is included in the broadcast wtbl t=
+o
+> prevent the IPv6 and multicast packet from being dropped by the chip.
+>=20
+> Cc: stable@vger.kernel.org
+> Fixes: cb1353ef3473 ("wifi: mt76: mt7925: integrate *mlo_sta_cmd and *sta=
+_cmd")
+> Reported-by: Benjamin Xiao <fossben@pm.me>
+> Tested-by: Niklas Schnelle <niks@kernel.org>
+> Link: https://lore.kernel.org/lkml/EmWnO5b-acRH1TXbGnkx41eJw654vmCR-8_xMB=
+aPMwexCnfkvKCdlU5u19CGbaapJ3KRu-l3B-tSUhf8CCQwL0odjo6Cd5YG5lvNeB-vfdg=3D@pm=
+.me/
+> ---
+> v2:
+>     add tested-by tag
+> v3:
+>     add more info in commit
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7925/mcu.c
+> index a42b584634ab..fd756f0d18f8 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+> @@ -2183,14 +2183,14 @@ mt7925_mcu_sta_cmd(struct mt76_phy *phy,
+>  			mt7925_mcu_sta_mld_tlv(skb, info->vif, info->link_sta->sta);
+>  			mt7925_mcu_sta_eht_mld_tlv(skb, info->vif, info->link_sta->sta);
+>  		}
+> -
+> -		mt7925_mcu_sta_hdr_trans_tlv(skb, info->vif, info->link_sta);
+>  	}
+> =20
+>  	if (!info->enable) {
+>  		mt7925_mcu_sta_remove_tlv(skb);
+>  		mt76_connac_mcu_add_tlv(skb, STA_REC_MLD_OFF,
+>  					sizeof(struct tlv));
+> +	} else {
+> +		mt7925_mcu_sta_hdr_trans_tlv(skb, info->vif, info->link_sta);
+>  	}
+> =20
+>  	return mt76_mcu_skb_send_msg(dev, skb, info->cmd, true);
 
-[ Upstream commit 53dbe08504442dc7ba4865c09b3bbf5fe849681b ]
-
-The return value of devm_kzalloc() needs to be checked to avoid
-NULL pointer deference. This is similar to CVE-2022-3113.
-
-Link: https://lore.kernel.org/linux-media/PH7PR20MB5925094DAE3FD750C7E39E01BF712@PH7PR20MB5925.namprd20.prod.outlook.com
-Signed-off-by: Fullway Wang <fullwaywang@outlook.com>
-Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
-[Minor conflict resolved due to code context change.]
-Signed-off-by: Jianqi Ren <jianqi.ren.cn@windriver.com>
-Signed-off-by: He Zhe <zhe.he@windriver.com>
----
-Verified the build test
----
- drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_scp.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_scp.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_scp.c
-index d8e66b645bd8..27f08b1d34d1 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_scp.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_scp.c
-@@ -65,6 +65,8 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_scp_init(struct mtk_vcodec_dev *dev)
- 	}
- 
- 	fw = devm_kzalloc(&dev->plat_dev->dev, sizeof(*fw), GFP_KERNEL);
-+	if (!fw)
-+		return ERR_PTR(-ENOMEM);
- 	fw->type = SCP;
- 	fw->ops = &mtk_vcodec_rproc_msg;
- 	fw->scp = scp;
--- 
-2.34.1
-
+Thank you for picking up my suggestions so quickly! This looks much
+better now.
 
