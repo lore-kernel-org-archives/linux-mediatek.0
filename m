@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AE78C3ABBC
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 May 2025 17:16:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D72CDC3ABC3
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 May 2025 17:16:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cl4vY9wWRhP9MQQ22uXEf+JbsC4WKOVLQ0Ge41ErRtY=; b=V/9pVKXJ4B/28Rf3oLSX+lBI6k
-	q3AioMN66ZJqdMyB9vEqDrfsBlyIPRoFYHUSIcWuB7xxiWkrOEw/rzkVlzvRcSp5lgYzVP2i2ZxS4
-	dsmX2LeuCIE5OdK8jJIM004ShSzvaHgk/qoycHKSKuVnAgdFpsIQlBYLZaPCFureUHbvplEfryIiN
-	SlH5Y1A91xnlJDk2LgIODgApig+DiQYewu6/rVf4pXKld2u+uca4ckw7fiSL44tQk28y1YsxhtNvs
-	peVFhXpnjJ+AG5CnLdJUFaJ9Xer8rnPFIGaXOd0lHfCoMSYdmznbugiA1Bikg05P3+VNXiwyEoO8U
-	bWA4DoEQ==;
+	bh=iP0T5oXi3Q3oEEAfrVPN8VR/ZE2JZKWe+VnJKpQR35M=; b=4NuSf7WvevmyFUlMNQ3PIxfR2v
+	WjnhOHx8xOCR2X6I/1WtKiipvWXOeVF27YiUrcHbstf7vShgXDm9PyvpK+EjNHdAt0LHV3XMXDsAn
+	RBFD4/1/pKmEUk4cvTJOiksT9Ln5RDto359iCMN7vL+NWP8kC5Kedku+llJHmqGgzT59n6cyEb+WY
+	xz8wQxG+B/9GJxRzDgi/gUXAK/iqBGLk1tpnur2y7i4fqugouKqIV5CYKlnM1M1kXhlfU2g+aCzCX
+	+qCqduwu/3oO+56KX+0LwmfZ30hdMagh52Hl9ZDmHEu8SS83qtncOfk4unMqfxM2MptdxYUG4hcAG
+	EZ+HBzMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDRKS-00000004PnQ-2Fbr;
-	Fri, 09 May 2025 17:16:08 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uDRKb-00000004PpQ-3Y5v;
+	Fri, 09 May 2025 17:16:17 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDP4t-00000003zm0-0BdB;
-	Fri, 09 May 2025 14:51:55 +0000
+	id 1uDP4v-00000003zmE-31Au;
+	Fri, 09 May 2025 14:51:58 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 2F71B6111F;
-	Fri,  9 May 2025 14:51:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 83500C4CEE4;
-	Fri,  9 May 2025 14:51:53 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id DA0565C6BA1;
+	Fri,  9 May 2025 14:49:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 49774C4CEE4;
+	Fri,  9 May 2025 14:51:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746802313;
-	bh=uR0aozr2O/tJXppiXBBx5w2+BaypfkdKR5QW5BGZkGQ=;
+	s=k20201202; t=1746802316;
+	bh=IHVpr0VzHpVvxO4VqdjE7KLzqR7krK7RWlRO2jMDmmk=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=P3g64sBXm9KrjwiFVFwe4CCEzhuGlCIjMpgxhqfsctDcUNr9Ie900BHmcDQfuaHD+
-	 4YA3fkRScotnI7liBZ5swLSSTtPiHgNMf1kJcQmZJ5oRYP/41GNFtVWqtBVdeAnUlf
-	 x3YEB5NvKcQYQKn+FmyOx1uGrIjz9DVblxgX02q+fjsPAv6Df8LlRDks0xvTEpmTmy
-	 JCbytoKwRv5vApoB5Ar8LrGwNlSwF6IWzh8ZxoqOV/u6KT5w7G00CQ+jgrUu2BCadc
-	 4qZqirTt/slR1KgLXVOyqljC3qdq6kQzcg/zXolXzDyK8+yKXaB64W2lawuNlEU/le
-	 vLbfyAqrVCBJQ==
+	b=Dhdr1I3/X6OyrTnlfJX49BUp1txYFHi5OMGTszsS1NyuvuV82tW31+qliuH3aRMWu
+	 hbLRoOsrvTJz9tdidHteM1P9GTUO3vp+ar2Zlec4H3muV3Gw9+Ik3m9vjU+ZrG2+fQ
+	 /WNSwb9EcXVxQIfEBFG9dGSTSeG1fubOre0P9mgdDqs4/+R3EmkoD6K1ZbodUN2Vmh
+	 zmtTzB8FasL6nKsXrEfpZm0i+6ztyAdMSd3rv8Bk2vPgxnOApPJMbLb2WZdMyztqVo
+	 hgwFSena5xa14lvhcqqgWbXOVXjepj8EPaK05zGqn2x0NZe3ineL5MT5NAx159ZjuB
+	 cfEMiEGBo8kYg==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Fri, 09 May 2025 16:51:33 +0200
-Subject: [PATCH net-next v2 1/2] dt-bindings: net: airoha: Add EN7581
- memory-region property
+Date: Fri, 09 May 2025 16:51:34 +0200
+Subject: [PATCH net-next v2 2/2] net: airoha: Add the capability to
+ allocate hw buffers in SRAM
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250509-airopha-desc-sram-v2-1-9dc3d8076dfb@kernel.org>
+Message-Id: <20250509-airopha-desc-sram-v2-2-9dc3d8076dfb@kernel.org>
 References: <20250509-airopha-desc-sram-v2-0-9dc3d8076dfb@kernel.org>
 In-Reply-To: <20250509-airopha-desc-sram-v2-0-9dc3d8076dfb@kernel.org>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
@@ -60,6 +60,9 @@ Cc: linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
  devicetree@vger.kernel.org
 X-Mailer: b4 0.14.2
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250509_075157_847447_A7FB18A5 
+X-CRM114-Status: GOOD (  15.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,47 +77,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce the memory-region and memory-region-names properties for the
-ethernet node available on EN7581 SoC. In order to improve performances,
-EN7581 SoC supports allocating buffers for hw forwarding queues in SRAM
-instead of DRAM if available on the system.
+In order to improve packet processing and packet forwarding
+performances, EN7581 SoC supports allocating buffers for hw forwarding
+queues in SRAM instead of DRAM if available on the system.
+Rely on SRAM for buffers allocation if available on the system and use
+DRAM as fallback.
 
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- .../devicetree/bindings/net/airoha,en7581-eth.yaml          | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ drivers/net/ethernet/airoha/airoha_eth.c | 57 +++++++++++++++++++++++++++-----
+ 1 file changed, 48 insertions(+), 9 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml b/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
-index 0fdd1126541774acacc783d98e4c089b2d2b85e2..6d22131ac2f9e28390b9e785ce33e8d983eafd0f 100644
---- a/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
-+++ b/Documentation/devicetree/bindings/net/airoha,en7581-eth.yaml
-@@ -57,6 +57,16 @@ properties:
-       - const: hsi-mac
-       - const: xfp-mac
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index 16c7896f931fd9532aa3b8cc78f41afc676aa117..b11c25442eb8c8c2b5aa45ded7a9d61e24aa2e4a 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -5,6 +5,7 @@
+  */
+ #include <linux/of.h>
+ #include <linux/of_net.h>
++#include <linux/of_reserved_mem.h>
+ #include <linux/platform_device.h>
+ #include <linux/tcp.h>
+ #include <linux/u64_stats_sync.h>
+@@ -1076,9 +1077,11 @@ static void airoha_qdma_cleanup_tx_queue(struct airoha_queue *q)
+ static int airoha_qdma_init_hfwd_queues(struct airoha_qdma *qdma)
+ {
+ 	struct airoha_eth *eth = qdma->eth;
++	int id = qdma - &eth->qdma[0];
+ 	dma_addr_t dma_addr;
+-	u32 status;
+-	int size;
++	const char *name;
++	int size, index;
++	u32 status, val;
  
-+  memory-region:
-+    items:
-+      - description: QDMA0 buffer memory
-+      - description: QDMA1 buffer memory
+ 	size = HW_DSCP_NUM * sizeof(struct airoha_qdma_fwd_desc);
+ 	qdma->hfwd.desc = dmam_alloc_coherent(eth->dev, size, &dma_addr,
+@@ -1088,12 +1091,45 @@ static int airoha_qdma_init_hfwd_queues(struct airoha_qdma *qdma)
+ 
+ 	airoha_qdma_wr(qdma, REG_FWD_DSCP_BASE, dma_addr);
+ 
+-	size = AIROHA_MAX_PACKET_SIZE * HW_DSCP_NUM;
+-	qdma->hfwd.q = dmam_alloc_coherent(eth->dev, size, &dma_addr,
+-					   GFP_KERNEL);
+-	if (!qdma->hfwd.q)
++	name = devm_kasprintf(eth->dev, GFP_KERNEL, "qdma%d-buf", id);
++	if (!name)
+ 		return -ENOMEM;
+ 
++	index = of_property_match_string(eth->dev->of_node,
++					 "memory-region-names", name);
++	if (index >= 0) { /* buffers in sram */
++		struct reserved_mem *rmem;
++		struct device_node *np;
++		void *q;
 +
-+  memory-region-names:
-+    items:
-+      - const: qdma0-buf
-+      - const: qdma1-buf
++		np = of_parse_phandle(eth->dev->of_node, "memory-region",
++				      index);
++		if (!np)
++			return -ENODEV;
 +
-   "#address-cells":
-     const: 1
- 
-@@ -140,6 +150,9 @@ examples:
-                      <GIC_SPI 49 IRQ_TYPE_LEVEL_HIGH>,
-                      <GIC_SPI 64 IRQ_TYPE_LEVEL_HIGH>;
- 
-+        memory-region = <&qdma0_buf>, <&qdma1_buf>;
-+        memory-region-names = "qdma0-buf", "qdma1-buf";
++		rmem = of_reserved_mem_lookup(np);
++		of_node_put(np);
 +
-         airoha,npu = <&npu>;
++		/* SRAM is actual memory and supports transparent access just
++		 * like DRAM. Hence we don't require __iomem being set and
++		 * we don't need to use accessor routines to read from or write
++		 * to SRAM.
++		 */
++		q = (void __force *)devm_ioremap(eth->dev, rmem->base,
++						 rmem->size);
++		if (!q)
++			return -ENOMEM;
++
++		qdma->hfwd.q = q;
++		dma_addr = rmem->base;
++	} else {
++		size = AIROHA_MAX_PACKET_SIZE * HW_DSCP_NUM;
++		qdma->hfwd.q = dmam_alloc_coherent(eth->dev, size, &dma_addr,
++						   GFP_KERNEL);
++		if (!qdma->hfwd.q)
++			return -ENOMEM;
++	}
++
+ 	airoha_qdma_wr(qdma, REG_FWD_BUF_BASE, dma_addr);
  
-         #address-cells = <1>;
+ 	airoha_qdma_rmw(qdma, REG_HW_FWD_DSCP_CFG,
+@@ -1101,11 +1137,14 @@ static int airoha_qdma_init_hfwd_queues(struct airoha_qdma *qdma)
+ 			FIELD_PREP(HW_FWD_DSCP_PAYLOAD_SIZE_MASK, 0));
+ 	airoha_qdma_rmw(qdma, REG_FWD_DSCP_LOW_THR, FWD_DSCP_LOW_THR_MASK,
+ 			FIELD_PREP(FWD_DSCP_LOW_THR_MASK, 128));
++
++	val = FIELD_PREP(HW_FWD_DESC_NUM_MASK, HW_DSCP_NUM) |
++	      LMGR_INIT_START;
++	if (index >= 0)
++		val |= LMGR_SRAM_MODE_MASK;
+ 	airoha_qdma_rmw(qdma, REG_LMGR_INIT_CFG,
+ 			LMGR_INIT_START | LMGR_SRAM_MODE_MASK |
+-			HW_FWD_DESC_NUM_MASK,
+-			FIELD_PREP(HW_FWD_DESC_NUM_MASK, HW_DSCP_NUM) |
+-			LMGR_INIT_START);
++			HW_FWD_DESC_NUM_MASK, val);
+ 
+ 	return read_poll_timeout(airoha_qdma_rr, status,
+ 				 !(status & LMGR_INIT_START), USEC_PER_MSEC,
 
 -- 
 2.49.0
