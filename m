@@ -4,56 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37BC9C3ABBC
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 May 2025 10:24:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC996C3ABBC
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 May 2025 10:28:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=fR6bV/VWNkt0/i7Ae/A56SWMRQM5Q06PfZHqyQgKWJk=; b=wKnwNX/n0dnH3ZlLMbLmhfqUZ2
-	XRStoLJ792odT5E7pV/Yzx1DsdSIPI6IuBhTB3tZPt68V+WfMMPzALEqWXTAhyR/cEfb0cyGqcw5E
-	gRm/BrysrzFFv/4MR9OZOUkrUAsuO5fTgGa7OCEfGJOaNY0ExgzIp4qc5mx6oL/7QqydSZ0ddZc45
-	bEsyZSq08+T1nbJLDvNVlhTJWh3YtZdFAIpwG6koUDDOn3X9JVot9mvoTy651O+xKaOapAaHqlviQ
-	o654MH1shdPnM76nymAtoGbxyuv2wDwvtgd2Aey2MMpqQuRTwwhVwvGRmScImVEfUlma9vf3UbG46
-	zC1NBi/A==;
+	bh=fR6bV/VWNkt0/i7Ae/A56SWMRQM5Q06PfZHqyQgKWJk=; b=W3ligcxIkL1+Rl5DPz72c/1CGB
+	nVdrMa092rjJOk6vdoXNCrQF/8yA6ujngOi5LkJsXYdy72SOESZdAGzOdZ8S6kLjuNy0uX4ly1Pr6
+	O//lUA7cEI8XjJAKH5i2pYDg58ou5SGi9IjG8nLWIy3lFIVIGtil6PoE+FeE32xf+KwKvTVNYFvto
+	SI45MyLIqBHJmnVosrZwvRChEjbtXT/on+eyemFf5hDxmPV4ol+aXwU3G3riWcT8ignD2Gy2yqm/h
+	RLPpfncWFchoXgY65hSocCXZgwkPBVQJWiqlsWQA5+7yHEIwUCPY3zFBcU0XQPIUDEgjVLkGJWPx2
+	un+JQC+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDKuR-00000003GJH-15uN;
-	Fri, 09 May 2025 10:24:51 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDJzs-000000036ZR-2Ha8;
-	Fri, 09 May 2025 09:26:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=fR6bV/VWNkt0/i7Ae/A56SWMRQM5Q06PfZHqyQgKWJk=; b=CUz9QRq7rZHtMAuDu79WCPeQRz
-	HuKpQHEYp5cy/VAQpl+jQ3rOV8ufyzpV8jo2iLGOvIWmKwFmAGqYQMSt4sOUh6AQPbRbFSbdeLwCv
-	fOA5l3WgCkqUVX69ZDlqrsajRSveZL9StyDVxWFNLadF0xwtzA/GXeEN54kq5A//tK9LRmaIhLJxT
-	VykDsBnzSIRE472V8JI3vA4sc4Av1fi9waeItcUjBp86UjlfaMssy/MYuQD65ZP7X1o5FMY4SgPx6
-	0gu7RNKEw8CABfHqcjTSkRoFBNhKtsHfchSmwVWtxsHBPKaTnlZCwI6GEOSKnvcclhu/s0ADLca8k
-	77QaHLWQ==;
+	id 1uDKyJ-00000003H7W-3wK8;
+	Fri, 09 May 2025 10:28:51 +0000
 Received: from mx0a-0064b401.pphosted.com ([205.220.166.238])
-	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1uDJzo-0000000GFQ8-1qoP;
-	Fri, 09 May 2025 09:26:23 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uDK1f-000000036u7-0BIe;
+	Fri, 09 May 2025 09:28:16 +0000
 Received: from pps.filterd (m0250810.ppops.net [127.0.0.1])
-	by mx0a-0064b401.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 5497o2Ag016013;
-	Fri, 9 May 2025 02:26:10 -0700
+	by mx0a-0064b401.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 5498UaT2012563;
+	Fri, 9 May 2025 02:28:09 -0700
 Received: from ala-exchng02.corp.ad.wrs.com (ala-exchng02.wrs.com [147.11.82.254])
-	by mx0a-0064b401.pphosted.com (PPS) with ESMTPS id 46dee3f040-1
+	by mx0a-0064b401.pphosted.com (PPS) with ESMTPS id 46dee3f05g-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
-	Fri, 09 May 2025 02:26:10 -0700 (PDT)
+	Fri, 09 May 2025 02:28:09 -0700 (PDT)
 Received: from ALA-EXCHNG02.corp.ad.wrs.com (147.11.82.254) by
  ALA-EXCHNG02.corp.ad.wrs.com (147.11.82.254) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.43; Fri, 9 May 2025 02:26:07 -0700
+ 15.1.2507.43; Fri, 9 May 2025 02:28:09 -0700
 Received: from pek-lpg-core1.wrs.com (147.11.136.210) by
  ALA-EXCHNG02.corp.ad.wrs.com (147.11.82.254) with Microsoft SMTP Server id
- 15.1.2507.43 via Frontend Transport; Fri, 9 May 2025 02:26:04 -0700
+ 15.1.2507.43 via Frontend Transport; Fri, 9 May 2025 02:28:05 -0700
 From: <jianqi.ren.cn@windriver.com>
 To: <gregkh@linuxfoundation.org>, <stable@vger.kernel.org>
 CC: <patches@lists.linux.dev>, <linux-kernel@vger.kernel.org>,
@@ -62,19 +48,19 @@ CC: <patches@lists.linux.dev>, <linux-kernel@vger.kernel.org>,
         <mchehab@kernel.org>, <matthias.bgg@gmail.com>,
         <linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
         <linux-mediatek@lists.infradead.org>
-Subject: [PATCH 5.10.y] media: mtk-vcodec: potential null pointer deference in SCP
-Date: Fri, 9 May 2025 17:26:03 +0800
-Message-ID: <20250509092603.3242559-1-jianqi.ren.cn@windriver.com>
+Subject: [PATCH 5.15.y] media: mtk-vcodec: potential null pointer deference in SCP
+Date: Fri, 9 May 2025 17:28:05 +0800
+Message-ID: <20250509092805.3242802-1-jianqi.ren.cn@windriver.com>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-Proofpoint-ORIG-GUID: SVL48-DeQqXfjwk7dSMV-d8Ty7ppsiPb
-X-Authority-Analysis: v=2.4 cv=Pd3/hjhd c=1 sm=1 tr=0 ts=681dca32 cx=c_pps a=K4BcnWQioVPsTJd46EJO2w==:117 a=K4BcnWQioVPsTJd46EJO2w==:17 a=dt9VzEwgFbYA:10 a=VwQbUJbxAAAA:8 a=UqCG9HQmAAAA:8 a=t7CeM3EgAAAA:8 a=7f2alXSBUxmpNkzq_swA:9 a=FdTzh2GWekK77mhwV6Dw:22
-X-Proofpoint-GUID: SVL48-DeQqXfjwk7dSMV-d8Ty7ppsiPb
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNTA5MDA5MCBTYWx0ZWRfX3BlONRt2NrMi rmvT9B9ItQ+WklX4O2Ah1qepzPf6Wn5w1eZPcPeGF9gu+SKZwjvHbRw9miLvmT6DMIzr6EtCQIQ Te+Q+dgJxCtAwxi8oQ8HdoOj8KT/l5OrCDEbbPVtPLc+7Gk0R7WyRaSc3JMBErxJ7dnZCtPdK4D
- wzDQQS3EYcNLZbLJ00GPVkcWf/NkBRLVXyX7WrERAK8yc3CAVfT7gpKh3IoprC0zkRVC4fRAEwk ESQDc6gO2B3X3bYZ4tyHgp2cVPVK3JYPeiyMOxq1umkWrSx+lyEwhBtbGH+zHivAYcQ03njaeSZ xc5m5nFIyiyX7oyEq2UgE4feopTUJevIjlT+oQR4clnMULo7ktQWMFJ25eFsF+Wq6G6pay98AiQ
- vBSGMw7MVX8dL7T5ajlODhPDEfYzM0sZtRgziUBQb+HZce0Y9W7zGbvsT4bg+EFZ/dWfLI5X
+X-Proofpoint-ORIG-GUID: JPDXlUU78oy8GWbRgHEFoe2a2inWsnIL
+X-Authority-Analysis: v=2.4 cv=Pd3/hjhd c=1 sm=1 tr=0 ts=681dcaa9 cx=c_pps a=K4BcnWQioVPsTJd46EJO2w==:117 a=K4BcnWQioVPsTJd46EJO2w==:17 a=dt9VzEwgFbYA:10 a=VwQbUJbxAAAA:8 a=UqCG9HQmAAAA:8 a=t7CeM3EgAAAA:8 a=7f2alXSBUxmpNkzq_swA:9 a=FdTzh2GWekK77mhwV6Dw:22
+X-Proofpoint-GUID: JPDXlUU78oy8GWbRgHEFoe2a2inWsnIL
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNTA5MDA5MCBTYWx0ZWRfX0AUpPuVIhF8K 1HdCfPaiGDVHFj2cglJ38I3OcM4xeqGSTn07eE5r9XdZqr6686sT7Gg1PwGY3+c6FBMyYLo3tSM lUzAWuEHXkuNnNONvOwjcC7+HKBL07n3GWpoEMw02jmt2plgGBbUmXoBUkuZO968snYCbtbXf2f
+ UhQvsrKK8Dhw6MKafkZhZ8231h6r1hkB5w0y+q9KHuGTVCVRpGvSawD0M81bKs0zLQrZKnncuxe 9YvtzfM5n8dPlMWubMACAR3Jp1Bl2JtF7kEPONa45/hjQ5uWh3YIFvSubthdqNS2idNz8hzDAgK Y+W1sjAK0uOpPe/BP8155ZLPaAoSFyEkMN1TDIbiBDLXKqsD/cc5TuXxiXOWS2CW6YOQ1P+wDSr
+ 6NFwhCsQjomRz1HIQFuthMPdWD5He75UHnOsan+RZcNj5+bHzaKi0ytoZuBQHCw53rwQjsH/
 X-Sensitive_Customer_Information: Yes
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.0.736,FMLib:17.12.80.40
@@ -86,8 +72,8 @@ X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 adultsc
  route=outbound adjust=0 reason=mlx scancount=1 engine=8.21.0-2504070000
  definitions=main-2505090090
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250509_102621_005882_86B4DD3B 
-X-CRM114-Status: UNSURE (   9.40  )
+X-CRM114-CacheID: sfid-20250509_022815_076931_847B4CAD 
+X-CRM114-Status: UNSURE (   9.45  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
