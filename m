@@ -4,66 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB789C3ABC3
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 May 2025 10:36:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCA11C3ABBC
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 May 2025 11:02:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WPafVRB97mEXudr2mY19uShaV1I8VrfBBuok7vkFHyc=; b=4glJOJlO6P/35uSa/ImxBF/mAT
-	mD0nyQBIaRya4KiAmInEn2pYvwlh3EC2HNr9wldHSheaVVNI5K4PMQnvIZ/J3NG39tld8bl8v372p
-	Ag7lqTbvMZWxvKx8stt1Lghb7vaewyAwYJ52bgZTjU4ZjrnNE4Zp9U1QViui+y/Gnme9+mepfqyxt
-	XOfnATw5gdW55VrfHax0fWCQ/YA+FRZLbQQBte0UqxLJqOvQc5wT3Zj2zOzxQE5aaB7FVYXmTfcsH
-	Isg9Sa8q7lLZE5GJk+PyCs2Yr6IPYipgsqoDBsIhhbPUopjXsQFhBhgtKEYSQkcjVV5Rt+1TWDpqU
-	yMZI+Icg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=0VpdCOgOOz9NRwo3MRjKCgOUcTX4X9WE2hTMi2G1SPY=; b=5Db8WiFSoMsY+4
+	8vTcqdAQ7rzqSXAf9fqj9l/PU4mtZRw6rfMpN5QNhaWbY0CppqJqiqTzICWOSVScYionSxHOB/nui
+	kMhEC+HjcHasTCBgPmufUmiXR9zOKjGZIkGav0zeJIdIkNh57/sss+d9yhuY6GHYE2iPGHAr15w7d
+	KkNSsNPg6/mkrSzgBUGhrAm0aLbNtuRpOntqzE8xwV7i5018rbjc5gGNq5ezzbqOvWmnFc6pY21md
+	N0r9tk3by/SxBZHhgkmu1dN6rKKzfFH0BBAdL23OCgYuKDRrXtIA2AO1KMEGPsU1a9oYd7Wn2YTcT
+	x4hxtrfCXKPuI8duMs2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDL63-00000003IQ6-2eLJ;
-	Fri, 09 May 2025 10:36:51 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uDLVE-00000003Myg-3QBL;
+	Fri, 09 May 2025 11:02:52 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDKDj-000000038Sk-0kva
-	for linux-mediatek@lists.infradead.org;
-	Fri, 09 May 2025 09:40:44 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B2072436A8;
-	Fri,  9 May 2025 09:40:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E03E9C4CEE9;
-	Fri,  9 May 2025 09:40:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746783642;
-	bh=zOi3E5QjZZzh6FbcXdbt+4r97uniOxVsMHgA5rk3t1g=;
-	h=Subject:From:Reply-To:To:Cc:Date:In-Reply-To:References:From;
-	b=EUUM6z2V+hU8XPPcWpu+Hgqk62TvIzPueE/vNsDfR++yS60wS3gLqvyF6b1ynhihi
-	 M7Eo/WMpAZeDB2bucEQReUvEir/D8vpv73h7v8ukhZUloBZrCNJt5PLeSQmAsivm1Z
-	 FaAafYJSr28UJxocLvAMy9ak7x4OdNrY5HZPaY8KoToqJls+03SaLt59+uBqhvoB3y
-	 mDvCM+ajrjvbqCS2Fhx3pTspdk/gT4Pbv1tmdziu8+ijspkDp+UgVD7162NgPo5Vbs
-	 k1H9+FhhZ9SVPe9TTN/ls1zS85thExo6i5t45XqqEx8GubCtbWEAEmUfxXS57PZ0bZ
-	 3x9QW63rTs2wA==
-Message-ID: <534b9a609564c8bb6d90805dca7fb1d3a45a3abf.camel@kernel.org>
-Subject: Re: [PATCH v3] wifi: mt76: mt7925: fix missing hdr_trans_tlv
- command for broadcast wtbl
-From: Niklas Schnelle <niks@kernel.org>
-To: Mingyen Hsieh <mingyen.hsieh@mediatek.com>, nbd@nbd.name, 
-	lorenzo@kernel.org
-Cc: deren.wu@mediatek.com, Sean.Wang@mediatek.com, Leon.Yen@mediatek.com, 
-	Michael.Lo@mediatek.com, allan.wang@mediatek.com,
- Eric-SY.Chang@mediatek.com, 	km.lin@mediatek.com, Quan.Zhou@mediatek.com,
- Ryder.Lee@mediatek.com, 	Shayne.Chen@mediatek.com,
- linux-wireless@vger.kernel.org, 	linux-mediatek@lists.infradead.org,
- stable@vger.kernel.org, Benjamin Xiao	 <fossben@pm.me>
-Date: Fri, 09 May 2025 11:40:36 +0200
-In-Reply-To: <20250509010421.403022-1-mingyen.hsieh@mediatek.com>
-References: <20250509010421.403022-1-mingyen.hsieh@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.1 
+	id 1uDKkQ-00000003EF6-3zzf;
+	Fri, 09 May 2025 10:14:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1746785668;
+	bh=J3AVuez6F8/uBFou7ZP0zI9dTAr1AfcxcSWQ64Wq6Ho=;
+	h=From:Subject:Date:To:Cc:From;
+	b=EzzwIC9zU9zuT3hTjvO4xKeOx1bOmO9tADkqCj3u/IDt6zrvyuVN9B/2xaOARHcLQ
+	 pASv9LvaTFRJmisriHl5v58i3zW78L2HNA/Bw/17UXTxgpzOuFNCdNxUHdNaeQcNUx
+	 pysEApWkgrO7HE2IPSBWK5uH8bE6LTpdWfpebEaTpVOF6WP2eHxMJvvnsRJwtComdo
+	 TDlfEW2M50VKt7b9xyA3Wom6XpPx2B+kh7Tk6PJnnwXEzEhyJbePeMegdxu6TgovqI
+	 TNJaHJDwI81sUam9fjmZlis1KGm+HOhCqcecKDSk5Nut66jTZoDIDpUBYzk8N+Dhdk
+	 qYYSECAPZ66Zw==
+Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: laeyraud)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id CC6DC17E0202;
+	Fri,  9 May 2025 12:14:26 +0200 (CEST)
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Subject: [PATCH v6 0/5] Add Mali GPU support for Mediatek MT8370 SoC
+Date: Fri, 09 May 2025 12:12:46 +0200
+Message-Id: <20250509-mt8370-enable-gpu-v6-0-2833888cb1d3@collabora.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAB7VHWgC/23OQW7DIBAF0KtYrEs1gMeYrHqPqgvA4wTJNil2r
+ FSR717iVEqksvwj/ffnxmZKgWZ2qG4s0RrmEKccmreK+ZOdjsRDlzOTIBGEQD4urdLAabJuIH4
+ 8X7hyTY8Ge9uojuXeOVEfrrv5+fXIib4vmV4eR+bsTNzHcQzLoZrouvCdR5DsXjiFeYnpZ/9pF
+ Xvjb74pzK+CAwfbON2SkejbDx+HwbqY7Hve2MVVvigKSorMihdYd9AK7ByWFPVUJOiSorKikYw
+ zIHvjRUmpXxQhSkp9V3RHTluNXqqSgk8lOyUFs2JakrV2CgT++2Xbtl8YqK9R/wEAAA==
+X-Change-ID: 20250115-mt8370-enable-gpu-3b6f595fa63d
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Boris Brezillon <boris.brezillon@collabora.com>, 
+ Steven Price <steven.price@arm.com>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, 
+ Conor Dooley <conor.dooley@microchip.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1746785666; l=7991;
+ i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
+ bh=J3AVuez6F8/uBFou7ZP0zI9dTAr1AfcxcSWQ64Wq6Ho=;
+ b=zJOdklpSG6ehqy0yT39gJGPC2ayJ7OW+MMwKPkyB2JR+xh87mdflkvl1EIY+/pLmO/CbXx2Vn
+ x61pnKwk7deAF8w3Hsl2vmZ0iAvBdTxfNbr9ZSU2r/HRBNAS6YedDrI
+X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
+ pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250509_024043_242040_EB78AA98 
-X-CRM114-Status: GOOD (  13.13  )
+X-CRM114-CacheID: sfid-20250509_031431_163312_303CDC88 
+X-CRM114-Status: GOOD (  20.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,57 +92,172 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: niks@kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2025-05-09 at 09:04 +0800, Mingyen Hsieh wrote:
-> From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
->=20
-> Ensure that the hdr_trans_tlv command is included in the broadcast wtbl t=
-o
-> prevent the IPv6 and multicast packet from being dropped by the chip.
->=20
-> Cc: stable@vger.kernel.org
-> Fixes: cb1353ef3473 ("wifi: mt76: mt7925: integrate *mlo_sta_cmd and *sta=
-_cmd")
-> Reported-by: Benjamin Xiao <fossben@pm.me>
-> Tested-by: Niklas Schnelle <niks@kernel.org>
-> Link: https://lore.kernel.org/lkml/EmWnO5b-acRH1TXbGnkx41eJw654vmCR-8_xMB=
-aPMwexCnfkvKCdlU5u19CGbaapJ3KRu-l3B-tSUhf8CCQwL0odjo6Cd5YG5lvNeB-vfdg=3D@pm=
-.me/
-> ---
-> v2:
->     add tested-by tag
-> v3:
->     add more info in commit
-> ---
->  drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/ne=
-t/wireless/mediatek/mt76/mt7925/mcu.c
-> index a42b584634ab..fd756f0d18f8 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-> @@ -2183,14 +2183,14 @@ mt7925_mcu_sta_cmd(struct mt76_phy *phy,
->  			mt7925_mcu_sta_mld_tlv(skb, info->vif, info->link_sta->sta);
->  			mt7925_mcu_sta_eht_mld_tlv(skb, info->vif, info->link_sta->sta);
->  		}
-> -
-> -		mt7925_mcu_sta_hdr_trans_tlv(skb, info->vif, info->link_sta);
->  	}
-> =20
->  	if (!info->enable) {
->  		mt7925_mcu_sta_remove_tlv(skb);
->  		mt76_connac_mcu_add_tlv(skb, STA_REC_MLD_OFF,
->  					sizeof(struct tlv));
-> +	} else {
-> +		mt7925_mcu_sta_hdr_trans_tlv(skb, info->vif, info->link_sta);
->  	}
-> =20
->  	return mt76_mcu_skb_send_msg(dev, skb, info->cmd, true);
+This patchset adds the support of the ARM Mali G57 MC2 GPU (Valhall-JM,
+dual core), integrated in the Mediatek MT8370 SoC, to the panfrost
+driver and to the mt8370.dtsi include file.
 
-Thank you for picking up my suggestions so quickly! This looks much
-better now.
+Since v4 patchset was sent, the [1] patchset adds in panfrost driver
+the AARCH64_4K page table format support and enablement for Mediatek
+SoC with integrated Arm Mali-G57, already supported in panfrost driver
+(like MT8188, MT8192, MT8195, MT8390, MT8395...).
+As MT8370 SoC is a less powerful variant of MT8390 (same GPU but with
+one less core for MT8370), I've reworked the second patch
+('drm/panfrost: Add support for Mali on the MT8370 SoC') to enable the
+AARCH64_4K mode on this SoC as well by adding specific MT8370 platform
+data to set the needed flag.
+The previous patch revision uses MT8186 platform data because despite
+having different GPU architecture (Mali G52 2EE MC2 for MT8186, making
+them not compatible), using the same plaform data, for describing the
+same power management features only, was okay.
+But now, the platform data also contains the GPU configuration quirk
+bitfield that needs to be modified to enable the AARCH64_4K page table
+format, and in order not to change MT8186 behaviour, I add specific
+MT8370 platform data.
+
+I've tested this patchset on a Mediatek Genio 510 EVK board,
+with a kernel based on linux-next (tag: next-20250502).
+
+The panfrost driver probed with the following messages:
+```
+panfrost 13000000.gpu: clock rate = 390000000
+panfrost 13000000.gpu: mali-g57 id 0x9093 major 0x0 minor 0x0 status 0x0
+panfrost 13000000.gpu: features: 00000000,000019f7, issues: 00000003,
+  80000400
+panfrost 13000000.gpu: Features: L2:0x08130206 Shader:0x00000000
+  Tiler:0x00000809 Mem:0x1 MMU:0x00002830 AS:0xff JS:0x7
+panfrost 13000000.gpu: shader_present=0x5 l2_present=0x1
+[drm] Initialized panfrost 1.3.0 for 13000000.gpu on minor 0
+```
+
+Running glmark2-es2-drm is also OK:
+```
+=======================================================
+    glmark2 2023.01
+=======================================================
+    OpenGL Information
+    GL_VENDOR:      Mesa
+    GL_RENDERER:    Mali-G57 (Panfrost)
+    GL_VERSION:     OpenGL ES 3.1 Mesa 25.0.3-1
+    Surface Config: buf=32 r=8 g=8 b=8 a=8 depth=24 stencil=0 samples=0
+    Surface Size:   1200x1920 fullscreen
+=======================================================
+[build] use-vbo=false: FPS: 952 FrameTime: 1.051 ms
+[build] use-vbo=true: FPS: 983 FrameTime: 1.018 ms
+[texture] texture-filter=nearest: FPS: 906 FrameTime: 1.105 ms
+[texture] texture-filter=linear: FPS: 908 FrameTime: 1.102 ms
+[texture] texture-filter=mipmap: FPS: 883 FrameTime: 1.134 ms
+[shading] shading=gouraud: FPS: 838 FrameTime: 1.194 ms
+[shading] shading=blinn-phong-inf: FPS: 778 FrameTime: 1.287 ms
+[shading] shading=phong: FPS: 583 FrameTime: 1.717 ms
+[shading] shading=cel: FPS: 553 FrameTime: 1.809 ms
+[bump] bump-render=high-poly: FPS: 573 FrameTime: 1.747 ms
+[bump] bump-render=normals: FPS: 868 FrameTime: 1.153 ms
+[bump] bump-render=height: FPS: 707 FrameTime: 1.415 ms
+[effect2d] kernel=0,1,0;1,-4,1;0,1,0;: FPS: 454 FrameTime: 2.204 ms
+[effect2d] kernel=1,1,1,1,1;1,1,1,1,1;1,1,1,1,1;: FPS: 172 FrameTime:
+  5.843 ms
+[pulsar] light=false:quads=5:texture=false: FPS: 770 FrameTime:
+  1.300 ms
+[desktop] blur-radius=5:effect=blur:passes=1:separable=true:windows=4:
+  FPS: 161 FrameTime: 6.235 ms
+[desktop] effect=shadow:windows=4: FPS: 484 FrameTime: 2.069 ms
+[buffer] columns=200:interleave=false:update-dispersion=0.9:update-fraction
+  =0.5:update-method=map: FPS: 512 FrameTime: 1.955 ms
+[buffer] columns=200:interleave=false:update-dispersion=0.9:update-fraction
+  =0.5:update-method=subdata: FPS: 513 FrameTime: 1.952 ms
+[buffer] columns=200:interleave=true:update-dispersion=0.9:update-fraction
+  =0.5:update-method=map: FPS: 577 FrameTime: 1.735 ms
+[ideas] speed=duration: FPS: 448 FrameTime: 2.235 ms
+[jellyfish] <default>: FPS: 226 FrameTime: 4.440 ms
+[terrain] <default>: FPS: 38 FrameTime: 26.861 ms
+[shadow] <default>: FPS: 328 FrameTime: 3.051 ms
+[refract] <default>: FPS: 72 FrameTime: 13.937 ms
+[conditionals] fragment-steps=0:vertex-steps=0: FPS: 844 FrameTime:
+  1.186 ms
+[conditionals] fragment-steps=5:vertex-steps=0: FPS: 685 FrameTime: 
+  1.462 ms
+[conditionals] fragment-steps=0:vertex-steps=5: FPS: 833 FrameTime:
+  1.201 ms
+[function] fragment-complexity=low:fragment-steps=5: FPS: 830 FrameTime:
+  1.205 ms
+[function] fragment-complexity=medium:fragment-steps=5: FPS: 525 FrameTime:
+  1.905 ms
+[loop] fragment-loop=false:fragment-steps=5:vertex-steps=5: FPS: 837
+  FrameTime: 1.195 ms
+[loop] fragment-steps=5:fragment-uniform=false:vertex-steps=5: FPS: 835 
+  FrameTime: 1.199 ms
+[loop] fragment-steps=5:fragment-uniform=true:vertex-steps=5: FPS: 550
+  FrameTime: 1.820 ms
+=======================================================
+                                  glmark2 Score: 611 
+=======================================================
+```
+
+[1] https://lore.kernel.org/dri-devel/20250324185801.168664-1-ariel.dalessandro@collabora.com/
+
+Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+---
+Changes in v6:
+- Add two new patches to commonize and drop duplicated data related to 
+  the power domain and supplies definitions for Mediatek SoC
+- Remove useless comment and rework MT8370 platform data to use
+  mediatek_pm_domains and default_supplies arrays in 'drm/panfrost: Add
+  support for Mali on the MT8370 SoC'
+- Update code-review trailer
+- Link to v5: https://lore.kernel.org/r/20250502-mt8370-enable-gpu-v5-0-98e247b30151@collabora.com
+
+Changes in v5:
+- Rebase on linux-next (tqg: next-2020501)
+- Rework 'drm/panfrost: Add support for Mali on the MT8370 SoC' patch
+  to have MT8370 support with its AARCH64_4K page table format support enabled 
+- Drop code-review trailers from 'drm/panfrost: Add support for Mali on
+  the MT8370 SoC' patch due to major changes in content and commit message
+- Add ack trailer for 'dt-bindings: gpu: mali-bifrost: Add compatible 
+  for MT8370 SoC' patch
+- Add glmark2-es2-drm benchmark results in cover letter
+- Link to v4: https://lore.kernel.org/r/20250211-mt8370-enable-gpu-v4-0-77deb7a75c23@collabora.com
+
+Changes in v4:
+- Add warning comment in mt8370.dtsi about GPU node override
+- Reword "dt-bindings: gpu: mali-bifrost: Add compatible for MT8370
+  SoC" commit message
+- Add code-review trailers
+- Link to v3: https://lore.kernel.org/r/20250207-mt8370-enable-gpu-v3-0-75e9b902f9c1@collabora.com
+
+Changes in v3:
+- Rebased on linux-next (tag: next-20250207)
+- Remove prerequisite change/patch ids
+- Reword commit messages to better explicit compatible needs
+- Link to v2: https://lore.kernel.org/r/20250130-mt8370-enable-gpu-v2-0-c154d0815db5@collabora.com
+
+Changes in v2:
+- Rework "drm/panfrost: Add support for Mali on the MT8370 SoC" to avoid
+  data structure duplication, as requested by Krzysztof Kozlowski
+- Reword commit messages to use imperative mood and make new compatible
+  need more explicit
+- Link to v1: https://lore.kernel.org/r/20250116-mt8370-enable-gpu-v1-0-0a6b78e925c8@collabora.com
+
+---
+Louis-Alexis Eyraud (5):
+      dt-bindings: gpu: mali-bifrost: Add compatible for MT8370 SoC
+      drm/panfrost: Drop duplicated Mediatek supplies arrays
+      drm/panfrost: Commonize Mediatek power domain array definitions
+      drm/panfrost: Add support for Mali on the MT8370 SoC
+      arm64: dts: mediatek: mt8370: Enable gpu support
+
+ .../devicetree/bindings/gpu/arm,mali-bifrost.yaml  |  5 +-
+ arch/arm64/boot/dts/mediatek/mt8370.dtsi           | 16 ++++++
+ drivers/gpu/drm/panfrost/panfrost_drv.c            | 61 ++++++++++++----------
+ 3 files changed, 53 insertions(+), 29 deletions(-)
+---
+base-commit: 1c51b1ba38c07e4f999802eb708bf798dd5f5d1b
+change-id: 20250115-mt8370-enable-gpu-3b6f595fa63d
+
+Best regards,
+-- 
+Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+
 
