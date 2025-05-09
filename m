@@ -4,78 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFE5EC3ABBC
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 May 2025 11:16:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DA71C3ABC3
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 May 2025 11:47:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GMja8MzF4lJ9N3IYREdz00CybaZrxQQg0o3RyFEH1I4=; b=fGYx0l+jd4R+y81stq0aLq4q8z
-	ehy+QGpjiBw6QoelqT0AbcQ3wjjmFGoPFHdzIaMcSGvH1P7dcV+SkGZFCTad1c0asjtG51Znx1MEE
-	yQYWAUWp2xRUa0d1YeeH85cIvYplcFN49IjFjUT+mxzcmEqeRkKsb2PdmUdBxnVFnQDiNO+Sv2DV7
-	hfAN7eV9ALTnf+qFLGPPWcxjQm8cskJJsjztFGvLNx3O0qdsRkityxR5jzS710pM8WecphvBwPPnt
-	DNSpYr5e4lTcJhWAvXmAFi/3vXFOD/rOgIjmq0MmFMkqIUrJyMvXRTBZmjFvo8IUpJlQVrogjw/FM
-	MslO5JoA==;
+	bh=u1NbxQ3NjkbkS3b+tER0/V/TTtVdvsyE4Uw7iAKKd+c=; b=TIRZKiMpVfVNTtOEWdo4GCTrLA
+	geYVVG0ojP3XHiJ21dTev39TyHvGrSlkAGlGM0oGAmsb7oZsRTcxCDjPfUhdFz7YMainLS1FJQuV6
+	aHTdeFPCJCd0Q9Uiik7M4urYLNJcZeamdDKbcpaGqaKQyxWV8SrYVhgGZeSrOafsR9tDFSVKSEn0M
+	EGMG//QBshvUyVAyOG4HB7VRHdupzCQ85TiRKegagKqrWHfg/hWbsW44RvxC2D1j+vFbJD5rISbu+
+	rde8CtDZiuKTS+nenKDsZkNIePhkRy3/C38YaGIDAZieaQiQ0QDnbQGoIPelo53r/1F+i1oSJFXT7
+	SmQ6MfKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDLin-00000003PNL-3r5l;
-	Fri, 09 May 2025 11:16:53 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDKkW-00000003EJz-3FXN;
-	Fri, 09 May 2025 10:14:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1746785675;
-	bh=Nh/3NP0bjRTX7YboruB3JZ2xLOeP0c8eAjI6a96C+Ns=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=SWmuL2DkadT8glMPTDJkD0fHkph5ozcxmQp3otwW2hV+Urzlx+jkib0P1Y8sb3oGe
-	 uKCPCpGQ6H9FjoCKG/r2xOWmJcME7cBaeX+8diGKPRYaEWqnpwnWNvNHkIiwiDIiP7
-	 N+AdgLixstcmZuk72b6VF9t0ITdJGRrAFufuzd3GAHmQRqukFYXhYTd6xqpjw+I3Jl
-	 1/FxFzrk9J7gEyjhaMB+VHsCDb4qDiKn50nb8oGA3/AfuRUFfsdJchWHG7Zrw/ZiWa
-	 Ttl8nUMcmFvjQ8viGKfD2E741vtKllWNJlCFELdT1Bai9qGk3qI05BI1SkfZv+r0hx
-	 zupU0gzgvnZlw==
-Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3792117E05A6;
-	Fri,  9 May 2025 12:14:34 +0200 (CEST)
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Fri, 09 May 2025 12:12:51 +0200
-Subject: [PATCH v6 5/5] arm64: dts: mediatek: mt8370: Enable gpu support
+	id 1uDMC1-00000003TgG-0RSg;
+	Fri, 09 May 2025 11:47:05 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uDLRk-00000003MSQ-0atY;
+	Fri, 09 May 2025 10:59:17 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 469351595;
+	Fri,  9 May 2025 03:59:02 -0700 (PDT)
+Received: from [10.1.35.18] (e122027.cambridge.arm.com [10.1.35.18])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id DAB863F58B;
+	Fri,  9 May 2025 03:59:09 -0700 (PDT)
+Message-ID: <124b8718-1a8e-4cf2-99e2-604fe63ae132@arm.com>
+Date: Fri, 9 May 2025 11:59:07 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250509-mt8370-enable-gpu-v6-5-2833888cb1d3@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 2/5] drm/panfrost: Drop duplicated Mediatek supplies
+ arrays
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 References: <20250509-mt8370-enable-gpu-v6-0-2833888cb1d3@collabora.com>
-In-Reply-To: <20250509-mt8370-enable-gpu-v6-0-2833888cb1d3@collabora.com>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Boris Brezillon <boris.brezillon@collabora.com>, 
- Steven Price <steven.price@arm.com>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1746785666; l=1948;
- i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=Nh/3NP0bjRTX7YboruB3JZ2xLOeP0c8eAjI6a96C+Ns=;
- b=eS5XUwVylAb8iDUak8oAOPDL805+h1Snt1WhfhP5/wiMk6RaACqriIaEcPBEjxh/02dQm1DLC
- cEMADU1uaGeA0DdlZO8WNI/tOi61KEvy5ydd1mr83tlCL9GPmWF18Tg
-X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
- pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
+ <20250509-mt8370-enable-gpu-v6-2-2833888cb1d3@collabora.com>
+From: Steven Price <steven.price@arm.com>
+Content-Language: en-GB
+In-Reply-To: <20250509-mt8370-enable-gpu-v6-2-2833888cb1d3@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250509_031436_961493_8337C597 
-X-CRM114-Status: GOOD (  12.74  )
+X-CRM114-CacheID: sfid-20250509_035916_271282_9FBA4597 
+X-CRM114-Status: GOOD (  16.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,58 +74,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a new gpu node in mt8370.dtsi to enable support for the
-ARM Mali G57 MC2 GPU (Valhall-JM) found on the MT8370 SoC, using the
-Panfrost driver.
+On 09/05/2025 11:12, Louis-Alexis Eyraud wrote:
+> In the panfrost driver, the platform data of several Mediatek SoC
+> declares and uses custom supplies array definitions
+> (mediatek_mt8192_supplies, mediatek_mt8183_b_supplies), that are the
+> same as default_supplies (used by default platform data).
+> 
+> So drop these duplicated definitions and use default_supplies instead.
+> Also, rename mediatek_mt8183_supplies to a more generic name too
+> (legacy_supplies).
+> 
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
-On a Mediatek Genio 510 EVK board, the panfrost driver probed with the
-following message:
-```
-panfrost 13000000.gpu: clock rate = 390000000
-panfrost 13000000.gpu: mali-g57 id 0x9093 major 0x0 minor 0x0 status 0x0
-panfrost 13000000.gpu: features: 00000000,000019f7, issues: 00000003,
-   80000400
-panfrost 13000000.gpu: Features: L2:0x08130206 Shader:0x00000000
-   Tiler:0x00000809 Mem:0x1 MMU:0x00002830 AS:0xff JS:0x7
-panfrost 13000000.gpu: shader_present=0x5 l2_present=0x1
-[drm] Initialized panfrost 1.3.0 for 13000000.gpu on minor 0
-```
+Thanks for doing this.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt8370.dtsi | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+Reviewed-by: Steven Price <steven.price@arm.com>
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8370.dtsi b/arch/arm64/boot/dts/mediatek/mt8370.dtsi
-index cf1a3759451ff899ce9e63e5a00f192fb483f6e5..7ac8b8d0349455922a73f35db607b2b27cad23d7 100644
---- a/arch/arm64/boot/dts/mediatek/mt8370.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8370.dtsi
-@@ -59,6 +59,22 @@ &cpu_little3_cooling_map0 {
- 				<&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
- };
- 
-+/*
-+ * Please note that overriding compatibles is a discouraged practice and is a
-+ * clear indication of nodes not being, well, compatible!
-+ *
-+ * This is a special case, where the GPU is the same as MT8188, but with one
-+ * of the cores fused out in this lower-binned SoC.
-+ */
-+&gpu {
-+	compatible = "mediatek,mt8370-mali", "arm,mali-valhall-jm";
-+
-+	power-domains = <&spm MT8188_POWER_DOMAIN_MFG2>,
-+			<&spm MT8188_POWER_DOMAIN_MFG3>;
-+
-+	power-domain-names = "core0", "core1";
-+};
-+
- &ppi_cluster0 {
- 	affinity = <&cpu0 &cpu1 &cpu2 &cpu3>;
- };
-
--- 
-2.49.0
+> ---
+>  drivers/gpu/drm/panfrost/panfrost_drv.c | 24 +++++++++++-------------
+>  1 file changed, 11 insertions(+), 13 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
+> index f1ec3b02f15a0029d20c7d81046ded59854e885c..7b899a9b2120c608e61dab9ca831ab8e907e8139 100644
+> --- a/drivers/gpu/drm/panfrost/panfrost_drv.c
+> +++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
+> @@ -797,19 +797,18 @@ static const struct panfrost_compatible amlogic_data = {
+>   * On new devicetrees please use the _b variant with a single and
+>   * coupled regulators instead.
+>   */
+> -static const char * const mediatek_mt8183_supplies[] = { "mali", "sram", NULL };
+> +static const char * const legacy_supplies[] = { "mali", "sram", NULL };
+>  static const char * const mediatek_mt8183_pm_domains[] = { "core0", "core1", "core2" };
+>  static const struct panfrost_compatible mediatek_mt8183_data = {
+> -	.num_supplies = ARRAY_SIZE(mediatek_mt8183_supplies) - 1,
+> -	.supply_names = mediatek_mt8183_supplies,
+> +	.num_supplies = ARRAY_SIZE(legacy_supplies) - 1,
+> +	.supply_names = legacy_supplies,
+>  	.num_pm_domains = ARRAY_SIZE(mediatek_mt8183_pm_domains),
+>  	.pm_domain_names = mediatek_mt8183_pm_domains,
+>  };
+>  
+> -static const char * const mediatek_mt8183_b_supplies[] = { "mali", NULL };
+>  static const struct panfrost_compatible mediatek_mt8183_b_data = {
+> -	.num_supplies = ARRAY_SIZE(mediatek_mt8183_b_supplies) - 1,
+> -	.supply_names = mediatek_mt8183_b_supplies,
+> +	.num_supplies = ARRAY_SIZE(default_supplies) - 1,
+> +	.supply_names = default_supplies,
+>  	.num_pm_domains = ARRAY_SIZE(mediatek_mt8183_pm_domains),
+>  	.pm_domain_names = mediatek_mt8183_pm_domains,
+>  	.pm_features = BIT(GPU_PM_CLK_DIS) | BIT(GPU_PM_VREG_OFF),
+> @@ -817,8 +816,8 @@ static const struct panfrost_compatible mediatek_mt8183_b_data = {
+>  
+>  static const char * const mediatek_mt8186_pm_domains[] = { "core0", "core1" };
+>  static const struct panfrost_compatible mediatek_mt8186_data = {
+> -	.num_supplies = ARRAY_SIZE(mediatek_mt8183_b_supplies) - 1,
+> -	.supply_names = mediatek_mt8183_b_supplies,
+> +	.num_supplies = ARRAY_SIZE(default_supplies) - 1,
+> +	.supply_names = default_supplies,
+>  	.num_pm_domains = ARRAY_SIZE(mediatek_mt8186_pm_domains),
+>  	.pm_domain_names = mediatek_mt8186_pm_domains,
+>  	.pm_features = BIT(GPU_PM_CLK_DIS) | BIT(GPU_PM_VREG_OFF),
+> @@ -826,20 +825,19 @@ static const struct panfrost_compatible mediatek_mt8186_data = {
+>  
+>  /* MT8188 uses the same power domains and power supplies as MT8183 */
+>  static const struct panfrost_compatible mediatek_mt8188_data = {
+> -	.num_supplies = ARRAY_SIZE(mediatek_mt8183_b_supplies) - 1,
+> -	.supply_names = mediatek_mt8183_b_supplies,
+> +	.num_supplies = ARRAY_SIZE(default_supplies) - 1,
+> +	.supply_names = default_supplies,
+>  	.num_pm_domains = ARRAY_SIZE(mediatek_mt8183_pm_domains),
+>  	.pm_domain_names = mediatek_mt8183_pm_domains,
+>  	.pm_features = BIT(GPU_PM_CLK_DIS) | BIT(GPU_PM_VREG_OFF),
+>  	.gpu_quirks = BIT(GPU_QUIRK_FORCE_AARCH64_PGTABLE),
+>  };
+>  
+> -static const char * const mediatek_mt8192_supplies[] = { "mali", NULL };
+>  static const char * const mediatek_mt8192_pm_domains[] = { "core0", "core1", "core2",
+>  							   "core3", "core4" };
+>  static const struct panfrost_compatible mediatek_mt8192_data = {
+> -	.num_supplies = ARRAY_SIZE(mediatek_mt8192_supplies) - 1,
+> -	.supply_names = mediatek_mt8192_supplies,
+> +	.num_supplies = ARRAY_SIZE(default_supplies) - 1,
+> +	.supply_names = default_supplies,
+>  	.num_pm_domains = ARRAY_SIZE(mediatek_mt8192_pm_domains),
+>  	.pm_domain_names = mediatek_mt8192_pm_domains,
+>  	.pm_features = BIT(GPU_PM_CLK_DIS) | BIT(GPU_PM_VREG_OFF),
+> 
 
 
