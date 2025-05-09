@@ -4,92 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B005C3ABC9
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 May 2025 20:25:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A55C3C3ABCE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 May 2025 20:27:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ldL7b81Phg6WD3JorNI5nzK3Myk4EQ4CIaDc6kAidBs=; b=24Qi5/Kg89T+pU5UbLLovjwNoE
-	ccBboE0uLXzK0UPpeYJiFbYSSTDt2QC5jE3rfOemjDqtlsx3mV2XHICqt7pMhcDnVv/1wodcom0Ug
-	7Zvo9189mbwMna1KRwgQir6pZkG4OPABUBiuDELX/2P48qyLh18HWSYaztjiQtb0Pk5FkiDJXfeBi
-	TfgchsCduEF9xIUgIUGTc68s4HPQM2KT6uO4lJS8DG/N2daUAr/nFX5SKtreuq3O02NNFTbklqim5
-	mKxwkIYfitOac37+stbr95PkXHJ1E2JP/d/8ijvK6j0Yz4RQPXVfFO3ywmG1zjA5A8wF66aS3XW9i
-	ZbwtTsmg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BLkYt8K2g1VaB3xoefIpyeks8ye5+GK4kWwHzwMznHY=; b=T1styql2SfNtpuwktprGzoVuz0
+	+JxqHWcrILCH0AKVTGyWR7CFz7YrkNepRXgNnvLK9Gg/Oa1au+XQMsgnSZ97be0Mc12YSYQBpIBtC
+	lb3R46Xak/M3fjRTu65kCmtJzxtxjlPQiS7BKDUH44+bgqJVRxSN2WehS0ChSaO4ygNlul8ZaCMMT
+	LzGOvPqrh7l3pJVtCxg8NNToEsL8klZNSt48tfknPCQcQmaaARon5BSAtR0vIry4wVlcFKol3JETV
+	aPHNGzjObS6H1SJDUms/9/x2gpp5TuQQgNVvQuD+iQLl3DJ8ubZb1bvA47O3jjvYHm7Ik8ycOBaXd
+	VpS4ilbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDUI3-00000004n4P-3RFY;
-	Fri, 09 May 2025 20:25:51 +0000
-Received: from 003.mia.mailroute.net ([199.89.3.6])
+	id 1uDUJj-00000004ocC-2S6i;
+	Fri, 09 May 2025 20:27:35 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDRGY-00000004PGY-2cJB
-	for linux-mediatek@lists.infradead.org;
-	Fri, 09 May 2025 17:12:07 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 003.mia.mailroute.net (Postfix) with ESMTP id 4ZvFsx41xbzltQLV;
-	Fri,  9 May 2025 17:12:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1746810722; x=1749402723; bh=ldL7b81Phg6WD3JorNI5nzK3
-	Myk4EQ4CIaDc6kAidBs=; b=2izYZXnkpQ9whLB5pb2pTUzdnOt7GhX8um0Cqa7S
-	pzKFsjFTKUmmWeL+NpyNOhXsBfKdTNtqDvuT6RUSVxZ6fumPhA8RnfDYylJo0TxP
-	hBOyd0J9eE19euHh5Tj6uPV3Y95Z+5uGoLHQK2kVQ0TsqhZBPNbvCP7hPaIfMl+C
-	O+4q9oPt4/rLn3Jb/IE2imVQF0yU/iYnBsZ075v1DQ85RNZBhLtdDteaxXZeCFc1
-	x3iZYsBk0lUkLrXujnYdDZ5A9F3S6Uu1qicpP6naN/zDSrIBzfe50xkXgs3NJFe6
-	FtlId6b70q6yjve2XUCKBxzhBt/4Py20GLpt24QmHE9SVQ==
-X-Virus-Scanned: by MailRoute
-Received: from 003.mia.mailroute.net ([127.0.0.1])
- by localhost (003.mia [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id wwVKx8GkcS57; Fri,  9 May 2025 17:12:02 +0000 (UTC)
-Received: from [100.66.154.22] (unknown [104.135.204.82])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 003.mia.mailroute.net (Postfix) with ESMTPSA id 4ZvFsb4yXKzltQLv;
-	Fri,  9 May 2025 17:11:46 +0000 (UTC)
-Message-ID: <bcf87e8b-a994-4168-821e-9c1c4d4771b0@acm.org>
-Date: Fri, 9 May 2025 10:11:45 -0700
+	id 1uDS9K-00000004WuK-2SfE;
+	Fri, 09 May 2025 18:08:42 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 04E2D61120;
+	Fri,  9 May 2025 18:08:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7BE1DC4CEE4;
+	Fri,  9 May 2025 18:08:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1746814121;
+	bh=rXNl2rI5xNfuI6HXSc8aN98KAhrpbaveoKmawlIRVyU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Ko/IlS0xVBWOVfriGT0Pql7adrijlFjG8e48sTg7SAPaRyv6XakFDDmqZEQYdBbY5
+	 45TDKKg7uh0xbO21j59MzKivdrREtpjXOpEhQ6rkqp0cJ8BA+U4nay9yv1zNe3hHet
+	 YfARupwBzvdjsDJkuSZgnGaFQ1rj4SX+XKdWs2ZP92RU/9+NVMJoYwRndpTw6bjuuT
+	 MFvFnR8xeBJZKe+rDZDspmx6qqKfMLPxm3UD/BdIx2Rs6eJ2wM1NuxcxIS9xTYN/JG
+	 Gbb8TgWjs2w1mUL5LPD9I8oQ4hRKGIbaKI5qDqi66yW3DtDcTt5A6R7mFeOyrOQY4k
+	 gMAQjB/QF9SEg==
+Date: Fri, 9 May 2025 13:08:39 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: devicetree@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Mark Brown <broonie@kernel.org>, Jiaxin Yu <jiaxin.yu@mediatek.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>,
+	Conor Dooley <conor+dt@kernel.org>, linux-sound@vger.kernel.org,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Liam Girdwood <lgirdwood@gmail.com>
+Subject: Re: [PATCH v2 02/13] ASoC: dt-bindings: mt8173-afe-pcm: Add power
+ domain
+Message-ID: <174681411907.3875523.1397658621992836226.robh@kernel.org>
+References: <20250424102509.1083185-1-wenst@chromium.org>
+ <20250424102509.1083185-3-wenst@chromium.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] ufs: core: support updating device command timeout
-To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
- "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
- "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
- "avri.altman@wdc.com" <avri.altman@wdc.com>,
- "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
- "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>
-Cc: =?UTF-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
- =?UTF-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
- =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
- =?UTF-8?B?RWQgVHNhaSAo6JSh5a6X6LuSKQ==?= <Ed.Tsai@mediatek.com>,
- wsd_upstream <wsd_upstream@mediatek.com>,
- =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
- <Chaotian.Jing@mediatek.com>, =?UTF-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?=
- <Chun-hung.Wu@mediatek.com>, =?UTF-8?B?WWktZmFuIFBlbmcgKOW9ree+v+WHoSk=?=
- <Yi-fan.Peng@mediatek.com>, =?UTF-8?B?UWlsaW4gVGFuICjosK3pupLpup8p?=
- <Qilin.Tan@mediatek.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- =?UTF-8?B?SmlhamllIEhhbyAo6YOd5Yqg6IqCKQ==?= <jiajie.hao@mediatek.com>,
- =?UTF-8?B?TGluIEd1aSAo5qGC5p6XKQ==?= <Lin.Gui@mediatek.com>,
- =?UTF-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?= <Naomi.Chu@mediatek.com>,
- =?UTF-8?B?VHVuLXl1IFl1ICjmuLjmlabogb8p?= <Tun-yu.Yu@mediatek.com>
-References: <20250509071029.446697-1-peter.wang@mediatek.com>
- <946d62cd-b1a1-4ddb-8411-2060362f7d33@acm.org>
- <8b56be3dee19dd210ceaac46a30f29f34b31a83c.camel@mediatek.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <8b56be3dee19dd210ceaac46a30f29f34b31a83c.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250509_101206_854035_03B4434F 
-X-CRM114-Status: UNSURE (   5.54  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250424102509.1083185-3-wenst@chromium.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,12 +76,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5/9/25 9:11 AM, Peter Wang (=E7=8E=8B=E4=BF=A1=E5=8F=8B) wrote:
-> Do you have a recommended number? Would min value 1 ms be acceptable?
 
-That sounds good to me.
+On Thu, 24 Apr 2025 18:24:56 +0800, Chen-Yu Tsai wrote:
+> The audio subsystem sits under a controllable power domain.
+> 
+> Add it to the binding.
+> 
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+>  .../devicetree/bindings/sound/mediatek,mt8173-afe-pcm.yaml  | 6 ++++++
+>  1 file changed, 6 insertions(+)
+> 
 
-Thanks,
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
-Bart.
 
