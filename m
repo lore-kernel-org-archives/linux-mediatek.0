@@ -4,88 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 928B9C3ABC3
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 May 2025 08:51:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F968C3ABC3
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 May 2025 09:08:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DkNK4V4s8P1105G9M2GaM/bKTLtt9JfO/Y81L6C+ekY=; b=TtDMKgMTDTuXYJHGVdLai7GyP+
-	9b4PwGL48FudiRhOLSADWAyXJo/12Oh+WSUGZmU/nkHuGNEumWOwTzmnzVk2RF2LKXMa6hXLTRpz1
-	Qvg1h1Y9qID3P0RZzOmzSNgKrKcYCjBk9LmZJ1ernJs92owses4uHrJ8+SAZ/D7xB4QduG//6NV8o
-	06x8mrQEvsUXCmYrIYniasp08a1MwTWkXLxKCs5yinI/Rd03IJ2+5XBGkWu08h7czk2Lb8lorZeT2
-	qxXSiZghMCgGTzSTa9AgatfmXJdXEQgWWJ1hREo8u/uHfaFCtXp8YdzjSB+aMFkIp1QVvXCRgE3GV
-	mzlrrBdw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=lp9AVE/E/ntsDij1wpJsgxriIR/ZSuag+bExe+K9SGA=; b=lmLHarmat3mkDSHPstBOB5/nS8
+	PkMKMvWRKv8k3GBbHSQLxarxuglc+6mpX3UyN+XbCMUtSef168lbc21UMy+TBj6wp2iVODQ/iVaqv
+	dq2UWd6T4V8yLglviYSF3J85Z/zr9Oz3WcF3sNv2zqWI1JO6VZhZ1FF7yN+zeknp+wDRnDNbXGClV
+	LeWTIkI2WJLWuc1ALkRUH6btJ4YNDEiuCg78cr0B5JK3kHBh0zIcuUaQBHNG3Xv+ONXf2qPH11iZa
+	jRz2V340Q9UCMEk2uns9FfuQkNxSb1WNSD2q6NTFgpsERX4AA7Q8gCX0rV7p51dOgl1wjTEy67ycB
+	nTxOS/nw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDJSK-00000002zux-281y;
-	Fri, 09 May 2025 08:51:44 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1uDJih-000000032q5-0zwG;
+	Fri, 09 May 2025 09:08:39 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDIjU-00000002rPT-0X68
+	id 1uDIz1-00000002ujZ-3sf2
 	for linux-mediatek@lists.infradead.org;
-	Fri, 09 May 2025 08:05:25 +0000
-Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-54e98f73850so2004491e87.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 09 May 2025 01:05:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1746777922; x=1747382722; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=DkNK4V4s8P1105G9M2GaM/bKTLtt9JfO/Y81L6C+ekY=;
-        b=WkEHpBJLB1vsb0iMb0e9HMBOMx7HxMipSb2PY0xrmuxKuG7Rx7nx4YvU85ifPhPrkV
-         NBcznwPGuBF41CxRg0/4niXzjv8vhDgTnWYnaHYDo4swKyomafTSdgut884qqzdmhyPP
-         veaL8tbVw4juiHLxOrF50t8ISKPNLKO8U+BiM40V/IwL+jYgEwJ8hmHHopsgcEBpq/vS
-         l9YZLkXBaS9W2kdmMQRo+iCXAwBuOlMj/2jSc7BHQaKkvS3i7SJNA3UfVRhmmCR9/HmL
-         ZwmCwrcTtU8VeqtrTOhbF6gNngM/xvEUnSvMk+XRbVQsAdEZMzIxMqDKp+4PP78oREi8
-         TNLQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1746777922; x=1747382722;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=DkNK4V4s8P1105G9M2GaM/bKTLtt9JfO/Y81L6C+ekY=;
-        b=jGtrb0+IbroTw0lpq/5Zgz13tCWZJZso4bf90bCpSB85uEIGPm2icH9p0YVJ2SISIY
-         OHrsqA8VXCXKBdi4v9OUarNVxRFyvLOisWkuAK+PQaG7hHGJWgBem9gws8uQgm367s+F
-         VSeHbs3440mrftxfzOi4WikOiKPQGYQiK0B0HhJGRBlvNx0u9AElyxKhhwhGfKPK1ihy
-         i5xKxrScLAepTEqFuZgV+jDOyZWwZwjZW5WXYg78vDAf2wVvMmcDTBDwTHEcrpaoPOS1
-         yWkUL60QhKVhYKVod3p3YDj70HZQb17bfqnbA7WLhlg3twDo84CArEGzBE2Y9GVueiea
-         wXCg==
-X-Forwarded-Encrypted: i=1; AJvYcCX+JxNPf056G7tMX9xBSjZHetyEw5egFOiWzigZOmqo3x5HJUXLdcEDp2bH5dhS3NtOQVvclydhynV175cgVg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwC3/5qwQIDVPVMxy6atvZLBLpRQpaXqLQ/o22ohUOSxHaYDqvR
-	lp0KaiLzX0kKfFkkgV6VEaaAFY5LqjIAswaBNkaj/4phR0a3VOeSMm47lI2xRgTghCW1OAUQm9l
-	WDwXiMO6Q4ERRr/ZNh7DFNC16nXiF+4LpcdRuzQ==
-X-Gm-Gg: ASbGnct10b+yfmyTT5NbKsJUUgY4WWhrwHAmWc5kUZoAIGXA4U9bsQbjQeB//EcI+Q3
-	TfzFu37J6qHMoyFzC7btAqYIuuAtDx4EtFqyQ3V4TVb7N5dpRB26rxNg8atxrRM4Gcz71GnzxjQ
-	+ptCODfUwx4IcIIPDCdgReCw==
-X-Google-Smtp-Source: AGHT+IHygTOWySTUQ1JX00eO97lqc6HJQVUyB58fvB2NipEYZeQL68WbWlijYDIMb2+wa1Msnq90mTMLlhAfQvVGkBw=
-X-Received: by 2002:a05:6512:6802:b0:54c:a49:d3f4 with SMTP id
- 2adb3069b0e04-54fc67602f6mr649569e87.0.1746777921621; Fri, 09 May 2025
- 01:05:21 -0700 (PDT)
+	Fri, 09 May 2025 08:21:29 +0000
+X-UUID: 965a414c2cae11f0bed96b30c12bc3d6-20250509
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=lp9AVE/E/ntsDij1wpJsgxriIR/ZSuag+bExe+K9SGA=;
+	b=ZCNH+LmXB+a6V0rtN92eY4AZg9cs8xeL6WJhgrUCRlNhZLjy3fy+ye0uixsbYMQIDfUu29/e7BI3O8h17p6Oduze8dKyQvP0VsO08pIho6CfuImw78aRdm88DxgoJSHeUAyiWq5b4Oz0txrwuDros5NzEvvVJMEJaMFqgVymMPk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:4868a4e0-d173-48f3-a4a2-1c52df09c172,IP:0,UR
+	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:-5
+X-CID-META: VersionHash:0ef645f,CLOUDID:c3dec6e0-512b-41ef-ab70-9303a9a81417,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 965a414c2cae11f0bed96b30c12bc3d6-20250509
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <mingyen.hsieh@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1516778575; Fri, 09 May 2025 01:21:20 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Fri, 9 May 2025 16:21:17 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Fri, 9 May 2025 16:21:17 +0800
+From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
+	<Leon.Yen@mediatek.com>, <Michael.Lo@mediatek.com>,
+	<allan.wang@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
+	<km.lin@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
+	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, Leon Yen <leon.yen@mediatek.com>, Ming
+ Yen Hsieh <mingyen.hsieh@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt7925: introduce thermal protection
+Date: Fri, 9 May 2025 16:21:17 +0800
+Message-ID: <20250509082117.453819-1-mingyen.hsieh@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-References: <20250425-gpiochip-set-rv-pinctrl-mediatek-v1-0-93e6a01855e7@linaro.org>
-In-Reply-To: <20250425-gpiochip-set-rv-pinctrl-mediatek-v1-0-93e6a01855e7@linaro.org>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Fri, 9 May 2025 10:05:10 +0200
-X-Gm-Features: ATxdqUHooQ8Ld9mj2dz6cfM7sdUGr8k9BsEqfTdMAuQ6XUXjp9g6npbLz8jBOxY
-Message-ID: <CACRpkdat91GuhtkYw8mzzt2fgufktWCy4fnA5Dkos2=pWfWftw@mail.gmail.com>
-Subject: Re: [PATCH 0/5] pinctrl: mediatek: convert GPIO chips to using new
- value setters
-To: Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250509_010524_175763_A742E1B8 
-X-CRM114-Status: UNSURE (   9.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250509_012127_972131_AC38CA91 
+X-CRM114-Status: GOOD (  11.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,18 +88,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 25, 2025 at 11:01=E2=80=AFAM Bartosz Golaszewski <brgl@bgdev.pl=
-> wrote:
+From: Leon Yen <leon.yen@mediatek.com>
 
-> struct gpio_chip now has callbacks for setting line values that return
-> an integer, allowing to indicate failures. We're in the process of
-> converting all GPIO drivers to using the new API. This series converts
-> all the mediatek pinctrl GPIO controllers.
->
-> Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+Add thermal protection to prevent the chip from possible overheating
+due to prolonged high traffic and adverse operating conditions.
 
-All 5 patches applied!
+Signed-off-by: Leon Yen <leon.yen@mediatek.com>
+Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+---
+ .../net/wireless/mediatek/mt76/mt7925/init.c  |  6 ++++++
+ .../net/wireless/mediatek/mt76/mt7925/mcu.c   | 20 ++++++++++++++++++-
+ .../net/wireless/mediatek/mt76/mt7925/mcu.h   |  1 +
+ 3 files changed, 26 insertions(+), 1 deletion(-)
 
-Yours,
-Linus Walleij
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/init.c b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
+index 79639be0d29a..2a83ff59a968 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
+@@ -322,6 +322,12 @@ static void mt7925_init_work(struct work_struct *work)
+ 		return;
+ 	}
+ 
++	ret = mt7925_mcu_set_thermal_protect(dev);
++	if (ret) {
++		dev_err(dev->mt76.dev, "thermal protection enable failed\n");
++		return;
++	}
++
+ 	/* we support chip reset now */
+ 	dev->hw_init_done = true;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index d7116d8b020c..ca5d6b87c9da 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -1061,6 +1061,23 @@ int mt7925_mcu_set_deep_sleep(struct mt792x_dev *dev, bool enable)
+ }
+ EXPORT_SYMBOL_GPL(mt7925_mcu_set_deep_sleep);
+ 
++int mt7925_mcu_set_thermal_protect(struct mt792x_dev *dev)
++{
++	char cmd[64];
++	int ret = 0;
++
++	snprintf(cmd, sizeof(cmd), "ThermalProtGband %d %d %d %d %d %d %d %d %d %d",
++		 0, 100, 90, 80, 30, 1, 1, 115, 105, 5);
++	ret = mt7925_mcu_chip_config(dev, cmd);
++
++	snprintf(cmd, sizeof(cmd), "ThermalProtAband %d %d %d %d %d %d %d %d %d %d",
++		 1, 100, 90, 80, 30, 1, 1, 115, 105, 5);
++	ret |= mt7925_mcu_chip_config(dev, cmd);
++
++	return ret;
++}
++EXPORT_SYMBOL_GPL(mt7925_mcu_set_thermal_protect);
++
+ int mt7925_run_firmware(struct mt792x_dev *dev)
+ {
+ 	int err;
+@@ -3463,7 +3480,8 @@ int mt7925_mcu_fill_message(struct mt76_dev *mdev, struct sk_buff *skb,
+ 		else
+ 			uni_txd->option = MCU_CMD_UNI_EXT_ACK;
+ 
+-		if (cmd == MCU_UNI_CMD(HIF_CTRL))
++		if (cmd == MCU_UNI_CMD(HIF_CTRL) ||
++		    cmd == MCU_UNI_CMD(CHIP_CONFIG))
+ 			uni_txd->option &= ~MCU_CMD_ACK;
+ 
+ 		goto exit;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
+index a13b5ae42b00..22237c68cbf7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
+@@ -654,6 +654,7 @@ int mt7925_mcu_add_bss_info(struct mt792x_phy *phy,
+ int mt7925_mcu_set_timing(struct mt792x_phy *phy,
+ 			  struct ieee80211_bss_conf *link_conf);
+ int mt7925_mcu_set_deep_sleep(struct mt792x_dev *dev, bool enable);
++int mt7925_mcu_set_thermal_protect(struct mt792x_dev *dev);
+ int mt7925_mcu_set_channel_domain(struct mt76_phy *phy);
+ int mt7925_mcu_set_radio_en(struct mt792x_phy *phy, bool enable);
+ int mt7925_mcu_set_chctx(struct mt76_phy *phy, struct mt76_vif_link *mvif,
+-- 
+2.34.1
+
 
