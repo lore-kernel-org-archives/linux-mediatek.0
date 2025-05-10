@@ -4,64 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3289C3ABCB
-	for <linux-mediatek@archiver.kernel.org>; Sat, 10 May 2025 08:43:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B512C3ABC3
+	for <linux-mediatek@archiver.kernel.org>; Sat, 10 May 2025 08:43:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ax61nFiKr+NHGnTrNtCeDjj2GUB1vtyzZaP25fpKBBY=; b=kjzcufSEwSfrqtihy7C/3unniC
-	nCc5MA0c9jFo8HNo+tM5ymX17LPrPtG8fyvb6xKikSWHSfhGgRYGneIl9f62hlkOmo3M4RiEcDvYj
-	3CQQl611C8N7+i+4woeae4EbbsnsmEKuu4YlqgaG2H1GpTxfPSU+YjGlZf1yZtvSko6j2BjYmKbVd
-	owUcGhpvS1LMG/TR/OOLbH6mvPZ3UrY2/NDcRGWzc7bfH98wUD0NZtf5iT5SMRVin2LGliMTNqe0G
-	uixLFOJC/IIYPfuzhfDaecRr5cTI1bLB4tVhJlotcgj4qXB/QMp/VGj24TpimCtY0VItMkkI1nKVB
-	Hol5O6dA==;
+	bh=HAjQtgfgIUasKFA+BzM5Dl+tRfepwsv+UdC44RAqpoU=; b=JRLs9xCCHFtelfikRkmBar27Ey
+	H/6FrRWRZZ9ymUY4VXKH0audjzrdN7N2sm50n/j9o9+WYTY+LnFC32hs1JddUqSdK9tDPOm20WnvE
+	OFgu3t6LTk8hqpC9OtvaOkXkIJVGA1l8fmC6NbnHbZd+4GZDo49r/bmN6p/t0KIvE3f5I/ERBXPiL
+	VDjKokjgEPPl/oCzGYvLHTUfoNxJSF/IgOEqilZlrV6W5qvSUrj4/K+6ekWra8ltozliKqEnaV+vH
+	rvhlHqYa2eMMFwp/7MKXVpx6D5xHIleWbKvchafZehOnE5KGdPdjeTkoKjcV1ZdJ+SJ55S6XuHFt3
+	4pDj9Maw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDfnu-00000005f5f-2uYE;
-	Sat, 10 May 2025 08:43:30 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uDfnv-00000005f6F-1YTa;
+	Sat, 10 May 2025 08:43:31 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uDfRS-00000005dVM-3OWI;
-	Sat, 10 May 2025 08:20:18 +0000
+	id 1uDfnc-00000005f32-1PHD;
+	Sat, 10 May 2025 08:43:13 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 8E9A6614BB;
-	Sat, 10 May 2025 08:20:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B0830C4CEE2;
-	Sat, 10 May 2025 08:20:16 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 52B1D5C4773;
+	Sat, 10 May 2025 08:40:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3D826C4CEE2;
+	Sat, 10 May 2025 08:43:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1746865217;
-	bh=w4KCtfNN++3rTxuFj1Y4PcCXB490W9C1G146sr8flJk=;
+	s=k20201202; t=1746866589;
+	bh=51h4v8E5HX2Z8DyPqAO8YziaTFLpGy++tmZ/wKkW2Gg=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Ovsafr1IoxltalBpWEdz0LRdhvqKYCKnVgsC+Vf1jGoTlQa8kTcrVqMddNZ9jxlGx
-	 NsSZnwuns+gK0X7hsYK5kHY7+tv3l0Nz8CjPhoYHdPXCF3678/kL56DbxnAtJ6Dm8c
-	 hfvz+XXtlGWevcAN0Kt/M/3Nm6tKw3+SIMuWThSODPIHMoli0nXWiNNMlaDGX2Cdhr
-	 yvaAnWPq/C34W7kk9VhP1ArPoAgmx/6aX4+j1kYOXdxwqId3K8uKrV8E3YIHbh4Oi9
-	 5Ka4dw3rSJqhJ7duWnZ8/z9zvwQ/1FT+Zn1pnpUQQ8NntaD1WvfQ+jZN8GZpIQwVD+
-	 PI7AGINwOgXzQ==
-Date: Sat, 10 May 2025 10:20:14 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH v2 1/4] net: airoha: Fix an error handling path in
- airoha_alloc_gdm_port()
-Message-ID: <aB8MPkMYXWvoaA03@lore-desk>
-References: <5c94b9b3850f7f29ed653e2205325620df28c3ff.1746715755.git.christophe.jaillet@wanadoo.fr>
- <aBzOaiU6Ac3ZTU-4@lore-desk>
- <68149c51-ba75-4f0f-a86a-bd810d47d684@wanadoo.fr>
+	b=prhhrjtHTVZYa3NMgzkMx+yFeyGv1Ej7LXkKMfvn1HLib+GZltXt9dN5b0c8pVobc
+	 l0CFWH7xTMtVvBfeDBFl4X6BDG0P/7zTIzoGnlc77ycReUUSv6f0NgRhI2cECWcVPf
+	 T8mI/UBfT7yHnl1ucVKnxSiaz6ZvgjeybFnw5F4W3uiWBHHbBRSJEWx28KADwICKEn
+	 lEwq9Bb3VNf0SMsbsChFhvDwm4efl+wZ9phFvexc78Mn+urduaxTdOaAv8FiLkhXKV
+	 7IEV46qEV2F2DgepGhgs7Iw1LgX/vj7RmbML/FBsbd3npas6/eVE8OvUk0VGHYZAY2
+	 FilpEGUzfwuqA==
+Date: Sat, 10 May 2025 10:43:04 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Jagan Teki <jagan@amarulasolutions.com>, 
+	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	Douglas Anderson <dianders@chromium.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	Krzysztof Kozlowski <krzk@kernel.org>, Anusha Srivatsa <asrivats@redhat.com>, 
+	Paul Kocialkowski <paulk@sys-base.io>, Dmitry Baryshkov <lumag@kernel.org>, 
+	Hui Pu <Hui.Pu@gehealthcare.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+	dri-devel@lists.freedesktop.org, asahi@lists.linux.dev, linux-kernel@vger.kernel.org, 
+	chrome-platform@lists.linux.dev, imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+	linux-renesas-soc@vger.kernel.org, platform-driver-x86@vger.kernel.org, 
+	linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org, 
+	linux-stm32@st-md-mailman.stormreply.com, Manikandan Muralidharan <manikandan.m@microchip.com>, 
+	Adam Ford <aford173@gmail.com>, Adrien Grassein <adrien.grassein@gmail.com>, 
+	Aleksandr Mishin <amishin@t-argos.ru>, Andy Yan <andy.yan@rock-chips.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Benson Leung <bleung@chromium.org>, 
+	Biju Das <biju.das.jz@bp.renesas.com>, Christoph Fritz <chf.fritz@googlemail.com>, 
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, Detlev Casanova <detlev.casanova@collabora.com>, 
+	Dharma Balasubiramani <dharma.b@microchip.com>, Guenter Roeck <groeck@chromium.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Jani Nikula <jani.nikula@intel.com>, Janne Grunau <j@jannau.net>, 
+	Jerome Brunet <jbrunet@baylibre.com>, Jesse Van Gavere <jesseevg@gmail.com>, 
+	Kevin Hilman <khilman@baylibre.com>, Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
+	Liu Ying <victor.liu@nxp.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Phong LE <ple@baylibre.com>, Sasha Finkelstein <fnkl.kernel@gmail.com>, 
+	Sugar Zhang <sugar.zhang@rock-chips.com>, Sui Jingfeng <sui.jingfeng@linux.dev>, 
+	Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, Vitalii Mordan <mordan@ispras.ru>
+Subject: Re: [PATCH v3 02/22] drm: convert many bridge drivers from
+ devm_kzalloc() to devm_drm_bridge_alloc() API
+Message-ID: <4yeqvg3wnlr2bhb54zutgqpkehrodat5w5x4rr5qjlrc2ts3pz@gr2iosycclpl>
+References: <20250509-drm-bridge-convert-to-alloc-api-v3-0-b8bc1f16d7aa@bootlin.com>
+ <20250509-drm-bridge-convert-to-alloc-api-v3-2-b8bc1f16d7aa@bootlin.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="1vz8AGLIu0dXvB1F"
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="mseix42f6fruwdv3"
 Content-Disposition: inline
-In-Reply-To: <68149c51-ba75-4f0f-a86a-bd810d47d684@wanadoo.fr>
+In-Reply-To: <20250509-drm-bridge-convert-to-alloc-api-v3-2-b8bc1f16d7aa@bootlin.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250510_014312_491200_BD98B455 
+X-CRM114-Status: GOOD (  18.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,115 +104,83 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---1vz8AGLIu0dXvB1F
-Content-Type: text/plain; charset=iso-8859-1
+--mseix42f6fruwdv3
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v3 02/22] drm: convert many bridge drivers from
+ devm_kzalloc() to devm_drm_bridge_alloc() API
+MIME-Version: 1.0
 
-> Le 08/05/2025 =E0 17:31, Lorenzo Bianconi a =E9crit=A0:
-> > > If register_netdev() fails, the error handling path of the probe will=
- not
-> > > free the memory allocated by the previous airoha_metadata_dst_alloc()=
- call
-> > > because port->dev->reg_state will not be NETREG_REGISTERED.
-> > >=20
-> > > So, an explicit airoha_metadata_dst_free() call is needed in this cas=
-e to
-> > > avoid a memory leak.
-> > >=20
-> > > Fixes: af3cf757d5c9 ("net: airoha: Move DSA tag in DMA descriptor")
-> > > Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-> > > ---
-> > > Changes in v2:
-> > >    - New patch
-> > >=20
-> > > Compile tested only.
-> > > ---
-> > >   drivers/net/ethernet/airoha/airoha_eth.c | 10 +++++++++-
-> > >   1 file changed, 9 insertions(+), 1 deletion(-)
-> > >=20
-> > > diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/e=
-thernet/airoha/airoha_eth.c
-> > > index 16c7896f931f..af8c4015938c 100644
-> > > --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> > > +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> > > @@ -2873,7 +2873,15 @@ static int airoha_alloc_gdm_port(struct airoha=
-_eth *eth,
-> > >   	if (err)
-> > >   		return err;
-> > > -	return register_netdev(dev);
-> > > +	err =3D register_netdev(dev);
-> > > +	if (err)
-> > > +		goto free_metadata_dst;
-> > > +
-> > > +	return 0;
-> > > +
-> > > +free_metadata_dst:
-> > > +	airoha_metadata_dst_free(port);
-> > > +	return err;
-> > >   }
-> > >   static int airoha_probe(struct platform_device *pdev)
-> > > --=20
-> > > 2.49.0
-> > >=20
-> >=20
-> > I have not tested it but I think the right fix here would be something =
-like:
-> >=20
-> > diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/eth=
-ernet/airoha/airoha_eth.c
-> > index b1ca8322d4eb..33f8926bba25 100644
-> > --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> > +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> > @@ -2996,10 +2996,12 @@ static int airoha_probe(struct platform_device =
-*pdev)
-> >   	for (i =3D 0; i < ARRAY_SIZE(eth->ports); i++) {
-> >   		struct airoha_gdm_port *port =3D eth->ports[i];
-> > -		if (port && port->dev->reg_state =3D=3D NETREG_REGISTERED) {
-> > +		if (!port)
-> > +			continue;
+On Fri, May 09, 2025 at 03:53:28PM +0200, Luca Ceresoli wrote:
+> devm_drm_bridge_alloc() is the new API to be used for allocating (and
+> partially initializing) a private driver struct embedding a struct
+> drm_bridge.
 >=20
-> I think it works.
+> For many drivers having a simple code flow in the probe function, this
+> commit does a mass conversion automatically with the following semantic
+> patch. The changes have been reviewed manually for correctness as well as
+> to find any false positives.
 >=20
-> We can still have port non NULL and airoha_metadata_dst_alloc() which fai=
-ls,
-> but airoha_metadata_dst_free() seems to handle it correctly.
+> The patch has been applied with the explicit exclusion of bridge/panel.c,
+> handled by a separate patch.
 >=20
-> CJ
+> After applying the semantic patch, manually fixed these issues:
+>=20
+>  - 4 drivers need ERR_CAST() instead of PTR_ERR() as the function calling
+>    devm_drm_bridge_alloc() returns a pointer
+>  - re-added empty lines and comments that the script had removed but that
+>    should stay
+>=20
+>   @@
+>   type T;
+>   identifier C;
+>   identifier BR;
+>   expression DEV;
+>   expression FUNCS;
+>   @@
+>   -T *C;
+>   +T *C;
+>    ...
+>   (
+>   -C =3D devm_kzalloc(DEV, ...);
+>   -if (!C)
+>   -    return -ENOMEM;
+>   +C =3D devm_drm_bridge_alloc(DEV, T, BR, FUNCS);
+>   +if (IS_ERR(C))
+>   +     return PTR_ERR(C);
+>   |
+>   -C =3D devm_kzalloc(DEV, ...);
+>   -if (!C)
+>   -    return ERR_PTR(-ENOMEM);
+>   +C =3D devm_drm_bridge_alloc(DEV, T, BR, FUNCS);
+>   +if (IS_ERR(C))
+>   +     return PTR_ERR(C);
+>   )
+>    ...
+>   -C->BR.funcs =3D FUNCS;
+>=20
+> Reviewed-by: Manikandan Muralidharan <manikandan.m@microchip.com> # micro=
+chip-lvds.c
+> Reviewed-by: Douglas Anderson <dianders@chromium.org> # parade-ps8640
+> Tested-by: Douglas Anderson <dianders@chromium.org> # parade-ps8640
+> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 
-Actually, in order to be consistent with the rest of the code where a
-routine undoes changes in case of an internal failure, I would prefer your
-approach. Can you please post your solution in the next iteration? Thanks.
+Acked-by: Maxime Ripard <mripard@kernel.org>
 
-Regards,
-Lorenzo
+Maxime
 
->=20
->=20
-> > +
-> > +		if (port->dev->reg_state =3D=3D NETREG_REGISTERED)
-> >   			unregister_netdev(port->dev);
-> > -			airoha_metadata_dst_free(port);
-> > -		}
-> > +		airoha_metadata_dst_free(port);
-> >   	}
-> >   	free_netdev(eth->napi_dev);
-> >   	platform_set_drvdata(pdev, NULL);
-> >=20
-> > Regards,
-> > Lorenzo
->=20
-
---1vz8AGLIu0dXvB1F
-Content-Type: application/pgp-signature; name=signature.asc
+--mseix42f6fruwdv3
+Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaB8MPgAKCRA6cBh0uS2t
-rA/HAP9Zi1+4C2rxgiwNRJbwEjcF5j+ybpugyU0dEY4lrRu2EQEAybkmU3Kx+5HH
-BBgU9PCKsxYpYZbJameFHUNS4FU14AA=
-=nxAu
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaB8RkwAKCRAnX84Zoj2+
+dqBFAX9RE+B2jnCUcuUtKcNCTEZ8xNW143YQNM29MIx0Gy045sZ9DXgGmQ1PKcXr
+ax3IB2MBgKY7iHiKzY5LSG5f4DqrX/bF/QZAFTTE5/6Clb0TVt4RVPOdxBLJPjrA
+ibmLC8e5mA==
+=lhGP
 -----END PGP SIGNATURE-----
 
---1vz8AGLIu0dXvB1F--
+--mseix42f6fruwdv3--
 
