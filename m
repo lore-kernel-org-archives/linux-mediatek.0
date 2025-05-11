@@ -4,55 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02E4CC3ABC3
-	for <linux-mediatek@archiver.kernel.org>; Sun, 11 May 2025 16:55:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 268C1C3ABCB
+	for <linux-mediatek@archiver.kernel.org>; Sun, 11 May 2025 16:59:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
 	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lWYabxWwN0rZXGIKRD1Q4hDChX23vVF0dJbDnHVfEtQ=; b=JguuwO4PFC6xk7OwS/eGqyFspR
-	7jyyVEnbi31FDJ+EDrH9dzd3k2TLYvOgNH00JrYDXbxMFAnneMEE/PoKQ7qautcZtWQp31hG8J4wU
-	VZYJB1QO7dyRCTgktq6vSHTnL6u3yu8InOZ678ErkaKqim/BimnEmP6emAhHBQP87SgFlS7CTRTN0
-	4sbuLHzaDLqf4SUOR5g5oRXJ/PPlAcHmWIaxPGbboJU0MPDQzdGuo0x2t90lmETQyNgaaGw0S3FnB
-	+2Rg5wScinwnmjUrcOUXDJwCc2X1V5xkA+mVFfW81W1YFYTw8rm8oz+rs5J+nPI0FEa3InJHYx2l/
-	e7FPrhyQ==;
+	bh=QfYxhT92+8A6gWfGGKLpIf5nhSq7v4aUuvhWH2UbJM0=; b=h9nPHrTSAlvBFZvIU9Ov3SDcf6
+	pQBEY2Kb+foBNJmDNajd2+MwhM0O5NJJCev3zNOSfy9bOFyNGQ4btNK3PP7PIrhGv9ApW6RWX3qAN
+	xPDmmHOaL7GCd9GVrQGJU3l9jUDrPzNY8z6dqT6op7Q9Wx9iHTdCl26BrP69RPly/YYUUViAl/ASu
+	3DGMlesjIIEOXe4dawzOkMcSq63E6mu0OAMkYynKjTHrQNH0XnpRkXu0j/vgLwlcZK5dEbBxqgGWj
+	BNBgcF8yWLTjIuSOsoSK1urHDgTt7VtM8yPHE2zHHolRrNbZTslN6IprG9wx0iyLPMdyApIZH2qGj
+	lsbx+x2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uE9xV-00000007Ymn-3rNr;
-	Sun, 11 May 2025 16:55:25 +0000
+	id 1uEA1U-00000007Z3a-0LLJ;
+	Sun, 11 May 2025 16:59:32 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uE9he-00000007WnO-3FKC;
-	Sun, 11 May 2025 16:39:03 +0000
+	id 1uE9l2-00000007X9F-2goT;
+	Sun, 11 May 2025 16:42:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=lWYabxWwN0rZXGIKRD1Q4hDChX23vVF0dJbDnHVfEtQ=; b=phdDVKY1LRBkC276g4viHoQG+O
-	6j0Rv/ls5B+JImztcemHmjmp6yAcusSEL/17UKxArVwiECMbPqvi9QaxqR02X0noTVLdr6lPrBieM
-	18t+IjHVffJrAUGYyNUtP2cIZsCy008XxJO4hUaXRzZuPG40hbAlmSuM8Ztsnjx95GbE=;
+	bh=QfYxhT92+8A6gWfGGKLpIf5nhSq7v4aUuvhWH2UbJM0=; b=eR7newBUNJ4wqxhc3b1d+3qx/c
+	EOFDvTqf8qqEfYJ3R0yC22QrqFJkDAo9E2rWR3JFi6/u5WH2/sFe4owsAocJSN4RWaPCSw9lyau9J
+	KZz2Du6+pdPtjQOcMq/y8NdG6pS80LfMlxgQl+jEMlQqtiXiHhIxDAtgmd4t/z9Crhi0=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1uE9hR-00CGI2-88; Sun, 11 May 2025 18:38:49 +0200
-Date: Sun, 11 May 2025 18:38:49 +0200
+	id 1uE9km-00CGJu-GZ; Sun, 11 May 2025 18:42:16 +0200
+Date: Sun, 11 May 2025 18:42:16 +0200
 From: Andrew Lunn <andrew@lunn.ch>
 To: Frank Wunderlich <linux@fw-web.de>
-Subject: Re: [PATCH v1 08/14] arm64: dts: mediatek: mt7988: add basic
- ethernet-nodes
-Message-ID: <78abbdb9-70d8-4e53-8593-91735cde73ec@lunn.ch>
+Subject: Re: [PATCH v1 09/14] arm64: dts: mediatek: mt7988: add switch node
+Message-ID: <bfa0c158-4205-4070-9b72-f6bde9cd9997@lunn.ch>
 References: <20250511141942.10284-1-linux@fw-web.de>
- <20250511141942.10284-9-linux@fw-web.de>
+ <20250511141942.10284-10-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250511141942.10284-9-linux@fw-web.de>
+In-Reply-To: <20250511141942.10284-10-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250511_093902_815651_DDBC9D36 
-X-CRM114-Status: UNSURE (   7.16  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250511_094232_681541_F0CFD2E7 
+X-CRM114-Status: GOOD (  15.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,19 +66,52 @@ Cc: Landen Chao <Landen.Chao@mediatek.com>, Daniel Golle <daniel@makrotopia.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> +			gmac0: mac@0 {
-> +				compatible = "mediatek,eth-mac";
-> +				reg = <0>;
-> +				phy-mode = "internal";
+On Sun, May 11, 2025 at 04:19:25PM +0200, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
+> 
+> Add mt7988 builtin mt753x switch nodes.
+> 
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+>  arch/arm64/boot/dts/mediatek/mt7988a.dtsi | 166 ++++++++++++++++++++++
+>  1 file changed, 166 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+> index aa0947a555aa..ab7612916a13 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+> @@ -5,6 +5,7 @@
+>  #include <dt-bindings/phy/phy.h>
+>  #include <dt-bindings/pinctrl/mt65xx.h>
+>  #include <dt-bindings/reset/mediatek,mt7988-resets.h>
+> +#include <dt-bindings/leds/common.h>
+>  
+>  / {
+>  	compatible = "mediatek,mt7988a";
+> @@ -742,6 +743,171 @@ ethsys: clock-controller@15000000 {
+>  			#reset-cells = <1>;
+>  		};
+>  
+> +		switch: switch@15020000 {
+> +			compatible = "mediatek,mt7988-switch";
+> +			reg = <0 0x15020000 0 0x8000>;
+> +			interrupt-controller;
+> +			#interrupt-cells = <1>;
+> +			interrupt-parent = <&gic>;
+> +			interrupts = <GIC_SPI 209 IRQ_TYPE_LEVEL_HIGH>;
+> +			resets = <&ethwarp MT7988_ETHWARP_RST_SWITCH>;
 > +
-> +				fixed-link {
-> +					speed = <10000>;
-> +					full-duplex;
-> +					pause;
-> +				};
+> +			ports {
+> +				#address-cells = <1>;
+> +				#size-cells = <0>;
+> +
+> +				gsw_port0: port@0 {
+> +					reg = <0>;
+> +					label = "wan";
 
-Does phy-mode internal and fixed-link used together make any sense?
-Please could you explain this.
+I would expect the label to be in the board .dts file, since it is a
+board property, not a SoC property.
 
 	Andrew
 
