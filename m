@@ -4,112 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3667C3ABCB
-	for <linux-mediatek@archiver.kernel.org>; Sun, 11 May 2025 16:09:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4866C3ABCB
+	for <linux-mediatek@archiver.kernel.org>; Sun, 11 May 2025 16:36:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:
-	Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7jcXa1duGB4RLgLwkFP/05XRZV0fBz4a7PjTgDhagIQ=; b=rwmam/LwymWg/9Vm2ahB0KhFXA
-	djZMqggLypuhMMl3Q68S9Lt6OXHNv0I8y1aEb1CeHJKQLds499nYKIjr0rBJEMCAvCPWphM/QpgMf
-	atUtc8aY31vh+PH8lAzrX9hatyDgShdvj+tLLKbZYDKIO0Ul6rd0mufZWU99b8H2AuU/Q2JKgyFTS
-	uzexdIM2/HESWuKeOuavzYsJunTfMrrUtYBp/35mdrvUWEj2JUq1rCYvutMSTjhIlsEywUHUrhdcH
-	3mXcX2DsuyJP1l/bYSYQn7mPNzKQGLX1E6BuBgZ8Rkb2uoX9ntf0uosOCaX5sSk4fZuSzHqrkCkmN
-	OwepWl0A==;
+	bh=rTKtw5p9cRT6gfKtPcv5QRCZhaiO1JqQg2Jdb1SHkWI=; b=wJZyXIljX8c5DrlNQHNWxF47Ur
+	FaR8X34epRHWbjvSTagRCiA71BhN9m1b/J9xkObvK/NBde2UcXj+JtqbuJZfS0eUP7mfEptGujbZE
+	pmJIqQ2FKJI5/9NHmxv6jDiXCD3co43iKqqvT2FtQXmOVb2rMIOol2uMni4hhJ1JrnStazm0X1ACG
+	3MK4WaYFha0h6fLaGA9ZxtUl3nj11qLKpV09ORvAFLA86GkswnCLlHnBpDvbfvjyknaQR8j6rWHjn
+	ysxT1vX75wixohA+m6FeCf69wPvv0qlStUT+ni9ZPLpvGtZEuDuFslu7picnzXCZASo3VBSZCQ8/S
+	7IXOzqHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uE9Ee-00000007UZP-2UBS;
-	Sun, 11 May 2025 16:09:04 +0000
-Received: from mout.gmx.net ([212.227.17.20])
+	id 1uE9fd-00000007WZb-0ORP;
+	Sun, 11 May 2025 16:36:57 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uE9Cd-00000007UQe-13jq;
-	Sun, 11 May 2025 16:07:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1746979584; x=1747584384; i=frank-w@public-files.de;
-	bh=7jcXa1duGB4RLgLwkFP/05XRZV0fBz4a7PjTgDhagIQ=;
-	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
-	 Content-Type:Date:In-Reply-To:References:cc:
-	 content-transfer-encoding:content-type:date:from:message-id:
-	 mime-version:reply-to:subject:to;
-	b=gdm7Ftz1w0u8z5QRFsnmx9AkK+ztIEv1syuJamnLPXKg/UjwnePHm2lzQlbNv70q
-	 MT80DfyqpF2aMWdI85fR0EJhS6KQW/yIG9oJoNELcGTRHfjkwcIoDtZQoHfj68Ekt
-	 JeVCjzqLP78rm+/1MwrpRIkwOpNOntvDd8gbA0nU88rZE6RfuGvPG6Q0rpKU6SGlz
-	 MgZQ6bHiedEQ00L4rSwSvrtAhozCYEaSHPzTw5SLpljHl5L3gYr0agrx9Jwx6GEC5
-	 jl4a7Sop7hpxcOgV9+ZwrH9RD1rU2N10y1b75QzArrFLeXf0Wj7gw+oxh8LNTqXEt
-	 fFG7BanYwLRZ3ry6Gw==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [194.15.84.99] ([194.15.84.99]) by
- trinity-msg-rest-gmx-gmx-live-74d694d854-wjlx8 (via HTTP); Sun, 11 May 2025
- 16:06:24 +0000
-MIME-Version: 1.0
-Message-ID: <trinity-9fe03bba-54ab-4395-b6ae-4cf1d91e1b72-1746979584333@trinity-msg-rest-gmx-gmx-live-74d694d854-wjlx8>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: linux@fw-web.de, andrew@lunn.ch, olteanv@gmail.com, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com
-Cc: arinc.unal@arinc9.com, Landen.Chao@mediatek.com, dqfext@gmail.com,
- sean.wang@mediatek.com, daniel@makrotopia.org, lorenzo@kernel.org,
- nbd@nbd.name, netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Aw: [PATCH v1 00/14] further mt7988 devicetree work
-Content-Type: text/plain; charset=UTF-8
-Date: Sun, 11 May 2025 16:06:24 +0000
-In-Reply-To: <20250511141942.10284-1-linux@fw-web.de>
+	id 1uE9da-00000007WD6-3oOt;
+	Sun, 11 May 2025 16:34:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=rTKtw5p9cRT6gfKtPcv5QRCZhaiO1JqQg2Jdb1SHkWI=; b=kjR51rpY2dh3I+eCPGZ7vHjCeC
+	p0tO6yLVqBOpo2bnc/7frYv/SJfceT77OD57oqjAqKf7g54Bw0E0FHLLdpx4HWhKptEX7sZWHFm4G
+	rgDlSDo0vY8/4BeT5LdBgRUVeciHoYo3UaMIzljNElKLhbJfZ9fr1fLBbK5faSMRC8ME=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1uE9dG-00CGGX-Fk; Sun, 11 May 2025 18:34:30 +0200
+Date: Sun, 11 May 2025 18:34:30 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Frank Wunderlich <linux@fw-web.de>
+Subject: Re: [PATCH v1 02/14] dt-bindings: net: dsa: mediatek,mt7530: add
+ dsa-port definition for mt7988
+Message-ID: <043d1a0a-1932-42f3-bcd8-17fad10c5543@lunn.ch>
 References: <20250511141942.10284-1-linux@fw-web.de>
-X-UI-CLIENT-META-MAIL-DROP: W10=
-X-Provags-ID: V03:K1:P12+K2uFVSHcFESudIJQAhZEXoN0/qrWcaFHgGWi5rtrJDP3lhLhp0PRD15yk4yAD+Qei
- GdAejadAzkqN4wLdsaLo+PeZgfCS7PfzDC2C7cBTmAFLM+4PX1k4Aiz7OxMcszIjwJshP9SP22HU
- had3NWgewgnIyNelCik44jSVjhqrps9IdeI5NujdDhVrzIJejURMOXEpTIM1Ap9FTWB+ZtwvHB0V
- FU0bkw+3BFGfuEyt5jyEWZLTiAQ6KLjxGPShaF+KvPjOsCtWlN3uA8EaCXdE57Uc/+SDjQH+3YR5
- RnBmETZbhYJYzaro2rI2HK33ZiXcf7dUeYQTdLgsXyIyl+em7IfbDl0gqW24uV7DLU=
-UI-OutboundReport: notjunk:1;M01:P0:SixuLMgmyWM=;wNTrUbF3xMJPnUgIaLZ/oGRbd1P
- LydyK/SUmtaAOLF9linXvbltRmEH2ct39k049eXQPWEg3KISfOAHuK+UgWFtrzrPiMdKuDbkC
- 9QQKqxYuVCoJAwSYxeBweV4cKWGcJJJDUp97uW0Oa88qtYNnXe05s+/rGIniQfxfIbY/vwhHY
- vFy3hgqh9HPUNr3DNwDAiqkfhOJBR8T3H4x4MePZhLu+K0EEmXhLoPif1BtUTUL3s0/CbWecw
- ocP3M4UXTX25OGvg6M9MiPIfbbJNatTf4SE1cKXaHTykJYfTuEJnEmE+KWGJE3JwKyT3i5nRw
- q2UrlAWggca8HHaYLhcIEVU6AAr8XQjO4CBQhkfAOSek/Tr2D5zb3OjhIdkcURM6G/OyUCvwD
- QtJiAicDeuPFhcfwXtj0qRpE+oz3KE6+iOXa8yJNaLFvxEtZ1xo2YDx/oR4VqGIwU4msIuH4R
- iEMNXMs8JxzDvtVwljspkQU53+mK3xt24n8f+l1WWXO1v9RTreZbq+0fxKg7OkZ7bPOeib6oV
- X64JOB0iBK04aBhldN8FmBeliDc89ci59gDrLHn9muTvGyjrQnQqKXuvAQa7tm4+fewGN4g7x
- J2Wuom9czO6nzIIYp7JAsyiW1Jta+pp7yDI/ywXMuo0J7Z0dPhKAOK1jFvyhDWS5eERYP7/SA
- a4FiNWwYwKskYltxzUI7tnAHqB3BEP9TUXiWGikskiPl5/a+zXix5bqgMXL8TwS2ioDfimV7J
- PNZm1xEeNy/QQMSwTmIVeD5ZOWYAva/8cr+z9FyZhFM/AyKYOx9TqVOg8I7aSk2w25bjPGrIF
- 3JMbSmaEXLssk38X9+7of+D3tStj8400ufWqxr7cO+UR1QDhMkZrZTZLT1pRgrr8kPoGs10H0
- +vVqoMPB2WxQhm0XQj27lZTAAjk+zAMXLahL8ZfBHRczsgRFHJPxl2y3OJzbkyuRa18p84SCA
- q+vAl95ASG+u9xK0lDV54C+fnvTo/LI8wb4EpzpBnA66+GY8iZWKYoCW6IFtQJ2VLbwwbOwv/
- PrlEfPs+tJemUwtDzkeAIoJAgEHAUPBWP94pJVAZfmVV/Y1OfgKjAv4Krd0xGv3fHpXarqjGR
- uE9LTrnQ2LbGo9c8C4RQDmmC3w0nINCudcyNih5VLn3u9kVMxFu4DkLfOETDSlgZ5IfbHrGbs
- R64+PI6h6I3JkR9vpH1eRsJmeIe54ChntDaEIqhQ8ngoM819F9d5wvRvGPXIeB6sPrDPBaKSD
- 8yqU+rbqHIf5S4HXvzlrGTGXMArQfMBW0gejjOeOpFrSqYBmMQfDR4S59wrSWCAsSDTZLVN20
- wqnXhtGaDnsv7DIUkrp/Ujb1n1o2nvSW0KWVdzsVsNFdTskOmusS9DdzAyd+HvYcRnVrm509s
- H2zNmQivQl6OGySXpzql/cCu3EA+WMEeMlfMZLPsppBS2ydQVSv46IzxDfM2ibZS/aOSSU4fE
- XuE5bhDUtPPAUff+16rASYKcc+vin4bwKzB9xaT3OXb2CEdX8IzdEMWbiobXQTNZQ28nZEZbU
- nApIztd+lp0Qfmbk1ztO7ppkXmvGiC0a9r+u1JZ0Q1I+fHjpzLee2rWsobioKQUo3QbdRsL2+
- Hcu6HhCOJsvG8J9X1sMtgElSVULzbukqv5XFUnzcjJvANsr+JfxhF6A4q/ERPeULtZmukhQr+
- NKcAng5FXqc8PW+fsCDM4ldGaBHD//vAUMLrDXLq0nhQToZgEGAq+Zd0WBS4r+yS6GD6JKj4g
- ilvl0ssZFVX74fXqki5OWZbBULvzfhSrAn/LAhjaypfeqaK9xruTCoHS76cqIeQ2Nt0+C3xLh
- 5lTqXK/Lw0zUgCtXaHvqnVtY3tPRbhdo94/f7nmzHjKRxg8XaDeZZCanuA87wgNdsrx40jDDz
- kz0HTJU1a+/EAfuClVw2xCGMf7YYOVFV3zv+r5sQKqO7un0oTGleLMkA4eb26af1x4iBB4n7E
- 0hIiJniY1DH83xcF8cwjWW8jZGOhnLLPENOXbGnwC9uHUPMLQvRbhzxrHft4qt4iCYom/v3cg
- fYMWLYqTGHoZ3WCI8KUO8VyoDQFnSU0qckNK4kcJJsY2JkLiRZoKFEhdHmAUx8C7h6rKlT3/U
- WJ5MwdIpKqSIo6zu5fMS2dKNAh2WDfBiNzguhJ9CxK9MIKha5Wt1tXyKYxwonHST0LaBlu+u5
- l43sn9wBN3ITTFmRpaNed4J51l5PZdYUAe/jyrOvhFWbReoMs01p/v/w0W26O0c8OYuWambwd
- JKULcyD2FG3M3uoZfycldEBtKG2xPXgQec+pmbyaQ3l2djP3qUp4HLCgUMSHF62FG3r4+qh0i
- RVUC8JtWEUPGlH4fNg9xDjAaBjBkSzHA6FJwsoKPBmODKtKPG+Am/kr1JpYNZ15zca3VLdryX
- B1UQclxlYmABQiJBlG4v9FuYJlktaV3+WT/QqLUNqeGmYbRJVbYgRI+toIIoDmpWAbCwD3ScO
- QvP1FYymmEGVQScsDMsRTd2n9GTs176UH3+zb09iqyfQRjLDnzh50RuJ0EB+AmDP16E7duXfj
- J38kPKzaw2fPVA7m6RPpu5UomZxao/yB4FN3rb5uj3LZ+VYPTkfX5o9mOoc0e19u/rhPUzTXQ
- 71X9t5asA/3XprfutZg2nevXBqFA9uSjh3AYmwgwRBuAD9DF8pcTr3vqDPo3CsYfOpUz1TFxW
- Jrs61IT7983FO6h1Gr271rmKIBtPLGTqq3MDjnGhWxZGgDpZ3bBRTP/pFyPlm90XGvZo+KLTW
- HEps61+ZH3cTKwggKzt7I6W32nOTwne3lTIOavOED/Xe4Mb12AyXHfUbB/zB6Zk6tR7msFk2R
- JDp7qoMpxt+KZ9na/eB10wZJmReK3EMgZTjNSTSa1O2zfuBFMvDUYn49SvRibcg7Vlc5+g
+ <20250511141942.10284-3-linux@fw-web.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250511141942.10284-3-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250511_090659_820955_6E1369CC 
-X-CRM114-Status: UNSURE (   3.02  )
+X-CRM114-CacheID: sfid-20250511_093450_944761_5300B11C 
+X-CRM114-Status: UNSURE (   7.61  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -122,12 +64,17 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Landen Chao <Landen.Chao@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, Eric Dumazet <edumazet@google.com>, Rob Herring <robh@kernel.org>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-sorry for splitted series and duplicate part 9
+On Sun, May 11, 2025 at 04:19:18PM +0200, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
+> 
+> Add own dsa-port binding for SoC with internal switch where only phy-mode
+> 'internal' is valid.
 
-my mail provider responded with "5.7.1 Command rejected" at part 9 and i had to use another one.
+So these internal PHYs don't have LEDs?
 
-regards Frank
+	Andrew
 
