@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64467C3ABCB
-	for <linux-mediatek@archiver.kernel.org>; Sun, 11 May 2025 14:42:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5925C3ABC3
+	for <linux-mediatek@archiver.kernel.org>; Sun, 11 May 2025 14:44:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=3EHXB+FxOQEuxjJuPZ3FDlU1soKtjeNeGrzIBOUM2w0=; b=wqk6VVjkv5wBHq
-	7mfK2PC000epmCtKaMQuiShtj5hg9GpHBKAaQkGKR4gVcF/44mhEUFxpKqEqXu/KLsVCZ6fiZ6y5B
-	aX++kSnHjZ+zSH3bnJBRDolTNOrR0JPKfwwAWYzorXZDwCCojdM7GKodx/56ZCmVpVW/QY3YQNXD6
-	huH/K2ZqumkvyXvH+7Dtwp/yNu4BfRwAqNPHLwSEN7jdW1Gz+piNv2tVrg8bDUI/ikMdcBzjxoxIb
-	fy39dP/FpltTbyiGKfXadoJSVz4V76aPfrQQ2bDG5ATBJWs6r9KlbkYUv2Zd65OPKVT/xazXN73gJ
-	pPC9ALSOnsj98iPyipPA==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=RocC8rGT7EyG6giOZHaltcZyAtXeChy4q0QRRBBF5KU=; b=LiG8W9crQi6Y5P
+	HxQm5xu76VxgiUSFejbYJSwhdovrBfJRvGEJZQjmLl0mmFU3nKB3h/KouEHxXYXd8Eh6zzbvSmYZ9
+	R/YvJN3kDedktG7XzJDy61HzVuXPBFCbx6uXdkC5WDXgNK8wHAYHHSomcXhlf5HWZasiIWbYJySE1
+	lzrQWRCadqYFbNWuy1Qxe3xu5PfA6+k7hpJEUAiQAUhEQBmiQPgrgDBuySO+eG5Up7xwWVchMYCPB
+	iE+PGknKhPxgB5UX6o1uutsVFj25b64p6tWw+vVgP0UJFu/b2dG3Z/bEb92k8cfdcJomVRKJIkkOO
+	zsqQqPXroehVMWPtioqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uE7sx-00000007NxQ-0sda;
-	Sun, 11 May 2025 14:42:35 +0000
-Received: from mout.gmx.net ([212.227.15.18])
+	id 1uE7uw-00000007ONw-3RZs;
+	Sun, 11 May 2025 14:44:38 +0000
+Received: from mout.gmx.net ([212.227.17.22])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uE7dR-00000007MFE-05sN;
-	Sun, 11 May 2025 14:26:34 +0000
+	id 1uE7e0-00000007MHl-2tbD;
+	Sun, 11 May 2025 14:27:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1746973558; x=1747578358; i=frank-w@public-files.de;
-	bh=3EHXB+FxOQEuxjJuPZ3FDlU1soKtjeNeGrzIBOUM2w0=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:Message-ID:
-	 MIME-Version:Content-Transfer-Encoding:cc:
+	s=s31663417; t=1746973626; x=1747578426; i=frank-w@public-files.de;
+	bh=RocC8rGT7EyG6giOZHaltcZyAtXeChy4q0QRRBBF5KU=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:Message-ID:In-Reply-To:
+	 References:MIME-Version:Content-Transfer-Encoding:cc:
 	 content-transfer-encoding:content-type:date:from:message-id:
 	 mime-version:reply-to:subject:to;
-	b=dRkp7uOc33hpr4LZp+COdYyo1EAkfc0KFy7sGtytb9qSiOUXIwhvuHGz3W//v5CS
-	 sZXWIbPf0AfER9lMbM6CO6Esc2+JXVOAWomDRSX2rCmPqEY1vtZ1vxC26cQCyDXgW
-	 nwjNkY44M68NHW/wnr4SQeda1qHg+1Pi1lwlR11krWmkdT5gt2UHe/4BVigjOqfdk
-	 3s/d4FygiYG6a3EkgHj+UEy2gNhhUo7RDWKpQw98tEVxMPu69Vd5kBsrWvzFMPlj6
-	 8yWnuKWCzqB89P1timTHStx9C6Wm8Kw2vEju42LTGAZQoZMGQ+FraJgEroTYiyR3H
-	 E05Nwz/DXKg2z4APMQ==
+	b=KBO4DcHwPAKUnv2geUiD8jsys9UKvAsZd6CAdSEULMemA7gbp+kkXDDiCwcksS7h
+	 XnYLS0tD6deXwbG/oGgWt96Xw61VBeDTfcq0RE4hoyP99iOit1n7gLKGRySQiRr8D
+	 3OYe7c/OznmGxupDmEBLTdZtnv1ybkDv3yOE+W6pUA/NtxjiPxoAccdSHgq37sZSX
+	 zB8Nd9RfFNiU++2PeQcwZw+WZciow9lv88xlJc8oK8brJxpccP+qSQ5AqnYiSUR/s
+	 efXhPPtd96QVJl1lhB/R62TBI4nuv2TdL0VuoVppAVv/yHFaiDsPy2taHI7MYQuAj
+	 VeJo2tunV6i2de4YZw==
 X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from frank-u24 ([194.15.84.99]) by mail.gmx.net (mrgmx004
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1My36T-1vDMoj1kTf-00z1uw; Sun, 11
- May 2025 16:25:58 +0200
+Received: from frank-u24 ([194.15.84.99]) by mail.gmx.net (mrgmx104
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 1M7JzQ-1uLok140Ts-001RRK; Sun, 11
+ May 2025 16:27:06 +0200
 From: Frank Wunderlich <frank-w@public-files.de>
 To: Andrew Lunn <andrew@lunn.ch>,
 	Vladimir Oltean <olteanv@gmail.com>,
@@ -55,65 +55,67 @@ To: Andrew Lunn <andrew@lunn.ch>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v1 09/14] arm64: dts: mediatek: mt7988: add switch node
-Date: Sun, 11 May 2025 16:25:48 +0200
-Message-ID: <20250511142549.10881-1-frank-w@public-files.de>
+Subject: [PATCH v1 14/14] arm64: dts: mediatek: mt7988a-bpi-r4: configure switch phys and leds
+Date: Sun, 11 May 2025 16:26:54 +0200
+Message-ID: <20250511142655.11007-5-frank-w@public-files.de>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250511142655.11007-1-frank-w@public-files.de>
+References: <20250511142655.11007-1-frank-w@public-files.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:vKiLc5DHpHJt5lRc77jonAK1eTfjqeCfBfejoAeoivlrnei2XED
- rU19O80TViMd9aYFM5UGn2dL5Tl6TJ0Jv9KS9B52SXD9eAsXZieK3YEv/aYCKAJ3DJ6QH+y
- jde+tOdfuKmbvfsFOWyxGdWN/2sN1XFIqxWicedhJh0IA2M92NsSY/RrIVivVyuvMaywgix
- V0W3cy28Z5Q7bkjXvxSdg==
-UI-OutboundReport: notjunk:1;M01:P0:GsdF6h121W4=;k/a7UcqLJK2SijwMcRc3VN0bUZM
- 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
- nPnqftf2SQibkH4V703lxjEMQW32icT2RTe9132HR0KtzOO6zfC4xBua61tK9NCn00+YhIX8d
- tiN1yhr/Gh3TG8ss8y3zD+dbA8Mf9nczVb1JlfYyB/y2SP3nX0Mia07eIetn8ajrT2KviUZ1Q
- xCDkiSe9yuf28u7lPOz7HITDHggTamXy/FxPs9GPDhQEo6w+8Ff8GtXfzh87xg4VBanvXVIRN
- DzhXmbYtvnTVvVHEqFEjBi4uVALCKrYI2ujb/B6zSRCuxlbNQirj5hO/kfBUx+xFfkqLWLdcf
- lboFq2fHwf1u/LYdheAa1ArXr2s4Sb0ZWO3wtQEwhcom/Od/bjhgUKoK0Pc4PAT+yQ+iY5ibE
- m1uchC6VbdD6Bl4oAkR+E5k9MThXpoTBmA8hwwapCl5GROjjJPXnW4Zd3jUp1HSy8EsT+Szl6
- dbAPTscq5LfaHher4sSQ6AQ2G7A5GH1WHD4m2qqYMOg5MmyM+ia2VOXRmBILqLPm5gxGXcFWG
- VtO7MkPYrZEwHiatNmze5t2fQq5Q3L5W+lg+F0dYzkxm2MgfhvMPpgZDb/iQZiVPlWOHrCFEX
- ww7eZCUHByPyrPwJL03iiqSjxJRYwR6kYXi3X+gMzgLINw33rw0P9P6awJGDWd4oYKbb1fKFC
- vvMPke2aLQW3tXMyh5JgqmQUWKc38jyE7iKDrsA5RmNFmNMxXms6ndqfx2lTdZs20aRS4WJfU
- c1O1+D981IOt4xstam6xGwBGdf1LIXV/ZTDsgS5TFDyK9WMdlbK1fmsGl5lXjHWJo6u3+D8c4
- J+6OrQn/TmYVXxIXxMnJzTrYhpqJyj07/X6xW/bNxs/hV2pH92jVFT+yuM1PLUKekTV4mz7d0
- TUX6Dt5MH39V2iF9ljdAbwz1l
+X-Provags-ID: V03:K1:z/Xxuc+GCe4mTpAJHIfgYl+TeTpVWKg2XFz+R/eThbF5luTDdBM
+ ApyXNQbv15OhkowltyGIEziaMKUer3KBP6IDRBtvBqLlJI4MJcgUTVFpohMMHylL5GdkTsL
+ ZBkZeytrTqNpKLNaILFReziaSHBlYhrdkeueV6CFoK062CtKPb9b0LHbrPCMQGXGNLT0r4f
+ VChxTdK8Z3ZFlcTjN5dcA==
+UI-OutboundReport: notjunk:1;M01:P0:1ObFaSmp1eQ=;ECStePRFumKIJPLYWnwsWuHXPlq
+ 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
+ eXJQIk8eSXfVTWmpZiS8MPkV3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250511_072633_360551_9D7BBE5F 
-X-CRM114-Status: UNSURE (   9.26  )
+X-CRM114-CacheID: sfid-20250511_072709_053536_F3BF9A83 
+X-CRM114-Status: UNSURE (   8.62  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -130,199 +132,66 @@ Cc: devicetree@vger.kernel.org, Landen Chao <Landen.Chao@mediatek.com>, =?UTF-8?
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mt7988 builtin mt753x switch nodes.
+Assign pinctrl to switch phys and leds.
 
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 =2D--
- arch/arm64/boot/dts/mediatek/mt7988a.dtsi | 166 ++++++++++++++++++++++
- 1 file changed, 166 insertions(+)
+ .../dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi | 40 +++++++++++++++++++
+ 1 file changed, 40 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/arm64/boot/d=
-ts/mediatek/mt7988a.dtsi
-index aa0947a555aa..ab7612916a13 100644
-=2D-- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-@@ -5,6 +5,7 @@
- #include <dt-bindings/phy/phy.h>
- #include <dt-bindings/pinctrl/mt65xx.h>
- #include <dt-bindings/reset/mediatek,mt7988-resets.h>
-+#include <dt-bindings/leds/common.h>
+diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi b/a=
+rch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
+index d40c8dbcd18e..c67b1211af18 100644
+=2D-- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
+@@ -126,6 +126,46 @@ &gmac2 {
+ 	phy-mode =3D "usxgmii";
+ };
 =20
- / {
- 	compatible =3D "mediatek,mt7988a";
-@@ -742,6 +743,171 @@ ethsys: clock-controller@15000000 {
- 			#reset-cells =3D <1>;
- 		};
-=20
-+		switch: switch@15020000 {
-+			compatible =3D "mediatek,mt7988-switch";
-+			reg =3D <0 0x15020000 0 0x8000>;
-+			interrupt-controller;
-+			#interrupt-cells =3D <1>;
-+			interrupt-parent =3D <&gic>;
-+			interrupts =3D <GIC_SPI 209 IRQ_TYPE_LEVEL_HIGH>;
-+			resets =3D <&ethwarp MT7988_ETHWARP_RST_SWITCH>;
++&gsw_phy0 {
++	pinctrl-names =3D "gbe-led";
++	pinctrl-0 =3D <&gbe0_led0_pins>;
++};
 +
-+			ports {
-+				#address-cells =3D <1>;
-+				#size-cells =3D <0>;
++&gsw_phy0_led0 {
++	status =3D "okay";
++	color =3D <LED_COLOR_ID_GREEN>;
++};
 +
-+				gsw_port0: port@0 {
-+					reg =3D <0>;
-+					label =3D "wan";
-+					phy-mode =3D "internal";
-+					phy-handle =3D <&gsw_phy0>;
-+				};
++&gsw_phy1 {
++	pinctrl-names =3D "gbe-led";
++	pinctrl-0 =3D <&gbe1_led0_pins>;
++};
 +
-+				gsw_port1: port@1 {
-+					reg =3D <1>;
-+					label =3D "lan1";
-+					phy-mode =3D "internal";
-+					phy-handle =3D <&gsw_phy1>;
-+				};
++&gsw_phy1_led0 {
++	status =3D "okay";
++	color =3D <LED_COLOR_ID_GREEN>;
++};
 +
-+				gsw_port2: port@2 {
-+					reg =3D <2>;
-+					label =3D "lan2";
-+					phy-mode =3D "internal";
-+					phy-handle =3D <&gsw_phy2>;
-+				};
++&gsw_phy2 {
++	pinctrl-names =3D "gbe-led";
++	pinctrl-0 =3D <&gbe2_led0_pins>;
++};
 +
-+				gsw_port3: port@3 {
-+					reg =3D <3>;
-+					label =3D "lan3";
-+					phy-mode =3D "internal";
-+					phy-handle =3D <&gsw_phy3>;
-+				};
++&gsw_phy2_led0 {
++	status =3D "okay";
++	color =3D <LED_COLOR_ID_GREEN>;
++};
 +
-+				port@6 {
-+					reg =3D <6>;
-+					ethernet =3D <&gmac0>;
-+					phy-mode =3D "internal";
++&gsw_phy3 {
++	pinctrl-names =3D "gbe-led";
++	pinctrl-0 =3D <&gbe3_led0_pins>;
++};
 +
-+					fixed-link {
-+						speed =3D <10000>;
-+						full-duplex;
-+						pause;
-+					};
-+				};
-+			};
++&gsw_phy3_led0 {
++	status =3D "okay";
++	color =3D <LED_COLOR_ID_GREEN>;
++};
 +
-+			mdio {
-+				#address-cells =3D <1>;
-+				#size-cells =3D <0>;
-+				mediatek,pio =3D <&pio>;
-+
-+				gsw_phy0: ethernet-phy@0 {
-+					compatible =3D "ethernet-phy-ieee802.3-c22";
-+					reg =3D <0>;
-+					interrupts =3D <0>;
-+					phy-mode =3D "internal";
-+					nvmem-cells =3D <&phy_calibration_p0>;
-+					nvmem-cell-names =3D "phy-cal-data";
-+
-+					leds {
-+						#address-cells =3D <1>;
-+						#size-cells =3D <0>;
-+
-+						gsw_phy0_led0: led@0 {
-+							reg =3D <0>;
-+							function =3D LED_FUNCTION_LAN;
-+							status =3D "disabled";
-+						};
-+
-+						gsw_phy0_led1: led@1 {
-+							reg =3D <1>;
-+							function =3D LED_FUNCTION_LAN;
-+							status =3D "disabled";
-+						};
-+					};
-+				};
-+
-+				gsw_phy1: ethernet-phy@1 {
-+					compatible =3D "ethernet-phy-ieee802.3-c22";
-+					reg =3D <1>;
-+					interrupts =3D <1>;
-+					phy-mode =3D "internal";
-+					nvmem-cells =3D <&phy_calibration_p1>;
-+					nvmem-cell-names =3D "phy-cal-data";
-+
-+					leds {
-+						#address-cells =3D <1>;
-+						#size-cells =3D <0>;
-+
-+						gsw_phy1_led0: led@0 {
-+							reg =3D <0>;
-+							function =3D LED_FUNCTION_LAN;
-+							status =3D "disabled";
-+						};
-+
-+						gsw_phy1_led1: led@1 {
-+							reg =3D <1>;
-+							function =3D LED_FUNCTION_LAN;
-+							status =3D "disabled";
-+						};
-+					};
-+				};
-+
-+				gsw_phy2: ethernet-phy@2 {
-+					compatible =3D "ethernet-phy-ieee802.3-c22";
-+					reg =3D <2>;
-+					interrupts =3D <2>;
-+					phy-mode =3D "internal";
-+					nvmem-cells =3D <&phy_calibration_p2>;
-+					nvmem-cell-names =3D "phy-cal-data";
-+
-+					leds {
-+						#address-cells =3D <1>;
-+						#size-cells =3D <0>;
-+
-+						gsw_phy2_led0: led@0 {
-+							reg =3D <0>;
-+							function =3D LED_FUNCTION_LAN;
-+							status =3D "disabled";
-+						};
-+
-+						gsw_phy2_led1: led@1 {
-+							reg =3D <1>;
-+							function =3D LED_FUNCTION_LAN;
-+							status =3D "disabled";
-+						};
-+					};
-+				};
-+
-+				gsw_phy3: ethernet-phy@3 {
-+					compatible =3D "ethernet-phy-ieee802.3-c22";
-+					reg =3D <3>;
-+					interrupts =3D <3>;
-+					phy-mode =3D "internal";
-+					nvmem-cells =3D <&phy_calibration_p3>;
-+					nvmem-cell-names =3D "phy-cal-data";
-+
-+					leds {
-+						#address-cells =3D <1>;
-+						#size-cells =3D <0>;
-+
-+						gsw_phy3_led0: led@0 {
-+							reg =3D <0>;
-+							function =3D LED_FUNCTION_LAN;
-+							status =3D "disabled";
-+						};
-+
-+						gsw_phy3_led1: led@1 {
-+							reg =3D <1>;
-+							function =3D LED_FUNCTION_LAN;
-+							status =3D "disabled";
-+						};
-+					};
-+				};
-+			};
-+		};
-+
- 		ethwarp: clock-controller@15031000 {
- 			compatible =3D "mediatek,mt7988-ethwarp";
- 			reg =3D <0 0x15031000 0 0x1000>;
+ &i2c0 {
+ 	pinctrl-names =3D "default";
+ 	pinctrl-0 =3D <&i2c0_pins>;
 =2D-=20
 2.43.0
 
