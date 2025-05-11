@@ -4,46 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34B24C3ABC3
-	for <linux-mediatek@archiver.kernel.org>; Sun, 11 May 2025 14:52:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8095BC3ABCB
+	for <linux-mediatek@archiver.kernel.org>; Sun, 11 May 2025 15:33:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZzNDznxpyqlReNyoWtKo+MRxI8KqkWOoBYb9IsBg9Pk=; b=wUHxMAeLwphC66
-	Oa2Z/MogzgGh40Rxp3R4uAMksvWc3rIwi54ARp1HcQXTvdD7OiDkQ30yDrYN2MSFOjcqC1F25/qIP
-	OM0IshYB7UqC2xz7LQJdH2AqetOuoldJ7ly9cCtbG9vlYyYH8ipE8rHclVeBUhxgV7Aqm4gCLXCKE
-	4s/sIo3iaeYVpKbaUfVcolCB6gufcqXWMzCO9l9m4z2g4yu6c144iqtA3fkbc+/y8zWPawSeQJMNe
-	2Gt665gAaKNArQrVipjW6wqPBxf7MD8PMvdzdvSKx19PTwthIYlwo9R5ibi3OvVJDovncLbSte5BC
-	QlotvldlevsXsfhzWUAw==;
+	List-Owner; bh=F2n2o30Q/kVq/KYG6vVQ5aU24ZZC3guR83pv90r8Jms=; b=jVsxUfZwitGLCn
+	Zi5uWqiVn7satF1ZM7mnEwU9F6dzlTIX4T5BL3OFbUrv8H2f4uxP3q36emA9QH6GnHOx9XoyfCU0z
+	olVRIC2zhnQFd4BocWFxk0bHsqln9eFEHNoSp+EzXETikwk1/+GS6l4GCThuOHDRQueoAX7ZVn2Od
+	VDGFmyEWb+KNJjVf4WnodY4Bzwlwbfxib7pw7lp9C9w+dlx6mfRyYSyqdI+iUvPA/8t4tsqrkwTdC
+	4uWTi6Nc9mn3B99w0edASR37fFpmfChB67Rn8Y049sWVzI/fi/dzWYESA4uW38jQzQYOIl2gMPEq5
+	jSMU0J0kUbiPdv4Ra3zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uE82s-00000007Pql-459U;
-	Sun, 11 May 2025 14:52:50 +0000
-Received: from mout.gmx.net ([212.227.17.21])
+	id 1uE8gY-00000007SAw-1Ezc;
+	Sun, 11 May 2025 15:33:50 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uE7eN-00000007MMw-2IAr;
-	Sun, 11 May 2025 14:27:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1746973625; x=1747578425; i=frank-w@public-files.de;
-	bh=ZzNDznxpyqlReNyoWtKo+MRxI8KqkWOoBYb9IsBg9Pk=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:Message-ID:In-Reply-To:
-	 References:MIME-Version:Content-Transfer-Encoding:cc:
-	 content-transfer-encoding:content-type:date:from:message-id:
-	 mime-version:reply-to:subject:to;
-	b=ETMgC4t3pbYkXUZThHXwp/YZhR0oUMB/tgFU220wpjmNz8ycc9bnH0tg+HU/I48t
-	 kxmy2XRcTDHwoDYCPJYeHhLLicU/7ZLQjdfKht35k6kzaHq52mDduWUvX/FEpbZtk
-	 90XFqAK6CEjGB4MEO3Xe8i5+E3o11rbmmoy3AQtiz8+11YRADvwKGwu9mcyoM/+Xv
-	 9CHJmu0WdBf3Zc4NX54BG+2ZfdUkEBhdV6yNXG6X6exU2sPk5hT/8/V/w/uKgL4OI
-	 lDxMZ/f1Ol5iQ+NPpO3OqWa2JoTO8s8PtnfcZleD5EZcXoHuA78Gx8hcEzRL9Gnn0
-	 XytW3pgLSB6apcMOSA==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from frank-u24 ([194.15.84.99]) by mail.gmx.net (mrgmx104
- [212.227.17.168]) with ESMTPSA (Nemesis) id 1MNsw4-1ucNge3AYC-00I0O6; Sun, 11
- May 2025 16:27:04 +0200
-From: Frank Wunderlich <frank-w@public-files.de>
+	id 1uE7XB-00000007LXe-2Y6b;
+	Sun, 11 May 2025 14:20:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=F2n2o30Q/kVq/KYG6vVQ5aU24ZZC3guR83pv90r8Jms=; b=P0/TnOtBbmmTFDcOjV+MJGSApR
+	QHxJH93D0xYyDqwQkI/k1dClUsrsd+t07GV+Il3j9NV0aFjYuRuXsXNHqbw3wOv6oNufvpGRqfF8S
+	JcO9TCrn4ieuu8SjmVc0BmVEBfu4y68croDXSOFqojJc/Ufr+/yAULHQTJfCiMdD2rMSR64eWFEJo
+	5XEmrI5gNeIhMWSvHZixXCsT0gyndQHiUdqzbuYI52mtJAjL6MvTr8YeNWnUFofit9CPOsXVRScem
+	PYyKPEV8idfOi8oVj4WThMfLZXf5+YmpGO1OLiokHiov6nNSh+bB5CkoZR9VWDf+k0TGokhSP1jmM
+	qiXoU2SQ==;
+Received: from mxout4.routing.net ([2a03:2900:1:a::9])
+	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1uE7X7-0000000Gchb-0QB4;
+	Sun, 11 May 2025 14:20:04 +0000
+Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
+	by mxout4.routing.net (Postfix) with ESMTP id B834D10001E;
+	Sun, 11 May 2025 14:19:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1746973197;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=F2n2o30Q/kVq/KYG6vVQ5aU24ZZC3guR83pv90r8Jms=;
+	b=UkJ9gZ3TP4mpv73nR6bUQtH7yGllG6/eGkZpNCk35tuvz48EK/69cOkqd6hnAG94NrseXq
+	UyfPyK2r5z0SjCtzXWY2KZis+aFtV8wyZ5f34jQS6CojsZLF3/mITkkpCMJTYe2onk9h33
+	EBvRNMKhsXLdxdGChzIyNw2fp7FlMPk=
+Received: from frank-u24.. (fttx-pool-194.15.84.99.bambit.de [194.15.84.99])
+	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id 9F11E100787;
+	Sun, 11 May 2025 14:19:56 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
 To: Andrew Lunn <andrew@lunn.ch>,
 	Vladimir Oltean <olteanv@gmail.com>,
 	"David S. Miller" <davem@davemloft.net>,
@@ -55,68 +68,18 @@ To: Andrew Lunn <andrew@lunn.ch>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v1 12/14] arm64: dts: mediatek: mt7988a-bpi-r4: add proc-supply for cci
-Date: Sun, 11 May 2025 16:26:52 +0200
-Message-ID: <20250511142655.11007-3-frank-w@public-files.de>
+Subject: [PATCH v1 05/14] arm64: dts: mediatek: mt7988: move uart0 and spi1 pins to soc dtsi
+Date: Sun, 11 May 2025 16:19:21 +0200
+Message-ID: <20250511141942.10284-6-linux@fw-web.de>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250511142655.11007-1-frank-w@public-files.de>
-References: <20250511142655.11007-1-frank-w@public-files.de>
+In-Reply-To: <20250511141942.10284-1-linux@fw-web.de>
+References: <20250511141942.10284-1-linux@fw-web.de>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:Qae9R1ROAS7GGhKcoocDvvfSN1lTbwmOckLSmBT/RcUE+p369Rc
- V5vHaYCbVIVSdn/CBRPbUI168BCkmjiXQ443AqxYedYM2ygTw8zXjVK8wopC8tKzhAOV6g3
- iq8PHXl3YJKuQpFKGXO2gfgkeu4VxeGGeefAJHmX/lSNyGCLLm9ZrJx4qMvQdM1+yRhMig4
- K0NBiuf8j+lPrfBpHNEZg==
-UI-OutboundReport: notjunk:1;M01:P0:jTOjf/Ji844=;E3z+Qeg+R/XZp97Xq0gAqHj1gPn
- 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
- TE/Ji3L/aN5ShBNxvcubq1lhN
+Content-Transfer-Encoding: 8bit
+X-Mail-ID: 730e5bd4-362e-4c00-a35e-0ec77e8f4691
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250511_072731_882402_BB339A3E 
-X-CRM114-Status: UNSURE (   7.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250511_152001_728098_8ADB46BC 
+X-CRM114-Status: GOOD (  10.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,30 +95,95 @@ Cc: devicetree@vger.kernel.org, Landen Chao <Landen.Chao@mediatek.com>, =?UTF-8?
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-CCI requires proc-supply. Add it on board level.
+From: Frank Wunderlich <frank-w@public-files.de>
 
+In order to use uart0 or spi1 there is only 1 possible pin definition
+so move them to soc dtsi to reuse them in other boards and avoiding
+conflict if defined twice.
+
+Suggested-by: Daniel Golle <daniel@makrotopia.org>
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-=2D--
- arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi | 4 ++++
- 1 file changed, 4 insertions(+)
+---
+ .../dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi  | 14 --------------
+ arch/arm64/boot/dts/mediatek/mt7988a.dtsi      | 18 ++++++++++++++++++
+ 2 files changed, 18 insertions(+), 14 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi b/a=
-rch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
-index 81ba045e0e0e..afa9e3b2b16a 100644
-=2D-- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
+diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
+index 37e541a98ee1..23b267cd47ac 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
-@@ -40,6 +40,10 @@ reg_3p3v: regulator-3p3v {
+@@ -328,13 +328,6 @@ mux {
+ 		};
  	};
- };
-=20
-+&cci {
-+	proc-supply =3D <&rt5190_buck3>;
-+};
+ 
+-	uart0_pins: uart0-pins {
+-		mux {
+-			function = "uart";
+-			groups =  "uart0";
+-		};
+-	};
+-
+ 	snfi_pins: snfi-pins {
+ 		mux {
+ 			function = "flash";
+@@ -356,13 +349,6 @@ mux {
+ 		};
+ 	};
+ 
+-	spi1_pins: spi1-pins {
+-		mux {
+-			function = "spi";
+-			groups = "spi1";
+-		};
+-	};
+-
+ 	spi2_pins: spi2-pins {
+ 		mux {
+ 			function = "spi";
+diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+index 8c31935f4ab0..ab6fc09940b8 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+@@ -209,6 +209,20 @@ mux {
+ 						 "pcie_wake_n3_0";
+ 				};
+ 			};
 +
- &cpu0 {
- 	proc-supply =3D <&rt5190_buck3>;
- };
-=2D-=20
++			spi1_pins: spi1-pins {
++				mux {
++					function = "spi";
++					groups = "spi1";
++				};
++			};
++
++			uart0_pins: uart0-pins {
++				mux {
++					function = "uart";
++					groups =  "uart0";
++				};
++			};
+ 		};
+ 
+ 		pwm: pwm@10048000 {
+@@ -244,6 +258,8 @@ serial0: serial@11000000 {
+ 			clocks = <&topckgen CLK_TOP_UART_SEL>,
+ 				 <&infracfg CLK_INFRA_52M_UART0_CK>;
+ 			clock-names = "baud", "bus";
++			pinctrl-names = "default";
++			pinctrl-0 = <&uart0_pins>;
+ 			status = "disabled";
+ 		};
+ 
+@@ -338,6 +354,8 @@ spi1: spi@11008000 {
+ 				      "hclk";
+ 			#address-cells = <1>;
+ 			#size-cells = <0>;
++			pinctrl-names = "default";
++			pinctrl-0 = <&spi1_pins>;
+ 			status = "disabled";
+ 		};
+ 
+-- 
 2.43.0
 
 
