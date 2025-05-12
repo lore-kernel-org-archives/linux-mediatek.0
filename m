@@ -4,67 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73204C3ABC3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 May 2025 16:31:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA40DC3ABC3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 May 2025 16:44:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NhuOfydpPDweGCryBGUmTIm/uc1ALs1NJQ3i7qlPv3Y=; b=o3Y+IdEv90w9974x9NQaeahlwe
-	7OhqiFZakJis+0oIXwMh/yY27zP9CfUp/QsXIUbuxK6pEUp9Gc4X+aR6G7ep1FSNjxGQ+t0IqZr9W
-	mtJzOAo4zjbGbi1G4IEVn80aKj6Ow/MWRtefOQgnFX86y6SwrHgMkbaaELqTKMd5FzLVlTnaRV+9R
-	0WPekI7jRMB2CVHuMc5xcwNTutGCq+sDQaSQ+xKDsRHotbZcQA9cdAYQvFiCuko9fdjcA/MINFPxb
-	S3v0uyyWDyEizwbQ/plXPA/xa3OVK7TSBBxP3hV2sYFWNZ+oAAAdpgOnvRtSosGtljZq0Qiwz4ZfL
-	S++ioFIg==;
+	bh=eyNqE7JyafZ8qHZu8yrzPJ6UuI9o22K67HXsQlZvY0k=; b=VOMdEO6M4Vjl6E7x3Y25nROTqm
+	4qT8+A8mS27UTRkdj9xq6KU4pflQTk3XxVDgnIiqC4xszStHHdjvJ7LbUz3KYmhJUhvpllNK8b8b5
+	cbGNwzhlL2O3+ox1r2dl5o09tIUCwFQeAKNY0EO+BmJM4Dt60cBPak8qQokb/09YoPqbJwOoOiABb
+	rSHAkep2N84RmegpNgzMTKc2o/+WxN7f2rsgVYKMH18N4kPZYZRkfnlyY6yl3LwrGXbAym5MloFIU
+	micGQJzhjzQ+qE2OQDb/3wUivzrp1f4zYQeuzftiX+vZGOPfsxVIH8gn6+hLxlAmuGLPktN+gQBXO
+	Ux6uj0LA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEW42-0000000A3NY-280A;
-	Mon, 12 May 2025 16:31:38 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uEWGN-0000000A61O-2Ttf;
+	Mon, 12 May 2025 16:44:23 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEVaL-00000009xrj-146B;
-	Mon, 12 May 2025 16:00:57 +0000
+	id 1uEVub-0000000A157-0aC0;
+	Mon, 12 May 2025 16:21:54 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 73E69629D1;
-	Mon, 12 May 2025 16:00:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 30853C4CEE7;
-	Mon, 12 May 2025 16:00:53 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 2B9DC5C0648;
+	Mon, 12 May 2025 16:19:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9E3D0C4CEE7;
+	Mon, 12 May 2025 16:21:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747065656;
-	bh=5ULX35j9SB3R6eiMUzUDP5ujKYpZ2GypHAV7cJiBd7Y=;
+	s=k20201202; t=1747066912;
+	bh=Cw16mLp8GBEQCcOKwuFSOtn+PoZCJYu4QwEC/5THH6Q=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=b5DMF1CCQwsfnuCZaPECRkzPsK/Ylv2qXn7ckN/KWEtDtYIrlbcOMYTq8jpsWcCVQ
-	 tTfYxCeg0COyKSK1Wk/ihRFGbww2B4gp5WRNa4aaAxduRShX6TyZqZdh4mQPO4l6Gk
-	 UTf/wOh/sVwG66z9zT+nlVfg7Y2PBtI2yLeVJl/SWjbvjWejrtfcpC/4fuz7fiK8F7
-	 xR5MXrl4muuymo/c0jQeRjoUeVgWK8Q+uWXs2CgvbsQIFr4yHWEYKOH048D+e8twQS
-	 Vm+oHutQCDbw5BPW/keHAd0aQPcyYL1/mJj8nFkI5/DzRpjzmDzKqwMT4M1DXfdmvq
-	 LJTBcngtPWtbA==
-Date: Mon, 12 May 2025 17:00:50 +0100
+	b=qjWDW5ipMKXBnBTQnDL//oE57mzcvjgoU1Ton8qgojjwFyPxcD/zG/sLf/+qoX0WA
+	 onl7eoXYzFz98ul7cCauOz3vwSqHsjTMNXxy4MHoHFByrilbQ4G9jTZ/dSzd5XRBlq
+	 JoPfIQU7+w81uzvYu3dFmIRKPmCaTWTq9D31Lnn704gy42p4Ipyte1Djh82MKghM+d
+	 lJri9FOcBdfu27jie/UdYAgPVIehCS1Pmqyq5mrNMpXxxVOcM8CBzesTbQcOolL+JT
+	 /aI2JhND0tKPf20Mk8yLGONCN8t52y6fENYrsyoMvnIGT34Ki8SDew58BKGAfMIC7E
+	 P+tql2ye6ipcQ==
+Date: Mon, 12 May 2025 17:21:45 +0100
 From: Conor Dooley <conor@kernel.org>
-To: Sirius Wang <sirius.wang@mediatek.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Jiri Slaby <jirislaby@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, wenst@chromium.org,
-	xavier.chang@mediatek.com
-Subject: Re: [PATCH v3 1/3] dt-bindings: arm: Add compatible for MediaTek
- MT8189
-Message-ID: <20250512-ferret-willed-348cdc19fe4e@spud>
-References: <20250512115355.923342-1-sirius.wang@mediatek.com>
- <20250512115355.923342-2-sirius.wang@mediatek.com>
+To: Frank Wunderlich <linux@fw-web.de>
+Subject: Re: [PATCH v1 01/14] dt-bindings: net: mediatek,net: update for
+ mt7988
+Message-ID: <20250512-nibble-freemason-69e0279f2f99@spud>
+References: <20250511141942.10284-1-linux@fw-web.de>
+ <20250511141942.10284-2-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="BrIJKWHwbpK/JFHA"
+	protocol="application/pgp-signature"; boundary="BeH6zc2zJClOlCJ9"
 Content-Disposition: inline
-In-Reply-To: <20250512115355.923342-2-sirius.wang@mediatek.com>
+In-Reply-To: <20250511141942.10284-2-linux@fw-web.de>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250512_092153_268707_F238FD59 
+X-CRM114-Status: GOOD (  16.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,59 +68,73 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, Eric Dumazet <edumazet@google.com>, Rob Herring <robh@kernel.org>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---BrIJKWHwbpK/JFHA
+--BeH6zc2zJClOlCJ9
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Mon, May 12, 2025 at 07:53:48PM +0800, Sirius Wang wrote:
-> This commit adds dt-binding documentation for the MediaTek MT8189
-> reference board.
+On Sun, May 11, 2025 at 04:19:17PM +0200, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
 >=20
-> Signed-off-by: Sirius Wang <sirius.wang@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
-
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-
+> Update binding for mt7988 which has 3 gmac and 2 reg items.
+>=20
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 > ---
->  Documentation/devicetree/bindings/arm/mediatek.yaml | 4 ++++
->  1 file changed, 4 insertions(+)
+>  Documentation/devicetree/bindings/net/mediatek,net.yaml | 9 +++++++--
+>  1 file changed, 7 insertions(+), 2 deletions(-)
 >=20
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Docume=
-ntation/devicetree/bindings/arm/mediatek.yaml
-> index fa1646bc0bac..05e827076a7f 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> @@ -372,6 +372,10 @@ properties:
->            - enum:
->                - mediatek,mt8188-evb
->            - const: mediatek,mt8188
-> +      - items:
-> +          - enum:
-> +              - mediatek,mt8189-evb
-> +          - const: mediatek,mt8189
->        - description: Google Hayato
->          items:
->            - const: google,hayato-rev1
+> diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b/Do=
+cumentation/devicetree/bindings/net/mediatek,net.yaml
+> index 9e02fd80af83..5d249da02c3a 100644
+> --- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
+> +++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+> @@ -28,7 +28,8 @@ properties:
+>        - ralink,rt5350-eth
+> =20
+>    reg:
+> -    maxItems: 1
+> +    minItems: 1
+> +    maxItems: 2
+
+This should become an items list, with an explanation of what each of
+the reg items represents.
+
+> =20
+>    clocks:
+>      minItems: 2
+> @@ -381,8 +382,12 @@ allOf:
+>              - const: xgp2
+>              - const: xgp3
+> =20
+> +        reg:
+> +          minItems: 2
+> +          maxItems: 2
+> +
+>  patternProperties:
+> -  "^mac@[0-1]$":
+> +  "^mac@[0-2]$":
+>      type: object
+>      unevaluatedProperties: false
+>      allOf:
 > --=20
-> 2.45.2
+> 2.43.0
 >=20
 
---BrIJKWHwbpK/JFHA
+--BeH6zc2zJClOlCJ9
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaCIbMgAKCRB4tDGHoIJi
-0kTOAQDIrab/1dzT8IHi2s3bi/oJO11J04QcoOlpQG0eV2hgJwD/Xw8+792O52zo
-lP7EobzCjq5NJW4XO0avY+MeprkoxA0=
-=6Pyl
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaCIgGQAKCRB4tDGHoIJi
+0kdJAQD7lUldL2lyECoq6kz6Xgzpc9L4CU21TH0X3mhKWLc3KAEAkBFq4G5y02M6
+M2qDeF8a2MAP3H9Vr3AIiT3T4ZG04gg=
+=Vo8k
 -----END PGP SIGNATURE-----
 
---BrIJKWHwbpK/JFHA--
+--BeH6zc2zJClOlCJ9--
 
