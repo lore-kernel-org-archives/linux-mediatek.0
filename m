@@ -4,61 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DA42C3ABCB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 May 2025 21:03:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80B3FC3ABCB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 May 2025 22:31:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oZZilhhfR6UIIAZr6pdD8yvOdyyQhH84LHh22Ppz/fk=; b=4Pd6kc235NG+VFpOw9MmZg0APD
-	yEszZZtm3EuydygE9tEkZvCprNHPAI4zwrnig8aowZveQeayGVkTkVdTOBEO+N0aJNcCVUdq+iBjI
-	fltmNfqDj2ig1liQtnRRt11u53hI/sSYj52UzrjzTVjxramnuqSzMycy9y/fri5Zssl7WpS76Q/Qq
-	PPvfOvP1vxrVwnT1AHmTUc7t0c9kdiOmIZoWDYa8ZuzMRTe2ua0alT4eLfd/L1KZpWUeoeB7Y7GCV
-	xtt3oJNQqzRxxBZ+583fRjhnoVWjUNhkC0z4qK0XgAPx+76YM2XXbqiNWWpfs5jIr/hCdHY8DiypR
-	EyFBaByg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bkNeTzwzChBPxnTQM5+0U/fFA9+o13xiapopYsinHT0=; b=zRLc9WEsbEuGGkEnkCeWBBaDLh
+	SAKEMmZBqTu3Z2F7mp4P4YiQ1NDZgtXydc86Zk4+2idC/YsQCqUUbqMkuw2RXEAfkRCFQqHr2iIxl
+	E+2BlPAuab80AfmX9IGi4QWuWBh+b3wraqL8DfBCOB/1jPCiqcLY8VP0O0hrD4yctAAIL+64al0ub
+	Il1euBsskjNfLlXH222x3aRJSAY248EgOZyzwcC1IKDCS8Fi7hpRtkbCE+V6Wu3Z5B1ZbyEmgywRz
+	jIDXJlZqGrK2x1sW/LOfA0uLh8i0GHDGOV8i/3abMDocsm5nEA1uRbH7BbH7+++ZbKYqm0Q/Ij9Hu
+	iVSwZ4fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEaJ3-0000000Ah0i-0Ni2;
-	Mon, 12 May 2025 21:03:25 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1uEbfn-0000000AqZt-2Iif;
+	Mon, 12 May 2025 22:30:59 +0000
+Received: from 004.mia.mailroute.net ([199.89.3.7])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEaH0-0000000AgmM-0WHe;
-	Mon, 12 May 2025 21:01:19 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 2B6C4A4AFE3;
-	Mon, 12 May 2025 21:01:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 52D88C4CEE7;
-	Mon, 12 May 2025 21:01:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747083676;
-	bh=LKLLONeCVjQVAaNx8UdwNrH4MsosiV3gnDGhpSa48kE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=TnnkW34rYr5Yyflxu0il8Q6hxkNKCrMwwjOkRS9FklhqXnePrp6HXUjGqvpL4XveL
-	 0TQtB92rfaDcCOH9e1pk1D4ic/agrs6hwpXMPFHudeKeZfQv6yDSJqQ/pKThu+ODJl
-	 +ZLPwdtj02aYTXg3oHIzEKxV4sVVl8qKceifsWcIwomKVeXCId61MWxQOtp6u4lRVv
-	 CgKLLVTRCdXXttrvq7J0fBw19etyehXiK43NerTW3Pka1615TKQTSJ1dvAKD0XCPLK
-	 Z5sSDHt4VOVGJ821FN9XRSa6rlwy8iN4fBlbq+MKhSamPyjSZ1KDZxsM+b72sDA1k6
-	 U3GTEQA7oIZDA==
-Date: Mon, 12 May 2025 22:01:10 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Frank Wunderlich <linux@fw-web.de>
-Subject: Re: [PATCH v1 01/14] dt-bindings: net: mediatek,net: update for
- mt7988
-Message-ID: <20250512-spooky-overbuilt-abc946ba1f55@spud>
-References: <20250511141942.10284-1-linux@fw-web.de>
- <20250511141942.10284-2-linux@fw-web.de>
- <20250512-nibble-freemason-69e0279f2f99@spud>
- <05760B5E-955E-4E0E-9B69-E762783CC37B@fw-web.de>
+	id 1uEbXS-0000000Apm9-1Fw5
+	for linux-mediatek@lists.infradead.org;
+	Mon, 12 May 2025 22:22:23 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 004.mia.mailroute.net (Postfix) with ESMTP id 4ZxDcK0Vw7zm0yTL;
+	Mon, 12 May 2025 22:22:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1747088525; x=1749680526; bh=bkNeTzwzChBPxnTQM5+0U/fF
+	A9+o13xiapopYsinHT0=; b=wbryJAuRaHD3jtgIM+x3oAW5wVdXqTEudLBMx6GW
+	l6iFrcgvkb4F1nZrJKg+NoPrjwWyVRjDEO7bQdBfd8FeKt3hYC21MMyXB8iYo4s2
+	l701r5iz4ox5SpgzR494TN1GU08hH/Zas4KDF7ugqWpLWNmXshVYZbQrgzibuT6e
+	HKXkN4lBFnwZUWlh5uj6t/71LSI/hafADSTHzYsEQ11mvH4u+XfIFnYa8NVHhsAs
+	xrx6mgAO40yysbLvTteqkLTa4aZoldV/pmRfSJDQzoC0ai780Kk7mYeyVFBhaxqL
+	nFZ+DVVvfYRQ1+35GSmekv74SeF1gmd8sFaa3jUZqn3yMw==
+X-Virus-Scanned: by MailRoute
+Received: from 004.mia.mailroute.net ([127.0.0.1])
+ by localhost (004.mia [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id W43GxB88FXig; Mon, 12 May 2025 22:22:05 +0000 (UTC)
+Received: from [100.66.154.22] (unknown [104.135.204.82])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bvanassche@acm.org)
+	by 004.mia.mailroute.net (Postfix) with ESMTPSA id 4ZxDc00wnQzm0pK6;
+	Mon, 12 May 2025 22:21:50 +0000 (UTC)
+Message-ID: <a399d7d5-7829-42d6-84d8-d0956d07f8f0@acm.org>
+Date: Mon, 12 May 2025 15:21:49 -0700
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="ihom2EqWEYhuIF8/"
-Content-Disposition: inline
-In-Reply-To: <05760B5E-955E-4E0E-9B69-E762783CC37B@fw-web.de>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] ufs: core: support updating device command timeout
+To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
+ martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
+ jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, jiajie.hao@mediatek.com,
+ yi-fan.peng@mediatek.com, qilin.tan@mediatek.com, lin.gui@mediatek.com,
+ tun-yu.yu@mediatek.com, eddie.huang@mediatek.com, naomi.chu@mediatek.com,
+ ed.tsai@mediatek.com
+References: <20250510080345.595798-1-peter.wang@mediatek.com>
+Content-Language: en-US
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20250510080345.595798-1-peter.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250512_140118_300004_A04AB0A7 
-X-CRM114-Status: GOOD (  21.13  )
+X-CRM114-CacheID: sfid-20250512_152222_415241_5DF0E0FF 
+X-CRM114-Status: UNSURE (   7.16  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,97 +87,18 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, Eric Dumazet <edumazet@google.com>, Rob Herring <robh@kernel.org>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 5/10/25 1:01 AM, peter.wang@mediatek.com wrote:
+> The default device command timeout remains 1.5 seconds,
+> but platform drivers can override it if needed.
+> 
+> Some UFS device commands may timeout due to being blocked
+> by regular SCSI write commands. Therefore, the maximun timeout
+> needs to be extended to 30 seconds, matching the SCSI write
+> command timeout. And for error injection purposes, set the
+> minimum value to 1 ms.
 
---ihom2EqWEYhuIF8/
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Mon, May 12, 2025 at 07:33:22PM +0200, Frank Wunderlich wrote:
-> Am 12. Mai 2025 18:21:45 MESZ schrieb Conor Dooley <conor@kernel.org>:
-> >On Sun, May 11, 2025 at 04:19:17PM +0200, Frank Wunderlich wrote:
-> >> From: Frank Wunderlich <frank-w@public-files.de>
-> >>=20
-> >> Update binding for mt7988 which has 3 gmac and 2 reg items.
-> >>=20
-> >> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> >> ---
-> >>  Documentation/devicetree/bindings/net/mediatek,net.yaml | 9 +++++++--
-> >>  1 file changed, 7 insertions(+), 2 deletions(-)
-> >>=20
-> >> diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b=
-/Documentation/devicetree/bindings/net/mediatek,net.yaml
-> >> index 9e02fd80af83..5d249da02c3a 100644
-> >> --- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
-> >> +++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
-> >> @@ -28,7 +28,8 @@ properties:
-> >>        - ralink,rt5350-eth
-> >> =20
-> >>    reg:
-> >> -    maxItems: 1
-> >> +    minItems: 1
-> >> +    maxItems: 2
-> >
-> >This should become an items list, with an explanation of what each of
-> >the reg items represents.
->=20
-> I would change to this
->=20
->   reg:
->     items:
->       - description: Register for accessing the MACs.
->       - description: SoC internal SRAM used for DMA operations.
->     minItems: 1
->=20
-> Would this be OK this way?
-
-Ye, that looks good.
-
->=20
-> >> =20
-> >>    clocks:
-> >>      minItems: 2
-> >> @@ -381,8 +382,12 @@ allOf:
-> >>              - const: xgp2
-> >>              - const: xgp3
-> >> =20
-> >> +        reg:
-> >> +          minItems: 2
-> >> +          maxItems: 2
-
-You also shouldn't need to set maxItems here, since the list has 2 items
-total.
-
-> >> +
-> >>  patternProperties:
-> >> -  "^mac@[0-1]$":
-> >> +  "^mac@[0-2]$":
-> >>      type: object
-> >>      unevaluatedProperties: false
-> >>      allOf:
-> >> --=20
-> >> 2.43.0
-> >>=20
->=20
-> Hi Conor
->=20
-> Thank you for review.
-> regards Frank
-
---ihom2EqWEYhuIF8/
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaCJhlgAKCRB4tDGHoIJi
-0np2AP9tRdqvR8H53faGqXax224YS7YArSQXFuynwo25eICEhgEAntebUayynsz/
-+miUO3kJllRjEAYIKIHnvI4YCHk0Wws=
-=8MP/
------END PGP SIGNATURE-----
-
---ihom2EqWEYhuIF8/--
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
 
