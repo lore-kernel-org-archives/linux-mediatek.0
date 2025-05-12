@@ -4,74 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 180F3C3ABBC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 May 2025 09:24:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5DBDC3ABBC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 May 2025 09:28:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wwufX/v34dzkxUS3LGPKqqaupoPo7RpbsbNRwjwdIg8=; b=x3ucP1Ei1Yf/EFrfi2xuUGFfUq
-	NmPDM0tCJRDYX2n56F+j16+97ek3bz3EI0z+wA6jXP6olRXUT9myaThBS41UjiXxy6MNPUAVLGk6h
-	jbxxa8fEjn7x3oZJXhtoRQdjSXkPrIVnp0PqhL/yV3++QDdIp/8xF1lnq/h5uCyUdghILsBnq+A2C
-	QHSxkMqKWyM5snHEfIEOXCuEy5J2+OnslwU6Gta3ZHMMTqgiSQ+EPrlZxgUU6192gz998G07yYlY6
-	hM9w7GEpT+FzUT1BELfi1CghPm1XZ7umiBd48UOgT0KbybJXxkm0bgZcbgOahgk5BQzH8O0+hiIDW
-	PAPGK42A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=NTzy79ofiVc6TDcVhdbfFFnTmmvqRTAhzr03Xm9I0jU=; b=G/GGp0jNDH8Faq3pPab7fY1iQ0
+	2hXKzF3xWgOr14iKlAjp1hdmCzgk3CLw1Ul4siA24GWVzgIlwoUwONlj9gtwMCp9llBBVU7EfDBjn
+	cqiqWVXHHhbL8FyhFRNtpdg6dl306tGmQj28ReOybuTrXZpA6OohnuHFQF7j0C9WA5O3GWEh1lCxe
+	hCMdEkVtOgV8T/rCnW3Rc5Swg5sjnsDaqTY2G7IyBz8dXrOnqmH1wpk4zIgrR4KAPQ3zfq1RY35+2
+	KHkbApclseZGyjLzMuUkuY38VvCgz2uerYUWSHGEcSB5CfNIMsjCHEGjue6r/MMF6ucnA6o8+6lPa
+	KmyNOl5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEPOy-00000008uxy-076T;
-	Mon, 12 May 2025 09:24:48 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uEPSz-00000008vwc-3bky;
+	Mon, 12 May 2025 09:28:57 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEPM7-00000008tzQ-29cU;
-	Mon, 12 May 2025 09:21:51 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id A278461127;
-	Mon, 12 May 2025 09:21:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CE1E9C4CEE9;
-	Mon, 12 May 2025 09:21:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747041710;
-	bh=t5o1U0UpFX89qHN3iGYPXHPFCpScbEOGaqvmBNXdX5A=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=G1Fbm2J6/MflwcGHyfl5LoLLoml/GOsZnj9Fkt4tXuhyGFpAt3Pxkg9CHKpkbfaDv
-	 m7iYtIrf3liWT6XMJQZEH/qGWwMOsKtdiYLxgMQ+LdXXIdpHKzvRm433hlwvUvomtH
-	 sWh9L3/GJceichgJZntZ5miYv95l7brIE02pc7wqkJak0PNxvfSfzsvjLwBoe0xjp+
-	 Ny23KjQG8O84daH5bOYtw5wbxX7WfqzJZoI2uM7nD/MrUdGzi02+MmKqzKLSYe+wxl
-	 CWDixsWnWe8tL9dH0175ThoWyknPKdKYIFVzzRW5gPX+4Zxc3MvDv48WR43LhtwUA2
-	 uQTmaYWrJGLqQ==
-Date: Mon, 12 May 2025 11:21:47 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Nathan Chancellor <nathan@kernel.org>,
-	Nick Desaulniers <nick.desaulniers+lkml@gmail.com>,
-	Bill Wendling <morbo@google.com>,
-	Justin Stitt <justinstitt@google.com>,
-	Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, llvm@lists.linux.dev
-Subject: Re: [net-next PATCH v4 11/11] net: airoha: add phylink support for
- GDM2/3/4
-Message-ID: <aCG9q6i7HomgilI6@lore-desk>
-References: <20250511201250.3789083-1-ansuelsmth@gmail.com>
- <20250511201250.3789083-12-ansuelsmth@gmail.com>
+	id 1uEPNF-00000008uCg-3Pm2;
+	Mon, 12 May 2025 09:23:03 +0000
+X-UUID: b067f3342f1211f08d385d50fb11b32d-20250512
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=NTzy79ofiVc6TDcVhdbfFFnTmmvqRTAhzr03Xm9I0jU=;
+	b=DKOdR/Svxh2FP1Elym9SdmOTY1QjJ0e88YwTon460HoiLNuYkyVwSAAnYno9DaMxYGVUKhqttMr3zIXYFM51VPK7snBh1iWb0zFnZwTWIektbrnXnfjCVzWmJcUdWjjIm1sq1bmeK6xrObPL4B/qVE4ZsVUoFv0RtEp2K0nuGOE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:e7ca7f15-8590-4413-98a7-32bac4b49742,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:45736d51-76c0-4e62-bb75-246dfb0889c6,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:99|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,
+	LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_ULS,TF_CID_SPAM_SNR
+X-UUID: b067f3342f1211f08d385d50fb11b32d-20250512
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 917713924; Mon, 12 May 2025 02:22:56 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Mon, 12 May 2025 17:22:51 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Mon, 12 May 2025 17:22:51 +0800
+From: Jason-JH Lin <jason-jh.lin@mediatek.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Jassi Brar <jassisinghbrar@gmail.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>
+Subject: [PATCH RESEND v5 00/20] Add GCE support for MT8196
+Date: Mon, 12 May 2025 17:19:22 +0800
+Message-ID: <20250512092252.905629-1-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="2yvoztbt3M/n+jtr"
-Content-Disposition: inline
-In-Reply-To: <20250511201250.3789083-12-ansuelsmth@gmail.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250512_022301_869909_38DE681F 
+X-CRM114-Status: GOOD (  16.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,331 +81,106 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Moudy Ho <moudy.ho@mediatek.com>, Xiandong Wang <xiandong.wang@mediatek.com>, Jason-JH Lin <jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Paul-PL Chen <paul-pl.chen@mediatek.com>, Xavier Chang <xavier.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Sirius Wang <sirius.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+This patch series adds support for the MediaTek MT8196 SoC in the CMDQ
+driver and related subsystems. The changes include adding compatible
+names and iommus property, updating driver data to accommodate hardware
+changes, and modifying the usage of CMDQ APIs to support non-subsys ID
+hardware.
 
---2yvoztbt3M/n+jtr
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+---
+Change in RESEND v5:
+1. Separate the removal of cmdq_get_shift_pa() from [PATCH v5 03/19] to a
+   single patch [PATCH RESEND v5 10/20].
 
-> Add phylink support for GDM2/3/4 port that require configuration of the
-> PCS to make the external PHY or attached SFP cage work.
->=20
-> These needs to be defined in the GDM port node using the pcs-handle
-> property.
->=20
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> ---
->  drivers/net/ethernet/airoha/airoha_eth.c  | 155 +++++++++++++++++++++-
->  drivers/net/ethernet/airoha/airoha_eth.h  |   3 +
->  drivers/net/ethernet/airoha/airoha_regs.h |  12 ++
->  3 files changed, 169 insertions(+), 1 deletion(-)
->=20
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
-net/airoha/airoha_eth.c
-> index 16c7896f931f..3be1ae077a76 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> @@ -7,6 +7,7 @@
->  #include <linux/of_net.h>
->  #include <linux/platform_device.h>
->  #include <linux/tcp.h>
-> +#include <linux/pcs/pcs.h>
->  #include <linux/u64_stats_sync.h>
->  #include <net/dst_metadata.h>
->  #include <net/page_pool/helpers.h>
-> @@ -79,6 +80,11 @@ static bool airhoa_is_lan_gdm_port(struct airoha_gdm_p=
-ort *port)
->  	return port->id =3D=3D 1;
->  }
-> =20
-> +static bool airhoa_is_phy_external(struct airoha_gdm_port *port)
-> +{
-> +	return port->id !=3D 1;
-> +}
-> +
->  static void airoha_set_macaddr(struct airoha_gdm_port *port, const u8 *a=
-ddr)
->  {
->  	struct airoha_eth *eth =3D port->qdma->eth;
-> @@ -1613,6 +1619,17 @@ static int airoha_dev_open(struct net_device *dev)
->  	struct airoha_gdm_port *port =3D netdev_priv(dev);
->  	struct airoha_qdma *qdma =3D port->qdma;
-> =20
-> +	if (airhoa_is_phy_external(port)) {
-> +		err =3D phylink_of_phy_connect(port->phylink, dev->dev.of_node, 0);
+Change in v5:
+1. Rebase on tag: next-20250424 + patch [1].
+2. Split adding driver data for MT8196 patch to 3 independent patch
+   and add more detail commit message to each patch.
+3. Refine passing shift_pa as the parameter in API to storing it into
+   the cmdq_pkt.
+4. Refine DMA address potential issue in cmdq mailbox driver.
+5. Change the mminfra_offset related mbox API to passing it by cmdq_pkt.
+6. Add new cmdq_pkt_write_pa() and cmdq_pkt_write_subsys() APIs to
+   replace the cmdq_pkt_write().
 
-nit: even if it is not strictly required, in order to align with the rest o=
-f the
-codebase, can you please stay below 79 columns?
+[1] mailbox: mtk-cmdq: Refine GCE_GCTL_VALUE setting
+- https://patchwork.kernel.org/project/linux-mediatek/patch/20250421035650.441383-1-jason-jh.lin@mediatek.com/
 
-> +		if (err) {
-> +			netdev_err(dev, "%s: could not attach PHY: %d\n", __func__,
-> +				   err);
+Change in v4:
+1. Remove dt-binding header and add a gce header in dts folder.
+2. Remove dot in sign-off name.
+3. Change addr type from u32 to dma_addr_t for cmdq_reg_shift_addr() and
+   cmdq_reg_revert_addr().
 
-same here
+Change in v3:
+1. Merge 2 dt-bindings pathes together and add more detail commit message.
+2. Change type u32 to phys_addr_t for pa_base of struct cmdq_client_reg.
+3. Remove cmdq_subsys_is_valid() and subsys_num in CMDQ driver.
+4. Add CMDQ_SUBSYS_INVALID to check subsys instead of using
+   cmdq_subsys_is_invalid().
+5. Make use of CMDQ_THR_SPR0 define to the parameter of CMDQ APIs.
+6. Rebase on the new MACRO in mtk-mdp3-comp.h.
 
-> +			return err;
-> +		}
-> +
-> +		phylink_start(port->phylink);
-> +	}
-> +
->  	netif_tx_start_all_queues(dev);
->  	err =3D airoha_set_vip_for_gdm_port(port, true);
->  	if (err)
-> @@ -1665,6 +1682,11 @@ static int airoha_dev_stop(struct net_device *dev)
->  		}
->  	}
-> =20
-> +	if (airhoa_is_phy_external(port)) {
-> +		phylink_stop(port->phylink);
-> +		phylink_disconnect_phy(port->phylink);
-> +	}
-> +
->  	return 0;
->  }
-> =20
-> @@ -2795,6 +2817,115 @@ bool airoha_is_valid_gdm_port(struct airoha_eth *=
-eth,
->  	return false;
->  }
-> =20
-> +static void airoha_mac_link_up(struct phylink_config *config, struct phy=
-_device *phy,
-> +			       unsigned int mode, phy_interface_t interface,
-> +			       int speed, int duplex, bool tx_pause, bool rx_pause)
+Change in v2:
+1. Remove the constant and fix warning in dt-bindings.
+2. Remove the pa_base parameter of CMDQ APIs and related modification.
+3. Move subsys checking to client drivers and use 2 alternative
+   CMDQ APIs to achieve the same functionality.
+---
 
-ditto.
+Jason-JH Lin (20):
+  arm64: dts: mediatek: Add GCE header for MT8196
+  mailbox: mtk-cmdq: Refine DMA address handling for the command buffer
+  mailbox: mtk-cmdq: Add cmdq private data to cmdq_pkt for generating
+    instruction
+  soc: mediatek: mtk-cmdq: Add cmdq_get_mbox_priv() in cmdq_pkt_create()
+  soc: mediatek: mtk-cmdq: Add cmdq_pkt_jump_rel_temp() for removing
+    shift_pa
+  media: platform: mtk-mdp3: Change cmdq_pkt_jump_rel() to
+    cmdq_pkt_jump_rel_temp()
+  soc: mediatek: mtk-cmdq: Remove shift_pa parameter from
+    cmdq_pkt_jump()
+  media: platform: mtk-mdp3: Use cmdq_pkt_jump_rel() without shift_pa
+  soc: mediatek: mtk-cmdq: Remove cmdq_pkt_jump() and
+    cmdq_pkt_jump_rel_temp()
+  mailbox: mtk-cmdq: Remove unsued cmdq_get_shift_pa()
+  mailbox: mtk-cmdq: Add GCE hardware virtualization configuration
+  mailbox: mtk-cmdq: Add mminfra_offset configuration for DRAM
+    transaction
+  mailbox: mtk-cmdq: Add driver data to support for MT8196
+  soc: mediatek: mtk-cmdq: Add pa_base parsing for hardware without
+    subsys ID support
+  soc: mediatek: mtk-cmdq: Add new APIs to replace cmdq_pkt_write() and
+    cmdq_pkt_write_mask()
+  soc: mediatek: mtk-cmdq: Add mminfra_offset adjustment for DRAM
+    addresses
+  soc: mediatek: Add programming flow for unsupported subsys ID hardware
+  drm/mediatek: Add programming flow for unsupported subsys ID hardware
+  media: mediatek: mdp3: Add programming flow for unsupported subsys ID
+    hardware
+  soc: mediatek: mtk-cmdq: Remove cmdq_pkt_write() and
+    cmdq_pkt_write_mask()
 
-> +{
-> +	struct airoha_gdm_port *port =3D container_of(config, struct airoha_gdm=
-_port,
-> +						    phylink_config);
+ arch/arm64/boot/dts/mediatek/mt8196-gce.h     | 612 ++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.c       |  24 +-
+ drivers/mailbox/mtk-cmdq-mailbox.c            | 115 +++-
+ .../platform/mediatek/mdp3/mtk-mdp3-cmdq.c    |  16 +-
+ .../platform/mediatek/mdp3/mtk-mdp3-comp.h    |  70 +-
+ .../platform/mediatek/mdp3/mtk-mdp3-core.c    |   2 -
+ .../platform/mediatek/mdp3/mtk-mdp3-core.h    |   1 -
+ drivers/soc/mediatek/mtk-cmdq-helper.c        |  68 +-
+ drivers/soc/mediatek/mtk-mmsys.c              |  12 +-
+ drivers/soc/mediatek/mtk-mutex.c              |   8 +-
+ include/linux/mailbox/mtk-cmdq-mailbox.h      |  19 +-
+ include/linux/soc/mediatek/mtk-cmdq.h         |  83 ++-
+ 12 files changed, 941 insertions(+), 89 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8196-gce.h
 
-ditto.
+-- 
+2.43.0
 
-> +	struct airoha_qdma *qdma =3D port->qdma;
-> +	struct airoha_eth *eth =3D qdma->eth;
-> +	u32 frag_size_tx, frag_size_rx;
-> +
-> +	if (port->id !=3D 4)
-> +		return;
-> +
-> +	switch (speed) {
-> +	case SPEED_10000:
-> +	case SPEED_5000:
-> +		frag_size_tx =3D 8;
-> +		frag_size_rx =3D 8;
-> +		break;
-> +	case SPEED_2500:
-> +		frag_size_tx =3D 2;
-> +		frag_size_rx =3D 1;
-> +		break;
-> +	default:
-> +		frag_size_tx =3D 1;
-> +		frag_size_rx =3D 0;
-> +	}
-> +
-> +	/* Configure TX/RX frag based on speed */
-> +	airoha_fe_rmw(eth, REG_GDMA4_TMBI_FRAG,
-> +		      GDMA4_SGMII0_TX_FRAG_SIZE_MASK,
-> +		      FIELD_PREP(GDMA4_SGMII0_TX_FRAG_SIZE_MASK,
-> +				 frag_size_tx));
-> +
-> +	airoha_fe_rmw(eth, REG_GDMA4_RMBI_FRAG,
-> +		      GDMA4_SGMII0_RX_FRAG_SIZE_MASK,
-> +		      FIELD_PREP(GDMA4_SGMII0_RX_FRAG_SIZE_MASK,
-> +				 frag_size_rx));
-> +}
-> +
-> +static const struct phylink_mac_ops airoha_phylink_ops =3D {
-> +	.mac_link_up =3D airoha_mac_link_up,
-> +};
-> +
-> +static int airoha_setup_phylink(struct net_device *dev)
-> +{
-> +	struct airoha_gdm_port *port =3D netdev_priv(dev);
-> +	struct device_node *np =3D dev->dev.of_node;
-> +	struct phylink_pcs **available_pcs;
-> +	phy_interface_t phy_mode;
-> +	struct phylink *phylink;
-> +	unsigned int num_pcs;
-> +	int err;
-> +
-> +	err =3D of_get_phy_mode(np, &phy_mode);
-> +	if (err) {
-> +		dev_err(&dev->dev, "incorrect phy-mode\n");
-> +		return err;
-> +	}
-> +
-> +	port->phylink_config.dev =3D &dev->dev;
-> +	port->phylink_config.type =3D PHYLINK_NETDEV;
-> +	port->phylink_config.mac_capabilities =3D MAC_ASYM_PAUSE | MAC_SYM_PAUS=
-E |
-> +						MAC_10 | MAC_100 | MAC_1000 | MAC_2500FD |
-> +						MAC_5000FD | MAC_10000FD;
-
-over 79 columns
-
-> +
-> +	err =3D fwnode_phylink_pcs_parse(dev_fwnode(&dev->dev), NULL, &num_pcs);
-> +	if (err)
-> +		return err;
-> +
-> +	available_pcs =3D kcalloc(num_pcs, sizeof(*available_pcs), GFP_KERNEL);
-
-I guess you can use devm_kcalloc() and get rid of kfree() here.
-
-> +	if (!available_pcs)
-> +		return -ENOMEM;
-> +
-> +	err =3D fwnode_phylink_pcs_parse(dev_fwnode(&dev->dev), available_pcs,
-> +				       &num_pcs);
-> +	if (err)
-> +		goto out;
-> +
-> +	port->phylink_config.available_pcs =3D available_pcs;
-> +	port->phylink_config.num_available_pcs =3D num_pcs;
-> +
-> +	__set_bit(PHY_INTERFACE_MODE_SGMII,
-> +		  port->phylink_config.supported_interfaces);
-> +	__set_bit(PHY_INTERFACE_MODE_1000BASEX,
-> +		  port->phylink_config.supported_interfaces);
-> +	__set_bit(PHY_INTERFACE_MODE_2500BASEX,
-> +		  port->phylink_config.supported_interfaces);
-> +	__set_bit(PHY_INTERFACE_MODE_USXGMII,
-> +		  port->phylink_config.supported_interfaces);
-> +
-> +	phy_interface_copy(port->phylink_config.pcs_interfaces,
-> +			   port->phylink_config.supported_interfaces);
-> +
-> +	phylink =3D phylink_create(&port->phylink_config,
-> +				 of_fwnode_handle(np),
-> +				 phy_mode, &airoha_phylink_ops);
-> +	if (IS_ERR(phylink)) {
-> +		err =3D PTR_ERR(phylink);
-> +		goto out;
-> +	}
-> +
-> +	port->phylink =3D phylink;
-> +out:
-> +	kfree(available_pcs);
-> +
-> +	return err;
-> +}
-> +
->  static int airoha_alloc_gdm_port(struct airoha_eth *eth,
->  				 struct device_node *np, int index)
->  {
-> @@ -2873,7 +3004,23 @@ static int airoha_alloc_gdm_port(struct airoha_eth=
- *eth,
->  	if (err)
->  		return err;
-> =20
-> -	return register_netdev(dev);
-> +	if (airhoa_is_phy_external(port)) {
-> +		err =3D airoha_setup_phylink(dev);
-
-This will re-introduce the issue reported here:
-https://lore.kernel.org/netdev/5c94b9b3850f7f29ed653e2205325620df28c3ff.174=
-6715755.git.christophe.jaillet@wanadoo.fr/
-
-> +		if (err)
-> +			return err;
-> +	}
-> +
-> +	err =3D register_netdev(dev);
-> +	if (err)
-> +		goto free_phylink;
-> +
-> +	return 0;
-> +
-> +free_phylink:
-> +	if (airhoa_is_phy_external(port))
-> +		phylink_destroy(port->phylink);
-> +
-> +	return err;
->  }
-> =20
->  static int airoha_probe(struct platform_device *pdev)
-> @@ -2967,6 +3114,9 @@ static int airoha_probe(struct platform_device *pde=
-v)
->  		struct airoha_gdm_port *port =3D eth->ports[i];
-> =20
->  		if (port && port->dev->reg_state =3D=3D NETREG_REGISTERED) {
-> +			if (airhoa_is_phy_external(port))
-> +				phylink_destroy(port->phylink);
-> +
->  			unregister_netdev(port->dev);
->  			airoha_metadata_dst_free(port);
->  		}
-> @@ -2994,6 +3144,9 @@ static void airoha_remove(struct platform_device *p=
-dev)
->  			continue;
-> =20
->  		airoha_dev_stop(port->dev);
-> +		if (airhoa_is_phy_external(port))
-> +			phylink_destroy(port->phylink);
-> +
->  		unregister_netdev(port->dev);
->  		airoha_metadata_dst_free(port);
->  	}
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ether=
-net/airoha/airoha_eth.h
-> index 53f39083a8b0..73a500474076 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.h
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.h
-> @@ -498,6 +498,9 @@ struct airoha_gdm_port {
->  	struct net_device *dev;
->  	int id;
-> =20
-> +	struct phylink *phylink;
-> +	struct phylink_config phylink_config;
-> +
->  	struct airoha_hw_stats stats;
-> =20
->  	DECLARE_BITMAP(qos_sq_bmap, AIROHA_NUM_QOS_CHANNELS);
-> diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/ethe=
-rnet/airoha/airoha_regs.h
-> index d931530fc96f..54f7079b28b0 100644
-> --- a/drivers/net/ethernet/airoha/airoha_regs.h
-> +++ b/drivers/net/ethernet/airoha/airoha_regs.h
-> @@ -357,6 +357,18 @@
->  #define IP_FRAGMENT_PORT_MASK		GENMASK(8, 5)
->  #define IP_FRAGMENT_NBQ_MASK		GENMASK(4, 0)
-> =20
-> +#define REG_GDMA4_TMBI_FRAG		0x2028
-> +#define GDMA4_SGMII1_TX_WEIGHT_MASK	GENMASK(31, 26)
-> +#define GDMA4_SGMII1_TX_FRAG_SIZE_MASK	GENMASK(25, 16)
-> +#define GDMA4_SGMII0_TX_WEIGHT_MASK	GENMASK(15, 10)
-> +#define GDMA4_SGMII0_TX_FRAG_SIZE_MASK	GENMASK(9, 0)
-> +
-> +#define REG_GDMA4_RMBI_FRAG		0x202c
-> +#define GDMA4_SGMII1_RX_WEIGHT_MASK	GENMASK(31, 26)
-> +#define GDMA4_SGMII1_RX_FRAG_SIZE_MASK	GENMASK(25, 16)
-> +#define GDMA4_SGMII0_RX_WEIGHT_MASK	GENMASK(15, 10)
-> +#define GDMA4_SGMII0_RX_FRAG_SIZE_MASK	GENMASK(9, 0)
-> +
->  #define REG_MC_VLAN_EN			0x2100
->  #define MC_VLAN_EN_MASK			BIT(0)
-> =20
-> --=20
-> 2.48.1
->=20
-
---2yvoztbt3M/n+jtr
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaCG9qwAKCRA6cBh0uS2t
-rGcGAP0U/LZ3yZ/JFyuZ3S3LnDaKGLcjA+OR9tlWIBeIm4lf1AD/ZSZi/2WmFx3Q
-V5z+kAb4yQHd4bFvCmn7z8/Tr4xb+Q0=
-=KPwp
------END PGP SIGNATURE-----
-
---2yvoztbt3M/n+jtr--
 
