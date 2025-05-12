@@ -4,136 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E332BCA101F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 07:02:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03412CAC593
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Sep 2025 07:05:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YaWj+Wtj/24uprPfhMzjPFyopaRjb/i1iqDzvUVq8gE=; b=YlrlJbS/NmL9p3jQPof3KSyQhA
-	EvKjiT2p0/386+0YFhPatMEHnfTbEokMF0PCSF2xjI0tR1qOfHCIqaHo6Ao05ASoONWVRIYQbr0hw
-	bPle2+GjUmYBbnRGE6jaVTf8Dzcf6AUczKEh95ur1sfhd69VVbFGrazebkx9QrIPJfbUADYJosVZ6
-	tcY2Dk+AfWATU0tSEjAv3kw4x+i0QSZDfjI8Uj2QvFQrahVPeYvDFiibjtEgSjcrvboh8GOcYV/xj
-	N8oKPd2WifJVJcPlHjvGftmAl4yNvQqcE4G+LJJdWrYLEosGwuhcQL1L0/icApm9quHbzoHtvGdVQ
-	A2ybZ5Gw==;
+	bh=w3cLh8i5gT8GjSFip3hkBzThljF32klNzJvJkPOx2SM=; b=Uqcgo3urN5aaRToExD9bzMoaPX
+	IQdRS3jE17zBSaaNzNQ/ggUhq56tSzXWcPzwpT7uKYqd4w94meIFdqOvjrSTawyC2hyvD+V42WDgF
+	a3wUVP4q9UcevylN8ehodE/FaXZpBhhvn1ZMNVNZZapj+nE+tFAco9BHvRz701ebVO801M9SDypBt
+	LQbwJ8+718muGfpgWeIUcpTi2kU0pdI98UWyWLMjgr7MWSEzR7O3826NNxfHrc6T+2LgmziaYu2AF
+	0AyLqFr1mSXRDTPkO5StJmbo+mX4n0b4h6bs5/4nfptNi05m2C6KbDHYeryMNR7cvHRYyjAB7Fgk1
+	Wj40rOjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwxnD-00000007Wvp-1oDG;
-	Fri, 12 Sep 2025 07:01:59 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1uwxqA-00000007Xls-0oCA;
+	Fri, 12 Sep 2025 07:05:02 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uwxn9-00000007WsA-36Ad
-	for linux-mediatek@lists.infradead.org;
-	Fri, 12 Sep 2025 07:01:58 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-3d3ff4a4d6fso1192548f8f.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 12 Sep 2025 00:01:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1757660513; x=1758265313; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=YaWj+Wtj/24uprPfhMzjPFyopaRjb/i1iqDzvUVq8gE=;
-        b=HtW+rGb6rwiy9Bw0sfDLs+OlG5Tt6gHrk7NEAG+hcVsWwPFqsKI58h/7T8mk2pAxNf
-         0YweUp1ccf69ULWd8LxDqTzogEluzl/GG0wQFlfaeDKAsCwrLG0vrXWvscioBThdDnGx
-         WW50/BqRKo0E6bub63BrfvNOTCtt0YuLpjbx+wC2itb3iCt31MWG/xEet7CmyN3hh7Zu
-         Kb0x1lkRY63Socms/9b8r6AAoGArb1bF4H1xdMVLZIpt2aFrWpV/Ic9Raqs3odVWe2v1
-         IQebuD0QCQ04TcQ2psJJniKBcwYTr702b0YE6rrQgBFE9KV/9b9uPYDBMxGTGAp3B5JU
-         uUuA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1757660513; x=1758265313;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=YaWj+Wtj/24uprPfhMzjPFyopaRjb/i1iqDzvUVq8gE=;
-        b=QPbjabR37D57JowhikuRnuyenWrRS8RqWc6uecmmsNNc4F3tw3tIW+puQGEqJZ/zLM
-         RjIQc/x7YxhOcUvJ4l2YYF/Qbt3ydbCooGNro4mJJeL+EXDI7/T7APtM2d5fqyuElKJx
-         Z/UfqY6W+SxqgYY3Wmh/u+5XSJ971B23yQzGs3g+aWZ9+pOBRiB5OBT1Q9vWDodJwKCI
-         CI1bEatXb11/EWKupwk2jpUKGA86UWgjn6WYlNORPYnKGLtN2LOrjAdda7e4Iv+a8YJk
-         hNRT2hefy7wo0XyYjgEw7wk3jftfrLRoinU1KbLuSt5SQ06S1vX39JGlOzBPk5Xbf2NA
-         pTrw==
-X-Forwarded-Encrypted: i=1; AJvYcCV7vZld1N7CVLTQ47rT3JhGRq+o/Jz7Av8QtcH4Uy8tTAbtLB0jv6DFBZb/I+wMQwJp6T+BhyvaZTHeGTLgsA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx/gxrFbVrgioRMRdG1ymvry6JtKnCmTTPSKm0KsYuRX2V83LSv
-	2u9OKQ27BEpfh4xJI4Py+15/+3A1HGCQzLBaCYxAKzJt5R3oXtauCxYe
-X-Gm-Gg: ASbGncvXkPKlWdDOZEJ2w+wkLatOnHYD7vi7tU/D3OT6a3Z6oWyttzwzHH/0Sv9LdKw
-	lu586OV2+YW09hhCwlzWqSvFWhSFuiQXL+qmWf+XszGVWLXb/qSgA+DPfkKbrRBr2lArN+wBRw0
-	I06ModqRXDPy4vNFfLQLwLQpXw4Hd7zT2MAgmG4vQzpDA5fZ4CaIwRTh8o0b8HCe/d90EbHOJtd
-	bB0QMEt4UxZqKUuCEvL8Yb4JKaHgq1h6c5ZBOH0LKVrqmK4p+JBiJGaSDVWIAgwzzOOaTUCZiM3
-	fPMC6iJs3eQrbP62Z/YEqIL29HpmDRX1JNjRGDkZol19LAJck4jI5pvs4xckQg3LO9OrVY4JLgr
-	S3UqgyDkoOk1BMD4zp8XP+CV1wU2LCO0=
-X-Google-Smtp-Source: AGHT+IEOlpS//jr2i1NsakDvG6pEzwnvWvf80bQZB97SnNY1RtBItPkLSDjlNWiHmg/Wj/paRb2sRQ==
-X-Received: by 2002:a05:6000:2407:b0:3ce:9872:fd3 with SMTP id ffacd0b85a97d-3e765a2dd81mr1373225f8f.34.1757660513106;
-        Fri, 12 Sep 2025 00:01:53 -0700 (PDT)
-Received: from [192.168.2.177] ([91.116.220.47])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45e015775f1sm54638945e9.8.2025.09.12.00.01.51
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 12 Sep 2025 00:01:52 -0700 (PDT)
-Message-ID: <6f60bb97-86fc-4cda-a373-a991547bbd77@gmail.com>
-Date: Fri, 12 Sep 2025 09:01:49 +0200
+	id 1uEPtU-000000091pu-1GST;
+	Mon, 12 May 2025 09:56:22 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 6C6DDA4C9E3;
+	Mon, 12 May 2025 09:56:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C20E1C4CEE7;
+	Mon, 12 May 2025 09:55:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1747043779;
+	bh=i+C4MquKCE5DzjebZIg1suA7nSkmpPf5qHNeApUsg1A=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=qRopC9c+wx/+YYC0sJ/UvJzWi+Nuq8Af/LOL6TTdw1ObAiA1N4EP+e6QolBr4MpT6
+	 p5ltChjlCbyDDYRz89R5OVuaZ83tbLw+pYcksx/XVXGNoBUri07jOIpHu8d097AHB/
+	 gSDUJRuD+w/qmayEwLfKcRkm+4e+sfpRcvHaPFTEPbrRTxGpnFsatWWUdcTBd7OQnA
+	 w+ym87xDkxssPWo79tPQu/rSntgc4PEKUjTQ4e3C6qaM9CVgjCp/lHxzZltc1AavRM
+	 /LPUSo4AklmCrtIuWgWZpLqR0YnBmCrfB22k4a1IjHg5OgJnYBulNV1QgQrtx5KTRE
+	 uIiF1y2I3VB1w==
+Message-ID: <a40c0dfc-b531-4cc0-80b2-5b972d9fb65c@kernel.org>
+Date: Mon, 12 May 2025 11:55:32 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] remoteproc: mtk_scp: Construct FW path if firmware-name
- not present
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-remoteproc@vger.kernel.org
-Cc: arnd@arndb.de, andersson@kernel.org, mathieu.poirier@linaro.org,
- wenst@chromium.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com
-References: <20250911140043.190801-1-angelogioacchino.delregno@collabora.com>
-Content-Language: en-US, ca-ES, es-ES
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Autocrypt: addr=matthias.bgg@gmail.com; keydata=
- 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
-In-Reply-To: <20250911140043.190801-1-angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2 00/57] irqdomain: Cleanups and Documentation
+To: Thomas Gleixner <tglx@linutronix.de>
+Cc: maz@kernel.org, linux-kernel@vger.kernel.org, Aaro Koskinen <aaro.koskinen@iki.fi>, Abhinav Kumar <quic_abhinavk@quicinc.com>, Albert Ou <aou@eecs.berkeley.edu>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Alexandre Ghiti <alex@ghiti.fr>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Alex Deucher <alexander.deucher@amd.com>, Alex Shi <alexs@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>, Alyssa Rosenzweig <alyssa@rosenzweig.io>, amd-gfx@lists.freedesktop.org, Amit Kucheria <amitk@kernel.org>, Anatolij Gustschin <agust@denx.de>, Andi Shyti <andi.shyti@kernel.org>, =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, Andreas Kemnade <andreas@kemnade.info>, Andrew Jeffery <andrew@codeconstruct.com.au>, Andrew Lunn <andrew@lunn.ch>, Andy Shevchenko <andy@kernel.org>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Antoine Tenart <atenart@kernel.org>, Anton Ivanov <anton.ivanov@cambridgegreys.com>, Anup Patel <anup@brainfault.org>, Arnd Bergmann <arnd@arndb.de>, asahi@lists.linux.dev, Bartosz Golaszewski <brgl@bgdev.pl>, Baruch Siach <baruch@tkos.co.il>, Benjamin Herrenschmidt <benh@kernel.crashing.org>, Bharat Kumar Gogada <bharat.kumar.gogada@amd.com>, Bjorn Andersson <andersson@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Borislav Petkov <bp@alien8.de>, Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, Corentin Chary <corentin.chary@gmail.com>, Daire McNamara <daire.mcnamara@microchip.com>, Daniel Golle <daniel@makrotopia.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, Daniel Mack <daniel@zonque.org>, Daniel Palmer <daniel@thingy.jp>, Dave Hansen <dave.hansen@linux.intel.com>, David Airlie <airlied@gmail.com>, "David S. Miller" <davem@davemloft.net>, DENG Qingfang <dqfext@gmail.com>, Dinh Nguyen <dinguyen@kernel.org>, Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, Dongliang Mu <dzm91@hust.edu.cn>, Doug Berger <opendmb@gmail.com>, dri-devel@lists.freedesktop.org, Eddie James <eajames@linux.ibm.com>, Eric Dumazet <edumazet@google.com>, Fabio Estevam <festevam@gmail.com>, Florian Fainelli <florian.fainelli@broadcom.com>, Geoff Levand <geoff@infradead.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Gregory Clement <gregory.clement@bootlin.com>, Guo Ren <guoren@kernel.org>, Hans de Goede <hdegoede@redhat.com>, Haojian Zhuang <haojian.zhuang@gmail.com>, Haojian Zhuang <haojian.zhuang@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Herve Codina <herve.codina@bootlin.com>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, "H. Peter Anvin" <hpa@zytor.com>, Huacai Chen <chenhuacai@kernel.org>, Changhuang Liang <changhuang.liang@starfivetech.com>, Chen-Yu Tsai <wens@csie.org>, "Chester A. Unal" <chester.a.unal@arinc9.com>, =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, Christophe Leroy <christophe.leroy@csgroup.eu>, Chris Zankel <chris@zankel.net>, =?UTF-8?Q?Ilpo_J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>, Imre Kaloz <kaloz@openwrt.org>, Ingo Molnar <mingo@redhat.com>, Jakub Kicinski <kuba@kernel.org>, James Morse <james.morse@arm.com>, Janne Grunau <j@jannau.net>, Janusz Krzysztofik <jmkrzyszt@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Jassi Brar <jassisinghbrar@gmail.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, Jerome Brunet <jbrunet@baylibre.com>, Jianjun Wang <jianjun.wang@mediatek.com>, Jiawen Wu <jiawenwu@trustnetic.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>, Jim Quinlan <jim2101024@gmail.com>, Jingoo Han <jingoohan1@gmail.com>, Joel Stanley <joel@jms.id.au>, Johannes Berg <johannes@sipsolutions.net>, John Crispin <john@phrozen.org>, John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>, Jonas Bonn <jonas@southpole.se>, Jonathan Cameron <jic23@kernel.org>, Jonathan Corbet <corbet@lwn.net>, Jonathan Hunter <jonathanh@nvidia.com>, =?UTF-8?Q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, Joyce Ooi <joyce.ooi@intel.com>, Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, Keerthy <j-keerthy@ti.com>, Kevin Hilman <khilman@baylibre.com>,
+ Konrad Dybcio <konradybcio@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>, Lars-Peter Clausen <lars@metafoo.de>, Lee Jones <lee@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Linus Walleij <linus.walleij@linaro.org>, Linus Walleij <linusw@kernel.org>, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-doc@vger.kernel.org, linux-edac@vger.kernel.org, linux-gpio@vger.kernel.org, linux-iio@vger.kernel.org, linux-i2c@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org, linux-omap@vger.kernel.org, linux-pci@vger.kernel.org, linuxppc-dev@lists.ozlabs.org, linux-remoteproc@vger.kernel.org, linux-riscv@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, linux-sh@vger.kernel.org, linux-snps-arc@lists.infradead.org, linux-sound@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-um@lists.infradead.org, linux-wireless@vger.kernel.org, loongarch@lists.linux.dev, Lorenzo Pieralisi <lpieralisi@kernel.org>, Ludovic Desroches <ludovic.desroches@microchip.com>, Lukasz Luba <lukasz.luba@arm.com>, "Luke D. Jones" <luke@ljones.dev>, Madhavan Srinivasan <maddy@linux.ibm.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, =?UTF-8?Q?Marek_Beh=C3=BAn?= <kabel@kernel.org>, Marijn Suijten <marijn.suijten@somainline.org>, Mark Brown <broonie@kernel.org>, Mark-PK Tsai <mark-pk.tsai@mediatek.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Masami Hiramatsu <mhiramat@kernel.org>, Mathieu Poirier <mathieu.poirier@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Max Filippov <jcmvbkbc@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Mengyuan Lou <mengyuanlou@net-swift.com>, Michael Buesch <m@bues.ch>, Michael Ellerman <mpe@ellerman.id.au>, Michal Simek <michal.simek@amd.com>, Miodrag Dinic <miodrag.dinic@mips.com>, Naveen N Rao <naveen@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, netdev@vger.kernel.org, Nicolas Ferre <nicolas.ferre@microchip.com>, Nicolas Saenz Julienne <nsaenz@kernel.org>, Nicholas Piggin <npiggin@gmail.com>, Nikhil Agarwal <nikhil.agarwal@amd.com>, Nipun Gupta <nipun.gupta@amd.com>, Nishanth Menon <nm@ti.com>, =?UTF-8?Q?Pali_Roh=C3=A1r?= <pali@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>, Paolo Abeni <pabeni@redhat.com>, Paul Cercueil <paul@crapouillou.net>, Paul Walmsley <paul.walmsley@sifive.com>, Pengutronix Kernel Team <kernel@pengutronix.de>, Peter Rosin <peda@axentia.se>, Philipp Zabel <p.zabel@pengutronix.de>, Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>, platform-driver-x86@vger.kernel.org, Prasad Kumpatla <quic_pkumpatl@quicinc.com>, Qiang Zhao <qiang.zhao@nxp.com>, Qin Jian <qinjian@cqplus1.com>, "Rafael J. Wysocki" <rafael@kernel.org>, Randy Dunlap <rdunlap@infradead.org>, Ray Jui <rjui@broadcom.com>, Rengarajan Sundararajan <Rengarajan.S@microchip.com>, Richard Cochran <richardcochran@gmail.com>, Richard Weinberger <richard@nod.at>, Rich Felker <dalias@libc.org>, Rob Clark <robdclark@gmail.com>, Robert Jarzmik <robert.jarzmik@free.fr>, Robert Richter <rric@kernel.org>, Rob Herring <robh@kernel.org>, Roger Quadros <rogerq@kernel.org>, Russell King <linux@armlinux.org.uk>, Ryan Chen <ryan_chen@aspeedtech.com>, Ryder Lee <ryder.lee@mediatek.com>, Samuel Holland <samuel@sholland.org>, Santosh Shilimkar <ssantosh@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Scott Branden <sbranden@broadcom.com>, Scott Wood <oss@buserror.net>, Sean Paul <sean@poorly.run>, Sean Wang <sean.wang@kernel.org>, Sean Wang <sean.wang@mediatek.com>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Sergio Paracuellos <sergio.paracuellos@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, Siddharth Vadapalli <s-vadapalli@ti.com>, Simona Vetter <simona@ffwll.ch>, Stafford Horne <shorne@gmail.com>,
+ Stefan Kristiansson <stefan.kristiansson@saunalahti.fi>, Stephen Boyd <sboyd@kernel.org>, Sven Peter <sven@svenpeter.dev>, Takashi Iwai <tiwai@suse.com>, Talel Shenhar <talel@amazon.com>, Tero Kristo <kristo@kernel.org>, Thangaraj Samynathan <Thangaraj.S@microchip.com>, Thara Gopinath <thara.gopinath@gmail.com>, Thierry Reding <thierry.reding@gmail.com>, Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Toan Le <toan@os.amperecomputing.com>, Tony Lindgren <tony@atomide.com>, Tony Luck <tony.luck@intel.com>, UNGLinuxDriver@microchip.com, =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>, Vignesh Raghavendra <vigneshr@ti.com>, Vineet Gupta <vgupta@kernel.org>, Vladimir Oltean <olteanv@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, WANG Xuerui <kernel@xen0n.name>, Woojung Huh <woojung.huh@microchip.com>, x86@kernel.org, Yanteng Si <si.yanteng@linux.dev>, Yoshinori Sato <ysato@users.sourceforge.jp>, Zhang Rui <rui.zhang@intel.com>
+References: <20250319092951.37667-1-jirislaby@kernel.org>
+ <874ixxonyy.ffs@tglx>
+Content-Language: en-US
+From: Jiri Slaby <jirislaby@kernel.org>
+Autocrypt: addr=jirislaby@kernel.org; keydata=
+ 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
+In-Reply-To: <874ixxonyy.ffs@tglx>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250912_000155_821825_C5551A03 
-X-CRM114-Status: GOOD (  36.85  )
+X-CRM114-CacheID: sfid-20250512_025620_490918_080E466D 
+X-CRM114-Status: GOOD (  20.91  )
+X-Mailman-Approved-At: Fri, 12 Sep 2025 00:05:01 -0700
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,173 +117,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 11/09/2025 16:00, AngeloGioacchino Del Regno wrote:
-> After a reply on the mailing lists [1] it emerged that the DT
-> property "firmware-name" should not be relied on because of
-> possible issues with firmware versions.
-> For MediaTek SCP, there has never been any firmware version vs
-> driver version desync issue but, regardless, the firmwares are
-> always using the same name and they're always located in a path
-> with a specific pattern.
+On 06. 05. 25, 15:41, Thomas Gleixner wrote:
+> On Wed, Mar 19 2025 at 10:28, Jiri Slaby wrote:
 > 
-> Instead of unconditionally always relying on the firmware-name
-> devicetree property to get a path to the SCP FW file, drivers
-> should construct a name based on what firmware it knows and
-> what hardware it is running on.
+>> Hi,
+>>
+>> tl;dr if patches are agreed upon, I ask subsys maintainers to take the
+>> respective ones via their trees (as they are split per subsys), so that
+>> the IRQ tree can take only the rest. That would minimize churn/conflicts
+>> during merges.
 > 
-> In order to do that, add a `scp_get_default_fw_path()` function
-> that constructs the path and filename based on two of the infos
-> that the driver can get:
->   1. The compatible string with the highest priority (so, the
->      first one at index 0); and
->   2. The type of SCP HW - single-core or multi-core.
+> So. It's rc5 by now and I picked up everything
+
+Good, thanks.
+
+> which did not show up in next yet. 
+
+Which is the majority -- routing through subsystems didn't work as well 
+as I anticipated.
+
+I planned to retry with v3 after the next merge window, but you were faster.
+
+V3 contains a switch from nodes to dev_fwnode() in some cases. It 
+simplifies the code there. This did not get lost, I will send this 
+separately to maintainers once everything from this series settles in 
+the tree. I.e. likely after the next merge window.
+
+> @Jiri, I fixed up all your subject prefixes as
 > 
-> This means that the default firmware path is generated as:
->   - Single core SCP: mediatek/(soc_model)/scp.img
->     for example:     mediatek/mt8183/scp.img;
+>    'irqdomain: subsys: Switch to foo()'
 > 
->   - Multi core SCP:  mediatek/(soc_model)/scp_c(core_number).img
->     for example:     mediatek/mt8188/scp_c0.img for Core 0, and
->                      mediatek/mt8188/scp_c1.img for Core 1.
-> 
+> does not make any sense at all. These subsystems have their regular
+> prefixes and these changes do not justify made up irqdomain special
+> prefixes at all.
 
-As we inventing a naming scheme here: if we decide that signle core FW is calle 
-scp_c0.img we can get rid of some code.
+Yes.
 
-> Note that the generated firmware path is being used only if the
-> "firmware-name" devicetree property is not present in the SCP
-> node or in the SCP Core node(s).
-> 
-> [1 - Reply regarding firmware-name property]
-> Link: https://lore.kernel.org/all/7e8718b0-df78-44a6-a102-89529d6abcce@app.fastmail.com/
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->   drivers/remoteproc/mtk_scp.c | 64 ++++++++++++++++++++++++++++++++----
->   1 file changed, 58 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> index 8206a1766481..80fcb4b053b3 100644
-> --- a/drivers/remoteproc/mtk_scp.c
-> +++ b/drivers/remoteproc/mtk_scp.c
-> @@ -16,6 +16,7 @@
->   #include <linux/remoteproc.h>
->   #include <linux/remoteproc/mtk_scp.h>
->   #include <linux/rpmsg/mtk_rpmsg.h>
-> +#include <linux/string.h>
->   
->   #include "mtk_common.h"
->   #include "remoteproc_internal.h"
-> @@ -1093,22 +1094,73 @@ static void scp_remove_rpmsg_subdev(struct mtk_scp *scp)
->   	}
->   }
->   
-> +/**
-> + * scp_get_default_fw_path() - Get default SCP firmware path
-> + * @dev:     SCP Device
-> + * @core_id: SCP Core number
-> + *
-> + * This function generates a path based on the following format:
-> + *     mediatek/(soc_model)/scp(_cX).img; for multi-core or
-> + *     mediatek/(soc_model)/scp.img for single core SCP HW
-> + *
-> + * Return: A devm allocated string containing the full path to
-> + *         a SCP firmware or an error pointer
-> + */
-> +static const char *scp_get_default_fw_path(struct device *dev, int core_id)
-> +{
-> +	struct device_node *np = core_id < 0 ? dev->of_node : dev->parent->of_node;
-> +	char scp_fw_file[7] = "scp_cX";
-
-We provide a string that we later overwrite. I'd prefer to have just the 
-reservation without any 'artificial' string in it.
-
-> +	const char *compatible, *soc;
-> +	int ret;
-> +
-> +	/* Use only the first compatible string */
-> +	ret = of_property_read_string_index(np, "compatible", 0, &compatible);
-> +	if (ret)
-> +		return ERR_PTR(ret);
-> +
-> +	/* If the compatible string's length is implausible bail out early */
-> +	if (strlen(compatible) < strlen("mediatek,mtXXXX-scp"))
-
-Seems like a double check of compatible. Why is dt-bindings for that not enough?
-
-> +		return ERR_PTR(-EINVAL);
-> +
-> +	/* If the compatible string starts with "mediatek,mt" assume that it's ok */
-> +	if (!str_has_prefix(compatible, "mediatek,mt"))
-
-Same here.
-
-> +		return ERR_PTR(-EINVAL);
-> +
-> +	if (core_id >= 0)
-> +		ret = snprintf(scp_fw_file, ARRAY_SIZE(scp_fw_file), "scp_c%1d", core_id);
-> +	else
-> +		ret = snprintf(scp_fw_file, ARRAY_SIZE(scp_fw_file), "scp");
-> +	if (ret <= 0)
-> +		return ERR_PTR(ret);
-> +
-> +	soc = &compatible[strlen("mediatek,")];
-> +
-> +	return devm_kasprintf(dev, GFP_KERNEL, "mediatek/%.*s/%s.img",
-> +			      (int)strlen("mtXXXX"), soc, scp_fw_file);
-> +}
-> +
->   static struct mtk_scp *scp_rproc_init(struct platform_device *pdev,
->   				      struct mtk_scp_of_cluster *scp_cluster,
-> -				      const struct mtk_scp_of_data *of_data)
-> +				      const struct mtk_scp_of_data *of_data,
-> +				      int core_id)
->   {
->   	struct device *dev = &pdev->dev;
->   	struct device_node *np = dev->of_node;
->   	struct mtk_scp *scp;
->   	struct rproc *rproc;
->   	struct resource *res;
-> -	const char *fw_name = "scp.img";
-> +	const char *fw_name;
->   	int ret, i;
->   	const struct mtk_scp_sizes_data *scp_sizes;
->   
->   	ret = rproc_of_parse_firmware(dev, 0, &fw_name);
-> -	if (ret < 0 && ret != -EINVAL)
-> -		return ERR_PTR(ret);
-> +	if (ret) {
-> +		fw_name = scp_get_default_fw_path(dev, core_id);
-
-Wouldn't it make more sense to encapsulate the whole fw_name retrival in one 
-function, e.g. scp_get_fw_path.
-
-> +		if (IS_ERR(fw_name)) {
-> +			dev_err(dev, "Cannot get firmware path: %ld\n", PTR_ERR(fw_name));
-> +			return ERR_CAST(fw_name);
-> +		}
-> +	}
->   
->   	rproc = devm_rproc_alloc(dev, np->name, &scp_ops, fw_name, sizeof(*scp));
->   	if (!rproc) {
-> @@ -1212,7 +1264,7 @@ static int scp_add_single_core(struct platform_device *pdev,
->   	struct mtk_scp *scp;
->   	int ret;
->   
-> -	scp = scp_rproc_init(pdev, scp_cluster, of_device_get_match_data(dev));
-> +	scp = scp_rproc_init(pdev, scp_cluster, of_device_get_match_data(dev), -1);
->   	if (IS_ERR(scp))
->   		return PTR_ERR(scp);
->   
-> @@ -1259,7 +1311,7 @@ static int scp_add_multi_core(struct platform_device *pdev,
->   			goto init_fail;
->   		}
->   
-> -		scp = scp_rproc_init(cpdev, scp_cluster, cluster_of_data[core_id]);
-> +		scp = scp_rproc_init(cpdev, scp_cluster, cluster_of_data[core_id], core_id);
->   		put_device(&cpdev->dev);
->   		if (IS_ERR(scp)) {
->   			ret = PTR_ERR(scp);
-
+thanks,
+-- 
+js
+suse labs
 
