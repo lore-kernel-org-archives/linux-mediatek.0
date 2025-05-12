@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE6B6C3ABC3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 May 2025 14:19:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73204C3ABC3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 May 2025 16:31:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AASHpsRHnOZG9zKaO4b8aEY6Wtqtt0rsAjyKr+LKDW0=; b=39yEI9lRbcRr6cuzTKYAj6h2jg
-	kDxr7STDCvPUa6PLtL0MLDz5IXmCZtadyLhSyLzBVa0/ReAMCKQd3FHmlqXejNFzi7HprCTb7t32a
-	a+/QVnV7pxk69mLIDZGS6iJd4W14r9ks6apvNCHXJG1Xb63y9U2Eb060JHZV8G6fOoq8ZiiHBKJPF
-	RzayN/mAdbhNcZy60pnf4qMnrJMtcAa/tbqb8E/0N0uzJ4wL/KrDpJGcr8PRIZaD3wg6ZiAS3rUqk
-	zLeMZnVLjr4V65DdXqzdvFYQVFWXD+ojS7EjJFEj7GtsnLSIwWYB4+jz4ZNNrMcbSWj8g0Jq+X/Is
-	gKbY6aCw==;
+	bh=NhuOfydpPDweGCryBGUmTIm/uc1ALs1NJQ3i7qlPv3Y=; b=o3Y+IdEv90w9974x9NQaeahlwe
+	7OhqiFZakJis+0oIXwMh/yY27zP9CfUp/QsXIUbuxK6pEUp9Gc4X+aR6G7ep1FSNjxGQ+t0IqZr9W
+	mtJzOAo4zjbGbi1G4IEVn80aKj6Ow/MWRtefOQgnFX86y6SwrHgMkbaaELqTKMd5FzLVlTnaRV+9R
+	0WPekI7jRMB2CVHuMc5xcwNTutGCq+sDQaSQ+xKDsRHotbZcQA9cdAYQvFiCuko9fdjcA/MINFPxb
+	S3v0uyyWDyEizwbQ/plXPA/xa3OVK7TSBBxP3hV2sYFWNZ+oAAAdpgOnvRtSosGtljZq0Qiwz4ZfL
+	S++ioFIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEU0Z-00000009hML-08M0;
-	Mon, 12 May 2025 14:19:55 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1uEW42-0000000A3NY-280A;
+	Mon, 12 May 2025 16:31:38 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uETHw-00000009ZRV-0zl2;
-	Mon, 12 May 2025 13:33:49 +0000
+	id 1uEVaL-00000009xrj-146B;
+	Mon, 12 May 2025 16:00:57 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 04F855C6550;
-	Mon, 12 May 2025 13:31:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8A5B9C4CEE7;
-	Mon, 12 May 2025 13:33:44 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 73E69629D1;
+	Mon, 12 May 2025 16:00:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 30853C4CEE7;
+	Mon, 12 May 2025 16:00:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747056827;
-	bh=OSuhz6e6dWLHgaJVphGkxlbYoGHl5jGwOBDIywZ3Y+0=;
+	s=k20201202; t=1747065656;
+	bh=5ULX35j9SB3R6eiMUzUDP5ujKYpZ2GypHAV7cJiBd7Y=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=sTxn49JHIXPhIbCuuiv+9AmgFbzDFHaISnc8qvXkrAFUEKgumncOY6oMUsqAGbaYw
-	 7cZtl41uGkvMgncv8oLMjGidAWp2Ldjkj2nsM9OHDxTdFhxjXzq6G8rrqE7+1iSa36
-	 NFl23db7pTc/PBBGp+YylsBcHHiv7RC6TlsTm1m2HHz7goXJnD/MevXpx2nhQ4uFgb
-	 bzQn+T+60WJYVEiawF4RFFKz9t7zA0sSelsQ3AZ1UMsnz/JH7EhZe+1iOGjjgo51Zn
-	 Nu361r8xEoe52fIPJfRpkWjfCARz7khX954eeyHpkWrKFA5dB6rxnWf8KwPQQkHu4q
-	 kgnWRv2Bt7Nrw==
-Date: Mon, 12 May 2025 14:33:42 +0100
-From: Simon Horman <horms@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	b=b5DMF1CCQwsfnuCZaPECRkzPsK/Ylv2qXn7ckN/KWEtDtYIrlbcOMYTq8jpsWcCVQ
+	 tTfYxCeg0COyKSK1Wk/ihRFGbww2B4gp5WRNa4aaAxduRShX6TyZqZdh4mQPO4l6Gk
+	 UTf/wOh/sVwG66z9zT+nlVfg7Y2PBtI2yLeVJl/SWjbvjWejrtfcpC/4fuz7fiK8F7
+	 xR5MXrl4muuymo/c0jQeRjoUeVgWK8Q+uWXs2CgvbsQIFr4yHWEYKOH048D+e8twQS
+	 Vm+oHutQCDbw5BPW/keHAd0aQPcyYL1/mJj8nFkI5/DzRpjzmDzKqwMT4M1DXfdmvq
+	 LJTBcngtPWtbA==
+Date: Mon, 12 May 2025 17:00:50 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Sirius Wang <sirius.wang@mediatek.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Jiri Slaby <jirislaby@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH net-next v2 2/2] net: airoha: Add the capability to
- allocate hw buffers in SRAM
-Message-ID: <20250512133342.GB3339421@horms.kernel.org>
-References: <20250509-airopha-desc-sram-v2-0-9dc3d8076dfb@kernel.org>
- <20250509-airopha-desc-sram-v2-2-9dc3d8076dfb@kernel.org>
+	linux-mediatek@lists.infradead.org, wenst@chromium.org,
+	xavier.chang@mediatek.com
+Subject: Re: [PATCH v3 1/3] dt-bindings: arm: Add compatible for MediaTek
+ MT8189
+Message-ID: <20250512-ferret-willed-348cdc19fe4e@spud>
+References: <20250512115355.923342-1-sirius.wang@mediatek.com>
+ <20250512115355.923342-2-sirius.wang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="BrIJKWHwbpK/JFHA"
 Content-Disposition: inline
-In-Reply-To: <20250509-airopha-desc-sram-v2-2-9dc3d8076dfb@kernel.org>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250512_063348_356875_7F1DD3DF 
-X-CRM114-Status: GOOD (  20.86  )
+In-Reply-To: <20250512115355.923342-2-sirius.wang@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,78 +79,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 09, 2025 at 04:51:34PM +0200, Lorenzo Bianconi wrote:
-> In order to improve packet processing and packet forwarding
-> performances, EN7581 SoC supports allocating buffers for hw forwarding
-> queues in SRAM instead of DRAM if available on the system.
-> Rely on SRAM for buffers allocation if available on the system and use
-> DRAM as fallback.
-> 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+--BrIJKWHwbpK/JFHA
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, May 12, 2025 at 07:53:48PM +0800, Sirius Wang wrote:
+> This commit adds dt-binding documentation for the MediaTek MT8189
+> reference board.
+>=20
+> Signed-off-by: Sirius Wang <sirius.wang@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
 > ---
->  drivers/net/ethernet/airoha/airoha_eth.c | 57 +++++++++++++++++++++++++++-----
->  1 file changed, 48 insertions(+), 9 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+>  Documentation/devicetree/bindings/arm/mediatek.yaml | 4 ++++
+>  1 file changed, 4 insertions(+)
+>=20
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Docume=
+ntation/devicetree/bindings/arm/mediatek.yaml
+> index fa1646bc0bac..05e827076a7f 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
+> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> @@ -372,6 +372,10 @@ properties:
+>            - enum:
+>                - mediatek,mt8188-evb
+>            - const: mediatek,mt8188
+> +      - items:
+> +          - enum:
+> +              - mediatek,mt8189-evb
+> +          - const: mediatek,mt8189
+>        - description: Google Hayato
+>          items:
+>            - const: google,hayato-rev1
+> --=20
+> 2.45.2
+>=20
 
-...
+--BrIJKWHwbpK/JFHA
+Content-Type: application/pgp-signature; name="signature.asc"
 
-> @@ -1088,12 +1091,45 @@ static int airoha_qdma_init_hfwd_queues(struct airoha_qdma *qdma)
->  
->  	airoha_qdma_wr(qdma, REG_FWD_DSCP_BASE, dma_addr);
->  
-> -	size = AIROHA_MAX_PACKET_SIZE * HW_DSCP_NUM;
-> -	qdma->hfwd.q = dmam_alloc_coherent(eth->dev, size, &dma_addr,
-> -					   GFP_KERNEL);
-> -	if (!qdma->hfwd.q)
-> +	name = devm_kasprintf(eth->dev, GFP_KERNEL, "qdma%d-buf", id);
-> +	if (!name)
->  		return -ENOMEM;
->  
-> +	index = of_property_match_string(eth->dev->of_node,
-> +					 "memory-region-names", name);
-> +	if (index >= 0) { /* buffers in sram */
-> +		struct reserved_mem *rmem;
-> +		struct device_node *np;
-> +		void *q;
-> +
-> +		np = of_parse_phandle(eth->dev->of_node, "memory-region",
-> +				      index);
-> +		if (!np)
-> +			return -ENODEV;
-> +
-> +		rmem = of_reserved_mem_lookup(np);
-> +		of_node_put(np);
-> +
-> +		/* SRAM is actual memory and supports transparent access just
-> +		 * like DRAM. Hence we don't require __iomem being set and
-> +		 * we don't need to use accessor routines to read from or write
-> +		 * to SRAM.
-> +		 */
+-----BEGIN PGP SIGNATURE-----
 
-Thanks for this comment. IMHO It is really useful.
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaCIbMgAKCRB4tDGHoIJi
+0kTOAQDIrab/1dzT8IHi2s3bi/oJO11J04QcoOlpQG0eV2hgJwD/Xw8+792O52zo
+lP7EobzCjq5NJW4XO0avY+MeprkoxA0=
+=6Pyl
+-----END PGP SIGNATURE-----
 
-> +		q = (void __force *)devm_ioremap(eth->dev, rmem->base,
-> +						 rmem->size);
-> +		if (!q)
-> +			return -ENOMEM;
-> +
-> +		qdma->hfwd.q = q;
-> +		dma_addr = rmem->base;
-> +	} else {
-> +		size = AIROHA_MAX_PACKET_SIZE * HW_DSCP_NUM;
-> +		qdma->hfwd.q = dmam_alloc_coherent(eth->dev, size, &dma_addr,
-> +						   GFP_KERNEL);
-> +		if (!qdma->hfwd.q)
-> +			return -ENOMEM;
-> +	}
-> +
->  	airoha_qdma_wr(qdma, REG_FWD_BUF_BASE, dma_addr);
->  
->  	airoha_qdma_rmw(qdma, REG_HW_FWD_DSCP_CFG,
-
-...
+--BrIJKWHwbpK/JFHA--
 
