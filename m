@@ -4,77 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E458BC3ABC3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 May 2025 12:01:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 396B3C3ABCD
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 May 2025 13:28:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mMAmWTSN5/VWRNWvKT1Dc7Go7O0Bi/OwblPq1HlvnXY=; b=O1elSzABrKsYBuCqxOzX2xHLsZ
-	rZ1itEpsKwYz+6H4jtaghp/NFevnreA1jxtN4KRxXGP/uUZjWRXI1hQilVf+ouz855qQdfn1B5Ldu
-	N0575yLURfSDN5A5/BwHQEwLS9usDu/Trgu2eKE0RUOBGTDqI85J/7DLIOWUJjjB0JKFWNtB7RQX4
-	GBDVXGNlWqtiaLvBfXtImZ0cQDGhax3fWr73V0lKG5ob+ieDGupSZMNajSfkqadrzVGsQ4+4fjE5a
-	t043SBLkXai263E7FntZk0voySRd0YrPWgG4Z7DU6Se7Eic56PkLlwYVnUpCPqRzwBYGziq7K83Em
-	FaCQp61A==;
+	bh=RdOWcONIWGiQ9RZqn7m2XKomabJdF8R6wWcjytIlO4s=; b=xFyhnzHw/9ZtmzWnwUlx+Ulc42
+	8d2uC2y2lWQneciimjCdXTJzz+Axv6dbWaPkEpLfsNvXBx0CW0+jZ8SRAZ0mq2ebk1TjRLW+oeJCn
+	HYk3Eaq4N9c37wksO2Z8mFzJMkqowdcxDPEYgQZhiuQdW/vYu+9UHBnEVaZucgMbrs5PBRjXw5Cbr
+	+XmjzriPsTA9OKERfBVp8ihPrB32q3G6FZau7+R+CjOR93DH6DW4REX2f3V64FQ3fI67SBTg8AKrc
+	bvDYph8Imq0Bqs8L/6qViGRzs/9pWlt1pV1oSy6C6SeIQ6Z//os8L2AY9yQ+wldBScISNjnxwtLGL
+	I9LHr8Yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uERqq-00000009KHR-3WUb;
-	Mon, 12 May 2025 12:01:44 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1uETCQ-00000009YGx-0NR8;
+	Mon, 12 May 2025 13:28:06 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uERjj-00000009J8A-3JCH;
-	Mon, 12 May 2025 11:54:25 +0000
-X-UUID: d6cdce802f2711f0bed96b30c12bc3d6-20250512
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=mMAmWTSN5/VWRNWvKT1Dc7Go7O0Bi/OwblPq1HlvnXY=;
-	b=r1WDX5XQGxVq7RRYgmbTyo0KoTYb8CKEJGYSeRSO6fWg8YHn5PMJtM9AtoMft14FWmdqOKZ1DdGY6ZR2MATfaX/BZctH65ZMNMZh2lqIqxegq1gijicUgT754NY5koB2V8r+4aX8YdNlZIRf2bHMF4vBpnLLtzq4Y1w2L4/1rkU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:9f799ed3-760a-47b2-8c0a-d30117922703,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:0ef645f,CLOUDID:55e0dde0-512b-41ef-ab70-9303a9a81417,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
-	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
-	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: d6cdce802f2711f0bed96b30c12bc3d6-20250512
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
-	(envelope-from <sirius.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 683461453; Mon, 12 May 2025 04:54:20 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Mon, 12 May 2025 19:54:15 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Mon, 12 May 2025 19:54:15 +0800
-From: Sirius Wang <sirius.wang@mediatek.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Greg Kroah-Hartman
-	<gregkh@linuxfoundation.org>, Jiri Slaby <jirislaby@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Sean Wang <sean.wang@mediatek.com>
-CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-serial@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <wenst@chromium.org>,
-	<xavier.chang@mediatek.com>, Sirius Wang <sirius.wang@mediatek.com>
-Subject: [PATCH v3 3/3] arm64: dts: mt8189: Add mt8189 dts evaluation board and Mafefile
-Date: Mon, 12 May 2025 19:53:50 +0800
-Message-ID: <20250512115355.923342-4-sirius.wang@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20250512115355.923342-1-sirius.wang@mediatek.com>
-References: <20250512115355.923342-1-sirius.wang@mediatek.com>
+	id 1uESen-00000009RzS-3PRV;
+	Mon, 12 May 2025 12:53:23 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id DEFF544FEC;
+	Mon, 12 May 2025 12:53:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3F74CC4CEE7;
+	Mon, 12 May 2025 12:53:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1747054400;
+	bh=bGEl/N/Mj0l0P5OgWd/MVZto+HVhtJO0kIfC1NcF2TE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=a3fRCOyLPT0vjKRO5zR3VuRX900CG3fKPgscz7YdQspH2GDbSo3AYbupGLL8zQFqL
+	 3m+b7CxaUycY5DapAxsIgnmn/UwywUPYkN4qYNQWFmnFXgT3KEoDZYD9iCdmh26/Ms
+	 PPxj4I3EYeoSxnCv1zD61T/Aik0T0c5cPb5xi8WRqPoePZZ/Z+DFRGT/ud0ZDrbY5l
+	 S0rMfC04JTcp4qh+aYv5n+AkIUe5fIWoNfmR4LFuvgP5h2ce6pLDyU+ySdOvEb5eJk
+	 mRBmHURhaRMZ7sZK6efFPXOjND4wZxNOpmvkjD9z2XP4Z4uV8wcheCQoVRQshxozuU
+	 dUyajsHSr/8kA==
+Date: Mon, 12 May 2025 14:53:18 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Nathan Chancellor <nathan@kernel.org>,
+	Nick Desaulniers <nick.desaulniers+lkml@gmail.com>,
+	Bill Wendling <morbo@google.com>,
+	Justin Stitt <justinstitt@google.com>,
+	Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, llvm@lists.linux.dev
+Subject: Re: [net-next PATCH v4 11/11] net: airoha: add phylink support for
+ GDM2/3/4
+Message-ID: <aCHvPoZDGUrCVif1@lore-desk>
+References: <20250511201250.3789083-1-ansuelsmth@gmail.com>
+ <20250511201250.3789083-12-ansuelsmth@gmail.com>
+ <aCG9q6i7HomgilI6@lore-desk>
+ <6821bef5.5d0a0220.319347.d533@mx.google.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="qLFnU5peW7PO9M+h"
+Content-Disposition: inline
+In-Reply-To: <6821bef5.5d0a0220.319347.d533@mx.google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250512_045423_842194_20A4D5CC 
-X-CRM114-Status: GOOD (  15.38  )
+X-CRM114-CacheID: sfid-20250512_055321_895787_D26CE99D 
+X-CRM114-Status: GOOD (  29.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,489 +91,199 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mt8189 dts evaluation board and Mafefile
 
-Signed-off-by: Sirius Wang <sirius.wang@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/Makefile       |   1 +
- arch/arm64/boot/dts/mediatek/mt8189-evb.dts |  20 +
- arch/arm64/boot/dts/mediatek/mt8189.dtsi    | 427 ++++++++++++++++++++
- 3 files changed, 448 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8189-evb.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8189.dtsi
+--qLFnU5peW7PO9M+h
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index 3aa06476c6c0..ad2ac9e1bb79 100644
---- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -87,6 +87,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8188-geralt-ciri-sku4.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8188-geralt-ciri-sku5.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8188-geralt-ciri-sku6.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8188-geralt-ciri-sku7.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt8189-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-asurada-hayato-r1.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-asurada-spherion-r0.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-evb.dtb
-diff --git a/arch/arm64/boot/dts/mediatek/mt8189-evb.dts b/arch/arm64/boot/dts/mediatek/mt8189-evb.dts
-new file mode 100644
-index 000000000000..e5d9ce1b8e61
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8189-evb.dts
-@@ -0,0 +1,20 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright (C) 2025 MediaTek Inc.
-+ * Author: Sirius Wang <sirius.wang@mediatek.com>
-+ */
-+/dts-v1/;
-+#include "mt8189.dtsi"
-+
-+/ {
-+	model = "MediaTek MT8189 evaluation board";
-+	compatible = "mediatek,mt8189-evb", "mediatek,mt8189";
-+
-+	chosen: chosen {
-+		stdout-path = "serial0:115200n8";
-+	};
-+};
-+
-+&uart0 {
-+	status = "okay";
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8189.dtsi b/arch/arm64/boot/dts/mediatek/mt8189.dtsi
-new file mode 100644
-index 000000000000..f8794c6fba7b
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt8189.dtsi
-@@ -0,0 +1,427 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright (c) 2025 MediaTek Inc.
-+ */
-+
-+#include <dt-bindings/interrupt-controller/arm-gic.h>
-+#include <dt-bindings/interrupt-controller/irq.h>
-+
-+/ {
-+	compatible = "mediatek,mt8189";
-+	interrupt-parent = <&gic>;
-+	#address-cells = <2>;
-+	#size-cells = <2>;
-+
-+	aliases {
-+		serial0 = &uart0;
-+	};
-+
-+	clk32k: oscillator-clk32k {
-+		compatible = "fixed-clock";
-+		#clock-cells = <0>;
-+		clock-frequency = <32000>;
-+		clock-output-names = "clk32k";
-+	};
-+
-+	clk13m: oscillator-clk13m {
-+		compatible = "fixed-factor-clock";
-+		#clock-cells = <0>;
-+		clocks = <&clk26m>;
-+		clock-mult = <1>;
-+		clock-div = <2>;
-+		clock-output-names = "clk13m";
-+	};
-+
-+	clk26m: oscillator-clk26m {
-+		compatible = "fixed-clock";
-+		#clock-cells = <0>;
-+		clock-frequency = <26000000>;
-+		clock-output-names = "clk26m";
-+	};
-+
-+	clk104m: oscillator-clk104m {
-+		compatible = "fixed-factor-clock";
-+		#clock-cells = <0>;
-+		clocks = <&clk26m>;
-+		clock-mult = <4>;
-+		clock-div = <1>;
-+		clock-output-names = "clk104m";
-+	};
-+
-+	ulposc: oscillator-ulposc {
-+		compatible = "fixed-clock";
-+		#clock-cells = <0>;
-+		clock-frequency = <520000000>;
-+		clock-output-names = "ulposc";
-+	};
-+
-+	ulposc3: oscillator-ulposc3 {
-+		compatible = "fixed-clock";
-+		#clock-cells = <0>;
-+		clock-frequency = <26000000>;
-+		clock-output-names = "ulposc3";
-+	};
-+
-+	cpus {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		cpu0: cpu@0 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a55";
-+			reg = <0x000>;
-+			enable-method = "psci";
-+			clock-frequency = <2000000000>;
-+			capacity-dmips-mhz = <742>;
-+			cpu-idle-states = <&cpu_off_l>, <&cpu_cluster_off_l>, <&cpu_mcusys_off_l>,
-+					  <&cpu_system_vcore>, <&cpu_s2idle>;
-+			i-cache-size = <32768>;
-+			i-cache-line-size = <64>;
-+			i-cache-sets = <128>;
-+			d-cache-size = <32768>;
-+			d-cache-line-size = <64>;
-+			d-cache-sets = <128>;
-+			next-level-cache = <&l2_0>;
-+			performance-domains = <&performance 0>;
-+			#cooling-cells = <2>;
-+		};
-+
-+		cpu1: cpu@100 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a55";
-+			reg = <0x100>;
-+			enable-method = "psci";
-+			clock-frequency = <2000000000>;
-+			capacity-dmips-mhz = <742>;
-+			cpu-idle-states = <&cpu_off_l>, <&cpu_cluster_off_l>, <&cpu_mcusys_off_l>,
-+					  <&cpu_system_vcore>, <&cpu_s2idle>;
-+			i-cache-size = <32768>;
-+			i-cache-line-size = <64>;
-+			i-cache-sets = <128>;
-+			d-cache-size = <32768>;
-+			d-cache-line-size = <64>;
-+			d-cache-sets = <128>;
-+			next-level-cache = <&l2_0>;
-+			performance-domains = <&performance 0>;
-+			#cooling-cells = <2>;
-+		};
-+
-+		cpu2: cpu@200 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a55";
-+			reg = <0x200>;
-+			enable-method = "psci";
-+			clock-frequency = <2000000000>;
-+			capacity-dmips-mhz = <742>;
-+			cpu-idle-states = <&cpu_off_l>, <&cpu_cluster_off_l>, <&cpu_mcusys_off_l>,
-+					  <&cpu_system_vcore>, <&cpu_s2idle>;
-+			i-cache-size = <32768>;
-+			i-cache-line-size = <64>;
-+			i-cache-sets = <128>;
-+			d-cache-size = <32768>;
-+			d-cache-line-size = <64>;
-+			d-cache-sets = <128>;
-+			next-level-cache = <&l2_0>;
-+			performance-domains = <&performance 0>;
-+			#cooling-cells = <2>;
-+		};
-+
-+		cpu3: cpu@300 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a55";
-+			reg = <0x300>;
-+			enable-method = "psci";
-+			clock-frequency = <2000000000>;
-+			capacity-dmips-mhz = <742>;
-+			cpu-idle-states = <&cpu_off_l>, <&cpu_cluster_off_l>, <&cpu_mcusys_off_l>,
-+					  <&cpu_system_vcore>, <&cpu_s2idle>;
-+			i-cache-size = <32768>;
-+			i-cache-line-size = <64>;
-+			i-cache-sets = <128>;
-+			d-cache-size = <32768>;
-+			d-cache-line-size = <64>;
-+			d-cache-sets = <128>;
-+			next-level-cache = <&l2_0>;
-+			performance-domains = <&performance 0>;
-+			#cooling-cells = <2>;
-+		};
-+
-+		cpu4: cpu@400 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a55";
-+			reg = <0x400>;
-+			enable-method = "psci";
-+			clock-frequency = <2000000000>;
-+			capacity-dmips-mhz = <742>;
-+			cpu-idle-states = <&cpu_off_l>, <&cpu_cluster_off_l>, <&cpu_mcusys_off_l>,
-+					  <&cpu_system_vcore>, <&cpu_s2idle>;
-+			i-cache-size = <32768>;
-+			i-cache-line-size = <64>;
-+			i-cache-sets = <128>;
-+			d-cache-size = <32768>;
-+			d-cache-line-size = <64>;
-+			d-cache-sets = <128>;
-+			next-level-cache = <&l2_0>;
-+			performance-domains = <&performance 0>;
-+			#cooling-cells = <2>;
-+		};
-+
-+		cpu5: cpu@500 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a55";
-+			reg = <0x500>;
-+			enable-method = "psci";
-+			clock-frequency = <2000000000>;
-+			capacity-dmips-mhz = <742>;
-+			cpu-idle-states = <&cpu_off_l>, <&cpu_cluster_off_l>, <&cpu_mcusys_off_l>,
-+					  <&cpu_system_vcore>, <&cpu_s2idle>;
-+			i-cache-size = <32768>;
-+			i-cache-line-size = <64>;
-+			i-cache-sets = <128>;
-+			d-cache-size = <32768>;
-+			d-cache-line-size = <64>;
-+			d-cache-sets = <128>;
-+			next-level-cache = <&l2_0>;
-+			performance-domains = <&performance 0>;
-+			#cooling-cells = <2>;
-+		};
-+
-+		cpu6: cpu@600 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a78";
-+			reg = <0x600>;
-+			enable-method = "psci";
-+			clock-frequency = <3000000000>;
-+			capacity-dmips-mhz = <958>;
-+			cpu-idle-states = <&cpu_off_b>, <&cpu_cluster_off_b>, <&cpu_mcusys_off_b>,
-+					  <&cpu_system_vcore>, <&cpu_s2idle>;
-+			i-cache-size = <65536>;
-+			i-cache-line-size = <64>;
-+			i-cache-sets = <256>;
-+			d-cache-size = <65536>;
-+			d-cache-line-size = <64>;
-+			d-cache-sets = <256>;
-+			next-level-cache = <&l2_1>;
-+			performance-domains = <&performance 1>;
-+			#cooling-cells = <2>;
-+		};
-+
-+		cpu7: cpu@700 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a78";
-+			reg = <0x700>;
-+			enable-method = "psci";
-+			clock-frequency = <3000000000>;
-+			capacity-dmips-mhz = <958>;
-+			cpu-idle-states = <&cpu_off_b>, <&cpu_cluster_off_b>, <&cpu_mcusys_off_b>,
-+					  <&cpu_system_vcore>, <&cpu_s2idle>;
-+			i-cache-size = <65536>;
-+			i-cache-line-size = <64>;
-+			i-cache-sets = <256>;
-+			d-cache-size = <65536>;
-+			d-cache-line-size = <64>;
-+			d-cache-sets = <256>;
-+			next-level-cache = <&l2_1>;
-+			performance-domains = <&performance 1>;
-+			#cooling-cells = <2>;
-+		};
-+
-+		cpu-map {
-+			cluster0 {
-+				core0 {
-+					cpu = <&cpu0>;
-+				};
-+				core1 {
-+					cpu = <&cpu1>;
-+				};
-+				core2 {
-+					cpu = <&cpu2>;
-+				};
-+				core3 {
-+					cpu = <&cpu3>;
-+				};
-+				core4 {
-+					cpu = <&cpu4>;
-+				};
-+				core5 {
-+					cpu = <&cpu5>;
-+				};
-+				core6 {
-+					cpu = <&cpu6>;
-+				};
-+				core7 {
-+					cpu = <&cpu7>;
-+				};
-+			};
-+		};
-+
-+		idle-states {
-+			entry-method = "psci";
-+
-+			cpu_off_l: cpu-off-l {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x00010000>;
-+				local-timer-stop;
-+				entry-latency-us = <97>;
-+				exit-latency-us = <252>;
-+				min-residency-us = <6710>;
-+			};
-+
-+			cpu_off_b: cpu-off-b {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x00010000>;
-+				local-timer-stop;
-+				entry-latency-us = <53>;
-+				exit-latency-us = <143>;
-+				min-residency-us = <2120>;
-+			};
-+
-+			cpu_cluster_off_l: cpu-cluster-off-l {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x01010001>;
-+				local-timer-stop;
-+				entry-latency-us = <109>;
-+				exit-latency-us = <325>;
-+				min-residency-us = <6710>;
-+			};
-+
-+			cpu_cluster_off_b: cpu-cluster-off-b {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x01010001>;
-+				local-timer-stop;
-+				entry-latency-us = <59>;
-+				exit-latency-us = <188>;
-+				min-residency-us = <2120>;
-+			};
-+
-+			cpu_mcusys_off_l: cpu-mcusys-off-l {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x02010007>;
-+				local-timer-stop;
-+				entry-latency-us = <1357>;
-+				exit-latency-us = <835>;
-+				min-residency-us = <6710>;
-+			};
-+
-+			cpu_mcusys_off_b: cpu-mcusys-off-b {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x02010007>;
-+				local-timer-stop;
-+				entry-latency-us = <1202>;
-+				exit-latency-us = <679>;
-+				min-residency-us = <2120>;
-+			};
-+
-+			cpu_system_vcore: cpu-system-vcore {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x020100ff>;
-+				local-timer-stop;
-+				entry-latency-us = <940>;
-+				exit-latency-us = <3500>;
-+				min-residency-us = <35200>;
-+			};
-+
-+			cpu_s2idle: cpu-s2idle {
-+				compatible = "arm,idle-state";
-+				arm,psci-suspend-param = <0x020180ff>;
-+				local-timer-stop;
-+				entry-latency-us = <10000>;
-+				exit-latency-us = <10000>;
-+				min-residency-us = <4294967295>;
-+			};
-+		};
-+
-+		l2_0: l2-cache0 {
-+			compatible = "cache";
-+			cache-level = <2>;
-+			cache-size = <131072>;
-+			cache-line-size = <64>;
-+			cache-sets = <512>;
-+			next-level-cache = <&l3_0>;
-+			cache-unified;
-+		};
-+
-+		l2_1: l2-cache1 {
-+			compatible = "cache";
-+			cache-level = <2>;
-+			cache-size = <262144>;
-+			cache-line-size = <64>;
-+			cache-sets = <512>;
-+			next-level-cache = <&l3_0>;
-+			cache-unified;
-+		};
-+
-+		l3_0: l3-cache {
-+			compatible = "cache";
-+			cache-level = <3>;
-+			cache-size = <1048576>;
-+			cache-line-size = <64>;
-+			cache-sets = <2048>;
-+			cache-unified;
-+		};
-+	};
-+
-+	memory: memory@40000000 {
-+		device_type = "memory";
-+		reg = <0 0x40000000 0 0xC0000000>;
-+	};
-+
-+	psci {
-+		compatible = "arm,psci-1.0";
-+		method = "smc";
-+	};
-+
-+	timer: timer {
-+		compatible = "arm,armv8-timer";
-+		interrupt-parent = <&gic>;
-+		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_PPI 14 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_PPI 11 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_PPI 10 IRQ_TYPE_LEVEL_HIGH 0>;
-+	};
-+
-+	soc {
-+		compatible = "simple-bus";
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		ranges;
-+		dma-ranges = <0x0 0x0 0x0 0x0 0x10 0x0>;
-+
-+		performance: performance-controller@11bc10 {
-+			compatible = "mediatek,cpufreq-hw";
-+			reg = <0 0x0011bc10 0 0x120>, <0 0x0011bd30 0 0x120>;
-+			#performance-domain-cells = <1>;
-+		};
-+
-+		gic: interrupt-controller@c000000 {
-+			compatible = "arm,gic-v3";
-+			#interrupt-cells = <4>;
-+			#address-cells = <2>;
-+			#size-cells = <2>;
-+			interrupt-parent = <&gic>;
-+			interrupt-controller;
-+			reg = <0 0xc000000 0 0x40000>, /* distributor */
-+			      <0 0xc040000 0 0x200000>; /* redistributor */
-+			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH 0>;
-+
-+			ppi-partitions {
-+				ppi_cluster0: interrupt-partition-0 {
-+					affinity = <&cpu0 &cpu1 &cpu2 &cpu3 &cpu4 &cpu5>;
-+				};
-+
-+				ppi_cluster1: interrupt-partition-1 {
-+					affinity = <&cpu6 &cpu7>;
-+				};
-+			};
-+		};
-+
-+		uart0: serial@11001000 {
-+			compatible = "mediatek,mt8189-uart", "mediatek,mt6577-uart";
-+			reg = <0 0x11001000 0 0x1000>;
-+			interrupts = <GIC_SPI 397 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&clk26m>, <&clk26m>;
-+			clock-names = "baud", "bus";
-+			status = "disabled";
-+		};
-+	};
-+};
--- 
-2.45.2
+[...]
+> >=20
+> > I guess you can use devm_kcalloc() and get rid of kfree() here.
+> >
+>=20
+> I forgot to answer to this in the previous revision. No devm can't be
+> used there available_pcs is just an array allocated for phylink_config.
+>=20
+> Phylink then copy the data in it and doesn't use it anymore hence it
+> just needs to be allocated here and doesn't need to stay till the driver
+> gets removed.
 
+I guess this is exactly the point. Since available_pcs is used just here and
+this is not a hot-path, I think the code would be simpler, but I do not have
+a strong opinion about it.
+
+>=20
+> > > +	if (!available_pcs)
+> > > +		return -ENOMEM;
+> > > +
+> > > +	err =3D fwnode_phylink_pcs_parse(dev_fwnode(&dev->dev), available_p=
+cs,
+> > > +				       &num_pcs);
+> > > +	if (err)
+> > > +		goto out;
+> > > +
+> > > +	port->phylink_config.available_pcs =3D available_pcs;
+> > > +	port->phylink_config.num_available_pcs =3D num_pcs;
+> > > +
+> > > +	__set_bit(PHY_INTERFACE_MODE_SGMII,
+> > > +		  port->phylink_config.supported_interfaces);
+> > > +	__set_bit(PHY_INTERFACE_MODE_1000BASEX,
+> > > +		  port->phylink_config.supported_interfaces);
+> > > +	__set_bit(PHY_INTERFACE_MODE_2500BASEX,
+> > > +		  port->phylink_config.supported_interfaces);
+> > > +	__set_bit(PHY_INTERFACE_MODE_USXGMII,
+> > > +		  port->phylink_config.supported_interfaces);
+> > > +
+> > > +	phy_interface_copy(port->phylink_config.pcs_interfaces,
+> > > +			   port->phylink_config.supported_interfaces);
+> > > +
+> > > +	phylink =3D phylink_create(&port->phylink_config,
+> > > +				 of_fwnode_handle(np),
+> > > +				 phy_mode, &airoha_phylink_ops);
+> > > +	if (IS_ERR(phylink)) {
+> > > +		err =3D PTR_ERR(phylink);
+> > > +		goto out;
+> > > +	}
+> > > +
+> > > +	port->phylink =3D phylink;
+> > > +out:
+> > > +	kfree(available_pcs);
+> > > +
+> > > +	return err;
+> > > +}
+> > > +
+> > >  static int airoha_alloc_gdm_port(struct airoha_eth *eth,
+> > >  				 struct device_node *np, int index)
+> > >  {
+> > > @@ -2873,7 +3004,23 @@ static int airoha_alloc_gdm_port(struct airoha=
+_eth *eth,
+> > >  	if (err)
+> > >  		return err;
+> > > =20
+> > > -	return register_netdev(dev);
+> > > +	if (airhoa_is_phy_external(port)) {
+> > > +		err =3D airoha_setup_phylink(dev);
+> >=20
+> > This will re-introduce the issue reported here:
+> > https://lore.kernel.org/netdev/5c94b9b3850f7f29ed653e2205325620df28c3ff=
+=2E1746715755.git.christophe.jaillet@wanadoo.fr/
+> >=20
+>=20
+> I'm confused about this. The suggestion wasn't that register_netdev
+> might fail and I need to destroy phylink? Or the linked patch was merged
+> and I need to rebase on top of net-next?
+
+what I mean here is if register_netdev() or airoha_setup_phylink() fails, we
+should free metadata_dst running airoha_metadata_dst_free() as pointed out =
+by
+Christophe. I think this path depends on Christophe's one.
+
+Regards,
+Lorenzo
+
+>=20
+> I didn't include that change to not cause conflicts but once it's merged
+> I will rebase and include that fix.
+>=20
+> > > +		if (err)
+> > > +			return err;
+> > > +	}
+> > > +
+> > > +	err =3D register_netdev(dev);
+> > > +	if (err)
+> > > +		goto free_phylink;
+> > > +
+> > > +	return 0;
+> > > +
+> > > +free_phylink:
+> > > +	if (airhoa_is_phy_external(port))
+> > > +		phylink_destroy(port->phylink);
+> > > +
+> > > +	return err;
+> > >  }
+> > > =20
+> > >  static int airoha_probe(struct platform_device *pdev)
+> > > @@ -2967,6 +3114,9 @@ static int airoha_probe(struct platform_device =
+*pdev)
+> > >  		struct airoha_gdm_port *port =3D eth->ports[i];
+> > > =20
+> > >  		if (port && port->dev->reg_state =3D=3D NETREG_REGISTERED) {
+> > > +			if (airhoa_is_phy_external(port))
+> > > +				phylink_destroy(port->phylink);
+> > > +
+> > >  			unregister_netdev(port->dev);
+> > >  			airoha_metadata_dst_free(port);
+> > >  		}
+> > > @@ -2994,6 +3144,9 @@ static void airoha_remove(struct platform_devic=
+e *pdev)
+> > >  			continue;
+> > > =20
+> > >  		airoha_dev_stop(port->dev);
+> > > +		if (airhoa_is_phy_external(port))
+> > > +			phylink_destroy(port->phylink);
+> > > +
+> > >  		unregister_netdev(port->dev);
+> > >  		airoha_metadata_dst_free(port);
+> > >  	}
+> > > diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/e=
+thernet/airoha/airoha_eth.h
+> > > index 53f39083a8b0..73a500474076 100644
+> > > --- a/drivers/net/ethernet/airoha/airoha_eth.h
+> > > +++ b/drivers/net/ethernet/airoha/airoha_eth.h
+> > > @@ -498,6 +498,9 @@ struct airoha_gdm_port {
+> > >  	struct net_device *dev;
+> > >  	int id;
+> > > =20
+> > > +	struct phylink *phylink;
+> > > +	struct phylink_config phylink_config;
+> > > +
+> > >  	struct airoha_hw_stats stats;
+> > > =20
+> > >  	DECLARE_BITMAP(qos_sq_bmap, AIROHA_NUM_QOS_CHANNELS);
+> > > diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/=
+ethernet/airoha/airoha_regs.h
+> > > index d931530fc96f..54f7079b28b0 100644
+> > > --- a/drivers/net/ethernet/airoha/airoha_regs.h
+> > > +++ b/drivers/net/ethernet/airoha/airoha_regs.h
+> > > @@ -357,6 +357,18 @@
+> > >  #define IP_FRAGMENT_PORT_MASK		GENMASK(8, 5)
+> > >  #define IP_FRAGMENT_NBQ_MASK		GENMASK(4, 0)
+> > > =20
+> > > +#define REG_GDMA4_TMBI_FRAG		0x2028
+> > > +#define GDMA4_SGMII1_TX_WEIGHT_MASK	GENMASK(31, 26)
+> > > +#define GDMA4_SGMII1_TX_FRAG_SIZE_MASK	GENMASK(25, 16)
+> > > +#define GDMA4_SGMII0_TX_WEIGHT_MASK	GENMASK(15, 10)
+> > > +#define GDMA4_SGMII0_TX_FRAG_SIZE_MASK	GENMASK(9, 0)
+> > > +
+> > > +#define REG_GDMA4_RMBI_FRAG		0x202c
+> > > +#define GDMA4_SGMII1_RX_WEIGHT_MASK	GENMASK(31, 26)
+> > > +#define GDMA4_SGMII1_RX_FRAG_SIZE_MASK	GENMASK(25, 16)
+> > > +#define GDMA4_SGMII0_RX_WEIGHT_MASK	GENMASK(15, 10)
+> > > +#define GDMA4_SGMII0_RX_FRAG_SIZE_MASK	GENMASK(9, 0)
+> > > +
+> > >  #define REG_MC_VLAN_EN			0x2100
+> > >  #define MC_VLAN_EN_MASK			BIT(0)
+> > > =20
+> > > --=20
+> > > 2.48.1
+> > >=20
+>=20
+>=20
+>=20
+> --=20
+> 	Ansuel
+
+--qLFnU5peW7PO9M+h
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaCHvPQAKCRA6cBh0uS2t
+rCKKAQDoo1Ic7QM4rc/5oU7UWhtoTcWdR7rS8tHWdV+0UgkdMgEA3gSouVvqUpuL
+PLyVAXcTL1u29P6WuHKZvkQmExHFyAU=
+=1tGU
+-----END PGP SIGNATURE-----
+
+--qLFnU5peW7PO9M+h--
 
