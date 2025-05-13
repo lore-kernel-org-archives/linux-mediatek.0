@@ -4,80 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6723C3ABC9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 May 2025 05:24:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86932C3ABC3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 May 2025 08:04:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZNjQZgOSNhu4l9dCJEHCCk/R9Oh6QVo+GQqll8/eNMU=; b=lQm4E4F7kvrYvpJPok9JTz1aI7
-	4XmCOxDOHPVWdPe/pkZmzPSV3mhnd/q1JJkEYis9OvYcifOlfmlCwAngjTKyE1k01lA1rKGxr3+b3
-	0s+qBRoo+WUBcxLEStS8oHkZr3cqWRE6eijX4qJYAGvdUAyMMQ+5vR0Si2/CtcNdCAvoknvvxqz3s
-	WOhAdF1jizmBiod59YnPLTCwS+5ovfFP0uTZOFSkaWsPVEaIvA9Bsn8CHi9sXYDFtgzQBbG3kR1Vm
-	MJropXS+tvh7ueg42xxUPHCGgCuIGDwCTMI+SM/VlqfdsSQXjfuRfeBVOn9S+uPKpLEcglcpQ6rF/
-	bfjDZLRg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=jxb0oDMobd7GaIcoqojTSF8ZoNcoVg4kM8ohJkoHKb8=; b=S2yg8ci/Yo31klWbpW5xUG1MlG
+	ytecZsCNK6Uan63pML4eddTy4LDHqmYpOQWXvC5fK/t9fHEeG86oAePxVfrFAyizZ7qyIie0l5M1F
+	5ia6DPjSUXWclIhFvUBkGAxuD0WVd2tDR6EKehA+Hd2OkfCm+8P4LGCvrmWDCqp/tQt+nolP+e9WD
+	vAS2kgTAq3jeWuhkxuxkQDFOrketYCY3wVQfkHkbZRk+V5EOoYXqpOPO57qHw0cHjDfKyNeTZhQLJ
+	p0BAH86GTu+gEh+IS6WwXYsTQGXbNtCc/owsZMS1r0/+5yWrIjicgYVhnqbPqeIdBnmbab8EhdAlJ
+	YLDa1o3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEi7b-0000000BNqj-2ioo;
-	Tue, 13 May 2025 05:24:07 +0000
-Received: from mgamail.intel.com ([192.198.163.10])
+	id 1uEkcO-0000000Biet-2fmU;
+	Tue, 13 May 2025 08:04:04 +0000
+Received: from mail.novaplan.pl ([51.195.118.1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEi5Z-0000000BNYS-3hEp;
-	Tue, 13 May 2025 05:22:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1747113722; x=1778649722;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=0EkDH2Lu1hmxjJBI+/nOcLCQ85AI1IE323FloCtl0z8=;
-  b=gwgPIRHWCFsUgAClnqWyOzf3BJ+2ZLTa9IabYgMMz+ZljtoajZaTbY/Z
-   ErC3keVx90kzrT3HgD9ENmnNxr534CGHtAqK6zJOMkgyney+0HNHdXbQ+
-   8rwG1dJC0NnyjzPfF9JjeBba4+Zdg4L0ummBmxVvFfu/CG7XCC8CGZaK4
-   YM2fxUsfRpiiNQwCCbzIoMDTWKskjxsLnWuUUgKebkB1+Lkh7fIjOnXBd
-   6NqQD66hix/WwGRCxHp9oHRqeaYGNJf5JLuffuQsjI00Uiw30BoKYje5s
-   cYxQei15H6nzNpGyFBWy7BZ2HFYSUG/zpnV8IFTnfrW8IwlWSXbsdy8MZ
-   A==;
-X-CSE-ConnectionGUID: GLU31vVESQK1IX1qyJs0jQ==
-X-CSE-MsgGUID: h/O4sdIBSseVpG2zc4jAjg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11431"; a="60277355"
-X-IronPort-AV: E=Sophos;i="6.15,284,1739865600"; 
-   d="scan'208";a="60277355"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
-  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 May 2025 22:22:01 -0700
-X-CSE-ConnectionGUID: 2yRa1fBCTr+KBaBKRRvjHQ==
-X-CSE-MsgGUID: jda8xgckSE+g0j+r2743vw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,284,1739865600"; 
-   d="scan'208";a="138552385"
-Received: from mev-dev.igk.intel.com ([10.237.112.144])
-  by fmviesa009-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 May 2025 22:21:57 -0700
-Date: Tue, 13 May 2025 07:21:25 +0200
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net] net: ethernet: mtk_eth_soc: fix typo for declaration
- MT7988 ESW capability
-Message-ID: <aCLW1ZAVQvs8fkUm@mev-dev.igk.intel.com>
-References: <b8b37f409d1280fad9c4d32521e6207f63cd3213.1747110258.git.daniel@makrotopia.org>
+	id 1uEkcL-0000000BidQ-0DA7
+	for linux-mediatek@lists.infradead.org;
+	Tue, 13 May 2025 08:04:03 +0000
+Received: by mail.novaplan.pl (Postfix, from userid 1002)
+	id A7463A4995; Tue, 13 May 2025 10:00:33 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=novaplan.pl; s=mail;
+	t=1747123240; bh=jxb0oDMobd7GaIcoqojTSF8ZoNcoVg4kM8ohJkoHKb8=;
+	h=Date:From:To:Subject:From;
+	b=Y8n6SKHbetKWW/qCQm/rmnA1cPEY4jkrnspBLIizumsFISzNh1FFDaSgRKOU7Gqt9
+	 UtbocUUe9FqnkAY+LK405I5A3sU1JTBPJz4OBPaV2wBDhI4IVWIVjdZhrltRhQG0Bv
+	 z9JsR3RBdJlJVuCGJwHWD5pREatpvpVrjZcsreJxnSKuz+pkbbtzjcw5WNbrMN3byD
+	 kWDX7QRE297PIbPwsbfe0lrQmQXqlOkWTvdFCi1Fc70UsL+QtHjLuxjFtjCYiyFZ+I
+	 hDIvJSve87qbuaHUtuGYzi9z8yodfwgtGXbuCVZybKNk/RCZ3tU74SNUrrYuM77vd0
+	 VMSQ5r6cCWw9A==
+Received: by mail.novaplan.pl for <linux-mediatek@lists.infradead.org>; Tue, 13 May 2025 08:00:24 GMT
+Message-ID: <20250513084500-0.1.li.1wfdx.0.ip106es90y@novaplan.pl>
+Date: Tue, 13 May 2025 08:00:24 GMT
+From: "Adrian Liszka" <adrian.liszka@novaplan.pl>
+To: <linux-mediatek@lists.infradead.org>
+Subject: =?UTF-8?Q?Prosz=C4=99_o_kontakt?=
+X-Mailer: mail.novaplan.pl
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <b8b37f409d1280fad9c4d32521e6207f63cd3213.1747110258.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250512_222201_934381_F4EEF076 
-X-CRM114-Status: GOOD (  19.06  )
+X-CRM114-CacheID: sfid-20250513_010401_778418_337F1C90 
+X-CRM114-Status: UNSURE (   0.05  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,38 +66,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 13, 2025 at 05:27:30AM +0100, Daniel Golle wrote:
-> From: Bo-Cun Chen <bc-bocun.chen@mediatek.com>
-> 
-> Since MTK_ESW_BIT is a bit number rather than a bitmap, it causes
-> MTK_HAS_CAPS to produce incorrect results. This leads to the ETH
-> driver not declaring MAC capabilities correctly for the MT7988 ESW.
-> 
-> Fixes: 445eb6448ed3 ("net: ethernet: mtk_eth_soc: add basic support for MT7988 SoC")
-> Signed-off-by: Bo-Cun Chen <bc-bocun.chen@mediatek.com>
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> ---
->  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> index 22a532695fb0..6c92072b4c28 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> @@ -4748,7 +4748,7 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
->  	}
->  
->  	if (mtk_is_netsys_v3_or_greater(mac->hw) &&
-> -	    MTK_HAS_CAPS(mac->hw->soc->caps, MTK_ESW_BIT) &&
-> +	    MTK_HAS_CAPS(mac->hw->soc->caps, MTK_ESW) &&
->  	    id == MTK_GMAC1_ID) {
->  		mac->phylink_config.mac_capabilities = MAC_ASYM_PAUSE |
->  						       MAC_SYM_PAUSE |
+Dzie=C5=84 dobry,
 
-Looks like other usage of MTK_HAS_CAPS is fine, thanks for fixing.
+Czy jest mo=C5=BCliwo=C5=9B=C4=87 nawi=C4=85zania wsp=C3=B3=C5=82pracy z =
+Pa=C5=84stwem?
 
-Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Z ch=C4=99ci=C4=85 porozmawiam z osob=C4=85 zajmuj=C4=85c=C4=85 si=C4=99 =
+dzia=C5=82aniami zwi=C4=85zanymi ze sprzeda=C5=BC=C4=85.
 
-> -- 
-> 2.49.0
+Pomagamy skutecznie pozyskiwa=C4=87 nowych klient=C3=B3w.
+
+Zapraszam do kontaktu.
+
+
+Z pozdrowieniami
+Adrian Liszka
 
