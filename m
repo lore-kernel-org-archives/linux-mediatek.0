@@ -4,63 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C220C3ABC3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 May 2025 15:55:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C968FC3ABC3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 May 2025 16:02:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xuqyAAuoDMtQl7aHc6ogdkm/UKwvvmnE5+dcBd3QudM=; b=ra3998hgLFDowuYvGBqn6XaqmC
-	p8264iPoD9mvKxMB/tAwtQWAy1RyRpUrS8vs2WhGkJbw12VKLsfTIENU8QVVBYI+un7Wi3yQ9roPn
-	SV5tdTl47UWG0HvAYDGbDIlp/rXbVkVYfH/7w6ZMY65m4gzXdbBI/b145W0xvBaANfNY4yk9xjNAy
-	cmxIJ/yWz3YMTyNUTVT9Jw3YilgX7rSWnVhRtXeUAesDmQuQsztS3Bl65HYiFh9qeJnxMzjxw1qZo
-	uxRJM00W8kDSdbqobx1coNdcxImsihJ/XjguQxZG9ON4sHb6AY5KvPIWoXS77g8IX+8btnFaSRQaz
-	Eo8lHecA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5tvjBN6sLqRna3oIEOaD/F1aRnQQUktpzOF8V/AnkcQ=; b=uaRYFx4211uEezTuECW08HmLr2
+	+uMc92WnWV8LYMjmSh2PQhC+Kd1ZIAKku8oySzFZUPUEF/mvQUipW+fHvNqytVioPTUR8QrPcPt79
+	HnyjKOL86CPUHXxQAr/TFzhwU7h9EO05/iNvRogaOhvRYPl9SiB4y9HUAELh7oWD+kXVWQIzroLWV
+	7hRaxyBxOKCsHRE4wENwY5DprnN7ARaHkQFVanNw40r3m1EYxw0NKYl3lGqQzwsBh4070ZfNw/MMp
+	i1CQeONX29Dgfp6BJ1bp7kq7k7y9VMU8jZEGcnS08V+ZAnyRzzHuZxv3Cad80ayrwfSLvkOUL6U9W
+	sXQHjeQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEryh-0000000CrCp-2BJj;
-	Tue, 13 May 2025 15:55:35 +0000
-Received: from mail.cjdns.fr ([5.135.140.105])
+	id 1uEs58-0000000CrxK-1CwK;
+	Tue, 13 May 2025 16:02:14 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uErwg-0000000Cqt1-2UVl
-	for linux-mediatek@lists.infradead.org;
-	Tue, 13 May 2025 15:53:31 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id CBEC8135653;
-	Tue, 13 May 2025 17:53:25 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
-	t=1747151608; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=xuqyAAuoDMtQl7aHc6ogdkm/UKwvvmnE5+dcBd3QudM=;
-	b=IkMrIhBnJaCErPFw1yEBeZgaFvMO39PNrFDmmXYjXNLBaKjIzoJtB8wGIinVp1i4Yj3QH0
-	/aKR23//abEyMb0eAe/tWrVJ9qjo4gGwHrsE1QahL6HoGVYmXqTGGFFAMoDMFGu12nmghF
-	su6eAIAPrpv7DR9A/r/4SGsvKzJCnA2KIfQWH7vaQwV318LY9HfR80aCgZcvN9Sl/+bjLb
-	cOiPpxnWB2n+tBdvSXOgVW8dyDg6EGzYk7blIC1oMCL0Ux/+NQELPeIXMzFSicj4lQlGtI
-	Gq5waCU93MqwSSpb/jHufZOEqFgphhPRotzJOkuxqJfkvDsXP+Kq9+RsrtmM4Q==
-Message-ID: <927c8a59-ac1b-49dc-b889-22c3a65bb49c@cjdns.fr>
-Date: Tue, 13 May 2025 17:53:24 +0200
+	id 1uEs30-0000000CrkM-3hEf;
+	Tue, 13 May 2025 16:00:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1747152000;
+	bh=mohnBTgRq5hJWAWvTrGhcgzyELjLPTMvvBK794EokQc=;
+	h=From:Date:Subject:To:Cc:From;
+	b=T+6grY7a9XfRcjaFcnPMsUcs5C6Z9b3mtTVCsTePn04YoYMG7E/xf+SCeJCuhc1W6
+	 /WgbF5sNpeO7qBqxBwcJ6rGGg5eNyuH7KE3NaiesSpscGRuujV7Gld6nvZL7I2HW39
+	 FM6ANw7tULThKMndMSgmA4059gGj8joRhOuaHINIXVS8bXE60O13h90/MIxcUc3r7M
+	 Y+9xaEeSgUtazEZGGjnVBrZqFxXILE2gAiG/GCF0TufU1pIhkTE7ypKDIQ+uZvQNkE
+	 QBJOyZT1taAT/VIFt7jzNqqU9+8/2Z0JR03joJcc9CtFPni3JLaCEuZlMyhmoT/NyL
+	 b+eca/gbUm5iw==
+Received: from [192.168.1.63] (unknown [70.107.117.78])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7700217E0858;
+	Tue, 13 May 2025 17:59:58 +0200 (CEST)
+From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Date: Tue, 13 May 2025 11:59:53 -0400
+Subject: [PATCH] arm64: dts: mediatek: mt8395-genio-1200-evk: Describe CPU
+ supplies
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird Beta
-Subject: Re: [PATCH v5 0/7] Add EcoNet EN751221 MIPS platform support
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: linux-mips@vger.kernel.org, tglx@linutronix.de, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, tsbogend@alpha.franken.de,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- benjamin.larsson@genexis.eu, linux-mediatek@lists.infradead.org
-References: <20250507134500.390547-1-cjd@cjdns.fr>
- <aCNWM5Xq7wnHVCrc@mai.linaro.org>
- <45166de2-8504-484d-90f6-6ef97c650b61@cjdns.fr>
- <aCNkmCJK1wOLGmgy@mai.linaro.org>
-Content-Language: en-US
-From: Caleb James DeLisle <cjd@cjdns.fr>
-In-Reply-To: <aCNkmCJK1wOLGmgy@mai.linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Last-TLS-Session-Version: TLSv1.3
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20250513-genio-1200-evk-cpu-supplies-v1-1-6f0066bb93db@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAHhsI2gC/x3MQQqAIBAAwK/EnltYNaH6SnQI22opTJQkiP6ed
+ JzLPJA4CifoqwciZ0ly+gJVV+C2ya+MMheDJm3JKoMrezlRaSLkvKMLF6YrhKMk2LrGWKfJzG0
+ HZQiRF7n/fRjf9wNg0uZxbQAAAA==
+X-Change-ID: 20250513-genio-1200-evk-cpu-supplies-8c435c203d89
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Macpaul Lin <macpaul.lin@mediatek.com>, Ben Lok <ben.lok@mediatek.com>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250513_085330_829423_476CC8EF 
-X-CRM114-Status: GOOD (  15.73  )
+X-CRM114-CacheID: sfid-20250513_090003_076997_F7B5E332 
+X-CRM114-Status: UNSURE (   9.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,62 +83,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+The Genio 1200 EVK board has the big and little CPU clusters fed by the
+same regulators as MT8195-Cherry boards, so describe them in the same
+way as commit 17b33dd9e4a3 ("arm64: dts: mediatek: cherry: Describe CPU
+supplies").
 
-On 13/05/2025 17:26, Daniel Lezcano wrote:
-> On Tue, May 13, 2025 at 04:31:05PM +0200, Caleb James DeLisle wrote:
->> On 13/05/2025 16:24, Daniel Lezcano wrote:
->>> On Wed, May 07, 2025 at 01:44:53PM +0000, Caleb James DeLisle wrote:
->>>> EcoNet MIPS SoCs are big endian machines based on 34Kc and 1004Kc
->>>> processors. They are found in xDSL and xPON modems, and contain PCM
->>>> (VoIP), Ethernet, USB, GPIO, I2C, SPI (Flash), UART, and PCIe.
->>>>
->>>> The EcoNet MIPS SoCs are divided broadly into two families, the
->>>> EN751221 family based on the 34Kc, and the EN751627 family based on
->>>> the 1004Kc. Individual SoCs within a family are very similar, only
->>>> with different peripherals.
->>>>
->>>> This patchset adds basic "boots to a console" support for the EN751221
->>>> family and adds SmartFiber XP8421-B, a low cost commercially available
->>>> board that is useful for testing and development.
->>>>
->>>> Note that Airoha (AN7523, AN7581) is similar to EcoNet in terms of
->>>> peripherals, and for historical reasons Airoha chips are sometimes
->>>> referred to with the EN75xx prefix. However this is a different
->>>> platform because Airoha chips are ARM based.
->>>>
->>>> This patchset is against mips-next.
->>>>
->>>> v4 -> v5
->>>> * 2/7 clocksource/drivers: Add EcoNet Timer HPT driver:
->>>>     * Improve explanation of HPT timer in changelog
->>>>     * Move pr_info to pr_debug per recommendation
->>>>     * Remove pointless debug on spurious interrupt
->>>>     * Small code-style change
->>> Shall I pick the clocksource + bindings changes through my tree ?
->>>
->> I'm new here so I don't know what that means for the merges which
->> will happen later, but I don't see any reason to do otherwise.
-> The series introduces a new platform. The patches are touching
-> different susystems managed by different maintainers.
->
-> Usually, the changes are per subsystem, except when they are
-> interdependant.
->
-> Here you can choose to merge all the patches through the mips tree or
-> let the different maintainers to pick the changes related to the
-> subsystems they handle. You should clarify that in the cover
-> letter. If you choose the first alternative, then before merging the
-> changes, all maintainer should have blessed the patches with their
-> acked-by.
->
-Thank you for the explanation, this patchset has already started to be
-taken piece-wise, and the only dependency that comes to mind
-is the econet vendor prefix which Rob Herring took few weeks ago.
+This prevents the system from hanging during boot in the case that the
+cpufreq-mediatek-hw driver tries to probe before the drivers for the
+regulators have probed (which happens when using the current defconfig).
 
-With that said, I see no reason not to continue taking it piece-wise.
+Fixes: f2b543a191b6 ("arm64: dts: mediatek: add device-tree for Genio 1200 EVK board")
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+ .../boot/dts/mediatek/mt8395-genio-1200-evk.dts    | 32 ++++++++++++++++++++++
+ 1 file changed, 32 insertions(+)
 
-Thanks,
+diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+index be5e5f339e811728e91b1ffec45ada25f9b0208b..a71f1b70b0fd61792ac29e9568c30f723ed7c162 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
+@@ -179,6 +179,38 @@ wifi_fixed_3v3: regulator-2 {
+ 	};
+ };
+ 
++&cpu0 {
++	cpu-supply = <&mt6359_vcore_buck_reg>;
++};
++
++&cpu1 {
++	cpu-supply = <&mt6359_vcore_buck_reg>;
++};
++
++&cpu2 {
++	cpu-supply = <&mt6359_vcore_buck_reg>;
++};
++
++&cpu3 {
++	cpu-supply = <&mt6359_vcore_buck_reg>;
++};
++
++&cpu4 {
++	cpu-supply = <&mt6315_6_vbuck1>;
++};
++
++&cpu5 {
++	cpu-supply = <&mt6315_6_vbuck1>;
++};
++
++&cpu6 {
++	cpu-supply = <&mt6315_6_vbuck1>;
++};
++
++&cpu7 {
++	cpu-supply = <&mt6315_6_vbuck1>;
++};
++
+ &disp_pwm0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&disp_pwm0_pins>;
 
-Caleb
+---
+base-commit: edef457004774e598fc4c1b7d1d4f0bcd9d0bb30
+change-id: 20250513-genio-1200-evk-cpu-supplies-8c435c203d89
+
+Best regards,
+-- 
+Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
 
