@@ -4,52 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B01C6C3ABC3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 May 2025 19:35:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7B46C3ABC3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 May 2025 19:38:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6RRf6RpbZFMGDm/skMJjOUMF1/wLcxLuxgWCPrHq/74=; b=wQtbshj2HOlQdGiVAf3/FLWhYs
-	M3AhSTfb/p+p7QhX29eKnwTum+0zG7ZMPDt1bpH7cU1253zQoWVIBjHPBnRPLzRMu31xK70R8ZgNu
-	bn35ZPwaQtmOaMKcbYi7SQWKoBymbBAtwO6zDaBDmDaYtlfM8rPltAJ9wjeDVuM3L49+t3xMKncKi
-	fsKInpmC5+QhQL2rhX7TfBBCdMIw44qqFZUS7ydSWmjSJf6TNvZk5rNOvumb6VpVA+m2jEdXm00t+
-	LHFpBPl81hWDxzVkHNLuHTrWxVJQlY/Mqtt1M32BP5xJ2MBnU2miilmocd0TyOk91E+59ulA675K5
-	4RBqV63w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MXqgYnE3AepAu7OCHe6xShNfWSkRf6wZdbffLDc2GQI=; b=ehuFLVHVj/xQQIySdv8iQ9IIKY
+	AefoGk2xJFS3P2C6lVOxGe2Y84RmOT/GoJnlIXIvNw8lHWFTX2gaz4Y+ixzrVSaFFsfDzPA+P9S94
+	auf81SLAIfC8DABRPIPhn4ahcU18YQbCfh55Szq0EWF/T/bPgumHUmrMyIRQXBx0YFQ8rHpSa1q8X
+	jyOJR6+RRG/qoWMKH9E2tRcXRZYL0TiI34fAhdyDtpLKtFSLRHT5ndCiMSTA+JotHjqq8U15ZR3Q5
+	8HKm5p1+fB2WD3qVOTegNL07FtGWEfofAM7sYegDo6d/EkPX0l3FVTLTjumNVfQTvRHVHHWtAXcEw
+	YgC+VNIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEvPu-0000000DO0f-3OyH;
-	Tue, 13 May 2025 19:35:54 +0000
-Received: from elvis.franken.de ([193.175.24.41])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEv9o-0000000DLtp-45Qb
+	id 1uEvRy-0000000DOAi-3qLJ;
+	Tue, 13 May 2025 19:38:02 +0000
+Received: from out-178.mta0.migadu.com ([2001:41d0:1004:224b::b2])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uEvEJ-0000000DMRE-3crn
 	for linux-mediatek@lists.infradead.org;
-	Tue, 13 May 2025 19:19:18 +0000
-Received: from uucp by elvis.franken.de with local-rmail (Exim 3.36 #1)
-	id 1uEv9i-0002eV-00; Tue, 13 May 2025 21:19:10 +0200
-Received: by alpha.franken.de (Postfix, from userid 1000)
-	id 45646C0895; Tue, 13 May 2025 17:12:23 +0200 (CEST)
-Date: Tue, 13 May 2025 17:12:23 +0200
-From: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: Caleb James DeLisle <cjd@cjdns.fr>, linux-mips@vger.kernel.org,
-	tglx@linutronix.de, robh@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, benjamin.larsson@genexis.eu,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v5 0/7] Add EcoNet EN751221 MIPS platform support
-Message-ID: <aCNhVw7oMRhHQNq_@alpha.franken.de>
-References: <20250507134500.390547-1-cjd@cjdns.fr>
- <aCNWM5Xq7wnHVCrc@mai.linaro.org>
+	Tue, 13 May 2025 19:23:57 +0000
+Message-ID: <7b50d202-e7f6-41cb-b868-6e6b33d4a2b9@linux.dev>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+	t=1747164223;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=MXqgYnE3AepAu7OCHe6xShNfWSkRf6wZdbffLDc2GQI=;
+	b=VtZdYZuFJN9nYBtFV5UQzISBic9XzYAiNeQg++rh/pXLuhJcMYllZu/O2Q6GMMAQ4HuCEd
+	fGuZJB6B1v4oafU0j7h8i/qH0U8a7kaLqNm+j8GElY07h0yssh4/rb36IGjQjpJoS079Yu
+	kWKljet5kNrkLMPVphCd9wOA3iwyNO8=
+Date: Tue, 13 May 2025 15:23:32 -0400
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <aCNWM5Xq7wnHVCrc@mai.linaro.org>
+Subject: Re: [net-next PATCH v4 03/11] net: phylink: introduce internal
+ phylink PCS handling
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Christian Marangi <ansuelsmth@gmail.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Heiner Kallweit <hkallweit1@gmail.com>, Russell King
+ <linux@armlinux.org.uk>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Nathan Chancellor <nathan@kernel.org>,
+ Nick Desaulniers <nick.desaulniers+lkml@gmail.com>,
+ Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, llvm@lists.linux.dev
+References: <20250511201250.3789083-1-ansuelsmth@gmail.com>
+ <20250511201250.3789083-4-ansuelsmth@gmail.com>
+ <5d004048-ef8f-42ad-8f17-d1e4d495f57f@linux.dev>
+ <aCOXfw-krDZo9phk@makrotopia.org>
+Content-Language: en-US
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Sean Anderson <sean.anderson@linux.dev>
+In-Reply-To: <aCOXfw-krDZo9phk@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250513_121917_164686_7FD6F82B 
-X-CRM114-Status: GOOD (  17.98  )
+X-CRM114-CacheID: sfid-20250513_122356_041158_A758AA6B 
+X-CRM114-Status: GOOD (  39.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,42 +85,131 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 13, 2025 at 04:24:51PM +0200, Daniel Lezcano wrote:
-> On Wed, May 07, 2025 at 01:44:53PM +0000, Caleb James DeLisle wrote:
-> > EcoNet MIPS SoCs are big endian machines based on 34Kc and 1004Kc
-> > processors. They are found in xDSL and xPON modems, and contain PCM
-> > (VoIP), Ethernet, USB, GPIO, I2C, SPI (Flash), UART, and PCIe.
-> > 
-> > The EcoNet MIPS SoCs are divided broadly into two families, the
-> > EN751221 family based on the 34Kc, and the EN751627 family based on
-> > the 1004Kc. Individual SoCs within a family are very similar, only
-> > with different peripherals.
-> > 
-> > This patchset adds basic "boots to a console" support for the EN751221
-> > family and adds SmartFiber XP8421-B, a low cost commercially available
-> > board that is useful for testing and development.
-> > 
-> > Note that Airoha (AN7523, AN7581) is similar to EcoNet in terms of
-> > peripherals, and for historical reasons Airoha chips are sometimes
-> > referred to with the EN75xx prefix. However this is a different
-> > platform because Airoha chips are ARM based.
-> > 
-> > This patchset is against mips-next.
-> > 
-> > v4 -> v5
-> > * 2/7 clocksource/drivers: Add EcoNet Timer HPT driver:
-> >   * Improve explanation of HPT timer in changelog
-> >   * Move pr_info to pr_debug per recommendation
-> >   * Remove pointless debug on spurious interrupt
-> >   * Small code-style change
+On 5/13/25 15:03, Daniel Golle wrote:
+> On Tue, May 13, 2025 at 02:18:02PM -0400, Sean Anderson wrote:
+>> On 5/11/25 16:12, Christian Marangi wrote:
+>> > Introduce internal handling of PCS for phylink. This is an alternative
+>> > to .mac_select_pcs that moves the selection logic of the PCS entirely to
+>> > phylink with the usage of the supported_interface value in the PCS
+>> > struct.
+>> > 
+>> > MAC should now provide an array of available PCS in phylink_config in
+>> > .available_pcs and fill the .num_available_pcs with the number of
+>> > elements in the array. MAC should also define a new bitmap,
+>> > pcs_interfaces, in phylink_config to define for what interface mode a
+>> > dedicated PCS is required.
+>> > 
+>> > On phylink_create() this array is parsed and a linked list of PCS is
+>> > created based on the PCS passed in phylink_config.
+>> > Also the supported_interface value in phylink struct is updated with the
+>> > new supported_interface from the provided PCS.
+>> > 
+>> > On phylink_start() every PCS in phylink PCS list gets attached to the
+>> > phylink instance. This is done by setting the phylink value in
+>> > phylink_pcs struct to the phylink instance.
+>> > 
+>> > On phylink_stop(), every PCS in phylink PCS list is detached from the
+>> > phylink instance. This is done by setting the phylink value in
+>> > phylink_pcs struct to NULL.
+>> > 
+>> > phylink_validate_mac_and_pcs(), phylink_major_config() and
+>> > phylink_inband_caps() are updated to support this new implementation
+>> > with the PCS list stored in phylink.
+>> > 
+>> > They will make use of phylink_validate_pcs_interface() that will loop
+>> > for every PCS in the phylink PCS available list and find one that supports
+>> > the passed interface.
+>> > 
+>> > phylink_validate_pcs_interface() applies the same logic of .mac_select_pcs
+>> > where if a supported_interface value is not set for the PCS struct, then
+>> > it's assumed every interface is supported.
+>> > 
+>> > A MAC is required to implement either a .mac_select_pcs or make use of
+>> > the PCS list implementation. Implementing both will result in a fail
+>> > on MAC/PCS validation.
+>> > 
+>> > phylink value in phylink_pcs struct with this implementation is used to
+>> > track from PCS side when it's attached to a phylink instance. PCS driver
+>> > will make use of this information to correctly detach from a phylink
+>> > instance if needed.
+>> > 
+>> > The .mac_select_pcs implementation is not changed but it's expected that
+>> > every MAC driver migrates to the new implementation to later deprecate
+>> > and remove .mac_select_pcs.
+>> 
+>> This introduces a completely parallel PCS selection system used by a
+>> single driver. I don't think we want the maintenance burden and
+>> complexity of two systems in perpetuity. So what is your plan for
+>> conversion of existing drivers to your new system?
 > 
-> Shall I pick the clocksource + bindings changes through my tree ?
+> Moving functionality duplicated in many drivers to a common shared
+> implementation is nothing unsual.
+> 
+> While this series proposes the new mechanism for Airoha SoC, they are
+> immediately useful (and long awaited) also for MediaTek and Qualcomm
+> SoCs.
+>
+> Also in the series you posted at least the macb driver (in "[net-next
+> PATCH v4 09/11] net: macb: Move most of mac_config to  mac_prepare")
+> would benefit from that shared implementation, as all it does in it's
+> mac_select_pcs is selecting the PCS by a given phy_interface_t, which is
+> what most Ethernet drivers which use more than one PCS are doing in
+> their implementatio of mac_select_pcs().
 
-please do, I'll take the remaining patches.
+I generally agree. The vast majority of select_pcs implementations just
+determine the PCS based on the interface. But I don't think this is the
+right approach. This touches a lot of other areas of the code and
+reimplements much of the existing phylink machinery.
 
-Thomas.
+I would prefer something more self-contained like
 
--- 
-Crap can work. Given enough thrust pigs will fly, but it's not necessarily a
-good idea.                                                [ RFC1925, 2.3 ]
+phylink_generic_select_pcs(phylink, interface)
+{
+	for_each(pcs : phylink->available_pcss) {
+		if (test_bit(pcs->supported, interface))
+			return pcs;
+	}
+
+	return NULL;
+}
+
+which could be dropped into existing implementations in an incremental
+manner.
+
+I think the inclusion of PCS lifetime management in this patch
+complicates things significantly.
+
+> Also axienet_mac_select_pcs() from "[net-next PATCH v4 08/11] net:
+> axienet: Convert to use PCS subsystem" could obviously very easily be
+> mirated to use the phylink-internal handling of PCS selection.
+
+But the bulk of the patch remains. We still have to add the external PCS
+lookup. There still needs to be another case in mac_config to mux the
+PCS correctly. And we would need to add some code to create a list of
+PCSs. I don't know whether we win on the balance.
+
+>> 
+>> DSA drivers typically have different PCSs for each port. At the moment
+>> these are selected with mac_select_pcs, allowing the use of a single
+>> phylink_config for each port. If you need to pass PCSs through
+>> phylink_config then each port will needs its own config. This may prove
+>> difficult to integrate with the existing API.
+> 
+> This might be a misunderstanding. Also here there is only a single
+> phylink_config for each MAC or DSA port,
+
+My point is that while this is the case at the moment, it would not be
+the case with a "generic" select pcs. You would need to modify the
+config for each port to ensure the right PCSs are passed in.
+
+> just instead of having many
+> more or less identical implementations of .mac_select_pcs, this
+> functionality is moved into phylink. As a nice side-effect that also
+> makes managing the life-cycle of the PCS more easy, so we won't need all
+> the wrappers for all the PCS OPs.
+
+I think the wrapper approach is very obviously correct. This way has me
+worried about exciting new concurrency bugs.
+
+--Sean
 
