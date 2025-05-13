@@ -4,219 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 543EFC3ABC3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 May 2025 19:02:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B70BBC3ABC3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 May 2025 19:04:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q+qQ9O5ym1wAc5h6RbmV7d35GQOnYJP8Zj6JiTJClI4=; b=lHxNuyyFn7+vUKF1PgoHJTgCLy
-	+IWkunSRVcYk06UVASj9tiKYzMfMD0Qtv1xe02IM7uQmnROehG36wgw36b5n3ShXy/znsJHTS1YCa
-	4GHznJhEOf7grOGGyN3522yWvOG+ZzHtxTD6XgBVk19Z6SRXxwXLSvjfMd7uF2vp0xFD2XQqJCk3O
-	B9EWt+o3Hp91V3FJlkfePbNBWPbm3wjMnJTaaf/otu5KMf6NZRWD+c+0wfSus8epVWn/CdCSPtioy
-	LeKszvNyHtgczs9rywWb9AD1FSwrRMfZxx2VlvETsDoLngs8dAMspaBMyXbL3eljhmQxMCwyRmWWH
-	Bp4E2WVA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qSW4H/9oiED8YuvwUCwK8tljzzdMC0PFt3czJd30uy4=; b=R8RC2KrXJybUTWiY9N2MOVWiik
+	jDzBtgwTmZsbEoLlIy2uXcAYDYQxBhw4qlfm5OgGgjbwpUvX+otjUR44bfwRrk843dtfmsn7Xrhjw
+	ZeLUMY3Rc8Q5J73Aim2vPzRYuO8o8Wp6hzlnyzjYK290ar5dArPifyZDWwCzJyYqkVfah06cW62tH
+	rVuB/1z5T4crdkRdoq75biV6aJDeZb0AMSH6LSfn3ol9yc9Q51r3AVjuAZ3pWinhq/2G71NH8J8qm
+	38P3qSziqP/lYVG3Jd6hcusFZ/XtP02PZKTs4oF6ljYNr2ISQc00xOrUNxwkqR/jXs1qpJjcK27dY
+	uzp+6+4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEutH-0000000DJkW-19E9;
-	Tue, 13 May 2025 19:02:11 +0000
-Received: from mail-westeuropeazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c201::7] helo=AM0PR02CU008.outbound.protection.outlook.com)
+	id 1uEuvV-0000000DK1q-3D6c;
+	Tue, 13 May 2025 19:04:29 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEuJu-0000000DEYr-2pol;
-	Tue, 13 May 2025 18:25:40 +0000
-ARC-Seal: i=2; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=pass;
- b=MpWobcYLTMfVipbtIgYnxzWpOWDDX61Yv2zyGIAtScEor2+/s+W6Ar+erl6JwRRerbP/VTO4jaVk1SFeiM4ZdzPAQk88ZNj8g7b+E7ZS6nWCck8KuahR+dBNaP6vOouzJTJBkHYPPuELRhnVonO5sCbaYxQqKcDd8KTrGr6fSJ+WUS/niGZQo/yIaemC1/WrEyexEl9coyYZJG+vqVqgsz20kn8gW/z/ydx8MO9khWLx9RNTpSgskQAvOg106W4KheEkAmmRTaUFrf8+/pZIxyPCiC5eTWrVFuZ/UTh1QeVwfGVGBeTJLgYejxFyoRYBxG16C2eD8owwKTCt9I9bbQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=q+qQ9O5ym1wAc5h6RbmV7d35GQOnYJP8Zj6JiTJClI4=;
- b=KtGygJI3qsy77lySc0J8lMxrg0sOG0XfB/t6vmKASBYYbexbnDWMWQ6CmTUDbeVlMj5QGggi5W5yMC05nkcaCaYPdxbMmFmosgd+gK/oWoElAa1Vw8EFmXXC8PxkaFMR5AMwRuZIss/ba5JOMu8v2OTz64J4wvdb0chrtjxD8hzlt6WHfMqs/2gY0l8gBlf5KaTOYmtl+hoDCGflDlqGJ/0m5JSMU0QncSOqcrQtOH6GLNhuMCAhT8jB/2xS5d3gKgsjd8Sgt10CAXsXcDM/fLEHUd4FfiE/j4v+NC5GmkCwJWyFSKsmj8mebu02tTLH0Y7Z29LGYUCLKisIoIairA==
-ARC-Authentication-Results: i=2; mx.microsoft.com 1; spf=pass (sender ip is
- 20.160.56.80) smtp.rcpttodomain=armlinux.org.uk smtp.mailfrom=seco.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=seco.com;
- dkim=pass (signature was verified) header.d=seco.com; arc=pass (0 oda=1
- ltdi=1 spf=[1,1,smtp.mailfrom=seco.com] dkim=[1,1,header.d=seco.com]
- dmarc=[1,1,header.from=seco.com])
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=seco.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=q+qQ9O5ym1wAc5h6RbmV7d35GQOnYJP8Zj6JiTJClI4=;
- b=ifE+CXV4Gftw5/uGyXQ1wSBGEWC9klMnqrV7VJbS2aHnL8YsOVwSi+1r5pnGupvRKXB0nvAVNig2L72iZTSL417q2fuG50Ct1XxDtJQTLnJut1Gp7/hZTKFQNGsXa6DFPU8jyNudHytMnAbNrJsveRBD6hXbbtwy8v+18Z/B9k1ZeoOHbJsgfdvzBYXfzYNQhrXxc+rjwWf0LeJWNqx2kuvhKAl+4uioY6iL8fIo/fxZfo4px0ecQCyPbwh9d+6QAbiA+yXtfjVJf0pfpC+2I1s/IsuXwNdGmLnxNFVZhhrcU2b5a7tVwgqP86jzxJkCPopH2cnJJy9l8Ambm3r3uA==
-Received: from VI1P190CA0051.EURP190.PROD.OUTLOOK.COM (2603:10a6:800:1bb::10)
- by PAWPR03MB9057.eurprd03.prod.outlook.com (2603:10a6:102:33a::17) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8699.24; Tue, 13 May
- 2025 18:25:34 +0000
-Received: from AM4PEPF00025F95.EURPRD83.prod.outlook.com
- (2603:10a6:800:1bb:cafe::ec) by VI1P190CA0051.outlook.office365.com
- (2603:10a6:800:1bb::10) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.8722.25 via Frontend Transport; Tue,
- 13 May 2025 18:25:34 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 20.160.56.80)
- smtp.mailfrom=seco.com; dkim=pass (signature was verified)
- header.d=seco.com;dmarc=pass action=none header.from=seco.com;
-Received-SPF: Pass (protection.outlook.com: domain of seco.com designates
- 20.160.56.80 as permitted sender) receiver=protection.outlook.com;
- client-ip=20.160.56.80; helo=repost-eu.tmcas.trendmicro.com; pr=C
-Received: from repost-eu.tmcas.trendmicro.com (20.160.56.80) by
- AM4PEPF00025F95.mail.protection.outlook.com (10.167.16.4) with Microsoft SMTP
- Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.8769.1 via
- Frontend Transport; Tue, 13 May 2025 18:25:33 +0000
-Received: from outmta (unknown [192.168.82.138])
-	by repost-eu.tmcas.trendmicro.com (Trend Micro CAS) with ESMTP id A74D820080F88;
-	Tue, 13 May 2025 18:25:33 +0000 (UTC)
-Received: from OSPPR02CU001.outbound.protection.outlook.com (unknown [40.93.81.77])
-	by repre.tmcas.trendmicro.com (Trend Micro CAS) with ESMTPS id 1DFEB2008006F;
-	Tue, 13 May 2025 18:25:32 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=PG1h/Ux8KV9SwoFqPtqBgaYOIeDu5DAWR8ljptjaf6S8tbcZqvHbZAS92WpP+KNqkDRgEI5nyz7zPnZheYc0e2uCETDBoiVDRVMNTdanz6V6QcrFvdL3VKN1yPq8Vsg6BPucqX/3OKXFL0wCfyGsrqH8+UKe+qOLCQIcEew1QW40e5pvpncbrPxcV0DI/Tk2NLz/Ass8zqaZPwBAOtkJJ5BIHw3kZFyLczDW/1BXE7oYQR2zwUiUUEyYCNCgsPGvFvBfBwxR07xXZxgnasxF0btNBLowicYXD/c3KYtDACGcySi41/ii9s1UzsC4EgS0qCkQD8K/benOdELc/Aan/w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=q+qQ9O5ym1wAc5h6RbmV7d35GQOnYJP8Zj6JiTJClI4=;
- b=nfvFMHSMLB+EW0BY1U13PNA5zGk0kE15Cap5bRjUT44HotvyKYS/fZdP+ZAltCiVuOIRuf+fW4olF7vPVgr5Zml3dJDthrag5rmJsMUDxonwyieUZilo8vWIFRJAyx99yQ72BPhM86mTm98rwxn7LEyTE9z818BOK+ta+3RBKy2X+f6j/X6l4/IrQpqnVVQlNZFRAy6vTgL7ebPdk7xOTF6JCP2i0Sp+uIWIJBT42uEVVuwiZkfwf3W2eERR+jkO5gvAmdqRzLhaAYeTsNNb6AW/PSPFH1QP2rRm2t6c1ccZVHKFUgfdCxj2XuyOK/vmeW51GtS/A/uZyyK3jCgZcg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=seco.com; dmarc=pass action=none header.from=seco.com;
- dkim=pass header.d=seco.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=seco.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=q+qQ9O5ym1wAc5h6RbmV7d35GQOnYJP8Zj6JiTJClI4=;
- b=ifE+CXV4Gftw5/uGyXQ1wSBGEWC9klMnqrV7VJbS2aHnL8YsOVwSi+1r5pnGupvRKXB0nvAVNig2L72iZTSL417q2fuG50Ct1XxDtJQTLnJut1Gp7/hZTKFQNGsXa6DFPU8jyNudHytMnAbNrJsveRBD6hXbbtwy8v+18Z/B9k1ZeoOHbJsgfdvzBYXfzYNQhrXxc+rjwWf0LeJWNqx2kuvhKAl+4uioY6iL8fIo/fxZfo4px0ecQCyPbwh9d+6QAbiA+yXtfjVJf0pfpC+2I1s/IsuXwNdGmLnxNFVZhhrcU2b5a7tVwgqP86jzxJkCPopH2cnJJy9l8Ambm3r3uA==
-Authentication-Results-Original: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=seco.com;
-Received: from PAVPR03MB9020.eurprd03.prod.outlook.com (2603:10a6:102:329::6)
- by PAXPR03MB7763.eurprd03.prod.outlook.com (2603:10a6:102:209::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8722.29; Tue, 13 May
- 2025 18:25:30 +0000
-Received: from PAVPR03MB9020.eurprd03.prod.outlook.com
- ([fe80::2174:a61d:5493:2ce]) by PAVPR03MB9020.eurprd03.prod.outlook.com
- ([fe80::2174:a61d:5493:2ce%7]) with mapi id 15.20.8722.027; Tue, 13 May 2025
- 18:25:30 +0000
-Message-ID: <500bf7f4-23aa-4dfb-acf1-d00626793f2b@seco.com>
-Date: Tue, 13 May 2025 14:25:25 -0400
-User-Agent: Mozilla Thunderbird
-Subject: Re: [net-next PATCH v4 09/11] dt-bindings: net: pcs: Document support
- for Airoha Ethernet PCS
-To: Christian Marangi <ansuelsmth@gmail.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Heiner Kallweit <hkallweit1@gmail.com>, Russell King
- <linux@armlinux.org.uk>, Philipp Zabel <p.zabel@pengutronix.de>,
- Nathan Chancellor <nathan@kernel.org>,
- Nick Desaulniers <nick.desaulniers+lkml@gmail.com>,
- Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>,
- Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- llvm@lists.linux.dev
-References: <20250511201250.3789083-1-ansuelsmth@gmail.com>
- <20250511201250.3789083-10-ansuelsmth@gmail.com>
-Content-Language: en-US
-From: Sean Anderson <sean.anderson@seco.com>
-In-Reply-To: <20250511201250.3789083-10-ansuelsmth@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: MN2PR01CA0053.prod.exchangelabs.com (2603:10b6:208:23f::22)
- To PAVPR03MB9020.eurprd03.prod.outlook.com (2603:10a6:102:329::6)
+	id 1uEuMs-0000000DEzA-08Wh;
+	Tue, 13 May 2025 18:28:44 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 9FDA54459C;
+	Tue, 13 May 2025 18:28:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6E9B5C4CEEF;
+	Tue, 13 May 2025 18:28:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1747160921;
+	bh=oZFqdy+kIx1Uv6kOWi0cVkp8dnOJ+w39voCH+Zy6/jQ=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=QU+uBpTQESUH0g/UHKv9f26yvyg8lQo/NYrLZ3hZ2cyz/4KIpgY9+P94EHw4R5twI
+	 KIwMMDbGbTfZeWF1gYGEDGcfBr3YScJbaQ8rpP9rtSa4fJy5v028pmx6AHa/bKn9/Y
+	 F2zHbShph86Wz+dFZ85kedZ15aBsfOSVvf58d6aUA83lMRpl8EFa0UHbsD2E5On+vH
+	 cytlWqTlDR7jgR/YuJsELBU4qsfCAjOjGJTYfYHG6+5eOixXczqnhVd58eHsth5KMt
+	 mlM7C6Z5fb8wcFdQ4/nSt12c3AgILmgbIUyH8BA5B4OPXD50RZR2qs1HHt77rJCpgG
+	 wmPRYvyP4zCaQ==
+Received: by mail-ej1-f46.google.com with SMTP id a640c23a62f3a-ad2414a412dso513294166b.0;
+        Tue, 13 May 2025 11:28:41 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCWBAEeMPE6s/lsNuunuNrGH8C/Q94zmmBoUHmGc3R6mSPAWc5yzkZ4O3iWiRMvifWpLFKbeYxUXnzfuYPG8sRFm@lists.infradead.org, AJvYcCXu2NlzTyL6H4eW/MX6OMSClWEi0krpqkXj2CiamHQZqz3jlni/IVWfSbG6xffwhvBbHSzHoTq7p2YnvyvexiE=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz/I37JMiTdQ3AAv/3RQda1zjhFKgWRq78iUbniBKxpI810diBE
+	aoVIA2dXlKHzV+G9Qy8Oi91H3n1t2Vpw2WHItCUmKH3OyAhSz94xgTQsTshqYBH3vEPSJJyfSQG
+	r14C7HodTzuc5cChhoeow/FgYbA==
+X-Google-Smtp-Source: AGHT+IGyTGIYVGPlikbStjoVI4eRqm0PzFv/QwvZZdDs++dfU9kNsLAIF+uv3q2XW+UBz6tSIkW6ANCiczOOtuUYCos=
+X-Received: by 2002:a17:906:d54f:b0:ad2:43b6:dd75 with SMTP id
+ a640c23a62f3a-ad4f70d3028mr68659766b.10.1747160919892; Tue, 13 May 2025
+ 11:28:39 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-TrafficTypeDiagnostic: PAVPR03MB9020:EE_|PAXPR03MB7763:EE_|AM4PEPF00025F95:EE_|PAWPR03MB9057:EE_
-X-MS-Office365-Filtering-Correlation-Id: 25db6e2b-5cba-46e7-6478-08dd924b8cca
-X-TrendMicro-CAS-OUT-LOOP-IDENTIFIER: 656f966764b7fb185830381c646b41a1
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam-Untrusted: BCL:0;ARA:13230040|366016|1800799024|376014|7416014|921020|7053199007;
-X-Microsoft-Antispam-Message-Info-Original: =?utf-8?B?UkdjK2J6SzlKSk5iTEpoQ2lqM0J3WmxFWHphYi9GcE96S3JabjRYdDZPYnYx?=
- =?utf-8?B?cHowMmhxcUw0OUVFeWJVWHVaNXFBQ0MwS2phVDRRSitEdHF1L3lWdW9ITmpT?=
- =?utf-8?B?VTluOVd1bDI5WllUcTk0SGJGR253dFJ6Mmx4QTVsSHg5SDVwWmVjSHdjOElI?=
- =?utf-8?B?OTB5UkRtWTUxQkliUzlpRWZXRTcyMTBBREZWcVF5aHpaYlcrandEN1NEb2Za?=
- =?utf-8?B?Wk92QWVNaU1sM1lmUFlBenRXWThwMjlwQ3MzelJGMHQwY1JjRlNvNW55TDJP?=
- =?utf-8?B?NWFnUkV0MGQxZzhSWmo5aUdBZExoRkUzOGZkZEN6VWZUQW5tQVdKUGdKWTZU?=
- =?utf-8?B?Y0FudjdGQVd2aDBONklUVXZ4K3Q3U3FCUmg2NTBuYWZ5Ym11MHNmYnVLQVp1?=
- =?utf-8?B?MHlhR255SzBiN3d6QlRIM092Q3BoZW9VUzZUSzVlbmd3YldqRDNPWTF5c2lJ?=
- =?utf-8?B?SjVHRGxBUlUvTUdLRVBabzlBcTZsOHAyQURkN2RUWmVEY0lQOFQ0dUt1MWph?=
- =?utf-8?B?OXFrU2ZtK2NSa1Z4R2RkRjJzemIwbWs4WG4yUkVqcFR4WkJkTnlPQUZmTFlL?=
- =?utf-8?B?QXkvMjNZUkdKeVlqelV0c0FPa0FzL2dvMWRRSEcyV0NIbmRXWnpyemVDcEZE?=
- =?utf-8?B?ZGZRVG5ITW91U1BOaE1XZG8xQXdKMWo3RERBK3MvWTh1cTRQV29WbVhqQzgv?=
- =?utf-8?B?WTh4S2lodjVWNTNyR043c0RHYXRSMkhWSjNlcUViRWVVTjZ5bElhdHVXTFNv?=
- =?utf-8?B?RENrR0lYNDVQRE4rdHJnS1ZOaEVQZ1Z2TTZnVldod1kySjhVMTBPUGY4Yk53?=
- =?utf-8?B?RGthM0ZnMUVwMkZQT2lkWTBjT3lHUFpJVmtWa2lLZGlBU2FxRTQ2QUdZVkZZ?=
- =?utf-8?B?bll2Vkp0NHp1MHVXWnpuRm1XZU40b1I0VXVnK2plSVdjK1JRM0lHZXU1a3JU?=
- =?utf-8?B?Ukg3bnZtNUJrS3lRVEMzWWJldDlrYlpCbDE4ZUhxbytITy9aa2ZTd3QzZmh5?=
- =?utf-8?B?MmovZFBmajVQNUcvVlphOVV2ckxsRXBhUXNDUXhCQ0pLMmhmdE4ySTBqMWI3?=
- =?utf-8?B?OHAzMDltWTltR2dHS2xnc3RHMEhLZWZiRGwvbjZuckg3cHkvczMvK0JkcWZu?=
- =?utf-8?B?ZGREbjloWG1NUjg5eFk2VHZzcUJmLzJka0IwRXl5d3NSZzFDZkxhMkJHTXZO?=
- =?utf-8?B?SlVqei9zay9WOFVDeFFqL0laQU55NEM2b2pHUERVUEtOcnRkNk9nSnowaE13?=
- =?utf-8?B?QUxhMjUxSGI5M09WcnBFZGJXMllTVDg2Y3Z3NWFtTUVBSFMzWXlRck92czhs?=
- =?utf-8?B?ZXUyQ1h4T2czZ0tmY3BFYTZUSDBvNnhxNE94UlUwVFIyZHptaC9iMjZKb1ZB?=
- =?utf-8?B?ZjZQUU5UM1FHeGdadzVWZHVZODVWbWxaU2o5cmNIYkNuWHExOUJtOGNWVXJY?=
- =?utf-8?B?MVh1M20vbmRCa3VybHBSMHdEcmhYbXNaejRnNk5iVDJKVmMvSmVWN1E2MVNz?=
- =?utf-8?B?TkJIZ3E4K3ZJWGZkajVzTDFLMTFXRVQ4Wkdrc0dRUk5majZScEtoN29iV3lo?=
- =?utf-8?B?WmUyMGRYR21xeU1Uem4ybldIZDIreGxxZ003ekRCSVprSW9EYjdZSHpybW5p?=
- =?utf-8?B?dWVnVzNNclJyRzB2Sjh3ZFZaNWNiM3J5WU02OExhRFFtbkFocnhPNGZTc1Zi?=
- =?utf-8?B?MGVJWlhvNWIvbDJLeVBoSHY4dFQzOHdkaFdWNDVKbHZ5WnoyMElxN3lYZVho?=
- =?utf-8?B?bnlXOEVUSC91dk4zMUhqRVNHYlc4VjdwTlJIMWtoYmpxRUtjVmZlYytJRE91?=
- =?utf-8?B?bkgrWCtNYnJDNnNoRWZsUkkvdllKSFhHSUhLVnFha1kxanNWZ1hmc2VOU2F0?=
- =?utf-8?B?cDFOVHY4dFZiVTJIUEVVRXVlZ1YrTUxYNVpoMmJYN21PT3c9PQ==?=
-X-Forefront-Antispam-Report-Untrusted: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PAVPR03MB9020.eurprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(376014)(7416014)(921020)(7053199007);DIR:OUT;SFP:1102;
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PAXPR03MB7763
-X-EOPAttributedMessage: 0
-X-MS-Exchange-Transport-CrossTenantHeadersStripped: AM4PEPF00025F95.EURPRD83.prod.outlook.com
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id-Prvs: 0f205bce-bcb9-4dbb-8649-08dd924b8a6d
-X-Microsoft-Antispam: BCL:0;ARA:13230040|14060799003|82310400026|36860700013|35042699022|376014|7416014|1800799024|921020;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?ckx5MXJ5R3Vqck5xdjdKSE5zWDZDeUN4aEJxaTRGakxWOUN5UzVMdlRxbGc3?=
- =?utf-8?B?R1FZZHhNZ285U041YzdCS0NOSlptZ0RKUCtNRUc0VlgxeHpCMlV6K0hkM3lO?=
- =?utf-8?B?ZUZJbkJPcmhKMlM0WnBXZGV2TnBHNnJ5ZDQxeVVwVXlrM2pWTzAvSjAzSjRu?=
- =?utf-8?B?N2F0OGFqTHVKdWE5a01FclpjK3pOSVdDeGZzbW96bVZaWWxFNGpVdGFFekJk?=
- =?utf-8?B?K2hMN3N3SFdTVkRtZTV5dk9INGxrYndib2NTQ2ZaQ1k5MGptbHVDU2hlek54?=
- =?utf-8?B?eFFPU25DUU0yamRCV25NUmF2WUxxMENRVTdyOXV2aXhxcnhuano3V0EwL0Vu?=
- =?utf-8?B?aUxqZkNBZFdMa3o4MTYva0JFbExEU3B5MnI0RUtIUGZTQjlDbnRvb0tNYVNy?=
- =?utf-8?B?b25yNkhUTXJZZlN6MlQwU1VMOFdUcm55Si9TV1IxS2dEMzV1YlpJUEhFcUgx?=
- =?utf-8?B?d2JxbmovNXlneDJGSnJtdzF5amtPZHlMTnNYS01XaUFYdEkrcEtZSjRGQmtu?=
- =?utf-8?B?Q2ViN1pKZ0ZrSThzKzJwQzBDQlM3dENPc1BwcDA2MnZJU3JRazZ0WVRaNG80?=
- =?utf-8?B?dE1uYXNMOGdIR2hFeCtYOU5mbk1jL2NuYy9XZlhkVjA5TGQyK05PeEI5V2Zr?=
- =?utf-8?B?RENUK1B2TEgzckF6TkFYeG1oVHdyVDFVeEJlTlROMTR2Unp3ODAwOWtJUFli?=
- =?utf-8?B?WmZXMTRVSms1bGNVQ1lMaEE3Vnh5YTdoWUU0cjN1SWxoL01qUktZa2dhT05K?=
- =?utf-8?B?Z3ZUKzJnUlhKdWdKZTZFNjBVUUV1NFF5T01wUUdrN0F3SXl6Ri8zYnNFOW9X?=
- =?utf-8?B?dGpydkNlUGswRGlCQURyaE8wRGRGTitrRXg1YVNLRjJyeE9iWW1KclBLRTh1?=
- =?utf-8?B?aVpoanplTkdYc2tlVk4rVHNmVDZRVm5vSkFLMjdRQmdRYVI2OUhjSWh5d1Vn?=
- =?utf-8?B?d1l0WC9KdTJ5dC9nYlN4bThVVGsxYVh6Q0VOVWNvc3JxU0owVTlSMVllcDNL?=
- =?utf-8?B?T1Q4cWgrWUl4QmJrUXl0Rk1WaHNrbTVsN3FyNU9IYmg1YUNaVlZnMCtPSTdT?=
- =?utf-8?B?S2YxRElxYWtOQWNOYXNFbklTeWVDZ05yT2lSMDBhbWZhWFV6OUJYY2JUYmRi?=
- =?utf-8?B?VjVQZER0QXM0aTFwOFNoQTE0N1Y3U2tyazJDTmI4RVdMeUZ3aVl4RGVMb0sz?=
- =?utf-8?B?Wkc5bDJIR3ZMc1ZaNnNPMk1ld1QxYk91ckROVzAxRlJDZnFBT2N0MW45YUFu?=
- =?utf-8?B?ejI4aWhEa3d6V3Y1enEvTkc1QlRMc0xWYXpuQmV6M0lBeE54eUt5aDJMaERI?=
- =?utf-8?B?RER3ejg4U28xa0txakUzZ3dWTzZycHcvSU5pdnpKZFkwandSSWRLUHN0anNO?=
- =?utf-8?B?bU1lZjZwdFZadHVBL0pKUS9LUTUrbnBaMm1QRlUxRDA4bnpyaFh6RnpZN01n?=
- =?utf-8?B?MElDeGZKTVVvQ21DWld1K1N6M3NXbHV3UUlyWlFQV3hveTdLSGtENnR1QVBp?=
- =?utf-8?B?U3VxNFhFdG94WEhxMkpUOXpGUGk4RStLRkQ0NGIwbUlHVEpWbFJOdjZ2aUEw?=
- =?utf-8?B?cnJhNDdzWERIdkZHU3NqYm8wQi9EazMwT3IvdlpQQU1abGYwY1hQSzY1RXpI?=
- =?utf-8?B?UUJnVW04amtoSWxZUjYwbjdqMnlkRDYrVCtLYk1wRUQrZmlLbERESGlsSkFl?=
- =?utf-8?B?NGZxZHkyR0tCL1ZPWGN2VWxlWWoyNjV5UUFpUzAydHNkeG1ROXM4TVVDSE8r?=
- =?utf-8?B?SzJiNjBpYXNGMU9zVUZjbURUYzNVS01NdGVHYWpwRHFWMWlFaThscWVrMnl3?=
- =?utf-8?B?dS9MWXV2MFJ1OXRlQnVSUUZIbHRzSVdHeUVwZnNJa3dBMWNhNUNKVHg0NkdW?=
- =?utf-8?B?c1hydUNBaTM0dlo5M3hXQ3FKaUpaVFMrMzRORDYyeUtET08rZWYvZWIrNVFO?=
- =?utf-8?B?c2dVY2hDa2JEYkNyN285VzVXcHRoK0VhT1UvaVFKR0tkcWs5U0lKNjh6NzRS?=
- =?utf-8?Q?6MEykBdhZdrWkmiLJy3G7WUXq/A6RI=3D?=
-X-Forefront-Antispam-Report: CIP:20.160.56.80;CTRY:NL;LANG:en;SCL:1;SRV:;IPV:CAL;SFV:NSPM;H:repost-eu.tmcas.trendmicro.com;PTR:repost-eu.tmcas.trendmicro.com;CAT:NONE;SFS:(13230040)(14060799003)(82310400026)(36860700013)(35042699022)(376014)(7416014)(1800799024)(921020);DIR:OUT;SFP:1102;
-X-OriginatorOrg: seco.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 May 2025 18:25:33.8308
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 25db6e2b-5cba-46e7-6478-08dd924b8cca
-X-MS-Exchange-CrossTenant-Id: bebe97c3-6438-442e-ade3-ff17aa50e733
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=bebe97c3-6438-442e-ade3-ff17aa50e733;Ip=[20.160.56.80];Helo=[repost-eu.tmcas.trendmicro.com]
-X-MS-Exchange-CrossTenant-AuthSource: AM4PEPF00025F95.EURPRD83.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PAWPR03MB9057
+References: <20250506091736.125733-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250506091736.125733-1-angelogioacchino.delregno@collabora.com>
+From: Rob Herring <robh@kernel.org>
+Date: Tue, 13 May 2025 13:28:28 -0500
+X-Gmail-Original-Message-ID: <CAL_JsqKmQxaOUykYfoUCaVe9jg5_fWnoLhxn5j3WmQC1Tm8ZGw@mail.gmail.com>
+X-Gm-Features: AX0GCFszPWEYFuT81sDqZmIzjzZQ-10Xx5-913Q8x93yF6d8Q6VPUpzcufQ48i8
+Message-ID: <CAL_JsqKmQxaOUykYfoUCaVe9jg5_fWnoLhxn5j3WmQC1Tm8ZGw@mail.gmail.com>
+Subject: Re: [GIT,PULL,1/2] MediaTek ARM64 DTS updates for v6.16
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: arm-soc <arm@kernel.org>, soc <soc@kernel.org>, matthias.bgg@kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250513_112538_890689_592EBF60 
-X-CRM114-Status: GOOD (  10.30  )
+X-CRM114-CacheID: sfid-20250513_112842_121340_900FC244 
+X-CRM114-Status: GOOD (  25.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -231,154 +82,361 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Devicetree binding patches should come first in a series.
+On Tue, May 6, 2025 at 6:55=E2=80=AFAM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> The following changes since commit 0af2f6be1b4281385b618cb86ad946eded089a=
+c8:
+>
+>   Linux 6.15-rc1 (2025-04-06 13:11:33 -0700)
+>
+> are available in the Git repository at:
+>
+>   https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git tags=
+/mtk-dts64-for-v6.16
+>
+> for you to fetch changes up to 1fe38d2a19950fa6dbc384ee8967c057aef9faf4:
+>
+>   arm64: dts: mt6359: Add missing 'compatible' property to regulators nod=
+e (2025-05-06 10:35:45 +0200)
+>
+> ----------------------------------------------------------------
+> MediaTek ARM64 DTS updates for v6.16
+>
+> This adds new MT8186-based Google Ponyta Chromebooks and improves
+> support for already supported SoCs and machines.
+>
+> In particular, SoCs changes:
+>  - MT6893
+>    - Added pinmux header for this SoC
+>  - MT8183
+>    - Added port node for dsi_out in mt8183.dtsi to fix some DT
+>      validation warnings.
+>  - MT8188
+>    - Adds an important fix for its Display Controller's Read DMA 0
+>      (RDMA0), as it was using the wrong IOMMU and failing;
+>    - Multimedia Data Path 3 (MDP3) devicetree nodes were added: now
+>      hardware assisted color format conversions are available;
+>    - Since SCP firmwares are available on linux-firmware, the
+>      necessary nodes for the dual-core SCP were added to devicetree
+>      along with the firmware-name property in mt8390-genio-common,
+>      enabling hardware video encoders and decoders on the MediaTek
+>      Genio 510 and Genio 700 EVKs.
+>  - MT8195
+>    - Power domains for video decoders and encoders were reparented
+>      as the secondary vdec/venc core needs the primary core to be
+>      also powered, as those are sharing the LAT hardware and SRAM;
+>    - Missing power domain was added to the primary DisplayPort
+>      Interface (dp_intf0) node.
+>  - MT8196
+>    - Added pinmux header for this SoC
+>
+> ... and machine-specific changes:
+>  - Radxa NIO-12L (MT8395)
+>    - Added support for Audio DSP and sound output through 3.5mm jack;
+>  - MediaTek Genio 1200 EVK (MT8395)
+>    - Support for this EVK's DSI display was added and enabled;
+>    - Secondary display backlight was disabled as it was unused
+>  - MediaTek Genio 510/700 (MT8370/MT8390)
+>    - Added support for the DSI display on these EVKs too;
+>    - Fixed an issue with integrated USB Bluetooth getting unplugged
+>      permanently due to wrong declaration of the ID GPIO polarity of
+>      the secondary USB port on the SSUSB2 controller;
+>
+> Other than that, some other devicetree validation fixes were added
+> on the MT6357 and MT6359 PMIC DTs: for the former, all of the
+> compatible strings in all regulators were dropped as those were
+> wrong and causing DT kselftest failures - and for the latter, the
+> compatible string for the main `regulators` node was added as it
+> was missing.
+>
+> ----------------------------------------------------------------
+> AngeloGioacchino Del Regno (6):
+>       arm64: dts: mediatek: mt8195: Reparent vdec1/2 and venc1 power doma=
+ins
+>       dt-bindings: display: mediatek: Add compatibles for MT8188 MDP3
+>       dt-bindings: media: mediatek: mdp3: Add compatibles for MT8188 MDP3
+>       arm64: dts: mediatek: mt8188: Add all Multimedia Data Path 3 nodes
 
-On 5/11/25 16:12, Christian Marangi wrote:
-> Document support for Airoha Ethernet PCS for AN7581 SoC.
-> 
-> Airoha AN7581 SoC expose multiple Physical Coding Sublayer (PCS) for
-> the various Serdes port supporting different Media Independent Interface
-> (10BASE-R, USXGMII, 2500BASE-X, 1000BASE-X, SGMII).
-> 
-> This follow the new PCS provider with the use of #pcs-cells property.
-> 
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> ---
->  .../bindings/net/pcs/airoha,pcs.yaml          | 112 ++++++++++++++++++
->  1 file changed, 112 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/net/pcs/airoha,pcs.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/net/pcs/airoha,pcs.yaml b/Documentation/devicetree/bindings/net/pcs/airoha,pcs.yaml
-> new file mode 100644
-> index 000000000000..8bcf7757c728
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/net/pcs/airoha,pcs.yaml
-> @@ -0,0 +1,112 @@
-> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/net/pcs/airoha,pcs.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Airoha Ethernet PCS and Serdes
-> +
-> +maintainers:
-> +  - Christian Marangi <ansuelsmth@gmail.com>
-> +
-> +description:
-> +  Airoha AN7581 SoC expose multiple Physical Coding Sublayer (PCS) for
+I reported this already with no response, but this commit adds a crap
+load of DT warnings. This is on top of the many existing Mediatek
+warnings. Mediatek has the most warnings on arm64 and is about a fifth
+of the total (182 out of 932 on Linus' tree). If there's a fix for any
+of these, I can't find it. Either fix these warnings or drop the dts
+change.
 
-The Airoha AN7581 SoC exposes multiple Physical Coding Sublayers (PCSs) for
+(Note the number is the count for the specific warning in order to
+avoid duplicates (N warnings for N boards)).
 
-> +  the various Serdes port supporting different Media Independent Interface
+     33 (mediatek,mt8188-mdp3-wrot): '#dma-cells' is a required property
+     33 (mediatek,mt8188-mdp3-tdshp): 'power-domains' does not match
+any of the regexes: '^pinctrl-[0-9]+$'
+     33 (mediatek,mt8188-mdp3-rsz): 'power-domains' does not match any
+of the regexes: '^pinctrl-[0-9]+$'
+     33 (mediatek,mt8188-mdp3-rsz): 'mediatek,gce-events' is a required pro=
+perty
+     33 (mediatek,mt8188-mdp3-rdma): compatible: 'oneOf' conditional
+failed, one must be fixed:
+     33 (mediatek,mt8188-mdp3-hdr): 'power-domains' does not match any
+of the regexes: '^pinctrl-[0-9]+$'
+     33 (mediatek,mt8188-mdp3-fg): 'power-domains' does not match any
+of the regexes: '^pinctrl-[0-9]+$'
+     33 (mediatek,mt8188-mdp3-color): 'oneOf' conditional failed, one
+must be fixed:
+     33 (mediatek,mt8188-mdp3-aal): 'oneOf' conditional failed, one
+must be fixed:
+     11 (mediatek,mt8188-mdp3-tcc): 'power-domains' does not match any
+of the regexes: '^pinctrl-[0-9]+$'
+     11 (mediatek,mt8188-mdp3-ovl): 'oneOf' conditional failed, one
+must be fixed:
+     11 (mediatek,mt8188-mdp3-ovl): 'iommus' is a required property
+      8 (mediatek,mt8188-mdp3-rdma): clocks: [[51, 12], [46, 186],
+[46, 191]] is too long
+      8 (mediatek,mt8188-mdp3-rdma): clocks: [[51, 10], [46, 186],
+[46, 191]] is too long
+      8 (mediatek,mt8188-mdp3-rdma): clocks: [[50, 12], [45, 186],
+[45, 191]] is too long
+      8 (mediatek,mt8188-mdp3-rdma): clocks: [[50, 10], [45, 186],
+[45, 191]] is too long
+      8 (mediatek,mt8188-mdp3-rdma): clocks: [[49, 24], [46, 185],
+[46, 190], [49, 4], [49, 41], [49, 42], [49, 7], [51, 41], [51, 42],
+[49, 8]] is too long
+      8 (mediatek,mt8188-mdp3-rdma): clocks: [[48, 24], [45, 185],
+[45, 190], [48, 4], [48, 41], [48, 42], [48, 7], [50, 41], [50, 42],
+[48, 8]] is too long
+      4 (mediatek,mt8188-mdp3-rsz): clocks: [[51, 24], [51, 25]] is too lon=
+g
+      4 (mediatek,mt8188-mdp3-rsz): clocks: [[51, 20], [51, 21]] is too lon=
+g
+      4 (mediatek,mt8188-mdp3-rsz): clocks: [[50, 24], [50, 25]] is too lon=
+g
+      4 (mediatek,mt8188-mdp3-rsz): clocks: [[50, 20], [50, 21]] is too lon=
+g
+      4 (mediatek,mt8188-mdp3-rdma): power-domains: [[67, 15], [67,
+20]] is too long
+      4 (mediatek,mt8188-mdp3-rdma): power-domains: [[66, 15], [66,
+20]] is too long
+      2 (mediatek,mt8188-mdp3-rdma): mboxes: [[121, 13, 1], [121, 14,
+1], [121, 16, 1], [121, 21, 1]] is too short
+      2 (mediatek,mt8188-mdp3-rdma): mboxes: [[120, 13, 1], [120, 14,
+1], [120, 16, 1], [120, 21, 1]] is too short
+      2 (mediatek,mt8188-mdp3-rdma): mboxes: [[119, 13, 1], [119, 14,
+1], [119, 16, 1], [119, 21, 1]] is too short
+      2 (mediatek,mt8188-mdp3-rdma): mboxes: [[118, 13, 1], [118, 14,
+1], [118, 16, 1], [118, 21, 1]] is too short
+      2 (mediatek,mt8188-mdp3-rdma): iommus: [[132, 164], [132, 166]]
+is too long
+      2 (mediatek,mt8188-mdp3-rdma): iommus: [[131, 164], [131, 166]]
+is too long
+      2 (mediatek,mt8188-mdp3-rdma): iommus: [[130, 164], [130, 166]]
+is too long
+      2 (mediatek,mt8188-mdp3-rdma): iommus: [[129, 164], [129, 166]]
+is too long
+      2 (mediatek,mt8188-mdp3-rdma): iommus: [[122, 192], [122, 194]]
+is too long
+      2 (mediatek,mt8188-mdp3-rdma): iommus: [[122, 128], [122, 131]]
+is too long
+      2 (mediatek,mt8188-mdp3-rdma): iommus: [[121, 192], [121, 194]]
+is too long
+      2 (mediatek,mt8188-mdp3-rdma): iommus: [[121, 128], [121, 131]]
+is too long
+      2 (mediatek,mt8188-mdp3-rdma): iommus: [[120, 192], [120, 194]]
+is too long
+      2 (mediatek,mt8188-mdp3-rdma): iommus: [[120, 128], [120, 131]]
+is too long
+      2 (mediatek,mt8188-mdp3-rdma): iommus: [[119, 192], [119, 194]]
+is too long
+      2 (mediatek,mt8188-mdp3-rdma): iommus: [[119, 128], [119, 131]]
+is too long
+      2 (mediatek,mt8188-mdp3-rdma): clocks: [[44, 12], [39, 186],
+[39, 191]] is too long
+      2 (mediatek,mt8188-mdp3-rdma): clocks: [[44, 10], [39, 186],
+[39, 191]] is too long
+      2 (mediatek,mt8188-mdp3-rdma): clocks: [[42, 24], [39, 185],
+[39, 190], [42, 4], [42, 41], [42, 42], [42, 7], [44, 41], [44, 42],
+[42, 8]] is too long
+      2 (mediatek,mt8188-mdp3-rdma): clocks: [[42, 12], [37, 186],
+[37, 191]] is too long
+      2 (mediatek,mt8188-mdp3-rdma): clocks: [[42, 10], [37, 186],
+[37, 191]] is too long
+      2 (mediatek,mt8188-mdp3-rdma): clocks: [[40, 24], [37, 185],
+[37, 190], [40, 4], [40, 41], [40, 42], [40, 7], [42, 41], [42, 42],
+[40, 8]] is too long
+      2 (mediatek,mt8188-mdp3-rdma): clocks: [[38, 12], [34, 186],
+[34, 191]] is too long
+      2 (mediatek,mt8188-mdp3-rdma): clocks: [[38, 10], [34, 186],
+[34, 191]] is too long
+      2 (mediatek,mt8188-mdp3-rdma): clocks: [[36, 24], [34, 185],
+[34, 190], [36, 4], [36, 41], [36, 42], [36, 7], [38, 41], [38, 42],
+[36, 8]] is too long
+      1 (mediatek,mt8188-mdp3-rsz): clocks: [[44, 24], [44, 25]] is too lon=
+g
+      1 (mediatek,mt8188-mdp3-rsz): clocks: [[44, 20], [44, 21]] is too lon=
+g
+      1 (mediatek,mt8188-mdp3-rsz): clocks: [[42, 24], [42, 25]] is too lon=
+g
+      1 (mediatek,mt8188-mdp3-rsz): clocks: [[42, 20], [42, 21]] is too lon=
+g
+      1 (mediatek,mt8188-mdp3-rsz): clocks: [[38, 24], [38, 25]] is too lon=
+g
+      1 (mediatek,mt8188-mdp3-rsz): clocks: [[38, 20], [38, 21]] is too lon=
+g
+      1 (mediatek,mt8188-mdp3-rdma): power-domains: [[60, 15], [60,
+20]] is too long
+      1 (mediatek,mt8188-mdp3-rdma): power-domains: [[58, 15], [58,
+20]] is too long
+      1 (mediatek,mt8188-mdp3-rdma): power-domains: [[54, 15], [54,
+20]] is too long
+      1 (mediatek,mt8188-mdp3-rdma): mboxes: [[92, 13, 1], [92, 14,
+1], [92, 16, 1], [92, 21, 1]] is too short
+      1 (mediatek,mt8188-mdp3-rdma): mboxes: [[131, 13, 1], [131, 14,
+1], [131, 16, 1], [131, 21, 1]] is too short
+      1 (mediatek,mt8188-mdp3-rdma): mboxes: [[129, 13, 1], [129, 14,
+1], [129, 16, 1], [129, 21, 1]] is too short
+      1 (mediatek,mt8188-mdp3-rdma): iommus: [[93, 192], [93, 194]] is too =
+long
+      1 (mediatek,mt8188-mdp3-rdma): iommus: [[93, 128], [93, 131]] is too =
+long
+      1 (mediatek,mt8188-mdp3-rdma): iommus: [[142, 164], [142, 166]]
+is too long
+      1 (mediatek,mt8188-mdp3-rdma): iommus: [[140, 164], [140, 166]]
+is too long
+      1 (mediatek,mt8188-mdp3-rdma): iommus: [[132, 192], [132, 194]]
+is too long
+      1 (mediatek,mt8188-mdp3-rdma): iommus: [[132, 128], [132, 131]]
+is too long
+      1 (mediatek,mt8188-mdp3-rdma): iommus: [[130, 192], [130, 194]]
+is too long
+      1 (mediatek,mt8188-mdp3-rdma): iommus: [[130, 128], [130, 131]]
+is too long
+      1 (mediatek,mt8188-mdp3-rdma): iommus: [[103, 164], [103, 166]]
+is too long
 
-ports, Interfaces
 
-> +  (10BASE-R, USXGMII, 2500BASE-X, 1000BASE-X, SGMII).
-
-10GBase-R
-
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - airoha,an7581-pcs-eth
-> +      - airoha,an7581-pcs-pon
-
-What's the difference between these? There's no mention of PON above.
-
-> +  reg:
-> +    items:
-> +      - description: XFI MAC reg
-> +      - description: HSGMII AN reg
-> +      - description: HSGMII PCS reg
-> +      - description: MULTI SGMII reg
-> +      - description: USXGMII reg
-> +      - description: HSGMII rate adaption reg
-> +      - description: XFI Analog register
-> +      - description: XFI PMA (Physical Medium Attachment) register
-> +
-> +  reg-names:
-> +    items:
-> +      - const: xfi_mac
-> +      - const: hsgmii_an
-> +      - const: hsgmii_pcs
-> +      - const: multi_sgmii
-> +      - const: usxgmii
-> +      - const: hsgmii_rate_adp
-> +      - const: xfi_ana
-> +      - const: xfi_pma
-> +
-> +  resets:
-> +    items:
-> +      - description: MAC reset
-> +      - description: PHY reset
-> +
-> +  reset-names:
-> +    items:
-> +      - const: mac
-> +      - const: phy
-> +
-> +  "#pcs-cells":
-> +    const: 0
-
-From what I can tell you only have one PCS. So this is unnecessary.
-
---Sean
-
-> +required:
-> +  - compatible
-> +  - reg
-> +  - reg-names
-> +  - resets
-> +  - reset-names
-> +  - "#pcs-cells"
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/reset/airoha,en7581-reset.h>
-> +
-> +    pcs@1fa08000 {
-> +        compatible = "airoha,an7581-pcs-pon";
-> +        reg = <0x1fa08000 0x1000>,
-> +              <0x1fa80000 0x60>,
-> +              <0x1fa80a00 0x164>,
-> +              <0x1fa84000 0x450>,
-> +              <0x1fa85900 0x338>,
-> +              <0x1fa86000 0x300>,
-> +              <0x1fa8a000 0x1000>,
-> +              <0x1fa8b000 0x1000>;
-> +        reg-names = "xfi_mac", "hsgmii_an", "hsgmii_pcs",
-> +                    "multi_sgmii", "usxgmii",
-> +                    "hsgmii_rate_adp", "xfi_ana", "xfi_pma";
-> +
-> +        resets = <&scuclk EN7581_XPON_MAC_RST>,
-> +                 <&scuclk EN7581_XPON_PHY_RST>;
-> +        reset-names = "mac", "phy";
-> +
-> +        #pcs-cells = <0>;
-> +    };
-> +
-> +    pcs@1fa09000 {
-> +        compatible = "airoha,an7581-pcs-eth";
-> +        reg = <0x1fa09000 0x1000>,
-> +              <0x1fa70000 0x60>,
-> +              <0x1fa70a00 0x164>,
-> +              <0x1fa74000 0x450>,
-> +              <0x1fa75900 0x338>,
-> +              <0x1fa76000 0x300>,
-> +              <0x1fa7a000 0x1000>,
-> +              <0x1fa7b000 0x1000>;
-> +        reg-names = "xfi_mac", "hsgmii_an", "hsgmii_pcs",
-> +                    "multi_sgmii", "usxgmii",
-> +                    "hsgmii_rate_adp", "xfi_ana", "xfi_pma";
-> +
-> +        resets = <&scuclk EN7581_XSI_MAC_RST>,
-> +                 <&scuclk EN7581_XSI_PHY_RST>;
-> +        reset-names = "mac", "phy";
-> +
-> +        #pcs-cells = <0>;
-> +    };
+>       arm64: dts: mediatek: Add MT6893 pinmux macro header file
+>       arm64: dts: mediatek: mt8390-genio-common: Add Display on DSI0
+>
+> Axe Yang (1):
+>       arm64: dts: mediatek: mt8186-corsola: make SDIO card removable
+>
+> Cathy Xu (1):
+>       arm64: dts: mediatek: mt8196: Add pinmux macro header file
+>
+> Chen-Yu Tsai (1):
+>       arm64: dts: mediatek: mt8188: Fix IOMMU device for rdma0
+>
+> Jianeng Ceng (2):
+>       dt-bindings: arm: mediatek: Add MT8186 Ponyta Chromebook
+>       arm64: dts: mediatek: Add MT8186 Ponyta Chromebooks
+>
+> Julien Massot (4):
+>       arm64: dts: mediatek: mt8395-nio-12l: Add scp firmware-name
+>       arm64: dts: mediatek: mt8395-genio-1200-evk: Add scp firmware-name
+>       arm64: dts: mediatek: mt8395-nio-12l: Enable Audio DSP and sound ca=
+rd
+>       arm64: dts: mt6359: Add missing 'compatible' property to regulators=
+ node
+>
+> Louis-Alexis Eyraud (3):
+>       arm64: dts: mediatek: mt8390-genio-common: Fix pcie pinctrl dtbs_ch=
+eck error
+>       arm64: dts: mediatek: mt8395-genio-1200-evk: Add display on DSI0
+>       arm64: dts: mediatek: mt8390-genio-common: Set ssusb2 default dual =
+role mode to host
+>
+> Macpaul Lin (1):
+>       arm64: dts: mediatek: mt8195: Add power domain for dp_intf0
+>
+> N=C3=ADcolas F. R. A. Prado (4):
+>       arm64: dts: mediatek: mt8188: Describe SCP as a cluster with two co=
+res
+>       arm64: dts: mediatek: mt8390-genio-common: Add firmware-name for sc=
+p0
+>       arm64: dts: mediatek: mt6357: Drop regulator-fixed compatibles
+>       arm64: dts: mediatek: mt8395-genio-1200-evk: Disable unused backlig=
+ht
+>
+> Pin-yen Lin (1):
+>       arm64: dts: mt8183: Add port node to mt8183.dtsi
+>
+> Rob Herring (Arm) (1):
+>       arm/arm64: dts: mediatek: Add missing "#sound-dai-cells" to linux,b=
+t-sco
+>
+> =C5=81ukasz Majczak (1):
+>       arm64: dts: mediatek: mt8186: starmie: Fix external display
+>
+>  Documentation/devicetree/bindings/arm/mediatek.yaml                     =
+ |    7 +
+>  Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml    =
+ |    4 +
+>  Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml  =
+ |    4 +
+>  Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml  =
+ |    4 +
+>  Documentation/devicetree/bindings/display/mediatek/mediatek,padding.yaml=
+ |   10 +-
+>  Documentation/devicetree/bindings/media/mediatek,mdp3-fg.yaml           =
+ |    8 +-
+>  Documentation/devicetree/bindings/media/mediatek,mdp3-hdr.yaml          =
+ |    8 +-
+>  Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml          =
+ |    1 +
+>  Documentation/devicetree/bindings/media/mediatek,mdp3-stitch.yaml       =
+ |    8 +-
+>  Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml          =
+ |    8 +-
+>  Documentation/devicetree/bindings/media/mediatek,mdp3-tdshp.yaml        =
+ |    8 +-
+>  Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml         =
+ |    1 +
+>  arch/arm/boot/dts/mediatek/mt2701-evb.dts                               =
+ |    1 +
+>  arch/arm64/boot/dts/mediatek/Makefile                                   =
+ |    2 +
+>  arch/arm64/boot/dts/mediatek/mt6357.dtsi                                =
+ |   10 -
+>  arch/arm64/boot/dts/mediatek/mt6359.dtsi                                =
+ |    2 +
+>  arch/arm64/boot/dts/mediatek/mt6893-pinfunc.h                           =
+ | 1356 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+>  arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi                          =
+ |   11 +-
+>  arch/arm64/boot/dts/mediatek/mt8183.dtsi                                =
+ |    4 +
+>  arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku0.dts             =
+ |   18 +
+>  arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sku1.dts             =
+ |   22 +
+>  arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta.dtsi                 =
+ |   49 ++
+>  arch/arm64/boot/dts/mediatek/mt8186-corsola-starmie.dtsi                =
+ |   45 --
+>  arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi                        =
+ |    1 -
+>  arch/arm64/boot/dts/mediatek/mt8188-evb.dts                             =
+ |    6 +-
+>  arch/arm64/boot/dts/mediatek/mt8188.dtsi                                =
+ |  349 ++++++++++++++-
+>  arch/arm64/boot/dts/mediatek/mt8195.dtsi                                =
+ |   51 ++-
+>  arch/arm64/boot/dts/mediatek/mt8196-pinfunc.h                           =
+ | 1574 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+>  arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi                   =
+ |  170 ++++++-
+>  arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts                  =
+ |  127 +++++-
+>  arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts                   =
+ |   59 ++-
+>  31 files changed, 3797 insertions(+), 131 deletions(-)
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt6893-pinfunc.h
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sk=
+u0.dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta-sk=
+u1.dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8186-corsola-ponyta.dt=
+si
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8196-pinfunc.h
+>
+>
 
