@@ -4,63 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24D69C3ABD9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 May 2025 09:01:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97F65C3ABD9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 May 2025 09:34:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SyxChBA+d+I3ViLgnsP60/dj4azpOkMd+snSzYzQLzg=; b=K/6fOFVashw4+rYpmt8yZ0A+ps
-	t/Pj9ThnqCKZkepXyfPDjwaav8f8C/u+PAkOWV0wQR4pDDqWSSiclRyEvz4aw51KP+QG2uz94HkSh
-	XfpIMKCH2MlrsnbaL6/v5C7Djx3C2Lhqk+PH4CUTL4rxUqQs6MoI6xzKzVpxwrV5NXfPxwfWwVtH8
-	OgufkN/IwTIL92J6XkJQQri1Z41HLhT1xvWgmMnAnD8bvWFpJA7QcTjkpEh7drNH6BCVPO4ozhnJT
-	h3JwmCu3GU8IbqgAj0BteUcQm7bw3j1KuDVkL0ZzBQucfL4/YSO9hJG/nyprl4uxjAJB0D8RxbqS8
-	hkiq59LA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=crecp3yT2SZLjBUhnRURx5oUzcLwjGoGZoCGTxx3isA=; b=NkUKIaYYctVhxA1YgH+y6s9nLc
+	31CHmwB9mpFpITuGipxAF2xDCrqyeqTu+/pObfP2FOplYrrjnDLWI0jAI+tMZqaFpiw4S1nd0f+B9
+	CfKti35ok1c1lPWcnDsZiDMlU2bKxMUJaC7sx2Bc3LQvCxBFDjhcPTewcQ4uH1W0lZPRJWo6txS8y
+	GK9jqtadJOzzm0WkOBxSCvtoqIGH0mTpn0cUu1IUh4jYMnwoeiAxouuSOTFbUmsFKWZwGMGJTtA42
+	jSDusFcnqSn2H8DG9NjNZxoKfl/1N2c6W6XdbsoVO2pU6H0QPevdNdEUHGPJibXszBjt1BYgpUCYU
+	iJc5KXwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uF7zK-0000000Eb8d-0V4X;
-	Wed, 14 May 2025 09:01:18 +0000
+	id 1uF8V8-0000000EgGJ-3RK0;
+	Wed, 14 May 2025 09:34:10 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uF7Oq-0000000EUOX-08kR;
-	Wed, 14 May 2025 08:23:37 +0000
+	id 1uF7Cy-0000000ERuf-3XPP;
+	Wed, 14 May 2025 08:11:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1747211014;
-	bh=TBytcNs6FKDZ35AsCgJO/0ul5mShvUrDsvFdhjjy6J0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=E+A7igkFqNNN53OBFsXGTmN+URMDOWMnwhBRLkWwbOwqjzNX0Nz5Q2iuezPyVt4wq
-	 Awb6Vd1u/esp2YL//5HJ5A7XChXdFaUvrR842Gxuj969r0xWVlGSSzI/CflKTn39WC
-	 DlVJlbgbKJ10ZVp6ceP9MDZa0PO4U3lbmbyq4W9mhWQYD61fCnOb67O+uMXeXpCYVx
-	 AcnaB0CHXkvhxjB9NcyDGRrvfio53S+qCVYxQYYjxbTYRhe6xHMAqkY5yxjWT47gaR
-	 X8WexRE+AZkU3Y/+TjIpiKm0Ld+Xv9K6mWt97ru/WqI6mczXifCnXjpPNkp9z3EZPP
-	 5uLT1Zpc5d3yw==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	s=mail; t=1747210279;
+	bh=crecp3yT2SZLjBUhnRURx5oUzcLwjGoGZoCGTxx3isA=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=Q3ohjz62grUXQrGlMZmV14eAlrlnVDazHA+kNoz2opWnap5zMJoUYEri+JOLeIYO8
+	 1l0nsxPkr994hI4PSEzVqba64Tny61FlFN9GYmwZXDIcEbJytJe8wMjSSDJ6/m/a/F
+	 KBEHwPY/ovWtKaIUnBWPpxBf/47bWFJxiX5BXB7JRTdOCtT+uhs7MM4GbkO2lCH5pG
+	 PBscEESi+ceSpfJQemzEQlTpCgHHNKqqPKaVScAqm/LfvZUAhTKNozXL/ciOywe1EI
+	 78hMJbuWrXrtrJ0e9n96xwF/euvGBiCyWFaZ8JJxOz/FZg0UxTUK2ZKwa1EX6tA9ws
+	 bazKi7SoCGEnA==
+Received: from apertis-1.home (2a01cb0892F2D600c8f85CF092D4Af51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3EF9D17E05F0;
-	Wed, 14 May 2025 10:23:34 +0200 (CEST)
-Message-ID: <ed7ad534-a517-4005-b61e-c8f2e82f1b27@collabora.com>
-Date: Wed, 14 May 2025 10:23:33 +0200
+	(Authenticated sender: jmassot)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id EC67D17E07F2;
+	Wed, 14 May 2025 10:11:17 +0200 (CEST)
+Message-ID: <5578490565f6d37fa435ca0c02fcfc2cb685baf8.camel@collabora.com>
+Subject: Re: [PATCH 1/4] dt-bindings: mfd: mediatek: mt6397: Add
+ #sound-dai-cells property
+From: Julien Massot <julien.massot@collabora.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>, kernel@collabora.com, Sen Chu	
+ <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Macpaul Lin	
+ <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>, Rob Herring	
+ <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley	
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ =?ISO-8859-1?Q?N=EDcolas?= "F. R. A. Prado"	 <nfraprado@collabora.com>, Hui
+ Liu <hui.liu@mediatek.com>, Yong Wu	 <yong.wu@mediatek.com>, Joerg Roedel
+ <joro@8bytes.org>, Will Deacon	 <will@kernel.org>, Robin Murphy
+ <robin.murphy@arm.com>, Tinghan Shen	 <tinghan.shen@mediatek.com>
+Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, iommu@lists.linux.dev
+Date: Wed, 14 May 2025 10:11:17 +0200
+In-Reply-To: <79148223-d87f-486e-9d51-979f9188a837@kernel.org>
+References: <20250505-mt8395-dtb-errors-v1-0-9c4714dcdcdb@collabora.com>
+	 <20250505-mt8395-dtb-errors-v1-1-9c4714dcdcdb@collabora.com>
+	 <79148223-d87f-486e-9d51-979f9188a837@kernel.org>
+Organization: Collabora Ltd.
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.1 (3.56.1-1.fc42) 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [GIT,PULL,1/2] MediaTek ARM64 DTS updates for v6.16
-To: Arnd Bergmann <arnd@arndb.de>, arm <arm@kernel.org>, soc <soc@kernel.org>
-Cc: matthias.bgg@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20250506091736.125733-1-angelogioacchino.delregno@collabora.com>
- <7e8718b0-df78-44a6-a102-89529d6abcce@app.fastmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <7e8718b0-df78-44a6-a102-89529d6abcce@app.fastmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250514_012336_223619_8DB483B5 
-X-CRM114-Status: GOOD (  20.75  )
+X-CRM114-CacheID: sfid-20250514_011121_037009_276368ED 
+X-CRM114-Status: GOOD (  11.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,38 +87,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 09/05/25 22:54, Arnd Bergmann ha scritto:
-> On Tue, May 6, 2025, at 11:17, AngeloGioacchino Del Regno wrote:
-> 
->>     - Since SCP firmwares are available on linux-firmware, the
->>       necessary nodes for the dual-core SCP were added to devicetree
->>       along with the firmware-name property in mt8390-genio-common,
->>       enabling hardware video encoders and decoders on the MediaTek
->>       Genio 510 and Genio 700 EVKs.
-> 
-> This looks wrong to me: the devicetree should never care about
-> particular file names in a Linux repository.
-> 
-> Usually what happens is that the device driver must work with
-> a particular firmware version, so the driver is the one that
-> constructs a name based on what firmware is knows and what
-> hardware it is running on, so a newer version of the driver
-> can attempt to load a newer firmware that may be incompatible
-> with the old driver.
-> 
-> The other patches in the branch all look fine to me.
-> 
-> Can you resend the pull request without these patches and
-> try to come up with a different approach?
-> 
->       Arnd
+Hi Krzysztof,
 
-Uhm, I'm not sure if there was a misunderstanding - not only the MediaTek
-devicetrees do that, but also Qualcomm ones are doing the same with their
-adsp, cdsp, modem and adreno zap firmwares...
+On Thu, 2025-05-08 at 08:01 +0200, Krzysztof Kozlowski wrote:
+> On 05/05/2025 15:23, Julien Massot wrote:
+> > The 'mt6359.dtsi' file already uses the '#sound-dai-cells' property.
+> > Add the corresponding property to the binding to fix the following
+> > dtb-check error:
+> If this is a DAI, then you miss dai-common reference. If not, you need
+> to explain it in commit msg.
 
-....not sure, should I drop those commits for now?
+Thanks for the review, I will add the missing dai-common reference in the v=
+2.
 
-Thanks,
-Angelo
+Regards,
+Julien
 
