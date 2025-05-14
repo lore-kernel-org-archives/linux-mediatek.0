@@ -4,110 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A44FCC3ABD9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 May 2025 13:53:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C59FC3ABCC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 May 2025 13:53:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Y4E8aOwQAaUdRX1dyEnehNt0cEoTdcyb+vzWwLzLf9I=; b=W1K3bVdB/baldpi1q1FyzLsF2j
-	K1DUjyqdimgfGGPjW88/7RpZHskW0vZN3vd9YCTAZrv1xSL8DyV7xX27WuDwy/eHXM69QnmBnv4pR
-	kT/NSlYvBKWRJP9Ymiu9UAD1owRzHacW+Qc3xnAVZUoVd11mMF9Q4dCUiBE9Y+SUlfBo0PDhCgGU9
-	aZn3cGBoy+GCAwVL96jaz0IE7/7UfSGnciBBXpTZ1hhRzq1zKvhRb1piOCGih0NusOsHEq1kUOrH2
-	+keGhWoSK/jktYlO5telPYr6OBTCWTWfkRpsIzYyrb2VGS1BR5OOaYoUJ+MsNUeUP7OMh89qwaY9x
-	aMEeeipg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=t5BczD62lnpqa0ma5zM61wuTG/WMMoKoipb4gYjC294=; b=SXhCtkve7OoJAQ8Bw7jKKHR4tj
+	ZFOMd3EtcBuszKZMbuAIYsaxhxZHIMZ/m46zdj5NP9CcklF5K3GHjyflSdhERdMaF8cZ27aWxDu7c
+	vvQ6aQ0ADqvMfWXvS+3KZxEZoK/Zbggz8FaDWs4GomxAi5ybWYDkLfEB3TPEV4t6oZj3n9voIPWnU
+	1v31VbyhRGg3at9dpxutlYbUS6/TmWZQztHBv9XmQnaBH2TenkKDjSyX9ToFfYX6djqL/gg04blhm
+	juSwEtdh9eCvSqfXR94ujJ3GBcmru+TwluNddy4UAsHFbHKByzyAwEpFIEA87zzmP3KFszAsL/6sj
+	WSHveweQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFCYD-0000000FHfv-0KXW;
+	id 1uFCYD-0000000FHgu-28j6;
 	Wed, 14 May 2025 13:53:37 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uF9nU-0000000EqK4-40e1
-	for linux-mediatek@lists.infradead.org;
-	Wed, 14 May 2025 10:57:14 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-3a20743a28bso256256f8f.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 14 May 2025 03:57:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1747220231; x=1747825031; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=Y4E8aOwQAaUdRX1dyEnehNt0cEoTdcyb+vzWwLzLf9I=;
-        b=UUVO3WqQjKKMbZKcrLsZqsH+Pe2JDI+xIdb9ykYXXtJq4cz9liUkrJT9+wl/LG1/wn
-         U0WC717a9SZC0iGOpwt3UdzaZQWGnoaADY7F1Lq6xKgpzxzCD7UOM6yOf4VchmXiatZO
-         qXL18TbnVfDY8gPnyrNJkYeGH0hBjH7BX7YOwhzZnaJQajFPoltYSRq0VM5rdTjVvVCF
-         iz+EG0dc/TzKXdROR3cKnZHFEBoviBRSWHzVdVV1qWSZFeY/G5u4yNUywxOPMOuN0guW
-         VJ7+d3lGRHWf0uv3cWfLLSoXYGPbY9jiABBY4typ0cWNAx71dvvO9CtdBPJesmAswbXc
-         1GMA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1747220231; x=1747825031;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Y4E8aOwQAaUdRX1dyEnehNt0cEoTdcyb+vzWwLzLf9I=;
-        b=Bf34eskXnn9JxD6Iy9ZNo/3yRXSorgMK5x8hrd2cPCd7cxWRqXZPkXmX1qtAT26Ubq
-         9IXweKrPfj26tkdR4LJENgp6xNvOw5Y0wQ5y/FkIqDsdl6+te8kHQ8nmHmC1vHM//Mpe
-         AvsG79JDPuWDK30QVPDz5eVv2f06lhI8RJiKS6EWoa/aEOCntKnYIwzju1E0Q37smOXa
-         KohB82Y2H1Ls8YLM1Nt0WasG8xx4/7pLCKPLLrJiH2zo/qgSU1dRqBuP/N+8oJ5SWD1u
-         I9rasTn/h8jAPO7d0wODrCQabU0mCqFpI+c+PGx42QqqWjL2q6oy9E7LzCCVaoLi3vhr
-         kGqA==
-X-Forwarded-Encrypted: i=1; AJvYcCVQCUvNG+nKIFIUKtBdumLnOH8HB/shHH4eKe5D6oWru0xbcpzPGQuTbCtquFGbbUjxS33eQSum/W5GbWGd0g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzV90uxBIesq+D+pO+f4U3F3TrfktQ7usv+u6qMalhxdIDa5epH
-	9ZBWU8f45GdVezbhCpJ0JG3iMtq7c42CmnEsT4mbo5p3/JPL9nFK+itROonx86Q=
-X-Gm-Gg: ASbGnctCX78DlIjxuuMIBrHdV+r4ppGI9ed6LXUqwJP+8IWKD3VBcSx7Yscwz/X4boR
-	nJ8BeiTyK9upwHuQrQSPeWed/+maKt0BLTmE6jt2ozFManHrE+Mh4gPgZziXWazKLME7FaiXrHM
-	5VMIFIK8txHtaNWkARsWlVaXJDgudxsyVebBccqmmzJu5acYfZ8v/Il4OguYlpjDcPaa7mYk2zA
-	CNUQoV/pO6vB80aMXmJW5tsdhhcNmF6cREUwVAdSqGciv1xlJXn8grmekDdaxkUAvyqThOxoUDs
-	qUOrIg9/0FX/nHo7Kd3XQER1dBIRki/kwxWHCVc8oZrL4Jo0OU7bN638+XofushlF1BjHEYt1EB
-	a7NqM2vqTZ414geTzHIFoNkfNxf91X/1EpJozC2Q4arTNNC+J0w==
-X-Google-Smtp-Source: AGHT+IFtksBMN8N0y1ipHv0ssNQ0FUDjeBMyouJ1A0vX+2sBsa+p6vm/UIeQxO60xKTk6b6EFmeb6w==
-X-Received: by 2002:a05:6000:2207:b0:38d:b090:a0c4 with SMTP id ffacd0b85a97d-3a34991c966mr848096f8f.10.1747220231062;
-        Wed, 14 May 2025 03:57:11 -0700 (PDT)
-Received: from kuoka.c.hoisthospitality.com (110.8.30.213.rev.vodafone.pt. [213.30.8.110])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-442f3368f36sm27362985e9.1.2025.05.14.03.57.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 14 May 2025 03:57:10 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1uF9o5-0000000EqN4-41vn;
+	Wed, 14 May 2025 10:57:53 +0000
+X-UUID: 44544ea830b211f08d385d50fb11b32d-20250514
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=t5BczD62lnpqa0ma5zM61wuTG/WMMoKoipb4gYjC294=;
+	b=r9Mau5Q0bJsLSbLlhJgW2UZhJEtiBHhccw7mTkCherPwXVB90XbuwgmENiBTHNUXx/gkg0OAU4DnJGNg+sfD5oc4cWCLvxDbvbc0wjE1a9HQwOVFmPA/CB4Lu1sHdPZw6sKt9ZWsIGz0iADk3f9KRyK4VK1E/doqeS9ZES3kq6s=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:2d3b2325-08fe-47a7-bac4-e1cfcc62f9c5,IP:0,UR
+	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-25
+X-CID-META: VersionHash:0ef645f,CLOUDID:db73fabf-eade-4d5b-9f81-31d7b5452436,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 44544ea830b211f08d385d50fb11b32d-20250514
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <skylake.huang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1363062314; Wed, 14 May 2025 03:57:45 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Wed, 14 May 2025 18:57:41 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Wed, 14 May 2025 18:57:41 +0800
+From: Sky Huang <SkyLake.Huang@mediatek.com>
+To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>, "David S. Miller"
+	<davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
+	<kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Daniel Golle
+	<daniel@makrotopia.org>, Qingfang Deng <dqfext@gmail.com>, SkyLake Huang
+	<SkyLake.Huang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Trevor Wu <trevor.wu@mediatek.com>,
-	Jiaxin Yu <jiaxin.yu@mediatek.com>,
-	linux-sound@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH] ASoC: dt-bindings: mediatek: Simplify mediatek,clk-provider
-Date: Wed, 14 May 2025 12:57:03 +0200
-Message-ID: <20250514105702.28622-2-krzysztof.kozlowski@linaro.org>
+	balika011 <balika011@gmail.com>, <linux-kernel@vger.kernel.org>,
+	<netdev@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+CC: Steven Liu <Steven.Liu@mediatek.com>, Sky Huang
+	<skylake.huang@mediatek.com>
+Subject: [PATCH net-next v3 0/2] Add built-in 2.5G ethernet phy support on MT7988
+Date: Wed, 14 May 2025 18:57:36 +0800
+Message-ID: <20250514105738.1438421-1-SkyLake.Huang@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1814; i=krzysztof.kozlowski@linaro.org;
- h=from:subject; bh=Io3JrD/y03dOQPQAcqJF5SS7b20bby4BHdbd1e9wLMA=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBoJHb+RsGueHOitBQYXiszb3Mpl2m/RCzDn6fka
- rPIPq97lmOJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaCR2/gAKCRDBN2bmhouD
- 11y6D/9EcflOTi1PXfiKHcWkO2TQd8AiHmKdLSSurf7WcaMBXn8Fbwo73+EJ/2olcQAcj7XZf9D
- 8JwECXhe1ztAZeht1jIcW49QiQRkkUoTkN2KRL4dooNvkTgUY3vgNyA87MXPGPjLmL/JcvJsnsW
- Jry1/y+WGGXJTxvj453+yAfKNDgE2FtURccAdIPzhniUnS4RmnYp2nABLMgdTYv0aBqZbV20rqq
- jOWXfCbRAbLEWCIeZ+nQerpgM8fHM0eTYOuV5MHzhs27OoJkYOLMLAny5qoLl7Zpm7QIs6Sf0TQ
- 411wb3xmZHUvPljW+odA5kp7vNu74ORgeg4sifz8NSK3UY7wfPBnAVDcUwbazT4UPZjVlvd6oJB
- M/oQZ5PI5OZXBBFcvbfNpTspmnlUpx2dl92iNd+EU3tV1ULUHEe7fMMDPmDWuya2uC0byBeV+NX
- KHdBSm5X6JTGBik2vPT29CmY9aUOtWDqcOvbX9/mXZDAkw7FrXY3gbcj83aIpGUxHsXct9+Fp1D
- jjQE9JCq4VNnydAnG14Q7NBEgujHn3urNMS5sHe0sb456zjEw7cQsrs0W6/JmpSTxRQ6N6UrSJU
- AUkb7dxGDDDx+k5ZgmIRFW0TnxfwnBQbiJBYrXSPQny28+3lgQEWgXSN8AGE4cuB9MzdnPo8ura jtDQQXfb+Vlto8A==
-X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp; fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250514_035712_988335_3728469F 
-X-CRM114-Status: UNSURE (   9.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250514_035750_006373_952A24E5 
+X-CRM114-Status: GOOD (  12.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,51 +91,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-"mediatek,clk-provider" property is a string, not an string array, thus
-"items" is not really correct.
+From: Sky Huang <skylake.huang@mediatek.com>
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+This patchset adds support for built-in 2.5Gphy on MT7988, change file
+and config sequence in related Kconfig and Makefile.
+
 ---
- .../devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml  | 7 +++----
- .../bindings/sound/mt8186-mt6366-da7219-max98357.yaml      | 7 +++----
- 2 files changed, 6 insertions(+), 8 deletions(-)
+Change in v2:
+- Add missing dt-bindings and dts node.
+- Remove mtk_phy_leds_state_init() temporarily. I'm going to add LED support
+later.
+- Remove "Firmware loading/trigger ok" log.
+- Add macro define for 0x800e & 0x800f
 
-diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
-index 76d5a437dc8f..7ba2ea2dfa0b 100644
---- a/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
-+++ b/Documentation/devicetree/bindings/sound/mediatek,mt8188-mt6359.yaml
-@@ -96,10 +96,9 @@ patternProperties:
-       mediatek,clk-provider:
-         $ref: /schemas/types.yaml#/definitions/string
-         description: Indicates dai-link clock master.
--        items:
--          enum:
--            - cpu
--            - codec
-+        enum:
-+          - cpu
-+          - codec
- 
-     additionalProperties: false
- 
-diff --git a/Documentation/devicetree/bindings/sound/mt8186-mt6366-da7219-max98357.yaml b/Documentation/devicetree/bindings/sound/mt8186-mt6366-da7219-max98357.yaml
-index cbc641ecbe94..037f21443ad1 100644
---- a/Documentation/devicetree/bindings/sound/mt8186-mt6366-da7219-max98357.yaml
-+++ b/Documentation/devicetree/bindings/sound/mt8186-mt6366-da7219-max98357.yaml
-@@ -124,10 +124,9 @@ patternProperties:
-       mediatek,clk-provider:
-         $ref: /schemas/types.yaml#/definitions/string
-         description: Indicates dai-link clock master.
--        items:
--          enum:
--            - cpu
--            - codec
-+        enum:
-+          - cpu
-+          - codec
- 
-     required:
-       - link-name
+Change in v3:
+1. Remove unnecessary headers and unnecessary print log.
+2. ioremap IO space (MT7988_2P5GE_PMB_FW_BASE/MTK_2P5GPHY_MCU_CSR_BASE)
+directly instead of of_iomap() compatible node (mediatek,2p5gphy-fw) from dtsi
+3. Call mt798x_2p5ge_phy_load_fw() from .probe instead of .config_init. This is
+tested ok with openWRT-24.10 and "mediatek/mt7988/i2p5ge-phy-pmb.bin" firmware
+is embedded into kernel image instead of rootfs image.
+4. Use request_firmware_direct instead of request_firmware. We don't want sysfs
+fallback in this driver to avoid blocking.
+5. Remove mtk_i2p5ge_phy_priv sturct since it's not used anymore.
+---
+Sky Huang (2):
+  net: phy: mediatek: Sort config and file names in Kconfig and Makefile
+  net: phy: mediatek: add driver for built-in 2.5G ethernet PHY on
+    MT7988
+
+ MAINTAINERS                          |   1 +
+ drivers/net/phy/mediatek/Kconfig     |  31 ++-
+ drivers/net/phy/mediatek/Makefile    |   3 +-
+ drivers/net/phy/mediatek/mtk-2p5ge.c | 322 +++++++++++++++++++++++++++
+ 4 files changed, 346 insertions(+), 11 deletions(-)
+ create mode 100644 drivers/net/phy/mediatek/mtk-2p5ge.c
+
 -- 
 2.45.2
 
