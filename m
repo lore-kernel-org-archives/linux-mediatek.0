@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E477CC54755
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 May 2025 12:18:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FA0DC54757
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 May 2025 12:18:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=oUr7nOFcRyK/M34smua52KHb53tyeHekgw/2YxwB/IY=; b=e22iR7D+LHA66KzRvSIq/WaKm8
-	/587wceJmhHg4zygfNr2cmf8/wbQpp44IT3eC5zSXukRCaoV4TmcGD57hMtF9upTVhARrkFkEeI8J
-	wPAvUZ1GbQxTgDkv7925ZsiuUaDp+OT7qV2q9CSVdEfj7tfWz/Ow79CEVRavnjyBIR9SuFNZuRR3X
-	CGLX+yOFf3BiWswIWYwxanc7GYKafbukANDlLla44kwJKv/nft0AW1jxi96b0IgwVY/EqTuZ4pjmg
-	idEpZPPiga+4KiSYK2vbtwMJ9O6b79X3ElkLdeIB8zIzuCY36Mw44vK3wF0OO1i6hzXMFZKdnSwjt
-	zTUlRoTw==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+Wfij9hA7R0rNms9sfnvDpMM7XnUiN9P47Th3VdFtLI=; b=NNv6DnAPMts5WDOa5QtsG4GdhM
+	9ybWLPEWG9pQMgZDdhkOmJ/rP5vJrNV0iiodjOFPUE5V1keVnZw4AhJBdLM3SIXcO8WS5HU17TMp1
+	rkV2CEa5a743EM4GLPYcsg0BtFmgmTonBLGXXM26vzQFEAA9JmxlTcCDeaSb58wtW0IE2I4y7lXug
+	vs9zuiz2+aCT7oA/eH/Vm5kmxFrCeU+u8MuT843th1tnCq90MX/LK6lmSR/AbEVVcw7Vn4VfDW7Dz
+	+lB+xSX+mQ+fGmgM3vROCo9/Z+TouItT5s4ah/UE5uSv/w5tE1CkelSj0EhjvdvfNGz7+B7czkjZX
+	Yf+WBSaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFB3u-0000000F0LD-3xkQ;
-	Wed, 14 May 2025 12:18:14 +0000
+	id 1uFB3y-0000000F0Sc-2Y99;
+	Wed, 14 May 2025 12:18:18 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uF8KS-0000000Eebm-3j3A;
+	id 1uF8KT-0000000Eebp-27S0;
 	Wed, 14 May 2025 09:23:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1747214587;
-	bh=+1pbbQr6IhaWYuDDxWS5O5XFpl8IElD/YxVqY/H8a60=;
-	h=From:To:Cc:Subject:Date:From;
-	b=Wh4sc9Qa05xj4yd8MmneyFPg0FeSVWh+s//2l7EzCfr2FlhjG6lYhSXwNQ6xDkdgq
-	 mQN/iujkehU5CGmkaIFjS3COdJDeqDdSPGOjwbDoRYSSfHkEAcprTHep4lk68ODHlE
-	 ZWExgB1bdfoyMTfKW38EP+egdGFv9wJQnOJ0sCcldJCp/ZaH7UTUA+qq45S2oKlQqU
-	 cPmXRma/D8g8kHkyskyvC0cftGa2qj0zi7i+NxODCKXxexOOlwyNa59H2/P3L7WhDq
-	 e93+p/pdbx2EL2Q9avwLFq/70Ag5V/7V3wKFdEqh7a2sChQKNDRMW2PK9XLJvPVvhA
-	 4K+LqYTed8WXQ==
+	s=mail; t=1747214588;
+	bh=3oP+sXzBifYxFBF4SGDb4wLTHsf6AsJAT8aubEwsuoA=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=U0+11kFAAisqULu24JiHete1De9FBeai9DmTfPutCACRxV7aKFLfHmCANafkDbErB
+	 Cy90YyA3RZEAaxxo3C/a1hETf3dhlZN6PKV9uWq6Bx91i5DyQqDckv8mvMKjTi1r7e
+	 gBBIdrEWJ+Y8+S/kfTViqOESpwNl4SbhDkfwWwtRoP9IJaJercKP5NnW0T5D9RT6gY
+	 eUPK8e7RzN8g6yK1SN23ovcJLYPijfDrVvlN8/eHsF0oHOQjx3SXSzo87siXKe70D7
+	 onm0DDGSnv6VN0yDjDeEdCiWufoo6/gm2V8Kng9MsXgXjHAI9qF/CUblqJmmjmsqrW
+	 9FMv0Pp1EF4jA==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AAD5217E04C0;
-	Wed, 14 May 2025 11:23:06 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7AF1D17E07F2;
+	Wed, 14 May 2025 11:23:07 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: robh@kernel.org
 Cc: linux-kernel@vger.kernel.org,
@@ -54,15 +54,17 @@ Cc: linux-kernel@vger.kernel.org,
 	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
 	Chun-Kuang Hu <chunkuang.hu@mediatek.com>,
 	Conor Dooley <conor.dooley@microchip.com>
-Subject: [PATCH v2 1/3] dt-bindings: display: mediatek: Add compatibles for MT8188 MDP3
-Date: Wed, 14 May 2025 11:22:57 +0200
-Message-ID: <20250514092259.47035-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 2/3] dt-bindings: media: mediatek: mdp3: Add compatibles for MT8188 MDP3
+Date: Wed, 14 May 2025 11:22:58 +0200
+Message-ID: <20250514092259.47035-2-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.49.0
+In-Reply-To: <20250514092259.47035-1-angelogioacchino.delregno@collabora.com>
+References: <20250514092259.47035-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250514_022309_076935_4611BE4A 
-X-CRM114-Status: UNSURE (   8.73  )
+X-CRM114-CacheID: sfid-20250514_022309_689721_3A5F3B71 
+X-CRM114-Status: UNSURE (   9.17  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,88 +80,143 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add compatible strings for the AAL, COLOR, MERGE and PADDING
-hardware components found in MediaTek's MT8188 SoC.
+Add compatible strings for the FG, HDR, RSZ, STITCH, TCC, TDSHP
+and WROT hardware components found in MediaTek's MT8188 SoC.
 
 This hardware is compatible with MT8195.
 
 Acked-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Acked-by: Chun-Kuang Hu <chunkuang.hu@mediatek.com>
 Acked-by: Conor Dooley <conor.dooley@microchip.com>
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../bindings/display/mediatek/mediatek,aal.yaml        |  4 ++++
- .../bindings/display/mediatek/mediatek,color.yaml      |  4 ++++
- .../bindings/display/mediatek/mediatek,merge.yaml      |  4 ++++
- .../bindings/display/mediatek/mediatek,padding.yaml    | 10 +++++++---
- 4 files changed, 19 insertions(+), 3 deletions(-)
+ .../devicetree/bindings/media/mediatek,mdp3-fg.yaml       | 8 ++++++--
+ .../devicetree/bindings/media/mediatek,mdp3-hdr.yaml      | 8 ++++++--
+ .../devicetree/bindings/media/mediatek,mdp3-rsz.yaml      | 1 +
+ .../devicetree/bindings/media/mediatek,mdp3-stitch.yaml   | 8 ++++++--
+ .../devicetree/bindings/media/mediatek,mdp3-tcc.yaml      | 8 ++++++--
+ .../devicetree/bindings/media/mediatek,mdp3-tdshp.yaml    | 8 ++++++--
+ .../devicetree/bindings/media/mediatek,mdp3-wrot.yaml     | 1 +
+ 7 files changed, 32 insertions(+), 10 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-index 5d2089dc596e..daf90ebb39bf 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-@@ -25,6 +25,10 @@ properties:
-           - mediatek,mt8173-disp-aal
-           - mediatek,mt8183-disp-aal
-           - mediatek,mt8195-mdp3-aal
-+      - items:
-+          - enum:
-+              - mediatek,mt8188-mdp3-aal
-+          - const: mediatek,mt8195-mdp3-aal
-       - items:
-           - enum:
-               - mediatek,mt2712-disp-aal
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
-index 6160439ce4d7..5564f4063317 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
-@@ -27,6 +27,10 @@ properties:
-           - mediatek,mt8167-disp-color
-           - mediatek,mt8173-disp-color
-           - mediatek,mt8195-mdp3-color
-+      - items:
-+          - enum:
-+              - mediatek,mt8188-mdp3-color
-+          - const: mediatek,mt8195-mdp3-color
-       - items:
-           - enum:
-               - mediatek,mt7623-disp-color
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
-index 0de9f64f3f84..3798a25402d3 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
-@@ -25,6 +25,10 @@ properties:
-           - mediatek,mt8173-disp-merge
-           - mediatek,mt8195-disp-merge
-           - mediatek,mt8195-mdp3-merge
-+      - items:
-+          - enum:
-+              - mediatek,mt8188-mdp3-merge
-+          - const: mediatek,mt8195-mdp3-merge
-       - items:
-           - const: mediatek,mt6795-disp-merge
-           - const: mediatek,mt8173-disp-merge
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,padding.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,padding.yaml
-index be07bbdc54e3..86787866ced0 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,padding.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,padding.yaml
-@@ -20,9 +20,13 @@ description:
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-fg.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-fg.yaml
+index 03f31b009085..40fda59fa8a8 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,mdp3-fg.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-fg.yaml
+@@ -16,8 +16,12 @@ description:
  
  properties:
    compatible:
 -    enum:
--      - mediatek,mt8188-disp-padding
--      - mediatek,mt8195-mdp3-padding
+-      - mediatek,mt8195-mdp3-fg
 +    oneOf:
 +      - enum:
-+          - mediatek,mt8188-disp-padding
-+          - mediatek,mt8195-mdp3-padding
++          - mediatek,mt8195-mdp3-fg
 +      - items:
-+          - const: mediatek,mt8188-mdp3-padding
-+          - const: mediatek,mt8195-mdp3-padding
++          - const: mediatek,mt8188-mdp3-fg
++          - const: mediatek,mt8195-mdp3-fg
  
    reg:
      maxItems: 1
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-hdr.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-hdr.yaml
+index d4609bba6578..d9f926c20220 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,mdp3-hdr.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-hdr.yaml
+@@ -16,8 +16,12 @@ description:
+ 
+ properties:
+   compatible:
+-    enum:
+-      - mediatek,mt8195-mdp3-hdr
++    oneOf:
++      - enum:
++          - mediatek,mt8195-mdp3-hdr
++      - items:
++          - const: mediatek,mt8188-mdp3-hdr
++          - const: mediatek,mt8195-mdp3-hdr
+ 
+   reg:
+     maxItems: 1
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
+index f5676bec4326..8124c39d73e9 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
+@@ -20,6 +20,7 @@ properties:
+           - mediatek,mt8183-mdp3-rsz
+       - items:
+           - enum:
++              - mediatek,mt8188-mdp3-rsz
+               - mediatek,mt8195-mdp3-rsz
+           - const: mediatek,mt8183-mdp3-rsz
+ 
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-stitch.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-stitch.yaml
+index d815bea29154..1d8e7e202c42 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,mdp3-stitch.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-stitch.yaml
+@@ -16,8 +16,12 @@ description:
+ 
+ properties:
+   compatible:
+-    enum:
+-      - mediatek,mt8195-mdp3-stitch
++    oneOf:
++      - enum:
++          - mediatek,mt8195-mdp3-stitch
++      - items:
++          - const: mediatek,mt8188-mdp3-stitch
++          - const: mediatek,mt8195-mdp3-stitch
+ 
+   reg:
+     maxItems: 1
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml
+index 14ea556d4f82..6cff7c073ce4 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml
+@@ -17,8 +17,12 @@ description:
+ 
+ properties:
+   compatible:
+-    enum:
+-      - mediatek,mt8195-mdp3-tcc
++    oneOf:
++      - enum:
++          - mediatek,mt8195-mdp3-tcc
++      - items:
++          - const: mediatek,mt8188-mdp3-tcc
++          - const: mediatek,mt8195-mdp3-tcc
+ 
+   reg:
+     maxItems: 1
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-tdshp.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-tdshp.yaml
+index 8ab7f2d8e148..cdfa27324738 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,mdp3-tdshp.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-tdshp.yaml
+@@ -16,8 +16,12 @@ description:
+ 
+ properties:
+   compatible:
+-    enum:
+-      - mediatek,mt8195-mdp3-tdshp
++    oneOf:
++      - enum:
++          - mediatek,mt8195-mdp3-tdshp
++      - items:
++          - const: mediatek,mt8188-mdp3-tdshp
++          - const: mediatek,mt8195-mdp3-tdshp
+ 
+   reg:
+     maxItems: 1
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
+index 53a679338402..b6269f4f9fd6 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
+@@ -20,6 +20,7 @@ properties:
+           - mediatek,mt8183-mdp3-wrot
+       - items:
+           - enum:
++              - mediatek,mt8188-mdp3-wrot
+               - mediatek,mt8195-mdp3-wrot
+           - const: mediatek,mt8183-mdp3-wrot
+ 
 -- 
 2.49.0
 
