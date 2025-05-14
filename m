@@ -4,66 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E50F8C3ABCC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 May 2025 14:49:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5C07C3ABCC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 May 2025 15:04:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t/uPvQl5SO699WAK2gwjv1DwR8/P78GRzFmmIsaqUe8=; b=u9QgxK4CyyAtwpatlDMuGqRZFR
-	kvBcrfpe6qRt4whiJ+v63ykQh89vq+P/dlj0vEglIaziBsPp1v8JvBnYCUnNy3FhqnbITqRPLhWG9
-	miGvmIgwjepZw04ixbXV7YxZb1vRiNRGYg6ZtejOeuSBUPrJmL8u6LUNVSZGwwi23yJ9bDY0e6Wxc
-	nDqNG6DZmpLnLnPY2uEeQfCBWSWpZvEP3hMycUtivWR8pIhmmZVff50OhkY+o+Fdilu4EcrbJ2IZK
-	dC6frU8ELzu9Kdbio/0kONGOQCY70W7daTnmO6UXb1Wi99VEJ85UFM+3+q5WmsFYXkGrd6Yb7JHgY
-	3Cc1ODyg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=fNpgEokCPRFeDwjUBUmb0olF781KiYx0T9YrAF4Kizo=; b=ds7RokFE8dEI0lUu/10FLdtXkO
+	qDh3KS+opukG+tyEH5BniDXEhV3VAeMSiPwylVdJRY44/w2QN5HNoJt91g19VGdiM5r7chFybZ9Xv
+	qvbU8LxHDvR1irZMKGbyEy8FrorIg35f/4RXZTw/cf2FMhYAZm7qt//HZNcjOsx2S4MxBvHSgZd4T
+	GjzSWd2lMFuw6ytpHkN59iWz6QnJG/uXhnRNYGLViCC6Vtq075hvlo8OsZIVm9+RhULJBql8BnQxs
+	d9AZx6s3qQHFsHLp8IWWdoh7PyD1TRCYzNUh0CWFfyRapO0R4hdfhlJSLwHpgcQ3/HHA3ldq4g7/V
+	2ZG3mQ3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFDQK-0000000FTHY-3WZ6;
-	Wed, 14 May 2025 14:49:32 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uFDee-0000000FVPh-3FjZ;
+	Wed, 14 May 2025 15:04:20 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFDDT-0000000FQhp-0Fow
-	for linux-mediatek@lists.infradead.org;
-	Wed, 14 May 2025 14:36:16 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id C41EB40BD2;
-	Wed, 14 May 2025 14:36:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 13F61C4CEE3;
-	Wed, 14 May 2025 14:36:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747233374;
-	bh=t/uPvQl5SO699WAK2gwjv1DwR8/P78GRzFmmIsaqUe8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Y3X/1foPhOD3r0WP8EG2by5OEvVZPzSSU98aXZEVBHolHg3vFHyolHi5hlbNTTpaF
-	 Fn9JNJ54/o9EXEBNnNCnmvwh9pywmXLIq/29nG2diKO4LnJm4Z72uCaRTgfAhuL3Q0
-	 AW8nl2GmuVEjP5cdYLGEU8szMrJC6ME3D1yILxckEzaSCREa4D6ThTtMy67wjoDnhT
-	 tyM+aTqaD7nIYGSwkRq3PKFug2sIvXLbKA/j1kERCJAfs3Zfx02bJyfAv6U+5hPVT7
-	 lZkOiD6gzcG1GgyWef04ti5LQPoClpb+bDtAfV6ghuvE2+m/PpS/UwDpRpIjyn42j+
-	 NqQNJ8AVq28PQ==
-Date: Wed, 14 May 2025 16:36:09 +0200
-From: Mark Brown <broonie@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Jiaxin Yu <jiaxin.yu@mediatek.com>, linux-sound@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Darren Ye <darren.ye@mediatek.com>
-Subject: Re: [PATCH 0/3] ASoC: mediatek: mt8183-afe-pcm: Shorten source code
-Message-ID: <aCSqWbT9t1T29HT_@finisterre.sirena.org.uk>
-References: <20250425082551.1467042-1-wenst@chromium.org>
- <86b55c96-7ec3-48ed-83b4-f434d7fcb5c2@collabora.com>
+	id 1uFBLa-0000000F6lX-12yK;
+	Wed, 14 May 2025 12:36:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1747226188;
+	bh=wvsdiJsKD6QmRj9PJvvy8ci556EOSrI0fkrAAdKIOKw=;
+	h=From:Date:Subject:To:Cc:From;
+	b=ZAGp3nc+C+oM1pLvBZf1p1hJ50zvG+FWZ2DUD1ve3bBQIqFDmdBdNPaimrjLxr+XA
+	 FoIb2Nfubsbu35iLBy2PMx7JNFL0dxqI5boaMh5GUCoS5lHlPLnnZOWWKnIMK5jdML
+	 b/Nsrf/V1a+DJhA0QzVJ2XJYIerYfHPiQTQJVdSg8Vx9sdMwb0scKCIzUlLJQQVRxx
+	 f9OYr9Vb5q2Oppo8JhTMpwGJVkYEFJ1rcdkfmIRRHHTjWfV3e6Y1TOLMTVdF9hU5PO
+	 Ynt2WZmumt8xQrEk1hVLyCARePli78UyZDa8TnErutCk7x7OlgZLORL1vmM0rDl3ND
+	 ZdR5Lxa819lJA==
+Received: from [192.168.1.63] (unknown [70.107.117.78])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0B10217E090E;
+	Wed, 14 May 2025 14:36:24 +0200 (CEST)
+From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Date: Wed, 14 May 2025 08:36:06 -0400
+Subject: [PATCH] regulator: dt-bindings: mt6357: Drop fixed compatible
+ requirement
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="G4b3JjsI8btsM/C/"
-Content-Disposition: inline
-In-Reply-To: <86b55c96-7ec3-48ed-83b4-f434d7fcb5c2@collabora.com>
-X-Cookie: Well begun is half done.
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20250514-mt6357-regulator-fixed-compatibles-removal-bindings-v1-1-2421e9cc6cc7@collabora.com>
+X-B4-Tracking: v=1; b=H4sIADWOJGgC/xWNywqDMBBFf0Vm3QGjRkt/pbiIZkwH8pBJKgXx3
+ xuXh8u554RMwpTh1ZwgdHDmFCuoRwPrx0RHyLYydG2nW616DGXs9YRC7utNSYIb/8jimsJuCi+
+ ect1COozHhaPl6DJqGtVmBtLPYYL6vAvd1l19z9f1B4DEtDqFAAAA
+X-Change-ID: 20250513-mt6357-regulator-fixed-compatibles-removal-bindings-5e61fa4e5847
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Chen Zhong <chen.zhong@mediatek.com>, 
+ Fabien Parent <fabien.parent@linaro.org>, 
+ Alexandre Mergnat <amergnat@baylibre.com>
+Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250514_073615_122137_CB09FECB 
-X-CRM114-Status: GOOD (  15.58  )
+X-CRM114-CacheID: sfid-20250514_053630_440684_6EF3178A 
+X-CRM114-Status: UNSURE (   9.34  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,42 +86,123 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Some of the regulators on the MT6357 PMIC currently reference the
+fixed-regulator dt-binding, which enforces the presence of a
+regulator-fixed compatible. However since all regulators on the MT6357
+PMIC are handled by a single mt6357-regulator driver, probed through
+MFD, the compatibles don't serve any purpose. In fact they cause
+failures in the DT kselftest since they aren't probed by the fixed
+regulator driver as would be expected. Furthermore this is the only
+dt-binding in this family like this: mt6359-regulator and
+mt6358-regulator don't require those compatibles.
 
---G4b3JjsI8btsM/C/
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Commit d77e89b7b03f ("arm64: dts: mediatek: mt6357: Drop regulator-fixed
+compatibles") removed the compatibles from Devicetree, but missed
+updating the binding, which still requires them, introducing dt-binding
+errors. Remove the compatible requirement by referencing the plain
+regulator dt-binding instead to fix the dt-binding errors.
 
-On Wed, May 14, 2025 at 03:49:48PM +0200, AngeloGioacchino Del Regno wrote:
-> Il 25/04/25 10:25, Chen-Yu Tsai ha scritto:
+Fixes: d77e89b7b03f ("arm64: dts: mediatek: mt6357: Drop regulator-fixed compatibles")
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+ .../bindings/regulator/mediatek,mt6357-regulator.yaml        | 12 +-----------
+ 1 file changed, 1 insertion(+), 11 deletions(-)
 
-> > This series is meant as an example on how to use macros and range cases
-> > to shorten the MediaTek audio frontend drivers. The drivers have large
-> > tables describing the registers and register fields for every supported
-> > audio DMA interface. (Some are actually skipped!) There's a lot of
-> > duplication which can be eliminated using macros. This should serve as
-> > a reference for the MT8196 AFE driver that I had commented on.
+diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6357-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6357-regulator.yaml
+index 6327bb2f6ee080a178ff3e982768c5eb0595e771..698266c09e25359a516d969a0487cc94444b842d 100644
+--- a/Documentation/devicetree/bindings/regulator/mediatek,mt6357-regulator.yaml
++++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6357-regulator.yaml
+@@ -33,7 +33,7 @@ patternProperties:
+ 
+   "^ldo-v(camio18|aud28|aux18|io18|io28|rf12|rf18|cn18|cn28|fe28)$":
+     type: object
+-    $ref: fixed-regulator.yaml#
++    $ref: regulator.yaml#
+     unevaluatedProperties: false
+     description:
+       Properties for single fixed LDO regulator.
+@@ -112,7 +112,6 @@ examples:
+           regulator-enable-ramp-delay = <220>;
+         };
+         mt6357_vfe28_reg: ldo-vfe28 {
+-          compatible = "regulator-fixed";
+           regulator-name = "vfe28";
+           regulator-min-microvolt = <2800000>;
+           regulator-max-microvolt = <2800000>;
+@@ -125,14 +124,12 @@ examples:
+           regulator-enable-ramp-delay = <110>;
+         };
+         mt6357_vrf18_reg: ldo-vrf18 {
+-          compatible = "regulator-fixed";
+           regulator-name = "vrf18";
+           regulator-min-microvolt = <1800000>;
+           regulator-max-microvolt = <1800000>;
+           regulator-enable-ramp-delay = <110>;
+         };
+         mt6357_vrf12_reg: ldo-vrf12 {
+-          compatible = "regulator-fixed";
+           regulator-name = "vrf12";
+           regulator-min-microvolt = <1200000>;
+           regulator-max-microvolt = <1200000>;
+@@ -157,14 +154,12 @@ examples:
+           regulator-enable-ramp-delay = <264>;
+         };
+         mt6357_vcn28_reg: ldo-vcn28 {
+-          compatible = "regulator-fixed";
+           regulator-name = "vcn28";
+           regulator-min-microvolt = <2800000>;
+           regulator-max-microvolt = <2800000>;
+           regulator-enable-ramp-delay = <264>;
+         };
+         mt6357_vcn18_reg: ldo-vcn18 {
+-          compatible = "regulator-fixed";
+           regulator-name = "vcn18";
+           regulator-min-microvolt = <1800000>;
+           regulator-max-microvolt = <1800000>;
+@@ -183,7 +178,6 @@ examples:
+           regulator-enable-ramp-delay = <264>;
+         };
+         mt6357_vcamio_reg: ldo-vcamio18 {
+-          compatible = "regulator-fixed";
+           regulator-name = "vcamio";
+           regulator-min-microvolt = <1800000>;
+           regulator-max-microvolt = <1800000>;
+@@ -212,28 +206,24 @@ examples:
+           regulator-always-on;
+         };
+         mt6357_vaux18_reg: ldo-vaux18 {
+-          compatible = "regulator-fixed";
+           regulator-name = "vaux18";
+           regulator-min-microvolt = <1800000>;
+           regulator-max-microvolt = <1800000>;
+           regulator-enable-ramp-delay = <264>;
+         };
+         mt6357_vaud28_reg: ldo-vaud28 {
+-          compatible = "regulator-fixed";
+           regulator-name = "vaud28";
+           regulator-min-microvolt = <2800000>;
+           regulator-max-microvolt = <2800000>;
+           regulator-enable-ramp-delay = <264>;
+         };
+         mt6357_vio28_reg: ldo-vio28 {
+-          compatible = "regulator-fixed";
+           regulator-name = "vio28";
+           regulator-min-microvolt = <2800000>;
+           regulator-max-microvolt = <2800000>;
+           regulator-enable-ramp-delay = <264>;
+         };
+         mt6357_vio18_reg: ldo-vio18 {
+-          compatible = "regulator-fixed";
+           regulator-name = "vio18";
+           regulator-min-microvolt = <1800000>;
+           regulator-max-microvolt = <1800000>;
 
-> Sorry for the very long wait here; the entire series is
+---
+base-commit: edef457004774e598fc4c1b7d1d4f0bcd9d0bb30
+change-id: 20250513-mt6357-regulator-fixed-compatibles-removal-bindings-5e61fa4e5847
 
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Best regards,
+-- 
+Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
-Unfortunately this doesn't apply against current code (I guess due to
-development in the intervening time), could you please check and resend?
-
---G4b3JjsI8btsM/C/
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmgkqlkACgkQJNaLcl1U
-h9BagAf+LbiTr/XEhuAQvngZeJHld91IJrIAjQzha/eW6VThB0hPAijghqc0XSvL
-bI33d35Hm/Y3ZsiIfOhqqg1nL0C4JRcJtF2AJnWXQCBuTq3ROom0xl4ZZjhZkuJb
-jnqxMh4TyM6ogM4TGCwhmTlV/LFYEKfL951hYfY5XtAuj+7io5CHnRPj5eJcBhat
-Y0Xj2jiWcWdH1zlJbTk9NYUZHq56sJS1nSXqupRpEkgGNLbX3vkSqjcUlSMOI5Bi
-MNsc6fUgHxEIZUippP3c3NSw6g5WJRTnnM+W6XilhWmIaP8wl8fGdQKWyIIpcoaS
-Qq/1byLn9CAo9+9VrYHQjTDiwcmE3A==
-=zlK1
------END PGP SIGNATURE-----
-
---G4b3JjsI8btsM/C/--
 
