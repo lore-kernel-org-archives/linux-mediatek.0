@@ -4,74 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5C07C3ABCC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 May 2025 15:04:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F397AC3ABCC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 May 2025 15:19:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=fNpgEokCPRFeDwjUBUmb0olF781KiYx0T9YrAF4Kizo=; b=ds7RokFE8dEI0lUu/10FLdtXkO
-	qDh3KS+opukG+tyEH5BniDXEhV3VAeMSiPwylVdJRY44/w2QN5HNoJt91g19VGdiM5r7chFybZ9Xv
-	qvbU8LxHDvR1irZMKGbyEy8FrorIg35f/4RXZTw/cf2FMhYAZm7qt//HZNcjOsx2S4MxBvHSgZd4T
-	GjzSWd2lMFuw6ytpHkN59iWz6QnJG/uXhnRNYGLViCC6Vtq075hvlo8OsZIVm9+RhULJBql8BnQxs
-	d9AZx6s3qQHFsHLp8IWWdoh7PyD1TRCYzNUh0CWFfyRapO0R4hdfhlJSLwHpgcQ3/HHA3ldq4g7/V
-	2ZG3mQ3Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:Cc:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UizUCsRI54NulxCIGiE3a13b3aowPXbAgl8KTCDAKHE=; b=hQ0C7hdB15ddX8SNwDZiJKZ000
+	ZVaeJKfkP40tkQgNLpWjKfCG0xhBTganP4s0hRWS00Q7sThWX50ql6IGtw6AZeIkdE4Upf74RPdlX
+	dwO0XsdiTUCJuzNfbHsxV98gwQOsdvcYm1culEITxiw6DbkDrfJhn9buZbm/0oTSECFOc/t3Ijd0e
+	ANfkrjlrVq2o85QgE60LX3BYhZdAPEVJ7931sWfWB4tmMXCt8OspVAUUj85q/sWCPC76tYfl9Xyot
+	pfhlj4LeF/UISJ1ZrpSaz8ixDNbEenc/LttHNTW3l48W6JHjM+7XdTnztiNuAh7OhANzFkHJ4jPV2
+	9diAQA8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFDee-0000000FVPh-3FjZ;
-	Wed, 14 May 2025 15:04:20 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uFDt4-0000000FYzu-2trZ;
+	Wed, 14 May 2025 15:19:14 +0000
+Received: from mail.tuxedocomputers.com ([157.90.84.7])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFBLa-0000000F6lX-12yK;
-	Wed, 14 May 2025 12:36:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1747226188;
-	bh=wvsdiJsKD6QmRj9PJvvy8ci556EOSrI0fkrAAdKIOKw=;
-	h=From:Date:Subject:To:Cc:From;
-	b=ZAGp3nc+C+oM1pLvBZf1p1hJ50zvG+FWZ2DUD1ve3bBQIqFDmdBdNPaimrjLxr+XA
-	 FoIb2Nfubsbu35iLBy2PMx7JNFL0dxqI5boaMh5GUCoS5lHlPLnnZOWWKnIMK5jdML
-	 b/Nsrf/V1a+DJhA0QzVJ2XJYIerYfHPiQTQJVdSg8Vx9sdMwb0scKCIzUlLJQQVRxx
-	 f9OYr9Vb5q2Oppo8JhTMpwGJVkYEFJ1rcdkfmIRRHHTjWfV3e6Y1TOLMTVdF9hU5PO
-	 Ynt2WZmumt8xQrEk1hVLyCARePli78UyZDa8TnErutCk7x7OlgZLORL1vmM0rDl3ND
-	 ZdR5Lxa819lJA==
-Received: from [192.168.1.63] (unknown [70.107.117.78])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0B10217E090E;
-	Wed, 14 May 2025 14:36:24 +0200 (CEST)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Wed, 14 May 2025 08:36:06 -0400
-Subject: [PATCH] regulator: dt-bindings: mt6357: Drop fixed compatible
- requirement
+	id 1uFBxO-0000000FBBg-3Vk3;
+	Wed, 14 May 2025 13:15:36 +0000
+Received: from [192.168.178.76] (host-212-18-30-247.customer.m-online.net [212.18.30.247])
+	(Authenticated sender: g.gottleuber@tuxedocomputers.com)
+	by mail.tuxedocomputers.com (Postfix) with ESMTPSA id B0DBD2FC0050;
+	Wed, 14 May 2025 15:15:28 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=tuxedocomputers.com;
+	s=default; t=1747228529;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=UizUCsRI54NulxCIGiE3a13b3aowPXbAgl8KTCDAKHE=;
+	b=X2KJ17ih4v72TpBy4Wxw0AnqbqoLTHpfV8Uyd7xh7vrzDT43wIrmqx5W7QtvwU2ExLFx4z
+	42dpGu1epMreLztFrYMKbW9lC6h6n3yTUyMpmChmxDAkaGDcb0gI7eODxDpwmj1cRi5N9p
+	TIhRB+2QqYWCxpF8ilat2iL0k8WcsIo=
+Authentication-Results: mail.tuxedocomputers.com;
+	auth=pass smtp.auth=g.gottleuber@tuxedocomputers.com smtp.mailfrom=ggo@tuxedocomputers.com
+Message-ID: <8db21316-9db2-4ef8-95ca-bec9b6623211@tuxedocomputers.com>
+Date: Wed, 14 May 2025 15:15:28 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: RE: 6 Ghz frequencies always listed as disabled in newer kernels
+ with Mediatek MT7921K (RZ608)
+To: =?UTF-8?B?TWluZ3llbiBIc2llaCAo6Kyd5piO6Ku6KQ==?=
+ <Mingyen.Hsieh@mediatek.com>, Slavi Pantaleev <slavi@devture.com>,
+ Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Ryder Lee <Ryder.Lee@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ =?UTF-8?B?RGVyZW4gV3UgKOatpuW+t+S7gSk=?= <Deren.Wu@mediatek.com>,
+ "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
+References: <18be5ba2-6dc4-4766-9944-59cb46c8dfaf@devture.com>
+ <SI2PR03MB532296077BDB2BEBE79DDB2885FC2@SI2PR03MB5322.apcprd03.prod.outlook.com>
+Content-Language: en-US
+From: ggo@tuxedocomputers.com
+Autocrypt: addr=g.gottleuber@tuxedocomputers.com; keydata=
+ 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
+ bsxTTcOuRnk=
+Cc: Georg Gottleuber <ggo@tuxedocomputers.com>
+In-Reply-To: <SI2PR03MB532296077BDB2BEBE79DDB2885FC2@SI2PR03MB5322.apcprd03.prod.outlook.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Message-Id: <20250514-mt6357-regulator-fixed-compatibles-removal-bindings-v1-1-2421e9cc6cc7@collabora.com>
-X-B4-Tracking: v=1; b=H4sIADWOJGgC/xWNywqDMBBFf0Vm3QGjRkt/pbiIZkwH8pBJKgXx3
- xuXh8u554RMwpTh1ZwgdHDmFCuoRwPrx0RHyLYydG2nW616DGXs9YRC7utNSYIb/8jimsJuCi+
- ect1COozHhaPl6DJqGtVmBtLPYYL6vAvd1l19z9f1B4DEtDqFAAAA
-X-Change-ID: 20250513-mt6357-regulator-fixed-compatibles-removal-bindings-5e61fa4e5847
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Chen Zhong <chen.zhong@mediatek.com>, 
- Fabien Parent <fabien.parent@linaro.org>, 
- Alexandre Mergnat <amergnat@baylibre.com>
-Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250514_053630_440684_6EF3178A 
-X-CRM114-Status: UNSURE (   9.34  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250514_061535_344515_57C0521F 
+X-CRM114-Status: GOOD (  15.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,123 +129,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some of the regulators on the MT6357 PMIC currently reference the
-fixed-regulator dt-binding, which enforces the presence of a
-regulator-fixed compatible. However since all regulators on the MT6357
-PMIC are handled by a single mt6357-regulator driver, probed through
-MFD, the compatibles don't serve any purpose. In fact they cause
-failures in the DT kselftest since they aren't probed by the fixed
-regulator driver as would be expected. Furthermore this is the only
-dt-binding in this family like this: mt6359-regulator and
-mt6358-regulator don't require those compatibles.
+Hi Yen,
 
-Commit d77e89b7b03f ("arm64: dts: mediatek: mt6357: Drop regulator-fixed
-compatibles") removed the compatibles from Devicetree, but missed
-updating the binding, which still requires them, introducing dt-binding
-errors. Remove the compatible requirement by referencing the plain
-regulator dt-binding instead to fix the dt-binding errors.
+Friendly reminder of this topic.
 
-Fixes: d77e89b7b03f ("arm64: dts: mediatek: mt6357: Drop regulator-fixed compatibles")
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
----
- .../bindings/regulator/mediatek,mt6357-regulator.yaml        | 12 +-----------
- 1 file changed, 1 insertion(+), 11 deletions(-)
+We have the same problem with RZ608 and RZ616: All 6GHz channels are
+disabled by mt7921_regd_channel_update().
 
-diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6357-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6357-regulator.yaml
-index 6327bb2f6ee080a178ff3e982768c5eb0595e771..698266c09e25359a516d969a0487cc94444b842d 100644
---- a/Documentation/devicetree/bindings/regulator/mediatek,mt6357-regulator.yaml
-+++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6357-regulator.yaml
-@@ -33,7 +33,7 @@ patternProperties:
- 
-   "^ldo-v(camio18|aud28|aux18|io18|io28|rf12|rf18|cn18|cn28|fe28)$":
-     type: object
--    $ref: fixed-regulator.yaml#
-+    $ref: regulator.yaml#
-     unevaluatedProperties: false
-     description:
-       Properties for single fixed LDO regulator.
-@@ -112,7 +112,6 @@ examples:
-           regulator-enable-ramp-delay = <220>;
-         };
-         mt6357_vfe28_reg: ldo-vfe28 {
--          compatible = "regulator-fixed";
-           regulator-name = "vfe28";
-           regulator-min-microvolt = <2800000>;
-           regulator-max-microvolt = <2800000>;
-@@ -125,14 +124,12 @@ examples:
-           regulator-enable-ramp-delay = <110>;
-         };
-         mt6357_vrf18_reg: ldo-vrf18 {
--          compatible = "regulator-fixed";
-           regulator-name = "vrf18";
-           regulator-min-microvolt = <1800000>;
-           regulator-max-microvolt = <1800000>;
-           regulator-enable-ramp-delay = <110>;
-         };
-         mt6357_vrf12_reg: ldo-vrf12 {
--          compatible = "regulator-fixed";
-           regulator-name = "vrf12";
-           regulator-min-microvolt = <1200000>;
-           regulator-max-microvolt = <1200000>;
-@@ -157,14 +154,12 @@ examples:
-           regulator-enable-ramp-delay = <264>;
-         };
-         mt6357_vcn28_reg: ldo-vcn28 {
--          compatible = "regulator-fixed";
-           regulator-name = "vcn28";
-           regulator-min-microvolt = <2800000>;
-           regulator-max-microvolt = <2800000>;
-           regulator-enable-ramp-delay = <264>;
-         };
-         mt6357_vcn18_reg: ldo-vcn18 {
--          compatible = "regulator-fixed";
-           regulator-name = "vcn18";
-           regulator-min-microvolt = <1800000>;
-           regulator-max-microvolt = <1800000>;
-@@ -183,7 +178,6 @@ examples:
-           regulator-enable-ramp-delay = <264>;
-         };
-         mt6357_vcamio_reg: ldo-vcamio18 {
--          compatible = "regulator-fixed";
-           regulator-name = "vcamio";
-           regulator-min-microvolt = <1800000>;
-           regulator-max-microvolt = <1800000>;
-@@ -212,28 +206,24 @@ examples:
-           regulator-always-on;
-         };
-         mt6357_vaux18_reg: ldo-vaux18 {
--          compatible = "regulator-fixed";
-           regulator-name = "vaux18";
-           regulator-min-microvolt = <1800000>;
-           regulator-max-microvolt = <1800000>;
-           regulator-enable-ramp-delay = <264>;
-         };
-         mt6357_vaud28_reg: ldo-vaud28 {
--          compatible = "regulator-fixed";
-           regulator-name = "vaud28";
-           regulator-min-microvolt = <2800000>;
-           regulator-max-microvolt = <2800000>;
-           regulator-enable-ramp-delay = <264>;
-         };
-         mt6357_vio28_reg: ldo-vio28 {
--          compatible = "regulator-fixed";
-           regulator-name = "vio28";
-           regulator-min-microvolt = <2800000>;
-           regulator-max-microvolt = <2800000>;
-           regulator-enable-ramp-delay = <264>;
-         };
-         mt6357_vio18_reg: ldo-vio18 {
--          compatible = "regulator-fixed";
-           regulator-name = "vio18";
-           regulator-min-microvolt = <1800000>;
-           regulator-max-microvolt = <1800000>;
+Is there anything I can do to help?
 
----
-base-commit: edef457004774e598fc4c1b7d1d4f0bcd9d0bb30
-change-id: 20250513-mt6357-regulator-fixed-compatibles-removal-bindings-5e61fa4e5847
+Regards,
+Georg
 
-Best regards,
--- 
-Nícolas F. R. A. Prado <nfraprado@collabora.com>
+
+Am 12.02.25 um 03:18 schrieb Mingyen Hsieh (謝明諺):
+> Hi Slavi,
+> 
+> Thank you for reporting this issue.
+> I will look into what went wrong.
+> 
+> Best Regards,
+> Yen.
+> 
+> -----Original Message-----
+> From: Slavi Pantaleev <slavi@devture.com> 
+> Sent: Monday, February 10, 2025 10:56 PM
+> To: Felix Fietkau <nbd@nbd.name>; Lorenzo Bianconi <lorenzo@kernel.org>; Ryder Lee <Ryder.Lee@mediatek.com>; Kalle Valo <kvalo@kernel.org>; Matthias Brugger <matthias.bgg@gmail.com>; AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>; Mingyen Hsieh (謝明諺) <Mingyen.Hsieh@mediatek.com>; Deren Wu (武德仁) <Deren.Wu@mediatek.com>; linux-wireless@vger.kernel.org; linux-kernel@vger.kernel.org; linux-arm-kernel@lists.infradead.org; linux-mediatek@lists.infradead.org
+> Subject: 6 Ghz frequencies always listed as disabled in newer kernels with Mediatek MT7921K (RZ608)
+> 
+> 
+> External email : Please do not click links or open attachments until you have verified the sender or the content.
+> 
+> 
+> Hello!
+> 
+> This is in regard to Bugzilla Bug 218731 - Tri-band AMD RZ608 (MediaTek
+> MT7921K) has 6GHz band disabled in kernel 6.7+ despite working in <=6.6
+> 
+> URL: https://urldefense.com/v3/__https://bugzilla.kernel.org/show_bug.cgi?id=218731__;!!CTRNKA9wMg0ARbw!hwgyrPE5EUmlhv276MLdhh3io-OmXeYvNMVGUpAUbJ7wgc9z8WI4fZoD0Ze1WlIlqf_1qrieE1unap_P8_E$
+> 
+> I'm in Bulgaria and `iw reg get` reports this:
+> 
+> ```
+> global
+> country BG: DFS-ETSI
+>          (2400 - 2483 @ 40), (N/A, 20), (N/A)
+>          (5150 - 5250 @ 80), (N/A, 23), (N/A), NO-OUTDOOR, AUTO-BW
+>          (5250 - 5350 @ 80), (N/A, 20), (0 ms), NO-OUTDOOR, DFS, AUTO-BW
+>          (5470 - 5725 @ 160), (N/A, 26), (0 ms), DFS
+>          (5725 - 5875 @ 80), (N/A, 13), (N/A)
+>          (5945 - 6425 @ 160), (N/A, 23), (N/A), NO-OUTDOOR
+>          (57000 - 66000 @ 2160), (N/A, 40), (N/A) ```
+> 
+> For testing purposes, I've also tried switching to another regulatory domain (`US`, `DE`, `SE`, `NL`) via `iw reg set ..`.
+> 
+> Regardless of the regulatory domain, `iw list | grep -A 15 Frequencies` always reports the 6 Ghz frequencies as disabled on newer kernels.
+> 
+> As the original bug reporter has discovered, the regression begins to appear in kernel 6.7.0 while it isn't present in 6.6.30.
+> I've done a bisection and the results are like this:
+> 
+> 1. [bad] mainline (954a209f431c06b62718a49b403bd4c549f0d6fb)
+> 2. [good] v6.6.30
+> 3. [bad] v6.7.12
+> 4. [good] v6.6
+> 5. [bad] edd8e84ae9514e93368f56c3715b11af52df6c3b
+> 6. [bad] 89ed67ef126c4160349c1b96fdb775ea6170ac90
+> 7. [good] b827ac419721a106ae2fccaa40576b0594edad92
+> 8. [bad] d1a02ed66fe62aa2edd77bd54e270ebc33bd12ff
+> 9. [good] 3abbd0699b678fc48e0100704338cff9180fe4bb
+> 10. [good] 5a423552e0d9bb882f22cb0bf85f520ca2692706
+> 11. [bad] 56a7bb12c78ffa1b02e154b1d779ed2a1555fa3c
+> 12. [good] a3c2dd96487f1dd734c9443a3472c8dafa689813
+> 13. [bad] 089482a06b74a40d45773b1871182e8f04be026b
+> 14. [good] fce9c967820a72f600abbf061d7077861685a14d
+> 15. [good] c948b5da6bbec742b433138e3e3f9537a85af2e5
+> 16. [good] 9585316a2aaf773a67846bdc8bbdd4df1e9622fa
+> 17. [good] 51ba0e3a15eb1643116a93674e230e11b9499592
+> 18. [bad] 09382d8f8641bc12fffc41a93eb9b37be0e653c0
+> 19. [good] 4fc8df50fd41c2762d893211487be0ecb24c6a05
+> 
+> 09382d8f8641bc12fffc41a93eb9b37be0e653c0 is reported as the first bad commit.
+> 
+> URL:
+> https://urldefense.com/v3/__https://kernel.googlesource.com/pub/scm/linux/kernel/git/stable/linux/*/09382d8f8641bc12fffc41a93eb9b37be0e653c0__;Kw!!CTRNKA9wMg0ARbw!hwgyrPE5EUmlhv276MLdhh3io-OmXeYvNMVGUpAUbJ7wgc9z8WI4fZoD0Ze1WlIlqf_1qrieE1unR0MDLCs$
+> 
+> Regards
+> 
 
 
