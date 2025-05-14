@@ -4,71 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3C95C3ABD9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 May 2025 08:52:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEB06C3ABD9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 May 2025 08:52:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HrEby8X97oMS/rj+guNPUJDiVtS8KqyTeO4FfPyEZHU=; b=Oul9NV7LgrWZ/bcFUOwXSe+kMd
-	1obVcat90z8cJQ6M8ymp9KBfz7t2z09PTgbgE/ba++V6CbyYiKmZN9FTz4FyuJqR1WyXI24ClgiUQ
-	wQxOmP3Ot1JUyS90rtQttfbdKFYidXEdmBm3VL9m6BgM0eEPQlQaV5nA4v6o4U13Iuphj0KQKpVXW
-	w96AX/ixUXx6RMERjO2Vl8jr4MCYVKQsG9A1DdH545aapJAb+2wWyQyBNvJJEvxN5umLaqRj+F3UW
-	6tNpC3f2N+oixwmClgKAP8RYMq9tmPI729U7bBZR0O1P2nvwgDygE9CO0S4xXrzu3+qbZt6bb2qWN
-	iKsE9sQA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=P8tIdTH9dMMSliB11KIjEPUFUVYnlEAo6G29fIu7OGM=; b=iKnrNF4tZ3P6nq
+	KoWoDuMK4AZxUOyVtXrWRD6JE80H/3dqqRzcy+Qe+0VjZvTogcIHjrP14Fjou1rgH9lM1Ca1zADIO
+	VZuH46zD1pwjBfIriDYh9QwMbtArOd4f+UQ3s6PwuHCFM2BCwsJEkxbMLP4LH3TNBMXsKvejk5GYV
+	bMJ9CDd6LpntfzYfjOUUo1wXUoY91kxJwV5ANit5IUwNJ2tys2fl1HA8NemoyOyKLxX42tdkzkOhp
+	Inn1CJr2ZpiJ6P0DQIKWF0ID/P1tZWdG4H1/QQfqM+GJCKhzHHcCOgcM13uYwowv/dwNxaf2AAv2Q
+	YLzpqMLbolxuURy7LJOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uF7qt-0000000EZeX-3GfT;
-	Wed, 14 May 2025 08:52:35 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1uF7rF-0000000EZmJ-0RLv;
+	Wed, 14 May 2025 08:52:57 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uF7J2-0000000ET7t-2rBS;
-	Wed, 14 May 2025 08:17:38 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id BB768A4365A;
-	Wed, 14 May 2025 08:17:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B3E50C4CEE9;
-	Wed, 14 May 2025 08:17:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747210655;
-	bh=HrEby8X97oMS/rj+guNPUJDiVtS8KqyTeO4FfPyEZHU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=O31B7HzEyj3Nh4DAAJoFtHFRHPDbN7/g83eRGt9BVOdIa407ZQsTtrzwDXm08UiHf
-	 au9g7acBtuIWljLhpr1LVdKmuA8eumou+3pxY2wx3+y4tNi2Da0cT7MJesdUQoTz9M
-	 x3xxKgtVuJl2rvXx+koXEHh2vjGBnY7kezCh1XkcOUJx3DdswXJ0KhNUIt7N7AvEDZ
-	 rI9bK1c389FzNXR/9nABj8vY3s7LJ2xWKNrLciHhrbc0NFCR3BrPv935Avf+Fzw7u4
-	 T0XJMfje25BR4bZ5c1G189g5NyRAtkKpL1STKWQFKkrsIWLPUncgYk1ehmnKyxJOhp
-	 VoQMI5UaLWtjg==
-Date: Wed, 14 May 2025 10:17:30 +0200
-From: Mark Brown <broonie@kernel.org>
-To: "Darren.Ye" <darren.ye@mediatek.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Bartosz Golaszewski <brgl@bgdev.pl>, linux-sound@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org
-Subject: Re: [PATCH v3 04/10] ASoC: mediatek: mt8196: support ADDA in
- platform driver
-Message-ID: <aCRRmk2Vqplbbusn@finisterre.sirena.org.uk>
-References: <20250514081125.24475-1-darren.ye@mediatek.com>
- <20250514081125.24475-5-darren.ye@mediatek.com>
+	id 1uF7LU-0000000EThY-3Smc;
+	Wed, 14 May 2025 08:20:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1747210807;
+	bh=spSxSPnHfT8j3gFUgdV4jcQ82RfiWdTdZwOzzqjDKeg=;
+	h=From:Subject:Date:To:Cc:From;
+	b=dIl+o/2LJx476ANV8IrjeCCWD5gmWhkmXByNl1ZaXGX7iv5Ek7uHcWZBy08D3fOpS
+	 8o8jaZl2salMFyvcV8kVpKLbWZE4T5M2eBGtbpNf9dWk1/CzsCrPUDhd+MrjkK513Q
+	 0N1xfv7ijxE1sK0zwOEdXYLADl0ab4QoxrtsA8eCoZ1Bmn/gaSDb8WabAMqwEG9QPQ
+	 xaTJ4zolos/hom6r3iDofYV8Z5wqXMXJ6rYBBbf9zwrgs6YJRhnHx8y8Ny5l1hwfoo
+	 FH1xuk/4lFddpbkWO1AR5mebbzcXUsZ+b6UXOw+rvM7mQy/WCbtg8aApIL45HDa18K
+	 OIsM0V1FNximQ==
+Received: from apertis-1.home (2a01cb0892F2D600c8F85Cf092d4AF51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: jmassot)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E4A1817E05F0;
+	Wed, 14 May 2025 10:20:05 +0200 (CEST)
+From: Julien Massot <julien.massot@collabora.com>
+Subject: [PATCH v2 0/3] mt8395/mt6359: Fix several dtb-check errors
+Date: Wed, 14 May 2025 10:19:55 +0200
+Message-Id: <20250514-mt8395-dtb-errors-v2-0-d67b9077c59a@collabora.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="1Ucd00qPZdK+Pv3F"
-Content-Disposition: inline
-In-Reply-To: <20250514081125.24475-5-darren.ye@mediatek.com>
-X-Cookie: Well begun is half done.
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIACtSJGgC/32NTQqDMBSEryJv3VeSNKJ21XsUF/mtATXyEqRFc
+ vemHqDM6huYbw5IjoJLcG8OILeHFOJaQVwaMJNaXw6DrQyCiZbV4JL729CizRodUaSErJed94Y
+ LLyXU3UbOh/fpfI6Vp5BypM95sfNf+8+2c2Q4GNlxaU2Nfpg4z0pHUlcTFxhLKV9EHxKwtgAAA
+ A==
+X-Change-ID: 20250505-mt8395-dtb-errors-0847ffc12f44
+To: kernel@collabora.com, Sen Chu <sen.chu@mediatek.com>, 
+ Sean Wang <sean.wang@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>, 
+ Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
+ Hui Liu <hui.liu@mediatek.com>, Yong Wu <yong.wu@mediatek.com>, 
+ Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, 
+ Robin Murphy <robin.murphy@arm.com>, 
+ Tinghan Shen <tinghan.shen@mediatek.com>
+Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, iommu@lists.linux.dev, 
+ Julien Massot <julien.massot@collabora.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250514_011736_787318_5B288D6C 
-X-CRM114-Status: GOOD (  10.26  )
+X-CRM114-CacheID: sfid-20250514_012009_015182_DBDF99CD 
+X-CRM114-Status: GOOD (  10.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,37 +89,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi,
+This patch series addresses several dtb-check errors reported for the mt8395-genio-1200-evk.dtb and mt8395-radxa-nio-12l.dtb device trees.
 
---1Ucd00qPZdK+Pv3F
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+The fixes include:
+- Adding the missing #sound-dai-cells property in the mt6397 binding.
+- Allowing 5 interrupts in the MediaTek IOMMU binding to support MT8395 properly.
+- Renaming the rtc node to match expected schema naming.
 
-On Wed, May 14, 2025 at 04:11:06PM +0800, Darren.Ye wrote:
+Signed-off-by: Julien Massot <julien.massot@collabora.com>
+---
+Changes in v2:
+- Patch 1/3: Add ref to dai-common as suggested by Krzysztof
+- Patch 2/3: Only accept 5 interrupts for mt8195 infra IOMMU
+- Patch 3/3: Add missing S-o-B
+- I did not include the 'Reviewed-by' from Angelo and Nicolas since the 1/3 and
+2/3 changed from v1
+- Link to v1: https://lore.kernel.org/r/20250505-mt8395-dtb-errors-v1-0-9c4714dcdcdb@collabora.com
 
-> +#include <linux/regmap.h>
-> +#include <linux/delay.h>
-> +#include "mt8196-afe-clk.h"
-> +#include "mt8196-afe-common.h"
-> +#include "mt8196-interconnection.h"
-> +
-> +#define MTKAIF4
+---
+Julien Massot (3):
+      dt-bindings: mfd: mediatek: mt6397: Add #sound-dai-cells property
+      dt-bindings: iommu: mediatek: Support 5 IRQs on MT8195 infra IOMMU
+      arm64: dts: mt6359: Rename RTC node to match binding expectations
 
-This define is there unconditionally, what's it for?
+ .../devicetree/bindings/iommu/mediatek,iommu.yaml      | 18 +++++++++++++++++-
+ .../devicetree/bindings/mfd/mediatek,mt6397.yaml       |  6 ++++++
+ arch/arm64/boot/dts/mediatek/mt6359.dtsi               |  2 +-
+ 3 files changed, 24 insertions(+), 2 deletions(-)
+---
+base-commit: ed61cb3d78d585209ec775933078e268544fe9a4
+change-id: 20250505-mt8395-dtb-errors-0847ffc12f44
 
---1Ucd00qPZdK+Pv3F
-Content-Type: application/pgp-signature; name="signature.asc"
+Best regards,
+-- 
+Julien Massot <julien.massot@collabora.com>
 
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmgkUZoACgkQJNaLcl1U
-h9DiUwf8CeXyIw1furK0nf9QfBubUYFQ3DjxWzlkFbKAyVnUb3qF3V4vkrVIRC2P
-HYiWu0j8HLfZE/o+6cFkU0RIhzDgC/TGdMp/8ZlCLG3PpX8n124t3GsigTEOv+ZP
-13p4rzmwS4GdMZD5uY7yI5mg1ScK69kNmb6ah4DeOTo92/GJQTITnJXq8B3UegXr
-P5rk8qlBWvgKL4ebpRSGbCztpZZ+rDkUzaNutwIk0I4mzdmGwfJ/u/kBk1oUNhoD
-+dvn4qemKwDA8J9QV/sDzEu964KbUx+iWz1AryHn3TwKzF6kO1I2nirfld6rrqqK
-0vtfqUZc+p2IdLOgN8NnSiL0/t3h4Q==
-=xV1N
------END PGP SIGNATURE-----
-
---1Ucd00qPZdK+Pv3F--
 
