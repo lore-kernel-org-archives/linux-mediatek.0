@@ -4,75 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97F65C3ABD9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 May 2025 09:34:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB5DCC3ABCC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 May 2025 12:17:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=crecp3yT2SZLjBUhnRURx5oUzcLwjGoGZoCGTxx3isA=; b=NkUKIaYYctVhxA1YgH+y6s9nLc
-	31CHmwB9mpFpITuGipxAF2xDCrqyeqTu+/pObfP2FOplYrrjnDLWI0jAI+tMZqaFpiw4S1nd0f+B9
-	CfKti35ok1c1lPWcnDsZiDMlU2bKxMUJaC7sx2Bc3LQvCxBFDjhcPTewcQ4uH1W0lZPRJWo6txS8y
-	GK9jqtadJOzzm0WkOBxSCvtoqIGH0mTpn0cUu1IUh4jYMnwoeiAxouuSOTFbUmsFKWZwGMGJTtA42
-	jSDusFcnqSn2H8DG9NjNZxoKfl/1N2c6W6XdbsoVO2pU6H0QPevdNdEUHGPJibXszBjt1BYgpUCYU
-	iJc5KXwQ==;
+	bh=VQBOK2idp1nxsNCCEs74fOX/cJ4nuhcieBGWeFG1D/g=; b=4rH/DW1HgO0ZstkOZHCgwy2klv
+	JrzLMaGpyWNsfqlt2ZGKi09+mRPNgfTNgFfykUwQprPH6uB6X0Tqwa24oY06PQgCi8yDmn+f9AWDW
+	xmCX3Vb5mKpkUtALhDJk/2A9Z6ySIEHs/vcJGNkoZpa/EA+XzTSObWlFc6QJr1NbZm4YYgNL11YvG
+	n5yXjhtrTZBNGURsQIF0KxF0/0B9K7UAvmy4uI/QfJhP1Nefm3y7qwewf3GS6NqfUmBAXN66hevnh
+	VZo0InEboX/jRkECbp0zd9lJKbgtzVkfEvYWER7PZKSOOmxvitJ7YcweoY5MNQBDRV4YVt2vwmvXP
+	BskqmzoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uF8V8-0000000EgGJ-3RK0;
-	Wed, 14 May 2025 09:34:10 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uFB3b-0000000Ezxm-3Rcz;
+	Wed, 14 May 2025 12:17:55 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uF7Cy-0000000ERuf-3XPP;
-	Wed, 14 May 2025 08:11:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1747210279;
-	bh=crecp3yT2SZLjBUhnRURx5oUzcLwjGoGZoCGTxx3isA=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=Q3ohjz62grUXQrGlMZmV14eAlrlnVDazHA+kNoz2opWnap5zMJoUYEri+JOLeIYO8
-	 1l0nsxPkr994hI4PSEzVqba64Tny61FlFN9GYmwZXDIcEbJytJe8wMjSSDJ6/m/a/F
-	 KBEHwPY/ovWtKaIUnBWPpxBf/47bWFJxiX5BXB7JRTdOCtT+uhs7MM4GbkO2lCH5pG
-	 PBscEESi+ceSpfJQemzEQlTpCgHHNKqqPKaVScAqm/LfvZUAhTKNozXL/ciOywe1EI
-	 78hMJbuWrXrtrJ0e9n96xwF/euvGBiCyWFaZ8JJxOz/FZg0UxTUK2ZKwa1EX6tA9ws
-	 bazKi7SoCGEnA==
-Received: from apertis-1.home (2a01cb0892F2D600c8f85CF092D4Af51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: jmassot)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EC67D17E07F2;
-	Wed, 14 May 2025 10:11:17 +0200 (CEST)
-Message-ID: <5578490565f6d37fa435ca0c02fcfc2cb685baf8.camel@collabora.com>
-Subject: Re: [PATCH 1/4] dt-bindings: mfd: mediatek: mt6397: Add
- #sound-dai-cells property
-From: Julien Massot <julien.massot@collabora.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>, kernel@collabora.com, Sen Chu	
- <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Macpaul Lin	
- <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>, Rob Herring	
- <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley	
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- =?ISO-8859-1?Q?N=EDcolas?= "F. R. A. Prado"	 <nfraprado@collabora.com>, Hui
- Liu <hui.liu@mediatek.com>, Yong Wu	 <yong.wu@mediatek.com>, Joerg Roedel
- <joro@8bytes.org>, Will Deacon	 <will@kernel.org>, Robin Murphy
- <robin.murphy@arm.com>, Tinghan Shen	 <tinghan.shen@mediatek.com>
-Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, iommu@lists.linux.dev
-Date: Wed, 14 May 2025 10:11:17 +0200
-In-Reply-To: <79148223-d87f-486e-9d51-979f9188a837@kernel.org>
-References: <20250505-mt8395-dtb-errors-v1-0-9c4714dcdcdb@collabora.com>
-	 <20250505-mt8395-dtb-errors-v1-1-9c4714dcdcdb@collabora.com>
-	 <79148223-d87f-486e-9d51-979f9188a837@kernel.org>
-Organization: Collabora Ltd.
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.1 (3.56.1-1.fc42) 
+	id 1uF7sb-0000000Ea6T-0FcC
+	for linux-mediatek@lists.infradead.org;
+	Wed, 14 May 2025 08:54:21 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 3EE7F61126;
+	Wed, 14 May 2025 08:54:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4E610C4CEE9;
+	Wed, 14 May 2025 08:54:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1747212859;
+	bh=VQBOK2idp1nxsNCCEs74fOX/cJ4nuhcieBGWeFG1D/g=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Du1CDjSyWSoA/EGDHyC2KaC7ioh46+/frf7hBPrUuxcmVMtDLpQh2YGmf6Htgda82
+	 D/1VYuweFU0f5lW1SJN0O3pk/xfVGwWGQcCoCbwPd5Nq/WNgHhAasRRtgnbpwQoyyP
+	 gARh7W+PfZYovJQVDG6V1+YPmdz7UCYBLTWrZTXgNyrBqj4ULhM5PlTPqTsSuAm4lN
+	 4ay46Z+yRtFYfSxTUU4wYvhuW5/2wdkQDW30QzT08o/3qT7TmoL+n9Wc62BsGIXlm4
+	 C6q7kiAQ4hevMYDsCsWzCGu9VHmwvgGB1MtT+OPFrCXz10lrREuDR+h7XdxoKYqdb+
+	 oKPjomluptx/w==
+Date: Wed, 14 May 2025 10:54:15 +0200
+From: Mark Brown <broonie@kernel.org>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Jiaxin Yu <jiaxin.yu@mediatek.com>, linux-sound@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Darren Ye <darren.ye@mediatek.com>
+Subject: Re: [PATCH 0/3] ASoC: mediatek: mt8183-afe-pcm: Shorten source code
+Message-ID: <aCRaN27p32c9gxDN@finisterre.sirena.org.uk>
+References: <20250425082551.1467042-1-wenst@chromium.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250514_011121_037009_276368ED 
-X-CRM114-Status: GOOD (  11.61  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="RJEVfGPvKI8lIx/3"
+Content-Disposition: inline
+In-Reply-To: <20250425082551.1467042-1-wenst@chromium.org>
+X-Cookie: Well begun is half done.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,19 +75,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
 
-On Thu, 2025-05-08 at 08:01 +0200, Krzysztof Kozlowski wrote:
-> On 05/05/2025 15:23, Julien Massot wrote:
-> > The 'mt6359.dtsi' file already uses the '#sound-dai-cells' property.
-> > Add the corresponding property to the binding to fix the following
-> > dtb-check error:
-> If this is a DAI, then you miss dai-common reference. If not, you need
-> to explain it in commit msg.
+--RJEVfGPvKI8lIx/3
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Thanks for the review, I will add the missing dai-common reference in the v=
-2.
+On Fri, Apr 25, 2025 at 04:25:47PM +0800, Chen-Yu Tsai wrote:
 
-Regards,
-Julien
+> This series is meant as an example on how to use macros and range cases
+> to shorten the MediaTek audio frontend drivers. The drivers have large
+> tables describing the registers and register fields for every supported
+> audio DMA interface. (Some are actually skipped!) There's a lot of
+> duplication which can be eliminated using macros. This should serve as
+> a reference for the MT8196 AFE driver that I had commented on.
+
+AngeloGioacchino?
+
+--RJEVfGPvKI8lIx/3
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmgkWjYACgkQJNaLcl1U
+h9D/1Af/XElCtNyti+25emI4YNKEfk2R9v0BZ0vK0d5J9W/iLMsLIU37Tr+WcgFA
+oxm/P+uo3MjQwbQUj7c8d5XOXFtpMoUR+QlEIGuR43vkTM+e02n9CqGaY9m408WM
+LHUx6i1REXPRha8FgKbFvcWsDqdSnATl04GWrGOKTXNH8QhZbLL884SCxYwZGaty
+HLrBvsUYhiFN/LHz4RUCCuvm42rp4lA7/5EQ07+QEy3tHqmRYSxyegKkkQ++v3Og
+EslpX2I7nIyz2X0+U0Y9rSJfYBWQR2APwqSq/AKqzlp6YkbTv9MTO6KUhCr4k4ah
+F7qUWkQs6HfYygh4haJYsdX0s9WacA==
+=PgTh
+-----END PGP SIGNATURE-----
+
+--RJEVfGPvKI8lIx/3--
 
