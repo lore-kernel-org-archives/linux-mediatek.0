@@ -4,57 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEB06C3ABD9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 May 2025 08:52:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CA70C3ABD9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 May 2025 08:55:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=P8tIdTH9dMMSliB11KIjEPUFUVYnlEAo6G29fIu7OGM=; b=iKnrNF4tZ3P6nq
-	KoWoDuMK4AZxUOyVtXrWRD6JE80H/3dqqRzcy+Qe+0VjZvTogcIHjrP14Fjou1rgH9lM1Ca1zADIO
-	VZuH46zD1pwjBfIriDYh9QwMbtArOd4f+UQ3s6PwuHCFM2BCwsJEkxbMLP4LH3TNBMXsKvejk5GYV
-	bMJ9CDd6LpntfzYfjOUUo1wXUoY91kxJwV5ANit5IUwNJ2tys2fl1HA8NemoyOyKLxX42tdkzkOhp
-	Inn1CJr2ZpiJ6P0DQIKWF0ID/P1tZWdG4H1/QQfqM+GJCKhzHHcCOgcM13uYwowv/dwNxaf2AAv2Q
-	YLzpqMLbolxuURy7LJOA==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OXtyqhKAYQ7rzIf1VKLFznWJ4YGo/ohp21RFYJSCNLc=; b=B313FMi3+X6159TuB+chuNNxno
+	dc0h27cjhrYSEmp+7ezXBVju1MvnBwzBldOWw36d10TWKRcfOrinlFTEYMx+pa5n3XsPPv75KOiyT
+	ksaOElJrT9qLIi11Iagb53e4IJQary0Gp1OktxeezkM52Uq1XRzX+JeUp69wfAlzgHVTidok2KAIK
+	CqKFfH8jjdFt9VO9dAC6LVLyinxmPV51IN36vJM5A8ErbtP0pWZlKx1tWnOX0v65svnvJs0XZnjln
+	eIpXoq+3ZAMDlEq+SolpgrOnOHgQrI989WlYpK1dj+EuD5HSPyLM+gfSscxnRze/oxNzeEPCWroBh
+	cyMuKt7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uF7rF-0000000EZmJ-0RLv;
-	Wed, 14 May 2025 08:52:57 +0000
+	id 1uF7tL-0000000EaHD-0q7Q;
+	Wed, 14 May 2025 08:55:07 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uF7LU-0000000EThY-3Smc;
-	Wed, 14 May 2025 08:20:10 +0000
+	id 1uF7LV-0000000EThn-3NL6;
+	Wed, 14 May 2025 08:20:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1747210807;
-	bh=spSxSPnHfT8j3gFUgdV4jcQ82RfiWdTdZwOzzqjDKeg=;
-	h=From:Subject:Date:To:Cc:From;
-	b=dIl+o/2LJx476ANV8IrjeCCWD5gmWhkmXByNl1ZaXGX7iv5Ek7uHcWZBy08D3fOpS
-	 8o8jaZl2salMFyvcV8kVpKLbWZE4T5M2eBGtbpNf9dWk1/CzsCrPUDhd+MrjkK513Q
-	 0N1xfv7ijxE1sK0zwOEdXYLADl0ab4QoxrtsA8eCoZ1Bmn/gaSDb8WabAMqwEG9QPQ
-	 xaTJ4zolos/hom6r3iDofYV8Z5wqXMXJ6rYBBbf9zwrgs6YJRhnHx8y8Ny5l1hwfoo
-	 FH1xuk/4lFddpbkWO1AR5mebbzcXUsZ+b6UXOw+rvM7mQy/WCbtg8aApIL45HDa18K
-	 OIsM0V1FNximQ==
+	s=mail; t=1747210808;
+	bh=eVS8ASAPWXFPs7zmXnVv2z4AjK5YrBRmxmYDS53TpiE=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=VuKgwCUPuoiMh63fAsWJcXFb+WTCyzT4zkxvrNgRY9oEZFDc9cmfr2oKNbD4dKlbQ
+	 2KWMQka1r81eUxmi4+Fpss7PUUi5XIy8XEFbnwEbeuB3cI+7cFSpwEKWNV4oX/puZC
+	 ERSGUAucgOHC5yL4wIornVzg5z8bpXuFnh+To4fJHnsdXJ0M9Z0wYf7gdJIqkblSM2
+	 mRhdQ1D9oyGxnUcIRH+0e2zIyRYqPgIWwUsYhZlrNqqJ2vDlXIy1ZpKgwuUCa0AcfP
+	 ocVCkuCm50Q6JLHXBXOEpJKS+D08SlNucQJKi7C7PK2XCCpM4sWB9SprBVGBVJS1CV
+	 212ICctrS7Nkg==
 Received: from apertis-1.home (2a01cb0892F2D600c8F85Cf092d4AF51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: jmassot)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E4A1817E05F0;
-	Wed, 14 May 2025 10:20:05 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2729417E07C9;
+	Wed, 14 May 2025 10:20:07 +0200 (CEST)
 From: Julien Massot <julien.massot@collabora.com>
-Subject: [PATCH v2 0/3] mt8395/mt6359: Fix several dtb-check errors
-Date: Wed, 14 May 2025 10:19:55 +0200
-Message-Id: <20250514-mt8395-dtb-errors-v2-0-d67b9077c59a@collabora.com>
+Date: Wed, 14 May 2025 10:19:56 +0200
+Subject: [PATCH v2 1/3] dt-bindings: mfd: mediatek: mt6397: Add
+ #sound-dai-cells property
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIACtSJGgC/32NTQqDMBSEryJv3VeSNKJ21XsUF/mtATXyEqRFc
- vemHqDM6huYbw5IjoJLcG8OILeHFOJaQVwaMJNaXw6DrQyCiZbV4JL729CizRodUaSErJed94Y
- LLyXU3UbOh/fpfI6Vp5BypM95sfNf+8+2c2Q4GNlxaU2Nfpg4z0pHUlcTFxhLKV9EHxKwtgAAA
- A==
-X-Change-ID: 20250505-mt8395-dtb-errors-0847ffc12f44
+Message-Id: <20250514-mt8395-dtb-errors-v2-1-d67b9077c59a@collabora.com>
+References: <20250514-mt8395-dtb-errors-v2-0-d67b9077c59a@collabora.com>
+In-Reply-To: <20250514-mt8395-dtb-errors-v2-0-d67b9077c59a@collabora.com>
 To: kernel@collabora.com, Sen Chu <sen.chu@mediatek.com>, 
  Sean Wang <sean.wang@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>, 
  Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, 
@@ -73,8 +71,9 @@ Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
  Julien Massot <julien.massot@collabora.com>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250514_012009_015182_DBDF99CD 
-X-CRM114-Status: GOOD (  10.30  )
+X-CRM114-CacheID: sfid-20250514_012010_729256_E10EF71B 
+X-CRM114-Status: UNSURE (   9.69  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,40 +88,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-This patch series addresses several dtb-check errors reported for the mt8395-genio-1200-evk.dtb and mt8395-radxa-nio-12l.dtb device trees.
+The 'mt6359.dtsi' file already uses the '#sound-dai-cells' property.
+Add the corresponding property to the binding to fix the following
+dtb-check error:
 
-The fixes include:
-- Adding the missing #sound-dai-cells property in the mt6397 binding.
-- Allowing 5 interrupts in the MediaTek IOMMU binding to support MT8395 properly.
-- Renaming the rtc node to match expected schema naming.
+mediatek/mt8395-radxa-nio-12l.dtb: pmic: '#sound-dai-cells', 'mt6359rtc' do not match any of the regexes: 'pinctrl-[0-9]+'
+from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6397.yaml#
 
+Fixes: 9bc8353be720 ("arm64: dts: mt6359: Add #sound-dai-cells property")
 Signed-off-by: Julien Massot <julien.massot@collabora.com>
 ---
-Changes in v2:
-- Patch 1/3: Add ref to dai-common as suggested by Krzysztof
-- Patch 2/3: Only accept 5 interrupts for mt8195 infra IOMMU
-- Patch 3/3: Add missing S-o-B
-- I did not include the 'Reviewed-by' from Angelo and Nicolas since the 1/3 and
-2/3 changed from v1
-- Link to v1: https://lore.kernel.org/r/20250505-mt8395-dtb-errors-v1-0-9c4714dcdcdb@collabora.com
+ Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
----
-Julien Massot (3):
-      dt-bindings: mfd: mediatek: mt6397: Add #sound-dai-cells property
-      dt-bindings: iommu: mediatek: Support 5 IRQs on MT8195 infra IOMMU
-      arm64: dts: mt6359: Rename RTC node to match binding expectations
+diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+index 6a89b479d10fad3c8b61cab5a3af1453baca4d1a..9580c4ec1ae00f1dd1182357d8b0a5035a1b7f82 100644
+--- a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
++++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+@@ -30,6 +30,9 @@ description: |
+   See the following for pwrap node definitions:
+   Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
+ 
++allOf:
++  - $ref: /schemas/sound/dai-common.yaml#
++
+ properties:
+   compatible:
+     oneOf:
+@@ -53,6 +56,9 @@ properties:
+   "#interrupt-cells":
+     const: 2
+ 
++  '#sound-dai-cells':
++    const: 1
++
+   rtc:
+     type: object
+     $ref: /schemas/rtc/rtc.yaml#
 
- .../devicetree/bindings/iommu/mediatek,iommu.yaml      | 18 +++++++++++++++++-
- .../devicetree/bindings/mfd/mediatek,mt6397.yaml       |  6 ++++++
- arch/arm64/boot/dts/mediatek/mt6359.dtsi               |  2 +-
- 3 files changed, 24 insertions(+), 2 deletions(-)
----
-base-commit: ed61cb3d78d585209ec775933078e268544fe9a4
-change-id: 20250505-mt8395-dtb-errors-0847ffc12f44
-
-Best regards,
 -- 
-Julien Massot <julien.massot@collabora.com>
+2.49.0
 
 
