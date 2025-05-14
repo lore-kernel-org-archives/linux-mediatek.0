@@ -4,60 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A56FC3ABD9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 May 2025 13:53:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBCA1C3ABD8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 May 2025 13:54:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NgEvng60eATnMI4BVnU7kV+KBHy0r5XgWKzSDSIdJKA=; b=I45SL4w5+BkQeM
-	zUQeBB5fGYArn9fE6szCgDaTh4w+h7RwcO9rcSs5Okn4l5p4BWNQzw1cLRd1TPeJxdUK7VSXCPGjX
-	YOdEVZynXQZTwLO0VjoF+CTLx5JfdLPGUio2rlPqVFFpeiDieOtYi5dCyGcUYqzWwW352S/Uhocx3
-	3wFAvtz4/i6I+bBFW/SmvQ0feyrFrKvH+VdX+f56EteXcZUiXpKCylFNCdv+AKrpZVgTIvZaa0Xq9
-	gjv6Sg1UXgYVOccF5eB/XN7YnMo8QJRvwiMYN049RKU3ZsNXk8JHOX+4cWvDB15KTl624lLIkM+lc
-	QbzGdWOb5parzH+YqPKQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=L5BkK/9+vx6s2eotlu7sP1AhcqapoAxZTN2ZPUj5+Rc=; b=X2YhXbgmkqqFaZKKFY8b9hurAN
+	L5LET5hzo6MDNAkDjuWD/CZv+3oQPNcuqYwm3vLQ5Nlxeg9e0PyOeYbkpB3HmL7AnPFBb2i+WYGuX
+	HxDLvKGD43R/tDdL6cEYpUCi2/Gxa0hRSh3dRHTg4iU5Z0SEwX1MfEIlY3z7Tw/9rdyQPgdCW3asW
+	RTzt2eTo/nfoHEW6/hEF4VI+jsrUgvTWxmns5fjemevY80+PaYxyKiEQIv2fDBmzQJaPyE8jIdXVx
+	mNiYt3iy1xNE4drfQ197cCucGst7K5CQ7QbHfwi7q0ktA5xy+2Tq/Op6rSf8hkhueusLcK8JEotSY
+	fTKVoMwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFCYS-0000000FI9N-2nSC;
-	Wed, 14 May 2025 13:53:52 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uFCZ6-0000000FJNr-3rnU;
+	Wed, 14 May 2025 13:54:32 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFAQE-0000000EuOY-2QHf;
-	Wed, 14 May 2025 11:37:14 +0000
+	id 1uFBfK-0000000F8wg-44J2;
+	Wed, 14 May 2025 12:56:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=L5BkK/9+vx6s2eotlu7sP1AhcqapoAxZTN2ZPUj5+Rc=; b=oNAX9K/fhMw3OIpN8mSdGiFouV
+	P8XLbvPjE2eD6Kv4OMR40euVIEaXzuVnu4ZpZpd04CyeiC6Dp4lXMjPyT6uFQy8jle4bvJeUYpXoV
+	+b6Ywg73VJ8uyKD5M4MU4eGYNIcRQ1POWZr+O0aOnmyY/ih84VoCBjNIIQltDdnwf5PULDSv91WIj
+	9QFt6AG/ox42llOOz169YEHMQHJdHCi9WKnVuTmbd1bAJNIQKFf4SQ9wzmtWmDDAPu3Kf5f4NTiRx
+	bFzda5UFyW8XC/lJUpA55sLQ8oL8Zjgy82eXrEDDHSc375DZWb5xZC4pK+Eg4IUN/biX34ZemnfTF
+	227cj5aQ==;
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1uFBfH-0000000H9yR-32Kl;
+	Wed, 14 May 2025 12:56:53 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id C605560008;
-	Wed, 14 May 2025 11:37:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D1907C4CEE9;
-	Wed, 14 May 2025 11:37:09 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 6A18DA4DABB;
+	Wed, 14 May 2025 12:56:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 13358C4CEEF;
+	Wed, 14 May 2025 12:56:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747222633;
-	bh=t1bXaEu9EXQ94m0cdh4MSItJJeYMDzLla+FRFBaaVOA=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=NwpkfIl6MZt3iRQolb75+B6HpoTZyfFuUyBOU3iCCdWyF2d3ukbkHyrA8zIFib9nc
-	 EOHXQ7yVKndC1xfuBDcWhVcVzOVrhwiAPM3NNJ7jzA//MeUd8ZZIcpVIDb/GFpCwED
-	 pbNpd+NMu5yoxzB18tUGerttcXQ2a1yO5VC4uJGUYaiAtMf/iNa53FZ+fmxhi1HcH4
-	 HBydiR7YPq5TnLsV4f26kN1qn2853JpHGEcof10JzSLaUY/ke7xyTcZKX793Z70uM6
-	 SKT6RyfToz9+K5wt2nSCKVyNtoz/OwuA/7bc29ll3fokyUQg+QlfOc0fknmmeQCV6m
-	 CXvTdBKQ4rgqg==
-From: Vinod Koul <vkoul@kernel.org>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Lee Jones <lee@kernel.org>, 
- Chunfeng Yun <chunfeng.yun@mediatek.com>, 
- Kishon Vijay Abraham I <kishon@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Frank Wunderlich <linux@fw-web.de>
-In-Reply-To: <20250422132438.15735-1-linux@fw-web.de>
-References: <20250422132438.15735-1-linux@fw-web.de>
-Subject: Re: (subset) [PATCH v4 0/8] Add Bananapi R4 variants and add xsphy
-Message-Id: <174722262951.85510.8563581978956288115.b4-ty@kernel.org>
-Date: Wed, 14 May 2025 12:37:09 +0100
+	s=k20201202; t=1747227408;
+	bh=L5BkK/9+vx6s2eotlu7sP1AhcqapoAxZTN2ZPUj5+Rc=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=q4pHremCCGtY/K88PxXXE2zElcPhPW8QC9ke0b0hfixqqaTfTDBPepN6yI5TcRehG
+	 iVvpVkDF0e2HBoWfC6ng8oADLFCYDaxlCKyHN3GpfQQYqjNrPKFuohGzv95VPZZRF8
+	 tPat4VVm8k1BKomELw3FsZZrF/uyH86O78tW0RkCh6twW2DVhyZiRLkw3t9tfbu7ej
+	 MW6+z3eKWCZQki6FqoPhiOMvZeEAAaROyJjyHgersRO2cZceUlPiw1vvmrYEJZrBDW
+	 VHSDoW1oaNzLtgB72Ws1zV4bDD50lOPSS7w6v6tt7kHLkghX2GapInrhFr4Ocii7f5
+	 jPS/KglAN+rDQ==
+Received: by mail-ed1-f42.google.com with SMTP id 4fb4d7f45d1cf-5fbf52aad74so1799188a12.1;
+        Wed, 14 May 2025 05:56:48 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCXS08ps+oiqbE9qZtG3vzPj2QrgdxY69n0OYijbncMAxDT592dPSucDLfTml097aWIUOzDC8Om/JeDZhyn1qcQC@lists.infradead.org, AJvYcCXp+vwWPA99Qty/1fLeE8pgdPKTr6hlx848JZfQiKMmtYKBfS7N1sPx/X51OwpMloAoV/+QXwQjzkTRKTYLcs8=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwMBxRxgrFcxn4iMTrxWqMRQaZQ1dvxv0XQmOpdDBNsqSWGLw8G
+	VWIwjLau8PdHFDBajo2cWIXXEwP/0Ieg2dMsqE0oyEgFpvYJVYJzWfLCihSa3xh5lQhIE7SacY1
+	JF2lj/7vLOmIQDluUcM3ZDf37lA==
+X-Google-Smtp-Source: AGHT+IELhqd55PbVIK/fh9d9i36btbbo6ITEwEb2MGkOGa83e9SO6cYkeWuJWJU73KbPHDZHvvCElKYOidvz0QmAzl8=
+X-Received: by 2002:a17:907:3f89:b0:aca:d29e:53f1 with SMTP id
+ a640c23a62f3a-ad4f71df611mr370014666b.12.1747227406681; Wed, 14 May 2025
+ 05:56:46 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.14.2
+References: <20250514092259.47035-1-angelogioacchino.delregno@collabora.com>
+ <20250514092259.47035-3-angelogioacchino.delregno@collabora.com> <439db3ea-4fb7-4944-b182-222663c09b3d@collabora.com>
+In-Reply-To: <439db3ea-4fb7-4944-b182-222663c09b3d@collabora.com>
+From: Rob Herring <robh@kernel.org>
+Date: Wed, 14 May 2025 07:56:34 -0500
+X-Gmail-Original-Message-ID: <CAL_JsqLwXwmt5Smutvv+V-HfLzgYCqb-YRVx9ydD7rfmkiWoeA@mail.gmail.com>
+X-Gm-Features: AX0GCFtnPmpM9IU37owWuZIV0h2y0QbqRqJW_C41vIQEFK-1OTfvM_nf1ApA1kA
+Message-ID: <CAL_JsqLwXwmt5Smutvv+V-HfLzgYCqb-YRVx9ydD7rfmkiWoeA@mail.gmail.com>
+Subject: Re: [PATCH v2 3/3] arm64: dts: mediatek: mt8188: Add all Multimedia
+ Data Path 3 nodes
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	devicetree@vger.kernel.org, Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+	Chun-Kuang Hu <chunkuang.hu@mediatek.com>, Conor Dooley <conor.dooley@microchip.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250514_135652_033460_4C45BA78 
+X-CRM114-Status: GOOD (  15.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,35 +97,44 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, linux-mediatek@lists.infradead.org, =?utf-8?q?Rafa=C5=82_Mi=C5=82ecki?= <rafal@milecki.pl>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wed, May 14, 2025 at 4:26=E2=80=AFAM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 14/05/25 11:22, AngeloGioacchino Del Regno ha scritto:
+> > Add all of the Multimedia Data Path 3 (MDP3) related nodes
+> > including its Mutex instances, one for each VPPSYS block, and
+> > all of its DMA controllers, Film Grain (FG), HDR, Adaptive Ambient
+> > Light (AAL), Frame Resizer (RSZ), Tone Curve Conversion (TCC),
+> > Two-Dimensional Sharpness (TDSHP), and others, enabling the entire
+> > MDP3 macro-block.
+> >
+> > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@co=
+llabora.com>
 
-On Tue, 22 Apr 2025 15:24:23 +0200, Frank Wunderlich wrote:
-> With this series i continue the mt7988/bananapi-r4 dts upstream work
-> 
-> changes in v4:
-> - changes based on review comments in v3 (mostly bindings)
-> - changed topmisc unit address to match reg
-> 
-> Daniel Golle (1):
->   phy: mediatek: xsphy: support type switch by pericfg
-> 
-> [...]
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
-Applied, thanks!
+> Rob, sorry again for missing your previous email about the warnings
+> generated by this commit.
+>
+> I ran a dtbs_check on this and I didn't see any warning - can you please =
+urgently
+> check and confirm that I didn't miss anything on this one so that I can p=
+ull it in
+> the MediaTek trees for a fixed up PR?
+>
+> If anything else is wrong with this one, I'll have to just drop it and de=
+lay this
+> for the next cycle as it's really too late (my bad, though).
 
-[3/8] dt-bindings: phy: mtk-xs-phy: Add mt7988 compatible
-      commit: 117d09e2830d6ff6c1bb2dc5629f972504fde51e
-[4/8] dt-bindings: phy: mtk-xs-phy: support type switch by pericfg
-      commit: b484b25a486962b568ada1f55c1b96dfd96b912d
-[6/8] phy: mediatek: xsphy: support type switch by pericfg
-      commit: f85eb659a48cc2f0c98a122e760552b69e56c06f
+Thanks for fixing. FYI, Linus' and next trees are tested daily here:
 
-Best regards,
--- 
-~Vinod
+https://gitlab.com/robherring/linux-dt/-/jobs
 
+platform-warnings.log has the top warnings and undocumented
+compatibles by platform family.
 
+Rob
 
