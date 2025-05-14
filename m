@@ -4,68 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECCB0C3ABC3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 May 2025 21:02:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B52AAC3ABC9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 May 2025 03:03:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=AVI/9klCx5JW1JBJ4BVKJpsH2aIwTCWX7Gsjp7xslw4=; b=3RfaiOCHRsgB55CM+i3L4lWNgT
-	ouQCPLOXrKOodlsB6KyWf28EJWaR4dMTcJ3Td0O/OdJvZ2b/USRvAdA/XDxiz7m8DVQHpsshaKAyU
-	dTR2lS/RQoZeqQveVMQiKaur8CIyhZLlCVAczIo2lQPtxxTm12cVRSbV4eTBnCu7GDxK97fWpfH6l
-	Y3E3dkQkO72tMyFPi4dltPMkOkXlL4hAk0gVikuzNqq3HF7iJqLgtUbhi5duEhokxxHL5CPFn2J3l
-	4jknmhjvR7NRGqFVvkSQFMzJK2mYn5Ub2V5bqEwLm8BHSRtydMHg29ahiKmkbPzJb0rp1JYd7VT6m
-	zj/Hk5JQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=D5kraFhyZG6KO1IN6qqQEHUeSPKf/Mxr9+W3nmdgiC0=; b=Ch+XuYvzEYG6nSmSUwHZ8qDnuw
+	hLi9QYrhWQBOXvrSGHAxGVxdkfPcR3x2O/tLUqucOsxsxLYzrxzwZn2TIScXL/0Z1kZUVDms+N5JZ
+	VP9FssE8TxZrFoQvT7Kx5cfsDDPVfCKaKiVC+vel3r2g900bWoKFp28RarPAddk0wjd/1IgtX3s6k
+	FEZN0hnjvEgfoWIu1gQNEGnwGr7f8eygu5hjvzRas4dC972LqYq0DwWmUwbO84jEopuFLpItc8HXv
+	++QoO9h00108EHiVC0XWu7NMnYaE5jPoa8PSJ4bA6gaSG+OUi4rPFsy7meQEdOP0iyHgbM1nX020K
+	tBL6qVEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEwlf-0000000DXGJ-35qa;
-	Tue, 13 May 2025 21:02:27 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uF2Ou-0000000DvlL-1ebB;
+	Wed, 14 May 2025 03:03:20 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uEwjY-0000000DXAQ-44M3;
-	Tue, 13 May 2025 21:00:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1747170014;
-	bh=uXBKfrEHx7TPq4q2YOZY45n4LHW3AiqO1stybgZlRFw=;
-	h=From:Date:Subject:To:Cc:From;
-	b=doln9mqquK6hbJ3KKO3U21/pJNa5dzcIc3wNJugbujtmikJj5ghJ6UMdGMdjwWYly
-	 4r+lj37zE2TPlwBOsnp9/9jgEw6y+D4h2GGH22jIaO8bxmrQiySnO5jLpE3w2aDHBr
-	 sb50YxPfQ+/DJcrMMtMq2sifoSs+bFGbNyBWRC478I9jQLwth+DJcsFD2NPzCXXNQw
-	 zLRKvuFhhR3SitGmWKGCeUfEdnb+yHC/bZDDoRs7t/1a9eDMFt/XZK7WSdUfpRwim3
-	 7tFdwCMdKYiuyh0RNAzZJjunzle6Cvbi0BV7SJXWDs93wldKH3WfTU5A7sxE+RHrdp
-	 4v5OO9ZZxH/cQ==
-Received: from [192.168.1.63] (unknown [70.107.117.78])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E48CF17E0509;
-	Tue, 13 May 2025 23:00:12 +0200 (CEST)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Tue, 13 May 2025 16:59:41 -0400
-Subject: [PATCH] arm64: defconfig: Enable configs for MediaTek Genio EVK
- boards
+	id 1uF2Mq-0000000DvdG-2e4d;
+	Wed, 14 May 2025 03:01:13 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.98.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1uF2Gt-000000000IX-1uz7;
+	Wed, 14 May 2025 03:00:59 +0000
+Date: Wed, 14 May 2025 04:00:54 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Sean Anderson <sean.anderson@linux.dev>
+Cc: Christian Marangi <ansuelsmth@gmail.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Nathan Chancellor <nathan@kernel.org>,
+	Nick Desaulniers <nick.desaulniers+lkml@gmail.com>,
+	Bill Wendling <morbo@google.com>,
+	Justin Stitt <justinstitt@google.com>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, llvm@lists.linux.dev
+Subject: Re: [net-next PATCH v4 03/11] net: phylink: introduce internal
+ phylink PCS handling
+Message-ID: <aCQHZnAstBXbYzgy@makrotopia.org>
+References: <20250511201250.3789083-1-ansuelsmth@gmail.com>
+ <20250511201250.3789083-4-ansuelsmth@gmail.com>
+ <5d004048-ef8f-42ad-8f17-d1e4d495f57f@linux.dev>
+ <aCOXfw-krDZo9phk@makrotopia.org>
+ <7b50d202-e7f6-41cb-b868-6e6b33d4a2b9@linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20250513-genio-defconfig-v1-1-c3862f91b6b2@collabora.com>
-X-B4-Tracking: v=1; b=H4sIALyyI2gC/x3MQQqAIBBA0avErBuwTIuuEi3CGW02GgoRSHdPW
- r7F/xUKZ+ECa1ch8y1FUmwY+g7cecTAKNQMoxqNMoPGwFESEnuXopeAsyVr/GInTQStujJ7ef7
- jtr/vBygLiT5hAAAA
-X-Change-ID: 20250513-genio-defconfig-76d65f8643dd
-To: Catalin Marinas <catalin.marinas@arm.com>, 
- Will Deacon <will@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: kernel@collabora.com, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-X-Mailer: b4 0.14.2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <7b50d202-e7f6-41cb-b868-6e6b33d4a2b9@linux.dev>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250513_140017_166574_1F9E05AA 
-X-CRM114-Status: UNSURE (   6.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250513_200112_670311_D6064898 
+X-CRM114-Status: GOOD (  23.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,117 +83,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable the missing configs to get all devices on the MediaTek Genio
-1200, 700, 510 and 350 EVK boards probing, as indicated by the DT
-kselftest.
+On Tue, May 13, 2025 at 03:23:32PM -0400, Sean Anderson wrote:
+> On 5/13/25 15:03, Daniel Golle wrote:
+> > just instead of having many
+> > more or less identical implementations of .mac_select_pcs, this
+> > functionality is moved into phylink. As a nice side-effect that also
+> > makes managing the life-cycle of the PCS more easy, so we won't need all
+> > the wrappers for all the PCS OPs.
+> 
+> I think the wrapper approach is very obviously correct. This way has me
+> worried about exciting new concurrency bugs.
 
-This includes support for:
+You may not be surprised to read that this was also our starting point 2
+months ago, I had implemented support for standalone PCS very similar to
+the approach you have published now, using refcnt'ed instances and
+locked wrapper functions for all OPs. My approach, like yours, was to
+create a new subsystem for standalone PCS drivers which is orthogonal to
+phylink and only requires very few very small changes to phylink itself.
+It was a draft and not as complete and well-documented like your series
+now, of course.
 
-Genio 1200/700/510/350:
-* MT6359/MT6357 PMICs Auxiliary ADC
+I've then shared that implementation with Christian and some other
+experienced OpenWrt developers and we concluded that having phylink handle
+the PCS lifecycle and PCS selection would be the better and more elegant
+approach for multiple reasons:
+ - The lifetime management of the wrapper instances becomes tricky:
+   We would either have to live with them being allocated by the
+   MAC-driver (imagine test-case doing unbind and then bind in a loop
+   for a while -- we would end up oom). Or we need some kind of garbage
+   collecting mechanism which frees the wrapper once refcnt is zero --
+   and as .select_pcs would 'get' the PCS (ie. bump refcnt) we'd need a
+   'put' equivalent (eg. a .pcs_destroy() OP) in phylink.
 
-Genio 1200/700/510:
-* MDP3 (video scaling and color space conversion IP block)
-* ITE IT5205 Type-C USB Alternate Mode Passive MUX
-* Himax HX8279 controller based KD070FHFID078 DSI panel
+   Russell repeatedly pointed me to the possibility of a PCS
+   "disappearing" (and potentially "reappearing" some time later), and
+   in this case it is unclear who would then ever call pcs_put(), or
+   even notify the Ethernet driver or phylink about the PCS now being
+   available (again). Using device_link_add(), like it is done in
+   pcs-rzn1-miic.c, prevents the worst (ie. use-after-free), but also
+   impacts all other netdevs exposed by the same Ethernet driver
+   instance, and has a few other rather ugly implications.
 
-Genio 700/510:
-* Richtek RT1715 USB Type-C PD Controller
+ - phylink currently expects .mac_select_pcs to never fail. But we may
+   need a mechanism similar to probe deferral in case the PCS is not
+   yet available.
+   Your series partially solves this in patch 11/11 "of: property: Add
+   device link support for PCS", but also that still won't make the link
+   come back in case of a PCS showing up late to the party, eg. due to
+   constraints such as phy drivers (drivers/phy, not drivers/net/phy)
+   waiting for nvmem providers, or PCS instances "going away" and
+   "coming back" later.
 
-Genio 1200:
-* MediaTek PCIe PHY
-* Mediatek MT6360 USB Type-C Port Controller
+ - removal of a PCS instance (eg. via sysfs unbind) would still
+   require changes to phylink. there is no phylink function to
+   impair the link in this case, and using dev_close() is a bit ugly,
+   and also won't bring the link back up once the PCS (re-)appears.
 
-Genio 350:
-* STARTEK KD070FHFID015 DSI panel
-* MediaTek UART DMA controller (APDMA)
+ - phylink anyway is the only user of PCS drivers, and will very likely
+   always be. So why create another subsystem?
 
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
----
-Depends on [1].
+All that being said I also see potential problems with Christians
+current implementation as it doesn't prevent the Ethernet driver to
+still store a pointer to struct phylink_pcs (returned eg. from
+fwnode_pcs_get()).
 
-[1] "[PATCH v4] arm64: defconfig: mediatek: enable PHY drivers"
-https://lore.kernel.org/all/20250512131933.1247830-1-vignesh.raman@collabora.com/
----
- arch/arm64/configs/defconfig | 9 +++++++++
- 1 file changed, 9 insertions(+)
+Hence I would like to see an even more tight integration with phylink,
+in the sense that pointers to 'struct phylink_pcs' should never be
+exposed to the MAC driver, as only in that way we can be sure that
+phylink, and only phylink, is responsible for reacting to a PCS "going
+away".
 
-diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index cb3eacd6406c3a508ce9ee5f4b5c9cd6a429ed3a..cb47d7bea02025d6034093ec3dd2f9f1c6ad4bc8 100644
---- a/arch/arm64/configs/defconfig
-+++ b/arch/arm64/configs/defconfig
-@@ -846,6 +846,7 @@ CONFIG_VIDEO_MEDIATEK_JPEG=m
- CONFIG_VIDEO_MEDIATEK_VCODEC=m
- CONFIG_VIDEO_WAVE_VPU=m
- CONFIG_VIDEO_E5010_JPEG_ENC=m
-+CONFIG_VIDEO_MEDIATEK_MDP3=m
- CONFIG_VIDEO_IMX7_CSI=m
- CONFIG_VIDEO_IMX_MIPI_CSIS=m
- CONFIG_VIDEO_IMX8_ISI=m
-@@ -912,6 +913,7 @@ CONFIG_DRM_PANEL_BOE_TV101WUM_NL6=m
- CONFIG_DRM_PANEL_LVDS=m
- CONFIG_DRM_PANEL_SIMPLE=m
- CONFIG_DRM_PANEL_EDP=m
-+CONFIG_DRM_PANEL_HIMAX_HX8279=m
- CONFIG_DRM_PANEL_ILITEK_ILI9882T=m
- CONFIG_DRM_PANEL_KHADAS_TS050=m
- CONFIG_DRM_PANEL_MANTIX_MLAF057WE51=m
-@@ -919,6 +921,7 @@ CONFIG_DRM_PANEL_NOVATEK_NT36672E=m
- CONFIG_DRM_PANEL_RAYDIUM_RM67191=m
- CONFIG_DRM_PANEL_SAMSUNG_ATNA33XC20=m
- CONFIG_DRM_PANEL_SITRONIX_ST7703=m
-+CONFIG_DRM_PANEL_STARTEK_KD070FHFID015=m
- CONFIG_DRM_PANEL_TRULY_NT35597_WQXGA=m
- CONFIG_DRM_PANEL_VISIONOX_VTDR6130=m
- CONFIG_DRM_DISPLAY_CONNECTOR=m
-@@ -1152,6 +1155,8 @@ CONFIG_USB_MASS_STORAGE=m
- CONFIG_TYPEC=m
- CONFIG_TYPEC_TCPM=m
- CONFIG_TYPEC_TCPCI=m
-+CONFIG_TYPEC_RT1711H=m
-+CONFIG_TYPEC_MT6360=m
- CONFIG_TYPEC_TCPCI_MAXIM=m
- CONFIG_TYPEC_FUSB302=m
- CONFIG_TYPEC_QCOM_PMIC=m
-@@ -1162,6 +1167,7 @@ CONFIG_TYPEC_TPS6598X=m
- CONFIG_TYPEC_HD3SS3220=m
- CONFIG_TYPEC_MUX_FSA4480=m
- CONFIG_TYPEC_MUX_GPIO_SBU=m
-+CONFIG_TYPEC_MUX_IT5205=m
- CONFIG_TYPEC_MUX_NB7VPQ904M=m
- CONFIG_TYPEC_MUX_PS883X=m
- CONFIG_TYPEC_MUX_WCD939X_USBSS=m
-@@ -1271,6 +1277,7 @@ CONFIG_PL330_DMA=y
- CONFIG_TEGRA186_GPC_DMA=y
- CONFIG_TEGRA20_APB_DMA=y
- CONFIG_TEGRA210_ADMA=m
-+CONFIG_MTK_UART_APDMA=m
- CONFIG_QCOM_BAM_DMA=y
- CONFIG_QCOM_GPI_DMA=m
- CONFIG_QCOM_HIDMA_MGMT=y
-@@ -1515,6 +1522,7 @@ CONFIG_EXYNOS_ADC=y
- CONFIG_IMX8QXP_ADC=m
- CONFIG_IMX93_ADC=m
- CONFIG_MAX9611=m
-+CONFIG_MEDIATEK_MT6359_AUXADC=m
- CONFIG_MEDIATEK_MT6577_AUXADC=m
- CONFIG_QCOM_SPMI_VADC=m
- CONFIG_QCOM_SPMI_ADC5=m
-@@ -1578,6 +1586,7 @@ CONFIG_PHY_HI6220_USB=y
- CONFIG_PHY_HISTB_COMBPHY=y
- CONFIG_PHY_HISI_INNO_USB2=y
- CONFIG_PHY_MVEBU_CP110_COMPHY=y
-+CONFIG_PHY_MTK_PCIE=m
- CONFIG_PHY_MTK_TPHY=y
- CONFIG_PHY_MTK_HDMI=m
- CONFIG_PHY_MTK_MIPI_DSI=m
+Ie. instead of fwnode_phylink_pcs_parse() handing pointers to struct
+phylink_pcs to the Ethernet driver, so it can use it to populate struct
+phylink_config available_pcs member, this should be the responsibility
+of phylink alltogether, directly populating the list of available PCS in
+phylink's private structure.
 
----
-base-commit: 0c6d548cd52870702eb4150c420d00e9289a79d2
-change-id: 20250513-genio-defconfig-76d65f8643dd
+Similarly, there should not be fwnode_pcs_get() but rather phylink
+providing a function fwnode_phylink_pcs_register(phylink, fwnode) which
+directly adds the PCS referenced to the internal list of available PCS.
 
-Best regards,
--- 
-Nícolas F. R. A. Prado <nfraprado@collabora.com>
-
+I hope we can pick the best of all the suggested implementations, and
+together come up with something even better.
 
