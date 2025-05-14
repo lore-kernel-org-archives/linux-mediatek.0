@@ -4,69 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCCF7C3ABD8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 May 2025 16:09:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3383C3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 May 2025 16:19:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=M3woz04Pv9OqB7s5d5XN3SM8aX7++vAPSKJ2i0HXWMg=; b=UZUZDO+6jf8eCXCQE0fIR9EXdC
-	ydWXDHqh3rCpZ/CDieIIi4BjHr0ZlWVT+1WT9J4+oWHZ5NFIZjGxMpLan38BeuckxbSDY890ndy8z
-	6yFJ3DaqEWfFf4V8uuanvCkrzOo3IUpg1wojDQsDj+9XErO/+qyIYg1VUlQz+IC0kJ1E782fJhZ+T
-	4fxhjUQRJV9p1rdfEo8QafdoWjfiqBUv5TWPiVQ+A+24OZcB7wJQH1CbeZRW6o2s6rJoeu26Cp3NI
-	Du34HdIZdWi7tq5M1Kw4NtkD+IXuVElY43+4LjOrCUq4LzDx6omlhGBbpOE0DpbL5gDA+nFLr/Beb
-	TsQr1ZQQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Sr7asB0ccZaz5S0P65JgVRXr504e+Wb6poeCHlmiVlw=; b=gdhdN6S+VQuwZG1na7zeOwqcP0
+	Nknx+N1aVtrMMqiVHTQ8RAC15ynjj2xN6Y1JF/N5bgueXdl2UIOrnwnfZJv5/6CePpLHZXgJM0D2g
+	UX/fjeWvtTKeqMpcWgQeDlGStI0ZORGi5IsN68m1lZ6iMtuZp3Gj5PjbEnu5iOOm8YRoC05LUzR4w
+	YYe3H5Z7JH+4/7OE2fT/mcDDc3LMbUVZhHh4TnJ4KAtOwUZXJh+lXtW3ozEtvgdMVKD8P6ed7KM2X
+	WIGCJNxgkqqpPfS/NYWNXUok8qt+NBbxK8WSirvLlE5cXfx1jbMs3xfve05wZdx3D3wHJR3paNoRe
+	ELnGdOuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFEfj-0000000Fgtz-39TS;
-	Wed, 14 May 2025 16:09:31 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1uFEpA-0000000Fis3-2RJk;
+	Wed, 14 May 2025 16:19:16 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFENY-0000000Fe7a-0PSf;
-	Wed, 14 May 2025 15:50:45 +0000
+	id 1uFDd3-0000000FV2F-3TqZ;
+	Wed, 14 May 2025 15:02:41 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 2E229A4DEC7;
-	Wed, 14 May 2025 15:50:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 05264C4CEED;
-	Wed, 14 May 2025 15:50:39 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 012D461126;
+	Wed, 14 May 2025 15:02:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6A9DCC4CEE3;
+	Wed, 14 May 2025 15:02:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747237842;
-	bh=M3woz04Pv9OqB7s5d5XN3SM8aX7++vAPSKJ2i0HXWMg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Yw6lBK8wkLDW8v1I/JLiN8afunRJZg5PZW9nhqlzybGETE51+sgaGZ7d+tcW7cMhI
-	 nBTtxybN9FYVZowX+ODaqGqHiOrst8TO03GFRjiQk4nzyC6TonnBVgF5egMU11XGtP
-	 9YsDB3MeNHgg/5LJ0Ex4/cUtzS2/OBSboIB9gh/Qp6Q8okW8W6GgnlZG/kEDxmwOR2
-	 m2Jvh3omi5R2w0y4+WNRNytT+TZvZ3P+4f1oXVfi+UFg1TJv49bVNdw+r1zHmSVCxl
-	 1VZ+yfF4ymBVTewvnNpfX+2Zj3ONBRtMiNpMq65+xRmQxDyeA/NF8A7UsHkVRyxlW1
-	 YUxHqc7A/EPww==
-Date: Wed, 14 May 2025 16:50:37 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Trevor Wu <trevor.wu@mediatek.com>,
-	Jiaxin Yu <jiaxin.yu@mediatek.com>, linux-sound@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] ASoC: dt-bindings: mediatek: Simplify
- mediatek,clk-provider
-Message-ID: <20250514-stir-porridge-b52d88b50ae1@spud>
-References: <20250514105702.28622-2-krzysztof.kozlowski@linaro.org>
+	s=k20201202; t=1747234960;
+	bh=D5QrjYtZqdxl9aDAD4Mt0N5C+A1l4Okat5ZD8j05CX8=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=iYkEz35ghEPY/E/ZEsQiPGJVJ70ATHHNVAVhBU4YQd4KlA0o7ljoi31EUooIirf4l
+	 L5QMIjyZqYu4M7IdQcxyO0LFT8tEGScl/+NdqWCVLF5DWwm9//jGp8YgTqhD2iul0L
+	 rZ2X+hio3TR93rTlo0V5tMxEYQlqyv++E01kyLMz1EVBeMahtJHttcauIEUIjlJ7Ok
+	 hT7leKp/L1ehnLcOJjlwBwkK2bR6fglZuh4Om/zoppilPOeL5qWNS6nN1hEiKZEVv+
+	 IXLZZN7TLUfIaKswbtSJq6vVxiA+vQubPX5Fbamt9YnoYbzcwjvlZSpzzNdo5yQ+Cy
+	 1yBGTaWr73+4g==
+From: Vinod Koul <vkoul@kernel.org>
+To: sean.wang@mediatek.com, matthias.bgg@gmail.com, 
+ angelogioacchino.delregno@collabora.com, 
+ Qiu-ji Chen <chenqiuji666@gmail.com>
+Cc: dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ baijiaju1990@gmail.com, stable@vger.kernel.org
+In-Reply-To: <20250508073634.3719-1-chenqiuji666@gmail.com>
+References: <20250508073634.3719-1-chenqiuji666@gmail.com>
+Subject: Re: [PATCH v2] dmaengine: mediatek: Fix a possible deadlock error
+ in mtk_cqdma_tx_status()
+Message-Id: <174723495814.115648.10076437402947235700.b4-ty@kernel.org>
+Date: Wed, 14 May 2025 16:02:38 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="5CRYNW3obN/3u7l6"
-Content-Disposition: inline
-In-Reply-To: <20250514105702.28622-2-krzysztof.kozlowski@linaro.org>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250514_085044_238221_0963DFEC 
-X-CRM114-Status: GOOD (  10.73  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.14.2
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,29 +73,26 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---5CRYNW3obN/3u7l6
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Thu, 08 May 2025 15:36:33 +0800, Qiu-ji Chen wrote:
+> Fix a potential deadlock bug. Observe that in the mtk-cqdma.c
+> file, functions like mtk_cqdma_issue_pending() and
+> mtk_cqdma_free_active_desc() properly acquire the pc lock before the vc
+> lock when handling pc and vc fields. However, mtk_cqdma_tx_status()
+> violates this order by first acquiring the vc lock before invoking
+> mtk_cqdma_find_active_desc(), which subsequently takes the pc lock. This
+> reversed locking sequence (vc → pc) contradicts the established
+> pc → vc order and creates deadlock risks.
+> 
+> [...]
 
-On Wed, May 14, 2025 at 12:57:03PM +0200, Krzysztof Kozlowski wrote:
-> "mediatek,clk-provider" property is a string, not an string array, thus
-> "items" is not really correct.
->=20
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Applied, thanks!
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+[1/1] dmaengine: mediatek: Fix a possible deadlock error in mtk_cqdma_tx_status()
+      commit: 157ae5ffd76a2857ccb4b7ce40bc5a344ca00395
 
---5CRYNW3obN/3u7l6
-Content-Type: application/pgp-signature; name="signature.asc"
+Best regards,
+-- 
+~Vinod
 
------BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaCS7zQAKCRB4tDGHoIJi
-0vucAP0ZLj98/0xHcsnZq3ruzOd9P3Y0Z5wyirXAYCFjg+5G2QEA92rfx6Wpafbl
-JUg58i+SRsWf56f7tK0VKcHUSIbJPAk=
-=KTct
------END PGP SIGNATURE-----
-
---5CRYNW3obN/3u7l6--
 
