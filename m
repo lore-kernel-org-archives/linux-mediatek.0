@@ -4,77 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A16DC3ABD8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 May 2025 13:24:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63DC9C3ABD8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 May 2025 13:53:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+AfK7MCkRVYWu8R51rsh6Q0jzO0vpYJ7OnABWuVAlLw=; b=mlOXuxurG6w896X7BYOKmuj1TI
-	AzOkNjmkX2r+fXbDJn7FIZzWsASPVMdy7S9aQTq66bIepD9ZDLaCP29xwO4xkfB2uRRL3NaT55F2H
-	ros0eE1zR8JUhKy5MPGCLRly4bJEMYqNga9r3VKT+k7AhxdheSuJ57lblDnji8bu+lepwZByqudrk
-	jYiE+24AMrMQikJJNUiqrh3FMQitUeV7WQMGJC6hptR13F2+gQS4Q8T9uM3hODfD57BvfhlSC+2xp
-	wO9PHTFyuvtdd8AgGJ1Enxr5u0zr+Y9nuvmRejRfZ2Jk2WVne/L/Mu9iJkGTsqVk6bWXxh8CDZnr3
-	hBTB5+ew==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=G5/ezDWck45nXL/Q0/PCPu/gRqrmQTBYYFNfxHZLXrU=; b=PQF/Jer7XWAxAy0g2YTnPVkZGE
+	PEtNyUG78qPrUCi5y6Ss0ztExIa0inwNp7koiakqlJ4eTbHUsWZW/tnpYMI5XB5GlCVEqbUuX2EHZ
+	ENGlkSebsIdNX9nvaJvY5OnbFF+DpLgBl64+bwYn6AnLl/wFvvTS7mCcpNj3Ompa+IDLojqUdjHhj
+	wI3CAoN/k16egOcJaody1OYGu3cgF7+tA+uaeAhQkQ6iiz66zRjx4y9+v/leexFkoW/eZQy1UimKw
+	/bD9dM+RDCmGV7hzOHsjc9SOkHTNF2oPxTbdStXeo8tLyxTId9eSRlRRQlsjK4MJTnfW4YxGLR/AT
+	vduypU/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFC5e-0000000FBvb-1wX0;
-	Wed, 14 May 2025 13:24:06 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1uFCY7-0000000FHVp-2Dty;
+	Wed, 14 May 2025 13:53:31 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFB1b-0000000EzYK-49xb;
-	Wed, 14 May 2025 12:15:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=+AfK7MCkRVYWu8R51rsh6Q0jzO0vpYJ7OnABWuVAlLw=; b=dRHBEV2cEqxhfNzllZyhYafO0h
-	/hTgKWQXQn7JZ09jG5zYsbQMXqlUDve784VuWkNKz1emP/PBXlLZ30KvDz7bWFgoM3/oPy+uBpVjE
-	SjbfghHTiSnRM3iZf+nXifEOpdp47y3xmOahwnOA12NLahY7d+IzuTzHqoV1EehTa7VfFC6xJOxpg
-	9f5/xe7kkVs4jCEDy3ktJ26eYruBhzENT2hJPxPLAIG0nqxdnaDXgxzlqyZWynPyO5bcnFhP39k9r
-	urtICyboVUk0OcoE3KqPl0KUsfKFhxaNuRdyERMQwWYy2ew+yYBTxFtAfJWz5wvLdJlvWkLbODNqK
-	y2ia513A==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:36192)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1uFAzN-0007GH-1J;
-	Wed, 14 May 2025 13:13:33 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.96)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1uFAzG-0004FD-2Z;
-	Wed, 14 May 2025 13:13:26 +0100
-Date: Wed, 14 May 2025 13:13:26 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Sky Huang <SkyLake.Huang@mediatek.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Qingfang Deng <dqfext@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	balika011 <balika011@gmail.com>, linux-kernel@vger.kernel.org,
-	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Steven Liu <Steven.Liu@mediatek.com>
-Subject: Re: [PATCH net-next v3 2/2] net: phy: mediatek: add driver for
- built-in 2.5G ethernet PHY on MT7988
-Message-ID: <aCSI5k7uUgAlpSsy@shell.armlinux.org.uk>
-References: <20250514105738.1438421-1-SkyLake.Huang@mediatek.com>
- <20250514105738.1438421-3-SkyLake.Huang@mediatek.com>
+	id 1uF9iE-0000000EpwG-1t4O;
+	Wed, 14 May 2025 10:51:47 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 6E2A2A4CAFD;
+	Wed, 14 May 2025 10:51:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4A083C4CEEB;
+	Wed, 14 May 2025 10:51:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1747219905;
+	bh=PrGh9SpMA5/9+J5Zgu002byi2m9ghtEE/SkkLqqxAos=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=mjJ4jl/XAE9SvGEQOmGm3+Zk9ABaavs2siKdRbt7xZ/ijhAtIrLYkAnc1GddJGLze
+	 5FztE931bpZ7x+Zw8orsfC3x+lwm4kdUGQZl5hfIjHAPFTQDb26T4GDn3ECIUEwD/I
+	 5P74AcAxx7/ZE/GeFNLWIabsddi5McWO5DASPuwNqt+/SZ98S/v+U+9l+bq9q4YgK4
+	 sQkSIH6D9mwe/xyw0eKOHKZ0ey+dqMphrvTdapMAk1DYTgz2A+tn6yzq1u+Md4oJ94
+	 ieAv4d7d2VvBIioUM8RpeD30sYY3dTER3NEfeaL6uYS4WUu9iRGJVj/aSMEaBGJgnl
+	 48/rGyNEidBWw==
+Message-ID: <67a7343b-fd1e-4276-83b0-baa28d19f207@kernel.org>
+Date: Wed, 14 May 2025 12:51:38 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250514105738.1438421-3-SkyLake.Huang@mediatek.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 10/10] ASoC: dt-bindings: mediatek,mt8196-nau8825: add
+ mt8196-nau8825 document
+To: "Darren.Ye" <darren.ye@mediatek.com>, Liam Girdwood
+ <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Linus Walleij <linus.walleij@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>
+Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org
+References: <20250514081125.24475-1-darren.ye@mediatek.com>
+ <20250514081125.24475-11-darren.ye@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <20250514081125.24475-11-darren.ye@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250514_051552_028559_DBCC3F0D 
-X-CRM114-Status: GOOD (  19.09  )
+X-CRM114-CacheID: sfid-20250514_035146_624889_72F84C97 
+X-CRM114-Status: GOOD (  10.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,112 +125,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On 14/05/2025 10:11, Darren.Ye wrote:
 
-On Wed, May 14, 2025 at 06:57:38PM +0800, Sky Huang wrote:
-> +#define MTK_2P5GPHY_ID_MT7988		(0x00339c11)
-> +
-> +#define MT7988_2P5GE_PMB_FW		"mediatek/mt7988/i2p5ge-phy-pmb.bin"
-> +#define MT7988_2P5GE_PMB_FW_SIZE	(0x20000)
-> +#define MT7988_2P5GE_PMB_FW_BASE	(0x0f100000)
-> +#define MT7988_2P5GE_PMB_FW_LEN		(0x20000)
-> +#define MTK_2P5GPHY_MCU_CSR_BASE	(0x0f0f0000)
-> +#define MTK_2P5GPHY_MCU_CSR_LEN		(0x20)
-> +#define MD32_EN_CFG			(0x18)
 
-These parens are all unnecessary, as are ones below around a simple
-number.
+A nit, subject: drop second/last, redundant "document". The
+"dt-bindings" prefix is already stating that this is a document.
+See also:
+https://elixir.bootlin.com/linux/v6.7-rc8/source/Documentation/devicetree/bindings/submitting-patches.rst#L18
 
-> +#define   MD32_EN			BIT(0)
 > +
-> +#define BASE100T_STATUS_EXTEND		(0x10)
-> +#define BASE1000T_STATUS_EXTEND		(0x11)
-> +#define EXTEND_CTRL_AND_STATUS		(0x16)
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - mediatek,mt8196-nau8825-sound
+> +      - mediatek,mt8196-rt5682s-sound
+> +      - mediatek,mt8196-rt5650-sound
 > +
-> +#define PHY_AUX_CTRL_STATUS		(0x1d)
-> +#define   PHY_AUX_DPX_MASK		GENMASK(5, 5)
-> +#define   PHY_AUX_SPEED_MASK		GENMASK(4, 2)
+> +  audio-routing:
+> +    description:
+> +      Valid names could be the input or output widgets of audio components,
+> +      power supplies, MicBias of codec and the software switch.
+
+Nothing improved. I asked to drop the property. Why do you need it?
 > +
-> +/* Registers on MDIO_MMD_VEND1 */
-> +#define MTK_PHY_LPI_PCS_DSP_CTRL		(0x121)
+> +  mediatek,platform:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description: The phandle of MT8188 ASoC platform.
+> +
+> +  mediatek,adsp:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description:
+> +      The phandle of the MT8188 ADSP platform, which is the optional Audio DSP
+> +      hardware that provides additional audio functionalities if present.
+> +      The AFE will link to ADSP when the phandle is provided.
+> +
 
 ...
 
-> +static int mt798x_2p5ge_phy_load_fw(struct phy_device *phydev)
-> +{
-> +	void __iomem *mcu_csr_base, *pmb_addr;
-> +	struct device *dev = &phydev->mdio.dev;
-
-This will attract a comment about reverse christmas tree.
-
-> +	const struct firmware *fw;
-> +	int ret, i;
-> +	u32 reg;
-
-...
-
-> +static int mt798x_2p5ge_phy_config_init(struct phy_device *phydev)
-> +{
-> +	struct pinctrl *pinctrl;
+> +      codec:
+> +        description: Holds subnode which indicates codec dai.
+> +        type: object
+> +        additionalProperties: false
+> +        properties:
+> +          sound-dai:
+> +            minItems: 1
+> +            maxItems: 2
+> +        required:
+> +          - sound-dai
 > +
-> +	/* Check if PHY interface type is compatible */
-> +	if (phydev->interface != PHY_INTERFACE_MODE_INTERNAL)
-> +		return -ENODEV;
+> +      dai-format:
+> +        description: audio format.
+> +        items:
+> +          enum:
+> +            - i2s
+> +            - right_j
+> +            - left_j
+> +            - dsp_a
+> +            - dsp_b
 > +
-> +	/* Setup LED */
-> +	phy_set_bits_mmd(phydev, MDIO_MMD_VEND2, MTK_PHY_LED0_ON_CTRL,
-> +			 MTK_PHY_LED_ON_POLARITY | MTK_PHY_LED_ON_LINK10 |
-> +			 MTK_PHY_LED_ON_LINK100 | MTK_PHY_LED_ON_LINK1000 |
-> +			 MTK_PHY_LED_ON_LINK2500);
-> +	phy_set_bits_mmd(phydev, MDIO_MMD_VEND2, MTK_PHY_LED1_ON_CTRL,
-> +			 MTK_PHY_LED_ON_FDX | MTK_PHY_LED_ON_HDX);
+> +      mediatek,clk-provider:
+> +        $ref: /schemas/types.yaml#/definitions/string
+> +        description: Indicates dai-link clock master.
+> +        items:
+
+Drop items
+
+> +          enum:
+> +            - cpu
+> +            - codec
 > +
-> +	/* Switch pinctrl after setting polarity to avoid bogus blinking */
-> +	pinctrl = devm_pinctrl_get_select(&phydev->mdio.dev, "i2p5gbe-led");
-> +	if (IS_ERR(pinctrl))
-> +		dev_err(&phydev->mdio.dev, "Fail to set LED pins!\n");
-
-No, don't do this. config_init() can be called multiple times during
-the lifetime of the driver bound to the device, and each time it is,
-a new managed-dev structure will be allocated to release this action
-each time, thus consuming more and more memory, or possibly failing
-after the first depending on the pinctrl_get_select() behaviour.
-Please find a different way.
-
-...
-
-> +static int mt798x_2p5ge_phy_config_aneg(struct phy_device *phydev)
-> +{
-> +	bool changed = false;
-> +	u32 adv;
-> +	int ret;
+> +    additionalProperties: false
 > +
-> +	ret = genphy_c45_an_config_aneg(phydev);
-> +	if (ret < 0)
-> +		return ret;
-> +	if (ret > 0)
-> +		changed = true;
+> +    required:
+> +      - link-name
 > +
-> +	/* Clause 45 doesn't define 1000BaseT support. Use Clause 22 instead in
-> +	 * our design.
-> +	 */
-> +	adv = linkmode_adv_to_mii_ctrl1000_t(phydev->advertising);
-> +	ret = phy_modify_changed(phydev, MII_CTRL1000, ADVERTISE_1000FULL, adv);
-> +	if (ret < 0)
-> +		return ret;
-> +	if (ret > 0)
-> +		changed = true;
+> +unevaluatedProperties: false
+
+This goes after required: block.
+
 > +
-> +	return __genphy_config_aneg(phydev, changed);
+> +required:
+> +  - compatible
+> +  - mediatek,platform
 
-Do you want this (which will program EEE and the 10/100 advert) or do
-you want genphy_check_and_restart_aneg() here? Note that
-genphy_c45_an_config_aneg() will already have programmed both the EEE
-and 10/100 adverts via the C45 registers.
 
-Thanks.
-
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+Best regards,
+Krzysztof
 
