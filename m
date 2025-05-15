@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0563C3ABC9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 May 2025 10:03:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B4FBC2D0CD
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 May 2025 10:05:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ReZvEftY9OCzW7Dm6xWBCAsBP3wLpjVjsHSQsCNwqs8=; b=ygZaeP05A0Mm6conujpK0Nd5Aw
-	OuJlnXgvhoXtsiEDubd1H8LjtFVxwPt/DWLgq4Ix3AmetWOdSGmCUOAXg0lphuCdbE6X6YnoX8Euw
-	/4l4s7pNRBlTOyXm1nX1QKOOWjtjVD9LA8BfXDGwstvFBGwXnTJCpdi08YQwlrYXmOWwClVDSnBEE
-	umiyHOjmu3q126QRTVhjBj1TDS+Nuw6I0tjh6MU/FD1y/4bOLNV5VoDTGjFBHz3ExL7dqSSatgEkU
-	ToaUTlZhe/To9pRcITFn9rSarV5TVoUFricrlWi4kTFuOu40NfsGRnFECcmiMME6D5WBpGwgq7OsA
-	XE60wVcg==;
+	bh=UpijhnmjCocVgZygncOLU49SwbbjYQwSUZZ1BwdKB8s=; b=mVbUL5IlGsWClFDonG+NaTX64H
+	ivses3OnxwhFXPqhGnr/KKzYGp4139FcxLvlT8DMlRAyTAS6ZSYpIC3E8Xo2hM6ccFznlqOaRAkdv
+	qtsrVkN+fNgUBpG0mfZXhFqxf9twZzp5SeffHGuXBJow/7Zw3iuiaK3HwiKzm8qSTa9bXSdBRSZ4v
+	rTLxv6KmviqXxMqzTbxOMOUNyYsksJyxnHUvXsdtsZldbdYwYkBpt0DhYMUycR7VIPBF8mdo+MNIl
+	PmMdf7rkDRk4g2brVIAmMqFI55yTKVlFUTHVPt3yGu97Mxc64yN66DuHxB4c0MPyW87pKCwL2Kg/F
+	tHoMfmOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFVRL-00000000FJ0-2E8L;
-	Thu, 15 May 2025 10:03:47 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1uFVTM-00000000Ft0-1MjE;
+	Thu, 15 May 2025 10:05:52 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFUzf-00000000Asi-3kxq;
-	Thu, 15 May 2025 09:35:13 +0000
-X-UUID: e2a9a20c316f11f0bed96b30c12bc3d6-20250515
+	id 1uFUzl-00000000Awi-2vKI;
+	Thu, 15 May 2025 09:35:19 +0000
+X-UUID: e70cb19a316f11f08d385d50fb11b32d-20250515
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ReZvEftY9OCzW7Dm6xWBCAsBP3wLpjVjsHSQsCNwqs8=;
-	b=CA8UWNpssWolyUXRWfCIY9Zxauw/xBAvlYWb7mGaPohsmr+JvTkGntc/xQrelDJZB9t3EkUbRddx+ltppWilTYiswNm4ZR33HeqUYL3O2W44F18jp12abHUrEK5mG5+XucSl/9/zbMDISnPD9SQnto9Xa89qCE+CRapgdMhHNsg=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=UpijhnmjCocVgZygncOLU49SwbbjYQwSUZZ1BwdKB8s=;
+	b=GTBeaLGhXSl+TBStrztr+y7/ADESzFEDNVaSmjpTdVvIOx80mdnLd5xKgk16yf0L0Cx3huWYeijyAePmqccP4RNxJKgkkeDo6T0qWSGEfE0gMgS3mkKCfaFVqrEiXH0GE0e+vxy5h5+BBIoDvH+RLodTrUOW9LNgmUDFAumh6rI=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:a4ca65f7-f5cc-42f8-8e12-53835aefa386,IP:0,UR
-	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:-5
-X-CID-META: VersionHash:0ef645f,CLOUDID:3f97c297-7410-4084-8094-24619d975b02,B
+X-CID-O-INFO: VERSION:1.2.1,REQID:50f21ca1-1a53-4cee-9858-287dac9580a0,IP:0,UR
+	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-25
+X-CID-META: VersionHash:0ef645f,CLOUDID:c2d6093e-da74-431d-a7be-5e6761de3b64,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
 	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
 	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: e2a9a20c316f11f0bed96b30c12bc3d6-20250515
-Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
+X-UUID: e70cb19a316f11f08d385d50fb11b32d-20250515
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
 	(envelope-from <paul-pl.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 742138467; Thu, 15 May 2025 02:35:06 -0700
+	with ESMTP id 1455198470; Thu, 15 May 2025 02:35:13 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Thu, 15 May 2025 17:35:03 +0800
+ 15.2.1258.39; Thu, 15 May 2025 17:35:12 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Thu, 15 May 2025 17:35:03 +0800
+ 15.2.1258.39 via Frontend Transport; Thu, 15 May 2025 17:35:12 +0800
 From: paul-pl.chen <paul-pl.chen@mediatek.com>
 To: <robh@kernel.org>, <krzk+dt@kernel.org>, <conor+dt@kernel.org>,
 	<chunkuang.hu@kernel.org>, <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v3 05/17] soc: mediatek: Add runtime PM and top clocks and async controls for MMSYS
-Date: Thu, 15 May 2025 17:34:17 +0800
-Message-ID: <20250515093454.1729720-6-paul-pl.chen@mediatek.com>
+Subject: [PATCH v3 17/17] drm/mediatek: Add support for MT8196 multiple mmsys
+Date: Thu, 15 May 2025 17:34:29 +0800
+Message-ID: <20250515093454.1729720-18-paul-pl.chen@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20250515093454.1729720-1-paul-pl.chen@mediatek.com>
 References: <20250515093454.1729720-1-paul-pl.chen@mediatek.com>
@@ -66,8 +66,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250515_023511_942480_8BCFEBE7 
-X-CRM114-Status: GOOD (  20.17  )
+X-CRM114-CacheID: sfid-20250515_023517_740902_E5E4B5A0 
+X-CRM114-Status: GOOD (  10.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,285 +85,165 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Nancy Lin <nancy.lin@mediatek.com>
 
-- Add initialization of top clocks and async clocks for each MMSYS.
-- Add PM runtime control and new functions to manage these clocks.
-- Add functions to set these clocks according to the default
-  configuration of the corresponding MMSYS.
+Add code to support MT8196 SOC Multi MMSYS Driver
 
 Signed-off-by: Nancy Lin <nancy.lin@mediatek.com>
 Signed-off-by: Paul-pl Chen <paul-pl.chen@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-mmsys.c       | 152 ++++++++++++++++++++++++-
- drivers/soc/mediatek/mtk-mmsys.h       |  18 +++
- include/linux/soc/mediatek/mtk-mmsys.h |   8 ++
- 3 files changed, 177 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 119 ++++++++++++++++++++++++-
+ 1 file changed, 115 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
-index bb4639ca0b8c..f448cc09ce19 100644
---- a/drivers/soc/mediatek/mtk-mmsys.c
-+++ b/drivers/soc/mediatek/mtk-mmsys.c
-@@ -4,12 +4,15 @@
-  * Author: James Liao <jamesjj.liao@mediatek.com>
-  */
- 
-+#include <linux/bitfield.h>
-+#include <linux/clk.h>
- #include <linux/delay.h>
- #include <linux/device.h>
- #include <linux/io.h>
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/platform_device.h>
-+#include <linux/pm_runtime.h>
- #include <linux/reset-controller.h>
- #include <linux/soc/mediatek/mtk-mmsys.h>
- 
-@@ -158,6 +161,9 @@ struct mtk_mmsys {
- 	spinlock_t lock; /* protects mmsys_sw_rst_b reg */
- 	struct reset_controller_dev rcdev;
- 	struct cmdq_client_reg cmdq_base;
-+	struct clk **async_clk;
-+	int num_async_clk;
-+	struct clk **top_clk;
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 1e49ca3fef80..229f84a4e59c 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -193,6 +193,10 @@ static const struct mtk_drm_route mt8188_mtk_ddp_main_routes[] = {
+ 	{0, DDP_COMPONENT_DSI0},
  };
  
- static void mtk_mmsys_update_bits(struct mtk_mmsys *mmsys, u32 offset, u32 mask, u32 val,
-@@ -180,6 +186,101 @@ static void mtk_mmsys_update_bits(struct mtk_mmsys *mmsys, u32 offset, u32 mask,
- 	writel_relaxed(tmp, mmsys->regs + offset);
- }
- 
-+int mtk_mmsys_top_clk_enable(struct device *dev)
-+{
-+	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
-+	int ret, i;
-+
-+	if (!mmsys->data->num_top_clk)
-+		return 0;
-+
-+	for (i = 0; i < mmsys->data->num_top_clk; i++)
-+		ret = clk_prepare_enable(mmsys->top_clk[i]);
-+	return ret;
-+}
-+EXPORT_SYMBOL_GPL(mtk_mmsys_top_clk_enable);
-+
-+void mtk_mmsys_top_clk_disable(struct device *dev)
-+{
-+	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
-+	int i;
-+
-+	for (i = 0; i < mmsys->data->num_top_clk; i++)
-+		clk_disable_unprepare(mmsys->top_clk[i]);
-+}
-+EXPORT_SYMBOL_GPL(mtk_mmsys_top_clk_disable);
-+
-+int mtk_mmsys_ddp_clk_enable(struct device *dev, enum mtk_ddp_comp_id comp_id)
-+{
-+	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
-+	const struct mtk_mmsys_async_info *async = mmsys->data->async_info;
-+
-+	int i;
-+
-+	if (!mmsys->data->num_async_info)
-+		return 0;
-+
-+	for (i = 0; i < mmsys->data->num_async_info; i++)
-+		if (comp_id == async[i].comp_id)
-+			return clk_prepare_enable(mmsys->async_clk[async[i].index]);
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_clk_enable);
-+
-+void mtk_mmsys_ddp_clk_disable(struct device *dev, enum mtk_ddp_comp_id comp_id)
-+{
-+	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
-+	const struct mtk_mmsys_async_info *async = mmsys->data->async_info;
-+	int i;
-+
-+	if (!mmsys->data->num_async_info)
-+		return;
-+
-+	for (i = 0; i < mmsys->data->num_async_info; i++)
-+		if (comp_id == async[i].comp_id)
-+			clk_disable_unprepare(mmsys->async_clk[async[i].index]);
-+}
-+EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_clk_disable);
-+
-+void mtk_mmsys_ddp_config(struct device *dev, enum mtk_ddp_comp_id comp_id,
-+			  int width, int height, struct cmdq_pkt *cmdq_pkt)
-+{
-+	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
-+	const struct mtk_mmsys_async_info *async = mmsys->data->async_info;
-+	int i;
-+	u32 val;
-+
-+	if (!mmsys->data->num_async_info)
-+		return;
-+
-+	for (i = 0; i < mmsys->data->num_async_info; i++)
-+		if (comp_id == async[i].comp_id)
-+			break;
-+
-+	if (i == mmsys->data->num_async_info)
-+		return;
-+
-+	val = FIELD_PREP(GENMASK(31, 16), height);
-+	val |= FIELD_PREP(GENMASK(15, 0), width);
-+	mtk_mmsys_update_bits(mmsys, async[i].offset, async[i].mask, val, cmdq_pkt);
-+}
-+EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_config);
-+
-+void mtk_mmsys_default_config(struct device *dev)
-+{
-+	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
-+	const struct mtk_mmsys_default *def_config = mmsys->data->def_config;
-+	int i;
-+
-+	if (!mmsys->data->num_def_config)
-+		return;
-+
-+	for (i = 0; i < mmsys->data->num_def_config; i++)
-+		mtk_mmsys_update_bits(mmsys, def_config[i].offset, def_config[i].mask,
-+				      def_config[i].val, NULL);
-+}
-+EXPORT_SYMBOL_GPL(mtk_mmsys_default_config);
-+
- void mtk_mmsys_ddp_connect(struct device *dev,
- 			   enum mtk_ddp_comp_id cur,
- 			   enum mtk_ddp_comp_id next)
-@@ -390,7 +491,7 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
- 	struct platform_device *clks;
- 	struct platform_device *drm;
- 	struct mtk_mmsys *mmsys;
--	int ret;
-+	int ret, i;
- 
- 	mmsys = devm_kzalloc(dev, sizeof(*mmsys), GFP_KERNEL);
- 	if (!mmsys)
-@@ -432,6 +533,49 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
- 		return PTR_ERR(clks);
- 	mmsys->clks_pdev = clks;
- 
-+	if (mmsys->data->num_top_clk) {
-+		struct device_node *node;
-+
-+		node = of_get_child_by_name(dev->of_node, "top");
-+		if (!node) {
-+			dev_err(&pdev->dev, "Couldn't find top node\n");
-+			return -EINVAL;
-+		}
-+
-+		mmsys->top_clk = devm_kmalloc_array(dev, mmsys->data->num_top_clk,
-+						    sizeof(*mmsys->top_clk), GFP_KERNEL);
-+		if (!mmsys->top_clk)
-+			return -ENOMEM;
-+
-+		for (i = 0; i < mmsys->data->num_top_clk; i++) {
-+			mmsys->top_clk[i] = of_clk_get(node, i);
-+			if (IS_ERR(mmsys->top_clk[i]))
-+				return PTR_ERR(mmsys->top_clk[i]);
-+		}
-+	}
-+
-+	if (mmsys->data->num_async_info) {
-+		struct device_node *node;
-+
-+		node = of_get_child_by_name(dev->of_node, "async");
-+		if (!node) {
-+			dev_err(&pdev->dev, "Couldn't find async node\n");
-+			return -EINVAL;
-+		}
-+
-+		mmsys->async_clk = devm_kmalloc_array(dev, mmsys->data->num_async_info,
-+						      sizeof(*mmsys->async_clk), GFP_KERNEL);
-+		if (!mmsys->async_clk)
-+			return -ENOMEM;
-+		mmsys->num_async_clk = mmsys->data->num_async_info;
-+
-+		for (i = 0; i < mmsys->num_async_clk; i++) {
-+			mmsys->async_clk[i] = of_clk_get(node, i);
-+			if (IS_ERR(mmsys->async_clk[i]))
-+				return PTR_ERR(mmsys->async_clk[i]);
-+		}
-+	}
-+
- 	if (mmsys->data->is_vppsys)
- 		goto out_probe_done;
- 
-@@ -443,6 +587,9 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
- 	}
- 	mmsys->drm_pdev = drm;
- 
-+	if (of_property_present(dev->of_node, "power-domains"))
-+		pm_runtime_enable(dev);
-+
- out_probe_done:
- 	return 0;
- }
-@@ -453,6 +600,9 @@ static void mtk_mmsys_remove(struct platform_device *pdev)
- 
- 	platform_device_unregister(mmsys->drm_pdev);
- 	platform_device_unregister(mmsys->clks_pdev);
-+
-+	if (of_property_present(pdev->dev.of_node, "power-domains"))
-+		pm_runtime_disable(&pdev->dev);
- }
- 
- static const struct of_device_id of_match_mtk_mmsys[] = {
-diff --git a/drivers/soc/mediatek/mtk-mmsys.h b/drivers/soc/mediatek/mtk-mmsys.h
-index fe628d5f5198..bbc03ef5b025 100644
---- a/drivers/soc/mediatek/mtk-mmsys.h
-+++ b/drivers/soc/mediatek/mtk-mmsys.h
-@@ -102,6 +102,19 @@ struct mtk_mmsys_routes {
- 	u32 val;
- };
- 
-+struct mtk_mmsys_async_info {
-+	u32 comp_id;
-+	u32 index;
-+	u32 offset;
-+	u32 mask;
++static const struct mtk_drm_route mt8196_mtk_ddp_routes[] = {
++	{2, DDP_COMPONENT_DSI0},
 +};
 +
-+struct mtk_mmsys_default {
-+	u32 offset;
-+	u32 val;
-+	u32 mask;
+ static const unsigned int mt8192_mtk_ddp_main[] = {
+ 	DDP_COMPONENT_OVL0,
+ 	DDP_COMPONENT_OVL_2L0,
+@@ -231,6 +235,50 @@ static const unsigned int mt8195_mtk_ddp_ext[] = {
+ 	DDP_COMPONENT_DP_INTF1,
+ };
+ 
++static const unsigned int mt8196_mtk_ddp_ovl0_main[] = {
++	DDP_COMPONENT_DRM_OVLSYS_ADAPTOR0,
++	DDP_COMPONENT_OVL0_DLO_ASYNC5,
 +};
 +
- /**
-  * struct mtk_mmsys_driver_data - Settings of the mmsys
-  * @clk_driver: Clock driver name that the mmsys is using
-@@ -139,6 +152,11 @@ struct mtk_mmsys_driver_data {
- 	const u32 num_resets;
- 	const bool is_vppsys;
- 	const u8 vsync_len;
-+	const struct mtk_mmsys_async_info *async_info;
-+	const unsigned int num_async_info;
-+	const struct mtk_mmsys_default *def_config;
-+	const unsigned int num_def_config;
-+	const unsigned int num_top_clk;
- };
- 
- /*
-diff --git a/include/linux/soc/mediatek/mtk-mmsys.h b/include/linux/soc/mediatek/mtk-mmsys.h
-index 4885b065b849..f50f626e1840 100644
---- a/include/linux/soc/mediatek/mtk-mmsys.h
-+++ b/include/linux/soc/mediatek/mtk-mmsys.h
-@@ -84,6 +84,14 @@ enum mtk_ddp_comp_id {
- 	DDP_COMPONENT_ID_MAX,
- };
- 
-+int mtk_mmsys_top_clk_enable(struct device *dev);
-+void mtk_mmsys_top_clk_disable(struct device *dev);
-+int mtk_mmsys_ddp_clk_enable(struct device *dev, enum mtk_ddp_comp_id comp_id);
-+void mtk_mmsys_ddp_clk_disable(struct device *dev, enum mtk_ddp_comp_id comp_id);
-+void mtk_mmsys_ddp_config(struct device *dev, enum mtk_ddp_comp_id comp_id,
-+			  int width, int height, struct cmdq_pkt *cmdq_pkt);
-+void mtk_mmsys_default_config(struct device *dev);
++static const unsigned int mt8196_mtk_ddp_disp0_main[] = {
++	DDP_COMPONENT_DLI_ASYNC0,
++	DDP_COMPONENT_DLO_ASYNC1,
++};
 +
- void mtk_mmsys_ddp_connect(struct device *dev,
- 			   enum mtk_ddp_comp_id cur,
- 			   enum mtk_ddp_comp_id next);
++static const unsigned int mt8196_mtk_ddp_disp1_main[] = {
++	DDP_COMPONENT_DLI_ASYNC21,
++	DDP_COMPONENT_DVO0,
++};
++
++static const unsigned int mt8196_mtk_ddp_ovl0_ext[] = {
++	DDP_COMPONENT_DRM_OVLSYS_ADAPTOR1,
++	DDP_COMPONENT_OVL0_DLO_ASYNC6,
++};
++
++static const unsigned int mt8196_mtk_ddp_disp0_ext[] = {
++	DDP_COMPONENT_DLI_ASYNC1,
++	DDP_COMPONENT_DLO_ASYNC2,
++};
++
++static const unsigned int mt8196_mtk_ddp_disp1_ext[] = {
++	DDP_COMPONENT_DLI_ASYNC22,
++	DDP_COMPONENT_DP_INTF0,
++};
++
++static const unsigned int mt8196_mtk_ddp_ovl1_third[] = {
++	DDP_COMPONENT_DRM_OVLSYS_ADAPTOR2,
++	DDP_COMPONENT_OVL1_DLO_ASYNC5,
++};
++
++static const unsigned int mt8196_mtk_ddp_disp0_third[] = {
++	DDP_COMPONENT_DLI_ASYNC8,
++	DDP_COMPONENT_DLO_ASYNC3,
++};
++
++static const unsigned int mt8196_mtk_ddp_disp1_third[] = {
++	DDP_COMPONENT_DLI_ASYNC23,
++};
++
+ static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
+ 	.main_path = mt2701_mtk_ddp_main,
+ 	.main_len = ARRAY_SIZE(mt2701_mtk_ddp_main),
+@@ -327,8 +375,65 @@ static const struct mtk_mmsys_driver_data mt8195_vdosys1_driver_data = {
+ 	.min_height = 1,
+ };
+ 
+-static const struct mtk_mmsys_driver_data mt8365_mmsys_driver_data = {
+-	.mmsys_dev_num = 1,
++static const struct mtk_mmsys_driver_data mt8196_dispsys0_driver_data = {
++	.main_path = mt8196_mtk_ddp_disp0_main,
++	.main_len = ARRAY_SIZE(mt8196_mtk_ddp_disp0_main),
++	.main_order = 1,
++	.ext_path = mt8196_mtk_ddp_disp0_ext,
++	.ext_len = ARRAY_SIZE(mt8196_mtk_ddp_disp0_ext),
++	.ext_order = 1,
++	.third_path = mt8196_mtk_ddp_disp0_third,
++	.third_len = ARRAY_SIZE(mt8196_mtk_ddp_disp0_third),
++	.third_order = 1,
++	.mmsys_id = DISPSYS0,
++	.mmsys_dev_num = 4,
++	.max_width = 8191,
++	.min_width = 2, /* 2-pixel align when ethdr is bypassed */
++	.min_height = 1,
++};
++
++static const struct mtk_mmsys_driver_data mt8196_dispsys1_driver_data = {
++	.main_path = mt8196_mtk_ddp_disp1_main,
++	.main_len = ARRAY_SIZE(mt8196_mtk_ddp_disp1_main),
++	.main_order = 2,
++	.ext_path = mt8196_mtk_ddp_disp1_ext,
++	.ext_len = ARRAY_SIZE(mt8196_mtk_ddp_disp1_ext),
++	.ext_order = 2,
++	.third_path = mt8196_mtk_ddp_disp1_third,
++	.third_len = ARRAY_SIZE(mt8196_mtk_ddp_disp1_third),
++	.conn_routes = mt8196_mtk_ddp_routes,
++	.num_conn_routes = ARRAY_SIZE(mt8196_mtk_ddp_routes),
++	.third_order = 2,
++	.mmsys_id = DISPSYS1,
++	.mmsys_dev_num = 4,
++	.max_width = 8191,
++	.min_width = 2, /* 2-pixel align when ethdr is bypassed */
++	.min_height = 1,
++};
++
++static const struct mtk_mmsys_driver_data mt8196_ovlsys0_driver_data = {
++	.main_path = mt8196_mtk_ddp_ovl0_main,
++	.main_len = ARRAY_SIZE(mt8196_mtk_ddp_ovl0_main),
++	.main_order = 0,
++	.ext_path = mt8196_mtk_ddp_ovl0_ext,
++	.ext_len = ARRAY_SIZE(mt8196_mtk_ddp_ovl0_ext),
++	.ext_order = 0,
++	.mmsys_id = OVLSYS0,
++	.mmsys_dev_num = 4,
++	.max_width = 8191,
++	.min_width = 2, /* 2-pixel align when ethdr is bypassed */
++	.min_height = 1,
++};
++
++static const struct mtk_mmsys_driver_data mt8196_ovlsys1_driver_data = {
++	.third_path = mt8196_mtk_ddp_ovl1_third,
++	.third_len = ARRAY_SIZE(mt8196_mtk_ddp_ovl1_third),
++	.third_order = 0,
++	.mmsys_id = OVLSYS1,
++	.mmsys_dev_num = 4,
++	.max_width = 8191,
++	.min_width = 2, /* 2-pixel align when ethdr is bypassed */
++	.min_height = 1,
+ };
+ 
+ static const struct of_device_id mtk_drm_of_ids[] = {
+@@ -358,8 +463,14 @@ static const struct of_device_id mtk_drm_of_ids[] = {
+ 	  .data = &mt8195_vdosys0_driver_data},
+ 	{ .compatible = "mediatek,mt8195-vdosys1",
+ 	  .data = &mt8195_vdosys1_driver_data},
+-	{ .compatible = "mediatek,mt8365-mmsys",
+-	  .data = &mt8365_mmsys_driver_data},
++	{ .compatible = "mediatek,mt8196-dispsys0",
++	  .data = &mt8196_dispsys0_driver_data},
++	{ .compatible = "mediatek,mt8196-dispsys1",
++	  .data = &mt8196_dispsys1_driver_data},
++	{ .compatible = "mediatek,mt8196-ovlsys0",
++	  .data = &mt8196_ovlsys0_driver_data},
++	{ .compatible = "mediatek,mt8196-ovlsys1",
++	  .data = &mt8196_ovlsys1_driver_data},
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(of, mtk_drm_of_ids);
 -- 
 2.45.2
 
