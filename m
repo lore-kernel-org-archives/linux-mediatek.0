@@ -4,86 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA812C3ABC3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 May 2025 04:44:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E66E6C2D0CB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 May 2025 05:43:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Kvfcu7T2A/G2Hmbq54J3Mh0UqDMA4DYECzMCK1eoCtE=; b=sN/3sPMfNsBZ7l86YyeOdn+Mvc
-	s5gcPhrWJWQQ3SlnjinlXb5yPiYARp2+Ez6KEjwt/lTu0rDJbPaa/bwU/MnJCM1zwcx91SKxdgIN6
-	Vsq/AbrkrUuLeAHKGZQz3OIrYccWSE9F0rfX9dyONb5J1P643eLmIJy4yXlI1Hwa5zuoxHmiFy/hD
-	U6I0tFR7VMot7HtAHeA2to5Md0SUgDhSsLiEzHTkTkggu8mvj9MbafbtT52PwRaZvTI4wllc40c9k
-	v8+A+DUAp9e1FyAjb2kOw4POIGuKGbNdKfg9IeX2EbCxygznEg5+rpmHPbJiAIh2Ig2b3MESvGhF3
-	acXGK5hA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1xplXiwnlFIAnXDQ0/5PHPSai2MVO8w5tVWi4Ozreu8=; b=GtOMSHWvLzm7EG/jXh99m3eLsL
+	xC3YVeovBGO2tMSFU6O8LlilF9KZ3TmNKyniPC6HcsuaIBbLNjEaPHMoHByIEK7PBGUvP4Hl34lPp
+	zKF092YhOu/6uclF1TR5v7GcWcRFI2hOxzIo/OLqviJTuRtortLF0TBW4HWqgm0BvPjRYuCgEHGgL
+	Q3xifTDbSYmGTxSn2f1NK0FQPogd9idAHDX/T/1cCT9K4O+HxzQUplJlhV9xhC5iKhOfhFxvlqvW5
+	P4oSHNBF7OLnf4PS5qSsfEVOBimeK1VPLq/omj8oavIBuSIuIfvRdCrM3OusGCFGMKBkj0X0uN3UV
+	BByIGOIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFQS7-0000000H0HP-1LbZ;
-	Thu, 15 May 2025 04:44:15 +0000
-Received: from mgamail.intel.com ([192.198.163.16])
+	id 1uFRNV-0000000H4ZA-43mL;
+	Thu, 15 May 2025 05:43:33 +0000
+Received: from mout.gmx.net ([212.227.15.18])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFQQ5-0000000H0AE-08eo;
-	Thu, 15 May 2025 04:42:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1747284129; x=1778820129;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=eMKbF1YyG2PQHQK5zGvXb1tw4RrftzaTI5iILQ1V+To=;
-  b=WACE7H+j2+qXRqsLnKqDJM22eVtAFqlcrzMLM/z0EdEJDFrk1NgdEH9L
-   r4WYwMqpVEKqiKPHSnfSrdRZep9mn2vHbtzutVbri9eHy5YsMMbARx3PN
-   wjpm9zvdxJhkFyfwLwMS84Uo9wujGSjR0JYx47qlxvBv7fVpvCH+Srjsh
-   4rly5X/2arOgWVGQeAh8Nrs9Mgrhwjy0oqz+yv7+VMlmvuxNyi3dov1g6
-   NOHKzeKSrqOlE3XSldKf++BnELYL1L3vGRa7GwgBlQSgzp1PFln+sAaQ+
-   m6ic0YrSFEdzNUqkTEg7UETpx6hhfY1N/db0LlZ8yer0LZSUBrjO0xB/J
-   g==;
-X-CSE-ConnectionGUID: ErInYbBlTcK1+Dbt9Npyhg==
-X-CSE-MsgGUID: GR3iPyjCQAa3MrNBjgApyw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11433"; a="36825722"
-X-IronPort-AV: E=Sophos;i="6.15,290,1739865600"; 
-   d="scan'208";a="36825722"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
-  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 May 2025 21:42:00 -0700
-X-CSE-ConnectionGUID: gmMAhZyOTOWsmCZCt08MmQ==
-X-CSE-MsgGUID: /lVec4e1RMaGj5d52888vA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,290,1739865600"; 
-   d="scan'208";a="138119667"
-Received: from lkp-server01.sh.intel.com (HELO 1992f890471c) ([10.239.97.150])
-  by orviesa010.jf.intel.com with ESMTP; 14 May 2025 21:41:56 -0700
-Received: from kbuild by 1992f890471c with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1uFQPp-000HvT-1C;
-	Thu, 15 May 2025 04:41:53 +0000
-Date: Thu, 15 May 2025 12:41:50 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Darren.Ye" <darren.ye@mediatek.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: oe-kbuild-all@lists.linux.dev, linux-sound@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
-	Darren Ye <darren.ye@mediatek.com>
-Subject: Re: [PATCH v3 07/10] ASoC: mediatek: mt8196: add platform driver
-Message-ID: <202505151200.uFAkmc5O-lkp@intel.com>
-References: <20250514081125.24475-8-darren.ye@mediatek.com>
+	id 1uFRLS-0000000H4M3-17E4;
+	Thu, 15 May 2025 05:41:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1747287649; x=1747892449; i=frank-w@public-files.de;
+	bh=1xplXiwnlFIAnXDQ0/5PHPSai2MVO8w5tVWi4Ozreu8=;
+	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
+	 Content-Type:Date:In-Reply-To:References:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=dpNdBDw9B/Ba3UG4n6oHa87o/k+AtNaXPxr6Cq6BDJ+qvfB+Xd5icgE5GxzN6r6U
+	 nFvEQEghXrfIdbVEC+dNBWn4cXx9HpN0ChsnjJ+AkRrbOE7TVSamDC5s7t1b+0MVS
+	 BuE6d5/279HmJMXLe80vKL7585pX06Arznu1p99hrF3UuhzKrdJFtT3NQ/aVMB7BA
+	 2ibSriBe04SWdCIyHjqAoy8azk8r/sff2IfcDs2Kbr+VA96Xh5BuLRWPiWao8H0mk
+	 QmFROpcPK4FImmfJBbp/SMxmQ/OZUMkcLMLSWF29GKKo7y1XRryOF3/APcVdFzhLs
+	 c6WLcYey/ju6VgOuOw==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [100.64.173.0] ([100.64.173.0]) by
+ trinity-msg-rest-gmx-gmx-live-f4858f84-4zhfg (via HTTP); Thu, 15 May 2025
+ 05:40:49 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250514081125.24475-8-darren.ye@mediatek.com>
+Message-ID: <trinity-59d5f7b7-741b-4cd0-80c5-45191f6918e4-1747287649179@trinity-msg-rest-gmx-gmx-live-f4858f84-4zhfg>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: robh@kernel.org, linux@fw-web.de
+Cc: andrew@lunn.ch, olteanv@gmail.com, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, arinc.unal@arinc9.com,
+ Landen.Chao@mediatek.com, dqfext@gmail.com, sean.wang@mediatek.com,
+ daniel@makrotopia.org, lorenzo@kernel.org, nbd@nbd.name,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Aw: Re: [PATCH v1 03/14] dt-bindings: net: dsa: mediatek,mt7530:
+ add internal mdio bus
+Content-Type: text/plain; charset=UTF-8
+Date: Thu, 15 May 2025 05:40:49 +0000
+In-Reply-To: <20250514211810.GA3051536-robh@kernel.org>
+References: <20250511141942.10284-1-linux@fw-web.de>
+ <20250511141942.10284-4-linux@fw-web.de>
+ <20250514211810.GA3051536-robh@kernel.org>
+X-UI-CLIENT-META-MAIL-DROP: W10=
+X-Provags-ID: V03:K1:JLO4bbfcQ3tQEcfdI0XXkRq5uuMltQ58woFM9Lbw3ADVJkpk/bzZ09XVSI35MbbHUnRRr
+ FoCHc7tAobvhLPlAtlxL3kmnVgX2H6Ic8R9TahCxqP4lk9s/s/SQYyhEhvIfpMiPMOoD8qsWpNzV
+ OeQL4uMCEixugTTUkeceDVdY3sNtFMIPIA2mHmHUn8rImwIPb/Z+zSNMWadeThONvIS6uoNJEYpD
+ uRmdyWKtonX0dlGQ9U7bEIjBQ2VArQeY+01rW/5KxQY6iePDzFmSpi3WUz+KBvjKscqfwBtoNRoi
+ x10auMjDUgiUb3WRb5t0V9UcIwVQdTXicDev5bFEPelBPLbumPm3jiwoWqzG0iNBfM=
+UI-OutboundReport: notjunk:1;M01:P0:/8YkwxI58Z0=;OjW/cXXxAlHNZispu+PcdzyOv3w
+ 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
+ wHoy2t
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250514_214209_088942_C483B639 
-X-CRM114-Status: GOOD (  14.57  )
+X-CRM114-CacheID: sfid-20250514_224126_608162_470B8B34 
+X-CRM114-Status: GOOD (  14.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,54 +130,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Darren.Ye,
+Hi Rob,
 
-kernel test robot noticed the following build warnings:
+thanks for review
 
-[auto build test WARNING on broonie-sound/for-next]
-[also build test WARNING on broonie-spi/for-next robh/for-next linus/master v6.15-rc6 next-20250514]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+> Gesendet: Mittwoch, 14. Mai 2025 um 23:18
+> Von: "Rob Herring" <robh@kernel.org>
+> Betreff: Re: [PATCH v1 03/14] dt-bindings: net: dsa: mediatek,mt7530: ad=
+d internal mdio bus
+>
+> On Sun, May 11, 2025 at 04:19:19PM +0200, Frank Wunderlich wrote:
+> > From: Frank Wunderlich <frank-w@public-files.de>
+> >=20
+> > Mt7988 buildin switch has own mdio bus where ge-phys are connected.
+> > Add related property for this.
+> >=20
+> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> > ---
+> >  Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml | 3 ++=
++
+> >  1 file changed, 3 insertions(+)
+> >=20
+> > diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530=
+.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+> > index bb22c36749fc..5f1363278f43 100644
+> > --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+> > +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+> > @@ -156,6 +156,9 @@ properties:
+> >      maxItems: 1
+> > =20
+> >  patternProperties:
+> > +  "^mdio(-bus)?$":
+>=20
+> Really need 2 names?
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Darren-Ye/ASoC-mediatek-common-modify-mtk-afe-platform-driver-for-mt8196/20250514-161921
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
-patch link:    https://lore.kernel.org/r/20250514081125.24475-8-darren.ye%40mediatek.com
-patch subject: [PATCH v3 07/10] ASoC: mediatek: mt8196: add platform driver
-config: arm-allmodconfig (https://download.01.org/0day-ci/archive/20250515/202505151200.uFAkmc5O-lkp@intel.com/config)
-compiler: arm-linux-gnueabi-gcc (GCC) 14.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250515/202505151200.uFAkmc5O-lkp@intel.com/reproduce)
+no, i only tried to stay close to definition in mdio.yaml ;) there are som=
+e mt7988 boards floating around
+where i do not know the dts. But i can make only "mdio" to be changed late=
+r if needed.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202505151200.uFAkmc5O-lkp@intel.com/
+> > +    $ref: /schemas/net/mdio.yaml#
+>=20
+>        unevaluatedProperties: false
 
-All warnings (new ones prefixed by >>):
+ok, then i need to add 'mediatek,pio' subproperty in next round...would be=
+ ok in this way?
 
->> sound/soc/mediatek/mt8196/mt8196-dai-adda.c:384:30: warning: 'mt8196_adda_enum' defined but not used [-Wunused-const-variable=]
-     384 | static const struct soc_enum mt8196_adda_enum[] = {
-         |                              ^~~~~~~~~~~~~~~~
---
-   sound/soc/mediatek/mt8196/mt8196-dai-i2s.c: In function 'init_i2s_priv_data':
->> sound/soc/mediatek/mt8196/mt8196-dai-i2s.c:4001:21: warning: the comparison will always evaluate as 'true' for the address of 'mt8196_i2s_priv' will never be NULL [-Waddress]
-    4001 |                 if (&mt8196_i2s_priv[i]) {
-         |                     ^
-   sound/soc/mediatek/mt8196/mt8196-dai-i2s.c:3889:38: note: 'mt8196_i2s_priv' declared here
-    3889 | static const struct mtk_afe_i2s_priv mt8196_i2s_priv[DAI_I2S_NUM] = {
-         |                                      ^~~~~~~~~~~~~~~
+  "^mdio(-bus)?$":
+    $ref: /schemas/net/mdio.yaml#
+    unevaluatedProperties: false
 
+    properties:
+      mediatek,pio:
+        $ref: /schemas/types.yaml#/definitions/phandle
+        description:
+          Phandle pointing to the mediatek pinctrl node.
 
-vim +/mt8196_adda_enum +384 sound/soc/mediatek/mt8196/mt8196-dai-adda.c
-
-640b731680b027 Darren Ye 2025-05-14  383  
-640b731680b027 Darren Ye 2025-05-14 @384  static const struct soc_enum mt8196_adda_enum[] = {
-640b731680b027 Darren Ye 2025-05-14  385  	SOC_ENUM_SINGLE_EXT(ARRAY_SIZE(mt8196_adda_off_on_str),
-640b731680b027 Darren Ye 2025-05-14  386  			    mt8196_adda_off_on_str),
-640b731680b027 Darren Ye 2025-05-14  387  };
-640b731680b027 Darren Ye 2025-05-14  388  
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+regards Frank
 
