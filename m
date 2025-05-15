@@ -4,72 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B19FC3ABC9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 May 2025 13:40:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01FE7C3DA6D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 May 2025 14:37:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VRsV/Mmf4uLraDXUNpqoepJhEX/1ILD1zeqCVLUgR5k=; b=wzD80NQWHr+1h+T7MDiEnoElWH
-	gn2bo/OuX4QH5rwL8iXNegbjdtyDJh50UlMkVGUHc7NE6KCx0TurTJJ6FHRv7Gk2jnuRW655Lcknk
-	xLOJ/AC3oxfNUnzKkcf+4LflOYTAoLesAz5ZdhMTehTCMEyLJpEW8NFhHxl2VH9u2miwih3v1YSdi
-	C8/CMniv8Ciw/MmlX64LnlLaHilVM3mkHVgec9CjoLnGkk9KXQnesLr5Y+uij3f53S92MmfEj00/3
-	hE7RdFzBELH2IV32ShOVoNRGy1xX/01NOG/VrizBW0WLoz3uRyuPT6tKY+0UzkprXVRmgp1w+2sNp
-	J2Yy4TEg==;
+	bh=8vd65YnGuhtTn8slwg0SFiq/RNk37CrnwjztumqKdjI=; b=Qs0v4FnVNPi0WOwSbbps5GejBu
+	va9a+E9pKPFV0fP+wSTL5vs8YwBIUczOBu1vDNEzZrTerzXCMR/apPT5RU0JNcFp5XxbL2CYZlRRD
+	BiZri9AlVdQI3HgKn4Dk/E0cM8tXx1ybuUo2U/IfqnZQzEosAXJ1bnvceO+fhGjaN9JrcgKDm9xub
+	r/+8xWIedNJCE4/EpfNOH6Azn/m/Ct3kKt+Mp4hAHaoZjeCD+HgHbruP9C7oxsjbzDsP0HAXFWmCR
+	yUP4MurQR7pYyv0sxwiwwyTLY5tyaOHevVrvyAwojI4rauXJOFxYvf76xMlYvKYH7ismb7m8c9wlE
+	F38G8L6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFYpS-00000000lgu-0iiB;
-	Thu, 15 May 2025 13:40:54 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uFZi0-00000000u9k-0TcL;
+	Thu, 15 May 2025 14:37:16 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFYgg-00000000jui-2sQH;
-	Thu, 15 May 2025 13:31:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1747315909;
-	bh=8VVU8NVRnTpjcLWUjqNAgSssaH4toawfwMWnPXvh4zU=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=n1iegtnaJRMXTSutf212UUiX+v9k41CzAhn8UMiV+FHxiMozVyEhPasaFgmbDOXsf
-	 9ydE7VuFRNJi1ESO2sIOqYlgRl6+8RTzkX7XfldCKOjiPq8ZO8ZTn4iAgr7+oPxzOX
-	 zve5KuPj+UOEp8gvbWnf54YcCdK5jTUDlOb8nhAHzQwGy6WbfwE7kxUWkQMtWVbXHj
-	 tNYd9woATMW8GSRsV+4FioHg9JzBhxemu9srWBt+VZtAFVGF7n74y6g4kOdskW6c4y
-	 WK6uxnrAqQdS8joyiXWnp492ZS2TqCL18WnJ6prwN+6S6VD688b5mYZQHXxkBPHyaZ
-	 1CbpZrR9RTRTg==
-Received: from apertis-1.home (2a01cb0892f2D600c8F85cf092D4Af51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: jmassot)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 77B4017E00F0;
-	Thu, 15 May 2025 15:31:48 +0200 (CEST)
-From: Julien Massot <julien.massot@collabora.com>
-Date: Thu, 15 May 2025 15:31:45 +0200
-Subject: [PATCH 3/3] arm64: dts: mediatek: mt8188: gce: add missing
- 'clock-names'
+	id 1uFZVp-00000000sPE-0UeN
+	for linux-mediatek@lists.infradead.org;
+	Thu, 15 May 2025 14:24:41 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 83EB261126;
+	Thu, 15 May 2025 14:24:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 58401C4CEEF;
+	Thu, 15 May 2025 14:24:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1747319080;
+	bh=XDgcBvyX6F4CWv31xvsx2QdDXOR+w8P/sVKcor0Ztk4=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=QnCteV9d0SEhl0Q7CGh0aDAZEzobi4ilmyEM4Ab/VLX9S0vK5MHjJgPQcDrsx9TvI
+	 otWduQUhcbnTWygsjiXbPmGVmBETKA5iaJQP4K9kjlWSqJnqOj3Wp8Tu6SjYSsl9UE
+	 nIbgoZZrrQ9CR3oYmTtIO+JoGvbFSqqR74V5nfGdupEVJXW60vrVYplUu1Xrm06ksq
+	 cTzLsd5VXzhwU8A9z922Ow4UNNajgdvb/RDOPX+7Kj+h7uci3TLjIdTo9J9gai1W26
+	 nYzrfhSeGy+RStrjcufhh2aB19PagLW0ySLzPEhkTlX7RKiqnOkBNQakpxduq7s94s
+	 PtsP+PXTdzGGA==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Chen-Yu Tsai <wenst@chromium.org>
+Cc: Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Jiaxin Yu <jiaxin.yu@mediatek.com>, linux-sound@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Darren Ye <darren.ye@mediatek.com>
+In-Reply-To: <20250515073825.4155297-1-wenst@chromium.org>
+References: <20250515073825.4155297-1-wenst@chromium.org>
+Subject: Re: [PATCH v2 0/3] ASoC: mediatek: mt8183-afe-pcm: Shorten source
+ code
+Message-Id: <174731907367.355366.17373014449076976140.b4-ty@kernel.org>
+Date: Thu, 15 May 2025 16:24:33 +0200
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250515-dtb-check-mt8188-v1-3-cda383cbeb4f@collabora.com>
-References: <20250515-dtb-check-mt8188-v1-0-cda383cbeb4f@collabora.com>
-In-Reply-To: <20250515-dtb-check-mt8188-v1-0-cda383cbeb4f@collabora.com>
-To: kernel@collabora.com, Michael Turquette <mturquette@baylibre.com>, 
- Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Garmin Chang <garmin.chang@mediatek.com>, 
- Friday Yang <friday.yang@mediatek.com>
-Cc: Conor Dooley <conor.dooley@microchip.com>, linux-clk@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Julien Massot <julien.massot@collabora.com>
-X-Mailer: b4 0.14.2
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250515_063150_870295_66588449 
-X-CRM114-Status: UNSURE (   8.67  )
-X-CRM114-Notice: Please train this message.
+X-Mailer: b4 0.15-dev-c25d1
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,40 +75,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The 'clock-names' property is required by the dt binding.
+On Thu, 15 May 2025 15:38:20 +0800, Chen-Yu Tsai wrote:
+> Changes since v1:
+> - Rebased on top of -next, dropping changes that cover the DMA address
+>   MSB registers
+> 
+> This series is meant as an example on how to use macros and range cases
+> to shorten the MediaTek audio frontend drivers. The drivers have large
+> tables describing the registers and register fields for every supported
+> audio DMA interface. (Some are actually skipped!) There's a lot of
+> duplication which can be eliminated using macros. This should serve as
+> a reference for the MT8196 AFE driver that I had commented on.
+> 
+> [...]
 
-Fix the following dtb-check error:
-arch/arm64/boot/dts/mediatek/mt8390-genio-700-evk.dtb: mailbox@10320000: 'clock-names' is a required property
-from schema $id: http://devicetree.org/schemas/mailbox/mediatek,gce-mailbox.yaml#
+Applied to
 
-Fixes: 45682a4fffdd ("arm64: dts: mediatek: mt8188: Add Global Command Engine mailboxes")
-Signed-off-by: Julien Massot <julien.massot@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt8188.dtsi | 2 ++
- 1 file changed, 2 insertions(+)
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-index dec6ce3e94e92c8e1e2c3680cb3584394d9058bd..d5892ca35bc29f830d7894ba592aca3f58dc3bdc 100644
---- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-@@ -1372,6 +1372,7 @@ gce0: mailbox@10320000 {
- 			interrupts = <GIC_SPI 226 IRQ_TYPE_LEVEL_HIGH 0>;
- 			#mbox-cells = <2>;
- 			clocks = <&infracfg_ao CLK_INFRA_AO_GCE>;
-+			clock-names = "gce";
- 		};
- 
- 		gce1: mailbox@10330000 {
-@@ -1380,6 +1381,7 @@ gce1: mailbox@10330000 {
- 			interrupts = <GIC_SPI 228 IRQ_TYPE_LEVEL_HIGH 0>;
- 			#mbox-cells = <2>;
- 			clocks = <&infracfg_ao CLK_INFRA_AO_GCE2>;
-+			clock-names = "gce";
- 		};
- 
- 		scp_cluster: scp@10720000 {
+Thanks!
 
--- 
-2.49.0
+[1/3] ASoC: mediatek: mt8183-afe-pcm: Shorten memif_data table using macros
+      commit: 91c2685430f217ae8f2866e4372948eaf123b5c4
+[2/3] ASoC: mediatek: mt8183-afe-pcm: Shorten irq_data table using macros
+      commit: 0be889823f93429dab396cb7ac061d02046bd962
+[3/3] ASoC: mediatek: mt8183-afe-pcm: shorten mt8183_is_volatile_reg()
+      commit: 29552dcc044a233be84ab9b64539fdc7d8f4314e
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
