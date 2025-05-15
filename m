@@ -4,118 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E66E6C2D0CB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 May 2025 05:43:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3989CC2D0CB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 May 2025 06:14:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1xplXiwnlFIAnXDQ0/5PHPSai2MVO8w5tVWi4Ozreu8=; b=GtOMSHWvLzm7EG/jXh99m3eLsL
-	xC3YVeovBGO2tMSFU6O8LlilF9KZ3TmNKyniPC6HcsuaIBbLNjEaPHMoHByIEK7PBGUvP4Hl34lPp
-	zKF092YhOu/6uclF1TR5v7GcWcRFI2hOxzIo/OLqviJTuRtortLF0TBW4HWqgm0BvPjRYuCgEHGgL
-	Q3xifTDbSYmGTxSn2f1NK0FQPogd9idAHDX/T/1cCT9K4O+HxzQUplJlhV9xhC5iKhOfhFxvlqvW5
-	P4oSHNBF7OLnf4PS5qSsfEVOBimeK1VPLq/omj8oavIBuSIuIfvRdCrM3OusGCFGMKBkj0X0uN3UV
-	BByIGOIw==;
+	bh=drNlR+oPu307Cld2c2bhZ4PbduC0VAwweKZySGP+xWk=; b=g2pAD2VWDOlgsrphcOzB6moBR3
+	kEcnmNqNzWGBnGovf0aUemDLQM0++7v0wCVUca9u8yf+BpYIzBHlHc1IiER47eQ0YtDzlKAthZYzj
+	nEQihkefltX+E1rQVHkVA3GHLM2DLrsRQbu/JFmuuDOfoyJa541tHJoZBIShIqU5yf+GfRlLI92kQ
+	8do5colDHooh6QymMVjWYJ9zf3t/JZPX3e6MhSQGJR9VN/yTmmylgIPeXu2lvKssQv0WklXt9J4sH
+	3NeH/itYo58TE2czNmT5RanS9/Yl5MpeExR6s6/OMqXJ7Fcx6fkNRMsYMUC2aafEROX5ovzs11Yzf
+	GfVOkRZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFRNV-0000000H4ZA-43mL;
-	Thu, 15 May 2025 05:43:33 +0000
-Received: from mout.gmx.net ([212.227.15.18])
+	id 1uFRr9-0000000H7eW-0kyC;
+	Thu, 15 May 2025 06:14:11 +0000
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFRLS-0000000H4M3-17E4;
-	Thu, 15 May 2025 05:41:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1747287649; x=1747892449; i=frank-w@public-files.de;
-	bh=1xplXiwnlFIAnXDQ0/5PHPSai2MVO8w5tVWi4Ozreu8=;
-	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
-	 Content-Type:Date:In-Reply-To:References:
-	 Content-Transfer-Encoding:cc:content-transfer-encoding:
-	 content-type:date:from:message-id:mime-version:reply-to:subject:
-	 to;
-	b=dpNdBDw9B/Ba3UG4n6oHa87o/k+AtNaXPxr6Cq6BDJ+qvfB+Xd5icgE5GxzN6r6U
-	 nFvEQEghXrfIdbVEC+dNBWn4cXx9HpN0ChsnjJ+AkRrbOE7TVSamDC5s7t1b+0MVS
-	 BuE6d5/279HmJMXLe80vKL7585pX06Arznu1p99hrF3UuhzKrdJFtT3NQ/aVMB7BA
-	 2ibSriBe04SWdCIyHjqAoy8azk8r/sff2IfcDs2Kbr+VA96Xh5BuLRWPiWao8H0mk
-	 QmFROpcPK4FImmfJBbp/SMxmQ/OZUMkcLMLSWF29GKKo7y1XRryOF3/APcVdFzhLs
-	 c6WLcYey/ju6VgOuOw==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [100.64.173.0] ([100.64.173.0]) by
- trinity-msg-rest-gmx-gmx-live-f4858f84-4zhfg (via HTTP); Thu, 15 May 2025
- 05:40:49 +0000
+	id 1uFRr6-0000000H7d3-3Svz
+	for linux-mediatek@lists.infradead.org;
+	Thu, 15 May 2025 06:14:10 +0000
+Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-54fc9e3564cso623689e87.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 14 May 2025 23:14:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1747289646; x=1747894446; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=drNlR+oPu307Cld2c2bhZ4PbduC0VAwweKZySGP+xWk=;
+        b=oYuVNAYlopudzj+y3ITIJEm1Ioa+fTlydxb9QQ4jCqwCEKpM4PLcFjU4gVKxiy1vdF
+         FsExRp1y8mko8gwQbvKHi3FPaWJycu5J65zjwZi4sF0hxMEmcHJVd7T2+BGoCPEbhYds
+         6uvYrjFLIRaJ+eW3qvfhUg2JXXLBmkxWt5O50=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1747289646; x=1747894446;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=drNlR+oPu307Cld2c2bhZ4PbduC0VAwweKZySGP+xWk=;
+        b=kr/tuDTexV52QYeFc38oHtdrglgNUibfu4Itx0tGEWQoL3vrWuhGkmBgPrDNotLnvH
+         dj/sSsRqCgioRXl79bv3eyt/I8TRAmZpl9Lqrp+qVSUvg5tisqU/f1NZrocIBYTXKqcS
+         dNGXoldu7ntCiho/ovbVv28C3Jv2i5Vqwb3qp2ymAG3/DlxAynkt7O8o9vTXVUNtIqwL
+         cMpitWH278N645jBd1PPiHP8LPlb2MsOREtPVecEYF/1sjmb2P0jxEs0SoYu31mHbfCt
+         PCue6Y7dyYZBxhXhE2ff9LwoxD2vjjOSHPn25l5cA22Z4PRG8+yxzcP5ROi89h4cXDF6
+         pTuQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUd+n2iqakDccstjihkNw58CKG63Jcf+PuHjv9RI2A9OcrFzIZCpheDOz8RWclwILAbWlRtOdLvxvtLZpCCcA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwFdPSimSvCSHjz/Ksk9BOJkYw7DCRezwhwESsG2vaA0wkh3v0h
+	zZHeQQn1JPckcO9DiFG9j4o6GsXP+xgYNl7kBicqQiHdJ+vrGk/MvINW/q7JfUGOlMLQ1ZjXxFR
+	f5oGtn5PlwKjJRogun2jP/RXsA/aVjQk/gc5v
+X-Gm-Gg: ASbGncvxCS1rvbXvWPoPrWwRVYelF1pfxMZvw2CS402TAXNAv1XtYvWgi2/YtpEoo3T
+	tV7+6rxUdt7Iv9sOfrwKVk+ItoVfUc47Mr8yI5jXrpgk5So1GYCBXycdTZn4KGdHd8jv4OwsUif
+	xmslclU7uYdagmIEmOk6hFSl+jqLyY0SXkQp8UccH3EvRLJbQSc15atTY2kk/g5d22NzZJI98=
+X-Google-Smtp-Source: AGHT+IH6Tu1s7qfro8eTjpXXBa9bg/YMXFMFe0rGRv+AYRa3osr+ecXdrIFoJAbS7ovq5tmuUpU4zvFeFidf93w3Epg=
+X-Received: by 2002:a05:651c:1993:b0:30b:cd68:b69c with SMTP id
+ 38308e7fff4ca-327ed09f95emr25687631fa.3.1747289646393; Wed, 14 May 2025
+ 23:14:06 -0700 (PDT)
 MIME-Version: 1.0
-Message-ID: <trinity-59d5f7b7-741b-4cd0-80c5-45191f6918e4-1747287649179@trinity-msg-rest-gmx-gmx-live-f4858f84-4zhfg>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: robh@kernel.org, linux@fw-web.de
-Cc: andrew@lunn.ch, olteanv@gmail.com, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, arinc.unal@arinc9.com,
- Landen.Chao@mediatek.com, dqfext@gmail.com, sean.wang@mediatek.com,
- daniel@makrotopia.org, lorenzo@kernel.org, nbd@nbd.name,
- netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Aw: Re: [PATCH v1 03/14] dt-bindings: net: dsa: mediatek,mt7530:
- add internal mdio bus
-Content-Type: text/plain; charset=UTF-8
-Date: Thu, 15 May 2025 05:40:49 +0000
-In-Reply-To: <20250514211810.GA3051536-robh@kernel.org>
-References: <20250511141942.10284-1-linux@fw-web.de>
- <20250511141942.10284-4-linux@fw-web.de>
- <20250514211810.GA3051536-robh@kernel.org>
-X-UI-CLIENT-META-MAIL-DROP: W10=
-X-Provags-ID: V03:K1:JLO4bbfcQ3tQEcfdI0XXkRq5uuMltQ58woFM9Lbw3ADVJkpk/bzZ09XVSI35MbbHUnRRr
- FoCHc7tAobvhLPlAtlxL3kmnVgX2H6Ic8R9TahCxqP4lk9s/s/SQYyhEhvIfpMiPMOoD8qsWpNzV
- OeQL4uMCEixugTTUkeceDVdY3sNtFMIPIA2mHmHUn8rImwIPb/Z+zSNMWadeThONvIS6uoNJEYpD
- uRmdyWKtonX0dlGQ9U7bEIjBQ2VArQeY+01rW/5KxQY6iePDzFmSpi3WUz+KBvjKscqfwBtoNRoi
- x10auMjDUgiUb3WRb5t0V9UcIwVQdTXicDev5bFEPelBPLbumPm3jiwoWqzG0iNBfM=
-UI-OutboundReport: notjunk:1;M01:P0:/8YkwxI58Z0=;OjW/cXXxAlHNZispu+PcdzyOv3w
- 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
- wHoy2t
+References: <20250425082551.1467042-1-wenst@chromium.org> <86b55c96-7ec3-48ed-83b4-f434d7fcb5c2@collabora.com>
+ <aCSqWbT9t1T29HT_@finisterre.sirena.org.uk>
+In-Reply-To: <aCSqWbT9t1T29HT_@finisterre.sirena.org.uk>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 15 May 2025 14:13:53 +0800
+X-Gm-Features: AX0GCFsS6xRp3ubfx5sogziOmFxZtWhFobfvOPwhpAASmoDhOKkToNpIA5VukSg
+Message-ID: <CAGXv+5Eq1=TqhZmdhNY5H1s52omit7CZhNhYpRddcJAxGN2P6g@mail.gmail.com>
+Subject: Re: [PATCH 0/3] ASoC: mediatek: mt8183-afe-pcm: Shorten source code
+To: Mark Brown <broonie@kernel.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Jiaxin Yu <jiaxin.yu@mediatek.com>, 
+	linux-sound@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Darren Ye <darren.ye@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250514_224126_608162_470B8B34 
-X-CRM114-Status: GOOD (  14.96  )
+X-CRM114-CacheID: sfid-20250514_231408_890285_43ABDF44 
+X-CRM114-Status: GOOD (  17.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,61 +95,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rob,
-
-thanks for review
-
-> Gesendet: Mittwoch, 14. Mai 2025 um 23:18
-> Von: "Rob Herring" <robh@kernel.org>
-> Betreff: Re: [PATCH v1 03/14] dt-bindings: net: dsa: mediatek,mt7530: ad=
-d internal mdio bus
+On Wed, May 14, 2025 at 10:36=E2=80=AFPM Mark Brown <broonie@kernel.org> wr=
+ote:
 >
-> On Sun, May 11, 2025 at 04:19:19PM +0200, Frank Wunderlich wrote:
-> > From: Frank Wunderlich <frank-w@public-files.de>
-> >=20
-> > Mt7988 buildin switch has own mdio bus where ge-phys are connected.
-> > Add related property for this.
-> >=20
-> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> > ---
-> >  Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml | 3 ++=
-+
-> >  1 file changed, 3 insertions(+)
-> >=20
-> > diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530=
-.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> > index bb22c36749fc..5f1363278f43 100644
-> > --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> > +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> > @@ -156,6 +156,9 @@ properties:
-> >      maxItems: 1
-> > =20
-> >  patternProperties:
-> > +  "^mdio(-bus)?$":
->=20
-> Really need 2 names?
+> On Wed, May 14, 2025 at 03:49:48PM +0200, AngeloGioacchino Del Regno wrot=
+e:
+> > Il 25/04/25 10:25, Chen-Yu Tsai ha scritto:
+>
+> > > This series is meant as an example on how to use macros and range cas=
+es
+> > > to shorten the MediaTek audio frontend drivers. The drivers have larg=
+e
+> > > tables describing the registers and register fields for every support=
+ed
+> > > audio DMA interface. (Some are actually skipped!) There's a lot of
+> > > duplication which can be eliminated using macros. This should serve a=
+s
+> > > a reference for the MT8196 AFE driver that I had commented on.
+>
+> > Sorry for the very long wait here; the entire series is
+>
+> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+>
+> Unfortunately this doesn't apply against current code (I guess due to
+> development in the intervening time), could you please check and resend?
 
-no, i only tried to stay close to definition in mdio.yaml ;) there are som=
-e mt7988 boards floating around
-where i do not know the dts. But i can make only "mdio" to be changed late=
-r if needed.
+This series is based on the other series that I sent for reworking
+reserved memory, in particular the patch
 
-> > +    $ref: /schemas/net/mdio.yaml#
->=20
->        unevaluatedProperties: false
+    ASoC: mediatek: mt8183-afe-pcm: Support >32 bit DMA addresses
 
-ok, then i need to add 'mediatek,pio' subproperty in next round...would be=
- ok in this way?
+touches the same parts.
 
-  "^mdio(-bus)?$":
-    $ref: /schemas/net/mdio.yaml#
-    unevaluatedProperties: false
+Since this series is ready, I'll rebase it and resend.
 
-    properties:
-      mediatek,pio:
-        $ref: /schemas/types.yaml#/definitions/phandle
-        description:
-          Phandle pointing to the mediatek pinctrl node.
-
-regards Frank
+ChenYu
 
