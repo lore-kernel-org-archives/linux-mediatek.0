@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01FE7C3DA6D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 May 2025 14:37:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08F47C54754
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 May 2025 14:37:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8vd65YnGuhtTn8slwg0SFiq/RNk37CrnwjztumqKdjI=; b=Qs0v4FnVNPi0WOwSbbps5GejBu
-	va9a+E9pKPFV0fP+wSTL5vs8YwBIUczOBu1vDNEzZrTerzXCMR/apPT5RU0JNcFp5XxbL2CYZlRRD
-	BiZri9AlVdQI3HgKn4Dk/E0cM8tXx1ybuUo2U/IfqnZQzEosAXJ1bnvceO+fhGjaN9JrcgKDm9xub
-	r/+8xWIedNJCE4/EpfNOH6Azn/m/Ct3kKt+Mp4hAHaoZjeCD+HgHbruP9C7oxsjbzDsP0HAXFWmCR
-	yUP4MurQR7pYyv0sxwiwwyTLY5tyaOHevVrvyAwojI4rauXJOFxYvf76xMlYvKYH7ismb7m8c9wlE
-	F38G8L6g==;
+	bh=bD5sRhy1xw93X63INS607oitEmmEFkgPcQYf1Qj7p+Y=; b=TWbcMptqIXj4UXPGcMv/PtpiGm
+	ZbPKLJUvV/D0QjVdF9cBmBrPgCU1W+p4VeCj+LBRuAc8Pw51A/i7nvRdXvZe66PQFMpAXJB8H50+d
+	EJCHFtF0oc446ipRsFfafn6XjPnxacwM6mHxCKO9sGR6Cv2k2WoD0NMTqt5OjMT2k6nQh3vaCJChz
+	y9wb4DuSWOs3xUoBZmSFNHzJgUnA0u4zTYbo/D9h2d21WWlV6Cy2v4L2iCXu2KcenXQNLaTTko9fr
+	YFzilLRY8AkQzkqB4H0E6wG66p78B2GmytdWglyYE0utuXscUKBYp6QdxD7gI+vDXQOFH4ecm/S2a
+	0JqIkfrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFZi0-00000000u9k-0TcL;
-	Thu, 15 May 2025 14:37:16 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uFZhz-00000000u9Y-3Mrh;
+	Thu, 15 May 2025 14:37:15 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFZVp-00000000sPE-0UeN
+	id 1uFZVi-00000000sON-3urs
 	for linux-mediatek@lists.infradead.org;
-	Thu, 15 May 2025 14:24:41 +0000
+	Thu, 15 May 2025 14:24:34 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 83EB261126;
-	Thu, 15 May 2025 14:24:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 58401C4CEEF;
+	by tor.source.kernel.org (Postfix) with ESMTP id 11466614BC;
 	Thu, 15 May 2025 14:24:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 25393C4CEE7;
+	Thu, 15 May 2025 14:24:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747319080;
-	bh=XDgcBvyX6F4CWv31xvsx2QdDXOR+w8P/sVKcor0Ztk4=;
+	s=k20201202; t=1747319073;
+	bh=YeiOfXX6SYoNVeYhSe2fFoez/4867S6g/UJ2uYpEv/8=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=QnCteV9d0SEhl0Q7CGh0aDAZEzobi4ilmyEM4Ab/VLX9S0vK5MHjJgPQcDrsx9TvI
-	 otWduQUhcbnTWygsjiXbPmGVmBETKA5iaJQP4K9kjlWSqJnqOj3Wp8Tu6SjYSsl9UE
-	 nIbgoZZrrQ9CR3oYmTtIO+JoGvbFSqqR74V5nfGdupEVJXW60vrVYplUu1Xrm06ksq
-	 cTzLsd5VXzhwU8A9z922Ow4UNNajgdvb/RDOPX+7Kj+h7uci3TLjIdTo9J9gai1W26
-	 nYzrfhSeGy+RStrjcufhh2aB19PagLW0ySLzPEhkTlX7RKiqnOkBNQakpxduq7s94s
-	 PtsP+PXTdzGGA==
+	b=LpNcyritQ3NECd/Y0i1QR9KDvuYmyvvnPUA7Lmz2EgbZluW+PhjMT5W3Ki8rczIFy
+	 cdrd6x8mD/RawpEx14RMUeFNzk9qCVVoQJ9TgxZ2kh8W3/G0ExoF3w3xIXIFQvzi/d
+	 zl+MG2r4pPeqda3Dct4uC2lLtlCmY8FmmpIenStv83ni+QsboazyX8eJduM0xWtQnl
+	 DqSPtH0C5CDh7kP5x/Eczm+lAadWTyDlicP5Qh+hUSFDaXxgWkRmi8SIOYjix89dRJ
+	 1liZriIs5LVh6hYvSkiOpwWEnlXqsw/Gr8EmqWFKa3MJ7nWSqvaW0puk6hm5QLWCDr
+	 E8p72wwBKz5Kw==
 From: Mark Brown <broonie@kernel.org>
 To: Liam Girdwood <lgirdwood@gmail.com>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -51,12 +51,12 @@ Cc: Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
  Jiaxin Yu <jiaxin.yu@mediatek.com>, linux-sound@vger.kernel.org, 
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
  Darren Ye <darren.ye@mediatek.com>
-In-Reply-To: <20250515073825.4155297-1-wenst@chromium.org>
-References: <20250515073825.4155297-1-wenst@chromium.org>
-Subject: Re: [PATCH v2 0/3] ASoC: mediatek: mt8183-afe-pcm: Shorten source
+In-Reply-To: <20250425082551.1467042-1-wenst@chromium.org>
+References: <20250425082551.1467042-1-wenst@chromium.org>
+Subject: Re: [PATCH 0/3] ASoC: mediatek: mt8183-afe-pcm: Shorten source
  code
-Message-Id: <174731907367.355366.17373014449076976140.b4-ty@kernel.org>
-Date: Thu, 15 May 2025 16:24:33 +0200
+Message-Id: <174731906955.355366.5967151829535099714.b4-ty@kernel.org>
+Date: Thu, 15 May 2025 16:24:29 +0200
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
@@ -75,11 +75,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 15 May 2025 15:38:20 +0800, Chen-Yu Tsai wrote:
-> Changes since v1:
-> - Rebased on top of -next, dropping changes that cover the DMA address
->   MSB registers
-> 
+On Fri, 25 Apr 2025 16:25:47 +0800, Chen-Yu Tsai wrote:
 > This series is meant as an example on how to use macros and range cases
 > to shorten the MediaTek audio frontend drivers. The drivers have large
 > tables describing the registers and register fields for every supported
