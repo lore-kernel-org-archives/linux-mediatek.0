@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05D68C3ABC3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 May 2025 03:32:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24A32C3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 May 2025 03:32:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7E0yGV9fq1bLHyrmBJkJI+P3GpWKwf3pIXly3srXsq4=; b=mqIUiaAcg/hVVLJzIyRdxabZgQ
-	bUt/YTYCwBbefxnmhEov0QGBCSFrblrjuTobAXeQ6l6Ic/kzNsBQpNruHP3zOooUEeO35S4cIa+3i
-	Mh/RWKylmdblccyGzeAEPZi3VwNtpQYrD739qU1Y8ngzWxDwIQ+fNDU4ZPtJTAOFbTNfi5LzhmTlP
-	q+rT1Ku2lln5sSWpXTvsKg8GSXXzFT1ma649hgyxkpvJB/exw0pxEkyfhfXXb0P8lr8unemsWD1in
-	3c7IQElmNPLFTkoUA/lujWw5uQzMSEK9g6g/Lm5DPNh5o/+3wVo1rFxnr2CAVPIYDIJoFGuZJDE+8
-	2jchDWkg==;
+	bh=4CUpM0c/mkxzAKeJ5147M+qVj330e23zN+SJgeyqeu4=; b=GQiDOhhKmwVzZ/vU8iCmpKTeoj
+	N7VhFzcgi3908SPhbswxk+andJusFP4UDtIjFBpYR/lxScJ1Bm8kZBOyapwmXxwgOhVKDpeJKTxhp
+	IS85gMb8yaSdH7CiBdhsmuvQ63ifWtpyvOniy8yPCS94toba8IkUe9Jwaww1p2II+UZ2wwSFVaaw4
+	BcqhaYOW77php88AUDCUaUBT11WU5BIy5WfekMAVy1voxqInb41mwlYk5QV/Ci9n0Y9hdQTppVKUT
+	QaoE4xgosnxtBUDwKQtqiIqNoTEZ8ATQlOIW3P+3iHJJjX9e412/YZEGWIsh35Qs66HPBQ6zDHpPR
+	nez/dTkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFPKw-0000000GwNL-32uo;
-	Thu, 15 May 2025 03:32:46 +0000
+	id 1uFPKy-0000000GwOQ-0JQ2;
+	Thu, 15 May 2025 03:32:48 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFPKu-0000000GwMW-2veY
+	id 1uFPKv-0000000GwMn-2rqT
 	for linux-mediatek@lists.infradead.org;
-	Thu, 15 May 2025 03:32:45 +0000
-X-UUID: 4255fd82313d11f08d385d50fb11b32d-20250514
+	Thu, 15 May 2025 03:32:46 +0000
+X-UUID: 42b8734a313d11f08d385d50fb11b32d-20250514
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=7E0yGV9fq1bLHyrmBJkJI+P3GpWKwf3pIXly3srXsq4=;
-	b=oQ6Uh/+Jk1QqxjmWM62Cnh38ztMijfFQyBtRc9f/bH/3pBTvCvVAQjcloc8KvOL5JMWOm2kTMinoRxuHgmqFIp7tjtKZVpUsZECX5VchoF3w/gDzSaczDxIjDELbA1yVlv+KP8fEZep1fVH6/fLIaEtiiB0DDBzd60HR11haq14=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=4CUpM0c/mkxzAKeJ5147M+qVj330e23zN+SJgeyqeu4=;
+	b=GNAVBstCSkNwIjNWK/sc6ozdNetVnk/iiVOM2teRzZDuUANTjSYjepUu6fqlMIIpnSyhIYocs2MHfhdx+2nfBpHl7gno1bhQfndBgp+LJOhAK3div7SGIsXr4VSqPWJHP1BG2cFZ77H+dAUlcfcJk3laRZ+90cJV3ezCsVHam8Y=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:66f9816a-845c-4041-bb80-dbec7c0019f4,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:0ef645f,CLOUDID:17acbe97-7410-4084-8094-24619d975b02,B
+X-CID-O-INFO: VERSION:1.2.1,REQID:a9c63330-7246-4c93-a707-7f00c97538c4,IP:0,UR
+	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:-5
+X-CID-META: VersionHash:0ef645f,CLOUDID:01f0053e-da74-431d-a7be-5e6761de3b64,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
 	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
 	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 4255fd82313d11f08d385d50fb11b32d-20250514
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
+X-UUID: 42b8734a313d11f08d385d50fb11b32d-20250514
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
 	(envelope-from <shayne.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1012499018; Wed, 14 May 2025 20:32:42 -0700
+	with ESMTP id 1872290578; Wed, 14 May 2025 20:32:43 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1258.39; Thu, 15 May 2025 11:32:39 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
@@ -59,11 +59,11 @@ To: Felix Fietkau <nbd@nbd.name>
 CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
 	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
 	<evelyn.tsai@mediatek.com>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Peter Chiu
-	<chui-hao.chiu@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>
-Subject: [PATCH mt76-next 5/9] wifi: mt76: mt7996: fix invalid NSS setting when TX path differs from NSS
-Date: Thu, 15 May 2025 11:29:48 +0800
-Message-ID: <20250515032952.1653494-5-shayne.chen@mediatek.com>
+	<linux-mediatek@lists.infradead.org>, Shayne Chen <shayne.chen@mediatek.com>,
+	StanleyYP Wang <StanleyYP.Wang@mediatek.com>
+Subject: [PATCH mt76-next 9/9] wifi: mt76: support power delta calculation for 5 TX paths
+Date: Thu, 15 May 2025 11:29:52 +0800
+Message-ID: <20250515032952.1653494-9-shayne.chen@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20250515032952.1653494-1-shayne.chen@mediatek.com>
 References: <20250515032952.1653494-1-shayne.chen@mediatek.com>
@@ -72,8 +72,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250514_203244_742850_ED260928 
-X-CRM114-Status: GOOD (  11.47  )
+X-CRM114-CacheID: sfid-20250514_203245_725542_6E4290C2 
+X-CRM114-Status: GOOD (  15.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,60 +88,163 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Chiu <chui-hao.chiu@mediatek.com>
+One variant of MT7992 has 5 TX paths, so extend the power delta function
+to support it. Also, rename nss_delta to path_delta since the value is
+based on the number of TX paths rather tha the number of spatial streams.
+(path delta [0.5 dBm] = 10 * log(path number) [dBm] * 2)
 
-The maximum TX path and NSS may differ on a band. For example, one variant
-of the MT7992 has 5 TX paths and 4 NSS on the 5 GHz band. To address this,
-add orig_antenna_mask to record the maximum NSS and prevent setting an
-invalid NSS in mt7996_set_antenna().
-
-Fixes: 69d54ce7491d ("wifi: mt76: mt7996: switch to single multi-radio wiphy")
-Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Co-developed-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
+Signed-off-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
 Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c | 1 +
- drivers/net/wireless/mediatek/mt76/mt7996/main.c   | 3 ++-
- drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h | 1 +
- 3 files changed, 4 insertions(+), 1 deletion(-)
+ drivers/net/wireless/mediatek/mt76/mac80211.c    | 4 ++--
+ drivers/net/wireless/mediatek/mt76/mt76.h        | 8 ++++----
+ drivers/net/wireless/mediatek/mt76/mt7615/init.c | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt7615/mcu.c  | 6 +++---
+ drivers/net/wireless/mediatek/mt76/mt7915/init.c | 4 ++--
+ drivers/net/wireless/mediatek/mt76/mt7996/init.c | 6 +++---
+ drivers/net/wireless/mediatek/mt76/mt7996/main.c | 2 +-
+ 7 files changed, 16 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c
-index 7bfd19ed9594..87c6192b6384 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c
-@@ -310,6 +310,7 @@ int mt7996_eeprom_parse_hw_cap(struct mt7996_dev *dev, struct mt7996_phy *phy)
- 		phy->has_aux_rx = true;
+diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
+index e9605dc22291..45c8db939d55 100644
+--- a/drivers/net/wireless/mediatek/mt76/mac80211.c
++++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
+@@ -1705,7 +1705,7 @@ s8 mt76_get_power_bound(struct mt76_phy *phy, s8 txpower)
+ 	int n_chains = hweight16(phy->chainmask);
  
- 	mphy->antenna_mask = BIT(nss) - 1;
-+	phy->orig_antenna_mask = mphy->antenna_mask;
- 	mphy->chainmask = (BIT(path) - 1) << dev->chainshift[band_idx];
- 	phy->orig_chainmask = mphy->chainmask;
- 	dev->chainmask |= mphy->chainmask;
+ 	txpower = mt76_get_sar_power(phy, phy->chandef.chan, txpower * 2);
+-	txpower -= mt76_tx_power_nss_delta(n_chains);
++	txpower -= mt76_tx_power_path_delta(n_chains);
+ 
+ 	return txpower;
+ }
+@@ -1721,7 +1721,7 @@ int mt76_get_txpower(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 		return -EINVAL;
+ 
+ 	n_chains = hweight16(phy->chainmask);
+-	delta = mt76_tx_power_nss_delta(n_chains);
++	delta = mt76_tx_power_path_delta(n_chains);
+ 	*dbm = DIV_ROUND_UP(phy->txpower_cur + delta, 2);
+ 
+ 	return 0;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index d7cd467b812f..7707c51b974e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -1386,12 +1386,12 @@ static inline bool mt76_is_skb_pktid(u8 pktid)
+ 	return pktid >= MT_PACKET_ID_FIRST;
+ }
+ 
+-static inline u8 mt76_tx_power_nss_delta(u8 nss)
++static inline u8 mt76_tx_power_path_delta(u8 path)
+ {
+-	static const u8 nss_delta[4] = { 0, 6, 9, 12 };
+-	u8 idx = nss - 1;
++	static const u8 path_delta[5] = { 0, 6, 9, 12, 14 };
++	u8 idx = path - 1;
+ 
+-	return (idx < ARRAY_SIZE(nss_delta)) ? nss_delta[idx] : 0;
++	return (idx < ARRAY_SIZE(path_delta)) ? path_delta[idx] : 0;
+ }
+ 
+ static inline bool mt76_testmode_enabled(struct mt76_phy *phy)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/init.c b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
+index 66ba3be27343..aae80005a3c1 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
+@@ -273,7 +273,7 @@ void mt7615_init_txpower(struct mt7615_dev *dev,
+ 			 struct ieee80211_supported_band *sband)
+ {
+ 	int i, n_chains = hweight8(dev->mphy.antenna_mask), target_chains;
+-	int delta_idx, delta = mt76_tx_power_nss_delta(n_chains);
++	int delta_idx, delta = mt76_tx_power_path_delta(n_chains);
+ 	u8 *eep = (u8 *)dev->mt76.eeprom.data;
+ 	enum nl80211_band band = sband->band;
+ 	struct mt76_power_limits limits;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+index b8fcd4eb3fbb..4064e193d4de 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+@@ -2067,7 +2067,7 @@ static void mt7615_mcu_set_txpower_sku(struct mt7615_phy *phy, u8 *sku)
+ 	};
+ 
+ 	tx_power = mt76_get_sar_power(mphy, mphy->chandef.chan, tx_power);
+-	tx_power -= mt76_tx_power_nss_delta(n_chains);
++	tx_power -= mt76_tx_power_path_delta(n_chains);
+ 	tx_power = mt76_get_rate_power_limits(mphy, mphy->chandef.chan,
+ 					      &limits, tx_power);
+ 	mphy->txpower_cur = tx_power;
+@@ -2084,8 +2084,8 @@ static void mt7615_mcu_set_txpower_sku(struct mt7615_phy *phy, u8 *sku)
+ 		int delta = 0;
+ 
+ 		if (i < n_chains - 1)
+-			delta = mt76_tx_power_nss_delta(n_chains) -
+-				mt76_tx_power_nss_delta(i + 1);
++			delta = mt76_tx_power_path_delta(n_chains) -
++				mt76_tx_power_path_delta(i + 1);
+ 		sku[MT_SKU_1SS_DELTA + i] = delta;
+ 	}
+ }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+index be9527dd0269..3e30ca5155d2 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+@@ -285,7 +285,7 @@ static void __mt7915_init_txpower(struct mt7915_phy *phy,
+ {
+ 	struct mt7915_dev *dev = phy->dev;
+ 	int i, n_chains = hweight16(phy->mt76->chainmask);
+-	int nss_delta = mt76_tx_power_nss_delta(n_chains);
++	int path_delta = mt76_tx_power_path_delta(n_chains);
+ 	int pwr_delta = mt7915_eeprom_get_power_delta(dev, sband->band);
+ 	struct mt76_power_limits limits;
+ 
+@@ -305,7 +305,7 @@ static void __mt7915_init_txpower(struct mt7915_phy *phy,
+ 		target_power = mt76_get_rate_power_limits(phy->mt76, chan,
+ 							  &limits,
+ 							  target_power);
+-		target_power += nss_delta;
++		target_power += path_delta;
+ 		target_power = DIV_ROUND_UP(target_power, 2);
+ 		chan->max_power = min_t(int, chan->max_reg_power,
+ 					target_power);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+index 213c7bcd4ade..a9599c286328 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+@@ -317,8 +317,8 @@ static void __mt7996_init_txpower(struct mt7996_phy *phy,
+ 				  struct ieee80211_supported_band *sband)
+ {
+ 	struct mt7996_dev *dev = phy->dev;
+-	int i, nss = hweight16(phy->mt76->chainmask);
+-	int nss_delta = mt76_tx_power_nss_delta(nss);
++	int i, n_chains = hweight16(phy->mt76->chainmask);
++	int path_delta = mt76_tx_power_path_delta(n_chains);
+ 	int pwr_delta = mt7996_eeprom_get_power_delta(dev, sband->band);
+ 	struct mt76_power_limits limits;
+ 
+@@ -330,7 +330,7 @@ static void __mt7996_init_txpower(struct mt7996_phy *phy,
+ 		target_power = mt76_get_rate_power_limits(phy->mt76, chan,
+ 							  &limits,
+ 							  target_power);
+-		target_power += nss_delta;
++		target_power += path_delta;
+ 		target_power = DIV_ROUND_UP(target_power, 2);
+ 		chan->max_power = min_t(int, chan->max_reg_power,
+ 					target_power);
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-index 91c64e3a0860..85c5d76c0c2c 100644
+index 85c5d76c0c2c..970c1f890d56 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-@@ -1518,7 +1518,8 @@ mt7996_set_antenna(struct ieee80211_hw *hw, u32 tx_ant, u32 rx_ant)
- 		u8 shift = dev->chainshift[band_idx];
+@@ -684,7 +684,7 @@ mt7996_get_txpower(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 	}
  
- 		phy->mt76->chainmask = tx_ant & phy->orig_chainmask;
--		phy->mt76->antenna_mask = phy->mt76->chainmask >> shift;
-+		phy->mt76->antenna_mask = (phy->mt76->chainmask >> shift) &
-+					  phy->orig_antenna_mask;
+ 	n_chains = hweight16(phy->mt76->chainmask);
+-	delta = mt76_tx_power_nss_delta(n_chains);
++	delta = mt76_tx_power_path_delta(n_chains);
+ 	*dbm = DIV_ROUND_UP(phy->mt76->txpower_cur + delta, 2);
  
- 		mt76_set_stream_caps(phy->mt76, true);
- 		mt7996_set_stream_vht_txbf_caps(phy);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-index 7c334e319547..c75189a02316 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-@@ -312,6 +312,7 @@ struct mt7996_phy {
- 	struct mt76_channel_state state_ts;
- 
- 	u16 orig_chainmask;
-+	u16 orig_antenna_mask;
- 
- 	bool has_aux_rx;
- 	bool counter_reset;
+ 	return 0;
 -- 
 2.39.2
 
