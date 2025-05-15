@@ -4,69 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39961C2D0CD
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 May 2025 07:47:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2666DC2D0CD
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 May 2025 08:21:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=djcsMp5c+uXusuXKFCINoErIEdxrN0txK0DGwX6i8YA=; b=dCKv/78IAkEL3VcJ1daBNQaWnz
-	XpF9iyYuFs3p2gEyppJ7fnsb6d4jdRyoEeh1eQQh/qmKyadWDsiHf1FLPiUQZCL9n1/xTe1Q/GYbq
-	YXOGRgHWRwJWC3n8ZmHLOW+SBfpqPZmKLl2YW5qVjal12q0GEoQ1Co7Q/AdpKdU7Nm052pbbG/TSt
-	1wPZHLr44R/izcg95yigeIpRUi63W8nX7haK/HaTJRRMpxd4lk0RR8JLFYiHcTHCEydamTE3dWfL+
-	P/t18BFYEoDQ0f54P5GgIUz+ayJFIWeoGGIlYTQvBLP90Bd8WXSjpb2S7EBei3/DKmvggoU39Z+ai
-	8zo+Lgag==;
+	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=3R0DPJde5QP/N/HQ5yaIUnWadGPDvaKYjHWsht6yKtM=; b=kOc6JTzuRWlwH6s0s0Q+kZp9h+
+	FAX9SPvZrNLWf/10Ivslr0DDMtp+Y6Yt27XeLU3e3yyCLxg4CA2b3WBqYDRj3miKdN3KQrQtp7py2
+	txu2NV/alYaO5r5rf744Gk91Qo2YOpaFjm0d1o1D9ciefS2h0x4Nq+ErqRuOPCSpat3uUe3FGhlkB
+	KswVEBHqN/d7KdD1KgK0zEeT9cG0AEcSd3RNWUV2sudusK+N9lL6lpdhTuW63meJnUeXS7spxwPgU
+	iE68/37nop+kyifyYfUKX8JpHGpTOP3MoaDlb/GLdLGDvI/bU3pAkVjC2DQuWFMwkCGUIOLkr6WnK
+	NLmWfXyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFTJ2-0000000HOWN-16Yz;
-	Thu, 15 May 2025 07:47:04 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uFTq9-0000000HUu6-0IjG;
+	Thu, 15 May 2025 08:21:17 +0000
+Received: from mail.profinix.pl ([89.46.78.5])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFTFO-0000000HO3A-3XMO;
-	Thu, 15 May 2025 07:43:20 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id CDC825C4D71;
-	Thu, 15 May 2025 07:41:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 67F06C4CEE7;
-	Thu, 15 May 2025 07:43:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747294997;
-	bh=h1lP/XXLGAF1oDoLpaZY+0OrHUGsOnllqHLKbDeAURg=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=K+Jk8h+dtlENycXrCf9xiGgBIODRP64nCCyfmd5mwwfFiuecBzNt+8y17DbOE/Xgd
-	 WFXCvPM75xcNZQ0kk7VgG2G4G5SFydPF305XY7Z4Ox8eUI7gvz4o8JPsuRdz8iyzy/
-	 HfjxbEchRRi1LpfvbNkjZguOlrlGf+bYUzR69nbCal7J2DV5h+SqEZDN15n2iFy0PF
-	 NQ5v2LSL0DAO1d8yw2Bzh8wyUMnllANDiMc+IQ4WwVhkvzcKYctr9suI2rKjCnXhGz
-	 2P3Pa3QDBNrDFkgpnuiSfo9Htlo8zTHTmiN3BWLsN1Rt8smb1LhsGrhW8+6RpDc+4K
-	 ef6n8aMEtKYvA==
-From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Chen Zhong <chen.zhong@mediatek.com>, 
- Fabien Parent <fabien.parent@linaro.org>, 
- Alexandre Mergnat <amergnat@baylibre.com>, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
-In-Reply-To: <20250514-mt6357-regulator-fixed-compatibles-removal-bindings-v1-1-2421e9cc6cc7@collabora.com>
-References: <20250514-mt6357-regulator-fixed-compatibles-removal-bindings-v1-1-2421e9cc6cc7@collabora.com>
-Subject: Re: [PATCH] regulator: dt-bindings: mt6357: Drop fixed compatible
- requirement
-Message-Id: <174729499095.280025.830867783307923858.b4-ty@kernel.org>
-Date: Thu, 15 May 2025 09:43:10 +0200
+	id 1uFTe1-0000000HSeH-35CU
+	for linux-mediatek@lists.infradead.org;
+	Thu, 15 May 2025 08:08:47 +0000
+Received: by mail.profinix.pl (Postfix, from userid 1002)
+	id AD55182D83; Thu, 15 May 2025 10:05:23 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=profinix.pl; s=mail;
+	t=1747296324; bh=3R0DPJde5QP/N/HQ5yaIUnWadGPDvaKYjHWsht6yKtM=;
+	h=Date:From:To:Subject:From;
+	b=dN80cqr0ryJy+V7SsKSlPe4oAlDlFa0VeskgWXh9DEhSokgECOOHrAP2jqSRvU5Or
+	 asO7LZIME9ypqGvg2wMULef9YiuQtQyuR2ScvT+yZNHOlz3+5JTqnRqUSMZP8oRxLa
+	 DPViCi7P4+xA4UC/H7KHTLf8pZfgySiylA9yMLvgB5dUjgnAbS/Jcb4v3y27ZizxQn
+	 vLZfBmvNlMSeDjXZljf3c3/DV8R+wxe+Icil0+MupQ4i39ISLdIoV/T//kK0w7YLC/
+	 Uj2EvldT4TVT/nTzeV/jnCoHU1ba0N0+VwcIj8EG1gLSCJH9TIr4yCHl0+Z1N9MCON
+	 yz+cKhLqu1Kpg==
+Received: by mail.profinix.pl for <linux-mediatek@lists.infradead.org>; Thu, 15 May 2025 08:05:22 GMT
+Message-ID: <20250515084500-0.1.fl.5well.0.4qra8mvmj0@profinix.pl>
+Date: Thu, 15 May 2025 08:05:22 GMT
+From: "Filip Ostrowski" <filip.ostrowski@profinix.pl>
+To: <linux-mediatek@lists.infradead.org>
+Subject: Prezentacja
+X-Mailer: mail.profinix.pl
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.15-dev-c25d1
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250515_004318_926131_49E3577A 
-X-CRM114-Status: GOOD (  12.10  )
+X-CRM114-CacheID: sfid-20250515_010846_462181_7300FB5E 
+X-CRM114-Status: UNSURE (   0.04  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,45 +66,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 14 May 2025 08:36:06 -0400, Nícolas F. R. A. Prado wrote:
-> Some of the regulators on the MT6357 PMIC currently reference the
-> fixed-regulator dt-binding, which enforces the presence of a
-> regulator-fixed compatible. However since all regulators on the MT6357
-> PMIC are handled by a single mt6357-regulator driver, probed through
-> MFD, the compatibles don't serve any purpose. In fact they cause
-> failures in the DT kselftest since they aren't probed by the fixed
-> regulator driver as would be expected. Furthermore this is the only
-> dt-binding in this family like this: mt6359-regulator and
-> mt6358-regulator don't require those compatibles.
-> 
-> [...]
+Dzie=C5=84 dobry!
 
-Applied to
+Czy m=C3=B3g=C5=82bym przedstawi=C4=87 rozwi=C4=85zanie, kt=C3=B3re umo=C5=
+=BCliwia monitoring ka=C5=BCdego auta w czasie rzeczywistym w tym jego po=
+zycj=C4=99, zu=C5=BCycie paliwa i przebieg?
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
+Dodatkowo nasze narz=C4=99dzie minimalizuje koszty utrzymania samochod=C3=
+=B3w, skraca czas przejazd=C3=B3w, a tak=C5=BCe umo=C5=BCliwia tworzenie =
+planu tras czy dostaw.
 
-Thanks!
+Z naszej wiedzy i do=C5=9Bwiadczenia korzysta ju=C5=BC ponad 49 tys. Klie=
+nt=C3=B3w. Monitorujemy 809 000 pojazd=C3=B3w na ca=C5=82ym =C5=9Bwiecie,=
+ co jest nasz=C4=85 najlepsz=C4=85 wizyt=C3=B3wk=C4=85.
 
-[1/1] regulator: dt-bindings: mt6357: Drop fixed compatible requirement
-      commit: 9cfdd7752ba5f8cc9b8191e8c9aeeec246241fa4
+Bardzo prosz=C4=99 o e-maila zwrotnego, je=C5=9Bli mogliby=C5=9Bmy wsp=C3=
+=B3lnie om=C3=B3wi=C4=87 potencja=C5=82 wykorzystania takiego rozwi=C4=85=
+zania w Pa=C5=84stwa firmie.
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+Pozdrawiam
+Filip Ostrowski
 
