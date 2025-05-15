@@ -4,90 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7171C2D0CD
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 May 2025 16:35:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3497BC3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 May 2025 20:16:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ipc7m+BQVl6X6vjTg4c6WgA8yzbue2jcMdUfgBBfHzY=; b=Qow6+egkpEmPlUh56DVz55eeXm
-	h2Ii7Ro3nKlkGSwhblHaZEA0CFQdohhrza2c/RNKuncD9HZenr9OiLs1SVCG2DyEwkLqudZ6C+pS7
-	5W+EuGrhKz7jKk6FzwLfGHx1B1SEW66+6YU+OQd58g2E+/JIKeiT/2bkUWyWQa9ghrt1x1vvmAEC8
-	wKweBhX2TtV9npLoxDX9OAFyJ503Z8y0nM+bsilrOsVjI4xcx7BwSdmRbPqRFsOZdZAXc8Up2E1Ch
-	qKgs2Y7FU/bygU1zuA87JK4qq5lyW/Yf0ouhIPVXtCNEw+yYsZJnl0HMRO10Dlw0e9FuCT2rY8RI4
-	xlvlp/UQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=MYe7aSMySa0ucT08nhb3OZlqYbxJUD++vh68yJRzj6M=; b=rkGkxsm+FxrwDTIee8O0eodhoC
+	DMQxXzVi+mrkie3lSwYKPzf2mlr6voe6G1VibKt77w2Cd3iOB4NdOtuwhcoc5OPkRItyCcU3GXods
+	YukzYZpTtZS6ftlPBBEUy1oiPg3jkdtwc+PcdR+6R3VCR1Ue6WmKwcH+2v4thVu/bwWIRH9YLQOAj
+	fSBmDcg1fk5EqC0GFk8ncWKBMwys+c9dhUUq4el4QEOq33xZ2LfDqxphJAG9BiLqk+bUotDGEEeeR
+	JH5Ecnmuapf5opsxc7xg0/2Zlo6t8EzsQKso7IT/bYNotlcb19an8QCotzzDN/Ow379tDQbEdWY9Y
+	PZnu62oQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFbYL-00000001HLl-3pC1;
-	Thu, 15 May 2025 16:35:25 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uFf02-00000001m2C-12JZ;
+	Thu, 15 May 2025 20:16:14 +0000
+Received: from smtp-17.smtpout.orange.fr ([80.12.242.17] helo=smtp.smtpout.orange.fr)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFbWK-00000001H1f-14IR;
-	Thu, 15 May 2025 16:33:20 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 41760614BD;
-	Thu, 15 May 2025 16:33:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1AD5EC4CEE7;
-	Thu, 15 May 2025 16:33:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747326799;
-	bh=kKPojMJd9kqH6u8NArAZ+Lui+uo9ndwDNquYyy93G0k=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ESjhprCJouXAhjQr0dZG6SyTXibttfDkEXUZ8Ep+z+gy7A2IEg74Pih3DzIhR92mQ
-	 Wg1fRLZ7AahHltL5KOdUISnA+OaOb/NOKa//4TXRGsVv+rtItX6BET9OvhMNCVjW8U
-	 De/WmZChNK1Me4d3LxDTawHPD0qDmGXiVYicOpf6dOYdfucJiAUxulmuYxUjdIzoNg
-	 rv5OilXcNBVStDgu4CYEBWfv8QrLAI7K0VbMfOL+gk/FQ5MrHdl540MrndCpVvuVnX
-	 7099wIC/Jq/PwBwkwpUYCjiluxA04ZhHxA2VwN2NdOyoYvtGtPBJorxsEY9l/w9orN
-	 6Z7TkSd+Kro/w==
-Date: Thu, 15 May 2025 17:33:07 +0100
-From: Will Deacon <will@kernel.org>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Cc: Alexandre Ghiti <alex@ghiti.fr>, Alim Akhtar <alim.akhtar@samsung.com>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Albert Ou <aou@eecs.berkeley.edu>, asahi@lists.linux.dev,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Lu Baolu <baolu.lu@linux.intel.com>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
-	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
-	Janne Grunau <j@jannau.net>,
-	Jean-Philippe Brucker <jean-philippe@linaro.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Joerg Roedel <joro@8bytes.org>, Kevin Tian <kevin.tian@intel.com>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Matthew Rosato <mjrosato@linux.ibm.com>,
-	Neal Gompa <neal@gompa.dev>, Orson Zhai <orsonzhai@gmail.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Rob Clark <robdclark@gmail.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Niklas Schnelle <schnelle@linux.ibm.com>,
-	Sven Peter <sven@svenpeter.dev>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Tomasz Jeznach <tjeznach@rivosinc.com>,
-	Krishna Reddy <vdumpa@nvidia.com>, virtualization@lists.linux.dev,
-	Chen-Yu Tsai <wens@csie.org>, Yong Wu <yong.wu@mediatek.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>, patches@lists.linux.dev
-Subject: Re: [PATCH 0/7] Remove ops.pgsize_bitmap
-Message-ID: <20250515163307.GA12396@willie-the-truck>
-References: <0-v1-7c5282b0c334+2db-iommu_rm_ops_pgsize_jgg@nvidia.com>
+	id 1uFekL-00000001kBV-3Qwx;
+	Thu, 15 May 2025 20:00:05 +0000
+Received: from localhost.localdomain ([90.11.132.44])
+	by smtp.orange.fr with ESMTPA
+	id FekBuCN6oIqMPFekCugnJy; Thu, 15 May 2025 21:59:56 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
+	s=t20230301; t=1747339196;
+	bh=MYe7aSMySa0ucT08nhb3OZlqYbxJUD++vh68yJRzj6M=;
+	h=From:To:Subject:Date:Message-ID:MIME-Version;
+	b=E7BM5X20UrwkEoUQAe0akEYh/tAT6ODI+2Oc/9Zi6/yaf7wCBUufOmzwAsAZhcbZR
+	 9EgyqFCZ22tONOH0iqWDXw9v1xOKD2p27aOT2oJRtZyqOnQF/TZNzH1upW5SLFaoO1
+	 nASJ0dTx9oSlX1a/qPD2FvxfClJHSu5nQrv4N8Y+DCe4WJ04jvjw9dq0Bp2htyYABD
+	 SMqiEpVPcKXnGIdWS7RiOdM/6YjXCd/nhWE2sHCifxJkoF5sbjjKWXCre8JtDyCs88
+	 K35SYFUK6ZSLXgkFs4pvltoWu6X9uv4WsQNzgOzUArPzmHb8wUNjN+HWdPdwallz5B
+	 nJ6Cn7upIXDGw==
+X-ME-Helo: localhost.localdomain
+X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
+X-ME-Date: Thu, 15 May 2025 21:59:56 +0200
+X-ME-IP: 90.11.132.44
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>
+Cc: linux-kernel@vger.kernel.org,
+	kernel-janitors@vger.kernel.org,
+	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	netdev@vger.kernel.org
+Subject: [PATCH v3 1/4] net: airoha: Fix an error handling path in airoha_alloc_gdm_port()
+Date: Thu, 15 May 2025 21:59:35 +0200
+Message-ID: <5c94b9b345017f29ed653e2f05d25620d128c3f0.1746715755.git.christophe.jaillet@wanadoo.fr>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <0-v1-7c5282b0c334+2db-iommu_rm_ops_pgsize_jgg@nvidia.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250515_130003_058552_36196AF1 
+X-CRM114-Status: GOOD (  11.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,44 +79,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 29, 2025 at 11:34:10AM -0300, Jason Gunthorpe wrote:
-> Now that all drivers are using domain_alloc_paging() and dev is never
-> NULL, we can have all drivers correctly set domain.pgsize_bitmap during
-> their allocation function.
-> 
-> There are a few oddities that have accumulated here over past changes:
-> 
->  - Some drivers always set domain.pgsize_bitmap during their
->    domain_alloc_paging() call but still provide a value in ops. This is dead
->    code, delete it.
-> 
->  - Some drivers calculate a system global pgsize_bitmap in the ops, but
->    it is now trivial to use the per-instance value instead. In several
->    cases this is dead code, delete it. This also allows
->    constifying the ops in these drivers as a hardening measure
-> 
->  - Some drivers have a fixed pgsize_bitmap, put it next to setting up the
->    geometry in their domain_alloc_paging() functions.
-> 
->  - Finally a few drivers still use ops because they have a delayed
->    finalize operation. Set the constant pgsize_bitmap in the
->    domain_alloc_paging().
-> 
-> Then remove ops.pgsize_bitmap.
-> 
-> This is based on iommu next, and must go after the virtio
-> domain_alloc_paging() conversion.
-> 
-> Jason Gunthorpe (7):
->   iommu/arm-smmu-v3: Remove iommu_ops pgsize_bitmap
->   iommu/arm-smmu: Remove iommu_ops pgsize_bitmap
+If register_netdev() fails, the error handling path of the probe will not
+free the memory allocated by the previous airoha_metadata_dst_alloc() call
+because port->dev->reg_state will not be NETREG_REGISTERED.
 
-These two SMMU changes look correct to me:
+So, an explicit airoha_metadata_dst_free() call is needed in this case to
+avoid a memory leak.
 
-Acked-by: Will Deacon <will@kernel.org>
+Fixes: af3cf757d5c9 ("net: airoha: Move DSA tag in DMA descriptor")
+Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+---
+Changes in v3:
+  - None
 
-Please yell if you'd like me to pick them up separately from the rest
-of the series.
+Changes in v2:
+  - New patch
+v2: https://lore.kernel.org/all/5c94b9b3850f7f29ed653e2205325620df28c3ff.1746715755.git.christophe.jaillet@wanadoo.fr/
 
-Will
+Compile tested only.
+---
+ drivers/net/ethernet/airoha/airoha_eth.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index 16c7896f931f..af8c4015938c 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -2873,7 +2873,15 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
+ 	if (err)
+ 		return err;
+ 
+-	return register_netdev(dev);
++	err = register_netdev(dev);
++	if (err)
++		goto free_metadata_dst;
++
++	return 0;
++
++free_metadata_dst:
++	airoha_metadata_dst_free(port);
++	return err;
+ }
+ 
+ static int airoha_probe(struct platform_device *pdev)
+-- 
+2.49.0
+
 
