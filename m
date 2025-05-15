@@ -4,58 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 102D1C2D0CD
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 May 2025 10:53:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82924C2D0CD
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 May 2025 11:19:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/0xZsxO2RMhKu6wMesyw510G51TrdtaJFm7j6ogn2X4=; b=2y7ny8y9DQPtltZq/y1bM5Xcbp
-	U9EQ+Yd3pMO5enWncTGuiKwy0j+0mZSUjB2Rfv2b1e+FGnv2Igd8Hx59gAhnRIUFdd3JcGP25pCkI
-	0scpuhO6a79usWCH1enzbWyLAcWgYCjLcB/uUfh3If+FElwpDuWT1awCcWz5AqfY96t5VpjGmw6ti
-	Kh1QHR+6oRWLG2ReMfGHrCSFUIjKvmflTH1zjnfxL93ApK+iQx6JkBNYUGP5LhxT5xv9XuK7cMNYP
-	3CIRkJmR3uD5ObZkQvjeHxLZ2dwmghqoIKjM0xl+UNtFHj+4aR4wUmJOohAzZJ0RBSwkokISuvgbt
-	aaaxJcHQ==;
+	bh=uANE6YtuOzoDy4yZ+j82kd7aME3T0hDL7pX3USXZ8FQ=; b=bP82gwz36fYlVaX7lawDDnEPRl
+	k2CRkkc3cSF+86am9aUY+SPZiHttpOrGXcnJ+BlEcF5ukgqZYXl2/b/mfxbaXOqRyZWmqAGXoFjP9
+	Fk0UcWJJoJfCFm0/h18ZINesvsToVcr4ksgOiE6xsJK/tC6thb8AeRBDqP6CpCtjzLndnuhrOwqxI
+	kvXz67XgEg5VFU3z1aI1462mem/czOjH9rET6h0GfIA8XalA061gRuxoOlwLjY6pAXVVf4KWuhVSS
+	QTdapN9Jh5zjdcab4j3k/PHSEe4oAqO4e/l8RfOtidHGG8iFzar2Tug54LHiP8EHp6Raty8sM7trT
+	eqhUZJ3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFWDa-00000000Lat-0Q3z;
-	Thu, 15 May 2025 10:53:38 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1uFWcV-00000000NtS-16iX;
+	Thu, 15 May 2025 11:19:23 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFW8f-00000000Kml-1nvQ;
-	Thu, 15 May 2025 10:48:34 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 557895C55AC;
-	Thu, 15 May 2025 10:46:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2176DC4CEE7;
-	Thu, 15 May 2025 10:48:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747306112;
-	bh=adxalg7H3lV44b62vZBcg+BCmQflj5misd5wybzAhrk=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=u7DeagEUEiexQGncuTRbIUiVohH0r9Yv/kmqm+EZaKWZsCoK4Cfh43a3y4gqdXWtx
-	 lG6aDJSr5GlY/zwP4+xtCu2IF3yYaRcpqqFQ7pEP2YbEMl9tafTCc3Wbg1T3ZetDx+
-	 S7Dr07ViBTwbdcoPp3xMI+BYPcipOz9cYhdVQzdlCZycbA4WVjGWgZVPctUru/smxt
-	 rsHP4HksXSkcOoNoA5LazlUNOsY+b/bD3A1t5cctBTq/wTVSXxaS4xITr1QLGQBs+v
-	 cD7aJmx+dm7h97l6Jlh/aeIifn55CJmfS8E2QMtqOB7wrnd21eRq0VP1ZOklrxxBgr
-	 4Vy7hhIETPFYw==
-Date: Thu, 15 May 2025 05:48:30 -0500
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: "paul-pl.chen" <paul-pl.chen@mediatek.com>
-In-Reply-To: <20250515093454.1729720-3-paul-pl.chen@mediatek.com>
+	id 1uFVEU-00000000DXb-0eId;
+	Thu, 15 May 2025 09:50:31 +0000
+X-UUID: e4902910316f11f08d385d50fb11b32d-20250515
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=uANE6YtuOzoDy4yZ+j82kd7aME3T0hDL7pX3USXZ8FQ=;
+	b=C5qW2huaI9F2AeSMU16Ta6g1caYMulghx+rAzdBHVNln60g+EMj8+r7vUIhVyJ7kLExpxVIMV9LhE2G6AuBdSYcH349MMCqL6IlbUKGLRiZjIwqtZKb4JrKVXtKtxC4fx5+KLZ+q1yHrKrzqOxBB2/0+y2agSGBjJN10CD78hXQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:07847d27-3110-43e7-ac49-b613da50321b,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:88e504c0-eade-4d5b-9f81-31d7b5452436,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
+	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
+	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: e4902910316f11f08d385d50fb11b32d-20250515
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <paul-pl.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1388628885; Thu, 15 May 2025 02:35:09 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Thu, 15 May 2025 17:35:06 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Thu, 15 May 2025 17:35:06 +0800
+From: paul-pl.chen <paul-pl.chen@mediatek.com>
+To: <robh@kernel.org>, <krzk+dt@kernel.org>, <conor+dt@kernel.org>,
+	<chunkuang.hu@kernel.org>, <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 07/17] soc: mediatek: mutex: Reused the switch case for SOF ID
+Date: Thu, 15 May 2025 17:34:19 +0800
+Message-ID: <20250515093454.1729720-8-paul-pl.chen@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20250515093454.1729720-1-paul-pl.chen@mediatek.com>
 References: <20250515093454.1729720-1-paul-pl.chen@mediatek.com>
- <20250515093454.1729720-3-paul-pl.chen@mediatek.com>
-Message-Id: <174730611044.164934.18396756831118218280.robh@kernel.org>
-Subject: Re: [PATCH v3 02/17] dt-bindings: display: mediatek: add EXDMA
- yaml for MT8196
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250515_034833_510858_EEF16598 
-X-CRM114-Status: GOOD (  11.22  )
+X-CRM114-CacheID: sfid-20250515_025030_219220_6A544DDC 
+X-CRM114-Status: GOOD (  10.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,51 +79,148 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, conor+dt@kernel.org, xiandong.wang@mediatek.com, jason-jh.lin@mediatek.com, singo.chang@mediatek.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, treapking@chromium.org, chunkuang.hu@kernel.org, nancy.lin@mediatek.com, linux-mediatek@lists.infradead.org, sunny.shen@mediatek.com, p.zabel@pengutronix.de, sirius.wang@mediatek.com, matthias.bgg@gmail.com, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
+Cc: devicetree@vger.kernel.org, xiandong.wang@mediatek.com, jason-jh.lin@mediatek.com, singo.chang@mediatek.com, treapking@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, paul-pl.chen@mediatek.com, nancy.lin@mediatek.com, linux-mediatek@lists.infradead.org, sunny.shen@mediatek.com, p.zabel@pengutronix.de, sirius.wang@mediatek.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Paul-pl Chen <paul-pl.chen@mediatek.com>
 
-On Thu, 15 May 2025 17:34:14 +0800, paul-pl.chen wrote:
-> From: Paul-pl Chen <paul-pl.chen@mediatek.com>
-> 
-> Add mediatek,exdma.yaml to support EXDMA for MT8196.
-> The MediaTek display overlap extended DMA engine, namely
-> OVL_EXDMA or EXDMA, primarily functions as a DMA engine
-> for reading data from DRAM with various DRAM footprints
-> and data formats.
-> 
-> Signed-off-by: Nancy Lin <nancy.lin@mediatek.com>
-> Signed-off-by: Paul-pl Chen <paul-pl.chen@mediatek.com>
-> ---
->  .../bindings/dma/mediatek,exdma.yaml          | 68 +++++++++++++++++++
->  1 file changed, 68 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/dma/mediatek,exdma.yaml
-> 
+Reused the switch case for SOF IDs.
 
-My bot found errors running 'make dt_binding_check' on your patch:
+Signed-off-by: Nancy Lin <nancy.lin@mediatek.com>
+Signed-off-by: Paul-pl Chen <paul-pl.chen@mediatek.com>
+---
+ drivers/soc/mediatek/mtk-mutex.c | 81 ++++++++++++++------------------
+ 1 file changed, 36 insertions(+), 45 deletions(-)
 
-yamllint warnings/errors:
-
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/dma/mediatek,exdma.example.dtb: dma-controller@32850000 (mediatek,mt8196-exdma): 'mediatek,larb' is a required property
-	from schema $id: http://devicetree.org/schemas/dma/mediatek,exdma.yaml#
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250515093454.1729720-3-paul-pl.chen@mediatek.com
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
+diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
+index aaa965d4b050..47f4d9ae4bfc 100644
+--- a/drivers/soc/mediatek/mtk-mutex.c
++++ b/drivers/soc/mediatek/mtk-mutex.c
+@@ -853,43 +853,45 @@ void mtk_mutex_unprepare(struct mtk_mutex *mutex)
+ }
+ EXPORT_SYMBOL_GPL(mtk_mutex_unprepare);
+ 
+-void mtk_mutex_add_comp(struct mtk_mutex *mutex,
+-			enum mtk_ddp_comp_id id)
++static int mtk_mutex_get_output_comp_sof(enum mtk_ddp_comp_id id)
+ {
+-	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
+-						 mutex[mutex->id]);
+-	unsigned int reg;
+-	unsigned int sof_id;
+-	unsigned int offset;
+-
+-	WARN_ON(&mtx->mutex[mutex->id] != mutex);
+-
+ 	switch (id) {
+ 	case DDP_COMPONENT_DSI0:
+-		sof_id = MUTEX_SOF_DSI0;
+-		break;
++		return MUTEX_SOF_DSI0;
+ 	case DDP_COMPONENT_DSI1:
+-		sof_id = MUTEX_SOF_DSI0;
+-		break;
++		return MUTEX_SOF_DSI1;
+ 	case DDP_COMPONENT_DSI2:
+-		sof_id = MUTEX_SOF_DSI2;
+-		break;
++		return MUTEX_SOF_DSI2;
+ 	case DDP_COMPONENT_DSI3:
+-		sof_id = MUTEX_SOF_DSI3;
+-		break;
++		return MUTEX_SOF_DSI3;
+ 	case DDP_COMPONENT_DPI0:
+-		sof_id = MUTEX_SOF_DPI0;
+-		break;
++		return MUTEX_SOF_DPI0;
+ 	case DDP_COMPONENT_DPI1:
+-		sof_id = MUTEX_SOF_DPI1;
+-		break;
++		return MUTEX_SOF_DPI1;
+ 	case DDP_COMPONENT_DP_INTF0:
+-		sof_id = MUTEX_SOF_DP_INTF0;
+-		break;
++		return MUTEX_SOF_DP_INTF0;
+ 	case DDP_COMPONENT_DP_INTF1:
+-		sof_id = MUTEX_SOF_DP_INTF1;
+-		break;
++		return MUTEX_SOF_DP_INTF1;
+ 	default:
++		break;
++	}
++
++	return -EINVAL;
++}
++
++void mtk_mutex_add_comp(struct mtk_mutex *mutex,
++			enum mtk_ddp_comp_id id)
++{
++	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
++						 mutex[mutex->id]);
++	unsigned int reg;
++	unsigned int sof_id;
++	unsigned int offset;
++	int sof_id = mtk_mutex_get_output_comp_sof(id);
++
++	WARN_ON(&mtx->mutex[mutex->id] != mutex);
++
++	if (sof_id < 0) {
+ 		if (mtx->data->mutex_mod[id] < 32) {
+ 			offset = DISP_REG_MUTEX_MOD(mtx->data->mutex_mod_reg,
+ 						    mutex->id);
+@@ -905,8 +907,7 @@ void mtk_mutex_add_comp(struct mtk_mutex *mutex,
+ 		return;
+ 	}
+ 
+-	writel_relaxed(mtx->data->mutex_sof[sof_id],
+-		       mtx->regs +
++	writel_relaxed(mtx->data->mutex_sof[sof_id], mtx->regs +
+ 		       DISP_REG_MUTEX_SOF(mtx->data->mutex_sof_reg, mutex->id));
+ }
+ EXPORT_SYMBOL_GPL(mtk_mutex_add_comp);
+@@ -918,24 +919,10 @@ void mtk_mutex_remove_comp(struct mtk_mutex *mutex,
+ 						 mutex[mutex->id]);
+ 	unsigned int reg;
+ 	unsigned int offset;
+-
++	int sof_id = mtk_mutex_get_output_comp_sof(id);
+ 	WARN_ON(&mtx->mutex[mutex->id] != mutex);
+ 
+-	switch (id) {
+-	case DDP_COMPONENT_DSI0:
+-	case DDP_COMPONENT_DSI1:
+-	case DDP_COMPONENT_DSI2:
+-	case DDP_COMPONENT_DSI3:
+-	case DDP_COMPONENT_DPI0:
+-	case DDP_COMPONENT_DPI1:
+-	case DDP_COMPONENT_DP_INTF0:
+-	case DDP_COMPONENT_DP_INTF1:
+-		writel_relaxed(MUTEX_SOF_SINGLE_MODE,
+-			       mtx->regs +
+-			       DISP_REG_MUTEX_SOF(mtx->data->mutex_sof_reg,
+-						  mutex->id));
+-		break;
+-	default:
++	if (sof_id < 0) {
+ 		if (mtx->data->mutex_mod[id] < 32) {
+ 			offset = DISP_REG_MUTEX_MOD(mtx->data->mutex_mod_reg,
+ 						    mutex->id);
+@@ -948,8 +935,12 @@ void mtk_mutex_remove_comp(struct mtk_mutex *mutex,
+ 			reg &= ~(1 << (mtx->data->mutex_mod[id] - 32));
+ 			writel_relaxed(reg, mtx->regs + offset);
+ 		}
+-		break;
++		return;
+ 	}
++
++	writel_relaxed(MUTEX_SOF_SINGLE_MODE,
++		       mtx->regs + DISP_REG_MUTEX_SOF(mtx->data->mutex_sof_reg,
++		       mutex->id));
+ }
+ EXPORT_SYMBOL_GPL(mtk_mutex_remove_comp);
+ 
+-- 
+2.45.2
 
 
