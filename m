@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB6E8C3ABDA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 May 2025 23:36:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 064D9C3ABD8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 May 2025 02:11:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=EkECUbVUnygvNa720IKl0rVmoKuyemtsLPO+ji1mI0U=; b=IXg+sz2NoJRjloEQmm7HPVJSl3
-	qH4A39Zxqz1mGLtZwpGVMaAzEeqR+BPXqDGi+z9BW4OpJCL+CdSEHJkEVb0B2kvcwe9ukRtT4ATus
-	UZQEmypn4GBtx9riFvTIssGQeABvL5RubREedVKPjApbMJ/1Nkb6mBQuL6eD0F+Va4l7OIGFVljIy
-	CqVuPbbIfGJw0oNOBLcmBlP77QdFnI97TetFQOQ6OQ4LeMXfQKK1bcgpsSwDmCPkuKC6llvafST1u
-	GWKgjO0+pltwE+OnesfCFY9Hgb2GVDmQmhjqbm9iFkMXMo5lQw9K8LXEYQJL4ZUYkUuQaA1Ie5d9T
-	KgyIjwCA==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=opUuODg6Tb9tSSBZq48EzT4DKVXF6IVRUKtiiI894NY=; b=OZoMOGm/mI7FGRq/3D88DlBjo7
+	GXwofbmYM2FQxn4CYDGSyxYLt4jiz9SyTRfuOm+8lLnJFnhjsQ8Gf1l+PE5skfKzba/7U5ftuWQsC
+	PMv82ECWlnsIxs6vpSV0eAI1GsrSeodxe2FZSkQWkBCJi5GsoqNNSp+6+F1iob1TDNcGYGXpPYWZm
+	8zEnniPYZFzK5RZFvHDOJbS4sX1BTwUJzWLSKlyeXM6dIyPPbIAKeTXfGLTg8vSp2Ye1PypbJ1mKV
+	SDn8TgoJk5PhwvTv7gHZvDiUY6teHLNOsxbvA5u1dqlZM97wy1UYYTvI0HmCYBpc9+Dldsb+6v8Bd
+	BcIc746Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFLei-0000000GZt5-1PwO;
-	Wed, 14 May 2025 23:36:56 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1uFO4L-0000000Gouk-22WK;
+	Thu, 15 May 2025 02:11:33 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFLee-0000000GZsg-2Pi2
-	for linux-mediatek@lists.infradead.org;
-	Wed, 14 May 2025 23:36:54 +0000
+	id 1uFO2C-0000000Gobj-1FOT;
+	Thu, 15 May 2025 02:09:21 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 4C65C4A0CE;
-	Wed, 14 May 2025 23:36:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9A7B3C4CEE3;
-	Wed, 14 May 2025 23:36:49 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id C6FBC5C4221;
+	Thu, 15 May 2025 02:07:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3B9F7C4CEE3;
+	Thu, 15 May 2025 02:09:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747265811;
-	bh=e/UzKf6Tf3n1PZqopATSUBunyUSvZ+piJc7LAnSV1hY=;
-	h=From:To:Subject:Date:From;
-	b=Kxjrv8qocEX9jhv8LsAFYqilY7EgKEGjr5GP49/deIVYCt7fYlzLjyWGKTkP7cUtB
-	 GVJ3/KkgLybE5a8ibiHWdlMfKzs+zhCAsjHHlxvmK2ztEW0/l/jVaOOSjzx7BD2mst
-	 QDtDh0rotyW0CAZ/h1rgNbV76Pf35s8TBbrrWAZV49sjuNHEMnF8E+LXDc/xGpF2Y6
-	 oGQwd+G6cgf4jM2U+SxFNaduIeJdgR9nTzH9uKWhOThG0iGKOXMP5KCvtBp/dbYfAi
-	 BQ0j/k3RdB0cuTitFTFEboOnz/Xp05wHXWRst7LnOhKtYamOBh46DfOKoyu81XTjae
-	 bdZwqi/qCY33w==
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-To: David Airlie <airlied@linux.ie>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Guillaume Ranquet <granquet@baylibre.com>,
-	Tang Dongxing <tang.dongxing@zte.com.cn>
-Subject: [GIT PULL] mediatek drm next - 20250515
-Date: Wed, 14 May 2025 23:36:47 +0000
-Message-Id: <20250514233647.15907-1-chunkuang.hu@kernel.org>
-X-Mailer: git-send-email 2.34.1
+	s=k20201202; t=1747274958;
+	bh=9JLt0pzyhfvU1pbbM+JOpnBKps/nmijZ8yFfJ1YHDWs=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=cuoUFVv2xlfrKtpuWX9A+DndNJWuO5Hfhrzhf9UvU/kUdxx+zhDuSZXHNYyGwloQa
+	 uEnz1djkPQnldoc1YbxIveuqyB9Qj53FgTTQX/MX3jL1ffuYX7JOROQPgcA/I2nWtC
+	 KSIwuHpyRPV7BWbW9c+bdvwUKBjp3mzEwD45/OT6zMf4puv2D2wHShyqU/4vUPIAVZ
+	 puKwkdryhfHaKu1mRH6/5LhUJ5jCDJoXbvzgepf7RfxcXNrbIeEJ0sB09IgLju3u/6
+	 yNY8tL8Ovps/7NAqZOXSh718ckMfUaV1AxqeZJ2XldLBcq5Xw9DpvdRzZvz0s5L1w/
+	 QLy/LuzJWovvQ==
+Date: Wed, 14 May 2025 19:09:17 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
+ <pabeni@redhat.com>, Simon Horman <horms@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org
+Subject: Re: [PATCH net] net: airoha: Fix page recycling in
+ airoha_qdma_rx_process()
+Message-ID: <20250514190917.4b0ff404@kernel.org>
+In-Reply-To: <20250513-airoha-fix-rx-process-error-condition-v1-1-e5d70cd7c066@kernel.org>
+References: <20250513-airoha-fix-rx-process-error-condition-v1-1-e5d70cd7c066@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250514_163652_655780_174FEF1A 
-X-CRM114-Status: UNSURE (   9.21  )
+X-CRM114-CacheID: sfid-20250514_190920_387001_27B8F433 
+X-CRM114-Status: UNSURE (   8.95  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,81 +75,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Dave & Daniel:
+On Tue, 13 May 2025 18:34:44 +0200 Lorenzo Bianconi wrote:
+> Do not recycle the page twice in airoha_qdma_rx_process routine in case
+> of error. Just run dev_kfree_skb() if the skb has been allocated and marked
+> for recycling. Run page_pool_put_full_page() directly if the skb has not
+> been allocated yet.
+> Moreover, rely on DMA address from queue entry element instead of reading
+> it from the DMA descriptor for DMA syncing in airoha_qdma_rx_process().
+> 
+> Fixes: e12182ddb6e71 ("net: airoha: Enable Rx Scatter-Gather")
 
-This includes:
-1. Prepare for support MT8195/88 HDMIv2 and DDCv2
-2. DPI: Cleanups and add support for more formats
-3. Cleanups and sanitization
-4. Replace custom compare_dev with component_compare_of
-
-Regards,
-Chun-Kuang.
-
-The following changes since commit 0af2f6be1b4281385b618cb86ad946eded089ac8:
-
-  Linux 6.15-rc1 (2025-04-06 13:11:33 -0700)
-
-are available in the Git repository at:
-
-  https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-next-20250515
-
-for you to fetch changes up to 07c39476a75bf2541dbdb37815b60cc134cf9aff:
-
-  drm/mediatek: Replace custom compare_dev with component_compare_of (2025-05-14 23:12:24 +0000)
-
-----------------------------------------------------------------
-Mediatek DRM Next - 20250515
-
-1. Prepare for support MT8195/88 HDMIv2 and DDCv2
-2. DPI: Cleanups and add support for more formats
-3. Cleanups and sanitization
-4. Replace custom compare_dev with component_compare_of
-
-----------------------------------------------------------------
-AngeloGioacchino Del Regno (20):
-      dt-bindings: display: mediatek: Add binding for HDMIv2 DDC
-      dt-bindings: display: mediatek: Add binding for MT8195 HDMI-TX v2
-      drm/mediatek: mtk_cec: Switch to register as module_platform_driver
-      drm/mediatek: mtk_hdmi_ddc: Switch to register as module_platform_driver
-      drm/mediatek: mtk_hdmi: Convert to module_platform_driver macro
-      drm/mediatek: mtk_hdmi: Disgregate function mtk_hdmi_audio_set_param()
-      drm/mediatek: mtk_hdmi: Move audio params selection to new function
-      drm/mediatek: mtk_hdmi: Move plugged_cb/codec_dev setting to new function
-      drm/mediatek: mtk_hdmi: Move N/CTS setting to new function
-      drm/mediatek: mtk_hdmi: Use dev_err_probe() in mtk_hdmi_dt_parse_pdata()
-      drm/mediatek: mtk_hdmi: Move CEC device parsing in new function
-      drm/mediatek: mtk_hdmi: Move output init to mtk_hdmi_register_audio_driver()
-      drm/mediatek: mtk_dpi: Use switch in mtk_dpi_config_color_format()
-      drm/mediatek: mtk_dpi: Add local helpers for bus format parameters
-      drm/mediatek: mtk_dpi: Add support for additional output formats
-      drm/mediatek: mtk_dpi: Allow additional output formats on MT8195/88
-      drm/mediatek: mtk_dpi: Rename output fmts array for MT8195 DP_INTF
-      drm/mediatek: mtk_drm_drv: Fix kobject put for mtk_mutex device ptr
-      drm/mediatek: Fix kobject put for component sub-drivers
-      drm/mediatek: mtk_drm_drv: Unbind secondary mmsys components on err
-
-Guillaume Ranquet (1):
-      drm/mediatek: hdmi: Use regmap instead of iomem for main registers
-
-Krzysztof Kozlowski (1):
-      drm/mediatek/hdmi: Use syscon_regmap_lookup_by_phandle_args
-
-Tang Dongxing (1):
-      drm/mediatek: Replace custom compare_dev with component_compare_of
-
- .../display/mediatek/mediatek,mt8195-hdmi-ddc.yaml |  41 +++
- .../display/mediatek/mediatek,mt8195-hdmi.yaml     | 151 ++++++++
- drivers/gpu/drm/mediatek/Makefile                  |   8 +-
- drivers/gpu/drm/mediatek/mtk_cec.c                 |   7 +-
- drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c    |   7 +-
- drivers/gpu/drm/mediatek/mtk_dpi.c                 | 117 +++++-
- drivers/gpu/drm/mediatek/mtk_drm_drv.c             |  31 +-
- drivers/gpu/drm/mediatek/mtk_hdmi.c                | 410 +++++++++------------
- drivers/gpu/drm/mediatek/mtk_hdmi.h                |  14 -
- drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c            |   2 +-
- 10 files changed, 497 insertions(+), 291 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-hdmi-ddc.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-hdmi.yaml
- delete mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi.h
+Missed your sign-off.
+-- 
+pw-bot: cr
 
