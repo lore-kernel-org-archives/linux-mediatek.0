@@ -4,56 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9798BC3ABD8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 May 2025 08:02:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55761C3ABD8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 May 2025 08:04:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=CTrlbuanFyRYP8wNPJ7FA8ANvKW2uh8AIezRY3E94Go=; b=wf858HGRwKq7W7
-	qBw9+GfyYbhPahIo3G569U5ggpe8Ta6Wjj1dq1T3q/HyKItBIcrFLYXBMJdxD/+6Y2VZY/WHx4qp6
-	nBbk3NUdBUuNyIALc3e/BGq/bp9w36tm9gWF3wj2H0SOglXQqMMy/okL5VMpXjyEZZP6+yxke3Tdl
-	Y8603Y/FK07jEsqayspf+dm7/s85o920frWCsSaDwvTn61AvvByKbnCadfAD2CAqt+wMdcPWPms31
-	Ny3aqhXWVtkR565Dlo/Qhs4Pu1DQUI9OiFnxuqLr/gb/3kxtkirrSCK9h9+Y42QoHlBsFdVEYTnkB
-	UBuxuf8jkjbgvZL0hQ4A==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RPvx2V/vOsq5iCHPmQ/GpXnhxNLSeesNNs2e5uyeLZc=; b=oRKjpaATkooZvazEjHsSa/z6/t
+	4RYbeF8wkHuZFwWZhecpXaHfXylP2f5ozQxEgU0LWfIVl/bI26b5GKg0tETbFfDRaECKLng3qsrCq
+	uz4LAvIuz5m+K7HbGhrxu82XBZ3JxdcYwc6x7iNsvqvtVxr5hMJtek+Qe4DnQSVRfHU+ARWPNGbfJ
+	Cd9JdN5knzYsbuaAh0pXJw9d3DCcM2JU7vRNyIZ31ibbEsLviVqr5QryEcsWXJSsxy7EIFI59ALSD
+	oEoMt2xGRajeY1gRmPESxNN8FhF5ofS2qqSFr53xuFXOnvIS0vmgdl7naJE07go7ClmRs+F0xGdyP
+	ixlbNoaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFq1m-00000002jqg-1TJ9;
-	Fri, 16 May 2025 08:02:46 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1uFq3r-00000002k2n-1TO5;
+	Fri, 16 May 2025 08:04:55 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFpzd-00000002jUv-16Ct;
-	Fri, 16 May 2025 08:00:34 +0000
+	id 1uFpzg-00000002jVN-0hqs;
+	Fri, 16 May 2025 08:00:36 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 63BDB5C4278;
-	Fri, 16 May 2025 07:58:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D84B4C4CEE4;
-	Fri, 16 May 2025 08:00:31 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 662E3614BB;
+	Fri, 16 May 2025 08:00:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BD7C0C4CEED;
+	Fri, 16 May 2025 08:00:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747382432;
-	bh=kgZ2vse2jLZoLmPeQGmJgqcIfaqnsw+PumeT+CIMfwM=;
-	h=From:Subject:Date:To:Cc:From;
-	b=AeghaOav/4TjBm0dvFkkrv1O/PfKQcxQg5V8JMlD/3048Xw7fiw6fRNHjLtFox9fc
-	 iEuekt/kmCDd7D8Cx/gwIeKfRlGGZWjeaQU49rJxiPXkk9Lsu4Gw3yABeY7uvoPQbD
-	 OrcAtzikvLBUqCGLqAoLwOwoD6raYWOCHoDoWQSsBn8L9KnM1fmWVfzOqKb4uEbhdQ
-	 OZ/sl/PTQ6iei8rn4CdlKBJGY58/WgGSSUvLlYd5rkXn/eedtQnzuwOymdyyRF+XM6
-	 /8w7LdPObvfSNBCI/2QA8bDhoAZUoGrpcnC1fQ0ajRG/k85JDR7pGFxJ0SOA780/rt
-	 /uwS8xXbDfNFg==
+	s=k20201202; t=1747382435;
+	bh=sJyp0PS6YswFZq8eBg4a4xjrjdQIP1pQUNaiWS5g9jI=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=ZXj4GtWN6svSJzxZ82ItTUOh8LIr0bs9Fbs6/qKf43ALvvF8uuKdi3dmdNYnyWtLo
+	 yQ1ec+uZu90SJkImmkX9ogO70BGhzeWvKlVsIGRFUZjXgU7UGdrPNlGjvWKuf4te8w
+	 MxriXLLkBNZaBRbNKHo6a6F0r4n+DDPUJ1tReS5sXPNPvV8vU6q0b+g7ugqVjfSyiG
+	 BBkGihAMlOhEjQZaRxjPHDQhjL1qSDer/kVQHpzKOpRxXnhJB3cz4ZzsZJalYcx7WK
+	 cGkImN6UoxNH5O3Jq14Cet0IWFIVotNqe9lC5VsCH1mqPrZTke8dekZxobbtv+JAsA
+	 Rwsg2rrWQCk7g==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Subject: [PATCH net-next v2 0/3] net: airoha: Add per-flow stats support to
- hw flowtable offloading
-Date: Fri, 16 May 2025 09:59:58 +0200
-Message-Id: <20250516-airoha-en7581-flowstats-v2-0-06d5fbf28984@kernel.org>
+Date: Fri, 16 May 2025 09:59:59 +0200
+Subject: [PATCH net-next v2 1/3] net: airoha: npu: Move memory allocation
+ in airoha_npu_send_msg() caller
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAH7wJmgC/3WNQQ6CMBBFr0Jm7Zi2UhFX3sOwaNopNJKWTAlqC
- He34trle8l/f4VMHCjDtVqBaQk5pFhAHSqwg4k9YXCFQQmlRS01msBpMEix0ReJfkzPPJs5Y0P
- n1vqTd23toKwnJh9ee/neFR5CnhO/96NFfu2vqWX9t7lIFGiFIEdSGWXN7UEcaTwm7qHbtu0Ds
- I8iEb8AAAA=
-X-Change-ID: 20250415-airoha-en7581-flowstats-7e69cf3fd94d
+Message-Id: <20250516-airoha-en7581-flowstats-v2-1-06d5fbf28984@kernel.org>
+References: <20250516-airoha-en7581-flowstats-v2-0-06d5fbf28984@kernel.org>
+In-Reply-To: <20250516-airoha-en7581-flowstats-v2-0-06d5fbf28984@kernel.org>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
  "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
@@ -61,10 +58,6 @@ To: Andrew Lunn <andrew+netdev@lunn.ch>,
 Cc: linux-arm-kernel@lists.infradead.org, 
  linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
 X-Mailer: b4 0.14.2
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250516_010033_350247_0DA02D66 
-X-CRM114-Status: UNSURE (   7.33  )
-X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,38 +72,197 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce per-flow stats accounting to the flowtable hw offload in the
-airoha_eth driver. Flow stats are split in the PPE and NPU modules:
-- PPE: accounts for high 32bit of per-flow stats
-- NPU: accounts for low 32bit of per-flow stats
+Move ppe_mbox_data struct memory allocation from airoha_npu_send_msg
+routine to the caller one. This is a preliminary patch to enable wlan NPU
+offloading and flow counter stats support.
 
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
-Changes in v2:
-- fix memory leaks in airoha_npu_stats_setup() and in
-  airoha_npu_foe_commit_entry()
-- disable hw keepalive
-- fix sparse warnings
-- Link to v1: https://lore.kernel.org/r/20250514-airoha-en7581-flowstats-v1-0-c00ede12a2ca@kernel.org
+ drivers/net/ethernet/airoha/airoha_npu.c | 126 ++++++++++++++++++-------------
+ 1 file changed, 72 insertions(+), 54 deletions(-)
 
----
-Lorenzo Bianconi (3):
-      net: airoha: npu: Move memory allocation in airoha_npu_send_msg() caller
-      net: airoha: Add FLOW_CLS_STATS callback support
-      net: airoha: ppe: Disable packet keepalive
+diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ethernet/airoha/airoha_npu.c
+index ead0625e781f57cd7c5883b6dd3d441db62292d3..51c6fbd7b7b772baf8e05b10250d37416fa36f39 100644
+--- a/drivers/net/ethernet/airoha/airoha_npu.c
++++ b/drivers/net/ethernet/airoha/airoha_npu.c
+@@ -124,17 +124,12 @@ static int airoha_npu_send_msg(struct airoha_npu *npu, int func_id,
+ 	u16 core = 0; /* FIXME */
+ 	u32 val, offset = core << 4;
+ 	dma_addr_t dma_addr;
+-	void *addr;
+ 	int ret;
+ 
+-	addr = kmemdup(p, size, GFP_ATOMIC);
+-	if (!addr)
+-		return -ENOMEM;
+-
+-	dma_addr = dma_map_single(npu->dev, addr, size, DMA_TO_DEVICE);
++	dma_addr = dma_map_single(npu->dev, p, size, DMA_TO_DEVICE);
+ 	ret = dma_mapping_error(npu->dev, dma_addr);
+ 	if (ret)
+-		goto out;
++		return ret;
+ 
+ 	spin_lock_bh(&npu->cores[core].lock);
+ 
+@@ -155,8 +150,6 @@ static int airoha_npu_send_msg(struct airoha_npu *npu, int func_id,
+ 	spin_unlock_bh(&npu->cores[core].lock);
+ 
+ 	dma_unmap_single(npu->dev, dma_addr, size, DMA_TO_DEVICE);
+-out:
+-	kfree(addr);
+ 
+ 	return ret;
+ }
+@@ -261,76 +254,101 @@ static irqreturn_t airoha_npu_wdt_handler(int irq, void *core_instance)
+ 
+ static int airoha_npu_ppe_init(struct airoha_npu *npu)
+ {
+-	struct ppe_mbox_data ppe_data = {
+-		.func_type = NPU_OP_SET,
+-		.func_id = PPE_FUNC_SET_WAIT_HWNAT_INIT,
+-		.init_info = {
+-			.ppe_type = PPE_TYPE_L2B_IPV4_IPV6,
+-			.wan_mode = QDMA_WAN_ETHER,
+-		},
+-	};
++	struct ppe_mbox_data *ppe_data;
++	int err;
++
++	ppe_data = kzalloc(sizeof(*ppe_data), GFP_KERNEL);
++	if (!ppe_data)
++		return -ENOMEM;
+ 
+-	return airoha_npu_send_msg(npu, NPU_FUNC_PPE, &ppe_data,
+-				   sizeof(struct ppe_mbox_data));
++	ppe_data->func_type = NPU_OP_SET;
++	ppe_data->func_id = PPE_FUNC_SET_WAIT_HWNAT_INIT;
++	ppe_data->init_info.ppe_type = PPE_TYPE_L2B_IPV4_IPV6;
++	ppe_data->init_info.wan_mode = QDMA_WAN_ETHER;
++
++	err = airoha_npu_send_msg(npu, NPU_FUNC_PPE, ppe_data,
++				  sizeof(*ppe_data));
++	kfree(ppe_data);
++
++	return err;
+ }
+ 
+ static int airoha_npu_ppe_deinit(struct airoha_npu *npu)
+ {
+-	struct ppe_mbox_data ppe_data = {
+-		.func_type = NPU_OP_SET,
+-		.func_id = PPE_FUNC_SET_WAIT_HWNAT_DEINIT,
+-	};
++	struct ppe_mbox_data *ppe_data;
++	int err;
++
++	ppe_data = kzalloc(sizeof(*ppe_data), GFP_KERNEL);
++	if (!ppe_data)
++		return -ENOMEM;
++
++	ppe_data->func_type = NPU_OP_SET;
++	ppe_data->func_id = PPE_FUNC_SET_WAIT_HWNAT_DEINIT;
+ 
+-	return airoha_npu_send_msg(npu, NPU_FUNC_PPE, &ppe_data,
+-				   sizeof(struct ppe_mbox_data));
++	err = airoha_npu_send_msg(npu, NPU_FUNC_PPE, ppe_data,
++				  sizeof(*ppe_data));
++	kfree(ppe_data);
++
++	return err;
+ }
+ 
+ static int airoha_npu_ppe_flush_sram_entries(struct airoha_npu *npu,
+ 					     dma_addr_t foe_addr,
+ 					     int sram_num_entries)
+ {
+-	struct ppe_mbox_data ppe_data = {
+-		.func_type = NPU_OP_SET,
+-		.func_id = PPE_FUNC_SET_WAIT_API,
+-		.set_info = {
+-			.func_id = PPE_SRAM_RESET_VAL,
+-			.data = foe_addr,
+-			.size = sram_num_entries,
+-		},
+-	};
++	struct ppe_mbox_data *ppe_data;
++	int err;
++
++	ppe_data = kzalloc(sizeof(*ppe_data), GFP_KERNEL);
++	if (!ppe_data)
++		return -ENOMEM;
++
++	ppe_data->func_type = NPU_OP_SET;
++	ppe_data->func_id = PPE_FUNC_SET_WAIT_API;
++	ppe_data->set_info.func_id = PPE_SRAM_RESET_VAL;
++	ppe_data->set_info.data = foe_addr;
++	ppe_data->set_info.size = sram_num_entries;
++
++	err = airoha_npu_send_msg(npu, NPU_FUNC_PPE, ppe_data,
++				  sizeof(*ppe_data));
++	kfree(ppe_data);
+ 
+-	return airoha_npu_send_msg(npu, NPU_FUNC_PPE, &ppe_data,
+-				   sizeof(struct ppe_mbox_data));
++	return err;
+ }
+ 
+ static int airoha_npu_foe_commit_entry(struct airoha_npu *npu,
+ 				       dma_addr_t foe_addr,
+ 				       u32 entry_size, u32 hash, bool ppe2)
+ {
+-	struct ppe_mbox_data ppe_data = {
+-		.func_type = NPU_OP_SET,
+-		.func_id = PPE_FUNC_SET_WAIT_API,
+-		.set_info = {
+-			.data = foe_addr,
+-			.size = entry_size,
+-		},
+-	};
++	struct ppe_mbox_data *ppe_data;
+ 	int err;
+ 
+-	ppe_data.set_info.func_id = ppe2 ? PPE2_SRAM_SET_ENTRY
+-					 : PPE_SRAM_SET_ENTRY;
++	ppe_data = kzalloc(sizeof(*ppe_data), GFP_ATOMIC);
++	if (!ppe_data)
++		return -ENOMEM;
++
++	ppe_data->func_type = NPU_OP_SET;
++	ppe_data->func_id = PPE_FUNC_SET_WAIT_API;
++	ppe_data->set_info.data = foe_addr;
++	ppe_data->set_info.size = entry_size;
++	ppe_data->set_info.func_id = ppe2 ? PPE2_SRAM_SET_ENTRY
++					  : PPE_SRAM_SET_ENTRY;
+ 
+-	err = airoha_npu_send_msg(npu, NPU_FUNC_PPE, &ppe_data,
+-				  sizeof(struct ppe_mbox_data));
++	err = airoha_npu_send_msg(npu, NPU_FUNC_PPE, ppe_data,
++				  sizeof(*ppe_data));
+ 	if (err)
+-		return err;
++		goto out;
++
++	ppe_data->set_info.func_id = PPE_SRAM_SET_VAL;
++	ppe_data->set_info.data = hash;
++	ppe_data->set_info.size = sizeof(u32);
+ 
+-	ppe_data.set_info.func_id = PPE_SRAM_SET_VAL;
+-	ppe_data.set_info.data = hash;
+-	ppe_data.set_info.size = sizeof(u32);
++	err = airoha_npu_send_msg(npu, NPU_FUNC_PPE, ppe_data,
++				  sizeof(*ppe_data));
++out:
++	kfree(ppe_data);
+ 
+-	return airoha_npu_send_msg(npu, NPU_FUNC_PPE, &ppe_data,
+-				   sizeof(struct ppe_mbox_data));
++	return err;
+ }
+ 
+ struct airoha_npu *airoha_npu_get(struct device *dev)
 
- drivers/net/ethernet/airoha/Kconfig              |   7 +
- drivers/net/ethernet/airoha/airoha_eth.h         |  33 +++
- drivers/net/ethernet/airoha/airoha_npu.c         | 178 ++++++++++-----
- drivers/net/ethernet/airoha/airoha_npu.h         |   4 +-
- drivers/net/ethernet/airoha/airoha_ppe.c         | 270 +++++++++++++++++++++--
- drivers/net/ethernet/airoha/airoha_ppe_debugfs.c |   9 +-
- 6 files changed, 427 insertions(+), 74 deletions(-)
----
-base-commit: 894fbb55e60cab4ea740f6c65a08b5f8155221f4
-change-id: 20250415-airoha-en7581-flowstats-7e69cf3fd94d
-
-Best regards,
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.49.0
 
 
