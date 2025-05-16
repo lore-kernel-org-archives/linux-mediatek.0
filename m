@@ -4,68 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA759C2D0CD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 May 2025 01:11:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62051C3ABC9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 May 2025 01:20:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9EedyhxrBbwBUSKEVvqPNTbJY5m3bFtYRpv0O+uq3Oo=; b=Ba7Ea7riEoiXCD6MH1b+926KAN
-	WNQRfSo1sj024k798FoXZpp4cq/K9NxXkFV1xb7zL5XbD4BQnc6jOgrAuwNcGcrIUpkohON3x+4JG
-	NSuTPgQ6TTjbK8FxIs0vR6C0Y+/7a4IqXZjQ/iBLWG+sBb7hRgTVIKd4d7QQH2k+dN86eAkytXjLL
-	LRmWbf/+OTFjvXrV/TF4/0twlfCDSnzoRwtkjB63sbSmYO4yb1JazmTezQfybGBm+KmUchpTle4UM
-	3vHl+vsFaBgynvtzisijJh9u93qqbzywXqJSTkE8reHNaz3uGQHLwvFu7Igc27LgNQsYsmh5ioKWN
-	mJwZtvYQ==;
+	bh=dZ9EbLYkKfSD4UFzqZqu+8+Ha1W6aEciKkvpFYAzYBM=; b=E9uJ6at/WtcOZBkoZm7Q3LpNZQ
+	13q9mp1+3D3chk28BgrI2Y+GqtSE6D7F9/k/bUnhVttIYOcJpBW/pfJWOldoC/1AFXdE+KbI9mFyX
+	8yHraLzACDFIOg6EnyMIVYRWzuVulDYtnrzgJmNQR7ONK/z1ZNP0x9QPZ5oC6prus85GmR8YhL+KO
+	n9DgpJY99ehX2DBp4UCFZHs+5hbzE7LZlrZ9g1Kmw+DrZG762pKDXSeHtI2LWwSFrDrZO5TTQWHC2
+	399D1giMrtXQ8KEEjRoGqsala9gUhBusUTaAaptvFaNlKNLILzmB0oY+wabQJ38Bje/iwMo7liRef
+	rSrjvJDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFjbZ-00000002BOQ-0PeZ;
-	Fri, 16 May 2025 01:11:17 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uFjjz-00000002CBV-1mxL;
+	Fri, 16 May 2025 01:19:59 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFjZO-00000002B8m-1FEZ;
-	Fri, 16 May 2025 01:09:03 +0000
+	id 1uFjeB-00000002Bjf-3UsI;
+	Fri, 16 May 2025 01:14:00 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 3537C5C067A;
-	Fri, 16 May 2025 01:06:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BD1F0C4CEE7;
-	Fri, 16 May 2025 01:08:59 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id DB5C8A4E42B;
+	Fri, 16 May 2025 01:13:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3CDC6C4CEE7;
+	Fri, 16 May 2025 01:13:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747357740;
-	bh=LlunDUDR2TDmEZ4XUi/62Fa3/lxpELn/iGKcFemx0pY=;
+	s=k20201202; t=1747358038;
+	bh=MuVZIaw/gfFWLrrSK9MI2upd2KYATjSbjinT5eDdHNE=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=RGbgPKQxwqSNa6sH9Id4EeYCV2OlsMGF0tPsQ2HerBXkMsznD/z1C1dV7O90isz/5
-	 PvGQjMzjA7R0CEJl7QIWw6BW9uQTvj6EYlwj8YUeyEvzablmHzdgLEsLbBVjNBhCUk
-	 HnbbR1dPatfKYT9qMd9bPlH50j8zjn8hnWKtt4jZj/XkJxAPi+AT/oWgrTwivLKlD6
-	 cCzJmLUVLB5/3qqoiMZkD25VaGRxzw3iBAmJ64j8yLD9pIrJe49KhLUBaYdZluIFEO
-	 8sBH69+tOVkmjgtGEGnxxwtTlqwra9xHqA27Y639nB4an2gwDDGKM3ufJ+jxUOPofZ
-	 4inbHkljJci3g==
-Date: Thu, 15 May 2025 18:08:58 -0700
+	b=QxTe84IJqt05STMoVkHbVJrJ4de5qk6u9F/5Pfw3mC9pWybeCOJsWGaIKOpUrqG4u
+	 LdpSe23lM2QSBgmKv5/nI1Kj5lBH/dxw5oq5pk68Q80UdhfLGmJAb2Bwas3/vGSphZ
+	 n9fpQ9gcT9fhnYCVyZev8qlKfCGucja3X+dhwHH6KViBdTcGgSpg3R3D+uZcX4FeDF
+	 v5q0i5Exn11Lj3FcWK492EPHOVICVKZ8+XmAnzZRz6F38CkbdO1FQnCfKsNKpsVa5v
+	 4LMiry9XOaSdJZxG1JyYaw3hYaTzFR3BRRLpfvP18CCmPYFHNtAexeYVtptNJNMT+Z
+	 ciU9Frma/4QTA==
+Date: Thu, 15 May 2025 18:13:57 -0700
 From: Jakub Kicinski <kuba@kernel.org>
-To: Jinjian Song <jinjian.song@fibocom.com>
-Cc: chandrashekar.devegowda@intel.com, chiranjeevi.rapolu@linux.intel.com,
- haijun.liu@mediatek.com, m.chetan.kumar@linux.intel.com,
- ricardo.martinez@linux.intel.com, loic.poulain@linaro.org,
- ryazanov.s.a@gmail.com, johannes@sipsolutions.net, davem@davemloft.net,
- edumazet@google.com, pabeni@redhat.com, linux-kernel@vger.kernel.org,
- netdev@vger.kernel.org, linux-doc@vger.kernel.org,
- angelogioacchino.delregno@collabora.com,
- linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com,
- corbet@lwn.net, linux-mediatek@lists.infradead.org, helgaas@kernel.org,
- danielwinkler@google.com, korneld@google.com, andrew+netdev@lunn.ch,
- horms@kernel.org, rafael.wang@fibocom.com
-Subject: Re: [net-next v1] net: wwan: t7xx: Parameterize data plane RX BAT
- and FAG count
-Message-ID: <20250515180858.2568d930@kernel.org>
-In-Reply-To: <20250514104728.10869-1-jinjian.song@fibocom.com>
-References: <20250514104728.10869-1-jinjian.song@fibocom.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
+ <pabeni@redhat.com>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net-next 2/2] net: airoha: Add FLOW_CLS_STATS callback
+ support
+Message-ID: <20250515181357.73f98a18@kernel.org>
+In-Reply-To: <20250514-airoha-en7581-flowstats-v1-2-c00ede12a2ca@kernel.org>
+References: <20250514-airoha-en7581-flowstats-v1-0-c00ede12a2ca@kernel.org>
+	<20250514-airoha-en7581-flowstats-v1-2-c00ede12a2ca@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250515_180902_388045_9EDBAEDB 
-X-CRM114-Status: UNSURE (   6.76  )
+X-CRM114-CacheID: sfid-20250515_181359_949454_72A35CF6 
+X-CRM114-Status: UNSURE (   7.18  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,15 +75,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 14 May 2025 18:47:28 +0800 Jinjian Song wrote:
-> The DMA buffer for data plane RX is currently fixed, being parameterized
-> to allow configuration.
+On Wed, 14 May 2025 19:09:58 +0200 Lorenzo Bianconi wrote:
+> Introduce per-flow stats accounting to the flowtable hw offload in
+> the airoha_eth driver. Flow stats are split in the PPE and NPU modules:
+> - PPE: accounts for high 32bit of per-flow stats
+> - NPU: accounts for low 32bit of per-flow stats
+> 
+> FLOW_CLS_STATS can be enabled or disabled at compile time.
 
-Module parameters are discouraged, they are pretty poor as an API since
-they apply to all devices in the system. Can you describe what "frg"
-and "bat" are ? One of the existing APIs likely covers them.
-Please also describe the scope (are they per netdev or some sort of
-device level params)?
+sparse isn't happy:
+
+drivers/net/ethernet/airoha/airoha_npu.c:382:15: warning: incorrect type in assignment (different address spaces)
+drivers/net/ethernet/airoha/airoha_npu.c:382:15:    expected void *stats
+drivers/net/ethernet/airoha/airoha_npu.c:382:15:    got void [noderef] __iomem *
 -- 
 pw-bot: cr
 
