@@ -4,75 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC588C3ABD8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 May 2025 07:39:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9798BC3ABD8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 May 2025 08:02:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7hb9dw+OuJd5vCMoRlHiK6XNIi92thRWK2L4GbkED7Y=; b=edhcdXmqYl8ad5HPnli4pbYpsw
-	88rAqSURZ1Vys9qfLlIQ6Stv+1stfEzwG6qObYMUKE6kiOqvnowAnsM4gPMC1Ag0NjJsahACOVSof
-	mYUz5vYx8LpjDPx/cHNbQsGrxXeTH4P6BIEs7/9jxs/+Bw5L5Ofat3SRxTToGLijWKS35JDaan/K0
-	QF2PDsMG3ILxECcMgeW48pjiCJb7DkNbjhRJ2Ho0HY+xX3+gpZgQZ9pq+V0wuGtEtg0RT3a0uNIM9
-	NcxPdHqKK6v4/dbdKEHQy06oKIFKoEEIeg3PDVQajdOT0tn2J7PQ3txy+vDMy3F5noDfhbNoQVK/z
-	BSuezD+w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=CTrlbuanFyRYP8wNPJ7FA8ANvKW2uh8AIezRY3E94Go=; b=wf858HGRwKq7W7
+	qBw9+GfyYbhPahIo3G569U5ggpe8Ta6Wjj1dq1T3q/HyKItBIcrFLYXBMJdxD/+6Y2VZY/WHx4qp6
+	nBbk3NUdBUuNyIALc3e/BGq/bp9w36tm9gWF3wj2H0SOglXQqMMy/okL5VMpXjyEZZP6+yxke3Tdl
+	Y8603Y/FK07jEsqayspf+dm7/s85o920frWCsSaDwvTn61AvvByKbnCadfAD2CAqt+wMdcPWPms31
+	Ny3aqhXWVtkR565Dlo/Qhs4Pu1DQUI9OiFnxuqLr/gb/3kxtkirrSCK9h9+Y42QoHlBsFdVEYTnkB
+	UBuxuf8jkjbgvZL0hQ4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFpew-00000002gMX-47Nw;
-	Fri, 16 May 2025 07:39:10 +0000
-Received: from mgamail.intel.com ([192.198.163.10])
+	id 1uFq1m-00000002jqg-1TJ9;
+	Fri, 16 May 2025 08:02:46 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFpd9-00000002g4S-3avz;
-	Fri, 16 May 2025 07:37:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1747381040; x=1778917040;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=iyaARSlxSx2c/DhVMA1ZbxR3nXQesEsxPzJdwibwTGs=;
-  b=mMDD9WaDlshvByc7zfFZem6MuaKIzrWnXpG+VBIjCP4oG+/hl23NGluz
-   zTMOO23QYS4tiP//iOWk6m0vOYzSPA8S5Fmt4e4mSG8yGKz97fvHGMOCt
-   knUj/PiOx2aKcW1sV34otjRxa22QFR3bSK/hCEk/+lBvpRGO/9eWQSksF
-   jcnks/nt2nZ9x8P8Q0Da8mdHoNlMnlPeDMqDwDfNCWnZh0vRZv2XQREQD
-   rm+eV+QeARoCuFTLsTTMf7JB7xIFaonKmMvfBdhSKsfoFrhENj436rN+H
-   Ww3cgR5joIgOwminoFb3e9OMdCFQ9Y83c8nXOv8hp4t/43QNLth6f019t
-   A==;
-X-CSE-ConnectionGUID: 8LKLnl2UQiCcBR1ZW9zHrg==
-X-CSE-MsgGUID: T63u+CW3QHWJV+SJJYVbvg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11434"; a="60681948"
-X-IronPort-AV: E=Sophos;i="6.15,293,1739865600"; 
-   d="scan'208";a="60681948"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
-  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 May 2025 00:37:19 -0700
-X-CSE-ConnectionGUID: EmFEkB4PSAy49RIhzknkRA==
-X-CSE-MsgGUID: PCyKqvZVQ1CYMs9BpMsMjA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,293,1739865600"; 
-   d="scan'208";a="161920591"
-Received: from lkp-server01.sh.intel.com (HELO 1992f890471c) ([10.239.97.150])
-  by fmviesa002.fm.intel.com with ESMTP; 16 May 2025 00:37:14 -0700
-Received: from kbuild by 1992f890471c with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1uFpd2-000J6N-0I;
-	Fri, 16 May 2025 07:37:12 +0000
-Date: Fri, 16 May 2025 15:36:58 +0800
-From: kernel test robot <lkp@intel.com>
-To: "paul-pl.chen" <paul-pl.chen@mediatek.com>, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, chunkuang.hu@kernel.org,
-	angelogioacchino.delregno@collabora.com
-Subject: Re: [PATCH v3 16/17] drm/mediatek: Add support for multiple mmsys in
- the one mediatek-drm driver
-Message-ID: <202505161512.PmRwb8Li-lkp@intel.com>
-References: <20250515093454.1729720-17-paul-pl.chen@mediatek.com>
+	id 1uFpzd-00000002jUv-16Ct;
+	Fri, 16 May 2025 08:00:34 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 63BDB5C4278;
+	Fri, 16 May 2025 07:58:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D84B4C4CEE4;
+	Fri, 16 May 2025 08:00:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1747382432;
+	bh=kgZ2vse2jLZoLmPeQGmJgqcIfaqnsw+PumeT+CIMfwM=;
+	h=From:Subject:Date:To:Cc:From;
+	b=AeghaOav/4TjBm0dvFkkrv1O/PfKQcxQg5V8JMlD/3048Xw7fiw6fRNHjLtFox9fc
+	 iEuekt/kmCDd7D8Cx/gwIeKfRlGGZWjeaQU49rJxiPXkk9Lsu4Gw3yABeY7uvoPQbD
+	 OrcAtzikvLBUqCGLqAoLwOwoD6raYWOCHoDoWQSsBn8L9KnM1fmWVfzOqKb4uEbhdQ
+	 OZ/sl/PTQ6iei8rn4CdlKBJGY58/WgGSSUvLlYd5rkXn/eedtQnzuwOymdyyRF+XM6
+	 /8w7LdPObvfSNBCI/2QA8bDhoAZUoGrpcnC1fQ0ajRG/k85JDR7pGFxJ0SOA780/rt
+	 /uwS8xXbDfNFg==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH net-next v2 0/3] net: airoha: Add per-flow stats support to
+ hw flowtable offloading
+Date: Fri, 16 May 2025 09:59:58 +0200
+Message-Id: <20250516-airoha-en7581-flowstats-v2-0-06d5fbf28984@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250515093454.1729720-17-paul-pl.chen@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAH7wJmgC/3WNQQ6CMBBFr0Jm7Zi2UhFX3sOwaNopNJKWTAlqC
+ He34trle8l/f4VMHCjDtVqBaQk5pFhAHSqwg4k9YXCFQQmlRS01msBpMEix0ReJfkzPPJs5Y0P
+ n1vqTd23toKwnJh9ee/neFR5CnhO/96NFfu2vqWX9t7lIFGiFIEdSGWXN7UEcaTwm7qHbtu0Ds
+ I8iEb8AAAA=
+X-Change-ID: 20250415-airoha-en7581-flowstats-7e69cf3fd94d
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250516_003719_934597_AA6AEF4D 
-X-CRM114-Status: GOOD (  16.02  )
+X-CRM114-CacheID: sfid-20250516_010033_350247_0DA02D66 
+X-CRM114-Status: UNSURE (   7.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,113 +76,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, xiandong.wang@mediatek.com, jason-jh.lin@mediatek.com, singo.chang@mediatek.com, sirius.wang@mediatek.com, treapking@chromium.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, paul-pl.chen@mediatek.com, nancy.lin@mediatek.com, linux-mediatek@lists.infradead.org, sunny.shen@mediatek.com, p.zabel@pengutronix.de, oe-kbuild-all@lists.linux.dev, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi paul-pl.chen,
+Introduce per-flow stats accounting to the flowtable hw offload in the
+airoha_eth driver. Flow stats are split in the PPE and NPU modules:
+- PPE: accounts for high 32bit of per-flow stats
+- NPU: accounts for low 32bit of per-flow stats
 
-kernel test robot noticed the following build warnings:
+---
+Changes in v2:
+- fix memory leaks in airoha_npu_stats_setup() and in
+  airoha_npu_foe_commit_entry()
+- disable hw keepalive
+- fix sparse warnings
+- Link to v1: https://lore.kernel.org/r/20250514-airoha-en7581-flowstats-v1-0-c00ede12a2ca@kernel.org
 
-[auto build test WARNING on robh/for-next]
-[also build test WARNING on linus/master v6.15-rc6 next-20250515]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+---
+Lorenzo Bianconi (3):
+      net: airoha: npu: Move memory allocation in airoha_npu_send_msg() caller
+      net: airoha: Add FLOW_CLS_STATS callback support
+      net: airoha: ppe: Disable packet keepalive
 
-url:    https://github.com/intel-lab-lkp/linux/commits/paul-pl-chen/dt-bindings-soc-mediatek-add-mutex-yaml-for-MT8196/20250515-173733
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
-patch link:    https://lore.kernel.org/r/20250515093454.1729720-17-paul-pl.chen%40mediatek.com
-patch subject: [PATCH v3 16/17] drm/mediatek: Add support for multiple mmsys in the one mediatek-drm driver
-config: arm64-randconfig-001-20250516 (https://download.01.org/0day-ci/archive/20250516/202505161512.PmRwb8Li-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 9.5.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250516/202505161512.PmRwb8Li-lkp@intel.com/reproduce)
+ drivers/net/ethernet/airoha/Kconfig              |   7 +
+ drivers/net/ethernet/airoha/airoha_eth.h         |  33 +++
+ drivers/net/ethernet/airoha/airoha_npu.c         | 178 ++++++++++-----
+ drivers/net/ethernet/airoha/airoha_npu.h         |   4 +-
+ drivers/net/ethernet/airoha/airoha_ppe.c         | 270 +++++++++++++++++++++--
+ drivers/net/ethernet/airoha/airoha_ppe_debugfs.c |   9 +-
+ 6 files changed, 427 insertions(+), 74 deletions(-)
+---
+base-commit: 894fbb55e60cab4ea740f6c65a08b5f8155221f4
+change-id: 20250415-airoha-en7581-flowstats-7e69cf3fd94d
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202505161512.PmRwb8Li-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   drivers/gpu/drm/mediatek/mtk_ddp_comp.c: In function 'mtk_find_possible_crtcs':
->> drivers/gpu/drm/mediatek/mtk_ddp_comp.c:670:3: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
-     670 |   if (found)
-         |   ^~
-   drivers/gpu/drm/mediatek/mtk_ddp_comp.c:673:4: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
-     673 |    count++;
-         |    ^~~~~
-
-
-vim +/if +670 drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-
-   622	
-   623	int mtk_find_possible_crtcs(struct drm_device *drm, struct device *dev)
-   624	{
-   625		struct mtk_drm_private *private = drm->dev_private;
-   626		const struct mtk_mmsys_driver_data *data;
-   627		struct mtk_drm_private *priv_n;
-   628		int i, j, count = 0, ret;
-   629	
-   630		/* search each path in private data */
-   631		for (i = 0; i < MAX_CRTC; i++) {
-   632			bool found = false;
-   633			int avail_mmsys_num = 0;
-   634	
-   635			for (j = 0; j < private->data->mmsys_dev_num; j++) {
-   636				const unsigned int *path = NULL;
-   637				unsigned int path_len = 0;
-   638	
-   639				priv_n = private->all_drm_private[j];
-   640				data = priv_n->data;
-   641	
-   642				if (i == CRTC_MAIN) {
-   643					path = data->main_path;
-   644					path_len = data->main_len;
-   645				} else if (i == CRTC_EXT) {
-   646					path = data->ext_path;
-   647					path_len = data->ext_len;
-   648				} else if (i == CRTC_THIRD) {
-   649					path = data->third_path;
-   650					path_len = data->third_len;
-   651				}
-   652	
-   653				/* skip if no path data in current mmsys */
-   654				if (path_len == 0 || !path) {
-   655					avail_mmsys_num++;
-   656					continue;
-   657				}
-   658	
-   659				if (mtk_ddp_path_available(path, path_len, priv_n->comp_node))
-   660					avail_mmsys_num++;
-   661	
-   662				if (mtk_ddp_comp_find(dev, path, path_len, priv_n->ddp_comp))
-   663					found = true;
-   664		}
-   665	
-   666			/* skip invalid path */
-   667			if (avail_mmsys_num != private->data->mmsys_dev_num)
-   668				continue;
-   669	
- > 670			if (found)
-   671				return BIT(count);
-   672	
-   673				count++;
-   674		}
-   675	
-   676		ret = mtk_ddp_comp_find_in_route(dev,
-   677						 private->data->conn_routes,
-   678						 private->data->num_conn_routes,
-   679						 private->ddp_comp);
-   680	
-   681		if (ret < 0)
-   682			DRM_INFO("Failed to find comp in ddp table, ret = %d\n", ret);
-   683	
-   684		return ret;
-   685	}
-   686	
-
+Best regards,
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Lorenzo Bianconi <lorenzo@kernel.org>
+
 
