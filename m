@@ -4,65 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 338F8C2D0CD
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 May 2025 21:19:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 906EBC2D0CD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 May 2025 00:55:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nAV66ZKLC52zg4eAOfBqUMhiLnJjm8LP15+LcI7aO2A=; b=Iy9Y70gBnoybjGdCm8OVT0JHJs
-	3UpmXyK8o2qIALwfsyPE7f4VunWghViUpxzCV9UHXEjsdnqCuWWfzntgnKPTYdFyMxvid6Y2BPZAl
-	4HrGbpt/6Ir/DeIm1mHMhbvIk2roxlLfzRcSGC6HuN9BfnieHcSBhuMguy51qhMeJm/PxJ3jlBMKF
-	U+OI3tMZrKhyGRDThuiG/tXa6Wks4NJzCV/V+UvhwXLzJrRuBVJldAxiCWwSpnlAqsxDku6OltGPW
-	nc3hs3x5sDgIOx+fkvYDPp4TPwWkjj5qeqBGjtDmacu+ahvCxuiCC5gozA5gBuoFth8sH4wXdnwFy
-	TPlLA3fA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=aQeVRouMwSpPPpF14+Y+OGMJ3UYJSb/gL8NvABqSv2U=; b=QsCEBr2Lp/9ajm0OOCOdt5k5IQ
+	RAujiakP5U3SHyroyT4Ip9EXtpXJ1Y8Dj+bSH1OQl9/YcuMd1dAWYjayAG0c6BdkmBiCOwQC0mvjQ
+	5aS7zh8cnSC1mrRQQmZLF74K77nQEQpMCGpMsmN7qnkpO3ZxkgglzUAHinF7MWfsfcKutMxtFOZIi
+	EH+lRlthWUo883bvqjxZTo7MWWpZ8MkJ1VzR23F+NnsW0tcdMdEPHFcqM9cE0cNLdaoxXM5Mf6B26
+	97LNChzR6DSrJvAkh8Ep6qQMjXklUKZ2QP8DsPTmTCyploXOb5W9GX88uHZYHGEsXkRe1ZPt+SaBZ
+	EAuRtiIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFfys-00000001shZ-0KBc;
-	Thu, 15 May 2025 21:19:06 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uFjLw-00000002ADk-1tPi;
+	Fri, 16 May 2025 00:55:08 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFfwq-00000001sXv-1xAG;
-	Thu, 15 May 2025 21:17:01 +0000
+	id 1uFjJn-00000002A2n-0DzS;
+	Fri, 16 May 2025 00:52:56 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 584CE434F6;
-	Thu, 15 May 2025 21:16:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D8C4DC4CEE7;
-	Thu, 15 May 2025 21:16:58 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 13751A4E42E;
+	Fri, 16 May 2025 00:52:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6926EC4CEE7;
+	Fri, 16 May 2025 00:52:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747343819;
-	bh=0fDHksalYNZrl+B7FMp5wCiwKEDzwGLwVf4fzJoGC28=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=kjF51K1EgtuYR8HJm9urywpBzMwwkQvuEdKPydwn1A4Y7b7jzktOUJ+jCqIAC4MAc
-	 gNh78FbUVk0RcH4PFxVMc/LvzUIrDjxoGLa1Z8rU8xH0Sr6S7eFJnsTdNlgd2a+CWo
-	 tHo2pLoSxCpWwOutmKQLVKJpMK5efRZasD+ymKgAkLIC0VxRRBnY372MZ6oXt1kxKU
-	 IUXzWxQ4p1QKxXUNOsMqjsweKBVNYC+6qSJEK2R7pTaoKOff7btzUUTnriec44DK5c
-	 bGh/sgQoRn+ZgZ8Ebf1bau5dRq1Gi+Z29B0/rxd8AdD1lvfM6nLqtmnMV9YZoQwNIL
-	 +3hZnBiYjlikw==
-Date: Thu, 15 May 2025 23:16:56 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH v3 1/4] net: airoha: Fix an error handling path in
- airoha_alloc_gdm_port()
-Message-ID: <aCZZyDvp-TZ7AFwS@lore-desk>
-References: <5c94b9b345017f29ed653e2f05d25620d128c3f0.1746715755.git.christophe.jaillet@wanadoo.fr>
+	s=k20201202; t=1747356773;
+	bh=W4XvKUUpI1NuoyrHwx51qsaD68pHRMjadUnfOiZwxE8=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=CpNCw2K54cXl1rkR48zAeUVMW7/fudU4soX9CFb4lUusKu2f9ZpdLF+ezxUlVUShR
+	 kApJXAwkj5Ft9u+K6tv2d3huqCJp0gQ+9EGddd4/TAahTkl7P+RHznu0yaMzmT6/4Q
+	 qJEsGB/IZg0SMUKdofMuVQNNOH1E6Pa4QxOm4p9UQq5+/kr6AF2uehMX5rcHQ3dwYn
+	 Xkj8ub/YvVOJkippnp0cUQk2GUY+SJn0CXjUwZ06cdnJJQzw5kxUhjzLoz22MAKMvx
+	 rNQecW8QT0sAWW7KseycQY22QXS8mRidLknoCjaaBsvY69hst3KbAFqF2iPvv4zo9g
+	 GEBrSj9ketR7g==
+Date: Thu, 15 May 2025 17:52:51 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Jinjian Song <jinjian.song@fibocom.com>
+Cc: chandrashekar.devegowda@intel.com, chiranjeevi.rapolu@linux.intel.com,
+ haijun.liu@mediatek.com, m.chetan.kumar@linux.intel.com,
+ ricardo.martinez@linux.intel.com, loic.poulain@linaro.org,
+ ryazanov.s.a@gmail.com, johannes@sipsolutions.net, davem@davemloft.net,
+ edumazet@google.com, pabeni@redhat.com, linux-kernel@vger.kernel.org,
+ netdev@vger.kernel.org, linux-doc@vger.kernel.org,
+ angelogioacchino.delregno@collabora.com,
+ linux-arm-kernel@lists.infradead.org, matthias.bgg@gmail.com,
+ corbet@lwn.net, linux-mediatek@lists.infradead.org, helgaas@kernel.org,
+ danielwinkler@google.com, andrew+netdev@lunn.ch, horms@kernel.org
+Subject: Re: [net v1] net: wwan: t7xx: Fix napi rx poll issue
+Message-ID: <20250515175251.58b5123f@kernel.org>
+In-Reply-To: <20250515031743.246178-1-jinjian.song@fibocom.com>
+References: <20250515031743.246178-1-jinjian.song@fibocom.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Y6AU6u8oigfJDbdP"
-Content-Disposition: inline
-In-Reply-To: <5c94b9b345017f29ed653e2f05d25620d128c3f0.1746715755.git.christophe.jaillet@wanadoo.fr>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250515_141700_522981_A4AE16AC 
-X-CRM114-Status: GOOD (  19.28  )
+X-CRM114-CacheID: sfid-20250515_175255_171440_E2C9ECA9 
+X-CRM114-Status: GOOD (  10.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,75 +78,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, 15 May 2025 11:17:42 +0800 Jinjian Song wrote:
+> diff --git a/drivers/net/wwan/t7xx/t7xx_netdev.c b/drivers/net/wwan/t7xx/t7xx_netdev.c
+> index 91fa082e9cab..2116ff81728b 100644
+> --- a/drivers/net/wwan/t7xx/t7xx_netdev.c
+> +++ b/drivers/net/wwan/t7xx/t7xx_netdev.c
+> @@ -324,6 +324,7 @@ static void t7xx_ccmni_wwan_dellink(void *ctxt, struct net_device *dev, struct l
+>  	if (WARN_ON(ctlb->ccmni_inst[if_id] != ccmni))
+>  		return;
+>  
+> +	ctlb->ccmni_inst[if_id] = NULL;
+>  	unregister_netdevice(dev);
 
---Y6AU6u8oigfJDbdP
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> If register_netdev() fails, the error handling path of the probe will not
-> free the memory allocated by the previous airoha_metadata_dst_alloc() call
-> because port->dev->reg_state will not be NETREG_REGISTERED.
->=20
-> So, an explicit airoha_metadata_dst_free() call is needed in this case to
-> avoid a memory leak.
->=20
-> Fixes: af3cf757d5c9 ("net: airoha: Move DSA tag in DMA descriptor")
-> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
-
-> ---
-> Changes in v3:
->   - None
->=20
-> Changes in v2:
->   - New patch
-> v2: https://lore.kernel.org/all/5c94b9b3850f7f29ed653e2205325620df28c3ff.=
-1746715755.git.christophe.jaillet@wanadoo.fr/
->=20
-> Compile tested only.
-> ---
->  drivers/net/ethernet/airoha/airoha_eth.c | 10 +++++++++-
->  1 file changed, 9 insertions(+), 1 deletion(-)
->=20
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
-net/airoha/airoha_eth.c
-> index 16c7896f931f..af8c4015938c 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> @@ -2873,7 +2873,15 @@ static int airoha_alloc_gdm_port(struct airoha_eth=
- *eth,
->  	if (err)
->  		return err;
-> =20
-> -	return register_netdev(dev);
-> +	err =3D register_netdev(dev);
-> +	if (err)
-> +		goto free_metadata_dst;
-> +
-> +	return 0;
-> +
-> +free_metadata_dst:
-> +	airoha_metadata_dst_free(port);
-> +	return err;
->  }
-> =20
->  static int airoha_probe(struct platform_device *pdev)
-> --=20
-> 2.49.0
->=20
-
---Y6AU6u8oigfJDbdP
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaCZZyAAKCRA6cBh0uS2t
-rBnoAP9FaVPF2CbBdrO+fj0pthqLp8g0i6A/AjxSkyZWruuaHwEA5btpiFBZ5imz
-5SRZgTQ7PDqOijkGIb8OCvuDLpbXWQo=
-=XFmd
------END PGP SIGNATURE-----
-
---Y6AU6u8oigfJDbdP--
+I don't see any synchronization between this write and NAPI processing.
+Is this safe? NAPI can be at any point of processing as we set the ptr
+to NULL
+-- 
+pw-bot: cr
 
