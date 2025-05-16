@@ -4,72 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DC23C3ABD8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 May 2025 14:57:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 339B1C3ABD8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 May 2025 16:12:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gQpoNRZoT4Laj13U4Bh1ZV0ArWEfGdTmj1r3KozSV5s=; b=MhZlvZpMEWSee5kxohclH2gMLh
-	QiHdkmgDIcgdOgGHV3j2s5GEMW9Kj8JUQpZAJL1IaWN96QCiIfguX6SOxtoyka/y9Of4KNkxgF2oK
-	SeHXRsOxKSWfbyZlcQTGwg9JCXKdNqXJes/N3smdAIqcdE1qzgjY6DvynBkn08EOFtccLwHZ9yJjX
-	UnK0aPwJypTejsWId3UADgjOxI5tV9NvstF60qxHUNUhjmSZPp7YPcMqA2a05+hg3YRobvufRVSbH
-	NgZl/zjPIbiObbO0kb9R5EVKvcVIB561BDANnue9vfZGl51eqe6PRjl1+y8nLus4wPrqr/sah7uvQ
-	dQ0jV5ug==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uCC2wFvX+VRXPFM+UqJWuDREx7PiggiD0yB6yD7SpzU=; b=NXvFwhjeKL3sMm3rAgK0PFmovt
+	hLM/SfOX6fLGBOi2I1npYA782BySPpuWlwgUfCnWFZyo7Lwbg9ijHb4A1TXLRJfTDnShaARcyJ/gH
+	W8ygYBBuF/H5JcIshp7PgM2ADfkEPMfudIvzi1s7HOJ4CsQNM6U5c6esuGnUlCtE4A+H24ahdTU+U
+	ZBchUeyWkna6GNSyzQlP3hovFemT+9bB730Yto8+MmWIKUbtKlzGo+c+ScNmN64KTKJ7W7Gclwyl/
+	QNRG850m1DkJh7Mu62LSe7q/1gCtGfrFYqrd6A55zFaGXtV+5r4wQAAAtEpKZUp/z6Ol/9L1FfE1n
+	BRxq/S4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFwVR-00000003kUj-1fsc;
-	Fri, 16 May 2025 14:57:49 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uFxg7-00000003ynv-0PJL;
+	Fri, 16 May 2025 16:12:55 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFvrD-00000003djU-2tnr;
-	Fri, 16 May 2025 14:16:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1747404974;
-	bh=gQpoNRZoT4Laj13U4Bh1ZV0ArWEfGdTmj1r3KozSV5s=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=F0BCeZxc4Hvnn4U+tm1M/aTPl9AHHvTScCJEu/gnm2urOCaLEOUE2y0/igK4q7LSM
-	 MW+wZL/O5Ubu3aZY0H4YZdQNJY6YlB8G+KhTYcESqkFEytEts7epDBmT6v/DOFjeWF
-	 Vsrnkji1TDN++N4z3v3+3paftPLWSO/i8obJDqEvnOqRb5fBAGpoGmY2qM/JHDrvCR
-	 BOmJkUhlRKGIu98iRLxQIPBnlmsP3VVLDSGnd/8yUCMYax9elMoa7BmwltFIlkC1fg
-	 oNoWJ9W3E3NJ28mmwcyZ37SaQMPe7cEKCuDy70kE09R2zmH0VTbT5dli95nVv9El9H
-	 wFN+8mzxihe9Q==
-Received: from 2a01cb0892f2d600c8f85cf092d4af51.ipv6.abo.wanadoo.fr (2a01cb0892F2D600c8f85CF092d4aF51.ipv6.abo.wanadoo.fr [IPv6:2a01:cb08:92f2:d600:c8f8:5cf0:92d4:af51])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: jmassot)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 91A1617E07E4;
-	Fri, 16 May 2025 16:16:13 +0200 (CEST)
-Message-ID: <2646b1358d1d141cbb5988a3bb2bbf4177f4ce4f.camel@collabora.com>
-Subject: Re: [PATCH 3/3] arm64: dts: mediatek: mt8188: gce: add missing
- 'clock-names'
-From: Julien Massot <julien.massot@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	kernel@collabora.com, Michael Turquette <mturquette@baylibre.com>, Stephen
- Boyd	 <sboyd@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof
- Kozlowski	 <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger	 <matthias.bgg@gmail.com>, Garmin Chang
- <garmin.chang@mediatek.com>, Friday Yang	 <friday.yang@mediatek.com>
-Cc: Conor Dooley <conor.dooley@microchip.com>, linux-clk@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Date: Fri, 16 May 2025 16:16:12 +0200
-In-Reply-To: <89234201-9315-41f5-ab13-68272f62c53d@collabora.com>
-References: <20250515-dtb-check-mt8188-v1-0-cda383cbeb4f@collabora.com>
-	 <20250515-dtb-check-mt8188-v1-3-cda383cbeb4f@collabora.com>
-	 <89234201-9315-41f5-ab13-68272f62c53d@collabora.com>
-Organization: Collabora Ltd.
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.1 (3.56.1-1.fc42) 
+	id 1uFxDW-00000003tO3-3Bm0;
+	Fri, 16 May 2025 15:43:24 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 5685743786;
+	Fri, 16 May 2025 15:43:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 79B69C4CEF0;
+	Fri, 16 May 2025 15:43:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1747410202;
+	bh=JX6JzbUHGsSlhtbCchsrt85j6DDVCcgzO9j3GrNG8PM=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=T42LItu/hK1i86e2aCIt+WEP4NJzf4EQ8lDPZyKYgO3dkrEMLM78MUkRcCoDKnnzC
+	 /9WjEBYk989deDxl0d8r877edJv0c3Mlkbxpjtte66iq6UIR67890PwDSSXIA5Pjau
+	 znqMjRHhNDgUHyu2cbOk0o7+9H2GIGfRa4+6aHt+OaCjN5eURvrkHxoaP1QYy/GvAk
+	 eCy0T4bLBfr2cnlrV+wKiqXJNc+xxwsXAapB0qtnmOgWkB9W/dqwYyj+UPNydatxXP
+	 sFz63Dg8wJ/9moBgA1cZdZVZZQms6APs9jDtbZubuCTKKT6tGWITa1WiV88T1+5FBY
+	 fx5M4fHy8MM8g==
+Date: Fri, 16 May 2025 08:43:20 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Jinjian Song <jinjian.song@fibocom.com>
+Cc: andrew+netdev@lunn.ch, angelogioacchino.delregno@collabora.com,
+ chandrashekar.devegowda@intel.com, chiranjeevi.rapolu@linux.intel.com,
+ corbet@lwn.net, danielwinkler@google.com, davem@davemloft.net,
+ edumazet@google.com, haijun.liu@mediatek.com, helgaas@kernel.org,
+ horms@kernel.org, johannes@sipsolutions.net, korneld@google.com,
+ linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ loic.poulain@linaro.org, m.chetan.kumar@linux.intel.com,
+ matthias.bgg@gmail.com, netdev@vger.kernel.org, pabeni@redhat.com,
+ rafael.wang@fibocom.com, ricardo.martinez@linux.intel.com,
+ ryazanov.s.a@gmail.com
+Subject: Re: [net-next v1] net: wwan: t7xx: Parameterize data plane RX BAT
+ and FAG count
+Message-ID: <20250516084320.66998caf@kernel.org>
+In-Reply-To: <20250515180858.2568d930@kernel.org>
+References: <20250514104728.10869-1-jinjian.song@fibocom.com>
+	<20250515180858.2568d930@kernel.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250516_071615_874461_C675DEB2 
-X-CRM114-Status: UNSURE (   8.56  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250516_084322_822208_A31D85E5 
+X-CRM114-Status: GOOD (  12.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,21 +81,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2025-05-15 at 16:52 +0200, AngeloGioacchino Del Regno wrote:
-> Il 15/05/25 15:31, Julien Massot ha scritto:
-> > The 'clock-names' property is required by the dt binding.
-> >=20
->=20
-> I just remembered something....
->=20
->=20
-> ...care to respin this patch instead?
-> https://lore.kernel.org/all/20240911104327.123602-1-angelogioacchino.delr=
-egno@collabora.com/
->=20
+On Fri, 16 May 2025 11:46:57 +0800 Jinjian Song wrote:
+> >Module parameters are discouraged, they are pretty poor as an API since
+> >they apply to all devices in the system. Can you describe what "frg"
+> >and "bat" are ? One of the existing APIs likely covers them.
+> >Please also describe the scope (are they per netdev or some sort of
+> >device level params)?  
+> 
+> MTK t7xx data plane hardware use BAT (Buffer Address Table) and FRG (Fragment) BAT
+> to describle and manager RX buffer, these buffers will apply for a fixed size after
+> the driver probe, and accompany the life cycle of the driver.
+> 
+> On some platforms, especially those that use swiotlb to manager buffers, without
+> changing the buffer pool provided by swiotlb, it's needed to adjust the buffers
+> used by the driver to meet the requirements.
+> So parameterize these buffers applicable to the MTK t7xx driver to facilitate
+> different platforms to work with different configurations. 
 
-Ok, we will resend this patch instead, I dropped the patch 3/3 in the v2.
-
-Regards,
-Julien
+Have you looked at
+https://docs.kernel.org/networking/ethtool-netlink.html#rings-set 
+?
 
