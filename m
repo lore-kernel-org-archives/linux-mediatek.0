@@ -4,174 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38DF0C3DA4A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 May 2025 03:47:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2028AC3ABD8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 May 2025 05:06:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-Id:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xPLW2rCkMv+4Czj7vrAp4oQPC0FEEUM1fN39vPF0NQg=; b=sbo/Zab2hS0uCs4jpUD4LitjqQ
-	TpLRIeL+s5WxBiXC84hPnLLDiiA4bRNwb4X2BgEO74HeqZNofohmAb70+R1oIkqJo2rQ4Nq7Rvike
-	wgmpkK1ahkacYGnJkvSQ/lSZYaNJLhqPBbahYQ+Mv2azuajf4bgfhS943kRPG4v80ArGmUWcWSQvZ
-	ncEPO2EpAogmGQ3RWC2IQQuvc+e6Udl6ZvGHvTbcTSx97VH4PviDwcuywBAfGRQnpcIoCPTi9V5pM
-	yO9ckFxUSQg8mAUiGV9vEilGVGJmUDnr+ZqbdmKaCbU382XqMYiOBCXF1XyKwkeFdlfk17lPtXMAL
-	pDm0wR6Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=FZYfWobUsai4Anc24HWgooUiX7BPMHJRwh278DHkFhg=; b=EbaXy/DKlOZo/oDBxr9gXt2yJk
+	oNPP6m32bExqK7p1KvyxNxb/UgcCPou56wGXdCCZKpIUfbWRpMAT9Qvm0MZ5cAenbBcZMFBs2myW/
+	fuKMIlABu49Vd3mxzchNjF0ON3DlknnwzLAWxUECXBonjzI1e7BrtL4hxXjeW9EmAk+w09pBjvoTH
+	GQ83Y5XQhn1aVtRqdE5ZyTTGHsXTSTbx+eqQRRVfAyGChQCHZ5g98c9d5nYjbFq/NqDgf2n15FTSW
+	Bci6H/N0TcstlzZAb5aE7/1w4X9eSzTdLN0Mci9B50jrESBSH8u0B65SLSIlSmJDyY1I5FFgpQY5H
+	9AQA7uig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFm2t-00000002PXO-482a;
-	Fri, 16 May 2025 03:47:39 +0000
-Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
+	id 1uFnGg-00000002UYT-1jFu;
+	Fri, 16 May 2025 05:05:58 +0000
+Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFm2r-00000002PWc-3Vw8;
-	Fri, 16 May 2025 03:47:39 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=XrV8LKUXuDUFawgZyT3PiymONXNyODbUoBvLr7WMKVLOd7FwrY7871xEmTQE1YlhMOXVkHIEx5wT7dTO8zZNogEmvOjfBmL1gU1OdZE2zmDLDDHM1t144k/mlD5mn+jxoDSYKjbOSQQhSg8bG6WiX+JhvsD8+q1VH0+UqmRSsK24qt/kQKgBmxoHesTKFrepbsRfctz+1T7vCaccUNcyHZSF85PsDRFxQS1RmbYwE6JR7we03zPZN0xr9jtcR4DBdO8CLK9HDLndR1h8DultU8H4B+ZFLL/XVGUc+Lh4VZyMG0u9kcq89DbAjw5xZmzmJvEoAUiFO7gOU8sUwoSSmQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=xPLW2rCkMv+4Czj7vrAp4oQPC0FEEUM1fN39vPF0NQg=;
- b=J4XXWIsSYXTI7wy1FX7x8PwKumP0etuoNfWgdkUh7UdA+NGDawQyf9ujdWuTIxr9eWLaDiX4R3hwPSNMsRNocmU9yCseN/YAMYeScywPkt4zLTFcM4cf/tWiDgh6w127wHdKFIf7ELi3oTaeTjwBmZ4qYz/iMOabrd+fm1Dm+2zEb7c+EwOtrvl6+DhC1xAFzn4ZMyMiwOWFL0EcstpzZkurDEIwC2bUUyBOVftFCeIilAOFhx61Vl0gXMmN8oKJaufmq52pyYDwD4Sz4XgPkjtkZi3dHqXrobJyY7IXyDv7EpvLHIr06JV2PjnTA1Zcv21GO0HRMKFfrywKllj8KQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=fibocom.com; dmarc=pass action=none header.from=fibocom.com;
- dkim=pass header.d=fibocom.com; arc=none
+	id 1uFnGe-00000002UY8-0lWS
+	for linux-mediatek@lists.infradead.org;
+	Fri, 16 May 2025 05:05:57 +0000
+Received: by mail-pg1-x536.google.com with SMTP id 41be03b00d2f7-b170c99aa49so1101325a12.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 15 May 2025 22:05:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=fibocomcorp.onmicrosoft.com; s=selector1-fibocomcorp-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=xPLW2rCkMv+4Czj7vrAp4oQPC0FEEUM1fN39vPF0NQg=;
- b=V2pjyBOu8/4gfNl1HCjqyJhrey7+tIIymJX5nKsG8TwAU7BxN2vIAIm0pTqP7I1NoSctXMJcpUXmEbjx4Rsr7YZFambtOQiZVXqixf2ZOUKzvzOD2YFL+tzQhgN0GzpbPGnPV4PKIVnXcpcWHUDtqrN8bhQjG7hyLcMX61a5xGg=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=fibocom.com;
-Received: from TY0PR02MB5766.apcprd02.prod.outlook.com (2603:1096:400:1b5::6)
- by JH0PR02MB7277.apcprd02.prod.outlook.com (2603:1096:990:6a::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8722.31; Fri, 16 May
- 2025 03:47:09 +0000
-Received: from TY0PR02MB5766.apcprd02.prod.outlook.com
- ([fe80::f53d:47b:3b04:9a8b]) by TY0PR02MB5766.apcprd02.prod.outlook.com
- ([fe80::f53d:47b:3b04:9a8b%4]) with mapi id 15.20.8722.027; Fri, 16 May 2025
- 03:47:09 +0000
-From: Jinjian Song <jinjian.song@fibocom.com>
-To: kuba@kernel.org
-Cc: andrew+netdev@lunn.ch,
-	angelogioacchino.delregno@collabora.com,
-	chandrashekar.devegowda@intel.com,
-	chiranjeevi.rapolu@linux.intel.com,
-	corbet@lwn.net,
-	danielwinkler@google.com,
-	davem@davemloft.net,
-	edumazet@google.com,
-	haijun.liu@mediatek.com,
-	helgaas@kernel.org,
-	horms@kernel.org,
-	jinjian.song@fibocom.com,
-	johannes@sipsolutions.net,
-	korneld@google.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-doc@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+        d=chromium.org; s=google; t=1747371955; x=1747976755; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=FZYfWobUsai4Anc24HWgooUiX7BPMHJRwh278DHkFhg=;
+        b=kYpvNDvvedsonvz2e/wAPPWKhWb9i66hQDvQLxhV9x+n+vYN5l9Zl4BZCItHBcyp5Y
+         BMhZKHCHcvfI9ivuhoe+Py1spBwNO01CYdF6/uQnWaey0qG11SKJU9fmuYGcDtiZtAo4
+         BsvITaTStf9NOukBsztRxP1OaePv8GZRBR2ps=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1747371955; x=1747976755;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=FZYfWobUsai4Anc24HWgooUiX7BPMHJRwh278DHkFhg=;
+        b=slZjK0hUwUKgsJXdq9ZY356drbFPJ5u3EwkYC0iuvDJ007beoNog/ETXl0xCIxqnnj
+         Sl5a3OPaVWuKPhk6J3evYCaBaR7YhyKCckFjFKS3G59iQ1dNNwDof+5wP8zb2wkfEa/A
+         eLx2NSAJjbWE2Hni1sqChILu1PmFXXuYORDYh4NhlxuxTcUyLsTaqVBwG3MpVbyajSkd
+         31qkyGNflPBJXpO5SyJbfTci0/zcNMb9gWK8kf9OBrW3+TEdCzNu64FD4h2FppF2L2CW
+         KSreh13PIeG9HZZiOyaKZBtPyOcxpJQ1iOkIwFM/NY5pfZQO9/0pODwX/Pvxkk5imNy4
+         I0dg==
+X-Forwarded-Encrypted: i=1; AJvYcCXToiNfVVyntYa3FSVAd46RZE8Y5PQ4FtXShe8zO1/lIX8U0lAj1Ka/ig8jzoZqhGpAUnER50Y7TBHwiiyQ5g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzPd1M2XbE/QCxNGmZOueMyHNR6mrZy4BEzXUyWPlFEaLWT+S1x
+	F8Qx7yJCnGOd9Pnp4w79WqxkdSS4zZ9hYxmPp50coQFfa+4FvvUhw1XE3EuurDjDTGSneuO5NqP
+	mfDc=
+X-Gm-Gg: ASbGnctqNXIPKaLeXIVusHUDJscRiCNgOGl6TkKUfkHUaDmdkO8MLt3bPacQ5QmZXO1
+	C1mC5WQQncYVmS+d/PEB0QMY0lm9RfjQyESPM2Xz6u426fodlURYr1u7iIKPRugWM/dIks7Udkw
+	3MEIvSU39s3e0tk8oxFtMwaJxWRcFh1nIlp1cw8U+3jPl2xUFAVtq7UEtvUYUTa3zMwsKpiyPPg
+	lxUyzo5imAajHZhEprib5jBf0RZCRz62QOAys7JTpg470h9e+kWAzHgw9/V85QFToH1bUuHAL/u
+	Iie0oSyrI90D5aGAPkQRHLvH+cA2sIQt6Ny/LBbqB5sEYQ5zV1Xa7VoBp4wbdlAnruwLGw==
+X-Google-Smtp-Source: AGHT+IH0/GDb4r+wiufJP7iwzsEy+MWQRcekYSbQLeI/kLmTr/rbqnbWo/loA5DWMHtf5lSSzKhPKA==
+X-Received: by 2002:a17:903:22ce:b0:231:b456:b97 with SMTP id d9443c01a7336-231d459a539mr26785735ad.36.1747371955405;
+        Thu, 15 May 2025 22:05:55 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:c43a:aaea:5f52:5763])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-231d4e97de4sm6312355ad.144.2025.05.15.22.05.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 15 May 2025 22:05:54 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	linux-sound@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	loic.poulain@linaro.org,
-	m.chetan.kumar@linux.intel.com,
-	matthias.bgg@gmail.com,
-	netdev@vger.kernel.org,
-	pabeni@redhat.com,
-	rafael.wang@fibocom.com,
-	ricardo.martinez@linux.intel.com,
-	ryazanov.s.a@gmail.com
-Subject: Re: [net-next v1] net: wwan: t7xx: Parameterize data plane RX BAT and FAG count
-Date: Fri, 16 May 2025 11:46:57 +0800
-Message-ID: <20250515180858.2568d930@kernel.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250515180858.2568d930@kernel.org>
-References: <20250514104728.10869-1-jinjian.song@fibocom.com>
-Precedence: bulk
-X-Mailing-List: linux-doc@vger.kernel.org
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: TYCP286CA0127.JPNP286.PROD.OUTLOOK.COM
- (2603:1096:400:2b6::9) To TY0PR02MB5766.apcprd02.prod.outlook.com
- (2603:1096:400:1b5::6)
+	linux-kernel@vger.kernel.org,
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
+Subject: [PATCH] ASoC: soc-utils: Check string pointer validity in snd_soc_dlc_is_dummy()
+Date: Fri, 16 May 2025 13:05:48 +0800
+Message-ID: <20250516050549.407133-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.49.0.1101.gccaa498523-goog
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: TY0PR02MB5766:EE_|JH0PR02MB7277:EE_
-X-MS-Office365-Filtering-Correlation-Id: 6a03202c-543c-4deb-36ed-08dd942c5570
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|52116014|7416014|4022899009|1800799024|366016|38350700014;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?m3dUZeK/Vkfcn5W0b+npzoPy+WWCeJWJJbK9m9NGHAtyTwU7tzoKIvPzKdD7?=
- =?us-ascii?Q?2uxQdnkl8cAT9e2RC9+N443p/b06Yh3o9od1exkTwj+Q3Huk7mRxQyUYqvgy?=
- =?us-ascii?Q?9UNVExDeekWVgIgvIJsvqfTCoGJjh9oxw/qu7gHoD8JHBwC+n/9uW2kf2noy?=
- =?us-ascii?Q?pzR0M6MYhBTqZQy1FUuEcoe2d8Qm21m4B7hGbgVc8AHFBxDO2jjUBM2/HbM6?=
- =?us-ascii?Q?cdi7LeqdREejLKc3RuJ9xrQmZEwO8gOrduj3uzdWVaeo7nwT1uRZ94NLbQIw?=
- =?us-ascii?Q?bW7Np3uPwAgHVK/HeeBkw57xSwLW5Wq0hSONySYx+3alwBvAu5dFK+nAlvfW?=
- =?us-ascii?Q?vePlq+4HjwRJbzcUL/IHPHg03dYnwyEZLZbqPqR+n4WLbhg038Gt9N9ZiGY2?=
- =?us-ascii?Q?oCN0u4zgokQuzWVrZw70Bj5GTB3/EcQIxJagFHQuux5jggHuCPfggaJLqymM?=
- =?us-ascii?Q?fsWMzWMX0jwkWzeTbAZiygwyX2V3XsAA0/rxk5Yf0tlom2bIhNjqE1VZTF9s?=
- =?us-ascii?Q?68EtcOo2OWzVoMXtPGh+eqU8gTs5US1bPsc40l7mGd1ava/rvzLtV+CyWHjE?=
- =?us-ascii?Q?nYdjv6rdxB4GEavPuys3nn4TJLqGs+MILQU5LVc5Rcmkn3xF3GMkkACbt51J?=
- =?us-ascii?Q?PclUoPw3fOU5WWXiRbnIEunednEUzSAlTe9gc6u29ti16Hc5qRVD34K08HSK?=
- =?us-ascii?Q?1gKTRw7r7sH3ND3dul8uZxUZGogdzVkE0mamLlF+w4xIR6BFF1NKRkTYatpL?=
- =?us-ascii?Q?xoIhei6TiTebuDiPPt1hUp9u4CJOkPiBXXXpOex792xPQePSfzZCTdU4wOnD?=
- =?us-ascii?Q?ryQ29y95OR+kLuYV1QNdiGRaXDM+JLZ/pepj83d7YyQlcHU1a4AXwB5tLB19?=
- =?us-ascii?Q?UZq9MgUx4Pylifc8n8ENNKZUO3A+iz6aHjTDKZgiWAkWYuGO8DJ1hsMBe22q?=
- =?us-ascii?Q?nUpIWLTFyWeX3gC33kM00eEu3q8iZHvb84YiweN3iv+hnhCI1qbRIZVGMLXZ?=
- =?us-ascii?Q?L0B4ylSzrAmMdGH3p1NDMd5nLC9f1K/mmjPuyY1ZQB+nfo6qloh8N1ty7tPN?=
- =?us-ascii?Q?zVKufK2p1TcJd7KAzQDprsFoR5E1Jzqut6qc/mfE8nPuSSEpo9fUBojPDtfF?=
- =?us-ascii?Q?qCxYyIt9bMB0rAyoZSfn6l/fMgwmGh14IJiJUNEGl5d17yat9PsRaFEFdq2O?=
- =?us-ascii?Q?5M/lMm0VPRsduiRSdiU0sxOFk/YPtdUECHvO8CgENO0QSdYpXExdIXwhzYqz?=
- =?us-ascii?Q?xIk5HlX8mCL9Wb/VTlnyD7sxpJFkxcWYZr6u2/tKL20CtAhtbgEEyILbqvAo?=
- =?us-ascii?Q?pbDnQgdfHuJDc3GIW7vdkpOd2MbgM7b1IUjT6I5AHcuTW3bCTIZE+doGuiCK?=
- =?us-ascii?Q?thpixw8YZpCMyqWkHG3ZJg+R6nrmMnDhMO9rj/OaXZh6Jroa2E97oqBkzn5k?=
- =?us-ascii?Q?yewuZY3MGhhvMMtmDDxTEFNlT505nQ6WhofFc9ilqkU1zn4W3Wgoeg=3D=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TY0PR02MB5766.apcprd02.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(52116014)(7416014)(4022899009)(1800799024)(366016)(38350700014);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?AYwLGVHfAn9XSWIcYVUCQQYsSSn/al2C2c2ArEcf5cN1zC9e9E5+Lu6aNqJk?=
- =?us-ascii?Q?HiuWRy6kpVuqHrkU3sLm4Be6xYvDQoZTRRJoPJel3rrijvKbPHWto8eYV9Zs?=
- =?us-ascii?Q?pta6Zt8XCQQY/1gP4vbSg/Gp7+OTV1g3DP8/prGjQK9ARMMNrIGBHtO4zc3m?=
- =?us-ascii?Q?fD61LV0EY58vV+as+raee/bquauvJsVQRfUVRgiY4tq1DnSeJynPVkiE9u6y?=
- =?us-ascii?Q?3lom438JBnrQC69Gh3bZkrOYHGTHAzkg7UlF+oPMouWi95MtZ1a917D/SZ9E?=
- =?us-ascii?Q?TG1XzfYvKICCk1T2jTywe70wLyUAAP4Jkuc1KPQbYOsaUsHFjQv+ToP4zS8t?=
- =?us-ascii?Q?pksfGG19qOrckuQqVAtd+tugBL+7wv1lS6nt9fxabqZhrzoZl4Zkzx7aVZDg?=
- =?us-ascii?Q?SkK/mZnQ4JrVLdv9t2NaSc311cu63uCvlSgOOjFrlwEDuyhC7N4NxgzrISf3?=
- =?us-ascii?Q?tv+XgB8kAiNk/zR2ihduHs+8WmZ+48t3VSetxVP2b8p+P65aO6GDalnGitMi?=
- =?us-ascii?Q?EBzgQpvjQFviDnzCLtExpQMPooDVeHYO8nSL+lv8jRLSslFB2CedECyozNH2?=
- =?us-ascii?Q?EcYwYJl92WJOWdg3hd6w8YNy4mAq1JgmZ5wVsJMnljVHs5LoMButIxfFaJg6?=
- =?us-ascii?Q?shegdMDovDOC+oWGJR4XA7gON4ykOiItRakyQz0AcPu/K1mHtYvEjZRY6+3u?=
- =?us-ascii?Q?4HT+VuRfzkTSjnopJYF4/olI+jDpCCKayK5lhbI0u3RgiCRLnx7S32nVkVrh?=
- =?us-ascii?Q?AK9x+X75VcmJhPErVlOCivmAgen3an09fvzRDhA29JQHAGQ2fsOyZPJv6+Hy?=
- =?us-ascii?Q?ry5usCWPUwJfWK1XTWk+mX7gEo91SVESwDxrVM6jMcYlA3dAsKgOIzZooXvD?=
- =?us-ascii?Q?tQNhOyR9OIG9+p/0Wu2pnefYNFZyW8Omzf+tujRqc+gyny9ReXieTtivaRcE?=
- =?us-ascii?Q?kAZ/js7QdS32liuoroCHnYOt/t4se6E/a5xTZBJxr7ygr6uzP4lIAhG8Bz9t?=
- =?us-ascii?Q?2VCC6MDUEytk2l40X6kLLBuhCSPbYfpfF16K1lMCy+t40UmMaQogLXRzhbBM?=
- =?us-ascii?Q?wYf27BQJfbx/r7y5HU5X9iVPBSXPgiUWXudQGeG4i+wffo1eargtwiFzeniJ?=
- =?us-ascii?Q?xmATFTakDxxafjedmbnGZOTSvj3GLJUl1hyj82HTVqespiuBazCPbgU0rHEA?=
- =?us-ascii?Q?nfDFs4siggD9ow0ohNhMN8DglJJprlKVlFLd4nqAcX/RzYjiQwzSQpm1+1MZ?=
- =?us-ascii?Q?hK+OJqwXhTa0zQPqskuuuero+9vFyDmXd44qK0ebUX0yfWNWc/T5pz/JM945?=
- =?us-ascii?Q?Q8w0HAUpYZCDUpzqzi8n6qWZ3U0W0eVMoNgKJw+GnLjjd9fv1qywcHnQ/6v3?=
- =?us-ascii?Q?PfvNsEPJBF5DPfC8BLB+4OBvKEqNoylcWbBLfNMWmAQz5Mw4v94GSlD7d8YA?=
- =?us-ascii?Q?Vrjs3NdFOgH6VwYmzbIMN2AbpUtcGJepvNneKrX8bsRc3PzFdj3yVrmtTku1?=
- =?us-ascii?Q?2HKeckDtaZH/YVx5vTpU9OAk99cpbl4EIA5Jowi1Zcwp5YwZw2IYrIAhDM84?=
- =?us-ascii?Q?utZeOWbZ6nqhef9nedIvs1uAWCCLenL0ln2/yBPjl8/ld7XDAYOAf4K52E5l?=
- =?us-ascii?Q?9A=3D=3D?=
-X-OriginatorOrg: fibocom.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6a03202c-543c-4deb-36ed-08dd942c5570
-X-MS-Exchange-CrossTenant-AuthSource: TY0PR02MB5766.apcprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 May 2025 03:47:09.2159
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 889bfe61-8c21-436b-bc07-3908050c8236
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: hmTt5+WeWwFAMMMaP15Gz+vFOH8sUzE8tHkCugPAe+YYRYPfdJTJ9dRnmeKACA9kLFK46hsfr4PS6jb9lkZLHx4lZndGZFXcILT6oCLuejE=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: JH0PR02MB7277
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250515_204737_871585_CB671487 
-X-CRM114-Status: UNSURE (   8.12  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250515_220556_250118_0C9AFB1E 
+X-CRM114-Status: GOOD (  13.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
+Precedence: list
 List-Id: <linux-mediatek.lists.infradead.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=unsubscribe>
@@ -182,31 +97,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
-Message-ID: <20250516034657.gk2Iw_wLxPP9JYDvOm0TTGGLHd0TMgC4pn_2CkG1t_g@z>
 
->On Wed, 14 May 2025 18:47:28 +0800 Jinjian Song wrote:
->> The DMA buffer for data plane RX is currently fixed, being parameterized
->> to allow configuration.
->
->Module parameters are discouraged, they are pretty poor as an API since
->they apply to all devices in the system. Can you describe what "frg"
->and "bat" are ? One of the existing APIs likely covers them.
->Please also describe the scope (are they per netdev or some sort of
->device level params)?
+In the recently added snd_soc_dlc_is_dummy(), the helper uses the .name
+and .dai_name fields without checking their validity.
 
-MTK t7xx data plane hardware use BAT (Buffer Address Table) and FRG (Fragment) BAT
-to describle and manager RX buffer, these buffers will apply for a fixed size after
-the driver probe, and accompany the life cycle of the driver.
+For .name, this field is NULL if the component is matched by .of_node
+instead. In fact, only one of these fields may be set. This caused a
+NULL pointer dereference on MediaTek MT8195 and MT8188 platforms with
+the subsequent conversion to snd_soc_dlc_is_dummy() in their machine
+drivers. The codecs are all matches through the device tree, so their
+.name fields are empty.
 
-On some platforms, especially those that use swiotlb to manager buffers, without
-changing the buffer pool provided by swiotlb, it's needed to adjust the buffers
-used by the driver to meet the requirements.
-So parameterize these buffers applicable to the MTK t7xx driver to facilitate
-different platforms to work with different configurations. 
+For .dai_name, there are cases where this field is empty, such as for
+the following component definitions:
 
-These prameters are only used for MTK t7xx driver.
+	#define COMP_EMPTY()                    { }
+	#define COMP_PLATFORM(_name)            { .name = _name }
+	#define COMP_AUX(_name)                 { .name = _name }
+	#define COMP_CODEC_CONF(_name)          { .name = _name }
 
-Jinjian,
-Best Regards.
+Or the single link CPU DAI case in the simple audio card family, as
+covered by simple_util_canonicalize_cpu(), in which the .dai_name
+field is explicitly cleared.
+
+To fix this, check the validity of the fields before using them in
+string comparison.
+
+Fixes: 3e021f3b8115 ("ASoC: soc-utils: add snd_soc_dlc_is_dummy()")
+Cc: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ sound/soc/soc-utils.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/sound/soc/soc-utils.c b/sound/soc/soc-utils.c
+index a1bcc852a6de..c8adfff826bd 100644
+--- a/sound/soc/soc-utils.c
++++ b/sound/soc/soc-utils.c
+@@ -267,8 +267,8 @@ int snd_soc_dlc_is_dummy(struct snd_soc_dai_link_component *dlc)
+ 	if (dlc == &snd_soc_dummy_dlc)
+ 		return true;
+ 
+-	if (strcmp(dlc->name,	  snd_soc_dummy_dlc.name)	== 0 ||
+-	    strcmp(dlc->dai_name, snd_soc_dummy_dlc.dai_name)	== 0)
++	if ((dlc->name     && strcmp(dlc->name,     snd_soc_dummy_dlc.name)     == 0) ||
++	    (dlc->dai_name && strcmp(dlc->dai_name, snd_soc_dummy_dlc.dai_name) == 0))
+ 		return true;
+ 
+ 	return false;
+-- 
+2.49.0.1101.gccaa498523-goog
 
 
