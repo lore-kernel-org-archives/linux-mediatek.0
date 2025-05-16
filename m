@@ -4,63 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF06FC3ABD8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 May 2025 08:09:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6696FC3ABC9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 May 2025 10:23:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mGn1u13n7gGWDYh2/LnTrYKqEJQByPE5Vl6leD7+wx0=; b=iR5amIeyJ/pxSGjB3I///4hsI0
-	dAhHaIRpeWDcn2/8ZfgWjxJBXCXVe9kw6aVjRf4MEvc9uZZ5DJ8cm3cYO4NkVI97vV/L918/DlyXd
-	p34bd6bgX0kfYlnSeNiSm4xXKwahmtvKCRUzZbaX6yh/bGJ+s+dUUajq0j49SRvWnsxNEgDj+cdfJ
-	0zFt7zR17eMLEP3NgCExg4DVOoEjSB8uBSoM82eWCF9vPmEqgiSR8qK0QuJ2cCgqaDggeHj5rg8AP
-	UTEzFs9J12W/oEz/EVf0fSdu6VFlX6sHmxorXT7tskVhQ2xn257upixaj1f1dHxGnhaJBN0VNce7D
-	cwf4AZ3A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5cquuIZpHytMyZf4vzmIyMUUPn8YhG4lR+d2ACxt+Cc=; b=mKGHuYX6IDiRhRpEFkR0BJCYOl
+	D/cSOVfUsl1VPiHfZb9+qkDb5sBp36ErssRzZq63xHX1CnRhjom44lXtXqjfjxSzf/1wEgdOBRaen
+	blrc4Ol/m6XYk4TX+HTUHjbFptLZjWI9PP5hTt9GrpatMaQGpgvPX5mZcmNJmH86UDTzhokX08ArE
+	6kab2MXVBdyxgNewVG5lsX1oBkXKW9WQpp5NNufOd9wfNzavbEkMjaJXosmv3VL/j9Sy0/JcKDPCL
+	9yIllYxx0RxEm5aBFafOXFN7R/hUgoJs4LcBua7Z3VtvAwQIo0Pc2GaCAW1mJEEF90EhKUswYaLkd
+	Ty7LUo1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFq85-00000002kf3-3JYd;
-	Fri, 16 May 2025 08:09:17 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1uFsE7-000000037TB-1n06;
+	Fri, 16 May 2025 10:23:39 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFpzl-00000002jWv-2KwQ;
-	Fri, 16 May 2025 08:00:42 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id C22EBA4E5B6;
-	Fri, 16 May 2025 08:00:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1A111C4CEE4;
-	Fri, 16 May 2025 08:00:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747382440;
-	bh=9MI7SAT2s//V30kRWI98bF2/4dui8LFg708YvOASUg8=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=aaN/JQIl3NYET13p1kb9UjadklcbTuU88wEh36k0a1NcJqEiXcr1EZrVYOjBBmPtA
-	 Ytbp6UhjqTGbYRW2xPrW3q6pwwqSsjQVJ/66x++lwz9xE1l8IU+mTAWkE456CCHqd2
-	 Ys5K6YGrA8sVXbJmOK7k2ruMhKcUX+4R5RwMi+jXKYnVn02DWg66qHJvsEsy3NQdOS
-	 cRddLmyGt5Orbrxe8kfn+Iiv+gpzr1bjtn/rlXwRiJw79DINxvpblg07zraM3SJVK3
-	 pssC0DrxyFwYrIFkwfrhSYH4aD3Du/zQDqhFkT4dtp9clWqNWfIge2psNkZ3MRIceZ
-	 c84l1ioOKCCeA==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Fri, 16 May 2025 10:00:01 +0200
-Subject: [PATCH net-next v2 3/3] net: airoha: ppe: Disable packet keepalive
+	id 1uFsE5-000000037Sj-12nN;
+	Fri, 16 May 2025 10:23:38 +0000
+X-UUID: d1e9d060323f11f0bed96b30c12bc3d6-20250516
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=5cquuIZpHytMyZf4vzmIyMUUPn8YhG4lR+d2ACxt+Cc=;
+	b=A4GHYsishyCXFURaxdQg4Fs7SKj5vbuB8Xazt8y/RIacgoLthR6Fjx5k6Aq5cH6GfgkmxFLjvvdjR1UlRflBxX1R0UoZWMQE5gBrP7xYg1pi38Dd0cqBsksIXtQXNEO8ND+Qwb5i2JrqOHLHEUD0p4hug2o7zW1VbcCiBavbrZU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:74c1d4d6-c2b3-471d-99cd-6fd92761bec1,IP:0,UR
+	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-25
+X-CID-META: VersionHash:0ef645f,CLOUDID:e3f3d673-805e-40ad-809d-9cec088f3bd8,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: d1e9d060323f11f0bed96b30c12bc3d6-20250516
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <skylake.huang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 600468901; Fri, 16 May 2025 03:23:33 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Fri, 16 May 2025 18:23:30 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Fri, 16 May 2025 18:23:30 +0800
+From: Sky Huang <SkyLake.Huang@mediatek.com>
+To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>, "David S. Miller"
+	<davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
+	<kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Daniel Golle
+	<daniel@makrotopia.org>, Qingfang Deng <dqfext@gmail.com>, SkyLake Huang
+	<SkyLake.Huang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	<linux-kernel@vger.kernel.org>, <netdev@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: Steven Liu <Steven.Liu@mediatek.com>, Sky Huang
+	<skylake.huang@mediatek.com>
+Subject: [PATCH net-next v4 0/2] Add built-in 2.5G ethernet phy support on MT7988
+Date: Fri, 16 May 2025 18:23:25 +0800
+Message-ID: <20250516102327.2014531-1-SkyLake.Huang@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250516-airoha-en7581-flowstats-v2-3-06d5fbf28984@kernel.org>
-References: <20250516-airoha-en7581-flowstats-v2-0-06d5fbf28984@kernel.org>
-In-Reply-To: <20250516-airoha-en7581-flowstats-v2-0-06d5fbf28984@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-X-Mailer: b4 0.14.2
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250516_010041_667537_36088236 
-X-CRM114-Status: UNSURE (   8.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250516_032337_294866_7674DB43 
+X-CRM114-Status: GOOD (  12.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,30 +90,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since netfilter flowtable entries are now refreshed by flow-stats
-polling, we can disable hw packet keepalive used to periodically send
-packets belonging to offloaded flows to the kernel in order to refresh
-flowtable entries.
+From: Sky Huang <skylake.huang@mediatek.com>
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+This patchset adds support for built-in 2.5Gphy on MT7988, sort file
+and config sequence in related Kconfig and Makefile.
+
 ---
- drivers/net/ethernet/airoha/airoha_ppe.c | 1 +
- 1 file changed, 1 insertion(+)
+Change in v2:
+- Add missing dt-bindings and dts node.
+- Remove mtk_phy_leds_state_init() temporarily. I'm going to add LED support
+later.
+- Remove "Firmware loading/trigger ok" log.
+- Add macro define for 0x800e & 0x800f
 
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index 70598ba9f5ad1d30c1e408d3d97c6fa4cb0f4f4d..2d273937f19cf304ab4b821241fdc3ea93604f0e 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -84,6 +84,7 @@ static void airoha_ppe_hw_init(struct airoha_ppe *ppe)
- 
- 		airoha_fe_rmw(eth, REG_PPE_TB_CFG(i),
- 			      PPE_TB_CFG_SEARCH_MISS_MASK |
-+			      PPE_TB_CFG_KEEPALIVE_MASK |
- 			      PPE_TB_ENTRY_SIZE_MASK,
- 			      FIELD_PREP(PPE_TB_CFG_SEARCH_MISS_MASK, 3) |
- 			      FIELD_PREP(PPE_TB_ENTRY_SIZE_MASK, 0));
+Change in v3:
+1. Remove unnecessary headers and unnecessary print log.
+2. ioremap IO space (MT7988_2P5GE_PMB_FW_BASE/MTK_2P5GPHY_MCU_CSR_BASE)
+directly instead of of_iomap() compatible node (mediatek,2p5gphy-fw) from dtsi
+3. Call mt798x_2p5ge_phy_load_fw() from .probe instead of .config_init. This is
+tested ok with openWRT-24.10 and "mediatek/mt7988/i2p5ge-phy-pmb.bin" firmware
+is embedded into kernel image instead of rootfs image.
+4. Use request_firmware_direct instead of request_firmware. We don't want sysfs
+fallback in this driver to avoid blocking.
+5. Remove mtk_i2p5ge_phy_priv sturct since it's not used anymore.
+
+Change in v4:
+1. Sort file and config in alphabetical order.
+2. Remove unncessary parens around macros.
+3. Arrange vars in reversed Christmas tree.
+4. Move LED settings and pinctrl request to .probe to avoid
+managed-dev structure reallocation.
+5. Replace "return __genphy_config_aneg(phydev, changed);" with
+"return genphy_c45_check_and_restart_aneg(phydev, changed);" in
+mt798x_2p5ge_phy_config_aneg()
+---
+Sky Huang (2):
+  net: phy: mediatek: Sort config and file names in Kconfig and Makefile
+  net: phy: mediatek: add driver for built-in 2.5G ethernet PHY on
+    MT7988
+
+ MAINTAINERS                          |   1 +
+ drivers/net/phy/mediatek/Kconfig     |  15 +-
+ drivers/net/phy/mediatek/Makefile    |   3 +-
+ drivers/net/phy/mediatek/mtk-2p5ge.c | 321 +++++++++++++++++++++++++++
+ 4 files changed, 337 insertions(+), 3 deletions(-)
+ create mode 100644 drivers/net/phy/mediatek/mtk-2p5ge.c
 
 -- 
-2.49.0
+2.45.2
 
 
