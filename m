@@ -4,86 +4,150 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2028AC3ABD8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 May 2025 05:06:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE7FDC3DA4A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 May 2025 05:19:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=FZYfWobUsai4Anc24HWgooUiX7BPMHJRwh278DHkFhg=; b=EbaXy/DKlOZo/oDBxr9gXt2yJk
-	oNPP6m32bExqK7p1KvyxNxb/UgcCPou56wGXdCCZKpIUfbWRpMAT9Qvm0MZ5cAenbBcZMFBs2myW/
-	fuKMIlABu49Vd3mxzchNjF0ON3DlknnwzLAWxUECXBonjzI1e7BrtL4hxXjeW9EmAk+w09pBjvoTH
-	GQ83Y5XQhn1aVtRqdE5ZyTTGHsXTSTbx+eqQRRVfAyGChQCHZ5g98c9d5nYjbFq/NqDgf2n15FTSW
-	Bci6H/N0TcstlzZAb5aE7/1w4X9eSzTdLN0Mci9B50jrESBSH8u0B65SLSIlSmJDyY1I5FFgpQY5H
-	9AQA7uig==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:
+	Content-Type:References:In-Reply-To:Subject:Cc:To:From:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WZkohHQi3d6tLT99KITFG1i0qOYsoJrwOCUZZB175Vk=; b=W0rVybTgXTYYuv0wfB5EA1j5Ev
+	GD5ZrWpbtMf6FkMHIiaD3mQLhr+QlrNoo3AjXuqGUKMGBu4EqaPc/S4+W8mM2ppBd/sKtvSGwYYL4
+	V1Y5eEU5Q0yKPfJyKRNWH11/+xkE9/9miTeE+jRVe4ZXgNMPYyC+cH3ychDxsE94WqU6eyeqaIo3R
+	s2NkPmRLJLuZlQTq/nf+N/cYTaHFh91V0F/PbI17UhcklhEvR5XcBXaWxn0VES8xhrTFsgKG2Hbva
+	hFv7mTrDwUv6rwT3r2hJ5AXMJNdeT0BxjO75lAYnegDKYApGuEeCPVRzh3MO/l0QvIlBTyfAq1oyJ
+	JMxp1i3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFnGg-00000002UYT-1jFu;
-	Fri, 16 May 2025 05:05:58 +0000
-Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
+	id 1uFnTt-00000002VET-2lfS;
+	Fri, 16 May 2025 05:19:37 +0000
+Received: from mail-japanwestazlp170100001.outbound.protection.outlook.com ([2a01:111:f403:c406::1] helo=OS0P286CU011.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFnGe-00000002UY8-0lWS
+	id 1uFnTq-00000002VDu-3vbK
 	for linux-mediatek@lists.infradead.org;
-	Fri, 16 May 2025 05:05:57 +0000
-Received: by mail-pg1-x536.google.com with SMTP id 41be03b00d2f7-b170c99aa49so1101325a12.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 15 May 2025 22:05:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1747371955; x=1747976755; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=FZYfWobUsai4Anc24HWgooUiX7BPMHJRwh278DHkFhg=;
-        b=kYpvNDvvedsonvz2e/wAPPWKhWb9i66hQDvQLxhV9x+n+vYN5l9Zl4BZCItHBcyp5Y
-         BMhZKHCHcvfI9ivuhoe+Py1spBwNO01CYdF6/uQnWaey0qG11SKJU9fmuYGcDtiZtAo4
-         BsvITaTStf9NOukBsztRxP1OaePv8GZRBR2ps=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1747371955; x=1747976755;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=FZYfWobUsai4Anc24HWgooUiX7BPMHJRwh278DHkFhg=;
-        b=slZjK0hUwUKgsJXdq9ZY356drbFPJ5u3EwkYC0iuvDJ007beoNog/ETXl0xCIxqnnj
-         Sl5a3OPaVWuKPhk6J3evYCaBaR7YhyKCckFjFKS3G59iQ1dNNwDof+5wP8zb2wkfEa/A
-         eLx2NSAJjbWE2Hni1sqChILu1PmFXXuYORDYh4NhlxuxTcUyLsTaqVBwG3MpVbyajSkd
-         31qkyGNflPBJXpO5SyJbfTci0/zcNMb9gWK8kf9OBrW3+TEdCzNu64FD4h2FppF2L2CW
-         KSreh13PIeG9HZZiOyaKZBtPyOcxpJQ1iOkIwFM/NY5pfZQO9/0pODwX/Pvxkk5imNy4
-         I0dg==
-X-Forwarded-Encrypted: i=1; AJvYcCXToiNfVVyntYa3FSVAd46RZE8Y5PQ4FtXShe8zO1/lIX8U0lAj1Ka/ig8jzoZqhGpAUnER50Y7TBHwiiyQ5g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzPd1M2XbE/QCxNGmZOueMyHNR6mrZy4BEzXUyWPlFEaLWT+S1x
-	F8Qx7yJCnGOd9Pnp4w79WqxkdSS4zZ9hYxmPp50coQFfa+4FvvUhw1XE3EuurDjDTGSneuO5NqP
-	mfDc=
-X-Gm-Gg: ASbGnctqNXIPKaLeXIVusHUDJscRiCNgOGl6TkKUfkHUaDmdkO8MLt3bPacQ5QmZXO1
-	C1mC5WQQncYVmS+d/PEB0QMY0lm9RfjQyESPM2Xz6u426fodlURYr1u7iIKPRugWM/dIks7Udkw
-	3MEIvSU39s3e0tk8oxFtMwaJxWRcFh1nIlp1cw8U+3jPl2xUFAVtq7UEtvUYUTa3zMwsKpiyPPg
-	lxUyzo5imAajHZhEprib5jBf0RZCRz62QOAys7JTpg470h9e+kWAzHgw9/V85QFToH1bUuHAL/u
-	Iie0oSyrI90D5aGAPkQRHLvH+cA2sIQt6Ny/LBbqB5sEYQ5zV1Xa7VoBp4wbdlAnruwLGw==
-X-Google-Smtp-Source: AGHT+IH0/GDb4r+wiufJP7iwzsEy+MWQRcekYSbQLeI/kLmTr/rbqnbWo/loA5DWMHtf5lSSzKhPKA==
-X-Received: by 2002:a17:903:22ce:b0:231:b456:b97 with SMTP id d9443c01a7336-231d459a539mr26785735ad.36.1747371955405;
-        Thu, 15 May 2025 22:05:55 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:c43a:aaea:5f52:5763])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-231d4e97de4sm6312355ad.144.2025.05.15.22.05.53
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 15 May 2025 22:05:54 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	Fri, 16 May 2025 05:19:36 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=E8WhZIxQyc1wCVk3G2UUotN99BEZrfBi7VwkkY29grpD8Exsq+vvF/AvJDDrInZeBzsf15v5au5MT05WoRGsPPODG7147s3nBypLJmm1XCUWNr8bo7sEpo793EpBUYzXR3k51QRC0KpycUL1rPpKPOOCtVfW5ZIxgUhtW9w7jclpE6q4lmdbZCIF9IIaWubyhnbYd/kdE+cWSpLbQWEI1gjYFe3BG3wok2NmY5S0hAaLPGC4x25w9MlsbK9XC3cfznzXNW5cn5yQcnxMh0HpB2C2mCcGmmb0VVBhGLGCWCyZH1tQ2EC/hhixjaB/xj2NxxqTVlZz1t3q9nBDXENblA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=WZkohHQi3d6tLT99KITFG1i0qOYsoJrwOCUZZB175Vk=;
+ b=t2wXcmAoqBA1g1CiSxYn+aMoQbuvbq4eca7Xlb2lGbjHBv76ImhVN5Qlygdjp3xYfwKmfaV5Ff1OCHwBq+U+WmbD+oyiZn/74asFWAQ3dkwbUqXNLHlbjz/oMt6CmcqgtSwwLEu+w+tR1wrga9UAdLSDQbQ+ygaqMU3Nw2D/iqWjENoQ0YZBDPcez0JmbRhRUCrPyFhy6wgBJ5JX6a/KXt/hJhLFnkIpbM0R/awu0qTQZGcHsADZEByNh+F5BjAKZibVVdzAWDxwtlqbOlP/HCzZtqUn//vQZI2TRfZt1uLUlX/KISb9j2EUtAKkJDZ6ObvBLoc5akmcGHJMDFOiKA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=renesas.com; dmarc=pass action=none header.from=renesas.com;
+ dkim=pass header.d=renesas.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=renesas.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=WZkohHQi3d6tLT99KITFG1i0qOYsoJrwOCUZZB175Vk=;
+ b=R1BFhWHmavK7KksYdpSDb9TxZm4Xzv8rSEBwrF8N4iZR3G4wOyJivCFOkxY3TDDCti17DC+tPmjE89EoDMLI/fP8PxEvIYsn3KtTm9/+/b/iWUbl0/Vo8Y0aANnyvV70wIHoOiMD/LidMRZSiHh95RR+iq43LYjJaWfrbTefC74=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=renesas.com;
+Received: from TYCPR01MB10914.jpnprd01.prod.outlook.com
+ (2603:1096:400:3a9::11) by TYCPR01MB12014.jpnprd01.prod.outlook.com
+ (2603:1096:400:388::10) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8722.31; Fri, 16 May
+ 2025 05:19:10 +0000
+Received: from TYCPR01MB10914.jpnprd01.prod.outlook.com
+ ([fe80::c568:1028:2fd1:6e11]) by TYCPR01MB10914.jpnprd01.prod.outlook.com
+ ([fe80::c568:1028:2fd1:6e11%6]) with mapi id 15.20.8722.031; Fri, 16 May 2025
+ 05:19:10 +0000
+Message-ID: <87v7q1rv3m.wl-kuninori.morimoto.gx@renesas.com>
+From: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
 	Jaroslav Kysela <perex@perex.cz>,
 	Takashi Iwai <tiwai@suse.com>,
 	linux-sound@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
-Subject: [PATCH] ASoC: soc-utils: Check string pointer validity in snd_soc_dlc_is_dummy()
-Date: Fri, 16 May 2025 13:05:48 +0800
-Message-ID: <20250516050549.407133-1-wenst@chromium.org>
-X-Mailer: git-send-email 2.49.0.1101.gccaa498523-goog
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] ASoC: soc-utils: Check string pointer validity in snd_soc_dlc_is_dummy()
+In-Reply-To: <20250516050549.407133-1-wenst@chromium.org>
+References: <20250516050549.407133-1-wenst@chromium.org>
+User-Agent: Wanderlust/2.15.9 Emacs/29.3 Mule/6.0
+Content-Type: text/plain; charset=US-ASCII
+Date: Fri, 16 May 2025 05:19:09 +0000
+X-ClientProxiedBy: TYCP301CA0033.JPNP301.PROD.OUTLOOK.COM
+ (2603:1096:400:380::17) To TYCPR01MB10914.jpnprd01.prod.outlook.com
+ (2603:1096:400:3a9::11)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: TYCPR01MB10914:EE_|TYCPR01MB12014:EE_
+X-MS-Office365-Filtering-Correlation-Id: 29f4f9c7-1fcd-4092-f60b-08dd94393040
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|52116014|376014|7053199007|38350700014;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?GXhOyou5CEjGXkZcYQDkJBLvJrWLegVWOumuYyE9oFDdhw3wl7M2Li+k6U4j?=
+ =?us-ascii?Q?Vdo3JoRq7Mj5ZNm1Ijo9cCvPuUU58RWYRCaARGI8CEolKa2/3CLSNwtFkBfK?=
+ =?us-ascii?Q?V9HGUcVqko+nUSB4t0f28k25NWX3FpLcM4sOXZAHXWq+FYg2Jj/TxQPqcBe8?=
+ =?us-ascii?Q?VGzZD+jfvxRHuGoIScWelbvM/DdYwdJXiS5U+MSyCQWvT8FGNtxqxIKypfPv?=
+ =?us-ascii?Q?2Qr+IgHvTZYz0JqMi9+ZNzjLCh3k2ml4ySpnI1HnhvQ5kxpS6m1aDER8jEr7?=
+ =?us-ascii?Q?PoiwX17IjHKArc1KcXbOiZhnHwl3LfQxRkeqro/D6zSLCipMsdO/rLeMFNv7?=
+ =?us-ascii?Q?/a9axihf5MKfYnGQMWMMtl1WvShC0y5V59K/xfw0l/sLZVuYxpl2IGygEEkw?=
+ =?us-ascii?Q?EvlLnBkT1DYEKaYn0pOwvFve+COQ1lDgZQJMTJkqnLyWJ9NgSc+UFi7lPveF?=
+ =?us-ascii?Q?IvmQkPQqM46OURNoSxRXuXubyNRCLEDIkfa6UR1FG4ak1rUjdpERucM+w8XN?=
+ =?us-ascii?Q?skv/Z5OuhH2AJloyAo8Ih9sAvbkDBh/aB7D42RUdP+MnFZsdlV5z0NZd9IQY?=
+ =?us-ascii?Q?COoNW7CB9rvd9U5JEgtwzqZj2l4G484l2b7PlFfli2v1h4OHHORWFA9D6+TG?=
+ =?us-ascii?Q?M1E1cgMTg8AIKkqf31YXC+kgGluyWL+W8ObVKu17nOz2gZAf5wN7Z6J0lH9n?=
+ =?us-ascii?Q?G+cQunvyYAet/kCOq+O/69OYBgpZGcgiouQhp/M/cm50bmGEWZa6nBvVBlDp?=
+ =?us-ascii?Q?SthOfXUUjQCQiBo8XEDZYtLXwgJVIzoC7rVwxVGycsbvp9ORB6mFg6V4VLeY?=
+ =?us-ascii?Q?4R61+04FOg+UFSZMvfWqI6ft7BEMcNf2T9+Rm4kRtgH18mkeFs0wRPaxlPOx?=
+ =?us-ascii?Q?khuzlkdBR5Mp5zIhDc4NeKes7NmT92CR4HTwOnIL7/Ba01hfhixcWW0+5R/D?=
+ =?us-ascii?Q?tRQkugzSJAff4QhR+HxNEFRwVava9DycQZXxEvSAq6m37RWK7Z0tnDbFoJGc?=
+ =?us-ascii?Q?hG5JMzVoCe+BoyXtgD80CX6oayEekHlMsmC549k9zj3OePHcEdl8GohB6Qpq?=
+ =?us-ascii?Q?HHsTMQRqZ7Kx9tfG2l2g2VY9rvUhTZndJoUtJMdkW5Svn+r9/z/mUsLkO9kg?=
+ =?us-ascii?Q?b2uVj3tLoQhk4Wi1zl+K8Rn0hmEuvVzztaj6u4wRHhCVrgWmhjdCvt/VJiM0?=
+ =?us-ascii?Q?Ahsp6yDOPbwvVFU2NH9A/70wuJkmzJXdX2tObxlTvweZIxIlsZX8d54dN0SS?=
+ =?us-ascii?Q?hqfX59MUNRtUQB0tcu544x9SkeClYWA0l9XYj4SvdcTquwOlhHy0xFlMSprf?=
+ =?us-ascii?Q?5snkc0UVl8S2WAOWjCb3m7tUDiCv3Iz7McY30mU3n3/599x/VyFMx5JT7K03?=
+ =?us-ascii?Q?2pqC6T9pykyT4KgG6qWqdXzhNDWPgg/ClqqQaUKfUny2tf8ArWcJZtJX3iMd?=
+ =?us-ascii?Q?wWSqr4Sk6/MPs9dSzvOeQcJP8O0yU36Xtbw1dqQkCSALxnJtv+BLlQ=3D=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYCPR01MB10914.jpnprd01.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(52116014)(376014)(7053199007)(38350700014);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?0CeyVlf1eJWlanbLjsUkulM6S96E5VSQM1Z61pXwLZHqOWhRffKknA6BuceS?=
+ =?us-ascii?Q?HH7ZVR5SxtNgLqfvTwxfA9tEqU3pw/1myhdmgLfQqEVUFxWfFDAQWJDQQPu6?=
+ =?us-ascii?Q?W3Pb5ozkONR+GjgAymf3kjGNIilRPjZc/XnyE1C7mia5sGS8J2nKXRC0Z9W+?=
+ =?us-ascii?Q?aJMaMInbPWpov/MQxudf5h+/6hNe8E4OSQTnJjLJc/ihzM5OoUZ4LRc3kXfG?=
+ =?us-ascii?Q?p+zDrmJAPRdgpDvi9J5Fco+m3OBzBoO82+u1jdCCEpwUQPpLLBUCAeifGGMd?=
+ =?us-ascii?Q?PgFW3dORMolDCuYgfHWKzS0oQAuAaWg/qBofSzXIcpuiJcQiYLFcqzlvVOcU?=
+ =?us-ascii?Q?CJlg8c9G6J8x+YVdGgrhUuiGY/jGkQgDbFP0zemTgSKU3p6LeLJMJvm+DNFQ?=
+ =?us-ascii?Q?8MSdWOHVYkL/SYlSW+v+KN1UESvet7RHDMcKq4ysw3jFBy8GTQmjyduonqIG?=
+ =?us-ascii?Q?uQlNdB//CPc7/mNLY25sgTX7ZyEcr5Zv92pgYwHZgipP1EdT93wMwaN14RQS?=
+ =?us-ascii?Q?hB6Xiz/YjF4JdhAi+RUFArLVILypfePKygP+X8UomjkyyHylo49BQc5SFCkz?=
+ =?us-ascii?Q?fpDRCLlKRLGY28lqJL5Ltg5eAnVktApTV9xljl80ILEYRrQRlKf0EKqrvt6c?=
+ =?us-ascii?Q?4qLTVQLZfsHvMXmd25BAiY8FzfrOh1BRYOzoaM07bIFMcyoVIARcA9pfb4+7?=
+ =?us-ascii?Q?q5HhpsfIGxuDew55mFdwasWhRYLyVRv3LJsfrxVTYQ8rOiaPlNUtF4/dhjA3?=
+ =?us-ascii?Q?snE+82dRw7SxTDAwTI/1CP3VsVDEkgCUve0fNip85OvCSnsmNMsK0lB9u0C9?=
+ =?us-ascii?Q?+IngilvQLiqd2N45OnVr4ID58tx34zEt2gex4F/EnEyf31QbiNK6+nE4lxMi?=
+ =?us-ascii?Q?xhYcLp0IDY3QwC59BU0CKDEFL2HTbkpsZt6pyvegeyG1vZV6ta2fuPuvE18J?=
+ =?us-ascii?Q?pjmC0B8vwL5fdH2jtlps/Q6JguV8ebSPH3eTjRTL5LQamvd/6c8xW0GEpJEi?=
+ =?us-ascii?Q?jrfa7lQNtMIOPZUbNxClxj7pebbNDg34+U65RVQ3lrG214MX7ngOvxK1OxwK?=
+ =?us-ascii?Q?n7LBxeLA0P4jMjq561qpTagRGiFSfh+U61+jGD94qnX4at59ZG5/FScT/25U?=
+ =?us-ascii?Q?AG66n69SJB3EmQw7Jyg0O1XKtY4JTBOkDJlIdoojjf3M4TJAVmFU6ROcoT+C?=
+ =?us-ascii?Q?QwRPnY0ljsIKvHu16Ewqpc1QenaAPX978O1D9/sNm78VoaPs6QaCFoQ0MyNv?=
+ =?us-ascii?Q?Kd/Y21ivLWT4ezCbtdg55oDKOfS7z6PwPnT3plVq0WcsoKkyzeyZpVYDlR/D?=
+ =?us-ascii?Q?ECy6oL8SEVsv7ArDAwnrl7DmWe2h9/lleZQGwPIMxrXJVNF9Zk6i0MaPvsXH?=
+ =?us-ascii?Q?f0ynbnlsY9adscLi9fxRoXkTORZzyDwsmDfBAEueAPEX7htB0Q0dJ7ARWbLt?=
+ =?us-ascii?Q?AWf17Zk/VSV+ptHr/MdoMHHd6UaGGRZebZ/IodVVh6zCyb1PokXoTFtiSYhD?=
+ =?us-ascii?Q?47/XlN5CwHVRdZt+zw5ZlF56lzMeHOqaKAKeSab/MGbjxuD40vdHB3uIHZFj?=
+ =?us-ascii?Q?ZWtz7bn/rXzXGf7kps8JWNMtVNsHrLYSprI9OZizJ6/m6F5+A1wLFS4kghe6?=
+ =?us-ascii?Q?oKo3LnLMZJHxE1im6vUOCdI=3D?=
+X-OriginatorOrg: renesas.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 29f4f9c7-1fcd-4092-f60b-08dd94393040
+X-MS-Exchange-CrossTenant-AuthSource: TYCPR01MB10914.jpnprd01.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 May 2025 05:19:10.1789
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 53d82571-da19-47e4-9cb4-625a166a4a2a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: Anqui/sYeMieGH8JW35THWC2FPYi0P5ZQ87yw2uX16WwZsdMS0zN7wXcEk51x6vzVhivxY2gC0Jg9Be1j0Gbedfavgbv2wtdjLbOS0JVvbnUcSpxT9bnJzvbbTVHplly
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYCPR01MB12014
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250515_220556_250118_0C9AFB1E 
-X-CRM114-Status: GOOD (  13.91  )
+X-CRM114-CacheID: sfid-20250515_221934_975478_294AB3C0 
+X-CRM114-Status: GOOD (  14.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,54 +162,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In the recently added snd_soc_dlc_is_dummy(), the helper uses the .name
-and .dai_name fields without checking their validity.
 
-For .name, this field is NULL if the component is matched by .of_node
-instead. In fact, only one of these fields may be set. This caused a
-NULL pointer dereference on MediaTek MT8195 and MT8188 platforms with
-the subsequent conversion to snd_soc_dlc_is_dummy() in their machine
-drivers. The codecs are all matches through the device tree, so their
-.name fields are empty.
+Hi Chen-Yu
 
-For .dai_name, there are cases where this field is empty, such as for
-the following component definitions:
+> In the recently added snd_soc_dlc_is_dummy(), the helper uses the .name
+> and .dai_name fields without checking their validity.
+> 
+> For .name, this field is NULL if the component is matched by .of_node
+> instead. In fact, only one of these fields may be set. This caused a
+> NULL pointer dereference on MediaTek MT8195 and MT8188 platforms with
+> the subsequent conversion to snd_soc_dlc_is_dummy() in their machine
+> drivers. The codecs are all matches through the device tree, so their
+> .name fields are empty.
+> 
+> For .dai_name, there are cases where this field is empty, such as for
+> the following component definitions:
+> 
+> 	#define COMP_EMPTY()                    { }
+> 	#define COMP_PLATFORM(_name)            { .name = _name }
+> 	#define COMP_AUX(_name)                 { .name = _name }
+> 	#define COMP_CODEC_CONF(_name)          { .name = _name }
+> 
+> Or the single link CPU DAI case in the simple audio card family, as
+> covered by simple_util_canonicalize_cpu(), in which the .dai_name
+> field is explicitly cleared.
+> 
+> To fix this, check the validity of the fields before using them in
+> string comparison.
+> 
+> Fixes: 3e021f3b8115 ("ASoC: soc-utils: add snd_soc_dlc_is_dummy()")
+> Cc: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
 
-	#define COMP_EMPTY()                    { }
-	#define COMP_PLATFORM(_name)            { .name = _name }
-	#define COMP_AUX(_name)                 { .name = _name }
-	#define COMP_CODEC_CONF(_name)          { .name = _name }
+Yes, indeed
 
-Or the single link CPU DAI case in the simple audio card family, as
-covered by simple_util_canonicalize_cpu(), in which the .dai_name
-field is explicitly cleared.
+Acked-by: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
 
-To fix this, check the validity of the fields before using them in
-string comparison.
+Thank you for your help !!
 
-Fixes: 3e021f3b8115 ("ASoC: soc-utils: add snd_soc_dlc_is_dummy()")
-Cc: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+Best regards
 ---
- sound/soc/soc-utils.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/sound/soc/soc-utils.c b/sound/soc/soc-utils.c
-index a1bcc852a6de..c8adfff826bd 100644
---- a/sound/soc/soc-utils.c
-+++ b/sound/soc/soc-utils.c
-@@ -267,8 +267,8 @@ int snd_soc_dlc_is_dummy(struct snd_soc_dai_link_component *dlc)
- 	if (dlc == &snd_soc_dummy_dlc)
- 		return true;
- 
--	if (strcmp(dlc->name,	  snd_soc_dummy_dlc.name)	== 0 ||
--	    strcmp(dlc->dai_name, snd_soc_dummy_dlc.dai_name)	== 0)
-+	if ((dlc->name     && strcmp(dlc->name,     snd_soc_dummy_dlc.name)     == 0) ||
-+	    (dlc->dai_name && strcmp(dlc->dai_name, snd_soc_dummy_dlc.dai_name) == 0))
- 		return true;
- 
- 	return false;
--- 
-2.49.0.1101.gccaa498523-goog
-
+Kuninori Morimoto
 
