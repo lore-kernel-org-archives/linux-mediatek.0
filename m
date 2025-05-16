@@ -4,63 +4,127 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 787A6C3ABC9
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8D8DC3ABD8
 	for <linux-mediatek@archiver.kernel.org>; Fri, 16 May 2025 18:37:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RzBvhPSmo90NO22mlcYYepQi5fAGn2l/eESCIeQc4Z8=; b=uL48tCtdTa6fnuO8qDuwXrEg8W
-	2YxrYq37+b8GFPi3mDmPpNH5dfQ6Zygeh1njj/i8VMSDEqPsxT1/Q6egZxUHbXNmWJCguMhsMSAA+
-	iNdhFq8LAUTrithp+LDZjZbOdGr2766pzM/z1Q34j9SELkmS720DkANgTL8q5chP5KjOeXmbvTbwQ
-	B5XgngxhvdE4dTXKblRrXqNdmwIzhXEuTH1/i88s+WJNimNculUj1kLc6XdSB/QIqH3SlITSINqgH
-	f7LwF3SVl02YHltPAWb5u5BcFXoW41bvV5okep1s3YtoIPhny2VG5SYWLDgc1jqgMudGO993ZQeMx
-	F0xH83Ww==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=uZBemo+s9tZ46ZmMNSJ1HzqwmHJHgZnXJ/eHEboAgD8=; b=C15s4mH8Dz+CNi
+	IOc9V+8vlICmUsoCUx3wnvkCQy+jK045Ez0wyUjgQxSYYRJbwtsoEZnBL4bLptltq/tZTl+zvDqoo
+	k/qZ5Gg5Q8Vj8y91Kf3LeaObWhBLrtqR9ob1woiLv+QF06GPHrPQ4A/5YtPp2cdpYOJbTTRv0MqtV
+	riJQ5lfrv638/vwx5DEYewO0SQkTsnogmcjff1AGPwxH8HqKTgrJnG4OcPV4UVywtJZ03q1muzE4A
+	c+hEqoPJsrZu4vqdyluBauy7Y5W2lkq5CVzfr6XGIsjsRyJtciL+TmpMZrmDphuQm26BzswZuLaq4
+	uix1fHg0913ZwPRlyWzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFzvr-00000004LZc-2Ox5;
+	id 1uFzvr-00000004LZl-3fkP;
 	Fri, 16 May 2025 18:37:19 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+Received: from mout.gmx.net ([212.227.17.20])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFzUU-00000004Gpt-40pY
-	for linux-mediatek@lists.infradead.org;
-	Fri, 16 May 2025 18:09:04 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id A902A4384C;
-	Fri, 16 May 2025 18:09:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AE31AC4CEEF;
-	Fri, 16 May 2025 18:09:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747418942;
-	bh=b1CY2mAKjx8/A8MQbS9mFdTqZfmhoUC+by+9X6ymOIg=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=HL7Das7aMLmX9xrouCm0SYxN5JCpTARIF5lg1N9zKcsD+tVWO1F6Y+bPSIS5NObRQ
-	 sFRLxkrKIIUV6KFZmDwAmDvcPsGMLfgW29f1CtXCk3Vg2XDj1SCI3D450jjPgM50Cy
-	 +KKVUzjggpW0YcSvXSOrTp9X04RMq5ZCp2pIkGoGR6klt/n0bJZV8mAWo7MaZf7udM
-	 Qgy4dqzovhiKHdprBJ2LzVuMEg1bAwXi0TAqPDj1Jo4WpUbKela+8xCzgAoMh6JkdR
-	 Qt4+reT9n5cSkgKOdL0tJ5dzTNC46OY46JPuRCWKVJs6DuAc0JCUUFseJXpaH/nHEM
-	 7xRiRabtSpObg==
-From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>
-Cc: Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- linux-sound@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org, 
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
-In-Reply-To: <20250516050549.407133-1-wenst@chromium.org>
-References: <20250516050549.407133-1-wenst@chromium.org>
-Subject: Re: [PATCH] ASoC: soc-utils: Check string pointer validity in
- snd_soc_dlc_is_dummy()
-Message-Id: <174741894022.384649.9583972742635774457.b4-ty@kernel.org>
-Date: Fri, 16 May 2025 19:09:00 +0100
+	id 1uFzV0-00000004Gxb-19Cm;
+	Fri, 16 May 2025 18:09:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1747418936; x=1748023736; i=frank-w@public-files.de;
+	bh=uZBemo+s9tZ46ZmMNSJ1HzqwmHJHgZnXJ/eHEboAgD8=;
+	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
+	 References:Message-ID:MIME-Version:Content-Type:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=helmUN14BNEhxRiuRj6yN+bIO+rDByJrAXQ/f5TDptyWjLNN7+atqaQn/E/xV9qP
+	 +MVciHX/RZ0NEYQFqG2l3eOsPlUJeKRaNldi0qz4qVS0gjY8lY/BRVPHAPBZ9pP25
+	 OlBsVEBLo/HDOMLDYvBoKlUE6Kzu20tnUA5lZsZ5/NFkvZHp35iz2BSul2SHFZncV
+	 2ewD3jzua4Z7zQewXld2UAHOepT4b7j61oa3nZ3nW1hnxY76nXcDs87t7D1kAzsRH
+	 DeInImnLsFKbPA1XccjFNKV4ndqzxsxmxfAeh8KPmhS74KYZzdaxfm2HtLQhhXDvs
+	 FvtJ3LEDpuo8rS3RbQ==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [127.0.0.1] ([157.180.226.139]) by mail.gmx.net (mrgmx104
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 1Mkpex-1ugkeV1kCN-00oC6a; Fri, 16
+ May 2025 20:08:56 +0200
+Date: Fri, 16 May 2025 20:08:47 +0200
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Frank Wunderlich <linux@fw-web.de>, Andrew Lunn <andrew@lunn.ch>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Daniel Golle <daniel@makrotopia.org>, Qingfang Deng <dqfext@gmail.com>,
+ SkyLake Huang <SkyLake.Huang@mediatek.com>,
+ Heiner Kallweit <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>
+CC: =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+ Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: =?US-ASCII?Q?Re=3A_=5Bnet-next=2C_PATCH_v2?=
+ =?US-ASCII?Q?=5D_net=3A_phy=3A_mediatek=3A_do?=
+ =?US-ASCII?Q?_not_require_syscon_compatible_for_pio_property?=
+User-Agent: K-9 Mail for Android
+In-Reply-To: <20250516180147.10416-3-linux@fw-web.de>
+References: <20250516180147.10416-1-linux@fw-web.de> <20250516180147.10416-3-linux@fw-web.de>
+Message-ID: <D997C4DB-1B03-4AFD-B48C-BFA19AB6194D@public-files.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.15-dev-c25d1
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:yKB+wisqAoqC+shOlsR18tKggjY0Rri/wFlIaCyYrcMn3BzYE4e
+ rzKlBHCP7BX+tjmmmPQ2rh+EYtwn0Av3aNaXLhZBcprxfPD3keeBxqTPwwiOD/IRqFxrIU1
+ FxI/jkv+kQDufhR1eP7RaaTcPuGSMFBvL98095LYi0CX5aYacAg7V8FLXDMJ8/G48J6hwaC
+ qmu9AybK8uLe8VXOk2LgA==
+UI-OutboundReport: notjunk:1;M01:P0:F6B7f3YTBPk=;DNKu0wTMKuEZDh31C6ZmpJWxjwj
+ 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
+ PO8UnZtQriHGhiUV3ghD30=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250516_110903_021510_677E83FD 
-X-CRM114-Status: GOOD (  12.84  )
+X-CRM114-CacheID: sfid-20250516_110934_609467_DA030DB2 
+X-CRM114-Status: UNSURE (   4.85  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,48 +136,10 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 16 May 2025 13:05:48 +0800, Chen-Yu Tsai wrote:
-> In the recently added snd_soc_dlc_is_dummy(), the helper uses the .name
-> and .dai_name fields without checking their validity.
-> 
-> For .name, this field is NULL if the component is matched by .of_node
-> instead. In fact, only one of these fields may be set. This caused a
-> NULL pointer dereference on MediaTek MT8195 and MT8188 platforms with
-> the subsequent conversion to snd_soc_dlc_is_dummy() in their machine
-> drivers. The codecs are all matches through the device tree, so their
-> .name fields are empty.
-> 
-> [...]
-
-Applied to
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
-
-Thanks!
-
-[1/1] ASoC: soc-utils: Check string pointer validity in snd_soc_dlc_is_dummy()
-      commit: 628479afc7a157bca3430a75e759ed06c1a81c66
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+Sorry, resent it by accident while sending v2 of my dts series=2E
+regards Frank
 
