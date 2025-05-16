@@ -4,43 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DC00C54754
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 May 2025 18:22:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1377C3ABD8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 May 2025 18:24:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=+JWgG7Xrb6kxHm/xBKBKplVRGDNZd7l9BWTCNftkPlo=; b=f4di+njl8bPZs6
-	QbNDbN8+3gb4TPvGmDqnYOrip6gxPfhmQxNWgGqLvlMwoXl399EvdosfBihK73kzX+Z52+6xyxVj0
-	6FlGH/Y9l/ErnXtKSvJshAE7AlCmSo9seoubZtsDG8Y1Z2oF3hKBd5rwugR6Q6lq4WJlCENhhzQ+y
-	naze1MeeZZs/cHhAmH+b/Jo7YlufyYRCTH29KOmOXpluUaFqNOAl8cQ0gOgDbo2uoZWjveCqePcG6
-	KmfX9znA7XClNK8+LULO0hwdlIRhdchsYKSfd0VC07gI+p/TyU4NJdAkPId+coI1S3u1me6nvbq8n
-	1C97W5ZO12GTSsKaMcig==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=RHbYPq/h+v4flSJokaAuA/cakf8tYhXsyBD00AeipyA=; b=Y1Fb6IM2EEKDlW
+	lKD9dtGYSSk1+/jrPTdR24gudTVCKjg0hRs1UcVL/IlRD9gjvnNPNKwu4xPv8JPqgaN69tnsjIcPn
+	GYJY0pNIwXvrLz3MMXmUzAI7E+VO+wrroxZjObC3K3fFiJQ7BZ7DDNogk5A+yvocmEVG1fQUbhvN3
+	LPQznnUhVKG9pAwvCrtwYpAvfO1ve6hDeCwdB+tYTJLaKdf8u3AWB2skIi6vf+3kMctakhA8I0Gp+
+	UKSZfFpyjq5acSNN2r+GblTBCIEpNP0qQbCIJQCedrWbuxG1p4rMjsO6YHFJGEu5cGSdMBXPp7FI/
+	USd1T6Ay86FYZ4R+n2XA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFzhn-00000004Iky-20Ne;
-	Fri, 16 May 2025 18:22:47 +0000
-Received: from mxout2.routing.net ([2a03:2900:1:a::b])
+	id 1uFzjm-00000004Iyt-3HrL;
+	Fri, 16 May 2025 18:24:50 +0000
+Received: from mxout1.routing.net ([2a03:2900:1:a::a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uFzNh-00000004FKE-1ECc;
-	Fri, 16 May 2025 18:02:05 +0000
+	id 1uFzNk-00000004FMt-3iGt;
+	Fri, 16 May 2025 18:02:06 +0000
 Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
-	by mxout2.routing.net (Postfix) with ESMTP id 0EC785FCB0;
-	Fri, 16 May 2025 18:01:55 +0000 (UTC)
+	by mxout1.routing.net (Postfix) with ESMTP id E1AF540772;
+	Fri, 16 May 2025 18:01:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1747418515;
+	s=20200217; t=1747418519;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=+JWgG7Xrb6kxHm/xBKBKplVRGDNZd7l9BWTCNftkPlo=;
-	b=IDpC/Q9nRdQRXK07+fcgEwZW75VKBwMst5E+e4D80srfYhdwyAFBS0ykeaQEhis9D5K/Mt
-	rmlKzEUgu82nwjK21lyQeaGGsGmMjnq0r01km9cVo9aBAY6LLS3YRceQkPZavqqnicPigT
-	9vp9f4y3eEFltnfyfLtyOoTmOkYIoQg=
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=RHbYPq/h+v4flSJokaAuA/cakf8tYhXsyBD00AeipyA=;
+	b=E8iqsaXjKJ/qJZ+Ipt0fdEhrky4FrF6JIXdOk5YxZEHaJvlUiWsbyIpmJpmbcWg1Cd8/j5
+	0Zj1uYhlTD7oPoYMRykR3hn4vvR5owojmXyuU9p9Ugh6hrTjtivaDYPdC+bzPO9gYJ2JIj
+	ZjlGgm4U38p0gwJ5uyRIZz5HNfMroqg=
 Received: from frank-u24.. (fttx-pool-157.180.226.139.bambit.de [157.180.226.139])
-	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id B069A1226D6;
-	Fri, 16 May 2025 18:01:54 +0000 (UTC)
+	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 96BA31226C1;
+	Fri, 16 May 2025 18:01:59 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: Andrew Lunn <andrew@lunn.ch>,
 	Vladimir Oltean <olteanv@gmail.com>,
@@ -53,15 +54,17 @@ To: Andrew Lunn <andrew@lunn.ch>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2 00/14] further mt7988 devicetree work
-Date: Fri, 16 May 2025 20:01:30 +0200
-Message-ID: <20250516180147.10416-1-linux@fw-web.de>
+Subject: [PATCH v2 13/14] arm64: dts: mediatek: mt7988a-bpi-r4: add sfp cages and link to gmac
+Date: Fri, 16 May 2025 20:01:44 +0200
+Message-ID: <20250516180147.10416-15-linux@fw-web.de>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250516180147.10416-1-linux@fw-web.de>
+References: <20250516180147.10416-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250516_110201_658655_05DCD4D9 
-X-CRM114-Status: GOOD (  10.45  )
+X-CRM114-CacheID: sfid-20250516_110205_070464_91FF515A 
+X-CRM114-Status: GOOD (  10.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,80 +82,102 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-This series continues mt7988 devicetree work
+Add SFP cages to Bananapi-R4 board. The 2.5g phy variant only contains the
+wan-SFP, so add this to common dtsi and the lan-sfp only to the dual-SFP
+variant.
 
-- Add SPI with BPI-R4 nand to reach eMMC
-- Add thermal protection (fan+cooling-points)
-- Extend cpu frequency scaling with CCI
-- Basic network-support (ethernet controller + builtin switch + SFP Cages)
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+---
+ .../mediatek/mt7988a-bananapi-bpi-r4-2g5.dts   | 11 +++++++++++
+ .../dts/mediatek/mt7988a-bananapi-bpi-r4.dts   | 18 ++++++++++++++++++
+ .../dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi  | 18 ++++++++++++++++++
+ 3 files changed, 47 insertions(+)
 
-depencies (i hope this list is complete and latest patches/series linked):
-
-"Add Bananapi R4 variants and add xsphy" (reviewed, partially applied):
-https://patchwork.kernel.org/project/linux-mediatek/list/?series=955733
-
-"net: phy: mediatek: do not require syscon compatible for pio property":
-https://patchwork.kernel.org/project/netdevbpf/patch/20250510174933.154589-1-linux@fw-web.de/
-for phy led function (RFC not yet reviewed, resent without RFC)
-
-for 2.5g phy function (currently disabled):
-- net: ethernet: mtk_eth_soc: add support for MT7988 internal 2.5G PHY (already merged to 6.15-net-next)
-- net: phy: mediatek: add driver for built-in 2.5G ethernet PHY on MT7988
-  https://patchwork.kernel.org/project/netdevbpf/patch/20250516102327.2014531-3-SkyLake.Huang@mediatek.com/ (v4)
-
-for SFP-Function (macs currently disabled):
-
-PCS clearance which is a 1.5 year discussion currently ongoing
-
-e.g. something like this (one of):
-* https://patchwork.kernel.org/project/netdevbpf/patch/20250511201250.3789083-4-ansuelsmth@gmail.com/ (v4)
-* https://patchwork.kernel.org/project/netdevbpf/patch/20250512161013.731955-4-sean.anderson@linux.dev/ (v4)
-* https://patchwork.kernel.org/project/netdevbpf/patch/ba4e359584a6b3bc4b3470822c42186d5b0856f9.1721910728.git.daniel@makrotopia.org/
-
-full usxgmii driver:
-https://patchwork.kernel.org/project/netdevbpf/patch/07845ec900ba41ff992875dce12c622277592c32.1702352117.git.daniel@makrotopia.org/
-
-first PCS-discussion is here:
-https://patchwork.kernel.org/project/netdevbpf/patch/8aa905080bdb6760875d62cb3b2b41258837f80e.1702352117.git.daniel@makrotopia.org/
-
-and then dts nodes for sgmiisys+usxgmii
-
-when above depencies are solved the mac1/2 can be enabled and 2.5G phy/SFP slots will work.
-
-changes:
-v2:
-  - change reg to list of items in eth binding
-  - changed mt7530 binding:
-    - unevaluatedProperties=false
-    - mediatek,pio subproperty
-    - from patternProperty to property
-  - board specific properties like led function and labels moved to bpi-r4 dtsi
-
-Frank Wunderlich (14):
-  dt-bindings: net: mediatek,net: update for mt7988
-  dt-bindings: net: dsa: mediatek,mt7530: add dsa-port definition for
-    mt7988
-  dt-bindings: net: dsa: mediatek,mt7530: add internal mdio bus
-  arm64: dts: mediatek: mt7988: add spi controllers
-  arm64: dts: mediatek: mt7988: move uart0 and spi1 pins to soc dtsi
-  arm64: dts: mediatek: mt7988: add cci node
-  arm64: dts: mediatek: mt7988: add phy calibration efuse subnodes
-  arm64: dts: mediatek: mt7988: add basic ethernet-nodes
-  arm64: dts: mediatek: mt7988: add switch node
-  arm64: dts: mediatek: mt7988a-bpi-r4: Add fan and coolingmaps
-  arm64: dts: mediatek: mt7988a-bpi-r4: configure spi-nodes
-  arm64: dts: mediatek: mt7988a-bpi-r4: add proc-supply for cci
-  arm64: dts: mediatek: mt7988a-bpi-r4: add sfp cages and link to gmac
-  arm64: dts: mediatek: mt7988a-bpi-r4: configure switch phys and leds
-
- .../bindings/net/dsa/mediatek,mt7530.yaml     |  24 +-
- .../devicetree/bindings/net/mediatek,net.yaml |  10 +-
- .../mediatek/mt7988a-bananapi-bpi-r4-2g5.dts  |  11 +
- .../dts/mediatek/mt7988a-bananapi-bpi-r4.dts  |  18 +
- .../dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi | 158 ++++++-
- arch/arm64/boot/dts/mediatek/mt7988a.dtsi     | 389 +++++++++++++++++-
- 6 files changed, 590 insertions(+), 20 deletions(-)
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts
+index 53de9c113f60..574ac1b853a6 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts
+@@ -9,3 +9,14 @@ / {
+ 	model = "Banana Pi BPI-R4 (1x SFP+, 1x 2.5GbE)";
+ 	chassis-type = "embedded";
+ };
++
++&gmac1 {
++	phy-mode = "internal";
++	phy-connection-type = "internal";
++	phy = <&int_2p5g_phy>;
++};
++
++&int_2p5g_phy {
++	pinctrl-names = "i2p5gbe-led";
++	pinctrl-0 = <&i2p5gbe_led0_pins>;
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
+index 36bd1ef2efab..3136dc4ba4cc 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
+@@ -8,6 +8,24 @@ / {
+ 	compatible = "bananapi,bpi-r4", "mediatek,mt7988a";
+ 	model = "Banana Pi BPI-R4 (2x SFP+)";
+ 	chassis-type = "embedded";
++
++	/* SFP2 cage (LAN) */
++	sfp2: sfp2 {
++		compatible = "sff,sfp";
++		i2c-bus = <&i2c_sfp2>;
++		los-gpios = <&pio 2 GPIO_ACTIVE_HIGH>;
++		mod-def0-gpios = <&pio 83 GPIO_ACTIVE_LOW>;
++		tx-disable-gpios = <&pio 0 GPIO_ACTIVE_HIGH>;
++		tx-fault-gpios = <&pio 1 GPIO_ACTIVE_HIGH>;
++		rate-select0-gpios = <&pio 3 GPIO_ACTIVE_LOW>;
++		maximum-power-milliwatt = <3000>;
++	};
++};
++
++&gmac1 {
++	sfp = <&sfp2>;
++	managed = "in-band-status";
++	phy-mode = "usxgmii";
+ };
+ 
+ &pca9545 {
+diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
+index afa9e3b2b16a..d40c8dbcd18e 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
+@@ -38,6 +38,18 @@ reg_3p3v: regulator-3p3v {
+ 		regulator-boot-on;
+ 		regulator-always-on;
+ 	};
++
++	/* SFP1 cage (WAN) */
++	sfp1: sfp1 {
++		compatible = "sff,sfp";
++		i2c-bus = <&i2c_sfp1>;
++		los-gpios = <&pio 54 GPIO_ACTIVE_HIGH>;
++		mod-def0-gpios = <&pio 82 GPIO_ACTIVE_LOW>;
++		tx-disable-gpios = <&pio 70 GPIO_ACTIVE_HIGH>;
++		tx-fault-gpios = <&pio 69 GPIO_ACTIVE_HIGH>;
++		rate-select0-gpios = <&pio 21 GPIO_ACTIVE_LOW>;
++		maximum-power-milliwatt = <3000>;
++	};
+ };
+ 
+ &cci {
+@@ -108,6 +120,12 @@ map-cpu-active-low {
+ 	};
+ };
+ 
++&gmac2 {
++	sfp = <&sfp1>;
++	managed = "in-band-status";
++	phy-mode = "usxgmii";
++};
++
+ &i2c0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&i2c0_pins>;
 -- 
 2.43.0
 
