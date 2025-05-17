@@ -4,62 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27D62C3ABDA
-	for <linux-mediatek@archiver.kernel.org>; Sat, 17 May 2025 14:12:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1458C2D0CD
+	for <linux-mediatek@archiver.kernel.org>; Sat, 17 May 2025 15:22:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TuI1n/7GeYYkg/H7oalMATaMATSphN81qwYT2W25Sss=; b=NhBRaqWEZbsnlCCJglYavFB34R
-	tz6xKdfVl1gLUvt8CeZdTkv5Ta14UmMu4wmFXPFLGpsYPretpqZoEdgsnf6d5x6NnIpp6Pu/MbgNe
-	FZWmYCXBn0I76pHhLkG3TnBztnfkcQpzCEoFmoC/wsF89gM3/DkNLUEl+peUEOCdo5OtCxdnrGOUv
-	/LwRj4EOkCaON+lDiWUetuAGvgRrZ0Cds617F7BG1KO0fFfeR+aB24AGYeJmULVY2PgsoesIzz4Uh
-	1qxgU1ei81Kl8z3PchVQHXLDjsKt6HfwUcVDQJ+aGi0Qoxl1EftB12+U7JTdx4kyGjierf3PrnFD0
-	RBY8A1LA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=mr4QmUNUxLgI7MAI0PM1OEpPLWwkauECf8Ka11LpNrc=; b=PPTN6WHT+rvSiR
+	GMn4nQIhzGS8I/mqkQLUOHm6AAXDTVpSbGCi0CUk6ghKcHBFiWmoX2QE3Nxa/5nsYZQTLtXl2oSIE
+	Sif9H1utY7IhTxoy9+CB+aTtBMAF/2TSQQwCgTDMsGwd/kUORNt7kS8bk8j9KMu7zST8KoI19NM5F
+	bo5w9W5+QlF4cbB0FTrIkBlBMT11qlgEkQKGooR5GrLksvD9V7VRDihbbmMNcY8IHkjVRN+gfLfxV
+	sg57/omc3Ki+OTPtQ+TWNP+XU240rqpeuL5KYOtm2BggkdP4dy1izW0Q6RirxYbZxNy6lIhML1G9r
+	saA29dV1y+P+4WeEaQhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uGIGw-00000005oK0-0rYV;
-	Sat, 17 May 2025 14:12:18 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uGJMj-00000005te1-2ndA;
+	Sat, 17 May 2025 15:22:21 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uGIEw-00000005oAh-2m33;
-	Sat, 17 May 2025 14:10:14 +0000
+	id 1uGJKi-00000005tXG-2n2l;
+	Sat, 17 May 2025 15:20:17 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id ED2A2614BB;
-	Sat, 17 May 2025 14:09:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2C03BC4CEE3;
-	Sat, 17 May 2025 14:09:42 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 7C8E3440DC;
+	Sat, 17 May 2025 15:20:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 05B00C4CEE3;
+	Sat, 17 May 2025 15:20:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747490983;
-	bh=48gpje1b4BnG1wIFcMvNafwZBZ8ZTqpMU6S+ktxIe3Q=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=iVfKb6TTJXwXCBaJQew8+KCAAimhuUfQw7JNoQO9Bk+k7dDWbZQN94GgbazuugqiW
-	 8sd7KLXJfWVQN2J2XJ//t5lWXyg+O83qjik8j9Vgu3UcloRxslI/rEaC/bqXhXODWC
-	 jFPinrwCebjOKVnTN4MqWD2y4h18bysTXIJ2mng2XGH4On/IWpxeeBF6noMTnuwXPb
-	 p+TLNq3OadfvhX7Tiy9EQDRUj5wktcX3KHYd8k1ZQSRn3LwhYnBpG1uQiW71INvAc1
-	 5ToHOdq/A0Nah9mMOkHo17ZBUS3BUnieYmRBwQjKHmQ+4O+QlVaeUycD5MXda2UTcg
-	 PJ4TvZ5BZjPJg==
-Date: Sat, 17 May 2025 16:09:40 +0200
+	s=k20201202; t=1747495215;
+	bh=8fVncvvRgORD7nnO2q1jkuf3elL3c4jA4fKkUkepRII=;
+	h=From:Subject:Date:To:Cc:From;
+	b=J96ysViXsP1Sf9mPRtiJhxqp2hMPelaI7YXOoiYKFbtbjJiRArtTWqRpuo0xs3vW2
+	 w0Goytm1sQgrHr4qLjwdxi5dpp3NH9xX7cXhW7ZTQvUKx4aZw9uIonAC6fMlHvlrqP
+	 CPvh/X7QQvtW/G0X5ZLm6GbZd6D1KUjwJ02dEwGxAdJ3LWjit8TOIQ/qS0o9N7+0su
+	 VtmxzN8xc71IVsrSKrgifcNIvEdsHvXe/OgYCaOnV3e5dNozLq7LcPZyb3qBCzG+Z/
+	 cTD0IysJQRtgdoOzmNgu6HcrBk3wwAT8dO/k81u7Q2hwt5iaUCesR6xx5iBOahxF2z
+	 SmI64gugwqxuQ==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH v3 4/4] net: airoha: Use dev_err_probe()
-Message-ID: <aCiYpEVR6LqimFR9@lore-desk>
-References: <5c94b9b345017f29ed653e2f05d25620d128c3f0.1746715755.git.christophe.jaillet@wanadoo.fr>
- <bb64aa1ea0205329c377ad32dde46cdf5c232db9.1746715755.git.christophe.jaillet@wanadoo.fr>
+Subject: [PATCH 0/2] Add PCIe nodes to Airoha EN7581 SoC evaluation board
+Date: Sat, 17 May 2025 17:19:42 +0200
+Message-Id: <20250517-en7581-evb-pcie-v1-0-97297eb063bb@kernel.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="dvb0gdBYaE0sLUSj"
-Content-Disposition: inline
-In-Reply-To: <bb64aa1ea0205329c377ad32dde46cdf5c232db9.1746715755.git.christophe.jaillet@wanadoo.fr>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAA6pKGgC/x3MQQqAIBBA0avErBtwCsu6SrRQm2o2JgoRSHdPW
+ r7F/wUyJ+EMc1Mg8S1ZrlBBbQP+tOFglK0aOtVppWlEDqM2hHw7jF4YlTO2V2T1RAPUKibe5fm
+ Py/q+H3KotzdhAAAA
+X-Change-ID: 20250517-en7581-evb-pcie-0b8a301a5916
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250517_082016_728702_2B8573EC 
+X-CRM114-Status: UNSURE (   4.39  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,98 +78,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Introduce PCIe controller nodes to EN7581 SoC and EN7581 evaluation
+board.
 
---dvb0gdBYaE0sLUSj
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+---
+Lorenzo Bianconi (2):
+      arm64: dts: airoha: en7581: Add gpio-ranges property for gpio controller
+      arm64: dts: airoha: en7581: Add PCIe nodes to EN7581 SoC evaluation board
 
-> Use dev_err_probe() to slightly simplify the code.
-> It is less verbose, more informational and makes error logging more
-> consistent in the probe.
->=20
-> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+ arch/arm64/boot/dts/airoha/en7581-evb.dts |  30 +++++++++
+ arch/arm64/boot/dts/airoha/en7581.dtsi    | 105 ++++++++++++++++++++++++++++++
+ 2 files changed, 135 insertions(+)
+---
+base-commit: 6df944d2cf586213c48428223ab0e6b9c7c0b94e
+change-id: 20250517-en7581-evb-pcie-0b8a301a5916
 
-Reviewed-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
-> ---
-> Changes in v3:
->   - None
->=20
-> Changes in v2:
->   - New patch
-> v2: https://lore.kernel.org/all/1b67aa9ea0245325c3779d32dde46cdf5c232db9.=
-1746715755.git.christophe.jaillet@wanadoo.fr/
->=20
-> Compile tested only.
-> ---
->  drivers/net/ethernet/airoha/airoha_eth.c | 21 +++++++++------------
->  1 file changed, 9 insertions(+), 12 deletions(-)
->=20
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
-net/airoha/airoha_eth.c
-> index 2335aa59b06f..7404ee894467 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> @@ -2896,10 +2896,9 @@ static int airoha_probe(struct platform_device *pd=
-ev)
->  	eth->dev =3D &pdev->dev;
-> =20
->  	err =3D dma_set_mask_and_coherent(eth->dev, DMA_BIT_MASK(32));
-> -	if (err) {
-> -		dev_err(eth->dev, "failed configuring DMA mask\n");
-> -		return err;
-> -	}
-> +	if (err)
-> +		return dev_err_probe(eth->dev, err,
-> +				     "failed configuring DMA mask\n");
-> =20
->  	eth->fe_regs =3D devm_platform_ioremap_resource_byname(pdev, "fe");
->  	if (IS_ERR(eth->fe_regs))
-> @@ -2912,10 +2911,9 @@ static int airoha_probe(struct platform_device *pd=
-ev)
->  	err =3D devm_reset_control_bulk_get_exclusive(eth->dev,
->  						    ARRAY_SIZE(eth->rsts),
->  						    eth->rsts);
-> -	if (err) {
-> -		dev_err(eth->dev, "failed to get bulk reset lines\n");
-> -		return err;
-> -	}
-> +	if (err)
-> +		return dev_err_probe(eth->dev, err,
-> +				     "failed to get bulk reset lines\n");
-> =20
->  	eth->xsi_rsts[0].id =3D "xsi-mac";
->  	eth->xsi_rsts[1].id =3D "hsi0-mac";
-> @@ -2925,10 +2923,9 @@ static int airoha_probe(struct platform_device *pd=
-ev)
->  	err =3D devm_reset_control_bulk_get_exclusive(eth->dev,
->  						    ARRAY_SIZE(eth->xsi_rsts),
->  						    eth->xsi_rsts);
-> -	if (err) {
-> -		dev_err(eth->dev, "failed to get bulk xsi reset lines\n");
-> -		return err;
-> -	}
-> +	if (err)
-> +		return dev_err_probe(eth->dev, err,
-> +				     "failed to get bulk xsi reset lines\n");
-> =20
->  	eth->napi_dev =3D alloc_netdev_dummy(0);
->  	if (!eth->napi_dev)
-> --=20
-> 2.49.0
->=20
-
---dvb0gdBYaE0sLUSj
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaCiYpAAKCRA6cBh0uS2t
-rI58AQDtv8x2UkvBiCpjWp7KbOaBbU0fBMA3I7qsMReEFiMcwQEA13VkZJcrcOcB
-DbnQXe3XN7duYfNTHnes7v8XvY/uTQg=
-=jhMB
------END PGP SIGNATURE-----
-
---dvb0gdBYaE0sLUSj--
 
