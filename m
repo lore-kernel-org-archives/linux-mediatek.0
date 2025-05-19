@@ -4,73 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12269C3ABDD
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 May 2025 19:57:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A404C2D0CD
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 May 2025 21:05:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=2Z10WwCpu58ZKAg/glGOy9Nx8vvczMrUQ/Ln0eULoZI=; b=KPThxR3uEU+UVSQR3u1CaFuTj5
-	j5Uq6MS9XgQ+lmpuKrKF+0arzJhL1PsrOf3gpAnbmTQ5D332w05LtH9rzO2B0xHy3+VpEOks2/NwC
-	cMbade6beJ12No5kO7Jyf2g3wDiDL5jy5cDY4FxTpkqpVyu2ou8Jcsc+CLlZTG6nu0D0dhtepbz90
-	TmCQg3ID3/fHaMKwErQaC5BGwr6esjp8kU7WOdy3i4W5Y5sBeQutB3cjwpKWL81xN37jqNDmSYCc/
-	wjZ04spNA5+o5IGVK9ZPYEOqEGUhPZcZ6TY7xqFV7DvZy1jmYh0BxFzSJe06T6tGEL+KigedHcgE3
-	jLmYW29Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YEPofVvgLXeaS7bTEy/4niL9XtDAUhUTLDA0AO+iElY=; b=sraejUa57VBF/ABdakjfxWeedr
+	MfFC7zHkgByAPHSiz5DQFk3eS6DcO1emzo5PC6x7J1+DqPEssdNVMN0dCeKORjwo4xSMROz4pI+bW
+	IhPaDB4VJAm5ZlYvgXPRvDS7F5f4TMlLtXRxKu2KPSIxIo8iPQvdPOQHA0/wTusx56eCyNYOU3pJx
+	YEOFJMm3bADKx6VbXcjb93t/jUoFygZFehIi8dH5jTn4TKqIW0+8m3lzHmnfLzIQRtd3hRwBNi2y/
+	ID08McfV8yCMHvQloj6mNGFSluDwl/kSELJqgg9gfEt4JBRCBtppU22TBk/Uo/xes4xlaViy8RSr4
+	Q7YvlTNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uH6bz-0000000AKuD-1fbf;
-	Mon, 19 May 2025 19:57:23 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uH7fd-0000000AU5Y-41q7;
+	Mon, 19 May 2025 21:05:13 +0000
+Received: from 003.mia.mailroute.net ([199.89.3.6])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uH6KJ-0000000AFnX-0MRo;
-	Mon, 19 May 2025 19:39:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1747683542;
-	bh=RDFDL2i0kJEyKl2DZibODtURBIL+Rqiwg37OKOw/+0w=;
-	h=From:Date:Subject:To:Cc:From;
-	b=i3ze4j3agZ1xjBgnSk6c7ECM4RhhtfqzdH3/fPyVCVYjxD4eaj/kaR16wTemAZApA
-	 XB46m3/FnQy/h++UhZBi2sK/dVaq76RlkP4kZEiw9MkuIzr7xSpozmKdoj4cjtBHCV
-	 4HbZsJ2a9Do/x5PsOlLQDcfq6ljQsiv1p/48jFsMuTtULrZlqXLl9kdME3SpnAFdl8
-	 PrWArGfcPJjY/Czx3/dyU78lHTf5+HFZR9oIxOEuKXNbGAgJxnl2lwC1DdYyM4bCp2
-	 MWB4iEMqSZcYuRA5W76XG4f6F14yGoCEal01ZeWmu75v+W4yJqTer+erB4qP+QeQ/L
-	 4rxRHgIRZr7XQ==
-Received: from [192.168.222.61] (unknown [IPv6:2607:fb91:213a:cf4c:3184:eb31:ee5b:b501])
+	id 1uH7dU-0000000AToh-1SKf;
+	Mon, 19 May 2025 21:03:02 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 003.mia.mailroute.net (Postfix) with ESMTP id 4b1VWl04lrzlvxb9;
+	Mon, 19 May 2025 21:02:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1747688575; x=1750280576; bh=YEPofVvgLXeaS7bTEy/4niL9
+	XtDAUhUTLDA0AO+iElY=; b=4dFFAmoZjm/t+WIfTczGm1srH0zZuAqVYjf9JGMt
+	diQ0Biz/ahwGoS6xYMD9mPyvPfIURd1nLyIjmuV9enGrLaPQT5ugEzDoI84rjqSB
+	lnoFKCWYMcVIZtJRKHgromm0S5JlM3kBGSDUSujcZHFeN1h927hDRgZxUWMpXzzE
+	eJ0WTuGhBRT9G+5N8rJr8xsvgpNB8WlucQpgwgwa6SaTyh1LeWImW4RuErtfUliZ
+	q+FdGp6puXXe6+9eTn8ISyndPDu/AjfZCOAsvZtNHA+5qq1zN2no83gpiaOQK/7l
+	SNDIn9Br0Ai8lfu4S7dysE+uoaDbSO3GKzAUBBUj5QoSvg==
+X-Virus-Scanned: by MailRoute
+Received: from 003.mia.mailroute.net ([127.0.0.1])
+ by localhost (003.mia [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id 2xkBi9KeFzdj; Mon, 19 May 2025 21:02:55 +0000 (UTC)
+Received: from [100.66.154.22] (unknown [104.135.204.82])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1B5C917E0FC4;
-	Mon, 19 May 2025 21:38:58 +0200 (CEST)
-From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Mon, 19 May 2025 15:38:42 -0400
-Subject: [PATCH] pinctrl: mediatek: eint: Fix invalid pointer dereference
- for v1 platforms
+	(Authenticated sender: bvanassche@acm.org)
+	by 003.mia.mailroute.net (Postfix) with ESMTPSA id 4b1VWR5x85zlvq7Q;
+	Mon, 19 May 2025 21:02:42 +0000 (UTC)
+Message-ID: <08e67735-d5b0-47d0-b476-c22a3b5acdda@acm.org>
+Date: Mon, 19 May 2025 14:02:41 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20250519-genio-350-eint-null-ptr-deref-fix-v1-1-07445d6d22c3@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAMGIK2gC/x2NwQqDMBAFf0X23AeJNkX9leJhaVa7IKskKoL47
- w09DgMzF2VJKpn66qIkh2ZdrIB/VPT5sk0CjYWpdnVwwXeYxHRBExxEbYPt84x1S4iSZMSoJzz
- 7V8PccWyfVDprEXr+H+/hvn+MPAFlcwAAAA==
-X-Change-ID: 20250519-genio-350-eint-null-ptr-deref-fix-1a163aa9ad84
-To: Sean Wang <sean.wang@kernel.org>, 
- Linus Walleij <linus.walleij@linaro.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Hao Chang <ot_chhao.chang@mediatek.com>, 
- Qingliang Li <qingliang.li@mediatek.com>
-Cc: kernel@collabora.com, linux-mediatek@lists.infradead.org, 
- linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, 
- =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>, 
- Chen-Yu Tsai <wenst@chromium.org>, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-X-Mailer: b4 0.14.2
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3] ufs: core: Add HID support
+To: Huan Tang <tanghuan@vivo.com>, alim.akhtar@samsung.com,
+ avri.altman@wdc.com, James.Bottomley@HansenPartnership.com,
+ martin.petersen@oracle.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, peter.wang@mediatek.com,
+ manivannan.sadhasivam@linaro.org, quic_nguyenb@quicinc.com,
+ luhongfei@vivo.com, linux-scsi@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Cc: opensource.kernel@vivo.com, Wenxing Cheng <wenxing.cheng@vivo.com>
+References: <20250519022912.292-1-tanghuan@vivo.com>
+Content-Language: en-US
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20250519022912.292-1-tanghuan@vivo.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250519_123907_300612_2D6EA22A 
-X-CRM114-Status: GOOD (  13.72  )
+X-CRM114-CacheID: sfid-20250519_140300_466701_5B579BA5 
+X-CRM114-Status: GOOD (  13.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,56 +88,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Commit 3ef9f710efcb ("pinctrl: mediatek: Add EINT support for multiple
-addresses") introduced an access to the 'soc' field of struct
-mtk_pinctrl in mtk_eint_do_init() and for that an include of
-pinctrl-mtk-common-v2.h.
+On 5/18/25 7:29 PM, Huan Tang wrote:
+> Follow JESD220G, support HID(Host Initiated Defragmentation)
+> through sysfs, the relevant sysfs nodes are as follows:
+> 	1.analysis_trigger
+> 	2.defrag_trigger
+> 	3.fragmented_size
+> 	4.defrag_size
+> 	5.progress_ratio
+> 	6.state
+> The detailed definition	of the six nodes can be	found in the sysfs
+> documentation.
+> 
+> HID's execution policy is given to user-space.
+> 
+> Changelog
+> ===
+> v2 - > v3:
+> 	1.Remove the "ufs_" prefix from directory name
+> 	2.Remove the "hid_" prefix from node names
+> 	3.Make "ufs" appear only once in the HID group name
+> 	4.Add "is_visible" callback for "ufs_sysfs_hid_group"
+> v1 - > v2:
+> 	1.Refactor the HID code according to Bart and Peter and
+> 	Arvi's suggestions
+> 
+> v2
+> 	https://lore.kernel.org/all/20250512131519.138-1-tanghuan@vivo.com/
+> v1
+> 	https://lore.kernel.org/all/20250417125008.123-1-tanghuan@vivo.com/
+> 
+> Signed-off-by: Huan Tang <tanghuan@vivo.com>
+> Signed-off-by: Wenxing Cheng <wenxing.cheng@vivo.com>
+> ---
 
-However, pinctrl drivers relying on the v1 common driver include
-pinctrl-mtk-common.h instead, which provides another definition of
-struct mtk_pinctrl that does not contain an 'soc' field.
+The patch changelog should occur below the three hyphens (---) such that
+it doesn't end up in the kernel changelog. Otherwise this patch looks
+good to me. Hence:
 
-Since mtk_eint_do_init() can be called both by v1 and v2 drivers, it
-will now try to dereference an invalid pointer when called on v1
-platforms. This has been observed on Genio 350 EVK (MT8365), which
-crashes very early in boot (the kernel trace can only be seen with
-earlycon).
-
-In order to fix this, given that this if code block is only relevant for
-platforms with multiple EINT bases, and the previous if block already
-handles the single base case, add an else statement so this if condition
-will never even be evaluated on platforms with a single EINT base, which
-covers all v1 platforms following commit fe412e3a6c97 ("pinctrl:
-mediatek: common-v1: Fix EINT breakage on older controllers").
-
-Fixes: 3ef9f710efcb ("pinctrl: mediatek: Add EINT support for multiple addresses")
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
----
- drivers/pinctrl/mediatek/mtk-eint.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
-
-diff --git a/drivers/pinctrl/mediatek/mtk-eint.c b/drivers/pinctrl/mediatek/mtk-eint.c
-index 16af6a47028e67bb53db4041a37ebbbb8b9a1e43..9114e0cd9def1bc65558c67317abe67ba63ef1f6 100644
---- a/drivers/pinctrl/mediatek/mtk-eint.c
-+++ b/drivers/pinctrl/mediatek/mtk-eint.c
-@@ -531,9 +531,7 @@ int mtk_eint_do_init(struct mtk_eint *eint)
- 			eint->pins[i].index = i;
- 			eint->pins[i].debounce = (i < eint->hw->db_cnt) ? 1 : 0;
- 		}
--	}
--
--	if (hw && hw->soc && hw->soc->eint_pin) {
-+	} else if (hw && hw->soc && hw->soc->eint_pin) {
- 		eint->pins = hw->soc->eint_pin;
- 		for (i = 0; i < eint->hw->ap_num; i++) {
- 			inst = eint->pins[i].instance;
-
----
-base-commit: 8566fc3b96539e3235909d6bdda198e1282beaed
-change-id: 20250519-genio-350-eint-null-ptr-deref-fix-1a163aa9ad84
-
-Best regards,
--- 
-Nícolas F. R. A. Prado <nfraprado@collabora.com>
-
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
 
