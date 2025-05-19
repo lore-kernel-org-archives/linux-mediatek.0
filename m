@@ -4,104 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2B9EC2D0CD
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 May 2025 19:56:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12269C3ABDD
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 May 2025 19:57:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fcRR+5EcSH2NnZRiq+ktBDbPi2pbVrwiv1JAzpr30/g=; b=TS1zWMgeAurnEJj0KIcpOCQkhB
-	znUrDIsNQlHqDLDk36y06kaWADk6gPDPNEVySiGxz9RY44ht9rblRFguRmpYhMuYogqIboL5XrBhZ
-	7E+njGHCgBzXdjL9VEL2fXACmpeERYjWUnxZws2zDP4Rwh3ssxbx8hSx9eEVTXsHS3F3vhAxBCo8J
-	KmUhPfnlxHTbjmQiIWM/i/G5QRSI4z6SqnSn1QL6S19hLZBe0pvd0CaHUJ1OL8aAxEqhnVXphRvA0
-	8N0kw0avDnwtuzJujVIWzkxR70wmShnWokTublt1nfEiAmTbceUNIBB7nf22oZ+cXkJ/aBFWKG415
-	9IaXO0fg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=2Z10WwCpu58ZKAg/glGOy9Nx8vvczMrUQ/Ln0eULoZI=; b=KPThxR3uEU+UVSQR3u1CaFuTj5
+	j5Uq6MS9XgQ+lmpuKrKF+0arzJhL1PsrOf3gpAnbmTQ5D332w05LtH9rzO2B0xHy3+VpEOks2/NwC
+	cMbade6beJ12No5kO7Jyf2g3wDiDL5jy5cDY4FxTpkqpVyu2ou8Jcsc+CLlZTG6nu0D0dhtepbz90
+	TmCQg3ID3/fHaMKwErQaC5BGwr6esjp8kU7WOdy3i4W5Y5sBeQutB3cjwpKWL81xN37jqNDmSYCc/
+	wjZ04spNA5+o5IGVK9ZPYEOqEGUhPZcZ6TY7xqFV7DvZy1jmYh0BxFzSJe06T6tGEL+KigedHcgE3
+	jLmYW29Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uH6as-0000000AJ98-06vf;
-	Mon, 19 May 2025 19:56:14 +0000
-Received: from zeus03.de ([194.117.254.33] helo=mail.zeus03.de)
+	id 1uH6bz-0000000AKuD-1fbf;
+	Mon, 19 May 2025 19:57:23 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uH5iH-0000000ACLh-0Fxg
-	for linux-mediatek@lists.infradead.org;
-	Mon, 19 May 2025 18:59:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	sang-engineering.com; h=date:from:to:cc:subject:message-id
-	:references:mime-version:content-type:in-reply-to; s=k1; bh=fcRR
-	+5EcSH2NnZRiq+ktBDbPi2pbVrwiv1JAzpr30/g=; b=N7zmZOKr6XTLjOmlTya8
-	qpS/cZfFj9/bODuxKLEJ0emekgGh3jPw9pOF397y0bUXwKq7buAu1QvQwc0Ye7pj
-	8Sg5Ek5BHup+uxJLXeECcFaJ3tBYFXP0Z7U0+WzcV+G45hE8si/ZvSwQzbd8PvXU
-	ez0V5Q1qRYZ/6m+t45zGmwhPeFGpKwxSVKGIzpPUQUuB1oYYaHaaHxKoDUFBaRtt
-	aUxFSbFudm8BI9U6TNjYQG4xO7UTn4oxHl1H/UQJ7hULuBuFfFdzeTqzDkoQ1j4k
-	zr4wKw8rRbwma44sPE0nF+jt3FaAI0IJhr0ezollsXBQEK7JMrLfnwLTzudUTIzg
-	hw==
-Received: (qmail 2605808 invoked from network); 19 May 2025 20:59:41 +0200
-Received: by mail.zeus03.de with UTF8SMTPSA (TLS_AES_256_GCM_SHA384 encrypted, authenticated); 19 May 2025 20:59:41 +0200
-X-UD-Smtp-Session: l3s3148p1@gd37u4E1qNdZz6uL
-Date: Mon, 19 May 2025 20:59:41 +0200
-From: Wolfram Sang <wsa+renesas@sang-engineering.com>
-To: linux-renesas-soc@vger.kernel.org
-Cc: Albert Ou <aou@eecs.berkeley.edu>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Alexandre Ghiti <alex@ghiti.fr>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
-	Huacai Chen <chenhuacai@kernel.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	loongarch@lists.linux.dev,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Rob Herring <robh@kernel.org>, Samuel Holland <samuel@sholland.org>,
-	WANG Xuerui <kernel@xen0n.name>
-Subject: Re: [PATCH 0/7] archs: use proper node names for GPIO based I2C
- busses
-Message-ID: <aCt_nTLapk0XdI4E@shikoro>
-Mail-Followup-To: Wolfram Sang <wsa+renesas@sang-engineering.com>,
-	linux-renesas-soc@vger.kernel.org,
-	Albert Ou <aou@eecs.berkeley.edu>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Alexandre Ghiti <alex@ghiti.fr>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
-	Huacai Chen <chenhuacai@kernel.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	loongarch@lists.linux.dev,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Rob Herring <robh@kernel.org>, Samuel Holland <samuel@sholland.org>,
-	WANG Xuerui <kernel@xen0n.name>
-References: <20250519121512.5657-1-wsa+renesas@sang-engineering.com>
+	id 1uH6KJ-0000000AFnX-0MRo;
+	Mon, 19 May 2025 19:39:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1747683542;
+	bh=RDFDL2i0kJEyKl2DZibODtURBIL+Rqiwg37OKOw/+0w=;
+	h=From:Date:Subject:To:Cc:From;
+	b=i3ze4j3agZ1xjBgnSk6c7ECM4RhhtfqzdH3/fPyVCVYjxD4eaj/kaR16wTemAZApA
+	 XB46m3/FnQy/h++UhZBi2sK/dVaq76RlkP4kZEiw9MkuIzr7xSpozmKdoj4cjtBHCV
+	 4HbZsJ2a9Do/x5PsOlLQDcfq6ljQsiv1p/48jFsMuTtULrZlqXLl9kdME3SpnAFdl8
+	 PrWArGfcPJjY/Czx3/dyU78lHTf5+HFZR9oIxOEuKXNbGAgJxnl2lwC1DdYyM4bCp2
+	 MWB4iEMqSZcYuRA5W76XG4f6F14yGoCEal01ZeWmu75v+W4yJqTer+erB4qP+QeQ/L
+	 4rxRHgIRZr7XQ==
+Received: from [192.168.222.61] (unknown [IPv6:2607:fb91:213a:cf4c:3184:eb31:ee5b:b501])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1B5C917E0FC4;
+	Mon, 19 May 2025 21:38:58 +0200 (CEST)
+From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Date: Mon, 19 May 2025 15:38:42 -0400
+Subject: [PATCH] pinctrl: mediatek: eint: Fix invalid pointer dereference
+ for v1 platforms
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Miw4moGlT/mH/7E/"
-Content-Disposition: inline
-In-Reply-To: <20250519121512.5657-1-wsa+renesas@sang-engineering.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20250519-genio-350-eint-null-ptr-deref-fix-v1-1-07445d6d22c3@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAMGIK2gC/x2NwQqDMBAFf0X23AeJNkX9leJhaVa7IKskKoL47
+ w09DgMzF2VJKpn66qIkh2ZdrIB/VPT5sk0CjYWpdnVwwXeYxHRBExxEbYPt84x1S4iSZMSoJzz
+ 7V8PccWyfVDprEXr+H+/hvn+MPAFlcwAAAA==
+X-Change-ID: 20250519-genio-350-eint-null-ptr-deref-fix-1a163aa9ad84
+To: Sean Wang <sean.wang@kernel.org>, 
+ Linus Walleij <linus.walleij@linaro.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Hao Chang <ot_chhao.chang@mediatek.com>, 
+ Qingliang Li <qingliang.li@mediatek.com>
+Cc: kernel@collabora.com, linux-mediatek@lists.infradead.org, 
+ linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>, 
+ Chen-Yu Tsai <wenst@chromium.org>, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250519_115949_369645_67FF2D0E 
-X-CRM114-Status: UNSURE (   8.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250519_123907_300612_2D6EA22A 
+X-CRM114-Status: GOOD (  13.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,39 +85,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Commit 3ef9f710efcb ("pinctrl: mediatek: Add EINT support for multiple
+addresses") introduced an access to the 'soc' field of struct
+mtk_pinctrl in mtk_eint_do_init() and for that an include of
+pinctrl-mtk-common-v2.h.
 
---Miw4moGlT/mH/7E/
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+However, pinctrl drivers relying on the v1 common driver include
+pinctrl-mtk-common.h instead, which provides another definition of
+struct mtk_pinctrl that does not contain an 'soc' field.
 
-On Mon, May 19, 2025 at 02:15:00PM +0200, Wolfram Sang wrote:
-> A lot of boards across various archs have a superfluous '-' in their
-> node name for GPIO based I2C busses. 'dtbs_check' complains, so fix
-> them.
+Since mtk_eint_do_init() can be called both by v1 and v2 drivers, it
+will now try to dereference an invalid pointer when called on v1
+platforms. This has been observed on Genio 350 EVK (MT8365), which
+crashes very early in boot (the kernel trace can only be seen with
+earlycon).
 
-Please drop this series. We found out that upstream dt-schema is broken
-instead. I sent a fix.
+In order to fix this, given that this if code block is only relevant for
+platforms with multiple EINT bases, and the previous if block already
+handles the single base case, add an else statement so this if condition
+will never even be evaluated on platforms with a single EINT base, which
+covers all v1 platforms following commit fe412e3a6c97 ("pinctrl:
+mediatek: common-v1: Fix EINT breakage on older controllers").
 
+Fixes: 3ef9f710efcb ("pinctrl: mediatek: Add EINT support for multiple addresses")
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+ drivers/pinctrl/mediatek/mtk-eint.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
---Miw4moGlT/mH/7E/
-Content-Type: application/pgp-signature; name="signature.asc"
+diff --git a/drivers/pinctrl/mediatek/mtk-eint.c b/drivers/pinctrl/mediatek/mtk-eint.c
+index 16af6a47028e67bb53db4041a37ebbbb8b9a1e43..9114e0cd9def1bc65558c67317abe67ba63ef1f6 100644
+--- a/drivers/pinctrl/mediatek/mtk-eint.c
++++ b/drivers/pinctrl/mediatek/mtk-eint.c
+@@ -531,9 +531,7 @@ int mtk_eint_do_init(struct mtk_eint *eint)
+ 			eint->pins[i].index = i;
+ 			eint->pins[i].debounce = (i < eint->hw->db_cnt) ? 1 : 0;
+ 		}
+-	}
+-
+-	if (hw && hw->soc && hw->soc->eint_pin) {
++	} else if (hw && hw->soc && hw->soc->eint_pin) {
+ 		eint->pins = hw->soc->eint_pin;
+ 		for (i = 0; i < eint->hw->ap_num; i++) {
+ 			inst = eint->pins[i].instance;
 
------BEGIN PGP SIGNATURE-----
+---
+base-commit: 8566fc3b96539e3235909d6bdda198e1282beaed
+change-id: 20250519-genio-350-eint-null-ptr-deref-fix-1a163aa9ad84
 
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmgrf5wACgkQFA3kzBSg
-Kba0/w/8DghRfAlopqU9war5gwpE26Ihxt5Q+oMhY5xMtWaQFNqTEc66w4HdQr3/
-29RR7JJnOaX3VKQ/WpSYysrZxG185wIlaNA8jb8NRcvdI5N0p06SVBaJbnFh2e05
-q3Y/EL5RCfyagvTQjCtTSZQPW0LjKIFM+EsxgWtZU2GgD8dQJMylLMgkgruViB95
-8nFoBB+wxTKUcOixJxztDXAmeGOBh5J7XnpKVU8rH7Uqp4YePBIXDtN761U4Mf5S
-PGHndrQ6+96AfztgD+X/jOLw3udkj8jM/PjkXRm00LRqk7bkC9C33WXIC4yk0G/X
-KLFBh6KOP8JB0VqUC4v3ijbxaeVnPQIEFbFwGtY/XRBftELqN9vMNIEQixTPciB/
-uBMbD2XacAwyCcmeDSEv2nqKm7oSuJ+mN5Zk6k1PnDbRFsrkq+fp+uWEyhoyybLD
-1viuWAWh/rzsPwfixjyPKy0zd9aHaV3hNT4sSzrqhCrZikEmcusq1LqLPlGLsYbx
-Mm1U9EU/JtSvJwQyUX8ZUWN5w1ndA/fzR9UDSZ9oE+cZCvnfV0PaSfuNZYH/ehVH
-UzwSkZrjklNhZ/RQQCZGxce7bCbMUbSg6UdYDn+qW+UHqXyzp7b9Uk6PDWtUtla0
-3GHameu2L+C947A6uzLxX0OJWCYJKdRqaghannzZwZibP0E5sxY=
-=J0Ho
------END PGP SIGNATURE-----
+Best regards,
+-- 
+Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
---Miw4moGlT/mH/7E/--
 
