@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4ED3CC2D0CD
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 May 2025 10:07:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CF76C2D0CD
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 May 2025 12:14:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=V1to1XBFVbo6aLAHuCFTWtV+b3iwevVOfk8clk90XM8=; b=vCQ+pT3POWDrMfw9MvvrB1TySu
-	KPU3zw4SR7aSyfLI7QXPAd/uPaASJR3AAb+AOK+v2VgAnchIapP7lYYe4o7Ab9Lc7uTGeaR4cZx2C
-	cgUr0H86wvy3DNUsNQgKDWA1Jkq+fETHj4d2ELNLPVc+9+Fv8T/Uqw+lfp5zVoi7iJBDvJOgBXmFF
-	TaDOhfO6nCkRipJNW/LRruGCCAcXzKa93Dwx3M2G3Jx1pmmNCbLLA6elyBhJH50ylZDbAWP4um3Fu
-	dz5QvB34m9HoQSQj+fZnQbKEOhEbecCvCApX2J+iZEkWIjD7EIKtWSIikWaPx3IeAn+pYfclreBlF
-	ZJhhu2WQ==;
+	bh=TNIgm8N6rMsasi+vRuU5dR8Rk9ITCZojrP1ljnTFsBY=; b=SIOhdC0ENTZrppA5UioBFIKVqy
+	acRZvBgKI6182YBHYhYCN3s6mlTlksTrS7iib44d3Blo8OGTkRMS8A68ScSikjl2I+UguWBVQuvIq
+	gVb2JNA3PaD3NG5XT+YXiw/J4cgKpNNEOOiowLjKDNNd4We87azB1F5q6jGqa2tjHpsZ7Tb+bEoaA
+	RAehUOPOhSyM/uiWRo6w+wTGyvSXPiUzhPGgLtVKzoiU5Bhb3FygAmiya9ISfbetHIP+Gdnfk/bPQ
+	nMUqfpAVZPDtkJ6JsGivkw9AawV94qXakxAR8DssJ9W7hJj0lyLPIQYMH3N6NDQYcwBQzKCGlpVxQ
+	4U+xeYxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uGxP7-00000008jf9-1GaO;
-	Mon, 19 May 2025 10:07:29 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1uGzOM-000000096oh-02wr;
+	Mon, 19 May 2025 12:14:50 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uGxDq-00000008ghe-0O2E;
-	Mon, 19 May 2025 09:55:51 +0000
+	id 1uGzKI-000000096NY-0zBL;
+	Mon, 19 May 2025 12:10:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1885F49D9B;
-	Mon, 19 May 2025 09:55:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9DA9DC4CEE4;
-	Mon, 19 May 2025 09:55:48 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id E145A5C3F5D;
+	Mon, 19 May 2025 12:08:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0CB21C4CEE4;
+	Mon, 19 May 2025 12:10:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747648549;
-	bh=1gyL+vrxbsBYRCwZKWk0gs+Rz8se3eZcKW+Y/YzScNQ=;
+	s=k20201202; t=1747656636;
+	bh=iSx71zZiXEdCfJvPVC/dxwl7y6YEpL4pKp+tSRhGjSc=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=E/cLnuA6AiEs68MXWG0pQ/rNAeCn7a2p9BCf2491gA4iDqmLNKlu3yxeL6yT+TW49
-	 VrH3051VL3g2VmOlAc9L84pbux6/li3Xp3cfC5PMaJkP5luRYzyxyL5rB4JYh6gktq
-	 2+vTxN7iY1wMRyAlm1qEt6zADj5pAPCRiCGz19rh0dJn0y67W3civrUQXJZgROdbDm
-	 tJ9A9V2yedQ/IX3UM97KqQ3xrgY6Uzk9sL2Nmv9h99tEDb718vp4U5oD8ylH1in6Uy
-	 vTczFZ+yBC9x56CaNY1UHB1YJDfXkUX9uFdmIM9y4KXYM555QuEBbnaO2mzpIXhAg3
-	 8KhrfcTZFrcDg==
-Date: Mon, 19 May 2025 11:55:46 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Simon Horman <horms@kernel.org>
+	b=XFa7YAI26weKMKIVPZgB4z0Th8+zwWeqaPOyA/K7FN+uOmLdhEQUZ8pkFOlsm9MVV
+	 740cgXLshUxXiFbL2JWQiyFXyIQeqmt6yny3LQS01eAuJwVZvWTfNU2xbQFADt1v4D
+	 Huf3B+4giSIg2BK2JptSLNEVZ3MZZoyux34cffHGs9qvCcLzyIGK2KcyZr/l+CoLDs
+	 u8ycl/0DK7FVk1hxSdJyyY2WPG3Oj59hZvaTPsg3Gz7cW6zioAUkak4Giyr31IxIb5
+	 kR07cjNyttKz32d/e0ibtubexqBdfoNdnOQTfeId/5eTwkA6Eucz2BsBxXHExgzR/5
+	 jAx8yrYZDPvFw==
+Date: Mon, 19 May 2025 13:10:32 +0100
+From: Simon Horman <horms@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
@@ -52,18 +52,18 @@ Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
 Subject: Re: [PATCH net-next v2 2/3] net: airoha: Add FLOW_CLS_STATS callback
  support
-Message-ID: <aCsAItPcz_9CuxaP@lore-desk>
+Message-ID: <20250519121032.GF365796@horms.kernel.org>
 References: <20250516-airoha-en7581-flowstats-v2-0-06d5fbf28984@kernel.org>
  <20250516-airoha-en7581-flowstats-v2-2-06d5fbf28984@kernel.org>
  <20250519094637.GE365796@horms.kernel.org>
+ <aCsAItPcz_9CuxaP@lore-desk>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="22rIDOGjvi50b705"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250519094637.GE365796@horms.kernel.org>
+In-Reply-To: <aCsAItPcz_9CuxaP@lore-desk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250519_025550_160904_5CF72D9E 
-X-CRM114-Status: GOOD (  13.44  )
+X-CRM114-CacheID: sfid-20250519_051038_327526_F5AE34B1 
+X-CRM114-Status: GOOD (  15.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,60 +78,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, May 19, 2025 at 11:55:46AM +0200, Lorenzo Bianconi wrote:
+> On May 19, Simon Horman wrote:
+> > On Fri, May 16, 2025 at 10:00:00AM +0200, Lorenzo Bianconi wrote:
+> > 
+> > ...
+> > 
+> > > @@ -1027,6 +1255,15 @@ int airoha_ppe_init(struct airoha_eth *eth)
+> > >  	if (!ppe->foe_flow)
+> > >  		return -ENOMEM;
+> > >  
+> > > +	foe_size = PPE_STATS_NUM_ENTRIES * sizeof(*ppe->foe_stats);
+> > > +	if (foe_size) {
+> > 
+> > Hi Lorenzo,
+> > 
+> > It's unclear to me how foe_size can be zero.
+> 
+> Hi Simon,
+> 
+> foe_size will be 0 if you disable CONFIG_NET_AIROHA_FLOW_STATS since in this
+> case PPE_STATS_NUM_ENTRIES will be 0.
 
---22rIDOGjvi50b705
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Thanks,
 
-On May 19, Simon Horman wrote:
-> On Fri, May 16, 2025 at 10:00:00AM +0200, Lorenzo Bianconi wrote:
->=20
-> ...
->=20
-> > @@ -1027,6 +1255,15 @@ int airoha_ppe_init(struct airoha_eth *eth)
-> >  	if (!ppe->foe_flow)
-> >  		return -ENOMEM;
-> > =20
-> > +	foe_size =3D PPE_STATS_NUM_ENTRIES * sizeof(*ppe->foe_stats);
-> > +	if (foe_size) {
->=20
-> Hi Lorenzo,
->=20
-> It's unclear to me how foe_size can be zero.
+I see that now but for some reason it escaped me earlier.
 
-Hi Simon,
+With that cleared up this patch looks good to me.
 
-foe_size will be 0 if you disable CONFIG_NET_AIROHA_FLOW_STATS since in this
-case PPE_STATS_NUM_ENTRIES will be 0.
+Reviewed-by: Simon Horman <horms@kernel.org>
 
-Regards,
-Lorenzo
 
->=20
-> > +		ppe->foe_stats =3D dmam_alloc_coherent(eth->dev, foe_size,
-> > +						     &ppe->foe_stats_dma,
-> > +						     GFP_KERNEL);
-> > +		if (!ppe->foe_stats)
-> > +			return -ENOMEM;
-> > +	}
-> > +
-> >  	err =3D rhashtable_init(&eth->flow_table, &airoha_flow_table_params);
-> >  	if (err)
-> >  		return err;
->=20
-> ...
-
---22rIDOGjvi50b705
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaCsAIgAKCRA6cBh0uS2t
-rJHLAQC5nraKiJNubcnetLu9Dj8Wy6ZjmcTZ2WQrOWpbqVK3gwD/RIds/1GtCN6H
-P9fdLBbCOVtpI90ToEihRNwIyKt1ag8=
-=XYLC
------END PGP SIGNATURE-----
-
---22rIDOGjvi50b705--
 
