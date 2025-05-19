@@ -4,71 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36583C2D0CD
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 May 2025 16:08:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6FC0C3ABDD
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 May 2025 16:34:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q9LKuooXrzGHQU5apnOQ8oee7U4B4rgxUBwxG8Elpsc=; b=FbXq9TmP+H4dZ4ZgPh0WBWiR9Y
-	Hz06L56D0/f756RjQ+kXDHJjUzTz3EtOqpunQJmLIQ2ZLVHNyFIv6c605DyMfs5GawiPqmezZKfDc
-	/wS56rO1kYrpuwu9bk/DJ15UkhbZyKWKgwUfnnr9lIBaggVOI/YGvmwH9HlhKazUHmvnD456NQFmT
-	un16c6U2aSYY75kNx0BstwVlAYNbfhnBHgH5Iss3Dwhg+jdHHur3NbdZJ+JlaVrlHw31/f1jtAnpj
-	nj0wBMCVvFOO8nLHoR13CMWCcQ6Yc7HUVtySM0llig9voZhb1oAq4txw9E/f/QdX1GMLGOpIRjbo3
-	2fn5EhGQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1iGvaXPFmlCaD7tO069Z1NW0tGPHoKnaB5/b9gvCSeY=; b=lA4TtCN1COmdxQQs91pP1fSrRZ
+	qPvNTiU8siaY7OEkmbfjyaEQf88X7khQxCiahR9uXt8E5hyQ8G+uY69D+2ivBEkBuhnI4Aawh6gTc
+	ttm4j8nn1L9uECueOcDY47VIev7Qg4mW5yUKJAdUDgRl4UkcAfzKFuyvFhT35k65580aDANeMkBOG
+	dA5x1elVxuqKXnuWO74+Ec6+8PX+8OaBdGbnTkv25RBQqUfxTsb1Qj/Ky+KWSfs6uhQ7nRMVVnT+X
+	TJdNd1KCEHKbhMB6W6GaL67bFngIkdBsSZQW+OIHX9kRaE/Ed7GXLJROxH2ZRtrKo3tmYEXR3QgYs
+	NyVoRSzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uH32G-00000009k2m-09Nr;
-	Mon, 19 May 2025 16:08:16 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1uH3Rg-00000009pHG-2TOU;
+	Mon, 19 May 2025 16:34:32 +0000
+Received: from 004.mia.mailroute.net ([199.89.3.7])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uH2Bd-00000009ZbT-29bg;
-	Mon, 19 May 2025 15:13:54 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id CBCACA4E062;
-	Mon, 19 May 2025 15:13:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4D20CC4CEE9;
-	Mon, 19 May 2025 15:13:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747667632;
-	bh=Q9LKuooXrzGHQU5apnOQ8oee7U4B4rgxUBwxG8Elpsc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=EK2PeuCCXN4Qdn0HbjIA7O/P1dkPFcR1Y7vHXymEBT3i9FmVF9FW3ZIBd5Y7FMWiC
-	 nTv1vl7VjFJSKkv/Rf6HdVfDR5i/tjM/Tn2kxLkpefymn9mhz08Xn6riygcRsv2lxh
-	 EXJmtBQQZhyY8xvdL+aD2kwFGwxN70g2fU92DScXGvhUuoOAoVfZ6EcuU9yh5LFBYH
-	 vvd5lODD7L0FSVyG+7lq6saVXLdeA5FXPEoyBbWG/1wFdkg6ZsGTjHRdGIldv47Iiq
-	 6r9h2fthwjA/bRjzTsYzCdcWilZFasK/sI8Pux0R6IaiOCYNcnnJe07jsj4a9h9pPS
-	 v7DsGsW+HIKqg==
-Date: Mon, 19 May 2025 16:13:47 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Julien Massot <julien.massot@collabora.com>
-Cc: kernel@collabora.com, Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Garmin Chang <garmin.chang@mediatek.com>,
-	Friday Yang <friday.yang@mediatek.com>,
-	Conor Dooley <conor.dooley@microchip.com>,
-	linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 1/2] dt-bindings: clock: mediatek: Add #reset-cells
- property for MT8188
-Message-ID: <20250519-amaze-sloped-9e7d9a63a1db@spud>
-References: <20250516-dtb-check-mt8188-v2-0-fb60bef1b8e1@collabora.com>
- <20250516-dtb-check-mt8188-v2-1-fb60bef1b8e1@collabora.com>
+	id 1uH2Tc-00000009csO-0hvk;
+	Mon, 19 May 2025 15:32:29 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 004.mia.mailroute.net (Postfix) with ESMTP id 4b1MB51GSvzm1Hcc;
+	Mon, 19 May 2025 15:32:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1747668730; x=1750260731; bh=1iGvaXPFmlCaD7tO069Z1NW0
+	tGPHoKnaB5/b9gvCSeY=; b=Dwco3b/Dya5jpYSEcBA1gsi08sADra3tzFzI0Oz+
+	iIjDs2+j+/vYXpMqTvH4WJWNTm51pMVjEtZG8QrKPWCzcxrQTaOcQ68Oa+wJoZbS
+	rWGGDx+0U7DQADlDu6h8Zjdy6z6MUdB41jIcK2Sr2iJfx5xyicjdD3emzVr87O7r
+	Yt89KL6wDjfInX3pVjcmNj0xgTt+WQ8u39MHw/kdzxlO2C+PQ2niT3RfvdJGs+lb
+	X52/UkmgO9BvkRFirjpnxIKRAjWsFpK/C5Z3RLp1oXtJJUB6KdvkUu3KD+plLP55
+	Hrz0VqVgdbb597AeklR+NeM1JZidV8XZg0yXOzY5ACRYqA==
+X-Virus-Scanned: by MailRoute
+Received: from 004.mia.mailroute.net ([127.0.0.1])
+ by localhost (004.mia [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id L_M2lBvzyI16; Mon, 19 May 2025 15:32:10 +0000 (UTC)
+Received: from [100.66.154.22] (unknown [104.135.204.82])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bvanassche@acm.org)
+	by 004.mia.mailroute.net (Postfix) with ESMTPSA id 4b1M9p42Njzm0Hqx;
+	Mon, 19 May 2025 15:31:57 +0000 (UTC)
+Message-ID: <60c20e1f-ab07-4af9-b7ea-b199364c66d0@acm.org>
+Date: Mon, 19 May 2025 08:31:56 -0700
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="080sWU4ve0SVO/mR"
-Content-Disposition: inline
-In-Reply-To: <20250516-dtb-check-mt8188-v2-1-fb60bef1b8e1@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] scsi: ufs: preventing bus hang crash during emergency
+ power off
+To: Bo Ye <bo.ye@mediatek.com>, Alim Akhtar <alim.akhtar@samsung.com>,
+ Avri Altman <avri.altman@wdc.com>,
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: xiujuan.tan@mediatek.com, Qilin Tan <qilin.tan@mediatek.com>,
+ linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20250519073814.167264-1-bo.ye@mediatek.com>
+Content-Language: en-US
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20250519073814.167264-1-bo.ye@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250519_081353_618085_945390A4 
-X-CRM114-Status: GOOD (  11.27  )
+X-CRM114-CacheID: sfid-20250519_083228_276693_109AC91F 
+X-CRM114-Status: GOOD (  10.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,34 +89,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 5/19/25 12:38 AM, Bo Ye wrote:
+> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+> index 7735421e3991..a1013aea8e90 100644
+> --- a/drivers/ufs/core/ufshcd.c
+> +++ b/drivers/ufs/core/ufshcd.c
+> @@ -10262,6 +10262,7 @@ static void ufshcd_wl_shutdown(struct device *dev)
+>   		scsi_device_set_state(sdev, SDEV_OFFLINE);
+>   		mutex_unlock(&sdev->state_mutex);
+>   	}
+> +	ufshcd_wait_for_doorbell_clr(hba, 5 * USEC_PER_SEC);
+>   	__ufshcd_wl_suspend(hba, UFS_SHUTDOWN_PM);
+>   
+>   	/*
 
---080sWU4ve0SVO/mR
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+UFS driver kernel patches should be prepared against Martin's for-next
+branch. Commit a3a951064f7e ("scsi: ufs: Rework 
+ufshcd_clock_scaling_prepare()") removed ufshcd_wait_for_doorbell_clr().
 
-On Fri, May 16, 2025 at 04:12:13PM +0200, Julien Massot wrote:
-> The '#reset-cells' property is permitted for some of the MT8188
-> clock controllers, but not listed as a valid property.
->=20
-> Fixes: 9a5cd59640ac ("dt-bindings: clock: mediatek: Add SMI LARBs reset f=
-or MT8188")
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
-> Signed-off-by: Julien Massot <julien.massot@collabora.com>
+Please fix the build failure introduced by this patch.
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-
---080sWU4ve0SVO/mR
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaCtKqwAKCRB4tDGHoIJi
-0qBfAQD5AkEyB+46Q6g6BR2qh2MvFv0Vgj3nU9m2wiWm30jWFwD/U53P7fut2kFs
-/C+1oDJOzggWHzy1BqdNCgr7XWppCgg=
-=1n0W
------END PGP SIGNATURE-----
-
---080sWU4ve0SVO/mR--
+Bart.
 
