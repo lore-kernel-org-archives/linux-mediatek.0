@@ -4,70 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9885EC3DA6D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 May 2025 10:36:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A814FC3DA6D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 May 2025 10:38:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=77Mv27Geyr6Zs8W0rAhkDaFMsK2mA3VNYZ9lvBQ/Drs=; b=ZRY8cziPxmumgayuNOIkPB+16F
-	YnMcRbbzhRxbXHVK0pphp8upV/pjItuya+xgNzXx2t3xvHgyl4gYEDEZ7nxmOi49IQJrQ4S/xkBGz
-	ggof8YUgTHGRr4cjJarXWoOgoh6lbYcRvH9K/dR+15V110qGGNlkM3l6unM9wXn2Qyib/dKHxOH5C
-	FKV/GC/lNHPaJ5P2/lM3Kv3LM/IhXOkZffg+6x7zf1e3En77jL3DOSIGzzNqTAruM1yblLlyXINig
-	bbr6KH5kymQXj3V8bqcwDaViyJzo8ndUwgYrL453+zbHSe7bY/VNHTlJyld1dRNczdO7LA1BBs2IM
-	tT4i6IRQ==;
+	bh=/LVJIqVtawUMnqwm6yUXn5zeSlqWXND30JrqQib3DJY=; b=UU8bXXwn464tmeF5uLfX6Cv1VP
+	CTkYL+gkG0WW1/SFvWyB4ZII6DvW8Ito1f0W/QuDAxEZC8wX+4GscwAu1W00o/5l9pIGvFuNi9Lkm
+	pPZvCUHBfSzoPfoEQEAnz8dgGwALf5yOsAh2hNu5NBRcEILs38tSAGZMOlYxD4hy2BztnBNB40YGD
+	i96Zf3RPwfehej40V0a4v0TWSUbE/ak0byfi/mvscC7FHdj9+4wjSHRVD2luWODREAtvoha4iAX+a
+	Kt2SeRqKsPWvOxv/Hutb+HOk3ZZVUSirIKsJ81ZbCwK+AYasGNV9taC3MjvdZ748ALhgKB9Rbje2w
+	EG7A2RSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHKKM-0000000COAL-2nla;
-	Tue, 20 May 2025 10:36:06 +0000
+	id 1uHKMR-0000000CObk-366S;
+	Tue, 20 May 2025 10:38:15 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHK2U-0000000CJNo-1N0F;
-	Tue, 20 May 2025 10:17:39 +0000
+	id 1uHK3y-0000000CJcE-07cF;
+	Tue, 20 May 2025 10:19:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1747736256;
-	bh=Ifwq+4sQrPiwiHLidB9FD+7sK9d0P0YTyMR7NR3l9L0=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=QEIxwI6W2EzhkcTOHpbPe0Q+P7crjPgfpYomAfcDNes4uRnZEZpxCv4RmLb9BL764
-	 SjEoPfnbA7MDLRZC4i/XwcrjLQQJwRz7b0pGKZ4YVh+KI9qC7s8vBbL8xByps61Fs5
-	 Yz5yNM6QngFMLYkaG3VnH7dX1Ry7+1ny/tfb84aFv9OSAJguwQmlPL4+YV6u69uObE
-	 vd11YhAu3lXV7Z+TorhNHuSzQLzsmnddmBaqhiqVUyEj778dB+FgpcxFWfyLgmjdom
-	 s2bC/uBs8hsnvTlCOFcFLCzs4C5hP6HlfmmJYiQCh+Er7ZyevccYT/VIMqJSwOJfy/
-	 2436xmwYTY78g==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	s=mail; t=1747736348;
+	bh=9IamjCqlvQvJklBW8oB2MCtgzf/uhXR8hnZBDfqkBCY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ngqMnoV6TclW8p981rXnTE16VJQJ26eVm+bjym3MWdm0qLUZGena3s0d9MhDYIc+M
+	 2zz21qlgzXFmKUEHfo/+eS1NAVWe3OVGhds4uH7LDB+6I5hGoqGPzqfVwLucFBXOH8
+	 lvplK/HLelavKF0A5A5xE+24csGH2s8QZNTPiQPwpGVPll9ocV2QWHrwtDdZYtNn10
+	 rA1kO20dkhGHRfYx4jpmL/w34jAEkO5Qln3enXr5hB+lTQc7aJGYLxfeFl4Rhg4rmH
+	 Lzq1KyYblbirWYGQl0EJRG+Z3FpZPH8wPSDRKM8xfIwDm6UgxLbUOuxgvZI6Kp5/Np
+	 KxvBoN+1THKmw==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 01FE417E1047;
-	Tue, 20 May 2025 12:17:35 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: kernel@collabora.com, Michael Turquette <mturquette@baylibre.com>, 
- Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Garmin Chang <garmin.chang@mediatek.com>, 
- Friday Yang <friday.yang@mediatek.com>, 
- Julien Massot <julien.massot@collabora.com>
-Cc: Conor Dooley <conor.dooley@microchip.com>, linux-clk@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20250516-dtb-check-mt8188-v2-0-fb60bef1b8e1@collabora.com>
-References: <20250516-dtb-check-mt8188-v2-0-fb60bef1b8e1@collabora.com>
-Subject: Re: (subset) [PATCH v2 0/2] mt8188: Fix missing reset DT property
-Message-Id: <174773625593.3349397.17577929635364837450.b4-ty@collabora.com>
-Date: Tue, 20 May 2025 12:17:35 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D938817E0E89;
+	Tue, 20 May 2025 12:19:07 +0200 (CEST)
+Message-ID: <b751c8d6-58ab-4a34-8d0e-a5300834962e@collabora.com>
+Date: Tue, 20 May 2025 12:19:07 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/2] dt-bindings: clock: mediatek: Add #reset-cells
+ property for MT8188
+To: Julien Massot <julien.massot@collabora.com>, kernel@collabora.com,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Garmin Chang <garmin.chang@mediatek.com>,
+ Friday Yang <friday.yang@mediatek.com>
+Cc: Conor Dooley <conor.dooley@microchip.com>, linux-clk@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20250516-dtb-check-mt8188-v2-0-fb60bef1b8e1@collabora.com>
+ <20250516-dtb-check-mt8188-v2-1-fb60bef1b8e1@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250516-dtb-check-mt8188-v2-1-fb60bef1b8e1@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250520_031738_518037_7171E2BE 
-X-CRM114-Status: UNSURE (   8.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250520_031910_214399_49237DAC 
+X-CRM114-Status: GOOD (  14.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,25 +83,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 16 May 2025 16:12:12 +0200, Julien Massot wrote:
-> This patch series addresses some issues found in the MediaTek MT8188 device tree
-> and its corresponding bindings:
+Il 16/05/25 16:12, Julien Massot ha scritto:
+> The '#reset-cells' property is permitted for some of the MT8188
+> clock controllers, but not listed as a valid property.
 > 
-> The #reset-cells property was missing in the MT8188 clock controller binding and
-> device tree nodes. This causes DT validation errors.
-> 
-> Patch 1 updates the binding to declare #reset-cells as a valid property.
-> Patch 2 adds #reset-cells to all affected nodes in mt8188.dtsi.
-> 
-> [...]
+> Fixes: 9a5cd59640ac ("dt-bindings: clock: mediatek: Add SMI LARBs reset for MT8188")
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Julien Massot <julien.massot@collabora.com>
 
-Applied to v6.15-next/dts64, thanks!
+Stephen, please don't forget to pick this one, so that we resolve all those
+warnings :-)
 
-[2/2] arm64: dts: mediatek: mt8188: Add missing #reset-cells property
-      commit: fb77e7878bea92e7329b262e728eb6b4ac2d8768
-
-Cheers,
+Thanks!
 Angelo
+
+> ---
+>   Documentation/devicetree/bindings/clock/mediatek,mt8188-clock.yaml | 3 +++
+>   1 file changed, 3 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt8188-clock.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt8188-clock.yaml
+> index 2985c8c717d72888dd49f1f6249a9e2594d8a38d..5403242545ab12a7736ed4fbac26008aa955c724 100644
+> --- a/Documentation/devicetree/bindings/clock/mediatek,mt8188-clock.yaml
+> +++ b/Documentation/devicetree/bindings/clock/mediatek,mt8188-clock.yaml
+> @@ -52,6 +52,9 @@ properties:
+>     '#clock-cells':
+>       const: 1
+>   
+> +  '#reset-cells':
+> +    const: 1
+> +
+>   required:
+>     - compatible
+>     - reg
+> 
 
 
 
