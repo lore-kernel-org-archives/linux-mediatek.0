@@ -4,71 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 528E4C54E71
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 May 2025 19:39:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B92BEC3DA6D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 May 2025 20:19:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GGN2DKtoUxJ0wp+1EIu6zodshBKTS+vpa4PsMQJFvI4=; b=mM+jcN5yln6piXslmc5IUA8xzu
-	6Lk8iGx8pJ1C8vyBkbw7bFzEzw/nPMPBlDiQiCo4GhktTj+nY9fjtiW08jlYLyf/KSicc+WrvGIKY
-	JiqWpm0ZPZJFeAgLBxT+SKXWokevXtMQslnH+NXptVLwoDAduJpIqUlRGQUntKK9RtJLqrNrz7jxU
-	6u7q0+MKh+odKOMAR0ICVB9POn6ur40OwufdoWigH+nczGspechlb3pUPoEcFXWb7zLZVjzJvH0NC
-	IDnS3so+J3sgI32l4i6bswM4yMk5gnSS6rjvvIrlPwZlvTz3x45TCpiFmZFu9NGXEbHETKRfaxqC+
-	V98xhfNg==;
+	bh=cOpxo2nrCrAcfyxVcWSqYGBPoXDE0PWkTANOWymUEsg=; b=WWI/+I3I91fpYhZKx9nzTgmNjB
+	jFJmbBFUz0y0G2wHD5/FdLsBD4/KiVuEHhKLfBDiYGBVaWcw+yq5UedAN80yyUaU4jTXLB6XRzDLN
+	RLrl8MDTsMgRLnLUOdHy2chzv1dJW1p2qkPhEmTUxF32hXiQD7icbKVzr9qwTX2sr7EAjYd6QlCQV
+	A+kIvUUCnn9oW5dzGnkLRkyZo0ltX2bgzNxLJyVbcra9Mk5fQIhKGpApCaHYIWnhNjpwPEBmaFkVS
+	5T4xeWbn7lv/pDQzvP71iRLvh+bPGg9eFAKuHrTAKt0FkDJQ7op4K604Lo27zsXFxIRbFt81m0SCX
+	FhMaapkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHSoS-0000000DxUq-1c7P;
-	Tue, 20 May 2025 19:39:44 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uHTR2-0000000E4MA-3Oex;
+	Tue, 20 May 2025 20:19:36 +0000
+Received: from 004.mia.mailroute.net ([199.89.3.7])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHSX4-0000000Durn-1CX0;
-	Tue, 20 May 2025 19:21:47 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id CC89A5C5A7A;
-	Tue, 20 May 2025 19:19:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A873FC4CEE9;
-	Tue, 20 May 2025 19:21:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747768903;
-	bh=vs3CFjXmqEXOSPVSSq2eRt847mz0iU3nVHHR5d/56uk=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=tTelEoS/+Ch4CXVNu8XnwfONMGSWq32RyBUgHsQLJycqZhkyFy3NXwHEqtfi+hb7h
-	 TyOmRv4IMy4Gd2WTDz27ccWRdaPPu+r3YIKz8DvEFJidFUb9IxOpj6oHQWyRbFp8eX
-	 MMT0xXZsFI9kL+JS1iv/TQPw7dbxO5rOJo8xFhixQY2N5YYe5tuvGzTj9W6NymERve
-	 FV7KENOfVGyPWgENAPjQCx0e+4yOdxsA8GpricQpQ1d+oO/ZlZ1uArSJ/Ow2IOHqEq
-	 HFwmH9TW0CaBA7evhoWPwCeEuCwBp/3xgXqXWqgLPiJLR+kDExmTJDGvCBClEPQxDL
-	 u3iA1N+Lpl9LQ==
-Date: Tue, 20 May 2025 12:21:41 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Jinjian Song <jinjian.song@fibocom.com>
-Cc: andrew+netdev@lunn.ch, angelogioacchino.delregno@collabora.com,
- chandrashekar.devegowda@intel.com, chiranjeevi.rapolu@linux.intel.com,
- corbet@lwn.net, danielwinkler@google.com, davem@davemloft.net,
- edumazet@google.com, haijun.liu@mediatek.com, helgaas@kernel.org,
- horms@kernel.org, johannes@sipsolutions.net, korneld@google.com,
- linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- loic.poulain@linaro.org, m.chetan.kumar@linux.intel.com,
- matthias.bgg@gmail.com, netdev@vger.kernel.org, pabeni@redhat.com,
- rafael.wang@fibocom.com, ricardo.martinez@linux.intel.com,
- ryazanov.s.a@gmail.com
-Subject: Re: [net-next v1] net: wwan: t7xx: Parameterize data plane RX BAT
- and FAG count
-Message-ID: <20250520122141.025616c9@kernel.org>
-In-Reply-To: <20250516084320.66998caf@kernel.org>
-References: <20250514104728.10869-1-jinjian.song@fibocom.com>
-	<20250515180858.2568d930@kernel.org>
-	<20250516084320.66998caf@kernel.org>
+	id 1uHTM5-0000000E3jr-0xS7;
+	Tue, 20 May 2025 20:14:30 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 004.mia.mailroute.net (Postfix) with ESMTP id 4b25P35f1Lzm0yTm;
+	Tue, 20 May 2025 20:14:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1747772052; x=1750364053; bh=cOpxo2nrCrAcfyxVcWSqYGBP
+	oXDE0PWkTANOWymUEsg=; b=JilRvis5bHi/wZFe2m8v0w2+PC7/6DB4obj17Kof
+	eHJhkGNfePOL3SeEPkt4wCM3egj8x/cenAPWf0pr6swtLJyfDo3ZylN4Q8VKyqcz
+	u42nRNvgUTz9akwxiX9Zorv5vULTWgoO0GpxQxXzE6c7Y7JPOMEu2Go2nLow3BVG
+	kxhNESxlZtGuHv5U3uj7TV01T3AyqFniJ30vueHTk40xnJ0ih3p5LPzA4z5vddMl
+	OA80G3ECafKEgK10bCOb2UOdbxmV0dU54ksPzkyMwez+WlubKxpi4DF9reHIGAXe
+	IywTpbcFGcI3oTBqnCHJJ12fV5W9vYLyOo+qZxrFgxRfIQ==
+X-Virus-Scanned: by MailRoute
+Received: from 004.mia.mailroute.net ([127.0.0.1])
+ by localhost (004.mia [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id 1yHhljgweE0s; Tue, 20 May 2025 20:14:12 +0000 (UTC)
+Received: from [100.66.154.22] (unknown [104.135.204.82])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bvanassche@acm.org)
+	by 004.mia.mailroute.net (Postfix) with ESMTPSA id 4b25Nm3Ftpzm0ySm;
+	Tue, 20 May 2025 20:13:59 +0000 (UTC)
+Message-ID: <3ba29109-86d8-4bc1-8f2f-49fa2e56673e@acm.org>
+Date: Tue, 20 May 2025 13:13:57 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5] ufs: core: Add HID support
+To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
+ "avri.altman@wdc.com" <avri.altman@wdc.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "tanghuan@vivo.com" <tanghuan@vivo.com>,
+ "quic_nguyenb@quicinc.com" <quic_nguyenb@quicinc.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "manivannan.sadhasivam@linaro.org" <manivannan.sadhasivam@linaro.org>,
+ "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
+ "luhongfei@vivo.com" <luhongfei@vivo.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "James.Bottomley@HansenPartnership.com"
+ <James.Bottomley@HansenPartnership.com>,
+ "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>
+Cc: "opensource.kernel@vivo.com" <opensource.kernel@vivo.com>,
+ "wenxing.cheng@vivo.com" <wenxing.cheng@vivo.com>
+References: <20250520094054.313-1-tanghuan@vivo.com>
+ <ab468bb26dafca673d7ffca7dff519b7cf024cdc.camel@mediatek.com>
+Content-Language: en-US
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <ab468bb26dafca673d7ffca7dff519b7cf024cdc.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250520_122146_376096_E2926DBE 
-X-CRM114-Status: UNSURE (   6.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250520_131429_357061_25B4692A 
+X-CRM114-Status: GOOD (  12.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,10 +99,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 20 May 2025 10:59:34 +0800 Jinjian Song wrote:
->   If it's not feasible to directly add parameters for configuring this RX buffer(BAT/FAG) to 
-> the mtk_t7xx driver, would it be allowed to add aparameter for a default configuration 
-> ratio (1/2, 1/4)? Or is it not recommended to use driver parameters for mtk_t7xx driver.
+On 5/20/25 6:14 AM, Peter Wang (=E7=8E=8B=E4=BF=A1=E5=8F=8B) wrote:
+> On Tue, 2025-05-20 at 17:40 +0800, Huan Tang wrote:
+>> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+>> index 3e2097e65964..8ccd923a5761 100644
+>> --- a/drivers/ufs/core/ufshcd.c
+>> +++ b/drivers/ufs/core/ufshcd.c
+>> @@ -8390,6 +8390,10 @@ static int ufs_get_device_desc(struct ufs_hba
+>> *hba)
+>>=20
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 dev_info->rtt_cap =3D desc_=
+buf[DEVICE_DESC_PARAM_RTT_CAP];
+>>=20
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 dev_info->hid_sup =3D get_unalig=
+ned_be32(desc_buf +
+>> +                             =20
+>> DEVICE_DESC_PARAM_EXT_UFS_FEATURE_SUP) &
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 UFS_DEV_HID_SUPPORT;
+>> +
+>>=20
+>=20
+> Could add the double negation (!!) ensures the value is exactly 0 or 1.
+> dev_info->hid_sup =3D !!(get_unaligned_be32(desc_buf +
+>              DEVICE_DESC_PARAM_EXT_UFS_FEATURE_SUP) &
+>              UFS_DEV_HID_SUPPORT);
 
-Looks into devlink params then
+Hi Peter,
+
+I do not agree that this change is required. ufs_dev_info.hid_sup has=20
+type bool and hence the compiler will convert the result of the binary
+and operation implicitly into a boolean value (0/1). From the C23
+standard: "When any scalar value is converted to bool, the result is
+false if the value is a zero (for arithmetic types), null (for pointer
+types), or the scalar has type nullptr_t; otherwise, the result is
+true."
+
+A double negation does not occur elsewhere in the kernel if an integer
+value is assigned to a boolean variable so I think that it shouldn't be
+added here either.
+
+Bart.
 
