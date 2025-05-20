@@ -4,64 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D4B3C3ABDD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 May 2025 11:50:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8415C3ABDD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 May 2025 11:57:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yVMruBjkbknzy2tiOwCMvlk3r4q1i7D7yhVNVuwmUI4=; b=iqSHTWr6zvOSdth96CZLTieSuu
-	c4mOIMc09MLBhdBg/eeSOl4UgnUJ1ey7Al/u14bpcGXkOBlEMjRfiLiFobagAG2ShbgZvX5AK4nOr
-	aOchFEfjvnHCa1lf95EcvoMO0jCnX2nclIxj3nL5xBFowmZvQ+9VwNasbVyS0LgLuSCSHqVuHTcVU
-	77W0H2WNIV+jJZTggDroOrN7TAkqkKJG1oY74IHcAP7DxXK1UY60gUIK5yCheF5VZ92oe2PimwJSn
-	yfTXGElq24r39x2193EId7LzkyS3d9V4/f32w9oXY5YQpM4zNAVfyIQ8JXLAHZH7H7oFqQBr7EWRE
-	f4/lZqsw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=DWgu5lBfL5XpJjjET0WzNaYSrku+BoCHnp93wZOvIz8=; b=GWFsjzIh16omj7
+	B5w32iabDID9ByE8hYUdYHRMO8JMxN7hwpW6TnwAUd81vDidM4wZz9GfgtIn1B4mgtahTJto4hhcE
+	UMJ3EZ+8JornMzTSasv35slEAsQP1M2yVA8saof5EUlQ7cZaR0/0DAfOWRGCa/rzsplAMrS0wChYR
+	zHq0prYzbr3DWjvbHmtMxgaQqgcAvdHoZQG1w+NTydzJ9DaaeKtStEv/LuJtknb3U1CQo5UeFDid/
+	4DfbV0Hr7jpXQk2OyIgtf4q8/C6iXHQO4vzejXzy/qs8++B0+ulWMQ1A0AJ+hoG6RMVAS5tGEjCoS
+	I/RynKvh6K6xuv6iUL1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHLUT-0000000Cihu-2iiY;
-	Tue, 20 May 2025 11:50:37 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uHLal-0000000CkDl-39NI;
+	Tue, 20 May 2025 11:57:07 +0000
+Received: from mxout3.routing.net ([2a03:2900:1:a::8])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHLO6-0000000Ch5h-3CiP;
-	Tue, 20 May 2025 11:44:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1747741441;
-	bh=0reCPQbdTGw1NjQ0NvjfPr/9W8uADPNGHMLSJN9cyeo=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=CcinnoKGIXH6RWXq0MfdR/4J1GoUl5wR6fLOhJa7D1vaee3Ulrt/mWq9niBpts65K
-	 T//eWPLtHAroDs+mOm6OW8yNRfrkTT0gd4zCkshOilF40yzuRxqcIc8TGxJzXvMbPC
-	 Ggs/7ezLg37ZH7RF6DNvNWHUHUk3jEJrHuixEWvRHSQJ+6iF2zP4tllIsslukHD+T3
-	 HYoQ6Eo4639ISKGYk2/1OA87ISOCBLm+NZBKnqi8aq76L5Am34ep3RS/o/NKmG3gXu
-	 zG2SXxZr36+bXvRLIXynwFolPF8lIIXNty01VTFVlsS0tn/jlB7IfmlZVpgxopHyKO
-	 e64heN/6ynZeA==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B90E917E0E2D;
-	Tue, 20 May 2025 13:44:00 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: arm-soc <arm@kernel.org>,
-	soc <soc@kernel.org>
-Cc: matthias.bgg@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [GIT,PULL,2/2] MediaTek defconfig updates for v6.16
-Date: Tue, 20 May 2025 13:43:52 +0200
-Message-ID: <20250520114356.1194450-2-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250520114356.1194450-1-angelogioacchino.delregno@collabora.com>
-References: <20250520114356.1194450-1-angelogioacchino.delregno@collabora.com>
+	id 1uHLXY-0000000CjKl-3lKT;
+	Tue, 20 May 2025 11:53:50 +0000
+Received: from mxbox4.masterlogin.de (unknown [192.168.10.79])
+	by mxout3.routing.net (Postfix) with ESMTP id E4B4B61625;
+	Tue, 20 May 2025 11:53:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1747742023;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=DWgu5lBfL5XpJjjET0WzNaYSrku+BoCHnp93wZOvIz8=;
+	b=jhZ6H4dmH4PqaBbiMtuQINMyJgIfDAivcHRGi8Lw23Mjc4lMh8E5D0hNQqcQC5EmT8afWX
+	Mo5cQ5OWOrIJBTK/GhIQXhYxJynUIKDOhuf6ZGuA7+PujHyTbiBhnLIXs60lGNFn3rhk7U
+	7mcN+CQ8DR158tEYKD9Cs8l4GWzftLk=
+Received: from [IPv6:::1] (unknown [IPv6:2a01:599:a12:a881:7bc8:fcdc:bd77:c992])
+	by mxbox4.masterlogin.de (Postfix) with ESMTPSA id 91EC9801A1;
+	Tue, 20 May 2025 11:53:41 +0000 (UTC)
+Date: Tue, 20 May 2025 13:53:43 +0200
+From: Frank Wunderlich <linux@fw-web.de>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v2 06/14] arm64: dts: mediatek: mt7988: add cci node
+User-Agent: K-9 Mail for Android
+In-Reply-To: <7a563716-a7c6-446d-b66d-bc71c6207ef6@collabora.com>
+References: <20250516180147.10416-1-linux@fw-web.de> <20250516180147.10416-8-linux@fw-web.de> <7a563716-a7c6-446d-b66d-bc71c6207ef6@collabora.com>
+Message-ID: <4BEF26F3-957D-4BB4-BF7B-69DCFCC513DC@fw-web.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Mail-ID: 2d52479b-b83b-47c9-978a-066fc5c63c1d
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250520_044402_973720_208C38AE 
-X-CRM114-Status: UNSURE (   8.03  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250520_045349_095900_CDA6D2FB 
+X-CRM114-Status: GOOD (  11.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,47 +75,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Landen Chao <Landen.Chao@mediatek.com>, =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Lorenzo Bianconi <lorenzo@kernel.org>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The following changes since commit 0af2f6be1b4281385b618cb86ad946eded089ac8:
+Am 20=2E Mai 2025 13:27:23 MESZ schrieb AngeloGioacchino Del Regno <angelog=
+ioacchino=2Edelregno@collabora=2Ecom>:
+>Il 16/05/25 20:01, Frank Wunderlich ha scritto:
+>> From: Frank Wunderlich <frank-w@public-files=2Ede>
+>>=20
+>> Add cci devicetree node for cpu frequency scaling=2E
+>>=20
+>> Signed-off-by: Daniel Golle <daniel@makrotopia=2Eorg>
+>> Signed-off-by: Frank Wunderlich <frank-w@public-files=2Ede>
+>> ---
+>>   arch/arm64/boot/dts/mediatek/mt7988a=2Edtsi | 33 ++++++++++++++++++++=
++++
+>>   1 file changed, 33 insertions(+)
+>>=20
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt7988a=2Edtsi b/arch/arm64/b=
+oot/dts/mediatek/mt7988a=2Edtsi
+>> index ab6fc09940b8=2E=2E64466acb0e71 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt7988a=2Edtsi
+>> +++ b/arch/arm64/boot/dts/mediatek/mt7988a=2Edtsi
+>> @@ -12,6 +12,35 @@ / {
+>>   	#address-cells =3D <2>;
+>>   	#size-cells =3D <2>;
+>>   +	cci: cci {
+>> +		compatible =3D "mediatek,mt8183-cci";
+>
+>While you can keep the mediatek,mt8183-cci fallback, this needs its own c=
+ompatible
+>as "mediatek,mt7988-cci", therefore, I had to drop this patch from the on=
+es that I
+>picked=2E
+>
+>Please add the new compatible both here and in the binding=2E
 
-  Linux 6.15-rc1 (2025-04-06 13:11:33 -0700)
+Ok,but you have to drop last one too (add proc-supply) else there are buil=
+d-errors=2E
 
-are available in the Git repository at:
+>Cheers,
+>Angelo
+>
 
-  https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git tags/mtk-defconfig-for-v6.16
 
-for you to fetch changes up to 543e0ecee19ec6fe7bca894057f7f9ae063dd5a4:
-
-  arm64: defconfig: Enable configs for MediaTek Genio EVK boards (2025-05-14 15:47:58 +0200)
-
-----------------------------------------------------------------
-MediaTek ARM64 defconfig updates for v6.16
-
-This enables some drivers as modules to enable fully booting
-some of the supported MediaTek boards;
-
-In particular, this enables the following drivers as module:
- - PHYs for PCIe, HDMI, DSI and DisplayPort for all boards
- - MediaTek UART DMA Controller, also for all boards
- - MDP3 driver for MT8186/88/95 (Chromebooks and Genio variants)
- - Auxiliary ADC for the MT6357/58/59 PMICs found on both Genio EVK
-   and Chromebooks based on designs with MT8183/86/88/92/95 SoCs
- - iTE IT5205 Type-C USB Alternate Mode Passive MUX, found
-   on both Chromebooks and Genio EVKs with MT8188/95
- - Richtek RT1715 Type-C PD Controller, found on all Genio boards
- - Himax HX8279 DSI panel DriverIC and KD070FHFID015 panel, found
-   on various revisions of the Genio Evaluation Kit boards.
-
-----------------------------------------------------------------
-Nícolas F. R. A. Prado (1):
-      arm64: defconfig: Enable configs for MediaTek Genio EVK boards
-
-Vignesh Raman (1):
-      arm64: defconfig: mediatek: enable PHY drivers
-
- arch/arm64/configs/defconfig | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
-
+regards Frank
 
