@@ -4,64 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50623C3DA6D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 May 2025 10:10:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF26CC3ABDD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 May 2025 10:12:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3D4nH1p+naF8oioYCdct+bZpmppfDAVKQQ0pBSg6hJg=; b=e3rAS3CuGln8De2IyIB5nGqF3i
-	XtEiLYAXXKOFwIWAex1+Zpxg3fqqx7pWvOsf7WKjRbK08mRXbqkeGNUHYHTuEFMUKj2WpdN8wWjtb
-	QtGsiwuW8IAwQtwtGYjyQvDHp6LVobLKV4o/BVoTt9wGuz6HWPM6RjVLdQ/tIristn7aZ8m/alk0t
-	UmC9h8ChzP6a2Mt4dMlcegXse3Ph70H+8WeDzrjusYwOAPNMGUWY+UEav6WSMu0o++EB9cuCHf8N6
-	zWQ8KDy29sIKudZFK7MbbFP2huB8Er181UOr8U79+ndb1pH5Y3pi6zOB0YMzb+/ZeFcdck4U0ZE9K
-	dbzxqT5Q==;
+	bh=bEfqdcgr5TL7agY2SeC7Rt9BtUOPUzbfT1nrDl5zw9s=; b=VMtiFFjKGq+zvf93bK58NH5Nqj
+	MiNhdcLdN7BcJNa9OupA2Mh4ecnxu0WFoSl53tQ2ZNblqTm21Eh8z26IC5keLI6G0JVMlJWIhiOSe
+	4zNWZpH6tYawmzExUlhN7G1iQjfqX/D2A4KpDxRw3ZCHXx7tG1jtMeel8gV5yfo1HN1wQlaBdhH9S
+	eBFNltqyDL4ULlKWpZd+0KKwyVKHGjmK18spq7fY5z8dlJDCwxERooon94HKZdhb2UvuxKj2tdgCN
+	ad/iQfZZVoyfTN68nWRPCVlYNUJlyrmdZgjGZ4IHS/WCTaML0gkTF0GEmUxQK4xVuRlPsh30hwHWO
+	XGowgLKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHJvC-0000000CIYE-1kHk;
-	Tue, 20 May 2025 10:10:06 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uHJxG-0000000CInd-3ovj;
+	Tue, 20 May 2025 10:12:14 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHJW2-0000000CEce-4C1w;
+	id 1uHJW2-0000000CEcd-3B1O;
 	Tue, 20 May 2025 09:44:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1747734245;
-	bh=81YVmuYmtevEfhX9x4J6/zHe3QClnYVcSg/NVZegBSI=;
+	s=mail; t=1747734244;
+	bh=WaDOA0nhLVn0g1cG6OcvRA1CfBIZaKfZuXaM3IJmSSg=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=QBUiKiZwaqEouo9eYJQ6b9MM0XPCBI2jnnCyimGiAG8Ulr6txqDgdAnGxC89n/ke6
-	 LjiWvj4MUFLUHnenR3Ot+o7YevHG/HAcPXNs4PqXLw+Nq6w2X34NxJ1Fr8uKnIOHcg
-	 gvZF/8Ma+GR1k92PS6d4UBI3fxMv1HFytDIfM4SuVopS2VS61oEUb0vseqY+dvu0BL
-	 vEYCuoyzb1iSqUxVKPWIV7knIxEG5uPsVuEnszDKj2qqhxZX0e64FUZTe+8+T1VTVq
-	 IHA1buGl4nlqICet1BMStUrFoHZAG1o1DzdUi5cFzQCK+L9u/mndtZX7BF44Tkh3zc
-	 FH8J8SOWKxT1w==
+	b=RcxKMs/DjTuhcwv/Qud8AMpfWEmOOzGLo49z2+n6mJc88iW3vTfZ+KlmoTtlUBNcs
+	 43h5nuWQQLmqIhpXxFqipz+NA0PZJyrNR3jL+m80XnC3/4AZ2KBG8MBgDbdbPljq3v
+	 NyCEzRaIXHGzZdNyGaxc/l47F5btNls6+WFL91w22LKDT8oeznNK4OCO/0jbp2WLqc
+	 kyj7/DpBnYBu7l2sDaZVEhFMjmTDxsnJ0d6KqdEmMADBCmUnU9gipUxKD7mb83Ukfb
+	 uc3O0tyJWrwCMs1RYGG1qsZlRyIjTG1HBCDHbDPhkKxuWf3uEjKtemXBvaE94/b686
+	 4A7IWsWhC/b4g==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id CFB4A17E0FE5;
-	Tue, 20 May 2025 11:44:04 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 52E7F17E0FD3;
+	Tue, 20 May 2025 11:44:03 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Catalin Marinas <catalin.marinas@arm.com>, 
- Will Deacon <will@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Cc: kernel@collabora.com, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20250513-genio-defconfig-v1-1-c3862f91b6b2@collabora.com>
-References: <20250513-genio-defconfig-v1-1-c3862f91b6b2@collabora.com>
-Subject: Re: [PATCH] arm64: defconfig: Enable configs for MediaTek Genio
- EVK boards
-Message-Id: <174773424476.2901578.7109647684484482687.b4-ty@collabora.com>
-Date: Tue, 20 May 2025 11:44:04 +0200
+To: linux-mediatek@lists.infradead.org, 
+ Vignesh Raman <vignesh.raman@collabora.com>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, 
+ nfraprado@collabora.com, krzk@kernel.org, daniels@collabora.com, 
+ airlied@gmail.com, simona.vetter@ffwll.ch, arnd@kernel.org, 
+ ck.hu@mediatek.com, laura.nao@collabora.com, matthias.bgg@gmail.com, 
+ tzimmermann@suse.de, mripard@kernel.org, lumag@kernel.org, 
+ ville.syrjala@linux.intel.com, jani.nikula@intel.com, arnd@arndb.de, 
+ geert+renesas@glider.be, wenst@chromium.org, 
+ linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, 
+ linux-kernel@vger.kernel.org
+In-Reply-To: <20250512131933.1247830-1-vignesh.raman@collabora.com>
+References: <20250512131933.1247830-1-vignesh.raman@collabora.com>
+Subject: Re: [PATCH v4] arm64: defconfig: mediatek: enable PHY drivers
+Message-Id: <174773424323.2901578.2896521674718860573.b4-ty@collabora.com>
+Date: Tue, 20 May 2025 11:44:03 +0200
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250520_024407_183464_C067725F 
-X-CRM114-Status: UNSURE (   7.89  )
+X-CRM114-CacheID: sfid-20250520_024406_948474_3999369E 
+X-CRM114-Status: UNSURE (   5.62  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,21 +82,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 13 May 2025 16:59:41 -0400, Nícolas F. R. A. Prado wrote:
-> Enable the missing configs to get all devices on the MediaTek Genio
-> 1200, 700, 510 and 350 EVK boards probing, as indicated by the DT
-> kselftest.
+On Mon, 12 May 2025 18:49:24 +0530, Vignesh Raman wrote:
+> The mediatek display driver fails to probe on mt8173-elm-hana and
+> mt8183-kukui-jacuzzi-juniper-sku16 in v6.14-rc4 due to missing PHY
+> configurations.
 > 
-> This includes support for:
-> 
-> Genio 1200/700/510/350:
-> * MT6359/MT6357 PMICs Auxiliary ADC
+> Commit 924d66011f24 ("drm/mediatek: stop selecting foreign drivers")
+> stopped selecting the MediaTek PHY drivers, requiring them to be
+> explicitly enabled in defconfig.
 > 
 > [...]
 
 Applied to v6.15-next/dts64, thanks!
 
-[1/1] arm64: defconfig: Enable configs for MediaTek Genio EVK boards
+[1/1] arm64: defconfig: mediatek: enable PHY drivers
       (no commit info)
 
 Cheers,
