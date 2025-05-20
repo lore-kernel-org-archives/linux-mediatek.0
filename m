@@ -4,124 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD7D0C3ABDD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 May 2025 11:41:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A655C3DA6D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 May 2025 11:48:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UExusS9wGruu2jirSHupY+orQc1NwlzDHTp5gtaUL6E=; b=4fO+oGFU46vhUbnQwbiac8FFZV
-	kIzLAkZidC/6dqBQFEYPuxjd6YWMmMfaVnmH4+b9xr2ovFs/yBoqUjnpfDHhiZQkvArv99VrcEa3o
-	qJUtAapuGXb8K5vMj4tAOJwkIorNjAeVIcAlCqDf+QySvqgtUPhda63bVhH4GnKC9J+6iGATO4oDa
-	ncp23prq8KR7KfK1QmkTwP4mQrM9jlDoj2KoxZiBasnOdkmgXMtcRl05ffqixFlvFkLEl2Gzz7bdU
-	uqHdq0NPF5UBIi4Q7N8IBqtWGMBMDzZ0EVSULlgk64/QdfnODogWLPM/TjtIxWJy3s+CRfqMLxVKa
-	XwydmdVA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=72RAk1vbHImwOZfMxJXtUWwsftjJO9P1wTMbTuoJ4rQ=; b=Lf+w8n3/xTa3yDSvmCoJ2jkImT
+	eMQvve8KJlqv7/XmzjeevW68i9JgceAwQ3nFkuWxg//RuNb0c1DN3I5EfHG9VwZInUb7gASbSbv18
+	lProFWDM6P9xJLoNhWc2XVHXcw0G7IMpZycyY1MpPeVtspVPfTPYwargwICCG4iyhw1fdIadb+KVf
+	RfmSlIy93UMeK/th3FkzYSJAogO4ryTUVVj8xOq0xLQoEvqwI23qA4CCsQFpkQ1iBpYliSkUOTh1o
+	/rIXy4ZsNrf8Nw5tsny5hYh7ni4F7iNu35lXqMkSIm6mTfButQ6uO3QXVpFLDB1SqB0yJ4mwwpw4r
+	4JPGNOoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHLM5-0000000Cgim-36zI;
-	Tue, 20 May 2025 11:41:57 +0000
-Received: from mx07-00178001.pphosted.com ([185.132.182.106])
+	id 1uHLSO-0000000CiNm-2Lfe;
+	Tue, 20 May 2025 11:48:28 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHLLv-0000000Cgfz-3Fcl;
-	Tue, 20 May 2025 11:41:49 +0000
-Received: from pps.filterd (m0241204.ppops.net [127.0.0.1])
-	by mx07-00178001.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 54K9UC8E021011;
-	Tue, 20 May 2025 13:41:16 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=selector1; bh=
-	UExusS9wGruu2jirSHupY+orQc1NwlzDHTp5gtaUL6E=; b=GzTXMwsiZejt1O8H
-	HSMOo4JJMYdWKi4XLUZACmweuNUHMXMcoKBaBK4izDYF74vuwBPhTZk6IexHobg/
-	qK9I73asI1F+eYDQZiyzxP43hKUrX/gpKv/++Q/63O4zRbJXsKcyIXJRe8YtHdoV
-	RPwyyY04Tk6DjBcJZpMMLx0wfWgVldqOE1FvIgNQm9RI5S0gb+O/faMVPHN8vYO7
-	xVKBfv+hc1nAbKmBD0/cmEDphgVskJ4VOESdBzuwEbJOODz1O+/U82sx8FwgyLMU
-	7hCq2HGWxCcmbZsgQoNFKYIKbh+ZOklyV2oLZ5i1xQm8eShnTM2y/drHpPFlUzAG
-	h0IOcQ==
-Received: from beta.dmz-ap.st.com (beta.dmz-ap.st.com [138.198.100.35])
-	by mx07-00178001.pphosted.com (PPS) with ESMTPS id 46pht1w43t-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 20 May 2025 13:41:16 +0200 (MEST)
-Received: from euls16034.sgp.st.com (euls16034.sgp.st.com [10.75.44.20])
-	by beta.dmz-ap.st.com (STMicroelectronics) with ESMTP id 1C0F740049;
-	Tue, 20 May 2025 13:38:29 +0200 (CEST)
-Received: from Webmail-eu.st.com (shfdag1node2.st.com [10.75.129.70])
-	by euls16034.sgp.st.com (STMicroelectronics) with ESMTP id 4B551AE2BFA;
-	Tue, 20 May 2025 13:37:16 +0200 (CEST)
-Received: from [10.252.29.31] (10.252.29.31) by SHFDAG1NODE2.st.com
- (10.75.129.70) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Tue, 20 May
- 2025 13:37:13 +0200
-Message-ID: <b1d3f93b-8206-481b-bd8a-d7c0953e0ea5@foss.st.com>
-Date: Tue, 20 May 2025 13:37:12 +0200
+	id 1uHLO6-0000000Ch5f-0fac;
+	Tue, 20 May 2025 11:44:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1747741440;
+	bh=NvPfBC95cpbMqHq/ZrYCPGXtxnr17MynHiOainBiTNU=;
+	h=From:To:Cc:Subject:Date:From;
+	b=jkxhWHN5DwKKgttNYOkJj9NOfHV2KtPzj/f4MdbTcBFtfN92s5uU+E8I+o4Rgk+Z2
+	 /tvsDe0HZXvvg6743JdQny3hW5CB1fjzhvjY9DflofRllOPCAKVJp0+2Aciid6Qgki
+	 X0CzQfVSDu7WyGhwcVfugG3aSQjcynEQnfP6zbkGqr5BdB10Lk2OjaZKR93Kb9fKG/
+	 E0uES9Zc0BaDGIGQzCKneLfrHkzqShOASWeAIgO24egAOGNs+wcRD965iPNcV92e9e
+	 iWP0KW3WO9oCxzSGF5aPCN+0OiZBE7GtsEROmPTq6fvV36LxHILYU9VJhbb5mOuqq9
+	 duAvD6Yz++bVg==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 39A8817E00AD;
+	Tue, 20 May 2025 13:44:00 +0200 (CEST)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: arm-soc <arm@kernel.org>,
+	soc <soc@kernel.org>
+Cc: matthias.bgg@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [GIT,PULL,1/2] Additional MediaTek ARM64 DTS updates for v6.16
+Date: Tue, 20 May 2025 13:43:51 +0200
+Message-ID: <20250520114356.1194450-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 15/22] drm/bridge: stm_lvds: convert to
- devm_drm_bridge_alloc() API
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>,
-        Maarten Lankhorst
-	<maarten.lankhorst@linux.intel.com>,
-        Maxime Ripard <mripard@kernel.org>,
-        Thomas Zimmermann <tzimmermann@suse.de>,
-        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-        Andrzej Hajda <andrzej.hajda@intel.com>,
-        Neil Armstrong <neil.armstrong@linaro.org>,
-        Robert Foss <rfoss@kernel.org>,
-        Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-        Jonas Karlman
-	<jonas@kwiboo.se>,
-        Jernej Skrabec <jernej.skrabec@gmail.com>,
-        Jagan Teki
-	<jagan@amarulasolutions.com>,
-        Shawn Guo <shawnguo@kernel.org>,
-        Sascha Hauer
-	<s.hauer@pengutronix.de>,
-        Pengutronix Kernel Team <kernel@pengutronix.de>,
-        Fabio Estevam <festevam@gmail.com>,
-        Douglas Anderson <dianders@chromium.org>,
-        Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-        Krzysztof Kozlowski
-	<krzk@kernel.org>
-CC: Anusha Srivatsa <asrivats@redhat.com>,
-        Paul Kocialkowski
-	<paulk@sys-base.io>,
-        Dmitry Baryshkov <lumag@kernel.org>, Hui Pu
-	<Hui.Pu@gehealthcare.com>,
-        Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
-        <dri-devel@lists.freedesktop.org>, <asahi@lists.linux.dev>,
-        <linux-kernel@vger.kernel.org>, <chrome-platform@lists.linux.dev>,
-        <imx@lists.linux.dev>, <linux-arm-kernel@lists.infradead.org>,
-        <linux-mediatek@lists.infradead.org>,
-        <linux-amlogic@lists.infradead.org>,
-        <linux-renesas-soc@vger.kernel.org>,
-        <platform-driver-x86@vger.kernel.org>,
-        <linux-samsung-soc@vger.kernel.org>, <linux-arm-msm@vger.kernel.org>,
-        <freedreno@lists.freedesktop.org>,
-        <linux-stm32@st-md-mailman.stormreply.com>,
-        Alexandre Torgue
-	<alexandre.torgue@foss.st.com>,
-        Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-        Philippe Cornu <philippe.cornu@foss.st.com>,
-        Yannick Fertre
-	<yannick.fertre@foss.st.com>
-References: <20250509-drm-bridge-convert-to-alloc-api-v3-0-b8bc1f16d7aa@bootlin.com>
- <20250509-drm-bridge-convert-to-alloc-api-v3-15-b8bc1f16d7aa@bootlin.com>
-Content-Language: en-US
-From: Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>
-In-Reply-To: <20250509-drm-bridge-convert-to-alloc-api-v3-15-b8bc1f16d7aa@bootlin.com>
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.252.29.31]
-X-ClientProxiedBy: EQNCAS1NODE3.st.com (10.75.129.80) To SHFDAG1NODE2.st.com
- (10.75.129.70)
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.0.736,FMLib:17.12.80.40
- definitions=2025-05-20_04,2025-05-16_03,2025-03-28_01
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250520_044148_460860_423EACA1 
-X-CRM114-Status: UNSURE (   7.03  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250520_044402_350800_90D7881E 
+X-CRM114-Status: GOOD (  10.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -136,28 +72,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Luca,
+The following changes since commit 1fe38d2a19950fa6dbc384ee8967c057aef9faf4:
 
-On 5/9/25 15:53, Luca Ceresoli wrote:
-> This is the new API for allocating DRM bridges.
->
-> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
->
-> ---
->
-> Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>
-> Cc: Maxime Coquelin <mcoquelin.stm32@gmail.com>
-> Cc: Philippe Cornu <philippe.cornu@foss.st.com>
-> Cc: Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>
-> Cc: Yannick Fertre <yannick.fertre@foss.st.com>
-> ---
+  arm64: dts: mt6359: Add missing 'compatible' property to regulators node (2025-05-06 10:35:45 +0200)
 
-I went away from keyboard for some time.  Sorry for the delay :
+are available in the Git repository at:
 
-Acked-by: Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>
+  https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git tags/mtk-dts64-for-v6.16-2
 
+for you to fetch changes up to 99af08feb7fad3df79bda1628e4ee8b6eb1f6a32:
 
-Regards,
-Raphaël
+  Revert "arm64: dts: mediatek: mt8390-genio-common: Add firmware-name for scp0" (2025-05-20 13:25:02 +0200)
+
+----------------------------------------------------------------
+Additional MediaTek ARM64 DTS updates for v6.16
+
+This addresses devicetree binding warnings happening on	the
+MDP3 nodes in mt8188 dts, reverts the commit adding the SCP
+firmware-name as strongly suggested by Arnd, and also adds
+some more late commits.
+
+In particular:
+ - MT6359 PMIC
+   - Renamed PMIC RTC node to fix dtbs_check warning
+ - MT7988(A)
+   - Support for SPI controllers was added to SoC and BPI-R4
+   - Support for XSPHY, USB and	PCIe2 was added	as well
+   - Fan and cooling maps were added to	BPI-R4 machine
+   - Added BananaPi R4 2G5 machine variant
+ - MT8365
+   - Added touchscreen support to MT8365 Genio EVK
+ - MT8188
+   - Addressed dtbs_check warnings for MDP3 nodes
+ - MT8390 (Genio)
+   - Reverted SCP firmware-name	addition
+
+----------------------------------------------------------------
+AngeloGioacchino Del Regno (2):
+      arm64: dts: mediatek: mt8188: Address binding warnings for MDP3 nodes
+      Revert "arm64: dts: mediatek: mt8390-genio-common: Add firmware-name for scp0"
+
+Frank Wunderlich (9):
+      dt-bindings: arm: mediatek: add bpi-r4 2g5 phy variant
+      arm64: dts: mediatek: mt7988a-bpi-r4: allow hw variants of bpi-r4
+      arm64: dts: mediatek: mt7988: Add xsphy for ssusb0/pcie2
+      arm64: dts: mediatek: mt7988a-bpi-r4: enable xsphy
+      arm64: dts: mediatek: mt7988: add spi controllers
+      arm64: dts: mediatek: mt7988: move uart0 and spi1 pins to soc dtsi
+      arm64: dts: mediatek: mt7988: add phy calibration efuse subnodes
+      arm64: dts: mediatek: mt7988a-bpi-r4: Add fan and coolingmaps
+      arm64: dts: mediatek: mt7988a-bpi-r4: configure spi-nodes
+
+Julien Massot (2):
+      arm64: dts: mediatek: mt8188: Add missing #reset-cells property
+      arm64: dts: mt6359: Rename RTC node to match binding expectations
+
+Lorenzo Bianconi (2):
+      arm64: dts: airoha: en7581: Add gpio-ranges property for gpio controller
+      arm64: dts: airoha: en7581: Add PCIe nodes to EN7581 SoC evaluation board
+
+Louis-Alexis Eyraud (1):
+      arm64: dts: mt8365-evk: Add goodix touchscreen support
+
+ Documentation/devicetree/bindings/arm/mediatek.yaml         |   4 +
+ arch/arm64/boot/dts/airoha/en7581-evb.dts                   |  30 ++
+ arch/arm64/boot/dts/airoha/en7581.dtsi                      | 105 ++++++
+ arch/arm64/boot/dts/mediatek/Makefile                       |   2 +
+ arch/arm64/boot/dts/mediatek/mt6359.dtsi                    |   2 +-
+ .../arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts |  11 +
+ arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts    | 400 +----------------------
+ arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi   | 450 ++++++++++++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt7988a.dtsi                   | 115 +++++++
+ arch/arm64/boot/dts/mediatek/mt8188.dtsi                    |  86 +++--
+ arch/arm64/boot/dts/mediatek/mt8365-evk.dts                 |  40 +++
+ arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi       |   1 -
+ 12 files changed, 804 insertions(+), 442 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
 
 
