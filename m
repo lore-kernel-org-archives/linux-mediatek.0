@@ -4,77 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0C96C3DA6D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 May 2025 20:24:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A4F7C54E71
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 May 2025 21:18:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VsWblo70W25KLjzab3RDQK4+FjMs+JwITco0BGNeUJc=; b=GF6U0TAhWYsjsjBZyAS3swVNGw
-	GbDovOkbQdqFll6B60k6NrdAnS/LJNTQ3Cp9Oj2nkIAfQNhQf9d9RRenzAWa7nbt9al6HPwHxfLrl
-	E9XbsrtwAk6bXMKi2lIlaXJju4UperdI0eWdvVrSMFJpxynJRK6ENdbCeN4IJur7sw+4VXmofTyrS
-	RrVTvO15MuzP6Bzk/k9RPEVn6dJpZg1YOxx+DOgXpOUTnZ+F58ICcXmE/atWLfEYfXazEbwL55yGG
-	0nC6mux9/nxYZtBYMEoKATRm8Fh7Urz4Jlqjq3AXCHwUfWsTOkCpR1GtoCrFPP2M9wrUbdkpraVA5
-	+JYwTv4w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=lpPF2VJXReCnKdOWPpgvy9Sy//1InagrNF8aQhhlE4M=; b=ErmXdfBZg8PjjjyfCO9fk4Tzx/
+	GKDucmo1AOHJ4bVfnhwZFOjVUfcZ7UwPWrTcgjmpWN8KjXyMJZ2dOG1NJnoTM35TkNfLvFYDfJFho
+	O+9yVSkdzouOW1KksFLIdQCvD5u7xoLamcMLI6JnpbJRDOBfk/wNeyKX2xbyCY9gK2OVtBwv7nWBr
+	9kK0KvBatLZ6mKBZqsXDFIrUiQ8l8OwTOVv/4t4YEkacgGxvgltyex4bqDsPP+g+yWcWigdzC2YWv
+	Oers7mDFmu77X9ftgnAimzHYnG2WYqCL93N2wcj23iJGtlvEmV0wA2dZQK42zrlTx9uchgRP2WtTT
+	yg7o6KXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHTVt-0000000E4pc-3ekj;
-	Tue, 20 May 2025 20:24:37 +0000
-Received: from 004.mia.mailroute.net ([199.89.3.7])
+	id 1uHULx-0000000EASP-3f2k;
+	Tue, 20 May 2025 21:18:25 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHTTj-0000000E4hE-27MX;
-	Tue, 20 May 2025 20:22:24 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 004.mia.mailroute.net (Postfix) with ESMTP id 4b25ZQ3hKWzm0yVW;
-	Tue, 20 May 2025 20:22:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1747772539; x=1750364540; bh=VsWblo70W25KLjzab3RDQK4+
-	FjMs+JwITco0BGNeUJc=; b=pBIR+Zvh4Q7rLh9RZvGG64FHSWIbR18L0w0sCyiM
-	btVI41klJaHxTtmoaFZ6deEOiM4BBh/9lMca/kD4klUMO1jrxUUspO1xf7FKxWOZ
-	7BiZxUpK1YolQgYDd47Xpo61TBOTzc0Rb/J9WhyCu+9ht7x0VrOc8lpQUE6iSCqi
-	I1xit/mlup5HSQCdSWhXFffbAt+mIoI8CYgvHAuerAuMSh2yNU/GjK27St8Sqpz3
-	U1ZS/0A6QluC4E3gwz+7+hVgZbJUcPQHefRU8Jr1aq8pg24Cwx6LDqk+KIVH5YvT
-	f/1Bxnb9oiW3DoqWwusNrFo267n5iMO2RbE9FC+PSzvzbg==
-X-Virus-Scanned: by MailRoute
-Received: from 004.mia.mailroute.net ([127.0.0.1])
- by localhost (004.mia [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id g1LDX6Kg9hux; Tue, 20 May 2025 20:22:19 +0000 (UTC)
-Received: from [100.66.154.22] (unknown [104.135.204.82])
+	id 1uHUJm-0000000EAEa-1TAf;
+	Tue, 20 May 2025 21:16:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1747775767;
+	bh=8CteB6p8zUb1LKQ6PaOVnAOUgbNw2GtdCnfzZooLa/I=;
+	h=From:Date:Subject:To:Cc:From;
+	b=QV65h/1FtwxUZuwlMTUNurcfKob+MktS0xOomWwHNFl0RFWjnK8hpu5iC0245zjt/
+	 l8NKnwotzs/tlSLdl7OsesMPYEFVrkpoehJGLUbC+C3ULIYISZ8Qx6aQrWayeoS/1r
+	 Ne+98lSueF+4LjtEPdQDHq6oYV4OJQ32figLR+z5PPVqgXp30BKhDoIXAb6RdGF0zX
+	 Nf/07Hi58xML+D50+kO/oBMj1aJy+4EPRTidvBTVdmua9hO8UmbIPKELv5uik3P+uZ
+	 3uRPB3A7/vubjP9BVX5q/FKkj6S1qBmbT/IauivCJ/+rlc618BxUicfAgrn5kPJnAL
+	 MdC2EGcvsVzFA==
+Received: from [192.168.1.63] (unknown [IPv6:2600:4041:5b1a:9400:99d:464c:62e0:2118])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 004.mia.mailroute.net (Postfix) with ESMTPSA id 4b25Z71qClzm0pKq;
-	Tue, 20 May 2025 20:22:05 +0000 (UTC)
-Message-ID: <b0ec5b8a-b303-4e5b-bca9-4524eba9fa31@acm.org>
-Date: Tue, 20 May 2025 13:22:05 -0700
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id F226017E0FD3;
+	Tue, 20 May 2025 23:16:04 +0200 (CEST)
+From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Date: Tue, 20 May 2025 17:15:58 -0400
+Subject: [PATCH v2] pinctrl: mediatek: eint: Fix invalid pointer
+ dereference for v1 platforms
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5] ufs: core: Add HID support
-To: Bean Huo <huobean@gmail.com>, Huan Tang <tanghuan@vivo.com>,
- alim.akhtar@samsung.com, avri.altman@wdc.com,
- James.Bottomley@HansenPartnership.com, martin.petersen@oracle.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- peter.wang@mediatek.com, manivannan.sadhasivam@linaro.org,
- quic_nguyenb@quicinc.com, luhongfei@vivo.com, linux-scsi@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Cc: opensource.kernel@vivo.com, Wenxing Cheng <wenxing.cheng@vivo.com>
-References: <20250520094054.313-1-tanghuan@vivo.com>
- <32c36b58dcdbb09403fa9dccff28b6bee76882e0.camel@gmail.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <32c36b58dcdbb09403fa9dccff28b6bee76882e0.camel@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20250520-genio-350-eint-null-ptr-deref-fix-v2-1-6a3ca966a7ba@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAA3xLGgC/5WNQQ6DIBBFr2JYdxpAsbWr3qNxQWHUSSgYsMbGc
+ PdSb9Dl+z95b2cJI2Fit2pnEVdKFHwBeaqYmbQfEcgWZpJLxZXoYERPAWrFAckv4N/OwbxEsBh
+ xgIE2EFq0tdadtteGFc9cDtqOxqMvPFFaQvwcyVX81n/sqwAB/NI0yrZWSlPfTXBOP0PUZxNer
+ M85fwHWIO4H1gAAAA==
+X-Change-ID: 20250519-genio-350-eint-null-ptr-deref-fix-1a163aa9ad84
+To: Sean Wang <sean.wang@kernel.org>, 
+ Linus Walleij <linus.walleij@linaro.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Hao Chang <ot_chhao.chang@mediatek.com>, 
+ Qingliang Li <qingliang.li@mediatek.com>
+Cc: kernel@collabora.com, linux-mediatek@lists.infradead.org, 
+ linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>, 
+ Chen-Yu Tsai <wenst@chromium.org>, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250520_132223_618669_890C9369 
-X-CRM114-Status: GOOD (  10.02  )
+X-CRM114-CacheID: sfid-20250520_141610_548620_730C092A 
+X-CRM114-Status: GOOD (  20.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,58 +86,164 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5/20/25 9:01 AM, Bean Huo wrote:
-> On Tue, 2025-05-20 at 17:40 +0800, Huan Tang wrote:
->> @@ -87,6 +87,26 @@ static const char *ufs_wb_resize_status_to_string(e=
-num wb_resize_status status)
->>  =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
->>  =C2=A0}
->>  =20
->> +static const char *ufs_hid_state_to_string(enum ufs_hid_state state)
->> +{
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0switch (state) {
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0case HID_IDLE:
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0return "idle";
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0case ANALYSIS_IN_PROGRESS:
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0return "analysis_in_progress";
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0case DEFRAG_REQUIRED:
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0return "defrag_required";
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0case DEFRAG_IN_PROGRESS:
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0return "defrag_in_progress";
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0case DEFRAG_COMPLETED:
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0return "defrag_completed";
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0case DEFRAG_NOT_REQUIRED:
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0return "defrag_not_required";
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0default:
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0return "unknown";
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0}
->> +}
->=20
-> The enum ufs_hid_state values are contiguous and start from 0, maybe ch=
-ange switch-state to :
->=20
-> #define NUM_UFS_HID_STATES 6
-> static const char *ufs_hid_states[NUM_UFS_HID_STATES] =3D {
->      "idle",
->      "analysis_in_progress",
->      "defrag_required",
->      "defrag_in_progress",
->      "defrag_completed",
->      "defrag_not_required"
-> };
+Commit 3ef9f710efcb ("pinctrl: mediatek: Add EINT support for multiple
+addresses") introduced an access to the 'soc' field of struct
+mtk_pinctrl in mtk_eint_do_init() and for that an include of
+pinctrl-mtk-common-v2.h.
 
-If this change is made, please use the designated initializer syntax
-([label] =3D "text"). This will make it easier to verify that the
-enumeration labels and the strings match.
+However, pinctrl drivers relying on the v1 common driver include
+pinctrl-mtk-common.h instead, which provides another definition of
+struct mtk_pinctrl that does not contain an 'soc' field.
 
-Thanks,
+Since mtk_eint_do_init() can be called both by v1 and v2 drivers, it
+will now try to dereference an invalid pointer when called on v1
+platforms. This has been observed on Genio 350 EVK (MT8365), which
+crashes very early in boot (the kernel trace can only be seen with
+earlycon).
 
-Bart.
+In order to fix this, since 'struct mtk_pinctrl' was only needed to get
+a 'struct mtk_eint_pin', make 'struct mtk_eint_pin' a parameter
+of mtk_eint_do_init() so that callers need to supply it, removing
+mtk_eint_do_init()'s dependency on any particular 'struct mtk_pinctrl'.
+
+Fixes: 3ef9f710efcb ("pinctrl: mediatek: Add EINT support for multiple addresses")
+Suggested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+Changes in v2:
+- Completely changed approach to make mtk_eint_pin a parameter of
+  mtk_eint_do_init() as suggested by Angelo
+- Link to v1: https://lore.kernel.org/r/20250519-genio-350-eint-null-ptr-deref-fix-v1-1-07445d6d22c3@collabora.com
+---
+ drivers/pinctrl/mediatek/mtk-eint.c              | 26 ++++++++++--------------
+ drivers/pinctrl/mediatek/mtk-eint.h              |  5 +++--
+ drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c |  2 +-
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.c    |  2 +-
+ 4 files changed, 16 insertions(+), 19 deletions(-)
+
+diff --git a/drivers/pinctrl/mediatek/mtk-eint.c b/drivers/pinctrl/mediatek/mtk-eint.c
+index 16af6a47028e67bb53db4041a37ebbbb8b9a1e43..d906a5e4101fb10968035fc48e9cf4a444d063a9 100644
+--- a/drivers/pinctrl/mediatek/mtk-eint.c
++++ b/drivers/pinctrl/mediatek/mtk-eint.c
+@@ -22,7 +22,6 @@
+ #include <linux/platform_device.h>
+ 
+ #include "mtk-eint.h"
+-#include "pinctrl-mtk-common-v2.h"
+ 
+ #define MTK_EINT_EDGE_SENSITIVE           0
+ #define MTK_EINT_LEVEL_SENSITIVE          1
+@@ -505,10 +504,9 @@ int mtk_eint_find_irq(struct mtk_eint *eint, unsigned long eint_n)
+ }
+ EXPORT_SYMBOL_GPL(mtk_eint_find_irq);
+ 
+-int mtk_eint_do_init(struct mtk_eint *eint)
++int mtk_eint_do_init(struct mtk_eint *eint, struct mtk_eint_pin *eint_pin)
+ {
+ 	unsigned int size, i, port, virq, inst = 0;
+-	struct mtk_pinctrl *hw = (struct mtk_pinctrl *)eint->pctl;
+ 
+ 	/* If clients don't assign a specific regs, let's use generic one */
+ 	if (!eint->regs)
+@@ -519,7 +517,15 @@ int mtk_eint_do_init(struct mtk_eint *eint)
+ 	if (!eint->base_pin_num)
+ 		return -ENOMEM;
+ 
+-	if (eint->nbase == 1) {
++	if (eint_pin) {
++		eint->pins = eint_pin;
++		for (i = 0; i < eint->hw->ap_num; i++) {
++			inst = eint->pins[i].instance;
++			if (inst >= eint->nbase)
++				continue;
++			eint->base_pin_num[inst]++;
++		}
++	} else {
+ 		size = eint->hw->ap_num * sizeof(struct mtk_eint_pin);
+ 		eint->pins = devm_kmalloc(eint->dev, size, GFP_KERNEL);
+ 		if (!eint->pins)
+@@ -533,16 +539,6 @@ int mtk_eint_do_init(struct mtk_eint *eint)
+ 		}
+ 	}
+ 
+-	if (hw && hw->soc && hw->soc->eint_pin) {
+-		eint->pins = hw->soc->eint_pin;
+-		for (i = 0; i < eint->hw->ap_num; i++) {
+-			inst = eint->pins[i].instance;
+-			if (inst >= eint->nbase)
+-				continue;
+-			eint->base_pin_num[inst]++;
+-		}
+-	}
+-
+ 	eint->pin_list = devm_kmalloc(eint->dev, eint->nbase * sizeof(u16 *), GFP_KERNEL);
+ 	if (!eint->pin_list)
+ 		goto err_pin_list;
+@@ -609,7 +605,7 @@ int mtk_eint_do_init(struct mtk_eint *eint)
+ err_wake_mask:
+ 	devm_kfree(eint->dev, eint->pin_list);
+ err_pin_list:
+-	if (eint->nbase == 1)
++	if (!eint_pin)
+ 		devm_kfree(eint->dev, eint->pins);
+ err_pins:
+ 	devm_kfree(eint->dev, eint->base_pin_num);
+diff --git a/drivers/pinctrl/mediatek/mtk-eint.h b/drivers/pinctrl/mediatek/mtk-eint.h
+index 0c6bf7cbdc3a4f16e35d576535c6cef102962356..fc31a4c0c77bf28b106943e9292d0dcc425c4922 100644
+--- a/drivers/pinctrl/mediatek/mtk-eint.h
++++ b/drivers/pinctrl/mediatek/mtk-eint.h
+@@ -88,7 +88,7 @@ struct mtk_eint {
+ };
+ 
+ #if IS_ENABLED(CONFIG_EINT_MTK)
+-int mtk_eint_do_init(struct mtk_eint *eint);
++int mtk_eint_do_init(struct mtk_eint *eint, struct mtk_eint_pin *eint_pin);
+ int mtk_eint_do_suspend(struct mtk_eint *eint);
+ int mtk_eint_do_resume(struct mtk_eint *eint);
+ int mtk_eint_set_debounce(struct mtk_eint *eint, unsigned long eint_n,
+@@ -96,7 +96,8 @@ int mtk_eint_set_debounce(struct mtk_eint *eint, unsigned long eint_n,
+ int mtk_eint_find_irq(struct mtk_eint *eint, unsigned long eint_n);
+ 
+ #else
+-static inline int mtk_eint_do_init(struct mtk_eint *eint)
++static inline int mtk_eint_do_init(struct mtk_eint *eint,
++				   struct mtk_eint_pin *eint_pin)
+ {
+ 	return -EOPNOTSUPP;
+ }
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+index 0884c0700b3ee463c4571f2ac5b0254b5583b54a..4918d38abfc29de1f27ee75bc6a51c32b3ca1ac5 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+@@ -419,7 +419,7 @@ int mtk_build_eint(struct mtk_pinctrl *hw, struct platform_device *pdev)
+ 	hw->eint->pctl = hw;
+ 	hw->eint->gpio_xlate = &mtk_eint_xt;
+ 
+-	ret = mtk_eint_do_init(hw->eint);
++	ret = mtk_eint_do_init(hw->eint, hw->soc->eint_pin);
+ 	if (ret)
+ 		goto err_free_eint;
+ 
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+index de7bebb9a6cd98cbe7d77982698073f9c8974e3b..a4cb6d511fcdb36f67f30548636a0d64c5278840 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+@@ -1044,7 +1044,7 @@ static int mtk_eint_init(struct mtk_pinctrl *pctl, struct platform_device *pdev)
+ 	pctl->eint->pctl = pctl;
+ 	pctl->eint->gpio_xlate = &mtk_eint_xt;
+ 
+-	return mtk_eint_do_init(pctl->eint);
++	return mtk_eint_do_init(pctl->eint, NULL);
+ }
+ 
+ /* This is used as a common probe function */
+
+---
+base-commit: 8566fc3b96539e3235909d6bdda198e1282beaed
+change-id: 20250519-genio-350-eint-null-ptr-deref-fix-1a163aa9ad84
+
+Best regards,
+-- 
+Nícolas F. R. A. Prado <nfraprado@collabora.com>
+
 
