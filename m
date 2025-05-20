@@ -4,157 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38D73C3ABDD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 May 2025 06:56:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC1C4C3ABDD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 May 2025 06:56:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=h3f+ys59Ow3aMe8zm3KtE45AESRGfxc8xCiGYD/upeE=; b=Ee4/MIi2P5pKHYAMEIB8UUE7rJ
-	3p1ap5i7+4rVRLEDLjzhMiW+Z/k4TksWPwOyuOxSfd3a47vSWh3LqImcNG892ViiF4WLG7GgKe8um
-	SxgF5QM62oHPvfzDNY7D1/KqnlKaYEyqO6Uy4pWHEgUla7zuklT0ALnUuqTlBJUR0/xSHkNAt8O8R
-	QNPod/jGwGFKSQPJ0zCTIPVZSqqBn1vFwzh4wI/YfU7EV57nUpIvbsMt1BT30ohsGQnLVVXiaMzqm
-	KPkBDHyqOJflWAhr+bkijvIGeMYlAkhx0mbFrRIHOnQD2RyaVOT+9cSPzprDejXWesyhApLQKs566
-	us92BuWw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NrL1QJRIMqtNCjap45wWxtkSD8KFor8WXq65Sq+7ONw=; b=ocJ3joXVQt26p4TUDNfRViPxEA
+	WBQEqHyZtGv7WhrlNqdNs5zC1sLqTDqUDsKs8OOb5tNsZL6JbMt1j7IFmxIVMHNZvDbkB6hQRR+yP
+	KhvO25zkGy4KDya2TVMPZKlOTiSRaOMNEI8Sf2NvmRf/KnFgYjEJEc0OZ88zFxutqGEHIr3YwLWBd
+	Sn9QOLq5lJE1uYOqSepVcfvW+f53AHBMJAOm8TeW2Dp/2YPu9jKJTw/5NV/2rs+apn8wcikWutMzv
+	T0Qdfc6Br6oY7MwmL+7nVWAKlTF7MsyN9ilo4WycFSrYNRNLlztvPn9U9rtZtvlRcRiDFe1Aefkdz
+	6iRI9aiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHGtt-0000000BmtS-2T7s;
-	Tue, 20 May 2025 06:56:33 +0000
-Received: from mail-eastasiaazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c400::3] helo=HK3PR03CU002.outbound.protection.outlook.com)
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHGZo-0000000BigO-07uE;
-	Tue, 20 May 2025 06:35:55 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Z+3Qs0CwcrBwC7LgQLgS7GY9Vouh1bG3ViSJgLw/eYSqbpqcuUmR9lCW777FRK9xKDtqlm9AhLyHax0k2h2594NnL13ML7TSbRNUagnAVZm/vyBF9ij8RCCpyhs1dyvsJn+J7QlXVnLOa8H63BfhIGMDuNG8N3URQvaJD/UsRZhPXgHdgjuWflFatIqwP9h3QEwHhJ3yzJ5u3v3IXtldPvu+q2ngJDz9bNpPWCqNT1czo21X/baOz7+VM1jNMwA/N6lVag17fFMLK9C9pWRFanDxU82Yq9a3yEFjgS06ZvXNn3mwXAbQCQRN+mEyQtOA/znoP2OeWu2Lj/6VOmDgLA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=h3f+ys59Ow3aMe8zm3KtE45AESRGfxc8xCiGYD/upeE=;
- b=T2xSJRoDPVJEubwxu2cqFpiDnxk29ymDm1siFjNGzazMcDSduFWB714Hd+BAOAAv6StQLp7DKyrSKaQv8PSznotQT5EFNo55rYBeL66FRYGAdgXvLqKyMumaxUOqn9jDO6zqmyPimtmfEIf50sZqXRzOACdhFrU3LS8hlnDlYKsEPIatQSbw7yLMwI0Xesn0NfGT/9a5919YTQ9HPjcjYzjGhC85NuA7qfIM/1Gss793gpbceyWT5k2k+NqaJkPwP2Lb1zAOqVzqFDw/+VbafOSmlm0Ib0FE1gyKPIob+K5q77yyf4ogKQF2gEdhStIc5Ya00L5qFcfy/Uyp7S/TYQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
- dkim=pass header.d=vivo.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=h3f+ys59Ow3aMe8zm3KtE45AESRGfxc8xCiGYD/upeE=;
- b=DZGFwOvGDTsXsRaV1n1YPP2iHIU1WV6bqMUiMyPjYZuJKAxQI6atiHxI+l4bn+OBKamUUQcZS++Xrc0qHsb9hcOjQ9BcKpBLBW7pLBF3LDxdsrxikDf4SITO+jAeagRcjH7qdNBEheDXUXRHBauGN3S5hXelXFW+uVez+DKOKd/S6ewyixDYI/PLRxToDIuEK++aQjtUHSPslEreixAJQUay76hZEVM7/N21N0oxDOEAQHOKVI96aoFepdFnhbUcrgP/NrTcjnt/FWMnRpYkF4vrvk/pWH9f2dM+6rC8+SfnuB8Rw+xHyLOiBJtQs04MId7eUeeCHzOTQffcuS2MTw==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=vivo.com;
-Received: from KL1PR06MB6273.apcprd06.prod.outlook.com (2603:1096:820:ec::10)
- by JH0PR06MB7352.apcprd06.prod.outlook.com (2603:1096:990:a3::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8746.31; Tue, 20 May
- 2025 06:35:23 +0000
-Received: from KL1PR06MB6273.apcprd06.prod.outlook.com
- ([fe80::9d21:d819:94e4:d09]) by KL1PR06MB6273.apcprd06.prod.outlook.com
- ([fe80::9d21:d819:94e4:d09%7]) with mapi id 15.20.8746.030; Tue, 20 May 2025
- 06:35:23 +0000
-From: Huan Tang <tanghuan@vivo.com>
-To: alim.akhtar@samsung.com,
-	avri.altman@wdc.com,
-	bvanassche@acm.org,
-	James.Bottomley@HansenPartnership.com,
-	martin.petersen@oracle.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	peter.wang@mediatek.com,
-	manivannan.sadhasivam@linaro.org,
-	quic_nguyenb@quicinc.com,
-	luhongfei@vivo.com,
-	tanghuan@vivo.com,
-	linux-scsi@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: opensource.kernel@vivo.com,
-	Wenxing Cheng <wenxing.cheng@vivo.com>
-Subject: [PATCH v4] ufs: core: Add HID support
-Date: Tue, 20 May 2025 14:35:12 +0800
-Message-Id: <20250520063512.213-1-tanghuan@vivo.com>
-X-Mailer: git-send-email 2.25.1
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: SG2PR02CA0122.apcprd02.prod.outlook.com
- (2603:1096:4:188::10) To KL1PR06MB6273.apcprd06.prod.outlook.com
- (2603:1096:820:ec::10)
+	id 1uHGuC-0000000Bn1A-2Aeu;
+	Tue, 20 May 2025 06:56:52 +0000
+Received: from [193.175.24.41] (helo=elvis.franken.de)
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uHGu8-0000000Bmz6-3BTb
+	for linux-mediatek@lists.infradead.org;
+	Tue, 20 May 2025 06:56:51 +0000
+Received: from uucp by elvis.franken.de with local-rmail (Exim 3.36 #1)
+	id 1uHGu1-0006iN-00; Tue, 20 May 2025 08:56:41 +0200
+Received: by alpha.franken.de (Postfix, from userid 1000)
+	id 35693C00EF; Tue, 20 May 2025 08:49:30 +0200 (CEST)
+Date: Tue, 20 May 2025 08:49:30 +0200
+From: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
+To: Caleb James DeLisle <cjd@cjdns.fr>
+Cc: linux-mips@vger.kernel.org, tglx@linutronix.de, robh@kernel.org,
+	krzk+dt@kernel.org, conor+dt@kernel.org, daniel.lezcano@linaro.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	benjamin.larsson@genexis.eu, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v5 0/7] Add EcoNet EN751221 MIPS platform support
+Message-ID: <aCwl-nAMxjqjxRM6@alpha.franken.de>
+References: <20250507134500.390547-1-cjd@cjdns.fr>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: KL1PR06MB6273:EE_|JH0PR06MB7352:EE_
-X-MS-Office365-Filtering-Correlation-Id: caffdf0f-ed20-4bb4-b016-08dd97687f5c
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|376014|7416014|52116014|921020|38350700014;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?ovspKiO5XAg8s4sR6aF6JxTsEw6oaMMxnvIHTZmjXax9blHYqBJZWtGt0DFA?=
- =?us-ascii?Q?B7x31DJ9XdWRTaa8bbI2+fgpM0dwILoIOXbiyjTJwGQLI2Hyf4gr/Wpc460R?=
- =?us-ascii?Q?WL+Z7MeSN4LCHd/4Jh1blRi29xsD1KHyoV+lGaU5kMSCkCx0Xxnt1J/6MJ1Y?=
- =?us-ascii?Q?L1gkdjZ3AS7hDOLuLhT6dxtFY7og8PAi6AR0oznqwaaxZyRaj4GnqbzVUXkJ?=
- =?us-ascii?Q?vliBvOz9XIHAiGTDZN4FcRLVKE0/U/dD1D42uFzxEv8fIPVgEpBy0mRR+Ixw?=
- =?us-ascii?Q?nIHUs9GjDGBDH37jyCjoYW1HB7tO56uZd3RP5bvo679cGj7J5ns15uJ8/1qH?=
- =?us-ascii?Q?mru7xCnjsTD8PnBRFSRLLSLQPiUQncuLhXGV686nFvwhKIdEPd6VzWJHsjKl?=
- =?us-ascii?Q?365NOh3wbVZzbri3imkRkeqRC8PGugnFdmrurbmhHi5bodQldPdKThpaAjcF?=
- =?us-ascii?Q?JY4FOcDZKM2z8dRe9Beutt7V2uRZFir31DeS1a3bSq3E3wG52T+rCJabyvrh?=
- =?us-ascii?Q?dN9LDQJD6rRlDQJRtLa4kFpotgneLkhdAA9azw7yQUrLPM7iXk7UMIZocLSB?=
- =?us-ascii?Q?WHvSmBky+kp7iGAnizSjRa3Zy8IsHZpIWsJLgxXZB845c8Uc63Eszx3JjgiX?=
- =?us-ascii?Q?UITseDapyu/4ZmwV/VEYAduffKJrOdFCBv2Zou8ogN3By5Jo/8nzuuFTNp7f?=
- =?us-ascii?Q?vNjq7bvfjiC0sXQSVFmSgMXyYWWtKah/YbYCKgahv9WeyE2q+xLc3+eXogM2?=
- =?us-ascii?Q?SXQqZnql0qAVSu6oyx9wgpXZNfrXl68tGyVkuR7MHDs2DFyepSXo9R+cHOSW?=
- =?us-ascii?Q?IYaYfGm3TuGDOTErPL+p2+cnpTgFY4cwxFPwtrxkPfsqFfpiz2Ei9XkaQA5V?=
- =?us-ascii?Q?N0jm23mz7hHdy6rQSMSVvxfVr0Ll3AgMphnRgfaY6bDGANupckpc9rjscKl/?=
- =?us-ascii?Q?R2jjo3RaBhNV9UBqmV7O1fGcwwIaCfrW52kwlT9FaKy59RApFP8IaXunkU1e?=
- =?us-ascii?Q?UAA09Z+nUH+AyBhsA7jWZnjZSIbtivgttrtKJ/PXB24PL/doWpH+KEzMMJOG?=
- =?us-ascii?Q?sIQ0/WRPt4FKxk1E78GfeeD/CAGQ+mzG5RvgdCbQg/L+DlORgi/2kSCefAyM?=
- =?us-ascii?Q?wPfayfoNuLvrca7CI8MsgE3wnHLQeW9EFE36YdYueyxkaA5v0OVcLJ7e11wq?=
- =?us-ascii?Q?SFrP2MNZfubE/3g2DY4n8SGgqTlF3nzPjuezyPZFvFI0kv6rnMim/Nw2S9jo?=
- =?us-ascii?Q?hoSAH5jvnS2vOCxBe8JiK8axHs6xE2v4o6LgPZ9/CoNIZXVmv9MHFTEzpr7N?=
- =?us-ascii?Q?v2jsrOHwHiunKLCcGSSAw8sQI+fWgFSvjhI/vEThPUxcHaaEiFC0+IM/NCdK?=
- =?us-ascii?Q?8SrLt7CPI+xZhxA70uHREoNYo3Qxh1ZFuVf22j7u1Yq1y+3pKtTypwsIVLE7?=
- =?us-ascii?Q?ieBZwxCtcNsWjPrcQM5PBzBM8mCVJDacXP5tOJ7NwW/R+MUjTKu3oy5+Mu7z?=
- =?us-ascii?Q?JWuKYsiFGjd0Q70=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:KL1PR06MB6273.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(376014)(7416014)(52116014)(921020)(38350700014);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?AUemkOdQaDS5l9EFeML/LO7IO8NJr/rL4XKhLJ886eUfrq8Ldg2IZsDw5sz1?=
- =?us-ascii?Q?CqARS0G4q54re5OdK14MiLFl4j4ZRNOx6yBGVDnAhQKUt06EvdvLwKGU2ESH?=
- =?us-ascii?Q?WrWnhQMmLoulA1vxuabkyXF9IrrpUtIRomhe8mU6EomT90cSjL4PezsQXSuJ?=
- =?us-ascii?Q?2nIYCuKnfW5ujTwwyslfxOs1vCo/yOZwoBZK+hF/XWG2w8MoBpsD0R45y0Rd?=
- =?us-ascii?Q?s3rP2zr88bzflvUccg3We4CZF13AQDrdf2vTj2r5feltZaOAnyDNLycGu6Wq?=
- =?us-ascii?Q?+eau+5iqAYD2yXLTHVb+B5wu1SRa7pz/T7DxiR3C2WSlqdweCuDF8jRQoCx4?=
- =?us-ascii?Q?dCZORFaEEprU+y11td752hU+W/RHe9BKIT+qtbFOco9W+qiEmRZoVUq4p55h?=
- =?us-ascii?Q?gNGzhj4EcLde+Lw3VMB7tltMl8gtuJzAFh4IV8VckHt8aKf28F50Gj92hMNk?=
- =?us-ascii?Q?RLKu+fdACKbcSyQMZsbJJp78/8VbGL01958u4ek2OK+RCEHqPcOEMAK03tFc?=
- =?us-ascii?Q?jyZcgbTpAIk5I+Znkr5YGr41/lh3ppkI9j488QRyIFTt7+Lt2/8uNuI8pMOr?=
- =?us-ascii?Q?n0VSVYgMRrHS4Eo/rn52wW5LXXTj5tAHBojc6zPYnyb9bSYDpLtCSSpYS7rA?=
- =?us-ascii?Q?bzG9LwjXSoT2AknTtaGLwACPk3Re1umTOz0/3+y96xJ/LqhkiPhoIqFd0G9J?=
- =?us-ascii?Q?YNApQyzLVpJ+fAJNBDr4jW4tkJzaHBZfThjgVBogotxPpZz95rpF5/FuuXrS?=
- =?us-ascii?Q?pa2twqmy8IneKHgFi4iY/FNfMRWf+svX5yMN1beXDttjB1WXqWNiM9j/FqA3?=
- =?us-ascii?Q?9rjp9FEbNK+y7VjN1/uHl4AJ88diAQ4+LLfuCrGVJoi8dvMO1bZFoH0OIwPf?=
- =?us-ascii?Q?AHTpjE3ttuihMUjycihlKHdPDJNe4o4nMIx4qriA4Ym0ZtTlmHd5W3vXmO/P?=
- =?us-ascii?Q?0l+MXcVoaNiBtudtOosTP7Jz9TaEnjlr4s8kvsShAxV0W90aQyHj0+jrcyOF?=
- =?us-ascii?Q?P8DZvnfyWfx4Q8+ydrhgqoI66pPxqIkIROq7AhTL5P0xGBKUi00uIlBtL0eB?=
- =?us-ascii?Q?YnxExo4it792QRsC6GencjkSHlzDTe6lmfpLcj4r8gxzLZlUEiTqCDbFo1HX?=
- =?us-ascii?Q?V+pw/1JP5ZqZnSNJXGmysTC/WtPoSu3+uVIsZvW7Itg9MvcRhWeHxyljdJnL?=
- =?us-ascii?Q?WsiLsDxLEgyo0Oi5mqMZ6k6H+H//WDHl+J1ar0OMQYhVy4Cf+bdxZPEh2fy1?=
- =?us-ascii?Q?GlfrREjxfsTLrY8afT8BDxyf+T2WjR/DjLLuDfty46lLszKCbDHYvAzkRn4W?=
- =?us-ascii?Q?pwt9WXYZoS20R5AFIOe3RC5S3gaYALs/2TCXMbMnfz/t88VJ1wAoIRsUMhKS?=
- =?us-ascii?Q?Ohv0JDFQCl2JfkHeX8aEXsyVAGPq0VZSpCR0IP9mv2bk0iW496Jld6SRW/3H?=
- =?us-ascii?Q?DqsFHkq91fg2JqzLraUEeA/1EkJo0ggWitnfAEHmSlfDrHA1QqE5lNYZW8L3?=
- =?us-ascii?Q?OyTR+sqG1j3TzIc0Z45ADD5RgzIvf+55gBquCzKddRdAZeVVCXYwo3WVGJoU?=
- =?us-ascii?Q?6dAkDI9fAFaGbyu9tlo6Q5+zxO5oC92cbLNRO0d3?=
-X-OriginatorOrg: vivo.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: caffdf0f-ed20-4bb4-b016-08dd97687f5c
-X-MS-Exchange-CrossTenant-AuthSource: KL1PR06MB6273.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 May 2025 06:35:22.9537
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Pwsh3dyWEu+QUkz1bcigFl7Txz4t719YKkaSOI/8cDI6rnflL8Ht7ffCBeQUSo4ZTmySKZOdVpJe05JjE2MV0g==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: JH0PR06MB7352
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250507134500.390547-1-cjd@cjdns.fr>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250519_233548_350604_04848C5F 
-X-CRM114-Status: GOOD (  15.08  )
+X-CRM114-CacheID: sfid-20250519_235649_088549_60B3BAA6 
+X-CRM114-Status: GOOD (  23.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -169,428 +62,121 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Follow JESD220G, support HID(Host Initiated Defragmentation)
-through sysfs, the relevant sysfs nodes are as follows:
-	1.analysis_trigger
-	2.defrag_trigger
-	3.fragmented_size
-	4.defrag_size
-	5.progress_ratio
-	6.state
-The detailed definition	of the six nodes can be	found in the sysfs
-documentation.
+On Wed, May 07, 2025 at 01:44:53PM +0000, Caleb James DeLisle wrote:
+> EcoNet MIPS SoCs are big endian machines based on 34Kc and 1004Kc
+> processors. They are found in xDSL and xPON modems, and contain PCM
+> (VoIP), Ethernet, USB, GPIO, I2C, SPI (Flash), UART, and PCIe.
+> 
+> The EcoNet MIPS SoCs are divided broadly into two families, the
+> EN751221 family based on the 34Kc, and the EN751627 family based on
+> the 1004Kc. Individual SoCs within a family are very similar, only
+> with different peripherals.
+> 
+> This patchset adds basic "boots to a console" support for the EN751221
+> family and adds SmartFiber XP8421-B, a low cost commercially available
+> board that is useful for testing and development.
+> 
+> Note that Airoha (AN7523, AN7581) is similar to EcoNet in terms of
+> peripherals, and for historical reasons Airoha chips are sometimes
+> referred to with the EN75xx prefix. However this is a different
+> platform because Airoha chips are ARM based.
+> 
+> This patchset is against mips-next.
+> 
+> v4 -> v5
+> * 2/7 clocksource/drivers: Add EcoNet Timer HPT driver:
+>   * Improve explanation of HPT timer in changelog
+>   * Move pr_info to pr_debug per recommendation
+>   * Remove pointless debug on spurious interrupt
+>   * Small code-style change
+> 
+> v3 -> v4
+> * Rebase to 3b3704261e851e25983860e4c352f1f73786f4ab
+> * Omit already accepted patches (thanks guys!):
+>   - https://patchwork.kernel.org/project/linux-mips/patch/20250330170306.2584136-2-cjd@cjdns.fr/
+>   - https://patchwork.kernel.org/project/linux-mips/patch/20250330170306.2584136-3-cjd@cjdns.fr/
+>   - https://patchwork.kernel.org/project/linux-mips/patch/20250330170306.2584136-4-cjd@cjdns.fr/
+> 
+> v2 -> v3
+> * econet,en751221-timer.yaml -> Improve code style
+> * vendor-prefixes.yaml -> Correct alphabetic order
+> * en751221.dtsi
+>   - interrupt-controller code style
+>   - serial: Explain reason for clock-frequency = <1843200>
+> * v3->v3 diff provided for reference
+>   - https://gist.github.com/cjdelisle/21c9f0cd225f499bdff3c574c7f185f2
+> * CC: linux-mediatek@lists.infradead.org who may be interested.
+> 
+> v1 -> v2
+> * Codestyle
+>   - Apply codestyle from "The tip tree handbook" and recommendations
+>   - Remove "_rai" and "_m" symbol suffixes which are not standard
+> * irq-econet-en751221.c
+>   - Use cleanup.h _guard() and _free()
+>   - Separate irq_domain_ops from irq_chip, eliminating econet_intc struct
+>   - Remove irqsave in econet_wreg, irqs are already disabled in mask/unmask
+>   - Add explainatory comments
+>   - Refactor shadow logic for clarity, e.g. INTC_NO_SHADOW -> NOT_PERCPU
+>   - Improve error handling in case of invalid DTS
+> * econet,timer-hpt.yaml
+>   - Rename to econet,timer-en751221.yaml
+>   - Impose rule: "reg" must have 1 item on EN751221 and 2 on EN751627
+> * timer-econet-hpt.c
+>   - Rename to timer-econet-en751221.c to follow naming scheme from DT
+> * econet,en751221-intc.yaml
+>   - Fix validation error from required: interrupt-parent
+>   - shadow-interrupts -> switch to uint32-matrix for list of pairs
+> * MAINTAINERS -> Fixed accidental F: MAINTAINERS
+> * Replace "test image" with device SmartFiber-XP8421-B
+> * Restructure arch/mips/econet/Kconfig per arch/mips/ralink example
+> * v1->v2 diff is offered for reference:
+>   - https://gist.github.com/cjdelisle/bb3acab78b5f70dcdfe5dd6338293efe
+> 
+> 
+> Caleb James DeLisle (7):
+>   dt-bindings: timer: Add EcoNet EN751221 "HPT" CPU Timer
+>   clocksource/drivers: Add EcoNet Timer HPT driver
+>   dt-bindings: mips: Add EcoNet platform binding
+>   mips: Add EcoNet MIPS platform support
+>   dt-bindings: vendor-prefixes: Add SmartFiber
+>   mips: dts: Add EcoNet DTS with EN751221 and SmartFiber XP8421-B board
+>   MAINTAINERS: Add entry for newly added EcoNet platform.
+> 
+>  .../devicetree/bindings/mips/econet.yaml      |  26 +++
+>  .../bindings/timer/econet,en751221-timer.yaml |  80 +++++++
+>  .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
+>  MAINTAINERS                                   |  12 +
+>  arch/mips/Kbuild.platforms                    |   1 +
+>  arch/mips/Kconfig                             |  25 ++
+>  arch/mips/boot/compressed/uart-16550.c        |   5 +
+>  arch/mips/boot/dts/Makefile                   |   1 +
+>  arch/mips/boot/dts/econet/Makefile            |   2 +
+>  arch/mips/boot/dts/econet/en751221.dtsi       |  67 ++++++
+>  .../econet/en751221_smartfiber_xp8421-b.dts   |  19 ++
+>  arch/mips/econet/Kconfig                      |  48 ++++
+>  arch/mips/econet/Makefile                     |   2 +
+>  arch/mips/econet/Platform                     |   5 +
+>  arch/mips/econet/init.c                       |  78 +++++++
+>  drivers/clocksource/Kconfig                   |   8 +
+>  drivers/clocksource/Makefile                  |   1 +
+>  drivers/clocksource/timer-econet-en751221.c   | 216 ++++++++++++++++++
+>  18 files changed, 598 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/mips/econet.yaml
+>  create mode 100644 Documentation/devicetree/bindings/timer/econet,en751221-timer.yaml
+>  create mode 100644 arch/mips/boot/dts/econet/Makefile
+>  create mode 100644 arch/mips/boot/dts/econet/en751221.dtsi
+>  create mode 100644 arch/mips/boot/dts/econet/en751221_smartfiber_xp8421-b.dts
+>  create mode 100644 arch/mips/econet/Kconfig
+>  create mode 100644 arch/mips/econet/Makefile
+>  create mode 100644 arch/mips/econet/Platform
+>  create mode 100644 arch/mips/econet/init.c
+>  create mode 100644 drivers/clocksource/timer-econet-en751221.c
 
-HID's execution policy is given to user-space.
+applied patches 3-7 to mips-next
 
-Signed-off-by: Huan Tang <tanghuan@vivo.com>
-Signed-off-by: Wenxing Cheng <wenxing.cheng@vivo.com>
----
-Changelog
-===
-v3 - > v4:
-	1.Move the changelog description under "---"
-v2 - > v3:
-	1.Remove the "ufs_" prefix from directory name
-	2.Remove the "hid_" prefix from node names
-	3.Make "ufs" appear only once in the HID group name
-	4.Add "is_visible" callback for "ufs_sysfs_hid_group"
-v1 - > v2:
-	1.Refactor the HID code according to Bart and Peter and
-	Arvi's suggestions
-v3
-	https://lore.kernel.org/all/20250519022912.292-1-tanghuan@vivo.com/
-v2
-	https://lore.kernel.org/all/20250512131519.138-1-tanghuan@vivo.com/
-v1
-	https://lore.kernel.org/all/20250417125008.123-1-tanghuan@vivo.com/
+Thomas.
 
- Documentation/ABI/testing/sysfs-driver-ufs |  83 +++++++++
- drivers/ufs/core/ufs-sysfs.c               | 192 +++++++++++++++++++++
- drivers/ufs/core/ufshcd.c                  |   4 +
- include/ufs/ufs.h                          |  25 +++
- 4 files changed, 304 insertions(+)
-
-diff --git a/Documentation/ABI/testing/sysfs-driver-ufs b/Documentation/ABI/testing/sysfs-driver-ufs
-index d4140dc6c5ba..490efdf1a0b4 100644
---- a/Documentation/ABI/testing/sysfs-driver-ufs
-+++ b/Documentation/ABI/testing/sysfs-driver-ufs
-@@ -1685,3 +1685,86 @@ Description:
- 		================  ========================================
- 
- 		The file is read only.
-+
-+What:		/sys/bus/platform/drivers/ufshcd/*/hid/analysis_trigger
-+What:		/sys/bus/platform/devices/*.ufs/hid/analysis_trigger
-+Date:		May 2025
-+Contact:	Huan Tang <tanghuan@vivo.com>
-+Description:
-+		The host can enable or disable HID analysis operation.
-+
-+		=======  =========================================
-+		disable   disable HID analysis operation
-+		enable    enable HID analysis operation
-+		=======  =========================================
-+
-+		The file is write only.
-+
-+What:		/sys/bus/platform/drivers/ufshcd/*/hid/defrag_trigger
-+What:		/sys/bus/platform/devices/*.ufs/hid/defrag_trigger
-+Date:		May 2025
-+Contact:	Huan Tang <tanghuan@vivo.com>
-+Description:
-+		The host can enable or disable HID defragmentation operation.
-+
-+		=======  =========================================
-+		disable   disable HID defragmentation operation
-+		enable    enable HID defragmentation operation
-+		=======  =========================================
-+
-+		The attribute is write only.
-+
-+What:		/sys/bus/platform/drivers/ufshcd/*/hid/fragmented_size
-+What:		/sys/bus/platform/devices/*.ufs/hid/fragmented_size
-+Date:		May 2025
-+Contact:	Huan Tang <tanghuan@vivo.com>
-+Description:
-+		The total fragmented size in the device is reported through
-+		this attribute.
-+
-+		The attribute is read only.
-+
-+What:		/sys/bus/platform/drivers/ufshcd/*/hid/defrag_size
-+What:		/sys/bus/platform/devices/*.ufs/hid/defrag_size
-+Date:		May 2025
-+Contact:	Huan Tang <tanghuan@vivo.com>
-+Description:
-+		The host sets the size to be defragmented by an HID
-+		defragmentation operation.
-+
-+		The attribute is read/write.
-+
-+What:		/sys/bus/platform/drivers/ufshcd/*/hid/progress_ratio
-+What:		/sys/bus/platform/devices/*.ufs/hid/progress_ratio
-+Date:		May 2025
-+Contact:	Huan Tang <tanghuan@vivo.com>
-+Description:
-+		Defragmentation progress is reported by this attribute,
-+		indicateds the ratio of the completed defragmentation size
-+		over the requested defragmentation size.
-+
-+		====  ============================================
-+		1     1%
-+		...
-+		100   100%
-+		====  ============================================
-+
-+		The attribute is read only.
-+
-+What:		/sys/bus/platform/drivers/ufshcd/*/hid/state
-+What:		/sys/bus/platform/devices/*.ufs/hid/state
-+Date:		May 2025
-+Contact:	Huan Tang <tanghuan@vivo.com>
-+Description:
-+		The HID state is reported by this attribute.
-+
-+		====================   ===========================
-+		idle			Idle(analysis required)
-+		analysis_in_progress    Analysis in progress
-+		defrag_required      	Defrag required
-+		defrag_in_progress      Defrag in progress
-+		defrag_completed      	Defrag completed
-+		defrag_not_required     Defrag is not required
-+		====================   ===========================
-+
-+		The attribute is read only.
-diff --git a/drivers/ufs/core/ufs-sysfs.c b/drivers/ufs/core/ufs-sysfs.c
-index de8b6acd4058..f162eb36f46b 100644
---- a/drivers/ufs/core/ufs-sysfs.c
-+++ b/drivers/ufs/core/ufs-sysfs.c
-@@ -87,6 +87,26 @@ static const char *ufs_wb_resize_status_to_string(enum wb_resize_status status)
- 	}
- }
- 
-+static const char *ufs_hid_state_to_string(enum ufs_hid_state state)
-+{
-+	switch (state) {
-+	case HID_IDLE:
-+		return "idle";
-+	case ANALYSIS_IN_PROGRESS:
-+		return "analysis_in_progress";
-+	case DEFRAG_REQUIRED:
-+		return "defrag_required";
-+	case DEFRAG_IN_PROGRESS:
-+		return "defrag_in_progress";
-+	case DEFRAG_COMPLETED:
-+		return "defrag_completed";
-+	case DEFRAG_IS_NOT_REQUIRED:
-+		return "defrag_not_required";
-+	default:
-+		return "unknown";
-+	}
-+}
-+
- static const char *ufshcd_uic_link_state_to_string(
- 			enum uic_link_state state)
- {
-@@ -1763,6 +1783,177 @@ static const struct attribute_group ufs_sysfs_attributes_group = {
- 	.attrs = ufs_sysfs_attributes,
- };
- 
-+static int hid_query_attr(struct ufs_hba *hba, enum query_opcode opcode,
-+			enum attr_idn idn, u32 *attr_val)
-+{
-+	int ret;
-+
-+	down(&hba->host_sem);
-+	if (!ufshcd_is_user_access_allowed(hba)) {
-+		up(&hba->host_sem);
-+		return -EBUSY;
-+	}
-+
-+	ufshcd_rpm_get_sync(hba);
-+	ret = ufshcd_query_attr(hba, opcode, idn, 0, 0, attr_val);
-+	ufshcd_rpm_put_sync(hba);
-+
-+	up(&hba->host_sem);
-+	return ret;
-+}
-+
-+static const char * const hid_trigger_mode[] = {"disable", "enable"};
-+
-+static ssize_t analysis_trigger_store(struct device *dev,
-+		struct device_attribute *attr, const char *buf, size_t count)
-+{
-+	struct ufs_hba *hba = dev_get_drvdata(dev);
-+	int mode;
-+	int ret;
-+
-+	mode = sysfs_match_string(hid_trigger_mode, buf);
-+	if (mode < 0)
-+		return -EINVAL;
-+
-+	ret = hid_query_attr(hba, UPIU_QUERY_OPCODE_WRITE_ATTR,
-+			QUERY_ATTR_IDN_HID_DEFRAG_OPERATION, &mode);
-+
-+	return ret < 0 ? ret : count;
-+}
-+
-+static DEVICE_ATTR_WO(analysis_trigger);
-+
-+static ssize_t defrag_trigger_store(struct device *dev,
-+		struct device_attribute *attr, const char *buf, size_t count)
-+{
-+	struct ufs_hba *hba = dev_get_drvdata(dev);
-+	int mode;
-+	int ret;
-+
-+	mode = sysfs_match_string(hid_trigger_mode, buf);
-+	if (mode < 0)
-+		return -EINVAL;
-+
-+	if (mode)
-+		mode = HID_ANALYSIS_AND_DEFRAG_ENABLE;
-+
-+	ret = hid_query_attr(hba, UPIU_QUERY_OPCODE_WRITE_ATTR,
-+			QUERY_ATTR_IDN_HID_DEFRAG_OPERATION, &mode);
-+
-+	return ret < 0 ? ret : count;
-+}
-+
-+static DEVICE_ATTR_WO(defrag_trigger);
-+
-+static ssize_t fragmented_size_show(struct device *dev,
-+		struct device_attribute *attr, char *buf)
-+{
-+	struct ufs_hba *hba = dev_get_drvdata(dev);
-+	u32 value;
-+	int ret;
-+
-+	ret = hid_query_attr(hba, UPIU_QUERY_OPCODE_READ_ATTR,
-+			QUERY_ATTR_IDN_HID_AVAILABLE_SIZE, &value);
-+	if (ret)
-+		return ret;
-+
-+	return sysfs_emit(buf, "%u\n", value);
-+}
-+
-+static DEVICE_ATTR_RO(fragmented_size);
-+
-+static ssize_t defrag_size_show(struct device *dev,
-+		struct device_attribute *attr, char *buf)
-+{
-+	struct ufs_hba *hba = dev_get_drvdata(dev);
-+	u32 value;
-+	int ret;
-+
-+	ret = hid_query_attr(hba, UPIU_QUERY_OPCODE_READ_ATTR,
-+			QUERY_ATTR_IDN_HID_SIZE, &value);
-+	if (ret)
-+		return ret;
-+
-+	return sysfs_emit(buf, "%u\n", value);
-+}
-+
-+static ssize_t defrag_size_store(struct device *dev,
-+		struct device_attribute *attr, const char *buf, size_t count)
-+{
-+	struct ufs_hba *hba = dev_get_drvdata(dev);
-+	u32 value;
-+	int ret;
-+
-+	if (kstrtou32(buf, 0, &value))
-+		return -EINVAL;
-+
-+	ret = hid_query_attr(hba, UPIU_QUERY_OPCODE_WRITE_ATTR,
-+			QUERY_ATTR_IDN_HID_SIZE, &value);
-+
-+	return ret < 0 ? ret : count;
-+}
-+
-+static DEVICE_ATTR_RW(defrag_size);
-+
-+static ssize_t progress_ratio_show(struct device *dev,
-+		struct device_attribute *attr, char *buf)
-+{
-+	struct ufs_hba *hba = dev_get_drvdata(dev);
-+	u32 value;
-+	int ret;
-+
-+	ret = hid_query_attr(hba, UPIU_QUERY_OPCODE_READ_ATTR,
-+			QUERY_ATTR_IDN_HID_PROGRESS_RATIO, &value);
-+	if (ret)
-+		return ret;
-+
-+	return sysfs_emit(buf, "%u\n", value);
-+}
-+
-+static DEVICE_ATTR_RO(progress_ratio);
-+
-+static ssize_t state_show(struct device *dev,
-+		struct device_attribute *attr, char *buf)
-+{
-+	struct ufs_hba *hba = dev_get_drvdata(dev);
-+	u32 value;
-+	int ret;
-+
-+	ret = hid_query_attr(hba, UPIU_QUERY_OPCODE_READ_ATTR,
-+			QUERY_ATTR_IDN_HID_STATE, &value);
-+	if (ret)
-+		return ret;
-+
-+	return sysfs_emit(buf, "%s\n", ufs_hid_state_to_string(value));
-+}
-+
-+static DEVICE_ATTR_RO(state);
-+
-+static struct attribute *ufs_sysfs_hid[] = {
-+	&dev_attr_analysis_trigger.attr,
-+	&dev_attr_defrag_trigger.attr,
-+	&dev_attr_fragmented_size.attr,
-+	&dev_attr_defrag_size.attr,
-+	&dev_attr_progress_ratio.attr,
-+	&dev_attr_state.attr,
-+	NULL,
-+};
-+
-+static umode_t  ufs_sysfs_hid_is_visible(struct kobject *kobj,
-+		struct attribute *attr, int n)
-+{
-+	struct device *dev = container_of(kobj, struct device, kobj);
-+	struct ufs_hba *hba = dev_get_drvdata(dev);
-+
-+	return	hba->dev_info.hid_sup ? attr->mode : 0;
-+}
-+
-+static const struct attribute_group ufs_sysfs_hid_group = {
-+	.name = "hid",
-+	.attrs = ufs_sysfs_hid,
-+	.is_visible = ufs_sysfs_hid_is_visible,
-+};
-+
- static const struct attribute_group *ufs_sysfs_groups[] = {
- 	&ufs_sysfs_default_group,
- 	&ufs_sysfs_capabilities_group,
-@@ -1777,6 +1968,7 @@ static const struct attribute_group *ufs_sysfs_groups[] = {
- 	&ufs_sysfs_string_descriptors_group,
- 	&ufs_sysfs_flags_group,
- 	&ufs_sysfs_attributes_group,
-+	&ufs_sysfs_hid_group,
- 	NULL,
- };
- 
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index 3e2097e65964..8ccd923a5761 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -8390,6 +8390,10 @@ static int ufs_get_device_desc(struct ufs_hba *hba)
- 
- 	dev_info->rtt_cap = desc_buf[DEVICE_DESC_PARAM_RTT_CAP];
- 
-+	dev_info->hid_sup = get_unaligned_be32(desc_buf +
-+				DEVICE_DESC_PARAM_EXT_UFS_FEATURE_SUP) &
-+				UFS_DEV_HID_SUPPORT;
-+
- 	model_index = desc_buf[DEVICE_DESC_PARAM_PRDCT_NAME];
- 
- 	err = ufshcd_read_string_desc(hba, model_index,
-diff --git a/include/ufs/ufs.h b/include/ufs/ufs.h
-index c0c59a8f7256..e61caa40f7cd 100644
---- a/include/ufs/ufs.h
-+++ b/include/ufs/ufs.h
-@@ -182,6 +182,11 @@ enum attr_idn {
- 	QUERY_ATTR_IDN_CURR_WB_BUFF_SIZE        = 0x1F,
- 	QUERY_ATTR_IDN_TIMESTAMP		= 0x30,
- 	QUERY_ATTR_IDN_DEV_LVL_EXCEPTION_ID     = 0x34,
-+	QUERY_ATTR_IDN_HID_DEFRAG_OPERATION	= 0x35,
-+	QUERY_ATTR_IDN_HID_AVAILABLE_SIZE	= 0x36,
-+	QUERY_ATTR_IDN_HID_SIZE			= 0x37,
-+	QUERY_ATTR_IDN_HID_PROGRESS_RATIO	= 0x38,
-+	QUERY_ATTR_IDN_HID_STATE		= 0x39,
- 	QUERY_ATTR_IDN_WB_BUF_RESIZE_HINT	= 0x3C,
- 	QUERY_ATTR_IDN_WB_BUF_RESIZE_EN		= 0x3D,
- 	QUERY_ATTR_IDN_WB_BUF_RESIZE_STATUS	= 0x3E,
-@@ -401,6 +406,7 @@ enum {
- 	UFS_DEV_HPB_SUPPORT		= BIT(7),
- 	UFS_DEV_WRITE_BOOSTER_SUP	= BIT(8),
- 	UFS_DEV_LVL_EXCEPTION_SUP       = BIT(12),
-+	UFS_DEV_HID_SUPPORT		= BIT(13),
- };
- #define UFS_DEV_HPB_SUPPORT_VERSION		0x310
- 
-@@ -466,6 +472,23 @@ enum ufs_ref_clk_freq {
- 	REF_CLK_FREQ_INVAL	= -1,
- };
- 
-+/* bDefragOperation attribute values */
-+enum ufs_hid_defrag_operation {
-+	HID_ANALYSIS_AND_DEFRAG_DISABLE	= 0,
-+	HID_ANALYSIS_ENABLE		= 1,
-+	HID_ANALYSIS_AND_DEFRAG_ENABLE	= 2,
-+};
-+
-+/* bHIDState attribute values */
-+enum ufs_hid_state {
-+	HID_IDLE		= 0,
-+	ANALYSIS_IN_PROGRESS	= 1,
-+	DEFRAG_REQUIRED		= 2,
-+	DEFRAG_IN_PROGRESS	= 3,
-+	DEFRAG_COMPLETED	= 4,
-+	DEFRAG_IS_NOT_REQUIRED	= 5,
-+};
-+
- /* bWriteBoosterBufferResizeEn attribute */
- enum wb_resize_en {
- 	WB_RESIZE_EN_IDLE	= 0,
-@@ -625,6 +648,8 @@ struct ufs_dev_info {
- 	u32 rtc_update_period;
- 
- 	u8 rtt_cap; /* bDeviceRTTCap */
-+
-+	bool hid_sup;
- };
- 
- /*
 -- 
-2.48.1
-
+Crap can work. Given enough thrust pigs will fly, but it's not necessarily a
+good idea.                                                [ RFC1925, 2.3 ]
 
