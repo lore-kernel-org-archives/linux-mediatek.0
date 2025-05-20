@@ -4,66 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07B69C3ABDD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 May 2025 14:38:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEB1AC3ABDD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 May 2025 16:21:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=VXNWF5d42ExcW7fSb5Pp8BqxYkRqWCdR/2Uwti83pgs=; b=k8nulRxsKKh+lXjHWENP4jp7+o
-	pEDuLgLZktJER010YV74bL9lrM1oUQSBKFAOGNQ1edz5khBdJ8OD6uOCOAoJVF9XWhyRbPLF59OdP
-	QiQTI3TwJ2DJBa1CQLlDtysfw4lMf7m++D80TysKq3OwNBXmYpBDhLSZURtVdbSCdq/lXGT9uVNXR
-	VSe7NjRRHmJIH7c/5R/iGKJkt9fy9yizJ+oZjME0dcfLwcUlPTzmBgsClwThRv3b2kEOgjfypGLop
-	slHae9d4voA1OeYbqCwCH2PvAQlvfXK6KlMBcJbH0EuOrOrQKNT9fMn3hsaT1EHWL5A84RzlHVPL6
-	lX4m5KLA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NLHQu01znICve73PRKiUqGXlEoXbgUBhtxBnnuUPUyM=; b=iV1Z94HZ5beJ9W/jFKBv1ObCuw
+	64xMdC0VLgxg7GkGbUQfGTc4ExYZm+bYnBLdWh+yCPcyifek9ARzXeReRD0gziyiyzl4LmKn3Fglj
+	g4lWxqJPBu0IONQWH2/nMp07fqE3zEimUEOcrAe+qvr7cfI7ZcoL4dCtKPAv5LhKPRUIm9nUAGIu5
+	IA8CDYuArJ7Itn2HA6lP3feNcrCkOS5eTEGGwrCOm3TH6FI9QQs7lElzQ+2OyNzPrzoUmoAdqGGw0
+	M25n6sJv8O2/48lyEWpbb8aEH1RV6DvpPydABPj8hM3AtfXBeK76U7BAq4OTnff3/mkmuUvCg5Ji+
+	tIuiY2IA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHO6q-0000000DBuA-0NHE;
-	Tue, 20 May 2025 14:38:24 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1uHPiY-0000000DWA3-3FbH;
+	Tue, 20 May 2025 16:21:26 +0000
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHO2K-0000000DAwK-2vfT;
-	Tue, 20 May 2025 14:33:45 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 773FBA4EB3B;
-	Tue, 20 May 2025 14:33:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CA936C4CEE9;
-	Tue, 20 May 2025 14:33:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747751623;
-	bh=UQfJvh5021ymW/G9gh8EoO5JxCDWd0uvGKSwEiCv7E0=;
-	h=From:Date:Subject:To:Cc:From;
-	b=aQ+9q0fJXMJ5lhQGGKqFh6loEs0vjEb6JRqQQ5HsCoHvFfDZLI16YBJz0tutRCM3F
-	 jCgySkrVHzmVJEPK13z5akCdb/IH66xjUKCxxxCp3nl76laRzsvYEEMJtBiNgIYHW/
-	 ck2j5KHcbe0Mb4He57DsNDw80uLol8KERhGPire9X24KCs5oSSCZ2aYpiqCK7XefYJ
-	 gXi+IwmPZNZf3mEjtCclQRmaL6XmtQqD03EN2C0MZPspPBcolP2QdcJABVkvjg73ZF
-	 OI6hdwF0MYYvT6ptoLHaINQgLLLbFBD/ts4WtYXqWUue2P3O+Lv2Oo65na/u600bnx
-	 Uvb6XyGha8GqA==
-From: Simon Horman <horms@kernel.org>
-Date: Tue, 20 May 2025 15:33:33 +0100
-Subject: [PATCH net-next] net: ethernet: mtk_eth_soc: Correct spelling
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250520-mtk-spell-v1-1-2b0d5b4a4528@kernel.org>
-X-B4-Tracking: v=1; b=H4sIALySLGgC/x3MQQqEMBAF0atIr22IjYp6FXERxz/aqFGSIIJ49
- wmzfFDUQwFeEajLHvK4NOjhEoo8o89i3QzWKZnESGUqMbzHlcOJbeNxktKiltY2llJ/enz1/r9
- 6cojscEca3vcHWMSozGUAAAA=
-To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	id 1uHPPg-0000000DRFG-3NwN;
+	Tue, 20 May 2025 16:01:57 +0000
+Received: by mail-ed1-x529.google.com with SMTP id 4fb4d7f45d1cf-6020ff8d51dso1450597a12.2;
+        Tue, 20 May 2025 09:01:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1747756915; x=1748361715; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=NLHQu01znICve73PRKiUqGXlEoXbgUBhtxBnnuUPUyM=;
+        b=gVUWV0XSp/DfJVjgQQXGquu5mj7voR7VrhHy/3r/zDTqKbHVXOrXtwWr956C1VWUSI
+         5SIL7IjwZ7HLDUxbfZoqFcjByr5ZZAs7muJROsskCpmnfnctG5o4vf1wTSRzL+9oWC+6
+         GsFRQsSwFr1KDo0dIZjI560npzdC7SEAqiGm+3cgqRsh+X6fP9z+BVQz8Lqfs0Awoedb
+         /Y/JktyDvXxywyONygv8w4KQA20FXaZdy4bzTFE8XQlHXPrvRMSMevXIDwz5JP0SCt5G
+         xJyFBjS7OC6RAD8NK2ri8aJ1pMd3ZXmGoYBuLKVrfZBMyW3CsBfU4x+n2R1Kxyz5e2Vv
+         chPg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1747756915; x=1748361715;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=NLHQu01znICve73PRKiUqGXlEoXbgUBhtxBnnuUPUyM=;
+        b=AK0SBgRZ8J8V0s3cposnMyEV2uzj7BP2WsAA+CBiNaxvEnXWxxx1tmEMXCXnnwT9tX
+         d2vbLEIq/3J/TlaQuvtNCwI5v8Wjem9Luo9j3IGCVv5wetdMnR8Q17fShxWhGzRWT2PG
+         supR8wvekoV28ywGPPuO8/3U0JTfUAjesJk0uTMIJ2SfW8H3wDgcShJ6eo2JVjlwX2uZ
+         GlTbLTJhS9afY8LxDTorHDwBQNuAfaBPUee38n/v3CssaGTDqcuTThhhp9VCp8yr/Aqa
+         oIx2QSgHptGk/aqfzZGyIuPCDkDkp05HkO/pHX/IuL3XYRk56+UaSPC7CBWMICGRjXGl
+         8/Ug==
+X-Forwarded-Encrypted: i=1; AJvYcCVUPJ6rVa6mqh1QOg1F2YUm10KpM6A6sz82iZh+v6TYnGI+0XobmMF+nc9FVMH7KzNuzH0ysKOs1q1k9Oc3P8M=@lists.infradead.org, AJvYcCWl95DIc7BUj5IumSwh1Nk6AmcmXqIERKNhFJTVGO9IvwWGDIOAkgZlzrDy/ffOd6fkSvnhvGzV8PZmhX0R8r5Y@lists.infradead.org
+X-Gm-Message-State: AOJu0YzeBqzt48Oqf/v6z2hfkegBWrXDKFiiNMNhJbsjBRZsBBIRT0RG
+	zRaYmVyR5VNH+SmxN9wOIT9chKct4bE0RXziHGGXLiVKthWkRULnaYCj5vGPOQyeuOQ=
+X-Gm-Gg: ASbGncsBjJnPoZdRjt6kfmhnJ6RgAeAFh/Mx0XpNlNuXNJ8Zy5R/rkgANXLcTun5X0L
+	T+igR6RNnOmMz/CjsPex1pNrYBFcgCVzxOikBL7oG8WNbgGZNSvsL19atyMXG60EK32VKNbRF98
+	MDdPCDdpBPGeKkxwD4m9bCXmHOnWMtCP+CdAQGlGnsywXbYZ5jN4BSlh9snq6f37hMEDI6F/ZfZ
+	jp6DfkyJg2qjGLAJIQ+stlidRl4Fz1FReBRVOMfEQc78TRNoj/hXc3jUU/8A+iucPBV6ckZQOfb
+	JqzAI3E3wnJkmJWGOMdfSVo9Q2tMXvDwVdQTvDuw9Fji7B/j5LQBJw==
+X-Google-Smtp-Source: AGHT+IHyQCwN+N8keILzdY8urJ4nceUZZMCFLVcZ2JJ//X1ZPm39zCCDWnYiM9DBHR4AHkitjLt/Mg==
+X-Received: by 2002:a17:907:db02:b0:ad5:27b6:7fd1 with SMTP id a640c23a62f3a-ad52d48da04mr1704960866b.17.1747756914001;
+        Tue, 20 May 2025 09:01:54 -0700 (PDT)
+Received: from [10.176.234.34] ([137.201.254.41])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ad52d4ca654sm740504266b.158.2025.05.20.09.01.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 20 May 2025 09:01:52 -0700 (PDT)
+Message-ID: <32c36b58dcdbb09403fa9dccff28b6bee76882e0.camel@gmail.com>
+Subject: Re: [PATCH v5] ufs: core: Add HID support
+From: Bean Huo <huobean@gmail.com>
+To: Huan Tang <tanghuan@vivo.com>, alim.akhtar@samsung.com,
+ avri.altman@wdc.com,  bvanassche@acm.org,
+ James.Bottomley@HansenPartnership.com,  martin.petersen@oracle.com,
+ matthias.bgg@gmail.com,  angelogioacchino.delregno@collabora.com,
+ peter.wang@mediatek.com,  manivannan.sadhasivam@linaro.org,
+ quic_nguyenb@quicinc.com, luhongfei@vivo.com,  linux-scsi@vger.kernel.org,
+ linux-kernel@vger.kernel.org,  linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
-X-Mailer: b4 0.14.0
+Cc: opensource.kernel@vivo.com, Wenxing Cheng <wenxing.cheng@vivo.com>
+Date: Tue, 20 May 2025 18:01:50 +0200
+In-Reply-To: <20250520094054.313-1-tanghuan@vivo.com>
+References: <20250520094054.313-1-tanghuan@vivo.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: base64
+User-Agent: Evolution 3.44.4-0ubuntu2 
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250520_073344_880717_93BC76D8 
-X-CRM114-Status: GOOD (  11.40  )
+X-CRM114-CacheID: sfid-20250520_090156_862653_B608DDDB 
+X-CRM114-Status: UNSURE (   8.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,58 +104,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Correct spelling of platforms, various, and initial.
-As flagged by codespell.
-
-Signed-off-by: Simon Horman <horms@kernel.org>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.h | 4 ++--
- drivers/net/ethernet/mediatek/mtk_wed.c     | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 2d4b9964d3db..6f72a8c8ae1e 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -1178,7 +1178,7 @@ struct mtk_reg_map {
- };
- 
- /* struct mtk_eth_data -	This is the structure holding all differences
-- *				among various plaforms
-+ *				among various platforms
-  * @reg_map			Soc register map.
-  * @ana_rgc3:                   The offset for register ANA_RGC3 related to
-  *				sgmiisys syscon
-@@ -1278,7 +1278,7 @@ struct mtk_soc_data {
-  * @mii_bus:		If there is a bus we need to create an instance for it
-  * @pending_work:	The workqueue used to reset the dma ring
-  * @state:		Initialization and runtime state of the device
-- * @soc:		Holding specific data among vaious SoCs
-+ * @soc:		Holding specific data among various SoCs
-  */
- 
- struct mtk_eth {
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
-index e212a4ba9275..351dd152f4f3 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed.c
-@@ -2000,7 +2000,7 @@ mtk_wed_configure_irq(struct mtk_wed_device *dev, u32 irq_mask)
- 		if (mtk_wed_is_v3_or_greater(dev->hw))
- 			wed_set(dev, MTK_WED_CTRL, MTK_WED_CTRL_TX_TKID_ALI_EN);
- 
--		/* initail tx interrupt trigger */
-+		/* initial tx interrupt trigger */
- 		wed_w32(dev, MTK_WED_WPDMA_INT_CTRL_TX,
- 			MTK_WED_WPDMA_INT_CTRL_TX0_DONE_EN |
- 			MTK_WED_WPDMA_INT_CTRL_TX0_DONE_CLR |
-@@ -2011,7 +2011,7 @@ mtk_wed_configure_irq(struct mtk_wed_device *dev, u32 irq_mask)
- 			FIELD_PREP(MTK_WED_WPDMA_INT_CTRL_TX1_DONE_TRIG,
- 				   dev->wlan.tx_tbit[1]));
- 
--		/* initail txfree interrupt trigger */
-+		/* initial txfree interrupt trigger */
- 		wed_w32(dev, MTK_WED_WPDMA_INT_CTRL_TX_FREE,
- 			MTK_WED_WPDMA_INT_CTRL_TX_FREE_DONE_EN |
- 			MTK_WED_WPDMA_INT_CTRL_TX_FREE_DONE_CLR |
+T24gVHVlLCAyMDI1LTA1LTIwIGF0IDE3OjQwICswODAwLCBIdWFuIFRhbmcgd3JvdGU6Cj4gQEAg
+LTg3LDYgKzg3LDI2IEBAIHN0YXRpYyBjb25zdCBjaGFyICp1ZnNfd2JfcmVzaXplX3N0YXR1c190
+b19zdHJpbmcoZW51bSB3Yl9yZXNpemVfc3RhdHVzIHN0YXR1cykKPiDCoMKgwqDCoMKgwqDCoMKg
+fQo+IMKgfQo+IMKgCj4gK3N0YXRpYyBjb25zdCBjaGFyICp1ZnNfaGlkX3N0YXRlX3RvX3N0cmlu
+ZyhlbnVtIHVmc19oaWRfc3RhdGUgc3RhdGUpCj4gK3sKPiArwqDCoMKgwqDCoMKgwqBzd2l0Y2gg
+KHN0YXRlKSB7Cj4gK8KgwqDCoMKgwqDCoMKgY2FzZSBISURfSURMRToKPiArwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgcmV0dXJuICJpZGxlIjsKPiArwqDCoMKgwqDCoMKgwqBjYXNlIEFO
+QUxZU0lTX0lOX1BST0dSRVNTOgo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqByZXR1
+cm4gImFuYWx5c2lzX2luX3Byb2dyZXNzIjsKPiArwqDCoMKgwqDCoMKgwqBjYXNlIERFRlJBR19S
+RVFVSVJFRDoKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcmV0dXJuICJkZWZyYWdf
+cmVxdWlyZWQiOwo+ICvCoMKgwqDCoMKgwqDCoGNhc2UgREVGUkFHX0lOX1BST0dSRVNTOgo+ICvC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqByZXR1cm4gImRlZnJhZ19pbl9wcm9ncmVzcyI7
+Cj4gK8KgwqDCoMKgwqDCoMKgY2FzZSBERUZSQUdfQ09NUExFVEVEOgo+ICvCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqByZXR1cm4gImRlZnJhZ19jb21wbGV0ZWQiOwo+ICvCoMKgwqDCoMKg
+wqDCoGNhc2UgREVGUkFHX05PVF9SRVFVSVJFRDoKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgcmV0dXJuICJkZWZyYWdfbm90X3JlcXVpcmVkIjsKPiArwqDCoMKgwqDCoMKgwqBkZWZh
+dWx0Ogo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqByZXR1cm4gInVua25vd24iOwo+
+ICvCoMKgwqDCoMKgwqDCoH0KPiArfQoKVGhlIGVudW0gdWZzX2hpZF9zdGF0ZSB2YWx1ZXMgYXJl
+IGNvbnRpZ3VvdXMgYW5kIHN0YXJ0IGZyb20gMCwgbWF5YmUgY2hhbmdlIHN3aXRjaC1zdGF0ZSB0
+byA6CgojZGVmaW5lIE5VTV9VRlNfSElEX1NUQVRFUyA2CnN0YXRpYyBjb25zdCBjaGFyICp1ZnNf
+aGlkX3N0YXRlc1tOVU1fVUZTX0hJRF9TVEFURVNdID0gewogICAgImlkbGUiLAogICAgImFuYWx5
+c2lzX2luX3Byb2dyZXNzIiwKICAgICJkZWZyYWdfcmVxdWlyZWQiLAogICAgImRlZnJhZ19pbl9w
+cm9ncmVzcyIsCiAgICAiZGVmcmFnX2NvbXBsZXRlZCIsCiAgICAiZGVmcmFnX25vdF9yZXF1aXJl
+ZCIKfTsKCnN0YXRpYyBjb25zdCBjaGFyICp1ZnNfaGlkX3N0YXRlX3RvX3N0cmluZyhlbnVtIHVm
+c19oaWRfc3RhdGUgc3RhdGUpIHsKICAgIGlmICgodW5zaWduZWQgaW50KXN0YXRlIDwgTlVNX1VG
+U19ISURfU1RBVEVTKQogICAgICAgIHJldHVybiB1ZnNfaGlkX3N0YXRlc1tzdGF0ZV07CiAgICBy
+ZXR1cm4gInVua25vd24iOwp9Cgo=
 
 
