@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5352C3ABDD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 May 2025 13:44:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07B69C3ABDD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 May 2025 14:38:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=SdcnrUmWq7v6a3i92pL8fQL4v54u0gfSQOAZg2wF6X8=; b=rmVT7fNyCF74Auel771pN703sB
-	PNbWfIQZeXh4b9YdfXv/qDlaQ9JYgy6XkhQYzXYLP4ll7Rbmy1Q9lkEZm+kxr5dOqc5iNmmnOwkdz
-	x9oCJNc+11RVF7yPG+899e1XaZ0KU7Pl6kS6i/5xFODOHxtQkLRoMEylA9W42ZXSDXSDkaYg/tpae
-	s2CGe+OmHRoAUwGPNXMdDUhazvDsW76pWynm34y0PkTmyyjKKEzPWpiJeGozRGmMDsXlm8Ou0a7Za
-	+9N5md1Bm8scWANQA6VkZAbsbyBu7iEITRDe+6VrT19Ci3o74Yb8pG+he/SGav6Cwy6u3sNBqPAai
-	WLnSoJKQ==;
+	bh=VXNWF5d42ExcW7fSb5Pp8BqxYkRqWCdR/2Uwti83pgs=; b=k8nulRxsKKh+lXjHWENP4jp7+o
+	pEDuLgLZktJER010YV74bL9lrM1oUQSBKFAOGNQ1edz5khBdJ8OD6uOCOAoJVF9XWhyRbPLF59OdP
+	QiQTI3TwJ2DJBa1CQLlDtysfw4lMf7m++D80TysKq3OwNBXmYpBDhLSZURtVdbSCdq/lXGT9uVNXR
+	VSe7NjRRHmJIH7c/5R/iGKJkt9fy9yizJ+oZjME0dcfLwcUlPTzmBgsClwThRv3b2kEOgjfypGLop
+	slHae9d4voA1OeYbqCwCH2PvAQlvfXK6KlMBcJbH0EuOrOrQKNT9fMn3hsaT1EHWL5A84RzlHVPL6
+	lX4m5KLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHNGI-0000000D3Bw-29L5;
-	Tue, 20 May 2025 13:44:06 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1uHO6q-0000000DBuA-0NHE;
+	Tue, 20 May 2025 14:38:24 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHNEB-0000000D2zY-3kAg;
-	Tue, 20 May 2025 13:41:57 +0000
+	id 1uHO2K-0000000DAwK-2vfT;
+	Tue, 20 May 2025 14:33:45 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 76C36A4EA80;
-	Tue, 20 May 2025 13:41:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BFF75C4CEE9;
-	Tue, 20 May 2025 13:41:52 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 773FBA4EB3B;
+	Tue, 20 May 2025 14:33:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CA936C4CEE9;
+	Tue, 20 May 2025 14:33:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747748513;
-	bh=aF9DEQjUc4Qwge2M0Bizos2dw0TZnxr1SLShOtIxmfs=;
+	s=k20201202; t=1747751623;
+	bh=UQfJvh5021ymW/G9gh8EoO5JxCDWd0uvGKSwEiCv7E0=;
 	h=From:Date:Subject:To:Cc:From;
-	b=rFmrfRJKFsr5GIgctEUfS0qkuxKMbUtxBFt1UH6ndA/NAjfoZACEau5FExCWGFkfE
-	 WcCYydLLrzXWe/gpTax6YixO7E8VZTaicuDCA3IgZ8a9BCncIOZ0VlsEcnv3D0xr1w
-	 XzhZNps+u4Fzvs0OAmonW4ckmGKS6zhHPDhul+lcn7HiVQ3YVdcPSNKezX7eaJnyvp
-	 qObncCv2wTHUFkB76LgzwEWvJtUByvdt8/w9MAvC/op4IAPqqHfhqMTpXqtXux1yOU
-	 Nqrs6td/3zqzrfHmOn4nIbNNjRfOuy4hNz804d7ICBP6YuGKRv5+fqjhd0kNmA0QOT
-	 vGPW33t/rkNqg==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Tue, 20 May 2025 15:41:35 +0200
-Subject: [PATCH] arm64: dts: airoha: en7581: Add ethernet nodes to EN7581
- SoC evaluation board
+	b=aQ+9q0fJXMJ5lhQGGKqFh6loEs0vjEb6JRqQQ5HsCoHvFfDZLI16YBJz0tutRCM3F
+	 jCgySkrVHzmVJEPK13z5akCdb/IH66xjUKCxxxCp3nl76laRzsvYEEMJtBiNgIYHW/
+	 ck2j5KHcbe0Mb4He57DsNDw80uLol8KERhGPire9X24KCs5oSSCZ2aYpiqCK7XefYJ
+	 gXi+IwmPZNZf3mEjtCclQRmaL6XmtQqD03EN2C0MZPspPBcolP2QdcJABVkvjg73ZF
+	 OI6hdwF0MYYvT6ptoLHaINQgLLLbFBD/ts4WtYXqWUue2P3O+Lv2Oo65na/u600bnx
+	 Uvb6XyGha8GqA==
+From: Simon Horman <horms@kernel.org>
+Date: Tue, 20 May 2025 15:33:33 +0100
+Subject: [PATCH net-next] net: ethernet: mtk_eth_soc: Correct spelling
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250520-en7581-net-v1-1-5317f8e829ad@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAI6GLGgC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDI1MDUyMD3dQ8c1MLQ9281BJdkxSLNKOklOQ04yRTJaCGgqLUtMwKsGHRsbW
- 1ANCnKgZcAAAA
-X-Change-ID: 20250520-en7581-net-4d8f2bdcf3b5
-To: Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+Message-Id: <20250520-mtk-spell-v1-1-2b0d5b4a4528@kernel.org>
+X-B4-Tracking: v=1; b=H4sIALySLGgC/x3MQQqEMBAF0atIr22IjYp6FXERxz/aqFGSIIJ49
+ wmzfFDUQwFeEajLHvK4NOjhEoo8o89i3QzWKZnESGUqMbzHlcOJbeNxktKiltY2llJ/enz1/r9
+ 6cojscEca3vcHWMSozGUAAAA=
+To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
  Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+X-Mailer: b4 0.14.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250520_064156_066385_DCB152D9 
-X-CRM114-Status: UNSURE (   8.47  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250520_073344_880717_93BC76D8 
+X-CRM114-Status: GOOD (  11.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,97 +78,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce ethernet controller nodes to EN7581 SoC and EN7581 evaluation
-board.
+Correct spelling of platforms, various, and initial.
+As flagged by codespell.
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Signed-off-by: Simon Horman <horms@kernel.org>
 ---
- arch/arm64/boot/dts/airoha/en7581-evb.dts |  8 +++++
- arch/arm64/boot/dts/airoha/en7581.dtsi    | 49 +++++++++++++++++++++++++++++++
- 2 files changed, 57 insertions(+)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h | 4 ++--
+ drivers/net/ethernet/mediatek/mtk_wed.c     | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/airoha/en7581-evb.dts b/arch/arm64/boot/dts/airoha/en7581-evb.dts
-index 99d2c4f1fc5a9638f551c6d725eeea568943cc68..dae9968a4ff68e8b34d02b237a168a80d184bcb0 100644
---- a/arch/arm64/boot/dts/airoha/en7581-evb.dts
-+++ b/arch/arm64/boot/dts/airoha/en7581-evb.dts
-@@ -98,3 +98,11 @@ &pcie1 {
- &i2c0 {
- 	status = "okay";
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index 2d4b9964d3db..6f72a8c8ae1e 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -1178,7 +1178,7 @@ struct mtk_reg_map {
  };
-+
-+&eth {
-+	status = "okay";
-+};
-+
-+&gdm1 {
-+	status = "okay";
-+};
-diff --git a/arch/arm64/boot/dts/airoha/en7581.dtsi b/arch/arm64/boot/dts/airoha/en7581.dtsi
-index 536ece69b935add88fb73ca6bd3f1ecd842cad7a..ff6908a76e8eb6cf91343495d1fe531a868e41fb 100644
---- a/arch/arm64/boot/dts/airoha/en7581.dtsi
-+++ b/arch/arm64/boot/dts/airoha/en7581.dtsi
-@@ -346,5 +346,54 @@ i2c1: i2c@1fbf8100 {
  
- 			status = "disabled";
- 		};
-+
-+		eth: ethernet@1fb50000 {
-+			compatible = "airoha,en7581-eth";
-+			reg = <0 0x1fb50000 0 0x2600>,
-+			      <0 0x1fb54000 0 0x2000>,
-+			      <0 0x1fb56000 0 0x2000>;
-+			reg-names = "fe", "qdma0", "qdma1";
-+
-+			resets = <&scuclk EN7581_FE_RST>,
-+				 <&scuclk EN7581_FE_PDMA_RST>,
-+				 <&scuclk EN7581_FE_QDMA_RST>,
-+				 <&scuclk EN7581_XSI_MAC_RST>,
-+				 <&scuclk EN7581_DUAL_HSI0_MAC_RST>,
-+				 <&scuclk EN7581_DUAL_HSI1_MAC_RST>,
-+				 <&scuclk EN7581_HSI_MAC_RST>,
-+				 <&scuclk EN7581_XFP_MAC_RST>;
-+			reset-names = "fe", "pdma", "qdma",
-+				      "xsi-mac", "hsi0-mac", "hsi1-mac",
-+				      "hsi-mac", "xfp-mac";
-+
-+			interrupts = <GIC_SPI 37 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 55 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 56 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 57 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 38 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 58 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 59 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 60 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 49 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 64 IRQ_TYPE_LEVEL_HIGH>;
-+
-+			status = "disabled";
-+
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			gdm1: ethernet@1 {
-+				compatible = "airoha,eth-mac";
-+				reg = <1>;
-+				phy-mode = "internal";
-+				status = "disabled";
-+
-+				fixed-link {
-+					speed = <10000>;
-+					full-duplex;
-+					pause;
-+				};
-+			};
-+		};
- 	};
- };
-
----
-base-commit: 357bbde68e750ea3da2450c0c2076ff2465de559
-change-id: 20250520-en7581-net-4d8f2bdcf3b5
-
-Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+ /* struct mtk_eth_data -	This is the structure holding all differences
+- *				among various plaforms
++ *				among various platforms
+  * @reg_map			Soc register map.
+  * @ana_rgc3:                   The offset for register ANA_RGC3 related to
+  *				sgmiisys syscon
+@@ -1278,7 +1278,7 @@ struct mtk_soc_data {
+  * @mii_bus:		If there is a bus we need to create an instance for it
+  * @pending_work:	The workqueue used to reset the dma ring
+  * @state:		Initialization and runtime state of the device
+- * @soc:		Holding specific data among vaious SoCs
++ * @soc:		Holding specific data among various SoCs
+  */
+ 
+ struct mtk_eth {
+diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
+index e212a4ba9275..351dd152f4f3 100644
+--- a/drivers/net/ethernet/mediatek/mtk_wed.c
++++ b/drivers/net/ethernet/mediatek/mtk_wed.c
+@@ -2000,7 +2000,7 @@ mtk_wed_configure_irq(struct mtk_wed_device *dev, u32 irq_mask)
+ 		if (mtk_wed_is_v3_or_greater(dev->hw))
+ 			wed_set(dev, MTK_WED_CTRL, MTK_WED_CTRL_TX_TKID_ALI_EN);
+ 
+-		/* initail tx interrupt trigger */
++		/* initial tx interrupt trigger */
+ 		wed_w32(dev, MTK_WED_WPDMA_INT_CTRL_TX,
+ 			MTK_WED_WPDMA_INT_CTRL_TX0_DONE_EN |
+ 			MTK_WED_WPDMA_INT_CTRL_TX0_DONE_CLR |
+@@ -2011,7 +2011,7 @@ mtk_wed_configure_irq(struct mtk_wed_device *dev, u32 irq_mask)
+ 			FIELD_PREP(MTK_WED_WPDMA_INT_CTRL_TX1_DONE_TRIG,
+ 				   dev->wlan.tx_tbit[1]));
+ 
+-		/* initail txfree interrupt trigger */
++		/* initial txfree interrupt trigger */
+ 		wed_w32(dev, MTK_WED_WPDMA_INT_CTRL_TX_FREE,
+ 			MTK_WED_WPDMA_INT_CTRL_TX_FREE_DONE_EN |
+ 			MTK_WED_WPDMA_INT_CTRL_TX_FREE_DONE_CLR |
 
 
