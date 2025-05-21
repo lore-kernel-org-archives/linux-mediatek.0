@@ -4,66 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93844C2D0CD
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 May 2025 09:34:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B067FC54ED0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 May 2025 14:16:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=d6+kcGTIhXXcs94RjHFAOh1Tc+Y6SJXAXKGul0eBNLk=; b=lfGd2EpubpyoFPTZI5RS+brFrM
-	SMBG7PiSH46+934JzdOQz0u4tJxOfZ5ikvfeXrWJdcjA0hSqCsnh99Ln0H8i66B2U5TFzFheZ3S7P
-	fORutJh+ErU8h4RTRyYcVsRxKv09sFOWMFBLluFQDc/7Drin3pbLGhCradlokiBBfj4EOFSw0scy4
-	fHP4o6zulgL3ZML7lidrugQFdH67g1h20GcTSXqyiPXSyP5iwufFVORzc54XCgUWCs1oOzdl0g6kN
-	EeI8jpomcYLChiPxXbxqeqPKU5W5nimwTvxu9dyn6q5Cu3PmdaOpU+iG/vkyjoP+wt0U8TPxzqo0D
-	h7S4kIXQ==;
+	bh=MnmIazdeQHYpzKblSLNalRrkT+9gaVkxnchblPLJi8Q=; b=p1LsUagLZdMHj9wQER9fztAz5T
+	5438BRKXTeFSbPZp7V9REw11wEoePlXs+m+6jrSYac/gzmzQn6FdlmkYZANZeglt+Tnj/j5dC0Z1n
+	5F4SkHRFn/YSxvZEScxJC/zDw0UXYdQX63rWRTUbH+3Ez5T8aaWLG+/9dyfNJ5tstz6eDIt6pV+SQ
+	JJi/UvVIsI3wa9sObvk29UVLlZIYnHDSlZeByY4+5/mx9JEvPTxFLNylLtuHxW+bHjetUBmag5POm
+	iviIrKZx6jDEv4Ky8+Di2YlIQvxq/IuN9aEvPkXu9eKumnFVSZnBsdZyP9gKJUGWZ9kRqS/TF+3Ud
+	oROKlwxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHfqh-0000000FKsR-1KcT;
-	Wed, 21 May 2025 09:34:55 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uHkF0-0000000G533-2WyF;
+	Wed, 21 May 2025 14:16:18 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHfiS-0000000FJ6W-391Z;
-	Wed, 21 May 2025 09:26:25 +0000
+	id 1uHjsg-0000000G0EQ-2t1Y;
+	Wed, 21 May 2025 13:53:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1747819582;
-	bh=ZOpY/97Ajk1+AuKUdRW8yZtKpNrYH5Zl/G/U2z+Pzyw=;
+	s=mail; t=1747835592;
+	bh=hutYu+1ngX5Dt7IvfZMnK5eZXB31NtkXbIx/qn2SlPc=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=aPjLRi73TKSd6G/BjOpJGab4gaFrJiIEj1xZD070Y7LlyE0OH0h/VmZg71+Hg/qP3
-	 +hfsHj3aOx+42qiffBTrkuL1KkpjP3BGQ4dGSTnRd+xENmz0cYf+Jwo87aSZTH9vG5
-	 oKdXARLPjySUfLo5Ri6ddTtmLtHtDJMSmdBrvbWPEpd2ZqpUYbJQKt09CeH84Z9w78
-	 HWdoOHDcUFVs+pKbqVYzuaKQYQOO1SQcD8vgP7akuVFvNTpHlHpTihMsH5K4/Wz/gD
-	 T1JrMuQpmJUKrV3qktg5Uzf0hEw9CWYykGKc3fSVUCfIOw1X46+CPom/EtlM3NaYeY
-	 95DxLunFkj97g==
+	b=R62vDqmrOkMKkmZxrNQeM1WnDBjhH9iGq2aBoELIjuvSW21xQwdOdspMpv9vY2XBn
+	 xMlTG2M8DraIIaaBwmThC672MJYyytmXLcyGxoikKpfi0QhJ/6rui18W1vJblW50FZ
+	 Qvugdm/jtNygoUE6njUoSB8FUMkXPHGwlo2TY0LUCgIxbFvz9g5QuTVcnZyxqjizJK
+	 jSYBMy1xNX5g3uVv+p32u8fn2hGZ+fEy2YM9se/iUTd310tASWUhD8cbWjw9qYoTI9
+	 r55n5ABClwoAHRSHB6p/swieW20LjJDQrxiXAsTc9Hnq5o7h2YeNtuoKIq0aVigBQc
+	 207PIFL9zBhrg==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id BD8B517E02BE;
-	Wed, 21 May 2025 11:26:21 +0200 (CEST)
-Message-ID: <9c594eaa-9ddc-4340-ac0d-d911073764ac@collabora.com>
-Date: Wed, 21 May 2025 11:26:21 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2AD2E17E02BE;
+	Wed, 21 May 2025 15:53:12 +0200 (CEST)
+Message-ID: <557a5182-4843-4925-953e-09e3b1e41f0c@collabora.com>
+Date: Wed, 21 May 2025 15:53:11 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] memory: mtk-smi: Add ostd setting for mt8186
-To: Friday Yang <friday.yang@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Rob Herring <robh@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20250521091626.4283-1-friday.yang@mediatek.com>
+Subject: Re: [PATCH v2] pinctrl: mediatek: eint: Fix invalid pointer
+ dereference for v1 platforms
+To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Hao Chang <ot_chhao.chang@mediatek.com>,
+ Qingliang Li <qingliang.li@mediatek.com>
+Cc: kernel@collabora.com, linux-mediatek@lists.infradead.org,
+ linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
+ Chen-Yu Tsai <wenst@chromium.org>
+References: <20250520-genio-350-eint-null-ptr-deref-fix-v2-1-6a3ca966a7ba@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250521091626.4283-1-friday.yang@mediatek.com>
+In-Reply-To: <20250520-genio-350-eint-null-ptr-deref-fix-v2-1-6a3ca966a7ba@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250521_022624_944787_0ACC6FBB 
-X-CRM114-Status: GOOD (  17.88  )
+X-CRM114-CacheID: sfid-20250521_065314_885579_9A602E0D 
+X-CRM114-Status: GOOD (  27.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,92 +82,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 21/05/25 11:16, Friday Yang ha scritto:
-> Add initial ostd setting for mt8186. All the settings come from DE.
-> These settings help adjust Multimedia HW's bandwidth limits to achieve
-> a balanced bandwidth requirement. Without this, the VENC HW works
-> abnormal while stress testing.
+Il 20/05/25 23:15, Nícolas F. R. A. Prado ha scritto:
+> Commit 3ef9f710efcb ("pinctrl: mediatek: Add EINT support for multiple
+> addresses") introduced an access to the 'soc' field of struct
+> mtk_pinctrl in mtk_eint_do_init() and for that an include of
+> pinctrl-mtk-common-v2.h.
 > 
-> Fixes: 86a010bfc739 ("memory: mtk-smi: mt8186: Add smi support")
-> Signed-off-by: Friday Yang <friday.yang@mediatek.com>
+> However, pinctrl drivers relying on the v1 common driver include
+> pinctrl-mtk-common.h instead, which provides another definition of
+> struct mtk_pinctrl that does not contain an 'soc' field.
+> 
+> Since mtk_eint_do_init() can be called both by v1 and v2 drivers, it
+> will now try to dereference an invalid pointer when called on v1
+> platforms. This has been observed on Genio 350 EVK (MT8365), which
+> crashes very early in boot (the kernel trace can only be seen with
+> earlycon).
+> 
+> In order to fix this, since 'struct mtk_pinctrl' was only needed to get
+> a 'struct mtk_eint_pin', make 'struct mtk_eint_pin' a parameter
+> of mtk_eint_do_init() so that callers need to supply it, removing
+> mtk_eint_do_init()'s dependency on any particular 'struct mtk_pinctrl'.
+> 
+> Fixes: 3ef9f710efcb ("pinctrl: mediatek: Add EINT support for multiple addresses")
+> Suggested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> ---
+> Changes in v2:
+> - Completely changed approach to make mtk_eint_pin a parameter of
+>    mtk_eint_do_init() as suggested by Angelo
+> - Link to v1: https://lore.kernel.org/r/20250519-genio-350-eint-null-ptr-deref-fix-v1-1-07445d6d22c3@collabora.com
+> ---
+>   drivers/pinctrl/mediatek/mtk-eint.c              | 26 ++++++++++--------------
+>   drivers/pinctrl/mediatek/mtk-eint.h              |  5 +++--
+>   drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c |  2 +-
+>   drivers/pinctrl/mediatek/pinctrl-mtk-common.c    |  2 +-
+>   4 files changed, 16 insertions(+), 19 deletions(-)
+> 
+> diff --git a/drivers/pinctrl/mediatek/mtk-eint.c b/drivers/pinctrl/mediatek/mtk-eint.c
+> index 16af6a47028e67bb53db4041a37ebbbb8b9a1e43..d906a5e4101fb10968035fc48e9cf4a444d063a9 100644
+> --- a/drivers/pinctrl/mediatek/mtk-eint.c
+> +++ b/drivers/pinctrl/mediatek/mtk-eint.c
+> @@ -22,7 +22,6 @@
+>   #include <linux/platform_device.h>
+>   
+>   #include "mtk-eint.h"
+> -#include "pinctrl-mtk-common-v2.h"
+>   
+>   #define MTK_EINT_EDGE_SENSITIVE           0
+>   #define MTK_EINT_LEVEL_SENSITIVE          1
+> @@ -505,10 +504,9 @@ int mtk_eint_find_irq(struct mtk_eint *eint, unsigned long eint_n)
+>   }
+>   EXPORT_SYMBOL_GPL(mtk_eint_find_irq);
+>   
+> -int mtk_eint_do_init(struct mtk_eint *eint)
+> +int mtk_eint_do_init(struct mtk_eint *eint, struct mtk_eint_pin *eint_pin)
+>   {
+>   	unsigned int size, i, port, virq, inst = 0;
+> -	struct mtk_pinctrl *hw = (struct mtk_pinctrl *)eint->pctl;
+>   
+>   	/* If clients don't assign a specific regs, let's use generic one */
+>   	if (!eint->regs)
+> @@ -519,7 +517,15 @@ int mtk_eint_do_init(struct mtk_eint *eint)
+>   	if (!eint->base_pin_num)
+>   		return -ENOMEM;
+>   
+> -	if (eint->nbase == 1) {
 
-I agree about this commit and you can get my
+Okay, dropping the nbase == 1 is sane, but that statement was actually documenting
+the fact that *eint_pin is used only for multi-base EINT case, so please add those
+comments:
+
+> +	if (eint_pin) {
+
+		/* EINT with multiple bases */
+
+> +		eint->pins = eint_pin;
+> +		for (i = 0; i < eint->hw->ap_num; i++) {
+> +			inst = eint->pins[i].instance;
+> +			if (inst >= eint->nbase)
+> +				continue;
+> +			eint->base_pin_num[inst]++;
+> +		}
+> +	} else {
+
+		/* Single base EINT */
+
+...after which:
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-...but I still have a question.
-
-This driver is getting lots of those big OSTD arrays, and I can foresee this
-getting bigger and bigger with every new SoC getting supported in there.
-
-I'd like to understand how we can improve that, hence, can you please describe
-how the OSTD values are calculated and how are they limiting the bandwidth?
-
-I'm thinking that we can do something such that we get this runtime calculated
-instead of just holding fixed values, so that we may eventually replace all those
-big arrays with just a few values (foreseeing 3-4 values) and performing a big
-cleanup (which may bring further improvements in the future).
-
-Cheers,
-Angelo
-
-> ---
->   drivers/memory/mtk-smi.c | 33 +++++++++++++++++++++++++++++++++
->   1 file changed, 33 insertions(+)
-> 
-> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-> index c086c22511f7..733e22f695ab 100644
-> --- a/drivers/memory/mtk-smi.c
-> +++ b/drivers/memory/mtk-smi.c
-> @@ -320,6 +320,38 @@ static const u8 mtk_smi_larb_mt6893_ostd[][SMI_LARB_PORT_NR_MAX] = {
->   	[20] = {0x9, 0x9, 0x5, 0x5, 0x1, 0x1},
->   };
-> 
-> +static const u8 mtk_smi_larb_mt8186_ostd[][SMI_LARB_PORT_NR_MAX] = {
-> +	[0] = {0x2, 0x1, 0x8, 0x1,},
-> +	[1] = {0x1, 0x3, 0x1, 0x1,},
-> +	[2] = {0x6, 0x1, 0x4, 0x1,},
-> +	[3] = {},
-> +	[4] = {0xf, 0x1, 0x5, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1,
-> +	       0x1, 0x1, 0x1,},
-> +	[5] = {},
-> +	[6] = {},
-> +	[7] = {0x1, 0x3, 0x1, 0x1, 0x1, 0x3, 0x2, 0xd, 0x7, 0x5, 0x3,
-> +	       0x1, 0x5,},
-> +	[8] = {0x1, 0x2, 0x2,},
-> +	[9] = {0x9, 0x7, 0xf, 0x8, 0x1, 0x8, 0x9, 0x3, 0x3, 0xb, 0x7, 0x4,
-> +	       0x9, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1,
-> +	       0x1, 0x1, 0x1, 0x1, 0x1,},
-> +	[10] = {},
-> +	[11] = {0x9, 0x7, 0xf, 0x8, 0x1, 0x8, 0x9, 0x3, 0x3, 0xb, 0x7, 0x4,
-> +		0x9, 0x1, 0x1, 0x1, 0x1, 0x1, 0x8, 0x7, 0x7, 0x1, 0x6, 0x2,
-> +		0xf, 0x8, 0x1, 0x1, 0x1,},
-> +	[12] = {},
-> +	[13] = {0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x6, 0x6, 0x6, 0x1, 0x1, 0x1,},
-> +	[14] = {0x1, 0x1, 0x1, 0x1, 0x1, 0x1,},
-> +	[15] = {},
-> +	[16] = {0x28, 0x14, 0x2, 0xc, 0x18, 0x1, 0x14, 0x1, 0x4, 0x4, 0x4,
-> +		0x2, 0x4, 0x2, 0x8, 0x4, 0x4,},
-> +	[17] = {0x28, 0x14, 0x2, 0xc, 0x18, 0x1, 0x14, 0x1, 0x4, 0x4, 0x4,
-> +		0x2, 0x4, 0x2, 0x8, 0x4, 0x4,},
-> +	[18] = {},
-> +	[19] = {0x1, 0x1, 0x1, 0x1,},
-> +	[20] = {0x2, 0x2, 0x2, 0x2, 0x1, 0x1,},
-> +};
-> +
->   static const u8 mtk_smi_larb_mt8188_ostd[][SMI_LARB_PORT_NR_MAX] = {
->   	[0] = {0x02, 0x18, 0x22, 0x22, 0x01, 0x02, 0x0a,},
->   	[1] = {0x12, 0x02, 0x14, 0x14, 0x01, 0x18, 0x0a,},
-> @@ -491,6 +523,7 @@ static const struct mtk_smi_larb_gen mtk_smi_larb_mt8183 = {
->   static const struct mtk_smi_larb_gen mtk_smi_larb_mt8186 = {
->   	.config_port                = mtk_smi_larb_config_port_gen2_general,
->   	.flags_general	            = MTK_SMI_FLAG_SLEEP_CTL,
-> +	.ostd			    = mtk_smi_larb_mt8186_ostd,
->   };
-> 
->   static const struct mtk_smi_larb_gen mtk_smi_larb_mt8188 = {
-> --
-> 2.46.0
-> 
+Thanks for fixing this!
 
 
