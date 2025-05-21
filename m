@@ -4,69 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C9F6C2D0CD
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 May 2025 15:53:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5535FC2D0CD
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 May 2025 16:49:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CRXCr3Uh0WGqe0ESiF0panNk2y+kY7VENjp5cg4gP4w=; b=n9+/eku4WWJgjI/W5LPwRvUnnG
-	cb/N18xZcc0j8cXPZtMwg1TrbGDAH0oYagAq95pTfOC8AfJVc+sSqMRh2zBTq5O5DjFz4y8hbiyMb
-	BXCC/hXOC3ERFcI4QBYae3fYZ0RYmsqedNHzKMRnaTtzNzkkJKbd2RmKIuPAgv+0pDoba6ukklNh2
-	cqZ6Yxb29nlZByeF45LnglPNIMSC3nV3RCccpl4nMftp47AJPBKsE7Dekzblvmn3lgj9z7/+E5zob
-	SSq+j0TagdXK3ea/1iJ/Tc2JdscJK4hOLwpyQ6gEksqGl+k0Q062l/VklHtK998I0Y5Y+T+qXVxXZ
-	2YaXhUHg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mMmRvxKHUiZ4bzlqiGpD/VkaqONMq2EdgL1Fk7DWEAs=; b=GqRb7YmYy+QqQ9spyO3fH3cjdz
+	HvwaMqhk6YQt1lovXap1mF1MRFrU3wSnPbOYMWLtal/xXyaV4TjxWjKRHbtJE+PTlHKqT+f+jAb+r
+	Us8e2oVS/rH8kLB6r4rKh6q0TGwP53zthijvkQNXU9monYM9TyNvjBlhjS4eE09PLVRrYlHF9LQ89
+	gR9C+4cIGjKMZcwmBbTe46G+K7zm1raPTwtTSgW2OBhYmL5kjICN4IOBHT+imThZXgom905pOiDic
+	R9stvZwdLXVCQ4bN+e0Wtz/jH4vcAauzpFAEYv+d4Rplp5HZgpxZbD9flNY9NwGeadV/hq6k7axxr
+	WDuvhH1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHllG-0000000GMpS-0p0p;
-	Wed, 21 May 2025 15:53:42 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uHmcr-0000000GV8S-0yW7;
+	Wed, 21 May 2025 16:49:05 +0000
+Received: from mout.web.de ([212.227.15.3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHlit-0000000GMAk-2rmT;
-	Wed, 21 May 2025 15:51:16 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 66F455C5A92;
-	Wed, 21 May 2025 15:48:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7BEA8C4CEE4;
-	Wed, 21 May 2025 15:51:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747842674;
-	bh=CRXCr3Uh0WGqe0ESiF0panNk2y+kY7VENjp5cg4gP4w=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qwFl0xCRRLwp400F5dLYDjwJ+pqmtK7xX0OYpjGEmOGfMFjQpssfmAD1ZqG5KAnHk
-	 x7M7uJxvrojw8em6NUUynuEM7zvFHbWDBqbhPEKG3B9SW4D5KlQuBxOzGvVQ+3ggpn
-	 Fvq+44Jct/cBYWcGV9VogKMCVXvoClVDGK5rzZUY19zvuxPFoVgsZwVZBkODYoC8mp
-	 K7AnU/6aYPxCHs5RsRogeDO2x/T7+aB2GYu1aAHm46Iv7zAZc634fwtAVaay+c5boN
-	 IEudIM0MuEi/lZ/JXXxH8I6qHwJjs4eSxUA7sAqI1+rK8Xf81BS+LcCTOeTbCWRQpM
-	 Ec/wr7XC8BBqg==
-Date: Wed, 21 May 2025 16:51:09 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH net-next v3 1/4] dt-bindings: net: airoha: Add EN7581
- memory-region property
-Message-ID: <20250521-tinwork-numeric-35f98627d3d2@spud>
-References: <20250521-airopha-desc-sram-v3-0-a6e9b085b4f0@kernel.org>
- <20250521-airopha-desc-sram-v3-1-a6e9b085b4f0@kernel.org>
+	id 1uHmco-0000000GV6t-1Qkg;
+	Wed, 21 May 2025 16:49:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
+	s=s29768273; t=1747846116; x=1748450916; i=markus.elfring@web.de;
+	bh=mMmRvxKHUiZ4bzlqiGpD/VkaqONMq2EdgL1Fk7DWEAs=;
+	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
+	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
+	 cc:content-transfer-encoding:content-type:date:from:message-id:
+	 mime-version:reply-to:subject:to;
+	b=R9qkp0UQLMU4PS8aLGNnM5h9K0LZcxpWp5mQgC7/MZZl4bntVAcJKlRtfX+K+7Nw
+	 4Mwuj1MrF+OPYYVgK8wGwQSF+6mL1ik53T5NWdrqiPNfY4otvzjtxvFBOgC3DrGiy
+	 qdvJGp3gEW9RagYyq0qwliS8MNeCBWOm0evE6ahV/a3g7ryv4f4TY1D5KKJ9TjO1+
+	 XxkrE38w4Q7vs7QB7kRwULrG5cnletAHS+065W+MBe8FsLAVhGVnJxQjTRP0aG8Do
+	 YxA7+ZAnAHMVKsy1po7HrWguNDtHKKGnshZBWblNnsJQ2PmBm809PomU25NRANE3i
+	 ZvtSYxDXZGFlJuQb/Q==
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from [192.168.178.29] ([94.31.69.179]) by smtp.web.de (mrweb005
+ [213.165.67.108]) with ESMTPSA (Nemesis) id 1N4N98-1uyN8v3ZQc-016xzv; Wed, 21
+ May 2025 18:48:35 +0200
+Message-ID: <cc69eb17-d55c-4843-8d90-fd49191c69e2@web.de>
+Date: Wed, 21 May 2025 18:48:25 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="wjvgKzIIZLrkHJfJ"
-Content-Disposition: inline
-In-Reply-To: <20250521-airopha-desc-sram-v3-1-a6e9b085b4f0@kernel.org>
+User-Agent: Mozilla Thunderbird
+To: vulab@iscas.ac.cn, linux-remoteproc@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: stable@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>,
+ Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Mathieu Poirier <mathieu.poirier@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+References: <20250521142404.1077-1-vulab@iscas.ac.cn>
+Subject: Re: [PATCH] remoteproc: mediatek: Add SCP watchdog handler in IRQ
+ processing
+Content-Language: en-GB, de-DE
+From: Markus Elfring <Markus.Elfring@web.de>
+In-Reply-To: <20250521142404.1077-1-vulab@iscas.ac.cn>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:wLDt5/h2QRTkZczjRvRZMrVMnlTt2L1E/AybcnSxYGSgeOhxHsx
+ pY0dW2RuIKkKw50MOqmzkYU1gmfRgzf0KeCVJ9tRcIB/a46zQy6/1xqtwscqu4IDSruVwqw
+ invgNyZJbcNmqhbEWWGNag6SyqUMwPP4NL2X5wol8nvTr5m4aWu9vh2NxHiY+sEPX8EHPli
+ K/yIzGNo46xfQDrIvJCkQ==
+UI-OutboundReport: notjunk:1;M01:P0:7AM6bwFPyJI=;et9l+tuDsrsw4nQb40EaimU/7/O
+ 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
+ NvI9vJhgOf7wasUIpriVeownWfw9OarXeb
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250521_085115_764839_90F55FE5 
-X-CRM114-Status: GOOD (  10.24  )
+X-CRM114-CacheID: sfid-20250521_094902_677242_6B746F7C 
+X-CRM114-Status: UNSURE (   5.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,31 +129,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+> In mt8195_scp_c1_irq_handler(), only the IPC interrupt bit
+> (MT8192_SCP_IPC_INT_BIT) was checked., but does not handle
+> when this bit is not set. This could lead to unhandled watchdog
+> events. This could lead to unhandled watchdog events. A proper
+=E2=80=A6
 
---wjvgKzIIZLrkHJfJ
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+* You may occasionally put more than 63 characters into text lines
+  of such a change description.
 
-On Wed, May 21, 2025 at 09:16:36AM +0200, Lorenzo Bianconi wrote:
-> Introduce memory-region and memory-region-names properties for the
-> ethernet node available on EN7581 SoC in order to reserve system memory
-> for hw forwarding buffers queue used by the QDMA modules.
->=20
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+* Please avoid a duplicate sentence here.
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
---wjvgKzIIZLrkHJfJ
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaC32bQAKCRB4tDGHoIJi
-0jfDAQDU0/mGf2mXREMZJiO9Z2iGK1V1+C+Zk9qaLvyd/7jKJAD/bl9C4D9zQtX4
-K3gqNtnGI+N3oAYNQE/13WP9DV/89gM=
-=3S3F
------END PGP SIGNATURE-----
-
---wjvgKzIIZLrkHJfJ--
+Regards,
+Markus
 
