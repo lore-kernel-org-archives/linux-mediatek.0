@@ -4,61 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9075CC3DA6D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 May 2025 00:04:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95631C54756
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 May 2025 01:22:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zLMVg62D63jw2j3c0Fj1FO3so+LeBh6cMEhUELVQJls=; b=Kp64sD3Z7Jpiz6iCKQci8pr/vZ
-	I20gRDOERlse+3ayeukwe1duKnCaFzglp+JXiHJilAHCBDAgf2phTvFeaOdKeZoClnCO1gC0gn70K
-	BpMUjGOb5SGeH9aylUdsndvVprnjt5vUh89tDPXMiiAtxd9N/yC/4s+roEpRWP8aIN7IqEKEJvuCq
-	CP/dyIA2VE7BvAkXZKPRdeI4m6csdaqFSpPOD01XM2a0BqLmAs+OTkABW2g3ywgek4SpSzsQLkfQE
-	MEJS0vM8skcxKijfRfEJVoqn5BmSZkAK/8/8KmMa2IYISodWyvI5jQYR+7uZr0TlmTaxzfITsWmuN
-	VDsxO5Sw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sNXpos+KFKlgWkGg3Bc/Cslj4q3MuxtNfV5w+NKfjeI=; b=x8XTzTiQgMZyrJWHB+92st0WUI
+	Jvap7vP3iX4CyiCHTXsUSGKLLT7+o6GYWLVx4gU8PecTWxryr3EF+uzEfVI4uwSjD07wl7dEj0jpe
+	VvGpbMmeGScffJNdGJjkAKBJ23jN3GOX7DjJeQpE/tfCq46Q56r1Hb/2mXxaE1/0VTc1cvxPMRn3P
+	x8TUZQGBDHVaPqB9C8CbfFif8oGYC3sqi9Kcm54I6V2pUYk2eIareiYgtv34Jzr/xbCcPRRA31E7K
+	b947Lm88/8topA161G06Eok17a3B1ZcBcXVRRgUJ+TNWOMA6JCSVGMScG2NI3uqXr3aZN7DKzojMz
+	Wl2YALKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHWwe-0000000EPnZ-3CwZ;
-	Wed, 21 May 2025 00:04:28 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uHYAJ-0000000EUOD-18td;
+	Wed, 21 May 2025 01:22:39 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHWuV-0000000EPhK-06hY;
-	Wed, 21 May 2025 00:02:15 +0000
+	id 1uHY87-0000000ETyf-3X1o;
+	Wed, 21 May 2025 01:20:25 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 02AFA629D4;
-	Wed, 21 May 2025 00:02:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6979FC4CEE9;
-	Wed, 21 May 2025 00:02:13 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 164494AEFD;
+	Wed, 21 May 2025 01:20:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E49F8C4CEE9;
+	Wed, 21 May 2025 01:20:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747785733;
-	bh=jXl0OotgD+85DVFJREE1im9n5MMc1eZmHD6Z/7IoqVI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Xzpch6AxmJmqIKU1MNMhV6r+ZUcFyE6XLvHM/8foZm27SJCHk0oiZzxKvS94j6i/K
-	 1gqDikjs90pIPcOhm2XSK5TxKNJvUREDIvThJh44OOl673K2lmROFMKRbpa3bnbh/1
-	 bCCpoRvoukdb62EywWi100owxVeiKeKDkLxzO/beKegHX5lry/VkVsio4rmowXKUno
-	 MsrSxLt3UGrVCEsi2aKgSw+gl/TARELO0fKD9zI/uxbra9Oc5ez+jXSNNIDAf80xkd
-	 miNqtFsNT3w1dvKqVhTQq0t64LoiJsFxdXzPpQFSl+TKU0Q9eILO9w4f8DipERx8vZ
-	 xDw+67LsUtugw==
-Date: Tue, 20 May 2025 19:02:11 -0500
-From: Rob Herring <robh@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: yong.wu@mediatek.com, joro@8bytes.org, will@kernel.org,
-	robin.murphy@arm.com, krzk+dt@kernel.org, conor+dt@kernel.org,
-	matthias.bgg@gmail.com, iommu@lists.linux.dev,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	kernel@collabora.com
-Subject: Re: [PATCH v1 2/2] iommu/mediatek: Add support for Dimensity 1200
- MT6893 MM IOMMU
-Message-ID: <20250521000211.GA1717916-robh@kernel.org>
-References: <20250410144008.475888-1-angelogioacchino.delregno@collabora.com>
- <20250410144008.475888-3-angelogioacchino.delregno@collabora.com>
+	s=k20201202; t=1747790423;
+	bh=6cw2AlYCWLjE+TSTj9Ic8Mp7D9kUTOyLV7ooRycjEfc=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=mB/bQrbghUpWn2FzPAGn5pJtKx8CctWB0li00fGLDaHFFU964Qqxj7o15XlV7ZXjz
+	 etwAz8hw5ndvhyitxudtAnuRuXnSIY4yZlJv/alZ0m/Wd9VIABw0bFhZkWb25ug2IE
+	 /y6moZ4j872KG2nZAFDRHjzu+IsyFtkb1DfPOKn+XEixa/kk3775F/H/mbO5QhO4pb
+	 1VX1neg102zea0tGXsJJWrgtnSji4X3t05fr3g+XXQnOrIO7gs63rs2k3Z4XhA8u2G
+	 shE8jBF05ulUtW3DkDM78mnQ3I0PWdGTb2qQ7xunbg/7XfuVDj+Z1psNwZG/s8phjx
+	 84pLjjzRS4o2A==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id EB1E8380AAD0;
+	Wed, 21 May 2025 01:20:59 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250410144008.475888-3-angelogioacchino.delregno@collabora.com>
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next v4 0/2] Add built-in 2.5G ethernet phy support on
+ MT7988
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <174779045848.1526198.6198912452247192673.git-patchwork-notify@kernel.org>
+Date: Wed, 21 May 2025 01:20:58 +0000
+References: <20250516102327.2014531-1-SkyLake.Huang@mediatek.com>
+In-Reply-To: <20250516102327.2014531-1-SkyLake.Huang@mediatek.com>
+To: Sky Huang <skylake.huang@mediatek.com>
+Cc: andrew@lunn.ch, hkallweit1@gmail.com, linux@armlinux.org.uk,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ daniel@makrotopia.org, dqfext@gmail.com, SkyLake.Huang@mediatek.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Steven.Liu@mediatek.com
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250520_182023_903379_EE8217ED 
+X-CRM114-Status: GOOD (  11.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,86 +79,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 10, 2025 at 04:40:08PM +0200, AngeloGioacchino Del Regno wrote:
-> Add support for the two MM IOMMUs found in the MediaTek Dimensity
-> 1200 (MT6893) SoC, used for display, camera, imgsys and vpu.
+Hello:
+
+This series was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Fri, 16 May 2025 18:23:25 +0800 you wrote:
+> From: Sky Huang <skylake.huang@mediatek.com>
 > 
-> Since the MT6893 SoC is almost fully compatible with MT8192, also
-> move the mt8192_larb_region_msk before the newly introduced mt6893
-> platform data, as the larb regions from mt8192 are fully reused.
+> This patchset adds support for built-in 2.5Gphy on MT7988, sort file
+> and config sequence in related Kconfig and Makefile.
 > 
-> Note that the only difference with MT8192 is that MT6893 needs the
-> SHARE_PGTABLE flag.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  drivers/iommu/mtk_iommu.c | 37 ++++++++++++++++++++++++++-----------
->  1 file changed, 26 insertions(+), 11 deletions(-)
+> Change in v2:
+> - Add missing dt-bindings and dts node.
+> - Remove mtk_phy_leds_state_init() temporarily. I'm going to add LED support
+> later.
+> - Remove "Firmware loading/trigger ok" log.
+> - Add macro define for 0x800e & 0x800f
 > 
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index df98d0c65f54..0a54c6521bf5 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -1550,6 +1550,31 @@ static const struct mtk_iommu_plat_data mt6795_data = {
->  	.larbid_remap = {{0}, {1}, {2}, {3}, {4}}, /* Linear mapping. */
->  };
->  
-> +static const unsigned int mt8192_larb_region_msk[MT8192_MULTI_REGION_NR_MAX][MTK_LARB_NR_MAX] = {
-> +	[0] = {~0, ~0},				/* Region0: larb0/1 */
-> +	[1] = {0, 0, 0, 0, ~0, ~0, 0, ~0},	/* Region1: larb4/5/7 */
-> +	[2] = {0, 0, ~0, 0, 0, 0, 0, 0,		/* Region2: larb2/9/11/13/14/16/17/18/19/20 */
-> +	       0, ~0, 0, ~0, 0, ~(u32)(BIT(9) | BIT(10)), ~(u32)(BIT(4) | BIT(5)), 0,
-> +	       ~0, ~0, ~0, ~0, ~0},
-> +	[3] = {0},
-> +	[4] = {[13] = BIT(9) | BIT(10)},	/* larb13 port9/10 */
-> +	[5] = {[14] = BIT(4) | BIT(5)},		/* larb14 port4/5 */
-> +};
-> +
-> +static const struct mtk_iommu_plat_data mt6893_data = {
-> +	.m4u_plat     = M4U_MT8192,
-> +	.flags        = HAS_BCLK | OUT_ORDER_WR_EN | HAS_SUB_COMM_2BITS |
-> +			WR_THROT_EN | IOVA_34_EN | SHARE_PGTABLE | MTK_IOMMU_TYPE_MM,
-> +	.inv_sel_reg  = REG_MMU_INV_SEL_GEN2,
-> +	.banks_num    = 1,
-> +	.banks_enable = {true},
-> +	.iova_region  = mt8192_multi_dom,
-> +	.iova_region_nr = ARRAY_SIZE(mt8192_multi_dom),
-> +	.iova_region_larb_msk = mt8192_larb_region_msk,
-> +	.larbid_remap    = {{0}, {1}, {4, 5}, {7}, {2}, {9, 11, 19, 20},
-> +			    {0, 14, 16}, {0, 13, 18, 17}},
-> +};
-> +
->  static const struct mtk_iommu_plat_data mt8167_data = {
->  	.m4u_plat     = M4U_MT8167,
->  	.flags        = RESET_AXI | HAS_LEGACY_IVRP_PADDR | MTK_IOMMU_TYPE_MM,
-> @@ -1673,17 +1698,6 @@ static const struct mtk_iommu_plat_data mt8188_data_vpp = {
->  			   27, 28 /* ccu0 */, MTK_INVALID_LARBID}, {4, 6}},
->  };
->  
-> -static const unsigned int mt8192_larb_region_msk[MT8192_MULTI_REGION_NR_MAX][MTK_LARB_NR_MAX] = {
-> -	[0] = {~0, ~0},				/* Region0: larb0/1 */
-> -	[1] = {0, 0, 0, 0, ~0, ~0, 0, ~0},	/* Region1: larb4/5/7 */
-> -	[2] = {0, 0, ~0, 0, 0, 0, 0, 0,		/* Region2: larb2/9/11/13/14/16/17/18/19/20 */
-> -	       0, ~0, 0, ~0, 0, ~(u32)(BIT(9) | BIT(10)), ~(u32)(BIT(4) | BIT(5)), 0,
-> -	       ~0, ~0, ~0, ~0, ~0},
-> -	[3] = {0},
-> -	[4] = {[13] = BIT(9) | BIT(10)},	/* larb13 port9/10 */
-> -	[5] = {[14] = BIT(4) | BIT(5)},		/* larb14 port4/5 */
-> -};
-> -
->  static const struct mtk_iommu_plat_data mt8192_data = {
->  	.m4u_plat       = M4U_MT8192,
->  	.flags          = HAS_BCLK | HAS_SUB_COMM_2BITS | OUT_ORDER_WR_EN |
-> @@ -1777,6 +1791,7 @@ static const struct of_device_id mtk_iommu_of_ids[] = {
->  	{ .compatible = "mediatek,mt2712-m4u", .data = &mt2712_data},
->  	{ .compatible = "mediatek,mt6779-m4u", .data = &mt6779_data},
->  	{ .compatible = "mediatek,mt6795-m4u", .data = &mt6795_data},
-> +	{ .compatible = "mediatek.mt6893-iommu-mm", .data = &mt6893_data},
+> [...]
 
-Are you going to fix the typo>   ^
+Here is the summary with links:
+  - [net-next,v4,1/2] net: phy: mediatek: Sort config and file names in Kconfig and Makefile
+    https://git.kernel.org/netdev/net-next/c/6d243c80fe91
+  - [net-next,v4,2/2] net: phy: mediatek: add driver for built-in 2.5G ethernet PHY on MT7988
+    https://git.kernel.org/netdev/net-next/c/26948c243041
 
-It is still warning with 'make dt_compatible_check' that it is 
-undocumented.
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-Rob
+
 
