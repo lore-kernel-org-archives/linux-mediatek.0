@@ -4,65 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECFE4C2D0CD
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 May 2025 07:35:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45B16C54E65
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 May 2025 09:30:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2oQ/JrcoS/t5UerpUTGgcXwKsZYBNxpl3mFRnQrj/vw=; b=jWFTRb+EvT0WiRSb+w46SfW2MR
-	qw05hnNkvZnpHo0jIpRQNnazN5tVU2jYkuIJP3vFLOamf1uUD/lwcUty177b8Cj+GU/IJ0CRb9RwO
-	OhUBYksayLy5kPVzmYs9dNwOopdXdS3BnWhlR+pqZKahW3hxMBxVUAuUUU1DgHJwpElPL76PcFqJR
-	HBC7mUv7gIR7bY618aMNfQue0TrxE4d41+ZfuctmAtEgjbvTi6kmHWna7f/PG+Nm6LrttbKStkaQ3
-	lok83BDWHXwOFr0YYK3yCXJVzcm+Re1SDGrDKxvkLALrZq/wa1OMWv1nbI6QWSFfrkRcJpK6mYVtb
-	pWZwxGlg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=xooKwfqKZPpKfPYNFtOO33yjWX3ExswTqq8/C09VJ7U=; b=yI2vdAYeFP+02josiEhCMbGH/a
+	apPyeAZmTtdhagbepr/wOUhDFfPxrza/qtpmfDLdiBg4q9vL6lU2i6Ug62c4fXhCug/H033PLAT6o
+	CCqpLmaER8LaPhORI1TCDOloWu2zClNt7Oe1hSkLDeqZyIpZ5/awWrdujXU0P1PV3n5c78Dufg4XZ
+	rei8e84FdaLbiBk3gwZbk7yeSKEPN3bl4iiuUYOMXeYINk5Eo1X2jthJ2hePmgHoeYu1Sqzaex3/4
+	gdxo1YtZsQ8IGwpwmojYrPnm7aXc2EEsjiXxbJKBdEcB3E8Gfdcc9l4UY2wcGYSNwrsCbxDkokR9Z
+	gDKQJfyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHdyg-0000000F4cg-3jmy;
-	Wed, 21 May 2025 07:35:02 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uHfmQ-0000000FJq9-1O9L;
+	Wed, 21 May 2025 09:30:30 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHdhL-0000000F2bi-2hZ6;
-	Wed, 21 May 2025 07:17:08 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 61E654A241;
-	Wed, 21 May 2025 07:17:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE1CEC4CEE4;
-	Wed, 21 May 2025 07:17:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1747811827;
-	bh=vNByI9DAgnLUKkUIf0r392GAk6x7OYD8NqJcPezRtpI=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=u3tQt4EZlS7G3C0b3tVmE1JQwpC4IJU6YruNIxU6BNcuRN1fIORRt5uzOAmVR6Ubq
-	 CMf6HXqB2FUC17NV2uxDB/cgE3K5YvfoYDdLbM688WuHVuWmIGifDQDjZy2pkQ7vEY
-	 hGebd/LEYQCTarVV57K4WqzBKuGJ/Nsj9VOfFqfO2QuhWkJ3pnt3HlXZJkUREnaPY3
-	 psloT9ONvH2jtcH/lHrOEeE1SFYCdOLFrKdqYBq4PkACrChlPbSuffCUGWHZqUQE+/
-	 69zVXpG/39yhXuATa5MjqZ2aCvjen8l/I4TQj39KQJ7X7GdepBy6ipWTKpOwgFn3ea
-	 rjYuxBoiJpmNA==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Wed, 21 May 2025 09:16:39 +0200
-Subject: [PATCH net-next v3 4/4] net: airoha: Add the capability to
- allocate hfwd descriptors in SRAM
+	id 1uHfYz-0000000FHJm-3or7;
+	Wed, 21 May 2025 09:16:39 +0000
+X-UUID: 489bd7ca362411f0bed96b30c12bc3d6-20250521
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=xooKwfqKZPpKfPYNFtOO33yjWX3ExswTqq8/C09VJ7U=;
+	b=mEufUaEHEu/GyMqip8M0lCENxgktP8osa2gQaCWjQzRjfVr9Jr2Djbm0c2oEEf4OCnbVIahcgFvRmT+VJshIcFgq1dYBUz5VaXnp2fwmruGcqn40tUO1dQtlUY9p0vO7PxJhnD+TVutl5RnUiMlI4lYH8AEQ3jd47pXu21No3XU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:777c6655-d460-4aa3-a5dc-037346fad64b,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:df4ed057-abad-4ac2-9923-3af0a8a9a079,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 489bd7ca362411f0bed96b30c12bc3d6-20250521
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
+	(envelope-from <friday.yang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1238770623; Wed, 21 May 2025 02:16:31 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Wed, 21 May 2025 17:16:27 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Wed, 21 May 2025 17:16:26 +0800
+From: Friday Yang <friday.yang@mediatek.com>
+To: Yong Wu <yong.wu@mediatek.com>, Krzysztof Kozlowski <krzk@kernel.org>, Rob
+ Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Philipp Zabel
+	<p.zabel@pengutronix.de>
+CC: Friday Yang <friday.yang@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v1] memory: mtk-smi: Add ostd setting for mt8186
+Date: Wed, 21 May 2025 17:16:16 +0800
+Message-ID: <20250521091626.4283-1-friday.yang@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250521-airopha-desc-sram-v3-4-a6e9b085b4f0@kernel.org>
-References: <20250521-airopha-desc-sram-v3-0-a6e9b085b4f0@kernel.org>
-In-Reply-To: <20250521-airopha-desc-sram-v3-0-a6e9b085b4f0@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- devicetree@vger.kernel.org
-X-Mailer: b4 0.14.2
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250521_001707_737080_10EC7257 
-X-CRM114-Status: GOOD (  12.14  )
+X-CRM114-CacheID: sfid-20250521_021637_951105_AE24CEC2 
+X-CRM114-Status: GOOD (  10.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,87 +87,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In order to improve packet processing and packet forwarding
-performances, EN7581 SoC supports consuming SRAM instead of DRAM for
-hw forwarding descriptors queue.
-For downlink hw accelerated traffic request to consume SRAM memory
-for hw forwarding descriptors queue.
+Add initial ostd setting for mt8186. All the settings come from DE.
+These settings help adjust Multimedia HW's bandwidth limits to achieve
+a balanced bandwidth requirement. Without this, the VENC HW works
+abnormal while stress testing.
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Fixes: 86a010bfc739 ("memory: mtk-smi: mt8186: Add smi support")
+Signed-off-by: Friday Yang <friday.yang@mediatek.com>
 ---
- drivers/net/ethernet/airoha/airoha_eth.c | 11 +----------
- drivers/net/ethernet/airoha/airoha_eth.h |  9 +++++++++
- drivers/net/ethernet/airoha/airoha_ppe.c |  6 ++++++
- 3 files changed, 16 insertions(+), 10 deletions(-)
+ drivers/memory/mtk-smi.c | 33 +++++++++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 20e590d76735e72a1a538a42d2a1f49b882deccc..3cd56de716a5269b1530cff6d0ca3414d92ecb69 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -71,15 +71,6 @@ static void airoha_qdma_irq_disable(struct airoha_irq_bank *irq_bank,
- 	airoha_qdma_set_irqmask(irq_bank, index, mask, 0);
- }
- 
--static bool airhoa_is_lan_gdm_port(struct airoha_gdm_port *port)
--{
--	/* GDM1 port on EN7581 SoC is connected to the lan dsa switch.
--	 * GDM{2,3,4} can be used as wan port connected to an external
--	 * phy module.
--	 */
--	return port->id == 1;
--}
--
- static void airoha_set_macaddr(struct airoha_gdm_port *port, const u8 *addr)
- {
- 	struct airoha_eth *eth = port->qdma->eth;
-@@ -1128,7 +1119,7 @@ static int airoha_qdma_init_hfwd_queues(struct airoha_qdma *qdma)
- 			LMGR_INIT_START | LMGR_SRAM_MODE_MASK |
- 			HW_FWD_DESC_NUM_MASK,
- 			FIELD_PREP(HW_FWD_DESC_NUM_MASK, HW_DSCP_NUM) |
--			LMGR_INIT_START);
-+			LMGR_INIT_START | LMGR_SRAM_MODE_MASK);
- 
- 	return read_poll_timeout(airoha_qdma_rr, status,
- 				 !(status & LMGR_INIT_START), USEC_PER_MSEC,
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index 3e03ae9a5d0d21c0d8d717f2a282ff06ef3b9fbf..b815697302bfdf2a6d115a9bbbbadc05462dbadb 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -597,6 +597,15 @@ u32 airoha_rmw(void __iomem *base, u32 offset, u32 mask, u32 val);
- #define airoha_qdma_clear(qdma, offset, val)			\
- 	airoha_rmw((qdma)->regs, (offset), (val), 0)
- 
-+static inline bool airhoa_is_lan_gdm_port(struct airoha_gdm_port *port)
-+{
-+	/* GDM1 port on EN7581 SoC is connected to the lan dsa switch.
-+	 * GDM{2,3,4} can be used as wan port connected to an external
-+	 * phy module.
-+	 */
-+	return port->id == 1;
-+}
-+
- bool airoha_is_valid_gdm_port(struct airoha_eth *eth,
- 			      struct airoha_gdm_port *port);
- 
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index 2d273937f19cf304ab4b821241fdc3ea93604f0e..12d32c92717a6b4ba74728ec02bb2e166d4d9407 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -251,6 +251,12 @@ static int airoha_ppe_foe_entry_prepare(struct airoha_eth *eth,
- 		else
- 			pse_port = 2; /* uplink relies on GDM2 loopback */
- 		val |= FIELD_PREP(AIROHA_FOE_IB2_PSE_PORT, pse_port);
-+
-+		/* For downlink traffic consume SRAM memory for hw forwarding
-+		 * descriptors queue.
-+		 */
-+		if (airhoa_is_lan_gdm_port(port))
-+			val |= AIROHA_FOE_IB2_FAST_PATH;
- 	}
- 
- 	if (is_multicast_ether_addr(data->eth.h_dest))
+diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+index c086c22511f7..733e22f695ab 100644
+--- a/drivers/memory/mtk-smi.c
++++ b/drivers/memory/mtk-smi.c
+@@ -320,6 +320,38 @@ static const u8 mtk_smi_larb_mt6893_ostd[][SMI_LARB_PORT_NR_MAX] = {
+ 	[20] = {0x9, 0x9, 0x5, 0x5, 0x1, 0x1},
+ };
 
--- 
-2.49.0
++static const u8 mtk_smi_larb_mt8186_ostd[][SMI_LARB_PORT_NR_MAX] = {
++	[0] = {0x2, 0x1, 0x8, 0x1,},
++	[1] = {0x1, 0x3, 0x1, 0x1,},
++	[2] = {0x6, 0x1, 0x4, 0x1,},
++	[3] = {},
++	[4] = {0xf, 0x1, 0x5, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1,
++	       0x1, 0x1, 0x1,},
++	[5] = {},
++	[6] = {},
++	[7] = {0x1, 0x3, 0x1, 0x1, 0x1, 0x3, 0x2, 0xd, 0x7, 0x5, 0x3,
++	       0x1, 0x5,},
++	[8] = {0x1, 0x2, 0x2,},
++	[9] = {0x9, 0x7, 0xf, 0x8, 0x1, 0x8, 0x9, 0x3, 0x3, 0xb, 0x7, 0x4,
++	       0x9, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1,
++	       0x1, 0x1, 0x1, 0x1, 0x1,},
++	[10] = {},
++	[11] = {0x9, 0x7, 0xf, 0x8, 0x1, 0x8, 0x9, 0x3, 0x3, 0xb, 0x7, 0x4,
++		0x9, 0x1, 0x1, 0x1, 0x1, 0x1, 0x8, 0x7, 0x7, 0x1, 0x6, 0x2,
++		0xf, 0x8, 0x1, 0x1, 0x1,},
++	[12] = {},
++	[13] = {0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x6, 0x6, 0x6, 0x1, 0x1, 0x1,},
++	[14] = {0x1, 0x1, 0x1, 0x1, 0x1, 0x1,},
++	[15] = {},
++	[16] = {0x28, 0x14, 0x2, 0xc, 0x18, 0x1, 0x14, 0x1, 0x4, 0x4, 0x4,
++		0x2, 0x4, 0x2, 0x8, 0x4, 0x4,},
++	[17] = {0x28, 0x14, 0x2, 0xc, 0x18, 0x1, 0x14, 0x1, 0x4, 0x4, 0x4,
++		0x2, 0x4, 0x2, 0x8, 0x4, 0x4,},
++	[18] = {},
++	[19] = {0x1, 0x1, 0x1, 0x1,},
++	[20] = {0x2, 0x2, 0x2, 0x2, 0x1, 0x1,},
++};
++
+ static const u8 mtk_smi_larb_mt8188_ostd[][SMI_LARB_PORT_NR_MAX] = {
+ 	[0] = {0x02, 0x18, 0x22, 0x22, 0x01, 0x02, 0x0a,},
+ 	[1] = {0x12, 0x02, 0x14, 0x14, 0x01, 0x18, 0x0a,},
+@@ -491,6 +523,7 @@ static const struct mtk_smi_larb_gen mtk_smi_larb_mt8183 = {
+ static const struct mtk_smi_larb_gen mtk_smi_larb_mt8186 = {
+ 	.config_port                = mtk_smi_larb_config_port_gen2_general,
+ 	.flags_general	            = MTK_SMI_FLAG_SLEEP_CTL,
++	.ostd			    = mtk_smi_larb_mt8186_ostd,
+ };
+
+ static const struct mtk_smi_larb_gen mtk_smi_larb_mt8188 = {
+--
+2.46.0
 
 
