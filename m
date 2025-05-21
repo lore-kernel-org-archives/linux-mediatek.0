@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20155C2D0CD
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 May 2025 15:18:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65E41C54E71
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 May 2025 15:24:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=fhTkCpm/BAX2elS9i7PT6HIx0ee+TW6oevUpwCI+6is=; b=YQtp+bs3++YkRDlp/m+/0Wmg2s
-	qM3It2t8o6U2CpB/33YFXx29Q85JF3zRz79seDLqV+ONqt9stBFHMejZNxA1uDark6Ju4u6agXFly
-	s2QzuUF1DroNboXZN+Nzp8U3Ozgb4dRSv8SjccKNssk7AIk1ibOwW/fmKRG2KOwnuXRRtqUBQvM9R
-	WnTQ2NMAghC3hTObWumcvs02yvHAAaNBADeVlAfyLnIlDGRVgQuWxH9g1gzJ+VFw9JyUfr5CzDkRI
-	ruVgIfGL2rBLBfOnWUTpTHm9ILcJ3dzz7+i8/Ad2/7hfooCOmbxAcdJeVBL1kaA5ZFOmclLsReUKm
-	bEcMhvEQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dRaBreLR+dK6/do/wQByNRnZO7WvwGa1eFT6TXrr81M=; b=krFlIN5D9ow7e1hciB0Z1HPQsv
+	bn9r1EpydaKGSKWbes5fXaJBKDWweRpVy3c3dSoQcgt/rlNsi0Ul46xboj3f+YRe2QlOqaLZKTBt3
+	lqIO9Lkcy2Zr9xG+rlTvnnBqRuBwftgNHSJfDRj1/mGPKlmYCUjfVNcpm6hsbzS8YRA91h/uYz7Og
+	ai34OwvBscKaD4h+ibEcmnTtlojJwSYn6xJUeWJrqUD4AQo9yRyupWesbY05lHU7hvGf7cXjfSG4n
+	jzgU7pQqCbjm9ITD21ODsBVZTxymIMGu3GfNp6dvjh6JSzABHZM4/I2oRYFf0lhzygM0HF0xqBzd3
+	5tsf+7lA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHlDS-0000000GFkq-3Kk7;
-	Wed, 21 May 2025 15:18:46 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uHlJ9-0000000GGir-1uJB;
+	Wed, 21 May 2025 15:24:39 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHlBF-0000000GFR4-3rXF;
-	Wed, 21 May 2025 15:16:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1747840585;
-	bh=rcecCSZgxXYbmeK45/Qv2JiTu7qRTSgAZkm1G2Upf04=;
-	h=From:To:Cc:Subject:Date:From;
-	b=i6l38Y+D8kDPWlbyUwquPW1SyH14xcmf0O23Ucu9qhRxkQRbFGZrdhiVmQpNE3vZE
-	 eGWl1jUD2+dKK3WWpexvl9YrZuPMOTBn/35BaHGSfL3obFsPmi+kNwLkEtzokD03NA
-	 7iXhWRinAHXlg1QID6KVdVFYL7qrSZp3lVm4CR9mijsPSZNU6uWB7fKmFLrMaJ6sHW
-	 YY9euo++/N+MPN8+HUj76Dw3teuE5EgWLVye494KBSBe060/AIheIvfOarbmv+PTSu
-	 GJu70haZPT3ja7RE5uMSFWNMciJUnifA7/j6papGU4ghSK2QjodvprHbj4ZEVhXHJI
-	 TtG3LzKLoGO5w==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2C19217E0FD4;
-	Wed, 21 May 2025 17:16:25 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: yong.wu@mediatek.com
-Cc: joro@8bytes.org,
-	will@kernel.org,
-	robin.murphy@arm.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	iommu@lists.linux.dev,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	kernel@collabora.com,
-	robh@kernel.org
-Subject: [PATCH] iommu/mediatek: Fix compatible typo for mediatek,mt6893-iommu-mm
-Date: Wed, 21 May 2025 17:15:48 +0200
-Message-ID: <20250521151548.185910-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.49.0
+	id 1uHlHU-0000000GGME-0SCS
+	for linux-mediatek@lists.infradead.org;
+	Wed, 21 May 2025 15:22:57 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 28F14443E4;
+	Wed, 21 May 2025 15:22:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 07533C4CEE4;
+	Wed, 21 May 2025 15:22:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1747840975;
+	bh=0YkU9yBX6AgOPZ0Q3G1oIsGva2J1rIZ+xv0Abib7XUE=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=LpSmW5PzppS0+oUOdkAxjwbHcHslytnqF7fAp2wxDBaSKWM+r/in36Mm2TAlWUpos
+	 FxakUGCGY+8Ge42bQMEmNglcaiZ7UtHsuOrD4yzHsA5CuJ1D1626ghUtRIAh7YjSOn
+	 UU2lOAdcMrMk/tSsLoknSm5MHdgkq7sxw0Mrlwbvu/g1OiCiL6/UyDwcKsmiMEYIdt
+	 3UYDPKTUC2nV5iesVd0nKbzehKD1ut+lDAOmVu5+4gSxfhpI73uZGb9VgJ0YFzezM4
+	 zk4bZgzJqyrE14FZu3qRsIj8OhHzkd2o32pNZSl3AiUGySAfvAwo+SywyS/KgP7ov9
+	 SgGCguBOCi40g==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id EB115380CEEF;
+	Wed, 21 May 2025 15:23:31 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH v2 0/2] Bluetooth: btmtksdio: ensure btmtksdio_close is
+ executed before btmtksdio_remove
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id: <174784101076.2084440.12163879869679696734.git-patchwork-notify@kernel.org>
+Date: Wed, 21 May 2025 15:23:30 +0000
+References: <20250422012156.586600-1-chris.lu@mediatek.com>
+In-Reply-To: <20250422012156.586600-1-chris.lu@mediatek.com>
+To: Chris Lu <chris.lu@mediatek.com>
+Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
+ sean.wang@mediatek.com, jiande.lu@mediatek.com, will-cy.lee@mediatek.com,
+ ss.wu@mediatek.com, steve.lee@mediatek.com, linux-bluetooth@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250521_081630_113407_E02836C4 
-X-CRM114-Status: GOOD (  10.96  )
+X-CRM114-CacheID: sfid-20250521_082256_167340_094E7394 
+X-CRM114-Status: UNSURE (   8.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,29 +78,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix the "mediatek.mt6893-iommu-mm" compatible string typo, as the
-dot was actually meant to be a comma: "mediatek,mt6893-iommu-mm".
+Hello:
 
-Fixes: f6a1e89ab6e3 ("iommu/mediatek: Add support for Dimensity 1200 MT6893 MM IOMMU")
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/iommu/mtk_iommu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+This series was applied to bluetooth/bluetooth-next.git (master)
+by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 0a54c6521bf5..cb95fecf6016 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -1791,7 +1791,7 @@ static const struct of_device_id mtk_iommu_of_ids[] = {
- 	{ .compatible = "mediatek,mt2712-m4u", .data = &mt2712_data},
- 	{ .compatible = "mediatek,mt6779-m4u", .data = &mt6779_data},
- 	{ .compatible = "mediatek,mt6795-m4u", .data = &mt6795_data},
--	{ .compatible = "mediatek.mt6893-iommu-mm", .data = &mt6893_data},
-+	{ .compatible = "mediatek,mt6893-iommu-mm", .data = &mt6893_data},
- 	{ .compatible = "mediatek,mt8167-m4u", .data = &mt8167_data},
- 	{ .compatible = "mediatek,mt8173-m4u", .data = &mt8173_data},
- 	{ .compatible = "mediatek,mt8183-m4u", .data = &mt8183_data},
+On Tue, 22 Apr 2025 09:21:54 +0800 you wrote:
+> If Bluetooth SDIO card is unexpectedly removed due to hardware removal
+> or SDIO issue, it is possible for remove to be called before close.
+> If an interrupt occurs during this process, it may cause kernel panic.
+> Therefore, it is necessary to ensure that close is executed before
+> remove to stop interrupts and cancel txrx workqueue.
+> 
+> Chris Lu (2):
+>   Bluetooth: btmtksdio: Check function enabled before doing close
+>   Bluetooth: btmtksdio: Do close if SDIO card removed without close
+> 
+> [...]
+
+Here is the summary with links:
+  - [v2,1/2] Bluetooth: btmtksdio: Check function enabled before doing close
+    https://git.kernel.org/bluetooth/bluetooth-next/c/07e90048e356
+  - [v2,2/2] Bluetooth: btmtksdio: Do close if SDIO card removed without close
+    https://git.kernel.org/bluetooth/bluetooth-next/c/0b6d58bc6ea8
+
+You are awesome, thank you!
 -- 
-2.49.0
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
