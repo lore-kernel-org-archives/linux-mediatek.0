@@ -4,77 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A51BC3DA6D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 May 2025 02:51:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C3FDC2D0CD
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 May 2025 03:14:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=voJtxz07cvFdIZAVC3CJIYYyf2kty3bRZc+zfXUZii8=; b=cZhQ5sJnRFfGT62FANQMfDTpca
-	0/8lu9St0/yh6Y8Az6Mwl/HiR+OqLr7yEvsHz7oJOLBKa1yoEeLBiiy3ZRDaPgY+YOlWOM2QbX9Kt
-	+/3zM9Xnd49OzfpVmnQtUqh0AT2vUxq1kdFThWLQ0oaOL0cEAteOaLKo1dVvL9WYdPtHzEj9LEfej
-	WouwLiiGOk6cuFRoLScPtHF3ssQhtnioBT4mbImrA6nhVnptDiY8WdhbqcmGJ02HPM4efpl3qIPER
-	48VpE7hq1c50dbGZVKYYM6NYJFPEW8k4KN4V26ogFcPLq2iN1KCiLNczM/+pvi5uFdjhyaydugTmG
-	bwaeJVFA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AnP9090xrlib+Yn7hkl6Cgl01zf+cLiiOfsn9BCxvJg=; b=g/+k5MNjFRle3gtp7gVuGpDw6+
+	VjXge4RH0YkaIDblf19YEfX2e2Yu+BHUOZJ6Fa0GlZXJqW9bqB9cyhW6G5nBnNVH2PZ6aKr008+Pv
+	XZsjJ4cSBx3Bnqaz0yTAo1Wgd4plkFKS1KmltLpfFfTCGZ159o6PU/jmowyP5IFiTWFPw95vfRb0O
+	zSkjg0ifRJZ87VxXhw2BdTyDrZHtkOeXuYiFUVzQ4zo5d+iaX+Kl9dvGycpmaHCl9KCKIzWrIa4Q9
+	lAfnYmigCYt1OYgj4TdH55/iOn7MQVjWbXXD3MoPSbDCVNu5ZUtr7xB2NFCHmpksB4irv7m/40e8N
+	oK6VN8Hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHZYf-0000000Ed2I-1auh;
-	Wed, 21 May 2025 02:51:53 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1uHZuA-0000000Ees9-1yOu;
+	Wed, 21 May 2025 03:14:06 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uHZ7O-0000000Ea2M-0Aby;
-	Wed, 21 May 2025 02:23:43 +0000
-X-UUID: 9ac069f635ea11f08d385d50fb11b32d-20250520
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From; bh=voJtxz07cvFdIZAVC3CJIYYyf2kty3bRZc+zfXUZii8=;
-	b=pM6X6wthAQKjmkg03Cs6barY5kl4XkF52H9uSjem1IoYZwXZS2B39UVDCk5eTlzhVdhVdbqdLXSg1fb3TyKbNCUrp4q3Ozup5H7Cffvw9OI383RBZW0i2cQ313iMZsnZuGKC1ijqU/52vqSdBhiAKRPCF2g0ntm3FQUII9YU8Q8=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:22b791dc-ecf9-4470-9d9d-34de478b1655,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:0ef645f,CLOUDID:5b9cd0a0-0aa5-46e0-8e34-50f0206e6f15,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
-	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
-	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 9ac069f635ea11f08d385d50fb11b32d-20250520
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
-	(envelope-from <kyrie.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 362808589; Tue, 20 May 2025 19:23:38 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Wed, 21 May 2025 10:23:34 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Wed, 21 May 2025 10:23:34 +0800
-From: Kyrie Wu <kyrie.wu@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
-	<krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Kyrie Wu <kyrie.wu@mediatek.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH v4 12/12] media: mediatek: jpeg: fix remove buffer operation for multi-core
-Date: Wed, 21 May 2025 10:23:22 +0800
-Message-ID: <20250521022322.27576-13-kyrie.wu@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20250521022322.27576-1-kyrie.wu@mediatek.com>
-References: <20250521022322.27576-1-kyrie.wu@mediatek.com>
+	id 1uHZqQ-0000000EeZc-0mfc;
+	Wed, 21 May 2025 03:10:15 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 69A545C3FBB;
+	Wed, 21 May 2025 03:07:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 35B7AC4CEED;
+	Wed, 21 May 2025 03:10:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1747797013;
+	bh=mYCeKj/h9aqZRfQODr/Jf6KORjUNey+07JyzmQoYe04=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=cEEKNSg50kKzC0Wjgu2BSkgq2kF9AiUexsiOvxG5UVZ+2eFXaNuiM5aCOvaGSwzFi
+	 76JHYgTVT/1egl0JCMKuehDIcoj0rSn1fEVOdQ2An5lTSMosK/fghzskP2jzP5mf48
+	 t4bHFaYSopbNH4Q1Anobd/eTjvFAC3fYXRTKp0fbDVl6v4nDvyk3NFt8ukP9Dt7wss
+	 0seO9quZ8iccQYbHrU5KRqVlxNVM20dcuhrxV9fJ8s7h3or+QHViu9iGXxn85eGtCM
+	 ojWWgWbv+6V4C7mc07RgkJZ5r1wNQbtpnpyXJkPVKMiIVZaCiQ0AM2p7CYXtRy+VF9
+	 +XTFs0u2ek7DQ==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 33B7E380CEEF;
+	Wed, 21 May 2025 03:10:50 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Subject: Re: [PATCH net-next v2 0/3] net: airoha: Add per-flow stats support to
+ hw flowtable offloading
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <174779704873.1552321.963690772773932988.git-patchwork-notify@kernel.org>
+Date: Wed, 21 May 2025 03:10:48 +0000
+References: <20250516-airoha-en7581-flowstats-v2-0-06d5fbf28984@kernel.org>
+In-Reply-To: <20250516-airoha-en7581-flowstats-v2-0-06d5fbf28984@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250520_192342_096426_956A76D6 
-X-CRM114-Status: GOOD (  11.65  )
+X-CRM114-CacheID: sfid-20250520_201014_267055_65953B5C 
+X-CRM114-Status: GOOD (  10.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,56 +75,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-move remove buffer code to spinlock protect area for multi-core
+Hello:
 
-Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
----
- drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 10 ++++------
- 1 file changed, 4 insertions(+), 6 deletions(-)
+This series was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-index eba9f58b9198..34fa03bcfdd3 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-@@ -1684,9 +1684,6 @@ static void mtk_jpegenc_worker(struct work_struct *work)
- 		goto enc_end;
- 	}
- 
--	v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
--	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
--
- 	schedule_delayed_work(&comp_jpeg[hw_id]->job_timeout_work,
- 			      msecs_to_jiffies(MTK_JPEG_HW_TIMEOUT_MSEC));
- 
-@@ -1707,6 +1704,8 @@ static void mtk_jpegenc_worker(struct work_struct *work)
- 			     &src_buf->vb2_buf);
- 	mtk_jpeg_set_enc_params(ctx, comp_jpeg[hw_id]->reg_base);
- 	mtk_jpeg_enc_start(comp_jpeg[hw_id]->reg_base);
-+	v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
-+	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
- 	jpeg_buf_queue_inc(ctx);
- 	v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
- 	spin_unlock_irqrestore(&comp_jpeg[hw_id]->hw_lock, flags);
-@@ -1803,9 +1802,6 @@ static void mtk_jpegdec_worker(struct work_struct *work)
- 		goto dec_end;
- 	}
- 
--	v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
--	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
--
- 	mtk_jpeg_set_dec_src(ctx, &src_buf->vb2_buf, &bs);
- 	if (mtk_jpeg_set_dec_dst(ctx,
- 				 &jpeg_src_buf->dec_param,
-@@ -1833,6 +1829,8 @@ static void mtk_jpegdec_worker(struct work_struct *work)
- 				jpeg_src_buf->bs_size,
- 				&bs,
- 				&fb);
-+	v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
-+	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
- 	mtk_jpeg_dec_start(comp_jpeg[hw_id]->reg_base);
- 	jpeg_buf_queue_inc(ctx);
- 	v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
+On Fri, 16 May 2025 09:59:58 +0200 you wrote:
+> Introduce per-flow stats accounting to the flowtable hw offload in the
+> airoha_eth driver. Flow stats are split in the PPE and NPU modules:
+> - PPE: accounts for high 32bit of per-flow stats
+> - NPU: accounts for low 32bit of per-flow stats
+> 
+> ---
+> Changes in v2:
+> - fix memory leaks in airoha_npu_stats_setup() and in
+>   airoha_npu_foe_commit_entry()
+> - disable hw keepalive
+> - fix sparse warnings
+> - Link to v1: https://lore.kernel.org/r/20250514-airoha-en7581-flowstats-v1-0-c00ede12a2ca@kernel.org
+> 
+> [...]
+
+Here is the summary with links:
+  - [net-next,v2,1/3] net: airoha: npu: Move memory allocation in airoha_npu_send_msg() caller
+    https://git.kernel.org/netdev/net-next/c/c52918744ee1
+  - [net-next,v2,2/3] net: airoha: Add FLOW_CLS_STATS callback support
+    https://git.kernel.org/netdev/net-next/c/b81e0f2b58be
+  - [net-next,v2,3/3] net: airoha: ppe: Disable packet keepalive
+    https://git.kernel.org/netdev/net-next/c/a98326c151ea
+
+You are awesome, thank you!
 -- 
-2.46.0
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
