@@ -4,89 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23373C54ED0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 May 2025 15:07:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABA10C54EDA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 May 2025 15:38:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0Z1fJZAnO5gbEdE9pm7QO/Ig7e59PsYGFh5eZL9ezsU=; b=LD7zhI92AUVSDezopFkZIRLWdX
-	o7pY70tqzA/19x3JjpHeX9OK0500RqHSmha49BOwsAduiueOYPt8hiPQuTb0ObkC58sNN126Ax5xz
-	9MP5gzLj9JfBuRel7pzx3zZHohpvL0Uq7t37rq8FiZtIzwqkD5GPyq5XNGZIbR88SsKmyY8PKqSpI
-	dGWehPHqFhDXnulRX3MQjgx7eTTQT6FLZl2EXVukTq+wtRLurcIC2uNmBafKhC/gBY9HkStQ+nTXN
-	254fp+dy08FRdsJNj6MuwZ/oeyjAPmATwj1GyQtQSFmUt104akkvuP8V11C7KYK+c/teEhRnJLA3b
-	2wCpxJgA==;
+	bh=c4NtlkhhwO3eMCPf++nO/zYkxJ8Cx2Bypsj0+9qkgEs=; b=vQ0TKCXFDbjrwQFTLiBTda2hFn
+	zPWF5KwgLKnJUsi+K3PWjlcDlc3c7j/x8+Db4mmPSy96xGDiZ7UAIPdTelfzRqD3qd3i86orjfqac
+	+O/4Sa5b5RHH3xYSd9MFJNVZw4c49ctz5DXithOgHUI2BHHLYFjNs0JTG0iRUA13pPo73guw/xUC1
+	Vi4kA9BCKhZOgIt1g+pq8kX4y5OxuY4TPupIIfzHGaiE63TVoZ2Om1f5TFvC5NIRfWx/Q78a4g2sD
+	V39juyD8+KAh7pLpRcWs0NX3f0mEgPEnP/3nb3AuvykHardeAjUOIyGCQCaYsjZnnFfCU8mZUynTK
+	g/6RDEsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uI7Vs-00000001Nc6-3tjz;
-	Thu, 22 May 2025 15:07:16 +0000
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
+	id 1uI802-00000001SR5-2yUz;
+	Thu, 22 May 2025 15:38:27 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uI7DA-00000001JUB-13sd
-	for linux-mediatek@lists.infradead.org;
-	Thu, 22 May 2025 14:47:57 +0000
-Received: by mail-pj1-x102b.google.com with SMTP id 98e67ed59e1d1-310e1f4627aso242474a91.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 22 May 2025 07:47:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1747925275; x=1748530075; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=0Z1fJZAnO5gbEdE9pm7QO/Ig7e59PsYGFh5eZL9ezsU=;
-        b=vCnc152j/+1A96V1FfSspDloXCqclZiPLG8morhfKW3FW2Pmz5gdHC4ehieqH9cEVu
-         KHmlxJb/lhjWproxHtfA8WRttriv6hZwk/vRZYRTQ7esxSaPFW/OVgvmN8XF83yOCXVI
-         HCjO2HSHGedJIIBdSs5crxDWJO9SgLlZ/YZ0d7DJsAtGJ6Rdf0a3dSud8AzwrZst/sFx
-         Pn392fUg0lpl6CBsJOSMgkhlCyFg5UPuQSAQCnYUp8oP+Fvmmt1l4UvsjKYkWzHABQtj
-         RQSA4iK1hqwMGVgSJGEpOgGuJ++Yc9OFWbc4bM+pdgejIqt88O0WAQXL0g9YsYryrkWf
-         QrGg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1747925275; x=1748530075;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=0Z1fJZAnO5gbEdE9pm7QO/Ig7e59PsYGFh5eZL9ezsU=;
-        b=hn6UlUJKTcxzBr5q7Z+2njmtquCWpoP8OyW1W9rOyf+fRoEiRoxoSK9tdzuJTfQpQv
-         8gT2a/mtBFC6g8SqueNAjkxIsX88fyy+QWl/KfxKJYQwW4Lbf3edCJGvzwdzLxA1JKdP
-         0Lnxuf04YNuQ5OtgMYMAXF7dJjyEUtsxu09r3GSCLpw2zNObE26SNZhyzbd4/LSVAx/N
-         KBaLa0LNtJiv7WKYx2y89dowWakrx+3DOV8zAUrIeD4MJbDkvYH75N41KP9kmk5mpgq9
-         /kfC2pz+0GlPHpF5xsaJMGbWr34NYpSSccQOJnOCjxZk1Ge+Q/1LuB+raR3WDXyhh4xV
-         iJOw==
-X-Forwarded-Encrypted: i=1; AJvYcCWLmPhW0IgtTY4/XOzjXNqUShUjgZ5qqYytejpuzez5bvMN7YoPFrPNDNnh87zB2/l5/OZGSF2QlRPKMqi/lg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzor1IKpu636HfBW3S8SkBXajciXb6QMvFqSQKWGnK7lDx4eW6U
-	9CLb2UogTxdcxOL9q/KbR/0MKZVxW/QQLetI/IZ6/Bg2fIbYw11x6k33TRTbu4Wkxdg=
-X-Gm-Gg: ASbGnct26qxxPurdpCaB76skRz1ggGKzCPi3HrNPog9ls3p0p6kXSbp5GKVtfQSmZ+L
-	kiEdl+7RPdl44WQbYK8omR4rxiyrsDAO+pYO7IN6eGNQCmcQFv/8pFiCCXVm/LSlMT4v2zMrweQ
-	2YRJlTbugvWdiuaqSSimQQQFbRhIXhn8JFJ79grrN55gxeminrxmdlrCOqOq/8+wf4x0DGFCDQg
-	JV4BJXlqi8P3REDKj2SEWrj5XYYjFZVaJA04Yos9bwWObXw/zeaogJQ+PN3or2su7tGnsF8+XEa
-	/E+yeGo8UdU79mrMNHyU+t7baJnd03qjVM1y/DKAAU5Q//a9iumDra8=
-X-Google-Smtp-Source: AGHT+IG5YDZqJMGCNUR1bl3lh55nwJynldcZarNJfaMbRBZQnBUy0qDHzLUmT4VJ7H8G0EhPmNRC+w==
-X-Received: by 2002:a17:90b:33c2:b0:2ff:58b8:5c46 with SMTP id 98e67ed59e1d1-30e830f7b18mr38271134a91.8.1747925273816;
-        Thu, 22 May 2025 07:47:53 -0700 (PDT)
-Received: from p14s ([2604:3d09:148c:c800:adb8:3fc6:e0a3:9f52])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-30f36365d9esm5641713a91.7.2025.05.22.07.47.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 22 May 2025 07:47:53 -0700 (PDT)
-Date: Thu, 22 May 2025 08:47:51 -0600
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: Wentao Liang <vulab@iscas.ac.cn>
-Cc: andersson@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-remoteproc@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: Re: [PATCH] remoteproc: mediatek: Add SCP watchdog handler in IRQ
- processing
-Message-ID: <aC85F1Rua2dn_qTY@p14s>
-References: <20250521142404.1077-1-vulab@iscas.ac.cn>
+	id 1uI7MU-00000001Lh9-2mqw;
+	Thu, 22 May 2025 14:57:36 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 8BA2C5C5D5C;
+	Thu, 22 May 2025 14:55:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3816C4CEEA;
+	Thu, 22 May 2025 14:57:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1747925853;
+	bh=5G+CU34zmKz9PE5a5J7jN90cu5Gxk5UtkArIIi8NlfY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=s3wma8DglmgLQ+hMVFjvtfjc4AGN1CkhvK3aJgPdEeop7ZdSKHWrh+jFnDK9fS1Bt
+	 k4DPjLZirixi4RiNSCPaqTeQgbbYCGh34naxvV1r976lLS74g+aZn2NIJWPxU9Bk2h
+	 5lhBFpwnMYqpXLlbfQyJNLBIPkBOwrbgXjydFtJry7hB5vIcXzHiBLTIOBsTw60ofP
+	 Sbe3oHlRv+SrSkLUAyO4OvF2SWUXfIQoAWSdBVx6gLBXEtHN69lIJ+ngwI0pTb/j5i
+	 982RPFTGUmNJf2N7qI0n6pT07RfEnvluDICTfTYoG8Smrgr1WlqJE6p9LO4kvWBltm
+	 OmAchw1yswU2w==
+Date: Thu, 22 May 2025 16:57:30 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Jagan Teki <jagan@amarulasolutions.com>, 
+	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	Douglas Anderson <dianders@chromium.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	Krzysztof Kozlowski <krzk@kernel.org>, Liu Ying <victor.liu@nxp.com>, 
+	Anusha Srivatsa <asrivats@redhat.com>, Paul Kocialkowski <paulk@sys-base.io>, 
+	Dmitry Baryshkov <lumag@kernel.org>, Hui Pu <Hui.Pu@gehealthcare.com>, 
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>, dri-devel@lists.freedesktop.org, asahi@lists.linux.dev, 
+	linux-kernel@vger.kernel.org, chrome-platform@lists.linux.dev, imx@lists.linux.dev, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
+	platform-driver-x86@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
+	freedreno@lists.freedesktop.org, linux-stm32@st-md-mailman.stormreply.com, 
+	Louis Chauvet <louis.chauvet@bootlin.com>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Inki Dae <inki.dae@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, 
+	Seung-Woo Kim <sw0312.kim@samsung.com>, Manikandan Muralidharan <manikandan.m@microchip.com>, 
+	Adam Ford <aford173@gmail.com>, Adrien Grassein <adrien.grassein@gmail.com>, 
+	Aleksandr Mishin <amishin@t-argos.ru>, Andy Yan <andy.yan@rock-chips.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Benson Leung <bleung@chromium.org>, 
+	Biju Das <biju.das.jz@bp.renesas.com>, Christoph Fritz <chf.fritz@googlemail.com>, 
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, Detlev Casanova <detlev.casanova@collabora.com>, 
+	Dharma Balasubiramani <dharma.b@microchip.com>, Guenter Roeck <groeck@chromium.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Jani Nikula <jani.nikula@intel.com>, Janne Grunau <j@jannau.net>, 
+	Jerome Brunet <jbrunet@baylibre.com>, Jesse Van Gavere <jesseevg@gmail.com>, 
+	Kevin Hilman <khilman@baylibre.com>, Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Phong LE <ple@baylibre.com>, 
+	Sasha Finkelstein <fnkl.kernel@gmail.com>, Sugar Zhang <sugar.zhang@rock-chips.com>, 
+	Sui Jingfeng <sui.jingfeng@linux.dev>, Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, 
+	Vitalii Mordan <mordan@ispras.ru>, "Rob Herring (Arm)" <robh@kernel.org>, 
+	Hsin-Te Yuan <yuanhsinte@chromium.org>, Pin-yen Lin <treapking@chromium.org>, 
+	Xin Ji <xji@analogixsemi.com>, Aradhya Bhatia <a-bhatia1@ti.com>, 
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, Ian Ray <ian.ray@gehealthcare.com>, 
+	Martyn Welch <martyn.welch@collabora.co.uk>, Peter Senna Tschudin <peter.senna@gmail.com>, 
+	Helge Deller <deller@gmx.de>, Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, 
+	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Philippe Cornu <philippe.cornu@foss.st.com>, 
+	Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>, Yannick Fertre <yannick.fertre@foss.st.com>, 
+	Alain Volmat <alain.volmat@foss.st.com>, Raphael Gallais-Pou <rgallaispou@gmail.com>, 
+	Michal Simek <michal.simek@amd.com>, Jonathan Corbet <corbet@lwn.net>, linux-doc@vger.kernel.org
+Subject: Re: [PATCH v3 00/22] drm: convert all bridges to
+ devm_drm_bridge_alloc()
+Message-ID: <20250522-amphibian-shiny-chachalaca-cf05ba@houat>
+References: <20250509-drm-bridge-convert-to-alloc-api-v3-0-b8bc1f16d7aa@bootlin.com>
+ <20250521162216.79dd3290@booty>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="fe7madz4h5tk5u3n"
 Content-Disposition: inline
-In-Reply-To: <20250521142404.1077-1-vulab@iscas.ac.cn>
+In-Reply-To: <20250521162216.79dd3290@booty>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250522_074756_292976_0FF89972 
-X-CRM114-Status: GOOD (  19.96  )
+X-CRM114-CacheID: sfid-20250522_075734_795607_667FB25D 
+X-CRM114-Status: GOOD (  36.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,50 +116,155 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Good day,
 
-On Wed, May 21, 2025 at 10:24:03PM +0800, Wentao Liang wrote:
-> In mt8195_scp_c1_irq_handler(), only the IPC interrupt bit
-> (MT8192_SCP_IPC_INT_BIT) was checked., but does not handle
-> when this bit is not set. This could lead to unhandled watchdog
-> events. This could lead to unhandled watchdog events. A proper
-> implementation can be found in mt8183_scp_irq_handler().
->
+--fe7madz4h5tk5u3n
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v3 00/22] drm: convert all bridges to
+ devm_drm_bridge_alloc()
+MIME-Version: 1.0
 
-As pointed out by Markus, this changelog needs work.
+On Wed, May 21, 2025 at 04:22:16PM +0200, Luca Ceresoli wrote:
+> Hello Maxime, Shawn, Liu, all,
+>=20
+> On Fri, 09 May 2025 15:53:26 +0200
+> Luca Ceresoli <luca.ceresoli@bootlin.com> wrote:
+>=20
+> > devm_drm_bridge_alloc() [0] is the new API to allocate and initialize a=
+ DRM
+> > bridge, and the only one supported from now on. It is the first milesto=
+ne
+> > towards removal of bridges from a still existing DRM pipeline without
+> > use-after-free.
+>=20
+> I applied on drm-misc-next patches 3-17,20-21 as they match all the
+> criteria:
+>  - At least a Acked-by (or R-by maintainers)
+>  - patch is for drm-misc
+>=20
+> Being my very first commits to drm-misc, I tried to be careful, and
+> double checked all the patches with Louis (thanks!).
+>=20
+> Here are the pending questions and plan for the remaining patches.
+>=20
+> >       Revert "drm/exynos: mic: convert to devm_drm_bridge_alloc() API"
+>=20
+> This reverts the commit applied my mistake:
+> https://gitlab.freedesktop.org/drm/misc/kernel/-/commit/91c5c7b5bb2dd09b4=
+3b025bce6d790d3c79f4518
+>=20
+> Neither the  original patch nor the revert has been reviewed/acked.
+>=20
+> As the commit was a mistake, I'm applying the revert by the end of this
+> week (i.e. on Friday) unless there are better instructions.
 
-> Add a new branch to handle SCP watchdog events when the IPC
-> interrupt bit is not set.
-> 
-> Fixes: 6a1c9aaf04eb ("remoteproc: mediatek: Add MT8195 SCP core 1 operations")
-> Cc: stable@vger.kernel.org # v6.7
-> Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
-> ---
->  drivers/remoteproc/mtk_scp.c | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> index 0f4a7065d0bd..316e8c98a503 100644
-> --- a/drivers/remoteproc/mtk_scp.c
-> +++ b/drivers/remoteproc/mtk_scp.c
-> @@ -273,6 +273,8 @@ static void mt8195_scp_c1_irq_handler(struct mtk_scp *scp)
->  
->  	if (scp_to_host & MT8192_SCP_IPC_INT_BIT)
->  		scp_ipi_handler(scp);
-> +	else
-> +		scp_wdt_handler(scp, scp_to_host);
+Given the lack of answers, and that it looks correct to me, just leave
+it there. We can always revert later on if things turned out to be
+broken.
 
-I would much rather see a test for the watchdog bit than just assuming it is
-a watchdog interrupt.  And while at it, please refactor the bit definition to be
-platform agnostic rather than reusing 8192 definitions on an 8195 platform.
+> >       drm: convert many bridge drivers from devm_kzalloc() to devm_drm_=
+bridge_alloc() API
+>=20
+> This patch affects multiple drivers. Running get_maintainers.pl
+> points at Shawn Guo's repository. After reviewing the MAINTAINERS file,
+> this looks like due to the 'N:' line in:
+>=20
+> ARM/FREESCALE IMX / MXC ARM ARCHITECTURE
+> M:	Shawn Guo <shawnguo@kernel.org>
+> M:	Sascha Hauer <s.hauer@pengutronix.de>
+> R:	Pengutronix Kernel Team <kernel@pengutronix.de>
+> ...
+> T:	git git://git.kernel.org/pub/scm/linux/kernel/git/shawnguo/linux.git
+> N:	imx
+> ...
+>=20
+> (https://gitlab.freedesktop.org/drm/misc/kernel/-/blob/drm-misc-next/MAIN=
+TAINERS?ref_type=3Dheads#L2511-2528)
+>=20
+> Here 'imx' matches the 'drivers/gpu/drm/bridge/imx/imx-legacy-bridge.c'
+> file that is touched by the patch. That regexp appears overly generic to =
+me.
 
-Thanks,
-Mathieu
+I agree, or at least, we shouldn't wait for Shawn or Sasha...
 
->  
->  	writel(scp_to_host, scp->cluster->reg_base + MT8195_SSHUB2APMCU_IPC_CLR);
->  }
-> -- 
-> 2.42.0.windows.2
-> 
+> Shawn, can it be fixed by making it less generic?
+>=20
+> If not, can we at least add a band-aid 'X:' entry for
+> drivers/gpu/drm/bridge/imx?
+>=20
+> I think the other matching entry is the one to consider:
+>=20
+> DRM DRIVERS FOR FREESCALE IMX BRIDGE
+> M:	Liu Ying <victor.liu@nxp.com>
+> L:	dri-devel@lists.freedesktop.org
+> S:	Maintained
+> F:	Documentation/devicetree/bindings/display/bridge/fsl,imx8qxp-ldb.yaml
+> F:	Documentation/devicetree/bindings/display/bridge/fsl,imx8qxp-pixel-com=
+biner.yaml
+> F:	Documentation/devicetree/bindings/display/bridge/fsl,imx8qxp-pixel-lin=
+k.yaml
+> F:	Documentation/devicetree/bindings/display/bridge/fsl,imx8qxp-pxl2dpi.y=
+aml
+> F:	drivers/gpu/drm/bridge/imx/
+>=20
+> (https://gitlab.freedesktop.org/drm/misc/kernel/-/blob/drm-misc-next/MAIN=
+TAINERS?ref_type=3Dheads#L7940-7948)
+
+=2E.. As long as Ying is fine with it, because it does look like they are
+the actual maintainer.
+
+> However it does not list any trees. I _guess_ drm-misc applies here as
+> a fallback as well as common sense.
+>=20
+> Liu, should this entry have a 'T:' line for drm/misc?
+>=20
+> >       drm/bridge: imx8qxp-pixel-combiner: convert to devm_drm_bridge_al=
+loc() API
+>=20
+> Not acked/reviewed, some discussion happened. I am resending it in v4,
+> possibly with updates based on the discussion.
+>=20
+> But it has the same issue discussed above, with get_maintiners.pl
+> pointing at Shawn Guo's tree, so in the future I'm assuming this goes
+> to drm-misc unless there are news about that.
+>=20
+> >       drm/bridge: tc358767: convert to devm_drm_bridge_alloc() API
+>=20
+> No feedback, resending in v4.
+>=20
+> >       drm/todo: add entry to remove devm_drm_put_bridge()
+>=20
+> This involves documentation maintained on another tree. Where should it
+> be applied? There are two matching entries in MAINTAINERS:
+>=20
+>  * DRM DRIVERS -> the drm tree
+>  * DRM DRIVERS AND MISC GPU PATCHES -> the drm-misc tree
+>=20
+> To me it looks like the second is obviously the closest match as we are
+> dealing with DRM bridges, so I'm applying this as well on Friday unless
+> there are better instructions.
+
+Yes, they should be applied to drm-misc.
+
+That being said, putting a two days timeout on *any* email is really
+over-the-top. I doubt you reply to any of your mail in such a short
+timeframe. We have rules for a reason, I'd expect you to follow them, no
+matter how frustrating the lack of answers can be.
+
+Maxime
+
+--fe7madz4h5tk5u3n
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaC87WgAKCRAnX84Zoj2+
+do0iAYDmirWaXC3jRPAWe+k6egrSRuRKSb9T+TBMm48WnW6SNhJrwyOYhX8DpsOL
+IHaDlR4BfiFZ6a345YL/OKfebcrONxA8UY50Y3/kmzH9OdWsvkfvJSWcHiCEeu26
+nklxCgQuzA==
+=mXOq
+-----END PGP SIGNATURE-----
+
+--fe7madz4h5tk5u3n--
 
