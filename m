@@ -4,99 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAB9DC54E65
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 May 2025 11:21:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD189C54E65
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 May 2025 12:43:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Oj1zWxp1k0TTjXxo4NRU6tuTqa062Y9lpjT5qktGKOU=; b=ajf61vxbPM3ZZLuywm2vTacgeN
-	M64xTZq9xt9O7aBLYCgrpyMKCGruZljhJTBhp8X7oVSIhDJGW/RJ/hklgBEfSaAZ/foNRnlGxhOMS
-	0dyEn+Y3IjqTM6xOJgDn1hI5KyLi8IdzrQQCXbqvt0fmFFEABDvzlBox7IZSeM6VlFa2z8s1V1jTT
-	XVaEVzq/LXaYkQTyuNCxfZOVONBLfge60n3YA1lpmui8HZKpv9mOJCiMpdL4DLayJauzCyrZVsXpf
-	NTMhHy0Pz7l88UnT3naLLmqYM5DrmKaWxTUQCqd3v9/YkgmQXHvSg+gTUqneogDZ8E40DvhxkzNfy
-	+z3Up/ZA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oDU6X8IyP3p8JX9dSX53DageGBT6EpZWnc9yh3bpVEE=; b=CVwfInTBXRRDoKg+8w5wa/3H6I
+	Cl7r8N7GVUTzC3/Fv2vfKeaeWVjSm6M840v4HRxJWA3ko1L/u8XZwNCJvPM51hq+ORHL+tsjX0hqZ
+	Cqmiv8t03ck9Neb+aPm/6WCZQQkIsNlyBCmW+9cvZHv2oZwEMD2G1GwLfsnPoG64dVJamBryUXFKO
+	0uYwAzQXNd3BGzTlYRhmb+rAvAi9kOGe/MO6VtJhdo8FUWA775Np5NDQ7Y+TffxjLonrhmdgJb0j1
+	pxe+dwLAbWPGRC/c6YVE7Jz27poROtLVICG5GAT2MZ0WdMxwgT0nEi18pvagE62PwQFRjaTTtP9yB
+	q8MdB4Kw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uI3za-00000000qY7-2KO1;
-	Thu, 22 May 2025 11:21:42 +0000
-Received: from nbd.name ([46.4.11.11])
+	id 1uI5GN-000000011FJ-2Ow5;
+	Thu, 22 May 2025 12:43:07 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uI3zX-00000000qVv-0mGR
-	for linux-mediatek@lists.infradead.org;
-	Thu, 22 May 2025 11:21:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
-	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=Oj1zWxp1k0TTjXxo4NRU6tuTqa062Y9lpjT5qktGKOU=; b=eHw26bnjoFXtdXHG/jIi/noQKk
-	MkDf61oY74PT7k5bd6mKoYLdtcNh52Bvg/+DvQQj7+JdnPWGXnoeaMnqoCUgBXfazkqz1nVh/CIpT
-	Zll/YStx2ldQY/SHNVmuJ/D6c3izSwHsx9xXUqL5UGnn0ZMXXojaRUvI0O2iE0e91JhU=;
-Received: from p5b206e31.dip0.t-ipconnect.de ([91.32.110.49] helo=nf.local)
-	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-	(Exim 4.96)
-	(envelope-from <nbd@nbd.name>)
-	id 1uI3zR-0085wn-1p;
-	Thu, 22 May 2025 13:21:33 +0200
-Message-ID: <54d0b027-b086-4ad5-a090-37faa1475182@nbd.name>
-Date: Thu, 22 May 2025 13:21:32 +0200
+	id 1uI5Ch-000000010eY-0EHs;
+	Thu, 22 May 2025 12:39:22 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 1C76D5C4B90;
+	Thu, 22 May 2025 12:37:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B33DC4CEE4;
+	Thu, 22 May 2025 12:39:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1747917557;
+	bh=PhT/kTDZ6gQ7sTz8kUJc4VzJgyedIPTFsuit5uZDo4s=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=p2isxQl6r8sUX5xpsDxRunTHmHRVNWyU9cAKqdbZEcCbwd0ps+hz/uT/ck6H/2UaT
+	 GS7dDM7D9L0iISXSWRH5+14/spcvMLnJY9zkeaobZb5iqjf1LAEjfK8KURSyX5ftW0
+	 5xk8hYRHFi2C1Zkj1KuN+B7rPcNSNAK2OXgTPByNFo1WsOV/STGK3L3r8+J+ELgDCW
+	 IBFTB2flFVVQZ71zQ0lLG4UM7kRX+TYTX6pMLe/mXXK/9cgVV+qd2/AFK+ryIKkn8V
+	 ifIlwpMpo3+wlNcwnN/j6ZXwFHQjuufmKuMo1S88igw/Y6WNKZqKV17ZshuLAaPMvs
+	 vaFQsjag0kQbw==
+Date: Thu, 22 May 2025 13:39:13 +0100
+From: Simon Horman <horms@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH net-next v3 4/4] net: airoha: Add the capability to
+ allocate hfwd descriptors in SRAM
+Message-ID: <20250522123913.GY365796@horms.kernel.org>
+References: <20250521-airopha-desc-sram-v3-0-a6e9b085b4f0@kernel.org>
+ <20250521-airopha-desc-sram-v3-4-a6e9b085b4f0@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/2] wifi: mt76: mt7925: add RNR scan support for 6GHz
-To: =?UTF-8?B?TWluZ3llbiBIc2llaCAo6Kyd5piO6Ku6KQ==?=
- <Mingyen.Hsieh@mediatek.com>, "lorenzo@kernel.org" <lorenzo@kernel.org>
-Cc: =?UTF-8?B?QWxsYW4gV2FuZyAo546L5a625YGJKQ==?= <Allan.Wang@mediatek.com>,
- =?UTF-8?B?RXJpYy1TWSBDaGFuZyAo5by15pu45rqQKQ==?=
- <Eric-SY.Chang@mediatek.com>, =?UTF-8?B?RGVyZW4gV3UgKOatpuW+t+S7gSk=?=
- <Deren.Wu@mediatek.com>, Ryder Lee <Ryder.Lee@mediatek.com>,
- =?UTF-8?B?UXVhbiBaaG91ICjlkajlhagp?= <Quan.Zhou@mediatek.com>,
- =?UTF-8?B?TWljaGFlbCBMbyAo576F55Kn56ugKQ==?= <Michael.Lo@mediatek.com>,
- =?UTF-8?B?U2hheW5lIENoZW4gKOmZs+i7kuS4nik=?= <Shayne.Chen@mediatek.com>,
- Sean Wang <Sean.Wang@mediatek.com>, =?UTF-8?B?TGVvbiBZZW4gKOmhj+iJr+WEkik=?=
- <Leon.Yen@mediatek.com>, =?UTF-8?B?S00gTGluICjmnpfmmIbmsJEp?=
- <km.lin@mediatek.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>
-References: <20250321013829.3598-1-mingyen.hsieh@mediatek.com>
- <20250321013829.3598-2-mingyen.hsieh@mediatek.com>
- <5a659f60-896e-4f2f-89c0-141e530c44d5@nbd.name>
- <2727d1a0598247fb379347165979c160a79b9965.camel@mediatek.com>
-From: Felix Fietkau <nbd@nbd.name>
-Content-Language: en-US
-Autocrypt: addr=nbd@nbd.name; keydata=
- xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
- ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
- Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
- AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
- vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
- wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
- TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
- l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
- dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
- HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
- VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
- CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
- VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
- Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
- DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
- wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
- f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
- aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
- FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
- TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
- GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
- cL98efvrjdstUfTCP2pfetyN
-In-Reply-To: <2727d1a0598247fb379347165979c160a79b9965.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250521-airopha-desc-sram-v3-4-a6e9b085b4f0@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250522_042139_218507_C5D532E6 
-X-CRM114-Status: UNSURE (   5.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250522_053919_366300_5F193474 
+X-CRM114-Status: GOOD (  23.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,14 +80,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 22.05.25 13:12, Mingyen Hsieh (謝明諺) wrote:
-> Hi Felix,
+On Wed, May 21, 2025 at 09:16:39AM +0200, Lorenzo Bianconi wrote:
+> In order to improve packet processing and packet forwarding
+> performances, EN7581 SoC supports consuming SRAM instead of DRAM for
+> hw forwarding descriptors queue.
+> For downlink hw accelerated traffic request to consume SRAM memory
+> for hw forwarding descriptors queue.
 > 
-> This variable is currently not being used. I apologize for my oversight
-> that caused this warning. Should i submit a v3 to remove it, or will
-> you help remove it?
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  drivers/net/ethernet/airoha/airoha_eth.c | 11 +----------
+>  drivers/net/ethernet/airoha/airoha_eth.h |  9 +++++++++
+>  drivers/net/ethernet/airoha/airoha_ppe.c |  6 ++++++
+>  3 files changed, 16 insertions(+), 10 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+> index 20e590d76735e72a1a538a42d2a1f49b882deccc..3cd56de716a5269b1530cff6d0ca3414d92ecb69 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.c
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+> @@ -71,15 +71,6 @@ static void airoha_qdma_irq_disable(struct airoha_irq_bank *irq_bank,
+>  	airoha_qdma_set_irqmask(irq_bank, index, mask, 0);
+>  }
+>  
+> -static bool airhoa_is_lan_gdm_port(struct airoha_gdm_port *port)
+> -{
+> -	/* GDM1 port on EN7581 SoC is connected to the lan dsa switch.
+> -	 * GDM{2,3,4} can be used as wan port connected to an external
+> -	 * phy module.
+> -	 */
+> -	return port->id == 1;
+> -}
+> -
+>  static void airoha_set_macaddr(struct airoha_gdm_port *port, const u8 *addr)
+>  {
+>  	struct airoha_eth *eth = port->qdma->eth;
+> @@ -1128,7 +1119,7 @@ static int airoha_qdma_init_hfwd_queues(struct airoha_qdma *qdma)
+>  			LMGR_INIT_START | LMGR_SRAM_MODE_MASK |
+>  			HW_FWD_DESC_NUM_MASK,
+>  			FIELD_PREP(HW_FWD_DESC_NUM_MASK, HW_DSCP_NUM) |
+> -			LMGR_INIT_START);
+> +			LMGR_INIT_START | LMGR_SRAM_MODE_MASK);
 
-No problem, I already removed the variable in my tree.
+Hi Lorenzo,
 
-- Felix
+I'm wondering if setting the LMGR_SRAM_MODE_MASK bit (maybe a different
+name for the #define would be nice) is dependent on the SRAM region
+being described in DT, as per code added above this line to this
+function by the previous patch in this series.
+
+>  
+>  	return read_poll_timeout(airoha_qdma_rr, status,
+>  				 !(status & LMGR_INIT_START), USEC_PER_MSEC,
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
+> index 3e03ae9a5d0d21c0d8d717f2a282ff06ef3b9fbf..b815697302bfdf2a6d115a9bbbbadc05462dbadb 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.h
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.h
+> @@ -597,6 +597,15 @@ u32 airoha_rmw(void __iomem *base, u32 offset, u32 mask, u32 val);
+>  #define airoha_qdma_clear(qdma, offset, val)			\
+>  	airoha_rmw((qdma)->regs, (offset), (val), 0)
+>  
+> +static inline bool airhoa_is_lan_gdm_port(struct airoha_gdm_port *port)
+> +{
+> +	/* GDM1 port on EN7581 SoC is connected to the lan dsa switch.
+> +	 * GDM{2,3,4} can be used as wan port connected to an external
+> +	 * phy module.
+> +	 */
+> +	return port->id == 1;
+> +}
+> +
+>  bool airoha_is_valid_gdm_port(struct airoha_eth *eth,
+>  			      struct airoha_gdm_port *port);
+>  
+> diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
+> index 2d273937f19cf304ab4b821241fdc3ea93604f0e..12d32c92717a6b4ba74728ec02bb2e166d4d9407 100644
+> --- a/drivers/net/ethernet/airoha/airoha_ppe.c
+> +++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+> @@ -251,6 +251,12 @@ static int airoha_ppe_foe_entry_prepare(struct airoha_eth *eth,
+>  		else
+>  			pse_port = 2; /* uplink relies on GDM2 loopback */
+>  		val |= FIELD_PREP(AIROHA_FOE_IB2_PSE_PORT, pse_port);
+> +
+> +		/* For downlink traffic consume SRAM memory for hw forwarding
+> +		 * descriptors queue.
+> +		 */
+> +		if (airhoa_is_lan_gdm_port(port))
+> +			val |= AIROHA_FOE_IB2_FAST_PATH;
+>  	}
+>  
+>  	if (is_multicast_ether_addr(data->eth.h_dest))
+> 
+> -- 
+> 2.49.0
+> 
+> 
 
