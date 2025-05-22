@@ -4,64 +4,123 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BF1FC54756
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 May 2025 07:18:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28E7EC54756
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 May 2025 07:28:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lHuXjtnGIwA8Zzr3bT7RPQh03xIe4TvMRJ0gk9Qtcas=; b=dV5Nik0K7G1noSEDH8NOb38Ahk
-	+3h/vuCBLP0hQxIxFM0ME4GUYI96ZfSN6+rhqJuSC8GId6SGlbadGjWTXB87VK1vXl7lTunjW443w
-	ZrZD2K2Sa1zMogCrdAPMOg24eAGvfOncuA7OSS78X9Gac523ZpHiTC/OdWERFtWl2EXGegzbioBtD
-	WsQgoH+C7RfW13CkS/343wxyyHZCSESzDKHcgbk7Po45Sat4AfWiJB/EElqsMWZHofaD1Cy3GE7lZ
-	5zzw9hKHkAebR6ieomSz2lJDzezfADVUR/IRFiF1U/4vlLwfrtdi16Ua+DWFxl3F7A3tu8xj7F+wm
-	3S/1TJnQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4JY0tOi4vZjkrIAmVNhcdxDZ/2M98xTujKUJaASQzHI=; b=AfTbzo0ciQe7O6fAJ8NmfaNwtL
+	LdrHf8psX0LCEGxSp4iHieQxxGeWTQQJVPzQQJ+kMK3ZUz5Hr3/xUbqHaPzo4yUDReMjZ33XRBmBT
+	0JwdAjxP/j/qYDwSAAUkWyIo6kZU9QxVSwPJ0c0tRopNUQS4uHctKHSTlimODloWHjn1Oy87qXh4Q
+	b7qYc9mgfA0jvvDuxdoX1hJiSlwqxbQY6z9zEomr/jf4fJGGo2BIhc7lmuih7Gie6XxqJYvSiJB18
+	6NscBiL3RWJkjGNzGcx8iv58KlE2frdKtRQbE407eoCxAA0k97NH98+o4o8/aFOY6XnqnABs8zSnu
+	SaCxzAPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uI0CQ-000000006di-3hIm;
-	Thu, 22 May 2025 07:18:42 +0000
-Received: from mail.8bytes.org ([85.214.250.239])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uI07S-000000005bc-2hp2;
-	Thu, 22 May 2025 07:13:35 +0000
-Received: from 8bytes.org (p4ffe03ae.dip0.t-ipconnect.de [79.254.3.174])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.8bytes.org (Postfix) with ESMTPSA id E68E84B84B;
-	Thu, 22 May 2025 09:13:27 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=8bytes.org;
-	s=default; t=1747898008;
-	bh=lHuXjtnGIwA8Zzr3bT7RPQh03xIe4TvMRJ0gk9Qtcas=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=T6dWlTr2XT2GmGeCMyAcctcy1RpNQOI6pU+GjH0UCm9p0MJHc8NtF6tV1+D4/Q6Li
-	 R9ClH9GUmx7loyp1mMfjWd45Rrroit0lBeMnsR2tp98VEZpFbm7BWuiMCp9CnOj6a6
-	 RKAzvKkO0IFcoAB0kzGsyUhy4xyK4S+m2BGkuLSEgGNsauhZVyzBrjXz9/qv4S9CBd
-	 j6m72ZsK8uvVz9nIxbxt/ZTTnVQ+I2Kt2pHHmc4wQv9kFrGiQ7Up8+oqsZY8XF+8ZO
-	 Pl3TPP/1+QzvHlrxLyzFIXqqRDkLi5gI3jiZXeZyiloawz/nwhrJHThIZxEgKm5xOB
-	 7uQj+O145Q5Vw==
-Date: Thu, 22 May 2025 09:13:26 +0200
-From: Joerg Roedel <joro@8bytes.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: yong.wu@mediatek.com, will@kernel.org, robin.murphy@arm.com,
-	matthias.bgg@gmail.com, iommu@lists.linux.dev,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
-	robh@kernel.org
-Subject: Re: [PATCH] iommu/mediatek: Fix compatible typo for
- mediatek,mt6893-iommu-mm
-Message-ID: <aC7OlsGLaFvl6n95@8bytes.org>
-References: <20250521151548.185910-1-angelogioacchino.delregno@collabora.com>
+	id 1uI0MA-000000008PF-0ICw;
+	Thu, 22 May 2025 07:28:46 +0000
+Received: from relay8-d.mail.gandi.net ([217.70.183.201])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uI0M5-000000008OJ-3lPp;
+	Thu, 22 May 2025 07:28:44 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id A22DF43B77;
+	Thu, 22 May 2025 07:28:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1747898917;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=4JY0tOi4vZjkrIAmVNhcdxDZ/2M98xTujKUJaASQzHI=;
+	b=Ib3yNxEs/5s44AFOE1RwGqaQ3/C/qZgn2d71AFEvZWt7k9cSiTL6woWNrw80/K+W6/Z/V7
+	kPpQoV2bzFWLRmpCywhJlPQUEg2FXlo+1nPIaf5l0cpBMiAzN9raixCTiTWtHG2MAT2dvw
+	sQ/zOcBmUvR5DU4gtyDa+MzbOlcDIse1XjwVI+yIroFSWP+dFmY21GxXL7/XktKyaWOIPe
+	yff37LPcs4+KyUCuNN9KOzfcxdlETTCBb1PO57HImPoi3YGPlPgcnozmejJeah9bwmPEng
+	p+dHgqDtnYmeAW4q5nFCbFmQTz/G7k6Pz/kBamcKo+eZpnfao0DUC72lv/PdQQ==
+Date: Thu, 22 May 2025 09:28:24 +0200
+From: Luca Ceresoli <luca.ceresoli@bootlin.com>
+To: Liu Ying <victor.liu@nxp.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
+ <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie
+ <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Andrzej Hajda
+ <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>,
+ Robert Foss <rfoss@kernel.org>, Laurent Pinchart
+ <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>, Jagan Teki
+ <jagan@amarulasolutions.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer
+ <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Douglas Anderson
+ <dianders@chromium.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Krzysztof
+ Kozlowski <krzk@kernel.org>, Anusha Srivatsa <asrivats@redhat.com>, Paul
+ Kocialkowski <paulk@sys-base.io>, Dmitry Baryshkov <lumag@kernel.org>, Hui
+ Pu <Hui.Pu@gehealthcare.com>, Thomas Petazzoni
+ <thomas.petazzoni@bootlin.com>, dri-devel@lists.freedesktop.org,
+ asahi@lists.linux.dev, linux-kernel@vger.kernel.org,
+ chrome-platform@lists.linux.dev, imx@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
+ platform-driver-x86@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
+ linux-stm32@st-md-mailman.stormreply.com, Louis Chauvet
+ <louis.chauvet@bootlin.com>, Alim Akhtar <alim.akhtar@samsung.com>, Inki
+ Dae <inki.dae@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>,
+ Seung-Woo Kim <sw0312.kim@samsung.com>, Manikandan Muralidharan
+ <manikandan.m@microchip.com>, Adam Ford <aford173@gmail.com>, Adrien
+ Grassein <adrien.grassein@gmail.com>, Aleksandr Mishin
+ <amishin@t-argos.ru>, Andy Yan <andy.yan@rock-chips.com>, AngeloGioacchino
+ Del Regno <angelogioacchino.delregno@collabora.com>, Benson Leung
+ <bleung@chromium.org>, Biju Das <biju.das.jz@bp.renesas.com>, Christoph
+ Fritz <chf.fritz@googlemail.com>, Cristian Ciocaltea
+ <cristian.ciocaltea@collabora.com>, Detlev Casanova
+ <detlev.casanova@collabora.com>, Dharma Balasubiramani
+ <dharma.b@microchip.com>, Guenter Roeck <groeck@chromium.org>, Heiko
+ Stuebner <heiko@sntech.de>, Jani Nikula <jani.nikula@intel.com>, Janne
+ Grunau <j@jannau.net>, Jerome Brunet <jbrunet@baylibre.com>, Jesse Van
+ Gavere <jesseevg@gmail.com>, Kevin Hilman <khilman@baylibre.com>, Kieran
+ Bingham <kieran.bingham+renesas@ideasonboard.com>, Martin Blumenstingl
+ <martin.blumenstingl@googlemail.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, Phong LE
+ <ple@baylibre.com>, Sasha Finkelstein <fnkl.kernel@gmail.com>, Sugar Zhang
+ <sugar.zhang@rock-chips.com>, Sui Jingfeng <sui.jingfeng@linux.dev>, Tomi
+ Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, Vitalii Mordan
+ <mordan@ispras.ru>, "Rob Herring (Arm)" <robh@kernel.org>, Hsin-Te Yuan
+ <yuanhsinte@chromium.org>, Pin-yen Lin <treapking@chromium.org>, Xin Ji
+ <xji@analogixsemi.com>, Aradhya Bhatia <a-bhatia1@ti.com>, Tomi Valkeinen
+ <tomi.valkeinen@ideasonboard.com>, Ian Ray <ian.ray@gehealthcare.com>,
+ Martyn Welch <martyn.welch@collabora.co.uk>, Peter Senna Tschudin
+ <peter.senna@gmail.com>, Helge Deller <deller@gmx.de>, Kuninori Morimoto
+ <kuninori.morimoto.gx@renesas.com>, Laurent Pinchart
+ <laurent.pinchart+renesas@ideasonboard.com>, Alexandre Torgue
+ <alexandre.torgue@foss.st.com>, Maxime Coquelin
+ <mcoquelin.stm32@gmail.com>, Philippe Cornu <philippe.cornu@foss.st.com>,
+ Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>, Yannick Fertre
+ <yannick.fertre@foss.st.com>, Alain Volmat <alain.volmat@foss.st.com>,
+ Raphael Gallais-Pou <rgallaispou@gmail.com>, Michal Simek
+ <michal.simek@amd.com>, Jonathan Corbet <corbet@lwn.net>,
+ linux-doc@vger.kernel.org
+Subject: Re: [PATCH v3 00/22] drm: convert all bridges to
+ devm_drm_bridge_alloc()
+Message-ID: <20250522092824.421e766c@booty>
+In-Reply-To: <36ade269-a590-4243-889c-006f37d9ae6e@nxp.com>
+References: <20250509-drm-bridge-convert-to-alloc-api-v3-0-b8bc1f16d7aa@bootlin.com>
+	<20250521162216.79dd3290@booty>
+	<36ade269-a590-4243-889c-006f37d9ae6e@nxp.com>
+Organization: Bootlin
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250521151548.185910-1-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-GND-State: clean
+X-GND-Score: -100
+X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtddtgdehfeeiucdltddurdegfedvrddttddmucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvvefukfgjfhhoofggtgfgsehtjeertdertddvnecuhfhrohhmpefnuhgtrgcuvegvrhgvshholhhiuceolhhutggrrdgtvghrvghsohhlihessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnhepjeetffdtleehgefhffffudekhfdujeeuvdefhfetleeftefgffekjeetjedtvdevnecuffhomhgrihhnpehfrhgvvgguvghskhhtohhprdhorhhgpdgsohhothhlihhnrdgtohhmnecukfhppedvrgdtvdemieejtdemvddtvddtmegvrgdtudemsggvgedumeelhegvjeemfeegfeemledufegvnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepvdgrtddvmeeijedtmedvtddvtdemvggrtddumegsvgegudemleehvgejmeefgeefmeeludefvgdphhgvlhhopegsohhothihpdhmrghilhhfrhhomheplhhutggrrdgtvghrvghsohhlihessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepleehpdhrtghpthhtohepvhhitghtohhrrdhlihhusehngihprdgtohhmpdhrtghpthhtohepmhgrrghrthgvnhdrlhgrnhhkhhhorhhstheslhhinhhugidri
+ hhnthgvlhdrtghomhdprhgtphhtthhopehmrhhiphgrrhgusehkvghrnhgvlhdrohhrghdprhgtphhtthhopehtiihimhhmvghrmhgrnhhnsehsuhhsvgdruggvpdhrtghpthhtoheprghirhhlihgvugesghhmrghilhdrtghomhdprhgtphhtthhopehsihhmohhnrgesfhhffihllhdrtghhpdhrtghpthhtoheprghnughriigvjhdrhhgrjhgurgesihhnthgvlhdrtghomhdprhgtphhtthhopehnvghilhdrrghrmhhsthhrohhngheslhhinhgrrhhordhorhhg
+X-GND-Sasl: luca.ceresoli@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250522_001334_894032_D406EE82 
-X-CRM114-Status: UNSURE (   3.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250522_002842_200492_AF72A3D4 
+X-CRM114-Status: GOOD (  21.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,5 +135,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Applied, thanks.
+Hello Liu,
+
+On Thu, 22 May 2025 11:20:17 +0800
+Liu Ying <victor.liu@nxp.com> wrote:
+
+> > If not, can we at least add a band-aid 'X:' entry for
+> > drivers/gpu/drm/bridge/imx?
+> > 
+> > I think the other matching entry is the one to consider:
+> > 
+> > DRM DRIVERS FOR FREESCALE IMX BRIDGE
+> > M:	Liu Ying <victor.liu@nxp.com>
+> > L:	dri-devel@lists.freedesktop.org
+> > S:	Maintained
+> > F:	Documentation/devicetree/bindings/display/bridge/fsl,imx8qxp-ldb.yaml
+> > F:	Documentation/devicetree/bindings/display/bridge/fsl,imx8qxp-pixel-combiner.yaml
+> > F:	Documentation/devicetree/bindings/display/bridge/fsl,imx8qxp-pixel-link.yaml
+> > F:	Documentation/devicetree/bindings/display/bridge/fsl,imx8qxp-pxl2dpi.yaml
+> > F:	drivers/gpu/drm/bridge/imx/
+> > 
+> > (https://gitlab.freedesktop.org/drm/misc/kernel/-/blob/drm-misc-next/MAINTAINERS?ref_type=heads#L7940-7948)
+> > 
+> > However it does not list any trees. I _guess_ drm-misc applies here as
+> > a fallback as well as common sense.
+> > 
+> > Liu, should this entry have a 'T:' line for drm/misc?  
+> 
+> These bridge drivers also don't have a 'T:' line:
+> 
+> DRM DRIVER FOR CHIPONE ICN6211 MIPI-DSI to RGB CONVERTER BRIDGE
+> DRM DRIVER FOR PARADE PS8640 BRIDGE CHIP
+> DRM DRIVER FOR TI DLPC3433 MIPI DSI TO DMD BRIDGE
+> DRM DRIVER FOR TI SN65DSI86 BRIDGE CHIP
+> LONTIUM LT8912B MIPI TO HDMI BRIDGE
+> MEGACHIPS STDPXXXX-GE-B850V3-FW LVDS/DP++ BRIDGES
+> MICROCHIP SAM9x7-COMPATIBLE LVDS CONTROLLER
+> 
+> I think that they fallback to drm-misc since "DRM DRIVERS FOR BRIDGE CHIPS"
+> covers them.  I don't have strong opinion on adding a "T" line to them, at
+> least to "DRM DRIVERS FOR FREESCALE IMX BRIDGE".  Anyway, it would be good
+> to know comments from maintainers for "DRM DRIVERS FOR BRIDGE CHIPS" and
+> "DRM DRIVERS".
+
+I agree the fallback seems OK for this MAINTAINERS entry.
+
+The other entry (ARM/FREESCALE IMX / MXC ARM ARCHITECTURE) is another
+story.
+
+> >>       drm/bridge: imx8qxp-pixel-combiner: convert to devm_drm_bridge_alloc() API  
+> > 
+> > Not acked/reviewed, some discussion happened. I am resending it in v4,
+> > possibly with updates based on the discussion.  
+> 
+> I still think the main structures in imx8qxp-pixel-combiner.c and imx*-ldb.c
+> should have the same lifetime with the allocated bridges.  I added a new
+> comment on this driver in v2 just now.
+
+Thanks, let's continue the conversation there.
+
+Luca
+
+-- 
+Luca Ceresoli, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
