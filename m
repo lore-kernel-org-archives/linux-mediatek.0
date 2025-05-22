@@ -4,69 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EF59C54756
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 May 2025 08:59:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65D96C54E90
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 May 2025 10:31:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=d6+8TKL9ybPi8GR52+9DRexy0HiUe+IYVYfqzERk5rg=; b=aSDeUdw6rH/I5Jv9Atj+uE9BJD
-	9D1mPDtymRjcXnYcKceczTI1YSj4G/2jNwK2YBtVH/qOH7joYyVY86EEuq2dIxGceb5++qARWe1nd
-	3VJgSQ48YQaVilHIUr1OF8xl7SFAI0BqwLFPvJ2pn5+qlS9VlwvWhH1Gf/T6/SIXDylx90J70BJqL
-	e7JUvHuoPdB/0w8ArRctCH5DD19hy+75rmlUylOfNylm8KXy+/IE6G38wWYCDYVLC+IIQTuZ/k66Y
-	X6WSpTLzOGay6rMxC5r57mIoHFb8nfovxVq7rfw5s8Wu+EyIAU0gBg50oM+qAjutCK6uOLH+iGsB1
-	NUd3i2AQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=teDW6aLXJq/vQLrzEQpaNel0aNofAniFoiHJTCyptkY=; b=QARAJ3jwujP2VpWWLNbit/SiIq
+	E79y5aogTP47j5qAFIfT9+AtDy92FyQ6oTZdNjbA83czG5TAHaF7EgRuKLg5VdJSZpRUEtEzzfqxF
+	VouodMSeboaqtrAReKbhDZAk8Hq5Zf8WCcTQemPKXh40HjJAd0WeaQiOKu+qmCtz8cWNV8xzZSpJT
+	BmmiyhX3Tib1FQj9BWUm2JR5l/MHenfOLHFXf2/nceUIL4gLaRiucsInqgIVn7Kif/c6CED0tLDAS
+	HOb1zsRkUB0c8XEnPzryNnVqBZUcmvRnJ5aEv4Mv7QULy212MjUa0zC8IugXQTc5Bpm1P6Woq1EhD
+	BXUgnCVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uI1m4-00000000OdY-2SN3;
-	Thu, 22 May 2025 08:59:36 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1uI3CY-00000000hym-30pC;
+	Thu, 22 May 2025 10:31:02 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uI1ej-00000000MnD-3lX7;
-	Thu, 22 May 2025 08:52:02 +0000
-X-UUID: 0231a67236ea11f08d385d50fb11b32d-20250522
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=d6+8TKL9ybPi8GR52+9DRexy0HiUe+IYVYfqzERk5rg=;
-	b=tdFOBWq3xnxVgWEXWcV+6sdoZjQXxGwkO0qzWu2vzQuwiZwrRJ3UZM2RLWqJueGlbDUlAIADjdokuqFzZHNBmvPWVZadxfMxfKybNOear7sDzb7J5B6OQdKujL9BvLnea55NcTl02xjL+0TYlAlNlUZNDGdFvf5bCueV2/rXPfE=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:9a3eae55-57b6-48d0-92e8-8b0cd9a3ed92,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:0ef645f,CLOUDID:122c29f1-2ded-45ed-94e2-b3e9fa87100d,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 0231a67236ea11f08d385d50fb11b32d-20250522
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <jason-jh.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 846204219; Thu, 22 May 2025 01:51:53 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Thu, 22 May 2025 16:51:50 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Thu, 22 May 2025 16:51:50 +0800
-From: Jason-JH Lin <jason-jh.lin@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-Subject: [PATCH] drm/mediatek: Add wait_event_timeout when disabling plane
-Date: Thu, 22 May 2025 16:34:24 +0800
-Message-ID: <20250522085149.3361598-1-jason-jh.lin@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1uI3AS-00000000hem-2PFR;
+	Thu, 22 May 2025 10:28:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1747909729;
+	bh=9jVtKxXoBJOY7pWTvpiYNuBT+Pk7aL+PIuFLxvWJtc0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=HfYfHj+rsWIXKxpqT4je/UEsOvYRPo13jWdd5Sjwfm+dG4eLKWk0wnhGD/eSa/tMr
+	 wlBmWjOz042E8xJN8arlYBZGtO3GL32NQGJ488TUslBIaqlZ2rAfUeZQcF8QCmrgSU
+	 6o/7BmZs1ACtKMDcX5IfImFp8iejqnVWfAn237gXh1vEdinUzRcOABfuJg0WTTqBCf
+	 BFHep2mA9QopzlUJegzumtP4t7G7kxkOnMgQibkuUzJgJBUuX4Xhfa9yBykf2HNrWx
+	 RI35L7AE/ITLe6fdIh+nFyI/h7uAMkFSw6H1lKe9HTtV5NO5I2FbWpC82nWW1hfvfl
+	 xy79r4bcy7kWA==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3BC5E17E0FD9;
+	Thu, 22 May 2025 12:28:49 +0200 (CEST)
+Message-ID: <a41e6b0c-5482-4947-8051-78fe677f5098@collabora.com>
+Date: Thu, 22 May 2025 12:28:48 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1] memory: mtk-smi: Add ostd setting for mt8186
+To: =?UTF-8?B?RnJpZGF5IFlhbmcgKOadqOmYsyk=?= <Friday.Yang@mediatek.com>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "krzk@kernel.org" <krzk@kernel.org>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>
+Cc: "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+References: <20250521091626.4283-1-friday.yang@mediatek.com>
+ <9c594eaa-9ddc-4340-ac0d-d911073764ac@collabora.com>
+ <ee9f04f90721963feeeb98e83a8d4fb38ee6617c.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <ee9f04f90721963feeeb98e83a8d4fb38ee6617c.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250522_015201_942861_C0003F1C 
-X-CRM114-Status: GOOD (  16.01  )
+X-CRM114-CacheID: sfid-20250522_032852_772532_F277CFB7 
+X-CRM114-Status: GOOD (  36.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,105 +84,205 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "Jason-JH . Lin" <jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Zhenxing Qin <zhenxing.qin@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Paul-PL Chen <paul-pl.chen@mediatek.com>, Xavier Chang <xavier.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Yongqiang Niu <yongqiang.niu@mediatek.com>, Sirius Wang <sirius.wang@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Our hardware registers are set through GCE, not by the CPU.
-DRM might assume the hardware is disabled immediately after calling
-atomic_disable() of drm_plane, but it is only truly disabled after the
-GCE IRQ is triggered.
+Il 22/05/25 04:42, Friday Yang (杨阳) ha scritto:
+> On Wed, 2025-05-21 at 11:26 +0200, AngeloGioacchino Del Regno wrote:
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>>
+>>
+>> Il 21/05/25 11:16, Friday Yang ha scritto:
+>>> Add initial ostd setting for mt8186. All the settings come from DE.
+>>> These settings help adjust Multimedia HW's bandwidth limits to
+>>> achieve
+>>> a balanced bandwidth requirement. Without this, the VENC HW works
+>>> abnormal while stress testing.
+>>>
+>>> Fixes: 86a010bfc739 ("memory: mtk-smi: mt8186: Add smi support")
+>>> Signed-off-by: Friday Yang <friday.yang@mediatek.com>
+>>
+>> I agree about this commit and you can get my
+>>
+>> Reviewed-by: AngeloGioacchino Del Regno <
+>> angelogioacchino.delregno@collabora.com>
+>>
+>> ...but I still have a question.
+>>
+>> This driver is getting lots of those big OSTD arrays, and I can
+>> foresee this
+>> getting bigger and bigger with every new SoC getting supported in
+>> there.
+>>
+>> I'd like to understand how we can improve that, hence, can you please
+>> describe
+>> how the OSTD values are calculated and how are they limiting the
+>> bandwidth?
+>>
+>> I'm thinking that we can do something such that we get this runtime
+>> calculated
+>> instead of just holding fixed values, so that we may eventually
+>> replace all those
+>> big arrays with just a few values (foreseeing 3-4 values) and
+>> performing a big
+>> cleanup (which may bring further improvements in the future).
+>>
+>> Cheers,
+>> Angelo
+>>
+> 
+> Thank you for your comments.
+> OSTD indicates the number of commands that the SMI LARB has received
+> from masters but has not yet responded to from DRAM. The SMI LARB has a
+> set of registers for each port to set the OSTD value. For example, if
+> OSTD is set to 3, then the hardware allows 3 commands in the FIFO for
+> that LARB port.
+> 
 
-Additionally, the cursor plane in DRM uses async_commit, so DRM will
-not wait for vblank and will free the buffer immediately after calling
-atomic_disable().
+> For each SoC, the ESL DE simulates application scenarios and provides
+> an initial OSTD setting to the software. This is just the initial
+> configuration.
+ >
 
-To prevent the framebuffer from being freed before the layer disable
-settings are configured into the hardware, which can cause an IOMMU
-fault error, a wait_event_timeout has been added to wait for the
-ddp_cmdq_cb() callback,indicating that the GCE IRQ has been triggered.
+Thanks for this valuable information.
 
-Fixes: 119f5173628a ("drm/mediatek: Add DRM Driver for Mediatek SoC MT8173.")
-Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_crtc.c  | 30 ++++++++++++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_crtc.h  |  1 +
- drivers/gpu/drm/mediatek/mtk_plane.c |  5 +++++
- 3 files changed, 36 insertions(+)
+I wonder if you could please send a commit to add this information as a
+comment into this driver, and/or in mediatek,smi-larb.yaml so that it will
+not get lost :-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_crtc.c b/drivers/gpu/drm/mediatek/mtk_crtc.c
-index 8f6fba4217ec..944a3d1e5ec9 100644
---- a/drivers/gpu/drm/mediatek/mtk_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_crtc.c
-@@ -719,6 +719,36 @@ int mtk_crtc_plane_check(struct drm_crtc *crtc, struct drm_plane *plane,
- 	return 0;
- }
- 
-+void mtk_crtc_plane_disable(struct drm_crtc *crtc, struct drm_plane *plane)
-+{
-+	struct mtk_crtc *mtk_crtc = to_mtk_crtc(crtc);
-+	struct mtk_plane_state *plane_state = to_mtk_plane_state(plane->state);
-+	int i;
-+
-+	if (!mtk_crtc->enabled)
-+		return;
-+
-+	/* set pending plane state to disabled */
-+	for (i = 0; i < mtk_crtc->layer_nr; i++) {
-+		struct drm_plane *mtk_plane = &mtk_crtc->planes[i];
-+		struct mtk_plane_state *mtk_plane_state = to_mtk_plane_state(mtk_plane->state);
-+
-+		if (mtk_plane->index == plane->index) {
-+			memcpy(mtk_plane_state, plane_state, sizeof(*plane_state));
-+			break;
-+		}
-+	}
-+	mtk_crtc_update_config(mtk_crtc, false);
-+
-+#if IS_REACHABLE(CONFIG_MTK_CMDQ)
-+	/* wait for planes to be disabled by cmdq */
-+	if (mtk_crtc->cmdq_client.chan)
-+		wait_event_timeout(mtk_crtc->cb_blocking_queue,
-+				   mtk_crtc->cmdq_vblank_cnt == 0,
-+				   msecs_to_jiffies(500));
-+#endif
-+}
-+
- void mtk_crtc_async_update(struct drm_crtc *crtc, struct drm_plane *plane,
- 			   struct drm_atomic_state *state)
- {
-diff --git a/drivers/gpu/drm/mediatek/mtk_crtc.h b/drivers/gpu/drm/mediatek/mtk_crtc.h
-index 388e900b6f4d..828f109b83e7 100644
---- a/drivers/gpu/drm/mediatek/mtk_crtc.h
-+++ b/drivers/gpu/drm/mediatek/mtk_crtc.h
-@@ -21,6 +21,7 @@ int mtk_crtc_create(struct drm_device *drm_dev, const unsigned int *path,
- 		    unsigned int num_conn_routes);
- int mtk_crtc_plane_check(struct drm_crtc *crtc, struct drm_plane *plane,
- 			 struct mtk_plane_state *state);
-+void mtk_crtc_plane_disable(struct drm_crtc *crtc, struct drm_plane *plane);
- void mtk_crtc_async_update(struct drm_crtc *crtc, struct drm_plane *plane,
- 			   struct drm_atomic_state *plane_state);
- struct device *mtk_crtc_dma_dev_get(struct drm_crtc *crtc);
-diff --git a/drivers/gpu/drm/mediatek/mtk_plane.c b/drivers/gpu/drm/mediatek/mtk_plane.c
-index 655106bbb76d..59edbe26f01e 100644
---- a/drivers/gpu/drm/mediatek/mtk_plane.c
-+++ b/drivers/gpu/drm/mediatek/mtk_plane.c
-@@ -285,9 +285,14 @@ static void mtk_plane_atomic_disable(struct drm_plane *plane,
- 	struct drm_plane_state *new_state = drm_atomic_get_new_plane_state(state,
- 									   plane);
- 	struct mtk_plane_state *mtk_plane_state = to_mtk_plane_state(new_state);
-+	struct drm_plane_state *old_state = drm_atomic_get_old_plane_state(state,
-+									   plane);
-+
- 	mtk_plane_state->pending.enable = false;
- 	wmb(); /* Make sure the above parameter is set before update */
- 	mtk_plane_state->pending.dirty = true;
-+
-+	mtk_crtc_plane_disable(old_state->crtc, plane);
- }
- 
- static void mtk_plane_atomic_update(struct drm_plane *plane,
--- 
-2.43.0
+> We have MMQoS software that dynamically adjusts the
+> bandwidth and sets the OSTD-related registers of SMI. In the MT8196,
+> MMQoS will send upstream. However, in some projects, the MMQoS module
+> is not enabled, so we need to provide this initial OSTD setting to
+> achieve a balanced bandwidth requirement. Since we do not have a
+> formula to calculate OSTD, it is difficult for SMI to calculate OSTD at
+> runtime.
+> 
 
+If the MMQoS is upstreamed and enabled, do we still need a "default" OSTD
+configuration (for example, MT8196)?
+
+> You are right, the SMI driver could become larger if we have to add
+> this OSTD array. How about adding an OSTD setting in the device tree?
+> For example, we could add a mediatek,smi-ostd array property for each
+> SMI LARB and SMI common. This would be more feasible for us. Is this
+> acceptable to you?
+
+Unfortunately, this is not possible.
+
+Devicetree is used to describe hardware, and this is configuration that does
+not describe hardware, so this cannot go to the devicetree.
+
+Though, if using MMQoS means that we don't need to add a default OSTD array,
+this situation gets resolved as, from what I can see in the MT6991 downstream
+kernel, the MMQoS module evaluates bandwidth numbers to calculate OSTD params.
+
+That could be implemented as an interconnect driver: in that case, it would be
+possible to leverage devicetree as we'd be specifying hardware interconnection
+bandwidth "gears".
+
+The DT would look more or less like:
+
+disp_controller_opp_table: opp-table {
+	compatible = "operating-points-v2";
+
+	opp-0 {
+		(frequencies and voltages if applicable, or none)
+
+		opp-peak-kBps = <peak-bandwidth-value-in-kbps>;
+
+		opp-avg-kBps = <average-bandwidth-in-kbps>; /* this is optional */
+	};
+	opp-1 .... etc
+};
+
+display-controller@1234 {
+	compatible = "mediatek,xyz";
+
+	interconnects = <&mmqos MASTER_SOMETHING &mmqos SLAVE_SOMETHING>;
+	operating-points-v2 = <&disp_controller_opp_table>;
+};
+
+...so that then MMQoS can set the OSTD values to SMI :-)
+
+Thanks again!
+Angelo
+
+> 
+> Best regard
+> Friday Yang
+> 
+>>> ---
+>>>    drivers/memory/mtk-smi.c | 33 +++++++++++++++++++++++++++++++++
+>>>    1 file changed, 33 insertions(+)
+>>>
+>>> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+>>> index c086c22511f7..733e22f695ab 100644
+>>> --- a/drivers/memory/mtk-smi.c
+>>> +++ b/drivers/memory/mtk-smi.c
+>>> @@ -320,6 +320,38 @@ static const u8
+>>> mtk_smi_larb_mt6893_ostd[][SMI_LARB_PORT_NR_MAX] = {
+>>>        [20] = {0x9, 0x9, 0x5, 0x5, 0x1, 0x1},
+>>>    };
+>>>
+>>> +static const u8 mtk_smi_larb_mt8186_ostd[][SMI_LARB_PORT_NR_MAX] =
+>>> {
+>>> +     [0] = {0x2, 0x1, 0x8, 0x1,},
+>>> +     [1] = {0x1, 0x3, 0x1, 0x1,},
+>>> +     [2] = {0x6, 0x1, 0x4, 0x1,},
+>>> +     [3] = {},
+>>> +     [4] = {0xf, 0x1, 0x5, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1,
+>>> +            0x1, 0x1, 0x1,},
+>>> +     [5] = {},
+>>> +     [6] = {},
+>>> +     [7] = {0x1, 0x3, 0x1, 0x1, 0x1, 0x3, 0x2, 0xd, 0x7, 0x5, 0x3,
+>>> +            0x1, 0x5,},
+>>> +     [8] = {0x1, 0x2, 0x2,},
+>>> +     [9] = {0x9, 0x7, 0xf, 0x8, 0x1, 0x8, 0x9, 0x3, 0x3, 0xb, 0x7,
+>>> 0x4,
+>>> +            0x9, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1,
+>>> 0x1,
+>>> +            0x1, 0x1, 0x1, 0x1, 0x1,},
+>>> +     [10] = {},
+>>> +     [11] = {0x9, 0x7, 0xf, 0x8, 0x1, 0x8, 0x9, 0x3, 0x3, 0xb,
+>>> 0x7, 0x4,
+>>> +             0x9, 0x1, 0x1, 0x1, 0x1, 0x1, 0x8, 0x7, 0x7, 0x1,
+>>> 0x6, 0x2,
+>>> +             0xf, 0x8, 0x1, 0x1, 0x1,},
+>>> +     [12] = {},
+>>> +     [13] = {0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x6, 0x6, 0x6, 0x1,
+>>> 0x1, 0x1,},
+>>> +     [14] = {0x1, 0x1, 0x1, 0x1, 0x1, 0x1,},
+>>> +     [15] = {},
+>>> +     [16] = {0x28, 0x14, 0x2, 0xc, 0x18, 0x1, 0x14, 0x1, 0x4, 0x4,
+>>> 0x4,
+>>> +             0x2, 0x4, 0x2, 0x8, 0x4, 0x4,},
+>>> +     [17] = {0x28, 0x14, 0x2, 0xc, 0x18, 0x1, 0x14, 0x1, 0x4, 0x4,
+>>> 0x4,
+>>> +             0x2, 0x4, 0x2, 0x8, 0x4, 0x4,},
+>>> +     [18] = {},
+>>> +     [19] = {0x1, 0x1, 0x1, 0x1,},
+>>> +     [20] = {0x2, 0x2, 0x2, 0x2, 0x1, 0x1,},
+>>> +};
+>>> +
+>>>    static const u8 mtk_smi_larb_mt8188_ostd[][SMI_LARB_PORT_NR_MAX]
+>>> = {
+>>>        [0] = {0x02, 0x18, 0x22, 0x22, 0x01, 0x02, 0x0a,},
+>>>        [1] = {0x12, 0x02, 0x14, 0x14, 0x01, 0x18, 0x0a,},
+>>> @@ -491,6 +523,7 @@ static const struct mtk_smi_larb_gen
+>>> mtk_smi_larb_mt8183 = {
+>>>    static const struct mtk_smi_larb_gen mtk_smi_larb_mt8186 = {
+>>>        .config_port                =
+>>> mtk_smi_larb_config_port_gen2_general,
+>>>        .flags_general              = MTK_SMI_FLAG_SLEEP_CTL,
+>>> +     .ostd                       = mtk_smi_larb_mt8186_ostd,
+>>>    };
+>>>
+>>>    static const struct mtk_smi_larb_gen mtk_smi_larb_mt8188 = {
+>>> --
+>>> 2.46.0
+>>>
+>>
+>>
 
