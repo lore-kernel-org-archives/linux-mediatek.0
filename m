@@ -4,62 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A64E2C54E65
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 May 2025 10:33:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6975C54E65
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 May 2025 10:52:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3MayLa1R4scxJAi3qqwwISZdET2R45SifKgwOpAJ8kQ=; b=A+RTNWvJoYVMn9
-	JIOFKukW5m9X0iFAZ3PWh966ZbQeClpPsAQu1mMHJv5EpnR2HKN8skA6iV45x+AJWLpCmHP+YMv4+
-	kFTrQ0hFrdHYXw4FHUi76HmC9Y9wbjmqqXGBouOk8eVHLosCjucmCMEvIzNK8mFen/tHpbdwqiLx4
-	RATBtqZiNJM0JQV7sIhDvquy8LEzeKdGG+XwLs6+3HBnevWkBtZh7od3mbsljViTBVOuC6uCrZmtY
-	E0kXbGYHyzqKug9MAeTjBCMchEK2cqPvP46AdwZ841AcarovZTvFiKD9y/t4UaT4i0zexwyID/2p/
-	vArM52XvsWoZy2MjwoGw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SzfHc04qb3ZiBK7rSUe8RZ+rtYxRyixjojLdqc8M/j4=; b=3DfIZ2fhE7g0AuGZ7bHl9zJEit
+	AK19FSBPlvp12SOAstRWXLYGKMFg2rPn5zRVGMTsXyeIqd8LgC+++9pIh54eV8PJ0+FfK8xTFbEnE
+	+m/xOR32Y+kl1Nk19eOo7W8GRdchZb1X5iDrcycDd25ev5C4BwbG/EqQyI5rkPvnETXfGMOHhAH5J
+	YHXzSM4y6PrMIfWfhYJkw31zQsFd41U3sYTfQeuUKOfU/vm8lTi7utmwZsVuDbQ55QUdjYUPSPiB7
+	4oTXBYEKWophMXuPAXpdu3UWvxBpGHexGg1WVIOjiM2ahexS2nfdUcVIc7HtZy2Zd4ZKj9nKQDFNU
+	EAHCz9Eg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uI3Eb-00000000iUI-3BFk;
-	Thu, 22 May 2025 10:33:09 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uI3XB-00000000lVN-2ngj;
+	Thu, 22 May 2025 10:52:21 +0000
+Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uI3CB-00000000ht8-0yen;
-	Thu, 22 May 2025 10:30:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1747909837;
-	bh=8iGntFQbL8GyTwozwP1vKL9KhhFgtY8ccE9Bf576A2k=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=MVVZqxhl4Gbge9gbMkOlT+f4gnKPpv87Zwj0xWaV5byaRKY09dD3b4XPfH/e+IzUw
-	 Z7UjslOoRz4XTo/DN9bGkAXn9m6kVgSeDNcZntMnk5ADdYWU85PdisjdH9sQwVrWbi
-	 OAB6g/5VkfdX78uyCH8UL1zvlqC9U+kE9rkIHp8F3vCqsoBuLgbduGJRjhZs9QwOYI
-	 DH3tlpegyKX77Bn6LA5ovZiPyIDfXU2aUU09Do6J7iGA2w9HUl5KpCB73pDVwwoi5r
-	 joFD/1NveBRB/8IeKIvFt+tCuw59l1mL5Hy5iXOUIoQ6+oANkhapcKSLiB04oO868J
-	 0Afx7dsIrgxTQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AFA4117E0FCE;
-	Thu, 22 May 2025 12:30:36 +0200 (CEST)
-Message-ID: <aed94e06-455f-4aa3-8740-57bd1facad22@collabora.com>
-Date: Thu, 22 May 2025 12:30:36 +0200
+	id 1uI3V6-00000000lI3-1iTf
+	for linux-mediatek@lists.infradead.org;
+	Thu, 22 May 2025 10:50:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
+	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=SzfHc04qb3ZiBK7rSUe8RZ+rtYxRyixjojLdqc8M/j4=; b=ozXMHnmEwFFf7jMMorWeqNjQg3
+	hIyB41jW1XedXMOLIP42rFVfUoerYG/rK13OSoCVUrxKLuRM8eEO7hiwQHwnMu9thI96+M8rOX8mR
+	RXqAR7Y789R7nIstbiGX+zm1NHbeYOyU7Qb2+Fx5/3hAIcJu1+o+0GAmRmcvzyKRU87I=;
+Received: from p5b206e31.dip0.t-ipconnect.de ([91.32.110.49] helo=nf.local)
+	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.96)
+	(envelope-from <nbd@nbd.name>)
+	id 1uI3Uq-0085SC-0o;
+	Thu, 22 May 2025 12:49:56 +0200
+Message-ID: <5a659f60-896e-4f2f-89c0-141e530c44d5@nbd.name>
+Date: Thu, 22 May 2025 12:49:55 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] drm/mediatek: Add wait_event_timeout when disabling plane
-To: Jason-JH Lin <jason-jh.lin@mediatek.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>
-References: <20250522085149.3361598-1-jason-jh.lin@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2 2/2] wifi: mt76: mt7925: add RNR scan support for 6GHz
+To: Mingyen Hsieh <mingyen.hsieh@mediatek.com>, lorenzo@kernel.org
+Cc: deren.wu@mediatek.com, Sean.Wang@mediatek.com, Leon.Yen@mediatek.com,
+ Michael.Lo@mediatek.com, allan.wang@mediatek.com,
+ Eric-SY.Chang@mediatek.com, km.lin@mediatek.com, Quan.Zhou@mediatek.com,
+ Ryder.Lee@mediatek.com, Shayne.Chen@mediatek.com,
+ linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20250321013829.3598-1-mingyen.hsieh@mediatek.com>
+ <20250321013829.3598-2-mingyen.hsieh@mediatek.com>
 Content-Language: en-US
-In-Reply-To: <20250522085149.3361598-1-jason-jh.lin@mediatek.com>
+From: Felix Fietkau <nbd@nbd.name>
+Autocrypt: addr=nbd@nbd.name; keydata=
+ xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
+ ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
+ Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
+ AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
+ vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
+ wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
+ TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
+ l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
+ dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
+ HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
+ VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
+ CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
+ VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
+ Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
+ DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
+ wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
+ f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
+ aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
+ FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
+ TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
+ GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
+ cL98efvrjdstUfTCP2pfetyN
+In-Reply-To: <20250321013829.3598-2-mingyen.hsieh@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250522_033039_449889_79B32E68 
-X-CRM114-Status: UNSURE (   9.38  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250522_035012_524452_367F56BD 
+X-CRM114-Status: GOOD (  17.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,29 +97,44 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Singo Chang <singo.chang@mediatek.com>, Zhenxing Qin <zhenxing.qin@mediatek.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Paul-PL Chen <paul-pl.chen@mediatek.com>, Xavier Chang <xavier.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Yongqiang Niu <yongqiang.niu@mediatek.com>, Sirius Wang <sirius.wang@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 22/05/25 10:34, Jason-JH Lin ha scritto:
-> Our hardware registers are set through GCE, not by the CPU.
-> DRM might assume the hardware is disabled immediately after calling
-> atomic_disable() of drm_plane, but it is only truly disabled after the
-> GCE IRQ is triggered.
+On 21.03.25 02:38, Mingyen Hsieh wrote:
+> From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 > 
-> Additionally, the cursor plane in DRM uses async_commit, so DRM will
-> not wait for vblank and will free the buffer immediately after calling
-> atomic_disable().
+> Enhance the mt7925 to include RNR scan support. It adds
+> the necessary RNR information to the scan command.
 > 
-> To prevent the framebuffer from being freed before the layer disable
-> settings are configured into the hardware, which can cause an IOMMU
-> fault error, a wait_event_timeout has been added to wait for the
-> ddp_cmdq_cb() callback,indicating that the GCE IRQ has been triggered.
+> Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+> ---
+> v2:
+>    - use '= {}' to replace the '= {0}' for short_ssid array.
+>    - align with the open paranthesis for crc32_le.
+>    - use ether_addr_copy() to replace the memcpy of bssid.
+> ---
+>   .../net/wireless/mediatek/mt76/mt7925/mcu.c   | 36 ++++++++++++++++---
+>   .../net/wireless/mediatek/mt76/mt7925/mcu.h   | 17 +++++----
+>   2 files changed, 41 insertions(+), 12 deletions(-)
 > 
-> Fixes: 119f5173628a ("drm/mediatek: Add DRM Driver for Mediatek SoC MT8173.")
-> Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+> index 243adace8799..22686faca1af 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+> @@ -3078,7 +3079,11 @@ int mt7925_mcu_hw_scan(struct mt76_phy *phy, struct ieee80211_vif *vif,
+>   	for (i = 0; i < sreq->n_ssids; i++) {
+>   		if (!sreq->ssids[i].ssid_len)
+>   			continue;
+> +		if (i > MT7925_RNR_SCAN_MAX_BSSIDS)
+> +			break;
+>   
+> +		short_ssid[i] = ~crc32_le(~0, sreq->ssids[i].ssid,
+> +					  sreq->ssids[i].ssid_len);
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+I had to remove this variable due to a unused-but-set warning. I'm not 
+sure if the contents of it should have been stored somewhere in the MCU 
+message, or if this was something that ended up not being necessary.
+Please review and send a follow-up fix if needed.
 
-
+- Felix
 
