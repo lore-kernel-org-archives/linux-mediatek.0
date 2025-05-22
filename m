@@ -4,122 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13A79C54ED0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 May 2025 16:27:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2646C54E65
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 May 2025 16:28:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hDrRfxUh05bF14pzZXQ+mC3f/tIJuaPORyh0q5iuGpM=; b=2UcrI+sw4B33ppNPjISDE4gBPR
-	C2awOy3Wx9NN2kf8/iZ95EqGg62iF2i3ZaT3CQ9M4HOJLNRyFSQV0SoYSxayx1duVMg3duASOmP+h
-	C6wGj/ChK1bheKLZV8cRQWeFzb9/F+/wPfzbqlk7gAeYH6WAw3t3QJKfRd4ottjf6/DBX5v5t8XCq
-	Prbp7THdJHiLOkqwn3SaELgu75LLpV6AtOeVkXX4sgWfBPxyIs26yFVu7a/myy+CMyaW0eAzDIroM
-	mKksaUwW51ZQ2VIG16y5NqcCSE07SSGtgLsmttEjt9AcFWW0CUTTdznGozJwxXs3durnKaxTftcDt
-	SQNEfsbA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8oi7qpsqgSJz0CCd/I93mpkfbq9SJ19EV49FCcy7VTM=; b=2k/WL9SQW5rJgIEL4DX18sa+T3
+	myuK2lM2ZxVKt8BvRmScr8LcCs1Tw41+8Pvqcc2DMds0LExeQOxFoCI2gomRbi3ZG+ZVD42E5Euci
+	8XuWfAlYCRR4vA/xJaFLR/cX9Iaxw69I5an3u4YdY1GdFZ75zZ4vCG4T5Pp1YpM5KlR+ClsD7+zb+
+	ve3w6bdec0/tEHx3Lo7Yo2oulq2sx0jlZawfyWlnQeGXXN/nDK8zeGZ8s0TYMrWBnvuF9TzNI5z1H
+	+/KR5yDydXSeTs7Nxso4emJQBeSmJ5Oj+Mme1SGTAnRFJscZCqYHdI3FU8Btt+E2f2cLIo8EoMCsi
+	dSIiV6bw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uI8lw-00000001Z2N-38I2;
-	Thu, 22 May 2025 16:27:57 +0000
-Received: from relay6-d.mail.gandi.net ([2001:4b98:dc4:8::226])
+	id 1uI8mT-00000001Zpd-3bm8;
+	Thu, 22 May 2025 16:28:29 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uI8Hi-00000001W1M-2tHJ;
-	Thu, 22 May 2025 15:56:45 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 62288439A5;
-	Thu, 22 May 2025 15:56:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1747929396;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=hDrRfxUh05bF14pzZXQ+mC3f/tIJuaPORyh0q5iuGpM=;
-	b=LrOFkxjDWfPYlaJ27v0bKylFL4XWO+4kvvgStRLZlUDRYZHdyChNIb2pfDuGENtsuftdv/
-	wGbOCWfZtxzREyaEFwnH82wXULSKdAdYw/PBXzq/zAP46MQh+2qKay6Pd/jwy3zwxJN8dw
-	rgJTGQYyYqHyrBnB5+bbAyyUPyuK4SQmrz1l5b6bKlFTJX3baN6Ej14byKnrUchMCQnb3+
-	vJDkRIAED2cQX+6NzREg8KVZNhwI6WQ0582mb8M9FYZVQz3yCa/TIqtPexDE/d9Fb/Krsm
-	aRFHR6fwOi/MpKAjV481sgJjj5EABYXpHVIjb+acU9Q+t95PRAEbZnkSC880OA==
-Date: Thu, 22 May 2025 17:56:23 +0200
-From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann
- <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter
- <simona@ffwll.ch>, Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong
- <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, Laurent
- Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman
- <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, Jagan Teki
- <jagan@amarulasolutions.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer
- <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Douglas Anderson
- <dianders@chromium.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Krzysztof
- Kozlowski <krzk@kernel.org>, Liu Ying <victor.liu@nxp.com>, Anusha Srivatsa
- <asrivats@redhat.com>, Paul Kocialkowski <paulk@sys-base.io>, Dmitry
- Baryshkov <lumag@kernel.org>, Hui Pu <Hui.Pu@gehealthcare.com>, Thomas
- Petazzoni <thomas.petazzoni@bootlin.com>, dri-devel@lists.freedesktop.org,
- asahi@lists.linux.dev, linux-kernel@vger.kernel.org,
- chrome-platform@lists.linux.dev, imx@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
- platform-driver-x86@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
- linux-stm32@st-md-mailman.stormreply.com, Louis Chauvet
- <louis.chauvet@bootlin.com>, Alim Akhtar <alim.akhtar@samsung.com>, Inki
- Dae <inki.dae@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>,
- Seung-Woo Kim <sw0312.kim@samsung.com>, Manikandan Muralidharan
- <manikandan.m@microchip.com>, Adam Ford <aford173@gmail.com>, Adrien
- Grassein <adrien.grassein@gmail.com>, Aleksandr Mishin
- <amishin@t-argos.ru>, Andy Yan <andy.yan@rock-chips.com>, AngeloGioacchino
- Del Regno <angelogioacchino.delregno@collabora.com>, Benson Leung
- <bleung@chromium.org>, Biju Das <biju.das.jz@bp.renesas.com>, Christoph
- Fritz <chf.fritz@googlemail.com>, Cristian Ciocaltea
- <cristian.ciocaltea@collabora.com>, Detlev Casanova
- <detlev.casanova@collabora.com>, Dharma Balasubiramani
- <dharma.b@microchip.com>, Guenter Roeck <groeck@chromium.org>, Heiko
- Stuebner <heiko@sntech.de>, Jani Nikula <jani.nikula@intel.com>, Janne
- Grunau <j@jannau.net>, Jerome Brunet <jbrunet@baylibre.com>, Jesse Van
- Gavere <jesseevg@gmail.com>, Kevin Hilman <khilman@baylibre.com>, Kieran
- Bingham <kieran.bingham+renesas@ideasonboard.com>, Martin Blumenstingl
- <martin.blumenstingl@googlemail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, Phong LE
- <ple@baylibre.com>, Sasha Finkelstein <fnkl.kernel@gmail.com>, Sugar Zhang
- <sugar.zhang@rock-chips.com>, Sui Jingfeng <sui.jingfeng@linux.dev>, Tomi
- Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, Vitalii Mordan
- <mordan@ispras.ru>, "Rob Herring (Arm)" <robh@kernel.org>, Hsin-Te Yuan
- <yuanhsinte@chromium.org>, Pin-yen Lin <treapking@chromium.org>, Xin Ji
- <xji@analogixsemi.com>, Aradhya Bhatia <a-bhatia1@ti.com>, Tomi Valkeinen
- <tomi.valkeinen@ideasonboard.com>, Ian Ray <ian.ray@gehealthcare.com>,
- Martyn Welch <martyn.welch@collabora.co.uk>, Peter Senna Tschudin
- <peter.senna@gmail.com>, Helge Deller <deller@gmx.de>, Kuninori Morimoto
- <kuninori.morimoto.gx@renesas.com>, Laurent Pinchart
- <laurent.pinchart+renesas@ideasonboard.com>, Alexandre Torgue
- <alexandre.torgue@foss.st.com>, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>, Philippe Cornu <philippe.cornu@foss.st.com>,
- Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>, Yannick Fertre
- <yannick.fertre@foss.st.com>, Alain Volmat <alain.volmat@foss.st.com>,
- Raphael Gallais-Pou <rgallaispou@gmail.com>, Michal Simek
- <michal.simek@amd.com>, Jonathan Corbet <corbet@lwn.net>,
- linux-doc@vger.kernel.org
-Subject: Re: [PATCH v3 00/22] drm: convert all bridges to
- devm_drm_bridge_alloc()
-Message-ID: <20250522175623.1a6d9b14@booty>
-In-Reply-To: <20250522-amphibian-shiny-chachalaca-cf05ba@houat>
-References: <20250509-drm-bridge-convert-to-alloc-api-v3-0-b8bc1f16d7aa@bootlin.com>
-	<20250521162216.79dd3290@booty>
-	<20250522-amphibian-shiny-chachalaca-cf05ba@houat>
-Organization: Bootlin
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
+	id 1uI8m4-00000001ZE5-3IWG;
+	Thu, 22 May 2025 16:28:06 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 76B8D44E74;
+	Thu, 22 May 2025 16:28:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 29DECC4CEF2;
+	Thu, 22 May 2025 16:28:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1747931284;
+	bh=NyiPQIIfELwduH7AoKb4g6Ijqllck0NOU16OdARE5yg=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=EU1YcPV62lPn2CDEwd3NrUGdn48rE5kYlZ++IbC4/dLPjPpxWUzazHIDEyZy8PIar
+	 ETTDfZaUNv0/d/Pv8N2uTcYNA1emnk+VG8Ixdnt+p09G3w+mzPxPDKDqzinKn8aB0i
+	 52J1sTctfVP/8x4+9fJ2N+I7fJcjBGry3O7ufXMWqbMXV5z3Lm48Qn4JdP8/LHZorC
+	 VDasXLPQztgJHAKZFv2TaL0GUo4gozfo6F3OVYobXLYVrJWz8BhcptWQi4ERHeqUlQ
+	 BEFLaZcN7HrAOIHCuPEWFylkfAh+KolaaTK/V1vtRboBP49B8TS9N8Cm+9pOzT3jL6
+	 g45hOMmMUqvvw==
+Date: Thu, 22 May 2025 11:28:02 -0500
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-GND-State: clean
-X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtddtgdeifeejucdltddurdegfedvrddttddmucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvvefukfgjfhhoofggtgfgsehtjeertdertddvnecuhfhrohhmpefnuhgtrgcuvegvrhgvshholhhiuceolhhutggrrdgtvghrvghsohhlihessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnhepgfejhffgjeelkeeftdekfefgteekgefhleelueeijeffieekieeigefhledtffetnecuffhomhgrihhnpehkvghrnhgvlhdrohhrghdpfhhrvggvuggvshhkthhophdrohhrghdpsghoohhtlhhinhdrtghomhenucfkphepvdgrtddvmeeijedtmedvtddvtdemvggrtddumegsvgegudemleehvgejmeefgeefmeeludefvgenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpedvrgdtvdemieejtdemvddtvddtmegvrgdtudemsggvgedumeelhegvjeemfeegfeemledufegvpdhhvghlohepsghoohhthidpmhgrihhlfhhrohhmpehluhgtrgdrtggvrhgvshholhhisegsohhothhlihhnrdgtohhmpdhnsggprhgtphhtthhopeelhedprhgtphhtthhopehmrhhiphgrrhgusehkvghrnhgvlhdrohhrghdprhgtphhtthhopehmrggrrhhtvghnrdhlrghnkhhho
- hhrshhtsehlihhnuhigrdhinhhtvghlrdgtohhmpdhrtghpthhtohepthiiihhmmhgvrhhmrghnnhesshhushgvrdguvgdprhgtphhtthhopegrihhrlhhivggusehgmhgrihhlrdgtohhmpdhrtghpthhtohepshhimhhonhgrsehffhiflhhlrdgthhdprhgtphhtthhopegrnhgurhiivghjrdhhrghjuggrsehinhhtvghlrdgtohhmpdhrtghpthhtohepnhgvihhlrdgrrhhmshhtrhhonhhgsehlihhnrghrohdrohhrghdprhgtphhtthhopehrfhhoshhssehkvghrnhgvlhdrohhrgh
-X-GND-Sasl: luca.ceresoli@bootlin.com
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Conor Dooley <conor+dt@kernel.org>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Mark Brown <broonie@kernel.org>, 
+ paul-pl.chen@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, singo.chang@mediatek.com, 
+ linux-kernel@vger.kernel.org, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+ jason-jh.lin@mediatek.com, linux-arm-kernel@lists.infradead.org
+To: "Nancy.Lin" <nancy.lin@mediatek.com>
+In-Reply-To: <20250522150426.3418225-2-nancy.lin@mediatek.com>
+References: <20250522150426.3418225-1-nancy.lin@mediatek.com>
+ <20250522150426.3418225-2-nancy.lin@mediatek.com>
+Message-Id: <174793128032.2927822.14103783450131636692.robh@kernel.org>
+Subject: Re: [PATCH 1/2] dt-bindings: regulator: mediatek: Add MT8196 vmm
+ controller
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250522_085643_860270_AE9EE2DF 
-X-CRM114-Status: GOOD (  34.53  )
+X-CRM114-CacheID: sfid-20250522_092804_931844_80960FE6 
+X-CRM114-Status: GOOD (  13.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,111 +79,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Maxime,
 
-On Thu, 22 May 2025 16:57:30 +0200
-Maxime Ripard <mripard@kernel.org> wrote:
-
-[...]
-
-> > As the commit was a mistake, I'm applying the revert by the end of this
-> > week (i.e. on Friday) unless there are better instructions.  
+On Thu, 22 May 2025 23:03:33 +0800, Nancy.Lin wrote:
+> From: Nancy Lin <nancy.lin@mediatek.com>
 > 
-> Given the lack of answers, and that it looks correct to me, just leave
-> it there. We can always revert later on if things turned out to be
-> broken.
-
-OK, I'll leave the commit and drop the revert in v4.
-
-> > >       drm: convert many bridge drivers from devm_kzalloc() to devm_drm_bridge_alloc() API  
-> > 
-> > This patch affects multiple drivers. Running get_maintainers.pl
-> > points at Shawn Guo's repository. After reviewing the MAINTAINERS file,
-> > this looks like due to the 'N:' line in:
-> > 
-> > ARM/FREESCALE IMX / MXC ARM ARCHITECTURE
-> > M:	Shawn Guo <shawnguo@kernel.org>
-> > M:	Sascha Hauer <s.hauer@pengutronix.de>
-> > R:	Pengutronix Kernel Team <kernel@pengutronix.de>
-> > ...
-> > T:	git git://git.kernel.org/pub/scm/linux/kernel/git/shawnguo/linux.git
-> > N:	imx
-> > ...
-> > 
-> > (https://gitlab.freedesktop.org/drm/misc/kernel/-/blob/drm-misc-next/MAINTAINERS?ref_type=heads#L2511-2528)
-> > 
-> > Here 'imx' matches the 'drivers/gpu/drm/bridge/imx/imx-legacy-bridge.c'
-> > file that is touched by the patch. That regexp appears overly generic to me.  
+> Add a device tree binding document for the MediaTek MT8196 VMM (Vcore
+> for MultiMedia) regulator controller. The VMM controller acts as the
+> main power supplier for multimedia power domains, such as those used
+> by display, video encode and decode subsystems. It provides virtual
+> regulators that serve as the power sources for various multimedia IPs,
+> and coordinates with the hardware common clock framework (hwccf) and
+> the Video Companion Processor (VCP) to manage the power domains of
+> these components. The regulator is controlled by the VCP firmware,
+> and the operating system signals its requirement through a voting
+> hardware block (hwccf).
 > 
-> I agree, or at least, we shouldn't wait for Shawn or Sasha...
+> Signed-off-by: Nancy Lin <nancy.lin@mediatek.com>
+> ---
+>  .../mediatek,mt8196-vmm-regulator.yaml        | 70 +++++++++++++++++++
+>  1 file changed, 70 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt8196-vmm-regulator.yaml
 > 
-> > Shawn, can it be fixed by making it less generic?
-> > 
-> > If not, can we at least add a band-aid 'X:' entry for
-> > drivers/gpu/drm/bridge/imx?
-> > 
-> > I think the other matching entry is the one to consider:
-> > 
-> > DRM DRIVERS FOR FREESCALE IMX BRIDGE
-> > M:	Liu Ying <victor.liu@nxp.com>
-> > L:	dri-devel@lists.freedesktop.org
-> > S:	Maintained
-> > F:	Documentation/devicetree/bindings/display/bridge/fsl,imx8qxp-ldb.yaml
-> > F:	Documentation/devicetree/bindings/display/bridge/fsl,imx8qxp-pixel-combiner.yaml
-> > F:	Documentation/devicetree/bindings/display/bridge/fsl,imx8qxp-pixel-link.yaml
-> > F:	Documentation/devicetree/bindings/display/bridge/fsl,imx8qxp-pxl2dpi.yaml
-> > F:	drivers/gpu/drm/bridge/imx/
-> > 
-> > (https://gitlab.freedesktop.org/drm/misc/kernel/-/blob/drm-misc-next/MAINTAINERS?ref_type=heads#L7940-7948)  
-> 
-> ... As long as Ying is fine with it, because it does look like they are
-> the actual maintainer.
 
-Ack, thanks for confirming this.
+My bot found errors running 'make dt_binding_check' on your patch:
 
-Bottom line, given that large patch has your Acked-by, and given the
-shawnguo repo was ruled out, the conclusion is it can apply it to
-drm-misc-next.
+yamllint warnings/errors:
 
-Having that large patch applied will be relieving me a lot! I think
-next time I'm going to split any imilar change in per-driver patches,
-even if it is spatch-automated.
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/regulator/mediatek,mt8196-vmm-regulator.yaml: patternProperties:^(vdisp|vdec-vcore)$:properties:regulator-name:type: 'string' is not one of ['boolean', 'object']
+	from schema $id: http://devicetree.org/meta-schemas/core.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/regulator/mediatek,mt8196-vmm-regulator.example.dtb: vmm (mediatek,mt8196-vmm): vdisp:regulator-name: ['vdisp'] is not of type 'string'
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt8196-vmm-regulator.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/regulator/mediatek,mt8196-vmm-regulator.example.dtb: vmm (mediatek,mt8196-vmm): vdec-vcore:regulator-name: ['vdec-vcore'] is not of type 'string'
+	from schema $id: http://devicetree.org/schemas/regulator/mediatek,mt8196-vmm-regulator.yaml#
 
-> > >       drm/todo: add entry to remove devm_drm_put_bridge()  
-> > 
-> > This involves documentation maintained on another tree. Where should it
-> > be applied? There are two matching entries in MAINTAINERS:
-> > 
-> >  * DRM DRIVERS -> the drm tree
-> >  * DRM DRIVERS AND MISC GPU PATCHES -> the drm-misc tree
-> > 
-> > To me it looks like the second is obviously the closest match as we are
-> > dealing with DRM bridges, so I'm applying this as well on Friday unless
-> > there are better instructions.  
-> 
-> Yes, they should be applied to drm-misc.
+doc reference errors (make refcheckdocs):
 
-OK, will do soon.
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250522150426.3418225-2-nancy.lin@mediatek.com
 
-> That being said, putting a two days timeout on *any* email is really
-> over-the-top. I doubt you reply to any of your mail in such a short
-> timeframe. We have rules for a reason, I'd expect you to follow them, no
-> matter how frustrating the lack of answers can be.
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
 
-Apologies if that was too much.
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
 
-I was indeed nervous about the revert. A patch got applied by mistake
-and I believe it should have been reverted very quickly, if need be.
-Both Louis and I didn't want to break the process again. So we asked,
-but not having answer after 2+ weeks I must admit I got a bit nervous
-about it.
+pip3 install dtschema --upgrade
 
-Sorry about that and thanks for the feedback about my questions.
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
 
-Luca
-
--- 
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
 
