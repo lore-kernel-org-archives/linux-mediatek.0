@@ -4,123 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9D23C54F2E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 May 2025 13:35:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 435B6C54ED1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 May 2025 15:55:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PdDU2oRP8k2jUeSve/BOd06ch34w47FFumvJv+pxA64=; b=w3fSr40nCpoeWrEGcF5tLFzKNF
-	ZS5imNRCWwfclksJGVGckhdGb2uJArqDT8BTuzaOqHnhtwyLyAVJ99ZOXKMsfjspTTvMywBeSdaOm
-	P8L+k11u0GGzcSFlm9c75uXBKU3F/8pvxz56Yyc/AvOsAYM9qduAtNI9soQV3J/y/Rsq2xFz38cR8
-	f4nuN64+3LMil2N3ZkakVxf9+MYeAGaW8ba/WAFpCABaFnaP4nsyHOOaRXGDiq50xKjo/Xqnn2EiA
-	/ELv1kZ8GhxQT+ZNKVDO/T1jNihGrsolGTgf5UCaa/BfoLO5L5XRergnwR9VWpFSeo/MX4WxE3MJQ
-	NSjacyFA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=F6Qt9T9axDWKZdW0V8mxJy404waRLPFG48iRbR59dpk=; b=V0XO/owoPc2EhLfd2mMs/aQCrp
+	at1St/qSvQwLkx4xM5a6gpVfsDmsVPdsrSsFy+foPeTzSDkkmp1v0e3jY0gJfXPXE4tm7CuFd9rSh
+	dKhMU45yulurXdbC3T/uK7EJk2WRs3BbsyZMUBLPY6XpeqIJgleRtJMG3bFW8j7eNqWT8GYuYXPIE
+	j/BtChi0FMWbzRV/jn8RX0sHrxz/ERftAxEAlS10aO1/BrN0nKLAszZp0HNOP+SG2AWOH/4p/V5Jy
+	aqiugkqs3EEZY/s5P33YWqX9/IBdN5Hq4AYXMhrd7UT+URSdVPxsJQs6HXEkg/W0ujb2Q/RdHItGb
+	udFE1m4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uISYU-00000003yOj-1yn0;
-	Fri, 23 May 2025 13:35:22 +0000
-Received: from relay9-d.mail.gandi.net ([2001:4b98:dc4:8::229])
+	id 1uIUk9-00000004JeK-1oHP;
+	Fri, 23 May 2025 15:55:33 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uISMp-00000003wVf-2XuX;
-	Fri, 23 May 2025 13:23:21 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 80E3043E92;
-	Fri, 23 May 2025 13:23:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1748006596;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=PdDU2oRP8k2jUeSve/BOd06ch34w47FFumvJv+pxA64=;
-	b=mZbEGMe25lkA6a1/A5PYNbESnCSL60bu6GbmptADGVwaEkiGNBcHGN8VrT72jRA/+HNkP4
-	O/QwRUKwwl3xkt4gQ3Mrs7lKrRaKRz4fTUwt/DbNDv7ugEEzoi1dGDejSURTrPhZAOKVZL
-	UYuYChVv7ASMlrgAyMynb3Hu9Ovs5zXPwNEjo60hL8sbBVmrDkv74b2ln1iasNoULv1Ksw
-	tA2Y1gP38lTQKZNvYVM6ebTePuQP8PIROVBEJmhCXewn1NVtuepbzztVtobDhFgEQBqe6V
-	8LOSAQYNXvNBh9HNPCzuX8wiU0bL+1nw3VrunFS4/yawaszCy5VqLmvRqmwd3g==
-Date: Fri, 23 May 2025 15:23:04 +0200
-From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-To: Inki Dae <daeinki@gmail.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
- <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie
- <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Andrzej Hajda
- <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>,
- Robert Foss <rfoss@kernel.org>, Laurent Pinchart
- <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>,
- Jernej Skrabec <jernej.skrabec@gmail.com>, Jagan Teki
- <jagan@amarulasolutions.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer
- <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Douglas Anderson
- <dianders@chromium.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Krzysztof
- Kozlowski <krzk@kernel.org>, Liu Ying <victor.liu@nxp.com>, Anusha Srivatsa
- <asrivats@redhat.com>, Paul Kocialkowski <paulk@sys-base.io>, Dmitry
- Baryshkov <lumag@kernel.org>, Hui Pu <Hui.Pu@gehealthcare.com>, Thomas
- Petazzoni <thomas.petazzoni@bootlin.com>, dri-devel@lists.freedesktop.org,
- asahi@lists.linux.dev, linux-kernel@vger.kernel.org,
- chrome-platform@lists.linux.dev, imx@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
- platform-driver-x86@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
- linux-stm32@st-md-mailman.stormreply.com, Louis Chauvet
- <louis.chauvet@bootlin.com>, Alim Akhtar <alim.akhtar@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>, Seung-Woo Kim
- <sw0312.kim@samsung.com>, Manikandan Muralidharan
- <manikandan.m@microchip.com>, Adam Ford <aford173@gmail.com>, Adrien
- Grassein <adrien.grassein@gmail.com>, Aleksandr Mishin
- <amishin@t-argos.ru>, Andy Yan <andy.yan@rock-chips.com>, AngeloGioacchino
- Del Regno <angelogioacchino.delregno@collabora.com>, Benson Leung
- <bleung@chromium.org>, Biju Das <biju.das.jz@bp.renesas.com>, Christoph
- Fritz <chf.fritz@googlemail.com>, Cristian Ciocaltea
- <cristian.ciocaltea@collabora.com>, Detlev Casanova
- <detlev.casanova@collabora.com>, Dharma Balasubiramani
- <dharma.b@microchip.com>, Guenter Roeck <groeck@chromium.org>, Heiko
- Stuebner <heiko@sntech.de>, Jani Nikula <jani.nikula@intel.com>, Janne
- Grunau <j@jannau.net>, Jerome Brunet <jbrunet@baylibre.com>, Jesse Van
- Gavere <jesseevg@gmail.com>, Kevin Hilman <khilman@baylibre.com>, Kieran
- Bingham <kieran.bingham+renesas@ideasonboard.com>, Martin Blumenstingl
- <martin.blumenstingl@googlemail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, Phong LE
- <ple@baylibre.com>, Sasha Finkelstein <fnkl.kernel@gmail.com>, Sugar Zhang
- <sugar.zhang@rock-chips.com>, Sui Jingfeng <sui.jingfeng@linux.dev>, Tomi
- Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, Vitalii Mordan
- <mordan@ispras.ru>, "Rob Herring (Arm)" <robh@kernel.org>, Hsin-Te Yuan
- <yuanhsinte@chromium.org>, Pin-yen Lin <treapking@chromium.org>, Xin Ji
- <xji@analogixsemi.com>, Aradhya Bhatia <a-bhatia1@ti.com>, Tomi Valkeinen
- <tomi.valkeinen@ideasonboard.com>, Ian Ray <ian.ray@gehealthcare.com>,
- Martyn Welch <martyn.welch@collabora.co.uk>, Peter Senna Tschudin
- <peter.senna@gmail.com>, Helge Deller <deller@gmx.de>, Kuninori Morimoto
- <kuninori.morimoto.gx@renesas.com>, Laurent Pinchart
- <laurent.pinchart+renesas@ideasonboard.com>, Alexandre Torgue
- <alexandre.torgue@foss.st.com>, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>, Philippe Cornu <philippe.cornu@foss.st.com>,
- Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>, Yannick Fertre
- <yannick.fertre@foss.st.com>, Alain Volmat <alain.volmat@foss.st.com>,
- Raphael Gallais-Pou <rgallaispou@gmail.com>, Michal Simek
- <michal.simek@amd.com>, Jonathan Corbet <corbet@lwn.net>,
- linux-doc@vger.kernel.org
-Subject: Re: [PATCH v3 00/22] drm: convert all bridges to
- devm_drm_bridge_alloc()
-Message-ID: <20250523152304.5c66e195@booty>
-In-Reply-To: <CAAQKjZPX3iQgNhEydDZXMyC9BRuep7kL-XYEsjnkCxSt_1UsQg@mail.gmail.com>
-References: <20250509-drm-bridge-convert-to-alloc-api-v3-0-b8bc1f16d7aa@bootlin.com>
-	<20250521162216.79dd3290@booty>
-	<CAAQKjZPX3iQgNhEydDZXMyC9BRuep7kL-XYEsjnkCxSt_1UsQg@mail.gmail.com>
-Organization: Bootlin
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
+	id 1uIUPz-00000004GQi-1V15;
+	Fri, 23 May 2025 15:34:43 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 9AF0D61154;
+	Fri, 23 May 2025 15:34:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AFE6DC4CEE9;
+	Fri, 23 May 2025 15:34:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1748014482;
+	bh=F6Qt9T9axDWKZdW0V8mxJy404waRLPFG48iRbR59dpk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=B4ErdVDmid5x5FjBT7zdcDcwqvS6y2Zg1cGoX/3VCvsofX4TZd//EdBMLzQDfoEwX
+	 qhe2Gar4rUBt/791S01+eWFT/jBP0/uupI6DLb9sO9R+NgCIWcqATQmf/gXWhcvpKd
+	 ZobWmHRfj0Xl/JTccDihsbnCotdlWkgf1RAQ5Wqoz3FYBA/sH73Xp4nJ7aHjAg1ey1
+	 yASJAJ7xxKpRu0veigdDSC4RMYzVE3q0w2gcul7xQsjqSdFir9Z0yc5QNaV/WJp1/o
+	 x9Ujb4xNuqDZtkN0lG/dP1+x7a2jhFK09WU50SCjyIA+s9NP24yr03zyMsvy4R1En1
+	 zp8nGJZZwyd8Q==
+Date: Fri, 23 May 2025 16:34:35 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	=?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+	Landen Chao <Landen.Chao@mediatek.com>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [net-next PATCH 1/3] dt-bindings: net: dsa: mediatek,mt7530: Add
+ airoha,an7583-switch
+Message-ID: <20250523-poster-suffix-8a15978bc704@spud>
+References: <20250522165313.6411-1-ansuelsmth@gmail.com>
+ <20250522165313.6411-2-ansuelsmth@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-GND-State: clean
-X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtddtgdekleeiucdltddurdegfedvrddttddmucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuifetpfffkfdpucggtfgfnhhsuhgsshgtrhhisggvnecuuegrihhlohhuthemuceftddunecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvvefukfgjfhhoofggtgfgsehtqhertdertdejnecuhfhrohhmpefnuhgtrgcuvegvrhgvshholhhiuceolhhutggrrdgtvghrvghsohhlihessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnhepvddtuedtfefgueehiefhjeeiffekudfhgfdtledvffekhfegteduieejveevteehnecuffhomhgrihhnpehfrhgvvgguvghskhhtohhprdhorhhgpdgsohhothhlihhnrdgtohhmnecukfhppedvrgdtvdemieejtdemvddtvddtmegvrgdtudemsggvgedumeelhegvjeemfeegfeemledufegvnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepvdgrtddvmeeijedtmedvtddvtdemvggrtddumegsvgegudemleehvgejmeefgeefmeeludefvgdphhgvlhhopegsohhothihpdhmrghilhhfrhhomheplhhutggrrdgtvghrvghsohhlihessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepleehpdhrtghpthhtohepuggrvghinhhkihesghhmrghilhdrtghomhdprhgtphhtthhopehmrggrrhhtvghnrdhlrghnkhhhohhrshhtsehlihhnuhigrdhin
- hhtvghlrdgtohhmpdhrtghpthhtohepmhhrihhprghrugeskhgvrhhnvghlrdhorhhgpdhrtghpthhtohepthiiihhmmhgvrhhmrghnnhesshhushgvrdguvgdprhgtphhtthhopegrihhrlhhivggusehgmhgrihhlrdgtohhmpdhrtghpthhtohepshhimhhonhgrsehffhiflhhlrdgthhdprhgtphhtthhopegrnhgurhiivghjrdhhrghjuggrsehinhhtvghlrdgtohhmpdhrtghpthhtohepnhgvihhlrdgrrhhmshhtrhhonhhgsehlihhnrghrohdrohhrgh
-X-GND-Sasl: luca.ceresoli@bootlin.com
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250523_062319_957670_AEC65E72 
-X-CRM114-Status: GOOD (  22.44  )
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="aKTWQfuzzRjxJz4t"
+Content-Disposition: inline
+In-Reply-To: <20250522165313.6411-2-ansuelsmth@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,63 +89,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Inki,
 
-On Fri, 23 May 2025 00:11:24 +0900
-Inki Dae <daeinki@gmail.com> wrote:
+--aKTWQfuzzRjxJz4t
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> Hello Luca Ceresoli,
+On Thu, May 22, 2025 at 06:53:09PM +0200, Christian Marangi wrote:
+> Add airoha,an7583-switch additional compatible to the mt7530 DSA Switch
+> Family. This is an exact match of the airoha,en7581-switch (based on
+> mt7988-switch) with the additional requirement of tweak on the
+> GEPHY_CONN_CFG registers to make the internal PHY actually work.
 >=20
-> 2025=EB=85=84 5=EC=9B=94 21=EC=9D=BC (=EC=88=98) =EC=98=A4=ED=9B=84 11:23=
-, Luca Ceresoli <luca.ceresoli@bootlin.com>=EB=8B=98=EC=9D=B4 =EC=9E=91=EC=
-=84=B1:
-> >
-> > Hello Maxime, Shawn, Liu, all,
-> >
-> > On Fri, 09 May 2025 15:53:26 +0200
-> > Luca Ceresoli <luca.ceresoli@bootlin.com> wrote:
-> > =20
-> > > devm_drm_bridge_alloc() [0] is the new API to allocate and initialize=
- a DRM
-> > > bridge, and the only one supported from now on. It is the first miles=
-tone
-> > > towards removal of bridges from a still existing DRM pipeline without
-> > > use-after-free. =20
-> >
-> > I applied on drm-misc-next patches 3-17,20-21 as they match all the
-> > criteria:
-> >  - At least a Acked-by (or R-by maintainers)
-> >  - patch is for drm-misc
-> >
-> > Being my very first commits to drm-misc, I tried to be careful, and
-> > double checked all the patches with Louis (thanks!).
-> >
-> > Here are the pending questions and plan for the remaining patches.
-> > =20
-> > >       Revert "drm/exynos: mic: convert to devm_drm_bridge_alloc() API=
-" =20
-> >
-> > This reverts the commit applied my mistake:
-> > https://gitlab.freedesktop.org/drm/misc/kernel/-/commit/91c5c7b5bb2dd09=
-b43b025bce6d790d3c79f4518
-> >
-> > Neither the  original patch nor the revert has been reviewed/acked.
-> >
-> > As the commit was a mistake, I'm applying the revert by the end of this
-> > week (i.e. on Friday) unless there are better instructions. =20
->=20
-> Really sorry for late. I was made aware of it later through a
-> colleague's remark. There is no need to proceed with the revert.
-> Acked-by : Inki Dae <inki.dae@samsung.com>
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 
-Thanks for the feedback. As agreed with Maxime and approved by you, I'm
-leaving the commit as is, without reverting and reapplying. Your
-Acked-by is in the records anyway, so somehow reachable in case of need.
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
-Luca
+--aKTWQfuzzRjxJz4t
+Content-Type: application/pgp-signature; name="signature.asc"
 
---=20
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaDCViwAKCRB4tDGHoIJi
+0kQPAP9frHNQgSGAHPA5uunYjumQhgnmnzyhTpQjs9+iFOrwaQD/dJcW9+a4KFNn
+9Mou2j6ietaV+/YWiSjzhzjlzbUPAwM=
+=dZL2
+-----END PGP SIGNATURE-----
+
+--aKTWQfuzzRjxJz4t--
 
