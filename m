@@ -4,210 +4,161 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F062C54ED0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 May 2025 02:55:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1D0CC3DA6D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 May 2025 06:48:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=a4dibPfWiBNUSSIWVim3AHWgoWlXOrlXGGpX9qnKd98=; b=cAdiqlSn4ZiTMA2jx/STPCvA+t
-	CuN+jfwIMtm8WGtVTsTn7XzlaSGyPqwO23uO9TgUN3TjgFiOzXRezuF9rFaMda2bgDRod8YQht+ly
-	pQHu87x2RiK9NEXTczOdac1mPL255zFm0ebbzKv/8ajmJtBxxjzduGrWcW+0xaYNgbdMIT4EJajkM
-	hIt1pMphihSwjvly7ie+F+cEcqBgk070zDdeTfj9oXUGFuLtDbZnXJ5uuLqp9zbEty/Kcvhdtkhjr
-	vinPJR9BpxpeeYMDzkn9VNzirBlZusdP7gz1BFSATvt+ggy62QB/OTa5K9i0ts3TwKB2S2w/Q3y0X
-	zbJKV9og==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=lXUwkDYtpLH3KQv5nc3USqfr9A9vDlEx1GCo87USRU0=; b=bFopelXVG03HAEYUnfvCR1cOWv
+	pmazGki8ydHOHEeEWnWb8TOxZ5aLXEasbFzWzc+miRyHGmr3YsdmAke7IT5X9y6toV/Bq4AFSsoUL
+	24T+hAXxyMZ67DhAmjFv/U7yr289jzFGWOMoQ0HjqYZKUH+e+yWGkzwaScO0id+n1+3ZRY7xS7Muc
+	xGRezGvaUK61nF4VEj7zr/6j62i27XLmlF2z9CsaQRXv96iONq89w33XBV++EJyrjw3X1k6CkNoPU
+	XueK+k9VEAPaXh7TyIOe5S92jUjTkaFJBaPbKRfPlBhwBh5cJ5ViJEyChl4mFb8Rd7tBTaJiiN9Zm
+	spxHE2gg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uIIZP-00000002mmo-2l5m;
-	Fri, 23 May 2025 02:55:39 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1uIMD1-000000039Rn-2HJ7;
+	Fri, 23 May 2025 06:48:47 +0000
+Received: from mail-koreacentralazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c40f::7] helo=SEYPR02CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uIIZM-00000002mmJ-1ftF;
-	Fri, 23 May 2025 02:55:37 +0000
-X-UUID: 63eec178378111f08d385d50fb11b32d-20250522
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=a4dibPfWiBNUSSIWVim3AHWgoWlXOrlXGGpX9qnKd98=;
-	b=qsncPp6s1rRJihRxIjxFo5SvHtvxjJu4wvXNhP6Ok7BBd3u+FFCCtQWGA7V9z1VjpaoB7ypjMmY5sPx6o+kfi8MVyPyNn4J6jEfJ4pg0Po0xTWZPpzjiYFSgoupTqN/L0LdY5c7p6KYs//i1ylAxQhTWwWylWVO4bmzbPiO9Rto=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:32579827-b000-4732-8a02-baabce1d0678,IP:0,UR
-	L:12,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:12
-X-CID-META: VersionHash:0ef645f,CLOUDID:8dfce157-abad-4ac2-9923-3af0a8a9a079,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111,TC:nil,Conte
-	nt:0|50,EDM:-3,IP:nil,URL:99|11|97|83|80|1,File:nil,RT:nil,Bulk:nil,QS:nil
-	,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-UUID: 63eec178378111f08d385d50fb11b32d-20250522
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 953156952; Thu, 22 May 2025 19:55:31 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Fri, 23 May 2025 10:55:27 +0800
-Received: from HK3PR03CU002.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Fri, 23 May 2025 10:55:27 +0800
+	id 1uIMAn-000000039FF-1i1M;
+	Fri, 23 May 2025 06:46:31 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=ZBn+AImhtIsWaMnRAGmS7qXt8EQ6WWZeLj1b+NS/2+Q5PEEVKYmq9F/8fbUw3TlEL2uaeABoA8RHm0b0zgOUQDWChwYjnC3UP6DqH/6ESzkqHbPxP7Sfyxr9HeQiJWHTKfXUwrg2OVRJ16lXPhIGqQIxIj+5q9nhiRXLQr4O3w4RYiMeqV+IImgrM84kojUUXFrvdGD7/QlsLpV0qyD7BlG0qrN1WFSjx8yzQr8YY5zgJoTU9wBbRea8Mnjog3qaLZ4svDD3i62Jp4C467mkCAgS9cfddXqSGR1xD2ap710eGDWXRcTEfuNQ74WHVM5GWT5VMcHBDG8l7C08jyZvJQ==
+ b=h8RQxSgVliZf4u71iEl1Hv3IXv1t2Syrk/4UzS6hM9LXoDKJ/vuLsUi/3fU32tZH3muZH5aHG6x/VYMheF1bYD3dBOUDWaJKn53qPmKsXwwmv/vr23Gj93OR29uGuTMY8Kd4pm7gC6HXtD4u46+1HFtFkQHqgVyYlDd7TA+bCtscQ2p8yvIvvc9nSJP04UGZzY9Lw9k6H4PZyjibFDNwstkKqPWsp/1SpeHtszXA7CLG3q+RGGmmO+exXWVCYRb2+LLHLJMcIdufS2ykA2cdqd1kiKh1Xh8KfR8fi0HhNOMFPRL6vYQFV2RHZy8eiRRCNvD7snqvC2xubUdURO4EmQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=a4dibPfWiBNUSSIWVim3AHWgoWlXOrlXGGpX9qnKd98=;
- b=UIN8fkoIFp1o+CW0rkYsFnuYbOQW3pQpaoON77kkTwOJIZ+JCXGur5iWeBogfgteTB7YZzQlF0vgkvqXI4Xu7m6M186YOwMjoCdd4jjVzabGD/RliDCei5g0wXM9SqyTx3MW6OGqJolTPDGw/NfQyXCkJbQJMYZcCcNN6/Iq4eyV173MLZCSWnl1jhku3GsmAoEYGbI9e7VLg+2Dn3nGErz6Qajoex/jGrF/CTW05TuGkh+H02zRFHLkLI/nQyowNMQ00t/hV0HYnn7KGlIoRqoOal6vMjhxto+C2WErXuyi0cNh7oxvOxkf0GoR+GwoIgpQ9dSqwmdDMQMLUYEI3A==
+ bh=lXUwkDYtpLH3KQv5nc3USqfr9A9vDlEx1GCo87USRU0=;
+ b=U1iZvZ6YDbk3gqkDvONpWhTiMD6JG9V7OOyvCYMO+ZLYEXqvPYWlcR9/uxoLseZrJdQAMUAcJpqOv1ACJ+s2bRRQODp9NDpkIA5a16CuFTPIaQ804yQHjSCGFhtk4jeteQzIu4LIonjszwm7ycKZztkcA5DHHuVAfbweM5jSKu98nY0Wa3YXTaxreY7bF4f8iGA6W65JQuhTIQ9n+HRuLqaahmOQ9jET8HzVWz7oNGeJcOO818VyiUTlDGbvu0LFpWw5+KY0JgR3djYtbB7Z28KEmFCfktRZMNPvCFSl8F3+KZgVSrJRhz67CGM2p5wZiMP/fMYpu0SYKiYwimMj4Q==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
+ dkim=pass header.d=vivo.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo.com; s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=a4dibPfWiBNUSSIWVim3AHWgoWlXOrlXGGpX9qnKd98=;
- b=byUE4hhV4GiCGTFu71SuJgN7HQ3e1WTz+0an6Y0bKm+gID2gQx5Yno2gt7QA28fal8iDAFOKsF33KkrrmrF9ox9M+z4wAqtLlmoK7u8BIc3ORxVVLLLIseF15JdDK9ygMFXrdRtul6IlToHkN5OWVL4AwG6brqZuVG8LPQp1nII=
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com (2603:1096:400:1f4::13)
- by KU2PPF9D6AFF433.apcprd03.prod.outlook.com (2603:1096:d18::41c) with
+ bh=lXUwkDYtpLH3KQv5nc3USqfr9A9vDlEx1GCo87USRU0=;
+ b=Sq4y0E9JvAx27kx7SUfXDYVdNv5by/++UwbgO4xPSZWXUiWqTdqmOVcy0kCQqaXjcmoDuYkkjDpZrSmErCa0WsHP59owPsGvDHnBS2bpaBwGnWzHrESJSCOW+3wjXjvYFLV61ovFG3vY6vq4nZyZS21zenM5Kru5ajHznGQAD98wWHA+T3tOmu3SDZH45oprvPQyVnLQN/r2OAvkmmnujwZZOqqcMtvn+PADOjDO6smvgzmJ1BR/jmxNycokxCg7fXvjVMmOP+7ihDqIGiAssaSPegzncVaP6Rgvo2BnYxMKH2y7uktKXrwHNMVDx7oWlSHyBRN1RRR5WauE8pFPfg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=vivo.com;
+Received: from KL1PR06MB6273.apcprd06.prod.outlook.com (2603:1096:820:ec::10)
+ by SEZPR06MB6814.apcprd06.prod.outlook.com (2603:1096:101:197::12) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8769.21; Fri, 23 May
- 2025 02:55:25 +0000
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::9ce6:1e85:c4a7:2a54]) by TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::9ce6:1e85:c4a7:2a54%5]) with mapi id 15.20.8746.030; Fri, 23 May 2025
- 02:55:24 +0000
-From: =?utf-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
-To: "lgirdwood@gmail.com" <lgirdwood@gmail.com>, "robh@kernel.org"
-	<robh@kernel.org>, "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	=?utf-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "krzk+dt@kernel.org"
-	<krzk+dt@kernel.org>
-CC: =?utf-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>,
-	"broonie@kernel.org" <broonie@kernel.org>,
-	Project_Global_Chrome_Upstream_Group
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	=?utf-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>,
-	=?utf-8?B?UGF1bC1wbCBDaGVuICjpmbPmn4/pnJYp?= <Paul-pl.Chen@mediatek.com>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"conor+dt@kernel.org" <conor+dt@kernel.org>
-Subject: Re: [PATCH 1/2] dt-bindings: regulator: mediatek: Add MT8196 vmm
- controller
-Thread-Topic: [PATCH 1/2] dt-bindings: regulator: mediatek: Add MT8196 vmm
- controller
-Thread-Index: AQHbyy/XhwEoa98C3ESnGkjdlfg3IrPfheIA
-Date: Fri, 23 May 2025 02:55:24 +0000
-Message-ID: <caab284a85ad5906d1d2befd6a3bd2ef77301758.camel@mediatek.com>
-References: <20250522150426.3418225-1-nancy.lin@mediatek.com>
-	 <20250522150426.3418225-2-nancy.lin@mediatek.com>
-In-Reply-To: <20250522150426.3418225-2-nancy.lin@mediatek.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-user-agent: Evolution 3.52.3-0ubuntu1 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR03MB6624:EE_|KU2PPF9D6AFF433:EE_
-x-ms-office365-filtering-correlation-id: 4eb1c070-7cee-4211-dfae-08dd99a5441f
-x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|366016|7416014|376014|38070700018;
-x-microsoft-antispam-message-info: =?utf-8?B?UzBqSzhsdnJxN2dIRUNlY3RkVHFnTHdKR2EvUHpGaTZDcTF4TzVsRk5Tbnpr?=
- =?utf-8?B?RHd3SnFxYjJ5cVlKSGVnY2dGRkJrY0p2NmF3Nk9rSHdXTVI2S09UWFJrM1Mr?=
- =?utf-8?B?T3dVTXY4WElPNEF5WHZUU1h6YnNPL1BWNUJqelgvUHB4SU9HM0lLa0IzdXpZ?=
- =?utf-8?B?eXNxRjNaWW1IYnEyNHdRUkI1anF3ZGxjS290YW9ocGFsZlJENG9LR0xKQUlC?=
- =?utf-8?B?T3hpZmxEcUtqVkRwdW11WjRldzRHcDNxQit4MitjclNTT0xoU21iYlRuQWo5?=
- =?utf-8?B?NUVyQW91REFDOEFWbC91ZnNhNkVVNkdpTTBCTnFCRTFiVWlHdEJiNE5zSElB?=
- =?utf-8?B?VlFuWXF6YmZaVkZIYlBjbC84Qjg5ZE9WU1pvWUN4dkRtWG9BK1p2VE1LWmlW?=
- =?utf-8?B?Vjk0TE5yK2lVUU16Zjd5K2hibTA3Um9pTkFJMjBRYUdqOUJreUFTNnpvRWth?=
- =?utf-8?B?QVRCN2FCNDdicmJYbzRyKzFuZGhNdzFPQ054NW5xVWQzci9nMnZrbHRwUEVz?=
- =?utf-8?B?eWFyUkVJZVBPeGU5SStrQkErcUFqWmFPUEVhbU9xanBPRVV2ZCtPcFAySDdS?=
- =?utf-8?B?RGsvQUVUSkg5TVlNMHpoVjk4SXhDWEl1R05rNXdCZU9pNXhYTEN6UFJtbDRB?=
- =?utf-8?B?T3dtTlpydDROU2ozaVNwMm1pUlIvVkNuUlIxWDRRd2RsanB3V1UxNktseGU4?=
- =?utf-8?B?NGpubTRSZjVBWU0wMy83VEc4TFJjTEhPZ0t6VkZEcVRtQkVacjJqc1FQREZU?=
- =?utf-8?B?ZVNHQUV0N2tjZHdaNEdid1pvSFk4VEJCQUNVZ2ZES2l1YjNYRFRnbzVxbkNZ?=
- =?utf-8?B?dEltYW41SXRWRlBWcXVWdW1JbmpxdExpcUkxSGYzZ3Vhc2hHaWN5T1kvRmlJ?=
- =?utf-8?B?SmwzSU45QW1SRVNRUzAwNnduUTVsUmdhWEZHdWp2dUs1NkdHU2ltOEkvTW1V?=
- =?utf-8?B?YU14MzlBTU8wSm5XbVBIbDIrTGxVSGx5OWsrRjcydi95SDFEMmtvODJ6Zktq?=
- =?utf-8?B?SmJ3Rzc3TU9iVkdMYXMvSjZGMUZ0bktESDQvN3pEVXhHUHJsVC9LRFY4bWxL?=
- =?utf-8?B?c2srbVBoU1ZiL3pMK2krS2lDMGx1M1NrZmJoazBaNThyWG1UZ2VyOVpCa3l0?=
- =?utf-8?B?TFIrWmdmZFhNMndkNU1rTXY5YVU4OXRvdmNyMVJMdjNDYVFseUh3d09vNWNC?=
- =?utf-8?B?WU9xa0syVlNyL2JhTGcxMTN5bTJzdC9aYSttQkxJZ213OGdWWGJoYkhsZTAv?=
- =?utf-8?B?MXAvcFdBSlJ1OHBYWXdVUnIrNXNUYncvZnBJZTBLNnYvdStWTE55dVAyMXI3?=
- =?utf-8?B?NVozd2FDeEptMWRMK3IrVHpxa1IzVG1ocVJhMFJSeFh3bCtwWkNhSnhiaW1s?=
- =?utf-8?B?Unl4YmlkM0gxR3F6MVp1WXEzdUFRQllRYTZTeUZEbW9sWTY0OEhYVlFoWTZV?=
- =?utf-8?B?dGdzSlJ5WjdzVS9qUVRua1ZNelk0Z1RyZGl2elBCVUU5SjFGdER2QXAwTUlX?=
- =?utf-8?B?di9sQXRWaWo0SW82R0JnRE5JUWhhRWJqdUI1R3BUbzBEZ1pwY09VMkNNNmQw?=
- =?utf-8?B?K2l5Vi9TM3BpRUZqWlk2dERNWEtpdWt3UDFxQ3B5ck9sTndwMC9vQ05EaEFu?=
- =?utf-8?B?MWpWdjdXR3Rjd1UyV052SVVuUDFTNkFBM3hhcytCTmxrMWJzUnAzbThsUi9Y?=
- =?utf-8?B?KzRXUjJaUWpXekV4TVViS2tpczBreVpoUUt6VDYwamd0VTZSWlhsR3NOVks0?=
- =?utf-8?B?dlVCVzAyRm5KNjVlaWhnNjQybjE5R0JmVHhqRDJtVGlJNHFlVXVIWVA4TlZq?=
- =?utf-8?B?VzJUZklGcUFkL3IyNjV4K1J4eEI2dEd5SGc3U29nUnNZMm1sdzZjZHhCTWtn?=
- =?utf-8?B?c3hFUHhsRVdpTFlyaUU3SEJJZ2NmY1gyUVdqVGJaOGh4bTZrOHpPWWoxczg5?=
- =?utf-8?Q?UGZMhTGqO5Q=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB6624.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(7416014)(376014)(38070700018);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?bFVpY1JEWG9SZjF3dlFLckR6T21IbEUvanR6ZjI1QW1oZW9BU1NzUzdhKzlw?=
- =?utf-8?B?LytSMUtpbUsybnRFNE1VR1hFdVZSYnMvREw5SENyc3VJam0wNjZtTVpvbjlu?=
- =?utf-8?B?VjRKamV6em5RaXNLaEVNMXd3UVdSQUh2ZVNqT2N0V2xHVUJkMnpYMVhQaVFl?=
- =?utf-8?B?azNQaXRHYnpISm1yWmZiUjREeDluYmgrVjhWeEEvM1FwY3JzdXoxUTNwQll0?=
- =?utf-8?B?ei9nWGNTZ2dxdmdsWFZ6LzVJbmlBdCtRTGo3RzRtVHNXelhrQzJaY3hEVXgy?=
- =?utf-8?B?cmRjMm5aZDZtTk1uZjNZM0xwT0h2bkdNOTNySWZrT3lmbUhaeU9RbmV0SDUw?=
- =?utf-8?B?YmNrSzA3YVJqb3RlaUYyQmVjczhwRkRXWUhnbUxRVkNLbTBOTVFSRitobXpG?=
- =?utf-8?B?NUJMWTZVdGZuM1JPWHJ0a1FEbVo1YzI1OVpQZjhFOVQ3YUQzVmYycTVBUTg4?=
- =?utf-8?B?YnFDOVBuS0dLL1JjRHY1RDZLZFo2WVpXWHZhT1djZXV3c2dJWDRaZ1RLZHo0?=
- =?utf-8?B?N01oQXJoU3QvMzczK0FhbXRjcXVuNTJWQmxQYitSMkl0K245R1hpVnMzaEFp?=
- =?utf-8?B?cGo5azhMVzlZMWV1QWhkL0d2OHFsWWNPclB5YjBGcXlTeVBzajJpdWl6cWNB?=
- =?utf-8?B?ZXlMdXJwaTZYMjBpVnVyaCtSajVEUXFQZng0S0ZOM2hxMUZwMUZWNzZrODR1?=
- =?utf-8?B?RjdiZUY5ZnRrRUVlVWU1aGcrYUx5ZmJaaElZMjJ0MkltOHdNUkNyTE9WdTRW?=
- =?utf-8?B?QXd2VU5vVFZOazJUMXQ0VHFaMGpzN1pwRUZ5M0RPSzJtV01FeSs1Nm1MeVQr?=
- =?utf-8?B?clFrTHdpSkF3YmJnQmRCUXlZbXR6a2Z1aHZnMW5KRGc2QkhVVENYSDZsYkdn?=
- =?utf-8?B?WGRoUVBtc2pyMUsvblBxT2VaUGhaQUlTYUFoT1F4cG9XYW1uVVRRYXB1UXRu?=
- =?utf-8?B?d0J1eDNMZ2xGL0gxN0FqNXdYK09FRWRIVGEraTRaTkwyY3pmNDArM1FFRm1P?=
- =?utf-8?B?WUZLV282c2NUZXdFS01PamNjTjdOdCtkanZ0Z0ZUOGh4amhmZVZmbkhjWDFt?=
- =?utf-8?B?OEdSem9tRlMxYzBzbEM5aUpFQkZSUW1CdTNUckNIeVJiV1FDTUJGaHc2UHpR?=
- =?utf-8?B?Y3dkL3o1MWlud29VNnhkdUdnQWhodkg3Si9tbk9pbmhCcUdKZUlZSWNhWDdQ?=
- =?utf-8?B?ZjZGcTlFQlhKMnVrcjdrTWlrYW1ob0p6SmZBSnpaRmZRUWVZcW9ySjFRdC9E?=
- =?utf-8?B?enpmQ2w3S0MzSXlEcllsMjhTeG9Jd1Uva1hHazR3ZkwvMUhTZnFnLzlqTWxM?=
- =?utf-8?B?YU9EYlplRU1FY2dycGNpd2dQOFNWa0tFWG5jblV5OWgrREVtZkYwQzAxTExr?=
- =?utf-8?B?bFVXUFpobDBpaFQ3bDlHRmVqQVlVL1FMdHRFZGVhNGI5SFk5Mkh6azM1Ukww?=
- =?utf-8?B?UzVWOEZyVmhuMkxsb3NmRWNJU1VhY1N5OGxDWXUwSnM2ZVgxMW4ydlMrcWw5?=
- =?utf-8?B?TUtpUDViQXZtNFl6NXVRNFdWbEhHWWtWd0gxZkpvYWJDc0luRE84YUJRa1J2?=
- =?utf-8?B?SXduNXErOStIUzlXNklnQ0JtajJsR2l0WEh4aVg5QmF6N01vbWVDWHJUTDNo?=
- =?utf-8?B?NWZJNThqRVhKMk9pdXBrNTRQREFtQUN6VGd2Rm1XcTZXT0pJUVVaYXdMK3Fs?=
- =?utf-8?B?RUU1aElqVmRYNzVFK2Q1RURGWHNieTNGZTVPMmhOY05uc2lMV2ZtUkttMDJ1?=
- =?utf-8?B?N2ZoMWMxRHNjZFFoTTArWGJyeVZJQk9uWTZRa1poSFFqRTJ3REtyRUJSdENq?=
- =?utf-8?B?SDh2VnZSNTZySEZMQzR4VFFkK2pWV1djMnBqQzZOUi9hMHJYSTNIeXFvZmdh?=
- =?utf-8?B?K3EzaFFrQUdGa25vZU85OGxjMVVpTUtKczkvckxzWUxROUp6YzhHUXFvay9P?=
- =?utf-8?B?Ym53a056U1ZEa28wV2ZRNEZPMVBMWUpueEJuZFVTWDR0WDlyWlFlTWhWRTFO?=
- =?utf-8?B?dDV4UWQ5M0pHS2ZxUEtNMlhuZVdieHAwLzMveTZjRG9scjA2S213TmNsQmRO?=
- =?utf-8?B?WHdVVDRCVmFPcStJUkNMTUgxMTBSbkVtdGJvU3RYRnhmRFB4MVhabDlFdEJ2?=
- =?utf-8?Q?hsi1p6t+4Ie/p3K80Pe0/T8VM?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <B20BF4C4F278AF4A878116862BC59F24@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+ 2025 06:46:14 +0000
+Received: from KL1PR06MB6273.apcprd06.prod.outlook.com
+ ([fe80::9d21:d819:94e4:d09]) by KL1PR06MB6273.apcprd06.prod.outlook.com
+ ([fe80::9d21:d819:94e4:d09%6]) with mapi id 15.20.8769.021; Fri, 23 May 2025
+ 06:46:13 +0000
+From: Huan Tang <tanghuan@vivo.com>
+To: alim.akhtar@samsung.com,
+	avri.altman@wdc.com,
+	bvanassche@acm.org,
+	James.Bottomley@HansenPartnership.com,
+	martin.petersen@oracle.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	beanhuo@micron.com,
+	peter.wang@mediatek.com,
+	quic_nguyenb@quicinc.com,
+	quic_ziqichen@quicinc.com,
+	tanghuan@vivo.com,
+	keosung.park@samsung.com,
+	viro@zeniv.linux.org.uk,
+	gwendal@chromium.org,
+	manivannan.sadhasivam@linaro.org,
+	linux-kernel@vger.kernel.org,
+	linux-scsi@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: opensource.kernel@vivo.com,
+	Wenxing Cheng <wenxing.cheng@vivo.com>,
+	Bean Huo <huobean@gmail.com>
+Subject: [PATCH v6] ufs: core: Add HID support
+Date: Fri, 23 May 2025 14:46:04 +0800
+Message-Id: <20250523064604.800-1-tanghuan@vivo.com>
+X-Mailer: git-send-email 2.25.1
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: SG2PR02CA0136.apcprd02.prod.outlook.com
+ (2603:1096:4:188::16) To KL1PR06MB6273.apcprd06.prod.outlook.com
+ (2603:1096:820:ec::10)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: KL1PR06MB6273:EE_|SEZPR06MB6814:EE_
+X-MS-Office365-Filtering-Correlation-Id: a7dbefcf-24d9-4d37-d311-08dd99c58267
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|52116014|7416014|376014|38350700014|921020;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?p615W6VWZCJ2gsG3jqIoqt8LWdOKycIujf2gQ83rDm6KyyzFXCq1cFkXV6Pu?=
+ =?us-ascii?Q?oTb79QlDdP6STAMX1VYPV+kU5Ofbwtxm9p47Ka1O2CvfGVwdvSBIIFSIl8IR?=
+ =?us-ascii?Q?vQGDd7Jb/nUCqXe7F0FesyDI+tCChfGdncQmHX6SFIRa4s5oqAotWqDUpS+X?=
+ =?us-ascii?Q?eN7XK9JqHMcSLZMqeuAWH81rfhtGcLFb9c7OquYhXJfG9IfNGNbfZt4Oc3My?=
+ =?us-ascii?Q?iTf8+2y/qtsPfZn2m4de007xRsL/48kfqdDy09/l6o25tbmGnSlgtrnTLG61?=
+ =?us-ascii?Q?KKJLel3+cJlRPDtpzBKJ7kikp+9bI26903TThNIjMF5e7PwzN7LGYnKhM4l1?=
+ =?us-ascii?Q?JBlZOzkUpA44bXSdMBBjfggIJ6OMxQXx7v8vWKGAXJPDaW9XtuiXNGNL2Dft?=
+ =?us-ascii?Q?WAdxufja+xeWyyDzcK4qHeKpRzGdTs0yjdzVUFntOHB5xp+X0hIZT5Kuoy6x?=
+ =?us-ascii?Q?+4Zt5VbUNoxLtWN/p3dcLByDS296oeD50XU/G7f0Fm5t5EiayGgx7qPZFdx1?=
+ =?us-ascii?Q?+BJIWbHWSixMoieFj2ZARLRDozkHiQQ1lBGokRZ7tUAhGJAd+ZxwWQCl5M8H?=
+ =?us-ascii?Q?285J2dKAHqEnhRP4aG9mO3oY58abq+KpHWfEqLM4wtY/yPbTR1Y2ZhlrzR+k?=
+ =?us-ascii?Q?aiyjkW+f2u6j3/omm+t7jOEOB5l2VzfIROx5w/X42B4opdwjrVOD7UZdBt12?=
+ =?us-ascii?Q?OaR6wmQ870ohSQ06bevFVH+rVdOLNuA93tM13QOC9Q1l55kwp9jxT+mIeSoW?=
+ =?us-ascii?Q?ymxUsN0mzn44upvjR9I6Lv3EmGYFbhHud4Thur4J+Np0WDxInPdVEt4WXemC?=
+ =?us-ascii?Q?nTNffJTl82jexMRyZ5ISouBrhu/jYqlI4a/f8B71aG7OIome5MnGdBLKJxrd?=
+ =?us-ascii?Q?7KiFTXu4Yt4L3zJyhv7Oaerm2ZLeXnwlKVV+SX/VrJE442kmCiiiWB4TfXtO?=
+ =?us-ascii?Q?7huUAg5fpHuLh7TvcYYaQydiuHWIf23g91LWlF2YBfVtDpMHdBy90GcqY6b0?=
+ =?us-ascii?Q?i/td8ZAdQnHlD5apxV332lIi6ryrl5o/HrwmKGgm+saZeQyE2SK6T+FCxr8u?=
+ =?us-ascii?Q?I1/sLK7J5irs5aJpN11vZYboM6FiGCOBYliYTgaXH9eR6/dgB494VW5mHC7A?=
+ =?us-ascii?Q?GdZkO4FBRHAyvZ3T8UTlJvHnNqD+4KECHId8oocnt8btxNXjIrf6np1it+Fo?=
+ =?us-ascii?Q?UUg76SaltNjTVj4x8q4sCYvR92vwbTNXsAt2pyF6XET8jtEs61r8rw6j0bsv?=
+ =?us-ascii?Q?NwTVOGxm1O+kZHQcjxXEGhwgbYCz7g4XsbNCMgrB0f+kdLaVFtSjucdz111b?=
+ =?us-ascii?Q?9b4sWsCbq9BhiHFWOI77THJAbMW+OsAfD5mRyPEwBsmq7+yWuXkTgiqm2AvU?=
+ =?us-ascii?Q?f/Wc3RZ/x0mOs6ldHOuDiu7mrariuECUbtoKfyq8yPvjbP9ZMMC/oIW7lgl0?=
+ =?us-ascii?Q?Vy6+uyMljYcuLueUCXOYNh+UFq9wko5V?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:KL1PR06MB6273.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(52116014)(7416014)(376014)(38350700014)(921020);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?NK4xgaqppm6uAF0m80YB9DBX4ltINjcpLZgs5iHUmFs2CFPquYQv8KRO/nMc?=
+ =?us-ascii?Q?FxmrunDuYc4UEwBGtS1rc+D+PFIg2lyjnhzTKD8KBZOWqDapcPsNdNLvpYIZ?=
+ =?us-ascii?Q?Y9UtR1fE5O8FITArUtCEOMJUyriiiZ44rREhQgsk5ao7A1enIseL/H8KfLqC?=
+ =?us-ascii?Q?T3IDPfioIsfftxtzKqheA5vzuARiEVbU1y00cXXRxNhxIXQSiaLbybAoC6WJ?=
+ =?us-ascii?Q?5mwlcM7nDgfKk0HV1G86mKep6+7fhWtji2Y2p7o8tVThuitQqC70/Dmt1tCe?=
+ =?us-ascii?Q?ZrWTVSIcBK6/zdlP9Iwnln172Nfpv8301/O4LVeL4wCcIFmkGVZsqkoIWkUy?=
+ =?us-ascii?Q?DQrhIQTIP8PX3XjeA3yHgE2rl4K+TpPTlb7HdmnBJVtzvQpuQFqEQaczmny8?=
+ =?us-ascii?Q?gDVcl0ign2fKg0M0Comt4zPmj34NEwlgW7SPFKUWWlGD14Zf0X5nYEh/YmWK?=
+ =?us-ascii?Q?phThrpd4Pyf1or8+eaEADuhmS385fytDlSSEvtKED802BcC79+N/aNdQZZt2?=
+ =?us-ascii?Q?lH8OnavGtVhBfs1t4bnLSwZ/7bSQjwZs87QmUtobhEnEh40GeGw8CrWkPrzG?=
+ =?us-ascii?Q?whTnWHCUS7RkZKsmDYp3dScNuLHZ6/PbQ7GMPhjW4vVwE9bkfiq1VpgmJ+Pa?=
+ =?us-ascii?Q?NX0JRbIf+nfyLLCxZgJclDMhOSWgt90yQa7WPjR7HQDBl9MH/xFv1FkxAYbd?=
+ =?us-ascii?Q?FXmR6gcIQUncA0MxBCYt0LmFGbxREp73aTD22oFf/Nbi28v54Gvoh80HQQ3l?=
+ =?us-ascii?Q?EqqxlLEULNtmsPwDViNI0n1wgePEFPAumw3/8XaYnnGr86Sl+BQDkhisG03C?=
+ =?us-ascii?Q?IbINYOjIJgJlWbSPwlM1e8PBjCvSAMEEvKFq4vF5V24CxVfM2M9HAMsWZLCU?=
+ =?us-ascii?Q?p4MfLUoYkInx6fNiJx27bJoNDUpB9apFFyDaM8BXg9m7GLUlbMm4hO4raC3u?=
+ =?us-ascii?Q?SvZy/reje1ohekduMbOYny5MPkapzn/pwHcMEgsUah0KUYrQRNX8pkDjuEId?=
+ =?us-ascii?Q?8M3GaiCcmOpjY2dJm8qhdB3YAFjlynSaGkhcJhOBZ8XrNJOFMLOKBmSedXTX?=
+ =?us-ascii?Q?CePhIVowKx3Buw5iSNLreUC3+p/1o8KWqx1SbM1i7seLpU2J4q+/aUgY9Aet?=
+ =?us-ascii?Q?t2EPDYlIpT5IhMu63BuoXH94huwiI7qfgNnuwgtCLbIVzgPQMN9wCnpXg9qe?=
+ =?us-ascii?Q?3QNuPkmB8fXiMDVdAV/R7AqeBSpzQwtn4+/4pM+rJ25vyZ7iN4OAV8Y2dBPZ?=
+ =?us-ascii?Q?C0trpJAD6ix3IUf69BywxcH58l1imVKZLqE6RcCYckBk//rTwh0WXE7D6ozU?=
+ =?us-ascii?Q?4Knj8cmSDzf41nI+7EZuHclMT1LzvrCfn+X33+SzszaKLDxV0zFdj53pTEEt?=
+ =?us-ascii?Q?NcbjXcds+nN80Yt0KQkTfowu98RT6aJYSRgqAI2cRahzj6cvajVQgN4mLYhD?=
+ =?us-ascii?Q?yi6McQXfyxD3SE3/w9Kg7bXGtF7Mq2HpsFzBUTj9BcW5XI90aVdJt7o2/QWS?=
+ =?us-ascii?Q?ua8+wcO48D5koZaaWLqRpGyDdM5kuVUKbV+ZAXOrenN5cfDn2G5nXKcL6+Os?=
+ =?us-ascii?Q?5ld8SS+FFdNTuQfhiWu9ElGzIupSQzmtUi3I0yQG?=
+X-OriginatorOrg: vivo.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a7dbefcf-24d9-4d37-d311-08dd99c58267
+X-MS-Exchange-CrossTenant-AuthSource: KL1PR06MB6273.apcprd06.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB6624.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4eb1c070-7cee-4211-dfae-08dd99a5441f
-X-MS-Exchange-CrossTenant-originalarrivaltime: 23 May 2025 02:55:24.7732
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 May 2025 06:46:13.5509
  (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: CFTY327UuZI+ce+riM3coFjFLrX3yrkgzP3b8Pr/9FXvZWJOy6t0AhAhl4gsa7GhB5Te04mXVTqWsE1dDz7EvQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: KU2PPF9D6AFF433
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: T3AiXUp7KC4Q50n3HQc1KyQIcOy9cUFHLrEu5uHymY+p43s98RCnsqbUDiSOUmY9iQRUibzP/N1ODjzdlbHYNA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR06MB6814
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250522_195536_460080_9A165E9F 
-X-CRM114-Status: GOOD (  16.64  )
+X-CRM114-CacheID: sfid-20250522_234629_575286_F2C90B9D 
+X-CRM114-Status: GOOD (  15.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -222,86 +173,442 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAyMDI1LTA1LTIyIGF0IDIzOjAzICswODAwLCBOYW5jeS5MaW4gd3JvdGU6DQo+IEZy
-b206IE5hbmN5IExpbiA8bmFuY3kubGluQG1lZGlhdGVrLmNvbT4NCj4gDQo+IEFkZCBhIGRldmlj
-ZSB0cmVlIGJpbmRpbmcgZG9jdW1lbnQgZm9yIHRoZSBNZWRpYVRlayBNVDgxOTYgVk1NIChWY29y
-ZQ0KPiBmb3IgTXVsdGlNZWRpYSkgcmVndWxhdG9yIGNvbnRyb2xsZXIuIFRoZSBWTU0gY29udHJv
-bGxlciBhY3RzIGFzIHRoZQ0KPiBtYWluIHBvd2VyIHN1cHBsaWVyIGZvciBtdWx0aW1lZGlhIHBv
-d2VyIGRvbWFpbnMsIHN1Y2ggYXMgdGhvc2UgdXNlZA0KPiBieSBkaXNwbGF5LCB2aWRlbyBlbmNv
-ZGUgYW5kIGRlY29kZSBzdWJzeXN0ZW1zLiBJdCBwcm92aWRlcyB2aXJ0dWFsDQo+IHJlZ3VsYXRv
-cnMgdGhhdCBzZXJ2ZSBhcyB0aGUgcG93ZXIgc291cmNlcyBmb3IgdmFyaW91cyBtdWx0aW1lZGlh
-IElQcywNCj4gYW5kIGNvb3JkaW5hdGVzIHdpdGggdGhlIGhhcmR3YXJlIGNvbW1vbiBjbG9jayBm
-cmFtZXdvcmsgKGh3Y2NmKSBhbmQNCj4gdGhlIFZpZGVvIENvbXBhbmlvbiBQcm9jZXNzb3IgKFZD
-UCkgdG8gbWFuYWdlIHRoZSBwb3dlciBkb21haW5zIG9mDQo+IHRoZXNlIGNvbXBvbmVudHMuIFRo
-ZSByZWd1bGF0b3IgaXMgY29udHJvbGxlZCBieSB0aGUgVkNQIGZpcm13YXJlLA0KPiBhbmQgdGhl
-IG9wZXJhdGluZyBzeXN0ZW0gc2lnbmFscyBpdHMgcmVxdWlyZW1lbnQgdGhyb3VnaCBhIHZvdGlu
-Zw0KPiBoYXJkd2FyZSBibG9jayAoaHdjY2YpLg0KPiANCj4gU2lnbmVkLW9mZi1ieTogTmFuY3kg
-TGluIDxuYW5jeS5saW5AbWVkaWF0ZWsuY29tPg0KPiAtLS0NCj4gIC4uLi9tZWRpYXRlayxtdDgx
-OTYtdm1tLXJlZ3VsYXRvci55YW1sICAgICAgICB8IDcwICsrKysrKysrKysrKysrKysrKysNCj4g
-IDEgZmlsZSBjaGFuZ2VkLCA3MCBpbnNlcnRpb25zKCspDQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQg
-RG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3JlZ3VsYXRvci9tZWRpYXRlayxtdDgx
-OTYtdm1tLXJlZ3VsYXRvci55YW1sDQo+IA0KPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9k
-ZXZpY2V0cmVlL2JpbmRpbmdzL3JlZ3VsYXRvci9tZWRpYXRlayxtdDgxOTYtdm1tLXJlZ3VsYXRv
-ci55YW1sIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3JlZ3VsYXRvci9tZWRp
-YXRlayxtdDgxOTYtdm1tLXJlZ3VsYXRvci55YW1sDQo+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0DQo+
-IGluZGV4IDAwMDAwMDAwMDAwMC4uYTUwZTM1YzJlMjM4DQo+IC0tLSAvZGV2L251bGwNCj4gKysr
-IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3JlZ3VsYXRvci9tZWRpYXRlayxt
-dDgxOTYtdm1tLXJlZ3VsYXRvci55YW1sDQo+IEBAIC0wLDAgKzEsNzAgQEANCj4gKyMgU1BEWC1M
-aWNlbnNlLUlkZW50aWZpZXI6IChHUEwtMi4wIE9SIEJTRC0yLUNsYXVzZSkNCj4gKyVZQU1MIDEu
-Mg0KPiArLS0tDQo+ICskaWQ6ICJodHRwczovL3VybGRlZmVuc2UuY29tL3YzL19faHR0cDovL2Rl
-dmljZXRyZWUub3JnL3NjaGVtYXMvcmVndWxhdG9yL21lZGlhdGVrLG10ODE5Ni12bW0tcmVndWxh
-dG9yLnlhbWwqX187SXchIUNUUk5LQTl3TWcwQVJidyFnYXdBVE5PVDN1NlVCdFR3dGdub1pnZ3dk
-d1ZMM1ZCdUZaUXlmLWJhVjhqMXdVTUlWMXNJYXFCdmhjcXRmblpTbG1YRmVzZW5ndFphWXhDV3RE
-byQgIg0KPiArJHNjaGVtYTogaHR0cHM6Ly91cmxkZWZlbnNlLmNvbS92My9fX2h0dHA6Ly9kZXZp
-Y2V0cmVlLm9yZy9tZXRhLXNjaGVtYXMvY29yZS55YW1sKl9fO0l3ISFDVFJOS0E5d01nMEFSYnch
-Z2F3QVROT1QzdTZVQnRUd3Rnbm9aZ2d3ZHdWTDNWQnVGWlF5Zi1iYVY4ajF3VU1JVjFzSWFxQnZo
-Y3F0Zm5aU2xtWEZlc2VuZ3RaYUxjbkdMbXckIA0KPiArDQo+ICt0aXRsZTogTWVkaWFUZWsgTVQ4
-MTk2IFZNTSAoVmNvcmUgZm9yIE11bHRpTWVkaWEpIFJlZ3VsYXRvciBDb250cm9sbGVyDQo+ICsN
-Cj4gK21haW50YWluZXJzOg0KPiArICAtIE5hbmN5IExpbiA8bmFuY3kubGluQG1lZGlhdGVrLmNv
-bT4NCj4gKw0KPiArZGVzY3JpcHRpb246IHwNCj4gKyAgVGhlIE1lZGlhVGVrIE1UODE5NiBWTU0g
-KFZjb3JlIGZvciBNdWx0aSBNZWRpYSkgY29udHJvbGxlciBhY3RzIGFzIHRoZQ0KPiArICBtYWlu
-IHBvd2VyIHN1cHBsaWVyIGZvciBtdWx0aW1lZGlhIHBvd2VyIGRvbWFpbnMsIHN1Y2ggYXMgdGhv
-c2UgdXNlZCBieQ0KPiArICBkaXNwbGF5LCB2aWRlbyBlbmNvZGUgYW5kIGRlY29kZSBzdWJzeXN0
-ZW1zLiBUaGUgVk1NIGhhcmR3YXJlIGJsb2NrDQo+ICsgIHByb3ZpZGVzIHZpcnR1YWwgcmVndWxh
-dG9ycyB0aGF0IHNlcnZlIGFzIHRoZSBwb3dlciBzb3VyY2VzIChzdXBwbGllcnMpDQo+ICsgIGZv
-ciB2YXJpb3VzIG11bHRpbWVkaWEgSVBzLiBJdCBjb29yZGluYXRlcyB3aXRoIHRoZSBNZWRpYVRl
-ayBoYXJkd2FyZQ0KPiArICBjb21tb24gY2xvY2sgZnJhbWV3b3JrIChIV0NDRikgYW5kIHRoZSBW
-aWRlbyBDb21wYW5pb24gUHJvY2Vzc29yIChWQ1ApDQo+ICsgIHRvIG1hbmFnZSB0aGUgcG93ZXIg
-ZG9tYWlucyBvZiB0aGVzZSBtdWx0aW1lZGlhIGNvbXBvbmVudHMuDQo+ICsNCj4gKyAgRWFjaCBj
-aGlsZCBub2RlIHVuZGVyIHRoZSBWTU0gbm9kZSByZXByZXNlbnRzIGEgdmlydHVhbCByZWd1bGF0
-b3INCj4gKyAgKGUuZy4sIHZkaXNwLCB2ZGVjLXZjb3JlKSBhbmQgbXVzdCBzcGVjaWZ5IGEgJ3Jl
-Z3VsYXRvci1uYW1lJy4NCj4gKw0KPiArcHJvcGVydGllczoNCj4gKyAgY29tcGF0aWJsZToNCj4g
-KyAgICBjb25zdDogIm1lZGlhdGVrLG10ODE5Ni12bW0iDQo+ICsNCj4gKyAgbWVkaWF0ZWssaHct
-Y2NmOg0KPiArICAgICRyZWY6IC9zY2hlbWFzL3R5cGVzLnlhbWwjL2RlZmluaXRpb25zL3BoYW5k
-bGUNCj4gKyAgICBkZXNjcmlwdGlvbjogUGhhbmRsZSB0byB0aGUgaGFyZHdhcmUgY29tbW9uIGNs
-b2NrIGZyYW1ld29yayBzeXNjb24gY29udHJvbGxlci4NCj4gKw0KPiArICBtZWRpYXRlayx2Y3A6
-DQo+ICsgICAgJHJlZjogL3NjaGVtYXMvdHlwZXMueWFtbCMvZGVmaW5pdGlvbnMvcGhhbmRsZQ0K
-PiArICAgIGRlc2NyaXB0aW9uOiBQaGFuZGxlIHRvIHRoZSBWaWRlbyBDby1Qcm9jZXNzb3IgKFZD
-UCkgbm9kZS4NCj4gKw0KPiArcGF0dGVyblByb3BlcnRpZXM6DQo+ICsgICJeKHZkaXNwfHZkZWMt
-dmNvcmUpJCI6DQo+ICsgICAgdHlwZTogb2JqZWN0DQo+ICsgICAgZGVzY3JpcHRpb246IHwNCj4g
-KyAgICAgIFZpcnR1YWwgcmVndWxhdG9yIGZvciBhIHNwZWNpZmljIG11bHRpbWVkaWEgZG9tYWlu
-Lg0KPiArICAgICAgVGhlIG5vZGUgbmFtZSBzaG91bGQgbWF0Y2ggdGhlIHN1cHBvcnRlZCByZWd1
-bGF0b3IgKGUuZy4sIHZkaXNwLCB2ZGVjLXZjb3JlKS4NCj4gKyAgICBwcm9wZXJ0aWVzOg0KPiAr
-ICAgICAgcmVndWxhdG9yLW5hbWU6DQo+ICsgICAgICAgIHR5cGU6IHN0cmluZw0KPiArICAgICAg
-ICBkZXNjcmlwdGlvbjogVGhlIG5hbWUgb2YgdGhlIHZpcnR1YWwgcmVndWxhdG9yLg0KPiArICAg
-IHJlcXVpcmVkOg0KPiArICAgICAgLSByZWd1bGF0b3ItbmFtZQ0KPiArICAgIGFkZGl0aW9uYWxQ
-cm9wZXJ0aWVzOiBmYWxzZQ0KPiArDQo+ICtyZXF1aXJlZDoNCj4gKyAgLSBjb21wYXRpYmxlDQo+
-ICsgIC0gbWVkaWF0ZWssaHctY2NmDQo+ICsgIC0gbWVkaWF0ZWssdmNwDQo+ICsNCj4gK2FkZGl0
-aW9uYWxQcm9wZXJ0aWVzOiBmYWxzZQ0KPiArDQo+ICtleGFtcGxlczoNCj4gKyAgLSB8DQo+ICsg
-ICAgdm1tOiB2bW0gew0KPiArICAgICAgY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxOTYtdm1t
-IjsNCj4gKyAgICAgIG1lZGlhdGVrLGh3LWNjZiA9IDwmbW1faHd2PjsNCj4gKyAgICAgIG1lZGlh
-dGVrLHZjcCA9IDwmdmNwPjsNCj4gKw0KPiArICAgICAgdmRpc3A6IHZkaXNwIHsNCj4gKyAgICAg
-ICAgcmVndWxhdG9yLW5hbWUgPSAidmRpc3AiOw0KPiArICAgICAgfTsNCj4gKyAgICAgIHZkZWNf
-dmNvcmU6IHZkZWMtdmNvcmUgew0KPiArICAgICAgICByZWd1bGF0b3ItbmFtZSA9ICJ2ZGVjLXZj
-b3JlIjsNCj4gKyAgICAgIH07DQo+ICsgICAgfTsNCg0KZGV2aWNlIHRyZWUgaXMgdXNlZCB0byBk
-ZXNjcmliZSByZWFsIGhhcmR3YXJlLg0Kdm1tIGlzIGEgdmlydHVhbCBkZXZpY2Ugd2hpY2ggaXMg
-dXNlZCBmb3Igc29mdHdhcmUgdG8gaW50ZWdyYXRlIHRoZSByZWxhdGVkIGRyaXZlciwNCnNvIGl0
-IHNob3VsZCBub3QgaGF2ZSB0aGlzIHZpcnR1YWwgZGV2aWNlLg0KQWNjb3JkaW5nIHRvIHlvdXIg
-ZGVzY3JpcHRpb24sIHZjcCBpcyB0aGUgbWFzdGVyIHRvIGNvbnRyb2wgcmVndWxhdG9yLA0Kc28g
-SSB0aGluayB0aGUgZGV2aWNlIHRyZWUgd291bGQgYmUNCg0KdmNwIHsNCglyZWd1bGF0b3ItbmFt
-ZSA9ICJ2ZGlzcCIsICJ2ZGVjLXZjb3JlIjsNCn07DQoNCkFuZCB2Y3AgZHJpdmVyIGNvbnRyb2wg
-dGhlc2UgcmVndWxhdG9yLg0KDQpJJ20gbm90IHN1cmUgd2hhdCBkb2VzIGh3LWNjZiBkbywgaWYg
-aXQncyBhbHNvIGNvbnRyb2xsZWQgYnkgdmNwLCB0aGUgbm9kZSBzaG91bGQgYmUNCg0KdmNwIHsN
-CgltZWRpYXRlayxody1jY2YgPSA8Jm1tX2h3dj47DQoJcmVndWxhdG9yLW5hbWUgPSAidmRpc3Ai
-LCAidmRlYy12Y29yZSI7DQp9Ow0KDQpSZWdhcmRzLA0KQ0sNCg0KDQo=
+Follow JESD220G, support HID(Host Initiated Defragmentation)
+through sysfs, the relevant sysfs nodes are as follows:
+	1.analysis_trigger
+	2.defrag_trigger
+	3.fragmented_size
+	4.defrag_size
+	5.progress_ratio
+	6.state
+The detailed definition	of the six nodes can be	found in the sysfs
+documentation.
+
+HID's execution policy is given to user-space.
+
+Signed-off-by: Huan Tang <tanghuan@vivo.com>
+Signed-off-by: Wenxing Cheng <wenxing.cheng@vivo.com>
+Suggested-by: Bart Van Assche <bvanassche@acm.org>
+Reviewed-by: Peter Wang <peter.wang@mediatek.com>
+Reviewed-by: Bean Huo <huobean@gmail.com>
+---
+Changelog
+===
+v5 - > v6:
+	1.Adopt Peter's suggestion to improve code readability
+	2.Adopt Bean's suggestion to simplify code
+v4 - > v5:
+	1.Fixed a typo in "indicates"
+	2."DEFRAG_IS_NOT_REQUIRED" -> "DEFRAG_NOT_REQUIRED"
+	3.Fix some coding style issues
+v3 - > v4:
+	1.Move the changelog description under "---"
+v2 - > v3:
+	1.Remove the "ufs_" prefix from directory name
+	2.Remove the "hid_" prefix from node names
+	3.Make "ufs" appear only once in the HID group name
+	4.Add "is_visible" callback for "ufs_sysfs_hid_group"
+v1 - > v2:
+	1.Refactor the HID code according to Bart and Peter and
+	Arvi's suggestions
+
+v5
+	https://lore.kernel.org/all/20250520094054.313-1-tanghuan@vivo.com/
+v4
+	https://lore.kernel.org/all/20250520063512.213-1-tanghuan@vivo.com/
+v3
+	https://lore.kernel.org/all/20250519022912.292-1-tanghuan@vivo.com/
+v2
+	https://lore.kernel.org/all/20250512131519.138-1-tanghuan@vivo.com/
+v1
+	https://lore.kernel.org/all/20250417125008.123-1-tanghuan@vivo.com/
+
+ Documentation/ABI/testing/sysfs-driver-ufs |  83 +++++++++
+ drivers/ufs/core/ufs-sysfs.c               | 190 +++++++++++++++++++++
+ drivers/ufs/core/ufshcd.c                  |   4 +
+ include/ufs/ufs.h                          |  26 +++
+ 4 files changed, 303 insertions(+)
+
+diff --git a/Documentation/ABI/testing/sysfs-driver-ufs b/Documentation/ABI/testing/sysfs-driver-ufs
+index d4140dc6c5ba..f3de8c521bbd 100644
+--- a/Documentation/ABI/testing/sysfs-driver-ufs
++++ b/Documentation/ABI/testing/sysfs-driver-ufs
+@@ -1685,3 +1685,86 @@ Description:
+ 		================  ========================================
+ 
+ 		The file is read only.
++
++What:		/sys/bus/platform/drivers/ufshcd/*/hid/analysis_trigger
++What:		/sys/bus/platform/devices/*.ufs/hid/analysis_trigger
++Date:		May 2025
++Contact:	Huan Tang <tanghuan@vivo.com>
++Description:
++		The host can enable or disable HID analysis operation.
++
++		=======  =========================================
++		disable   disable HID analysis operation
++		enable    enable HID analysis operation
++		=======  =========================================
++
++		The file is write only.
++
++What:		/sys/bus/platform/drivers/ufshcd/*/hid/defrag_trigger
++What:		/sys/bus/platform/devices/*.ufs/hid/defrag_trigger
++Date:		May 2025
++Contact:	Huan Tang <tanghuan@vivo.com>
++Description:
++		The host can enable or disable HID defragmentation operation.
++
++		=======  =========================================
++		disable   disable HID defragmentation operation
++		enable    enable HID defragmentation operation
++		=======  =========================================
++
++		The attribute is write only.
++
++What:		/sys/bus/platform/drivers/ufshcd/*/hid/fragmented_size
++What:		/sys/bus/platform/devices/*.ufs/hid/fragmented_size
++Date:		May 2025
++Contact:	Huan Tang <tanghuan@vivo.com>
++Description:
++		The total fragmented size in the device is reported through
++		this attribute.
++
++		The attribute is read only.
++
++What:		/sys/bus/platform/drivers/ufshcd/*/hid/defrag_size
++What:		/sys/bus/platform/devices/*.ufs/hid/defrag_size
++Date:		May 2025
++Contact:	Huan Tang <tanghuan@vivo.com>
++Description:
++		The host sets the size to be defragmented by an HID
++		defragmentation operation.
++
++		The attribute is read/write.
++
++What:		/sys/bus/platform/drivers/ufshcd/*/hid/progress_ratio
++What:		/sys/bus/platform/devices/*.ufs/hid/progress_ratio
++Date:		May 2025
++Contact:	Huan Tang <tanghuan@vivo.com>
++Description:
++		Defragmentation progress is reported by this attribute,
++		indicates the ratio of the completed defragmentation size
++		over the requested defragmentation size.
++
++		====  ============================================
++		1     1%
++		...
++		100   100%
++		====  ============================================
++
++		The attribute is read only.
++
++What:		/sys/bus/platform/drivers/ufshcd/*/hid/state
++What:		/sys/bus/platform/devices/*.ufs/hid/state
++Date:		May 2025
++Contact:	Huan Tang <tanghuan@vivo.com>
++Description:
++		The HID state is reported by this attribute.
++
++		====================   ===========================
++		idle			Idle (analysis required)
++		analysis_in_progress    Analysis in progress
++		defrag_required      	Defrag required
++		defrag_in_progress      Defrag in progress
++		defrag_completed      	Defrag completed
++		defrag_not_required     Defrag is not required
++		====================   ===========================
++
++		The attribute is read only.
+diff --git a/drivers/ufs/core/ufs-sysfs.c b/drivers/ufs/core/ufs-sysfs.c
+index de8b6acd4058..10006ae5ee35 100644
+--- a/drivers/ufs/core/ufs-sysfs.c
++++ b/drivers/ufs/core/ufs-sysfs.c
+@@ -87,6 +87,23 @@ static const char *ufs_wb_resize_status_to_string(enum wb_resize_status status)
+ 	}
+ }
+ 
++static const char * const ufs_hid_states[] = {
++	[HID_IDLE]		= "idle",
++	[ANALYSIS_IN_PROGRESS]	= "analysis_in_progress",
++	[DEFRAG_REQUIRED]	= "defrag_required",
++	[DEFRAG_IN_PROGRESS]	= "defrag_in_progress",
++	[DEFRAG_COMPLETED]	= "defrag_completed",
++	[DEFRAG_NOT_REQUIRED]	= "defrag_not_required",
++};
++
++static const char *ufs_hid_state_to_string(enum ufs_hid_state state)
++{
++	if (state < NUM_UFS_HID_STATES)
++		return ufs_hid_states[state];
++
++	return "unknown";
++}
++
+ static const char *ufshcd_uic_link_state_to_string(
+ 			enum uic_link_state state)
+ {
+@@ -1763,6 +1780,178 @@ static const struct attribute_group ufs_sysfs_attributes_group = {
+ 	.attrs = ufs_sysfs_attributes,
+ };
+ 
++static int hid_query_attr(struct ufs_hba *hba, enum query_opcode opcode,
++			enum attr_idn idn, u32 *attr_val)
++{
++	int ret;
++
++	down(&hba->host_sem);
++	if (!ufshcd_is_user_access_allowed(hba)) {
++		up(&hba->host_sem);
++		return -EBUSY;
++	}
++
++	ufshcd_rpm_get_sync(hba);
++	ret = ufshcd_query_attr(hba, opcode, idn, 0, 0, attr_val);
++	ufshcd_rpm_put_sync(hba);
++
++	up(&hba->host_sem);
++	return ret;
++}
++
++static ssize_t analysis_trigger_store(struct device *dev,
++		struct device_attribute *attr, const char *buf, size_t count)
++{
++	struct ufs_hba *hba = dev_get_drvdata(dev);
++	int mode;
++	int ret;
++
++	if (sysfs_streq(buf, "enable"))
++		mode = HID_ANALYSIS_ENABLE;
++	else if (sysfs_streq(buf, "disable"))
++		mode = HID_ANALYSIS_AND_DEFRAG_DISABLE;
++	else
++		return -EINVAL;
++
++	ret = hid_query_attr(hba, UPIU_QUERY_OPCODE_WRITE_ATTR,
++			QUERY_ATTR_IDN_HID_DEFRAG_OPERATION, &mode);
++
++	return ret < 0 ? ret : count;
++}
++
++static DEVICE_ATTR_WO(analysis_trigger);
++
++static ssize_t defrag_trigger_store(struct device *dev,
++		struct device_attribute *attr, const char *buf, size_t count)
++{
++	struct ufs_hba *hba = dev_get_drvdata(dev);
++	int mode;
++	int ret;
++
++	if (sysfs_streq(buf, "enable"))
++		mode = HID_ANALYSIS_AND_DEFRAG_ENABLE;
++	else if (sysfs_streq(buf, "disable"))
++		mode = HID_ANALYSIS_AND_DEFRAG_DISABLE;
++	else
++		return -EINVAL;
++
++	ret = hid_query_attr(hba, UPIU_QUERY_OPCODE_WRITE_ATTR,
++			QUERY_ATTR_IDN_HID_DEFRAG_OPERATION, &mode);
++
++	return ret < 0 ? ret : count;
++}
++
++static DEVICE_ATTR_WO(defrag_trigger);
++
++static ssize_t fragmented_size_show(struct device *dev,
++		struct device_attribute *attr, char *buf)
++{
++	struct ufs_hba *hba = dev_get_drvdata(dev);
++	u32 value;
++	int ret;
++
++	ret = hid_query_attr(hba, UPIU_QUERY_OPCODE_READ_ATTR,
++			QUERY_ATTR_IDN_HID_AVAILABLE_SIZE, &value);
++	if (ret)
++		return ret;
++
++	return sysfs_emit(buf, "%u\n", value);
++}
++
++static DEVICE_ATTR_RO(fragmented_size);
++
++static ssize_t defrag_size_show(struct device *dev,
++		struct device_attribute *attr, char *buf)
++{
++	struct ufs_hba *hba = dev_get_drvdata(dev);
++	u32 value;
++	int ret;
++
++	ret = hid_query_attr(hba, UPIU_QUERY_OPCODE_READ_ATTR,
++			QUERY_ATTR_IDN_HID_SIZE, &value);
++	if (ret)
++		return ret;
++
++	return sysfs_emit(buf, "%u\n", value);
++}
++
++static ssize_t defrag_size_store(struct device *dev,
++		struct device_attribute *attr, const char *buf, size_t count)
++{
++	struct ufs_hba *hba = dev_get_drvdata(dev);
++	u32 value;
++	int ret;
++
++	if (kstrtou32(buf, 0, &value))
++		return -EINVAL;
++
++	ret = hid_query_attr(hba, UPIU_QUERY_OPCODE_WRITE_ATTR,
++			QUERY_ATTR_IDN_HID_SIZE, &value);
++
++	return ret < 0 ? ret : count;
++}
++
++static DEVICE_ATTR_RW(defrag_size);
++
++static ssize_t progress_ratio_show(struct device *dev,
++		struct device_attribute *attr, char *buf)
++{
++	struct ufs_hba *hba = dev_get_drvdata(dev);
++	u32 value;
++	int ret;
++
++	ret = hid_query_attr(hba, UPIU_QUERY_OPCODE_READ_ATTR,
++			QUERY_ATTR_IDN_HID_PROGRESS_RATIO, &value);
++	if (ret)
++		return ret;
++
++	return sysfs_emit(buf, "%u\n", value);
++}
++
++static DEVICE_ATTR_RO(progress_ratio);
++
++static ssize_t state_show(struct device *dev,
++		struct device_attribute *attr, char *buf)
++{
++	struct ufs_hba *hba = dev_get_drvdata(dev);
++	u32 value;
++	int ret;
++
++	ret = hid_query_attr(hba, UPIU_QUERY_OPCODE_READ_ATTR,
++			QUERY_ATTR_IDN_HID_STATE, &value);
++	if (ret)
++		return ret;
++
++	return sysfs_emit(buf, "%s\n", ufs_hid_state_to_string(value));
++}
++
++static DEVICE_ATTR_RO(state);
++
++static struct attribute *ufs_sysfs_hid[] = {
++	&dev_attr_analysis_trigger.attr,
++	&dev_attr_defrag_trigger.attr,
++	&dev_attr_fragmented_size.attr,
++	&dev_attr_defrag_size.attr,
++	&dev_attr_progress_ratio.attr,
++	&dev_attr_state.attr,
++	NULL,
++};
++
++static umode_t ufs_sysfs_hid_is_visible(struct kobject *kobj,
++		struct attribute *attr, int n)
++{
++	struct device *dev = container_of(kobj, struct device, kobj);
++	struct ufs_hba *hba = dev_get_drvdata(dev);
++
++	return	hba->dev_info.hid_sup ? attr->mode : 0;
++}
++
++static const struct attribute_group ufs_sysfs_hid_group = {
++	.name = "hid",
++	.attrs = ufs_sysfs_hid,
++	.is_visible = ufs_sysfs_hid_is_visible,
++};
++
+ static const struct attribute_group *ufs_sysfs_groups[] = {
+ 	&ufs_sysfs_default_group,
+ 	&ufs_sysfs_capabilities_group,
+@@ -1777,6 +1966,7 @@ static const struct attribute_group *ufs_sysfs_groups[] = {
+ 	&ufs_sysfs_string_descriptors_group,
+ 	&ufs_sysfs_flags_group,
+ 	&ufs_sysfs_attributes_group,
++	&ufs_sysfs_hid_group,
+ 	NULL,
+ };
+ 
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index 3e2097e65964..8ccd923a5761 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -8390,6 +8390,10 @@ static int ufs_get_device_desc(struct ufs_hba *hba)
+ 
+ 	dev_info->rtt_cap = desc_buf[DEVICE_DESC_PARAM_RTT_CAP];
+ 
++	dev_info->hid_sup = get_unaligned_be32(desc_buf +
++				DEVICE_DESC_PARAM_EXT_UFS_FEATURE_SUP) &
++				UFS_DEV_HID_SUPPORT;
++
+ 	model_index = desc_buf[DEVICE_DESC_PARAM_PRDCT_NAME];
+ 
+ 	err = ufshcd_read_string_desc(hba, model_index,
+diff --git a/include/ufs/ufs.h b/include/ufs/ufs.h
+index c0c59a8f7256..72fd385037a6 100644
+--- a/include/ufs/ufs.h
++++ b/include/ufs/ufs.h
+@@ -182,6 +182,11 @@ enum attr_idn {
+ 	QUERY_ATTR_IDN_CURR_WB_BUFF_SIZE        = 0x1F,
+ 	QUERY_ATTR_IDN_TIMESTAMP		= 0x30,
+ 	QUERY_ATTR_IDN_DEV_LVL_EXCEPTION_ID     = 0x34,
++	QUERY_ATTR_IDN_HID_DEFRAG_OPERATION	= 0x35,
++	QUERY_ATTR_IDN_HID_AVAILABLE_SIZE	= 0x36,
++	QUERY_ATTR_IDN_HID_SIZE			= 0x37,
++	QUERY_ATTR_IDN_HID_PROGRESS_RATIO	= 0x38,
++	QUERY_ATTR_IDN_HID_STATE		= 0x39,
+ 	QUERY_ATTR_IDN_WB_BUF_RESIZE_HINT	= 0x3C,
+ 	QUERY_ATTR_IDN_WB_BUF_RESIZE_EN		= 0x3D,
+ 	QUERY_ATTR_IDN_WB_BUF_RESIZE_STATUS	= 0x3E,
+@@ -401,6 +406,7 @@ enum {
+ 	UFS_DEV_HPB_SUPPORT		= BIT(7),
+ 	UFS_DEV_WRITE_BOOSTER_SUP	= BIT(8),
+ 	UFS_DEV_LVL_EXCEPTION_SUP       = BIT(12),
++	UFS_DEV_HID_SUPPORT		= BIT(13),
+ };
+ #define UFS_DEV_HPB_SUPPORT_VERSION		0x310
+ 
+@@ -466,6 +472,24 @@ enum ufs_ref_clk_freq {
+ 	REF_CLK_FREQ_INVAL	= -1,
+ };
+ 
++/* bDefragOperation attribute values */
++enum ufs_hid_defrag_operation {
++	HID_ANALYSIS_AND_DEFRAG_DISABLE	= 0,
++	HID_ANALYSIS_ENABLE		= 1,
++	HID_ANALYSIS_AND_DEFRAG_ENABLE	= 2,
++};
++
++/* bHIDState attribute values */
++enum ufs_hid_state {
++	HID_IDLE		= 0,
++	ANALYSIS_IN_PROGRESS	= 1,
++	DEFRAG_REQUIRED		= 2,
++	DEFRAG_IN_PROGRESS	= 3,
++	DEFRAG_COMPLETED	= 4,
++	DEFRAG_NOT_REQUIRED	= 5,
++	NUM_UFS_HID_STATES	= 6,
++};
++
+ /* bWriteBoosterBufferResizeEn attribute */
+ enum wb_resize_en {
+ 	WB_RESIZE_EN_IDLE	= 0,
+@@ -625,6 +649,8 @@ struct ufs_dev_info {
+ 	u32 rtc_update_period;
+ 
+ 	u8 rtt_cap; /* bDeviceRTTCap */
++
++	bool hid_sup;
+ };
+ 
+ /*
+-- 
+2.48.1
+
 
