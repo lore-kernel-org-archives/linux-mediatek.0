@@ -4,78 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A974AC54ED1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 May 2025 16:26:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16D59C54ED1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 May 2025 19:29:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TisoT1GJKWQdeL0EC37oUEGlp+YGOKzOH7FoNix20D8=; b=rKBlILiG1sjX88nh4lFYuNVHyq
-	Lh/a/rxIpU4pWuf/kOzKFliSbUBIFMRkKTADrVsxm+qFXEk0YSJ8vfx974fH1xcShbAvZ5qNT0H+b
-	kMoilVIUMzfmr7HMZDo5yrK5uF15iPWHVvbQFHx/UFG/Nkca6W0pu2asSoQseZph5BtaJZJQmo/jj
-	paTLxt7ieMATuoWsRLbsx89rzN3+GZZ1QkRLZDZ4y20fGn9CHqZvwi23VleuxyF8TK9wW10Vf3YL8
-	VgsIU0ca5JPKT19GGJJwjFYTU8oEKEDKbGKItNi6qupnw9QHdApy0x3Jvb/6oXxaaEgjyoXKy1+Ra
-	dMX2gt3g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=b/iL7Qv7n+PdIUdNdFD1qH+oWQJFlnFOOHOkCjyu7t0=; b=cg6u0BNLekvXQV
+	mG+qRpIhLbEJcrwLwQjrHfRrPI1vQlNpeoaHy9bkdkAe6VGAQtgCpOI5C0Brij4OG7UlmTgK73bZp
+	z1icK5WbuHCuLFB5dVph86eZoQYWQNjevYSSy+82MazBgNyWhy/9TXkkmkE8MTfWU6yciUE9YzkeL
+	XRYS8TSvh0qCgOMb/JcPb5idLd2DtYG5wAhedt4oAcrcWNXovEy60JlbxeecuNGxOds9T+suLCjo/
+	egC6EvgB1ETyKvV5SHy0tzksswQwS9Xu7uy014ZD8Cvwz80e4k+14gZgCbC24yK3ej7cyI4bm+clO
+	lMsD+PYi8fsjdShTxPXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uIVE8-00000004OlD-2zwT;
-	Fri, 23 May 2025 16:26:32 +0000
-Received: from 004.mia.mailroute.net ([199.89.3.7])
+	id 1uIY5G-00000004neL-2y9o;
+	Fri, 23 May 2025 19:29:34 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uIV2m-00000004MMj-1TfB;
-	Fri, 23 May 2025 16:14:49 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 004.mia.mailroute.net (Postfix) with ESMTP id 4b3qx74t2Mzm0yVc;
-	Fri, 23 May 2025 16:14:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1748016872; x=1750608873; bh=TisoT1GJKWQdeL0EC37oUEGl
-	p+YGOKzOH7FoNix20D8=; b=xU9vrABsUYq4zcSAfdLkpbXZnnzktvng2o5pI/Q/
-	ziOO1dHMJO99+2qQY5SWzAvOo2nYwVg3yc3/eKqGXs5/F1dt80JgzNpcRJQqOw5v
-	Jd2gZSRYlzhcnTYNT1Yjx6o5eJPu0ffE09owgUarMo3JEzrtzIAZ6b2jUu3fD2o0
-	b+TTyegQqqnknufjqZZI9VF8mfy4agIvigdfMoCwJZM1kUEUQcw5/ibQrLgWpGVN
-	71NGqkrf6/xk074GgLtYzyODD1rCOB7gXBZqjDsvQVGTVuZC53XA3gu3sS12xJ+h
-	9xnPQNPv4UxRuCSZfj4+vtcQj3SuhwAgNvj9JxMumtCASA==
-X-Virus-Scanned: by MailRoute
-Received: from 004.mia.mailroute.net ([127.0.0.1])
- by localhost (004.mia [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id jUb281F6MwOT; Fri, 23 May 2025 16:14:32 +0000 (UTC)
-Received: from [100.66.154.22] (unknown [104.135.204.82])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 004.mia.mailroute.net (Postfix) with ESMTPSA id 4b3qwq3FVSzm0gbW;
-	Fri, 23 May 2025 16:14:18 +0000 (UTC)
-Message-ID: <c2608cd6-8c77-48f2-bc50-2ff087b0d48f@acm.org>
-Date: Fri, 23 May 2025 09:14:17 -0700
+	id 1uIXzm-00000004n0y-2d1v;
+	Fri, 23 May 2025 19:23:55 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 5FFA45C5CFE;
+	Fri, 23 May 2025 19:21:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A1788C4CEE9;
+	Fri, 23 May 2025 19:23:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1748028232;
+	bh=bdiHYolmlYqocA9ieRjL4GeZn3an8qacr7vPZxo9G7g=;
+	h=From:Subject:Date:To:Cc:From;
+	b=hu8+ACfTLtm8AVoFaZBwSIcFzZN89A43iMqJM/hk4x9WJ++btChu+YgZtBX7ie5KE
+	 8NUyKhOgSEBREQ2CkyS8KLa3U0NrtkhWQ1Ur2TYh2IXrQY8WO0W51Cyg1/EVMC4BDY
+	 fnUePUTEwNjyWQbaIcFtqSHZiaEprCcKuo2M0qx3FOcWpeJbIA0zSv2dv+0kysiyYY
+	 9fT/cORhmQvMwCEoHEbjJEkWrnKfujrChSmJJNRvBfMQ2YVXkrLOUyr9zO5xn7Xlne
+	 X0QOy5tCzDKEZ7AsZ18fywaTGeO+KAene0JE1SzHwO1nBkL9X8QAn+2F5/+xwzBu9P
+	 L6UMk6pGC5Evw==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH net-next 0/2] net: airoha: Enable hw acceleration for PPPoE
+ traffic
+Date: Fri, 23 May 2025 21:23:29 +0200
+Message-Id: <20250523-b4-airoha-flowtable-pppoe-v1-0-8584401568e0@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/1] ufs: core: add fatal errors check for LINERESET
-To: naomi.chu@mediatek.com, linux-scsi@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Alim Akhtar <alim.akhtar@samsung.com>,
- Avri Altman <avri.altman@wdc.com>,
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: wsd_upstream@mediatek.com, peter.wang@mediatek.com,
- alice.chao@mediatek.com, chun-hung.wu@mediatek.com, cc.chou@mediatek.com,
- yi-fan.peng@mediatek.com
-References: <20250523101041.3615819-1-naomi.chu@mediatek.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20250523101041.3615819-1-naomi.chu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIADHLMGgC/x3MQQqAIBBA0avErBtQy4VdJVpMNdZApGhUEN09a
+ fkW/z+QOQln6KoHEp+SJewFuq5gWmlfGGUuBqOMVa1ucGyRJIWV0G/hOmjcGGOMgdFM2jlvlXV
+ MUPqY2Mv9v/vhfT+sc81ZawAAAA==
+X-Change-ID: 20250413-b4-airoha-flowtable-pppoe-2c199f5059ea
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250523_091448_491853_83675B29 
-X-CRM114-Status: GOOD (  11.41  )
+X-CRM114-CacheID: sfid-20250523_122354_718471_DD9B3CDB 
+X-CRM114-Status: UNSURE (   5.93  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,34 +78,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5/23/25 3:10 AM, naomi.chu@mediatek.com wrote:
-> +static bool ufshcd_is_linereset_fatal(struct ufs_hba *hba)
-> +{
-> +	bool needs_reset = true;
-> +	unsigned long flags;
-> +	int err;
-> +
-> +	spin_lock_irqsave(hba->host->host_lock, flags);
-> +
-> +	if (ufshcd_is_saved_err_fatal(hba)) {
-> +		spin_unlock_irqrestore(hba->host->host_lock, flags);
-> +		goto out;
-> +	}
-> +
-> +	/*
-> +	 * Wait for 100ms to ensure the PA_INIT flow is complete,
-> +	 * and check for PA_INIT_ERR or other fatal errors.
-> +	 */
-> +	spin_unlock_irqrestore(hba->host->host_lock, flags);
+Initialize PPE UPDMEM source-mac table used during IPv6 traffic hw
+acceleration.
+Introduce flowtable hw acceleration for PPPoE traffic.
 
-Please use scoped_guard(spinlock_irqsave) instead of calling 
-spin_lock_irqsave() and spin_unlock_irqrestore() directly.
+---
+Lorenzo Bianconi (2):
+      net: airoha: Initialize PPE UPDMEM source-mac table
+      net: airoha: Add PPPoE offload support
 
- > +	msleep(100);
+ drivers/net/ethernet/airoha/airoha_eth.c  |  2 ++
+ drivers/net/ethernet/airoha/airoha_eth.h  |  1 +
+ drivers/net/ethernet/airoha/airoha_ppe.c  | 60 ++++++++++++++++++++++++-------
+ drivers/net/ethernet/airoha/airoha_regs.h | 10 ++++++
+ 4 files changed, 60 insertions(+), 13 deletions(-)
+---
+base-commit: ea15e046263b19e91ffd827645ae5dfa44ebd044
+change-id: 20250413-b4-airoha-flowtable-pppoe-2c199f5059ea
 
-Can ufshcd_is_linereset_fatal() be called from IRQ context? If so,
-calling msleep() is not allowed. If it can't be called from IRQ
-context, saving and restoring 'flags' is not necessary.
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
-Bart.
 
