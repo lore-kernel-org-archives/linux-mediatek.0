@@ -4,93 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73395C54F2E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 May 2025 12:38:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38FF5C54ED0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 May 2025 13:18:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AGEcvDBfYeZBjwUC/CCx28OaHYTCv9ycCaOblUmx3bM=; b=z2BQTt2Tj4ojDJ4LPGYeetoWFa
-	88tFbXl7OPf3NXRxIOMQJ3FY7i+R/lDX9ab24zN/irNUQdkmijc3WIyOZbQ02KGrD87YlVj663J7H
-	7/XCqrjcVY0nii526BfH/v3xxuZqgeg0zmktdgXdeFfi7JoeEDubQ5ywKAMKbgGjZ9grQoZuORInn
-	YGmAHkPsbW41Y1bRzIMNVOJgZAxOesxTrkuSnRls09b0m2i77jqDLzJPp/XLbwGwr0yHfHZygHhVM
-	YNb5chRcOSg0BvK0dGo6BfFcFSBjkXl+DLs4cJDs1polUcZJs0OYvLt3IoF7Vj81XArVOV97bMCn4
-	it0Tgugg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/m0lhD5TLZ440p1Ln9LZrKk9CxCA5FWlLg85ARTR08E=; b=ipKH+x8khDJwC/i31sJbMhI/mx
+	/bOBVuAkTT753WNGJxvYzq1hsiG0aaSkFegc4giTm23DIq2U7Xo8L3KKq96dOzWBLYvf/50FSIcgN
+	3hiq4noydUE82+NevaA4BO6k826SQYNxAIReN5WTYXF0C/YYoIRB/VOGF0ArKrWuZvIQ+yEeiIwKe
+	5pIq24BekGttcnqT5yqhRP0wuVNMrkUXtFS6+u3Or4az5jeKahwX7ck61Jban0TFJgns+w+BH5gLo
+	dxsYSjPQx+R8ST+Yactx9vcdrsPOclvJTXM+F1G/RobcsjbPqPx9wX9UrISq+v8rneU+ahJlSFXPF
+	k0IToTTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uIRfP-00000003p42-2R6j;
-	Fri, 23 May 2025 12:38:27 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uISI6-00000003vao-03rn;
+	Fri, 23 May 2025 13:18:26 +0000
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uIQhZ-00000003isO-2XHA;
-	Fri, 23 May 2025 11:36:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=AGEcvDBfYeZBjwUC/CCx28OaHYTCv9ycCaOblUmx3bM=; b=OqXA7rcHVoUpldz0BrUIvC3Ke9
-	lTiwvIo0Ec7LhZbiPBhFfjn/kJVuwqPP9Hqcx5FluAiH0Wua2SzQFRv7y+olnB8qApyuqLltO/xQi
-	amMG4YFjH0DEEAKhUqoJayxkf0g/d+Pjh63KCcLFZNShmVH+xcy/SqumnlpgSh7MgQ9kMAFYIwlqx
-	9WjaKEQhdgsnRrSvsILsutppXDO1pp/4/hlBLAAcqyNQ4idDTGCweuJRfctbMVqtiLtZgJ1qbOXLY
-	Efkn4koVazkkd5GfxGNlgP72NXa4P+QsmjMuhMzSaoOZXgELKs0rV38MQ/GghphAeV20ZxF8vCjz6
-	zVql1VHA==;
-Received: from mailgw01.mediatek.com ([216.200.240.184])
-	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
-	id 1uIQhV-00000001ILI-2dpl;
-	Fri, 23 May 2025 11:36:36 +0000
-X-UUID: 25ff579437ca11f08d385d50fb11b32d-20250523
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=AGEcvDBfYeZBjwUC/CCx28OaHYTCv9ycCaOblUmx3bM=;
-	b=hhOWTUt1NH4pfuqOuUvkgSj+37Z2bArepHJi6y/XGa/+qwMwBAWP27ijsESo9s+jO38fsgNusrG3kStex7uyqjavz+PbLDaQZ326Vo1MpiuYjQ1aZVP0aVs+SiG6eSaOuF/sECz7AMrhU/qpwMHn2/qgakxY5djbqdmMGTTIRdw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:33e032b1-94c2-4d35-a7c7-2be42110ab96,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:0ef645f,CLOUDID:d25a35f1-2ded-45ed-94e2-b3e9fa87100d,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
-	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
-	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 25ff579437ca11f08d385d50fb11b32d-20250523
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
-	(envelope-from <skylake.huang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1850178189; Fri, 23 May 2025 04:36:20 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Fri, 23 May 2025 19:36:16 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Fri, 23 May 2025 19:36:16 +0800
-From: Sky Huang <SkyLake.Huang@mediatek.com>
-To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>, "David S. Miller"
-	<davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
-	<kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Daniel Golle
-	<daniel@makrotopia.org>, Qingfang Deng <dqfext@gmail.com>, SkyLake Huang
-	<SkyLake.Huang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	<linux-kernel@vger.kernel.org>, <netdev@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: Sky Huang <skylake.huang@mediatek.com>
-Subject: [PATCH net-next 1/2] net: phy: mtk-2p5ge: Add LED support for MT7988
-Date: Fri, 23 May 2025 19:36:00 +0800
-Message-ID: <20250523113601.3627781-2-SkyLake.Huang@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20250523113601.3627781-1-SkyLake.Huang@mediatek.com>
-References: <20250523113601.3627781-1-SkyLake.Huang@mediatek.com>
+	id 1uIRyZ-00000003sJV-0vqU;
+	Fri, 23 May 2025 12:58:16 +0000
+Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-442f5b3c710so75470005e9.1;
+        Fri, 23 May 2025 05:58:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1748005093; x=1748609893; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=/m0lhD5TLZ440p1Ln9LZrKk9CxCA5FWlLg85ARTR08E=;
+        b=ZIxjqj2lvWzrSzxEWOjkAeLTHbYmgfRIHs3dUgtSzZLQ4XNjVhgwlYU0iX18vrDRei
+         tM7J2e8gnRdNezPwRFMywVU7ysFegMMNHLevOm9t/ww587nz/BxAgUvg7O40GJXGNJAq
+         RVM4oYy0lPjm1iXF3HE+SywBnxR61KYEf0Q1WycdKY3oTzx+ZjWepMdOz9p/hTMzU2oD
+         7DTN0H3HVgCLVs96KoVRue2VAEzVaA3fv+Y+MGUN8+gd8/WzzskDTNv3bIQ4JXbHopNT
+         w1WpF2fsFdvZsbgo3CktwkHEkZq5BLZz2NWp/9jwiHriqzrDtTw/hHZKqTEF9J0923KN
+         //kA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1748005093; x=1748609893;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=/m0lhD5TLZ440p1Ln9LZrKk9CxCA5FWlLg85ARTR08E=;
+        b=tVT/nPe72pKE4cDuoh4PQ9JYX7ItbbXCguDgIaXs5LTfTZqnqyjBrPMjYur1MEgur0
+         aq5Iq4AfipfiuoC8qetlAfGx67wRWbErkmTmllxuQZs6UpPCGTRoOISQrg+FpBEE1ZzL
+         Ln51nDHqzxGaFPnUEF/vfCZDhjBQ6DhaaYfpnyW2jyP5OcIs/w07+hIt+IcJK+BgyEke
+         KypWN73tzJjpGIGYu8tyTjlT7r1vCLfP2iBAvUCHcJi/i10h72zKD4AlomGDOYJ4Asuh
+         lkHRvwDjCKxpDFh1xR5xUEOGNUNdU5rTtunNaKnddVx5pr9wv5HIx4+rR/NQ2TE/LbKm
+         /q1Q==
+X-Forwarded-Encrypted: i=1; AJvYcCU7rQw/tpXaUAodB/PlCT1MDUs+0Vl9DrpcBBvGGEg2/ulzdUCxWR6F9Zrfh3uqp0lMCZ74y7MXmtY1R/dCVcU=@lists.infradead.org, AJvYcCWNmwKAZsWqtLvdmDpm/fJKPFFwxTXNfzV6Did3EYc3JC4XEOnISuVlBGxKAgKftKz2Wk3P0MgWnGNsTEafKiFI@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy2Pmk2b5G2u4VqcH0yGulQZcgWB3lVmuplp0Y382FDz0ZAfnE1
+	qojin+PtRtl4magpofwee9Ad6QI6duzFl5wd3a58PMnrQXnyr30GQLcB
+X-Gm-Gg: ASbGncsUu3ivMmkY6CrJta4VpoSEFQB16H3NjVxrOCPCyK0hSdwU18blJezhcHl5DHO
+	Ye0DuwwRcA3UWmoLI2D3mmQ3VDZ1FU4bjzZo09fj2tNBH3q9RiI12fKx319b086Uk4CZ5jEMZ46
+	0y/IRwQ1qE+icz0aAHD0No5UvqyddECvcg8H7WjNCJ0NKLjiU10CyTEgFDOxdDz3W3na2xFJhCH
+	qhJZ3kIfTkZadh6107JzZRGdPH7XlwQArHwqzebqUpPjf3G90sjXHjjGPj/bTeu8AwyKcbGqAnz
+	BqnMwWcIKKtyEqpdnIPIc4YTCE9bxCO6BuVA3laggzLz9vYEHAtVjQI4tB/FLV57eCw5EZ+g
+X-Google-Smtp-Source: AGHT+IGf1pWMo4SXQAxm9lw7KSPXQcTfdAiwZDS6HUYzhHSDlhRC9FPIJF7bCo4eoueCnm0Os3tKtg==
+X-Received: by 2002:a5d:5f94:0:b0:3a3:7593:81a1 with SMTP id ffacd0b85a97d-3a4c2343b5fmr2624012f8f.43.1748005092950;
+        Fri, 23 May 2025 05:58:12 -0700 (PDT)
+Received: from [192.168.0.14] ([178.233.24.142])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a35ca9417dsm26093920f8f.101.2025.05.23.05.58.11
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 23 May 2025 05:58:12 -0700 (PDT)
+Message-ID: <8f9ae0f1-130f-482c-b0a2-d5a403639099@gmail.com>
+Date: Fri, 23 May 2025 15:58:10 +0300
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: mt6358-regulator does not probe automatically on MT8183 and
+ MT8186 Chromebooks
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Mark Brown <broonie@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <f3c6ea1d-da0f-40cc-ba70-7cabb5c3189f@gmail.com>
+ <dc21b01f-e89f-42f5-b6d1-f6a00a524235@collabora.com>
+From: Alper Nebi Yasak <alpernebiyasak@gmail.com>
+Content-Language: en-US, tr, en-GB
+In-Reply-To: <dc21b01f-e89f-42f5-b6d1-f6a00a524235@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250523_123634_052193_561E23AF 
-X-CRM114-Status: GOOD (  16.54  )
+X-CRM114-CacheID: sfid-20250523_055815_267480_0FA80A11 
+X-CRM114-Status: GOOD (  28.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,159 +102,121 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sky Huang <skylake.huang@mediatek.com>
+Hello again,
 
-Add LED support for MT7988's built-in 2.5Gphy. LED hardware has almost
-the same design with MT7981's/MT7988's built-in GbE. So hook the same
-helper function here.
+On 2024-12-23 14:21 +03:00, AngeloGioacchino Del Regno wrote:
+> Il 21/12/24 16:38, Alper Nebi Yasak ha scritto:
+>> Hello,
+>>
+>> I'm left with one small problem trying to boot Debian on MT8183 and
+>> MT8186 Chromebooks (Cozmo and Magneton respectively). I see a lot of
+>> probe deferrals and get dropped into an initramfs shell. All of them
+>> get resolved if I run `modprobe mt6358-regulator`, after which I can
+>> exit the initramfs shell to continue booting.
+>>
+>> It has been happening for a long time, still unsolved as of v6.12 and
+>> next-20241220. I am using `softdep mediatek-drm pre: mt6358-regulator`
+>> and so on in /etc/modprobe.d/ to trigger it to probe, as a workaround.
+>>
+>> But I would like if it was solved upstream so distro kernels can work
+>> "out of the box". Any ideas why isn't it probing automatically, and how
+>> to make it so it works?
+>>
+>> More info from a serial connection below (on mt8183-kukui-jacuzzi-cozmo):
+>>
+> 
+> It's a bit odd, thanks for reporting.
+> 
+> I'll check that next year........ (which is really in 2 weeks anyway, but it's fun
+> to say)
 
-Before mtk_phy_leds_state_init(), set correct default values of LED0
-and LED1.
+I couldn't manage to ping you for this, let alone look further into it
+until now. It has been a while, I assume it's still not fixed, do you
+need me to test again?
 
-Signed-off-by: Sky Huang <skylake.huang@mediatek.com>
----
- drivers/net/phy/mediatek/mtk-2p5ge.c | 104 +++++++++++++++++++++++++--
- 1 file changed, 98 insertions(+), 6 deletions(-)
+> Btw, that softdep is obviously not right, but I think I shouldn't even have pointed
+> that out; still, better safe than sorry, anyway.
 
-diff --git a/drivers/net/phy/mediatek/mtk-2p5ge.c b/drivers/net/phy/mediatek/mtk-2p5ge.c
-index e147eab52..de8a41a18 100644
---- a/drivers/net/phy/mediatek/mtk-2p5ge.c
-+++ b/drivers/net/phy/mediatek/mtk-2p5ge.c
-@@ -249,8 +249,80 @@ static int mt798x_2p5ge_phy_get_rate_matching(struct phy_device *phydev,
- 	return RATE_MATCH_PAUSE;
- }
- 
-+static const unsigned long supported_triggers =
-+	BIT(TRIGGER_NETDEV_FULL_DUPLEX) |
-+	BIT(TRIGGER_NETDEV_LINK)        |
-+	BIT(TRIGGER_NETDEV_LINK_10)     |
-+	BIT(TRIGGER_NETDEV_LINK_100)    |
-+	BIT(TRIGGER_NETDEV_LINK_1000)   |
-+	BIT(TRIGGER_NETDEV_LINK_2500)   |
-+	BIT(TRIGGER_NETDEV_RX)          |
-+	BIT(TRIGGER_NETDEV_TX);
-+
-+static int mt798x_2p5ge_phy_led_blink_set(struct phy_device *phydev, u8 index,
-+					  unsigned long *delay_on,
-+					  unsigned long *delay_off)
-+{
-+	bool blinking = false;
-+	int err = 0;
-+
-+	err = mtk_phy_led_num_dly_cfg(index, delay_on, delay_off, &blinking);
-+	if (err < 0)
-+		return err;
-+
-+	err = mtk_phy_hw_led_blink_set(phydev, index, blinking);
-+	if (err)
-+		return err;
-+
-+	if (blinking)
-+		mtk_phy_hw_led_on_set(phydev, index, MTK_2P5GPHY_LED_ON_MASK,
-+				      false);
-+
-+	return 0;
-+}
-+
-+static int mt798x_2p5ge_phy_led_brightness_set(struct phy_device *phydev,
-+					       u8 index,
-+					       enum led_brightness value)
-+{
-+	int err;
-+
-+	err = mtk_phy_hw_led_blink_set(phydev, index, false);
-+	if (err)
-+		return err;
-+
-+	return mtk_phy_hw_led_on_set(phydev, index, MTK_2P5GPHY_LED_ON_MASK,
-+				     (value != LED_OFF));
-+}
-+
-+static int mt798x_2p5ge_phy_led_hw_is_supported(struct phy_device *phydev,
-+						u8 index, unsigned long rules)
-+{
-+	return mtk_phy_led_hw_is_supported(phydev, index, rules,
-+					   supported_triggers);
-+}
-+
-+static int mt798x_2p5ge_phy_led_hw_control_get(struct phy_device *phydev,
-+					       u8 index, unsigned long *rules)
-+{
-+	return mtk_phy_led_hw_ctrl_get(phydev, index, rules,
-+				       MTK_2P5GPHY_LED_ON_SET,
-+				       MTK_2P5GPHY_LED_RX_BLINK_SET,
-+				       MTK_2P5GPHY_LED_TX_BLINK_SET);
-+};
-+
-+static int mt798x_2p5ge_phy_led_hw_control_set(struct phy_device *phydev,
-+					       u8 index, unsigned long rules)
-+{
-+	return mtk_phy_led_hw_ctrl_set(phydev, index, rules,
-+				       MTK_2P5GPHY_LED_ON_SET,
-+				       MTK_2P5GPHY_LED_RX_BLINK_SET,
-+				       MTK_2P5GPHY_LED_TX_BLINK_SET);
-+};
-+
- static int mt798x_2p5ge_phy_probe(struct phy_device *phydev)
- {
-+	struct mtk_socphy_priv *priv;
- 	struct pinctrl *pinctrl;
- 	int ret;
- 
-@@ -273,19 +345,34 @@ static int mt798x_2p5ge_phy_probe(struct phy_device *phydev)
- 	if (ret < 0)
- 		return ret;
- 
--	/* Setup LED */
-+	/* Setup LED. On default, LED0 is on/off when link is up/down. As for
-+	 * LED1, it blinks as tx/rx transmission takes place.
-+	 */
- 	phy_set_bits_mmd(phydev, MDIO_MMD_VEND2, MTK_PHY_LED0_ON_CTRL,
--			 MTK_PHY_LED_ON_POLARITY | MTK_PHY_LED_ON_LINK10 |
--			 MTK_PHY_LED_ON_LINK100 | MTK_PHY_LED_ON_LINK1000 |
--			 MTK_PHY_LED_ON_LINK2500);
--	phy_set_bits_mmd(phydev, MDIO_MMD_VEND2, MTK_PHY_LED1_ON_CTRL,
--			 MTK_PHY_LED_ON_FDX | MTK_PHY_LED_ON_HDX);
-+			 MTK_PHY_LED_ON_POLARITY | MTK_2P5GPHY_LED_ON_SET);
-+	phy_clear_bits_mmd(phydev, MDIO_MMD_VEND2, MTK_PHY_LED0_BLINK_CTRL,
-+			   MTK_2P5GPHY_LED_TX_BLINK_SET |
-+			   MTK_2P5GPHY_LED_RX_BLINK_SET);
-+	phy_clear_bits_mmd(phydev, MDIO_MMD_VEND2, MTK_PHY_LED1_ON_CTRL,
-+			   MTK_PHY_LED_ON_FDX | MTK_PHY_LED_ON_HDX |
-+			   MTK_2P5GPHY_LED_ON_SET);
-+	phy_set_bits_mmd(phydev, MDIO_MMD_VEND2, MTK_PHY_LED1_BLINK_CTRL,
-+			 MTK_2P5GPHY_LED_TX_BLINK_SET |
-+			 MTK_2P5GPHY_LED_RX_BLINK_SET);
- 
- 	/* Switch pinctrl after setting polarity to avoid bogus blinking */
- 	pinctrl = devm_pinctrl_get_select(&phydev->mdio.dev, "i2p5gbe-led");
- 	if (IS_ERR(pinctrl))
- 		dev_err(&phydev->mdio.dev, "Fail to set LED pins!\n");
- 
-+	priv = devm_kzalloc(&phydev->mdio.dev, sizeof(struct mtk_socphy_priv),
-+			    GFP_KERNEL);
-+	if (!priv)
-+		return -ENOMEM;
-+	phydev->priv = priv;
-+
-+	mtk_phy_leds_state_init(phydev);
-+
- 	return 0;
- }
- 
-@@ -303,6 +390,11 @@ static struct phy_driver mtk_2p5gephy_driver[] = {
- 		.resume = genphy_resume,
- 		.read_page = mtk_phy_read_page,
- 		.write_page = mtk_phy_write_page,
-+		.led_blink_set = mt798x_2p5ge_phy_led_blink_set,
-+		.led_brightness_set = mt798x_2p5ge_phy_led_brightness_set,
-+		.led_hw_is_supported = mt798x_2p5ge_phy_led_hw_is_supported,
-+		.led_hw_control_get = mt798x_2p5ge_phy_led_hw_control_get,
-+		.led_hw_control_set = mt798x_2p5ge_phy_led_hw_control_set,
- 	},
- };
- 
--- 
-2.45.2
+Yep, that was just a debug trick I use. My current workaround is using
+CONFIG_MFD_MT6397=y and CONFIG_REGULATOR_MT6358=y like everyone else (as
+in the defconfig).
 
+
+On 2024-12-23 19:00 +03:00, Mark Brown wrote:
+> As indicated in that thread the MFD should register the regulator
+> function driver with the name "mt6358-regulator" used by the driver,
+> then the existing MODULE_DEVICE_TABLE() will DTRT.
+
+As far as I can see, mt6397-core.c is doing a devm_mfd_add_devices()
+call with the necessary data, roughly paraphrasing:
+
+> static const struct mfd_cell mt6358_devs[] = {
+>  [...]
+> 	}, {
+> 		.name = "mt6358-regulator",
+> 		.of_compatible = "mediatek,mt6358-regulator"
+> 	}, {
+>  [...]
+> };
+> 
+> static const struct chip_data mt6358_core = {
+> 	.cid_addr = MT6358_SWCID,
+> 	.cid_shift = 8,
+> 	.cells = mt6358_devs,
+> 	.cell_size = ARRAY_SIZE(mt6358_devs),
+> 	.irq_init = mt6358_irq_init,
+> };
+> 
+> static int mt6397_probe(struct platform_device *pdev)
+> {
+> 	int ret;
+> 	unsigned int id = 0;
+> 	struct mt6397_chip *pmic;
+> 	const struct chip_data *pmic_core;
+>  [...]
+> 	pmic_core = of_device_get_match_data(&pdev->dev);
+> 	if (!pmic_core)
+> 		return -ENODEV;
+>  [...]
+> 	ret = devm_mfd_add_devices(&pdev->dev, PLATFORM_DEVID_NONE,
+> 				   pmic_core->cells, pmic_core->cell_size,
+> 				   NULL, 0, pmic->irq_domain);
+>  [...]
+> 	return ret;
+> }
+> 
+> static const struct of_device_id mt6397_of_match[] = {
+>  [...]
+> 	}, {
+> 		.compatible = "mediatek,mt6358",
+> 		.data = &mt6358_core,
+> 	}, {
+>  [...]
+> };
+> MODULE_DEVICE_TABLE(of, mt6397_of_match);
+> 
+> static const struct platform_device_id mt6397_id[] = {
+> 	{ "mt6397", 0 },
+> 	{ },
+> };
+> MODULE_DEVICE_TABLE(platform, mt6397_id);
+> 
+> static struct platform_driver mt6397_driver = {
+> 	.probe = mt6397_probe,
+> 	.driver = {
+> 		.name = "mt6397",
+> 		.of_match_table = mt6397_of_match,
+> 	},
+> 	.id_table = mt6397_id,
+> };
+> 
+> module_platform_driver(mt6397_driver);
+
+It has more things like "mt6359-auxadc" and "mtk-pmic-keys", that also
+list compatibles in the non-mfd driver's MODULE_DEVICE_TABLE(of, ...).
+See `git grep -C5 '\"mediatek,mt63..\+-' -- drivers/`.
+
+Maybe if the target driver isn't available by the time MFD registers it,
+it doesn't try again later? And so people have added the compatibles to
+subdevices to let them get another chance to probe?
 
