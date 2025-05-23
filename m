@@ -4,86 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1AF2C54ED0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 May 2025 16:26:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66BFBC54ED1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 May 2025 16:26:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=qVA1Wq02RwkJ8tKlxk+KwgWL1KTqqPjG9SMiOazJCzY=; b=QNXM2z7Z/gdYWkiqtvh8TuTLP7
-	FwF2wePaCBjYkvcimXB8DZOeMz9E2Ha5URzenz3KMgHqYD8v+B6+yMyUih0Umth3mf44p/rpxlhiC
-	y1Nusrkugi19LKx0+q44y2x0J3QwJ4m3A4655uW2cDaAE46TNruUEZII8EFIySjAIOG00lqwy+tqQ
-	1ygRJhAkjkMT0+Vk0JR19cE2siWD/1MNN7k/1QdiaFHvd81gjLABI+45yoK3E784jsM+DCoblQEOh
-	XcTb00eygSMihWWzfZ+yB5RjjCNoqRjZXx3cJwc2qVbplFfuDmfF+DP2lNkd+bhI98nv29xduD026
-	OTGwH4Gw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=S6Ip/EGBVi6qARnvgxZC7YGNzlBftLG+VPwtRvZjRDs=; b=uP3aBFg0VgbX/ZmT5x2GGOKrjJ
+	jYlRUaMWA0EnaEd1e0cwJCMdrsWW6FK4pSNJnhJJDfAk4UImklr+Hn6HDQZE+DCaDjKsLktnEvQfI
+	UrWWt76l6OWiEjpvNXbS/T3lLQ8F07E6WSmVrEu72mUup9/UWzYiDvVH89IP2k0JYSfkze1Df0j3E
+	AJLM7NZOmsj1Kst0wnL2rQZN2LmZHQ/3WbjbJ0Qz27/CJO1TPsfCQXjK7qvqvWjpEvjZ1n6qJqyMU
+	a3+nSBSe24tWQNoFMOH9NaP9F36rl54wPe8c2B7hRNQr538Fs07HJPT7d5qqoSisYP/XXxcDjfrMu
+	SRWRmY1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uIVDn-00000004Oet-3HDo;
-	Fri, 23 May 2025 16:26:11 +0000
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+	id 1uIVDy-00000004Oin-1iKp;
+	Fri, 23 May 2025 16:26:22 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uIUvD-00000004LQ1-1bNu
-	for linux-mediatek@lists.infradead.org;
-	Fri, 23 May 2025 16:07:01 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-3a36e090102so46987f8f.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 23 May 2025 09:06:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1748016418; x=1748621218; darn=lists.infradead.org;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=qVA1Wq02RwkJ8tKlxk+KwgWL1KTqqPjG9SMiOazJCzY=;
-        b=HVxB0Z7cGLXznn1fucStNVy5NKPK06UQow4kxUHRBKZ4+lCQfI6OtQ3HtJ+UIq4pxw
-         wx/8H+xRsI3ArzgugofS4mI+wS5V8S9ix2Vo5dGkigp38CZd7bD+9YchEg250fs3AGhH
-         A+UqzcNpbaiUOO2UubBYBfgy/iu4x1hcQpvO8m0xY0YgLLChwGvgzrEKmlU3+ufxAkry
-         3p0SmXMacTXb1pOWPp4wT1E691IUY4qdXssJ9mkNC7iR6VzlKf8YoR5SIttW4NzI01vK
-         ZxF0UotI6cCJOxUUHb3/Q3j/HxkBEeONlPVdanY0XhSHvBNZQt2JO+AVerAFdAHqseD9
-         ApaQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1748016418; x=1748621218;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=qVA1Wq02RwkJ8tKlxk+KwgWL1KTqqPjG9SMiOazJCzY=;
-        b=SHhpOWDPr53d2ggCmJsdaTp6Qu9+97+guvCJd49aIVKCH251ixf6jCXMZkuKu+SzVq
-         pg3QQ1cDbnkzaI9uZ2Nem5unpv6KHdoz7Bazm5bHDzixIztirNdG+MkZullh/4OHYYXZ
-         zRfUk3bntOrVEA2Q8CugluBI3EtUT2gXmNLcCAwXAFXXeRbuxs8mTBvk3Wzk3GDA9Nno
-         ze4yVnO5Z1m/3BLicwyLWiyFIhPOpPpyGOPnNah07UZfPLUfkmrXyveWbFYu9ZkW8PpV
-         3Dj6vZW3gVUJuErMyvYGfuNSOlst5TiAtAJbQzPR6fScJ6uC8Bu5DbXqaG5WGC6mZUEN
-         1Zaw==
-X-Forwarded-Encrypted: i=1; AJvYcCWSrU7abUGpdfuWk+UxiRamRvtRdxJvYj+GHHqYcCzfdRmQbT5qc2U/yBeTiX5KVxJYFWgeDFyS5fg4ecOIFQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzuIPDxc7ic8R8LANp7MSOohjQosYYftaiiyg+OvQlrek9a4O1c
-	7ISbIYdaIIHJlNU0/aiWSDA9upJ0YeWYoxhFMjDXc8Yslu7yQoMBV5kb57jFSDUmyow=
-X-Gm-Gg: ASbGncsE8y8LZcMCfB5SfxoNYLyLcxC6FOuB1F54hls66+jgHDse+hT6vVjxr08gB4Y
-	7+zQZ953nMIA1O9ewF6wfjx2WkXwfGCS9zE20Qp81JfazumGjyO1PGvIyCFiYbb3dsJDinAjTbs
-	6SJQREU+Q8nn3lnUQrhbkpk5XmEMgvw09HPocjvLC/pBDDG4jR4ZqAbOHGRkuOcUVrNq1VBp2A2
-	4qYxyFFJceIt+2NnE6Tee5duvreyXcuNTo7tDSA4VMUtEtD2A0z3oBNDk6YE5zgYZgfXAanVzGO
-	nbrQNZEOHF9L8pPA5gQr5PY6C6C1qHWOTeC12F5tyD3VVvYf06wB2RaBEFAkVMGPTsE=
-X-Google-Smtp-Source: AGHT+IF56UQSCz5q5QoQKyBHSndYLKMFyKvT78EcNJOHgSCsSRrkaKawUqXQh0qLd3vhveIRpS1mOQ==
-X-Received: by 2002:a05:6000:2011:b0:3a3:6f1a:b8f9 with SMTP id ffacd0b85a97d-3a36f1aba52mr19442998f8f.15.1748016417661;
-        Fri, 23 May 2025 09:06:57 -0700 (PDT)
-Received: from localhost ([196.207.164.177])
-        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-3a35ca5a8cfsm27334537f8f.37.2025.05.23.09.06.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 23 May 2025 09:06:57 -0700 (PDT)
-Date: Fri, 23 May 2025 19:06:54 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Qiu-ji Chen <chenqiuji666@gmail.com>
-Cc: Sean Wang <sean.wang@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
+	id 1uIUwJ-00000004Lc5-3h1z;
+	Fri, 23 May 2025 16:08:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=S6Ip/EGBVi6qARnvgxZC7YGNzlBftLG+VPwtRvZjRDs=; b=kaIJ7NZmYZz4lPuELXdpq1WV7X
+	ZCb+RYptW0P62b/zuxgLG2q7tT2tgijV9bTtjvMpwCahZum5akmbWi4lowtKUyPdZre7NG/yIJ3jF
+	ZzJp5SE0HaROQUIBC6CZy+m+INjeEgq9J3PW0PW6WKIks9szJN0MICpFWSmE6nSE4GID7UQja1L+r
+	fkxQG9Z8xwh3asSOfy7pIYeAKonPm5V2kp2FcrX+SRROL942JF61MkXGrtT1WE+u8y7To+EOGl7aT
+	IaRbqodzW8Susz81hLDO6bp2bkImIuvALmUhe+qM7raQFr9Wf9R3BfiOJwBnszMiUL17MOprD6erO
+	qhuQ8VoQ==;
+Received: from vps0.lunn.ch ([156.67.10.101])
+	by desiato.infradead.org with esmtps (Exim 4.98.1 #2 (Red Hat Linux))
+	id 1uIUwG-00000001LrM-2T0h;
+	Fri, 23 May 2025 16:08:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=S6Ip/EGBVi6qARnvgxZC7YGNzlBftLG+VPwtRvZjRDs=; b=jkq3ytWedokPjdjZjKAIp5/xdl
+	H3VUwiycazQtojv+4ajmUDoFRq6IhH/xb3AvQqGoGsSHQVogjbZcRj53KX9YV3phb4VwuaEmDYyUK
+	aykPsQrPLpamYPXtgdrOfjS/Tb+NHzDUpyVOkQDKzY7/QUwZUdLciExd7yZG6CpcmizI=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1uIUw1-00Dczn-O9; Fri, 23 May 2025 18:07:49 +0200
+Date: Fri, 23 May 2025 18:07:49 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Sky Huang <SkyLake.Huang@mediatek.com>
+Cc: Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Qingfang Deng <dqfext@gmail.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	kernel-janitors@vger.kernel.org
-Subject: [PATCH] dmaengine: mediatek: Re-enable IRQs in mtk_cqdma_tx_status()
-Message-ID: <aDCdHh-G2ShU6uid@stanley.mountain>
+	linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next 2/2] net: phy: mtk-ge-soc: Fix LED behavior if
+ blinking is not set.
+Message-ID: <39d5d8af-0bac-4b91-85df-4e04a5835f53@lunn.ch>
+References: <20250523113601.3627781-1-SkyLake.Huang@mediatek.com>
+ <20250523113601.3627781-3-SkyLake.Huang@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-X-Mailer: git-send-email haha only kidding
+In-Reply-To: <20250523113601.3627781-3-SkyLake.Huang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250523_090659_423708_E4CAB01B 
-X-CRM114-Status: GOOD (  10.25  )
+X-CRM114-CacheID: sfid-20250523_170804_908738_D1BDCFB2 
+X-CRM114-Status: GOOD (  10.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,33 +92,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This code calls spin_lock_irqsave() twice but obviously we can't store
-two sets of flags in the same "flags" variable.  The result is that we
-never re-enable IRQs in mtk_cqdma_tx_status().
+On Fri, May 23, 2025 at 07:36:01PM +0800, Sky Huang wrote:
+> From: Sky Huang <skylake.huang@mediatek.com>
+> 
+> If delay_on==0 and delay_off==0 are passed to
+> mt798x_2p5ge_phy_led_blink_set() and mtk_phy_led_num_dly_cfg(),
+> blinking is actually not set. So don't clean "LED on" status under
+> this circumstance.
 
-Fixes: 157ae5ffd76a ("dmaengine: mediatek: Fix a possible deadlock error in mtk_cqdma_tx_status()")
-Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
+Actually, i think mtk_phy_led_num_dly_cfg() is wrong.
+
+https://docs.kernel.org/leds/leds-class.html#hardware-accelerated-blink-of-leds
+
+   The blink_set() function should choose a user friendly blinking
+   value if it is called with *delay_on==0 && *delay_off==0
+   parameters. In this case the driver should give back the chosen
+   value through delay_on and delay_off parameters to the leds
+   subsystem.
+
+That is not what mtk_phy_led_num_dly_cfg() does.
+
+    Andrew
+
 ---
- drivers/dma/mediatek/mtk-cqdma.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/dma/mediatek/mtk-cqdma.c b/drivers/dma/mediatek/mtk-cqdma.c
-index 47c8adfdc155..9f0c41ca7770 100644
---- a/drivers/dma/mediatek/mtk-cqdma.c
-+++ b/drivers/dma/mediatek/mtk-cqdma.c
-@@ -449,9 +449,9 @@ static enum dma_status mtk_cqdma_tx_status(struct dma_chan *c,
- 		return ret;
- 
- 	spin_lock_irqsave(&cvc->pc->lock, flags);
--	spin_lock_irqsave(&cvc->vc.lock, flags);
-+	spin_lock(&cvc->vc.lock);
- 	vd = mtk_cqdma_find_active_desc(c, cookie);
--	spin_unlock_irqrestore(&cvc->vc.lock, flags);
-+	spin_unlock(&cvc->vc.lock);
- 	spin_unlock_irqrestore(&cvc->pc->lock, flags);
- 
- 	if (vd) {
--- 
-2.47.2
-
+pw-bot: cr
 
