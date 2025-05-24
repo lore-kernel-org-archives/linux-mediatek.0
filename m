@@ -4,69 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3C62C54E71
-	for <linux-mediatek@archiver.kernel.org>; Sat, 24 May 2025 07:29:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64FE0C54E71
+	for <linux-mediatek@archiver.kernel.org>; Sat, 24 May 2025 08:54:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Zu3Rr90y+tiM/8UlA4hAOXkaFy8wswdz0HsN6oicuAI=; b=Ha9z4g6uzG5ZFfEKSHHZYoeaFk
-	5bxH5Amhg1E/ATaXMx7l97DrqmehgkVQs5PrhG7lEZYub9UdnnOBSOXSPZ+NqPeAUswXHy/no+hOn
-	WnPw25M6jpBVYJ7IXGvNEUzX+bXnN3/2JlfbeAWB0ODyQdWUYQuquXa2joPe/2otN3d36AmsGJ8hn
-	8lnQS3rTexW3g0O/hvDYiz7rS2M2hkzsukK5NH0hyfDyWC85l28p7KSHsLeBgL6VczmSP8Ixnwn9s
-	ule2H1kHMDRnL9ongieCelV1eBwp9tkaCdaFwgX4AeH8PjhQasOikPBt9z9NOga0EqPRjynNGfFsP
-	y59hz1FA==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XYBFJ9U8mLqbbc+8f0SAmMzl/oGwiW2pOKW6PfNaUxo=; b=FyXNratkCLuAI06i70uUnak2i7
+	MNmVtoaorl5zWdWDYZKtacKmM5wiGRsalDfvuGmV2neHPwLnipXBD+jpZUYOQRqAumc2oMsXRzQT8
+	ePagARuh+/wyWT7VGV2yPdp+nKo7aEciY1+Hugobbp0mgR7GhGrfhGnv3nzpzVktJdVakExMTB5tH
+	tJfnh+6n476xY9jk+wNQpIX32gcaKomDZ4K0ZLKEjwVhM3qat2sTbziypSyx8lg4Z9rbadcgOO5+8
+	s1bLIXqYg7t6K54vIawawU+V5nMjEFrgM/l3zDGdoUcn7Q44qiVMtfbIzUx/WPgolWKA+zTAlugWy
+	04t4WGnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uIjK4-00000005Qw3-2UXZ;
-	Sat, 24 May 2025 07:29:36 +0000
-Received: from smtp-78.smtpout.orange.fr ([80.12.242.78] helo=smtp.smtpout.orange.fr)
+	id 1uIkeI-00000005deQ-1OyI;
+	Sat, 24 May 2025 08:54:34 +0000
+Received: from smtp-74.smtpout.orange.fr ([80.12.242.74] helo=smtp.smtpout.orange.fr)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uIjK0-00000005QuT-3sUa;
-	Sat, 24 May 2025 07:29:34 +0000
-Received: from localhost.localdomain
+	id 1uIkeD-00000005dds-0cmq;
+	Sat, 24 May 2025 08:54:32 +0000
+Received: from [IPV6:2a01:cb10:785:b00:8347:f260:7456:7662]
  ([IPv6:2a01:cb10:785:b00:8347:f260:7456:7662])
 	by smtp.orange.fr with ESMTPA
-	id IjJtuiv3wVLIhIjJtu03o1; Sat, 24 May 2025 09:29:27 +0200
+	id Ike6uMjyN9ZLlIke7uwbb3; Sat, 24 May 2025 10:54:25 +0200
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
-	s=t20230301; t=1748071767;
-	bh=Zu3Rr90y+tiM/8UlA4hAOXkaFy8wswdz0HsN6oicuAI=;
-	h=From:To:Subject:Date:Message-ID:MIME-Version;
-	b=M2xlF3EbgDjP+m9zcGtmTntP7L6mbLUqQBpHne6e435s2uUnBR3w6T2k2JWT344oO
-	 3UTgq9e0u/oJUn8f66BhmWNQNlgxRR3dWpd60Wc4CdnMPn0QaWLJqUpfVXZxGY7xMR
-	 1WJLsXo/t/EqcQCRgibLgjg2uBiBZT0QTPtGC9CTZdkyaCY7dmvSCEzH+2/Ih1lgLk
-	 OvMv4awXIjtr2HV3iVfPQzCNoDSG/U6AZYIgxHx6Vhf1LNMw3ErvJO4eVDCL2AJjfS
-	 N6A6K73uC2JJBQrC8B4QHNiE0Ihb+qWtyONpWDMmAz8aGkvy9UhY4JXTrXT1TncirF
-	 PPvdEzTZAekVw==
-X-ME-Helo: localhost.localdomain
-X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
-X-ME-Date: Sat, 24 May 2025 09:29:27 +0200
+	s=t20230301; t=1748076866;
+	bh=XYBFJ9U8mLqbbc+8f0SAmMzl/oGwiW2pOKW6PfNaUxo=;
+	h=Message-ID:Date:MIME-Version:Subject:To:From;
+	b=sTEdrC0DBn7oWtbnLgUXHImJiDKkX1AGajfKV0lWlBMrXZdL6Y3JiD+BcObayhREZ
+	 +SApgEFK+URDi5StLfr88TRbIIEh3kkQSI5ry/c7sSSshkuThg7/LD3URWldrnBa01
+	 boAEBYBhxkqTSXaj0aH3oWnmYJwFKcZO3NuPBjkqd60Yvk/kTRdasyY+KPhtfYpx8p
+	 hBJ0PPowjgqB8tgEEXS+uNtL7LbzNk7AcIAorHKE+3vsa0GsHxxqwwxFQMPkBiYQei
+	 ywwpfpYEEWB9OeW5ATKOOv6uZmG9FGGI1X08HufsOaOdIiFBPpoyEm7hXZDWjCcWpC
+	 r7dlaRNlq9IEA==
+X-ME-Helo: [IPV6:2a01:cb10:785:b00:8347:f260:7456:7662]
+X-ME-Auth: bWFyaW9uLmphaWxsZXRAd2FuYWRvby5mcg==
+X-ME-Date: Sat, 24 May 2025 10:54:26 +0200
 X-ME-IP: 2a01:cb10:785:b00:8347:f260:7456:7662
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-To: Lorenzo Bianconi <lorenzo@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>
-Cc: linux-kernel@vger.kernel.org,
-	kernel-janitors@vger.kernel.org,
-	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
-	Simon Horman <horms@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	netdev@vger.kernel.org
-Subject: [PATCH v4 net] net: airoha: Fix an error handling path in airoha_alloc_gdm_port()
-Date: Sat, 24 May 2025 09:29:11 +0200
-Message-ID: <1b94b91345017429ed653e2f05d25620dc2823f9.1746715755.git.christophe.jaillet@wanadoo.fr>
-X-Mailer: git-send-email 2.49.0
+Message-ID: <7ae4c256-b14e-4add-b5f1-8b861e853407@wanadoo.fr>
+Date: Sat, 24 May 2025 10:54:22 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 2/4] net: airoha: Fix an error handling path in
+ airoha_probe()
+To: Simon Horman <horms@kernel.org>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn
+ <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, linux-kernel@vger.kernel.org,
+ kernel-janitors@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+References: <5c94b9b345017f29ed653e2f05d25620d128c3f0.1746715755.git.christophe.jaillet@wanadoo.fr>
+ <47910951a3fa3c3bd2a942210e821d9301362128.1746715755.git.christophe.jaillet@wanadoo.fr>
+ <20250516201625.GI3339421@horms.kernel.org>
+Content-Language: en-US, fr-FR
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+In-Reply-To: <20250516201625.GI3339421@horms.kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250524_002933_370469_4EC584EC 
-X-CRM114-Status: GOOD (  13.30  )
+X-CRM114-CacheID: sfid-20250524_015429_596345_9907CBDE 
+X-CRM114-Status: UNSURE (   8.54  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,63 +83,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If register_netdev() fails, the error handling path of the probe will not
-free the memory allocated by the previous airoha_metadata_dst_alloc() call
-because port->dev->reg_state will not be NETREG_REGISTERED.
+Le 16/05/2025 à 22:16, Simon Horman a écrit :
+> On Thu, May 15, 2025 at 09:59:36PM +0200, Christophe JAILLET wrote:
+>> If an error occurs after a successful airoha_hw_init() call,
+>> airoha_ppe_deinit() needs to be called as already done in the remove
+>> function.
+>>
+>> Fixes: 00a7678310fe ("net: airoha: Introduce flowtable offload support")
+>> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+> 
+> Reviewed-by: Simon Horman <horms@kernel.org>
+> 
 
-So, an explicit airoha_metadata_dst_free() call is needed in this case to
-avoid a memory leak.
+Hi,
 
-Fixes: af3cf757d5c9 ("net: airoha: Move DSA tag in DMA descriptor")
-Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Reviewed-by: Simon Horman <horms@kernel.org>
----
-Changes in v4:
-  - Add A-b and R-b tags
-  - Rebase against latest -next (because v3 now gets "Hunk #1 succeeded
-    at 2869 (offset -4 lines)")
+I guess, that is patch should also be targeted against -net?
 
-Changes in v3:
-  - None
-v3: https://lore.kernel.org/all/5c94b9b345017f29ed653e2f05d25620d128c3f0.1746715755.git.christophe.jaillet@wanadoo.fr/
-
-Changes in v2:
-  - New patch
-v2: https://lore.kernel.org/all/5c94b9b3850f7f29ed653e2205325620df28c3ff.1746715755.git.christophe.jaillet@wanadoo.fr/
-
-Compile tested only.
-
-In the previous iteration, this patch was part of a serie. But it
-should be related to 'net', while the rest of the serie was for
-'net-next'. So it is resent as a stand-alone patch, as a v4.
-
----
- drivers/net/ethernet/airoha/airoha_eth.c | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 16c7896f931f..af8c4015938c 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -2869,7 +2869,15 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
- 	if (err)
- 		return err;
- 
--	return register_netdev(dev);
-+	err = register_netdev(dev);
-+	if (err)
-+		goto free_metadata_dst;
-+
-+	return 0;
-+
-+free_metadata_dst:
-+	airoha_metadata_dst_free(port);
-+	return err;
- }
- 
- static int airoha_probe(struct platform_device *pdev)
--- 
-2.49.0
-
+CJ
 
