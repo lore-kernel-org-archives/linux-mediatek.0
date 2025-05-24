@@ -4,62 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19529C54ED0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 May 2025 19:33:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3C62C54E71
+	for <linux-mediatek@archiver.kernel.org>; Sat, 24 May 2025 07:29:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S/VsvwwJ/XWjMpGzxZSi5tL5S/u4oUvjiWYaA5OwQso=; b=I3fdxNKm6f8U+mxS06LZg3C3ky
-	+c1Q2NZYhrDs6I5JA59iyndf/NOMrdNTaOSdBhybaMVKvB73vcXeL5KdLtWnQH4/zZzHfYnD5ZbV/
-	CbZ0QwfeMEezOMRgn/ZztS66Ec+offqH0L1T79+S9eAh9uq9OJdeiQMdoLMRVoSg3ew1oX/ah3T5Q
-	JidaqkJslVu1XBRteb2wITHEhwrzKm2+qFrXsP75ke7O+rkVes4qArYoCC8VZGpndUE6vfBWHcoCj
-	Gxf5KbUR/5PlxO5EgfILaIq7HHrFzo4+3v9ln0soZsd1VDkO9OvwuYSkty28vHJLbFMFUbP8FyF1z
-	L76p05Yw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Zu3Rr90y+tiM/8UlA4hAOXkaFy8wswdz0HsN6oicuAI=; b=Ha9z4g6uzG5ZFfEKSHHZYoeaFk
+	5bxH5Amhg1E/ATaXMx7l97DrqmehgkVQs5PrhG7lEZYub9UdnnOBSOXSPZ+NqPeAUswXHy/no+hOn
+	WnPw25M6jpBVYJ7IXGvNEUzX+bXnN3/2JlfbeAWB0ODyQdWUYQuquXa2joPe/2otN3d36AmsGJ8hn
+	8lnQS3rTexW3g0O/hvDYiz7rS2M2hkzsukK5NH0hyfDyWC85l28p7KSHsLeBgL6VczmSP8Ixnwn9s
+	ule2H1kHMDRnL9ongieCelV1eBwp9tkaCdaFwgX4AeH8PjhQasOikPBt9z9NOga0EqPRjynNGfFsP
+	y59hz1FA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uIY9M-00000004o9e-0T3K;
-	Fri, 23 May 2025 19:33:48 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uIjK4-00000005Qw3-2UXZ;
+	Sat, 24 May 2025 07:29:36 +0000
+Received: from smtp-78.smtpout.orange.fr ([80.12.242.78] helo=smtp.smtpout.orange.fr)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uIXzq-00000004n2s-0uiV;
-	Fri, 23 May 2025 19:23:59 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id D70B3444F3;
-	Fri, 23 May 2025 19:23:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 67DAAC4CEEB;
-	Fri, 23 May 2025 19:23:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1748028237;
-	bh=Q2Dup5l+vEvGwrc1bpceFqvGlnEspT+jpGeX8zIyloQ=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=ELkz6srq6PjLkje3gdZEsiN0t9qgNjOqMMyKZbqaCWKuwxuw7odDwVEiRbd1TW0T0
-	 KwcqONMCOjI3+60F8UnaFzxoP2t5IPU812FOlrBH6ppulteDSokIScMfBrp1GVbgL4
-	 ET7WlE1o0hoHzy14ReV8RDjSyYTUuuYuRV67mEfMh7W0EMemIjBBzZVqRd5crjyVUk
-	 EPtrhb2P6eduJZGbegiqSesV8j9FnaJd4fKsG2aCCulHf05+nPTaM0wjWrfcQ8AzeF
-	 zHVJKAApuUjlXqwAWHlv77Pu4nKM0qH0PXkxCNBiefu1qCc6VsftY+RkplnNG8tGml
-	 5AhkHihCWt8/Q==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Fri, 23 May 2025 21:23:31 +0200
-Subject: [PATCH net-next 2/2] net: airoha: Add PPPoE offload support
+	id 1uIjK0-00000005QuT-3sUa;
+	Sat, 24 May 2025 07:29:34 +0000
+Received: from localhost.localdomain
+ ([IPv6:2a01:cb10:785:b00:8347:f260:7456:7662])
+	by smtp.orange.fr with ESMTPA
+	id IjJtuiv3wVLIhIjJtu03o1; Sat, 24 May 2025 09:29:27 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
+	s=t20230301; t=1748071767;
+	bh=Zu3Rr90y+tiM/8UlA4hAOXkaFy8wswdz0HsN6oicuAI=;
+	h=From:To:Subject:Date:Message-ID:MIME-Version;
+	b=M2xlF3EbgDjP+m9zcGtmTntP7L6mbLUqQBpHne6e435s2uUnBR3w6T2k2JWT344oO
+	 3UTgq9e0u/oJUn8f66BhmWNQNlgxRR3dWpd60Wc4CdnMPn0QaWLJqUpfVXZxGY7xMR
+	 1WJLsXo/t/EqcQCRgibLgjg2uBiBZT0QTPtGC9CTZdkyaCY7dmvSCEzH+2/Ih1lgLk
+	 OvMv4awXIjtr2HV3iVfPQzCNoDSG/U6AZYIgxHx6Vhf1LNMw3ErvJO4eVDCL2AJjfS
+	 N6A6K73uC2JJBQrC8B4QHNiE0Ihb+qWtyONpWDMmAz8aGkvy9UhY4JXTrXT1TncirF
+	 PPvdEzTZAekVw==
+X-ME-Helo: localhost.localdomain
+X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
+X-ME-Date: Sat, 24 May 2025 09:29:27 +0200
+X-ME-IP: 2a01:cb10:785:b00:8347:f260:7456:7662
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>
+Cc: linux-kernel@vger.kernel.org,
+	kernel-janitors@vger.kernel.org,
+	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+	Simon Horman <horms@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	netdev@vger.kernel.org
+Subject: [PATCH v4 net] net: airoha: Fix an error handling path in airoha_alloc_gdm_port()
+Date: Sat, 24 May 2025 09:29:11 +0200
+Message-ID: <1b94b91345017429ed653e2f05d25620dc2823f9.1746715755.git.christophe.jaillet@wanadoo.fr>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250523-b4-airoha-flowtable-pppoe-v1-2-8584401568e0@kernel.org>
-References: <20250523-b4-airoha-flowtable-pppoe-v1-0-8584401568e0@kernel.org>
-In-Reply-To: <20250523-b4-airoha-flowtable-pppoe-v1-0-8584401568e0@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250523_122358_311694_3FDA7204 
-X-CRM114-Status: GOOD (  11.93  )
+X-CRM114-CacheID: sfid-20250524_002933_370469_4EC584EC 
+X-CRM114-Status: GOOD (  13.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,90 +81,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce flowtable hw acceleration for PPPoE traffic.
+If register_netdev() fails, the error handling path of the probe will not
+free the memory allocated by the previous airoha_metadata_dst_alloc() call
+because port->dev->reg_state will not be NETREG_REGISTERED.
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+So, an explicit airoha_metadata_dst_free() call is needed in this case to
+avoid a memory leak.
+
+Fixes: af3cf757d5c9 ("net: airoha: Move DSA tag in DMA descriptor")
+Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Reviewed-by: Simon Horman <horms@kernel.org>
 ---
- drivers/net/ethernet/airoha/airoha_ppe.c | 37 +++++++++++++++++++++-----------
- 1 file changed, 24 insertions(+), 13 deletions(-)
+Changes in v4:
+  - Add A-b and R-b tags
+  - Rebase against latest -next (because v3 now gets "Hunk #1 succeeded
+    at 2869 (offset -4 lines)")
 
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index 1d5a04eb82a6645e2b6a22ff4e694275ef1727d8..6571511cf4bb8c341b03b94ba8e444f558cbf125 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -232,6 +232,7 @@ static int airoha_ppe_foe_entry_prepare(struct airoha_eth *eth,
- 	      FIELD_PREP(AIROHA_FOE_IB1_BIND_UDP, l4proto == IPPROTO_UDP) |
- 	      FIELD_PREP(AIROHA_FOE_IB1_BIND_VLAN_LAYER, data->vlan.num) |
- 	      FIELD_PREP(AIROHA_FOE_IB1_BIND_VPM, data->vlan.num) |
-+	      FIELD_PREP(AIROHA_FOE_IB1_BIND_PPPOE, data->pppoe.num) |
- 	      AIROHA_FOE_IB1_BIND_TTL;
- 	hwe->ib1 = val;
- 
-@@ -274,33 +275,38 @@ static int airoha_ppe_foe_entry_prepare(struct airoha_eth *eth,
- 		hwe->ipv6.data = qdata;
- 		hwe->ipv6.ib2 = val;
- 		l2 = &hwe->ipv6.l2;
-+		l2->etype = ETH_P_IPV6;
- 	} else {
- 		hwe->ipv4.data = qdata;
- 		hwe->ipv4.ib2 = val;
- 		l2 = &hwe->ipv4.l2.common;
-+		l2->etype = ETH_P_IP;
- 	}
- 
- 	l2->dest_mac_hi = get_unaligned_be32(data->eth.h_dest);
- 	l2->dest_mac_lo = get_unaligned_be16(data->eth.h_dest + 4);
- 	if (type <= PPE_PKT_TYPE_IPV4_DSLITE) {
-+		struct airoha_foe_mac_info *mac_info;
-+
- 		l2->src_mac_hi = get_unaligned_be32(data->eth.h_source);
- 		hwe->ipv4.l2.src_mac_lo =
- 			get_unaligned_be16(data->eth.h_source + 4);
--	} else {
--		l2->src_mac_hi = FIELD_PREP(AIROHA_FOE_MAC_SMAC_ID, smac_id);
--	}
- 
--	if (data->vlan.num) {
--		l2->etype = dsa_port >= 0 ? BIT(dsa_port) : 0;
--		l2->vlan1 = data->vlan.hdr[0].id;
--		if (data->vlan.num == 2)
--			l2->vlan2 = data->vlan.hdr[1].id;
--	} else if (dsa_port >= 0) {
--		l2->etype = BIT(15) | BIT(dsa_port);
--	} else if (type >= PPE_PKT_TYPE_IPV6_ROUTE_3T) {
--		l2->etype = ETH_P_IPV6;
-+		mac_info = (struct airoha_foe_mac_info *)l2;
-+		mac_info->pppoe_id = data->pppoe.sid;
- 	} else {
--		l2->etype = ETH_P_IP;
-+		l2->src_mac_hi = FIELD_PREP(AIROHA_FOE_MAC_SMAC_ID, smac_id) |
-+				 FIELD_PREP(AIROHA_FOE_MAC_PPPOE_ID,
-+					    data->pppoe.sid);
-+	}
-+	l2->vlan1 = data->vlan.hdr[0].id;
-+	l2->vlan2 = data->vlan.hdr[1].id;
-+
-+	if (dsa_port >= 0) {
-+		l2->etype = BIT(dsa_port);
-+		l2->etype |= !data->vlan.num ? BIT(15) : 0;
-+	} else if (data->pppoe.num) {
-+		l2->etype = ETH_P_PPP_SES;
- 	}
- 
- 	return 0;
-@@ -944,6 +950,11 @@ static int airoha_ppe_flow_offload_replace(struct airoha_gdm_port *port,
- 		case FLOW_ACTION_VLAN_POP:
- 			break;
- 		case FLOW_ACTION_PPPOE_PUSH:
-+			if (data.pppoe.num == 1 || data.vlan.num == 2)
-+				return -EOPNOTSUPP;
-+
-+			data.pppoe.sid = act->pppoe.sid;
-+			data.pppoe.num++;
- 			break;
- 		default:
- 			return -EOPNOTSUPP;
+Changes in v3:
+  - None
+v3: https://lore.kernel.org/all/5c94b9b345017f29ed653e2f05d25620d128c3f0.1746715755.git.christophe.jaillet@wanadoo.fr/
 
+Changes in v2:
+  - New patch
+v2: https://lore.kernel.org/all/5c94b9b3850f7f29ed653e2205325620df28c3ff.1746715755.git.christophe.jaillet@wanadoo.fr/
+
+Compile tested only.
+
+In the previous iteration, this patch was part of a serie. But it
+should be related to 'net', while the rest of the serie was for
+'net-next'. So it is resent as a stand-alone patch, as a v4.
+
+---
+ drivers/net/ethernet/airoha/airoha_eth.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index 16c7896f931f..af8c4015938c 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -2869,7 +2869,15 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
+ 	if (err)
+ 		return err;
+ 
+-	return register_netdev(dev);
++	err = register_netdev(dev);
++	if (err)
++		goto free_metadata_dst;
++
++	return 0;
++
++free_metadata_dst:
++	airoha_metadata_dst_free(port);
++	return err;
+ }
+ 
+ static int airoha_probe(struct platform_device *pdev)
 -- 
 2.49.0
 
