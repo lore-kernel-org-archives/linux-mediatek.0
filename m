@@ -4,119 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A13BC54E90
-	for <linux-mediatek@archiver.kernel.org>; Sun, 25 May 2025 10:22:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4086FC5AD49
+	for <linux-mediatek@archiver.kernel.org>; Sun, 25 May 2025 10:49:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Nde2SkTDak5t7cCJKYp/aSUwJXpBCopTUS04DjQZk70=; b=aECi4pn1W0uiyxJcuVvci8j8K1
-	+AlLN67o09msZ6+GTdx3I+AhJmqzZm/IN7S/KEmdb7TmtJgtD9kwWzwu+czaPr/W1MlL7UYtPqp5B
-	vo8D0fkRhBOkBbL7E/mfOraRtQwjEbuTUL6rU978ND6MEaQ1Tdy6XzsDH/fOA46TPFKk/9htM5PER
-	ZPK4BuLTXuqCvIWijRefwfEb45R8SIDZ3RIyWXyp0LKJjGqvYVinlGXTSsuQ2ryzuzKEDLDxLHWSI
-	ynp00xpZnJwYtPxN10H+C9ZUh0IyvoZTJozQEUbWLqorK74GqeZrRQxuN07jfMLHDjk9qGumRwbh/
-	VcaIxZDw==;
+	bh=FvMZwrrK4O9JD71L3DzuziqxKKZYlUuX09bTEYlT1Yw=; b=J6Ey956+r0mC3pClBT3No5jvGT
+	rNwdC3PxA3CvT063YYdSxv8AT5zsTa4xrD2QJ13MzPSwdCW8r99bMA0HibMnO5EZCL1F4On09/8sU
+	vhH8UkncCtdeSNDuREBqn0YoVkC7DEE7SMOQDN2k4t4J4WiHmjawBctpRhOu/APzMN+k2TYwx6uQB
+	d307D+50Ogf72JZwRoo7IevbTFqPMCIELNnvkQS8+aNN/EYSvx0D20J1SrdgqUxTS/yfYjt8mGhBZ
+	CRo+7btsKWpfsvGD4vZ8UFATPRzdc0+fTh5vtLdnTPUjAZ4LGYbzVJ+Pgfe5QVamPUJNJqif9rujY
+	TdWuuddQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJ8VL-00000006wfY-1Mlo;
-	Sun, 25 May 2025 10:22:55 +0000
-Received: from fout-a8-smtp.messagingengine.com ([103.168.172.151])
+	id 1uJ8uc-00000006yBz-0gBA;
+	Sun, 25 May 2025 10:49:02 +0000
+Received: from mail-qk1-x72e.google.com ([2607:f8b0:4864:20::72e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJ8SV-00000006wQo-0JqG;
-	Sun, 25 May 2025 10:20:00 +0000
-Received: from phl-compute-05.internal (phl-compute-05.phl.internal [10.202.2.45])
-	by mailfout.phl.internal (Postfix) with ESMTP id 5C6431380186;
-	Sun, 25 May 2025 06:19:55 -0400 (EDT)
-Received: from phl-mailfrontend-02 ([10.202.2.163])
-  by phl-compute-05.internal (MEProxy); Sun, 25 May 2025 06:19:55 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ragnatech.se; h=
-	cc:cc:content-transfer-encoding:content-type:content-type:date
-	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to; s=fm3; t=1748168395;
-	 x=1748254795; bh=Nde2SkTDak5t7cCJKYp/aSUwJXpBCopTUS04DjQZk70=; b=
-	VkZ5059rjCC9tiBPqn7yu4+dDulqLrtNHPnj4JyYGRCy86WYJFp/+EtIUTQ9K4b9
-	1kaUtqRdQ4MxsIlDX6K6UqeZLVmR6U4X/Q63n3aOne3AuO+BSn5xbk7V8QqtUDzy
-	Gt7almcJrT7PJrtKNqbteTIDSwwOFex2xjXGFnFMmrUi70qFnPSWw3YDhs5zNAwV
-	JM5kCLWQoPy9RHImp9mXWQqJxVirCLN/mm6lEzrjJQdF71XF0S9mw5Fd3bR23EwZ
-	eU8LQNF2X3xnAI9NjvSUutSIGIZjZoeqz/mLxLlNjR1kCe0yhSzB+IZONvsJA3I9
-	oqgb6UddBuRc1OxQ1lhAOg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1748168395; x=
-	1748254795; bh=Nde2SkTDak5t7cCJKYp/aSUwJXpBCopTUS04DjQZk70=; b=P
-	LO3eXAaO+KaHnZS4qXMn3JmsoC72DXJTNsjvQxCpwCs7d0E2QeVW1hga+nkCCe64
-	alLwkz1ZPJx4ESMp20Dyq51x5D58eVS+ZmQa7P9qrsQHXcs0kwPK6qDDFGbig5PQ
-	vBj84OYKCAPjcywwgzr7jQ2OebeJNZvnGsO8C4N68nNjtPwy0pwS1mfFS+KSxI/S
-	Zvnh/gwcx0/m3jy0M85JSlGM4oB4ha8A0qJBMSPzwY/dlN+2zWvSHn9+Q5XPRisN
-	xz1klJOm1/zD3QLJ+Hbyj3u+XaVWn1kbYpcON3HpXvzbOHkR73vNCm3UeHnOa83E
-	k5tMmYtiupoOHInIQPYdA==
-X-ME-Sender: <xms:ye4yaAV0TmhvVuGmh2lKBch3mhFzsDsvVn-Ob3Zg6RfuLWFUchVs8Q>
-    <xme:ye4yaEkANnjrD3288fsi1tfIDUZttXEZLcIwa9AC5v9iRwixplqUuhy_3PU-ZakYS
-    VeQGb9TTjf8WPEEaMY>
-X-ME-Received: <xmr:ye4yaEYN7DuTNeem48U6ut8zhp7S5kXVNOLPGssh9iKDyPY8MDOsGgunKxEGIrd7GKj8C4BLwT6FYkGMKoSgT_GH4Hym6I2fUg>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtddtgddugeefheculddtuddrgeefvddrtd
-    dtmdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpggft
-    fghnshhusghstghrihgsvgdpuffrtefokffrpgfnqfghnecuuegrihhlohhuthemuceftd
-    dtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvvefukfhf
-    gggtugfgjgesthekredttddtjeenucfhrhhomheppfhikhhlrghsucfunpguvghrlhhunh
-    guuceonhhikhhlrghsrdhsohguvghrlhhunhgusehrrghgnhgrthgvtghhrdhsvgeqnecu
-    ggftrfgrthhtvghrnhepveetgedtvddvhfdtkeeghfeffeehteehkeekgeefjeduieduue
-    elgedtheekkeetnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhf
-    rhhomhepnhhikhhlrghsrdhsohguvghrlhhunhgusehrrghgnhgrthgvtghhrdhsvgdpnh
-    gspghrtghpthhtohepvddvpdhmohguvgepshhmthhpohhuthdprhgtphhtthhopegthhhr
-    ihhsthhophhhvgdrjhgrihhllhgvthesfigrnhgrughoohdrfhhrpdhrtghpthhtohepmh
-    hiqhhuvghlrdhrrgihnhgrlhessghoohhtlhhinhdrtghomhdprhgtphhtthhopehrrghf
-    rggvlheskhgvrhhnvghlrdhorhhgpdhrtghpthhtohepuggrnhhivghlrdhlvgiitggrnh
-    hosehlihhnrghrohdrohhrghdprhgtphhtthhopehruhhirdiihhgrnhhgsehinhhtvghl
-    rdgtohhmpdhrtghpthhtoheplhhukhgrshiirdhluhgsrgesrghrmhdrtghomhdprhgtph
-    htthhopehsuhhpphhorhhtrdhophgvnhhsohhurhgtvgesughirghsvghmihdrtghomhdp
-    rhgtphhtthhopehshhgrfihnghhuoheskhgvrhhnvghlrdhorhhgpdhrtghpthhtohepsh
-    drhhgruhgvrhesphgvnhhguhhtrhhonhhigidruggv
-X-ME-Proxy: <xmx:ye4yaPX22cycY_RFWzhzoxjcLJrjG4QrfTChm_xl0MKRIEeCd035Gg>
-    <xmx:ye4yaKkIzmgXp1wVQU0I_bHFWgLxyGjqh4JbrqOxtXB_2Iz6zYNn2A>
-    <xmx:ye4yaEciNMYD8G4p0mjheCagaA3JRG8oL0rCb2PmaptDexJ3yaGw9w>
-    <xmx:ye4yaMHzD9nlu_4ri7v8sXYvzYlewq6Jh3loJ7MlOCW2BM4blWnVEw>
-    <xmx:y-4yaDYNJCUmwsiSrtv-F_DKn-_S-icPF9YHu5FmKZP_k1EdWq75roPt>
-Feedback-ID: i80c9496c:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 25 May 2025 06:19:53 -0400 (EDT)
-Date: Sun, 25 May 2025 12:19:50 +0200
-From: Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>
-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Cc: Miquel Raynal <miquel.raynal@bootlin.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
-	Support Opensource <support.opensource@diasemi.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org,
-	linux-pm@vger.kernel.org, imx@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] thermal: Constify struct thermal_zone_device_ops
-Message-ID: <20250525101950.GE600042@ragnatech.se>
-References: <5bba3bf0139e2418b306a0f9a2f1f81ef49e88a6.1748165978.git.christophe.jaillet@wanadoo.fr>
+	id 1uJ8uX-00000006yAh-3nKz
+	for linux-mediatek@lists.infradead.org;
+	Sun, 25 May 2025 10:48:59 +0000
+Received: by mail-qk1-x72e.google.com with SMTP id af79cd13be357-7c559b3eb0bso64548385a.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 25 May 2025 03:48:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=fooishbar.org; s=google; t=1748170136; x=1748774936; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=FvMZwrrK4O9JD71L3DzuziqxKKZYlUuX09bTEYlT1Yw=;
+        b=RObATym1mR9JulCT+XlOSlfCjDRyXu1rPj+b2HjGyD8Edo9Um5J3+vOYUWYWNX7l/I
+         DHgqSWaCCO2tQX8Ch7MqhQ6qgaxjkowPhDdeblA+tNxR1haoQ5VKWrIdSTrN8FRzcAZH
+         83yp9gWVk822FsXxkVrf59uyGhpAi/O+C4JZd6rdxayvsHuq5VB4Ltd6j3bJmO+P2540
+         nyQ8uFs/uIyqX20e0iL8d03wqfMVLNXOdvsb/ATqnX9++01r51ExQu/AS6/JQmpHk1dA
+         hqtOdA/wiDDArDZ6yopoPTZ77F05XZOI2oMPaT4MPClu5BOb8sKTWWpRGlPk9H/YmmNK
+         OdgA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1748170136; x=1748774936;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=FvMZwrrK4O9JD71L3DzuziqxKKZYlUuX09bTEYlT1Yw=;
+        b=bq2zp6bpr/fFf09oPaBOcA2/ZbrkmbRu/62S3+8s8Jk53ujzGGAg+X1EYfQvl4jzpn
+         4bsPHLjcRtXyBrrXj0GZswhRll220Yo9OTdGTWBTsHNNtquaphwCZhZ1UnvC38SW+iy+
+         loS5WXnvbfM/3N1jh73KQ4JWkrR3l/aXcd6BPEaGz2AZU2DgMXw5EYGZcI0wx+ciF0JW
+         3pgDiGvqamMHmj/Z/+dOZqMIRuTE6+W8dNjmQqYgaqdtlc4fq3wPtNMdbfcOc2cSoug0
+         bdJFmAGpaldBMmHjSjnahdvutw5bPwxQso26XkrQNe2IbLStQ9TRo2pM1xFKnj8DZY0y
+         IA/w==
+X-Forwarded-Encrypted: i=1; AJvYcCUGV2Ljj9BPzlTbvp5cm8FDz76Nqs/uN2A3fX7G8/XPmQZRYyqiUWq8pYHzVaYPM3IOGvVhym9Ov0VQhep90Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzWJFnP3/aXjYnObOdbOWd6Yno1Es93N8DyCzAFAXfLjVEUq6hS
+	RlinhkkFyPuwjigoM6eMHUogx9D1Oiv2NNlhcsO4mmp4RGafDeIqmD3/Oh7pwnaGk0EozkIqxjf
+	SEr1mWc97xUkANvasHIyMhDj/QvH+8XsDFuO4IXs7iw==
+X-Gm-Gg: ASbGncuUi45SD+fAi8M8Tt/1HpyPwM8vVYo3+T6PKeY7tJj7bezSDJSWNM2ZxNIL7m0
+	Jnw3sPCPOLpZ694JEec65mFCvvivg+aQnVk+mI0ID+WQjXJWpkDrXn7TAHGtgxnADtw4+eZGbd4
+	AT/32co9P8ZTENG/zZqba8h4Y2CQtqupGhXVadh8vE
+X-Google-Smtp-Source: AGHT+IHfLSQWm00np5MOUI9iSgjHG0uz8ZjLmKg3AyhQjzrIGk08erFcga0ZJK90E1+3HR6kZwenz2fYr+3ziRhndi0=
+X-Received: by 2002:a05:622a:488e:b0:476:7d74:dd10 with SMTP id
+ d75a77b69052e-49f46750736mr95207921cf.19.1748170136440; Sun, 25 May 2025
+ 03:48:56 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <5bba3bf0139e2418b306a0f9a2f1f81ef49e88a6.1748165978.git.christophe.jaillet@wanadoo.fr>
+References: <20250525051639.68753-2-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20250525051639.68753-2-krzysztof.kozlowski@linaro.org>
+From: Daniel Stone <daniel@fooishbar.org>
+Date: Sun, 25 May 2025 11:48:44 +0100
+X-Gm-Features: AX0GCFtHF5h48b9Isl1N9tQLNjTjzN8BGszS3KNow9_vXa4svv2OiPk4eOV2_U8
+Message-ID: <CAPj87rMjAv-UphvFuQjop60o=wHrkfs4-XOM=JqH7f8Kk5dyVg@mail.gmail.com>
+Subject: Re: [PATCH] media: dt-bindings: mediatek: Constrain iommus
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250525_031959_688246_9D7D255F 
-X-CRM114-Status: GOOD (  16.67  )
+X-CRM114-CacheID: sfid-20250525_034858_100891_897A7FEA 
+X-CRM114-Status: GOOD (  10.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,198 +99,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Christophe,
+On Sun, 25 May 2025 at 06:16, Krzysztof Kozlowski
+<krzysztof.kozlowski@linaro.org> wrote:
+> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-2l.yaml
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-2l.yaml
+> @@ -45,9 +45,8 @@ properties:
+>        - description: OVL-2L Clock
+>
+>    iommus:
+> -    description:
+> -      This property should point to the respective IOMMU block with master port as argument,
+> -      see Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
+> +    minItems: 1
+> +    maxItems: 2
 
-Thanks for your work.
+The comment removals are not documented in the commit message, and
+it's not clear why removing information and references would be a good
+thing.
 
-On 2025-05-25 11:40:04 +0200, Christophe JAILLET wrote:
-> 'struct thermal_zone_device_ops' are not modified in these drivers.
-> 
-> Constifying these structures moves some data to a read-only section, so
-> increases overall security, especially when the structure holds some
-> function pointers.
-> 
-> On a x86_64, with allmodconfig, as an example:
-> Before:
-> ======
->    text	   data	    bss	    dec	    hex	filename
->   28116	   5168	    128	  33412	   8284	drivers/thermal/armada_thermal.o
-> 
-> After:
-> =====
->    text	   data	    bss	    dec	    hex	filename
->   28244	   5040	    128	  33412	   8284	drivers/thermal/armada_thermal.o
-> 
-> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-> ---
-> Compile tested only
-> ---
->  drivers/thermal/armada_thermal.c                        | 2 +-
->  drivers/thermal/da9062-thermal.c                        | 2 +-
->  drivers/thermal/dove_thermal.c                          | 2 +-
->  drivers/thermal/imx_thermal.c                           | 2 +-
->  drivers/thermal/intel/int340x_thermal/int3400_thermal.c | 2 +-
->  drivers/thermal/kirkwood_thermal.c                      | 2 +-
->  drivers/thermal/mediatek/lvts_thermal.c                 | 2 +-
->  drivers/thermal/renesas/rcar_thermal.c                  | 2 +-
-
-For R-Car,
-
-Reviewed-by: Niklas Söderlund <niklas.soderlund+renesas@ragnatech.se>
-
->  drivers/thermal/spear_thermal.c                         | 2 +-
->  drivers/thermal/st/st_thermal.c                         | 2 +-
->  drivers/thermal/testing/zone.c                          | 2 +-
->  11 files changed, 11 insertions(+), 11 deletions(-)
-> 
-> diff --git a/drivers/thermal/armada_thermal.c b/drivers/thermal/armada_thermal.c
-> index 9bff21068721..c2fbdb534f61 100644
-> --- a/drivers/thermal/armada_thermal.c
-> +++ b/drivers/thermal/armada_thermal.c
-> @@ -408,7 +408,7 @@ static int armada_get_temp_legacy(struct thermal_zone_device *thermal,
->  	return ret;
->  }
->  
-> -static struct thermal_zone_device_ops legacy_ops = {
-> +static const struct thermal_zone_device_ops legacy_ops = {
->  	.get_temp = armada_get_temp_legacy,
->  };
->  
-> diff --git a/drivers/thermal/da9062-thermal.c b/drivers/thermal/da9062-thermal.c
-> index 2077e85ef5ca..a8d4b766ba21 100644
-> --- a/drivers/thermal/da9062-thermal.c
-> +++ b/drivers/thermal/da9062-thermal.c
-> @@ -137,7 +137,7 @@ static int da9062_thermal_get_temp(struct thermal_zone_device *z,
->  	return 0;
->  }
->  
-> -static struct thermal_zone_device_ops da9062_thermal_ops = {
-> +static const struct thermal_zone_device_ops da9062_thermal_ops = {
->  	.get_temp	= da9062_thermal_get_temp,
->  };
->  
-> diff --git a/drivers/thermal/dove_thermal.c b/drivers/thermal/dove_thermal.c
-> index f9157a47156b..723bc72f0626 100644
-> --- a/drivers/thermal/dove_thermal.c
-> +++ b/drivers/thermal/dove_thermal.c
-> @@ -106,7 +106,7 @@ static int dove_get_temp(struct thermal_zone_device *thermal,
->  	return 0;
->  }
->  
-> -static struct thermal_zone_device_ops ops = {
-> +static const struct thermal_zone_device_ops ops = {
->  	.get_temp = dove_get_temp,
->  };
->  
-> diff --git a/drivers/thermal/imx_thermal.c b/drivers/thermal/imx_thermal.c
-> index bab52e6b3b15..38c993d1bcb3 100644
-> --- a/drivers/thermal/imx_thermal.c
-> +++ b/drivers/thermal/imx_thermal.c
-> @@ -361,7 +361,7 @@ static bool imx_should_bind(struct thermal_zone_device *tz,
->  	return trip->type == THERMAL_TRIP_PASSIVE;
->  }
->  
-> -static struct thermal_zone_device_ops imx_tz_ops = {
-> +static const struct thermal_zone_device_ops imx_tz_ops = {
->  	.should_bind = imx_should_bind,
->  	.get_temp = imx_get_temp,
->  	.change_mode = imx_change_mode,
-> diff --git a/drivers/thermal/intel/int340x_thermal/int3400_thermal.c b/drivers/thermal/intel/int340x_thermal/int3400_thermal.c
-> index 0e07693ecf59..5736638c586b 100644
-> --- a/drivers/thermal/intel/int340x_thermal/int3400_thermal.c
-> +++ b/drivers/thermal/intel/int340x_thermal/int3400_thermal.c
-> @@ -515,7 +515,7 @@ static int int3400_thermal_change_mode(struct thermal_zone_device *thermal,
->  	return result;
->  }
->  
-> -static struct thermal_zone_device_ops int3400_thermal_ops = {
-> +static const struct thermal_zone_device_ops int3400_thermal_ops = {
->  	.get_temp = int3400_thermal_get_temp,
->  	.change_mode = int3400_thermal_change_mode,
->  };
-> diff --git a/drivers/thermal/kirkwood_thermal.c b/drivers/thermal/kirkwood_thermal.c
-> index 7c2265231668..4619e090f756 100644
-> --- a/drivers/thermal/kirkwood_thermal.c
-> +++ b/drivers/thermal/kirkwood_thermal.c
-> @@ -48,7 +48,7 @@ static int kirkwood_get_temp(struct thermal_zone_device *thermal,
->  	return 0;
->  }
->  
-> -static struct thermal_zone_device_ops ops = {
-> +static const struct thermal_zone_device_ops ops = {
->  	.get_temp = kirkwood_get_temp,
->  };
->  
-> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-> index 985925147ac0..acce8fde2cba 100644
-> --- a/drivers/thermal/mediatek/lvts_thermal.c
-> +++ b/drivers/thermal/mediatek/lvts_thermal.c
-> @@ -571,7 +571,7 @@ static irqreturn_t lvts_irq_handler(int irq, void *data)
->  	return iret;
->  }
->  
-> -static struct thermal_zone_device_ops lvts_ops = {
-> +static const struct thermal_zone_device_ops lvts_ops = {
->  	.get_temp = lvts_get_temp,
->  	.set_trips = lvts_set_trips,
->  };
-> diff --git a/drivers/thermal/renesas/rcar_thermal.c b/drivers/thermal/renesas/rcar_thermal.c
-> index 00a66ee0a5b0..fdd7afdc4ff6 100644
-> --- a/drivers/thermal/renesas/rcar_thermal.c
-> +++ b/drivers/thermal/renesas/rcar_thermal.c
-> @@ -277,7 +277,7 @@ static int rcar_thermal_get_temp(struct thermal_zone_device *zone, int *temp)
->  	return rcar_thermal_get_current_temp(priv, temp);
->  }
->  
-> -static struct thermal_zone_device_ops rcar_thermal_zone_ops = {
-> +static const struct thermal_zone_device_ops rcar_thermal_zone_ops = {
->  	.get_temp	= rcar_thermal_get_temp,
->  };
->  
-> diff --git a/drivers/thermal/spear_thermal.c b/drivers/thermal/spear_thermal.c
-> index bb96be947521..603dadcd3df5 100644
-> --- a/drivers/thermal/spear_thermal.c
-> +++ b/drivers/thermal/spear_thermal.c
-> @@ -41,7 +41,7 @@ static inline int thermal_get_temp(struct thermal_zone_device *thermal,
->  	return 0;
->  }
->  
-> -static struct thermal_zone_device_ops ops = {
-> +static const struct thermal_zone_device_ops ops = {
->  	.get_temp = thermal_get_temp,
->  };
->  
-> diff --git a/drivers/thermal/st/st_thermal.c b/drivers/thermal/st/st_thermal.c
-> index a14a37d54698..1470ca519def 100644
-> --- a/drivers/thermal/st/st_thermal.c
-> +++ b/drivers/thermal/st/st_thermal.c
-> @@ -132,7 +132,7 @@ static int st_thermal_get_temp(struct thermal_zone_device *th, int *temperature)
->  	return 0;
->  }
->  
-> -static struct thermal_zone_device_ops st_tz_ops = {
-> +static const struct thermal_zone_device_ops st_tz_ops = {
->  	.get_temp	= st_thermal_get_temp,
->  };
->  
-> diff --git a/drivers/thermal/testing/zone.c b/drivers/thermal/testing/zone.c
-> index 1f4e450100e2..4257d813d572 100644
-> --- a/drivers/thermal/testing/zone.c
-> +++ b/drivers/thermal/testing/zone.c
-> @@ -381,7 +381,7 @@ static int tt_zone_get_temp(struct thermal_zone_device *tz, int *temp)
->  	return 0;
->  }
->  
-> -static struct thermal_zone_device_ops tt_zone_ops = {
-> +static const struct thermal_zone_device_ops tt_zone_ops = {
->  	.get_temp = tt_zone_get_temp,
->  };
->  
-> -- 
-> 2.49.0
-> 
-
--- 
-Kind Regards,
-Niklas Söderlund
+Please see https://www.kernel.org/doc/html/latest/process/submitting-patches.html
+for information on how to submit good-quality patches that can be
+better reviwed by maintainers.
 
