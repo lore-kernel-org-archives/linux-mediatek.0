@@ -4,77 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C313C54ED0
-	for <linux-mediatek@archiver.kernel.org>; Sun, 25 May 2025 06:12:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C774C54E90
+	for <linux-mediatek@archiver.kernel.org>; Sun, 25 May 2025 09:42:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BKLaKat4eKcNZjCTNJxH1M1K9KYv239pmfyRmJpkuU4=; b=G0Y0ONtAA+UWpPrLiEYZWMrgYR
-	QjpBuliybNixH731kFo1WjkgdBvmFpmn+4X6t3kLBSJKYC+QHFJThhhzJSLevCW/25m5YXy03JIgu
-	/p2561ZXap3AVVxEBNLw+NByvvy7fab/SGz3Bbc5W8XTFPOuyWW+2IzKiwRdWjrbAfUujP7zNg2DW
-	ncRUvMIDaYWX/R6TK3wERrr4Sms6bBohLvB6jOwl4W2rV0AK46ByZHu8JaP3RPGjdm+w+NzxeNTjk
-	zHjbG/weovoBZIRkmlcNaDNo4Do9eoBfluf0CrVbZppUnXIWXY8+qzKnOAHSaT0ECRRa5344tho60
-	VG6SrrXQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=3Ge08bMJ+KqUgvFk44XiE+E22u5Ef56JB5n9nEZeKTY=; b=xmcF8EBVI9MR5FJXEz7PtbfWNL
+	ox+61e9G2PKebMyxPmYIWLtRU+UxaEvtpwsyqynDvoc6dTtjGnyGX6RGuZ20jJtQ5Ia0QGzOzSMnT
+	NprFxDDCIAQM5DjaJh5/UO4UxpR0mxdXPzzPzWOM7Abs/DxJzCBcmRst3YlJ7y9qrNJAB0mzX9C4t
+	hFzHO6eQraIWRlCpxsmGNRqt++ItcQJAIVbkS7M4WIGvk7j7ryf4nxse3R05bFZQunHtgS8aWcUwm
+	+BnLHLM9FRjf9+S+hVh2IprnfNIFUqIDcjJlpacJU7H1A+uN5KS0G6TwSf3qWU13b1gefdVyORAKI
+	ryfK5ugA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJ4aW-00000006cPL-0de1;
-	Sun, 25 May 2025 06:12:00 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1uJ7sR-00000006twZ-3Rje;
+	Sun, 25 May 2025 09:42:43 +0000
+Received: from smtp-70.smtpout.orange.fr ([80.12.242.70] helo=smtp.smtpout.orange.fr)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJ4aT-00000006cOg-1gjv
-	for linux-mediatek@lists.infradead.org;
-	Sun, 25 May 2025 06:11:58 +0000
-X-UUID: 25b22512392f11f0bed96b30c12bc3d6-20250524
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=BKLaKat4eKcNZjCTNJxH1M1K9KYv239pmfyRmJpkuU4=;
-	b=DewrPBEa70suHIYAWvFLlt6Sbxq7mVHewc2VaqKUSXSEUzpL9lKmHbnIfCuZClOf/ThHMVCWLIETM/HHTppMVGK/6t0ftUc2NTZqWaWkgkSPPz0iDRPCdVL31RCTzHDBxY5a+BHNhx3+19gnoK81Ytxs0JoazvyD5uGUYWHofrY=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:61529927-ec16-4a84-a180-a21c0dbc4536,IP:0,UR
-	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:-5
-X-CID-META: VersionHash:0ef645f,CLOUDID:d1a63ff1-2ded-45ed-94e2-b3e9fa87100d,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
-	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
-	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 25b22512392f11f0bed96b30c12bc3d6-20250524
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
-	(envelope-from <deren.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1401209569; Sat, 24 May 2025 23:11:50 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Sun, 25 May 2025 14:11:46 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Sun, 25 May 2025 14:11:46 +0800
-From: Deren Wu <Deren.Wu@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
-CC: Sean Wang <sean.wang@mediatek.com>, Allan Wang <allan.wang@mediatek.com>,
-	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, Ryder Lee
-	<ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
-	linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>,
-	<stable@vger.kernel.org>
-Subject: [PATCH 2/2] wifi: mt76: mt7921: prevent decap offload config before STA initialization
-Date: Sun, 25 May 2025 14:11:22 +0800
-Message-ID: <f23a72ba7a3c1ad38ba9e13bb54ef21d6ef44ffb.1748149855.git.deren.wu@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <35aedbffa050e98939264300407a52ba4e236d52.1748149855.git.deren.wu@mediatek.com>
-References: <35aedbffa050e98939264300407a52ba4e236d52.1748149855.git.deren.wu@mediatek.com>
+	id 1uJ7qH-00000006thb-3Psj;
+	Sun, 25 May 2025 09:40:34 +0000
+Received: from localhost.localdomain
+ ([IPv6:2a01:cb10:785:b00:8347:f260:7456:7662])
+	by smtp.orange.fr with ESMTPA
+	id J7qAu8zzkyzREJ7qAui2s9; Sun, 25 May 2025 11:40:26 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
+	s=t20230301; t=1748166026;
+	bh=3Ge08bMJ+KqUgvFk44XiE+E22u5Ef56JB5n9nEZeKTY=;
+	h=From:To:Subject:Date:Message-ID:MIME-Version;
+	b=QNCcU0zI7f0vU6+wFHRG7lIrtw5urmVfKvivO5D8Y5S7LYVl6lFQ7dX5eJAyILRVr
+	 09pCf489Da9Ut9/+NZ6LDOt2eB2ZnrW4x1YhszeTfyuWsebOUWH/a5dOQZeJ0NDip5
+	 0FIiZ1sQM7zOTT9xE3VJQi9L5PIhpZuIB8izeoysO0z1sdTBr3cHSBQqUV0XlJ6kh1
+	 3ARq+4Hc1PXWf5zmkBAhsIV15AfbkUyvgpTWDiupR9oha+MINJQbOOIs8DxyEHm3Q6
+	 qiltI98qYc1vAsECAfjM92knuoBFe2a+jcIsQfWGJQp69eZ7UpedfhvCHl2+XtdpmY
+	 jJQoLtuMX9W6g==
+X-ME-Helo: localhost.localdomain
+X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
+X-ME-Date: Sun, 25 May 2025 11:40:26 +0200
+X-ME-IP: 2a01:cb10:785:b00:8347:f260:7456:7662
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: Miquel Raynal <miquel.raynal@bootlin.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@linaro.org>,
+	Zhang Rui <rui.zhang@intel.com>,
+	Lukasz Luba <lukasz.luba@arm.com>,
+	Support Opensource <support.opensource@diasemi.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	=?UTF-8?q?Niklas=20S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-kernel@vger.kernel.org,
+	kernel-janitors@vger.kernel.org,
+	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+	linux-pm@vger.kernel.org,
+	imx@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] thermal: Constify struct thermal_zone_device_ops
+Date: Sun, 25 May 2025 11:40:04 +0200
+Message-ID: <5bba3bf0139e2418b306a0f9a2f1f81ef49e88a6.1748165978.git.christophe.jaillet@wanadoo.fr>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250524_231157_448357_EB996B97 
-X-CRM114-Status: GOOD (  10.25  )
+X-CRM114-CacheID: sfid-20250525_024030_012402_C32FF286 
+X-CRM114-Status: GOOD (  11.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,38 +91,184 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Deren Wu <deren.wu@mediatek.com>
+'struct thermal_zone_device_ops' are not modified in these drivers.
 
-The decap offload configuration should only be applied after the STA has
-been successfully initialized. Attempting to configure it earlier can lead
-to corruption of the MAC configuration in the chip's hardware state.
+Constifying these structures moves some data to a read-only section, so
+increases overall security, especially when the structure holds some
+function pointers.
 
-Add an early check for `msta->deflink.wcid.sta` to ensure the station peer
-is properly initialized before proceeding with decapsulation offload
-configuration.
+On a x86_64, with allmodconfig, as an example:
+Before:
+======
+   text	   data	    bss	    dec	    hex	filename
+  28116	   5168	    128	  33412	   8284	drivers/thermal/armada_thermal.o
 
-Cc: stable@vger.kernel.org
-Fixes: 24299fc869f7 ("mt76: mt7921: enable rx header traslation offload")
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+After:
+=====
+   text	   data	    bss	    dec	    hex	filename
+  28244	   5040	    128	  33412	   8284	drivers/thermal/armada_thermal.o
+
+Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
 ---
- drivers/net/wireless/mediatek/mt76/mt7921/main.c | 3 +++
- 1 file changed, 3 insertions(+)
+Compile tested only
+---
+ drivers/thermal/armada_thermal.c                        | 2 +-
+ drivers/thermal/da9062-thermal.c                        | 2 +-
+ drivers/thermal/dove_thermal.c                          | 2 +-
+ drivers/thermal/imx_thermal.c                           | 2 +-
+ drivers/thermal/intel/int340x_thermal/int3400_thermal.c | 2 +-
+ drivers/thermal/kirkwood_thermal.c                      | 2 +-
+ drivers/thermal/mediatek/lvts_thermal.c                 | 2 +-
+ drivers/thermal/renesas/rcar_thermal.c                  | 2 +-
+ drivers/thermal/spear_thermal.c                         | 2 +-
+ drivers/thermal/st/st_thermal.c                         | 2 +-
+ drivers/thermal/testing/zone.c                          | 2 +-
+ 11 files changed, 11 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index 1fffa43379b2..77f73ae1d7ec 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -1180,6 +1180,9 @@ static void mt7921_sta_set_decap_offload(struct ieee80211_hw *hw,
- 	struct mt792x_sta *msta = (struct mt792x_sta *)sta->drv_priv;
- 	struct mt792x_dev *dev = mt792x_hw_dev(hw);
+diff --git a/drivers/thermal/armada_thermal.c b/drivers/thermal/armada_thermal.c
+index 9bff21068721..c2fbdb534f61 100644
+--- a/drivers/thermal/armada_thermal.c
++++ b/drivers/thermal/armada_thermal.c
+@@ -408,7 +408,7 @@ static int armada_get_temp_legacy(struct thermal_zone_device *thermal,
+ 	return ret;
+ }
  
-+	if (!msta->deflink.wcid.sta)
-+		return;
-+
- 	mt792x_mutex_acquire(dev);
+-static struct thermal_zone_device_ops legacy_ops = {
++static const struct thermal_zone_device_ops legacy_ops = {
+ 	.get_temp = armada_get_temp_legacy,
+ };
  
- 	if (enabled)
+diff --git a/drivers/thermal/da9062-thermal.c b/drivers/thermal/da9062-thermal.c
+index 2077e85ef5ca..a8d4b766ba21 100644
+--- a/drivers/thermal/da9062-thermal.c
++++ b/drivers/thermal/da9062-thermal.c
+@@ -137,7 +137,7 @@ static int da9062_thermal_get_temp(struct thermal_zone_device *z,
+ 	return 0;
+ }
+ 
+-static struct thermal_zone_device_ops da9062_thermal_ops = {
++static const struct thermal_zone_device_ops da9062_thermal_ops = {
+ 	.get_temp	= da9062_thermal_get_temp,
+ };
+ 
+diff --git a/drivers/thermal/dove_thermal.c b/drivers/thermal/dove_thermal.c
+index f9157a47156b..723bc72f0626 100644
+--- a/drivers/thermal/dove_thermal.c
++++ b/drivers/thermal/dove_thermal.c
+@@ -106,7 +106,7 @@ static int dove_get_temp(struct thermal_zone_device *thermal,
+ 	return 0;
+ }
+ 
+-static struct thermal_zone_device_ops ops = {
++static const struct thermal_zone_device_ops ops = {
+ 	.get_temp = dove_get_temp,
+ };
+ 
+diff --git a/drivers/thermal/imx_thermal.c b/drivers/thermal/imx_thermal.c
+index bab52e6b3b15..38c993d1bcb3 100644
+--- a/drivers/thermal/imx_thermal.c
++++ b/drivers/thermal/imx_thermal.c
+@@ -361,7 +361,7 @@ static bool imx_should_bind(struct thermal_zone_device *tz,
+ 	return trip->type == THERMAL_TRIP_PASSIVE;
+ }
+ 
+-static struct thermal_zone_device_ops imx_tz_ops = {
++static const struct thermal_zone_device_ops imx_tz_ops = {
+ 	.should_bind = imx_should_bind,
+ 	.get_temp = imx_get_temp,
+ 	.change_mode = imx_change_mode,
+diff --git a/drivers/thermal/intel/int340x_thermal/int3400_thermal.c b/drivers/thermal/intel/int340x_thermal/int3400_thermal.c
+index 0e07693ecf59..5736638c586b 100644
+--- a/drivers/thermal/intel/int340x_thermal/int3400_thermal.c
++++ b/drivers/thermal/intel/int340x_thermal/int3400_thermal.c
+@@ -515,7 +515,7 @@ static int int3400_thermal_change_mode(struct thermal_zone_device *thermal,
+ 	return result;
+ }
+ 
+-static struct thermal_zone_device_ops int3400_thermal_ops = {
++static const struct thermal_zone_device_ops int3400_thermal_ops = {
+ 	.get_temp = int3400_thermal_get_temp,
+ 	.change_mode = int3400_thermal_change_mode,
+ };
+diff --git a/drivers/thermal/kirkwood_thermal.c b/drivers/thermal/kirkwood_thermal.c
+index 7c2265231668..4619e090f756 100644
+--- a/drivers/thermal/kirkwood_thermal.c
++++ b/drivers/thermal/kirkwood_thermal.c
+@@ -48,7 +48,7 @@ static int kirkwood_get_temp(struct thermal_zone_device *thermal,
+ 	return 0;
+ }
+ 
+-static struct thermal_zone_device_ops ops = {
++static const struct thermal_zone_device_ops ops = {
+ 	.get_temp = kirkwood_get_temp,
+ };
+ 
+diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+index 985925147ac0..acce8fde2cba 100644
+--- a/drivers/thermal/mediatek/lvts_thermal.c
++++ b/drivers/thermal/mediatek/lvts_thermal.c
+@@ -571,7 +571,7 @@ static irqreturn_t lvts_irq_handler(int irq, void *data)
+ 	return iret;
+ }
+ 
+-static struct thermal_zone_device_ops lvts_ops = {
++static const struct thermal_zone_device_ops lvts_ops = {
+ 	.get_temp = lvts_get_temp,
+ 	.set_trips = lvts_set_trips,
+ };
+diff --git a/drivers/thermal/renesas/rcar_thermal.c b/drivers/thermal/renesas/rcar_thermal.c
+index 00a66ee0a5b0..fdd7afdc4ff6 100644
+--- a/drivers/thermal/renesas/rcar_thermal.c
++++ b/drivers/thermal/renesas/rcar_thermal.c
+@@ -277,7 +277,7 @@ static int rcar_thermal_get_temp(struct thermal_zone_device *zone, int *temp)
+ 	return rcar_thermal_get_current_temp(priv, temp);
+ }
+ 
+-static struct thermal_zone_device_ops rcar_thermal_zone_ops = {
++static const struct thermal_zone_device_ops rcar_thermal_zone_ops = {
+ 	.get_temp	= rcar_thermal_get_temp,
+ };
+ 
+diff --git a/drivers/thermal/spear_thermal.c b/drivers/thermal/spear_thermal.c
+index bb96be947521..603dadcd3df5 100644
+--- a/drivers/thermal/spear_thermal.c
++++ b/drivers/thermal/spear_thermal.c
+@@ -41,7 +41,7 @@ static inline int thermal_get_temp(struct thermal_zone_device *thermal,
+ 	return 0;
+ }
+ 
+-static struct thermal_zone_device_ops ops = {
++static const struct thermal_zone_device_ops ops = {
+ 	.get_temp = thermal_get_temp,
+ };
+ 
+diff --git a/drivers/thermal/st/st_thermal.c b/drivers/thermal/st/st_thermal.c
+index a14a37d54698..1470ca519def 100644
+--- a/drivers/thermal/st/st_thermal.c
++++ b/drivers/thermal/st/st_thermal.c
+@@ -132,7 +132,7 @@ static int st_thermal_get_temp(struct thermal_zone_device *th, int *temperature)
+ 	return 0;
+ }
+ 
+-static struct thermal_zone_device_ops st_tz_ops = {
++static const struct thermal_zone_device_ops st_tz_ops = {
+ 	.get_temp	= st_thermal_get_temp,
+ };
+ 
+diff --git a/drivers/thermal/testing/zone.c b/drivers/thermal/testing/zone.c
+index 1f4e450100e2..4257d813d572 100644
+--- a/drivers/thermal/testing/zone.c
++++ b/drivers/thermal/testing/zone.c
+@@ -381,7 +381,7 @@ static int tt_zone_get_temp(struct thermal_zone_device *tz, int *temp)
+ 	return 0;
+ }
+ 
+-static struct thermal_zone_device_ops tt_zone_ops = {
++static const struct thermal_zone_device_ops tt_zone_ops = {
+ 	.get_temp = tt_zone_get_temp,
+ };
+ 
 -- 
-2.18.0
+2.49.0
 
 
