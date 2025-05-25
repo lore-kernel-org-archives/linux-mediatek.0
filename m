@@ -4,119 +4,201 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0137BC54E90
-	for <linux-mediatek@archiver.kernel.org>; Sun, 25 May 2025 12:59:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 412C1C54E90
+	for <linux-mediatek@archiver.kernel.org>; Sun, 25 May 2025 13:42:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CnxtX6vLFGNGASwckWNLqz9BK4jmjtM4rIel8Tx7W1w=; b=4nls8AYAAgaRkz1HTxwdFJQni8
-	2YdUXi5KcfVDNT8Ex3dKa0YBioVK97FS4SBkcQjGj7cSlYhDh0lRV4C4CH0TCPQsV8tCshSVPpjvz
-	id6v+QDxin+tIwj9oS6k5OWb3AOUeoE5IlVrOlBBQ0zoqG6N/3gtyt/1E1/9TFop9zYhIWr8ZECpy
-	fDj0NMplvdUW6mPsXnNLP/eCQnGpZ7TDvWaPHGWvzsbTImyP7XhPvmpe5IJPctnw5l3oulqekKy5B
-	RatilgDkUVDXDohMUezAZUFrZfqd73or+/4KyUY5N1Yf6n89gJSFaxpXCxpPjHGAX9yhPEgWR77xh
-	e1hxBGYA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	In-Reply-To:From:References:To:Subject:Cc:Date:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EV0gxaL5pKXD7l3f4QxPxbz+Qi2SLAILK0Frfelyuw8=; b=IIlzwCWEjavhzDu8NJ+GGkc1yE
+	DuZaRymUYLZlK5s76V5+czhY1oYC/p/dSdRTbeptqZaxwWwlDDc48dnbhcjx+AKTC/WKqeRWfR4ds
+	fg+/IytIZSFlzpdF5AW2njhH+bVqXEyCw6cyyHKghWCGe/MzaeQYQzXZpT9Z4e00A9R7AS0wwrkTk
+	b3mOm5uBhUZY26xczfmM4KGitMyfX3J8KpnosPfCLLI1XDsbjqwYl1b2UDBchYeqy/1N/FaL/LCjm
+	7aJ8N4P4TiGBsDyleyHb7eQ1XsB8hpQGyszj1vDuPf7rgri/2xJLUh+Y9cAWXJoWuceDUKqaRp479
+	ubNt4JBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJAwW-000000075dO-17sK;
-	Sun, 25 May 2025 12:59:08 +0000
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+	id 1uJBcs-000000078Gr-4Bbf;
+	Sun, 25 May 2025 13:42:55 +0000
+Received: from mail-japaneastazolkn190100000.outbound.protection.outlook.com ([2a01:111:f403:d405::] helo=TY3P286CU002.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJAwR-000000075cu-36sq;
-	Sun, 25 May 2025 12:59:06 +0000
-Received: by mail-pj1-x102f.google.com with SMTP id 98e67ed59e1d1-31154bf1484so140499a91.3;
-        Sun, 25 May 2025 05:59:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1748177942; x=1748782742; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=CnxtX6vLFGNGASwckWNLqz9BK4jmjtM4rIel8Tx7W1w=;
-        b=nOzmc5hmp4pqMS9plDgfcTfhcaBdR55DEGF3h77te2lRoqIq4l/h6ByTA/F9cZvFtJ
-         gzWyrNSfIUmY/VnuJaD8WS3EHfby06CEHq0BjC6ZecbvKck4nlpY6bxBGCTbIqCOOiRj
-         FOfKB8kJGaeUw6F+WopH7Sex/2mDJ5YWJQkx6RpZJlP6X9zvpiN9ZQllRhhwqLfvtYWf
-         rPkmTkOsgsXGu+RW1J5F3U2EB2wktiSPzTrY24P41M7xvFAyp98mbzW7DkWgxjiOs3I6
-         jd0yczElZTzEhzZKCdgDBN3QwIrek7lanz5rdcDXmEqg782/mvYVfWKKP/l/kxh8t2Pq
-         2haw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1748177942; x=1748782742;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=CnxtX6vLFGNGASwckWNLqz9BK4jmjtM4rIel8Tx7W1w=;
-        b=dh0LRXmT0pDQ8FXpP5ZqIethKte2h5DCG7ge1/8qtRRBFCZT+fbOQ8V2xJaL6yVpD+
-         G/jYad96iuxjs+odM/BLnNWk8fO1XKQaMGBFCtZY+uRU3MJkY6GrjIdO4jdct+YZIHLA
-         qvRHiP6gqOfevb+Fv8hAbM4n6Hry6aqQ1VPbtVTDlIBqKlPfdcreLhzTIWfHSrFrCyM0
-         OEoSybs6CBpnVtscFmaD/JhJ7TKQ6dtSK3blT8nvXz4SY53Hc2XGgjDk+azuWucBxSFV
-         JJQh3VCv4yDX0OiEpMM29V1aYrnIZEQe0gYo97nKMGYdrhCq+F2wGZJ9Oynk1yUIy7PY
-         RKsQ==
-X-Forwarded-Encrypted: i=1; AJvYcCW4yfXxKH9rQHqPzAla/OpqcqpxB9L8Ne4oNaQS3H7xTVuvCZhCsldb3s4zCxUBGl4lb64U+6nOP2SMBr/D@lists.infradead.org, AJvYcCWTDKXpdPxAUTCpL31t1aaObYny6Xl0jof6hQpLV39/fc2m1aEA4RHJh0qJlfhZyQPfVfZAuz/xmqQPKMx1/IHc8A==@lists.infradead.org, AJvYcCX5aHVXYPqveW2Aho66uqVTkQFw21oAgA1fTNloogeNZGsjzAK6Fm4emowbacY/i9qd+LXceEPVyjKgpgboQys=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx5iAMckS0QUUHciGRebo5ZGQH2ISFKHK4rFkuQsl7Mvfg5NQ7b
-	zeWINLBPjPJZJdVXGHlvqGsS/6aaVJMYmKo9kQCIbkKTbcRYfHS9odEAk3bOqfR4ma2rTTlTBmo
-	csli8m+lqtVWgBiVWlYyr7pX9bDQaSfU=
-X-Gm-Gg: ASbGncuqw7/JlZK2IpOpjOW6DZVEy8tkW/2cfWtFLd7uLhCo4JkhH7r/e8B2qmJi9I4
-	yszOLwX/dWsaq3tyLew4nQqaV+TokzB/1MfOOoLjUB28AR1XzlS/zcHnZ0RqA65dEQuRCetECmB
-	ILRx6oyWO3PtXXLw7o6YE45BMmTqgXjpFh
-X-Google-Smtp-Source: AGHT+IFD8gFRLHah7VK8q4VAzZEhJ/BGgnF4fW/go0D9F1X52RN+69x/ldRgn8hswy+xnyaPJuO7lDfhw/vlmzHt5F4=
-X-Received: by 2002:a17:90a:c2c3:b0:2fe:9581:fbea with SMTP id
- 98e67ed59e1d1-31110d92962mr7976186a91.29.1748177941986; Sun, 25 May 2025
- 05:59:01 -0700 (PDT)
+	id 1uJBcq-000000078FC-3M7R;
+	Sun, 25 May 2025 13:42:54 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=xOsfPk478JTapizoeS4/tToMiYdzhKu0I6x3Tqmh16kTcGCHtuDTmPcZyy52Ix4cjYugjdoTGQnRt+idTfxLCKbpqJGkBb5J5dintY+xjUWzQjRoywyPVuqUCwbwiWZIFVMBcgDuOOhx79RLrraF2/ysJ91t15x1vklJQhbtTUPN0UxFTHRg2eKQwR/CQu6IQGZXtUjx/eFx5kaiggfpqSIGjPOjIjaHp6mNZa7NvntFQDWvHZTo9nGF7/weq8z4+76GFj96hQ5DsAXQpUnJsD2Qlxb6V6rU1cwVv1H57t2ifx1AvuOuRHn2+75fo/sxutyRNNiadm+lfpZXHCL/BA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=EV0gxaL5pKXD7l3f4QxPxbz+Qi2SLAILK0Frfelyuw8=;
+ b=fILJF0/0aRZSQeYWn7N7SsArOsaGQg3kVVFAyivbHO7HMwpSzC0j8qChvVh6/+viLuPXaRR2E59k5uk1c4WYiYU/hRY9UtE2hcYgAx/RwNqVi4gDVx6/xdc4OP7NNBGWq4Q8CU/X/vCxVFhmyPPnKnhekIcA+1CuCOm3/gYBi/mRONv9VaNgr6UD8bWx8EyEIqtudJBUWPPyhUGDNvAeXM/dRHvQ5lz+uT0fwPS3iqnbdNIburh7+Ms0nBXl1dS8mEslnGPo5+yOKStUPOlOb+K/ybBUvfNxrVVtHIO4tVO1I/t5MMqB3nrukOHm2KNPlDv4Ux0IjBbE37lxSFMt2g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=EV0gxaL5pKXD7l3f4QxPxbz+Qi2SLAILK0Frfelyuw8=;
+ b=FnMY7bZbqE5z67N09bhuxZEpmvVLV8pyZlgqTj7uZECsOkVVk5qYrDEWAml/HyBtE1GyNT3ulE3n5+jD7z4yiGqgas+wsKMAqPGAsKjfw1VqdknnHmTSTFstKRBn8fIAZbVsJXcrlTQ2AYEwGY+tTry9/qPK4/FK/BkcOa2yZYVJkFsflvIY5uQx/C+SDD+UFLx8CHkDBbHK0KYomL93A0TAzaGVADHatzVdsWWwZ+B3cOuCLQ/bC6RzNqj5VZD5wzwySx9JuazicN3GRmm96eyWxbzPZUR8BkSAzlonrv4uw7Y51974eiDdgA2Ha7ARmZNpaeve12jhlc6QDISWMQ==
+Received: from TYCPR01MB8437.jpnprd01.prod.outlook.com (2603:1096:400:156::5)
+ by TYYPR01MB12465.jpnprd01.prod.outlook.com (2603:1096:405:f5::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8769.24; Sun, 25 May
+ 2025 13:42:23 +0000
+Received: from TYCPR01MB8437.jpnprd01.prod.outlook.com
+ ([fe80::83e7:751f:f3af:768f]) by TYCPR01MB8437.jpnprd01.prod.outlook.com
+ ([fe80::83e7:751f:f3af:768f%3]) with mapi id 15.20.8769.025; Sun, 25 May 2025
+ 13:42:23 +0000
+Message-ID: <TYCPR01MB84372AF48E9D74AD3F9DC242989AA@TYCPR01MB8437.jpnprd01.prod.outlook.com>
+Date: Sun, 25 May 2025 21:42:13 +0800
+User-Agent: Mozilla Thunderbird
+Cc: wiagn233@outlook.com, Sujuan Chen <sujuan.chen@mediatek.com>,
+ Bo Jiao <bo.jiao@mediatek.com>
+Subject: Re: [PATCH v10 RESEND] wifi: mt76: mt7915: add wds support when wed
+ is enabled
+To: nbd@nbd.name, pkshih@realtek.com, lorenzo@kernel.org,
+ ryder.lee@mediatek.com, shayne.chen@mediatek.com, sean.wang@mediatek.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ johannes.berg@intel.com, miriam.rachel.korenblit@intel.com,
+ christophe.jaillet@wanadoo.fr, greearb@candelatech.com,
+ howard-yh.hsu@mediatek.com, StanleyYP.Wang@mediatek.com,
+ deren.wu@mediatek.com, chui-hao.chiu@mediatek.com, quic_adisi@quicinc.com,
+ gustavoars@kernel.org, razvan.grigore@vampirebyte.ro,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <OSZPR01MB84342A0E21AAD111ED7AF6B198B82@OSZPR01MB8434.jpnprd01.prod.outlook.com>
+From: Shengyu Qu <wiagn233@outlook.com>
+Content-Language: en-US
+Autocrypt: addr=wiagn233@outlook.com; keydata=
+ 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
+In-Reply-To: <OSZPR01MB84342A0E21AAD111ED7AF6B198B82@OSZPR01MB8434.jpnprd01.prod.outlook.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="------------aSZCXDppSaaE0ALCVgKJu5XQ"
+X-ClientProxiedBy: SGAP274CA0002.SGPP274.PROD.OUTLOOK.COM (2603:1096:4:b6::14)
+ To TYCPR01MB8437.jpnprd01.prod.outlook.com (2603:1096:400:156::5)
+X-Microsoft-Original-Message-ID: <85607341-8372-4088-b1f6-f059dd7eee6a@outlook.com>
 MIME-Version: 1.0
-References: <20250407-drm-bridge-convert-to-alloc-api-v1-0-42113ff8d9c0@bootlin.com>
- <20250407-drm-bridge-convert-to-alloc-api-v1-1-42113ff8d9c0@bootlin.com>
-In-Reply-To: <20250407-drm-bridge-convert-to-alloc-api-v1-1-42113ff8d9c0@bootlin.com>
-From: Adam Ford <aford173@gmail.com>
-Date: Sun, 25 May 2025 07:58:49 -0500
-X-Gm-Features: AX0GCFsaQq7xZsNGz6mxwbVMYdWMXOZJV0gBUkooHvJZRTeGH_o4bumqurVUius
-Message-ID: <CAHCN7xKefTM-iDTLimJxr18FaSSa0h+C2og9PmjQQyTQWWhs1g@mail.gmail.com>
-Subject: Re: [PATCH 01/34] drm: convert many bridge drivers from
- devm_kzalloc() to devm_drm_bridge_alloc() API
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Jagan Teki <jagan@amarulasolutions.com>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, Douglas Anderson <dianders@chromium.org>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, 
-	Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, Anusha Srivatsa <asrivats@redhat.com>, 
-	Paul Kocialkowski <paulk@sys-base.io>, Dmitry Baryshkov <lumag@kernel.org>, 
-	=?UTF-8?Q?Herv=C3=A9_Codina?= <herve.codina@bootlin.com>, 
-	Hui Pu <Hui.Pu@gehealthcare.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
-	dri-devel@lists.freedesktop.org, asahi@lists.linux.dev, 
-	linux-kernel@vger.kernel.org, chrome-platform@lists.linux.dev, 
-	imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, 
-	linux-renesas-soc@vger.kernel.org, platform-driver-x86@vger.kernel.org, 
-	linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
-	freedreno@lists.freedesktop.org, linux-stm32@st-md-mailman.stormreply.com, 
-	Adrien Grassein <adrien.grassein@gmail.com>, Aleksandr Mishin <amishin@t-argos.ru>, 
-	Andy Yan <andy.yan@rock-chips.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Benson Leung <bleung@chromium.org>, Biju Das <biju.das.jz@bp.renesas.com>, 
-	Christoph Fritz <chf.fritz@googlemail.com>, 
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, 
-	Detlev Casanova <detlev.casanova@collabora.com>, 
-	Dharma Balasubiramani <dharma.b@microchip.com>, Guenter Roeck <groeck@chromium.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Jani Nikula <jani.nikula@intel.com>, Janne Grunau <j@jannau.net>, 
-	Jerome Brunet <jbrunet@baylibre.com>, Jesse Van Gavere <jesseevg@gmail.com>, 
-	Kevin Hilman <khilman@baylibre.com>, 
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, Liu Ying <victor.liu@nxp.com>, 
-	Manikandan Muralidharan <manikandan.m@microchip.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Phong LE <ple@baylibre.com>, Sasha Finkelstein <fnkl.kernel@gmail.com>, 
-	Sugar Zhang <sugar.zhang@rock-chips.com>, Sui Jingfeng <sui.jingfeng@linux.dev>, 
-	Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, Vitalii Mordan <mordan@ispras.ru>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: TYCPR01MB8437:EE_|TYYPR01MB12465:EE_
+X-MS-Office365-Filtering-Correlation-Id: 7c6819d9-4442-4ba3-03fc-08dd9b91fa8a
+X-Microsoft-Antispam: BCL:0;ARA:14566002|19110799006|41001999006|461199028|6092099012|5072599009|15080799009|8060799009|7092599006|12121999007|26104999006|19111999003|12091999003|26115399003|13095399003|440099028|3412199025|1710799026;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?YWo5aU1vRVoxYmJ3TEprWGtpYTlVNWJBanV0aXJ4cG1BcFBSNmJ5c1RDZGpS?=
+ =?utf-8?B?TlUxRTBRSzB3cVpJTzF6MTdJSTZzSG5FVXhsdFZCamRtdjZOdVhTSkpiRERM?=
+ =?utf-8?B?SEU3VmNlNnduSzZ6Q0czNG0rRy9iR3hYdis4elBGczJtY3djcWYzYXBzN09w?=
+ =?utf-8?B?cklYNlJTMkNTc3Z1Ylc2bXZUdHMrRFFzcVE2c3ZCQWxDZ3c4KzNVRktRNG1z?=
+ =?utf-8?B?d3YwVTRpQ3ZvbTVobW1BWlBhTGJBaU8vRzJmNFNtZGRWRm96bUVRRHlteTk4?=
+ =?utf-8?B?KzhTekFhRGJLQzU1OXhWbk4za1dRcXBmWTBjVWtlRkw1ejBzTzhzTUpxMmp3?=
+ =?utf-8?B?aFFIK0Z2S1BXSHc3am5sK0JxSUlXWmlQOXdHdVBaTDVuckdWMlk4dEhDYld5?=
+ =?utf-8?B?OUN5TE81akprdTFuQWU2VGdIYnowZWQ0bTk4L2M4QUhqbjY1WkxQNUFqY1Rl?=
+ =?utf-8?B?Ly9SaUR6VWtxZUh5ciswTDR0UmJ5RWdxNGEvRGpEYk5WK1hCend0M29IckhR?=
+ =?utf-8?B?OWxPbDNtS1FYeGozdWw4Q291UU54WEkvVEdWTXJiOXA4ZkpNanJJR1kwR21n?=
+ =?utf-8?B?aG5rQ3NGSm5HRXFVYmJkNlNpRGZScEwrQ3diL256ZUM5bnhKaVVqZ3Btb0FE?=
+ =?utf-8?B?U2JsVUNpSWV2MkVsNk92U1pLNkp1K0daM1k3ZXBXSWd0MTQ3R2VObVRQanNT?=
+ =?utf-8?B?ekwrSkdkdWt2Vk5LTXRLQ2N3WXo1ZkFFMng5T2cwQ3BNc0FiTGZEdTR2V21r?=
+ =?utf-8?B?Z2RsV0NPQ3RTVjNDamZOWUxzR3d6WEdqMEU2NlEvbTg1dHpjalphb2hqaEtv?=
+ =?utf-8?B?UlNUaEp0ZlVKdVJreVBlMzVjMHlBQ3BBOU1LTi8yZ3U0NVM0S3RhdGovQ1lZ?=
+ =?utf-8?B?UTExRzZEaU42Z2RHOXlabU1QblQ2Y2Y2dEVlKzg3ZHFxTG03VXVQV0xUUnhP?=
+ =?utf-8?B?b3hTeS83VzFTQk5rYkNuWW5rWEU4RXpVaTdTMEQ5KzBubTRVVlZsNGRLU0w4?=
+ =?utf-8?B?S2IwR2Z2NUUyMllxRXFpNEJsMFdXQXNJZ1RvMGh1Z3VZalkyRnJCd2p4YWJY?=
+ =?utf-8?B?Z0FVUmhGazVHZGQ3bjMrcHE4YW9Qdnh5b3dmWFJXS001cm1mT3l5dnJyaldK?=
+ =?utf-8?B?dkgvY2d4TDNuMk1leUhsenNGT0dtVTg2TmdyRWEyS2F1ZUhzeDlrQkJGaEow?=
+ =?utf-8?B?c2JJR0FadSszK3g0VEIvaGozUDI4NGRCbTIvVEVrU052TndveGxpanl6c3d4?=
+ =?utf-8?B?T2NPQnoxYXZRV0lsTTRsSUFBbnlxTkh5RCs4ck5SeGFMRlI3R1dVYjVxaFM3?=
+ =?utf-8?B?TmtTc2hLUXQ2TU1iL0U2STh5WFJOVmpHSnd6OEVVblBYdXFpT25oMFdBYTQ4?=
+ =?utf-8?B?YU0wSlVGbE4zUHVvNmMrOXdtTkYxQ2ppeFNIcGR0SmlESTlwL2ZremdkbkZR?=
+ =?utf-8?B?R3FUNUl3cGFFaGZ1OGxlWEZSYmwralRrU2JkN21WbGltVmpUQ0FBUTY2allo?=
+ =?utf-8?B?UysxTmd3RjdBOUYzOEw0dHoxMHgxQXJjckJBa1J1eExKMjE4eEM0Z2wrZHJi?=
+ =?utf-8?B?RzZ5Tml2RlNPajRjUi9zZ0RxckNHc1ZMc0tCVHBiREIrZ2szYTU3ajhmd1RP?=
+ =?utf-8?B?d0F4WER6WklkTWMwamx4eU1HZG9XM1pCMzFOMHR6dFp0VlV6R1YxRGc2b0VW?=
+ =?utf-8?B?aDYvelY4MUExd1A0Ujk2VnNXcnBadXNDYVpxR2dPcHNua0YrS1ZRdFcxaTUw?=
+ =?utf-8?B?RTV5azBOQ3RrNjdSait6TlU0MkVUQ25Kd0pveDMwSHp4K1JZSXRoSFlnRlRo?=
+ =?utf-8?B?ZFBCMG1hUGFtK3R4QlNVeTBmOW1XTjFvS2RoWjRyUUR6UkxZbCtLTDFBYnJW?=
+ =?utf-8?B?dGRhVnFDdmk3QUNRVWYxRmswZ0pISFlNK2RuM21PK3oxSUE9PQ==?=
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?SUN1d3FIajZxM0tsTTU0OFc2MzB2NEwwbWhwZmpDaTI0VHc2dlQwbXdwaGxi?=
+ =?utf-8?B?V2RpVzVrMng0WFMwUU5tOUNUd0FaVklPYUVKN3N6UzdabHgrbjZma1I0UXJm?=
+ =?utf-8?B?ZHRZK3BkVWw1SkxNNURudlpxMUdidUNXTnRza3BPK2VBOHlPK0h3WHNkYVZE?=
+ =?utf-8?B?YWN2MC9PV1kxcU9iZzBVN2RIVjVvbER0eXhtejlOODU5bysvUmhOMHRSR1Ja?=
+ =?utf-8?B?ZVp6OGJ1c1NvdzBSNHV6R2xzSjBlY3gra202aHpXbHhIdjFjNStGWXh5SXl0?=
+ =?utf-8?B?NzVjN01pWklZby9zenlRcEFyR2FUK254NVdySWsxOXhIV1B2bEY4OTBmMnFz?=
+ =?utf-8?B?cm5PYTZmSkdZR0NweTlrRk9sZFI1d0ZWMUlTM0trSEJnRWp3Wmx1dmFZYTlB?=
+ =?utf-8?B?di83WW1GamJsVTNtc09GR3pzN3RvbUhoN1B0bVUvQVc2MTUwT0lkaGhQRC90?=
+ =?utf-8?B?Y29yOW41SlNDbndmTXRITUxBdkQwZDFJWHZjanN6eXR5R3lNcWNhdlMvRUhK?=
+ =?utf-8?B?QW1qTnZqRVNOcTg3YjJwUjNmU2ZLK0tBMzBHWWJwQ2dmRlhBdFZxV0YwVkYy?=
+ =?utf-8?B?RmhCZzdOVEg1YkZ2ZUpOYU9XT3g2dDVKK2RyeThGVHZwNjZEaXg1K3dScmtq?=
+ =?utf-8?B?UWVla1Fod1lydmNYWkpxMjNyZW4ydEErbEVMS2ZYaTFUZXl1ZnVGb0tRVDNZ?=
+ =?utf-8?B?OEluUDUzMno4MnJSZCs3Q0RXRWYzM1hIRnNtM1hmMnpxMmVEbE9IU2RhQXlU?=
+ =?utf-8?B?bHljY21zNnJYVTFtUzA2RWgwcFJtZStYcmVDMmZTbmJ0VWlyZjdZVnNzeTlm?=
+ =?utf-8?B?T0FvSlgzN0x4c1NLZkpWY1VGMFhzbERTTnpheEV3bHJWMlBHSDU3ZE5DWUJy?=
+ =?utf-8?B?Wkd6aUo0RkJLRmt3YjdZamdsZEF0TkxrZkpaZmtKT1Nwc0R0dlBQL2t4dWQw?=
+ =?utf-8?B?R01zTWt3d0hEK0Q5S1ZaRlV2bGNMbHNJNUdmV254ZE5xd2xTS0NXS29rYVgy?=
+ =?utf-8?B?WUI1N0dvbUVlcXdoQnFQSE1RMWlCKzFOcUNQa3JIQWNFSWhpUDh1bjV0L3lu?=
+ =?utf-8?B?aWdzMytCeUVOQ2JveXdxanBkeGNMR3RCRFl2MGFHTEVGTVQya0Rna0R4eXYx?=
+ =?utf-8?B?UGZyY1BmbFVnUWc1VmhXV2JjeHlFTmRaUVZ1aXZ3YmlONWJrdXFTWlZrc1FS?=
+ =?utf-8?B?U2R6SlFZaElNS0IxazlpbUp0aTJrUmVSdGx2VDhOUko1QXp4akJXMzREbjJs?=
+ =?utf-8?B?ODUreCtRQVZEUlkzWno5WDZwUjN4NXZ1ZG9CQndKYjJSc0RUUHNLYWIrMWNE?=
+ =?utf-8?B?R2Z6MHVPVW5adDl1M2V5K010UjVIMFVFTUs4aTUzWXdNNW1tWnc5VlU5TlNO?=
+ =?utf-8?B?NDRqekhYVUMzN1k3V1o2ZEhiSFRJMDdjTEo4d1lYS2UrN2dxWWpDWDNuTDZh?=
+ =?utf-8?B?SGd1UEtPNExzOGpKc0dtRmdKM2hYY2V0V3VjQVpIOFE3NzZMS29hSUE3TWg3?=
+ =?utf-8?B?b0prV2ZHaXM3bXlvSE91RHNPZkszS3J3enlsYldiM01UWklRVjBGdHhqSy9s?=
+ =?utf-8?B?SlZTK3JlVUtBRzVGUG5XOVJWUXpNdXZUTHdzYzRVTXFEd01nVUhkWGR6REtj?=
+ =?utf-8?Q?xDHZM0XGjkMxlwu6C5yOVaNhfAFmIPWjbiP5kjQwpiRs=3D?=
+X-OriginatorOrg: outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7c6819d9-4442-4ba3-03fc-08dd9b91fa8a
+X-MS-Exchange-CrossTenant-AuthSource: TYCPR01MB8437.jpnprd01.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 May 2025 13:42:23.7160
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYYPR01MB12465
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250525_055903_839012_6647B1C8 
-X-CRM114-Status: GOOD (  21.35  )
+X-CRM114-CacheID: sfid-20250525_064252_948050_A3C046A5 
+X-CRM114-Status: UNSURE (   9.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,1656 +213,379 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 7, 2025 at 9:24=E2=80=AFAM Luca Ceresoli <luca.ceresoli@bootlin=
-.com> wrote:
->
-> devm_drm_bridge_alloc() is the new API to be used for allocating (and
-> partially initializing) a private driver struct embedding a struct
-> drm_bridge.
->
-> For many drivers having a simple code flow in the probe function, this
-> commit does a mass conversion automatically with the following semantic
-> patch. The changes have been reviewed manually for correctness as well as
-> to find any false positives.
->
->   @@
->   type T;
->   identifier C;
->   identifier BR;
->   expression DEV;
->   expression FUNCS;
->   @@
->   -T *C;
->   +T *C;
->    ...
->   (
->   -C =3D devm_kzalloc(DEV, ...);
->   -if (!C)
->   -    return -ENOMEM;
->   +C =3D devm_drm_bridge_alloc(DEV, T, BR, FUNCS);
->   +if (IS_ERR(C))
->   +     return PTR_ERR(C);
->   |
->   -C =3D devm_kzalloc(DEV, ...);
->   -if (!C)
->   -    return ERR_PTR(-ENOMEM);
->   +C =3D devm_drm_bridge_alloc(DEV, T, BR, FUNCS);
->   +if (IS_ERR(C))
->   +     return C;
->   )
->    ...
->   -C->BR.funcs =3D FUNCS;
->
-> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
->
+--------------aSZCXDppSaaE0ALCVgKJu5XQ
+Content-Type: multipart/mixed; boundary="------------8RbOBtFNuSB8oa2OPMoZ2KSL";
+ protected-headers="v1"
+From: Shengyu Qu <wiagn233@outlook.com>
+To: nbd@nbd.name, pkshih@realtek.com, lorenzo@kernel.org,
+ ryder.lee@mediatek.com, shayne.chen@mediatek.com, sean.wang@mediatek.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ johannes.berg@intel.com, miriam.rachel.korenblit@intel.com,
+ christophe.jaillet@wanadoo.fr, greearb@candelatech.com,
+ howard-yh.hsu@mediatek.com, StanleyYP.Wang@mediatek.com,
+ deren.wu@mediatek.com, chui-hao.chiu@mediatek.com, quic_adisi@quicinc.com,
+ gustavoars@kernel.org, razvan.grigore@vampirebyte.ro,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Cc: wiagn233@outlook.com, Sujuan Chen <sujuan.chen@mediatek.com>,
+ Bo Jiao <bo.jiao@mediatek.com>
+Message-ID: <85607341-8372-4088-b1f6-f059dd7eee6a@outlook.com>
+Subject: Re: [PATCH v10 RESEND] wifi: mt76: mt7915: add wds support when wed
+ is enabled
+References: <OSZPR01MB84342A0E21AAD111ED7AF6B198B82@OSZPR01MB8434.jpnprd01.prod.outlook.com>
+In-Reply-To: <OSZPR01MB84342A0E21AAD111ED7AF6B198B82@OSZPR01MB8434.jpnprd01.prod.outlook.com>
 
+--------------8RbOBtFNuSB8oa2OPMoZ2KSL
+Content-Type: multipart/mixed; boundary="------------Q3V9XbsBm0UszSYMZassvmiC"
 
-For fsl-ldb.c:
+--------------Q3V9XbsBm0UszSYMZassvmiC
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: base64
 
-Tested-by: Adam Ford <aford173@gmail.com> # imx8mp-beacon-kit
+UGluZyBhZ2Fpbi4NCg0K5ZyoIDIwMjUvNC8yMSAyMjowNCwgU2hlbmd5dSBRdSDlhpnpgZM6
+DQo+IFRoZSBjdXJyZW50IFdFRCBvbmx5IHN1cHBvcnRzIDI1NiB3Y2lkLCB3aGVyZWFzIG10
+Nzk4NiBjYW4gc3VwcG9ydCB1cCB0bw0KPiA1MTIgZW50cmllcywgc28gZmlybXdhcmUgcHJv
+dmlkZXMgYSBydWxlIHRvIGdldCBzdGFfaW5mbyBieSBEQSB3aGVuIHdjaWQNCj4gaXMgc2V0
+IHRvIDB4M2ZmIGJ5IHR4ZC4gQWxzbywgV0VEIHByb3ZpZGVzIGEgcmVnaXN0ZXIgdG8gb3Zl
+cndyaXRlIHR4ZA0KPiB3Y2lkLCB0aGF0IGlzLCB3Y2lkWzk6OF0gY2FuIGJlIG92ZXJ3cml0
+dGVuIGJ5IDB4MyBhbmQgd2NpZFs3OjBdIGlzIHNldA0KPiB0byAweGZmIGJ5IGhvc3QgZHJp
+dmVyLg0KPiANCj4gSG93ZXZlciwgZmlybXdhcmUgaXMgdW5hYmxlIHRvIGdldCBzdGFfaW5m
+byBmcm9tIERBIGFzIERBICE9IFJBIGZvcg0KPiA0YWRkciBjYXNlcywgc28gZmlybXdhcmUg
+YW5kIHdpZmkgaG9zdCBkcml2ZXIgYm90aCB1c2Ugd2NpZCAoMjU2IC0gMjcxKQ0KPiBhbmQg
+KDc2OCB+IDc4MykgZm9yIHN5bmMgdXAgdG8gZ2V0IGNvcnJlY3Qgc3RhX2luZm8uDQo+IA0K
+PiBDdXJyZW50bHkgV0RTK1dFRCBjb25maWcgaXMgY29tcGxldGVseSBicm9rZW4gb24gTVQ3
+OTg2Lzc5ODEgZGV2aWNlcyBpZg0KPiB3aXRob3V0IHRoaXMgcGF0Y2guDQo+IA0KPiBSZXZp
+ZXdlZC1ieTogUGluZy1LZSBTaGloIDxwa3NoaWhAcmVhbHRlay5jb20+DQo+IFRlc3RlZC1i
+eTogU3VqdWFuIENoZW4gPHN1anVhbi5jaGVuQG1lZGlhdGVrLmNvbT4NCj4gQ28tZGV2ZWxv
+cGVkLWJ5OiBCbyBKaWFvIDxiby5qaWFvQG1lZGlhdGVrLmNvbT4NCj4gU2lnbmVkLW9mZi1i
+eTogQm8gSmlhbyA8Ym8uamlhb0BtZWRpYXRlay5jb20+DQo+IFNpZ25lZC1vZmYtYnk6IFN1
+anVhbiBDaGVuIDxzdWp1YW4uY2hlbkBtZWRpYXRlay5jb20+DQo+IFNpZ25lZC1vZmYtYnk6
+IFNoZW5neXUgUXUgPHdpYWduMjMzQG91dGxvb2suY29tPg0KPiAtLS0NCj4gQ2hhbmdlcyBz
+aW5jZSB2MToNCj4gICAtIERyb3AgZHVwbGljYXRlIHNldHRpbmcgaW4gbW1pbw0KPiAgIC0g
+UmVkdWNlIHRoZSBwYXRjaCBzaXplIGJ5IHJlZGVmaW5pbmcgbXQ3Nl93Y2lkX2FsbG9jDQo+
+IENoYW5nZXMgc2luY2UgdjI6DQo+ICAgLSBSZXdvcmsgd2RzIHdjaWQgZ2V0dGluZyBmbG93
+DQo+IENoYW5nZXMgc2luY2UgdjM6DQo+ICAgLSBSZWJhc2UgdG8gbmV4dC0yMDI0MDcwMw0K
+PiAgIC0gU3luYyB3aXRoIGRvd25zdHJlYW0gcGF0Y2gNCj4gQ2hhbmdlcyBzaW5jZSB2NDoN
+Cj4gICAtIFJlYmFzZSB0byBuZXh0LTIwMjQwODAyDQo+IENoYW5nZXMgc2luY2UgdjU6DQo+
+ICAgLSBGaXhlZCBidWlsZCB0ZXN0IGVycm9yIHJlcG9ydGVkIGJ5IHJvYm90DQo+ICAgLSBS
+ZWJhc2UgdG8gbmV4dC0yMDI0MDgwNQ0KPiBDaGFuZ2VzIHNpbmNlIHY2Og0KPiAgIC0gRml4
+IHBvdGVudGlhbCByYWNlIGNvbmRpdGlvbnMgb24gdHgvcnggcGFja2V0cyBkdXJpbmcgdGhl
+IHRyYW5zaXRpb24NCj4gICAtIFJlYmFzZSB0byBGZWxpeCdzIG5ld2VzdCBjb2RlYmFzZQ0K
+PiBDaGFuZ2VzIHNpbmNlIHY3Og0KPiAgIC0gRml4IGJ1aWxkIGZhaWwNCj4gQ2hhbmdlcyBz
+aW5jZSB2ODoNCj4gICAtIENoYW5nZWQgY29kZSBhcyBTaGloIGFkdmlzZWQNCj4gQ2hhbmdl
+cyBzaW5jZSB2OToNCj4gICAtIENoYW5nZWQgY29kZSBhcyBTaGloIGFkdmlzZWQNCj4gICAt
+IE1vdmVkIG10NzZfd2NpZF9hbGxvYyB0byBtdDc2LmgNCj4gLS0tDQo+ICAgZHJpdmVycy9u
+ZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc2LmggICAgIHwgMTUgKysrKysrDQo+ICAg
+Li4uL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzkxNS9tYWluLmMgIHwgNTMgKysr
+KysrKysrKysrKysrKystLQ0KPiAgIC4uLi9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9t
+dDc5MTUvbWN1LmMgICB8IDE4ICsrKysrLS0NCj4gICAuLi4vbmV0L3dpcmVsZXNzL21lZGlh
+dGVrL210NzYvbXQ3OTE1L21jdS5oICAgfCAgMSArDQo+ICAgZHJpdmVycy9uZXQvd2lyZWxl
+c3MvbWVkaWF0ZWsvbXQ3Ni91dGlsLmMgICAgIHwgMzcgKysrKysrKysrKystLQ0KPiAgIGRy
+aXZlcnMvbmV0L3dpcmVsZXNzL21lZGlhdGVrL210NzYvdXRpbC5oICAgICB8ICAyICstDQo+
+ICAgNiBmaWxlcyBjaGFuZ2VkLCAxMTUgaW5zZXJ0aW9ucygrKSwgMTEgZGVsZXRpb25zKC0p
+DQo+IA0KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3
+Ni9tdDc2LmggYi9kcml2ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzYuaA0K
+PiBpbmRleCBkN2NkNDY3YjgxMmYuLjdmNTkwODU0OTU5ZSAxMDA2NDQNCj4gLS0tIGEvZHJp
+dmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc2LmgNCj4gKysrIGIvZHJpdmVy
+cy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc2LmgNCj4gQEAgLTI4LDYgKzI4LDkg
+QEANCj4gICANCj4gICAjZGVmaW5lIE1UNzZfVE9LRU5fRlJFRV9USFIJNjQNCj4gICANCj4g
+KyNkZWZpbmUgTVQ3Nl9XRURfV0RTX01JTiAgICAyNTYNCj4gKyNkZWZpbmUgTVQ3Nl9XRURf
+V0RTX01BWCAgICAyNzINCj4gKw0KPiAgICNkZWZpbmUgTVRfUUZMQUdfV0VEX1JJTkcJR0VO
+TUFTSygxLCAwKQ0KPiAgICNkZWZpbmUgTVRfUUZMQUdfV0VEX1RZUEUJR0VOTUFTSyg0LCAy
+KQ0KPiAgICNkZWZpbmUgTVRfUUZMQUdfV0VECQlCSVQoNSkNCj4gQEAgLTczLDYgKzc2LDEy
+IEBAIGVudW0gbXQ3Nl93ZWRfdHlwZSB7DQo+ICAgCU1UNzZfV0VEX1JST19RX0lORCwNCj4g
+ICB9Ow0KPiAgIA0KPiArZW51bSBtdDc2X3dlZF9zdGF0ZSB7DQo+ICsJTVQ3Nl9XRURfREVG
+QVVMVCwNCj4gKwlNVDc2X1dFRF9BQ1RJVkUsDQo+ICsJTVQ3Nl9XRURfV0RTX0FDVElWRSwN
+Cj4gK307DQo+ICsNCj4gICBzdHJ1Y3QgbXQ3Nl9idXNfb3BzIHsNCj4gICAJdTMyICgqcnIp
+KHN0cnVjdCBtdDc2X2RldiAqZGV2LCB1MzIgb2Zmc2V0KTsNCj4gICAJdm9pZCAoKndyKShz
+dHJ1Y3QgbXQ3Nl9kZXYgKmRldiwgdTMyIG9mZnNldCwgdTMyIHZhbCk7DQo+IEBAIC0xMTY5
+LDYgKzExNzgsMTIgQEAgdm9pZCBtdDc2X3dlZF9kbWFfcmVzZXQoc3RydWN0IG10NzZfZGV2
+ICpkZXYpOw0KPiAgIGludCBtdDc2X3dlZF9uZXRfc2V0dXBfdGMoc3RydWN0IGllZWU4MDIx
+MV9odyAqaHcsIHN0cnVjdCBpZWVlODAyMTFfdmlmICp2aWYsDQo+ICAgCQkJICBzdHJ1Y3Qg
+bmV0X2RldmljZSAqbmV0ZGV2LCBlbnVtIHRjX3NldHVwX3R5cGUgdHlwZSwNCj4gICAJCQkg
+IHZvaWQgKnR5cGVfZGF0YSk7DQo+ICsNCj4gK3N0YXRpYyBpbmxpbmUgaW50IG10NzZfd2Np
+ZF9hbGxvYyh1MzIgKm1hc2ssIGludCBzaXplKQ0KPiArew0KPiArCXJldHVybiBfX210NzZf
+d2NpZF9hbGxvYyhtYXNrLCBzaXplLCBNVDc2X1dFRF9ERUZBVUxUKTsNCj4gK30NCj4gKw0K
+PiAgICNpZmRlZiBDT05GSUdfTkVUX01FRElBVEVLX1NPQ19XRUQNCj4gICB1MzIgbXQ3Nl93
+ZWRfaW5pdF9yeF9idWYoc3RydWN0IG10a193ZWRfZGV2aWNlICp3ZWQsIGludCBzaXplKTsN
+Cj4gICBpbnQgbXQ3Nl93ZWRfb2ZmbG9hZF9lbmFibGUoc3RydWN0IG10a193ZWRfZGV2aWNl
+ICp3ZWQpOw0KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsv
+bXQ3Ni9tdDc5MTUvbWFpbi5jIGIvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3
+Ni9tdDc5MTUvbWFpbi5jDQo+IGluZGV4IDNhYTMxYzVjZWZhNi4uZmNiZjRmOTcxMDI2IDEw
+MDY0NA0KPiAtLS0gYS9kcml2ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210Nzkx
+NS9tYWluLmMNCj4gKysrIGIvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9t
+dDc5MTUvbWFpbi5jDQo+IEBAIC03NDQsOSArNzQ0LDE2IEBAIGludCBtdDc5MTVfbWFjX3N0
+YV9hZGQoc3RydWN0IG10NzZfZGV2ICptZGV2LCBzdHJ1Y3QgaWVlZTgwMjExX3ZpZiAqdmlm
+LA0KPiAgIAlzdHJ1Y3QgbXQ3OTE1X3N0YSAqbXN0YSA9IChzdHJ1Y3QgbXQ3OTE1X3N0YSAq
+KXN0YS0+ZHJ2X3ByaXY7DQo+ICAgCXN0cnVjdCBtdDc5MTVfdmlmICptdmlmID0gKHN0cnVj
+dCBtdDc5MTVfdmlmICopdmlmLT5kcnZfcHJpdjsNCj4gICAJYm9vbCBleHRfcGh5ID0gbXZp
+Zi0+cGh5ICE9ICZkZXYtPnBoeTsNCj4gKwl1OCBmbGFncyA9IE1UNzZfV0VEX0RFRkFVTFQ7
+DQo+ICAgCWludCBpZHg7DQo+ICAgDQo+IC0JaWR4ID0gbXQ3Nl93Y2lkX2FsbG9jKGRldi0+
+bXQ3Ni53Y2lkX21hc2ssIE1UNzkxNV9XVEJMX1NUQSk7DQo+ICsJaWYgKG10a193ZWRfZGV2
+aWNlX2FjdGl2ZSgmZGV2LT5tdDc2Lm1taW8ud2VkKSAmJg0KPiArCSAgICAhaXNfbXQ3OTE1
+KCZkZXYtPm10NzYpKSB7DQo+ICsJCWZsYWdzID0gdGVzdF9iaXQoTVRfV0NJRF9GTEFHXzRB
+RERSLCAmbXN0YS0+d2NpZC5mbGFncykgPw0KPiArCQkgICAgICAgTVQ3Nl9XRURfV0RTX0FD
+VElWRSA6IE1UNzZfV0VEX0FDVElWRTsNCj4gKwl9DQo+ICsNCj4gKwlpZHggPSBfX210NzZf
+d2NpZF9hbGxvYyhtZGV2LT53Y2lkX21hc2ssIE1UNzkxNV9XVEJMX1NUQSwgZmxhZ3MpOw0K
+PiAgIAlpZiAoaWR4IDwgMCkNCj4gICAJCXJldHVybiAtRU5PU1BDOw0KPiAgIA0KPiBAQCAt
+MTI3MSw2ICsxMjc4LDExIEBAIHN0YXRpYyB2b2lkIG10NzkxNV9zdGFfc2V0XzRhZGRyKHN0
+cnVjdCBpZWVlODAyMTFfaHcgKmh3LA0KPiAgIHsNCj4gICAJc3RydWN0IG10NzkxNV9kZXYg
+KmRldiA9IG10NzkxNV9od19kZXYoaHcpOw0KPiAgIAlzdHJ1Y3QgbXQ3OTE1X3N0YSAqbXN0
+YSA9IChzdHJ1Y3QgbXQ3OTE1X3N0YSAqKXN0YS0+ZHJ2X3ByaXY7DQo+ICsJaW50IG1pbiA9
+IE1UNzZfV0VEX1dEU19NSU4sIG1heCA9IE1UNzZfV0VEX1dEU19NQVg7DQo+ICsJc3RydWN0
+IGllZWU4MDIxMV9zdGEgKnByZV9zdGE7DQo+ICsJc3RydWN0IG10NzkxNV9zdGEgKnByZV9t
+c3RhOw0KPiArCXU4IGZsYWdzID0gTVQ3Nl9XRURfREVGQVVMVDsNCj4gKwlpbnQgdG1wX2lk
+eDsNCj4gICANCj4gICAJaWYgKGVuYWJsZWQpDQo+ICAgCQlzZXRfYml0KE1UX1dDSURfRkxB
+R180QUREUiwgJm1zdGEtPndjaWQuZmxhZ3MpOw0KPiBAQCAtMTI4MCw2ICsxMjkyLDM3IEBA
+IHN0YXRpYyB2b2lkIG10NzkxNV9zdGFfc2V0XzRhZGRyKHN0cnVjdCBpZWVlODAyMTFfaHcg
+Kmh3LA0KPiAgIAlpZiAoIW1zdGEtPndjaWQuc3RhKQ0KPiAgIAkJcmV0dXJuOw0KPiAgIA0K
+PiArCWlmIChtdGtfd2VkX2RldmljZV9hY3RpdmUoJmRldi0+bXQ3Ni5tbWlvLndlZCkgJiYN
+Cj4gKwkgICAgIWlzX210NzkxNSgmZGV2LT5tdDc2KSAmJg0KPiArCSAgICAobXN0YS0+d2Np
+ZC5pZHggPCBtaW4gfHwgbXN0YS0+d2NpZC5pZHggPiBtYXggLSAxKSkgew0KPiArCQlwcmVf
+c3RhID0ga21lbWR1cChzdGEsIHNpemVvZigqc3RhKSArIHNpemVvZigqbXN0YSksIEdGUF9L
+RVJORUwgfCBfX0dGUF9aRVJPKTsNCj4gKwkJaWYgKCFwcmVfc3RhKQ0KPiArCQkJZ290byBl
+cnJvcl9hbGxvYzsNCj4gKwkJcHJlX21zdGEgPSAoc3RydWN0IG10NzkxNV9zdGEgKilwcmVf
+c3RhLT5kcnZfcHJpdjsNCj4gKw0KPiArCQlmbGFncyA9IHRlc3RfYml0KE1UX1dDSURfRkxB
+R180QUREUiwgJm1zdGEtPndjaWQuZmxhZ3MpID8NCj4gKwkJCU1UNzZfV0VEX1dEU19BQ1RJ
+VkUgOiBNVDc2X1dFRF9BQ1RJVkU7DQo+ICsNCj4gKwkJdG1wX2lkeCA9IF9fbXQ3Nl93Y2lk
+X2FsbG9jKGRldi0+bXQ3Ni53Y2lkX21hc2ssIE1UNzkxNV9XVEJMX1NUQSwgZmxhZ3MpOw0K
+PiArCQlpZiAodG1wX2lkeCA8IDApDQo+ICsJCQlnb3RvIGVycm9yX3djaWQ7DQo+ICsJCXBy
+ZV9tc3RhLT53Y2lkLmlkeCA9ICh1MTYpdG1wX2lkeDsNCj4gKwkJbXQ3OTE1X21hY19zdGFf
+YWRkKCZkZXYtPm10NzYsIHZpZiwgcHJlX3N0YSk7DQo+ICsJCXJjdV9hc3NpZ25fcG9pbnRl
+cihkZXYtPm10NzYud2NpZFt0bXBfaWR4XSwgJm1zdGEtPndjaWQpOw0KPiArDQo+ICsJCXRt
+cF9pZHggPSBtc3RhLT53Y2lkLmlkeDsNCj4gKwkJbXN0YS0+d2NpZC5pZHggPSBwcmVfbXN0
+YS0+d2NpZC5pZHg7DQo+ICsJCXByZV9tc3RhLT53Y2lkLmlkeCA9ICh1MTYpdG1wX2lkeDsN
+Cj4gKwkJcmN1X2Fzc2lnbl9wb2ludGVyKGRldi0+bXQ3Ni53Y2lkW3RtcF9pZHhdLCBOVUxM
+KTsNCj4gKw0KPiArCQlzeW5jaHJvbml6ZV9yY3UoKTsNCj4gKwkJbXQ3OTE1X21hY19zdGFf
+cmVtb3ZlKCZkZXYtPm10NzYsIHZpZiwgcHJlX3N0YSk7DQo+ICsNCj4gK2Vycm9yX3djaWQ6
+DQo+ICsJCWtmcmVlKHByZV9zdGEpOw0KPiArCX0NCj4gKw0KPiArZXJyb3JfYWxsb2M6DQo+
+ICAgCW10NzZfY29ubmFjX21jdV93dGJsX3VwZGF0ZV9oZHJfdHJhbnMoJmRldi0+bXQ3Niwg
+dmlmLCBzdGEpOw0KPiAgIH0NCj4gICANCj4gQEAgLTE3MjYsMTUgKzE3NjksMTkgQEAgbXQ3
+OTE1X25ldF9maWxsX2ZvcndhcmRfcGF0aChzdHJ1Y3QgaWVlZTgwMjExX2h3ICpodywNCj4g
+ICAJaWYgKCFtdGtfd2VkX2RldmljZV9hY3RpdmUod2VkKSkNCj4gICAJCXJldHVybiAtRU5P
+REVWOw0KPiAgIA0KPiAtCWlmIChtc3RhLT53Y2lkLmlkeCA+IDB4ZmYpDQo+ICsJaWYgKG1z
+dGEtPndjaWQuaWR4ID4gTVQ3OTE1X1dUQkxfU1RBKQ0KPiAgIAkJcmV0dXJuIC1FSU87DQo+
+ICAgDQo+ICAgCXBhdGgtPnR5cGUgPSBERVZfUEFUSF9NVEtfV0RNQTsNCj4gICAJcGF0aC0+
+ZGV2ID0gY3R4LT5kZXY7DQo+ICAgCXBhdGgtPm10a193ZG1hLndkbWFfaWR4ID0gd2VkLT53
+ZG1hX2lkeDsNCj4gICAJcGF0aC0+bXRrX3dkbWEuYnNzID0gbXZpZi0+bXQ3Ni5pZHg7DQo+
+IC0JcGF0aC0+bXRrX3dkbWEud2NpZCA9IGlzX210NzkxNSgmZGV2LT5tdDc2KSA/IG1zdGEt
+PndjaWQuaWR4IDogMHgzZmY7DQo+ICAgCXBhdGgtPm10a193ZG1hLnF1ZXVlID0gcGh5ICE9
+ICZkZXYtPnBoeTsNCj4gKwlpZiAodGVzdF9iaXQoTVRfV0NJRF9GTEFHXzRBRERSLCAmbXN0
+YS0+d2NpZC5mbGFncykgfHwNCj4gKwkgICAgaXNfbXQ3OTE1KCZkZXYtPm10NzYpKQ0KPiAr
+CQlwYXRoLT5tdGtfd2RtYS53Y2lkID0gbXN0YS0+d2NpZC5pZHg7DQo+ICsJZWxzZQ0KPiAr
+CQlwYXRoLT5tdGtfd2RtYS53Y2lkID0gMHgzZmY7DQo+ICAgDQo+ICAgCWN0eC0+ZGV2ID0g
+TlVMTDsNCj4gICANCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L3dpcmVsZXNzL21lZGlh
+dGVrL210NzYvbXQ3OTE1L21jdS5jIGIvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsv
+bXQ3Ni9tdDc5MTUvbWN1LmMNCj4gaW5kZXggNDI3NTQyNzc3YWJjLi42MWE4NTRkMmM0MTYg
+MTAwNjQ0DQo+IC0tLSBhL2RyaXZlcnMvbmV0L3dpcmVsZXNzL21lZGlhdGVrL210NzYvbXQ3
+OTE1L21jdS5jDQo+ICsrKyBiL2RyaXZlcnMvbmV0L3dpcmVsZXNzL21lZGlhdGVrL210NzYv
+bXQ3OTE1L21jdS5jDQo+IEBAIC0yNDAzLDEwICsyNDAzLDIwIEBAIGludCBtdDc5MTVfbWN1
+X2luaXRfZmlybXdhcmUoc3RydWN0IG10NzkxNV9kZXYgKmRldikNCj4gICANCj4gICAJbXQ3
+Nl9jb25uYWNfbWN1X2RlbF93dGJsX2FsbCgmZGV2LT5tdDc2KTsNCj4gICANCj4gLQlpZiAo
+KG10a193ZWRfZGV2aWNlX2FjdGl2ZSgmZGV2LT5tdDc2Lm1taW8ud2VkKSAmJg0KPiAtCSAg
+ICAgaXNfbXQ3OTE1KCZkZXYtPm10NzYpKSB8fA0KPiAtCSAgICAhbXRrX3dlZF9nZXRfcnhf
+Y2FwYSgmZGV2LT5tdDc2Lm1taW8ud2VkKSkNCj4gLQkJbXQ3OTE1X21jdV93YV9jbWQoZGV2
+LCBNQ1VfV0FfUEFSQU1fQ01EKENBUEFCSUxJVFkpLCAwLCAwLCAwKTsNCj4gKyNpZiBJU19F
+TkFCTEVEKENPTkZJR19ORVRfTUVESUFURUtfU09DX1dFRCkNCj4gKwlpZiAobXRrX3dlZF9k
+ZXZpY2VfYWN0aXZlKCZkZXYtPm10NzYubW1pby53ZWQpKSB7DQo+ICsJCWlmIChpc19tdDc5
+MTUoJmRldi0+bXQ3NikgfHwNCj4gKwkJICAgICFtdGtfd2VkX2dldF9yeF9jYXBhKCZkZXYt
+Pm10NzYubW1pby53ZWQpKQ0KPiArCQkJcmV0ID0gbXQ3OTE1X21jdV93YV9jbWQoZGV2LCBN
+Q1VfV0FfUEFSQU1fQ01EKENBUEFCSUxJVFkpLA0KPiArCQkJCQkJMCwgMCwgMCk7DQo+ICsJ
+CWVsc2UNCj4gKwkJCXJldCA9IG10NzkxNV9tY3Vfd2FfY21kKGRldiwgTUNVX1dBX1BBUkFN
+X0NNRChTRVQpLA0KPiArCQkJCQkJTUNVX1dBX1BBUkFNX1dFRF9WRVJTSU9OLA0KPiArCQkJ
+CQkJZGV2LT5tdDc2Lm1taW8ud2VkLnJldl9pZCwgMCk7DQo+ICsJCWlmIChyZXQpDQo+ICsJ
+CQlyZXR1cm4gcmV0Ow0KPiArCX0NCj4gKyNlbmRpZg0KPiAgIA0KPiAgIAlyZXQgPSBtdDc5
+MTVfbWN1X3NldF9td2RzKGRldiwgMSk7DQo+ICAgCWlmIChyZXQpDQo+IGRpZmYgLS1naXQg
+YS9kcml2ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzkxNS9tY3UuaCBiL2Ry
+aXZlcnMvbmV0L3dpcmVsZXNzL21lZGlhdGVrL210NzYvbXQ3OTE1L21jdS5oDQo+IGluZGV4
+IDA4NmFkODllY2Q5MS4uOTg5ZjI0Y2I0OWViIDEwMDY0NA0KPiAtLS0gYS9kcml2ZXJzL25l
+dC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzkxNS9tY3UuaA0KPiArKysgYi9kcml2ZXJz
+L25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzkxNS9tY3UuaA0KPiBAQCAtMjc4LDYg
+KzI3OCw3IEBAIGVudW0gew0KPiAgIAlNQ1VfV0FfUEFSQU1fUERNQV9SWCA9IDB4MDQsDQo+
+ICAgCU1DVV9XQV9QQVJBTV9DUFVfVVRJTCA9IDB4MGIsDQo+ICAgCU1DVV9XQV9QQVJBTV9S
+RUQgPSAweDBlLA0KPiArCU1DVV9XQV9QQVJBTV9XRURfVkVSU0lPTiA9IDB4MzIsDQo+ICAg
+CU1DVV9XQV9QQVJBTV9SRURfU0VUVElORyA9IDB4NDAsDQo+ICAgfTsNCj4gICANCj4gZGlm
+ZiAtLWdpdCBhL2RyaXZlcnMvbmV0L3dpcmVsZXNzL21lZGlhdGVrL210NzYvdXRpbC5jIGIv
+ZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni91dGlsLmMNCj4gaW5kZXggOTVi
+M2RjOTZlNGM0Li5lODBiZWYyYjMzYTEgMTAwNjQ0DQo+IC0tLSBhL2RyaXZlcnMvbmV0L3dp
+cmVsZXNzL21lZGlhdGVrL210NzYvdXRpbC5jDQo+ICsrKyBiL2RyaXZlcnMvbmV0L3dpcmVs
+ZXNzL21lZGlhdGVrL210NzYvdXRpbC5jDQo+IEBAIC00Miw4ICs0MiwxMCBAQCBib29sIF9f
+X19tdDc2X3BvbGxfbXNlYyhzdHJ1Y3QgbXQ3Nl9kZXYgKmRldiwgdTMyIG9mZnNldCwgdTMy
+IG1hc2ssIHUzMiB2YWwsDQo+ICAgfQ0KPiAgIEVYUE9SVF9TWU1CT0xfR1BMKF9fX19tdDc2
+X3BvbGxfbXNlYyk7DQo+ICAgDQo+IC1pbnQgbXQ3Nl93Y2lkX2FsbG9jKHUzMiAqbWFzaywg
+aW50IHNpemUpDQo+ICtpbnQgX19tdDc2X3djaWRfYWxsb2ModTMyICptYXNrLCBpbnQgc2l6
+ZSwgdTggZmxhZykNCj4gICB7DQo+ICsJaW50IG1heCA9IE1UNzZfV0VEX1dEU19NQVg7DQo+
+ICsJaW50IG1pbiA9IE1UNzZfV0VEX1dEU19NSU47DQo+ICAgCWludCBpLCBpZHggPSAwLCBj
+dXI7DQo+ICAgDQo+ICAgCWZvciAoaSA9IDA7IGkgPCBESVZfUk9VTkRfVVAoc2l6ZSwgMzIp
+OyBpKyspIHsNCj4gQEAgLTUzLDE2ICs1NSw0NSBAQCBpbnQgbXQ3Nl93Y2lkX2FsbG9jKHUz
+MiAqbWFzaywgaW50IHNpemUpDQo+ICAgDQo+ICAgCQlpZHgtLTsNCj4gICAJCWN1ciA9IGkg
+KiAzMiArIGlkeDsNCj4gLQkJaWYgKGN1ciA+PSBzaXplKQ0KPiArDQo+ICsJCXN3aXRjaCAo
+ZmxhZykgew0KPiArCQljYXNlIE1UNzZfV0VEX0FDVElWRToNCj4gKwkJCWlmIChjdXIgPj0g
+bWluICYmIGN1ciA8IG1heCkNCj4gKwkJCQljb250aW51ZTsNCj4gKw0KPiArCQkJaWYgKGN1
+ciA+PSBzaXplKSB7DQo+ICsJCQkJdTMyIGVuZCA9IG1heCAtIG1pbiAtIDE7DQo+ICsNCj4g
+KwkJCQlpID0gbWluIC8gMzI7DQo+ICsJCQkJaWR4ID0gZmZzKH5tYXNrW2ldICYgR0VOTUFT
+SyhlbmQsIDApKTsNCj4gKwkJCQlpZiAoIWlkeCkNCj4gKwkJCQkJZ290byBlcnJvcjsNCj4g
+KwkJCQlpZHgtLTsNCj4gKwkJCQljdXIgPSBtaW4gKyBpZHg7DQo+ICsJCQl9DQo+ICsNCj4g
+ICAJCQlicmVhazsNCj4gKwkJY2FzZSBNVDc2X1dFRF9XRFNfQUNUSVZFOg0KPiArCQkJaWYg
+KGN1ciA8IG1pbikNCj4gKwkJCQljb250aW51ZTsNCj4gKwkJCWlmIChjdXIgPj0gbWF4KQ0K
+PiArCQkJCWdvdG8gZXJyb3I7DQo+ICsNCj4gKwkJCWJyZWFrOw0KPiArCQlkZWZhdWx0Og0K
+PiArCQkJaWYgKGN1ciA+PSBzaXplKQ0KPiArCQkJCWdvdG8gZXJyb3I7DQo+ICsJCQlicmVh
+azsNCj4gKwkJfQ0KPiAgIA0KPiAgIAkJbWFza1tpXSB8PSBCSVQoaWR4KTsNCj4gICAJCXJl
+dHVybiBjdXI7DQo+ICAgCX0NCj4gICANCj4gK2Vycm9yOg0KPiAgIAlyZXR1cm4gLTE7DQo+
+ICAgfQ0KPiAtRVhQT1JUX1NZTUJPTF9HUEwobXQ3Nl93Y2lkX2FsbG9jKTsNCj4gK0VYUE9S
+VF9TWU1CT0xfR1BMKF9fbXQ3Nl93Y2lkX2FsbG9jKTsNCj4gICANCj4gICBpbnQgbXQ3Nl9n
+ZXRfbWluX2F2Z19yc3NpKHN0cnVjdCBtdDc2X2RldiAqZGV2LCB1OCBwaHlfaWR4KQ0KPiAg
+IHsNCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L3dpcmVsZXNzL21lZGlhdGVrL210NzYv
+dXRpbC5oIGIvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni91dGlsLmgNCj4g
+aW5kZXggMjYwOTY1ZGRlOTRjLi5mZTk1YTg0NzE4MmUgMTAwNjQ0DQo+IC0tLSBhL2RyaXZl
+cnMvbmV0L3dpcmVsZXNzL21lZGlhdGVrL210NzYvdXRpbC5oDQo+ICsrKyBiL2RyaXZlcnMv
+bmV0L3dpcmVsZXNzL21lZGlhdGVrL210NzYvdXRpbC5oDQo+IEBAIC0yNyw3ICsyNyw3IEBA
+IGVudW0gew0KPiAgICNkZWZpbmUgTVQ3Nl9JTkNSKF92YXIsIF9zaXplKSBcDQo+ICAgCShf
+dmFyID0gKCgoX3ZhcikgKyAxKSAlIChfc2l6ZSkpKQ0KPiAgIA0KPiAtaW50IG10NzZfd2Np
+ZF9hbGxvYyh1MzIgKm1hc2ssIGludCBzaXplKTsNCj4gK2ludCBfX210NzZfd2NpZF9hbGxv
+Yyh1MzIgKm1hc2ssIGludCBzaXplLCB1OCBmbGFncyk7DQo+ICAgDQo+ICAgc3RhdGljIGlu
+bGluZSB2b2lkDQo+ICAgbXQ3Nl93Y2lkX21hc2tfc2V0KHUzMiAqbWFzaywgaW50IGlkeCkN
+Cg0K
+--------------Q3V9XbsBm0UszSYMZassvmiC
+Content-Type: application/pgp-keys; name="OpenPGP_0xE3520CC91929C8E7.asc"
+Content-Disposition: attachment; filename="OpenPGP_0xE3520CC91929C8E7.asc"
+Content-Description: OpenPGP public key
+Content-Transfer-Encoding: quoted-printable
 
+-----BEGIN PGP PUBLIC KEY BLOCK-----
 
-> ---
->
-> Cc: Adam Ford <aford173@gmail.com>
-> Cc: Adrien Grassein <adrien.grassein@gmail.com>
-> Cc: Aleksandr Mishin <amishin@t-argos.ru>
-> Cc: Andy Yan <andy.yan@rock-chips.com>
-> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Cc: Benson Leung <bleung@chromium.org>
-> Cc: Biju Das <biju.das.jz@bp.renesas.com>
-> Cc: Christoph Fritz <chf.fritz@googlemail.com>
-> Cc: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> Cc: Detlev Casanova <detlev.casanova@collabora.com>
-> Cc: Dharma Balasubiramani <dharma.b@microchip.com>
-> Cc: Guenter Roeck <groeck@chromium.org>
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: Jani Nikula <jani.nikula@intel.com>
-> Cc: Janne Grunau <j@jannau.net>
-> Cc: Jerome Brunet <jbrunet@baylibre.com>
-> Cc: Jesse Van Gavere <jesseevg@gmail.com>
-> Cc: Kevin Hilman <khilman@baylibre.com>
-> Cc: Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>
-> Cc: Liu Ying <victor.liu@nxp.com>
-> Cc: Manikandan Muralidharan <manikandan.m@microchip.com>
-> Cc: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: Philipp Zabel <p.zabel@pengutronix.de>
-> Cc: Phong LE <ple@baylibre.com>
-> Cc: Sasha Finkelstein <fnkl.kernel@gmail.com>
-> Cc: Sugar Zhang <sugar.zhang@rock-chips.com>
-> Cc: Sui Jingfeng <sui.jingfeng@linux.dev>
-> Cc: Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>
-> Cc: Vitalii Mordan <mordan@ispras.ru>
-> ---
->  drivers/gpu/drm/adp/adp-mipi.c                      |  8 ++++----
->  drivers/gpu/drm/bridge/adv7511/adv7511_drv.c        |  9 ++++-----
->  drivers/gpu/drm/bridge/analogix/analogix-anx78xx.c  |  9 ++++-----
->  drivers/gpu/drm/bridge/aux-bridge.c                 |  9 ++++-----
->  drivers/gpu/drm/bridge/aux-hpd-bridge.c             |  9 +++++----
->  drivers/gpu/drm/bridge/cadence/cdns-mhdp8546-core.c |  8 ++++----
->  drivers/gpu/drm/bridge/chipone-icn6211.c            |  9 ++++-----
->  drivers/gpu/drm/bridge/chrontel-ch7033.c            |  8 ++++----
->  drivers/gpu/drm/bridge/cros-ec-anx7688.c            |  9 ++++-----
->  drivers/gpu/drm/bridge/fsl-ldb.c                    |  7 +++----
->  drivers/gpu/drm/bridge/imx/imx-legacy-bridge.c      |  9 ++++-----
->  drivers/gpu/drm/bridge/imx/imx8mp-hdmi-pvi.c        | 10 ++++------
->  drivers/gpu/drm/bridge/imx/imx8qxp-pixel-link.c     |  8 ++++----
->  drivers/gpu/drm/bridge/imx/imx8qxp-pxl2dpi.c        |  8 ++++----
->  drivers/gpu/drm/bridge/ite-it6263.c                 |  9 ++++-----
->  drivers/gpu/drm/bridge/ite-it6505.c                 |  9 ++++-----
->  drivers/gpu/drm/bridge/ite-it66121.c                |  9 ++++-----
->  drivers/gpu/drm/bridge/lontium-lt8912b.c            |  9 ++++-----
->  drivers/gpu/drm/bridge/lontium-lt9211.c             |  8 +++-----
->  drivers/gpu/drm/bridge/lontium-lt9611.c             |  9 ++++-----
->  drivers/gpu/drm/bridge/lvds-codec.c                 |  9 ++++-----
->  drivers/gpu/drm/bridge/microchip-lvds.c             |  8 ++++----
->  drivers/gpu/drm/bridge/nwl-dsi.c                    |  8 ++++----
->  drivers/gpu/drm/bridge/parade-ps8622.c              |  9 ++++-----
->  drivers/gpu/drm/bridge/parade-ps8640.c              |  9 ++++-----
->  drivers/gpu/drm/bridge/sii9234.c                    |  9 ++++-----
->  drivers/gpu/drm/bridge/sil-sii8620.c                |  9 ++++-----
->  drivers/gpu/drm/bridge/simple-bridge.c              | 10 ++++------
->  drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c        |  8 ++++----
->  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c       |  8 ++++----
->  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c      |  8 ++++----
->  drivers/gpu/drm/bridge/tc358762.c                   |  9 ++++-----
->  drivers/gpu/drm/bridge/tc358764.c                   |  9 ++++-----
->  drivers/gpu/drm/bridge/tc358768.c                   |  9 ++++-----
->  drivers/gpu/drm/bridge/tc358775.c                   |  9 ++++-----
->  drivers/gpu/drm/bridge/thc63lvd1024.c               |  8 ++++----
->  drivers/gpu/drm/bridge/ti-dlpc3433.c                |  9 ++++-----
->  drivers/gpu/drm/bridge/ti-tdp158.c                  |  8 ++++----
->  drivers/gpu/drm/bridge/ti-tfp410.c                  |  9 ++++-----
->  drivers/gpu/drm/bridge/ti-tpd12s015.c               |  9 ++++-----
->  drivers/gpu/drm/mediatek/mtk_dp.c                   |  9 ++++-----
->  drivers/gpu/drm/mediatek/mtk_dpi.c                  |  9 ++++-----
->  drivers/gpu/drm/mediatek/mtk_dsi.c                  |  9 ++++-----
->  drivers/gpu/drm/mediatek/mtk_hdmi.c                 |  9 ++++-----
->  drivers/gpu/drm/meson/meson_encoder_cvbs.c          | 12 ++++++------
->  drivers/gpu/drm/meson/meson_encoder_dsi.c           | 12 ++++++------
->  drivers/gpu/drm/meson/meson_encoder_hdmi.c          | 12 ++++++------
->  drivers/gpu/drm/renesas/rcar-du/rcar_lvds.c         |  9 ++++-----
->  drivers/gpu/drm/renesas/rz-du/rzg2l_mipi_dsi.c      | 10 ++++------
->  49 files changed, 201 insertions(+), 237 deletions(-)
->
-> diff --git a/drivers/gpu/drm/adp/adp-mipi.c b/drivers/gpu/drm/adp/adp-mip=
-i.c
-> index 2b60128e2c693e9f85affff569cc57cdb6f47909..cba7d32150a98d78d07a25b18=
-22dec6bf2f08f65 100644
-> --- a/drivers/gpu/drm/adp/adp-mipi.c
-> +++ b/drivers/gpu/drm/adp/adp-mipi.c
-> @@ -229,9 +229,10 @@ static int adp_mipi_probe(struct platform_device *pd=
-ev)
->  {
->         struct adp_mipi_drv_private *adp;
->
-> -       adp =3D devm_kzalloc(&pdev->dev, sizeof(*adp), GFP_KERNEL);
-> -       if (!adp)
-> -               return -ENOMEM;
-> +       adp =3D devm_drm_bridge_alloc(&pdev->dev, struct adp_mipi_drv_pri=
-vate,
-> +                                   bridge, &adp_dsi_bridge_funcs);
-> +       if (IS_ERR(adp))
-> +               return PTR_ERR(adp);
->
->         adp->mipi =3D devm_platform_ioremap_resource(pdev, 0);
->         if (IS_ERR(adp->mipi)) {
-> @@ -241,7 +242,6 @@ static int adp_mipi_probe(struct platform_device *pde=
-v)
->
->         adp->dsi.dev =3D &pdev->dev;
->         adp->dsi.ops =3D &adp_dsi_host_ops;
-> -       adp->bridge.funcs =3D &adp_dsi_bridge_funcs;
->         adp->bridge.of_node =3D pdev->dev.of_node;
->         adp->bridge.type =3D DRM_MODE_CONNECTOR_DSI;
->         dev_set_drvdata(&pdev->dev, adp);
-> diff --git a/drivers/gpu/drm/bridge/adv7511/adv7511_drv.c b/drivers/gpu/d=
-rm/bridge/adv7511/adv7511_drv.c
-> index 1257009e850c1b20184cfaea5b6a4440e75e10d7..4411987cd85109b83e3d4d45e=
-842ee9cf8d21aab 100644
-> --- a/drivers/gpu/drm/bridge/adv7511/adv7511_drv.c
-> +++ b/drivers/gpu/drm/bridge/adv7511/adv7511_drv.c
-> @@ -1224,9 +1224,10 @@ static int adv7511_probe(struct i2c_client *i2c)
->         if (!dev->of_node)
->                 return -EINVAL;
->
-> -       adv7511 =3D devm_kzalloc(dev, sizeof(*adv7511), GFP_KERNEL);
-> -       if (!adv7511)
-> -               return -ENOMEM;
-> +       adv7511 =3D devm_drm_bridge_alloc(dev, struct adv7511, bridge,
-> +                                       &adv7511_bridge_funcs);
-> +       if (IS_ERR(adv7511))
-> +               return PTR_ERR(adv7511);
->
->         adv7511->i2c_main =3D i2c;
->         adv7511->powered =3D false;
-> @@ -1326,8 +1327,6 @@ static int adv7511_probe(struct i2c_client *i2c)
->         ret =3D adv7511_cec_init(dev, adv7511);
->         if (ret)
->                 goto err_unregister_cec;
-> -
-> -       adv7511->bridge.funcs =3D &adv7511_bridge_funcs;
->         adv7511->bridge.ops =3D DRM_BRIDGE_OP_DETECT | DRM_BRIDGE_OP_EDID=
-;
->         if (adv7511->i2c_main->irq)
->                 adv7511->bridge.ops |=3D DRM_BRIDGE_OP_HPD;
-> diff --git a/drivers/gpu/drm/bridge/analogix/analogix-anx78xx.c b/drivers=
-/gpu/drm/bridge/analogix/analogix-anx78xx.c
-> index a83020d6576f78372056069947783a626acf64b1..ba0fc149a9e722a53da6027a8=
-51bf62262ba64b2 100644
-> --- a/drivers/gpu/drm/bridge/analogix/analogix-anx78xx.c
-> +++ b/drivers/gpu/drm/bridge/analogix/analogix-anx78xx.c
-> @@ -1193,9 +1193,10 @@ static int anx78xx_i2c_probe(struct i2c_client *cl=
-ient)
->         bool found =3D false;
->         int err;
->
-> -       anx78xx =3D devm_kzalloc(&client->dev, sizeof(*anx78xx), GFP_KERN=
-EL);
-> -       if (!anx78xx)
-> -               return -ENOMEM;
-> +       anx78xx =3D devm_drm_bridge_alloc(&client->dev, struct anx78xx, b=
-ridge,
-> +                                       &anx78xx_bridge_funcs);
-> +       if (IS_ERR(anx78xx))
-> +               return PTR_ERR(anx78xx);
->
->         pdata =3D &anx78xx->pdata;
->
-> @@ -1306,8 +1307,6 @@ static int anx78xx_i2c_probe(struct i2c_client *cli=
-ent)
->                 goto err_poweroff;
->         }
->
-> -       anx78xx->bridge.funcs =3D &anx78xx_bridge_funcs;
-> -
->         drm_bridge_add(&anx78xx->bridge);
->
->         /* If cable is pulled out, just poweroff and wait for HPD event *=
-/
-> diff --git a/drivers/gpu/drm/bridge/aux-bridge.c b/drivers/gpu/drm/bridge=
-/aux-bridge.c
-> index c179b86d208f70d95b41e6f2157b78f97bac4d8d..ea9109bdbe088da4ea3411845=
-bf6f27a50e2cebf 100644
-> --- a/drivers/gpu/drm/bridge/aux-bridge.c
-> +++ b/drivers/gpu/drm/bridge/aux-bridge.c
-> @@ -109,17 +109,16 @@ static int drm_aux_bridge_probe(struct auxiliary_de=
-vice *auxdev,
->  {
->         struct drm_aux_bridge_data *data;
->
-> -       data =3D devm_kzalloc(&auxdev->dev, sizeof(*data), GFP_KERNEL);
-> -       if (!data)
-> -               return -ENOMEM;
-> +       data =3D devm_drm_bridge_alloc(&auxdev->dev, struct drm_aux_bridg=
-e_data,
-> +                                    bridge, &drm_aux_bridge_funcs);
-> +       if (IS_ERR(data))
-> +               return PTR_ERR(data);
->
->         data->dev =3D &auxdev->dev;
->         data->next_bridge =3D devm_drm_of_get_bridge(&auxdev->dev, auxdev=
-->dev.of_node, 0, 0);
->         if (IS_ERR(data->next_bridge))
->                 return dev_err_probe(&auxdev->dev, PTR_ERR(data->next_bri=
-dge),
->                                      "failed to acquire drm_bridge\n");
-> -
-> -       data->bridge.funcs =3D &drm_aux_bridge_funcs;
->         data->bridge.of_node =3D data->dev->of_node;
->
->         /* passthrough data, allow everything */
-> diff --git a/drivers/gpu/drm/bridge/aux-hpd-bridge.c b/drivers/gpu/drm/br=
-idge/aux-hpd-bridge.c
-> index b3f588b71a7d7ad5c2ee7b07c39079bc5ba34cee..3eb411f874e41b322f732649b=
-d2074c5d8422566 100644
-> --- a/drivers/gpu/drm/bridge/aux-hpd-bridge.c
-> +++ b/drivers/gpu/drm/bridge/aux-hpd-bridge.c
-> @@ -171,12 +171,13 @@ static int drm_aux_hpd_bridge_probe(struct auxiliar=
-y_device *auxdev,
->  {
->         struct drm_aux_hpd_bridge_data *data;
->
-> -       data =3D devm_kzalloc(&auxdev->dev, sizeof(*data), GFP_KERNEL);
-> -       if (!data)
-> -               return -ENOMEM;
-> +       data =3D devm_drm_bridge_alloc(&auxdev->dev,
-> +                                    struct drm_aux_hpd_bridge_data, brid=
-ge,
-> +                                    &drm_aux_hpd_bridge_funcs);
-> +       if (IS_ERR(data))
-> +               return PTR_ERR(data);
->
->         data->dev =3D &auxdev->dev;
-> -       data->bridge.funcs =3D &drm_aux_hpd_bridge_funcs;
->         data->bridge.of_node =3D dev_get_platdata(data->dev);
->         data->bridge.ops =3D DRM_BRIDGE_OP_HPD;
->         data->bridge.type =3D id->driver_data;
-> diff --git a/drivers/gpu/drm/bridge/cadence/cdns-mhdp8546-core.c b/driver=
-s/gpu/drm/bridge/cadence/cdns-mhdp8546-core.c
-> index b431e7efd1f0d749320ea15b6f1f5ca13fc72800..cb5f5a8c539a471290df8435d=
-4c2e3ed696b38d4 100644
-> --- a/drivers/gpu/drm/bridge/cadence/cdns-mhdp8546-core.c
-> +++ b/drivers/gpu/drm/bridge/cadence/cdns-mhdp8546-core.c
-> @@ -2389,9 +2389,10 @@ static int cdns_mhdp_probe(struct platform_device =
-*pdev)
->         int ret;
->         int irq;
->
-> -       mhdp =3D devm_kzalloc(dev, sizeof(*mhdp), GFP_KERNEL);
-> -       if (!mhdp)
-> -               return -ENOMEM;
-> +       mhdp =3D devm_drm_bridge_alloc(dev, struct cdns_mhdp_device, brid=
-ge,
-> +                                    &cdns_mhdp_bridge_funcs);
-> +       if (IS_ERR(mhdp))
-> +               return PTR_ERR(mhdp);
->
->         clk =3D devm_clk_get_enabled(dev, NULL);
->         if (IS_ERR(clk)) {
-> @@ -2481,7 +2482,6 @@ static int cdns_mhdp_probe(struct platform_device *=
-pdev)
->         mhdp->display_fmt.bpc =3D 8;
->
->         mhdp->bridge.of_node =3D pdev->dev.of_node;
-> -       mhdp->bridge.funcs =3D &cdns_mhdp_bridge_funcs;
->         mhdp->bridge.ops =3D DRM_BRIDGE_OP_DETECT | DRM_BRIDGE_OP_EDID |
->                            DRM_BRIDGE_OP_HPD;
->         mhdp->bridge.type =3D DRM_MODE_CONNECTOR_DisplayPort;
-> diff --git a/drivers/gpu/drm/bridge/chipone-icn6211.c b/drivers/gpu/drm/b=
-ridge/chipone-icn6211.c
-> index 634c5b0306679d2e68798c2b9013aae4491dd44c..9989c6a6f3414295788e77d56=
-1ee5b807abc602e 100644
-> --- a/drivers/gpu/drm/bridge/chipone-icn6211.c
-> +++ b/drivers/gpu/drm/bridge/chipone-icn6211.c
-> @@ -691,17 +691,16 @@ static int chipone_common_probe(struct device *dev,=
- struct chipone **icnr)
->         struct chipone *icn;
->         int ret;
->
-> -       icn =3D devm_kzalloc(dev, sizeof(struct chipone), GFP_KERNEL);
-> -       if (!icn)
-> -               return -ENOMEM;
-> +       icn =3D devm_drm_bridge_alloc(dev, struct chipone, bridge,
-> +                                   &chipone_bridge_funcs);
-> +       if (IS_ERR(icn))
-> +               return PTR_ERR(icn);
->
->         icn->dev =3D dev;
->
->         ret =3D chipone_parse_dt(icn);
->         if (ret)
->                 return ret;
-> -
-> -       icn->bridge.funcs =3D &chipone_bridge_funcs;
->         icn->bridge.type =3D DRM_MODE_CONNECTOR_DPI;
->         icn->bridge.of_node =3D dev->of_node;
->
-> diff --git a/drivers/gpu/drm/bridge/chrontel-ch7033.c b/drivers/gpu/drm/b=
-ridge/chrontel-ch7033.c
-> index 210c45c1efd48f5b541bf73da66a169c27e110b2..ab92747933568bfba77da4521=
-9e019408029f297 100644
-> --- a/drivers/gpu/drm/bridge/chrontel-ch7033.c
-> +++ b/drivers/gpu/drm/bridge/chrontel-ch7033.c
-> @@ -536,9 +536,10 @@ static int ch7033_probe(struct i2c_client *client)
->         unsigned int val;
->         int ret;
->
-> -       priv =3D devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-> -       if (!priv)
-> -               return -ENOMEM;
-> +       priv =3D devm_drm_bridge_alloc(dev, struct ch7033_priv, bridge,
-> +                                    &ch7033_bridge_funcs);
-> +       if (IS_ERR(priv))
-> +               return PTR_ERR(priv);
->
->         dev_set_drvdata(dev, priv);
->
-> @@ -575,7 +576,6 @@ static int ch7033_probe(struct i2c_client *client)
->         }
->
->         INIT_LIST_HEAD(&priv->bridge.list);
-> -       priv->bridge.funcs =3D &ch7033_bridge_funcs;
->         priv->bridge.of_node =3D dev->of_node;
->         drm_bridge_add(&priv->bridge);
->
-> diff --git a/drivers/gpu/drm/bridge/cros-ec-anx7688.c b/drivers/gpu/drm/b=
-ridge/cros-ec-anx7688.c
-> index c8abd9920fee956cf049bcb09827d658b7939333..ab539143f71059e202baced47=
-091cfc1c9174b7c 100644
-> --- a/drivers/gpu/drm/bridge/cros-ec-anx7688.c
-> +++ b/drivers/gpu/drm/bridge/cros-ec-anx7688.c
-> @@ -103,9 +103,10 @@ static int cros_ec_anx7688_bridge_probe(struct i2c_c=
-lient *client)
->         u8 buffer[4];
->         int ret;
->
-> -       anx7688 =3D devm_kzalloc(dev, sizeof(*anx7688), GFP_KERNEL);
-> -       if (!anx7688)
-> -               return -ENOMEM;
-> +       anx7688 =3D devm_drm_bridge_alloc(dev, struct cros_ec_anx7688, br=
-idge,
-> +                                       &cros_ec_anx7688_bridge_funcs);
-> +       if (IS_ERR(anx7688))
-> +               return PTR_ERR(anx7688);
->
->         anx7688->client =3D client;
->         i2c_set_clientdata(client, anx7688);
-> @@ -152,8 +153,6 @@ static int cros_ec_anx7688_bridge_probe(struct i2c_cl=
-ient *client)
->                 /* Warn, but not fail, for backwards compatibility */
->                 DRM_WARN("Old ANX7688 FW version (0x%04x), not filtering\=
-n",
->                          fw_version);
-> -
-> -       anx7688->bridge.funcs =3D &cros_ec_anx7688_bridge_funcs;
->         drm_bridge_add(&anx7688->bridge);
->
->         return 0;
-> diff --git a/drivers/gpu/drm/bridge/fsl-ldb.c b/drivers/gpu/drm/bridge/fs=
-l-ldb.c
-> index 2cb6dfc7a6d3dbdd620a35345204f8fb9cae6651..5c3cf37200bcee1db285c97e2=
-b463c9355ee6acb 100644
-> --- a/drivers/gpu/drm/bridge/fsl-ldb.c
-> +++ b/drivers/gpu/drm/bridge/fsl-ldb.c
-> @@ -298,16 +298,15 @@ static int fsl_ldb_probe(struct platform_device *pd=
-ev)
->         struct fsl_ldb *fsl_ldb;
->         int dual_link;
->
-> -       fsl_ldb =3D devm_kzalloc(dev, sizeof(*fsl_ldb), GFP_KERNEL);
-> -       if (!fsl_ldb)
-> -               return -ENOMEM;
-> +       fsl_ldb =3D devm_drm_bridge_alloc(dev, struct fsl_ldb, bridge, &f=
-uncs);
-> +       if (IS_ERR(fsl_ldb))
-> +               return PTR_ERR(fsl_ldb);
->
->         fsl_ldb->devdata =3D of_device_get_match_data(dev);
->         if (!fsl_ldb->devdata)
->                 return -EINVAL;
->
->         fsl_ldb->dev =3D &pdev->dev;
-> -       fsl_ldb->bridge.funcs =3D &funcs;
->         fsl_ldb->bridge.of_node =3D dev->of_node;
->
->         fsl_ldb->clk =3D devm_clk_get(dev, "ldb");
-> diff --git a/drivers/gpu/drm/bridge/imx/imx-legacy-bridge.c b/drivers/gpu=
-/drm/bridge/imx/imx-legacy-bridge.c
-> index f072c6ed39ef183b10518b43bd6d979bc89e36f9..1e30a581645c56baa9aac38de=
-ed73425984b3cc9 100644
-> --- a/drivers/gpu/drm/bridge/imx/imx-legacy-bridge.c
-> +++ b/drivers/gpu/drm/bridge/imx/imx-legacy-bridge.c
-> @@ -59,9 +59,10 @@ struct drm_bridge *devm_imx_drm_legacy_bridge(struct d=
-evice *dev,
->         struct imx_legacy_bridge *imx_bridge;
->         int ret;
->
-> -       imx_bridge =3D devm_kzalloc(dev, sizeof(*imx_bridge), GFP_KERNEL)=
-;
-> -       if (!imx_bridge)
-> -               return ERR_PTR(-ENOMEM);
-> +       imx_bridge =3D devm_drm_bridge_alloc(dev, struct imx_legacy_bridg=
-e,
-> +                                          base, &imx_legacy_bridge_funcs=
-);
-> +       if (IS_ERR(imx_bridge))
-> +               return imx_bridge;
->
->         ret =3D of_get_drm_display_mode(np,
->                                       &imx_bridge->mode,
-> @@ -71,8 +72,6 @@ struct drm_bridge *devm_imx_drm_legacy_bridge(struct de=
-vice *dev,
->                 return ERR_PTR(ret);
->
->         imx_bridge->mode.type |=3D DRM_MODE_TYPE_DRIVER;
-> -
-> -       imx_bridge->base.funcs =3D &imx_legacy_bridge_funcs;
->         imx_bridge->base.of_node =3D np;
->         imx_bridge->base.ops =3D DRM_BRIDGE_OP_MODES;
->         imx_bridge->base.type =3D type;
-> diff --git a/drivers/gpu/drm/bridge/imx/imx8mp-hdmi-pvi.c b/drivers/gpu/d=
-rm/bridge/imx/imx8mp-hdmi-pvi.c
-> index 8a4fd7d77a8d516b3b46f41cf07d2633d23bde12..18b60bb60e0042a1d031283fe=
-cf95c4b7a9312e1 100644
-> --- a/drivers/gpu/drm/bridge/imx/imx8mp-hdmi-pvi.c
-> +++ b/drivers/gpu/drm/bridge/imx/imx8mp-hdmi-pvi.c
-> @@ -140,9 +140,10 @@ static int imx8mp_hdmi_pvi_probe(struct platform_dev=
-ice *pdev)
->         struct device_node *remote;
->         struct imx8mp_hdmi_pvi *pvi;
->
-> -       pvi =3D devm_kzalloc(&pdev->dev, sizeof(*pvi), GFP_KERNEL);
-> -       if (!pvi)
-> -               return -ENOMEM;
-> +       pvi =3D devm_drm_bridge_alloc(&pdev->dev, struct imx8mp_hdmi_pvi,
-> +                                   bridge, &imx_hdmi_pvi_bridge_funcs);
-> +       if (IS_ERR(pvi))
-> +               return PTR_ERR(pvi);
->
->         platform_set_drvdata(pdev, pvi);
->         pvi->dev =3D &pdev->dev;
-> @@ -164,9 +165,6 @@ static int imx8mp_hdmi_pvi_probe(struct platform_devi=
-ce *pdev)
->                                      "could not find next bridge\n");
->
->         pm_runtime_enable(&pdev->dev);
-> -
-> -       /* Register the bridge. */
-> -       pvi->bridge.funcs =3D &imx_hdmi_pvi_bridge_funcs;
->         pvi->bridge.of_node =3D pdev->dev.of_node;
->         pvi->bridge.timings =3D pvi->next_bridge->timings;
->
-> diff --git a/drivers/gpu/drm/bridge/imx/imx8qxp-pixel-link.c b/drivers/gp=
-u/drm/bridge/imx/imx8qxp-pixel-link.c
-> index e092c9ea99b0224802919ff84b448acb53508951..e5943506981dfb8f113c94ad5=
-2ddbba52e00ec3f 100644
-> --- a/drivers/gpu/drm/bridge/imx/imx8qxp-pixel-link.c
-> +++ b/drivers/gpu/drm/bridge/imx/imx8qxp-pixel-link.c
-> @@ -327,9 +327,10 @@ static int imx8qxp_pixel_link_bridge_probe(struct pl=
-atform_device *pdev)
->         struct device_node *np =3D dev->of_node;
->         int ret;
->
-> -       pl =3D devm_kzalloc(dev, sizeof(*pl), GFP_KERNEL);
-> -       if (!pl)
-> -               return -ENOMEM;
-> +       pl =3D devm_drm_bridge_alloc(dev, struct imx8qxp_pixel_link, brid=
-ge,
-> +                                  &imx8qxp_pixel_link_bridge_funcs);
-> +       if (IS_ERR(pl))
-> +               return PTR_ERR(pl);
->
->         ret =3D imx_scu_get_handle(&pl->ipc_handle);
->         if (ret) {
-> @@ -384,7 +385,6 @@ static int imx8qxp_pixel_link_bridge_probe(struct pla=
-tform_device *pdev)
->         platform_set_drvdata(pdev, pl);
->
->         pl->bridge.driver_private =3D pl;
-> -       pl->bridge.funcs =3D &imx8qxp_pixel_link_bridge_funcs;
->         pl->bridge.of_node =3D np;
->
->         drm_bridge_add(&pl->bridge);
-> diff --git a/drivers/gpu/drm/bridge/imx/imx8qxp-pxl2dpi.c b/drivers/gpu/d=
-rm/bridge/imx/imx8qxp-pxl2dpi.c
-> index da138ab51b3bd2c6ebd3780c09818891d5320092..111310acab2ce403a62a47ecb=
-e9d9dd372c75ecd 100644
-> --- a/drivers/gpu/drm/bridge/imx/imx8qxp-pxl2dpi.c
-> +++ b/drivers/gpu/drm/bridge/imx/imx8qxp-pxl2dpi.c
-> @@ -392,9 +392,10 @@ static int imx8qxp_pxl2dpi_bridge_probe(struct platf=
-orm_device *pdev)
->         struct device_node *np =3D dev->of_node;
->         int ret;
->
-> -       p2d =3D devm_kzalloc(dev, sizeof(*p2d), GFP_KERNEL);
-> -       if (!p2d)
-> -               return -ENOMEM;
-> +       p2d =3D devm_drm_bridge_alloc(dev, struct imx8qxp_pxl2dpi, bridge=
-,
-> +                                   &imx8qxp_pxl2dpi_bridge_funcs);
-> +       if (IS_ERR(p2d))
-> +               return PTR_ERR(p2d);
->
->         p2d->regmap =3D syscon_node_to_regmap(np->parent);
->         if (IS_ERR(p2d->regmap)) {
-> @@ -441,7 +442,6 @@ static int imx8qxp_pxl2dpi_bridge_probe(struct platfo=
-rm_device *pdev)
->         pm_runtime_enable(dev);
->
->         p2d->bridge.driver_private =3D p2d;
-> -       p2d->bridge.funcs =3D &imx8qxp_pxl2dpi_bridge_funcs;
->         p2d->bridge.of_node =3D np;
->
->         drm_bridge_add(&p2d->bridge);
-> diff --git a/drivers/gpu/drm/bridge/ite-it6263.c b/drivers/gpu/drm/bridge=
-/ite-it6263.c
-> index a3a63a977b0a8487ad38fc08e0eed08672f4d41a..a417b25a65e8369177d4bb09d=
-179a865f6187adc 100644
-> --- a/drivers/gpu/drm/bridge/ite-it6263.c
-> +++ b/drivers/gpu/drm/bridge/ite-it6263.c
-> @@ -816,9 +816,10 @@ static int it6263_probe(struct i2c_client *client)
->         struct it6263 *it;
->         int ret;
->
-> -       it =3D devm_kzalloc(dev, sizeof(*it), GFP_KERNEL);
-> -       if (!it)
-> -               return -ENOMEM;
-> +       it =3D devm_drm_bridge_alloc(dev, struct it6263, bridge,
-> +                                  &it6263_bridge_funcs);
-> +       if (IS_ERR(it))
-> +               return PTR_ERR(it);
->
->         it->dev =3D dev;
->         it->hdmi_i2c =3D client;
-> @@ -865,8 +866,6 @@ static int it6263_probe(struct i2c_client *client)
->         it6263_hdmi_config(it);
->
->         i2c_set_clientdata(client, it);
-> -
-> -       it->bridge.funcs =3D &it6263_bridge_funcs;
->         it->bridge.of_node =3D dev->of_node;
->         /* IT6263 chip doesn't support HPD interrupt. */
->         it->bridge.ops =3D DRM_BRIDGE_OP_DETECT | DRM_BRIDGE_OP_EDID |
-> diff --git a/drivers/gpu/drm/bridge/ite-it6505.c b/drivers/gpu/drm/bridge=
-/ite-it6505.c
-> index 1383d1e21afea1acb46b7bd28860908b58832dbc..bf2e854210233bcecd1be582e=
-f092370bd652412 100644
-> --- a/drivers/gpu/drm/bridge/ite-it6505.c
-> +++ b/drivers/gpu/drm/bridge/ite-it6505.c
-> @@ -3583,9 +3583,10 @@ static int it6505_i2c_probe(struct i2c_client *cli=
-ent)
->         struct extcon_dev *extcon;
->         int err;
->
-> -       it6505 =3D devm_kzalloc(&client->dev, sizeof(*it6505), GFP_KERNEL=
-);
-> -       if (!it6505)
-> -               return -ENOMEM;
-> +       it6505 =3D devm_drm_bridge_alloc(&client->dev, struct it6505, bri=
-dge,
-> +                                      &it6505_bridge_funcs);
-> +       if (IS_ERR(it6505))
-> +               return PTR_ERR(it6505);
->
->         mutex_init(&it6505->extcon_lock);
->         mutex_init(&it6505->mode_lock);
-> @@ -3659,8 +3660,6 @@ static int it6505_i2c_probe(struct i2c_client *clie=
-nt)
->         it6505->aux.dev =3D dev;
->         it6505->aux.transfer =3D it6505_aux_transfer;
->         drm_dp_aux_init(&it6505->aux);
-> -
-> -       it6505->bridge.funcs =3D &it6505_bridge_funcs;
->         it6505->bridge.type =3D DRM_MODE_CONNECTOR_DisplayPort;
->         it6505->bridge.ops =3D DRM_BRIDGE_OP_DETECT | DRM_BRIDGE_OP_EDID =
-|
->                              DRM_BRIDGE_OP_HPD;
-> diff --git a/drivers/gpu/drm/bridge/ite-it66121.c b/drivers/gpu/drm/bridg=
-e/ite-it66121.c
-> index 7b110ae532918d2d6f91ebc5f747c38e7e77dc07..aee88436d72e3c1c8d8f6b62a=
-b04a8d9be10b413 100644
-> --- a/drivers/gpu/drm/bridge/ite-it66121.c
-> +++ b/drivers/gpu/drm/bridge/ite-it66121.c
-> @@ -1516,9 +1516,10 @@ static int it66121_probe(struct i2c_client *client=
-)
->                 return -ENXIO;
->         }
->
-> -       ctx =3D devm_kzalloc(dev, sizeof(*ctx), GFP_KERNEL);
-> -       if (!ctx)
-> -               return -ENOMEM;
-> +       ctx =3D devm_drm_bridge_alloc(dev, struct it66121_ctx, bridge,
-> +                                   &it66121_bridge_funcs);
-> +       if (IS_ERR(ctx))
-> +               return PTR_ERR(ctx);
->
->         ep =3D of_graph_get_endpoint_by_regs(dev->of_node, 0, 0);
->         if (!ep)
-> @@ -1576,8 +1577,6 @@ static int it66121_probe(struct i2c_client *client)
->             (device_ids[1] << 8 | device_ids[0]) !=3D ctx->info->pid) {
->                 return -ENODEV;
->         }
-> -
-> -       ctx->bridge.funcs =3D &it66121_bridge_funcs;
->         ctx->bridge.of_node =3D dev->of_node;
->         ctx->bridge.type =3D DRM_MODE_CONNECTOR_HDMIA;
->         ctx->bridge.ops =3D DRM_BRIDGE_OP_DETECT | DRM_BRIDGE_OP_EDID;
-> diff --git a/drivers/gpu/drm/bridge/lontium-lt8912b.c b/drivers/gpu/drm/b=
-ridge/lontium-lt8912b.c
-> index 3e49d855b3648880cea9bce5f3f04fbb6f838a45..c2a07f7c83fa1e0aefbbbcc85=
-5367adc6140f34d 100644
-> --- a/drivers/gpu/drm/bridge/lontium-lt8912b.c
-> +++ b/drivers/gpu/drm/bridge/lontium-lt8912b.c
-> @@ -761,9 +761,10 @@ static int lt8912_probe(struct i2c_client *client)
->         int ret =3D 0;
->         struct device *dev =3D &client->dev;
->
-> -       lt =3D devm_kzalloc(dev, sizeof(struct lt8912), GFP_KERNEL);
-> -       if (!lt)
-> -               return -ENOMEM;
-> +       lt =3D devm_drm_bridge_alloc(dev, struct lt8912, bridge,
-> +                                  &lt8912_bridge_funcs);
-> +       if (IS_ERR(lt))
-> +               return PTR_ERR(lt);
->
->         lt->dev =3D dev;
->         lt->i2c_client[0] =3D client;
-> @@ -777,8 +778,6 @@ static int lt8912_probe(struct i2c_client *client)
->                 goto err_i2c;
->
->         i2c_set_clientdata(client, lt);
-> -
-> -       lt->bridge.funcs =3D &lt8912_bridge_funcs;
->         lt->bridge.of_node =3D dev->of_node;
->         lt->bridge.ops =3D (DRM_BRIDGE_OP_EDID |
->                           DRM_BRIDGE_OP_DETECT);
-> diff --git a/drivers/gpu/drm/bridge/lontium-lt9211.c b/drivers/gpu/drm/br=
-idge/lontium-lt9211.c
-> index 9b2dac9bd63c5afd4ffbafafdbbb1230549bc36f..97026fa66c5d39d49cf50ad69=
-f707a84d584b76d 100644
-> --- a/drivers/gpu/drm/bridge/lontium-lt9211.c
-> +++ b/drivers/gpu/drm/bridge/lontium-lt9211.c
-> @@ -727,9 +727,9 @@ static int lt9211_probe(struct i2c_client *client)
->         struct lt9211 *ctx;
->         int ret;
->
-> -       ctx =3D devm_kzalloc(dev, sizeof(*ctx), GFP_KERNEL);
-> -       if (!ctx)
-> -               return -ENOMEM;
-> +       ctx =3D devm_drm_bridge_alloc(dev, struct lt9211, bridge, &lt9211=
-_funcs);
-> +       if (IS_ERR(ctx))
-> +               return PTR_ERR(ctx);
->
->         ctx->dev =3D dev;
->
-> @@ -754,8 +754,6 @@ static int lt9211_probe(struct i2c_client *client)
->
->         dev_set_drvdata(dev, ctx);
->         i2c_set_clientdata(client, ctx);
-> -
-> -       ctx->bridge.funcs =3D &lt9211_funcs;
->         ctx->bridge.of_node =3D dev->of_node;
->         drm_bridge_add(&ctx->bridge);
->
-> diff --git a/drivers/gpu/drm/bridge/lontium-lt9611.c b/drivers/gpu/drm/br=
-idge/lontium-lt9611.c
-> index 53987e826ccd3368e94a1d7563354d359ebcbb17..602c89e3e39f3133c94434aec=
-91e0d688737dd63 100644
-> --- a/drivers/gpu/drm/bridge/lontium-lt9611.c
-> +++ b/drivers/gpu/drm/bridge/lontium-lt9611.c
-> @@ -1072,9 +1072,10 @@ static int lt9611_probe(struct i2c_client *client)
->                 return -ENODEV;
->         }
->
-> -       lt9611 =3D devm_kzalloc(dev, sizeof(*lt9611), GFP_KERNEL);
-> -       if (!lt9611)
-> -               return -ENOMEM;
-> +       lt9611 =3D devm_drm_bridge_alloc(dev, struct lt9611, bridge,
-> +                                      &lt9611_bridge_funcs);
-> +       if (IS_ERR(lt9611))
-> +               return PTR_ERR(lt9611);
->
->         lt9611->dev =3D dev;
->         lt9611->client =3D client;
-> @@ -1126,8 +1127,6 @@ static int lt9611_probe(struct i2c_client *client)
->
->         /* Disable Audio InfoFrame, enabled by default */
->         regmap_update_bits(lt9611->regmap, 0x843d, LT9611_INFOFRAME_AUDIO=
-, 0);
-> -
-> -       lt9611->bridge.funcs =3D &lt9611_bridge_funcs;
->         lt9611->bridge.of_node =3D client->dev.of_node;
->         lt9611->bridge.ops =3D DRM_BRIDGE_OP_DETECT | DRM_BRIDGE_OP_EDID =
-|
->                              DRM_BRIDGE_OP_HPD | DRM_BRIDGE_OP_MODES |
-> diff --git a/drivers/gpu/drm/bridge/lvds-codec.c b/drivers/gpu/drm/bridge=
-/lvds-codec.c
-> index 1646e454e0b0b558d00f9421f15bb7084e2aa45a..e6a7147e141b64fc77dfef03a=
-737ee599a0ecd10 100644
-> --- a/drivers/gpu/drm/bridge/lvds-codec.c
-> +++ b/drivers/gpu/drm/bridge/lvds-codec.c
-> @@ -118,9 +118,10 @@ static int lvds_codec_probe(struct platform_device *=
-pdev)
->         u32 val;
->         int ret;
->
-> -       lvds_codec =3D devm_kzalloc(dev, sizeof(*lvds_codec), GFP_KERNEL)=
-;
-> -       if (!lvds_codec)
-> -               return -ENOMEM;
-> +       lvds_codec =3D devm_drm_bridge_alloc(dev, struct lvds_codec, brid=
-ge,
-> +                                          &funcs);
-> +       if (IS_ERR(lvds_codec))
-> +               return PTR_ERR(lvds_codec);
->
->         lvds_codec->dev =3D &pdev->dev;
->         lvds_codec->connector_type =3D (uintptr_t)of_device_get_match_dat=
-a(dev);
-> @@ -156,8 +157,6 @@ static int lvds_codec_probe(struct platform_device *p=
-dev)
->         if (IS_ERR(lvds_codec->panel_bridge))
->                 return PTR_ERR(lvds_codec->panel_bridge);
->
-> -       lvds_codec->bridge.funcs =3D &funcs;
-> -
->         /*
->          * Decoder input LVDS format is a property of the decoder chip or=
- even
->          * its strapping. Handle data-mapping the same way lvds-panel doe=
-s. In
-> diff --git a/drivers/gpu/drm/bridge/microchip-lvds.c b/drivers/gpu/drm/br=
-idge/microchip-lvds.c
-> index 1d4ae0097df847d9f93c79eecff0c4587ae331ba..9f4ff82bc6b49010f8727da3b=
-367f5a744a28edc 100644
-> --- a/drivers/gpu/drm/bridge/microchip-lvds.c
-> +++ b/drivers/gpu/drm/bridge/microchip-lvds.c
-> @@ -157,9 +157,10 @@ static int mchp_lvds_probe(struct platform_device *p=
-dev)
->         if (!dev->of_node)
->                 return -ENODEV;
->
-> -       lvds =3D devm_kzalloc(&pdev->dev, sizeof(*lvds), GFP_KERNEL);
-> -       if (!lvds)
-> -               return -ENOMEM;
-> +       lvds =3D devm_drm_bridge_alloc(&pdev->dev, struct mchp_lvds, brid=
-ge,
-> +                                    &mchp_lvds_bridge_funcs);
-> +       if (IS_ERR(lvds))
-> +               return PTR_ERR(lvds);
->
->         lvds->dev =3D dev;
->
-> @@ -192,7 +193,6 @@ static int mchp_lvds_probe(struct platform_device *pd=
-ev)
->
->         lvds->bridge.of_node =3D dev->of_node;
->         lvds->bridge.type =3D DRM_MODE_CONNECTOR_LVDS;
-> -       lvds->bridge.funcs =3D &mchp_lvds_bridge_funcs;
->
->         dev_set_drvdata(dev, lvds);
->         ret =3D devm_pm_runtime_enable(dev);
-> diff --git a/drivers/gpu/drm/bridge/nwl-dsi.c b/drivers/gpu/drm/bridge/nw=
-l-dsi.c
-> index 55912ae11f46a1d551e11f93a306a8a00ef3f7d8..2f7429b24fc20db104dec1718=
-2f1119c6c75e600 100644
-> --- a/drivers/gpu/drm/bridge/nwl-dsi.c
-> +++ b/drivers/gpu/drm/bridge/nwl-dsi.c
-> @@ -1149,9 +1149,10 @@ static int nwl_dsi_probe(struct platform_device *p=
-dev)
->         struct nwl_dsi *dsi;
->         int ret;
->
-> -       dsi =3D devm_kzalloc(dev, sizeof(*dsi), GFP_KERNEL);
-> -       if (!dsi)
-> -               return -ENOMEM;
-> +       dsi =3D devm_drm_bridge_alloc(dev, struct nwl_dsi, bridge,
-> +                                   &nwl_dsi_bridge_funcs);
-> +       if (IS_ERR(dsi))
-> +               return PTR_ERR(dsi);
->
->         dsi->dev =3D dev;
->
-> @@ -1180,7 +1181,6 @@ static int nwl_dsi_probe(struct platform_device *pd=
-ev)
->                 dsi->quirks =3D (uintptr_t)attr->data;
->
->         dsi->bridge.driver_private =3D dsi;
-> -       dsi->bridge.funcs =3D &nwl_dsi_bridge_funcs;
->         dsi->bridge.of_node =3D dev->of_node;
->         dsi->bridge.timings =3D &nwl_dsi_timings;
->         dsi->bridge.type =3D DRM_MODE_CONNECTOR_DSI;
-> diff --git a/drivers/gpu/drm/bridge/parade-ps8622.c b/drivers/gpu/drm/bri=
-dge/parade-ps8622.c
-> index 8726fefc5c654e49bce029d943d241789ca4f802..81aa8dc8ee12af8b55f42d478=
-6b44b3b90266491 100644
-> --- a/drivers/gpu/drm/bridge/parade-ps8622.c
-> +++ b/drivers/gpu/drm/bridge/parade-ps8622.c
-> @@ -449,9 +449,10 @@ static int ps8622_probe(struct i2c_client *client)
->         struct drm_bridge *panel_bridge;
->         int ret;
->
-> -       ps8622 =3D devm_kzalloc(dev, sizeof(*ps8622), GFP_KERNEL);
-> -       if (!ps8622)
-> -               return -ENOMEM;
-> +       ps8622 =3D devm_drm_bridge_alloc(dev, struct ps8622_bridge, bridg=
-e,
-> +                                      &ps8622_bridge_funcs);
-> +       if (IS_ERR(ps8622))
-> +               return PTR_ERR(ps8622);
->
->         panel_bridge =3D devm_drm_of_get_bridge(dev, dev->of_node, 0, 0);
->         if (IS_ERR(panel_bridge))
-> @@ -508,8 +509,6 @@ static int ps8622_probe(struct i2c_client *client)
->                 ps8622->bl->props.max_brightness =3D PS8622_MAX_BRIGHTNES=
-S;
->                 ps8622->bl->props.brightness =3D PS8622_MAX_BRIGHTNESS;
->         }
-> -
-> -       ps8622->bridge.funcs =3D &ps8622_bridge_funcs;
->         ps8622->bridge.type =3D DRM_MODE_CONNECTOR_LVDS;
->         ps8622->bridge.of_node =3D dev->of_node;
->         drm_bridge_add(&ps8622->bridge);
-> diff --git a/drivers/gpu/drm/bridge/parade-ps8640.c b/drivers/gpu/drm/bri=
-dge/parade-ps8640.c
-> index 2422ff68c1042bd8eaa6821ff387d4faad47c550..d58ff094ddc7536acf0421136=
-7b9482e487b877a 100644
-> --- a/drivers/gpu/drm/bridge/parade-ps8640.c
-> +++ b/drivers/gpu/drm/bridge/parade-ps8640.c
-> @@ -636,9 +636,10 @@ static int ps8640_probe(struct i2c_client *client)
->         int ret;
->         u32 i;
->
-> -       ps_bridge =3D devm_kzalloc(dev, sizeof(*ps_bridge), GFP_KERNEL);
-> -       if (!ps_bridge)
-> -               return -ENOMEM;
-> +       ps_bridge =3D devm_drm_bridge_alloc(dev, struct ps8640, bridge,
-> +                                         &ps8640_bridge_funcs);
-> +       if (IS_ERR(ps_bridge))
-> +               return PTR_ERR(ps_bridge);
->
->         mutex_init(&ps_bridge->aux_lock);
->
-> @@ -661,8 +662,6 @@ static int ps8640_probe(struct i2c_client *client)
->                                                GPIOD_OUT_HIGH);
->         if (IS_ERR(ps_bridge->gpio_reset))
->                 return PTR_ERR(ps_bridge->gpio_reset);
-> -
-> -       ps_bridge->bridge.funcs =3D &ps8640_bridge_funcs;
->         ps_bridge->bridge.of_node =3D dev->of_node;
->         ps_bridge->bridge.type =3D DRM_MODE_CONNECTOR_eDP;
->
-> diff --git a/drivers/gpu/drm/bridge/sii9234.c b/drivers/gpu/drm/bridge/si=
-i9234.c
-> index cd7837c9a6e00b572a3fb65e5e0c9fa884555a73..487f355144a0e615298a3dd17=
-6b936885c2a8f33 100644
-> --- a/drivers/gpu/drm/bridge/sii9234.c
-> +++ b/drivers/gpu/drm/bridge/sii9234.c
-> @@ -888,9 +888,10 @@ static int sii9234_probe(struct i2c_client *client)
->         struct device *dev =3D &client->dev;
->         int ret;
->
-> -       ctx =3D devm_kzalloc(dev, sizeof(*ctx), GFP_KERNEL);
-> -       if (!ctx)
-> -               return -ENOMEM;
-> +       ctx =3D devm_drm_bridge_alloc(dev, struct sii9234, bridge,
-> +                                   &sii9234_bridge_funcs);
-> +       if (IS_ERR(ctx))
-> +               return PTR_ERR(ctx);
->
->         ctx->dev =3D dev;
->         mutex_init(&ctx->lock);
-> @@ -920,8 +921,6 @@ static int sii9234_probe(struct i2c_client *client)
->                 return ret;
->
->         i2c_set_clientdata(client, ctx);
-> -
-> -       ctx->bridge.funcs =3D &sii9234_bridge_funcs;
->         ctx->bridge.of_node =3D dev->of_node;
->         drm_bridge_add(&ctx->bridge);
->
-> diff --git a/drivers/gpu/drm/bridge/sil-sii8620.c b/drivers/gpu/drm/bridg=
-e/sil-sii8620.c
-> index 3af650dc92a1612ca88fe378319519546b79901f..7de6f0ec4ec2372f633cf1d73=
-853c73fd9caf175 100644
-> --- a/drivers/gpu/drm/bridge/sil-sii8620.c
-> +++ b/drivers/gpu/drm/bridge/sil-sii8620.c
-> @@ -2291,9 +2291,10 @@ static int sii8620_probe(struct i2c_client *client=
-)
->         struct sii8620 *ctx;
->         int ret;
->
-> -       ctx =3D devm_kzalloc(dev, sizeof(*ctx), GFP_KERNEL);
-> -       if (!ctx)
-> -               return -ENOMEM;
-> +       ctx =3D devm_drm_bridge_alloc(dev, struct sii8620, bridge,
-> +                                   &sii8620_bridge_funcs);
-> +       if (IS_ERR(ctx))
-> +               return PTR_ERR(ctx);
->
->         ctx->dev =3D dev;
->         mutex_init(&ctx->lock);
-> @@ -2335,8 +2336,6 @@ static int sii8620_probe(struct i2c_client *client)
->         }
->
->         i2c_set_clientdata(client, ctx);
-> -
-> -       ctx->bridge.funcs =3D &sii8620_bridge_funcs;
->         ctx->bridge.of_node =3D dev->of_node;
->         drm_bridge_add(&ctx->bridge);
->
-> diff --git a/drivers/gpu/drm/bridge/simple-bridge.c b/drivers/gpu/drm/bri=
-dge/simple-bridge.c
-> index 70db5b99e5bb84f099ec54cf62abbda53475311d..f9be4eafadfd1e4229161375e=
-47da95a3075b090 100644
-> --- a/drivers/gpu/drm/bridge/simple-bridge.c
-> +++ b/drivers/gpu/drm/bridge/simple-bridge.c
-> @@ -168,9 +168,10 @@ static int simple_bridge_probe(struct platform_devic=
-e *pdev)
->         struct simple_bridge *sbridge;
->         struct device_node *remote;
->
-> -       sbridge =3D devm_kzalloc(&pdev->dev, sizeof(*sbridge), GFP_KERNEL=
-);
-> -       if (!sbridge)
-> -               return -ENOMEM;
-> +       sbridge =3D devm_drm_bridge_alloc(&pdev->dev, struct simple_bridg=
-e,
-> +                                       bridge, &simple_bridge_bridge_fun=
-cs);
-> +       if (IS_ERR(sbridge))
-> +               return PTR_ERR(sbridge);
->
->         sbridge->info =3D of_device_get_match_data(&pdev->dev);
->
-> @@ -202,9 +203,6 @@ static int simple_bridge_probe(struct platform_device=
- *pdev)
->         if (IS_ERR(sbridge->enable))
->                 return dev_err_probe(&pdev->dev, PTR_ERR(sbridge->enable)=
-,
->                                      "Unable to retrieve enable GPIO\n");
-> -
-> -       /* Register the bridge. */
-> -       sbridge->bridge.funcs =3D &simple_bridge_bridge_funcs;
->         sbridge->bridge.of_node =3D pdev->dev.of_node;
->         sbridge->bridge.timings =3D sbridge->info->timings;
->
-> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/d=
-rm/bridge/synopsys/dw-hdmi-qp.c
-> index 6166f197e37b552cb8a52b7b0d23ffc632f54557..81aa3a4a0090e9183402c1b2d=
-f7e4dd8f7963b9f 100644
-> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-> @@ -1045,9 +1045,10 @@ struct dw_hdmi_qp *dw_hdmi_qp_bind(struct platform=
-_device *pdev,
->                 return ERR_PTR(-ENODEV);
->         }
->
-> -       hdmi =3D devm_kzalloc(dev, sizeof(*hdmi), GFP_KERNEL);
-> -       if (!hdmi)
-> -               return ERR_PTR(-ENOMEM);
-> +       hdmi =3D devm_drm_bridge_alloc(dev, struct dw_hdmi_qp, bridge,
-> +                                    &dw_hdmi_qp_bridge_funcs);
-> +       if (IS_ERR(hdmi))
-> +               return hdmi;
->
->         hdmi->dev =3D dev;
->
-> @@ -1073,7 +1074,6 @@ struct dw_hdmi_qp *dw_hdmi_qp_bind(struct platform_=
-device *pdev,
->                 return ERR_PTR(ret);
->
->         hdmi->bridge.driver_private =3D hdmi;
-> -       hdmi->bridge.funcs =3D &dw_hdmi_qp_bridge_funcs;
->         hdmi->bridge.ops =3D DRM_BRIDGE_OP_DETECT |
->                            DRM_BRIDGE_OP_EDID |
->                            DRM_BRIDGE_OP_HDMI |
-> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c b/drivers/gpu/=
-drm/bridge/synopsys/dw-mipi-dsi.c
-> index b08ada920a501d6a62f39581944a87019f5e5c15..ef578489a6d1c86506df43a26=
-211aa0e5c585e23 100644
-> --- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-> @@ -1194,9 +1194,10 @@ __dw_mipi_dsi_probe(struct platform_device *pdev,
->         struct dw_mipi_dsi *dsi;
->         int ret;
->
-> -       dsi =3D devm_kzalloc(dev, sizeof(*dsi), GFP_KERNEL);
-> -       if (!dsi)
-> -               return ERR_PTR(-ENOMEM);
-> +       dsi =3D devm_drm_bridge_alloc(dev, struct dw_mipi_dsi, bridge,
-> +                                   &dw_mipi_dsi_bridge_funcs);
-> +       if (IS_ERR(dsi))
-> +               return dsi;
->
->         dsi->dev =3D dev;
->         dsi->plat_data =3D plat_data;
-> @@ -1265,7 +1266,6 @@ __dw_mipi_dsi_probe(struct platform_device *pdev,
->         }
->
->         dsi->bridge.driver_private =3D dsi;
-> -       dsi->bridge.funcs =3D &dw_mipi_dsi_bridge_funcs;
->         dsi->bridge.of_node =3D pdev->dev.of_node;
->
->         return dsi;
-> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c b/drivers/gpu=
-/drm/bridge/synopsys/dw-mipi-dsi2.c
-> index c76f5f2e74d14bd372f969c6c7832aa57f80772b..981d711876cf5eee1467c2fc9=
-ed125141aa8dc14 100644
-> --- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c
-> @@ -914,9 +914,10 @@ __dw_mipi_dsi2_probe(struct platform_device *pdev,
->         struct dw_mipi_dsi2 *dsi2;
->         int ret;
->
-> -       dsi2 =3D devm_kzalloc(dev, sizeof(*dsi2), GFP_KERNEL);
-> -       if (!dsi2)
-> -               return ERR_PTR(-ENOMEM);
-> +       dsi2 =3D devm_drm_bridge_alloc(dev, struct dw_mipi_dsi2, bridge,
-> +                                    &dw_mipi_dsi2_bridge_funcs);
-> +       if (IS_ERR(dsi2))
-> +               return dsi2;
->
->         dsi2->dev =3D dev;
->         dsi2->plat_data =3D plat_data;
-> @@ -981,7 +982,6 @@ __dw_mipi_dsi2_probe(struct platform_device *pdev,
->         }
->
->         dsi2->bridge.driver_private =3D dsi2;
-> -       dsi2->bridge.funcs =3D &dw_mipi_dsi2_bridge_funcs;
->         dsi2->bridge.of_node =3D pdev->dev.of_node;
->
->         return dsi2;
-> diff --git a/drivers/gpu/drm/bridge/tc358762.c b/drivers/gpu/drm/bridge/t=
-c358762.c
-> index edf01476f2ef6e05ef2c144ff4467e7f6babc4c6..690f4c5a6fb113a6d5947a364=
-922605d28d33edf 100644
-> --- a/drivers/gpu/drm/bridge/tc358762.c
-> +++ b/drivers/gpu/drm/bridge/tc358762.c
-> @@ -265,9 +265,10 @@ static int tc358762_probe(struct mipi_dsi_device *ds=
-i)
->         struct tc358762 *ctx;
->         int ret;
->
-> -       ctx =3D devm_kzalloc(dev, sizeof(struct tc358762), GFP_KERNEL);
-> -       if (!ctx)
-> -               return -ENOMEM;
-> +       ctx =3D devm_drm_bridge_alloc(dev, struct tc358762, bridge,
-> +                                   &tc358762_bridge_funcs);
-> +       if (IS_ERR(ctx))
-> +               return PTR_ERR(ctx);
->
->         mipi_dsi_set_drvdata(dsi, ctx);
->
-> @@ -287,8 +288,6 @@ static int tc358762_probe(struct mipi_dsi_device *dsi=
-)
->         ret =3D tc358762_configure_regulators(ctx);
->         if (ret < 0)
->                 return ret;
-> -
-> -       ctx->bridge.funcs =3D &tc358762_bridge_funcs;
->         ctx->bridge.type =3D DRM_MODE_CONNECTOR_DPI;
->         ctx->bridge.of_node =3D dev->of_node;
->         ctx->bridge.pre_enable_prev_first =3D true;
-> diff --git a/drivers/gpu/drm/bridge/tc358764.c b/drivers/gpu/drm/bridge/t=
-c358764.c
-> index 3f76c890fad9ffa50dc02f289a37378332830516..c54a6e571daccfbce8eeb34e6=
-e38faa7895642df 100644
-> --- a/drivers/gpu/drm/bridge/tc358764.c
-> +++ b/drivers/gpu/drm/bridge/tc358764.c
-> @@ -347,9 +347,10 @@ static int tc358764_probe(struct mipi_dsi_device *ds=
-i)
->         struct tc358764 *ctx;
->         int ret;
->
-> -       ctx =3D devm_kzalloc(dev, sizeof(struct tc358764), GFP_KERNEL);
-> -       if (!ctx)
-> -               return -ENOMEM;
-> +       ctx =3D devm_drm_bridge_alloc(dev, struct tc358764, bridge,
-> +                                   &tc358764_bridge_funcs);
-> +       if (IS_ERR(ctx))
-> +               return PTR_ERR(ctx);
->
->         mipi_dsi_set_drvdata(dsi, ctx);
->
-> @@ -367,8 +368,6 @@ static int tc358764_probe(struct mipi_dsi_device *dsi=
-)
->         ret =3D tc358764_configure_regulators(ctx);
->         if (ret < 0)
->                 return ret;
-> -
-> -       ctx->bridge.funcs =3D &tc358764_bridge_funcs;
->         ctx->bridge.of_node =3D dev->of_node;
->         ctx->bridge.pre_enable_prev_first =3D true;
->
-> diff --git a/drivers/gpu/drm/bridge/tc358768.c b/drivers/gpu/drm/bridge/t=
-c358768.c
-> index 063f217a17b6cf32e9793b8a96a5ac6128584098..1868026b3ee012edc700f1994=
-c88777765161651 100644
-> --- a/drivers/gpu/drm/bridge/tc358768.c
-> +++ b/drivers/gpu/drm/bridge/tc358768.c
-> @@ -1287,9 +1287,10 @@ static int tc358768_i2c_probe(struct i2c_client *c=
-lient)
->         if (!np)
->                 return -ENODEV;
->
-> -       priv =3D devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-> -       if (!priv)
-> -               return -ENOMEM;
-> +       priv =3D devm_drm_bridge_alloc(dev, struct tc358768_priv, bridge,
-> +                                    &tc358768_bridge_funcs);
-> +       if (IS_ERR(priv))
-> +               return PTR_ERR(priv);
->
->         dev_set_drvdata(dev, priv);
->         priv->dev =3D dev;
-> @@ -1320,8 +1321,6 @@ static int tc358768_i2c_probe(struct i2c_client *cl=
-ient)
->
->         priv->dsi_host.dev =3D dev;
->         priv->dsi_host.ops =3D &tc358768_dsi_host_ops;
-> -
-> -       priv->bridge.funcs =3D &tc358768_bridge_funcs;
->         priv->bridge.timings =3D &default_tc358768_timings;
->         priv->bridge.of_node =3D np;
->
-> diff --git a/drivers/gpu/drm/bridge/tc358775.c b/drivers/gpu/drm/bridge/t=
-c358775.c
-> index 1b10e6ee1724ffb4bb8946f86d2f18e53428381a..b7d5ef377049656efeaca96ab=
-c5f68e61de1ee1e 100644
-> --- a/drivers/gpu/drm/bridge/tc358775.c
-> +++ b/drivers/gpu/drm/bridge/tc358775.c
-> @@ -659,9 +659,10 @@ static int tc_probe(struct i2c_client *client)
->         struct tc_data *tc;
->         int ret;
->
-> -       tc =3D devm_kzalloc(dev, sizeof(*tc), GFP_KERNEL);
-> -       if (!tc)
-> -               return -ENOMEM;
-> +       tc =3D devm_drm_bridge_alloc(dev, struct tc_data, bridge,
-> +                                  &tc_bridge_funcs);
-> +       if (IS_ERR(tc))
-> +               return PTR_ERR(tc);
->
->         tc->dev =3D dev;
->         tc->i2c =3D client;
-> @@ -700,8 +701,6 @@ static int tc_probe(struct i2c_client *client)
->                 dev_err(dev, "cannot get reset-gpios %d\n", ret);
->                 return ret;
->         }
-> -
-> -       tc->bridge.funcs =3D &tc_bridge_funcs;
->         tc->bridge.of_node =3D dev->of_node;
->         tc->bridge.pre_enable_prev_first =3D true;
->         drm_bridge_add(&tc->bridge);
-> diff --git a/drivers/gpu/drm/bridge/thc63lvd1024.c b/drivers/gpu/drm/brid=
-ge/thc63lvd1024.c
-> index e2fc78adebcf22f0d8cdb484078e37b748b776c6..2cb7cd0c060824256bbfa511f=
-833cc00437d318b 100644
-> --- a/drivers/gpu/drm/bridge/thc63lvd1024.c
-> +++ b/drivers/gpu/drm/bridge/thc63lvd1024.c
-> @@ -181,9 +181,10 @@ static int thc63_probe(struct platform_device *pdev)
->         struct thc63_dev *thc63;
->         int ret;
->
-> -       thc63 =3D devm_kzalloc(&pdev->dev, sizeof(*thc63), GFP_KERNEL);
-> -       if (!thc63)
-> -               return -ENOMEM;
-> +       thc63 =3D devm_drm_bridge_alloc(&pdev->dev, struct thc63_dev, bri=
-dge,
-> +                                     &thc63_bridge_func);
-> +       if (IS_ERR(thc63))
-> +               return PTR_ERR(thc63);
->
->         thc63->dev =3D &pdev->dev;
->         platform_set_drvdata(pdev, thc63);
-> @@ -208,7 +209,6 @@ static int thc63_probe(struct platform_device *pdev)
->
->         thc63->bridge.driver_private =3D thc63;
->         thc63->bridge.of_node =3D pdev->dev.of_node;
-> -       thc63->bridge.funcs =3D &thc63_bridge_func;
->         thc63->bridge.timings =3D &thc63->timings;
->
->         drm_bridge_add(&thc63->bridge);
-> diff --git a/drivers/gpu/drm/bridge/ti-dlpc3433.c b/drivers/gpu/drm/bridg=
-e/ti-dlpc3433.c
-> index 47638d1c96ec5ad999604c8c7e8839ff85936d98..fdde52208c7c1f17b5fb2ac30=
-6fd3011cb1bb427 100644
-> --- a/drivers/gpu/drm/bridge/ti-dlpc3433.c
-> +++ b/drivers/gpu/drm/bridge/ti-dlpc3433.c
-> @@ -348,9 +348,10 @@ static int dlpc3433_probe(struct i2c_client *client)
->         struct dlpc *dlpc;
->         int ret;
->
-> -       dlpc =3D devm_kzalloc(dev, sizeof(*dlpc), GFP_KERNEL);
-> -       if (!dlpc)
-> -               return -ENOMEM;
-> +       dlpc =3D devm_drm_bridge_alloc(dev, struct dlpc, bridge,
-> +                                    &dlpc_bridge_funcs);
-> +       if (IS_ERR(dlpc))
-> +               return PTR_ERR(dlpc);
->
->         dlpc->dev =3D dev;
->
-> @@ -364,8 +365,6 @@ static int dlpc3433_probe(struct i2c_client *client)
->
->         dev_set_drvdata(dev, dlpc);
->         i2c_set_clientdata(client, dlpc);
-> -
-> -       dlpc->bridge.funcs =3D &dlpc_bridge_funcs;
->         dlpc->bridge.of_node =3D dev->of_node;
->         drm_bridge_add(&dlpc->bridge);
->
-> diff --git a/drivers/gpu/drm/bridge/ti-tdp158.c b/drivers/gpu/drm/bridge/=
-ti-tdp158.c
-> index cca75443f0121e39527a6cecf711eff2c0d507b5..27053d020df7c6fabbd5ce631=
-b46c3f2358f12b2 100644
-> --- a/drivers/gpu/drm/bridge/ti-tdp158.c
-> +++ b/drivers/gpu/drm/bridge/ti-tdp158.c
-> @@ -68,9 +68,10 @@ static int tdp158_probe(struct i2c_client *client)
->         struct tdp158 *tdp158;
->         struct device *dev =3D &client->dev;
->
-> -       tdp158 =3D devm_kzalloc(dev, sizeof(*tdp158), GFP_KERNEL);
-> -       if (!tdp158)
-> -               return -ENOMEM;
-> +       tdp158 =3D devm_drm_bridge_alloc(dev, struct tdp158, bridge,
-> +                                      &tdp158_bridge_funcs);
-> +       if (IS_ERR(tdp158))
-> +               return PTR_ERR(tdp158);
->
->         tdp158->next =3D devm_drm_of_get_bridge(dev, dev->of_node, 1, 0);
->         if (IS_ERR(tdp158->next))
-> @@ -89,7 +90,6 @@ static int tdp158_probe(struct i2c_client *client)
->                 return dev_err_probe(dev, PTR_ERR(tdp158->enable), "enabl=
-e");
->
->         tdp158->bridge.of_node =3D dev->of_node;
-> -       tdp158->bridge.funcs =3D &tdp158_bridge_funcs;
->         tdp158->bridge.driver_private =3D tdp158;
->         tdp158->dev =3D dev;
->
-> diff --git a/drivers/gpu/drm/bridge/ti-tfp410.c b/drivers/gpu/drm/bridge/=
-ti-tfp410.c
-> index e15d232ddbac55c6f5f966471a6c63f9c29a06c1..a62c43fba854032790055751b=
-713abb012ee0cc6 100644
-> --- a/drivers/gpu/drm/bridge/ti-tfp410.c
-> +++ b/drivers/gpu/drm/bridge/ti-tfp410.c
-> @@ -341,14 +341,13 @@ static int tfp410_init(struct device *dev, bool i2c=
-)
->                 return -ENXIO;
->         }
->
-> -       dvi =3D devm_kzalloc(dev, sizeof(*dvi), GFP_KERNEL);
-> -       if (!dvi)
-> -               return -ENOMEM;
-> +       dvi =3D devm_drm_bridge_alloc(dev, struct tfp410, bridge,
-> +                                   &tfp410_bridge_funcs);
-> +       if (IS_ERR(dvi))
-> +               return PTR_ERR(dvi);
->
->         dvi->dev =3D dev;
->         dev_set_drvdata(dev, dvi);
-> -
-> -       dvi->bridge.funcs =3D &tfp410_bridge_funcs;
->         dvi->bridge.of_node =3D dev->of_node;
->         dvi->bridge.timings =3D &dvi->timings;
->         dvi->bridge.type =3D DRM_MODE_CONNECTOR_DVID;
-> diff --git a/drivers/gpu/drm/bridge/ti-tpd12s015.c b/drivers/gpu/drm/brid=
-ge/ti-tpd12s015.c
-> index 1c289051a5987e0aec4c286ef4c01ee1a2f9421f..f4d63171da54776e5b314595b=
-6a028fdb819e4a8 100644
-> --- a/drivers/gpu/drm/bridge/ti-tpd12s015.c
-> +++ b/drivers/gpu/drm/bridge/ti-tpd12s015.c
-> @@ -116,13 +116,12 @@ static int tpd12s015_probe(struct platform_device *=
-pdev)
->         struct gpio_desc *gpio;
->         int ret;
->
-> -       tpd =3D devm_kzalloc(&pdev->dev, sizeof(*tpd), GFP_KERNEL);
-> -       if (!tpd)
-> -               return -ENOMEM;
-> +       tpd =3D devm_drm_bridge_alloc(&pdev->dev, struct tpd12s015_device=
-,
-> +                                   bridge, &tpd12s015_bridge_funcs);
-> +       if (IS_ERR(tpd))
-> +               return PTR_ERR(tpd);
->
->         platform_set_drvdata(pdev, tpd);
-> -
-> -       tpd->bridge.funcs =3D &tpd12s015_bridge_funcs;
->         tpd->bridge.of_node =3D pdev->dev.of_node;
->         tpd->bridge.type =3D DRM_MODE_CONNECTOR_HDMIA;
->         tpd->bridge.ops =3D DRM_BRIDGE_OP_DETECT;
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek=
-/mtk_dp.c
-> index 4523cc0a2db8cd8b57183e11140b8a6584e95a34..9f0e28e0750185871c268e227=
-b5b10d5cba0abdb 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dp.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-> @@ -2725,9 +2725,10 @@ static int mtk_dp_probe(struct platform_device *pd=
-ev)
->         struct device *dev =3D &pdev->dev;
->         int ret;
->
-> -       mtk_dp =3D devm_kzalloc(dev, sizeof(*mtk_dp), GFP_KERNEL);
-> -       if (!mtk_dp)
-> -               return -ENOMEM;
-> +       mtk_dp =3D devm_drm_bridge_alloc(dev, struct mtk_dp, bridge,
-> +                                      &mtk_dp_bridge_funcs);
-> +       if (IS_ERR(mtk_dp))
-> +               return PTR_ERR(mtk_dp);
->
->         mtk_dp->dev =3D dev;
->         mtk_dp->data =3D (struct mtk_dp_data *)of_device_get_match_data(d=
-ev);
-> @@ -2784,8 +2785,6 @@ static int mtk_dp_probe(struct platform_device *pde=
-v)
->         ret =3D mtk_dp_register_phy(mtk_dp);
->         if (ret)
->                 return ret;
-> -
-> -       mtk_dp->bridge.funcs =3D &mtk_dp_bridge_funcs;
->         mtk_dp->bridge.of_node =3D dev->of_node;
->         mtk_dp->bridge.type =3D mtk_dp->data->bridge_type;
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediate=
-k/mtk_dpi.c
-> index 6b96ed4fc8614569e53f76fe3e52507c7dc1249c..09c3b00507542aab18ded89bb=
-885b2dc64f2b208 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> @@ -1021,9 +1021,10 @@ static int mtk_dpi_probe(struct platform_device *p=
-dev)
->         struct mtk_dpi *dpi;
->         int ret;
->
-> -       dpi =3D devm_kzalloc(dev, sizeof(*dpi), GFP_KERNEL);
-> -       if (!dpi)
-> -               return -ENOMEM;
-> +       dpi =3D devm_drm_bridge_alloc(dev, struct mtk_dpi, bridge,
-> +                                   &mtk_dpi_bridge_funcs);
-> +       if (IS_ERR(dpi))
-> +               return PTR_ERR(dpi);
->
->         dpi->dev =3D dev;
->         dpi->conf =3D (struct mtk_dpi_conf *)of_device_get_match_data(dev=
-);
-> @@ -1074,8 +1075,6 @@ static int mtk_dpi_probe(struct platform_device *pd=
-ev)
->                 return dpi->irq;
->
->         platform_set_drvdata(pdev, dpi);
-> -
-> -       dpi->bridge.funcs =3D &mtk_dpi_bridge_funcs;
->         dpi->bridge.of_node =3D dev->of_node;
->         dpi->bridge.type =3D DRM_MODE_CONNECTOR_DPI;
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediate=
-k/mtk_dsi.c
-> index cd2fbd8487c55930bf3abd1c3131153469e5166a..1733643ba00b845bcadda2aaf=
-ce3afb8a3be6f8b 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> @@ -1196,9 +1196,10 @@ static int mtk_dsi_probe(struct platform_device *p=
-dev)
->         int irq_num;
->         int ret;
->
-> -       dsi =3D devm_kzalloc(dev, sizeof(*dsi), GFP_KERNEL);
-> -       if (!dsi)
-> -               return -ENOMEM;
-> +       dsi =3D devm_drm_bridge_alloc(dev, struct mtk_dsi, bridge,
-> +                                   &mtk_dsi_bridge_funcs);
-> +       if (IS_ERR(dsi))
-> +               return PTR_ERR(dsi);
->
->         dsi->driver_data =3D of_device_get_match_data(dev);
->
-> @@ -1245,8 +1246,6 @@ static int mtk_dsi_probe(struct platform_device *pd=
-ev)
->         init_waitqueue_head(&dsi->irq_wait_queue);
->
->         platform_set_drvdata(pdev, dsi);
-> -
-> -       dsi->bridge.funcs =3D &mtk_dsi_bridge_funcs;
->         dsi->bridge.of_node =3D dev->of_node;
->         dsi->bridge.type =3D DRM_MODE_CONNECTOR_DSI;
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediat=
-ek/mtk_hdmi.c
-> index e753b8e2d91b9471df00678c5ad66e6adec6c36d..58f4db4afbfc6bbef745210c7=
-30032433e03526b 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-> @@ -1688,9 +1688,10 @@ static int mtk_hdmi_probe(struct platform_device *=
-pdev)
->         struct device *dev =3D &pdev->dev;
->         int ret;
->
-> -       hdmi =3D devm_kzalloc(dev, sizeof(*hdmi), GFP_KERNEL);
-> -       if (!hdmi)
-> -               return -ENOMEM;
-> +       hdmi =3D devm_drm_bridge_alloc(dev, struct mtk_hdmi, bridge,
-> +                                    &mtk_hdmi_bridge_funcs);
-> +       if (IS_ERR(hdmi))
-> +               return PTR_ERR(hdmi);
->
->         hdmi->dev =3D dev;
->         hdmi->conf =3D of_device_get_match_data(dev);
-> @@ -1716,8 +1717,6 @@ static int mtk_hdmi_probe(struct platform_device *p=
-dev)
->         if (ret)
->                 return dev_err_probe(dev, ret,
->                                      "Failed to register audio driver\n")=
-;
-> -
-> -       hdmi->bridge.funcs =3D &mtk_hdmi_bridge_funcs;
->         hdmi->bridge.of_node =3D pdev->dev.of_node;
->         hdmi->bridge.ops =3D DRM_BRIDGE_OP_DETECT | DRM_BRIDGE_OP_EDID
->                          | DRM_BRIDGE_OP_HPD;
-> diff --git a/drivers/gpu/drm/meson/meson_encoder_cvbs.c b/drivers/gpu/drm=
-/meson/meson_encoder_cvbs.c
-> index c9678dc68fa142882e2beb24fe81185fbdef733b..24a96b0a9e31de8f23192fd36=
-c9515c65c4d87d3 100644
-> --- a/drivers/gpu/drm/meson/meson_encoder_cvbs.c
-> +++ b/drivers/gpu/drm/meson/meson_encoder_cvbs.c
-> @@ -227,9 +227,12 @@ int meson_encoder_cvbs_probe(struct meson_drm *priv)
->         struct device_node *remote;
->         int ret;
->
-> -       meson_encoder_cvbs =3D devm_kzalloc(priv->dev, sizeof(*meson_enco=
-der_cvbs), GFP_KERNEL);
-> -       if (!meson_encoder_cvbs)
-> -               return -ENOMEM;
-> +       meson_encoder_cvbs =3D devm_drm_bridge_alloc(priv->dev,
-> +                                                  struct meson_encoder_c=
-vbs,
-> +                                                  bridge,
-> +                                                  &meson_encoder_cvbs_br=
-idge_funcs);
-> +       if (IS_ERR(meson_encoder_cvbs))
-> +               return PTR_ERR(meson_encoder_cvbs);
->
->         /* CVBS Connector Bridge */
->         remote =3D of_graph_get_remote_node(priv->dev->of_node, 0, 0);
-> @@ -243,9 +246,6 @@ int meson_encoder_cvbs_probe(struct meson_drm *priv)
->         if (!meson_encoder_cvbs->next_bridge)
->                 return dev_err_probe(priv->dev, -EPROBE_DEFER,
->                                      "Failed to find CVBS Connector bridg=
-e\n");
-> -
-> -       /* CVBS Encoder Bridge */
-> -       meson_encoder_cvbs->bridge.funcs =3D &meson_encoder_cvbs_bridge_f=
-uncs;
->         meson_encoder_cvbs->bridge.of_node =3D priv->dev->of_node;
->         meson_encoder_cvbs->bridge.type =3D DRM_MODE_CONNECTOR_Composite;
->         meson_encoder_cvbs->bridge.ops =3D DRM_BRIDGE_OP_MODES;
-> diff --git a/drivers/gpu/drm/meson/meson_encoder_dsi.c b/drivers/gpu/drm/=
-meson/meson_encoder_dsi.c
-> index 3db518e5f95d324c218b730e0948c3dc845382bd..b98264801ee6ec45a1b9af1c5=
-082d605b9b34aa4 100644
-> --- a/drivers/gpu/drm/meson/meson_encoder_dsi.c
-> +++ b/drivers/gpu/drm/meson/meson_encoder_dsi.c
-> @@ -106,9 +106,12 @@ int meson_encoder_dsi_probe(struct meson_drm *priv)
->         struct device_node *remote;
->         int ret;
->
-> -       meson_encoder_dsi =3D devm_kzalloc(priv->dev, sizeof(*meson_encod=
-er_dsi), GFP_KERNEL);
-> -       if (!meson_encoder_dsi)
-> -               return -ENOMEM;
-> +       meson_encoder_dsi =3D devm_drm_bridge_alloc(priv->dev,
-> +                                                 struct meson_encoder_ds=
-i,
-> +                                                 bridge,
-> +                                                 &meson_encoder_dsi_brid=
-ge_funcs);
-> +       if (IS_ERR(meson_encoder_dsi))
-> +               return PTR_ERR(meson_encoder_dsi);
->
->         /* DSI Transceiver Bridge */
->         remote =3D of_graph_get_remote_node(priv->dev->of_node, 2, 0);
-> @@ -121,9 +124,6 @@ int meson_encoder_dsi_probe(struct meson_drm *priv)
->         if (!meson_encoder_dsi->next_bridge)
->                 return dev_err_probe(priv->dev, -EPROBE_DEFER,
->                                      "Failed to find DSI transceiver brid=
-ge\n");
-> -
-> -       /* DSI Encoder Bridge */
-> -       meson_encoder_dsi->bridge.funcs =3D &meson_encoder_dsi_bridge_fun=
-cs;
->         meson_encoder_dsi->bridge.of_node =3D priv->dev->of_node;
->         meson_encoder_dsi->bridge.type =3D DRM_MODE_CONNECTOR_DSI;
->
-> diff --git a/drivers/gpu/drm/meson/meson_encoder_hdmi.c b/drivers/gpu/drm=
-/meson/meson_encoder_hdmi.c
-> index 5f02695aafd1aa8444cd936a36e8f3a8010881a0..abb335ec469576817f5095dd0=
-2a58b3fe63827dd 100644
-> --- a/drivers/gpu/drm/meson/meson_encoder_hdmi.c
-> +++ b/drivers/gpu/drm/meson/meson_encoder_hdmi.c
-> @@ -373,9 +373,12 @@ int meson_encoder_hdmi_probe(struct meson_drm *priv)
->         struct device_node *remote;
->         int ret;
->
-> -       meson_encoder_hdmi =3D devm_kzalloc(priv->dev, sizeof(*meson_enco=
-der_hdmi), GFP_KERNEL);
-> -       if (!meson_encoder_hdmi)
-> -               return -ENOMEM;
-> +       meson_encoder_hdmi =3D devm_drm_bridge_alloc(priv->dev,
-> +                                                  struct meson_encoder_h=
-dmi,
-> +                                                  bridge,
-> +                                                  &meson_encoder_hdmi_br=
-idge_funcs);
-> +       if (IS_ERR(meson_encoder_hdmi))
-> +               return PTR_ERR(meson_encoder_hdmi);
->
->         /* HDMI Transceiver Bridge */
->         remote =3D of_graph_get_remote_node(priv->dev->of_node, 1, 0);
-> @@ -390,9 +393,6 @@ int meson_encoder_hdmi_probe(struct meson_drm *priv)
->                                     "Failed to find HDMI transceiver brid=
-ge\n");
->                 goto err_put_node;
->         }
-> -
-> -       /* HDMI Encoder Bridge */
-> -       meson_encoder_hdmi->bridge.funcs =3D &meson_encoder_hdmi_bridge_f=
-uncs;
->         meson_encoder_hdmi->bridge.of_node =3D priv->dev->of_node;
->         meson_encoder_hdmi->bridge.type =3D DRM_MODE_CONNECTOR_HDMIA;
->         meson_encoder_hdmi->bridge.interlace_allowed =3D true;
-> diff --git a/drivers/gpu/drm/renesas/rcar-du/rcar_lvds.c b/drivers/gpu/dr=
-m/renesas/rcar-du/rcar_lvds.c
-> index a9145253294fcaef6bae4e1406a781f6d710d357..b90c90f31e86ef81bf60827ae=
-9bcb9d3f8fca6e4 100644
-> --- a/drivers/gpu/drm/renesas/rcar-du/rcar_lvds.c
-> +++ b/drivers/gpu/drm/renesas/rcar-du/rcar_lvds.c
-> @@ -878,9 +878,10 @@ static int rcar_lvds_probe(struct platform_device *p=
-dev)
->         struct rcar_lvds *lvds;
->         int ret;
->
-> -       lvds =3D devm_kzalloc(&pdev->dev, sizeof(*lvds), GFP_KERNEL);
-> -       if (lvds =3D=3D NULL)
-> -               return -ENOMEM;
-> +       lvds =3D devm_drm_bridge_alloc(&pdev->dev, struct rcar_lvds, brid=
-ge,
-> +                                    &rcar_lvds_bridge_ops);
-> +       if (IS_ERR(lvds))
-> +               return PTR_ERR(lvds);
->
->         platform_set_drvdata(pdev, lvds);
->
-> @@ -894,8 +895,6 @@ static int rcar_lvds_probe(struct platform_device *pd=
-ev)
->         ret =3D rcar_lvds_parse_dt(lvds);
->         if (ret < 0)
->                 return ret;
-> -
-> -       lvds->bridge.funcs =3D &rcar_lvds_bridge_ops;
->         lvds->bridge.of_node =3D pdev->dev.of_node;
->
->         lvds->mmio =3D devm_platform_ioremap_resource(pdev, 0);
-> diff --git a/drivers/gpu/drm/renesas/rz-du/rzg2l_mipi_dsi.c b/drivers/gpu=
-/drm/renesas/rz-du/rzg2l_mipi_dsi.c
-> index 96c014449547b4042d7568573fde876b5b39bd04..83e7bc735798a89942b5f288d=
-f3f53b47c1e334b 100644
-> --- a/drivers/gpu/drm/renesas/rz-du/rzg2l_mipi_dsi.c
-> +++ b/drivers/gpu/drm/renesas/rz-du/rzg2l_mipi_dsi.c
-> @@ -701,9 +701,10 @@ static int rzg2l_mipi_dsi_probe(struct platform_devi=
-ce *pdev)
->         u32 txsetr;
->         int ret;
->
-> -       dsi =3D devm_kzalloc(&pdev->dev, sizeof(*dsi), GFP_KERNEL);
-> -       if (!dsi)
-> -               return -ENOMEM;
-> +       dsi =3D devm_drm_bridge_alloc(&pdev->dev, struct rzg2l_mipi_dsi, =
-bridge,
-> +                                   &rzg2l_mipi_dsi_bridge_ops);
-> +       if (IS_ERR(dsi))
-> +               return PTR_ERR(dsi);
->
->         platform_set_drvdata(pdev, dsi);
->         dsi->dev =3D &pdev->dev;
-> @@ -759,9 +760,6 @@ static int rzg2l_mipi_dsi_probe(struct platform_devic=
-e *pdev)
->         dsi->num_data_lanes =3D min(((txsetr >> 16) & 3) + 1, num_data_la=
-nes);
->         rzg2l_mipi_dsi_dphy_exit(dsi);
->         pm_runtime_put(dsi->dev);
-> -
-> -       /* Initialize the DRM bridge. */
-> -       dsi->bridge.funcs =3D &rzg2l_mipi_dsi_bridge_ops;
->         dsi->bridge.of_node =3D dsi->dev->of_node;
->
->         /* Init host device */
->
-> --
-> 2.49.0
->
+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
+scUnWnv8sErY943hM8MUsMQ5D0P2
+=3DUrys
+-----END PGP PUBLIC KEY BLOCK-----
+
+--------------Q3V9XbsBm0UszSYMZassvmiC--
+
+--------------8RbOBtFNuSB8oa2OPMoZ2KSL--
+
+--------------aSZCXDppSaaE0ALCVgKJu5XQ
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+wsF5BAABCAAjFiEET/yoGP3p5Zl+RKVuX75KBAfJsRkFAmgzHjYFAwAAAAAACgkQX75KBAfJsRks
+Fg/9HF+YNljN7KsfiAvHqAJDnuX/DZXRwPr7lGhsXfp0yh5MJhylOcDZ6RP1PVUF7/UE/7bZMoYp
+dkLesaa2oWf52VJtTJarcCjkTzfdx3rSqYePH6pxBesTyAQ8gthROF+Ss7tqxp4nrF8m8tz5n2zh
+qF7R62bSitYHMTRwKRmrDKf0NL/Sile6fZhSVm2jArHODySlwEXJ1Gvi60fonHQK+ebZEGvMmyWx
+JeY8b5+Q6tKsp5tsKy9tx/c+hGIjII/TPK89EOq9CcLwkLiLKqlwcy3ho3cxmPxJXarhYKpslPCA
+7zKAw8rpdzQB39wHClwPQCKbJGzDyzpsR+fQFcElLYiSzg3AD46X4GNCy6wCmUrm+YKSmQvI1tXf
+VBotfGOuet/zwOhtPy9tkb5L3x2FN97Hsh7zeEnBmVPTxt/rbROP88jIT+tMmV5rfitwMRv5aA8h
+dbUox8gNjp32FHUir7rToJ0axRFOscRkPnhosFejxbkZFNISAC6Yb9lQJnfc1emv2FszkvfPbfZB
+oR33EBODH9/4Yn0t0jbnUg3UecqfHWOJTbMv6VIEfE/UcC8ZPuGO2rnolTnzqQaNISIePFm+GTwW
+48Hpgut6jGphLdjjP3ZxoZ7gQogo+pXBTlZFkjHCuEkAF5LnsZ7iHc87B0X0Sr5Aj3etT263LRiJ
+rxM=
+=xZEU
+-----END PGP SIGNATURE-----
+
+--------------aSZCXDppSaaE0ALCVgKJu5XQ--
 
