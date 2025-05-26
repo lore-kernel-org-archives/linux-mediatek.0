@@ -4,152 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FE83C54FB3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 May 2025 12:33:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4134DC54FB3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 May 2025 14:22:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=uxjmeaZkiGOpF02C1gi5XR3KTdfglazpZGe4jPoyrn4=; b=eJjsaQmB4M/qpwxuDqP6/GVaBM
-	+oG1aNeDM128Sz1IZsCocYZK0d5l+XduQrJqZzF87/B0rS8zKMEdPNY8Ur/w4cMD66tzKFRdEjmET
-	zmYiGTEP39Utpj5uujF9ixvH0qXCa0YhNJS19TPZQgXfEXwLirIIn+eKXoRy6EItqyLUi984o/Rm4
-	8nLs0+Jyq0E1yRRdKTAQh2+LGNQ/bukaBgNhdlgR29VQzf8UbDyoObHnkyhULignbKUlc7fVtrzpe
-	MUJIapGBRKfJft12nVw/w5/kO4RdpU8FAZpjB/5ESsJLfnybVzjEQNo2vBytaV0YihlLhYjB7qV5I
-	lXPHyi4w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:To:From:Date:Cc:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=4f9ppK/Fd1kNyoiyUjqXMTXUiPAGCVkCczNjqtT5OaI=; b=kCIQM4H6vcnxMq
+	Kz7NvdPC/aJ6O84qrQE2KSxi40HtMTlssNSRqdLPmzeC6V6jrRoYmGV8MbpbYkAU6kPZGkNLc1YWH
+	3Y3M1SQIeCg+FnxJHNdZEHbg5CS0hKKOaiBq8iiljF3yZV4Oz5gv1T8hPLKleMJMn4XNcz98V/z/d
+	Vg9yAs6Nui1XDLkST78eDpxX3eH0kzJIUGFKqo59HX4C7ZPJQ6bnfj/n9Lgwoq0MMTU/pqqB1Je1y
+	AzLvcJOQ0yWtMUkUsk08F/sUnTy8rB5ri9RoTQDc1HSaxIgnQ4hgG0PWLu0SLRG/i0UUH23mTf8K3
+	aqNyK/C4LUH2e83SYpaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJX1b-00000008nbB-0zL5;
-	Mon, 26 May 2025 12:33:51 +0000
-Received: from mail-westeuropeazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c201::3] helo=AS8PR04CU009.outbound.protection.outlook.com)
+	id 1uJYin-0000000906T-0hTy;
+	Mon, 26 May 2025 14:22:33 +0000
+Received: from mout.gmx.net ([212.227.17.21])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJWzS-00000008nSR-3gpB;
-	Mon, 26 May 2025 12:31:40 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=LhfrMOl5lZMcydaKPQKlDTeIiD/Rfyymzzbl2mXkUIuD/++BIN8chjO3+8bRljxZCi/230QXiZcRJdwW3nekHsiL1N/1kiQUulN3WHAZQJmpThpWbY3XGCylgiIBAw0ED/fl5yUD//uw12o8RUiv7o7VqNHaNwlTrVhcj3A3p5do0IHA2p89woJgHJcCDAdb5o4ss6XMz7DhLvF4PCPUoqC7ErW5opAOw7DLFR7e3C5enp9MPtc1nEHKieWuerc/C57gCOVmuygWAaQMiH1yrp4VlvsAqW89mihzCJT86fBU6OSTZ1uwU280k64uyDW2vTHh8DmbrUHkBxx2HJMMAA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=uxjmeaZkiGOpF02C1gi5XR3KTdfglazpZGe4jPoyrn4=;
- b=NklRg+93tDEilOZ/Is20tf96+brxwYymwwJMVKR2TB0b6XpzDP3lvXmJumuBWjGWVeoTjZxaWdkEKEpzrCQPKWKT/WBnGaoJL4Lh4gxnDyMM2/mR3aMnq3Faer0ye9n0l59jVEz7HkIqQvVFXx3gDgz0aZsyCxUkivL8YfVVBlUECfHouvx4K3YIg+q/fsaeQp04oB4gGLX6JqzrRiQISUYP46vQYJ7Ww9IO4njmi4kv6wpAUnwiW0KTXommljwPynjOIbtAQedrbz6j2TAAEizeLEocGrR4Y07L3ySGJjZGRgGiQBefezbJ3C+UCMxlaph7n7qCib/4cOmHDlcpqg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=iopsys.eu;
- dkim=pass header.d=iopsys.eu; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iopsys.eu;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=uxjmeaZkiGOpF02C1gi5XR3KTdfglazpZGe4jPoyrn4=;
- b=CyB2w4SOXHKma8zUksW+J/mYRevRk/W/p6yhJKBnni6nysf+qxPuFqDzqronrHg2e4OWyj4TEH7ETjLGaZrRtCAg09HQpg/vqWb8+ZCLcf5F2qCuXzP2xCi+xkrZ46OBpQ4fisauKXPW1bldsidkTde7P3myJllH3YDJpi0CJMtaIn02xxRBMPMP65IrsNrxIun7sZb0A+Zfq4/Wu5xWvcAed/LDLB0WkwvhX6n6nBPuDEyHaeG/sIuQCK7PGW1b3Y6pU8R98C6G5TugEumgTYumVWp2IA2lJm6sRfOFJQSeiJEDM3kJMOo7cz2sF7quwajoKwpolkyDJ/R0q3GK3w==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=iopsys.eu;
-Received: from GV2PR08MB8121.eurprd08.prod.outlook.com (2603:10a6:150:7d::22)
- by AS8PR08MB10028.eurprd08.prod.outlook.com (2603:10a6:20b:63a::15) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8722.33; Mon, 26 May
- 2025 12:31:32 +0000
-Received: from GV2PR08MB8121.eurprd08.prod.outlook.com
- ([fe80::4cd3:da80:2532:daa0]) by GV2PR08MB8121.eurprd08.prod.outlook.com
- ([fe80::4cd3:da80:2532:daa0%3]) with mapi id 15.20.8769.021; Mon, 26 May 2025
- 12:31:32 +0000
-From: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Frank Wunderlich <frank-w@public-files.de>
-Cc: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-Subject: [PATCH v3] arm64: dts: mediatek: mt7986-bpi-r3: Change fan PWM value for mid speed
-Date: Mon, 26 May 2025 15:31:23 +0300
-Message-ID: <20250526123123.2515967-1-mikhail.kshevetskiy@iopsys.eu>
-X-Mailer: git-send-email 2.47.2
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: GV2PEPF0000383F.SWEP280.PROD.OUTLOOK.COM
- (2603:10a6:144:1:0:5:0:14) To GV2PR08MB8121.eurprd08.prod.outlook.com
- (2603:10a6:150:7d::22)
+	id 1uJYgd-00000008zf9-2Ypz;
+	Mon, 26 May 2025 14:20:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1748269215; x=1748874015; i=frank-w@public-files.de;
+	bh=4f9ppK/Fd1kNyoiyUjqXMTXUiPAGCVkCczNjqtT5OaI=;
+	h=X-UI-Sender-Class:Date:From:To:Subject:Reply-to:In-Reply-To:
+	 References:Message-ID:MIME-Version:Content-Type:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=Zeq77+Ui8Kjqbg/i3xWB5bdnKbVE1cJtiuu5uVpwPF0vZ91/bmbdcYHKJJtRGe4l
+	 wAc+GBYVEjEFGrCENKgV0yVCtWCaf8M6t++/JPO962W/150g/gbMMkx07UzMiHiY/
+	 Cfr9U2Snk/+JoQOSHUStxNHLmUs54JCcnugZ58QymGgkS36DiITMsz9emlvI6tzCk
+	 ILN8WyXR6NPDUkwEVECeUNWBq/qPFvEmqfAVieaPU1GpJFsroEtVO5HVyLAAOjuA8
+	 dmfZ8fa5/X7Qr77bl35v25VzmAJN0ceWq4JW5REYY464QDLHpwKvrtaQkvN91HhUo
+	 1v6Ig1Maj9Ez03MLnQ==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [IPv6:::1] ([80.187.70.213]) by mail.gmx.net (mrgmx104
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 1M4axq-1uJ0zB1FSA-008YxW; Mon, 26
+ May 2025 16:20:15 +0200
+Date: Mon, 26 May 2025 16:20:13 +0200
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v3=5D_arm64=3A_dts=3A_mediatek=3A_mt7986?=
+ =?US-ASCII?Q?-bpi-r3=3A_Change_fan_PWM_value_for_mid_speed?=
+User-Agent: K-9 Mail for Android
+In-Reply-To: <20250526123123.2515967-1-mikhail.kshevetskiy@iopsys.eu>
+References: <20250526123123.2515967-1-mikhail.kshevetskiy@iopsys.eu>
+Message-ID: <B06376CB-BE3F-4645-8A4D-A9C67CDCA3EC@public-files.de>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: GV2PR08MB8121:EE_|AS8PR08MB10028:EE_
-X-MS-Office365-Filtering-Correlation-Id: 430f7db3-9d6b-4725-7b34-08dd9c513ea1
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|52116014|7416014|376014|1800799024|921020|38350700014;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?/s/ccwXjdzIdZWXQOgf+CcUXdIzhnCX7b2NHBsfwMuU7KQuihyPfqlJFGhdl?=
- =?us-ascii?Q?s0sxQwIhwqar0gw2MDN2jww8Dw4PraB7sIZbfM+/BMqg2TJK7pYVG+iivuTn?=
- =?us-ascii?Q?WhNpr9QXO2S9mV3v0TnSLT9kOMBlqG19R1v+JHnFvTesroba143x/tMUwkkc?=
- =?us-ascii?Q?tI8cXeBJlhe/qrhLg5eUjrLZmQRyDWHKay9OzvAWSb15LVH4MeF3KwO2QzII?=
- =?us-ascii?Q?iW+6ASktkEWiRGWajAixllSmx6i2hHScoW7x2Dn4h/NgDd+k39bJ8/9Y+Iu3?=
- =?us-ascii?Q?Kn4aB8CsFSR8c5OQbLlW7hGJ31DJBtb+TfeQAnEK9ZlXeCwlLmmOXuhIFYXh?=
- =?us-ascii?Q?U5uIX6MiQfRnESAOV867RP5gD2dKrv20TWtl3+pTxXDdgc351epB0HaZWrbt?=
- =?us-ascii?Q?fPRPZ7bt8F+bC8DNIkqG9fPgRXU+rjr/ED48vtDYSwNxpUjvls4uwIh9ReXi?=
- =?us-ascii?Q?SIWFxAIdNRr23hFgJzWUyMnQFcJqBV6rSHzWB8N0pnLurkswxXDJMrAQKy0j?=
- =?us-ascii?Q?Ae1UMf4ztFeBTZHFyElivCEcyBIOCt5TzD1XAXFGTAMOiIbmSvBDNJNUJQwc?=
- =?us-ascii?Q?8BlLkWonpgOZQihKGp5n6n7BhLbyPcmb3SF4fLUoh215n7sqCAkdLfx7Ni/U?=
- =?us-ascii?Q?DH8e0rEz+4tN+lCqRxaDRrRA3Ghb7NXD78U4FYYPZPzrXjm5ry2x2oTNNs0/?=
- =?us-ascii?Q?VnPXpUBLRanKchpvx5yrS344jThxXrhA6L5MZ6Xx02djzfax+vUPraS6nmhy?=
- =?us-ascii?Q?JCI4XkAUV5uTyR44dM/W2Oz/QOiqb3Vtqu2mRCrr7gsAjY/TcgTxRiDiqMOH?=
- =?us-ascii?Q?yDbesH+fv4AxkePxL3c7yEGwFCGQBZt8zskk3FHBAkVc1n/bN5tQY8ln3HIK?=
- =?us-ascii?Q?AzxsadLLRge+oxFM+U4GizVMa6T+yNIx6V2+xAXZCqNDpLYOKna+26jBAU8c?=
- =?us-ascii?Q?beiJgr5/ObOtiXk4FQeCWsXIuzL8UIZI2nptbHGL95TBjy4u1inbuLnayo34?=
- =?us-ascii?Q?P/Ta+4ReNT+NxDaHH7OchGydDJd5YAHhX96sJt5ZaCJyqZBPCQC40TdwudkR?=
- =?us-ascii?Q?tiZfb13yljLrG+LLFQ6rqC8LVQAGmomZO+B/lZpMp+tlC0Fj6kCQDSVExefe?=
- =?us-ascii?Q?iIFqxS/M6NqV4gDP6BNSy87ow42hJTq+ydvNrjRMwGjlPqrvJqR1W42UHWWj?=
- =?us-ascii?Q?/M5pv4VSk/gUwV+pfT4IB/0gHYY+O2d5Bu69Bl4FgoND7DrXxOQ1Vyz/OgXS?=
- =?us-ascii?Q?EcXeha9DvPmgZ/K/mdZ0ptEffc1EVpx3XQqmtuvSPU70/2V48zP3QzK3ayLj?=
- =?us-ascii?Q?TRe38ghpCgMRgEsx686I37xkCyzzXV9BahajJwBgCaMz+0dZ2gVWuKYEcnGz?=
- =?us-ascii?Q?/a+Pt1drzDSwLSOgAb44ASbI2ctIFgxHgSQwvnSnH9Z2GA1EJYrSvLWIuwLG?=
- =?us-ascii?Q?pxnmVjTCmzuJDoelOSkUNVF3LkXlwfCFXW38dMwlxIlSoLAMyK2T9vhhnZQD?=
- =?us-ascii?Q?NZyYz71dxMnxAUA=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GV2PR08MB8121.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(52116014)(7416014)(376014)(1800799024)(921020)(38350700014);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?XkQp/gE5ucBxtldcTnYjC6mFmP4TofnMuoMf6cvKMHwEICtdj3jqPrbXmstL?=
- =?us-ascii?Q?sp26o2skPIcNaBSgvJSTAx+VX8tO3Ki4dPP18jOGRiqvJ06RSKMUwCnk4tID?=
- =?us-ascii?Q?zsGvAl62Y457JAnUVDTbyEE7yi63TdA6AUThmxOV7qvoicG0vqzJR+b977Hi?=
- =?us-ascii?Q?NLUMvnjEhWi2zBn+H3C5SjGBniOgLz1UcRmvyL8MX/R+GuUDBD5lYXSn6DZI?=
- =?us-ascii?Q?wwSQ8ah/FjcPvNtmpI2PGzKHZnMJEtFZO8lz7wOkOUGeE7yPYKhbAaYeA303?=
- =?us-ascii?Q?BzGI2wE85sqZoK0CJo0MLCWt5wNMADo/hitpHFpD9i44eajJDzY3iLRDJ31o?=
- =?us-ascii?Q?x92kejWWi43YWSVUZCBmhdK1+/9kvnaVVqpUtxhgf2XTMO9sSVrCrZCSh7+T?=
- =?us-ascii?Q?vRwug1YjtvaGlpaZBQqu1zJ4Vnw76gXEtv5QJv6E2AvNYusM+RfM59bQsVCa?=
- =?us-ascii?Q?Tc5J8iJk/LW+l2cU4hy4i4O+ikLooi4pvY8uTt4xP6SuCPv/AJsIgY7vrN41?=
- =?us-ascii?Q?EST2SmOmtXASyebUZT+IXxo5Cxo2wIWeFDMsxsBAsR9usjEBdVEuIui68zFE?=
- =?us-ascii?Q?QVSZ7mNS2vK1RwWgvoUSNy6AvWz4DKNwo5phS9jLMx8CUqYRmzidzlmhuPXD?=
- =?us-ascii?Q?yEpCyOHhFa07U3tdV6yE3VdmhsYC4GklIYEUrKPv47olIYBxWZnp4KwspbIA?=
- =?us-ascii?Q?BlC3I8f1w0QAXR5PRbH0qk20uYzpQWes9233INuvv3XraFLOPqZcquQHzmp9?=
- =?us-ascii?Q?W6Byx0+A9IC7UI0nwa8FbPa6AhzARYd7zpKyMAWAO2grWz0y2eRo5LRi3SPt?=
- =?us-ascii?Q?GBak/Q61WmZnpLoiBMG3qCOjT9v9AUr27j27Rt4BGUyBTEatIK/f9IPHPm+0?=
- =?us-ascii?Q?khqs7v02HGL1HlsQorPseaBxI2l6B8t3KwmgbW91VVHRrHjX9lLwV1YNmuH9?=
- =?us-ascii?Q?v4p0YwxTJNLJziG79uzqQzgK94s44TbUprgqhqMM3SYPo7gsMgnoEmMFT75A?=
- =?us-ascii?Q?PTmC9iiKOTT5o/r8ldelsSGMw0XjRATRvJuBuIjIR1QzSKUKRYUUpVrCBZ1h?=
- =?us-ascii?Q?3nHFvQclettqfSMYLprne9uOBkYizIO15gJcDYWSyl3S6Q21EEWGggtI30FJ?=
- =?us-ascii?Q?dNpexaetCk2PPxG9zJTHZ4t0+TyayGFDWJWrkclpxTlQNu/hqw5APHinTFFJ?=
- =?us-ascii?Q?YH9A7OrD6RsE7WbcHYK/TU2xqkNKFAERU7d3NWxhzgyTV1Y8Zc5/pA6Cxbr4?=
- =?us-ascii?Q?y+4KW55SD8nlTcfjK35NI5Z6eBP7+nu3C4LHFdJhqK2TkD9H7AOmOX3taR3i?=
- =?us-ascii?Q?Eqn8EJPhq1wtwQwAxSoe3T0GY2/IohYAk54PAABcQN+DYvHEUT9R5ZRWVVvY?=
- =?us-ascii?Q?6BHcwAOLgWsmNALkjRokg5tGTyHbI1wFTcsJw/eQm8iJT9T0UKTj5uGEPDvg?=
- =?us-ascii?Q?g7O8jddw39v9+LbiImjTsHo/G+CmKqJvzG4zW0ytVqMbiUAGsPe3NjnakP/N?=
- =?us-ascii?Q?T4fFgP9671wVXRwIRkga9w3y4Yi90DO3xeO037OfJn8MHH729xW8OSeMvbO1?=
- =?us-ascii?Q?K4RcJzhU7FsumYOvc7B4smXKW7r1+MITlKaA6E1FCIfzW8X3lR9taeD9eJ9Z?=
- =?us-ascii?Q?Fw=3D=3D?=
-X-OriginatorOrg: iopsys.eu
-X-MS-Exchange-CrossTenant-Network-Message-Id: 430f7db3-9d6b-4725-7b34-08dd9c513ea1
-X-MS-Exchange-CrossTenant-AuthSource: GV2PR08MB8121.eurprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 May 2025 12:31:31.8820
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: F4cTHBEi/gYsYOSCP2NivFjSJLiieij7Q4zbEIbA9/Ut6RQOkjpNDhKkrIvHlDPdrhrLkc+bPNP43LoI6ylMocsWAzcXYV2KWH4LDmyA+QQ=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR08MB10028
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:bxCOo6NnwP4696xdiATBJVUcyR19Efttn+RMrCvL3t5yCIPvHWj
+ 73AE7T2bI4nXG+51gFZF2YGDQSNvQX/iekaX1HmLMXb06fb9fd1YfOCHCPjPsQCdbl71raj
+ BfGhknkUJMIPUHwCS5bJCJZkFzw3j2QGcp9lxdb1xiY6TjPzU+7BBgCRjGxxXSZhtrpTGjH
+ lhpp2A3arlGCBDXiNXNzw==
+UI-OutboundReport: notjunk:1;M01:P0:QJUlpfucOPo=;BMBnJean3iHrUgGqZjLIR5Nn9I9
+ 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
+ g2Mk=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250526_053138_993255_A2729383 
-X-CRM114-Status: GOOD (  17.67  )
+X-CRM114-CacheID: sfid-20250526_072020_025375_0C5510A5 
+X-CRM114-Status: GOOD (  19.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -161,82 +127,102 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Popular cheap PWM fans for this machine, like the ones coming in
-heatsink+fan combos will not work properly at the currently defined
-medium speed. Trying different pwm setting using a command
-
-  echo $value > /sys/devices/platform/pwm-fan/hwmon/hwmon1/pwm1
-
-I found:
-
-  pwm1 value     fan rotation speed   cpu temperature     notes
-  -----------------------------------------------------------------
-    0            maximal              31.5 Celsius        too noisy
-   40            optimal              35.2 Celsius        no noise hearable
-   95            minimal
-   above 95      does not rotate      55.5 Celsius
-  -----------------------------------------------------------------
-
-Thus only cpu-active-high and cpu-active-low modes are usable.
-I think this is wrong.
-
-This patch fixes cpu-active-medium settings for bpi-r3 board.
-
-I know, the patch is not ideal as it can break pwm fan for some users.
-Likely this is the only official mt7986-bpi-r3 heatsink+fan solution
-available on the market.
-
-This patch may not be enough. Users may wants to tweak their thermal_zone0
-trip points, thus tuning fan rotation speed depending on cpu temperature.
-That can be done on the base of the following example:
-
-  === example =========
-  # cpu temperature below 25 Celsius degrees, no rotation
-  echo 25000 > /sys/class/thermal/thermal_zone0/trip_point_4_temp
-  # cpu temperature in [25..32] Celsius degrees, normal rotation speed
-  echo 32000 > /sys/class/thermal/thermal_zone0/trip_point_3_temp
-  # cpu temperature above 50 Celsius degrees, max rotation speed
-  echo 50000 > /sys/class/thermal/thermal_zone0/trip_point_2_temp
-  =====================
-
-Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-
----
-From Frank Wunderlich <frank-w@public-files.de>
-Date: 04.03.2025
+Am 26=2E Mai 2025 14:31:23 MESZ schrieb Mikhail Kshevetskiy <mikhail=2Ekshe=
+vetskiy@iopsys=2Eeu>:
+>Popular cheap PWM fans for this machine, like the ones coming in
+>heatsink+fan combos will not work properly at the currently defined
+>medium speed=2E Trying different pwm setting using a command
 >
-> sorry for delay
+>  echo $value > /sys/devices/platform/pwm-fan/hwmon/hwmon1/pwm1
 >
-> i have the fan from sinovoip and that was working for me, but if your fan only works with new values, i have no point against this change.
+>I found:
+>
+>  pwm1 value     fan rotation speed   cpu temperature     notes
+>  -----------------------------------------------------------------
+>    0            maximal              31=2E5 Celsius        too noisy
+>   40            optimal              35=2E2 Celsius        no noise hear=
+able
+>   95            minimal
+>   above 95      does not rotate      55=2E5 Celsius
+>  -----------------------------------------------------------------
+>
+>Thus only cpu-active-high and cpu-active-low modes are usable=2E
+>I think this is wrong=2E
+>
+>This patch fixes cpu-active-medium settings for bpi-r3 board=2E
+>
+>I know, the patch is not ideal as it can break pwm fan for some users=2E
+>Likely this is the only official mt7986-bpi-r3 heatsink+fan solution
+>available on the market=2E
+>
+>This patch may not be enough=2E Users may wants to tweak their thermal_zo=
+ne0
+>trip points, thus tuning fan rotation speed depending on cpu temperature=
+=2E
+>That can be done on the base of the following example:
+>
+>  =3D=3D=3D example =3D=3D=3D=3D=3D=3D=3D=3D=3D
+>  # cpu temperature below 25 Celsius degrees, no rotation
+>  echo 25000 > /sys/class/thermal/thermal_zone0/trip_point_4_temp
+>  # cpu temperature in [25=2E=2E32] Celsius degrees, normal rotation spee=
+d
+>  echo 32000 > /sys/class/thermal/thermal_zone0/trip_point_3_temp
+>  # cpu temperature above 50 Celsius degrees, max rotation speed
+>  echo 50000 > /sys/class/thermal/thermal_zone0/trip_point_2_temp
+>  =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+>
+>Signed-off-by: Mikhail Kshevetskiy <mikhail=2Ekshevetskiy@iopsys=2Eeu>
+>
+>---
+>From Frank Wunderlich <frank-w@public-files=2Ede>
+>Date: 04=2E03=2E2025
+>>
+>> sorry for delay
+>>
+>> i have the fan from sinovoip and that was working for me, but if your f=
+an only works with new values, i have no point against this change=2E
+>
+>Frank, does it means that you are signed off this patch?
 
-Frank, does it means that you are signed off this patch?
+Let it count as
 
-Changes from v1 to v2:
- * improve patch description
+Acked-by: Frank Wunderlich <frank-w@public-files=2Ede>
 
-Changes from v2 to v3:
- * added question to Frank Wunderlich
----
- arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Because i cannot test these values,as i only have 1 pwm fan for r3 in my m=
+ain router :p
+Maybe R4 fan works too,but not yet tested=2E
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-index ed79ad1ae871..b0cc0cbdff0f 100644
---- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-@@ -42,7 +42,7 @@ fan: pwm-fan {
- 		compatible = "pwm-fan";
- 		#cooling-cells = <2>;
- 		/* cooling level (0, 1, 2) - pwm inverted */
--		cooling-levels = <255 96 0>;
-+		cooling-levels = <255 40 0>;
- 		pwms = <&pwm 0 10000>;
- 		status = "okay";
- 	};
--- 
-2.47.2
+Not sure if the complete testcase has to be in the commit description,but =
+this is maintainers decision=2E
 
+>Changes from v1 to v2:
+> * improve patch description
+>
+>Changes from v2 to v3:
+> * added question to Frank Wunderlich
+>---
+> arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3=2Edts | 2 +-
+> 1 file changed, 1 insertion(+), 1 deletion(-)
+>
+>diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3=2Edts b=
+/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3=2Edts
+>index ed79ad1ae871=2E=2Eb0cc0cbdff0f 100644
+>--- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3=2Edts
+>+++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3=2Edts
+>@@ -42,7 +42,7 @@ fan: pwm-fan {
+> 		compatible =3D "pwm-fan";
+> 		#cooling-cells =3D <2>;
+> 		/* cooling level (0, 1, 2) - pwm inverted */
+>-		cooling-levels =3D <255 96 0>;
+>+		cooling-levels =3D <255 40 0>;
+> 		pwms =3D <&pwm 0 10000>;
+> 		status =3D "okay";
+> 	};
+
+
+regards Frank
 
