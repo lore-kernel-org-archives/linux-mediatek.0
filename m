@@ -4,71 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A80B7C5AD49
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 May 2025 14:33:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D63CC54FB3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 May 2025 15:43:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E8sQQ3Cts6+EFLzLQeXtx+1mqIBMCxdFqVuYmU4fm3Y=; b=K7GmLBEX9YOAEa3FXtR0vCIRXL
-	Awqta09I1mtrv18K6dGVeuPVwscI5fHzPtj3BS5KTgUYChFQTVTsK5fPkQIA+snE2iRfVSLmjBVAi
-	LBG5Sd3ixFAwvfCIBz3NnKgybUJho74J3Fhd1niIBmgX+cGe5rkTsh0Lqef1EgkRczpQOlXM8MQ6f
-	iigB0jlPUZPXj9rNOlPsMjkgQhoO5rVQlXwcN1H0UJxRaRouIX5/JP846+dHiLENXV49wjNZeAnfR
-	KSacTuAXECMIwD2eMRmsZFsTBy5Dw+0Q4KTR1mrJEJSvMYEvEeQXjfYLWgSSMCcrToGmjYkE5/ezX
-	vvffkKAQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CXYtb7g+fMKRsYwDlqjURADQ3FqYAKuKnyqKDjD40dY=; b=mAe76vssEsvScsIItdsm5cE+Ht
+	3W2epolNgs4VEqtaOQHp+5ZYIHCL9chvF1uTHZAbwMZtXh3Xe7NPIG99iAli+SdKilAl9wMkOYYAd
+	IJCAaMa2vtpkZxYmkaqHgtTZ6L2qOCyo1e2nwzswxdMAzcNu+ZZJJtyQZU6eLdRudH5aP/fZvPNyb
+	wUI8ApDOg4/JGXWD2+xOtOmAIzsxMkiHej5ogMHG0tDakFovM2IohA+2QmHovP7/ZAZi0+fDP4H6V
+	dn60aUtootlKgHLM5zfyLVeVuupRlS3CRw/PB7VtazpEAM15EYERDD+HWpj4cEIYGMTi+mEH07h2N
+	6sHQBAPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJYtB-000000091VU-2Qoe;
-	Mon, 26 May 2025 14:33:17 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uJZzU-000000099pR-0ZDA;
+	Mon, 26 May 2025 15:43:52 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJYq2-000000090xY-0M1o;
-	Mon, 26 May 2025 14:30:03 +0000
+	id 1uJZvl-000000099Ck-1qjz;
+	Mon, 26 May 2025 15:40:02 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id EEF8544A9D;
-	Mon, 26 May 2025 14:29:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 843BAC4CEE7;
-	Mon, 26 May 2025 14:29:55 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id BEC855C063D;
+	Mon, 26 May 2025 15:37:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 75709C4CEE7;
+	Mon, 26 May 2025 15:40:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1748269798;
-	bh=jXxtsHqy49HEr7W/9gJvil9hdu/xf25Qj4R61xruCPU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=RYB2bOQPnMVuzF+jZgA00OrAQt2+/HUjMP0htmSkX9GzBM4eXFhoy+ELlfBKH42Hf
-	 pPNONSpLStJLWsYFn7vDOLiBa/wF4oHXMRbG3468eJbYVtJNAb3ECQ/BbxK0Lv4LIj
-	 4q/EtuCYOea+8Aej0duZoN0hFYC7TfB7eSOyD9QGe00k9HXjGA3A1wL9eCsZZalY0b
-	 IJ0nIjuU8VG1lAvF51OgTxSFW7xRq1GOoPJymqA3b5jwVQfJYyvwgyEwZ26ZIdRA1e
-	 2faSDf1r2QuWETwbEMx6EnUr+Px4Q58QR7Yx1YAo0o5mbPWmNulcTO9xQbb3M4xgbZ
-	 3csA7JLDRukxA==
-Date: Mon, 26 May 2025 15:29:53 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH] media: dt-bindings: mediatek: Constrain iommus
-Message-ID: <20250526-churn-survey-92e4ac835db3@spud>
-References: <20250525051639.68753-2-krzysztof.kozlowski@linaro.org>
+	s=k20201202; t=1748274000;
+	bh=YQ6Ly+xBPMeVJ+JVo7f3xRiXkboBAQ6F9hhHJQEGf84=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=QbXqeYokd7wqEyGnBYiB9sPwODzrPB4IFKF0PgR3A4lfNgAluaiXjUelPqTaKHnNU
+	 56ZmkELpxAieLx0x+uWU0m4U0jhpTf9kWAbsRrb1x9FdyznBKc8LboD8l259dGN4br
+	 6KeSYRfQWl08zyq5cTWCtMVRQ0qtfF92XgdtCBsIp8b9zeOcmsJndbkym7yHm79GA1
+	 OcJSZD0DjMyENQ0HdvrQjo3UdVcXwL9nq0FVKz251IsHvhsF9i259oijQ759/dBPJu
+	 tdsj1L9l64hPKxcS9GlavrMF5NKN+5aMi5bZ5O5zDBPBSSJciFR3dgEZwcVH5qVylB
+	 QFs14TJ5FGuRA==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 33B263805D8E;
+	Mon, 26 May 2025 15:40:36 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="6ewRwsCC7aREqelS"
-Content-Disposition: inline
-In-Reply-To: <20250525051639.68753-2-krzysztof.kozlowski@linaro.org>
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next v3 0/4] Add the capability to consume SRAM for
+ hwfd descriptor queue in airoha_eth driver
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <174827403500.961666.15762374544120433912.git-patchwork-notify@kernel.org>
+Date: Mon, 26 May 2025 15:40:35 +0000
+References: <20250521-airopha-desc-sram-v3-0-a6e9b085b4f0@kernel.org>
+In-Reply-To: <20250521-airopha-desc-sram-v3-0-a6e9b085b4f0@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250526_073002_151656_41918195 
-X-CRM114-Status: GOOD (  10.25  )
+X-CRM114-CacheID: sfid-20250526_084001_524530_1CD2BB5F 
+X-CRM114-Status: UNSURE (   8.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,31 +78,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hello:
 
---6ewRwsCC7aREqelS
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This series was applied to netdev/net-next.git (main)
+by Paolo Abeni <pabeni@redhat.com>:
 
-On Sun, May 25, 2025 at 07:16:40AM +0200, Krzysztof Kozlowski wrote:
-> Lists should have fixed constraints, because binding must be specific in
-> respect to hardware.  Add missing constraints to number of iommus in
-> Mediatek media devices.
->=20
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+On Wed, 21 May 2025 09:16:35 +0200 you wrote:
+> In order to improve packet processing and packet forwarding
+> performances, EN7581 SoC supports consuming SRAM instead of DRAM for hw
+> forwarding descriptors queue. For downlink hw accelerated traffic
+> request to consume SRAM memory for hw forwarding descriptors queue.
+> Moreover, in some configurations QDMA blocks require a contiguous block
+> of system memory for hwfd buffers queue. Introduce the capability to
+> allocate hw buffers forwarding queue via the reserved-memory DTS
+> property instead of running dmam_alloc_coherent().
+> 
+> [...]
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Here is the summary with links:
+  - [net-next,v3,1/4] dt-bindings: net: airoha: Add EN7581 memory-region property
+    https://git.kernel.org/netdev/net-next/c/2d13b45f8086
+  - [net-next,v3,2/4] net: airoha: Do not store hfwd references in airoha_qdma struct
+    https://git.kernel.org/netdev/net-next/c/09aa788f98da
+  - [net-next,v3,3/4] net: airoha: Add the capability to allocate hwfd buffers via reserved-memory
+    https://git.kernel.org/netdev/net-next/c/3a1ce9e3d01b
+  - [net-next,v3,4/4] net: airoha: Add the capability to allocate hfwd descriptors in SRAM
+    https://git.kernel.org/netdev/net-next/c/c683e378c090
 
---6ewRwsCC7aREqelS
-Content-Type: application/pgp-signature; name="signature.asc"
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
------BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaDR64QAKCRB4tDGHoIJi
-0vZWAP9BR4vLb8OlwsUrb+fCOvG9Bsq3De8bY4TqVlmsHnP9PAD+OVk4U34TmxkS
-EV+BCTevs7Syc2H23i8NMl+1tSwmuAU=
-=llAX
------END PGP SIGNATURE-----
-
---6ewRwsCC7aREqelS--
 
