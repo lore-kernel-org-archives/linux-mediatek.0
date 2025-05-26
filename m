@@ -4,77 +4,152 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7040C5AE59
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 May 2025 12:27:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FE83C54FB3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 May 2025 12:33:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:References:In-Reply-To:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SGcFMzxRqwZHeyCIUfXG3hV8hcSrtdD19rnC1FAfz94=; b=DkBA2i58KydNhXafLMmiOpa88Z
-	SmYncAcPhPzzLI+FMuSa0CupmZAl8rSu/+y61+Ii2Ps6qklpSPv8wB67iisYePJxcWKbAKE59cm8X
-	pxEqjA08YyIEU+xdUoCHbmPZymdhVJbDvsNc9KUJHUcBCQxaxzRw2UDEj1Bn99NvrSFBN6tOwcCbB
-	khYknvWPOOTPuQRCF6e35hDjNC5wxY8s3EjJFo203GCeWEU2Q1MCG4CWZTswYpMsa7++I+4BUjOK7
-	rdZU0KYGIz51INszpHRHUfP39jktr4CEbapI8MfitWjIeQ0OKZKUXkHrbAgH+TKH3dVzcUXN7f9w1
-	TAL4mJCA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=uxjmeaZkiGOpF02C1gi5XR3KTdfglazpZGe4jPoyrn4=; b=eJjsaQmB4M/qpwxuDqP6/GVaBM
+	+oG1aNeDM128Sz1IZsCocYZK0d5l+XduQrJqZzF87/B0rS8zKMEdPNY8Ur/w4cMD66tzKFRdEjmET
+	zmYiGTEP39Utpj5uujF9ixvH0qXCa0YhNJS19TPZQgXfEXwLirIIn+eKXoRy6EItqyLUi984o/Rm4
+	8nLs0+Jyq0E1yRRdKTAQh2+LGNQ/bukaBgNhdlgR29VQzf8UbDyoObHnkyhULignbKUlc7fVtrzpe
+	MUJIapGBRKfJft12nVw/w5/kO4RdpU8FAZpjB/5ESsJLfnybVzjEQNo2vBytaV0YihlLhYjB7qV5I
+	lXPHyi4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJWvd-00000008n1D-3ZjK;
-	Mon, 26 May 2025 12:27:41 +0000
-Received: from relay6-d.mail.gandi.net ([2001:4b98:dc4:8::226])
+	id 1uJX1b-00000008nbB-0zL5;
+	Mon, 26 May 2025 12:33:51 +0000
+Received: from mail-westeuropeazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c201::3] helo=AS8PR04CU009.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJWtU-00000008msD-42SO;
-	Mon, 26 May 2025 12:25:30 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id E6A7A43999;
-	Mon, 26 May 2025 12:25:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1748262325;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=SGcFMzxRqwZHeyCIUfXG3hV8hcSrtdD19rnC1FAfz94=;
-	b=OGi0+/oi9B3QDJ1KGV+hqFr4jwgJ66ptIKnfiXUyHOp8YjRVIngeyqOZjOtY3z+rI0y7ug
-	5z7jfbQ1Ld1G9sISQaoa1It6KFL0gQfrAaFLu1EzG5V4NBnzavkxG/WjWgXRTSeGgTQLWR
-	HsjLu8qP2BEIjmtxcIOKePLrqejwQU/kvU/pcTIq2dogwQiWAOugpH7wUE+UzzE7FgJyMY
-	RjxNiaXyAwVw8ETuf/74U/ccYcEXIDjq4aheJt98HrSZgfIZqN3vq82/mH7TzMxcir7YsQ
-	j/ng/O0laZGNuT038HrZk6FIs5UFuOQJ+ivag8upCNg10izXEde8A9sca3ajpg==
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-To: Chuanhong Guo <gch981213@gmail.com>
-Cc: Sky Huang <SkyLake.Huang@mediatek.com>,  Matthias Brugger
- <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>,  Richard Weinberger
- <richard@nod.at>,  Vignesh Raghavendra <vigneshr@ti.com>,  Daniel Golle
- <daniel@makrotopia.org>,  Chia-Lin Kao <acelan.kao@canonical.com>,  Cheng
- Ming Lin <chengminglin@mxic.com.tw>,  Christophe JAILLET
- <christophe.jaillet@wanadoo.fr>,  Pratyush Yadav <pratyush@kernel.org>,
-  linux-kernel@vger.kernel.org,  linux-mtd@lists.infradead.org,
-  linux-arm-kernel@lists.infradead.org,
-  linux-mediatek@lists.infradead.org,  Steven Liu <Steven.Liu@mediatek.com>
-Subject: Re: [PATCH nand/next] mtd: nand: spi: Use write_cache first and
- then update_cache in write operation
-In-Reply-To: <CAJsYDVKiMeYY2rw_BxuW4BAxvMcq5hDwzhiPoAR=tkXzZpRYiw@mail.gmail.com>
-	(Chuanhong Guo's message of "Tue, 29 Apr 2025 19:58:05 +0800")
-References: <20241119093949.3014-1-SkyLake.Huang@mediatek.com>
-	<871pymtab3.fsf@bootlin.com>
-	<c1e2d8ea-1b37-479d-8239-cb9bf0efdcaf@gmail.com>
-	<87bjsfv0x1.fsf@bootlin.com>
-	<CAJsYDVKiMeYY2rw_BxuW4BAxvMcq5hDwzhiPoAR=tkXzZpRYiw@mail.gmail.com>
-User-Agent: mu4e 1.12.7; emacs 29.4
-Date: Mon, 26 May 2025 14:25:21 +0200
-Message-ID: <87sekry2xa.fsf@bootlin.com>
+	id 1uJWzS-00000008nSR-3gpB;
+	Mon, 26 May 2025 12:31:40 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=LhfrMOl5lZMcydaKPQKlDTeIiD/Rfyymzzbl2mXkUIuD/++BIN8chjO3+8bRljxZCi/230QXiZcRJdwW3nekHsiL1N/1kiQUulN3WHAZQJmpThpWbY3XGCylgiIBAw0ED/fl5yUD//uw12o8RUiv7o7VqNHaNwlTrVhcj3A3p5do0IHA2p89woJgHJcCDAdb5o4ss6XMz7DhLvF4PCPUoqC7ErW5opAOw7DLFR7e3C5enp9MPtc1nEHKieWuerc/C57gCOVmuygWAaQMiH1yrp4VlvsAqW89mihzCJT86fBU6OSTZ1uwU280k64uyDW2vTHh8DmbrUHkBxx2HJMMAA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=uxjmeaZkiGOpF02C1gi5XR3KTdfglazpZGe4jPoyrn4=;
+ b=NklRg+93tDEilOZ/Is20tf96+brxwYymwwJMVKR2TB0b6XpzDP3lvXmJumuBWjGWVeoTjZxaWdkEKEpzrCQPKWKT/WBnGaoJL4Lh4gxnDyMM2/mR3aMnq3Faer0ye9n0l59jVEz7HkIqQvVFXx3gDgz0aZsyCxUkivL8YfVVBlUECfHouvx4K3YIg+q/fsaeQp04oB4gGLX6JqzrRiQISUYP46vQYJ7Ww9IO4njmi4kv6wpAUnwiW0KTXommljwPynjOIbtAQedrbz6j2TAAEizeLEocGrR4Y07L3ySGJjZGRgGiQBefezbJ3C+UCMxlaph7n7qCib/4cOmHDlcpqg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=iopsys.eu;
+ dkim=pass header.d=iopsys.eu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iopsys.eu;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=uxjmeaZkiGOpF02C1gi5XR3KTdfglazpZGe4jPoyrn4=;
+ b=CyB2w4SOXHKma8zUksW+J/mYRevRk/W/p6yhJKBnni6nysf+qxPuFqDzqronrHg2e4OWyj4TEH7ETjLGaZrRtCAg09HQpg/vqWb8+ZCLcf5F2qCuXzP2xCi+xkrZ46OBpQ4fisauKXPW1bldsidkTde7P3myJllH3YDJpi0CJMtaIn02xxRBMPMP65IrsNrxIun7sZb0A+Zfq4/Wu5xWvcAed/LDLB0WkwvhX6n6nBPuDEyHaeG/sIuQCK7PGW1b3Y6pU8R98C6G5TugEumgTYumVWp2IA2lJm6sRfOFJQSeiJEDM3kJMOo7cz2sF7quwajoKwpolkyDJ/R0q3GK3w==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=iopsys.eu;
+Received: from GV2PR08MB8121.eurprd08.prod.outlook.com (2603:10a6:150:7d::22)
+ by AS8PR08MB10028.eurprd08.prod.outlook.com (2603:10a6:20b:63a::15) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8722.33; Mon, 26 May
+ 2025 12:31:32 +0000
+Received: from GV2PR08MB8121.eurprd08.prod.outlook.com
+ ([fe80::4cd3:da80:2532:daa0]) by GV2PR08MB8121.eurprd08.prod.outlook.com
+ ([fe80::4cd3:da80:2532:daa0%3]) with mapi id 15.20.8769.021; Mon, 26 May 2025
+ 12:31:32 +0000
+From: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Frank Wunderlich <frank-w@public-files.de>
+Cc: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+Subject: [PATCH v3] arm64: dts: mediatek: mt7986-bpi-r3: Change fan PWM value for mid speed
+Date: Mon, 26 May 2025 15:31:23 +0300
+Message-ID: <20250526123123.2515967-1-mikhail.kshevetskiy@iopsys.eu>
+X-Mailer: git-send-email 2.47.2
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: GV2PEPF0000383F.SWEP280.PROD.OUTLOOK.COM
+ (2603:10a6:144:1:0:5:0:14) To GV2PR08MB8121.eurprd08.prod.outlook.com
+ (2603:10a6:150:7d::22)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-GND-State: clean
-X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtddtgddujeehudculddtuddrgeefvddrtddtmdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfitefpfffkpdcuggftfghnshhusghstghrihgsvgenuceurghilhhouhhtmecufedtudenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvvefujghffgffkfggtgfgsehtqhertddtreejnecuhfhrohhmpefoihhquhgvlhcutfgrhihnrghluceomhhiqhhuvghlrdhrrgihnhgrlhessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnhepffeghfejtdefieeguddukedujeektdeihfelleeuieeuveehkedvleduheeivdefnecukfhppeeltddrkeelrdduieefrdduvdejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepledtrdekledrudeifedruddvjedphhgvlhhopehlohgtrghlhhhoshhtpdhmrghilhhfrhhomhepmhhiqhhuvghlrdhrrgihnhgrlhessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepudeipdhrtghpthhtohepghgthhelkeduvddufeesghhmrghilhdrtghomhdprhgtphhtthhopefukhihnfgrkhgvrdfjuhgrnhhgsehmvgguihgrthgvkhdrtghomhdprhgtphhtthhopehmrghtthhhihgrshdrsghgghesghhmrghilhdrtghomhdprhgtphhtthhopegrnhhgvghlohhgihhorggttghhihhnohdruggvlhhrvghgnhhosegtohhllhgrsghorhgrrdgtohhmp
- dhrtghpthhtoheprhhitghhrghrugesnhhougdrrghtpdhrtghpthhtohepvhhighhnvghshhhrsehtihdrtghomhdprhgtphhtthhopegurghnihgvlhesmhgrkhhrohhtohhpihgrrdhorhhgpdhrtghpthhtoheprggtvghlrghnrdhkrghosegtrghnohhnihgtrghlrdgtohhm
-X-GND-Sasl: miquel.raynal@bootlin.com
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: GV2PR08MB8121:EE_|AS8PR08MB10028:EE_
+X-MS-Office365-Filtering-Correlation-Id: 430f7db3-9d6b-4725-7b34-08dd9c513ea1
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|52116014|7416014|376014|1800799024|921020|38350700014;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?/s/ccwXjdzIdZWXQOgf+CcUXdIzhnCX7b2NHBsfwMuU7KQuihyPfqlJFGhdl?=
+ =?us-ascii?Q?s0sxQwIhwqar0gw2MDN2jww8Dw4PraB7sIZbfM+/BMqg2TJK7pYVG+iivuTn?=
+ =?us-ascii?Q?WhNpr9QXO2S9mV3v0TnSLT9kOMBlqG19R1v+JHnFvTesroba143x/tMUwkkc?=
+ =?us-ascii?Q?tI8cXeBJlhe/qrhLg5eUjrLZmQRyDWHKay9OzvAWSb15LVH4MeF3KwO2QzII?=
+ =?us-ascii?Q?iW+6ASktkEWiRGWajAixllSmx6i2hHScoW7x2Dn4h/NgDd+k39bJ8/9Y+Iu3?=
+ =?us-ascii?Q?Kn4aB8CsFSR8c5OQbLlW7hGJ31DJBtb+TfeQAnEK9ZlXeCwlLmmOXuhIFYXh?=
+ =?us-ascii?Q?U5uIX6MiQfRnESAOV867RP5gD2dKrv20TWtl3+pTxXDdgc351epB0HaZWrbt?=
+ =?us-ascii?Q?fPRPZ7bt8F+bC8DNIkqG9fPgRXU+rjr/ED48vtDYSwNxpUjvls4uwIh9ReXi?=
+ =?us-ascii?Q?SIWFxAIdNRr23hFgJzWUyMnQFcJqBV6rSHzWB8N0pnLurkswxXDJMrAQKy0j?=
+ =?us-ascii?Q?Ae1UMf4ztFeBTZHFyElivCEcyBIOCt5TzD1XAXFGTAMOiIbmSvBDNJNUJQwc?=
+ =?us-ascii?Q?8BlLkWonpgOZQihKGp5n6n7BhLbyPcmb3SF4fLUoh215n7sqCAkdLfx7Ni/U?=
+ =?us-ascii?Q?DH8e0rEz+4tN+lCqRxaDRrRA3Ghb7NXD78U4FYYPZPzrXjm5ry2x2oTNNs0/?=
+ =?us-ascii?Q?VnPXpUBLRanKchpvx5yrS344jThxXrhA6L5MZ6Xx02djzfax+vUPraS6nmhy?=
+ =?us-ascii?Q?JCI4XkAUV5uTyR44dM/W2Oz/QOiqb3Vtqu2mRCrr7gsAjY/TcgTxRiDiqMOH?=
+ =?us-ascii?Q?yDbesH+fv4AxkePxL3c7yEGwFCGQBZt8zskk3FHBAkVc1n/bN5tQY8ln3HIK?=
+ =?us-ascii?Q?AzxsadLLRge+oxFM+U4GizVMa6T+yNIx6V2+xAXZCqNDpLYOKna+26jBAU8c?=
+ =?us-ascii?Q?beiJgr5/ObOtiXk4FQeCWsXIuzL8UIZI2nptbHGL95TBjy4u1inbuLnayo34?=
+ =?us-ascii?Q?P/Ta+4ReNT+NxDaHH7OchGydDJd5YAHhX96sJt5ZaCJyqZBPCQC40TdwudkR?=
+ =?us-ascii?Q?tiZfb13yljLrG+LLFQ6rqC8LVQAGmomZO+B/lZpMp+tlC0Fj6kCQDSVExefe?=
+ =?us-ascii?Q?iIFqxS/M6NqV4gDP6BNSy87ow42hJTq+ydvNrjRMwGjlPqrvJqR1W42UHWWj?=
+ =?us-ascii?Q?/M5pv4VSk/gUwV+pfT4IB/0gHYY+O2d5Bu69Bl4FgoND7DrXxOQ1Vyz/OgXS?=
+ =?us-ascii?Q?EcXeha9DvPmgZ/K/mdZ0ptEffc1EVpx3XQqmtuvSPU70/2V48zP3QzK3ayLj?=
+ =?us-ascii?Q?TRe38ghpCgMRgEsx686I37xkCyzzXV9BahajJwBgCaMz+0dZ2gVWuKYEcnGz?=
+ =?us-ascii?Q?/a+Pt1drzDSwLSOgAb44ASbI2ctIFgxHgSQwvnSnH9Z2GA1EJYrSvLWIuwLG?=
+ =?us-ascii?Q?pxnmVjTCmzuJDoelOSkUNVF3LkXlwfCFXW38dMwlxIlSoLAMyK2T9vhhnZQD?=
+ =?us-ascii?Q?NZyYz71dxMnxAUA=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GV2PR08MB8121.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(52116014)(7416014)(376014)(1800799024)(921020)(38350700014);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?XkQp/gE5ucBxtldcTnYjC6mFmP4TofnMuoMf6cvKMHwEICtdj3jqPrbXmstL?=
+ =?us-ascii?Q?sp26o2skPIcNaBSgvJSTAx+VX8tO3Ki4dPP18jOGRiqvJ06RSKMUwCnk4tID?=
+ =?us-ascii?Q?zsGvAl62Y457JAnUVDTbyEE7yi63TdA6AUThmxOV7qvoicG0vqzJR+b977Hi?=
+ =?us-ascii?Q?NLUMvnjEhWi2zBn+H3C5SjGBniOgLz1UcRmvyL8MX/R+GuUDBD5lYXSn6DZI?=
+ =?us-ascii?Q?wwSQ8ah/FjcPvNtmpI2PGzKHZnMJEtFZO8lz7wOkOUGeE7yPYKhbAaYeA303?=
+ =?us-ascii?Q?BzGI2wE85sqZoK0CJo0MLCWt5wNMADo/hitpHFpD9i44eajJDzY3iLRDJ31o?=
+ =?us-ascii?Q?x92kejWWi43YWSVUZCBmhdK1+/9kvnaVVqpUtxhgf2XTMO9sSVrCrZCSh7+T?=
+ =?us-ascii?Q?vRwug1YjtvaGlpaZBQqu1zJ4Vnw76gXEtv5QJv6E2AvNYusM+RfM59bQsVCa?=
+ =?us-ascii?Q?Tc5J8iJk/LW+l2cU4hy4i4O+ikLooi4pvY8uTt4xP6SuCPv/AJsIgY7vrN41?=
+ =?us-ascii?Q?EST2SmOmtXASyebUZT+IXxo5Cxo2wIWeFDMsxsBAsR9usjEBdVEuIui68zFE?=
+ =?us-ascii?Q?QVSZ7mNS2vK1RwWgvoUSNy6AvWz4DKNwo5phS9jLMx8CUqYRmzidzlmhuPXD?=
+ =?us-ascii?Q?yEpCyOHhFa07U3tdV6yE3VdmhsYC4GklIYEUrKPv47olIYBxWZnp4KwspbIA?=
+ =?us-ascii?Q?BlC3I8f1w0QAXR5PRbH0qk20uYzpQWes9233INuvv3XraFLOPqZcquQHzmp9?=
+ =?us-ascii?Q?W6Byx0+A9IC7UI0nwa8FbPa6AhzARYd7zpKyMAWAO2grWz0y2eRo5LRi3SPt?=
+ =?us-ascii?Q?GBak/Q61WmZnpLoiBMG3qCOjT9v9AUr27j27Rt4BGUyBTEatIK/f9IPHPm+0?=
+ =?us-ascii?Q?khqs7v02HGL1HlsQorPseaBxI2l6B8t3KwmgbW91VVHRrHjX9lLwV1YNmuH9?=
+ =?us-ascii?Q?v4p0YwxTJNLJziG79uzqQzgK94s44TbUprgqhqMM3SYPo7gsMgnoEmMFT75A?=
+ =?us-ascii?Q?PTmC9iiKOTT5o/r8ldelsSGMw0XjRATRvJuBuIjIR1QzSKUKRYUUpVrCBZ1h?=
+ =?us-ascii?Q?3nHFvQclettqfSMYLprne9uOBkYizIO15gJcDYWSyl3S6Q21EEWGggtI30FJ?=
+ =?us-ascii?Q?dNpexaetCk2PPxG9zJTHZ4t0+TyayGFDWJWrkclpxTlQNu/hqw5APHinTFFJ?=
+ =?us-ascii?Q?YH9A7OrD6RsE7WbcHYK/TU2xqkNKFAERU7d3NWxhzgyTV1Y8Zc5/pA6Cxbr4?=
+ =?us-ascii?Q?y+4KW55SD8nlTcfjK35NI5Z6eBP7+nu3C4LHFdJhqK2TkD9H7AOmOX3taR3i?=
+ =?us-ascii?Q?Eqn8EJPhq1wtwQwAxSoe3T0GY2/IohYAk54PAABcQN+DYvHEUT9R5ZRWVVvY?=
+ =?us-ascii?Q?6BHcwAOLgWsmNALkjRokg5tGTyHbI1wFTcsJw/eQm8iJT9T0UKTj5uGEPDvg?=
+ =?us-ascii?Q?g7O8jddw39v9+LbiImjTsHo/G+CmKqJvzG4zW0ytVqMbiUAGsPe3NjnakP/N?=
+ =?us-ascii?Q?T4fFgP9671wVXRwIRkga9w3y4Yi90DO3xeO037OfJn8MHH729xW8OSeMvbO1?=
+ =?us-ascii?Q?K4RcJzhU7FsumYOvc7B4smXKW7r1+MITlKaA6E1FCIfzW8X3lR9taeD9eJ9Z?=
+ =?us-ascii?Q?Fw=3D=3D?=
+X-OriginatorOrg: iopsys.eu
+X-MS-Exchange-CrossTenant-Network-Message-Id: 430f7db3-9d6b-4725-7b34-08dd9c513ea1
+X-MS-Exchange-CrossTenant-AuthSource: GV2PR08MB8121.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 May 2025 12:31:31.8820
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: F4cTHBEi/gYsYOSCP2NivFjSJLiieij7Q4zbEIbA9/Ut6RQOkjpNDhKkrIvHlDPdrhrLkc+bPNP43LoI6ylMocsWAzcXYV2KWH4LDmyA+QQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR08MB10028
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250526_052529_341026_BCD960A9 
-X-CRM114-Status: GOOD (  21.40  )
+X-CRM114-CacheID: sfid-20250526_053138_993255_A2729383 
+X-CRM114-Status: GOOD (  17.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,79 +164,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Chuanhong,
+Popular cheap PWM fans for this machine, like the ones coming in
+heatsink+fan combos will not work properly at the currently defined
+medium speed. Trying different pwm setting using a command
 
->> >>> Before applying this patch, write operation uses only 34H(update_cac=
-he):
->> >>> [78.937720] OP code: 0x34, addr val: 0x0, data nbytes: 1020, data 1s=
-t byte: 0xa5
->> >>> [78.945297] OP code: 0x34, addr val: 0x3fc, data nbytes: 1020, data =
-1st byte: 0xa5
->> >>> [78.954251] OP code: 0x34, addr val: 0x7f8, data nbytes: 72, data 1s=
-t byte: 0xa5
->> >>> [78.962966] OP code: 0x10, addr val: 0x300
->> >>> [78.968816] OP code: 0x34, addr val: 0x0, data nbytes: 1020, data 1s=
-t byte: 0xff
->> >>> [78.977233] OP code: 0x34, addr val: 0x3fc, data nbytes: 1020, data =
-1st byte: 0xff
->> >>> [78.985124] OP code: 0x34, addr val: 0x7f8, data nbytes: 72, data 1s=
-t byte: 0xff
->> >>> [78.992527] OP code: 0x10, addr val: 0x301
->> >>> [78.996981] OP code: 0x34, addr val: 0x0, data nbytes: 1020, data 1s=
-t byte: 0xff
->> >>> [79.004416] OP code: 0x34, addr val: 0x3fc, data nbytes: 1020, data =
-1st byte: 0xff
->> >>> [79.012031] OP code: 0x34, addr val: 0x7f8, data nbytes: 72, data 1s=
-t byte: 0xff
->> >>> [79.019435] OP code: 0x10, addr val: 0x302
->> >> I am sorry but above you said that we should not perform:
->> >>      0x32, 0x32, 0x32...
->> >> because the second time it would clear the cache again. And here
->> >> you tell us that actually the core already handles that by performing
->> >> instead:
->> >>      0x34, 0x34, 0x34...
->> >> So what is the problem?
->> >> Or maybe I misunderstood the issue, but I think Chuanhong raised an
->> >> issue that is already solved? Isn't it?
->> >>
->> >
->> > The issue is that the FORESEE NANDs require the first cache writing
->> > instruction to be WRITE_CACHE instead of UPDATE_CACHE. i.e. it needs a
->> > command sequence of:
->> >     0x32, 0x34, 0x34, 0x34...
->>
->> So Foresee NANDs do not support update_cache, why are they advertised in
->> the first place? Could you we have a less impacting solution for the
->> other NANDs?
->>
->> > This patch does exactly that, making the first instruction issued 0x32.
->> > It should be applied to fix the issue above.
->>
->> My understanding is that this is very specific to FORESEE NANDs and you
->> are changing this for all NANDs. I have fears that it will break
->> everywhere else.
+  echo $value > /sys/devices/platform/pwm-fan/hwmon/hwmon1/pwm1
+
+I found:
+
+  pwm1 value     fan rotation speed   cpu temperature     notes
+  -----------------------------------------------------------------
+    0            maximal              31.5 Celsius        too noisy
+   40            optimal              35.2 Celsius        no noise hearable
+   95            minimal
+   above 95      does not rotate      55.5 Celsius
+  -----------------------------------------------------------------
+
+Thus only cpu-active-high and cpu-active-low modes are usable.
+I think this is wrong.
+
+This patch fixes cpu-active-medium settings for bpi-r3 board.
+
+I know, the patch is not ideal as it can break pwm fan for some users.
+Likely this is the only official mt7986-bpi-r3 heatsink+fan solution
+available on the market.
+
+This patch may not be enough. Users may wants to tweak their thermal_zone0
+trip points, thus tuning fan rotation speed depending on cpu temperature.
+That can be done on the base of the following example:
+
+  === example =========
+  # cpu temperature below 25 Celsius degrees, no rotation
+  echo 25000 > /sys/class/thermal/thermal_zone0/trip_point_4_temp
+  # cpu temperature in [25..32] Celsius degrees, normal rotation speed
+  echo 32000 > /sys/class/thermal/thermal_zone0/trip_point_3_temp
+  # cpu temperature above 50 Celsius degrees, max rotation speed
+  echo 50000 > /sys/class/thermal/thermal_zone0/trip_point_2_temp
+  =====================
+
+Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+
+---
+From Frank Wunderlich <frank-w@public-files.de>
+Date: 04.03.2025
 >
-> I just checked a few datasheets of SPI-NANDs from
-> Toshiba/Winbond/Etron/ESMT/GigaDevice/Macronix.
-> All of them specify the programming sequence to be:
-> write_enable->write_cache->update_cache if needed->
-> program_execute->poll status.
-> Some of them mentions that the only difference between write_cache
-> and update_cache is whether the page cache is cleared before
-> writing (Winbond), while others don't specifically say that.
+> sorry for delay
 >
-> The original sequence doesn't seem to be following any manufacturers'
-> instructions. We just haven't run into any problems until this FORESEE
-> one.
+> i have the fan from sinovoip and that was working for me, but if your fan only works with new values, i have no point against this change.
 
-That is what I am saying. It currently works, and we may encounter
-silent failures all around because of this change, even if it might be
-theoretically correct. Anyhow, we have these templates (both write and
-update) so let's try to re-use them.
+Frank, does it means that you are signed off this patch?
 
-However I dislike the current implementation which changes the global
-wdesc template and puts it back. Can you please propose something cleaner?
+Changes from v1 to v2:
+ * improve patch description
 
-Thanks,
-Miqu=C3=A8l
+Changes from v2 to v3:
+ * added question to Frank Wunderlich
+---
+ arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
+index ed79ad1ae871..b0cc0cbdff0f 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
+@@ -42,7 +42,7 @@ fan: pwm-fan {
+ 		compatible = "pwm-fan";
+ 		#cooling-cells = <2>;
+ 		/* cooling level (0, 1, 2) - pwm inverted */
+-		cooling-levels = <255 96 0>;
++		cooling-levels = <255 40 0>;
+ 		pwms = <&pwm 0 10000>;
+ 		status = "okay";
+ 	};
+-- 
+2.47.2
+
 
