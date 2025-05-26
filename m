@@ -4,105 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86E57C54FB3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 May 2025 15:59:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6C97C5AD49
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 May 2025 16:19:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fARRLv2EAES/QT6e4xl4U/3Dyubza5vfMD7Ni6b9N0M=; b=I8nSwZFmto6KJE8Lh15TUV4QzI
-	RgcJlCzq0LrbF+2rU4ZD6MiuSkhv45qmDfEH8nlvqnefALkxNdcioL+m56cymDffDPioX3jNs6aLl
-	veLzzAfXTxDUCO2pmzIWF72VOSpTjeOEoCaOwISzUPvo4cK2t7/4P+ZtCpL89WuY6uIf6KxtztzQa
-	gCTLO9DRJaURlkFHVQGbVtTXKlf7y37d3oaVBbCZEH0IwIKr4gA9i5KrhZfNObgVEIUKjPJimuVta
-	phw/rXC7K1FnAsE3Tk3pwWBkYHQgQy3S2VLav4Wn5/WkrNL2dqengRUOddWWbW06tjrCbPdJgI+Kq
-	6csR4ZDQ==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tCbLRnD850Fw84D6O+/v5XHafNaaAGbfyOsK8To1nVE=; b=OJ1EEUXF2IUe/jFaxpse6jxWDW
+	NOCfatCSN3CaL/wSeGv59UmA96Hs/9iXoFygVVobtKRO79f24J6ja/u0v9HwDAL6AtDMmVwHDJRjw
+	jGXOGb0YCEX0dQGL9OIxZqETqYPN5RCeMCw7vnfXPRtGqDRGob3GMKPvTOLk/fSG+7zkEK5UETwka
+	yw/XZKTFcWj5tnhmbDgGLwbrWLzdOK28OKRhP514qQ2yyMTesC47LhmPdBknjrT3Pmx0vQcxzMMJH
+	DcoSzhx1ZxKiucB7j5EWsD+PqbvACZ/rQe7dJNrVdgbB83l+mKljeOhSEhMIdSQ7FXfs3dLXaU5ak
+	Cf1GwzsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJaE8-00000009Br4-2Y9n;
-	Mon, 26 May 2025 15:59:00 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1uJaXc-00000009Dc0-23bo;
+	Mon, 26 May 2025 16:19:08 +0000
+Received: from relay9-d.mail.gandi.net ([2001:4b98:dc4:8::229])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJaAR-00000009BCq-1zuk
-	for linux-mediatek@lists.infradead.org;
-	Mon, 26 May 2025 15:55:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1748274908;
+	id 1uJZNp-000000096N6-11fD;
+	Mon, 26 May 2025 15:04:59 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id AFB2444225;
+	Mon, 26 May 2025 15:04:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1748271892;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:mime-version:mime-version:content-type:content-type:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=fARRLv2EAES/QT6e4xl4U/3Dyubza5vfMD7Ni6b9N0M=;
-	b=PO17gT8LfJOAyEZNrPb6zaXxcO9yg5XGvcIZJHsrwYqy9EfefGDyJFdb9/gGVzh8YfmqCZ
-	UyWmcoMgIJ6It5Fv+E61+/xgnBiB4aCHPYTXKF+/U8/pt/v7pjVNkPkS7oGykIG+bq31b4
-	+zJJAcwITkwSEAMQSye9iJA6d9A3ZmI=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-126-7E6KEQzPODK8woGEeAYE8A-1; Mon, 26 May 2025 11:55:07 -0400
-X-MC-Unique: 7E6KEQzPODK8woGEeAYE8A-1
-X-Mimecast-MFC-AGG-ID: 7E6KEQzPODK8woGEeAYE8A_1748274906
-Received: by mail-wr1-f72.google.com with SMTP id ffacd0b85a97d-3a4c8c60c5eso1471743f8f.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 26 May 2025 08:55:07 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1748274906; x=1748879706;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=fARRLv2EAES/QT6e4xl4U/3Dyubza5vfMD7Ni6b9N0M=;
-        b=FxKLEApwsjpQ4gNAGAuim3VjRtjY1KFbiLwaXjiZhM7FRQ2AEKHHlrPjZKF0udFQcU
-         SXH4VlQ3aiRZITwmtXfLInvOXYmNoiDPlTBF24Bs0P1c5soyuiRn6RreP3S6kB8A/ux/
-         kEzq0I3iDBnqjArqHWao0MMRUqQyw3uzaKq9QIigDhdWwdzVfNeVGYRxKO8CedhRk/84
-         +zE9k/rtVbnJxjWkWGFuXcRB8g+f0Uqr6Orcgz4qHZmgMD1w3GtcVmquauQnRlF5/wG1
-         6zcJCFJstYuFfNy/es66lqfFoSUKB64sfPPhsKw83cYgqXCCYcgvl1hWBUOQS0kIIB+6
-         NFug==
-X-Forwarded-Encrypted: i=1; AJvYcCUpJRWe9uN9dmjiZnqlyGtXCWm9zlEC2m1cgS+Oyc5taOZZtd+jtRa6OFp882puTv1e4Jyz4MNNhJABA0/Sbg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzvqh9YY5toMYk4Lh7c+kiOFynM7jkw8HDp1utIVYXztYo8zOoj
-	Z5sXEPTLz8hQGMPvQhQMdzoaBII+vioz339DmxsymlKrRulfgAQqNRH64QHfEj8qbh+1BKPlCtg
-	Zz7has0rfQIiyN1pY2Y4UQ4FuP7oBUKsZr9lUdMkXP93wuHaE+8QHnGGO5c/P7IHrw4tTiTYMtQ
-	==
-X-Gm-Gg: ASbGncvlhnx2FoX2q6R5wqvO+VUHI0JxexIiRGmspHL3Lzspy1AUqjcHPoXGUu606uy
-	3DzrNIjjMr0L9DTUaU7KvItT2W/2gy4dNP8ZLUvONsO5VL8LnziQ9Q4Wjf/NkjCVkWCh+qfGK3Y
-	KH3HU8wdR8u1H+kSYb+TEADoJr/m4NBDxgBO7qtKTNqvr6wi+rkNCg5xRzXWFV1c2hOcXZOnK4j
-	d3maz+u1NVh2Lxfn60XsvivOzTS19CoFO/Nf3Gj+oJDgnhk3B170D+bl+YOy3a+V0hwmsh4KHQg
-	L2y5Wx48Q3nxH5hvuUw=
-X-Received: by 2002:a05:6000:1ac6:b0:3a3:6941:6013 with SMTP id ffacd0b85a97d-3a4cb489c46mr7644596f8f.40.1748274906111;
-        Mon, 26 May 2025 08:55:06 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEniW4Fa0wQ5QCsDtszPeRRxDRH9P02gatIOFzZCMuokpVnrSJPxMGRC37ySpxpVr8XiaeDXg==
-X-Received: by 2002:a05:6000:1ac6:b0:3a3:6941:6013 with SMTP id ffacd0b85a97d-3a4cb489c46mr7644577f8f.40.1748274905760;
-        Mon, 26 May 2025 08:55:05 -0700 (PDT)
-Received: from ?IPV6:2a0d:3344:2728:e810::f39? ([2a0d:3344:2728:e810::f39])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a4babec83csm14730739f8f.80.2025.05.26.08.55.04
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 26 May 2025 08:55:05 -0700 (PDT)
-Message-ID: <edb8881d-0cac-4f7e-b358-299bb30b5f27@redhat.com>
-Date: Mon, 26 May 2025 17:55:03 +0200
+	bh=tCbLRnD850Fw84D6O+/v5XHafNaaAGbfyOsK8To1nVE=;
+	b=px3wU1eRkJ/axr/5DuhnZySKrn823eNaAIJXbZcAmaqq4qeYcle/G8QC7ZsPXuBfqgUfA5
+	j9UtCvuxzUT5A1xXY1Po4PCIRoRj/UYUvff9JIXuTSFDpA7KBjR1wfOWeVD/7/YChB4k6k
+	OccO5Dc6ZOmBH1W60DJj3fdi7jALdeVeqR+U/9rbTTM1YBDMzgagRRa7zs6wL9Q2HF+Ggl
+	lZR8EQV0hFy/i3wUKXQGcb6+9G9tfBRSFOtl6/n8GoMSf0r2Iy6B5ejdMC9jPJn6kFCLCK
+	x5mkCnLV2MqtCm+ayiflRELaT0mOKkuuwcU+khwFj5kXsikeBoHem+BuFAnX/A==
+Date: Mon, 26 May 2025 17:04:46 +0200
+From: Kory Maincent <kory.maincent@bootlin.com>
+To: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
+Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Miquel Raynal
+ <miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>, Vignesh
+ Raghavendra <vigneshr@ti.com>, Hector Martin <marcan@marcan.st>, Sven Peter
+ <sven@svenpeter.dev>, Alyssa Rosenzweig <alyssa@rosenzweig.io>, Shawn Guo
+ <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix
+ Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>,
+ NXP Linux Team <linux-imx@nxp.com>, Neil Armstrong
+ <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, Jerome
+ Brunet <jbrunet@baylibre.com>, Martin Blumenstingl
+ <martin.blumenstingl@googlemail.com>, Claudiu Beznea
+ <claudiu.beznea@microchip.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno        
+ <angelogioacchino.delregno@collabora.com>, Andy Gross <agross@kernel.org>,
+ Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio
+ <konrad.dybcio@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Orson Zhai
+ <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan
+ Zhang <zhang.lyra@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, Vincent Shih
+ <vincent.sunplus@gmail.com>, Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec
+ <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, Kunihiko
+ Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu
+ <mhiramat@kernel.org>, Michal Simek <michal.simek@xilinx.com>, Alessandro
+ Zummo <a.zummo@towertech.it>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, Evgeniy Polyakov <zbr@ioremap.net>,
+ linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org,
+ asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
+ linux-rtc@vger.kernel.org, Michael Walle <michael@walle.cc>,
+ =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, Romain Gantois
+ <romain.gantois@bootlin.com>
+Subject: Re: [PATCH V5] nvmem: add explicit config option to read old syntax
+ fixed OF cells
+Message-ID: <20250526170446.1190e046@kmaincent-XPS-13-7390>
+In-Reply-To: <20230927204446.4231-1-zajec5@gmail.com>
+References: <20230927204446.4231-1-zajec5@gmail.com>
+Organization: bootlin
+X-Mailer: Claws Mail 4.2.0 (GTK 3.24.41; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next] net: phy: mtk-2p5ge: Add LED support for MT7988
-To: Sky Huang <SkyLake.Huang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
- Heiner Kallweit <hkallweit1@gmail.com>, Russell King
- <linux@armlinux.org.uk>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Daniel Golle <daniel@makrotopia.org>, Qingfang Deng <dqfext@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20250526091019.16096-1-SkyLake.Huang@mediatek.com>
-From: Paolo Abeni <pabeni@redhat.com>
-In-Reply-To: <20250526091019.16096-1-SkyLake.Huang@mediatek.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: L-6JP-HlTdiTLmL_LfvT2Ex00hBrTAzU80z3bg-_c6U_1748274906
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
+X-GND-State: clean
+X-GND-Score: -100
+X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtddtgddujeekfeculddtuddrgeefvddrtddtmdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfitefpfffkpdcuggftfghnshhusghstghrihgsvgenuceurghilhhouhhtmecufedtudenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepfffhvfevuffkjghfohfogggtgfesthhqredtredtjeenucfhrhhomhepmfhorhihucforghinhgtvghnthcuoehkohhrhidrmhgrihhntggvnhhtsegsohhothhlihhnrdgtohhmqeenucggtffrrghtthgvrhhnpefguddtfeevtddugeevgfevtdfgvdfhtdeuleetffefffffhffgteekvdefudeiieenucffohhmrghinhepsghoohhtlhhinhdrtghomhenucfkphepledtrdekledrudeifedruddvjeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepihhnvghtpeeltddrkeelrdduieefrdduvdejpdhhvghlohepkhhmrghinhgtvghnthdqigfrufdqudefqdejfeeltddpmhgrihhlfhhrohhmpehkohhrhidrmhgrihhntggvnhhtsegsohhothhlihhnrdgtohhmpdhnsggprhgtphhtthhopeehgedprhgtphhtthhopeiirghjvggtheesghhmrghilhdrtghomhdprhgtphhtthhopehsrhhinhhivhgrshdrkhgrnhgurghgrghtlhgrsehlihhnrghrohdrohhrghdprhgtphhtthhopehmihhquhgvlhdrrhgrhihnrghlsegsohhothhlihhnrdgtohhmpdhrtghpthhtoheprhhit
+ ghhrghrugesnhhougdrrghtpdhrtghpthhtohepvhhighhnvghshhhrsehtihdrtghomhdprhgtphhtthhopehmrghrtggrnhesmhgrrhgtrghnrdhsthdprhgtphhtthhopehsvhgvnhesshhvvghnphgvthgvrhdruggvvhdprhgtphhtthhopegrlhihshhsrgesrhhoshgvnhiifigvihhgrdhioh
+X-GND-Sasl: kory.maincent@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250526_085511_582913_039CB7E4 
-X-CRM114-Status: UNSURE (   8.38  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250526_080458_123844_99BEE9B2 
+X-CRM114-Status: GOOD (  14.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,27 +107,115 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5/26/25 11:10 AM, Sky Huang wrote:
-> From: Sky Huang <skylake.huang@mediatek.com>
-> 
-> Add LED support for MT7988's built-in 2.5Gphy. LED hardware has almost
-> the same design with MT7981's/MT7988's built-in GbE. So hook the same
-> helper function here.
-> 
-> Before mtk_phy_leds_state_init(), set correct default values of LED0
-> and LED1.
-> 
-> Signed-off-by: Sky Huang <skylake.huang@mediatek.com>
-> Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+Le Wed, 27 Sep 2023 22:44:46 +0200,
+Rafa=C5=82 Mi=C5=82ecki <zajec5@gmail.com> a =C3=A9crit :
 
-## Form letter - net-next-closed
+> From: Rafa=C5=82 Mi=C5=82ecki <rafal@milecki.pl>
+>=20
+> Binding for fixed NVMEM cells defined directly as NVMEM device subnodes
+> has been deprecated. It has been replaced by the "fixed-layout" NVMEM
+> layout binding.
+>=20
+> New syntax is meant to be clearer and should help avoiding imprecise
+> bindings.
+>=20
+> NVMEM subsystem already supports the new binding. It should be a good
+> idea to limit support for old syntax to existing drivers that actually
+> support & use it (we can't break backward compatibility!). That way we
+> additionally encourage new bindings & drivers to ignore deprecated
+> binding.
+>=20
+> It wasn't clear (to me) if rtc and w1 code actually uses old syntax
+> fixed cells. I enabled them to don't risk any breakage.
 
-The merge window for v6.16 has begun and therefore net-next is closed
-for new drivers, features, code refactoring and optimizations. We are
-currently accepting bug fixes only.
+Hello,
 
-Please repost when net-next reopens after June 8th.
+Was there a reason to not add the legacy flag to all the drivers that was
+supporting nvmem at the time nvmem fixed layout was supported?
 
-RFC patches sent for review only are obviously welcome at any time.
+I just faced a nvmem layout regression on board with an at24 eeprom.
 
+Commit: 27f699e578b1 nvmem: core: add support for fixed cells *layout*
+$ git grep nvmem_config drivers/ | cut -d ':' -f 1 | sort -u
+drivers/hwmon/pmbus/adm1266.c
+drivers/iio/pressure/bmp280-core.c
+drivers/media/i2c/ov2740.c
+drivers/media/i2c/video-i2c.c
+drivers/misc/eeprom/at24.c
+drivers/misc/eeprom/at25.c
+drivers/misc/eeprom/eeprom_93xx46.c
+drivers/mtd/mtdcore.c
+drivers/nvmem/apple-efuses.c
+drivers/nvmem/bcm-ocotp.c
+drivers/nvmem/brcm_nvram.c
+drivers/nvmem/core.c
+drivers/nvmem/imx-iim.c
+drivers/nvmem/imx-ocotp.c
+drivers/nvmem/imx-ocotp-ele.c
+drivers/nvmem/imx-ocotp-scu.c
+drivers/nvmem/jz4780-efuse.c
+drivers/nvmem/lan9662-otpc.c
+drivers/nvmem/layerscape-sfp.c
+drivers/nvmem/lpc18xx_eeprom.c
+drivers/nvmem/lpc18xx_otp.c
+drivers/nvmem/meson-efuse.c
+drivers/nvmem/meson-mx-efuse.c
+drivers/nvmem/microchip-otpc.c
+drivers/nvmem/mtk-efuse.c
+drivers/nvmem/mxs-ocotp.c
+drivers/nvmem/nintendo-otp.c
+drivers/nvmem/qcom-spmi-sdam.c
+drivers/nvmem/qfprom.c
+drivers/nvmem/rave-sp-eeprom.c
+drivers/nvmem/rmem.c
+drivers/nvmem/rockchip-efuse.c
+drivers/nvmem/rockchip-otp.c
+drivers/nvmem/sc27xx-efuse.c
+drivers/nvmem/snvs_lpgpr.c
+drivers/nvmem/sprd-efuse.c
+drivers/nvmem/stm32-romem.c
+drivers/nvmem/sunplus-ocotp.c
+drivers/nvmem/sunxi_sid.c
+drivers/nvmem/u-boot-env.c
+drivers/nvmem/uniphier-efuse.c
+drivers/nvmem/vf610-ocotp.c
+drivers/nvmem/zynqmp_nvmem.c
+drivers/rtc/nvmem.c
+drivers/rtc/rtc-abx80x.c
+drivers/rtc/rtc-cmos.c
+drivers/rtc/rtc-ds1305.c
+drivers/rtc/rtc-ds1307.c
+drivers/rtc/rtc-ds1343.c
+drivers/rtc/rtc-ds1511.c
+drivers/rtc/rtc-ds1553.c
+drivers/rtc/rtc-ds1685.c
+drivers/rtc/rtc-ds1742.c
+drivers/rtc/rtc-ds3232.c
+drivers/rtc/rtc-isl12026.c
+drivers/rtc/rtc-isl1208.c
+drivers/rtc/rtc-m48t59.c
+drivers/rtc/rtc-m48t86.c
+drivers/rtc/rtc-meson.c
+drivers/rtc/rtc-omap.c
+drivers/rtc/rtc-pcf2127.c
+drivers/rtc/rtc-pcf85063.c
+drivers/rtc/rtc-pcf85363.c
+drivers/rtc/rtc-rp5c01.c
+drivers/rtc/rtc-rv3028.c
+drivers/rtc/rtc-rv3029c2.c
+drivers/rtc/rtc-rv3032.c
+drivers/rtc/rtc-rv8803.c
+drivers/rtc/rtc-rx8581.c
+drivers/rtc/rtc-stk17ta8.c
+drivers/rtc/rtc-sun6i.c
+drivers/rtc/rtc-ti-k3.c
+drivers/soc/atmel/sfr.c
+drivers/soc/tegra/fuse/fuse-tegra.c
+drivers/thunderbolt/nvm.c
+drivers/w1/slaves/w1_ds250x.c
+
+--=20
+K=C3=B6ry Maincent, Bootlin
+Embedded Linux and kernel engineering
+https://bootlin.com
 
