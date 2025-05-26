@@ -4,76 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EFB6C5AD49
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 May 2025 10:49:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7040C5AE59
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 May 2025 12:27:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=89CvzQO2eysos6EalznjL5KGrflU3yCTeBwW3Bzd8xI=; b=aF1M6IeOxtFopFBZQB9GMcqKGG
-	esProO9U4FdaAolnQRQO4Hb5WNd7aeKDu/4Fb60m8FEeGM9LK8+ZRDb6tigCMt81LyKWyfpP3MO5y
-	z9o2p2F8tC/qXD4dFS5zhpGAodErtcwODHtzM8g6pybllrXm7Y/s+gebZmTwcryMuqsWBgJ+boI9C
-	91m0+OOv0PMDI0P2Cn4J9Cw+HY5PAT6nYwRXwg0b89sEpQBPm4dXyWaoCAmq32oECoIitIHZFu3MU
-	clA9hZctLMrGFrP+YMvqN1+UMp5ADLdKUXDe88PEmNGq8c+3ZzGfair0sBzbFxt2vZFiGRxwtCXUo
-	vDDPaE6w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:References:In-Reply-To:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SGcFMzxRqwZHeyCIUfXG3hV8hcSrtdD19rnC1FAfz94=; b=DkBA2i58KydNhXafLMmiOpa88Z
+	SmYncAcPhPzzLI+FMuSa0CupmZAl8rSu/+y61+Ii2Ps6qklpSPv8wB67iisYePJxcWKbAKE59cm8X
+	pxEqjA08YyIEU+xdUoCHbmPZymdhVJbDvsNc9KUJHUcBCQxaxzRw2UDEj1Bn99NvrSFBN6tOwcCbB
+	khYknvWPOOTPuQRCF6e35hDjNC5wxY8s3EjJFo203GCeWEU2Q1MCG4CWZTswYpMsa7++I+4BUjOK7
+	rdZU0KYGIz51INszpHRHUfP39jktr4CEbapI8MfitWjIeQ0OKZKUXkHrbAgH+TKH3dVzcUXN7f9w1
+	TAL4mJCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJVOH-00000008eEq-2gvX;
-	Mon, 26 May 2025 10:49:09 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uJWvd-00000008n1D-3ZjK;
+	Mon, 26 May 2025 12:27:41 +0000
+Received: from relay6-d.mail.gandi.net ([2001:4b98:dc4:8::226])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uJVKz-00000008dyJ-0s2i;
-	Mon, 26 May 2025 10:45:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1748256342;
-	bh=3zQVdTY3RzRyRFYvs+PWvDmD2Tf4e73Q9ALAMl05qOs=;
-	h=From:Date:Subject:To:Cc:From;
-	b=kQ0zBpOSTeCp9zmSNgVxYVe6DUMhoeFj4bzHyhKKNgEaC0x41XaotCE+LC9OTdxeT
-	 VNpmmDjro9BnQuS+PPK07bJjOBhaRp2wwDFToCMhi6u5p0nvBI+LCD19OERY98D2BZ
-	 eSukh+fGA2be2YRO68SbBjpg6aS4U8RH3fylYZRZHyXfnAS+Bj4fWX7Ux6hBOTAL0W
-	 tt8uVtY2IKFjPJvvv9UeihkTPZKtGXzgTfhXjFXs2mqIo3xu3qkb+tUe++7C8pBHRs
-	 IaJuxxFCjG/Qo4IARD6/agWjZWzt3BPKqKVmDYDeNtVmII+O7ccYJUETbZZezsVQhk
-	 bFM6maFnHBb5Q==
-Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0BB2C17E0FD6;
-	Mon, 26 May 2025 12:45:41 +0200 (CEST)
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Mon, 26 May 2025 12:45:27 +0200
-Subject: [PATCH] arm64: dts: mediatek: mt8395-genio-1200-evk: Enable Audio
- DSP and sound card
+	id 1uJWtU-00000008msD-42SO;
+	Mon, 26 May 2025 12:25:30 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id E6A7A43999;
+	Mon, 26 May 2025 12:25:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1748262325;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=SGcFMzxRqwZHeyCIUfXG3hV8hcSrtdD19rnC1FAfz94=;
+	b=OGi0+/oi9B3QDJ1KGV+hqFr4jwgJ66ptIKnfiXUyHOp8YjRVIngeyqOZjOtY3z+rI0y7ug
+	5z7jfbQ1Ld1G9sISQaoa1It6KFL0gQfrAaFLu1EzG5V4NBnzavkxG/WjWgXRTSeGgTQLWR
+	HsjLu8qP2BEIjmtxcIOKePLrqejwQU/kvU/pcTIq2dogwQiWAOugpH7wUE+UzzE7FgJyMY
+	RjxNiaXyAwVw8ETuf/74U/ccYcEXIDjq4aheJt98HrSZgfIZqN3vq82/mH7TzMxcir7YsQ
+	j/ng/O0laZGNuT038HrZk6FIs5UFuOQJ+ivag8upCNg10izXEde8A9sca3ajpg==
+From: Miquel Raynal <miquel.raynal@bootlin.com>
+To: Chuanhong Guo <gch981213@gmail.com>
+Cc: Sky Huang <SkyLake.Huang@mediatek.com>,  Matthias Brugger
+ <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,  Richard Weinberger
+ <richard@nod.at>,  Vignesh Raghavendra <vigneshr@ti.com>,  Daniel Golle
+ <daniel@makrotopia.org>,  Chia-Lin Kao <acelan.kao@canonical.com>,  Cheng
+ Ming Lin <chengminglin@mxic.com.tw>,  Christophe JAILLET
+ <christophe.jaillet@wanadoo.fr>,  Pratyush Yadav <pratyush@kernel.org>,
+  linux-kernel@vger.kernel.org,  linux-mtd@lists.infradead.org,
+  linux-arm-kernel@lists.infradead.org,
+  linux-mediatek@lists.infradead.org,  Steven Liu <Steven.Liu@mediatek.com>
+Subject: Re: [PATCH nand/next] mtd: nand: spi: Use write_cache first and
+ then update_cache in write operation
+In-Reply-To: <CAJsYDVKiMeYY2rw_BxuW4BAxvMcq5hDwzhiPoAR=tkXzZpRYiw@mail.gmail.com>
+	(Chuanhong Guo's message of "Tue, 29 Apr 2025 19:58:05 +0800")
+References: <20241119093949.3014-1-SkyLake.Huang@mediatek.com>
+	<871pymtab3.fsf@bootlin.com>
+	<c1e2d8ea-1b37-479d-8239-cb9bf0efdcaf@gmail.com>
+	<87bjsfv0x1.fsf@bootlin.com>
+	<CAJsYDVKiMeYY2rw_BxuW4BAxvMcq5hDwzhiPoAR=tkXzZpRYiw@mail.gmail.com>
+User-Agent: mu4e 1.12.7; emacs 29.4
+Date: Mon, 26 May 2025 14:25:21 +0200
+Message-ID: <87sekry2xa.fsf@bootlin.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250526-mt8395-genio-1200-evk-sound-v1-1-142fb15292c5@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAEZGNGgC/y2NQQ6DIBAAv2L23E0AQ0P9SuMBcbWbBmgBjYnx7
- 5La48xhZodMiSlD1+yQaOXMMVSQtwbcy4aZkMfKoITSQiuJvpj2oXGmwBGlEgJpfWOOSxhRW2M
- GN9mWhINa+CSaePvVn/3Fib5LnZRLwmAzoYvec+maQFvB/+gO/XGcEiLC3p4AAAA=
-X-Change-ID: 20250521-mt8395-genio-1200-evk-sound-5a88bcfa3e0c
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1748256341; l=2546;
- i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=3zQVdTY3RzRyRFYvs+PWvDmD2Tf4e73Q9ALAMl05qOs=;
- b=ZSIMkwdTldNoIvD/1HqGZSYHaXkeOwJEfPcba/BsazHrveVFYT4y0LFHyG62ifL165HfNMSVf
- k5IkYU2pjHbBxr+ZzuzZJbLIFI78UayRb8qrN+thf5G7IoDdonSBXFp
-X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
- pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-GND-State: clean
+X-GND-Score: -100
+X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtddtgddujeehudculddtuddrgeefvddrtddtmdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfitefpfffkpdcuggftfghnshhusghstghrihgsvgenuceurghilhhouhhtmecufedtudenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvvefujghffgffkfggtgfgsehtqhertddtreejnecuhfhrohhmpefoihhquhgvlhcutfgrhihnrghluceomhhiqhhuvghlrdhrrgihnhgrlhessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnhepffeghfejtdefieeguddukedujeektdeihfelleeuieeuveehkedvleduheeivdefnecukfhppeeltddrkeelrdduieefrdduvdejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepledtrdekledrudeifedruddvjedphhgvlhhopehlohgtrghlhhhoshhtpdhmrghilhhfrhhomhepmhhiqhhuvghlrdhrrgihnhgrlhessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepudeipdhrtghpthhtohepghgthhelkeduvddufeesghhmrghilhdrtghomhdprhgtphhtthhopefukhihnfgrkhgvrdfjuhgrnhhgsehmvgguihgrthgvkhdrtghomhdprhgtphhtthhopehmrghtthhhihgrshdrsghgghesghhmrghilhdrtghomhdprhgtphhtthhopegrnhhgvghlohhgihhorggttghhihhnohdruggvlhhrvghgnhhosegtohhllhgrsghorhgrrdgtohhmp
+ dhrtghpthhtoheprhhitghhrghrugesnhhougdrrghtpdhrtghpthhtohepvhhighhnvghshhhrsehtihdrtghomhdprhgtphhtthhopegurghnihgvlhesmhgrkhhrohhtohhpihgrrdhorhhgpdhrtghpthhtoheprggtvghlrghnrdhkrghosegtrghnohhnihgtrghlrdgtohhm
+X-GND-Sasl: miquel.raynal@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250526_034545_426860_DD283346 
-X-CRM114-Status: GOOD (  11.97  )
+X-CRM114-CacheID: sfid-20250526_052529_341026_BCD960A9 
+X-CRM114-Status: GOOD (  21.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,99 +89,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add in the mt8395-genio-1200-evk devicetree the memory regions for the
-Audio DSP (ADSP) and Audio Front-End (AFE), and a sound card node
-configured to use the ADSP.
-This enables audio output through the 3.5mm headphone jacks (speaker or
-earphone), available on the board.
+Hello Chuanhong,
 
-Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
----
-Tested on a Mediatek Genio 1200-EVK board with a kernel
-based on linux-next (tag: next-20250526).
----
- .../boot/dts/mediatek/mt8395-genio-1200-evk.dts    | 46 +++++++++++++++++++++-
- 1 file changed, 44 insertions(+), 2 deletions(-)
+>> >>> Before applying this patch, write operation uses only 34H(update_cac=
+he):
+>> >>> [78.937720] OP code: 0x34, addr val: 0x0, data nbytes: 1020, data 1s=
+t byte: 0xa5
+>> >>> [78.945297] OP code: 0x34, addr val: 0x3fc, data nbytes: 1020, data =
+1st byte: 0xa5
+>> >>> [78.954251] OP code: 0x34, addr val: 0x7f8, data nbytes: 72, data 1s=
+t byte: 0xa5
+>> >>> [78.962966] OP code: 0x10, addr val: 0x300
+>> >>> [78.968816] OP code: 0x34, addr val: 0x0, data nbytes: 1020, data 1s=
+t byte: 0xff
+>> >>> [78.977233] OP code: 0x34, addr val: 0x3fc, data nbytes: 1020, data =
+1st byte: 0xff
+>> >>> [78.985124] OP code: 0x34, addr val: 0x7f8, data nbytes: 72, data 1s=
+t byte: 0xff
+>> >>> [78.992527] OP code: 0x10, addr val: 0x301
+>> >>> [78.996981] OP code: 0x34, addr val: 0x0, data nbytes: 1020, data 1s=
+t byte: 0xff
+>> >>> [79.004416] OP code: 0x34, addr val: 0x3fc, data nbytes: 1020, data =
+1st byte: 0xff
+>> >>> [79.012031] OP code: 0x34, addr val: 0x7f8, data nbytes: 72, data 1s=
+t byte: 0xff
+>> >>> [79.019435] OP code: 0x10, addr val: 0x302
+>> >> I am sorry but above you said that we should not perform:
+>> >>      0x32, 0x32, 0x32...
+>> >> because the second time it would clear the cache again. And here
+>> >> you tell us that actually the core already handles that by performing
+>> >> instead:
+>> >>      0x34, 0x34, 0x34...
+>> >> So what is the problem?
+>> >> Or maybe I misunderstood the issue, but I think Chuanhong raised an
+>> >> issue that is already solved? Isn't it?
+>> >>
+>> >
+>> > The issue is that the FORESEE NANDs require the first cache writing
+>> > instruction to be WRITE_CACHE instead of UPDATE_CACHE. i.e. it needs a
+>> > command sequence of:
+>> >     0x32, 0x34, 0x34, 0x34...
+>>
+>> So Foresee NANDs do not support update_cache, why are they advertised in
+>> the first place? Could you we have a less impacting solution for the
+>> other NANDs?
+>>
+>> > This patch does exactly that, making the first instruction issued 0x32.
+>> > It should be applied to fix the issue above.
+>>
+>> My understanding is that this is very specific to FORESEE NANDs and you
+>> are changing this for all NANDs. I have fears that it will break
+>> everywhere else.
+>
+> I just checked a few datasheets of SPI-NANDs from
+> Toshiba/Winbond/Etron/ESMT/GigaDevice/Macronix.
+> All of them specify the programming sequence to be:
+> write_enable->write_cache->update_cache if needed->
+> program_execute->poll status.
+> Some of them mentions that the only difference between write_cache
+> and update_cache is whether the page cache is cleared before
+> writing (Winbond), while others don't specifically say that.
+>
+> The original sequence doesn't seem to be following any manufacturers'
+> instructions. We just haven't run into any problems until this FORESEE
+> one.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-index be5e5f339e811728e91b1ffec45ada25f9b0208b..9f0734731b5ef3c6b86693a389adc399707d5212 100644
---- a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts
-@@ -79,9 +79,21 @@ bl31_secmon_mem: memory@54600000 {
- 			reg = <0 0x54600000 0x0 0x200000>;
- 		};
- 
--		snd_dma_mem: memory@60000000 {
-+		adsp_mem: memory@60000000 {
- 			compatible = "shared-dma-pool";
--			reg = <0 0x60000000 0 0x1100000>;
-+			reg = <0 0x60000000 0 0xf00000>;
-+			no-map;
-+		};
-+
-+		afe_dma_mem: memory@60f00000 {
-+			compatible = "shared-dma-pool";
-+			reg = <0 0x60f00000 0 0x100000>;
-+			no-map;
-+		};
-+
-+		adsp_dma_mem: memory@61000000 {
-+			compatible = "shared-dma-pool";
-+			reg = <0 0x61000000 0 0x100000>;
- 			no-map;
- 		};
- 
-@@ -179,6 +191,16 @@ wifi_fixed_3v3: regulator-2 {
- 	};
- };
- 
-+&adsp {
-+	memory-region = <&adsp_dma_mem>, <&adsp_mem>;
-+	status = "okay";
-+};
-+
-+&afe {
-+	memory-region = <&afe_dma_mem>;
-+	status = "okay";
-+};
-+
- &disp_pwm0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&disp_pwm0_pins>;
-@@ -976,6 +998,26 @@ &scp {
- 	status = "okay";
- };
- 
-+&sound {
-+	compatible = "mediatek,mt8195_mt6359";
-+	model = "mt8395-evk";
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&audio_default_pins>;
-+	audio-routing =
-+		"Headphone", "Headphone L",
-+		"Headphone", "Headphone R";
-+	mediatek,adsp = <&adsp>;
-+	status = "okay";
-+
-+	headphone-dai-link {
-+		link-name = "DL_SRC_BE";
-+
-+		codec {
-+			sound-dai = <&pmic 0>;
-+		};
-+	};
-+};
-+
- &spi1 {
- 	pinctrl-0 = <&spi1_pins>;
- 	pinctrl-names = "default";
+That is what I am saying. It currently works, and we may encounter
+silent failures all around because of this change, even if it might be
+theoretically correct. Anyhow, we have these templates (both write and
+update) so let's try to re-use them.
 
----
-base-commit: 22d449bcd69e66f25fe847b678738950dcf9301e
-change-id: 20250521-mt8395-genio-1200-evk-sound-5a88bcfa3e0c
+However I dislike the current implementation which changes the global
+wdesc template and puts it back. Can you please propose something cleaner?
 
-Best regards,
--- 
-Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-
+Thanks,
+Miqu=C3=A8l
 
