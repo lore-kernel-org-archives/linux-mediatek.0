@@ -4,80 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79F97C54ED1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 May 2025 21:40:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFEAAC5B542
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 May 2025 22:21:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aLc5NxkI8M6spKxInjbGY5A5fJLpZLq+g1FMQFSSSOQ=; b=jqmcPoXVKVuk12i3kLjA0KyAmL
-	j5gd3DVCjcRLqVqjxCNyRml70//kisTorvkAfNZ6lOuERHDbwxEvaXvxFJTlcFr1mtLUoEb2VjwT5
-	kbgIjbRtwr2VBBGfFVefHjyLBXi3FnHlRlWoF9drXG5n4TlHGJIBnsFLMZbXVaD6gGcyLko3NnYIs
-	L2whMILMgTDj2lMlB8MO0gXgVPlhhj91ex0GX9DlIRgjqUZGQag31Qam4Ox4VC3vbom4TdERQmJhw
-	GxyOSl9NV9IdsOUJZ3wqps06YR4Fce6TjLWr0z51Tyk9opKHeyvFWVhmREBNPl2AlnPB0FaqT422o
-	lSjsaBsA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=7XytmjT0QYoYbr62wTzvh2jLYboBuJySkJ1IHPxAlMk=; b=l2FmbN8bPiEO/RQRnpYizzc6x5
+	0nqEyZwG6K63ocr3SZ5MRCjVU46gYyTjxmPWoOWxBimn3/EsRlHMf/zeXAEFE1jM7HGzGsOoh6rph
+	N9/iYgu47P/y3AbhPlpK6hOXsFOcMPO1MYgzrPyVtRclSQdO2csy1Rh5vx90kgfnEKzmyfZ8hQ5Cg
+	KQLNQn/0q2T0R2sXPv2ES84WAd0I50drwvBpcuYh3zHbYCnD6qOf1CeYJs0s5AnzN6mzx/TeNxNac
+	O4IGj4XnHwIgRwUJJuV54QPO/FLkhM3SJygMUraeS2lfc5fJWR5vnnRpBma+aN7jeCWHJ39VlBIw+
+	urrDqwvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uK22S-0000000BdAL-2x0q;
-	Tue, 27 May 2025 21:40:48 +0000
-Received: from 004.mia.mailroute.net ([199.89.3.7])
+	id 1uK2fW-0000000Bh2c-44p8;
+	Tue, 27 May 2025 22:21:10 +0000
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uK20J-0000000Bcyp-1kwD;
-	Tue, 27 May 2025 21:38:36 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 004.mia.mailroute.net (Postfix) with ESMTP id 4b6Qwt4tJJzm0gbm;
-	Tue, 27 May 2025 21:38:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1748381899; x=1750973900; bh=aLc5NxkI8M6spKxInjbGY5A5
-	fJLpZLq+g1FMQFSSSOQ=; b=DavGqlezNjvN0lqUvuQ+5r9yVyOxdBlWx4RJtljG
-	Aa3LRtX/nFT+4kSHpb31UMxnv3Wg4CevSpsUBs2/JanU4/RgZVN3uI2cSNU1tnXf
-	Gl3kNcnVCDDR90xPK8JuVFcgkALf8G9Qo4w8xXLWbngogLlSTROy/ceMdWrsTLcI
-	+MoVqXKgUU/22UHcDioPxN5TWG0fZeXgSlfsmv6lNwbXkq7f2ShIr20r7TJ1cWk5
-	bjv94mDQZUnOf5U6TDijYfXyOlTDbB0fK4B73rLd3cf8gCfAOAaWqX99XAJcNKE9
-	asqL9iKAYIRbn6O4EeiX4sqXekk6RPJQZ0u/XWbjH9mbdw==
-X-Virus-Scanned: by MailRoute
-Received: from 004.mia.mailroute.net ([127.0.0.1])
- by localhost (004.mia [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id hhLAYRg3fNIf; Tue, 27 May 2025 21:38:19 +0000 (UTC)
-Received: from [100.66.154.22] (unknown [104.135.204.82])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 004.mia.mailroute.net (Postfix) with ESMTPSA id 4b6QwV5NwCzm0gc0;
-	Tue, 27 May 2025 21:38:01 +0000 (UTC)
-Message-ID: <ae392b24-9096-45d4-a138-a6fb64dffaec@acm.org>
-Date: Tue, 27 May 2025 14:38:00 -0700
+	id 1uK2fU-0000000Bh1V-065r;
+	Tue, 27 May 2025 22:21:09 +0000
+Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-43cfe63c592so51033485e9.2;
+        Tue, 27 May 2025 15:21:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1748384466; x=1748989266; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=7XytmjT0QYoYbr62wTzvh2jLYboBuJySkJ1IHPxAlMk=;
+        b=nk5TllOK4hJzwgiIxbL54tzR1wLXPIQwKZugB82TNXqXl2cgl/f6lkX79tENJrEYIK
+         1owvwS2BdSwAc89ta2P9HDyVV2pJXWHe/9whwfQGmF7yNMd3O01UKHeRC0BEe7q9+YRK
+         iPSgqlDLjhHEAC9bJppSi0rxBEp5k/PCCsyDgoiAdt68xEICBq0ISU6v/kOv7iDK0624
+         fXyrNTdx7tzodU3vlm4N8EFFIzAsqjBGfvKgk982JpJvEQt3Qbmty2pGG8EdkJgPVgqX
+         DaB7NOzWoYhn/g0jaDaDDpqvHS4d7tntAxMk1+3nSC4Pazs90WIP8/T/SL+aS1jrFSbM
+         0xIg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1748384466; x=1748989266;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=7XytmjT0QYoYbr62wTzvh2jLYboBuJySkJ1IHPxAlMk=;
+        b=nxFPT/xvo4DFtxfGUboIRWoepseb1cTD9aaB/qoc0TVZZO3HfkCOkrNH2usstBEN5p
+         hyF+ntAwfp05Qh0RUs2TNRNionjEPuECQKPP8umjMlRgGkiHmMSzXA91ApE4QL0i3gxp
+         hGlSJAno5DFNC32jyS3qxCToL2lrQKhfGo5PXYGwSyO3BqDQzl2F79EPL3/Gf5YHoZoh
+         cXPrcUqzFQLJXQS/7KyrO5/BjdV5f6S7L+dlml8gE7agKS+32H/k/uUUK2N89hCILeXp
+         3YT7xy+mP397GKwCWS157+GQ+H/HJAg+f18C64awhwusHbwvY2OzyIJ0Hhsu7iX3y6s5
+         cuug==
+X-Forwarded-Encrypted: i=1; AJvYcCWxy1OkJAEGqwHF6d86NyAIYRm2mMsZ+4d4HQ6669U+UZBO8MyCjAFkzb5d6OVq86ZjxU+XJgRqWPNZ71C8/jo=@lists.infradead.org, AJvYcCX0KimJEDmtSjmAuqUQujqKwtUQubUm3tluwUE4m6tPPasoLSli1oY9x0M27aC1i3tO7beu2oy48JEk/iySe+X8@lists.infradead.org
+X-Gm-Message-State: AOJu0YzefnzwStmHuAY6cOCjid86hlqi0UN4EZ1YkEChEtZIGEpzBnUC
+	Kvbk1PrvvwFpo5JC7fahR/rqcX1yzGP6eL08wBs3LZ2KJ5/TtbSmL8Wp
+X-Gm-Gg: ASbGncu0wdPwIvR/VH9kt7nMuc/MN3FfWkYVudY4TMdPfLW0hnNMqXvzF1qeeeFcl5+
+	SX2OLSdtXDLs9CNOHub2w1M8HcUmurt7Xq3YHv0V7ShxFirLFV6D197NSQC39JcMWkCS6f0AxBm
+	M/gAVKIj0Ple/7g5veVdsfGT00H4unVTJz7LKbeg+2qxD+9me/qvV7e7xhxeIHk+0fXasA0Uusj
+	3DK++EzPJp8UQxqmjZVrE9o/lx5rP7z0dYFA8D2fomhZ9FuK/wzTJiP5z51P83H6DOZdGll64AG
+	jx+K+z0PXI1EqHF26mK7Ko2eKHMwaqnm/AqqHdEkE3b0hPanQffGKhYIDBiJ2l3yZQqw0+HEARw
+	9yZryuBoYRJUrsywt722jX4Pg2qM9rW0=
+X-Google-Smtp-Source: AGHT+IFdKWU8GcSeLjuTkimcHYGLyMLF9mUe1qrsMqtPgGlIFwLTef1kQexYipsKO1mCIPUpGPKSqA==
+X-Received: by 2002:a05:600c:1e02:b0:443:48:66d2 with SMTP id 5b1f17b1804b1-44c91dd0981mr170619255e9.16.1748384465884;
+        Tue, 27 May 2025 15:21:05 -0700 (PDT)
+Received: from localhost.localdomain (93-34-88-225.ip49.fastwebnet.it. [93.34.88.225])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-3a4e8bc377asm233366f8f.72.2025.05.27.15.21.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 27 May 2025 15:21:05 -0700 (PDT)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Sean Wang <sean.wang@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Benjamin Larsson <benjamin.larsson@genexis.eu>,
+	linux-mediatek@lists.infradead.org,
+	linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Cc: Christian Marangi <ansuelsmth@gmail.com>
+Subject: [PATCH 0/6] pinctrl: Add Airoha AN7583 support
+Date: Wed, 28 May 2025 00:20:32 +0200
+Message-ID: <20250527222040.32000-1-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6] ufs: core: Add HID support
-To: Huan Tang <tanghuan@vivo.com>, alim.akhtar@samsung.com,
- avri.altman@wdc.com, James.Bottomley@HansenPartnership.com,
- martin.petersen@oracle.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, beanhuo@micron.com,
- peter.wang@mediatek.com, quic_nguyenb@quicinc.com,
- quic_ziqichen@quicinc.com, keosung.park@samsung.com,
- viro@zeniv.linux.org.uk, gwendal@chromium.org,
- manivannan.sadhasivam@linaro.org, linux-kernel@vger.kernel.org,
- linux-scsi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Cc: opensource.kernel@vivo.com, Wenxing Cheng <wenxing.cheng@vivo.com>,
- Bean Huo <huobean@gmail.com>
-References: <20250523064604.800-1-tanghuan@vivo.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20250523064604.800-1-tanghuan@vivo.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250527_143835_526668_4A301C7A 
-X-CRM114-Status: UNSURE (   8.24  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250527_152108_063783_1DA5A40F 
+X-CRM114-Status: GOOD (  10.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,25 +106,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5/22/25 11:46 PM, Huan Tang wrote:
-> Follow JESD220G, support HID(Host Initiated Defragmentation)
-> through sysfs, the relevant sysfs nodes are as follows:
-> 	1.analysis_trigger
-> 	2.defrag_trigger
-> 	3.fragmented_size
-> 	4.defrag_size
-> 	5.progress_ratio
-> 	6.state
-> The detailed definition	of the six nodes can be	found in the sysfs
-> documentation.
-> 
-> HID's execution policy is given to user-space.
-> 
-> Signed-off-by: Huan Tang <tanghuan@vivo.com>
-> Signed-off-by: Wenxing Cheng <wenxing.cheng@vivo.com>
-> Suggested-by: Bart Van Assche <bvanassche@acm.org>
-> Reviewed-by: Peter Wang <peter.wang@mediatek.com>
-> Reviewed-by: Bean Huo <huobean@gmail.com>
+This small series introduce support for Airoha AN7583 pinctrl
+support.
 
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+Most of the changes are generalization and cleanup of the Airoha
+pinctrl driver. These are needed as all the array in the inner
+function were hardcoded to EN7581 and didn't reference stuff
+from the priv groups.
+
+Everything is changed to match_data and priv struct so
+adding AN7583 is just a matter of adding the structs.
+
+Also the schema is generalized where needed to address
+for the small difference between AN7583 and EN7581.
+
+While converting it, it was also found an additional copy-paste
+error for the PHY LEDs pins.
+
+Christian Marangi (6):
+  pinctrl: airoha: fix wrong PHY LED mux value for LED1 GPIO46
+  pinctrl: mediatek: airoha: generalize pins/group/function/confs
+    handling
+  pinctrl: airoha: convert PHY LED GPIO to macro
+  pinctrl: airoha: convert PWM GPIO to macro
+  dt-bindings: pinctrl: airoha: Document AN7583 Pin Controller
+  pinctrl: airoha: add support for Airoha AN7583 PINs
+
+ .../pinctrl/airoha,en7581-pinctrl.yaml        |  297 +-
+ drivers/pinctrl/mediatek/pinctrl-airoha.c     | 2497 +++++++++--------
+ 2 files changed, 1489 insertions(+), 1305 deletions(-)
+
+-- 
+2.48.1
+
 
