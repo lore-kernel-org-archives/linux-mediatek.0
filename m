@@ -4,52 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28249C54ED1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 May 2025 20:53:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79F97C54ED1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 May 2025 21:40:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Subject:To:From:MIME-Version:Date:Message-ID:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=TfqTMDO3ZkrtvqxCow51anYPKCVOqMiIoPaqrzlq6KM=; b=3S1m11D6Vb0T8ukID2bnO6WxjC
-	ZtnD45iR4oD+jE4yRPzfRlqOsWHyRw1Rwk29N0lVvU4Rk2uXOYDyWpK0tisVlImZ2KaneGuWbauZJ
-	0AEPA48xUFnzBX3u4OTF4qDdhcK3RvHKp0U4zRzbdAXpebosDMvp9q+KuyZHkmJykBKTQgHt04GC6
-	oEeCHtmvba8Z/4WB/M5pGHEBFnQ7V/Ez2+l8oOlbntnZcNADlKOmy9gLyfGh80933DbqUTrKa4l7W
-	fNfrUrGAz+5KQ9gNXVDgusDmapn9DOiVMt6oOntZefBDhPjODjHJpsmVYAV0t4lDmuVy7pdtNKHGa
-	MZhOmzDQ==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=aLc5NxkI8M6spKxInjbGY5A5fJLpZLq+g1FMQFSSSOQ=; b=jqmcPoXVKVuk12i3kLjA0KyAmL
+	j5gd3DVCjcRLqVqjxCNyRml70//kisTorvkAfNZ6lOuERHDbwxEvaXvxFJTlcFr1mtLUoEb2VjwT5
+	kbgIjbRtwr2VBBGfFVefHjyLBXi3FnHlRlWoF9drXG5n4TlHGJIBnsFLMZbXVaD6gGcyLko3NnYIs
+	L2whMILMgTDj2lMlB8MO0gXgVPlhhj91ex0GX9DlIRgjqUZGQag31Qam4Ox4VC3vbom4TdERQmJhw
+	GxyOSl9NV9IdsOUJZ3wqps06YR4Fce6TjLWr0z51Tyk9opKHeyvFWVhmREBNPl2AlnPB0FaqT422o
+	lSjsaBsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uK1It-0000000BXrN-46rB;
-	Tue, 27 May 2025 20:53:43 +0000
-Received: from mail1.systemli.org ([2a11:7980:3::36] helo=mail.systemli.org)
+	id 1uK22S-0000000BdAL-2x0q;
+	Tue, 27 May 2025 21:40:48 +0000
+Received: from 004.mia.mailroute.net ([199.89.3.7])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uK1Id-0000000BXql-3j9e
-	for linux-mediatek@lists.infradead.org;
-	Tue, 27 May 2025 20:53:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=systemli.org;
-	s=default; t=1748379205;
-	bh=TfqTMDO3ZkrtvqxCow51anYPKCVOqMiIoPaqrzlq6KM=;
-	h=Date:From:To:Subject:From;
-	b=pTqsWsMHazO1YASYhBwYy7OtM807LLnENb7nL2le0iXaE4OGrDj+Wci8EN2tMsTQY
-	 x3VbJ2ghkpgP+SiCwJe/ykMt8gO4vN7gRgDdMe7kFor/gfplfu3PNRNOC/usYbCA0x
-	 huF4+UYMJe+9rScfSVUQE+V76HwCGTM925g5nIRUSlrBdMIHNIMY3A2K1tw36xG0C/
-	 tv0d6TmyxTk93j/AyMT5VI9gfrn0lIHOmRLTscomxDc5QslcidoO/rNrXWPLUIn19A
-	 sP086ZfUZMg+5p+3tjxLsMkTJwjXErVrdQbHlzPWPDwk96TPNz/CRbmgUG0HWHTYXQ
-	 fiItZnTj4hqfQ==
-Message-ID: <b5e2c58a-9f1b-4295-83e2-53b38f0ef005@systemli.org>
-Date: Tue, 27 May 2025 22:53:24 +0200
+	id 1uK20J-0000000Bcyp-1kwD;
+	Tue, 27 May 2025 21:38:36 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 004.mia.mailroute.net (Postfix) with ESMTP id 4b6Qwt4tJJzm0gbm;
+	Tue, 27 May 2025 21:38:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1748381899; x=1750973900; bh=aLc5NxkI8M6spKxInjbGY5A5
+	fJLpZLq+g1FMQFSSSOQ=; b=DavGqlezNjvN0lqUvuQ+5r9yVyOxdBlWx4RJtljG
+	Aa3LRtX/nFT+4kSHpb31UMxnv3Wg4CevSpsUBs2/JanU4/RgZVN3uI2cSNU1tnXf
+	Gl3kNcnVCDDR90xPK8JuVFcgkALf8G9Qo4w8xXLWbngogLlSTROy/ceMdWrsTLcI
+	+MoVqXKgUU/22UHcDioPxN5TWG0fZeXgSlfsmv6lNwbXkq7f2ShIr20r7TJ1cWk5
+	bjv94mDQZUnOf5U6TDijYfXyOlTDbB0fK4B73rLd3cf8gCfAOAaWqX99XAJcNKE9
+	asqL9iKAYIRbn6O4EeiX4sqXekk6RPJQZ0u/XWbjH9mbdw==
+X-Virus-Scanned: by MailRoute
+Received: from 004.mia.mailroute.net ([127.0.0.1])
+ by localhost (004.mia [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id hhLAYRg3fNIf; Tue, 27 May 2025 21:38:19 +0000 (UTC)
+Received: from [100.66.154.22] (unknown [104.135.204.82])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bvanassche@acm.org)
+	by 004.mia.mailroute.net (Postfix) with ESMTPSA id 4b6QwV5NwCzm0gc0;
+	Tue, 27 May 2025 21:38:01 +0000 (UTC)
+Message-ID: <ae392b24-9096-45d4-a138-a6fb64dffaec@acm.org>
+Date: Tue, 27 May 2025 14:38:00 -0700
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6] ufs: core: Add HID support
+To: Huan Tang <tanghuan@vivo.com>, alim.akhtar@samsung.com,
+ avri.altman@wdc.com, James.Bottomley@HansenPartnership.com,
+ martin.petersen@oracle.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, beanhuo@micron.com,
+ peter.wang@mediatek.com, quic_nguyenb@quicinc.com,
+ quic_ziqichen@quicinc.com, keosung.park@samsung.com,
+ viro@zeniv.linux.org.uk, gwendal@chromium.org,
+ manivannan.sadhasivam@linaro.org, linux-kernel@vger.kernel.org,
+ linux-scsi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Cc: opensource.kernel@vivo.com, Wenxing Cheng <wenxing.cheng@vivo.com>,
+ Bean Huo <huobean@gmail.com>
+References: <20250523064604.800-1-tanghuan@vivo.com>
 Content-Language: en-US
-From: nick <vincent@systemli.org>
-To: linux-mediatek@lists.infradead.org
-Subject: [BUG] Stale FDB entries after WLAN roaming with mt7530 DSA on
- untagged ports
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20250523064604.800-1-tanghuan@vivo.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250527_135328_080880_9E622A93 
-X-CRM114-Status: UNSURE (   8.56  )
+X-CRM114-CacheID: sfid-20250527_143835_526668_4A301C7A 
+X-CRM114-Status: UNSURE (   8.24  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -65,61 +92,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-OpenWrt users are observing an issue on OpenWrt (22.03+) with the mt7530 DSA
-switch, where roaming wireless clients leave behind stale FDB entries when
-using *untagged* VLAN ports. The client's MAC address remains associated
-with both the old and new AP interfaces, causing traffic to be misrouted
-or dropped until the stale entry expires.
+On 5/22/25 11:46 PM, Huan Tang wrote:
+> Follow JESD220G, support HID(Host Initiated Defragmentation)
+> through sysfs, the relevant sysfs nodes are as follows:
+> 	1.analysis_trigger
+> 	2.defrag_trigger
+> 	3.fragmented_size
+> 	4.defrag_size
+> 	5.progress_ratio
+> 	6.state
+> The detailed definition	of the six nodes can be	found in the sysfs
+> documentation.
+> 
+> HID's execution policy is given to user-space.
+> 
+> Signed-off-by: Huan Tang <tanghuan@vivo.com>
+> Signed-off-by: Wenxing Cheng <wenxing.cheng@vivo.com>
+> Suggested-by: Bart Van Assche <bvanassche@acm.org>
+> Reviewed-by: Peter Wang <peter.wang@mediatek.com>
+> Reviewed-by: Bean Huo <huobean@gmail.com>
 
-People describe the steps to reproduce it differently; however, I share what
-I observe, and the result is the same.
-
-Steps to reproduce:
-1. Bridge WLAN to a VLAN via mt7530 DSA, using *untagged* ports.
-2. Connect a wireless client to AP1 (mt7530 switch).
-3. Roam the client to AP2 (no mt7530 switch).
-4. Roam back to AP1 (now connectivity breaks).
-5. Observe that AP1 (where the client is now connected) FDB still lists the
-    client MAC on the ethernet, e.g. dev lan4 vlan 40 self (pointing to AP2)
-    and the wlan interface, but does not route traffic to the wlan (dev
-    wlan5-ff used 127/0 master br-dhcp). So two entries are available.
-
-Topology diagram illustrating the setup:
-
-                 +--------+       +------+
-                 | Router |       | AP2  |
-                 | (DHCP) |       +------+
-                 +--------+           |
-                      \               |
-                       \             /
-                        \           /
-                      +---------------+
-                      |     AP1       |
-                      |   mt7530 DSA  |
-                      +---------------+
-
-Expected behavior:
-The FDB should update immediately to reflect the new interface.
-
-Actual behavior:
-The stale entry persists, breaking connectivity until it times out.
-
-Notes:
-- This connectivity breakdown does *not* occur using tagged ports; only
-   untagged ports are affected.
-- It did not occur with `swconfig` (pre-DSA switch framework).
-- For some users, a user-space FDB cleanup script worked (however, it does
-   not work for me).
-- The issue is still present with kernel version 6.12 (latest tested).
-
-More discussion and technical details can be found here:
-https://github.com/openwrt/openwrt/issues/11650
-
-Any help or insights would be greatly appreciated. This issue has been
-present for quite a long time, and that’s why I’m reaching out for help
-via this mailing list.
-
-Best regards,
-Nick
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
 
