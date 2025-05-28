@@ -4,59 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D33D0C5AE59
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 May 2025 07:08:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45784C3ABB2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 May 2025 07:20:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6PT1F1Srhb49vJhq/gbmO4Tffco4ksVS2YDUHz4vctQ=; b=Mk5KDiuocAcuIS1P0ShDhaBJSL
-	obFyJKH2hRsXwjxrSxOTOB1mi0aJ0enhcjLoaR0z2cVfw2VHFm9bLSCyDnQiRl9dBKU7NnfRTln4M
-	2h6mxYmgf7BX5fMHendHRop1vMfHvCVVJALK634mK/+PkkMjAWq1xwj05BcHzKufj8C+KJz3rjpRN
-	oNS+AFXWXRp0+KRevKBU3RujY8/QY3/sRVMy/4Tqwr+P+TCZtElEif6SefqOJkmxVttj1VBaUEXpD
-	HnvTp491FvFkeURPibj6qrlXz11q2VswvgcTkdCDfxR8tlC8OkIbk+2+v708ZTX1On0xBf9tQ177h
-	8BQ5PTkw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6f331hY1dKklTJC3M7r5PSvsoBF2GanNNKIO4y/o6PU=; b=gD6M5II0llpyE9FiqB2y738CP7
+	NBZaTiW+kZ9YIWcnh8zeiDIWZomKU230OT8BRVTB0NL7T8p1nWbaZEAy82puTF5uV3gENCrgcS+nh
+	Waeq3iGLCFXrCa7Yn/DyFKn3O5ywK/7EQT3oxOb9m1WKXN6kS3654jWQRaiP6gEXcVSrY4K72ycbE
+	tJCLCMvqaB/DBXUZFhdysUqODrV+D/P5pNdi7rjcYZH6DfCHf11WaSzcngtzoE71P0h9SmEzB4Eru
+	lgcFR1E7Ti+0pfGiw+PaTNI0/NtsVvLN8hyQ+smj9lfFrDZSayNOuQyYjt9kpPy1xY18ONkulYwsP
+	uDcuLvuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKAtQ-0000000COds-2yTm;
-	Wed, 28 May 2025 07:08:04 +0000
-Received: from mx3.molgen.mpg.de ([141.14.17.11])
+	id 1uKB5W-0000000CPun-3FbP;
+	Wed, 28 May 2025 07:20:34 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKAtN-0000000COd7-23kH
-	for linux-mediatek@lists.infradead.org;
-	Wed, 28 May 2025 07:08:03 +0000
-Received: from [192.168.0.192] (ip5f5af669.dynamic.kabel-deutschland.de [95.90.246.105])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: pmenzel)
-	by mx.molgen.mpg.de (Postfix) with ESMTPSA id AE289601EEA61;
-	Wed, 28 May 2025 09:07:21 +0200 (CEST)
-Message-ID: <afe65c91-9120-4327-84a0-faf2d341ebb0@molgen.mpg.de>
-Date: Wed, 28 May 2025 09:07:21 +0200
+	id 1uKB1E-0000000CPJg-1u6k;
+	Wed, 28 May 2025 07:16:08 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id BFB58614B7;
+	Wed, 28 May 2025 07:16:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ECC15C4CEE7;
+	Wed, 28 May 2025 07:16:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1748416567;
+	bh=K9xLFL3YjxEg/yT53Mbd2sI0G3a9mzJ1vSU6/nzZZGc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=LrJmZD+eu3rGOkhdZyxN4JM0eL8FuhebF+ryNOrcZ3k1MneHJ1X5+eEXS7NrupIye
+	 wA5u5eQFtYyQuPWcieS+EjiAS5elaLKloPDwlUe9b6vJBmF1sWotJ45tquAxoX47KP
+	 ao5OXqAWHI+6evaZxj0jDiKgTEEPTST6erF+kpU7erw3SKEuo7IU48OTDJW2u/3lng
+	 u2P/FTign5MUZqI4L/xBu9AqdJBd86+DU0xYw0yu6xeGuoC6ONgeweeRJk6PcHWB+p
+	 ROe0CE/Xk8BE0qKGzovhVkhfKPVBhYf2Oq5fXfqZDBdNXudraKMyoJEco5YK1XljO8
+	 xw2DClFYdtBRg==
+Date: Wed, 28 May 2025 09:16:04 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Sean Wang <sean.wang@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Benjamin Larsson <benjamin.larsson@genexis.eu>,
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, stable@vger.kernel.org
+Subject: Re: [PATCH 1/6] pinctrl: airoha: fix wrong PHY LED mux value for
+ LED1 GPIO46
+Message-ID: <aDa4NCTzyzw0mnfE@lore-desk>
+References: <20250527222040.32000-1-ansuelsmth@gmail.com>
+ <20250527222040.32000-2-ansuelsmth@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] mediatek MT7925: update bluetooth firmware to
- 20250526153203
-To: Chris Lu <chris.lu@mediatek.com>
-Cc: Josh Boyer <jwboyer@kernel.org>, David Woodhouse <dwmw2@infradead.org>,
- Ben Hutchings <ben@decadent.org.uk>, Marcel Holtmann <marcel@holtmann.org>,
- Johan Hedberg <johan.hedberg@gmail.com>, Jiande Lu <jiande.lu@mediatek.com>,
- Will Lee <will-cy.Lee@mediatek.com>, SS Wu <ss.wu@mediatek.com>,
- Steve Lee <steve.lee@mediatek.com>, linux-firmware@kernel.org,
- linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <20250528064625.533578-1-chris.lu@mediatek.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20250528064625.533578-1-chris.lu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250528_000801_691551_D52503D2 
-X-CRM114-Status: GOOD (  14.73  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="CoT/qmCue5gfNYHx"
+Content-Disposition: inline
+In-Reply-To: <20250527222040.32000-2-ansuelsmth@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,47 +78,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dear Chris,
 
+--CoT/qmCue5gfNYHx
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Thank you for updating the firmware file
+> In all the MUX value for LED1 GPIO46 there is a Copy-Paste error where
+> the MUX value is set to LED0_MODE_MASK instead of LED1_MODE_MASK.
+>=20
+> This wasn't notice as there were no board that made use of the
+> secondary PHY LED but looking at the internal Documentation the actual
+> value should be LED1_MODE_MASK similar to the other GPIO entry.
+>=20
+> Fix the wrong value to apply the correct MUX configuration.
 
+Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-Am 28.05.25 um 08:46 schrieb Chris Lu:
-> Update binary firmware for MT7925 BT devices.
-> 
-> File: mediatek/mt7925/BT_RAM_CODE_MT7925_1_1_hdr.bin
-> Version: 20250526153203
-
-It’d be great if you could add some kind of change-log compared to the 
-previous version 20250425073330.
-
-> Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+>=20
+> Cc: stable@vger.kernel.org
+> Fixes: 1c8ace2d0725 ("pinctrl: airoha: Add support for EN7581 SoC")
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 > ---
->   WHENCE                                        |   2 +-
->   .../mt7925/BT_RAM_CODE_MT7925_1_1_hdr.bin     | Bin 459695 -> 459887 bytes
->   2 files changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/WHENCE b/WHENCE
-> index 93f849c4..c653db09 100644
-> --- a/WHENCE
-> +++ b/WHENCE
-> @@ -6225,7 +6225,7 @@ Licence: Redistributable. See LICENCE.mediatek for details.
->   Driver: mt7925 - MediaTek MT7925 bluetooth chipset
->   
->   File: mediatek/mt7925/BT_RAM_CODE_MT7925_1_1_hdr.bin
-> -Version: 20250425073330
-> +Version: 20250526153203
->   
->   Licence: Redistributable. See LICENCE.mediatek for details.
->   
-> diff --git a/mediatek/mt7925/BT_RAM_CODE_MT7925_1_1_hdr.bin b/mediatek/mt7925/BT_RAM_CODE_MT7925_1_1_hdr.bin
-> index cce1ddaeefac5a70d7ac9172ef78ce6043bf1334..9263027786aa73ad3de420ff14131492ad7f16a6 100644
+>  drivers/pinctrl/mediatek/pinctrl-airoha.c | 16 ++++++++--------
+>  1 file changed, 8 insertions(+), 8 deletions(-)
+>=20
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-airoha.c b/drivers/pinctrl/=
+mediatek/pinctrl-airoha.c
+> index b97b28ebb37a..8ef7f88477aa 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-airoha.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-airoha.c
+> @@ -1752,8 +1752,8 @@ static const struct airoha_pinctrl_func_group phy1_=
+led1_func_group[] =3D {
+>  		.regmap[0] =3D {
+>  			AIROHA_FUNC_MUX,
+>  			REG_GPIO_2ND_I2C_MODE,
+> -			GPIO_LAN3_LED0_MODE_MASK,
+> -			GPIO_LAN3_LED0_MODE_MASK
+> +			GPIO_LAN3_LED1_MODE_MASK,
+> +			GPIO_LAN3_LED1_MODE_MASK
+>  		},
+>  		.regmap[1] =3D {
+>  			AIROHA_FUNC_MUX,
+> @@ -1816,8 +1816,8 @@ static const struct airoha_pinctrl_func_group phy2_=
+led1_func_group[] =3D {
+>  		.regmap[0] =3D {
+>  			AIROHA_FUNC_MUX,
+>  			REG_GPIO_2ND_I2C_MODE,
+> -			GPIO_LAN3_LED0_MODE_MASK,
+> -			GPIO_LAN3_LED0_MODE_MASK
+> +			GPIO_LAN3_LED1_MODE_MASK,
+> +			GPIO_LAN3_LED1_MODE_MASK
+>  		},
+>  		.regmap[1] =3D {
+>  			AIROHA_FUNC_MUX,
+> @@ -1880,8 +1880,8 @@ static const struct airoha_pinctrl_func_group phy3_=
+led1_func_group[] =3D {
+>  		.regmap[0] =3D {
+>  			AIROHA_FUNC_MUX,
+>  			REG_GPIO_2ND_I2C_MODE,
+> -			GPIO_LAN3_LED0_MODE_MASK,
+> -			GPIO_LAN3_LED0_MODE_MASK
+> +			GPIO_LAN3_LED1_MODE_MASK,
+> +			GPIO_LAN3_LED1_MODE_MASK
+>  		},
+>  		.regmap[1] =3D {
+>  			AIROHA_FUNC_MUX,
+> @@ -1944,8 +1944,8 @@ static const struct airoha_pinctrl_func_group phy4_=
+led1_func_group[] =3D {
+>  		.regmap[0] =3D {
+>  			AIROHA_FUNC_MUX,
+>  			REG_GPIO_2ND_I2C_MODE,
+> -			GPIO_LAN3_LED0_MODE_MASK,
+> -			GPIO_LAN3_LED0_MODE_MASK
+> +			GPIO_LAN3_LED1_MODE_MASK,
+> +			GPIO_LAN3_LED1_MODE_MASK
+>  		},
+>  		.regmap[1] =3D {
+>  			AIROHA_FUNC_MUX,
+> --=20
+> 2.48.1
+>=20
 
-[…]
+--CoT/qmCue5gfNYHx
+Content-Type: application/pgp-signature; name=signature.asc
 
+-----BEGIN PGP SIGNATURE-----
 
-Kind regards,
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaDa4NAAKCRA6cBh0uS2t
+rOCOAQDIlVEn3j31KLCPSoLJ6jFOUiwWCNqW5qOv7UtW1mOCagEAh6LZiTafRxQs
+HXf7z9JkF4bcnAu1w5WH7iDwvjnpNw0=
+=lKi2
+-----END PGP SIGNATURE-----
 
-Paul
+--CoT/qmCue5gfNYHx--
 
