@@ -4,147 +4,137 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87105C5AD49
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 May 2025 11:13:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB896C3ABB2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 May 2025 11:51:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2GBHIa4UJXy3kvJwaMsOIp36AT4ZgsNjCHuBmMnsGGw=; b=yCFXjVa/F7LjaZOVkjMLX69IIv
-	dvX9Mzn6rDf57jke2OQurwBTJq38tmEpLVg7zWbX62L6MYhp6hyXbPrX6ymXw7hUG4MXSFbSLvL17
-	WUUIFTNv/T3KMTANh26D1PV9I/nyI07rrHZ8gfmpVlmmZALNai1mtG836MmtEFrUaTt+VNvEt4SpG
-	yFetK+hx/dNLHGTDjMF26GfvCf0WqISd+5NNiw5pDJgzKW5Qds2xffzSpA8tSroRk1n2X7pGkjLz6
-	uy3r0byE9nBemWh3h949nKC1TGLFut6v347q6mJzhn0T9TDne/PbVhUOYd2KMU6cQPnzcmcEuTxQh
-	xrQo3cJw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ubJ7uuc4KLABL05ikGhsnFP3O+LGDAGrddoVdCFQ7aE=; b=2IG/BX86gFo4zGD8aJDERpiU5S
+	6gFEaOadrLW1kbhk19fDVUS1Evltmq+s//sd4A3LlIzcLtXAzG+7qjPp8+vgOTipES6/081op6GZq
+	+q0BsMCnSyzrfb+TLlTcITJM2bBHJabQyDjZecSWhBkHmHN4oxEbotzGoHz5jaXcgn7AdIuEUhKZe
+	83ZQ4WWO9q/nr7jRlmQ1+NwE9dRIZ7uDigEPwtPRjA7lEiGyNMS/aNFkqLOyl9YSentPNQDRHyrEV
+	ne3TndC6Pld7rpayKMFoXTjjz/zcb6BWLuELPB9tlZgfNkgeR8xjs1lzPnFK4CgBKnOkRGMEuVB3i
+	vfBScwEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKEj4-0000000Cwxt-13bR;
-	Wed, 28 May 2025 11:13:38 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1uKFJZ-0000000D1S2-1a31;
+	Wed, 28 May 2025 11:51:21 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKERf-0000000CvQq-3ZOQ
+	id 1uKEEk-0000000CskA-1857
 	for linux-mediatek@lists.infradead.org;
-	Wed, 28 May 2025 10:55:41 +0000
-Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 54SAd2Za022296
-	for <linux-mediatek@lists.infradead.org>; Wed, 28 May 2025 10:55:39 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	2GBHIa4UJXy3kvJwaMsOIp36AT4ZgsNjCHuBmMnsGGw=; b=WLqBDXLaETrREYPP
-	k3bqTgo4rPOev8L1bg2YP3zUKL3ZKb/ZbYk2aOckQdMkBvCDvDHTPbAK0IhR7Wjv
-	12r5wFXgoAWjAYkw74SbYE+gmbpqy29x+7rpmMgEm8WCZyASVPYsO6vxBdYVsYsg
-	P4+BgsYx9M5+a/I/xK+XplgbelC1Jxf365V3AIK6OTFyZpKSRusIKbJ4S4HmWsTt
-	0gtsHWF3imOnvSr9sHhysmwT4MkLWmAvXSE2jGkGzbBBkuXpKVh9qjJXwo3/r3s7
-	5uLyOjv1bGFclk/VO6rcG/LGayxuaz3O1JC4IIzV+UlafMX9BvVP/6bYQqL4mxuj
-	X3b5uQ==
-Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com [209.85.219.70])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 46u3fqa54c-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Wed, 28 May 2025 10:55:38 +0000 (GMT)
-Received: by mail-qv1-f70.google.com with SMTP id 6a1803df08f44-6fa9e48d4d9so71571376d6.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 28 May 2025 03:55:38 -0700 (PDT)
+	Wed, 28 May 2025 10:42:22 +0000
+Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-44ff4081975so229735e9.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 28 May 2025 03:42:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1748428937; x=1749033737; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ubJ7uuc4KLABL05ikGhsnFP3O+LGDAGrddoVdCFQ7aE=;
+        b=CqL4Jl3Qn2BKmW5Q60ohQLWkNL9sxHBfIwYa7VxaccHcMp1Z9MHDp/tCpiBOkSO9/m
+         eIAWfSFmLSLSKpqCrBQPWdM/jwAj45MTpJnQ8YCzTOlTT/J49X+NiZe0Yutak3A5Yp8v
+         LBy0LS7eHGzLniQr8BShPXtzOOYrb8Gs6kqmhShxKa3vz3nkYbGrBqtUeHNR+QA8mEMM
+         c+9mn5JfRgYp3bk+DgVIO50vBBVSmm80xwzHP0APIgLJqUa5jPhQHIGlbyejlNWPDrrd
+         clYgDsC7Ssou9AwVKc7g4wgi0YNkGQS4t6WljQxLH7dqEdtsw9U4r+2OWXKyAZsMymBd
+         ubPw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1748429738; x=1749034538;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=2GBHIa4UJXy3kvJwaMsOIp36AT4ZgsNjCHuBmMnsGGw=;
-        b=FklnK+eact6uyj6fIfL22wEcWo2y5x5e8cVJ8u/O3pCWFtTy8ueZjnf80InUC/z7iF
-         5kTKl942XZo/iD1+N55rNFt0lJXmRtYyEMCDsP82tvjqEO4+Waz59gnEsWjNV1elWngH
-         SCOce4nmmwAhf8Iy1CHj2BUozHZg9WX52BT5rmNV3NlYGzoDoVM+pXXHtgUZ5qs8H7Jr
-         QgckdAX1N9OhsLh2mubIr1j2ZmFfwvoQsgU43q09dwlMj2eAf9X6fJF+ZsX0li/st5rE
-         G+0PEg+8iC+1t4kXCNM5QeLgE5VdtET/Lfy9ic+OYZawW26fzKOa3gKjZuOway/xuuyb
-         dTsA==
-X-Forwarded-Encrypted: i=1; AJvYcCXy1Jq25iUEGGgRYTnN5IPK8FuGTfEDgtur541mXUCmyc30fCI6mz57pxYSBQ1CkjnZ8eXSxSlW1PGUhFMWgQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz4eCGyJbYxXd5oAg4vvXc85FpaKEgqtdKqAcekT+Np7dPfdVgY
-	H0f4aN5eMYkYYH7bLuJcuyZKAKh+w8k9GmjV9LxfDo29YU3Rx+1qg/8yZlX9EDnZDaoff+PfFED
-	xhznNdyZCTs/NL07hikEToywtdSrxOrZLRNn6sX+s8YEorFL8+BMCpfADtA427VVl3BaneIPQu4
-	o=
-X-Gm-Gg: ASbGncv7x/0sFzS4c8OfeTE3gFkeBfnOmD0etzmITYX8PveVGuRjJqyfvFnsFfxZTkO
-	a/31LdQWBdfcFus7zc1X73eYIH2sh+B6LWfEsFwnGIf9FxbZfjNQ/Rwy0FvlOZ5rxw0XOVp+JuY
-	/0UaNuk/0yjahWacT+XbEI1yp+QSUHhSVYfn8SImBgXchnIWHe3Z3Q5bcUQ7YpXROL4EwGvyPc1
-	+8pwIyZ2Q9NfETA8TlKIIEjZxlH9yeZZQ+bfRYn0TRtoLc0muia8D2i+kZRqVcAMmnQUI/Hb724
-	aupKiRiG75yYbVjr71Gd5wNi0T3z2HBRY5yAAP1Kf6Ft5eIjy8be2UWkK3AXHQa/X/HwsDZJRqs
-	=
-X-Received: by 2002:a05:6214:f04:b0:6f9:51b5:45b4 with SMTP id 6a1803df08f44-6fa9d01b876mr219768086d6.12.1748429737692;
-        Wed, 28 May 2025 03:55:37 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHHTeW9Oym5KrU5w2CrN6TuqbEYXZSVkhfiP2M2uzBIJxVS46ac7MVbRXMxqQkY4kvIlFReMQ==
-X-Received: by 2002:a05:6214:f04:b0:6f9:51b5:45b4 with SMTP id 6a1803df08f44-6fa9d01b876mr219767476d6.12.1748429737194;
-        Wed, 28 May 2025 03:55:37 -0700 (PDT)
-Received: from eriador.lumag.spb.ru (2001-14ba-a0c3-3a00--7a1.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::7a1])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5532f62b2e8sm233345e87.96.2025.05.28.03.55.35
+        d=1e100.net; s=20230601; t=1748428937; x=1749033737;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=ubJ7uuc4KLABL05ikGhsnFP3O+LGDAGrddoVdCFQ7aE=;
+        b=geHO7Lj86K0ZzESDW8zwtpc3w5H2856h6qWmo7R9isRERuvuK2Lz/1F5/vNZYL3pw2
+         pBTm2/wvnS21/EUijs7F72R4AWFynvHxyjDm+cE63QcD707PKEig6rr6wbgBUwXzpcJe
+         Vx6b81AD9IwB/iTmrrwC7m/bm0rJIyBcgBnYvmhaDbnTEU6JD1BbyR3BkkZKt7o2hg69
+         E4VINUpQS0BMGHb8KC1VTFEFVvxi3itb1LXeyK3ZEqjomT8EKcAlOC1aenpxcs6e0K2z
+         i0PrycSI6ldUB34eUAThFcD/WOAC8dgtowlCgW084CbHQ/wr1E/IgLY8uLyNUuETFqua
+         D57g==
+X-Forwarded-Encrypted: i=1; AJvYcCU9AfTmpeTuCWPnKFkO7EeJkqRCPIi0mw1ALnOdPU0L3QEh7g6wt2K03uJUXanwm8b6D6mfu3j94+Xt/DqfWA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwD0AdgbYb2KTqn3T5EF4MbVv6ouL7JOEd9i+RWx1JmVEs1zmAi
+	LvVe7uqtSAr7GC2H13a9ryjybf3hU47kb6l/gMztcOHocKgGT9WHo7KMGVl2LM+GAuc=
+X-Gm-Gg: ASbGncsNPpQ0fb64R8WNSLp3RXf7RkwVYI6WxfwY1eCfuD5gKePrnZ6idJhpdC5OFqX
+	x07h7m8iZQefQqSmwbaptfKYyGkaAzdCZ0juC1m5zMXA5qvgwJpUqppH0yERRutbisTbm/F10w2
+	W+4P8JitsfGZtwelf/bX+zwB9QA82kQH18fornzJxAiDpo291UJ4Mt0192PbAlnT4XTXba49II/
+	G8+wlEbETZHja4uz2A8EQHADtAtLBNWpXjKoBV1xG6Kz+jARw7DnlSTFuzmxUKFXEdSsj/BoOLP
+	UpEpko0yf7hoDqRSaqqcO1hu4o8py4kBvH3gL8qC/dDHAej4fhAxRz9nmjimQK2JZoTmVww=
+X-Google-Smtp-Source: AGHT+IGUEkMw3AazYidVlvlcKxjjPcFl/fdYDePDntNbpwN9JsZRSDdk3Hds7gIIRpwHgP+c7VnBhQ==
+X-Received: by 2002:a05:600c:511f:b0:442:e608:12a6 with SMTP id 5b1f17b1804b1-44c91dc9fd0mr51871135e9.1.1748428936730;
+        Wed, 28 May 2025 03:42:16 -0700 (PDT)
+Received: from [192.168.1.29] ([178.197.223.125])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-450064add8bsm17331595e9.17.2025.05.28.03.42.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 28 May 2025 03:55:36 -0700 (PDT)
-Date: Wed, 28 May 2025 13:55:34 +0300
-From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-        Maxime Ripard <mripard@kernel.org>,
-        Thomas Zimmermann <tzimmermann@suse.de>,
-        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-        Andrzej Hajda <andrzej.hajda@intel.com>,
-        Neil Armstrong <neil.armstrong@linaro.org>,
-        Robert Foss <rfoss@kernel.org>,
-        Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-        Jonas Karlman <jonas@kwiboo.se>,
-        Jernej Skrabec <jernej.skrabec@gmail.com>,
-        Jagan Teki <jagan@amarulasolutions.com>,
-        Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
-        Pengutronix Kernel Team <kernel@pengutronix.de>,
-        Fabio Estevam <festevam@gmail.com>,
-        Douglas Anderson <dianders@chromium.org>,
-        Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-        Krzysztof Kozlowski <krzk@kernel.org>,
-        Anusha Srivatsa <asrivats@redhat.com>,
-        Paul Kocialkowski <paulk@sys-base.io>,
-        Hui Pu <Hui.Pu@gehealthcare.com>,
-        Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
-        dri-devel@lists.freedesktop.org, asahi@lists.linux.dev,
-        linux-kernel@vger.kernel.org, chrome-platform@lists.linux.dev,
-        imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
-        linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
-        linux-renesas-soc@vger.kernel.org, platform-driver-x86@vger.kernel.org,
-        linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
-        freedreno@lists.freedesktop.org,
-        linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH v4] drm/bridge: tc358767: convert to
- devm_drm_bridge_alloc() API
-Message-ID: <y262e67gi5f53objugljkpyc3lzdaqtw3b7qr4546btqo7ehu4@qp2orsf6xd7t>
-References: <20250528-drm-bridge-convert-to-alloc-api-v4-1-f04e698c9a77@bootlin.com>
+        Wed, 28 May 2025 03:42:16 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Date: Wed, 28 May 2025 12:41:10 +0200
+Subject: [PATCH 14/17] pinctrl: renesas: Move fixed assignments to
+ 'pinctrl_desc' definition
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250528-drm-bridge-convert-to-alloc-api-v4-1-f04e698c9a77@bootlin.com>
-X-Proofpoint-GUID: Z-Qy4uMJ9ptpJ37R2kKCd2pr5jhVvqlo
-X-Proofpoint-ORIG-GUID: Z-Qy4uMJ9ptpJ37R2kKCd2pr5jhVvqlo
-X-Authority-Analysis: v=2.4 cv=X8FSKHTe c=1 sm=1 tr=0 ts=6836ebaa cx=c_pps
- a=oc9J++0uMp73DTRD5QyR2A==:117 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10
- a=dt9VzEwgFbYA:10 a=e5mUnYsNAAAA:8 a=VwQbUJbxAAAA:8 a=P-IC7800AAAA:8
- a=EUspDBNiAAAA:8 a=Xa5mcPTA7YjQpW6brCsA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=iYH6xdkBrDN1Jqds4HTS:22 a=Vxmtnl_E_bksehYqCbjh:22 a=d3PnA9EDa4IxuAV0gXij:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNTI4MDA5NSBTYWx0ZWRfX95ljxvtUx9Kz
- ALUQecmSd7V3XdMKfuJV7uXn5BDDYESoTAlOogZL1bwHdjfekgRRL8xmN4n/6mjiU6VHGeaXGQe
- VOEwslnnNOUOrtvQ2W3j/V8FNRoIFWPqnhElEZ8ibXSdWwFFp4Zy6uJsmSrL22/dQRFIEzBOrpg
- lzU37CsvsK+bcxpYkn5yaH3KW/G9u0upF5ENvNOjTstqaVNkxi3Dll2/DraWWpCVzzeoYdeIuVY
- 92614UO1l0/Miz5KHhOsWXiB0hm06HRu0/f0fTIJVgS2K+Hs7u40rgiJHw7FmF4OEBXe7d00HaP
- E/d2Tl65IazwUMuzDPcF592UNEjwep16J0h8zLluxGZ3J/EpvqmHVG+02oefAWdRdS1F0m1nc41
- jc046ib7OGeB/4/CkNLhR9YHm0miSqUHodCzuCHBC5l6xI+HOZ3LE5rZoT0PGatClRLgohw+
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.0.736,FMLib:17.12.80.40
- definitions=2025-05-28_05,2025-05-27_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 suspectscore=0 phishscore=0 bulkscore=0 mlxlogscore=999
- mlxscore=0 clxscore=1015 priorityscore=1501 spamscore=0 adultscore=0
- malwarescore=0 lowpriorityscore=0 classifier=spam authscore=0 authtc=n/a
- authcc= route=outbound adjust=0 reason=mlx scancount=1
- engine=8.19.0-2505160000 definitions=main-2505280095
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250528-pinctrl-const-desc-v1-14-76fe97899945@linaro.org>
+References: <20250528-pinctrl-const-desc-v1-0-76fe97899945@linaro.org>
+In-Reply-To: <20250528-pinctrl-const-desc-v1-0-76fe97899945@linaro.org>
+To: Linus Walleij <linus.walleij@linaro.org>, 
+ Basavaraj Natikar <Basavaraj.Natikar@amd.com>, 
+ Shyam Sundar S K <Shyam-sundar.S-k@amd.com>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
+ Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>, 
+ Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>, 
+ Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>, 
+ =?utf-8?q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, 
+ =?utf-8?q?Rafa=C5=82_Mi=C5=82ecki?= <rafal@milecki.pl>, 
+ Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+ Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, 
+ Geert Uytterhoeven <geert+renesas@glider.be>, 
+ David Rhodes <david.rhodes@cirrus.com>, 
+ Richard Fitzgerald <rf@opensource.cirrus.com>, 
+ Charles Keepax <ckeepax@opensource.cirrus.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
+ Jesper Nilsson <jesper.nilsson@axis.com>, 
+ Lars Persson <lars.persson@axis.com>, 
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, 
+ Damien Le Moal <dlemoal@kernel.org>, Vladimir Zapolskiy <vz@mleia.com>, 
+ Michal Simek <michal.simek@amd.com>, Emil Renner Berthing <kernel@esmil.dk>, 
+ Jianlong Huang <jianlong.huang@starfivetech.com>, 
+ Hal Feng <hal.feng@starfivetech.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>
+Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org, 
+ linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
+ linux-sound@vger.kernel.org, patches@opensource.cirrus.com, 
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@axis.com, 
+ linux-riscv@lists.infradead.org, linux-rtc@vger.kernel.org, 
+ linux-stm32@st-md-mailman.stormreply.com, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1221;
+ i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
+ bh=wdAVjz1g2LnOLK8YIe+sx2i+Wtxy0b2lB+2wyeAsJM8=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBoNuhVOUmo7glA0KmdvgZw8r0O4XKNab7bHjew6
+ T+RsAWcuh+JAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaDboVQAKCRDBN2bmhouD
+ 12JBEACByGYIJrWmeVaNuGhfgErqLrs8juvgq1he1oiyCbsIYgTgEq+hkshpq5p167n8sAXxqs+
+ 6iBVk16DcEYvSI0f8eCwat8zII1LkA4/ev5fMWjxd2Z3FzJswscCWFRIcarUCeBg5Ed+JZ9ZJb/
+ sN0DzMJHT590OM6XRyVM/p3h3tnUQvwdzoqV9s5W0m9+2com84VzLAOKGdwYycuo+JYsD5GJuCi
+ ueDuDOOW04JWSbUxMO5jxxZLXltdZb9B+y09j/dA+vEAU4rLYngyjux8/zx7evW5JMkCosH02FQ
+ s8fr+Qw8tSf0/SeZOU/aJeUXpYvGrvaQefJaFh4YdCEA+bAj6pyNvYMWsIfwWvWaE4uawUoQ5Gp
+ TJAyZt161KRilFdsJdPhEEcLzR1oML7mLl8Rx6++k0mb7HwaPoSudr64ZzDrwr/2o40pTX2dALR
+ xcX4+WF5UWmuN6JwMHP4Pe92IW5urSZ80lzzkkV0kNpzmkBRmr2RmLNe1hcbRvVAO3T7zQ1Ji2V
+ 2O21d5pDtSNiPIS3BtOOFEf6m5aKJyk3wg64Ze7CTiqUj3VPHlbpMT0VrAMdmrjlY/4h/Xo8axA
+ Zo9kbbNMJl2+zQofVcJ2at2Y4TaN2qo9C6H5+FzFTRhJ9EQpHJdf8J7TMx2fib06ZHvXH+XMnBf
+ rJwlspjRton9X2A==
+X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
+ fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250528_035540_012927_FA63BC86 
-X-CRM114-Status: GOOD (  33.53  )
+X-CRM114-CacheID: sfid-20250528_034218_386117_E6F38736 
+X-CRM114-Status: GOOD (  12.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -159,111 +149,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 28, 2025 at 11:29:36AM +0200, Luca Ceresoli wrote:
-> This is the new API for allocating DRM bridges.
-> 
-> Converting this driver is a bit complex because the drm_bridge funcs
-> pointer differs based on the bridge mode. So the current code does:
-> 
->  * tc_probe()
->    * devm_kzalloc() private struct embedding drm_bridge
->    * call tc_probe_bridge_endpoint() which
->      * parses DT description into struct fields
->      * computes the mode
->      * calls different bridge init functions based on the mode
->        * each sets a different bridge.funcs pointer
-> 
-> The new API expects the funcs pointer to be known at alloc time, which does
-> not fit in the current code structure.
-> 
-> Solve this by splitting tc_probe_bridge_endpoint() in two functions:
-> 
->  * tc_probe_get_mode(), computing the mode without needing the private
->    driver structure
->  * tc_probe_bridge_endpoint(), only initializing the endpoints
-> 
-> So now the mode is known before allocation and so
-> is the funcs pointer, while all other operations are still happening after
-> allocation, directly into the private struct data, as they used to.
-> 
-> The new code flow is:
-> 
->  * tc_probe()
->    * tc_probe_get_mode()
->      * parses DT description
->      * computes and returns the mode
->    * based onf the mode, pick the funcs pointer
->    * devm_drm_bridfge_alloc(..., funcs)
->    * call tc_probe_bridge_endpoint() which
->      * calls different bridge init functions based on the mode
->        * these don't set the funcs pointer, it was done by _alloc
-> 
-> This solution is chosen to minimize the changes in the driver logical code
-> flow. The drawback is we now iterate twice over the endpoints during probe.
-> 
-> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
-> ---
-> devm_drm_bridge_alloc() [0] is the new API to allocate and initialize a DRM
-> bridge, and the only one supported from now on. It is the first milestone
-> towards removal of bridges from a still existing DRM pipeline without
-> use-after-free.
-> 
-> The steps in the grand plan [1] are:
-> 
->  1. ➜ add refcounting to DRM bridges (struct drm_bridge)
->  2. handle gracefully atomic updates during bridge removal
->  3. avoid DSI host drivers to have dangling pointers to DSI devices
->  4. finish the hotplug bridge work, removing the "always-disconnected"
->     connector, moving code to the core and potentially removing the
->     hotplug-bridge itself (this needs to be clarified as points 1-3 are
->     developed)
-> 
-> This series is part of step 1 of the grand plan.
-> 
-> Current tasks in step 1 of the grand plan:
-> 
->  A. ✔ add new alloc API and refcounting -> (now in drm-misc-next)
->  B. ➜ convert all bridge drivers to new API (this series)
->  C. … documentation, kunit tests (v1 under discussion)
->  D. after (B), add get/put to drm_bridge_add/remove() + attach/detech()
->  E. after (B), convert accessors; this is a large work and can be done
->     in chunks
->  F. debugfs improvements
-> 
-> More info about this series in the v2 cover [2].
-> 
-> Luca
-> 
-> [0] https://gitlab.freedesktop.org/drm/misc/kernel/-/commit/0cc6aadd7fc1e629b715ea3d1ba537ef2da95eec
-> [1] https://lore.kernel.org/lkml/20250206-hotplug-drm-bridge-v6-0-9d6f2c9c3058@bootlin.com/t/#u
-> [2] https://lore.kernel.org/lkml/20250424-drm-bridge-convert-to-alloc-api-v2-0-8f91a404d86b@bootlin.com/
-> ---
-> Changes in v4:
-> - Removed patches already in drm-misc-next -> only 1 left
-> - Improve commit message of patch 1
-> - Link to v3: https://lore.kernel.org/all/20250509-drm-bridge-convert-to-alloc-api-v3-0-b8bc1f16d7aa@bootlin.com/
-> 
-> Changes in v3:
-> - Fixed issues reported for some patches
-> - Added review tags
-> - Removed patches that have been applied
-> - Added revert for the exynos patch, applied by mistake
-> - Update cover with grand plan info and trim some of it
-> - Updated bouncing e-mail address in Cc list
-> - Link to v2: https://lore.kernel.org/lkml/20250424-drm-bridge-convert-to-alloc-api-v2-0-8f91a404d86b@bootlin.com/
-> 
-> Changes in v2:
-> - Improved cover letter with link to commit adding devm_drm_bridge_alloc()
-> - add review tags
-> - fix bugs in zynqmp, vc4 patches
-> - fix patch 1 error code checking
-> - Link to v1: https://lore.kernel.org/r/20250407-drm-bridge-convert-to-alloc-api-v1-0-42113ff8d9c0@bootlin.com
-> ---
-> 
+Assign 'struct pinctrl_desc' .pins and .npins members in definition to
+make clear that number of pins is fixed and have less code in the probe.
 
-Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ drivers/pinctrl/renesas/pinctrl-rzn1.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/pinctrl/renesas/pinctrl-rzn1.c b/drivers/pinctrl/renesas/pinctrl-rzn1.c
+index d442d4f9981c908389407275522b936dbce294d3..fb874867dbfb9877b012988543ecbfd1bfb11270 100644
+--- a/drivers/pinctrl/renesas/pinctrl-rzn1.c
++++ b/drivers/pinctrl/renesas/pinctrl-rzn1.c
+@@ -680,6 +680,8 @@ static struct pinctrl_desc rzn1_pinctrl_desc = {
+ 	.pmxops = &rzn1_pmx_ops,
+ 	.confops = &rzn1_pinconf_ops,
+ 	.owner = THIS_MODULE,
++	.pins = rzn1_pins,
++	.npins = ARRAY_SIZE(rzn1_pins),
+ };
+ 
+ static int rzn1_pinctrl_parse_groups(struct device_node *np,
+@@ -878,8 +880,6 @@ static int rzn1_pinctrl_probe(struct platform_device *pdev)
+ 
+ 	ipctl->dev = &pdev->dev;
+ 	rzn1_pinctrl_desc.name = dev_name(&pdev->dev);
+-	rzn1_pinctrl_desc.pins = rzn1_pins;
+-	rzn1_pinctrl_desc.npins = ARRAY_SIZE(rzn1_pins);
+ 
+ 	ret = rzn1_pinctrl_probe_dt(pdev, ipctl);
+ 	if (ret) {
 
 -- 
-With best wishes
-Dmitry
+2.45.2
+
 
