@@ -4,58 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21BC9C5AE59
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 May 2025 07:48:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C1C6C3ABB2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 May 2025 07:58:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/U8XG6jnnQQiMtVP/j5uubmP4mLNXHLq+MztZ05aPbw=; b=jsTsmEFiBUYjRiVga9YIusSBZY
-	Fa50sUNz2pKT+V1AtOiUIX8j534j4WQPYAMNd98nrDnPJz20CGwsFOkZDTdnC0l6/lxZWr54vKAHZ
-	HN7G7ixK9MPh6CqOYK4mPKCqAVeeNY0nVszOWeoBK190/NyprQloj4+vLB5exe2VKeeuur+WCkhQ1
-	uJE2J9tpEZAK9O8RKvYY7p7gQzSGbIVRy4rlheNE8aW4DUSFGat4BbL+/lLu4LYaUMmFu7J1lCTPL
-	3R0ypSgI4JzDLn45Umh84wIF3rFJ39ql90pFZRgb0biCYvVXrVNNZwn+LZLKKgNibZatz1Wta1Loy
-	Zz/3p/Cw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=7FlhNB9pTksMToqSnpWt6CkAE6AWRUfjH5SfzBJw+bk=; b=SgfbVKSjSYAzfXgENr/1RZq1Yo
+	1fcHpMcZ+az5wS5LkxoshwJNYaTmtjcWC6l/JaGBQjasr6lphZhHD2f8JS3/QJHhbPKnZsCqx9FB2
+	euCHMDdxzrzwCprR0dCD9iLJ+xcuWfDGDPjd+9qOaN6YEVIZ5Srnt3M4ThOFti9xPzadPJZ1x76G8
+	6lPm9NP8VHl3OQz/0wV2MmwG5zH1fyFh0v7OHm0PtUJOlwVXJWYAeSQVfQfUt1mlb+/VUE3S6xUQU
+	khpCGYQHYdKkxQECilU8BT4bLoA3s+fWzPnkzywUMQFN6TKYLE8FZqK3j9DcYUoMgHvZ0i1nikK4Y
+	j2ekHbpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKBWU-0000000CTE4-2C64;
-	Wed, 28 May 2025 07:48:26 +0000
-Received: from mx3.molgen.mpg.de ([141.14.17.11])
+	id 1uKBfi-0000000CUME-3Tk6;
+	Wed, 28 May 2025 07:57:58 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKBUO-0000000CT1L-0Rbw
-	for linux-mediatek@lists.infradead.org;
-	Wed, 28 May 2025 07:46:17 +0000
-Received: from [192.168.0.192] (ip5f5af669.dynamic.kabel-deutschland.de [95.90.246.105])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: pmenzel)
-	by mx.molgen.mpg.de (Postfix) with ESMTPSA id 62EFA601EBE87;
-	Wed, 28 May 2025 09:46:10 +0200 (CEST)
-Message-ID: <140ac32d-432c-496d-b62d-d4254735dc4c@molgen.mpg.de>
-Date: Wed, 28 May 2025 09:46:09 +0200
+	id 1uKBcM-0000000CU0M-49DP;
+	Wed, 28 May 2025 07:54:32 +0000
+X-UUID: f83869543b9811f08d385d50fb11b32d-20250528
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=7FlhNB9pTksMToqSnpWt6CkAE6AWRUfjH5SfzBJw+bk=;
+	b=O6A6VlstJHZBqAaw4fXeBxoQgB5x6+o5NkPiAijVhBLASkCS/pi4rxBEuD0wsoh8/j3WYgcuyjKSLE/HXayoE81y+AfmXFo30y3xi5v15ZgXtnIMcsSFiU4CT3YLWIlAgypMcW7KV0VdJFo+uy0ugU5ZmBUx94tckeJfJaiTa7k=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:e3ba7e4c-9705-47ac-80da-2caa2162b20d,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:ec251058-abad-4ac2-9923-3af0a8a9a079,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: f83869543b9811f08d385d50fb11b32d-20250528
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 294431219; Wed, 28 May 2025 00:54:23 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Wed, 28 May 2025 15:54:19 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Wed, 28 May 2025 15:54:19 +0800
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, Lorenzo
+ Bianconi <lorenzo@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>, "David S
+ . Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
+ Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Bartosz Golaszewski
+	<brgl@bgdev.pl>, <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: Bear Wang <bear.wang@mediatek.com>, Pablo Sun <pablo.sun@mediatek.com>,
+	Ramax Lo <ramax.lo@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
+	Macpaul Lin <macpaul@gmail.com>, <stable@vger.kernel.org>, MediaTek
+ Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	Yanqing Wang <ot_yanqing.wang@mediatek.com>, Biao Huang
+	<biao.huang@mediatek.com>
+Subject: [PATCH] driver: net: ethernet: mtk_star_emac: fix suspend/resume issue
+Date: Wed, 28 May 2025 15:53:51 +0800
+Message-ID: <20250528075351.593068-1-macpaul.lin@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] Bluetooth: BT Driver: mediatek: add gpio pin to reset bt
-To: Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>
-Cc: Marcel Holtmann <marcel@holtmann.org>,
- Johan Hedberg <johan.hedberg@gmail.com>,
- Luiz Von Dentz <luiz.dentz@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
- Deren Wu <deren.Wu@mediatek.com>, Aaron Hou <aaron.hou@mediatek.com>,
- Chris Lu <chris.lu@mediatek.com>, Steve Lee <steve.lee@mediatek.com>,
- linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <20250528070323.14902-1-ot_zhangchao.zhang@mediatek.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20250528070323.14902-1-ot_zhangchao.zhang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250528_004616_430124_AE41557A 
-X-CRM114-Status: GOOD (  29.89  )
+X-CRM114-CacheID: sfid-20250528_005431_038855_60B0F998 
+X-CRM114-Status: UNSURE (   9.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,174 +94,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dear Zhangchao,
+From: Yanqing Wang <ot_yanqing.wang@mediatek.com>
 
+Identify the cause of the suspend/resume hang: netif_carrier_off()
+is called during link state changes and becomes stuck while
+executing linkwatch_work().
 
-Thank you for your patch. For the summary, I’d just use:
+To resolve this issue, call netif_device_detach() during the Ethernet
+suspend process to temporarily detach the network device from the
+kernel and prevent the suspend/resume hang.
 
-Bluetooth: btmtk: Add gpio pin to reset bt
+Fixes: 8c7bd5a454ff ("net: ethernet: mtk-star-emac: new driver")
+Signed-off-by: Yanqing Wang <ot_yanqing.wang@mediatek.com>
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+---
+ drivers/net/ethernet/mediatek/mtk_star_emac.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
+diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c b/drivers/net/ethernet/mediatek/mtk_star_emac.c
+index b175119a6a7d..b83886a41121 100644
+--- a/drivers/net/ethernet/mediatek/mtk_star_emac.c
++++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
+@@ -1463,6 +1463,8 @@ static __maybe_unused int mtk_star_suspend(struct device *dev)
+ 	if (netif_running(ndev))
+ 		mtk_star_disable(ndev);
+ 
++	netif_device_detach(ndev);
++
+ 	clk_bulk_disable_unprepare(MTK_STAR_NCLKS, priv->clks);
+ 
+ 	return 0;
+@@ -1487,6 +1489,8 @@ static __maybe_unused int mtk_star_resume(struct device *dev)
+ 			clk_bulk_disable_unprepare(MTK_STAR_NCLKS, priv->clks);
+ 	}
+ 
++	netif_device_attach(ndev);
++
+ 	return ret;
+ }
+ 
+-- 
+2.45.2
 
-Am 28.05.25 um 09:03 schrieb Zhangchao Zhang:
-> This patch provides some methods btmtk_reset_by_gpio,
-
-some → the two
-
-> btmtk_reset_by_gpio_work_for mediatek controller.
-> 
-> The pin is configured in dts files, bluetooth is reset by pulling
-> the pin, when an exception or coredump occurs, the above method will
-> be used to reset the bluetooth.
-
-How did you test this? Could you please add that to the commit message.
-
-> Co-developed-by Hao qin <hao.qin@mediatek.com>
-
-qin → Qin
-
-> Co-developed-by Chirs lu <chris.lu@mediatek.com>
-
-Chirs → Chris
-lu → Lu
-
-> Co-developed-by Jiande lu <jiande.lu@mediatek.com>
-
-lu → Lu
-
-> Signed-off-by: Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>
-> ---
->   drivers/bluetooth/btmtk.c | 59 +++++++++++++++++++++++++++++++++++++++
->   drivers/bluetooth/btmtk.h |  5 ++++
->   2 files changed, 64 insertions(+)
-> 
-> diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-> index 4390fd571dbd..16542c724b40 100644
-> --- a/drivers/bluetooth/btmtk.c
-> +++ b/drivers/bluetooth/btmtk.c
-> @@ -6,6 +6,8 @@
->   #include <linux/firmware.h>
->   #include <linux/usb.h>
->   #include <linux/iopoll.h>
-> +#include <linux/of.h>
-> +#include <linux/of_gpio.h>
->   #include <linux/unaligned.h>
->   
->   #include <net/bluetooth/bluetooth.h>
-> @@ -109,6 +111,59 @@ static void btmtk_coredump_notify(struct hci_dev *hdev, int state)
->   	}
->   }
->   
-> +static void btmtk_reset_by_gpio_work(struct work_struct *work)
-> +{
-> +	struct btmtk_reset_gpio *reset_gpio_data =
-> +			container_of(work, struct btmtk_reset_gpio, reset_work.work);
-> +
-> +	gpio_direction_output(reset_gpio_data->gpio_number, 1);
-> +	kfree(reset_gpio_data);
-> +}
-> +
-> +static int btmtk_reset_by_gpio(struct hci_dev *hdev)
-> +{
-> +	struct btmtk_data *data = hci_get_priv(hdev);
-> +	struct btmtk_reset_gpio *reset_gpio_data;
-> +	struct device_node *node;
-> +	int reset_gpio_number;
-> +
-> +	node = of_find_compatible_node(NULL, NULL, "mediatek,usb-bluetooth");
-> +	if (node) {
-> +		reset_gpio_number = of_get_named_gpio(node, "reset-gpios", 0);
-> +		if (!gpio_is_valid(reset_gpio_number)) {
-> +			bt_dev_warn(hdev, "invalid reset gpio, use SW reset");
-
-gpio → GPIO
-SW → software
-reet → reset?
-
-Please also log the GPIO number. Also, a hint, what the user should do 
-in this situation would be great.
-
-> +			return -EINVAL;
-> +		}
-> +	} else {
-> +		bt_dev_warn(hdev, "no reset gpio, use SW reet");
-
-gpio → GPIO
-SW → software
-reet → reset?
-
-> +		return -ENODEV;
-> +	}
-> +
-> +	/* Toggle the hard reset line. The Mediatek device is going to
-> +	 * yank itself off the USB and then replug. The cleanup is handled
-> +	 * correctly on the way out (standard USB disconnect), and the new
-> +	 * device is detected cleanly and bound to the driver again like
-> +	 * it should be.
-> +	 */
-> +
-> +	if (test_and_set_bit(BTMTK_HW_RESET_ACTIVE, &data->flags)) {
-> +		bt_dev_err(hdev, "last reset failed? Not resetting again");
-
-It’d be great, if this error message could be rephrased, so users know 
-what is wrong, and what to do.
-
-> +		return 0;
-> +	}
-> +
-> +	reset_gpio_data = kzalloc(sizeof(*reset_gpio_data), GFP_KERNEL);
-> +	if (!reset_gpio_data)
-> +		return -ENOMEM;
-> +
-> +	INIT_DELAYED_WORK(&reset_gpio_data->reset_work, btmtk_reset_by_gpio_work);
-> +	reset_gpio_data->gpio_number = reset_gpio_number;
-> +
-> +	gpio_direction_output(reset_gpio_number, 0);
-> +	schedule_delayed_work(&reset_gpio_data->reset_work, msecs_to_jiffies(200));
-
-A 200 ms delay is quite long. Maybe add the datasheet section as a 
-reference in a comment?
-
-> +
-> +	return 0;
-> +}
-> +
->   void btmtk_fw_get_filename(char *buf, size_t size, u32 dev_id, u32 fw_ver,
->   			   u32 fw_flavor)
->   {
-> @@ -364,6 +419,10 @@ void btmtk_reset_sync(struct hci_dev *hdev)
->   	struct btmtk_data *reset_work = hci_get_priv(hdev);
->   	int err;
->   
-> +	/*Toggle reset gpio if the platform provieds one*/
-
-1.  Please add a space in the beginning and end.
-2.  provides (A spell checker should have found this.)
-
-> +	err = btmtk_reset_by_gpio(hdev);
-> +	if (!err)
-> +		return;
->   	hci_dev_lock(hdev);
->   
->   	err = hci_cmd_sync_queue(hdev, reset_work->reset_sync, NULL, NULL);
-> diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
-> index 5df7c3296624..8a265ce367d1 100644
-> --- a/drivers/bluetooth/btmtk.h
-> +++ b/drivers/bluetooth/btmtk.h
-> @@ -179,6 +179,11 @@ struct btmtk_data {
->   	spinlock_t isorxlock;
->   };
->   
-> +struct btmtk_reset_gpio {
-> +	struct delayed_work reset_work;
-> +	int gpio_number;
-> +};
-> +
->   typedef int (*wmt_cmd_sync_func_t)(struct hci_dev *,
->   				   struct btmtk_hci_wmt_params *);
->   
-
-
-Kind regards,
-
-Paul
 
