@@ -4,154 +4,168 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42987C5AE59
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 May 2025 08:27:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C621C5AD49
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 May 2025 08:30:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IsYeUMzNWf+c4bLmoKUOHp5YpWvtC7v74oJ9jXBtnHM=; b=KGvxi0PRx7w1ig+R6LBTXdQJA2
-	hlsXW3FanM2XMWHqoWn60FWXxFWi2Qj9MDgrhBqsbyijJ1/opKLWaQ+Wax+ANfE3vesq5Vc2Xoz5D
-	G1aND4iyvppSx2g1/EimIlAMFhMGpZTcdvpathnpTs38GFK3CE0rzIUZeIA382NhpTmK9dOOZMgBU
-	C4hsf/BW/XO1Rv0J2PJzNpbAj1mh4o3QdPJOFoOvZVLSUVm0M6UDnk+a2RvHCNhNe9tSw4Pn6vnUQ
-	zPYPpvRBfaLciobPVHBKR6r3WCLkEbmIP/TBYOIAL3038rdsk0fYqX4kN8lgpnGileSG7rU9ruIM9
-	CI25jTHQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=lbnMMLdoVLCQg0WlFmP4cGGGe6/ZGh9T8wNo9YUbNs0=; b=E8UmC0Nq7aiurKige6M5XKunu6
+	sp/+2FT8jbxm/K90pg0jiKpcnK4GBUFY9W4BoLhPkqukedXhUHb1yErNOl7WJORLc3m5J85nLCMTR
+	KNn96U5q5n9u2QS9GlNY9h4o4RzofsJNNLXU0o5KYf1ctM8Aoql4ty9ctoMMItpbDS1vVzkj5UZQc
+	+t5t1H9WQBlhMC1ilSvpp2WGAfW/KG3/SqWg4xO6jOWfCTwcNuhuyxoVPw+vxkAQlPPOFXYjWVyEZ
+	UcUmp6qPot8+5oiLBleIeN7p1a+4m4o44P7nyXQneZvuART0l6PTrZ4trsjNsYaU75ur0TJY21wMk
+	+tt3FycA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKC8U-0000000CaAJ-0HIF;
-	Wed, 28 May 2025 08:27:42 +0000
-Received: from smtp-out1.suse.de ([2a07:de40:b251:101:10:150:64:1])
+	id 1uKCB2-0000000Caff-18is;
+	Wed, 28 May 2025 08:30:20 +0000
+Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKC4f-0000000CZP7-0LBj
-	for linux-mediatek@lists.infradead.org;
-	Wed, 28 May 2025 08:23:46 +0000
-Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 5358A21D18;
-	Wed, 28 May 2025 08:23:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1748420622; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=IsYeUMzNWf+c4bLmoKUOHp5YpWvtC7v74oJ9jXBtnHM=;
-	b=XQBmtfRd9f0BD+wpJmfsDg89bjVUFtWxyB8+k37xabISALbh+H9l1F8nnknU7GJur2Ir6r
-	Kmlkb+phPU6vHmBUvrOzKLyPdCDiqZ5OX7tAinz1caXlC0ZC8KfcFq7XHirFV3R3ifXNaY
-	lyqWj/ehrK8c6iCWlXr1VU2Q1LKJ/G4=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1748420622;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=IsYeUMzNWf+c4bLmoKUOHp5YpWvtC7v74oJ9jXBtnHM=;
-	b=dvJt6W9eqTR5Rd+KiuP01H+RwKo8jKPYSaFQcOmtWsSoyOZPFSM4P/6LbT/SZoQfSnPT4b
-	VftOkM9jdhB63YBw==
-Authentication-Results: smtp-out1.suse.de;
-	none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1748420622; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=IsYeUMzNWf+c4bLmoKUOHp5YpWvtC7v74oJ9jXBtnHM=;
-	b=XQBmtfRd9f0BD+wpJmfsDg89bjVUFtWxyB8+k37xabISALbh+H9l1F8nnknU7GJur2Ir6r
-	Kmlkb+phPU6vHmBUvrOzKLyPdCDiqZ5OX7tAinz1caXlC0ZC8KfcFq7XHirFV3R3ifXNaY
-	lyqWj/ehrK8c6iCWlXr1VU2Q1LKJ/G4=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1748420622;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=IsYeUMzNWf+c4bLmoKUOHp5YpWvtC7v74oJ9jXBtnHM=;
-	b=dvJt6W9eqTR5Rd+KiuP01H+RwKo8jKPYSaFQcOmtWsSoyOZPFSM4P/6LbT/SZoQfSnPT4b
-	VftOkM9jdhB63YBw==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id CC0DA136E0;
-	Wed, 28 May 2025 08:23:41 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id pmh/MA3INmgxVwAAD6G6ig
-	(envelope-from <tzimmermann@suse.de>); Wed, 28 May 2025 08:23:41 +0000
-Message-ID: <1926848a-9334-4c15-a076-a93ef29c80d6@suse.de>
-Date: Wed, 28 May 2025 10:23:41 +0200
+	id 1uKC9q-0000000CaUA-1Tqd;
+	Wed, 28 May 2025 08:29:07 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Kgsn6kB462Re/keFhokIW4hISDl+2oxabBBh/7EXkuxwVxMNgGCAncVOssgcBQU0w1d7YlZ0X3EuigoYJDHIioLrw/IXsoFzbYV4a+zCCu0ZzXXimC1ZLi4JC1XHuv+pLHEgzAkMwU1YoApukWcwk76axjHfZsPrtBT8D6FK8LCqKXXKYYnkMJ4CEuwCrl+NwjWBt+oIMD361k/RloyZQpMjTkCStgnBs91xcVnSX8eNIHh5QjTxV6GCr6huaJUaNRMM81yUJdR5UWDnsk7Q0RRAORmIkXQLVS5wgRz17SFtthEaFralqFhGkryhirJzOweRbCiZQsvvtPRsNpFw8g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=lbnMMLdoVLCQg0WlFmP4cGGGe6/ZGh9T8wNo9YUbNs0=;
+ b=jwjk8RMJH0ta2bIUbXq/+SG/OzgMBovOWjekpyh46N/ez3yDTmj+CvOGwu3TSTgZSfcepstDysZMWuf/A9W3lEADK8sg8jkB6aL6+bByCdHeMRJdHBRqEH0WSNYmgtqD/uu7+pd4pkQKBsCwrnZe1aZIVdM1/pid9uPUTjIcIg1X2H0NrFtRu3oe0lhfO7Y8SMwqqm26WiV4+ei1NurxAA1GR5pqN5OefihaOY1tQCWSov0iV7kuBXBLbxtSOwCerYXCuKbZcICWYxOmiGExNdLp22nrNzo4cj2UmpOJja1p/RzpMjlBcj4Xb5fRx4N3mfldbpcvLOT/I/Of3wksUg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=fibocom.com; dmarc=pass action=none header.from=fibocom.com;
+ dkim=pass header.d=fibocom.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=fibocomcorp.onmicrosoft.com; s=selector1-fibocomcorp-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=lbnMMLdoVLCQg0WlFmP4cGGGe6/ZGh9T8wNo9YUbNs0=;
+ b=C51BA6xfmtDuSyBJS1L0hshSxI6sq8QXe2Z4ToPF2WlKy1L3xfy83PXxQS5O87N3kv1z9tVjpx0tJ2NZ19GSbEEl1cJrebMkaQdiuzosLYldZ/3Rhx5o0k2vor+BvuYFD+/K5WD5x7evdhQVew67gFZNfU8+Q9uu7qo3T9Jq7vM=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=fibocom.com;
+Received: from SEZPR02MB5782.apcprd02.prod.outlook.com (2603:1096:101:4f::8)
+ by TY0PR02MB6737.apcprd02.prod.outlook.com (2603:1096:405:19::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8769.24; Wed, 28 May
+ 2025 08:28:53 +0000
+Received: from SEZPR02MB5782.apcprd02.prod.outlook.com
+ ([fe80::4843:bf84:bd17:827e]) by SEZPR02MB5782.apcprd02.prod.outlook.com
+ ([fe80::4843:bf84:bd17:827e%4]) with mapi id 15.20.8769.022; Wed, 28 May 2025
+ 08:28:53 +0000
+From: Jinjian Song <jinjian.song@fibocom.com>
+To: chandrashekar.devegowda@intel.com,
+	chiranjeevi.rapolu@linux.intel.com,
+	haijun.liu@mediatek.com,
+	m.chetan.kumar@linux.intel.com,
+	ricardo.martinez@linux.intel.com,
+	loic.poulain@linaro.org,
+	ryazanov.s.a@gmail.com,
+	johannes@sipsolutions.net,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com
+Cc: linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org,
+	linux-doc@vger.kernel.org,
+	angelogioacchino.delregno@collabora.com,
+	linux-arm-kernel@lists.infradead.org,
+	matthias.bgg@gmail.com,
+	corbet@lwn.net,
+	linux-mediatek@lists.infradead.org,
+	helgaas@kernel.org,
+	danielwinkler@google.com,
+	andrew+netdev@lunn.ch,
+	horms@kernel.org,
+	sreehari.kancharla@linux.intel.com,
+	ilpo.jarvinen@linux.intel.com,
+	Jinjian Song <jinjian.song@fibocom.com>
+Subject: [net v2] net: wwan: t7xx: Fix napi rx poll issue
+Date: Wed, 28 May 2025 16:28:27 +0800
+Message-Id: <20250528082827.4654-1-jinjian.song@fibocom.com>
+X-Mailer: git-send-email 2.34.1
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: SY5P282CA0077.AUSP282.PROD.OUTLOOK.COM
+ (2603:10c6:10:201::15) To SEZPR02MB5782.apcprd02.prod.outlook.com
+ (2603:1096:101:4f::8)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 00/25] drm/dumb-buffers: Fix and improve buffer-size
- calculation
-To: simona@ffwll.ch, airlied@gmail.com, mripard@kernel.org,
- maarten.lankhorst@linux.intel.com, geert@linux-m68k.org,
- tomi.valkeinen@ideasonboard.com
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
- imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org,
- nouveau@lists.freedesktop.org, virtualization@lists.linux.dev,
- spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
- intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org
-References: <20250311155120.442633-1-tzimmermann@suse.de>
-Content-Language: en-US
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Autocrypt: addr=tzimmermann@suse.de; keydata=
- xsBNBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdg
- XH47fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0
- BeB5BbqP5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4Yc
- hdHm3bkPjz9EErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB
- 9GluwvIhSezPgnEmimZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEB
- AAHNJ1Rob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPsLAjgQTAQgAOAIb
- AwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftODH
- AAoJEGgNwR1TC3ojx1wH/0hKGWugiqDgLNXLRD/4TfHBEKmxIrmfu9Z5t7vwUKfwhFL6hqvo
- lXPJJKQpQ2z8+X2vZm/slsLn7J1yjrOsoJhKABDi+3QWWSGkaGwRJAdPVVyJMfJRNNNIKwVb
- U6B1BkX2XDKDGffF4TxlOpSQzdtNI/9gleOoUA8+jy8knnDYzjBNOZqLG2FuTdicBXblz0Mf
- vg41gd9kCwYXDnD91rJU8tzylXv03E75NCaTxTM+FBXPmsAVYQ4GYhhgFt8S2UWMoaaABLDe
- 7l5FdnLdDEcbmd8uLU2CaG4W2cLrUaI4jz2XbkcPQkqTQ3EB67hYkjiEE6Zy3ggOitiQGcqp
- j//OwE0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRHUE9eosYb
- T6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgTRjP+qbU6
- 3Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+RdhgATnWW
- GKdDegUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zbehDda8lv
- hFXodNFMAgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r12+lqdsA
- EQEAAcLAdgQYAQgAIAIbDBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftOH6AAoJEGgNwR1T
- C3ojVSkIALpAPkIJPQoURPb1VWjh34l0HlglmYHvZszJWTXYwavHR8+k6Baa6H7ufXNQtThR
- yIxJrQLW6rV5lm7TjhffEhxVCn37+cg0zZ3j7zIsSS0rx/aMwi6VhFJA5hfn3T0TtrijKP4A
- SAQO9xD1Zk9/61JWk8OysuIh7MXkl0fxbRKWE93XeQBhIJHQfnc+YBLprdnxR446Sh8Wn/2D
- Ya8cavuWf2zrB6cZurs048xe0UbSW5AOSo4V9M0jzYI4nZqTmPxYyXbm30Kvmz0rYVRaitYJ
- 4kyYYMhuULvrJDMjZRvaNe52tkKAvMevcGdt38H4KSVXAylqyQOW5zvPc4/sq9c=
-In-Reply-To: <20250311155120.442633-1-tzimmermann@suse.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Spamd-Result: default: False [-2.80 / 50.00];
-	BAYES_HAM(-3.00)[100.00%];
-	SUSPICIOUS_RECIPS(1.50)[];
-	NEURAL_HAM_LONG(-1.00)[-1.000];
-	NEURAL_HAM_SHORT(-0.20)[-0.996];
-	MIME_GOOD(-0.10)[text/plain];
-	FREEMAIL_TO(0.00)[ffwll.ch,gmail.com,kernel.org,linux.intel.com,linux-m68k.org,ideasonboard.com];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	ARC_NA(0.00)[];
-	MID_RHS_MATCH_FROM(0.00)[];
-	MIME_TRACE(0.00)[0:+];
-	RCPT_COUNT_TWELVE(0.00)[20];
-	FREEMAIL_ENVRCPT(0.00)[gmail.com];
-	FUZZY_BLOCKED(0.00)[rspamd.com];
-	FROM_EQ_ENVFROM(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	RCVD_TLS_ALL(0.00)[];
-	TO_MATCH_ENVRCPT_ALL(0.00)[];
-	TO_DN_NONE(0.00)[];
-	RCVD_COUNT_TWO(0.00)[2];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:mid,imap1.dmz-prg2.suse.org:helo]
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SEZPR02MB5782:EE_|TY0PR02MB6737:EE_
+X-MS-Office365-Filtering-Correlation-Id: d946f2b2-ab9d-4610-c71f-08dd9dc1ad6c
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|52116014|7416014|376014|1800799024|366016|921020|38350700014;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?TucaBgMo1P4g3V9IETBtPqQdmEFvvgvIqxh5KCWkKrV0H+AIEysr0d1bBdAR?=
+ =?us-ascii?Q?XHtxbgYPEzjN+Oc9oekxKqebtDhmtMVN34mTsoK/6wWwhTvJy82gzwizOBGr?=
+ =?us-ascii?Q?B3pA7EcFq8bVsESmGsrJMkBmY3/SGQ5auIbHEJUUL9xNzYPoMDMFVMJfRSHy?=
+ =?us-ascii?Q?0eaeHBq1e/CCXWY7vtOK75mMBpFT8er54+HF3EbD3esMCefmfriWGdxBClNq?=
+ =?us-ascii?Q?62hW7kZwVOxjplLOAMqMUNn8Jahr/e2kPikHloi7pkojyWiTYRtNNlKBApO9?=
+ =?us-ascii?Q?KL2l+TdA1uyA4l45jGpNHIs1TXp3S9SCK9Nmexjm/hjmWXLPHm0TquQpjtZe?=
+ =?us-ascii?Q?vRgqvOSlnottu7wo+Reo5ZsSQ5RVVftAXmNpLa9K66vfoiah5mlQSS0eF+HO?=
+ =?us-ascii?Q?tiFhNjsMAdHkspNKC0P/zP+4qiYned5rIdH1WRctIGcJxDLNPKVwFynR/q+v?=
+ =?us-ascii?Q?mNkuZGtw4A+Z1FgbYekn8/feQbDd9w7zvWG0kOlq24C34PWi6uxhldhmUYdV?=
+ =?us-ascii?Q?m8xrl7hWUarbHxXLKrPgriGPszFTXbp+Vc62MFVZdncnOy4VpWf/zxIGhb8s?=
+ =?us-ascii?Q?uCVnNZ0b422oPXDAI1mR/7rq/KI96LSAFKos3dJjP503n0ga/ilS/p4CAhnr?=
+ =?us-ascii?Q?28SyQv8f+yWX4Lg0V2bi6aX1TZ834sbQYu0zJV+CSOC9mF2W3GH2dRj+MHF/?=
+ =?us-ascii?Q?5UAZB4kCrrhNRcpX+fZj5rL5eN7KSAuZjRT2dmPQNecGjk0cFBRzE0mwki9I?=
+ =?us-ascii?Q?CAUQqkDf2WHOjVWJPvAYPpg7dW1h5Zry/mVDcBzLVD3fJgvxlwP4tCd6MKck?=
+ =?us-ascii?Q?oQi3N8DpnNXVgB+PK+hJfGRtnzD9qJ0OL3luiiIcz37SIwUQ5evxULDRELqM?=
+ =?us-ascii?Q?PeDb9s/kweySefnDBxkd+PogAQ7HwKZTCYfgvDt9aPQ1DJfrcdaPzIcoFT+K?=
+ =?us-ascii?Q?DP+zEhwvzWKYuJ2bvaqXp7EuZkpXQSnerRcj3HXA9QKvbi5q3yoMfuBZmsuL?=
+ =?us-ascii?Q?jiSWulMJFyuldS9DXKDb+hRX2CUEosGOjgWdqABugXk7/nAGI5kvtJMcQdP4?=
+ =?us-ascii?Q?iFrXwi7Ztw3tCayPTqOqrdRYmdjXk6HXvMggBURliNI2vUz6xlycJUSl7KmH?=
+ =?us-ascii?Q?hmUcoZpEUdMDddFgK0SIlvIVF3uSXePwj62d2jmtRnOxpCk8Teyj3f4IMKeC?=
+ =?us-ascii?Q?wJ6kd7ajKmHypP/gRUuwc4yvyKLkPuormr0oHzegTWmKWMq5WaAZAvnKCJ/q?=
+ =?us-ascii?Q?sAbAtCMfxY00tPAc10nMTjTGdeHBAf284+5WqaBU6cEFj2xc+ccEEhRfa93n?=
+ =?us-ascii?Q?betQ2ArRV0OQzC2bq7YcKHGfaWKAOLBUR+tJHKOSAZY1PGJpvO9tXWMR3Ilx?=
+ =?us-ascii?Q?b453k3lTqW0KBZ9Q6cG/zos2pJMVEBweQ+UQUlA0SplT2zgcYS4Ymr1CL7G4?=
+ =?us-ascii?Q?fWDWPlIa3ZF+iLFZwHMj/MvGH8We81zNPjYpmCB8jOSKtNhCQZqj4gBMsfS4?=
+ =?us-ascii?Q?i0fuGeqEBznGEjE=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR02MB5782.apcprd02.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(52116014)(7416014)(376014)(1800799024)(366016)(921020)(38350700014);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?QJJc7yjoFYWlusw9cUN/4E0Jw155DExvnbvUAS3UPUqmUxRP2nq4uAHjxSL1?=
+ =?us-ascii?Q?ON3KksIpJpZLoi4sUX1g+Zx62luGHcDugKLBzJJT2ukTDgZrb5/NKUag0Zun?=
+ =?us-ascii?Q?FH+74NkAXXFDjhBkq4L8rGbvZp7zqjZPT02aDPiO0RrADuy7bn0aJVjr23SO?=
+ =?us-ascii?Q?MRYD7QFAjHexAqSX27Va2OYwjZqlnTBgc7Ou+mQp++dWgMPBaBpZrEDyYYR5?=
+ =?us-ascii?Q?cIH/DITam3YvhF6XZULxtb+wMdflQb8PVVdzagWPAiBuUuHlkUvVD2bFOGNS?=
+ =?us-ascii?Q?/noC1Fvm4EZYVNijy0pdQNd9vb96iOQAF16Qhst/ZImWrH4MH/NEY0AlxKLz?=
+ =?us-ascii?Q?t15m9ibCHKqPtdrrqzgGk+Yhy4z/sIjsn6PRr1nCrnsWEjfjnmx1f0aDUAmv?=
+ =?us-ascii?Q?vwjQh2um+H3+Q8C3f5BLUvCHyoBMM8CkSZtbcOppAv2RYPUsYauBNJiivg4h?=
+ =?us-ascii?Q?VURz2ZHTNQ83rZTJbsuQTsdSIvdxgd36P9QAEa7J6wMYsAvjhcjT3HWELGSv?=
+ =?us-ascii?Q?CtScVpATu0SJkVjA7iCEKC0HJylj0YexvPfV/iPqwq/wvPefC6IVD3GPCqzI?=
+ =?us-ascii?Q?wHJgNzW3ERrOuiBSHgs+4A2XCSN75PgcsTe9OJNnJYHD8s7H7wVoDuccte87?=
+ =?us-ascii?Q?E47GKgcMIECvnHEjo4YSnYaFVbL4a2NqbUYB9SOa+MNYnhhGUtWqG+B0xd+4?=
+ =?us-ascii?Q?XPzHls4fDZGfUSO7KA4ipdatE/GKCjJWXgG9IhAPGujYpZTsiVuD6K/yQere?=
+ =?us-ascii?Q?tlEwfOX7TD+LZ38H58k5BetDTJ+7wPZ9CLNOSTS1xBpzZdeP/bQ4h5pIkDVP?=
+ =?us-ascii?Q?RbHuzUhI1bHiYtDLIUvYiDsiN/BEiwa4owgGevrxPESrhHajWWjW/xk8Metn?=
+ =?us-ascii?Q?cPYyLP0dZtD+U7RweQOJtA9DlKOj3VuzsPaK4I/oGKS54n3ZIqAcmvF3eGLQ?=
+ =?us-ascii?Q?5WRt5Ay+eIetYxe58sWbQ6OkL/8tylaKsAptxPa3DBxy3gwuG4y8IoFwaR9d?=
+ =?us-ascii?Q?lpuW9EadWDU/fHZPamjDHZEtHw4re6Jy/afSNPKKBJR88l6nQss1o8+NWBlU?=
+ =?us-ascii?Q?ZkSGqsh4JwWsaiXobNA+4VnTgaeF9LOVNKvpqAjLxccMMJu7uyrkKvmLjmKz?=
+ =?us-ascii?Q?VZf1RS8dao5F0A94WZqPxg9pHHyl/F3tiuqkw7V2SL90me5EltwHYdqs9LFk?=
+ =?us-ascii?Q?k+VCdA9hoU1Z5ow7tRfcOirF8SBESO0S4miL3fhi51GfjStj5naEdIhmvVVR?=
+ =?us-ascii?Q?eW0lAwDPShCTW6A0aFNAilx02h/BUzfbdwfzWdPAFqThms20Ld6Lp8txv8Js?=
+ =?us-ascii?Q?5N+h0DGNPFgj0tHrBC6QlggxYkHMw7WopErimmF9G5pzeR/Vi5F/gtheYsLi?=
+ =?us-ascii?Q?qMo/XYbK2s5319XDfqlaNe/Xoj5rmZScsjK4axHmx3oPhpzTvZyngDddRrPt?=
+ =?us-ascii?Q?itHMZyBWzuQslEXuqPQa8x1FPPlqJlc0f7vC/3G5kYUzWItnj9wlA4SdglgJ?=
+ =?us-ascii?Q?8Zp4ttAx8FFCvppoeldIU/3phxvbFEzUhbN57UmxwglmxuHOF4oyWYDjnWYJ?=
+ =?us-ascii?Q?2BAT9eEPPJf49JNFdB2wI8f2C8NSF3C7Cch40IOLDNF0VaGvdTH7ttrBArom?=
+ =?us-ascii?Q?KA=3D=3D?=
+X-OriginatorOrg: fibocom.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d946f2b2-ab9d-4610-c71f-08dd9dc1ad6c
+X-MS-Exchange-CrossTenant-AuthSource: SEZPR02MB5782.apcprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 May 2025 08:28:52.8754
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 889bfe61-8c21-436b-bc07-3908050c8236
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: jZTqAePmsD7jCRaAcugtiVnEnt0P6TaKFtDCK7txjy5M6FlKPJEFYSpeY4qPsqqUjO148yw3EMnJL+MNy2m21QCTnP2KmRPQ48Zlw5BM4Vo=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY0PR02MB6737
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250528_012345_426213_13FE8EE5 
-X-CRM114-Status: GOOD (  15.56  )
+X-CRM114-CacheID: sfid-20250528_012906_405132_3F630902 
+X-CRM114-Status: GOOD (  12.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -166,110 +180,126 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-ping
+When driver handles the napi rx polling requests, the netdev might
+have been released by the dellink logic triggered by the disconnect
+operation on user plane. However, in the logic of processing skb in
+polling, an invalid netdev is still being used, which causes a panic.
 
-I'm still looking for more reviews; especially patches 1 and 2.
+BUG: kernel NULL pointer dereference, address: 00000000000000f1
+Oops: 0000 [#1] PREEMPT SMP NOPTI
+RIP: 0010:dev_gro_receive+0x3a/0x620
+[...]
+Call Trace:
+ <IRQ>
+ ? __die_body+0x68/0xb0
+ ? page_fault_oops+0x379/0x3e0
+ ? exc_page_fault+0x4f/0xa0
+ ? asm_exc_page_fault+0x22/0x30
+ ? __pfx_t7xx_ccmni_recv_skb+0x10/0x10 [mtk_t7xx (HASH:1400 7)]
+ ? dev_gro_receive+0x3a/0x620
+ napi_gro_receive+0xad/0x170
+ t7xx_ccmni_recv_skb+0x48/0x70 [mtk_t7xx (HASH:1400 7)]
+ t7xx_dpmaif_napi_rx_poll+0x590/0x800 [mtk_t7xx (HASH:1400 7)]
+ net_rx_action+0x103/0x470
+ irq_exit_rcu+0x13a/0x310
+ sysvec_apic_timer_interrupt+0x56/0x90
+ </IRQ>
 
-Best regards
-Thomas
+Fixes: 5545b7b9f294 ("net: wwan: t7xx: Add NAPI support")
+Signed-off-by: Jinjian Song <jinjian.song@fibocom.com>
+---
+ drivers/net/wwan/t7xx/t7xx_netdev.c | 19 ++++++++++---------
+ 1 file changed, 10 insertions(+), 9 deletions(-)
 
-Am 11.03.25 um 16:47 schrieb Thomas Zimmermann:
-> Dumb-buffer pitch and size is specified by width, height, bits-per-pixel
-> plus various hardware-specific alignments. The calculation of these
-> values is inconsistent and duplicated among drivers. The results for
-> formats with bpp < 8 are sometimes incorrect.
->
-> This series fixes this for most drivers. Default scanline pitch and
-> buffer size are now calculated with the existing 4CC helpers. There is
-> a new helper drm_mode_size_dumb() that calculates scanline pitch and
-> buffer size according to driver requirements.
->
-> The series fixes the common GEM implementations for DMA, SHMEM and
-> VRAM. It further changes most implementations of dumb_create to use
-> the new helper. A small number of drivers has more complicated
-> calculations and will be updated by a later patches.
->
-> v4:
-> - improve UAPI documentation
-> - document bpp special cases
-> - use drm_warn_once()
-> - add TODO lists
-> - armada: fix pitch alignment
-> v3:
-> - document UAPI semantics
-> - fall back to bpp-based allocation for unknown color modes
-> - cleanups
-> v2:
-> - rewrite series
-> - convert many individual drivers besides the shared GEM helpers
->
-> Thomas Zimmermann (25):
->    drm/dumb-buffers: Sanitize output on errors
->    drm/dumb-buffers: Provide helper to set pitch and size
->    drm/gem-dma: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/gem-shmem: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/gem-vram: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/armada: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/exynos: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/gma500: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/hibmc: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/imx/ipuv3: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/loongson: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/mediatek: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/msm: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/nouveau: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/omapdrm: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/qxl: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/renesas/rcar-du: Compute dumb-buffer sizes with
->      drm_mode_size_dumb()
->    drm/renesas/rz-du: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/rockchip: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/tegra: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/virtio: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/vmwgfx: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/xe: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/xen: Compute dumb-buffer sizes with drm_mode_size_dumb()
->    drm/xlnx: Compute dumb-buffer sizes with drm_mode_size_dumb()
->
->   Documentation/gpu/todo.rst                    |  28 +++
->   drivers/gpu/drm/armada/armada_gem.c           |  16 +-
->   drivers/gpu/drm/drm_dumb_buffers.c            | 172 ++++++++++++++++--
->   drivers/gpu/drm/drm_gem_dma_helper.c          |   7 +-
->   drivers/gpu/drm/drm_gem_shmem_helper.c        |  16 +-
->   drivers/gpu/drm/drm_gem_vram_helper.c         |  89 +++------
->   drivers/gpu/drm/exynos/exynos_drm_gem.c       |   8 +-
->   drivers/gpu/drm/gma500/gem.c                  |  21 +--
->   .../gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c   |  25 ++-
->   drivers/gpu/drm/imx/ipuv3/imx-drm-core.c      |  29 ++-
->   drivers/gpu/drm/loongson/lsdc_gem.c           |  29 +--
->   drivers/gpu/drm/mediatek/mtk_gem.c            |  13 +-
->   drivers/gpu/drm/msm/msm_gem.c                 |  27 ++-
->   drivers/gpu/drm/nouveau/nouveau_display.c     |   7 +-
->   drivers/gpu/drm/omapdrm/omap_gem.c            |  15 +-
->   drivers/gpu/drm/qxl/qxl_dumb.c                |  17 +-
->   drivers/gpu/drm/renesas/rcar-du/rcar_du_kms.c |   7 +-
->   drivers/gpu/drm/renesas/rz-du/rzg2l_du_kms.c  |   7 +-
->   drivers/gpu/drm/rockchip/rockchip_drm_gem.c   |  12 +-
->   drivers/gpu/drm/tegra/gem.c                   |   8 +-
->   drivers/gpu/drm/virtio/virtgpu_gem.c          |  11 +-
->   drivers/gpu/drm/vmwgfx/vmwgfx_surface.c       |  21 +--
->   drivers/gpu/drm/xe/xe_bo.c                    |   8 +-
->   drivers/gpu/drm/xen/xen_drm_front.c           |   7 +-
->   drivers/gpu/drm/xlnx/zynqmp_kms.c             |   7 +-
->   include/drm/drm_dumb_buffers.h                |  14 ++
->   include/drm/drm_gem_vram_helper.h             |   6 -
->   include/uapi/drm/drm_mode.h                   |  50 ++++-
->   28 files changed, 449 insertions(+), 228 deletions(-)
->   create mode 100644 include/drm/drm_dumb_buffers.h
->
-
+diff --git a/drivers/net/wwan/t7xx/t7xx_netdev.c b/drivers/net/wwan/t7xx/t7xx_netdev.c
+index 91fa082e9cab..48007384c030 100644
+--- a/drivers/net/wwan/t7xx/t7xx_netdev.c
++++ b/drivers/net/wwan/t7xx/t7xx_netdev.c
+@@ -172,7 +172,7 @@ static void t7xx_ccmni_start(struct t7xx_ccmni_ctrl *ctlb)
+ 	int i;
+ 
+ 	for (i = 0; i < ctlb->nic_dev_num; i++) {
+-		ccmni = ctlb->ccmni_inst[i];
++		ccmni = READ_ONCE(ctlb->ccmni_inst[i]);
+ 		if (!ccmni)
+ 			continue;
+ 
+@@ -192,7 +192,7 @@ static void t7xx_ccmni_pre_stop(struct t7xx_ccmni_ctrl *ctlb)
+ 	int i;
+ 
+ 	for (i = 0; i < ctlb->nic_dev_num; i++) {
+-		ccmni = ctlb->ccmni_inst[i];
++		ccmni = READ_ONCE(ctlb->ccmni_inst[i]);
+ 		if (!ccmni)
+ 			continue;
+ 
+@@ -210,7 +210,7 @@ static void t7xx_ccmni_post_stop(struct t7xx_ccmni_ctrl *ctlb)
+ 		t7xx_ccmni_disable_napi(ctlb);
+ 
+ 	for (i = 0; i < ctlb->nic_dev_num; i++) {
+-		ccmni = ctlb->ccmni_inst[i];
++		ccmni = READ_ONCE(ctlb->ccmni_inst[i]);
+ 		if (!ccmni)
+ 			continue;
+ 
+@@ -302,7 +302,7 @@ static int t7xx_ccmni_wwan_newlink(void *ctxt, struct net_device *dev, u32 if_id
+ 	ccmni->ctlb = ctlb;
+ 	ccmni->dev = dev;
+ 	atomic_set(&ccmni->usage, 0);
+-	ctlb->ccmni_inst[if_id] = ccmni;
++	WRITE_ONCE(ctlb->ccmni_inst[if_id], ccmni);
+ 
+ 	ret = register_netdevice(dev);
+ 	if (ret)
+@@ -321,9 +321,10 @@ static void t7xx_ccmni_wwan_dellink(void *ctxt, struct net_device *dev, struct l
+ 	if (if_id >= ARRAY_SIZE(ctlb->ccmni_inst))
+ 		return;
+ 
+-	if (WARN_ON(ctlb->ccmni_inst[if_id] != ccmni))
++	if (WARN_ON(READ_ONCE(ctlb->ccmni_inst[if_id]) != ccmni))
+ 		return;
+ 
++	WRITE_ONCE(ctlb->ccmni_inst[if_id], NULL);
+ 	unregister_netdevice(dev);
+ }
+ 
+@@ -419,7 +420,7 @@ static void t7xx_ccmni_recv_skb(struct t7xx_ccmni_ctrl *ccmni_ctlb, struct sk_bu
+ 
+ 	skb_cb = T7XX_SKB_CB(skb);
+ 	netif_id = skb_cb->netif_idx;
+-	ccmni = ccmni_ctlb->ccmni_inst[netif_id];
++	ccmni = READ_ONCE(ccmni_ctlb->ccmni_inst[netif_id]);
+ 	if (!ccmni) {
+ 		dev_kfree_skb(skb);
+ 		return;
+@@ -441,7 +442,7 @@ static void t7xx_ccmni_recv_skb(struct t7xx_ccmni_ctrl *ccmni_ctlb, struct sk_bu
+ 
+ static void t7xx_ccmni_queue_tx_irq_notify(struct t7xx_ccmni_ctrl *ctlb, int qno)
+ {
+-	struct t7xx_ccmni *ccmni = ctlb->ccmni_inst[0];
++	struct t7xx_ccmni *ccmni = READ_ONCE(ctlb->ccmni_inst[0]);
+ 	struct netdev_queue *net_queue;
+ 
+ 	if (netif_running(ccmni->dev) && atomic_read(&ccmni->usage) > 0) {
+@@ -453,7 +454,7 @@ static void t7xx_ccmni_queue_tx_irq_notify(struct t7xx_ccmni_ctrl *ctlb, int qno
+ 
+ static void t7xx_ccmni_queue_tx_full_notify(struct t7xx_ccmni_ctrl *ctlb, int qno)
+ {
+-	struct t7xx_ccmni *ccmni = ctlb->ccmni_inst[0];
++	struct t7xx_ccmni *ccmni = READ_ONCE(ctlb->ccmni_inst[0]);
+ 	struct netdev_queue *net_queue;
+ 
+ 	if (atomic_read(&ccmni->usage) > 0) {
+@@ -471,7 +472,7 @@ static void t7xx_ccmni_queue_state_notify(struct t7xx_pci_dev *t7xx_dev,
+ 	if (ctlb->md_sta != MD_STATE_READY)
+ 		return;
+ 
+-	if (!ctlb->ccmni_inst[0]) {
++	if (!READ_ONCE(ctlb->ccmni_inst[0])) {
+ 		dev_warn(&t7xx_dev->pdev->dev, "No netdev registered yet\n");
+ 		return;
+ 	}
 -- 
---
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Frankenstrasse 146, 90461 Nuernberg, Germany
-GF: Ivo Totev, Andrew Myers, Andrew McDonald, Boudien Moerman
-HRB 36809 (AG Nuernberg)
+2.34.1
 
 
