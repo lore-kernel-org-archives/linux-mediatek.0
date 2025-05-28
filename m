@@ -4,68 +4,154 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3806C5B549
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 May 2025 08:27:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42987C5AE59
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 May 2025 08:27:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=elqaNOh0LV74bQMGboc7PNPD5+vjhHGUhqlZA+Q5A8U=; b=WCH9sTwP61ToHpLrcptna9RRLM
-	g4NxO2KG7STTkHQI78Xzw0lQ91sxRH4NFO7b7wVpJ6BeDv58RwR4fa5IdETE/VNrvXY/DA3i0YNWE
-	ou0d/+PmKpZMrIbRHJ0Is08ooJcjgi2bQtBTorEBHFeqA19XQgOOML1ZvhC4rN9shAe8IAomhqvuF
-	0rPukGo6QmlFFn7WKfWAZZ0N9yMy0RUQKyst9N6QcZmCLMBdzlfDoLf0cqUeGDOcQGoGDvaeP2PJ5
-	qcCBjGlmPFqYQzXFTz2pEKqSLtKTJ1utP6c4uvH5DaxIKqItDtHRDGmAVg34vRoTONqo0PB6BDOV9
-	sQINdqMQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IsYeUMzNWf+c4bLmoKUOHp5YpWvtC7v74oJ9jXBtnHM=; b=KGvxi0PRx7w1ig+R6LBTXdQJA2
+	hlsXW3FanM2XMWHqoWn60FWXxFWi2Qj9MDgrhBqsbyijJ1/opKLWaQ+Wax+ANfE3vesq5Vc2Xoz5D
+	G1aND4iyvppSx2g1/EimIlAMFhMGpZTcdvpathnpTs38GFK3CE0rzIUZeIA382NhpTmK9dOOZMgBU
+	C4hsf/BW/XO1Rv0J2PJzNpbAj1mh4o3QdPJOFoOvZVLSUVm0M6UDnk+a2RvHCNhNe9tSw4Pn6vnUQ
+	zPYPpvRBfaLciobPVHBKR6r3WCLkEbmIP/TBYOIAL3038rdsk0fYqX4kN8lgpnGileSG7rU9ruIM9
+	CI25jTHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKC8T-0000000Ca9t-1dEb;
-	Wed, 28 May 2025 08:27:41 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1uKC8U-0000000CaAJ-0HIF;
+	Wed, 28 May 2025 08:27:42 +0000
+Received: from smtp-out1.suse.de ([2a07:de40:b251:101:10:150:64:1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKC3N-0000000CZ5T-2ryQ;
-	Wed, 28 May 2025 08:22:26 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5259944F0C;
-	Wed, 28 May 2025 08:22:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D0F66C4CEED;
-	Wed, 28 May 2025 08:22:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1748420545;
-	bh=Yuh6vKmjflKKUWIV791akrOKQPbvecxt/YxWPJHHypo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=fpUYyQrZpuwEgT4UeSvaqF6xrvgMm8nlBAo7tsr5KFPBzwGej4XAT4C2wov0Focah
-	 n4MuPct3BUv6yNBkaW8LdC0uVaRwXykWaa+7lF6pWKgDDB9dAHht+iICvYsKPSy7nd
-	 pg2bbIEzdjwg5yYLaE4GCWaVyK55PHoa/DMivrUSkitloVksIyCKuZgNzxAShj9Iow
-	 sq/9NkZSBaHGvd7DVuh6anc6gmP9dMkwX7feKyPEni4FF3QFIzPKZsxHZpgWqOxXTE
-	 Yf8XxxLGH1qo5DnFBTAX4nUC+Lx1mg2qVj75gP507jEUgd5R78sskRV5fyVBBqrfII
-	 xMzBybg41VtTA==
-Date: Wed, 28 May 2025 10:22:22 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Sean Wang <sean.wang@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Benjamin Larsson <benjamin.larsson@genexis.eu>,
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH 4/6] pinctrl: airoha: convert PWM GPIO to macro
-Message-ID: <aDbHvjPII0jlua18@lore-desk>
-References: <20250527222040.32000-1-ansuelsmth@gmail.com>
- <20250527222040.32000-5-ansuelsmth@gmail.com>
+	id 1uKC4f-0000000CZP7-0LBj
+	for linux-mediatek@lists.infradead.org;
+	Wed, 28 May 2025 08:23:46 +0000
+Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 5358A21D18;
+	Wed, 28 May 2025 08:23:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1748420622; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=IsYeUMzNWf+c4bLmoKUOHp5YpWvtC7v74oJ9jXBtnHM=;
+	b=XQBmtfRd9f0BD+wpJmfsDg89bjVUFtWxyB8+k37xabISALbh+H9l1F8nnknU7GJur2Ir6r
+	Kmlkb+phPU6vHmBUvrOzKLyPdCDiqZ5OX7tAinz1caXlC0ZC8KfcFq7XHirFV3R3ifXNaY
+	lyqWj/ehrK8c6iCWlXr1VU2Q1LKJ/G4=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1748420622;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=IsYeUMzNWf+c4bLmoKUOHp5YpWvtC7v74oJ9jXBtnHM=;
+	b=dvJt6W9eqTR5Rd+KiuP01H+RwKo8jKPYSaFQcOmtWsSoyOZPFSM4P/6LbT/SZoQfSnPT4b
+	VftOkM9jdhB63YBw==
+Authentication-Results: smtp-out1.suse.de;
+	none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1748420622; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=IsYeUMzNWf+c4bLmoKUOHp5YpWvtC7v74oJ9jXBtnHM=;
+	b=XQBmtfRd9f0BD+wpJmfsDg89bjVUFtWxyB8+k37xabISALbh+H9l1F8nnknU7GJur2Ir6r
+	Kmlkb+phPU6vHmBUvrOzKLyPdCDiqZ5OX7tAinz1caXlC0ZC8KfcFq7XHirFV3R3ifXNaY
+	lyqWj/ehrK8c6iCWlXr1VU2Q1LKJ/G4=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1748420622;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=IsYeUMzNWf+c4bLmoKUOHp5YpWvtC7v74oJ9jXBtnHM=;
+	b=dvJt6W9eqTR5Rd+KiuP01H+RwKo8jKPYSaFQcOmtWsSoyOZPFSM4P/6LbT/SZoQfSnPT4b
+	VftOkM9jdhB63YBw==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id CC0DA136E0;
+	Wed, 28 May 2025 08:23:41 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+	by imap1.dmz-prg2.suse.org with ESMTPSA
+	id pmh/MA3INmgxVwAAD6G6ig
+	(envelope-from <tzimmermann@suse.de>); Wed, 28 May 2025 08:23:41 +0000
+Message-ID: <1926848a-9334-4c15-a076-a93ef29c80d6@suse.de>
+Date: Wed, 28 May 2025 10:23:41 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="CPM4ZnGQOjRXXEPR"
-Content-Disposition: inline
-In-Reply-To: <20250527222040.32000-5-ansuelsmth@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 00/25] drm/dumb-buffers: Fix and improve buffer-size
+ calculation
+To: simona@ffwll.ch, airlied@gmail.com, mripard@kernel.org,
+ maarten.lankhorst@linux.intel.com, geert@linux-m68k.org,
+ tomi.valkeinen@ideasonboard.com
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
+ imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org,
+ nouveau@lists.freedesktop.org, virtualization@lists.linux.dev,
+ spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
+ intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org
+References: <20250311155120.442633-1-tzimmermann@suse.de>
+Content-Language: en-US
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Autocrypt: addr=tzimmermann@suse.de; keydata=
+ xsBNBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdg
+ XH47fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0
+ BeB5BbqP5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4Yc
+ hdHm3bkPjz9EErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB
+ 9GluwvIhSezPgnEmimZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEB
+ AAHNJ1Rob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPsLAjgQTAQgAOAIb
+ AwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftODH
+ AAoJEGgNwR1TC3ojx1wH/0hKGWugiqDgLNXLRD/4TfHBEKmxIrmfu9Z5t7vwUKfwhFL6hqvo
+ lXPJJKQpQ2z8+X2vZm/slsLn7J1yjrOsoJhKABDi+3QWWSGkaGwRJAdPVVyJMfJRNNNIKwVb
+ U6B1BkX2XDKDGffF4TxlOpSQzdtNI/9gleOoUA8+jy8knnDYzjBNOZqLG2FuTdicBXblz0Mf
+ vg41gd9kCwYXDnD91rJU8tzylXv03E75NCaTxTM+FBXPmsAVYQ4GYhhgFt8S2UWMoaaABLDe
+ 7l5FdnLdDEcbmd8uLU2CaG4W2cLrUaI4jz2XbkcPQkqTQ3EB67hYkjiEE6Zy3ggOitiQGcqp
+ j//OwE0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRHUE9eosYb
+ T6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgTRjP+qbU6
+ 3Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+RdhgATnWW
+ GKdDegUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zbehDda8lv
+ hFXodNFMAgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r12+lqdsA
+ EQEAAcLAdgQYAQgAIAIbDBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftOH6AAoJEGgNwR1T
+ C3ojVSkIALpAPkIJPQoURPb1VWjh34l0HlglmYHvZszJWTXYwavHR8+k6Baa6H7ufXNQtThR
+ yIxJrQLW6rV5lm7TjhffEhxVCn37+cg0zZ3j7zIsSS0rx/aMwi6VhFJA5hfn3T0TtrijKP4A
+ SAQO9xD1Zk9/61JWk8OysuIh7MXkl0fxbRKWE93XeQBhIJHQfnc+YBLprdnxR446Sh8Wn/2D
+ Ya8cavuWf2zrB6cZurs048xe0UbSW5AOSo4V9M0jzYI4nZqTmPxYyXbm30Kvmz0rYVRaitYJ
+ 4kyYYMhuULvrJDMjZRvaNe52tkKAvMevcGdt38H4KSVXAylqyQOW5zvPc4/sq9c=
+In-Reply-To: <20250311155120.442633-1-tzimmermann@suse.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Spamd-Result: default: False [-2.80 / 50.00];
+	BAYES_HAM(-3.00)[100.00%];
+	SUSPICIOUS_RECIPS(1.50)[];
+	NEURAL_HAM_LONG(-1.00)[-1.000];
+	NEURAL_HAM_SHORT(-0.20)[-0.996];
+	MIME_GOOD(-0.10)[text/plain];
+	FREEMAIL_TO(0.00)[ffwll.ch,gmail.com,kernel.org,linux.intel.com,linux-m68k.org,ideasonboard.com];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	ARC_NA(0.00)[];
+	MID_RHS_MATCH_FROM(0.00)[];
+	MIME_TRACE(0.00)[0:+];
+	RCPT_COUNT_TWELVE(0.00)[20];
+	FREEMAIL_ENVRCPT(0.00)[gmail.com];
+	FUZZY_BLOCKED(0.00)[rspamd.com];
+	FROM_EQ_ENVFROM(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	RCVD_TLS_ALL(0.00)[];
+	TO_MATCH_ENVRCPT_ALL(0.00)[];
+	TO_DN_NONE(0.00)[];
+	RCVD_COUNT_TWO(0.00)[2];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:mid,imap1.dmz-prg2.suse.org:helo]
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250528_012225_775389_0FB8A5F2 
-X-CRM114-Status: GOOD (  17.78  )
+X-CRM114-CacheID: sfid-20250528_012345_426213_13FE8EE5 
+X-CRM114-Status: GOOD (  15.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,519 +166,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+ping
 
---CPM4ZnGQOjRXXEPR
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+I'm still looking for more reviews; especially patches 1 and 2.
 
-> The PWM GPIO struct definition follow the same pattern for every GPIO
-> pin hence it can be converted to a macro.
->=20
-> Create 2 macro one for normal mux and one for ext mux and convert all
-> the entry to these new macro to reduce code size.
->=20
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> ---
+Best regards
+Thomas
 
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Am 11.03.25 um 16:47 schrieb Thomas Zimmermann:
+> Dumb-buffer pitch and size is specified by width, height, bits-per-pixel
+> plus various hardware-specific alignments. The calculation of these
+> values is inconsistent and duplicated among drivers. The results for
+> formats with bpp < 8 are sometimes incorrect.
+>
+> This series fixes this for most drivers. Default scanline pitch and
+> buffer size are now calculated with the existing 4CC helpers. There is
+> a new helper drm_mode_size_dumb() that calculates scanline pitch and
+> buffer size according to driver requirements.
+>
+> The series fixes the common GEM implementations for DMA, SHMEM and
+> VRAM. It further changes most implementations of dumb_create to use
+> the new helper. A small number of drivers has more complicated
+> calculations and will be updated by a later patches.
+>
+> v4:
+> - improve UAPI documentation
+> - document bpp special cases
+> - use drm_warn_once()
+> - add TODO lists
+> - armada: fix pitch alignment
+> v3:
+> - document UAPI semantics
+> - fall back to bpp-based allocation for unknown color modes
+> - cleanups
+> v2:
+> - rewrite series
+> - convert many individual drivers besides the shared GEM helpers
+>
+> Thomas Zimmermann (25):
+>    drm/dumb-buffers: Sanitize output on errors
+>    drm/dumb-buffers: Provide helper to set pitch and size
+>    drm/gem-dma: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/gem-shmem: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/gem-vram: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/armada: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/exynos: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/gma500: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/hibmc: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/imx/ipuv3: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/loongson: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/mediatek: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/msm: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/nouveau: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/omapdrm: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/qxl: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/renesas/rcar-du: Compute dumb-buffer sizes with
+>      drm_mode_size_dumb()
+>    drm/renesas/rz-du: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/rockchip: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/tegra: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/virtio: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/vmwgfx: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/xe: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/xen: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>    drm/xlnx: Compute dumb-buffer sizes with drm_mode_size_dumb()
+>
+>   Documentation/gpu/todo.rst                    |  28 +++
+>   drivers/gpu/drm/armada/armada_gem.c           |  16 +-
+>   drivers/gpu/drm/drm_dumb_buffers.c            | 172 ++++++++++++++++--
+>   drivers/gpu/drm/drm_gem_dma_helper.c          |   7 +-
+>   drivers/gpu/drm/drm_gem_shmem_helper.c        |  16 +-
+>   drivers/gpu/drm/drm_gem_vram_helper.c         |  89 +++------
+>   drivers/gpu/drm/exynos/exynos_drm_gem.c       |   8 +-
+>   drivers/gpu/drm/gma500/gem.c                  |  21 +--
+>   .../gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c   |  25 ++-
+>   drivers/gpu/drm/imx/ipuv3/imx-drm-core.c      |  29 ++-
+>   drivers/gpu/drm/loongson/lsdc_gem.c           |  29 +--
+>   drivers/gpu/drm/mediatek/mtk_gem.c            |  13 +-
+>   drivers/gpu/drm/msm/msm_gem.c                 |  27 ++-
+>   drivers/gpu/drm/nouveau/nouveau_display.c     |   7 +-
+>   drivers/gpu/drm/omapdrm/omap_gem.c            |  15 +-
+>   drivers/gpu/drm/qxl/qxl_dumb.c                |  17 +-
+>   drivers/gpu/drm/renesas/rcar-du/rcar_du_kms.c |   7 +-
+>   drivers/gpu/drm/renesas/rz-du/rzg2l_du_kms.c  |   7 +-
+>   drivers/gpu/drm/rockchip/rockchip_drm_gem.c   |  12 +-
+>   drivers/gpu/drm/tegra/gem.c                   |   8 +-
+>   drivers/gpu/drm/virtio/virtgpu_gem.c          |  11 +-
+>   drivers/gpu/drm/vmwgfx/vmwgfx_surface.c       |  21 +--
+>   drivers/gpu/drm/xe/xe_bo.c                    |   8 +-
+>   drivers/gpu/drm/xen/xen_drm_front.c           |   7 +-
+>   drivers/gpu/drm/xlnx/zynqmp_kms.c             |   7 +-
+>   include/drm/drm_dumb_buffers.h                |  14 ++
+>   include/drm/drm_gem_vram_helper.h             |   6 -
+>   include/uapi/drm/drm_mode.h                   |  50 ++++-
+>   28 files changed, 449 insertions(+), 228 deletions(-)
+>   create mode 100644 include/drm/drm_dumb_buffers.h
+>
 
->  drivers/pinctrl/mediatek/pinctrl-airoha.c | 465 ++++------------------
->  1 file changed, 68 insertions(+), 397 deletions(-)
->=20
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-airoha.c b/drivers/pinctrl/=
-mediatek/pinctrl-airoha.c
-> index 2b532334d759..8c8d5b598f4f 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-airoha.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-airoha.c
-> @@ -1075,404 +1075,75 @@ static const struct airoha_pinctrl_func_group pc=
-ie_reset_func_group[] =3D {
->  };
-> =20
->  /* PWM */
-> +#define AIROHA_PINCTRL_PWM(gpio, mux_val)		\
-> +	{						\
-> +		.name =3D (gpio),				\
-> +		.regmap[0] =3D {				\
-> +			AIROHA_FUNC_PWM_MUX,		\
-> +			REG_GPIO_FLASH_MODE_CFG,	\
-> +			(mux_val),			\
-> +			(mux_val)			\
-> +		},					\
-> +		.regmap_size =3D 1,			\
-> +	}						\
-> +
-> +#define AIROHA_PINCTRL_PWM_EXT(gpio, mux_val)		\
-> +	{						\
-> +		.name =3D (gpio),				\
-> +		.regmap[0] =3D {				\
-> +			AIROHA_FUNC_PWM_EXT_MUX,	\
-> +			REG_GPIO_FLASH_MODE_CFG_EXT,	\
-> +			(mux_val),			\
-> +			(mux_val)			\
-> +		},					\
-> +		.regmap_size =3D 1,			\
-> +	}						\
-> +
->  static const struct airoha_pinctrl_func_group pwm_func_group[] =3D {
-> -	{
-> -		.name =3D "gpio0",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG,
-> -			GPIO0_FLASH_MODE_CFG,
-> -			GPIO0_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio1",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG,
-> -			GPIO1_FLASH_MODE_CFG,
-> -			GPIO1_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio2",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG,
-> -			GPIO2_FLASH_MODE_CFG,
-> -			GPIO2_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio3",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG,
-> -			GPIO3_FLASH_MODE_CFG,
-> -			GPIO3_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio4",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG,
-> -			GPIO4_FLASH_MODE_CFG,
-> -			GPIO4_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio5",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG,
-> -			GPIO5_FLASH_MODE_CFG,
-> -			GPIO5_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio6",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG,
-> -			GPIO6_FLASH_MODE_CFG,
-> -			GPIO6_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio7",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG,
-> -			GPIO7_FLASH_MODE_CFG,
-> -			GPIO7_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio8",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG,
-> -			GPIO8_FLASH_MODE_CFG,
-> -			GPIO8_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio9",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG,
-> -			GPIO9_FLASH_MODE_CFG,
-> -			GPIO9_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio10",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG,
-> -			GPIO10_FLASH_MODE_CFG,
-> -			GPIO10_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio11",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG,
-> -			GPIO11_FLASH_MODE_CFG,
-> -			GPIO11_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio12",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG,
-> -			GPIO12_FLASH_MODE_CFG,
-> -			GPIO12_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio13",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG,
-> -			GPIO13_FLASH_MODE_CFG,
-> -			GPIO13_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio14",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG,
-> -			GPIO14_FLASH_MODE_CFG,
-> -			GPIO14_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio15",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG,
-> -			GPIO15_FLASH_MODE_CFG,
-> -			GPIO15_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio16",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_EXT_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG_EXT,
-> -			GPIO16_FLASH_MODE_CFG,
-> -			GPIO16_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio17",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_EXT_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG_EXT,
-> -			GPIO17_FLASH_MODE_CFG,
-> -			GPIO17_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio18",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_EXT_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG_EXT,
-> -			GPIO18_FLASH_MODE_CFG,
-> -			GPIO18_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio19",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_EXT_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG_EXT,
-> -			GPIO19_FLASH_MODE_CFG,
-> -			GPIO19_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio20",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_EXT_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG_EXT,
-> -			GPIO20_FLASH_MODE_CFG,
-> -			GPIO20_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio21",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_EXT_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG_EXT,
-> -			GPIO21_FLASH_MODE_CFG,
-> -			GPIO21_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio22",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_EXT_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG_EXT,
-> -			GPIO22_FLASH_MODE_CFG,
-> -			GPIO22_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio23",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_EXT_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG_EXT,
-> -			GPIO23_FLASH_MODE_CFG,
-> -			GPIO23_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio24",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_EXT_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG_EXT,
-> -			GPIO24_FLASH_MODE_CFG,
-> -			GPIO24_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio25",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_EXT_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG_EXT,
-> -			GPIO25_FLASH_MODE_CFG,
-> -			GPIO25_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio26",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_EXT_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG_EXT,
-> -			GPIO26_FLASH_MODE_CFG,
-> -			GPIO26_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio27",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_EXT_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG_EXT,
-> -			GPIO27_FLASH_MODE_CFG,
-> -			GPIO27_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio28",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_EXT_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG_EXT,
-> -			GPIO28_FLASH_MODE_CFG,
-> -			GPIO28_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio29",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_EXT_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG_EXT,
-> -			GPIO29_FLASH_MODE_CFG,
-> -			GPIO29_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio30",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_EXT_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG_EXT,
-> -			GPIO30_FLASH_MODE_CFG,
-> -			GPIO30_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio31",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_EXT_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG_EXT,
-> -			GPIO31_FLASH_MODE_CFG,
-> -			GPIO31_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio36",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_EXT_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG_EXT,
-> -			GPIO36_FLASH_MODE_CFG,
-> -			GPIO36_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio37",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_EXT_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG_EXT,
-> -			GPIO37_FLASH_MODE_CFG,
-> -			GPIO37_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio38",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_EXT_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG_EXT,
-> -			GPIO38_FLASH_MODE_CFG,
-> -			GPIO38_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio39",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_EXT_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG_EXT,
-> -			GPIO39_FLASH_MODE_CFG,
-> -			GPIO39_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio40",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_EXT_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG_EXT,
-> -			GPIO40_FLASH_MODE_CFG,
-> -			GPIO40_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio41",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_EXT_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG_EXT,
-> -			GPIO41_FLASH_MODE_CFG,
-> -			GPIO41_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio42",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_EXT_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG_EXT,
-> -			GPIO42_FLASH_MODE_CFG,
-> -			GPIO42_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio43",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_EXT_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG_EXT,
-> -			GPIO43_FLASH_MODE_CFG,
-> -			GPIO43_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio44",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_EXT_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG_EXT,
-> -			GPIO44_FLASH_MODE_CFG,
-> -			GPIO44_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio45",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_EXT_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG_EXT,
-> -			GPIO45_FLASH_MODE_CFG,
-> -			GPIO45_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio46",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_EXT_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG_EXT,
-> -			GPIO46_FLASH_MODE_CFG,
-> -			GPIO46_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	}, {
-> -		.name =3D "gpio47",
-> -		.regmap[0] =3D {
-> -			AIROHA_FUNC_PWM_EXT_MUX,
-> -			REG_GPIO_FLASH_MODE_CFG_EXT,
-> -			GPIO47_FLASH_MODE_CFG,
-> -			GPIO47_FLASH_MODE_CFG
-> -		},
-> -		.regmap_size =3D 1,
-> -	},
-> +	AIROHA_PINCTRL_PWM("gpio0", GPIO0_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM("gpio1", GPIO1_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM("gpio2", GPIO2_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM("gpio3", GPIO3_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM("gpio4", GPIO4_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM("gpio5", GPIO5_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM("gpio6", GPIO6_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM("gpio7", GPIO7_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM("gpio8", GPIO8_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM("gpio9", GPIO9_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM("gpio10", GPIO10_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM("gpio11", GPIO11_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM("gpio12", GPIO12_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM("gpio13", GPIO13_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM("gpio14", GPIO14_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM("gpio15", GPIO15_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM_EXT("gpio16", GPIO16_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM_EXT("gpio17", GPIO17_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM_EXT("gpio18", GPIO18_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM_EXT("gpio19", GPIO19_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM_EXT("gpio20", GPIO20_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM_EXT("gpio21", GPIO21_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM_EXT("gpio22", GPIO22_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM_EXT("gpio23", GPIO23_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM_EXT("gpio24", GPIO24_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM_EXT("gpio25", GPIO25_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM_EXT("gpio26", GPIO26_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM_EXT("gpio27", GPIO27_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM_EXT("gpio28", GPIO28_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM_EXT("gpio29", GPIO29_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM_EXT("gpio30", GPIO30_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM_EXT("gpio31", GPIO31_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM_EXT("gpio36", GPIO36_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM_EXT("gpio37", GPIO37_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM_EXT("gpio38", GPIO38_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM_EXT("gpio39", GPIO39_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM_EXT("gpio40", GPIO40_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM_EXT("gpio41", GPIO41_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM_EXT("gpio42", GPIO42_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM_EXT("gpio43", GPIO43_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM_EXT("gpio44", GPIO44_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM_EXT("gpio45", GPIO45_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM_EXT("gpio46", GPIO46_FLASH_MODE_CFG),
-> +	AIROHA_PINCTRL_PWM_EXT("gpio47", GPIO47_FLASH_MODE_CFG),
->  };
-> =20
->  #define AIROHA_PINCTRL_PHY_LED(gpio, mux_val, map_mask, map_val)	\
-> --=20
-> 2.48.1
->=20
+-- 
+--
+Thomas Zimmermann
+Graphics Driver Developer
+SUSE Software Solutions Germany GmbH
+Frankenstrasse 146, 90461 Nuernberg, Germany
+GF: Ivo Totev, Andrew Myers, Andrew McDonald, Boudien Moerman
+HRB 36809 (AG Nuernberg)
 
---CPM4ZnGQOjRXXEPR
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaDbHvgAKCRA6cBh0uS2t
-rBJZAQD7+oRzhJuZS59u7A4b7Xcyz2xWC0arWJEeABCRH+xEIAEAkcZZZRhjb4Ps
-1Ah0XFL6GNNxmJ7KNNr2JzqkmGeuHQY=
-=GTx/
------END PGP SIGNATURE-----
-
---CPM4ZnGQOjRXXEPR--
 
