@@ -4,168 +4,172 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C621C5AD49
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 May 2025 08:30:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B80EC3ABB2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 May 2025 09:47:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=lbnMMLdoVLCQg0WlFmP4cGGGe6/ZGh9T8wNo9YUbNs0=; b=E8UmC0Nq7aiurKige6M5XKunu6
-	sp/+2FT8jbxm/K90pg0jiKpcnK4GBUFY9W4BoLhPkqukedXhUHb1yErNOl7WJORLc3m5J85nLCMTR
-	KNn96U5q5n9u2QS9GlNY9h4o4RzofsJNNLXU0o5KYf1ctM8Aoql4ty9ctoMMItpbDS1vVzkj5UZQc
-	+t5t1H9WQBlhMC1ilSvpp2WGAfW/KG3/SqWg4xO6jOWfCTwcNuhuyxoVPw+vxkAQlPPOFXYjWVyEZ
-	UcUmp6qPot8+5oiLBleIeN7p1a+4m4o44P7nyXQneZvuART0l6PTrZ4trsjNsYaU75ur0TJY21wMk
-	+tt3FycA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gz/Xh3ZL3C2+Zw0PCetO3VgLrD3Rzu/DdkijnqDwc9c=; b=As6AMl4ZM9PQG8C+eAxwpz46gk
+	3nin5d9WD54j8X0I1uwuUugKEz/5NNnMOdB49TPn2/IwG12r+adrc3RfdEmgZ+UqlOrf443icsqWP
+	PG4y5gcyvVS21xUmZl0A1Lc2uRs/NSQaccS4rzZawViRDnJvq+I0Wm/hnfg8sPQB49QztRIaLcowe
+	DkCSexuEN6juP4HMZh2sZizR12AyLC5+fWqv4XVqW4ozRfXbmCGPANdakKg/ZsuL7WDZ+xTSP0ILa
+	F7/SqM20zMKNLA1DAAzE/0afIz4CHcln6e736cqyy4MItJygYeqd59iPAkQAMC93t2Pg9ED1xF0KD
+	Zv34GPJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKCB2-0000000Caff-18is;
-	Wed, 28 May 2025 08:30:20 +0000
-Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
+	id 1uKDNk-0000000ClKR-3sYX;
+	Wed, 28 May 2025 09:47:32 +0000
+Received: from mail-northeuropeazlp170100001.outbound.protection.outlook.com ([2a01:111:f403:c200::1] helo=DB3PR0202CU003.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKC9q-0000000CaUA-1Tqd;
-	Wed, 28 May 2025 08:29:07 +0000
+	id 1uKCyE-0000000Chxk-20LQ;
+	Wed, 28 May 2025 09:21:13 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Kgsn6kB462Re/keFhokIW4hISDl+2oxabBBh/7EXkuxwVxMNgGCAncVOssgcBQU0w1d7YlZ0X3EuigoYJDHIioLrw/IXsoFzbYV4a+zCCu0ZzXXimC1ZLi4JC1XHuv+pLHEgzAkMwU1YoApukWcwk76axjHfZsPrtBT8D6FK8LCqKXXKYYnkMJ4CEuwCrl+NwjWBt+oIMD361k/RloyZQpMjTkCStgnBs91xcVnSX8eNIHh5QjTxV6GCr6huaJUaNRMM81yUJdR5UWDnsk7Q0RRAORmIkXQLVS5wgRz17SFtthEaFralqFhGkryhirJzOweRbCiZQsvvtPRsNpFw8g==
+ b=vhTFZKSL45k5WDvxTMpKap5zOZxC1hMKNX6aeUp0+N6hHSyS9hrpagYw+lQnpZWRAbjUT0n5BIzSVifK5n5RZgmGxqj/t3RuYo1yYPGR/wbDnsJOBbhK0NQp9JWf2P2QAvOEwqpCTbRbH2vH3brScPs5M456Ab3okO8HxujoZ27M9obNsVt8Er9bCRWzVyY1hanQaaBeAiXI+ocNVXiGtgEgp/cjxt/mmswpqSxz/uAgFQWPefF2MMIjjYgezEMZkEPf1hFeJDU+EnDPBhBNOoZwNKqlD8tpQWqa481pIhaKT1OTc3LWXsSuT8W4B/Pw0iSX4dY/i9DHPKyQVS6Q6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=lbnMMLdoVLCQg0WlFmP4cGGGe6/ZGh9T8wNo9YUbNs0=;
- b=jwjk8RMJH0ta2bIUbXq/+SG/OzgMBovOWjekpyh46N/ez3yDTmj+CvOGwu3TSTgZSfcepstDysZMWuf/A9W3lEADK8sg8jkB6aL6+bByCdHeMRJdHBRqEH0WSNYmgtqD/uu7+pd4pkQKBsCwrnZe1aZIVdM1/pid9uPUTjIcIg1X2H0NrFtRu3oe0lhfO7Y8SMwqqm26WiV4+ei1NurxAA1GR5pqN5OefihaOY1tQCWSov0iV7kuBXBLbxtSOwCerYXCuKbZcICWYxOmiGExNdLp22nrNzo4cj2UmpOJja1p/RzpMjlBcj4Xb5fRx4N3mfldbpcvLOT/I/Of3wksUg==
+ bh=gz/Xh3ZL3C2+Zw0PCetO3VgLrD3Rzu/DdkijnqDwc9c=;
+ b=Io6SsJWgglnQDe2lv3aklz8HOvMVQVTJt7Ia40LZ4/ZZsu2h9BTRpTF9f9gkgR+4tW5gtYN3nu5DO7a2jqyjjUFIijGN5laDiKlhMwBUqbPprdbCPO6fLbvgdjYiv2d1WzS0y21lveriDsqsk+WTL2ESrDg5k3mgPMVpJPDegUlVaWN1X3frqPpfQg166sptbJh9xmm0LUdALElaXoB9L5FLWHdXyDa8FB1l6KjZSjGVZOK09mD/vP1t9AgOgVACrRohkrVFFcv85bYpzdCuuH5Tt5207jIcGVdUhuyX0tELPbZHBPAd7bsOX87nW85e+mTZX93Nfg0mOIm83yQMnA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=fibocom.com; dmarc=pass action=none header.from=fibocom.com;
- dkim=pass header.d=fibocom.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=fibocomcorp.onmicrosoft.com; s=selector1-fibocomcorp-onmicrosoft-com;
+ smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=genexis.eu;
+ dkim=pass header.d=genexis.eu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=genexis.eu;
+ s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=lbnMMLdoVLCQg0WlFmP4cGGGe6/ZGh9T8wNo9YUbNs0=;
- b=C51BA6xfmtDuSyBJS1L0hshSxI6sq8QXe2Z4ToPF2WlKy1L3xfy83PXxQS5O87N3kv1z9tVjpx0tJ2NZ19GSbEEl1cJrebMkaQdiuzosLYldZ/3Rhx5o0k2vor+BvuYFD+/K5WD5x7evdhQVew67gFZNfU8+Q9uu7qo3T9Jq7vM=
+ bh=gz/Xh3ZL3C2+Zw0PCetO3VgLrD3Rzu/DdkijnqDwc9c=;
+ b=f+mTSq501uEHI8P9WBnZqIRNNPmGqJZAO8JDgPKxVD4zd1BeHhy+soCpZh9h0yRdqMpTzKv0hZIL0yqFLdDuSOHcTQAqxcjm35Ds9cumuPtvahXzuRNLs+ybHDGmhWNZLo81OzRuWC2MlDsyh5LXPsmi3BxlzBcg3N57GZv2SF5i6Be+whDw2slSpjcZ/RSDSCyeQILskjE0HFDswBeSeLEHlPvnapYYiyidkDcEVjEh7j3odqlEoac1tz1U3xH+wUVO9WAqK6ov6Oi0Uy0GZQy+G8+Bd7IWxa07et2GjIQGbzRm3s9sIGiVCXbj6Y0rrSD1HdwT+VKhv3NolFY55g==
 Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=fibocom.com;
-Received: from SEZPR02MB5782.apcprd02.prod.outlook.com (2603:1096:101:4f::8)
- by TY0PR02MB6737.apcprd02.prod.outlook.com (2603:1096:405:19::7) with
+ header.d=none;dmarc=none action=none header.from=genexis.eu;
+Received: from AM6PR08MB4215.eurprd08.prod.outlook.com (2603:10a6:20b:90::16)
+ by PAVPR08MB9481.eurprd08.prod.outlook.com (2603:10a6:102:319::8) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8769.24; Wed, 28 May
- 2025 08:28:53 +0000
-Received: from SEZPR02MB5782.apcprd02.prod.outlook.com
- ([fe80::4843:bf84:bd17:827e]) by SEZPR02MB5782.apcprd02.prod.outlook.com
- ([fe80::4843:bf84:bd17:827e%4]) with mapi id 15.20.8769.022; Wed, 28 May 2025
- 08:28:53 +0000
-From: Jinjian Song <jinjian.song@fibocom.com>
-To: chandrashekar.devegowda@intel.com,
-	chiranjeevi.rapolu@linux.intel.com,
-	haijun.liu@mediatek.com,
-	m.chetan.kumar@linux.intel.com,
-	ricardo.martinez@linux.intel.com,
-	loic.poulain@linaro.org,
-	ryazanov.s.a@gmail.com,
-	johannes@sipsolutions.net,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com
-Cc: linux-kernel@vger.kernel.org,
-	netdev@vger.kernel.org,
-	linux-doc@vger.kernel.org,
-	angelogioacchino.delregno@collabora.com,
-	linux-arm-kernel@lists.infradead.org,
-	matthias.bgg@gmail.com,
-	corbet@lwn.net,
-	linux-mediatek@lists.infradead.org,
-	helgaas@kernel.org,
-	danielwinkler@google.com,
-	andrew+netdev@lunn.ch,
-	horms@kernel.org,
-	sreehari.kancharla@linux.intel.com,
-	ilpo.jarvinen@linux.intel.com,
-	Jinjian Song <jinjian.song@fibocom.com>
-Subject: [net v2] net: wwan: t7xx: Fix napi rx poll issue
-Date: Wed, 28 May 2025 16:28:27 +0800
-Message-Id: <20250528082827.4654-1-jinjian.song@fibocom.com>
-X-Mailer: git-send-email 2.34.1
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: SY5P282CA0077.AUSP282.PROD.OUTLOOK.COM
- (2603:10c6:10:201::15) To SEZPR02MB5782.apcprd02.prod.outlook.com
- (2603:1096:101:4f::8)
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8769.29; Wed, 28 May
+ 2025 09:21:00 +0000
+Received: from AM6PR08MB4215.eurprd08.prod.outlook.com
+ ([fe80::f8bd:a866:322f:7b42]) by AM6PR08MB4215.eurprd08.prod.outlook.com
+ ([fe80::f8bd:a866:322f:7b42%5]) with mapi id 15.20.8722.027; Wed, 28 May 2025
+ 09:21:00 +0000
+Message-ID: <b1f58f49-83b3-48c3-8c44-4c82fcd2f69b@genexis.eu>
+Date: Wed, 28 May 2025 11:20:53 +0200
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 6/6] pinctrl: airoha: add support for Airoha AN7583 PINs
+To: Christian Marangi <ansuelsmth@gmail.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Sean Wang <sean.wang@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20250527222040.32000-1-ansuelsmth@gmail.com>
+ <20250527222040.32000-7-ansuelsmth@gmail.com>
+Content-Language: en-US
+From: Benjamin Larsson <benjamin.larsson@genexis.eu>
+In-Reply-To: <20250527222040.32000-7-ansuelsmth@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: CH0PR08CA0023.namprd08.prod.outlook.com
+ (2603:10b6:610:33::28) To AM6PR08MB4215.eurprd08.prod.outlook.com
+ (2603:10a6:20b:90::16)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SEZPR02MB5782:EE_|TY0PR02MB6737:EE_
-X-MS-Office365-Filtering-Correlation-Id: d946f2b2-ab9d-4610-c71f-08dd9dc1ad6c
+X-MS-TrafficTypeDiagnostic: AM6PR08MB4215:EE_|PAVPR08MB9481:EE_
+X-MS-Office365-Filtering-Correlation-Id: a0b36d26-73fb-4ee3-a9a9-08dd9dc8f621
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|52116014|7416014|376014|1800799024|366016|921020|38350700014;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?TucaBgMo1P4g3V9IETBtPqQdmEFvvgvIqxh5KCWkKrV0H+AIEysr0d1bBdAR?=
- =?us-ascii?Q?XHtxbgYPEzjN+Oc9oekxKqebtDhmtMVN34mTsoK/6wWwhTvJy82gzwizOBGr?=
- =?us-ascii?Q?B3pA7EcFq8bVsESmGsrJMkBmY3/SGQ5auIbHEJUUL9xNzYPoMDMFVMJfRSHy?=
- =?us-ascii?Q?0eaeHBq1e/CCXWY7vtOK75mMBpFT8er54+HF3EbD3esMCefmfriWGdxBClNq?=
- =?us-ascii?Q?62hW7kZwVOxjplLOAMqMUNn8Jahr/e2kPikHloi7pkojyWiTYRtNNlKBApO9?=
- =?us-ascii?Q?KL2l+TdA1uyA4l45jGpNHIs1TXp3S9SCK9Nmexjm/hjmWXLPHm0TquQpjtZe?=
- =?us-ascii?Q?vRgqvOSlnottu7wo+Reo5ZsSQ5RVVftAXmNpLa9K66vfoiah5mlQSS0eF+HO?=
- =?us-ascii?Q?tiFhNjsMAdHkspNKC0P/zP+4qiYned5rIdH1WRctIGcJxDLNPKVwFynR/q+v?=
- =?us-ascii?Q?mNkuZGtw4A+Z1FgbYekn8/feQbDd9w7zvWG0kOlq24C34PWi6uxhldhmUYdV?=
- =?us-ascii?Q?m8xrl7hWUarbHxXLKrPgriGPszFTXbp+Vc62MFVZdncnOy4VpWf/zxIGhb8s?=
- =?us-ascii?Q?uCVnNZ0b422oPXDAI1mR/7rq/KI96LSAFKos3dJjP503n0ga/ilS/p4CAhnr?=
- =?us-ascii?Q?28SyQv8f+yWX4Lg0V2bi6aX1TZ834sbQYu0zJV+CSOC9mF2W3GH2dRj+MHF/?=
- =?us-ascii?Q?5UAZB4kCrrhNRcpX+fZj5rL5eN7KSAuZjRT2dmPQNecGjk0cFBRzE0mwki9I?=
- =?us-ascii?Q?CAUQqkDf2WHOjVWJPvAYPpg7dW1h5Zry/mVDcBzLVD3fJgvxlwP4tCd6MKck?=
- =?us-ascii?Q?oQi3N8DpnNXVgB+PK+hJfGRtnzD9qJ0OL3luiiIcz37SIwUQ5evxULDRELqM?=
- =?us-ascii?Q?PeDb9s/kweySefnDBxkd+PogAQ7HwKZTCYfgvDt9aPQ1DJfrcdaPzIcoFT+K?=
- =?us-ascii?Q?DP+zEhwvzWKYuJ2bvaqXp7EuZkpXQSnerRcj3HXA9QKvbi5q3yoMfuBZmsuL?=
- =?us-ascii?Q?jiSWulMJFyuldS9DXKDb+hRX2CUEosGOjgWdqABugXk7/nAGI5kvtJMcQdP4?=
- =?us-ascii?Q?iFrXwi7Ztw3tCayPTqOqrdRYmdjXk6HXvMggBURliNI2vUz6xlycJUSl7KmH?=
- =?us-ascii?Q?hmUcoZpEUdMDddFgK0SIlvIVF3uSXePwj62d2jmtRnOxpCk8Teyj3f4IMKeC?=
- =?us-ascii?Q?wJ6kd7ajKmHypP/gRUuwc4yvyKLkPuormr0oHzegTWmKWMq5WaAZAvnKCJ/q?=
- =?us-ascii?Q?sAbAtCMfxY00tPAc10nMTjTGdeHBAf284+5WqaBU6cEFj2xc+ccEEhRfa93n?=
- =?us-ascii?Q?betQ2ArRV0OQzC2bq7YcKHGfaWKAOLBUR+tJHKOSAZY1PGJpvO9tXWMR3Ilx?=
- =?us-ascii?Q?b453k3lTqW0KBZ9Q6cG/zos2pJMVEBweQ+UQUlA0SplT2zgcYS4Ymr1CL7G4?=
- =?us-ascii?Q?fWDWPlIa3ZF+iLFZwHMj/MvGH8We81zNPjYpmCB8jOSKtNhCQZqj4gBMsfS4?=
- =?us-ascii?Q?i0fuGeqEBznGEjE=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR02MB5782.apcprd02.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(52116014)(7416014)(376014)(1800799024)(366016)(921020)(38350700014);DIR:OUT;SFP:1102;
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|7416014|376014|921020|7053199007;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?VENyc2JNK1plSTM0b25IWU4zUXFuNm1QR2IvWmhxK3l6bjhrcGJoaVpFb3Ev?=
+ =?utf-8?B?Vlo4eHZjTnUyd3pOT1BYZWZEeWNpak1aSnd4enQ2VmZtbzZkb1JsYnBzWndy?=
+ =?utf-8?B?NDMzU3oxV2Fzbjg0ZWFhRy94OEZ0MWRKUG5lVVJVdTFvL29wN09ibUhGUWp3?=
+ =?utf-8?B?ZGd0UG4raGxYTGdCRloxbWFZNkRocVlmYjdURWNPSWU0bFRUc2Z1Qy9rR0hO?=
+ =?utf-8?B?aklabitiQVB6NW1XRHBTOSttRDRWUUo2RGM2LzdEOE5TdTJVTVVTMVEwZDFk?=
+ =?utf-8?B?ZndVVjg4UDFuR1JHTm9jekZLYThLREpHZ3RnQXlzK2NOUlNLSjB5UklIdU5z?=
+ =?utf-8?B?SkRLL2NkaEVuMUdNNEFuaDMyTEtFd3MrdGVrSk12OFJYeFNFRkk2OTVkcC9P?=
+ =?utf-8?B?TWFEeVkxNngvSmVqOE5mYUJvWFlzbDV1MTdTbitMNkVqNm85clFQV05FdjdJ?=
+ =?utf-8?B?ZzJBd2ttRVRrb045NjhzeEFhVEZTS3Uxa2FjY0NPdXVlTkhYY2tCUnhIcW9l?=
+ =?utf-8?B?V3IzQ1BGdDEzdUJZV1owNlVnSTVETmFxcGNpdGN6cmoxOEUxOGpUR0ZYalQ3?=
+ =?utf-8?B?ZXJuS0Z1UUcxSGNXZndZZ3AweWNPZ3RLc05OK2V2TytmQXpuVWdkY0lzdXpy?=
+ =?utf-8?B?ZFdiYjRjcUhIbFk2eGxudTRzazBGdDJKaTJDMnNOQThrem1rS0d0cGY5TUdx?=
+ =?utf-8?B?a3FkWkREdXRTc0tPVUtXK2J0NzM4NUd0ZDQ0MWROZ0JENVFSd3NzaThyMG5J?=
+ =?utf-8?B?TlJIT01FWFBVR2dTQUw1NW5Kek51b1J4dWN4R2l3Rk1uWllhYmVnOXQwV1F4?=
+ =?utf-8?B?ZWsybWNrSEkrWWRpamRCQlFJUUl0aXBxaGZUYkVhZUNKU3FEdm9wNUdFNFdN?=
+ =?utf-8?B?Wm5sdnYxYjNGZ1RoY3YvS05idzIraWdnZjJycER2S3FJeWlrcDRXS2p0eHJT?=
+ =?utf-8?B?c29XcGErMk8vU2tjVkV2WFFJMUFwVURjbUVsb21jQUxUZDlUcHVYSTBNZGR6?=
+ =?utf-8?B?U2tVSExHWVZaaVltYjFUQndFWFdnZ0d2MUZPYWp5QmlPbjF2SWZ3RnF1ZlNa?=
+ =?utf-8?B?OGgvQUhOdWVBYmU3ZG1qMWxhZmxxaWxjRkU2KzQ2VVpnYy9KVkxQb0hkT0Ur?=
+ =?utf-8?B?aDdVVkRVNXVvWjkyaTNkN2YvNHg1ZkpUY20yY1hjdDJscHFsSUVYdkNiQ2Jh?=
+ =?utf-8?B?UEFZWkNNMWh4bGlWQWkyRzJVcnh6Qzc2WU1ZWkJ2SVFPOW00VXVPMlUvdkQv?=
+ =?utf-8?B?ay8rS0E2dGZZaThmVmV0OFhTeHJtRDNCd1pudXlpUjRkckxWVUJ1SHFCQmMy?=
+ =?utf-8?B?NDNXb1dIQ2tYcXRrbVNqSU9NMTloOUdvUDJWYlB6RTZNUXhSRFRPOW1HR0Uz?=
+ =?utf-8?B?bVFPYnNHdXVTVVkyQnUweVM4Yy9JVURWbFhiNkpJaWYyS3lzc2h1TXNsQ2Vn?=
+ =?utf-8?B?MktLeVBScm41S3dOT0FTNXpaSzErMzE5alZ2NENnOWEwaHhIcGdObWNkU001?=
+ =?utf-8?B?UGVSb1Nrd3Q1eHJyUkpIWlNvallXRmlwRW9MUFVKZ0tWT3RFeUhVQ2pzclVv?=
+ =?utf-8?B?UmR4VlFTbDlPdWltbjhXYUMxaUpIMWxSV2dqaHdyUTNqV2c0cHczU3pER1lM?=
+ =?utf-8?B?QkNucUk4NmFxb0FET0t4dklsMEZoZEFyQlBnSDJhYjV2OVkxQXdKcFRqc0tq?=
+ =?utf-8?B?VmFvYnlqam83QnMvOG90MnJWeUl0QnJ4cjltc1ZCRldBaGREcG1oU0dmUHRk?=
+ =?utf-8?B?Nnc0U2JZVExUTTZUS2hrUXlqdFBTRE51OEhGdVlteE5VaHVsaEZ0WDRRclZ0?=
+ =?utf-8?B?bGE4ZjhFRS9YVENDcnNaekZ0d3pjbnFpSTRVajMwaWdqYUxXRjdwQjY0V1Yz?=
+ =?utf-8?B?R2F4T0d3K09LcTNHdFh2QnZuT3l0U2pacGMzdW1NQnh6R3JaM0NUOFFzSE5a?=
+ =?utf-8?B?eE5vRjVkT1ZOYUpMZm5kUjN4dDJPVi9IaWcvNGYzYTRqUzRkcUpaTDhuSHFW?=
+ =?utf-8?B?MVVzeTZXNmV3PT0=?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM6PR08MB4215.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(7416014)(376014)(921020)(7053199007);DIR:OUT;SFP:1102;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?QJJc7yjoFYWlusw9cUN/4E0Jw155DExvnbvUAS3UPUqmUxRP2nq4uAHjxSL1?=
- =?us-ascii?Q?ON3KksIpJpZLoi4sUX1g+Zx62luGHcDugKLBzJJT2ukTDgZrb5/NKUag0Zun?=
- =?us-ascii?Q?FH+74NkAXXFDjhBkq4L8rGbvZp7zqjZPT02aDPiO0RrADuy7bn0aJVjr23SO?=
- =?us-ascii?Q?MRYD7QFAjHexAqSX27Va2OYwjZqlnTBgc7Ou+mQp++dWgMPBaBpZrEDyYYR5?=
- =?us-ascii?Q?cIH/DITam3YvhF6XZULxtb+wMdflQb8PVVdzagWPAiBuUuHlkUvVD2bFOGNS?=
- =?us-ascii?Q?/noC1Fvm4EZYVNijy0pdQNd9vb96iOQAF16Qhst/ZImWrH4MH/NEY0AlxKLz?=
- =?us-ascii?Q?t15m9ibCHKqPtdrrqzgGk+Yhy4z/sIjsn6PRr1nCrnsWEjfjnmx1f0aDUAmv?=
- =?us-ascii?Q?vwjQh2um+H3+Q8C3f5BLUvCHyoBMM8CkSZtbcOppAv2RYPUsYauBNJiivg4h?=
- =?us-ascii?Q?VURz2ZHTNQ83rZTJbsuQTsdSIvdxgd36P9QAEa7J6wMYsAvjhcjT3HWELGSv?=
- =?us-ascii?Q?CtScVpATu0SJkVjA7iCEKC0HJylj0YexvPfV/iPqwq/wvPefC6IVD3GPCqzI?=
- =?us-ascii?Q?wHJgNzW3ERrOuiBSHgs+4A2XCSN75PgcsTe9OJNnJYHD8s7H7wVoDuccte87?=
- =?us-ascii?Q?E47GKgcMIECvnHEjo4YSnYaFVbL4a2NqbUYB9SOa+MNYnhhGUtWqG+B0xd+4?=
- =?us-ascii?Q?XPzHls4fDZGfUSO7KA4ipdatE/GKCjJWXgG9IhAPGujYpZTsiVuD6K/yQere?=
- =?us-ascii?Q?tlEwfOX7TD+LZ38H58k5BetDTJ+7wPZ9CLNOSTS1xBpzZdeP/bQ4h5pIkDVP?=
- =?us-ascii?Q?RbHuzUhI1bHiYtDLIUvYiDsiN/BEiwa4owgGevrxPESrhHajWWjW/xk8Metn?=
- =?us-ascii?Q?cPYyLP0dZtD+U7RweQOJtA9DlKOj3VuzsPaK4I/oGKS54n3ZIqAcmvF3eGLQ?=
- =?us-ascii?Q?5WRt5Ay+eIetYxe58sWbQ6OkL/8tylaKsAptxPa3DBxy3gwuG4y8IoFwaR9d?=
- =?us-ascii?Q?lpuW9EadWDU/fHZPamjDHZEtHw4re6Jy/afSNPKKBJR88l6nQss1o8+NWBlU?=
- =?us-ascii?Q?ZkSGqsh4JwWsaiXobNA+4VnTgaeF9LOVNKvpqAjLxccMMJu7uyrkKvmLjmKz?=
- =?us-ascii?Q?VZf1RS8dao5F0A94WZqPxg9pHHyl/F3tiuqkw7V2SL90me5EltwHYdqs9LFk?=
- =?us-ascii?Q?k+VCdA9hoU1Z5ow7tRfcOirF8SBESO0S4miL3fhi51GfjStj5naEdIhmvVVR?=
- =?us-ascii?Q?eW0lAwDPShCTW6A0aFNAilx02h/BUzfbdwfzWdPAFqThms20Ld6Lp8txv8Js?=
- =?us-ascii?Q?5N+h0DGNPFgj0tHrBC6QlggxYkHMw7WopErimmF9G5pzeR/Vi5F/gtheYsLi?=
- =?us-ascii?Q?qMo/XYbK2s5319XDfqlaNe/Xoj5rmZScsjK4axHmx3oPhpzTvZyngDddRrPt?=
- =?us-ascii?Q?itHMZyBWzuQslEXuqPQa8x1FPPlqJlc0f7vC/3G5kYUzWItnj9wlA4SdglgJ?=
- =?us-ascii?Q?8Zp4ttAx8FFCvppoeldIU/3phxvbFEzUhbN57UmxwglmxuHOF4oyWYDjnWYJ?=
- =?us-ascii?Q?2BAT9eEPPJf49JNFdB2wI8f2C8NSF3C7Cch40IOLDNF0VaGvdTH7ttrBArom?=
- =?us-ascii?Q?KA=3D=3D?=
-X-OriginatorOrg: fibocom.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: d946f2b2-ab9d-4610-c71f-08dd9dc1ad6c
-X-MS-Exchange-CrossTenant-AuthSource: SEZPR02MB5782.apcprd02.prod.outlook.com
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?aktways2SzlWZ1VQbC9VYWg3MTAxbWFEUzlaSkJVeFZKMVpETzRpaVJoaHpR?=
+ =?utf-8?B?dTBJa3QzZitHbnV4NlBmVHdoMnZiNUt6eGtEV0NkVmg4ZHVjQjhVVkozN2Fy?=
+ =?utf-8?B?Ni95OXF0TmUvUUZZSzhHemRpY0laM0ZOdnVrVFVYL0dVMTNNeEZRak1XTTVP?=
+ =?utf-8?B?dU1vSWF5ajRBZlBidTFFSU9CTkFwbXB1K0VjdUVqQ2MzdG90eHZ1NFZNNnNj?=
+ =?utf-8?B?U2xGY0FpT1ROSzJkdy9IdFpFQlRVQkNadi9ETU1iWmFHL0NKWnVZcHZaMklz?=
+ =?utf-8?B?c1ZtZkEzSWhsNGNPckl1OTFCbXlmYzl1azA4cC9GNU8xb3RZOHhzODBLdHh4?=
+ =?utf-8?B?VStzNHY1K1k2S0JYWWR2dzhwOG1ybjZmTHZXTUcvZkREaHVqa1ZWeXpPK3JR?=
+ =?utf-8?B?ZlJaclFMc3RkSS80L0htVUl2blp4aG9Lb3Awcm5CZWJyWUo3WHNIWjZtYkUv?=
+ =?utf-8?B?cDgwLzhkRUVxcE5CLzM1c1dZVGIwbm5PbVpTMDZ5RDZKU25Pejg0UGxWY1ly?=
+ =?utf-8?B?R0FtbHIwOUFSOFlCbFFMS1dQMDJLV3VOaXpSQTBEWmxya2VFZEhnK29YODNi?=
+ =?utf-8?B?alVjU0tTMjhvSzJ6Wjg3NmJhQXJURWdYcTFlbW81eFFtNXluWnNnUDJVTnhy?=
+ =?utf-8?B?TmZ2MVFYSHcvQ1ltQ3FTenNvOGwwWHp0R3RVZk01NCs1cTVRd3hOcEE3MzRX?=
+ =?utf-8?B?MjRNYk1ObVN1N0JZOCtPMjBLUVJTc3FuR0MvR3RqRlhmTXU4TjNkVmUybE43?=
+ =?utf-8?B?VmplWjd0TWdCZzVER1RxWTJPZGlzZW9icVg2TVRvaHpwOWd4eFNvZTg2SWRn?=
+ =?utf-8?B?VDNFRzJvaHdDOWdaQ05pNFhHek1hSDMvNGRubTdzeDB5bnFDYnVsN2hyOXNO?=
+ =?utf-8?B?SnpSUTRMV0pwNDBaWlVMcDUrc0VCWStZdXZlTWRiazRkK0tEWTdZV0VTWWFJ?=
+ =?utf-8?B?V2VMbDlWQThXNkJMc0czeEhwM2ZKRUFzNExrVTZEQmVGQ0hnb2oxN05HaXhi?=
+ =?utf-8?B?UHBkMFo2b1JRblpGcy9Kb0JHTkpOV1p3MHVKc1l6UVlHa1cvYzl1TE1hNFVF?=
+ =?utf-8?B?M1VTQy8wMmErWVR2M0g3Lzk2WUxSdFB3VVBIS1d6UGI3aXpNUm9naTlTVWp5?=
+ =?utf-8?B?a0pZenY3Mkwvd1pJY1FsYlM1MDl3elNqMCtxRktJT01aUlZ3RWtlSEc5YkdM?=
+ =?utf-8?B?UlhIN1pxY0hlMmd1Y1U5cFdTdWJHSmJWS2dqVk1IOE1NOEJjOXhyTS9NWnh3?=
+ =?utf-8?B?aGdBZHJvRGc4ZTJ6OEh2QnlDSEs1U1Z4OVRUQkg0MzVOM3oyaDdZZ0J5cSt0?=
+ =?utf-8?B?QlRaNUgzTEtDMkFoczc0MGYvMnF0NW5McUNycVBDM1pHYTgzanZuWnJqamZv?=
+ =?utf-8?B?NGJkeVNXOFQ1Z2Y1QnJZclYrWk1oSVZxSVc1dHBHREo1aC9sQmVPMm5Xcmdm?=
+ =?utf-8?B?MCtTamRXbGtlRGFoMkd0SW9ta2QrZ3VKQnFBd3pPL2o4NTZGQkxCSWFTVmRW?=
+ =?utf-8?B?eHNHalhqcEp1Q0psNXJ2U0ZVUkxqWU1pZTlxdW5Gd1hJajh1K0plQ2tObllu?=
+ =?utf-8?B?dUFYdkI5VDJMRDZaYWRrdlF0OWsrUkJZc0Mwd2FERmgxMFhOWTdnTjZMWjBJ?=
+ =?utf-8?B?UU1Ha1BucjFXUlBUWUpMREZTdTIybUZyTEdOcFNxTlJmNXJEMGRiMHpPL1dR?=
+ =?utf-8?B?V0RWSVlqSXRRQW45UzhyYXBweUFzWUhnRDFQMUJ0Q3VCd1ZpeUpKRjVlTjBZ?=
+ =?utf-8?B?c2NJY1pSUW9zLzBDclBNV3JwRlRWMzZZYkFBSnlOa2YwM1BBVVN0cW9IOUlk?=
+ =?utf-8?B?WWRlVnRFK0NPU2Z2T3pPNGJnUTEvWjZNZ3RCOWh6S08yRHdFK3ZjdS9rd0ty?=
+ =?utf-8?B?V1ZDQVdOeHVpVGlsSDYwZ2VsaDdFNGovMHgwWFhSbUtabitybTBET1JDU2px?=
+ =?utf-8?B?UlpxWlRxZzN1aWV0WC80OFlhS21zUGpWVEkyNWhtOHVPd1JRU0NNZHJXakxz?=
+ =?utf-8?B?emJaMmIzamVoRm1ZVGNVZDRhTkVlZ0pSa0pVNVVaem1EZldJUVhvcVdITVQ4?=
+ =?utf-8?B?M3NLQllaRDZFUHNrUnpLSGlsV0xkMk15Z0E4MTJpdTB4L2V5OGxhV29YQ3p4?=
+ =?utf-8?B?cVNVNlM1Q1lTNDBRd0ZybnpjeU94eE16R2F4QXlHVlM5NEs0UEdrM0l3M3Yx?=
+ =?utf-8?B?VXc9PQ==?=
+X-OriginatorOrg: genexis.eu
+X-MS-Exchange-CrossTenant-Network-Message-Id: a0b36d26-73fb-4ee3-a9a9-08dd9dc8f621
+X-MS-Exchange-CrossTenant-AuthSource: AM6PR08MB4215.eurprd08.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 May 2025 08:28:52.8754
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 May 2025 09:21:00.7903
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 889bfe61-8c21-436b-bc07-3908050c8236
+X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: jZTqAePmsD7jCRaAcugtiVnEnt0P6TaKFtDCK7txjy5M6FlKPJEFYSpeY4qPsqqUjO148yw3EMnJL+MNy2m21QCTnP2KmRPQ48Zlw5BM4Vo=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY0PR02MB6737
+X-MS-Exchange-CrossTenant-UserPrincipalName: ZlZvR07DX5wAbeGmEHkD4f29XxxdMJqnh+vp6YseLoiygCTDIwUfT/+pKrYf0FjlA07+qfqHE/8n0LEtMpIAh9A5NgY0TUu8ExquR4VQa14=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PAVPR08MB9481
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250528_012906_405132_3F630902 
-X-CRM114-Status: GOOD (  12.22  )
+X-CRM114-CacheID: sfid-20250528_022110_702560_DCF68170 
+X-CRM114-Status: GOOD (  14.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -180,126 +184,191 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When driver handles the napi rx polling requests, the netdev might
-have been released by the dellink logic triggered by the disconnect
-operation on user plane. However, in the logic of processing skb in
-polling, an invalid netdev is still being used, which causes a panic.
+Hi.
 
-BUG: kernel NULL pointer dereference, address: 00000000000000f1
-Oops: 0000 [#1] PREEMPT SMP NOPTI
-RIP: 0010:dev_gro_receive+0x3a/0x620
-[...]
-Call Trace:
- <IRQ>
- ? __die_body+0x68/0xb0
- ? page_fault_oops+0x379/0x3e0
- ? exc_page_fault+0x4f/0xa0
- ? asm_exc_page_fault+0x22/0x30
- ? __pfx_t7xx_ccmni_recv_skb+0x10/0x10 [mtk_t7xx (HASH:1400 7)]
- ? dev_gro_receive+0x3a/0x620
- napi_gro_receive+0xad/0x170
- t7xx_ccmni_recv_skb+0x48/0x70 [mtk_t7xx (HASH:1400 7)]
- t7xx_dpmaif_napi_rx_poll+0x590/0x800 [mtk_t7xx (HASH:1400 7)]
- net_rx_action+0x103/0x470
- irq_exit_rcu+0x13a/0x310
- sysvec_apic_timer_interrupt+0x56/0x90
- </IRQ>
+On 28/05/2025 00:20, Christian Marangi wrote:
+> Add all the required entry to add suppot for Airoha AN7583 PINs.
+> 
+> Where possible the same function group are used from Airoha EN7581 to
+> reduce code duplication.
+> 
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> ---
+>   drivers/pinctrl/mediatek/pinctrl-airoha.c | 733 ++++++++++++++++++++++
+>   1 file changed, 733 insertions(+)
+> 
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-airoha.c b/drivers/pinctrl/mediatek/pinctrl-airoha.c
+> index 8c8d5b598f4f..0960649d5d66 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-airoha.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-airoha.c
+> @@ -75,6 +75,7 @@
+>   #define GPIO_PCM_SPI_CS3_MODE_MASK		BIT(20)
+>   #define GPIO_PCM_SPI_CS2_MODE_P156_MASK		BIT(19)
+>   #define GPIO_PCM_SPI_CS2_MODE_P128_MASK		BIT(18)
+> +#define AN7583_GPIO_PCM_SPI_CS2_MODE_MASK	BIT(18)
+>   #define GPIO_PCM_SPI_CS1_MODE_MASK		BIT(17)
+>   #define GPIO_PCM_SPI_MODE_MASK			BIT(16)
+>   #define GPIO_PCM2_MODE_MASK			BIT(13)
 
-Fixes: 5545b7b9f294 ("net: wwan: t7xx: Add NAPI support")
-Signed-off-by: Jinjian Song <jinjian.song@fibocom.com>
----
- drivers/net/wwan/t7xx/t7xx_netdev.c | 19 ++++++++++---------
- 1 file changed, 10 insertions(+), 9 deletions(-)
+Missing are the pinmuxes for the following:
 
-diff --git a/drivers/net/wwan/t7xx/t7xx_netdev.c b/drivers/net/wwan/t7xx/t7xx_netdev.c
-index 91fa082e9cab..48007384c030 100644
---- a/drivers/net/wwan/t7xx/t7xx_netdev.c
-+++ b/drivers/net/wwan/t7xx/t7xx_netdev.c
-@@ -172,7 +172,7 @@ static void t7xx_ccmni_start(struct t7xx_ccmni_ctrl *ctlb)
- 	int i;
- 
- 	for (i = 0; i < ctlb->nic_dev_num; i++) {
--		ccmni = ctlb->ccmni_inst[i];
-+		ccmni = READ_ONCE(ctlb->ccmni_inst[i]);
- 		if (!ccmni)
- 			continue;
- 
-@@ -192,7 +192,7 @@ static void t7xx_ccmni_pre_stop(struct t7xx_ccmni_ctrl *ctlb)
- 	int i;
- 
- 	for (i = 0; i < ctlb->nic_dev_num; i++) {
--		ccmni = ctlb->ccmni_inst[i];
-+		ccmni = READ_ONCE(ctlb->ccmni_inst[i]);
- 		if (!ccmni)
- 			continue;
- 
-@@ -210,7 +210,7 @@ static void t7xx_ccmni_post_stop(struct t7xx_ccmni_ctrl *ctlb)
- 		t7xx_ccmni_disable_napi(ctlb);
- 
- 	for (i = 0; i < ctlb->nic_dev_num; i++) {
--		ccmni = ctlb->ccmni_inst[i];
-+		ccmni = READ_ONCE(ctlb->ccmni_inst[i]);
- 		if (!ccmni)
- 			continue;
- 
-@@ -302,7 +302,7 @@ static int t7xx_ccmni_wwan_newlink(void *ctxt, struct net_device *dev, u32 if_id
- 	ccmni->ctlb = ctlb;
- 	ccmni->dev = dev;
- 	atomic_set(&ccmni->usage, 0);
--	ctlb->ccmni_inst[if_id] = ccmni;
-+	WRITE_ONCE(ctlb->ccmni_inst[if_id], ccmni);
- 
- 	ret = register_netdevice(dev);
- 	if (ret)
-@@ -321,9 +321,10 @@ static void t7xx_ccmni_wwan_dellink(void *ctxt, struct net_device *dev, struct l
- 	if (if_id >= ARRAY_SIZE(ctlb->ccmni_inst))
- 		return;
- 
--	if (WARN_ON(ctlb->ccmni_inst[if_id] != ccmni))
-+	if (WARN_ON(READ_ONCE(ctlb->ccmni_inst[if_id]) != ccmni))
- 		return;
- 
-+	WRITE_ONCE(ctlb->ccmni_inst[if_id], NULL);
- 	unregister_netdevice(dev);
- }
- 
-@@ -419,7 +420,7 @@ static void t7xx_ccmni_recv_skb(struct t7xx_ccmni_ctrl *ccmni_ctlb, struct sk_bu
- 
- 	skb_cb = T7XX_SKB_CB(skb);
- 	netif_id = skb_cb->netif_idx;
--	ccmni = ccmni_ctlb->ccmni_inst[netif_id];
-+	ccmni = READ_ONCE(ccmni_ctlb->ccmni_inst[netif_id]);
- 	if (!ccmni) {
- 		dev_kfree_skb(skb);
- 		return;
-@@ -441,7 +442,7 @@ static void t7xx_ccmni_recv_skb(struct t7xx_ccmni_ctrl *ccmni_ctlb, struct sk_bu
- 
- static void t7xx_ccmni_queue_tx_irq_notify(struct t7xx_ccmni_ctrl *ctlb, int qno)
- {
--	struct t7xx_ccmni *ccmni = ctlb->ccmni_inst[0];
-+	struct t7xx_ccmni *ccmni = READ_ONCE(ctlb->ccmni_inst[0]);
- 	struct netdev_queue *net_queue;
- 
- 	if (netif_running(ccmni->dev) && atomic_read(&ccmni->usage) > 0) {
-@@ -453,7 +454,7 @@ static void t7xx_ccmni_queue_tx_irq_notify(struct t7xx_ccmni_ctrl *ctlb, int qno
- 
- static void t7xx_ccmni_queue_tx_full_notify(struct t7xx_ccmni_ctrl *ctlb, int qno)
- {
--	struct t7xx_ccmni *ccmni = ctlb->ccmni_inst[0];
-+	struct t7xx_ccmni *ccmni = READ_ONCE(ctlb->ccmni_inst[0]);
- 	struct netdev_queue *net_queue;
- 
- 	if (atomic_read(&ccmni->usage) > 0) {
-@@ -471,7 +472,7 @@ static void t7xx_ccmni_queue_state_notify(struct t7xx_pci_dev *t7xx_dev,
- 	if (ctlb->md_sta != MD_STATE_READY)
- 		return;
- 
--	if (!ctlb->ccmni_inst[0]) {
-+	if (!READ_ONCE(ctlb->ccmni_inst[0])) {
- 		dev_warn(&t7xx_dev->pdev->dev, "No netdev registered yet\n");
- 		return;
- 	}
--- 
-2.34.1
+	{ RG_BCDR_FLUSH_EN,	IOMUX3, 1<<28},
+	{ RG_GPIO_PON2_MODE,	IOMUX3, 1<<27},
+	{ RG_MDIO_0_GPIO_MODE,	IOMUX3, 1<<26},
+	{ RG_MDC_0_GPIO_MODE,	IOMUX3, 1<<25},
+	{ RG_UART_RXD_GPIO_MODE,	IOMUX3, 1<<24},
+	{ RG_UART_TXD_GPIO_MODE,	IOMUX3, 1<<23},
+	{ RG_SPI_MISO_GPIO_MODE,	IOMUX3, 1<<22},
+	{ RG_SPI_MOSI_GPIO_MODE,	IOMUX3, 1<<21},
+	{ RG_SPI_CS_GPIO_MODE,	IOMUX3, 1<<20},
+	{ RG_SPI_CLK_GPIO_MODE,	IOMUX3, 1<<19},
+	{ RG_I2C1_SDA_GPIO_MODE,	IOMUX3, 1<<18},
+	{ RG_I2C1_SCL_GPIO_MODE,	IOMUX3, 1<<17},
+	{ RG_I2C0_SDA_GPIO_MODE,	IOMUX3, 1<<16},
+	{ RG_I2C0_SCL_GPIO_MODE,	IOMUX3, 1<<15},
 
+
+
+> @@ -129,6 +130,8 @@
+>   
+>   /* CONF */
+>   #define REG_I2C_SDA_E2				0x001c
+> +#define AN7583_I2C1_SCL_E2_MASK			BIT(16)
+> +#define AN7583_I2C1_SDA_E2_MASK			BIT(15)
+>   #define SPI_MISO_E2_MASK			BIT(14)
+>   #define SPI_MOSI_E2_MASK			BIT(13)
+>   #define SPI_CLK_E2_MASK				BIT(12)
+> @@ -136,12 +139,16 @@
+>   #define PCIE2_RESET_E2_MASK			BIT(10)
+>   #define PCIE1_RESET_E2_MASK			BIT(9)
+>   #define PCIE0_RESET_E2_MASK			BIT(8)
+> +#define AN7583_MDIO_0_E2_MASK			BIT(5)
+> +#define AN7583_MDC_0_E2_MASK			BIT(4)
+>   #define UART1_RXD_E2_MASK			BIT(3)
+>   #define UART1_TXD_E2_MASK			BIT(2)
+>   #define I2C_SCL_E2_MASK				BIT(1)
+>   #define I2C_SDA_E2_MASK				BIT(0)
+>   
+>   #define REG_I2C_SDA_E4				0x0020
+> +#define AN7583_I2C1_SCL_E4_MASK			BIT(16)
+> +#define AN7583_I2C1_SDA_E4_MASK			BIT(15)
+>   #define SPI_MISO_E4_MASK			BIT(14)
+>   #define SPI_MOSI_E4_MASK			BIT(13)
+>   #define SPI_CLK_E4_MASK				BIT(12)
+> @@ -149,6 +156,8 @@
+>   #define PCIE2_RESET_E4_MASK			BIT(10)
+>   #define PCIE1_RESET_E4_MASK			BIT(9)
+>   #define PCIE0_RESET_E4_MASK			BIT(8)
+> +#define AN7583_MDIO_0_E4_MASK			BIT(5)
+> +#define AN7583_MDC_0_E4_MASK			BIT(4)
+>   #define UART1_RXD_E4_MASK			BIT(3)
+>   #define UART1_TXD_E4_MASK			BIT(2)
+>   #define I2C_SCL_E4_MASK				BIT(1)
+> @@ -160,6 +169,8 @@
+>   #define REG_GPIO_H_E4				0x0030
+>   
+>   #define REG_I2C_SDA_PU				0x0044
+> +#define AN7583_I2C1_SCL_PU_MASK			BIT(16)
+> +#define AN7583_I2C1_SDA_PU_MASK			BIT(15)
+>   #define SPI_MISO_PU_MASK			BIT(14)
+>   #define SPI_MOSI_PU_MASK			BIT(13)
+>   #define SPI_CLK_PU_MASK				BIT(12)
+> @@ -167,12 +178,16 @@
+>   #define PCIE2_RESET_PU_MASK			BIT(10)
+>   #define PCIE1_RESET_PU_MASK			BIT(9)
+>   #define PCIE0_RESET_PU_MASK			BIT(8)
+> +#define AN7583_MDIO_0_PU_MASK			BIT(5)
+> +#define AN7583_MDC_0_PU_MASK			BIT(4)
+>   #define UART1_RXD_PU_MASK			BIT(3)
+>   #define UART1_TXD_PU_MASK			BIT(2)
+>   #define I2C_SCL_PU_MASK				BIT(1)
+>   #define I2C_SDA_PU_MASK				BIT(0)
+>   
+>   #define REG_I2C_SDA_PD				0x0048
+> +#define AN7583_I2C1_SDA_PD_MASK			BIT(16)
+> +#define AN7583_I2C1_SCL_PD_MASK			BIT(15)
+>   #define SPI_MISO_PD_MASK			BIT(14)
+>   #define SPI_MOSI_PD_MASK			BIT(13)
+>   #define SPI_CLK_PD_MASK				BIT(12)
+> @@ -180,6 +195,8 @@
+>   #define PCIE2_RESET_PD_MASK			BIT(10)
+>   #define PCIE1_RESET_PD_MASK			BIT(9)
+>   #define PCIE0_RESET_PD_MASK			BIT(8)
+> +#define AN7583_MDIO_0_PD_MASK			BIT(5)
+> +#define AN7583_MDC_0_PD_MASK			BIT(4)
+>   #define UART1_RXD_PD_MASK			BIT(3)
+>   #define UART1_TXD_PD_MASK			BIT(2)
+>   #define I2C_SCL_PD_MASK				BIT(1)
+> @@ -627,10 +644,223 @@ static const struct pingroup en7581_pinctrl_groups[] = {
+>   	PINCTRL_PIN_GROUP("pcie_reset2", en7581_pcie_reset2),
+>   };
+>   
+> +static struct pinctrl_pin_desc an7583_pinctrl_pins[] = {
+> +	PINCTRL_PIN(2, "gpio0"),
+> +	PINCTRL_PIN(3, "gpio1"),
+> +	PINCTRL_PIN(4, "gpio2"),
+> +	PINCTRL_PIN(5, "gpio3"),
+> +	PINCTRL_PIN(6, "gpio4"),
+> +	PINCTRL_PIN(7, "gpio5"),
+> +	PINCTRL_PIN(8, "gpio6"),
+> +	PINCTRL_PIN(9, "gpio7"),
+> +	PINCTRL_PIN(10, "gpio8"),
+> +	PINCTRL_PIN(11, "gpio9"),
+> +	PINCTRL_PIN(12, "gpio10"),
+> +	PINCTRL_PIN(13, "gpio11"),
+> +	PINCTRL_PIN(14, "gpio12"),
+> +	PINCTRL_PIN(15, "gpio13"),
+> +	PINCTRL_PIN(16, "gpio14"),
+> +	PINCTRL_PIN(17, "gpio15"),
+> +	PINCTRL_PIN(18, "gpio16"),
+> +	PINCTRL_PIN(19, "gpio17"),
+> +	PINCTRL_PIN(20, "gpio18"),
+> +	PINCTRL_PIN(21, "gpio19"),
+> +	PINCTRL_PIN(22, "gpio20"),
+> +	PINCTRL_PIN(23, "gpio21"),
+> +	PINCTRL_PIN(24, "gpio22"),
+> +	PINCTRL_PIN(25, "gpio23"),
+> +	PINCTRL_PIN(26, "gpio24"),
+> +	PINCTRL_PIN(27, "gpio25"),
+> +	PINCTRL_PIN(28, "gpio26"),
+> +	PINCTRL_PIN(29, "gpio27"),
+> +	PINCTRL_PIN(30, "gpio28"),
+> +	PINCTRL_PIN(31, "gpio29"),
+> +	PINCTRL_PIN(32, "gpio30"),
+> +	PINCTRL_PIN(33, "gpio31"),
+> +	PINCTRL_PIN(34, "gpio32"),
+> +	PINCTRL_PIN(35, "gpio33"),
+> +	PINCTRL_PIN(36, "gpio34"),
+> +	PINCTRL_PIN(37, "gpio35"),
+> +	PINCTRL_PIN(38, "gpio36"),
+> +	PINCTRL_PIN(39, "gpio37"),
+> +	PINCTRL_PIN(40, "gpio38"),
+> +	PINCTRL_PIN(41, "i2c0_scl"),
+> +	PINCTRL_PIN(42, "i2c0_sda"),
+> +	PINCTRL_PIN(43, "i2c1_scl"),
+> +	PINCTRL_PIN(44, "i2c1_sda"),
+> +	PINCTRL_PIN(45, "spi_clk"),
+> +	PINCTRL_PIN(46, "spi_cs"),
+> +	PINCTRL_PIN(47, "spi_mosi"),
+> +	PINCTRL_PIN(48, "spi_miso"),
+> +	PINCTRL_PIN(49, "uart_txd"),
+> +	PINCTRL_PIN(50, "uart_rxd"),
+> +	PINCTRL_PIN(51, "pcie_reset0"),
+> +	PINCTRL_PIN(52, "pcie_reset1"),
+> +	PINCTRL_PIN(53, "mdc_0"),
+> +	PINCTRL_PIN(54, "mdio_0"),
+> +};
+> +
+> +static const int an7583_pon_pins[] = { 15, 16, 17, 18, 19, 20 };
+
+I have other pin numbers listed in my documentation (my numbers align 
+with gpio number).
+
+static const int pon_pins0[] = { 13, 14, 17, 18 };
+static const int pon_pins1[] = { 36, 37, 38 };
+static const int olt_pins0[] = { 34, 35, 36, 37, 38 };
+
+
+MvH
+Benjamin Larsson
 
