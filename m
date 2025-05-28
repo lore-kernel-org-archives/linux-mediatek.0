@@ -4,66 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45784C3ABB2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 May 2025 07:20:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C9A5C3ABB2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 May 2025 07:38:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6f331hY1dKklTJC3M7r5PSvsoBF2GanNNKIO4y/o6PU=; b=gD6M5II0llpyE9FiqB2y738CP7
-	NBZaTiW+kZ9YIWcnh8zeiDIWZomKU230OT8BRVTB0NL7T8p1nWbaZEAy82puTF5uV3gENCrgcS+nh
-	Waeq3iGLCFXrCa7Yn/DyFKn3O5ywK/7EQT3oxOb9m1WKXN6kS3654jWQRaiP6gEXcVSrY4K72ycbE
-	tJCLCMvqaB/DBXUZFhdysUqODrV+D/P5pNdi7rjcYZH6DfCHf11WaSzcngtzoE71P0h9SmEzB4Eru
-	lgcFR1E7Ti+0pfGiw+PaTNI0/NtsVvLN8hyQ+smj9lfFrDZSayNOuQyYjt9kpPy1xY18ONkulYwsP
-	uDcuLvuQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=3R0DPJde5QP/N/HQ5yaIUnWadGPDvaKYjHWsht6yKtM=; b=q/NfspC7YiSUYzPsblOURlcT0O
+	LrZOzYK7uMT2i6kCe4pPsNdphuK7pVdvCGOqXRk3A9wBrJBUGxIVwSke9zlXwafRY5jB+7KQ3K1Lk
+	X3glt0XBRQOJ08W2TcWsmUeNqMjmcbQrBHvL9FA8USwbCpWFLugWliWCygPAffUOWGhChpy4HRIMf
+	W2bJf0hpiPOjgt6B1PVCA7OAko6SSb8XRc4+XHa1xR/7TphfXP4a1m3wOsrE2uSTFMWJB8dKuyerT
+	I+1JQGCi00tokNehrS/l9E0Pd1Q4+jfsEqgnUXVdktp/So4t6Aw3DaE+/jDpC2y2eg8yQvlDaccuH
+	H5T29QMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKB5W-0000000CPun-3FbP;
-	Wed, 28 May 2025 07:20:34 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uKBMP-0000000CS6s-1PrQ;
+	Wed, 28 May 2025 07:38:01 +0000
+Received: from mail.profinix.pl ([89.46.78.5])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKB1E-0000000CPJg-1u6k;
-	Wed, 28 May 2025 07:16:08 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id BFB58614B7;
-	Wed, 28 May 2025 07:16:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ECC15C4CEE7;
-	Wed, 28 May 2025 07:16:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1748416567;
-	bh=K9xLFL3YjxEg/yT53Mbd2sI0G3a9mzJ1vSU6/nzZZGc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LrJmZD+eu3rGOkhdZyxN4JM0eL8FuhebF+ryNOrcZ3k1MneHJ1X5+eEXS7NrupIye
-	 wA5u5eQFtYyQuPWcieS+EjiAS5elaLKloPDwlUe9b6vJBmF1sWotJ45tquAxoX47KP
-	 ao5OXqAWHI+6evaZxj0jDiKgTEEPTST6erF+kpU7erw3SKEuo7IU48OTDJW2u/3lng
-	 u2P/FTign5MUZqI4L/xBu9AqdJBd86+DU0xYw0yu6xeGuoC6ONgeweeRJk6PcHWB+p
-	 ROe0CE/Xk8BE0qKGzovhVkhfKPVBhYf2Oq5fXfqZDBdNXudraKMyoJEco5YK1XljO8
-	 xw2DClFYdtBRg==
-Date: Wed, 28 May 2025 09:16:04 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Sean Wang <sean.wang@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Benjamin Larsson <benjamin.larsson@genexis.eu>,
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, stable@vger.kernel.org
-Subject: Re: [PATCH 1/6] pinctrl: airoha: fix wrong PHY LED mux value for
- LED1 GPIO46
-Message-ID: <aDa4NCTzyzw0mnfE@lore-desk>
-References: <20250527222040.32000-1-ansuelsmth@gmail.com>
- <20250527222040.32000-2-ansuelsmth@gmail.com>
+	id 1uKBLN-0000000CS0n-1t3K
+	for linux-mediatek@lists.infradead.org;
+	Wed, 28 May 2025 07:36:59 +0000
+Received: by mail.profinix.pl (Postfix, from userid 1002)
+	id CD38C83ADE; Wed, 28 May 2025 09:36:43 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=profinix.pl; s=mail;
+	t=1748417811; bh=3R0DPJde5QP/N/HQ5yaIUnWadGPDvaKYjHWsht6yKtM=;
+	h=Date:From:To:Subject:From;
+	b=D4LkoBLgYgTKJvS0aN1o1F6qLIGaFVsiraN+JEPOcc6I5ontA2vCX1phYR6kk3k7d
+	 ygOmUqijjAcF0pvP4D2t+qWv0XgCVvGJ+2rcqH/D30I1HKfW2VUKiRmfsPUkByZ03y
+	 PXEGQYjwoOhyB4dIN9raNuiE6o92o3p962YKdBvlbbNoTvV9wjxlFXYxpOgMcjPNnC
+	 5hggFPJDGLtyB4NTbPv/DKam+RkQCCh2UTss4aXZu0yYTehThu/1KZd6wN3t6nFYRm
+	 dJtTNf8Rjk4AfAZusPQ2FTo0tigXhEBSu4n1hpH9DAO+4A8U7b7K0F3iE6xZg7m9dN
+	 SZvq652tx/e1A==
+Received: by mail.profinix.pl for <linux-mediatek@lists.infradead.org>; Wed, 28 May 2025 07:36:07 GMT
+Message-ID: <20250528084500-0.1.fu.5well.0.c62gh3n3nb@profinix.pl>
+Date: Wed, 28 May 2025 07:36:07 GMT
+From: "Filip Ostrowski" <filip.ostrowski@profinix.pl>
+To: <linux-mediatek@lists.infradead.org>
+Subject: Prezentacja
+X-Mailer: mail.profinix.pl
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="CoT/qmCue5gfNYHx"
-Content-Disposition: inline
-In-Reply-To: <20250527222040.32000-2-ansuelsmth@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250528_003658_181068_FC47618F 
+X-CRM114-Status: UNSURE (   0.24  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,98 +66,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Dzie=C5=84 dobry!
 
---CoT/qmCue5gfNYHx
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Czy m=C3=B3g=C5=82bym przedstawi=C4=87 rozwi=C4=85zanie, kt=C3=B3re umo=C5=
+=BCliwia monitoring ka=C5=BCdego auta w czasie rzeczywistym w tym jego po=
+zycj=C4=99, zu=C5=BCycie paliwa i przebieg?
 
-> In all the MUX value for LED1 GPIO46 there is a Copy-Paste error where
-> the MUX value is set to LED0_MODE_MASK instead of LED1_MODE_MASK.
->=20
-> This wasn't notice as there were no board that made use of the
-> secondary PHY LED but looking at the internal Documentation the actual
-> value should be LED1_MODE_MASK similar to the other GPIO entry.
->=20
-> Fix the wrong value to apply the correct MUX configuration.
+Dodatkowo nasze narz=C4=99dzie minimalizuje koszty utrzymania samochod=C3=
+=B3w, skraca czas przejazd=C3=B3w, a tak=C5=BCe umo=C5=BCliwia tworzenie =
+planu tras czy dostaw.
 
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Z naszej wiedzy i do=C5=9Bwiadczenia korzysta ju=C5=BC ponad 49 tys. Klie=
+nt=C3=B3w. Monitorujemy 809 000 pojazd=C3=B3w na ca=C5=82ym =C5=9Bwiecie,=
+ co jest nasz=C4=85 najlepsz=C4=85 wizyt=C3=B3wk=C4=85.
 
->=20
-> Cc: stable@vger.kernel.org
-> Fixes: 1c8ace2d0725 ("pinctrl: airoha: Add support for EN7581 SoC")
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> ---
->  drivers/pinctrl/mediatek/pinctrl-airoha.c | 16 ++++++++--------
->  1 file changed, 8 insertions(+), 8 deletions(-)
->=20
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-airoha.c b/drivers/pinctrl/=
-mediatek/pinctrl-airoha.c
-> index b97b28ebb37a..8ef7f88477aa 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-airoha.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-airoha.c
-> @@ -1752,8 +1752,8 @@ static const struct airoha_pinctrl_func_group phy1_=
-led1_func_group[] =3D {
->  		.regmap[0] =3D {
->  			AIROHA_FUNC_MUX,
->  			REG_GPIO_2ND_I2C_MODE,
-> -			GPIO_LAN3_LED0_MODE_MASK,
-> -			GPIO_LAN3_LED0_MODE_MASK
-> +			GPIO_LAN3_LED1_MODE_MASK,
-> +			GPIO_LAN3_LED1_MODE_MASK
->  		},
->  		.regmap[1] =3D {
->  			AIROHA_FUNC_MUX,
-> @@ -1816,8 +1816,8 @@ static const struct airoha_pinctrl_func_group phy2_=
-led1_func_group[] =3D {
->  		.regmap[0] =3D {
->  			AIROHA_FUNC_MUX,
->  			REG_GPIO_2ND_I2C_MODE,
-> -			GPIO_LAN3_LED0_MODE_MASK,
-> -			GPIO_LAN3_LED0_MODE_MASK
-> +			GPIO_LAN3_LED1_MODE_MASK,
-> +			GPIO_LAN3_LED1_MODE_MASK
->  		},
->  		.regmap[1] =3D {
->  			AIROHA_FUNC_MUX,
-> @@ -1880,8 +1880,8 @@ static const struct airoha_pinctrl_func_group phy3_=
-led1_func_group[] =3D {
->  		.regmap[0] =3D {
->  			AIROHA_FUNC_MUX,
->  			REG_GPIO_2ND_I2C_MODE,
-> -			GPIO_LAN3_LED0_MODE_MASK,
-> -			GPIO_LAN3_LED0_MODE_MASK
-> +			GPIO_LAN3_LED1_MODE_MASK,
-> +			GPIO_LAN3_LED1_MODE_MASK
->  		},
->  		.regmap[1] =3D {
->  			AIROHA_FUNC_MUX,
-> @@ -1944,8 +1944,8 @@ static const struct airoha_pinctrl_func_group phy4_=
-led1_func_group[] =3D {
->  		.regmap[0] =3D {
->  			AIROHA_FUNC_MUX,
->  			REG_GPIO_2ND_I2C_MODE,
-> -			GPIO_LAN3_LED0_MODE_MASK,
-> -			GPIO_LAN3_LED0_MODE_MASK
-> +			GPIO_LAN3_LED1_MODE_MASK,
-> +			GPIO_LAN3_LED1_MODE_MASK
->  		},
->  		.regmap[1] =3D {
->  			AIROHA_FUNC_MUX,
-> --=20
-> 2.48.1
->=20
+Bardzo prosz=C4=99 o e-maila zwrotnego, je=C5=9Bli mogliby=C5=9Bmy wsp=C3=
+=B3lnie om=C3=B3wi=C4=87 potencja=C5=82 wykorzystania takiego rozwi=C4=85=
+zania w Pa=C5=84stwa firmie.
 
---CoT/qmCue5gfNYHx
-Content-Type: application/pgp-signature; name=signature.asc
 
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaDa4NAAKCRA6cBh0uS2t
-rOCOAQDIlVEn3j31KLCPSoLJ6jFOUiwWCNqW5qOv7UtW1mOCagEAh6LZiTafRxQs
-HXf7z9JkF4bcnAu1w5WH7iDwvjnpNw0=
-=lKi2
------END PGP SIGNATURE-----
-
---CoT/qmCue5gfNYHx--
+Pozdrawiam
+Filip Ostrowski
 
