@@ -4,77 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18CF2C5B54E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 May 2025 10:42:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D777C5AD49
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 May 2025 10:42:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nXTyYXfzhcaLBKxfXPlEyeZbv/5uabWWatfOoXzctws=; b=YI069xwnBywV0tTgG9M4KETaBq
-	8BH73Zw2CLHGYssEHTBKxjHjropDQ3LsQLrMMrT2LconSioH88DD+bsFnVOhU9k+NZn9/faWO32Mr
-	JdZJNNszlZ65veR5zUghTZcz7nVdOTC2uNOPeHU85WXp5xSLDMaUFvn1cvRoIYftjF7Qzl+pC6RNV
-	zURjZCzjFDEfr4wZfavSjokNvYEYWkXGUMLbX3zG8C83H9PFw25Ak4NjNKuxn/SyId4dCIyfJig6T
-	YvpqOYUEEQ3BmX2ptaJ+4M3u0PMCu78NN6C1qOwzmpImRtoazD9/1Qa/8m/o/2wZzk0HFJcpxAkgS
-	Nzmv1VLA==;
+	bh=eCWZ95h3v8faxWII4r+ll4sOFmAUxo+1NhX1BBWmSo0=; b=PPmKdGEisR1bW3aWOYiYJycYQg
+	0iB16aVokNgqoiKrccUx2vV0mzHCwg+XSTRnxorZXJZJsHSu1CzJr8bzbJgEDZZjW2aeH7OYpq3XN
+	m7SD22ag+keNfo8R9UkN4IIxL2A9166TpJsxcAP2/0Jh2+5SNlTJWpGWzKdxR9zEAgcfA1hPlE6hZ
+	naSiDXgRVdRPVuQa2CskLGW8wLnQCZkYh6VAG4P09YFHHTNimNWa0gEwF7c9fKBvk7PDLowYirgRm
+	zjQVhYoLzcsx3Dg07V0hQ84LAJVktCXJ/JIcep57McVVmY9AJ9ipQLypd79hNqI1XywhJbO2Mv1cQ
+	18xPjhqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKEEU-0000000CsQp-0e48;
-	Wed, 28 May 2025 10:42:02 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1uKEEa-0000000CsZZ-3sC0;
+	Wed, 28 May 2025 10:42:08 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKEEE-0000000CsE5-0RzV
+	id 1uKEEH-0000000CsF9-1p2j
 	for linux-mediatek@lists.infradead.org;
-	Wed, 28 May 2025 10:41:49 +0000
-Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-442f4d40152so5986985e9.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 28 May 2025 03:41:46 -0700 (PDT)
+	Wed, 28 May 2025 10:41:52 +0000
+Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-44069f5f3aaso5069395e9.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 28 May 2025 03:41:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1748428905; x=1749033705; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1748428908; x=1749033708; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=nXTyYXfzhcaLBKxfXPlEyeZbv/5uabWWatfOoXzctws=;
-        b=PBULy6KzP+XTx2hMfcchxeKUrKE0XhZ4P8FzRidSPbNRaNdryPlhsdr84bihx/aDT8
-         T9pMGO3/AuyGAMETTfDD3JNOnEpgA8aFPmVG9tM8ijF/FAszY2PxID7drMlhHOTREnvA
-         dnYfspTFjf90Qu0NJdLxDaIn1bxYeDb8LmN8BPG8lSRn4h52iiVZdkdRpLUUKbjTafEv
-         NOEps4MLiw+FRmykVkA6ZcuaAMoc9N5eKQpD0Cx0If3Ah4V/KJfS6etzbll0cbqyfhyn
-         ZYnuzCaF1SdKnAZBcnBhL5jo9fsCiSsyqYbJd4mHnp+fzgZAheuk0fXeDS3kUYRHTgj4
-         vOiA==
+        bh=eCWZ95h3v8faxWII4r+ll4sOFmAUxo+1NhX1BBWmSo0=;
+        b=iqrJywAkMvgAxzRJoj+QtrBl8XrhUGyJsUhQLgxJ7Qlm0uqGYnEPFZIgiTBbu+WHVN
+         d/JEPh5u1NGy45oQvAV0qWuqVfkm3DFG804AncUV9MF7T9KQVFjnq7XRdIJCoi5OL1nW
+         JkhCLBxrK/iv7e9a6icNGmvJd/pEXuQKZhoGLmSrckf9nJcrsNgGWsGwrKqguiS5LNKa
+         MNCq8GrL2WrAGWReL0fhrGQ8P4ZKsv0dj9S1w4zfVHwuGeE+9ujQrm2RwF5nyLBglzLm
+         nE205G8F4Of78slW3JZCULr5nfGm4uRHLQW4LtCM/A8TeXqTNbmGttoCrn+b6eNkMl5f
+         Pcqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1748428905; x=1749033705;
+        d=1e100.net; s=20230601; t=1748428908; x=1749033708;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=nXTyYXfzhcaLBKxfXPlEyeZbv/5uabWWatfOoXzctws=;
-        b=wPfU1+AgrtENlQRU7lFUJfm630rFpQ9kjYknTPAeSU4RcvaGIOOTFD8hSFx/JUW6KA
-         rngj2cLHWvlmYk9oUtFnnKXkhre84oz2tNfvP2Nd3c11NK0C6ruDf5l3YiRGB0gWRCE9
-         EImewoqLC+vqIBuUyi+KRzZXgTH4Les5Opdm1LuAJvp7L8QkwxL+C9oowfVQbmeO405v
-         TcqPt4zqoXmn5OHrp4WprglkPAaWxBUhlv2VcQMr2xHw5jWeSUaeyQlVM87lU2xUE5Ls
-         JX+am3ZsKe/7rDzNngeOt+fey4Rv2ANj/BsJZoyEysOEDHzDdKAgeFS5IUvAF/keGzWC
-         VeUw==
-X-Forwarded-Encrypted: i=1; AJvYcCVj0mIFwD9aWHpzubKm4cCrSyfySyWcaVSFwWtQliwExHK74EVTYrJxKz1wRgMilrxq8+c+VZf1hFTLJ8aSKA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxVCqfXQplEwftKE0ZlH4wri24GD/4hDJ/Pc/Zr442P1pzR0a0x
-	eVXx/xyK4C3lkAe1tIpX8vyjqNoTBNWYljYPl2HtLB2Zk1/9V6JWsnXosXd1oOX826E=
-X-Gm-Gg: ASbGncsuf9ti7i+G/871Sw/zUFyEbCoSHIMhUFPmNVQVfCxRV5kVh1VbQdcBRfR5qpL
-	Fi8ptlZRSQQDMdHRtsGwU/+oh9uHnSsEB+O3iCu5WBI/Hz6IDInD2p8nfZVpmLps1AHvDsAXw4l
-	WBXmJxX5BDrIvsb4ZPJiNhDPW0E+FwmMiswiH1RBmNtGngFTYRAY/xxv71jkhMwseemBJlzVJM1
-	8AOBKOBu4GTMoW70R86Iyf+tNCZB2/qzr2pQU4YBeRJ9CN82mzl4ecyoau8nDV8xNhW4ZUfkj0W
-	lQZ00WaFvehi+Cnpnkl2bXhQrrE7dNfm0Y+3HDDx3SEhQJC3GCQMf7oSMwSAwFFpw+iLuVA=
-X-Google-Smtp-Source: AGHT+IEA4AZtTD+Q8/VZ37CChuwEWmOT9diS1X23uFatCSgyEJyQiHDJbW9CLfhnKvp4tXypbpndMw==
-X-Received: by 2002:a05:600c:1ca3:b0:43b:bbb9:e25f with SMTP id 5b1f17b1804b1-44da83f6d0amr44456075e9.6.1748428904593;
-        Wed, 28 May 2025 03:41:44 -0700 (PDT)
+        bh=eCWZ95h3v8faxWII4r+ll4sOFmAUxo+1NhX1BBWmSo0=;
+        b=BWZquFIxJGpB/P0dvwyrjoHvHCs0ksxJKnBvFsur2uGRuMxwEALgOo/xEEh/ffKBhw
+         TwqQ0J0bL5kppNJr9ILtr5ikFjMmEHY/PpKJU6q9/SuCQaxZoYk+vOmBXNiEbEVnuvYX
+         a4/Uk+IXXPo2Vdk2cA1cu7ltR7ndCXt1r6imlNtA1tb+V2T2OjF1qkoiVi4fHZPBr5Yj
+         xyMM50mo9HqRyUxKCDekOLOL3MrFU0AX24CQ3myPCMTxYJpSfDoS817lmGDzRvGWRPIt
+         j4FwtgzkUfC8IQxW5FdXHbwJaB5mVbYCWu2x0fqhF23qqcYOQrrmx0vcQt54SZZ9+FHi
+         xLJA==
+X-Forwarded-Encrypted: i=1; AJvYcCWjPw5URJZ+v/wVJSk+/7+cwdlsCKUlybKqocftkGCMp5d6NLEktDMpp630eAt90VNLoL+TMWESQdWGQoGsfw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzwnHxPI4u0+J44Em/jxSOlKM05eIJnOHi6CM9kEOZ/vkOUN8hg
+	t6ZZFOiHTTtQUHBdCnzmpl5aJC5j4Y8kSpLXG7qFZ+nMju3pSOIBmU7qR/AxJhE+/mk=
+X-Gm-Gg: ASbGnct8EuLvnoKSD4R7HCAGzNS1RG8mlzqg29Pk09MD5TmC+APNhLaOVb4SgBSCBLI
+	hNA/2bXi0910nkGbxH07O6YEzf2GAFSCq8vb4VFvwZGV3mtgCiKJiwd1BDce1SYXyHDrEtKgbjF
+	M15Pm47CkUo/jXTxVDDHoBfe/TeFDTsdMJBTajWYvUJYfBfRkqzpoFlIQQSsBu88TI4ZkFpZZKK
+	AA5FyeoY24vNroY4447Yy+Oj/wMLNCyuEcXuld+eD81cyD8uRMnAZA7SstrJHVcIYiyN+ATD8x7
+	hUrGwFcOg/phauYCG02M/+GrYpC0XDUENUPFAq3zMCL+BFxxWJEsvcOKn4vdSkC7Uxn0XcI=
+X-Google-Smtp-Source: AGHT+IE/LJaHWTe9SYlHoYiKsnsZsaOAKKUrQJlJHOckCVYd00NuFwaRx6BpFbRuXnZ9itlqpT5fMg==
+X-Received: by 2002:a05:600c:c0c3:10b0:439:94f8:fc7b with SMTP id 5b1f17b1804b1-44c90f4ccb1mr34271245e9.0.1748428907943;
+        Wed, 28 May 2025 03:41:47 -0700 (PDT)
 Received: from [192.168.1.29] ([178.197.223.125])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-450064add8bsm17331595e9.17.2025.05.28.03.41.41
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-450064add8bsm17331595e9.17.2025.05.28.03.41.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 28 May 2025 03:41:43 -0700 (PDT)
+        Wed, 28 May 2025 03:41:47 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Date: Wed, 28 May 2025 12:41:00 +0200
-Subject: [PATCH 04/17] pinctrl: Constify pointers to 'pinctrl_desc'
+Date: Wed, 28 May 2025 12:41:01 +0200
+Subject: [PATCH 05/17] pinctrl: aspeed: Constify static 'pinctrl_desc'
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250528-pinctrl-const-desc-v1-4-76fe97899945@linaro.org>
+Message-Id: <20250528-pinctrl-const-desc-v1-5-76fe97899945@linaro.org>
 References: <20250528-pinctrl-const-desc-v1-0-76fe97899945@linaro.org>
 In-Reply-To: <20250528-pinctrl-const-desc-v1-0-76fe97899945@linaro.org>
 To: Linus Walleij <linus.walleij@linaro.org>, 
@@ -114,26 +114,26 @@ Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com, 
  Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5299;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3756;
  i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
- bh=MF4Zmmi+u4TqsjCbXpvQp2nvOFecMjqOedfODYY8uy4=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBoNuhM1rWln/nmJgYh2DZGvcDXJy96iRpwljs5a
- xaRjo1vRRiJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaDboTAAKCRDBN2bmhouD
- 1+kwD/4sLoK8DSjFqggVXP+fCLA7THgzjnyz01SNNQhU7wei18AGNJMIcztcrXxSfyqxOsE9m26
- 3xg5l+2PdxSB/aq8DDcjAGUuJFfiBr3DwvtXD0R5kqT7fErKneCTZMHEKsRTA613sgxQPkSkGhH
- J/nz66172/T6EhiPm8ykbJpLrrLSP0bIpiw3gBRqdflxlVOp87//vr6xiRhNbUOUNl8PCfbw4/x
- rx6GcGsxg+Rvz6ZfnT+z8zCM0svA2OOEHA4083PN2qCPYPhBXwZFcfe3uZ1j6g8ffXzFqa38dxK
- ZjF68IuePkoK1d4gqwWgstkkZOM8nt1jmkeWXYEgArFoVEwhszCxEol5CUU92pK2+2OGXusBK4z
- yKgMiectIIR9hEKEqr8RNSIGh9O3Tq6jJbYzGMtEPquIlcMwffT+mMcJ9AR5rtDZ44ZYafzohoS
- gh0/zpM2FiR8p1YsHW/zv/yqhQlxrnLuGev7Lr1T6j3BBvWKyctkxVVEZN073tNnAGBN1LOkGMz
- CORCSWjImfC83kw3p6EIWSk/+DqNVIuiHgYGvVWVBuyvkC2Ub5q3jm++93XFBWuzqZvHsV2SeKi
- NQkNPhbiN+bdhnsEfdA+2Tw/GJwFn5p+4gQuKd0OMPkuSLxO7TcifBTRE2IZyXBfAzMnHvRFDjv
- KPmDdWC60XPnPvQ==
+ bh=bPCkHXtxmRdHSBbvdS8jXvx5ZcbYrMBVxN7TAPQmEWo=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBoNuhN3yUYNRVGlDm5GKvUjHRKmpO0NkcKTivqS
+ rQ9YFsZsAGJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaDboTQAKCRDBN2bmhouD
+ 15PsD/wN1dSXzevKC2HHXVm7rrp8PsHK6/O5ksoH/BLBd4VXwlPyIgGgkZ8jbISY8fCS0s7jAvE
+ JbaDoYx6YKMIDEZRd/TdeBOLU2GWPzSgWvdOYA4LPr5cATQfbPRHhZIyCpk6FC4PPnfW8vfFrYy
+ LKqeFzOpOHKIxR7MrchXNRqtxM+664l1K8Tb3XnT6+ojdbePdy7aXcAe3l7OG76wwg7sTwksB9A
+ XcirEY5EnVp9kjB0/fwjQn3HwmrmC5zVzpgyqLm0uNEeDVJmu3CY/KxoGLqtzBfo+0xfopGAmAC
+ fZ5m5O68s0ez/Xt46UgSW5XjyxlPGZkkQFz7Ba3qhVhc7GJsBR2ivHY8liIYf+UypZN3cDDN42N
+ MyixdpJwa5XFsJnT+SiJ14/2t6Vu20ObUTXCfeto3WTYA6uIFk3QEktZFxNV/MQtBjA7SW59alS
+ UdvaEjwa5LNRjWATKwCsWjkKNjj2zvgXhPO/kWHSySyYkAqHCAMtzWuRpLirzgARamkkw7eWkSD
+ XXllk4esE/ckh1ZPaVSD4+yZ74jjdqWrNQSmFdzA6C+EA6M3BHIKo/NcQJg6NPBSnex2IGipA08
+ KABgrW8+YQC/zSQ7VoZ6RwXHfcNuIMQ0ri/JoENVnFPqdN5ZVSijqUw1jZoLhXuA5LwDkWd248s
+ 5NOQtmWzYeMwnKA==
 X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
  fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250528_034148_388295_FFBA0134 
-X-CRM114-Status: GOOD (  16.98  )
+X-CRM114-CacheID: sfid-20250528_034149_482743_5B923035 
+X-CRM114-Status: GOOD (  13.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,129 +148,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Pin controller core code only stores the pointer to
-'struct pinctrl_desc' and does not modify it anywhere.  The pointer can
-be changed to pointer to const which makes the code safer, explicit and
-later allows constifying 'pinctrl_desc' allocations in individual
-drivers.
+The local static 'struct pinctrl_desc' is not modified, so can be made
+const for code safety.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
 ---
+ drivers/pinctrl/aspeed/pinctrl-aspeed-g4.c | 2 +-
+ drivers/pinctrl/aspeed/pinctrl-aspeed-g5.c | 2 +-
+ drivers/pinctrl/aspeed/pinctrl-aspeed-g6.c | 2 +-
+ drivers/pinctrl/aspeed/pinctrl-aspeed.c    | 2 +-
+ drivers/pinctrl/aspeed/pinctrl-aspeed.h    | 2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
 
-This is the pre-requisite patch for all further patches.
----
- drivers/pinctrl/core.c          | 13 +++++++------
- drivers/pinctrl/core.h          |  2 +-
- include/linux/pinctrl/pinctrl.h |  8 ++++----
- 3 files changed, 12 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/pinctrl/core.c b/drivers/pinctrl/core.c
-index 9046292d1360218bc70eff418fb8d1028c22b11a..73b78d6eac672095c8556763af1744be6f558501 100644
---- a/drivers/pinctrl/core.c
-+++ b/drivers/pinctrl/core.c
-@@ -2062,7 +2062,7 @@ static int pinctrl_check_ops(struct pinctrl_dev *pctldev)
-  * @driver_data: private pin controller data for this pin controller
-  */
- static struct pinctrl_dev *
--pinctrl_init_controller(struct pinctrl_desc *pctldesc, struct device *dev,
-+pinctrl_init_controller(const struct pinctrl_desc *pctldesc, struct device *dev,
- 			void *driver_data)
- {
- 	struct pinctrl_dev *pctldev;
-@@ -2132,7 +2132,8 @@ pinctrl_init_controller(struct pinctrl_desc *pctldesc, struct device *dev,
- 	return ERR_PTR(ret);
+diff --git a/drivers/pinctrl/aspeed/pinctrl-aspeed-g4.c b/drivers/pinctrl/aspeed/pinctrl-aspeed-g4.c
+index 774f8d05142f2d90c238f8e6661eca4685601db7..cb295856dda1244f2205305cf4c505d4ea4a326f 100644
+--- a/drivers/pinctrl/aspeed/pinctrl-aspeed-g4.c
++++ b/drivers/pinctrl/aspeed/pinctrl-aspeed-g4.c
+@@ -2653,7 +2653,7 @@ static const struct pinconf_ops aspeed_g4_conf_ops = {
+ 	.pin_config_group_set = aspeed_pin_config_group_set,
+ };
+ 
+-static struct pinctrl_desc aspeed_g4_pinctrl_desc = {
++static const struct pinctrl_desc aspeed_g4_pinctrl_desc = {
+ 	.name = "aspeed-g4-pinctrl",
+ 	.pins = aspeed_g4_pins,
+ 	.npins = ARRAY_SIZE(aspeed_g4_pins),
+diff --git a/drivers/pinctrl/aspeed/pinctrl-aspeed-g5.c b/drivers/pinctrl/aspeed/pinctrl-aspeed-g5.c
+index 5bb8fd0d1e41bda799119a67887ccbc277e0f9f4..792089628362a1ed1c3eccd4e46c41a3ac7a79f6 100644
+--- a/drivers/pinctrl/aspeed/pinctrl-aspeed-g5.c
++++ b/drivers/pinctrl/aspeed/pinctrl-aspeed-g5.c
+@@ -2845,7 +2845,7 @@ static const struct pinconf_ops aspeed_g5_conf_ops = {
+ 	.pin_config_group_set = aspeed_pin_config_group_set,
+ };
+ 
+-static struct pinctrl_desc aspeed_g5_pinctrl_desc = {
++static const struct pinctrl_desc aspeed_g5_pinctrl_desc = {
+ 	.name = "aspeed-g5-pinctrl",
+ 	.pins = aspeed_g5_pins,
+ 	.npins = ARRAY_SIZE(aspeed_g5_pins),
+diff --git a/drivers/pinctrl/aspeed/pinctrl-aspeed-g6.c b/drivers/pinctrl/aspeed/pinctrl-aspeed-g6.c
+index 5a7cd0a8868764dc5e3dc70f325c25ba29d50a64..51a63cf92023f7dc7a27466331c77bb5dcbaa9bb 100644
+--- a/drivers/pinctrl/aspeed/pinctrl-aspeed-g6.c
++++ b/drivers/pinctrl/aspeed/pinctrl-aspeed-g6.c
+@@ -2763,7 +2763,7 @@ static const struct pinconf_ops aspeed_g6_conf_ops = {
+ 	.pin_config_group_set = aspeed_pin_config_group_set,
+ };
+ 
+-static struct pinctrl_desc aspeed_g6_pinctrl_desc = {
++static const struct pinctrl_desc aspeed_g6_pinctrl_desc = {
+ 	.name = "aspeed-g6-pinctrl",
+ 	.pins = aspeed_g6_pins,
+ 	.npins = ARRAY_SIZE(aspeed_g6_pins),
+diff --git a/drivers/pinctrl/aspeed/pinctrl-aspeed.c b/drivers/pinctrl/aspeed/pinctrl-aspeed.c
+index 9c6ee46ac7a096ce693639d88d387b089ffe5239..7e0ebf11af163c90184231686b1e0d9920755d76 100644
+--- a/drivers/pinctrl/aspeed/pinctrl-aspeed.c
++++ b/drivers/pinctrl/aspeed/pinctrl-aspeed.c
+@@ -441,7 +441,7 @@ int aspeed_gpio_request_enable(struct pinctrl_dev *pctldev,
  }
  
--static void pinctrl_uninit_controller(struct pinctrl_dev *pctldev, struct pinctrl_desc *pctldesc)
-+static void pinctrl_uninit_controller(struct pinctrl_dev *pctldev,
-+				      const struct pinctrl_desc *pctldesc)
+ int aspeed_pinctrl_probe(struct platform_device *pdev,
+-			 struct pinctrl_desc *pdesc,
++			 const struct pinctrl_desc *pdesc,
+ 			 struct aspeed_pinctrl_data *pdata)
  {
- 	pinctrl_free_pindescs(pctldev, pctldesc->pins,
- 			      pctldesc->npins);
-@@ -2209,7 +2210,7 @@ EXPORT_SYMBOL_GPL(pinctrl_enable);
-  * struct pinctrl_dev handle. To avoid issues later on, please use the
-  * new pinctrl_register_and_init() below instead.
-  */
--struct pinctrl_dev *pinctrl_register(struct pinctrl_desc *pctldesc,
-+struct pinctrl_dev *pinctrl_register(const struct pinctrl_desc *pctldesc,
- 				    struct device *dev, void *driver_data)
- {
- 	struct pinctrl_dev *pctldev;
-@@ -2239,7 +2240,7 @@ EXPORT_SYMBOL_GPL(pinctrl_register);
-  * Note that pinctrl_enable() still needs to be manually called after
-  * this once the driver is ready.
-  */
--int pinctrl_register_and_init(struct pinctrl_desc *pctldesc,
-+int pinctrl_register_and_init(const struct pinctrl_desc *pctldesc,
- 			      struct device *dev, void *driver_data,
- 			      struct pinctrl_dev **pctldev)
- {
-@@ -2330,7 +2331,7 @@ static int devm_pinctrl_dev_match(struct device *dev, void *res, void *data)
-  * The pinctrl device will be automatically released when the device is unbound.
-  */
- struct pinctrl_dev *devm_pinctrl_register(struct device *dev,
--					  struct pinctrl_desc *pctldesc,
-+					  const struct pinctrl_desc *pctldesc,
- 					  void *driver_data)
- {
- 	struct pinctrl_dev **ptr, *pctldev;
-@@ -2364,7 +2365,7 @@ EXPORT_SYMBOL_GPL(devm_pinctrl_register);
-  * The pinctrl device will be automatically released when the device is unbound.
-  */
- int devm_pinctrl_register_and_init(struct device *dev,
--				   struct pinctrl_desc *pctldesc,
-+				   const struct pinctrl_desc *pctldesc,
- 				   void *driver_data,
- 				   struct pinctrl_dev **pctldev)
- {
-diff --git a/drivers/pinctrl/core.h b/drivers/pinctrl/core.h
-index d6c24978e7081a663b8a0fa6cb9314670575b1bc..fc513a9cdd4f2f9dd4ec4a088eee53fdbd673285 100644
---- a/drivers/pinctrl/core.h
-+++ b/drivers/pinctrl/core.h
-@@ -51,7 +51,7 @@ struct pinctrl_state;
-  */
- struct pinctrl_dev {
- 	struct list_head node;
--	struct pinctrl_desc *desc;
-+	const struct pinctrl_desc *desc;
- 	struct radix_tree_root pin_desc_tree;
- #ifdef CONFIG_GENERIC_PINCTRL_GROUPS
- 	struct radix_tree_root pin_group_tree;
-diff --git a/include/linux/pinctrl/pinctrl.h b/include/linux/pinctrl/pinctrl.h
-index 9a8189ffd0f2c28c88640280deee194d17d18400..d138e18156452e008f24ca06358fcab45135632f 100644
---- a/include/linux/pinctrl/pinctrl.h
-+++ b/include/linux/pinctrl/pinctrl.h
-@@ -165,25 +165,25 @@ struct pinctrl_desc {
- 
- /* External interface to pin controller */
- 
--extern int pinctrl_register_and_init(struct pinctrl_desc *pctldesc,
-+extern int pinctrl_register_and_init(const struct pinctrl_desc *pctldesc,
- 				     struct device *dev, void *driver_data,
- 				     struct pinctrl_dev **pctldev);
- extern int pinctrl_enable(struct pinctrl_dev *pctldev);
- 
- /* Please use pinctrl_register_and_init() and pinctrl_enable() instead */
--extern struct pinctrl_dev *pinctrl_register(struct pinctrl_desc *pctldesc,
-+extern struct pinctrl_dev *pinctrl_register(const struct pinctrl_desc *pctldesc,
- 				struct device *dev, void *driver_data);
- 
- extern void pinctrl_unregister(struct pinctrl_dev *pctldev);
- 
- extern int devm_pinctrl_register_and_init(struct device *dev,
--				struct pinctrl_desc *pctldesc,
-+				const struct pinctrl_desc *pctldesc,
- 				void *driver_data,
- 				struct pinctrl_dev **pctldev);
- 
- /* Please use devm_pinctrl_register_and_init() instead */
- extern struct pinctrl_dev *devm_pinctrl_register(struct device *dev,
--				struct pinctrl_desc *pctldesc,
-+				const struct pinctrl_desc *pctldesc,
- 				void *driver_data);
- 
- extern void devm_pinctrl_unregister(struct device *dev,
+ 	struct device *parent;
+diff --git a/drivers/pinctrl/aspeed/pinctrl-aspeed.h b/drivers/pinctrl/aspeed/pinctrl-aspeed.h
+index 4dcde3bc29c825cbc6be954dae9a654a310b4cd8..28f3bde25081b2c8099977129acdcdfb3e4b1dd5 100644
+--- a/drivers/pinctrl/aspeed/pinctrl-aspeed.h
++++ b/drivers/pinctrl/aspeed/pinctrl-aspeed.h
+@@ -102,7 +102,7 @@ int aspeed_gpio_request_enable(struct pinctrl_dev *pctldev,
+ 		struct pinctrl_gpio_range *range,
+ 		unsigned int offset);
+ int aspeed_pinctrl_probe(struct platform_device *pdev,
+-		struct pinctrl_desc *pdesc,
++		const struct pinctrl_desc *pdesc,
+ 		struct aspeed_pinctrl_data *pdata);
+ int aspeed_pin_config_get(struct pinctrl_dev *pctldev, unsigned int offset,
+ 		unsigned long *config);
 
 -- 
 2.45.2
