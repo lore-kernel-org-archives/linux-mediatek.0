@@ -4,108 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D3DFC3ABB2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 May 2025 12:07:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FE17C5AD49
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 May 2025 12:50:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2/BcJHpyRSAJlFEZl2Ff3rkVVc6q37qnyoNQNd/3A5w=; b=3vEpwKXcWcMHnXabZnC5V3S6gc
-	8cBZEdH5YDb7z+ral8avD8ms/tG96LYSgd0dDkrCMWbMFMpzdNUszb3wkWI1cleMmLXKFiB/nIxgn
-	vY++fZIZq020g9YA+S7kZqIE4XudWd9hyssPI2NqJQNIco2J2dX+CAdqpRnfKib0jmkPbRMDGybgL
-	SOws4BDhYrM2V/NuyABqF6pI1DRDvxxDcDoJYllX805NpXqX1jqS8sNViQix7V6qwEooBiwBB771Y
-	T4EyvXNp/wteWP4dN3im2F8SAfUnErf8Qwvpmj7Ylp6yu3iJ66y2EBQEff51OSB7G6KohOAoCBuQp
-	4FCRgRHQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EttMl+UEO23MQ5/zgKZh51X1fkqP6brx9qDrKYFmyoA=; b=01C7wjFV6REFLQGEFRb2SJp8y3
+	cTsgYRbXT/Siesd+AR7/8nhx7RWD8uyn8AGq8J084g8tKvGWEOi72EFHwy3Ve2WLMKhtr1eu9xBs7
+	C8gXHtXNEwNneskG7xWdUpy0Oau5FP6vkt7ICxt8ifdN91n/ezE7Mr2RIhvmrHvJtiJLMQKptUGxx
+	81fTDVLgGYpj0xXH0xW/NGT1RNP6SwoElzWfOPB3rcdsTRNrRC0kpZfclNQjOM5GIn8/epNu39fvF
+	IeQ8V+SvJIF12EbDmmYyXx7QQlPmNctxS6Nl4NtMqSLc05ovzxfdEejRJhjd0LhpGO6HrzqaKsPX9
+	u6Jv6vvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKFZJ-0000000D3yV-2U50;
-	Wed, 28 May 2025 12:07:37 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uKGEM-0000000D9wt-3TsD;
+	Wed, 28 May 2025 12:50:02 +0000
+Received: from mail-pl1-f172.google.com ([209.85.214.172])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKFZH-0000000D3yP-2TPe
-	for linux-mediatek@lists.infradead.org;
-	Wed, 28 May 2025 12:07:35 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 9CB22614B6;
-	Wed, 28 May 2025 12:07:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6A1BDC4CEE7;
-	Wed, 28 May 2025 12:07:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1748434054;
-	bh=nqxUSx2y7ieoQY1FNXOZ4tknl2q0hN4mg0ilBAT41n0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=tX+T6gsYdTiwTZeh/McCgMZ3KbIV1yrn8WtIbQc359BHRWGzQhnm/ZV4j6i1qSNdW
-	 h684k7lz5z0K7A89CsaPBZSVJ03vrYKEZHe9K8PsMZ3aa67lwl55hQuU8JxKB0dX7/
-	 8WLb2TyCTYu7jyeVlipIic0tMfRVkes44TQAE/uSzZrGrSsxQVlKG7RpgBTEUy1Uk2
-	 tinQ62Qnqst7zQieLXL7GJbtI6QXBldpg+XXXly98STBvaWWlnQph6CMTHGNNXfTEC
-	 Kt3341bH7sl+rRMiq0exP3/R3p48zcrX+I0mafDgi20Y+WzABjMRVX8Wf2A3heJTCc
-	 9LBX7tdQx1p1g==
-Message-ID: <5a430a69-6182-4a34-b5df-5fd557411b68@kernel.org>
-Date: Wed, 28 May 2025 14:07:29 +0200
+	id 1uKG6o-0000000D9AC-3SP3;
+	Wed, 28 May 2025 12:42:15 +0000
+Received: by mail-pl1-f172.google.com with SMTP id d9443c01a7336-2349f096605so19099945ad.3;
+        Wed, 28 May 2025 05:42:14 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1748436133; x=1749040933;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=EttMl+UEO23MQ5/zgKZh51X1fkqP6brx9qDrKYFmyoA=;
+        b=lEfFHX/Z9Ldr+ZSMtEjD7Lyvn+Kmf5MzYNFNse0xFqilaGi0YcZwiuINkd9/WKX+WT
+         J1INpTAtJaNloK21ihHDjS5M5cHz7A1fOo2r9D2lYa8u1wRlVV5n1fTDM1k4Es0BXKER
+         KNZsZiEO8As9sdnkQ9SmTOld4meYddVXej2qAfYkMZAVzUh6YyvDHoQAclEKnkHkXELG
+         Nm0KrK7XwOXNJp16OdvYe/i3mjh+I3P+NBei0IOCKWb69ttJIz8Go3wWVheLaJ0v9sH3
+         njSb8d+/u4iEtiJEah9F80oMK1z/2dg7YQlesgA6rGg6XKNxO5TSj1oSYDBZ4mcmm9B+
+         5d3A==
+X-Forwarded-Encrypted: i=1; AJvYcCUeWdNSpApzpo5ZECAVX80a2RbKKHSS+nH6aRYc3qr7tZf184E7vDN5S9jsF3+JjEZF8lcZU9/iOZYTofSuH94=@lists.infradead.org, AJvYcCXIPfU9L38VLVqZ3iIfCAofEeDCxkeP4W2m2XkSc6slBrAx7sHTx7Hu0kIMey6sgWtmnMZbAe1YsEeyVa+MzkxV@lists.infradead.org, AJvYcCXsiiAUd5Scab7PCIlrTnkT49y87XNGZgmc2E8XwAFRsP5aPkqfhE2JwEJmfArKyuz0rBKaj/sMwCPdDp0=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwLXxgp1uQI4cp34nbgqEWubzsZU9sJSh5RhFEllaBcPZCi1yWO
+	W88fydv7gtSh1bAXpBEgediy6omb6DrnLkoOWjLVChgN/JIW0aZVAu9DhCmlph/i
+X-Gm-Gg: ASbGncuWiBwEWw/FS38Vr/uE6CtPyDT7FNf02NjR6mYcxspFCPNmF08HffYXR1J2afm
+	UenBTtqenY0W3xWmZmNkaYIOy+cNpeDOW8STH1scIHfVgG4pyhJ9kqaLaGAfXVKP1dxFdCgUrUV
+	M4WYPoVP1t1QObQGBJZgqc7G1C2U6Uj0zirAPa2fO24igk3fFeFl88ZMnauzEUdfkYPnHhSGq5w
+	P+0cG9kg9TWB1yad510PP0JuSfvYGdYD7FNnB1G5H8YRDisnlXUwHU3EBO2eJvuDFEnRAmahrdc
+	c0WtUjL+ysF2ePKuvBr9qQebgC0ynmew4DQp1MXc+HbfFSlhbtW2onCNMjwRyjGP2EYC1lT5/c4
+	5kztEdNKHIDipm1DJXA==
+X-Google-Smtp-Source: AGHT+IHyBuyN9lR4roTFvB2g9jYy0UTS1nW/M4BTr9YSQdr7kLBjNh20AhHFFOsd5WZiGLIArtaDFQ==
+X-Received: by 2002:a17:903:2614:b0:234:bca7:2940 with SMTP id d9443c01a7336-234bca7360cmr53444895ad.38.1748436133566;
+        Wed, 28 May 2025 05:42:13 -0700 (PDT)
+Received: from mail-pf1-f171.google.com (mail-pf1-f171.google.com. [209.85.210.171])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-234d2fd22b3sm10995555ad.21.2025.05.28.05.42.13
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 28 May 2025 05:42:13 -0700 (PDT)
+Received: by mail-pf1-f171.google.com with SMTP id d2e1a72fcca58-73c17c770a7so4455212b3a.2;
+        Wed, 28 May 2025 05:42:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCUQReTVilDMrpSyFvbq+qGWjB1V+5EsGQtdIkHearxX5/jMr1qwmX4pIrJYaC1ldM9SoIwiwHWqPbDkkdHpWyg=@lists.infradead.org, AJvYcCVbItjRg2marfuGk24m2/cpgzMOVvJ2mdlP3tJT3RnwBjwt0hDnkDlYBLvluqOwrzWhAdykuJMAxhOWOxgfstzo@lists.infradead.org, AJvYcCW8zobAhfStq9qfVRD+oiq2dYpdUW1K1DLDh8jBu1Z7lZSU9S2zCv6MY0MYEwFB5vJxgfuSDGkDb47GXzo=@lists.infradead.org
+X-Received: by 2002:a05:6102:3e95:b0:4c5:1c2e:79f5 with SMTP id
+ ada2fe7eead31-4e42415db7dmr12024574137.16.1748435792883; Wed, 28 May 2025
+ 05:36:32 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] Bluetooth: BT Driver: mediatek: add gpio pin to reset bt
-To: Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>,
- Marcel Holtmann <marcel@holtmann.org>,
- Johan Hedberg <johan.hedberg@gmail.com>,
- Luiz Von Dentz <luiz.dentz@gmail.com>
-Cc: Sean Wang <sean.wang@mediatek.com>, Deren Wu <deren.Wu@mediatek.com>,
- Aaron Hou <aaron.hou@mediatek.com>, Chris Lu <chris.lu@mediatek.com>,
- Steve Lee <steve.lee@mediatek.com>,
- linux-bluetooth <linux-bluetooth@vger.kernel.org>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- linux-mediatek <linux-mediatek@lists.infradead.org>
-References: <20250528070323.14902-1-ot_zhangchao.zhang@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20250528070323.14902-1-ot_zhangchao.zhang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+References: <20250528-pinctrl-const-desc-v1-0-76fe97899945@linaro.org> <20250528-pinctrl-const-desc-v1-1-76fe97899945@linaro.org>
+In-Reply-To: <20250528-pinctrl-const-desc-v1-1-76fe97899945@linaro.org>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Wed, 28 May 2025 14:36:20 +0200
+X-Gmail-Original-Message-ID: <CAMuHMdX7krbAssbYpJ1RA1EkpOP26nUhuhmtSW8X9nJkB5amBQ@mail.gmail.com>
+X-Gm-Features: AX0GCFvOxqSsQb6hAAUjvGh24-ydFSS3wze_W2Lj6wpwfm4mEoNhN1lAYOnpqvg
+Message-ID: <CAMuHMdX7krbAssbYpJ1RA1EkpOP26nUhuhmtSW8X9nJkB5amBQ@mail.gmail.com>
+Subject: Re: [PATCH 01/17] pinctrl: starfive: Allow compile testing on other platforms
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Basavaraj Natikar <Basavaraj.Natikar@amd.com>, 
+	Shyam Sundar S K <Shyam-sundar.S-k@amd.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, 
+	Joel Stanley <joel@jms.id.au>, Avi Fishman <avifishman70@gmail.com>, 
+	Tomer Maimon <tmaimon77@gmail.com>, Tali Perry <tali.perry1@gmail.com>, 
+	Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>, 
+	Benjamin Fair <benjaminfair@google.com>, =?UTF-8?Q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, 
+	=?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Ray Jui <rjui@broadcom.com>, 
+	Scott Branden <sbranden@broadcom.com>, Geert Uytterhoeven <geert+renesas@glider.be>, 
+	David Rhodes <david.rhodes@cirrus.com>, Richard Fitzgerald <rf@opensource.cirrus.com>, 
+	Charles Keepax <ckeepax@opensource.cirrus.com>, Lorenzo Bianconi <lorenzo@kernel.org>, 
+	Sean Wang <sean.wang@kernel.org>, Jesper Nilsson <jesper.nilsson@axis.com>, 
+	Lars Persson <lars.persson@axis.com>, 
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Damien Le Moal <dlemoal@kernel.org>, 
+	Vladimir Zapolskiy <vz@mleia.com>, Michal Simek <michal.simek@amd.com>, 
+	Emil Renner Berthing <kernel@esmil.dk>, Jianlong Huang <jianlong.huang@starfivetech.com>, 
+	Hal Feng <hal.feng@starfivetech.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-aspeed@lists.ozlabs.org, 
+	openbmc@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org, 
+	linux-renesas-soc@vger.kernel.org, linux-sound@vger.kernel.org, 
+	patches@opensource.cirrus.com, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@axis.com, linux-riscv@lists.infradead.org, 
+	linux-rtc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com
+Content-Type: text/plain; charset="UTF-8"
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250528_054214_859880_3155F411 
+X-CRM114-Status: GOOD (  22.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,26 +116,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 28/05/2025 09:03, Zhangchao Zhang wrote:
-> +
-> +static int btmtk_reset_by_gpio(struct hci_dev *hdev)
-> +{
-> +	struct btmtk_data *data = hci_get_priv(hdev);
-> +	struct btmtk_reset_gpio *reset_gpio_data;
-> +	struct device_node *node;
-> +	int reset_gpio_number;
-> +
-> +	node = of_find_compatible_node(NULL, NULL, "mediatek,usb-bluetooth");
+Hi Krzysztof,
 
-There is no such compatible. Just git grep for it.
+On Wed, 28 May 2025 at 12:41, Krzysztof Kozlowski
+<krzysztof.kozlowski@linaro.org> wrote:
+> Always descent to drivers/pinctrl/starfive/ because limiting it with
+> SOC_STARFIVE is redundant since all of its Kconfig entries are already
 
-> +	if (node) {
-> +		reset_gpio_number = of_get_named_gpio(node, "reset-gpios", 0);
+... since its Makefile doesn't build anything if no Starfive-specific
+pin control Kconfig options are enabled?
 
-Where is the ABI documented? Anyway, you should not pick GPIOs from
-random devices.
+> have "depends on SOC_STARFIVE".  This allows compile testing on other
+> architectures with allyesconfig.
+>
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> ---
+>  drivers/pinctrl/Makefile | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/pinctrl/Makefile b/drivers/pinctrl/Makefile
+> index ac27e88677d14f1c697e0d0be9f295c746556f4d..dcede70b25660833a158c298d1269d6ecea9dd8b 100644
+> --- a/drivers/pinctrl/Makefile
+> +++ b/drivers/pinctrl/Makefile
+> @@ -82,7 +82,7 @@ obj-y                         += sophgo/
+>  obj-y                          += spacemit/
+>  obj-$(CONFIG_PINCTRL_SPEAR)    += spear/
+>  obj-y                          += sprd/
+> -obj-$(CONFIG_SOC_STARFIVE)     += starfive/
+> +obj-y                          += starfive/
+>  obj-$(CONFIG_PINCTRL_STM32)    += stm32/
+>  obj-y                          += sunplus/
+>  obj-$(CONFIG_PINCTRL_SUNXI)    += sunxi/
 
+The actual change LGTM, so
+Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
 
-Best regards,
-Krzysztof
+Gr{oetje,eeting}s,
+
+                        Geert
+
+-- 
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
 
