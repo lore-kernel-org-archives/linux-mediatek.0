@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8385EC3ABB2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 May 2025 10:15:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0640C3ABB2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 May 2025 10:18:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sWkcPM2e2CFvrTsTyG7tZ0840K//JOCba07mPmCwF68=; b=JnSUzLlZj3gvaDGYjWrExSd7OS
-	vmaacQ1s07evNdmWK3KVDS1rWDV2H7GUJ5Dk49DQgJOiYt731fj4TKcyOQFPicNur+d0VVGQQ56BE
-	Jpgiqo0U5JLOjZC37uTBW2RlJIjr5diOn3tyzgEIg3t9u874dNlNV1wSLrjJlCWMtOpw9Od7p6e+f
-	L62RcI2/K8J3vULs0TnZrMgXqZCDj/sBtoq35Wca1otem4BawQpIehZ0yTFTckjhFkwty5hYhrijW
-	CVKF0RnV6VC4QxejQLEzIByLYGGkq9Ompnc6NmD5ny4FPFJS7+LfsJBhSR3/y52N/Wg2cBRXhtlge
-	HJQ5x2BQ==;
+	bh=9B6feVEkzDZb0WiiyR1UVAxjlgd9mBvDC5TxNZRpR5E=; b=jQlf1+GJxvSi18enJrqXH02gOY
+	5bhuPnIhux3AgTFBIXMuGpI6cYJH3JKbhM8An/2q0jU3OIEvsK0/rqtn7gbvyzbNRmbhGqAWTELx1
+	2/31AdLQy5NQgYk+a4csVfZLnFY4E0ZhQWFNaOPXV37HL0eajQY3PIedIyE32w+kZAHWmdLsEzIIQ
+	ZMpy9sUcjiWi4us2qCBabjJix5nTjwFWrS2cKniMekwXi7cWavc9PDBiacaYqyjFYIIyX4Xt0RAwX
+	7j84xF1jne5N9MHJ1urObVGQ7OUdbVl6+GUOzy7NX747/aer6Hgeu4dQrTLL4Jmny4qct8AfWHiyO
+	P4PmTt/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKDpE-0000000Cp0d-2FIL;
-	Wed, 28 May 2025 10:15:56 +0000
+	id 1uKDrK-0000000CpFu-2MyR;
+	Wed, 28 May 2025 10:18:06 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKDYz-0000000Cmlw-0WAN;
-	Wed, 28 May 2025 09:59:10 +0000
-X-UUID: 63c775d23baa11f08d385d50fb11b32d-20250528
+	id 1uKDZA-0000000Cmof-0WKD;
+	Wed, 28 May 2025 09:59:21 +0000
+X-UUID: 6a9bae003baa11f08d385d50fb11b32d-20250528
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=sWkcPM2e2CFvrTsTyG7tZ0840K//JOCba07mPmCwF68=;
-	b=irL0AyQVqkoQ1enut3PxP+q+cMPc8QSLv+IZuJ0uNHCsmDnA5T38loJCORNd5uqfAHex+KwzEhDhoNMinId/n+ILXywFdK1rGPRn252t6mrB8OrnClPucKq0mNnWUBICTOZS0Tiz+mGO1nG7sXWG0ye96ffB5eItZTXc57qQxMc=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=9B6feVEkzDZb0WiiyR1UVAxjlgd9mBvDC5TxNZRpR5E=;
+	b=tdk0rGzViVFrqpeXDV5Z+T8o8/dznz9Xii+Q106Dxm45zTcIJfB2uMZ/Kny/BNueShj3VBElo77ZFV7toheNtJcauMIppAxXlFz495UrPRU6jWfgs+H/2AFq5VkQQRXsY+x1tQw46LvH1bSbhk5y7f9Hh7jtYs2TYx5RIz6fUc0=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:cd7fb304-932b-4d58-9b36-369c5b1406bc,IP:0,UR
+X-CID-O-INFO: VERSION:1.2.1,REQID:e6ad6cbb-3604-40b3-957f-032aa0561f62,IP:0,UR
 	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
 	elease,TS:0
-X-CID-META: VersionHash:0ef645f,CLOUDID:1850d247-ee4f-4716-aedb-66601021a588,B
+X-CID-META: VersionHash:0ef645f,CLOUDID:69b55ff1-2ded-45ed-94e2-b3e9fa87100d,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
 	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
 	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 63c775d23baa11f08d385d50fb11b32d-20250528
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
+X-UUID: 6a9bae003baa11f08d385d50fb11b32d-20250528
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
 	(envelope-from <jianhua.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1455222842; Wed, 28 May 2025 02:59:05 -0700
+	with ESMTP id 1566365396; Wed, 28 May 2025 02:59:16 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Wed, 28 May 2025 17:59:01 +0800
+ 15.2.1258.39; Wed, 28 May 2025 17:59:13 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Wed, 28 May 2025 17:59:00 +0800
+ 15.2.1258.39 via Frontend Transport; Wed, 28 May 2025 17:59:12 +0800
 From: Jianhua Lin <jianhua.lin@mediatek.com>
 To: <mchehab@kernel.org>, <robh@kernel.org>, <krzk+dt@kernel.org>,
 	<conor+dt@kernel.org>, <matthias.bgg@gmail.com>,
@@ -61,9 +61,9 @@ CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jianhua Lin
 	<jianhua.lin@mediatek.com>
-Subject: [PATCH 1/2] dt-bindings: media: mediatek-jpeg-encoder: Add MT8189 compatible string
-Date: Wed, 28 May 2025 17:57:47 +0800
-Message-ID: <20250528095748.17485-2-jianhua.lin@mediatek.com>
+Subject: [PATCH 2/2] dt-bindings: media: mediatek-jpeg-decoder: Add MT8189 compatible string
+Date: Wed, 28 May 2025 17:57:48 +0800
+Message-ID: <20250528095748.17485-3-jianhua.lin@mediatek.com>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20250528095748.17485-1-jianhua.lin@mediatek.com>
 References: <20250528095748.17485-1-jianhua.lin@mediatek.com>
@@ -71,8 +71,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250528_025909_163004_DD3DD67D 
-X-CRM114-Status: UNSURE (   8.53  )
+X-CRM114-CacheID: sfid-20250528_025920_163522_7256AB36 
+X-CRM114-Status: UNSURE (   8.42  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,25 +88,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add compatible for MT8189 jpeg encoder.
+Add compatible for MT8189 jpeg decoder.
 
 Signed-off-by: Jianhua Lin <jianhua.lin@mediatek.com>
 ---
- .../devicetree/bindings/media/mediatek-jpeg-encoder.yaml         | 1 +
+ .../devicetree/bindings/media/mediatek-jpeg-decoder.yaml         | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
-index 5b15f8977f67..1d6589468d10 100644
---- a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
-@@ -20,6 +20,7 @@ properties:
-           - mediatek,mt8183-jpgenc
-           - mediatek,mt8186-jpgenc
-           - mediatek,mt8188-jpgenc
-+          - mediatek,mt8189-jpgenc
-       - const: mediatek,mtk-jpgenc
+diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml
+index a4aacd3eb189..33e7a6e5a069 100644
+--- a/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml
+@@ -23,6 +23,7 @@ properties:
+           - enum:
+               - mediatek,mt7623-jpgdec
+               - mediatek,mt8188-jpgdec
++              - mediatek,mt8189-jpgdec
+           - const: mediatek,mt2701-jpgdec
+ 
    reg:
-     maxItems: 1
 -- 
 2.46.0
 
