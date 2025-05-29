@@ -4,54 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9B0CC54FB3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 May 2025 07:54:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDA93C5AD49
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 May 2025 08:59:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=X+wkoA4YOELW9s6cx2H1FfY99BwZ9fmdzIT3K0wvljE=; b=cTrynvAEzozl79P3+7pRoOUElK
-	DbiH0QprccWpG28CHL5xBY/Mh1L8dfMnH/PzJwrKcJE0/G3aXkhWnIAMeMvy7dVO6yk5xh+nyhSLP
-	MPYT6YLR2GD/5qvnElkG6FKv/8r+q3UCK4NJHmgBEWggNquRyORckhQ7W2AJD0oRiSU0mfyvWbbWT
-	V5y34TgK7OxUgW6/lC0rU6Cx3z8UOnU2xLov+ZMrpaUgs4mHiaffdy+j2fTGb/wAPTNasAydu5hFv
-	FYmb0w9oxPGbwlzy4MdjDjh27LItG2IziV/qM0EXmUZoSTrZ12EU/ATKTzqprufRt93+05N5F6INm
-	KEpEwo7w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Qrg6t/3pDIIo/J14HuIjlYHkLPkRQL268S0ybavfqxc=; b=PZOekdOLE8g4Qb0oD3gpTRmg+z
+	0nINrhX1lo/E5dJQLVyw5Sof8OLRXJ0tZyC7E0Q39AZTOelmWgeulqSYdlFBO4yOdrbpj5t+VNCNL
+	XofeGrwty8G49u44Cf6XFd8fTcTqCD4zNKqh3eleaDjbetR4xfQKohb0l3NG4KZNGAm5D8mzwhVUO
+	2cTs0wpa+jMLsyCAaupMhFCJwcpxsrf+9giMqwRiGQd4p0xKv5UO8OIvlYG7dwfqtqvrsVTvdoe7k
+	CNR0oJmOLgghopY4EUbiJ5ynUclHdOLBRk7Gpi1eXP4nQK+OHSAPkQkMIvDmr8nYSimcL2x/Wvi84
+	UXGTTenA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKY5V-0000000FDFT-2fBk;
-	Thu, 29 May 2025 07:54:05 +0000
-Received: from mail.scalenook.pl ([51.91.253.187])
+	id 1uKZ6f-0000000FJNh-04mH;
+	Thu, 29 May 2025 08:59:21 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKY3s-0000000FD1W-0woE
-	for linux-mediatek@lists.infradead.org;
-	Thu, 29 May 2025 07:52:25 +0000
-Received: by mail.scalenook.pl (Postfix, from userid 1002)
-	id 1807D23220; Thu, 29 May 2025 09:51:27 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=scalenook.pl; s=mail;
-	t=1748505105; bh=X+wkoA4YOELW9s6cx2H1FfY99BwZ9fmdzIT3K0wvljE=;
-	h=Date:From:To:Subject:From;
-	b=eUO3Ho3uB4LqHcv8KtW4TLEoQoOyQYTlyEVxBl8l/9+/NyQ7KIwIa895pQZSWATMe
-	 pillD4v3I4RQlEUDOMD4ChoqI3kgCnbr/jakpsPHi+Xn56e50+5sD12wjBYUIfTBJT
-	 ND2fVprDNF2LCqv6RLtAPrxuyQj81HTUK/X30d+iGipTFU7rOHLo7trU4OEVjUs9C3
-	 Px+xw8Zs/KOGL+6ne+9/2g4eZnbbgJPXEcf1TtWtoEhpgeRG8H6oQlw7pWeQDuASfe
-	 hs16ULwm4uf5PDQt14ZQ5oVbufsERrzw3lCnzKP3kNsD9nLVyxA7umwAHcWVN52JBa
-	 RITcGHGPjUGlw==
-Received: by mail.scalenook.pl for <linux-mediatek@lists.infradead.org>; Thu, 29 May 2025 07:51:03 GMT
-Message-ID: <20250529084500-0.1.gx.2225i.0.7p5ld3dofe@scalenook.pl>
-Date: Thu, 29 May 2025 07:51:03 GMT
-From: "Renata Nowacka" <renata.nowacka@scalenook.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: =?UTF-8?Q?Ulga_na_sk=C5=82adki_ZUS?=
-X-Mailer: mail.scalenook.pl
+	id 1uKYuF-0000000FHLc-0cnV;
+	Thu, 29 May 2025 08:46:32 +0000
+X-UUID: 6661bc843c6911f08d385d50fb11b32d-20250529
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Qrg6t/3pDIIo/J14HuIjlYHkLPkRQL268S0ybavfqxc=;
+	b=QVon60aX8hWZUIEu60EMIMCb/hH0jtbLxwSxh7kacMHXnlrB8FA743CWf8WOLECJkwIwL2Dp55yFZlun9P1Jl+PfcBVkYWJ8GGbr9v5h16R4HGRgDxyypdMB9EPnuj2dsodQdzy7zqwlvsUA2Lr9QMiB7aoSRW0eaZEyXa5zZSE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:b3973a24-3ad8-437c-a447-641fabe00d7e,IP:0,UR
+	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-25
+X-CID-META: VersionHash:0ef645f,CLOUDID:70b23e59-eac4-4b21-88a4-d582445d304a,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 6661bc843c6911f08d385d50fb11b32d-20250529
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+	(envelope-from <kuyo.chang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 18084953; Thu, 29 May 2025 01:46:23 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Thu, 29 May 2025 16:46:05 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Thu, 29 May 2025 16:46:18 +0800
+From: Kuyo Chang <kuyo.chang@mediatek.com>
+To: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: kuyo chang <kuyo.chang@mediatek.com>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH 1/1] stop_machine: Fix migrate_swap() vs. balance_push() racing
+Date: Thu, 29 May 2025 16:43:35 +0800
+Message-ID: <20250529084614.885184-1-kuyo.chang@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250529_005224_416680_9A6B1D98 
-X-CRM114-Status: UNSURE (   0.18  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250529_014631_199188_34EFE141 
+X-CRM114-Status: GOOD (  16.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,25 +84,214 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dzie=C5=84 dobry,=20
+From: kuyo chang <kuyo.chang@mediatek.com>
 
-chcia=C5=82abym wskaza=C4=87 Pa=C5=84stwu mo=C5=BCliwo=C5=9B=C4=87 zarz=C4=
-=85dzania benefitami w =C5=82atwy spos=C3=B3b, poprzez nasze intuicyjne n=
-arz=C4=99dzie, jakim jest karta lunchowa.=20
+Hi guys,
 
-Nasze karty oferuj=C4=85 wygod=C4=99, oszcz=C4=99dno=C5=9Bci i zdrowe wyb=
-ory =C5=BCywieniowe. Dofinansowanie posi=C5=82k=C3=B3w jest korzystne dla=
- obu stron. Karty lunch to dla pracodawcy realne oszcz=C4=99dno=C5=9Bci w=
- postaci zwolnienia z ZUS do 450 z=C5=82 miesi=C4=99cznie na pracownika.=20
+It encounters sporadic failures during CPU hotplug stress test.
 
-Kart=C4=99 mo=C5=BCna do=C5=82adowa=C4=87 dowoln=C4=85 kwot=C4=85, a niew=
-ykorzystane =C5=9Brodki nie przepadaj=C4=85, lecz przechodz=C4=85 na kole=
-jny miesi=C4=85c.=20
+[Syndrome]
+The kernel log shows list add fail as below.
 
-Mog=C4=99 przedstawi=C4=87 ofert=C4=99, kt=C3=B3ra pozwoli zoptymalizowa=C4=
-=87 koszty i zapewni=C4=87 pracownikom po=C5=BC=C4=85dany benefit?
+kmemleak: list_add corruption.
+prev->next should be next (ffffff82812c7a00),
+but was 0000000000000000. (prev=ffffff82812c3208).
 
+kmemleak: kernel BUG at lib/list_debug.c:34!
+kmemleak: Call trace:
+kmemleak:  __list_add_valid_or_report+0x11c/0x144
+kmemleak:  cpu_stop_queue_work+0x440/0x474
+kmemleak:  stop_one_cpu_nowait+0xe4/0x138
+kmemleak:  balance_push+0x1f4/0x3e4
+kmemleak:  __schedule+0x1adc/0x23bc
+kmemleak:  preempt_schedule_common+0x68/0xd0
+kmemleak:  preempt_schedule+0x60/0x80
+kmemleak:  _raw_spin_unlock_irqrestore+0x9c/0xa0
+kmemleak:  scan_gray_list+0x220/0x3e4
+kmemleak:  kmemleak_scan+0x410/0x740
+kmemleak:  kmemleak_scan_thread+0xb0/0xdc
+kmemleak:  kthread+0x2bc/0x494
+kmemleak:  ret_from_fork+0x10/0x20
 
-Pozdrawiam
-Renata Nowacka
+[Analysis]
+In the failure case, by memory dump, we find
+cpu_stopper.enabled = TRUE
+but the wakeq is empty(the migrate/1 is at another wakeq)
+static bool cpu_stop_queue_work(unsigned int cpu, struct cpu_stop_work *work)
+{
+...
+..
+	enabled = stopper->enabled;
+	if (enabled)
+		__cpu_stop_queue_work(stopper, work, &wakeq);
+...
+...
+	wake_up_q(&wakeq);  -> wakeq is empty !!
+	preempt_enable();
+	return enabled;
+}
+
+Through analysis of the CPU0 call trace and memory dump
+
+   CPU0: migration/0, pid: 43, priority: 99
+   Native callstack:
+	vmlinux  __kern_my_cpu_offset()           <arch/arm64/include/asm/percpu.h:40>
+	vmlinux  ct_state_inc(incby=8)            <include/linux/context_tracking.h:137>
+	vmlinux  rcu_momentary_eqs() + 72         <kernel/rcu/tree.c:375>
+	vmlinux  multi_cpu_stop() + 316           <kernel/stop_machine.c:278>
+	vmlinux  cpu_stopper_thread() + 676       <kernel/stop_machine.c:563>
+	vmlinux  smpboot_thread_fn(data=0) + 1188 <kernel/smpboot.c:164>
+	vmlinux  kthread() + 696                  <kernel/kthread.c:389>
+	vmlinux  0xFFFFFFC08005941C()             <arch/arm64/kernel/entry.S:845>
+
+  (struct migration_swap_arg *)0xFFFFFFC08FF87A40 (
+    src_task = 0xFFFFFF80FF519740 ,
+    dst_task = 0xFFFFFF802A579740 ,
+    src_cpu = 0x0,
+    dst_cpu = 0x1)
+
+  (struct multi_stop_data)*    0xFFFFFFC08FF87930 = (
+    fn = 0xFFFFFFC0802657F4 = migrate_swap_stop,
+    data = 0xFFFFFFC08FF87A40
+    num_threads = 0x2,
+    active_cpus = cpu_bit_bitmap[1] -> (
+      bits = (0x2)),
+    state = MULTI_STOP_PREPARE = 0x1,
+    thread_ack = (
+      counter = 0x1))
+
+By cpu mask memory dump:
+  ((const struct cpumask *)&__cpu_online_mask) (
+    bits = (0xFF))
+  ((const struct cpumask *)&__cpu_dying_mask)  (
+    bits = (0x2))
+  ((const struct cpumask *)&__cpu_active_mask)(
+    bits = (0xFD))
+  ((const struct cpumask *)&__cpu_possible_mask) (
+    bits = (0xFF))
+->Imply cpu1 is dying & non-active
+
+So, the potential race scenario is:
+
+	CPU0							CPU1
+	// doing migrate_swap(cpu0/cpu1)
+	stop_two_cpus()
+							  ...
+							 // doing _cpu_down()
+							      sched_cpu_deactivate()
+								set_cpu_active(cpu, false);
+								balance_push_set(cpu, true);
+	cpu_stop_queue_two_works
+	    __cpu_stop_queue_work(stopper1,...);
+	    __cpu_stop_queue_work(stopper2,..);
+	stop_cpus_in_progress -> true
+		preempt_enable();
+								...
+							1st balance_push
+							stop_one_cpu_nowait
+							cpu_stop_queue_work
+							__cpu_stop_queue_work
+							list_add_tail  -> 1st add push_work
+							wake_up_q(&wakeq);  -> "wakeq is empty. This implies that the stopper is at wakeq@migrate_swap."
+	preempt_disable
+	wake_up_q(&wakeq);
+	        wake_up_process // wakeup migrate/0
+		    try_to_wake_up
+		        ttwu_queue
+		            ttwu_queue_cond ->meet below case
+		                if (cpu == smp_processor_id())
+			         return false;
+			ttwu_do_activate
+			//migrate/0 wakeup done
+		wake_up_process // wakeup migrate/1
+	           try_to_wake_up
+		    ttwu_queue
+			ttwu_queue_cond
+		        ttwu_queue_wakelist
+			__ttwu_queue_wakelist
+			__smp_call_single_queue
+	preempt_enable();
+
+							2nd balance_push
+							stop_one_cpu_nowait
+							cpu_stop_queue_work
+							__cpu_stop_queue_work
+							list_add_tail  -> 2nd add push_work, so the double list add is detected
+							...
+							...
+							cpu1 get ipi, do sched_ttwu_pending, wakeup migrate/1
+
+[Solution]
+Maybe add queue status tracking in __cpu_stop_queue_work to avoid the corner case?
+Or don't use ttwu_queu_wakelist while wakeup migrate?
+
+Signed-off-by: kuyo chang <kuyo.chang@mediatek.com>
+---
+ include/linux/stop_machine.h |  7 +++++++
+ kernel/stop_machine.c        | 12 +++++++++++-
+ 2 files changed, 18 insertions(+), 1 deletion(-)
+
+diff --git a/include/linux/stop_machine.h b/include/linux/stop_machine.h
+index 3132262a404d..a0748416dd69 100644
+--- a/include/linux/stop_machine.h
++++ b/include/linux/stop_machine.h
+@@ -21,11 +21,18 @@ typedef int (*cpu_stop_fn_t)(void *arg);
+ 
+ #ifdef CONFIG_SMP
+ 
++enum work_state {
++	WORK_INIT = 0,
++	WORK_QUEUE,
++	WORK_EXEC,
++};
++
+ struct cpu_stop_work {
+ 	struct list_head	list;		/* cpu_stopper->works */
+ 	cpu_stop_fn_t		fn;
+ 	unsigned long		caller;
+ 	void			*arg;
++	enum work_state		state;
+ 	struct cpu_stop_done	*done;
+ };
+ 
+diff --git a/kernel/stop_machine.c b/kernel/stop_machine.c
+index 5d2d0562115b..9ab6b07708e3 100644
+--- a/kernel/stop_machine.c
++++ b/kernel/stop_machine.c
+@@ -87,6 +87,7 @@ static void __cpu_stop_queue_work(struct cpu_stopper *stopper,
+ {
+ 	list_add_tail(&work->list, &stopper->works);
+ 	wake_q_add(wakeq, stopper->thread);
++	work->state = WORK_QUEUE;
+ }
+ 
+ /* queue @work to @stopper.  if offline, @work is completed immediately */
+@@ -385,7 +386,15 @@ int stop_two_cpus(unsigned int cpu1, unsigned int cpu2, cpu_stop_fn_t fn, void *
+ bool stop_one_cpu_nowait(unsigned int cpu, cpu_stop_fn_t fn, void *arg,
+ 			struct cpu_stop_work *work_buf)
+ {
+-	*work_buf = (struct cpu_stop_work){ .fn = fn, .arg = arg, .caller = _RET_IP_, };
++	if (unlikely(work_buf->state == WORK_QUEUE))
++		return true;
++
++	*work_buf = (struct cpu_stop_work){
++	    .fn = fn,
++	    .arg = arg,
++	    .caller = _RET_IP_,
++	    .state = WORK_INIT
++	};
+ 	return cpu_stop_queue_work(cpu, work_buf);
+ }
+ 
+@@ -496,6 +505,7 @@ static void cpu_stopper_thread(unsigned int cpu)
+ 		work = list_first_entry(&stopper->works,
+ 					struct cpu_stop_work, list);
+ 		list_del_init(&work->list);
++		work->state = WORK_EXEC;
+ 	}
+ 	raw_spin_unlock_irq(&stopper->lock);
+ 
+-- 
+2.45.2
+
 
