@@ -4,64 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3404C5AE59
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 May 2025 16:14:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39AE2C5B552
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 May 2025 16:14:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uq6yFKkalOl4LwtolvwfyGp+iifxQRx+6zneX+9HCGw=; b=G0hRKyZOqsjzBC85zuOePLTT/M
-	KUcv5qlKUnTzaBsGcbw5v8gr7UI9COTZ+85vgXYyHSBw4IN6wR//tPa5hv3FU8OmF3DUQjUZAYB30
-	Z5Rx5F+EPegnlFvhlxn2DZWPdiETn6np2uXweH6QNmUr9giZLLHzXveioYlSwQ0jFaROkwGNqRLN6
-	V6vj2wJad/L2tkPgrs7m8NynyfJey0dSKWUV+yQo2ixXvRj+kqrni9FMNcAJGBBexS3IoKrBtPTNR
-	m/gP+rkkpnSVIzkGtSWercU5GroBTJbHRlCaleSakLWx+G2pj0SHivrpekQhyWO19lOCGwsRidFqM
-	4FDiz5qA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8X65+RUP9ijQfOhLiXOSXvS9V0fxs4tYYcwm99KjsTQ=; b=VqLIBG/m8dCrBZ7tyv4SJ8JZ5I
+	ZJ0kYrb5Ihnj2YyFEqK1CKY6jd8hHsMg7KEgl0WGKN97niW6a4Tti/lhnuHb88KV6L1jTrA9QHZXP
+	P2xeMq8YGjjIuRIfdxZ4arIVNrKUvbFKspIPrAh0jKQD/+TxXilZn5Hu8w/fon/65W4392rJqrhFF
+	jCIhS7pYtCRgI9uycHLXuHJx3IIjyk7XUx+JpeUUBxz5TLlWJ2JZFJwhBg82d/K6lj9MbasQ3YdHx
+	0/79w0a9bO8Sdq+R4WPLLByiSgeCDtZergWju9cJdAZNRuPJaL+5yoYWtnV5BcHfxav4W1mBS0t2P
+	ah4EQpbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKftk-0000000G9Nd-4Brj;
+	id 1uKftl-0000000G9Of-3kGn;
 	Thu, 29 May 2025 16:14:29 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKfYz-0000000G7uR-2PkD;
-	Thu, 29 May 2025 15:53:02 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 0776E5C67D9;
-	Thu, 29 May 2025 15:50:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 25163C4CEE7;
-	Thu, 29 May 2025 15:52:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1748533980;
-	bh=dBrwp1lSjo0/zOXj6+oiqnIpBPI1NPg/5I0TXg2hVv8=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Yw+rhh/7vLdzy29EEq4xkty36nZuNp/uVPHljZW42ReP4ZM0WRx5x00cuKa8nKoWW
-	 cehhCWZD2qR5mAB9p7IPwFaxZ57fAMxlQdZbMmPU65C+9U9vwNu7pX2j58pUoNappk
-	 5IffxJ5eBVEc3ui9eV7Yy1bZQWajrtJTvZcrLaS672kA1Q4lMxXddS7BFJ03sF7Yi9
-	 seAOrSV0ZVz4riIGZjG133mrmxPWWox+J6l3T+6Ht0uBdtQXB6eYr80J2wQTqaT0Qj
-	 5hzRAllPMLyk2rjcCIeb3KtkrzyJjisjwW7tesfif8Bj4v/B/NKPoEZqQJ/6nUorL0
-	 JxVVdPWvO1hGQ==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Thu, 29 May 2025 17:52:38 +0200
-Subject: [PATCH net 2/2] net: airoha: Fix IPv6 hw acceleration in bridge
- mode
+	id 1uKfZQ-0000000G7yG-06lA;
+	Thu, 29 May 2025 15:53:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1748534005;
+	bh=gpaKs8nDRKUL3IKkyljnJJf6SvliLquwp0sCaRjiIX0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=JEVtj9sJaIntHKm0eT3W+hHGiFjw4FjMyaLlOju9jajYO4VeHMdi2Tjvg/lCgGXah
+	 UThWegoLWpeqmmvUYgaj0+4ZpiajwGziCtU+Ufppe166JLv128Ol8yj7norkXV0sDk
+	 nobDXMcUJhUvU/kecHYToukrJE2sjv4kggAYDA6Xy8HEVNXN3w6+URJMKtBmdLlwb4
+	 HtIz+vFgWt0xRC+Dw6OT6jQEBSZIVE/e64UNVroO1fRgEPfRkKJwpf7BLZwwxTsreN
+	 L2UUPx7hUJH+ewUXx/xNMA8S9hG5dkdeoovbhMVIG3Wab/34v4kMmWNoTsZYWe5Y/O
+	 hUHvBhg40+MIQ==
+Received: from notapiano (unknown [IPv6:2600:4041:5b1a:9400:99d:464c:62e0:2118])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 03B0B17E0415;
+	Thu, 29 May 2025 17:53:20 +0200 (CEST)
+Date: Thu, 29 May 2025 11:53:08 -0400
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Julien Massot <julien.massot@collabora.com>, kernel@collabora.com,
+	Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Hui Liu <hui.liu@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
+	Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Tinghan Shen <tinghan.shen@mediatek.com>, linux-pm@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, iommu@lists.linux.dev
+Subject: Re: [PATCH v2 1/3] dt-bindings: mfd: mediatek: mt6397: Add
+ #sound-dai-cells property
+Message-ID: <cee1e8bc-f4b0-49b9-a67b-2f54382c3d8e@notapiano>
+References: <20250514-mt8395-dtb-errors-v2-0-d67b9077c59a@collabora.com>
+ <20250514-mt8395-dtb-errors-v2-1-d67b9077c59a@collabora.com>
+ <20250522-independent-ginger-bullfrog-4552d1@kuoka>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250529-airoha-flowtable-ipv6-fix-v1-2-7c7e53ae0854@kernel.org>
-References: <20250529-airoha-flowtable-ipv6-fix-v1-0-7c7e53ae0854@kernel.org>
-In-Reply-To: <20250529-airoha-flowtable-ipv6-fix-v1-0-7c7e53ae0854@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Michal Kubiak <michal.kubiak@intel.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-X-Mailer: b4 0.14.2
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20250522-independent-ginger-bullfrog-4552d1@kuoka>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250529_085301_703864_10A6160C 
-X-CRM114-Status: GOOD (  11.68  )
+X-CRM114-CacheID: sfid-20250529_085328_239704_B9CDE8D7 
+X-CRM114-Status: GOOD (  20.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,68 +89,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-ib2 and airoha_foe_mac_info_common have not the same offsets in
-airoha_foe_bridge and airoha_foe_ipv6 structures. Fix IPv6 hw
-acceleration in bridge mode resolving ib2 and airoha_foe_mac_info_common
-overwrite in airoha_ppe_foe_commit_subflow_entry routine. Moreover, set
-AIROHA_FOE_MAC_SMAC_ID to 0xf in airoha_ppe_foe_commit_subflow_entry()
-to configure the PPE module to keep original source mac address of the
-bridged packets.
+On Thu, May 22, 2025 at 09:52:07AM +0200, Krzysztof Kozlowski wrote:
+> On Wed, May 14, 2025 at 10:19:56AM GMT, Julien Massot wrote:
+> > The 'mt6359.dtsi' file already uses the '#sound-dai-cells' property.
+> > Add the corresponding property to the binding to fix the following
+> > dtb-check error:
+> > 
+> > mediatek/mt8395-radxa-nio-12l.dtb: pmic: '#sound-dai-cells', 'mt6359rtc' do not match any of the regexes: 'pinctrl-[0-9]+'
+> > from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6397.yaml#
+> 
+> If this is a random drive-by, would be fine, but if that's your platform
+> which you should know, then I expect this to be a real reason instead
+> something which can easily be rejected with: what if DTS is wrong?
+> 
+> I could not find the ASoC driver for that compatible and quick glance to
+> MFD shown me no usage of dai cells, so you need proper explanation here.
+> 
+> Especially, that there is a subnode audio-codec, so adding dai cells to
+> the parent node feels just wrong. One is wrong - either subnode or
+> parent is a codec.
 
-Fixes: cd53f622611f ("net: airoha: Add L2 hw acceleration support")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_ppe.c | 26 +++++++++++++++-----------
- 1 file changed, 15 insertions(+), 11 deletions(-)
+The driver is sound/soc/codecs/mt6359.c, which defines 2 DAIs. It's currently
+probed by the MFD through the driver name, hence the parent MFD device is the
+one used to register the audio component.
 
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index a783f16980e6b7fdb69cec7ff09883a9c83d42d5..d5dbcb556f2b10b23ebbdd32a66a3c4f32cfb460 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -639,7 +639,6 @@ airoha_ppe_foe_commit_subflow_entry(struct airoha_ppe *ppe,
- 	u32 mask = AIROHA_FOE_IB1_BIND_PACKET_TYPE | AIROHA_FOE_IB1_BIND_UDP;
- 	struct airoha_foe_entry *hwe_p, hwe;
- 	struct airoha_flow_table_entry *f;
--	struct airoha_foe_mac_info *l2;
- 	int type;
- 
- 	hwe_p = airoha_ppe_foe_get_entry(ppe, hash);
-@@ -656,18 +655,23 @@ airoha_ppe_foe_commit_subflow_entry(struct airoha_ppe *ppe,
- 
- 	memcpy(&hwe, hwe_p, sizeof(*hwe_p));
- 	hwe.ib1 = (hwe.ib1 & mask) | (e->data.ib1 & ~mask);
--	l2 = &hwe.bridge.l2;
--	memcpy(l2, &e->data.bridge.l2, sizeof(*l2));
- 
- 	type = FIELD_GET(AIROHA_FOE_IB1_BIND_PACKET_TYPE, hwe.ib1);
--	if (type == PPE_PKT_TYPE_IPV4_HNAPT)
--		memcpy(&hwe.ipv4.new_tuple, &hwe.ipv4.orig_tuple,
--		       sizeof(hwe.ipv4.new_tuple));
--	else if (type >= PPE_PKT_TYPE_IPV6_ROUTE_3T &&
--		 l2->common.etype == ETH_P_IP)
--		l2->common.etype = ETH_P_IPV6;
--
--	hwe.bridge.ib2 = e->data.bridge.ib2;
-+	if (type >= PPE_PKT_TYPE_IPV6_ROUTE_3T) {
-+		memcpy(&hwe.ipv6.l2, &e->data.bridge.l2, sizeof(hwe.ipv6.l2));
-+		hwe.ipv6.ib2 = e->data.bridge.ib2;
-+		/* keep origianl source mac address */
-+		hwe.ipv6.l2.src_mac_hi = FIELD_PREP(AIROHA_FOE_MAC_SMAC_ID,
-+						    0xf);
-+	} else {
-+		memcpy(&hwe.bridge.l2, &e->data.bridge.l2,
-+		       sizeof(hwe.bridge.l2));
-+		hwe.bridge.ib2 = e->data.bridge.ib2;
-+		if (type == PPE_PKT_TYPE_IPV4_HNAPT)
-+			memcpy(&hwe.ipv4.new_tuple, &hwe.ipv4.orig_tuple,
-+			       sizeof(hwe.ipv4.new_tuple));
-+	}
-+
- 	hwe.bridge.data = e->data.bridge.data;
- 	airoha_ppe_foe_commit_entry(ppe, &hwe, hash);
- 
+The right fix would probably be to add the compatible both to the ASoC and the
+MFD drivers, and then move the dai-cells to the sound subnode in DT.
 
--- 
-2.49.0
-
+Thanks,
+Nícolas
 
