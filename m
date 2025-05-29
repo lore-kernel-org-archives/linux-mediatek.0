@@ -4,54 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 812D8C54FB3
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E87AC5AD49
 	for <linux-mediatek@archiver.kernel.org>; Thu, 29 May 2025 16:14:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=R1LgwZo8Yy9jHnLiG1r4EpMcCCNsir16DglYBKVIjxk=; b=0hXb3poLE9hLpG
-	8u6hIWalrqqK7JgyzVBQ/cnhqS+W6do7v0z7f0xp84vDOLxCg8AqzCWpIu18PMuzqULrBiTGFz+G6
-	u56nnNUi5rcnFU3/qdSt8oxStjo/1aRcMIIyQNzqjQn7iaWGK2tYrI/6Ezj7abCneyw1xpQ9d/agm
-	fqQdHlctgt4gaRwh8q9pyaRKWwKgyAY1oaCcDPvANa1XazRg0lGNsEY14iag5dy6ULp+vUPONyMyf
-	SBclIVbnj+UxIUlyFq1o4jlHf8R60VmXZ831TzFcLbewjhD4sQqDD2DG5i5+Ys/rTR+gd3jLPRH+b
-	90Za1vSjXmfnYs9nQiNw==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3d35iKlLpW5pJRP+eF4Sdh9y+vNGFRTDojjWcJExubo=; b=KU1zhTXEmycZPxVduNQevYSfi7
+	o3vCxBgG7BMfmUnTfLaVkzH+I4aABjyELAZxqiH9/vDcBT4RVyhinmbBLULYjPVs7kvIur0Wv75Fr
+	jM8usVKQACJ/yC+LckBUMmRYurkolmWzLI4uQgoCVhFlntVX6FcpbdlHuM6OCGfc8QXtvLxcriR1D
+	r4u9yBIvazqbsIegVGAEF3cguHELc75FuNTB6z/h/Y0kYRJz0J3ypBmZ2tpghWJ1SXLTl88zl+QuB
+	QbB0h8QZ4413naI9VtqsRuIkz5f4d2B5ntXtHzdpvocDhIFjEZ6a0olmLgj58PruKWM3qWVxPYNnM
+	ucTuDTZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKftj-0000000G9Lm-1CRT;
-	Thu, 29 May 2025 16:14:27 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uKftk-0000000G9MW-0aAh;
+	Thu, 29 May 2025 16:14:28 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKfYv-0000000G7ta-0Y2S;
-	Thu, 29 May 2025 15:52:58 +0000
+	id 1uKfYw-0000000G7tt-2NmB;
+	Thu, 29 May 2025 15:52:59 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 953B85C67D9;
-	Thu, 29 May 2025 15:50:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 79AC8C4CEE7;
-	Thu, 29 May 2025 15:52:54 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id F3D464A977;
+	Thu, 29 May 2025 15:52:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5133CC4CEE7;
+	Thu, 29 May 2025 15:52:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1748533975;
-	bh=hl2EGsrGA6DGqbMtlfQBtSfBMc1FbsIADq0RXh96ZlM=;
-	h=From:Subject:Date:To:Cc:From;
-	b=kCV2Z42yGt0npy4Ex2G+oPRP+thc3Fkcwhd8enV06PV5M8H2VwCiYZesrJFsBUQQT
-	 qgL9LkWnJfGIJMZRbuXBJixkUSLqwMDDV/T3tTKZEMwKleSgfTuCFTWRUOLVtkO5Lp
-	 WA/SDlmfskrmgbGIQYBcBMEoYiCcF+i5PNz6yiduLgHy4oJBvZ+VpXg2wmHUAmOIRm
-	 LttEO5uOCgA8Qe/7PwyCSEJ8/wBb07GbWbGkODIAGVCbARJ9zhhNe3wwFu0JedvdCA
-	 58CWZMz01/lvXOjYEd85XmjNIxFQV7KThwR5bvqc8vJJsVs8nf/vb4FH152iRoFLXw
-	 jlRuFHa9LKWaw==
+	s=k20201202; t=1748533977;
+	bh=zrz+E20MLbXLCrEsSIZVKY9ohC91Wvdm69QIhyXK+38=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=NiTGGxv1/uR1L7LZ5BmV4tOgtN5c994Gpe0CuS+WaA2uMXLmrp/1wQf+mUkBTYR5o
+	 vXeF3UpRQT7+zjoRcE2fJG1uBz1RO51BxKyWetZk6Po3fVQUXvjLbTYTT9jMZ6AAMl
+	 mcJ7N9r1MClt07cGfvzIFrX0syDSBntZn7ENNignd5/mHfEuEyq6ZydovC/0cBMIi8
+	 3DwKpg2zvLoHUuec+QHAZK459iqjvURYpUm8YGoB71OfQMhAQyJAy8gVkFbRvfuo2h
+	 Mtc/FCihBNGkLvX1nN4IUWWsqx2ZIdPW7OFZwREV5wguyUbCk0BS7I9f4Opqbk8gzJ
+	 wmLCAHf99LNBA==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Subject: [PATCH net 0/2] net: airoha: Fix IPv6 hw acceleration
-Date: Thu, 29 May 2025 17:52:36 +0200
-Message-Id: <20250529-airoha-flowtable-ipv6-fix-v1-0-7c7e53ae0854@kernel.org>
+Date: Thu, 29 May 2025 17:52:37 +0200
+Subject: [PATCH net 1/2] net: airoha: Initialize PPE UPDMEM source-mac
+ table
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAMSCOGgC/x2MSwqAMAwFryJZG6gF6+cq4iJqqgGx0ooK4t0NL
- ucNbx5IHIUTtNkDkU9JEjaFIs9gXGibGWVSBmtsaUrbIEkMC6Ffw3XQsKrfT4debmwqR8XIteF
- qAv3vkXX+213/vh9poXh1awAAAA==
-X-Change-ID: 20250529-airoha-flowtable-ipv6-fix-976a1ce80e7d
+Message-Id: <20250529-airoha-flowtable-ipv6-fix-v1-1-7c7e53ae0854@kernel.org>
+References: <20250529-airoha-flowtable-ipv6-fix-v1-0-7c7e53ae0854@kernel.org>
+In-Reply-To: <20250529-airoha-flowtable-ipv6-fix-v1-0-7c7e53ae0854@kernel.org>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
  "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
@@ -61,9 +60,8 @@ Cc: linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250529_085257_218099_56507308 
-X-CRM114-Status: UNSURE (   5.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250529_085258_655499_52A3F8A1 
+X-CRM114-Status: GOOD (  13.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,28 +76,127 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix IPv6 hw acceleration in bridge mode resolving ib2 and
-airoha_foe_mac_info_common overwrite in
-airoha_ppe_foe_commit_subflow_entry routine.
-Introduce UPDMEM source-mac table used to set source mac address for
-L3 IPv6 hw accelerated traffic.
+UPDMEM source-mac table is a key-value map used to store devices mac
+addresses according to the port identifier. UPDMEM source mac table is
+used during IPv6 traffic hw acceleration since PPE entries, for space
+constraints, do not contain the full source mac address but just the
+identifier in the UPDMEM source-mac table.
 
+Fixes: 00a7678310fe ("net: airoha: Introduce flowtable offload support")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
-Lorenzo Bianconi (2):
-      net: airoha: Initialize PPE UPDMEM source-mac table
-      net: airoha: Fix IPv6 hw acceleration in bridge mode
-
  drivers/net/ethernet/airoha/airoha_eth.c  |  2 ++
  drivers/net/ethernet/airoha/airoha_eth.h  |  1 +
- drivers/net/ethernet/airoha/airoha_ppe.c  | 52 ++++++++++++++++++++++++-------
- drivers/net/ethernet/airoha/airoha_regs.h | 10 ++++++
- 4 files changed, 53 insertions(+), 12 deletions(-)
----
-base-commit: 27eab4c644236a9324084a70fe79e511cbd07393
-change-id: 20250529-airoha-flowtable-ipv6-fix-976a1ce80e7d
+ drivers/net/ethernet/airoha/airoha_ppe.c  | 26 +++++++++++++++++++++++++-
+ drivers/net/ethernet/airoha/airoha_regs.h | 10 ++++++++++
+ 4 files changed, 38 insertions(+), 1 deletion(-)
 
-Best regards,
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index d1d3b854361e443d414876f79f59b3c64cbcbe16..a7ec609d64dee9c8e901c7eb650bb3fe144ee00a 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -84,6 +84,8 @@ static void airoha_set_macaddr(struct airoha_gdm_port *port, const u8 *addr)
+ 	val = (addr[3] << 16) | (addr[4] << 8) | addr[5];
+ 	airoha_fe_wr(eth, REG_FE_MAC_LMIN(reg), val);
+ 	airoha_fe_wr(eth, REG_FE_MAC_LMAX(reg), val);
++
++	airoha_ppe_init_upd_mem(port);
+ }
+ 
+ static void airoha_set_gdm_port_fwd_cfg(struct airoha_eth *eth, u32 addr,
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
+index b815697302bfdf2a6d115a9bbbbadc05462dbadb..a970b789cf232c316e5ea27b0146493bf91c3767 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.h
++++ b/drivers/net/ethernet/airoha/airoha_eth.h
+@@ -614,6 +614,7 @@ void airoha_ppe_check_skb(struct airoha_ppe *ppe, struct sk_buff *skb,
+ int airoha_ppe_setup_tc_block_cb(struct net_device *dev, void *type_data);
+ int airoha_ppe_init(struct airoha_eth *eth);
+ void airoha_ppe_deinit(struct airoha_eth *eth);
++void airoha_ppe_init_upd_mem(struct airoha_gdm_port *port);
+ struct airoha_foe_entry *airoha_ppe_foe_get_entry(struct airoha_ppe *ppe,
+ 						  u32 hash);
+ void airoha_ppe_foe_entry_get_stats(struct airoha_ppe *ppe, u32 hash,
+diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
+index 12d32c92717a6b4ba74728ec02bb2e166d4d9407..a783f16980e6b7fdb69cec7ff09883a9c83d42d5 100644
+--- a/drivers/net/ethernet/airoha/airoha_ppe.c
++++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+@@ -223,6 +223,7 @@ static int airoha_ppe_foe_entry_prepare(struct airoha_eth *eth,
+ 	int dsa_port = airoha_get_dsa_port(&dev);
+ 	struct airoha_foe_mac_info_common *l2;
+ 	u32 qdata, ports_pad, val;
++	u8 smac_id = 0xf;
+ 
+ 	memset(hwe, 0, sizeof(*hwe));
+ 
+@@ -257,6 +258,8 @@ static int airoha_ppe_foe_entry_prepare(struct airoha_eth *eth,
+ 		 */
+ 		if (airhoa_is_lan_gdm_port(port))
+ 			val |= AIROHA_FOE_IB2_FAST_PATH;
++
++		smac_id = port->id;
+ 	}
+ 
+ 	if (is_multicast_ether_addr(data->eth.h_dest))
+@@ -291,7 +294,7 @@ static int airoha_ppe_foe_entry_prepare(struct airoha_eth *eth,
+ 		hwe->ipv4.l2.src_mac_lo =
+ 			get_unaligned_be16(data->eth.h_source + 4);
+ 	} else {
+-		l2->src_mac_hi = FIELD_PREP(AIROHA_FOE_MAC_SMAC_ID, 0xf);
++		l2->src_mac_hi = FIELD_PREP(AIROHA_FOE_MAC_SMAC_ID, smac_id);
+ 	}
+ 
+ 	if (data->vlan.num) {
+@@ -1238,6 +1241,27 @@ void airoha_ppe_check_skb(struct airoha_ppe *ppe, struct sk_buff *skb,
+ 	airoha_ppe_foe_insert_entry(ppe, skb, hash);
+ }
+ 
++void airoha_ppe_init_upd_mem(struct airoha_gdm_port *port)
++{
++	struct airoha_eth *eth = port->qdma->eth;
++	struct net_device *dev = port->dev;
++	const u8 *addr = dev->dev_addr;
++	u32 val;
++
++	val = (addr[2] << 24) | (addr[3] << 16) | (addr[4] << 8) | addr[5];
++	airoha_fe_wr(eth, REG_UPDMEM_DATA(0), val);
++	airoha_fe_wr(eth, REG_UPDMEM_CTRL(0),
++		     FIELD_PREP(PPE_UPDMEM_ADDR_MASK, port->id) |
++		     PPE_UPDMEM_WR_MASK | PPE_UPDMEM_REQ_MASK);
++
++	val = (addr[0] << 8) | addr[1];
++	airoha_fe_wr(eth, REG_UPDMEM_DATA(0), val);
++	airoha_fe_wr(eth, REG_UPDMEM_CTRL(0),
++		     FIELD_PREP(PPE_UPDMEM_ADDR_MASK, port->id) |
++		     FIELD_PREP(PPE_UPDMEM_OFFSET_MASK, 1) |
++		     PPE_UPDMEM_WR_MASK | PPE_UPDMEM_REQ_MASK);
++}
++
+ int airoha_ppe_init(struct airoha_eth *eth)
+ {
+ 	struct airoha_ppe *ppe;
+diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/ethernet/airoha/airoha_regs.h
+index d931530fc96fb00ada36a6ad37fa295865a6f0a8..04187eb40ec674ec5a4ccfc968bb4bd579a53095 100644
+--- a/drivers/net/ethernet/airoha/airoha_regs.h
++++ b/drivers/net/ethernet/airoha/airoha_regs.h
+@@ -313,6 +313,16 @@
+ #define REG_PPE_RAM_BASE(_n)			(((_n) ? PPE2_BASE : PPE1_BASE) + 0x320)
+ #define REG_PPE_RAM_ENTRY(_m, _n)		(REG_PPE_RAM_BASE(_m) + ((_n) << 2))
+ 
++#define REG_UPDMEM_CTRL(_n)			(((_n) ? PPE2_BASE : PPE1_BASE) + 0x370)
++#define PPE_UPDMEM_ACK_MASK			BIT(31)
++#define PPE_UPDMEM_ADDR_MASK			GENMASK(11, 8)
++#define PPE_UPDMEM_OFFSET_MASK			GENMASK(7, 4)
++#define PPE_UPDMEM_SEL_MASK			GENMASK(3, 2)
++#define PPE_UPDMEM_WR_MASK			BIT(1)
++#define PPE_UPDMEM_REQ_MASK			BIT(0)
++
++#define REG_UPDMEM_DATA(_n)			(((_n) ? PPE2_BASE : PPE1_BASE) + 0x374)
++
+ #define REG_FE_GDM_TX_OK_PKT_CNT_H(_n)		(GDM_BASE(_n) + 0x280)
+ #define REG_FE_GDM_TX_OK_BYTE_CNT_H(_n)		(GDM_BASE(_n) + 0x284)
+ #define REG_FE_GDM_TX_ETH_PKT_CNT_H(_n)		(GDM_BASE(_n) + 0x288)
+
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.49.0
 
 
