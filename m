@@ -4,79 +4,167 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 494BFC54FB3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 May 2025 05:20:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF093C5B552
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 May 2025 06:26:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aOoiOxcK2kOgEKpsrb+lB/8+GYoC6yDyjvcP+th49RY=; b=XdFginECjY4uaqTsmPIT7UzJAR
-	chKPwMR/zWtKSd4z7ZPSGmOdCIHspHL+dAzWhy6Xwn4rPAxQKynGYmFvdiuIbbYf3xckQs/eNr3F1
-	YVWf5fdYQ2SbzsCAGemv2lmkwAY1ypbBhaHEo8/YrmlhscvzUy7J58ZTV/0wH+RPUEPvKSnxDFzI/
-	fdqCUVZpBE4PhllVe2qIUjdJiUqOnxD3LKG3BOV/mgqVzBILqbevtcPsX5s7PNDryO9xlOjVG48EG
-	PG422MHjh4GQ8cjPJvGMtjlcjBuTh2xBW075AhGbmbEaDcOo/flQJepX2xA3PLcYviionR/QVqumi
-	9mfU1p3w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+2SWtTNE3E49MOlHnO8uVeg5xT5IQxhtgIcjK83+ABU=; b=YWhwR9xbydCs/RIzCIDWMFxs9C
+	dP7tl+y51kjouYxgRaqK/EUJdVWuECM2BmejZp0y/0EDQP4n5S4nxTSHUgK5Qofx92VY77ZdwuD5X
+	tZnKmJqTJZvdkxiSfZRRgb0hxXNAq58NNP5OUBSKFb0XhjRbMYRpAnYQWOCnusM88Hlmi3AwmwPPL
+	j+qMk5CKsQ4+7ITlTNW9o6HqJM7IIMA9x4GRpzuMMmAeLhJdg4ns+PYCAablt6WjJiKwLHdGJm1mG
+	QL/e3Td8NyUxVBEiu5SuO6RXiUJ0OPXz4A8EmJXLRhJWcoxHVYCktpqqXxU9YrW4txFH+nTWmwqDs
+	qEIl35Fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKVhC-0000000Ey8J-2bfw;
-	Thu, 29 May 2025 05:20:50 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1uKWim-0000000F47r-0Hom;
+	Thu, 29 May 2025 06:26:32 +0000
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKVf2-0000000Exzs-2kKM;
-	Thu, 29 May 2025 05:18:37 +0000
-X-UUID: 5c45c0643c4c11f08d385d50fb11b32d-20250528
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:To:From:Subject:Message-ID; bh=aOoiOxcK2kOgEKpsrb+lB/8+GYoC6yDyjvcP+th49RY=;
-	b=l3MrNSt2Up5544GZVgw6vLJ2GebiZLI0/GImcvSwH0R+2vu9jGZGhotdqB+xAe/BeLAvMydhgBdKeEpxeQ33ZfBF1Trp3HOdR+BUiSxa0aApZ8co/sUVIhCs+UiwqKhxRLpDJPiJqzFnedU4hXDVxNQzvXQot4zrga9pEd4+hTg=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:98e5c37b-1fc1-4143-8403-0cec6471065c,IP:0,UR
-	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:-5
-X-CID-META: VersionHash:0ef645f,CLOUDID:9c5967f1-2ded-45ed-94e2-b3e9fa87100d,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102,TC:nil,Content:0|50,
-	EDM:-3,IP:nil,URL:80|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0
-	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-UUID: 5c45c0643c4c11f08d385d50fb11b32d-20250528
-Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
-	(envelope-from <mason-cw.chang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 407192186; Wed, 28 May 2025 22:18:31 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Thu, 29 May 2025 13:18:26 +0800
-Received: from [10.233.130.16] (10.233.130.16) by mtkmbs13n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.1258.39 via Frontend
- Transport; Thu, 29 May 2025 13:18:26 +0800
-Message-ID: <f0913ce328a2e501566dc311cf8e6c4539d492d3.camel@mediatek.com>
-Subject: Re: Aw: [PATCH 2/3] thermal/drivers/mediatek/lvts_thermal: add lvts
- commands and their sizes to driver data
-From: Mason Chang <mason-cw.chang@mediatek.com>
-To: Frank Wunderlich <frank-w@public-files.de>, <rafael@kernel.org>,
-	<daniel.lezcano@linaro.org>, <rui.zhang@intel.com>, <lukasz.luba@arm.com>,
-	<angelogioacchino.delregno@collabora.com>, <nfraprado@collabora.com>,
-	<jpanis@baylibre.com>, <npitre@baylibre.com>, <colin.i.king@gmail.com>,
-	<u.kleine-koenig@baylibre.com>, <wenst@chromium.org>,
-	<linux-pm@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<daniel@makrotopia.org>, <steven.liu@mediatek.com>, <sam.shih@mediatek.com>
-Date: Thu, 29 May 2025 13:18:28 +0800
-In-Reply-To: <trinity-319df51e-2ff3-42cd-8efd-139fda159824-1748448614514@trinity-msg-rest-gmx-gmx-live-6995845bd-wzmz6>
-References: <20250526102659.30225-1-mason-cw.chang@mediatek.com>
-	 <20250526102659.30225-3-mason-cw.chang@mediatek.com>
-	 <trinity-319df51e-2ff3-42cd-8efd-139fda159824-1748448614514@trinity-msg-rest-gmx-gmx-live-6995845bd-wzmz6>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.52.3-0ubuntu1 
+	id 1uKWij-0000000F46k-1tCE
+	for linux-mediatek@lists.infradead.org;
+	Thu, 29 May 2025 06:26:30 +0000
+Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-ad538578668so4850066b.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 28 May 2025 23:26:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1748499987; x=1749104787; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=+2SWtTNE3E49MOlHnO8uVeg5xT5IQxhtgIcjK83+ABU=;
+        b=F9oAZ2cxcMsnNe4b1TQEqbtjPVTlChKd2Q3xDD5CYuliAnO3eqT+r4y1fp0CitdedE
+         foFasEZtMzJ9/m+DHifbxPjcy8ZFR5s1sXEkw0xfx3Ewvwk761SBXI/vUNkLirnAThBu
+         g/JPX8tpK268paVw1P4YpRIvrCCmUiJpTG/CCFr2/C1rVz/npEFVMQh9XkusFCqlILPD
+         RF2nzVyBsXGJyGWxBcG9Sms02Nd7EZyHFJikRGTF6cvizQCqueAs3qj2SOIpvMHkNGNo
+         eaeVR+JuK3We2W0tcl6/hFCFvVDvuDSHfO37Hy37sKE7dVseZCCHsVnvgIy0fT2aQJzK
+         529w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1748499987; x=1749104787;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=+2SWtTNE3E49MOlHnO8uVeg5xT5IQxhtgIcjK83+ABU=;
+        b=oRVjOd1ejueextpOHvlvLYNoX6st/EUFSDfkMYyq2XKHZq9BNlaHHQQQtgq16vdRvF
+         dCkxu7EZipmyeipB8AhSfxkHUbdO8RIfgCxolfkSvzXIVAieRJ5MRb24jdbL0pR+jq0V
+         oC19UAzIbmHKZJVbKNnvxpU/GJAuhfg18k995GPXJ02ufAC9+SJNUKdi+y0+EhmGMwvP
+         CvxAxFfJdccTtOxuW3VGBY+GcGWzo/3RyLKh5M3rlt29ZBNOljJXgVwS6tIQtOKqWaw6
+         cJ2jHmk7BlnMkvaxWAYkkzOR9aysob2cHNlqw3JIcRp3YNJOPVNkc+zLnfTKxE57rZeh
+         6JQA==
+X-Forwarded-Encrypted: i=1; AJvYcCXlXz2daH64iVVKWhcYJ1RfMhmLB4RbECK+FKvCg+ZSCET/PdnmrXC4jWyuCu6bYtjEyazVgtO7uGc+Ly+V5A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyMb+r48ejBviGM5pe2UGhXqvLnsIvG+UjQRf4pqtGqRvIfCJAV
+	UJw8hEO0dYrz01rpRPzk2LsSkwsmBcIfYdf0z1M83oFC1q0a1aooRUYXSCLqRX/88xM=
+X-Gm-Gg: ASbGncuFl1M3QaPYWiwVB9ifCl3ORYPVN7csreYJkz7qd4oMIymA4dQFFeWELaKmlFu
+	t9xtq0ssoTRFPw6S8/aZn9seuKxfbHx+wkKYbW2l2daFpsutppG2QYdFXo2ZewbjsNsLk8wOr+Y
+	0CsFouy0dtP8gY5bZ+9b7vMsW2o/R1i2DGIotkp6Mttv9cJ2sAGGUTQuHl4736KCIuGU8GaiTDa
+	zCHMBV0oE4z1pEqcipChw1j7vyaa3A3MsfmKHc1uDKy2FDCeeqre7oSf6SFVbI5Vq4jEcDE8a8t
+	q69wclr9G4jV+DZQHnHPUc1rIoVZGeATI0z9rsPOPjlVraOgI1TEdazf41B24N4JfUDORiQ=
+X-Google-Smtp-Source: AGHT+IGlMDzn+QG/07M9P/X4G1UkWeHWA61AWrk71VubiDANJ+WF35EJENPRBZsOw8VSgdWIr7Porg==
+X-Received: by 2002:a17:907:2724:b0:ad8:882e:39a with SMTP id a640c23a62f3a-ad8882e03ddmr319125766b.8.1748499985639;
+        Wed, 28 May 2025 23:26:25 -0700 (PDT)
+Received: from [192.168.1.29] ([178.197.223.125])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ada6ad6aaf5sm79818366b.183.2025.05.28.23.26.22
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 28 May 2025 23:26:24 -0700 (PDT)
+Message-ID: <6bb4f8f7-ef95-4f10-ad94-027fa18dada3@linaro.org>
+Date: Thu, 29 May 2025 08:26:21 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 02/17] pinctrl: Allow compile testing for K210, TB10X and
+ ZYNQ
+To: Linus Walleij <linus.walleij@linaro.org>,
+ Basavaraj Natikar <Basavaraj.Natikar@amd.com>,
+ Shyam Sundar S K <Shyam-sundar.S-k@amd.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>,
+ Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>,
+ Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>,
+ =?UTF-8?Q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>,
+ =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>, Ray Jui <rjui@broadcom.com>,
+ Scott Branden <sbranden@broadcom.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ David Rhodes <david.rhodes@cirrus.com>,
+ Richard Fitzgerald <rf@opensource.cirrus.com>,
+ Charles Keepax <ckeepax@opensource.cirrus.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>,
+ Jesper Nilsson <jesper.nilsson@axis.com>,
+ Lars Persson <lars.persson@axis.com>,
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+ Damien Le Moal <dlemoal@kernel.org>, Vladimir Zapolskiy <vz@mleia.com>,
+ Michal Simek <michal.simek@amd.com>, Emil Renner Berthing <kernel@esmil.dk>,
+ Jianlong Huang <jianlong.huang@starfivetech.com>,
+ Hal Feng <hal.feng@starfivetech.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>
+Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org,
+ linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
+ linux-sound@vger.kernel.org, patches@opensource.cirrus.com,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@axis.com,
+ linux-riscv@lists.infradead.org, linux-rtc@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com
+References: <20250528-pinctrl-const-desc-v1-0-76fe97899945@linaro.org>
+ <20250528-pinctrl-const-desc-v1-2-76fe97899945@linaro.org>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Content-Language: en-US
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ 2+47PN9NZAOyb771QoVr8A==
+In-Reply-To: <20250528-pinctrl-const-desc-v1-2-76fe97899945@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250528_221836_702610_D060B24C 
-X-CRM114-Status: GOOD (  25.99  )
+X-CRM114-CacheID: sfid-20250528_232629_508395_F10C28BB 
+X-CRM114-Status: GOOD (  12.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,116 +179,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 28/05/2025 12:40, Krzysztof Kozlowski wrote:
+> Pinctrl drivers for K210, TB10X and ZYNQ do not reference any machine
+> headers, thus can be compile tested for increased build coverage.
+> 
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> ---
+>  drivers/pinctrl/Kconfig | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/pinctrl/Kconfig b/drivers/pinctrl/Kconfig
+> index 33db9104df178e5a3148b60c3c6bd153113385d3..77a5d13e899f8c5251987c2c74df1d05dbd59128 100644
+> --- a/drivers/pinctrl/Kconfig
+> +++ b/drivers/pinctrl/Kconfig
+> @@ -269,7 +269,7 @@ config PINCTRL_INGENIC
+>  
+>  config PINCTRL_K210
+>  	bool "Pinctrl driver for the Canaan Kendryte K210 SoC"
+> -	depends on RISCV && SOC_CANAAN_K210 && OF
+> +	depends on RISCV && SOC_CANAAN_K210 && OF || COMPILE_TEST
+>  	select GENERIC_PINMUX_FUNCTIONS
+LKP reported here issue, so there will be v2 of this.
 
-Hi Frank,
 
-First of all, thank you for providing the link to the actual issue
-case. This issue does not affect all MT7988 ICs. Based on the
-information collected from users and production lines, we have found
-that about 2% of the ICs show severe temperature anomalies without this
-patch.
-
-> Hi Mason,
->=20
-> thank you for working on this.
->=20
-> I have not yet tested the series, but did not have the issue (which
-> should be solved by it) reported [1].
->=20
-> So just my thoughts when looking through changes
->=20
-> > Gesendet: Montag, 26. Mai 2025 um 12:26
-> > Von: "Mason Chang" <mason-cw.chang@mediatek.com>
-> > Betreff: [PATCH 2/3] thermal/drivers/mediatek/lvts_thermal: add
-> > lvts commands and their sizes to driver data
-> >=20
-> > Add LVTS commands and their sizes to driver data in preparation for
-> > adding different commands.
-> >=20
-> > Signed-off-by: Mason Chang <mason-cw.chang@mediatek.com>
-> > ---
-> > =C2=A0drivers/thermal/mediatek/lvts_thermal.c | 65 ++++++++++++++++++++=
--
-> > ----
-> > =C2=A01 file changed, 52 insertions(+), 13 deletions(-)
-> >=20
-> > diff --git a/drivers/thermal/mediatek/lvts_thermal.c
-> > b/drivers/thermal/mediatek/lvts_thermal.c
-> > index 7e4f56831..5b7bf29a7 100644
-> > --- a/drivers/thermal/mediatek/lvts_thermal.c
-> > +++ b/drivers/thermal/mediatek/lvts_thermal.c
-> > @@ -96,17 +96,6 @@
-> >=20
-> > =C2=A0#define LVTS_MINIMUM_THRESHOLD=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 20000
-> >=20
-> > -static const u32 default_conn_cmds[] =3D { 0xC103FFFF, 0xC502FF55 };
-> > -/*
-> > - * Write device mask: 0xC1030000
-> > - */
-> > -static const u32 default_init_cmds[] =3D {
-> > -=C2=A0=C2=A0=C2=A0=C2=A0 0xC1030E01, 0xC1030CFC, 0xC1030A8C, 0xC103098=
-D, 0xC10308F1,
-> > -=C2=A0=C2=A0=C2=A0=C2=A0 0xC10307A6, 0xC10306B8, 0xC1030500, 0xC103042=
-0, 0xC1030300,
-> > -=C2=A0=C2=A0=C2=A0=C2=A0 0xC1030030, 0xC10300F6, 0xC1030050, 0xC103006=
-0, 0xC10300AC,
-> > -=C2=A0=C2=A0=C2=A0=C2=A0 0xC10300FC, 0xC103009D, 0xC10300F1, 0xC10300E=
-1
-> > -};
->=20
-> could you please move this block in part 1 to the position used here
-> in v2 to avoid deletion/adding again here?
-
-To clearly separate changes and maintain the principle of minimal
-modifications, you can see that in patch [1/3], the functions
-lvts_ctrl_connect and lvts_ctrl_initialize call the commands.
-Therefore, the commands cannot be moved to the part in patch [2/3].
-
-> Maybe magic numbers can be described a bit?
-
-This is just an initialization sequence, it cannot be adjusted.
-
-> > =C2=A0static int golden_temp =3D LVTS_GOLDEN_TEMP_DEFAULT;
-> > =C2=A0static int golden_temp_offset;
-> >=20
-> ...
-> > @@ -1446,6 +1442,17 @@ static int lvts_resume(struct device *dev)
-> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return 0;
-> > =C2=A0}
-> >=20
-> > +static const u32 default_conn_cmds[] =3D { 0xC103FFFF, 0xC502FF55 };
-> > +/*
-> > + * Write device mask: 0xC1030000
-> > + */
-> > +static const u32 default_init_cmds[] =3D {
-> > +=C2=A0=C2=A0=C2=A0=C2=A0 0xC1030E01, 0xC1030CFC, 0xC1030A8C, 0xC103098=
-D, 0xC10308F1,
-> > +=C2=A0=C2=A0=C2=A0=C2=A0 0xC10307A6, 0xC10306B8, 0xC1030500, 0xC103042=
-0, 0xC1030300,
-> > +=C2=A0=C2=A0=C2=A0=C2=A0 0xC1030030, 0xC10300F6, 0xC1030050, 0xC103006=
-0, 0xC10300AC,
-> > +=C2=A0=C2=A0=C2=A0=C2=A0 0xC10300FC, 0xC103009D, 0xC10300F1, 0xC10300E=
-1
-> > +};
-> > +
-> > =C2=A0/*
-> > =C2=A0 * The MT8186 calibration data is stored as packed 3-byte little-
-> > endian
-> > =C2=A0 * values using a weird layout that makes sense only when viewed
-> > as a 32-bit
-> > @@ -1740,7 +1747,11 @@ static const struct lvts_ctrl_data
-> > mt8195_lvts_ap_data_ctrl[] =3D {
->                                                                     =20
-> regards Frank
->=20
-> [1]
-> https://urldefense.com/v3/__https://github.com/openwrt/openwrt/pull/18750=
-*issuecomment-2877554514__;Iw!!CTRNKA9wMg0ARbw!lVkeuQXjfQ1pWGSvoDCEmf0FEFQq=
-qQDEb0ovZ5cSsNiXi7hud5epYUyl9xFjO6U7vukgfBY1Ue_-xJ78F5Qe7rw4UzwJyA$
-
-Thank you for focusing on this issue!
-
-Sincerely
-Mason
+Best regards,
+Krzysztof
 
