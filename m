@@ -4,78 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9A0EC3ABB2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 May 2025 08:11:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FC48C5B552
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 May 2025 08:24:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=N0tPegYoongyaCY6bs5X+PjA8xXy8hsIicZmNQUSMw8=; b=gvGHtrrxUL8l20pBar40S9HZRp
-	fuYKJHdsVLZ1azDJwT87Vr5Y8LFCzoe6V54LCmQ8UrVucHn5qSB1t4sdcq68M63FPVC88eYgUdwJc
-	UuyCmONQP39ZO0g8BsbmoMWKHtKzWqqrU1WuLKfg0jrbvw2DL5+TOXRlJlPTcoFFWZVetKKt5v2Qu
-	pRpmNXs/KTTW8g3cejWB6GpsLk7ofbfKZJdjjifNS4wvJulxMbHZ7p2bPzzQK83yaPrM6/TG1fEN1
-	18kT0E2e5hwd/5bSuNXD1P2/U7TGOBSKuqktM3tpSYCaOfsm9rqYmR9NA7zHEo978lIUFhABuK0tX
-	eJEHTvFQ==;
+	bh=UODADZBFNNuhdOjNi7w1d1lWaPaCSwIUX58mKie6mVI=; b=p5oVzErr/34mAtLG5OM90/vZK/
+	tsvnA2mlwU36GbOIkf4D49BkWNyAEPm8yMNLDyCYlBRLGh55NTMuCL0Fb+uA0bXREUEnATS/rQav+
+	KP31gIYFx0jzGFbiGDZM8kyxiFns+IMu4OCMkmgyMLJeoXWrqKFvL4RvrcCMvTi8xiCLUXdzjR9Ub
+	h5j7e+cS5l/ctZYRQc6zeImvaFWs3Y51BPe6vx2LZgFhHEC8OvvTrdkHjmBKYliaZHSyyfYzbEQEH
+	ezthN0lX43Jf8CHy44Ha3psoNobqmhYlqWdnAF4OWLXf50pcpt7EbAehGpatbD0nlqHoYcoFBpdui
+	WcherptA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKuqI-0000000HZ9W-40sH;
-	Fri, 30 May 2025 08:11:54 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1uKv2u-0000000HatJ-2vYU;
+	Fri, 30 May 2025 08:24:56 +0000
+Received: from mail-oi1-f179.google.com ([209.85.167.179])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKuRA-0000000HUoC-3oCl;
-	Fri, 30 May 2025 07:45:58 +0000
-X-UUID: 1c740f3e3d2a11f0bed96b30c12bc3d6-20250530
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=N0tPegYoongyaCY6bs5X+PjA8xXy8hsIicZmNQUSMw8=;
-	b=Cd0RsXmjZx8naoG2lcsLyQJO2NHGqWGzCF0tIS6h3F3J2oGp8nQhVGkBTMWKG6yLBtNQJ+wHl9P2sJ0Ps5uZqNic4P3NNnT3V4PbojQRB1NAys4p5NgxsyHVO32sMsjOPZFZ6Ja4s2HbztFwACsRcIHXg+z9584XCsbIsN6xDfU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.1,REQID:fe159441-ef20-4985-8e27-a38f2af50e51,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:0ef645f,CLOUDID:44f472f1-2ded-45ed-94e2-b3e9fa87100d,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
-	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
-	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-UUID: 1c740f3e3d2a11f0bed96b30c12bc3d6-20250530
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <kyrie.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 900606542; Fri, 30 May 2025 00:45:52 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Fri, 30 May 2025 15:45:49 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Fri, 30 May 2025 15:45:48 +0800
-From: Kyrie Wu <kyrie.wu@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
-	<krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Kyrie Wu <kyrie.wu@mediatek.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-CC: <srv_heupstream@mediatek.com>
-Subject: [PATCH v5 11/12] media: mediatek: jpeg: refactor decoding resolution change operation
-Date: Fri, 30 May 2025 15:45:36 +0800
-Message-ID: <20250530074537.26338-12-kyrie.wu@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20250530074537.26338-1-kyrie.wu@mediatek.com>
-References: <20250530074537.26338-1-kyrie.wu@mediatek.com>
+	id 1uKura-0000000HZRZ-1Rj2;
+	Fri, 30 May 2025 08:13:15 +0000
+Received: by mail-oi1-f179.google.com with SMTP id 5614622812f47-3f8ae3ed8f4so1171859b6e.3;
+        Fri, 30 May 2025 01:13:13 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1748592793; x=1749197593;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=UODADZBFNNuhdOjNi7w1d1lWaPaCSwIUX58mKie6mVI=;
+        b=bt3e3W0iSfTtEB/yrf4nP0EmiIXMC90PWd1AeKMte7LyhyM6YbBzlrSUkxtCg2gS1p
+         5O0jZpaLxgc+BRas97Ie8BlX18BskPHd/Odm6oNshXHVie3/eYZFtVHZmocuiya2rsAY
+         k1LK+cvOoGAtbyZB3dBMsK3ZaqM/sdpOfX5gTcLllkJUTJdKOZXExxHWtfjXWNVQOUG6
+         3ZnvzKCrTV2mGWO6I0Cv61GpCQ8QEOf4aPyAGOZZY7PqKXzyvXmhfWcCSNLWrf6MiiLT
+         /Kiy4hYcY13Nfj4nvtH0eueb91C4L/36G1tkaJ4Hf0wsbMIO0+hO/hxYW1i64lzx7kMF
+         cmbw==
+X-Forwarded-Encrypted: i=1; AJvYcCV/Yk2HvQvIggDh5UILdbTSQrSkmXXcIEe8/9x4ufjpsyGf+Od1oNrnv38hN3Op24T9NV6eNQAmhHE6FXX9snYL@lists.infradead.org, AJvYcCVz4ct41yjw58oxsvhr+3qNQ3JQlXMHzrXIyVlg8GY4A1afUw1RUj61qYtR63yWk0mcKaG8B96wwOV4Ah0=@lists.infradead.org, AJvYcCW4RC1i+2Sj3AVxvDHUQsg++vXdcLr+pxztUsDMYsGJ/ITxYcybVXLTyqjz3uoI+EnWeJggO8ek8Rfh3J2Xa5A=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwP3ZycOfSi3zlGqKvJtnxh0m9LAHIKGXR0XU+ficrAtAPP+Pcw
+	NHvJkfpPmbXYcd+pyl8RzuatSTpzbVBtOZ0ZDhj4GIJmyRKiN7PQOz8OhylA4Oho
+X-Gm-Gg: ASbGncuYL1fVfedevGlojRRfrP2pF/VmthZnq1AGDPmjfNsdd1dI6yKA9Hv4wfTdwDW
+	zmFPH8KQqOYXjDiwyJHPd8P2KDUiQQOWyOgxKdis/xGfOA35o4IXpNwlIbclWDUqITGUtay3aAx
+	V8DY26tUz80pe61/8Tkkg00Qo4+VdRNGhZArJ5UwO0pa5fYFuVK3IbabUTSTThYDgvzxIuPBU/1
+	/0BzWA0Ll1DocYG/m6x+N80/nHl+11ceMn7UYf7T+sBwZEJE6VlSdb4GM5dzXa+64TmyxibvG4/
+	VqnQC2U0CVvBlIAi+oJKu09WRkm2i7FuT3EUStyo5k+IxhsWbQMhH/D0lAVvHGLOdazf0V4rK6x
+	qb3eW74uSj3iQsYSSv4lO4FgvMK2O
+X-Google-Smtp-Source: AGHT+IGLrEicfQYSQPcX2fcNrvbNfh+KRnAhkN7QgH7gXLkApSnIA9v9MkD1/ZDVc5mdQ2icW9p07g==
+X-Received: by 2002:a05:6808:6b8b:b0:403:3673:65f0 with SMTP id 5614622812f47-40679733143mr1349138b6e.31.1748592792879;
+        Fri, 30 May 2025 01:13:12 -0700 (PDT)
+Received: from mail-oi1-f178.google.com (mail-oi1-f178.google.com. [209.85.167.178])
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-40678c1b622sm319297b6e.11.2025.05.30.01.13.11
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 30 May 2025 01:13:12 -0700 (PDT)
+Received: by mail-oi1-f178.google.com with SMTP id 5614622812f47-3f8ae3ed8f4so1171838b6e.3;
+        Fri, 30 May 2025 01:13:11 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCW6kv4Y1Ptsqm/znvHpQDfa6kyYDMCcOTIajnQBBye9SZV6UlFhkpggADLxhBOw58Fi3LoJtkQaUvMK77c=@lists.infradead.org, AJvYcCWRnBO/gBPXh94Ng2fZHg5VUSqj2M+kMpowZokiC1WwlH7ZnBjhKnIMPT+OIcO3xGmuo6pIbn3eGrH494wFrXE=@lists.infradead.org, AJvYcCXvDjhvMoknEs+nvPFBJLdJVbsN+LymfYBl5SclLJqnXVeeHvS5prgsXVzaibTBUpbX+kchlvKMD607FalzsXWn@lists.infradead.org
+X-Received: by 2002:a05:6122:17aa:b0:530:677b:1e93 with SMTP id
+ 71dfb90a1353d-53080df1088mr2012964e0c.0.1748592388616; Fri, 30 May 2025
+ 01:06:28 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+References: <20250528-pinctrl-const-desc-v1-0-76fe97899945@linaro.org>
+ <20250528-pinctrl-const-desc-v1-14-76fe97899945@linaro.org>
+ <CAMuHMdUGDf5n_Fg7pwiPumm95nPUXyH15geAy2ULwY3U+OtZJA@mail.gmail.com> <b6b7fb61-878e-4407-b964-564efb3524b1@linaro.org>
+In-Reply-To: <b6b7fb61-878e-4407-b964-564efb3524b1@linaro.org>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Fri, 30 May 2025 10:06:16 +0200
+X-Gmail-Original-Message-ID: <CAMuHMdUHyLYk0oSN8XDNCXUvLQLe2u0k0noVJLbR+pYWDTB4+w@mail.gmail.com>
+X-Gm-Features: AX0GCFuCNZIpijI8V-LFtD11RdEuCtx09JrM6Rph_c1WT65W3SrLJtlImd30cUI
+Message-ID: <CAMuHMdUHyLYk0oSN8XDNCXUvLQLe2u0k0noVJLbR+pYWDTB4+w@mail.gmail.com>
+Subject: Re: [PATCH 14/17] pinctrl: renesas: Move fixed assignments to
+ 'pinctrl_desc' definition
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Basavaraj Natikar <Basavaraj.Natikar@amd.com>, 
+	Shyam Sundar S K <Shyam-sundar.S-k@amd.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, 
+	Joel Stanley <joel@jms.id.au>, Avi Fishman <avifishman70@gmail.com>, 
+	Tomer Maimon <tmaimon77@gmail.com>, Tali Perry <tali.perry1@gmail.com>, 
+	Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>, 
+	Benjamin Fair <benjaminfair@google.com>, =?UTF-8?Q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, 
+	=?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Ray Jui <rjui@broadcom.com>, 
+	Scott Branden <sbranden@broadcom.com>, Geert Uytterhoeven <geert+renesas@glider.be>, 
+	David Rhodes <david.rhodes@cirrus.com>, Richard Fitzgerald <rf@opensource.cirrus.com>, 
+	Charles Keepax <ckeepax@opensource.cirrus.com>, Lorenzo Bianconi <lorenzo@kernel.org>, 
+	Sean Wang <sean.wang@kernel.org>, Jesper Nilsson <jesper.nilsson@axis.com>, 
+	Lars Persson <lars.persson@axis.com>, 
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Damien Le Moal <dlemoal@kernel.org>, 
+	Vladimir Zapolskiy <vz@mleia.com>, Michal Simek <michal.simek@amd.com>, 
+	Emil Renner Berthing <kernel@esmil.dk>, Jianlong Huang <jianlong.huang@starfivetech.com>, 
+	Hal Feng <hal.feng@starfivetech.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-aspeed@lists.ozlabs.org, 
+	openbmc@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org, 
+	linux-renesas-soc@vger.kernel.org, linux-sound@vger.kernel.org, 
+	patches@opensource.cirrus.com, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@axis.com, linux-riscv@lists.infradead.org, 
+	linux-rtc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, 
+	Wolfram Sang <wsa+renesas@sang-engineering.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250530_004556_981835_2087DA41 
-X-CRM114-Status: GOOD (  14.73  )
+X-CRM114-CacheID: sfid-20250530_011314_386114_8B4F929B 
+X-CRM114-Status: GOOD (  20.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,54 +120,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For multi-core:
-1.if there are only two src buffers, hw0 and hw1 are decoding
-at the same time. When resolution change occurred on one hw,
-the src buffer cannot be got in the stop streaming function,
-which will cause a crash.
-2.When a resolution change occurs, immediately set the new
-resolution parameter to save the new resolution;
-3.After a resolution change occurred, decoding should not continue,
-needs to wait until new buffers are ready and the state machine
-changed.
+Hi Krzysztof,
 
-Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
----
- drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
+CC wsa
 
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-index 795916206c7c..eba9f58b9198 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-@@ -891,7 +891,8 @@ static void mtk_jpeg_dec_stop_streaming(struct vb2_queue *q)
- 
- 		vb = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
- 		src_buf = mtk_jpeg_vb2_to_srcbuf(&vb->vb2_buf);
--		mtk_jpeg_set_queue_data(ctx, &src_buf->dec_param);
-+		if (!IS_ERR_OR_NULL(src_buf))
-+			mtk_jpeg_set_queue_data(ctx, &src_buf->dec_param);
- 		ctx->state = MTK_JPEG_RUNNING;
- 	} else if (V4L2_TYPE_IS_OUTPUT(q->type)) {
- 		ctx->state = MTK_JPEG_INIT;
-@@ -1785,11 +1786,15 @@ static void mtk_jpegdec_worker(struct work_struct *work)
- 
- 	if (mtk_jpeg_check_resolution_change(ctx,
- 					     &jpeg_src_buf->dec_param)) {
--		mtk_jpeg_queue_src_chg_event(ctx);
-+		mtk_jpeg_set_queue_data(ctx, &jpeg_src_buf->dec_param);
- 		ctx->state = MTK_JPEG_SOURCE_CHANGE;
-+		mtk_jpeg_queue_src_chg_event(ctx);
- 		goto getbuf_fail;
- 	}
- 
-+	if (ctx->state == MTK_JPEG_SOURCE_CHANGE)
-+		goto getbuf_fail;
-+
- 	mtk_jpegdec_set_hw_param(ctx, hw_id, src_buf, dst_buf);
- 	ret = pm_runtime_resume_and_get(comp_jpeg[hw_id]->dev);
- 	if (ret < 0) {
+On Wed, 28 May 2025 at 19:55, Krzysztof Kozlowski
+<krzysztof.kozlowski@linaro.org> wrote:
+> On 28/05/2025 14:54, Geert Uytterhoeven wrote:
+> >>         .pmxops = &rzn1_pmx_ops,
+> >>         .confops = &rzn1_pinconf_ops,
+> >>         .owner = THIS_MODULE,
+> >> +       .pins = rzn1_pins,
+> >> +       .npins = ARRAY_SIZE(rzn1_pins),
+> >>  };
+> >>
+> >>  static int rzn1_pinctrl_parse_groups(struct device_node *np,
+> >> @@ -878,8 +880,6 @@ static int rzn1_pinctrl_probe(struct platform_device *pdev)
+> >>
+> >>         ipctl->dev = &pdev->dev;
+> >>         rzn1_pinctrl_desc.name = dev_name(&pdev->dev);
+> >
+> > ... if you would replace this assignment by a hardcoded name
+> > like "pinctrl-rzn1".
+>
+> I saw it, but this would not be equivalent. dev_name includes platform
+> bus id, e.g. pinctrl-rzn1.0 which might matter here - conflict of names.
+> Are you sure this would work fine?
+
+There can be only one anyway.
+Most drivers used a fixed name:
+
+drivers/pinctrl/renesas/pinctrl-rza1.c: rza1_pctl->desc.name = DRIVER_NAME;
+drivers/pinctrl/renesas/pinctrl-rza2.c: priv->desc.name = DRIVER_NAME;
+drivers/pinctrl/renesas/pinctrl-rzg2l.c: pctrl->desc.name = DRV_NAME;
+drivers/pinctrl/renesas/pinctrl-rzn1.c: rzn1_pinctrl_desc.name =
+dev_name(&pdev->dev);
+drivers/pinctrl/renesas/pinctrl-rzt2h.c: desc->name = DRV_NAME;
+drivers/pinctrl/renesas/pinctrl-rzv2m.c: pctrl->desc.name = DRV_NAME;
+drivers/pinctrl/renesas/pinctrl.c: pmx->pctl_desc.name = DRV_NAME;
+
+It might change the path in debugfs (/sys/kernel/debug/pinctrl/) though.
+Wolfram?
+
+Gr{oetje,eeting}s,
+
+                        Geert
+
 -- 
-2.46.0
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
 
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
 
