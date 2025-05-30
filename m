@@ -4,120 +4,168 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4C80C5AD49
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 May 2025 20:48:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4381CC54F30
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 May 2025 03:19:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6TtaMd1HywfsuyRcNH/42AXM3iz/qus8mLnXbozVUkA=; b=i43FLp9azzU4iNKYl95rw3I7nc
-	kbIKFAVmmtMgID+f/0eimYmY90N1OUfr8Xs/BIjcgWpm3/YWKR5e9LH7M6deIRkThwTjdbzEd0VIF
-	O5NXVGk+KcPF6g5V0J/aE3gRQhoOT6YTxD4RZ9rkVYt7YD8KE6ugI3vE4IDuWKRzOWJBdmhygHyCs
-	7LjwD5dBN1lFh11aZesPNq5wsMHIpWwVLmSU3dEbn5ILs8Bg6WVUNuASbP4m/Ca6noPGRkA//ZCZB
-	7D6co6YocGHCsvtdJRowh/cSm6if15BplOVfvUjkD8NoMiZpHh+sULn6G7xdnZ+z0srFX1C0yd9TW
-	PNHSaGJg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5L0SB/Q6nHt4RXIwieBxk4aLW40FoCyZDuO8v3unmpw=; b=vpMadd2xXSRbXufFrZmqr7raBS
+	T6C4WiQI9uZRFmVr4BLjF8poB533y7D+hzke+IOTl4K+kzyahX6uw5FAWGdXCb7Kq49MKukaAHvth
+	gAWPp2JQBz52z2FJMptrEm9M3l6nPG388yP1X7Fg0vTFUEcU1i4EapV4U/XtF9Hrp//HUqfB0/7Vi
+	piXO5oaw5VPEtwgq+I/11628AUl5pKtKMePGPPU6Ik4tO7UedvTeHIpHdWcMNPQPhT29UqwZ+/tgk
+	DXbHR81/evqI13/ty9yFtqxMnugapyF7NEsEO7sd4pBq2IjNXLsAN70O7R1syxlrCYAkgK5VUq3sy
+	qulV9RGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKkB2-0000000GWKH-2syG;
-	Thu, 29 May 2025 20:48:36 +0000
-Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
+	id 1uKqGy-0000000H1Iz-17wD;
+	Fri, 30 May 2025 03:19:08 +0000
+Received: from mail-eastasiaazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c400::3] helo=HK3PR03CU002.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKk8s-0000000GW2J-33DH
-	for linux-mediatek@lists.infradead.org;
-	Thu, 29 May 2025 20:46:24 +0000
-Received: by mail-pg1-x532.google.com with SMTP id 41be03b00d2f7-879d2e419b9so1279227a12.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 29 May 2025 13:46:21 -0700 (PDT)
+	id 1uKqFO-0000000H19T-3koy;
+	Fri, 30 May 2025 03:17:32 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=dWZ0kw3epscQktLB4jCiWDj5FdSbLQcLM0zi+YLLtTAuCJWMhugHrUj0jtklOd5GXJvCquX+1QcDx8ZyklxN2Zg72Zmc3sIo48Qixv5vAHaPecShmqNLjSR3AVdr/7/HBWvSlupHoG336A03waTK8gTotgl/muVtVhID5/LoBX6PO174lMV1XpuL56DQd4MI+IYFJpG4MV36aF5voJ3QaXv9z2nXizuuCT6iNzzvOXeShfuIZnS0grw1GjhYR43SjwaqHBBUte8Tkj/O7hjrQz5u5orETE0iR9FC+xFM3IokSpXppvPKyCI5XsIoCBONhNu1HleqHolU9EED5xG+8g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=5L0SB/Q6nHt4RXIwieBxk4aLW40FoCyZDuO8v3unmpw=;
+ b=aXm5f48FufQ0/b4J5iE5Bg8ayWZrW7CWbhbG3QjyU39+1NT7r3BX3Hds9WpvQORcnvY/tlF1DcW9mxmBzb90t7pR+4RDjyEzm6iK04VtDU5tve9xe66CaTEPfQbcHBheN6Ya0S+5K4Xr69sASfmzvWXTSYklPVzLG1Wu+0+TjdISHCHHtO2Y/Zz6wwgk4jjScS3ea2QbRP7+HnyNnOCZOkIhdrKxQZ/8HdSNJgzNGRB1lRiOBoULdtvLkJ5y5OSyJAsQ5gDzBZxmfPfScqIUlAXdtqoitdlHp0lr3hn/2Dl5Pt7mwYCc0d3RN8+6E24nHx7WqARLWzVOjw6tk6eKSg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=fibocom.com; dmarc=pass action=none header.from=fibocom.com;
+ dkim=pass header.d=fibocom.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=rivosinc-com.20230601.gappssmtp.com; s=20230601; t=1748551581; x=1749156381; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=6TtaMd1HywfsuyRcNH/42AXM3iz/qus8mLnXbozVUkA=;
-        b=dFjq2NiEPa1X5/bqSSOd6mWIbuLalfC2PpJYw2cED5pRguLkl7EjaX1LRnWE6aaNP/
-         AYo4CiK28/U5j1cP4al3TDlx+dm1KJCJ0+UyW3BLO+py1ergg28tAKE984fKpbzmeJyd
-         nTleKsnvpeHtHdWgPHUgE0sf6+hw9Y0f3TTWuK841ExFeX5FY5z46k3qSX197gSrGkJO
-         +dHYtz/Gn/pU7Wyf56zsh9mp4FKEGrMR6N4KenHSQ3JyotkUrVmI5HhbFSBCWiroj8Lj
-         4XRXiCjlZcflwv3Tk+OTZ8OTTZ27NKkAR1qJpRr4KL31uJ7QtUZbnkzXtcQKd6M+BNaL
-         bHsg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1748551581; x=1749156381;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=6TtaMd1HywfsuyRcNH/42AXM3iz/qus8mLnXbozVUkA=;
-        b=fFRJz8Qb4gHaBTfr5S0COcAVoXOAyPe1+pQiGaAOaE+3ljxs5reLGibq+rjzNAk4wt
-         H1uWCKMM+HxKkV4817FtLuBPfoUawf/mUzb/Ap+sjpHuDvG+EnqQuZYXw1yCXgLL1r0A
-         szU2ZM8PHr8XFmgzf0fw54SOyN1uxEsIxMlI0cHUABCxoAfTqBBlmbEqoKCoG/NlG4RZ
-         7gj2O98A078C3POYzcluTumxiBzqEycEDkqcTcZb6YO86LzCaEyO2AIF8tStLjG+MrHf
-         IGsKF/O7Ep2a7HWoHDMp5BOWBa8vbd/DuzCk8MyZW+zJG6Rz8Udoy2LrCnZaIzHpgS9U
-         nhvA==
-X-Forwarded-Encrypted: i=1; AJvYcCV7pNjqLC7AH3FdauxXlYVRqUHbW+FBPUT4vBsSurZMV6Q8qQlPrXbJ+AyxT2SdkZP3fAPxFc72rmm8lZY9JQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwCgqLivpUBZiG8Ol/ZsTcY+UFPW/LlkBSaGL+BtxNWASC5MJ03
-	vFDPdyoK/+gFxXRItIv6ovLe8AdHmRsdBn0lDtpdoxavRl9JwnKZ2K9XFto61C3a6Es=
-X-Gm-Gg: ASbGncuSlri1L4Dh1nntOMnABm+lnpbQ/wNaYlyGfg1xSAizCQy6IeBivQHGdtrrjAW
-	DFo0/EjAOh5zPReTnjLFyF/joE0Ks9xhuILevt1p9fFFvUtYFJCiVB4MPRkLkBHB/sOD0T/S6KF
-	elrr08gzBHFKK0d78hnpcvwVSee7yqWW3XJI5usCJv7UFP+uKBbcpqF4keepj1Gv1G61nJmOl0T
-	2FaocsQhbDjEbRc50jY49jmUDLaV2rOIv+2E8BFM05Oc1LkKaoMmL5hSh6SKU0sfzb3lDZiRdP7
-	nZPDPnbUUU0pud0aEKfqqSx7OVaFCHOVtRyC55krYlSNmPYCxQfN5aA+IV0TYx1RsjIngQ==
-X-Google-Smtp-Source: AGHT+IEO8HwssTrnrLL8DGNfi7UDT2JfkJIUURFRStahz0gCmflYidew8g3m8w3QvBPF+GZDsBP2sw==
-X-Received: by 2002:a17:90b:1d89:b0:311:f99e:7f51 with SMTP id 98e67ed59e1d1-312415329famr1432137a91.18.1748551581341;
-        Thu, 29 May 2025 13:46:21 -0700 (PDT)
-Received: from tjeznach.ba.rivosinc.com ([64.71.180.162])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-23506bd9486sm16245345ad.67.2025.05.29.13.46.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 29 May 2025 13:46:20 -0700 (PDT)
-Date: Thu, 29 May 2025 13:46:17 -0700
-From: Tomasz Jeznach <tjeznach@rivosinc.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Cc: Alexandre Ghiti <alex@ghiti.fr>, Alim Akhtar <alim.akhtar@samsung.com>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Albert Ou <aou@eecs.berkeley.edu>, asahi@lists.linux.dev,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Lu Baolu <baolu.lu@linux.intel.com>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
-	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
-	Janne Grunau <j@jannau.net>,
-	Jean-Philippe Brucker <jean-philippe@linaro.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Joerg Roedel <joro@8bytes.org>, Kevin Tian <kevin.tian@intel.com>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Matthew Rosato <mjrosato@linux.ibm.com>,
-	Neal Gompa <neal@gompa.dev>, Orson Zhai <orsonzhai@gmail.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Rob Clark <robdclark@gmail.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Niklas Schnelle <schnelle@linux.ibm.com>,
-	Sven Peter <sven@svenpeter.dev>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Krishna Reddy <vdumpa@nvidia.com>, virtualization@lists.linux.dev,
-	Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>,
-	Yong Wu <yong.wu@mediatek.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>, patches@lists.linux.dev
-Subject: Re: [PATCH 3/7] iommu: Remove ops.pgsize_bitmap from drivers that
- don't use it
-Message-ID: <aDjHmR7ZVTbsSITO@tjeznach.ba.rivosinc.com>
-References: <0-v1-7c5282b0c334+2db-iommu_rm_ops_pgsize_jgg@nvidia.com>
- <3-v1-7c5282b0c334+2db-iommu_rm_ops_pgsize_jgg@nvidia.com>
+ d=fibocomcorp.onmicrosoft.com; s=selector1-fibocomcorp-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=5L0SB/Q6nHt4RXIwieBxk4aLW40FoCyZDuO8v3unmpw=;
+ b=n+oRqRqGNWchFN8M3i55+UNX2AQa2MuOorJXjVB3cq8WvptPu3G9eoTGWJqecBLox6jGp58FrEBIFJVJ0iGjNehshTktxkyBYko8K+3nBRTzUh7qgBgrDQDcO5EPrSj7nfH766v+7X/xOynLzKHVULNFUjTy3XJ5geAH4pp1liY=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=fibocom.com;
+Received: from TY0PR02MB5766.apcprd02.prod.outlook.com (2603:1096:400:1b5::6)
+ by SEZPR02MB7229.apcprd02.prod.outlook.com (2603:1096:101:1ea::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8769.29; Fri, 30 May
+ 2025 03:17:11 +0000
+Received: from TY0PR02MB5766.apcprd02.prod.outlook.com
+ ([fe80::f53d:47b:3b04:9a8b]) by TY0PR02MB5766.apcprd02.prod.outlook.com
+ ([fe80::f53d:47b:3b04:9a8b%4]) with mapi id 15.20.8769.025; Fri, 30 May 2025
+ 03:17:11 +0000
+From: Jinjian Song <jinjian.song@fibocom.com>
+To: chandrashekar.devegowda@intel.com,
+	chiranjeevi.rapolu@linux.intel.com,
+	haijun.liu@mediatek.com,
+	m.chetan.kumar@linux.intel.com,
+	ricardo.martinez@linux.intel.com,
+	loic.poulain@linaro.org,
+	ryazanov.s.a@gmail.com,
+	johannes@sipsolutions.net,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com
+Cc: linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org,
+	linux-doc@vger.kernel.org,
+	angelogioacchino.delregno@collabora.com,
+	linux-arm-kernel@lists.infradead.org,
+	matthias.bgg@gmail.com,
+	corbet@lwn.net,
+	linux-mediatek@lists.infradead.org,
+	helgaas@kernel.org,
+	danielwinkler@google.com,
+	andrew+netdev@lunn.ch,
+	horms@kernel.org,
+	sreehari.kancharla@linux.intel.com,
+	ilpo.jarvinen@linux.intel.com,
+	Jinjian Song <jinjian.song@fibocom.com>
+Subject: [net v3] net: wwan: t7xx: Fix napi rx poll issue
+Date: Fri, 30 May 2025 11:16:48 +0800
+Message-Id: <20250530031648.5592-1-jinjian.song@fibocom.com>
+X-Mailer: git-send-email 2.34.1
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: SY5P282CA0082.AUSP282.PROD.OUTLOOK.COM
+ (2603:10c6:10:201::8) To TY0PR02MB5766.apcprd02.prod.outlook.com
+ (2603:1096:400:1b5::6)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <3-v1-7c5282b0c334+2db-iommu_rm_ops_pgsize_jgg@nvidia.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: TY0PR02MB5766:EE_|SEZPR02MB7229:EE_
+X-MS-Office365-Filtering-Correlation-Id: 63a04ec3-4716-4445-8243-08dd9f28776d
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|366016|7416014|52116014|921020|38350700014;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?sb/CAgSrkDRXrvK1jDfKci3v7gOJn+jGep4gGAbBPjho4zbATHX9fVzs63iV?=
+ =?us-ascii?Q?DkcxSA2/32fvHMrnPyQe0eKHvSc7B6YIvqKfEyV4Bsy7CpCuTJzSpxn//y9l?=
+ =?us-ascii?Q?x7FwbW2sVcASuVjxmUnnID3HBCqDEHNB2kF8HCq6v9gZjZHwxf/lc8W+ZPVk?=
+ =?us-ascii?Q?GsoxOgKWMWY2EePvWjqub9u9A3JrTqT2vqPPhUZEGnb2e8vgjGITsaX8SgwF?=
+ =?us-ascii?Q?Yup4cygwD1cbuw6K+j1Neyrz9MZ9bFqfi3pxBYSL5eB6+XT9vGj4tkLnjkqy?=
+ =?us-ascii?Q?NVGCheRy97o4932aeIEWEi3QoS9LRehtF66QArz77HvHW3JAHCn/7PxptERr?=
+ =?us-ascii?Q?nbprv3SlxdLQLxkwahreDMDQQB143s/vGajkrpMC5BYKsEA9iDnDGLFdYy+X?=
+ =?us-ascii?Q?yqwIg0PY5IMPI938nhDsJF/46OvuEA3Z21cpcX50O4IqWImct5qghmu2ZokS?=
+ =?us-ascii?Q?6QQAgyR2YP1hnjT5hxEADwJdh5lUHwNd26BL4tGHxFgGpx4MutUgowJziGoE?=
+ =?us-ascii?Q?S5lewm3eKxK2bnnYpq1PY1yUvuHdtJIhqFxfwVm9aew1uIrLCgq+1g+2W2GG?=
+ =?us-ascii?Q?Zway4PKsV5OU4zc+jAKEQrRPegUgZeGZkZK82yocvGW4PPalm8KIOwY401EO?=
+ =?us-ascii?Q?I0ywPrWxFMQq0O2Z+p30RzkcjKP0lQNBSLeUoykFI4yGMxoPOMo57fkkJB+3?=
+ =?us-ascii?Q?20JnQBp5BLEvZVDWMSXbgtoetTWYviZoOiN5K0w4kfDsukZjokuTCXacucX+?=
+ =?us-ascii?Q?IQHPzCf5gP8xGsQmIe/+rY8TLH1DRrBIf3T6+q82nYkBfzIcfC8qk9eOWLk/?=
+ =?us-ascii?Q?fqmM4EPhLKzLbrw1s7Yu+dW9dpMFpx+8+O0JcdWI83XJW1OlpkwYdQgwbTEA?=
+ =?us-ascii?Q?7CpFFBPwqX7lhq67mFUSvrwaAuuiPxGFKZmHETS74I7BrrazNRLJGalMx+rn?=
+ =?us-ascii?Q?uNKcLKVeyXE0lRC4/2uNymRvHvCKkzwwREdBpJHAWxiq/c3/VGi8px7X66af?=
+ =?us-ascii?Q?LgwwiR6Ij/Z+N9OmTKBi8iOySbi+LhI3HfSPnl2BGPLFKWKev4dqdpKD160+?=
+ =?us-ascii?Q?NTgOBiKQoBR0VXOzdYYCNwQv0JOHsl2uwfKtkFkeGqj6WpnRHihC8sRvydB5?=
+ =?us-ascii?Q?bSKoy1+Ev01ycd/LZqlGw4YUQVD/DPWyxHXIJHjN/89AB+aF0EWWzBZbUYX1?=
+ =?us-ascii?Q?Bqf44nTr2iSBgSM82Wqkwu6coA+mr83oXALjld6hr87DD1EVsl1m+sqobXFN?=
+ =?us-ascii?Q?8RMfbjUeAXr2W3gw0fzuLm7PuZFdVfWc2dSC3hrweIbd3UkEtINt49UlwVFJ?=
+ =?us-ascii?Q?r5EFxKEjLZetKntsfFULjK8E8LKPpPuqCBD5VV7mca1YnWD4249BJGqQ/JFB?=
+ =?us-ascii?Q?VaLMdGXYr5Fx0C++ibeI9JAuxWQedume5kgxrAg+VCEKz7ueG06Y3uAAxAAW?=
+ =?us-ascii?Q?y4YXZqlho8oBwSDKr8oX9zDd7JaEz1dWgWm8UwvTvA1YriunOpIbFEAIOxi/?=
+ =?us-ascii?Q?RBXJarAhXRlErNA=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TY0PR02MB5766.apcprd02.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(366016)(7416014)(52116014)(921020)(38350700014);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?/x9/Ydy/F8LRGJByFRVypZ2x9O0NgSkEge6v319fMMLkpCd3gcfJ+/6JOcWs?=
+ =?us-ascii?Q?eq7LNxpfztWfC1UOnAhIx7SDqKNYyajFZs/r2+QzxMCsn/fjzYRmZlaSZ3E/?=
+ =?us-ascii?Q?z53e0ipLWFU3QXU8WuyfmpKFAPwu37mYcFUB/werXQbNll4+JxfRZTzZChWc?=
+ =?us-ascii?Q?Xkyc+q8SZXPqaC19cwLAwUg4uvvamu16u4/wSMouH7RDBnmLysNubhUWeqlG?=
+ =?us-ascii?Q?WpvK0J6XbUqqQ1orGdRlBJO2cAuoQzG4H79J7cZOtlmIPDUjuDJksGZLSoBx?=
+ =?us-ascii?Q?dS3/PWc0o428p1atbV4I2W3WoM4e9FxG50CHvZj9EzlGVyTqMn60O07OgJsQ?=
+ =?us-ascii?Q?rK/7poOHcm1e1/M/pU6LPW02m0zv4BQaSgnDM8f6S/7p6usgPcS/7dgAtjU2?=
+ =?us-ascii?Q?v7RMKdOtjrlBAk6hd31S4dpJ892i39D9gIbjaTjd7+Cxz1XeKHfH1FQSPlIM?=
+ =?us-ascii?Q?k0/XfENy/bjqJYoQ1/7nMv5NijSrcISovHYAvbENsCRshlJOAFOo4rrPaY5X?=
+ =?us-ascii?Q?pNUNWvQptmDsHr3yWP9aag5AFZcicErlpAkoNeMCZayjioz7TvjFVtWvdPYd?=
+ =?us-ascii?Q?UZmJ/Ca6OcjtPJEfXbFoRcoaKq18WIS9sbJV2Oo7T+gi6HXMc6pQ88P7RZZ2?=
+ =?us-ascii?Q?wyutHUFRzpyNrae28BpyzGQQ3XwZmv+rGqyJRW754wapbtSqPvlOf7w1ea7f?=
+ =?us-ascii?Q?UsfMMpKLB/qgaWVkzeJm+OfGSH6FiNqqLVEu69/AEOtwV12GBya8Wp+JfRcS?=
+ =?us-ascii?Q?lJ3lctguJ3ImhLdi4WC77dJMT1QWg70qxSSKdlX2kciqU+Mz6E+LR4THt+N6?=
+ =?us-ascii?Q?+eEXOfneV14q4Tx10ju8ahSxqp9hW5QEcOXgWrXC+mvfnqc4ImiOTEIctYJm?=
+ =?us-ascii?Q?gmGqeHSiXt0Wf63EhkSmQZ8RjUSiU+oWVwji7OfU4avZqW80j0ihux2j3Cjk?=
+ =?us-ascii?Q?sxnH7jQO4YbSWhwPKRb65Eb6BueV5ZRXfqukr6WiImlT34uLfgkTPd+s4Uf8?=
+ =?us-ascii?Q?jpXnPpI9I0bE67hzOBez5NjY/SGCrgQgOAeFx1N44316QHdwYAyhwlsRafz+?=
+ =?us-ascii?Q?ICeRpgMsD/JKfVBfqTki8N+jTlHUYQxL6GveawJzZmrWM5dA66gbnS+WDp+I?=
+ =?us-ascii?Q?8/dKhmivfGoXUC8mI+qnKCBXGelGgyBVzDEaymmE6EmrEq7zSf9kgpPO7UL8?=
+ =?us-ascii?Q?alpDzdrFsjLZNgSX0RMA2WDxm0SAvuAePpbGF3+rXS1T+dAnXrHm1QZCp3PQ?=
+ =?us-ascii?Q?3DclblEqILcPm8hNxCFzeTmONyvBptc3KIrnoHIc7878HH0z4ZlFo/zQLmF+?=
+ =?us-ascii?Q?ulVQVd5NqJmdLkFxZfUnHErAKCAETzVdj3afDI6i1ImEIqbqPWhOOeBVKRHQ?=
+ =?us-ascii?Q?LI9dW2aG2bRE98Vnm7jUxJIAUF09fDIDaCOKwUHm4e6UMFqtNPkhsbEgPj+S?=
+ =?us-ascii?Q?sYwstXrj8dG94r/iP/BIhleAwCWE70AyIxtAUZpmIx+2W1YXJHHsn0rZrwrZ?=
+ =?us-ascii?Q?Y6clPMW28FYZ9BWO5RPzXAQ6OhPSYZ3obBss6H4UzWFJAwxHJo1yKG15of/c?=
+ =?us-ascii?Q?u9i3tu9OU1yyglA0uM6rJ/sJf5s+k+1g5O5hEk26OWYDW8/SnIBYM31/rNn3?=
+ =?us-ascii?Q?GA=3D=3D?=
+X-OriginatorOrg: fibocom.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 63a04ec3-4716-4445-8243-08dd9f28776d
+X-MS-Exchange-CrossTenant-AuthSource: TY0PR02MB5766.apcprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 May 2025 03:17:11.1115
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 889bfe61-8c21-436b-bc07-3908050c8236
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: mBip0CmwKsuyxFYeFEKPd4dR15swEiXzWgBxy71msFLl5v7iChbEEOVBGHshTvN6s8PJwG9jvqmzHV6Y3EYKKx0ydD/+CgVLwaHCNd2Tih0=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR02MB7229
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250529_134623_011608_C5792941 
-X-CRM114-Status: GOOD (  17.84  )
+X-CRM114-CacheID: sfid-20250529_201730_928651_CA75AAFE 
+X-CRM114-Status: GOOD (  12.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,35 +180,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 29, 2025 at 11:34:13AM -0300, Jason Gunthorpe wrote:
-> These drivers all set the domain->pgsize_bitmap in their
-> domain_alloc_paging() functions, so the ops value is never used. Delete
-> it.
-> 
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> ---
->  drivers/iommu/apple-dart.c       | 1 -
->  drivers/iommu/intel/iommu.c      | 1 -
->  drivers/iommu/iommufd/selftest.c | 1 -
->  drivers/iommu/riscv/iommu.c      | 1 -
->  drivers/iommu/virtio-iommu.c     | 6 ++----
->  5 files changed, 2 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/iommu/riscv/iommu.c b/drivers/iommu/riscv/iommu.c
-> index bb57092ca90110..2d0d31ba28860a 100644
-> --- a/drivers/iommu/riscv/iommu.c
-> +++ b/drivers/iommu/riscv/iommu.c
-> @@ -1533,7 +1533,6 @@ static void riscv_iommu_release_device(struct device *dev)
->  }
->  
->  static const struct iommu_ops riscv_iommu_ops = {
-> -	.pgsize_bitmap = SZ_4K,
->  	.of_xlate = riscv_iommu_of_xlate,
->  	.identity_domain = &riscv_iommu_identity_domain,
->  	.blocked_domain = &riscv_iommu_blocking_domain,
+When driver handles the napi rx polling requests, the netdev might
+have been released by the dellink logic triggered by the disconnect
+operation on user plane. However, in the logic of processing skb in
+polling, an invalid netdev is still being used, which causes a panic.
 
-Reviewed-by: Tomasz Jeznach <tjeznach@rivosinc.com> # for RISC-V
+BUG: kernel NULL pointer dereference, address: 00000000000000f1
+Oops: 0000 [#1] PREEMPT SMP NOPTI
+RIP: 0010:dev_gro_receive+0x3a/0x620
+[...]
+Call Trace:
+ <IRQ>
+ ? __die_body+0x68/0xb0
+ ? page_fault_oops+0x379/0x3e0
+ ? exc_page_fault+0x4f/0xa0
+ ? asm_exc_page_fault+0x22/0x30
+ ? __pfx_t7xx_ccmni_recv_skb+0x10/0x10 [mtk_t7xx (HASH:1400 7)]
+ ? dev_gro_receive+0x3a/0x620
+ napi_gro_receive+0xad/0x170
+ t7xx_ccmni_recv_skb+0x48/0x70 [mtk_t7xx (HASH:1400 7)]
+ t7xx_dpmaif_napi_rx_poll+0x590/0x800 [mtk_t7xx (HASH:1400 7)]
+ net_rx_action+0x103/0x470
+ irq_exit_rcu+0x13a/0x310
+ sysvec_apic_timer_interrupt+0x56/0x90
+ </IRQ>
 
-Sorry for the delayed response.
-- Tomasz
+Fixes: 5545b7b9f294 ("net: wwan: t7xx: Add NAPI support")
+Signed-off-by: Jinjian Song <jinjian.song@fibocom.com>
+---
+v3:
+ * Only Use READ_ONCE/WRITE_ONCE when the lock protecting ctlb->ccmni_inst
+   is not held.
+---
+ drivers/net/wwan/t7xx/t7xx_netdev.c | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/net/wwan/t7xx/t7xx_netdev.c b/drivers/net/wwan/t7xx/t7xx_netdev.c
+index 91fa082e9cab..fc0a7cb181df 100644
+--- a/drivers/net/wwan/t7xx/t7xx_netdev.c
++++ b/drivers/net/wwan/t7xx/t7xx_netdev.c
+@@ -302,7 +302,7 @@ static int t7xx_ccmni_wwan_newlink(void *ctxt, struct net_device *dev, u32 if_id
+ 	ccmni->ctlb = ctlb;
+ 	ccmni->dev = dev;
+ 	atomic_set(&ccmni->usage, 0);
+-	ctlb->ccmni_inst[if_id] = ccmni;
++	WRITE_ONCE(ctlb->ccmni_inst[if_id], ccmni);
+ 
+ 	ret = register_netdevice(dev);
+ 	if (ret)
+@@ -324,6 +324,7 @@ static void t7xx_ccmni_wwan_dellink(void *ctxt, struct net_device *dev, struct l
+ 	if (WARN_ON(ctlb->ccmni_inst[if_id] != ccmni))
+ 		return;
+ 
++	WRITE_ONCE(ctlb->ccmni_inst[if_id], NULL);
+ 	unregister_netdevice(dev);
+ }
+ 
+@@ -419,7 +420,7 @@ static void t7xx_ccmni_recv_skb(struct t7xx_ccmni_ctrl *ccmni_ctlb, struct sk_bu
+ 
+ 	skb_cb = T7XX_SKB_CB(skb);
+ 	netif_id = skb_cb->netif_idx;
+-	ccmni = ccmni_ctlb->ccmni_inst[netif_id];
++	ccmni = READ_ONCE(ccmni_ctlb->ccmni_inst[netif_id]);
+ 	if (!ccmni) {
+ 		dev_kfree_skb(skb);
+ 		return;
+@@ -441,7 +442,7 @@ static void t7xx_ccmni_recv_skb(struct t7xx_ccmni_ctrl *ccmni_ctlb, struct sk_bu
+ 
+ static void t7xx_ccmni_queue_tx_irq_notify(struct t7xx_ccmni_ctrl *ctlb, int qno)
+ {
+-	struct t7xx_ccmni *ccmni = ctlb->ccmni_inst[0];
++	struct t7xx_ccmni *ccmni = READ_ONCE(ctlb->ccmni_inst[0]);
+ 	struct netdev_queue *net_queue;
+ 
+ 	if (netif_running(ccmni->dev) && atomic_read(&ccmni->usage) > 0) {
+@@ -453,7 +454,7 @@ static void t7xx_ccmni_queue_tx_irq_notify(struct t7xx_ccmni_ctrl *ctlb, int qno
+ 
+ static void t7xx_ccmni_queue_tx_full_notify(struct t7xx_ccmni_ctrl *ctlb, int qno)
+ {
+-	struct t7xx_ccmni *ccmni = ctlb->ccmni_inst[0];
++	struct t7xx_ccmni *ccmni = READ_ONCE(ctlb->ccmni_inst[0]);
+ 	struct netdev_queue *net_queue;
+ 
+ 	if (atomic_read(&ccmni->usage) > 0) {
+@@ -471,7 +472,7 @@ static void t7xx_ccmni_queue_state_notify(struct t7xx_pci_dev *t7xx_dev,
+ 	if (ctlb->md_sta != MD_STATE_READY)
+ 		return;
+ 
+-	if (!ctlb->ccmni_inst[0]) {
++	if (!READ_ONCE(ctlb->ccmni_inst[0])) {
+ 		dev_warn(&t7xx_dev->pdev->dev, "No netdev registered yet\n");
+ 		return;
+ 	}
+-- 
+2.34.1
+
 
