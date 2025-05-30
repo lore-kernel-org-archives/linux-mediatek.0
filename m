@@ -4,54 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FA71C5AD49
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 May 2025 16:00:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14874C5AD49
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 May 2025 16:29:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Zq+whcMwdMCqXRt3nHkuc4AuAgF122eOPTne255Gd8M=; b=jQn4ilx2uJuWCOdKqPO5f+eODf
-	NkqZawdNyJnIz1N1IWi75yw3VGk+1tdOJwV3aXmV232oGiR2/8slDC0/eT/s5HmHPwWcsuZimAmRr
-	eeLGLz1Vj1I/RaiAW9Adn0N06BhV2hwwvuuvRtLIC+Y02rfvlkuk4/McTCKwZWhF6yb2XotVs4/YT
-	HNVjabavRMsCPO8tcWa5szheoeoWdFBMmEEgo2X3ApyackkrhZEKu5oRwqHoPLKw51b7J84Z+AukA
-	UCDk9zS4SUBGYU18EJdgtV1N2yMC/JyIc51+8yp7JH7Jgv/gEDj3CYDN23LktRAqlrLZo9CWFlhA6
-	vg1X1D5w==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=FXpZtq+duYw8Ga6sy20MCkY0YEpeKd2cv2ExbMjZY+M=; b=ExKO5Etlw7wddj
+	nDhTdA+yunG1rIWvJ4FLBa4Qu0JMQMK4/QOEq9YW0FsPYxv98T1i30WS+S3OKFVuJ7nQrirDhY+ry
+	/vBwz5zD085t+gzt0ckDXdLG9WLK8W6Pa7Rfdfq+l5JPwYgpflCPocmFxdffdYx893JpeTa6xR2I2
+	TUX+wuLWhX8ezVoVFYivGtVJmSsnhQQjxl2k0B+q/5bYaoyQFfgfirxp6hvEFHEPNry8jetlyYvdN
+	JYCZT6aVZsyWlaea/IpPQ+dEuaCBFAHWtkvu8zAcuHfDY+K4YrWcUESy14EieCkhrMys9NENzHpSC
+	8k95x5trshVx9dY9e1GA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uL29T-000000015k0-42Z0;
-	Fri, 30 May 2025 16:00:11 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uL2c8-00000001BVt-1mUi;
+	Fri, 30 May 2025 16:29:48 +0000
+Received: from mxout4.routing.net ([2a03:2900:1:a::9])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uL26p-0000000153G-1d56;
-	Fri, 30 May 2025 15:57:27 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7A7706115E;
-	Fri, 30 May 2025 15:57:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D68C2C4CEE9;
-	Fri, 30 May 2025 15:57:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1748620646;
-	bh=hZHDiYBG1Y1HUlzoNGnJPAo5du46tcOG49Tcr3RVSvg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ikYMHjijfZBls/jp41L/O8ESIo1EqOSIcMUkBhMMZhMaTgtLyMxFsYbWZvZiMNEmu
-	 JbOD2pJjpPqAf073kbNKifC+WKIo5S6VmgBtRWQwqBogxxgGcDFLSU7u8JJnY0EX1Z
-	 Peg3Yv0Emf9ZRv6+9E+2PL4oruJyA6hrMC8oRThFV6vDPxwfU6W0UimBh4Pbv2nUlp
-	 tJyD2k2f7fOEdi6ITdKPuBg1DawIRVFLSQ8X0hhnB5uoh/j9KSbf/98u6irEU/VRSU
-	 WQpmtxsGsJTKWsThr8t2If8v76mHvPxx+TqXSgs0Wu3pohUc3o1I5ckwNtOCq+TlV6
-	 IxUgYKde4CwRw==
-Date: Fri, 30 May 2025 16:57:20 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Frank Wunderlich <linux@fw-web.de>
+	id 1uL2Kx-000000017jj-3N37;
+	Fri, 30 May 2025 16:12:05 +0000
+Received: from mxbox1.masterlogin.de (unknown [192.168.10.88])
+	by mxout4.routing.net (Postfix) with ESMTP id 8CDB410087D;
+	Fri, 30 May 2025 16:11:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1748621519;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=FXpZtq+duYw8Ga6sy20MCkY0YEpeKd2cv2ExbMjZY+M=;
+	b=er40mdaiLOUvmyVyf76eknKyl/pvXGbzBX7kZ9adIUywsTU0M4OjaKuiAZm0ePve2h8i4Q
+	63/CHlvoWvLJpSG+B+iGhoxbHTOvcgyeXcengqxPOFGp3X3YwDWAXgrgVhyVOARp2GmvlB
+	qUanoQM/pect+XWh1w9ZXgL2y/LbKgM=
+Received: from [IPv6:::1] (unknown [IPv6:2a01:599:211:5368:40c2:8021:ae8a:bf1c])
+	by mxbox1.masterlogin.de (Postfix) with ESMTPSA id 4CBF940112;
+	Fri, 30 May 2025 16:11:58 +0000 (UTC)
+Date: Fri, 30 May 2025 18:11:58 +0200
+From: Frank Wunderlich <linux@fw-web.de>
+To: Conor Dooley <conor@kernel.org>
 Subject: Re: [RFC v1] dt-bindings: interconnect: add mt7988-cci compatible
-Message-ID: <20250530-naturist-swept-973a1f8f4b08@spud>
-References: <20250528135251.6492-1-linux@fw-web.de>
+User-Agent: K-9 Mail for Android
+In-Reply-To: <20250530-naturist-swept-973a1f8f4b08@spud>
+References: <20250528135251.6492-1-linux@fw-web.de> <20250530-naturist-swept-973a1f8f4b08@spud>
+Message-ID: <C75720B1-AD09-4A48-98FD-7FD8116934F7@fw-web.de>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="wlJGDMBTc856vNFG"
-Content-Disposition: inline
-In-Reply-To: <20250528135251.6492-1-linux@fw-web.de>
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Mail-ID: f6b9ed74-8c20-42fa-80f7-3ad1dd003abb
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250530_091204_003891_8AEFDE62 
+X-CRM114-Status: GOOD (  12.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,67 +73,68 @@ Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, linux-pm@
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi
 
---wlJGDMBTc856vNFG
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Thank you for review=2E
 
-On Wed, May 28, 2025 at 03:52:49PM +0200, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
->=20
-> Add compatible for Mediatek MT7988 SoC with mediatek,mt8183-cci fallback
-> which is taken by driver.
+Am 30=2E Mai 2025 17:57:20 MESZ schrieb Conor Dooley <conor@kernel=2Eorg>:
+>On Wed, May 28, 2025 at 03:52:49PM +0200, Frank Wunderlich wrote:
+>> From: Frank Wunderlich <frank-w@public-files=2Ede>
+>>=20
+>> Add compatible for Mediatek MT7988 SoC with mediatek,mt8183-cci fallbac=
+k
+>> which is taken by driver=2E
+>
+>What's RFC about the patch?
 
-What's RFC about the patch?
+We have merge window,but maybe this rule is
+net(-next) only=2E And i was unsure if enum for
+new compatible is right or if i should use 2
+const=2E
 
->=20
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
->  .../bindings/interconnect/mediatek,cci.yaml          | 12 +++++++++---
->  1 file changed, 9 insertions(+), 3 deletions(-)
->=20
-> diff --git a/Documentation/devicetree/bindings/interconnect/mediatek,cci.=
-yaml b/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
-> index 58611ba2a0f4..2c6785c588e9 100644
-> --- a/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
-> +++ b/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
-> @@ -17,9 +17,15 @@ description: |
-> =20
->  properties:
->    compatible:
-> -    enum:
-> -      - mediatek,mt8183-cci
-> -      - mediatek,mt8186-cci
-> +    oneOf:
-> +      - items:
+>>=20
+>> Signed-off-by: Frank Wunderlich <frank-w@public-files=2Ede>
+>> ---
+>>  =2E=2E=2E/bindings/interconnect/mediatek,cci=2Eyaml          | 12 ++++=
++++++---
+>>  1 file changed, 9 insertions(+), 3 deletions(-)
+>>=20
+>> diff --git a/Documentation/devicetree/bindings/interconnect/mediatek,cc=
+i=2Eyaml b/Documentation/devicetree/bindings/interconnect/mediatek,cci=2Eya=
+ml
+>> index 58611ba2a0f4=2E=2E2c6785c588e9 100644
+>> --- a/Documentation/devicetree/bindings/interconnect/mediatek,cci=2Eyam=
+l
+>> +++ b/Documentation/devicetree/bindings/interconnect/mediatek,cci=2Eyam=
+l
+>> @@ -17,9 +17,15 @@ description: |
+>> =20
+>>  properties:
+>>    compatible:
+>> -    enum:
+>> -      - mediatek,mt8183-cci
+>> -      - mediatek,mt8186-cci
+>> +    oneOf:
+>> +      - items:
+>
+>This "- items:" is redundant=2E
 
-This "- items:" is redundant.
+Ok,i try without it=2E
 
-> +          - enum:
-> +              - mediatek,mt8183-cci
-> +              - mediatek,mt8186-cci
-> +      - items:
-> +          - enum:
-> +              - mediatek,mt7988-cci
-> +          - const: mediatek,mt8183-cci
-> =20
->    clocks:
->      items:
-> --=20
-> 2.43.0
->=20
+>> +          - enum:
+>> +              - mediatek,mt8183-cci
+>> +              - mediatek,mt8186-cci
+>> +      - items:
+>> +          - enum:
+>> +              - mediatek,mt7988-cci
+>> +          - const: mediatek,mt8183-cci
+>> =20
+>>    clocks:
+>>      items:
+>> --=20
+>> 2=2E43=2E0
+>>=20
 
---wlJGDMBTc856vNFG
-Content-Type: application/pgp-signature; name="signature.asc"
 
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaDnVYAAKCRB4tDGHoIJi
-0i+UAQCTTLJpyhXbrf/dTa8U43yhnq5ItBZMUPXZ1/O5ePbQigEAq4UB18R67FR0
-qNKjVg68sWCN+sXou9O3+mRNTSkosgU=
-=FvmH
------END PGP SIGNATURE-----
-
---wlJGDMBTc856vNFG--
+regards Frank
 
