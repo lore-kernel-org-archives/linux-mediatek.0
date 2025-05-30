@@ -4,168 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4381CC54F30
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 May 2025 03:19:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46342C5B549
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 May 2025 07:45:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=5L0SB/Q6nHt4RXIwieBxk4aLW40FoCyZDuO8v3unmpw=; b=vpMadd2xXSRbXufFrZmqr7raBS
-	T6C4WiQI9uZRFmVr4BLjF8poB533y7D+hzke+IOTl4K+kzyahX6uw5FAWGdXCb7Kq49MKukaAHvth
-	gAWPp2JQBz52z2FJMptrEm9M3l6nPG388yP1X7Fg0vTFUEcU1i4EapV4U/XtF9Hrp//HUqfB0/7Vi
-	piXO5oaw5VPEtwgq+I/11628AUl5pKtKMePGPPU6Ik4tO7UedvTeHIpHdWcMNPQPhT29UqwZ+/tgk
-	DXbHR81/evqI13/ty9yFtqxMnugapyF7NEsEO7sd4pBq2IjNXLsAN70O7R1syxlrCYAkgK5VUq3sy
-	qulV9RGQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZDLZCzUcSEipwZUBlZNpOSHF9zSJJP09jJDWRftbWCE=; b=BQ2sqbp7kBvCvV/i2ZhABJtnIX
+	TnjMyXSGyHMue8r9QhMDex66TGN2eGiN+VIeFBbcFcl9Xe0/TvVaaXGOUu4fjPeOpRfumlgoiIYDY
+	qjMYaS+lpTZXNmaqOA359aZgYhTjOBIYhbepgFipM//ZsqCMIBXcQaijNxix5dWtc/uGcwbgeVLQw
+	ooI6O3+aFXpRFANDp+u0i4e8Zo41QM7p8OLga56a8x4NZcwfyEmLTc9Ebfc264P2MBGEf9zAZhBB8
+	voKttiVRszdeMXxt0gFKuG+2nKMCHprX/ZfHQYGBO1AYZlnC6uz6HpVUV+jI9nFFw6RkqFbelx/g+
+	J4cuIMqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKqGy-0000000H1Iz-17wD;
-	Fri, 30 May 2025 03:19:08 +0000
-Received: from mail-eastasiaazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c400::3] helo=HK3PR03CU002.outbound.protection.outlook.com)
+	id 1uKuR3-0000000HUhl-2OMk;
+	Fri, 30 May 2025 07:45:49 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uKqFO-0000000H19T-3koy;
-	Fri, 30 May 2025 03:17:32 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=dWZ0kw3epscQktLB4jCiWDj5FdSbLQcLM0zi+YLLtTAuCJWMhugHrUj0jtklOd5GXJvCquX+1QcDx8ZyklxN2Zg72Zmc3sIo48Qixv5vAHaPecShmqNLjSR3AVdr/7/HBWvSlupHoG336A03waTK8gTotgl/muVtVhID5/LoBX6PO174lMV1XpuL56DQd4MI+IYFJpG4MV36aF5voJ3QaXv9z2nXizuuCT6iNzzvOXeShfuIZnS0grw1GjhYR43SjwaqHBBUte8Tkj/O7hjrQz5u5orETE0iR9FC+xFM3IokSpXppvPKyCI5XsIoCBONhNu1HleqHolU9EED5xG+8g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=5L0SB/Q6nHt4RXIwieBxk4aLW40FoCyZDuO8v3unmpw=;
- b=aXm5f48FufQ0/b4J5iE5Bg8ayWZrW7CWbhbG3QjyU39+1NT7r3BX3Hds9WpvQORcnvY/tlF1DcW9mxmBzb90t7pR+4RDjyEzm6iK04VtDU5tve9xe66CaTEPfQbcHBheN6Ya0S+5K4Xr69sASfmzvWXTSYklPVzLG1Wu+0+TjdISHCHHtO2Y/Zz6wwgk4jjScS3ea2QbRP7+HnyNnOCZOkIhdrKxQZ/8HdSNJgzNGRB1lRiOBoULdtvLkJ5y5OSyJAsQ5gDzBZxmfPfScqIUlAXdtqoitdlHp0lr3hn/2Dl5Pt7mwYCc0d3RN8+6E24nHx7WqARLWzVOjw6tk6eKSg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=fibocom.com; dmarc=pass action=none header.from=fibocom.com;
- dkim=pass header.d=fibocom.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=fibocomcorp.onmicrosoft.com; s=selector1-fibocomcorp-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5L0SB/Q6nHt4RXIwieBxk4aLW40FoCyZDuO8v3unmpw=;
- b=n+oRqRqGNWchFN8M3i55+UNX2AQa2MuOorJXjVB3cq8WvptPu3G9eoTGWJqecBLox6jGp58FrEBIFJVJ0iGjNehshTktxkyBYko8K+3nBRTzUh7qgBgrDQDcO5EPrSj7nfH766v+7X/xOynLzKHVULNFUjTy3XJ5geAH4pp1liY=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=fibocom.com;
-Received: from TY0PR02MB5766.apcprd02.prod.outlook.com (2603:1096:400:1b5::6)
- by SEZPR02MB7229.apcprd02.prod.outlook.com (2603:1096:101:1ea::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8769.29; Fri, 30 May
- 2025 03:17:11 +0000
-Received: from TY0PR02MB5766.apcprd02.prod.outlook.com
- ([fe80::f53d:47b:3b04:9a8b]) by TY0PR02MB5766.apcprd02.prod.outlook.com
- ([fe80::f53d:47b:3b04:9a8b%4]) with mapi id 15.20.8769.025; Fri, 30 May 2025
- 03:17:11 +0000
-From: Jinjian Song <jinjian.song@fibocom.com>
-To: chandrashekar.devegowda@intel.com,
-	chiranjeevi.rapolu@linux.intel.com,
-	haijun.liu@mediatek.com,
-	m.chetan.kumar@linux.intel.com,
-	ricardo.martinez@linux.intel.com,
-	loic.poulain@linaro.org,
-	ryazanov.s.a@gmail.com,
-	johannes@sipsolutions.net,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com
-Cc: linux-kernel@vger.kernel.org,
-	netdev@vger.kernel.org,
-	linux-doc@vger.kernel.org,
-	angelogioacchino.delregno@collabora.com,
-	linux-arm-kernel@lists.infradead.org,
-	matthias.bgg@gmail.com,
-	corbet@lwn.net,
-	linux-mediatek@lists.infradead.org,
-	helgaas@kernel.org,
-	danielwinkler@google.com,
-	andrew+netdev@lunn.ch,
-	horms@kernel.org,
-	sreehari.kancharla@linux.intel.com,
-	ilpo.jarvinen@linux.intel.com,
-	Jinjian Song <jinjian.song@fibocom.com>
-Subject: [net v3] net: wwan: t7xx: Fix napi rx poll issue
-Date: Fri, 30 May 2025 11:16:48 +0800
-Message-Id: <20250530031648.5592-1-jinjian.song@fibocom.com>
-X-Mailer: git-send-email 2.34.1
+	id 1uKuR1-0000000HUgN-348M;
+	Fri, 30 May 2025 07:45:48 +0000
+X-UUID: 17e2d7de3d2a11f08d385d50fb11b32d-20250530
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ZDLZCzUcSEipwZUBlZNpOSHF9zSJJP09jJDWRftbWCE=;
+	b=rfkFU6RfR70IAAL23iJoAJJM35sUu//ATeL6CrZvg96uuoqkENOw6W381OZVfPs7TtLv9R5Wd978x0ao10zuRKmLIBgmOOdzxiZDiZYX41+0gUUi/PuMRiZq5ufWouPoXJdqu4mJpHVVA/oid9r5vGJMLhzCoCtwAVx4NF4aZ1I=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:9ac2d9ba-e123-4315-9223-34addda63ddf,IP:0,UR
+	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:-5
+X-CID-META: VersionHash:0ef645f,CLOUDID:1fef4759-eac4-4b21-88a4-d582445d304a,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
+	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
+	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 17e2d7de3d2a11f08d385d50fb11b32d-20250530
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+	(envelope-from <kyrie.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 285437928; Fri, 30 May 2025 00:45:44 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Fri, 30 May 2025 15:45:41 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Fri, 30 May 2025 15:45:40 +0800
+From: Kyrie Wu <kyrie.wu@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
+	<krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Kyrie Wu <kyrie.wu@mediatek.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+CC: <srv_heupstream@mediatek.com>, Krzysztof Kozlowski
+	<krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v5 02/12] media: dt-bindings: mediatek,jpeg: Add mediatek, mt8196-jpgenc compatible
+Date: Fri, 30 May 2025 15:45:27 +0800
+Message-ID: <20250530074537.26338-3-kyrie.wu@mediatek.com>
+X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20250530074537.26338-1-kyrie.wu@mediatek.com>
+References: <20250530074537.26338-1-kyrie.wu@mediatek.com>
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-ClientProxiedBy: SY5P282CA0082.AUSP282.PROD.OUTLOOK.COM
- (2603:10c6:10:201::8) To TY0PR02MB5766.apcprd02.prod.outlook.com
- (2603:1096:400:1b5::6)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: TY0PR02MB5766:EE_|SEZPR02MB7229:EE_
-X-MS-Office365-Filtering-Correlation-Id: 63a04ec3-4716-4445-8243-08dd9f28776d
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|366016|7416014|52116014|921020|38350700014;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?sb/CAgSrkDRXrvK1jDfKci3v7gOJn+jGep4gGAbBPjho4zbATHX9fVzs63iV?=
- =?us-ascii?Q?DkcxSA2/32fvHMrnPyQe0eKHvSc7B6YIvqKfEyV4Bsy7CpCuTJzSpxn//y9l?=
- =?us-ascii?Q?x7FwbW2sVcASuVjxmUnnID3HBCqDEHNB2kF8HCq6v9gZjZHwxf/lc8W+ZPVk?=
- =?us-ascii?Q?GsoxOgKWMWY2EePvWjqub9u9A3JrTqT2vqPPhUZEGnb2e8vgjGITsaX8SgwF?=
- =?us-ascii?Q?Yup4cygwD1cbuw6K+j1Neyrz9MZ9bFqfi3pxBYSL5eB6+XT9vGj4tkLnjkqy?=
- =?us-ascii?Q?NVGCheRy97o4932aeIEWEi3QoS9LRehtF66QArz77HvHW3JAHCn/7PxptERr?=
- =?us-ascii?Q?nbprv3SlxdLQLxkwahreDMDQQB143s/vGajkrpMC5BYKsEA9iDnDGLFdYy+X?=
- =?us-ascii?Q?yqwIg0PY5IMPI938nhDsJF/46OvuEA3Z21cpcX50O4IqWImct5qghmu2ZokS?=
- =?us-ascii?Q?6QQAgyR2YP1hnjT5hxEADwJdh5lUHwNd26BL4tGHxFgGpx4MutUgowJziGoE?=
- =?us-ascii?Q?S5lewm3eKxK2bnnYpq1PY1yUvuHdtJIhqFxfwVm9aew1uIrLCgq+1g+2W2GG?=
- =?us-ascii?Q?Zway4PKsV5OU4zc+jAKEQrRPegUgZeGZkZK82yocvGW4PPalm8KIOwY401EO?=
- =?us-ascii?Q?I0ywPrWxFMQq0O2Z+p30RzkcjKP0lQNBSLeUoykFI4yGMxoPOMo57fkkJB+3?=
- =?us-ascii?Q?20JnQBp5BLEvZVDWMSXbgtoetTWYviZoOiN5K0w4kfDsukZjokuTCXacucX+?=
- =?us-ascii?Q?IQHPzCf5gP8xGsQmIe/+rY8TLH1DRrBIf3T6+q82nYkBfzIcfC8qk9eOWLk/?=
- =?us-ascii?Q?fqmM4EPhLKzLbrw1s7Yu+dW9dpMFpx+8+O0JcdWI83XJW1OlpkwYdQgwbTEA?=
- =?us-ascii?Q?7CpFFBPwqX7lhq67mFUSvrwaAuuiPxGFKZmHETS74I7BrrazNRLJGalMx+rn?=
- =?us-ascii?Q?uNKcLKVeyXE0lRC4/2uNymRvHvCKkzwwREdBpJHAWxiq/c3/VGi8px7X66af?=
- =?us-ascii?Q?LgwwiR6Ij/Z+N9OmTKBi8iOySbi+LhI3HfSPnl2BGPLFKWKev4dqdpKD160+?=
- =?us-ascii?Q?NTgOBiKQoBR0VXOzdYYCNwQv0JOHsl2uwfKtkFkeGqj6WpnRHihC8sRvydB5?=
- =?us-ascii?Q?bSKoy1+Ev01ycd/LZqlGw4YUQVD/DPWyxHXIJHjN/89AB+aF0EWWzBZbUYX1?=
- =?us-ascii?Q?Bqf44nTr2iSBgSM82Wqkwu6coA+mr83oXALjld6hr87DD1EVsl1m+sqobXFN?=
- =?us-ascii?Q?8RMfbjUeAXr2W3gw0fzuLm7PuZFdVfWc2dSC3hrweIbd3UkEtINt49UlwVFJ?=
- =?us-ascii?Q?r5EFxKEjLZetKntsfFULjK8E8LKPpPuqCBD5VV7mca1YnWD4249BJGqQ/JFB?=
- =?us-ascii?Q?VaLMdGXYr5Fx0C++ibeI9JAuxWQedume5kgxrAg+VCEKz7ueG06Y3uAAxAAW?=
- =?us-ascii?Q?y4YXZqlho8oBwSDKr8oX9zDd7JaEz1dWgWm8UwvTvA1YriunOpIbFEAIOxi/?=
- =?us-ascii?Q?RBXJarAhXRlErNA=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TY0PR02MB5766.apcprd02.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(366016)(7416014)(52116014)(921020)(38350700014);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?/x9/Ydy/F8LRGJByFRVypZ2x9O0NgSkEge6v319fMMLkpCd3gcfJ+/6JOcWs?=
- =?us-ascii?Q?eq7LNxpfztWfC1UOnAhIx7SDqKNYyajFZs/r2+QzxMCsn/fjzYRmZlaSZ3E/?=
- =?us-ascii?Q?z53e0ipLWFU3QXU8WuyfmpKFAPwu37mYcFUB/werXQbNll4+JxfRZTzZChWc?=
- =?us-ascii?Q?Xkyc+q8SZXPqaC19cwLAwUg4uvvamu16u4/wSMouH7RDBnmLysNubhUWeqlG?=
- =?us-ascii?Q?WpvK0J6XbUqqQ1orGdRlBJO2cAuoQzG4H79J7cZOtlmIPDUjuDJksGZLSoBx?=
- =?us-ascii?Q?dS3/PWc0o428p1atbV4I2W3WoM4e9FxG50CHvZj9EzlGVyTqMn60O07OgJsQ?=
- =?us-ascii?Q?rK/7poOHcm1e1/M/pU6LPW02m0zv4BQaSgnDM8f6S/7p6usgPcS/7dgAtjU2?=
- =?us-ascii?Q?v7RMKdOtjrlBAk6hd31S4dpJ892i39D9gIbjaTjd7+Cxz1XeKHfH1FQSPlIM?=
- =?us-ascii?Q?k0/XfENy/bjqJYoQ1/7nMv5NijSrcISovHYAvbENsCRshlJOAFOo4rrPaY5X?=
- =?us-ascii?Q?pNUNWvQptmDsHr3yWP9aag5AFZcicErlpAkoNeMCZayjioz7TvjFVtWvdPYd?=
- =?us-ascii?Q?UZmJ/Ca6OcjtPJEfXbFoRcoaKq18WIS9sbJV2Oo7T+gi6HXMc6pQ88P7RZZ2?=
- =?us-ascii?Q?wyutHUFRzpyNrae28BpyzGQQ3XwZmv+rGqyJRW754wapbtSqPvlOf7w1ea7f?=
- =?us-ascii?Q?UsfMMpKLB/qgaWVkzeJm+OfGSH6FiNqqLVEu69/AEOtwV12GBya8Wp+JfRcS?=
- =?us-ascii?Q?lJ3lctguJ3ImhLdi4WC77dJMT1QWg70qxSSKdlX2kciqU+Mz6E+LR4THt+N6?=
- =?us-ascii?Q?+eEXOfneV14q4Tx10ju8ahSxqp9hW5QEcOXgWrXC+mvfnqc4ImiOTEIctYJm?=
- =?us-ascii?Q?gmGqeHSiXt0Wf63EhkSmQZ8RjUSiU+oWVwji7OfU4avZqW80j0ihux2j3Cjk?=
- =?us-ascii?Q?sxnH7jQO4YbSWhwPKRb65Eb6BueV5ZRXfqukr6WiImlT34uLfgkTPd+s4Uf8?=
- =?us-ascii?Q?jpXnPpI9I0bE67hzOBez5NjY/SGCrgQgOAeFx1N44316QHdwYAyhwlsRafz+?=
- =?us-ascii?Q?ICeRpgMsD/JKfVBfqTki8N+jTlHUYQxL6GveawJzZmrWM5dA66gbnS+WDp+I?=
- =?us-ascii?Q?8/dKhmivfGoXUC8mI+qnKCBXGelGgyBVzDEaymmE6EmrEq7zSf9kgpPO7UL8?=
- =?us-ascii?Q?alpDzdrFsjLZNgSX0RMA2WDxm0SAvuAePpbGF3+rXS1T+dAnXrHm1QZCp3PQ?=
- =?us-ascii?Q?3DclblEqILcPm8hNxCFzeTmONyvBptc3KIrnoHIc7878HH0z4ZlFo/zQLmF+?=
- =?us-ascii?Q?ulVQVd5NqJmdLkFxZfUnHErAKCAETzVdj3afDI6i1ImEIqbqPWhOOeBVKRHQ?=
- =?us-ascii?Q?LI9dW2aG2bRE98Vnm7jUxJIAUF09fDIDaCOKwUHm4e6UMFqtNPkhsbEgPj+S?=
- =?us-ascii?Q?sYwstXrj8dG94r/iP/BIhleAwCWE70AyIxtAUZpmIx+2W1YXJHHsn0rZrwrZ?=
- =?us-ascii?Q?Y6clPMW28FYZ9BWO5RPzXAQ6OhPSYZ3obBss6H4UzWFJAwxHJo1yKG15of/c?=
- =?us-ascii?Q?u9i3tu9OU1yyglA0uM6rJ/sJf5s+k+1g5O5hEk26OWYDW8/SnIBYM31/rNn3?=
- =?us-ascii?Q?GA=3D=3D?=
-X-OriginatorOrg: fibocom.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 63a04ec3-4716-4445-8243-08dd9f28776d
-X-MS-Exchange-CrossTenant-AuthSource: TY0PR02MB5766.apcprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 May 2025 03:17:11.1115
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 889bfe61-8c21-436b-bc07-3908050c8236
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: mBip0CmwKsuyxFYeFEKPd4dR15swEiXzWgBxy71msFLl5v7iChbEEOVBGHshTvN6s8PJwG9jvqmzHV6Y3EYKKx0ydD/+CgVLwaHCNd2Tih0=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR02MB7229
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250529_201730_928651_CA75AAFE 
-X-CRM114-Status: GOOD (  12.20  )
+X-CRM114-CacheID: sfid-20250530_004547_770936_B1F64A76 
+X-CRM114-Status: GOOD (  10.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -180,99 +91,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When driver handles the napi rx polling requests, the netdev might
-have been released by the dellink logic triggered by the disconnect
-operation on user plane. However, in the logic of processing skb in
-polling, an invalid netdev is still being used, which causes a panic.
+Compared to the previous generation IC, the MT8196 uses SMMU
+instead of IOMMU and supports features such as dynamic voltage
+and frequency scaling. Therefore, add "mediatek,mt8196-jpgenc"
+compatible to the binding document.
 
-BUG: kernel NULL pointer dereference, address: 00000000000000f1
-Oops: 0000 [#1] PREEMPT SMP NOPTI
-RIP: 0010:dev_gro_receive+0x3a/0x620
-[...]
-Call Trace:
- <IRQ>
- ? __die_body+0x68/0xb0
- ? page_fault_oops+0x379/0x3e0
- ? exc_page_fault+0x4f/0xa0
- ? asm_exc_page_fault+0x22/0x30
- ? __pfx_t7xx_ccmni_recv_skb+0x10/0x10 [mtk_t7xx (HASH:1400 7)]
- ? dev_gro_receive+0x3a/0x620
- napi_gro_receive+0xad/0x170
- t7xx_ccmni_recv_skb+0x48/0x70 [mtk_t7xx (HASH:1400 7)]
- t7xx_dpmaif_napi_rx_poll+0x590/0x800 [mtk_t7xx (HASH:1400 7)]
- net_rx_action+0x103/0x470
- irq_exit_rcu+0x13a/0x310
- sysvec_apic_timer_interrupt+0x56/0x90
- </IRQ>
-
-Fixes: 5545b7b9f294 ("net: wwan: t7xx: Add NAPI support")
-Signed-off-by: Jinjian Song <jinjian.song@fibocom.com>
+Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
-v3:
- * Only Use READ_ONCE/WRITE_ONCE when the lock protecting ctlb->ccmni_inst
-   is not held.
----
- drivers/net/wwan/t7xx/t7xx_netdev.c | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
+ .../bindings/media/mediatek,mt8195-jpegenc.yaml           | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/wwan/t7xx/t7xx_netdev.c b/drivers/net/wwan/t7xx/t7xx_netdev.c
-index 91fa082e9cab..fc0a7cb181df 100644
---- a/drivers/net/wwan/t7xx/t7xx_netdev.c
-+++ b/drivers/net/wwan/t7xx/t7xx_netdev.c
-@@ -302,7 +302,7 @@ static int t7xx_ccmni_wwan_newlink(void *ctxt, struct net_device *dev, u32 if_id
- 	ccmni->ctlb = ctlb;
- 	ccmni->dev = dev;
- 	atomic_set(&ccmni->usage, 0);
--	ctlb->ccmni_inst[if_id] = ccmni;
-+	WRITE_ONCE(ctlb->ccmni_inst[if_id], ccmni);
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
+index 596186497b68..e2d772ea0fb0 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
+@@ -14,7 +14,9 @@ description:
  
- 	ret = register_netdevice(dev);
- 	if (ret)
-@@ -324,6 +324,7 @@ static void t7xx_ccmni_wwan_dellink(void *ctxt, struct net_device *dev, struct l
- 	if (WARN_ON(ctlb->ccmni_inst[if_id] != ccmni))
- 		return;
+ properties:
+   compatible:
+-    const: mediatek,mt8195-jpgenc
++    enum:
++      - mediatek,mt8195-jpgenc
++      - mediatek,mt8196-jpgenc
  
-+	WRITE_ONCE(ctlb->ccmni_inst[if_id], NULL);
- 	unregister_netdevice(dev);
- }
+   power-domains:
+     maxItems: 1
+@@ -44,7 +46,9 @@ patternProperties:
  
-@@ -419,7 +420,7 @@ static void t7xx_ccmni_recv_skb(struct t7xx_ccmni_ctrl *ccmni_ctlb, struct sk_bu
+     properties:
+       compatible:
+-        const: mediatek,mt8195-jpgenc-hw
++        enum:
++          - mediatek,mt8195-jpgenc-hw
++          - mediatek,mt8196-jpgenc-hw
  
- 	skb_cb = T7XX_SKB_CB(skb);
- 	netif_id = skb_cb->netif_idx;
--	ccmni = ccmni_ctlb->ccmni_inst[netif_id];
-+	ccmni = READ_ONCE(ccmni_ctlb->ccmni_inst[netif_id]);
- 	if (!ccmni) {
- 		dev_kfree_skb(skb);
- 		return;
-@@ -441,7 +442,7 @@ static void t7xx_ccmni_recv_skb(struct t7xx_ccmni_ctrl *ccmni_ctlb, struct sk_bu
- 
- static void t7xx_ccmni_queue_tx_irq_notify(struct t7xx_ccmni_ctrl *ctlb, int qno)
- {
--	struct t7xx_ccmni *ccmni = ctlb->ccmni_inst[0];
-+	struct t7xx_ccmni *ccmni = READ_ONCE(ctlb->ccmni_inst[0]);
- 	struct netdev_queue *net_queue;
- 
- 	if (netif_running(ccmni->dev) && atomic_read(&ccmni->usage) > 0) {
-@@ -453,7 +454,7 @@ static void t7xx_ccmni_queue_tx_irq_notify(struct t7xx_ccmni_ctrl *ctlb, int qno
- 
- static void t7xx_ccmni_queue_tx_full_notify(struct t7xx_ccmni_ctrl *ctlb, int qno)
- {
--	struct t7xx_ccmni *ccmni = ctlb->ccmni_inst[0];
-+	struct t7xx_ccmni *ccmni = READ_ONCE(ctlb->ccmni_inst[0]);
- 	struct netdev_queue *net_queue;
- 
- 	if (atomic_read(&ccmni->usage) > 0) {
-@@ -471,7 +472,7 @@ static void t7xx_ccmni_queue_state_notify(struct t7xx_pci_dev *t7xx_dev,
- 	if (ctlb->md_sta != MD_STATE_READY)
- 		return;
- 
--	if (!ctlb->ccmni_inst[0]) {
-+	if (!READ_ONCE(ctlb->ccmni_inst[0])) {
- 		dev_warn(&t7xx_dev->pdev->dev, "No netdev registered yet\n");
- 		return;
- 	}
+       reg:
+         maxItems: 1
 -- 
-2.34.1
+2.46.0
 
 
