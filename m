@@ -4,69 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 764C6C5AD49
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 May 2025 14:43:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FA71C5AD49
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 May 2025 16:00:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Tkt6lqMerVtxJ85JGdrgiNvmzOncLEuXluT2uXMp+Bw=; b=y1b/ZhN+Fjx8NVt4U0Es/vU9aa
-	Q/eFbx0+Vn+N7wtQXyGzxK+SfPsmgvQnYdIQjSdAHCBdxsmPNylNDowgkD/Ak5MXa5VHBWIQ6duDD
-	5l0DDXnwkI9FBDlq/ZtwNtbRbmHHcuQtK1pRF8aOwrDRKP+6fsMkwSazsnFO95nksME67hcBGbRPY
-	zYzXoINBHRJhVPlzdcU2QbI2IBFWZMn50K79s8ON19lmk9vByZYFoCf8f2pZYVsRYVufDEjNCUEeZ
-	Ty0G4CskTDQOmqRXvNuPvLvyi3YjGvZHT8MvSjc+oH6mdr+ZuB7tFI+1g7oJYQuGNg6DFnx/WqGKL
-	M8PehboA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Zq+whcMwdMCqXRt3nHkuc4AuAgF122eOPTne255Gd8M=; b=jQn4ilx2uJuWCOdKqPO5f+eODf
+	NkqZawdNyJnIz1N1IWi75yw3VGk+1tdOJwV3aXmV232oGiR2/8slDC0/eT/s5HmHPwWcsuZimAmRr
+	eeLGLz1Vj1I/RaiAW9Adn0N06BhV2hwwvuuvRtLIC+Y02rfvlkuk4/McTCKwZWhF6yb2XotVs4/YT
+	HNVjabavRMsCPO8tcWa5szheoeoWdFBMmEEgo2X3ApyackkrhZEKu5oRwqHoPLKw51b7J84Z+AukA
+	UCDk9zS4SUBGYU18EJdgtV1N2yMC/JyIc51+8yp7JH7Jgv/gEDj3CYDN23LktRAqlrLZo9CWFlhA6
+	vg1X1D5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uL0wz-00000000vVj-2bjp;
-	Fri, 30 May 2025 14:43:13 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uL29T-000000015k0-42Z0;
+	Fri, 30 May 2025 16:00:11 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uL0up-00000000vHs-3WdO;
-	Fri, 30 May 2025 14:41:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1748616057;
-	bh=YuEWTcZ3+7dJ6CPGfVqw5uB5EKngIixvUdcQNCJDJUk=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=d4TOFwsGMh/NAP5WONQXEaz+z/IkO7TpXa9X0Z39nSgp9R8C8lBcRLZD9KwrWvQMv
-	 P+oZKUNZoQelaZXC0oeC2pngBQusHVctcm2nc1Lu8Wd+ANaPnmYKxwH6GQaPNqu/ib
-	 uWfKdBS/x22mVh6AIMwsXWebYoa629xwJjnwjrjHhFc+dYc1qVIi1mkaq9x0wOZHoM
-	 P33WJYoGqiIi3Dg/Y5sN0+MeLjxYx+r+S42Ouu7sP06otHecvEOR/6mQqpp67bd68u
-	 /MAacM+SWSTT4fpOR0h8ssgL7qNj7aXITAchZfNiAhSH+n1id+HUr40xjFsk22Jn1A
-	 CzLi3CW/YF0yw==
-Received: from [IPv6:2606:6d00:10:5285::5ac] (unknown [IPv6:2606:6d00:10:5285::5ac])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id CB37617E0C37;
-	Fri, 30 May 2025 16:40:55 +0200 (CEST)
-Message-ID: <7a372c544c370d64b916a7092aabac555710d7c5.camel@collabora.com>
-Subject: Re: [PATCH v2 0/6] Add support for MT8196 video encoder
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Irui Wang <irui.wang@mediatek.com>, Hans Verkuil
- <hverkuil-cisco@xs4all.nl>,  Mauro Carvalho Chehab	 <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger	
- <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	angelogioacchino.delregno@collabora.com, wenst@chromium.org
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com, 
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, Yunfei Dong <yunfei.dong@mediatek.com>,
-  Longfei Wang <longfei.wang@mediatek.com>
-Date: Fri, 30 May 2025 10:40:54 -0400
-In-Reply-To: <20250528063633.14054-1-irui.wang@mediatek.com>
-References: <20250528063633.14054-1-irui.wang@mediatek.com>
-Organization: Collabora Canada
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
+	id 1uL26p-0000000153G-1d56;
+	Fri, 30 May 2025 15:57:27 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 7A7706115E;
+	Fri, 30 May 2025 15:57:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D68C2C4CEE9;
+	Fri, 30 May 2025 15:57:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1748620646;
+	bh=hZHDiYBG1Y1HUlzoNGnJPAo5du46tcOG49Tcr3RVSvg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ikYMHjijfZBls/jp41L/O8ESIo1EqOSIcMUkBhMMZhMaTgtLyMxFsYbWZvZiMNEmu
+	 JbOD2pJjpPqAf073kbNKifC+WKIo5S6VmgBtRWQwqBogxxgGcDFLSU7u8JJnY0EX1Z
+	 Peg3Yv0Emf9ZRv6+9E+2PL4oruJyA6hrMC8oRThFV6vDPxwfU6W0UimBh4Pbv2nUlp
+	 tJyD2k2f7fOEdi6ITdKPuBg1DawIRVFLSQ8X0hhnB5uoh/j9KSbf/98u6irEU/VRSU
+	 WQpmtxsGsJTKWsThr8t2If8v76mHvPxx+TqXSgs0Wu3pohUc3o1I5ckwNtOCq+TlV6
+	 IxUgYKde4CwRw==
+Date: Fri, 30 May 2025 16:57:20 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Frank Wunderlich <linux@fw-web.de>
+Subject: Re: [RFC v1] dt-bindings: interconnect: add mt7988-cci compatible
+Message-ID: <20250530-naturist-swept-973a1f8f4b08@spud>
+References: <20250528135251.6492-1-linux@fw-web.de>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250530_074100_031839_B4580D4D 
-X-CRM114-Status: GOOD (  17.38  )
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="wlJGDMBTc856vNFG"
+Content-Disposition: inline
+In-Reply-To: <20250528135251.6492-1-linux@fw-web.de>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,60 +63,71 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Chanwoo Choi <cw00.choi@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, Johnson Wang <johnson.wang@mediatek.com>, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Georgi Djakov <djakov@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Jia-Wei Chang <jia-wei.chang@mediatek.com>, devicetree@vger.kernel.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
 
-Le mercredi 28 mai 2025 à 14:36 +0800, Irui Wang a écrit :
-> This patch series add support for MT8196 video encoder.
-> patch 1~3: Add a new encoder driver interface for new VCP firmware.
-> patch 4~6: Add MT8196 encoder driver platform data.
-> 
-> About adding new driver support, the v4l2-compliance report shows:
-> "Total for mtk-vcodec-enc device /dev/video3: 47, Succeeded: 46, Failed: 1, Warnings: 0"
-> The 1 Failed case is not caused by current patch set.
+--wlJGDMBTc856vNFG
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-We really want to see the full report, simply reply to this cover letter with
-the entire report to fix it.
+On Wed, May 28, 2025 at 03:52:49PM +0200, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
+>=20
+> Add compatible for Mediatek MT7988 SoC with mediatek,mt8183-cci fallback
+> which is taken by driver.
 
-Nicolas
+What's RFC about the patch?
 
-> 
-> This patch set depends on "media: mediatek: vcodec: support video decoder in mt8196"[1]
-> 
-> [1] https://patchwork.linuxtv.org/project/linux-media/list/?series=15232
-> 
-> Change in v2:
->  - Add support for VCP encode process.
->  - Add MT8196 encoder driver platform data.
->  - Rebase encoder patch onto decoder's patch set.
->  - Fix some review comments in v1.
-> 
-> Irui Wang (6):
->   media: mediatek: encoder: Add a new encoder driver interface
->   media: mediatek: encoder: Add support for common firmware interface
->   media: mediatek: encoder: Add support for VCP encode process
->   media: mediatek: encoder: Add a new platform data member
->   dt-bindings: media: mediatek: encoder: Add encoder dt-bindings for
->     MT8196
->   media: mediatek: encoder: Add MT8196 encoder compatible data
-> 
->  .../media/mediatek,vcodec-encoder.yaml        |  12 +
->  .../mediatek/vcodec/common/mtk_vcodec_fw.c    |  19 +
->  .../mediatek/vcodec/common/mtk_vcodec_fw.h    |   2 +
->  .../vcodec/common/mtk_vcodec_fw_priv.h        |   1 +
->  .../vcodec/common/mtk_vcodec_fw_vcp.c         |   6 +
->  .../platform/mediatek/vcodec/encoder/Makefile |   1 +
->  .../mediatek/vcodec/encoder/mtk_vcodec_enc.c  |  37 +-
->  .../vcodec/encoder/mtk_vcodec_enc_drv.c       |  28 +
->  .../vcodec/encoder/mtk_vcodec_enc_drv.h       |  15 +-
->  .../vcodec/encoder/venc/venc_common_if.c      | 678 ++++++++++++++++++
->  .../vcodec/encoder/venc/venc_h264_if.c        |   8 +-
->  .../mediatek/vcodec/encoder/venc_drv_if.c     |   3 +-
->  .../mediatek/vcodec/encoder/venc_drv_if.h     |  11 +-
->  .../mediatek/vcodec/encoder/venc_ipi_msg.h    |  26 +
->  .../mediatek/vcodec/encoder/venc_vpu_if.c     |  51 +-
->  15 files changed, 843 insertions(+), 55 deletions(-)
->  create mode 100644 drivers/media/platform/mediatek/vcodec/encoder/venc/venc_common_if.c
+>=20
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+>  .../bindings/interconnect/mediatek,cci.yaml          | 12 +++++++++---
+>  1 file changed, 9 insertions(+), 3 deletions(-)
+>=20
+> diff --git a/Documentation/devicetree/bindings/interconnect/mediatek,cci.=
+yaml b/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
+> index 58611ba2a0f4..2c6785c588e9 100644
+> --- a/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
+> +++ b/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
+> @@ -17,9 +17,15 @@ description: |
+> =20
+>  properties:
+>    compatible:
+> -    enum:
+> -      - mediatek,mt8183-cci
+> -      - mediatek,mt8186-cci
+> +    oneOf:
+> +      - items:
+
+This "- items:" is redundant.
+
+> +          - enum:
+> +              - mediatek,mt8183-cci
+> +              - mediatek,mt8186-cci
+> +      - items:
+> +          - enum:
+> +              - mediatek,mt7988-cci
+> +          - const: mediatek,mt8183-cci
+> =20
+>    clocks:
+>      items:
+> --=20
+> 2.43.0
+>=20
+
+--wlJGDMBTc856vNFG
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaDnVYAAKCRB4tDGHoIJi
+0i+UAQCTTLJpyhXbrf/dTa8U43yhnq5ItBZMUPXZ1/O5ePbQigEAq4UB18R67FR0
+qNKjVg68sWCN+sXou9O3+mRNTSkosgU=
+=FvmH
+-----END PGP SIGNATURE-----
+
+--wlJGDMBTc856vNFG--
 
