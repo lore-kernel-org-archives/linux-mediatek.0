@@ -4,62 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DCBEC5AD49
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 May 2025 18:09:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BADFAC5AE59
+	for <linux-mediatek@archiver.kernel.org>; Sat, 31 May 2025 11:26:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T8QPO6Ef1FQ5IIXSBD6+Fdg7tVKaYzmd0kVEhLTxmWk=; b=dmZKtOoJyskKOvVacjGFraGRER
-	5iMKL0eVP8URXH9ERXkaI4JvKnLN/NZWoaVtyE+32U/RoL0WqI3O7p0kuK5sXfWtt+w7q76k+wqBx
-	VvqvOq4jjTh5t1IlDvB1VRsIxCOsJYMNe7X1CK/d0qsRX3D3VfxH6L9sAfCXDiDppjuVwoKF7xEBq
-	NlMKCkjiRNuSHDGung0qPCPvokesK4n5cRi53oExei7JjLi5Yi22TC4gln2UeAUk3UaBf2X1C63QW
-	/TSMRURKhNuwMO+Sk7KjHaCbHa+ZpPQfxNjX0RV+bwEK1jSZlhpDWzXUQ/6R2JjJuhOO73Axsx506
-	W3FWBzlw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fWlDJZFGibouXI9Xxl4L3ttSojMBpE6uWpsKddJDyoY=; b=DkRcspEI1UPtWK
+	TMjigRR8fu9bITqU0bxvhlAIZI3LYBjI8vnp98wAi5oO5nhflyxcEZJTftwZQhxOQI9OX8PJeOl16
+	oRcGxh/4Hfpa8eNT48CoG1nhiaJg/IevyEx8/GEvHpFPOxG9ZbWjunxm6Uhqa/Lj3g8EvgBU+QzsB
+	mpumSqvMRvS3ain0aPnRqqs1WehrtsouZ/NXE0jU4OtG/ve8O6mr+S2q1dt5DUnLSt7K/Zu20G2eq
+	48rWOIBWJja5Qas/rRcnwWbc8pG15tfMwURWBWcFVR4oNnX+bNSLRpB2QOjAXQdPiB8OZkMea6AB5
+	DQrIv18s9P1s50II2x1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uL4Ad-00000001UUG-1aMI;
-	Fri, 30 May 2025 18:09:31 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uLKMR-00000003g3G-3pDP;
+	Sat, 31 May 2025 11:26:47 +0000
+Received: from mxout1.routing.net ([2a03:2900:1:a::a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uL47u-00000001UDD-3f9p;
-	Fri, 30 May 2025 18:06:42 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id F3A16629C1;
-	Fri, 30 May 2025 18:06:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B016BC4CEE9;
-	Fri, 30 May 2025 18:06:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1748628401;
-	bh=t9lFh+oAmPOl6ZvE6QL+On8ZD++9uCDEr437mOmG80I=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=UrszsRdlThRSA3XyFYc1ail8rRNTabDt5j2soWnh75hkIKMZofrTXD1mPXkxFKuUD
-	 3bT88hyWWsBT/Hr/RmZM7hT31aJcOdCO+DwwTNqnVWiRWlW86v94dc4UYhafetUEWT
-	 rD0Xg/ZiAmmQ00YOcMv+lpMALwfnlFJCUYCHK/py1LCpsrk8F9HAaiLqHBb23c5Xud
-	 UBsTBjVPTh9mfuZczJfND/wUCgOPIdB/bKFey8R3G5wVTnTt1f7CSBUMTge90HskM+
-	 eKcqhFRu2Mcrshb3L6nW9X0zCB8XnIwyhDGVLHhmXwool8NEhnurcDIq+tOchKd4Qy
-	 ZxVzPTHywWWhg==
-Date: Fri, 30 May 2025 19:06:37 +0100
-From: Simon Horman <horms@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Michal Kubiak <michal.kubiak@intel.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net 2/2] net: airoha: Fix IPv6 hw acceleration in bridge
- mode
-Message-ID: <20250530180637.GR1484967@horms.kernel.org>
-References: <20250529-airoha-flowtable-ipv6-fix-v1-0-7c7e53ae0854@kernel.org>
- <20250529-airoha-flowtable-ipv6-fix-v1-2-7c7e53ae0854@kernel.org>
+	id 1uLKKJ-00000003fz3-3d3Q;
+	Sat, 31 May 2025 11:24:37 +0000
+Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
+	by mxout1.routing.net (Postfix) with ESMTP id 076673FD38;
+	Sat, 31 May 2025 11:24:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1748690673;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=fWlDJZFGibouXI9Xxl4L3ttSojMBpE6uWpsKddJDyoY=;
+	b=Sqc5sypCBpxJrJDNGjSFApEEtY22xuSJ5xLurDITmfc/4AYyfZl/euSGGlmGJoB9ow6hh9
+	mb6pe6aNOMCXRZzFKZEW0VaIdC2tcbIFwPdm9phfyBp6t8bzEI0Sdc5mzlXneLd88t1YRm
+	KWtAC5fcXUNU0f7qKQgN5z6X1xx4gXU=
+Received: from frank-u24.. (fttx-pool-217.61.150.8.bambit.de [217.61.150.8])
+	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id BB9171226A5;
+	Sat, 31 May 2025 11:24:32 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: MyungJoo Ham <myungjoo.ham@samsung.com>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	Chanwoo Choi <cw00.choi@samsung.com>,
+	Georgi Djakov <djakov@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jia-Wei Chang <jia-wei.chang@mediatek.com>,
+	Johnson Wang <johnson.wang@mediatek.com>
+Subject: [PATCH v2] dt-bindings: interconnect: add mt7988-cci compatible
+Date: Sat, 31 May 2025 13:24:23 +0200
+Message-ID: <20250531112425.10525-1-linux@fw-web.de>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250529-airoha-flowtable-ipv6-fix-v1-2-7c7e53ae0854@kernel.org>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250531_042436_070584_3FB8702A 
+X-CRM114-Status: UNSURE (   8.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,25 +74,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 29, 2025 at 05:52:38PM +0200, Lorenzo Bianconi wrote:
-> ib2 and airoha_foe_mac_info_common have not the same offsets in
-> airoha_foe_bridge and airoha_foe_ipv6 structures. Fix IPv6 hw
-> acceleration in bridge mode resolving ib2 and airoha_foe_mac_info_common
-> overwrite in airoha_ppe_foe_commit_subflow_entry routine.
+From: Frank Wunderlich <frank-w@public-files.de>
 
-I'd lean towards splitting this into two patches. One to address the issue
-described above, and one to address the issue described below.
+Add compatible for Mediatek MT7988 SoC with mediatek,mt8183-cci fallback
+which is taken by driver.
 
-> Moreover, set
-> AIROHA_FOE_MAC_SMAC_ID to 0xf in airoha_ppe_foe_commit_subflow_entry()
-> to configure the PPE module to keep original source mac address of the
-> bridged packets.
-> 
-> Fixes: cd53f622611f ("net: airoha: Add L2 hw acceleration support")
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+---
+v2:
+- no RFC
+- drop "items" as sugested by conor
+---
+ .../bindings/interconnect/mediatek,cci.yaml           | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
 
-...
+diff --git a/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml b/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
+index 58611ba2a0f4..4d72525f407e 100644
+--- a/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
++++ b/Documentation/devicetree/bindings/interconnect/mediatek,cci.yaml
+@@ -17,9 +17,14 @@ description: |
+ 
+ properties:
+   compatible:
+-    enum:
+-      - mediatek,mt8183-cci
+-      - mediatek,mt8186-cci
++    oneOf:
++      - enum:
++          - mediatek,mt8183-cci
++          - mediatek,mt8186-cci
++      - items:
++          - enum:
++              - mediatek,mt7988-cci
++          - const: mediatek,mt8183-cci
+ 
+   clocks:
+     items:
+-- 
+2.43.0
+
 
