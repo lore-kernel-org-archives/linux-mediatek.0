@@ -4,92 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 683F3C5B549
-	for <linux-mediatek@archiver.kernel.org>; Sat, 31 May 2025 16:00:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4F74C54FB3
+	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Jun 2025 17:36:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=g3/7b7sAur+LGqclPpSqvB9KECRV68HTQpr4XmjRfR0=; b=Zqly4W6vOayGtbFaryAS7QX16q
-	vIncUDWEjXR6Qo1GQYpWBgrUT55l+ZfUMlzFsPkAYsisq/hQCNyf3cwjtlXOXz0B5Oggyksrj4JZg
-	Wgs+R+vhJS0o7EZBvXKPKbq1chsOpxz0TIu3an+S3MWaXThsfgYoXHz3I93qTUHRP9QqhEYdNhE21
-	rLrk1LyyddWov0ehBfooq00N/SCA5iNpGsyxZ9JyUhqFkNsoDziXGVgUKHcCzGPzZ67qYgdA7x4P3
-	HtEypZt3HIpd5US1l3xilCm8gN2cvQDClrCS5l+vLpIWCTA1I84aNRozahLadr3PGUACMPQzVsBTC
-	545nK5nQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=u8tgo9s7qv+siGOki8TcsEv+NlGk2nFqIOpd/asZ3eY=; b=GMYJsJ09MyUR2uQ6O3JQ4W0E5x
+	UIVLHMig4CTx834ksKgmkYHOx2hKpfxKJTZTMpaHGIi8XyuEmD/CLfe3iHm3BxF7C/AvfPEq1JRWt
+	K5mCy5au42w2rxYT+J21gpcJHP8OENahvf8pKEblf+WxAL2mPZHKOnsgRjoBhUY9MG88lt9tf3L8u
+	2m8X9ONBFeDaadSDN3NxtEWaHKgF5B53ZuuO4maRT6UbzL1YTAoPvDXkW7eHKYMO3aGVp+w7Zh6Y9
+	GaLSrdCSe/ew8u3mYlaGzpM+m5rM3ulT241U/ZvcnF96rQ4J7wU7lO9WrRHeb+iA6CftZM0Nu337F
+	4C83ZT0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uLOcx-0000000413p-1yPD;
-	Sat, 31 May 2025 16:00:07 +0000
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+	id 1uLmbp-00000005lrm-2ZHe;
+	Sun, 01 Jun 2025 17:36:33 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uLOcu-0000000413N-1Iwt
-	for linux-mediatek@lists.infradead.org;
-	Sat, 31 May 2025 16:00:05 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-3a4e749d7b2so537772f8f.0
-        for <linux-mediatek@lists.infradead.org>; Sat, 31 May 2025 09:00:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1748707202; x=1749312002; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=g3/7b7sAur+LGqclPpSqvB9KECRV68HTQpr4XmjRfR0=;
-        b=VP8G3lvpgrk37b4z1/N/wZq8yqPcOjRppkB2w/Ixx4Cp4K2lm7jJSgjYQ9GkF2X1V7
-         GvUHI2jlvOp5QUmK8LCRYY7yUxxDx3yeibQ5Uu/rmozphYVb4YEQwSmDyTIxdBDornyH
-         X/NfQlkVTcQizx42Rh662+ZGmiYPvTGXGyJLaXU7eeAfyoWHWLPp73mJgMnNF044grSq
-         JdLdGmiSjTCE73leB754OnaStp5yUMgiNlz5mtVinSMcvqlYWw+X8ZdQs9/NpJQkjaeW
-         HLILBW8t+tvUgDMRRYnuWmwYPDx0lBcoKVCRmnlAiSrB0DStaWTwBkpMQ5uh5a+RzEfj
-         4O4Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1748707202; x=1749312002;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=g3/7b7sAur+LGqclPpSqvB9KECRV68HTQpr4XmjRfR0=;
-        b=vz+4827jMIsen3G1v1EhDjX91c7nySvi/npr0QCTfAjba8Nn4m0QOsdKqlLZ3XbOSz
-         Z0+NIamGdUtwRLOjK2qpmYv0VNnFOzCBX7c+8tvWKkrARex4yjJ2VhUWFuJ8kzpmxnE3
-         +RCVajKc1N4SYRl+/UDnyn+9L2lGQrv8BnP0awJJoILaGURtrkNgbxqPELzTx7GCqUGI
-         tLeWSYMJ1p/RXmb0Xc6CoxLXEasIMxwJIV11AVy1tzR/cUdugZ1A2yOWX49TXLYKyjES
-         H9vyvfcPQX7DWH3ESJRypQXbyFI9dmirAGuNcKZ/Jj7sYIo94pHjsSP2lrpMipO1h4fe
-         hjzQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUVB0G52rEJN2eW0K9DRlpQxYRjidSORDiAwHXvNM9gOOY5GAijgFHaijWsJ3AjaLHLMgphxFnWQtdhx2cGgw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyhH0TJHVXl5CWKLsoLQiWDicLt8dHWxNVMkxSWf7poobGmmFIg
-	J1RlfpSF0InFGNMMWHghyDRbiZRQmW+QzDU2kL1LyWVR3C2AOSde93I=
-X-Gm-Gg: ASbGncve1pdiK2JhK/sN2klwLTl+llYjvviKspDr40vjemegxcIFYvGt55eB4mQkhPU
-	JKl88bwaH5g0JJXlyKxtrI/nlvdnTRuGssztXhGPElk9V0g9vN676t9l4xGt4IzhOtLEPcRYWMl
-	epKItfUQefiJsutmi4x6nqeS9A1gYVfMmeEfrztj9Y6REvic6lNMbg1Imyjy+K3rK90NZ0eCNhz
-	pfJHSN4okCOPfMfLWALn8B+HcCoKtc7HwlBs8AZ/SdrXLNjSGQ+NbA+RQeKMvRD/vtt4/WmPB8R
-	MqKhX5W+F3JMg0UE4dy0F2ApBlEQ8CxGze+2dLXN8Q1OmhG/B3M/LVmW8NVMQWH8ZHiw3lm8tC1
-	5GxsxYgql6iaKSm35W4YBxCfGbw==
-X-Google-Smtp-Source: AGHT+IG24VPqGTUlEu40NhO7aglqx2+Gnxxp+tCh5n+1wu6jubU6cE/Nh3inPKaAhC8Cjn9YWQ924Q==
-X-Received: by 2002:a05:600c:358e:b0:439:8c80:6aee with SMTP id 5b1f17b1804b1-450d6543c86mr24150645e9.4.1748707201605;
-        Sat, 31 May 2025 09:00:01 -0700 (PDT)
-Received: from localhost (131.red-80-39-31.staticip.rima-tde.net. [80.39.31.131])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-450d7fb0467sm53630305e9.19.2025.05.31.09.00.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 31 May 2025 09:00:01 -0700 (PDT)
-From: Xose Vazquez Perez <xose.vazquez@gmail.com>
-To: 
-Cc: Xose Vazquez Perez <xose.vazquez@gmail.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	SOUND ML <linux-sound@vger.kernel.org>,
-	MEDIATEK ML <linux-mediatek@lists.infradead.org>
-Subject: [PATCH] ASoC: mt6660: delete MODULE_VERSION
-Date: Sat, 31 May 2025 17:59:49 +0200
-Message-ID: <20250531155950.101164-1-xose.vazquez@gmail.com>
-X-Mailer: git-send-email 2.49.0
+	id 1uLmZW-00000005kzb-1cKH;
+	Sun, 01 Jun 2025 17:34:11 +0000
+X-UUID: 9e99149c3f0e11f0bed96b30c12bc3d6-20250601
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=u8tgo9s7qv+siGOki8TcsEv+NlGk2nFqIOpd/asZ3eY=;
+	b=mvsb//Ld2zgwMGztZYNuDHYea1k9d/u9dnjocs26qNC6x7yCDKFkvOBiEK3/UPep3nIxMzd/uJI6lxQ9Tm7hcK3NyBdTsk43+Pi0+QLhO43OPQ029poaKv3sbIyiePDE2pswaO9Zc1NXQn9tyCTQ3XYWzIKHL2C0KXnJmYYzE6U=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.1,REQID:5c9cfd1e-1c4f-4eda-8475-4f4fc90cd009,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:0ef645f,CLOUDID:0924f447-ee4f-4716-aedb-66601021a588,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
+	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
+	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-UUID: 9e99149c3f0e11f0bed96b30c12bc3d6-20250601
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 721257967; Sun, 01 Jun 2025 10:34:07 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Mon, 2 Jun 2025 01:34:03 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Mon, 2 Jun 2025 01:34:03 +0800
+From: Jason-JH Lin <jason-jh.lin@mediatek.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Jassi Brar <jassisinghbrar@gmail.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>
+Subject: [PATCH v6 02/20] mailbox: mtk-cmdq: Refine DMA address handling for the command buffer
+Date: Mon, 2 Jun 2025 01:31:34 +0800
+Message-ID: <20250601173355.1731140-3-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20250601173355.1731140-1-jason-jh.lin@mediatek.com>
+References: <20250601173355.1731140-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
-X-Patchwork-Bot: notify
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250531_090004_351590_0CE21486 
-X-CRM114-Status: UNSURE (   7.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250601_103410_440213_78ED3648 
+X-CRM114-Status: GOOD (  21.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,30 +83,164 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Moudy
+ Ho <moudy.ho@mediatek.com>, Xiandong Wang <xiandong.wang@mediatek.com>, Jason-JH Lin <jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Paul-PL Chen <paul-pl.chen@mediatek.com>, Xavier Chang <xavier.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Sirius Wang <sirius.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Cc: Liam Girdwood <lgirdwood@gmail.com>
-Cc: Mark Brown <broonie@kernel.org>
-Cc: Jaroslav Kysela <perex@perex.cz>
-Cc: Takashi Iwai <tiwai@suse.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: SOUND ML <linux-sound@vger.kernel.org>
-Cc: MEDIATEK ML <linux-mediatek@lists.infradead.org>
----
- sound/soc/codecs/mt6660.c | 1 -
- 1 file changed, 1 deletion(-)
+GCE can only fetch the command buffer address from a 32-bit register.
+Some SoCs support a 35-bit command buffer address for GCE, which
+requires a right shift of 3 bits before setting the address into
+the 32-bit register. A comment has been added to the header of
+cmdq_get_shift_pa() to explain this requirement.
 
-diff --git a/sound/soc/codecs/mt6660.c b/sound/soc/codecs/mt6660.c
-index d16bccebae52..9415656f8285 100644
---- a/sound/soc/codecs/mt6660.c
-+++ b/sound/soc/codecs/mt6660.c
-@@ -578,4 +578,3 @@ module_i2c_driver(mt6660_i2c_driver);
- MODULE_AUTHOR("Jeff Chang <jeff_chang@richtek.com>");
- MODULE_DESCRIPTION("MT6660 SPKAMP Driver");
- MODULE_LICENSE("GPL");
--MODULE_VERSION("1.0.8_G");
+To prevent the GCE command buffer address from being DMA mapped beyond
+its supported bit range, the DMA bit mask for the device is set during
+initialization.
+
+Additionally, to ensure the correct shift is applied when setting or
+reading the register that stores the GCE command buffer address,
+new APIs, cmdq_reg_shift_addr() and cmdq_reg_revert_addr(), have been
+introduced for consistent operations on this register.
+
+The variable type for the command buffer address has been standardized
+to dma_addr_t to prevent handling issues caused by type mismatches.
+
+Fixes: 0858fde496f8 ("mailbox: cmdq: variablize address shift in platform")
+Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
+---
+ drivers/mailbox/mtk-cmdq-mailbox.c       | 43 ++++++++++++++++--------
+ include/linux/mailbox/mtk-cmdq-mailbox.h | 10 ++++++
+ 2 files changed, 39 insertions(+), 14 deletions(-)
+
+diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+index ab4e8d1954a1..a3d94f1eb1a3 100644
+--- a/drivers/mailbox/mtk-cmdq-mailbox.c
++++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+@@ -92,6 +92,16 @@ struct gce_plat {
+ 	u32 gce_num;
+ };
+ 
++static inline u32 cmdq_reg_shift_addr(dma_addr_t addr, const struct gce_plat *pdata)
++{
++	return (addr >> pdata->shift);
++}
++
++static inline dma_addr_t cmdq_reg_revert_addr(u32 addr, const struct gce_plat *pdata)
++{
++	return ((dma_addr_t)addr << pdata->shift);
++}
++
+ u8 cmdq_get_shift_pa(struct mbox_chan *chan)
+ {
+ 	struct cmdq *cmdq = container_of(chan->mbox, struct cmdq, mbox);
+@@ -188,13 +198,12 @@ static void cmdq_task_insert_into_thread(struct cmdq_task *task)
+ 	struct cmdq_task *prev_task = list_last_entry(
+ 			&thread->task_busy_list, typeof(*task), list_entry);
+ 	u64 *prev_task_base = prev_task->pkt->va_base;
++	u32 shift_addr = cmdq_reg_shift_addr(task->pa_base, task->cmdq->pdata);
+ 
+ 	/* let previous task jump to this task */
+ 	dma_sync_single_for_cpu(dev, prev_task->pa_base,
+ 				prev_task->pkt->cmd_buf_size, DMA_TO_DEVICE);
+-	prev_task_base[CMDQ_NUM_CMD(prev_task->pkt) - 1] =
+-		(u64)CMDQ_JUMP_BY_PA << 32 |
+-		(task->pa_base >> task->cmdq->pdata->shift);
++	prev_task_base[CMDQ_NUM_CMD(prev_task->pkt) - 1] = (u64)CMDQ_JUMP_BY_PA << 32 | shift_addr;
+ 	dma_sync_single_for_device(dev, prev_task->pa_base,
+ 				   prev_task->pkt->cmd_buf_size, DMA_TO_DEVICE);
+ 
+@@ -237,7 +246,8 @@ static void cmdq_thread_irq_handler(struct cmdq *cmdq,
+ 				    struct cmdq_thread *thread)
+ {
+ 	struct cmdq_task *task, *tmp, *curr_task = NULL;
+-	u32 curr_pa, irq_flag, task_end_pa;
++	u32 irq_flag, shift_addr;
++	dma_addr_t curr_pa, task_end_pa;
+ 	bool err;
+ 
+ 	irq_flag = readl(thread->base + CMDQ_THR_IRQ_STATUS);
+@@ -259,7 +269,8 @@ static void cmdq_thread_irq_handler(struct cmdq *cmdq,
+ 	else
+ 		return;
+ 
+-	curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR) << cmdq->pdata->shift;
++	shift_addr = readl(thread->base + CMDQ_THR_CURR_ADDR);
++	curr_pa = cmdq_reg_revert_addr(shift_addr, cmdq->pdata);
+ 
+ 	list_for_each_entry_safe(task, tmp, &thread->task_busy_list,
+ 				 list_entry) {
+@@ -378,7 +389,8 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
+ 	struct cmdq_thread *thread = (struct cmdq_thread *)chan->con_priv;
+ 	struct cmdq *cmdq = dev_get_drvdata(chan->mbox->dev);
+ 	struct cmdq_task *task;
+-	unsigned long curr_pa, end_pa;
++	u32 shift_addr;
++	dma_addr_t curr_pa, end_pa;
+ 	int ret;
+ 
+ 	/* Client should not flush new tasks if suspended. */
+@@ -409,20 +421,20 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
+ 		 */
+ 		WARN_ON(cmdq_thread_reset(cmdq, thread) < 0);
+ 
+-		writel(task->pa_base >> cmdq->pdata->shift,
+-		       thread->base + CMDQ_THR_CURR_ADDR);
+-		writel((task->pa_base + pkt->cmd_buf_size) >> cmdq->pdata->shift,
+-		       thread->base + CMDQ_THR_END_ADDR);
++		shift_addr = cmdq_reg_shift_addr(task->pa_base, cmdq->pdata);
++		writel(shift_addr, thread->base + CMDQ_THR_CURR_ADDR);
++		shift_addr = cmdq_reg_shift_addr(task->pa_base + pkt->cmd_buf_size, cmdq->pdata);
++		writel(shift_addr, thread->base + CMDQ_THR_END_ADDR);
+ 
+ 		writel(thread->priority, thread->base + CMDQ_THR_PRIORITY);
+ 		writel(CMDQ_THR_IRQ_EN, thread->base + CMDQ_THR_IRQ_ENABLE);
+ 		writel(CMDQ_THR_ENABLED, thread->base + CMDQ_THR_ENABLE_TASK);
+ 	} else {
+ 		WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
+-		curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR) <<
+-			cmdq->pdata->shift;
+-		end_pa = readl(thread->base + CMDQ_THR_END_ADDR) <<
+-			cmdq->pdata->shift;
++		shift_addr = readl(thread->base + CMDQ_THR_CURR_ADDR);
++		curr_pa = cmdq_reg_revert_addr(shift_addr, cmdq->pdata);
++		shift_addr = readl(thread->base + CMDQ_THR_END_ADDR);
++		end_pa = cmdq_reg_revert_addr(shift_addr, cmdq->pdata);
+ 		/* check boundary */
+ 		if (curr_pa == end_pa - CMDQ_INST_SIZE ||
+ 		    curr_pa == end_pa) {
+@@ -656,6 +668,9 @@ static int cmdq_probe(struct platform_device *pdev)
+ 	if (err)
+ 		return err;
+ 
++	dma_set_coherent_mask(dev,
++			      DMA_BIT_MASK(sizeof(u32) * BITS_PER_BYTE + cmdq->pdata->shift));
++
+ 	cmdq->mbox.dev = dev;
+ 	cmdq->mbox.chans = devm_kcalloc(dev, cmdq->pdata->thread_nr,
+ 					sizeof(*cmdq->mbox.chans), GFP_KERNEL);
+diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
+index 4c1a91b07de3..e1555e06e7e5 100644
+--- a/include/linux/mailbox/mtk-cmdq-mailbox.h
++++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
+@@ -77,6 +77,16 @@ struct cmdq_pkt {
+ 	size_t			buf_size; /* real buffer size */
+ };
+ 
++/**
++ * cmdq_get_shift_pa() - get the shift bits of physical address
++ * @chan: mailbox channel
++ *
++ * GCE can only fetch the command buffer address from a 32-bit register.
++ * Some SOCs support more than 32-bit command buffer address for GCE, which
++ * requires some shift bits to make the address fit into the 32-bit register.
++ *
++ * Return: the shift bits of physical address
++ */
+ u8 cmdq_get_shift_pa(struct mbox_chan *chan);
+ 
+ #endif /* __MTK_CMDQ_MAILBOX_H__ */
 -- 
-2.49.0
+2.43.0
+
 
