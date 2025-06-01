@@ -4,43 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A571C54FB3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Jun 2025 01:01:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5EB4C54FB3
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Jun 2025 01:09:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MgLOsQuL7RTyNsvlAux5+WjTu3KSg9+JtB3RHLk3F38=; b=2BzgsPXnm0HOxpd8ERMnh1y8Fw
-	YlVLHtTfDRJrBGXBikQY/a5HGuPH/6XhibqHZnb79Qjs0tvbVFDQtIrY4woDnTucJwyz0OY/b8tzJ
-	YrPmEUGGPFXikV6e5nInGUNIQJNv61VhLaju19jvDq1HTc+Faj0rqJZMipVX3GimcdKol2BE4OuF0
-	IbAPILdK3iqxIvcY84R/YqQG430ipHKPgGv0viZAmR5ntaFB8zqTzs7b+cjv7Lsk0aPJ8rH1/c/IH
-	9wOp9MAm+p0PMlqZSKB3ubbvvlyoVF6H6ZWRLm4FFRmsy+lJFRmy4vMYdNOxTOL/4++UEF4ZNrdfB
-	FqJeXxNw==;
+	bh=U4YM72d+3vvKBX33LqPIYVwG7wT+BSBvsVhOQN9wlUw=; b=AdoHUGd8phfQtpb6gvyUB15Th0
+	D2hq7webjglfJJHNPbYDdVv+WvX5zmn5RRuQ3y8rwP463CIpxXIsnQChkx2Podbd4K1LZUfEH4GTp
+	Tx2BMpWNskoYrHNTqoWekapZnlZSTOYp3aWX4x2pAwfQs7GbeFZWiL3aWlPtPHERTZ5UdngNJvutQ
+	gTs7dzpERJK+9uOIAQ6CPFjMaufQnaBwQWaZS8WlcG9zDZQ2Rdjs7sUwJ8JP+lcCRcKxXewXSNg2Z
+	V8ZCslrM6x6XAs0d8vC2f307ryI0a1oXRgOT4tdiccTK0VPJWcpbuCMlOqe5vJKuBtwTyj7XQjC2B
+	kAxC7/sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uLtY0-00000006Pg3-3bmb;
-	Mon, 02 Jun 2025 01:01:04 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uLtgU-00000006RNC-29uY;
+	Mon, 02 Jun 2025 01:09:50 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uLsIm-000000069Nu-3Nd8;
-	Sun, 01 Jun 2025 23:41:16 +0000
+	id 1uLsKj-000000069v7-3X13;
+	Sun, 01 Jun 2025 23:43:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=U4YM72d+3vvKBX33LqPIYVwG7wT+BSBvsVhOQN9wlUw=; b=RavcnwDbzuPesL/0V/ViFc/Aa8
+	NoPGDYzOgFnu60u6oXiIS/dbSfzVgYEjBEpNYjVahYk9D+NUpgxtbLZea+YV2Yiv+K+xMV+hZ/zdx
+	GVyDsAvFv4+Nrnlxpp2bIfBpDQRMrvADlqTpwQ/DcbI+oCKQ9QJqRUiPYBnCP8hcwH0ejI+a5MJy+
+	MGxLY1btxwrWeQSCbgkTAmzWKcpv/2GpFlIRlyHUYb1aTayQ3DMkABAbC9Y1QOGoeoqaQHoD/XgrO
+	UHZwctgsaY9Jr9lyQJIDgoh/9/kI4h6ajSAAhWGiLaxMsFZUhyzbtMWZPf6f07gZWIuA3dcX31RTA
+	gyohx3dA==;
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uLsKf-00000000Yfw-3GVB;
+	Sun, 01 Jun 2025 23:43:16 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id ED2966113B;
-	Sun,  1 Jun 2025 23:41:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C0CB3C4CEEE;
-	Sun,  1 Jun 2025 23:41:12 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 8AB5D5C4AA3;
+	Sun,  1 Jun 2025 23:40:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 377D0C4CEEE;
+	Sun,  1 Jun 2025 23:43:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1748821274;
-	bh=dt8kPgWDpFu2sSg07IECaKF33MJ/jwpv24xF5OlDrII=;
+	s=k20201202; t=1748821392;
+	bh=8uGsla5TvHMV3zZ2Wv57F0Ctt5dM81m+Wcig2EZrqLo=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=LNH1ZF22fbPNM3kna5X4WRpSD6YS0mPBbYW3LoWxiK8xHWUGVjQXR+YYyn0oxorBZ
-	 3iS82z8nHMAz5HMohr9XjWOL6gG6e6DDn8kImHd4ncfOxLgyymBazQW05kR5MUppRL
-	 CB+zZU3wJRsvmBaTZjWFXVgFlIg44ClaZ315/LlIPX69u720vgxr+LOz0fxF6qfdUq
-	 iW/n9FPh3x4xQR1n/buIJXNiZDMQYNDMIdsZ1zaNWVHATS/ZGqZEkKdzc2O8IzzWTU
-	 xobUqfJ72pzQ3oJiY1CNHDQzneyZmTANlbjmVKgrHLbICBBxB+rq1kjJItSUMvlB2d
-	 MTikFwh+VD1GA==
+	b=iFQ+7SZLTLjg9djpOSHgdw1oQApKJ4fvAHPxhQIJZZa0EXR/y3KFBl8hDTQbnyRXZ
+	 QHAMmGWQHXeZDMuWC4NKzgPjC2clkvk0yjBok8ADjBAbazHJwOBEgGTv0yCdsdmWdC
+	 FtVZXLMui1xKvNeOfBl32zoo5JKQD0k47V390AdW7W68R2/5zHFs4YdJRyOWy5att6
+	 6Wc9VgzJ7blntdrEAe3+/bLPX6XR/auapamiR/KA5n5PdDwTuTrcV3AHvqrBiscc0N
+	 jEkGhTpW5Z8k5t6lfahL6b/clWDnyinyvuanm5s38KUiJN1QBUY7XAHGm0Whj64DKa
+	 mGOb7LKcB0SzQ==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
@@ -60,17 +74,20 @@ Cc: Jonas Karlman <jonas@kwiboo.se>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.1 25/58] media: rkvdec: h264: Use bytesperline and buffer height as virstride
-Date: Sun,  1 Jun 2025 19:39:38 -0400
-Message-Id: <20250601234012.3516352-25-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.15 20/43] media: rkvdec: h264: Use bytesperline and buffer height as virstride
+Date: Sun,  1 Jun 2025 19:42:00 -0400
+Message-Id: <20250601234224.3517599-20-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250601234012.3516352-1-sashal@kernel.org>
-References: <20250601234012.3516352-1-sashal@kernel.org>
+In-Reply-To: <20250601234224.3517599-1-sashal@kernel.org>
+References: <20250601234224.3517599-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.1.140
+X-stable-base: Linux 5.15.184
 Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250602_004315_145931_8423154A 
+X-CRM114-Status: GOOD (  14.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -151,10 +168,10 @@ pattern of other NO-backport commits in the provided examples.
  1 file changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
-index 4fc167b42cf0c..7a1e76d423df5 100644
+index 438252fa19441..46e01037b7112 100644
 --- a/drivers/staging/media/rkvdec/rkvdec-h264.c
 +++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
-@@ -896,9 +896,9 @@ static void config_registers(struct rkvdec_ctx *ctx,
+@@ -907,9 +907,9 @@ static void config_registers(struct rkvdec_ctx *ctx,
  	dma_addr_t rlc_addr;
  	dma_addr_t refer_addr;
  	u32 rlc_len;
@@ -167,7 +184,7 @@ index 4fc167b42cf0c..7a1e76d423df5 100644
  	u32 yuv_virstride = 0;
  	u32 offset;
  	dma_addr_t dst_addr;
-@@ -909,16 +909,16 @@ static void config_registers(struct rkvdec_ctx *ctx,
+@@ -920,16 +920,16 @@ static void config_registers(struct rkvdec_ctx *ctx,
  
  	f = &ctx->decoded_fmt;
  	dst_fmt = &f->fmt.pix_mp;
