@@ -4,73 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DE76C54FB3
-	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Jun 2025 23:40:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C486C54FB3
+	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Jun 2025 23:48:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cuSjtX7RqaQsP9IR8t8kf+jNZl5aY0Yd7DEgrOoMc/Y=; b=QreCw7CqKiJUiPktrKGDAXAvOf
-	xtb32wccw4IU4tb/320Bl3WHqHCw7oAVeP1yiiB3luaziO1hx+RGGjqX2shQLM8Dk8bP7L/zwQpyR
-	dE6LdOEI7olbltalxNn95mOGCoEu21T+L7rhGVHm1X5manrn/OUIT66/+4rfJVH8uuPdScEgSoXhm
-	NJot9sKDylDjsRMVkUqe3Hu3DkpucHgpS7ys/XSCY/wLxv5qdZarlukTLQiH8ZDD78E42fnIeLjeb
-	Suz9hAV0k3dpKTlXISpMAk6sX0GEHJCvgXfeTj9pVt4oIYIFoeUzq0yL+I5Awji+monsZYvHJ4iHd
-	bd3lmx9w==;
+	bh=iwMfzsred/Fu2DVt9SdbNGJQWxv9gGFYvT5fUnsNRVo=; b=s2x6A7wmm2lyZYXKxHCZXR6SfC
+	l2j6+j/ALZRR1fkYozo8gHbMCkjD1UH4xGjyDPL/58JM9wskUV/nWhw3JZtakChxUU190OsCXddwF
+	LeSnjc/hoS4Btmp6xGF465yDMieAfBM8wFY6Txm9+H1YKoH18rRpmy0c9oXZERKi2+QNQpbmc/OjN
+	7n0URiiymtLuEzjK4Rjizvue5g0cdSaXB9YRAPdAXA0atmfPA9Wb95MKpbYBqzt0pTM3Os1Nzn3Bf
+	iHyghTMLy/n40ZOw11C0jpKlBSFYt9GXg9xScD/nr15TaTIgzMF3AZ1hC1BF98J0CPotdkysWltup
+	wVGCMOEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uLsHh-000000068zR-0CHe;
-	Sun, 01 Jun 2025 23:40:09 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uLsQ8-00000006B2P-3TAQ;
+	Sun, 01 Jun 2025 23:48:52 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uLs58-0000000661E-2xvs;
-	Sun, 01 Jun 2025 23:27:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=cuSjtX7RqaQsP9IR8t8kf+jNZl5aY0Yd7DEgrOoMc/Y=; b=ZAlq83xuqfcwwvt4cFmd3O7WdF
-	DTOaXECebGPRZHnx6Aiv/GGR4dItzvNN9XNzq0zrLU51RkMI1LThTRQ9HwFxZt3auFev0MVSUiRSM
-	YMU4XNxLvgh7EbBwV7ohtf1pmW2OSipGiG0iuBvtPGp40G4PSJ3rp+UDb7mOhoJVGB9SAAk2Kn/ct
-	plVXvhOXI6wVEkV9j23WFzx98Y9cRkojfVJ53EpMxW2V4t9v7X/pbQpzfwYBdvvvFtWJN5er7U2/m
-	macqIvE2PIdisJ+bWr5tU1Sx1GQuS38/xnVoBVNuiJJc6YYm7zjFQb0codRz+HsR8Iw+ZmKkxfM5H
-	xMDyJtwQ==;
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uLs52-00000000XKp-2FKw;
-	Sun, 01 Jun 2025 23:27:06 +0000
+	id 1uLs6q-000000066Hg-3e88;
+	Sun, 01 Jun 2025 23:28:58 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 47F925C4D46;
-	Sun,  1 Jun 2025 23:24:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8FA53C4CEE7;
-	Sun,  1 Jun 2025 23:27:01 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 94F274A7B2;
+	Sun,  1 Jun 2025 23:28:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5E70BC4CEE7;
+	Sun,  1 Jun 2025 23:28:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1748820422;
-	bh=XYrRtZuOVTeI0fAa5/NfJJQDvr7rpN7tbXz6hxJSzwI=;
+	s=k20201202; t=1748820536;
+	bh=g9ywwi2Yf/PKAvy2MwqZNEw5Np9DzAUcOpshioCNmAs=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=fLtWAp+GzUKmCqwKUPel/MWvXfrGz/8HpR8rMlCvpMSKtfOrGGMn9p1COBr1JGdnK
-	 anznK1BQXrCUscJz7OK9UrKKeI+xDWpHrT3o8Glj6zLPIV8Tar+SVtUCm9uIKmKa9x
-	 pd4ktvqxTbtqyx6QSlgEUxAbiohruyuzB9qG4Mt7VXcK0xsdluQ49FI9YCIK1EZ0FE
-	 wvxMzq4jPUEXwFszXDzMqwM6DKw7f0p/YQDXiDhj1mFCFTlL9HxSC4T+PoJMBUfL5d
-	 Qo3fHXjgCGNFYPl1VSoRGP3FhPbQL0UtUOxUOyatHXIROX9mYixh/MsEPuqWPismkr
-	 uRMChrckUtfeA==
+	b=XR0T0UZhgrO3JQWXqzvISJ+QfoRrTLnkWzcfjfZcBJpzh+SWX69FecBMLaf3CbV6X
+	 Y1Tj0UVJSzpVqL3Fb0hqQXlpjnDfYY/EOuO7rgqvuqL4qZQFIgiGjelw+wrLP1+9ch
+	 3d00WNznEC7GqesDvxtHgDDRwoGThcBB2NrxBBlrsmLdGOLb/paHbhpqsTjNvVcF8L
+	 AsYHRHMWD4X4cQe8xbUUSyL9N/HeyCSoUppGi+/9kNfjtOgEJvg6lqb58LI0LkH9JT
+	 dUhzTno4IsiT/Q1CGF/5LYLoobgwxkYD5pAzWaJ0gxa9+j/9SwZbu8r4XNEmBD1lRl
+	 kQESXfSCfuoRA==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Cc: Hans Verkuil <hverkuil@xs4all.nl>,
-	Ricardo Ribalda <ribalda@chromium.org>,
+Cc: Brian Norris <briannorris@chromium.org>,
+	Thomas Gleixner <tglx@linutronix.de>,
 	Sasha Levin <sashal@kernel.org>,
-	mchehab@kernel.org,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	linux-media@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.15 053/110] media: cec: extron-da-hd-4k-plus: Fix Wformat-truncation
-Date: Sun,  1 Jun 2025 19:23:35 -0400
-Message-Id: <20250601232435.3507697-53-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.15 092/110] genirq: Retain disable depth for managed interrupts across CPU hotplug
+Date: Sun,  1 Jun 2025 19:24:14 -0400
+Message-Id: <20250601232435.3507697-92-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250601232435.3507697-1-sashal@kernel.org>
 References: <20250601232435.3507697-1-sashal@kernel.org>
@@ -78,10 +62,11 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-stable-base: Linux 6.15
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250602_002704_939973_C20E1FEE 
-X-CRM114-Status: GOOD (  16.04  )
+X-CRM114-CacheID: sfid-20250601_162856_957589_6EB93BE0 
+X-CRM114-Status: GOOD (  19.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,106 +81,327 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Hans Verkuil <hverkuil@xs4all.nl>
+From: Brian Norris <briannorris@chromium.org>
 
-[ Upstream commit 5edc9b560f60c40e658af0b8e98ae2dfadc438d8 ]
+[ Upstream commit 788019eb559fd0b365f501467ceafce540e377cc ]
 
-Fix gcc8 warning:
+Affinity-managed interrupts can be shut down and restarted during CPU
+hotunplug/plug. Thereby the interrupt may be left in an unexpected state.
+Specifically:
 
-drivers/media/cec/usb/extron-da-hd-4k-plus/extron-da-hd-4k-plus.c:1014:44: warning: 'DCEC' directive output may be truncated writing 4 bytes into a region of size between 0 and 53 [-Wformat-truncation=]
+ 1. Interrupt is affine to CPU N
+ 2. disable_irq() -> depth is 1
+ 3. CPU N goes offline
+ 4. irq_shutdown() -> depth is set to 1 (again)
+ 5. CPU N goes online
+ 6. irq_startup() -> depth is set to 0 (BUG! driver expects that the interrupt
+    		     	      	        still disabled)
+ 7. enable_irq() -> depth underflow / unbalanced enable_irq() warning
 
-Resizing the 'buf' and 'cmd' arrays fixed the warning.
+This is only a problem for managed interrupts and CPU hotplug, all other
+cases like request()/free()/request() truly needs to reset a possibly stale
+disable depth value.
 
-Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
-Signed-off-by: Hans Verkuil <hverkuil@xs4all.nl>
+Provide a startup function, which takes the disable depth into account, and
+invoked it for the managed interrupts in the CPU hotplug path.
+
+This requires to change irq_shutdown() to do a depth increment instead of
+setting it to 1, which allows to retain the disable depth, but is harmless
+for the other code paths using irq_startup(), which will still reset the
+disable depth unconditionally to keep the original correct behaviour.
+
+A kunit tests will be added separately to cover some of these aspects.
+
+[ tglx: Massaged changelog ]
+
+Suggested-by: Thomas Gleixner <tglx@linutronix.de>
+Signed-off-by: Brian Norris <briannorris@chromium.org>
+Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
+Link: https://lore.kernel.org/all/20250514201353.3481400-2-briannorris@chromium.org
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
 
-NO This commit should not be backported to stable kernel trees for the
-following reasons: 1. **Non-critical compiler warning fix**: This commit
-addresses a `-Wformat-truncation` compiler warning, which is a build-
-time warning and not a runtime bug that affects users. The warning
-indicates potential string truncation, but looking at the code, there's
-no evidence this causes actual runtime failures or security
-vulnerabilities. 2. **Consistent with similar commit patterns**: Looking
-at the reference commits, all the similar format-truncation warning
-fixes (commits #1, #2, #3, and #5) were marked as "Backport Status: NO".
-Only commit #4 was marked "YES", but that one explicitly included "Cc:
-stable@vger.kernel.org" in the commit message and had a "Fixes:" tag,
-which this commit lacks. 3. **Missing stable tree indicators**: The
-commit message contains no "Cc: stable@vger.kernel.org" tag and no
-"Fixes:" tag pointing to a specific problematic commit that introduced a
-user-facing issue. 4. **Minor code quality improvement**: The changes
-are purely preventive: - `char buf[CEC_MAX_MSG_SIZE 0001-Fix-Clippy-
-warnings.patch 0002-Enhance-inference-prompt-to-utilize-CVEKERNELDIR-
-whe.patch 0003-Update-to-latest-version-of-clap.patch Cargo.lock
-Cargo.toml LICENSE README.md adreno_acd_support_analysis.md
-amd_display_ips_sequential_ono_backport_analysis.md
-analyze_merge_commit.sh dpp_rcg_backport_analysis.md
-drm_amd_display_vertical_interrupt_dcn32_dcn401_backport_analysis.md
-drm_bridge_analysis.txt drm_format_helper_24bit_analysis.md
-drm_imagination_register_update_analysis.md
-drm_mediatek_mtk_dpi_refactoring_analysis.md
-intel_ipu6_constify_analysis.md io_uring_analysis.txt ksmbd_analysis.txt
-merge_commit_analysis.txt model prompt src target test_gpio_cleanup.txt
-test_patch.txt verisilicon_av1_4k_analysis.md 3 + 1];` becomes `char
-buf[(CEC_MAX_MSG_SIZE - 1) 0001-Fix-Clippy-warnings.patch 0002-Enhance-
-inference-prompt-to-utilize-CVEKERNELDIR-whe.patch 0003-Update-to-
-latest-version-of-clap.patch Cargo.lock Cargo.toml LICENSE README.md
-adreno_acd_support_analysis.md
-amd_display_ips_sequential_ono_backport_analysis.md
-analyze_merge_commit.sh dpp_rcg_backport_analysis.md
-drm_amd_display_vertical_interrupt_dcn32_dcn401_backport_analysis.md
-drm_bridge_analysis.txt drm_format_helper_24bit_analysis.md
-drm_imagination_register_update_analysis.md
-drm_mediatek_mtk_dpi_refactoring_analysis.md
-intel_ipu6_constify_analysis.md io_uring_analysis.txt ksmbd_analysis.txt
-merge_commit_analysis.txt model prompt src target test_gpio_cleanup.txt
-test_patch.txt verisilicon_av1_4k_analysis.md 3 + 1];` - `char
-cmd[CEC_MAX_MSG_SIZE 0001-Fix-Clippy-warnings.patch 0002-Enhance-
-inference-prompt-to-utilize-CVEKERNELDIR-whe.patch 0003-Update-to-
-latest-version-of-clap.patch Cargo.lock Cargo.toml LICENSE README.md
-adreno_acd_support_analysis.md
-amd_display_ips_sequential_ono_backport_analysis.md
-analyze_merge_commit.sh dpp_rcg_backport_analysis.md
-drm_amd_display_vertical_interrupt_dcn32_dcn401_backport_analysis.md
-drm_bridge_analysis.txt drm_format_helper_24bit_analysis.md
-drm_imagination_register_update_analysis.md
-drm_mediatek_mtk_dpi_refactoring_analysis.md
-intel_ipu6_constify_analysis.md io_uring_analysis.txt ksmbd_analysis.txt
-merge_commit_analysis.txt model prompt src target test_gpio_cleanup.txt
-test_patch.txt verisilicon_av1_4k_analysis.md 3 + 13];` becomes `char
-cmd[sizeof(buf) + 14];` These changes slightly reduce buffer sizes to
-better match actual usage patterns, but there's no indication the
-original sizes caused buffer overflows or other runtime problems. 5.
-**Media subsystem and driver-specific**: This affects a specific USB CEC
-adapter driver (`extron-da-hd-4k-plus`), making it a relatively isolated
-change that doesn't impact core kernel functionality or multiple
-subsystems. 6. **No user-reported issues**: There's no mention of user
-reports, bug fixes, or functional improvements - only compiler warning
-suppression. The stable kernel tree rules prioritize important bug fixes
-with minimal regression risk. This commit, while technically correct,
-falls into the category of code quality improvements rather than
-critical fixes that users would benefit from in stable releases.
+Based on my analysis of the commit and the current kernel code, here is
+my assessment: **YES** This commit should be backported to stable kernel
+trees. Here's my extensive analysis: ## Bug Analysis The commit fixes a
+critical bug in the interrupt subsystem's CPU hotplug handling that
+affects affinity-managed interrupts. The bug manifests as follows: 1.
+**Problem Scenario**: When a managed interrupt is disabled (depth=1),
+then its CPU goes offline causing `irq_shutdown()`, and later the CPU
+comes back online triggering `irq_startup()`, the disable depth
+accounting becomes corrupted. 2. **Current Broken Behavior** (from
+existing kernel code): - `irq_shutdown()` sets `desc->depth = 1`
+unconditionally (line seen in grep output) - `irq_startup()` sets
+`desc->depth = 0` unconditionally - This overwrites any previous disable
+state, violating the disable/enable balance 3. **User-Visible Impact**:
+The bug causes: - Unbalanced `enable_irq()` warnings - Interrupts being
+unexpectedly enabled during CPU hotplug - Potential system instability
+or incorrect device behavior ## Code Changes Analysis The fix makes
+surgical changes to preserve disable depth: ### 1. **irq_shutdown()
+Change** (kernel/irq/chip.c): ```c - desc->depth = 1; + /bin /bin.usr-
+is-merged /boot /dev /etc /home /init /lib /lib.usr-is-merged /lib64
+/lost+found /media /mnt /opt /proc /root /run /sbin /sbin.usr-is-merged
+/snap /srv /sys /tmp /usr /var +
+amd_display_timing_generator_analysis.md
+amd_doorbell_analysis_framework.md
+amd_gpu_documentation_backport_analysis.md amd_si_chip_analysis.md
+amdgpu_csb_analysis.md amdgpu_mqd_prop_backport_analysis.md
+analogix_dp_backport_analysis.md cgroup_rstat_analysis.sh
+cgroup_rstat_analysis_guide.md cpuset_comment_fix_backport_analysis.md
+csiphy_x1e80100_backport_analysis.md
+dcn315_smu_indirect_register_access_analysis.md
+drm_dp_helper_dpcd_refactoring_backport_analysis.md
+drm_format_helper_generic_8bit_conversion_backport_analysis.md
+es8375_codec_driver_backport_analysis.md expected_findings_summary.md
+hdmi_read_request_analysis.md kernel_analysis_commands.sh
+kselftest_harness_teardown_metadata_backport_analysis.md linux-kernel
+mediatek_vcodec_h264_backport_analysis.md
+pidfd_open_kselftest_harness_compatibility_analysis.md
+qualcomm_camss_bus_type_backport_analysis.md
+selftests_harness_libatomic_backport_analysis.md
+sphinx_version_compatibility_backport_analysis.md
+spi_sh_msiof_grpmask_backport_analysis.md
+spi_sh_msiof_sitmdr2_sirmdr2_bitfield_conversion_backport_analysis.md
+sta2x11_removal_analysis.md test_unused_param.c test_unused_param.o
+ti_bridge_encoder_crtc_refactoring_backport_analysis.md
+xe_driver_flr_vf_restriction_analysis.md
+xe_firmware_per_gt_backport_analysis.md
+xe_sriov_logging_backport_analysis.md Increment disable depth, so that a
+managed shutdown on + amd_display_timing_generator_analysis.md
+amd_doorbell_analysis_framework.md
+amd_gpu_documentation_backport_analysis.md amd_si_chip_analysis.md
+amdgpu_csb_analysis.md amdgpu_mqd_prop_backport_analysis.md
+analogix_dp_backport_analysis.md cgroup_rstat_analysis.sh
+cgroup_rstat_analysis_guide.md cpuset_comment_fix_backport_analysis.md
+csiphy_x1e80100_backport_analysis.md
+dcn315_smu_indirect_register_access_analysis.md
+drm_dp_helper_dpcd_refactoring_backport_analysis.md
+drm_format_helper_generic_8bit_conversion_backport_analysis.md
+es8375_codec_driver_backport_analysis.md expected_findings_summary.md
+hdmi_read_request_analysis.md kernel_analysis_commands.sh
+kselftest_harness_teardown_metadata_backport_analysis.md linux-kernel
+mediatek_vcodec_h264_backport_analysis.md
+pidfd_open_kselftest_harness_compatibility_analysis.md
+qualcomm_camss_bus_type_backport_analysis.md
+selftests_harness_libatomic_backport_analysis.md
+sphinx_version_compatibility_backport_analysis.md
+spi_sh_msiof_grpmask_backport_analysis.md
+spi_sh_msiof_sitmdr2_sirmdr2_bitfield_conversion_backport_analysis.md
+sta2x11_removal_analysis.md test_unused_param.c test_unused_param.o
+ti_bridge_encoder_crtc_refactoring_backport_analysis.md
+xe_driver_flr_vf_restriction_analysis.md
+xe_firmware_per_gt_backport_analysis.md
+xe_sriov_logging_backport_analysis.md CPU hotunplug preserves the actual
+disabled state when the + amd_display_timing_generator_analysis.md
+amd_doorbell_analysis_framework.md
+amd_gpu_documentation_backport_analysis.md amd_si_chip_analysis.md
+amdgpu_csb_analysis.md amdgpu_mqd_prop_backport_analysis.md
+analogix_dp_backport_analysis.md cgroup_rstat_analysis.sh
+cgroup_rstat_analysis_guide.md cpuset_comment_fix_backport_analysis.md
+csiphy_x1e80100_backport_analysis.md
+dcn315_smu_indirect_register_access_analysis.md
+drm_dp_helper_dpcd_refactoring_backport_analysis.md
+drm_format_helper_generic_8bit_conversion_backport_analysis.md
+es8375_codec_driver_backport_analysis.md expected_findings_summary.md
+hdmi_read_request_analysis.md kernel_analysis_commands.sh
+kselftest_harness_teardown_metadata_backport_analysis.md linux-kernel
+mediatek_vcodec_h264_backport_analysis.md
+pidfd_open_kselftest_harness_compatibility_analysis.md
+qualcomm_camss_bus_type_backport_analysis.md
+selftests_harness_libatomic_backport_analysis.md
+sphinx_version_compatibility_backport_analysis.md
+spi_sh_msiof_grpmask_backport_analysis.md
+spi_sh_msiof_sitmdr2_sirmdr2_bitfield_conversion_backport_analysis.md
+sta2x11_removal_analysis.md test_unused_param.c test_unused_param.o
+ti_bridge_encoder_crtc_refactoring_backport_analysis.md
+xe_driver_flr_vf_restriction_analysis.md
+xe_firmware_per_gt_backport_analysis.md
+xe_sriov_logging_backport_analysis.md CPU comes back online. See
+irq_startup_managed(). + linux-kernel/ + desc->depth++; ``` This
+preserves the original disable state instead of overwriting it. ### 2.
+**New irq_startup_managed() Function**: ```c +void
+irq_startup_managed(struct irq_desc *desc) +{ + /bin /bin.usr-is-merged
+/boot /dev /etc /home /init /lib /lib.usr-is-merged /lib64 /lost+found
+/media /mnt /opt /proc /root /run /sbin /sbin.usr-is-merged /snap /srv
+/sys /tmp /usr /var + amd_display_timing_generator_analysis.md
+amd_doorbell_analysis_framework.md
+amd_gpu_documentation_backport_analysis.md amd_si_chip_analysis.md
+amdgpu_csb_analysis.md amdgpu_mqd_prop_backport_analysis.md
+analogix_dp_backport_analysis.md cgroup_rstat_analysis.sh
+cgroup_rstat_analysis_guide.md cpuset_comment_fix_backport_analysis.md
+csiphy_x1e80100_backport_analysis.md
+dcn315_smu_indirect_register_access_analysis.md
+drm_dp_helper_dpcd_refactoring_backport_analysis.md
+drm_format_helper_generic_8bit_conversion_backport_analysis.md
+es8375_codec_driver_backport_analysis.md expected_findings_summary.md
+hdmi_read_request_analysis.md kernel_analysis_commands.sh
+kselftest_harness_teardown_metadata_backport_analysis.md linux-kernel
+mediatek_vcodec_h264_backport_analysis.md
+pidfd_open_kselftest_harness_compatibility_analysis.md
+qualcomm_camss_bus_type_backport_analysis.md
+selftests_harness_libatomic_backport_analysis.md
+sphinx_version_compatibility_backport_analysis.md
+spi_sh_msiof_grpmask_backport_analysis.md
+spi_sh_msiof_sitmdr2_sirmdr2_bitfield_conversion_backport_analysis.md
+sta2x11_removal_analysis.md test_unused_param.c test_unused_param.o
+ti_bridge_encoder_crtc_refactoring_backport_analysis.md
+xe_driver_flr_vf_restriction_analysis.md
+xe_firmware_per_gt_backport_analysis.md
+xe_sriov_logging_backport_analysis.md Only start it up when the disable
+depth is 1, so that a disable, +
+amd_display_timing_generator_analysis.md
+amd_doorbell_analysis_framework.md
+amd_gpu_documentation_backport_analysis.md amd_si_chip_analysis.md
+amdgpu_csb_analysis.md amdgpu_mqd_prop_backport_analysis.md
+analogix_dp_backport_analysis.md cgroup_rstat_analysis.sh
+cgroup_rstat_analysis_guide.md cpuset_comment_fix_backport_analysis.md
+csiphy_x1e80100_backport_analysis.md
+dcn315_smu_indirect_register_access_analysis.md
+drm_dp_helper_dpcd_refactoring_backport_analysis.md
+drm_format_helper_generic_8bit_conversion_backport_analysis.md
+es8375_codec_driver_backport_analysis.md expected_findings_summary.md
+hdmi_read_request_analysis.md kernel_analysis_commands.sh
+kselftest_harness_teardown_metadata_backport_analysis.md linux-kernel
+mediatek_vcodec_h264_backport_analysis.md
+pidfd_open_kselftest_harness_compatibility_analysis.md
+qualcomm_camss_bus_type_backport_analysis.md
+selftests_harness_libatomic_backport_analysis.md
+sphinx_version_compatibility_backport_analysis.md
+spi_sh_msiof_grpmask_backport_analysis.md
+spi_sh_msiof_sitmdr2_sirmdr2_bitfield_conversion_backport_analysis.md
+sta2x11_removal_analysis.md test_unused_param.c test_unused_param.o
+ti_bridge_encoder_crtc_refactoring_backport_analysis.md
+xe_driver_flr_vf_restriction_analysis.md
+xe_firmware_per_gt_backport_analysis.md
+xe_sriov_logging_backport_analysis.md hotunplug, hotplug sequence does
+not end up enabling it during + amd_display_timing_generator_analysis.md
+amd_doorbell_analysis_framework.md
+amd_gpu_documentation_backport_analysis.md amd_si_chip_analysis.md
+amdgpu_csb_analysis.md amdgpu_mqd_prop_backport_analysis.md
+analogix_dp_backport_analysis.md cgroup_rstat_analysis.sh
+cgroup_rstat_analysis_guide.md cpuset_comment_fix_backport_analysis.md
+csiphy_x1e80100_backport_analysis.md
+dcn315_smu_indirect_register_access_analysis.md
+drm_dp_helper_dpcd_refactoring_backport_analysis.md
+drm_format_helper_generic_8bit_conversion_backport_analysis.md
+es8375_codec_driver_backport_analysis.md expected_findings_summary.md
+hdmi_read_request_analysis.md kernel_analysis_commands.sh
+kselftest_harness_teardown_metadata_backport_analysis.md linux-kernel
+mediatek_vcodec_h264_backport_analysis.md
+pidfd_open_kselftest_harness_compatibility_analysis.md
+qualcomm_camss_bus_type_backport_analysis.md
+selftests_harness_libatomic_backport_analysis.md
+sphinx_version_compatibility_backport_analysis.md
+spi_sh_msiof_grpmask_backport_analysis.md
+spi_sh_msiof_sitmdr2_sirmdr2_bitfield_conversion_backport_analysis.md
+sta2x11_removal_analysis.md test_unused_param.c test_unused_param.o
+ti_bridge_encoder_crtc_refactoring_backport_analysis.md
+xe_driver_flr_vf_restriction_analysis.md
+xe_firmware_per_gt_backport_analysis.md
+xe_sriov_logging_backport_analysis.md hotplug unconditionally. + linux-
+kernel/ + desc->depth--; + if (!desc->depth) + irq_startup(desc,
+IRQ_RESEND, IRQ_START_COND); +} ``` This provides proper depth-aware
+startup specifically for managed interrupts. ### 3. **IRQ_STARTUP_ABORT
+Case Update**: ```c case IRQ_STARTUP_ABORT: + desc->depth = 1;
+irqd_set_managed_shutdown(d); return 0; ``` Ensures consistent depth
+handling in abort cases. ### 4. **CPU Hotplug Integration**
+(kernel/irq/cpuhotplug.c): ```c - irq_startup(desc, IRQ_RESEND,
+IRQ_START_COND); + irq_startup_managed(desc); ``` Uses the new depth-
+aware function for managed interrupt restoration. ## Backport
+Suitability Assessment **Meets All Stable Criteria:** 1. **Fixes
+Important Bug**: ✅ Corrects interrupt enable/disable balance corruption
+2. **Small & Contained**: ✅ Minimal changes confined to IRQ subsystem 3.
+**Low Regression Risk**: ✅ Only affects managed interrupts during CPU
+hotplug 4. **No New Features**: ✅ Pure bug fix, no architectural changes
+5. **Critical Subsystem**: ✅ IRQ handling is fundamental to system
+stability **Similar Pattern Match**: This closely resembles Similar
+Commit #3 and #5 (both marked YES) which also fix managed interrupt CPU
+hotplug issues with surgical changes to preserve state across hotplug
+events. **Real-World Impact**: The bug can cause: - Server/datacenter
+systems using CPU hotplug for power management to experience interrupt
+handling issues - Multi-queue device drivers to malfunction after CPU
+hotplug cycles - Unbalanced IRQ state leading to system instability The
+fix is well-contained, addresses a clear functional bug with user-
+visible symptoms, and follows established patterns for stable backports
+in the IRQ subsystem.
 
- .../media/cec/usb/extron-da-hd-4k-plus/extron-da-hd-4k-plus.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ kernel/irq/chip.c       | 22 +++++++++++++++++++++-
+ kernel/irq/cpuhotplug.c |  2 +-
+ kernel/irq/internals.h  |  1 +
+ 3 files changed, 23 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/cec/usb/extron-da-hd-4k-plus/extron-da-hd-4k-plus.c b/drivers/media/cec/usb/extron-da-hd-4k-plus/extron-da-hd-4k-plus.c
-index cfbfc4c1b2e67..41d019b01ec09 100644
---- a/drivers/media/cec/usb/extron-da-hd-4k-plus/extron-da-hd-4k-plus.c
-+++ b/drivers/media/cec/usb/extron-da-hd-4k-plus/extron-da-hd-4k-plus.c
-@@ -1002,8 +1002,8 @@ static int extron_cec_adap_transmit(struct cec_adapter *adap, u8 attempts,
- 				    u32 signal_free_time, struct cec_msg *msg)
+diff --git a/kernel/irq/chip.c b/kernel/irq/chip.c
+index 36cf1b09cc847..ab2bf0de34223 100644
+--- a/kernel/irq/chip.c
++++ b/kernel/irq/chip.c
+@@ -223,6 +223,19 @@ __irq_startup_managed(struct irq_desc *desc, const struct cpumask *aff,
+ 		return IRQ_STARTUP_ABORT;
+ 	return IRQ_STARTUP_MANAGED;
+ }
++
++void irq_startup_managed(struct irq_desc *desc)
++{
++	/*
++	 * Only start it up when the disable depth is 1, so that a disable,
++	 * hotunplug, hotplug sequence does not end up enabling it during
++	 * hotplug unconditionally.
++	 */
++	desc->depth--;
++	if (!desc->depth)
++		irq_startup(desc, IRQ_RESEND, IRQ_START_COND);
++}
++
+ #else
+ static __always_inline int
+ __irq_startup_managed(struct irq_desc *desc, const struct cpumask *aff,
+@@ -290,6 +303,7 @@ int irq_startup(struct irq_desc *desc, bool resend, bool force)
+ 			ret = __irq_startup(desc);
+ 			break;
+ 		case IRQ_STARTUP_ABORT:
++			desc->depth = 1;
+ 			irqd_set_managed_shutdown(d);
+ 			return 0;
+ 		}
+@@ -322,7 +336,13 @@ void irq_shutdown(struct irq_desc *desc)
  {
- 	struct extron_port *port = cec_get_drvdata(adap);
--	char buf[CEC_MAX_MSG_SIZE * 3 + 1];
--	char cmd[CEC_MAX_MSG_SIZE * 3 + 13];
-+	char buf[(CEC_MAX_MSG_SIZE - 1) * 3 + 1];
-+	char cmd[sizeof(buf) + 14];
- 	unsigned int i;
+ 	if (irqd_is_started(&desc->irq_data)) {
+ 		clear_irq_resend(desc);
+-		desc->depth = 1;
++		/*
++		 * Increment disable depth, so that a managed shutdown on
++		 * CPU hotunplug preserves the actual disabled state when the
++		 * CPU comes back online. See irq_startup_managed().
++		 */
++		desc->depth++;
++
+ 		if (desc->irq_data.chip->irq_shutdown) {
+ 			desc->irq_data.chip->irq_shutdown(&desc->irq_data);
+ 			irq_state_set_disabled(desc);
+diff --git a/kernel/irq/cpuhotplug.c b/kernel/irq/cpuhotplug.c
+index 15a7654eff684..3ed5b15927355 100644
+--- a/kernel/irq/cpuhotplug.c
++++ b/kernel/irq/cpuhotplug.c
+@@ -219,7 +219,7 @@ static void irq_restore_affinity_of_irq(struct irq_desc *desc, unsigned int cpu)
+ 		return;
  
- 	if (port->disconnected)
+ 	if (irqd_is_managed_and_shutdown(data))
+-		irq_startup(desc, IRQ_RESEND, IRQ_START_COND);
++		irq_startup_managed(desc);
+ 
+ 	/*
+ 	 * If the interrupt can only be directed to a single target
+diff --git a/kernel/irq/internals.h b/kernel/irq/internals.h
+index b0290849c3956..7111747ecb866 100644
+--- a/kernel/irq/internals.h
++++ b/kernel/irq/internals.h
+@@ -87,6 +87,7 @@ extern void __enable_irq(struct irq_desc *desc);
+ extern int irq_activate(struct irq_desc *desc);
+ extern int irq_activate_and_startup(struct irq_desc *desc, bool resend);
+ extern int irq_startup(struct irq_desc *desc, bool resend, bool force);
++extern void irq_startup_managed(struct irq_desc *desc);
+ 
+ extern void irq_shutdown(struct irq_desc *desc);
+ extern void irq_shutdown_and_deactivate(struct irq_desc *desc);
 -- 
 2.39.5
 
