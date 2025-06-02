@@ -4,113 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90EB9C5B549
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Jun 2025 09:43:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63111C54FB3
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Jun 2025 10:58:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1kL4Sa/nUkoif7ssgzT0yKC1eN4l+RqW+mCMdQw4RfY=; b=wubxvqmSsNIchY+SuDYi+3Fbho
-	foeWkUwl0DRlXIYHdiMSZ0ON9ZAZqk+14RjZJn1oJNCdS4m3S9d+VFQorVL+5kZHqWKCu2YWQV6T/
-	pJroukIHtwRnkAUPH8PNcsF0aHWq2LAzfCZ7p3ceXPfqSyK0lyTlMZYnMjxSeLc8mB5/m8ZRTclqm
-	9EyazWBHyVVe0XlKr0YRcGM3BTmz7yb4BMBmL74lm5RyrmPWvppDZoACEiES1GiA85YQ1t37Nangd
-	zfM5jNgEmLvMeMdawPvSHWYJ1WXcMlfDjS4oLwI5utnJk2PbVXc48R2BEaGY+oDddNCGX+YF+i3Cg
-	tbKbpSMQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=kDCAKzzp4kJ7326lYSzAlqb4H4Rzowzo8Ib7HjjuGOI=; b=APXUyQ8/FfSL72
+	vGX3UGDQeMhL+kuLv9XyzWDWg6hGNX76bTLNR4AteyeevCCrStCRU4K6BK4jBdNPc8enKBEGMnz65
+	1LUsP7AX+wznvBe3EfGCofTaX8i/UqBdOMYnNkP6K40uKAAnr5cQ6ci2nCUFREM7IqC/7p6WWAlV7
+	iBP868LBbtfVl0UliL2iSpfpr1SQq+qqL2Nw22Rh62AZwbsxXegC9C/7p3Juje1BloROjEK2LUedm
+	S/4RAoDbD0Om879S60BjJdpqFlHFVdlPHL2Yn8mDFbyXQahZUNaZK226Lzv5zybz3fqd2xUSfZyME
+	ODfpqkVVmzwRosNTyBGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uM1hK-000000075q8-0Zre;
-	Mon, 02 Jun 2025 09:43:14 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1uM2rs-00000007F6Y-1pEE;
+	Mon, 02 Jun 2025 10:58:12 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uM1dQ-000000075OZ-2v8x;
-	Mon, 02 Jun 2025 09:39:13 +0000
+	id 1uM2pg-00000007Elq-3UCf;
+	Mon, 02 Jun 2025 10:55:56 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id F1D22A4FF0C;
-	Mon,  2 Jun 2025 09:39:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B45FCC4CEEB;
-	Mon,  2 Jun 2025 09:39:07 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 3358C61154;
+	Mon,  2 Jun 2025 10:55:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A37ACC4CEF1;
+	Mon,  2 Jun 2025 10:55:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1748857151;
-	bh=lyYNygr33eoeswlcOm02s4h7rjdaOk6qW/QLqNcdbDs=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Lem9UO44d3wdJK+dKzy86mY8u5f1xJerl1sk7nPdArUDROi4WgdaAMQ/KB0MagqwC
-	 zV7g1erp56QqcEXXECMPBVQERHd5HAJHsoxtzFBLRwVkJ1MyHHHMMFfEa/GiK+63Mo
-	 ET2i4197y6XjyTQydTsKtYRTI8QWMSvGdfL7vXTtX0aE1VmwEU+RmDjhMcLod/xxo6
-	 NAX5d3asM47Oe5xoTTAR0iV3rxKlyS+M9a/GPCeEjjjkg5MmWJAoXUvORAELyd1uk2
-	 y25bLmJa1EL/wOKFL1vDqkVER0OXC2a+BrSTzaXtDNwEwQK96uGnf9oazKuOZUWeT8
-	 IyZNlowIzUXFQ==
-Message-ID: <cd28cf31-0b68-4e7a-8709-e29b177a3619@kernel.org>
-Date: Mon, 2 Jun 2025 11:39:05 +0200
+	s=k20201202; t=1748861756;
+	bh=CNEuqINln8xoGOt137lfp3l1+JiSb5Impr5Rqb39m34=;
+	h=From:Subject:Date:To:Cc:From;
+	b=pPuWMH/ztPzZjmTHRmB9cntwUBLPXObLyPRCaE58XESTgG2SsVymcgOdcDVeqdvpI
+	 IH6KWlt8Z8mhBTzRdEM+dOseRpNfyB5RexRmwOxPdAnuSFXil2dgt/XTy9tWpcuUXm
+	 QFWg6/vI/MZSQTZNGf0npGy7ZKP1Z4J1yHm3gvOkn7U8NiTI0EjjdsUP9NcxKu+qx1
+	 f1jh4juiXrPZJ4NggIM32ttWIzauftSdi4E6mTpsNZuN1v9OWEux/ax77GemyD7Xyj
+	 uGMtR2OSH2gcWdzeY62XtFKi8Zqd5BhEG+T4iPoE4QWWN/UVaiys4acjHyl/ko+S19
+	 jQiERfNeivDqA==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH net v2 0/3] net: airoha: Fix IPv6 hw acceleration
+Date: Mon, 02 Jun 2025 12:55:36 +0200
+Message-Id: <20250602-airoha-flowtable-ipv6-fix-v2-0-3287f8b55214@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [1/5] clk: mt8189: Porting driver for clk
-To: "irving.ch.lin" <irving-ch.lin@mediatek.com>,
- Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
- <linux@roeck-us.net>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, nfraprado@collabora.com
-Cc: angelogioacchino.delregno@collabora.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
- linux-pm@vger.kernel.org, netdev@vger.kernel.org,
- linux-mediatek@lists.infradead.org,
- Irving lin <irving-ch.lin@mediatek.corp-partner.google.com>
-References: <20250602083624.1849719-1-irving-ch.lin@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20250602083624.1849719-1-irving-ch.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250602_023912_879501_2ACF93FD 
-X-CRM114-Status: UNSURE (   6.77  )
-X-CRM114-Notice: Please train this message.
+X-B4-Tracking: v=1; b=H4sIACiDPWgC/42NQQ6CMBBFr0Jm7ZhSLQVW3sOwqDDARELJlFQN4
+ e5WTuDyvZ///waBhClAnW0gFDmwnxPoUwbt6OaBkLvEoJU2yugKHYsfHfaTf63uMaV8iQX2/Mb
+ KFi5vqVRkO0j9RSjpY/veJB45rF4+x1XMf/af1ZijQttaMhdHqjTX25NkpunsZYBm3/cv6m3CK
+ 8MAAAA=
+X-Change-ID: 20250529-airoha-flowtable-ipv6-fix-976a1ce80e7d
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Michal Kubiak <michal.kubiak@intel.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+X-Mailer: b4 0.14.2
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,19 +75,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 02/06/2025 10:36, irving.ch.lin wrote:
-> From: Irving lin <irving-ch.lin@mediatek.corp-partner.google.com>
-> 
-> 1. Add mt8189 clk driver
-> 2. Fix mux failed
-> 3. Add apll12_div_tdmout_b
-> 4. Add disable-unused configs
+Fix IPv6 hw acceleration in bridge mode resolving ib2 and
+airoha_foe_mac_info_common overwrite in
+airoha_ppe_foe_commit_subflow_entry routine.
+Introduce UPDMEM source-mac table used to set source mac address for
+L3 IPv6 hw accelerated traffic.
 
+---
+Changes in v2:
+- improve commit logs
+- move smac_id configuration for L2 mode in a dedicated patch
+- Link to v1: https://lore.kernel.org/r/20250529-airoha-flowtable-ipv6-fix-v1-0-7c7e53ae0854@kernel.org
 
-Please do not send the same patch multiple times. This makes reviewing
-difficult and causes people to miss discussion. You received feedback
-already.
+---
+Lorenzo Bianconi (3):
+      net: airoha: Initialize PPE UPDMEM source-mac table
+      net: airoha: Fix IPv6 hw acceleration in bridge mode
+      net: airoha: Fix smac_id configuration in bridge mode
+
+ drivers/net/ethernet/airoha/airoha_eth.c  |  2 ++
+ drivers/net/ethernet/airoha/airoha_eth.h  |  1 +
+ drivers/net/ethernet/airoha/airoha_ppe.c  | 54 ++++++++++++++++++++++++-------
+ drivers/net/ethernet/airoha/airoha_regs.h | 10 ++++++
+ 4 files changed, 55 insertions(+), 12 deletions(-)
+---
+base-commit: 558428921eddbd5083fe8116e31b8af460712f44
+change-id: 20250529-airoha-flowtable-ipv6-fix-976a1ce80e7d
 
 Best regards,
-Krzysztof
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
+
 
