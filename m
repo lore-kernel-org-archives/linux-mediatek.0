@@ -4,62 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73E27C5AD49
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Jun 2025 11:21:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EA0FC61CE7
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Jun 2025 13:02:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YC0EqCOZh+bGnAS0g2+hJzdV0xxtzSuWEz6dOnQ4Dp0=; b=nHD47YI2XTjdB1fhGDt3dwAdsv
-	N8J9KShbHIEAcUkmke2ltvPMgI1t3nXUidf4VjCq8TDso8TIJFrFKhBQyTuDBCE85yyCZ2EQ0Xg/J
-	Oxls+qlweT7p8ZOa0f/0VhriLJHDa/VXDPac4FWYxEuXODP2MUhBfOurjH6thWwZ6m4aOVADx2wY4
-	rto8J3avdrReNN13UxsUpJyHDj15H4TB6aLK1WkD+60J3oxInIAsirVG4GQf31kxotDw3+BcB5VAx
-	J8DuFOSq6YLx8g3gmr2nLF0vsdzJPspWSRDD3NDrHV1md2IBhR1/SStC+WjD+dkXyCt/XpDTTiCVi
-	68BlHlNA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=oZ32ri9UvCA0ZFnxXbOjw3nZYx8ajIN2VWmbh80DLjU=; b=nPKNll85xO0aG/
+	6fKdtWeTF6OUgH6ID9oZVY8xqjNHHFzcylgtthpQ1ku7dkIo8iTGSJ9xwBdyZxZ2zcwpKANB0/TGT
+	5pVs5nqtduLnDsuCV+L5dN08xs9iToAi05XIfFXGyv5+93g8NT+FLLT2noVEm6mHmai+FCnaz9Pcx
+	yMcF3CesyjO7zQF9wFi/0MB/2AmA6Q/kQoFVjCk8FJlOxyEP0GeGTXlqy10xaWr06QHi6RNS5b8Sb
+	z94aggVxAaZFe1oTB4HJfmc73UNDPjaI1RbFhA4XQaydbhRa6plpbwxM41PcKY81ATh9cWdGP6dZl
+	KZFKm4NMRo+CMvtUU6VA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uM3EP-00000007Gq0-3Hfn;
-	Mon, 02 Jun 2025 11:21:29 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uM4oK-00000007PmI-1b6U;
+	Mon, 02 Jun 2025 13:02:40 +0000
+Received: from forward501a.mail.yandex.net ([178.154.239.81])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uM3EP-00000007Gpc-0Wmg
-	for linux-mediatek@lists.infradead.org;
-	Mon, 02 Jun 2025 11:21:29 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 8F5DE6111C;
-	Mon,  2 Jun 2025 11:21:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9998EC4CEED;
-	Mon,  2 Jun 2025 11:21:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1748863288;
-	bh=YC0EqCOZh+bGnAS0g2+hJzdV0xxtzSuWEz6dOnQ4Dp0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=lWIjQUl9Nbkx5Plohd4MnWjQlnxZ+y5p0geoc3A/PsyKEIv0lPMjTdAgImsBUVKS5
-	 txK5tdfgiNpQy35l6h2zzzLQBcSVdTfmyuzE6kD+sDw7POHhw4p3nO8o+vw7I2gymx
-	 jiiZXdtl6qtNnCReOjPyWJpVhXbjFr7TALEbf66ySRy/JWth7krcg/yGi02JC/WUIP
-	 NzKQ0GymQ5dcou5zXiYsJvYFfHORbtlKl2TIffHCa6PkDWtf/ljigZ+G3p+lHLNkj3
-	 MOlrVTLeSzv24oOgPFlDGWD1U2JLvgrDD8zAD52DcOKwTO/c+ZZPOdbQCqMSqYMt2b
-	 8axp7Hq+/kwyw==
-Date: Mon, 2 Jun 2025 12:21:23 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Xose Vazquez Perez <xose.vazquez@gmail.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	SOUND ML <linux-sound@vger.kernel.org>,
-	MEDIATEK ML <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH] ASoC: mt6660: delete MODULE_VERSION
-Message-ID: <bd02757e-458b-4a3c-9194-7d7bbbd318f5@sirena.org.uk>
-References: <20250531155950.101164-1-xose.vazquez@gmail.com>
+	id 1uM4m7-00000007PXa-2n3u;
+	Mon, 02 Jun 2025 13:00:26 +0000
+Received: from mail-nwsmtp-smtp-production-main-74.iva.yp-c.yandex.net (mail-nwsmtp-smtp-production-main-74.iva.yp-c.yandex.net [IPv6:2a02:6b8:c0c:160e:0:640:a44a:0])
+	by forward501a.mail.yandex.net (Yandex) with ESMTPS id 89D6961677;
+	Mon,  2 Jun 2025 16:00:19 +0300 (MSK)
+Received: by mail-nwsmtp-smtp-production-main-74.iva.yp-c.yandex.net (smtp/Yandex) with ESMTPSA id F0aS6QbLoa60-v1prNre5;
+	Mon, 02 Jun 2025 16:00:18 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0upti.me; s=mail;
+	t=1748869218; bh=oZ32ri9UvCA0ZFnxXbOjw3nZYx8ajIN2VWmbh80DLjU=;
+	h=From:In-Reply-To:Cc:Date:References:To:Subject:Message-ID;
+	b=EzcWINEr1YcBsyckPUR3nlN3K+/LMzSaQKkMLqlbcJj6CrPBngXx/eDKc18C6WbJ+
+	 RJztATJ/WAvys8DZNnSxo0MbSn+9ezY18d5m9s1x9LMmcGUTwkR4lIQP67AAm6ZkCd
+	 Gv5gMnOxTZ5Oaa0NtUAkqX5gKrFUfqZi7JSa191U=
+Authentication-Results: mail-nwsmtp-smtp-production-main-74.iva.yp-c.yandex.net; dkim=pass header.i=@0upti.me
+Message-ID: <2894a781-4d4b-4e3c-9f4e-7c1f04122f8a@0upti.me>
+Date: Mon, 2 Jun 2025 16:00:14 +0300
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="BITvhzOI4tGAp1//"
-Content-Disposition: inline
-In-Reply-To: <20250531155950.101164-1-xose.vazquez@gmail.com>
-X-Cookie: Knowledge is power.
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH RFC net-next] net: phylink: always config mac for
+ (delayed) phy
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+References: <20250107123615.161095-1-ericwouds@gmail.com>
+ <Z30iUj6DE9-fRp0n@shell.armlinux.org.uk>
+ <4b9b2a9a-061b-43ad-b402-a49aee317f41@gmail.com>
+ <Z31CJS1YUvPGiEXs@shell.armlinux.org.uk>
+ <98234080-946e-4b36-832f-113b185e7bca@gmail.com>
+ <Z3-Tz5WdLCat91vm@shell.armlinux.org.uk>
+ <9cc913d7-7e5b-4b6c-886c-ca9778c3f970@0upti.me>
+ <aD1lRha-enQ9Pw0g@shell.armlinux.org.uk>
+Content-Language: en-US
+From: Ilya K <me@0upti.me>
+In-Reply-To: <aD1lRha-enQ9Pw0g@shell.armlinux.org.uk>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250602_060023_888498_41A63E27 
+X-CRM114-Status: GOOD (  19.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,46 +73,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, Daniel Golle <daniel@makrotopia.org>, bridge@lists.linux.dev, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, coreteam@netfilter.org, netfilter-devel@vger.kernel.org, Eric Woudstra <ericwouds@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Heiner Kallweit <hkallweit1@gmail.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 2025-06-02 11:48, Russell King (Oracle) wrote:
+> On Mon, Jun 02, 2025 at 10:19:22AM +0300, Ilya K wrote:
+>> On 2025-01-09 12:15, Russell King (Oracle) wrote:
+>>> On Thu, Jan 09, 2025 at 09:56:17AM +0100, Eric Woudstra wrote:
+>>> I'll look at what we can do for this today.
+>> Hey folks, don't really want to necrobump this, but the original hack patch is the only way I can get my weirdo Realtek (noticing a pattern here) GPON modem-on-a-stick to probe at 2500base-x on a BPi-R4. I've actually tracked down the issue myself and wrote basically the same patch first :( Is there anything I can do (with my extremely limited phylink understanding) to help move this forward so other people don't have to suffer like I did?
+> 
+> There were two issues that were identified. The first was that when in
+> 2500Base-X mode, the PCS wasn't reporting link-up. That was addressed
+> by the patch series:
+> 
+> Z4TbR93B-X8A8iHe@shell.armlinux.org.uk
+> 
+> then, the replacement for Eric's patch was:
+> 
+> E1tYhxp-001FHf-Ac@rmk-PC.armlinux.org.uk
+> 
+> So the problem should be solved with these applied, as when the PHY is
+> attached, "changed" will always be true, which is in effect what Eric's
+> patch was doing, but in a cleaner way.
+> 
+> Please confirm that you have all six patches applied.
+> 
 
---BITvhzOI4tGAp1//
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+That's weird, because I do have all the patches applied. I think this may have been broken by the pcs_inband_caps changes, because without the patch I'm just getting "autoneg setting not compatible with PCS", after which it bails, when it should really reconfigure the MAC instead.
 
-On Sat, May 31, 2025 at 05:59:49PM +0200, Xose Vazquez Perez wrote:
-
-Why?
-
-> Cc: Liam Girdwood <lgirdwood@gmail.com>
-> Cc: Mark Brown <broonie@kernel.org>
-> Cc: Jaroslav Kysela <perex@perex.cz>
-> Cc: Takashi Iwai <tiwai@suse.com>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Cc: SOUND ML <linux-sound@vger.kernel.org>
-> Cc: MEDIATEK ML <linux-mediatek@lists.infradead.org>
-> ---
-
-You've not provided a Signed-off-by for this so I can't do anything with
-it, please see Documentation/process/submitting-patches.rst for details
-on what this is and why it's important.
-
---BITvhzOI4tGAp1//
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmg9iTMACgkQJNaLcl1U
-h9B9ggf+Loveli4/RDFRqTHaFC6/CBG63rebesdMGUnYUtvOmCxl+57fKdkjzLqn
-Aa604mlfThBqgiFrW1LUlEGXohRq9aD/EBfKxwn64VDq5e2kDtVnKozr2FcnD8+6
-tR3TSwvdvrq1G2sWahRR09v176jweqbdUVd/4q3LojhKCT3arXdL0EZtvMQMZVLo
-p4FUMAH2ZpnFVOusr074RyX2bmeZl/toiiNAligp3N0GlhJXU9PcQAA0USYs38zq
-5hwS3sejJpnP7D8DPceYrzisKywf80nK2+RSHYObUvcQSNwrySK6Y8pAkoI6NB5c
-CtQm4xzQGAW9F5b/+v7sfFAlDRkVvg==
-=Jazz
------END PGP SIGNATURE-----
-
---BITvhzOI4tGAp1//--
+(resending because I replied instead of reply-all by accident)
 
