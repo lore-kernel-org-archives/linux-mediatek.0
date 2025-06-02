@@ -4,91 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C113C54FB3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Jun 2025 15:50:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 442E6C5AD49
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Jun 2025 17:55:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=x1dHqucytNvJE5sOBJHQ1JgixIBWN/66qkZtbhARHsQ=; b=Eoh6ZHbqiLgb24bQRdL6kjyTQM
-	Ri09Jf7yfwpwVSMGhp6NuSOxa4C8UEHi1GU0Hc2M4BoYJjKpBw8N76pRhIYIetkT4m/aZg5vtivze
-	Hx/AUp3W+gDCsqNH6LcNrenZUX8ZMQEFKd4qO453cRyMP+78cg1Cx9tiZPSzai7RffEhkR3WW+3yE
-	KRUt+ZolSXoFkXxG/guANWu9i5X3wB+aIYkh5RiY7jwsj8ACTZVEq3L3HLd7TSRKLM15uKTW3QkYG
-	Q2WqQT44vfALVdMIqPqryifxYo0P4LP/EMTsbYFtpwxUOIUeuKHw1ZiWUuM9DiW/jED4IrcZkfoBn
-	387VFg0g==;
+	bh=cmYfIkVp2GhB7UtadlrV/W7IP6KSNE8PR/uzTHE33Mo=; b=KqhvZNLjIqhhcDuHwRzZmANDS9
+	YvBICGesczyvjGw4A22Lqhjl2W616KDZz1e35g9MSdG1KtpFJwlpcMnzoTP+CYcmy+KCi0QFD/SCa
+	BUCmb1vmN26VCuQyNETyP1/VonxNeHVbIpFWiM2sUcUsNJEMV3yxJ2b/uAzp1NW7a/7TWcV21IOuB
+	o3nsLVdBJwn7veRyw7ZHPc+eMan1DqpHsae+FAhqsU9mlu3FBJjwJxIqhW2eKVFo0EDDegjTKIY4A
+	UbIJkVttTleU/fHXa1lCwB2ft6MWzNX2vkMyZL8kOhQSwOs+OR8IxP93qvMNFq4uXHQU3/oEJAsRr
+	bzdHkNDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uM7R3-00000007ovo-1qEv;
-	Mon, 02 Jun 2025 15:50:49 +0000
-Received: from mail-qt1-x835.google.com ([2607:f8b0:4864:20::835])
+	id 1uM9Na-000000088jv-3Ypz;
+	Mon, 02 Jun 2025 17:55:22 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uM7Ee-00000007mik-0Rlh
-	for linux-mediatek@lists.infradead.org;
-	Mon, 02 Jun 2025 15:38:01 +0000
-Received: by mail-qt1-x835.google.com with SMTP id d75a77b69052e-4a43afb04a7so23825341cf.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 02 Jun 2025 08:37:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1748878678; x=1749483478; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=x1dHqucytNvJE5sOBJHQ1JgixIBWN/66qkZtbhARHsQ=;
-        b=aX0JS/0NtJOzW0yjmpZIFIfdW9q10WWFp037TDMkpZ8W65bEpF/1HdS+wea94Y7tvk
-         kkmHsaSP3FAFJ8BTmmspKhDWGwrVnrMoETCVSDCpLXE6x5e7Emul0kq4NhVor1q1e1Jy
-         ldVv507BW0mXdK548acDsE2TqlnFQy1TbgyYrmismQd/ooz2AraBF7MZZoJ6gz1IdEG5
-         chBICLEXjUo2roxxHlubst2/C/9MZE6q9i1UHG5Jm8gAl5JR37Ce0aZ8GtydlrzJaycb
-         Rnhzs9LLLVDKcFegb5Nl8QexspU+Axl7k+zNOIWFZzvPWnKrxh49gPYKBwGKQOVKNBVh
-         Q6Zw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1748878678; x=1749483478;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=x1dHqucytNvJE5sOBJHQ1JgixIBWN/66qkZtbhARHsQ=;
-        b=LixZzIgzRm/7syZtBb3STwLQ6SpaikHGfpUZbf8GKj18gXy8zVeMjzTPXmqMmhHVt5
-         OT8our9JYBPqsd4YaH8gRJG3qNnPcrNFcMyWV+slmiESZoBAsVgp5ha3+eQNLKYw2N6o
-         L3aieDx1/3GQrMKwgjpqcj0G4IBKHW0ygePnQcVtw3pNoMwDPN7mPX0UHWr0hsffMFI/
-         77yXlPgX2+WwnD9GBSRfUt8ZUEOKuDr3Eab0xy3Tew5suNn37GHumx6T11A/hsCG11sQ
-         LHDlBfX02wMD6R1URtXUwTXr9glFBfDC3fKw3ayGcvpk+cJaQHbZ09oC1ArRUyA7Avl6
-         4jCg==
-X-Forwarded-Encrypted: i=1; AJvYcCVnzrKP6OfbqFK/lHoEsGmO3E3/N+Mlzyd2cf4PA+u4wBpyuwT+SBzpO+QW2o/4UYCS+7YXXR3J29kpXOTsvQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyuOjYb2VS6uCisbr/H4VEgW/Mb6AEj89kfgHsRi0Ry9DyrHqpd
-	f/jjRuHgD0VsZXg7eYa4xXFcmG5ktGZsiOCkcB1OUgTW3xQeJcTBsLwqFvySA5cUoUs=
-X-Gm-Gg: ASbGncu+G5tAGA1aLuozWIum8dpWTrQ/UeI7gDq/cLT7eVnWoqBU+fKBBmTaZ8OxrT+
-	LBOEwGGsXUib2jwjrlzYDfGSZ4QCa+YehmbPlSJfgVfgm7ViKSQYNI34noCikWKDsB6RqR9SoLf
-	w4c7E53odl1Iu/2aiW30dJeDRmLfLPQreZJLHTJ1DnRiMd/0ZUz6BfUMZlQl6BoJXJ/ECh/N0eO
-	4CoeuNTidSpgQITavQuHsdBbBD9cakGq81+cb5eLK1Lq++kiMFjxdSvIixR2f+rYkAVZwK0JmKx
-	4RvFELjLgz2olDxJCLUZeEkkJnU6L8cb/Mc7tifm5MfTycmeN7kA0Tyf
-X-Google-Smtp-Source: AGHT+IFAxvbyts/4W1PU88jgJRJyPWsVyM/w1Qedjlhc5oIe8j+5+JXf7JzKMu2VMp0D7TLMJ22XCQ==
-X-Received: by 2002:a05:622a:5598:b0:4a4:3d27:77a0 with SMTP id d75a77b69052e-4a4a5ec583fmr144502391cf.2.1748878677932;
-        Mon, 02 Jun 2025 08:37:57 -0700 (PDT)
-Received: from ?IPv6:2606:6d00:10:5285::5ac? ([2606:6d00:10:5285::5ac])
-        by smtp.gmail.com with ESMTPSA id d75a77b69052e-4a435772fb1sm56762721cf.8.2025.06.02.08.37.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 02 Jun 2025 08:37:57 -0700 (PDT)
-Message-ID: <01ee4dbe14917dff1e0d256dde6724f81a23ba4b.camel@ndufresne.ca>
-Subject: Re: [PATCH v6 17/20] media: platform: mtk-mdp3: Use
- cmdq_pkt_jump_rel() without shift_pa
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Jason-JH Lin <jason-jh.lin@mediatek.com>, Rob Herring <robh@kernel.org>,
-  Krzysztof Kozlowski	 <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Jassi Brar	 <jassisinghbrar@gmail.com>, Chun-Kuang
- Hu <chunkuang.hu@kernel.org>,  AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>
-Date: Mon, 02 Jun 2025 11:37:56 -0400
-In-Reply-To: <20250601173355.1731140-18-jason-jh.lin@mediatek.com>
-References: <20250601173355.1731140-1-jason-jh.lin@mediatek.com>
-	 <20250601173355.1731140-18-jason-jh.lin@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
+	id 1uM9Jv-000000087Vn-1lo6;
+	Mon, 02 Jun 2025 17:51:36 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id EE6E95C6171;
+	Mon,  2 Jun 2025 17:49:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 31608C4CEEB;
+	Mon,  2 Jun 2025 17:51:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1748886694;
+	bh=cmYfIkVp2GhB7UtadlrV/W7IP6KSNE8PR/uzTHE33Mo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Us3o10N3mDoMbCSp28Uu6+R2M+PcFrjvpFLmU4V48QpzqZuYYFbajcrfvegmAm/6l
+	 wFcF9khuS5iPLPQr5JncapQyk1ckfiipwXgBdv4/X77HuXojKwNhmX3rlXRFzDA8SZ
+	 hMIMnQd2Op3SqW7p891CXODxkSaQTbzvmOaWlnR+3FZ7qhvitOYYFc6OoBvt2D9THu
+	 GrMkpSQw0lffYM7zOI8gzpPqoDQaRQ6E7iQQZx5N0DFIMXNBye7QhiqDuF7ts59Zu8
+	 1WS81x8mfihD9QGIQbWgX707kQ0fMHX0OFh4+EWsczyqt29nHmdBq3bysJp5QiCjTt
+	 14Ab+/JlhkLmQ==
+Date: Mon, 2 Jun 2025 19:51:31 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Simon Horman <horms@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Michal Kubiak <michal.kubiak@intel.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net 1/2] net: airoha: Initialize PPE UPDMEM source-mac
+ table
+Message-ID: <aD3kozxODijtDEZi@lore-desk>
+References: <20250529-airoha-flowtable-ipv6-fix-v1-0-7c7e53ae0854@kernel.org>
+ <20250529-airoha-flowtable-ipv6-fix-v1-1-7c7e53ae0854@kernel.org>
+ <20250530180501.GQ1484967@horms.kernel.org>
 MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="+DvCR9HLpxO5M9dR"
+Content-Disposition: inline
+In-Reply-To: <20250530180501.GQ1484967@horms.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250602_083800_385009_B10E0A4A 
-X-CRM114-Status: GOOD (  17.62  )
+X-CRM114-CacheID: sfid-20250602_105135_501458_5CAB8DF4 
+X-CRM114-Status: GOOD (  16.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,80 +76,51 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Moudy Ho <moudy.ho@mediatek.com>, Xiandong Wang <xiandong.wang@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Paul-PL Chen <paul-pl.chen@mediatek.com>, Xavier Chang <xavier.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Sirius Wang <sirius.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
 
-Le lundi 02 juin 2025 =C3=A0 01:31 +0800, Jason-JH Lin a =C3=A9crit=C2=A0:
-> With the removal of the shift_pa parameter, cmdq_pkt_jump_rel_temp()
-> can be replaced by the new cmdq_pkt_jump_rel() without shift_pa.
+--+DvCR9HLpxO5M9dR
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+> On Thu, May 29, 2025 at 05:52:37PM +0200, Lorenzo Bianconi wrote:
+> > UPDMEM source-mac table is a key-value map used to store devices mac
+> > addresses according to the port identifier. UPDMEM source mac table is
+> > used during IPv6 traffic hw acceleration since PPE entries, for space
+> > constraints, do not contain the full source mac address but just the
+> > identifier in the UPDMEM source-mac table.
 >=20
-> Then, remove the cmdq_shift_pa variable in the mdp_dev structure for
-> each mbox client.
+> Hi Lorenzo,
 >=20
-> Fixes: ade176534112 ("soc: mediatek: cmdq: Add parameter shift_pa to cmdq=
-_pkt_jump()")
-> Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
-> ---
-> =C2=A0drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c | 2 +-
-> =C2=A0drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c | 2 --
-> =C2=A0drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h | 1 -
-> =C2=A03 files changed, 1 insertion(+), 4 deletions(-)
+> I think it would be nice to also mention a bit more clearly what (broken)
+> behaviour this fixes. Likewise for patch 2/2.
+
+Hi Simon,
+
+sure, I will do it in v2.
+
+Regards,
+Lorenzo
+
 >=20
-> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c b/drive=
-rs/media/platform/mediatek/mdp3/mtk-mdp3-
-> cmdq.c
-> index 7575ec376367..c35fe0e3a4d5 100644
-> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
-> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
-> @@ -638,7 +638,7 @@ static struct mdp_cmdq_cmd *mdp_cmdq_prepare(struct m=
-dp_dev *mdp,
-> =C2=A0		goto err_free_path;
-> =C2=A0	}
-> =C2=A0	cmdq_pkt_eoc(&cmd->pkt);
-> -	cmdq_pkt_jump_rel_temp(&cmd->pkt, CMDQ_INST_SIZE, mdp->cmdq_shift_pa[pp=
-_idx]);
-> +	cmdq_pkt_jump_rel(&cmd->pkt, CMDQ_INST_SIZE);
+> >=20
+> > Fixes: 00a7678310fe ("net: airoha: Introduce flowtable offload support")
+> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+>=20
+> ...
 
-Did I miss something or this reverts the change made in 15/20 ? I'm also
-unsure if its correct to ask for backports of this with Fixes tag. Isn't th=
-is
-for MT8196, a new board ?
+--+DvCR9HLpxO5M9dR
+Content-Type: application/pgp-signature; name=signature.asc
 
-Nicolas
+-----BEGIN PGP SIGNATURE-----
 
-> =C2=A0
-> =C2=A0	for (i =3D 0; i < num_comp; i++) {
-> =C2=A0		s32 inner_id =3D MDP_COMP_NONE;
-> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drive=
-rs/media/platform/mediatek/mdp3/mtk-mdp3-
-> core.c
-> index 8de2c8e4d333..2f8147481bd6 100644
-> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-> @@ -293,8 +293,6 @@ static int mdp_probe(struct platform_device *pdev)
-> =C2=A0			ret =3D PTR_ERR(mdp->cmdq_clt[i]);
-> =C2=A0			goto err_mbox_destroy;
-> =C2=A0		}
-> -
-> -		mdp->cmdq_shift_pa[i] =3D cmdq_get_shift_pa(mdp->cmdq_clt[i]->chan);
-> =C2=A0	}
-> =C2=A0
-> =C2=A0	init_waitqueue_head(&mdp->callback_wq);
-> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h b/drive=
-rs/media/platform/mediatek/mdp3/mtk-mdp3-
-> core.h
-> index 05cade1d098e..430251f63754 100644
-> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-> @@ -126,7 +126,6 @@ struct mdp_dev {
-> =C2=A0	u32					id_count;
-> =C2=A0	struct ida				mdp_ida;
-> =C2=A0	struct cmdq_client			*cmdq_clt[MDP_PP_MAX];
-> -	u8					cmdq_shift_pa[MDP_PP_MAX];
-> =C2=A0	wait_queue_head_t			callback_wq;
-> =C2=A0
-> =C2=A0	struct v4l2_device			v4l2_dev;
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaD3kowAKCRA6cBh0uS2t
+rFEgAQCvb6SYN8dv2ZvK999PTUzFx/PPLSgb3FFdFD8wcLjLDQD/YQkBTN9CF57q
+h2ebypsgUx5rdgJ07u1RTYhudd96rAI=
+=6fUW
+-----END PGP SIGNATURE-----
+
+--+DvCR9HLpxO5M9dR--
 
