@@ -4,65 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33434C5AD49
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Jun 2025 11:04:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73E27C5AD49
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Jun 2025 11:21:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hoerK/xmnoCBy1REctsz2X3Jy0xIXqQaEz84x7pRJ6Y=; b=hOsKFlg7C0V5QRjuV0JGzZTgcr
-	tnN+4ctm2zjRIWu4geOfL5QyekH72ohsVzNQ6OLkbXwqEVXDCq8SwgTGeLvVwAnNvjokVx8a8etPz
-	8Zv06iBpkdSnx03JfICF+TVrod7owLyRdFEtB/iWuTaMwBShLARcxebp1nDLcdJB1rUorW5aCPMsw
-	oa1mfnaB08h+RLK5ZMv8RTGRs+jRWLNcdJ0LbyhNf7pxNh9hTVbRgEv7DX/rbP2fwnd9xLFJvSb2g
-	ivb2C47E4CNQDrwwFF3bbGCoAs3lmiL4KBD91OG7mFsNSp3gdQ+/Vm2vGSSB3YlmlBdBF5X4kfHWa
-	WV01XiAQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YC0EqCOZh+bGnAS0g2+hJzdV0xxtzSuWEz6dOnQ4Dp0=; b=nHD47YI2XTjdB1fhGDt3dwAdsv
+	N8J9KShbHIEAcUkmke2ltvPMgI1t3nXUidf4VjCq8TDso8TIJFrFKhBQyTuDBCE85yyCZ2EQ0Xg/J
+	Oxls+qlweT7p8ZOa0f/0VhriLJHDa/VXDPac4FWYxEuXODP2MUhBfOurjH6thWwZ6m4aOVADx2wY4
+	rto8J3avdrReNN13UxsUpJyHDj15H4TB6aLK1WkD+60J3oxInIAsirVG4GQf31kxotDw3+BcB5VAx
+	J8DuFOSq6YLx8g3gmr2nLF0vsdzJPspWSRDD3NDrHV1md2IBhR1/SStC+WjD+dkXyCt/XpDTTiCVi
+	68BlHlNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uM2yK-00000007Fni-0KAo;
-	Mon, 02 Jun 2025 11:04:52 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1uM3EP-00000007Gq0-3Hfn;
+	Mon, 02 Jun 2025 11:21:29 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uM2pp-00000007Eo5-10eP;
-	Mon, 02 Jun 2025 10:56:06 +0000
+	id 1uM3EP-00000007Gpc-0Wmg
+	for linux-mediatek@lists.infradead.org;
+	Mon, 02 Jun 2025 11:21:29 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 7E017A4FF82;
-	Mon,  2 Jun 2025 10:56:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CE787C4CEEB;
-	Mon,  2 Jun 2025 10:56:03 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 8F5DE6111C;
+	Mon,  2 Jun 2025 11:21:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9998EC4CEED;
+	Mon,  2 Jun 2025 11:21:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1748861764;
-	bh=bir4tUxt7/G2lXTS4/G8XHslHlPXIFMwBBqhZnV0PaY=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Kl2e5rlKCiNvhxnj0/N3KDau5K/WRaoMLPftTELQcULdgyJOpDJ+TWtu87d2glNCn
-	 D0kYOUIzpYIM7Ci9SFvaqdym0qGZaDBD7AcEIL8CirD+LUjy/hQDxatMDiM1L09j4x
-	 hcLmKcMSp0a82lViH8a9OjXfopPq2GnqOkiJlmhdv5papPqvwVgDpqgQqgkdzgt3An
-	 ZfORauwWGO1S6nzT132NPXNrJAubD2TlmqJr6HHlZA8eLnKngFSV6u5UQBZomEWF3u
-	 9RsQ5N/clnID10TDh8bt01O5QUXhcEzhdtDEqcHA1kwCcGHiLveHmLW6Xt54kdI7jD
-	 5SIoIPcE6AI0g==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Mon, 02 Jun 2025 12:55:39 +0200
-Subject: [PATCH net v2 3/3] net: airoha: Fix smac_id configuration in
- bridge mode
+	s=k20201202; t=1748863288;
+	bh=YC0EqCOZh+bGnAS0g2+hJzdV0xxtzSuWEz6dOnQ4Dp0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=lWIjQUl9Nbkx5Plohd4MnWjQlnxZ+y5p0geoc3A/PsyKEIv0lPMjTdAgImsBUVKS5
+	 txK5tdfgiNpQy35l6h2zzzLQBcSVdTfmyuzE6kD+sDw7POHhw4p3nO8o+vw7I2gymx
+	 jiiZXdtl6qtNnCReOjPyWJpVhXbjFr7TALEbf66ySRy/JWth7krcg/yGi02JC/WUIP
+	 NzKQ0GymQ5dcou5zXiYsJvYFfHORbtlKl2TIffHCa6PkDWtf/ljigZ+G3p+lHLNkj3
+	 MOlrVTLeSzv24oOgPFlDGWD1U2JLvgrDD8zAD52DcOKwTO/c+ZZPOdbQCqMSqYMt2b
+	 8axp7Hq+/kwyw==
+Date: Mon, 2 Jun 2025 12:21:23 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Xose Vazquez Perez <xose.vazquez@gmail.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	SOUND ML <linux-sound@vger.kernel.org>,
+	MEDIATEK ML <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH] ASoC: mt6660: delete MODULE_VERSION
+Message-ID: <bd02757e-458b-4a3c-9194-7d7bbbd318f5@sirena.org.uk>
+References: <20250531155950.101164-1-xose.vazquez@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250602-airoha-flowtable-ipv6-fix-v2-3-3287f8b55214@kernel.org>
-References: <20250602-airoha-flowtable-ipv6-fix-v2-0-3287f8b55214@kernel.org>
-In-Reply-To: <20250602-airoha-flowtable-ipv6-fix-v2-0-3287f8b55214@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Michal Kubiak <michal.kubiak@intel.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-X-Mailer: b4 0.14.2
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250602_035605_349180_33013A01 
-X-CRM114-Status: UNSURE (   9.79  )
-X-CRM114-Notice: Please train this message.
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="BITvhzOI4tGAp1//"
+Content-Disposition: inline
+In-Reply-To: <20250531155950.101164-1-xose.vazquez@gmail.com>
+X-Cookie: Knowledge is power.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,34 +74,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Set PPE entry smac_id field to 0xf in airoha_ppe_foe_commit_subflow_entry
-routine for IPv6 traffic in order to instruct the hw to keep original
-source mac address for IPv6 hw accelerated traffic in bridge mode.
 
-Fixes: cd53f622611f ("net: airoha: Add L2 hw acceleration support")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_ppe.c | 5 +++++
- 1 file changed, 5 insertions(+)
+--BITvhzOI4tGAp1//
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index 557779093a79a4b42a1dc49b8ba0dacbdc219385..9067d2fc7706ecf489bee9fc9b6425de18acb634 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -660,6 +660,11 @@ airoha_ppe_foe_commit_subflow_entry(struct airoha_ppe *ppe,
- 	if (type >= PPE_PKT_TYPE_IPV6_ROUTE_3T) {
- 		memcpy(&hwe.ipv6.l2, &e->data.bridge.l2, sizeof(hwe.ipv6.l2));
- 		hwe.ipv6.ib2 = e->data.bridge.ib2;
-+		/* setting smac_id to 0xf instruct the hw to keep original
-+		 * source mac address
-+		 */
-+		hwe.ipv6.l2.src_mac_hi = FIELD_PREP(AIROHA_FOE_MAC_SMAC_ID,
-+						    0xf);
- 	} else {
- 		memcpy(&hwe.bridge.l2, &e->data.bridge.l2,
- 		       sizeof(hwe.bridge.l2));
+On Sat, May 31, 2025 at 05:59:49PM +0200, Xose Vazquez Perez wrote:
 
--- 
-2.49.0
+Why?
 
+> Cc: Liam Girdwood <lgirdwood@gmail.com>
+> Cc: Mark Brown <broonie@kernel.org>
+> Cc: Jaroslav Kysela <perex@perex.cz>
+> Cc: Takashi Iwai <tiwai@suse.com>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Cc: SOUND ML <linux-sound@vger.kernel.org>
+> Cc: MEDIATEK ML <linux-mediatek@lists.infradead.org>
+> ---
+
+You've not provided a Signed-off-by for this so I can't do anything with
+it, please see Documentation/process/submitting-patches.rst for details
+on what this is and why it's important.
+
+--BITvhzOI4tGAp1//
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmg9iTMACgkQJNaLcl1U
+h9B9ggf+Loveli4/RDFRqTHaFC6/CBG63rebesdMGUnYUtvOmCxl+57fKdkjzLqn
+Aa604mlfThBqgiFrW1LUlEGXohRq9aD/EBfKxwn64VDq5e2kDtVnKozr2FcnD8+6
+tR3TSwvdvrq1G2sWahRR09v176jweqbdUVd/4q3LojhKCT3arXdL0EZtvMQMZVLo
+p4FUMAH2ZpnFVOusr074RyX2bmeZl/toiiNAligp3N0GlhJXU9PcQAA0USYs38zq
+5hwS3sejJpnP7D8DPceYrzisKywf80nK2+RSHYObUvcQSNwrySK6Y8pAkoI6NB5c
+CtQm4xzQGAW9F5b/+v7sfFAlDRkVvg==
+=Jazz
+-----END PGP SIGNATURE-----
+
+--BITvhzOI4tGAp1//--
 
