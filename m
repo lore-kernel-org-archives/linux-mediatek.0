@@ -4,73 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5129C5B552
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Jun 2025 15:44:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C113C54FB3
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Jun 2025 15:50:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VsmBZUh+vyXv4ku+fzDdFGhVlt45TaS4taDV3PYjBJs=; b=EpaSbUu7P1Grt2RXhpP2/Mj5mM
-	8vLW7oG0CsNqZbZnoHRVMjnX1DDMfjchzLcUjAsznl23j8s0O6A/LDRFxrPewrD8N2yaRsRojolI5
-	XtSrxdinXfuK+tEB2H2y0W0biaq8CbmkOMUpOTScWTkOsMxRked9fbG8feDYE8KiS6zUqsqKyX4sk
-	zDWyXlgA8bxXi9D6Bviu2h3HSpLsHeZQYJQUQdUhqLYIlTgUuCDCUYPXPrbj7+SYV/DxE2tpfPhQB
-	zhv9HQP/hHl6IIfy8QapLyFhtYGJbWaslv+qXVXTRwKenytcye0ncqoJQmZwiPOSV32aWpSQRRv07
-	+mh6vjww==;
+	bh=x1dHqucytNvJE5sOBJHQ1JgixIBWN/66qkZtbhARHsQ=; b=Eoh6ZHbqiLgb24bQRdL6kjyTQM
+	Ri09Jf7yfwpwVSMGhp6NuSOxa4C8UEHi1GU0Hc2M4BoYJjKpBw8N76pRhIYIetkT4m/aZg5vtivze
+	Hx/AUp3W+gDCsqNH6LcNrenZUX8ZMQEFKd4qO453cRyMP+78cg1Cx9tiZPSzai7RffEhkR3WW+3yE
+	KRUt+ZolSXoFkXxG/guANWu9i5X3wB+aIYkh5RiY7jwsj8ACTZVEq3L3HLd7TSRKLM15uKTW3QkYG
+	Q2WqQT44vfALVdMIqPqryifxYo0P4LP/EMTsbYFtpwxUOIUeuKHw1ZiWUuM9DiW/jED4IrcZkfoBn
+	387VFg0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uM7KU-00000007nvN-2yCV;
-	Mon, 02 Jun 2025 15:44:02 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1uM7R3-00000007ovo-1qEv;
+	Mon, 02 Jun 2025 15:50:49 +0000
+Received: from mail-qt1-x835.google.com ([2607:f8b0:4864:20::835])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uM73I-00000007l2S-0t8l;
-	Mon, 02 Jun 2025 15:26:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=VsmBZUh+vyXv4ku+fzDdFGhVlt45TaS4taDV3PYjBJs=; b=nocTW5lJMQ/TMaA8qaPK4x9xGY
-	YHoLB6m1pNtMbB+bEbBT3ru7jVtGgwGZvuPuGgBT253G23p3UJ5WHYUwS26S9UmPa9E+uG8S65Lxp
-	GFCvWfH4t88+KK4RUBPL48KvgCAUHuXHoI6rfN4XYyHIAu63tdKU7phtVc8bOvBOsWMkJGxoRXWCs
-	jbqQ2DqHn9IRa8f2y8hTgjiqY3qQrA03xW/9y1g8BT5x+suXlKEihGY1Wec0H4D5q2afAdyT+XUuv
-	AYUOV3yQbBY+yxWNOC9lbQ8zTiB40WZ5nP2ReoIqYXljqYIhBiID+mpg1B3ma/Pe1QEpaghq6GeNh
-	ql3M45uA==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:55524)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1uM72q-00051K-2g;
-	Mon, 02 Jun 2025 16:25:48 +0100
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.96)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1uM72h-0007i6-0r;
-	Mon, 02 Jun 2025 16:25:39 +0100
-Date: Mon, 2 Jun 2025 16:25:39 +0100
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Ilya K <me@0upti.me>
-Subject: Re: [PATCH RFC net-next] net: phylink: always config mac for
- (delayed) phy
-Message-ID: <aD3Cc7gmB2Tev_ul@shell.armlinux.org.uk>
-References: <20250107123615.161095-1-ericwouds@gmail.com>
- <Z30iUj6DE9-fRp0n@shell.armlinux.org.uk>
- <4b9b2a9a-061b-43ad-b402-a49aee317f41@gmail.com>
- <Z31CJS1YUvPGiEXs@shell.armlinux.org.uk>
- <98234080-946e-4b36-832f-113b185e7bca@gmail.com>
- <Z3-Tz5WdLCat91vm@shell.armlinux.org.uk>
- <9cc913d7-7e5b-4b6c-886c-ca9778c3f970@0upti.me>
- <aD1lRha-enQ9Pw0g@shell.armlinux.org.uk>
- <2894a781-4d4b-4e3c-9f4e-7c1f04122f8a@0upti.me>
+	id 1uM7Ee-00000007mik-0Rlh
+	for linux-mediatek@lists.infradead.org;
+	Mon, 02 Jun 2025 15:38:01 +0000
+Received: by mail-qt1-x835.google.com with SMTP id d75a77b69052e-4a43afb04a7so23825341cf.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 02 Jun 2025 08:37:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1748878678; x=1749483478; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=x1dHqucytNvJE5sOBJHQ1JgixIBWN/66qkZtbhARHsQ=;
+        b=aX0JS/0NtJOzW0yjmpZIFIfdW9q10WWFp037TDMkpZ8W65bEpF/1HdS+wea94Y7tvk
+         kkmHsaSP3FAFJ8BTmmspKhDWGwrVnrMoETCVSDCpLXE6x5e7Emul0kq4NhVor1q1e1Jy
+         ldVv507BW0mXdK548acDsE2TqlnFQy1TbgyYrmismQd/ooz2AraBF7MZZoJ6gz1IdEG5
+         chBICLEXjUo2roxxHlubst2/C/9MZE6q9i1UHG5Jm8gAl5JR37Ce0aZ8GtydlrzJaycb
+         Rnhzs9LLLVDKcFegb5Nl8QexspU+Axl7k+zNOIWFZzvPWnKrxh49gPYKBwGKQOVKNBVh
+         Q6Zw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1748878678; x=1749483478;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=x1dHqucytNvJE5sOBJHQ1JgixIBWN/66qkZtbhARHsQ=;
+        b=LixZzIgzRm/7syZtBb3STwLQ6SpaikHGfpUZbf8GKj18gXy8zVeMjzTPXmqMmhHVt5
+         OT8our9JYBPqsd4YaH8gRJG3qNnPcrNFcMyWV+slmiESZoBAsVgp5ha3+eQNLKYw2N6o
+         L3aieDx1/3GQrMKwgjpqcj0G4IBKHW0ygePnQcVtw3pNoMwDPN7mPX0UHWr0hsffMFI/
+         77yXlPgX2+WwnD9GBSRfUt8ZUEOKuDr3Eab0xy3Tew5suNn37GHumx6T11A/hsCG11sQ
+         LHDlBfX02wMD6R1URtXUwTXr9glFBfDC3fKw3ayGcvpk+cJaQHbZ09oC1ArRUyA7Avl6
+         4jCg==
+X-Forwarded-Encrypted: i=1; AJvYcCVnzrKP6OfbqFK/lHoEsGmO3E3/N+Mlzyd2cf4PA+u4wBpyuwT+SBzpO+QW2o/4UYCS+7YXXR3J29kpXOTsvQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyuOjYb2VS6uCisbr/H4VEgW/Mb6AEj89kfgHsRi0Ry9DyrHqpd
+	f/jjRuHgD0VsZXg7eYa4xXFcmG5ktGZsiOCkcB1OUgTW3xQeJcTBsLwqFvySA5cUoUs=
+X-Gm-Gg: ASbGncu+G5tAGA1aLuozWIum8dpWTrQ/UeI7gDq/cLT7eVnWoqBU+fKBBmTaZ8OxrT+
+	LBOEwGGsXUib2jwjrlzYDfGSZ4QCa+YehmbPlSJfgVfgm7ViKSQYNI34noCikWKDsB6RqR9SoLf
+	w4c7E53odl1Iu/2aiW30dJeDRmLfLPQreZJLHTJ1DnRiMd/0ZUz6BfUMZlQl6BoJXJ/ECh/N0eO
+	4CoeuNTidSpgQITavQuHsdBbBD9cakGq81+cb5eLK1Lq++kiMFjxdSvIixR2f+rYkAVZwK0JmKx
+	4RvFELjLgz2olDxJCLUZeEkkJnU6L8cb/Mc7tifm5MfTycmeN7kA0Tyf
+X-Google-Smtp-Source: AGHT+IFAxvbyts/4W1PU88jgJRJyPWsVyM/w1Qedjlhc5oIe8j+5+JXf7JzKMu2VMp0D7TLMJ22XCQ==
+X-Received: by 2002:a05:622a:5598:b0:4a4:3d27:77a0 with SMTP id d75a77b69052e-4a4a5ec583fmr144502391cf.2.1748878677932;
+        Mon, 02 Jun 2025 08:37:57 -0700 (PDT)
+Received: from ?IPv6:2606:6d00:10:5285::5ac? ([2606:6d00:10:5285::5ac])
+        by smtp.gmail.com with ESMTPSA id d75a77b69052e-4a435772fb1sm56762721cf.8.2025.06.02.08.37.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 02 Jun 2025 08:37:57 -0700 (PDT)
+Message-ID: <01ee4dbe14917dff1e0d256dde6724f81a23ba4b.camel@ndufresne.ca>
+Subject: Re: [PATCH v6 17/20] media: platform: mtk-mdp3: Use
+ cmdq_pkt_jump_rel() without shift_pa
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Jason-JH Lin <jason-jh.lin@mediatek.com>, Rob Herring <robh@kernel.org>,
+  Krzysztof Kozlowski	 <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Jassi Brar	 <jassisinghbrar@gmail.com>, Chun-Kuang
+ Hu <chunkuang.hu@kernel.org>,  AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>
+Date: Mon, 02 Jun 2025 11:37:56 -0400
+In-Reply-To: <20250601173355.1731140-18-jason-jh.lin@mediatek.com>
+References: <20250601173355.1731140-1-jason-jh.lin@mediatek.com>
+	 <20250601173355.1731140-18-jason-jh.lin@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <2894a781-4d4b-4e3c-9f4e-7c1f04122f8a@0upti.me>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250602_082616_250895_ECE4BCB2 
-X-CRM114-Status: UNSURE (   9.08  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250602_083800_385009_B10E0A4A 
+X-CRM114-Status: GOOD (  17.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,20 +100,80 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, Daniel Golle <daniel@makrotopia.org>, bridge@lists.linux.dev, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, coreteam@netfilter.org, netfilter-devel@vger.kernel.org, Eric Woudstra <ericwouds@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Heiner Kallweit <hkallweit1@gmail.com>
+Cc: devicetree@vger.kernel.org, Moudy Ho <moudy.ho@mediatek.com>, Xiandong Wang <xiandong.wang@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Paul-PL Chen <paul-pl.chen@mediatek.com>, Xavier Chang <xavier.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Sirius Wang <sirius.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 02, 2025 at 04:00:14PM +0300, Ilya K wrote:
-> That's weird, because I do have all the patches applied. I think this may have been broken by the pcs_inband_caps changes, because without the patch I'm just getting "autoneg setting not compatible with PCS", after which it bails, when it should really reconfigure the MAC instead.
+Hi,
 
-Please enable phylink and sfp debug (adding #define DEBUG to the top of
-phylink.c and sfp.c, and then send the kernel messages after reproducing
-the issue.
+Le lundi 02 juin 2025 =C3=A0 01:31 +0800, Jason-JH Lin a =C3=A9crit=C2=A0:
+> With the removal of the shift_pa parameter, cmdq_pkt_jump_rel_temp()
+> can be replaced by the new cmdq_pkt_jump_rel() without shift_pa.
+>=20
+> Then, remove the cmdq_shift_pa variable in the mdp_dev structure for
+> each mbox client.
+>=20
+> Fixes: ade176534112 ("soc: mediatek: cmdq: Add parameter shift_pa to cmdq=
+_pkt_jump()")
+> Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
+> ---
+> =C2=A0drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c | 2 +-
+> =C2=A0drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c | 2 --
+> =C2=A0drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h | 1 -
+> =C2=A03 files changed, 1 insertion(+), 4 deletions(-)
+>=20
+> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c b/drive=
+rs/media/platform/mediatek/mdp3/mtk-mdp3-
+> cmdq.c
+> index 7575ec376367..c35fe0e3a4d5 100644
+> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
+> @@ -638,7 +638,7 @@ static struct mdp_cmdq_cmd *mdp_cmdq_prepare(struct m=
+dp_dev *mdp,
+> =C2=A0		goto err_free_path;
+> =C2=A0	}
+> =C2=A0	cmdq_pkt_eoc(&cmd->pkt);
+> -	cmdq_pkt_jump_rel_temp(&cmd->pkt, CMDQ_INST_SIZE, mdp->cmdq_shift_pa[pp=
+_idx]);
+> +	cmdq_pkt_jump_rel(&cmd->pkt, CMDQ_INST_SIZE);
 
-Thanks.
+Did I miss something or this reverts the change made in 15/20 ? I'm also
+unsure if its correct to ask for backports of this with Fixes tag. Isn't th=
+is
+for MT8196, a new board ?
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+Nicolas
+
+> =C2=A0
+> =C2=A0	for (i =3D 0; i < num_comp; i++) {
+> =C2=A0		s32 inner_id =3D MDP_COMP_NONE;
+> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drive=
+rs/media/platform/mediatek/mdp3/mtk-mdp3-
+> core.c
+> index 8de2c8e4d333..2f8147481bd6 100644
+> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+> @@ -293,8 +293,6 @@ static int mdp_probe(struct platform_device *pdev)
+> =C2=A0			ret =3D PTR_ERR(mdp->cmdq_clt[i]);
+> =C2=A0			goto err_mbox_destroy;
+> =C2=A0		}
+> -
+> -		mdp->cmdq_shift_pa[i] =3D cmdq_get_shift_pa(mdp->cmdq_clt[i]->chan);
+> =C2=A0	}
+> =C2=A0
+> =C2=A0	init_waitqueue_head(&mdp->callback_wq);
+> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h b/drive=
+rs/media/platform/mediatek/mdp3/mtk-mdp3-
+> core.h
+> index 05cade1d098e..430251f63754 100644
+> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
+> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
+> @@ -126,7 +126,6 @@ struct mdp_dev {
+> =C2=A0	u32					id_count;
+> =C2=A0	struct ida				mdp_ida;
+> =C2=A0	struct cmdq_client			*cmdq_clt[MDP_PP_MAX];
+> -	u8					cmdq_shift_pa[MDP_PP_MAX];
+> =C2=A0	wait_queue_head_t			callback_wq;
+> =C2=A0
+> =C2=A0	struct v4l2_device			v4l2_dev;
 
