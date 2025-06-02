@@ -4,48 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EA0FC61CE7
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Jun 2025 13:02:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5129C5B552
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Jun 2025 15:44:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oZ32ri9UvCA0ZFnxXbOjw3nZYx8ajIN2VWmbh80DLjU=; b=nPKNll85xO0aG/
-	6fKdtWeTF6OUgH6ID9oZVY8xqjNHHFzcylgtthpQ1ku7dkIo8iTGSJ9xwBdyZxZ2zcwpKANB0/TGT
-	5pVs5nqtduLnDsuCV+L5dN08xs9iToAi05XIfFXGyv5+93g8NT+FLLT2noVEm6mHmai+FCnaz9Pcx
-	yMcF3CesyjO7zQF9wFi/0MB/2AmA6Q/kQoFVjCk8FJlOxyEP0GeGTXlqy10xaWr06QHi6RNS5b8Sb
-	z94aggVxAaZFe1oTB4HJfmc73UNDPjaI1RbFhA4XQaydbhRa6plpbwxM41PcKY81ATh9cWdGP6dZl
-	KZFKm4NMRo+CMvtUU6VA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VsmBZUh+vyXv4ku+fzDdFGhVlt45TaS4taDV3PYjBJs=; b=EpaSbUu7P1Grt2RXhpP2/Mj5mM
+	8vLW7oG0CsNqZbZnoHRVMjnX1DDMfjchzLcUjAsznl23j8s0O6A/LDRFxrPewrD8N2yaRsRojolI5
+	XtSrxdinXfuK+tEB2H2y0W0biaq8CbmkOMUpOTScWTkOsMxRked9fbG8feDYE8KiS6zUqsqKyX4sk
+	zDWyXlgA8bxXi9D6Bviu2h3HSpLsHeZQYJQUQdUhqLYIlTgUuCDCUYPXPrbj7+SYV/DxE2tpfPhQB
+	zhv9HQP/hHl6IIfy8QapLyFhtYGJbWaslv+qXVXTRwKenytcye0ncqoJQmZwiPOSV32aWpSQRRv07
+	+mh6vjww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uM4oK-00000007PmI-1b6U;
-	Mon, 02 Jun 2025 13:02:40 +0000
-Received: from forward501a.mail.yandex.net ([178.154.239.81])
+	id 1uM7KU-00000007nvN-2yCV;
+	Mon, 02 Jun 2025 15:44:02 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uM4m7-00000007PXa-2n3u;
-	Mon, 02 Jun 2025 13:00:26 +0000
-Received: from mail-nwsmtp-smtp-production-main-74.iva.yp-c.yandex.net (mail-nwsmtp-smtp-production-main-74.iva.yp-c.yandex.net [IPv6:2a02:6b8:c0c:160e:0:640:a44a:0])
-	by forward501a.mail.yandex.net (Yandex) with ESMTPS id 89D6961677;
-	Mon,  2 Jun 2025 16:00:19 +0300 (MSK)
-Received: by mail-nwsmtp-smtp-production-main-74.iva.yp-c.yandex.net (smtp/Yandex) with ESMTPSA id F0aS6QbLoa60-v1prNre5;
-	Mon, 02 Jun 2025 16:00:18 +0300
-X-Yandex-Fwd: 1
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0upti.me; s=mail;
-	t=1748869218; bh=oZ32ri9UvCA0ZFnxXbOjw3nZYx8ajIN2VWmbh80DLjU=;
-	h=From:In-Reply-To:Cc:Date:References:To:Subject:Message-ID;
-	b=EzcWINEr1YcBsyckPUR3nlN3K+/LMzSaQKkMLqlbcJj6CrPBngXx/eDKc18C6WbJ+
-	 RJztATJ/WAvys8DZNnSxo0MbSn+9ezY18d5m9s1x9LMmcGUTwkR4lIQP67AAm6ZkCd
-	 Gv5gMnOxTZ5Oaa0NtUAkqX5gKrFUfqZi7JSa191U=
-Authentication-Results: mail-nwsmtp-smtp-production-main-74.iva.yp-c.yandex.net; dkim=pass header.i=@0upti.me
-Message-ID: <2894a781-4d4b-4e3c-9f4e-7c1f04122f8a@0upti.me>
-Date: Mon, 2 Jun 2025 16:00:14 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1uM73I-00000007l2S-0t8l;
+	Mon, 02 Jun 2025 15:26:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=VsmBZUh+vyXv4ku+fzDdFGhVlt45TaS4taDV3PYjBJs=; b=nocTW5lJMQ/TMaA8qaPK4x9xGY
+	YHoLB6m1pNtMbB+bEbBT3ru7jVtGgwGZvuPuGgBT253G23p3UJ5WHYUwS26S9UmPa9E+uG8S65Lxp
+	GFCvWfH4t88+KK4RUBPL48KvgCAUHuXHoI6rfN4XYyHIAu63tdKU7phtVc8bOvBOsWMkJGxoRXWCs
+	jbqQ2DqHn9IRa8f2y8hTgjiqY3qQrA03xW/9y1g8BT5x+suXlKEihGY1Wec0H4D5q2afAdyT+XUuv
+	AYUOV3yQbBY+yxWNOC9lbQ8zTiB40WZ5nP2ReoIqYXljqYIhBiID+mpg1B3ma/Pe1QEpaghq6GeNh
+	ql3M45uA==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:55524)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1uM72q-00051K-2g;
+	Mon, 02 Jun 2025 16:25:48 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.96)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1uM72h-0007i6-0r;
+	Mon, 02 Jun 2025 16:25:39 +0100
+Date: Mon, 2 Jun 2025 16:25:39 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Ilya K <me@0upti.me>
 Subject: Re: [PATCH RFC net-next] net: phylink: always config mac for
  (delayed) phy
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+Message-ID: <aD3Cc7gmB2Tev_ul@shell.armlinux.org.uk>
 References: <20250107123615.161095-1-ericwouds@gmail.com>
  <Z30iUj6DE9-fRp0n@shell.armlinux.org.uk>
  <4b9b2a9a-061b-43ad-b402-a49aee317f41@gmail.com>
@@ -54,14 +62,15 @@ References: <20250107123615.161095-1-ericwouds@gmail.com>
  <Z3-Tz5WdLCat91vm@shell.armlinux.org.uk>
  <9cc913d7-7e5b-4b6c-886c-ca9778c3f970@0upti.me>
  <aD1lRha-enQ9Pw0g@shell.armlinux.org.uk>
-Content-Language: en-US
-From: Ilya K <me@0upti.me>
-In-Reply-To: <aD1lRha-enQ9Pw0g@shell.armlinux.org.uk>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+ <2894a781-4d4b-4e3c-9f4e-7c1f04122f8a@0upti.me>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <2894a781-4d4b-4e3c-9f4e-7c1f04122f8a@0upti.me>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250602_060023_888498_41A63E27 
-X-CRM114-Status: GOOD (  19.08  )
+X-CRM114-CacheID: sfid-20250602_082616_250895_ECE4BCB2 
+X-CRM114-Status: UNSURE (   9.08  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,31 +86,16 @@ Cc: Andrew Lunn <andrew@lunn.ch>, AngeloGioacchino Del Regno <angelogioacchino.d
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2025-06-02 11:48, Russell King (Oracle) wrote:
-> On Mon, Jun 02, 2025 at 10:19:22AM +0300, Ilya K wrote:
->> On 2025-01-09 12:15, Russell King (Oracle) wrote:
->>> On Thu, Jan 09, 2025 at 09:56:17AM +0100, Eric Woudstra wrote:
->>> I'll look at what we can do for this today.
->> Hey folks, don't really want to necrobump this, but the original hack patch is the only way I can get my weirdo Realtek (noticing a pattern here) GPON modem-on-a-stick to probe at 2500base-x on a BPi-R4. I've actually tracked down the issue myself and wrote basically the same patch first :( Is there anything I can do (with my extremely limited phylink understanding) to help move this forward so other people don't have to suffer like I did?
-> 
-> There were two issues that were identified. The first was that when in
-> 2500Base-X mode, the PCS wasn't reporting link-up. That was addressed
-> by the patch series:
-> 
-> Z4TbR93B-X8A8iHe@shell.armlinux.org.uk
-> 
-> then, the replacement for Eric's patch was:
-> 
-> E1tYhxp-001FHf-Ac@rmk-PC.armlinux.org.uk
-> 
-> So the problem should be solved with these applied, as when the PHY is
-> attached, "changed" will always be true, which is in effect what Eric's
-> patch was doing, but in a cleaner way.
-> 
-> Please confirm that you have all six patches applied.
-> 
+On Mon, Jun 02, 2025 at 04:00:14PM +0300, Ilya K wrote:
+> That's weird, because I do have all the patches applied. I think this may have been broken by the pcs_inband_caps changes, because without the patch I'm just getting "autoneg setting not compatible with PCS", after which it bails, when it should really reconfigure the MAC instead.
 
-That's weird, because I do have all the patches applied. I think this may have been broken by the pcs_inband_caps changes, because without the patch I'm just getting "autoneg setting not compatible with PCS", after which it bails, when it should really reconfigure the MAC instead.
+Please enable phylink and sfp debug (adding #define DEBUG to the top of
+phylink.c and sfp.c, and then send the kernel messages after reproducing
+the issue.
 
-(resending because I replied instead of reply-all by accident)
+Thanks.
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
