@@ -4,73 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13CF0C54FB3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Jun 2025 01:18:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 673A1C54FB3
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Jun 2025 05:33:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Fj6WZvivdqaYGsBnHbO9/w5VHSjKJn8CqXG7ei4kiDA=; b=B5zHUpoOlHQFMpYNHrdE1DyfGW
-	IXXNqb826xSVgboYV/F84hQ7KJAkgVk9y+3i2ob/n1ZfephekQHHw3y1TnWuxlozoHJAieMN6QB7l
-	S5I5SX+abyCse3ubsnTvBwCCsvaT4u7Wlu5nGDa0R+Lkw4ctiHSQIPpDyI8a7guBHMxdHoZvGzhJ/
-	DNqxd5Z9zUOTiYQZVhgiGdpoauZJKJXkgiz28yHVja6F9BL+RKDfy5nVN1s49NS7/8xjt/jjRUGCI
-	rkeXIgmhV5ArziH8vS4CU39TX2lB14+3PX49B6LADx+lklb7M6Eu/8Zi5fcp7gux1d66No884UIfl
-	ugSAoK3g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qnWLtTNpBdzbZLIVmUL1zq7dlaJMpU//9y4P59FbSIc=; b=sBRKN8CTe6qrLPdNBZEaAcb8xe
+	uJJRh4NQc4VSVf4dxrtii4qxdIxfpQ/g0coqbdd3xQtm16+XeFE8o8jTuboI/OEJuvjsS6UrBemaf
+	cv7SUlU2ciKi0bh4DSFc5c8ghH0G9J79RGFLmOPObl4kDe6JZAGJgL2ddW2abeqCOyZc9+oKFJWM9
+	NyuGYKpKtXLPxhkGKoJ7LfYRMSXqa/V5CUKGFoxhNQo+k7zdKiiG4rzwQN397qnls2GBjjKE2CS0j
+	oLaTFwiMOGbV4C6/UL/Tvvn+1mc0HIm7gumYTMR+mec7WDuzPaPH25b9P9AdZoA/PAENq6UaKb/3l
+	M69YCqjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uLtox-00000006TDt-2Zz0;
-	Mon, 02 Jun 2025 01:18:35 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uLxnp-00000006khY-2e5d;
+	Mon, 02 Jun 2025 05:33:41 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uLsM0-00000006ADp-3kwh;
-	Sun, 01 Jun 2025 23:44:37 +0000
+	id 1uLxlb-00000006kZh-2hpk;
+	Mon, 02 Jun 2025 05:31:25 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 039076116F;
-	Sun,  1 Jun 2025 23:44:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C857DC4CEF1;
-	Sun,  1 Jun 2025 23:44:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1748821475;
-	bh=Qry0W7+8+DMWlUTxM4kClLEnmvalIp8zlvCEMMvluoQ=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=HtLiz12lL6qeT7hA7ybRZ+hPxil6/e2Y56lwhU6U5KKSihTamCg984L1jONHDmwQR
-	 mAXvPwtVJTfd0PyAwlySNZmU9ZJU4QuhFp1FEQGcNkWPzYikuQDlw0PobBH8qxSPJG
-	 CmMETk3fuybXR6IbdTN1IPM8Rzd63iISw5BaVXOimbSOCKddhe7pwYrdiQrJnS8ZSu
-	 dIZrqqE8vDG919YRcKRnCuXMgSAyrTKprKGf7tlN0phGWiT4F1rA05i1lac+NkKtyc
-	 jH98hIdP0x0S+kzZtHCrAysPYYHmiflADTDBbvXiiHKseECpGd9eocqvffjHiXtBDv
-	 U/WtN2Kbmv7oQ==
-From: Sasha Levin <sashal@kernel.org>
-To: patches@lists.linux.dev,
-	stable@vger.kernel.org
-Cc: Jonas Karlman <jonas@kwiboo.se>,
+	by sea.source.kernel.org (Postfix) with ESMTP id 88A1F444DD;
+	Mon,  2 Jun 2025 05:31:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BB996C4CEEB;
+	Mon,  2 Jun 2025 05:31:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1748842282;
+	bh=htmy+IjUpSNIPz1gu7az+7dIDslLsgMksI5QpgRTWMg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=d1CpqV/YCZGbD2mb0xnDolaakWCo40GeeaZKc3TU44PLnRq3UwxEamArfybPHO8Cq
+	 OdWIZxumNk0N7f8r3Aycu6ziAGjbGQd71Uz9YJQ1+h8FRXyGszY104AfDJE03V3hWU
+	 Eyj649v0TJI9iCSf+46GVyJqBZX9QgCXfA7nVzsI=
+Date: Mon, 2 Jun 2025 07:31:19 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Sasha Levin <sashal@kernel.org>
+Cc: patches@lists.linux.dev, stable@vger.kernel.org,
+	Jonas Karlman <jonas@kwiboo.se>,
 	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
 	Christopher Obbard <chris.obbard@collabora.com>,
-	Hans Verkuil <hverkuil@xs4all.nl>,
-	Sasha Levin <sashal@kernel.org>,
-	ezequiel@vanguardiasur.com.ar,
-	mchehab@kernel.org,
-	gregkh@linuxfoundation.org,
-	matthias.bgg@gmail.com,
+	Hans Verkuil <hverkuil@xs4all.nl>, ezequiel@vanguardiasur.com.ar,
+	mchehab@kernel.org, matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.10 15/34] media: rkvdec: h264: Use bytesperline and buffer height as virstride
-Date: Sun,  1 Jun 2025 19:43:39 -0400
-Message-Id: <20250601234359.3518595-15-sashal@kernel.org>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250601234359.3518595-1-sashal@kernel.org>
-References: <20250601234359.3518595-1-sashal@kernel.org>
+Subject: Re: [PATCH AUTOSEL 6.15 052/110] media: rkvdec: h264: Use
+ bytesperline and buffer height as virstride
+Message-ID: <2025060258-properly-pristine-f112@gregkh>
+References: <20250601232435.3507697-1-sashal@kernel.org>
+ <20250601232435.3507697-52-sashal@kernel.org>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 5.10.237
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250601232435.3507697-52-sashal@kernel.org>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250601_223123_731175_26D39108 
+X-CRM114-Status: GOOD (  12.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,110 +78,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jonas Karlman <jonas@kwiboo.se>
+On Sun, Jun 01, 2025 at 07:23:34PM -0400, Sasha Levin wrote:
+> From: Jonas Karlman <jonas@kwiboo.se>
+> 
+> [ Upstream commit d5e0aa61470c48ddc04d433a00e79cef8716377a ]
+> 
+> Use bytesperline and buffer height to calculate the strides configured.
+> 
+> This does not really change anything other than ensuring the
+> bytesperline that is signaled to userspace matches what is configured
+> in HW.
+> 
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+> Tested-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+> Tested-by: Christopher Obbard <chris.obbard@collabora.com>
+> Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+> Signed-off-by: Hans Verkuil <hverkuil@xs4all.nl>
+> Signed-off-by: Sasha Levin <sashal@kernel.org>
+> ---
+> 
+> ### Key Reasons for NO Backport: 1. **Not a Bug Fix**: The commit
+> message explicitly states "This does not really change anything other
+> than ensuring the bytesperline that is signaled to userspace matches
+> what is configured in HW." This is not fixing a functional bug but
+> rather improving consistency between userspace and hardware
+> configuration.
 
-[ Upstream commit d5e0aa61470c48ddc04d433a00e79cef8716377a ]
+As the bot said "NO", why was this picked up?
 
-Use bytesperline and buffer height to calculate the strides configured.
+thanks,
 
-This does not really change anything other than ensuring the
-bytesperline that is signaled to userspace matches what is configured
-in HW.
-
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Tested-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Tested-by: Christopher Obbard <chris.obbard@collabora.com>
-Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Signed-off-by: Hans Verkuil <hverkuil@xs4all.nl>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
-
-### Key Reasons for NO Backport: 1. **Not a Bug Fix**: The commit
-message explicitly states "This does not really change anything other
-than ensuring the bytesperline that is signaled to userspace matches
-what is configured in HW." This is not fixing a functional bug but
-rather improving consistency between userspace and hardware
-configuration. 2. **Code Quality/Consistency Improvement**: The changes
-are primarily about code correctness and consistency rather than fixing
-a critical issue that affects users. This aligns with similar commits
-#1, #2, and #4 which were marked as NO for backporting. 3. **Staging
-Driver**: The rkvdec driver is in `drivers/staging/media/`, which
-indicates it's still under development and not considered stable.
-Staging drivers typically have more relaxed backporting requirements. 4.
-**Specific Code Changes Analysis**: - **Before**: `hor_virstride =
-(sps->bit_depth_luma_minus8 + 8) 0001-Fix-Clippy-warnings.patch
-0002-Enhance-inference-prompt-to-utilize-CVEKERNELDIR-whe.patch
-0003-Update-to-latest-version-of-clap.patch Cargo.lock Cargo.toml
-LICENSE README.md adreno_acd_support_analysis.md
-amd_display_ips_sequential_ono_backport_analysis.md
-analyze_merge_commit.sh dpp_rcg_backport_analysis.md
-drm_amd_display_vertical_interrupt_dcn32_dcn401_backport_analysis.md
-drm_bridge_analysis.txt drm_format_helper_24bit_analysis.md
-drm_imagination_register_update_analysis.md
-drm_mediatek_mtk_dpi_refactoring_analysis.md
-intel_ipu6_constify_analysis.md io_uring_analysis.txt ksmbd_analysis.txt
-merge_commit_analysis.txt model prompt src target test_gpio_cleanup.txt
-test_patch.txt verisilicon_av1_4k_analysis.md dst_fmt->width / 8;` -
-**After**: `hor_virstride = dst_fmt->plane_fmt[0].bytesperline;` -
-**Before**: `ver_virstride = round_up(dst_fmt->height, 16);` -
-**After**: `ver_virstride = dst_fmt->height;` 5. **No Risk Indication**:
-The changes don't indicate they're fixing crashes, data corruption,
-security issues, or other critical problems that would warrant stable
-backporting. 6. **Pattern Match with Similar Commits**: Looking at the
-provided examples: - Similar commits #1, #2, #4, and #5 that make
-stride/calculation improvements were marked as NO - Only commit #3 that
-increased max supported height (a clear functional limitation fix) was
-marked as YES 7. **No Stable Tree Mention**: The commit message contains
-no indication of stable tree inclusion via Fixes: tags or explicit
-stable tree requests. ### Conclusion: This commit improves code
-consistency by using the actual bytesperline values from userspace
-instead of calculating them from SPS parameters, but it doesn't fix a
-user-impacting bug. It's a code quality improvement that follows the
-pattern of other NO-backport commits in the provided examples.
-
- drivers/staging/media/rkvdec/rkvdec-h264.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
-index ddccd97a359fa..a5c37c5c3e518 100644
---- a/drivers/staging/media/rkvdec/rkvdec-h264.c
-+++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
-@@ -907,9 +907,9 @@ static void config_registers(struct rkvdec_ctx *ctx,
- 	dma_addr_t rlc_addr;
- 	dma_addr_t refer_addr;
- 	u32 rlc_len;
--	u32 hor_virstride = 0;
--	u32 ver_virstride = 0;
--	u32 y_virstride = 0;
-+	u32 hor_virstride;
-+	u32 ver_virstride;
-+	u32 y_virstride;
- 	u32 yuv_virstride = 0;
- 	u32 offset;
- 	dma_addr_t dst_addr;
-@@ -920,16 +920,16 @@ static void config_registers(struct rkvdec_ctx *ctx,
- 
- 	f = &ctx->decoded_fmt;
- 	dst_fmt = &f->fmt.pix_mp;
--	hor_virstride = (sps->bit_depth_luma_minus8 + 8) * dst_fmt->width / 8;
--	ver_virstride = round_up(dst_fmt->height, 16);
-+	hor_virstride = dst_fmt->plane_fmt[0].bytesperline;
-+	ver_virstride = dst_fmt->height;
- 	y_virstride = hor_virstride * ver_virstride;
- 
- 	if (sps->chroma_format_idc == 0)
- 		yuv_virstride = y_virstride;
- 	else if (sps->chroma_format_idc == 1)
--		yuv_virstride += y_virstride + y_virstride / 2;
-+		yuv_virstride = y_virstride + y_virstride / 2;
- 	else if (sps->chroma_format_idc == 2)
--		yuv_virstride += 2 * y_virstride;
-+		yuv_virstride = 2 * y_virstride;
- 
- 	reg = RKVDEC_Y_HOR_VIRSTRIDE(hor_virstride / 16) |
- 	      RKVDEC_UV_HOR_VIRSTRIDE(hor_virstride / 16) |
--- 
-2.39.5
-
+greg k-h
 
