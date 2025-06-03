@@ -4,66 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 666F2C5AE59
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jun 2025 18:21:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85DF4C5AE59
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Jun 2025 22:12:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pOpYljZuYO3T7PKQuPSq6hSLphxMmYBM9c7hIldkB8Q=; b=4EaMQHxL5uctmx
-	zWAzdU66Y+KIJofaTsle0Q5lUKhXR+FEQc5ue3jK2ZglhG6VZpd432BvkNEjAhxWGQvpoEQ/FJSnD
-	ZfqEk7hNvMuQ8VfuIeKb09D8jcdtwF7h76rnIl+OAedSKjK2ePyW+g3UvTFfnVGRRU0jsrTddW1rI
-	MLQTaGyBZsg8MxV9HwIAyPMdTwO9LJEGQ1v/d8H/BUmAKBlpdRi5g0V43VqWUXYQs6UvgYKkNkjAP
-	fLtYhbm+1+WktZZSih3JxU1mwbUTR7Fi0/AX/vRNeVhbDrlH7m30j12ktKoajEzLGx7dxvcGBzt1l
-	wJ0tLf4lqhRw8eKinoJA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8B3otlpWtIrCMotPSzvWNK8DK1Jj0yOZGMpx7SqqNNY=; b=FO9+IBNYLu0pt5uPE4/GDifoWj
+	MDQeew6WC6zFzDe3jDpNvotNohebejj1IaOD4Naak/kjmXQUUAKe5ur7qMyoyJ97zsBd0oTHZoaYt
+	jLdZ/X9/4YqlIZPvftdVe3oeMKVZGGQYtvARmI41okrRV8d74EGPDz7FyHLFKvCvzTga8b4MpRCBm
+	uP5tZwKhwyTeUAV7GwQxB7vyxeto1c5/kEI2/IKqeAIKpxGQ0wArIuLB0GV4f82ZA9J8FryGuJj5r
+	HkFl+WlIBYFprhkRUJ49rakfHBVMkXbWGYZDd2Y8vacZswwKWsPw/Bgm084Ys0lUF5S96IQDbhwT+
+	li7VpwiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMWGC-0000000BZra-2qlX;
-	Tue, 03 Jun 2025 18:21:16 +0000
-Received: from forward502d.mail.yandex.net ([178.154.239.210])
+	id 1uMZrZ-0000000BwFg-40ff;
+	Tue, 03 Jun 2025 22:12:05 +0000
+Received: from mgamail.intel.com ([192.198.163.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMWCd-0000000BZGi-0tlQ;
-	Tue, 03 Jun 2025 18:17:37 +0000
-Received: from mail-nwsmtp-smtp-production-main-63.klg.yp-c.yandex.net (mail-nwsmtp-smtp-production-main-63.klg.yp-c.yandex.net [IPv6:2a02:6b8:c42:842f:0:640:b96f:0])
-	by forward502d.mail.yandex.net (Yandex) with ESMTPS id EBB8760C59;
-	Tue,  3 Jun 2025 21:17:25 +0300 (MSK)
-Received: by mail-nwsmtp-smtp-production-main-63.klg.yp-c.yandex.net (smtp/Yandex) with ESMTPSA id LHgCkEULiKo0-pLzcZTYY;
-	Tue, 03 Jun 2025 21:17:24 +0300
-X-Yandex-Fwd: 1
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0upti.me; s=mail;
-	t=1748974644; bh=pOpYljZuYO3T7PKQuPSq6hSLphxMmYBM9c7hIldkB8Q=;
-	h=From:In-Reply-To:Cc:Date:References:To:Subject:Message-ID;
-	b=lfjC88AQLYLUsUJy3b7nRVzevTZKollL8zItXcXC4rgjno4MWLGx6K+HDJLEJW5Rh
-	 YYsmCJsPg7cOuXLi+Dm6HNyLtLYQKa+LofdjRX7bQxnh6dlTW3AwOjaGjOb6PbLec6
-	 iyRtRNFb5eGkXo7L0wJ2J1pBv0BJdWAL954cjgbw=
-Authentication-Results: mail-nwsmtp-smtp-production-main-63.klg.yp-c.yandex.net; dkim=pass header.i=@0upti.me
-Message-ID: <40ac27ab-00f7-4fc4-97ca-f3b519167f5c@0upti.me>
-Date: Tue, 3 Jun 2025 21:17:21 +0300
+	id 1uMZpP-0000000Bvvm-2R3h;
+	Tue, 03 Jun 2025 22:09:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1748988592; x=1780524592;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=S0c47ppm0drVdO4jAjCQHwJvNJsQNG50GQKepxniEQo=;
+  b=RbjoMTCaMe0G4Qv+1L+j3wNSJQf3/AYqTjhhHAu/p2Vw6JfLXfbFWbTM
+   bLMyb8ojt0Jg89GqzjqOs6p2oyETqkO0rLND4/kcODf6UGVO1KW7Ez7qi
+   LUPWtld5QGaiEJNTL/Ku6PXKQ41bMfcH1G5YPTafhKbcDjTVFJ8eYP+8J
+   svk0e3sdvINgw6Up9139KVo7OCmgv58Smky42EtXBfttD5Q8Zdhb99oT/
+   SFofL53OkPR+JSWCJTsRP2fAzma5Qs/bG1soGkh9D4tFdf26v/9Wqokdv
+   nbZr9lG2q0g9OZ4uqacBGNG7iKVDKF3YibfTb4dS3Yi8JYRW4uzH5Gz46
+   A==;
+X-CSE-ConnectionGUID: 0SXM0J6iSLGP5XkKZxvj6A==
+X-CSE-MsgGUID: WqMREC1nSdCV+4NGqk0ZLw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11453"; a="54840723"
+X-IronPort-AV: E=Sophos;i="6.16,207,1744095600"; 
+   d="scan'208";a="54840723"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Jun 2025 15:09:51 -0700
+X-CSE-ConnectionGUID: uXDwbOKqSaqNgJYSUub+BQ==
+X-CSE-MsgGUID: pmasmQ4sQfmqqaQU15SoOg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,207,1744095600"; 
+   d="scan'208";a="168152739"
+Received: from lkp-server01.sh.intel.com (HELO e8142ee1dce2) ([10.239.97.150])
+  by fmviesa002.fm.intel.com with ESMTP; 03 Jun 2025 15:09:46 -0700
+Received: from kbuild by e8142ee1dce2 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1uMZpH-0002kP-3D;
+	Tue, 03 Jun 2025 22:09:43 +0000
+Date: Wed, 4 Jun 2025 06:08:53 +0800
+From: kernel test robot <lkp@intel.com>
+To: "irving.ch.lin" <irving-ch.lin@mediatek.com>,
+	Wim Van Sebroeck <wim@linux-watchdog.org>,
+	Guenter Roeck <linux@roeck-us.net>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>, nfraprado@collabora.com
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	angelogioacchino.delregno@collabora.com,
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
+	linux-pm@vger.kernel.org, netdev@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Irving lin <irving-ch.lin@mediatek.corp-partner.google.com>
+Subject: Re: [1/5] clk: mt8189: Porting driver for clk
+Message-ID: <202506040506.Hrl72R0Q-lkp@intel.com>
+References: <20250602083624.1849719-1-irving-ch.lin@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC net-next] net: phylink: always config mac for
- (delayed) phy
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-References: <20250107123615.161095-1-ericwouds@gmail.com>
- <Z30iUj6DE9-fRp0n@shell.armlinux.org.uk>
- <4b9b2a9a-061b-43ad-b402-a49aee317f41@gmail.com>
- <Z31CJS1YUvPGiEXs@shell.armlinux.org.uk>
- <98234080-946e-4b36-832f-113b185e7bca@gmail.com>
- <Z3-Tz5WdLCat91vm@shell.armlinux.org.uk>
- <9cc913d7-7e5b-4b6c-886c-ca9778c3f970@0upti.me>
- <aD1lRha-enQ9Pw0g@shell.armlinux.org.uk>
- <2894a781-4d4b-4e3c-9f4e-7c1f04122f8a@0upti.me>
- <aD3Cc7gmB2Tev_ul@shell.armlinux.org.uk>
-Content-Language: en-US
-From: Ilya K <me@0upti.me>
-In-Reply-To: <aD3Cc7gmB2Tev_ul@shell.armlinux.org.uk>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250602083624.1849719-1-irving-ch.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250603_111735_441893_D72E629C 
-X-CRM114-Status: GOOD (  11.88  )
+X-CRM114-CacheID: sfid-20250603_150951_661663_EC6A02B8 
+X-CRM114-Status: GOOD (  14.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,20 +95,147 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-mediatek@lists.infradead.org, Daniel Golle <daniel@makrotopia.org>, bridge@lists.linux.dev, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, coreteam@netfilter.org, netfilter-devel@vger.kernel.org, Eric Woudstra <ericwouds@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Heiner Kallweit <hkallweit1@gmail.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2025-06-02 18:25, Russell King (Oracle) wrote:
-> On Mon, Jun 02, 2025 at 04:00:14PM +0300, Ilya K wrote:
->> That's weird, because I do have all the patches applied. I think this may have been broken by the pcs_inband_caps changes, because without the patch I'm just getting "autoneg setting not compatible with PCS", after which it bails, when it should really reconfigure the MAC instead.
-> 
-> Please enable phylink and sfp debug (adding #define DEBUG to the top of
-> phylink.c and sfp.c, and then send the kernel messages after reproducing
-> the issue.
-> 
-> Thanks.
-> 
+Hi irving.ch.lin,
 
-OK, somehow it just works normally now, even with the patch reverted. I think I grew a few gray hairs over the last few days. Sorry for the trouble, everyone, I'm off to not touch this thing ever again.
+kernel test robot noticed the following build errors:
+
+[auto build test ERROR on clk/clk-next]
+[also build test ERROR on linus/master v6.15 next-20250530]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/irving-ch-lin/clk-mt8189-Porting-driver-for-clk/20250603-105623
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/clk/linux.git clk-next
+patch link:    https://lore.kernel.org/r/20250602083624.1849719-1-irving-ch.lin%40mediatek.com
+patch subject: [1/5] clk: mt8189: Porting driver for clk
+config: x86_64-allyesconfig (https://download.01.org/0day-ci/archive/20250604/202506040506.Hrl72R0Q-lkp@intel.com/config)
+compiler: clang version 20.1.2 (https://github.com/llvm/llvm-project 58df0ef89dd64126512e4ee27b4ac3fd8ddf6247)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250604/202506040506.Hrl72R0Q-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202506040506.Hrl72R0Q-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+>> drivers/clk/mediatek/clk-mt8189.c:22:10: fatal error: 'dt-bindings/clock/mt8189-clk.h' file not found
+      22 | #include <dt-bindings/clock/mt8189-clk.h>
+         |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   1 error generated.
+--
+>> drivers/clk/mediatek/clk-bringup.c:18:43: error: incomplete definition of type 'struct platform_device'
+      18 |         clk_con = of_count_phandle_with_args(pdev->dev.of_node, "clocks",
+         |                                              ~~~~^
+   include/linux/of_platform.h:14:8: note: forward declaration of 'struct platform_device'
+      14 | struct platform_device;
+         |        ^
+   drivers/clk/mediatek/clk-bringup.c:22:24: error: incomplete definition of type 'struct platform_device'
+      22 |                 clk = of_clk_get(pdev->dev.of_node, i);
+         |                                  ~~~~^
+   include/linux/of_platform.h:14:8: note: forward declaration of 'struct platform_device'
+      14 | struct platform_device;
+         |        ^
+   drivers/clk/mediatek/clk-bringup.c:48:33: error: incomplete definition of type 'struct platform_device'
+      48 |         struct device_node *node = pdev->dev.of_node;
+         |                                    ~~~~^
+   include/linux/of_platform.h:14:8: note: forward declaration of 'struct platform_device'
+      14 | struct platform_device;
+         |        ^
+   drivers/clk/mediatek/clk-bringup.c:78:44: error: incomplete definition of type 'struct platform_device'
+      78 |         clk_probe = of_device_get_match_data(&pdev->dev);
+         |                                               ~~~~^
+   include/linux/of_platform.h:14:8: note: forward declaration of 'struct platform_device'
+      14 | struct platform_device;
+         |        ^
+>> drivers/clk/mediatek/clk-bringup.c:84:3: error: call to undeclared function 'dev_err'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+      84 |                 dev_err(&pdev->dev,
+         |                 ^
+   drivers/clk/mediatek/clk-bringup.c:84:16: error: incomplete definition of type 'struct platform_device'
+      84 |                 dev_err(&pdev->dev,
+         |                          ~~~~^
+   include/linux/of_platform.h:14:8: note: forward declaration of 'struct platform_device'
+      14 | struct platform_device;
+         |        ^
+   drivers/clk/mediatek/clk-bringup.c:86:8: error: incomplete definition of type 'struct platform_device'
+      86 |                         pdev->name, r);
+         |                         ~~~~^
+   include/linux/of_platform.h:14:8: note: forward declaration of 'struct platform_device'
+      14 | struct platform_device;
+         |        ^
+>> drivers/clk/mediatek/clk-bringup.c:96:31: error: variable has incomplete type 'struct platform_driver'
+      96 | static struct platform_driver bring_up = {
+         |                               ^
+   drivers/clk/mediatek/clk-bringup.c:96:15: note: forward declaration of 'struct platform_driver'
+      96 | static struct platform_driver bring_up = {
+         |               ^
+>> drivers/clk/mediatek/clk-bringup.c:106:1: error: type specifier missing, defaults to 'int'; ISO C99 and later do not support implicit int [-Wimplicit-int]
+     106 | module_platform_driver(bring_up);
+         | ^
+         | int
+>> drivers/clk/mediatek/clk-bringup.c:106:24: error: a parameter list without types is only allowed in a function definition
+     106 | module_platform_driver(bring_up);
+         |                        ^
+   10 errors generated.
+--
+>> drivers/clk/mediatek/clk-mt8189-adsp.c:15:10: fatal error: 'dt-bindings/clock/mt8189-clk.h' file not found
+      15 | #include <dt-bindings/clock/mt8189-clk.h>
+         |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   1 error generated.
+--
+>> drivers/clk/mediatek/clk-mt8189-cam.c:15:10: fatal error: 'dt-bindings/clock/mt8189-clk.h' file not found
+      15 | #include <dt-bindings/clock/mt8189-clk.h>
+         |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   1 error generated.
+--
+>> drivers/clk/mediatek/clk-mt8189-mmsys.c:15:10: fatal error: 'dt-bindings/clock/mt8189-clk.h' file not found
+      15 | #include <dt-bindings/clock/mt8189-clk.h>
+         |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   1 error generated.
+--
+>> drivers/clk/mediatek/clk-mt8189-img.c:15:10: fatal error: 'dt-bindings/clock/mt8189-clk.h' file not found
+      15 | #include <dt-bindings/clock/mt8189-clk.h>
+         |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   1 error generated.
+--
+>> drivers/clk/mediatek/clk-mt8189-iic.c:15:10: fatal error: 'dt-bindings/clock/mt8189-clk.h' file not found
+      15 | #include <dt-bindings/clock/mt8189-clk.h>
+         |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   1 error generated.
+--
+>> drivers/clk/mediatek/clk-mt8189-bus.c:15:10: fatal error: 'dt-bindings/clock/mt8189-clk.h' file not found
+      15 | #include <dt-bindings/clock/mt8189-clk.h>
+         |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   1 error generated.
+--
+>> drivers/clk/mediatek/clk-mt8189-mdpsys.c:15:10: fatal error: 'dt-bindings/clock/mt8189-clk.h' file not found
+      15 | #include <dt-bindings/clock/mt8189-clk.h>
+         |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   1 error generated.
+--
+>> drivers/clk/mediatek/clk-mt8189-mfg.c:15:10: fatal error: 'dt-bindings/clock/mt8189-clk.h' file not found
+      15 | #include <dt-bindings/clock/mt8189-clk.h>
+         |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   1 error generated.
+--
+>> drivers/clk/mediatek/clk-mt8189-scp.c:15:10: fatal error: 'dt-bindings/clock/mt8189-clk.h' file not found
+      15 | #include <dt-bindings/clock/mt8189-clk.h>
+         |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   1 error generated.
+..
+
+
+vim +22 drivers/clk/mediatek/clk-mt8189.c
+
+    21	
+  > 22	#include <dt-bindings/clock/mt8189-clk.h>
+    23	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
