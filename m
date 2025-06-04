@@ -4,71 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7493C5B543
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Jun 2025 03:28:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 804A1C5B555
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Jun 2025 08:44:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LMdUXEYopcfLSt7uB1VuVeSShg/1Lrd8ekJqi0vTcmc=; b=MOg2ZRYXjFPni24GBpsSBYsBby
-	vYvr3AgzigA1CmyDmQNUTR7NX83uqp2ee6UXnwp/gD0N4RwroYYCoDsln2eC91Yoy6u8F0WJjJPsC
-	I6uCAyPHhBEpgHe2HJn/UYb2c78MZowrFhK/sE3CAmWF+66dNXC9lc5yr6jzhYVFAlJZtrNCUwFPJ
-	iI3NV9SIXcjRNRnRzwYOXx4i0MvvzI28XaF9p/skgrpo0okSekF6Qr5jVoZ1qtHw2ehZ0vSpXOv07
-	+KeWp9TgFKaU2sYn/1uNawd/IAi3o4/J0BY7o6Z5DcoYftGzhRNu4YCKR3pz5XEDDIcpTiCTVroiT
-	F7CMZPJg==;
+	bh=4pYCzyvVuUxf1ykvfMA4e/Vu/0PCYvey3wVDJfkBM4g=; b=RVQALCdsUFHAgkPBpwvfAkoZ+7
+	iGcFZh7lZ94Qpw7wOpPy48rkWzecB7OKP1zTYExuhfXEYuQpxn/cwBZc59Fu1JZ3ksy+sO5jGqGp+
+	lv/gqelOSsinqCK73n6c2yNP+eaJ0baN/2fso3rpyKTvnRkrR/Yq2Y/lJ4QitBy9ST55NPOw8ciYz
+	v3LYu4W4S47tQd6uBATswOPRzpLmhx6oOxdFtIJ05F5Suq0oAEvgYTKS94Ow4CYxBvlXu03J6rnli
+	z5G6VzkxZW9wEliYoRbKiLUEGlQ/+BDMV/kp7zJdz0ToVvG4WjOwuG5AGKy3tSStz33vx04Lw8MNz
+	0kqrAoGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMend-0000000CRke-1MlB;
-	Wed, 04 Jun 2025 03:28:21 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uMjju-0000000Cvg0-2R8B;
+	Wed, 04 Jun 2025 08:44:50 +0000
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMcaM-0000000C92S-2RSZ;
-	Wed, 04 Jun 2025 01:06:31 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 49C7B49C22;
-	Wed,  4 Jun 2025 01:06:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D6662C4CEEF;
-	Wed,  4 Jun 2025 01:06:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1748999190;
-	bh=q7JYVPVG2dRLlDqWkJSfnGRBlhdWxwq+TInUPdY3o64=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=GMhwNPq3YNTYhv8Edqq4LTeDb5E92FsdNtPzGxUO+/DpiROetHGS1FIBfB+Z8Ptum
-	 +/+pKCgxQ36t04fYQdCxA3ANLFO/gv5E63Nk78mwRyYVp21lCvbin1IlaQ4jD7709q
-	 +Om8Itk2jsTobJOHme2LUUujE0647HmtXLQ4u8uFMT7aH5o/RTU69+CcUJ1cbsJUZ5
-	 /O0C1VwfF6zzUSmztrDfa1LHVib+la3ckx/UhP7/TsiJfeRdXuOyyeFxWXKhljxnOh
-	 Fx9WphGcxFx1LCJomQ40KsZlEZo6g0u/NaTW6EOtf+FQMSVXTviCcgwlviIDs2lmRB
-	 gx5tSML0hQPMw==
-From: Sasha Levin <sashal@kernel.org>
-To: patches@lists.linux.dev,
-	stable@vger.kernel.org
-Cc: Henk Vergonet <henk.vergonet@gmail.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Felix Fietkau <nbd@nbd.name>,
-	Sasha Levin <sashal@kernel.org>,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	uwu@icenowy.me,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.10 05/27] wifi: mt76: mt76x2: Add support for LiteOn WN4516R,WN4519R
-Date: Tue,  3 Jun 2025 21:05:58 -0400
-Message-Id: <20250604010620.6819-5-sashal@kernel.org>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250604010620.6819-1-sashal@kernel.org>
-References: <20250604010620.6819-1-sashal@kernel.org>
+	id 1uMj8y-0000000CqVR-0syQ
+	for linux-mediatek@lists.infradead.org;
+	Wed, 04 Jun 2025 08:06:41 +0000
+Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-3a4f7865b22so719486f8f.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 04 Jun 2025 01:06:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1749024398; x=1749629198; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:mime-version:date:message-id:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=4pYCzyvVuUxf1ykvfMA4e/Vu/0PCYvey3wVDJfkBM4g=;
+        b=dN9cAmbVaMFlJFTGchG3z9Kr1KA29tImYEkSGbwvkZTU4QfnRrHXwb9OtLERuCnzSa
+         kacMi4erbFR0O2XiZ9CdXgu17wJXecn1b5iF4NwDiwR+9/k8bRS0qLxAuDYBHXBtx8Da
+         az1KgZtYpnHWzIPrc/u3zAPsRQ2bxh1Cy4kw9dwrIPnVDETbQpjigL1OlocQG0xiOtHg
+         H2S+lLgUVFeZPlpd8NrPjRDBRmPDGXPj50SeJHh2qiNlgi2zeLDAD8MJSr3I0VWHQgjs
+         dlb7ki+R33leeQfhWf/45t3Q05MEfMNJE6rsV3cBVLKOgtfGNGFwck0AMHkxlh+0AMJT
+         EZdw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749024398; x=1749629198;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=4pYCzyvVuUxf1ykvfMA4e/Vu/0PCYvey3wVDJfkBM4g=;
+        b=vt6f1OGZqW/tG1CS/mTPQFH7EOzPgSWCku/ysceZkflAUffaCcP2pFW0EtRzE+EqDr
+         UFs/EcU4vUkuR3oS2vY1LN1HVKknreiO8MeevSeoOE49Gh2hF0iEy1MRHWK5OvKQESxR
+         lb43bcMdvHBz0QSlXaHUjv9h1+zBPk8M0p75/ODNzTcAwbjgjWeQ1vjg0UXtrmzkNbsY
+         6N8wKkRivE4078caIvKRH9sqqeSVrw+slsuwZUsqWNJc9xii6F2uge0hyxiJW1JWIBAq
+         WDia8xnzfSvrp3VzeRwbNGfRNMBL4/5lsfMVXoF1yNHVOK3WN2dBw+LjXqdY8Bs4cOBF
+         2YNA==
+X-Forwarded-Encrypted: i=1; AJvYcCUSwpclkZs7qXP4HD0po/0fojmCZTRwafjK9LG8MxwhR7W+yed0TeD+ZW3MSJ+VEHNSce/Cl/oY+53QhX6FUQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw1nAfb0llZ7sFN8P0QzAF8oo+1Fk4rc/yMOm/aaBhpEHxGbCVq
+	rTeGu2eJwmm62p/TQuXYK/113spb9a6fd749Z5sjYaJ8Jkir1WbZLt4=
+X-Gm-Gg: ASbGncsCSoR8SrtJyKINuxiv5KwPVwUYl6SYzHjNTpuZr8GoKKzehjvS4viHWylgP11
+	FgOTvS5e1CCXo2GZIba8aOxB/mSPIzP9A/gktPBxkcgWPc2pTTg23qAEWvSaMyS1cd/dBeUWS1M
+	/TZpgGd8ozvrkG0ELb2eRdpLrdtza7YSLsoTd3uH1jxRN61TKOnz/RD9KL/TdpdTxmJ46cZQto3
+	XyC554VR55vED3+YMYCZUcyzeQjOSev4ExvEWK3Xih9jQHbk0ElRmgrerqpHNuX+WcD45+3RU2R
+	6yjwtcNT9VeE6Pnwtw/H596qLbmNe3IFoM+izUc58H8/cfrmml9VdCGXce0rqpLPkodWLgKxOZo
+	11xke72hjirkhG0PkpuqK33Ls6U1JGvRJHgKMaQ==
+X-Google-Smtp-Source: AGHT+IF2ugr+CYuO5R6m+k+nVTMMVyTkAQoZCMAynyAqBF16OKr2HATLFSRU+dGGEAd4mbVnWkCUCQ==
+X-Received: by 2002:a05:6000:22c2:b0:3a3:61ab:86c2 with SMTP id ffacd0b85a97d-3a51d91f3abmr462084f8f.7.1749024397789;
+        Wed, 04 Jun 2025 01:06:37 -0700 (PDT)
+Received: from localhost (81.red-80-39-161.dynamicip.rima-tde.net. [80.39.161.81])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a4efe5b7bbsm20597082f8f.4.2025.06.04.01.06.36
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 04 Jun 2025 01:06:37 -0700 (PDT)
+Message-ID: <bcc1994c-6ece-4e71-a8b9-9367f6734381@gmail.com>
+Date: Wed, 4 Jun 2025 10:06:36 +0200
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 5.10.237
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH] ASoC: mt6660: delete MODULE_VERSION
+To: Mark Brown <broonie@kernel.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
+ Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ SOUND ML <linux-sound@vger.kernel.org>,
+ MEDIATEK ML <linux-mediatek@lists.infradead.org>
+References: <20250531155950.101164-1-xose.vazquez@gmail.com>
+ <bd02757e-458b-4a3c-9194-7d7bbbd318f5@sirena.org.uk>
+Content-Language: en-US, en-GB, es-ES
+From: Xose Vazquez Perez <xose.vazquez@gmail.com>
+In-Reply-To: <bd02757e-458b-4a3c-9194-7d7bbbd318f5@sirena.org.uk>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250603_180630_668166_57707780 
-X-CRM114-Status: GOOD (  19.35  )
+X-CRM114-CacheID: sfid-20250604_010640_250765_726D6DDF 
+X-CRM114-Status: UNSURE (   9.09  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,134 +104,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Henk Vergonet <henk.vergonet@gmail.com>
+On 6/2/25 1:21 PM, Mark Brown wrote:
 
-[ Upstream commit 3c0e4f606d8693795a2c965d6f4987b1bfc31097 ]
+> On Sat, May 31, 2025 at 05:59:49PM +0200, Xose Vazquez Perez wrote:
+> 
+> Why?
 
-Adds support for:
- - LiteOn WN4516R
- - LiteOn WN4519R
- Both use:
- - A nonstandard USB connector
- - Mediatek chipset MT7600U
- - ASIC revision: 76320044
+Reminiscent of ancient times when modules were developed outside the kernel:
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=2cd53fa9d38b98ea5ae4268e021c4f4cd68227a5
 
-Disabled VHT support on ASIC revision 76320044:
+This is the only driver under sound/ with this macro.
 
- This fixes the 5G connectibity issue on LiteOn WN4519R module
- see https://github.com/openwrt/mt76/issues/971
+>> Cc: Liam Girdwood <lgirdwood@gmail.com>
+>> Cc: Mark Brown <broonie@kernel.org>
+>> Cc: Jaroslav Kysela <perex@perex.cz>
+>> Cc: Takashi Iwai <tiwai@suse.com>
+>> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+>> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> Cc: SOUND ML <linux-sound@vger.kernel.org>
+>> Cc: MEDIATEK ML <linux-mediatek@lists.infradead.org>
+>> ---
+> 
+> You've not provided a Signed-off-by for this so I can't do anything with
+> it, please see Documentation/process/submitting-patches.rst for details
+> on what this is and why it's important.
 
- And may also fix the 5G issues on the XBox One Wireless Adapter
- see https://github.com/openwrt/mt76/issues/200
-
- I have looked at the FCC info related to the MT7632U chip as mentioned in here:
- https://github.com/openwrt/mt76/issues/459
- These confirm the chipset does not support 'ac' mode and hence VHT should be turned of.
-
-Signed-off-by: Henk Vergonet <henk.vergonet@gmail.com>
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Link: https://patch.msgid.link/20250418143914.31384-1-henk.vergonet@gmail.com
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
-
-**YES** This commit should be backported to stable kernel trees. Here's
-my detailed analysis: ## Comparison with Similar Commits This commit
-closely matches **Similar Commit #1** (XBox One wifi adapter support)
-which was marked as **YES** for backporting. Both commits: - Add new USB
-device IDs for wireless adapters - Include hardware-specific workarounds
-for device limitations - Fix connectivity issues for specific hardware
-## Code Changes Analysis ### 1. USB Device ID Additions (Low Risk) ```c
-{ USB_DEVICE(0x0471, 0x2126) }, /bin /bin.usr-is-merged /boot /dev /etc
-/home /init /lib /lib.usr-is-merged /lib64 /lost+found /media /mnt /opt
-/proc /root /run /sbin /sbin.usr-is-merged /snap /srv /sys /tmp /usr
-/var LiteOn WN4516R module, nonstandard USB connector linux/ {
-USB_DEVICE(0x0471, 0x7600) }, /bin /bin.usr-is-merged /boot /dev /etc
-/home /init /lib /lib.usr-is-merged /lib64 /lost+found /media /mnt /opt
-/proc /root /run /sbin /sbin.usr-is-merged /snap /srv /sys /tmp /usr
-/var LiteOn WN4519R module, nonstandard USB connector linux/ ``` -
-**Risk**: Minimal - adding device IDs is very safe - **Impact**: Enables
-support for new hardware without affecting existing devices - **Scope**:
-Contained to device identification ### 2. VHT Capability Fix (Critical
-Bug Fix) ```c switch (dev->mt76.rev) { case 0x76320044: /bin /bin.usr-
-is-merged /boot /dev /etc /home /init /lib /lib.usr-is-merged /lib64
-/lost+found /media /mnt /opt /proc /root /run /sbin /sbin.usr-is-merged
-/snap /srv /sys /tmp /usr /var these ASIC revisions do not support VHT
-linux/ vht = false; break; default: vht = true; break; } ``` - **Fixes
-critical connectivity issues**: The commit explicitly fixes 5G
-connectivity problems - **Hardware-specific workaround**: Targets a
-specific ASIC revision (0x76320044) - **Conservative approach**:
-Disables problematic VHT only for affected hardware - **Minimal
-regression risk**: Existing devices continue using VHT as before ##
-Backport Suitability Criteria ✅ **Fixes user-affecting bugs**: Resolves
-5G connectivity issues on LiteOn modules and potentially XBox One
-adapters ✅ **Small and contained**: Changes are minimal - 2 new USB IDs
-and a targeted VHT disable ✅ **No architectural changes**: Uses existing
-framework, just adds device support and fixes capability detection ✅
-**References external issues**: Links to GitHub issues #971 and #200,
-indicating real user problems ✅ **Clear side effects documentation**:
-VHT disabling is well-documented and justified with FCC information ✅
-**Follows stable tree rules**: Important hardware support fix with
-minimal regression risk ✅ **Confined to subsystem**: Changes limited to
-mt76x2 USB driver ## Hardware Impact Assessment The commit addresses
-**confirmed hardware limitations** where VHT was incorrectly enabled on
-chipsets that don't support it, causing: - Connection failures in 5GHz
-band - Potential instability when VHT features are attempted This
-matches the pattern of **Similar Commit #1** which added support for
-newer XBox One adapters and was successfully backported. The
-risk/benefit ratio strongly favors backporting: minimal code changes
-that fix real connectivity issues for specific hardware without
-affecting other devices.
-
- drivers/net/wireless/mediatek/mt76/mt76x2/usb.c     |  2 ++
- .../net/wireless/mediatek/mt76/mt76x2/usb_init.c    | 13 ++++++++++++-
- 2 files changed, 14 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c b/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
-index 82a193aac09d7..95c548f45bdf8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
-@@ -17,6 +17,8 @@ static const struct usb_device_id mt76x2u_device_table[] = {
- 	{ USB_DEVICE(0x057c, 0x8503) },	/* Avm FRITZ!WLAN AC860 */
- 	{ USB_DEVICE(0x7392, 0xb711) },	/* Edimax EW 7722 UAC */
- 	{ USB_DEVICE(0x0e8d, 0x7632) },	/* HC-M7662BU1 */
-+	{ USB_DEVICE(0x0471, 0x2126) }, /* LiteOn WN4516R module, nonstandard USB connector */
-+	{ USB_DEVICE(0x0471, 0x7600) }, /* LiteOn WN4519R module, nonstandard USB connector */
- 	{ USB_DEVICE(0x2c4e, 0x0103) },	/* Mercury UD13 */
- 	{ USB_DEVICE(0x0846, 0x9053) },	/* Netgear A6210 */
- 	{ USB_DEVICE(0x045e, 0x02e6) },	/* XBox One Wireless Adapter */
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2/usb_init.c b/drivers/net/wireless/mediatek/mt76/mt76x2/usb_init.c
-index ffc2deba29ac6..c845e83897659 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x2/usb_init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x2/usb_init.c
-@@ -191,6 +191,7 @@ int mt76x2u_register_device(struct mt76x02_dev *dev)
- {
- 	struct ieee80211_hw *hw = mt76_hw(dev);
- 	struct mt76_usb *usb = &dev->mt76.usb;
-+	bool vht;
- 	int err;
- 
- 	INIT_DELAYED_WORK(&dev->cal_work, mt76x2u_phy_calibrate);
-@@ -215,7 +216,17 @@ int mt76x2u_register_device(struct mt76x02_dev *dev)
- 
- 	/* check hw sg support in order to enable AMSDU */
- 	hw->max_tx_fragments = dev->mt76.usb.sg_en ? MT_TX_SG_MAX_SIZE : 1;
--	err = mt76_register_device(&dev->mt76, true, mt76x02_rates,
-+	switch (dev->mt76.rev) {
-+	case 0x76320044:
-+		/* these ASIC revisions do not support VHT */
-+		vht = false;
-+		break;
-+	default:
-+		vht = true;
-+		break;
-+	}
-+
-+	err = mt76_register_device(&dev->mt76, vht, mt76x02_rates,
- 				   ARRAY_SIZE(mt76x02_rates));
- 	if (err)
- 		goto fail;
--- 
-2.39.5
-
+Signed-off-by: Xose Vazquez Perez <xose.vazquez@gmail.com>
 
