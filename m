@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE907C5AE59
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Jun 2025 03:14:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7493C5B543
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Jun 2025 03:28:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=plSmHSndiuDXOg13P9pI15wcgr/wKduXPQw1tP6SZhk=; b=43RXGbEk4JaevLm5ZhKWZlwV3T
-	wk5ok+oNo0UAR6ZzNfjSvDWH6/sGcLtp1ixLkl4qQS/xttiddquk3JfimNPuX3zMEVVKg1EeLX3TQ
-	GZUzdK7ZxXtQ2G11ILzV98Hhz42X8aHlXqOkD8rEbIRs1uuIa5O+YbX5AREOg11ZfCntOri7bIP8P
-	IllqWzIf1e9g6e/hW1h17WMRMp1jGj6S0Ck1psehptMLAgdDyKCoAMarGKJjW+oqV8mE1FUwlHEce
-	umLwBKSfoq4H9a8PwOrnIpIwIbXXBwU8O5bMVIuhoR3KKEC3A4bRGidyI/acnUFhNUELFhcD4HVnu
-	6nxs6z3Q==;
+	bh=LMdUXEYopcfLSt7uB1VuVeSShg/1Lrd8ekJqi0vTcmc=; b=MOg2ZRYXjFPni24GBpsSBYsBby
+	vYvr3AgzigA1CmyDmQNUTR7NX83uqp2ee6UXnwp/gD0N4RwroYYCoDsln2eC91Yoy6u8F0WJjJPsC
+	I6uCAyPHhBEpgHe2HJn/UYb2c78MZowrFhK/sE3CAmWF+66dNXC9lc5yr6jzhYVFAlJZtrNCUwFPJ
+	iI3NV9SIXcjRNRnRzwYOXx4i0MvvzI28XaF9p/skgrpo0okSekF6Qr5jVoZ1qtHw2ehZ0vSpXOv07
+	+KeWp9TgFKaU2sYn/1uNawd/IAi3o4/J0BY7o6Z5DcoYftGzhRNu4YCKR3pz5XEDDIcpTiCTVroiT
+	F7CMZPJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMeaZ-0000000CQ9N-10qv;
-	Wed, 04 Jun 2025 03:14:51 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1uMend-0000000CRke-1MlB;
+	Wed, 04 Jun 2025 03:28:21 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMcZS-0000000C8vf-2j66;
-	Wed, 04 Jun 2025 01:05:35 +0000
+	id 1uMcaM-0000000C92S-2RSZ;
+	Wed, 04 Jun 2025 01:06:31 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5CCFD43C8F;
-	Wed,  4 Jun 2025 01:05:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E3C88C4CEED;
-	Wed,  4 Jun 2025 01:05:32 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 49C7B49C22;
+	Wed,  4 Jun 2025 01:06:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D6662C4CEEF;
+	Wed,  4 Jun 2025 01:06:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1748999134;
-	bh=sTr+czi8H5o5+cE59kBVVJbF4lBVkGlhby/Bbqi5gO8=;
+	s=k20201202; t=1748999190;
+	bh=q7JYVPVG2dRLlDqWkJSfnGRBlhdWxwq+TInUPdY3o64=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=EglhJB6H9jJKtFVcN0CMwmxuJ1sDu7Hep+mXsdn6jVefTy/4xjwHWxBliW+pzRqgM
-	 zlKmjSzPlGlfW5plhd19kJ9TEhEG6sf/fy+VYAJW3SPrpcqiTgZIQWSKxf5hpsGdJj
-	 mpnpPyAXDdxHtlWlsqqiYmYNRIAo8R/u8DNIzX4qbAWNBmDMM1cmWEbPSSzezyC83w
-	 jxlr8rzHyvimg6RiNgAgq/yuprdqxC+SZkAOJ470gDsqepDHlKWu8dlpBnpCckQ/Mj
-	 X6J+megIlVp1vsXkf//m5Q53A48pnRPdmbyL7CaUh6sycISBSF5pmJH5PY+F7Dmo4u
-	 otHEGBQ2A3d1A==
+	b=GMhwNPq3YNTYhv8Edqq4LTeDb5E92FsdNtPzGxUO+/DpiROetHGS1FIBfB+Z8Ptum
+	 +/+pKCgxQ36t04fYQdCxA3ANLFO/gv5E63Nk78mwRyYVp21lCvbin1IlaQ4jD7709q
+	 +Om8Itk2jsTobJOHme2LUUujE0647HmtXLQ4u8uFMT7aH5o/RTU69+CcUJ1cbsJUZ5
+	 /O0C1VwfF6zzUSmztrDfa1LHVib+la3ckx/UhP7/TsiJfeRdXuOyyeFxWXKhljxnOh
+	 Fx9WphGcxFx1LCJomQ40KsZlEZo6g0u/NaTW6EOtf+FQMSVXTviCcgwlviIDs2lmRB
+	 gx5tSML0hQPMw==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
@@ -54,20 +54,20 @@ Cc: Henk Vergonet <henk.vergonet@gmail.com>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.15 05/33] wifi: mt76: mt76x2: Add support for LiteOn WN4516R,WN4519R
-Date: Tue,  3 Jun 2025 21:04:56 -0400
-Message-Id: <20250604010524.6091-5-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.10 05/27] wifi: mt76: mt76x2: Add support for LiteOn WN4516R,WN4519R
+Date: Tue,  3 Jun 2025 21:05:58 -0400
+Message-Id: <20250604010620.6819-5-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250604010524.6091-1-sashal@kernel.org>
-References: <20250604010524.6091-1-sashal@kernel.org>
+In-Reply-To: <20250604010620.6819-1-sashal@kernel.org>
+References: <20250604010620.6819-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 5.15.184
+X-stable-base: Linux 5.10.237
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250603_180534_731945_C962E560 
+X-CRM114-CacheID: sfid-20250603_180630_668166_57707780 
 X-CRM114-Status: GOOD (  19.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -167,7 +167,7 @@ affecting other devices.
  2 files changed, 14 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c b/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
-index 9369515f36a3a..4e14548d27215 100644
+index 82a193aac09d7..95c548f45bdf8 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
 @@ -17,6 +17,8 @@ static const struct usb_device_id mt76x2u_device_table[] = {
@@ -180,7 +180,7 @@ index 9369515f36a3a..4e14548d27215 100644
  	{ USB_DEVICE(0x0846, 0x9053) },	/* Netgear A6210 */
  	{ USB_DEVICE(0x045e, 0x02e6) },	/* XBox One Wireless Adapter */
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2/usb_init.c b/drivers/net/wireless/mediatek/mt76/mt76x2/usb_init.c
-index 85dcdc22fbebf..41b9a99665822 100644
+index ffc2deba29ac6..c845e83897659 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76x2/usb_init.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt76x2/usb_init.c
 @@ -191,6 +191,7 @@ int mt76x2u_register_device(struct mt76x02_dev *dev)
