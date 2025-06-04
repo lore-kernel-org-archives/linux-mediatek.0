@@ -4,60 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55F1FC5AD49
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Jun 2025 01:13:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42AE5C5AD49
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Jun 2025 01:31:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5gnxWLFy4fnE0jN24eOCIKGzD4OoRh5h5ohMsvYqjVU=; b=h1KTfa7ZTcNtIb
-	lOofuh4OMcyqsw7jyEqbZDWEHX9bLPlT0MH4Apm0WMBNgIKVZllkUxkZ3/QU/gZS5fDJEAN9aQPCf
-	tRpIxReNXpCZ5qJLRFAwFxru9Y5yl5OWFJIP9rSPOdFWuiOpJZk0ltBN5YeKbycpbrU9XZ4jzJmMr
-	An6u1qxW95lflm1Pio6xU0PJ8g6xS7VrjcbtIm7mvREzQ3TEgdc4qaFfHvbZmS53VpZoBCDMvLuoj
-	mTxgWvWTUVciY5fpqXLLTKV/BMYI+spAanNlODTyYthNwHuwWq15yAZqSQs6DzZybWbVuZk8n/ut7
-	lN3kDDQ4vrANi+Hnou8A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LjDqsJUJmRIQBoRAxCwQqxyvySNnGkVmcGaOxaijoac=; b=uFionZBlZS3GT2sVtzBCeoZzjF
+	YkrJeYGsMg2rj8HtRE4OBqiDL9YtWe4CGgpGNpKg3sm3JzkuUC9WGKSyFck3caggLLbNe0JgaEbye
+	j6QaSRPM6293jH7ZsNggNkyRmTrA0KD6EF701bJMXn/6PsBjwC7kjS/Wr6OLtlbrWCGaw+Yrjof4m
+	YHE5c1FuYvTIiLKoUEb34j0+7uCjPjOFMK+p4FCBqCXkU5npUGW1PPrhylK/tkPiR9jc4boTg2KYS
+	HUwl492S4+hrNUd3u1gbDGYrZ1e6wHFQgdlG4jreTjTmBv/do0Ur2JJs63WpKBq2FN0Ge8BLLjsmn
+	hhVf0iDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMcgr-0000000C9z8-1QFw;
-	Wed, 04 Jun 2025 01:13:13 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1uMcy3-0000000CD3g-3MQl;
+	Wed, 04 Jun 2025 01:30:59 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMcMD-0000000C6QR-3Ju3;
-	Wed, 04 Jun 2025 00:51:55 +0000
+	id 1uMcPz-0000000C789-1LQq;
+	Wed, 04 Jun 2025 00:55:48 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8586B43A48;
-	Wed,  4 Jun 2025 00:51:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D886AC4CEF1;
-	Wed,  4 Jun 2025 00:51:51 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 9F4F1A4FE57;
+	Wed,  4 Jun 2025 00:55:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A7C48C4CEED;
+	Wed,  4 Jun 2025 00:55:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1748998313;
-	bh=KQRPWiVIirFM5HlqIdlbktPx3zZ+EkbTpPF8djX4G4I=;
+	s=k20201202; t=1748998546;
+	bh=kvZuk9ycghPAEX/khbsTig5J7VCivjd23x/4hKc3FdM=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=F1+zSFVBNfUIC9vLfCMo8uqHv2WsFrb2wvRUwcgKSUsIEvZ+/Y4xEIJQ1kjnVslUc
-	 4R4CoRqEG6uOf6njrxf9YkJfBui2tp/hf766naypq1FwskHmawSOAjShiz1cn4mvOW
-	 W7QqP8MHyjVW6p+HqpFNBIEjN31PjhfFUxUXslop0J3yAIbuigQ9wJdw90a9NkbVev
-	 hD0hHNe3GrgAEgszqIUCAgA2X1toNI0F1XZOBxqiY/YnoBX5PHbhVxLogMrpTEiarg
-	 ob5RbAyQFQi+mf6d8Z/jofMUXS/RBHOc+mtJoQzbiikBk9Rt5NbtxCpBQR4LaKqGGU
-	 gCHe61RIZXTQA==
+	b=VA/qooIakFxY4xoEihWsvlrv0Z3v3tsOqyax/1jwpSuVebMoiLQ1wO+BA6LYYCn12
+	 UAIxt4fL9R/A/5iuStimbW0SFe23QUCSBOocWcdomNO1l1n6eBw+A51KPp8AVg5ZDz
+	 xHewD/arPu/lzfBYcuN7SimtJpFWUjKn4yb988XIgKR/gGbydlQ557QMaqdKB7smJF
+	 kaLKFNFFsoc+PCemSHWjhX3fx4HONzxHbSMV6eikHdJbpG8LUqh6PlzACJ79WBrzXV
+	 P1O7teOuRPbnw6dY4jp56mKtMCleBnOqicoSx7W4+HrN4sVyNtUH9UHnLG1VU+LgsG
+	 fvWbLTc5vPxfw==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 6.15 029/118] net: phy: mediatek: do not require syscon compatible for pio property
-Date: Tue,  3 Jun 2025 20:49:20 -0400
-Message-Id: <20250604005049.4147522-29-sashal@kernel.org>
+Cc: Benjamin Lin <benjamin-jw.lin@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Felix Fietkau <nbd@nbd.name>,
+	Sasha Levin <sashal@kernel.org>,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	lorenzo@kernel.org,
+	chui-hao.chiu@mediatek.com,
+	Bo.Jiao@mediatek.com,
+	StanleyYP.Wang@mediatek.com,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.14 008/108] wifi: mt76: mt7996: drop fragments with multicast or broadcast RA
+Date: Tue,  3 Jun 2025 20:53:51 -0400
+Message-Id: <20250604005531.4178547-8-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250604005049.4147522-1-sashal@kernel.org>
-References: <20250604005049.4147522-1-sashal@kernel.org>
+In-Reply-To: <20250604005531.4178547-1-sashal@kernel.org>
+References: <20250604005531.4178547-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.15
+X-stable-base: Linux 6.14.9
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250603_175153_871738_D3FE55FA 
-X-CRM114-Status: GOOD (  18.52  )
+X-CRM114-CacheID: sfid-20250603_175547_498868_5C33836A 
+X-CRM114-Status: GOOD (  14.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,109 +82,93 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, SkyLake.Huang@mediatek.com, netdev@vger.kernel.org, daniel@makrotopia.org, linux-kernel@vger.kernel.org, dqfext@gmail.com, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, Jakub Kicinski <kuba@kernel.org>, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+From: Benjamin Lin <benjamin-jw.lin@mediatek.com>
 
-[ Upstream commit 15d7b3dfafa98270eade6c77d2336790dde0a40d ]
+[ Upstream commit 80fda1cd7b0a1edd0849dc71403a070d0922118d ]
 
-Current implementation requires syscon compatible for pio property
-which is used for driving the switch leds on mt7988.
+IEEE 802.11 fragmentation can only be applied to unicast frames.
+Therefore, drop fragments with multicast or broadcast RA. This patch
+addresses vulnerabilities such as CVE-2020-26145.
 
-Replace syscon_regmap_lookup_by_phandle with of_parse_phandle and
-device_node_to_regmap to get the regmap already assigned by pinctrl
-driver.
-
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-Link: https://patch.msgid.link/20250510174933.154589-1-linux@fw-web.de
-Signed-off-by: Jakub Kicinski <kuba@kernel.org>
+Signed-off-by: Benjamin Lin <benjamin-jw.lin@mediatek.com>
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+Link: https://patch.msgid.link/20250515032952.1653494-4-shayne.chen@mediatek.com
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
 
-**YES** This commit should be backported to stable kernel trees. ##
-Analysis ### Core Issue Being Fixed The commit addresses a **device tree
-compatibility problem** in the MediaTek MT7988 PHY driver. The original
-code used `syscon_regmap_lookup_by_phandle()` which **requires** the
-target device node to have a "syscon" compatible string. This created an
-artificial requirement that forced users to modify their device trees
-even when the pinctrl driver already provided the necessary regmap. ###
-Code Changes Analysis The change is minimal but significant: ```c //
-OLD: Forces syscon compatible requirement regmap =
-syscon_regmap_lookup_by_phandle(np, "mediatek,pio"); // NEW: Works with
-any regmap provider pio_np = of_parse_phandle(np, "mediatek,pio", 0);
-regmap = device_node_to_regmap(pio_np); of_node_put(pio_np); ``` **Key
-differences:** - `syscon_regmap_lookup_by_phandle()` requires "syscon"
-compatible - `device_node_to_regmap()` works with any device that has
-registered a regmap - Proper error handling maintained with
-`of_node_put()` ### Why This Should Be Backported **1. Fixes Real User
-Issues:** - MT7988 hardware is actively deployed (BananaPi R4,
-networking devices) - Users cannot use PHY LED functionality without
-modifying device trees - This affects real hardware in production, not
-just development boards **2. Low Risk Change:** - Only 9 insertions, 1
-deletion - No functional behavior change - same register access, same
-error paths - Uses well-established kernel APIs - **Backward
-compatible:** Still works with DTs that have syscon compatible -
-**Forward compatible:** Also works with DTs that don't have syscon
-compatible **3. High Impact Fix:** - Removes artificial device tree
-constraints - Enables legitimate hardware configurations without DT
-hacks - Prevents fragmentation of MT7988 ecosystem across kernel
-versions - LED functionality is important for networking hardware
-visibility **4. Fits Stable Criteria:** - Fixes important functionality
-for users - Does not introduce new features - No architectural changes -
-Confined to one driver/subsystem - Minimal regression risk ###
-Comparison to Similar Commits Looking at the historical examples
-provided, this commit is similar to "clk: mediatek: Get regmap without
-syscon compatible check" which also moved from `syscon_node_to_regmap()`
-to `device_node_to_regmap()` for the same compatibility reasons. The
-pattern of removing unnecessary syscon requirements is well-established
-and safe. ### Real-World Impact Without this fix, users with legitimate
-device trees (where pinctrl doesn't have syscon compatible) cannot use
-MT7988 PHY LED functionality. This forces them to either: 1. Patch their
-device trees (not always possible in production) 2. Use older kernel
-versions 3. Lose LED functionality entirely The commit solves a
-**compatibility regression** rather than adding new functionality,
-making it an ideal stable backport candidate.
+## Analysis Complete **YES** This commit should be backported to stable
+kernel trees. Here's my extensive analysis: ### Security Fix for Known
+CVE The commit directly addresses **CVE-2020-26145**, a documented
+security vulnerability related to improper handling of fragmented frames
+with multicast/broadcast addresses. This is explicitly mentioned in the
+commit message and code comments. ### Code Analysis The change adds a
+critical security check in
+`drivers/net/wireless/mediatek/mt76/mt7996/mac.c` in the
+`mt7996_mac_fill_rx()` function: ```c /bin /bin.usr-is-merged /boot /dev
+/etc /home /init /lib /lib.usr-is-merged /lib64 /lost+found /media /mnt
+/opt /proc /root /run /sbin /sbin.usr-is-merged /snap /srv /sys /tmp
+/usr /var IEEE 802.11 fragmentation can only be applied to unicast
+frames. linux Hence, drop fragments with multicast/broadcast RA. linux
+This check fixes vulnerabilities, like CVE-2020-26145. linux/ if
+((ieee80211_has_morefrags(fc) || seq_ctrl & IEEE80211_SCTL_FRAG) &&
+FIELD_GET(MT_RXD3_NORMAL_ADDR_TYPE, rxd3) != MT_RXD3_NORMAL_U2M) return
+-EINVAL; ``` The logic checks: 1. **Fragment detection**:
+`ieee80211_has_morefrags(fc)` detects if there are more fragments, and
+`seq_ctrl & IEEE80211_SCTL_FRAG` checks the fragment number field 2.
+**Address type filtering**: `FIELD_GET(MT_RXD3_NORMAL_ADDR_TYPE, rxd3)
+!= MT_RXD3_NORMAL_U2M` ensures only unicast-to-multicast (U2M) frames
+are allowed when fragmented ### Comparison with Similar Commits Looking
+at the historical examples: **Similar Backported Commits (Status:
+YES):** - ath10k commits dropping multicast fragments (both PCIe and
+SDIO versions) for the same CVE-2020-26145 - mt7915 fragmentation
+threshold dummy implementation **Pattern Match:** This commit follows
+the exact same pattern as the successfully backported ath10k commits
+that address CVE-2020-26145 by dropping fragmented frames with
+multicast/broadcast destination addresses. ### Risk Assessment **Low
+Risk:** - **Small, contained change**: Only 4 lines of code added -
+**Early validation**: Check happens early in the RX path before frame
+processing - **Conservative approach**: Drops potentially malicious
+frames rather than processing them - **No architectural changes**:
+Doesn't modify existing data structures or interfaces - **Clear error
+path**: Returns `-EINVAL` which is a standard error handling pattern in
+this codebase **High Security Benefit:** - Addresses a known CVE
+affecting wireless security - Prevents potential exploitation through
+malformed fragmented multicast frames - Aligns with IEEE 802.11 standard
+(fragmentation only for unicast) ### Subsystem Stability The mt7996
+driver is part of the MediaTek mt76 wireless driver family, and similar
+security fixes have been successfully backported to other drivers in
+this family without issues. ### Conclusion This is a textbook example of
+a commit that should be backported: it's a small, low-risk security fix
+for a documented CVE, follows established patterns from other successful
+backports, and provides important protection against a wireless security
+vulnerability.
 
- drivers/net/phy/mediatek/mtk-ge-soc.c | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
+ drivers/net/wireless/mediatek/mt76/mt7996/mac.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/drivers/net/phy/mediatek/mtk-ge-soc.c b/drivers/net/phy/mediatek/mtk-ge-soc.c
-index 175cf5239bba8..21975ef946d5b 100644
---- a/drivers/net/phy/mediatek/mtk-ge-soc.c
-+++ b/drivers/net/phy/mediatek/mtk-ge-soc.c
-@@ -7,6 +7,7 @@
- #include <linux/pinctrl/consumer.h>
- #include <linux/phy.h>
- #include <linux/regmap.h>
-+#include <linux/of.h>
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+index c7e8336027334..6d362e9974ce4 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+@@ -619,6 +619,14 @@ mt7996_mac_fill_rx(struct mt7996_dev *dev, enum mt76_rxq_id q,
+ 		status->last_amsdu = amsdu_info == MT_RXD4_LAST_AMSDU_FRAME;
+ 	}
  
- #include "../phylib.h"
- #include "mtk.h"
-@@ -1319,6 +1320,7 @@ static int mt7988_phy_probe_shared(struct phy_device *phydev)
- {
- 	struct device_node *np = dev_of_node(&phydev->mdio.bus->dev);
- 	struct mtk_socphy_shared *shared = phy_package_get_priv(phydev);
-+	struct device_node *pio_np;
- 	struct regmap *regmap;
- 	u32 reg;
- 	int ret;
-@@ -1336,7 +1338,13 @@ static int mt7988_phy_probe_shared(struct phy_device *phydev)
- 	 * The 4 bits in TPBANK0 are kept as package shared data and are used to
- 	 * set LED polarity for each of the LED0.
- 	 */
--	regmap = syscon_regmap_lookup_by_phandle(np, "mediatek,pio");
-+	pio_np = of_parse_phandle(np, "mediatek,pio", 0);
-+	if (!pio_np)
-+		return -ENODEV;
++	/* IEEE 802.11 fragmentation can only be applied to unicast frames.
++	 * Hence, drop fragments with multicast/broadcast RA.
++	 * This check fixes vulnerabilities, like CVE-2020-26145.
++	 */
++	if ((ieee80211_has_morefrags(fc) || seq_ctrl & IEEE80211_SCTL_FRAG) &&
++	    FIELD_GET(MT_RXD3_NORMAL_ADDR_TYPE, rxd3) != MT_RXD3_NORMAL_U2M)
++		return -EINVAL;
 +
-+	regmap = device_node_to_regmap(pio_np);
-+	of_node_put(pio_np);
-+
- 	if (IS_ERR(regmap))
- 		return PTR_ERR(regmap);
- 
+ 	hdr_gap = (u8 *)rxd - skb->data + 2 * remove_pad;
+ 	if (hdr_trans && ieee80211_has_morefrags(fc)) {
+ 		if (mt7996_reverse_frag0_hdr_trans(skb, hdr_gap))
 -- 
 2.39.5
 
