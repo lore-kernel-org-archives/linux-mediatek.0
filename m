@@ -4,82 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B3CDC5AE59
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Jun 2025 17:20:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C0C0C5B543
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Jun 2025 18:28:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mKMKXByJGIrq/+twwJxQjT7CC+V8NuPCfTdd5H+SUA4=; b=u3WWhgvVFJvL2fzcc3fgLVL55e
-	2OL7NIVvypD+FO2CgGctPNeaeAEKX95NuBI6My630xSPMaKbNObVicstTrpnH5Y5/3+GQr/uJnOjN
-	cMHy6di0zKWKY1mhtyAyCvTUrygSDV4UqDpgXjQOmKkz2ApvXlthKpnrmFIgZJQCE4qi711CYzQDn
-	lkl6tC5ox886e1W4jLdJZl4B+nMGZ0KnqyqKos0MwBtvmczJoh4agHsFDi7MPWM6gW1g53W3Qc2gR
-	p5lf3QENoLgWCOPEnHOqN117bTsJTzRVpm1jm3o16YbHEuxax4Kuq99NqfFmH46kYTYl7vWsGjZBz
-	0hWoekQw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=unNekQNoLCcCD/h99sa2j6JXjgyktEAUOqS27hg6rJI=; b=iAoeyQtA+5QfQhKTCvqCnIdJz+
+	CAd5eFHUv8cgy8MEhwuLepcQsba+J7JhTDm6UGVU4oNtt8jTrOe9gn48b+0ylk8iejxMgk6XwMarI
+	tMemxPIAKMdFqnPsllkq6imBLporXYt2PnblxMcD22hBSqSfrMYPPU8IfpBznqQ2mkZ6VOhqHk8gB
+	RZtvZ1XWdlD96AbQ0CCQhsPWny1XTYoDSQ0ktKoaaPbmHhHLTcQM2deEHorD1n9gGJN/cmznZMBQF
+	XSufqkOXC/6Dn8A2jdU+1yyO96UQGbESLwgP0glr0xbb3kIVzzBuS5oi9ffxlRnljL/KePC/dDzan
+	FMZixfYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNEGC-0000000G8ax-2Wfy;
-	Thu, 05 Jun 2025 17:20:12 +0000
-Received: from dispatch1-us1.ppe-hosted.com ([148.163.129.52])
+	id 1uNFKC-0000000GFGh-2sHN;
+	Thu, 05 Jun 2025 18:28:24 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNEDn-0000000G84A-2vHx;
-	Thu, 05 Jun 2025 17:17:44 +0000
-Received: from engine.ppe-hosted.com (unknown [10.7.65.207])
-	by dispatch1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTPS id 5DC9F600D9;
-	Thu,  5 Jun 2025 17:17:43 +0000 (UTC)
-X-Virus-Scanned: Proofpoint Essentials engine
-Received: from mail3.candelatech.com (mail.candelatech.com [208.74.158.173])
-	by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id 77C9BC045DB;
-	Thu,  5 Jun 2025 17:17:41 +0000 (UTC)
-Received: from [192.168.100.159] (unknown [50.251.239.81])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by mail3.candelatech.com (Postfix) with ESMTPSA id B875B13C2B0;
-	Thu,  5 Jun 2025 10:17:40 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com B875B13C2B0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=candelatech.com;
-	s=default; t=1749143861;
-	bh=pcqFadWfsfKrqR97jyj8RHYbUTDAgZDdJhSw2w0+aRk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Q/Bn2HkUcDDWAFdZxqPfhuTM+UgBWdO3FDCdBSmbwD0xlANqir13cO/g3eaEKdIYl
-	 kKFDVcP5H+o8U7Z583riUGEFT/q75RUBAZCCdiVemkTRyHSWJFzSzvrgNDEQsrjtS/
-	 ZcDob1+FzAn6c/neMPvSPJod1kkchr1FgnfKIldY=
-Message-ID: <7c99ee6d-2c2c-79ff-87c7-84b820da783a@candelatech.com>
-Date: Thu, 5 Jun 2025 10:17:40 -0700
+	id 1uNFI4-0000000GF8i-3Nzw;
+	Thu, 05 Jun 2025 18:26:12 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id EE2CC614B8;
+	Thu,  5 Jun 2025 18:26:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5502EC4CEE7;
+	Thu,  5 Jun 2025 18:26:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1749147970;
+	bh=38lVXRE3Mp1KY0IrURvIDl45/b1nVSn7zSo6GGgz/1Q=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=D0V+21dwPHis0WH2aMCEh1W7DDxlEcptzjIiUkHqYfEYyGIkrHVsLdF48zbsAGCEk
+	 Nq1VTfUV8Gtx920aHzIDCf686hAgK6jrJsUeZy9UzG9jZ/Q+DVIRT7lN63W3a+y0Dy
+	 oTia446jU9dpKbcU6ou4y0SlAsa5WXpzlyZWFLYgKyPEeqOs+8H80CrEnJ8qOL5yzd
+	 UwT4qcBbsPnXsu8EK1RrAnC6pKrQx9nOzqXaGH+cleNgAHW61khnhdcZdA1BwT7sa6
+	 2oZBg0lXuAU+EE7IpPUQtmLRVhSLoCU0rg2isdFhxyaR+h3QI903eqVJsOXDg5QDHx
+	 0wRFdiCqggauw==
+Date: Thu, 5 Jun 2025 13:26:07 -0500
+From: Rob Herring <robh@kernel.org>
+To: Irui Wang <irui.wang@mediatek.com>
+Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	angelogioacchino.delregno@collabora.com,
+	nicolas.dufresne@collabora.com, wenst@chromium.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Longfei Wang <longfei.wang@mediatek.com>
+Subject: Re: [PATCH v2 5/6] dt-bindings: media: mediatek: encoder: Add
+ encoder dt-bindings for MT8196
+Message-ID: <20250605182607.GA2983549-robh@kernel.org>
+References: <20250528063633.14054-1-irui.wang@mediatek.com>
+ <20250528063633.14054-6-irui.wang@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH mt76 5/5] wifi: mt76: Remove RCU section in
- mt7996_mac_sta_rc_work()
-Content-Language: en-US
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Bo Jiao <Bo.Jiao@mediatek.com>, Peter Chiu <chui-hao.chiu@mediatek.com>,
- linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20250605-mt7996-sleep-while-atomic-v1-0-d46d15f9203c@kernel.org>
- <20250605-mt7996-sleep-while-atomic-v1-5-d46d15f9203c@kernel.org>
- <909d2ca8-8409-997a-768f-8e9be4c5168e@candelatech.com>
- <aEHMZe0_vuml8eI9@lore-desk>
- <7b381baa-61a5-2a19-1bd6-47ad4abfdf3d@candelatech.com>
- <aEHQuQPuX8cuCXWY@lore-desk>
-From: Ben Greear <greearb@candelatech.com>
-Organization: Candela Technologies
-In-Reply-To: <aEHQuQPuX8cuCXWY@lore-desk>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-MDID: 1749143862-yFCG8EsQALAX
-X-PPE-STACK: {"stack":"us5"}
-X-MDID-O: us5;ut7;1749143862;yFCG8EsQALAX;<greearb@candelatech.com>;cd09869c97ce2e719a3744df88686fd8
-X-PPE-TRUSTED: V=1;DIR=OUT;
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250605_101743_762736_707D9A48 
-X-CRM114-Status: GOOD (  15.00  )
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250528063633.14054-6-irui.wang@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,37 +79,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 6/5/25 10:15, Lorenzo Bianconi wrote:
-> On Jun 05, Ben Greear wrote:
->> On 6/5/25 09:57, Lorenzo Bianconi wrote:
->>>> On 6/5/25 04:14, Lorenzo Bianconi wrote:
->>>>> Since mt7996_mcu_add_rate_ctrl() and mt7996_mcu_set_fixed_field() can't
->>>>> run in atomic context, move RCU critical section in
->>>>> mt7996_mcu_add_rate_ctrl() and mt7996_mcu_set_fixed_field(). This patch
->>>>> fixes a 'sleep while atomic' issue in mt7996_mac_sta_rc_work().
->>>>>
->>>>> Fixes: 0762bdd30279 ("wifi: mt76: mt7996: rework mt7996_mac_sta_rc_work to support MLO")
->>>>> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
->>>>
->>>> Thanks for the quick fix on this, it appears to solve the problems we
->>>> saw related to this.
->>>
->>> ack, thx. Can you please add your 'tested-by' tag in this case?
->>
->> Tested-by: Ben Greear <greearb@candelatech.com>
+On Wed, May 28, 2025 at 02:36:31PM +0800, Irui Wang wrote:
+> Add MT8196 encoder compatible string, which will reference VCP device.
 > 
-> I am assuming this is for the full series ;)
+> Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+> ---
+>  .../bindings/media/mediatek,vcodec-encoder.yaml      | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
+> index ebc615584f92..7675391d7eb0 100644
+> --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
+> +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
+> @@ -24,6 +24,7 @@ properties:
+>                - mediatek,mt8188-vcodec-enc
+>                - mediatek,mt8192-vcodec-enc
+>                - mediatek,mt8195-vcodec-enc
+> +              - mediatek,mt8196-vcodec-enc
+>        - items:
+>            - const: mediatek,mt8186-vcodec-enc
+>            - const: mediatek,mt8183-vcodec-enc
+> @@ -76,6 +77,17 @@ required:
+>    - iommus
+>  
+>  allOf:
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
+> +              - mediatek,mt8196-vcodec-enc
+> +
+> +    then:
+> +      required:
+> +        - mediatek,vcp
 
-Yes, and to be clear, I had to re-work the patches a bit to get them into my tree,
-but that was just because I have a lot of mtk upstream patches and my own hacks
-in this code.  I still think the tested-by is valid though.
+Where is this property defined?
 
-Thanks,
-Ben
-
--- 
-Ben Greear <greearb@candelatech.com>
-Candela Technologies Inc  http://www.candelatech.com
-
-
+> +
+>    - if:
+>        properties:
+>          compatible:
+> -- 
+> 2.45.2
+> 
 
