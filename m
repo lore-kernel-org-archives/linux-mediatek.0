@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C0C0C5B543
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Jun 2025 18:28:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBDA2C5B559
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Jun 2025 18:30:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=unNekQNoLCcCD/h99sa2j6JXjgyktEAUOqS27hg6rJI=; b=iAoeyQtA+5QfQhKTCvqCnIdJz+
-	CAd5eFHUv8cgy8MEhwuLepcQsba+J7JhTDm6UGVU4oNtt8jTrOe9gn48b+0ylk8iejxMgk6XwMarI
-	tMemxPIAKMdFqnPsllkq6imBLporXYt2PnblxMcD22hBSqSfrMYPPU8IfpBznqQ2mkZ6VOhqHk8gB
-	RZtvZ1XWdlD96AbQ0CCQhsPWny1XTYoDSQ0ktKoaaPbmHhHLTcQM2deEHorD1n9gGJN/cmznZMBQF
-	XSufqkOXC/6Dn8A2jdU+1yyO96UQGbESLwgP0glr0xbb3kIVzzBuS5oi9ffxlRnljL/KePC/dDzan
-	FMZixfYw==;
+	bh=Oy2pccGzUhIgcD/UNo48l/ttg+ASkC+LyrAMqWUjx+I=; b=IKkyucWyl8KG/IPFrJEA0dS8Q/
+	nBUP2cz2XpMFBgdT38QM/dMPvlnETauQR5VhkCtF3RfoQdNoNm/GrrmlHB+PdeSB3da4ln5v8vsod
+	RNQrWXbJk868wXfJwgShHhm1J4lKFVC3ssIfWUSe1mELTLE8PK0GjDr+I22H4FzPKDkxxRNdqjY59
+	1rCfIEblecr7iddVaJeF7ElX4mfcUTkW6n7n27Zqu8LtKcdmcm3+zE100sQVadTkMPEM8vo0tqtN8
+	dySNVra+e9cpJoR2tc1s7RjWEj+3N23H1emA/twX+Zr4KAJwrVxIqA7VXNdV09iOz3mDMIIIcBskV
+	QuiFi+wQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNFKC-0000000GFGh-2sHN;
-	Thu, 05 Jun 2025 18:28:24 +0000
+	id 1uNFMH-0000000GFYP-3355;
+	Thu, 05 Jun 2025 18:30:33 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNFI4-0000000GF8i-3Nzw;
-	Thu, 05 Jun 2025 18:26:12 +0000
+	id 1uNFJV-0000000GFD7-2zjC;
+	Thu, 05 Jun 2025 18:27:41 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id EE2CC614B8;
-	Thu,  5 Jun 2025 18:26:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5502EC4CEE7;
-	Thu,  5 Jun 2025 18:26:10 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 05901629D1;
+	Thu,  5 Jun 2025 18:27:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 83269C4CEE7;
+	Thu,  5 Jun 2025 18:27:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1749147970;
-	bh=38lVXRE3Mp1KY0IrURvIDl45/b1nVSn7zSo6GGgz/1Q=;
+	s=k20201202; t=1749148060;
+	bh=LrHf+kL0S4F64MAYya3xzRVnHNkRHGI5W4EOABOWHXc=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=D0V+21dwPHis0WH2aMCEh1W7DDxlEcptzjIiUkHqYfEYyGIkrHVsLdF48zbsAGCEk
-	 Nq1VTfUV8Gtx920aHzIDCf686hAgK6jrJsUeZy9UzG9jZ/Q+DVIRT7lN63W3a+y0Dy
-	 oTia446jU9dpKbcU6ou4y0SlAsa5WXpzlyZWFLYgKyPEeqOs+8H80CrEnJ8qOL5yzd
-	 UwT4qcBbsPnXsu8EK1RrAnC6pKrQx9nOzqXaGH+cleNgAHW61khnhdcZdA1BwT7sa6
-	 2oZBg0lXuAU+EE7IpPUQtmLRVhSLoCU0rg2isdFhxyaR+h3QI903eqVJsOXDg5QDHx
-	 0wRFdiCqggauw==
-Date: Thu, 5 Jun 2025 13:26:07 -0500
+	b=bS5w7tKC4ZHtosuXqgcOD8vuu3xDAr8tH1Kct+EUSeEtFzs1ul27YTsTfwMi2BBky
+	 oPfwt0xjFnvbuIEz+8wd9+nZpMTFAremPqjsm/6kB+/lWDD3CNJ76sa4yw+Uo/bIpF
+	 89UL9o7EJRFfGXkCo8PQYFhnM92tqNXyjXydDQNN+eGcvdYDGTHA4kpmPjPLYwcjDs
+	 560DTWQnPPNkWndioNb9k4+mkzX8FLcZOpenht3/J44lUV9JyiFSnpYczSrXqLo39X
+	 9vDUMwYMcTbtVpRVxOD5qzDiAH3Wc2zZoIzp6a76dFcAL3dxGa0vUnF93iiKhk33t/
+	 jRCvGbnMQmsnw==
+Date: Thu, 5 Jun 2025 13:27:37 -0500
 From: Rob Herring <robh@kernel.org>
 To: Irui Wang <irui.wang@mediatek.com>
 Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
@@ -58,7 +58,7 @@ Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
 	Longfei Wang <longfei.wang@mediatek.com>
 Subject: Re: [PATCH v2 5/6] dt-bindings: media: mediatek: encoder: Add
  encoder dt-bindings for MT8196
-Message-ID: <20250605182607.GA2983549-robh@kernel.org>
+Message-ID: <20250605182737.GB2983549-robh@kernel.org>
 References: <20250528063633.14054-1-irui.wang@mediatek.com>
  <20250528063633.14054-6-irui.wang@mediatek.com>
 MIME-Version: 1.0
@@ -81,6 +81,11 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 On Wed, May 28, 2025 at 02:36:31PM +0800, Irui Wang wrote:
 > Add MT8196 encoder compatible string, which will reference VCP device.
+
+Also work on your subject. No need to say dt-bindings and encoder twice:
+
+media: dt-bindings: mediatek,vcodec-encoder: Add MT8196
+
 > 
 > Signed-off-by: Irui Wang <irui.wang@mediatek.com>
 > ---
@@ -113,9 +118,6 @@ On Wed, May 28, 2025 at 02:36:31PM +0800, Irui Wang wrote:
 > +    then:
 > +      required:
 > +        - mediatek,vcp
-
-Where is this property defined?
-
 > +
 >    - if:
 >        properties:
