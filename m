@@ -4,85 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A839DC5B543
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Jun 2025 01:16:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3056C5AE59
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Jun 2025 05:59:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xG0Wdkt+NUraD2HgOh+0AFsEQcpWyh1rmYJFEEo12N4=; b=cd6jEifzgD6y2LzDEdIQmHGdaL
-	qlv1/dqahB5SKWwo83ETWrJm5tBXZ47Awtkhxz9qjtc2tQ7ZUtaTyZVtVOkllj7dRsko3PEwIRnvQ
-	4GlEK+tO4KBLFg+gH0KoLPd+eS5IW/kf1kRYH1vUBncRU7mGvDQodKvi1HLl6mPikl8N+idHouKcW
-	hznZJHpASEQC00SKHpkAdkLdp5YbSApbprZlyP8euKUZpzFes5iuNNSHuF3AfJEhJBLx0ImNRc+Y2
-	qNMvftSZWUmaybqxJHcaCvVSKOCshTcBxcgtPwCLj+p2musJP7XmqogN8ysVDlmaer0WU5azlNxdq
-	HRU0AvYw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uwZLuUROZeytuTcbVvr5dTLUdGCZT6gaO3duMoVto0s=; b=lCF2WAqifli2gfSfqLVfngfWtc
+	erRNoy1ZK6GZPn9zBZL3oVuccPQIGzu9ixFXh58VzqV6jDc6Si1Ahw3PaNIWmDydqgSteEZjPIBb4
+	JAeSDnBFGV9MxKRYZ6fBpCmGihSZA1IyfgWYXi4t5N+yXvANXFMD4iQSFeViOKVgxT8macprMqwVX
+	3xbBWxpQJGA0ltCT3OX3cTGvzabFQiZwGHynwjQbVzMKscsPU7DY+FAjxT36PUeZ8XaH9Le2cxWQM
+	tWBo8tPodeWAl44iKF4vULjuAa3uZBc0K2+s72zJOp3APsBiWi0ALjMnsP1UZAYOPTLUnCEjtBvXw
+	7WS5tJyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMzDe-0000000EUeC-1F4n;
-	Thu, 05 Jun 2025 01:16:34 +0000
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+	id 1uN3dG-0000000EnRL-1lbJ;
+	Thu, 05 Jun 2025 05:59:18 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMzBW-0000000EUTD-2Rpp
-	for linux-mediatek@lists.infradead.org;
-	Thu, 05 Jun 2025 01:14:24 +0000
-Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-22e09f57ed4so14734155ad.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 04 Jun 2025 18:14:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1749086061; x=1749690861; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=xG0Wdkt+NUraD2HgOh+0AFsEQcpWyh1rmYJFEEo12N4=;
-        b=anaFwzrZLie7c7VsPbeu/5KovXWqkJyLysOMPEivWPpupxJZif7TyexPgA2C2kGKfr
-         qrDHejS29wT1X0LoyeCwclg6EZlu2wU51Qds4dhdW0YLt7yLn2kyEKaIIBDn8G8x8I2n
-         1yhW+HbhovfkIL6JiJWHVeh2ghHUHUXlVFHeY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749086061; x=1749690861;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=xG0Wdkt+NUraD2HgOh+0AFsEQcpWyh1rmYJFEEo12N4=;
-        b=wgX2xPyJpD2WTdtR4d12qk4PMVzpaHiMcnd3e6seEMDxSBCnklSzfZ3orfJiqsqFaZ
-         QU6hStw2MLeJuScXIxYJ860U4nt+GwCJkMiBJR1Yh19Mfqkdke3dHfr2G1DxF0Ap1ic3
-         g3EhHUAuFD9hP7S0pfJf1UWhvOLcw2+ODv+wEtYSC8uXU1jqKCQ+A9DJZF3U+Rjn8Pqo
-         Dkw6i7QpzBf6AemTqmtWTQpAFXditNfnPaJwmXfpFjYM3NIr6dj5yrKtZcWseqq9C5nR
-         3ZKrmaUaNVleeM9dn/GctsPmp+/AdKSrT4NJzbdwpi84/Rx1fbLZQFIMhdlX6yCwn5jV
-         T6UA==
-X-Forwarded-Encrypted: i=1; AJvYcCU9skkkypzzIhL4lWKJNdCNUhn+/no8/xyknVDpD+2744WFshkRAysOGZv1ta6d/cA+ZqLr2Mx9WOTDdKydXw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw4SnnHQ/ZRjv6vdGEOzfhD8KUpr53BRcC6KKBYAcd52Giw5Ogh
-	m9f4clOXwICTf5PwnFUO7O5RW2oFpPi3Ci2UtEmLXhbS8HbugSDYim1+8vKHJZev/g==
-X-Gm-Gg: ASbGncs36tARQ4mfiP6b3vJkFM3sE0dFKvOhNCTkKPkzbWOeKWzFG4cHNXhXab0Ofsj
-	MMENVdG56fhHF4oN7O7aLNY2ykP4/JOpd+3W0H5ohlPW7pFUc3MmR3PlBj/s4gfb+E5R4lQ+UfJ
-	VN7LYZ1BYW8dnYflA6FFtai8XDN5xoqZ2ochH2rvidW7fVxeTJfhmlP8HJSaaXHwYCuizplx5r6
-	SD4LU6pAj3oFaG8vrmgwvAvK5YEqaYSNlJ3DQJI16gDCnK+/shidVGKIBQNq22pJLg0FYQu++Hd
-	29gG/K5MPKPYaG/GGpBtSamHP+FyvWTU8L2PYR5CU+cSIKssqj14BYUJNTSob2lBPA==
-X-Google-Smtp-Source: AGHT+IGslAg+kZSR5r1KLQpvpTAyqVFFwVIFqW/069qKCAdAOWTjgfmHSrr73Y4oBWMXmc3qhryGWw==
-X-Received: by 2002:a17:902:8f92:b0:221:89e6:ccb6 with SMTP id d9443c01a7336-235f16b216dmr15063785ad.25.1749086061279;
-        Wed, 04 Jun 2025 18:14:21 -0700 (PDT)
-Received: from google.com ([2401:fa00:8f:203:bc6e:7ca0:2017:eae9])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-23506bd908dsm110307055ad.59.2025.06.04.18.14.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Jun 2025 18:14:20 -0700 (PDT)
-Date: Thu, 5 Jun 2025 10:14:15 +0900
-From: Sergey Senozhatsky <senozhatsky@chromium.org>
-To: "Masami Hiramatsu (Google)" <mhiramat@kernel.org>
-Cc: Chaotian Jing <chaotian.jing@mediatek.com>, 
-	Ulf Hansson <ulf.hansson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sergey Senozhatsky <senozhatsky@chromium.org>, 
-	linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+	id 1uN3az-0000000EnCK-2B1o;
+	Thu, 05 Jun 2025 05:56:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1749103015;
+	bh=WkkGM08VMW5SFQ/+XIX9f/SVjIxnmSZqqyIBTfQ8hC4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=D96Hid6Kq7JQS22naS6+/J1Gkoyyed/yJCJAXYhRomHGd88EpOq8yAz7u5mfEQb7N
+	 E6YbQBMT0iTOrL4EVumEKOOji6CTok4mZqPDP1Ng0VI5rUrFjAgJ1FdmRLew5Z5cYP
+	 drDyKTf5/1/E6r5vN5DdOTy/6j6u9gvjN/Wz0kqi4JcYht0PmSodjHV+VHtL4zzrCU
+	 y0m40domMY+T8E2H6i9A+vL/zZzBAHhbe7og8/uKCDp6xCEWqFChcU9AmZamASRHVJ
+	 BpvccimnTvVV3IyLv69tOEsAQQ8zjG13PPnHoW3Pb4opcT16e9DoQo5m/qUE0/Y24S
+	 NPbKP/DBp/fYQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0361C17E010B;
+	Thu,  5 Jun 2025 07:56:54 +0200 (CEST)
+Message-ID: <f40e7b31-5bb2-4d1d-8687-6f728ea255be@collabora.com>
+Date: Thu, 5 Jun 2025 07:56:54 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] mtk-sd: Fix a pagefault in dma_unmap_sg() for not
  prepared data
-Message-ID: <yf7ehbrvjj46xl7hkjukygnvy5z3ez43ewqch2mksx2lmkd5of@kthk42zpjabq>
+To: "Masami Hiramatsu (Google)" <mhiramat@kernel.org>,
+ Chaotian Jing <chaotian.jing@mediatek.com>,
+ Ulf Hansson <ulf.hansson@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Sergey Senozhatsky <senozhatsky@chromium.org>, linux-mmc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
 References: <174908565814.4056588.769599127120955383.stgit@mhiramat.tok.corp.google.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
 In-Reply-To: <174908565814.4056588.769599127120955383.stgit@mhiramat.tok.corp.google.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250604_181422_656177_C9DE1C59 
-X-CRM114-Status: GOOD (  15.00  )
+X-CRM114-CacheID: sfid-20250604_225657_710886_07C6CCD7 
+X-CRM114-Status: GOOD (  12.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,7 +79,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On (25/06/05 10:07), Masami Hiramatsu (Google) wrote:
+Il 05/06/25 03:07, Masami Hiramatsu (Google) ha scritto:
 > From: Masami Hiramatsu (Google) <mhiramat@kernel.org>
 > 
 > mtk-msdc driver causes a kernel crash after swiotlb buffer is full.
@@ -113,13 +95,13 @@ On (25/06/05 10:07), Masami Hiramatsu (Google) wrote:
 > MSDC_PREPARE_FLAG.
 > 
 > swiotlb_tbl_map_single() /* prints "swiotlb buffer is full" */
->   <-swiotlb_map()
->     <-dma_direct_map_page()
->       <-dma_direct_map_sg()
->         <-__dma_map_sg_attrs()
->           <-dma_map_sg_attrs()
->             <-dma_map_sg()  /* returns 0 (pages mapped) */
->               <-msdc_prepare_data()
+>    <-swiotlb_map()
+>      <-dma_direct_map_page()
+>        <-dma_direct_map_sg()
+>          <-__dma_map_sg_attrs()
+>            <-dma_map_sg_attrs()
+>              <-dma_map_sg()  /* returns 0 (pages mapped) */
+>                <-msdc_prepare_data()
 > 
 > Then, the msdc_unprepare_data() checks MSDC_PREPARE_FLAG and calls
 > dma_unmap_sg() with unmapped pages. It causes a page fault.
@@ -130,5 +112,6 @@ On (25/06/05 10:07), Masami Hiramatsu (Google) wrote:
 > Fixes: 208489032bdd ("mmc: mediatek: Add Mediatek MMC driver")
 > Signed-off-by: Masami Hiramatsu (Google) <mhiramat@kernel.org>
 
-Tested-by: Sergey Senozhatsky <senozhatsky@chromium.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 
