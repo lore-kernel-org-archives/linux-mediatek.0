@@ -4,71 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A779FC5B549
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Jun 2025 23:21:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F6CBC5B549
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Jun 2025 01:09:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LS3RsGLOqDWTF/0tu9QIojAyjIMi8bf2cp1hpYeKO5M=; b=NwGLy0bSWZCoCGDW0RLUulI4nK
-	YBU1E5313fFzZUu5KZhhHFgERpXLAs3XKCimFyvlHiFOIb4tiLjFlIwgRmNZyofHxdDXIIszmHf6j
-	AgUcVAGUl4zLt/K4QAJGNGYwHu5Uu+Hn4+SP9r/l19sQHLKeckidgJYA/Qa6yMvexNFVwkMuVs+5i
-	U+BgvDxwxMqD7qTtdJyPHr53PHjF/eYbBOOKRhwQJjho4zNSqEZU8wGX19PrjHD78/Sfpg4/vFN56
-	Be3/0lqWnKkCZBZhtO6H1afjY3V7eNuyHXZT4rHc+D6ZHTfih3AdMkzumLai83ICQHAmW26bnOdk3
-	lf4uOJBQ==;
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=dwjxSNJoDCBwwDvUBS1EJFhf4wPoHJoTRtnHdKpEfD0=; b=hheVmgvUAgOQP6p2V7/No93Q0W
+	XL/mYRw+57jDtJ3lrQZuwZ+vISZG3e2xw3AYxkzrs7hxGW1fA77e7QF4+7ZhigtTHLOW1oro2Y/iw
+	pJX6tBTgJyufKxOysWeq8/udrurgLs87YkG8JfC88qGqNP6didAUA9BXckZtIQuMz8Xq+GgO0cbU/
+	v17QVJJgw0Vf71yFXOqiCQLLp0Y6I0f2311SiwhMGvnFmjqY3Rc5U3fKZcWxVlmoJPZkTicKnPH2J
+	L90sMtO8MKNzBM7FSfyahKQuxeC9rKrDCr7MYcOEBagLZy4qX7qKmvJ2D1m2E8zfoJsV4SmgVeFbv
+	VVL412QQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMxQW-0000000ENwa-19i2;
-	Wed, 04 Jun 2025 23:21:44 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uMz7D-0000000EUFn-2uFx;
+	Thu, 05 Jun 2025 01:09:55 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uMxOO-0000000ENoM-3zIp;
-	Wed, 04 Jun 2025 23:19:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1749079170;
-	bh=mTRCvc258jkudvZvomecwN9xV5gLl5CSYCwEsxmMdMM=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=RMKiTRxsYuw/7GqgTwTKf2FGIC6xn9hC8jXJpdjWoeRNyZzpy4VWbA/EGF6h9TTMb
-	 Ul+bq6Aawq37SBSD1Yod370/JmRXw4XG4Vrphip81LTQXi9DpeqgfcK0A/QDN/Il9x
-	 RUy/nogkNeFbkdbEdJPxVRMc+i52pMEqKqSDVZdjCUxgAnpKNZvH58LKmVKuu3CnZX
-	 8Nf3viuXiISMThnhBHtAjVtDpocVI1FdVA4EKYuMO3n3pNYY0dmdjth3ekn8jmiKwf
-	 hT4bxc6zKtZ/XvocozUJb3CKLRlt7AL5/nbXjy/A6s/j9bsybJ+br7aw7sa9QTIRvt
-	 RJdqC61qIuGxg==
-Received: from [IPv6:2606:6d00:10:5285::c41] (unknown [IPv6:2606:6d00:10:5285::c41])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B824F17E0C87;
-	Thu,  5 Jun 2025 01:19:28 +0200 (CEST)
-Message-ID: <1ccaaec7f782afc71bae5c3b0f60a786a907555c.camel@collabora.com>
-Subject: Re: [PATCH v3 1/5] media: mc: add manual request completion
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Sakari Ailus <sakari.ailus@linux.intel.com>
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho
- Chehab <mchehab@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Tiffany Lin
-	 <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
- Yunfei Dong <yunfei.dong@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	kernel@collabora.com, linux-media@vger.kernel.org, Sebastian Fricke	
- <sebastian.fricke@collabora.com>
-Date: Wed, 04 Jun 2025 19:19:27 -0400
-In-Reply-To: <aEC05991kEIIifDB@kekkonen.localdomain>
-References: <20250604-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v3-0-603db4749d90@collabora.com>
-	 <20250604-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v3-1-603db4749d90@collabora.com>
-	 <aEC05991kEIIifDB@kekkonen.localdomain>
-Organization: Collabora Canada
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
+	id 1uMz56-0000000EU7Q-3KvU;
+	Thu, 05 Jun 2025 01:07:44 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 8573060007;
+	Thu,  5 Jun 2025 01:07:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D9B2CC4CEE4;
+	Thu,  5 Jun 2025 01:07:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1749085662;
+	bh=+aLpCNC8OzEHRmMRK/QFfVqV5g0o8xykjr6Q8++9rQk=;
+	h=From:To:Cc:Subject:Date:From;
+	b=t2IidH412MLiXpk9UtsT7bpSel0KM7VtkNCyhlNNKm1mRAFM9RI/5beDesqRExMIP
+	 04M/3zlAjX5s9/k6qC9+zC8BUFIaSban2+JV84UyIrg3hw4z695JLAk2hrVvMydt79
+	 f3OEx5LZ/pt2kd0IfYtHmA7R3mGG4diwciMqWBm8eMD1gySPvZeOQTdZD25zym8tN9
+	 4hOb2Rz4RQqf9U5OiWSNMaryjGqrzkaTx1FL+M+qnhJQR8d5J9Cg5tAEYuHui+lI/i
+	 WmmVK/Ef48KwqurGyeuC0QMCR1oFvH2ve/tjdVa3zd6mTusxD+2/oqhLL56aIfVpBD
+	 pzid/Xoppprnw==
+From: "Masami Hiramatsu (Google)" <mhiramat@kernel.org>
+To: Chaotian Jing <chaotian.jing@mediatek.com>,
+	Ulf Hansson <ulf.hansson@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: mhiramat@kernel.org,
+	Sergey Senozhatsky <senozhatsky@chromium.org>,
+	linux-mmc@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] mtk-sd: Fix a pagefault in dma_unmap_sg() for not prepared data
+Date: Thu,  5 Jun 2025 10:07:38 +0900
+Message-ID: <174908565814.4056588.769599127120955383.stgit@mhiramat.tok.corp.google.com>
+X-Mailer: git-send-email 2.49.0.1266.g31b7d2e469-goog
+User-Agent: StGit/0.19
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250604_161933_143984_97C2BD30 
-X-CRM114-Status: GOOD (  44.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,199 +74,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Le mercredi 04 juin 2025 à 21:04 +0000, Sakari Ailus a écrit :
-> Hi Nicolas,
-> 
-> Thanks for the update.
-> 
-> On Wed, Jun 04, 2025 at 04:09:35PM -0400, Nicolas Dufresne wrote:
-> > From: Hans Verkuil <hverkuil@xs4all.nl>
-> > 
-> > By default when the last request object is completed, the whole
-> > request completes as well.
-> > 
-> > But sometimes you want to delay this completion to an arbitrary point in
-> > time so add a manual complete mode for this.
-> > 
-> > In req_queue the driver marks the request for manual completion by
-> > calling media_request_mark_manual_completion, and when the driver
-> > wants to manually complete the request it calls
-> > media_request_manual_complete().
-> > 
-> > Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-> > Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-> > ---
-> >  drivers/media/mc/mc-request.c | 38 ++++++++++++++++++++++++++++++++++++--
-> >  include/media/media-request.h | 38 +++++++++++++++++++++++++++++++++++++-
-> >  2 files changed, 73 insertions(+), 3 deletions(-)
-> > 
-> > diff --git a/drivers/media/mc/mc-request.c b/drivers/media/mc/mc-request.c
-> > index 5edfc2791ce7c7485def5db675bbf53ee223d837..398d0806d1d274eb8c454fc5c37b77476abe1e74 100644
-> > --- a/drivers/media/mc/mc-request.c
-> > +++ b/drivers/media/mc/mc-request.c
-> > @@ -54,6 +54,7 @@ static void media_request_clean(struct media_request *req)
-> >  	req->access_count = 0;
-> >  	WARN_ON(req->num_incomplete_objects);
-> >  	req->num_incomplete_objects = 0;
-> > +	req->manual_completion = false;
-> >  	wake_up_interruptible_all(&req->poll_wait);
-> >  }
-> >  
-> > @@ -313,6 +314,7 @@ int media_request_alloc(struct media_device *mdev, int *alloc_fd)
-> >  	req->mdev = mdev;
-> >  	req->state = MEDIA_REQUEST_STATE_IDLE;
-> >  	req->num_incomplete_objects = 0;
-> > +	req->manual_completion = false;
-> >  	kref_init(&req->kref);
-> >  	INIT_LIST_HEAD(&req->objects);
-> >  	spin_lock_init(&req->lock);
-> > @@ -459,7 +461,7 @@ void media_request_object_unbind(struct media_request_object *obj)
-> >  
-> >  	req->num_incomplete_objects--;
-> >  	if (req->state == MEDIA_REQUEST_STATE_QUEUED &&
-> > -	    !req->num_incomplete_objects) {
-> > +	    !req->num_incomplete_objects && !req->manual_completion) {
-> >  		req->state = MEDIA_REQUEST_STATE_COMPLETE;
-> >  		completed = true;
-> >  		wake_up_interruptible_all(&req->poll_wait);
-> > @@ -488,7 +490,7 @@ void media_request_object_complete(struct media_request_object *obj)
-> >  	    WARN_ON(req->state != MEDIA_REQUEST_STATE_QUEUED))
-> >  		goto unlock;
-> >  
-> > -	if (!--req->num_incomplete_objects) {
-> > +	if (!--req->num_incomplete_objects && !req->manual_completion) {
-> >  		req->state = MEDIA_REQUEST_STATE_COMPLETE;
-> >  		wake_up_interruptible_all(&req->poll_wait);
-> >  		completed = true;
-> > @@ -499,3 +501,35 @@ void media_request_object_complete(struct media_request_object *obj)
-> >  		media_request_put(req);
-> >  }
-> >  EXPORT_SYMBOL_GPL(media_request_object_complete);
-> > +
-> > +void media_request_manual_complete(struct media_request *req)
-> > +{
-> > +	unsigned long flags;
-> 
-> I'd declare flags as last.
-> 
-> > +	bool completed = false;
-> > +
-> > +	if (WARN_ON(!req))
-> > +		return;
-> > +	if (WARN_ON(!req->manual_completion))
-> > +		return;
-> 
-> I think I'd use WARN_ON_ONCE() consistently: this is a driver (or
-> framework) bug and telling once about it is very probably enough.
+From: Masami Hiramatsu (Google) <mhiramat@kernel.org>
 
-Just to be sure, you only mean for the two checks above ? Or did
-you mean for the entire function ?
+mtk-msdc driver causes a kernel crash after swiotlb buffer is full.
 
-> 
-> > +
-> > +	spin_lock_irqsave(&req->lock, flags);
+---
+mtk-msdc 11240000.mmc: swiotlb buffer is full (sz: 16384 bytes), total 32768 (slots), used 32732 (slots)
+mtk-msdc 11240000.mmc: msdc_track_cmd_data: cmd=18 arg=0397A6F8; host->error=0x00000004
+Unable to handle kernel paging request at virtual address ffffffffc0001fc0
+---
 
-In practice, if you call this specific function from two places at the same
-time you have a bug, but I realize that moving the the warning on the check
-manual_completion inside that lock would massively help detect that case.
+When swiotlb buffer is full, the dma_map_sg() returns 0 to
+msdc_prepare_data(), but it does not check it and sets the
+MSDC_PREPARE_FLAG.
 
-What do you think ?
+swiotlb_tbl_map_single() /* prints "swiotlb buffer is full" */
+  <-swiotlb_map()
+    <-dma_direct_map_page()
+      <-dma_direct_map_sg()
+        <-__dma_map_sg_attrs()
+          <-dma_map_sg_attrs()
+            <-dma_map_sg()  /* returns 0 (pages mapped) */
+              <-msdc_prepare_data()
 
-> > +	if (WARN_ON(req->state != MEDIA_REQUEST_STATE_QUEUED))
-> > +		goto unlock;
-> > +
-> > +	req->manual_completion = false;
-> > +	/*
-> > +	 * It is expected that all other objects in this request are
-> > +	 * completed when this function is called. WARN if that is
-> > +	 * not the case.
-> > +	 */
-> > +	if (!WARN_ON(req->num_incomplete_objects)) {
-> > +		req->state = MEDIA_REQUEST_STATE_COMPLETE;
-> > +		wake_up_interruptible_all(&req->poll_wait);
-> > +		completed = true;
-> > +	}
-> 
-> A newline would be nice here.
-> 
-> > +unlock:
-> > +	spin_unlock_irqrestore(&req->lock, flags);
-> > +	if (completed)
-> > +		media_request_put(req);
-> > +}
-> > +EXPORT_SYMBOL_GPL(media_request_manual_complete);
-> > diff --git a/include/media/media-request.h b/include/media/media-request.h
-> > index d4ac557678a78372222704400c8c96cf3150b9d9..7f9af68ef19ac6de0184bbb0c0827dc59777c6dc 100644
-> > --- a/include/media/media-request.h
-> > +++ b/include/media/media-request.h
-> > @@ -56,6 +56,9 @@ struct media_request_object;
-> >   * @access_count: count the number of request accesses that are in progress
-> >   * @objects: List of @struct media_request_object request objects
-> >   * @num_incomplete_objects: The number of incomplete objects in the request
-> > + * @manual_completion: if true, then the request won't be marked as completed
-> > + * when @num_incomplete_objects reaches 0. Call media_request_manual_complete()
-> > + * to complete the request after @num_incomplete_objects == 0.
-> >   * @poll_wait: Wait queue for poll
-> >   * @lock: Serializes access to this struct
-> >   */
-> > @@ -68,6 +71,7 @@ struct media_request {
-> >  	unsigned int access_count;
-> >  	struct list_head objects;
-> >  	unsigned int num_incomplete_objects;
-> > +	bool manual_completion;
-> >  	wait_queue_head_t poll_wait;
-> >  	spinlock_t lock;
-> >  };
-> > @@ -218,6 +222,38 @@ media_request_get_by_fd(struct media_device *mdev, int request_fd);
-> >  int media_request_alloc(struct media_device *mdev,
-> >  			int *alloc_fd);
-> >  
-> > +/**
-> > + * media_request_mark_manual_completion - Enable manual completion
-> > + *
-> > + * @req: The request
-> > + *
-> > + * Mark that the request has to be manually completed by calling
-> > + * media_request_manual_complete().
-> > + *
-> > + * This function shall be called in the req_queue callback.
-> > + */
-> > +static inline void
-> > +media_request_mark_manual_completion(struct media_request *req)
-> > +{
-> > +	req->manual_completion = true;
-> > +}
-> > +
-> > +/**
-> > + * media_request_manual_complete - Mark the request as completed
-> > + *
-> > + * @req: The request
-> > + *
-> > + * This function completes a request that was marked for manual completion by an
-> > + * earlier call to media_request_mark_manual_completion(). The request's
-> > + * @manual_completion flag is reset to false.
-> 
-> s/flag/field/
-> 
-> > + *
-> > + * All objects contained in the request must have been completed previously. It
-> > + * is an error to call this function otherwise. If such an error occurred, the
-> > + * function will WARN and the object completion will be delayed until
-> > + * @num_incomplete_objects is 0.
-> > + */
-> > +void media_request_manual_complete(struct media_request *req);
-> > +
-> >  #else
-> >  
-> >  static inline void media_request_get(struct media_request *req)
-> > @@ -336,7 +372,7 @@ void media_request_object_init(struct media_request_object *obj);
-> >   * @req: The media request
-> >   * @ops: The object ops for this object
-> >   * @priv: A driver-specific priv pointer associated with this object
-> > - * @is_buffer: Set to true if the object a buffer object.
-> > + * @is_buffer: Set to true if the object is a buffer object.
-> >   * @obj: The object
-> >   *
-> >   * Bind this object to the request and set the ops and priv values of
-> > 
+Then, the msdc_unprepare_data() checks MSDC_PREPARE_FLAG and calls
+dma_unmap_sg() with unmapped pages. It causes a page fault.
+
+To fix this problem, Do not set MSDC_PREPARE_FLAG if dma_map_sg()
+fails because this is not prepared.
+
+Fixes: 208489032bdd ("mmc: mediatek: Add Mediatek MMC driver")
+Signed-off-by: Masami Hiramatsu (Google) <mhiramat@kernel.org>
+---
+ drivers/mmc/host/mtk-sd.c |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index 345ea91629e0..3594010bc229 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -827,9 +827,10 @@ static inline void msdc_dma_setup(struct msdc_host *host, struct msdc_dma *dma,
+ static void msdc_prepare_data(struct msdc_host *host, struct mmc_data *data)
+ {
+ 	if (!(data->host_cookie & MSDC_PREPARE_FLAG)) {
+-		data->host_cookie |= MSDC_PREPARE_FLAG;
+ 		data->sg_count = dma_map_sg(host->dev, data->sg, data->sg_len,
+ 					    mmc_get_dma_dir(data));
++		if (data->sg_count)
++			data->host_cookie |= MSDC_PREPARE_FLAG;
+ 	}
+ }
+ 
+
 
