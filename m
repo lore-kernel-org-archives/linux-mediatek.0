@@ -4,62 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D6DCC5AE59
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Jun 2025 11:34:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B040C5B543
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Jun 2025 12:45:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3F+TWyR8dDheU8NnxXwe5Wz+/9Mx7JCqjIuMynKbPvI=; b=Hb/wqrWM6pGaL9nf4BtQvgFsbK
-	8rWjss0UaTfLAHPX6RfqBli0pFKE+ycEdG8tdEmR59Uy/VG9dN4GWCkgkA7QARpbH0b1NeV2sOWkm
-	RrVXZ4j7n2bYuG4uaGj+QTNK3uvlXxXwus7hLK3+gE5fll4DCSFRCgnu1wjIXzkG70vBra2fx6w1I
-	pKrDJWDK1hOOFazTv+0AW6Va4jo3rsehTGGgK/n0KcroARR1EYcxEGiIVfdJNxR62byFbPlVP8MQy
-	B3NXIEaQqe16woB4H+SiAcUrrNOuW4km4IaIel6iLzd2F4SYC1bOkg7pqrCY89vVYZ294d1Ut9lgc
-	lg2ipjEQ==;
+	bh=G/8FocYlY0Uv/zqrEwDCoSdy/CbzWG1fyTseLizIo+s=; b=tkVhjJtXX+bq0D9xXLbOTEr9ho
+	G/LoxNCotyi21PGJOUQqvOptEdwqgjZoE5aa+OtMWavxCkemA8DYADmYMKfFLQJSLtvN0VoG5i1qX
+	g3Mn9sL4uv1dzSXQqPOJo8Z4AUXRg29svdgMga+ucJaW6HlyRUeOPfE3ypLyp5MW5dDUAEE7mu3dL
+	pAQGEsSHQ4QoVusluXdZ53B1j4JIl0WGxboOaHAhsfXmlUfJ/7Ba96JO6iFrjJShlmbuIUCyWFfkV
+	8oYbHfnFetsczKcEm4lItqO0Xg5uYrMDhnXhcX4cm3nNG8FXSzbnhibX4XhLNf6ryhJQSGW5MkQj2
+	ylLmap6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uN8rH-0000000FN1K-3WYE;
-	Thu, 05 Jun 2025 11:34:07 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uN9xv-0000000FVJt-2r7n;
+	Thu, 05 Jun 2025 12:45:03 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uN8cH-0000000FLWm-2949;
-	Thu, 05 Jun 2025 11:18:37 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E9430629C8;
-	Thu,  5 Jun 2025 11:18:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45E00C4CEE7;
-	Thu,  5 Jun 2025 11:18:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1749122316;
-	bh=BxVJrLzkppVqibFuXB/8/X3glUbvHD6lsDPdbsmwtOE=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=R7Z20CzkBfM9mtDSOuq6/r0NFGYA4Iqzhxg6sJGGX4TGa70R/J97XM+5zYs3zBjnb
-	 OQzc0pBRw1hfSSQyeiUQ1i6WyXetn82zw5cS5AaJYBquB+54Tl78aim7WEL1+cXDcv
-	 pPN/mfnGNV6nVSH7132+GLKq3ILV1U/cPF/zuUNzSEsxA6BWBnxDFr3HlX6Iepq63m
-	 8awXuprR9Yamb51bXy9nHSoOBKcXaSSZNTB02WOu5BPO11ear8e1kcrs0HzZXyFgar
-	 vmc+haivPCNsiZSi6r7u1/i/GQ/A7IKATQ1E0whAY2LB/AvKGuSC2xGF3+g8Py06L9
-	 xGsfOS12YXUAg==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Thu, 05 Jun 2025 13:14:20 +0200
-Subject: [PATCH mt76 5/5] wifi: mt76: Remove RCU section in
- mt7996_mac_sta_rc_work()
+	id 1uN9uo-0000000FUz3-0wKx;
+	Thu, 05 Jun 2025 12:41:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1749127308;
+	bh=TXksFdyyDEdsxI0qhkErvaqcJ1KZyhdNTbg4RY/u2X0=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=RkHfuRJGvu2PRqbK//2suBckGm9ffe1l5JEIk9rFWHq8Ho4RRz2CbZfNpDkefa7IR
+	 7ivclm4GTtO/WAsZS2HTJaY74TjVDfwKebm2ARvuJdd3vAIKVtrVPG2h/vR2FNq2kE
+	 zcRAQq0rtvj6PfRxp429qLrhkyC+OTVg3VG9rZuqjkyFmGNrRajnyb6kDcH3MhUCOD
+	 19KpyEZX03/f2wvXeGT4zUpQ6fGHHYS8V9wMRD7R4XQZgLYTudIzmboyGJcY3Vsr+c
+	 J09sj68/2iTt3a/zW0eVeUkJdp6bI7h+7XJ/YkNamWFhO9c4BbuBvM9z8XwNluKEEx
+	 ezCImSkIrcdcA==
+Received: from [IPv6:2606:6d00:10:5285::5ac] (unknown [IPv6:2606:6d00:10:5285::5ac])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9BE4A17E02B0;
+	Thu,  5 Jun 2025 14:41:46 +0200 (CEST)
+Message-ID: <608f95249ff3a39efb063ab9c6a543259a7b0ac9.camel@collabora.com>
+Subject: Re: [PATCH v3 1/5] media: mc: add manual request completion
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Sakari Ailus <sakari.ailus@linux.intel.com>, Hans Verkuil
+	 <hans@jjverkuil.nl>
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho
+ Chehab <mchehab@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Tiffany Lin
+	 <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
+ Yunfei Dong <yunfei.dong@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	kernel@collabora.com, linux-media@vger.kernel.org, Sebastian Fricke	
+ <sebastian.fricke@collabora.com>
+Date: Thu, 05 Jun 2025 08:41:45 -0400
+In-Reply-To: <aEFoCvPe4zE48UG7@kekkonen.localdomain>
+References: <20250604-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v3-0-603db4749d90@collabora.com>
+	 <20250604-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v3-1-603db4749d90@collabora.com>
+	 <aEC05991kEIIifDB@kekkonen.localdomain>
+	 <1ccaaec7f782afc71bae5c3b0f60a786a907555c.camel@collabora.com>
+	 <aEE-VFfJDhUbM2nA@kekkonen.localdomain>
+	 <8b1ed01a-b6e3-4670-a4e0-d8eee7ddc524@jjverkuil.nl>
+	 <aEFoCvPe4zE48UG7@kekkonen.localdomain>
+Organization: Collabora Canada
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250605-mt7996-sleep-while-atomic-v1-5-d46d15f9203c@kernel.org>
-References: <20250605-mt7996-sleep-while-atomic-v1-0-d46d15f9203c@kernel.org>
-In-Reply-To: <20250605-mt7996-sleep-while-atomic-v1-0-d46d15f9203c@kernel.org>
-To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Bo Jiao <Bo.Jiao@mediatek.com>, Peter Chiu <chui-hao.chiu@mediatek.com>
-Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Ben Greear <greearb@candelatech.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250605_054150_420025_6D57B140 
+X-CRM114-Status: GOOD (  11.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,96 +88,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since mt7996_mcu_add_rate_ctrl() and mt7996_mcu_set_fixed_field() can't
-run in atomic context, move RCU critical section in
-mt7996_mcu_add_rate_ctrl() and mt7996_mcu_set_fixed_field(). This patch
-fixes a 'sleep while atomic' issue in mt7996_mac_sta_rc_work().
+Hi Hans, Sakari,
 
-Fixes: 0762bdd30279 ("wifi: mt76: mt7996: rework mt7996_mac_sta_rc_work to support MLO")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/wireless/mediatek/mt76/mt7996/mac.c | 38 +++++--------------------
- 1 file changed, 7 insertions(+), 31 deletions(-)
+Le jeudi 05 juin 2025 à 09:48 +0000, Sakari Ailus a écrit :
+> > It's not user-triggerable, if this happens, then it is a driver bug.
+> 
+> If there is a driver bug, it could well be user-triggerable, wouldn't it?
+> Testing may not uncover all such cases.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-index 5561b1098e3fb0d25551fde3cfdb3057217395fd..445fe149ac0d7e194497a2dc884a599b9546c9ef 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-@@ -2353,20 +2353,12 @@ void mt7996_mac_update_stats(struct mt7996_phy *phy)
- void mt7996_mac_sta_rc_work(struct work_struct *work)
- {
- 	struct mt7996_dev *dev = container_of(work, struct mt7996_dev, rc_work);
--	struct ieee80211_bss_conf *link_conf;
--	struct ieee80211_link_sta *link_sta;
- 	struct mt7996_sta_link *msta_link;
--	struct mt7996_vif_link *link;
--	struct mt76_vif_link *mlink;
--	struct ieee80211_sta *sta;
- 	struct ieee80211_vif *vif;
--	struct mt7996_sta *msta;
- 	struct mt7996_vif *mvif;
- 	LIST_HEAD(list);
- 	u32 changed;
--	u8 link_id;
- 
--	rcu_read_lock();
- 	spin_lock_bh(&dev->mt76.sta_poll_lock);
- 	list_splice_init(&dev->sta_rc_list, &list);
- 
-@@ -2377,44 +2369,28 @@ void mt7996_mac_sta_rc_work(struct work_struct *work)
- 
- 		changed = msta_link->changed;
- 		msta_link->changed = 0;
--
--		sta = wcid_to_sta(&msta_link->wcid);
--		link_id = msta_link->wcid.link_id;
--		msta = msta_link->sta;
--		mvif = msta->vif;
--		vif = container_of((void *)mvif, struct ieee80211_vif, drv_priv);
--
--		mlink = rcu_dereference(mvif->mt76.link[link_id]);
--		if (!mlink)
--			continue;
--
--		link_sta = rcu_dereference(sta->link[link_id]);
--		if (!link_sta)
--			continue;
--
--		link_conf = rcu_dereference(vif->link_conf[link_id]);
--		if (!link_conf)
--			continue;
-+		mvif = msta_link->sta->vif;
-+		vif = container_of((void *)mvif, struct ieee80211_vif,
-+				   drv_priv);
- 
- 		spin_unlock_bh(&dev->mt76.sta_poll_lock);
- 
--		link = (struct mt7996_vif_link *)mlink;
--
- 		if (changed & (IEEE80211_RC_SUPP_RATES_CHANGED |
- 			       IEEE80211_RC_NSS_CHANGED |
- 			       IEEE80211_RC_BW_CHANGED))
- 			mt7996_mcu_add_rate_ctrl(dev, msta_link->sta, vif,
--						 link_id, true);
-+						 msta_link->wcid.link_id,
-+						 true);
- 
- 		if (changed & IEEE80211_RC_SMPS_CHANGED)
--			mt7996_mcu_set_fixed_field(dev, msta, NULL, link_id,
-+			mt7996_mcu_set_fixed_field(dev, msta_link->sta, NULL,
-+						   msta_link->wcid.link_id,
- 						   RATE_PARAM_MMPS_UPDATE);
- 
- 		spin_lock_bh(&dev->mt76.sta_poll_lock);
- 	}
- 
- 	spin_unlock_bh(&dev->mt76.sta_poll_lock);
--	rcu_read_unlock();
- }
- 
- void mt7996_mac_work(struct work_struct *work)
+You are both right, if the driver is not used, the warning will never
+trigger. I was worried of the hit of a thread safe ONCE implementation,
+but WARN_ONCE is simply not, it can warn few time before it stops if
+called from multiple CPUs at the same time. In that specific function,
+I can move all the checks inside the lock to make it truly once.
 
--- 
-2.49.0
+Now its up to you, I don't have strong preference. These are driver errors,
+and usually quite critical. They are not bug_on simply because we have a
+crash free resolution, but its probably not functional anymore.
 
+Nicolas
 
