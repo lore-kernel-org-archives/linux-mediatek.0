@@ -4,76 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B040C5B543
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Jun 2025 12:45:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2966DC5AE59
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Jun 2025 14:18:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G/8FocYlY0Uv/zqrEwDCoSdy/CbzWG1fyTseLizIo+s=; b=tkVhjJtXX+bq0D9xXLbOTEr9ho
-	G/LoxNCotyi21PGJOUQqvOptEdwqgjZoE5aa+OtMWavxCkemA8DYADmYMKfFLQJSLtvN0VoG5i1qX
-	g3Mn9sL4uv1dzSXQqPOJo8Z4AUXRg29svdgMga+ucJaW6HlyRUeOPfE3ypLyp5MW5dDUAEE7mu3dL
-	pAQGEsSHQ4QoVusluXdZ53B1j4JIl0WGxboOaHAhsfXmlUfJ/7Ba96JO6iFrjJShlmbuIUCyWFfkV
-	8oYbHfnFetsczKcEm4lItqO0Xg5uYrMDhnXhcX4cm3nNG8FXSzbnhibX4XhLNf6ryhJQSGW5MkQj2
-	ylLmap6Q==;
+	bh=O2fbdfzgdU3xpzxZE/A02Xz69i4NpwoVPz41CxqPEMI=; b=cGS0UaP6YnW9DFXIosU4gHrhxW
+	wr97b6vo5KnMpThZ9VuMxx1wsxuY27ekogHoDQNfyWbwiIqQBjmRe8IUvYaZ08s8mS75TxFE8zumC
+	YKsZgDHH63uu4Jw/pl+iVhe0BlmL2Y6w9SocMOWLd2HehZbqWWWNRhF7Khm5zvCRuBOEhEXu3d/j1
+	eRMQZciew0QcBQ37LzuUVwI+64cYEOwVESbLezo+uHOF1xn6bpXYq2ybFO7gjdz+4z0w4UxDZ0ML1
+	Cp3rEhB79YZTfe2YMhFH/WXXO8YD0eM/AQAefIoQ3XdjqLrHDPJuor/Vc3c/oq3MfUSUnLYpmgW3Q
+	jtVr+Nmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uN9xv-0000000FVJt-2r7n;
-	Thu, 05 Jun 2025 12:45:03 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uNBPv-0000000Fkch-1S34;
+	Thu, 05 Jun 2025 14:18:03 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uN9uo-0000000FUz3-0wKx;
-	Thu, 05 Jun 2025 12:41:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1749127308;
-	bh=TXksFdyyDEdsxI0qhkErvaqcJ1KZyhdNTbg4RY/u2X0=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=RkHfuRJGvu2PRqbK//2suBckGm9ffe1l5JEIk9rFWHq8Ho4RRz2CbZfNpDkefa7IR
-	 7ivclm4GTtO/WAsZS2HTJaY74TjVDfwKebm2ARvuJdd3vAIKVtrVPG2h/vR2FNq2kE
-	 zcRAQq0rtvj6PfRxp429qLrhkyC+OTVg3VG9rZuqjkyFmGNrRajnyb6kDcH3MhUCOD
-	 19KpyEZX03/f2wvXeGT4zUpQ6fGHHYS8V9wMRD7R4XQZgLYTudIzmboyGJcY3Vsr+c
-	 J09sj68/2iTt3a/zW0eVeUkJdp6bI7h+7XJ/YkNamWFhO9c4BbuBvM9z8XwNluKEEx
-	 ezCImSkIrcdcA==
-Received: from [IPv6:2606:6d00:10:5285::5ac] (unknown [IPv6:2606:6d00:10:5285::5ac])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9BE4A17E02B0;
-	Thu,  5 Jun 2025 14:41:46 +0200 (CEST)
-Message-ID: <608f95249ff3a39efb063ab9c6a543259a7b0ac9.camel@collabora.com>
-Subject: Re: [PATCH v3 1/5] media: mc: add manual request completion
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Sakari Ailus <sakari.ailus@linux.intel.com>, Hans Verkuil
-	 <hans@jjverkuil.nl>
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho
- Chehab <mchehab@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Tiffany Lin
-	 <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
- Yunfei Dong <yunfei.dong@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	kernel@collabora.com, linux-media@vger.kernel.org, Sebastian Fricke	
- <sebastian.fricke@collabora.com>
-Date: Thu, 05 Jun 2025 08:41:45 -0400
-In-Reply-To: <aEFoCvPe4zE48UG7@kekkonen.localdomain>
-References: <20250604-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v3-0-603db4749d90@collabora.com>
-	 <20250604-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v3-1-603db4749d90@collabora.com>
-	 <aEC05991kEIIifDB@kekkonen.localdomain>
-	 <1ccaaec7f782afc71bae5c3b0f60a786a907555c.camel@collabora.com>
-	 <aEE-VFfJDhUbM2nA@kekkonen.localdomain>
-	 <8b1ed01a-b6e3-4670-a4e0-d8eee7ddc524@jjverkuil.nl>
-	 <aEFoCvPe4zE48UG7@kekkonen.localdomain>
-Organization: Collabora Canada
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
+	id 1uNBKl-0000000Fjyb-100f;
+	Thu, 05 Jun 2025 14:12:43 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 2E6D16112E;
+	Thu,  5 Jun 2025 14:12:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D653BC4CEE7;
+	Thu,  5 Jun 2025 14:12:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1749132761;
+	bh=H84nLkI3ISIc0XZxOb82bQ47deaFwc09tK9XpfuXpoE=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=mQP5nU+k5wknXL42DeCVSwgqclJwF6QQTDEopazgpCVt+hNmNOatPq2mNu5ws0ao8
+	 fygyVWFQw8KoAwpPAoafke3rJbZHbqWcqubQlfN0LYbCrvYl6hbYZTP3OPEJJTFfMR
+	 aHSTqBhhGlRJWYhZAq2ZchIH/ozI8zlYmDW2AFg8aN+p/ksp+4n4ttHpv3aw/xUKzR
+	 k2kpQHdYwZbrB2AakLVZYJH3mylXJkhk1fFGQCYdagZ2a0B9YepamAOt+hW1W8+4xT
+	 u+h6NC9dPyvb7ZTxBa1XCNUk70Ic9CY70hcOZAf4s2apqwiz1Jwd6WEi5frkXV7yZw
+	 L3fr1IPXpptTA==
+Date: Thu, 5 Jun 2025 07:12:40 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Jinjian Song <jinjian.song@fibocom.com>
+Cc: andrew+netdev@lunn.ch, angelogioacchino.delregno@collabora.com,
+ chandrashekar.devegowda@intel.com, chiranjeevi.rapolu@linux.intel.com,
+ corbet@lwn.net, danielwinkler@google.com, davem@davemloft.net,
+ edumazet@google.com, haijun.liu@mediatek.com, helgaas@kernel.org,
+ horms@kernel.org, johannes@sipsolutions.net, korneld@google.com,
+ linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ loic.poulain@linaro.org, m.chetan.kumar@linux.intel.com,
+ matthias.bgg@gmail.com, netdev@vger.kernel.org, pabeni@redhat.com,
+ rafael.wang@fibocom.com, ricardo.martinez@linux.intel.com,
+ ryazanov.s.a@gmail.com
+Subject: Re: [net-next v1] net: wwan: t7xx: Parameterize data plane RX BAT
+ and FAG count
+Message-ID: <20250605071240.7133d1a5@kernel.org>
+In-Reply-To: <20250520122141.025616c9@kernel.org>
+References: <20250514104728.10869-1-jinjian.song@fibocom.com>
+	<20250515180858.2568d930@kernel.org>
+	<20250516084320.66998caf@kernel.org>
+	<20250520122141.025616c9@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250605_054150_420025_6D57B140 
-X-CRM114-Status: GOOD (  11.59  )
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,23 +80,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Hans, Sakari,
+On Wed,  4 Jun 2025 17:17:22 +0800 Jinjian Song wrote:
+> The parameters are used by data plane to request RX DMA buffers for the entrire lifetime of
+> the driver, so it's best to determine them at the driver load time. Adjusting them after the
+> driver has been probed could introduce complex issues (e.g., the DMA buffers may already be
+> in use for communication when the parameters are changed. While devlink appears to support
+> parameter configuration via driver reload and runtime adjustment, both of these occur after
+> the driver has been probed, which doesn't seem very friendly to the overall logic.
 
-Le jeudi 05 juin 2025 à 09:48 +0000, Sakari Ailus a écrit :
-> > It's not user-triggerable, if this happens, then it is a driver bug.
-> 
-> If there is a driver bug, it could well be user-triggerable, wouldn't it?
-> Testing may not uncover all such cases.
-
-You are both right, if the driver is not used, the warning will never
-trigger. I was worried of the hit of a thread safe ONCE implementation,
-but WARN_ONCE is simply not, it can warn few time before it stops if
-called from multiple CPUs at the same time. In that specific function,
-I can move all the checks inside the lock to make it truly once.
-
-Now its up to you, I don't have strong preference. These are driver errors,
-and usually quite critical. They are not bug_on simply because we have a
-crash free resolution, but its probably not functional anymore.
-
-Nicolas
+no.
 
