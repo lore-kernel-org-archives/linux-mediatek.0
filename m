@@ -4,93 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A73E3C5B559
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Jun 2025 07:44:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4117CC5AD49
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Jun 2025 07:53:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Px7TUkiGLJQvkjO/71jKrxllILzPLzGA5siX95GH57I=; b=lWXspFgg7TmTeNkkPQ0Tcwfog6
-	jUofXqwCPb++2IhI657ri6gztN6BPoVWOLqF6Day7KKu5ocL9bLWMK8ooT8srz4qzpoYocE6x9nlv
-	eRIdUSkr/oLjTb9gsMNn+5ar9p69sBSXqGoAAgWanXlbcHeRbuwt9eP+m784ZvT9/LBaK+4Qmm7Yo
-	hnlsaAzrldiKIByn/rSKAUZdM+eIvDW0yb9bxG8SplvJ240sduFGUzBqfRzPftEQWtoLT9w11lf3g
-	QpuaONfsvefv5OxtsVl0X9YoNN7TIrlc1+jD8bkZfi6/+Z0Ts//a5qW8+kO/oIycFqo1737cU7W1O
-	dVQDZbqg==;
+	bh=rm4T5ss5l6d5YD6Na8dlxdY8BKrMjQHyc2yVXx42+4w=; b=ShozeQjRfge3BxZZh5jxpqci6d
+	EP9uPW1dXfZSPmOxb+T0buNEQ7TR5QD3lOxkhEJiocyXqgir1UTG2G8J+RMPspshM1+Igv9a6lHvl
+	JR4kbRWC+0iYgfkYukHZH9A6SuLP7bMac0WY1n9l0vCABI/Mpt+qk8YuZr1xQ8L/bEWiOMCkKp6am
+	HRL9ve4XSTjuAmf0S62elW6rBDjiOrQY0mbaWQ1wHfmKgSOOwxlL9N7k7nfzWR72ADmfF9aVTdQPR
+	u6ugW+4pGEQjwyv8HtvcfXDEsYGx0B19aoTVbmgvFmktzx+TKVGGatcoclLZkt9apOEOAUAniZuXI
+	AM8Pf3ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNRkh-0000000HKbM-3GWZ;
-	Fri, 06 Jun 2025 07:44:35 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1uNRsu-0000000HLpB-0DLh;
+	Fri, 06 Jun 2025 07:53:04 +0000
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNRiT-0000000HKPR-3tYx
+	id 1uNRqj-0000000HLZy-2Hv3
 	for linux-mediatek@lists.infradead.org;
-	Fri, 06 Jun 2025 07:42:19 +0000
-Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-450d668c2a1so20203515e9.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 06 Jun 2025 00:42:17 -0700 (PDT)
+	Fri, 06 Jun 2025 07:50:51 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-552206ac67aso2053708e87.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 06 Jun 2025 00:50:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1749195736; x=1749800536; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=Px7TUkiGLJQvkjO/71jKrxllILzPLzGA5siX95GH57I=;
-        b=EoIHKf0vgRbwyk8XIIZGRwBBPOH2ouIv4FKsG9EGPRaZnjTrjwtKFNpnO0KlefjxyR
-         xCkgA8QZ/Bqx4pYBF/3LfvAdjXhFq2zDNmGQQQoXbD9fP/cWcpihpACPO2eFzge7LcMi
-         FA3y+GiOI0d20UwKebtL7aZ+UomF84M1/6jqw9dozGwim15EfO+eOsiFTM4h8h1PFCqn
-         DD6EaHEQOyNW3GMoIy82mr1lumfzC6avblPZBOhNmiaNCfnQZJnPFr6/yz0oKTkI4EOr
-         08/7lIL2jCF8KTK5xEHA5odZaV8yLYsqgEgttSzySJBDl7iqj/Ymckmnin6Cg4G1i1yU
-         5Pfw==
+        d=chromium.org; s=google; t=1749196247; x=1749801047; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=rm4T5ss5l6d5YD6Na8dlxdY8BKrMjQHyc2yVXx42+4w=;
+        b=bTn/EPoX5bS0TKV2FXUy9vTG0wKLtP8guR0Uv0mq27902GM9SzERyx8JYi50mG3dX7
+         yw+BcqNp6tsSisOGKh1Dob25UqnEJwdEmn7L3QxSpUpLLDcvkFgILm25U8xs9wjXehc3
+         HVsS4xLsT4lsTDf9zVNXLVmvW19kustsClbnI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749195736; x=1749800536;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Px7TUkiGLJQvkjO/71jKrxllILzPLzGA5siX95GH57I=;
-        b=MMV8L0lan5aI5WwoeilA42klMp3VbokdWbjY0OLqrjU0oKcoAX++tS+8l0NkA+T+Al
-         5+rr+ZuNRvtRVPrYgaSrTIcLPuNfVDlK9fh1G3Y+l+sUQtpgyrmR6eYY+myiCS7HQs0A
-         21510H+EWI3DB2Ap8YGF6k+sHa+nTN5qD81xcX0cLlxUulje1NNbtz5xXn3Ruzs/Le78
-         UPyERvkiftpvPHGvLzKBUcsT5xa8fGSy6qNNDmlFvoTzUu8Mxaj+EnMxCKpMcXfRO6Km
-         SRM8dQfLN3b2iPg7c+KzuEehIzcIb5jlRHG8Xm7xGKro8zDhd8jb9PYgmuzIPNSrIXoN
-         nqqQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUVJTGJuaozToaO41888G3SmJEkRa+TjDsjtbO9VbhpSWEgXFoLANmGA3he39d9uuET76ugBFgPn5ee1+m4gQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx5ChY4p2cMOTn90LS+c/1tHTT98L4Y1j5Re4eAiNgTKg3C8vb/
-	r4R8smKx4NOuOErO1T48JG+sZ526Qd/xebpJd3i2x1bYUpfGvENlEHiyRwaQ7oT4uls=
-X-Gm-Gg: ASbGncuFT4zpFEEKVh32Q37B9k2/7AfnOR+TTi7vITnUJpFGxfa8RqCAnjfkiR63g+y
-	T52U0H1bFa9MntYwNKkIq+BtpnwZYXD+JufThtX4xIBD5Xksw7rhRVt0Sa1TWaYcbe0O1chPn2c
-	WGN3qLevLrX65Bmx9GnCDkXvafnzNVQXOrym5zlUvHWZGKPGSOSS2e4DXLSu82kR7yV78w36DqH
-	WzfOiIeueQTAhgcaJhky/sb2n6ZlMGJKaDlCoq4V8+d53JuSptqjmRbAdlJ2dcNGfmy8Qs3R2Hj
-	tdBV8WQMHiBREnEmv3M11lFZYt3jjVno3PtkR2P46cYvU9C+9abY+MabnF39OkRFWf3QgC/O/rR
-	NPJY8
-X-Google-Smtp-Source: AGHT+IEDJ6Qm0Ur3ac3Ih5jAsMWLAgYjL99/0S8sUsnqlAT4/rYCzrAkgc1FBvTgHlungYhO6iFY8w==
-X-Received: by 2002:a05:600c:4f90:b0:44a:b468:87b1 with SMTP id 5b1f17b1804b1-45201506dd3mr20374865e9.4.1749195736011;
-        Fri, 06 Jun 2025 00:42:16 -0700 (PDT)
-Received: from [192.168.1.221] ([5.30.189.74])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4526e056138sm12622585e9.5.2025.06.06.00.42.12
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 06 Jun 2025 00:42:15 -0700 (PDT)
-Message-ID: <ff77f70e-344d-4b8a-a27f-c8287d49339c@linaro.org>
-Date: Fri, 6 Jun 2025 10:42:11 +0300
+        d=1e100.net; s=20230601; t=1749196247; x=1749801047;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=rm4T5ss5l6d5YD6Na8dlxdY8BKrMjQHyc2yVXx42+4w=;
+        b=ot+373p39Q+sL7QLRHSxFQj7PTq9VmRqqKKTUQcaQEB8K0Sv9lVgKbc3LZnRtMidgJ
+         8gIK8kBHXPdIaDjEkiu9KOa5rfDdb9V5ryXo28jI4AiK6MCKI7eIL0GNac+kMdrvDl1Q
+         kT3FJD8N2DvdSNHvxdLqm2L4NG4Tl5caYpnWGFps/vwyt4s+J3ixQZeEZoeql4c+4dz3
+         kmij7zidpCO7Xq3dXjWrAm5cQRMsgO6eK/3ojleFU8NpiTQcnkeoiiqHoWhWbuO6rSRb
+         Fwc8zIEGL7C4flkGufckE0xbviDUKhaytm4Ry428oiiqVor4pw9vGaindTDjpr+2i1SF
+         TwGQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVQk+BCTt8JQABuc/WnGIrLAxf7QunfMN9t4iwdg3mFgnjMmtWNqtKg0dg1SQSs36g0hfXg1PLooLP8kEL/Dg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwQEDql+o4YVxlgRjYLgLW6kf8K+X5KX1CDDJgsFu0UHdd1SzyO
+	rqvQXn2v93I2wkCRnWlXDTL870LrLmmZSogeZJukM0So7ZqmKEMhax+jOdD+XG7QVLWrXI+IzLV
+	JP+yzNjs6SM5Uks0qpgaLArlgN3UIZlnZzbJ9b7KEFWcX/1Uc4NE=
+X-Gm-Gg: ASbGnctM/8Kq9NbYCR0G4V2xXO/V0S/hYec4haAZ756ji1PcAxcTiBvr6pWVdQvwL33
+	dNeeVMu9umHbyPCwuTQVEDlC1dlHiRpHEYhmot1TATYBy0VV/qNGV1vpfs68rBrt/ttEePmfYzW
+	FNWKRN2RfOsfnpFYgzZj4Qstu7ZuSk5x6DqRMGNWxKAr89yWBVM2FHeX/IsY5RcRK+cGaCYEU=
+X-Google-Smtp-Source: AGHT+IFbKR4s9CitEfgNJcsl0QhC9Vk4xSWEUHEwXIP7bIcoci9LebkzJqucGfI4/l4+Z99afgP92CHraRrtTZAdj/I=
+X-Received: by 2002:a2e:b8d6:0:b0:32a:8846:9776 with SMTP id
+ 38308e7fff4ca-32ae70d541bmr2192651fa.22.1749196234912; Fri, 06 Jun 2025
+ 00:50:34 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] dmaengine: mediatek: Fix a flag reuse error in
- mtk_cqdma_tx_status()
-To: Qiu-ji Chen <chenqiuji666@gmail.com>, sean.wang@mediatek.com,
- vkoul@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com
-Cc: dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- baijiaju1990@gmail.com, stable@vger.kernel.org,
- kernel test robot <lkp@intel.com>
-References: <20250606071709.4738-1-chenqiuji666@gmail.com>
-Content-Language: en-US
-From: Eugen Hristev <eugen.hristev@linaro.org>
-In-Reply-To: <20250606071709.4738-1-chenqiuji666@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+References: <20250421101248.426929-1-wenst@chromium.org> <20250421101248.426929-2-wenst@chromium.org>
+ <CAD=FV=XLonF5qM+f6diESvnqAHKm4Y7wwPsNssdNqZfkn2OzSw@mail.gmail.com>
+In-Reply-To: <CAD=FV=XLonF5qM+f6diESvnqAHKm4Y7wwPsNssdNqZfkn2OzSw@mail.gmail.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Fri, 6 Jun 2025 15:50:23 +0800
+X-Gm-Features: AX0GCFt9WzCgD2IIEFQ5utFqrLWuXwM5tZhCHvVXVAvSJ22GZSGtAIfEBPnfCtQ
+Message-ID: <CAGXv+5E3bJf0o8y4kve_f+EefKqcOeW99VA_HcgKRm2+Bj+uhg@mail.gmail.com>
+Subject: Re: [PATCH v2 1/8] dt-bindings: HID: i2c-hid: elan: Introduce Elan eKTH8D18
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Cc: Rob Herring <robh@kernel.org>, Doug Anderson <dianders@chromium.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, chrome-platform@lists.linux.dev, 
+	linux-input@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250606_004217_989170_D2B3B212 
-X-CRM114-Status: GOOD (  13.70  )
+X-CRM114-CacheID: sfid-20250606_005049_576103_AF646C08 
+X-CRM114-Status: GOOD (  22.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,55 +98,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Dmitry,
+
+On Tue, Apr 29, 2025 at 3:34=E2=80=AFAM Doug Anderson <dianders@chromium.or=
+g> wrote:
+>
+> Hi,
+>
+> On Mon, Apr 21, 2025 at 3:13=E2=80=AFAM Chen-Yu Tsai <wenst@chromium.org>=
+ wrote:
+> >
+> > The Elan eKTH8D18 touchscreen controller is an I2C HID device with a
+> > longer boot-up time. Power sequence timing wise it is compatible with
+> > the eKTH6A12NAY, with a power-on delay of at least 5ms, 20ms
+> > out-of-reset for I2C ack response, and 150ms out-of-reset for I2C HID
+> > enumeration, both shorter than what the eKTH6A12NAY requires.
+> > Enumeration and subsequent operation follows the I2C HID standard.
+> >
+> > Add a compatible string for it with the ekth6a12nay one as a fallback.
+> > No enum was used as it is rare to actually add new entries. These
+> > chips are commonly completely backward compatible, and unless the
+> > power sequencing delays change, there is no real effort being made to
+> > keep track of new parts, which come out constantly.
+> >
+> > Also drop the constraints on the I2C address since it's not really
+> > part of the binding.
+> >
+> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> > ---
+> > Changes since v1:
+> > - Reworded commit message
+> > - Dropped the enum for the new compatible string entry
+> > - Dropped constraint on I2C address completely
+> > ---
+> >  .../devicetree/bindings/input/elan,ekth6915.yaml     | 12 +++++++-----
+> >  1 file changed, 7 insertions(+), 5 deletions(-)
+>
+> Reviewed-by: Douglas Anderson <dianders@chromium.org>
+
+Can we get this merged for v6.17? Or could you give an Ack so that
+it can go through the soc tree?
 
 
-On 6/6/25 10:17, Qiu-ji Chen wrote:
-> Fixed a flag reuse bug in the mtk_cqdma_tx_status() function.
-> 
-> Fixes: 157ae5ffd76a ("dmaengine: mediatek: Fix a possible deadlock error in mtk_cqdma_tx_status()")
-> Cc: stable@vger.kernel.org
-> Reported-by: kernel test robot <lkp@intel.com>
-> Closes: https://lore.kernel.org/oe-kbuild-all/202505270641.MStzJUfU-lkp@intel.com/
-> Signed-off-by: Qiu-ji Chen <chenqiuji666@gmail.com>
-> ---
->  drivers/dma/mediatek/mtk-cqdma.c | 11 ++++++-----
->  1 file changed, 6 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/dma/mediatek/mtk-cqdma.c b/drivers/dma/mediatek/mtk-cqdma.c
-> index 47c8adfdc155..f7b870d2ca90 100644
-> --- a/drivers/dma/mediatek/mtk-cqdma.c
-> +++ b/drivers/dma/mediatek/mtk-cqdma.c
-> @@ -441,18 +441,19 @@ static enum dma_status mtk_cqdma_tx_status(struct dma_chan *c,
->  	struct mtk_cqdma_vdesc *cvd;
->  	struct virt_dma_desc *vd;
->  	enum dma_status ret;
-> -	unsigned long flags;
-> +	unsigned long pc_flags;
-> +	unsigned long vc_flags;
->  	size_t bytes = 0;
->  
->  	ret = dma_cookie_status(c, cookie, txstate);
->  	if (ret == DMA_COMPLETE || !txstate)
->  		return ret;
->  
-> -	spin_lock_irqsave(&cvc->pc->lock, flags);
-> -	spin_lock_irqsave(&cvc->vc.lock, flags);
-> +	spin_lock_irqsave(&cvc->pc->lock, pc_flags);
-> +	spin_lock_irqsave(&cvc->vc.lock, vc_flags);
->  	vd = mtk_cqdma_find_active_desc(c, cookie);
-> -	spin_unlock_irqrestore(&cvc->vc.lock, flags);
-> -	spin_unlock_irqrestore(&cvc->pc->lock, flags);
-> +	spin_unlock_irqrestore(&cvc->vc.lock, vc_flags);
-> +	spin_unlock_irqrestore(&cvc->pc->lock, pc_flags);
->  
->  	if (vd) {
->  		cvd = to_cqdma_vdesc(vd);
-
-If the first spin_lock_irqsave already saved the irq flags and disabled
-them, would it be meaningful to actually use a simple spin_lock for the
-second lock ? Or rather spin_lock_nested since there is a second nested
-lock taken ?
-
-Eugen
-
+Thanks
+ChenYu
 
