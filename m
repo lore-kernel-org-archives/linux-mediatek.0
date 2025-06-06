@@ -4,92 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E044C5AD49
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Jun 2025 09:02:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F789C5B549
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Jun 2025 09:16:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+Toi2tQAZrviqm160TJzNi/82azbGkUfQEBaQsphdcI=; b=okxKEthps8V6YLSPeGj3WSW56+
-	4YqDKkOS0ag9c0t2PlX53wdCxiJnZOxrg85l6+qJyjuhanEpsDHMt+kI7VIBnmHNkWAV1b2On8jRx
-	Mp5o0Dy6HAsgLCp9uhlHhpHWRfF+pIRyquYE98CEw71B8JqB1Wz1ccWU8ySNKUGFnYuxxLsTujaXl
-	rBbM7i27KajLn579FV97M407td9KAzybyYUVBdDj0aiKFZilwxAMCad74vhEVjlvajK0gCSihKQu5
-	9P0RNajF5lEYXWCXbxV9zdAgMX8fd+chjmNUclLkruxqqqMf85Bi2ZmgThFrB3YQPa6lQwUQesZBP
-	DLokSUzg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Fz822FN5H/+n8My5Ek051DCerU7On02pfaR6UCl949I=; b=LrekPYQi/CrbepT+gb2+P7mlp8
+	IuJ6J5b4ZwkrvXQphqtDMMBr0l0plNMvNtoEO46ZzBiHTluPQYe1ID7Pay3TA/Y5U9tV2FOcMy8Pu
+	uoeCZyd30aaeaNMZWdpN3jSiSI2JD5Z0f6oquw1g3mge2t3m8scOXUGcPQZF99WgL0c6mWFmRolGb
+	goZWp2rk4g0Lqihh+ZAhJPfJqKI0RYUWT8fACxaZT993SCYIEHwkrIcPaz0yN4QSFSpG0aSsnClaD
+	sb35p6bmnL7TGKZ/KVWzdkPsDlkykIHMCs97xY3NrobAejgQUzlGFzdp8dDpNqXx6IW84VBK6VBBA
+	q7Dy2+5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNSyT-0000000HTWc-0VSh;
-	Fri, 06 Jun 2025 09:02:53 +0000
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
+	id 1uNTBu-0000000HVLN-20Dq;
+	Fri, 06 Jun 2025 09:16:46 +0000
+Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNSwK-0000000HTB4-3TAW;
-	Fri, 06 Jun 2025 09:00:41 +0000
-Received: by mail-pl1-x641.google.com with SMTP id d9443c01a7336-235ef62066eso25135915ad.3;
-        Fri, 06 Jun 2025 02:00:40 -0700 (PDT)
+	id 1uNT9S-0000000HV0R-2ZZM;
+	Fri, 06 Jun 2025 09:14:15 +0000
+Received: by mail-ej1-x643.google.com with SMTP id a640c23a62f3a-acacb8743a7so326168366b.1;
+        Fri, 06 Jun 2025 02:14:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1749200440; x=1749805240; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=+Toi2tQAZrviqm160TJzNi/82azbGkUfQEBaQsphdcI=;
-        b=GgfqiPYbOzigKS/yQUAxeb6gJp2vtrrmDW5pGWOAcuqytEZrwTM4lLp1gmLVYMgCCY
-         GgrKADHT/E/aFYyWSXfw6rXUP6yIcNZkpVoEaNg49WlxstznPwW4Lkx29xba8LvIFkj2
-         MWwxe451gGkJBd+dgNRzB4q9xAXEGMEj+odjGbhy/gmXg7Numc9AVDDC+dgWkaQPpcSm
-         Q4+POsIpIOR3wO0FFGJDyUkH57YNhOQ12W7Vdf1HpRQTJjRgd/d2kr+6AeBeuTFD/7YW
-         UUFqvdXA6bs7ZsNmeQYAJMn0lka+WRCy4L/oqedkcdNYhJK0q1vnWpa/IKXSwJ7r9m12
-         4g0Q==
+        d=gmail.com; s=20230601; t=1749201253; x=1749806053; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=Fz822FN5H/+n8My5Ek051DCerU7On02pfaR6UCl949I=;
+        b=b7rKkkqR4L5+AJofpXE3DcvI6OGvqUlcP99SNyueGDngSuvbd0Jju6KbkEw9xH2a8c
+         d2QIR+5R3ky+kPDFyRbJCfuhavN4lM0qYrBVOtmdDcMpP6Q4W7XEdNh402OBlK/RLexv
+         SsZKwijOC0ImzTvEaTIiV8ejVfxYdcQ0rYBiOsHZsysvTac8RkHd1qr/c2Gmg9EQS5Qq
+         Mt21xPkO3kC5bHbu5mNf7VIEKph0pxvzXrj2d1PRglx2EfWR2ZkNRVtrkeaUL8l4CXXo
+         9biruTo0s85HU0kVo/THydKwmly23vVmUeRm+OmiPMqlSNA6p8QJkfKfpU9FKZFqhyLo
+         l1hw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749200440; x=1749805240;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=1e100.net; s=20230601; t=1749201253; x=1749806053;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=+Toi2tQAZrviqm160TJzNi/82azbGkUfQEBaQsphdcI=;
-        b=NSNqffnz43ODtcM6T3VfkjnlDkVyzcBExjbsOcjLlKA0qlilCajRbL/gAi/I3LJyrH
-         SZm6/67OeP8ZNtMLmlgOWFo5Jqb4Q/jLGNrzs1ixDIMp0mpQTcrCZHYhq3A2f4TKWohc
-         36E5Oz7r39apKBvb3ZA/6wreGZhH//E75saLaRNFQJ33AVFPyV3plj5sQae5IM7OAHci
-         aZidRlmL8wSKafUDd3ToX7nsVLW5T4U/Fgu74Et/5Cu9/7wZoRxNd17H6DpvMEcbrQ0i
-         ahh04VJHT2SU4Md/tOY3NhWGS5tOZ7uN/pJ6M921D1Ao1sre1wk9LB8WEEEoimkLVBiq
-         R/sA==
-X-Forwarded-Encrypted: i=1; AJvYcCUnFm1j0qXAtRBhbhbHNVtN+UdpUZdOKhzoERkNI1sEGYVv/aze2hAoLm5aHSaUlFT95kkJ0cm7qUtFc6dX0t4=@lists.infradead.org, AJvYcCWdaa5gtikqkh41JednZX47dt5/zJQU07CTpCZWYbemNfaVEgzSQS2PqtNhzvYx8hk1B3A+HqUypuIo2mSmrP4f@lists.infradead.org
-X-Gm-Message-State: AOJu0YwnfHMoCmbmw2naJE3B8DaxK9D25vXfJ8sK3owVl9iAQ6wgjlT0
-	hCQqAXFL3KW5S3hAtNy+9BJTKzkTUr4x/MqETkJ73VVpZuTX7koGTMTPbdce7nKoRqM=
-X-Gm-Gg: ASbGncuxFCLbWlPNa+uidIixnPJXEoxQxhQuN7F8DlSjyIhzeIYvMMXGiz4e3TmY6Rp
-	tMQ7MY+5pAvJ+qZaMppy3mcYvWFsk6M/DXYULjXNx7mKPlL0IHEYxNi23A9XUKFXD5cqJ93JCDJ
-	DEsQ6+EIY2zMWGGGlYx0Wad4N7+/yuAwz3YP12hdLrkn6iAsIBKThUzsZ0+JJtoYhCrhxaLtmWI
-	25j3WeG3oKeRlBfOSBM65xNEHinaw4L1kCTpt8/dvBxfWDaQWAQZRhOpZSLTkKQBZCw4NqjfZ83
-	LvyhIsaXAL+FGB8w5pIqcTkFPixS8i1V531vhRN7Eqxdd68yCzrtDGQyW02GuJDDh5LFCg==
-X-Google-Smtp-Source: AGHT+IH15PyfKv8D2hZo4jz4TX/8Ll4a83KhJNiOMLH4+nrqpTtsFeVLOHL/LLeT5zU+0mYoyt7KqQ==
-X-Received: by 2002:a17:902:b18a:b0:234:f1ac:c036 with SMTP id d9443c01a7336-23601dab2ebmr23801085ad.50.1749200439705;
-        Fri, 06 Jun 2025 02:00:39 -0700 (PDT)
-Received: from tom-QiTianM540-A739.. ([124.127.236.130])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2360340d87csm8140735ad.189.2025.06.06.02.00.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 06 Jun 2025 02:00:39 -0700 (PDT)
-From: Qiu-ji Chen <chenqiuji666@gmail.com>
-To: sean.wang@mediatek.com,
-	vkoul@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	eugen.hristev@linaro.org
-Cc: dmaengine@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	baijiaju1990@gmail.com,
-	Qiu-ji Chen <chenqiuji666@gmail.com>,
-	stable@vger.kernel.org,
-	kernel test robot <lkp@intel.com>
-Subject: [PATCH v2] dmaengine: mediatek: Fix a flag reuse error in mtk_cqdma_tx_status()
-Date: Fri,  6 Jun 2025 17:00:17 +0800
-Message-Id: <20250606090017.5436-1-chenqiuji666@gmail.com>
-X-Mailer: git-send-email 2.34.1
+        bh=Fz822FN5H/+n8My5Ek051DCerU7On02pfaR6UCl949I=;
+        b=b3aVX6smfYt7abILxD3oKfIqiSr+gaE5dAJWoAIKgajzAz6MM5d/rj2F6g6OlBBx96
+         W0tHEJmY7nsJswh/MHs62Wx+eDZwVUOi9WQjNIBfZIrlESQKUYv+W3uc4WXUpuHXseor
+         UzIZlj6msbUmCtAoCHrHo0hYnpfShPHwY/3frpuTgQfJCt8NtFCSR8V7Yz3Ezra2V0Oq
+         WiPVdYvi8Q45emY9rjSCsk4zvS8lCLSk+ZC1L8cMmKdM4H+VuSWwMoTbBo5j+fs5+sbu
+         dEyG4QjIYoxTswBhBba8cE7RfTRBwtKdr1B8hf4Gbri89GnQ7kAg/JK7Pemqh92C2rM5
+         T9uQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVwlZdaWA+dZeBc4Zhe2iXw48QbXWZtO2xo8I9SA9zNWUZXF4SALZT5n2gT37sEsS7N0+iOxZOC2qy11L650/BO@lists.infradead.org, AJvYcCX5mgB7eBgJ7vodFi8A3HLygUcQi6p1M9pGSo7TjFHgunITGxQVYuFjXKd7SdJ9O2qbcCxfV3LJwB7YxNCWWCg=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx3ZL3UDOjTR98/PHLKLON3XpR0mnGuthBvOv9if6LBHXfQT6GA
+	SsoFZ90vuNY2n1CpgKBbbysalLHyoiyJLkUXxZejxQB90RolJO+2hyq2ctgzY5q/gJKMvSB3QPr
+	mdiRiy9dypkTRrHjK9uJmImorH/GvaXc=
+X-Gm-Gg: ASbGnctJB0uxF+swYXo73Q+hA7XEQ7ARx/UgULuniqbS9hyGBPTjHqnvqBI06COsz3m
+	KIyLIb0SsBzixn3wTrBSYVsyBroBf9ioZ1r6sR0e74G/X9/EZXY6UBxq6mnyIFxeNMrhPTlYZzw
+	kNj10BL5LAbiAcQQ4wxu/VNrQflS4wS75rp2Be9HAGlUY=
+X-Google-Smtp-Source: AGHT+IEeX2nFYgTt+0+rebDEi2e2f4O2bF7FhHfmP7KwHgiTlO9eS0XJCmIiwJM3RRdB3UVl7gDAKbNxKQYbrHeSUYg=
+X-Received: by 2002:a17:906:9f8c:b0:ad5:a122:c020 with SMTP id
+ a640c23a62f3a-ade07634c33mr697878766b.16.1749201252792; Fri, 06 Jun 2025
+ 02:14:12 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+References: <20250606071709.4738-1-chenqiuji666@gmail.com> <ff77f70e-344d-4b8a-a27f-c8287d49339c@linaro.org>
+In-Reply-To: <ff77f70e-344d-4b8a-a27f-c8287d49339c@linaro.org>
+From: Qiu-ji Chen <chenqiuji666@gmail.com>
+Date: Fri, 6 Jun 2025 17:14:00 +0800
+X-Gm-Features: AX0GCFsmeBUhD5E-WjTAKSUhstkUhcRejJPPS78zNv2KUGTIKC47m2fIc770YIw
+Message-ID: <CANgpojXWk1zvu32bMuGgkVGVNvPw+0NWmSUC62Sbc3WcUXAd3A@mail.gmail.com>
+Subject: Re: [PATCH] dmaengine: mediatek: Fix a flag reuse error in mtk_cqdma_tx_status()
+To: Eugen Hristev <eugen.hristev@linaro.org>
+Cc: sean.wang@mediatek.com, vkoul@kernel.org, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, dmaengine@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, baijiaju1990@gmail.com, stable@vger.kernel.org, 
+	kernel test robot <lkp@intel.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250606_020040_864171_9733F131 
-X-CRM114-Status: GOOD (  10.39  )
+X-CRM114-CacheID: sfid-20250606_021414_649543_689ED5AC 
+X-CRM114-Status: UNSURE (   8.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,38 +95,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fixed a flag reuse bug in the mtk_cqdma_tx_status() function.
+> On 6/6/25 10:17, Qiu-ji Chen wrote:
+> > Fixed a flag reuse bug in the mtk_cqdma_tx_status() function.
+> If the first spin_lock_irqsave already saved the irq flags and disabled
+> them, would it be meaningful to actually use a simple spin_lock for the
+> second lock ? Or rather spin_lock_nested since there is a second nested
+> lock taken ?
+>
+> Eugen
+>
 
-Fixes: 157ae5ffd76a ("dmaengine: mediatek: Fix a possible deadlock error in mtk_cqdma_tx_status()")
-Cc: stable@vger.kernel.org
-Reported-by: kernel test robot <lkp@intel.com>
-Closes: https://lore.kernel.org/oe-kbuild-all/202505270641.MStzJUfU-lkp@intel.com/
-Signed-off-by: Qiu-ji Chen <chenqiuji666@gmail.com>
----
-V2:
-Change the inner vc lock from spin_lock_irqsave() to spin_lock()
-Thanks Eugen Hristev for helpful suggestion.
----
- drivers/dma/mediatek/mtk-cqdma.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Hello Eugen,
 
-diff --git a/drivers/dma/mediatek/mtk-cqdma.c b/drivers/dma/mediatek/mtk-cqdma.c
-index 47c8adfdc155..9f0c41ca7770 100644
---- a/drivers/dma/mediatek/mtk-cqdma.c
-+++ b/drivers/dma/mediatek/mtk-cqdma.c
-@@ -449,9 +449,9 @@ static enum dma_status mtk_cqdma_tx_status(struct dma_chan *c,
- 		return ret;
- 
- 	spin_lock_irqsave(&cvc->pc->lock, flags);
--	spin_lock_irqsave(&cvc->vc.lock, flags);
-+	spin_lock(&cvc->vc.lock);
- 	vd = mtk_cqdma_find_active_desc(c, cookie);
--	spin_unlock_irqrestore(&cvc->vc.lock, flags);
-+	spin_unlock(&cvc->vc.lock);
- 	spin_unlock_irqrestore(&cvc->pc->lock, flags);
- 
- 	if (vd) {
--- 
-2.34.1
+Thanks for helpful suggestion. The modification has been submitted in
+patch v2 as discussed.
 
+Best regards,
+Qiu-ji Chen
 
