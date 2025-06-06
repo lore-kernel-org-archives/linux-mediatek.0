@@ -4,69 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15C74C5AD49
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Jun 2025 12:37:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B67C2C61CE8
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Jun 2025 12:54:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mH428cQbEp9V64qNJHarjakmcyTJ6O4neC9iS/l8ECA=; b=XtNMKYk4swBW5/9FhJLfS+DDPg
-	xJzimb+DrBfigVVDV8iqiMPg/lCORIkKMvep5aDks9qnqwetzW8UoevylUQ3L1WQdCtAL5rg0BFBd
-	fvMbHwlP+YQb1xDQYrNnwqH9sfM91txFxUr2weJDkY/JdrEdI4TTEH7dcIKp4G4GDP98rugCnWqIv
-	s0oRH3dCgkH+o9NWNhzemYu9Mkl+SeBPV+q187gcpdxlJLwK3hnv8FNyd3HqNWT259PSGVfkB3gjz
-	fQaZLKoiI6VH9kdCj3Piz41Tt5AQtgGxhqtk2u4ayFi95b9sLCxewye2g0fjQTOZQlIeu7uENhRIh
-	zc0FK2bQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=y0U8YySrCzcQCHx1OTzJZTq9ssrB3rQxiNR/F/5giYA=; b=YKGnDTi00/SGH80mbZglglZGEE
+	i+TMH3UfnRr5Iw/uto5/llDuVmrcN8ncPHn05CNja7yY4z2V2aM75VdoyvKsI+whprmmJftG4WIUv
+	nSFK+cR6h1X20FelUqKvH/TJI9HLCHd9/LBLcMIO8R4G7YHpWEEcorl4SAYRgeLL5HYxyNSxy3XkA
+	OxbzqwSZhsohqzS/JtTp1RNLffj/9xLumtoVbPs4PpnNAwm6Dy/I2UQVl39bBYK16IyLPdse+Vkn+
+	y1yNmQzQQ1E269DYY+ufNd2LP+6CUBuw0EOz79tSUAe771dAGlbN6VFabSeruV6dI8ZVTOoFQ1jvQ
+	rZq8zOjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNWKZ-00000000FrC-1NId;
-	Fri, 06 Jun 2025 12:37:55 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uNWaa-00000000Hkl-0uFv;
+	Fri, 06 Jun 2025 12:54:28 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uNWFN-00000000FHG-3TGs;
-	Fri, 06 Jun 2025 12:32:35 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 7E4495C4BC9;
-	Fri,  6 Jun 2025 12:30:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E8C81C4CEEB;
-	Fri,  6 Jun 2025 12:32:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1749213152;
-	bh=PNTM9e0vJhXMOaOlrgN0eJ6RCfLv95PaA3skUkIbaLI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=CVqrVVfCo5lRiWF/yTc2KkGAnzUBdKUnY/E0/uW2KsVM1DKeNmhvjEqjiqkxGW9EO
-	 Ay99FjxewkAYgK40NjjTR5n2+evtmC7r+Pd/HGxRYLe1j34CKxqjlsr7ypagSdgG3X
-	 TLw2f454o9jv4gkToaKATOa2HaHruKzwwRiF2x4uxXTq7VBC4xILTzMVaSrINchezR
-	 DO1C0g018cudAnGU3QMQBArJAG3zT7hXVsBSSL/gNpDBA65d+UfTB5eupOvXFVkuJV
-	 ge6Qr5dEnHDgyl3lWRpRKKr93No5GNHpwXn11OeOcebCrxQB1dbOEMd1qf+z+oPMl1
-	 /dAdq5qYRMKfQ==
-Received: from johan by xi.lan with local (Exim 4.97.1)
-	(envelope-from <johan@kernel.org>)
-	id 1uNWFJ-0000000071Z-0Iw3;
-	Fri, 06 Jun 2025 14:32:29 +0200
-Date: Fri, 6 Jun 2025 14:32:29 +0200
-From: Johan Hovold <johan@kernel.org>
-To: Sasha Levin <sashal@kernel.org>
-Cc: patches@lists.linux.dev, stable@vger.kernel.org,
-	Brian Norris <briannorris@chromium.org>,
-	Thomas Gleixner <tglx@linutronix.de>, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Aleksandrs Vinarskis <alex.vinarskis@gmail.com>
-Subject: Re: [PATCH AUTOSEL 6.15 092/110] genirq: Retain disable depth for
- managed interrupts across CPU hotplug
-Message-ID: <aELf3QmuEJOlR7Dv@hovoldconsulting.com>
-References: <20250601232435.3507697-1-sashal@kernel.org>
- <20250601232435.3507697-92-sashal@kernel.org>
+	id 1uNWYS-00000000Hc8-2suH;
+	Fri, 06 Jun 2025 12:52:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1749214333;
+	bh=ONaGR/IRVw2brl1DvzP1xMGhlckfUTMY9+SsqjrbfPg=;
+	h=From:Date:Subject:To:Cc:From;
+	b=UsuohR8BVGL3hoDGKOENRcMyYwrH7PXGB6nIzpJJcd9dsTKapwMwwIYfjThp3U4Dj
+	 CjE2pYUEez99p0mmuzfBhOyyKiF2s5qLMNNuLg1/ULMYVLKfBrQOcphJAoWk+ZdXLF
+	 8mpXv9jZ7u29tNa4f4z3ZtyBkBmPeDp23ebvVPLnErLe6Ya8E07dAEON8q91eTq1vy
+	 YE7i54WFjwBLn6EPsvWC0EPaxXsrsfgkWbzr6zcnnsLhNigHIDiCZJOSmMwaiF8+8+
+	 HU0+OVLXzNp3JVyHzzy3KVfNdix50em8HlLgSO+7aG3reF1ziMjJpsr7sErTDDwjIf
+	 f9gp6zkfw5Mng==
+Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: laeyraud)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1A8D817E0097;
+	Fri,  6 Jun 2025 14:52:13 +0200 (CEST)
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Date: Fri, 06 Jun 2025 14:50:12 +0200
+Subject: [PATCH] drm/mediatek: mtk_dpi: Reorder output formats on MT8195/88
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250601232435.3507697-92-sashal@kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250606-mtk_dpi-mt8195-fix-wrong-color-v1-1-47988101b798@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAAPkQmgC/zWN0QrCMAxFf6Xk2UBX2NT9igzp1mwGbTvbqoOxf
+ zc4fAon3HvPCpkSU4ZWrZDozZljEKgOCoabDRMhO2Ew2tS60Q36cr+6meWeqnONIy/4STFMOMR
+ HTFhb2+uxccaZI8jInEgiP8Gl2znR8yWesj+ht5mk7D2XVgVaCv5d0G3bF5y7KZShAAAA
+X-Change-ID: 20250606-mtk_dpi-mt8195-fix-wrong-color-5aab0f6d2d27
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1749214333; l=1912;
+ i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
+ bh=ONaGR/IRVw2brl1DvzP1xMGhlckfUTMY9+SsqjrbfPg=;
+ b=r+8ZRVrWvUhL7zhQKD0bz2TF1ADcbbp8UxfIUYKGE063dqymCkH8GA0zB9oOA53Fu0uliBLWk
+ yAQnN9JQ/64DgZai79+2/AT7eYsADajmrCfzOgjnNv6+STVh5slLa1M
+X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
+ pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250606_053233_908445_8D508C76 
-X-CRM114-Status: GOOD (  17.75  )
+X-CRM114-CacheID: sfid-20250606_055216_885763_360F669F 
+X-CRM114-Status: GOOD (  10.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,52 +87,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jun 01, 2025 at 07:24:14PM -0400, Sasha Levin wrote:
-> From: Brian Norris <briannorris@chromium.org>
-> 
-> [ Upstream commit 788019eb559fd0b365f501467ceafce540e377cc ]
-> 
-> Affinity-managed interrupts can be shut down and restarted during CPU
-> hotunplug/plug. Thereby the interrupt may be left in an unexpected state.
-> Specifically:
-> 
->  1. Interrupt is affine to CPU N
->  2. disable_irq() -> depth is 1
->  3. CPU N goes offline
->  4. irq_shutdown() -> depth is set to 1 (again)
->  5. CPU N goes online
->  6. irq_startup() -> depth is set to 0 (BUG! driver expects that the interrupt
->     		     	      	        still disabled)
->  7. enable_irq() -> depth underflow / unbalanced enable_irq() warning
-> 
-> This is only a problem for managed interrupts and CPU hotplug, all other
-> cases like request()/free()/request() truly needs to reset a possibly stale
-> disable depth value.
-> 
-> Provide a startup function, which takes the disable depth into account, and
-> invoked it for the managed interrupts in the CPU hotplug path.
-> 
-> This requires to change irq_shutdown() to do a depth increment instead of
-> setting it to 1, which allows to retain the disable depth, but is harmless
-> for the other code paths using irq_startup(), which will still reset the
-> disable depth unconditionally to keep the original correct behaviour.
-> 
-> A kunit tests will be added separately to cover some of these aspects.
-> 
-> [ tglx: Massaged changelog ]
-> 
-> Suggested-by: Thomas Gleixner <tglx@linutronix.de>
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
-> Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
-> Link: https://lore.kernel.org/all/20250514201353.3481400-2-briannorris@chromium.org
-> Signed-off-by: Sasha Levin <sashal@kernel.org>
+Reorder output format arrays in both MT8195 DPI and DP_INTF block
+configuration by decreasing preference order instead of alphanumeric
+one, as expected by the atomic_get_output_bus_fmts callback function
+of drm_bridge controls, so the RGB ones are used first during the
+bus format negotiation process.
 
-This one breaks suspend of laptops like the Lenovo ThinkPad T14s. Issue
-was just reported here by Alex:
+Fixes: 20fa6a8fc588 ("drm/mediatek: mtk_dpi: Allow additional output formats on MT8195/88")
+Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-	https://lore.kernel.org/lkml/24ec4adc-7c80-49e9-93ee-19908a97ab84@gmail.com/
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index 6fb85bc6487a019cdcdb3770dc06a1deab8d5bda..a2fdceadf209f6d2166e7523b82ca18c82c7d435 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -1095,7 +1095,6 @@ static const u32 mt8183_output_fmts[] = {
+ };
+ 
+ static const u32 mt8195_dpi_output_fmts[] = {
+-	MEDIA_BUS_FMT_BGR888_1X24,
+ 	MEDIA_BUS_FMT_RGB888_1X24,
+ 	MEDIA_BUS_FMT_RGB888_2X12_LE,
+ 	MEDIA_BUS_FMT_RGB888_2X12_BE,
+@@ -1103,18 +1102,19 @@ static const u32 mt8195_dpi_output_fmts[] = {
+ 	MEDIA_BUS_FMT_YUYV8_1X16,
+ 	MEDIA_BUS_FMT_YUYV10_1X20,
+ 	MEDIA_BUS_FMT_YUYV12_1X24,
++	MEDIA_BUS_FMT_BGR888_1X24,
+ 	MEDIA_BUS_FMT_YUV8_1X24,
+ 	MEDIA_BUS_FMT_YUV10_1X30,
+ };
+ 
+ static const u32 mt8195_dp_intf_output_fmts[] = {
+-	MEDIA_BUS_FMT_BGR888_1X24,
+ 	MEDIA_BUS_FMT_RGB888_1X24,
+ 	MEDIA_BUS_FMT_RGB888_2X12_LE,
+ 	MEDIA_BUS_FMT_RGB888_2X12_BE,
+ 	MEDIA_BUS_FMT_RGB101010_1X30,
+ 	MEDIA_BUS_FMT_YUYV8_1X16,
+ 	MEDIA_BUS_FMT_YUYV10_1X20,
++	MEDIA_BUS_FMT_BGR888_1X24,
+ 	MEDIA_BUS_FMT_YUV8_1X24,
+ 	MEDIA_BUS_FMT_YUV10_1X30,
+ };
 
-Please drop from all stable queues for now.
+---
+base-commit: b3bded85d838336326ce78e394e7818445e11f20
+change-id: 20250606-mtk_dpi-mt8195-fix-wrong-color-5aab0f6d2d27
 
-Johan
+Best regards,
+-- 
+Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+
 
