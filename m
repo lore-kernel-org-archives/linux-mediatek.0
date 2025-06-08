@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C610C5AD49
-	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Jun 2025 21:19:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1001C5AD49
+	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Jun 2025 21:25:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XoNcIQ8Um1C/enfr1gGh+4SBvlXfZ8gJB4yjeTKjzUU=; b=mLPQIkyRub0zeg
-	/z5vtn9zHjzjVTvj4/6OuXLFMAquSF7DMaP3lQVtRLlJ9qmY3bN0XaCfpwHa0Aez1lbE7ZSGa01Ci
-	KjJy8j6ZR4er28Y6/LhM4AAIBZmm5CM5bQxnatYgXbbRfaShGIeeWCgDFWAg4R+NLBK4KeWNRLlYB
-	w4+bRvl+pgSUPFv3ekFJGpe/eXxp/8w7M3dmXYLNqrEaF87EUbVVmr2gie0qbLod2Glp4oW6z8KMO
-	Z4vhEYV5kApIOGOF+Z911nLmQ/8NKAGK/X2VISd6gDrKkuMQrnEW/5yEi3aZeGWrqjTALPHYvr6Z9
-	WrwHAt/ssdpbX3LUWMbg==;
+	List-Owner; bh=0381grodRVRFsH6VaXu9QlDnRGqdCCl09dt2UIl4dD8=; b=rz+Ta91R7sk/QK
+	065g1PKEbQ506Zb8AWfc1UX6XCwOD2eO92cKRN7RZ5RZ5fAro2lGsstWRE9YCPUxtSQq3oEZ65icm
+	MUAh8RD00acRtrsDzuoSyz71+Y7qdh0q+Gm6ZN4MnUhMD0r7MaNaoOYwKpe5RcvtIj/mDdMMcLF0w
+	nAloqaQNV7a1S74kVGKUwkYUdjOPYLJZd/1IhxrQLcP6iGwvWFq+zmnW6aMe8DTwJIKZTnzJ9KK5p
+	gAfTHUVmcDSSHiP/0MoVo5KJ4otIrJ8I2QWYZ++0p9Oysp7p+o7JrOswgUyI2dwAnOBxG7vsKo09o
+	/zoCkR+mI1QFjUIv2wbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uONQN-00000002z4i-2EEh;
-	Sun, 08 Jun 2025 21:19:27 +0000
+	id 1uONWg-00000002zu0-0HqB;
+	Sun, 08 Jun 2025 21:25:58 +0000
 Received: from mxout2.routing.net ([2a03:2900:1:a::b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uONM8-00000002yQv-38EE;
-	Sun, 08 Jun 2025 21:15:06 +0000
+	id 1uONM9-00000002yQz-1WsP;
+	Sun, 08 Jun 2025 21:15:07 +0000
 Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
-	by mxout2.routing.net (Postfix) with ESMTP id 0D8BA5FC98;
-	Sun,  8 Jun 2025 21:15:01 +0000 (UTC)
+	by mxout2.routing.net (Postfix) with ESMTP id 6E0CF5FBBE;
+	Sun,  8 Jun 2025 21:14:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1749417301;
+	s=20200217; t=1749417299;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=XoNcIQ8Um1C/enfr1gGh+4SBvlXfZ8gJB4yjeTKjzUU=;
-	b=TQxTKRuuHyKsXl5302ThGCchcSqCeBDCqcaxe8v50SED11wcwx5Avsw6BBxsQIn10j5EVj
-	0Y+yda2MLdxbMA9Kq7p0PK+gmSVKfJL5sa9xg8O6R1vap6wGaTvHklle/3KaOzGQCHQmgK
-	tXTUyiZn41ICIBcBIdx0IISAlSZQ4jU=
+	bh=0381grodRVRFsH6VaXu9QlDnRGqdCCl09dt2UIl4dD8=;
+	b=FaBfUCWTlLYX1QDXgDARMm+du1ny79LjtRaEMDY23TcZ02T9IJuLpEghTTBmj3xMsddlIk
+	NLHW+oJR3ON2i+xShh+KgjtwvJi1YE3R7mjXY4lsY7VzremWpaSrhjXieqeL9IrJLI1Pzp
+	9l8zJTrlZcR5rJJg6yqKFAaJxsp/FUA=
 Received: from frank-u24.. (fttx-pool-80.245.77.166.bambit.de [80.245.77.166])
-	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id A5A371226F5;
-	Sun,  8 Jun 2025 21:15:00 +0000 (UTC)
+	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 0EB291226F5;
+	Sun,  8 Jun 2025 21:14:59 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: MyungJoo Ham <myungjoo.ham@samsung.com>,
 	Kyungmin Park <kyungmin.park@samsung.com>,
@@ -58,17 +58,17 @@ To: MyungJoo Ham <myungjoo.ham@samsung.com>,
 	Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v3 05/13] arm64: dts: mediatek: mt7988: add cci node
-Date: Sun,  8 Jun 2025 23:14:38 +0200
-Message-ID: <20250608211452.72920-6-linux@fw-web.de>
+Subject: [PATCH v3 01/13] dt-bindings: net: mediatek,net: update for mt7988
+Date: Sun,  8 Jun 2025 23:14:34 +0200
+Message-ID: <20250608211452.72920-2-linux@fw-web.de>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250608211452.72920-1-linux@fw-web.de>
 References: <20250608211452.72920-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250608_141505_012495_661747A1 
-X-CRM114-Status: UNSURE (   9.70  )
+X-CRM114-CacheID: sfid-20250608_141505_546119_6E2F5F5A 
+X-CRM114-Status: UNSURE (   9.49  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,89 +87,46 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-Add cci devicetree node for cpu frequency scaling.
+Update binding for mt7988 which has 3 gmac and 2 reg items.
 
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 ---
-v3:
-- add mt7988-cci compatible as suggested by angelo
+v2:
+- change reg to list of items
 ---
- arch/arm64/boot/dts/mediatek/mt7988a.dtsi | 33 +++++++++++++++++++++++
- 1 file changed, 33 insertions(+)
+ .../devicetree/bindings/net/mediatek,net.yaml          | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-index c46b31f8d653..560ec86dbec0 100644
---- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-@@ -12,6 +12,35 @@ / {
- 	#address-cells = <2>;
- 	#size-cells = <2>;
+diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+index 9e02fd80af83..e5dc35cfe4e4 100644
+--- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
++++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+@@ -28,7 +28,10 @@ properties:
+       - ralink,rt5350-eth
  
-+	cci: cci {
-+		compatible = "mediatek,mt7988-cci", "mediatek,mt8183-cci";
-+		clocks = <&mcusys CLK_MCU_BUS_DIV_SEL>,
-+			 <&topckgen CLK_TOP_XTAL>;
-+		clock-names = "cci", "intermediate";
-+		operating-points-v2 = <&cci_opp>;
-+	};
+   reg:
+-    maxItems: 1
++    items:
++      - description: Register for accessing the MACs.
++      - description: SoC internal SRAM used for DMA operations.
++    minItems: 1
+ 
+   clocks:
+     minItems: 2
+@@ -381,8 +384,11 @@ allOf:
+             - const: xgp2
+             - const: xgp3
+ 
++        reg:
++          minItems: 2
 +
-+	cci_opp: opp-table-cci {
-+		compatible = "operating-points-v2";
-+		opp-shared;
-+		opp-480000000 {
-+			opp-hz = /bits/ 64 <480000000>;
-+			opp-microvolt = <850000>;
-+		};
-+		opp-660000000 {
-+			opp-hz = /bits/ 64 <660000000>;
-+			opp-microvolt = <850000>;
-+		};
-+		opp-900000000 {
-+			opp-hz = /bits/ 64 <900000000>;
-+			opp-microvolt = <850000>;
-+		};
-+		opp-1080000000 {
-+			opp-hz = /bits/ 64 <1080000000>;
-+			opp-microvolt = <900000>;
-+		};
-+	};
-+
- 	cpus {
- 		#address-cells = <1>;
- 		#size-cells = <0>;
-@@ -25,6 +54,7 @@ cpu0: cpu@0 {
- 				 <&topckgen CLK_TOP_XTAL>;
- 			clock-names = "cpu", "intermediate";
- 			operating-points-v2 = <&cluster0_opp>;
-+			mediatek,cci = <&cci>;
- 		};
- 
- 		cpu1: cpu@1 {
-@@ -36,6 +66,7 @@ cpu1: cpu@1 {
- 				 <&topckgen CLK_TOP_XTAL>;
- 			clock-names = "cpu", "intermediate";
- 			operating-points-v2 = <&cluster0_opp>;
-+			mediatek,cci = <&cci>;
- 		};
- 
- 		cpu2: cpu@2 {
-@@ -47,6 +78,7 @@ cpu2: cpu@2 {
- 				 <&topckgen CLK_TOP_XTAL>;
- 			clock-names = "cpu", "intermediate";
- 			operating-points-v2 = <&cluster0_opp>;
-+			mediatek,cci = <&cci>;
- 		};
- 
- 		cpu3: cpu@3 {
-@@ -58,6 +90,7 @@ cpu3: cpu@3 {
- 				 <&topckgen CLK_TOP_XTAL>;
- 			clock-names = "cpu", "intermediate";
- 			operating-points-v2 = <&cluster0_opp>;
-+			mediatek,cci = <&cci>;
- 		};
- 
- 		cluster0_opp: opp-table-0 {
+ patternProperties:
+-  "^mac@[0-1]$":
++  "^mac@[0-2]$":
+     type: object
+     unevaluatedProperties: false
+     allOf:
 -- 
 2.43.0
 
