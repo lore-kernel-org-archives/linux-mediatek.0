@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1001C5AD49
-	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Jun 2025 21:25:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74544C61DB8
+	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Jun 2025 21:28:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0381grodRVRFsH6VaXu9QlDnRGqdCCl09dt2UIl4dD8=; b=rz+Ta91R7sk/QK
-	065g1PKEbQ506Zb8AWfc1UX6XCwOD2eO92cKRN7RZ5RZ5fAro2lGsstWRE9YCPUxtSQq3oEZ65icm
-	MUAh8RD00acRtrsDzuoSyz71+Y7qdh0q+Gm6ZN4MnUhMD0r7MaNaoOYwKpe5RcvtIj/mDdMMcLF0w
-	nAloqaQNV7a1S74kVGKUwkYUdjOPYLJZd/1IhxrQLcP6iGwvWFq+zmnW6aMe8DTwJIKZTnzJ9KK5p
-	gAfTHUVmcDSSHiP/0MoVo5KJ4otIrJ8I2QWYZ++0p9Oysp7p+o7JrOswgUyI2dwAnOBxG7vsKo09o
-	/zoCkR+mI1QFjUIv2wbw==;
+	List-Owner; bh=YWGa+NZ5Jq1T+ZAcsp9vpV8h57UNEkpbrj+QyOwJwlI=; b=au5pFjSAz+mK4W
+	+RCwabscX66SkgCK8k34w/yZuy1onTzE9iYi95kl57mZNWLtbFQWzOk6ybSUWY33N9rd2AHX2ceOl
+	/d5PboU7ZCZVye13mk2WDZodLdSS6hVzAVGArNo7YMnU8I4RqvagTP8wysHmM2ajLI1O/LGZea7QQ
+	kKiVctzzRrrUpeZW/VXYuHMbQ2OKUvSnzSZ84TYGryCVGQryBb2ZyqpfjXOFDojVh7fdqw3IWWqFT
+	/2zX7BLJAjWsz1mIW3tLKIvdauwSdyABKjO6b6mAZ251COH5T9JuttIkqQ62mSu1lay8ALSmpQ0yG
+	ZyH/QVW9fbzlgDImfNEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uONWg-00000002zu0-0HqB;
-	Sun, 08 Jun 2025 21:25:58 +0000
-Received: from mxout2.routing.net ([2a03:2900:1:a::b])
+	id 1uONYl-0000000303z-0Ene;
+	Sun, 08 Jun 2025 21:28:07 +0000
+Received: from mxout4.routing.net ([2a03:2900:1:a::9])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uONM9-00000002yQz-1WsP;
+	id 1uONM8-00000002yQs-2o7Q;
 	Sun, 08 Jun 2025 21:15:07 +0000
 Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
-	by mxout2.routing.net (Postfix) with ESMTP id 6E0CF5FBBE;
-	Sun,  8 Jun 2025 21:14:59 +0000 (UTC)
+	by mxout4.routing.net (Postfix) with ESMTP id 40301100252;
+	Sun,  8 Jun 2025 21:15:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1749417299;
+	s=20200217; t=1749417300;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=0381grodRVRFsH6VaXu9QlDnRGqdCCl09dt2UIl4dD8=;
-	b=FaBfUCWTlLYX1QDXgDARMm+du1ny79LjtRaEMDY23TcZ02T9IJuLpEghTTBmj3xMsddlIk
-	NLHW+oJR3ON2i+xShh+KgjtwvJi1YE3R7mjXY4lsY7VzremWpaSrhjXieqeL9IrJLI1Pzp
-	9l8zJTrlZcR5rJJg6yqKFAaJxsp/FUA=
+	bh=YWGa+NZ5Jq1T+ZAcsp9vpV8h57UNEkpbrj+QyOwJwlI=;
+	b=ECl7hcJUQIHXBT/aIooApyrrRrWwBR5yclHVmUg6T1v/1rxZKERbsnTk/JfYwrnw62QtAY
+	ZmPwau+O/UYHjLiaXijnTp4tOHMGajgIi4T1fP925mieGDPfwcz+gyR+P/3cKOfv+/hrvP
+	r4vRuMaTSz6s0HAmMxHUbyYRa3AE5UU=
 Received: from frank-u24.. (fttx-pool-80.245.77.166.bambit.de [80.245.77.166])
-	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 0EB291226F5;
+	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id D125D1226F5;
 	Sun,  8 Jun 2025 21:14:59 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: MyungJoo Ham <myungjoo.ham@samsung.com>,
@@ -58,17 +58,17 @@ To: MyungJoo Ham <myungjoo.ham@samsung.com>,
 	Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v3 01/13] dt-bindings: net: mediatek,net: update for mt7988
-Date: Sun,  8 Jun 2025 23:14:34 +0200
-Message-ID: <20250608211452.72920-2-linux@fw-web.de>
+Subject: [PATCH v3 03/13] dt-bindings: net: dsa: mediatek,mt7530: add internal mdio bus
+Date: Sun,  8 Jun 2025 23:14:36 +0200
+Message-ID: <20250608211452.72920-4-linux@fw-web.de>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250608211452.72920-1-linux@fw-web.de>
 References: <20250608211452.72920-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250608_141505_546119_6E2F5F5A 
-X-CRM114-Status: UNSURE (   9.49  )
+X-CRM114-CacheID: sfid-20250608_141505_018611_0B4CEA1B 
+X-CRM114-Status: UNSURE (   9.58  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,46 +87,40 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-Update binding for mt7988 which has 3 gmac and 2 reg items.
+Mt7988 buildin switch has own mdio bus where ge-phys are connected.
+Add related property for this.
 
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 ---
 v2:
-- change reg to list of items
+- change from patternproperty to property
+- add unevaluatedProperties and mediatek,pio subproperty
 ---
- .../devicetree/bindings/net/mediatek,net.yaml          | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
+ .../devicetree/bindings/net/dsa/mediatek,mt7530.yaml   | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b/Documentation/devicetree/bindings/net/mediatek,net.yaml
-index 9e02fd80af83..e5dc35cfe4e4 100644
---- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
-+++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
-@@ -28,7 +28,10 @@ properties:
-       - ralink,rt5350-eth
+diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+index 9b983fdbf3c7..815a90808901 100644
+--- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
++++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+@@ -136,6 +136,16 @@ properties:
+       See Documentation/devicetree/bindings/regulator/mt6323-regulator.txt for
+       details for the regulator setup on these boards.
  
-   reg:
--    maxItems: 1
-+    items:
-+      - description: Register for accessing the MACs.
-+      - description: SoC internal SRAM used for DMA operations.
-+    minItems: 1
- 
-   clocks:
-     minItems: 2
-@@ -381,8 +384,11 @@ allOf:
-             - const: xgp2
-             - const: xgp3
- 
-+        reg:
-+          minItems: 2
++  mdio:
++    $ref: /schemas/net/mdio.yaml#
++    unevaluatedProperties: false
 +
- patternProperties:
--  "^mac@[0-1]$":
-+  "^mac@[0-2]$":
-     type: object
-     unevaluatedProperties: false
-     allOf:
++    properties:
++      mediatek,pio:
++        $ref: /schemas/types.yaml#/definitions/phandle
++        description:
++          Phandle pointing to the mediatek pinctrl node.
++
+   mediatek,mcm:
+     type: boolean
+     description:
 -- 
 2.43.0
 
