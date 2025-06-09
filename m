@@ -4,130 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80302C5B552
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Jun 2025 09:57:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10F03C61CE8
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Jun 2025 10:56:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kGSTCvir3yITm8KzBPa1e7r9+ZrZgHkYcRBdCR9WUx8=; b=dhyyteuqwFq9OvspAhm4CKyNbh
-	4jKmehhrnTs1FVWPlZVBgE8x3XL55QnyIZZGU75FMlTc5QeRmf0ll5zCLUnNXA9sKv4kKmnNdtmDn
-	xL1ukrP2yBlr5rXAssvXZKmToX7ERETjnkE0ELxodn9FsEyPxZoA69lnIfsjcLtWi7/L3Pkkkz7xH
-	n9rBgAKsOJcYdXgv2dXAdOl24S9szX1MM7HHaUuvKoi83rPj2cLkAx5D16VuLr2yJzV9VswRA45sg
-	7xx8eTNtqjwxrq3kK595aWM/N6Vs2qfORiWMLhYrmPXHMF7qSJ5C6eW7JmvXX8fce5xqFvzTyRYmn
-	TB+oYkyw==;
+	bh=UjVgFSIpV2X04ea9AxQMDu3aUAqHlJDuyDyhBp2KhX4=; b=VWLBuz/ABXPJmrM3WlRC4Q+L/1
+	Su7BJabkzIEZC25Mlp6VdKNGI+dcbEqQXB2mKRAD3Twq2/aKxSI8NNTCK//Jg73pnXWsDHRtOEjIc
+	rhz2DiyDZ17RuxwZZle6CfZhbmpiZK6dLsnqKnbxPcJkSHI2/Te/2L/RhqXPLsfg7/YmK+rY1H6KS
+	xCe6NBgdgmxu3DEcSGLF3rmtc8oC+5mf9QJFRzxcGqjTnbciet5wUeEiAeGy+5fAtFCDpNZJPqMNj
+	Pgy8SjpEcAhYmVINouJqgFGBllUcyG/sTbtzG3pmMu1bwR53qCM5sFkD/mlGM7dcF5NJGBau+AL12
+	biNbcP3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOZGO-00000003qhL-3lg6;
-	Mon, 09 Jun 2025 09:57:56 +0000
-Received: from dane.soverin.net ([185.233.34.11])
+	id 1uOaBS-00000003xri-1mfX;
+	Mon, 09 Jun 2025 10:56:54 +0000
+Received: from mout.gmx.net ([212.227.15.19])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOZ7y-00000003pXH-35sy;
-	Mon, 09 Jun 2025 09:49:17 +0000
-Received: from smtp.freedom.nl (unknown [10.10.4.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	by dane.soverin.net (Postfix) with ESMTPS id 4bG6ZY4mzbz1PxQ;
-	Mon,  9 Jun 2025 09:49:09 +0000 (UTC)
-Received: from smtp.freedom.nl (smtp.freedom.nl [10.10.4.107]) by freedom.nl (Postfix) with ESMTPSA id 4bG6ZX5Qrcz7T;
-	Mon,  9 Jun 2025 09:49:08 +0000 (UTC)
-Authentication-Results: smtp.freedom.nl;
-	dkim=pass (2048-bit key; unprotected) header.d=jjverkuil.nl header.i=@jjverkuil.nl header.a=rsa-sha256 header.s=soverin1 header.b=tK0ZTmIC;
-	dkim-atps=neutral
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jjverkuil.nl;
-	s=soverin1; t=1749462549;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=kGSTCvir3yITm8KzBPa1e7r9+ZrZgHkYcRBdCR9WUx8=;
-	b=tK0ZTmICKWRZTiMu34QFNUBMz7i4O7ubahnxWLj3TmSPrtIXW5DIfh+58OsqLutln0LbUG
-	b0YB4QpKg10mqxadw8nmLZeWaGjHLJ6+qQL4NYQLMimgjk8KfEVc/0vFwpw3hDG1Y/rnQM
-	qgu8jWoPdvRdK2bYh0QR+C3CAAU2V2zuEC1C7RhMB0rwa3UsnfQqNfk8KNdrHGvZewLtwJ
-	Srk19Cp7ebAthYMZ9oGjW1arVXwv8hhAcZxstxQarp9n045Iiiv8mZHDoVPqZU9RHzj11H
-	MFdtxbcF1FlVNB76FkjdxwMMFRssoxWVd13l5P4uAv4Pw9SifNPmUnTQ+GKX+A==
-X-CM-Analysis: v=2.4 cv=I7afRMgg c=1 sm=1 tr=0 ts=6846ae15 a=IkcTkHD0fZMA:10 a=0deYd5exgp-1WSfvuSMA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
-Message-ID: <2e4ef756-a8cf-415c-99ba-a3d72f3288e1@jjverkuil.nl>
-Date: Mon, 9 Jun 2025 11:49:08 +0200
+	id 1uOZkG-00000003uPD-2300;
+	Mon, 09 Jun 2025 10:28:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1749464918; x=1750069718; i=frank-w@public-files.de;
+	bh=UjVgFSIpV2X04ea9AxQMDu3aUAqHlJDuyDyhBp2KhX4=;
+	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
+	 Content-Type:Date:In-Reply-To:References:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=MS/0fkoKpCyad+CC+J4GnkAyF87kEu/JFzIgg5K4U+jerrW54U+QOyOsaXPpvRKr
+	 LyCb8s0xH6ff+z6Nv3DomqSz0T0hAC7TjTfw5CUUiFu67M3Hso8pxSIW4hYIXPu8y
+	 T2T4AC2rsVc6vVEfmGHJqTKelmohQ0y+JHAcphkSJO4Y1lAUu8jB0rSAxkbHhLP2v
+	 w2RgfeS+BdRzDattHZZf2Q/p9ef6LzvK05Xw37ITnzQzcUja9Q7ZCuKBc9f7XWt2A
+	 SpOVrpq3MKhRx884LzjMZRtAXRVs+WdzYVtwSBmZKPc0EwT5OszD77DHgelzJ8m2n
+	 RY7cEaodwo7EOS+9Rg==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [100.71.3.129] ([100.71.3.129]) by
+ trinity-msg-rest-gmx-gmx-live-5d9b465786-mldbm (via HTTP); Mon, 9 Jun 2025
+ 10:28:38 +0000
 MIME-Version: 1.0
-Subject: Re: [PATCH v3 1/5] media: mc: add manual request completion
-To: Sakari Ailus <sakari.ailus@linux.intel.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil
- <hverkuil@xs4all.nl>, Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel@collabora.com,
- linux-media@vger.kernel.org,
- Sebastian Fricke <sebastian.fricke@collabora.com>
-References: <20250604-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v3-0-603db4749d90@collabora.com>
- <20250604-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v3-1-603db4749d90@collabora.com>
- <aEC05991kEIIifDB@kekkonen.localdomain>
- <1ccaaec7f782afc71bae5c3b0f60a786a907555c.camel@collabora.com>
- <aEE-VFfJDhUbM2nA@kekkonen.localdomain>
- <8b1ed01a-b6e3-4670-a4e0-d8eee7ddc524@jjverkuil.nl>
- <aEFoCvPe4zE48UG7@kekkonen.localdomain>
- <608f95249ff3a39efb063ab9c6a543259a7b0ac9.camel@collabora.com>
- <aEasmfi3VBkuFU3g@kekkonen.localdomain>
-Content-Language: en-US, nl
-From: Hans Verkuil <hans@jjverkuil.nl>
-Autocrypt: addr=hans@jjverkuil.nl; keydata=
- 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
-In-Reply-To: <aEasmfi3VBkuFU3g@kekkonen.localdomain>
+Message-ID: <trinity-87fadcdb-eee3-4e66-b62d-5cef65f1462d-1749464918307@trinity-msg-rest-gmx-gmx-live-5d9b465786-mldbm>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: andrew@lunn.ch, linux@fw-web.de, daniel@makrotopia.org
+Cc: myungjoo.ham@samsung.com, kyungmin.park@samsung.com,
+ cw00.choi@samsung.com, djakov@kernel.org, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, olteanv@gmail.com,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, jia-wei.chang@mediatek.com,
+ johnson.wang@mediatek.com, arinc.unal@arinc9.com, Landen.Chao@mediatek.com,
+ dqfext@gmail.com, sean.wang@mediatek.com, lorenzo@kernel.org, nbd@nbd.name,
+ linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Aw: Re: [PATCH v3 06/13] arm64: dts: mediatek: mt7988: add basic
+ ethernet-nodes
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Spampanel-Class: ham
+Date: Mon, 9 Jun 2025 10:28:38 +0000
+In-Reply-To: <cc73b532-f31b-443e-8127-0e5667c3f9c3@lunn.ch>
+References: <20250608211452.72920-1-linux@fw-web.de>
+ <20250608211452.72920-7-linux@fw-web.de>
+ <cc73b532-f31b-443e-8127-0e5667c3f9c3@lunn.ch>
+X-UI-CLIENT-META-MAIL-DROP: W10=
+X-Provags-ID: V03:K1:5JwfFEh+N+ttjTh5vxuvvC5upKEDjso7yy21yl5pV/dtZv3anNKBvjY4rDfI6hKaUSOph
+ u8cGAWJUMqq9DWNm8iKkqwO2Z5WJeQqxTWvWCSuzL4Xre7oAMDiEITW76an37MgkjRiA/VVTVBAn
+ TCuY1ELiDsMHuFNrDzszDGVRqLzacVimbed2YZnRdNlsBYJjaqCXQLWiZPBfQq3r7GObmVg0ocIP
+ A5WoGgxfMhiqvOzBnRLK+WX0OfUnkAXTuI00V5820/3i5E3zK5rBte6ZVcFLl2V5lBRpaDq949jq
+ 3zwHlZajQ3Yg+5V0ACqAG+LGF7OsDOtplghm9747djY/y9p/OJ653mxK7VE6jqn6OU=
+UI-OutboundReport: notjunk:1;M01:P0:nc+zqxOfX0U=;I8/8WjzQbL4heqzXq4h8MsUMufe
+ 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
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250609_024915_837598_1DF81A71 
-X-CRM114-Status: GOOD (  14.08  )
+X-CRM114-CacheID: sfid-20250609_032848_893963_3A71F28F 
+X-CRM114-Status: GOOD (  15.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,34 +133,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 09/06/2025 11:42, Sakari Ailus wrote:
-> Hi,
-> 
-> On Thu, Jun 05, 2025 at 08:41:45AM -0400, Nicolas Dufresne wrote:
->> Hi Hans, Sakari,
->>
->> Le jeudi 05 juin 2025 à 09:48 +0000, Sakari Ailus a écrit :
->>>> It's not user-triggerable, if this happens, then it is a driver bug.
->>>
->>> If there is a driver bug, it could well be user-triggerable, wouldn't it?
->>> Testing may not uncover all such cases.
->>
->> You are both right, if the driver is not used, the warning will never
->> trigger. I was worried of the hit of a thread safe ONCE implementation,
->> but WARN_ONCE is simply not, it can warn few time before it stops if
->> called from multiple CPUs at the same time. In that specific function,
->> I can move all the checks inside the lock to make it truly once.
->>
->> Now its up to you, I don't have strong preference. These are driver errors,
->> and usually quite critical. They are not bug_on simply because we have a
->> crash free resolution, but its probably not functional anymore.
-> 
-> I'd prefer _ONCE variants, I wonder what Hans thinks.
-> 
+Hi Andrew
 
-I have no particular preference.
+> Gesendet: Sonntag, 8. Juni 2025 um 23:23
+> Von: "Andrew Lunn" <andrew@lunn.ch>
+> An: "Frank Wunderlich" <linux@fw-web.de>
+> Betreff: Re: [PATCH v3 06/13] arm64: dts: mediatek: mt7988: add basic et=
+hernet-nodes
+>
+> > +			gmac0: mac@0 {
+> > +				compatible =3D "mediatek,eth-mac";
+> > +				reg =3D <0>;
+> > +				phy-mode =3D "internal";
+> > +
+> > +				fixed-link {
+> > +					speed =3D <10000>;
+> > +					full-duplex;
+> > +					pause;
+> > +				};
+>=20
+> Maybe i've asked this before? What is on the other end of this link?
+> phy-mode internal and fixed link seems an odd combination. It might
+> just need some comments, if this is internally connected to a switch.
 
-Regards,
+yes you've asked in v1 and i responded :)
 
-	Hans
+https://patchwork.kernel.org/project/linux-mediatek/patch/20250511141942.1=
+0284-9-linux@fw-web.de/
+
+connected to internal (mt7530) switch. Which kind of comment do you want h=
+ere? Only "connected to internal switch"
+or some more details?
+
+> > +			mdio_bus: mdio-bus {
+> > +				#address-cells =3D <1>;
+> > +				#size-cells =3D <0>;
+> > +
+> > +				/* internal 2.5G PHY */
+> > +				int_2p5g_phy: ethernet-phy@f {
+> > +					reg =3D <15>;
+>=20
+> It is a bit odd mixing hex and decimal.
+
+do you prefer hex or decimal for both? for r3mini i used decimal for both,=
+ so i would change unit-address
+to 15.
+
+> > +					compatible =3D "ethernet-phy-ieee802.3-c45";
+>=20
+> I _think_ the coding standard say the compatible should be first.
+
+i can move this up of course
+
+> > +					phy-mode =3D "internal";
+>=20
+> A phy should not have a phy-mode.
+
+not sure if this is needed for mt7988 internal 2.5g phy driver, but seems =
+not when i look at the driver
+(drivers/net/phy/mediatek/mtk-2p5ge.c). The switch phys also use this and =
+also here i do not see any
+access in the driver (drivers/net/dsa/mt7530-mmio.c + mt7530.c) on a quick=
+ look.
+Afaik binding required the property and should be read by phylink (to be n=
+ot unknown, but looks like
+handled the same way).
+
+Maybe daniel can describe a bit deeper.
+
+> 	Andrew
+
+regards Frank
+
 
