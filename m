@@ -4,107 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E9CDC61CE8
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Jun 2025 11:14:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD50DC61CE8
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Jun 2025 12:15:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZSVuHzZZOKF7s1HQqwq5cP4yq2SwRjHxdU++cIQvNcY=; b=mT3j5BDkmDG4npQqdTQmdIeP6X
-	SqhROUAtYOQuHxQ5ASJqAKaUJ2Mc/UbSJdlnN3YWWe/Ki918DBQP2Ng1B7oLZHPjxsbmU+HGjzRfj
-	Dm1pGokQCIWhiWCN4c2FGnKPqAPKHSKYY57pi+cp7LmsNkMt1/ih69qFlbQyTrQ2NteRRDWWbGlHg
-	Ic+wc6QpSxDRzZLDG9E1pElBW/M/tijHUcSbTSK2SVoQdneKKhF3D/KUxvWKfxyJmYV73czB1aK0u
-	Ylyd/31Z6MOLM6Al6U3nDzajh9e6e+3OUkvKUug/n2O8pE0npeK64DofccDTQqt7Q3IyR4awikS8K
-	yopJN7sA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NueSzK31DadYmmhRVawstIJJP48eqaOR7oYF5vEnWFE=; b=iU6JrUN/QV0C+P/OrQkYquKJHI
+	5vwzuosK1CDPMdKevxzMUDxsE2TLyw9mB7QqpOByCfqQ5qQWHCGhunqnjok4PEg6oYI0jdd4/SDgv
+	hUux8Xjvq4DEMm8RHoWwcyX2qHstz1b7PCjqUrgHWGF+DKn/7Gh5AtdZOuGJce5diUIs3Qm6ItbXP
+	X4HySaDQ2uNxoEp0DTdtzjbOtauiUS4rTbYFvu6xJDZc0ZC7NWwtAnABFwxszlKXhX2DRlQ+0ymtA
+	gEX8hkFMyXbktlZERZngt3w7V61GqsiSuGY9nIT+2yZS2GBumVPnEhGJDYCEBCDRWjBRHM32y4jhD
+	wEn4bwFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOaSp-0000000403f-3j8j;
-	Mon, 09 Jun 2025 11:14:51 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1uObPf-000000045mR-1A9i;
+	Mon, 09 Jun 2025 12:15:39 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOa1D-00000003wTz-03bw;
-	Mon, 09 Jun 2025 10:46:20 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 028DAA4AF2D;
-	Mon,  9 Jun 2025 10:46:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EC26FC4CEEB;
-	Mon,  9 Jun 2025 10:46:14 +0000 (UTC)
-Message-ID: <29c200ff-1fe8-4026-ad08-fc1da845622e@xs4all.nl>
-Date: Mon, 9 Jun 2025 12:46:13 +0200
+	id 1uObNR-000000045V8-3HCL;
+	Mon, 09 Jun 2025 12:13:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=NueSzK31DadYmmhRVawstIJJP48eqaOR7oYF5vEnWFE=; b=GELQe7zlFulZ3w8scQGOg8Bdph
+	qmSuWlEQovDrrtDkxsJHB8b7o9FWIvW5gzD/DF+r0DMgiYc5LOhBBw+OhvM2B1pPGkUzM7riKoSc7
+	xsFzUDNgO29L1XHNB9QZWzUSYJBTUV4grY00EkB+ig27NwqE82kIMJl39FuFa8HLAvVQ=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1uObMx-00F9CK-5J; Mon, 09 Jun 2025 14:12:51 +0200
+Date: Mon, 9 Jun 2025 14:12:51 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: linux@fw-web.de, daniel@makrotopia.org, myungjoo.ham@samsung.com,
+	kyungmin.park@samsung.com, cw00.choi@samsung.com, djakov@kernel.org,
+	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+	olteanv@gmail.com, davem@davemloft.net, edumazet@google.com,
+	kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, jia-wei.chang@mediatek.com,
+	johnson.wang@mediatek.com, arinc.unal@arinc9.com,
+	Landen.Chao@mediatek.com, dqfext@gmail.com, sean.wang@mediatek.com,
+	lorenzo@kernel.org, nbd@nbd.name, linux-pm@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: Re: [PATCH v3 06/13] arm64: dts: mediatek: mt7988: add basic
+ ethernet-nodes
+Message-ID: <9d27e0d3-5ecb-4dcd-b8aa-d4e0affbb915@lunn.ch>
+References: <20250608211452.72920-1-linux@fw-web.de>
+ <20250608211452.72920-7-linux@fw-web.de>
+ <cc73b532-f31b-443e-8127-0e5667c3f9c3@lunn.ch>
+ <trinity-87fadcdb-eee3-4e66-b62d-5cef65f1462d-1749464918307@trinity-msg-rest-gmx-gmx-live-5d9b465786-mldbm>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 3/5] media: mc: add debugfs node to keep track of
- requests
-To: Sakari Ailus <sakari.ailus@linux.intel.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel@collabora.com,
- linux-media@vger.kernel.org
-References: <20250604-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v3-0-603db4749d90@collabora.com>
- <20250604-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v3-3-603db4749d90@collabora.com>
- <aEC7jMDgRAg1cfXZ@kekkonen.localdomain>
- <870611a1e5d21fa375dd9359192641484c1c0e76.camel@collabora.com>
- <aEa3azYxM5Sc6cZC@kekkonen.localdomain>
-Content-Language: en-US, nl
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Autocrypt: addr=hverkuil@xs4all.nl; keydata=
- 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
-In-Reply-To: <aEa3azYxM5Sc6cZC@kekkonen.localdomain>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <trinity-87fadcdb-eee3-4e66-b62d-5cef65f1462d-1749464918307@trinity-msg-rest-gmx-gmx-live-5d9b465786-mldbm>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250609_034619_181152_0D1426C5 
-X-CRM114-Status: GOOD (  32.96  )
+X-CRM114-CacheID: sfid-20250609_051321_821465_1699B46F 
+X-CRM114-Status: GOOD (  24.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,194 +80,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 09/06/2025 12:28, Sakari Ailus wrote:
-> Hi Nicolas,
+> > > +			gmac0: mac@0 {
+> > > +				compatible = "mediatek,eth-mac";
+> > > +				reg = <0>;
+> > > +				phy-mode = "internal";
+> > > +
+> > > +				fixed-link {
+> > > +					speed = <10000>;
+> > > +					full-duplex;
+> > > +					pause;
+> > > +				};
+> > 
+> > Maybe i've asked this before? What is on the other end of this link?
+> > phy-mode internal and fixed link seems an odd combination. It might
+> > just need some comments, if this is internally connected to a switch.
 > 
-> On Wed, Jun 04, 2025 at 07:08:53PM -0400, Nicolas Dufresne wrote:
->> Le mercredi 04 juin 2025 à 21:33 +0000, Sakari Ailus a écrit :
->>> Hi Nicolas, Hans,
->>>
->>> Thanks for the update.
->>
->> thanks for the review, these things are precious.
->>
->>>
->>> On Wed, Jun 04, 2025 at 04:09:37PM -0400, Nicolas Dufresne wrote:
->>>> From: Hans Verkuil <hverkuil@xs4all.nl>
->>>>
->>>> Keep track of the number of requests and request objects of a media
->>>> device. Helps to verify that all request-related memory is freed.
->>>>
->>>> Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
->>>> Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
->>>> ---
->>>>  drivers/media/mc/mc-device.c  | 30 ++++++++++++++++++++++++++++++
->>>>  drivers/media/mc/mc-devnode.c |  5 +++++
->>>>  drivers/media/mc/mc-request.c |  6 ++++++
->>>>  include/media/media-device.h  |  9 +++++++++
->>>>  include/media/media-devnode.h |  4 ++++
->>>>  include/media/media-request.h |  2 ++
->>>>  6 files changed, 56 insertions(+)
->>>>
->>>> diff --git a/drivers/media/mc/mc-device.c b/drivers/media/mc/mc-device.c
->>>> index c0dd4ae5722725f1744bc6fd6282d5c765438059..5a458160200afb540d8014fed42d8bf2dab9c8c3 100644
->>>> --- a/drivers/media/mc/mc-device.c
->>>> +++ b/drivers/media/mc/mc-device.c
->>>> @@ -679,6 +679,23 @@ void media_device_unregister_entity(struct media_entity *entity)
->>>>  }
->>>>  EXPORT_SYMBOL_GPL(media_device_unregister_entity);
->>>>  
->>>> +#ifdef CONFIG_DEBUG_FS
->>>> +/*
->>>> + * Log the state of media requests.
->>>> + * Very useful for debugging.
->>>> + */
->>>
->>> Fits on a single line.
->>
->> Ack.
->>
->>>
->>>> +static int media_device_requests(struct seq_file *file, void *priv)
->>>> +{
->>>> +	struct media_device *dev = dev_get_drvdata(file->private);
->>>> +
->>>> +	seq_printf(file, "number of requests: %d\n",
->>>> +		   atomic_read(&dev->num_requests));
->>>> +	seq_printf(file, "number of request objects: %d\n",
->>>> +		   atomic_read(&dev->num_request_objects));
->>>
->>> Newline here?
->>
->> I prefer that too.
->>
->>>
->>>> +	return 0;
->>>> +}
->>>> +#endif
->>>> +
->>>>  void media_device_init(struct media_device *mdev)
->>>>  {
->>>>  	INIT_LIST_HEAD(&mdev->entities);
->>>> @@ -697,6 +714,9 @@ void media_device_init(struct media_device *mdev)
->>>>  		media_set_bus_info(mdev->bus_info, sizeof(mdev->bus_info),
->>>>  				   mdev->dev);
->>>>  
->>>> +	atomic_set(&mdev->num_requests, 0);
->>>> +	atomic_set(&mdev->num_request_objects, 0);
->>>> +
->>>>  	dev_dbg(mdev->dev, "Media device initialized\n");
->>>>  }
->>>>  EXPORT_SYMBOL_GPL(media_device_init);
->>>> @@ -748,6 +768,15 @@ int __must_check __media_device_register(struct media_device *mdev,
->>>>  
->>>>  	dev_dbg(mdev->dev, "Media device registered\n");
->>>>  
->>>> +#ifdef CONFIG_DEBUG_FS
->>>> +	if (!media_debugfs_root)
->>>> +		media_debugfs_root = debugfs_create_dir("media", NULL);
->>>> +	mdev->media_dir = debugfs_create_dir(dev_name(&devnode->dev),
->>>> +					     media_debugfs_root);
->>>> +	debugfs_create_devm_seqfile(&devnode->dev, "requests",
->>>> +				    mdev->media_dir, media_device_requests);
->>>> +#endif
->>>
->>> I have no objection to this but it would have been great to have the Media
->>> device lifetime set in first and MC device and devnode merged. But maybe
->>> it's too late for that. Well, at least this won't change error handling...
->>
->> Since this specific patch is not required to fix the MTK VCODEC issue, I can
->> delay this a little. Is that comment related to an existing patch ?
+> yes you've asked in v1 and i responded :)
 > 
-> Yes.
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20250511141942.10284-9-linux@fw-web.de/
 > 
-> I've pushed the current set here:
-> <URL:https://git.linuxtv.org/sailus/media_tree.git/log/?h=media-ref>. I've
-> rebased it recently but it's still WiP.
+> connected to internal (mt7530) switch. Which kind of comment do you want here? Only "connected to internal switch"
+> or some more details?
 
-Since this patch series has been going on for many years now, I do not believe
-that that should prevent this specific patch from being merged. It is generally
-a bad idea to do that, unless it is absolutely certain that such a patch series
-will be merged in a few weeks tops.
+"Connected to internal switch" will do. The word switch explains the
+fixed-link, and internal the phy-mode.
 
-I've carried this patch around out-of-tree ever since I started the first
-request implementation because without it it is very hard to check that all
-requests are properly freed. So getting this in is actually quite useful.
+It is not the case here, but i've seen DT misused like this because
+the MAC is connected to a PHY and there is no PHY driver yet, so a
+fixed link is used instead.
 
-And when it is in I will probably add a test in test-media to improve the stateless
-decoder regression test, verifying that all requests are freed.
+> > > +			mdio_bus: mdio-bus {
+> > > +				#address-cells = <1>;
+> > > +				#size-cells = <0>;
+> > > +
+> > > +				/* internal 2.5G PHY */
+> > > +				int_2p5g_phy: ethernet-phy@f {
+> > > +					reg = <15>;
+> > 
+> > It is a bit odd mixing hex and decimal.
+> 
+> do you prefer hex or decimal for both? for r3mini i used decimal for both, so i would change unit-address
+> to 15.
 
-Regards,
-
-	Hans
+I suspect decimal is more common, but i don't care.
 
 > 
-> ...
+> > > +					compatible = "ethernet-phy-ieee802.3-c45";
+> > 
+> > I _think_ the coding standard say the compatible should be first.
 > 
->>>> diff --git a/include/media/media-devnode.h b/include/media/media-devnode.h
->>>> index d27c1c646c2805171be3997d72210dd4d1a38e32..dbcabeffcb572ae707f5fe1f51ff719d451c6784 100644
->>>> --- a/include/media/media-devnode.h
->>>> +++ b/include/media/media-devnode.h
->>>> @@ -20,9 +20,13 @@
->>>>  #include <linux/fs.h>
->>>>  #include <linux/device.h>
->>>>  #include <linux/cdev.h>
->>>> +#include <linux/debugfs.h>
->>>>  
->>>>  struct media_device;
->>>>  
->>>> +/* debugfs top-level media directory */
->>>> +extern struct dentry *media_debugfs_root;
->>>> +
->>>>  /*
->>>>   * Flag to mark the media_devnode struct as registered. Drivers must not touch
->>>>   * this flag directly, it will be set and cleared by media_devnode_register and
->>>> diff --git a/include/media/media-request.h b/include/media/media-request.h
->>>> index 7f9af68ef19ac6de0184bbb0c0827dc59777c6dc..610ccfe8d7b20ec38e166383433f9ee208248640 100644
->>>> --- a/include/media/media-request.h
->>>> +++ b/include/media/media-request.h
->>>> @@ -292,6 +292,7 @@ struct media_request_object_ops {
->>>>   * struct media_request_object - An opaque object that belongs to a media
->>>>   *				 request
->>>>   *
->>>> + * @mdev: Media device this object belongs to
->>>
->>> This deserves at least a comment what this may be used for: generally once
->>> object is unbound, it's not related to a request anymore (nor a Media
->>> device). This field also adds a new Media device lifetime issue: nothing
->>
->> We could make it explicit by clearing the mdev pointer ?
+> i can move this up of course
 > 
-> That would probably be out of scope of this patch(set). Also see the
-> patchset I referred to earlier.
+> > > +					phy-mode = "internal";
+> > 
+> > A phy should not have a phy-mode.
 > 
->>
->>> guarantees the mdev is not disappearing at a wrong time albeit this is
->>> very, very likely not user-triggerable without physically removing
->>> hardware.
->>
->> I'm not too familiar with the subject, if the MC knows it has open request
->> FD(s), why would it allow userspace from unloading its module ?
-> 
-> Drivers nor MC currently have a list of request file handles.
-> 
-> Apart from the file handles, that was the original thinking, yes, but
-> devices can be also unbound without touching the driver (or other) modules.
-> 
->>
->>>
->>>>   * @ops: object's operations
->>>>   * @priv: object's priv pointer
->>>>   * @req: the request this object belongs to (can be NULL)
->>>> @@ -303,6 +304,7 @@ struct media_request_object_ops {
->>>>   * another struct that contains the actual data for this request object.
->>>>   */
->>>>  struct media_request_object {
->>>> +	struct media_device *mdev;
->>>>  	const struct media_request_object_ops *ops;
->>>>  	void *priv;
->>>>  	struct media_request *req;
->>>>
-> 
+> not sure if this is needed for mt7988 internal 2.5g phy driver, but seems not when i look at the driver
+> (drivers/net/phy/mediatek/mtk-2p5ge.c). The switch phys also use this and also here i do not see any
+> access in the driver (drivers/net/dsa/mt7530-mmio.c + mt7530.c) on a quick look.
+> Afaik binding required the property and should be read by phylink (to be not unknown, but looks like
+> handled the same way).
 
+Which binding requires this? This is a PHY node, but i don't see
+anything about it in ethernet-phy.yaml.
+
+	Andrew
 
