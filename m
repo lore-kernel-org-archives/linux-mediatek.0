@@ -4,84 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0E28C61CE8
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Jun 2025 14:32:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BA97C61CE8
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Jun 2025 20:32:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kmc+XBP73DggJUv8T7xxNG1d8C/BNb5bhPDGJBM+T0c=; b=HuErWP1dmT2VwFHSgPVhmRlGI4
-	wbIYmDVfqTFjgbyA18LEJMD//mx0+ic+HZUjqnbhMXDnJKiBYP9z3PtZ69UKjcx9Z/FAr6KP7mqBz
-	8x2aP9kD8OPzMaEGU1N6QEL1JcMHgH2/nqLvD6Kyve9S12aklPqOohlTJrt5sit9GcMqnayOD8M3e
-	Qbi2diG9kmgZMsEw58kwZIp3ZW1XTpeGS7d6dIBXKAC+yq+6mk0Fs038cSIEYXOiaUJOjDwYC5ZkE
-	jZt6OZCwm+gZ5l4RGvIRT/j/bMeIqQiw2TB1I7+n/JMzYhY2M1B1ERLR5lpOD1ebNtEgkXb10pflj
-	qe0CmnXA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=excqZAKj1fpIXuOa842Ci3saNJX9RPSkBqQktvDHT+A=; b=RGJM7I1KcJ1WpJRkBn1sddnB6Q
+	KXHC68bLHtDaZ85IuNZZ4XZQh9JE5MJqTCVi2Jwdz8WLqsvl3TMNs9XZmK4exiGlA2NK9DWiLdX6w
+	Hck2cwSXYFSzS/TNKQ9B3j73xkDLA4bMFQY2Nxp5UEI09wglbEF1XR1MqWDCvbwwv+Oq+5IaYLH0H
+	8ANMjU5IrZL+MdgKMfwPUTasjeF12d20o4w88UY8vWrWZ/UP/D3odlT2gU6o2uR/BUEYHEAwnbuKu
+	A6Z39qlPQIKVOsx2YCW3d3/m0/rPEn6dJIx+GlWT4RsLZ6RZ3FYo8I18UEAEBD/JVEfSDz8xs2GQB
+	Xk9tNUAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOdXn-00000004ODk-3XfQ;
-	Mon, 09 Jun 2025 14:32:11 +0000
-Received: from mail-yb1-xb33.google.com ([2607:f8b0:4864:20::b33])
+	id 1uOjAZ-000000059vC-29RQ;
+	Mon, 09 Jun 2025 20:32:35 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOdRq-00000004Nc6-2I5G
-	for linux-mediatek@lists.infradead.org;
-	Mon, 09 Jun 2025 14:26:03 +0000
-Received: by mail-yb1-xb33.google.com with SMTP id 3f1490d57ef6-e7d925ff60bso3455784276.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 09 Jun 2025 07:26:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1749479161; x=1750083961; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=kmc+XBP73DggJUv8T7xxNG1d8C/BNb5bhPDGJBM+T0c=;
-        b=pW+kV8QkMKu6kbk83HQUQBYxogDvYbo4y/Px1Vfp6LEkYtOt28Hoh6zprCPnI9pvhV
-         7XqEjTDbbi/h19C26KrHLOfm1MMTd9nXfPAhf8WwQzEhR8zeQXb/04Frg5mty2FCOBtY
-         q+460YRSjGApcfhY+OyFBE0SRgQGy01CcqZexHTi3xhHOz/jWXiSoFDHewE5uBeGh4pp
-         RBk7oeKv4LkcLffC7mCxCZVRuJg2eZIQf1KB6CRILlvNFDwGrXPbP0pae4m8xREvfqCY
-         GkIdGRMfSIUgQJGmo4+zkrd4SHDq9szOZHlxL5g2hFP7IYqRvrlV8PYaTo9cJP59pYAH
-         Lohw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749479161; x=1750083961;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=kmc+XBP73DggJUv8T7xxNG1d8C/BNb5bhPDGJBM+T0c=;
-        b=iOGZQb7i4P28DLQWiy/jnmibVapqb9U5US9BV9dVlvYaZrvKijUSCYNknHgbo+2uJ2
-         wq7c/io1Tn1G/hMeSBf6hh7USzNPotnbexulbrBxathG6/R0pfAyIkHjzflmaQ5EXL65
-         o4WCLmEu2Aj8MF2MEx7N/fOOOFwMfXXBiU0t0+Td/TLpWPkLWsJaiclmU/BzpSYIJuI6
-         ErMWLtJ8YFiTQEcgjA0tQcpJRdjGCloX0akP1AZDT6rip42i67nsyqstPQc5hNdz4wm3
-         33qbY7TLowDE1SU5QMXk9APYIgt6PCBjjcfnsAkzSywNGenxLYa2WS4NBFn4tVbkdQ53
-         tCtA==
-X-Forwarded-Encrypted: i=1; AJvYcCUSj4X8L3QuBuD3zJcIRYdUw3BlYm0YIyTPVssNgQtiCfbBzzEPeblbVC55X0hB2chMs+7kHwGWdeIJwUahEA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw8mQZWh29mPOaFVDSgJrfyDYSaZeDc7trxd5X0e5G5Xe6rX3LR
-	jL0wSDyeSvJyZe27M+X3lY1mO0fQYLtcs7JQ1fC7zqfg9PDbwd4RKK3Lk8Z9RvEEbhv65Pum8KS
-	9YO6UTAhfqnNz3GprKpSHu7f8Sq/VsqoTDSFN++5DaQ==
-X-Gm-Gg: ASbGncsVkI8vF5h7/kY3E0Z0UBszAnJXGkMHVpUL0WFlva3VoU243EduFxdEwkFy50A
-	UJN2r8enzwYFt6PtWBn1c/wLpLfuDh67a8qj0bwWfpkSYXkP2wT63SWvb+m76yaj0AbLgdJ0Alk
-	mF3fqVq2z/NkpXbshTMTkaz4QIa/qvkZya0v7Fd7zec3pZ
-X-Google-Smtp-Source: AGHT+IFKLep+oVnJLAdhYlsfnnGURCM0jm5x9XuhkDAOYH3BwxGyY+sHbb4Wkeme1jFAonQLcsi0Q2V0d9n0diMCHJo=
-X-Received: by 2002:a05:6902:f84:b0:e81:9aa9:88cd with SMTP id
- 3f1490d57ef6-e81a20d40demr18795796276.8.1749479161518; Mon, 09 Jun 2025
- 07:26:01 -0700 (PDT)
+	id 1uOj7D-000000059il-0Zlc;
+	Mon, 09 Jun 2025 20:29:08 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id E6E73A50B92;
+	Mon,  9 Jun 2025 20:29:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 12EB2C4CEEB;
+	Mon,  9 Jun 2025 20:29:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1749500945;
+	bh=ynv6xDu7Wvta+MTxVq8GsI3jIBgL0uLRSQMAaRThjp0=;
+	h=From:Date:Subject:To:Cc:From;
+	b=pdSMrzR/4NX6Gx6Y5aZXBlfcEd4ruoj6qJzMwxt/W8wN9a7Dc1euf/MsBxGnnwRnZ
+	 R/SsvMqjvvezL/hOcW/jA+iTYw2GAHN+WMuJjqYJECbCZKm06XK/aBNASgx7E3sSVT
+	 Mzy0sLR89if+dRrRvGq4a/vwxrYaMdGhH3MG7PbDA/i5k2bxrdC9tdVZAzJII/gWq6
+	 TzeHs7t3B2NN9r4VKN6P5htJFojtDfk4YJSAf1efv2859RC0+k6XBPrCZgYIUIV2zn
+	 WlqOb9ANGkSpmiCKM4VUXhiEYshkTI3RGiHz9d0AWmRMHPAcuYf1KC7Cw9piI7v99I
+	 InjB2cPKp1AOQ==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Mon, 09 Jun 2025 22:28:40 +0200
+Subject: [PATCH net-next] net: airoha: Add PPPoE offload support
 MIME-Version: 1.0
-References: <174908565814.4056588.769599127120955383.stgit@mhiramat.tok.corp.google.com>
-In-Reply-To: <174908565814.4056588.769599127120955383.stgit@mhiramat.tok.corp.google.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Mon, 9 Jun 2025 16:25:24 +0200
-X-Gm-Features: AX0GCFvF_id35MOPl_pL8yIz8wUA8Ns9lzvlVE2LmtTNl-drJlr2CqeBViKQxTQ
-Message-ID: <CAPDyKFrejbW1d+jSSJE4K8Zb08CeMHiH9pC=Sr=Y51Lyy4Fhow@mail.gmail.com>
-Subject: Re: [PATCH] mtk-sd: Fix a pagefault in dma_unmap_sg() for not
- prepared data
-To: "Masami Hiramatsu (Google)" <mhiramat@kernel.org>
-Cc: Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Sergey Senozhatsky <senozhatsky@chromium.org>, linux-mmc@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250609-b4-airoha-flowtable-pppoe-v1-1-1520fa7711b4@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAPdDR2gC/32NQQ6CMBBFr0Jm7Zi2tgZceQ/DouAAEwltpgQ1h
+ Ltbce/yveS/v0IiYUpwKVYQWjhxmDLoQwHt4KeekO+ZwSjjlNUnbCx6ljB47MbwnH0zEsYYA6F
+ pdVV1TrmKPOR9FOr4tbdvdeaB0xzkvV8t+mt/VWf+VReNCktXWqu0O5ekrg+SicZjkB7qbds+r
+ 0nOv8MAAAA=
+X-Change-ID: 20250413-b4-airoha-flowtable-pppoe-2c199f5059ea
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250609_072602_586679_32D837A5 
-X-CRM114-Status: GOOD (  23.97  )
+X-CRM114-CacheID: sfid-20250609_132907_316323_F921DB61 
+X-CRM114-Status: GOOD (  11.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,71 +77,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 5 Jun 2025 at 03:07, Masami Hiramatsu (Google)
-<mhiramat@kernel.org> wrote:
->
-> From: Masami Hiramatsu (Google) <mhiramat@kernel.org>
->
-> mtk-msdc driver causes a kernel crash after swiotlb buffer is full.
->
-> ---
-> mtk-msdc 11240000.mmc: swiotlb buffer is full (sz: 16384 bytes), total 32768 (slots), used 32732 (slots)
-> mtk-msdc 11240000.mmc: msdc_track_cmd_data: cmd=18 arg=0397A6F8; host->error=0x00000004
-> Unable to handle kernel paging request at virtual address ffffffffc0001fc0
-> ---
->
-> When swiotlb buffer is full, the dma_map_sg() returns 0 to
-> msdc_prepare_data(), but it does not check it and sets the
-> MSDC_PREPARE_FLAG.
->
-> swiotlb_tbl_map_single() /* prints "swiotlb buffer is full" */
->   <-swiotlb_map()
->     <-dma_direct_map_page()
->       <-dma_direct_map_sg()
->         <-__dma_map_sg_attrs()
->           <-dma_map_sg_attrs()
->             <-dma_map_sg()  /* returns 0 (pages mapped) */
->               <-msdc_prepare_data()
->
-> Then, the msdc_unprepare_data() checks MSDC_PREPARE_FLAG and calls
-> dma_unmap_sg() with unmapped pages. It causes a page fault.
->
-> To fix this problem, Do not set MSDC_PREPARE_FLAG if dma_map_sg()
-> fails because this is not prepared.
->
-> Fixes: 208489032bdd ("mmc: mediatek: Add Mediatek MMC driver")
-> Signed-off-by: Masami Hiramatsu (Google) <mhiramat@kernel.org>
+Introduce flowtable hw acceleration for PPPoE traffic.
 
-Applied for fixes and by adding a stable-tag, thanks!
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/ethernet/airoha/airoha_ppe.c | 31 +++++++++++++++++++++++--------
+ 1 file changed, 23 insertions(+), 8 deletions(-)
 
-Note that it looked like the patch was not entirely correctly
-formatted, but I fixed it up when applying. Please have a look at the
-fixes branch to make sure things look okay to you.
+diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
+index 9067d2fc7706ecf489bee9fc9b6425de18acb634..50d816344b1f8c1ed639de357f62e761ede92f05 100644
+--- a/drivers/net/ethernet/airoha/airoha_ppe.c
++++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+@@ -232,6 +232,7 @@ static int airoha_ppe_foe_entry_prepare(struct airoha_eth *eth,
+ 	      FIELD_PREP(AIROHA_FOE_IB1_BIND_UDP, l4proto == IPPROTO_UDP) |
+ 	      FIELD_PREP(AIROHA_FOE_IB1_BIND_VLAN_LAYER, data->vlan.num) |
+ 	      FIELD_PREP(AIROHA_FOE_IB1_BIND_VPM, data->vlan.num) |
++	      FIELD_PREP(AIROHA_FOE_IB1_BIND_PPPOE, data->pppoe.num) |
+ 	      AIROHA_FOE_IB1_BIND_TTL;
+ 	hwe->ib1 = val;
+ 
+@@ -281,33 +282,42 @@ static int airoha_ppe_foe_entry_prepare(struct airoha_eth *eth,
+ 		hwe->ipv6.data = qdata;
+ 		hwe->ipv6.ib2 = val;
+ 		l2 = &hwe->ipv6.l2;
++		l2->etype = ETH_P_IPV6;
+ 	} else {
+ 		hwe->ipv4.data = qdata;
+ 		hwe->ipv4.ib2 = val;
+ 		l2 = &hwe->ipv4.l2.common;
++		l2->etype = ETH_P_IP;
+ 	}
+ 
+ 	l2->dest_mac_hi = get_unaligned_be32(data->eth.h_dest);
+ 	l2->dest_mac_lo = get_unaligned_be16(data->eth.h_dest + 4);
+ 	if (type <= PPE_PKT_TYPE_IPV4_DSLITE) {
++		struct airoha_foe_mac_info *mac_info;
++
+ 		l2->src_mac_hi = get_unaligned_be32(data->eth.h_source);
+ 		hwe->ipv4.l2.src_mac_lo =
+ 			get_unaligned_be16(data->eth.h_source + 4);
++
++		mac_info = (struct airoha_foe_mac_info *)l2;
++		mac_info->pppoe_id = data->pppoe.sid;
+ 	} else {
+-		l2->src_mac_hi = FIELD_PREP(AIROHA_FOE_MAC_SMAC_ID, smac_id);
++		l2->src_mac_hi = FIELD_PREP(AIROHA_FOE_MAC_SMAC_ID, smac_id) |
++				 FIELD_PREP(AIROHA_FOE_MAC_PPPOE_ID,
++					    data->pppoe.sid);
+ 	}
+ 
+ 	if (data->vlan.num) {
+-		l2->etype = dsa_port >= 0 ? BIT(dsa_port) : 0;
+ 		l2->vlan1 = data->vlan.hdr[0].id;
+ 		if (data->vlan.num == 2)
+ 			l2->vlan2 = data->vlan.hdr[1].id;
+-	} else if (dsa_port >= 0) {
+-		l2->etype = BIT(15) | BIT(dsa_port);
+-	} else if (type >= PPE_PKT_TYPE_IPV6_ROUTE_3T) {
+-		l2->etype = ETH_P_IPV6;
+-	} else {
+-		l2->etype = ETH_P_IP;
++	}
++
++	if (dsa_port >= 0) {
++		l2->etype = BIT(dsa_port);
++		l2->etype |= !data->vlan.num ? BIT(15) : 0;
++	} else if (data->pppoe.num) {
++		l2->etype = ETH_P_PPP_SES;
+ 	}
+ 
+ 	return 0;
+@@ -957,6 +967,11 @@ static int airoha_ppe_flow_offload_replace(struct airoha_gdm_port *port,
+ 		case FLOW_ACTION_VLAN_POP:
+ 			break;
+ 		case FLOW_ACTION_PPPOE_PUSH:
++			if (data.pppoe.num == 1 || data.vlan.num == 2)
++				return -EOPNOTSUPP;
++
++			data.pppoe.sid = act->pppoe.sid;
++			data.pppoe.num++;
+ 			break;
+ 		default:
+ 			return -EOPNOTSUPP;
 
-Kind regards
-Uffe
+---
+base-commit: 2c7e4a2663a1ab5a740c59c31991579b6b865a26
+change-id: 20250413-b4-airoha-flowtable-pppoe-2c199f5059ea
 
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
-
-> ---
->  drivers/mmc/host/mtk-sd.c |    3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 345ea91629e0..3594010bc229 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -827,9 +827,10 @@ static inline void msdc_dma_setup(struct msdc_host *host, struct msdc_dma *dma,
->  static void msdc_prepare_data(struct msdc_host *host, struct mmc_data *data)
->  {
->         if (!(data->host_cookie & MSDC_PREPARE_FLAG)) {
-> -               data->host_cookie |= MSDC_PREPARE_FLAG;
->                 data->sg_count = dma_map_sg(host->dev, data->sg, data->sg_len,
->                                             mmc_get_dma_dir(data));
-> +               if (data->sg_count)
-> +                       data->host_cookie |= MSDC_PREPARE_FLAG;
->         }
->  }
->
->
 
