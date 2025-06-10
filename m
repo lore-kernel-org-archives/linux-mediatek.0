@@ -4,61 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FB69C5B552
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jun 2025 09:43:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84B11C5B543
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jun 2025 09:52:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=QoH+GEIuZjL3nUgiDo1Re1DMfoVpW82MZQkjEbRhUVY=; b=0xqoJ7mMcF7qNTbwNynnVIgg4b
-	CG0gw2uQo0b2A3oBulevmz2lVPS3D/MN6ITEJirGMv18/8X+dLfVgCivDXU5gro3GjU3i91nGO8VP
-	mVLKnYJsdLufDPJIXwS2bRbl398ZOd12j6V8ynHZz/8Voe1Lff4+Ry9mpqHz2hRTqZFkpfBwEUv71
-	u5OTkj4AajBE+X/kyMcSLLK1Oz6AEPdAHxRQCZS5AziWJkxgFeBDYfwCzJ92ZDmgYrmxBE3g3xrSp
-	PZUhbsca9Chj1rCFHbtu/eFEXMa4h01EnvCNNxrScpgKYSvxxrtDAK+EcnvyIinaBiopYSg/hJ3ZU
-	5GodvlFg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=HYD5PVmudBJk+mszv7UWM/fKJWhEJVZ2kOsb27Mivno=; b=E49GZrx1mZKRtTzzVdzN0JfwS8
+	Ro/zsgSJ6UlAwFFZELKIkt+RAblUbFYwf5zGlD7W6QKsTG8FhISVoM+EJtwrnql5vVZb7RAYHZd1a
+	LLUG6yZPD+tgNEkbxbDb8pT0NY1VZY9wtItJI0kimM1btcXT8R3wkIe2dGJ3nNId4CJrpElp4v8FM
+	/cynMHCJH3gkVinOuNS+9MhPs0z/qPMyk/EYoCt1ApCMlZm+O/l8l6/p8DyjhGTrVob2UBPZ6g3sw
+	dYhrnnwPPEAKQi+YmpcFuWtJfobYwf5rj3VoGA/LeUOD8nQRfuaUAEFTKPLgkBWauXqSIJ58b0IJz
+	Ic8NKiiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOvWD-00000006NZt-3l8y;
-	Tue, 10 Jun 2025 09:43:45 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uOvei-00000006POs-2FVx;
+	Tue, 10 Jun 2025 09:52:32 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOv2L-00000006Hvw-3rs7;
-	Tue, 10 Jun 2025 09:12:54 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id ECEF460007;
-	Tue, 10 Jun 2025 09:12:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2F308C4CEED;
-	Tue, 10 Jun 2025 09:12:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1749546772;
-	bh=rOVaLrzxaPc+YcRuOpalOUGc+5Zt4qH2nIIaNuqz3ss=;
-	h=From:Date:Subject:To:Cc:From;
-	b=f5g3nY1owQe49u4S8vOgeOSpgb+sO53P0vkQLdhjjdpG5loWczo0n5VMzXxQPz7e3
-	 jeLP4fbs2xrivhN7UX/UUrDDoNzMYN376RG9bNdEoxbGKV2WzFDD1AmXb0t8el5ydf
-	 okkK3litmzGBpmKCuSctEswU0UEszQBu5pk9KXrwGON1rI2kRAkfVQsOLxIXrpzQlb
-	 H4Rdj3EUrkhm6ENAAv2Nlflf3REjHh3aW2EuKaSEAkopd2nyeQ0FIIg+Y5t6kJcGAO
-	 a7B82App0aico4HSFj8Cmkzs0OSZuo7QvD/0JTI7AiqdGgT2CRmiSxt5VbzXv7uDw1
-	 ZLvoq9Vrf3Fcg==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Tue, 10 Jun 2025 11:12:36 +0200
-Subject: [PATCH net-next] net: airoha: Add TCP LRO support
+	id 1uOvI0-00000006L1D-1Peh;
+	Tue, 10 Jun 2025 09:29:05 +0000
+X-UUID: 565c7b0845dd11f09f706fa2197c6ceb-20250610
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=HYD5PVmudBJk+mszv7UWM/fKJWhEJVZ2kOsb27Mivno=;
+	b=S+L5lUUgQlyJwaeJPPgb9tmpj4Q/97eMaMPFU5CPvefo8EffK7REg8x5U4/rmcIFhYefPS9gy5XX7Wa6PLmP0isjUE6kfQhyp8knKXcz5lB12KIC9txGTCtj4Ow06dqgRH0J16qC0HQWbNnrn7X0eqIbyFo8oJLM4TVIyUpjPZc=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.3,REQID:06cca2b9-4fc1-4b9e-a166-5f9c14a09330,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:09905cf,CLOUDID:cf33d781-ef30-4982-a001-67a9a83f2fda,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|102,TC:nil,Content:0|50,EDM:-3,IP
+	:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,
+	LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 565c7b0845dd11f09f706fa2197c6ceb-20250610
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <darren.ye@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 221588007; Tue, 10 Jun 2025 02:28:58 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Tue, 10 Jun 2025 17:28:55 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Tue, 10 Jun 2025 17:28:55 +0800
+From: Darren.Ye <darren.ye@mediatek.com>
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Rob
+ Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor
+ Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Linus
+ Walleij <linus.walleij@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>
+CC: <linux-sound@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-gpio@vger.kernel.org>, Darren Ye
+	<darren.ye@mediatek.com>
+Subject: [PATCH v4 00/10] ASoC: mediatek: Add support for MT8196 SoC
+Date: Tue, 10 Jun 2025 17:27:17 +0800
+Message-ID: <20250610092852.21986-1-darren.ye@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250610-airoha-eth-lro-v1-1-3b128c407fd8@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAP3R2gC/x2MQQqAIBAAvyJ7bkGFgvpKdBDdciE01ohA/HvSZ
- WAOMxUKCVOBRVUQerhwTl3MoMBHlw5CDt3BajvqyWh0LDk6pDviKRlp3H0wHX420KNLaOf3H65
- bax/9kFaOYAAAAA==
-X-Change-ID: 20250610-airoha-eth-lro-e5fcd15fcc91
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-X-Mailer: b4 0.14.2
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-MTK: N
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250610_022904_386683_B70F59DE 
+X-CRM114-Status: GOOD (  20.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,378 +90,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-EN7581 SoC supports TCP hw Large Receive Offload (LRO) for 8 hw queues.
-Introduce TCP LRO support to airoha_eth driver for RX queues 24-31.
-In order to support hw TCP LRO, increase page_pool order to 5 for RX
-queues 24-31.
+From: Darren Ye <darren.ye@mediatek.com>
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c  | 191 +++++++++++++++++++++++++++---
- drivers/net/ethernet/airoha/airoha_eth.h  |  10 ++
- drivers/net/ethernet/airoha/airoha_regs.h |  25 +++-
- 3 files changed, 210 insertions(+), 16 deletions(-)
+This series of patches adds support for Mediatek AFE of MT8196 SoC.
+Patches are based on broonie tree "for-next" branch.
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index a7ec609d64dee9c8e901c7eb650bb3fe144ee00a..9378ca384fe2025a40cc528714859dd59300fbcd 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -12,6 +12,7 @@
- #include <net/dst_metadata.h>
- #include <net/page_pool/helpers.h>
- #include <net/pkt_cls.h>
-+#include <net/tcp.h>
- #include <uapi/linux/ppp_defs.h>
- 
- #include "airoha_regs.h"
-@@ -439,6 +440,40 @@ static void airoha_fe_crsn_qsel_init(struct airoha_eth *eth)
- 				 CDM_CRSN_QSEL_Q1));
- }
- 
-+static void airoha_fe_lro_init_rx_queue(struct airoha_eth *eth, int qdma_id,
-+					int lro_queue_index, int qid,
-+					int nbuf, int buf_size)
-+{
-+	airoha_fe_rmw(eth, REG_CDM_LRO_LIMIT(qdma_id),
-+		      CDM_LRO_AGG_NUM_MASK | CDM_LRO_AGG_SIZE_MASK,
-+		      FIELD_PREP(CDM_LRO_AGG_NUM_MASK, nbuf) |
-+		      FIELD_PREP(CDM_LRO_AGG_SIZE_MASK, buf_size));
-+	airoha_fe_rmw(eth, REG_CDM_LRO_AGE_TIME(qdma_id),
-+		      CDM_LRO_AGE_TIME_MASK | CDM_LRO_AGG_TIME_MASK,
-+		      FIELD_PREP(CDM_LRO_AGE_TIME_MASK,
-+				 AIROHA_RXQ_LRO_MAX_AGE_TIME) |
-+		      FIELD_PREP(CDM_LRO_AGG_TIME_MASK,
-+				 AIROHA_RXQ_LRO_MAX_AGG_TIME));
-+	airoha_fe_rmw(eth, REG_CDM_LRO_RXQ(qdma_id, lro_queue_index),
-+		      LRO_RXQ_MASK(lro_queue_index),
-+		      qid << __ffs(LRO_RXQ_MASK(lro_queue_index)));
-+	airoha_fe_set(eth, REG_CDM_LRO_EN(qdma_id), BIT(lro_queue_index));
-+}
-+
-+static void airoha_fe_lro_disable(struct airoha_eth *eth, int qdma_id)
-+{
-+	int i;
-+
-+	airoha_fe_clear(eth, REG_CDM_LRO_LIMIT(qdma_id),
-+			CDM_LRO_AGG_NUM_MASK | CDM_LRO_AGG_SIZE_MASK);
-+	airoha_fe_clear(eth, REG_CDM_LRO_AGE_TIME(qdma_id),
-+			CDM_LRO_AGE_TIME_MASK | CDM_LRO_AGG_TIME_MASK);
-+	airoha_fe_clear(eth, REG_CDM_LRO_EN(qdma_id), LRO_RXQ_EN_MASK);
-+	for (i = 0; i < AIROHA_MAX_NUM_LRO_QUEUES; i++)
-+		airoha_fe_clear(eth, REG_CDM_LRO_RXQ(qdma_id, i),
-+				LRO_RXQ_MASK(i));
-+}
-+
- static int airoha_fe_init(struct airoha_eth *eth)
- {
- 	airoha_fe_maccr_init(eth);
-@@ -618,9 +653,87 @@ static int airoha_qdma_get_gdm_port(struct airoha_eth *eth,
- 	return port >= ARRAY_SIZE(eth->ports) ? -EINVAL : port;
- }
- 
-+static bool airoha_qdma_is_lro_rx_queue(struct airoha_queue *q,
-+					struct airoha_qdma *qdma)
-+{
-+	int qid = q - &qdma->q_rx[0];
-+
-+	/* EN7581 SoC supports at most 8 LRO rx queues */
-+	BUILD_BUG_ON(hweight32(AIROHA_RXQ_LRO_EN_MASK) >
-+		     AIROHA_MAX_NUM_LRO_QUEUES);
-+
-+	return !!(AIROHA_RXQ_LRO_EN_MASK & BIT(qid));
-+}
-+
-+static int airoha_qdma_lro_rx_process(struct airoha_queue *q,
-+				      struct airoha_qdma_desc *desc)
-+{
-+	u32 msg1 = le32_to_cpu(desc->msg1), msg2 = le32_to_cpu(desc->msg2);
-+	u32 th_off, tcp_ack_seq, msg3 = le32_to_cpu(desc->msg3);
-+	bool ipv4 = FIELD_GET(QDMA_ETH_RXMSG_IP4_MASK, msg1);
-+	bool ipv6 = FIELD_GET(QDMA_ETH_RXMSG_IP6_MASK, msg1);
-+	struct sk_buff *skb = q->skb;
-+	u16 tcp_win, l2_len;
-+	struct tcphdr *th;
-+
-+	if (FIELD_GET(QDMA_ETH_RXMSG_AGG_COUNT_MASK, msg2) <= 1)
-+		return 0;
-+
-+	if (!ipv4 && !ipv6)
-+		return -EOPNOTSUPP;
-+
-+	l2_len = FIELD_GET(QDMA_ETH_RXMSG_L2_LEN_MASK, msg2);
-+	if (ipv4) {
-+		u16 agg_len = FIELD_GET(QDMA_ETH_RXMSG_AGG_LEN_MASK, msg3);
-+		struct iphdr *iph = (struct iphdr *)(skb->data + l2_len);
-+
-+		if (iph->protocol != IPPROTO_TCP)
-+			return -EOPNOTSUPP;
-+
-+		iph->tot_len = cpu_to_be16(agg_len);
-+		iph->check = 0;
-+		iph->check = ip_fast_csum((void *)iph, iph->ihl);
-+		th_off = l2_len + (iph->ihl << 2);
-+	} else {
-+		struct ipv6hdr *ip6h = (struct ipv6hdr *)(skb->data + l2_len);
-+		u32 len, desc_ctrl = le32_to_cpu(desc->ctrl);
-+
-+		if (ip6h->nexthdr != NEXTHDR_TCP)
-+			return -EOPNOTSUPP;
-+
-+		len = FIELD_GET(QDMA_DESC_LEN_MASK, desc_ctrl);
-+		ip6h->payload_len = cpu_to_be16(len - l2_len - sizeof(*ip6h));
-+		th_off = l2_len + sizeof(*ip6h);
-+	}
-+
-+	tcp_win = FIELD_GET(QDMA_ETH_RXMSG_TCP_WIN_MASK, msg3);
-+	tcp_ack_seq = le32_to_cpu(desc->data);
-+
-+	th = (struct tcphdr *)(skb->data + th_off);
-+	th->ack_seq = cpu_to_be32(tcp_ack_seq);
-+	th->window = cpu_to_be16(tcp_win);
-+
-+	/* check tcp timestamp option */
-+	if (th->doff == sizeof(*th) + TCPOLEN_TSTAMP_ALIGNED) {
-+		__be32 *topt = (__be32 *)(th + 1);
-+
-+		if (*topt == cpu_to_be32((TCPOPT_NOP << 24) |
-+					 (TCPOPT_NOP << 16) |
-+					 (TCPOPT_TIMESTAMP << 8) |
-+					 TCPOLEN_TIMESTAMP)) {
-+			u32 tcp_ts_reply = le32_to_cpu(desc->tcp_ts_reply);
-+
-+			put_unaligned_be32(tcp_ts_reply, topt + 2);
-+		}
-+	}
-+
-+	return 0;
-+}
-+
- static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
- {
- 	enum dma_data_direction dir = page_pool_get_dma_dir(q->page_pool);
-+	bool lro_queue = airoha_qdma_is_lro_rx_queue(q, q->qdma);
- 	struct airoha_qdma *qdma = q->qdma;
- 	struct airoha_eth *eth = qdma->eth;
- 	int qid = q - &qdma->q_rx[0];
-@@ -663,9 +776,14 @@ static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
- 			__skb_put(q->skb, len);
- 			skb_mark_for_recycle(q->skb);
- 			q->skb->dev = port->dev;
--			q->skb->protocol = eth_type_trans(q->skb, port->dev);
- 			q->skb->ip_summed = CHECKSUM_UNNECESSARY;
- 			skb_record_rx_queue(q->skb, qid);
-+
-+			if (lro_queue && (port->dev->features & NETIF_F_LRO) &&
-+			    airoha_qdma_lro_rx_process(q, desc) < 0)
-+				goto free_frag;
-+
-+			q->skb->protocol = eth_type_trans(q->skb, port->dev);
- 		} else { /* scattered frame */
- 			struct skb_shared_info *shinfo = skb_shinfo(q->skb);
- 			int nr_frags = shinfo->nr_frags;
-@@ -751,14 +869,16 @@ static int airoha_qdma_rx_napi_poll(struct napi_struct *napi, int budget)
- }
- 
- static int airoha_qdma_init_rx_queue(struct airoha_queue *q,
--				     struct airoha_qdma *qdma, int ndesc)
-+				     struct airoha_qdma *qdma,
-+				     int ndesc, bool lro_queue)
- {
-+	int pp_order = lro_queue ? 5 : 0;
- 	const struct page_pool_params pp_params = {
--		.order = 0,
--		.pool_size = 256,
-+		.order = pp_order,
-+		.pool_size = 256 >> pp_order,
- 		.flags = PP_FLAG_DMA_MAP | PP_FLAG_DMA_SYNC_DEV,
- 		.dma_dir = DMA_FROM_DEVICE,
--		.max_len = PAGE_SIZE,
-+		.max_len = PAGE_SIZE << pp_order,
- 		.nid = NUMA_NO_NODE,
- 		.dev = qdma->eth->dev,
- 		.napi = &q->napi,
-@@ -767,7 +887,7 @@ static int airoha_qdma_init_rx_queue(struct airoha_queue *q,
- 	int qid = q - &qdma->q_rx[0], thr;
- 	dma_addr_t dma_addr;
- 
--	q->buf_size = PAGE_SIZE / 2;
-+	q->buf_size = pp_params.max_len / (2 * (1 + lro_queue));
- 	q->ndesc = ndesc;
- 	q->qdma = qdma;
- 
-@@ -829,15 +949,18 @@ static int airoha_qdma_init_rx(struct airoha_qdma *qdma)
- 	int i;
- 
- 	for (i = 0; i < ARRAY_SIZE(qdma->q_rx); i++) {
--		int err;
-+		struct airoha_queue *q = &qdma->q_rx[i];
-+		bool lro_queue;
-+		int err, ndesc;
- 
- 		if (!(RX_DONE_INT_MASK & BIT(i))) {
- 			/* rx-queue not binded to irq */
- 			continue;
- 		}
- 
--		err = airoha_qdma_init_rx_queue(&qdma->q_rx[i], qdma,
--						RX_DSCP_NUM(i));
-+		lro_queue = airoha_qdma_is_lro_rx_queue(q, qdma);
-+		ndesc = lro_queue ? RX_DSCP_NUM(1) : RX_DSCP_NUM(i);
-+		err = airoha_qdma_init_rx_queue(q, qdma, ndesc, lro_queue);
- 		if (err)
- 			return err;
- 	}
-@@ -1870,6 +1993,46 @@ static u32 airoha_get_dsa_tag(struct sk_buff *skb, struct net_device *dev)
- #endif
- }
- 
-+static int airoha_dev_set_features(struct net_device *dev,
-+				   netdev_features_t features)
-+{
-+	netdev_features_t diff = dev->features ^ features;
-+	struct airoha_gdm_port *port = netdev_priv(dev);
-+	struct airoha_qdma *qdma = port->qdma;
-+	struct airoha_eth *eth = qdma->eth;
-+	int qdma_id = qdma - &eth->qdma[0];
-+
-+	if (!(diff & NETIF_F_LRO))
-+		return 0;
-+
-+	/* reset LRO configuration */
-+	if (features & NETIF_F_LRO) {
-+		int i, lro_queue_index = 0;
-+
-+		for (i = 0; i < ARRAY_SIZE(qdma->q_rx); i++) {
-+			struct airoha_queue *q = &qdma->q_rx[i];
-+			bool lro_queue;
-+
-+			if (!q->ndesc)
-+				continue;
-+
-+			lro_queue = airoha_qdma_is_lro_rx_queue(q, qdma);
-+			if (!lro_queue)
-+				continue;
-+
-+			airoha_fe_lro_init_rx_queue(eth, qdma_id,
-+						    lro_queue_index, i,
-+						    q->page_pool->p.pool_size,
-+						    q->buf_size);
-+			lro_queue_index++;
-+		}
-+	} else {
-+		airoha_fe_lro_disable(eth, qdma_id);
-+	}
-+
-+	return 0;
-+}
-+
- static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
- 				   struct net_device *dev)
- {
-@@ -2751,6 +2914,7 @@ static const struct net_device_ops airoha_netdev_ops = {
- 	.ndo_stop		= airoha_dev_stop,
- 	.ndo_change_mtu		= airoha_dev_change_mtu,
- 	.ndo_select_queue	= airoha_dev_select_queue,
-+	.ndo_set_features	= airoha_dev_set_features,
- 	.ndo_start_xmit		= airoha_dev_xmit,
- 	.ndo_get_stats64        = airoha_dev_get_stats64,
- 	.ndo_set_mac_address	= airoha_dev_set_macaddr,
-@@ -2848,12 +3012,9 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
- 	dev->ethtool_ops = &airoha_ethtool_ops;
- 	dev->max_mtu = AIROHA_MAX_MTU;
- 	dev->watchdog_timeo = 5 * HZ;
--	dev->hw_features = NETIF_F_IP_CSUM | NETIF_F_RXCSUM |
--			   NETIF_F_TSO6 | NETIF_F_IPV6_CSUM |
--			   NETIF_F_SG | NETIF_F_TSO |
--			   NETIF_F_HW_TC;
--	dev->features |= dev->hw_features;
--	dev->vlan_features = dev->hw_features;
-+	dev->hw_features = AIROHA_HW_FEATURES | NETIF_F_LRO;
-+	dev->features |= AIROHA_HW_FEATURES;
-+	dev->vlan_features = AIROHA_HW_FEATURES;
- 	dev->dev.of_node = np;
- 	dev->irq = qdma->irq_banks[0].irq;
- 	SET_NETDEV_DEV(dev, eth->dev);
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index a970b789cf232c316e5ea27b0146493bf91c3767..bea56597af3ba0e8da3cc17e4a74b91d4f681137 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -41,6 +41,16 @@
- 	 (_n) == 15 ? 128 :		\
- 	 (_n) ==  0 ? 1024 : 16)
- 
-+#define AIROHA_MAX_NUM_LRO_QUEUES	8
-+#define AIROHA_RXQ_LRO_EN_MASK		0xff000000
-+#define AIROHA_RXQ_LRO_MAX_AGG_TIME	100
-+#define AIROHA_RXQ_LRO_MAX_AGE_TIME	2000 /* 1ms */
-+
-+#define AIROHA_HW_FEATURES			\
-+	(NETIF_F_IP_CSUM | NETIF_F_RXCSUM |	\
-+	 NETIF_F_TSO6 | NETIF_F_IPV6_CSUM |	\
-+	 NETIF_F_SG | NETIF_F_TSO | NETIF_F_HW_TC)
-+
- #define PSE_RSV_PAGES			128
- #define PSE_QUEUE_RSV_PAGES		64
- 
-diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/ethernet/airoha/airoha_regs.h
-index 04187eb40ec674ec5a4ccfc968bb4bd579a53095..86d320a6793b7d4ec77f823f61fa77a4c76a61a5 100644
---- a/drivers/net/ethernet/airoha/airoha_regs.h
-+++ b/drivers/net/ethernet/airoha/airoha_regs.h
-@@ -23,6 +23,9 @@
- #define GDM3_BASE			0x1100
- #define GDM4_BASE			0x2500
- 
-+#define CDM_BASE(_n)			\
-+	((_n) == 1 ? CDM2_BASE : CDM1_BASE)
-+
- #define GDM_BASE(_n)			\
- 	((_n) == 4 ? GDM4_BASE :	\
- 	 (_n) == 3 ? GDM3_BASE :	\
-@@ -127,6 +130,20 @@
- #define CDM2_CRSN_QSEL_REASON_MASK(_n)	\
- 	GENMASK(4 + (((_n) % 4) << 3),	(((_n) % 4) << 3))
- 
-+#define REG_CDM_LRO_RXQ(_n, _m)		(CDM_BASE(_n) + 0x78 + ((_m) & 0x4))
-+#define LRO_RXQ_MASK(_n)		GENMASK(4 + (((_n) & 0x3) << 3), ((_n) & 0x3) << 3)
-+
-+#define REG_CDM_LRO_EN(_n)		(CDM_BASE(_n) + 0x80)
-+#define LRO_RXQ_EN_MASK			GENMASK(7, 0)
-+
-+#define REG_CDM_LRO_LIMIT(_n)		(CDM_BASE(_n) + 0x84)
-+#define CDM_LRO_AGG_NUM_MASK		GENMASK(23, 16)
-+#define CDM_LRO_AGG_SIZE_MASK		GENMASK(15, 0)
-+
-+#define REG_CDM_LRO_AGE_TIME(_n)	(CDM_BASE(_n) + 0x88)
-+#define CDM_LRO_AGE_TIME_MASK		GENMASK(31, 16)
-+#define CDM_LRO_AGG_TIME_MASK		GENMASK(15, 0)
-+
- #define REG_GDM_FWD_CFG(_n)		GDM_BASE(_n)
- #define GDM_DROP_CRC_ERR		BIT(23)
- #define GDM_IP4_CKSUM			BIT(22)
-@@ -896,9 +913,15 @@
- #define QDMA_ETH_RXMSG_SPORT_MASK	GENMASK(25, 21)
- #define QDMA_ETH_RXMSG_CRSN_MASK	GENMASK(20, 16)
- #define QDMA_ETH_RXMSG_PPE_ENTRY_MASK	GENMASK(15, 0)
-+/* RX MSG2 */
-+#define QDMA_ETH_RXMSG_AGG_COUNT_MASK	GENMASK(31, 24)
-+#define QDMA_ETH_RXMSG_L2_LEN_MASK	GENMASK(6, 0)
-+/* RX MSG3 */
-+#define QDMA_ETH_RXMSG_AGG_LEN_MASK	GENMASK(31, 16)
-+#define QDMA_ETH_RXMSG_TCP_WIN_MASK	GENMASK(15, 0)
- 
- struct airoha_qdma_desc {
--	__le32 rsv;
-+	__le32 tcp_ts_reply;
- 	__le32 ctrl;
- 	__le32 addr;
- 	__le32 data;
+Changes since v3:
+ - the AFE TOP CG index is added to the common header.
+ - remove the audsys clk register and directly read and write to the regmap of afe cg clk.
+ - modify the clk logic according to the suggestions.
+ - remove the macro definition of MTKAIF4.
+ - remove the tdm cg event and directly read and write the tdm cg reg form the widget.
+ - remove the i2s and cm cg event and directly read and write cg reg.
+ - afe hopping and f26m clk cg are placed in remap_register_patch and enable.
+ - the yaml file is modified according to the suggestions.
+ - replace SND_SOC_DAIFMT_CBS_CFS with SND_SOC_DAIFMT_CBC_CFC.
 
----
-base-commit: 2c7e4a2663a1ab5a740c59c31991579b6b865a26
-change-id: 20250610-airoha-eth-lro-e5fcd15fcc91
+Changes since v2:
+  - remove the mtk_memif_set_channel interface modify.
+  - remove duplicate definitions from the header file.
+  - move the afe gate clk to the audio driver for management and registration
+    and manage the afe clk gate in each dai driver.
+  - delete the useless clk source.
+  - the i2s driver adds i2s clk gate management, removes the additional dts
+    configuration of i2s4.
+  - the afe and i2s dai driver,memif and irq data structs are encapsulated using
+    macros to reduce the amount of code.
+  - the volatile reg is modified as suggested.
+  - mt6681 codec is not supported, the mt6681 keyword is removed.
+  - the name of the machine driver is changed from mt8196-mt6681.c to mt8196-nau8825.c
+  - remove the i2s4 configuration from mt8196-afe.yaml and make the modifications as suggested.
+  - change the mt8196-mt6681.yaml to mt8196-nau8825.yaml and make the modifications as suggested.
 
-Best regards,
+Changes since v1:
+  - modify mtk_memif_set_channel and mtk_afe_pcm_pointer interfaces
+    are improved to support mt8196.
+  - remove duplicate definitions in the mt8196 common header file.
+  - cm logic is merge into the afe platform driver.
+  - modify afe clk to return judgment logic and remove useless clk sources.
+  - refactor the mt8196 adda dai driver.
+  - remove the gpio module and use SND_SOC_DAPM_PINCTRL to manage it.
+  - removes CONNSYS_I2S related functions that are not supported in i2s dai driver.
+  - fixed mt8196-afe.yaml and mt8196-mt6681.yaml syntax issues.
+  - modify log printing in all modules.
+  - optimize the header file included for machine driver.
+
+Darren Ye (10):
+  ASoC: mediatek: common: modify mtk afe platform driver for mt8196
+  ASoC: mediatek: mt8196: add common header
+  ASoC: mediatek: mt8196: support audio clock control
+  ASoC: mediatek: mt8196: support ADDA in platform driver
+  ASoC: mediatek: mt8196: support I2S in platform driver
+  ASoC: mediatek: mt8196: support TDM in platform driver
+  ASoC: mediatek: mt8196: add platform driver
+  ASoC: dt-bindings: mediatek,mt8196-afe: add audio AFE document
+  ASoC: mediatek: mt8196: add machine driver with nau8825
+  ASoC: dt-bindings: mediatek,mt8196-nau8825: add mt8196-nau8825
+    document
+
+ .../bindings/sound/mediatek,mt8196-afe.yaml   |   155 +
+ .../sound/mediatek,mt8196-nau8825.yaml        |   102 +
+ sound/soc/mediatek/Kconfig                    |    30 +
+ sound/soc/mediatek/Makefile                   |     1 +
+ .../mediatek/common/mtk-afe-platform-driver.c |    47 +-
+ .../mediatek/common/mtk-afe-platform-driver.h |     2 +
+ sound/soc/mediatek/mt8196/Makefile            |    17 +
+ sound/soc/mediatek/mt8196/mt8196-afe-clk.c    |   728 +
+ sound/soc/mediatek/mt8196/mt8196-afe-clk.h    |    80 +
+ sound/soc/mediatek/mt8196/mt8196-afe-common.h |   213 +
+ sound/soc/mediatek/mt8196/mt8196-afe-pcm.c    |  2665 ++++
+ sound/soc/mediatek/mt8196/mt8196-dai-adda.c   |   888 ++
+ sound/soc/mediatek/mt8196/mt8196-dai-i2s.c    |  3970 +++++
+ sound/soc/mediatek/mt8196/mt8196-dai-tdm.c    |   836 ++
+ .../mediatek/mt8196/mt8196-interconnection.h  |   121 +
+ sound/soc/mediatek/mt8196/mt8196-nau8825.c    |   869 ++
+ sound/soc/mediatek/mt8196/mt8196-reg.h        | 12068 ++++++++++++++++
+ 17 files changed, 22776 insertions(+), 16 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8196-afe.yaml
+ create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8196-nau8825.yaml
+ create mode 100644 sound/soc/mediatek/mt8196/Makefile
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-afe-clk.c
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-afe-clk.h
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-afe-common.h
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-afe-pcm.c
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-dai-adda.c
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-dai-i2s.c
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-dai-tdm.c
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-interconnection.h
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-nau8825.c
+ create mode 100644 sound/soc/mediatek/mt8196/mt8196-reg.h
+
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.45.2
 
 
