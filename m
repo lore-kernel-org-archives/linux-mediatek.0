@@ -4,123 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61E49C5B552
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jun 2025 09:09:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22230C5B543
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jun 2025 09:32:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=x9isndutnG7FzSCz38wRWR3/GK7vlaPRNBGI74YSN5E=; b=luWu3UIiqwHNL1IgZ3Rx4wT379
-	UvTgJKWj0QuHE+wCjG10EHGq+l8o7I58E3TyLGzuImVCdE2IoG1quu5nDZWeBKhoS1x3hT3vXhpR2
-	Wbi3rO6S7XmUtUJAk247KKqW9W2r00HXkAJZJapykTPWX8h86dL3h0X/jiAUUS+UV1l2KxBVqWTgG
-	/oqHs/kY/zDstjorkZoj0DHTTyccC6TR7dQPbvRf3Aj6e7kO34I7vDNfL3tyHTAwpkyfSOwdPouFF
-	QwoAYt+XAmdGfES0F7h5LTu2lvC5Yh10b+FHlyXdonkoYQwxln65mOrqiacVmzLQ128M854hUpVYd
-	HwYqallQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/J4JSHATnk9TCsjKFzEkFQy2OXqCakBAt2qzrcv/bCo=; b=Rex8x54csbmG3AAn/murl5u0gv
+	ZTJInyXP93fqMAZDnSnuN7V1net+U8vYDDNSSra3IgLLiuOlGb7mYSNSFlxQ1qtHI7R+M1jXGeM2A
+	bNuY2Czi/0WGtihw37SBmsx3zzIhOiywK9BSqoqNdlQbLxwrdQnshJXbLTfZkKCEQwpGxq+Z2uZ2+
+	DBz0AMwzIs7Iq1A6nJAAbeBSYkA6aVRVmdp8T0dc0WzXdIghMtnXIaojWdr4Mb8YONalxbLIgJahz
+	9o04eTA9nYeRqBy8oiU/ZAmH5n2K9IkGDjm7wGya8Hst2yx7YFgv3ORkZaywCm4/f7Goz5XMrd9aX
+	ow2A3vdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOuzE-00000006HJm-2lYC;
-	Tue, 10 Jun 2025 09:09:40 +0000
-Received: from mout.gmx.net ([212.227.15.18])
+	id 1uOvLa-00000006LhM-27KF;
+	Tue, 10 Jun 2025 09:32:46 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOuuV-00000006Gis-0NJY;
-	Tue, 10 Jun 2025 09:04:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1749546239; x=1750151039; i=frank-w@public-files.de;
-	bh=x9isndutnG7FzSCz38wRWR3/GK7vlaPRNBGI74YSN5E=;
-	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
-	 Content-Type:Date:In-Reply-To:References:
-	 Content-Transfer-Encoding:cc:content-transfer-encoding:
-	 content-type:date:from:message-id:mime-version:reply-to:subject:
-	 to;
-	b=IJ5Ea6W7y6sTzEDB05dbUDocNZCqcni0Hii/uaCZIuM0Zg/7l8U89wwEXWC0u7PI
-	 fYgLeMT7BIOvyx1mbGJVu/s033MIr4CbHo+0uRS8hAsXSFrNEXiblFuJBONebx1i/
-	 kCqAI2G0WQCKQtIfRH6QtbdeRTaMLSRjJM6ss5Ihb/PIQelp+XlC5V9TuSbifXu40
-	 2CGrvxqkxKmgI2MvYE10hzuN3ucSkVkCjwZC6Xal71MdGyY3+CwYaCLf9YLqdOa7M
-	 tSXyPJ1LdBjiVd3iRL6o9wBZtLlYtTM3nOAp9mdaiQ4DjFv+TenKPtDN9pnG7AbJD
-	 PK7vX4n1uYJPspO/fg==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [100.70.254.165] ([100.70.254.165]) by
- trinity-msg-rest-gmx-gmx-live-5d9b465786-6phds (via HTTP); Tue, 10 Jun 2025
- 09:03:59 +0000
+	id 1uOv15-00000006HgE-3gVM;
+	Tue, 10 Jun 2025 09:11:37 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-3a531fcaa05so1992431f8f.3;
+        Tue, 10 Jun 2025 02:11:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1749546694; x=1750151494; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=/J4JSHATnk9TCsjKFzEkFQy2OXqCakBAt2qzrcv/bCo=;
+        b=LdRXOhoCL6bnQW/iPKdF2b0fIssP4C9Dp3FMx/2Lu/beNHkuDoqpOSpFCppubMQKt+
+         Tb4YMwE1TaEQI7KSUfIBzIzEIZY0UutycfUTJ92WIo20PmDK2Cn7PUrBbyRXHcktaECC
+         mIlhQYZT7/wTt+7OFi7pczlfncRmM4Tb9zIwcAuOsR09xyIXGPGw1t3hDwExuILWMPPi
+         Ns/r3VAMIrfNA4jYDJvxlPsrr/fnQwre2TxKRqozKcIyNP0NsLZkxzH8muHM5kzrz4lH
+         /IUqelD+tO5LwlQHtEkTyRlwQA94qBiTKR8kzQdzShCCQcPshFJlro3hR5vMip5LMEG5
+         jCAA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749546694; x=1750151494;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=/J4JSHATnk9TCsjKFzEkFQy2OXqCakBAt2qzrcv/bCo=;
+        b=GnwDs6vG7Wb5zVcI6hyYyzqTqxm7HnzCtmGL5uUZv7FvBwX+FsKb3tVdC2+1QmGqxA
+         wiufLJCBFpG7MCNars1+mCZZukg3YOWhzhJQQUf/8ArwgtNdfBpYSxKauPl0/Yc+OaRu
+         kAMb/VQgvEmjWkEHhd/NUwiwh60O4k4owIBcSK1YDtKqZg/zuE0HKBJLET1i67a/GXHZ
+         jLrMikx/3i+svgJOt+wTXJ6mZGiJQeY/IgqU/mhwYnGzLZtXqRuyN2PtXMjqhaRrZgWi
+         4Z8iWo3BT6lzvjNhChtnJe0q2mc4odvro/d0Dw/s1zrzNXvRudhd3N97LAyXQHOM0aZL
+         aCVQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUoCpspZibDoi6eGdAX+fTu0my6F1W+DW6h0//4G9er4kPFJqG/Z5AB353Q77ZCZu4NE3nIjya3NAHYh2U=@lists.infradead.org, AJvYcCV+imfYYwEK7IrHDiwxAg8pxmPB20e+gJcIAB/1bL9dcSmHMVeuAkVe+Kvlb1njS+GEAPUg3LZbJAl/QtJWD40=@lists.infradead.org, AJvYcCWIiM/lri7bAdfo+hJ9yxUVNHnaLbsC/zW4ep8zfTAg5m+El2T9Nx14ZS6plLzThxVniWRqpU0XCLyz2SLatl6Q@lists.infradead.org, AJvYcCXg+SKNZIWnv8jg4vGCnS2xpK57tUY/iWHqxtOTzbVPml1665OOQyrX3jD0p6kEXSUl7Z8MwYXmGYnr7t8KVkk=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz9ViRlOF21LGJTDLYFUmD2Jjs6GNxlu9TMauImrpOSxsP6eOvw
+	7mXQwmT3cvmaQSF2EqndwMUVBsqxAfJfu2qc5gVPy3CO4f/aHBrovKQ/
+X-Gm-Gg: ASbGncuOOFLEussdvPpA+/XFa07OwoEX+t1/dYSfOqAWuGVwa3Cu8QHp7t0K7h3iKcP
+	pLTn2SNkfBLF5PEvqjqqIGE6NJ7Xq8EMNiS93tcbLhzuXvZxJJcOhWBnCqgzlIagxFXDu77na45
+	69l1Ehp9aNrdf4yVb+iudv8bKfohJCMoar3nxpX079s5gcyafeFiKAnSOjeuu3kuT+L0XXHP9Tg
+	CBAVv1bthXqgSx7Ag97ORYWQ1agDk2oBkOiBWGrGkugrR6oxhjLPWNiLr+NDmAyJcaVVk9V9hoa
+	qXlhFTjfx/TG+5J8WOEXgaGuq0Zy0ZpErcnniPXe1EhzhQ7UzF4cLPuiFmQfO3hlChcCz0bROgf
+	EWJ9k9lGb+Nob1cWlpsv2oasq2LIE69FmNq65joxjAIF2uzgv
+X-Google-Smtp-Source: AGHT+IGiaud+NmiD3BNjNEkh0KdS8oAZ8TPOqcLbBsZsD4cCdkMv4OiwbthBO25zWdPhWgZ1rXZiAA==
+X-Received: by 2002:a5d:588a:0:b0:3a4:f936:7882 with SMTP id ffacd0b85a97d-3a531ced06fmr13875069f8f.55.1749546693846;
+        Tue, 10 Jun 2025 02:11:33 -0700 (PDT)
+Received: from orome (p200300e41f281b00f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f28:1b00:f22f:74ff:fe1f:3a53])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45320580af6sm6174635e9.1.2025.06.10.02.11.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Jun 2025 02:11:32 -0700 (PDT)
+Date: Tue, 10 Jun 2025 11:11:30 +0200
+From: Thierry Reding <thierry.reding@gmail.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+Cc: Alexandre Ghiti <alex@ghiti.fr>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Albert Ou <aou@eecs.berkeley.edu>, asahi@lists.linux.dev, 
+	Baolin Wang <baolin.wang@linux.alibaba.com>, David Woodhouse <dwmw2@infradead.org>, 
+	Gerald Schaefer <gerald.schaefer@linux.ibm.com>, Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev, 
+	Janne Grunau <j@jannau.net>, Jean-Philippe Brucker <jean-philippe@linaro.org>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	Joerg Roedel <joro@8bytes.org>, Krzysztof Kozlowski <krzk@kernel.org>, 
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org, 
+	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
+	Marek Szyprowski <m.szyprowski@samsung.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Matthew Rosato <mjrosato@linux.ibm.com>, Neal Gompa <neal@gompa.dev>, Orson Zhai <orsonzhai@gmail.com>, 
+	Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>, 
+	Rob Clark <robin.clark@oss.qualcomm.com>, Robin Murphy <robin.murphy@arm.com>, 
+	Samuel Holland <samuel@sholland.org>, Sven Peter <sven@kernel.org>, Krishna Reddy <vdumpa@nvidia.com>, 
+	virtualization@lists.linux.dev, Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>, 
+	Yong Wu <yong.wu@mediatek.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
+	Lu Baolu <baolu.lu@linux.intel.com>, Kevin Tian <kevin.tian@intel.com>, patches@lists.linux.dev, 
+	Niklas Schnelle <schnelle@linux.ibm.com>, Sven Peter <sven@svenpeter.dev>, 
+	Tomasz Jeznach <tjeznach@rivosinc.com>
+Subject: Re: [PATCH v2 4/7] iommu: Remove iommu_ops pgsize_bitmap from simple
+ drivers
+Message-ID: <zkfsgkps6z5wyjxdl3wmn2piwgir7swgml4jomuhxxkedne22d@hwzwxvcwpu3h>
+References: <0-v2-68a2e1ba507c+1fb-iommu_rm_ops_pgsize_jgg@nvidia.com>
+ <4-v2-68a2e1ba507c+1fb-iommu_rm_ops_pgsize_jgg@nvidia.com>
 MIME-Version: 1.0
-Message-ID: <trinity-b9ab960d-38f8-4524-b645-fc0832ce72ec-1749546239525@trinity-msg-rest-gmx-gmx-live-5d9b465786-6phds>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: andrew@lunn.ch, linux@fw-web.de
-Cc: myungjoo.ham@samsung.com, kyungmin.park@samsung.com,
- cw00.choi@samsung.com, djakov@kernel.org, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, olteanv@gmail.com,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, jia-wei.chang@mediatek.com,
- johnson.wang@mediatek.com, arinc.unal@arinc9.com, Landen.Chao@mediatek.com,
- dqfext@gmail.com, sean.wang@mediatek.com, daniel@makrotopia.org,
- lorenzo@kernel.org, nbd@nbd.name, linux-pm@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Aw: Re: [PATCH v3 12/13] arm64: dts: mediatek: mt7988a-bpi-r4: add
- sfp cages and link to gmac
-Content-Type: text/plain; charset=UTF-8
-Date: Tue, 10 Jun 2025 09:03:59 +0000
-In-Reply-To: <934b1515-2da1-4479-848e-cd2475ebe98d@lunn.ch>
-References: <20250608211452.72920-1-linux@fw-web.de>
- <20250608211452.72920-13-linux@fw-web.de>
- <934b1515-2da1-4479-848e-cd2475ebe98d@lunn.ch>
-X-UI-CLIENT-META-MAIL-DROP: W10=
-X-Provags-ID: V03:K1:P+w5LatxuczWjuU5VjC2cu3RusygmzTEcHnWEMF+vMd+V144Nuq0nbegfrwU1/70t+IO5
- ZZCfjP1mt0nBNkGjj7f83sEa1HX3LswwVcLmtn0EkewzcBQy+5sk93/FE8OFJGz2cjArfnRlYVfB
- 3XMrQQsXoPxZtNXsZP8bmZLVhtzLablHfLA6+NXenDy0XEURhrtBRk+vVZ+h17JVyrBl/eHW2FY2
- uaWJKp0HW8d7z76dXGwZ1/AAP+8bL2oTm6hnK6iomw2WSiz0PVS0NPZKi4ROB6MkXRYd1FGSV6CI
- oFPPiTF5PBKHUC5CAEdu/94Ju1rZzvA0FeA3Gu9s0Qj3j8HbE5+i4yztEMvFIiZFnY=
-UI-OutboundReport: notjunk:1;M01:P0:TLvXeFIDP6E=;qZFVm6ncGdxJPw6owUfJx41Igss
- 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
- AmzvamVKyQ==
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="noll3rebw4hmh74s"
+Content-Disposition: inline
+In-Reply-To: <4-v2-68a2e1ba507c+1fb-iommu_rm_ops_pgsize_jgg@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250610_020447_415889_248B61FE 
-X-CRM114-Status: GOOD (  15.28  )
+X-CRM114-CacheID: sfid-20250610_021135_915162_30816192 
+X-CRM114-Status: GOOD (  15.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,80 +119,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Andrew
 
-> Gesendet: Sonntag, 8. Juni 2025 um 23:31
-> Von: "Andrew Lunn" <andrew@lunn.ch>
-> Betreff: Re: [PATCH v3 12/13] arm64: dts: mediatek: mt7988a-bpi-r4: add =
-sfp cages and link to gmac
->
-> > +&gmac1 {
-> > +	phy-mode =3D "internal";
-> > +	phy-connection-type =3D "internal";
->=20
-> ethernet-controller.yaml says:
->=20
->   phy-connection-type:
->     description:
->       Specifies interface type between the Ethernet device and a physica=
-l
->       layer (PHY) device.
->     enum:
->       # There is not a standard bus between the MAC and the PHY,
->       # something proprietary is being used to embed the PHY in the
->       # MAC.
->       - internal
->       - mii
->       - gmii
->   ...
->=20
->   phy-mode:
->     $ref: "#/properties/phy-connection-type"
->=20
->=20
-> so phy-mode and phy-connection-type are the same thing.
+--noll3rebw4hmh74s
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v2 4/7] iommu: Remove iommu_ops pgsize_bitmap from simple
+ drivers
+MIME-Version: 1.0
 
-phy-connection-type seems not needed, tested without it and 2.5G phy works=
- without this property in the 2g5 dts.
+On Mon, Jun 09, 2025 at 05:41:28PM -0300, Jason Gunthorpe wrote:
+[...]
+> diff --git a/drivers/iommu/tegra-smmu.c b/drivers/iommu/tegra-smmu.c
+> index 61897d50162dd7..fa0913e9346c71 100644
+> --- a/drivers/iommu/tegra-smmu.c
+> +++ b/drivers/iommu/tegra-smmu.c
+> @@ -318,6 +318,8 @@ static struct iommu_domain *tegra_smmu_domain_alloc_p=
+aging(struct device *dev)
+> =20
+>  	spin_lock_init(&as->lock);
+> =20
+> +	as->domain.pgsize_bitmap =3D SZ_4K;
+> +
+>  	/* setup aperture */
+>  	as->domain.geometry.aperture_start =3D 0;
+>  	as->domain.geometry.aperture_end =3D 0xffffffff;
+> @@ -1002,7 +1004,6 @@ static const struct iommu_ops tegra_smmu_ops =3D {
+>  	.probe_device =3D tegra_smmu_probe_device,
+>  	.device_group =3D tegra_smmu_device_group,
+>  	.of_xlate =3D tegra_smmu_of_xlate,
+> -	.pgsize_bitmap =3D SZ_4K,
+>  	.default_domain_ops =3D &(const struct iommu_domain_ops) {
+>  		.attach_dev	=3D tegra_smmu_attach_dev,
+>  		.map_pages	=3D tegra_smmu_map,
 
-> > +	/* SFP2 cage (LAN) */
-> > +	sfp2: sfp2 {
-> > +		compatible =3D "sff,sfp";
-> > +		i2c-bus =3D <&i2c_sfp2>;
-> > +		los-gpios =3D <&pio 2 GPIO_ACTIVE_HIGH>;
-> > +		mod-def0-gpios =3D <&pio 83 GPIO_ACTIVE_LOW>;
-> > +		tx-disable-gpios =3D <&pio 0 GPIO_ACTIVE_HIGH>;
-> > +		tx-fault-gpios =3D <&pio 1 GPIO_ACTIVE_HIGH>;
-> > +		rate-select0-gpios =3D <&pio 3 GPIO_ACTIVE_LOW>;
-> > +		maximum-power-milliwatt =3D <3000>;
->=20
-> sff,sfp.yaml says:
->=20
->   maximum-power-milliwatt:
->     minimum: 1000
->     default: 1000
->     description:
->       Maximum module power consumption Specifies the maximum power consu=
-mption
->       allowable by a module in the slot, in milli-Watts. Presently, modu=
-les can
->       be up to 1W, 1.5W or 2W.
->=20
-> I've no idea what will happen when the SFP core sees 3000. Is the
-> comment out of date?
+Acked-by: Thierry Reding <treding@nvidia.com>
 
-at least sfp-core has no issue with the setting
+--noll3rebw4hmh74s
+Content-Type: application/pgp-signature; name="signature.asc"
 
-root@bpi-r4-phy-8G:~# dmesg | grep sfp
-[    1.269437] sfp sfp1: Host maximum power 3.0W
-[    1.613749] sfp sfp1: module CISCO-FINISAR    FTLX8571D3BCL-C2 rev A   =
- sn S2209167650      dc 220916 =20
+-----BEGIN PGP SIGNATURE-----
 
-imho some modules require more than 2W (some gpon/xpon and 10G copper ethe=
-rnet).
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmhH9sIACgkQ3SOs138+
+s6HNrxAAo93PCboo986Da72XguJIozPLAKyIbWbaeG0mAjcZN8YUqcSh21C3Xp4m
+qkNL3FwIbtg55H/1upzln07ZErFxc56r95b+GjnH7G4+X4608YnbKmdlZMxzkhpk
+Hiqglce9T205CGZdT2oaZeO26+zHlTeh3LBiiR4o0eurhupQldQ9evEZ5qVseZDA
+FOHY9nWWRDf0/HkM/+MpPA/8cXnNUpME3+OMZIWf6E0Fk0YJnGKS/FIj/aoYPvJI
+9cHiJLi/xs2mxDGh9xUuYDXRcapqzGw6fpsFzJM4G1dEDbYctUR9IOgvdWJ/vzNk
+zYnCdPC4tMYkkOwW85wmXbkVUkbTplxVlLUrVBDVjsou2gKfhKOj/lXWBQjWXJ2w
+PWaIHU9l+OSWsvXB3qkUtROmoqFqrf4+XA/2kV9AlRJO7rrb0hK8yj42rtjec2ix
+y5aU/5/v0Hcr+d09jaikpqhAx1miE9mHEFObqRBtOVko2pZ4l/DD6OVWBNDJyqHM
+9fX438+BucatKIy11m72MpW4m9FdBxwhPEfpyQSc79NCDtoKzoxE0wGFzxqcKyys
+EMGegmdKh0OKQke0uP2Ieo02BIp7sCoCf4m98nTRTYfOGTgfXO4kmfccAUeki59x
+5ez2fDP654E1ESVH+Xn7bWfBKtFiuw6IlaPL+CPNnjcaAxxtDUk=
+=E5td
+-----END PGP SIGNATURE-----
 
-> 	Andrew
->=20
-
-regards Frank
+--noll3rebw4hmh74s--
 
