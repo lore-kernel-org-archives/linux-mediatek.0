@@ -4,53 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB236C5B543
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jun 2025 08:01:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F140C5B543
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jun 2025 08:45:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=0Yjr6NsrKkaYb/LNYm1mPKHuxqkR0iWhkNkzH9QSzrg=; b=lH25DWdXM3oMVsy59ByJf6LsiF
-	S/+PkUI8/EFDMUMeKWTVY9c56Ce3sYP1Zyghty9mC6AKsWRYWocR1ao3LUPHd6LDYEwhrCNbd4ubc
-	5Vx3h3hCvJj8dXhl2wP5NgUAX2uDf8Iy6N8fKgog5WEnLYgcjfq4yOsjn3erQ93xDkXRW+zbKN1wT
-	r5+AkxYovlpZO3y8d4a87C7ydb2fBmsWLfjJUoTmRkp42fzlV1uq7dbk2VDCrt9YfDVVyxjRbD6Zh
-	40g4x37klBwrvnpb7nOc2GBxqe8WDgiJxZdJCAPNxNhPiD8OzprpJANNM4kNXmNIQMeqMJf4qcl//
-	expkOpKw==;
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8yVdDelh0G2g2TL5gxsNNSxDzJyW376EN3oDWRulMzs=; b=jznFZY9Nb6DvTyZt3Xfl9/HIwK
+	u8c1TcJUCiSeXtowlPsulNAW/X3yg+8aQcnYVTtQoIKj36VQE61mjaYZR82Sgn3GkQvS7H6R4n7GU
+	EPHolGZdi4NtyysdsbhJt1cBhsn/aoWF4bBZgrirPTmi9ho6PLoVHwoV1yG+kOpRPZs1iP6mQsEHt
+	M/dflSjvxdAZnncaX928Bd80TUjN7j0OJiTVyF7ezH4+x67Wm/Ev8+ecArTYFwd7bgVBVZTqutPgI
+	qG32A9WT5zNq458+KgsKxRRRSGAHCLXNooU5/ADOokx9W3H+tWi2cXyQ5YGomhlCxMeVq5rC/NDM8
+	8OY/9Z+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOtvH-0000000667j-0t7I;
-	Tue, 10 Jun 2025 08:01:31 +0000
-Received: from mail.fintara.pl ([51.68.214.200])
+	id 1uOubL-00000006DJj-3sSe;
+	Tue, 10 Jun 2025 08:44:59 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOtqQ-000000065W9-3vT9
+	id 1uOuGe-000000069xa-0DNV
 	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Jun 2025 07:56:32 +0000
-Received: by mail.fintara.pl (Postfix, from userid 1002)
-	id A4BB54A04D; Tue, 10 Jun 2025 09:55:53 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=fintara.pl; s=mail;
-	t=1749542185; bh=0Yjr6NsrKkaYb/LNYm1mPKHuxqkR0iWhkNkzH9QSzrg=;
-	h=Date:From:To:Subject:From;
-	b=SfqsE6/6F6nEySC3z9b+SrnhpqJNW7RuowRASFn6GrRkcQQIHwoLAfyKKnCbip+PF
-	 e9LnBgnL1/nd7bqvS9ChVLoFhpNqVnYu5GJg1LWL8zdnrAAo95CR3AtnxZNOpsyCpI
-	 KgWyJ5w3RfbxrwP4EcdvBC+oFyhx4Ktex0JJ0O1xiaEqflMCT5O9xEiRorJuyAIn6G
-	 bE7zpyZ9EDUU0R0Mi3A8WZpIsniIvWdX6Vzd8YFswbB0KMJjMppcFOMgCDqAz24tRi
-	 bqWpNj/BDUeYFFsy4JLkWPKHM01UGL0qCETLBNoWt0RETpDfoUorxgNl5vR+B5hUwT
-	 tD4uLj6s1qkOQ==
-Received: by mail.fintara.pl for <linux-mediatek@lists.infradead.org>; Tue, 10 Jun 2025 07:55:17 GMT
-Message-ID: <20250610084500-0.1.a0.2iy26.0.je2ila4n4r@fintara.pl>
-Date: Tue, 10 Jun 2025 07:55:17 GMT
-From: "Dominik Lotka" <dominik.lotka@fintara.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: =?UTF-8?Q?Prosz=C4=99_o_kontakt?=
-X-Mailer: mail.fintara.pl
+	Tue, 10 Jun 2025 08:23:37 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-450d08e662fso1858935e9.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Jun 2025 01:23:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1749543814; x=1750148614; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:date:message-id:subject
+         :references:in-reply-to:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=8yVdDelh0G2g2TL5gxsNNSxDzJyW376EN3oDWRulMzs=;
+        b=b29Jvag2aFUTR/vPpt0RDBlffc++Ba+ZJycsFKN/EmkqQC/M03u6AcUp41otVc9VAf
+         d77HWRSZkjd2BPagAioCVgMiNSkZxGTNG9ahEl6cAc/b6MxSxrdG47Adglk+J97W5iQA
+         wURKLGbHksUlbqR8IYbqJ1LTgQKIJ3/l948/ut4XC88otvHDdvXTIzyIFwyhUztBZHQc
+         PFdV12Hvf9W/gp0fNYd5KzurXiazQY5khYpNAtJYQPlasd0aaMcUyvqvitlJxam/VlH7
+         OgNOimeXP8EjyDJ328csiRgYMTgzub1SOQLB4Ub8IC0LWgjI/NWKm/nyIOEJ+Ev2Fk6A
+         1TrQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749543814; x=1750148614;
+        h=content-transfer-encoding:mime-version:date:message-id:subject
+         :references:in-reply-to:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=8yVdDelh0G2g2TL5gxsNNSxDzJyW376EN3oDWRulMzs=;
+        b=wZ2IifT68wdvegge2e8Ork2kbQaLImWgLuFuhaQxAqh5FIgMY/QbPibchRoJScUwzN
+         HPkEynQdbcDdsGulXoCC0pbUHTHtuj0a1KOqclmVCxgq3PJKylHu3BzzgE5C9q/W7oQC
+         PELMc2Sk5JqG0Ghpcinrc/Mfp+6LJUp/U2XeU9w4mFQCxQJbckhxfOv5czydQ2yya7DH
+         9OWpa8QWJ2SUpyk+rAosAxsfEen4XYeWWXm5FcT9Mcd0fSjuMshTkSYkCIPm1V0j5CHb
+         3MU6Y+DKMrJFfNu4aBMpH0kQpxjumiSJNHxCdsK4eqXc7EDzITUTY+EOsOCYbhJlRKL0
+         CGLQ==
+X-Gm-Message-State: AOJu0Yx6JLBENThZHNQXgcm7VQfrr1fNGE33PUtOrpnFmio2WvXmjP7/
+	X8PvubBRyJGBqSV6CZeQbOS9sIV23ZzgXbRdW055Acj8UzUP/xUSFpIg8ZQUJlq7btk=
+X-Gm-Gg: ASbGnctb2nvOazLTiK86uLhvfApOSI0i95F1wbgHvn6rXz3dEcG0Bmujpyg8cTbPEMr
+	ziiIaG3NBsnR42fl9trQVTUYF0zMYJM74HcC/o4j1FPx5klbbVKB6ckAVcRgJTtUPVz+E3FZllE
+	svipizsDQmuYiFByQVNCAMkubFYAksb5+oX0MwLWZ1FuSRK8FEb7mmkfC+3C78oAZgp3bWm2l8c
+	3qbGwH1vc22dTtaPVeJs71GU/8v5Sq/lVOo9Y3VBLmB+HMnqeBLLnwQN/GHcXDaOUQQPkikmT8H
+	8cde3FDoCln8UzEpTqWbXouia4ayj51YB2uEpJSv98zaXqi4INDZ/RXe85PVxKRwZB0oxlOcKQp
+	3vNmjRQ==
+X-Google-Smtp-Source: AGHT+IH4Tx9uamsGrItBDI2u67txsm8PcW5JtSr8VTliqVeJ2KnCmT5Yh+EXBdeAxp8xz5LOXkLOJw==
+X-Received: by 2002:a05:600c:1c1c:b0:439:8294:2115 with SMTP id 5b1f17b1804b1-4531072ab88mr23950055e9.8.1749543814536;
+        Tue, 10 Jun 2025 01:23:34 -0700 (PDT)
+Received: from [192.168.1.28] ([178.197.223.125])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4526e155ce7sm131726125e9.10.2025.06.10.01.23.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Jun 2025 01:23:32 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Yong Wu <yong.wu@mediatek.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
+ Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Friday Yang <friday.yang@mediatek.com>
+Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+In-Reply-To: <20250521091626.4283-1-friday.yang@mediatek.com>
+References: <20250521091626.4283-1-friday.yang@mediatek.com>
+Subject: Re: [PATCH v1] memory: mtk-smi: Add ostd setting for mt8186
+Message-Id: <174954381208.117761.10620346119186400968.b4-ty@linaro.org>
+Date: Tue, 10 Jun 2025 10:23:32 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250610_005631_653782_1EEEDD4C 
-X-CRM114-Status: UNSURE (   0.45  )
+X-CRM114-CacheID: sfid-20250610_012336_093854_0C2A06AE 
+X-CRM114-Status: UNSURE (   6.59  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -66,19 +105,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dzie=C5=84 dobry,
 
-Czy jest mo=C5=BCliwo=C5=9B=C4=87 nawi=C4=85zania wsp=C3=B3=C5=82pracy z =
-Pa=C5=84stwem?
+On Wed, 21 May 2025 17:16:16 +0800, Friday Yang wrote:
+> Add initial ostd setting for mt8186. All the settings come from DE.
+> These settings help adjust Multimedia HW's bandwidth limits to achieve
+> a balanced bandwidth requirement. Without this, the VENC HW works
+> abnormal while stress testing.
+> 
+> 
 
-Z ch=C4=99ci=C4=85 porozmawiam z osob=C4=85 zajmuj=C4=85c=C4=85 si=C4=99 =
-dzia=C5=82aniami zwi=C4=85zanymi ze sprzeda=C5=BC=C4=85.
+Applied, thanks!
 
-Pomagamy skutecznie pozyskiwa=C4=87 nowych klient=C3=B3w.
+[1/1] memory: mtk-smi: Add ostd setting for mt8186
+      https://git.kernel.org/krzk/linux-mem-ctrl/c/e18c3f5cbd0243c60777f7a3a02e4506f5196c31
 
-Zapraszam do kontaktu.
+Best regards,
+-- 
+Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-
-Pozdrawiam
-Dominik Lotka
 
