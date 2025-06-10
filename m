@@ -4,83 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7C88C5B552
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jun 2025 16:38:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E91BC5B552
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jun 2025 16:53:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0mN0Y6VG8wJwIHBPmUq5Ichmc5b23YwTM3GHpfC0Ov0=; b=PXP6QxdYTwYyhgjgr+R3YgIbSa
-	HZEdd8zLSyAM2QYkSzBXOmXWgSbQGJ7z3OCzTyr0yPx8dAT4+PN8CpTAIaCqEV5D0gx3IpYM62J+0
-	GVVBXKKlbdH10oCTznwJoP2509zgAXbdSGApT/+DDTwQUwXE2CRK3ZCsbeAzI6XVkyPXlpb0ZXq0M
-	P8jWpP4KLnvThs3QHgj0QgwR4YqRqba6psELeTmGF9WZ1wUjjjumFIoCwl+KRZUTqUFHPPOw0jjO0
-	CiHDYuC13BjPjfF5wg2sI5SWvpdIO3EC+U69Lh87EqT5HpVkva6YvbEGbEfQeJgUvGy305No2Bdwn
-	3bblsLPA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yE6IzPfXHMNhFc7FmQD93cM50XDdvhBiuKkLkDIaWfk=; b=Ej5e2SqJh+N10T+sQeBR7tbtCo
+	LxftWboG7UuDCqyz2cvLUlWhWqDbY9VZK5kqPfjgj+cweTj1/b+CI7k24mw9JK2mL8Kea6qlx3t09
+	dIQT13nco/e7j5tZGTfdZKfNbtDDsiW0uE0vnxTkjAigkw3daK/qUdwwfJj7rtTsHo5WtYI7VOL4l
+	C8aZjUbr9QUBzlFOqmPVvOltVMR7Q66jwK1wwHn4pc+8tUbNRvOLeNlMB6pxMw6LBYbeSE67FIsJn
+	TAopeamIFU4OBkVlCt94l6Exv/tT2Sy9WGJf8KTfhOmOTg1vd0CpqkOaWKhp2gyJUu823JRZQQ+yV
+	3wAYDcUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uP201-00000007V0h-21BZ;
-	Tue, 10 Jun 2025 16:38:57 +0000
+	id 1uP2EX-00000007XKa-3MJe;
+	Tue, 10 Jun 2025 16:53:57 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOyZL-00000006rtg-2otZ;
-	Tue, 10 Jun 2025 12:59:11 +0000
+	id 1uOyEw-00000006nLK-0aiO
+	for linux-mediatek@bombadil.infradead.org;
+	Tue, 10 Jun 2025 12:38:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=0mN0Y6VG8wJwIHBPmUq5Ichmc5b23YwTM3GHpfC0Ov0=; b=HY1qvyMgHuovJklo58mxohAZPZ
-	nx8UyjAvBgauzV/x4dBQ0cgcd2CkG1PLipx2RDx1Rpz61e4MR1vgD5u88Jo9ur0f6RnlEBiG0Iv35
-	HpKLXouqlU/OLqxuoM0DAQEKZVIRuzFesesWxCGJC7Cp3i4tPYfOOUHAIfT98NywlBMMLWrIOckTM
-	5IogBriofTHuWSpjXyjw/F8VrR2MOYOMOA5Tg3yPEraeJsaJn7FDpkxgAcHADyYhXd9t2DhKzBqy4
-	JT+NdRe1x4b744B1MHAQe3wxw741b6nrwnhEb73kgwxCGHedTXNSaWRz8YF8J3XVmJ6bfWdTHvKwh
-	ykHTJzWQ==;
-Received: from vps0.lunn.ch ([156.67.10.101])
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=yE6IzPfXHMNhFc7FmQD93cM50XDdvhBiuKkLkDIaWfk=; b=pDByJlIKrwlwm463vEVVwYQXX3
+	lxFDzDBjT4KgNQhtHttZJ61GvkOfH0pGoMFmmDqb/D9oNB58UDl7TjwE3RbG5YkjUUorVzimpq9fH
+	JRCsFzMPy3VQRQn+fbBtlfPfEqCD8loUk5HvrF3et0QhGVnznag5XKOCu6grfHjby1kaYnd5vTCaL
+	Xr6eTfQ3J90371K5KayvnflLP7D3EPBrRlB31RarwDDHvkZ/vRe1DpoL+Ay7FqwQYxT1QB7XzVcgb
+	N+ek1HyxI3efFcmiibzjScDOAEXvmTrwuBgvkKXF9V7wnq/QSaxkKn9XeMnFhymsNGxNMUnKVjG/y
+	jZzoyVTg==;
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOyZJ-00000001plq-1dFu;
-	Tue, 10 Jun 2025 12:59:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=0mN0Y6VG8wJwIHBPmUq5Ichmc5b23YwTM3GHpfC0Ov0=; b=ujDB7z68qrrQWLKAjGzbmCQGy3
-	LdOtDJSTUvPJoAR+dlK+SCrvQO4qgGvAcvh2Obe7Xf1qUhfc6kUAHntYjvGObWD50/ANPKe97yd3y
-	StFdUf5u32nQt5lMjBOlGoqnG9dJYy8rhkzxAKLYPIrFSRwObLsOO0zSTHB4qQv0slmA=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1uOyYu-00FGk5-Tp; Tue, 10 Jun 2025 14:58:44 +0200
-Date: Tue, 10 Jun 2025 14:58:44 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: linux@fw-web.de, myungjoo.ham@samsung.com, kyungmin.park@samsung.com,
-	cw00.choi@samsung.com, djakov@kernel.org, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, olteanv@gmail.com,
-	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
-	pabeni@redhat.com, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, jia-wei.chang@mediatek.com,
-	johnson.wang@mediatek.com, arinc.unal@arinc9.com,
-	Landen.Chao@mediatek.com, dqfext@gmail.com, sean.wang@mediatek.com,
-	daniel@makrotopia.org, lorenzo@kernel.org, nbd@nbd.name,
-	linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: Re: [PATCH v3 12/13] arm64: dts: mediatek: mt7988a-bpi-r4: add
- sfp cages and link to gmac
-Message-ID: <e1a49ca7-f082-4983-89fe-1a8f8c8a3de1@lunn.ch>
-References: <20250608211452.72920-1-linux@fw-web.de>
- <20250608211452.72920-13-linux@fw-web.de>
- <934b1515-2da1-4479-848e-cd2475ebe98d@lunn.ch>
- <trinity-b9ab960d-38f8-4524-b645-fc0832ce72ec-1749546239525@trinity-msg-rest-gmx-gmx-live-5d9b465786-6phds>
+	id 1uOyEt-00000001oto-3hcd
+	for linux-mediatek@lists.infradead.org;
+	Tue, 10 Jun 2025 12:38:05 +0000
+Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-453066fad06so19311425e9.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Jun 2025 05:38:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1749559081; x=1750163881; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=yE6IzPfXHMNhFc7FmQD93cM50XDdvhBiuKkLkDIaWfk=;
+        b=0kXGZVrbUzyf9pG6aMQJi/Qohq1zhFfPmw8h8ilLUUqFx10SgVSuO56Jm5Q91siHkY
+         w0zx9ZzgaJocZ9LNHPClfucRNJXHr5Isb25M0+9Ko9VRS3WUuaIcYcZ+Rk4bRFMmuWYa
+         9kylDMECXiXVkjlGFNMKnjtBvOd9zyeAmwkW2cv7oTghYIJ8pEkqn67sUW3hS742NnvE
+         C0JranDPf7eMWfD+GrkaRwawi9ZLiAwV8HKNreIB5SwRdwiu7dJvEElpCNPAkzfNTDZ1
+         XQPY4FlaqV0YLrF867xnSqr6D1TNC9W49z6YlYkzK4LrYGoaqYkj/Ju+Cky7QU9encFR
+         nlCA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749559081; x=1750163881;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=yE6IzPfXHMNhFc7FmQD93cM50XDdvhBiuKkLkDIaWfk=;
+        b=msjWhUPBssfdLaVH1bRG5BXe02iSglokT0rqb9zgxiZUxlP8KcnxPgqQx6C5Rl/W40
+         zoTHSrd/IgqXdQ+eUX9O3X8LlyO/JFtkR/sW0Pa6K9OKoiCaF2U4a6o5VNfzEe3n3XWg
+         /tGOIACAVlIgyQWgq7GGSYbjIHCIYKkEwIFw6EoPaiX3RpHs7Abw3C2Rf33+mA23R1/v
+         z380Jo+62yz1zq/TsI9qD/PZEgmPNjXf8wEh4TCoVffCMQwYvzojeZKSUpX3UHyByz/k
+         3EAa8YX8ma18X4fPNmGstYEa3OoXL2QtGBizN0oRfDYjo6sGX4tFkLxVMiRga5bz3b5s
+         etlA==
+X-Forwarded-Encrypted: i=1; AJvYcCXSEM+0RfJvQN0Ox4MMfsjiuZFxVQqnjivYwPtgFLHpQ8s9UZi1epm9iDVQUsF/iPJP/SM3h0JzQlOFo8zqaQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyMhNu8d6JXKVpL53+zjm0Stxpe2RJIKr1zlcxxgDv9Kqe2IFE1
+	DwbBS6z+a1FTxfg88+ijsFWog7VkUYiUxonz4y+oJ5ywa0+AqBw6BUad2qdHusctOfE=
+X-Gm-Gg: ASbGncuN2EJvZmAXnZJqf5M398NYFpy0bWPK85GjSouRK9RmL1Vn0VFrSjZ9WctTh1H
+	Js/AvTkJrsnnqnjqfPzmThDtgAqp1pBAWmcpmoHylyfeXHpZgkKGLPNHC4y/lRbht1YfJQbvtVJ
+	FtRTVQB4QamvXj5Z+N6lbdX/pTbRD+fd1u3R21V0AtOR9efoA/TluQMdLT3WVTsRRpxos3YJZtZ
+	bnsLV+I8gx1NCQI44PG8kZ3YWqP1jnk//NJY4+Xoi/5GD6L5rYZl6evV9o7jDzd0rb3MvRVAb/L
+	HWqeEl2utZ0aKTPvzMHVd2t3HBcDChjU8AwBH3RQTELtSkQMKjnF3w==
+X-Google-Smtp-Source: AGHT+IFIluBj/Xfh9+bgn/r8g+NKbyNkI+i+wm2/n6F+sHhauNTA3wsDUZNyQAG+f+/XcQqd3EiXTw==
+X-Received: by 2002:a05:600c:3f12:b0:43c:fbba:41ba with SMTP id 5b1f17b1804b1-452014d4870mr138049945e9.28.1749559081442;
+        Tue, 10 Jun 2025 05:38:01 -0700 (PDT)
+Received: from [127.0.1.1] ([2a01:cb1d:dc:7e00:4d:e52b:812d:eb7c])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45213759fb2sm142476805e9.38.2025.06.10.05.38.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Jun 2025 05:38:01 -0700 (PDT)
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Date: Tue, 10 Jun 2025 14:37:57 +0200
+Subject: [PATCH 1/4] net: dsa: vsc73xx: use new GPIO line value setter
+ callbacks
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <trinity-b9ab960d-38f8-4524-b645-fc0832ce72ec-1749546239525@trinity-msg-rest-gmx-gmx-live-5d9b465786-6phds>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250610-gpiochip-set-rv-net-v1-1-35668dd1c76f@linaro.org>
+References: <20250610-gpiochip-set-rv-net-v1-0-35668dd1c76f@linaro.org>
+In-Reply-To: <20250610-gpiochip-set-rv-net-v1-0-35668dd1c76f@linaro.org>
+To: Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Linus Walleij <linus.walleij@linaro.org>, 
+ Bartosz Golaszewski <brgl@bgdev.pl>, 
+ "Chester A. Unal" <chester.a.unal@arinc9.com>, 
+ Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
+ Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Marc Kleine-Budde <mkl@pengutronix.de>, 
+ Vincent Mailhol <mailhol.vincent@wanadoo.fr>, 
+ Heiner Kallweit <hkallweit1@gmail.com>, 
+ Russell King <linux@armlinux.org.uk>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-can@vger.kernel.org, 
+ linux-arm-msm@vger.kernel.org, 
+ Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1733;
+ i=bartosz.golaszewski@linaro.org; h=from:subject:message-id;
+ bh=ooSfZcGlJ0aY63V/ZbHM5psbxtwwGfSHGbKlKX+V14k=;
+ b=owEBbQKS/ZANAwAKARGnLqAUcddyAcsmYgBoSCcmB+78fH6tpB5mkVhqkKE708zE39erGR575
+ rvI5cGQOxSJAjMEAAEKAB0WIQQWnetsC8PEYBPSx58Rpy6gFHHXcgUCaEgnJgAKCRARpy6gFHHX
+ cn1LEADTJc5hTtmM3Acb673ULtyQ/PL+2cob9ouCpVtKyvLjzgdo8oxkHxkhIIRGcVBUGzrn+2p
+ XB2CjbT5YAD5jfBwJifMSAicQoGEV7jTT3z6iqGCTeIdJFgDqJ4tb5OdsTuwfjP3/D8L/C576yM
+ CYBNpiv80Foim+N/CCGAdXF4yKHiLCAFN/ddfhyiOT5AoKjgKGbJrmUi2G0OfcnOWycYMaKBlok
+ uXYKqTOlNEQGzr4z84+wCQH4h56p4FSrC9NNgCHgArspVfHPzAmrnx1H2KyYb1xMhEBRGOfiDWf
+ n/lMMRMzGK1ntxAYffXZBuTOHIkoR7v3JlW+KmmP6L0CrTxRGJPcloGEm+SImKMinydtBMGDrw3
+ oXGh4zLcTLTFQXzt+DIVG4NDiqzyOYny+23XxbeQRM+e6uGdp2n4V9alflS+uGkPn9cY/dJtYtW
+ J5EcuCUG2+nl52eVPbyTcmq4c7XeHAWFBUrDj6B2QtULkBlyvUTdrrP45DNiVN+7yJWuSyadjew
+ Oqxpobdmfi4s0uB97Sik3b1m73zPNnXvlwZB/K4SslYy7IDs74RsE5ZyzIlyKMcYONI/nyjVy1W
+ lBtCAAzPe5c91Ga+/Zy13VRvYjKe2LPPZWEMyBJ3gn3Kmi0Uv2zvDbhMqU7uNWCcaClJkWhM8Hp
+ k4oJ9c5tEqEYlyQ==
+X-Developer-Key: i=bartosz.golaszewski@linaro.org; a=openpgp;
+ fpr=169DEB6C0BC3C46013D2C79F11A72EA01471D772
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250610_135909_527150_F3A950D3 
-X-CRM114-Status: GOOD (  13.00  )
+X-CRM114-CacheID: sfid-20250610_133803_999601_694AE19A 
+X-CRM114-Status: GOOD (  12.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,44 +147,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> > sff,sfp.yaml says:
-> > 
-> >   maximum-power-milliwatt:
-> >     minimum: 1000
-> >     default: 1000
-> >     description:
-> >       Maximum module power consumption Specifies the maximum power consumption
-> >       allowable by a module in the slot, in milli-Watts. Presently, modules can
-> >       be up to 1W, 1.5W or 2W.
-> > 
-> > I've no idea what will happen when the SFP core sees 3000. Is the
-> > comment out of date?
-> 
-> at least sfp-core has no issue with the setting
-> 
-> root@bpi-r4-phy-8G:~# dmesg | grep sfp
-> [    1.269437] sfp sfp1: Host maximum power 3.0W
-> [    1.613749] sfp sfp1: module CISCO-FINISAR    FTLX8571D3BCL-C2 rev A    sn S2209167650      dc 220916  
-> 
-> imho some modules require more than 2W (some gpon/xpon and 10G copper ethernet).
+From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 
-Looking at the code:
+struct gpio_chip now has callbacks for setting line values that return
+an integer, allowing to indicate failures. Convert the driver to using
+them.
 
-static int sfp_module_parse_power(struct sfp *sfp)
-{
-        u32 power_mW = 1000;
-        bool supports_a2;
+Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+---
+ drivers/net/dsa/vitesse-vsc73xx-core.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-        if (sfp->id.ext.sff8472_compliance >= SFP_SFF8472_COMPLIANCE_REV10_2 &&
-            sfp->id.ext.options & cpu_to_be16(SFP_OPTIONS_POWER_DECL))
-                power_mW = 1500;
-        /* Added in Rev 11.9, but there is no compliance code for this */
-        if (sfp->id.ext.sff8472_compliance >= SFP_SFF8472_COMPLIANCE_REV11_4 &&
-            sfp->id.ext.options & cpu_to_be16(SFP_OPTIONS_HIGH_POWER_LEVEL))
-                power_mW = 2000;
+diff --git a/drivers/net/dsa/vitesse-vsc73xx-core.c b/drivers/net/dsa/vitesse-vsc73xx-core.c
+index f18aa321053d75f34544267528d68ade37264e89..4f9687ab3b2bc1cc61946eef33b7d08f779db8c6 100644
+--- a/drivers/net/dsa/vitesse-vsc73xx-core.c
++++ b/drivers/net/dsa/vitesse-vsc73xx-core.c
+@@ -2258,14 +2258,14 @@ static int vsc73xx_gpio_get(struct gpio_chip *chip, unsigned int offset)
+ 	return !!(val & BIT(offset));
+ }
+ 
+-static void vsc73xx_gpio_set(struct gpio_chip *chip, unsigned int offset,
+-			     int val)
++static int vsc73xx_gpio_set(struct gpio_chip *chip, unsigned int offset,
++			    int val)
+ {
+ 	struct vsc73xx *vsc = gpiochip_get_data(chip);
+ 	u32 tmp = val ? BIT(offset) : 0;
+ 
+-	vsc73xx_update_bits(vsc, VSC73XX_BLOCK_SYSTEM, 0,
+-			    VSC73XX_GPIO, BIT(offset), tmp);
++	return vsc73xx_update_bits(vsc, VSC73XX_BLOCK_SYSTEM, 0,
++				   VSC73XX_GPIO, BIT(offset), tmp);
+ }
+ 
+ static int vsc73xx_gpio_direction_output(struct gpio_chip *chip,
+@@ -2317,7 +2317,7 @@ static int vsc73xx_gpio_probe(struct vsc73xx *vsc)
+ 	vsc->gc.parent = vsc->dev;
+ 	vsc->gc.base = -1;
+ 	vsc->gc.get = vsc73xx_gpio_get;
+-	vsc->gc.set = vsc73xx_gpio_set;
++	vsc->gc.set_rv = vsc73xx_gpio_set;
+ 	vsc->gc.direction_input = vsc73xx_gpio_direction_input;
+ 	vsc->gc.direction_output = vsc73xx_gpio_direction_output;
+ 	vsc->gc.get_direction = vsc73xx_gpio_get_direction;
 
-How does your module indicate it needs 3000 mW? Does this bit of code
-need extending to read additional bits?
+-- 
+2.48.1
 
-	Andrew
 
