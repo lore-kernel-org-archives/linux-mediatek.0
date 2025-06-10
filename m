@@ -4,89 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6F8AC5B543
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jun 2025 15:02:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6ED4C5B552
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jun 2025 16:21:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IxovBajuiG9VZJ3XmWy0NzjagqDViV1ywWm/ai8Bd1M=; b=iYH82XkFtX4VxCFMRifWj7S47M
-	cWQqaUemTdTXmgdP8n3SuJ2L8KVTFIPkIjvUYf+1HWZatUWrM13wFKXGONnSD2iTD2YPYcg5yOEoD
-	hPt9ROs0AyzKFKCAheeMGt7yAC/lHjYOFamQmE+vyj/JQ7nIil9ZjhmYBkJbQX+5ReJXqjaemSQ1m
-	twPb1qDJyM7X226tqwariwBjToWsaJlC+M5sFQGArmTUcGG9g+iyv/OB7A0v+xobxvIezlmtyMkUe
-	WOfiuNtNZggvW7385VxOjxMPbB7dymWFQ//TXTwSronMzpqo3TeF+FXj8M1Cxy/UZvKqWeB2zqfoK
-	R2DXwv8Q==;
+	bh=J+qg1+SkJ5kUMIfZgliJNgwmCYY4xioDyWF9SZ86Sdo=; b=aNxTH8Qbe3TrPBsZB0FvHrQqx7
+	NXKqTomtEZ04LYcdnnnYSiQuHXmsaUvYMPXsquoYIbLjU8L2ztre2IOeEBpkiSgOse1E5Sq6NGQ+D
+	lZxhU3msR9pra8zjhOljgSvbohQclnz0+zgvuiAECc66ywJeLK1fIEb09rwx0Qc6rd72npIKINF1c
+	yx7Uz6yT18bzxlIDW7cowfRoed0eFXGr7RweD9EkJHbDij7tPnmxtAUTyLMo7QGZB+H4A+ckxSXAv
+	6Ykslx1pC7cJHf0cR7SNGMMV+hHahu0ROOn98RzW+oSo96jGbWWBgTzNmAKN5KMTXkr3BYV/BJ/Qt
+	UBTV1GSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uP0UL-00000007DRA-2zub;
-	Tue, 10 Jun 2025 15:02:09 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uP1j6-00000007RxW-1o75;
+	Tue, 10 Jun 2025 16:21:28 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOyN5-00000006p6C-1za1;
-	Tue, 10 Jun 2025 12:46:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=IxovBajuiG9VZJ3XmWy0NzjagqDViV1ywWm/ai8Bd1M=; b=BZnUeqZb2cpmqjba015Ph2ldgR
-	CRKkwzZQR1u2NQeMcBUCelRcMAEBSN8nhYSUbmlsNXkSk3FagH/PQLfGpwnotn6LDzRuqynA8Le+u
-	C4DiwmiHxvq17ibl5CKUDRjD1dPNjSNzG2P++JvOwnpDzSd9pUKikqOF2kgEMxEG/bHwLDMS5D21X
-	UgC3KAOtMX9bXm8bg5Hp8lqZghebCe0H964Y2pX1FwURlSDAVOTEYZFrkumAd6tmo5qgl7e249U5t
-	+M5PBkQ4i3LPGW2zm00xNQzQ45PVpIfTS1uS40cWSF5CWsXMXK3PlV3ol7cviZpAzQwMVmfPizT/E
-	QuJHkVgg==;
-Received: from vps0.lunn.ch ([156.67.10.101])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOyN3-00000001pXJ-2RTP;
-	Tue, 10 Jun 2025 12:46:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=IxovBajuiG9VZJ3XmWy0NzjagqDViV1ywWm/ai8Bd1M=; b=hZoQ3j3IzpoxwljSwnB8bccPSM
-	XRrBw7WFNZ8PxtzbiIXdJUnm/tkBx5fm8LE2KeugPzbPkZOxOSYZeqWHG27E/pZqa2VZB9z9EYDNc
-	cwy1nsznvNnVMKnbEY13v7IRURpmJET03jHqxGcIuSW+kSzh3eWH+oyjvx03UBx9A2i8=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1uOyMc-00FGUL-0t; Tue, 10 Jun 2025 14:46:02 +0200
-Date: Tue, 10 Jun 2025 14:46:02 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: Vladimir Oltean <olteanv@gmail.com>,
+	id 1uOzCW-000000070Wj-42vM;
+	Tue, 10 Jun 2025 13:39:42 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id E8F0A5C0429;
+	Tue, 10 Jun 2025 13:37:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 98201C4CEED;
+	Tue, 10 Jun 2025 13:39:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1749562779;
+	bh=5avbO0Ao+zxHI6T3ghbReJ8vJ24StY6YPNICgLkqxcg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=JMwjgDNqWfSZV7W/JGiCqq0dEE/Ye+1kfAkZ4XV203t6F946jc0EF3npK/Q0wEoBc
+	 HL3ts1Xs+3/PBc9SYwPFCnM2z+MUvlnvqBO1CV6oc8asYfAFiUzYoTylPqc7H7yohn
+	 OzIYm+Tg5rTndx68BhsYHcdrKJ4seqHsBT6KkrgKQK6qpM8Lhv+lVrFkAL3iJu/r10
+	 yqq+/QgT1qixROOTMkGFuHsEN6XhDY3/mIBul+to91IbppkSLTQLOBNFgRGGwEedBA
+	 6RyXf6IeA24zeCsEByscH8ScHnys5UR72nWZesf6nZSo2pGx7we8ieg/YloSN2QFu4
+	 BqHGpXGyuC9jw==
+Date: Tue, 10 Jun 2025 15:39:34 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Eric Dumazet <edumazet@google.com>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	"Chester A. Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Marc Kleine-Budde <mkl@pengutronix.de>,
-	Vincent Mailhol <mailhol.vincent@wanadoo.fr>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-can@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org,
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-Subject: Re: [PATCH 4/4] net: phy: qca807x: use new GPIO line value setter
- callbacks
-Message-ID: <5c9a127b-8538-4856-bdb3-cbee87993428@lunn.ch>
-References: <20250610-gpiochip-set-rv-net-v1-0-35668dd1c76f@linaro.org>
- <20250610-gpiochip-set-rv-net-v1-4-35668dd1c76f@linaro.org>
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net-next] net: airoha: Add TCP LRO support
+Message-ID: <aEg1lvstEFgiZST1@lore-rh-laptop>
+References: <20250610-airoha-eth-lro-v1-1-3b128c407fd8@kernel.org>
+ <CANn89iJsNWkWzAJbOvaBNjozuLOQBcpVo1bnvfeGq5Zm6h9e=Q@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="I0VjOkFHRgh8EgMY"
 Content-Disposition: inline
-In-Reply-To: <20250610-gpiochip-set-rv-net-v1-4-35668dd1c76f@linaro.org>
+In-Reply-To: <CANn89iJsNWkWzAJbOvaBNjozuLOQBcpVo1bnvfeGq5Zm6h9e=Q@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250610_134629_694048_CC2CEEDD 
-X-CRM114-Status: UNSURE (   8.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250610_063941_041954_6CB6EEEC 
+X-CRM114-Status: GOOD (  17.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,41 +75,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> -static void qca807x_gpio_set(struct gpio_chip *gc, unsigned int offset, int value)
-> +static int qca807x_gpio_set(struct gpio_chip *gc, unsigned int offset, int value)
->  {
->  	struct qca807x_gpio_priv *priv = gpiochip_get_data(gc);
->  	u16 reg;
-> @@ -390,14 +390,12 @@ static void qca807x_gpio_set(struct gpio_chip *gc, unsigned int offset, int valu
->  	val |= QCA807X_GPIO_FORCE_EN;
->  	val |= FIELD_PREP(QCA807X_GPIO_FORCE_MODE_MASK, value);
->  
-> -	phy_write_mmd(priv->phy, MDIO_MMD_AN, reg, val);
-> +	return phy_write_mmd(priv->phy, MDIO_MMD_AN, reg, val);
->  }
 
-The full function is:
+--I0VjOkFHRgh8EgMY
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-static void qca807x_gpio_set(struct gpio_chip *gc, unsigned int offset, int value)
-{
-	struct qca807x_gpio_priv *priv = gpiochip_get_data(gc);
-	u16 reg;
-	int val;
+On Jun 10, Eric Dumazet wrote:
+> On Tue, Jun 10, 2025 at 2:12=E2=80=AFAM Lorenzo Bianconi <lorenzo@kernel.=
+org> wrote:
+> >
+[...]
+> > @@ -767,7 +887,7 @@ static int airoha_qdma_init_rx_queue(struct airoha_=
+queue *q,
+> >         int qid =3D q - &qdma->q_rx[0], thr;
+> >         dma_addr_t dma_addr;
+> >
+> > -       q->buf_size =3D PAGE_SIZE / 2;
+> > +       q->buf_size =3D pp_params.max_len / (2 * (1 + lro_queue));
+>=20
+> Tell us more... It seems small LRO packets will consume a lot of
+> space, incurring a small skb->len/skb->truesize ratio, and bad TCP WAN
+> performance.
 
-	reg = QCA807X_MMD7_LED_FORCE_CTRL(offset);
+I think the main idea is forward to hw LRO queues (queues 24-31 in this
+case) just specific protocols with mostly big packets but I completely
+agree we have an issue for small packets. One possible approach would be
+to define a threshold (e.g. 256B) and allocate a buffer or page from the
+page allocator for small packets (something similar to what mt7601u driver
+is doing[0]).  What do you think?
 
-	val = phy_read_mmd(priv->phy, MDIO_MMD_AN, reg);
-	val &= ~QCA807X_GPIO_FORCE_MODE_MASK;
-	val |= QCA807X_GPIO_FORCE_EN;
-	val |= FIELD_PREP(QCA807X_GPIO_FORCE_MODE_MASK, value);
+>=20
+> And order-5 pages are unlikely to be available in the long run anyway.
 
-	phy_write_mmd(priv->phy, MDIO_MMD_AN, reg, val);
-}
+I agree. I guess we can reduce the order to ~ 2 (something similar to
+mtk_eth_soc hw LRO implementation [1]).
 
-The phy_read_mmd() could also fail and return an error code.
+>=20
+> LRO support would only make sense if the NIC is able to use multiple
+> order-0 pages to store the payload.
 
-    Andrew
+The hw supports splitting big packets over multiple order-0 pages if we
+increase the MTU over one page size, but according to my understanding
+hw LRO requires contiguous memory to work.
 
----
-pw-bot: cr
+Regards,
+Lorenzo
+
+[0] https://github.com/torvalds/linux/blob/master/drivers/net/wireless/medi=
+atek/mt7601u/dma.c#L146
+[1] https://github.com/torvalds/linux/blob/master/drivers/net/ethernet/medi=
+atek/mtk_eth_soc.c#L2258
+
+--I0VjOkFHRgh8EgMY
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaEg1kwAKCRA6cBh0uS2t
+rAYMAQD0nBIhigRn4PPAvOPLw/L0LoFZ4JC7kFUvDHjLuDo7PAD+IXfceq+l1hbh
+YjnyMxgeMGT9Hs0OOZbSoMd5kNU/Lwg=
+=z/fk
+-----END PGP SIGNATURE-----
+
+--I0VjOkFHRgh8EgMY--
 
