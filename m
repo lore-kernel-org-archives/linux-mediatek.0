@@ -4,67 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17A6DC5B552
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jun 2025 18:19:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94E4BC61DB2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jun 2025 19:25:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vtK4N2nV0cyw0wDbbUBhQ5HdwbhCZwPcY+S9Qz9vAuY=; b=RIXQ96bPZWRrFEfT2FcoewN5bx
-	/8O3U4kHcLmd/sFHyW+PrEvH7SOCktBgP6h9NzFd3X2ijicTAB7LbfDlkxh0vt5vXe5wMJkzntwiR
-	Ax7YtAJ4vmCiBVj20N7vBedEjhZHE4gXBwdc7d814zjphGw0TsRuN/2JccA9igO2LwkDAT13mO+jD
-	fYqphGDua5xwkQLOujcOyYmKnvh4N60lkCxylLYVGIC2KHG7A+s7CMuefMtuR7XAOgGaKNSDYSMRk
-	uVA8nu8Dm97ZTpMrd/ySCWPE3VdSLK8aYDnSTF1IM6aeVoVQF5c4tI4nJDeR76nPC8TWv1+0cq5Dk
-	v/pmmIZg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hLNYfBAm8Db4RivC9m4UtJY5EbKQApeN/nL5cCj0Ugs=; b=zhCCwMYs3fYzlLan964zS/q2K4
+	1cNszvxnfwZc/k1bHOtd6JDbFgDdfkHhgRPq3uf4AKzXZcpgxLffi+0ctUnZlpAhnm8c6BDyHcP02
+	QQvZAIP0vbnQlyVwrWy9YVaUwGccarKkrbXFiywtApCEb8ErJ6PHa9wCfaHib5yqaI/vFOKswQa1Z
+	udBO8fmXN5bwrn6FTdT/Mx/5BeTwVgArZa3zLCqfK5p2Ua1FQn1t13Fc4IgmgF1xPhhBIt43hHsu4
+	eQXoI6Hs6/ElJAy8VdpJC1y0w0h+EJk0oBQHKc/l/p8e6E8ldU2BGrPdfuf/bhfZFhnZHQqAyYgr4
+	wrl/FZVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uP3ZI-00000007mY1-4BS4;
-	Tue, 10 Jun 2025 18:19:29 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uP4bc-00000007uuM-1WrE;
+	Tue, 10 Jun 2025 19:25:56 +0000
+Received: from out-71.smtpout.orange.fr ([193.252.22.71] helo=out.smtpout.orange.fr)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uP0kZ-00000007Gay-2U1k;
-	Tue, 10 Jun 2025 15:18:55 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E69A8629C8;
-	Tue, 10 Jun 2025 15:18:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 09CAFC4CEED;
-	Tue, 10 Jun 2025 15:18:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1749568734;
-	bh=vtK4N2nV0cyw0wDbbUBhQ5HdwbhCZwPcY+S9Qz9vAuY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=sCdD1UIF3pT9KlgGAozGLVfxpQY8eOmtWkSY4Z59Kck1u5g9v9xQ5uagNzvLhW3ZH
-	 uK2UY/wkqxFIsuelWSaxH2SlmYipdfb11/Y/e/AqfTuJaaKvwR0a0GIrnnn4rDiM0o
-	 WLRkI5i1I7aeD/UvW6QsgP7zBlSK3cQKkezSxFqu/bTXuSvhNDhxpaNWXVsh0ydEwD
-	 0NPzKlXb1xOQ/vImGoNO+SiR/Ov7gsLwzt/f5UxH9s8i4P7PyFyRCG3R4/Dg6Z+ufl
-	 WVmFD+kjZTHucIOqQfQutA+hAL//nPK/E39ud1svGLtV7X88+t1m2XLRReu1V//9wU
-	 cYl36aeUzSdIQ==
-Date: Tue, 10 Jun 2025 16:18:49 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Srinivas Kandagatla <srini@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Lala Lin <lala.lin@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	Johnson Wang <johnson.wang@mediatek.com>
-Subject: Re: [PATCH v2 1/2] dt-bindings: nvmem: mediatek: efuse: split
- MT8186/MT8188 from base version
-Message-ID: <20250610-magnifier-petty-6c5a2703a05b@spud>
-References: <20250610063431.2955757-1-wenst@chromium.org>
- <20250610063431.2955757-2-wenst@chromium.org>
+	id 1uP1DA-00000007NL7-0ZC7;
+	Tue, 10 Jun 2025 15:48:30 +0000
+Received: from [172.16.82.72] ([124.33.176.97])
+	by smtp.orange.fr with ESMTPA
+	id P1CsuQaoBVbicP1Cuu8707; Tue, 10 Jun 2025 17:48:25 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
+	s=t20230301; t=1749570505;
+	bh=hLNYfBAm8Db4RivC9m4UtJY5EbKQApeN/nL5cCj0Ugs=;
+	h=Message-ID:Date:MIME-Version:Subject:To:From;
+	b=EC83WCWq0Suc7xo7F75oL6tuLJhZcGgcA6T6SjE5M2HznAFXg+53/ja2YV2L9jlm4
+	 67XAJYZjzNIulLfpR9HbVmuA69kx2uRbqwRC7P4itIvQxYL7jWvnqZIqoFwUBoyCaG
+	 H3MPbtXKHrbdoEz3hjUlSsEwc2yUrPfZcdlFT5dWCWJJ/0qWSWULoXHqI8jwgTD9wt
+	 +88473ymjTW0O1lA5aOjECvA7xFkyKjOqMpuNk4fIXCc5bKmdofVWaX8JRwPiGBEKr
+	 AfmH/5enwlcQEMJBSCx3HPKFHMg8JhbUC/Q3N0I4p387Fb8+i1cIfr4CTBAhSvUx1/
+	 QTmOlFNpa0KAw==
+X-ME-Helo: [172.16.82.72]
+X-ME-Auth: bWFpbGhvbC52aW5jZW50QHdhbmFkb28uZnI=
+X-ME-Date: Tue, 10 Jun 2025 17:48:25 +0200
+X-ME-IP: 124.33.176.97
+Message-ID: <b9ea7e0e-7dd1-460b-950a-083620dd52e9@wanadoo.fr>
+Date: Wed, 11 Jun 2025 00:48:09 +0900
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="DM5pv65IWOkWZD6g"
-Content-Disposition: inline
-In-Reply-To: <20250610063431.2955757-2-wenst@chromium.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/4] net: can: mcp251x: use new GPIO line value setter
+ callbacks
+To: Bartosz Golaszewski <brgl@bgdev.pl>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-can@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org,
+ Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
+ Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ "Chester A. Unal" <chester.a.unal@arinc9.com>,
+ Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Marc Kleine-Budde <mkl@pengutronix.de>,
+ Heiner Kallweit <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>
+References: <20250610-gpiochip-set-rv-net-v1-0-35668dd1c76f@linaro.org>
+ <20250610-gpiochip-set-rv-net-v1-3-35668dd1c76f@linaro.org>
+ <b2f87cff-3a81-482b-bfdd-389950b7ec8e@wanadoo.fr>
+ <CAMRc=MfCwz3BV15aATr_5er7wU=AmKV=Z=sHJyrjEvLwx2cMjQ@mail.gmail.com>
+Content-Language: en-US
+From: Vincent Mailhol <mailhol.vincent@wanadoo.fr>
+Autocrypt: addr=mailhol.vincent@wanadoo.fr; keydata=
+ xjMEZluomRYJKwYBBAHaRw8BAQdAf+/PnQvy9LCWNSJLbhc+AOUsR2cNVonvxhDk/KcW7FvN
+ LFZpbmNlbnQgTWFpbGhvbCA8bWFpbGhvbC52aW5jZW50QHdhbmFkb28uZnI+wrIEExYKAFoC
+ GwMFCQp/CJcFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4AWIQTtj3AFdOZ/IOV06OKrX+uI
+ bbuZwgUCZx41XhgYaGtwczovL2tleXMub3BlbnBncC5vcmcACgkQq1/riG27mcIYiwEAkgKK
+ BJ+ANKwhTAAvL1XeApQ+2NNNEwFWzipVAGvTRigA+wUeyB3UQwZrwb7jsQuBXxhk3lL45HF5
+ 8+y4bQCUCqYGzjgEZx4y8xIKKwYBBAGXVQEFAQEHQJrbYZzu0JG5w8gxE6EtQe6LmxKMqP6E
+ yR33sA+BR9pLAwEIB8J+BBgWCgAmFiEE7Y9wBXTmfyDldOjiq1/riG27mcIFAmceMvMCGwwF
+ CQPCZwAACgkQq1/riG27mcJU7QEA+LmpFhfQ1aij/L8VzsZwr/S44HCzcz5+jkxnVVQ5LZ4B
+ ANOCpYEY+CYrld5XZvM8h2EntNnzxHHuhjfDOQ3MAkEK
+In-Reply-To: <CAMRc=MfCwz3BV15aATr_5er7wU=AmKV=Z=sHJyrjEvLwx2cMjQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250610_084829_375568_03A08E86 
+X-CRM114-Status: GOOD (  22.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,45 +102,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 10/06/2025 at 23:05, Bartosz Golaszewski wrote:
+> On Tue, Jun 10, 2025 at 3:55 PM Vincent Mailhol
+> <mailhol.vincent@wanadoo.fr> wrote:
+>>
+>> On 10/06/2025 at 21:37, Bartosz Golaszewski wrote:
+>>> From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+>>>
+>>> struct gpio_chip now has callbacks for setting line values that return
+>>> an integer, allowing to indicate failures. Convert the driver to using
+>>> them.
+>>>
+>>> Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+>>                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>>
+>> This does not match the address with which you sent the patch: brgl@bgdev.pl
+>>
+>>> ---
+>>>  drivers/net/can/spi/mcp251x.c | 16 ++++++++++------
+>>>  1 file changed, 10 insertions(+), 6 deletions(-)
+>>>
+>>> diff --git a/drivers/net/can/spi/mcp251x.c b/drivers/net/can/spi/mcp251x.c
+>>> index ec5c64006a16f703bc816983765584c5f3ac76e8..7545497d14b46c6388f3976c2bf7b9a99e959c1e 100644
+>>> --- a/drivers/net/can/spi/mcp251x.c
+>>> +++ b/drivers/net/can/spi/mcp251x.c
+>>> @@ -530,8 +530,8 @@ static int mcp251x_gpio_get_multiple(struct gpio_chip *chip,
+>>>       return 0;
+>>>  }
+>>>
+>>> -static void mcp251x_gpio_set(struct gpio_chip *chip, unsigned int offset,
+>>> -                          int value)
+>>> +static int mcp251x_gpio_set(struct gpio_chip *chip, unsigned int offset,
+>>> +                         int value)
+>>>  {
+>>>       struct mcp251x_priv *priv = gpiochip_get_data(chip);
+>>>       u8 mask, val;
+>>> @@ -545,9 +545,11 @@ static void mcp251x_gpio_set(struct gpio_chip *chip, unsigned int offset,
+>>>
+>>>       priv->reg_bfpctrl &= ~mask;
+>>>       priv->reg_bfpctrl |= val;
+>>> +
+>>> +     return 0;
+>>
+>> mcp251x_gpio_set() calls mcp251x_write_bits() which calls mcp251x_spi_write()
+>> which can fail.
+>>
+>> For this change to really make sense, the return value of mcp251x_spi_write()
+>> should be propagated all the way around.
+>>
+> 
+> I don't know this code so I followed the example of the rest of the
+> codebase where the result of this function is never checked - even in
+> functions that do return values. I didn't know the reason for this and
+> so didn't want to break anything as I have no means of testing it.
 
---DM5pv65IWOkWZD6g
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+The return value of mcp251x_spi_write() is used in mcp251x_hw_reset(). In other
+locations, mcp251x_spi_write() is only used in functions which return void, so
+obviously, the return value is not checked.
 
-On Tue, Jun 10, 2025 at 02:34:29PM +0800, Chen-Yu Tsai wrote:
-> On MT8186 and MT8188 one of the NVMEM cells contains the GPU speed bin
-> value. In combination with the GPU OPP bindings, on these two platforms
-> there is an implied scheme of converting the cell value to what the GPU
-> OPP "opp-supported-hw" property matches. This does not apply to the base
-> mediatek,efuse hardware, nor does it apply to any of the other platforms
-> that do not have the GPU speed bin cell. The platform maintainer argues
-> that this makes the compatibles incompatible with the base
-> "mediatek,efuse" compatible, as shown in the link given.
->=20
-> Deprecate the MT8186/MT8188 + "mediatek,efuse" combination, and add
-> new entries with MT8186 being the base model and MT8188 falling back
-> to MT8186.
->=20
-> Link: https://lore.kernel.org/all/11028242-afe4-474a-9d76-cd1bd9208987@co=
-llabora.com/
-> Fixes: ff1df1886f43 ("dt-bindings: nvmem: mediatek: efuse: Add support fo=
-r MT8188")
-> Cc: Johnson Wang <johnson.wang@mediatek.com>
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> Can you confirm that you really want the result to be checked here?
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+That's the point of those new gpio setters, isn't it? If we do not check the
+result, I do not understand the purpose of the migration.
 
---DM5pv65IWOkWZD6g
-Content-Type: application/pgp-signature; name="signature.asc"
 
------BEGIN PGP SIGNATURE-----
+Yours sincerely,
+Vincent Mailhol
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaEhM2QAKCRB4tDGHoIJi
-0oO9AP9azxR15Z4FWTzZIHXzTVLpSbkeveExJbyNmwEG9jz1YgEA7QM4o5Pznk8M
-kkIC1s0vwuNnCCBmMQrcnoicWNN5zQQ=
-=3doB
------END PGP SIGNATURE-----
-
---DM5pv65IWOkWZD6g--
 
