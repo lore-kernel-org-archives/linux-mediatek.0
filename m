@@ -4,84 +4,126 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D8EDC5B552
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FBE2C5B543
 	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jun 2025 10:56:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wsdrXpgQvufl30tw+xFnwjynEEaG+R4jXiG8VrmKG+s=; b=tzGXsgL0UlHLCx5uCqqMkovrWQ
-	ybJQDo62Esvl/J/s2/yrxNuXQD9xrr7N0J4yVA+dcmb/DWcqnUfKi7e0OxWi4sdicfli3pXXirLC/
-	yfzP8sP0vnJv7Ez9ZbWxLBxnyYPe9XaXOVasdLw5P/NAkJcgH+vUsrFxwe3c9TVMTnb6/Z+DcHQz3
-	cKqbequGc37bTz3hB39mvy8jF+bnGkHqPK9V6ODPbaHcTj9ijRZEexCoVbWMVJkASdmMufVnJyHDH
-	ppz0zCpi0iZa9I7fCVnpNPP3QZIJC8y/aQq8q3wzqtmywMiOEsYhx/q7zskukyWlEoKC9RCwXbcY7
-	hwC6sLvg==;
+	bh=/oeMfzgpDyFenP1NeZBi5mnHFeuCvixDO862rdadX3U=; b=tiOCM7sdaz4VEqTQTfxpfW8UgK
+	mOaPgkuVoYc+g7dvi3W85iLjYtCr0Ov81QD94E1/dyvhRnwLn4hPd1H86YnQ1FdGdiOrdfx8T6GHv
+	9D3ZzDvFMv21clEbXMghdDfBe5M7wRfIi+1CAsLqSWDDa1VCyjKRcSA+uT9ir/E+5dUGtMtY+ypvx
+	9aJ033BftMtDv7FgBz6lbKT53Wk1jlaNSin6anpC4xbtGUNsKr5cDVao6f4ZZ/9pguFpMb2Q97cTx
+	+NV5slOQW27jQ6xZJj6kCXjmqQZPKXFH3xDWfH9tybF5sfuS8IiZehuluZkzqMcDpnt0wWTdCl8L1
+	VkcFIEqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOwem-00000006Xvp-3S1o;
-	Tue, 10 Jun 2025 10:56:40 +0000
-Received: from mail-qt1-x836.google.com ([2607:f8b0:4864:20::836])
+	id 1uOweo-00000006Xx5-3URE;
+	Tue, 10 Jun 2025 10:56:42 +0000
+Received: from mout.gmx.net ([212.227.15.18])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOvO3-00000006MHe-0uSK
-	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Jun 2025 09:35:20 +0000
-Received: by mail-qt1-x836.google.com with SMTP id d75a77b69052e-4a3db0666f2so120221151cf.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 10 Jun 2025 02:35:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1749548117; x=1750152917; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=wsdrXpgQvufl30tw+xFnwjynEEaG+R4jXiG8VrmKG+s=;
-        b=Mg82GDVA7R8Axp0UTnf87Jc8UvoF3uhPD47l/SMMqjaZo4IcC8Vq8LEZmvkrW9sC5d
-         uvyGvChmU5x5G5kkypUgFi/B0jPnHeMmNQgRFlqlAc/Ow1mgw9uvPx4SDVz+RI0ESEvd
-         DoO6+C1ZoBc/BpMrTDM0yB/xm04UjZzJjqkiLS4IFp7ws3+6NMcjqR1MtkdGDJrudnRg
-         fFIv7XTkj3JYhVV1C0E8BCqmaTnwqwlMA7HRZiEAubJ5Yg3p5s97pw6NfxCQiHEAhIUS
-         qAr9ik67uuz3zhyUkvitXEUGPrdfNVCgj75mIvYlP29jr0AcGcFKyP7Zeg00C4Tt+0rm
-         DlEQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749548117; x=1750152917;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=wsdrXpgQvufl30tw+xFnwjynEEaG+R4jXiG8VrmKG+s=;
-        b=H5h62zwBEfbIatVr3BvjT5FbdzS15IB8l0IdXCOM3keIpCT53ohNAmncMLLQcpbbiW
-         kOJxXVXt0KhpxFxzN3Acr5v75XpveDnU1ieZTM8rkr/8n3L69j2J5MSGV6xZUuGUUuoo
-         gVy0PuFal0JjifquHi2CP62KMpErkcZfHVyZ8Jn/e8+L5vG4f3DwIeXdDjOaNqXjSGPz
-         mpP0Nezig7DjOo3src0Vjxz5nygr4h4y8oFcOL1wmAjqbEMmF3xQrhb+dtXIgQ48lnps
-         TB7mHxPrtRwmadUr8S7K2T97Hs34FalmfVHk8S1vRSlEciX1y7VHT6PN1lCyeAoespHU
-         pxmg==
-X-Forwarded-Encrypted: i=1; AJvYcCWE50CDdsjjZRWUe5ED4rIQp6s3pQuXdgkovKZRECR/7Eo8ZGDDpgpkgkX+gAEZyit1t0LnyBJXqle4eh8QJg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz5v9Ypm6ZHH/PoW0ak4luxLugb3cMjEvtJyOW1l7Xj1lNEOT28
-	WWNqOl6dxD5OQm3oOnDLXYKJ73FCfxXI9nWBnO2pqTvMxa6741XyWi90n9tbOA+7Ndl+hNQZYlx
-	/h3StYHcWdD6qTzml7rTyCV5exDBTsPvjpEKDOUii0I7dqo7ECsAvcxrmh70=
-X-Gm-Gg: ASbGncvUhQr66qq93IVd3feu9BzdcEhtF2Lk2UX03ySr5ltmtGStVwD2birU+P6l9Cu
-	5kmsIKlrEB3ClliC7uaTk7SBVg6Ako7eR38dY5bzKDdTdHq/6clMHfNSZd5URMZNk6AqbZd94wz
-	s+y5bfPqCsK68+r8IiyPaY0qWFe3DaLOPOM7fx2CrJMIZN
-X-Google-Smtp-Source: AGHT+IGhRH5aE3niOaYItuG73rF2TfxvjZzeKaYfyvLTlm49rzRiaTfOsn0DR0kd1fA23ZF8Eh+l09mxfhsoTuQEp6c=
-X-Received: by 2002:a05:6214:4116:b0:6e8:ddf6:d11e with SMTP id
- 6a1803df08f44-6fb08ff67eemr261241026d6.21.1749548105349; Tue, 10 Jun 2025
- 02:35:05 -0700 (PDT)
+	id 1uOvVG-00000006NPh-1t2S;
+	Tue, 10 Jun 2025 09:42:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1749548543; x=1750153343; i=frank-w@public-files.de;
+	bh=/oeMfzgpDyFenP1NeZBi5mnHFeuCvixDO862rdadX3U=;
+	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
+	 Content-Type:Date:In-Reply-To:References:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=O709jW9JdwF2bH69ynEqbMJT5oYUnmDgxbsYXX5lpRIOJ+Nw4UC3vDWbHXz4wKWz
+	 V6p69e76Zgnu1UDi0x/c/uOh5jat48j2+DNZO9UMD737ERj289I57xk2uWffaceBm
+	 U0VG4fO5VgR4w7wq2eIPPAepMaDrqjB17cQGlL0KPJKosqlLVeNqvmLWfBV5VXy0/
+	 upwfKzQ9x/gBN/mU7ybt5hGOESEPKQD3laWnm/FzWQpgREp2484Tf/gnxXMcPV1PM
+	 i35iRcV+2QsdA70ar9GHYbDOj0KksIxTqZDvCAE4J72pr4Hm0a1SBuutSQpDRplW2
+	 sKOxyWQJeHfxJHCLFw==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [100.64.173.171] ([100.64.173.171]) by
+ trinity-msg-rest-gmx-gmx-live-5d9b465786-6h7cc (via HTTP); Tue, 10 Jun 2025
+ 09:42:23 +0000
 MIME-Version: 1.0
-References: <20250610-airoha-eth-lro-v1-1-3b128c407fd8@kernel.org>
-In-Reply-To: <20250610-airoha-eth-lro-v1-1-3b128c407fd8@kernel.org>
-From: Eric Dumazet <edumazet@google.com>
-Date: Tue, 10 Jun 2025 02:34:54 -0700
-X-Gm-Features: AX0GCFsOQjueGBnQJH0bxT-ejS8z6yrtGKMc3jCHZ5tSrg15lgc6ROnIRuf0xmo
-Message-ID: <CANn89iJsNWkWzAJbOvaBNjozuLOQBcpVo1bnvfeGq5Zm6h9e=Q@mail.gmail.com>
-Subject: Re: [PATCH net-next] net: airoha: Add TCP LRO support
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, 
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	netdev@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+Message-ID: <trinity-ccdae81d-0e10-4e78-a29d-917b623095e8-1749548543301@trinity-msg-rest-gmx-gmx-live-5d9b465786-6h7cc>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: andrew@lunn.ch
+Cc: linux@fw-web.de, daniel@makrotopia.org, myungjoo.ham@samsung.com,
+ kyungmin.park@samsung.com, cw00.choi@samsung.com, djakov@kernel.org,
+ robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ olteanv@gmail.com, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, johnson.wang@mediatek.com,
+ arinc.unal@arinc9.com, Landen.Chao@mediatek.com, dqfext@gmail.com,
+ sean.wang@mediatek.com, lorenzo@kernel.org, nbd@nbd.name,
+ linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Aw: Re: Re: [PATCH v3 06/13] arm64: dts: mediatek: mt7988: add
+ basic ethernet-nodes
+Content-Type: text/plain; charset=UTF-8
+Importance: normal
+Date: Tue, 10 Jun 2025 09:42:23 +0000
+Sensitivity: Normal
+In-Reply-To: <9d27e0d3-5ecb-4dcd-b8aa-d4e0affbb915@lunn.ch>
+References: <20250608211452.72920-1-linux@fw-web.de>
+ <20250608211452.72920-7-linux@fw-web.de>
+ <cc73b532-f31b-443e-8127-0e5667c3f9c3@lunn.ch>
+ <trinity-87fadcdb-eee3-4e66-b62d-5cef65f1462d-1749464918307@trinity-msg-rest-gmx-gmx-live-5d9b465786-mldbm>
+ <9d27e0d3-5ecb-4dcd-b8aa-d4e0affbb915@lunn.ch>
+X-Priority: 3
+X-UI-CLIENT-META-MAIL-DROP: W10=
+X-Provags-ID: V03:K1:OFjOchg4Lqw5a2CcWeQW6D2v8sr1/Y8LlEK+V8kJRAC6XO3xezQhXNFFp4W0wJLFECOo+
+ hwlRt6DSTEY7Jy3Og1AF+OGuqFbLdNJcnjmYFZl+qXQq/7in26PqtFhTKqMo0nQSayMzrCQgTIgw
+ sJL9QmM19VHbi9WreLyIzlB+oIEMMSv5a5TXyC5RO4MaHZmk3CLiKz3UrbuH1/sphDTuZZt0ezlE
+ 9WQSzYVGw8TH6MSoxzzpbNZJltAaif+NqHVP8o6rLST2Apyir6IpzLsRc9i8NRMTFByR/Ze4tEoj
+ +sPQzbVAFbmsYphGwXp85KZKULPNc5U5dUWBoOmswVymFwNljY3sY7Waf+QnR6Jo34=
+UI-OutboundReport: notjunk:1;M01:P0:N0TFurw6qdA=;dnuAdwIY17K7lvPuKBOx2H95Knc
+ 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
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250610_023519_274531_668E4876 
-X-CRM114-Status: GOOD (  24.49  )
+X-CRM114-CacheID: sfid-20250610_024246_779500_9D0B88CE 
+X-CRM114-Status: GOOD (  28.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,233 +138,115 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 10, 2025 at 2:12=E2=80=AFAM Lorenzo Bianconi <lorenzo@kernel.or=
-g> wrote:
->
-> EN7581 SoC supports TCP hw Large Receive Offload (LRO) for 8 hw queues.
-> Introduce TCP LRO support to airoha_eth driver for RX queues 24-31.
-> In order to support hw TCP LRO, increase page_pool order to 5 for RX
-> queues 24-31.
->
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  drivers/net/ethernet/airoha/airoha_eth.c  | 191 ++++++++++++++++++++++++=
-+++---
->  drivers/net/ethernet/airoha/airoha_eth.h  |  10 ++
->  drivers/net/ethernet/airoha/airoha_regs.h |  25 +++-
->  3 files changed, 210 insertions(+), 16 deletions(-)
->
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
-net/airoha/airoha_eth.c
-> index a7ec609d64dee9c8e901c7eb650bb3fe144ee00a..9378ca384fe2025a40cc52871=
-4859dd59300fbcd 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> @@ -12,6 +12,7 @@
->  #include <net/dst_metadata.h>
->  #include <net/page_pool/helpers.h>
->  #include <net/pkt_cls.h>
-> +#include <net/tcp.h>
->  #include <uapi/linux/ppp_defs.h>
->
->  #include "airoha_regs.h"
-> @@ -439,6 +440,40 @@ static void airoha_fe_crsn_qsel_init(struct airoha_e=
-th *eth)
->                                  CDM_CRSN_QSEL_Q1));
->  }
->
-> +static void airoha_fe_lro_init_rx_queue(struct airoha_eth *eth, int qdma=
-_id,
-> +                                       int lro_queue_index, int qid,
-> +                                       int nbuf, int buf_size)
-> +{
-> +       airoha_fe_rmw(eth, REG_CDM_LRO_LIMIT(qdma_id),
-> +                     CDM_LRO_AGG_NUM_MASK | CDM_LRO_AGG_SIZE_MASK,
-> +                     FIELD_PREP(CDM_LRO_AGG_NUM_MASK, nbuf) |
-> +                     FIELD_PREP(CDM_LRO_AGG_SIZE_MASK, buf_size));
-> +       airoha_fe_rmw(eth, REG_CDM_LRO_AGE_TIME(qdma_id),
-> +                     CDM_LRO_AGE_TIME_MASK | CDM_LRO_AGG_TIME_MASK,
-> +                     FIELD_PREP(CDM_LRO_AGE_TIME_MASK,
-> +                                AIROHA_RXQ_LRO_MAX_AGE_TIME) |
-> +                     FIELD_PREP(CDM_LRO_AGG_TIME_MASK,
-> +                                AIROHA_RXQ_LRO_MAX_AGG_TIME));
-> +       airoha_fe_rmw(eth, REG_CDM_LRO_RXQ(qdma_id, lro_queue_index),
-> +                     LRO_RXQ_MASK(lro_queue_index),
-> +                     qid << __ffs(LRO_RXQ_MASK(lro_queue_index)));
-> +       airoha_fe_set(eth, REG_CDM_LRO_EN(qdma_id), BIT(lro_queue_index))=
-;
-> +}
-> +
-> +static void airoha_fe_lro_disable(struct airoha_eth *eth, int qdma_id)
-> +{
-> +       int i;
-> +
-> +       airoha_fe_clear(eth, REG_CDM_LRO_LIMIT(qdma_id),
-> +                       CDM_LRO_AGG_NUM_MASK | CDM_LRO_AGG_SIZE_MASK);
-> +       airoha_fe_clear(eth, REG_CDM_LRO_AGE_TIME(qdma_id),
-> +                       CDM_LRO_AGE_TIME_MASK | CDM_LRO_AGG_TIME_MASK);
-> +       airoha_fe_clear(eth, REG_CDM_LRO_EN(qdma_id), LRO_RXQ_EN_MASK);
-> +       for (i =3D 0; i < AIROHA_MAX_NUM_LRO_QUEUES; i++)
-> +               airoha_fe_clear(eth, REG_CDM_LRO_RXQ(qdma_id, i),
-> +                               LRO_RXQ_MASK(i));
-> +}
-> +
->  static int airoha_fe_init(struct airoha_eth *eth)
->  {
->         airoha_fe_maccr_init(eth);
-> @@ -618,9 +653,87 @@ static int airoha_qdma_get_gdm_port(struct airoha_et=
-h *eth,
->         return port >=3D ARRAY_SIZE(eth->ports) ? -EINVAL : port;
->  }
->
-> +static bool airoha_qdma_is_lro_rx_queue(struct airoha_queue *q,
-> +                                       struct airoha_qdma *qdma)
-> +{
-> +       int qid =3D q - &qdma->q_rx[0];
-> +
-> +       /* EN7581 SoC supports at most 8 LRO rx queues */
-> +       BUILD_BUG_ON(hweight32(AIROHA_RXQ_LRO_EN_MASK) >
-> +                    AIROHA_MAX_NUM_LRO_QUEUES);
-> +
-> +       return !!(AIROHA_RXQ_LRO_EN_MASK & BIT(qid));
-> +}
-> +
-> +static int airoha_qdma_lro_rx_process(struct airoha_queue *q,
-> +                                     struct airoha_qdma_desc *desc)
-> +{
-> +       u32 msg1 =3D le32_to_cpu(desc->msg1), msg2 =3D le32_to_cpu(desc->=
-msg2);
-> +       u32 th_off, tcp_ack_seq, msg3 =3D le32_to_cpu(desc->msg3);
-> +       bool ipv4 =3D FIELD_GET(QDMA_ETH_RXMSG_IP4_MASK, msg1);
-> +       bool ipv6 =3D FIELD_GET(QDMA_ETH_RXMSG_IP6_MASK, msg1);
-> +       struct sk_buff *skb =3D q->skb;
-> +       u16 tcp_win, l2_len;
-> +       struct tcphdr *th;
-> +
-> +       if (FIELD_GET(QDMA_ETH_RXMSG_AGG_COUNT_MASK, msg2) <=3D 1)
-> +               return 0;
-> +
-> +       if (!ipv4 && !ipv6)
-> +               return -EOPNOTSUPP;
-> +
-> +       l2_len =3D FIELD_GET(QDMA_ETH_RXMSG_L2_LEN_MASK, msg2);
-> +       if (ipv4) {
-> +               u16 agg_len =3D FIELD_GET(QDMA_ETH_RXMSG_AGG_LEN_MASK, ms=
-g3);
-> +               struct iphdr *iph =3D (struct iphdr *)(skb->data + l2_len=
-);
-> +
-> +               if (iph->protocol !=3D IPPROTO_TCP)
-> +                       return -EOPNOTSUPP;
-> +
-> +               iph->tot_len =3D cpu_to_be16(agg_len);
-> +               iph->check =3D 0;
-> +               iph->check =3D ip_fast_csum((void *)iph, iph->ihl);
-> +               th_off =3D l2_len + (iph->ihl << 2);
-> +       } else {
-> +               struct ipv6hdr *ip6h =3D (struct ipv6hdr *)(skb->data + l=
-2_len);
-> +               u32 len, desc_ctrl =3D le32_to_cpu(desc->ctrl);
-> +
-> +               if (ip6h->nexthdr !=3D NEXTHDR_TCP)
-> +                       return -EOPNOTSUPP;
-> +
-> +               len =3D FIELD_GET(QDMA_DESC_LEN_MASK, desc_ctrl);
-> +               ip6h->payload_len =3D cpu_to_be16(len - l2_len - sizeof(*=
-ip6h));
-> +               th_off =3D l2_len + sizeof(*ip6h);
-> +       }
-> +
-> +       tcp_win =3D FIELD_GET(QDMA_ETH_RXMSG_TCP_WIN_MASK, msg3);
-> +       tcp_ack_seq =3D le32_to_cpu(desc->data);
-> +
-> +       th =3D (struct tcphdr *)(skb->data + th_off);
-> +       th->ack_seq =3D cpu_to_be32(tcp_ack_seq);
-> +       th->window =3D cpu_to_be16(tcp_win);
-> +
-> +       /* check tcp timestamp option */
-> +       if (th->doff =3D=3D sizeof(*th) + TCPOLEN_TSTAMP_ALIGNED) {
-> +               __be32 *topt =3D (__be32 *)(th + 1);
-> +
-> +               if (*topt =3D=3D cpu_to_be32((TCPOPT_NOP << 24) |
-> +                                        (TCPOPT_NOP << 16) |
-> +                                        (TCPOPT_TIMESTAMP << 8) |
-> +                                        TCPOLEN_TIMESTAMP)) {
-> +                       u32 tcp_ts_reply =3D le32_to_cpu(desc->tcp_ts_rep=
-ly);
-> +
-> +                       put_unaligned_be32(tcp_ts_reply, topt + 2);
-> +               }
-> +       }
-> +
-> +       return 0;
-> +}
-> +
->  static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
->  {
->         enum dma_data_direction dir =3D page_pool_get_dma_dir(q->page_poo=
-l);
-> +       bool lro_queue =3D airoha_qdma_is_lro_rx_queue(q, q->qdma);
->         struct airoha_qdma *qdma =3D q->qdma;
->         struct airoha_eth *eth =3D qdma->eth;
->         int qid =3D q - &qdma->q_rx[0];
-> @@ -663,9 +776,14 @@ static int airoha_qdma_rx_process(struct airoha_queu=
-e *q, int budget)
->                         __skb_put(q->skb, len);
->                         skb_mark_for_recycle(q->skb);
->                         q->skb->dev =3D port->dev;
-> -                       q->skb->protocol =3D eth_type_trans(q->skb, port-=
->dev);
->                         q->skb->ip_summed =3D CHECKSUM_UNNECESSARY;
->                         skb_record_rx_queue(q->skb, qid);
-> +
-> +                       if (lro_queue && (port->dev->features & NETIF_F_L=
-RO) &&
-> +                           airoha_qdma_lro_rx_process(q, desc) < 0)
-> +                               goto free_frag;
-> +
-> +                       q->skb->protocol =3D eth_type_trans(q->skb, port-=
->dev);
->                 } else { /* scattered frame */
->                         struct skb_shared_info *shinfo =3D skb_shinfo(q->=
-skb);
->                         int nr_frags =3D shinfo->nr_frags;
-> @@ -751,14 +869,16 @@ static int airoha_qdma_rx_napi_poll(struct napi_str=
-uct *napi, int budget)
->  }
->
->  static int airoha_qdma_init_rx_queue(struct airoha_queue *q,
-> -                                    struct airoha_qdma *qdma, int ndesc)
-> +                                    struct airoha_qdma *qdma,
-> +                                    int ndesc, bool lro_queue)
->  {
-> +       int pp_order =3D lro_queue ? 5 : 0;
->         const struct page_pool_params pp_params =3D {
-> -               .order =3D 0,
-> -               .pool_size =3D 256,
-> +               .order =3D pp_order,
-> +               .pool_size =3D 256 >> pp_order,
->                 .flags =3D PP_FLAG_DMA_MAP | PP_FLAG_DMA_SYNC_DEV,
->                 .dma_dir =3D DMA_FROM_DEVICE,
-> -               .max_len =3D PAGE_SIZE,
-> +               .max_len =3D PAGE_SIZE << pp_order,
->                 .nid =3D NUMA_NO_NODE,
->                 .dev =3D qdma->eth->dev,
->                 .napi =3D &q->napi,
-> @@ -767,7 +887,7 @@ static int airoha_qdma_init_rx_queue(struct airoha_qu=
-eue *q,
->         int qid =3D q - &qdma->q_rx[0], thr;
->         dma_addr_t dma_addr;
->
-> -       q->buf_size =3D PAGE_SIZE / 2;
-> +       q->buf_size =3D pp_params.max_len / (2 * (1 + lro_queue));
+Hi
 
-Tell us more... It seems small LRO packets will consume a lot of
-space, incurring a small skb->len/skb->truesize ratio, and bad TCP WAN
-performance.
 
-And order-5 pages are unlikely to be available in the long run anyway.
+> Gesendet: Montag, 9. Juni 2025 um 14:12
+> Von: "Andrew Lunn" <andrew@lunn.ch>
+> An: "Frank Wunderlich" <frank-w@public-files.de>
+> Betreff: Re: Re: [PATCH v3 06/13] arm64: dts: mediatek: mt7988: add basi=
+c ethernet-nodes
+>
+> > > > +			gmac0: mac@0 {
+> > > > +				compatible =3D "mediatek,eth-mac";
+> > > > +				reg =3D <0>;
+> > > > +				phy-mode =3D "internal";
+> > > > +
+> > > > +				fixed-link {
+> > > > +					speed =3D <10000>;
+> > > > +					full-duplex;
+> > > > +					pause;
+> > > > +				};
+> > >=20
+> > > Maybe i've asked this before? What is on the other end of this link?
+> > > phy-mode internal and fixed link seems an odd combination. It might
+> > > just need some comments, if this is internally connected to a switch=
+.
+> >=20
+> > yes you've asked in v1 and i responded :)
+> >=20
+> > https://patchwork.kernel.org/project/linux-mediatek/patch/202505111419=
+42.10284-9-linux@fw-web.de/
+> >=20
+> > connected to internal (mt7530) switch. Which kind of comment do you wa=
+nt here? Only "connected to internal switch"
+> > or some more details?
+>=20
+> "Connected to internal switch" will do. The word switch explains the
+> fixed-link, and internal the phy-mode.
+>=20
+> It is not the case here, but i've seen DT misused like this because
+> the MAC is connected to a PHY and there is no PHY driver yet, so a
+> fixed link is used instead.
+>=20
+> > > > +			mdio_bus: mdio-bus {
+> > > > +				#address-cells =3D <1>;
+> > > > +				#size-cells =3D <0>;
+> > > > +
+> > > > +				/* internal 2.5G PHY */
+> > > > +				int_2p5g_phy: ethernet-phy@f {
+> > > > +					reg =3D <15>;
+> > >=20
+> > > It is a bit odd mixing hex and decimal.
+> >=20
+> > do you prefer hex or decimal for both? for r3mini i used decimal for b=
+oth, so i would change unit-address
+> > to 15.
+>=20
+> I suspect decimal is more common, but i don't care.
+>=20
+> >=20
+> > > > +					compatible =3D "ethernet-phy-ieee802.3-c45";
+> > >=20
+> > > I _think_ the coding standard say the compatible should be first.
+> >=20
+> > i can move this up of course
+> >=20
+> > > > +					phy-mode =3D "internal";
+> > >=20
+> > > A phy should not have a phy-mode.
+> >=20
+> > not sure if this is needed for mt7988 internal 2.5g phy driver, but se=
+ems not when i look at the driver
+> > (drivers/net/phy/mediatek/mtk-2p5ge.c). The switch phys also use this =
+and also here i do not see any
+> > access in the driver (drivers/net/dsa/mt7530-mmio.c + mt7530.c) on a q=
+uick look.
+> > Afaik binding required the property and should be read by phylink (to =
+be not unknown, but looks like
+> > handled the same way).
+>=20
+> Which binding requires this? This is a PHY node, but i don't see
+> anything about it in ethernet-phy.yaml.
 
-LRO support would only make sense if the NIC is able to use multiple
-order-0 pages to store the payload.
+seems like only the cpu-port on switch requires the phy-mode for binding..=
+.
+
+  DTC [C] arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtb
+arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtb: switch@15020000:=
+ ports:port@6: 'phy-mode' is a required property
+	from schema $id: http://devicetree.org/schemas/net/dsa/mediatek,mt7530.ya=
+ml#
+
+tested on hardware with the others disabled:
+
+- phy-mode on gsw-ports are needed else i get this:
+[    1.386586] mt7530-mmio 15020000.switch wan (uninitialized): validation=
+ of gmii with support 0000000,00000000,00000000,000062ef and advertisement=
+ 0000000,00000000,00000000,000062ef failed: -EINVAL
+[    1.408209] mt7530-mmio 15020000.switch wan (uninitialized): failed to =
+connect to PHY: -EINVAL
+[    1.421308] mt7530-mmio 15020000.switch wan (uninitialized): error -22 =
+setting up PHY for tree 0, switch 0, port 0
+- phy-mode on gmac0 is needed alse ethernet-controller (and switch) does n=
+ot get up
+
+the phy-modes (gsw_phyX) can be dropped, the 2g5 phy-mode is currently set=
+ twice (mt7988a.dtsi and in 2g5 dts), so i would leave this in mt7988a.dts=
+i
+
+>=20
+> 	Andrew
+
+regards Frank
 
