@@ -4,103 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 876E7C5B543
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jun 2025 12:42:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 250FDC5B552
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jun 2025 13:00:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=upEgacp7mnJpqnEV2jZLm7bdZrVLCTZ4Uj3awIoWIUE=; b=U8ID0SchARhuGkHUlM377+4aNd
-	PrVcABxKgmhq5FAcW0Zb2nCONLkZZMIEOUKRMK4sA3vlr9+AJgw438TcNfn0uisEnQrkSNwyP7uM7
-	b2SN14i3xp27XwND0rP072DdRfPhWS7FYFTQx/VaqfJSKrVNhy8sn5tJYuZxxPbNa18q0NMKeBMF3
-	RS8w90Fj8bzYpEDQKnqV1ehitPqGOjYkfa36HSVt7l8KxxejtCWNwyaMv/GoReAy77H2ORBIvlaCx
-	cJDz3wKWQF48AQamjWY5/zJ1SLEiqK0/o5axUzJ7FBnRcEKGPAjskmcZy2prURRxDrbWTDt0wHte4
-	C9z+c1ww==;
+	bh=siXBLzRLss7mh07NwalB4yKgr7YnqKr9rIj6Xo6f3j4=; b=zmDHWQngumh+un8D/aC7+6OD6P
+	FKOf5Q4o3+hLnyaPbtcRFyBJ5nmvVWR3lTOgddsAsXJckXsxCD4RJ4lYMx9qXqOUt0xl+FQ6K6DLx
+	z+9Tl2uBff0ecGy33lAoKrKOD1UozQ7SSv/sWVtSsddR1qlXVLtKgucddw1xL0SLfmKgKQuJHlgHw
+	7VxEZlLTVcFFlk9f6zOZr/4p6XUNEMHV0aHIFMxkUUqbochxDCxI/0az9zaQJ/8bPmKBb7i0NrhUM
+	193uRPhnCy6rCBJBfyAtsgCD/Ifsd0PF/XSWomMn9ErYHI7GCb6Psiq/OypfQs2K9wY4YK4+s2I6d
+	s82rbW7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOyJc-00000006oND-2mKR;
-	Tue, 10 Jun 2025 12:42:56 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uOyac-00000006s9l-34SN;
+	Tue, 10 Jun 2025 13:00:30 +0000
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOxkz-00000006iWo-1IR1
-	for linux-mediatek@bombadil.infradead.org;
-	Tue, 10 Jun 2025 12:07:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=upEgacp7mnJpqnEV2jZLm7bdZrVLCTZ4Uj3awIoWIUE=; b=BjtHr57T9hgRpty+m/Nuob9Olh
-	0Y5y0h5b3LHXfk9FU46+IH4PxY9wlRZQx84SV268c4a57EXuHt8ruEpKQRlj/Hqv+E0rADswA7EZy
-	I0lParNCslGjuxtoDgkFO8KMtvpA/0EZ54ddMUegvYWubCEOOAUbOPRx9e3se2CMs8mg7WiWj1x2d
-	n4ZjML5yLwgqPGW2H63b9pkW/4Moe++wYPYueUiCFw4a9IdB2zIHkAqHdelWpqe/LvCJ9ZRIxKFdN
-	pRnIeTS+aMgG+jOdQCBhJJqLYgMkYzMRc8ylaKiJU6faCp8GWElr0B6QHFdeQciSidvPqH7LNeBRJ
-	jYuB95pw==;
-Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOxkw-00000001nR6-06xq
+	id 1uOxuY-00000006kJo-2wD7
 	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Jun 2025 12:07:09 +0000
-Received: by mail-lj1-x22b.google.com with SMTP id 38308e7fff4ca-32934448e8bso46596171fa.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 10 Jun 2025 05:07:04 -0700 (PDT)
+	Tue, 10 Jun 2025 12:17:03 +0000
+Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-55324062ea8so6995487e87.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Jun 2025 05:17:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1749557222; x=1750162022; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1749557821; x=1750162621; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=upEgacp7mnJpqnEV2jZLm7bdZrVLCTZ4Uj3awIoWIUE=;
-        b=hDZvqsQ8E94qsSIXnXTv+hRlwEgnNAS9ETdYze6rHvCosG/oKp5tGHQyochHWLKyzM
-         z+cgrZ2EVwUdARe5JcnfsLWH5PQtWn6VHar7kbk4V715jisYZGsR7ckTBc07LIXnro4x
-         rjrXdyaTuNxrAr0o16blvUktegGTdbNpvbmEZnqWIQQx+s2TyuE4MMvWyIwFTQwUaqQR
-         u4MZOx3Q0uQ4fPNUMn7ywH1IEgv/Jx/hSS99T7OYHxw3fcH3sQwc/iIzR3Zp0dYHsR+P
-         xE8usEPEND0gBLVL9lCGhjJ58gOdbc10AvvIoSkjI8JA/jM/GGURirtdPJtfvDV9NPyW
-         gVzA==
+        bh=siXBLzRLss7mh07NwalB4yKgr7YnqKr9rIj6Xo6f3j4=;
+        b=GYQW6IpewUXtN1tx1n8cCgxD2Qpj9wdsvpx4HO6yAZZIX3H25+rpBEM7pMNO+6rmFw
+         bum/KaE1dpvpyajmh/85dN7Fq+kDbMw9g8SmrHnY9CA8tMVSTks7natnKoxznnPThBy1
+         XNJiH+TWOCSfvSpPWtPvfl3KN/9M9XkPzRpo8sMKSA1tOkt03BldOufRp9/tyLZt6dkP
+         cc3QzVOF9xzYMaLpyh/412bqEx9U8wtAivhSFzFe+ztAuaEl1YVSEiyXaxtlvQMZgPSY
+         j0ERoQ1bmCihlnhSSueyBnFCnN2YKrkUVx2RLktYWI+xlsebsczZo1A1qV8a1l3xmCyr
+         yCNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749557222; x=1750162022;
+        d=1e100.net; s=20230601; t=1749557821; x=1750162621;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=upEgacp7mnJpqnEV2jZLm7bdZrVLCTZ4Uj3awIoWIUE=;
-        b=K6hqUFugqgGYMhU1etXt4lHB/nitogb6aHqAXde9v2FImlanZIcMESaK717Qw/8nG4
-         i1nAIZ8YNXYM/GacI9uCrzgTVWqZcBcbOwX07VtuejPgFCeMAIjiFrd3mhN1UYGaOOWA
-         r5z4nw8XxBagysPZiCnCXFTNAbaNbWuqHpRMPLpL3dzT1zStZnJqxiWze4qjfw6zkrtK
-         AABoWDxMdkgkC+8XvBgwDm8Rsh733dwBPwze8Rv8O1K+VYhthMcNB4jG/lyljvItQ2al
-         vPscOhBOxMswWecWqKgBl1oO0ImViKy8xzZPs+Qtu47zEzGJM2ZqQmIR8S44XT87Z8S4
-         1TLw==
-X-Forwarded-Encrypted: i=1; AJvYcCVvWTjvIIzHI8Xj+znJemZwz0QLl3Plfx2EpdAbOabzQFsUqbWep23oneeM5EDy7CFiOiW/fSIhtv8vDplAMg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwbtzN7/pH77Btg+67nK69MZ0C2qU2P6g9tJ/O+P3id1v48GoJZ
-	mFTS0kWlyToAQFt5V003Gy79jkwI8D9fw7l3SKaoF8dCmQyGhCpgK545sudLy8FzOfVacWVwlKr
-	ERTDdamZ1f7d4l/l/pbIDMkk02SVESI+4en7yHWdm7g==
-X-Gm-Gg: ASbGncuchaWBs4wIQMptW+8o6XPWtujIsn09PtJ7HFCAaDgk5zfad+qWjGbIWTc1Uz8
-	7IbzQdxdmbnV2qxGihS6kPOjwp9YgqDbw1HGmx1d8wpdz1EMc59a7DTZH8Y2Fl5AhX3nxGfkXKR
-	VSE+LQxMlpnU5WbkrYaDdAyOc6+50YNTol10E/t/pWcPAiWqDx0OodmQ==
-X-Google-Smtp-Source: AGHT+IEqz0WMqtI0x3GGlKwfWemlBSbd12UaQPMKKY+qV7hhxbjKafYK8sYr8Wg2JEL7ScFpC5Ui0NiE4JM2Acs5Gg8=
-X-Received: by 2002:a05:651c:220d:b0:32a:ee4e:56ad with SMTP id
- 38308e7fff4ca-32b1533b1aemr8972041fa.33.1749557222298; Tue, 10 Jun 2025
- 05:07:02 -0700 (PDT)
+        bh=siXBLzRLss7mh07NwalB4yKgr7YnqKr9rIj6Xo6f3j4=;
+        b=xTuW0ywFeLUCRbDVzmoKZPfteb0ejHIB6a7cBryvRn3DNHQXYOkFbR6fuE4RrspHAd
+         41gSwBHgfjjx5NeSlB6V/3vz32L3+q9kAgb4TIyl2r8K6xlBKJ8mo235XaFRcJ/yic1z
+         jDDYLIq4b2mD33OCS2jh1zojfc6/KRvWtIQ1PHu0H6JuYtxEI/Hu7Rqlqqf89SQ9x8Hn
+         qvK5nwKTbbyGumo2D6wuC9RJkC2dlW1OpPdG/zAbPIWS97OAT/Kf2Z16L6dlXxu05gy+
+         +5OzHPNBUpjE58JMnGiF6zNEbIlUK9fe2u8lHx0V8qn1VnfWtjRjvDNvEv+LzTxvEgIO
+         cE9Q==
+X-Forwarded-Encrypted: i=1; AJvYcCU2avUw5DHDJ1emtM6QJSF/92PFQy2tV4DFlT4VTLd8P2NfVz0uTkZt9pK/UW7UiNfh20/gA1fOL+4yCGmKyA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwZQudQLuAEnwE/EtjC7Nhv79DdeGKelV4j8uRcfw13fj3q7IAh
+	ydj1Acw5pgBJERGoC/sMeRvjKM7T5RDt7gu/m31ZFAhr8bU6fLgLOzNwuykAMq4anU4EY139yg7
+	XRR/+imRRmlSqnrBmPXvNaePGyukDPYs8CAd1GeYz9Q==
+X-Gm-Gg: ASbGncueRdOjp3EtLXbAeuBZTMFEOFlYLePkYAok+66cYvzL7JlIweuVA7ytFed7Ou/
+	6M/U+SEyGadDPkfmIrGn/Gm1/v4DU8kT2dowFP4nF9DB3YjiIY/UTaVnNzNLYtp1ADVcyA+P6uk
+	AIJ2BzwYw6p2PmGRpUAB6A1QVDQDJ3NuZDXA+7BCw6EzhEZYw2FDSYoQ==
+X-Google-Smtp-Source: AGHT+IFQxMti2+Q8Uenwhc0/S6UdaliHxGCkJGgDod8emAA4asQK/90KUnu0JtAhA4sI4nKXBC2mhVRJZkpkWFN1Jcw=
+X-Received: by 2002:a05:651c:2211:b0:32a:8591:66a9 with SMTP id
+ 38308e7fff4ca-32adfbb0c50mr43449421fa.6.1749557820819; Tue, 10 Jun 2025
+ 05:17:00 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250523094319.10377-1-ot_cathy.xu@mediatek.com>
-In-Reply-To: <20250523094319.10377-1-ot_cathy.xu@mediatek.com>
+References: <20250528-pinctrl-const-desc-v1-0-76fe97899945@linaro.org>
+In-Reply-To: <20250528-pinctrl-const-desc-v1-0-76fe97899945@linaro.org>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Tue, 10 Jun 2025 14:06:50 +0200
-X-Gm-Features: AX0GCFuHU7ZhdHSe32gs089Kj2im6LDUCERAjIX60g6Meb5i30AmFDVd_Qjjj2o
-Message-ID: <CACRpkdaGMiNwBAa60hFzsboV3JCj=sWVz-NKah=eNk+vVnUHVw@mail.gmail.com>
-Subject: Re: [PATCH 0/3] pinctrl: mediatek: Add pinctrl driver on mt8189
-To: Cathy Xu <ot_cathy.xu@mediatek.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sean Wang <sean.wang@kernel.org>, 
-	Lei Xue <lei.xue@mediatek.com>, linux-gpio@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Yong Mao <yong.mao@mediatek.com>, Wenbin Mei <Wenbin.Mei@mediatek.com>, 
-	Axe Yang <Axe.Yang@mediatek.com>
+Date: Tue, 10 Jun 2025 14:16:49 +0200
+X-Gm-Features: AX0GCFuA2Dfvx1J77MshD7Tzhu9rwDlijvkgXfC-wltdCoDdq-4uVh1ABAKFvmw
+Message-ID: <CACRpkdaQLq3YGfOg81gt5=1Wh2ZkoKHeK6H=NWaeW9aLbX4VCA@mail.gmail.com>
+Subject: Re: [PATCH 00/17] pinctrl: Constify pointers to 'pinctrl_desc' and more
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Basavaraj Natikar <Basavaraj.Natikar@amd.com>, Shyam Sundar S K <Shyam-sundar.S-k@amd.com>, 
+	Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
+	Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>, 
+	Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>, 
+	Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>, 
+	=?UTF-8?Q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, 
+	=?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Ray Jui <rjui@broadcom.com>, 
+	Scott Branden <sbranden@broadcom.com>, Geert Uytterhoeven <geert+renesas@glider.be>, 
+	David Rhodes <david.rhodes@cirrus.com>, Richard Fitzgerald <rf@opensource.cirrus.com>, 
+	Charles Keepax <ckeepax@opensource.cirrus.com>, Lorenzo Bianconi <lorenzo@kernel.org>, 
+	Sean Wang <sean.wang@kernel.org>, Jesper Nilsson <jesper.nilsson@axis.com>, 
+	Lars Persson <lars.persson@axis.com>, 
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Damien Le Moal <dlemoal@kernel.org>, 
+	Vladimir Zapolskiy <vz@mleia.com>, Michal Simek <michal.simek@amd.com>, 
+	Emil Renner Berthing <kernel@esmil.dk>, Jianlong Huang <jianlong.huang@starfivetech.com>, 
+	Hal Feng <hal.feng@starfivetech.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-aspeed@lists.ozlabs.org, 
+	openbmc@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org, 
+	linux-renesas-soc@vger.kernel.org, linux-sound@vger.kernel.org, 
+	patches@opensource.cirrus.com, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@axis.com, linux-riscv@lists.infradead.org, 
+	linux-rtc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250610_130706_192069_284B7D8E 
-X-CRM114-Status: GOOD (  10.41  )
+X-CRM114-CacheID: sfid-20250610_051702_746998_E4843A9C 
+X-CRM114-Status: UNSURE (   8.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,17 +119,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 23, 2025 at 11:43=E2=80=AFAM Cathy Xu <ot_cathy.xu@mediatek.com=
-> wrote:
+Hi Krzysztof,
 
-> This patch series introduces support for the MT8189 pinctrl driver, inclu=
-de
-> the driver implementation, new binding document and pinctrl header file.
+On Wed, May 28, 2025 at 12:41=E2=80=AFPM Krzysztof Kozlowski
+<krzysztof.kozlowski@linaro.org> wrote:
 
-Cathy will you rebase & resend this patch set based on v6.16-rc1?
+> In several drivers pointers to 'struct pinctrl_desc' is not modified, so
+> since core does not modify it, it can be made as const.
 
-I think the code is ready as long as the device tree bindings get finalized=
-.
+will you rebase this series on v6.16-rc1, fix the snags and send a new vers=
+ion?
+It's all nice cleanups so it'd be great to just merge this.
 
 Yours,
 Linus Walleij
