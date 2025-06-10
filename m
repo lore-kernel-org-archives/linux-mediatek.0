@@ -4,63 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6ED4C5B552
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jun 2025 16:21:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7C88C5B552
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Jun 2025 16:38:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J+qg1+SkJ5kUMIfZgliJNgwmCYY4xioDyWF9SZ86Sdo=; b=aNxTH8Qbe3TrPBsZB0FvHrQqx7
-	NXKqTomtEZ04LYcdnnnYSiQuHXmsaUvYMPXsquoYIbLjU8L2ztre2IOeEBpkiSgOse1E5Sq6NGQ+D
-	lZxhU3msR9pra8zjhOljgSvbohQclnz0+zgvuiAECc66ywJeLK1fIEb09rwx0Qc6rd72npIKINF1c
-	yx7Uz6yT18bzxlIDW7cowfRoed0eFXGr7RweD9EkJHbDij7tPnmxtAUTyLMo7QGZB+H4A+ckxSXAv
-	6Ykslx1pC7cJHf0cR7SNGMMV+hHahu0ROOn98RzW+oSo96jGbWWBgTzNmAKN5KMTXkr3BYV/BJ/Qt
-	UBTV1GSg==;
+	bh=0mN0Y6VG8wJwIHBPmUq5Ichmc5b23YwTM3GHpfC0Ov0=; b=PXP6QxdYTwYyhgjgr+R3YgIbSa
+	HZEdd8zLSyAM2QYkSzBXOmXWgSbQGJ7z3OCzTyr0yPx8dAT4+PN8CpTAIaCqEV5D0gx3IpYM62J+0
+	GVVBXKKlbdH10oCTznwJoP2509zgAXbdSGApT/+DDTwQUwXE2CRK3ZCsbeAzI6XVkyPXlpb0ZXq0M
+	P8jWpP4KLnvThs3QHgj0QgwR4YqRqba6psELeTmGF9WZ1wUjjjumFIoCwl+KRZUTqUFHPPOw0jjO0
+	CiHDYuC13BjPjfF5wg2sI5SWvpdIO3EC+U69Lh87EqT5HpVkva6YvbEGbEfQeJgUvGy305No2Bdwn
+	3bblsLPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uP1j6-00000007RxW-1o75;
-	Tue, 10 Jun 2025 16:21:28 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1uP201-00000007V0h-21BZ;
+	Tue, 10 Jun 2025 16:38:57 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uOzCW-000000070Wj-42vM;
-	Tue, 10 Jun 2025 13:39:42 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id E8F0A5C0429;
-	Tue, 10 Jun 2025 13:37:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 98201C4CEED;
-	Tue, 10 Jun 2025 13:39:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1749562779;
-	bh=5avbO0Ao+zxHI6T3ghbReJ8vJ24StY6YPNICgLkqxcg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=JMwjgDNqWfSZV7W/JGiCqq0dEE/Ye+1kfAkZ4XV203t6F946jc0EF3npK/Q0wEoBc
-	 HL3ts1Xs+3/PBc9SYwPFCnM2z+MUvlnvqBO1CV6oc8asYfAFiUzYoTylPqc7H7yohn
-	 OzIYm+Tg5rTndx68BhsYHcdrKJ4seqHsBT6KkrgKQK6qpM8Lhv+lVrFkAL3iJu/r10
-	 yqq+/QgT1qixROOTMkGFuHsEN6XhDY3/mIBul+to91IbppkSLTQLOBNFgRGGwEedBA
-	 6RyXf6IeA24zeCsEByscH8ScHnys5UR72nWZesf6nZSo2pGx7we8ieg/YloSN2QFu4
-	 BqHGpXGyuC9jw==
-Date: Tue, 10 Jun 2025 15:39:34 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Eric Dumazet <edumazet@google.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	id 1uOyZL-00000006rtg-2otZ;
+	Tue, 10 Jun 2025 12:59:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=0mN0Y6VG8wJwIHBPmUq5Ichmc5b23YwTM3GHpfC0Ov0=; b=HY1qvyMgHuovJklo58mxohAZPZ
+	nx8UyjAvBgauzV/x4dBQ0cgcd2CkG1PLipx2RDx1Rpz61e4MR1vgD5u88Jo9ur0f6RnlEBiG0Iv35
+	HpKLXouqlU/OLqxuoM0DAQEKZVIRuzFesesWxCGJC7Cp3i4tPYfOOUHAIfT98NywlBMMLWrIOckTM
+	5IogBriofTHuWSpjXyjw/F8VrR2MOYOMOA5Tg3yPEraeJsaJn7FDpkxgAcHADyYhXd9t2DhKzBqy4
+	JT+NdRe1x4b744B1MHAQe3wxw741b6nrwnhEb73kgwxCGHedTXNSaWRz8YF8J3XVmJ6bfWdTHvKwh
+	ykHTJzWQ==;
+Received: from vps0.lunn.ch ([156.67.10.101])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uOyZJ-00000001plq-1dFu;
+	Tue, 10 Jun 2025 12:59:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=0mN0Y6VG8wJwIHBPmUq5Ichmc5b23YwTM3GHpfC0Ov0=; b=ujDB7z68qrrQWLKAjGzbmCQGy3
+	LdOtDJSTUvPJoAR+dlK+SCrvQO4qgGvAcvh2Obe7Xf1qUhfc6kUAHntYjvGObWD50/ANPKe97yd3y
+	StFdUf5u32nQt5lMjBOlGoqnG9dJYy8rhkzxAKLYPIrFSRwObLsOO0zSTHB4qQv0slmA=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1uOyYu-00FGk5-Tp; Tue, 10 Jun 2025 14:58:44 +0200
+Date: Tue, 10 Jun 2025 14:58:44 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: linux@fw-web.de, myungjoo.ham@samsung.com, kyungmin.park@samsung.com,
+	cw00.choi@samsung.com, djakov@kernel.org, robh@kernel.org,
+	krzk+dt@kernel.org, conor+dt@kernel.org, olteanv@gmail.com,
+	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+	pabeni@redhat.com, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, jia-wei.chang@mediatek.com,
+	johnson.wang@mediatek.com, arinc.unal@arinc9.com,
+	Landen.Chao@mediatek.com, dqfext@gmail.com, sean.wang@mediatek.com,
+	daniel@makrotopia.org, lorenzo@kernel.org, nbd@nbd.name,
+	linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net-next] net: airoha: Add TCP LRO support
-Message-ID: <aEg1lvstEFgiZST1@lore-rh-laptop>
-References: <20250610-airoha-eth-lro-v1-1-3b128c407fd8@kernel.org>
- <CANn89iJsNWkWzAJbOvaBNjozuLOQBcpVo1bnvfeGq5Zm6h9e=Q@mail.gmail.com>
+	linux-mediatek@lists.infradead.org
+Subject: Re: Re: [PATCH v3 12/13] arm64: dts: mediatek: mt7988a-bpi-r4: add
+ sfp cages and link to gmac
+Message-ID: <e1a49ca7-f082-4983-89fe-1a8f8c8a3de1@lunn.ch>
+References: <20250608211452.72920-1-linux@fw-web.de>
+ <20250608211452.72920-13-linux@fw-web.de>
+ <934b1515-2da1-4479-848e-cd2475ebe98d@lunn.ch>
+ <trinity-b9ab960d-38f8-4524-b645-fc0832ce72ec-1749546239525@trinity-msg-rest-gmx-gmx-live-5d9b465786-6phds>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="I0VjOkFHRgh8EgMY"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CANn89iJsNWkWzAJbOvaBNjozuLOQBcpVo1bnvfeGq5Zm6h9e=Q@mail.gmail.com>
+In-Reply-To: <trinity-b9ab960d-38f8-4524-b645-fc0832ce72ec-1749546239525@trinity-msg-rest-gmx-gmx-live-5d9b465786-6phds>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250610_063941_041954_6CB6EEEC 
-X-CRM114-Status: GOOD (  17.17  )
+X-CRM114-CacheID: sfid-20250610_135909_527150_F3A950D3 
+X-CRM114-Status: GOOD (  13.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,68 +95,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+> > sff,sfp.yaml says:
+> > 
+> >   maximum-power-milliwatt:
+> >     minimum: 1000
+> >     default: 1000
+> >     description:
+> >       Maximum module power consumption Specifies the maximum power consumption
+> >       allowable by a module in the slot, in milli-Watts. Presently, modules can
+> >       be up to 1W, 1.5W or 2W.
+> > 
+> > I've no idea what will happen when the SFP core sees 3000. Is the
+> > comment out of date?
+> 
+> at least sfp-core has no issue with the setting
+> 
+> root@bpi-r4-phy-8G:~# dmesg | grep sfp
+> [    1.269437] sfp sfp1: Host maximum power 3.0W
+> [    1.613749] sfp sfp1: module CISCO-FINISAR    FTLX8571D3BCL-C2 rev A    sn S2209167650      dc 220916  
+> 
+> imho some modules require more than 2W (some gpon/xpon and 10G copper ethernet).
 
---I0VjOkFHRgh8EgMY
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Looking at the code:
 
-On Jun 10, Eric Dumazet wrote:
-> On Tue, Jun 10, 2025 at 2:12=E2=80=AFAM Lorenzo Bianconi <lorenzo@kernel.=
-org> wrote:
-> >
-[...]
-> > @@ -767,7 +887,7 @@ static int airoha_qdma_init_rx_queue(struct airoha_=
-queue *q,
-> >         int qid =3D q - &qdma->q_rx[0], thr;
-> >         dma_addr_t dma_addr;
-> >
-> > -       q->buf_size =3D PAGE_SIZE / 2;
-> > +       q->buf_size =3D pp_params.max_len / (2 * (1 + lro_queue));
->=20
-> Tell us more... It seems small LRO packets will consume a lot of
-> space, incurring a small skb->len/skb->truesize ratio, and bad TCP WAN
-> performance.
+static int sfp_module_parse_power(struct sfp *sfp)
+{
+        u32 power_mW = 1000;
+        bool supports_a2;
 
-I think the main idea is forward to hw LRO queues (queues 24-31 in this
-case) just specific protocols with mostly big packets but I completely
-agree we have an issue for small packets. One possible approach would be
-to define a threshold (e.g. 256B) and allocate a buffer or page from the
-page allocator for small packets (something similar to what mt7601u driver
-is doing[0]).  What do you think?
+        if (sfp->id.ext.sff8472_compliance >= SFP_SFF8472_COMPLIANCE_REV10_2 &&
+            sfp->id.ext.options & cpu_to_be16(SFP_OPTIONS_POWER_DECL))
+                power_mW = 1500;
+        /* Added in Rev 11.9, but there is no compliance code for this */
+        if (sfp->id.ext.sff8472_compliance >= SFP_SFF8472_COMPLIANCE_REV11_4 &&
+            sfp->id.ext.options & cpu_to_be16(SFP_OPTIONS_HIGH_POWER_LEVEL))
+                power_mW = 2000;
 
->=20
-> And order-5 pages are unlikely to be available in the long run anyway.
+How does your module indicate it needs 3000 mW? Does this bit of code
+need extending to read additional bits?
 
-I agree. I guess we can reduce the order to ~ 2 (something similar to
-mtk_eth_soc hw LRO implementation [1]).
-
->=20
-> LRO support would only make sense if the NIC is able to use multiple
-> order-0 pages to store the payload.
-
-The hw supports splitting big packets over multiple order-0 pages if we
-increase the MTU over one page size, but according to my understanding
-hw LRO requires contiguous memory to work.
-
-Regards,
-Lorenzo
-
-[0] https://github.com/torvalds/linux/blob/master/drivers/net/wireless/medi=
-atek/mt7601u/dma.c#L146
-[1] https://github.com/torvalds/linux/blob/master/drivers/net/ethernet/medi=
-atek/mtk_eth_soc.c#L2258
-
---I0VjOkFHRgh8EgMY
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaEg1kwAKCRA6cBh0uS2t
-rAYMAQD0nBIhigRn4PPAvOPLw/L0LoFZ4JC7kFUvDHjLuDo7PAD+IXfceq+l1hbh
-YjnyMxgeMGT9Hs0OOZbSoMd5kNU/Lwg=
-=z/fk
------END PGP SIGNATURE-----
-
---I0VjOkFHRgh8EgMY--
+	Andrew
 
