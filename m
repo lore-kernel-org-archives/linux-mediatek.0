@@ -4,121 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0755C678DC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 14:48:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6483C678DC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 14:48:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RqGam8k5HWYlvCSTlG3d6FDrTknckzRMelJd6omZhQA=; b=3oSQ45hYQ5LYJIvTtXk7NChxUO
-	RKkrm9o0/vAmJ5e76jZxUlB2MTZFIk6IsI9aE/fntS6DbwKg7xSfpz0jVm0yL+IzypQMPlvVuan/N
-	I+sMbjDHLVjBwM+ng+8/HBF9RRgtE6+w6gbaaeRs+c+EdU5fLQ0FbeMmu2N+9GspeLSpYH3gfMaJE
-	O+Gah96Q4zzoYQv84bOgMWIEkxyKejXuEuXoNeLsm2vRpxG0R0fBt24QC/DwJ+oukIv3qYtTlcRB5
-	BmZKr7pS3vC16qrcXDoglCGdCLV8SZNs4b7OW92nGN+gBOA3jGB4h2hpuhddzo1DY+GBD1jlj01dl
-	sSTw/QkQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=tZzaU59oPE6YTmR8ZmhjyU5Qzpkmbkp7Q1ygvd5Av4Y=; b=BlBVND+1iDCoYa
+	JRfgZT7J7pSZ5x3ElYfKXSQztWDz9H9iiLWrNFR8aA7tyJQ9NgkuPCbi4hGA1mJjbOrElU3tWqrgb
+	qM3AxXo8aYru4Y0viq7wr4ebkN83pIO/UDqUiGNIg4d7WKJzL3ZWhyV3oNUFFn2aLn0Jm4MRPPmNH
+	PIFSMOHMlnwmB0/5QfNBtWgFwLZAss7VOjmmNCCzPF6yrU3CQMgTZu/rMG/aaLqQ1xDfChzR0rrz3
+	a1uXznIWUgmJX8psUWYCqm8Kk/gmTHOb9a7bSS4ZE9Hdkg6mtfg/6GXzn7CSv646uaBV8Hz/n023w
+	QZMvJQGeD8eI68G7JioA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPMkj-0000000A9Qk-3oXA;
-	Wed, 11 Jun 2025 14:48:33 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1uPMks-0000000A9X4-0Swv;
+	Wed, 11 Jun 2025 14:48:42 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPHjZ-00000009TLl-2TJi;
-	Wed, 11 Jun 2025 09:27:02 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id A58C7A515D6;
-	Wed, 11 Jun 2025 09:27:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8A28DC4CEEE;
-	Wed, 11 Jun 2025 09:26:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1749634020;
-	bh=kubvO9a5J9TCMTW9jmX1mZZl7Tpjh1wDB67JD4ZFKvY=;
+	id 1uPHq3-00000009U8z-1qek;
+	Wed, 11 Jun 2025 09:33:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=tZzaU59oPE6YTmR8ZmhjyU5Qzpkmbkp7Q1ygvd5Av4Y=; b=i/HdOkfUBHyMZ5vRapPA6BqXCF
+	DIsazWQSJw0qO3vFLyAmFJhaBYmPp+yGZsYSHIsnUDxPuX/oDCXCy9C/HlmKAOVsqrSvRPia1ShvZ
+	kDBMWRRatfD+TIfpkBe6fVAlJZ/eaF4qYkHUh/3srTOEmAEbC5iwHOZRubP6Njh4phbTZIuPsgjLV
+	GJ5BOizE8aqbjNZU5hndzvIAOwgPIZql9ui3qXtbrEiynfHRkTGPNZttevgc6CU0E7eHomAtp+YFb
+	oo6kMcmOSS1RJq2dsjIrqBzmRQZl0xc41ggGX//hlGAj+PJLgP1qyjvIsqPkrqUvSCooPGauKIdUl
+	LtrC9RoQ==;
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uPHq1-00000002EXQ-0gmN;
+	Wed, 11 Jun 2025 09:33:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1749634418;
+	bh=oZEcpnP061nNjDS/WgnKTb1UcVd/WXF6k/yr0VPQsvg=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=AnwGGS1ZBEfJhqAb/K5CbTN/+/F54cJYJWtE6Np8/DqerNZ5MHZxz9e6E3Cd/pBoK
-	 9OHJfP1IXv/NQmY9fzPAzgVCGR22vnM5GxZIF5R7F56P9e8tHpJ0i/VUEtQ/s1gbjl
-	 T0vfrKvt3VMdjZ0KCAEYJwYlgdZZ7GkSAz8nMqwxiw7/CXdSfsnKq2iTMg5JhHhA+H
-	 P0z9XsGBTwsOqRMa9YthsmNeZ2tra6ct2X+SDvA3yM0dnYJkf3Wg6prI5xcSDs9+TN
-	 Zjy4BmrAY24fRGvKqBF2h7SJlBtc3aaMwBJo0jOw4sH4q328qjqWqr2ETaBfkbz5wX
-	 9DWL7N/ek5gTg==
-Message-ID: <7e197546-4bae-441c-a69f-9ae2566e8600@kernel.org>
-Date: Wed, 11 Jun 2025 11:26:54 +0200
+	b=Kizb/z0wcw/aH9ltLLM1EZhO+eukqEK/6W7COvd3FhHzaFkMY6jpcQX0Y3jUK6y6w
+	 logvkP55UMr/w1LWJkNQTgfe0gSwSyrIPV/bnnpcXaO4tA/QKK50LTVw91PWrcNb45
+	 /J/Kfdw8XBbwsl3cosQH2Kpyj/TFkCrZlgFpk6qtz1qjJJqDNfiIOdsQqtPBYFh1A7
+	 i0qPQQlgQuQapncN3qsw7/PbGiWHeDTQYTCxUcZUMGjEHnl24SDwe1c9hnc/bgh9ye
+	 A+35IOtHqr7+cPMV18Xw3AgB4gsC0WSELGgOAtzJjR+xC0jJhePabvljxkO6AWOxW+
+	 tYqNLJlm+Lw+Q==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8EC4417E05C1;
+	Wed, 11 Jun 2025 11:33:36 +0200 (CEST)
+Message-ID: <fecf4045-9cc4-46d2-ba4a-5818fcfcb059@collabora.com>
+Date: Wed, 11 Jun 2025 11:33:36 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 08/10] ASoC: dt-bindings: mediatek,mt8196-afe: add
- audio AFE document
-To: =?UTF-8?B?RGFycmVuIFllICjlj7bpo54p?= <Darren.Ye@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "linus.walleij@linaro.org" <linus.walleij@linaro.org>,
- "linux-sound@vger.kernel.org" <linux-sound@vger.kernel.org>,
- "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>,
- "broonie@kernel.org" <broonie@kernel.org>, "brgl@bgdev.pl" <brgl@bgdev.pl>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>, "tiwai@suse.com"
- <tiwai@suse.com>, "robh@kernel.org" <robh@kernel.org>,
- "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>, "perex@perex.cz"
- <perex@perex.cz>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-References: <20250610092852.21986-1-darren.ye@mediatek.com>
- <20250610092852.21986-9-darren.ye@mediatek.com>
- <20250611-private-magnificent-asp-63ef5d@kuoka>
- <bed13d4bba5923e0d71a5e32e61163c2e7958d68.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [PATCH v3 13/13] arm64: dts: mediatek: mt7988a-bpi-r4: configure
+ switch phys and leds
+To: Frank Wunderlich <linux@fw-web.de>,
+ MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ Chanwoo Choi <cw00.choi@samsung.com>, Georgi Djakov <djakov@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+References: <20250608211452.72920-1-linux@fw-web.de>
+ <20250608211452.72920-14-linux@fw-web.de>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <bed13d4bba5923e0d71a5e32e61163c2e7958d68.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <20250608211452.72920-14-linux@fw-web.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250611_022701_766018_2DB61F90 
-X-CRM114-Status: GOOD (  15.74  )
+X-CRM114-CacheID: sfid-20250611_103341_502427_C4A022A2 
+X-CRM114-Status: GOOD (  14.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,48 +94,119 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, linux-pm@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, DENG Qingfang <dqfext@gmail.com>, Johnson Wang <johnson.wang@mediatek.com>, linux-mediatek@lists.infradead.org, Jia-Wei Chang <jia-wei.chang@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/06/2025 11:09, Darren Ye (叶飞) wrote:
-> On Wed, 2025-06-11 at 10:27 +0200, Krzysztof Kozlowski wrote:
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
->>
->>
->> On Tue, Jun 10, 2025 at 05:27:25PM GMT, Darren.Ye wrote:
->>> From: Darren Ye <darren.ye@mediatek.com>
->>>
->>> Add mt8196 audio AFE document.
->>>
->>> Signed-off-by: Darren Ye <darren.ye@mediatek.com>
->>> ---
->>
->>
->> I gave you detailed instruction last time. Did you read it or you
->> decided to just ignore my review?
->>
->> Best regards,
->> Krzysztof
->>
+Il 08/06/25 23:14, Frank Wunderlich ha scritto:
+> From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> Hi Krzysztof,
+> Assign pinctrl to switch phys and leds.
 > 
-> I would never ignore your suggestions, on the contrary, I really
-> appreciate them. I may have missed your advice, and I'm very sorry for
-> causing any confusion. However, I haven't noticed it so far. Could you
-> please point it out or directly paste what needs to be revised? Thank
-> you.
-You ignored all comments, so how can I point what was missing? Everything.
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+> v2:
+> - add labels and led-function and include after dropping from soc dtsi
+> ---
+>   .../dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi | 61 +++++++++++++++++++
+>   1 file changed, 61 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
+> index d8b9cd794ee3..f10d3617dcac 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
+> @@ -4,6 +4,7 @@
+>   
+>   #include <dt-bindings/gpio/gpio.h>
+>   #include <dt-bindings/regulator/richtek,rt5190a-regulator.h>
+> +#include <dt-bindings/leds/common.h>
+>   
+>   #include "mt7988a.dtsi"
+>   
+> @@ -151,6 +152,66 @@ &gmac2 {
+>   	phy-mode = "usxgmii";
+>   };
+>   
+> +&gsw_phy0 {
+> +	pinctrl-names = "gbe-led";
+> +	pinctrl-0 = <&gbe0_led0_pins>;
 
-If this helps you to understand the comments, then go to previous email,
-read each comment and respond to each how did you implement it. If you
-cannot come with the answer how you implement it, then you did not
-implement it...
+pinctrl-0
+pinctrl-names (here and everywhere else)
 
-I don't know how to be helpful? I even wrote long detailed instruction,
-with references, explaining you what to do.
+> +};
+> +
+> +&gsw_phy0_led0 {
 
-Best regards,
-Krzysztof
+function
+color
+status
+
+> +	status = "okay";
+> +	function = LED_FUNCTION_WAN;
+> +	color = <LED_COLOR_ID_GREEN>;
+> +};
+> +
+> +&gsw_port0 {
+> +	label = "wan";
+> +};
+> +
+> +&gsw_phy1 {
+> +	pinctrl-names = "gbe-led";
+> +	pinctrl-0 = <&gbe1_led0_pins>;
+> +};
+> +
+> +&gsw_phy1_led0 {
+> +	status = "okay";
+> +	function = LED_FUNCTION_LAN;
+> +	color = <LED_COLOR_ID_GREEN>;
+> +};
+> +
+> +&gsw_port1 {
+> +	label = "lan1";
+> +};
+> +
+> +&gsw_phy2 {
+> +	pinctrl-names = "gbe-led";
+> +	pinctrl-0 = <&gbe2_led0_pins>;
+> +};
+> +
+> +&gsw_phy2_led0 {
+> +	status = "okay";
+> +	function = LED_FUNCTION_LAN;
+> +	color = <LED_COLOR_ID_GREEN>;
+> +};
+> +
+> +&gsw_port2 {
+> +	label = "lan2";
+> +};
+> +
+> +&gsw_phy3 {
+
+function
+
+pinctrl-0
+pinctrl-names
+
+
+> +	pinctrl-names = "gbe-led";
+> +	function = LED_FUNCTION_LAN;
+> +	pinctrl-0 = <&gbe3_led0_pins>;
+> +};
+> +
+> +&gsw_phy3_led0 {
+
+color
+status
+
+> +	status = "okay";
+> +	color = <LED_COLOR_ID_GREEN>;
+> +};
+
+...after which
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+
 
