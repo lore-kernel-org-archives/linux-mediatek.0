@@ -4,66 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C723C61CE7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 08:38:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D0A0C677C4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 09:09:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZNUuzIMhIMAgMLWmJfRvj2s7zMHvWJKXmIWGlIvHxWg=; b=ftx1m+vMBWQ43DXqd96vTh308A
-	2sjh0Q2zNEDH6Ih2E/gNlhhaluXXjSBRVX7zhNfXgEwCY8NtSBlWfZXLCZySMtyPPYzXe8KvlspEn
-	m1WcE0RRw2a6B9Z7EiXk7RwHckbjO7anPOxIehtDKoU0ZVMd49PG+tLrd1C1TkjwRNgJzmC/QzbPP
-	SglELx8fNmit1SQoF7nO2FUYzKNj4jQUMUaYuuPvo8BcNFaDjbr7EOx32zmnSrwe0Re6c6Y0M+OfO
-	t0JZo4OgqG5KVnQ/NKOngpnBPc4hILrNwDK/xgJCd8eLq0CGyEW3+Oq9T9UFaxEcl2aS8yZfM29vE
-	c5dMisZw==;
+	bh=KiyDyclqecsk9BIhJPotcA86DvJLdYwDNphU2h/Syvs=; b=3lWHMLmSDmCvxo6TlJMDlKGhNr
+	Xa4SsGo8aFJoSgDMHznWJFrQs1ldMZoxumOZx4yvJur3aPpBt3sdPFyxj1Xe8eC85xrad3IWd7HcB
+	4HBERRvroyuAJBMsT760msRyOEHkucJDmELADYN14Xbfp+Au7mconC7/mgT1XuJqXDI/4AFYlaYKz
+	PpW5mO2MK5uVkwVNgzGSf02J5832X+roHsBWaKP5kMtnpQa/fNrsx3rkI0UJhU2xIS76rMLehhSPb
+	J58HdX5FUx6PVeh6nxeDWiwOynYqUH3nr9QPIEd3VX4ZAAHOHM9wcBEqBEr61b0KvC8EnmSbMknOT
+	lo2jAL/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPGyL-00000009Jgq-306h;
-	Wed, 11 Jun 2025 08:38:13 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uPHSD-00000009QjD-2W08;
+	Wed, 11 Jun 2025 09:09:05 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPGoN-00000009Gec-1eie;
-	Wed, 11 Jun 2025 08:27:56 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 23B5144BF2;
-	Wed, 11 Jun 2025 08:27:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6FAAEC4CEEF;
-	Wed, 11 Jun 2025 08:27:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1749630474;
-	bh=jVJDP6VW2c8elIa1D16cOy8gn1EBmQkj2x9PgzSs7p4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=OCYgA5OhHA2wQU2VsOhqOj4L86jotUxPIBLlMqBdvs7v2ZTOaWk4sRm1mI1umJGRq
-	 zZLRN4I74yu5o9BiuWDaw+rnjtBgIMvdD0UQV5oFuQj5Fr1Uegz2rCOqoCjNtco///
-	 eGz5xPzMdeYHEoyyd3fk9fRKop2VhZ0zowt4hEO9po/tX8jctg8CQfd1m3fjMzNx4t
-	 tn1gEKvYWYBPNcKoWOZnfi7/ILFzZjq48BSdB1XQlXRgDUmbXXwIRN21IK9fXLV55s
-	 B4LBExtZSsWsFzY6UYR7QXBwRq1PAari20VmIeX8ASd3CmqkEYguWzitzE1iXVN/Sr
-	 6axg/cFccqiMg==
-Date: Wed, 11 Jun 2025 10:27:51 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: "Darren.Ye" <darren.ye@mediatek.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
-	Linus Walleij <linus.walleij@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>, linux-sound@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org
-Subject: Re: [PATCH v4 08/10] ASoC: dt-bindings: mediatek,mt8196-afe: add
- audio AFE document
-Message-ID: <20250611-private-magnificent-asp-63ef5d@kuoka>
-References: <20250610092852.21986-1-darren.ye@mediatek.com>
- <20250610092852.21986-9-darren.ye@mediatek.com>
+	id 1uPFzh-000000097XF-3Zgl;
+	Wed, 11 Jun 2025 07:35:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=KiyDyclqecsk9BIhJPotcA86DvJLdYwDNphU2h/Syvs=; b=Eut6sWk2BgP4hDpNAbg99MJbkz
+	O3nviTNb55Gd5UJ7d8N+Y6QEAnhAB6Btq/nxi7ZPAx1N/+BItFrUe399A7iEQjxw6x1f5Vobd/AT/
+	NoOrYHvrNshRRG5bIdFPaW1bwt7gSa/GzdXZqgOya+crwldwz+Hcw7+8VEXnZefuooVrveYPYA8aP
+	SSTCL6TQQi5wqz5x/Z5IBwzxvFDEwDfH1seGKkNv0xe1kU8lngOjgNB3ogS5huDDyfdGTTmg1PTiH
+	A/uO5nKk1soQq/Y4ZmC9gJGX3wobGsfI/ApYr28+7Dnncl6XsZhMD7SQXkz5vWTQC5+Ha33fNJ3q5
+	18bSbXIg==;
+Received: from relay4-d.mail.gandi.net ([2001:4b98:dc4:8::224])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uPFzf-00000002A0S-1fwS;
+	Wed, 11 Jun 2025 07:35:33 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id E7773443D3;
+	Wed, 11 Jun 2025 07:35:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1749627326;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=KiyDyclqecsk9BIhJPotcA86DvJLdYwDNphU2h/Syvs=;
+	b=ExHWWoEY7rGIzBH2hTP41+dRx7QD45h9+GCRlhMqsGjxIUva5rl/uu6M7C0UepYUk7Y9I4
+	y0QCs58j7ZYuyIoZCiOsT7vAdRmdkfa4EtnvTsBT1pAMdwtmXmYU7NRLjlgz/AogBmT9gq
+	2US+W4HBVTtpEw73AVkrR8bxCiZTAOQiYLy4Yt0KuNdklqu4q7Okv0y1OK+A26vcxX6zqf
+	6wsxpsI6vtrPBsIEOGd0J/N5QdPcZ5QjoQqEX5Kxy9Ra7Jwt2ZmzTwU5dJMbq7HNgHQQcr
+	ISRQwIoW5kmXWeccGDoDXEyzEJpJB9DPCj8MHSy8O/THILFtsRDHsDLiDWTTvg==
+Date: Wed, 11 Jun 2025 09:35:21 +0200
+From: Alexandre Belloni <alexandre.belloni@bootlin.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>,
+	Basavaraj Natikar <Basavaraj.Natikar@amd.com>,
+	Shyam Sundar S K <Shyam-sundar.S-k@amd.com>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	Joel Stanley <joel@jms.id.au>, Avi Fishman <avifishman70@gmail.com>,
+	Tomer Maimon <tmaimon77@gmail.com>,
+	Tali Perry <tali.perry1@gmail.com>,
+	Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>,
+	Benjamin Fair <benjaminfair@google.com>,
+	Jonathan =?iso-8859-1?Q?Neusch=E4fer?= <j.neuschaefer@gmx.net>,
+	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	David Rhodes <david.rhodes@cirrus.com>,
+	Richard Fitzgerald <rf@opensource.cirrus.com>,
+	Charles Keepax <ckeepax@opensource.cirrus.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Sean Wang <sean.wang@kernel.org>,
+	Jesper Nilsson <jesper.nilsson@axis.com>,
+	Lars Persson <lars.persson@axis.com>,
+	Damien Le Moal <dlemoal@kernel.org>,
+	Vladimir Zapolskiy <vz@mleia.com>,
+	Michal Simek <michal.simek@amd.com>,
+	Emil Renner Berthing <kernel@esmil.dk>,
+	Jianlong Huang <jianlong.huang@starfivetech.com>,
+	Hal Feng <hal.feng@starfivetech.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Manivannan Sadhasivam <mani@kernel.org>, linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-aspeed@lists.ozlabs.org,
+	openbmc@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org, linux-sound@vger.kernel.org,
+	patches@opensource.cirrus.com, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@axis.com, linux-riscv@lists.infradead.org,
+	linux-rtc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com
+Subject: Re: [PATCH v2 17/17] rtc: stm32: Constify static 'pinctrl_desc'
+Message-ID: <20250611073521eaf70434@mail.local>
+References: <20250611-pinctrl-const-desc-v2-0-b11c1d650384@linaro.org>
+ <20250611-pinctrl-const-desc-v2-17-b11c1d650384@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250610092852.21986-9-darren.ye@mediatek.com>
+In-Reply-To: <20250611-pinctrl-const-desc-v2-17-b11c1d650384@linaro.org>
+X-GND-State: clean
+X-GND-Score: -100
+X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtddugdduudeklecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfitefpfffkpdcuggftfghnshhusghstghrihgsvgenuceurghilhhouhhtmecufedtudenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtvdenucfhrhhomheptehlvgigrghnughrvgcuuegvlhhlohhnihcuoegrlhgvgigrnhgurhgvrdgsvghllhhonhhisegsohhothhlihhnrdgtohhmqeenucggtffrrghtthgvrhhnpeeiieevfeekgeevgfegudeuuedtfffgiefffedtudeftdehkeelieettdffhffftdenucfkphepvdgrtddumegtsgdugeemheehieemjegrtddtmedvugdutdemkeejugehmedvsgguieemvdehjeejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepvdgrtddumegtsgdugeemheehieemjegrtddtmedvugdutdemkeejugehmedvsgguieemvdehjeejpdhhvghloheplhhotggrlhhhohhsthdpmhgrihhlfhhrohhmpegrlhgvgigrnhgurhgvrdgsvghllhhonhhisegsohhothhlihhnrdgtohhmpdhnsggprhgtphhtthhopeegledprhgtphhtthhopehkrhiihihsiihtohhfrdhkohiilhhofihskhhisehlihhnrghrohdrohhrghdprhgtphhtthhopehlihhnuhhsrdifrghllhgvihhjsehlihhnrghrohdrohhrghdprhgtphhtthhopeeurghsrghvrghrrghjrdfpr
+ ghtihhkrghrsegrmhgurdgtohhmpdhrtghpthhtohepufhhhigrmhdqshhunhgurghrrdfuqdhksegrmhgurdgtohhmpdhrtghpthhtoheprghnughrvgifsegtohguvggtohhnshhtrhhutghtrdgtohhmrdgruhdprhgtphhtthhopehjohgvlhesjhhmshdrihgurdgruhdprhgtphhtthhopegrvhhifhhishhhmhgrnhejtdesghhmrghilhdrtghomhdprhgtphhtthhopehtmhgrihhmohhnjeejsehgmhgrihhlrdgtohhm
+X-GND-Sasl: alexandre.belloni@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250611_012755_452105_6A286D16 
-X-CRM114-Status: UNSURE (   8.09  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250611_083531_548159_14B0E70B 
+X-CRM114-Status: GOOD (  16.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,19 +124,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 10, 2025 at 05:27:25PM GMT, Darren.Ye wrote:
-> From: Darren Ye <darren.ye@mediatek.com>
+On 11/06/2025 08:13:49+0200, Krzysztof Kozlowski wrote:
+> The local static 'struct pinctrl_desc' is not modified, so can be made
+> const for code safety.
 > 
-> Add mt8196 audio AFE document.
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+Acked-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
+
 > 
-> Signed-off-by: Darren Ye <darren.ye@mediatek.com>
 > ---
-
-
-I gave you detailed instruction last time. Did you read it or you
-decided to just ignore my review?
-
-Best regards,
-Krzysztof
-
+> 
+> Patch depends on this series - const in pinctrl core. Please ack and
+> this should go via pinctrl tree.
+> ---
+>  drivers/rtc/rtc-stm32.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/rtc/rtc-stm32.c b/drivers/rtc/rtc-stm32.c
+> index ef8fb88aab48a0edad19ae5872421815aa04fe46..d4ebf3eb54aa9e91c8e9f8254f571c53794192fd 100644
+> --- a/drivers/rtc/rtc-stm32.c
+> +++ b/drivers/rtc/rtc-stm32.c
+> @@ -393,7 +393,7 @@ static const struct pinmux_ops stm32_rtc_pinmux_ops = {
+>  	.strict			= true,
+>  };
+>  
+> -static struct pinctrl_desc stm32_rtc_pdesc = {
+> +static const struct pinctrl_desc stm32_rtc_pdesc = {
+>  	.name = DRIVER_NAME,
+>  	.pins = stm32_rtc_pinctrl_pins,
+>  	.npins = ARRAY_SIZE(stm32_rtc_pinctrl_pins),
+> 
+> -- 
+> 2.45.2
+> 
 
