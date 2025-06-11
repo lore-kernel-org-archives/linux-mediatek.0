@@ -4,95 +4,136 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79CEDC678DC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 14:49:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4796BC71131
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 14:50:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:Content-Type:
-	Content-Transfer-Encoding:In-Reply-To:From:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xc1Rw8rxxHeqcL2S98t+3Zj03z6AtNBwZXlDz1pqDvA=; b=CFHdbMaCaIeFzvcnu07L/byuQy
-	R8v7s5EMrpSHkdqW+lxafwGqej30TP6Hc/t+mUvYoSpHG8VZnPeKa0wyWXIzH8HD4Sx1/34/YIka5
-	9KY1EnuSWtKuUht1ilJcfr5X2uqh/vEpQemcE63Sxy+Aaq6KjrXfOAWuLMvn7sZvJDUDZIqz+sebt
-	ZCV2cPdiBiFlClEN8oR0q1FVCFdhCf+UHOmsZeMMJE/KHu4+eawZbF0TxwI6uYKiTEEAkV15vhh1n
-	5E7+6qdaw5Z3b1YdEWhYF6T/tc1X55QKOKblHByQJQAlZ34C23fJT5nV8q88rU3J2nZ7Fp+4OBmv1
-	go+7iDBA==;
+	bh=zYXRhiTCKjL/ILq0gnh0QN/qZigjj3xGh6BayDOZZXM=; b=jfempgZN9TLOqrSD4Akx9RqrmL
+	9mD3Kylkkbc6xZOHOYWfk9XV3UN24fLPAE3UleOAy1XIVHRN3FWBrIzHCW5fMi+l/YGCuSzXojnKq
+	F62lqHFx3TOXZNAQevz4IaGubLxx0K9eWLpkjFOhyDbKgD2JRy13cYFOIuGKUqY7g3vDnHpVefqzU
+	/00eptu31suArrYgxXmOlqLo2klTCxdU7ewtb096BibsivgBztA/6SS3cy5HZj4WKVoZeDgqLf9+n
+	HAEzAabjgnXTDK8W/1TkvipbCv3d8i+zCNh1EnQjFZurGta9BPza/TbMiRqGCghfK0bp49lMPK9KK
+	m6P7hBWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPMlk-0000000AB0i-0C8T;
-	Wed, 11 Jun 2025 14:49:37 +0000
-Received: from mailout2.w1.samsung.com ([210.118.77.12])
+	id 1uPMmP-0000000AC26-43bd;
+	Wed, 11 Jun 2025 14:50:17 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPI2U-00000009WZy-3wDc;
-	Wed, 11 Jun 2025 09:46:37 +0000
-Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
-	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20250611094630euoutp020a8d12ac42d98b28cec73e3a51148e4c~H8_91aj7i2986829868euoutp02q;
-	Wed, 11 Jun 2025 09:46:30 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20250611094630euoutp020a8d12ac42d98b28cec73e3a51148e4c~H8_91aj7i2986829868euoutp02q
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1749635190;
-	bh=Xc1Rw8rxxHeqcL2S98t+3Zj03z6AtNBwZXlDz1pqDvA=;
-	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
-	b=D7M0jQva/CmleKGyjhOgJl78zjV/oPx6s5KxnXtLUYYdEaml2NNAYdEs9/7As/Eia
-	 YSQHUvoHjilQEyBpFlxkzghHuFOR7/FgJCv4co3qfOojnfgqtbKkOvhpftKuev4720
-	 5cdGTpagHumvO3lEJCpPxI6ssKCDarO+B8joe2aE=
-Received: from eusmtip2.samsung.com (unknown [203.254.199.222]) by
-	eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
-	20250611094629eucas1p11c41674f1a6fcbefd14b4fd99166cae1~H8_9eZCnm1166611666eucas1p11;
-	Wed, 11 Jun 2025 09:46:29 +0000 (GMT)
-Received: from [106.210.134.192] (unknown [106.210.134.192]) by
-	eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
-	20250611094624eusmtip20a59cf478d3dc363416fa64f5fe470b4~H8_5DJCRv0322703227eusmtip2K;
-	Wed, 11 Jun 2025 09:46:24 +0000 (GMT)
-Message-ID: <ffa49c2a-9197-4820-96b0-636b3e649cf5@samsung.com>
-Date: Wed, 11 Jun 2025 11:46:24 +0200
+	id 1uPI9p-00000009Xya-2fCG;
+	Wed, 11 Jun 2025 09:54:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:References:
+	In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=zYXRhiTCKjL/ILq0gnh0QN/qZigjj3xGh6BayDOZZXM=; b=VTancJQBNry+btvz0XGuV4WBGj
+	D+4duJkgHXj7qEv9rn+ta9eA9R3QlI1wKZMOBVFhwZZq+oVg6l7HdyLlpkrWVy+qsP/akmOCysvvn
+	6+b3VkV1aN1o1LPUwOON5UAPYaVX/WvUc3JUjor978qS9DA0Ci7ENvaW6bpTnAM1+He2Y1Q391xWj
+	dWza3MZrDzYxUgsVKKdsTMAIXb9bOaLto8WRL6+EloIiydNwbXfU/Wm2cEUtngRNcX3nVqzu//gXo
+	DibhAjaDYQlpv5EkrtOyVxHgRfNG/MEiuKhPFCl9GQ2NEdIxxvX+G2lZuxE0HIxae9j3ufuG1sKaQ
+	BNcrKxVw==;
+Received: from mout.gmx.net ([212.227.15.15])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uPI9n-00000002FQY-2091;
+	Wed, 11 Jun 2025 09:54:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1749635594; x=1750240394; i=frank-w@public-files.de;
+	bh=zYXRhiTCKjL/ILq0gnh0QN/qZigjj3xGh6BayDOZZXM=;
+	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
+	 Content-Type:Date:In-Reply-To:References:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=Xo8m6QJCi1JyBEsPJjQ97sZu9YQMq5UsQ72KLON8c8AQU4UkYH2k0L6HiMzd8Qm/
+	 vgz3OvDfSnHTx+ByyF7I2B3iCZU+PtY3wyiVoq4DjAzGRiIFjQMkFjs5PFIkiPdzE
+	 nJca4cpThicSjz1ZKm3bk4nhioTV0OoKHuOYhw2UTt126ntxmmGLnXKta8UTeuzs4
+	 V8i1JA+Y7mWJy/o7GuOkogc0h7MBnYdlvBKCc7LS6StO97JvVXleC68/NaDVTWOfz
+	 ieSKAWS5rGI0OUKqz5/Lx8/sc2QPwulr/6nVh40Gf8BAeeRSoIveN92IAPr/z2IXK
+	 3r/sEEgp5T+chUDbJQ==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [100.64.173.171] ([100.64.173.171]) by
+ trinity-msg-rest-gmx-gmx-live-847b5f5c86-xfcwg (via HTTP); Wed, 11 Jun 2025
+ 09:53:14 +0000
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 4/7] iommu: Remove iommu_ops pgsize_bitmap from
- simple drivers
-To: Jason Gunthorpe <jgg@nvidia.com>, Alexandre Ghiti <alex@ghiti.fr>, Alim
-	Akhtar <alim.akhtar@samsung.com>, Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Albert
-	Ou <aou@eecs.berkeley.edu>, asahi@lists.linux.dev, Baolin Wang
-	<baolin.wang@linux.alibaba.com>, David Woodhouse <dwmw2@infradead.org>,
-	Gerald Schaefer <gerald.schaefer@linux.ibm.com>, Heiko Stuebner
-	<heiko@sntech.de>, iommu@lists.linux.dev, Janne Grunau <j@jannau.net>,
-	Jean-Philippe Brucker <jean-philippe@linaro.org>, Jernej Skrabec
-	<jernej.skrabec@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Joerg
-	Roedel <joro@8bytes.org>, Krzysztof Kozlowski <krzk@kernel.org>,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
-	Matthew Rosato <mjrosato@linux.ibm.com>, Neal Gompa <neal@gompa.dev>, Orson
-	Zhai <orsonzhai@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>, Paul
-	Walmsley <paul.walmsley@sifive.com>, Rob Clark
-	<robin.clark@oss.qualcomm.com>, Robin Murphy <robin.murphy@arm.com>, Samuel
-	Holland <samuel@sholland.org>, Sven Peter <sven@kernel.org>, Thierry Reding
-	<thierry.reding@gmail.com>, Krishna Reddy <vdumpa@nvidia.com>,
-	virtualization@lists.linux.dev, Chen-Yu Tsai <wens@csie.org>, Will Deacon
-	<will@kernel.org>, Yong Wu <yong.wu@mediatek.com>, Chunyan Zhang
-	<zhang.lyra@gmail.com>
-Cc: Lu Baolu <baolu.lu@linux.intel.com>, Kevin Tian <kevin.tian@intel.com>,
-	patches@lists.linux.dev, Niklas Schnelle <schnelle@linux.ibm.com>, Sven
-	Peter <sven@svenpeter.dev>, Tomasz Jeznach <tjeznach@rivosinc.com>
-Content-Language: en-US
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-In-Reply-To: <4-v2-68a2e1ba507c+1fb-iommu_rm_ops_pgsize_jgg@nvidia.com>
-Content-Transfer-Encoding: 7bit
-X-CMS-MailID: 20250611094629eucas1p11c41674f1a6fcbefd14b4fd99166cae1
-X-Msg-Generator: CA
-Content-Type: text/plain; charset="utf-8"
-X-RootMTR: 20250609204211eucas1p171527915cb5843e72782a02a3521d2c7
-X-EPHeader: CA
-X-CMS-RootMailID: 20250609204211eucas1p171527915cb5843e72782a02a3521d2c7
-References: <CGME20250609204211eucas1p171527915cb5843e72782a02a3521d2c7@eucas1p1.samsung.com>
-	<4-v2-68a2e1ba507c+1fb-iommu_rm_ops_pgsize_jgg@nvidia.com>
+Message-ID: <trinity-86821bec-44c3-4443-948c-129059072e31-1749635594371@trinity-msg-rest-gmx-gmx-live-847b5f5c86-xfcwg>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: angelogioacchino.delregno@collabora.com, linux@fw-web.de,
+ myungjoo.ham@samsung.com, kyungmin.park@samsung.com, cw00.choi@samsung.com,
+ djakov@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, andrew@lunn.ch, olteanv@gmail.com,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, matthias.bgg@gmail.com
+Cc: jia-wei.chang@mediatek.com, johnson.wang@mediatek.com,
+ arinc.unal@arinc9.com, Landen.Chao@mediatek.com, dqfext@gmail.com,
+ sean.wang@mediatek.com, daniel@makrotopia.org, lorenzo@kernel.org,
+ nbd@nbd.name, linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Aw: Re: [PATCH v3 06/13] arm64: dts: mediatek: mt7988: add basic
+ ethernet-nodes
+Content-Type: text/plain; charset=UTF-8
+Date: Wed, 11 Jun 2025 09:53:14 +0000
+In-Reply-To: <10d6fe88-75ff-4c02-8fdd-e1101aaa565c@collabora.com>
+References: <20250608211452.72920-1-linux@fw-web.de>
+ <20250608211452.72920-7-linux@fw-web.de>
+ <10d6fe88-75ff-4c02-8fdd-e1101aaa565c@collabora.com>
+X-UI-CLIENT-META-MAIL-DROP: W10=
+X-Provags-ID: V03:K1:Q2R61HcTqndi0q11hWidyahbItcW6ovT4kgROL1nVAsKt0arHVAd/NiryzdzXvAIws3t1
+ ltx6Ujod5/iaAeAuFrBp4VokrPC0pJudFY+6gFvpd1MtY33eWlb2ozX94z0F2Mjq/aXDsO/3ET5G
+ GFAlTdZsBexqzqnJ+QwafaN3oXIxoVCkaoBT1kMbhQtbf32oXXYwf8ZlyRiRYv/4/94izt82b38Q
+ NThXJCHzy8z7Zt5QvO7dDdxPjFfYAK6TA992FYMywk7zpo/mgwL3rvjWvd59fDqeE2tV7SE01nEu
+ hMqr+0lS+1c7ydPOToBhQUpp+Fg99b2tHnBunWJPcfetcBJ0wpzTXiMDJJ+hiq5Tv4=
+UI-OutboundReport: notjunk:1;M01:P0:2Zyrp1I1JME=;mBDTp/4Eo5Q/GEjqqicjM4prH5Z
+ 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
+ 6/+IGGwuXw==
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250611_024635_573546_1BAE94CB 
-X-CRM114-Status: GOOD (  18.97  )
+X-CRM114-CacheID: sfid-20250611_105407_646608_865166C6 
+X-CRM114-Status: GOOD (  16.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,226 +148,181 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 09.06.2025 22:41, Jason Gunthorpe wrote:
-> These drivers just have a constant value for their page size, move it
-> into their domain_alloc_paging function before setting up the geometry.
->
-> Reviewed-by: Kevin Tian <kevin.tian@intel.com>
-> Acked-by: Niklas Schnelle <schnelle@linux.ibm.com> # for s390-iommu.c
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> ---
->   drivers/iommu/exynos-iommu.c   | 3 ++-
-Acked-by: Marek Szyprowski <m.szyprowski@samsung.com> # for exynos-iommu.c
->   drivers/iommu/ipmmu-vmsa.c     | 4 ++--
->   drivers/iommu/mtk_iommu_v1.c   | 3 ++-
->   drivers/iommu/omap-iommu.c     | 3 ++-
->   drivers/iommu/rockchip-iommu.c | 3 ++-
->   drivers/iommu/s390-iommu.c     | 2 +-
->   drivers/iommu/sprd-iommu.c     | 3 ++-
->   drivers/iommu/sun50i-iommu.c   | 3 ++-
->   drivers/iommu/tegra-smmu.c     | 3 ++-
->   9 files changed, 17 insertions(+), 10 deletions(-)
->
-> diff --git a/drivers/iommu/exynos-iommu.c b/drivers/iommu/exynos-iommu.c
-> index fcb6a0f7c08275..b62a8f35c3e851 100644
-> --- a/drivers/iommu/exynos-iommu.c
-> +++ b/drivers/iommu/exynos-iommu.c
-> @@ -925,6 +925,8 @@ static struct iommu_domain *exynos_iommu_domain_alloc_paging(struct device *dev)
->   	spin_lock_init(&domain->pgtablelock);
->   	INIT_LIST_HEAD(&domain->clients);
->   
-> +	domain->domain.pgsize_bitmap = SECT_SIZE | LPAGE_SIZE | SPAGE_SIZE;
-> +
->   	domain->domain.geometry.aperture_start = 0;
->   	domain->domain.geometry.aperture_end   = ~0UL;
->   	domain->domain.geometry.force_aperture = true;
-> @@ -1477,7 +1479,6 @@ static const struct iommu_ops exynos_iommu_ops = {
->   	.device_group = generic_device_group,
->   	.probe_device = exynos_iommu_probe_device,
->   	.release_device = exynos_iommu_release_device,
-> -	.pgsize_bitmap = SECT_SIZE | LPAGE_SIZE | SPAGE_SIZE,
->   	.of_xlate = exynos_iommu_of_xlate,
->   	.default_domain_ops = &(const struct iommu_domain_ops) {
->   		.attach_dev	= exynos_iommu_attach_device,
-> diff --git a/drivers/iommu/ipmmu-vmsa.c b/drivers/iommu/ipmmu-vmsa.c
-> index 90341b24a81155..ffa892f6571406 100644
-> --- a/drivers/iommu/ipmmu-vmsa.c
-> +++ b/drivers/iommu/ipmmu-vmsa.c
-> @@ -430,7 +430,7 @@ static int ipmmu_domain_init_context(struct ipmmu_vmsa_domain *domain)
->   	 * non-secure mode.
->   	 */
->   	domain->cfg.quirks = IO_PGTABLE_QUIRK_ARM_NS;
-> -	domain->cfg.pgsize_bitmap = SZ_1G | SZ_2M | SZ_4K;
-> +	domain->cfg.pgsize_bitmap = domain->io_domain.pgsize_bitmap;
->   	domain->cfg.ias = 32;
->   	domain->cfg.oas = 40;
->   	domain->cfg.tlb = &ipmmu_flush_ops;
-> @@ -571,6 +571,7 @@ static struct iommu_domain *ipmmu_domain_alloc_paging(struct device *dev)
->   		return NULL;
->   
->   	mutex_init(&domain->mutex);
-> +	domain->io_domain.pgsize_bitmap = SZ_1G | SZ_2M | SZ_4K;
->   
->   	return &domain->io_domain;
->   }
-> @@ -882,7 +883,6 @@ static const struct iommu_ops ipmmu_ops = {
->   	 */
->   	.device_group = IS_ENABLED(CONFIG_ARM) && !IS_ENABLED(CONFIG_IOMMU_DMA)
->   			? generic_device_group : generic_single_device_group,
-> -	.pgsize_bitmap = SZ_1G | SZ_2M | SZ_4K,
->   	.of_xlate = ipmmu_of_xlate,
->   	.default_domain_ops = &(const struct iommu_domain_ops) {
->   		.attach_dev	= ipmmu_attach_device,
-> diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-> index 66824982e05fbf..496cfe37243ac2 100644
-> --- a/drivers/iommu/mtk_iommu_v1.c
-> +++ b/drivers/iommu/mtk_iommu_v1.c
-> @@ -288,6 +288,8 @@ static struct iommu_domain *mtk_iommu_v1_domain_alloc_paging(struct device *dev)
->   	if (!dom)
->   		return NULL;
->   
-> +	dom->domain.pgsize_bitmap = MT2701_IOMMU_PAGE_SIZE;
-> +
->   	return &dom->domain;
->   }
->   
-> @@ -582,7 +584,6 @@ static const struct iommu_ops mtk_iommu_v1_ops = {
->   	.probe_finalize = mtk_iommu_v1_probe_finalize,
->   	.release_device	= mtk_iommu_v1_release_device,
->   	.device_group	= generic_device_group,
-> -	.pgsize_bitmap	= MT2701_IOMMU_PAGE_SIZE,
->   	.owner          = THIS_MODULE,
->   	.default_domain_ops = &(const struct iommu_domain_ops) {
->   		.attach_dev	= mtk_iommu_v1_attach_device,
-> diff --git a/drivers/iommu/omap-iommu.c b/drivers/iommu/omap-iommu.c
-> index 3c62337f43c677..21c218976143ef 100644
-> --- a/drivers/iommu/omap-iommu.c
-> +++ b/drivers/iommu/omap-iommu.c
-> @@ -1584,6 +1584,8 @@ static struct iommu_domain *omap_iommu_domain_alloc_paging(struct device *dev)
->   
->   	spin_lock_init(&omap_domain->lock);
->   
-> +	omap_domain->domain.pgsize_bitmap = OMAP_IOMMU_PGSIZES;
-> +
->   	omap_domain->domain.geometry.aperture_start = 0;
->   	omap_domain->domain.geometry.aperture_end   = (1ULL << 32) - 1;
->   	omap_domain->domain.geometry.force_aperture = true;
-> @@ -1735,7 +1737,6 @@ static const struct iommu_ops omap_iommu_ops = {
->   	.release_device	= omap_iommu_release_device,
->   	.device_group	= generic_single_device_group,
->   	.of_xlate	= omap_iommu_of_xlate,
-> -	.pgsize_bitmap	= OMAP_IOMMU_PGSIZES,
->   	.default_domain_ops = &(const struct iommu_domain_ops) {
->   		.attach_dev	= omap_iommu_attach_dev,
->   		.map_pages	= omap_iommu_map,
-> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-> index 22f74ba33a0e38..f4a5ad096343ab 100644
-> --- a/drivers/iommu/rockchip-iommu.c
-> +++ b/drivers/iommu/rockchip-iommu.c
-> @@ -1081,6 +1081,8 @@ static struct iommu_domain *rk_iommu_domain_alloc_paging(struct device *dev)
->   	spin_lock_init(&rk_domain->dt_lock);
->   	INIT_LIST_HEAD(&rk_domain->iommus);
->   
-> +	rk_domain->domain.pgsize_bitmap = RK_IOMMU_PGSIZE_BITMAP;
-> +
->   	rk_domain->domain.geometry.aperture_start = 0;
->   	rk_domain->domain.geometry.aperture_end   = DMA_BIT_MASK(32);
->   	rk_domain->domain.geometry.force_aperture = true;
-> @@ -1171,7 +1173,6 @@ static const struct iommu_ops rk_iommu_ops = {
->   	.probe_device = rk_iommu_probe_device,
->   	.release_device = rk_iommu_release_device,
->   	.device_group = generic_single_device_group,
-> -	.pgsize_bitmap = RK_IOMMU_PGSIZE_BITMAP,
->   	.of_xlate = rk_iommu_of_xlate,
->   	.default_domain_ops = &(const struct iommu_domain_ops) {
->   		.attach_dev	= rk_iommu_attach_device,
-> diff --git a/drivers/iommu/s390-iommu.c b/drivers/iommu/s390-iommu.c
-> index 433b59f435302b..9c80d61deb2c0b 100644
-> --- a/drivers/iommu/s390-iommu.c
-> +++ b/drivers/iommu/s390-iommu.c
-> @@ -557,6 +557,7 @@ static struct iommu_domain *s390_domain_alloc_paging(struct device *dev)
->   	}
->   	zdev->end_dma = zdev->start_dma + aperture_size - 1;
->   
-> +	s390_domain->domain.pgsize_bitmap = SZ_4K;
->   	s390_domain->domain.geometry.force_aperture = true;
->   	s390_domain->domain.geometry.aperture_start = 0;
->   	s390_domain->domain.geometry.aperture_end = max_tbl_size(s390_domain);
-> @@ -1158,7 +1159,6 @@ static struct iommu_domain blocking_domain = {
->   	.domain_alloc_paging = s390_domain_alloc_paging, \
->   	.probe_device = s390_iommu_probe_device, \
->   	.device_group = generic_device_group, \
-> -	.pgsize_bitmap = SZ_4K, \
->   	.get_resv_regions = s390_iommu_get_resv_regions, \
->   	.default_domain_ops = &(const struct iommu_domain_ops) { \
->   		.attach_dev	= s390_iommu_attach_device, \
-> diff --git a/drivers/iommu/sprd-iommu.c b/drivers/iommu/sprd-iommu.c
-> index 941d1f361c8cda..c7ca1d8a0b1530 100644
-> --- a/drivers/iommu/sprd-iommu.c
-> +++ b/drivers/iommu/sprd-iommu.c
-> @@ -143,6 +143,8 @@ static struct iommu_domain *sprd_iommu_domain_alloc_paging(struct device *dev)
->   
->   	spin_lock_init(&dom->pgtlock);
->   
-> +	dom->domain.pgsize_bitmap = SPRD_IOMMU_PAGE_SIZE;
-> +
->   	dom->domain.geometry.aperture_start = 0;
->   	dom->domain.geometry.aperture_end = SZ_256M - 1;
->   	dom->domain.geometry.force_aperture = true;
-> @@ -410,7 +412,6 @@ static const struct iommu_ops sprd_iommu_ops = {
->   	.probe_device	= sprd_iommu_probe_device,
->   	.device_group	= generic_single_device_group,
->   	.of_xlate	= sprd_iommu_of_xlate,
-> -	.pgsize_bitmap	= SPRD_IOMMU_PAGE_SIZE,
->   	.owner		= THIS_MODULE,
->   	.default_domain_ops = &(const struct iommu_domain_ops) {
->   		.attach_dev	= sprd_iommu_attach_device,
-> diff --git a/drivers/iommu/sun50i-iommu.c b/drivers/iommu/sun50i-iommu.c
-> index 76c9620af4bba8..de10b569d9a940 100644
-> --- a/drivers/iommu/sun50i-iommu.c
-> +++ b/drivers/iommu/sun50i-iommu.c
-> @@ -697,6 +697,8 @@ sun50i_iommu_domain_alloc_paging(struct device *dev)
->   
->   	refcount_set(&sun50i_domain->refcnt, 1);
->   
-> +	sun50i_domain->domain.pgsize_bitmap = SZ_4K;
-> +
->   	sun50i_domain->domain.geometry.aperture_start = 0;
->   	sun50i_domain->domain.geometry.aperture_end = DMA_BIT_MASK(32);
->   	sun50i_domain->domain.geometry.force_aperture = true;
-> @@ -842,7 +844,6 @@ static int sun50i_iommu_of_xlate(struct device *dev,
->   
->   static const struct iommu_ops sun50i_iommu_ops = {
->   	.identity_domain = &sun50i_iommu_identity_domain,
-> -	.pgsize_bitmap	= SZ_4K,
->   	.device_group	= generic_single_device_group,
->   	.domain_alloc_paging = sun50i_iommu_domain_alloc_paging,
->   	.of_xlate	= sun50i_iommu_of_xlate,
-> diff --git a/drivers/iommu/tegra-smmu.c b/drivers/iommu/tegra-smmu.c
-> index 61897d50162dd7..fa0913e9346c71 100644
-> --- a/drivers/iommu/tegra-smmu.c
-> +++ b/drivers/iommu/tegra-smmu.c
-> @@ -318,6 +318,8 @@ static struct iommu_domain *tegra_smmu_domain_alloc_paging(struct device *dev)
->   
->   	spin_lock_init(&as->lock);
->   
-> +	as->domain.pgsize_bitmap = SZ_4K;
-> +
->   	/* setup aperture */
->   	as->domain.geometry.aperture_start = 0;
->   	as->domain.geometry.aperture_end = 0xffffffff;
-> @@ -1002,7 +1004,6 @@ static const struct iommu_ops tegra_smmu_ops = {
->   	.probe_device = tegra_smmu_probe_device,
->   	.device_group = tegra_smmu_device_group,
->   	.of_xlate = tegra_smmu_of_xlate,
-> -	.pgsize_bitmap = SZ_4K,
->   	.default_domain_ops = &(const struct iommu_domain_ops) {
->   		.attach_dev	= tegra_smmu_attach_dev,
->   		.map_pages	= tegra_smmu_map,
+Hi Angelo,
 
-Best regards
--- 
-Marek Szyprowski, PhD
-Samsung R&D Institute Poland
+thanks for review.
 
+> Gesendet: Mittwoch, 11. Juni 2025 um 11:33
+> Von: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.c=
+om>
+> Betreff: Re: [PATCH v3 06/13] arm64: dts: mediatek: mt7988: add basic et=
+hernet-nodes
+>
+> Il 08/06/25 23:14, Frank Wunderlich ha scritto:
+> > From: Frank Wunderlich <frank-w@public-files.de>
+> >=20
+> > Add basic ethernet related nodes.
+> >=20
+> > Mac1+2 needs pcs (sgmii+usxgmii) to work correctly which will be linke=
+d
+> > later when driver is merged.
+> >=20
+> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> > ---
+> >   arch/arm64/boot/dts/mediatek/mt7988a.dtsi | 124 ++++++++++++++++++++=
++-
+> >   1 file changed, 121 insertions(+), 3 deletions(-)
+> >=20
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/arm64/bo=
+ot/dts/mediatek/mt7988a.dtsi
+> > index 560ec86dbec0..ee1e01d720fe 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+> > @@ -680,7 +680,28 @@ xphyu3port0: usb-phy@11e13000 {
+> >   			};
+> >   		};
+> >  =20
+> > -		clock-controller@11f40000 {
+> > +		xfi_tphy0: phy@11f20000 {
+> > +			compatible =3D "mediatek,mt7988-xfi-tphy";
+> > +			reg =3D <0 0x11f20000 0 0x10000>;
+> > +			resets =3D <&watchdog 14>;
+> > +			clocks =3D <&xfi_pll CLK_XFIPLL_PLL_EN>,
+> > +				 <&topckgen CLK_TOP_XFI_PHY_0_XTAL_SEL>;
+> > +			clock-names =3D "xfipll", "topxtal";
+>=20
+> resets here please, not after reg.
+
+OK
+
+> > +			mediatek,usxgmii-performance-errata;
+> > +			#phy-cells =3D <0>;
+
+maybe #phy-cells above vendor-specific property like below?
+
+> > +		};
+> > +
+> > +		xfi_tphy1: phy@11f30000 {
+> > +			compatible =3D "mediatek,mt7988-xfi-tphy";
+> > +			reg =3D <0 0x11f30000 0 0x10000>;
+> > +			resets =3D <&watchdog 15>;
+> > +			clocks =3D <&xfi_pll CLK_XFIPLL_PLL_EN>,
+> > +				 <&topckgen CLK_TOP_XFI_PHY_1_XTAL_SEL>;
+> > +			clock-names =3D "xfipll", "topxtal";
+>=20
+> ditto
+
+ok, #phy-cells last?
+
+> > +			#phy-cells =3D <0>;
+> > +		};
+> > +
+> > +		xfi_pll: clock-controller@11f40000 {
+> >   			compatible =3D "mediatek,mt7988-xfi-pll";
+> >   			reg =3D <0 0x11f40000 0 0x1000>;
+> >   			resets =3D <&watchdog 16>;
+> > @@ -714,19 +735,116 @@ phy_calibration_p3: calib@97c {
+> >   			};
+> >   		};
+> >  =20
+> > -		clock-controller@15000000 {
+> > +		ethsys: clock-controller@15000000 {
+> >   			compatible =3D "mediatek,mt7988-ethsys", "syscon";
+> >   			reg =3D <0 0x15000000 0 0x1000>;
+> >   			#clock-cells =3D <1>;
+> >   			#reset-cells =3D <1>;
+> >   		};
+> >  =20
+> > -		clock-controller@15031000 {
+> > +		ethwarp: clock-controller@15031000 {
+> >   			compatible =3D "mediatek,mt7988-ethwarp";
+> >   			reg =3D <0 0x15031000 0 0x1000>;
+> >   			#clock-cells =3D <1>;
+> >   			#reset-cells =3D <1>;
+> >   		};
+> > +
+> > +		eth: ethernet@15100000 {
+> > +			compatible =3D "mediatek,mt7988-eth";
+> > +			reg =3D <0 0x15100000 0 0x80000>,
+> > +			      <0 0x15400000 0 0x200000>;
+>=20
+> reg =3D <0 0x15100000 0 0x80000>, <0 0x15400000 0 0x200000>;
+>=20
+> it's 83 columns - it's fine.
+
+ok, thought 80 columns is the limit...
+
+> > +			interrupts =3D <GIC_SPI 196 IRQ_TYPE_LEVEL_HIGH>,
+> > +				     <GIC_SPI 197 IRQ_TYPE_LEVEL_HIGH>,
+> > +				     <GIC_SPI 198 IRQ_TYPE_LEVEL_HIGH>,
+> > +				     <GIC_SPI 199 IRQ_TYPE_LEVEL_HIGH>;
+> > +			clocks =3D <&ethsys CLK_ETHDMA_CRYPT0_EN>,
+> > +				 <&ethsys CLK_ETHDMA_FE_EN>,
+> > +				 <&ethsys CLK_ETHDMA_GP2_EN>,
+> > +				 <&ethsys CLK_ETHDMA_GP1_EN>,
+> > +				 <&ethsys CLK_ETHDMA_GP3_EN>,
+> > +				 <&ethwarp CLK_ETHWARP_WOCPU2_EN>,
+> > +				 <&ethwarp CLK_ETHWARP_WOCPU1_EN>,
+> > +				 <&ethwarp CLK_ETHWARP_WOCPU0_EN>,
+> > +				 <&ethsys CLK_ETHDMA_ESW_EN>,
+> > +				 <&topckgen CLK_TOP_ETH_GMII_SEL>,
+> > +				 <&topckgen CLK_TOP_ETH_REFCK_50M_SEL>,
+> > +				 <&topckgen CLK_TOP_ETH_SYS_200M_SEL>,
+> > +				 <&topckgen CLK_TOP_ETH_SYS_SEL>,
+> > +				 <&topckgen CLK_TOP_ETH_XGMII_SEL>,
+> > +				 <&topckgen CLK_TOP_ETH_MII_SEL>,
+> > +				 <&topckgen CLK_TOP_NETSYS_SEL>,
+> > +				 <&topckgen CLK_TOP_NETSYS_500M_SEL>,
+> > +				 <&topckgen CLK_TOP_NETSYS_PAO_2X_SEL>,
+> > +				 <&topckgen CLK_TOP_NETSYS_SYNC_250M_SEL>,
+> > +				 <&topckgen CLK_TOP_NETSYS_PPEFB_250M_SEL>,
+> > +				 <&topckgen CLK_TOP_NETSYS_WARP_SEL>,
+> > +				 <&ethsys CLK_ETHDMA_XGP1_EN>,
+> > +				 <&ethsys CLK_ETHDMA_XGP2_EN>,
+> > +				 <&ethsys CLK_ETHDMA_XGP3_EN>;
+> > +			clock-names =3D "crypto", "fe", "gp2", "gp1",
+> > +				      "gp3",
+>=20
+> clock-names =3D "crypto", "fe", "gp2", "gp1", "gp3",
+>=20
+> :-)
+
+do not know how this was happen...of course i change this ;)
+
+> > +				      "ethwarp_wocpu2", "ethwarp_wocpu1",
+> > +				      "ethwarp_wocpu0", "esw", "top_eth_gmii_sel",
+> > +				      "top_eth_refck_50m_sel", "top_eth_sys_200m_sel",
+> > +				      "top_eth_sys_sel", "top_eth_xgmii_sel",
+> > +				      "top_eth_mii_sel", "top_netsys_sel",
+> > +				      "top_netsys_500m_sel", "top_netsys_pao_2x_sel",
+> > +				      "top_netsys_sync_250m_sel",
+> > +				      "top_netsys_ppefb_250m_sel",
+> > +				      "top_netsys_warp_sel","xgp1", "xgp2", "xgp3";
+> > +			assigned-clocks =3D <&topckgen CLK_TOP_NETSYS_2X_SEL>,
+> > +					  <&topckgen CLK_TOP_NETSYS_GSW_SEL>,
+> > +					  <&topckgen CLK_TOP_USXGMII_SBUS_0_SEL>,
+> > +					  <&topckgen CLK_TOP_USXGMII_SBUS_1_SEL>,
+> > +					  <&topckgen CLK_TOP_SGM_0_SEL>,
+> > +					  <&topckgen CLK_TOP_SGM_1_SEL>;
+> > +			assigned-clock-parents =3D <&apmixedsys CLK_APMIXED_NET2PLL>,
+> > +						 <&topckgen CLK_TOP_NET1PLL_D4>,
+> > +						 <&topckgen CLK_TOP_NET1PLL_D8_D4>,
+> > +						 <&topckgen CLK_TOP_NET1PLL_D8_D4>,
+> > +						 <&apmixedsys CLK_APMIXED_SGMPLL>,
+> > +						 <&apmixedsys CLK_APMIXED_SGMPLL>;
+>=20
+> Address and size cells must go *before* vendor-specific properties
+
+OK, same for #phy-cells above?
+
+> > +			mediatek,ethsys =3D <&ethsys>;
+> > +			mediatek,infracfg =3D <&topmisc>;
+> > +			#address-cells =3D <1>;
+> > +			#size-cells =3D <0>;
+> > +
+>=20
+> Cheers!
+> Angelo
+>=20
 
