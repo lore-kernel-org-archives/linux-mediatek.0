@@ -4,92 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A582FC71149
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 17:59:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 288AFC71149
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 17:59:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gPwsajLBsNL8XA7/sk2C74g5jjpD7PSQHxW65bPJTD4=; b=DwUnOy4LWGi5b1SmfbdE5Aph1L
-	aNydUJvvsX1P41TaEI0ekJU1iYT9k5LYz0cFe4/mlBm7qHWb1sZCDdwmRMT5jiJ0tVzxDaWSeh+8O
-	jrYAq3HE5SJCXIvBUpxzaoJH6H1aMNWA6nSrtsPAGdwNA2KmnGMss0Ago6n3Z97BinPWpgIhZDUmY
-	TCIs7BgxyQ4UvmOEGGOyh2cKyMbVKqb5rp9sbogSkyoz3FiqfD9ycS/qdeZ4/OKeF8VR7DFdCzxQ8
-	ues4zv3TD/jzw7V42n4nYp4AQysupeDO3LL2GXVkAneA7vnqIEG6mB2UeNJ4Xn+uJUcF25YWIDXxy
-	SJoD92pA==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=jIqZLsu+/x5dRvLruSMuPxmHqtGPMhfj7ymBrDEk+WE=; b=wnbjXvwzSZGrxTmBqMuPUa+7mY
+	3HtvUKCcUcrqBogl8jlQxqYGLwnW8U1RPrKgtFG34AdR2rnxf3+u0R4bcGW+piSEaVz9yH1faKLDr
+	LOKADOkPjhxvnW5NjPlcENqb6gCgfT+Ag2LzSm7nqM6RbWDXMiBH52jRItBMQelHseDRy9ZvOuf4V
+	JLlWolBYZ5W26V08xdKiWHnXy5EwumVV3iaEx5kN0gW7T69qkKjmaywtWQZQ1SGUpIxduVSM19H2E
+	HQRVHZlBxUimPMnprgMnKiHbCPgarNn8GVeOcMcQNe8A9r6CC9Arg4cl5QxQGh5sM0Da06qJwnnSx
+	YvAVVzsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPPjh-0000000Aloa-2nX6;
-	Wed, 11 Jun 2025 17:59:41 +0000
-Received: from out-69.smtpout.orange.fr ([193.252.22.69] helo=out.smtpout.orange.fr)
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPLKI-00000009w6e-2fhG;
-	Wed, 11 Jun 2025 13:17:13 +0000
-Received: from [172.16.82.72] ([124.33.176.97])
-	by smtp.orange.fr with ESMTPA
-	id PLK1uaf7zSZTqPLK3uQEoa; Wed, 11 Jun 2025 15:17:07 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
-	s=t20230301; t=1749647827;
-	bh=gPwsajLBsNL8XA7/sk2C74g5jjpD7PSQHxW65bPJTD4=;
-	h=Message-ID:Date:MIME-Version:Subject:To:From;
-	b=M17/FgXiTcdr7lS6G03JsO24EzLrPAbSaLdpabOS8KSO9ZEXvCwjxVSLQlhclwiey
-	 GU56llktfNWO77AIbtJnO0IAiggrUGmaiUzv8Xmkw2DgB0RpdGc07IBsV0w1nsbXu8
-	 fAXtlPWEo57EiI6hAVY6AQFCCwfdJ6BzRYW0kgC5C3yIIN6W5eFA9Fc3JLan2k8kHc
-	 egUAG7bVTwa/EvSd4aaAKk/s2n6UNuFr5HTZgzxV3+RLRh3GYkYM20NYmhzLtOoyO6
-	 HW0Pw9zzC3ok64XoPrHLF5ogesxujWXldaMR0SeWUqXPPz9UoJXWYF/7kr4W1ygWPl
-	 fGi2IavEa67Cw==
-X-ME-Helo: [172.16.82.72]
-X-ME-Auth: bWFpbGhvbC52aW5jZW50QHdhbmFkb28uZnI=
-X-ME-Date: Wed, 11 Jun 2025 15:17:07 +0200
-X-ME-IP: 124.33.176.97
-Message-ID: <e252f15f-ea80-4969-b754-82da5f9a7f56@wanadoo.fr>
-Date: Wed, 11 Jun 2025 22:16:52 +0900
+	id 1uPPju-0000000AmCS-1Iu6;
+	Wed, 11 Jun 2025 17:59:54 +0000
+Received: from l-sdnproxy.icoremail.net ([20.188.111.126] helo=azure-sdnproxy.icoremail.net)
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uPLii-00000009zSN-3WeL
+	for linux-mediatek@lists.infradead.org;
+	Wed, 11 Jun 2025 13:42:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=buaa.edu.cn; s=buaa; h=Received:From:To:Cc:Subject:Date:
+	Message-Id:MIME-Version:Content-Transfer-Encoding; bh=jIqZLsu+/x
+	5dRvLruSMuPxmHqtGPMhfj7ymBrDEk+WE=; b=TQNwUR8tkbjh1dpIlORcRUJ5qF
+	Y1byt/FvSSlBwwu31laElZBE4leJVreP37JSr8glFH4H2UT0B21OHrv2jV96M/PG
+	nDA6aQqTYiyFSwIA51B4/kE7pFl8Up7EBVBwm8CKEAfbeSWSSw4DzTTBKK8DtX0b
+	PnAdKzgz2lSUOTsLA=
+Received: from f76011e66543.. (unknown [10.133.16.49])
+	by coremail-app1 (Coremail) with SMTP id OCz+CgD3vVOvh0loTAypBQ--.57342S2;
+	Wed, 11 Jun 2025 21:42:07 +0800 (CST)
+From: hzy15610046011 <houzhanyi61@buaa.edu.cn>
+To: nbd@nbd.name,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	StanleyYP.Wang@mediatek.com,
+	mingyen.hsieh@mediatek.com,
+	chad@monroe.io,
+	razvan.grigore@vampirebyte.ro
+Cc: linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	houzhanyi61@buaa.edu.cn,
+	zhanyihou6011@gmail.com
+Subject: [PATCH] Add non-null judgement branch for return value of  mt76_connac_get_he_phy_cap().
+Date: Wed, 11 Jun 2025 13:42:09 +0000
+Message-Id: <20250611134209.312009-1-houzhanyi61@buaa.edu.cn>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/4] net: can: mcp251x: use new GPIO line value setter
- callbacks
-To: Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-can@vger.kernel.org,
- linux-arm-msm@vger.kernel.org,
- Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
- Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Linus Walleij <linus.walleij@linaro.org>,
- "Chester A. Unal" <chester.a.unal@arinc9.com>,
- Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Marc Kleine-Budde <mkl@pengutronix.de>,
- Heiner Kallweit <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>
-References: <20250610-gpiochip-set-rv-net-v1-0-35668dd1c76f@linaro.org>
- <20250610-gpiochip-set-rv-net-v1-3-35668dd1c76f@linaro.org>
- <b2f87cff-3a81-482b-bfdd-389950b7ec8e@wanadoo.fr>
- <CAMRc=MfCwz3BV15aATr_5er7wU=AmKV=Z=sHJyrjEvLwx2cMjQ@mail.gmail.com>
- <b9ea7e0e-7dd1-460b-950a-083620dd52e9@wanadoo.fr>
- <CAMRc=Mf4qupdJEm9mWPF3-B3hprn6AvP7Po2=aQYbaSvFf8OeA@mail.gmail.com>
-Content-Language: en-US
-From: Vincent Mailhol <mailhol.vincent@wanadoo.fr>
-Autocrypt: addr=mailhol.vincent@wanadoo.fr; keydata=
- xjMEZluomRYJKwYBBAHaRw8BAQdAf+/PnQvy9LCWNSJLbhc+AOUsR2cNVonvxhDk/KcW7FvN
- LFZpbmNlbnQgTWFpbGhvbCA8bWFpbGhvbC52aW5jZW50QHdhbmFkb28uZnI+wrIEExYKAFoC
- GwMFCQp/CJcFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4AWIQTtj3AFdOZ/IOV06OKrX+uI
- bbuZwgUCZx41XhgYaGtwczovL2tleXMub3BlbnBncC5vcmcACgkQq1/riG27mcIYiwEAkgKK
- BJ+ANKwhTAAvL1XeApQ+2NNNEwFWzipVAGvTRigA+wUeyB3UQwZrwb7jsQuBXxhk3lL45HF5
- 8+y4bQCUCqYGzjgEZx4y8xIKKwYBBAGXVQEFAQEHQJrbYZzu0JG5w8gxE6EtQe6LmxKMqP6E
- yR33sA+BR9pLAwEIB8J+BBgWCgAmFiEE7Y9wBXTmfyDldOjiq1/riG27mcIFAmceMvMCGwwF
- CQPCZwAACgkQq1/riG27mcJU7QEA+LmpFhfQ1aij/L8VzsZwr/S44HCzcz5+jkxnVVQ5LZ4B
- ANOCpYEY+CYrld5XZvM8h2EntNnzxHHuhjfDOQ3MAkEK
-In-Reply-To: <CAMRc=Mf4qupdJEm9mWPF3-B3hprn6AvP7Po2=aQYbaSvFf8OeA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: OCz+CgD3vVOvh0loTAypBQ--.57342S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7AF1fAryxZw4rKw45KF4fAFb_yoW8JF4xpF
+	Wjg34Y9w4UGr4Dta18Aa1vyFWrJ3ZYgry2grn5Xwn8u39ayFn3Gr4IvFy3Ar1rAFZ2k347
+	XF4qvry3GrnYv37anT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUU9v1IIY67AEw4v_Jr0_Jr4l8cAvFVAK0II2c7xJM28CjxkF64kE
+	wVA0rcxSw2x7M28EF7xvwVC0I7IYx2IY67AKxVW5JVW7JwA2z4x0Y4vE2Ix0cI8IcVCY1x
+	0267AKxVWxJVW8Jr1l84ACjcxK6I8E87Iv67AKxVW0oVCq3wA2z4x0Y4vEx4A2jsIEc7Cj
+	xVAFwI0_GcCE3s1lnxkEFVAIw20F6cxK64vIFxWle2I262IYc4CY6c8Ij28IcVAaY2xG8w
+	Aqx4xG64xvF2IEw4CE5I8CrVC2j2WlYx0E2Ix0cI8IcVAFwI0_JF0_Jw1lYx0Ex4A2jsIE
+	14v26r1j6r4UMcvjeVCFs4IE7xkEbVWUJVW8JwACjcxG0xvY0x0EwIxGrwACjI8F5VA0II
+	8E6IAqYI8I648v4I1lFIxGxcIEc7CjxVA2Y2ka0xkIwI1lc7CjxVAaw2AFwI0_JF0_Jw1l
+	c2xSY4AK6svPMxAIw28IcxkI7VAKI48JMxAIw28IcVCjz48v1sIEY20_Aw1UJr1UMxC20s
+	026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_
+	JrI_JrWlx4CE17CEb7AF67AKxVWUtVW8ZwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14
+	v26r1j6r1xMIIF0xvE2Ix0cI8IcVCY1x0267AKxVW8JVWxJwCI42IY6xAIw20EY4v20xva
+	j40_Jr0_JF4lIxAIcVC2z280aVAFwI0_Jr0_Gr1lIxAIcVC2z280aVCY1x0267AKxVW8JV
+	W8JrUvcSsGvfC2KfnxnUUI43ZEXa7VUbfWrJUUUUU==
+X-CM-SenderInfo: 1v1siiaurqmqpexdthxhgxhubq/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250611_061711_878181_6C65100F 
-X-CRM114-Status: GOOD (  21.79  )
+X-CRM114-CacheID: sfid-20250611_064225_635913_0BE5AAE2 
+X-CRM114-Status: UNSURE (   7.06  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,95 +95,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/06/2025 at 01:05, Bartosz Golaszewski wrote:
-> On Tue, Jun 10, 2025 at 5:48 PM Vincent Mailhol
-> <mailhol.vincent@wanadoo.fr> wrote:
->>
->> On 10/06/2025 at 23:05, Bartosz Golaszewski wrote:
->>> On Tue, Jun 10, 2025 at 3:55 PM Vincent Mailhol
->>> <mailhol.vincent@wanadoo.fr> wrote:
->>>>
->>>> On 10/06/2025 at 21:37, Bartosz Golaszewski wrote:
->>>>> From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
->>>>>
->>>>> struct gpio_chip now has callbacks for setting line values that return
->>>>> an integer, allowing to indicate failures. Convert the driver to using
->>>>> them.
->>>>>
->>>>> Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
->>>>                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->>>>
->>>> This does not match the address with which you sent the patch: brgl@bgdev.pl
->>>>
->>>>> ---
->>>>>  drivers/net/can/spi/mcp251x.c | 16 ++++++++++------
->>>>>  1 file changed, 10 insertions(+), 6 deletions(-)
->>>>>
->>>>> diff --git a/drivers/net/can/spi/mcp251x.c b/drivers/net/can/spi/mcp251x.c
->>>>> index ec5c64006a16f703bc816983765584c5f3ac76e8..7545497d14b46c6388f3976c2bf7b9a99e959c1e 100644
->>>>> --- a/drivers/net/can/spi/mcp251x.c
->>>>> +++ b/drivers/net/can/spi/mcp251x.c
->>>>> @@ -530,8 +530,8 @@ static int mcp251x_gpio_get_multiple(struct gpio_chip *chip,
->>>>>       return 0;
->>>>>  }
->>>>>
->>>>> -static void mcp251x_gpio_set(struct gpio_chip *chip, unsigned int offset,
->>>>> -                          int value)
->>>>> +static int mcp251x_gpio_set(struct gpio_chip *chip, unsigned int offset,
->>>>> +                         int value)
->>>>>  {
->>>>>       struct mcp251x_priv *priv = gpiochip_get_data(chip);
->>>>>       u8 mask, val;
->>>>> @@ -545,9 +545,11 @@ static void mcp251x_gpio_set(struct gpio_chip *chip, unsigned int offset,
->>>>>
->>>>>       priv->reg_bfpctrl &= ~mask;
->>>>>       priv->reg_bfpctrl |= val;
->>>>> +
->>>>> +     return 0;
->>>>
->>>> mcp251x_gpio_set() calls mcp251x_write_bits() which calls mcp251x_spi_write()
->>>> which can fail.
->>>>
->>>> For this change to really make sense, the return value of mcp251x_spi_write()
->>>> should be propagated all the way around.
->>>>
->>>
->>> I don't know this code so I followed the example of the rest of the
->>> codebase where the result of this function is never checked - even in
->>> functions that do return values. I didn't know the reason for this and
->>> so didn't want to break anything as I have no means of testing it.
->>
->> The return value of mcp251x_spi_write() is used in mcp251x_hw_reset(). In other
->> locations, mcp251x_spi_write() is only used in functions which return void, so
->> obviously, the return value is not checked.
->>
-> 
-> Wait, after a second look GPIO callbacks (including those that return
-> a value like request()) use mcp251x_write_bits() which has no return
-> value.
+From: H-Mole <houzhanyi61@buaa.edu.cn>
 
-Yes. Read again my first message:
+Since commit https://github.com/torvalds/linux/commit/f503ae90c7355e8506e68498fe84c1357894cd5b
+ showed that drivers/net/wireless/mediatek/mt76/mt7996/mcu.c misses a non-null judgement for the
+ return value of mt76_connac_get_he_phy_cap on variable vc, this null-pointer problem may also happen
+ on mt7915. This commit added such non-null judgement like what was added to function mt7996_mcu_sta_bfer_he()
+ in commit f503ae90c7355e8506e68498fe84c1357894cd5b.
 
-  mcp251x_gpio_set() calls mcp251x_write_bits() which calls mcp251x_spi_write()
-  which can fail.
+Signed-off-by: H-Mole <houzhanyi61@buaa.edu.cn>
+---
+ drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-My point is that the grand father can fail.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index 427542777abc..5dca50d40080 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -1184,6 +1184,9 @@ mt7915_mcu_sta_bfer_he(struct ieee80211_sta *sta, struct ieee80211_vif *vif,
+ 	u8 nss_mcs = mt7915_mcu_get_sta_nss(mcs_map);
+ 	u8 snd_dim, sts;
+ 
++	if (!vc)
++		return;
++
+ 	bf->tx_mode = MT_PHY_TYPE_HE_SU;
+ 
+ 	mt7915_mcu_sta_sounding_rate(bf);
+-- 
+2.39.5
 
-> It probably should propagate what mcp251x_spi_write() returns
-
-Exactly what I asked for :)
-
-> but that's material for a different series.
-
-Why? Are you going to do this other series?
-
-If the answer is no, then please just do it here. Propagating the error in
-mcp251x_write_bits() is a three line change. Am I asking for too much?
-
-> The goal of this one is to
-> use the new setters treewide and drop the old ones from struct
-> gpio_chip.
-
-Yours sincerely,
-Vincent Mailhol
 
