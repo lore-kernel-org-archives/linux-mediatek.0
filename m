@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1385BC677C4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 01:02:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33DB1C677C4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 01:42:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
 	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QDEOQmnvnplS2coaoF2aGBFke/jZ+NsrVq8betPNt2M=; b=yzRMz72X8dTbQ1PqAzmjJ59mbg
-	RMC1vEUV4IITuLVewE9cZmvSOLUFQwyj+B7kfV6MC7hOxePviGGv65FfDUCZiPxLhLgQVftd5ivi6
-	BXEt9VnI8ws1yDioPiCjgjzaEyfpyYoS9u2krHKLXJ6iNNwaDsQSZVXprbeJwneGuGdMVbzKLM8+C
-	uRX4x32L6+32y+CFXZLcmS2wYwb0t2JAv8Ut5kTHXYGhu+xicU7M4n9Q3/hvk90CU3Bf6E/eWyA7h
-	mBvFlnS40UOXYb8XbwmthpEyKZR27BmqN8EYeUwnwHJIX8VssU5ntY8kMrKDYu7sxZeXtxolVqNcg
-	GwOj8bhA==;
+	bh=Yo3yz5BMjYfj9ce62hhtEcdA5mP1hurGDFjgZa6yn1s=; b=CLZXpv8McmsEwASSSb/GlX9k1M
+	kVQpZwQKtxvLQfcuNyt3OXncanYl5gZk7Bdsc1WiL/nNTyoeuUF4hRc8yWa1DPnIiYk/sKnsGAniV
+	Yo6t7xN26NAk4QmTS1UIJA8JLX5E2hRko3o3d8pXYhtiWNXm81hykdjDf6DRIkyQh9X7FgTfeZVCG
+	oBvZMUOGFnKt7TCKpfX4uEzlR9586V/YewzxJb4V8N+9iOJqwseSETQR9lB2xK4avTn/85pnaieCc
+	0HfvWzr3iHJHinrWV2VVK9QUrIt454qx8m5s1gwXkueAplBDVheSG+ZlIULNx9FwpGafbtuRWhv8o
+	hXNTdchg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uP9r7-00000008WGQ-3dOF;
-	Wed, 11 Jun 2025 01:02:17 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uPATl-00000008ZrL-3IbJ;
+	Wed, 11 Jun 2025 01:42:13 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uP9ox-00000008W6m-3lB4;
-	Wed, 11 Jun 2025 01:00:05 +0000
+	id 1uPARb-00000008ZfN-1z32;
+	Wed, 11 Jun 2025 01:40:00 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 7ECED5C4D29;
-	Wed, 11 Jun 2025 00:57:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AB8DBC4CEED;
-	Wed, 11 Jun 2025 01:00:01 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id C1EA8A50602;
+	Wed, 11 Jun 2025 01:39:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 67D63C4CEED;
+	Wed, 11 Jun 2025 01:39:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1749603601;
-	bh=cDlgL9TIpTlOy9qfViDqqnNylmEqXONsBlqRKuuJ9Mg=;
+	s=k20201202; t=1749605998;
+	bh=Bz/sRXFpQ7lHFcfA2/bnaSMfCYG5l2KB657imddWrI4=;
 	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=KI2wiENi0OoTu8cyoIEtIpz5gUvXQ92Id8s+MbreiV4S+yc9084DLWGoL9R0LvsZZ
-	 VjR2rlLDR66AN70GIa12bO1S4/HIm8ls70zfdK64hDvTMxEfH17wzsy+pYTEUt4R+o
-	 +4QdjB29x4EggOerNzzgWYjH4INFm3f7c13Biy931vJrOd7e1L4yF7RnVCpHJJdOXX
-	 EY33BfGMsqRbeKnUgLpKgxxkgZUfsl3lpT7Ih3Fdk7mzO2CEd3gCOR1/3PX5qHVsXK
-	 2CgFP3s2b9sAk0c6aa2C4MNoH41bMzSSu2poCijR9sQv7r/dRWOAxzvJfq0JwO4QVw
-	 wgjfk+NoiXsIw==
+	b=myqnKGag/LJhx2LvkFJDig+Cf+l5GwrhxfKe0nV5YzDPDazlGq0xQH6pCfy/t5y3o
+	 aT2fWpLH7ea2EQQNONG1CMpgr9u/fYoa2liCVT1LcAHHNHb0TQgE5oVHW09edg/JVP
+	 jRzKoO3CpLrCBbYWkI3pwDkHufByhZgiYrHN4G8paA7BFpBEc/6xB8s/aUbhL6ldxD
+	 WsrUvVqdcOyR3VmjRrQLD9LsbcmpMsIn7O40ZxqzYPWLSZrFbvh5srQLNoeaWRj5b3
+	 Zxvc/xXUWp9CM6AARACIYe8NuZ4VE2K0kFKpPBKOTsAuj98anpOBGiBtmmteR7155p
+	 sp96SBwi1yO6A==
 Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 33C5438111E3;
-	Wed, 11 Jun 2025 01:00:33 +0000 (UTC)
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id EAE1E39D6540;
+	Wed, 11 Jun 2025 01:40:29 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next] net: airoha: Add PPPoE offload support
+Subject: Re: [PATCH net] net: airoha: Enable RX queues 16-31
 From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <174960363200.2754897.16334165620003903309.git-patchwork-notify@kernel.org>
-Date: Wed, 11 Jun 2025 01:00:32 +0000
-References: <20250609-b4-airoha-flowtable-pppoe-v1-1-1520fa7711b4@kernel.org>
-In-Reply-To: <20250609-b4-airoha-flowtable-pppoe-v1-1-1520fa7711b4@kernel.org>
+Message-Id: <174960602875.2765583.13701311047518290024.git-patchwork-notify@kernel.org>
+Date: Wed, 11 Jun 2025 01:40:28 +0000
+References: <20250609-aioha-fix-rx-queue-mask-v1-1-f33706a06fa2@kernel.org>
+In-Reply-To: <20250609-aioha-fix-rx-queue-mask-v1-1-f33706a06fa2@kernel.org>
 To: Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
  kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250610_180003_978226_6913722E 
-X-CRM114-Status: UNSURE (   9.04  )
+X-CRM114-CacheID: sfid-20250610_183959_577189_87B6F0B1 
+X-CRM114-Status: UNSURE (   9.40  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,22 +77,23 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hello:
 
-This patch was applied to netdev/net-next.git (main)
+This patch was applied to netdev/net.git (main)
 by Jakub Kicinski <kuba@kernel.org>:
 
-On Mon, 09 Jun 2025 22:28:40 +0200 you wrote:
-> Introduce flowtable hw acceleration for PPPoE traffic.
+On Mon, 09 Jun 2025 22:40:35 +0200 you wrote:
+> Fix RX_DONE_INT_MASK definition in order to enable RX queues 16-31.
 > 
+> Fixes: f252493e18353 ("net: airoha: Enable multiple IRQ lines support in airoha_eth driver.")
 > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 > ---
->  drivers/net/ethernet/airoha/airoha_ppe.c | 31 +++++++++++++++++++++++--------
->  1 file changed, 23 insertions(+), 8 deletions(-)
+>  drivers/net/ethernet/airoha/airoha_regs.h | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 > 
 > [...]
 
 Here is the summary with links:
-  - [net-next] net: airoha: Add PPPoE offload support
-    https://git.kernel.org/netdev/net-next/c/0097c4195b1d
+  - [net] net: airoha: Enable RX queues 16-31
+    https://git.kernel.org/netdev/net/c/f478d68b6533
 
 You are awesome, thank you!
 -- 
