@@ -4,72 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 648A1C71131
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 14:49:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79CEDC678DC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 14:49:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:To:Subject:From
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zB9iWmDf93Uo2WrJd5zFOj0ovWYxmJgtGnwDr0HEb+s=; b=ZMRKgsmb3Ahxao
-	Bxs60CMohpXF9ZgCY8ZqIXGSbUAbhClucb+xdPCD7vzNcZnGPsD0Tbq6aon6kPddhQMtwNKu/R4No
-	MAIzygmarjOv2mnyJfYLf76r1hoMN7Fg9i04tuFCF2+0/BcsmWtSfXiIZz5wmJbnGn7aQEMBO3Yk5
-	tRQ0htDoGehSHf1VOatTRc8vbioCnku8nJiOj+rpC1xi6P2AxtQAVbYlzLoyAzHAlniDX18DRRJ5V
-	gYaJr56m/7g4I5l0PFEzcGrwj2NRnC0kilNJ+cHn1peSWpacZsn5+vCQ2EoX24R4McWobjeiuxQk4
-	q7RggBgcQkJLHjA+AdtQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:Content-Type:
+	Content-Transfer-Encoding:In-Reply-To:From:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Xc1Rw8rxxHeqcL2S98t+3Zj03z6AtNBwZXlDz1pqDvA=; b=CFHdbMaCaIeFzvcnu07L/byuQy
+	R8v7s5EMrpSHkdqW+lxafwGqej30TP6Hc/t+mUvYoSpHG8VZnPeKa0wyWXIzH8HD4Sx1/34/YIka5
+	9KY1EnuSWtKuUht1ilJcfr5X2uqh/vEpQemcE63Sxy+Aaq6KjrXfOAWuLMvn7sZvJDUDZIqz+sebt
+	ZCV2cPdiBiFlClEN8oR0q1FVCFdhCf+UHOmsZeMMJE/KHu4+eawZbF0TxwI6uYKiTEEAkV15vhh1n
+	5E7+6qdaw5Z3b1YdEWhYF6T/tc1X55QKOKblHByQJQAlZ34C23fJT5nV8q88rU3J2nZ7Fp+4OBmv1
+	go+7iDBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPMlD-0000000AA7p-2noc;
-	Wed, 11 Jun 2025 14:49:03 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uPMlk-0000000AB0i-0C8T;
+	Wed, 11 Jun 2025 14:49:37 +0000
+Received: from mailout2.w1.samsung.com ([210.118.77.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPHwY-00000009VJ0-03Fs;
-	Wed, 11 Jun 2025 09:40:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1749634824;
-	bh=aWSrVg6trcSvidS1Tw5OfSRqvl9oKQxDz8kbvLt0OCk=;
-	h=Date:From:Subject:To:Cc:References:In-Reply-To:From;
-	b=KkgND5amME3BftnewrZ+UluRD84GILsHRZ+b9TWEVUfhepgjrDHrP8OA4oBwOJ3Tj
-	 faQ4Ubh4lXj3guMCFSRGwNVY9q4GeGoghqcJVYY8wUxg4bSfIQdlPbE7JnnQJ/6kdB
-	 KHt034d0PVhAyJESrZVUTLlnbaVgVFH1j8Oy5QsLwYaqobWGtTS78ws9V2pT0NtqxM
-	 eDIEsmF3OFGTj69U/+8WoTLzDC+OJ6IBF0vW0zTYhGrq6B0+3WHrXi+MQSMwRqLcYZ
-	 srFlTEaJxHNXvMj9xT5Sy3dR8TQkbxswJyCXK4zbf+FUNW4QJfwHwhIrbc1aiLDCm/
-	 t3oFOs/HGTLQQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1194117E3789;
-	Wed, 11 Jun 2025 11:40:23 +0200 (CEST)
-Message-ID: <2f03fe56-f471-43be-8774-1db92d376861@collabora.com>
-Date: Wed, 11 Jun 2025 11:40:22 +0200
+	id 1uPI2U-00000009WZy-3wDc;
+	Wed, 11 Jun 2025 09:46:37 +0000
+Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
+	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20250611094630euoutp020a8d12ac42d98b28cec73e3a51148e4c~H8_91aj7i2986829868euoutp02q;
+	Wed, 11 Jun 2025 09:46:30 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20250611094630euoutp020a8d12ac42d98b28cec73e3a51148e4c~H8_91aj7i2986829868euoutp02q
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1749635190;
+	bh=Xc1Rw8rxxHeqcL2S98t+3Zj03z6AtNBwZXlDz1pqDvA=;
+	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
+	b=D7M0jQva/CmleKGyjhOgJl78zjV/oPx6s5KxnXtLUYYdEaml2NNAYdEs9/7As/Eia
+	 YSQHUvoHjilQEyBpFlxkzghHuFOR7/FgJCv4co3qfOojnfgqtbKkOvhpftKuev4720
+	 5cdGTpagHumvO3lEJCpPxI6ssKCDarO+B8joe2aE=
+Received: from eusmtip2.samsung.com (unknown [203.254.199.222]) by
+	eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
+	20250611094629eucas1p11c41674f1a6fcbefd14b4fd99166cae1~H8_9eZCnm1166611666eucas1p11;
+	Wed, 11 Jun 2025 09:46:29 +0000 (GMT)
+Received: from [106.210.134.192] (unknown [106.210.134.192]) by
+	eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
+	20250611094624eusmtip20a59cf478d3dc363416fa64f5fe470b4~H8_5DJCRv0322703227eusmtip2K;
+	Wed, 11 Jun 2025 09:46:24 +0000 (GMT)
+Message-ID: <ffa49c2a-9197-4820-96b0-636b3e649cf5@samsung.com>
+Date: Wed, 11 Jun 2025 11:46:24 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v3 04/13] dt-bindings: interconnect: add mt7988-cci
- compatible
-To: Frank Wunderlich <linux@fw-web.de>,
- MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>, Georgi Djakov <djakov@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-References: <20250608211452.72920-1-linux@fw-web.de>
- <20250608211452.72920-5-linux@fw-web.de>
+Subject: Re: [PATCH v2 4/7] iommu: Remove iommu_ops pgsize_bitmap from
+ simple drivers
+To: Jason Gunthorpe <jgg@nvidia.com>, Alexandre Ghiti <alex@ghiti.fr>, Alim
+	Akhtar <alim.akhtar@samsung.com>, Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Albert
+	Ou <aou@eecs.berkeley.edu>, asahi@lists.linux.dev, Baolin Wang
+	<baolin.wang@linux.alibaba.com>, David Woodhouse <dwmw2@infradead.org>,
+	Gerald Schaefer <gerald.schaefer@linux.ibm.com>, Heiko Stuebner
+	<heiko@sntech.de>, iommu@lists.linux.dev, Janne Grunau <j@jannau.net>,
+	Jean-Philippe Brucker <jean-philippe@linaro.org>, Jernej Skrabec
+	<jernej.skrabec@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Joerg
+	Roedel <joro@8bytes.org>, Krzysztof Kozlowski <krzk@kernel.org>,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
+	Matthew Rosato <mjrosato@linux.ibm.com>, Neal Gompa <neal@gompa.dev>, Orson
+	Zhai <orsonzhai@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>, Paul
+	Walmsley <paul.walmsley@sifive.com>, Rob Clark
+	<robin.clark@oss.qualcomm.com>, Robin Murphy <robin.murphy@arm.com>, Samuel
+	Holland <samuel@sholland.org>, Sven Peter <sven@kernel.org>, Thierry Reding
+	<thierry.reding@gmail.com>, Krishna Reddy <vdumpa@nvidia.com>,
+	virtualization@lists.linux.dev, Chen-Yu Tsai <wens@csie.org>, Will Deacon
+	<will@kernel.org>, Yong Wu <yong.wu@mediatek.com>, Chunyan Zhang
+	<zhang.lyra@gmail.com>
+Cc: Lu Baolu <baolu.lu@linux.intel.com>, Kevin Tian <kevin.tian@intel.com>,
+	patches@lists.linux.dev, Niklas Schnelle <schnelle@linux.ibm.com>, Sven
+	Peter <sven@svenpeter.dev>, Tomasz Jeznach <tjeznach@rivosinc.com>
 Content-Language: en-US
-In-Reply-To: <20250608211452.72920-5-linux@fw-web.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+From: Marek Szyprowski <m.szyprowski@samsung.com>
+In-Reply-To: <4-v2-68a2e1ba507c+1fb-iommu_rm_ops_pgsize_jgg@nvidia.com>
 Content-Transfer-Encoding: 7bit
+X-CMS-MailID: 20250611094629eucas1p11c41674f1a6fcbefd14b4fd99166cae1
+X-Msg-Generator: CA
+Content-Type: text/plain; charset="utf-8"
+X-RootMTR: 20250609204211eucas1p171527915cb5843e72782a02a3521d2c7
+X-EPHeader: CA
+X-CMS-RootMailID: 20250609204211eucas1p171527915cb5843e72782a02a3521d2c7
+References: <CGME20250609204211eucas1p171527915cb5843e72782a02a3521d2c7@eucas1p1.samsung.com>
+	<4-v2-68a2e1ba507c+1fb-iommu_rm_ops_pgsize_jgg@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250611_024026_198056_8933DC1D 
-X-CRM114-Status: UNSURE (   7.32  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250611_024635_573546_1BAE94CB 
+X-CRM114-Status: GOOD (  18.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,20 +104,229 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, linux-pm@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, DENG Qingfang <dqfext@gmail.com>, Johnson Wang <johnson.wang@mediatek.com>, linux-mediatek@lists.infradead.org, Jia-Wei Chang <jia-wei.chang@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/06/25 23:14, Frank Wunderlich ha scritto:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> Add compatible for Mediatek MT7988 SoC with mediatek,mt8183-cci fallback
-> which is taken by driver.
-> 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> Acked-by: Rob Herring (Arm) <robh@kernel.org>
+On 09.06.2025 22:41, Jason Gunthorpe wrote:
+> These drivers just have a constant value for their page size, move it
+> into their domain_alloc_paging function before setting up the geometry.
+>
+> Reviewed-by: Kevin Tian <kevin.tian@intel.com>
+> Acked-by: Niklas Schnelle <schnelle@linux.ibm.com> # for s390-iommu.c
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> ---
+>   drivers/iommu/exynos-iommu.c   | 3 ++-
+Acked-by: Marek Szyprowski <m.szyprowski@samsung.com> # for exynos-iommu.c
+>   drivers/iommu/ipmmu-vmsa.c     | 4 ++--
+>   drivers/iommu/mtk_iommu_v1.c   | 3 ++-
+>   drivers/iommu/omap-iommu.c     | 3 ++-
+>   drivers/iommu/rockchip-iommu.c | 3 ++-
+>   drivers/iommu/s390-iommu.c     | 2 +-
+>   drivers/iommu/sprd-iommu.c     | 3 ++-
+>   drivers/iommu/sun50i-iommu.c   | 3 ++-
+>   drivers/iommu/tegra-smmu.c     | 3 ++-
+>   9 files changed, 17 insertions(+), 10 deletions(-)
+>
+> diff --git a/drivers/iommu/exynos-iommu.c b/drivers/iommu/exynos-iommu.c
+> index fcb6a0f7c08275..b62a8f35c3e851 100644
+> --- a/drivers/iommu/exynos-iommu.c
+> +++ b/drivers/iommu/exynos-iommu.c
+> @@ -925,6 +925,8 @@ static struct iommu_domain *exynos_iommu_domain_alloc_paging(struct device *dev)
+>   	spin_lock_init(&domain->pgtablelock);
+>   	INIT_LIST_HEAD(&domain->clients);
+>   
+> +	domain->domain.pgsize_bitmap = SECT_SIZE | LPAGE_SIZE | SPAGE_SIZE;
+> +
+>   	domain->domain.geometry.aperture_start = 0;
+>   	domain->domain.geometry.aperture_end   = ~0UL;
+>   	domain->domain.geometry.force_aperture = true;
+> @@ -1477,7 +1479,6 @@ static const struct iommu_ops exynos_iommu_ops = {
+>   	.device_group = generic_device_group,
+>   	.probe_device = exynos_iommu_probe_device,
+>   	.release_device = exynos_iommu_release_device,
+> -	.pgsize_bitmap = SECT_SIZE | LPAGE_SIZE | SPAGE_SIZE,
+>   	.of_xlate = exynos_iommu_of_xlate,
+>   	.default_domain_ops = &(const struct iommu_domain_ops) {
+>   		.attach_dev	= exynos_iommu_attach_device,
+> diff --git a/drivers/iommu/ipmmu-vmsa.c b/drivers/iommu/ipmmu-vmsa.c
+> index 90341b24a81155..ffa892f6571406 100644
+> --- a/drivers/iommu/ipmmu-vmsa.c
+> +++ b/drivers/iommu/ipmmu-vmsa.c
+> @@ -430,7 +430,7 @@ static int ipmmu_domain_init_context(struct ipmmu_vmsa_domain *domain)
+>   	 * non-secure mode.
+>   	 */
+>   	domain->cfg.quirks = IO_PGTABLE_QUIRK_ARM_NS;
+> -	domain->cfg.pgsize_bitmap = SZ_1G | SZ_2M | SZ_4K;
+> +	domain->cfg.pgsize_bitmap = domain->io_domain.pgsize_bitmap;
+>   	domain->cfg.ias = 32;
+>   	domain->cfg.oas = 40;
+>   	domain->cfg.tlb = &ipmmu_flush_ops;
+> @@ -571,6 +571,7 @@ static struct iommu_domain *ipmmu_domain_alloc_paging(struct device *dev)
+>   		return NULL;
+>   
+>   	mutex_init(&domain->mutex);
+> +	domain->io_domain.pgsize_bitmap = SZ_1G | SZ_2M | SZ_4K;
+>   
+>   	return &domain->io_domain;
+>   }
+> @@ -882,7 +883,6 @@ static const struct iommu_ops ipmmu_ops = {
+>   	 */
+>   	.device_group = IS_ENABLED(CONFIG_ARM) && !IS_ENABLED(CONFIG_IOMMU_DMA)
+>   			? generic_device_group : generic_single_device_group,
+> -	.pgsize_bitmap = SZ_1G | SZ_2M | SZ_4K,
+>   	.of_xlate = ipmmu_of_xlate,
+>   	.default_domain_ops = &(const struct iommu_domain_ops) {
+>   		.attach_dev	= ipmmu_attach_device,
+> diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
+> index 66824982e05fbf..496cfe37243ac2 100644
+> --- a/drivers/iommu/mtk_iommu_v1.c
+> +++ b/drivers/iommu/mtk_iommu_v1.c
+> @@ -288,6 +288,8 @@ static struct iommu_domain *mtk_iommu_v1_domain_alloc_paging(struct device *dev)
+>   	if (!dom)
+>   		return NULL;
+>   
+> +	dom->domain.pgsize_bitmap = MT2701_IOMMU_PAGE_SIZE;
+> +
+>   	return &dom->domain;
+>   }
+>   
+> @@ -582,7 +584,6 @@ static const struct iommu_ops mtk_iommu_v1_ops = {
+>   	.probe_finalize = mtk_iommu_v1_probe_finalize,
+>   	.release_device	= mtk_iommu_v1_release_device,
+>   	.device_group	= generic_device_group,
+> -	.pgsize_bitmap	= MT2701_IOMMU_PAGE_SIZE,
+>   	.owner          = THIS_MODULE,
+>   	.default_domain_ops = &(const struct iommu_domain_ops) {
+>   		.attach_dev	= mtk_iommu_v1_attach_device,
+> diff --git a/drivers/iommu/omap-iommu.c b/drivers/iommu/omap-iommu.c
+> index 3c62337f43c677..21c218976143ef 100644
+> --- a/drivers/iommu/omap-iommu.c
+> +++ b/drivers/iommu/omap-iommu.c
+> @@ -1584,6 +1584,8 @@ static struct iommu_domain *omap_iommu_domain_alloc_paging(struct device *dev)
+>   
+>   	spin_lock_init(&omap_domain->lock);
+>   
+> +	omap_domain->domain.pgsize_bitmap = OMAP_IOMMU_PGSIZES;
+> +
+>   	omap_domain->domain.geometry.aperture_start = 0;
+>   	omap_domain->domain.geometry.aperture_end   = (1ULL << 32) - 1;
+>   	omap_domain->domain.geometry.force_aperture = true;
+> @@ -1735,7 +1737,6 @@ static const struct iommu_ops omap_iommu_ops = {
+>   	.release_device	= omap_iommu_release_device,
+>   	.device_group	= generic_single_device_group,
+>   	.of_xlate	= omap_iommu_of_xlate,
+> -	.pgsize_bitmap	= OMAP_IOMMU_PGSIZES,
+>   	.default_domain_ops = &(const struct iommu_domain_ops) {
+>   		.attach_dev	= omap_iommu_attach_dev,
+>   		.map_pages	= omap_iommu_map,
+> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+> index 22f74ba33a0e38..f4a5ad096343ab 100644
+> --- a/drivers/iommu/rockchip-iommu.c
+> +++ b/drivers/iommu/rockchip-iommu.c
+> @@ -1081,6 +1081,8 @@ static struct iommu_domain *rk_iommu_domain_alloc_paging(struct device *dev)
+>   	spin_lock_init(&rk_domain->dt_lock);
+>   	INIT_LIST_HEAD(&rk_domain->iommus);
+>   
+> +	rk_domain->domain.pgsize_bitmap = RK_IOMMU_PGSIZE_BITMAP;
+> +
+>   	rk_domain->domain.geometry.aperture_start = 0;
+>   	rk_domain->domain.geometry.aperture_end   = DMA_BIT_MASK(32);
+>   	rk_domain->domain.geometry.force_aperture = true;
+> @@ -1171,7 +1173,6 @@ static const struct iommu_ops rk_iommu_ops = {
+>   	.probe_device = rk_iommu_probe_device,
+>   	.release_device = rk_iommu_release_device,
+>   	.device_group = generic_single_device_group,
+> -	.pgsize_bitmap = RK_IOMMU_PGSIZE_BITMAP,
+>   	.of_xlate = rk_iommu_of_xlate,
+>   	.default_domain_ops = &(const struct iommu_domain_ops) {
+>   		.attach_dev	= rk_iommu_attach_device,
+> diff --git a/drivers/iommu/s390-iommu.c b/drivers/iommu/s390-iommu.c
+> index 433b59f435302b..9c80d61deb2c0b 100644
+> --- a/drivers/iommu/s390-iommu.c
+> +++ b/drivers/iommu/s390-iommu.c
+> @@ -557,6 +557,7 @@ static struct iommu_domain *s390_domain_alloc_paging(struct device *dev)
+>   	}
+>   	zdev->end_dma = zdev->start_dma + aperture_size - 1;
+>   
+> +	s390_domain->domain.pgsize_bitmap = SZ_4K;
+>   	s390_domain->domain.geometry.force_aperture = true;
+>   	s390_domain->domain.geometry.aperture_start = 0;
+>   	s390_domain->domain.geometry.aperture_end = max_tbl_size(s390_domain);
+> @@ -1158,7 +1159,6 @@ static struct iommu_domain blocking_domain = {
+>   	.domain_alloc_paging = s390_domain_alloc_paging, \
+>   	.probe_device = s390_iommu_probe_device, \
+>   	.device_group = generic_device_group, \
+> -	.pgsize_bitmap = SZ_4K, \
+>   	.get_resv_regions = s390_iommu_get_resv_regions, \
+>   	.default_domain_ops = &(const struct iommu_domain_ops) { \
+>   		.attach_dev	= s390_iommu_attach_device, \
+> diff --git a/drivers/iommu/sprd-iommu.c b/drivers/iommu/sprd-iommu.c
+> index 941d1f361c8cda..c7ca1d8a0b1530 100644
+> --- a/drivers/iommu/sprd-iommu.c
+> +++ b/drivers/iommu/sprd-iommu.c
+> @@ -143,6 +143,8 @@ static struct iommu_domain *sprd_iommu_domain_alloc_paging(struct device *dev)
+>   
+>   	spin_lock_init(&dom->pgtlock);
+>   
+> +	dom->domain.pgsize_bitmap = SPRD_IOMMU_PAGE_SIZE;
+> +
+>   	dom->domain.geometry.aperture_start = 0;
+>   	dom->domain.geometry.aperture_end = SZ_256M - 1;
+>   	dom->domain.geometry.force_aperture = true;
+> @@ -410,7 +412,6 @@ static const struct iommu_ops sprd_iommu_ops = {
+>   	.probe_device	= sprd_iommu_probe_device,
+>   	.device_group	= generic_single_device_group,
+>   	.of_xlate	= sprd_iommu_of_xlate,
+> -	.pgsize_bitmap	= SPRD_IOMMU_PAGE_SIZE,
+>   	.owner		= THIS_MODULE,
+>   	.default_domain_ops = &(const struct iommu_domain_ops) {
+>   		.attach_dev	= sprd_iommu_attach_device,
+> diff --git a/drivers/iommu/sun50i-iommu.c b/drivers/iommu/sun50i-iommu.c
+> index 76c9620af4bba8..de10b569d9a940 100644
+> --- a/drivers/iommu/sun50i-iommu.c
+> +++ b/drivers/iommu/sun50i-iommu.c
+> @@ -697,6 +697,8 @@ sun50i_iommu_domain_alloc_paging(struct device *dev)
+>   
+>   	refcount_set(&sun50i_domain->refcnt, 1);
+>   
+> +	sun50i_domain->domain.pgsize_bitmap = SZ_4K;
+> +
+>   	sun50i_domain->domain.geometry.aperture_start = 0;
+>   	sun50i_domain->domain.geometry.aperture_end = DMA_BIT_MASK(32);
+>   	sun50i_domain->domain.geometry.force_aperture = true;
+> @@ -842,7 +844,6 @@ static int sun50i_iommu_of_xlate(struct device *dev,
+>   
+>   static const struct iommu_ops sun50i_iommu_ops = {
+>   	.identity_domain = &sun50i_iommu_identity_domain,
+> -	.pgsize_bitmap	= SZ_4K,
+>   	.device_group	= generic_single_device_group,
+>   	.domain_alloc_paging = sun50i_iommu_domain_alloc_paging,
+>   	.of_xlate	= sun50i_iommu_of_xlate,
+> diff --git a/drivers/iommu/tegra-smmu.c b/drivers/iommu/tegra-smmu.c
+> index 61897d50162dd7..fa0913e9346c71 100644
+> --- a/drivers/iommu/tegra-smmu.c
+> +++ b/drivers/iommu/tegra-smmu.c
+> @@ -318,6 +318,8 @@ static struct iommu_domain *tegra_smmu_domain_alloc_paging(struct device *dev)
+>   
+>   	spin_lock_init(&as->lock);
+>   
+> +	as->domain.pgsize_bitmap = SZ_4K;
+> +
+>   	/* setup aperture */
+>   	as->domain.geometry.aperture_start = 0;
+>   	as->domain.geometry.aperture_end = 0xffffffff;
+> @@ -1002,7 +1004,6 @@ static const struct iommu_ops tegra_smmu_ops = {
+>   	.probe_device = tegra_smmu_probe_device,
+>   	.device_group = tegra_smmu_device_group,
+>   	.of_xlate = tegra_smmu_of_xlate,
+> -	.pgsize_bitmap = SZ_4K,
+>   	.default_domain_ops = &(const struct iommu_domain_ops) {
+>   		.attach_dev	= tegra_smmu_attach_dev,
+>   		.map_pages	= tegra_smmu_map,
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
+Best regards
+-- 
+Marek Szyprowski, PhD
+Samsung R&D Institute Poland
 
 
