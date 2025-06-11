@@ -4,111 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42D5DC677C4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 09:35:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F09AEC677C4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 09:42:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LGzsUKOfV2agJpJYzQdLRyRetgWdJTrvlnjtr6DjfNs=; b=lsoLVYiNLOQFcgiivWdFPk1inW
-	cFTOjW3XplXStZ1neznzJPatU3ScmbmG4SBUHBwO4KCtR8z14tTOf/x+3y9f9oNTuZQZbpy4P4qPU
-	AhrciuerR24nmvPxPQaXx0URbIp4t5JFuJ9QtCuzaiu8PukSnX5bxFgaRBXodDHhY8odgVmTR9aVE
-	xehnGSfVVFhSnOgv7t7YX1zn/+D3b0ZeEtldQZXqwOvSa1wKFvkxTYJggmppqfC4yFVhVsvKTwvHV
-	+q/NkxjiEUnH1o68Rnt+Ta4uIs4fdfIlksovtYQyz64uvJgPaxSGYpLSTbpfexyL5b19fnWSIixUT
-	9ZP6W32w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=aBtgMGvbT5+A2Zrno825asKsp/MTUf+mDV3vojIadYo=; b=E/p90Xo4tBrIh4
+	w6ZFooZuymHahHvDu1Tbudaz/Bt7MDV33OfOG/744FBNxrwQ1ACuMn6MrjJnMK9lm8u/cvMD7CFVG
+	9FLQAyhCfElGkwsfCHWUiTb5lwXqT4eiekBk6JbOELkbox9x982PgLvm+ZuuI8XoGPOlnx8MLn6O8
+	wAak4Bc/H8G3VXjCDtzlYC+/oUpFlBfO1e1bhedLrt++JpjjxLlWcexl/NjzZSjAljlemf3aWImQN
+	UbJ3fTl8cMA2v5C0fy3Xjbl1kD3OujeJlhUExueVjmsQKajQkzsYe29JhXbKSXniPYP2GeHcMW5fW
+	Yp/Nmzzefmt1h9wcbrJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPHrg-00000009ULw-3Bbi;
-	Wed, 11 Jun 2025 09:35:24 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uPHy6-00000009Vgz-3fhk;
+	Wed, 11 Jun 2025 09:42:02 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPHpS-00000009U5M-3BwE;
-	Wed, 11 Jun 2025 09:33:06 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id D80AD629DC;
-	Wed, 11 Jun 2025 09:33:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A3144C4CEEE;
-	Wed, 11 Jun 2025 09:33:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1749634385;
-	bh=xFb7df67RXQJJM6OYnc61HwRVo7NOSQCzNOagtm0TFc=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=XuJ4VI4DlbRxAFJ/x1UXS1DGayFL2lguLqGNSC/cRa7KdtkkGEVtvdQ5yRRV1dnWs
-	 cVTsghconbTtqgCL1o2OCQHRiIdSjio57OiYCMhKcWRGUxdgfZ6oXW9Am2bS+eMiC7
-	 uvPY/WDT0PjDUL14e3u2FwQn4ecKroLs0HewZDgeqzIcwxN1XL1cTK9FpdQljEiq52
-	 /aFjsVcxFhKltJr0y/YgpU6MiOjVd6kT7yeb+kHu9RcHWJDKnyk2UNkhFhHdOjlDsu
-	 Ikj5gzPnc91zOJnxTU9fHG0mg9HPkl4sPg5uA1Udo2qSN6DxlRrallVB2th8jObvna
-	 RMioGv2e4CKZA==
-Message-ID: <d08cb08c-4bdd-4715-8273-9feb7de7474b@kernel.org>
-Date: Wed, 11 Jun 2025 11:32:59 +0200
+	id 1uPHq4-00000009U92-0TK3;
+	Wed, 11 Jun 2025 09:33:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=aBtgMGvbT5+A2Zrno825asKsp/MTUf+mDV3vojIadYo=; b=Lfa/ZiyaFewLbzBvBbQmEFGe1f
+	syjWUfhLmPSoNeLbN5s7W5x+su24kQVDRyL2EFRs/FwSescOFnDnhVnCK+772LgxUd2M8zvPLhhxx
+	cfL1oSD5gLaN6euuJQUFcE54FESKx3NxjYPCEPQNru21sgmWT3TDJ1WeIOtgueKMcmo+dUmubxwBC
+	GsX4BdbaH2CBXiBlhmmMfgRxc/FxZ/ULLj/HCVIMF0MnwFJNwslS1SBB9/Tk4wn2GkXYuk2dfzplg
+	7qvCJTLI8C7MXDYajaF8Ti/A5h+JV6AQ/1K4OkL7LAYsVRFuAIY9duMobf7+0MDk6Lz7veSXHzD33
+	InmM0Irw==;
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uPHq2-00000002EXh-0xCA;
+	Wed, 11 Jun 2025 09:33:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1749634420;
+	bh=iZRMsUTO/sHIde2R5o95I83Ls9f+Je5NTObQ20FW4lg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=YQtxycrvDTsiKzL6sOJuBJftKXuuNSx7cBuTXaWybtsB+6/efYFAxBpfiLnfKoB5u
+	 Yk4l59hj8HierCGRy9+ZGpL7x8y3PQfJul+YKaKWI2M9JVsqQLXj4/iPa9bx5fxfYf
+	 zltbemEGEGA3shlWIa2Il34qSakPX2wAKqjwfY2f1FeoBaiCWJvUYWuLaYCLf/I/zQ
+	 8mwljBUil21GgLqzES7Gx/gsWTK+KY7SjTvIbZYYDKeoRjfmIXvOP8YBUs45gRw4ty
+	 gK1qYTvhI+n6i6/gO58rbXYFAeakLTXta3upJ0T7gpdesiLhHiZn4/Dhk6oo4frFbh
+	 tggdFCeKYgDUA==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6FDE417E101A;
+	Wed, 11 Jun 2025 11:33:38 +0200 (CEST)
+Message-ID: <37c7ac6c-a5ea-45cc-8ded-9d9bb22d092e@collabora.com>
+Date: Wed, 11 Jun 2025 11:33:37 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 08/10] ASoC: dt-bindings: mediatek,mt8196-afe: add
- audio AFE document
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: "Darren.Ye" <darren.ye@mediatek.com>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>
-Cc: Rob Herring <robh@kernel.org>, linux-sound@vger.kernel.org,
- Linus Walleij <linus.walleij@linaro.org>, devicetree@vger.kernel.org,
- Mark Brown <broonie@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-kernel@vger.kernel.org, Bartosz Golaszewski <brgl@bgdev.pl>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-gpio@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>
-References: <20250514081125.24475-1-darren.ye@mediatek.com>
- <20250514081125.24475-9-darren.ye@mediatek.com>
- <e74d82b3-ed4a-433b-9305-a80b68130a6f@kernel.org>
+Subject: Re: [PATCH v3 12/13] arm64: dts: mediatek: mt7988a-bpi-r4: add sfp
+ cages and link to gmac
+To: Frank Wunderlich <linux@fw-web.de>,
+ MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ Chanwoo Choi <cw00.choi@samsung.com>, Georgi Djakov <djakov@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+References: <20250608211452.72920-1-linux@fw-web.de>
+ <20250608211452.72920-13-linux@fw-web.de>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <e74d82b3-ed4a-433b-9305-a80b68130a6f@kernel.org>
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20250608211452.72920-13-linux@fw-web.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250611_103342_438179_C2950AAE 
+X-CRM114-Status: GOOD (  16.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,77 +94,142 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, linux-pm@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, DENG Qingfang <dqfext@gmail.com>, Johnson Wang <johnson.wang@mediatek.com>, linux-mediatek@lists.infradead.org, Jia-Wei Chang <jia-wei.chang@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 14/05/2025 12:54, Krzysztof Kozlowski wrote:
-> On 14/05/2025 10:11, Darren.Ye wrote:
->> From: Darren Ye <darren.ye@mediatek.com>
->>
->> Add mt8196 audio AFE document.
+Il 08/06/25 23:14, Frank Wunderlich ha scritto:
+> From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> A nit, subject: drop second/last, redundant "document".
-> See also:
-> https://elixir.bootlin.com/linux/v6.7-rc8/source/Documentation/devicetree/bindings/submitting-patches.rst#L18
-
-Since you asked what did you miss from previous review (and I replied
-that EVERYTHING) then maybe this will help:
-
-How did you implement this?
-
+> Add SFP cages to Bananapi-R4 board. The 2.5g phy variant only contains the
+> wan-SFP, so add this to common dtsi and the lan-sfp only to the dual-SFP
+> variant.
 > 
->>
->> Signed-off-by: Darren Ye <darren.ye@mediatek.com>
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+> v3:
+> - enable mac with 2.5g phy on r4 phy variant because driver is now mainline
+> ---
+>   .../mediatek/mt7988a-bananapi-bpi-r4-2g5.dts   | 12 ++++++++++++
+>   .../dts/mediatek/mt7988a-bananapi-bpi-r4.dts   | 18 ++++++++++++++++++
+>   .../dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi  | 18 ++++++++++++++++++
+>   3 files changed, 48 insertions(+)
 > 
-> 
-> ...
-> 
->> +
->> +required:
->> +  - compatible
->> +  - reg
->> +  - interrupts
->> +  - mediatek,vlpcksys
->> +  - power-domains
->> +  - memory-region
->> +  - clocks
->> +  - clock-names
-> 
-> 
-> Keep the same order as in properties:.
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts
+> index 53de9c113f60..e63e17ae35a0 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts
+> @@ -9,3 +9,15 @@ / {
+>   	model = "Banana Pi BPI-R4 (1x SFP+, 1x 2.5GbE)";
+>   	chassis-type = "embedded";
+>   };
+> +
+> +&gmac1 {
 
-How did you implement this?
+phy = ...
+phy-c..onnection-type
+phy-m...ode
+
+> +	phy-mode = "internal";
+> +	phy-connection-type = "internal";
+> +	phy = <&int_2p5g_phy>;
+> +	status = "okay";
+> +};
+> +
+> +&int_2p5g_phy {
+> +	pinctrl-names = "i2p5gbe-led";
+> +	pinctrl-0 = <&i2p5gbe_led0_pins>;
+
+pinctrl-names
+pinctrl-0
+
+> +};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
+> index 36bd1ef2efab..3136dc4ba4cc 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
+> @@ -8,6 +8,24 @@ / {
+>   	compatible = "bananapi,bpi-r4", "mediatek,mt7988a";
+>   	model = "Banana Pi BPI-R4 (2x SFP+)";
+>   	chassis-type = "embedded";
+> +
+> +	/* SFP2 cage (LAN) */
+> +	sfp2: sfp2 {
+> +		compatible = "sff,sfp";
+> +		i2c-bus = <&i2c_sfp2>;
+
+maximum-power-milliwatt here
+(blank line)
+...then gpios
+
+> +		los-gpios = <&pio 2 GPIO_ACTIVE_HIGH>;
+> +		mod-def0-gpios = <&pio 83 GPIO_ACTIVE_LOW>;
+
+(r)ate-select0-gpios before (t)x-disable....
+
+> +		tx-disable-gpios = <&pio 0 GPIO_ACTIVE_HIGH>;
+> +		tx-fault-gpios = <&pio 1 GPIO_ACTIVE_HIGH>;
+> +		rate-select0-gpios = <&pio 3 GPIO_ACTIVE_LOW>;
+> +		maximum-power-milliwatt = <3000>;
+> +	};
+> +};
+> +
+> +&gmac1 {
+managed
+phy-mode
+sfp
+
+> +	sfp = <&sfp2>;
+> +	managed = "in-band-status";
+> +	phy-mode = "usxgmii";
+>   };
+>   
+>   &pca9545 {
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
+> index 20073eb4d1bd..d8b9cd794ee3 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
+> @@ -63,6 +63,18 @@ reg_3p3v: regulator-3p3v {
+>   		regulator-boot-on;
+>   		regulator-always-on;
+>   	};
+> +
+> +	/* SFP1 cage (WAN) */
+> +	sfp1: sfp1 {
+> +		compatible = "sff,sfp";
+> +		i2c-bus = <&i2c_sfp1>;
+
+(same comments from sfp2)
+
+> +		los-gpios = <&pio 54 GPIO_ACTIVE_HIGH>;
+> +		mod-def0-gpios = <&pio 82 GPIO_ACTIVE_LOW>;
+> +		tx-disable-gpios = <&pio 70 GPIO_ACTIVE_HIGH>;
+> +		tx-fault-gpios = <&pio 69 GPIO_ACTIVE_HIGH>;
+> +		rate-select0-gpios = <&pio 21 GPIO_ACTIVE_LOW>;
+> +		maximum-power-milliwatt = <3000>;
+> +	};
+>   };
+>   
+>   &cci {
+> @@ -133,6 +145,12 @@ map-cpu-active-low {
+>   	};
+>   };
+>   
+> +&gmac2 {
+
+(same comments from gmac1)
+
+> +	sfp = <&sfp1>;
+> +	managed = "in-band-status";
+> +	phy-mode = "usxgmii";
+> +};
+> +
+>   &i2c0 {
+>   	pinctrl-names = "default";
+>   	pinctrl-0 = <&i2c0_pins>;
 
 
-> 
-> 
-> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
-How did you implement this?
-
-
-> 
-> <form letter>
-> This is an automated instruction, just in case, because many review tags
-> are being ignored. If you know the process, you can skip it (please do
-> not feel offended by me posting it here - no bad intentions intended).
-> If you do not know the process, here is a short explanation:
-> 
-> Please add Acked-by/Reviewed-by/Tested-by tags when posting new versions
-> of patchset, under or above your Signed-off-by tag, unless patch changed
-> significantly (e.g. new properties added to the DT bindings). Tag is
-> "received", when provided in a message replied to you on the mailing
-> list. Tools like b4 can help here. However, there's no need to repost
-> patches *only* to add the tags. The upstream maintainer will do that for
-> tags received on the version they apply.
-> 
-> Full context and explanation:
-> https://elixir.bootlin.com/linux/v6.12-rc3/source/Documentation/process/submitting-patches.rst#L577
-
-How did you implement this?
-
-Does such questions help you to find what was missing?
-
-Best regards,
-Krzysztof
+Cheers,
+Angelo
 
