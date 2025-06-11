@@ -4,75 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07D12C71136
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 14:53:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D451EC678DC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 14:53:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YGZIHHTdUio4mkdGxDuE5j03JDM6UM0QavShcW0kz4s=; b=uKbchpu38MwguJwKByoAi5nPv0
-	DZRS2+ET1OAmPwnzS1jkw7tp7o6XoFOClmsY6f3V/7pxpyykGKWkadi8erjsXYJ5g/Jjn4BjqUZ81
-	MQhHtPlNkeXIn+jK2deuv/KZQ6NTzHFI/E5A5UsCy4yWIr8KAt/KefNBBtvT1rWuCgRWWLMFkAu9w
-	H4tTu6D5oAWsCfi1gpkX8cPXnZs43lvCCmpidd8TSnCEJzqs+tZPeFce7mjRX4pfZBCfppHN0BoIe
-	Wy3bW7b35K56KRdWrKK5HQyedEtGNk03Qo6OXh9o+N9Ag684Z42klSbQOIEzsvFtCpoeC4x0Kz0+9
-	jrn/MZUQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PsqFPhhwmaCsa4vXg/mFB286PrcXGx5Y8aFvc9FKgqo=; b=fcughSNgGa4JZtUzuaLgb8A6pf
+	K32+YoAM6mtLSIDz3zTAdPR71mZ4FEyTbKGKjeNuvGYH7s4SESUdrXSApdrPQ8ABf66KXlerK8g2S
+	ZXZ/kz80WjLo6+fpDUrAwpHRlMR7c4Qw+2OHChAdv0BRhfvBs0LS1RgIf5ctY6bfRP0ri1e2L+u0w
+	ShkuNI3XUtFkCsvccjW/oBZ8IqBjYqUWIxzotGl+dv+v7nSeR59I79GhGMekExNlnk1pZGsLOYoKS
+	dQe2ASxl9PGTo2QzCAnUYnVZeG118GBNYmEGauqUpFpvXgP0n3ESmUBfuw4sHktbVpIsUUsZHahFc
+	/yTgZa7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPMpM-0000000AH85-3UES;
-	Wed, 11 Jun 2025 14:53:20 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uPMpO-0000000AHBS-1zjs;
+	Wed, 11 Jun 2025 14:53:22 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPJNQ-00000009igF-3qY0;
-	Wed, 11 Jun 2025 11:12:18 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1749640329; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=QG5faVQFbIILrQTW0ZBXfFI76UtWGMdYguxmkoNxLeYGZxz5CYct0Yx9iNLeae3/tCHH2I4N5a6bsxQ4mRDVLOBAlg/IZNk4PeTxILhhlr/u2hG/nICo8JhnfZa73EWj3mgeWLCpQLOQfNBv142DEpwNxQBscR6Rpe0r8P8wW4Y=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1749640329; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=YGZIHHTdUio4mkdGxDuE5j03JDM6UM0QavShcW0kz4s=; 
-	b=OJ4Q9V8NQwUR04DQtcMguwUsuXp0JconZeDK71kK+3VwSMwd78fbknjfvi5uSAH0v8UO8FZuG5s1UZhNPzRWtQW0erifIJEhOcYwZWf8q730GpGYjQmRQzJqSDy9nd7rmdw78CBZ0dJLkJpJbdwoeXBm4lY6rEYw6XENBFPJ09Q=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
-	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749640329;
-	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
-	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=YGZIHHTdUio4mkdGxDuE5j03JDM6UM0QavShcW0kz4s=;
-	b=bfUeNl7IIh2Pr0yrDjsQ+LpveA1vvUP5D3xOghqP6cidbjLzkL8vOt0OtQHTLlqM
-	pFooA2LJg3iteB8yqobdy0VEnFFKR130gk7YxuCBNZpKqLUMOFYjvhPax9hnDm73bJv
-	6OAMhPUge9VeaEgSM/kl1OC4xsXVfwjRAVNFLxSg=
-Received: by mx.zohomail.com with SMTPS id 1749640327308121.2139749325595;
-	Wed, 11 Jun 2025 04:12:07 -0700 (PDT)
-Message-ID: <8e551fad9bd1627b9ed6f20be7d88bdc3438d482.camel@collabora.com>
-Subject: Re: [PATCH v4 01/10] ASoC: mediatek: common: modify mtk afe
- platform driver for mt8196
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-To: "Darren.Ye" <darren.ye@mediatek.com>, Liam Girdwood
- <lgirdwood@gmail.com>,  Mark Brown <broonie@kernel.org>, Rob Herring
- <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,  Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno	 <angelogioacchino.delregno@collabora.com>,
- Jaroslav Kysela <perex@perex.cz>,  Takashi Iwai <tiwai@suse.com>, Linus
- Walleij <linus.walleij@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org
-Date: Wed, 11 Jun 2025 13:12:01 +0200
-In-Reply-To: <20250610092852.21986-2-darren.ye@mediatek.com>
-References: <20250610092852.21986-1-darren.ye@mediatek.com>
-	 <20250610092852.21986-2-darren.ye@mediatek.com>
-Organization: Collabora Ltd
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
+	id 1uPJQ1-00000009j2T-1BHZ;
+	Wed, 11 Jun 2025 11:14:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1749640495;
+	bh=xoTzQij77wJqxKu/8WOJivHo5xvIanP8StGNmp1ewxg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=UW/oVHTA/HuPIQy39vzAQ7DA1PBC85oXq9visjD+/znO4tH1rAuNncJk7GIpCza8Z
+	 NkJYneqv/byx/sB3AzA9mHYHsVnvMDH39Qzg+cJxGpZYLqMw35tG4YtCW/UlBljvgt
+	 SSHevCKLFTzbtMwSM7OG5tJMAs7FxDqJNOYYId38nYUePx/y8g65jhRAeKj6T129bb
+	 tYyvyPRuaamYqgV+zK5zS9OaGByXCmkMrUX/QYs8wz03ouNmTyfU1W0IeiGKep1pYI
+	 RKF0sX21fDaXM0/WJANlVHC8WLQq2/DeV+6iLHMj49MhbCbChRJJFCSei0rjNEDSZl
+	 mUWhfOw23cFNQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8EA3D17E10F8;
+	Wed, 11 Jun 2025 13:14:54 +0200 (CEST)
+Message-ID: <5cf01f45-ea0b-421e-81a7-163c069aeaf0@collabora.com>
+Date: Wed, 11 Jun 2025 13:14:54 +0200
 MIME-Version: 1.0
-X-ZohoMailClient: External
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 01/10] ASoC: mediatek: common: modify mtk afe platform
+ driver for mt8196
+To: "Darren.Ye" <darren.ye@mediatek.com>, Liam Girdwood
+ <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
+ Takashi Iwai <tiwai@suse.com>, Linus Walleij <linus.walleij@linaro.org>,
+ Bartosz Golaszewski <brgl@bgdev.pl>
+Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org
+References: <20250610092852.21986-1-darren.ye@mediatek.com>
+ <20250610092852.21986-2-darren.ye@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250610092852.21986-2-darren.ye@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250611_041217_015192_9C9F3559 
-X-CRM114-Status: GOOD (  15.93  )
+X-CRM114-CacheID: sfid-20250611_041457_493285_6F216BCA 
+X-CRM114-Status: GOOD (  13.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,110 +83,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2025-06-10 at 17:27 +0800, Darren.Ye wrote:
+Il 10/06/25 11:27, Darren.Ye ha scritto:
 > From: Darren Ye <darren.ye@mediatek.com>
->=20
+> 
 > Mofify the pcm pointer interface to support 64-bit address access.
->=20
+> 
 > Signed-off-by: Darren Ye <darren.ye@mediatek.com>
 > ---
-> =C2=A0.../mediatek/common/mtk-afe-platform-driver.c | 47 ++++++++++++----=
--
-> --
-> =C2=A0.../mediatek/common/mtk-afe-platform-driver.h |=C2=A0 2 +
-> =C2=A02 files changed, 33 insertions(+), 16 deletions(-)
->=20
-> diff --git a/sound/soc/mediatek/common/mtk-afe-platform-driver.c
-> b/sound/soc/mediatek/common/mtk-afe-platform-driver.c
+>   .../mediatek/common/mtk-afe-platform-driver.c | 47 ++++++++++++-------
+>   .../mediatek/common/mtk-afe-platform-driver.h |  2 +
+>   2 files changed, 33 insertions(+), 16 deletions(-)
+> 
+> diff --git a/sound/soc/mediatek/common/mtk-afe-platform-driver.c b/sound/soc/mediatek/common/mtk-afe-platform-driver.c
 > index 6b6330583941..a86594dca2b7 100644
 > --- a/sound/soc/mediatek/common/mtk-afe-platform-driver.c
 > +++ b/sound/soc/mediatek/common/mtk-afe-platform-driver.c
-> @@ -86,29 +86,44 @@ snd_pcm_uframes_t mtk_afe_pcm_pointer(struct
-> snd_soc_component *component,
-> =C2=A0	const struct mtk_base_memif_data *memif_data =3D memif->data;
-> =C2=A0	struct regmap *regmap =3D afe->regmap;
-> =C2=A0	struct device *dev =3D afe->dev;
-> -	int reg_ofs_base =3D memif_data->reg_ofs_base;
-> -	int reg_ofs_cur =3D memif_data->reg_ofs_cur;
-> -	unsigned int hw_ptr =3D 0, hw_base =3D 0;
-> -	int ret, pcm_ptr_bytes;
-> -
-> -	ret =3D regmap_read(regmap, reg_ofs_cur, &hw_ptr);
-> -	if (ret || hw_ptr =3D=3D 0) {
-> -		dev_err(dev, "%s hw_ptr err\n", __func__);
-> -		pcm_ptr_bytes =3D 0;
-> +	unsigned int hw_ptr_lower32 =3D 0, hw_ptr_upper32 =3D 0;
-> +	unsigned int hw_base_lower32 =3D 0, hw_base_upper32 =3D 0;
-> +	unsigned long long hw_ptr =3D 0, hw_base =3D 0;
-> +	int ret;
-> +	unsigned long long pcm_ptr_bytes =3D 0;
-> +
-> +	ret =3D regmap_read(regmap, memif_data->reg_ofs_cur,
-> &hw_ptr_lower32);
-> +	if (ret || hw_ptr_lower32 =3D=3D 0) {
-> +		dev_err(dev, "%s hw_ptr_lower32 err\n", __func__);
-> =C2=A0		goto POINTER_RETURN_FRAMES;
-> =C2=A0	}
-> =C2=A0
-> -	ret =3D regmap_read(regmap, reg_ofs_base, &hw_base);
-> -	if (ret || hw_base =3D=3D 0) {
-> -		dev_err(dev, "%s hw_ptr err\n", __func__);
-> -		pcm_ptr_bytes =3D 0;
-> -		goto POINTER_RETURN_FRAMES;
-> +	if (memif_data->reg_ofs_cur_msb) {
-> +		ret =3D regmap_read(regmap, memif_data-
-> >reg_ofs_cur_msb, &hw_ptr_upper32);
-> +		if (ret) {
-> +			dev_err(dev, "%s hw_ptr_upper32 err\n",
-> __func__);
-> +			goto POINTER_RETURN_FRAMES;
-> +		}
-> =C2=A0	}
-> =C2=A0
-> -	pcm_ptr_bytes =3D hw_ptr - hw_base;
-> +	ret =3D regmap_read(regmap, memif_data->reg_ofs_base,
-> &hw_base_lower32);
-> +	if (ret || hw_base_lower32 =3D=3D 0) {
-> +		dev_err(dev, "%s hw_base_lower32 err\n", __func__);
-> +		goto POINTER_RETURN_FRAMES;
-> +	}
-> +	if (memif_data->reg_ofs_base_msb) {
-> +		ret =3D regmap_read(regmap, memif_data-
-> >reg_ofs_base_msb, &hw_base_upper32);
-> +		if (ret) {
-> +			dev_err(dev, "%s hw_base_upper32 err\n",
-> __func__);
-> +			goto POINTER_RETURN_FRAMES;
-> +		}
-> +	}
-> +	hw_ptr =3D ((unsigned long long)hw_ptr_upper32 << 32) +
-> hw_ptr_lower32;
-> +	hw_base =3D ((unsigned long long)hw_base_upper32 << 32) +
-> hw_base_lower32;
-> =C2=A0
-> =C2=A0POINTER_RETURN_FRAMES:
-> -	return bytes_to_frames(substream->runtime, pcm_ptr_bytes);
-> +	pcm_ptr_bytes =3D MTK_WORD_SIZE_ALIGN(hw_ptr - hw_base);
-> +	return bytes_to_frames(substream->runtime,
-> (ssize_t)pcm_ptr_bytes);
-> =C2=A0}
-> =C2=A0EXPORT_SYMBOL_GPL(mtk_afe_pcm_pointer);
-> =C2=A0
-> diff --git a/sound/soc/mediatek/common/mtk-afe-platform-driver.h
-> b/sound/soc/mediatek/common/mtk-afe-platform-driver.h
+
+..snip..
+
+> diff --git a/sound/soc/mediatek/common/mtk-afe-platform-driver.h b/sound/soc/mediatek/common/mtk-afe-platform-driver.h
 > index fcc923b88f12..9809e60db511 100644
 > --- a/sound/soc/mediatek/common/mtk-afe-platform-driver.h
 > +++ b/sound/soc/mediatek/common/mtk-afe-platform-driver.h
 > @@ -12,6 +12,8 @@
-> =C2=A0#define AFE_PCM_NAME "mtk-afe-pcm"
-> =C2=A0extern const struct snd_soc_component_driver mtk_afe_pcm_platform;
-> =C2=A0
+>   #define AFE_PCM_NAME "mtk-afe-pcm"
+>   extern const struct snd_soc_component_driver mtk_afe_pcm_platform;
+>   
 > +#define MTK_WORD_SIZE_ALIGN(x) ((x) & (0xfffffffff0))
-> +
-> =C2=A0struct mtk_base_afe;
-> =C2=A0struct snd_pcm;
-> =C2=A0struct snd_soc_component;
 
-Tested-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com> # on
-Mediatek Genio 510 EVK and Genio 1200 EVK
+This doesn't really look like alignment to me, so perhaps change the macro name.
+Also, please use the GENMASK macro.
+
+0xfffffffff0 -> GENMASK(39, 4)
+
+after which:
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+> +
+>   struct mtk_base_afe;
+>   struct snd_pcm;
+>   struct snd_soc_component;
+
+
 
