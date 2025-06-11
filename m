@@ -4,45 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDA16C677C4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 14:53:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C5B8C677C4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 14:53:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bc9ItNb4misndePJHAQBHEbXBs/KilkPF3VtC8pEgN8=; b=Wlk7crPi3cbm6WwSUNHTaHDiRn
-	8WGNyUOicz888vW10XPESeuycQI1E/PiKmEPHcbx8BveS4NN1RkYV0wEgTnAFiSKy6haat67cDMI9
-	WnqGOiC3JV4OITu7NKWJx3EAbrMCaT2SAojxZ8XXo/uy+5+Ym5OahKAYU2R6cvfAgxP40zC+og7yE
-	n02qI3L6+hJMTG6P7T36RfStCkQVa7p6Zys0ibsr7rXA/ap/Cu80Jdgv1fcBsUcKFSbA7wKMzda3j
-	s1IzjK/OO/azmbWoh/9hhb+TtX6Ja5G6GkJ3cPEF/2ROnLGhKlvD8n7F79uGTdR1M1dQDEDJMSWkW
-	hpr7edUw==;
+	bh=ulsyOEAW39KJ8dazOP0K2bOxQjwVOmz/tpx2CID9BOM=; b=j4BWsC9d8zsi3+g+zH6jRc9A74
+	bR1i2N+OWWgT5N7GMuIzLqiltn4jRpBu1fih4igqkE0ntbHS9aITOtP+6DPAMZKQ8Wt+aP6oyd7xF
+	itqJhpdm3bXCnF2tDgstAUQ+aWY6P/NwaBCSkVKtn6PDwfH2MH34hAUaXLZEAPca8y8KzYYgJgIDM
+	XVAk99ZT9V/yjErrw+1CyIkY0ekI8VRFjYYvTboa8kg9d4oMvdqyP47TL09gDhkp0kq1PRTsSziS2
+	/sVYh0Gegomhl5DbXhRARP0Uc5YJKfIO0/xb/nCbUj0hYarkE/FyTc1lwXmESa/Njj5InQY/TlmZD
+	ygGVM2oQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPMpE-0000000AGuK-2yPR;
-	Wed, 11 Jun 2025 14:53:12 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uPMpK-0000000AH47-36a3;
+	Wed, 11 Jun 2025 14:53:18 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPJJP-00000009i6l-0MDt;
-	Wed, 11 Jun 2025 11:08:08 +0000
+	id 1uPJJT-00000009i7y-2AVm;
+	Wed, 11 Jun 2025 11:08:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=ulsyOEAW39KJ8dazOP0K2bOxQjwVOmz/tpx2CID9BOM=; b=N1+FRWdofSHazD7y1sDRTEfqRy
+	pn53LhunAFS0JTiOkPXxYsa7nu7pQNgQh9lmQQ8PRKoHeOYdxBXDkVwqL8rKLNxwEnCWY5eZDXnZk
+	BH8f/f+CrG2oxeUrXWl8vjx73tA49IMGBmeMwpJU62VcTtPWjzkot/MpJfPrhsxBPoTOPmyhFcakC
+	Qx3NK71vorQTiLSpch/cjLv+vV8d8ZLxPS6qsLtxtVUL3CxlVRgthEM/xHXpWO6pj5xAcgziQjY18
+	ip/KDxMVaUhYaF001LD/RuTJnz51/ECHCT+6348M7KVFKE9h/Qyo1yRuToXAkom2JqQgDuOGwX4HM
+	VYAYrumA==;
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uPJJQ-00000002K9o-3gtY;
+	Wed, 11 Jun 2025 11:08:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1749640085;
-	bh=8YPt+10PF3qsZ6u8IevYC2mBMTIJyfGubd5NrtU+ZO4=;
+	s=mail; t=1749640086;
+	bh=eaITpXuq+NtwwWLjQnEGdFQTRjmcpmnkjrOTyBXqJB0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=XcSTDEvYeZPzaeqiIX9F1HfT4Ii2n0GuwJQFqHIfokyBqkxfuenyD8lpT6oh3xcQs
-	 PFSXwrGIv6kDhbiQRLlVKe7Vm44J5zCnE7YBV7GCNY4vipJEuxdPVTJU3i+dvKYvnV
-	 FSX3ozOskQctWNGsxqDcz8hVxgn9wt2u9hCekVRNAXhGu+7C898me3e8bWRheC6L2E
-	 vb2m73aIATsBym84a4sK43D58EhkJ8hj4jtM7Ed0qAn1LvopCwCoIaIhdeKY1q3Kor
-	 42nHPnlsfi0ML7HqzEzn4dBdZqssxD+oUywb1x8EewIDLGy1/Swge2fotHFk+NrZNe
-	 F+9FTidKuDHQQ==
+	b=b1HJJ3t/ZvwPoU23FmBr/UWl/DwxGDMZ9LuMNlka4psK9nmRf+kaHi/mDwa5DldTh
+	 bYZvxIb3Z/euiUiXq1S7LTq4AA7cpT0RqRw+NrCvUtXpaRjPJs0lYlEoJwIKHbvjYQ
+	 SZs4sXyDX3XWa0w2NyMYoATELkd+4wTGgLUwflHkYMOWyCDnIRCu/O8t3qqRiwm9m4
+	 Gs/tgpgLdV9PJTMM4FVTNbT1xMy8TAUChyPO5Mu5FpteNdrUA00hvjJoGLv8A+pKz6
+	 0C7lURQulStmJR+zxNxfCIN8rX4Muj8pRqClT7LjCPbOtMrOugRK6m8o7iPJg/2XBU
+	 3FAFJzGe8+HqQ==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id DFE7917E1290;
-	Wed, 11 Jun 2025 13:08:04 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id EBDD917E15C3;
+	Wed, 11 Jun 2025 13:08:05 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: devicetree@vger.kernel.org
 Cc: qii.wang@mediatek.com,
@@ -62,17 +76,17 @@ Cc: qii.wang@mediatek.com,
 	linux-mediatek@lists.infradead.org,
 	linux-serial@vger.kernel.org,
 	kernel@collabora.com
-Subject: [PATCH 2/3] dt-bindings: serial: mediatek,uart: Add compatible for MT8196
-Date: Wed, 11 Jun 2025 13:07:59 +0200
-Message-ID: <20250611110800.458164-3-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 3/3] dt-bindings: i2c: i2c-mt65xx: Add MediaTek MT8196/6991 compatibles
+Date: Wed, 11 Jun 2025 13:08:00 +0200
+Message-ID: <20250611110800.458164-4-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250611110800.458164-1-angelogioacchino.delregno@collabora.com>
 References: <20250611110800.458164-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250611_040807_265994_09C9C739 
-X-CRM114-Status: UNSURE (   8.03  )
+X-CRM114-CacheID: sfid-20250611_120809_049899_61BCB8DE 
+X-CRM114-Status: UNSURE (   7.98  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,26 +102,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a compatible string for the MediaTek MT8196 Chromebook SoC,
-which UART IPs are fully compatible with MT6577.
+Add support for the MediaTek MT8196 Chromebook SoC and for its
+close relative, the MediaTek Dimensity 9400 MT6991 SoC.
+
+Those chips' multiple I2C controller instances are compatible with
+the ones found in the MT8188 SoC.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- Documentation/devicetree/bindings/serial/mediatek,uart.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/serial/mediatek,uart.yaml b/Documentation/devicetree/bindings/serial/mediatek,uart.yaml
-index c55d9a0efa19..823ade89d60d 100644
---- a/Documentation/devicetree/bindings/serial/mediatek,uart.yaml
-+++ b/Documentation/devicetree/bindings/serial/mediatek,uart.yaml
-@@ -48,6 +48,7 @@ properties:
-               - mediatek,mt8188-uart
-               - mediatek,mt8192-uart
-               - mediatek,mt8195-uart
-+              - mediatek,mt8196-uart
-               - mediatek,mt8365-uart
-               - mediatek,mt8516-uart
-           - const: mediatek,mt6577-uart
+diff --git a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
+index 23fe8ff76645..03f621fbf108 100644
+--- a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
++++ b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
+@@ -50,6 +50,11 @@ properties:
+           - enum:
+               - mediatek,mt6795-i2c
+           - const: mediatek,mt8173-i2c
++      - items:
++          - enum:
++              - mediatek,mt6991-i2c
++              - mediatek,mt8196-i2c
++          - const: mediatek,mt8188-i2c
+       - items:
+           - enum:
+               - mediatek,mt6893-i2c
 -- 
 2.49.0
 
