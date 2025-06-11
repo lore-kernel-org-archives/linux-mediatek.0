@@ -4,77 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A97FBC71135
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 23:20:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AA59C71136
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 23:24:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=it4RuztzhdZ8XnjsMEgLrvbjv0hSp4aT2tXycz5bWd4=; b=xcliyPmkCZRZWNdhd206tebDl8
-	Af0OhlqbJvBmFeylBT35m0P6bY3K8nsg4ISRqvmtE79W4k99DH3J2S9+nA9SRUzB+WxtLIXF6EgHe
-	M7uc37IhWXlui3nut8d8xhpSENTS3MkSsx1e8McnBpDgmTMrW+1mHByIcZ8txrSO+/tJesRv/Ed+y
-	e7oqFj5RDuErDJBs29duIx/RN4m/QJ58Yh1o+WOQdPqXvKd5V41XzJ2odW+/1FG4wQ4uTcEHtaCSD
-	X0mIqNf4eaE4gmmSepm8RXYy75RGy4ja0F00IWzAeytZoezE7PZaLXibPLjFS8CEOxDXAD44+H615
-	0fECaMPw==;
+	bh=s2fS10WGm/NgAzKDhSHbfRTkjHM/qI8657OmZeiqRck=; b=TWH5vZeCkUSdwGbAnrJr8NHudR
+	j++f86k+sFlmLsXtyq/tvopczJqyEvPmgTOAgKaFOMpYfi9g3VUfYx9EzNeZLXfWDPJ9PAj+KHMrm
+	0Lo8067GaqViLIka9pPxpNoAYT/DyxNQBqLZDRMCxKcqLQKEWLPqQSpSHlKoe8q9Lp2nsGMw4UDMd
+	dtOzOGm3vVlxiSHLVCl7XBW9gU0fYDc4OAlaO6NKugvPn4Z5BAqWBKG6uKcCLkArNZ1Vzj08t8+oP
+	K0lErguJZ42uNZjbZtLSbdcETvkiSCnTowxs5Me3yzIdZXp4UEl4Po7mEESc2Q2kpb/p2T2BpiNmQ
+	IVQJQpgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPUju-0000000Bf5b-2tBe;
-	Wed, 11 Jun 2025 23:20:14 +0000
-Received: from mail-oi1-x230.google.com ([2607:f8b0:4864:20::230])
+	id 1uPUo7-0000000BfMj-3B0Z;
+	Wed, 11 Jun 2025 23:24:35 +0000
+Received: from mail-ot1-x32b.google.com ([2607:f8b0:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPU9F-0000000BVKy-2rHX
+	id 1uPU9I-0000000BVML-3uhm
 	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Jun 2025 22:42:22 +0000
-Received: by mail-oi1-x230.google.com with SMTP id 5614622812f47-401c43671ecso185332b6e.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 11 Jun 2025 15:42:21 -0700 (PDT)
+	Wed, 11 Jun 2025 22:42:27 +0000
+Received: by mail-ot1-x32b.google.com with SMTP id 46e09a7af769-72ecb4d9a10so322458a34.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 11 Jun 2025 15:42:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1749681741; x=1750286541; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1749681744; x=1750286544; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=it4RuztzhdZ8XnjsMEgLrvbjv0hSp4aT2tXycz5bWd4=;
-        b=QqBgNG/9DLUTv2hp+/RNIdSCXWAqzMlZWbj1sz4A0VX3znHTMiQR2R9yC6ddZ4Bs7/
-         SK4U2atgmeHg5cp2hIt8X0yod1fYXnZuUqC6yNbe4vup3ScRsv/8+H4BPkiVA1KSjam3
-         06x11JrJs27OIBcifcHehtuxuo3qzp2FoDebW5QbVn1gIx3oTDBKWBUPTAnxdj7iqanX
-         DSA4jWu1lcoveVMdAU/n6cTl0bqADes72Z1r/lx0LcCBnUOxsF0Vy+8Jo3D4Zpm3jxCZ
-         LwfCNh2zUKDEEOAG2QQVuRJqBmQ0w46iVaJngTicPVBIboyRoJCm+l7T9ErllS0CyeoJ
-         41MA==
+        bh=s2fS10WGm/NgAzKDhSHbfRTkjHM/qI8657OmZeiqRck=;
+        b=eMCyUri3PK6NAqJ09c+xt9QBcVdZPY6J1H8G3B3ry/iDcEg41WOdKZm5k2zxTb7i/e
+         MxVXiYMXB8bJplRHtD6iQ0KncDoH/bjde3EN0NU6LaOXdlg0MPz+k97gSvSAa+AkN7TU
+         L5gwpxRaRx3HC1yIsVnFgwrbcaJC/fpTQPEA6+tVQYo9k0GfTsilJ90jTsQRkpPRikOV
+         BulmeOW2mW/pG1wdwUKJtsxFXEbcQtg6VNIbWyOHEP+4VQhO47EUeuqs2f23aW8JXLiv
+         D5octRGCMWJEUABNjHJFqTqG0+uOJh+VDbFCF4KHtOjoH4JNk5N/LtsJG3DsS8Ak/5yb
+         gKnA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749681741; x=1750286541;
+        d=1e100.net; s=20230601; t=1749681744; x=1750286544;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=it4RuztzhdZ8XnjsMEgLrvbjv0hSp4aT2tXycz5bWd4=;
-        b=ITLuu+MDRIoTlyZDpuTJ4DmfTdQjP5SVBg4G8bmmeKxwx7cToVxyVhC7+ex1Ys3UU+
-         RjeMNHZZSH2YKmoYxXtjpiV5VDeYYSmdAMLFNWZ32t2SZTnHXebrNRLUQP/I1E/QTEzT
-         ki4LJjCsE8W8ATfFaxCQ71ISp7k747dOgdPSn5DxVJ7TtSL0+3PVYpHpMFUssZYj6Gox
-         or+91AwPclo1xDSOLv9GO63ZjPZDk8eZfE+eFbKDssCJGV/lUWVT63NR2AQUQERzbLm4
-         2D5eFHWHabONpExNQzWoYVt482Jz8mU4hwZjFwudaPDkRzS7t6x46MTk7hyU0Uq0p3sE
-         ShDQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWTl/feWXomEOxTzh0fevOrg1Mgt+PSocfZVgpIDjJi/1VDjj4/6DtOGTMqV4mEQc2dDsxkgcOHY7MON+QK0Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzPz25Dlm3Ot1pZUCIuSpVpUjKrO4jeMuZhcH894cGTVE56WKDK
-	LFYcp6U3OJxgLQDEx5n74qHB3WK/rHLch0RbJO29oMP/6qaEmV6Zw22V0Fv0x+YcnEI=
-X-Gm-Gg: ASbGnctdMpV/eyvylKqHK1FBS+2WTnVNFG4BZitG79/wLWqtsrEXmbSiZnNOHElBra8
-	/CAs7la++cZovN4Pzi1vXwr15rontByEoolqMGykIb+8orNcEqdyB1YNnx5i288mLbeR0gpO3Mp
-	h06qY3BYoITgRMD+UbsDIUlIu21ws+0qS45MpQ7cUl+h4LsBfoaT9LEopYKgX+m1rfZGCbdfhgY
-	YR+iC8DrYkQZFFVDLjdjCWuxhDNJMjeQRElry3OITtT39IoVYvXnA4XkcnjqwZW1qo9JNmV6Kil
-	S/2bPoZ5Jn66MqJk4P4/Ujr0svOxtEXB+Jz9Zt7iAm/fYSf9OYeULreLK1Bo6uTEqA0x
-X-Google-Smtp-Source: AGHT+IGNZz5p3ryOjEvuo2EytJHiwibtf40ayr30CzxMgaTKJOSM2lK2oXZ9zl2uyt/uz+jI4tTCtg==
-X-Received: by 2002:a05:6808:4fe9:b0:3f8:18a3:b1cc with SMTP id 5614622812f47-40a6603250bmr879166b6e.12.1749681740764;
-        Wed, 11 Jun 2025 15:42:20 -0700 (PDT)
+        bh=s2fS10WGm/NgAzKDhSHbfRTkjHM/qI8657OmZeiqRck=;
+        b=T6HYjhzY9cIei9jIlGYLqZY5JyIxkaBmcUzt5CY+8uNos1D9wzgMeQ3pJXlcPVhm2C
+         28dIfTmWyzL7eOjp5M4BdLDtSDhTXaixUqpNS/zSYJZ13citIRHY6E5dCYaadHF4fK+b
+         2yJUL+Ma+6kZuOm9pEjH20saQ7GIeFVtVmhVzBvuI5WI/a4miB7EOtG5DQZeWp6BPxdw
+         dtoYn2f2/smOGDCSKs1Ev1hcGIxVZmBGpVUmsbWrt70B23ugii2mg6e4ujvAxTUD+j3U
+         zlwtC/jqOw8aiT/bHV5vRzLZhg9AmJBKnt9qKF+ahccs8uGCJqPzPpww7p2fM4dvCmmY
+         r56g==
+X-Forwarded-Encrypted: i=1; AJvYcCVkfM8Nc2Yyp7fepbevS4GItfrFD8A1dXekfYRL+9vtytViruAge+hOpGhyXg7ZriIlx11SpJ4Gpsc+5toHIA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywffbo5rfwAZftV5vmXpYcSFg45L5brvZ1wbRqWpvW7NHA0tkR2
+	EwKASRNGu3NWMmmYlEGfZWp637Zx6riPiMz6mivtJXxXWaluqw9LRTqH/rCuircNPTU=
+X-Gm-Gg: ASbGnct722vX013302tPzmQWuJAqa59ii6N5UHuA1Mnz18ExbaJIlK0e5X66eBDqs70
+	rIZ0yzQqD+6Ho5zxht/2xfFIV98cd8s24haTjrMgWUPGj4wCBKYRDHKLJ+2VSELS7V1Ua3j4Xsv
+	t5+MMK4Isl3TZEq7sD/eW2MXnDQtRdNpQv2xGGAIZzVHDEDxdz6fSWz80bf+OxwsWbGjDpcoyuo
+	yHD97SoVLEy7aDiX2+rHv5G3D++refvlSfRNq9/iQyn8+kTzbAFPwewOPvY1Mhsy7y2WFdozlI5
+	xku4hw9r/AeqweTK7hfgY3+63gz8f1YUZW9wUDjSPqvZxIho1WscGkjUukB52oGZm+ys
+X-Google-Smtp-Source: AGHT+IFjlERueVRup/Jao17hhnugkq7j+GiRg2h8bJth2v9G/6rcI2wGbyBF567ki5XFEPby/lqVcQ==
+X-Received: by 2002:a05:6808:1782:b0:40a:54f8:2cac with SMTP id 5614622812f47-40a5d171b8fmr3897834b6e.37.1749681743953;
+        Wed, 11 Jun 2025 15:42:23 -0700 (PDT)
 Received: from [127.0.1.1] ([2600:8803:e7e4:1d00:4753:719f:673f:547c])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-40a682fbf05sm24684b6e.32.2025.06.11.15.42.18
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-40a682fbf05sm24684b6e.32.2025.06.11.15.42.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Jun 2025 15:42:19 -0700 (PDT)
+        Wed, 11 Jun 2025 15:42:22 -0700 (PDT)
 From: David Lechner <dlechner@baylibre.com>
-Date: Wed, 11 Jun 2025 17:38:55 -0500
-Subject: [PATCH 03/28] iio: adc: dln2-adc: use = { } instead of memset()
+Date: Wed, 11 Jun 2025 17:38:56 -0500
+Subject: [PATCH 04/28] iio: adc: mt6360-adc: use = { } instead of memset()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-3-ebb2d0a24302@baylibre.com>
+Message-Id: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-4-ebb2d0a24302@baylibre.com>
 References: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
 In-Reply-To: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
 To: Michael Hennerich <michael.hennerich@analog.com>, 
@@ -105,20 +105,20 @@ Cc: linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com, 
  David Lechner <dlechner@baylibre.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1051; i=dlechner@baylibre.com;
- h=from:subject:message-id; bh=GVMTt5HV+6sU3Z7U1BlFtbwhTBkXJGR3/GKRAQsHmF8=;
- b=owEBbQGS/pANAwAKAcLMIAH/AY/AAcsmYgBoSgWXt88+FiMtb/ry4nJTdUhGkqkIB1L+peIvw
- BF0bdO4H0GJATMEAAEKAB0WIQTsGNmeYg6D1pzYaJjCzCAB/wGPwAUCaEoFlwAKCRDCzCAB/wGP
- wOiFCACM1Flijyrlz3Ef6dBSmJytrbKIx/vklETWdfDCxgwR2zDSTX9DMY/Av6gM1UoiYnRF3oF
- 7aNaVMVunV9IUE2l696XaykH/jPIiR1wt6QjtWaDFVJgm8mdU7qE25z4A8m0SjqHGOePx0/mn4a
- VQidG4ET9kCPSiYMAX7fH+jc6NgevlNMrrYmCgPdpO4/Or9RGrSLyhebufoZoeKn/L+CoasNkBz
- Ss7ip82sa/hjy5YFdj15avGsrWFIqCVjLbKr5nP/k4kJFOUeDKQsJ37NFU85Z6iBC06G751GT3n
- MOCLdFgqv1rPFyxcOt4HLY50/hztFVr8zuzyZfjp6XcROfG5
+X-Developer-Signature: v=1; a=openpgp-sha256; l=865; i=dlechner@baylibre.com;
+ h=from:subject:message-id; bh=16CSBjTW3ADRr7MOYui8jO+Mhn4wtu5HebYIEym4zkw=;
+ b=owEBbQGS/pANAwAKAcLMIAH/AY/AAcsmYgBoSgWdyp6TsgG9grzVt7c+wkMZGk5rY+tH83VPR
+ hAY0b/nO7aJATMEAAEKAB0WIQTsGNmeYg6D1pzYaJjCzCAB/wGPwAUCaEoFnQAKCRDCzCAB/wGP
+ wAQzB/9cinMYWAun9atmE8CTlRWjiF0B5MbkKSL06PlW5jHOfBbJnzoPpdU6t7b9ozExAUWagaM
+ 8JTlmB5ashMocc15UKPD4atXkaW+KR5WfIj1opieHDVgHgx5tmd+cF37qZ/nJC5bxm35Lt9TO9w
+ SohEdmnhmSCLTGxX7ALcqjT+7vJ4mo1HUfReJvrXjzj1tz2LJzp5fNpa87BbHN8CzI4Xr7C2l86
+ 5jlpdI0UeHhGJxVurKzbrYb5jJijAbCw9gASQDR1HQ1jLcq7YXokcMk1qBSn3TLhRCg/3PlePTR
+ TZtSE5eAx5o9+zFV8pz3++L/hWjP87mrPrk4KNrXiw1r2Lln
 X-Developer-Key: i=dlechner@baylibre.com; a=openpgp;
  fpr=8A73D82A6A1F509907F373881F8AF88C82F77C03
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250611_154221_729488_9C2A0429 
-X-CRM114-Status: GOOD (  12.01  )
+X-CRM114-CacheID: sfid-20250611_154225_000354_692C3409 
+X-CRM114-Status: GOOD (  11.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,31 +138,25 @@ the code.
 
 Signed-off-by: David Lechner <dlechner@baylibre.com>
 ---
- drivers/iio/adc/dln2-adc.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ drivers/iio/adc/mt6360-adc.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/iio/adc/dln2-adc.c b/drivers/iio/adc/dln2-adc.c
-index 9dbd2c87938c23d91fc93269763263fe73ed5206..5aea7644780f8b32ca6ed80b79afd07220d46a5c 100644
---- a/drivers/iio/adc/dln2-adc.c
-+++ b/drivers/iio/adc/dln2-adc.c
-@@ -467,7 +467,7 @@ static irqreturn_t dln2_adc_trigger_h(int irq, void *p)
+diff --git a/drivers/iio/adc/mt6360-adc.c b/drivers/iio/adc/mt6360-adc.c
+index f8e98b6fa7e923c6b73bedf9ca1c466e7a9c3c47..69b3569c90e5b665e1d2c59621df00d6142fbe9c 100644
+--- a/drivers/iio/adc/mt6360-adc.c
++++ b/drivers/iio/adc/mt6360-adc.c
+@@ -264,10 +264,9 @@ static irqreturn_t mt6360_adc_trigger_handler(int irq, void *p)
  	struct {
- 		__le16 values[DLN2_ADC_MAX_CHANNELS];
- 		aligned_s64 timestamp_space;
+ 		u16 values[MT6360_CHAN_MAX];
+ 		aligned_s64 timestamp;
 -	} data;
 +	} data = { };
- 	struct dln2_adc_get_all_vals dev_data;
- 	struct dln2_adc *dln2 = iio_priv(indio_dev);
- 	const struct dln2_adc_demux_table *t;
-@@ -479,8 +479,6 @@ static irqreturn_t dln2_adc_trigger_h(int irq, void *p)
- 	if (ret < 0)
- 		goto done;
+ 	int i = 0, bit, val, ret;
  
 -	memset(&data, 0, sizeof(data));
--
- 	/* Demux operation */
- 	for (i = 0; i < dln2->demux_count; ++i) {
- 		t = &dln2->demux[i];
+ 	iio_for_each_active_channel(indio_dev, bit) {
+ 		ret = mt6360_adc_read_channel(mad, bit, &val);
+ 		if (ret < 0) {
 
 -- 
 2.43.0
