@@ -4,78 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADA77C71136
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 23:58:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8D28C71136
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jun 2025 00:02:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F8QCKzZLzA9c1boYxiH6Zgd6l2s0DqEIDVHfSqU5zrU=; b=c3ULIOysAxb0vXjeUanNmtLsKx
-	Se4z8CGj51A+jvYtWYyhvm+GarJaiwaSsl7eM06Kizk1HTqobkQgtEsjtW0ANkwkjVn210YgDyraf
-	J1pNK7PEQysNZpVZMitd3bJSPo2bweS0jWtYP7WfWpKJPeEn8eHhVoWfp9r7OjhifuOiMmMxZhUWh
-	UP5DhtITxlBpf6wm8xxK+PwHgo0PnRdEZ2ZxDEItU7pEC6cIAB7J4R9xvSq80nU5ATpw6QQyp6Mbv
-	8bnHJuxOwudWtqmUDOM/G/J4uvxyaguvH15jgNV+iriNdSOZYfqmtehyEyulr1kVFsRFWUK32yDEH
-	1MtMCksw==;
+	bh=Bvfq/1PthJkt3QRBA4xnMMNhlIO3I3TLPySbwtnDOss=; b=BPkzFxB1FytKPHr9733Nj3Yrva
+	ra3WZSDEzmXXe5Z2Ds6RddQAonTkyVQwbZwKgl3crPzXpZlTCbpCnDhxealYMGz7CZ5g5yue9a6sS
+	3/W0J4YHoYbn3yUXu7ErcGHRtIPee/14+7m11UlxG0/9/n+kno1SJ4/b27Ko0LK8Q5edA9v1tZvs5
+	YXzrOX8QhVjaPMX4t9hKhODcOBGl6UDsSMQ8oC84Y7/AY/OWpALoBYm+xlJ1o4lR8xiCFg0hsvRVE
+	wpSnfnJEKxLRNIbekVU64nZT/yYh9peWewiXF7Xf4ykqrf4RqEOWBu1Ux0jM6gsmhGlCyiBc30pY5
+	GDG6Rgdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPVKV-0000000BjcP-1E3I;
-	Wed, 11 Jun 2025 23:58:03 +0000
-Received: from mail-ot1-x32c.google.com ([2607:f8b0:4864:20::32c])
+	id 1uPVOi-0000000Bjzq-1cV2;
+	Thu, 12 Jun 2025 00:02:24 +0000
+Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPU9w-0000000BVo2-3jov
+	id 1uPU9y-0000000BVpl-3Y4K
 	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Jun 2025 22:43:06 +0000
-Received: by mail-ot1-x32c.google.com with SMTP id 46e09a7af769-735a8be4ea9so113392a34.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 11 Jun 2025 15:43:04 -0700 (PDT)
+	Wed, 11 Jun 2025 22:43:07 +0000
+Received: by mail-oi1-x22a.google.com with SMTP id 5614622812f47-407a3c10d03so214551b6e.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 11 Jun 2025 15:43:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1749681784; x=1750286584; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1749681786; x=1750286586; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=F8QCKzZLzA9c1boYxiH6Zgd6l2s0DqEIDVHfSqU5zrU=;
-        b=Gd695UAKGwydGiQ7dxCYHTAFS74Nwtbq6vKfVdKsCQ8IrU8qp0nIpmMKiwheNbNMHb
-         9ThtqWNKQTIexN3ARQjCXB2Oygm75oc5FBfhcW9pCz6uhcToWtTS5nnTwD65LP+P7SRn
-         3jIzYfTfplFVt+w+C5jmFfbNDtdHQRbqWkn7yyzc1Rhccemj4JdF5MfTbNSkWsfopO74
-         fNG9U6ks2UH/TNIhnAmcMOrRZ9WYzUS3dgOC9Y9QFBWNF3s8ONmlO5tO6JEmS5Evxo0e
-         fvoZqwwHVYyLoDd40JjoxJdd+UkkBKCfL8qyilqfQwzpO6XDEFZyEcykoVhCp5FHe3tF
-         GTbg==
+        bh=Bvfq/1PthJkt3QRBA4xnMMNhlIO3I3TLPySbwtnDOss=;
+        b=03B2ROHeb1ZFh6i19htmhSXl4J3Gfpfohwqsa4feCnxkHjXnkQcxIZX9UjuQ1RR+O2
+         jpE88i6uNhmEXJNl4wWB2+GxbliK3nrILEwYAtOL+b0xWhvNaj4Pih7h08zhvJDiagDR
+         ZvKLa/Ta870pIJaUokT5Qw3F1CXe+4pqCWaBhHv3hZZ+FxLhFp7vd6nUBndNzMcmt7Yl
+         h+zziJ4kBOzo+fbqobGQhP+HYCanTrjNcavyuuhYYVnmdjfIXjuCI6km7My8jsvelD2l
+         gw3+DyL0zuFpQLH90AthK0VMUXuhi3sLCJcjxFvPsD3XTekZNzGX/qTtJWmzRvAVWBgo
+         wPKQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749681784; x=1750286584;
+        d=1e100.net; s=20230601; t=1749681786; x=1750286586;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=F8QCKzZLzA9c1boYxiH6Zgd6l2s0DqEIDVHfSqU5zrU=;
-        b=M7SZ8ppk+pwAAOOP3gw2DXFJ8nnitWRAzk8NYKAZ5gzzik5Jvg8bxUzlf5fP52xA6J
-         nl8+EduGndBTv0wH2aC4glGJexeIrAW9LGcgeQKmrq5/b3M8DWstrdDUe+6iBE/GbWyO
-         xkoQ0Tgp28MIQUKYu9ra6JN79Dp13ALsZWSqj4z6PCIgL2eISYc0jG95oEqiLIaT2aXP
-         k9f7vvB3EG5OI/H1BPzRzB58pCDlnw2xIKyH4HbLY/yrzvsUfEl4r7mKcOcpGWtkXAC2
-         u/pKF0mpIodbmsEoOG/7wdI4J+XLcRFyDA/M/u6Ku+GxjAxRiAGsrkxb6CwPkW6RDK6r
-         pwfA==
-X-Forwarded-Encrypted: i=1; AJvYcCXEpJnSUVRXEWrVCdzrkPhyeIfkuXQmxsfPICyd8h7O+Y5jpUiQKO1qITmAm//BLiA+ELfe3p4gZPI07aCSFA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxKg2OY1L5nwLjUM8mIwJxduplu/sUk+ybke9IIOVAZSmO1+Hse
-	8K+yrEkahL3VkdHEb8kWlhe0NZFwJOzsZMNg4SvS+60e4gYi58R9fVLFIntvHOhkGd4=
-X-Gm-Gg: ASbGncteDJKb7RaiYE29elPvD9EnbigS0L0VvdR78rL83aEyCADwsXC+G9xoxGuYfAI
-	vVYP/ynDl+V6safzwXhe8sDml9UvZ+XoNfYVO6QV0IarJVbIwIm3rFwQuWjnrYsEoDyh+T+Yqky
-	sbMHkgMcApZfUdZGJSfG1Sq+yADduaTz2tpw4x4I48qwrxKJHFVQcTf3v7+hweW1X2FxXAy/PEB
-	lsbVaiZO3R3UP0/fZmkR1C85mRFGf4NQ47fbUhVLkZvYTT/vFbT32mnNT4mkbesjrnZJkGJwVP/
-	w4K+D9JwevJirKsv/a6ejSGu1TsAGc7RfPFmgCanXBZZnKAmGDQnmPQdWffQDAwhLwqc
-X-Google-Smtp-Source: AGHT+IH53kFC4pQ00iW8frMOPsS2aW2HVSZ9BOgRUzZQwvvNEv752UPhJnf5JrLuBhq1/flY7pu0bQ==
-X-Received: by 2002:a05:6808:164d:b0:401:cd6d:25e2 with SMTP id 5614622812f47-40a65f92499mr1064493b6e.4.1749681784031;
-        Wed, 11 Jun 2025 15:43:04 -0700 (PDT)
+        bh=Bvfq/1PthJkt3QRBA4xnMMNhlIO3I3TLPySbwtnDOss=;
+        b=jeO6cXimAMAE6DFojBZ/AAnaodoR0SK/jt2SG+IBgsDBrgtM2dzcE4Zm7le/PwjNJK
+         tmMwkskz2RaPnSKZHC+5GwWXHxzgsqBgHlcjqAw0QbjhQ7FEhnocbuHdl2IUB46wVeWp
+         QFkUmWn+nR85UzCGdFJ8cQsR2la4VTR7oKU+jIlSrQNl8xPptog72MBeG/DkeQFh3uZ8
+         jzwySP+LfbGTJoME2QXY/GTiCnwk+Uthi4uKWH6tgCtCf/VXZcp8rH5D+Ye1t5eRZBj8
+         9GTN1T0O5zTyfw7aPVPwiEPesmb82sF3J2qCP7K0QF95uoBmNzTv9kNEaGAdvlP+VfEb
+         57Sg==
+X-Forwarded-Encrypted: i=1; AJvYcCV4rSbRqztIXSS04suiEySb5Mzx5HWbB0Esc5QKzRPa1no9ORcoZhEbLzjti6OnvVZo/a2tB4Nk38Qb4v7vrA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzLUoWgvj1okp3ByI9Bjuj1nPJjDv5VDQC8egZ8phWX/J9TOl1X
+	9dqIwUbh+LXhWP2rCDGIwtaZr7LpOVcrvTI1jsn5sp2NEjq2+2tQa4JIpkrD3LnSiVs=
+X-Gm-Gg: ASbGncsfmUYXUhsbtVuq1sf6Yseh7Pjk0g6kIENMbjPy7g8GHS5cFqf9AnyRg+sIeI1
+	LXIEgvmGx8PMq6njYkRVh5FucxJYgjc9FZVVY6AycDI+fLdUU+3mLvdggjWgXzORwp7cfes6oFw
+	NrOvqb2GjQBg93PMM+zbC7hgwFK34/pjUKxUZqN5K0iQHR9v9DmEYbaLXOa4DwNIYvMjoOixuDE
+	APUyVyksUUdFQeCwYwBcEtVrTEwr/okO2Q+xCuZ1vUgB5Kw3sd7eCfcC2drNbuuqlPhCgvy7aC/
+	PGPyAjKpx54INX71IfQloMiUsW2VRmtzP4g0XTUajQ+qQ78tPcJTosZ3O4qiMYCFTUEh
+X-Google-Smtp-Source: AGHT+IEzxA2Sz6qgNCiFhtXAvcRaONOijMvYTiFTuj8n/pknGpxJ7PSUYEWQmDmDDdoICgN5Se7ZKw==
+X-Received: by 2002:a05:6808:3189:b0:403:31a4:f3fa with SMTP id 5614622812f47-40a66b562cbmr545614b6e.35.1749681786177;
+        Wed, 11 Jun 2025 15:43:06 -0700 (PDT)
 Received: from [127.0.1.1] ([2600:8803:e7e4:1d00:4753:719f:673f:547c])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-40a682fbf05sm24684b6e.32.2025.06.11.15.43.03
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-40a682fbf05sm24684b6e.32.2025.06.11.15.43.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Jun 2025 15:43:03 -0700 (PDT)
+        Wed, 11 Jun 2025 15:43:04 -0700 (PDT)
 From: David Lechner <dlechner@baylibre.com>
-Date: Wed, 11 Jun 2025 17:39:17 -0500
-Subject: [PATCH 25/28] iio: pressure: mprls0025pa: use = { } instead of
+Date: Wed, 11 Jun 2025 17:39:18 -0500
+Subject: [PATCH 26/28] iio: pressure: zpa2326: use = { } instead of
  memset()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-25-ebb2d0a24302@baylibre.com>
+Message-Id: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-26-ebb2d0a24302@baylibre.com>
 References: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
 In-Reply-To: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
 To: Michael Hennerich <michael.hennerich@analog.com>, 
@@ -106,20 +106,20 @@ Cc: linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com, 
  David Lechner <dlechner@baylibre.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1025; i=dlechner@baylibre.com;
- h=from:subject:message-id; bh=+Al+Scx0CuEWvmKSaR9FmNdQ/zr1q9Yo8+2pHc+n7jQ=;
- b=owEBbQGS/pANAwAKAcLMIAH/AY/AAcsmYgBoSgYqU/X8zadeXISux/OIM8m2Cz7MRuRxATYcV
- 71OkLQHQ0+JATMEAAEKAB0WIQTsGNmeYg6D1pzYaJjCzCAB/wGPwAUCaEoGKgAKCRDCzCAB/wGP
- wHHRB/sFQd4QvOKtJlimYNNmwLWT8x571H1gIrBjRcfNuzvQddwOXZULzkxba8/Lj/g41g9T0Fh
- uwYOV52qXTHRasuWN6cTVSBSNo/K+9CEGdRWSIUqOF141Ti3/hm7iKloBYRHP5KlfhztlEVvBSO
- UVlWPLsr8ndFwcGj/M1lNwTZENm/nAXlochyQYMHsX7ojshZQEm2BWXiUnTUrFdv6Yr3groQUyW
- dzkx9EmFcUYCuxAkx2sdIPfNCMTKAlUp67GEvcdCf9xtNkjY6Q5G2NqrtGeYmGHS63CmPwJtxYE
- NWy1n7x6KNDIiXYX2AlAAOY+bvwSYvg9fG0jz0c2dypLa1eD
+X-Developer-Signature: v=1; a=openpgp-sha256; l=929; i=dlechner@baylibre.com;
+ h=from:subject:message-id; bh=UW7Bx8ZURpZRdKW8GhG9VQDYCD+6f2n+DIethjWGd1w=;
+ b=owGbwMvMwMV46IwC43/G/gOMp9WSGDK82AxWczZcn9t22vxZreO96Ev3Hf1fuZXnZ25ICSzpP
+ XO+89HZTkZjFgZGLgZZMUWWNxI35yXxNV+bcyNjBswgViaQKQxcnAIwkao77P/DT3lqzXe/zn1s
+ h3e/z7q+bpFp7GeZuULWKl1hX6qm8k+l9c7Uus/9bWfDFaKXxB3Sf9bVp7PzdswS9ZB57fbd2bs
+ 9DN64lqm9C9hhL8usdXSC/UK1SIvH+gkLWi1jV5+9WXnOxz7DZAbPKa1ug4TndQ9vSd5b8HaCvL
+ H71aO/c5o12+TDV7dUx03cXXby7LJjMXZGwZkZlrXvL894O2uN3Z2kraLbH5m+jZN5Zror4rxGk
+ idH5xtfc5VfqxTF58pnWEt4TC9qus7BwvP5lZUuj4ugdWhJWFpJSs2GpkXrpm5k1W3Tt8+R3Bi2
+ rjKXxaVg2sXJoUKyX2+y7S0LaN2e9Pslj3Dx05DQFe3SAA==
 X-Developer-Key: i=dlechner@baylibre.com; a=openpgp;
  fpr=8A73D82A6A1F509907F373881F8AF88C82F77C03
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250611_154304_966953_30266263 
-X-CRM114-Status: GOOD (  11.86  )
+X-CRM114-CacheID: sfid-20250611_154306_890621_A523DFE0 
+X-CRM114-Status: GOOD (  10.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,30 +137,28 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Use { } instead of memset() to zero-initialize stack memory to simplify
 the code.
 
-The initialize of the cmd value is trivial so it can be moved to the
-array initializer as well.
-
 Signed-off-by: David Lechner <dlechner@baylibre.com>
 ---
- drivers/iio/pressure/mprls0025pa_i2c.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+ drivers/iio/pressure/zpa2326.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/iio/pressure/mprls0025pa_i2c.c b/drivers/iio/pressure/mprls0025pa_i2c.c
-index 1a48f8d43d716b28b8fceb8e1a06d63a73a74a86..79811fd4a02b370b3fde8bd67a5115a3934f8614 100644
---- a/drivers/iio/pressure/mprls0025pa_i2c.c
-+++ b/drivers/iio/pressure/mprls0025pa_i2c.c
-@@ -44,10 +44,7 @@ static int mpr_i2c_write(struct mpr_data *data, const u8 cmd, const u8 unused)
- {
- 	int ret;
- 	struct i2c_client *client = to_i2c_client(data->dev);
--	u8 wdata[MPR_PKT_SYNC_LEN];
--
--	memset(wdata, 0, sizeof(wdata));
--	wdata[0] = cmd;
-+	u8 wdata[MPR_PKT_SYNC_LEN] = { cmd };
+diff --git a/drivers/iio/pressure/zpa2326.c b/drivers/iio/pressure/zpa2326.c
+index 1640aa3717eddc135dfac9d5e45d899ae2579f64..6eef37c0952d7c209478911413de2cf3d2552920 100644
+--- a/drivers/iio/pressure/zpa2326.c
++++ b/drivers/iio/pressure/zpa2326.c
+@@ -583,11 +583,9 @@ static int zpa2326_fill_sample_buffer(struct iio_dev               *indio_dev,
+ 		u32 pressure;
+ 		u16 temperature;
+ 		aligned_s64 timestamp;
+-	}   sample;
++	} sample = { };
+ 	int err;
  
- 	ret = i2c_master_send(client, wdata, MPR_PKT_SYNC_LEN);
- 	if (ret < 0)
+-	memset(&sample, 0, sizeof(sample));
+-
+ 	if (test_bit(0, indio_dev->active_scan_mask)) {
+ 		/* Get current pressure from hardware FIFO. */
+ 		err = zpa2326_dequeue_pressure(indio_dev, &sample.pressure);
 
 -- 
 2.43.0
