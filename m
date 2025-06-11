@@ -4,68 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFC81C677C4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 14:53:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A534C678DC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 14:53:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Mm1e3mlVKmqYB4FiIftgNM3eL7zfuFRTCkznk04ZkH4=; b=MMEo3zplfUqsvMC0DcRT4qE+iF
-	2hOQOENXgfFWNY1WWLtW0KkXHDIy5ihQEOrL9DOE5OJfMOXs9+WvSUXio43OvkuZiHN9LKuU0qOa1
-	R1jGZrY2DRmvFVrfVVX7Get/wsy7IhYUYUxOAY4SpRMWyE/iwEDu/ksXVsjLxeggsfgCesdyNYDUH
-	muxlSedVWg89o1epSb05S7k9/Bf6Plcrk2XNKYstjhhWIWgbEALlPP+4LKlhQ+DBuNQ1nHmlFc53K
-	888cXYgUDnGAd6Gir4JkeUI8tsF/Axk1n/IPjM3JDoJhmAXroEyR2Lt36vHdcvPSivDdwNYd2d0Dr
-	zV4Xg+3A==;
+	bh=TDp48bHsNLwefkivp6ahRNAatvlYx+YYOHXw2V7efvw=; b=gfXViJTXOweGfIcHui4z2jNeCC
+	3Hplb31+qU7rBfneo/qeMn5WDtuzX4E1iUNke5YFG3l5s5EjwmHUXV4Gq6dK69BhimSDkkpB+7TlD
+	cLVSLmQ2jAcz4WQrr0tZVFVgbSEpVWdFkm38N92kLUGLpmmLv3FR834ApOcQy2vp0QvbGWGxJfhRZ
+	cqmnOkkkbyT5BpJbKwQlr/uIybVfvu+noSTCkkZRtKsgu47SJ7WEXalCYEz+GyJbRyTQt64IVYgeu
+	g0OvQcPcluIOy0o2K2FMmgBqQ9rzGPg+Kc4UhvSgyGfAKUiN9kOz0H+N4DsssHva7qr7PXmXGAedM
+	KCcqbZoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPMp9-0000000AGlK-2RGi;
-	Wed, 11 Jun 2025 14:53:07 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uPMpC-0000000AGqX-3rcM;
+	Wed, 11 Jun 2025 14:53:10 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPJJI-00000009i5a-1NAY;
-	Wed, 11 Jun 2025 11:08:02 +0000
+	id 1uPJJP-00000009i70-3ofu;
+	Wed, 11 Jun 2025 11:08:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=TDp48bHsNLwefkivp6ahRNAatvlYx+YYOHXw2V7efvw=; b=nNWzNDZUli1TAaSj7QXb00FssX
+	xqc584IW9SfZNSieKZ7STukyDv5AS4B4pFoXFjS2dv56d9n7gJS3CKKfQ2iUnq0kP2B4sEHe5Zwc8
+	jup23IVRJlGQM9OzxgJOSfYofcvcV2YtlSq2bJ9jGejVP8k9VmpxbNnFfrZ5qqs0BF+bvBwBKvZgX
+	JmZ+/xOROu2ig91ZifJE8ypdssO0gkgLD2KUhwch8UAx5AUGSjGt4HeP4LqSa9mIZFHMQMozFIRnV
+	XPmkxA//H+zM741plAOqle2DR6A2gmZKzIcThYo0vCt+ptEYAdM3ORDYah8emkrlulhxQi6ZU2qAZ
+	tqjvOkSA==;
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uPJJO-00000002K95-0ZXk;
+	Wed, 11 Jun 2025 11:08:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1749640078;
-	bh=kyPztV/dUohnVXnMILrNtW2ZYQ3QNi1+1ODBhm3jYCc=;
+	s=mail; t=1749640083;
+	bh=/xBjPL/xGn4SpJ0kMI0oUuAtTggcop7AzvAQx8nzDEE=;
 	h=From:To:Cc:Subject:Date:From;
-	b=EfKn4yvZ2xiYkcfRUyca9I+haRGZ0RPkmqlmXhkv0WIBtQvnjakPbgRq0y0Dqao3S
-	 Ve5TQEt0PtOlNxDoJi4q2CuL7BvuWhC+23Co+G56ml1hgu/hnKtPbjKQhzhWFQjs4a
-	 kkDjY2Tb0hBnJBdPbO6fDtBGHxy3hCeGOofOx1o0QMp4LrRdfLSiEf4lhCorxtKnQ/
-	 4/919hziMF7nF5KyzwCy6njFsbHI09Azk4ciOhNtifuf+8ddTknGE1YxnCEU9gF983
-	 E2YpxqvuTN0IMdfiPw43znf5tI/zZ8AdtsMOaG7pOjJq8xAZpF4HblxuJQ7P1SXE3h
-	 s9EECyYHmLOMQ==
+	b=DVRxKKgjCYzZW5IGdrBD3dFdWi2lJr1Do5BFXYmFzY8FENT6+SiswcLtaSfgrWUpm
+	 ij66oinROpTyHf+x0xkFwwFPEjFCvNB6Y9M9nCgNjWUupd062WkkrrSp/LTfHE211f
+	 DtTtUNHh4lz1QGkpioI/b4R0icccl5Ocir0JmJhic6vbbadtF5fvvPClkn196aMa8t
+	 G3ESDfJWDnJdf5SB4NRc74oohyLDm0Tvln+wwmXIdhKAcTmd12kVhkpvUPWpEl0rI5
+	 JKegGO/uQCwEX7o+SpALAjZeEA6Ccd72ob+LC3pWiNkBXblHtZ32WNeseNE6I1Er3F
+	 ebKGRyNJJhAYQ==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6F92917E0536;
-	Wed, 11 Jun 2025 13:07:57 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id AF64717E0536;
+	Wed, 11 Jun 2025 13:08:02 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: broonie@kernel.org
-Cc: robh@kernel.org,
+To: devicetree@vger.kernel.org
+Cc: qii.wang@mediatek.com,
+	andi.shyti@kernel.org,
+	robh@kernel.org,
 	krzk+dt@kernel.org,
 	conor+dt@kernel.org,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	leilk.liu@mediatek.com,
-	linux-spi@vger.kernel.org,
-	devicetree@vger.kernel.org,
+	gregkh@linuxfoundation.org,
+	jirislaby@kernel.org,
+	daniel.lezcano@linaro.org,
+	tglx@linutronix.de,
+	linux-i2c@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
+	linux-serial@vger.kernel.org,
 	kernel@collabora.com
-Subject: [PATCH 1/2] spi: dt-bindings: mediatek,spi-mt65xx: Add support for MT6991/MT8196 SPI
-Date: Wed, 11 Jun 2025 13:07:46 +0200
-Message-ID: <20250611110747.458090-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 0/3] Add MT8196 compatibles to bindings
+Date: Wed, 11 Jun 2025 13:07:57 +0200
+Message-ID: <20250611110800.458164-1-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250611_040800_519937_6291593A 
-X-CRM114-Status: UNSURE (   7.92  )
+X-CRM114-CacheID: sfid-20250611_120806_298629_11F7E0F0 
+X-CRM114-Status: UNSURE (   7.34  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,38 +100,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for the SPI IPM controller found on MediaTek's MT6991
-(Dimensity) and MT8196 (Kompanio) SoCs, with both having the same
-controller IP, hence being fully compatible with each other.
+This series adds compatibles for MT8196 (Chromebooks) and MT6991
+(Smartphones) for HW that is fully compatible with older SoCs.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../devicetree/bindings/spi/mediatek,spi-mt65xx.yaml         | 5 +++++
- 1 file changed, 5 insertions(+)
+AngeloGioacchino Del Regno (3):
+  dt-bindings: timer: mediatek,timer: Add MediaTek MT8196 compatible
+  dt-bindings: serial: mediatek,uart: Add compatible for MT8196
+  dt-bindings: i2c: i2c-mt65xx: Add MediaTek MT8196/6991 compatibles
 
-diff --git a/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml b/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
-index ed17815263a8..3bf3eb1f8728 100644
---- a/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
-+++ b/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
-@@ -39,6 +39,10 @@ properties:
-               - mediatek,mt7988-spi-single
-               - mediatek,mt8188-spi-ipm
-           - const: mediatek,spi-ipm
-+      - items:
-+          - enum:
-+              - mediatek,mt8196-spi
-+          - const: mediatek,mt6991-spi
-       - items:
-           - enum:
-               - mediatek,mt2701-spi
-@@ -46,6 +50,7 @@ properties:
-               - mediatek,mt6589-spi
-               - mediatek,mt6765-spi
-               - mediatek,mt6893-spi
-+              - mediatek,mt6991-spi
-               - mediatek,mt7622-spi
-               - mediatek,mt8135-spi
-               - mediatek,mt8173-spi
+ Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml       | 5 +++++
+ Documentation/devicetree/bindings/serial/mediatek,uart.yaml | 1 +
+ Documentation/devicetree/bindings/timer/mediatek,timer.yaml | 1 +
+ 3 files changed, 7 insertions(+)
+
 -- 
 2.49.0
 
