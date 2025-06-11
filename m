@@ -4,71 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D451EC678DC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 14:53:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B27FC677C4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 15:54:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PsqFPhhwmaCsa4vXg/mFB286PrcXGx5Y8aFvc9FKgqo=; b=fcughSNgGa4JZtUzuaLgb8A6pf
-	K32+YoAM6mtLSIDz3zTAdPR71mZ4FEyTbKGKjeNuvGYH7s4SESUdrXSApdrPQ8ABf66KXlerK8g2S
-	ZXZ/kz80WjLo6+fpDUrAwpHRlMR7c4Qw+2OHChAdv0BRhfvBs0LS1RgIf5ctY6bfRP0ri1e2L+u0w
-	ShkuNI3XUtFkCsvccjW/oBZ8IqBjYqUWIxzotGl+dv+v7nSeR59I79GhGMekExNlnk1pZGsLOYoKS
-	dQe2ASxl9PGTo2QzCAnUYnVZeG118GBNYmEGauqUpFpvXgP0n3ESmUBfuw4sHktbVpIsUUsZHahFc
-	/yTgZa7A==;
+	bh=fwsBLsiH8h/NS6Hq1U43SFNrzavo486149SkBkkmZow=; b=vm1EzPXX1u02YmIY3raLKHEtRC
+	G/Pn5gQUN7ouI+0UWCWUiVDSj4qNmw9nVsgilcAoZjY/9IB1lOPC0rtqbNMsAibtfQ92/EhcrFLX3
+	pJ2xugfp1C+03f2VDC+M38ZPbN0fY9BQ4vqnLIzArsevZ09JVwxh+xzH9vcRuMbA5PTaVWcIMs6c3
+	EwzEa77DvCspmHTJdfjTDO9mHaul0GZQObHn19juTQ4WH2RjUjFg0htciRDvj/742l+MGVHOYM5vE
+	ykVuW+45aejZn9AmCrp5cUHolyibNOToYlIg3RtSGnxOa0Xt8hmtamigYQdd9/eGQGzbrZoWYs2hE
+	LkTr35AA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPMpO-0000000AHBS-1zjs;
-	Wed, 11 Jun 2025 14:53:22 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uPNmG-0000000ATGa-34Ce;
+	Wed, 11 Jun 2025 15:54:12 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPJQ1-00000009j2T-1BHZ;
-	Wed, 11 Jun 2025 11:14:58 +0000
+	id 1uPIlC-00000009cmg-2xIy;
+	Wed, 11 Jun 2025 10:32:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1749640495;
-	bh=xoTzQij77wJqxKu/8WOJivHo5xvIanP8StGNmp1ewxg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=UW/oVHTA/HuPIQy39vzAQ7DA1PBC85oXq9visjD+/znO4tH1rAuNncJk7GIpCza8Z
-	 NkJYneqv/byx/sB3AzA9mHYHsVnvMDH39Qzg+cJxGpZYLqMw35tG4YtCW/UlBljvgt
-	 SSHevCKLFTzbtMwSM7OG5tJMAs7FxDqJNOYYId38nYUePx/y8g65jhRAeKj6T129bb
-	 tYyvyPRuaamYqgV+zK5zS9OaGByXCmkMrUX/QYs8wz03ouNmTyfU1W0IeiGKep1pYI
-	 RKF0sX21fDaXM0/WJANlVHC8WLQq2/DeV+6iLHMj49MhbCbChRJJFCSei0rjNEDSZl
-	 mUWhfOw23cFNQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	s=mail; t=1749637965;
+	bh=9T/pS302r+YbAj1tL/BAOvp5KEwiMpVKqcVZppRx0oY=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=AD7ZC+nyuYzuKei+lg7bcBr64bv6QxIUFI7GuPr8USgAixOJxD131Fa88tMfUBSNA
+	 w1urdT41Azs1lVojYMoAWRXUCKd0I+7G6PsebqYSH2KWD6gxvCBmS4SNyUHkv4uOvv
+	 I4oeM+A5q7Y5b3tke8kg4g4M64W0rp2VUNKRFsRKMedS6w9Tyb1bWAT81IiudSj/wv
+	 fbcuKimdA50oOUFC6kqElNvJk4JEExW4+gRU9pC+JQAcvxpEAmXsov/NolRPSTno1s
+	 l/q5Y4/uREORGawiT9Rgd0pVX8y+cFzo5EEnly8yNThQiCOtwj1IJGLTVKZ8SVA5pA
+	 StVP2p+YsNg5Q==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8EA3D17E10F8;
-	Wed, 11 Jun 2025 13:14:54 +0200 (CEST)
-Message-ID: <5cf01f45-ea0b-421e-81a7-163c069aeaf0@collabora.com>
-Date: Wed, 11 Jun 2025 13:14:54 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 01/10] ASoC: mediatek: common: modify mtk afe platform
- driver for mt8196
-To: "Darren.Ye" <darren.ye@mediatek.com>, Liam Girdwood
- <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>, Linus Walleij <linus.walleij@linaro.org>,
- Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org
-References: <20250610092852.21986-1-darren.ye@mediatek.com>
- <20250610092852.21986-2-darren.ye@mediatek.com>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7BD6D17E02B0;
+	Wed, 11 Jun 2025 12:32:44 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250610092852.21986-2-darren.ye@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <20250526-mt8395-genio-1200-evk-sound-v1-1-142fb15292c5@collabora.com>
+References: <20250526-mt8395-genio-1200-evk-sound-v1-1-142fb15292c5@collabora.com>
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8395-genio-1200-evk: Enable
+ Audio DSP and sound card
+Message-Id: <174963796443.449275.9873675313892150049.b4-ty@collabora.com>
+Date: Wed, 11 Jun 2025 12:32:44 +0200
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250611_041457_493285_6F216BCA 
-X-CRM114-Status: GOOD (  13.20  )
+X-CRM114-CacheID: sfid-20250611_033246_887369_AFDCC632 
+X-CRM114-Status: UNSURE (   8.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,47 +79,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 10/06/25 11:27, Darren.Ye ha scritto:
-> From: Darren Ye <darren.ye@mediatek.com>
+On Mon, 26 May 2025 12:45:27 +0200, Louis-Alexis Eyraud wrote:
+> Add in the mt8395-genio-1200-evk devicetree the memory regions for the
+> Audio DSP (ADSP) and Audio Front-End (AFE), and a sound card node
+> configured to use the ADSP.
+> This enables audio output through the 3.5mm headphone jacks (speaker or
+> earphone), available on the board.
 > 
-> Mofify the pcm pointer interface to support 64-bit address access.
 > 
-> Signed-off-by: Darren Ye <darren.ye@mediatek.com>
-> ---
->   .../mediatek/common/mtk-afe-platform-driver.c | 47 ++++++++++++-------
->   .../mediatek/common/mtk-afe-platform-driver.h |  2 +
->   2 files changed, 33 insertions(+), 16 deletions(-)
-> 
-> diff --git a/sound/soc/mediatek/common/mtk-afe-platform-driver.c b/sound/soc/mediatek/common/mtk-afe-platform-driver.c
-> index 6b6330583941..a86594dca2b7 100644
-> --- a/sound/soc/mediatek/common/mtk-afe-platform-driver.c
-> +++ b/sound/soc/mediatek/common/mtk-afe-platform-driver.c
+> [...]
 
-..snip..
+Applied to v6.16-next/dts64, thanks!
 
-> diff --git a/sound/soc/mediatek/common/mtk-afe-platform-driver.h b/sound/soc/mediatek/common/mtk-afe-platform-driver.h
-> index fcc923b88f12..9809e60db511 100644
-> --- a/sound/soc/mediatek/common/mtk-afe-platform-driver.h
-> +++ b/sound/soc/mediatek/common/mtk-afe-platform-driver.h
-> @@ -12,6 +12,8 @@
->   #define AFE_PCM_NAME "mtk-afe-pcm"
->   extern const struct snd_soc_component_driver mtk_afe_pcm_platform;
->   
-> +#define MTK_WORD_SIZE_ALIGN(x) ((x) & (0xfffffffff0))
+[1/1] arm64: dts: mediatek: mt8395-genio-1200-evk: Enable Audio DSP and sound card
+      commit: 9acb4d06fcb56edfb9bac0de705b4f295a18e932
 
-This doesn't really look like alignment to me, so perhaps change the macro name.
-Also, please use the GENMASK macro.
-
-0xfffffffff0 -> GENMASK(39, 4)
-
-after which:
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-> +
->   struct mtk_base_afe;
->   struct snd_pcm;
->   struct snd_soc_component;
+Cheers,
+Angelo
 
 
 
