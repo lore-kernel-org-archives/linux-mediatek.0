@@ -4,59 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A534C678DC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 14:53:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDA16C677C4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 14:53:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=TDp48bHsNLwefkivp6ahRNAatvlYx+YYOHXw2V7efvw=; b=gfXViJTXOweGfIcHui4z2jNeCC
-	3Hplb31+qU7rBfneo/qeMn5WDtuzX4E1iUNke5YFG3l5s5EjwmHUXV4Gq6dK69BhimSDkkpB+7TlD
-	cLVSLmQ2jAcz4WQrr0tZVFVgbSEpVWdFkm38N92kLUGLpmmLv3FR834ApOcQy2vp0QvbGWGxJfhRZ
-	cqmnOkkkbyT5BpJbKwQlr/uIybVfvu+noSTCkkZRtKsgu47SJ7WEXalCYEz+GyJbRyTQt64IVYgeu
-	g0OvQcPcluIOy0o2K2FMmgBqQ9rzGPg+Kc4UhvSgyGfAKUiN9kOz0H+N4DsssHva7qr7PXmXGAedM
-	KCcqbZoA==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bc9ItNb4misndePJHAQBHEbXBs/KilkPF3VtC8pEgN8=; b=Wlk7crPi3cbm6WwSUNHTaHDiRn
+	8WGNyUOicz888vW10XPESeuycQI1E/PiKmEPHcbx8BveS4NN1RkYV0wEgTnAFiSKy6haat67cDMI9
+	WnqGOiC3JV4OITu7NKWJx3EAbrMCaT2SAojxZ8XXo/uy+5+Ym5OahKAYU2R6cvfAgxP40zC+og7yE
+	n02qI3L6+hJMTG6P7T36RfStCkQVa7p6Zys0ibsr7rXA/ap/Cu80Jdgv1fcBsUcKFSbA7wKMzda3j
+	s1IzjK/OO/azmbWoh/9hhb+TtX6Ja5G6GkJ3cPEF/2ROnLGhKlvD8n7F79uGTdR1M1dQDEDJMSWkW
+	hpr7edUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPMpC-0000000AGqX-3rcM;
-	Wed, 11 Jun 2025 14:53:10 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uPMpE-0000000AGuK-2yPR;
+	Wed, 11 Jun 2025 14:53:12 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPJJP-00000009i70-3ofu;
-	Wed, 11 Jun 2025 11:08:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=TDp48bHsNLwefkivp6ahRNAatvlYx+YYOHXw2V7efvw=; b=nNWzNDZUli1TAaSj7QXb00FssX
-	xqc584IW9SfZNSieKZ7STukyDv5AS4B4pFoXFjS2dv56d9n7gJS3CKKfQ2iUnq0kP2B4sEHe5Zwc8
-	jup23IVRJlGQM9OzxgJOSfYofcvcV2YtlSq2bJ9jGejVP8k9VmpxbNnFfrZ5qqs0BF+bvBwBKvZgX
-	JmZ+/xOROu2ig91ZifJE8ypdssO0gkgLD2KUhwch8UAx5AUGSjGt4HeP4LqSa9mIZFHMQMozFIRnV
-	XPmkxA//H+zM741plAOqle2DR6A2gmZKzIcThYo0vCt+ptEYAdM3ORDYah8emkrlulhxQi6ZU2qAZ
-	tqjvOkSA==;
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPJJO-00000002K95-0ZXk;
-	Wed, 11 Jun 2025 11:08:07 +0000
+	id 1uPJJP-00000009i6l-0MDt;
+	Wed, 11 Jun 2025 11:08:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1749640083;
-	bh=/xBjPL/xGn4SpJ0kMI0oUuAtTggcop7AzvAQx8nzDEE=;
-	h=From:To:Cc:Subject:Date:From;
-	b=DVRxKKgjCYzZW5IGdrBD3dFdWi2lJr1Do5BFXYmFzY8FENT6+SiswcLtaSfgrWUpm
-	 ij66oinROpTyHf+x0xkFwwFPEjFCvNB6Y9M9nCgNjWUupd062WkkrrSp/LTfHE211f
-	 DtTtUNHh4lz1QGkpioI/b4R0icccl5Ocir0JmJhic6vbbadtF5fvvPClkn196aMa8t
-	 G3ESDfJWDnJdf5SB4NRc74oohyLDm0Tvln+wwmXIdhKAcTmd12kVhkpvUPWpEl0rI5
-	 JKegGO/uQCwEX7o+SpALAjZeEA6Ccd72ob+LC3pWiNkBXblHtZ32WNeseNE6I1Er3F
-	 ebKGRyNJJhAYQ==
+	s=mail; t=1749640085;
+	bh=8YPt+10PF3qsZ6u8IevYC2mBMTIJyfGubd5NrtU+ZO4=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=XcSTDEvYeZPzaeqiIX9F1HfT4Ii2n0GuwJQFqHIfokyBqkxfuenyD8lpT6oh3xcQs
+	 PFSXwrGIv6kDhbiQRLlVKe7Vm44J5zCnE7YBV7GCNY4vipJEuxdPVTJU3i+dvKYvnV
+	 FSX3ozOskQctWNGsxqDcz8hVxgn9wt2u9hCekVRNAXhGu+7C898me3e8bWRheC6L2E
+	 vb2m73aIATsBym84a4sK43D58EhkJ8hj4jtM7Ed0qAn1LvopCwCoIaIhdeKY1q3Kor
+	 42nHPnlsfi0ML7HqzEzn4dBdZqssxD+oUywb1x8EewIDLGy1/Swge2fotHFk+NrZNe
+	 F+9FTidKuDHQQ==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AF64717E0536;
-	Wed, 11 Jun 2025 13:08:02 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DFE7917E1290;
+	Wed, 11 Jun 2025 13:08:04 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: devicetree@vger.kernel.org
 Cc: qii.wang@mediatek.com,
@@ -76,15 +62,17 @@ Cc: qii.wang@mediatek.com,
 	linux-mediatek@lists.infradead.org,
 	linux-serial@vger.kernel.org,
 	kernel@collabora.com
-Subject: [PATCH 0/3] Add MT8196 compatibles to bindings
-Date: Wed, 11 Jun 2025 13:07:57 +0200
-Message-ID: <20250611110800.458164-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 2/3] dt-bindings: serial: mediatek,uart: Add compatible for MT8196
+Date: Wed, 11 Jun 2025 13:07:59 +0200
+Message-ID: <20250611110800.458164-3-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.49.0
+In-Reply-To: <20250611110800.458164-1-angelogioacchino.delregno@collabora.com>
+References: <20250611110800.458164-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250611_120806_298629_11F7E0F0 
-X-CRM114-Status: UNSURE (   7.34  )
+X-CRM114-CacheID: sfid-20250611_040807_265994_09C9C739 
+X-CRM114-Status: UNSURE (   8.03  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -100,19 +88,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series adds compatibles for MT8196 (Chromebooks) and MT6991
-(Smartphones) for HW that is fully compatible with older SoCs.
+Add a compatible string for the MediaTek MT8196 Chromebook SoC,
+which UART IPs are fully compatible with MT6577.
 
-AngeloGioacchino Del Regno (3):
-  dt-bindings: timer: mediatek,timer: Add MediaTek MT8196 compatible
-  dt-bindings: serial: mediatek,uart: Add compatible for MT8196
-  dt-bindings: i2c: i2c-mt65xx: Add MediaTek MT8196/6991 compatibles
-
- Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml       | 5 +++++
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
  Documentation/devicetree/bindings/serial/mediatek,uart.yaml | 1 +
- Documentation/devicetree/bindings/timer/mediatek,timer.yaml | 1 +
- 3 files changed, 7 insertions(+)
+ 1 file changed, 1 insertion(+)
 
+diff --git a/Documentation/devicetree/bindings/serial/mediatek,uart.yaml b/Documentation/devicetree/bindings/serial/mediatek,uart.yaml
+index c55d9a0efa19..823ade89d60d 100644
+--- a/Documentation/devicetree/bindings/serial/mediatek,uart.yaml
++++ b/Documentation/devicetree/bindings/serial/mediatek,uart.yaml
+@@ -48,6 +48,7 @@ properties:
+               - mediatek,mt8188-uart
+               - mediatek,mt8192-uart
+               - mediatek,mt8195-uart
++              - mediatek,mt8196-uart
+               - mediatek,mt8365-uart
+               - mediatek,mt8516-uart
+           - const: mediatek,mt6577-uart
 -- 
 2.49.0
 
