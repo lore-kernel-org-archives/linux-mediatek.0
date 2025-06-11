@@ -4,67 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B2B4C7114B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 17:59:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A582FC71149
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 17:59:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6UTK91GY1l2gHr3AsIq1attbX9Pte4LfQOTH9k6ujRs=; b=FdDmIlkXwvctv41+Usxu/f40Se
-	E4cmlOQgACY21s5JBUNUUEoocctHHQOHm/coG3OER/sUnVIcsCAagD4EfiqFS3Wp+ivNbR1vV+XKz
-	zXVyhyhvd5OIDd268OrL7RU1Fe3uXh2CJDJzqDzTqjijY/bXno8RpV0Ny2U2PLV55RowvdiUKmBDL
-	TnUR0Fv2+JF59faRT+IsFB5HTR3mdb5kW1qZ4gXQg/KqUlMKbHYVK7bu6Kk9xnHxqnBPjoFXRiiM3
-	0id23YmhRu+xyugf67VWA0wWjlCppVku8Fcd3xqxZl5XMcuobdzKl1lIV/QiGOdMAkUWLDO68kG2Y
-	Jz0oo6HA==;
+	bh=gPwsajLBsNL8XA7/sk2C74g5jjpD7PSQHxW65bPJTD4=; b=DwUnOy4LWGi5b1SmfbdE5Aph1L
+	aNydUJvvsX1P41TaEI0ekJU1iYT9k5LYz0cFe4/mlBm7qHWb1sZCDdwmRMT5jiJ0tVzxDaWSeh+8O
+	jrYAq3HE5SJCXIvBUpxzaoJH6H1aMNWA6nSrtsPAGdwNA2KmnGMss0Ago6n3Z97BinPWpgIhZDUmY
+	TCIs7BgxyQ4UvmOEGGOyh2cKyMbVKqb5rp9sbogSkyoz3FiqfD9ycS/qdeZ4/OKeF8VR7DFdCzxQ8
+	ues4zv3TD/jzw7V42n4nYp4AQysupeDO3LL2GXVkAneA7vnqIEG6mB2UeNJ4Xn+uJUcF25YWIDXxy
+	SJoD92pA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPPjj-0000000AlrI-0loT;
-	Wed, 11 Jun 2025 17:59:43 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uPPjh-0000000Aloa-2nX6;
+	Wed, 11 Jun 2025 17:59:41 +0000
+Received: from out-69.smtpout.orange.fr ([193.252.22.69] helo=out.smtpout.orange.fr)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPLMG-00000009wJS-4B6v;
-	Wed, 11 Jun 2025 13:19:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1749647950;
-	bh=YnZHAH16ZCoZK3qgLn0+Hvc/WENmD4Pl8KAmSNL+Yb4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=hgTspcjgX5qjLaXGcb9UQ23SvAQx4tbGKCiiY8/fTGjJe9k1HOPJTTX9CgF7mEre5
-	 TN/wXhIC60siTNtw9EUYa7edrD966CThz8qEStNlBLsKXxFNQelpFiL+nvtcHqxbWq
-	 buacOZ8MqQkH35PC/p4BAWR8sdhJVlEU7OPGm69fMSlwbcYyqJblLqgsLP++z93uIU
-	 zWvR9ZQ1XHaxT1u2sIiPxyy+AbLoGn21ZuK4ZVXYPlfR62kcAl51hv87hTP0eb2/MV
-	 +XgbdyjEjnSAuWBL/vfbPjxWJ0q4sc6K1aIBYBfbIqZDO2gpvwLnSg54RPYGL0WlMF
-	 6w05HwFDBp43g==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1230E17E0E3A;
-	Wed, 11 Jun 2025 15:19:10 +0200 (CEST)
-Message-ID: <313cea9f-f6c5-449a-bcf0-80eb5088b7f3@collabora.com>
-Date: Wed, 11 Jun 2025 15:19:09 +0200
+	id 1uPLKI-00000009w6e-2fhG;
+	Wed, 11 Jun 2025 13:17:13 +0000
+Received: from [172.16.82.72] ([124.33.176.97])
+	by smtp.orange.fr with ESMTPA
+	id PLK1uaf7zSZTqPLK3uQEoa; Wed, 11 Jun 2025 15:17:07 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
+	s=t20230301; t=1749647827;
+	bh=gPwsajLBsNL8XA7/sk2C74g5jjpD7PSQHxW65bPJTD4=;
+	h=Message-ID:Date:MIME-Version:Subject:To:From;
+	b=M17/FgXiTcdr7lS6G03JsO24EzLrPAbSaLdpabOS8KSO9ZEXvCwjxVSLQlhclwiey
+	 GU56llktfNWO77AIbtJnO0IAiggrUGmaiUzv8Xmkw2DgB0RpdGc07IBsV0w1nsbXu8
+	 fAXtlPWEo57EiI6hAVY6AQFCCwfdJ6BzRYW0kgC5C3yIIN6W5eFA9Fc3JLan2k8kHc
+	 egUAG7bVTwa/EvSd4aaAKk/s2n6UNuFr5HTZgzxV3+RLRh3GYkYM20NYmhzLtOoyO6
+	 HW0Pw9zzC3ok64XoPrHLF5ogesxujWXldaMR0SeWUqXPPz9UoJXWYF/7kr4W1ygWPl
+	 fGi2IavEa67Cw==
+X-ME-Helo: [172.16.82.72]
+X-ME-Auth: bWFpbGhvbC52aW5jZW50QHdhbmFkb28uZnI=
+X-ME-Date: Wed, 11 Jun 2025 15:17:07 +0200
+X-ME-IP: 124.33.176.97
+Message-ID: <e252f15f-ea80-4969-b754-82da5f9a7f56@wanadoo.fr>
+Date: Wed, 11 Jun 2025 22:16:52 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] dmaengine: mediatek: Fix a flag reuse error in
- mtk_cqdma_tx_status()
-To: Qiu-ji Chen <chenqiuji666@gmail.com>, sean.wang@mediatek.com,
- vkoul@kernel.org, matthias.bgg@gmail.com, eugen.hristev@linaro.org
-Cc: dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- baijiaju1990@gmail.com, stable@vger.kernel.org,
- kernel test robot <lkp@intel.com>
-References: <20250606090017.5436-1-chenqiuji666@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH 3/4] net: can: mcp251x: use new GPIO line value setter
+ callbacks
+To: Bartosz Golaszewski <brgl@bgdev.pl>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-can@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org,
+ Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
+ Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ "Chester A. Unal" <chester.a.unal@arinc9.com>,
+ Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Marc Kleine-Budde <mkl@pengutronix.de>,
+ Heiner Kallweit <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>
+References: <20250610-gpiochip-set-rv-net-v1-0-35668dd1c76f@linaro.org>
+ <20250610-gpiochip-set-rv-net-v1-3-35668dd1c76f@linaro.org>
+ <b2f87cff-3a81-482b-bfdd-389950b7ec8e@wanadoo.fr>
+ <CAMRc=MfCwz3BV15aATr_5er7wU=AmKV=Z=sHJyrjEvLwx2cMjQ@mail.gmail.com>
+ <b9ea7e0e-7dd1-460b-950a-083620dd52e9@wanadoo.fr>
+ <CAMRc=Mf4qupdJEm9mWPF3-B3hprn6AvP7Po2=aQYbaSvFf8OeA@mail.gmail.com>
 Content-Language: en-US
-In-Reply-To: <20250606090017.5436-1-chenqiuji666@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+From: Vincent Mailhol <mailhol.vincent@wanadoo.fr>
+Autocrypt: addr=mailhol.vincent@wanadoo.fr; keydata=
+ xjMEZluomRYJKwYBBAHaRw8BAQdAf+/PnQvy9LCWNSJLbhc+AOUsR2cNVonvxhDk/KcW7FvN
+ LFZpbmNlbnQgTWFpbGhvbCA8bWFpbGhvbC52aW5jZW50QHdhbmFkb28uZnI+wrIEExYKAFoC
+ GwMFCQp/CJcFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4AWIQTtj3AFdOZ/IOV06OKrX+uI
+ bbuZwgUCZx41XhgYaGtwczovL2tleXMub3BlbnBncC5vcmcACgkQq1/riG27mcIYiwEAkgKK
+ BJ+ANKwhTAAvL1XeApQ+2NNNEwFWzipVAGvTRigA+wUeyB3UQwZrwb7jsQuBXxhk3lL45HF5
+ 8+y4bQCUCqYGzjgEZx4y8xIKKwYBBAGXVQEFAQEHQJrbYZzu0JG5w8gxE6EtQe6LmxKMqP6E
+ yR33sA+BR9pLAwEIB8J+BBgWCgAmFiEE7Y9wBXTmfyDldOjiq1/riG27mcIFAmceMvMCGwwF
+ CQPCZwAACgkQq1/riG27mcJU7QEA+LmpFhfQ1aij/L8VzsZwr/S44HCzcz5+jkxnVVQ5LZ4B
+ ANOCpYEY+CYrld5XZvM8h2EntNnzxHHuhjfDOQ3MAkEK
+In-Reply-To: <CAMRc=Mf4qupdJEm9mWPF3-B3hprn6AvP7Po2=aQYbaSvFf8OeA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250611_061913_193389_FC99C865 
-X-CRM114-Status: UNSURE (   5.57  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250611_061711_878181_6C65100F 
+X-CRM114-Status: GOOD (  21.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,16 +104,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/06/25 11:00, Qiu-ji Chen ha scritto:
-> Fixed a flag reuse bug in the mtk_cqdma_tx_status() function.
+On 11/06/2025 at 01:05, Bartosz Golaszewski wrote:
+> On Tue, Jun 10, 2025 at 5:48 PM Vincent Mailhol
+> <mailhol.vincent@wanadoo.fr> wrote:
+>>
+>> On 10/06/2025 at 23:05, Bartosz Golaszewski wrote:
+>>> On Tue, Jun 10, 2025 at 3:55 PM Vincent Mailhol
+>>> <mailhol.vincent@wanadoo.fr> wrote:
+>>>>
+>>>> On 10/06/2025 at 21:37, Bartosz Golaszewski wrote:
+>>>>> From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+>>>>>
+>>>>> struct gpio_chip now has callbacks for setting line values that return
+>>>>> an integer, allowing to indicate failures. Convert the driver to using
+>>>>> them.
+>>>>>
+>>>>> Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+>>>>                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>>>>
+>>>> This does not match the address with which you sent the patch: brgl@bgdev.pl
+>>>>
+>>>>> ---
+>>>>>  drivers/net/can/spi/mcp251x.c | 16 ++++++++++------
+>>>>>  1 file changed, 10 insertions(+), 6 deletions(-)
+>>>>>
+>>>>> diff --git a/drivers/net/can/spi/mcp251x.c b/drivers/net/can/spi/mcp251x.c
+>>>>> index ec5c64006a16f703bc816983765584c5f3ac76e8..7545497d14b46c6388f3976c2bf7b9a99e959c1e 100644
+>>>>> --- a/drivers/net/can/spi/mcp251x.c
+>>>>> +++ b/drivers/net/can/spi/mcp251x.c
+>>>>> @@ -530,8 +530,8 @@ static int mcp251x_gpio_get_multiple(struct gpio_chip *chip,
+>>>>>       return 0;
+>>>>>  }
+>>>>>
+>>>>> -static void mcp251x_gpio_set(struct gpio_chip *chip, unsigned int offset,
+>>>>> -                          int value)
+>>>>> +static int mcp251x_gpio_set(struct gpio_chip *chip, unsigned int offset,
+>>>>> +                         int value)
+>>>>>  {
+>>>>>       struct mcp251x_priv *priv = gpiochip_get_data(chip);
+>>>>>       u8 mask, val;
+>>>>> @@ -545,9 +545,11 @@ static void mcp251x_gpio_set(struct gpio_chip *chip, unsigned int offset,
+>>>>>
+>>>>>       priv->reg_bfpctrl &= ~mask;
+>>>>>       priv->reg_bfpctrl |= val;
+>>>>> +
+>>>>> +     return 0;
+>>>>
+>>>> mcp251x_gpio_set() calls mcp251x_write_bits() which calls mcp251x_spi_write()
+>>>> which can fail.
+>>>>
+>>>> For this change to really make sense, the return value of mcp251x_spi_write()
+>>>> should be propagated all the way around.
+>>>>
+>>>
+>>> I don't know this code so I followed the example of the rest of the
+>>> codebase where the result of this function is never checked - even in
+>>> functions that do return values. I didn't know the reason for this and
+>>> so didn't want to break anything as I have no means of testing it.
+>>
+>> The return value of mcp251x_spi_write() is used in mcp251x_hw_reset(). In other
+>> locations, mcp251x_spi_write() is only used in functions which return void, so
+>> obviously, the return value is not checked.
+>>
 > 
-> Fixes: 157ae5ffd76a ("dmaengine: mediatek: Fix a possible deadlock error in mtk_cqdma_tx_status()")
-> Cc: stable@vger.kernel.org
-> Reported-by: kernel test robot <lkp@intel.com>
-> Closes: https://lore.kernel.org/oe-kbuild-all/202505270641.MStzJUfU-lkp@intel.com/
-> Signed-off-by: Qiu-ji Chen <chenqiuji666@gmail.com>
+> Wait, after a second look GPIO callbacks (including those that return
+> a value like request()) use mcp251x_write_bits() which has no return
+> value.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Yes. Read again my first message:
 
+  mcp251x_gpio_set() calls mcp251x_write_bits() which calls mcp251x_spi_write()
+  which can fail.
 
+My point is that the grand father can fail.
+
+> It probably should propagate what mcp251x_spi_write() returns
+
+Exactly what I asked for :)
+
+> but that's material for a different series.
+
+Why? Are you going to do this other series?
+
+If the answer is no, then please just do it here. Propagating the error in
+mcp251x_write_bits() is a three line change. Am I asking for too much?
+
+> The goal of this one is to
+> use the new setters treewide and drop the old ones from struct
+> gpio_chip.
+
+Yours sincerely,
+Vincent Mailhol
 
