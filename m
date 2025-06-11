@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D933C71136
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63B34C71135
 	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Jun 2025 23:51:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,69 +12,84 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O49HniDCuoXMC9eMwPqBiAeGw4w5v2Vl7zSDG8FL1hA=; b=tPvDrSbZRzIs8devbqKaQnOoRe
-	thn1TsYB5p3Sl7oWahAT0iZvXqS+lcnOfpTD0lowW2IMaB5XEnlMArqkuJ5YyIZvTqRjylQW98Sae
-	lrMhah1OBsOLE49z71/kB5iangLzZO0VmIxPDB8Y8s/JlWGbzmGu0jQGbN2gCzAaGqNaKnkevtDj1
-	PpbzKn9Wk9mu9fPEhiIzEmGtXGdRp54YMl2ksibd2YskvJtF4zCrLJJQsAiFwEkcXyJoSEFMgOQPe
-	gEKfZ6rWtPtb2Qirpnz4EAHdbbgoWVhUtHn4geh32fXKwY1TRGM5qQVSbD/Yp7vngQDIpT7+yH2pB
-	jvgqgcsA==;
+	bh=0GqXAUC5ztniIogZLpwpNEvpFvqt5l5bmngIYMTHsoc=; b=srNWNmilD+iyPhlLo+WImd+nxa
+	3FHATy1LkNs79+Rrt7bWVXqiECdyewluMupE3WWo7Fk4if1tQEMnp9hA/GIb+OTe6yEFjINeGMPJb
+	KRKRuWz3457Z/02P+gKmoBGVL/Rk6N1gg62V0m4iFqY48kQT2wh1a6STnQQwN8wkJlMRSu6LrJdLF
+	FP3rXlh+3yi14XR/oe10gXPrFSghlHSSq53Q116qN0EtlhbX5F3WWqhFudijF+3T5fmU62Z41PUq9
+	s99H9e0vR090ZMPOG5cIGjvWXho0zG6iE4fsv8LfdPUs7ggikAGG0NvF4yMDgl/G65vuBrm/+BhKq
+	0Ahpm3qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPVEC-0000000Bio9-0JWe;
+	id 1uPVEC-0000000BioU-1c3j;
 	Wed, 11 Jun 2025 23:51:32 +0000
-Received: from mail-oi1-x22c.google.com ([2607:f8b0:4864:20::22c])
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPU9o-0000000BVh7-3uAQ
+	id 1uPU9r-0000000BViW-3QDs
+	for linux-mediatek@bombadil.infradead.org;
+	Wed, 11 Jun 2025 22:42:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=0GqXAUC5ztniIogZLpwpNEvpFvqt5l5bmngIYMTHsoc=; b=cbxrVe+YrB/w4DdTVyPB/bRw67
+	txzEjGdsKSaZQkCR02FbNPIDRnFTmZ2QiJdm64t37bHqhnXEkvPOqOVV+b03UFBEgE52pJrjQha/u
+	PZpDlf/RnHrvtUWgs16s4BbKae4xYm/edzgrzSBmyFWAjhbJW9d4X/fbzeyWjbNI1vOG/K08evxEB
+	nbfm0jDR/NuQQISyXz098LrM7z9U294njHA/ykRney1Ei8ffNp1lUYWEp5jyw+IWuyafXAC31MdNq
+	owyrW80oK2geRZo0MHPo5J4eh6cRRt/ynzXRdEdXeSmxBk8dg+VHCnJ129WG1z+9yfUsQWIJnEFgC
+	YBryPJKw==;
+Received: from mail-oi1-x236.google.com ([2607:f8b0:4864:20::236])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uPU9p-00000002X2P-09w9
 	for linux-mediatek@lists.infradead.org;
 	Wed, 11 Jun 2025 22:42:59 +0000
-Received: by mail-oi1-x22c.google.com with SMTP id 5614622812f47-4067106dd56so209085b6e.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 11 Jun 2025 15:42:56 -0700 (PDT)
+Received: by mail-oi1-x236.google.com with SMTP id 5614622812f47-40905ae04e4so126640b6e.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 11 Jun 2025 15:42:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1749681776; x=1750286576; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1749681774; x=1750286574; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=O49HniDCuoXMC9eMwPqBiAeGw4w5v2Vl7zSDG8FL1hA=;
-        b=w/Ili8YLO/c6NCGJEMFLBh2EFMfWG87d9nlne+tcmvZio28vWJlT3BasbT4wlRmd3l
-         FzJ07zpk6bvH/LSPay6GNLA7xrnB7fdW0Nwv+X21kHo7DmUY/HOAscpU1nWHYoWUXeRf
-         nQ8s1S1bA8v4yWBViP39gB53G/TezdZbXzekdoaclqahnSkeEN2xYbx0kGdkOhpQFNO8
-         9RhTnDUobdnEpTFmRw6tSL2EAPcrSUEmXfAaP1E9QFgLa2aup59ykkGCiUUf6Y9JqqAN
-         AfDFgqC+6y4qsBAkVMWyXUSIj2nReRQiswt+Z9YaG3GMi6v+pct9DBI3c9hVOQQPHTp7
-         1Yaw==
+        bh=0GqXAUC5ztniIogZLpwpNEvpFvqt5l5bmngIYMTHsoc=;
+        b=l0HjuM/dcw0eWim1TwnJk8ndjDaB4Hkn/xCoFZSLXw/RZaggZLSRrJidHpGJLnwrlo
+         64OEYvrd/n4ZorqSp/b1q4nBZYzeQW9nF7Jza9lNXPVErg9ePm65izgJ3M5CcOTg6yMT
+         xq6hWLtVcGi2TqjSAQsWWQefP9i0W5EQSxCv4hU3ArYuHEwoFWf2vNwFLLTbb7wM4+we
+         sV6ROW1sc8Z3BDlQPq8mFxkGFQ4J8Kmxv9j6GLKfoptOPJRmi2KBlcTR46EtI6y1w1Zh
+         Wl7QVJwWLi6ObF4Pm0NGN4GeVJBquvdAVMoxt/Rvbq3vfT6CbPqu4hYCqwODqX9qjcsz
+         ORBA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749681776; x=1750286576;
+        d=1e100.net; s=20230601; t=1749681774; x=1750286574;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=O49HniDCuoXMC9eMwPqBiAeGw4w5v2Vl7zSDG8FL1hA=;
-        b=eKrntE6aEZlWrllr8F8GBkEOUbqay5QMww/d/vQmy30DVTkiv0AH7izO3jD39NHLQb
-         2kb6RW5oTXU761xKTW6ML7VL2NAlGf81XbhBi+gpbxF+eAIjaJK+mmUQTeZgZl8gBQI6
-         6ANhQldaOEDs6LOq28kmcQh/NH/uhn4CV590RFN3Ih0OPTxVuAMYg9J66Yyg3G+o7MMJ
-         5+PpBBSPnrk9hu5+dAjLBa2Mudu7Lk0BOlxUVZ1SeBDE88KorNK4FAcbITOS4ZnMcOQC
-         PBByu7qDCt8lvB4sPSTK5pqvDo2sFPi5N75m1ZFzlmyoMdNYgflqMTs5rbAmHD1BbYLp
-         +1aw==
-X-Forwarded-Encrypted: i=1; AJvYcCVZGg4ZSWz+qLpLXmseE6ZLyhugNu4yYExpZDhGuSBq+ZyyA6G8rlVLMAUFHDR51wgjvxHd7iA2akHJRfTvpg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxvn/6klOccWyzU7XXBcqd3vcGD9BU3d0jsihQ5pwo1n/QSi9A4
-	41o2Fu0/6iUAiGXuWBuuPnO3tblptAKTMNMPdSoyyffYlw3AHpb2C5EALrtjBKRq6Zc=
-X-Gm-Gg: ASbGncu+4whK5bHFDdpLdd49oBa9OIFnY1lIrdBhveIfB5YmFSm89QZFahpKI4DR4f4
-	zoiVz7myOZwqY0TRN++1eyyBnenCvHjW7sn+SvMXvvpB046GfcH49lWl/5NIoC/PjZU69P218mo
-	F9XrZjl5LBNX2j+Bx5yKVrArhBq7V/mDvzhfbCJ2u+0l1pZL7+vgMboj/FI9p9HptV0VEY6WCuR
-	CwAlcT5T3tIgKaV9OjjuAGynD4+y4dSsWQZWLLJpHQPtO6wVb42P/Krla7Yd6FRiStTdBmWTSIQ
-	2iqQzflp2nXAB0V+9CZNdDm4q9Bme512gz6VDIj3xAQGE3LXI+PUMXs7JRlo75nJJjz1
-X-Google-Smtp-Source: AGHT+IEdXlTs5BQlKqDRA2XR9le0U//SvE0Qifl3mfGztXMmWUlblRQ96qzrlkvIsB1m096LadrsCQ==
-X-Received: by 2002:a05:6808:180c:b0:409:f8e:7282 with SMTP id 5614622812f47-40a65f87782mr956229b6e.5.1749681776215;
-        Wed, 11 Jun 2025 15:42:56 -0700 (PDT)
+        bh=0GqXAUC5ztniIogZLpwpNEvpFvqt5l5bmngIYMTHsoc=;
+        b=UnHT+m/iXA8gGBp469LlI6TRaIiYprGBd8EtQoZHuqTbySSc6aryxfpNLpE/siovmE
+         BTfIcdHR70JEDoRYYg8+pBzh2xq5YjqKxIM70NmonjTdhvB+NcgB50UVtV/vIJj771S1
+         hqyFWNzcMf2Anf0WonTMzTLzRNWh/k7A53xwGB2LQ5W4Dk9sFkvJSKrGPcOmtz3B7Bp1
+         acbDyAXpKDEC2t9nj7+Miz0sWOT9hiVxtychE4qg+Ay9yR0VBdIAPsDFcAZO6ZTGE/WK
+         qPXe/OhM/6SMtvzadoIiemba+9AelupOJSdBzWsPeB+thUKX/BjBcbupUOmM8dPeVQs+
+         IViw==
+X-Forwarded-Encrypted: i=1; AJvYcCXjfmn0OldRR/SCLegzlKNVhRHE53V9HqO2h4JRqby9g3NIHyTFLuxMjipQ3vMh2+QiXSu/Twzf0BSImxobvw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyeO1V2t/7T3DH9RZXPZ5a03vDyi22lMP50xyYOaWOpZ4oNQVAm
+	0qDHF7ebHLyfxMPh9OcEBWhlzF+9mRswBUpb1Sc/Xrl0PJ1hvnzG4pmqol8kJs21zBQ=
+X-Gm-Gg: ASbGncsPvA+tam9R61LLK4Vhvfth74QIfrBC/+loSMbTLwm780TfljV8zw9PexGfCbq
+	ROAW3sD+3C4SKgfdaLIvDL9nQmPqqXxdhDgIpytM4FNPzV2jqpEPNoWj5GGXmzpLuZYXPlHhOPP
+	WIcxOEwbNTsrBbNl+IA3jVeU6oxxmjdCHjTNJkbytjwvsYzecUSUfDK92Fx+YpUino38p4sDh++
+	YJvUApMWpF3t+MsJml5LXFc1+j7/sEQP8gVo7h7h+43wvXiidVfH1GbBOm1BjDodPT0NToY0PpC
+	tGNzRqzJSFGTblioYpkL44KC7qdX7tv1OEaeqduR3NqA73vYUg3TmATxBVaDwxtUiiG+
+X-Google-Smtp-Source: AGHT+IEno7iivJ7V9DJ4jS9BfN9qMtC3Kbpn1hoqPd/0X7I8V1hxaDUFP1SUYvG7cJTjWfN6V3+JZg==
+X-Received: by 2002:a05:6808:1a10:b0:406:6fd3:ff13 with SMTP id 5614622812f47-40a5d127d4amr3587773b6e.25.1749681774060;
+        Wed, 11 Jun 2025 15:42:54 -0700 (PDT)
 Received: from [127.0.1.1] ([2600:8803:e7e4:1d00:4753:719f:673f:547c])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-40a682fbf05sm24684b6e.32.2025.06.11.15.42.54
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-40a682fbf05sm24684b6e.32.2025.06.11.15.42.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Jun 2025 15:42:55 -0700 (PDT)
+        Wed, 11 Jun 2025 15:42:53 -0700 (PDT)
 From: David Lechner <dlechner@baylibre.com>
-Date: Wed, 11 Jun 2025 17:39:12 -0500
-Subject: [PATCH 20/28] iio: light: opt4060: use = { } instead of memset()
+Date: Wed, 11 Jun 2025 17:39:11 -0500
+Subject: [PATCH 19/28] iio: light: ltr501: use = { } instead of memset()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-20-ebb2d0a24302@baylibre.com>
+Message-Id: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-19-ebb2d0a24302@baylibre.com>
 References: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
 In-Reply-To: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
 To: Michael Hennerich <michael.hennerich@analog.com>, 
@@ -105,20 +120,20 @@ Cc: linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com, 
  David Lechner <dlechner@baylibre.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1055; i=dlechner@baylibre.com;
- h=from:subject:message-id; bh=u68bZZMO/JKUz2mz6KZxBlhHkEylsEbUz83VhCyRYl4=;
- b=owGbwMvMwMV46IwC43/G/gOMp9WSGDK82DgYtDNtb2gx3z7l0jyT+eHvDe25Ny/eC02uWrn1Y
- Ct3oj9PJ6MxCwMjF4OsmCLLG4mb85L4mq/NuZExA2YQKxPYFC5OAZjIHWH2f3bdcxonrJAMav7A
- XffFu02lOFatYYFB7CF7t92HHtwV1csJuGihoZXQqzjn9qFVwQ9lw6WjTz/KejJDP9U9zPVrSVd
- FI6OcwCrLffXZi7bwHns3aafaxnuO18SbZz42r7q3SNX/4t5VaVwdlmdCG1e/YlOZNq/SJHTm1b
- 6D+oXG06fdm+A7z+KTCU+oXc0f3u8ab+avuiHZGW8WcF/yQc2Kvd6bNgqbneTXPqugcUbhajePp
- EmfdwGzmsgpxSwm/ZdqT8JD1yvJaf4XW2u/8qFBW/Mx9Tn3HWZaHeLU2JRZ4bDydVbTlvcc7xlc
- pgl9PKq54uvTWCH/WaeKFt2rffq43yDVPalMb2os24pjAA==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=912; i=dlechner@baylibre.com;
+ h=from:subject:message-id; bh=gCWBhc3n+k0rOzdOzNEkxMDkk/9qdZ4NyBLN5i838X4=;
+ b=owEBbQGS/pANAwAKAcLMIAH/AY/AAcsmYgBoSgYBVhD9q4Dm7oGQ6HylErBkZw8NPS9LtGnpg
+ QcqtFQcxeCJATMEAAEKAB0WIQTsGNmeYg6D1pzYaJjCzCAB/wGPwAUCaEoGAQAKCRDCzCAB/wGP
+ wNsdCACOa3y5zsZO5jRJ6TXkHQFX74S3Nr/9bVgpmLdGxld4Z+7+JIvhiis7hU/SPgSfaXy1HEh
+ ktDMqm+R/k9m6uW1HuOC7FUOZJLVTDEKAKUxRNRhp4bfH2LUFh/G/3GgfwO9f8PoXq/NmULXpda
+ 7A1aG/YSYU2eMZZHKx2FjIlroUI+Q0DIRxoJJRuaC+0ZUZnQcDdRFGU+SUR6ZUAwal16z0jOcSF
+ j9VebgtqFrmJs6emiKebaukDj4wXBej4ZpE+d+H8FqpWL6gldFBpIJFLejRYOTZaFfnP4LO0Eri
+ JrZp1IDGBtR97RjR801xEzHW4QUVCM5l/UjRUFcCLscdfHuy
 X-Developer-Key: i=dlechner@baylibre.com; a=openpgp;
  fpr=8A73D82A6A1F509907F373881F8AF88C82F77C03
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250611_154256_977549_13459C20 
-X-CRM114-Status: GOOD (  11.29  )
+X-CRM114-CacheID: sfid-20250611_234257_347234_33B2BC2A 
+X-CRM114-Status: GOOD (  11.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,31 +153,29 @@ the code.
 
 Signed-off-by: David Lechner <dlechner@baylibre.com>
 ---
- drivers/iio/light/opt4060.c | 4 +---
+ drivers/iio/light/ltr501.c | 4 +---
  1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/iio/light/opt4060.c b/drivers/iio/light/opt4060.c
-index f4085020e03ebadb2b91db3212449db82d738ebd..3c927149bd256b392ed8d1bfa9847788981ef2f0 100644
---- a/drivers/iio/light/opt4060.c
-+++ b/drivers/iio/light/opt4060.c
-@@ -1083,7 +1083,7 @@ static irqreturn_t opt4060_trigger_handler(int irq, void *p)
- 	struct  {
- 		u32 chan[OPT4060_NUM_CHANS];
+diff --git a/drivers/iio/light/ltr501.c b/drivers/iio/light/ltr501.c
+index db0cc3642bd8010358de8515c24337d7385bce38..c14767472fbe8620ad59c8417d2ceff14f9485a6 100644
+--- a/drivers/iio/light/ltr501.c
++++ b/drivers/iio/light/ltr501.c
+@@ -1279,14 +1279,12 @@ static irqreturn_t ltr501_trigger_handler(int irq, void *p)
+ 	struct {
+ 		u16 channels[3];
  		aligned_s64 ts;
--	} raw;
-+	} raw = { };
- 	int i = 0;
- 	int chan, ret;
+-	} scan;
++	} scan = { };
+ 	__le16 als_buf[2];
+ 	u8 mask = 0;
+ 	int j = 0;
+ 	int ret, psdata;
  
-@@ -1091,8 +1091,6 @@ static irqreturn_t opt4060_trigger_handler(int irq, void *p)
- 	if (iio_trigger_validate_own_device(idev->trig, idev))
- 		opt4060_trigger_new_samples(idev);
- 
--	memset(&raw, 0, sizeof(raw));
+-	memset(&scan, 0, sizeof(scan));
 -
- 	iio_for_each_active_channel(idev, chan) {
- 		if (chan == OPT4060_ILLUM)
- 			ret = opt4060_calc_illuminance(chip, &raw.chan[i++]);
+ 	/* figure out which data needs to be ready */
+ 	if (test_bit(0, indio_dev->active_scan_mask) ||
+ 	    test_bit(1, indio_dev->active_scan_mask))
 
 -- 
 2.43.0
