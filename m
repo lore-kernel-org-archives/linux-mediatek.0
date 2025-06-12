@@ -4,62 +4,137 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B12E9C71136
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jun 2025 21:04:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 694CBC71151
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jun 2025 21:43:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LOKJjcfsSsNThKcLqemyKzz1ZnHRFo+n9OT/7ofuqcI=; b=mqEdlcbwDZlaNXdS0KGsp47Jud
-	+DaWl3O34gapg/byZZBxpKQoiVjxJLyzEjjPlPsjmf3twUe676sO6w51VnzHcDntSNoI9tBuDmrjW
-	8qNZtB/AquGg6ueYxNg0P/A7HCzJsE74g05eIAeDf7n6hLL6MK38L4i29b/ag4izdLz1sTB+JrajJ
-	r7vjrpMRXakwt9lCxLCzbc8zJ69HHwx9ApIU8Tp4QM5dZ5UBIwVH11Y5qEEMr+YW1Cogj2p3LyXnq
-	3coIG5wD0q+CnR3TJGduq543xE3lXjfIqKPKi+AcmdYZ2QHV+HeepdunJncQ8llxJrlFGmXk4/QXJ
-	DreMGqjA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:From:MIME-Version:Date:Message-ID:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=nCdRQGm7H/a7r2fssPG4pEF+V61SawrKuUSAco8WEoo=; b=anIwRa3xIBm/z0eGt/0lh/a9xv
+	sjSzEqSfYpR5q75MIqguJs9D3jeCk2EK5Q+15BwEWByiLaDG97kFldo+jKI1m4PLL8wtuAOjYjd4L
+	f9W2cm5FJBHXTPgKGxXwQT2FUGQ4rXvL0y+hLlLf+F+XxLqkKkEZbB5LV9dJF7c8LM+Td9me8JkIs
+	IoQk41ZJ0DMLjQcKukwYGDnGSplVT3Q3CghlBe/tOOZrnhUIejLgwMdtnq52B5ylocNcb7yN1lzGt
+	Cdi+N3EY4n4QsBZ720f43CoUTUHPnwF7+cut5hGd55kFWad0QOGFQ3TKMjvfivV5czsInw4SL9Ryj
+	RUlLRfVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPp6Q-0000000EcI0-0UkH;
-	Thu, 12 Jun 2025 21:04:50 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uPphX-0000000EfXq-3OJH;
+	Thu, 12 Jun 2025 21:43:11 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPp4F-0000000Ec3U-2yGm;
-	Thu, 12 Jun 2025 21:02:35 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1565A62A12;
-	Thu, 12 Jun 2025 21:02:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2DCFAC4CEED;
-	Thu, 12 Jun 2025 21:02:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1749762154;
-	bh=iM6BZQQJgZKEbKntENWh02GdDa6BeA3Rk/HIeclWu4E=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=UyG4M7IKfyuY1vGOCTJ35Eh/uzrXm5jbPS4/MNGAKwJKUhdHIriMznC/dl3cEQPG0
-	 +Q3BSi+TNZzYl96Iug6RnmWrUm0DwrFv0KjbyOQ3zVwnSo+NAe2WVrLFgBb3ThYoF4
-	 euNbam8IN/YVcuzn6rG/n2HCCLVc5bFMYYdy9A9oSbHgxheidJDqa5jZyefvTqwjsS
-	 oJL9VJsStkDLqvAljjIJu1AyZoi5/764x44DYq+lyAALoRG5A5pXBRLU4/cAmqfNVT
-	 Qhk9hhJG/HaTy/NWKCh8wzmMMOWxBV6yy2NL+qXnzWQg2Dqxwr50gxeW0MmkF/DQr5
-	 XLAZdqQunH3lQ==
-Date: Thu, 12 Jun 2025 23:02:30 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: Eric Dumazet <edumazet@google.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Paolo Abeni <pabeni@redhat.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net-next] net: airoha: Add TCP LRO support
-Message-ID: <aEtAZq8Th7nOdakk@lore-rh-laptop>
-References: <20250610-airoha-eth-lro-v1-1-3b128c407fd8@kernel.org>
- <CANn89iJsNWkWzAJbOvaBNjozuLOQBcpVo1bnvfeGq5Zm6h9e=Q@mail.gmail.com>
- <aEg1lvstEFgiZST1@lore-rh-laptop>
- <20250611173626.54f2cf58@kernel.org>
+	id 1uPpPs-0000000EeDC-1McK;
+	Thu, 12 Jun 2025 21:24:57 +0000
+Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-3a50956e5d3so1209644f8f.1;
+        Thu, 12 Jun 2025 14:24:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1749763494; x=1750368294; darn=lists.infradead.org;
+        h=content-transfer-encoding:autocrypt:content-language:cc:to:subject
+         :from:user-agent:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=nCdRQGm7H/a7r2fssPG4pEF+V61SawrKuUSAco8WEoo=;
+        b=Pp57LXY9GUVquuyEunprLXn0UQHrkgJpXlyBsToW3/0BYSdsKiIPOTOXumylTXgQ6U
+         zSq6GjZpSMzEVHrhP54dQqq5YdN/8DvAPAG8yK35hEYHadSWQ5nDS8yqNHGkf+7KeMBI
+         1YRVzVDghrIXLNqmj0lDXhmQ1KqT9ZxSFtZldT0mc7U1sHrRkhC6g9OG/t0N4uiycAQs
+         pYL84Plxnsuqj3APGBmOD+MLUhKHNam+Ru3VdQsF13yKviC7sKaeyfkP9PMvt+uR+I+n
+         SN4nd8TBOKqnGzg66WzhNSob1/YgSw+LJ9HyIytZxFjA11SVIdrrmcadxEUsQsNb7fb9
+         vIGg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749763494; x=1750368294;
+        h=content-transfer-encoding:autocrypt:content-language:cc:to:subject
+         :from:user-agent:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=nCdRQGm7H/a7r2fssPG4pEF+V61SawrKuUSAco8WEoo=;
+        b=ZSRTLvYEsmjPz3qcVIthQHOyb8feoDGwFl5ODiNac7yw1+kEKXmBZLMLmBdDQbbFK0
+         hSGasUAOncl4Kjdzhj3lByACpUUwMZtuZ2zLoOIFm3lvhizc9kkpqLGn7QTiEvsyBO1f
+         sTj9L7FJG5fawJkC7gxANJicrBUDu+yVBF4rhE6cqPlanFqc3ZgIV7eFAE1A2sfU8U0h
+         t4u4OVeWc+lRqGZe4+WEqt6rEdG0bRFUu2GP25CdbDMaoy7oXOtZNhR52f8BQTHeVGSr
+         CgnK/Mn5KD4vf3ozrH5paMWoXD0VEui9IrlNSM7kDJSyJF3ffBgx0RqTkpEqYT70UCFX
+         tMpQ==
+X-Forwarded-Encrypted: i=1; AJvYcCW/Uh7KctsyZ+6wjZVEjiDDhYWx4HzuJqLFWHHnB2XSM9StSno+GG6q+wkrZ6U/3mbMTpQF7kaWHDeseN7FJIKy@lists.infradead.org, AJvYcCWIZmYjL1ivRu0cWk8kIWptqNgnecG+l1yKD8Mch1tOUNQWPuF08ooqKO+euKIoxVwzqgRNdGHJgmTrsuvP5gQ=@lists.infradead.org
+X-Gm-Message-State: AOJu0YxZj12iuCdcZ5VYNzg/JvSZX+R7lw3hWvqxdtkqrDm6XONFhmo7
+	pxum8fyQ8JmUUvzc7MrUj34BLa9myt6HAJkIz7heHvq+D4pEjhOcXiU1
+X-Gm-Gg: ASbGnctvowSrD03m1TXLF+MagF+zIDi1FaFODDpjhxqCMwyO0+DTPx3l2hGLQ/stNx1
+	iczpTD76cf42XAj05ejLndhOS1N2sZe/JiteoB0Sm1CSBKoJ4qLb7B1bcdE+d1+3/+5LBYtlqQn
+	2flVzDr2KktBKohJKITnDsQ+ZgzuiBG6esgF4F0Hal5e38jyLzBjSrIV6uJ0GBkchBQQth7ewfZ
+	GGuGeg9lySf6k1Ao1RhA0gg6A1EnIUiDKetQsvBi9HJaYiK7UUoaEBzFvCx4UGeJIXCYAZH/9vg
+	Qvkr8Koc4kBDCCX2LKWfslqWoqwx5dcvOC9md/UQlg7DFMY9xGv+JVgvDEl4xy16L7co3dcDjI5
+	y0aLBdFWAtfRBTDNM77jBo0zQrqxWC6H7Yeem3CyNxyIsRJmh4BGOG1IxJdHrdIFxuETd639539
+	4ri2GYNy8oCCBrU8qRJ4xh3qdV5w==
+X-Google-Smtp-Source: AGHT+IEDyjt+W1tVeHRtL0gQRYPwvvU0pqeB3cicRl1P7ymc3YBPCaOz2r95S5pJzpgpTXILBSi7mg==
+X-Received: by 2002:a5d:64ee:0:b0:3a4:f50a:bd5f with SMTP id ffacd0b85a97d-3a56871b319mr609716f8f.31.1749763494281;
+        Thu, 12 Jun 2025 14:24:54 -0700 (PDT)
+Received: from ?IPV6:2003:ea:8f22:3f00:7533:d8b1:ff14:6fe5? (p200300ea8f223f007533d8b1ff146fe5.dip0.t-ipconnect.de. [2003:ea:8f22:3f00:7533:d8b1:ff14:6fe5])
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-4532de8f2e0sm32004255e9.8.2025.06.12.14.24.53
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 12 Jun 2025 14:24:53 -0700 (PDT)
+Message-ID: <eec346a4-e903-48af-8150-0191932a7a0b@gmail.com>
+Date: Thu, 12 Jun 2025 23:25:00 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="GWlYu+qUx6A6DKw3"
-Content-Disposition: inline
-In-Reply-To: <20250611173626.54f2cf58@kernel.org>
+User-Agent: Mozilla Thunderbird
+From: Heiner Kallweit <hkallweit1@gmail.com>
+Subject: [PATCH net-next 0/3] net: phy: make phy_package a separate module
+To: Andrew Lunn <andrew+netdev@lunn.ch>, Paolo Abeni <pabeni@redhat.com>,
+ Jakub Kicinski <kuba@kernel.org>, David Miller <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Andrew Lunn <andrew@lunn.ch>,
+ Russell King - ARM Linux <linux@armlinux.org.uk>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ linux-arm-msm@vger.kernel.org,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org
+Content-Language: en-US
+Autocrypt: addr=hkallweit1@gmail.com; keydata=
+ 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
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250612_142456_423920_E441091C 
+X-CRM114-Status: UNSURE (   8.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,91 +149,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Only a handful of PHY drivers needs the PHY package functionality,
+therefore make it a separate module which is built only if needed.
 
---GWlYu+qUx6A6DKw3
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Heiner Kallweit (3):
+  net: phy: move __phy_package_[read|write]_mmd to phy_package.c
+  net: phy: make phy_package a separate module
+  net: phy: add Kconfig symbol PHY_PACKAGE
 
-> On Tue, 10 Jun 2025 15:39:34 +0200 Lorenzo Bianconi wrote:
-> > > Tell us more... It seems small LRO packets will consume a lot of
-> > > space, incurring a small skb->len/skb->truesize ratio, and bad TCP WAN
-> > > performance. =20
-> >=20
-> > I think the main idea is forward to hw LRO queues (queues 24-31 in this
-> > case) just specific protocols with mostly big packets but I completely
-> > agree we have an issue for small packets. One possible approach would be
-> > to define a threshold (e.g. 256B) and allocate a buffer or page from the
-> > page allocator for small packets (something similar to what mt7601u dri=
-ver
-> > is doing[0]).  What do you think?
->=20
-> I'm not Eric but FWIW 256B is not going to help much. It's best to keep
-> the len / truesize ratio above 50%, so with 32k buffers we're talking
-> about copying multiple frames.
+ drivers/net/phy/Kconfig           |  6 +++
+ drivers/net/phy/Makefile          |  3 +-
+ drivers/net/phy/mediatek/Kconfig  |  1 +
+ drivers/net/phy/phy-core.c        | 75 +++----------------------------
+ drivers/net/phy/phy_package.c     | 71 ++++++++++++++++++++++++++++-
+ drivers/net/phy/phylib-internal.h |  6 ++-
+ drivers/net/phy/qcom/Kconfig      |  1 +
+ 7 files changed, 91 insertions(+), 72 deletions(-)
 
-Hi Jakub,
+-- 
+2.49.0
 
-what I mean here is reallocate the skb if the true size is small (e.g. below
-256B) in order to avoid consuming the high order page from the page_pool. M=
-aybe
-we can avoid it if reducing the page order to 2 for LRO queues provide
-comparable results.
 
->=20
-> > > And order-5 pages are unlikely to be available in the long run anyway=
-=2E =20
-> >=20
-> > I agree. I guess we can reduce the order to ~ 2 (something similar to
-> > mtk_eth_soc hw LRO implementation [1]).
->=20
-> Would be good to test. SW GRO can "re-GRO" the partially coalesced
-> packets, so it's going to be diminishing returns.
 
-ack, I will do.
-
->=20
-> > > LRO support would only make sense if the NIC is able to use multiple
-> > > order-0 pages to store the payload. =20
-> >=20
-> > The hw supports splitting big packets over multiple order-0 pages if we
-> > increase the MTU over one page size, but according to my understanding
-> > hw LRO requires contiguous memory to work.
->=20
-> Hm, you're already passing buffers smaller than normal TSO so
-> presumably having a smaller buffers will break the sessions more=20
-> often but still work?
-
-I will test it.
-
->=20
-> You mean want to steal some of the code from:
-> https://lore.kernel.org/all/20250421222827.283737-1-kuba@kernel.org/
-
-ack, I will take a look.
-
-> and make the buffer size user-configurable. But not a requirement.
-> Let's at least get some understanding of the perf benefit of=20
-> 32k vs 16k or 8k
-
-ack, I will do.
-
-Regards,
-Lorenzo
-
-> --=20
-> pw-bot: cr
-
---GWlYu+qUx6A6DKw3
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaEtAYwAKCRA6cBh0uS2t
-rMGGAQD8IPe8MoY4V366zinNUIPPKyB070wrYzfX9tsT+tHyoQD/T1CmJhx+pqlk
-cSGShFOwx4/ZNLd0ZWvClZvmVC7ptwA=
-=Ir7x
------END PGP SIGNATURE-----
-
---GWlYu+qUx6A6DKw3--
 
