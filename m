@@ -4,43 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9467C7114C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jun 2025 22:09:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C2D7C7115D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jun 2025 22:10:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ES0AMk0wkXmaqMy9pIGghKd77rIPki0K7cABoa+Z/Lw=; b=i+NGHWAFobxaa0MIG1VamREsAH
-	jWqsJ+Rf9sa04iCa8Jfz70TAM70sWeuDJXsoO8+Af5X9K3ojMlhO+7C6opcmevAVTjyH7j0FZJchV
-	XHVn0t1/0d8/CSVojixOzueA8t/CfVRa5TTn1pzPnA76vkJKv4OkqMKF7maVbcrc29FOkEU5C1wZ8
-	GwoAazNnQI4nDjNmbKQtZd2qBc2AMrTRDm3uclXweyHqbfQk3p52zE9Fbx62RlydulMCVcU5hiX57
-	R687TJByNxoBVEIcUbq+sU75iaAvV3XFgj0e/oRoKPBHHFa0ClffKHqB5csVpWkLGAZvzgeSMlQbW
-	PebCMXTQ==;
+	bh=jR0dRbES+djCk871EvFuYPXeaS3gynvrA8wMIo/eRkk=; b=UwxkdPBGvBd4qcHG2CEmhrk/q4
+	nmjczGWiNwHyNcPWs+WecEfXwK/haVs3/IuNGOJCMQPFq/fY0zyP98Vgd6GwMboN4kVXy3Dk1IZTf
+	RvIMZcs1SxhN9FCQJQU7glRUMgvXosWyvvj1UIP3dw635yCJLGpeIrAjyNU9kDVpI83oyh+wwrhya
+	AFD1Hgpha0MWt1Sko6zDvyR/++Z+bIiimHMwwl0Z2A6P7LOH0ZNql5ZtH7RJ4Euuia9TCKPE/95tl
+	ot31dOAv/WmB23TVB+KVPY6Hir3+Fp5kxjjqpeqX/nGy79f2HqWj6oVStQ3WL6XcxnOPDPXU6zQ4h
+	KTAeOwVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPq7Q-0000000Ejr1-0CWc;
-	Thu, 12 Jun 2025 22:09:56 +0000
-Received: from jabberwock.ucw.cz ([46.255.230.98])
+	id 1uPq7Z-0000000EkF8-10BE;
+	Thu, 12 Jun 2025 22:10:05 +0000
+Received: from mgamail.intel.com ([198.175.65.18])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPn41-0000000E9fO-0Tb3;
-	Thu, 12 Jun 2025 18:54:14 +0000
-Received: by jabberwock.ucw.cz (Postfix, from userid 1017)
-	id 0D12D1C00B7; Thu, 12 Jun 2025 20:54:08 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ucw.cz; s=gen1;
-	t=1749754448;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ES0AMk0wkXmaqMy9pIGghKd77rIPki0K7cABoa+Z/Lw=;
-	b=bEFAWNrqxiDB3hTLYkNNin93KGymmobI30NxboUjySkMZZbQ1tDkw60ZqsrwZWSPzNXRLT
-	19enMfhHWWz0Q5ewQBDGlyH0l4C9Yl59JXD+rK7DCySYJz3mn+lT8d5y3fwG56k5w4oziS
-	988hpv7ySCcn9jbXEUW0jKpc8UQ+ntg=
-Date: Thu, 12 Jun 2025 20:54:07 +0200
-From: Pavel Machek <pavel@ucw.cz>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: David Lechner <dlechner@baylibre.com>,
+	id 1uPnJi-0000000ECL0-2GbK;
+	Thu, 12 Jun 2025 19:10:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1749755427; x=1781291427;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=BQ0TV5Stz/vWyyu62ZhSbJbmlu58TvJYqNpEEOYBVC0=;
+  b=Z9fdBnBxaQ4kHop2kZtkSzAkk9inYw5f12I71aXNGB9kgIhFiOAId3BT
+   0cdswwDQDrdAmJZvdtWs6AK/Z5BIUG8lIBhbIRCcsDiXY3e8g9VBkin3v
+   +Kj4vwdRrahYXLl2aq0pIND3oE7XNMEMaAc4TbV8jVQX3t2kFBzncUD1W
+   GqwS7xT5KHvsAP3PysqOAPKz/0q9ersa1XdRoFkke4PpcxUMIDsW4O1pS
+   c6lP6xs5atSEvQs1N6QgFCJw2jTuEdlKVLM1bW35Uy6XDuZxdx2nEOhUe
+   4wgNQbQzTvHDkEkoHENgcoEmmPd5kK1ejzH7DK0hjb9w7v6A949jSMTe/
+   w==;
+X-CSE-ConnectionGUID: 1vQ6mywGTHedCjvm5zZ+FQ==
+X-CSE-MsgGUID: 2E7fJDrgSheCL7MkXFQlng==
+X-IronPort-AV: E=McAfee;i="6800,10657,11462"; a="52093205"
+X-IronPort-AV: E=Sophos;i="6.16,231,1744095600"; 
+   d="scan'208";a="52093205"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Jun 2025 12:10:21 -0700
+X-CSE-ConnectionGUID: e9iD3O3SS36bVUZFVNkguw==
+X-CSE-MsgGUID: lSBa5jyTT9mJ70WAU7t4XQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,231,1744095600"; 
+   d="scan'208";a="184852801"
+Received: from smile.fi.intel.com ([10.237.72.52])
+  by orviesa001.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Jun 2025 12:10:13 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.98.2)
+	(envelope-from <andriy.shevchenko@intel.com>)
+	id 1uPnJQ-000000061me-0q0g;
+	Thu, 12 Jun 2025 22:10:08 +0300
+Date: Thu, 12 Jun 2025 22:10:07 +0300
+From: Andy Shevchenko <andriy.shevchenko@intel.com>
+To: Pavel Machek <pavel@ucw.cz>
+Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+	David Lechner <dlechner@baylibre.com>,
 	linux-rockchip@lists.infradead.org,
 	Michael Hennerich <michael.hennerich@analog.com>,
 	Lars-Peter Clausen <lars@metafoo.de>,
@@ -70,18 +91,20 @@ Cc: David Lechner <dlechner@baylibre.com>,
 	linux-mediatek@lists.infradead.org,
 	linux-stm32@st-md-mailman.stormreply.com
 Subject: Re: [PATCH 00/28] iio: zero init stack with { } instead of memset()
-Message-ID: <aEsiTy++yKGe1p9W@duo.ucw.cz>
+Message-ID: <aEsmDyc44P8amm5p@smile.fi.intel.com>
 References: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
  <aEqbQPvz0FsLXt0Z@duo.ucw.cz>
  <2243943.irdbgypaU6@workhorse>
+ <aEsiTy++yKGe1p9W@duo.ucw.cz>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="qHcR0wTfGJLS0CPf"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <2243943.irdbgypaU6@workhorse>
+In-Reply-To: <aEsiTy++yKGe1p9W@duo.ucw.cz>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250612_115413_613160_985251F2 
-X-CRM114-Status: GOOD (  20.30  )
+X-CRM114-CacheID: sfid-20250612_121026_662005_7C62EB51 
+X-CRM114-Status: GOOD (  21.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,59 +119,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, Jun 12, 2025 at 08:54:07PM +0200, Pavel Machek wrote:
+> > On Thursday, 12 June 2025 11:17:52 Central European Summer Time Pavel Machek wrote:
+> > > 
+> > > > Jonathan mentioned recently that he would like to get away from using
+> > > > memset() to zero-initialize stack memory in the IIO subsystem. And we
+> > > > have it on good authority that initializing a struct or array with = { }
+> > > > is the preferred way to do this in the kernel [1]. So here is a series
+> > > > to take care of that.
+> > > 
+> > > 1) Is it worth the churn?
+> > > 
+> > > 2) Will this fail to initialize padding with some obscure compiler?
+> > 
+> > as of right now, the only two C compilers that are supported are
+> > GCC >= 8.1, and Clang >= 13.0.1. If anyone even manages to get the
+> > kernel
+> 
+> Well... I'm pretty sure parts of this would make it into -stable as a
+> dependency, or because AUTOSEL decides it is a bugfix. So..
+> 
+> GNU C                  4.9              gcc --version
+> Clang/LLVM (optional)  10.0.1           clang --version
 
---qHcR0wTfGJLS0CPf
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Even though, what the kernel versions are you referring to? I am sure there
+plenty of cases with {} there.
 
-Hi1
+-- 
+With Best Regards,
+Andy Shevchenko
 
-> I thought I'd chime in as someone uninvolved because this seemed
-> interesting.
->=20
-> On Thursday, 12 June 2025 11:17:52 Central European Summer Time Pavel Mac=
-hek wrote:
-> > Hi!
-> >=20
-> > > Jonathan mentioned recently that he would like to get away from using
-> > > memset() to zero-initialize stack memory in the IIO subsystem. And we
-> > > have it on good authority that initializing a struct or array with =
-=3D { }
-> > > is the preferred way to do this in the kernel [1]. So here is a series
-> > > to take care of that.
-> >=20
-> > 1) Is it worth the churn?
-> >=20
-> > 2) Will this fail to initialize padding with some obscure compiler?
->=20
-> as of right now, the only two C compilers that are supported are
-> GCC >=3D 8.1, and Clang >=3D 13.0.1. If anyone even manages to get the
-> kernel
 
-Well... I'm pretty sure parts of this would make it into -stable as a
-dependency, or because AUTOSEL decides it is a bugfix. So..
-
-GNU C                  4.9              gcc --version
-Clang/LLVM (optional)  10.0.1           clang --version
-
-:-).
-
-Best regards,
-									Pavel
---=20
-I don't work for Nazis and criminals, and neither should you.
-Boycott Putin, Trump, and Musk!
-
---qHcR0wTfGJLS0CPf
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EABECAB0WIQRPfPO7r0eAhk010v0w5/Bqldv68gUCaEsiTwAKCRAw5/Bqldv6
-8rWCAJ9iuK1SPCz8Iqmtg2YYJA3QcN1ZcQCcCDOYZeP9LCuc6TXu3fDJPaQEqxk=
-=IRlm
------END PGP SIGNATURE-----
-
---qHcR0wTfGJLS0CPf--
 
