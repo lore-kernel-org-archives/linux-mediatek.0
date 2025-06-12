@@ -4,102 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91732C61CE8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jun 2025 13:23:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E124C71149
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jun 2025 19:43:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bD8PDRIgZsjcIS9lKDcZdxD8mZFpquswL/wkRzyKbz4=; b=KQgtByhPiewEhpEL1axLHDRbRP
-	e2tz+6+VSWdUxC3wuG+jf4nqNaOFt3+7KmUINjRXmb13T55rS/k+uWQ7rATbaP/29OH7339NPiyPn
-	VF9YKe/PTySAVkaJMf6aQoGGu3tBlA+CVClwoqGT/wBO56Z4Ru+A1ZFMRDrDWrKMtEAeQcWN7JH6U
-	kplqhaosKI1xw9nBvsk7g2O+Nb9U1RXb0PpViKobMBzGsnMHW+mpj2VkIhHRvXUpfRdJ/BeUN9zh8
-	jkSzw2B227J44AD4paHJ3xf97wDMWhSS0uNmLu03bh6WypLAT59itkq/tzQ21HV8r1YnPA81gDtpN
-	YyXNN5gw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Xe+/CWthc6ot+OCxKsW3fGV6MDdG1CZZweZmpwlQwl8=; b=sD+yU1UmxdT7DOMMEj0AFrTwYw
+	dYNYbxn6DogUnPmOpVGTN8zLTBU1+4JGrCJ9KdqV9LbUPrYrJ+l98y56kLL2rzhOEMeT1bJzNh4t5
+	871J54jYsZn7u20Y0QqoWn/mIILyY9pP9wojf6FXt5/lfxZcIsFQWuL7funkTwOD4iFRK4F6QJi2u
+	X4knrLyYuHv5ZxQbASLY9edpCAWzVWKZPH5Fu1EA0irf8trh/afgfPG/oQaUswiYgiOBrPJZFU1iH
+	G9k9F1MA8XcWQOznQXcOpSWdpzqbi8SZ8mOIWeYLRTQkgwyjg0nTqEr7hTxur9shrvyhV6wtvrjtV
+	oTOEiKdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPhtr-0000000DRJ0-1uZT;
-	Thu, 12 Jun 2025 13:23:23 +0000
-Received: from mgamail.intel.com ([192.198.163.8])
+	id 1uPnpA-0000000EGxT-2UeW;
+	Thu, 12 Jun 2025 19:42:56 +0000
+Received: from sender4-op-o15.zoho.com ([136.143.188.15])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPhOv-0000000DJ14-2yQS;
-	Thu, 12 Jun 2025 12:51:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1749732685; x=1781268685;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=Bql/TNuo24JhgENmtOEIa3XVAhbnXtyYW3C4rsZ9KFs=;
-  b=SbW4ldG7t6vYkDvdyKYmzgm+j6O4i6JoS4+20uzDzF1Q8zADcziGHeq6
-   HTWC0eC6veOSOc9NoYB/oVGqlzAPl/kojuaQOUCsV5xq9yM4aMkPCoWXM
-   Ha6V0GVLAeax86OaH0/oeWV6sp204g2CUKWgIDjFiWU3FltuleUDtAB+0
-   lquKQL1oBf07LduOYgEoVrcd4D1YKGL50OYuPjpivFGTedq/MsWQN1CHU
-   lGXdWRBJAfVZ59orN8rabHxeFcn7sUX4ltSpGSDA9HnKpNu1VcEEkqNo+
-   JHsGSjweYU3P6TQJch7IuWWRVn+HqZmhv5owL0A2AHY/7FDOLR3NFTVCp
-   g==;
-X-CSE-ConnectionGUID: fDU+g/XeSPKtRD/N1F6wng==
-X-CSE-MsgGUID: J8RwB4uiTWae9SDHBY2Oxw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11462"; a="69478293"
-X-IronPort-AV: E=Sophos;i="6.16,230,1744095600"; 
-   d="scan'208";a="69478293"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
-  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Jun 2025 05:51:20 -0700
-X-CSE-ConnectionGUID: mofzayPbSfemxo/78nvEhA==
-X-CSE-MsgGUID: 65CP34ARQ+yNMlLSnRyUqQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,230,1744095600"; 
-   d="scan'208";a="152795140"
-Received: from smile.fi.intel.com ([10.237.72.52])
-  by orviesa005.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Jun 2025 05:51:14 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.98.2)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1uPhOg-00000005x89-01m7;
-	Thu, 12 Jun 2025 15:51:10 +0300
-Date: Thu, 12 Jun 2025 15:51:09 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: David Lechner <dlechner@baylibre.com>
-Cc: Michael Hennerich <michael.hennerich@analog.com>,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Jonathan Cameron <jic23@kernel.org>,
-	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
-	Andy Shevchenko <andy@kernel.org>,
+	id 1uPiQ5-0000000DXfD-1re6;
+	Thu, 12 Jun 2025 13:56:42 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1749736586; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=lvR1fq3NchjreiyUiIeLyfUSl3q2G2RoAlsQESjIc53+9OOmdW49NG0QOCklpaAxkpzOf+O3J5TOvuWFybfEplwcaG6SlWktPmVS4TBXLl1CE+CNBIWgpw+JPMzHAHvrgK3MAmVcgjWwsLQjgM1OiYYRK5Yzn18WQBKTwVWeYRY=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1749736586; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Xe+/CWthc6ot+OCxKsW3fGV6MDdG1CZZweZmpwlQwl8=; 
+	b=UDb8x8KAEskyKoSz1q1Mjj674Y9Rt4VlIoYO9Btoo4sS28yUQqBfQK7bS5IbuU518aeieAFSnj+TDZqkC9cgxYZZSvCSmghmOHXVmgKQJMWTPv+DDBO/oEGe4QqVIqZePNHuSv8DtRWGH0koTxGY2nAaixJwK5J2UjvLaqR9j/4=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=icenowy.me;
+	spf=pass  smtp.mailfrom=uwu@icenowy.me;
+	dmarc=pass header.from=<uwu@icenowy.me>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749736586;
+	s=zmail2; d=icenowy.me; i=uwu@icenowy.me;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=Xe+/CWthc6ot+OCxKsW3fGV6MDdG1CZZweZmpwlQwl8=;
+	b=n8+WYuf92DJ5Lm1peHwH0i8dXZkNIOPgt6STqoXZn6bE31CoXzRJ7aDTt1IPiUfh
+	XEjSZx+S0IZMuy5sEy/SA0Ayo2YBiyF/OSXxBVCrX+L6rMKOiyXcJF0k+rFEmYjLIvn
+	5gyhXvQ81zaLxlmvGB/DqrM1LDnuGFFfTwq9TvyjZn32JvK1bv1xeaoMuwh2dnchIPO
+	tzuQGpMYbgc2ttKjYPZsz5dvWbyK1lvofXwv/tFR5IOhFwwxJv1lqD+FwFJDt27KfX0
+	GYrwEKtAQvYBc4LsXL0BBDQZ4y5dpMAJYjJmW46HmjVRr/t43nrfjeHjWv9lVTvViGF
+	1pKHyolYxQ==
+Received: by mx.zohomail.com with SMTPS id 1749736583346329.0335267878131;
+	Thu, 12 Jun 2025 06:56:23 -0700 (PDT)
+From: Icenowy Zheng <uwu@icenowy.me>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Francesco Dolcini <francesco@dolcini.it>,
-	=?iso-8859-1?Q?Jo=E3o_Paulo_Gon=E7alves?= <jpaulo.silvagoncalves@gmail.com>,
-	Leonard =?iso-8859-1?Q?G=F6hrs?= <l.goehrs@pengutronix.de>,
-	kernel@pengutronix.de, Oleksij Rempel <o.rempel@pengutronix.de>,
-	Roan van Dijk <roan@protonic.nl>,
-	Tomasz Duszynski <tomasz.duszynski@octakon.com>,
-	Jacopo Mondi <jacopo@jmondi.org>,
-	Jean-Baptiste Maneyrol <jean-baptiste.maneyrol@tdk.com>,
-	Mudit Sharma <muditsharma.info@gmail.com>,
-	Javier Carrasco <javier.carrasco.cruz@gmail.com>,
-	=?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>,
-	Andreas Klinger <ak@it-klinger.de>,
-	Petre Rodan <petre.rodan@subdimension.ro>,
-	linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org,
+	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Sean Wang <sean.wang@mediatek.com>
+Cc: devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH 00/28] iio: zero init stack with { } instead of memset()
-Message-ID: <aErNPaZzvgAps_-b@smile.fi.intel.com>
-References: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
+	Icenowy Zheng <uwu@icenowy.me>
+Subject: [PATCH 2/2] arm64: dts: mediatek: mt8173: add hana revision 2
+Date: Thu, 12 Jun 2025 21:55:59 +0800
+Message-ID: <20250612135559.2601139-2-uwu@icenowy.me>
+X-Mailer: git-send-email 2.49.0
+In-Reply-To: <20250612135559.2601139-1-uwu@icenowy.me>
+References: <20250612135559.2601139-1-uwu@icenowy.me>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
+X-ZohoMail-Owner: <20250612135559.2601139-2-uwu@icenowy.me>+zmo_0_
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250612_055125_757877_E7B0499C 
-X-CRM114-Status: GOOD (  12.40  )
+X-CRM114-CacheID: sfid-20250612_065641_548763_92DA10FC 
+X-CRM114-Status: GOOD (  11.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,23 +90,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 11, 2025 at 05:38:52PM -0500, David Lechner wrote:
-> Jonathan mentioned recently that he would like to get away from using
-> memset() to zero-initialize stack memory in the IIO subsystem. And we
-> have it on good authority that initializing a struct or array with = { }
-> is the preferred way to do this in the kernel [1]. So here is a series
-> to take care of that.
+The current mt8173-elm-hana.dts file only contains compatible strings
+for revision 3~6, makes boards with revision 0~2 to fail to match a
+revision-specific DTS and may fall back to the rev7 one (which lacks
+some gpio-keys).
 
-I believe we may do that independently of the compilers that can leave garbage
-in the padding. In case it happens, it will be good adventure to fix the bugs
-in the code, that for some reason take padding(s) into account for the real
-values.
+As I've got a Lenovo Flex 11 Chromebook with board revision 2, add it to
+the base hana DTB file.
 
-Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Signed-off-by: Icenowy Zheng <uwu@icenowy.me>
+---
+ arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dts b/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dts
+index fcf0cb76a87c3..84638a07587f3 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dts
+@@ -11,5 +11,5 @@ / {
+ 	chassis-type = "laptop";
+ 	compatible = "google,hana-rev6", "google,hana-rev5",
+ 		     "google,hana-rev4", "google,hana-rev3",
+-		     "google,hana", "mediatek,mt8173";
++		     "google,hana-rev2", "google,hana", "mediatek,mt8173";
+ };
 -- 
-With Best Regards,
-Andy Shevchenko
-
+2.49.0
 
 
