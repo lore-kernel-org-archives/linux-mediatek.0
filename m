@@ -4,87 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6F72C71136
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jun 2025 13:20:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E45BFC71143
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jun 2025 13:20:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=anKlnwbFl0i8atiPf5c4Ks2L7I/qYyoFEOqCpl8Xjz4=; b=s/bv0X2rIucUsZbudoHKUifZd0
-	WiQWPYzy23zDsyuFGuVGz8zAVDtm9ACmQ59cU8ZwfszfWEB4O8xtom45V+jzE7aw0mmMth+TtjxS8
-	QMHeSSkKOVZkuHHOdv8x6x6wHxGjBCCmUIj0bTCCVEed2wI5Z5BANH2dLNFR1fGrJfRzKK0C80Gz4
-	VyQ5jANfWbs6XtGfyq1HapeF1HCb3mVNUGgVDc4hDKraJnL5Ub/FIj+c/oiFBmt4Yqcb08qr77kVH
-	iEF9ZVNCNhC0vZyYqzWJ4xVQuCthFzNbOYW6HQ8wSKuTo2oE2s7Uz99O4Uh00QzbCVPZTcRiGEmeD
-	kpabh2gw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NEJs2y5lh32zGmKZ8Qzhu9KFrGD77yTrgBvMh7VvKkA=; b=KYsfuiJUcBeaqiig0o/kmykrsh
+	6fE56MAj77+gRiiTmutwQoqM9c9kHvEuQEBIuoPbeIVzy2tEg1+N8XmPipL/udYVaqWgNjdtXjCrT
+	B38tyd+SSrgSXLEf8xw/uMrvZWgdGLiiiaQhVdiPJNsWFYXMxE8y1qkANPw8G4WHQKBNDNCycy6ZW
+	ms0b6tNWKY4y2am40w9gFIS/zdWow4WeBJCJCqgy4G9N9y3U2lB2UL7d33/z1biHiz35MhmYa0SpH
+	tfdsYV+GNeUGRh7HY6xZ5p+WPU8wBPEfs9FeINAZF32sV5+lqhXYueL1kUeP96Hh3gY6UXzL/O+lA
+	hMXmwiSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPhr2-0000000DPAE-306T;
-	Thu, 12 Jun 2025 13:20:28 +0000
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
+	id 1uPhrI-0000000DPVN-1FZc;
+	Thu, 12 Jun 2025 13:20:44 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPgnC-0000000DDTe-0yjC;
-	Thu, 12 Jun 2025 12:12:28 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1749730279; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=gLVUSH8whkjznJ84HhEKxxnjU2XuDwX04WtVl7Ke0k/VtxuyHepvYyZFEsDsuRxdsOR+mZGQaf6prN0Jl3RFazK5tsm20vUPJNrfC7uMH7EkaAb8x+J6/uAl/jUVupirBlfKqcEg9lOnbR3b7+HuupT2MjpmNEg4RkgTVsrnDEU=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1749730279; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=anKlnwbFl0i8atiPf5c4Ks2L7I/qYyoFEOqCpl8Xjz4=; 
-	b=NnYk+ho5QsNnUw/GyWrBWAlNSFdprVwt/SMpMEjygvo543BdEKRBHtfoDB0IlobqSRFj3aQKnfuW61HRwi3mlbyo7MjKlqvXIxcbmt1jg1nM3R/1ZxeziAGckm4SGc4esonsJ/LIuXqmUTX6AGNZ7pwSisvbKzWfbHfGMTWV5H8=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749730279;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=anKlnwbFl0i8atiPf5c4Ks2L7I/qYyoFEOqCpl8Xjz4=;
-	b=SK7OXUzcTO6J2OvgkAoNUrfYDQNfzeYE74UjS+nOX7vgUkpRNbgyTF8jQkg2hh0D
-	dUAV/oN8qsLxpnK+Y+fEssRjHR7B+gVr7b2h2PGccmdr2X9JotCuSJJ08Fv1WSCt0fN
-	YQykWtOBwsZmWFYSR+CE0ujPPquYI14ZwNERJFwc=
-Received: by mx.zohomail.com with SMTPS id 1749730276781981.6042234328434;
-	Thu, 12 Jun 2025 05:11:16 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: David Lechner <dlechner@baylibre.com>, linux-rockchip@lists.infradead.org
-Cc: Michael Hennerich <michael.hennerich@analog.com>,
- Lars-Peter Clausen <lars@metafoo.de>, Jonathan Cameron <jic23@kernel.org>,
- Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>,
- Andy Shevchenko <andy@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Heiko Stuebner <heiko@sntech.de>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Francesco Dolcini <francesco@dolcini.it>,
- =?UTF-8?B?Sm/Do28gUGF1bG8gR29uw6dhbHZlcw==?=
- <jpaulo.silvagoncalves@gmail.com>,
- Leonard =?UTF-8?B?R8O2aHJz?= <l.goehrs@pengutronix.de>,
- kernel@pengutronix.de, Oleksij Rempel <o.rempel@pengutronix.de>,
- Roan van Dijk <roan@protonic.nl>,
- Tomasz Duszynski <tomasz.duszynski@octakon.com>,
- Jacopo Mondi <jacopo@jmondi.org>,
- Jean-Baptiste Maneyrol <jean-baptiste.maneyrol@tdk.com>,
- Mudit Sharma <muditsharma.info@gmail.com>,
- Javier Carrasco <javier.carrasco.cruz@gmail.com>,
- =?UTF-8?B?T25kxZllag==?= Jirman <megi@xff.cz>,
- Andreas Klinger <ak@it-klinger.de>,
- Petre Rodan <petre.rodan@subdimension.ro>, linux-iio@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, Pavel Machek <pavel@ucw.cz>
-Subject: Re: [PATCH 00/28] iio: zero init stack with { } instead of memset()
-Date: Thu, 12 Jun 2025 14:11:08 +0200
-Message-ID: <2243943.irdbgypaU6@workhorse>
-In-Reply-To: <aEqbQPvz0FsLXt0Z@duo.ucw.cz>
-References: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
- <aEqbQPvz0FsLXt0Z@duo.ucw.cz>
+	id 1uPh3U-0000000DG0z-3rNi;
+	Thu, 12 Jun 2025 12:29:17 +0000
+Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-ad883afdf0cso187153266b.0;
+        Thu, 12 Jun 2025 05:29:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1749731355; x=1750336155; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=NEJs2y5lh32zGmKZ8Qzhu9KFrGD77yTrgBvMh7VvKkA=;
+        b=Di3Ov1OeubLTypJEW8AJatj34sNFmqaFU38IOGz6poIZmoDCikdV1Z8WOKxahJWHmk
+         B8QAJEknXNSySZk3cgb6uL8MljatUA8J7p9hb0gUhejyWgOwiHfjosDevAE/lcBvTp5T
+         sY5VJOMOGsKBvOgVWOPTRUis/V/ZtNN6H+5rLQXEitdjdnrshGS207iS3BD3+iMWtaa+
+         lxBklZJPpO4MNSjJRM6UuSCe6vjT4lFKrwVDGtqzYj9KfB/RAv/A1uDhhHdTQPjxaaZb
+         sn9guF6SyTg4mqouygmBpogOtzq5z9IcvoXylK45z1uorECCPAp7cFoPky569WOvObD5
+         2UUQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749731355; x=1750336155;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=NEJs2y5lh32zGmKZ8Qzhu9KFrGD77yTrgBvMh7VvKkA=;
+        b=ubhTAn3U+h4TgHjcnUWb7MNB5hHyNLOtptd6iXxTkY5G9B/mfMwtdYPYAi/e7tT/wQ
+         /nT3/hMVa4cx0aP8VnINzcCCrc1A3WaSFzrVbeomfsWcq+cWQNAF8138vFZ1vM35AM3q
+         +pjmeEFouGfSILzFtH07bZbFhcTbL49sCXWifgglFRzxx2LhmTfCqMgPMWx9P1jnRidb
+         4aKm8I+U60K4x6KD3UbPv1JAs/JQUaREt22WrjAPYBsDKDBXfNsiHq4NpCRSbp8vcgeW
+         f4cHB5qPm65qa/Zprg9lL48kCO1Bbv1Us5kRAoPWrX8D51EP571jLhIuZycJIdF6niM0
+         UEnQ==
+X-Forwarded-Encrypted: i=1; AJvYcCW9WNcHAIjnhxjL8hpmixMnSqKrKhRZEAsGAatXfdciuX5aNAt1dCq3v4i+BC0Dp1bom0vqW/hTLpuxwetlfr8F@lists.infradead.org, AJvYcCWe6an5WKwr8s8X1+o+NFFWPo8Qlee+w7xlxxqUfy4nRpuT/e5fw/HlfhtCuEANtmjZk53y01Nauh8UKGonZ6g=@lists.infradead.org, AJvYcCWrGRe+DS9U1YfHXJZTC4D3/bsnUWP91ovzcA8mpVlq+z+AWftk/bW/Yw+x1K61l5nlncwJT+GoaEeO3RjEbI4=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyd1+jShpk/HAJ9BvKyQ3xNqCzk7dWehVZY6PcdmUFu+3XA7hUo
+	JL9+2lj1mvbZ4T2j8IlYEE3pdt2ON5OQEcpJH31MbXcAk+mNXu4iWLUC7VgPf9IjGKcVFn04Uf+
+	cyUrxHowxsB3YukrtFcvsJjCL+C3jJkY=
+X-Gm-Gg: ASbGncvwu8LPe3Mw0J4gz62duAB36ep3AcV4/lSUBvVY0hppGI07TFYc5u+a9NcfOT9
+	ZyM+CNQgbtgXh61+K+TA99Plt2Cow04NHfoQxpJS9BEFpd/SEmtK+hxKp0H6opo9DtPTHpMGtkQ
+	3/aF64qqGtyH6FX+gqAIwAgGEkvlqWIZuxlraxT2Dy85w=
+X-Google-Smtp-Source: AGHT+IGlkqMkspvLMpeTjF8aN4KiUGRrevrrBMyqe/WGI6YMF5fU2+dVwFdEvs12L1YJUL60yY3huaWNWMMfCo5r7oM=
+X-Received: by 2002:a17:907:1c9e:b0:ade:5ba:40e1 with SMTP id
+ a640c23a62f3a-adea270e2f5mr330585366b.0.1749731354468; Thu, 12 Jun 2025
+ 05:29:14 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="utf-8"
+References: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
+ <aEqbQPvz0FsLXt0Z@duo.ucw.cz> <2243943.irdbgypaU6@workhorse>
+In-Reply-To: <2243943.irdbgypaU6@workhorse>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Thu, 12 Jun 2025 15:28:37 +0300
+X-Gm-Features: AX0GCFscYljXh7LJwJGoGDo8-EH4wvCa4kp802_hSw1Ko3S3oAJ3o3w3MKMG3Hc
+Message-ID: <CAHp75VdVB1OogZay+FDYVY0XajxcOx6t8T8LJSs+zSZg8TkaDQ@mail.gmail.com>
+Subject: Re: [PATCH 00/28] iio: zero init stack with { } instead of memset()
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: David Lechner <dlechner@baylibre.com>, linux-rockchip@lists.infradead.org, 
+	Michael Hennerich <michael.hennerich@analog.com>, Lars-Peter Clausen <lars@metafoo.de>, 
+	Jonathan Cameron <jic23@kernel.org>, =?UTF-8?B?TnVubyBTw6E=?= <nuno.sa@analog.com>, 
+	Andy Shevchenko <andy@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Heiko Stuebner <heiko@sntech.de>, 
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	Francesco Dolcini <francesco@dolcini.it>, 
+	=?UTF-8?Q?Jo=C3=A3o_Paulo_Gon=C3=A7alves?= <jpaulo.silvagoncalves@gmail.com>, 
+	=?UTF-8?Q?Leonard_G=C3=B6hrs?= <l.goehrs@pengutronix.de>, 
+	kernel@pengutronix.de, Oleksij Rempel <o.rempel@pengutronix.de>, 
+	Roan van Dijk <roan@protonic.nl>, Tomasz Duszynski <tomasz.duszynski@octakon.com>, 
+	Jacopo Mondi <jacopo@jmondi.org>, Jean-Baptiste Maneyrol <jean-baptiste.maneyrol@tdk.com>, 
+	Mudit Sharma <muditsharma.info@gmail.com>, 
+	Javier Carrasco <javier.carrasco.cruz@gmail.com>, =?UTF-8?Q?Ond=C5=99ej_Jirman?= <megi@xff.cz>, 
+	Andreas Klinger <ak@it-klinger.de>, Petre Rodan <petre.rodan@subdimension.ro>, 
+	linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-stm32@st-md-mailman.stormreply.com, Pavel Machek <pavel@ucw.cz>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250612_051226_351738_F0C4E621 
-X-CRM114-Status: GOOD (  25.02  )
+X-CRM114-CacheID: sfid-20250612_052916_960098_5E349C54 
+X-CRM114-Status: GOOD (  30.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,135 +110,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
+On Thu, Jun 12, 2025 at 3:12=E2=80=AFPM Nicolas Frattaroli
+<nicolas.frattaroli@collabora.com> wrote:
 
-I thought I'd chime in as someone uninvolved because this seemed
-interesting.
+> I thought I'd chime in as someone uninvolved because this seemed
+> interesting.
 
-On Thursday, 12 June 2025 11:17:52 Central European Summer Time Pavel Machek wrote:
-> Hi!
-> 
-> > Jonathan mentioned recently that he would like to get away from using
-> > memset() to zero-initialize stack memory in the IIO subsystem. And we
-> > have it on good authority that initializing a struct or array with = { }
-> > is the preferred way to do this in the kernel [1]. So here is a series
-> > to take care of that.
-> 
-> 1) Is it worth the churn?
-> 
-> 2) Will this fail to initialize padding with some obscure compiler?
+Welcome! Other opinions on such a topic are always appreciated.
 
-as of right now, the only two C compilers that are supported are
-GCC >= 8.1, and Clang >= 13.0.1. If anyone even manages to get the kernel
-to finish a build with something else, I think the compiler not
-implementing the C standard correctly is the least of their worries.
+> On Thursday, 12 June 2025 11:17:52 Central European Summer Time Pavel Mac=
+hek wrote:
+> >
+> > > Jonathan mentioned recently that he would like to get away from using
+> > > memset() to zero-initialize stack memory in the IIO subsystem. And we
+> > > have it on good authority that initializing a struct or array with =
+=3D { }
+> > > is the preferred way to do this in the kernel [1]. So here is a serie=
+s
+> > > to take care of that.
+> >
+> > 1) Is it worth the churn?
+> >
+> > 2) Will this fail to initialize padding with some obscure compiler?
+>
+> as of right now, the only two C compilers that are supported are
+> GCC >=3D 8.1, and Clang >=3D 13.0.1. If anyone even manages to get the ke=
+rnel
+> to finish a build with something else, I think the compiler not
+> implementing the C standard correctly is the least of their worries.
+>
+> My bigger worry is that =3D { } is only guaranteed to be as correct as
+> memset on C23, and the kernel's standard right now is C11. For that
+> reason alone, I don't think memset should be moved away from for now,
+> unless someone can verify that every GCC release >=3D 8.1 and every
+> Clang release >=3D 13.0.1 does the right thing here regardless.
+>
+> >
+> > 3) Why do you believe that {} is the preffered way? All we have is
+> > Kees' email that explains that =3D {} maybe works in configs he tested.
+>
+> =3D { } is guaranteed to work in C23, as per the standard, but again we'r=
+e
+> not on C23.
+>
+> The reason to prefer this is likely that it's easier for static analysis
+> to see the struct as initialised, but that's me making assumptions here.
+>
+> A more human-centric argument is that once we're on a C standards version
+> where =3D { } is guaranteed to be correct, then =3D { } is much more obvi=
+ously
+> correct to a reader than a memset with a value and a size somewhere later
+> in the code. This argument is evident from the number of patches in this
+> series where the memset and the declaration are not in the same hunk.
+> That's the kind of stuff that keeps me awake at night, sweating profusely=
+.
 
-My bigger worry is that = { } is only guaranteed to be as correct as
-memset on C23, and the kernel's standard right now is C11. For that
-reason alone, I don't think memset should be moved away from for now,
-unless someone can verify that every GCC release >= 8.1 and every
-Clang release >= 13.0.1 does the right thing here regardless.
+While all you said seems true and I agree with, the pedantism here is
+not needed as in the Linux kernel we have {} used for ages in tons of
+code and if something went wrong with that we should have had bug
+reports already. Are you aware of such? Personally I haven't heard
+even one related to this. But if you know, I am really more than
+interested to read about (please, give pointers to such a discussion).
 
-> 
-> 3) Why do you believe that {} is the preffered way? All we have is
-> Kees' email that explains that = {} maybe works in configs he tested.
-
-= { } is guaranteed to work in C23, as per the standard, but again we're
-not on C23.
-
-The reason to prefer this is likely that it's easier for static analysis
-to see the struct as initialised, but that's me making assumptions here.
-
-A more human-centric argument is that once we're on a C standards version
-where = { } is guaranteed to be correct, then = { } is much more obviously
-correct to a reader than a memset with a value and a size somewhere later
-in the code. This argument is evident from the number of patches in this
-series where the memset and the declaration are not in the same hunk.
-That's the kind of stuff that keeps me awake at night, sweating profusely.
-
-Kind regards,
-Nicolas Frattaroli
-
-> 
-> BR,
-> 								Pavel
-> 
-> > [1]:
-> > https://lore.kernel.org/linux-iio/202505090942.48EBF01B@keescook/
-> 
-> 
-> 
-> > ---
-> > David Lechner (28):
-> >       iio: accel: adxl372: use = { } instead of memset()
-> >       iio: accel: msa311: use = { } instead of memset()
-> >       iio: adc: dln2-adc: use = { } instead of memset()
-> >       iio: adc: mt6360-adc: use = { } instead of memset()
-> >       iio: adc: rockchip_saradc: use = { } instead of memset()
-> >       iio: adc: rtq6056: use = { } instead of memset()
-> >       iio: adc: stm32-adc: use = { } instead of memset()
-> >       iio: adc: ti-ads1015: use = { } instead of memset()
-> >       iio: adc: ti-ads1119: use = { } instead of memset()
-> >       iio: adc: ti-lmp92064: use = { } instead of memset()
-> >       iio: adc: ti-tsc2046: use = { } instead of memset()
-> >       iio: chemical: scd4x: use = { } instead of memset()
-> >       iio: chemical: scd30: use = { } instead of memset()
-> >       iio: chemical: sunrise_co2: use = { } instead of memset()
-> >       iio: dac: ad3552r: use = { } instead of memset()
-> >       iio: imu: inv_icm42600: use = { } instead of memset()
-> >       iio: imu: inv_mpu6050: use = { } instead of memset()
-> >       iio: light: bh1745: use = { } instead of memset()
-> >       iio: light: ltr501: use = { } instead of memset()
-> >       iio: light: opt4060: use = { } instead of memset()
-> >       iio: light: veml6030: use = { } instead of memset()
-> >       iio: magnetometer: af8133j: use = { } instead of memset()
-> >       iio: pressure: bmp280: use = { } instead of memset()
-> >       iio: pressure: mpl3115: use = { } instead of memset()
-> >       iio: pressure: mprls0025pa: use = { } instead of memset()
-> >       iio: pressure: zpa2326: use = { } instead of memset()
-> >       iio: proximity: irsd200: use = { } instead of memset()
-> >       iio: temperature: tmp006: use = { } instead of memset()
-> > 
-> >  drivers/iio/accel/adxl372.c                       | 3 +--
-> >  drivers/iio/accel/msa311.c                        | 4 +---
-> >  drivers/iio/adc/dln2-adc.c                        | 4 +---
-> >  drivers/iio/adc/mt6360-adc.c                      | 3 +--
-> >  drivers/iio/adc/rockchip_saradc.c                 | 4 +---
-> >  drivers/iio/adc/rtq6056.c                         | 4 +---
-> >  drivers/iio/adc/stm32-adc.c                       | 3 +--
-> >  drivers/iio/adc/ti-ads1015.c                      | 4 +---
-> >  drivers/iio/adc/ti-ads1119.c                      | 4 +---
-> >  drivers/iio/adc/ti-lmp92064.c                     | 4 +---
-> >  drivers/iio/adc/ti-tsc2046.c                      | 3 +--
-> >  drivers/iio/chemical/scd30_core.c                 | 3 +--
-> >  drivers/iio/chemical/scd4x.c                      | 3 +--
-> >  drivers/iio/chemical/sunrise_co2.c                | 6 ++----
-> >  drivers/iio/dac/ad3552r.c                         | 3 +--
-> >  drivers/iio/imu/inv_icm42600/inv_icm42600_accel.c | 5 ++---
-> >  drivers/iio/imu/inv_icm42600/inv_icm42600_gyro.c  | 5 ++---
-> >  drivers/iio/imu/inv_mpu6050/inv_mpu_acpi.c        | 4 +---
-> >  drivers/iio/imu/inv_mpu6050/inv_mpu_ring.c        | 6 ++----
-> >  drivers/iio/light/bh1745.c                        | 4 +---
-> >  drivers/iio/light/ltr501.c                        | 4 +---
-> >  drivers/iio/light/opt4060.c                       | 4 +---
-> >  drivers/iio/light/veml6030.c                      | 4 +---
-> >  drivers/iio/magnetometer/af8133j.c                | 4 +---
-> >  drivers/iio/pressure/bmp280-core.c                | 5 +----
-> >  drivers/iio/pressure/mpl3115.c                    | 3 +--
-> >  drivers/iio/pressure/mprls0025pa_i2c.c            | 5 +----
-> >  drivers/iio/pressure/zpa2326.c                    | 4 +---
-> >  drivers/iio/proximity/irsd200.c                   | 3 +--
-> >  drivers/iio/temperature/tmp006.c                  | 4 +---
-> >  30 files changed, 34 insertions(+), 85 deletions(-)
-> > ---
-> > base-commit: 4c6073fec2fee4827fa0dd8a4ab4e6f7bbc05ee6
-> > change-id: 20250611-iio-zero-init-stack-with-instead-of-memset-0d12d41a7ecb
-> > 
-> > Best regards,
-> 
-> 
-
-
-
-
+--=20
+With Best Regards,
+Andy Shevchenko
 
