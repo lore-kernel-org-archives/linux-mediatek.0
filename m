@@ -4,139 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A28ABC71136
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jun 2025 21:47:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1F82C71151
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jun 2025 22:09:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RtBm7dhzS7vdeIwSr3GhYSR7TMJjCHW8IHR7lAffLu0=; b=4HNFN2bcyYSB8v7DHdfv7/Q1r1
-	kG1aL+rZHJrkfotwI9812ggDGj0zSmXHHW9oqceFH8MqMBZzqInRyDxxZN/imCsvLJK0aq3j/fLle
-	QLTo6Dl+O2u7PfMjft/wjsXEXlnkAHDqpypMiBbXrxGKtFF+7RU4MO+uiK54F4Fs4WyWcgRfVdGPq
-	FUJoGjQJz8yW7tE+PKyC7GW4XG4x5nHdCAjj7OgX6IPqDhMaKe4YUCLOiXPV+Kitws5dhsDbTKTR8
-	w9EwEDA0wj05J5byVmTf07iIBcL9lTZPr2rPpIJYFeH5evttnIYk6Ap0H1oJeE+YHEn+4f0P2knbS
-	XBpy62Yg==;
+	bh=/QwCz4LwJbKvoUCzvt1O+baefDXIfGuzhrqGZOtHbm4=; b=WDb87NWOgkUWjp9SzrBjmim43M
+	Yw7LwIJYZk0X5J+lT8iSb8QAdgFF+UDtQbgP9VuvjPRFjwOKt7sKdg0zovTImHPMvmCS/Aya9JGbA
+	jyI9mzVs9bML1EgG0NKiiWli0PmxBlolKEb2zAj2W1W+Ltrjw4Oia12gduUVHO/+MHb5N/BKUyTl1
+	7N4nCaECkPPQPq9K7kFKoCkCNNwUP4LYkpoyHoYXMOPsZaA4ix2nvqjVKsdHgUfth3zf9ZuTm7ql1
+	xLtSzhf4SdgTnq7sQI0Gu4zveghRdu6Ex90JF3v7M/1s6DgMpiKR8XvHsa9PfV0mQT1Oqt82KO0Bc
+	FBVh/Btg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPplf-0000000Eglg-2drf;
-	Thu, 12 Jun 2025 21:47:27 +0000
-Received: from mail-wr1-f43.google.com ([209.85.221.43])
+	id 1uPq6z-0000000EjCz-0CeM;
+	Thu, 12 Jun 2025 22:09:29 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPpT4-0000000EegY-2Swy;
-	Thu, 12 Jun 2025 21:28:15 +0000
-Received: by mail-wr1-f43.google.com with SMTP id ffacd0b85a97d-3a50fc7ac4dso981536f8f.0;
-        Thu, 12 Jun 2025 14:28:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1749763693; x=1750368493; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :references:cc:to:from:subject:user-agent:mime-version:date
-         :message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=RtBm7dhzS7vdeIwSr3GhYSR7TMJjCHW8IHR7lAffLu0=;
-        b=jfkuup3ApMM/85/ldg4lEHM6DjocjzXc65ap4kpKu+Iz18ox3FO5joge6RoWI2Gvf0
-         NdYsz2F1vAapkZoI2+vPOxpbjIZRW8RU3JIPwG2PcdHcVSmtRgUZW71wY0YC3WhgBJZk
-         08ttmGy4VPJ60B2cOnz3VGvc2QYHlOa7lfhYKX42s5xoK2lAzH7i4H7sN+Eiaho8xxg/
-         B1CkBB5Y/BqIHPOCzv/GWRy+bMQdjqu2CVCiHKOkW8ajap5FmUY33TxgwPlIZKChjPqz
-         CdfJxws8a3dt04btSZDzt7u3i3Md4aQGGvUEJQKl9iyGkLgDNGwTp84Ity//XMx/aeS3
-         Rl3A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749763693; x=1750368493;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :references:cc:to:from:subject:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=RtBm7dhzS7vdeIwSr3GhYSR7TMJjCHW8IHR7lAffLu0=;
-        b=kNoGhXVu6CKStjFGIdBq6+z3FP01I5WckmoRgsc5wRDykVeROYhz1iMIbiBsldcohL
-         mYMxl0qqA/3oZaQx7B6up0K5Fvu9mavfrcNNuCKR+nnw8L1igiNRyaVVERshw0pZ6eOw
-         OjBiuYP+SCEc4jD3u6OGEqOyyNV/P5PRSuRC24zReQRDwp6o7kqx5VeeVTUbpIssemFL
-         o2i/q+k+LT16RuAvHoLWY5oDHSj2a9/y/YoL5r9Kq3deZ0meSbKhkT4KHNGReFZ+M5Tk
-         6g8/P6ENwGrgcnwQwAWtcC9njy6gSaxEKcKc+ozZgISBQDziT01zQOqSkd8C77TbEyTa
-         DKlw==
-X-Forwarded-Encrypted: i=1; AJvYcCVS9KlaORpgCMHDividmOhLMLpUdcK+/RfMBCMrj22Ty802bbgRF+6hxPzXt9TWeKn6PgUN8Qf9YTO77R1faz4r@lists.infradead.org, AJvYcCW7qKvqLl2nxF7V+go2xRBk2g3WkTPDf1a78YKcMkdVhnmMMX8A1uOzoVQ4M1Rury67GdDDJZ1B1UyYy22NlGU=@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx4J7s45hf15B3P+KhgdgZr6TpNO76wyg3ENhjDUxcAx9K1vCVb
-	foKDbLGc0jYJGFdY2z1rPgFMufg5/PEnuuVT/KOCLx/tThzM76P3VV+d
-X-Gm-Gg: ASbGncvU5zQJKLl/t5UTk6xGycqsxGlMaghMgOVbhPeQ5BeYw2s0YtjWCGXFsQiojyN
-	7h4Sw0KqcYtwpx5oK3ObBPxHM0ksk1QCFHZ3y9xllJcmjd14xphFjqjDEkvLRqD+WWcXEYGVSfL
-	8c8wPbI/lE7YCtuuqnjN+TzgV4p8S+iz63qcleAVjbbtYX+3Vumx7qQ3fKi8PTUCtksxDzepiPl
-	xmbfkYhfD8rk2IyaIejdheQPbenlFlNB5wkuwMxM+H0CIliwFzo+ixAmfTQItnNxQZLpwWj2n9y
-	kShwRX0dxosTnJsPB4ulEAkEyhDWBLJGIcdNsEoqj5BOix4ARkjxMLJE5yxR57GTC69P1aEWW+q
-	VGS2uTFZIxS1XBvWNJvVhg1i7W5s8rWdoWeBZmpX4uGbUzSd9fcaVh9sXJB1t3Th5Xh6yg4KxR+
-	lJSf6zpWwYBSMR0uzd8pzkmDxLjQ==
-X-Google-Smtp-Source: AGHT+IE1XU4nO/VzkNo3ZuofzqheSkVfnICKLzbgowD//YuyvE9aSKTHQ8v90RNFDlyeUk68AvpS0w==
-X-Received: by 2002:a05:6000:1acc:b0:3a5:2875:f986 with SMTP id ffacd0b85a97d-3a56871751cmr620856f8f.44.1749763692667;
-        Thu, 12 Jun 2025 14:28:12 -0700 (PDT)
-Received: from ?IPV6:2003:ea:8f22:3f00:7533:d8b1:ff14:6fe5? (p200300ea8f223f007533d8b1ff146fe5.dip0.t-ipconnect.de. [2003:ea:8f22:3f00:7533:d8b1:ff14:6fe5])
-        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-3a568b2ca65sm413139f8f.77.2025.06.12.14.28.11
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 12 Jun 2025 14:28:12 -0700 (PDT)
-Message-ID: <42c05496-61b2-4b09-b853-3d99b3dfe95c@gmail.com>
-Date: Thu, 12 Jun 2025 23:28:18 +0200
+	id 1uPjff-0000000Dka7-0h7J;
+	Thu, 12 Jun 2025 15:16:52 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id D79DA5C552F;
+	Thu, 12 Jun 2025 15:14:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5F7C2C4CEEA;
+	Thu, 12 Jun 2025 15:16:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1749741410;
+	bh=DqlPn31+KZM4hJMsUtsN1+zFo6hqlMwhcnMVWvDMcbw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=GyZFqjtoH/ZrLiNXoOWtDY7USCOkILKdvLPY190q572lgpUVppz8uIph/6BvuCIur
+	 UPifclw/IRxXFUk345aBFGB/Sn9uSVYp6pLxmvtVVCWoT2Q6Yg5oAL/EBvb/OYpymi
+	 FtYM6Ac91on2G330xQ1F2Ng79gbFTIa3GpwupHHvbnR92SmoFbuoI5THP4A15I4GNR
+	 TSf7MZokADkly9q1MKpHegMhHCOs6SrNXTv/M5nKWtgr6mJgkWnth4sF5wmpwbACnN
+	 XlExincfkj70SfFqNq26R/1Gzz+Rpu7n8RsiOEaqRBL+7i+qmbN/iRJ+u1PlSMvAoC
+	 M1zLkpzFDAAAA==
+Message-ID: <fe4d93d1-fb6a-4985-8316-7a76fa1a481f@kernel.org>
+Date: Thu, 12 Jun 2025 17:16:45 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: [PATCH net-next 3/3] net: phy: add Kconfig symbol PHY_PACKAGE
-From: Heiner Kallweit <hkallweit1@gmail.com>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, Paolo Abeni <pabeni@redhat.com>,
- Jakub Kicinski <kuba@kernel.org>, David Miller <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Andrew Lunn <andrew@lunn.ch>,
- Russell King - ARM Linux <linux@armlinux.org.uk>,
+Subject: Re: [PATCH v8 2/2] memory: mtk-smi: mt8188: Add SMI reset and clamp
+ for MT8188
+To: Friday Yang <friday.yang@mediatek.com>, Yong Wu <yong.wu@mediatek.com>,
+ Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- linux-arm-msm@vger.kernel.org,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>, linux-mediatek@lists.infradead.org
-References: <eec346a4-e903-48af-8150-0191932a7a0b@gmail.com>
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20250521063347.31578-1-friday.yang@mediatek.com>
+ <20250521063347.31578-3-friday.yang@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
-Autocrypt: addr=hkallweit1@gmail.com; keydata=
- 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
-In-Reply-To: <eec346a4-e903-48af-8150-0191932a7a0b@gmail.com>
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <20250521063347.31578-3-friday.yang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250612_142814_631853_3C55483F 
-X-CRM114-Status: GOOD (  12.65  )
+X-CRM114-CacheID: sfid-20250612_081651_285950_858D96EE 
+X-CRM114-Status: UNSURE (   6.52  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -151,94 +123,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Only a handful of PHY drivers needs the PHY package functionality,
-therefore build the module only if needed.
+On 21/05/2025 08:33, Friday Yang wrote:
+> From: "Friday Yang" <friday.yang@mediatek.com>
+> 
+> To prevent handling glitch signals during MTCMOS on/off transitions,
+> SMI requires clamp and reset operations. Parse the reset settings for
+> SMI LARBs and the clamp settings for the SMI Sub-Common. Register
+> genpd callback for the SMI LARBs located in image, camera and IPE
+> subsystems, and apply reset and clamp operations within the callback.
+> 
+> Signed-off-by: Friday Yang <friday.yang@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Acked-by: Rob Herring <robh@kernel.org>
 
-Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
----
- drivers/net/phy/Kconfig          | 6 ++++++
- drivers/net/phy/Makefile         | 2 +-
- drivers/net/phy/mediatek/Kconfig | 1 +
- drivers/net/phy/qcom/Kconfig     | 1 +
- 4 files changed, 9 insertions(+), 1 deletion(-)
+You did not respond to previous review. Sending the same while ignoring
+previous review is obvious NAK.
 
-diff --git a/drivers/net/phy/Kconfig b/drivers/net/phy/Kconfig
-index 53dad2482..28acc6392 100644
---- a/drivers/net/phy/Kconfig
-+++ b/drivers/net/phy/Kconfig
-@@ -25,6 +25,9 @@ if PHYLIB
- config SWPHY
- 	bool
- 
-+config PHY_PACKAGE
-+	 tristate
-+
- config LED_TRIGGER_PHY
- 	bool "Support LED triggers for tracking link state"
- 	depends on LEDS_TRIGGERS
-@@ -157,6 +160,7 @@ config BCM54140_PHY
- 	tristate "Broadcom BCM54140 PHY"
- 	depends on HWMON || HWMON=n
- 	select BCM_NET_PHYLIB
-+	select PHY_PACKAGE
- 	help
- 	  Support the Broadcom BCM54140 Quad SGMII/QSGMII PHY.
- 
-@@ -292,6 +296,7 @@ source "drivers/net/phy/mediatek/Kconfig"
- config MICREL_PHY
- 	tristate "Micrel PHYs"
- 	depends on PTP_1588_CLOCK_OPTIONAL
-+	select PHY_PACKAGE
- 	help
- 	  Supports the KSZ9021, VSC8201, KS8001 PHYs.
- 
-@@ -323,6 +328,7 @@ config MICROSEMI_PHY
- 	depends on MACSEC || MACSEC=n
- 	depends on PTP_1588_CLOCK_OPTIONAL || !NETWORK_PHY_TIMESTAMPING
- 	select CRYPTO_LIB_AES if MACSEC
-+	select PHY_PACKAGE
- 	help
- 	  Currently supports VSC8514, VSC8530, VSC8531, VSC8540 and VSC8541 PHYs
- 
-diff --git a/drivers/net/phy/Makefile b/drivers/net/phy/Makefile
-index 4e69597f2..b4795aaf9 100644
---- a/drivers/net/phy/Makefile
-+++ b/drivers/net/phy/Makefile
-@@ -19,7 +19,7 @@ obj-$(CONFIG_MDIO_BUS)		+= mdio-bus.o
- obj-$(CONFIG_PHYLINK)		+= phylink.o
- obj-$(CONFIG_PHYLIB)		+= libphy.o
- obj-$(CONFIG_PHYLIB)		+= mdio_devres.o
--obj-$(CONFIG_PHYLIB)		+= phy_package.o
-+obj-$(CONFIG_PHY_PACKAGE)	+= phy_package.o
- 
- obj-$(CONFIG_NETWORK_PHY_TIMESTAMPING) += mii_timestamper.o
- 
-diff --git a/drivers/net/phy/mediatek/Kconfig b/drivers/net/phy/mediatek/Kconfig
-index 9f30a91be..bb7dc8762 100644
---- a/drivers/net/phy/mediatek/Kconfig
-+++ b/drivers/net/phy/mediatek/Kconfig
-@@ -27,6 +27,7 @@ config MEDIATEK_GE_SOC_PHY
- 	depends on ARCH_AIROHA || (ARCH_MEDIATEK && NVMEM_MTK_EFUSE) || \
- 		   COMPILE_TEST
- 	select MTK_NET_PHYLIB
-+	select PHY_PACKAGE
- 	help
- 	  Supports MediaTek SoC built-in Gigabit Ethernet PHYs.
- 
-diff --git a/drivers/net/phy/qcom/Kconfig b/drivers/net/phy/qcom/Kconfig
-index 570626cc8..bba14be8d 100644
---- a/drivers/net/phy/qcom/Kconfig
-+++ b/drivers/net/phy/qcom/Kconfig
-@@ -24,6 +24,7 @@ config QCA808X_PHY
- config QCA807X_PHY
- 	tristate "Qualcomm QCA807x PHYs"
- 	select QCOM_NET_PHYLIB
-+	select PHY_PACKAGE
- 	depends on OF_MDIO
- 	help
- 	  Currently supports the Qualcomm QCA8072, QCA8075 and the PSGMII
--- 
-2.49.0
-
-
+Best regards,
+Krzysztof
 
