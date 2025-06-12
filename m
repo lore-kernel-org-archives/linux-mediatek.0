@@ -4,77 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3D56C71150
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jun 2025 20:54:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8393CC7114A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jun 2025 20:54:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=KUIfLwvoP44U5nDfSmqojpW++w9cxu2WaXPKkzeIK40=; b=yKx60Xd1VHhKQ+42kNw/4/pE+L
-	TccZvhzj5i0eVVwHKUkLeJTiMeRu2yQ4HYRrdexvPivXPWxT9N98M/mdvE2Z6MQ4lNNJdX6qzxyi/
-	9f8b4W7+AlE4+6lX2piqZeVVzrrGXMBwqA0eB7FSEVZdE5biNqPW1BqD5CB+dBiCW14rWcCQMC3EG
-	v+EBuImugfC0lzatb3oTiWS/MFpdVgx85x8Of/H10awCcCYoL41oSHON6xrOdsprq+FVO4EbDxyS/
-	Y23T+nI5fb9ewo4lZPnjZA9Dyu/YT2sS66fWlfxsHPyOBMTu/Nad6AcCCkO1bWeS/kI5r7Dj5qIwc
-	ClcZdmHg==;
+	bh=Ex8oQa+YqEYdb2fSXibJ5RTDwcm8bJDCkvBEZ+deQxs=; b=y4L/Q5df45EhyNcREMlIDtsNcg
+	3+seLrfpa5K9Iz5UQ2ws+WtXrzb2FJaoRJpTd8SXXGh+aSWCidKlm0mg5uBNzyFt8ttrr8kifcP56
+	I2zjca/ViU23BQ/y25OjKosqoQw+4JZRSkkzicEr5vLndmGyOp7ERkD/3wJbvyqJUnl0iPrI+6mKB
+	7w2oNHoFBIeEdVaSn0Thh6MIZXeulKs53ELRThgPDRejiN+lkslPlESHEkJ6H5x6eW0WijWZWsw8O
+	lGQ3dWox4A83MfyCBva1DltQAjCiF25Vd3XOo57TvFWMhLP6G91Eq8CoBAcKHx3UIqHQ9A2xJXUt8
+	Or0VsIxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPowS-0000000EXKw-1b36;
-	Thu, 12 Jun 2025 20:54:32 +0000
+	id 1uPowT-0000000EXMA-19Yv;
+	Thu, 12 Jun 2025 20:54:33 +0000
 Received: from sender4-op-o15.zoho.com ([136.143.188.15])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPiPw-0000000DXbj-2aOv;
-	Thu, 12 Jun 2025 13:56:33 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1749736578; cv=none; 
+	id 1uPj4x-0000000De4f-0IJ7;
+	Thu, 12 Jun 2025 14:38:56 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1749739130; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=Z9Q6LpwOskFzXu7qFIqDahCinDV85umIMp0V5V90dF7bGYa5NYV89EM6WS0OwHQqd4/Uv2GrLuC17jCqKWGsiS3DgT6YHgWlkx0nVLYDPAGFWkjHJgF1egrIEVsnPr+yAxCQm6AkbkBgWNKa4ARXHPstwsiFDVRpeo62daoIcjA=
+	b=Hp3G8ROEQbeWJoK7N5HBK3D9jXIWLRscx3PVFjO/g1T2xkWbE/Uewze7ia8LQwVsvvPDN5R/1GuBFqAEXysV9BpNTorzKdotaQ3ESJFfEv3TeQA6M7uSpnxyAXqVdH+kQqWYjQ6tqx5QCvuXp6jooESsuUdQJcGFswtdCCpRDek=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1749736578; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=KUIfLwvoP44U5nDfSmqojpW++w9cxu2WaXPKkzeIK40=; 
-	b=i68huo5HXEszm0XtLDeI3hap5XBQ0TEjonhcTuFAHwLyctmv+zfAdxJP4AYyOPd8EytdSiiU+3o/mbGHoDKTg5IKe0tEmkpcVlco54i1d6deoZqw1NQjgQnM6VIICB5TrmIq5V89n7yuMrsDQX3jW3TUWT/GhE2Med+bYTb+2/w=
+	t=1749739130; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Ex8oQa+YqEYdb2fSXibJ5RTDwcm8bJDCkvBEZ+deQxs=; 
+	b=bPokZiHrisMW+dSeWPXXE+AyO6REJap2XqnG/2zQuQfbQ1Vad5SZtJmKwcvwrgSqV4DL/KWm3+zbxtTnp8XmKGNUcZ6RdeYEcIjrXbTunmQPVta6/6R+CeHFfdyUbVpLO7qqWxgb+MJTA6QwaZaWWJa9J2luaaDdXkWjaqivO/Q=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=icenowy.me;
 	spf=pass  smtp.mailfrom=uwu@icenowy.me;
 	dmarc=pass header.from=<uwu@icenowy.me>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749736578;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749739130;
 	s=zmail2; d=icenowy.me; i=uwu@icenowy.me;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=KUIfLwvoP44U5nDfSmqojpW++w9cxu2WaXPKkzeIK40=;
-	b=cB79ZboY1lFL9af6mnwgT0N6Y0FcjVW7L4hsO0ita2ELplHFr9csDJsspMYpZ+wM
-	iXN1J/COAX88HG2r91O8+liDKQ6izRy+6ZX5HT6MKqoixIRZP/0CbfNrk5lnI7DeQbd
-	TBdTShZFNU85CZzECc15JWt2HEJ50Peaeil1iaVjkeBp1k8SD5taNTsYM0mU8Wz0QF+
-	7hzKXd4o8bVxpr13ffHrBOSFy6Jw4cREKjzEXFUfwM5e9h8BwKqt6gUhnuKsPW1XfbR
-	b0bg3k2M5B1ZX0UVvHPM698VsCqcF5tzp4MCl/VVL5Z+bAJsfgNJZ0UHYrKPqwM39nb
-	VWTuVDzl5A==
-Received: by mx.zohomail.com with SMTPS id 174973657610749.98040995348208;
-	Thu, 12 Jun 2025 06:56:16 -0700 (PDT)
+	bh=Ex8oQa+YqEYdb2fSXibJ5RTDwcm8bJDCkvBEZ+deQxs=;
+	b=OVbXLxNEZRbYJtTuOauDGPtwA5HcpqqIH3N3luJmESXP8XHBYHVSVgn3FRkuvOUt
+	IKydVIUduYnvPc778E5mAUJtxdmuPKKY6LQB4obVF8V4oWGesROyTsl69LGJEB/tI+V
+	9vK8PqEOL3bunsBO4sTAeOCc611nq/s7XRagjya7ziqqEeWiOSGZy7kssDhYb1gYmR9
+	/Zkl5TU1ygTdTcY1cPxrCWFh6lrvOQBqcKiHOWULvAd4JE3tbAAeFdwhdDB6g817NI0
+	ITNbgimg3cVDGIZuuM6qAjfJyquR94QdW/aRVzhcII7aCAvvhylo+F3k3ml5BnDutzp
+	wNpYyHN+3w==
+Received: by mx.zohomail.com with SMTPS id 1749739128525523.5659147415079;
+	Thu, 12 Jun 2025 07:38:48 -0700 (PDT)
 From: Icenowy Zheng <uwu@icenowy.me>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Sean Wang <sean.wang@mediatek.com>
+	Chen-Yu Tsai <wenst@chromium.org>
 Cc: devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Icenowy Zheng <uwu@icenowy.me>
-Subject: [PATCH 1/2] dt-bindings: arm: mediatek: add mt8173-hana rev2
-Date: Thu, 12 Jun 2025 21:55:58 +0800
-Message-ID: <20250612135559.2601139-1-uwu@icenowy.me>
+Subject: [PATCH] arm64: dts: mediatek: mt8173: lower SD clock and disable wp on Elm
+Date: Thu, 12 Jun 2025 22:38:33 +0800
+Message-ID: <20250612143833.2612714-1-uwu@icenowy.me>
 X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-ZohoMailClient: External
-X-ZohoMail-Owner: <20250612135559.2601139-1-uwu@icenowy.me>+zmo_0_
+X-ZohoMail-Owner: <20250612143833.2612714-1-uwu@icenowy.me>+zmo_0_
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250612_065632_693421_7D91A308 
-X-CRM114-Status: UNSURE (   9.04  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250612_073855_177363_2A76649D 
+X-CRM114-Status: GOOD (  12.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,28 +86,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-My Lenovo Flex 11 Chromebook contains a board with revision ID 2.
+The microSD slot of Elm seems to have a little signal quality issue and
+cannot work at 200MHz. In addition, a microSD slot cannot handle
+write-protection.
 
-Add rev2 to the compatible list of base hana DTB to allow depthcharge to
-match the DTB.
+Lower the clock frequency to 100MHz and add "disable-wp" property to
+eliminate a note of assuming RW.
+
+My Hana device, which is a Lenovo Flex 11 Chromebook, can handle 200MHz;
+so hana DTSI still have its max SD frequency set to 200MHz.
 
 Signed-off-by: Icenowy Zheng <uwu@icenowy.me>
 ---
- Documentation/devicetree/bindings/arm/mediatek.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi | 1 +
+ arch/arm64/boot/dts/mediatek/mt8173-elm.dts       | 5 +++++
+ arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi      | 1 -
+ 3 files changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-index 108ae5e0185d9..7d13547ff57ba 100644
---- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-@@ -132,6 +132,7 @@ properties:
-           - const: google,hana-rev5
-           - const: google,hana-rev4
-           - const: google,hana-rev3
-+          - const: google,hana-rev2
-           - const: google,hana
-           - const: mediatek,mt8173
-       - description: Google Hana rev7 (Poin2 Chromebook 11C)
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi
+index dfc5c2f0ddefd..3147240cfa6ae 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dtsi
+@@ -68,6 +68,7 @@ trackpad2: trackpad@2c {
+ };
+ 
+ &mmc1 {
++	max-frequency = <200000000>;
+ 	wp-gpios = <&pio 42 GPIO_ACTIVE_HIGH>;
+ };
+ 
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dts b/arch/arm64/boot/dts/mediatek/mt8173-elm.dts
+index 2390d04204e83..3385183b60d36 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dts
+@@ -13,3 +13,8 @@ / {
+ 		     "google,elm-rev5", "google,elm-rev4", "google,elm-rev3",
+ 		     "google,elm", "mediatek,mt8173";
+ };
++
++&mmc1 {
++	max-frequency = <100000000>;
++	disable-wp;
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+index 0d995b342d463..2a253a90bce1b 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+@@ -402,7 +402,6 @@ &mmc1 {
+ 	pinctrl-0 = <&mmc1_pins_default>;
+ 	pinctrl-1 = <&mmc1_pins_uhs>;
+ 	bus-width = <4>;
+-	max-frequency = <200000000>;
+ 	cap-sd-highspeed;
+ 	sd-uhs-sdr50;
+ 	sd-uhs-sdr104;
 -- 
 2.49.0
 
