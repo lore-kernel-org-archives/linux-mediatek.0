@@ -4,76 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1158C61CE8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jun 2025 07:54:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0E9AC61CE8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jun 2025 08:16:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=nsUuIaqnM98AXc3sk5GAF68VDIKR4aTmuSKr+dEPhZ8=; b=WrAm5tMb9uBjVn29yP39Rssn5a
-	cDH64E8kDBx88Pa+1ru4KDrAnXCn8OZEk1SpzK+7FllqFQHbNSYYl2i8ZZ14eagWg4RquXKkHDAAH
-	876PtGe1jd9wHojYMuFhHuoAOIA8m7PZC1g9VlVwdgbCq1o40ugYsJM+NHnnjcaDAoy4qPCkL4qnq
-	EeDLEm8s+pHeKNsZnP3MGVSKeWzhzuB0AuQAFQtcyDiohcHCU64ZfW7hLCg9VeLN+QPE+Ni55cN/s
-	fUkOkXNJrhOdogdtbcIoko1JiyN10s2/5ysoScgvjaz82+gBPt+ka58D8HRxKies4Nel0hvhIpGkh
-	0CVS6TMA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=SPFuYxHVFr0kVDYRfxXF8FfjITbYZAv5cDjlCNLKod8=; b=DFJrWATcTxxdnk7YrObByohVX4
+	PvBMVRfdqt+mUFFYHcSlYUtwihrjZoCRk3iE1WP/AH+cY7194UGGcikHYZ9GezlQCcrQVZLUfhmjM
+	mma9zT8XXkGzWm4nY6T8zS/3Dr+Sxm3vYDbM2nUaUs6e0cFEe5fzmauJrXuFwVgxw5U+ZrhEECxeA
+	msrKDF12Aoc/Dl60KloJqu+VMubSZZUf6MlWt0iXbfDCZWg6rn5enjw2OkqXjiVlTDUBhTrLOr1ba
+	GPOCr2GBtg7wqK5TYzBHhGC1HaU8MgVm1FXl4wLN9qaufuHhqUJKPgELsiWrKpRsF/5zFsGmR+CbE
+	6mZ0UHpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPclh-0000000CWQM-1OKw;
-	Thu, 12 Jun 2025 07:54:37 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1uPd6Z-0000000CaIF-1qnf;
+	Thu, 12 Jun 2025 08:16:11 +0000
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPcH9-0000000CR6Q-1dff
+	id 1uPcgV-0000000CVNK-0MHS
 	for linux-mediatek@lists.infradead.org;
-	Thu, 12 Jun 2025 07:23:04 +0000
-X-UUID: 10a14148475e11f09eb0dd999d3936bf-20250612
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=nsUuIaqnM98AXc3sk5GAF68VDIKR4aTmuSKr+dEPhZ8=;
-	b=BsABS+42ewliRqlZjkm0YslDK6H59m1Fb2NFb+63lreKfH0qTYCMsxyTX1o6ymI7Qn8L6jWLkmOJw3VbilQRddFZUFxet+LBvDZKOrEug2o4Zb/Rpz+G8A4fE0Yh0pLlPjVGm5GLZzldLms0e0sBi7M8Pv5r9z4hqQrGShS1+qs=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.3,REQID:691df753-57ae-4dbe-8862-2cb244afaff4,IP:0,UR
-	L:25,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:20
-X-CID-META: VersionHash:09905cf,CLOUDID:68889a58-abad-4ac2-9923-3af0a8a9a079,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:11|97|99|83|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
-	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 10a14148475e11f09eb0dd999d3936bf-20250612
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <ot_zhangchao.zhang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1453571131; Thu, 12 Jun 2025 00:22:57 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Thu, 12 Jun 2025 15:22:54 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Thu, 12 Jun 2025 15:22:54 +0800
-From: Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>
-To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
-	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Deren Wu <deren.Wu@mediatek.com>,
-	Aaron Hou <aaron.hou@mediatek.com>, Chris Lu <chris.lu@mediatek.com>, Hao Qin
-	<Hao.qin@mediatek.com>, linux-bluetooth <linux-bluetooth@vger.kernel.org>,
-	linux-kernel <linux-kernel@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Zhangchao Zhang
-	<ot_zhangchao.zhang@mediatek.com>
-Subject: [PATCH v2] Bluetooth: mediatek: add gpio pin to reset bt
-Date: Thu, 12 Jun 2025 15:22:30 +0800
-Message-ID: <20250612072230.12537-1-ot_zhangchao.zhang@mediatek.com>
-X-Mailer: git-send-email 2.46.0
+	Thu, 12 Jun 2025 07:49:16 +0000
+Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-235f9e87f78so6908585ad.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 12 Jun 2025 00:49:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1749714554; x=1750319354; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=SPFuYxHVFr0kVDYRfxXF8FfjITbYZAv5cDjlCNLKod8=;
+        b=dIJaWxZbR9D1FrRN4WuH52SA9uJFsK/GHvC/NGB4pOsCyRuKzor8q3gSn47pG5zkR3
+         PaR/pZWRYUTVYX7PevPBGlPoKm6AmPHEX1P6fbJE7s6/WHPjckib6YoV1aQxnnAE+zmR
+         DXCyOtiL1Y3YGFxMhqgavjnDXflDRnZjSeSx0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749714554; x=1750319354;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=SPFuYxHVFr0kVDYRfxXF8FfjITbYZAv5cDjlCNLKod8=;
+        b=Tb6y5LxqueXGi0spYi6DC6c+2x6bo/7A44nw3HNJZR6rfjOEErvtxWeWyEHoGfc4qM
+         yhHmCVsT79WZ41N+wYUxbSAROQjfTHznPk1gP9mb4YABbl/Vd9nXnUW7H0xP/nSf6gaD
+         C5k6lVbMrgPjiHLdvBKbFEQxRcWTEmygwXYyhMZc6FSk6QClJ8fjdbTX3FhTE857QksC
+         JRMK4H1mEt7Z7q3PhpO06epZxfoATHRkjJOY+l1yxBS+O38CD+rHO2fccWWl7ibFzPE0
+         ZUqfSe1nJe7qvSDWvSsd9xhgXLTBMhOMSg1ac7O7h93WxZMyqACCeToln7GsANrbDa5k
+         eSVA==
+X-Forwarded-Encrypted: i=1; AJvYcCU51C3s8ls8ifx/I6UauFuxk9jBGbzl9/VkOotZVNfYc1iq1zKDZLIE+Fe+TFXBjqopYxcKBQagqA0qEfMRbw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywov/IoUueYF3FATl3CsZhPGYxf6Z5/RxGvwLVIaog5hfk3fOqn
+	IELPr8qgYR9G7tb4uykU1rq4tbVcLIJLcIowIIc7UjplMNPMO2hdJZSCyb4S4Kaipg==
+X-Gm-Gg: ASbGncvIhi8oMGy4UMCZFEpbacyQSIvi+Ju6NGm77H4IKS0hLs67cTUN8ixzUc8GjTd
+	1tqTOCBIz7eR3w3LAVfA/KRpdfUne80tzfgcjSDyPucgymbKYRYBc+yYgXkSNxMGWdPL3Ph5ePi
+	dZAV4aDJyKMjmvdpcG0Nvq70pHQAeDSdXH6N/9nK5oSMO3In6qVl++DNc54erY2XTyiOY3nAMMt
+	C+BAf3tIglOdHNGxvaGDo+UL7xP6yiWHSQveK57zFjx7cAwjzqkKLIZClPwhSWtTpNerM9VYyx7
+	zPexFC5km88fVHjJynTDXPfZ5aaEnuvS+OKnFvG44Lxu7cO8YqaP/JNixkB1NcpKP5Ku9fFIqXn
+	ZgdU=
+X-Google-Smtp-Source: AGHT+IEL+zvm6Pa+DO1Fnyj+R5YFcjNFtCXH/bW/rjNfe9qMH6I9WeUJgnkT/5fLkDBtWeqN43Q0Rg==
+X-Received: by 2002:a17:903:1b4d:b0:234:8eeb:d809 with SMTP id d9443c01a7336-2364ca62bc0mr42902035ad.43.1749714553790;
+        Thu, 12 Jun 2025 00:49:13 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:5b9:e73a:2e58:5a47])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2364e63d42esm7893295ad.74.2025.06.12.00.49.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 12 Jun 2025 00:49:13 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Jiaxin Yu <jiaxin.yu@mediatek.com>,
+	linux-sound@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v3 0/9] ASoC: mediatek: use reserved memory or enable buffer pre-allocation
+Date: Thu, 12 Jun 2025 15:48:51 +0800
+Message-ID: <20250612074901.4023253-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.50.0.rc1.591.g9c95f17f64-goog
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250612_002303_441534_2019E2D0 
-X-CRM114-Status: GOOD (  26.70  )
+X-CRM114-CacheID: sfid-20250612_004915_141480_B60E87B5 
+X-CRM114-Status: GOOD (  23.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,215 +105,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This V2 patch provides two methods btmtk_reset_by_gpio,
-btmtk_reset_by_gpio_work for mediatek controller,
-it has been tested locally many times and can reset normally.
+Hi everyone,
 
-The pin is configured in dts files, bluetooth is reset by pulling
-the pin, when exception or coredump occurs, the above methods will
-be used to reset the bluetooth, if the pin is not found, it also can
-reset bluetooth successfully by software reset.
+This is v3 of what was just a single patch "ASoC: mediatek: re-enable
+buffer pre-allocation on some platforms". Links to previous versions:
 
-Compared with the previously submitted version, the following
-information has been revised in version V2
-1)-Changed the capitalization of co-developer names,
-   using the correct capitalization of abbreviations and full
-   name, and corrected obvious spelling errors.
-2)-Add a revision history.
-3)-Remove the "BT Driver" in the prefix.
-4)-Add the bt-binding document, include inforamtion related to reset
-   pin and compatibility matching.
-5)-Add a comment before the schedule_delayed_work function call,
-   although schedule_delayed_work is asynchronous, there is no risk.
-   Even if it is not completed within 200ms, it will only postpone
-   the subsequent probe and will not have any impact.
-6-)Add a comment before the btmtk_reset_by_gpio function call,
-   if the compatibility filed or pin cannot be found in the dts
-   files, it can still reset bluetooth using software reset.
+  - v2: https://lore.kernel.org/all/20250424102509.1083185-1-wenst@chromium.org/
+  - v1: https://lore.kernel.org/all/20250401085659.1222008-1-wenst@chromium.org/
 
-Co-developed-by Hao Qin <hao.qin@mediatek.com>
-Co-developed-Chris Lu <chris.lu@mediatek.com>
-Co-developed-Jiande Lu <jiande.lu@mediatek.com>
-Signed-off-by: Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>
----
- .../bluetooth/mediatek,mt7925-bluetooth.yaml  | 54 +++++++++++++++
- drivers/bluetooth/btmtk.c                     | 69 +++++++++++++++++++
- drivers/bluetooth/btmtk.h                     |  5 ++
- 3 files changed, 128 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7925-bluetooth.yaml
+v3 is simply a rebase onto next-20250612 to resolve conflicts against
+Mark's tree. I believe the main conflict is from my other series
+"mt8183-afe-pcm: Shorten source code" that Mark had merged earlier.
+Also, Angelo picked up the DT changes, so they are no longer included.
 
-diff --git a/Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7925-bluetooth.yaml b/Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7925-bluetooth.yaml
-new file mode 100644
-index 000000000000..bcdb46effdba
---- /dev/null
-+++ b/Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7925-bluetooth.yaml
-@@ -0,0 +1,54 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/net/bluetooth/mediatek,mt7925-bluetooth.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek MT7925 Bluetooth
-+
-+maintainers:
-+  - Zhangchao Zhang <zhangchao.zhang@mediatek.com>
-+
-+description:
-+  7925 uses the USB bus to communicate with the host.
-+  Two methods are used to reset Bluetooth.
-+  When Bluetooth crashes or core dumps,
-+  the pin will be pulled low, then held for 200ms,
-+  and then pulled high again before next probe.
-+
-+allOf:
-+  - $ref: bluetooth-controller.yaml#
-+
-+properties:
-+  compatible:
-+    enum:
-+      - mediatek,mt7925-bluetooth
-+
-+  reg:
-+    const: 2
-+
-+  reset-gpios:
-+    maxItems: 1
-+    description:
-+      An active-high reset pin for the Bluetooth core;
-+required:
-+  - compatible
-+  - reg
-+
-+unevaluatedProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/gpio/gpio.h>
-+
-+    &xhci0 {
-+      vbus-supply = <&pp5000_usb>;
-+      usb2-lpm-disable;
-+
-+      status = "okay";
-+
-+      bt_reset: bt-reset{
-+        compatible = "mediatek,usb-bluetooth";
-+        reset-gpios = <&pio 248 GPIO_ACTIVE_HIGH>;
-+      };
-+    };
-\ No newline at end of file
-diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-index 4390fd571dbd..3e5f3ca6f0d5 100644
---- a/drivers/bluetooth/btmtk.c
-+++ b/drivers/bluetooth/btmtk.c
-@@ -6,6 +6,8 @@
- #include <linux/firmware.h>
- #include <linux/usb.h>
- #include <linux/iopoll.h>
-+#include <linux/of.h>
-+#include <linux/of_gpio.h>
- #include <linux/unaligned.h>
- 
- #include <net/bluetooth/bluetooth.h>
-@@ -109,6 +111,65 @@ static void btmtk_coredump_notify(struct hci_dev *hdev, int state)
- 	}
- }
- 
-+static void btmtk_reset_by_gpio_work(struct work_struct *work)
-+{
-+	struct btmtk_reset_gpio *reset_gpio_data =
-+			container_of(work, struct btmtk_reset_gpio, reset_work.work);
-+
-+	gpio_direction_output(reset_gpio_data->gpio_number, 1);
-+	kfree(reset_gpio_data);
-+}
-+
-+static int btmtk_reset_by_gpio(struct hci_dev *hdev)
-+{
-+	struct btmtk_data *data = hci_get_priv(hdev);
-+	struct btmtk_reset_gpio *reset_gpio_data;
-+	struct device_node *node;
-+	int reset_gpio_number;
-+
-+	node = of_find_compatible_node(NULL, NULL, "mediatek,usb-bluetooth");
-+	if (node) {
-+		reset_gpio_number = of_get_named_gpio(node, "reset-gpios", 0);
-+		if (!gpio_is_valid(reset_gpio_number)) {
-+			bt_dev_warn(hdev, "invalid reset GPIO, use software reset");
-+			return -EINVAL;
-+		}
-+	} else {
-+		bt_dev_warn(hdev, "no reset GPIO, use software reset");
-+		return -ENODEV;
-+	}
-+
-+	/* Toggle the hard reset line. The Mediatek device is going to
-+	 * yank itself off the USB and then replug. The cleanup is handled
-+	 * correctly on the way out (standard USB disconnect), and the new
-+	 * device is detected cleanly and bound to the driver again like
-+	 * it should be.
-+	 */
-+
-+	if (test_and_set_bit(BTMTK_HW_RESET_ACTIVE, &data->flags)) {
-+		bt_dev_err(hdev, "last reset failed? Not resetting again");
-+		return 0;
-+	}
-+
-+	reset_gpio_data = kzalloc(sizeof(*reset_gpio_data), GFP_KERNEL);
-+	if (!reset_gpio_data)
-+		return -ENOMEM;
-+
-+	INIT_DELAYED_WORK(&reset_gpio_data->reset_work, btmtk_reset_by_gpio_work);
-+	reset_gpio_data->gpio_number = reset_gpio_number;
-+
-+	gpio_direction_output(reset_gpio_number, 0);
-+
-+	/* It requires 200ms for mtk bt chip to do reset,
-+	 * although Schedule_delayed_work is asynchronous,
-+	 * it is risk-free. If it is not completed in 200ms,
-+	 * it will only postpone the next probe, which will
-+	 * only make the probe run later. There is no other risk.
-+	 */
-+	schedule_delayed_work(&reset_gpio_data->reset_work, msecs_to_jiffies(200));
-+	return 0;
-+}
-+
- void btmtk_fw_get_filename(char *buf, size_t size, u32 dev_id, u32 fw_ver,
- 			   u32 fw_flavor)
- {
-@@ -364,6 +425,14 @@ void btmtk_reset_sync(struct hci_dev *hdev)
- 	struct btmtk_data *reset_work = hci_get_priv(hdev);
- 	int err;
- 
-+	/* Toggle reset gpio if the platform provieds one,
-+	 * if the compatibility field or pin cannot be found
-+	 * in the dts files, it can still reset bluetooth using
-+	 * software reset.
-+	 */
-+	err = btmtk_reset_by_gpio(hdev);
-+	if (!err)
-+		return;
- 	hci_dev_lock(hdev);
- 
- 	err = hci_cmd_sync_queue(hdev, reset_work->reset_sync, NULL, NULL);
-diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
-index 5df7c3296624..8a265ce367d1 100644
---- a/drivers/bluetooth/btmtk.h
-+++ b/drivers/bluetooth/btmtk.h
-@@ -179,6 +179,11 @@ struct btmtk_data {
- 	spinlock_t isorxlock;
- };
- 
-+struct btmtk_reset_gpio {
-+	struct delayed_work reset_work;
-+	int gpio_number;
-+};
-+
- typedef int (*wmt_cmd_sync_func_t)(struct hci_dev *,
- 				   struct btmtk_hci_wmt_params *);
- 
+
+Original cover letter:
+
+Angelo requested that these platforms use reserved memory regions if
+possible, and fall back to pre-allocated buffers only if that fails,
+to align with other MediaTek SoCs / platforms that already use reserved
+memory. The series covers MediaTek's MT8173, MT8183, MT8186, and MT8192
+SoCs.
+
+There are three parts to the series:
+
+- Part one (patches 1 through 5) update the DT bindings to allow having
+  a memory region. The text binding for the MT8173 was converted to YAML
+  and also aligned with current usage by addition of a power domain.
+
+  Note that the MT8183 text binding was _not_ converted. It is
+  drastically different from what was landed in the device trees. Some
+  time is needed to work out the differences. I might try to recombine
+  the audio clocks (which are actually part of the same hardware block)
+  as well.
+
+- Part two (patches 6 through 9) update the audio frontend drivers for
+  the various platforms covered in this series.
+
+  - Patch 6 is the evolution of version 1, now defaulting to reserved
+    memory if possible.
+
+  - Patch 7 adds support for >32 bit DMA addresses to the MT8183 driver.
+    This was missing, and prevents the memory regions, which are
+    allocated from the top end of main memory by default, from working.
+
+  - Patch 8 and 9 are just some minor cleanups to reduce the number of
+    "&pdev->dev" style dereferences. They are placed after the other
+    changes to make it easier for the fixes to be backported.
+
+- Part three (patches 10 through 13) add a reserved memory region for
+  the audio frontend on the various platforms. (This part is queued up
+  and therefore not included in v3.)
+
+  For the MT8173, the change covers the whole platform. In practice
+  there are only ChromeOS devices.
+
+  For the other platforms, only the ChromeOS devices are covered. These
+  are what I have available for testing.
+
+
+Please have a look. I assume the DT binding and driver changes will go
+through the ASoC tree, while the device tree changes will go through the
+MediaTek tree.
+
+
+Thanks
+ChenYu
+
+
+Chen-Yu Tsai (9):
+  ASoC: dt-bindings: Convert MT8173 AFE binding to dt-schema
+  ASoC: dt-bindings: mt8173-afe-pcm: Add power domain
+  ASoC: dt-bindings: mt8173-afe-pcm: Allow specifying reserved memory
+    region
+  ASoC: dt-bindings: mt8186-afe-pcm: Allow specifying reserved memory
+    region
+  ASoC: dt-bindings: mt8192-afe-pcm: Allow specifying reserved memory
+    region
+  ASoC: mediatek: use reserved memory or enable buffer pre-allocation
+  ASoC: mediatek: mt8183-afe-pcm: Support >32 bit DMA addresses
+  ASoC: mediatek: mt8173-afe-pcm: use local `dev` pointer in driver
+    callbacks
+  ASoC: mediatek: mt8183-afe-pcm: use local `dev` pointer in driver
+    callbacks
+
+ .../sound/mediatek,mt8173-afe-pcm.yaml        | 98 +++++++++++++++++++
+ .../bindings/sound/mt8186-afe-pcm.yaml        |  5 +
+ .../bindings/sound/mt8192-afe-pcm.yaml        |  5 +
+ .../devicetree/bindings/sound/mtk-afe-pcm.txt | 45 ---------
+ .../mediatek/common/mtk-afe-platform-driver.c |  4 +-
+ sound/soc/mediatek/common/mtk-base-afe.h      |  1 +
+ sound/soc/mediatek/mt8173/mt8173-afe-pcm.c    | 66 +++++++------
+ sound/soc/mediatek/mt8183/mt8183-afe-pcm.c    | 56 +++++++----
+ sound/soc/mediatek/mt8186/mt8186-afe-pcm.c    |  7 ++
+ sound/soc/mediatek/mt8192/mt8192-afe-pcm.c    |  7 ++
+ 10 files changed, 200 insertions(+), 94 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8173-afe-pcm.yaml
+ delete mode 100644 Documentation/devicetree/bindings/sound/mtk-afe-pcm.txt
+
 -- 
-2.46.0
+2.50.0.rc1.591.g9c95f17f64-goog
 
 
