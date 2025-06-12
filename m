@@ -4,77 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46F9BC61CE8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jun 2025 19:46:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3D56C71150
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jun 2025 20:54:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XPNH0zAjZMtcy8SGc/xpsdQgVSTCk0Ndsxo7h4JpeKM=; b=j71UIsR/u/HzzVrPbWE5qXaB7R
-	8mS0SOYMyy9oXdriDKbwo6WZdF67MkI/Q5qjD+nF8Meuss9myYns25imFO36f8wB5IWGf1v8wPyzq
-	2gH+twJOkn+XY03WEzLi66r6vThF0eBKqlU3Nzh3e3DdVvpHMdoXw3UlMNnqrkISkn9NyqlPZPfHW
-	PKA01z4JecX5rBXMVWWHyJkLayJN7JKq0OpeyJAl8Ge3nq4p/444dZWFkN/B2/L0vFc5tvjwmADQj
-	tOnOc2REhpQz+msOMBQGq0mHjraljYcG4dTIwo/M1p0q0kq8GSw3TsAbwKWaFsAiZDNgohd5mSne8
-	lWoxWQKw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=KUIfLwvoP44U5nDfSmqojpW++w9cxu2WaXPKkzeIK40=; b=yKx60Xd1VHhKQ+42kNw/4/pE+L
+	TccZvhzj5i0eVVwHKUkLeJTiMeRu2yQ4HYRrdexvPivXPWxT9N98M/mdvE2Z6MQ4lNNJdX6qzxyi/
+	9f8b4W7+AlE4+6lX2piqZeVVzrrGXMBwqA0eB7FSEVZdE5biNqPW1BqD5CB+dBiCW14rWcCQMC3EG
+	v+EBuImugfC0lzatb3oTiWS/MFpdVgx85x8Of/H10awCcCYoL41oSHON6xrOdsprq+FVO4EbDxyS/
+	Y23T+nI5fb9ewo4lZPnjZA9Dyu/YT2sS66fWlfxsHPyOBMTu/Nad6AcCCkO1bWeS/kI5r7Dj5qIwc
+	ClcZdmHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPnsT-0000000EMMr-155w;
-	Thu, 12 Jun 2025 19:46:21 +0000
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
+	id 1uPowS-0000000EXKw-1b36;
+	Thu, 12 Jun 2025 20:54:32 +0000
+Received: from sender4-op-o15.zoho.com ([136.143.188.15])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPkX5-0000000Dufr-2Ck7;
-	Thu, 12 Jun 2025 16:12:04 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1749744714; cv=none; 
+	id 1uPiPw-0000000DXbj-2aOv;
+	Thu, 12 Jun 2025 13:56:33 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1749736578; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=jYPHD2l/zJ3su6lP130DojZirFBDkFLTji72xBSpawIGXXSV0wFpaMNKWRMDmmR8Wmo50DQ7Tk5Gq6RpqVOLlxat9lVr+zgjRSDHVxnvqCFGVhbMZQ9Ra4BEICpgJ5PG7EDxcnlXoZKo9xdGM7K3ziH+DN9papVdBjCRluyMJmA=
+	b=Z9Q6LpwOskFzXu7qFIqDahCinDV85umIMp0V5V90dF7bGYa5NYV89EM6WS0OwHQqd4/Uv2GrLuC17jCqKWGsiS3DgT6YHgWlkx0nVLYDPAGFWkjHJgF1egrIEVsnPr+yAxCQm6AkbkBgWNKa4ARXHPstwsiFDVRpeo62daoIcjA=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1749744714; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=XPNH0zAjZMtcy8SGc/xpsdQgVSTCk0Ndsxo7h4JpeKM=; 
-	b=OSh2Z/sDsqOZAp7xuCJ+573tzsP+7lPgY4NPwO8XnPar3qp/eBU2VsvUU8zxI/PoCSsC88hvL9dX4f3G7XmDw86eRhXCvqr1p2kXrxDVTX326+Jz+YJAV9+zghnB8zRd0dUasP7ioQnf8B19WjWZaxQpfGtRbzHOiwoxJynsmxg=
+	t=1749736578; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=KUIfLwvoP44U5nDfSmqojpW++w9cxu2WaXPKkzeIK40=; 
+	b=i68huo5HXEszm0XtLDeI3hap5XBQ0TEjonhcTuFAHwLyctmv+zfAdxJP4AYyOPd8EytdSiiU+3o/mbGHoDKTg5IKe0tEmkpcVlco54i1d6deoZqw1NQjgQnM6VIICB5TrmIq5V89n7yuMrsDQX3jW3TUWT/GhE2Med+bYTb+2/w=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=icenowy.me;
 	spf=pass  smtp.mailfrom=uwu@icenowy.me;
 	dmarc=pass header.from=<uwu@icenowy.me>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749744714;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749736578;
 	s=zmail2; d=icenowy.me; i=uwu@icenowy.me;
-	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=XPNH0zAjZMtcy8SGc/xpsdQgVSTCk0Ndsxo7h4JpeKM=;
-	b=NJEQMW0mjJ12hH2ZMehzEujJty2xY1lQrqfDkqNkHU2U8AefwxzhYV+k7eVTNNtj
-	2isSFGEPiKmWmIIM7wCNir4iLLdCJDE4o4V3tD3prgRY0emHCaHB/TY1X693Q/hQ2Br
-	R7I3nUCO462tINGcxM+GLG20jVI8057Wrm6eiwybw3OwQhtYCtApfLwB9q/LuDOx6or
-	9oQj16gey48His7rPPPj0nT7JbIhFA0Wfb//uNyalcmmb1VwEf++h9Eshg17FDd9m/v
-	YefU75tH9NqS4Ih71G5MAUmxxE24POffc8efJsKtdJieERz1EPF+y7qksMIYNbOupc5
-	v1ea2+ouYg==
-Received: by mx.zohomail.com with SMTPS id 1749744711397806.3789973608574;
-	Thu, 12 Jun 2025 09:11:51 -0700 (PDT)
-Message-ID: <8a1312fbafe65b3fbd2ed7a1fb9f618654fc5d59.camel@icenowy.me>
-Subject: Re: [PATCH 1/2] dt-bindings: arm: mediatek: add mt8173-hana rev2
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=KUIfLwvoP44U5nDfSmqojpW++w9cxu2WaXPKkzeIK40=;
+	b=cB79ZboY1lFL9af6mnwgT0N6Y0FcjVW7L4hsO0ita2ELplHFr9csDJsspMYpZ+wM
+	iXN1J/COAX88HG2r91O8+liDKQ6izRy+6ZX5HT6MKqoixIRZP/0CbfNrk5lnI7DeQbd
+	TBdTShZFNU85CZzECc15JWt2HEJ50Peaeil1iaVjkeBp1k8SD5taNTsYM0mU8Wz0QF+
+	7hzKXd4o8bVxpr13ffHrBOSFy6Jw4cREKjzEXFUfwM5e9h8BwKqt6gUhnuKsPW1XfbR
+	b0bg3k2M5B1ZX0UVvHPM698VsCqcF5tzp4MCl/VVL5Z+bAJsfgNJZ0UHYrKPqwM39nb
+	VWTuVDzl5A==
+Received: by mx.zohomail.com with SMTPS id 174973657610749.98040995348208;
+	Thu, 12 Jun 2025 06:56:16 -0700 (PDT)
 From: Icenowy Zheng <uwu@icenowy.me>
-To: Conor Dooley <conor@kernel.org>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-  Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, 
- =?gb2312?Q?Rafa=810=920_Mi=810=920ecki?= <rafal@milecki.pl>, Chen-Yu Tsai
- <wenst@chromium.org>, Sean Wang <sean.wang@mediatek.com>,
- devicetree@vger.kernel.org,  linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,  linux-mediatek@lists.infradead.org
-Date: Fri, 13 Jun 2025 00:11:44 +0800
-In-Reply-To: <20250612-scholar-crown-517f28582edf@spud>
-References: <20250612135559.2601139-1-uwu@icenowy.me>
-	 <20250612-scholar-crown-517f28582edf@spud>
-Organization: Anthon Open-Source Community
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.44.4 
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Sean Wang <sean.wang@mediatek.com>
+Cc: devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Icenowy Zheng <uwu@icenowy.me>
+Subject: [PATCH 1/2] dt-bindings: arm: mediatek: add mt8173-hana rev2
+Date: Thu, 12 Jun 2025 21:55:58 +0800
+Message-ID: <20250612135559.2601139-1-uwu@icenowy.me>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-ZohoMailClient: External
-X-ZohoMail-Owner: <8a1312fbafe65b3fbd2ed7a1fb9f618654fc5d59.camel@icenowy.me>+zmo_0_
+X-ZohoMail-Owner: <20250612135559.2601139-1-uwu@icenowy.me>+zmo_0_
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250612_091203_629933_69E43954 
-X-CRM114-Status: GOOD (  17.01  )
+X-CRM114-CacheID: sfid-20250612_065632_693421_7D91A308 
+X-CRM114-Status: UNSURE (   9.04  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,56 +89,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-=E5=9C=A8 2025-06-12=E6=98=9F=E6=9C=9F=E5=9B=9B=E7=9A=84 16:34 +0100=EF=BC=
-=8CConor Dooley=E5=86=99=E9=81=93=EF=BC=9A
-> On Thu, Jun 12, 2025 at 09:55:58PM +0800, Icenowy Zheng wrote:
-> > My Lenovo Flex 11 Chromebook contains a board with revision ID 2.
-> >=20
-> > Add rev2 to the compatible list of base hana DTB to allow
-> > depthcharge to
-> > match the DTB.
-> >=20
-> > Signed-off-by: Icenowy Zheng <uwu@icenowy.me>
-> > ---
-> > =C2=A0Documentation/devicetree/bindings/arm/mediatek.yaml | 1 +
-> > =C2=A01 file changed, 1 insertion(+)
-> >=20
-> > diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml
-> > b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> > index 108ae5e0185d9..7d13547ff57ba 100644
-> > --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-> > +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> > @@ -132,6 +132,7 @@ properties:
-> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: g=
-oogle,hana-rev5
-> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: g=
-oogle,hana-rev4
-> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: g=
-oogle,hana-rev3
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: google=
-,hana-rev2
->=20
-> Ordinarily I would complain about inserting a compatible like this
-> being a problem, but these chromebooks are all cocked up so w/e
-> Acked-by: Conor Dooley <conor.dooley@microchip.com>
+My Lenovo Flex 11 Chromebook contains a board with revision ID 2.
 
-Yes, the DepthCharge bootloader seems to have some different
-understanding of root node's compatible -- it just generates
-"google,${device}{-rev${rev},}{-sku${sku},}" and match them in the DT's
-to get the most compatible DT.
+Add rev2 to the compatible list of base hana DTB to allow depthcharge to
+match the DTB.
 
-BTW I checked the Chromium OS hana DT, it lists down to rev0, but what
-I get is just rev2, so I just added rev2.
+Signed-off-by: Icenowy Zheng <uwu@icenowy.me>
+---
+ Documentation/devicetree/bindings/arm/mediatek.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
->=20
-> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: g=
-oogle,hana
-> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: m=
-ediatek,mt8173
-> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - description: Google Hana rev7 (P=
-oin2 Chromebook 11C)
-> > --=20
-> > 2.49.0
-> >=20
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+index 108ae5e0185d9..7d13547ff57ba 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+@@ -132,6 +132,7 @@ properties:
+           - const: google,hana-rev5
+           - const: google,hana-rev4
+           - const: google,hana-rev3
++          - const: google,hana-rev2
+           - const: google,hana
+           - const: mediatek,mt8173
+       - description: Google Hana rev7 (Poin2 Chromebook 11C)
+-- 
+2.49.0
 
 
