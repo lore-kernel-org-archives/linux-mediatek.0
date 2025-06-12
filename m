@@ -4,63 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF1ADC71136
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jun 2025 19:44:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF7BAC71149
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jun 2025 19:45:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nSawF9ebc78ryHIqklO5r3z28OGmxw8RdjKALoXzVZQ=; b=Z14nt4ZUdL5qxs2Ij7d5pPE2rX
-	ccB3H9AqHHHtQxFjAikjMK10lhexHuEMythmeTgTLJp+xWSYzqfwAt7041H6GNOLsvv81fXvjAFn9
-	o9QLZYNUot3jL3h5qoPEoSDM+4uDAeDQCGbyf/HCSkaWFHIXVsjv4QIaqHeCtH4nMQwCQa0+0dtoJ
-	1LbaThfdFix1wtealut1oH4MJZnxjWSLJXwjWqDY7gmf62s9bCDqkCNSfFYYHCYLh/xDj/yAn1yXo
-	SXvh8iyGJpJHkGiYkdL8B0E9P+cmo7cFpKPkESFWMviagReKi5+O6q4ucN5SspWHn6kYR8g+XW2Ax
-	gvEq8QYw==;
+	bh=quVk5JjWgkRkZ11iWAF6diO/aBB5OEX8KIhW0ikR74U=; b=lYBC3Voy0wSSD9fJLqLUKqfmXu
+	SKwvR1HIeMXcV0ql8ToG6Etx+y1tMhjcNCNnHJmn0cQfMkgUZ3ywSaT/OVbqh+Vj6eSrB5vXs7nl6
+	FyVSESjLXCV/h0xwcbNFSB0MqnHxaBff7p8cRhjZEo5IpVPmqkDbCJRKdIE3QD0mMwBkPMehX3dW7
+	BQXztwN9zZjWvr/OMAt/ODMwszzCvQU/1bVJ2viexjTR8APnk+Un/3Gl1xdEoHdv43I+toGHrnMEW
+	I5ogOvT93VAWJo7inJJwkbQ+sc+AqC5MaoFn380H9f8FZ8Y9ZWdy/sBoZgCyCp3R1ciiPlReRFaIk
+	vXiHlxVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPnr4-0000000EJuA-11TI;
-	Thu, 12 Jun 2025 19:44:54 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uPns3-0000000ELRN-1Pfj;
+	Thu, 12 Jun 2025 19:45:55 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPjwk-0000000Dntz-17t8;
-	Thu, 12 Jun 2025 15:34:30 +0000
+	id 1uPkJM-0000000DsZ4-37TT;
+	Thu, 12 Jun 2025 15:57:53 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 4D4986113B;
-	Thu, 12 Jun 2025 15:34:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 797ACC4CEEA;
-	Thu, 12 Jun 2025 15:34:26 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 20F864A749;
+	Thu, 12 Jun 2025 15:57:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A9176C4CEEB;
+	Thu, 12 Jun 2025 15:57:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1749742468;
-	bh=WvdhfgNJT5v5cFAw5+htw1gcZlt/xJmT2/R10D/S/u4=;
+	s=k20201202; t=1749743872;
+	bh=quVk5JjWgkRkZ11iWAF6diO/aBB5OEX8KIhW0ikR74U=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=sHCXl8OM0W3Li5mbXc8STHlocqBbXXzomS0PWwgJWbz9cPCa54iJ2BC06tl1CtSSD
-	 o9DSbjNJbGQfrRPz7e/uZiNZllbuyP4YtV7NsDuUMzv56drJTilCdRnnEFmTB40vp5
-	 lvClEDILxGEBM6Q6n6kMN1sBtbvz6dnslKdPM193Zth8kHhv9XvOINgAdVdjlZ2WPC
-	 79K0gR+Lbgh0HEbQYC994/TP0yWkoA/iEr7w9JSQJAFCR6AFiPUYE9l4Z3qHpahe/1
-	 RDhCm4kvzNw9ZGUItpYK6VDaTBN04njeKSdtFYA8aNiY9okUmbkSmBEg0OeoKOmvWJ
-	 zeJYrFQ3IqPKw==
-Date: Thu, 12 Jun 2025 16:34:24 +0100
+	b=lY5L++jNiGKZFHLvrIdSVlmT8ec/OoFT2VgLRb4kvmfn6z3ivgarmCRmHT225XG0H
+	 +WVNP4PFdTkTu6uiu/RKlji7vceibTVZR4tHmMBybJxkWIgZkmGv4AZ8C2YcjfClB+
+	 Qg2omQZxTJVZ7HSnojxqcxm7Oe+nNO8+B3ba95bX5CYNShBMjs9d+bn4120LG96AN5
+	 ITpOGd+nY2CXLukS1ny3jbVxkRurvctoubsdfwmbURzjFAgsphG2HhDGPi5g3XgXdP
+	 pkVDtXOXA2azY0TnyzjAMtxLkCgb37T/edvRcV7jc1G4JJ36pXKpHBWjQBnRk7Uqeh
+	 BNcxyensoO5KA==
+Date: Thu, 12 Jun 2025 16:57:46 +0100
 From: Conor Dooley <conor@kernel.org>
-To: Icenowy Zheng <uwu@icenowy.me>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/2] dt-bindings: arm: mediatek: add mt8173-hana rev2
-Message-ID: <20250612-scholar-crown-517f28582edf@spud>
-References: <20250612135559.2601139-1-uwu@icenowy.me>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org, qii.wang@mediatek.com,
+	andi.shyti@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
+	conor+dt@kernel.org, matthias.bgg@gmail.com,
+	gregkh@linuxfoundation.org, jirislaby@kernel.org,
+	daniel.lezcano@linaro.org, tglx@linutronix.de,
+	linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org,
+	kernel@collabora.com
+Subject: Re: [PATCH 3/3] dt-bindings: i2c: i2c-mt65xx: Add MediaTek
+ MT8196/6991 compatibles
+Message-ID: <20250612-create-bucktooth-0dea6929bed1@spud>
+References: <20250611110800.458164-1-angelogioacchino.delregno@collabora.com>
+ <20250611110800.458164-4-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="rBD6QiyAktVQ2uJs"
+	protocol="application/pgp-signature"; boundary="6t7S44HeCwXqkkfW"
 Content-Disposition: inline
-In-Reply-To: <20250612135559.2601139-1-uwu@icenowy.me>
+In-Reply-To: <20250611110800.458164-4-angelogioacchino.delregno@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250612_085752_798053_6F83F776 
+X-CRM114-Status: UNSURE (   9.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,54 +82,33 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---rBD6QiyAktVQ2uJs
+--6t7S44HeCwXqkkfW
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, Jun 12, 2025 at 09:55:58PM +0800, Icenowy Zheng wrote:
-> My Lenovo Flex 11 Chromebook contains a board with revision ID 2.
+On Wed, Jun 11, 2025 at 01:08:00PM +0200, AngeloGioacchino Del Regno wrote:
+> Add support for the MediaTek MT8196 Chromebook SoC and for its
+> close relative, the MediaTek Dimensity 9400 MT6991 SoC.
 >=20
-> Add rev2 to the compatible list of base hana DTB to allow depthcharge to
-> match the DTB.
+> Those chips' multiple I2C controller instances are compatible with
+> the ones found in the MT8188 SoC.
 >=20
-> Signed-off-by: Icenowy Zheng <uwu@icenowy.me>
-> ---
->  Documentation/devicetree/bindings/arm/mediatek.yaml | 1 +
->  1 file changed, 1 insertion(+)
->=20
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Docume=
-ntation/devicetree/bindings/arm/mediatek.yaml
-> index 108ae5e0185d9..7d13547ff57ba 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> @@ -132,6 +132,7 @@ properties:
->            - const: google,hana-rev5
->            - const: google,hana-rev4
->            - const: google,hana-rev3
-> +          - const: google,hana-rev2
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
 
-Ordinarily I would complain about inserting a compatible like this
-being a problem, but these chromebooks are all cocked up so w/e
 Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
->            - const: google,hana
->            - const: mediatek,mt8173
->        - description: Google Hana rev7 (Poin2 Chromebook 11C)
-> --=20
-> 2.49.0
->=20
-
---rBD6QiyAktVQ2uJs
+--6t7S44HeCwXqkkfW
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaErzgAAKCRB4tDGHoIJi
-0q7hAP4+dlT8mJ7UwIKnCYl2qYuKoPNuL652IQfNk/cSnsBByQEAxsWxRVNvWavo
-iouK9N1MJK5viXIHp3ANj69LAdfTdwk=
-=vB56
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaEr4+gAKCRB4tDGHoIJi
+0pOIAP9dL66U4toAAvm8pG50O/bEelGajn9QL/aWOT4gmCa1GgD/Wd7HHHH9Coio
+pcRVjnIjZI3dQVcXsuqT+DvShe7jhwU=
+=MOtr
 -----END PGP SIGNATURE-----
 
---rBD6QiyAktVQ2uJs--
+--6t7S44HeCwXqkkfW--
 
