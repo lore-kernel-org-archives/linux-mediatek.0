@@ -4,96 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99DB1C71141
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jun 2025 08:35:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 568E2C61CE8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jun 2025 08:53:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ddcn6csaeeV+h8a6qan45mbc5QA320UytwqG7KT7p5k=; b=jBCX+DLmYyNXjp1IH2uT2gOLO7
-	GUIoD+TlZySSe5uzq+kyvliFFIYRMHs0JBRd38rOdWAGgJAPRPWMUk9mI+Mc/tGKb+QBt33X8+kLS
-	E5qp1dOFBnARYX3InmGi0nn/mJ92a7Cbgv8UbykWgqyxq00rtVhEWNtOK7PmR6hyza2681x8ZnIUH
-	DGp1pRcWA63yIu94qWPfaUMwFOMTQs92jf3zAsxP6lZfaAFgc+sQcbce4rt/VM+u75rImI3Vie2uk
-	7U6biQtN5KcPG9+vGmnrNA1/m09TX4V8Q+f7BbkLnr7wIBZKXtjtfb8d4EV7/ssyO2qbvyAlWZUa+
-	Wf74NroA==;
+	bh=ZI8BuCOhmrQMKkyPdYydzBOlFsDJ8s+83/76WhtzU28=; b=y9e8KkObIdDO+srEKdIgeRZ1Gh
+	rCNJpRjHCoyJjX58yPh74OQX2EvLYedFFCyM9GTRoAB4qaTNkiOQXcDeiBYDe5DfYjU6bLkWmaQVz
+	rtNgxWwTKEblkRWYEAyFEfSWaKFYKSy8JHLGgR/RALBFhvdM2PIWzhw2mriT3uzz4EgEZIVTcTUjx
+	16rGmth/16gPqaJBMuBzxS1oTAO2pUER/H1Kl89X5Ag5r0q5YbMbKba7P7dpghvQMEJ8EqcyJt/qj
+	aCQagObdsdnxsSa0hvpX28JbVC4rqj99zH8Pv/9QVEhftILxJmEtWlFXBhBCg5qGg6BTlhuv546dL
+	qsX6owkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPdPP-0000000Cdvo-2PgJ;
-	Thu, 12 Jun 2025 08:35:39 +0000
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+	id 1uPdgN-0000000CinZ-1Fus;
+	Thu, 12 Jun 2025 08:53:11 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPcgw-0000000CVYc-2b9g
-	for linux-mediatek@lists.infradead.org;
-	Thu, 12 Jun 2025 07:49:44 +0000
-Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-2363497cc4dso5941295ad.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 12 Jun 2025 00:49:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1749714582; x=1750319382; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ddcn6csaeeV+h8a6qan45mbc5QA320UytwqG7KT7p5k=;
-        b=dJYQcL12mbcyZkEPvs253FZqfu28bSF/FwCZssCY1kB/tnFNnJhmdocxH8egUE4pix
-         k9dkp9IGiYwNDdFQklGTOuHUJNLTAMwa8yP79qc2FPF8xrUOsRKH2F/pOR7oqzGlx4P0
-         wsoFLvheqpk7OqmTAbLKxX6W+ZOBcd+S8MeQI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749714582; x=1750319382;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ddcn6csaeeV+h8a6qan45mbc5QA320UytwqG7KT7p5k=;
-        b=cv6eFgpIr3iIePSkK5OreEhcEH/Gw6UTr43EzF84Vp9nj/mIrij79jx3CFNkkJogHg
-         ebPQQT12bsqUkpg7s5YQVbZ8pjgtNKcjeFQw1MnBOdFVQS+R+2ZrSxQqNKTkHo622Boz
-         giHLCOVsDe0Z5WstCjuYcauHy+t6Efvb1J4pdUIidsWN0JMf09Cry317Z9T+ZPtzHGOQ
-         ti/VecTzVCNpMyHU3JD5VZm9Pu1Mgxs4FYcZHCEOjd6PAFk/yfEbqdmT7Mcclny8Im1W
-         cB3EMZBUP94+QZRFLRAzJl+OA2MveKVrhVvPr3lUNW4QbGLWUNDImBJDGAAkCmr99Buu
-         04SA==
-X-Forwarded-Encrypted: i=1; AJvYcCWuaPJZ67dUfPdeobvqNucx1g1Fw/oFdVjIh3C0Sb5WlxC+c61nz+3LrinE7dBY3iVkVDoaZiOE+OItfwhRLQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YymjxISPUs0zrWLPiEZdVL72MSnobiWh0GuWI7ta4ZQKIf7kKHu
-	sCePvh5ttwmriCSnC0JeCQuQw7yfvs4Uit7CCphC6z83xzPJRm28+rB+uaJp2RAZnA==
-X-Gm-Gg: ASbGncuZUc/gB7Oo87Rf7IdnGqV67w/b0G0WMUouR/gv3R7XxGk6OiBt+hmzO1IrqDl
-	K9O+JRkcIylVUbmq676E4U4zhbWJ/HNCwfRyUuDKhQs0geAoTHRLMh4sTms3oMRAzzEfeqlIa3R
-	jjYUQ6MqhaIQEa7ByoXG3AbqE4u/40i2MHenCRFLx0GLjI63kPwzStBu+I42AN38gEEaR4znFya
-	N4ylqCE1XkhIyQ3CqkIZPu1oZGeX/k8084sYAoFcJngEN7V8QJOehQ8oBzjaquDID5Jb4Ks9GkT
-	OZRi7WfRWwcSzx69l6YiulSToz+4ALh0nfDrVHe9T1G5hvEC7P20g4EkkQLrJqBr6pxB72/mRxL
-	7/iE=
-X-Google-Smtp-Source: AGHT+IGBp6g9KafxxLhpwpCbKXrP6FojB0bp0d+xTc5kKarZApwn/2KeJhM/CNXIUtiGxu8HhD0Ecw==
-X-Received: by 2002:a17:902:f684:b0:234:b41e:37a2 with SMTP id d9443c01a7336-23641aa223amr95318655ad.11.1749714581947;
-        Thu, 12 Jun 2025 00:49:41 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2401:fa00:1:10:5b9:e73a:2e58:5a47])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2364e63d42esm7893295ad.74.2025.06.12.00.49.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Jun 2025 00:49:41 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Jiaxin Yu <jiaxin.yu@mediatek.com>,
-	linux-sound@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v3 9/9] ASoC: mediatek: mt8183-afe-pcm: use local `dev` pointer in driver callbacks
-Date: Thu, 12 Jun 2025 15:49:00 +0800
-Message-ID: <20250612074901.4023253-10-wenst@chromium.org>
-X-Mailer: git-send-email 2.50.0.rc1.591.g9c95f17f64-goog
-In-Reply-To: <20250612074901.4023253-1-wenst@chromium.org>
-References: <20250612074901.4023253-1-wenst@chromium.org>
+	id 1uPd2b-0000000CZMT-0OVP;
+	Thu, 12 Jun 2025 08:12:06 +0000
+Received: from [192.168.88.20] (91-158-153-178.elisa-laajakaista.fi [91.158.153.178])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 868E8D6;
+	Thu, 12 Jun 2025 10:11:52 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1749715913;
+	bh=8WwmhFtL9eosA22O6PZS8QonHwy8kOwjvtU9HLAd/Mk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=s1CohyRjx44OEVAmWk98stT2zZMSlbEy73AVELxdX2h5KRmV+rS1QwaBu+QfSA1qN
+	 OhCbnI7kO8KcLMT7lrLn06Uhsf9CiF7Vs4jlCz3vlMPk6QDjNsDY5H17EEyIiwIUrs
+	 /1X9kTXxoJNFavlSTwvk0QOIm9p0Cnp4fXSH0SQ4=
+Message-ID: <e2545be1-583d-4ad7-8a17-b2ee157f82d7@ideasonboard.com>
+Date: Thu, 12 Jun 2025 11:11:57 +0300
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 01/25] drm/dumb-buffers: Sanitize output on errors
+To: Thomas Zimmermann <tzimmermann@suse.de>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
+ imx@lists.linux.dev, linux-samsung-soc@vger.kernel.org,
+ nouveau@lists.freedesktop.org, virtualization@lists.linux.dev,
+ spice-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
+ intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org,
+ simona@ffwll.ch, airlied@gmail.com, mripard@kernel.org,
+ maarten.lankhorst@linux.intel.com, geert@linux-m68k.org
+References: <20250311155120.442633-1-tzimmermann@suse.de>
+ <20250311155120.442633-2-tzimmermann@suse.de>
+Content-Language: en-US
+From: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+Autocrypt: addr=tomi.valkeinen@ideasonboard.com; keydata=
+ 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
+In-Reply-To: <20250311155120.442633-2-tzimmermann@suse.de>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250612_004942_658823_013D7C8E 
-X-CRM114-Status: GOOD (  17.67  )
+X-CRM114-CacheID: sfid-20250612_011205_278561_F3CC0280 
+X-CRM114-Status: GOOD (  17.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,136 +118,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The probe and remove functions in the mt8183-afe-pcm driver repeatedly uses
-`&pdev->dev` for |struct device *|, but then assigns this value to
-`afe->dev` and uses that in other places in the same function.
+Hi,
 
-Store `&pdev->dev` in a local pointer and use that exclusively to avoid
-the numerous dereferences and to make the code more consistent. Lines
-are reflowed where it makes sense.
+On 11/03/2025 17:47, Thomas Zimmermann wrote:
+> The ioctls MODE_CREATE_DUMB and MODE_MAP_DUMB return results into a
+> memory buffer supplied by user space. On errors, it is possible that
+> intermediate values are being returned. The exact semantics depends
+> on the DRM driver's implementation of these ioctls. Although this is
+> most-likely not a security problem in practice, avoid any uncertainty
+> by clearing the memory to 0 on errors.
+> 
+> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+> ---
+>  drivers/gpu/drm/drm_dumb_buffers.c | 40 ++++++++++++++++++++++--------
+>  1 file changed, 29 insertions(+), 11 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/drm_dumb_buffers.c b/drivers/gpu/drm/drm_dumb_buffers.c
+> index 70032bba1c97..9916aaf5b3f2 100644
+> --- a/drivers/gpu/drm/drm_dumb_buffers.c
+> +++ b/drivers/gpu/drm/drm_dumb_buffers.c
+> @@ -99,7 +99,30 @@ int drm_mode_create_dumb(struct drm_device *dev,
+>  int drm_mode_create_dumb_ioctl(struct drm_device *dev,
+>  			       void *data, struct drm_file *file_priv)
+>  {
+> -	return drm_mode_create_dumb(dev, data, file_priv);
+> +	struct drm_mode_create_dumb *args = data;
+> +	int err;
+> +
+> +	err = drm_mode_create_dumb(dev, args, file_priv);
+> +	if (err) {
+> +		args->handle = 0;
+> +		args->pitch = 0;
+> +		args->size = 0;
+> +	}
+> +	return err;
+> +}
+> +
+> +static int drm_mode_mmap_dumb(struct drm_device *dev, struct drm_mode_map_dumb *args,
+> +			      struct drm_file *file_priv)
+> +{
+> +	if (!dev->driver->dumb_create)
+> +		return -ENOSYS;
+> +
+> +	if (dev->driver->dumb_map_offset)
+> +		return dev->driver->dumb_map_offset(file_priv, dev, args->handle,
+> +						    &args->offset);
+> +	else
+> +		return drm_gem_dumb_map_offset(file_priv, dev, args->handle,
+> +					       &args->offset);
+>  }
+>  
+>  /**
+> @@ -120,17 +143,12 @@ int drm_mode_mmap_dumb_ioctl(struct drm_device *dev,
+>  			     void *data, struct drm_file *file_priv)
+>  {
+>  	struct drm_mode_map_dumb *args = data;
+> +	int err;
+>  
+> -	if (!dev->driver->dumb_create)
+> -		return -ENOSYS;
+> -
+> -	if (dev->driver->dumb_map_offset)
+> -		return dev->driver->dumb_map_offset(file_priv, dev,
+> -						    args->handle,
+> -						    &args->offset);
+> -	else
+> -		return drm_gem_dumb_map_offset(file_priv, dev, args->handle,
+> -					       &args->offset);
+> +	err = drm_mode_mmap_dumb(dev, args, file_priv);
+> +	if (err)
+> +		args->offset = 0;
+> +	return err;
+>  }
+>  
+>  int drm_mode_destroy_dumb(struct drm_device *dev, u32 handle,
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
- sound/soc/mediatek/mt8183/mt8183-afe-pcm.c | 37 ++++++++++------------
- 1 file changed, 17 insertions(+), 20 deletions(-)
+Reviewed-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
 
-diff --git a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
-index 7383184097a4..a7fef772760a 100644
---- a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
-+++ b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
-@@ -770,27 +770,25 @@ static int mt8183_afe_pcm_dev_probe(struct platform_device *pdev)
- {
- 	struct mtk_base_afe *afe;
- 	struct mt8183_afe_private *afe_priv;
--	struct device *dev;
-+	struct device *dev = &pdev->dev;
- 	struct reset_control *rstc;
- 	int i, irq_id, ret;
- 
--	ret = dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(34));
-+	ret = dma_set_mask_and_coherent(dev, DMA_BIT_MASK(34));
- 	if (ret)
- 		return ret;
- 
--	afe = devm_kzalloc(&pdev->dev, sizeof(*afe), GFP_KERNEL);
-+	afe = devm_kzalloc(dev, sizeof(*afe), GFP_KERNEL);
- 	if (!afe)
- 		return -ENOMEM;
- 	platform_set_drvdata(pdev, afe);
- 
--	afe->platform_priv = devm_kzalloc(&pdev->dev, sizeof(*afe_priv),
--					  GFP_KERNEL);
-+	afe->platform_priv = devm_kzalloc(dev, sizeof(*afe_priv), GFP_KERNEL);
- 	if (!afe->platform_priv)
- 		return -ENOMEM;
- 
- 	afe_priv = afe->platform_priv;
--	afe->dev = &pdev->dev;
--	dev = afe->dev;
-+	afe->dev = dev;
- 
- 	ret = of_reserved_mem_device_init(dev);
- 	if (ret) {
-@@ -835,7 +833,7 @@ static int mt8183_afe_pcm_dev_probe(struct platform_device *pdev)
- 
- 	/* enable clock for regcache get default value from hw */
- 	afe_priv->pm_runtime_bypass_reg_ctl = true;
--	pm_runtime_get_sync(&pdev->dev);
-+	pm_runtime_get_sync(dev);
- 
- 	ret = regmap_reinit_cache(afe->regmap, &mt8183_afe_regmap_config);
- 	if (ret) {
-@@ -843,7 +841,7 @@ static int mt8183_afe_pcm_dev_probe(struct platform_device *pdev)
- 		goto err_pm_disable;
- 	}
- 
--	pm_runtime_put_sync(&pdev->dev);
-+	pm_runtime_put_sync(dev);
- 	afe_priv->pm_runtime_bypass_reg_ctl = false;
- 
- 	regcache_cache_only(afe->regmap, true);
-@@ -901,7 +899,7 @@ static int mt8183_afe_pcm_dev_probe(struct platform_device *pdev)
- 	for (i = 0; i < ARRAY_SIZE(dai_register_cbs); i++) {
- 		ret = dai_register_cbs[i](afe);
- 		if (ret) {
--			dev_warn(afe->dev, "dai register i %d fail, ret %d\n",
-+			dev_warn(dev, "dai register i %d fail, ret %d\n",
- 				 i, ret);
- 			goto err_pm_disable;
- 		}
-@@ -910,8 +908,7 @@ static int mt8183_afe_pcm_dev_probe(struct platform_device *pdev)
- 	/* init dai_driver and component_driver */
- 	ret = mtk_afe_combine_sub_dai(afe);
- 	if (ret) {
--		dev_warn(afe->dev, "mtk_afe_combine_sub_dai fail, ret %d\n",
--			 ret);
-+		dev_warn(dev, "mtk_afe_combine_sub_dai fail, ret %d\n", ret);
- 		goto err_pm_disable;
- 	}
- 
-@@ -923,16 +920,14 @@ static int mt8183_afe_pcm_dev_probe(struct platform_device *pdev)
- 	afe->runtime_suspend = mt8183_afe_runtime_suspend;
- 
- 	/* register component */
--	ret = devm_snd_soc_register_component(&pdev->dev,
--					      &mtk_afe_pcm_platform,
-+	ret = devm_snd_soc_register_component(dev, &mtk_afe_pcm_platform,
- 					      NULL, 0);
- 	if (ret) {
- 		dev_warn(dev, "err_platform\n");
- 		goto err_pm_disable;
- 	}
- 
--	ret = devm_snd_soc_register_component(afe->dev,
--					      &mt8183_afe_pcm_dai_component,
-+	ret = devm_snd_soc_register_component(dev, &mt8183_afe_pcm_dai_component,
- 					      afe->dai_drivers,
- 					      afe->num_dai_drivers);
- 	if (ret) {
-@@ -943,15 +938,17 @@ static int mt8183_afe_pcm_dev_probe(struct platform_device *pdev)
- 	return ret;
- 
- err_pm_disable:
--	pm_runtime_disable(&pdev->dev);
-+	pm_runtime_disable(dev);
- 	return ret;
- }
- 
- static void mt8183_afe_pcm_dev_remove(struct platform_device *pdev)
- {
--	pm_runtime_disable(&pdev->dev);
--	if (!pm_runtime_status_suspended(&pdev->dev))
--		mt8183_afe_runtime_suspend(&pdev->dev);
-+	struct device *dev = &pdev->dev;
-+
-+	pm_runtime_disable(dev);
-+	if (!pm_runtime_status_suspended(dev))
-+		mt8183_afe_runtime_suspend(dev);
- }
- 
- static const struct of_device_id mt8183_afe_pcm_dt_match[] = {
--- 
-2.50.0.rc1.591.g9c95f17f64-goog
+ Tomi
 
 
