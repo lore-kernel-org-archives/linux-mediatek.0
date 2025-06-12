@@ -4,78 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E124C71149
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jun 2025 19:43:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF1ADC71136
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jun 2025 19:44:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xe+/CWthc6ot+OCxKsW3fGV6MDdG1CZZweZmpwlQwl8=; b=sD+yU1UmxdT7DOMMEj0AFrTwYw
-	dYNYbxn6DogUnPmOpVGTN8zLTBU1+4JGrCJ9KdqV9LbUPrYrJ+l98y56kLL2rzhOEMeT1bJzNh4t5
-	871J54jYsZn7u20Y0QqoWn/mIILyY9pP9wojf6FXt5/lfxZcIsFQWuL7funkTwOD4iFRK4F6QJi2u
-	X4knrLyYuHv5ZxQbASLY9edpCAWzVWKZPH5Fu1EA0irf8trh/afgfPG/oQaUswiYgiOBrPJZFU1iH
-	G9k9F1MA8XcWQOznQXcOpSWdpzqbi8SZ8mOIWeYLRTQkgwyjg0nTqEr7hTxur9shrvyhV6wtvrjtV
-	oTOEiKdA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nSawF9ebc78ryHIqklO5r3z28OGmxw8RdjKALoXzVZQ=; b=Z14nt4ZUdL5qxs2Ij7d5pPE2rX
+	ccB3H9AqHHHtQxFjAikjMK10lhexHuEMythmeTgTLJp+xWSYzqfwAt7041H6GNOLsvv81fXvjAFn9
+	o9QLZYNUot3jL3h5qoPEoSDM+4uDAeDQCGbyf/HCSkaWFHIXVsjv4QIaqHeCtH4nMQwCQa0+0dtoJ
+	1LbaThfdFix1wtealut1oH4MJZnxjWSLJXwjWqDY7gmf62s9bCDqkCNSfFYYHCYLh/xDj/yAn1yXo
+	SXvh8iyGJpJHkGiYkdL8B0E9P+cmo7cFpKPkESFWMviagReKi5+O6q4ucN5SspWHn6kYR8g+XW2Ax
+	gvEq8QYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPnpA-0000000EGxT-2UeW;
-	Thu, 12 Jun 2025 19:42:56 +0000
-Received: from sender4-op-o15.zoho.com ([136.143.188.15])
+	id 1uPnr4-0000000EJuA-11TI;
+	Thu, 12 Jun 2025 19:44:54 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPiQ5-0000000DXfD-1re6;
-	Thu, 12 Jun 2025 13:56:42 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1749736586; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=lvR1fq3NchjreiyUiIeLyfUSl3q2G2RoAlsQESjIc53+9OOmdW49NG0QOCklpaAxkpzOf+O3J5TOvuWFybfEplwcaG6SlWktPmVS4TBXLl1CE+CNBIWgpw+JPMzHAHvrgK3MAmVcgjWwsLQjgM1OiYYRK5Yzn18WQBKTwVWeYRY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1749736586; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=Xe+/CWthc6ot+OCxKsW3fGV6MDdG1CZZweZmpwlQwl8=; 
-	b=UDb8x8KAEskyKoSz1q1Mjj674Y9Rt4VlIoYO9Btoo4sS28yUQqBfQK7bS5IbuU518aeieAFSnj+TDZqkC9cgxYZZSvCSmghmOHXVmgKQJMWTPv+DDBO/oEGe4QqVIqZePNHuSv8DtRWGH0koTxGY2nAaixJwK5J2UjvLaqR9j/4=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=icenowy.me;
-	spf=pass  smtp.mailfrom=uwu@icenowy.me;
-	dmarc=pass header.from=<uwu@icenowy.me>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1749736586;
-	s=zmail2; d=icenowy.me; i=uwu@icenowy.me;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=Xe+/CWthc6ot+OCxKsW3fGV6MDdG1CZZweZmpwlQwl8=;
-	b=n8+WYuf92DJ5Lm1peHwH0i8dXZkNIOPgt6STqoXZn6bE31CoXzRJ7aDTt1IPiUfh
-	XEjSZx+S0IZMuy5sEy/SA0Ayo2YBiyF/OSXxBVCrX+L6rMKOiyXcJF0k+rFEmYjLIvn
-	5gyhXvQ81zaLxlmvGB/DqrM1LDnuGFFfTwq9TvyjZn32JvK1bv1xeaoMuwh2dnchIPO
-	tzuQGpMYbgc2ttKjYPZsz5dvWbyK1lvofXwv/tFR5IOhFwwxJv1lqD+FwFJDt27KfX0
-	GYrwEKtAQvYBc4LsXL0BBDQZ4y5dpMAJYjJmW46HmjVRr/t43nrfjeHjWv9lVTvViGF
-	1pKHyolYxQ==
-Received: by mx.zohomail.com with SMTPS id 1749736583346329.0335267878131;
-	Thu, 12 Jun 2025 06:56:23 -0700 (PDT)
-From: Icenowy Zheng <uwu@icenowy.me>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	id 1uPjwk-0000000Dntz-17t8;
+	Thu, 12 Jun 2025 15:34:30 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 4D4986113B;
+	Thu, 12 Jun 2025 15:34:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 797ACC4CEEA;
+	Thu, 12 Jun 2025 15:34:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1749742468;
+	bh=WvdhfgNJT5v5cFAw5+htw1gcZlt/xJmT2/R10D/S/u4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=sHCXl8OM0W3Li5mbXc8STHlocqBbXXzomS0PWwgJWbz9cPCa54iJ2BC06tl1CtSSD
+	 o9DSbjNJbGQfrRPz7e/uZiNZllbuyP4YtV7NsDuUMzv56drJTilCdRnnEFmTB40vp5
+	 lvClEDILxGEBM6Q6n6kMN1sBtbvz6dnslKdPM193Zth8kHhv9XvOINgAdVdjlZ2WPC
+	 79K0gR+Lbgh0HEbQYC994/TP0yWkoA/iEr7w9JSQJAFCR6AFiPUYE9l4Z3qHpahe/1
+	 RDhCm4kvzNw9ZGUItpYK6VDaTBN04njeKSdtFYA8aNiY9okUmbkSmBEg0OeoKOmvWJ
+	 zeJYrFQ3IqPKw==
+Date: Thu, 12 Jun 2025 16:34:24 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Icenowy Zheng <uwu@icenowy.me>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>,
+	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>,
 	Chen-Yu Tsai <wenst@chromium.org>,
-	Sean Wang <sean.wang@mediatek.com>
-Cc: devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Icenowy Zheng <uwu@icenowy.me>
-Subject: [PATCH 2/2] arm64: dts: mediatek: mt8173: add hana revision 2
-Date: Thu, 12 Jun 2025 21:55:59 +0800
-Message-ID: <20250612135559.2601139-2-uwu@icenowy.me>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250612135559.2601139-1-uwu@icenowy.me>
+	Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/2] dt-bindings: arm: mediatek: add mt8173-hana rev2
+Message-ID: <20250612-scholar-crown-517f28582edf@spud>
 References: <20250612135559.2601139-1-uwu@icenowy.me>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
-X-ZohoMail-Owner: <20250612135559.2601139-2-uwu@icenowy.me>+zmo_0_
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250612_065641_548763_92DA10FC 
-X-CRM114-Status: GOOD (  11.33  )
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="rBD6QiyAktVQ2uJs"
+Content-Disposition: inline
+In-Reply-To: <20250612135559.2601139-1-uwu@icenowy.me>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,31 +75,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The current mt8173-elm-hana.dts file only contains compatible strings
-for revision 3~6, makes boards with revision 0~2 to fail to match a
-revision-specific DTS and may fall back to the rev7 one (which lacks
-some gpio-keys).
 
-As I've got a Lenovo Flex 11 Chromebook with board revision 2, add it to
-the base hana DTB file.
+--rBD6QiyAktVQ2uJs
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Icenowy Zheng <uwu@icenowy.me>
----
- arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On Thu, Jun 12, 2025 at 09:55:58PM +0800, Icenowy Zheng wrote:
+> My Lenovo Flex 11 Chromebook contains a board with revision ID 2.
+>=20
+> Add rev2 to the compatible list of base hana DTB to allow depthcharge to
+> match the DTB.
+>=20
+> Signed-off-by: Icenowy Zheng <uwu@icenowy.me>
+> ---
+>  Documentation/devicetree/bindings/arm/mediatek.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+>=20
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Docume=
+ntation/devicetree/bindings/arm/mediatek.yaml
+> index 108ae5e0185d9..7d13547ff57ba 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
+> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> @@ -132,6 +132,7 @@ properties:
+>            - const: google,hana-rev5
+>            - const: google,hana-rev4
+>            - const: google,hana-rev3
+> +          - const: google,hana-rev2
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dts b/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dts
-index fcf0cb76a87c3..84638a07587f3 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dts
-@@ -11,5 +11,5 @@ / {
- 	chassis-type = "laptop";
- 	compatible = "google,hana-rev6", "google,hana-rev5",
- 		     "google,hana-rev4", "google,hana-rev3",
--		     "google,hana", "mediatek,mt8173";
-+		     "google,hana-rev2", "google,hana", "mediatek,mt8173";
- };
--- 
-2.49.0
+Ordinarily I would complain about inserting a compatible like this
+being a problem, but these chromebooks are all cocked up so w/e
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
+>            - const: google,hana
+>            - const: mediatek,mt8173
+>        - description: Google Hana rev7 (Poin2 Chromebook 11C)
+> --=20
+> 2.49.0
+>=20
+
+--rBD6QiyAktVQ2uJs
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaErzgAAKCRB4tDGHoIJi
+0q7hAP4+dlT8mJ7UwIKnCYl2qYuKoPNuL652IQfNk/cSnsBByQEAxsWxRVNvWavo
+iouK9N1MJK5viXIHp3ANj69LAdfTdwk=
+=vB56
+-----END PGP SIGNATURE-----
+
+--rBD6QiyAktVQ2uJs--
 
