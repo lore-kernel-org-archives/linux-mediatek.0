@@ -4,77 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58E4EC61CE8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jun 2025 13:19:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3835DC71143
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jun 2025 13:19:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:CC:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tq3Oh7MkG0Ecu2ZMpO6AlQlRHoiNU+CrpvlZyRxRlNc=; b=fpX2micbJm8tEw5e5YDZAxKlAf
-	iNydPXjzwha4C7s+mDPOr0UoCYdcIah1ljQYlGNTsSI7htJTl3uQYmQEBTrv49NzG4sfXW0NRdDuY
-	REt+hUag+x53KkTMJlXAJPAT1Vn2hM0C4u6YPIhgTXM4GWZQxBhVnaU0eRgQQ4YkYnYZ7CdMACsmb
-	JUx2qgh4f96CgUFO9kbTLUerFJpr0MtTPQKBlBecVox728hinlKrwavR9mmV0YOvCiIrA1p2Xzqji
-	csblERu0xuRNV/fbHF4Uvrv09x+oCRfqzytcGdGjLpnTFTCV6cD5QlutRqDoptMhUXETPCq8ckxpE
-	HRUKAJ/w==;
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=lFHYqoHj11Pf7C9Bg1GN9jEeWSJy3J0EFTOrzRw6uz8=; b=TtknB+XiM7DShSSSmnczfYndwB
+	/3Sw0mw4YQTktIWaxzhMnXes1B22TAaI9bH4c5gOHYmH+Ldl+gFpr6+iuitZTBLLq4gor9VehBTfI
+	C9pDdpyLnvO0nPsiM3VW9HqCtEY9R6oofmciDOluSGfxFpgAcVMHEG6fug9AvDak/OlRxmNO7hFEp
+	CicX4hEHUl/nfC1I4nrGu7i38sQh8zkrHRQPWVSE8X0yLRlSnbRlgqcjjEyrWcGexkHgoEb58fmga
+	2bxQKYbCI23JX/p4kPr47UzyFDpQUXkyg4gdV8yafbP2yvD0osEKSxhpxHZO3o3LN3HAmJfuOmi7u
+	Iw1YfIMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPhpj-0000000DMmh-0DRI;
-	Thu, 12 Jun 2025 13:19:07 +0000
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+	id 1uPhq4-0000000DNSg-3UTT;
+	Thu, 12 Jun 2025 13:19:28 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPfRn-0000000D2Wo-0N7A;
-	Thu, 12 Jun 2025 10:46:17 +0000
-Received: from mail.maildlp.com (unknown [172.18.186.31])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4bHzbl64zPz6L54g;
-	Thu, 12 Jun 2025 18:41:39 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
-	by mail.maildlp.com (Postfix) with ESMTPS id 1B8241402A5;
-	Thu, 12 Jun 2025 18:46:01 +0800 (CST)
-Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
- (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Thu, 12 Jun
- 2025 12:45:59 +0200
-Date: Thu, 12 Jun 2025 11:45:57 +0100
-From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-To: Pavel Machek <pavel@ucw.cz>
-CC: David Lechner <dlechner@baylibre.com>, Michael Hennerich
-	<michael.hennerich@analog.com>, Lars-Peter Clausen <lars@metafoo.de>,
-	Jonathan Cameron <jic23@kernel.org>, Nuno =?UTF-8?Q?S=C3=A1?=
-	<nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Heiko Stuebner <heiko@sntech.de>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, "Alexandre Torgue"
-	<alexandre.torgue@foss.st.com>, Francesco Dolcini <francesco@dolcini.it>,
-	=?UTF-8?Q?Jo=C3=A3o?= Paulo =?UTF-8?Q?Gon=C3=A7al?= =?UTF-8?Q?ves?=
-	<jpaulo.silvagoncalves@gmail.com>, Leonard =?UTF-8?Q?G?=
- =?UTF-8?Q?=C3=B6hrs?= <l.goehrs@pengutronix.de>, <kernel@pengutronix.de>,
-	Oleksij Rempel <o.rempel@pengutronix.de>, Roan van Dijk <roan@protonic.nl>,
-	Tomasz Duszynski <tomasz.duszynski@octakon.com>, Jacopo Mondi
-	<jacopo@jmondi.org>, Jean-Baptiste Maneyrol <jean-baptiste.maneyrol@tdk.com>,
-	Mudit Sharma <muditsharma.info@gmail.com>, Javier Carrasco
-	<javier.carrasco.cruz@gmail.com>, =?UTF-8?Q?Ond=C5=99ej?= Jirman
-	<megi@xff.cz>, Andreas Klinger <ak@it-klinger.de>, Petre Rodan
-	<petre.rodan@subdimension.ro>, <linux-iio@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-rockchip@lists.infradead.org>,
-	<linux-stm32@st-md-mailman.stormreply.com>
-Subject: Re: [PATCH 00/28] iio: zero init stack with { } instead of memset()
-Message-ID: <20250612114557.00007628@huawei.com>
-In-Reply-To: <aEqbQPvz0FsLXt0Z@duo.ucw.cz>
-References: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
-	<aEqbQPvz0FsLXt0Z@duo.ucw.cz>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+	id 1uPg4V-0000000D8ir-3SKc;
+	Thu, 12 Jun 2025 11:26:16 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 7F52EA51C07;
+	Thu, 12 Jun 2025 11:26:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C0BFEC4CEEA;
+	Thu, 12 Jun 2025 11:26:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1749727574;
+	bh=Wr3zLVYuYfWGn+MSJ4fOyJXUCAJrNU6nB+Tbsj+k/iU=;
+	h=From:To:Cc:Subject:Date:From;
+	b=suHdLQXP65AqhZVXPaBfZJ5EJOGqG4tRoTejZ33KOs6rNHz/jZQ2DjOB1d4n6k8ac
+	 vODQ10GDg36OJ1lTqsWE/Jo+ItxEdyB71INni/2nHKasIoFbNmRUQMM091SoDAZoAl
+	 xOSwtsoGcmcB+ng0JK+fJGZCLFU/ixkrZBUds2/vpQs2baRKDAC5FLyqzFKnAhiMAV
+	 PrWRNU/1wENhvT4D7bGh93F/oraWclj2JU1tphs0tyWLUcSChs+vmuJkLR50dQ0loA
+	 Uoj0aw32ZptKrU4aNlDJNse2llCnkXH7SpvbQoiO6jlgpnAcDS0QtacOnA9DdEe718
+	 T8BEvYTjfl+rQ==
+From: "Masami Hiramatsu (Google)" <mhiramat@kernel.org>
+To: Chaotian Jing <chaotian.jing@mediatek.com>,
+	Ulf Hansson <ulf.hansson@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: mhiramat@kernel.org,
+	Tomasz Figa <tfiga@chromium.org>,
+	Sergey Senozhatsky <senozhatsky@chromium.org>,
+	linux-mmc@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] mtk-sd: Prevent memory corruption from DMA map failure
+Date: Thu, 12 Jun 2025 20:26:10 +0900
+Message-ID: <174972756982.3337526.6755001617701603082.stgit@mhiramat.tok.corp.google.com>
+X-Mailer: git-send-email 2.50.0.rc1.591.g9c95f17f64-goog
+User-Agent: StGit/0.19
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.203.177.66]
-X-ClientProxiedBy: lhrpeml100012.china.huawei.com (7.191.174.184) To
- frapeml500008.china.huawei.com (7.182.85.71)
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250612_034615_424532_F7796171 
-X-CRM114-Status: GOOD (  23.06  )
+X-CRM114-CacheID: sfid-20250612_042615_928821_39D26726 
+X-CRM114-Status: GOOD (  11.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,119 +78,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 12 Jun 2025 11:17:52 +0200
-Pavel Machek <pavel@ucw.cz> wrote:
+From: Masami Hiramatsu (Google) <mhiramat@kernel.org>
 
-> Hi!
-> 
-> > Jonathan mentioned recently that he would like to get away from using
-> > memset() to zero-initialize stack memory in the IIO subsystem. And we
-> > have it on good authority that initializing a struct or array with = { }
-> > is the preferred way to do this in the kernel [1]. So here is a series
-> > to take care of that.  
-> 
-> 1) Is it worth the churn?
-> 
-> 2) Will this fail to initialize padding with some obscure compiler?
-> 
-> 3) Why do you believe that {} is the preffered way? All we have is
-> Kees' email that explains that = {} maybe works in configs he tested.
-> 
-Pavel,
+If msdc_prepare_data() fails to map the DMA region, the request is
+not prepared for data receiving, but msdc_start_data() proceeds
+the DMA with previous setting.
+Since this will lead a memory corruption, we have to stop the
+request operation soon after the msdc_prepare_data() fails to
+prepare it.
 
-I think main thing that matters in Kees email is there is a self test
-that should fire if a compiler ever does this wrong.
+Signed-off-by: Masami Hiramatsu (Google) <mhiramat@kernel.org>
+---
+ drivers/mmc/host/mtk-sd.c |   17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
 
-Using this syntax is definitely not a 'kernel wide' preference yet
-but I do prefer to make some changes like this in IIO just because it
-reduces the amount of code that smells different when reviewing.
-Given how many drivers we now have, sadly people pick different ones
-to cut and paste from so we get a lot of new drivers that look like
-how we preferred to do things 10 years ago :(
-
-However it is a fair bit of churn. hmm.  Let's let this sit for
-a little while and see if other view points come in.
-
-Thanks 
-
-Jonathan
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index 3594010bc229..56b4999fe58f 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -834,6 +834,11 @@ static void msdc_prepare_data(struct msdc_host *host, struct mmc_data *data)
+ 	}
+ }
  
-
-> BR,
-> 								Pavel
-> 
-> > [1]:
-> > https://lore.kernel.org/linux-iio/202505090942.48EBF01B@keescook/  
-> 
-> 
-> 
-> > ---
-> > David Lechner (28):
-> >       iio: accel: adxl372: use = { } instead of memset()
-> >       iio: accel: msa311: use = { } instead of memset()
-> >       iio: adc: dln2-adc: use = { } instead of memset()
-> >       iio: adc: mt6360-adc: use = { } instead of memset()
-> >       iio: adc: rockchip_saradc: use = { } instead of memset()
-> >       iio: adc: rtq6056: use = { } instead of memset()
-> >       iio: adc: stm32-adc: use = { } instead of memset()
-> >       iio: adc: ti-ads1015: use = { } instead of memset()
-> >       iio: adc: ti-ads1119: use = { } instead of memset()
-> >       iio: adc: ti-lmp92064: use = { } instead of memset()
-> >       iio: adc: ti-tsc2046: use = { } instead of memset()
-> >       iio: chemical: scd4x: use = { } instead of memset()
-> >       iio: chemical: scd30: use = { } instead of memset()
-> >       iio: chemical: sunrise_co2: use = { } instead of memset()
-> >       iio: dac: ad3552r: use = { } instead of memset()
-> >       iio: imu: inv_icm42600: use = { } instead of memset()
-> >       iio: imu: inv_mpu6050: use = { } instead of memset()
-> >       iio: light: bh1745: use = { } instead of memset()
-> >       iio: light: ltr501: use = { } instead of memset()
-> >       iio: light: opt4060: use = { } instead of memset()
-> >       iio: light: veml6030: use = { } instead of memset()
-> >       iio: magnetometer: af8133j: use = { } instead of memset()
-> >       iio: pressure: bmp280: use = { } instead of memset()
-> >       iio: pressure: mpl3115: use = { } instead of memset()
-> >       iio: pressure: mprls0025pa: use = { } instead of memset()
-> >       iio: pressure: zpa2326: use = { } instead of memset()
-> >       iio: proximity: irsd200: use = { } instead of memset()
-> >       iio: temperature: tmp006: use = { } instead of memset()
-> > 
-> >  drivers/iio/accel/adxl372.c                       | 3 +--
-> >  drivers/iio/accel/msa311.c                        | 4 +---
-> >  drivers/iio/adc/dln2-adc.c                        | 4 +---
-> >  drivers/iio/adc/mt6360-adc.c                      | 3 +--
-> >  drivers/iio/adc/rockchip_saradc.c                 | 4 +---
-> >  drivers/iio/adc/rtq6056.c                         | 4 +---
-> >  drivers/iio/adc/stm32-adc.c                       | 3 +--
-> >  drivers/iio/adc/ti-ads1015.c                      | 4 +---
-> >  drivers/iio/adc/ti-ads1119.c                      | 4 +---
-> >  drivers/iio/adc/ti-lmp92064.c                     | 4 +---
-> >  drivers/iio/adc/ti-tsc2046.c                      | 3 +--
-> >  drivers/iio/chemical/scd30_core.c                 | 3 +--
-> >  drivers/iio/chemical/scd4x.c                      | 3 +--
-> >  drivers/iio/chemical/sunrise_co2.c                | 6 ++----
-> >  drivers/iio/dac/ad3552r.c                         | 3 +--
-> >  drivers/iio/imu/inv_icm42600/inv_icm42600_accel.c | 5 ++---
-> >  drivers/iio/imu/inv_icm42600/inv_icm42600_gyro.c  | 5 ++---
-> >  drivers/iio/imu/inv_mpu6050/inv_mpu_acpi.c        | 4 +---
-> >  drivers/iio/imu/inv_mpu6050/inv_mpu_ring.c        | 6 ++----
-> >  drivers/iio/light/bh1745.c                        | 4 +---
-> >  drivers/iio/light/ltr501.c                        | 4 +---
-> >  drivers/iio/light/opt4060.c                       | 4 +---
-> >  drivers/iio/light/veml6030.c                      | 4 +---
-> >  drivers/iio/magnetometer/af8133j.c                | 4 +---
-> >  drivers/iio/pressure/bmp280-core.c                | 5 +----
-> >  drivers/iio/pressure/mpl3115.c                    | 3 +--
-> >  drivers/iio/pressure/mprls0025pa_i2c.c            | 5 +----
-> >  drivers/iio/pressure/zpa2326.c                    | 4 +---
-> >  drivers/iio/proximity/irsd200.c                   | 3 +--
-> >  drivers/iio/temperature/tmp006.c                  | 4 +---
-> >  30 files changed, 34 insertions(+), 85 deletions(-)
-> > ---
-> > base-commit: 4c6073fec2fee4827fa0dd8a4ab4e6f7bbc05ee6
-> > change-id: 20250611-iio-zero-init-stack-with-instead-of-memset-0d12d41a7ecb
-> > 
-> > Best regards,  
-> 
++static bool msdc_data_prepared(struct mmc_data *data)
++{
++	return data->host_cookie & MSDC_PREPARE_FLAG;
++}
++
+ static void msdc_unprepare_data(struct msdc_host *host, struct mmc_data *data)
+ {
+ 	if (data->host_cookie & MSDC_ASYNC_FLAG)
+@@ -1466,8 +1471,18 @@ static void msdc_ops_request(struct mmc_host *mmc, struct mmc_request *mrq)
+ 	WARN_ON(!host->hsq_en && host->mrq);
+ 	host->mrq = mrq;
+ 
+-	if (mrq->data)
++	if (mrq->data) {
+ 		msdc_prepare_data(host, mrq->data);
++		if (!msdc_data_prepared(mrq->data)) {
++			/*
++			 * Failed to prepare DMA area, fail fast before
++			 * starting any commands.
++			 */
++			mrq->cmd->error = -ENOSPC;
++			mmc_request_done(mmc_from_priv(host), mrq);
++			return;
++		}
++	}
+ 
+ 	/* if SBC is required, we have HW option and SW option.
+ 	 * if HW option is enabled, and SBC does not have "special" flags,
 
 
