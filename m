@@ -4,105 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF976C71136
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jun 2025 07:12:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1158C61CE8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Jun 2025 07:54:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b7Pe4DM9eAzA6gWze+y1vzNSKpfWbxNREYiER4q37Ko=; b=MzAplNoOPoJLSYuDISyjAKxpzO
-	YbvSOKIE9svuOJDRWKKrCF2Dy0tocv7SlH6hfRpCe88VHS3Fi0hwz1qiGpgdis/IZBV/pjyM9Vgaq
-	VSYLKy3g+KVBUI65gAKr+0miffYXojHDZGdvbx0Jm/7A2dp3mhF9CQNfvAjRUYEs+DREuTFxU9YsR
-	eUX3VLsWRGt2BqEmSfCkrYCSTz9dbKUS376SX3QxnggAlgobOJMXG/ptLe2uu/2aCdVe8zQZoPQY+
-	kopJFt2E4kOhkXviZDWQz3RTDkxUpunwZ7UGcX/xqjGBBhYZXXZmA20/egjBLZLyomPPSMPKejLSE
-	e31xwu0g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=nsUuIaqnM98AXc3sk5GAF68VDIKR4aTmuSKr+dEPhZ8=; b=WrAm5tMb9uBjVn29yP39Rssn5a
+	cDH64E8kDBx88Pa+1ru4KDrAnXCn8OZEk1SpzK+7FllqFQHbNSYYl2i8ZZ14eagWg4RquXKkHDAAH
+	876PtGe1jd9wHojYMuFhHuoAOIA8m7PZC1g9VlVwdgbCq1o40ugYsJM+NHnnjcaDAoy4qPCkL4qnq
+	EeDLEm8s+pHeKNsZnP3MGVSKeWzhzuB0AuQAFQtcyDiohcHCU64ZfW7hLCg9VeLN+QPE+Ni55cN/s
+	fUkOkXNJrhOdogdtbcIoko1JiyN10s2/5ysoScgvjaz82+gBPt+ka58D8HRxKies4Nel0hvhIpGkh
+	0CVS6TMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPc6k-0000000CP5t-36MH;
-	Thu, 12 Jun 2025 07:12:18 +0000
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+	id 1uPclh-0000000CWQM-1OKw;
+	Thu, 12 Jun 2025 07:54:37 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPc3A-0000000COrm-1QVP;
-	Thu, 12 Jun 2025 07:08:37 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-3a54700a46eso498067f8f.1;
-        Thu, 12 Jun 2025 00:08:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1749712114; x=1750316914; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=b7Pe4DM9eAzA6gWze+y1vzNSKpfWbxNREYiER4q37Ko=;
-        b=jAHTnYuyBYkNGU3pzvKki6cXB43LpielXJOn1qoeL1Ema3OS4IiGj9M/zcfabitlbb
-         95Wa6BS7IVOVBls7vnf359j3b+PWWAmfkvxF9Hc5jyz8H5SoUdnpTEzckh4DjyfpuM8U
-         TzqvatDEjj1/XfGzPw74mTk2Hf98JSEGeN6s+fE6Hw8f9z4nGDqLTeMGpJofHiUXTA3G
-         nIcpHUALWi3l2KHvAFkKXixRqpP85ziqrkvpwmZqYKZD3tTg7PbC/nVonSHwFh9w1UGv
-         bMtmSToqldXGBzj69gca/J7stRzMVcMZxT2UUdbA7KUUtuLhLxFY2RokhQoZnLS4jytK
-         aY7A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1749712114; x=1750316914;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=b7Pe4DM9eAzA6gWze+y1vzNSKpfWbxNREYiER4q37Ko=;
-        b=AkgMBrcStMs23u/Sa0Hem6I7AgPaxSWfLArLhVeIdg6Fb+Kst2JGq4/c9XRP10UWQK
-         5zwWMHAqdGD4pArI5bSXK3MOD8Pu54NPgr7uNcT61zCT4iYEvTNYAIuwtz9DEXIJ4J6z
-         98GjpyRCu2QQONTSIUZ+8e/qxGlsR5Xq72/bseUxMeGSgbcckkqZx1LfHkn9a2QhSqs9
-         9AhycfNG/6/aGDzgw2j3+Nl4139dYX6alMSe5jDkUZcY0/Nh4UuBxutga+GKsPISee0c
-         t1cvd6faC+wUEor+JXN87cY1etK8UW+OhA652QOlo5FUtRqaPPUysCwjpZTNBXl3D9ep
-         Lgew==
-X-Forwarded-Encrypted: i=1; AJvYcCUD+NtGe/EwPOAwGH4rf/vV2uaYyWbx7wmojF5DtWvKkd8aEyWbS1RdGF7TZzAa1ntv1HTFfStBU4y8dWRQDNo=@lists.infradead.org, AJvYcCVue88it5DJQtM2vMCB3XshX9MQ3SXCTb+xlATOVUdx/jQCzlqlsvYeI/KkOr0fFRDgAkretEDtK9J8Lvey9owE@lists.infradead.org, AJvYcCW0rnCsXx13ES5R5ic1+dKBBZw5fDBN+fbmP5s5nI11/UE7SCxCsh+xrPectsDVdvoF7BCbR5Q9mMaP9LPY6CE=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwX6OghDwjdH8cu3O0mqynK16rOb1x1mtB7pD4dl0Y84AJDO97r
-	eDEbzp5DCIHLC76OmCqVnyrc7rzgiERkQfeDXBo1COVIZ70OhaZ1PDBu
-X-Gm-Gg: ASbGncvUuZ0sGguW8ltzVcWQ5x7Plh8PcORHFQXEzOzuEOE5C0ue0+/SOBZgIarTEwh
-	HL1cKf5bQxqWyJOD0nr6ZL4EYPxwgEU/umHCVt8+6H7C23ZJDbfUanQGgj+aaoAT5kIHqTKrII9
-	bjYI7oov22RPgtm1rFfhQa/K9ZlBj0VH/n5YT1TSlT1q+/XbQ65R8xZZ/cKgP7ZZ/TifJ/izLdc
-	3jZ6iA7Fwu6cgbAsCQNNjQJEBm32MDbTKcK5rnVEXMeOlpd1lEfQOxKhS1/WswG5crLewPxaPO4
-	yz3u71uGh0Z+taR+E9/xVE0ag1HqOCyh0EYi9qMzgMw4tBb236MbKm+t6ccavs1c9p26i82PgBW
-	AFTwVs1VtIcDDnfErNvT8k+S4/ZwI980UFgh8
-X-Google-Smtp-Source: AGHT+IH9n/flMKLj/FWiSLfeeJnfPQDem5Xx/NLRMy+P0OfNN55bI6kHEInXGrhWHgDzIYMLSN833A==
-X-Received: by 2002:a05:6000:2087:b0:3a5:52cc:346e with SMTP id ffacd0b85a97d-3a55868917fmr4618896f8f.6.1749712114059;
-        Thu, 12 Jun 2025 00:08:34 -0700 (PDT)
-Received: from ?IPv6:2001:818:ea56:d000:56e0:ceba:7da4:6673? ([2001:818:ea56:d000:56e0:ceba:7da4:6673])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a56199b337sm1101091f8f.37.2025.06.12.00.08.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Jun 2025 00:08:33 -0700 (PDT)
-Message-ID: <82d707b22803e2b363a2e0aa0bcf30bc1522f269.camel@gmail.com>
-Subject: Re: [PATCH 00/28] iio: zero init stack with { } instead of memset()
-From: Nuno =?ISO-8859-1?Q?S=E1?= <noname.nuno@gmail.com>
-To: David Lechner <dlechner@baylibre.com>, Michael Hennerich
- <michael.hennerich@analog.com>, Lars-Peter Clausen <lars@metafoo.de>, 
- Jonathan Cameron <jic23@kernel.org>, Nuno =?ISO-8859-1?Q?S=E1?=
- <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Heiko Stuebner
- <heiko@sntech.de>,  Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre
- Torgue <alexandre.torgue@foss.st.com>, Francesco Dolcini
- <francesco@dolcini.it>, =?ISO-8859-1?Q?Jo=E3o?= Paulo
- =?ISO-8859-1?Q?Gon=E7alves?= <jpaulo.silvagoncalves@gmail.com>, Leonard
- =?ISO-8859-1?Q?G=F6hrs?= <l.goehrs@pengutronix.de>,  kernel@pengutronix.de,
- Oleksij Rempel <o.rempel@pengutronix.de>, Roan van Dijk <roan@protonic.nl>,
- Tomasz Duszynski <tomasz.duszynski@octakon.com>, Jacopo Mondi
- <jacopo@jmondi.org>, Jean-Baptiste Maneyrol
- <jean-baptiste.maneyrol@tdk.com>, Mudit Sharma
- <muditsharma.info@gmail.com>, Javier Carrasco
- <javier.carrasco.cruz@gmail.com>,  =?UTF-8?Q?Ond=C5=99ej?= Jirman
- <megi@xff.cz>, Andreas Klinger <ak@it-klinger.de>, Petre Rodan
- <petre.rodan@subdimension.ro>
-Cc: linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
-Date: Thu, 12 Jun 2025 07:09:04 +0100
-In-Reply-To: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
-References: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: base64
-User-Agent: Evolution 3.52.4 (3.52.4-2.fc40) 
+	id 1uPcH9-0000000CR6Q-1dff
+	for linux-mediatek@lists.infradead.org;
+	Thu, 12 Jun 2025 07:23:04 +0000
+X-UUID: 10a14148475e11f09eb0dd999d3936bf-20250612
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=nsUuIaqnM98AXc3sk5GAF68VDIKR4aTmuSKr+dEPhZ8=;
+	b=BsABS+42ewliRqlZjkm0YslDK6H59m1Fb2NFb+63lreKfH0qTYCMsxyTX1o6ymI7Qn8L6jWLkmOJw3VbilQRddFZUFxet+LBvDZKOrEug2o4Zb/Rpz+G8A4fE0Yh0pLlPjVGm5GLZzldLms0e0sBi7M8Pv5r9z4hqQrGShS1+qs=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.3,REQID:691df753-57ae-4dbe-8862-2cb244afaff4,IP:0,UR
+	L:25,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:20
+X-CID-META: VersionHash:09905cf,CLOUDID:68889a58-abad-4ac2-9923-3af0a8a9a079,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:11|97|99|83|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
+	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 10a14148475e11f09eb0dd999d3936bf-20250612
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <ot_zhangchao.zhang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1453571131; Thu, 12 Jun 2025 00:22:57 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Thu, 12 Jun 2025 15:22:54 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Thu, 12 Jun 2025 15:22:54 +0800
+From: Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Deren Wu <deren.Wu@mediatek.com>,
+	Aaron Hou <aaron.hou@mediatek.com>, Chris Lu <chris.lu@mediatek.com>, Hao Qin
+	<Hao.qin@mediatek.com>, linux-bluetooth <linux-bluetooth@vger.kernel.org>,
+	linux-kernel <linux-kernel@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Zhangchao Zhang
+	<ot_zhangchao.zhang@mediatek.com>
+Subject: [PATCH v2] Bluetooth: mediatek: add gpio pin to reset bt
+Date: Thu, 12 Jun 2025 15:22:30 +0800
+Message-ID: <20250612072230.12537-1-ot_zhangchao.zhang@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250612_000836_378679_95A75108 
-X-CRM114-Status: GOOD (  12.56  )
+X-CRM114-CacheID: sfid-20250612_002303_441534_2019E2D0 
+X-CRM114-Status: GOOD (  26.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,93 +88,215 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCAyMDI1LTA2LTExIGF0IDE3OjM4IC0wNTAwLCBEYXZpZCBMZWNobmVyIHdyb3RlOgo+
-IEpvbmF0aGFuIG1lbnRpb25lZCByZWNlbnRseSB0aGF0IGhlIHdvdWxkIGxpa2UgdG8gZ2V0IGF3
-YXkgZnJvbSB1c2luZwo+IG1lbXNldCgpIHRvIHplcm8taW5pdGlhbGl6ZSBzdGFjayBtZW1vcnkg
-aW4gdGhlIElJTyBzdWJzeXN0ZW0uIEFuZCB3ZQo+IGhhdmUgaXQgb24gZ29vZCBhdXRob3JpdHkg
-dGhhdCBpbml0aWFsaXppbmcgYSBzdHJ1Y3Qgb3IgYXJyYXkgd2l0aCA9IHsgfQo+IGlzIHRoZSBw
-cmVmZXJyZWQgd2F5IHRvIGRvIHRoaXMgaW4gdGhlIGtlcm5lbCBbMV0uIFNvIGhlcmUgaXMgYSBz
-ZXJpZXMKPiB0byB0YWtlIGNhcmUgb2YgdGhhdC4KPiAKPiBbMV06IGh0dHBzOi8vbG9yZS5rZXJu
-ZWwub3JnL2xpbnV4LWlpby8yMDI1MDUwOTA5NDIuNDhFQkYwMUJAa2Vlc2Nvb2svCj4gCj4gLS0t
-CgpSZXZpZXdlZC1ieTogTnVubyBTw6EgPG51bm8uc2FAYW5hbG9nLmNvbT4KCj4gRGF2aWQgTGVj
-aG5lciAoMjgpOgo+IMKgwqDCoMKgwqAgaWlvOiBhY2NlbDogYWR4bDM3MjogdXNlID0geyB9IGlu
-c3RlYWQgb2YgbWVtc2V0KCkKPiDCoMKgwqDCoMKgIGlpbzogYWNjZWw6IG1zYTMxMTogdXNlID0g
-eyB9IGluc3RlYWQgb2YgbWVtc2V0KCkKPiDCoMKgwqDCoMKgIGlpbzogYWRjOiBkbG4yLWFkYzog
-dXNlID0geyB9IGluc3RlYWQgb2YgbWVtc2V0KCkKPiDCoMKgwqDCoMKgIGlpbzogYWRjOiBtdDYz
-NjAtYWRjOiB1c2UgPSB7IH0gaW5zdGVhZCBvZiBtZW1zZXQoKQo+IMKgwqDCoMKgwqAgaWlvOiBh
-ZGM6IHJvY2tjaGlwX3NhcmFkYzogdXNlID0geyB9IGluc3RlYWQgb2YgbWVtc2V0KCkKPiDCoMKg
-wqDCoMKgIGlpbzogYWRjOiBydHE2MDU2OiB1c2UgPSB7IH0gaW5zdGVhZCBvZiBtZW1zZXQoKQo+
-IMKgwqDCoMKgwqAgaWlvOiBhZGM6IHN0bTMyLWFkYzogdXNlID0geyB9IGluc3RlYWQgb2YgbWVt
-c2V0KCkKPiDCoMKgwqDCoMKgIGlpbzogYWRjOiB0aS1hZHMxMDE1OiB1c2UgPSB7IH0gaW5zdGVh
-ZCBvZiBtZW1zZXQoKQo+IMKgwqDCoMKgwqAgaWlvOiBhZGM6IHRpLWFkczExMTk6IHVzZSA9IHsg
-fSBpbnN0ZWFkIG9mIG1lbXNldCgpCj4gwqDCoMKgwqDCoCBpaW86IGFkYzogdGktbG1wOTIwNjQ6
-IHVzZSA9IHsgfSBpbnN0ZWFkIG9mIG1lbXNldCgpCj4gwqDCoMKgwqDCoCBpaW86IGFkYzogdGkt
-dHNjMjA0NjogdXNlID0geyB9IGluc3RlYWQgb2YgbWVtc2V0KCkKPiDCoMKgwqDCoMKgIGlpbzog
-Y2hlbWljYWw6IHNjZDR4OiB1c2UgPSB7IH0gaW5zdGVhZCBvZiBtZW1zZXQoKQo+IMKgwqDCoMKg
-wqAgaWlvOiBjaGVtaWNhbDogc2NkMzA6IHVzZSA9IHsgfSBpbnN0ZWFkIG9mIG1lbXNldCgpCj4g
-wqDCoMKgwqDCoCBpaW86IGNoZW1pY2FsOiBzdW5yaXNlX2NvMjogdXNlID0geyB9IGluc3RlYWQg
-b2YgbWVtc2V0KCkKPiDCoMKgwqDCoMKgIGlpbzogZGFjOiBhZDM1NTJyOiB1c2UgPSB7IH0gaW5z
-dGVhZCBvZiBtZW1zZXQoKQo+IMKgwqDCoMKgwqAgaWlvOiBpbXU6IGludl9pY200MjYwMDogdXNl
-ID0geyB9IGluc3RlYWQgb2YgbWVtc2V0KCkKPiDCoMKgwqDCoMKgIGlpbzogaW11OiBpbnZfbXB1
-NjA1MDogdXNlID0geyB9IGluc3RlYWQgb2YgbWVtc2V0KCkKPiDCoMKgwqDCoMKgIGlpbzogbGln
-aHQ6IGJoMTc0NTogdXNlID0geyB9IGluc3RlYWQgb2YgbWVtc2V0KCkKPiDCoMKgwqDCoMKgIGlp
-bzogbGlnaHQ6IGx0cjUwMTogdXNlID0geyB9IGluc3RlYWQgb2YgbWVtc2V0KCkKPiDCoMKgwqDC
-oMKgIGlpbzogbGlnaHQ6IG9wdDQwNjA6IHVzZSA9IHsgfSBpbnN0ZWFkIG9mIG1lbXNldCgpCj4g
-wqDCoMKgwqDCoCBpaW86IGxpZ2h0OiB2ZW1sNjAzMDogdXNlID0geyB9IGluc3RlYWQgb2YgbWVt
-c2V0KCkKPiDCoMKgwqDCoMKgIGlpbzogbWFnbmV0b21ldGVyOiBhZjgxMzNqOiB1c2UgPSB7IH0g
-aW5zdGVhZCBvZiBtZW1zZXQoKQo+IMKgwqDCoMKgwqAgaWlvOiBwcmVzc3VyZTogYm1wMjgwOiB1
-c2UgPSB7IH0gaW5zdGVhZCBvZiBtZW1zZXQoKQo+IMKgwqDCoMKgwqAgaWlvOiBwcmVzc3VyZTog
-bXBsMzExNTogdXNlID0geyB9IGluc3RlYWQgb2YgbWVtc2V0KCkKPiDCoMKgwqDCoMKgIGlpbzog
-cHJlc3N1cmU6IG1wcmxzMDAyNXBhOiB1c2UgPSB7IH0gaW5zdGVhZCBvZiBtZW1zZXQoKQo+IMKg
-wqDCoMKgwqAgaWlvOiBwcmVzc3VyZTogenBhMjMyNjogdXNlID0geyB9IGluc3RlYWQgb2YgbWVt
-c2V0KCkKPiDCoMKgwqDCoMKgIGlpbzogcHJveGltaXR5OiBpcnNkMjAwOiB1c2UgPSB7IH0gaW5z
-dGVhZCBvZiBtZW1zZXQoKQo+IMKgwqDCoMKgwqAgaWlvOiB0ZW1wZXJhdHVyZTogdG1wMDA2OiB1
-c2UgPSB7IH0gaW5zdGVhZCBvZiBtZW1zZXQoKQo+IAo+IMKgZHJpdmVycy9paW8vYWNjZWwvYWR4
-bDM3Mi5jwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfCAzICst
-LQo+IMKgZHJpdmVycy9paW8vYWNjZWwvbXNhMzExLmPCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgIHwgNCArLS0tCj4gwqBkcml2ZXJzL2lpby9hZGMvZGxuMi1h
-ZGMuY8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfCA0ICst
-LS0KPiDCoGRyaXZlcnMvaWlvL2FkYy9tdDYzNjAtYWRjLmPCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqAgfCAzICstLQo+IMKgZHJpdmVycy9paW8vYWRjL3JvY2tjaGlw
-X3NhcmFkYy5jwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfCA0ICstLS0KPiDCoGRy
-aXZlcnMvaWlvL2FkYy9ydHE2MDU2LmPCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqAgfCA0ICstLS0KPiDCoGRyaXZlcnMvaWlvL2FkYy9zdG0zMi1hZGMuY8Kg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHwgMyArLS0KPiDCoGRy
-aXZlcnMvaWlvL2FkYy90aS1hZHMxMDE1LmPCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqAgfCA0ICstLS0KPiDCoGRyaXZlcnMvaWlvL2FkYy90aS1hZHMxMTE5LmPCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfCA0ICstLS0KPiDCoGRyaXZl
-cnMvaWlvL2FkYy90aS1sbXA5MjA2NC5jwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoCB8IDQgKy0tLQo+IMKgZHJpdmVycy9paW8vYWRjL3RpLXRzYzIwNDYuY8KgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8IDMgKy0tCj4gwqBkcml2ZXJzL2lp
-by9jaGVtaWNhbC9zY2QzMF9jb3JlLmPCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8
-IDMgKy0tCj4gwqBkcml2ZXJzL2lpby9jaGVtaWNhbC9zY2Q0eC5jwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHwgMyArLS0KPiDCoGRyaXZlcnMvaWlvL2NoZW1pY2Fs
-L3N1bnJpc2VfY28yLmPCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfCA2ICsrLS0tLQo+
-IMKgZHJpdmVycy9paW8vZGFjL2FkMzU1MnIuY8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoCB8IDMgKy0tCj4gwqBkcml2ZXJzL2lpby9pbXUvaW52X2ljbTQy
-NjAwL2ludl9pY200MjYwMF9hY2NlbC5jIHwgNSArKy0tLQo+IMKgZHJpdmVycy9paW8vaW11L2lu
-dl9pY200MjYwMC9pbnZfaWNtNDI2MDBfZ3lyby5jwqAgfCA1ICsrLS0tCj4gwqBkcml2ZXJzL2lp
-by9pbXUvaW52X21wdTYwNTAvaW52X21wdV9hY3BpLmPCoMKgwqDCoMKgwqDCoCB8IDQgKy0tLQo+
-IMKgZHJpdmVycy9paW8vaW11L2ludl9tcHU2MDUwL2ludl9tcHVfcmluZy5jwqDCoMKgwqDCoMKg
-wqAgfCA2ICsrLS0tLQo+IMKgZHJpdmVycy9paW8vbGlnaHQvYmgxNzQ1LmPCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHwgNCArLS0tCj4gwqBkcml2ZXJzL2lp
-by9saWdodC9sdHI1MDEuY8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqAgfCA0ICstLS0KPiDCoGRyaXZlcnMvaWlvL2xpZ2h0L29wdDQwNjAuY8KgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHwgNCArLS0tCj4gwqBkcml2ZXJzL2lp
-by9saWdodC92ZW1sNjAzMC5jwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgIHwgNCArLS0tCj4gwqBkcml2ZXJzL2lpby9tYWduZXRvbWV0ZXIvYWY4MTMzai5jwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHwgNCArLS0tCj4gwqBkcml2ZXJzL2lpby9wcmVzc3Vy
-ZS9ibXAyODAtY29yZS5jwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHwgNSArLS0tLQo+
-IMKgZHJpdmVycy9paW8vcHJlc3N1cmUvbXBsMzExNS5jwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqAgfCAzICstLQo+IMKgZHJpdmVycy9paW8vcHJlc3N1cmUvbXBybHMwMDI1
-cGFfaTJjLmPCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHwgNSArLS0tLQo+IMKgZHJpdmVycy9paW8v
-cHJlc3N1cmUvenBhMjMyNi5jwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAg
-fCA0ICstLS0KPiDCoGRyaXZlcnMvaWlvL3Byb3hpbWl0eS9pcnNkMjAwLmPCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfCAzICstLQo+IMKgZHJpdmVycy9paW8vdGVtcGVyYXR1
-cmUvdG1wMDA2LmPCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHwgNCArLS0tCj4g
-wqAzMCBmaWxlcyBjaGFuZ2VkLCAzNCBpbnNlcnRpb25zKCspLCA4NSBkZWxldGlvbnMoLSkKPiAt
-LS0KPiBiYXNlLWNvbW1pdDogNGM2MDczZmVjMmZlZTQ4MjdmYTBkZDhhNGFiNGU2ZjdiYmMwNWVl
-Ngo+IGNoYW5nZS1pZDogMjAyNTA2MTEtaWlvLXplcm8taW5pdC1zdGFjay13aXRoLWluc3RlYWQt
-b2YtbWVtc2V0LTBkMTJkNDFhN2VjYgo+IAo+IEJlc3QgcmVnYXJkcywKCg==
+This V2 patch provides two methods btmtk_reset_by_gpio,
+btmtk_reset_by_gpio_work for mediatek controller,
+it has been tested locally many times and can reset normally.
+
+The pin is configured in dts files, bluetooth is reset by pulling
+the pin, when exception or coredump occurs, the above methods will
+be used to reset the bluetooth, if the pin is not found, it also can
+reset bluetooth successfully by software reset.
+
+Compared with the previously submitted version, the following
+information has been revised in version V2
+1)-Changed the capitalization of co-developer names,
+   using the correct capitalization of abbreviations and full
+   name, and corrected obvious spelling errors.
+2)-Add a revision history.
+3)-Remove the "BT Driver" in the prefix.
+4)-Add the bt-binding document, include inforamtion related to reset
+   pin and compatibility matching.
+5)-Add a comment before the schedule_delayed_work function call,
+   although schedule_delayed_work is asynchronous, there is no risk.
+   Even if it is not completed within 200ms, it will only postpone
+   the subsequent probe and will not have any impact.
+6-)Add a comment before the btmtk_reset_by_gpio function call,
+   if the compatibility filed or pin cannot be found in the dts
+   files, it can still reset bluetooth using software reset.
+
+Co-developed-by Hao Qin <hao.qin@mediatek.com>
+Co-developed-Chris Lu <chris.lu@mediatek.com>
+Co-developed-Jiande Lu <jiande.lu@mediatek.com>
+Signed-off-by: Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>
+---
+ .../bluetooth/mediatek,mt7925-bluetooth.yaml  | 54 +++++++++++++++
+ drivers/bluetooth/btmtk.c                     | 69 +++++++++++++++++++
+ drivers/bluetooth/btmtk.h                     |  5 ++
+ 3 files changed, 128 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7925-bluetooth.yaml
+
+diff --git a/Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7925-bluetooth.yaml b/Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7925-bluetooth.yaml
+new file mode 100644
+index 000000000000..bcdb46effdba
+--- /dev/null
++++ b/Documentation/devicetree/bindings/net/bluetooth/mediatek,mt7925-bluetooth.yaml
+@@ -0,0 +1,54 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/net/bluetooth/mediatek,mt7925-bluetooth.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek MT7925 Bluetooth
++
++maintainers:
++  - Zhangchao Zhang <zhangchao.zhang@mediatek.com>
++
++description:
++  7925 uses the USB bus to communicate with the host.
++  Two methods are used to reset Bluetooth.
++  When Bluetooth crashes or core dumps,
++  the pin will be pulled low, then held for 200ms,
++  and then pulled high again before next probe.
++
++allOf:
++  - $ref: bluetooth-controller.yaml#
++
++properties:
++  compatible:
++    enum:
++      - mediatek,mt7925-bluetooth
++
++  reg:
++    const: 2
++
++  reset-gpios:
++    maxItems: 1
++    description:
++      An active-high reset pin for the Bluetooth core;
++required:
++  - compatible
++  - reg
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/gpio/gpio.h>
++
++    &xhci0 {
++      vbus-supply = <&pp5000_usb>;
++      usb2-lpm-disable;
++
++      status = "okay";
++
++      bt_reset: bt-reset{
++        compatible = "mediatek,usb-bluetooth";
++        reset-gpios = <&pio 248 GPIO_ACTIVE_HIGH>;
++      };
++    };
+\ No newline at end of file
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index 4390fd571dbd..3e5f3ca6f0d5 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -6,6 +6,8 @@
+ #include <linux/firmware.h>
+ #include <linux/usb.h>
+ #include <linux/iopoll.h>
++#include <linux/of.h>
++#include <linux/of_gpio.h>
+ #include <linux/unaligned.h>
+ 
+ #include <net/bluetooth/bluetooth.h>
+@@ -109,6 +111,65 @@ static void btmtk_coredump_notify(struct hci_dev *hdev, int state)
+ 	}
+ }
+ 
++static void btmtk_reset_by_gpio_work(struct work_struct *work)
++{
++	struct btmtk_reset_gpio *reset_gpio_data =
++			container_of(work, struct btmtk_reset_gpio, reset_work.work);
++
++	gpio_direction_output(reset_gpio_data->gpio_number, 1);
++	kfree(reset_gpio_data);
++}
++
++static int btmtk_reset_by_gpio(struct hci_dev *hdev)
++{
++	struct btmtk_data *data = hci_get_priv(hdev);
++	struct btmtk_reset_gpio *reset_gpio_data;
++	struct device_node *node;
++	int reset_gpio_number;
++
++	node = of_find_compatible_node(NULL, NULL, "mediatek,usb-bluetooth");
++	if (node) {
++		reset_gpio_number = of_get_named_gpio(node, "reset-gpios", 0);
++		if (!gpio_is_valid(reset_gpio_number)) {
++			bt_dev_warn(hdev, "invalid reset GPIO, use software reset");
++			return -EINVAL;
++		}
++	} else {
++		bt_dev_warn(hdev, "no reset GPIO, use software reset");
++		return -ENODEV;
++	}
++
++	/* Toggle the hard reset line. The Mediatek device is going to
++	 * yank itself off the USB and then replug. The cleanup is handled
++	 * correctly on the way out (standard USB disconnect), and the new
++	 * device is detected cleanly and bound to the driver again like
++	 * it should be.
++	 */
++
++	if (test_and_set_bit(BTMTK_HW_RESET_ACTIVE, &data->flags)) {
++		bt_dev_err(hdev, "last reset failed? Not resetting again");
++		return 0;
++	}
++
++	reset_gpio_data = kzalloc(sizeof(*reset_gpio_data), GFP_KERNEL);
++	if (!reset_gpio_data)
++		return -ENOMEM;
++
++	INIT_DELAYED_WORK(&reset_gpio_data->reset_work, btmtk_reset_by_gpio_work);
++	reset_gpio_data->gpio_number = reset_gpio_number;
++
++	gpio_direction_output(reset_gpio_number, 0);
++
++	/* It requires 200ms for mtk bt chip to do reset,
++	 * although Schedule_delayed_work is asynchronous,
++	 * it is risk-free. If it is not completed in 200ms,
++	 * it will only postpone the next probe, which will
++	 * only make the probe run later. There is no other risk.
++	 */
++	schedule_delayed_work(&reset_gpio_data->reset_work, msecs_to_jiffies(200));
++	return 0;
++}
++
+ void btmtk_fw_get_filename(char *buf, size_t size, u32 dev_id, u32 fw_ver,
+ 			   u32 fw_flavor)
+ {
+@@ -364,6 +425,14 @@ void btmtk_reset_sync(struct hci_dev *hdev)
+ 	struct btmtk_data *reset_work = hci_get_priv(hdev);
+ 	int err;
+ 
++	/* Toggle reset gpio if the platform provieds one,
++	 * if the compatibility field or pin cannot be found
++	 * in the dts files, it can still reset bluetooth using
++	 * software reset.
++	 */
++	err = btmtk_reset_by_gpio(hdev);
++	if (!err)
++		return;
+ 	hci_dev_lock(hdev);
+ 
+ 	err = hci_cmd_sync_queue(hdev, reset_work->reset_sync, NULL, NULL);
+diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
+index 5df7c3296624..8a265ce367d1 100644
+--- a/drivers/bluetooth/btmtk.h
++++ b/drivers/bluetooth/btmtk.h
+@@ -179,6 +179,11 @@ struct btmtk_data {
+ 	spinlock_t isorxlock;
+ };
+ 
++struct btmtk_reset_gpio {
++	struct delayed_work reset_work;
++	int gpio_number;
++};
++
+ typedef int (*wmt_cmd_sync_func_t)(struct hci_dev *,
+ 				   struct btmtk_hci_wmt_params *);
+ 
+-- 
+2.46.0
 
 
