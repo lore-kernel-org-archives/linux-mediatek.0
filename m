@@ -4,47 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D614EC61DB2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jun 2025 10:09:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F74AC71159
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jun 2025 10:09:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tRwKRV0MN4EshRJlfLi0Dz/wz1XffUkWEszixE41OU0=; b=w9Qw8G7+msvjOG0JJ1Z4LmzsyK
-	KX41i7Jvx2OKvULfbntNF57tUOI9YnAUtLbVEvIzt8J+1mfOXp6HsObf00T95dvh4Sr/g9x9D0pk6
-	kB/9D5O6H7O0456PH8TuslHGvChJkmGvpk+YliT9K09+zsFONu89tP8HAsNMm7+vq47EVf6kEC1Xn
-	SYysv8xlQv3IOUKb0nQEc8+UqIc5AC899MMpyovZ+5ygFhVMvvT7mHyb4YTSxEcdeFgyBgAKpkNyI
-	F381J5LSw/zMX8BH12hTt6+G7UlkVxIML+Ih+l0SDIammwqEld+lv4v5RBCqxCyCv5eMumzixq/xv
-	LvbHqh+A==;
+	bh=9vrE958rjluy5GI9nSZtajZKau2LVUydgX9T0Pgwru0=; b=iNwSRrNj+zmfrleQd5ku+ckxQ3
+	M1EhGdkcRHqE81Z7QXilf5QDePGbSfaRdBU2hUbdME1C+kUpDbziYMB8Z4ctx08+mTmxKf5CrV5Mu
+	z8OU56plPOPx+fZ7f3iaHQOvu7SGNARtziIeZ3VocQHtK/BDnvHHISQ8BwLe0UmRpQdUWAe5mpvth
+	YOJs0zZBUv/BrDtxVgODEEpkibYhr6ZSo5QSLK/0D5xje3woxcDmKTWL1Tefxmm+KF+T+VgNIF7J2
+	XCXuajBMLagjnfesS8t6JVcyj8RvNxc3e4rWShIuvXGt6lrBD10APBeUJbB9b4MtfFWdsNxfAs9Dx
+	iu0h/sfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQ1Lt-0000000G1zW-2Fif;
-	Fri, 13 Jun 2025 10:09:37 +0000
-Received: from smtp-out1.suse.de ([2a07:de40:b251:101:10:150:64:1])
+	id 1uQ1Lv-0000000G22X-2tK4;
+	Fri, 13 Jun 2025 10:09:39 +0000
+Received: from smtp-out2.suse.de ([2a07:de40:b251:101:10:150:64:2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQ0L2-0000000Fq89-1xzK
+	id 1uQ0L9-0000000FqAq-1w5v
 	for linux-mediatek@lists.infradead.org;
-	Fri, 13 Jun 2025 09:04:42 +0000
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
+	Fri, 13 Jun 2025 09:04:48 +0000
+Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 0A00521268;
+	by smtp-out2.suse.de (Postfix) with ESMTPS id 9882A1F863;
 	Fri, 13 Jun 2025 09:04:37 +0000 (UTC)
-Authentication-Results: smtp-out1.suse.de;
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1749805477; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=9vrE958rjluy5GI9nSZtajZKau2LVUydgX9T0Pgwru0=;
+	b=B7SOGyWTBIJl0U7KAZgyscWeBjgjCMs2Jhf4Aw7cP02t3rVbQFZ5Nx4gtmaw3vKKM3l6pW
+	SBiBTnrRIei4pfaHnf5Vu5Gqf1WcyJS3GjiUVnZyhbYSzH85I72hoz7tMFmCNEpPG96br3
+	/WvM33n4CDTSCFb89/cFcVR5i0CWDiQ=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1749805477;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=9vrE958rjluy5GI9nSZtajZKau2LVUydgX9T0Pgwru0=;
+	b=G5UsLMt3A0xlxF+srO3jbYALvYG7FkC1mJSP6zh42VpZ6Az6mzAy/lkhzjhcnNMVHf9H4F
+	3ZoR+WZF471tO8DQ==
+Authentication-Results: smtp-out2.suse.de;
 	none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1749805477; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=9vrE958rjluy5GI9nSZtajZKau2LVUydgX9T0Pgwru0=;
+	b=B7SOGyWTBIJl0U7KAZgyscWeBjgjCMs2Jhf4Aw7cP02t3rVbQFZ5Nx4gtmaw3vKKM3l6pW
+	SBiBTnrRIei4pfaHnf5Vu5Gqf1WcyJS3GjiUVnZyhbYSzH85I72hoz7tMFmCNEpPG96br3
+	/WvM33n4CDTSCFb89/cFcVR5i0CWDiQ=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1749805477;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=9vrE958rjluy5GI9nSZtajZKau2LVUydgX9T0Pgwru0=;
+	b=G5UsLMt3A0xlxF+srO3jbYALvYG7FkC1mJSP6zh42VpZ6Az6mzAy/lkhzjhcnNMVHf9H4F
+	3ZoR+WZF471tO8DQ==
 Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 785D713A9C;
-	Fri, 13 Jun 2025 09:04:36 +0000 (UTC)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 12DC4137FE;
+	Fri, 13 Jun 2025 09:04:37 +0000 (UTC)
 Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
 	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id qH36G6TpS2inNAAAD6G6ig
-	(envelope-from <tzimmermann@suse.de>); Fri, 13 Jun 2025 09:04:36 +0000
+	id sND+AqXpS2inNAAAD6G6ig
+	(envelope-from <tzimmermann@suse.de>); Fri, 13 Jun 2025 09:04:37 +0000
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: simona@ffwll.ch,
 	airlied@gmail.com,
@@ -67,28 +103,42 @@ Cc: dri-devel@lists.freedesktop.org,
 	intel-xe@lists.freedesktop.org,
 	xen-devel@lists.xenproject.org,
 	Thomas Zimmermann <tzimmermann@suse.de>
-Subject: [PATCH v5 01/25] drm/dumb-buffers: Sanitize output on errors
-Date: Fri, 13 Jun 2025 11:00:20 +0200
-Message-ID: <20250613090431.127087-2-tzimmermann@suse.de>
+Subject: [PATCH v5 02/25] drm/dumb-buffers: Provide helper to set pitch and size
+Date: Fri, 13 Jun 2025 11:00:21 +0200
+Message-ID: <20250613090431.127087-3-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250613090431.127087-1-tzimmermann@suse.de>
 References: <20250613090431.127087-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Rspamd-Pre-Result: action=no action;
-	module=replies;
-	Message is reply to one we originated
-X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
-X-Spamd-Result: default: False [-4.00 / 50.00];
-	REPLY(-4.00)[]
-X-Rspamd-Queue-Id: 0A00521268
-X-Rspamd-Pre-Result: action=no action;
-	module=replies;
-	Message is reply to one we originated
-X-Rspamd-Action: no action
+X-Spamd-Result: default: False [-5.30 / 50.00];
+	REPLY(-4.00)[];
+	BAYES_HAM(-3.00)[100.00%];
+	SUSPICIOUS_RECIPS(1.50)[];
+	MID_CONTAINS_FROM(1.00)[];
+	NEURAL_HAM_LONG(-1.00)[-1.000];
+	R_MISSING_CHARSET(0.50)[];
+	NEURAL_HAM_SHORT(-0.20)[-0.999];
+	MIME_GOOD(-0.10)[text/plain];
+	FREEMAIL_TO(0.00)[ffwll.ch,gmail.com,kernel.org,linux.intel.com,linux-m68k.org,ideasonboard.com];
+	MIME_TRACE(0.00)[0:+];
+	TO_DN_SOME(0.00)[];
+	ARC_NA(0.00)[];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[21];
+	FUZZY_BLOCKED(0.00)[rspamd.com];
+	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	FROM_EQ_ENVFROM(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	R_RATELIMIT(0.00)[to_ip_from(RLqirfcw6gnbcr9a9yhi49fhi6)];
+	RCVD_TLS_ALL(0.00)[];
+	RCVD_COUNT_TWO(0.00)[2];
+	TO_MATCH_ENVRCPT_ALL(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[ideasonboard.com:email,suse.de:mid,suse.de:email];
+	FREEMAIL_ENVRCPT(0.00)[gmail.com]
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250613_020440_646424_C6DAC82C 
-X-CRM114-Status: GOOD (  12.76  )
+X-CRM114-CacheID: sfid-20250613_020447_804256_5210CD7B 
+X-CRM114-Status: GOOD (  38.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,78 +153,328 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The ioctls MODE_CREATE_DUMB and MODE_MAP_DUMB return results into a
-memory buffer supplied by user space. On errors, it is possible that
-intermediate values are being returned. The exact semantics depends
-on the DRM driver's implementation of these ioctls. Although this is
-most-likely not a security problem in practice, avoid any uncertainty
-by clearing the memory to 0 on errors.
+Add drm_modes_size_dumb(), a helper to calculate the dumb-buffer
+scanline pitch and allocation size. Implementations of struct
+drm_driver.dumb_create can call the new helper for their size
+computations.
+
+There is currently quite a bit of code duplication among DRM's
+memory managers. Each calculates scanline pitch and buffer size
+from the given arguments, but the implementations are inconsistent
+in how they treat alignment and format support. Later patches will
+unify this code on top of drm_mode_size_dumb() as much as possible.
+
+drm_mode_size_dumb() uses existing 4CC format helpers to interpret
+the given color mode. This makes the dumb-buffer interface behave
+similar the kernel's video= parameter. Current per-driver implementations
+again likely have subtle differences or bugs in how they support color
+modes.
+
+The dumb-buffer UAPI is only specified for known color modes. These
+values describe linear, single-plane RGB color formats or legacy index
+formats. Other values should not be specified. But some user space
+still does. So for unknown color modes, there are a number of known
+exceptions for which drm_mode_size_dumb() calculates the pitch from
+the bpp value, as before. All other values work the same but print
+an error.
+
+v5:
+- check for overflows with check_mul_overflow() (Tomi)
+v4:
+- use %u conversion specifier (Geert)
+- list DRM_FORMAT_Dn in UAPI docs (Geert)
+- avoid dmesg spamming with drm_warn_once() (Sima)
+- add more information about bpp special case (Sima)
+- clarify parameters for hardware alignment
+- add a TODO item for DUMB_CREATE2
+v3:
+- document the UAPI semantics
+- compute scanline pitch from for unknown color modes (Andy, Tomi)
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 Reviewed-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
 ---
- drivers/gpu/drm/drm_dumb_buffers.c | 40 ++++++++++++++++++++++--------
- 1 file changed, 29 insertions(+), 11 deletions(-)
+ Documentation/gpu/todo.rst         |  27 ++++++
+ drivers/gpu/drm/drm_dumb_buffers.c | 130 +++++++++++++++++++++++++++++
+ include/drm/drm_dumb_buffers.h     |  14 ++++
+ include/uapi/drm/drm_mode.h        |  50 ++++++++++-
+ 4 files changed, 220 insertions(+), 1 deletion(-)
+ create mode 100644 include/drm/drm_dumb_buffers.h
 
+diff --git a/Documentation/gpu/todo.rst b/Documentation/gpu/todo.rst
+index be8637da3fe9..f7312afa87b5 100644
+--- a/Documentation/gpu/todo.rst
++++ b/Documentation/gpu/todo.rst
+@@ -648,6 +648,33 @@ Contact: Thomas Zimmermann <tzimmermann@suse.de>, Simona Vetter
+ 
+ Level: Advanced
+ 
++Implement a new DUMB_CREATE2 ioctl
++----------------------------------
++
++The current DUMB_CREATE ioctl is not well defined. Instead of a pixel and
++framebuffer format, it only accepts a color mode of vague semantics. Assuming
++a linear framebuffer, the color mode gives and idea of the supported pixel
++format. But userspace effectively has to guess the correct values. It really
++only works reliable with framebuffers in XRGB8888. Userspace has begun to
++workaround these limitations by computing arbitrary format's buffer sizes and
++calculating their sizes in terms of XRGB8888 pixels.
++
++One possible solution is a new ioctl DUMB_CREATE2. It should accept a DRM
++format and a format modifier to resolve the color mode's ambiguity. As
++framebuffers can be multi-planar, the new ioctl has to return the buffer size,
++pitch and GEM handle for each individual color plane.
++
++In the first step, the new ioctl can be limited to the current features of
++the existing DUMB_CREATE. Individual drivers can then be extended to support
++multi-planar formats. Rockchip might require this and would be a good candidate.
++
++In addition to the kernel implementation, there must be user-space support
++for the new ioctl. There's code in Mesa that might be able to use the new
++call.
++
++Contact: Thomas Zimmermann <tzimmermann@suse.de>
++
++Level: Advanced
+ 
+ Better Testing
+ ==============
 diff --git a/drivers/gpu/drm/drm_dumb_buffers.c b/drivers/gpu/drm/drm_dumb_buffers.c
-index 70032bba1c97..9916aaf5b3f2 100644
+index 9916aaf5b3f2..e9eed9a5b760 100644
 --- a/drivers/gpu/drm/drm_dumb_buffers.c
 +++ b/drivers/gpu/drm/drm_dumb_buffers.c
-@@ -99,7 +99,30 @@ int drm_mode_create_dumb(struct drm_device *dev,
- int drm_mode_create_dumb_ioctl(struct drm_device *dev,
- 			       void *data, struct drm_file *file_priv)
- {
--	return drm_mode_create_dumb(dev, data, file_priv);
-+	struct drm_mode_create_dumb *args = data;
-+	int err;
+@@ -25,6 +25,8 @@
+ 
+ #include <drm/drm_device.h>
+ #include <drm/drm_drv.h>
++#include <drm/drm_dumb_buffers.h>
++#include <drm/drm_fourcc.h>
+ #include <drm/drm_gem.h>
+ #include <drm/drm_mode.h>
+ 
+@@ -57,6 +59,134 @@
+  * a hardware-specific ioctl to allocate suitable buffer objects.
+  */
+ 
++static int drm_mode_align_dumb(struct drm_mode_create_dumb *args,
++			       unsigned long hw_pitch_align,
++			       unsigned long hw_size_align)
++{
++	u32 pitch = args->pitch;
++	u32 size;
 +
-+	err = drm_mode_create_dumb(dev, args, file_priv);
-+	if (err) {
-+		args->handle = 0;
-+		args->pitch = 0;
-+		args->size = 0;
-+	}
-+	return err;
++	if (!pitch)
++		return -EINVAL;
++
++	if (hw_pitch_align)
++		pitch = roundup(pitch, hw_pitch_align);
++
++	if (!hw_size_align)
++		hw_size_align = PAGE_SIZE;
++	else if (!IS_ALIGNED(hw_size_align, PAGE_SIZE))
++		return -EINVAL; /* TODO: handle this if necessary */
++
++	if (check_mul_overflow(args->height, pitch, &size))
++		return -EINVAL;
++	size = ALIGN(size, hw_size_align);
++	if (!size)
++		return -EINVAL;
++
++	args->pitch = pitch;
++	args->size = size;
++
++	return 0;
 +}
 +
-+static int drm_mode_mmap_dumb(struct drm_device *dev, struct drm_mode_map_dumb *args,
-+			      struct drm_file *file_priv)
++/**
++ * drm_mode_size_dumb - Calculates the scanline and buffer sizes for dumb buffers
++ * @dev: DRM device
++ * @args: Parameters for the dumb buffer
++ * @hw_pitch_align: Hardware scanline alignment in bytes
++ * @hw_size_align: Hardware buffer-size alignment in bytes
++ *
++ * The helper drm_mode_size_dumb() calculates the size of the buffer
++ * allocation and the scanline size for a dumb buffer. Callers have to
++ * set the buffers width, height and color mode in the argument @arg.
++ * The helper validates the correctness of the input and tests for
++ * possible overflows. If successful, it returns the dumb buffer's
++ * required scanline pitch and size in &args.
++ *
++ * The parameter @hw_pitch_align allows the driver to specifies an
++ * alignment for the scanline pitch, if the hardware requires any. The
++ * calculated pitch will be a multiple of the alignment. The parameter
++ * @hw_size_align allows to specify an alignment for buffer sizes. The
++ * provided alignment should represent requirements of the graphics
++ * hardware. drm_mode_size_dumb() handles GEM-related constraints
++ * automatically across all drivers and hardware. For example, the
++ * returned buffer size is always a multiple of PAGE_SIZE, which is
++ * required by mmap().
++ *
++ * Returns:
++ * Zero on success, or a negative error code otherwise.
++ */
++int drm_mode_size_dumb(struct drm_device *dev,
++		       struct drm_mode_create_dumb *args,
++		       unsigned long hw_pitch_align,
++		       unsigned long hw_size_align)
 +{
-+	if (!dev->driver->dumb_create)
-+		return -ENOSYS;
++	u64 pitch = 0;
++	u32 fourcc;
 +
-+	if (dev->driver->dumb_map_offset)
-+		return dev->driver->dumb_map_offset(file_priv, dev, args->handle,
-+						    &args->offset);
-+	else
-+		return drm_gem_dumb_map_offset(file_priv, dev, args->handle,
-+					       &args->offset);
- }
- 
- /**
-@@ -120,17 +143,12 @@ int drm_mode_mmap_dumb_ioctl(struct drm_device *dev,
- 			     void *data, struct drm_file *file_priv)
- {
- 	struct drm_mode_map_dumb *args = data;
-+	int err;
- 
--	if (!dev->driver->dumb_create)
--		return -ENOSYS;
--
--	if (dev->driver->dumb_map_offset)
--		return dev->driver->dumb_map_offset(file_priv, dev,
--						    args->handle,
--						    &args->offset);
--	else
--		return drm_gem_dumb_map_offset(file_priv, dev, args->handle,
--					       &args->offset);
-+	err = drm_mode_mmap_dumb(dev, args, file_priv);
-+	if (err)
-+		args->offset = 0;
-+	return err;
- }
- 
- int drm_mode_destroy_dumb(struct drm_device *dev, u32 handle,
++	/*
++	 * The scanline pitch depends on the buffer width and the color
++	 * format. The latter is specified as a color-mode constant for
++	 * which we first have to find the corresponding color format.
++	 *
++	 * Different color formats can have the same color-mode constant.
++	 * For example XRGB8888 and BGRX8888 both have a color mode of 32.
++	 * It is possible to use different formats for dumb-buffer allocation
++	 * and rendering as long as all involved formats share the same
++	 * color-mode constant.
++	 */
++	fourcc = drm_driver_color_mode_format(dev, args->bpp);
++	if (fourcc != DRM_FORMAT_INVALID) {
++		const struct drm_format_info *info = drm_format_info(fourcc);
++
++		if (!info)
++			return -EINVAL;
++		pitch = drm_format_info_min_pitch(info, 0, args->width);
++	} else if (args->bpp) {
++		/*
++		 * Some userspace throws in arbitrary values for bpp and
++		 * relies on the kernel to figure it out. In this case we
++		 * fall back to the old method of using bpp directly. The
++		 * over-commitment of memory from the rounding is acceptable
++		 * for compatibility with legacy userspace. We have a number
++		 * of deprecated legacy values that are explicitly supported.
++		 */
++		switch (args->bpp) {
++		default:
++			drm_warn_once(dev,
++				      "Unknown color mode %u; guessing buffer size.\n",
++				      args->bpp);
++			fallthrough;
++		/*
++		 * These constants represent various YUV formats supported by
++		 * drm_gem_afbc_get_bpp().
++		 */
++		case 12: // DRM_FORMAT_YUV420_8BIT
++		case 15: // DRM_FORMAT_YUV420_10BIT
++		case 30: // DRM_FORMAT_VUY101010
++			fallthrough;
++		/*
++		 * Used by Mesa and Gstreamer to allocate NV formats and others
++		 * as RGB buffers. Technically, XRGB16161616F formats are RGB,
++		 * but the dumb buffers are not supposed to be used for anything
++		 * beyond 32 bits per pixels.
++		 */
++		case 10: // DRM_FORMAT_NV{15,20,30}, DRM_FORMAT_P010
++		case 64: // DRM_FORMAT_{XRGB,XBGR,ARGB,ABGR}16161616F
++			pitch = args->width * DIV_ROUND_UP(args->bpp, SZ_8);
++			break;
++		}
++	}
++
++	if (!pitch || pitch > U32_MAX)
++		return -EINVAL;
++
++	args->pitch = pitch;
++
++	return drm_mode_align_dumb(args, hw_pitch_align, hw_size_align);
++}
++EXPORT_SYMBOL(drm_mode_size_dumb);
++
+ int drm_mode_create_dumb(struct drm_device *dev,
+ 			 struct drm_mode_create_dumb *args,
+ 			 struct drm_file *file_priv)
+diff --git a/include/drm/drm_dumb_buffers.h b/include/drm/drm_dumb_buffers.h
+new file mode 100644
+index 000000000000..1f3a8236fb3d
+--- /dev/null
++++ b/include/drm/drm_dumb_buffers.h
+@@ -0,0 +1,14 @@
++/* SPDX-License-Identifier: MIT */
++
++#ifndef __DRM_DUMB_BUFFERS_H__
++#define __DRM_DUMB_BUFFERS_H__
++
++struct drm_device;
++struct drm_mode_create_dumb;
++
++int drm_mode_size_dumb(struct drm_device *dev,
++		       struct drm_mode_create_dumb *args,
++		       unsigned long hw_pitch_align,
++		       unsigned long hw_size_align);
++
++#endif
+diff --git a/include/uapi/drm/drm_mode.h b/include/uapi/drm/drm_mode.h
+index c082810c08a8..efe8f5ad35ee 100644
+--- a/include/uapi/drm/drm_mode.h
++++ b/include/uapi/drm/drm_mode.h
+@@ -1058,7 +1058,7 @@ struct drm_mode_crtc_page_flip_target {
+  * struct drm_mode_create_dumb - Create a KMS dumb buffer for scanout.
+  * @height: buffer height in pixels
+  * @width: buffer width in pixels
+- * @bpp: bits per pixel
++ * @bpp: color mode
+  * @flags: must be zero
+  * @handle: buffer object handle
+  * @pitch: number of bytes between two consecutive lines
+@@ -1066,6 +1066,54 @@ struct drm_mode_crtc_page_flip_target {
+  *
+  * User-space fills @height, @width, @bpp and @flags. If the IOCTL succeeds,
+  * the kernel fills @handle, @pitch and @size.
++ *
++ * The value of @bpp is a color-mode number describing a specific format
++ * or a variant thereof. The value often corresponds to the number of bits
++ * per pixel for most modes, although there are exceptions. Each color mode
++ * maps to a DRM format plus a number of modes with similar pixel layout.
++ * Framebuffer layout is always linear.
++ *
++ * Support for all modes and formats is optional. Even if dumb-buffer
++ * creation with a certain color mode succeeds, it is not guaranteed that
++ * the DRM driver supports any of the related formats. Most drivers support
++ * a color mode of 32 with a format of DRM_FORMAT_XRGB8888 on their primary
++ * plane.
++ *
++ * +------------+------------------------+------------------------+
++ * | Color mode | Framebuffer format     | Compatible formats     |
++ * +============+========================+========================+
++ * |     32     |  * DRM_FORMAT_XRGB8888 |  * DRM_FORMAT_BGRX8888 |
++ * |            |                        |  * DRM_FORMAT_RGBX8888 |
++ * |            |                        |  * DRM_FORMAT_XBGR8888 |
++ * +------------+------------------------+------------------------+
++ * |     24     |  * DRM_FORMAT_RGB888   |  * DRM_FORMAT_BGR888   |
++ * +------------+------------------------+------------------------+
++ * |     16     |  * DRM_FORMAT_RGB565   |  * DRM_FORMAT_BGR565   |
++ * +------------+------------------------+------------------------+
++ * |     15     |  * DRM_FORMAT_XRGB1555 |  * DRM_FORMAT_BGRX1555 |
++ * |            |                        |  * DRM_FORMAT_RGBX1555 |
++ * |            |                        |  * DRM_FORMAT_XBGR1555 |
++ * +------------+------------------------+------------------------+
++ * |      8     |  * DRM_FORMAT_C8       |  * DRM_FORMAT_D8       |
++ * |            |                        |  * DRM_FORMAT_R8       |
++ * +------------+------------------------+------------------------+
++ * |      4     |  * DRM_FORMAT_C4       |  * DRM_FORMAT_D4       |
++ * |            |                        |  * DRM_FORMAT_R4       |
++ * +------------+------------------------+------------------------+
++ * |      2     |  * DRM_FORMAT_C2       |  * DRM_FORMAT_D2       |
++ * |            |                        |  * DRM_FORMAT_R2       |
++ * +------------+------------------------+------------------------+
++ * |      1     |  * DRM_FORMAT_C1       |  * DRM_FORMAT_D1       |
++ * |            |                        |  * DRM_FORMAT_R1       |
++ * +------------+------------------------+------------------------+
++ *
++ * Color modes of 10, 12, 15, 30 and 64 are only supported for use by
++ * legacy user space. Please don't use them in new code. Other modes
++ * are not support.
++ *
++ * Do not attempt to allocate anything but linear framebuffer memory
++ * with single-plane RGB data. Allocation of other framebuffer
++ * layouts requires dedicated ioctls in the respective DRM driver.
+  */
+ struct drm_mode_create_dumb {
+ 	__u32 height;
 -- 
 2.49.0
 
