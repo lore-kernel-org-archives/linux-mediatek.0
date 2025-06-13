@@ -4,54 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4582C71148
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jun 2025 15:49:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 060ADC71148
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jun 2025 19:19:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Q/gXoaffigG8SJ50bYXBMyjpep5Cs+E0rWgAJGLqcfQ=; b=GORVQsqKyGD/7l
-	wOFrPCFQf6XyND8uMnePLkPQgsILT6pVS9WUwW6mlCdYM+zzgh9BFBm9UBKkvtNIWXJZE96wP/4/8
-	UOGWXjdJKcJRUc6JEPYS/oGZ0+irfX3ze7IjixwkoSH6K3Ivs8Kp+zePJye9AOkHMLERsun5v3Gte
-	ypGAf5x7gDzXY6PkM+SOAvg8S15fTdhLuYA46SlD9hbN3dOWGGr+Ppat4GO5yz/Cqi6hu3GeOWkn6
-	vdOmOXnVpKiUAfkKQ0UaYaJabTkCIsCBdvThJ74Md15JVqkSl0h5H2rFzTlp0Qx1kCY8np8icU5Wp
-	fWuw3tpnTA+fS19/dLsw==;
+	List-Owner; bh=Q/gXoaffigG8SJ50bYXBMyjpep5Cs+E0rWgAJGLqcfQ=; b=uLnHHdJmlrOY4f
+	1dWnuVtOP4f4+YHXZ7rOUwNfng+MCrn5Qbo/mQyrycujHs4iPsN/jNr0d8NSokmpLmdoH6JZQxsWl
+	U58HDa+V8HJYYsn8pP8d8gu7WFjeQMcWW8yTuaBIHxDfryJ4Jj6Usig59wtf4P2HXXhVA2HT/srsC
+	R7x3zINZKzAIq3MNG1R6BbA1qCUd0nShUGZ4elNA7vnz5GKs7C33Rqds4jrPB87aKt/vkt8aiGoSN
+	AznsE7DyBknygqn6T9LFhToEDHBTgnEUycazgEtbBps83DG3hoZjsqb557CAxjNWsHyEeXoPHG/tZ
+	BGoYU2NvvGNCk2kIJ70Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQ6eS-0000000Gx5t-026d;
-	Fri, 13 Jun 2025 15:49:08 +0000
-Received: from mxout3.routing.net ([2a03:2900:1:a::8])
+	id 1uQ9wO-0000000HQRJ-2yA4;
+	Fri, 13 Jun 2025 19:19:52 +0000
+Received: from mxout2.routing.net ([2a03:2900:1:a::b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQ5ey-0000000Gkff-0rD6;
-	Fri, 13 Jun 2025 14:45:38 +0000
+	id 1uQ9uy-0000000HPpv-3MN8;
+	Fri, 13 Jun 2025 19:18:26 +0000
 Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
-	by mxout3.routing.net (Postfix) with ESMTP id F0118605C3;
-	Fri, 13 Jun 2025 14:45:31 +0000 (UTC)
+	by mxout2.routing.net (Postfix) with ESMTP id 6275D6027A;
+	Fri, 13 Jun 2025 19:18:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1749825932;
+	s=20200217; t=1749842302;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding;
 	bh=Q/gXoaffigG8SJ50bYXBMyjpep5Cs+E0rWgAJGLqcfQ=;
-	b=l2XbA7APatv4/BRBtKwKXxKfXpMUu0sK25tuuA3s32t9LHfHoLV0uVxp8xGpeea7RQC2Ii
-	mEopG5gUanKERS1gmIhaEYnyOvXkxeFSBGZowO5b5xxQfRPM8S3w+48yfrv9/s8yukrVn4
-	VXTseTVVXw2mGIBVdCpj/BZVXe9G9HI=
+	b=PXFRvsBB6wXCXmZ7lG9srlG05l6kvlz/2sleXEDzy0Psswk0FYLA9P0GMnYWXGV611KqkX
+	SLrdN38JmcFdL+DbgMHsr88KQ+SW6lyzDdfGRMou+846UlV5hDBKrxyDBiS5vZfTNdtX2Q
+	pgqbTfE0gvXZxKeCw869IUwKFn1Lq6g=
 Received: from frank-u24.. (fttx-pool-217.61.151.84.bambit.de [217.61.151.84])
-	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id D3E0E1226D6;
-	Fri, 13 Jun 2025 14:45:31 +0000 (UTC)
+	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 260491226E5;
+	Fri, 13 Jun 2025 19:18:22 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
-To: 
+To: Felix Fietkau <nbd@nbd.name>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Subject: [net-next v1] net: ethernet: mtk_eth_soc: support named IRQs
-Date: Fri, 13 Jun 2025 16:45:23 +0200
-Message-ID: <20250613144525.53305-1-linux@fw-web.de>
+Date: Fri, 13 Jun 2025 21:18:11 +0200
+Message-ID: <20250613191813.61010-1-linux@fw-web.de>
 X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250613_074536_411296_32A0A315 
-X-CRM114-Status: GOOD (  12.24  )
+X-CRM114-CacheID: sfid-20250613_121824_992136_0D300EFF 
+X-CRM114-Status: GOOD (  12.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
