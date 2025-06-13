@@ -4,81 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05C34C71135
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jun 2025 08:54:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 942D9C71136
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Jun 2025 09:05:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GV5IiH1lX/tVnEyhZKXJm4snMe5XD+W9EpFTNssURzc=; b=eF7jqluG1irzpVIRbnoP70XEhD
-	HbZIjeNUFujH15jIiWrslYBoEfu4LtrpnK9R3G6AGmGth9JzV2jmGO4irl+McblyRfKC7ica+xeup
-	AMlra9phhgC0aS/B7DtqmjrNd46VdGrQ+7fMXDNZdr/SyV5jU55z2WjU5IkmtDPK9VkXLiiMD1+8v
-	Da61C6B7MOpP4J/ponTmvrba4clwh72ROc3NMPJz7DAvw2k3w6GHjznBCi0zU6Kvp14vs1ILys+AA
-	usfQW9p6E7pRR2msS7tlRnK5/vsJ6G89DXvc3IsewodVcRMCFhOuIxYi5OeeY8MauMjE1+Ct1AMKR
-	1S+MOVsA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2YOTrRIYHAQMxDPmdrkLQsY0a00p8bQlyvxqKqpg0NE=; b=2oNi6jtCr4PE38mlEeK8ZY6FKh
+	yCqRyrEz1geHoz0OOOkK1zqAPtFC8Lq2y/ZPqdnBiuJK+GzNZKwa4erPO/Nt6nhNHYgFQmpvBR3d5
+	iePkwA9yxK+OQ14q1nm3Bim6n7tPiXXhUxJLtR44SnkWZ7zhjX2H9k2Aahqm4BLPjReDMhtdw0Mrt
+	AfWwksDMUS3FKN/yqChh7uhD4bbRYXRQBZvxVcn2H3C1pQUJPYVvP/YRROirNwE/jFz1D7/L8QLWd
+	NDqvWR3AaNfF8ILdNtIEt58+XwBSrBtMAeS1kFyOBUV+rA7j0Q20jpoD89Fdzo04UtVSXBu/eIwZ/
+	tB+0GJZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQ0BF-0000000Fp8F-0oHo;
-	Fri, 13 Jun 2025 08:54:33 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1uQ0LX-0000000FqSA-1ZZp;
+	Fri, 13 Jun 2025 09:05:11 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uPz8m-0000000FfUK-1JOB;
-	Fri, 13 Jun 2025 07:47:57 +0000
-X-UUID: b46be22a482a11f09f706fa2197c6ceb-20250613
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=GV5IiH1lX/tVnEyhZKXJm4snMe5XD+W9EpFTNssURzc=;
-	b=PdyK+4mM1oc1I9BPeVs75+3anIPHYhq+C8lxZOMSwykkzH34K/5xQ2RWxUka6eFSioRlg6b5Xo2mZt1qjuaA08CA/EbST3ztjVKMRsmAi7hWuH7UFvOm7xUxEoypaY3j/nEfMxq4KjQG7fD60PTgwtgKSviydtA4STLBYW8fTsI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.3,REQID:afb0436c-caaf-4ef7-a3ae-8bed88675263,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:09905cf,CLOUDID:c769a558-abad-4ac2-9923-3af0a8a9a079,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102,TC:nil,Content:0|50,
-	EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
-	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: b46be22a482a11f09f706fa2197c6ceb-20250613
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
-	(envelope-from <kuyo.chang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 347310490; Fri, 13 Jun 2025 00:47:50 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Fri, 13 Jun 2025 15:47:45 +0800
-Received: from [10.233.130.16] (10.233.130.16) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.1258.39 via Frontend
- Transport; Fri, 13 Jun 2025 15:47:45 +0800
-Message-ID: <c32fcf451dad1cac40ad827e53ac6c027403b07e.camel@mediatek.com>
-Subject: Re: [PATCH 1/1] sched/core: Fix migrate_swap() vs. hotplug
-From: Kuyo Chang <kuyo.chang@mediatek.com>
-To: Peter Zijlstra <peterz@infradead.org>
-CC: Ingo Molnar <mingo@redhat.com>, Juri Lelli <juri.lelli@redhat.com>,
-	Vincent Guittot <vincent.guittot@linaro.org>, Dietmar Eggemann
-	<dietmar.eggemann@arm.com>, Steven Rostedt <rostedt@goodmis.org>, "Ben
- Segall" <bsegall@google.com>, Mel Gorman <mgorman@suse.de>, "Valentin
- Schneider" <vschneid@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Date: Fri, 13 Jun 2025 15:47:47 +0800
-In-Reply-To: <20250606082834.GM30486@noisy.programming.kicks-ass.net>
-References: <20250602072242.1839605-1-kuyo.chang@mediatek.com>
-	 <20250605100009.GO39944@noisy.programming.kicks-ass.net>
-	 <8e1018116ad7c5c325eced2cb17b65c73ca2ceca.camel@mediatek.com>
-	 <20250606082834.GM30486@noisy.programming.kicks-ass.net>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.52.3-0ubuntu1 
+	id 1uQ0LH-0000000FqFk-23a2
+	for linux-mediatek@bombadil.infradead.org;
+	Fri, 13 Jun 2025 09:04:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=2YOTrRIYHAQMxDPmdrkLQsY0a00p8bQlyvxqKqpg0NE=; b=Z+MiSQ7Fa0N3g7bDdq7H8J8Yok
+	YU2lAidi/y8l9bW+omDfY8PGE613YSfpM0UHxXD+U9wgdUdWL4kdOW7Sz8rov2Gyp30tLfS4TkN02
+	Ny0OX4rcIAraAi43s657YCrahxkJ0IHf66mtQvM5fbR7ImmGjV3LVPXVe+nVpUe+9sSvcheGnxBku
+	CO5H/FvJ6PLYc1JdE571It6h9fvm8WBLmxtagmMRYabnA45mwSiygMSf4s3f6l9rpVFYX8B9GgLK7
+	RttQUxDmh6d0pQFfKrFGtg/LkDyRK9pvOp/rMDAzA9w42OASvIizz9UFkNevt+y3HkGMlrdTIxZqI
+	XTsF2Z4Q==;
+Received: from smtp-out1.suse.de ([195.135.223.130])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uQ0LF-00000002wWK-2eNb
+	for linux-mediatek@lists.infradead.org;
+	Fri, 13 Jun 2025 09:04:55 +0000
+Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id AA4B22126D;
+	Fri, 13 Jun 2025 09:04:40 +0000 (UTC)
+Authentication-Results: smtp-out1.suse.de;
+	none
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 03FC013A9C;
+	Fri, 13 Jun 2025 09:04:39 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+	by imap1.dmz-prg2.suse.org with ESMTPSA
+	id 6LJgO6fpS2inNAAAD6G6ig
+	(envelope-from <tzimmermann@suse.de>); Fri, 13 Jun 2025 09:04:39 +0000
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: simona@ffwll.ch,
+	airlied@gmail.com,
+	mripard@kernel.org,
+	maarten.lankhorst@linux.intel.com,
+	geert@linux-m68k.org,
+	tomi.valkeinen@ideasonboard.com
+Cc: dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	freedreno@lists.freedesktop.org,
+	linux-arm-msm@vger.kernel.org,
+	imx@lists.linux.dev,
+	linux-samsung-soc@vger.kernel.org,
+	nouveau@lists.freedesktop.org,
+	virtualization@lists.linux.dev,
+	spice-devel@lists.freedesktop.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-tegra@vger.kernel.org,
+	intel-xe@lists.freedesktop.org,
+	xen-devel@lists.xenproject.org,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Inki Dae <inki.dae@samsung.com>,
+	Seung-Woo Kim <sw0312.kim@samsung.com>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>
+Subject: [PATCH v5 07/25] drm/exynos: Compute dumb-buffer sizes with drm_mode_size_dumb()
+Date: Fri, 13 Jun 2025 11:00:26 +0200
+Message-ID: <20250613090431.127087-8-tzimmermann@suse.de>
+X-Mailer: git-send-email 2.49.0
+In-Reply-To: <20250613090431.127087-1-tzimmermann@suse.de>
+References: <20250613090431.127087-1-tzimmermann@suse.de>
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Rspamd-Pre-Result: action=no action;
+	module=replies;
+	Message is reply to one we originated
+X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
+X-Spamd-Result: default: False [-4.00 / 50.00];
+	REPLY(-4.00)[]
+X-Rspamd-Queue-Id: AA4B22126D
+X-Rspamd-Pre-Result: action=no action;
+	module=replies;
+	Message is reply to one we originated
+X-Rspamd-Action: no action
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250613_004756_359617_B06BA3C8 
-X-CRM114-Status: GOOD (  16.05  )
+X-CRM114-CacheID: sfid-20250613_100453_835123_E2208292 
+X-CRM114-Status: GOOD (  11.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,57 +123,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2025-06-06 at 10:28 +0200, Peter Zijlstra wrote:
->=20
-> External email : Please do not click links or open attachments until
-> you have verified the sender or the content.
->=20
->=20
-> On Fri, Jun 06, 2025 at 11:46:57AM +0800, Kuyo Chang wrote:
->=20
-> > Thank you for your patch.
-> > I believe this patch also effectively addresses this race
-> > condition.
-> > I will queue it in our test pool for testing.
->=20
-> Thank you; I shall await the results!
->=20
-It works well during both regular and hotplug tests(one week).
-I believe the patch is workable.
-Please help to merge, thx.
+Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
+buffer size. No alignment required.
 
->=20
-> > > @@ -101,12 +98,12 @@ static bool cpu_stop_queue_work(unsigned int
-> > > cpu, struct cpu_stop_work *work)
-> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 raw_spin_lock_irqsave(&sto=
-pper->lock, flags);
-> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 enabled =3D stopper->enabl=
-ed;
-> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (enabled)
-> > > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0 __cpu_stop_queue_work(stopper, work, &wakeq);
-> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0 __cpu_stop_queue_work(stopper, work);
-> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 else if (work->done)
-> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 cpu_stop_signal_done(work->done);
-> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 raw_spin_unlock_irqrestore=
-(&stopper->lock, flags);
-> > >=20
-> > > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 wake_up_q(&wakeq);
-> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 wake_up_process(stopper->thread=
-);
-> >=20
-> > BTW, should we add enabled check here?
-> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (enabled)
-> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 wake_up_process(stopper->thread);
->=20
-> Ah yes. Spuriously waking the stopper thread is harmless, but
-> wasteful.
->=20
-> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 preempt_enable();
-> > >=20
-> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return enabled;
+Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+Cc: Inki Dae <inki.dae@samsung.com>
+Cc: Seung-Woo Kim <sw0312.kim@samsung.com>
+Cc: Kyungmin Park <kyungmin.park@samsung.com>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Alim Akhtar <alim.akhtar@samsung.com>
+---
+ drivers/gpu/drm/exynos/exynos_drm_gem.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/gpu/drm/exynos/exynos_drm_gem.c b/drivers/gpu/drm/exynos/exynos_drm_gem.c
+index 4787fee4696f..ffa1c02b4b1e 100644
+--- a/drivers/gpu/drm/exynos/exynos_drm_gem.c
++++ b/drivers/gpu/drm/exynos/exynos_drm_gem.c
+@@ -11,6 +11,7 @@
+ #include <linux/shmem_fs.h>
+ #include <linux/module.h>
+ 
++#include <drm/drm_dumb_buffers.h>
+ #include <drm/drm_prime.h>
+ #include <drm/drm_vma_manager.h>
+ #include <drm/exynos_drm.h>
+@@ -330,15 +331,16 @@ int exynos_drm_gem_dumb_create(struct drm_file *file_priv,
+ 	unsigned int flags;
+ 	int ret;
+ 
++	ret = drm_mode_size_dumb(dev, args, 0, 0);
++	if (ret)
++		return ret;
++
+ 	/*
+ 	 * allocate memory to be used for framebuffer.
+ 	 * - this callback would be called by user application
+ 	 *	with DRM_IOCTL_MODE_CREATE_DUMB command.
+ 	 */
+ 
+-	args->pitch = args->width * ((args->bpp + 7) / 8);
+-	args->size = args->pitch * args->height;
+-
+ 	if (is_drm_iommu_supported(dev))
+ 		flags = EXYNOS_BO_NONCONTIG | EXYNOS_BO_WC;
+ 	else
+-- 
+2.49.0
 
 
