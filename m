@@ -4,120 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58D28C71141
-	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Jun 2025 08:39:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41478C71135
+	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Jun 2025 11:17:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9TEZAlxDa5acq01LkdKBavZd5R2cJglwAlEtuKPbdhw=; b=fTgXLuEx3p2rpW
-	bAB7ONX3N06lboNFVdk313mBVBQ8hxKbH7x8l1sFNe2yV2UEQ9wxqNZOD5kIWa3kLDJrM9sDxDZz1
-	GU16UllvATH+0Jw0EzQOjkmJBTPVLjiW4EaYcdGweixELE+cVnmFAS+wc2J2eIqoUcrhVGtbPSwpK
-	l5whLPHmNfoJgEtO7C2zWzgaDkBD+oe0BVhwuuUzJRiL6esTujeMFFAN1pvvf6IJDy4w+LUHd9WZN
-	gDnMxmjg7u4kob5VN9E7lglGACc7aiajZiaesxLyVk0VY0uYdz9dmNEkofVBhoQycb/+ckgp63Jt7
-	k2O1gVb5ASj+HOdrI5Qw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=23ZYKOjKAg6Z4RsmhRnef4fxyr8C7DuBo5MUbYH/Jtw=; b=iRZBaPY5fUvibN5CHwcQ8XLmro
+	KDDXArbf4C21+vQkmS8i8soxxzS1/zUvhHpTpI9iR7YN7Dx348pJtg+shvdXIfNHkWs5HdLk59aoJ
+	1rd+OSnr2GeAkghcCIrtRQMc+qkyk7RzHpRckuDvz+r5tT1TwxuNlTn6G67VN2+UsgGv3VJNOx8YN
+	u0pWCtjE/QldaHY93Q4naBzd2H/dEdjsju7Db6KA5Y6PAX0gChfmjQZYYFFfLSZdodFe3VxgWMt+N
+	MPDvX61id3rh2fU1XflHSXhPJ9EolNt1dclXX74JDQpwKFhXd+UvBtUk683O+R3Erj5RZHw4Wtrfq
+	XdvtCO3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQMPi-00000000zTn-3Uo8;
-	Sat, 14 Jun 2025 08:38:58 +0000
-Received: from mout.gmx.net ([212.227.15.19])
+	id 1uQOsp-00000001Av2-34kU;
+	Sat, 14 Jun 2025 11:17:11 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQMPf-00000000zT4-18O7;
-	Sat, 14 Jun 2025 08:38:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1749890314; x=1750495114; i=frank-w@public-files.de;
-	bh=9TEZAlxDa5acq01LkdKBavZd5R2cJglwAlEtuKPbdhw=;
-	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
-	 References:Message-ID:MIME-Version:Content-Type:
-	 Content-Transfer-Encoding:cc:content-transfer-encoding:
-	 content-type:date:from:message-id:mime-version:reply-to:subject:
-	 to;
-	b=b6XWLLvpxRRTsTMRLcvZYMJgXxX7kjINssuIoBGMmhx3foxTEDx6mmFGRLLVoKCP
-	 fW2VOKo2yh3Siv/zZXZjLMWn7FdW+ZD8E8xMGgGkVB8Hctxciy4obcUoMq9uLXyEA
-	 yYGKywXSTtjwPVuCLi/O79ejcT5KRJndtwPoZH92hFVRx8H6YkodTRWyVOPhaU6w4
-	 VTiNcMrz4ftrOp99nrLnl02nYd0ylfMQFDYflYGR83Z748i7zm7HvywW4XelaOZCD
-	 xCoFjL1PxxLd7valEDwRCjBRhbsALraIR8oOeWxsJaRV3tx6EltBDgrW+iEyp5bib
-	 QqbLqFBUk1oDlCbyFQ==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [127.0.0.1] ([80.245.76.73]) by mail.gmx.net (mrgmx005
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1N5mGH-1utOnC3FFr-014PR0; Sat, 14
- Jun 2025 10:38:33 +0200
-Date: Sat, 14 Jun 2025 10:38:28 +0200
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Lorenzo Bianconi <lorenzo@kernel.org>, Frank Wunderlich <linux@fw-web.de>
-CC: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- daniel@makrotopia.org
-Subject: Re: [net-next v1] net: ethernet: mtk_eth_soc: support named IRQs
-User-Agent: K-9 Mail for Android
-In-Reply-To: <aE0pav5c8Ji1Q7br@lore-rh-laptop>
-References: <20250613191813.61010-1-linux@fw-web.de> <aE0pav5c8Ji1Q7br@lore-rh-laptop>
-Message-ID: <E6B6CB88-4B47-455D-9554-DE9BFC209454@public-files.de>
+	id 1uQOoa-00000001AX6-0xaE;
+	Sat, 14 Jun 2025 11:12:49 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id D533A5C5628;
+	Sat, 14 Jun 2025 11:10:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6A581C4CEEB;
+	Sat, 14 Jun 2025 11:12:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1749899566;
+	bh=9wVEwKDRxCUUHYAtNHKLRbgqbNZpbzuce/1YR2Sz23o=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=LTmaV3tb2hcMRRxMSe4a59qK2K9g3tJhPwicOqGofFQ2PrPD/j5BTD3GKTqR/LqCL
+	 12Ihqpd6PVhpQOtJw4YW5OCH5LkNF4QBLNPPKx955+Du6fR+HG6829g1/wEEB7vSH2
+	 HxLmnc4gXkJYGKHKlFly4oXB9RXpTUfKkPjN2ZE32Dmnqh0BCc0iXDrTCICrW4jhnw
+	 Jr18OqsYrlwZQlSufeICaZaLnUjfv+MvS9MNqm7YaU9xrOXBlWr/afGJ0c1TXnYknR
+	 Iec62PgQZLpsHqe5kjdPMgrvOAZ4ddEdRY1HRQkBnhV8GVHwFc2RxBSYR3wDWQMl/u
+	 YYYEn5j7KA9gA==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wenst@chromium.org>
+Cc: Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Jiaxin Yu <jiaxin.yu@mediatek.com>, linux-sound@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+In-Reply-To: <20250424102509.1083185-1-wenst@chromium.org>
+References: <20250424102509.1083185-1-wenst@chromium.org>
+Subject: Re: (subset) [PATCH v2 00/13] ASoC: mediatek: use reserved memory
+ or enable buffer pre-allocation
+Message-Id: <174989956314.19870.6679132279735424997.b4-ty@kernel.org>
+Date: Sat, 14 Jun 2025 12:12:43 +0100
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:JrsbjBGKMLoUdsIVKIdsdqQcm6qpyk4B31BbV7S4fPZu//cUl8L
- bKal6c09RHgy6BMsl4qTcr4MykN42AZ5qAqgwBfze5B9g4ZtfwKwC/B2xU6xHNxpaCq8px/
- 9mLj4heIYgyGi/FqypAGm9EXPI+EX8ugIxmk5+2IUqiaHURvZuBrKNSmzS1c7ampIwXoupK
- ijiHJbP6ouhIoCa+iP1Fw==
-UI-OutboundReport: notjunk:1;M01:P0:ECGvj57vr6I=;c0DD0gTvw/5BlGkR573YNjwkx+N
- 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
- OOA2lc1DIeKpK5Q3
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.15-dev-c25d1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250614_013855_678447_CC739768 
-X-CRM114-Status: GOOD (  20.22  )
+X-CRM114-CacheID: sfid-20250614_041248_362348_B5A44B64 
+X-CRM114-Status: GOOD (  13.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,117 +75,65 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 14=2E Juni 2025 09:48:58 MESZ schrieb Lorenzo Bianconi <lorenzo@kernel=
-=2Eorg>:
->> From: Frank Wunderlich <frank-w@public-files=2Ede>
->>=20
->> Add named interrupts and keep index based fallback for exiting devicetr=
-ees=2E
->>=20
->> Currently only rx and tx IRQs are defined to be used with mt7988, but
->> later extended with RSS/LRO support=2E
->>=20
->> Signed-off-by: Frank Wunderlich <frank-w@public-files=2Ede>
->> ---
->>  drivers/net/ethernet/mediatek/mtk_eth_soc=2Ec | 24 +++++++++++++------=
---
->>  1 file changed, 15 insertions(+), 9 deletions(-)
->>=20
->> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc=2Ec b/drivers/ne=
-t/ethernet/mediatek/mtk_eth_soc=2Ec
->> index b76d35069887=2E=2Efcec5f95685e 100644
->> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc=2Ec
->> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc=2Ec
->> @@ -5106,17 +5106,23 @@ static int mtk_probe(struct platform_device *pd=
-ev)
->>  		}
->>  	}
->> =20
->> -	for (i =3D 0; i < 3; i++) {
->> -		if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT) && i > 0)
->> -			eth->irq[i] =3D eth->irq[0];
->> -		else
->> -			eth->irq[i] =3D platform_get_irq(pdev, i);
->> -		if (eth->irq[i] < 0) {
->> -			dev_err(&pdev->dev, "no IRQ%d resource found\n", i);
->> -			err =3D -ENXIO;
->> -			goto err_wed_exit;
->> +	eth->irq[1] =3D platform_get_irq_byname(pdev, "tx");
->> +	eth->irq[2] =3D platform_get_irq_byname(pdev, "rx");
->
->Hi Frank,
->
->doing so you are not setting eth->irq[0] for MT7988 devices but it is act=
-ually
->used in mtk_add_mac() even for non-MTK_SHARED_INT devices=2E I guess we c=
-an reduce
->the eth->irq array size to 2 and start from 0 even for the MT7988 case=2E
->What do you think?
+On Thu, 24 Apr 2025 18:24:54 +0800, Chen-Yu Tsai wrote:
+> This is v2 of what was just a single patch "ASoC: mediatek: re-enable
+> buffer pre-allocation on some platforms". Link to v1:
+> 
+>     https://lore.kernel.org/all/20250401085659.1222008-1-wenst@chromium.org/
+> 
+> Angelo requested that these platforms use reserved memory regions if
+> possible, and fall back to pre-allocated buffers only if that fails,
+> to align with other MediaTek SoCs / platforms that already use reserved
+> memory. The series covers MediaTek's MT8173, MT8183, MT8186, and MT8192
+> SoCs.
+> 
+> [...]
 
-Hi Lorenzo,
+Applied to
 
-Thank you for reviewing my patch
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-I had to leave flow compatible with this:
+Thanks!
 
-<https://github=2Ecom/frank-w/BPI-Router-Linux/blob/bd7e1983b9f0a69cf47cc9=
-b9631138910d6c1d72/drivers/net/ethernet/mediatek/mtk_eth_soc=2Ec#L5176>
+[01/13] ASoC: dt-bindings: Convert MT8173 AFE binding to dt-schema
+        commit: bb90e0c91d375ec5db8a4f8cd2555900aea0725f
+[02/13] ASoC: dt-bindings: mt8173-afe-pcm: Add power domain
+        commit: 2fd902152c15a8cacab91e4a660413d189411561
+[03/13] ASoC: dt-bindings: mt8173-afe-pcm: Allow specifying reserved memory region
+        commit: 473ee884263f2127ea4e46a74ba15d07446ceabb
+[04/13] ASoC: dt-bindings: mt8186-afe-pcm: Allow specifying reserved memory region
+        commit: 81c73294a4eb2df31e974db2fc4397f5e0ecae09
+[05/13] ASoC: dt-bindings: mt8192-afe-pcm: Allow specifying reserved memory region
+        commit: cd12d3a5ed10e3e3b323f2b2c652de1c8e17a750
+[06/13] ASoC: mediatek: use reserved memory or enable buffer pre-allocation
+        commit: ec4a10ca4a68ec97f12f4d17d7abb74db34987db
+[07/13] ASoC: mediatek: mt8183-afe-pcm: Support >32 bit DMA addresses
+        commit: 9e7bc5cb8d089d9799e17a9ac99c5da9b13b02e3
+[08/13] ASoC: mediatek: mt8173-afe-pcm: use local `dev` pointer in driver callbacks
+        commit: b2c090c9f6aa9d19f4c966233d7fcb872255f83b
+[09/13] ASoC: mediatek: mt8183-afe-pcm: use local `dev` pointer in driver callbacks
+        commit: bb8d8ba4715cb8f997d63d90ba935f6073595df5
 
-Here the irqs are taken from index 1 and 2 for
- registration (!shared_int else only 0)=2E So i avoided changing the
- index,but yes index 0 is unset at this time=2E
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-I guess the irq0 is not really used here=2E=2E=2E
-I tested the code on bpi-r4 and have traffic
- rx+tx and no crash=2E
- imho this field is not used on !shared_int
- because other irq-handlers are used and
- assigned in position above=2E
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-It looks like the irq[0] is read before=2E=2E=2Ethere is a
- message printed for mediatek frame engine
- which uses index 0 and shows an irq 102 on
- index way and 0 on named version=2E=2E=2Ebut the
- 102 in index way is not visible in /proc/interrupts=2E
-So imho this message is misleading=2E
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-Intention for this patch is that irq 0 and 3 on
- mt7988 (sdk) are reserved (0 is skipped on=20
-!shared_int and 3 never read) and should imho
- not listed in devicetree=2E For further cleaner
- devicetrees (with only needed irqs) and to
- extend additional irqs for rss/lro imho irq
- names make it better readable=2E
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
->Regards,
->Lorenzo
->
->> +	if (eth->irq[1] < 0 || eth->irq[2] < 0) {
->> +		for (i =3D 0; i < 3; i++) {
->> +			if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT) && i > 0)
->> +				eth->irq[i] =3D eth->irq[0];
->> +			else
->> +				eth->irq[i] =3D platform_get_irq(pdev, i);
->> +
->> +			if (eth->irq[i] < 0) {
->> +				dev_err(&pdev->dev, "no IRQ%d resource found\n", i);
->> +				err =3D -ENXIO;
->> +				goto err_wed_exit;
->> +			}
->>  		}
->>  	}
->> +
->>  	for (i =3D 0; i < ARRAY_SIZE(eth->clks); i++) {
->>  		eth->clks[i] =3D devm_clk_get(eth->dev,
->>  					    mtk_clks_source_name[i]);
->> --=20
->> 2=2E43=2E0
->>=20
+Thanks,
+Mark
 
-
-regards Frank
 
