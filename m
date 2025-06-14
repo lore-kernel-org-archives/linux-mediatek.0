@@ -4,78 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03057C71135
-	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Jun 2025 02:05:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89553C71136
+	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Jun 2025 02:38:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=3d8Zhx9ObiwNzJOCXqpj07GKelYT8v9Bbdj5NmJup8A=; b=ECXkISaLl6QnsxCVZXmKu9DMPU
-	ThT9VvuRsymegW2oeVxXP/TW0Vm06O3Jywc9OJGx+H0INH6fmp9QfmhVELnXdx5rCrlTMcwjUfXDU
-	DXTcLO7dgX9woP71BXYcIC3VVLu1TvpT5hkKaNcd+XbItts0+kG6928Q16GwK5WuVc+X+PMYgiMN/
-	9KL0mpvmTgrYnlvK3ZQI2fPU5IO8IKGk1p44ZivNPVfq1UGUCEXlG6juPy3BwPdIzkXqaT31XglB7
-	gsNx3nfy0kTK20fRVE72pO7mSqq23vbrgMKtLjOA04MGVmeC34VV+nX5xF7FMj01bZZY6ZA2fhrIY
-	rEFLRKMQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/4zSIPw19HlLUie6b0kgjQJHS7vidQhIk3Cd96brfSo=; b=Gxw5DWJ4CEDoBPMcDsL4NZi5dW
+	JglFGROPjz7OkEvj10dCxW68dg+ojVUrmLJG+AT7ob4Qm1SjQNbgExt/z6YHsUV4r9Riv2jDuitEm
+	c2gm4Prd5yMkKbq9R8LGaFMBfxNlgpR9OQNT//YnRKMTdmwbT2+1vZ7FZnqk41mUaThKaS0O0WP2y
+	IVW20NsJGrnyavs78598P7rvipFMqxg2t3+NJesmgzLjKv7bElMMxalhiHo79VGLBHa56uoTywWrN
+	dcG1lMZx2bxq2HLUIT9S5Jn851Y2OdJNRKijBfyiv1qSK6lg1GfUDVgtLg6agHhL4i8/72cQR8+X2
+	+RBxSIGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQGH3-00000000WIt-43yl;
-	Sat, 14 Jun 2025 02:05:37 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1uQGmo-00000000Y2D-3Frq;
+	Sat, 14 Jun 2025 02:38:26 +0000
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQGH2-00000000WIC-2BtY;
-	Sat, 14 Jun 2025 02:05:37 +0000
-X-UUID: 0cc84b6848c411f09eb0dd999d3936bf-20250613
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=3d8Zhx9ObiwNzJOCXqpj07GKelYT8v9Bbdj5NmJup8A=;
-	b=rm4iv6JXqailfLDuFOVVmxKG7qC21pB7C6rypGQE78KqWP7+qPANaJs3AGB/Fkc1gW+N3rSal3bbMdEaUUy2eVBmIzciBNIaRKvlZUjKCmPdkG/D80gBf+qoaBUHtSlJYd3vvt7hE75Uh9ahcQ47bhU02GTscPzo4lsbsjAIOYQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.3,REQID:cc78903a-669e-4dda-93a1-2ffccdad15e5,IP:0,UR
-	L:0,TC:0,Content:-5,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-35
-X-CID-META: VersionHash:09905cf,CLOUDID:5bcef676-7521-4364-b0ef-cd7d9c0ecbde,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:2,IP:nil
-	,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:
-	1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 0cc84b6848c411f09eb0dd999d3936bf-20250613
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <kuyo.chang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 583862450; Fri, 13 Jun 2025 19:05:31 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Sat, 14 Jun 2025 10:05:28 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Sat, 14 Jun 2025 10:05:28 +0800
-From: Kuyo Chang <kuyo.chang@mediatek.com>
-To: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>,
-	Juri Lelli <juri.lelli@redhat.com>, Vincent Guittot
-	<vincent.guittot@linaro.org>, Dietmar Eggemann <dietmar.eggemann@arm.com>,
-	Steven Rostedt <rostedt@goodmis.org>, Ben Segall <bsegall@google.com>, Mel
- Gorman <mgorman@suse.de>, Valentin Schneider <vschneid@redhat.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: jstultz <jstultz@google.com>, kuyo chang <kuyo.chang@mediatek.com>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH 1/1] sched/deadline: Fix fair_server runtime calculation formula
-Date: Sat, 14 Jun 2025 10:04:55 +0800
-Message-ID: <20250614020524.631521-1-kuyo.chang@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1uQGkf-00000000XvQ-0L2P
+	for linux-mediatek@lists.infradead.org;
+	Sat, 14 Jun 2025 02:36:14 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-5532f9ac219so2779336e87.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 13 Jun 2025 19:36:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1749868570; x=1750473370; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=/4zSIPw19HlLUie6b0kgjQJHS7vidQhIk3Cd96brfSo=;
+        b=3x8Ikry+84sh/oYb+1u191TuViegfjTNSMxwXKg6WGi2YOSXAu0ytehfdClPTwRSTu
+         EchHdh4/YbzhCw6M+aT7if0drOeAUZFMuDLCPuPA2BhU+CWSFJiV27X7cVvTgctP7wyo
+         CbLviI6FSZulYAkfRhJHx4Bdb2LHGukNn6idq06mnoy8P0JrhSVruwZkneTqOxLLJk58
+         bwwglr9vqCuWvdHlLtrpGfZOV1OQiwDiBR9BrtL5Oiz6i968sE1LPNga4ktS/kYkLBPH
+         Voru1nY2Onjs9UbZdS7WmJVwT+IPX6/SknS/D5eOVTfp1PSjWzLxuSca355I0IGuwrl+
+         5EDg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1749868570; x=1750473370;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=/4zSIPw19HlLUie6b0kgjQJHS7vidQhIk3Cd96brfSo=;
+        b=jxI4AVf6JgNu4Bu1HqN0D+Y4Uc0167UFBP4mOJ0xPnh52enAR0JYKuC5v9JyLfnqxY
+         oEkOEBNMsu/pMCMQDFotys0SVvJJUAoh5JSXMSQu4HjdZNT/Z/UZEWfN9bglHGhCwWv7
+         U7G4+iFqEWJARiWSujYpqDQP7r9yJrIIqsuNCrXm41pD80tt90k7UKa2WbPqG4qdfwnB
+         RxLtQkvu1nsILwj1MnrxKKMe2XxhzSRw9Vta1/FL7U+6VB+rxsAnyoEKLoRW18i4nsU6
+         AXcz/yIwh0QWoBB1tes1LJXwksiXiRRfZZpsLoDeeQZyEltMduBb1TwsDLGuA0xjyeB/
+         EMFQ==
+X-Forwarded-Encrypted: i=1; AJvYcCW22cpAMgbBYz0j1gZS4EsGb55UnxTZy+IRFS7KtscQKgVDXAlz3PK+m/XnCq3A5NpDchI55SgxCRZiArWKmA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxtR8Iu6qUwO9IeZTpfwFP+ooE00J7YMBVwDHOYKpgbEmjX6bd3
+	vmoECDpj4CO/jW3bCVopBKX5AzCxojeUiLZpIX7oHuuFAIUjOqmKTGk9bFxsvl80RUKCWDG+MUW
+	9X+QlqvxYtJYkf0Nep509C+F6ch/ucsU/wNPeT/8=
+X-Gm-Gg: ASbGnctTwsHHTHhhlrpIOOdd/T2tSr/I1vVAA/lYGiLP4JaXAmD3JJ1CvtoLpkAwPme
+	+U4ilL5xIuwBALaY/h4tT5vvZ84m/mRJojIKDjsrFAKFH4f/tl0aLL6toeCeaioIujT1mM65tZd
+	lGhqpogaVg4eUtU2D4jH4aSKTHBePxcNyPECoMfErsfI+OHqmw8yJuI3T3+qRcAJu+DE3N6WU=
+X-Google-Smtp-Source: AGHT+IFxdd/eeA/jqO+ioIaQwggzyaJAKSp2npacWe2qm5ZmqZbGMbcXq9pAMDlbKaGfZHdE5uH6xTWQR5MyLSGGuXg=
+X-Received: by 2002:a05:6512:3f12:b0:553:ae47:6856 with SMTP id
+ 2adb3069b0e04-553b6e7d3b4mr334265e87.10.1749868570161; Fri, 13 Jun 2025
+ 19:36:10 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+References: <20250614020524.631521-1-kuyo.chang@mediatek.com>
+In-Reply-To: <20250614020524.631521-1-kuyo.chang@mediatek.com>
+From: John Stultz <jstultz@google.com>
+Date: Fri, 13 Jun 2025 19:35:58 -0700
+X-Gm-Features: AX0GCFtDliQH_6brlg-dmQaZIRQh31WrUqfBwRgyCd0Z_gzAKUDVN86BzaEZjjk
+Message-ID: <CANDhNCpoKUbQU590m-vBKhk96ZCKDsYWOHwP_LL2W84SPOnXww@mail.gmail.com>
+Subject: Re: [PATCH 1/1] sched/deadline: Fix fair_server runtime calculation formula
+To: Kuyo Chang <kuyo.chang@mediatek.com>
+Cc: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>, 
+	Juri Lelli <juri.lelli@redhat.com>, Vincent Guittot <vincent.guittot@linaro.org>, 
+	Dietmar Eggemann <dietmar.eggemann@arm.com>, Steven Rostedt <rostedt@goodmis.org>, 
+	Ben Segall <bsegall@google.com>, Mel Gorman <mgorman@suse.de>, 
+	Valentin Schneider <vschneid@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250613_190536_572140_848EB719 
-X-CRM114-Status: GOOD (  12.86  )
+X-CRM114-CacheID: sfid-20250613_193613_111430_B50A6FDE 
+X-CRM114-Status: GOOD (  18.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,71 +99,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: kuyo chang <kuyo.chang@mediatek.com>
+On Fri, Jun 13, 2025 at 7:05=E2=80=AFPM Kuyo Chang <kuyo.chang@mediatek.com=
+> wrote:
+> From: kuyo chang <kuyo.chang@mediatek.com>
+>
+> [Symptom]
+> The calculation formula for fair_server runtime is based on
+> Frequency/CPU scale-invariance.
+> This will cause excessive RT latency (expect absolute time).
+>
+> [Analysis]
+> Consider the following case under a Big.LITTLE architecture:
+>
+> Assume the runtime is : 50,000,000 ns, and FIE/CIE as below
+> FIE: 100
+> CIE:50
+> First by FIE, the runtime is scaled to 50,000,000 * 100 >> 10 =3D 4,882,8=
+12
+> Then by CIE, it is further scaled to 4,882,812 * 50 >> 10 =3D 238,418.
+>
+> So it will scaled to 238,418 ns.
+>
+> [Solution]
+> The runtime for fair_server should be absolute time
+> asis RT bandwidth control.
+> Fix the runtime calculation formula for the fair_server.
+>
+> Signed-off-by: kuyo chang <kuyo.chang@mediatek.com>
 
-[Symptom]
-The calculation formula for fair_server runtime is based on
-Frequency/CPU scale-invariance.
-This will cause excessive RT latency (expect absolute time).
+While I've not quite gotten my head around the details in the
+dl_server code, I've been able to reproduce the problem described here
+with a 6.12 based kernel.
 
-[Analysis]
-Consider the following case under a Big.LITTLE architecture:
+Running cyclictest (with arguments "-t -a -p99 -m") , and a randomized
+input test on an Android device, its pretty easy to trip 100ms to
+*multi-second* delays of the RT prio 99 threads.
 
-Assume the runtime is : 50,000,000 ns, and FIE/CIE as below
-FIE: 100
-CIE:50
-First by FIE, the runtime is scaled to 50,000,000 * 100 >> 10 = 4,882,812
-Then by CIE, it is further scaled to 4,882,812 * 50 >> 10 = 238,418.
+Perfetto image:
+https://github.com/johnstultz-work/misc/blob/main/images/2025-06-13_cyclict=
+est-dl-server-latency.png
 
-So it will scaled to 238,418 ns.
+Link to the actual trace:
+https://ui.perfetto.dev/#!/?s=3D9bbb9e539ac2bbbfe3cfa954409134662a9f624a
 
-[Solution]
-The runtime for fair_server should be absolute time
-asis RT bandwidth control.
-Fix the runtime calculation formula for the fair_server.
+Using this patch, so far in my testing with the same workload, the max
+cyclictest latencies stick around the single digit ms range.
 
-Signed-off-by: kuyo chang <kuyo.chang@mediatek.com>
----
- kernel/sched/deadline.c | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
+The part that is a little confusing to me, is that prior to the long
+stall, it doesn't appear that RT tasks are actually starving
+SCHED_NORMAL tasks, so I'm conceptually surprised to see the dl_server
+boosting the normal tasks, especially for so long, but I admittedly
+haven't looked in detail at the code and have been going off my
+understanding of how it was supposed to replace rt-throttling, so I
+may be missing a subtlety.
 
-diff --git a/kernel/sched/deadline.c b/kernel/sched/deadline.c
-index ad45a8fea245..8bfa846cf0dc 100644
---- a/kernel/sched/deadline.c
-+++ b/kernel/sched/deadline.c
-@@ -1504,7 +1504,10 @@ static void update_curr_dl_se(struct rq *rq, struct sched_dl_entity *dl_se, s64
- 	if (dl_entity_is_special(dl_se))
- 		return;
- 
--	scaled_delta_exec = dl_scaled_delta_exec(rq, dl_se, delta_exec);
-+	if (dl_se == &rq->fair_server)
-+		scaled_delta_exec = delta_exec;
-+	else
-+		scaled_delta_exec = dl_scaled_delta_exec(rq, dl_se, delta_exec);
- 
- 	dl_se->runtime -= scaled_delta_exec;
- 
-@@ -1611,7 +1614,7 @@ static void update_curr_dl_se(struct rq *rq, struct sched_dl_entity *dl_se, s64
-  */
- void dl_server_update_idle_time(struct rq *rq, struct task_struct *p)
- {
--	s64 delta_exec, scaled_delta_exec;
-+	s64 delta_exec;
- 
- 	if (!rq->fair_server.dl_defer)
- 		return;
-@@ -1624,9 +1627,7 @@ void dl_server_update_idle_time(struct rq *rq, struct task_struct *p)
- 	if (delta_exec < 0)
- 		return;
- 
--	scaled_delta_exec = dl_scaled_delta_exec(rq, &rq->fair_server, delta_exec);
--
--	rq->fair_server.runtime -= scaled_delta_exec;
-+	rq->fair_server.runtime -= delta_exec;
- 
- 	if (rq->fair_server.runtime < 0) {
- 		rq->fair_server.dl_defer_running = 0;
--- 
-2.45.2
-
+thanks
+-john
 
