@@ -4,86 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C526C71141
-	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Jun 2025 14:21:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82EA4C71135
+	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Jun 2025 17:34:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8e3DxKlTkHkq34hhZRfANEedfniwXUt08LpkkMu370o=; b=fk3a8Z3Zjny1//YAAlel6nJxRO
-	zpPUmE3HIqoWa1ZSJGZ6RBnBizUEgLWvdMV0SlhBAR0vDi0JXx+5MwJ4achc2WmnDxpQuIWtwrGbp
-	TYz86i4uVRZDc/irJ4VbDe2e0f+BQ+Ct03sqPPwhv90R4YutHU2+3jZxDB0HdZqz+4GRlEwZZdEkK
-	ioLvgO2oxEHPjKUwNlP0KXSMhINethNDmXjpM07p+ifRheownLpqxHF1LrOlL3fDSBmakZDdAhwBb
-	by+I1+ANzKzbHYhRQXTCR8/3L8Pkp5PyU5NyTF+W9JD1ho0qqliRGllyvq8WTzUmWSbm2O6v8wCzO
-	6k43zgkQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Tnh3I6N2vwHaG7hUABhR7dRSMyHRGfDGJJx8tTRG/tU=; b=e5C1RzNVv87edvc6jIJivSXMLC
+	000ONvYM1Xr5iQAPVutF3CO26k3af3BkW07/OTR16WUxLL21mQ8kXfcCrQYgaFxplnSfK4uk7zrsw
+	5g9YlWElTsUW9ko0L6J99B49659ipwgjqDqIpqDKuEkq1nSdNzrn/8FguQl33y33lBNgOT0jXKrRA
+	270mznnCBphlnD7Hj1rz2qsKx6z0rEP2y8s7h2slh53QtIUGwZ25o24eeChXBu9eW2YjWU18g7oK9
+	qz0A5mNKZTsegDssGqz3yRu+MK5GAML7v8B0gNwWE0ZCEo3lZtqR3oMYwwsBLR9CaqbprsI/uRcXY
+	LR40YMHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQRl3-00000001Nvx-1u2l;
-	Sat, 14 Jun 2025 14:21:21 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1uQUlb-00000001aGn-3hS7;
+	Sat, 14 Jun 2025 17:34:07 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQRik-00000001NpH-2weC;
-	Sat, 14 Jun 2025 14:18:59 +0000
+	id 1uQUjQ-00000001a6A-431X;
+	Sat, 14 Jun 2025 17:31:54 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id AC98EA50B0B;
-	Sat, 14 Jun 2025 14:18:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5BDCEC4CEEB;
-	Sat, 14 Jun 2025 14:18:48 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id E219743ED5;
+	Sat, 14 Jun 2025 17:31:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 57780C4CEEB;
+	Sat, 14 Jun 2025 17:31:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1749910737;
-	bh=TAefawj8sFz6PzX77ED0UDRrtR9qcAx7l29OSrOfCJ0=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=Ta9SO3rEXMSLA10FI7fBR3F6/8k5nRYF+su0+OPjS5hW+vMPqYqkjwkBqhYYBZJzi
-	 WkxbcgQaolfGAHRjZceYZBqeLjg3nxqewEpEhi/mc3fXRRgOVjQmxu7ghIAZztiJWi
-	 rcXaFy9n2AswtVLbxFPrJHJQ5k7DbNhVzkcrWFm8KVbZvInGvZmzv0P2o5TRxwzScJ
-	 EXpRqYx7xKx2ZA5uXP8ZlvfB0XTbU8PVP30WMoANTItUUqs4EdtCQcckRCKr/THZHj
-	 QqEd2x3S4DlvrLbcIOo7MzysAEzgrI8Z9I2cHL8+5MkDlEBeHuyeU6NRmGWVCBNvn6
-	 0y8FcKrLKOhAw==
-Date: Sat, 14 Jun 2025 15:18:44 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Pavel Machek <pavel@ucw.cz>
-Cc: Andy Shevchenko <andriy.shevchenko@intel.com>, Nicolas Frattaroli
- <nicolas.frattaroli@collabora.com>, David Lechner <dlechner@baylibre.com>,
- linux-rockchip@lists.infradead.org, Michael Hennerich
- <michael.hennerich@analog.com>, Lars-Peter Clausen <lars@metafoo.de>, Nuno
- =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Heiko Stuebner
- <heiko@sntech.de>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre
- Torgue <alexandre.torgue@foss.st.com>, Francesco Dolcini
- <francesco@dolcini.it>, =?UTF-8?B?Sm/Do28=?= Paulo =?UTF-8?B?R29uw6dhbHZl?=
- =?UTF-8?B?cw==?= <jpaulo.silvagoncalves@gmail.com>, Leonard
- =?UTF-8?B?R8O2aHJz?= <l.goehrs@pengutronix.de>, kernel@pengutronix.de,
- Oleksij Rempel <o.rempel@pengutronix.de>, Roan van Dijk <roan@protonic.nl>,
- Tomasz Duszynski <tomasz.duszynski@octakon.com>, Jacopo Mondi
- <jacopo@jmondi.org>, Jean-Baptiste Maneyrol
- <jean-baptiste.maneyrol@tdk.com>, Mudit Sharma
- <muditsharma.info@gmail.com>, Javier Carrasco
- <javier.carrasco.cruz@gmail.com>, =?UTF-8?B?T25kxZllag==?= Jirman
- <megi@xff.cz>, Andreas Klinger <ak@it-klinger.de>, Petre Rodan
- <petre.rodan@subdimension.ro>, linux-iio@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH 00/28] iio: zero init stack with { } instead of memset()
-Message-ID: <20250614151844.50524610@jic23-huawei>
-In-Reply-To: <20250614131844.7fdc10b8@jic23-huawei>
-References: <20250611-iio-zero-init-stack-with-instead-of-memset-v1-0-ebb2d0a24302@baylibre.com>
-	<aEqbQPvz0FsLXt0Z@duo.ucw.cz>
-	<2243943.irdbgypaU6@workhorse>
-	<aEsiTy++yKGe1p9W@duo.ucw.cz>
-	<aEsmDyc44P8amm5p@smile.fi.intel.com>
-	<aE0a/Y9qVByfA2vI@duo.ucw.cz>
-	<20250614131844.7fdc10b8@jic23-huawei>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.48; x86_64-pc-linux-gnu)
+	s=k20201202; t=1749922311;
+	bh=P+BrB0OUaNa56UdWZa5rw+h39uQANByq8vbDPUy1nj0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=qEK2F54o22UzFG65tTbJ0eJGLwzvYnr6MZ41HqaI59pUgP2Zly4XuWFz69wDN8ulW
+	 iKgkQs6AaOiwhD7ccKHcvA00mJNvfXunBjN3bqDjTLxiPUjaYgTTflO9iDVVlJPbsX
+	 TjwJiRD7yjb5o/JIE94Rl6fdJkh2kgbjPsab8NyZX+qq3erJAulFWnyzf9WCSwcg3t
+	 UU7buH17UGkxBTsAcPyLq5H0kHVyqrifUHUYfCCW48Shq1BI1us0m4dpFYMRRZbAJO
+	 QcU9Hov5TXQq/rly29O/IfUeXEp+Ztik2FbHxoLOtkDqNHhTxJ/c0ewPG5KR6tHm0Y
+	 mAQgU5wjymq8w==
+Date: Sat, 14 Jun 2025 18:31:48 +0100
+From: Simon Horman <horms@kernel.org>
+To: Frank Wunderlich <linux@fw-web.de>
+Subject: Re: [net-next v1] net: ethernet: mtk_eth_soc: support named IRQs
+Message-ID: <20250614173148.GV414686@horms.kernel.org>
+References: <20250613144525.53305-1-linux@fw-web.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250613144525.53305-1-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250614_071858_886743_2B8C1A17 
-X-CRM114-Status: GOOD (  29.76  )
+X-CRM114-CacheID: sfid-20250614_103153_023069_62766A42 
+X-CRM114-Status: GOOD (  21.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,71 +65,72 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, daniel@makrotopia.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 14 Jun 2025 13:18:44 +0100
-Jonathan Cameron <jic23@kernel.org> wrote:
+On Fri, Jun 13, 2025 at 04:45:23PM +0200, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
+> 
+> Add named interrupts and keep index based fallback for exiting devicetrees.
+> 
+> Currently only rx and tx IRQs are defined to be used with mt7988, but
+> later extended with RSS/LRO support.
+> 
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 24 +++++++++++++--------
+>  1 file changed, 15 insertions(+), 9 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> index b76d35069887..fcec5f95685e 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> @@ -5106,17 +5106,23 @@ static int mtk_probe(struct platform_device *pdev)
+>  		}
+>  	}
+>  
+> -	for (i = 0; i < 3; i++) {
+> -		if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT) && i > 0)
+> -			eth->irq[i] = eth->irq[0];
+> -		else
+> -			eth->irq[i] = platform_get_irq(pdev, i);
+> -		if (eth->irq[i] < 0) {
+> -			dev_err(&pdev->dev, "no IRQ%d resource found\n", i);
+> -			err = -ENXIO;
+> -			goto err_wed_exit;
+> +	eth->irq[1] = platform_get_irq_byname(pdev, "tx");
+> +	eth->irq[2] = platform_get_irq_byname(pdev, "rx");
+> +	if (eth->irq[1] < 0 || eth->irq[2] < 0) {
+> +		for (i = 0; i < 3; i++) {
+> +			if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT) && i > 0)
+> +				eth->irq[i] = eth->irq[0];
+> +			else
+> +				eth->irq[i] = platform_get_irq(pdev, i);
+> +
+> +			if (eth->irq[i] < 0) {
+> +				dev_err(&pdev->dev, "no IRQ%d resource found\n", i);
+> +				err = -ENXIO;
+> +				goto err_wed_exit;
+> +			}
+>  		}
+>  	}
+> +
 
-> On Sat, 14 Jun 2025 08:47:25 +0200
-> Pavel Machek <pavel@ucw.cz> wrote:
-> 
-> > On Thu 2025-06-12 22:10:07, Andy Shevchenko wrote:  
-> > > On Thu, Jun 12, 2025 at 08:54:07PM +0200, Pavel Machek wrote:    
-> > > > > On Thursday, 12 June 2025 11:17:52 Central European Summer Time Pavel Machek wrote:    
-> > > > > >     
-> > > > > > > Jonathan mentioned recently that he would like to get away from using
-> > > > > > > memset() to zero-initialize stack memory in the IIO subsystem. And we
-> > > > > > > have it on good authority that initializing a struct or array with = { }
-> > > > > > > is the preferred way to do this in the kernel [1]. So here is a series
-> > > > > > > to take care of that.    
-> > > > > > 
-> > > > > > 1) Is it worth the churn?
-> > > > > > 
-> > > > > > 2) Will this fail to initialize padding with some obscure compiler?    
-> > > > > 
-> > > > > as of right now, the only two C compilers that are supported are
-> > > > > GCC >= 8.1, and Clang >= 13.0.1. If anyone even manages to get the
-> > > > > kernel    
-> > > > 
-> > > > Well... I'm pretty sure parts of this would make it into -stable as a
-> > > > dependency, or because AUTOSEL decides it is a bugfix. So..
-> > > > 
-> > > > GNU C                  4.9              gcc --version
-> > > > Clang/LLVM (optional)  10.0.1           clang --version    
-> > > 
-> > > Even though, what the kernel versions are you referring to? I am sure there
-> > > plenty of cases with {} there.    
-> > 
-> > 5.10, for example. I'm sure they are, uninitialized padding is a
-> > security hole, but rather hard to detect if they are not specifically
-> > looking.  
-> 
-> The stack kunit test is there back to 5.0-rc4 
-> 50ceaa95ea09 ("lib: Introduce test_stackinit module")
-> 
-> So I think we should be pretty well defended against issues.
-> 
-> Hence I plan to pick this up curently.
-> 
-> Thanks all for inputs on this.
-> 
-> Fun corners of the C spec vs implementations!
-> 
-> Jonathan
-> 
-I want to give this some testing exposure from 0-day etc in case
-we missed any build related issues so I've queued it up on my testing branch.
-I can still pick up tags / rebase etc for now.
+Thanks Frank,
 
-Thanks,
+The above looks correct to me. But I do think it could be improved by moving
+the irq lookup logic - either the unnamed portion or all of it - into a
+helper.
 
-Jonathan
+That suggestion notwithstanding,
+Reviewed-by: Simon Horman <horms@kernel.org>
 
-> > 
-> > BR,
-> > 								Pavel  
+>  	for (i = 0; i < ARRAY_SIZE(eth->clks); i++) {
+>  		eth->clks[i] = devm_clk_get(eth->dev,
+>  					    mtk_clks_source_name[i]);
+> -- 
+> 2.43.0
 > 
 > 
-
 
