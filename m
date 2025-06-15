@@ -4,62 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCF47C71135
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Jun 2025 12:04:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13271C61CE8
+	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Jun 2025 13:11:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:Message-ID:References:In-Reply-To:
-	Subject:To:From:Date:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XRcdvBt0CthVJmnj/dbaqQtXhJV7sGdCW7ml88MPC1U=; b=On8+URKpAOd0UX
-	rzZuPpX3WPjy8sshVx2jtONr/wqKu8Kam19sOeFJtBZs0HoNfE49DZ8c+c+uYVZ0vqEWFW9wlbyy7
-	3lZ/19A0wVYzSuid9I9Me3Ki0406aAfufXsdoIYfxvKX99QFhGK0NrWr8lUoO5Ha0THzJ3vUWRh+5
-	RydkyVcVYSJVzMpMVC22Z2e7OO5cWY7VaXxAJZqYX9mqzi3MEniW79REE+pSt3S0/BROgv8WPKMVJ
-	6z8VOsm4cSRHdY+hk1JgZOEZj/v7XqB/cIDbrg995YWitk4BBQHn93dBtnMQNwcidVOrgV2O4HLts
-	lFsiRR81M9zHdlXs/YhA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=usl4/2l7U2zs+bKp5NBYGpcsEmlicfN2geH1QvXLaq4=; b=aFJglnyArjIaHT5OFWlu4WPRUj
+	RtYdJy2hCj2/H2C+d1f/1eu1eI4LjCOotEoNZB/n5IPMFGVhXUIF2NrwFXxjA79exHPEquokybscj
+	KqQGVu1d8N8o4aLiwYXyfcLTAnJ2qHnCz4p92GMsxWQd7D46oXmWySnCecZOdjwAerT0rYbtDDv/l
+	ZLkPqzoFo2hQsT3tOXMh6y/rFEMYx7dcVJSTV/J8cdNCDZ+qbJ6tqPe/vbDk+a9UA5DXHhKwmMkus
+	yUJ4EWSDsLY4yLvfg3wibLsCAKpUu6ptg0oN+TwKhHu+sRo3clOHE+/w+lGUp3cBB4IbpQodDy7N3
+	GLDUiHDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQm6M-00000002TZm-1fYQ;
-	Sun, 15 Jun 2025 12:04:42 +0000
-Received: from mxout3.routing.net ([2a03:2900:1:a::8])
+	id 1uQn9G-00000002Vid-0qo5;
+	Sun, 15 Jun 2025 13:11:46 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQm48-00000002TTl-0pxJ;
-	Sun, 15 Jun 2025 12:02:25 +0000
-Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
-	by mxout3.routing.net (Postfix) with ESMTP id D1E5F6028B;
-	Sun, 15 Jun 2025 12:02:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1749988942;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=XRcdvBt0CthVJmnj/dbaqQtXhJV7sGdCW7ml88MPC1U=;
-	b=FlBhO5D2z9tg6W1gK4eedfxgObCDzADaUVoNpqI4mUbuJo2B9TDQMwJHp5qyUby+9IaLjC
-	7CqRrCj/VLERiAuYikxrK8EwdtpC7gdJu+ZGVSZ+EsTQKM+CKTRd1KNvrH+aEqrbvr2AgO
-	EwwRI18V5VA9KByMltAqfQujCGs6WMU=
-Received: from webmail.hosting.de (unknown [134.0.26.148])
-	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id EDB97100506;
-	Sun, 15 Jun 2025 12:02:20 +0000 (UTC)
+	id 1uQn9D-00000002Vi0-3Kvu;
+	Sun, 15 Jun 2025 13:11:44 +0000
+X-UUID: 4408555649ea11f09eb0dd999d3936bf-20250615
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=usl4/2l7U2zs+bKp5NBYGpcsEmlicfN2geH1QvXLaq4=;
+	b=YbooSoYTj1aH4TEVM8T7MbfiKqmtJ9hHZUmSjSkF8PeYs3TYKNlQFhkRvAHDgAl77utqF6IBF5egSVcq3akAo9BAtGAdHUkY1iwdtqCVcqD9NVdkV4JxnU17f4Kes8kBKDa0BzuRUiRYEIZ4j5hiN2vNO9gO7pY/CnMm4lwKHuM=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.3,REQID:8d414f3e-561f-4b6d-8349-e3ea9294a083,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:09905cf,CLOUDID:8737b303-0d95-4f6b-a95f-3c560ebcf3ab,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 4408555649ea11f09eb0dd999d3936bf-20250615
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
+	(envelope-from <kuyo.chang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1175088408; Sun, 15 Jun 2025 06:11:36 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Sun, 15 Jun 2025 21:11:13 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Sun, 15 Jun 2025 21:11:31 +0800
+From: Kuyo Chang <kuyo.chang@mediatek.com>
+To: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>,
+	Juri Lelli <juri.lelli@redhat.com>, Vincent Guittot
+	<vincent.guittot@linaro.org>, Dietmar Eggemann <dietmar.eggemann@arm.com>,
+	Steven Rostedt <rostedt@goodmis.org>, Ben Segall <bsegall@google.com>, "Mel
+ Gorman" <mgorman@suse.de>, Valentin Schneider <vschneid@redhat.com>,
+	"Matthias Brugger" <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: jstultz <jstultz@google.com>, kuyo chang <kuyo.chang@mediatek.com>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+Subject: [RFC PATCH 1/1] sched/deadline: Fix RT task potential starvation when expiry time passed
+Date: Sun, 15 Jun 2025 21:10:56 +0800
+Message-ID: <20250615131129.954975-1-kuyo.chang@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Date: Sun, 15 Jun 2025 14:02:20 +0200
-From: "Frank Wunderlich (linux)" <linux@fw-web.de>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Subject: Re: [PATCH v2] net: ethernet: mtk_eth_soc: support named IRQs
-In-Reply-To: <aE6cyHC39IV27PcF@lore-desk>
-References: <20250615084521.32329-1-linux@fw-web.de>
- <aE6K-d0ttAnBzcNg@lore-desk> <d4781d559e3f72b0bcde88e6b04ed8e5@fw-web.de>
- <aE6cyHC39IV27PcF@lore-desk>
-Message-ID: <ed6cd7a2e489e89352322f77af1ddd89@fw-web.de>
-X-Sender: linux@fw-web.de
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
-Content-Transfer-Encoding: 7bit
-X-Mail-ID: 982a129f-54e7-4806-9863-06e9150fd816
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250615_050224_407620_7F228BAA 
-X-CRM114-Status: GOOD (  16.75  )
+X-CRM114-CacheID: sfid-20250615_061143_850492_213B26EF 
+X-CRM114-Status: GOOD (  13.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,59 +87,108 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, Simon Horman <horms@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David
- S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 2025-06-15 12:13, schrieb Lorenzo Bianconi:
->> Am 2025-06-15 10:57, schrieb Lorenzo Bianconi:
->> > > From: Frank Wunderlich <frank-w@public-files.de>
->> > >
->> > Hi Frank,
->> >
->> > I guess my comments on v1 apply even in v2. Can you please take a look?
-> 
-> sure
+From: kuyo chang <kuyo.chang@mediatek.com>
 
-:)
+[Symptom]
+The fair server mechanism, which is intended to prevent fair starvation
+when higher-priority tasks monopolize the CPU.
+Specifically, RT tasks on the runqueue may not be scheduled as expected.
 
->> Am 2025-06-15 10:57, schrieb Lorenzo Bianconi:
->> > > From: Frank Wunderlich <frank-w@public-files.de>
+[Analysis]
+---------
+The log "sched: DL replenish lagged too much" triggered.
 
-> I am fine to have it in a separate patch but I would prefer to have 
-> this patch
-> in the same series, I think it is more clear.
+By memory dump of dl_server:
+--------------
+    curr = 0xFFFFFF80D6A0AC00 (
+      dl_server = 0xFFFFFF83CD5B1470(
+        dl_runtime = 0x02FAF080,
+        dl_deadline = 0x3B9ACA00,
+        dl_period = 0x3B9ACA00,
+        dl_bw = 0xCCCC,
+        dl_density = 0xCCCC,
+        runtime = 0x02FAF080,
+        deadline = 0x0000082031EB0E80,
+        flags = 0x0,
+        dl_throttled = 0x0,
+        dl_yielded = 0x0,
+        dl_non_contending = 0x0,
+        dl_overrun = 0x0,
+        dl_server = 0x1,
+        dl_server_active = 0x1,
+        dl_defer = 0x1,
+        dl_defer_armed = 0x0,
+        dl_defer_running = 0x1,
+        dl_timer = (
+          node = (
+            expires = 0x000008199756E700),
+          _softexpires = 0x000008199756E700,
+          function = 0xFFFFFFDB9AF44D30 = dl_task_timer,
+          base = 0xFFFFFF83CD5A12C0,
+          state = 0x0,
+          is_rel = 0x0,
+          is_soft = 0x0,
+    clock_update_flags = 0x4,
+    clock = 0x000008204A496900,
 
-I added changes for your and daniels comments to my repo (top 2 
-commits):
+- The timer expiration time (rq->curr->dl_server->dl_timer->expires)
+  is already in the past, indicating the timer has expired.
+- The timer state (rq->curr->dl_server->dl_timer->state) is 0.
 
-https://github.com/frank-w/BPI-Router-Linux/commits/6.16-mt7988upstream/
+[Suspected Root Cause]
+--------------------
+The relevant code flow in the throttle path of
+update_curr_dl_se() as follows:
 
-i would squash daniels suggestions in this patch here (MAX without __ 
-and fixed
-value of 3 to use for the loop - i guess this was intended for this 
-purpose) and
-then the change for index in second patch.
+dequeue_dl_entity(dl_se, 0);                // the DL entity is dequeued
 
->> > Same here, if you are not listing them in the device tree, you can
->> > remove them
->> > in the driver too (and adjust the code to keep the backward
->> > compatibility).
+if (unlikely(is_dl_boosted(dl_se) || !start_dl_timer(dl_se))) {
+    if (dl_server(dl_se))                   // timer registration fails
+        enqueue_dl_entity(dl_se, ENQUEUE_REPLENISH);//enqueue immediately
+    ...
+}
 
-i plan to use named IRQs on mt7988 without the reserved ones (only rx+tx 
-+ RSS IRQs),
-and loading not index based.
+The failure of `start_dl_timer` is caused by attempting to register a
+timer with an expiration time that is already in the past. When this
+situation persists, the code repeatedly re-enqueues the DL entity
+without properly replenishing or restarting the timer, resulting in RT
+task may not be scheduled as expected.
 
->> afaik i have no SHARED_INT board (only mt7621, mt7628) so changing the
->> index-logic will require testing on such boards too.
-> 
-> I think the change will not heavily impact SHARED_INT devices.
+[Proposed Solution]:
+------------------
+Instead of immediately re-enqueuing the DL entity on timer registration
+failure, this change ensures the DL entity is properly replenished and
+the timer is restarted, preventing RT potential starvation.
 
-I hope so ;)
+Signed-off-by: kuyo chang <kuyo.chang@mediatek.com>
+---
+ kernel/sched/deadline.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-> Regards,
-> Lorenzo
+diff --git a/kernel/sched/deadline.c b/kernel/sched/deadline.c
+index ad45a8fea245..e50cb76c961b 100644
+--- a/kernel/sched/deadline.c
++++ b/kernel/sched/deadline.c
+@@ -1556,10 +1556,12 @@ static void update_curr_dl_se(struct rq *rq, struct sched_dl_entity *dl_se, s64
+ 		}
+ 
+ 		if (unlikely(is_dl_boosted(dl_se) || !start_dl_timer(dl_se))) {
+-			if (dl_server(dl_se))
+-				enqueue_dl_entity(dl_se, ENQUEUE_REPLENISH);
+-			else
++			if (dl_server(dl_se)) {
++				replenish_dl_new_period(dl_se, rq);
++				start_dl_timer(dl_se);
++			} else {
+ 				enqueue_task_dl(rq, dl_task_of(dl_se), ENQUEUE_REPLENISH);
++			}
+ 		}
+ 
+ 		if (!is_leftmost(dl_se, &rq->dl))
+-- 
+2.45.2
 
-regards Frank
 
