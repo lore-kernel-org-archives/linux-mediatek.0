@@ -4,62 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCC58C61CE8
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Jun 2025 09:56:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F203C61CE8
+	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Jun 2025 10:15:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:Message-ID:References:In-Reply-To:
-	Subject:To:From:Date:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qR3qMDQo9TdMbJqkibA/Cdr7B5FwdnAlAIEIskS1oHs=; b=oyb+cjqzTocfoK
-	1NngNWqEun2zFmdb1qaXmQUGpxS8YqxWCEEia9+dLhaHoyL8kMRCulMj1frZ8enoBwixluUjgOlQ/
-	y73gadBUHNK0zJzgpoaqX0+GCmHyQXF3p1WJ0cMHRi3vaeSCvj94U2nsdxAKgBdwAB5qcP65v6jrr
-	l4YeX4bmuS1HuNZPC/7gDde4bLdch6en+trWb44AHRYEBB73k3iV0sPAkYxPPBq9Xc6ceuuaHY/VW
-	TU0NlMp6bZ4hLc4o9DZiiInOvTUbT2tePKQhGQvRnJ4cIsvvMk2rU4LvzH09Tl7VWQ595PjZhJMEp
-	jyToFGuzxoZTZJ+dD+2Q==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8fGj+shvHeJXid2ebT0vFopIzj+fkr4/961VjV4bUlQ=; b=KfkVPw+PH93opJK8zRl9vFHWPz
+	d2Svzw9RxrbE/PzCj/i/hPfGO4BY44B6aqieZZLSWzVPhdtVH5lQCAYJ43GlyMOrj3tZoOawhdEZr
+	F3zM9bxR6CMrupagRmEDAi6KXe20WQdqfl3TSuYLFNA2XpmTT6zxL2XEHSb7mJQ3xBr1931Ei8918
+	Cp/YEjYa6WIJ5LXa/gy1TekHsOcam+Ztxa72NcXhhUInVJ8UmyZf9Sb9/FSYNx33A95o6zvZf1ggS
+	zZTJfzpT+k41rt+Z+V+JzCzLoR35zDhwPMo8p0JdKFcYlquQVpEeQLb1Dr2tySugriXbunmHT+VKh
+	UrYEs6uw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQk6M-00000002PcH-3l7F;
-	Sun, 15 Jun 2025 09:56:34 +0000
-Received: from mxout4.routing.net ([2a03:2900:1:a::9])
+	id 1uQkOz-00000002QFh-2wzA;
+	Sun, 15 Jun 2025 10:15:49 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQk48-00000002PUd-41nV;
-	Sun, 15 Jun 2025 09:54:18 +0000
-Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
-	by mxout4.routing.net (Postfix) with ESMTP id 2F25E1005FD;
-	Sun, 15 Jun 2025 09:54:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1749981254;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=qR3qMDQo9TdMbJqkibA/Cdr7B5FwdnAlAIEIskS1oHs=;
-	b=fwHJ5W9qptWu4Q4AAnsMj141YfE9G8B8ltvngjlidjrkzljURVbuJo4fi7hwgqv6eHmayJ
-	vqfgII+I9Uq6rxYaZltp9jJpziEj+L+5tTASyh1NGH/5jkCcAhPYsmrMWc0/C+lhDfNnmr
-	xDhpCPZcU9v6AAf4iFIJ3cZGdD0FN2E=
-Received: from webmail.hosting.de (unknown [134.0.26.148])
-	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 5862A3601E7;
-	Sun, 15 Jun 2025 09:54:13 +0000 (UTC)
-MIME-Version: 1.0
-Date: Sun, 15 Jun 2025 11:54:13 +0200
-From: "Frank Wunderlich (linux)" <linux@fw-web.de>
-To: Lorenzo Bianconi <lorenzo@kernel.org>, Daniel Golle
- <daniel@makrotopia.org>
+	id 1uQkMl-00000002Q7H-2DYf;
+	Sun, 15 Jun 2025 10:13:32 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id DF031438A8;
+	Sun, 15 Jun 2025 10:13:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 38415C4CEE3;
+	Sun, 15 Jun 2025 10:13:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1749982410;
+	bh=zKQku6o0q3P5txBFLBWiKo5vZY670ZgyClTPpDf7UPs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=oSZsaBJH/SwcdVwN5JSUFt/uwKkNCS6OeUhMpChIg+g/2XonSDPRvp+sY/E9AQGdH
+	 LPiPK4AyqVOLC802DHBeORVSqX75WeYJLhOPeiU8SpYpYlavEo9s+UMDgimcODNWdh
+	 QycYFNr17FOIT8ruJ5EEBreENjAA/otDqruFOWJY1L+QTQUXUayU1pby9L7vxHqhaX
+	 9XbZdzibohYDYRnaTPNCPJBb8MgF4wANCakWqZCFrvl+l4fdeP6InV/TLz1K4r5PBU
+	 0XrOE94MrDy/+Mb3tnNcRgGpaiGlzarOl+7YBxZv/oMX8sTFuHH+1SdcxyEuZfd9g0
+	 FdpnXndUwsuLg==
+Date: Sun, 15 Jun 2025 12:13:28 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: "Frank Wunderlich (linux)" <linux@fw-web.de>
 Subject: Re: [PATCH v2] net: ethernet: mtk_eth_soc: support named IRQs
-In-Reply-To: <aE6K-d0ttAnBzcNg@lore-desk>
+Message-ID: <aE6cyHC39IV27PcF@lore-desk>
 References: <20250615084521.32329-1-linux@fw-web.de>
  <aE6K-d0ttAnBzcNg@lore-desk>
-Message-ID: <d4781d559e3f72b0bcde88e6b04ed8e5@fw-web.de>
-X-Sender: linux@fw-web.de
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
-Content-Transfer-Encoding: 7bit
-X-Mail-ID: 8416b7ea-d84c-44e8-bd86-b50db1b64538
+ <d4781d559e3f72b0bcde88e6b04ed8e5@fw-web.de>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="oVrPlAnEQ6cDmmnL"
+Content-Disposition: inline
+In-Reply-To: <d4781d559e3f72b0bcde88e6b04ed8e5@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250615_025417_444855_F8DC68C1 
-X-CRM114-Status: GOOD (  32.64  )
+X-CRM114-CacheID: sfid-20250615_031331_613713_91CFD433 
+X-CRM114-Status: GOOD (  47.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,109 +68,146 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, Simon Horman <horms@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, Simon Horman <horms@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 2025-06-15 10:57, schrieb Lorenzo Bianconi:
->> From: Frank Wunderlich <frank-w@public-files.de>
->> 
->> Add named interrupts and keep index based fallback for exiting 
->> devicetrees.
->> 
->> Currently only rx and tx IRQs are defined to be used with mt7988, but
->> later extended with RSS/LRO support.
->> 
->> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
->> Reviewed-by: Simon Horman <horms@kernel.org>
-> 
-> Hi Frank,
-> 
-> I guess my comments on v1 apply even in v2. Can you please take a look?
 
-adding your comments (and mine as context) from v1 here:
+--oVrPlAnEQ6cDmmnL
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Am 2025-06-15 10:57, schrieb Lorenzo Bianconi:
->> From: Frank Wunderlich <frank-w@public-files.de>
+> Am 2025-06-15 10:57, schrieb Lorenzo Bianconi:
+> > > From: Frank Wunderlich <frank-w@public-files.de>
+> > >=20
+> > > Add named interrupts and keep index based fallback for exiting
+> > > devicetrees.
+> > >=20
+> > > Currently only rx and tx IRQs are defined to be used with mt7988, but
+> > > later extended with RSS/LRO support.
+> > >=20
+> > > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> > > Reviewed-by: Simon Horman <horms@kernel.org>
+> >=20
+> > Hi Frank,
+> >=20
+> > I guess my comments on v1 apply even in v2. Can you please take a look?
 
->> I had to leave flow compatible with this:
->> 
->> <https://github.com/frank-w/BPI-Router-Linux/blob/bd7e1983b9f0a69cf47cc9b9631138910d6c1d72/drivers/net/ethernet/mediatek/mtk_eth_soc.c#L5176>
-> 
-> I guess the best would be to start from 0 even here (and wherever it is
-> necessary) and avoid reading current irq[0] since it is not actually 
-> used for
-> !shared_int devices (e.g. MT7988).  Agree?
-> 
->> 
->> Here the irqs are taken from index 1 and 2 for
->>  registration (!shared_int else only 0). So i avoided changing the
->>  index,but yes index 0 is unset at this time.
->> 
->> I guess the irq0 is not really used here...
->> I tested the code on bpi-r4 and have traffic
->>  rx+tx and no crash.
->>  imho this field is not used on !shared_int
->>  because other irq-handlers are used and
->>  assigned in position above.
-> 
-> agree. I have not reviewed the code in detail, but this is why
-> I think we can avoid reading it.
+sure
 
-i areee, but imho it should be a separate patch because these are 2 
-different changes
+>=20
+> adding your comments (and mine as context) from v1 here:
+>=20
+> Am 2025-06-15 10:57, schrieb Lorenzo Bianconi:
+> > > From: Frank Wunderlich <frank-w@public-files.de>
+>=20
+> > > I had to leave flow compatible with this:
+> > >=20
+> > > <https://github.com/frank-w/BPI-Router-Linux/blob/bd7e1983b9f0a69cf47=
+cc9b9631138910d6c1d72/drivers/net/ethernet/mediatek/mtk_eth_soc.c#L5176>
+> >=20
+> > I guess the best would be to start from 0 even here (and wherever it is
+> > necessary) and avoid reading current irq[0] since it is not actually
+> > used for
+> > !shared_int devices (e.g. MT7988).  Agree?
+> >=20
+> > >=20
+> > > Here the irqs are taken from index 1 and 2 for
+> > >  registration (!shared_int else only 0). So i avoided changing the
+> > >  index,but yes index 0 is unset at this time.
+> > >=20
+> > > I guess the irq0 is not really used here...
+> > > I tested the code on bpi-r4 and have traffic
+> > >  rx+tx and no crash.
+> > >  imho this field is not used on !shared_int
+> > >  because other irq-handlers are used and
+> > >  assigned in position above.
+> >=20
+> > agree. I have not reviewed the code in detail, but this is why
+> > I think we can avoid reading it.
+>=20
+> i areee, but imho it should be a separate patch because these are 2
+> different changes
 
->> It looks like the irq[0] is read before...there is a
->>  message printed for mediatek frame engine
->>  which uses index 0 and shows an irq 102 on
->>  index way and 0 on named version...but the
->>  102 in index way is not visible in /proc/interrupts.
->> So imho this message is misleading.
->> 
->> Intention for this patch is that irq 0 and 3 on
->>  mt7988 (sdk) are reserved (0 is skipped on
->> !shared_int and 3 never read) and should imho
->>  not listed in devicetree. For further cleaner
->>  devicetrees (with only needed irqs) and to
->>  extend additional irqs for rss/lro imho irq
->>  names make it better readable.
-> 
-> Same here, if you are not listing them in the device tree, you can 
-> remove them
-> in the driver too (and adjust the code to keep the backward 
-> compatibility).
+I am fine to have it in a separate patch but I would prefer to have this pa=
+tch
+in the same series, I think it is more clear.
 
-afaik i have no SHARED_INT board (only mt7621, mt7628) so changing the 
-index-logic will require testing on such boards too.
+>=20
+> > > It looks like the irq[0] is read before...there is a
+> > >  message printed for mediatek frame engine
+> > >  which uses index 0 and shows an irq 102 on
+> > >  index way and 0 on named version...but the
+> > >  102 in index way is not visible in /proc/interrupts.
+> > > So imho this message is misleading.
+> > >=20
+> > > Intention for this patch is that irq 0 and 3 on
+> > >  mt7988 (sdk) are reserved (0 is skipped on
+> > > !shared_int and 3 never read) and should imho
+> > >  not listed in devicetree. For further cleaner
+> > >  devicetrees (with only needed irqs) and to
+> > >  extend additional irqs for rss/lro imho irq
+> > >  names make it better readable.
+> >=20
+> > Same here, if you are not listing them in the device tree, you can
+> > remove them
+> > in the driver too (and adjust the code to keep the backward
+> > compatibility).
+>=20
+> afaik i have no SHARED_INT board (only mt7621, mt7628) so changing the
+> index-logic will require testing on such boards too.
 
-i looked a bit into it and see mt7623 and mt7622 have 3 IRQs defined 
-(!SHARED_INT) and i'm not 100% sure if the first is also skipped (as far 
-as i understood code it should always be skipped).
+I think the change will not heavily impact SHARED_INT devices.
 
-In the end i would change the irq-index part in separate patch once this 
-is accepted to have clean changes and not mixing index with names (at 
-least to allow a revert of second in case of regression).
+Regards,
+Lorenzo
 
-Am 2025-06-15 11:26, schrieb Daniel Golle:
-> In addition to Lorenzo's comment to reduce the array to the actually 
-> used
-> IRQs, I think it would be nice to introduce precompiler macros for the 
-> irq
-> array index, ie. once the array is reduce to size 2 it could be 
-> something
-> like
-> 
-> #define MTK_ETH_IRQ_SHARED 0
-> #define MTK_ETH_IRQ_TX 0
-> #define MTK_ETH_IRQ_RX 1
-> #define __MTK_ETH_IRQ_MAX MTK_ETH_IRQ_RX
-> 
-> That would make all the IRQ code more readable than having to deal with
-> numerical values.
+>=20
+> i looked a bit into it and see mt7623 and mt7622 have 3 IRQs defined
+> (!SHARED_INT) and i'm not 100% sure if the first is also skipped (as far =
+as
+> i understood code it should always be skipped).
+>=20
+> In the end i would change the irq-index part in separate patch once this =
+is
+> accepted to have clean changes and not mixing index with names (at least =
+to
+> allow a revert of second in case of regression).
+>=20
+> Am 2025-06-15 11:26, schrieb Daniel Golle:
+> > In addition to Lorenzo's comment to reduce the array to the actually
+> > used
+> > IRQs, I think it would be nice to introduce precompiler macros for the
+> > irq
+> > array index, ie. once the array is reduce to size 2 it could be
+> > something
+> > like
+> >=20
+> > #define MTK_ETH_IRQ_SHARED 0
+> > #define MTK_ETH_IRQ_TX 0
+> > #define MTK_ETH_IRQ_RX 1
+> > #define __MTK_ETH_IRQ_MAX MTK_ETH_IRQ_RX
+> >=20
+> > That would make all the IRQ code more readable than having to deal with
+> > numerical values.
+>=20
+> makes sense, i will take this into the second patch.
+>=20
+> I hope you can agree my thoughts about not mixing these 2 parts :)
+>=20
+> regards Frank
 
-makes sense, i will take this into the second patch.
+--oVrPlAnEQ6cDmmnL
+Content-Type: application/pgp-signature; name=signature.asc
 
-I hope you can agree my thoughts about not mixing these 2 parts :)
+-----BEGIN PGP SIGNATURE-----
 
-regards Frank
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaE6cxwAKCRA6cBh0uS2t
+rJJ0AQCF7N7EGGGmdCWiswfJnsbpS1FE5H/ZMgT6lUi1gJ/XqAD/YbauPgAy5ONu
+BTFp/8Gr6q73o9av+Tuz8j8d7KQ6Mg4=
+=tSdA
+-----END PGP SIGNATURE-----
+
+--oVrPlAnEQ6cDmmnL--
 
