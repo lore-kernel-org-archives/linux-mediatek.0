@@ -4,66 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13B00C71135
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Jun 2025 15:13:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35BE8C71135
+	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Jun 2025 16:43:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EMCo+VFbKtuUjRwVkhv/z0zUgSXTtEAWBF4/x1hCKa8=; b=WaQIu+iJm8qpP/
-	FLfTNsm6lg4qej5ZVi++a+TLmzWOdNaNind/SEQD0vdYQlamP1EkXVA5L6Ue8Bn+N5ICykJuAeP10
-	q+z625Z3pISbtp9xdJguA/luShlf1rvFpSJBLxmU+2VZt79/4u5harZXWcnS5vBEQseC5uCJfRYtH
-	h9FQh8JuV9cLkuhCoDT6gGeXAp6rSY58gKCyPVQwiyJBffHt092N/1S1mqGU7LFcIRfqjR8ZB10c4
-	Ub09u5CHZYj9ojn6sqkCAsj8jIhr4TaphLmEb3t93NJeT7Wf7DwvE8pfE7v6f3Mny5M8/ENcHawoV
-	aMWtsAkOuqdd3yBXNSiw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:
+	Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QKcZxZXwwFGx6k0XrSFLjyB45TJX1o/2X8RQBqjF5Nc=; b=0j6n+mFPI5xBfZBXebnoE7lPoo
+	FkTEjSZjfcCNEU1U7ZymXxjXp8VfL7XbLUc6WwOAhs1QX7+6uw4f1B66X6bdEGGqwlQ6aey/HXzcC
+	/eLDB8xjNkV3Cp878VatqeJlJKeQS5YNntOzqptyViwwi9OJlWyUUOH6p7QbJEE2lQI9Zxgvv1y+l
+	kr2swtZlz6hjytYPpQ+GpAQWKXrdnrS8wMFTXfS7YQQ21KtX8COm+fPBw20Bt6SvDeVhEJSkUzHUN
+	gfEH5bGVLmeGIEZ/1Re4nUBf7ro0PCh4HCwaSTD0/5iYyLqDKtAz9ug6VAjd6y/W94rF1wN/RxnQI
+	VN1F59Pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQp2f-00000002auh-0I3m;
-	Sun, 15 Jun 2025 15:13:05 +0000
-Received: from mxout1.routing.net ([2a03:2900:1:a::a])
+	id 1uQqRg-00000002f9O-10dP;
+	Sun, 15 Jun 2025 16:43:00 +0000
+Received: from mout.gmx.net ([212.227.15.18])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQotj-00000002aDt-0uLw;
-	Sun, 15 Jun 2025 15:03:53 +0000
-Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
-	by mxout1.routing.net (Postfix) with ESMTP id 693CA3FF6D;
-	Sun, 15 Jun 2025 15:03:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1749999829;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=EMCo+VFbKtuUjRwVkhv/z0zUgSXTtEAWBF4/x1hCKa8=;
-	b=U6K+sQPA5/Dakm2sC94GpFCh+jFoVm5cqODuYLmxyarK2SX5IitN5I997cJETNty7qAZBB
-	y7bO8ywAeRW2z2TI+hiVhu3mqDPAZFlTn3p3KZ/ODOXwUaJdA1Mtox/0z+Z/uaa5hNTUbN
-	v2/z7RhKKDPOLvjmt2N5ouJXXUsxF7o=
-Received: from frank-u24.. (fttx-pool-217.61.157.124.bambit.de [217.61.157.124])
-	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 2E55C122704;
-	Sun, 15 Jun 2025 15:03:49 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: Felix Fietkau <nbd@nbd.name>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [net-next v3 3/3] net: ethernet: mtk_eth_soc: change code to skip first IRQ completely
-Date: Sun, 15 Jun 2025 17:03:18 +0200
-Message-ID: <20250615150333.166202-4-linux@fw-web.de>
-X-Mailer: git-send-email 2.43.0
+	id 1uQqRd-00000002f8z-1rmt;
+	Sun, 15 Jun 2025 16:42:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1750005735; x=1750610535; i=frank-w@public-files.de;
+	bh=QKcZxZXwwFGx6k0XrSFLjyB45TJX1o/2X8RQBqjF5Nc=;
+	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
+	 Content-Type:Date:In-Reply-To:References:cc:
+	 content-transfer-encoding:content-type:date:from:message-id:
+	 mime-version:reply-to:subject:to;
+	b=JSf5ARVjN2H1oqrX4p34XAxsluXp3Lm3SsqU3/lhMnJmdfHjIE+8YeUrieR19GP9
+	 tcmfgrKzGMzMw9/02lvJcABgJBtLLOOP4+W8oxL160yXHT4lIqxVNqRlrj69GmkYt
+	 CyOMKngbiC62hZRBCXGSQN6/W6BclDDls1TEh6nHKt30GYg1Y7Ng+Q9badilN+JJr
+	 KGL0uSLn74MjiU39zhoPqSBqhldKpmgje5EQDb15tPp8V1oGLT+/2/umehLpk91hE
+	 9QmDbkkGaTjANkAjkRWtDm/MqPmVVZyDt+ikCbJ10ppzRb6ghDmp83DB1t+UGWLqm
+	 peNg1Ty0WjwPOub1GA==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [100.71.3.253] ([100.71.3.253]) by
+ trinity-msg-rest-gmx-gmx-live-847b5f5c86-84n87 (via HTTP); Sun, 15 Jun 2025
+ 16:42:15 +0000
+MIME-Version: 1.0
+Message-ID: <trinity-eafa403a-1d9f-4842-a65c-84badd4fa6ee-1750005734980@trinity-msg-rest-gmx-gmx-live-847b5f5c86-84n87>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: linux@fw-web.de, nbd@nbd.name, sean.wang@mediatek.com,
+ lorenzo@kernel.org, andrew+netdev@lunn.ch, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ horms@kernel.org, daniel@makrotopia.org
+Subject: Aw: [net-next v3 0/3] rework IRQ handling in mtk_eth_soc
+Content-Type: text/plain; charset=UTF-8
+Date: Sun, 15 Jun 2025 16:42:15 +0000
 In-Reply-To: <20250615150333.166202-1-linux@fw-web.de>
 References: <20250615150333.166202-1-linux@fw-web.de>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-UI-CLIENT-META-MAIL-DROP: W10=
+X-Provags-ID: V03:K1:gfzxyuXSRRAJZTS3O6R2MPK4ZqeDCQnmkhoEmwuunLO3iPNh65Ny1QVJsiAyB7EOpPrXt
+ fmmdFXLL4sHsZVzMO3zK0qjMiYeWlcV8CyAn0KzerScECnEOn7GGWtzkIls3N+Hf1JMMnylZya4K
+ GuH7SrsB5b8q4gwM+gXO4FcV7p29qRSTcmPDL2odUCPo+Ekb5BO6enXTUwyxUzgOsIGBFlWK/ck/
+ qAwIyB21HxT6T596Bdbz4SwUOpDW4VedeugLlWSJ+iv67YCmXpOIS+lplBywVrMHpirIi+vvqNuE
+ 7RM8IbHuKlCtiWkaxDNP40Y7RcbJ8aqTHjRbU62rs27fM4QlK3vCFanVb9v9hkv140=
+UI-OutboundReport: notjunk:1;M01:P0:z46WAXs0WfU=;0KChdF0K4ur9LAkuyndxm1pe2yZ
+ hPjy3xJKQbFcBBFEMd3PEjAlQR0f4k3TarhQgJh/cxwAnCfeCGK7iHQbQq2Rh/O5BXJQSlLMg
+ J5A7BePFJ/hdNij3OnR/l8FEWISg4IsLaAGEdbVecvjvDk1S1o2ogyK5bxqF3O/YlwIwmqYT0
+ qDQCEJRBGMdIHc3xXYSoBuZPoqVcuVLLebilkc2bvlTcmCB1tTgcMMgjV+NvHIIL3nd57IKxV
+ eEuAwC5GhXhfw9xs6iouojGUdYMoIebJLWJYKp+jUbNg+8vHFc1qaBPngwnp5xvDBHCQ22Nuo
+ 17csZhA73hbrn3WPM11IXFtxhajUbDF0rQypYyqp+PbqHcrhBVI4tyYVf+ob73rOqi6+oM62p
+ rf5U4QWGOcQwDDfHPMVu5WgMlM5Iq3e14SnLFKYBQd8Cb4EOjHXAy0hQR4K67KOmWessO7Ayn
+ AZHKVs+pLGr1xk6Mi/gmhXGEsou0heAYEnJsBPU2DNPR79xHcX20KbyTV/6NX/dcDsuPQMpKS
+ NHKLhP+JXixGxtQ0ubye/yaXI/MINC/0lZDHCfw7pP2w+DP4nM7BdUHBzzSSeCh3sbefGwGQu
+ iyIB0yjhQh+W2jAl/X5Jqa9Xj+SXH5RH+bCxhBP8BdvdVkRoJgtELH0czb/tzOpw/qky6qs+V
+ VNLqeiWFnxKWUHkWtF4NblAoaDvF4sZktnjZGzhYYt37RzhQHaNkiVLzbY1DWwvVxLBIpNSOH
+ 8KySmEHA3fe7YZC/pxIejI5Z5vxRtiuGAVur/ac4Fi517rpk0F8OMs+ALtz5OreLxth5cx8oQ
+ tvpsM8m5O4YAjA4yBoK/Fdd1RNER8XXZ7wYG6YfU6cQchcNxS8IS8PItmBpJeRW/S8lT7dQhM
+ w+rnVq+QniRjeMDFRZPGYB1nYM+6J9OdbAREawW4w41mbt10UyiSC/g6JmlJ4APFO246+uL6t
+ Bkdy3L7scc0rc64oZ4ATgXBACC8/Mu/0LDbbh39WjMULS27gxnXqTl6WDgbp7VyhHZLYGoXRn
+ JCLnHaMBxr+ZrZRVei4FHAAyqgYlIO8yidKdbLUk1OYrlugL9cYfwZKDDR+ctFvu4oK6xynS7
+ WgHkjYWITc0xvu659wTjxTZ6gp/43pgvdefRbW/uqJTQNr1rCURhzSKCjaszc4gKwiTzx6lko
+ tyc6KDB3l1UGWjCB2YEOM3RwkqVQW5b08lAnnjUiHMHY9sDV9dvySRfhwnbS4HRaCaGi+VbKR
+ jlSnwJJRzL9HzigN8mximAzJZCWstP1Modmo7ywJzjFDDeKRMAZkrLFw/ntn84873Mt8Y8N0m
+ N0Ru5hCu/1mcZhE5nIJQ/UwGlrbuyg/sodqs9e6eWMjt7m6UXeOMKxLRJ5DCs5ZLyQyEQ9hcK
+ ARWeSRoap/ZNKSAVwPJ2sm8GV8xv38HXsYH2QkB4qqEc6+m/BBRUDIWWdTSW84PkVp494vQXe
+ mxS1sk6FwakWbDCC3MioZj/rlDnKvRL+qxVcq3P7AfE17+EE99p0LTepkBg+6NEbSW5c5qfsx
+ +cF6189H9y9fmXkma++z+Xz7X2/V5dOfacsOU4Lc5p0KzcZJ/H/iDDmlso3w/k4TEZP72rIUv
+ /8C7GEnzH7AV+KbtXKkHUw8aGKDR/HcFXhZOiA0z0EovJ/KluFjNrg4OE8Uh8CoSzHkZPSxQm
+ x9ybcvzp90vUU+tqeMYKmV75PFOep86rDtRIFYPr6jNvZYDuAiZ8isoq7729YIFLNApE9od+s
+ wMuyxSj0irG07QW9ENBVXjYnYMoNgyFaGh79TSezgqXYvQyCKXiwrvAwNSvph6S+ajdpsg91N
+ eiWgSQu8bv8af57soVcUxgun+qEX4a3ZBl8LyOOpaE5diCJv3jmq105UTsA2jfc9DCqpwVc5i
+ UCMEA6/7F8gYtp3snDwjFVWofln16uIefOtWcRT6qJ7JQT/+hfU77zQ6cgGO91QlryIGwwKbC
+ 7Dv+D+3AAqT/hv5vIIpzGFzYG2HZC5oKeG7F7ZfgUdalx3eKr6P8vwa4MQoZK7Nkwya9JzRHq
+ +WWPd4XVrdh4wte5YD5np0pqGyHto/jgL77iw07YtnYr54bCHfS4xeKV9BMmtiqI+5EMjChHH
+ 1MbYjSQvTgEsNrixIkhLoXUT8RxX6jv8kratC79K3R4FjdLn57mXcnaBHQj8RM0kPtsZV6MeL
+ 8OHvR0eFzcyZpzMv8dhT8iLE+rgzcEErFH9Vw0XvH/A4dOp1ooWei1hKLi4UJSmHC40Y6D9oI
+ QuJZuD/P+Mi5ws3LY4cTnTv4/+556fjnmP74tHVOgc/ca5RJXWmx+NVF8Mv4cl3KZJeSyVqNv
+ tyiKWzf+iI5CYH5BvRdhovNtqH6/LiHUK2oXyQiPOMphfQWo0rIR5C/tBDTnmQoNQYAbPcewf
+ OH/6GN0B0pPVoUpnjHuChnqJJNdP+4QV6CQID6aFEq2GjNZB335FUm585XWNuhNQL+WSb/HFz
+ TqxfNU+v0NcmNhl0OUA9D+GcafYclGRb7etbqviEfWPWOtRYUnRW4TWjmcbceNJxkTiluQ+1D
+ 0V1ieRN9+/xd6i9nse6t/uBwZiDGhFAttYkwh8H5jC/rXkxFdh+S1LaDSMyRKPY9ZqK4m74yQ
+ ztBayKukBU8o0a1luYpuej545a62QsQbMIu9bsZLsRI64hOEh8cfIFI9mZEChqMqWP0RkXY4N
+ KwO78C3gBvNcDggnplN36e8cAIUugtgivV00joq+33iS157iOIBduvlAFI+zaC3n+p48O+EPX
+ IRJnkJPKipMy7xKOGJt+bMYSwvcdZWS4b9ZTRQW8DWFYWPRBxXJ5CUnxEEw0nXnNzIXgu18mM
+ zl9I91XGrtZFECMjJRAMdJd1bxow==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250615_080351_396441_C4F84A49 
-X-CRM114-Status: GOOD (  13.80  )
+X-CRM114-CacheID: sfid-20250615_094257_772140_07634A15 
+X-CRM114-Status: UNSURE (   4.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,60 +120,23 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-mediatek@lists.infradead.org, Simon Horman <horms@kernel.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+> Gesendet: Sonntag, 15. Juni 2025 um 17:03
+> Von: "Frank Wunderlich" <linux@fw-web.de>
 
-On SoCs without MTK_SHARED_INT capability (mt7621 + mt7628) the first
-IRQ (eth->irq[0]) was read but never used. Skip reading it now too.
+sorry, missed the changelog:
 
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 11 ++++++++---
- drivers/net/ethernet/mediatek/mtk_eth_soc.h |  4 ++--
- 2 files changed, 10 insertions(+), 5 deletions(-)
+v3:
+added patches
+- #2 (add constants for irq index)
+- #3 (skip first IRQ on ! MTK_SHARED_INT)
+to the v2 non-series patch
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 9aec67c9c6d7..4d7de282b940 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -3346,10 +3346,15 @@ static int mtk_get_irqs(struct platform_device *pdev, struct mtk_eth *eth)
- 		return 0;
- 
- 	for (i = 0; i < MTK_ETH_IRQ_MAX; i++) {
--		if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT) && i > 0)
--			eth->irq[i] = eth->irq[MTK_ETH_IRQ_SHARED];
-+		if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT)) {
-+			if (i == 0)
-+				eth->irq[MTK_ETH_IRQ_SHARED] = platform_get_irq(pdev, i);
-+			else
-+				eth->irq[i] = eth->irq[MTK_ETH_IRQ_SHARED];
-+		} else if (i < 2)  //skip the 1st and 4th IRQ on !MTK_SHARED_INT
-+			eth->irq[i] = platform_get_irq(pdev, i + 1);
- 		else
--			eth->irq[i] = platform_get_irq(pdev, i);
-+			continue;
- 
- 		if (eth->irq[i] < 0) {
- 			dev_err(&pdev->dev, "no IRQ%d resource found\n", i);
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 6b1208d05f79..ff2ae3c80179 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -643,8 +643,8 @@
- #define MTK_MAC_FSM(x)		(0x1010C + ((x) * 0x100))
- 
- #define MTK_ETH_IRQ_SHARED	0
--#define MTK_ETH_IRQ_TX		1
--#define MTK_ETH_IRQ_RX		2
-+#define MTK_ETH_IRQ_TX		0
-+#define MTK_ETH_IRQ_RX		1
- #define MTK_ETH_IRQ_MAX		3
- 
- struct mtk_rx_dma {
--- 
-2.43.0
+https://patchwork.kernel.org/project/netdevbpf/patch/20250615084521.32329-1-linux@fw-web.de/
 
+Tested on BPI-R4/mt7988 with IRQ names and BPI-R2/mt7623 and BPI-R3/mt7986 with upstreamed
+dts via index-mode.
+I do not have any MTK_SHARED_INT (mt7621/mt7628) boards to testing.
 
