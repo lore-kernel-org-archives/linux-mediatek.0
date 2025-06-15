@@ -4,56 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82EA4C71135
-	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Jun 2025 17:34:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E947C61CE8
+	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Jun 2025 08:39:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Tnh3I6N2vwHaG7hUABhR7dRSMyHRGfDGJJx8tTRG/tU=; b=e5C1RzNVv87edvc6jIJivSXMLC
-	000ONvYM1Xr5iQAPVutF3CO26k3af3BkW07/OTR16WUxLL21mQ8kXfcCrQYgaFxplnSfK4uk7zrsw
-	5g9YlWElTsUW9ko0L6J99B49659ipwgjqDqIpqDKuEkq1nSdNzrn/8FguQl33y33lBNgOT0jXKrRA
-	270mznnCBphlnD7Hj1rz2qsKx6z0rEP2y8s7h2slh53QtIUGwZ25o24eeChXBu9eW2YjWU18g7oK9
-	qz0A5mNKZTsegDssGqz3yRu+MK5GAML7v8B0gNwWE0ZCEo3lZtqR3oMYwwsBLR9CaqbprsI/uRcXY
-	LR40YMHg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=4ml8sgPpLF0KKeUn/LoITFfWypkzxkwGlJzqXXaPxog=; b=1XEc9KhFkskXPN
+	72UcFu+QaU0uSIOiGGfoVQD853fnweYVpgFWb91oooNEYpYeXhD3VpnzUpvEQtIbUzq1d3AJi1mH8
+	PSsLy4b0EQ/Ylh344UdiasXaRIDEuz8NQKcjxKhgNDD+X9qMdZa+4xE4XW4XiyPfn78lnVv5BLRkR
+	LfS06HDtX3cip2O9r5sGOQQ1I5BXWixbSANFXwSYrXW5GmHAJgwhJDB1kby/doqy2bakOSYJkgGJD
+	3acYTYzwku9EzAGwbLmBuG17eACFVothcEZ71FdBjvKmDStwXVqAkJbCzQFIz5IHbElND0+Qvopoy
+	y0Yg37LXHfry6aRJMZKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQUlb-00000001aGn-3hS7;
-	Sat, 14 Jun 2025 17:34:07 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1uQitu-00000002Mbi-1jIA;
+	Sun, 15 Jun 2025 08:39:38 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQUjQ-00000001a6A-431X;
-	Sat, 14 Jun 2025 17:31:54 +0000
+	id 1uQirg-00000002MV8-2lqf;
+	Sun, 15 Jun 2025 08:37:21 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E219743ED5;
-	Sat, 14 Jun 2025 17:31:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 57780C4CEEB;
-	Sat, 14 Jun 2025 17:31:50 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 28EB6A4F58D;
+	Sun, 15 Jun 2025 08:37:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 05ACEC4CEE3;
+	Sun, 15 Jun 2025 08:37:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1749922311;
-	bh=P+BrB0OUaNa56UdWZa5rw+h39uQANByq8vbDPUy1nj0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qEK2F54o22UzFG65tTbJ0eJGLwzvYnr6MZ41HqaI59pUgP2Zly4XuWFz69wDN8ulW
-	 iKgkQs6AaOiwhD7ccKHcvA00mJNvfXunBjN3bqDjTLxiPUjaYgTTflO9iDVVlJPbsX
-	 TjwJiRD7yjb5o/JIE94Rl6fdJkh2kgbjPsab8NyZX+qq3erJAulFWnyzf9WCSwcg3t
-	 UU7buH17UGkxBTsAcPyLq5H0kHVyqrifUHUYfCCW48Shq1BI1us0m4dpFYMRRZbAJO
-	 QcU9Hov5TXQq/rly29O/IfUeXEp+Ztik2FbHxoLOtkDqNHhTxJ/c0ewPG5KR6tHm0Y
-	 mAQgU5wjymq8w==
-Date: Sat, 14 Jun 2025 18:31:48 +0100
-From: Simon Horman <horms@kernel.org>
-To: Frank Wunderlich <linux@fw-web.de>
-Subject: Re: [net-next v1] net: ethernet: mtk_eth_soc: support named IRQs
-Message-ID: <20250614173148.GV414686@horms.kernel.org>
-References: <20250613144525.53305-1-linux@fw-web.de>
+	s=k20201202; t=1749976638;
+	bh=ya0FHPPaoMwryR5s/tkb+Pmcvo+q33+OAufiSPMpG00=;
+	h=From:Subject:Date:To:Cc:From;
+	b=XNVoBnr0M2veZfT3I7ngWIgveBZLJzOQYaOujnjzIaos4jpnp5duh4xUibNY9PAyb
+	 42+UcBAS31Ss0whhs7m8EQ0rxpS8ZRmvblDivX9FtKrEU0zhkEpqVMjvUq4C9IUAwH
+	 gcDc0rnUO7EZbfjt24xEfgwgEM0BER2/ZeTHEXQsH5zkGZb5atoyaCiMGcexkA7MTj
+	 ZYpjVARGTTUxknvO+YLsuggPKXaUQYRSo+fl4YNV5J9b7/eJg3AM1TvkLuE7FjpTN1
+	 zK+OkaQA8Ed6M/N/WrWVwFYX3YPjQdhdSCU711pitN+ujP3QHEWKomY1fiBUD241Br
+	 0ue5b9IX2ELYA==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH net-next 0/2] net: airoha: Improve hwfd buffer/descriptor
+ queues setup
+Date: Sun, 15 Jun 2025 10:36:17 +0200
+Message-Id: <20250615-airoha-hw-num-desc-v1-0-8f88daa4abd7@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250613144525.53305-1-linux@fw-web.de>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAGGTmgC/x2MywqAIBAAf0X23IJKD+pXooPolntIQ+kB0r8nH
+ YdhpkCmxJRhEgUSXZw5hgqqEWC9CRshu8qgpe5kr1o0nKI36G8M546OskWpRiuHam2roYZHopW
+ ffzov7/sBzxMXlGQAAAA=
+X-Change-ID: 20250614-airoha-hw-num-desc-019c07061c42
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Simon Horman <horms@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250614_103153_023069_62766A42 
-X-CRM114-Status: GOOD (  21.30  )
+X-CRM114-CacheID: sfid-20250615_013720_767531_93069BA0 
+X-CRM114-Status: UNSURE (   5.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,72 +76,26 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, daniel@makrotopia.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 13, 2025 at 04:45:23PM +0200, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> Add named interrupts and keep index based fallback for exiting devicetrees.
-> 
-> Currently only rx and tx IRQs are defined to be used with mt7988, but
-> later extended with RSS/LRO support.
-> 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
->  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 24 +++++++++++++--------
->  1 file changed, 15 insertions(+), 9 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> index b76d35069887..fcec5f95685e 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> @@ -5106,17 +5106,23 @@ static int mtk_probe(struct platform_device *pdev)
->  		}
->  	}
->  
-> -	for (i = 0; i < 3; i++) {
-> -		if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT) && i > 0)
-> -			eth->irq[i] = eth->irq[0];
-> -		else
-> -			eth->irq[i] = platform_get_irq(pdev, i);
-> -		if (eth->irq[i] < 0) {
-> -			dev_err(&pdev->dev, "no IRQ%d resource found\n", i);
-> -			err = -ENXIO;
-> -			goto err_wed_exit;
-> +	eth->irq[1] = platform_get_irq_byname(pdev, "tx");
-> +	eth->irq[2] = platform_get_irq_byname(pdev, "rx");
-> +	if (eth->irq[1] < 0 || eth->irq[2] < 0) {
-> +		for (i = 0; i < 3; i++) {
-> +			if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT) && i > 0)
-> +				eth->irq[i] = eth->irq[0];
-> +			else
-> +				eth->irq[i] = platform_get_irq(pdev, i);
-> +
-> +			if (eth->irq[i] < 0) {
-> +				dev_err(&pdev->dev, "no IRQ%d resource found\n", i);
-> +				err = -ENXIO;
-> +				goto err_wed_exit;
-> +			}
->  		}
->  	}
-> +
+Compute the number of hwfd buffers/descriptors according to the reserved
+memory size if provided via DTS.
+Reduce the required hwfd buffers queue size for QDMA1.
 
-Thanks Frank,
+---
+Lorenzo Bianconi (2):
+      net: airoha: Compute number of descriptors according to reserved memory size
+      net: airoha: Differentiate hwfd buffer size for QDMA0 and QDMA1
 
-The above looks correct to me. But I do think it could be improved by moving
-the irq lookup logic - either the unnamed portion or all of it - into a
-helper.
+ drivers/net/ethernet/airoha/airoha_eth.c | 27 ++++++++++++++++-----------
+ 1 file changed, 16 insertions(+), 11 deletions(-)
+---
+base-commit: 8909f5f4ecd551c2299b28e05254b77424c8c7dc
+change-id: 20250614-airoha-hw-num-desc-019c07061c42
 
-That suggestion notwithstanding,
-Reviewed-by: Simon Horman <horms@kernel.org>
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
->  	for (i = 0; i < ARRAY_SIZE(eth->clks); i++) {
->  		eth->clks[i] = devm_clk_get(eth->dev,
->  					    mtk_clks_source_name[i]);
-> -- 
-> 2.43.0
-> 
-> 
 
