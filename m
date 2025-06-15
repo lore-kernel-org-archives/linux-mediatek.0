@@ -4,43 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AE64C61CE8
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Jun 2025 15:06:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E9BEC71135
+	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Jun 2025 15:08:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aixnyQqpwBBGhHOV75XTz3/geaACNpR9Nv0eB+S8FK0=; b=QYaoVAXjx7H/At
-	NWyzXIHDfGBu6XMy14tDuJH1/anUyJpH9BnLqHCLya+hCGWhFkvls3LSU/t87JlFhNAis51j0XHOX
-	e2W3HWrUqF8MGR1TCcwoqlNURy7cIRwz4VbuxSyZgHRXkjbcIf9BEWzZtCrQTjtRjbMNiZdZ4PM4Y
-	WSbjzr1wd6TRFBxYq9YW5dq8B9TkMy19CRV7Eo8kOw0XVfKH5ruEpjgBMFWj4IjlsK3kI9NxUB8bz
-	Dm/8H0QVL4mEUuYart9yr5wEhdw8l66DGAzHQXU13xVjL7BtB/7MxUrR8Rc6/RmzxgAIkLNI5WoYT
-	yqcIONguaVIw2n9PW6cg==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=dEj5v7dm6ltMlbxpUVJFd0IqvlQNf25lGrkWUdekOWc=; b=N5GtJRrihBQHZO
+	h1VHVLyKi8v3t1TVLpMlM6xPJ4BVdHcgEC7zbQdf+nExfI2Jjb7MRlBUYRwpwyPdddm7KZJimkR3W
+	jY7KDjAdVzHR7b3KY5ChoUilxQt77e9RKW+tFiyZM1SK3QAZfCWYVTvjW0wEQDscvN+X5KpPm4ggH
+	HntWP8VvxoPYJl5UvnG/xBqxd9HHKknVgzdDeK7YdUMezdWFM4UFonLxqz6j/C8GoNSmu5AAvdCRR
+	/Hv2A2lwndITxOuI7OZtl/piyevqXjtzfLr4Al8a5e9q+kTbSfdBxVaZ3/p/m0QaJpAhB6xC73iUb
+	mxQ0V2eZzRaupXUrmv6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQovx-00000002aUq-2JPd;
-	Sun, 15 Jun 2025 15:06:09 +0000
-Received: from mxout3.routing.net ([2a03:2900:1:a::8])
+	id 1uQoyD-00000002agU-3QaY;
+	Sun, 15 Jun 2025 15:08:30 +0000
+Received: from mxout4.routing.net ([2a03:2900:1:a::9])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQoti-00000002aDr-3YEs;
+	id 1uQoti-00000002aDq-3YOb;
 	Sun, 15 Jun 2025 15:03:52 +0000
 Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
-	by mxout3.routing.net (Postfix) with ESMTP id D94FD601A6;
+	by mxout4.routing.net (Postfix) with ESMTP id A183F1005F6;
 	Sun, 15 Jun 2025 15:03:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1749999829;
+	s=20200217; t=1749999828;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=aixnyQqpwBBGhHOV75XTz3/geaACNpR9Nv0eB+S8FK0=;
-	b=J8Yqe5gwIPPcjzAuk6Glt67DYlSm3Akx7NALxfTtUJ3av+yOpI8e9+oiW+8cUnhmb2Wm8A
-	RYEy2ZBEupAiQVhN+P/TA5F/5S9xF67C+Mk1cKeIYc3a/w1qEjYUW+q1VsQk1TiEUGimU0
-	0FbU8dlJ9qnkYHRXCmWhcVb4Drg8trc=
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=dEj5v7dm6ltMlbxpUVJFd0IqvlQNf25lGrkWUdekOWc=;
+	b=rD/4WxGJjG8Nxlm6Abii5nf4oHv828cFU2QyXiqmgQ/hN95IXcTjdthUNVp/LAF1jf2PCT
+	/YVSeRpsfzGAAitOCJ0QDewA4ILE1uzqo45jI53r0tSv3wXU7E4iAnCtOT+Gdet9sg+fOG
+	DCkY6FZFf68MckDhqCivbmhYjGW/rEg=
 Received: from frank-u24.. (fttx-pool-217.61.157.124.bambit.de [217.61.157.124])
-	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id A0566122704;
+	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 57EDA1226A7;
 	Sun, 15 Jun 2025 15:03:48 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: Felix Fietkau <nbd@nbd.name>,
@@ -53,17 +52,16 @@ To: Felix Fietkau <nbd@nbd.name>,
 	Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [net-next v3 1/3] net: ethernet: mtk_eth_soc: support named IRQs
-Date: Sun, 15 Jun 2025 17:03:16 +0200
-Message-ID: <20250615150333.166202-2-linux@fw-web.de>
+Subject: [net-next v3 0/3] rework IRQ handling in mtk_eth_soc
+Date: Sun, 15 Jun 2025 17:03:15 +0200
+Message-ID: <20250615150333.166202-1-linux@fw-web.de>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250615150333.166202-1-linux@fw-web.de>
-References: <20250615150333.166202-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250615_080351_045478_587E5BF8 
-X-CRM114-Status: GOOD (  17.49  )
+X-CRM114-CacheID: sfid-20250615_080351_045427_5BCCFE08 
+X-CRM114-Status: UNSURE (   8.11  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,79 +79,20 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-Add named interrupts and keep index based fallback for exiting devicetrees.
+This series introduces named IRQs while keeping the index based way
+for older dts.
+Further it makes some cleanup like adding consts for index access and
+avoids loading first IRQ which was not used on non SHARED_INT SoCs.
 
-Currently only rx and tx IRQs are defined to be used with mt7988, but
-later extended with RSS/LRO support.
+Frank Wunderlich (3):
+  net: ethernet: mtk_eth_soc: support named IRQs
+  net: ethernet: mtk_eth_soc: add consts for irq index
+  net: ethernet: mtk_eth_soc: change code to skip first IRQ completely
 
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-Reviewed-by: Simon Horman <horms@kernel.org>
----
-v2:
-- move irqs loading part into own helper function
-- reduce indentation
-- place mtk_get_irqs helper before the irq_handler (note for simon)
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 39 +++++++++++++++------
- 1 file changed, 28 insertions(+), 11 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 56 ++++++++++++++-------
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h |  5 ++
+ 2 files changed, 44 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index b38e4f2de674..f91ea87d2f72 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -3336,6 +3336,30 @@ static void mtk_tx_timeout(struct net_device *dev, unsigned int txqueue)
- 	schedule_work(&eth->pending_work);
- }
- 
-+static int mtk_get_irqs(struct platform_device *pdev, struct mtk_eth *eth)
-+{
-+	int i;
-+
-+	eth->irq[1] = platform_get_irq_byname(pdev, "tx");
-+	eth->irq[2] = platform_get_irq_byname(pdev, "rx");
-+	if (eth->irq[1] >= 0 && eth->irq[2] >= 0)
-+		return 0;
-+
-+	for (i = 0; i < 3; i++) {
-+		if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT) && i > 0)
-+			eth->irq[i] = eth->irq[0];
-+		else
-+			eth->irq[i] = platform_get_irq(pdev, i);
-+
-+		if (eth->irq[i] < 0) {
-+			dev_err(&pdev->dev, "no IRQ%d resource found\n", i);
-+			return -ENXIO;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
- static irqreturn_t mtk_handle_irq_rx(int irq, void *_eth)
- {
- 	struct mtk_eth *eth = _eth;
-@@ -5105,17 +5129,10 @@ static int mtk_probe(struct platform_device *pdev)
- 		}
- 	}
- 
--	for (i = 0; i < 3; i++) {
--		if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT) && i > 0)
--			eth->irq[i] = eth->irq[0];
--		else
--			eth->irq[i] = platform_get_irq(pdev, i);
--		if (eth->irq[i] < 0) {
--			dev_err(&pdev->dev, "no IRQ%d resource found\n", i);
--			err = -ENXIO;
--			goto err_wed_exit;
--		}
--	}
-+	err = mtk_get_irqs(pdev, eth);
-+	if (err)
-+		goto err_wed_exit;
-+
- 	for (i = 0; i < ARRAY_SIZE(eth->clks); i++) {
- 		eth->clks[i] = devm_clk_get(eth->dev,
- 					    mtk_clks_source_name[i]);
 -- 
 2.43.0
 
