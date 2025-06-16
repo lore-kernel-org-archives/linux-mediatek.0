@@ -4,56 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14630C71159
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jun 2025 15:27:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB4BDC71136
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jun 2025 15:27:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Ygj9TjOfjQ/NdzUcUqlBJpH8gb+mnv4/bas08gkNg/g=; b=bOI1aGUA5ZcRvc
-	kYgsY+oJc9rfZami1cUOEo6MMhJs74ywnxyIhgNlTfhGrGVaDfVgqmxRckeJwLpwdMvUQd/h5+I3D
-	bKKYsFWJknLU73UVZKfsOrRvSrr9p7R19Bzs0IOoes2GHwTw/wt0Acp76QeDQ8aKbHnQOMrqAlIh/
-	U8gmD71V391h5arvAK1+hFI8HZp0wM8sT6/IW31iswvVNuJC0vUzV8+pTDX3BV2Z6GGJQaM8CIvzv
-	a3nmkIIqyqId5ga7+J7XLuuZhJEktxB6NbWWviK9DIH/7/z5a/RR54MFzTDM8oSxsv4T9Ox1ALgiw
-	QABvow7N1lmMsILi25SQ==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=J8EghTM12FMx5V/+vp9nH39d+YwKGIKYdiHoR3usjgE=; b=hVq3Vq0ek+N4ar1B1dTsSVp0cM
+	tzCl83i07nvXFM2UwgXDZtzEUXnKzv+Fnr7SNT8/fcvcgDtQcDlRUGVVR44XRcom8UbvADfo033fH
+	hvGZVZdD7Tmm4fnAJKWpKSyqHIG5KaKVOzezDY+pCCA0w0gvluFX/pEymT3nRYG96Bzmv+VCUhYqc
+	iRVymN+zsuVo6l248dtH9nBNetpCdjbECZ8uw18nld9KG3GCrdSyobEToNccynPLG68Px4aQ8ezNh
+	Dds5JXXSky1rhtEIzx8tSxofpd2aqmHImQ0xQp5zH28wR9YZ0Bzn1rqArvRQT2dSmVEtw4GcCLJJP
+	B3oAUaug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRBkI-00000004rFf-3LQx;
-	Mon, 16 Jun 2025 15:27:38 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uRBkJ-00000004rHO-3OW9;
+	Mon, 16 Jun 2025 15:27:39 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRA9n-00000004aZB-1yz6;
-	Mon, 16 Jun 2025 13:45:51 +0000
+	id 1uRA9p-00000004aZO-3GNL;
+	Mon, 16 Jun 2025 13:45:54 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 737C961139;
-	Mon, 16 Jun 2025 13:45:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CB234C4CEEA;
-	Mon, 16 Jun 2025 13:45:49 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 1A61BA513FF;
+	Mon, 16 Jun 2025 13:45:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 672E8C4CEEA;
+	Mon, 16 Jun 2025 13:45:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750081550;
-	bh=RTUvtWJIHeJfRXaRZvoP7GhruXdkJkNjDL2jCXJOtRE=;
-	h=From:Subject:Date:To:Cc:From;
-	b=EmWNsdkctCoADDzcTZHXywQyCBFhSrqhSKZJpPBH5SxlROx3RB2/NViPa/2ENnRKI
-	 utQKiSm5ix1t8G4Azb+NNH7SmhHq0oae2q/kA7O/OqEUtqHKQcd/hmvwa10ZHIuw4F
-	 09njSbYfB+rAm3/1VXZZhkfdcoU5iwdTkw+FhNzLlDvYIqy6gwl1/zU50Mn5KhWQOW
-	 ZUTWtskPkTzJLG3ghhw6u25wm2jnqu1lP0cAFO9oqxSPg5MekIi3+Wx4pJ8QSK59Rm
-	 cRLIVNOl6DZaVH2C1HFToKgtkLeO/lbmuOcFVX7qa6CQ1T9tX69Wf1lzjCkl/Fq/Og
-	 OWpKq0cqnp1WA==
+	s=k20201202; t=1750081552;
+	bh=UfU3ocq2ii21xRQfAGGhtJtsNEug9yttyxDT5o40RTY=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=nj7iNm+OYBSplfczo98mxZ9+U8lPls+yrRbzFPwIO+FIPv0x+2aqb7Ce9qsyD+HVS
+	 6AS+Jyh64FbcJdZlMwYxfsf22cIvaBiGAgTraHdtFouBnQVyj5siBgJiqpgivW36QW
+	 z90N1k3GVAlT1g72CC3rlm6Vy+S2Me/ox35Zfh2hr2CsgsDJZsBb62PFCFHoC9WLNk
+	 gTfVzR0hFiBQGiH6Hrs4A/2T0OTUlBy5mh91NMVsT/0HIxGsv85gzjzzT+elt5K+24
+	 UePvuexzZO8Jdps7MY0zEyvE7pyNNQgP/SAvI1PC86UUQ3ocnoek7ssuhdja2WaBsW
+	 yRVMlOtqv27kQ==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Subject: [PATCH net-next v2 0/2] net: airoha: Improve hwfd
- buffer/descriptor queues setup
-Date: Mon, 16 Jun 2025 15:45:39 +0200
-Message-Id: <20250616-airoha-hw-num-desc-v2-0-bb328c0b8603@kernel.org>
+Date: Mon, 16 Jun 2025 15:45:40 +0200
+Subject: [PATCH net-next v2 1/2] net: airoha: Compute number of descriptors
+ according to reserved memory size
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAAMgUGgC/22NwQrCMBBEf0X27EoSWls9+R/SQ0y2zaImstGql
- P67seDN45th3kyQSZgy7FcTCI2cOcUCZr0CF2wcCNkXBqNMrba6QsuSgsXwxPi4oqfsUOmdU01
- pXWWgDG9CPb8W6bErHDjfk7yXj1F/05+u/qcbNSps+7b11lb25JvDmSTSZZNkgG6e5w+OKBOIt
- QAAAA==
-X-Change-ID: 20250614-airoha-hw-num-desc-019c07061c42
+Message-Id: <20250616-airoha-hw-num-desc-v2-1-bb328c0b8603@kernel.org>
+References: <20250616-airoha-hw-num-desc-v2-0-bb328c0b8603@kernel.org>
+In-Reply-To: <20250616-airoha-hw-num-desc-v2-0-bb328c0b8603@kernel.org>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
  "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
@@ -61,6 +58,9 @@ To: Andrew Lunn <andrew+netdev@lunn.ch>,
 Cc: linux-arm-kernel@lists.infradead.org, 
  linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
 X-Mailer: b4 0.14.2
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250616_064553_947871_AFF3AAF1 
+X-CRM114-Status: GOOD (  12.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,28 +75,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Compute the number of hwfd buffers/descriptors according to the reserved
-memory size if provided via DTS.
-Reduce the required hwfd buffers queue size for QDMA1.
+In order to not exceed the reserved memory size for hwfd buffers,
+compute the number of hwfd buffers/descriptors according to the
+reserved memory size and the size of each hwfd buffer (2KB).
 
+Fixes: 3a1ce9e3d01b ("net: airoha: Add the capability to allocate hwfd buffers via reserved-memory")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
-Changes in v2:
-- Rely on div_u64 to compute number of hw descriptors
-- Link to v1: https://lore.kernel.org/r/20250615-airoha-hw-num-desc-v1-0-8f88daa4abd7@kernel.org
+ drivers/net/ethernet/airoha/airoha_eth.c | 21 ++++++++++++---------
+ 1 file changed, 12 insertions(+), 9 deletions(-)
 
----
-Lorenzo Bianconi (2):
-      net: airoha: Compute number of descriptors according to reserved memory size
-      net: airoha: Differentiate hwfd buffer size for QDMA0 and QDMA1
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index a7ec609d64dee9c8e901c7eb650bb3fe144ee00a..1b7fd7ee0cbf3e1f7717110c70e9c5183fdd93d4 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -1065,19 +1065,13 @@ static void airoha_qdma_cleanup_tx_queue(struct airoha_queue *q)
+ 
+ static int airoha_qdma_init_hfwd_queues(struct airoha_qdma *qdma)
+ {
++	int size, index, num_desc = HW_DSCP_NUM;
+ 	struct airoha_eth *eth = qdma->eth;
+ 	int id = qdma - &eth->qdma[0];
+ 	dma_addr_t dma_addr;
+ 	const char *name;
+-	int size, index;
+ 	u32 status;
+ 
+-	size = HW_DSCP_NUM * sizeof(struct airoha_qdma_fwd_desc);
+-	if (!dmam_alloc_coherent(eth->dev, size, &dma_addr, GFP_KERNEL))
+-		return -ENOMEM;
+-
+-	airoha_qdma_wr(qdma, REG_FWD_DSCP_BASE, dma_addr);
+-
+ 	name = devm_kasprintf(eth->dev, GFP_KERNEL, "qdma%d-buf", id);
+ 	if (!name)
+ 		return -ENOMEM;
+@@ -1099,8 +1093,12 @@ static int airoha_qdma_init_hfwd_queues(struct airoha_qdma *qdma)
+ 		rmem = of_reserved_mem_lookup(np);
+ 		of_node_put(np);
+ 		dma_addr = rmem->base;
++		/* Compute the number of hw descriptors according to the
++		 * reserved memory size and the payload buffer size
++		 */
++		num_desc = rmem->size / AIROHA_MAX_PACKET_SIZE;
+ 	} else {
+-		size = AIROHA_MAX_PACKET_SIZE * HW_DSCP_NUM;
++		size = AIROHA_MAX_PACKET_SIZE * num_desc;
+ 		if (!dmam_alloc_coherent(eth->dev, size, &dma_addr,
+ 					 GFP_KERNEL))
+ 			return -ENOMEM;
+@@ -1108,6 +1106,11 @@ static int airoha_qdma_init_hfwd_queues(struct airoha_qdma *qdma)
+ 
+ 	airoha_qdma_wr(qdma, REG_FWD_BUF_BASE, dma_addr);
+ 
++	size = num_desc * sizeof(struct airoha_qdma_fwd_desc);
++	if (!dmam_alloc_coherent(eth->dev, size, &dma_addr, GFP_KERNEL))
++		return -ENOMEM;
++
++	airoha_qdma_wr(qdma, REG_FWD_DSCP_BASE, dma_addr);
+ 	airoha_qdma_rmw(qdma, REG_HW_FWD_DSCP_CFG,
+ 			HW_FWD_DSCP_PAYLOAD_SIZE_MASK,
+ 			FIELD_PREP(HW_FWD_DSCP_PAYLOAD_SIZE_MASK, 0));
+@@ -1116,7 +1119,7 @@ static int airoha_qdma_init_hfwd_queues(struct airoha_qdma *qdma)
+ 	airoha_qdma_rmw(qdma, REG_LMGR_INIT_CFG,
+ 			LMGR_INIT_START | LMGR_SRAM_MODE_MASK |
+ 			HW_FWD_DESC_NUM_MASK,
+-			FIELD_PREP(HW_FWD_DESC_NUM_MASK, HW_DSCP_NUM) |
++			FIELD_PREP(HW_FWD_DESC_NUM_MASK, num_desc) |
+ 			LMGR_INIT_START | LMGR_SRAM_MODE_MASK);
+ 
+ 	return read_poll_timeout(airoha_qdma_rr, status,
 
- drivers/net/ethernet/airoha/airoha_eth.c | 27 ++++++++++++++++-----------
- 1 file changed, 16 insertions(+), 11 deletions(-)
----
-base-commit: 8909f5f4ecd551c2299b28e05254b77424c8c7dc
-change-id: 20250614-airoha-hw-num-desc-019c07061c42
-
-Best regards,
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.49.0
 
 
