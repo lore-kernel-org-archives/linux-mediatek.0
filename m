@@ -4,68 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D84E1C71135
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jun 2025 06:01:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E48E5C71136
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jun 2025 06:25:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/zmDs8MrQsoMriWP9sJhRyhyF6eQLwTINrjtCe+Uil4=; b=BKR4F3wp0KneJic8yxYY530S/q
-	ANx432NeT24NcnwZOinLCTgnrEg8Y1XDJcH7YVNCYmAeEM2CbzGnqFErB6SzVwIjT+pMe29vaNM09
-	uiVYD36j49G79N4RE3HkkXlp31PIu/uHTc+ts7fsgLCSjftn14ACQisyX3l7c8a0DfD4G1ISvh8CG
-	QAQmYn4cZ3LRmboxJzZKdIw5kb791YtRafY2wADSVkyPLqqysoRAzeS/3jbKtB8sSNp5d+D+dk52d
-	vvctQEhGUfWlT25CJpCL4fSNgR2sA/8WeCi85NlH8nb1bYYwugsDtoLc5+6OEtksHjmDZF0N+mtvx
-	hj9IHTAQ==;
+	bh=vEkUmAlrU3Ij75G0J4YK0UFr/TZuGkykmvlXbTuEixU=; b=eBrpeq/ZMTORijSHIAqCxEt5qD
+	wYvowjZaXd451Q2C44gc4RajbycNDPtgV5BtlmD4Q24RQr0ooBAEGSQP3PUjbNKFdPruGVKRYQigB
+	9pn3F52au2lDFDIFnr2v92WO0k+UN+xp+fEF4Nc7Eeu3mqkClbKzEQaOeVHy75Oz1Q4ph4jiUj638
+	Wuh3sTdSA7CWAL19hkZ68dd21vzkX9xUQfC1mGgzul59uVqpI3MQvA3XdWKqi8NiZ93tdzzGaUqTh
+	yojev/KPcMLknnEfEAJINnTw2syAuqYj5iuIIOgq2hujV9qT4da/pRe5JxJOMVtyY7W9UlDgHpacF
+	Ccj7R3kQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uR2uK-00000003T6b-1Oem;
-	Mon, 16 Jun 2025 06:01:24 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1uR3Hg-00000003VIw-13Ru;
+	Mon, 16 Jun 2025 06:25:32 +0000
+Received: from mgamail.intel.com ([198.175.65.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uR1eH-00000003MVU-1m7e;
-	Mon, 16 Jun 2025 04:40:46 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id F289CA50CC0;
-	Mon, 16 Jun 2025 04:40:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5C9C1C4CEEA;
-	Mon, 16 Jun 2025 04:40:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750048843;
-	bh=TGHN5IjJzRSodYVswQbkuM8G3fZj/gxhvozJyWYCAMw=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=KeNuXSA6uKkfHRPo9/0yzTwWwVbqXmUIEmb+pj3q9uPRXbbw7346x1/GG3vvNKl/l
-	 aq8jkTvyH+g7m3oEgl71QVRighbGsfy78v8wJiaFq6HZVC5evfEYXuX0mFWGahOaYU
-	 e/mAfnVayKsomZFWjzpTbP9BfTeNzdXBpnynhFTGRl3Iz11mFocQbS4rsJvY48+owE
-	 IEg+VI1VKPtDdJovr9XyOihFQI0/ofEoipkgqjiA2N7ZeJReLu8JfvfFLytY8vEEwJ
-	 eoRlxtj3uG/Lw6MoTKFojv46sC69BjIhFBsNC85llDRCvb2kJBbI4M+S/xbkc4VaCA
-	 GfNJVfqGWtOhg==
-Date: Sun, 15 Jun 2025 23:40:42 -0500
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1uR3Bp-00000003Uqo-3ikH;
+	Mon, 16 Jun 2025 06:19:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1750054769; x=1781590769;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=K8IQ3inhhwcVlDH/GVeLQStlboqAYJS91qtzQftORFk=;
+  b=GRxhQkRDVZy7qoMPNR1xqKnn3fDtCNfyOssBMp9fs/zQ57KESdjGD6Fa
+   hUTLKDR24lGHqzizJGZGIoDqbqbQCpY7CfujIt1/pof1868/N5jQZnSTq
+   r6dWFm7cf4QtY0KFpMoCpFaeqdr44DdM0iqsVV+MTJq3dhAc4jE4SAwqh
+   6sqy6OfaQAJfo702WnBpn2Qd5+ew3YstsSNkurPu2Ze/RG8hqezyfRZHa
+   LVYnOVVknVT+OLSWrgYDJ6Vwkv2o9nuYNkzT/l4aUsAgGCEEEG2XMUGyl
+   5Gp3j+GtDfz7JVUN0LNDCzGizxKUWu65+Ak9JI3nclaNjbLoUzizKr3F4
+   w==;
+X-CSE-ConnectionGUID: TB7FlmrlRGu57JpyPdCUDA==
+X-CSE-MsgGUID: NOfhrtRTTzanZDb9fNRp6g==
+X-IronPort-AV: E=McAfee;i="6800,10657,11465"; a="62461099"
+X-IronPort-AV: E=Sophos;i="6.16,240,1744095600"; 
+   d="scan'208";a="62461099"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jun 2025 23:19:26 -0700
+X-CSE-ConnectionGUID: utMW0UdyTROqSUp873fbVg==
+X-CSE-MsgGUID: vM9rNMYRQLeQ2OCKX13K5w==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,240,1744095600"; 
+   d="scan'208";a="148372684"
+Received: from lkp-server01.sh.intel.com (HELO e8142ee1dce2) ([10.239.97.150])
+  by orviesa009.jf.intel.com with ESMTP; 15 Jun 2025 23:19:23 -0700
+Received: from kbuild by e8142ee1dce2 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1uR3Bh-000Emu-15;
+	Mon, 16 Jun 2025 06:19:21 +0000
+Date: Mon, 16 Jun 2025 14:19:21 +0800
+From: kernel test robot <lkp@intel.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Simon Horman <horms@kernel.org>
+Cc: oe-kbuild-all@lists.linux.dev, netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: Re: [PATCH net-next 2/2] net: airoha: Differentiate hwfd buffer size
+ for QDMA0 and QDMA1
+Message-ID: <202506161459.ENhGD33a-lkp@intel.com>
+References: <20250615-airoha-hw-num-desc-v1-2-8f88daa4abd7@kernel.org>
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Yong Wu <yong.wu@mediatek.com>, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Robin Murphy <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Will Deacon <will@kernel.org>, 
- Project_Global_Chrome_Upstream_Group@mediatek.com, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, iommu@lists.linux.dev, 
- devicetree@vger.kernel.org, Ning li <ning.li@mediatek.com>
-To: Xueqi Zhang <xueqi.zhang@mediatek.com>
-In-Reply-To: <20250616025628.25454-2-xueqi.zhang@mediatek.com>
-References: <20250616025628.25454-1-xueqi.zhang@mediatek.com>
- <20250616025628.25454-2-xueqi.zhang@mediatek.com>
-Message-Id: <175004884234.2151629.17180852934991161132.robh@kernel.org>
-Subject: Re: [RFC PATCH 1/8] dt-bindings: iommu: mediatek: Add mt8196
- support
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250615-airoha-hw-num-desc-v1-2-8f88daa4abd7@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250615_214045_631341_CFA183DB 
-X-CRM114-Status: GOOD (  11.75  )
+X-CRM114-CacheID: sfid-20250615_231929_971128_A90737DF 
+X-CRM114-Status: UNSURE (   9.03  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,47 +95,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Lorenzo,
 
-On Mon, 16 Jun 2025 10:56:07 +0800, Xueqi Zhang wrote:
-> 1. Mediatek has its own implementation for wrapper interrupts and
-> power management. Add the SoC specific compatible for MT8196
-> implementing arm,smmu-v3.
-> 2. APU SMMU need wait until its power is ready, thus add a phandle
-> smmu-mediatek-parents to its power node.
-> 
-> Signed-off-by: Xueqi Zhang <xueqi.zhang@mediatek.com>
-> ---
->  .../bindings/iommu/arm,smmu-v3.yaml           | 24 ++++++++++++++++++-
->  1 file changed, 23 insertions(+), 1 deletion(-)
-> 
+kernel test robot noticed the following build errors:
 
-My bot found errors running 'make dt_binding_check' on your patch:
+[auto build test ERROR on 8909f5f4ecd551c2299b28e05254b77424c8c7dc]
 
-yamllint warnings/errors:
+url:    https://github.com/intel-lab-lkp/linux/commits/Lorenzo-Bianconi/net-airoha-Compute-number-of-descriptors-according-to-reserved-memory-size/20250615-163827
+base:   8909f5f4ecd551c2299b28e05254b77424c8c7dc
+patch link:    https://lore.kernel.org/r/20250615-airoha-hw-num-desc-v1-2-8f88daa4abd7%40kernel.org
+patch subject: [PATCH net-next 2/2] net: airoha: Differentiate hwfd buffer size for QDMA0 and QDMA1
+config: i386-allmodconfig (https://download.01.org/0day-ci/archive/20250616/202506161459.ENhGD33a-lkp@intel.com/config)
+compiler: gcc-12 (Debian 12.2.0-14) 12.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250616/202506161459.ENhGD33a-lkp@intel.com/reproduce)
 
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/iommu/arm,smmu-v3.yaml: ignoring, error in schema: properties: compatible
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/iommu/arm,smmu-v3.yaml: properties:compatible: [{'description': 'MediaTek SoCs implementing "arm,smmu-v3"', 'items': [{'enum': ['mediatek,mt8196-apu-smmu', 'mediatek,mt8196-mm-smmu']}, {'const': 'arm,smmu-v3'}]}] is not of type 'object', 'boolean'
-	from schema $id: http://json-schema.org/draft-07/schema#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/iommu/arm,smmu-v3.yaml: properties:compatible: [{'description': 'MediaTek SoCs implementing "arm,smmu-v3"', 'items': [{'enum': ['mediatek,mt8196-apu-smmu', 'mediatek,mt8196-mm-smmu']}, {'const': 'arm,smmu-v3'}]}] is not of type 'object', 'boolean'
-	from schema $id: http://devicetree.org/meta-schemas/keywords.yaml#
-Documentation/devicetree/bindings/iommu/arm,smmu-v3.example.dtb: /example-0/iommu@2b400000: failed to match any schema with compatible: ['arm,smmu-v3']
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202506161459.ENhGD33a-lkp@intel.com/
 
-doc reference errors (make refcheckdocs):
+All errors (new ones prefixed by >>, old ones prefixed by <<):
 
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250616025628.25454-2-xueqi.zhang@mediatek.com
+>> ERROR: modpost: "__udivdi3" [drivers/net/ethernet/airoha/airoha-eth.ko] undefined!
 
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
-
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
