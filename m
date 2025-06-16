@@ -4,101 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 234AAC71135
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jun 2025 03:55:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C88DC71135
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jun 2025 04:16:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KjwCIT4/G6OsPqKKNi7etA9BwyZ290LnHAyZ+vvEmLE=; b=wQcWEWaspxRI3jhwXpaTNeQkXN
-	kcOmdDWOSb/2Y+Jj4WCpzSoD2BGd+a2Rq23tyTf2I0Ai8Zd/SYxcYw39rC9prA5XLup0lbQMOrcNE
-	Pff1FMslzOE+e+7DE6w+WxRHUrt0KMiRvW3iv/nx3w7fKFe9lGdlgvLlvlE43IKamgxgCHFWHhNCg
-	tZj7jbPxv//3KubR1GXtUt5snNceEwHA9Zkq5+2Zb9zjAHtTbqXG3LAZY7TGn9GYTBTLLS8680ltd
-	8tJBrLD6dRzW3uxdF9FcHwrycUgwjm8knThcct1LVD2lIvMVH5FXofPDJUVGvC+EgQLQzeh05xj8G
-	9y49JTfg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NyZas3Lvh7H1mCmhnuCgcLJvePyut78m/vXrr6Nd/VI=; b=a0lVcnyg3U8kJVq3m8+qgrPumS
+	M+fyrmVOPcBJ9ARqp1l/uhdnraF8ciRYfImTNg3AL3+zIFZmUtkZUUMY5KOu6R49Vqt8hIUQ21aAN
+	KVkjhKA/N12bDvzcpeWIg2nltJSD5rZK/LHciBlU504G8RJpmi511NHdq9odAJd3gvLjt8JXCsW4C
+	mqe1wExOlIIcK7HMtD71IG59OsyAQ+AVrtq1WMyidYGsDTB1RHiEx7R3L3ltC7yuvEonlUVs0iK8i
+	GRZ0Utk5tHhgkcVVHYt7M1eMDzeeyCYkbfQONEu+/yhVujMgPIAQvVWo7gvncISA3KZVk3/Z5o590
+	t7IwvFRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uR0wA-00000003Igg-2kN1;
-	Mon, 16 Jun 2025 03:55:10 +0000
-Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
+	id 1uR1Gk-00000003KPg-1jdD;
+	Mon, 16 Jun 2025 04:16:26 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uR0ik-00000003HK7-0O6K;
-	Mon, 16 Jun 2025 03:41:19 +0000
-Received: by mail-pf1-x42e.google.com with SMTP id d2e1a72fcca58-7399a2dc13fso4360052b3a.2;
-        Sun, 15 Jun 2025 20:41:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1750045277; x=1750650077; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=KjwCIT4/G6OsPqKKNi7etA9BwyZ290LnHAyZ+vvEmLE=;
-        b=m7kHl5ruwwKGESdgYQt4Ut1iNcs5h9oRLta84fE+eNs1Z2F7348VguVIplxOUsNGU3
-         A5e2OLgIDXLQNam2BXHWdsAONwf4vaXJ8vm8iMT5KUbiriDQmoO4Juokne2ucphFZtR1
-         YZYxWysO5cI1CgUykAI84Ok566Sv6KR0gS1TW94opAgjulim7sCzS+UjT5YyUjpOaflE
-         rUX4x4Y3R/drfHK6yfpUIGn4msMEU9gXJCyUtNDFmYGtxDb6NEe4szZGf5EfBomyIRcO
-         7oA43UhQx2Bd3RRiL6yhxsd1akla49gv3KVodYsy2roVv8op1wOla64KY++/2O7gfd+8
-         GqCQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750045277; x=1750650077;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=KjwCIT4/G6OsPqKKNi7etA9BwyZ290LnHAyZ+vvEmLE=;
-        b=kbS0yoHXd22Xi8jnxp0jt0QECeha94YZbe/5IxMitiwI3fcc3kMDC4FWVCavmGHDjK
-         3cHAD7d53Ajon2aXli/BtIjtfMSojZ1eWpy9cko6/wdNHt4jwwJuvFFt4ipn/dNlOQdx
-         iQ/2E78irldvXcFzJZZaScd/wNHKLKxsrq1g9CM1JbzLhl29VaWIyHeEyHAmPJ8EiLWi
-         5FayTQgUtE8n/BUC6ddzglejZ3ck85AETmVT6nBJ+ozVXoa/jlFVSxRQhjdhY9F6fP35
-         HlMpKTZ5PoHCnt546DlO+0qPPp3ytOXz+BQ8Sa4TNb+/SpBkDUaeTzLxhWGcfU4vnkSb
-         FjEA==
-X-Forwarded-Encrypted: i=1; AJvYcCUqlcEm6RklbfHrnBqSbdTE2i7/TgNBTbSiBI1XaCc5GeXppTfXJXNzgveGfwxIbLSywTd/IO49Ri3xzpS33v4=@lists.infradead.org, AJvYcCVg+lD1Kzg6P6CKudTOE3k0Boac4o/g0nmNVUukHPxr9xbosPn8ubNYyMDwoAI1X77ySHvygyXveWIdZGDJAvhT@lists.infradead.org
-X-Gm-Message-State: AOJu0YzAdA5qbmpAIW8EJVjmczfPZzJjKyNwOdUub8AzFzU9Av4FdONG
-	29EtHjhsuy3ziEF7iCH9gsJyD1029vUfe6nbSHeqQGFpf0zKRJYzJ2f4
-X-Gm-Gg: ASbGncvxA02M62cFdA5dUUiHp2OAEb22IiZ1gyrzjPC9/5dnN+EbrUhHsVAofcclYpe
-	9nqw2ETacbO2rEt4JC7bNxQwKOoeT5l3FhpwUGp/TV70PqWAc6oTEGp7UpncqoN9g+lf44pMzgB
-	WsBBImZcd7g/gTnbYmEkMh9TlR1SX0k7f6feGl0B/5AfnCDZNPX6u2zszAg2nCOHp3RQ9l08QwH
-	DMA9gWJNn0r0GlhZckUKNqKYbLB0jqCeL3gCfXzniYQhIcQ8b9cb0Qw9+vpgMJR1p6UOLIkG3w+
-	HqYIMPkYY+GnjjaALfWy3NImBsOc8fGXWDeAmuj65xG4txFCZ4Ckr6Zm6mqjNOWYm4jibI1gwcB
-	Zkyu3
-X-Google-Smtp-Source: AGHT+IFoXXdADq54s1YJVoHHCyU6912PkQq0oVs1W/N3IeK6HcDSKJErbEsGyC7KzvI7wyF0q8jdCg==
-X-Received: by 2002:a05:6a00:2286:b0:736:2a73:6756 with SMTP id d2e1a72fcca58-7489d1999famr11297185b3a.21.1750045276897;
-        Sun, 15 Jun 2025 20:41:16 -0700 (PDT)
-Received: from Barrys-MBP.hub ([118.92.145.159])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-748900b37ddsm5809347b3a.134.2025.06.15.20.41.10
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Sun, 15 Jun 2025 20:41:16 -0700 (PDT)
-From: Barry Song <21cnbao@gmail.com>
-To: nphamcs@gmail.com,
-	hannes@cmpxchg.org
-Cc: 21cnbao@gmail.com,
-	akpm@linux-foundation.org,
-	andrew.yang@mediatek.com,
-	angelogioacchino.delregno@collabora.com,
-	casper.li@mediatek.com,
-	chinwen.chang@mediatek.com,
-	james.hsu@mediatek.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-mm@kvack.org,
-	matthias.bgg@gmail.com,
-	minchan@kernel.org,
-	qun-wei.lin@mediatek.com,
-	rppt@kernel.org,
-	senozhatsky@chromium.org
-Subject: Re: [PATCH] mm: Add Kcompressd for accelerated memory compression
-Date: Mon, 16 Jun 2025 15:41:06 +1200
-Message-Id: <20250616034106.1978-1-21cnbao@gmail.com>
-X-Mailer: git-send-email 2.39.3 (Apple Git-146)
-In-Reply-To: <CAKEwX=MsP6LGjMRNyaHnO5MkE_ne-u-cKLbGfVQcSR-ALoxBwA@mail.gmail.com>
-References: <CAKEwX=MsP6LGjMRNyaHnO5MkE_ne-u-cKLbGfVQcSR-ALoxBwA@mail.gmail.com>
+	id 1uR01e-00000003Co9-4767;
+	Mon, 16 Jun 2025 02:56:48 +0000
+X-UUID: 87d93a7a4a5d11f09eb0dd999d3936bf-20250615
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=NyZas3Lvh7H1mCmhnuCgcLJvePyut78m/vXrr6Nd/VI=;
+	b=umRThyxfmeafjAyB3xahYrQTJwXwge3mmgxiNX2UY6HI50RDqIzpO4IoI78IUVrQ2W/u4X1Ds3oizOGoKsjujmGYcgMmNO2NuFRa5kmOPZwkMock812k5rZWQtncpY4VvgWw5cLlB7qySmfXBdnRm42kTBqBir8RCzmzuPc9+TI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.3,REQID:52b27b3a-0921-4f2e-8519-e62a39816f04,IP:0,UR
+	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:-5
+X-CID-META: VersionHash:09905cf,CLOUDID:6f3d7d28-fdd2-4021-9c0c-83548fdcf243,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
+	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
+	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 87d93a7a4a5d11f09eb0dd999d3936bf-20250615
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <xueqi.zhang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 76892640; Sun, 15 Jun 2025 19:56:42 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Mon, 16 Jun 2025 10:56:38 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Mon, 16 Jun 2025 10:56:37 +0800
+From: Xueqi Zhang <xueqi.zhang@mediatek.com>
+To: Yong Wu <yong.wu@mediatek.com>, Will Deacon <will@kernel.org>, "Robin
+ Murphy" <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>, Rob Herring
+	<robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+	<conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>, Ning li
+	<ning.li@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <iommu@lists.linux.dev>, Xueqi Zhang
+	<xueqi.zhang@mediatek.com>
+Subject: [RFC PATCH 3/8] iommu/arm-smmu-v3: Add implementation for MT8196 MM SMMU
+Date: Mon, 16 Jun 2025 10:56:09 +0800
+Message-ID: <20250616025628.25454-4-xueqi.zhang@mediatek.com>
+X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20250616025628.25454-1-xueqi.zhang@mediatek.com>
+References: <20250616025628.25454-1-xueqi.zhang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250615_204118_147658_4B62D8FA 
-X-CRM114-Status: GOOD (  11.17  )
+X-CRM114-CacheID: sfid-20250615_195647_024765_8AAAD0C9 
+X-CRM114-Status: GOOD (  13.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,47 +91,100 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Nhat, Johannes,
+Add implementation for mediatek MM SMMU.
 
->> The way you implemented this adds time-and-space overhead even on
->> systems that don't have any sort of swap compression enabled.
+Signed-off-by: Xueqi Zhang <xueqi.zhang@mediatek.com>
+---
+ .../arm/arm-smmu-v3/arm-smmu-v3-mediatek.c    | 72 ++++++++++++++++++-
+ 1 file changed, 71 insertions(+), 1 deletion(-)
 
-I agree — we can eliminate the time and space overhead by refining the  
-code to hook kcompressed only when zswap or zram is enabled.
+diff --git a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3-mediatek.c b/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3-mediatek.c
+index 381268968185..c00ee687d839 100644
+--- a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3-mediatek.c
++++ b/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3-mediatek.c
+@@ -4,10 +4,80 @@
+  * Author: Ning li <ning.li@mediatek.com>
+  * Author: Xueqi Zhang <xueqi.zhang@mediatek.com>
+  */
++#include <linux/bitops.h>
++#include <linux/delay.h>
++#include <linux/err.h>
++#include <linux/platform_device.h>
++#include <linux/of.h>
++#include <linux/of_address.h>
++#include <linux/of_platform.h>
+ 
+ #include "arm-smmu-v3.h"
+ 
+-struct arm_smmu_device *arm_smmu_v3_impl_mtk_init(struct arm_smmu_device *smmu)
++#define MTK_SMMU_COMP_STR_LEN		64
++#define MTK_SMMU_HAS_FLAG(pdata, _x)    (!!(((pdata)->flags) & (_x)))
++
++enum mtk_smmu_type {
++	MTK_SMMU_MM,
++	MTK_SMMU_TYPE_NUM,
++};
++
++struct mtk_smmu_v3_plat {
++	enum mtk_smmu_type	smmu_type;
++	u32			flags;
++};
++
++struct mtk_smmu_v3 {
++	struct arm_smmu_device	smmu;
++	const struct mtk_smmu_v3_plat *plat_data;
++};
++
++static const struct mtk_smmu_v3_plat mt8196_data_mm = {
++	.smmu_type		= MTK_SMMU_MM,
++};
++
++struct mtk_smmu_v3_of_device_data {
++	char			compatible[MTK_SMMU_COMP_STR_LEN];
++	const void		*data;
++};
++
++static const struct mtk_smmu_v3_of_device_data mtk_smmu_v3_of_ids[] = {
++	{ .compatible = "mediatek,mt8196-mm-smmu", .data = &mt8196_data_mm},
++};
++
++static inline struct mtk_smmu_v3 *to_mtk_smmu_v3(struct arm_smmu_device *smmu)
+ {
++	return container_of(smmu, struct mtk_smmu_v3, smmu);
++}
++
++static const struct mtk_smmu_v3_plat *mtk_smmu_v3_get_plat_data(const struct device_node *np)
++{
++	const struct mtk_smmu_v3_of_device_data *of_device = mtk_smmu_v3_of_ids;
++	int i;
++
++	for (i = 0; i < ARRAY_SIZE(mtk_smmu_v3_of_ids); i++, of_device++) {
++		if (of_device_is_compatible(np, of_device->compatible))
++			return of_device->data;
++	}
+ 	return NULL;
+ }
++
++struct arm_smmu_device *arm_smmu_v3_impl_mtk_init(struct arm_smmu_device *smmu)
++{
++	struct mtk_smmu_v3 *mtk_smmu_v3;
++	struct device *dev = smmu->dev;
++	struct platform_device *parent_pdev;
++	struct device_node *parent_node;
++
++	mtk_smmu_v3 = devm_krealloc(dev, smmu, sizeof(*mtk_smmu_v3), GFP_KERNEL);
++	if (!mtk_smmu_v3)
++		return ERR_PTR(-ENOMEM);
++
++	mtk_smmu_v3->plat_data = mtk_smmu_v3_get_plat_data(dev->of_node);
++	if (!mtk_smmu_v3->plat_data) {
++		dev_err(dev, "Get platform data fail\n");
++		return ERR_PTR(-EINVAL);
++	}
++
++	return &mtk_smmu_v3->smmu;
++}
+-- 
+2.46.0
 
->>
->> That seems unnecessary. There is an existing method for asynchronous
->> writeback, and pageout() is naturally fully set up to handle this.
->>
->> IMO the better way to do this is to make zswap_store() (and
->> zram_bio_write()?) asynchronous. Make those functions queue the work
->> and wake the compression daemon, and then have the daemon call
->> folio_end_writeback() / bio_endio() when it's done with it.
-
-> +1.
-
-
-But,
-How could this be possible for zswap? zswap_store() is only a frontend —  
-we still need its return value to determine whether __swap_writepage()  
-is required. Waiting for the result of zswap_store() is inherently a  
-synchronous step.
-
-My point is that folio_end_writeback() and bio_endio() can only be  
-called after the entire zswap_store() → __swap_writepage() sequence is  
-completed. That’s why both are placed in the new kcompressed.
-
-The use of folio_end_writeback() and bio_endio() was the case for zRAM  
-in Qun-Wei's RFC.
-
-https://lore.kernel.org/linux-mm/20250307120141.1566673-3-qun-wei.lin@mediatek.com/
-
-However, the implementation tightly coupled zRAM with reclamation logic.  
-For example, zRAM needed to know whether it was running in the kswapd  
-context, which is not ideal for a generic block device — the role zRAM  
-is supposed to play. Additionally, the code was not shared between zswap  
-and zRAM.
-
-Thanks
-Barry
 
