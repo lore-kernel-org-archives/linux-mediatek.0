@@ -4,75 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD110C71136
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jun 2025 03:18:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 623F0C71135
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jun 2025 03:20:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cTdzAVm88Dp3FSAFwEcWTcJ5R+ddpr4qcCBwvjSx2mw=; b=LZy/iDFv4kkHyk6VhsOpYY+8G5
-	hxEsFUCifRnO3cR/mgEPEXWxL3ZtZqNECJsFEuj5W8uYqEK3fp7P0rXVcheXg15qGtZ4tuKtpZD8F
-	yHzGap9eFo/Cof7TWZvTks3stXHe/rda497q9IzxIO05cOYZNiIbXawB8Gb9xWDwmafn5+hJCEBS3
-	dxTs0hcoOeNWCSeTdswOI/aOa2UeQiTr7RrWlhVfDVjOmfI0xQ5lMOeI4NsLU5rCCZYEBXwHW+mK+
-	DbsVX4BhhpCX0PvkHw6ky+JXW9Q6uilL2L6mLgO8QWsZTjGZuwlZ6AYYdyVckW4lxotMBh8wTdyuz
-	JI7IrVkA==;
+	bh=8PepoxNXX/9CvbteCUHU1EZLQKR4wc0toI75mkEMCMQ=; b=4bP/nYPF42cjzkIDZITC9rr0O4
+	d30ohqcECro9OPIA5O2rdSQ2kdTFXyTN1jy8NdCAkqsoMAgGB+FTyl7RDjF3WAfeNe+ncKdepHjSd
+	hirhWfgNEzIrydbuAfjssU0d8mi4LZr62GDczz8Vq5Hcpb/m0e0M7MBeh2fylo2j2kgJ/0q1YZFu6
+	9IETMXweBXfkpi7l6TocnLzjeOHb1qB+wyYlQinGERTs9LPDSITFAiE4g/4bItIghMF1Isr4ifi1h
+	xWy8rckpPiB7j59ozVdefSn05hN6FKj1hFx4a/q418OeJgbyX4B+ICyTT9SJpRMB0t7Y68mf8RvaC
+	9JdchL1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uR0Mq-00000003EnN-2hK7;
-	Mon, 16 Jun 2025 03:18:40 +0000
+	id 1uR0P2-00000003EwM-3f8P;
+	Mon, 16 Jun 2025 03:20:56 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uR02B-00000003CtQ-19j6
-	for linux-mediatek@bombadil.infradead.org;
-	Mon, 16 Jun 2025 02:57:19 +0000
+	id 1uR02C-00000003CtV-060E;
+	Mon, 16 Jun 2025 02:57:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
 	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:
 	Sender:Reply-To:Content-ID:Content-Description;
-	bh=cTdzAVm88Dp3FSAFwEcWTcJ5R+ddpr4qcCBwvjSx2mw=; b=Ww+pQm/1Lm1+Rzl+8o80oPjfKt
-	PcJd7BAIMIqEhc8lNjB/9qPh3aQyqcJ2qjgQOCr+qxerJmEA6m2etsetFVAiu5J5fmhBk/UBC6jXk
-	ufzyiIHebcpBE/SE12WaS3+BNm8waxAA4Ny0v90YLilYUyUmOvSzqWgihMIXLdspt3Zc7iPOVB1Io
-	NylaNScnJ4RLdivojq45umu4splzOb/DbWDkNt4k+4HIXBo39QVInseVdTWr4QqIdiM1fz8lJnsh8
-	8TGuT76mYRaDnVin+zusNJmVBpBHx8yR/C9J3VzIGPBbxpJqU5lFRGZt+AG8HmTZ/6qZ3oMsl5qT7
-	SKFtiP8Q==;
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	bh=8PepoxNXX/9CvbteCUHU1EZLQKR4wc0toI75mkEMCMQ=; b=Xo9en6wp8VQoxSGwj0Q8lhJSsh
+	/Rjrf3mEQDWLbOQZnGJgT2GDUkgbetIRMmQ5c97GQA6pnQwaxO6S0UE+fmFpKQtKFv5n9zsG95NB3
+	qyiYJH9J+H/EEZaLy9SAbXXO6rCpqxiVUu+VyTClaFkrWCv2Y/8AT7Igy8/gdnyxOL5+vm01EhnWV
+	OYQKlMvFzi90uwLTlkWiGjgH+0rJFeuo45+j8PsY0nxfiZiRm72FTvsDUIPfHg4IKV3FTWQSOAVYg
+	sO5LDM+7w7IdguGpj5xY7f2FsmDlFE4ID++ed3rv4iYBg8escziYb/NyNuLcYY4o9a2grG0FANDNg
+	fTZkRYyA==;
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uR024-00000003TVt-2ryV
-	for linux-mediatek@lists.infradead.org;
-	Mon, 16 Jun 2025 02:57:16 +0000
-X-UUID: 8a11283e4a5d11f09eb0dd999d3936bf-20250615
+	id 1uR021-00000003TXU-1lOy;
+	Mon, 16 Jun 2025 02:57:18 +0000
+X-UUID: 8c6773184a5d11f09f706fa2197c6ceb-20250615
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=cTdzAVm88Dp3FSAFwEcWTcJ5R+ddpr4qcCBwvjSx2mw=;
-	b=HVMV5kZXDoDrEauh71HmkqMKKnSMk/iqrTJmmYFAOEdge7FwFKKmBDhg8GdGBSJGuc2/D+vzOdzAhcyLcaSVnLq64CPontVQhMP/5PFBQS372MWucnEGNv5AqiSRA7eeXr2QwBvW7lhnVXYkn6Ht6spgB7noutdJRNKdfe1juYs=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=8PepoxNXX/9CvbteCUHU1EZLQKR4wc0toI75mkEMCMQ=;
+	b=Xi732G1Mc+6I2iM9XM9ggUt5vfpezyenEelMfO0rMGdF5mqGP3hLsEz9SlwrMSmxqoAvdWg60BLlwc7zlMieaS48efYa3uS1+rgIKtTEouUAlFn1D803iadCtdba3wFDhgT+rCS+Wq9/xxlyWwDc+tgB/NYjqEpK8bmGE3PK8oo=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.3,REQID:4ccc6c64-1572-4ae1-9583-da7ccb47a0e7,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:09905cf,CLOUDID:8b3d7d28-fdd2-4021-9c0c-83548fdcf243,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
-	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
-	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
+X-CID-O-INFO: VERSION:1.2.3,REQID:2c248719-9da0-4b68-a9d6-85c0f9621c08,IP:0,UR
+	L:0,TC:0,Content:0,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-30
+X-CID-META: VersionHash:09905cf,CLOUDID:4c94b703-0d95-4f6b-a95f-3c560ebcf3ab,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:2,
+	IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:
+	0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 8a11283e4a5d11f09eb0dd999d3936bf-20250615
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+X-UUID: 8c6773184a5d11f09f706fa2197c6ceb-20250615
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
 	(envelope-from <xueqi.zhang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1478332463; Sun, 15 Jun 2025 19:56:45 -0700
+	with ESMTP id 914402994; Sun, 15 Jun 2025 19:56:49 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Mon, 16 Jun 2025 10:56:42 +0800
+ 15.2.1258.39; Mon, 16 Jun 2025 10:56:46 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Mon, 16 Jun 2025 10:56:41 +0800
+ 15.2.1258.39 via Frontend Transport; Mon, 16 Jun 2025 10:56:45 +0800
 From: Xueqi Zhang <xueqi.zhang@mediatek.com>
-To: Yong Wu <yong.wu@mediatek.com>, Will Deacon <will@kernel.org>, "Robin
- Murphy" <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>, Rob Herring
+To: Yong Wu <yong.wu@mediatek.com>, Will Deacon <will@kernel.org>, Robin
+ Murphy <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>, Rob Herring
 	<robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
 	<conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
@@ -81,9 +79,9 @@ CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>, Ning li
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<devicetree@vger.kernel.org>, <iommu@lists.linux.dev>, Xueqi Zhang
 	<xueqi.zhang@mediatek.com>
-Subject: [RFC PATCH 5/8] iommu/arm-smmu-v3: Add IRQ handle for smmu impl
-Date: Mon, 16 Jun 2025 10:56:11 +0800
-Message-ID: <20250616025628.25454-6-xueqi.zhang@mediatek.com>
+Subject: [RFC PATCH 7/8] iommu/arm-smmu-v3: Invoke rpm operation before accessing the hw
+Date: Mon, 16 Jun 2025 10:56:13 +0800
+Message-ID: <20250616025628.25454-8-xueqi.zhang@mediatek.com>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20250616025628.25454-1-xueqi.zhang@mediatek.com>
 References: <20250616025628.25454-1-xueqi.zhang@mediatek.com>
@@ -91,8 +89,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250616_035714_086352_702AE76C 
-X-CRM114-Status: GOOD (  12.47  )
+X-CRM114-CacheID: sfid-20250616_035711_000510_DAB65222 
+X-CRM114-Status: GOOD (  21.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,68 +105,253 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add IRQ handle for smmu impl
+Invoke rpm operation before accessing the SMMU hw.
 
 Signed-off-by: Xueqi Zhang <xueqi.zhang@mediatek.com>
 ---
- drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c | 9 ++++++++-
- drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.h | 8 ++++++++
- 2 files changed, 16 insertions(+), 1 deletion(-)
+ drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c | 84 ++++++++++++++++++++-
+ drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.h |  3 +
+ 2 files changed, 85 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c b/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
-index d36124a6bb54..154417b380fa 100644
+index 154417b380fa..88912b0f8132 100644
 --- a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
 +++ b/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
-@@ -1954,7 +1954,8 @@ static irqreturn_t arm_smmu_evtq_thread(int irq, void *dev)
- 			arm_smmu_decode_event(smmu, evt, &event);
- 			if (arm_smmu_handle_event(smmu, evt, &event))
- 				arm_smmu_dump_event(smmu, evt, &event, &rs);
--
-+			if (smmu->impl && smmu->impl->smmu_evt_handler)
-+				smmu->impl->smmu_evt_handler(irq, smmu, evt, &rs);
- 			put_device(event.dev);
- 			cond_resched();
- 		}
-@@ -2091,7 +2092,13 @@ static irqreturn_t arm_smmu_combined_irq_thread(int irq, void *dev)
+@@ -122,6 +122,22 @@ static void parse_driver_options(struct arm_smmu_device *smmu)
+ 	} while (arm_smmu_options[++i].opt);
+ }
+ 
++static int arm_smmu_rpm_get(struct arm_smmu_device *smmu)
++{
++	if (smmu && smmu->impl && smmu->impl->smmu_power_get)
++		return smmu->impl->smmu_power_get(smmu);
++
++	return 0;
++}
++
++static int arm_smmu_rpm_put(struct arm_smmu_device *smmu)
++{
++	if (smmu && smmu->impl && smmu->impl->smmu_power_put)
++		return smmu->impl->smmu_power_put(smmu);
++
++	return 0;
++}
++
+ /* Low-level queue manipulation functions */
+ static bool queue_has_space(struct arm_smmu_ll_queue *q, u32 n)
+ {
+@@ -2082,23 +2098,35 @@ static irqreturn_t arm_smmu_gerror_handler(int irq, void *dev)
+ static irqreturn_t arm_smmu_combined_irq_thread(int irq, void *dev)
+ {
+ 	struct arm_smmu_device *smmu = dev;
++	int ret;
++
++	ret = arm_smmu_rpm_get(smmu);
++	if (ret)
++		return IRQ_NONE;
+ 
+ 	arm_smmu_evtq_thread(irq, dev);
+ 	if (smmu->features & ARM_SMMU_FEAT_PRI)
+ 		arm_smmu_priq_thread(irq, dev);
+ 
++	arm_smmu_rpm_put(smmu);
+ 	return IRQ_HANDLED;
+ }
  
  static irqreturn_t arm_smmu_combined_irq_handler(int irq, void *dev)
  {
-+	struct arm_smmu_device *smmu = dev;
+ 	struct arm_smmu_device *smmu = dev;
++	int ret;
 +
++	ret = arm_smmu_rpm_get(smmu);
++	if (ret)
++		return IRQ_WAKE_THREAD;
+ 
  	arm_smmu_gerror_handler(irq, dev);
-+
-+	if (smmu->impl && smmu->impl->combined_irq_handle)
-+		smmu->impl->combined_irq_handle(irq, smmu);
-+
+ 
+ 	if (smmu->impl && smmu->impl->combined_irq_handle)
+ 		smmu->impl->combined_irq_handle(irq, smmu);
+ 
++	arm_smmu_rpm_put(smmu);
  	return IRQ_WAKE_THREAD;
  }
  
+@@ -2255,6 +2283,11 @@ static void arm_smmu_tlb_inv_context(void *cookie)
+ 	struct arm_smmu_domain *smmu_domain = cookie;
+ 	struct arm_smmu_device *smmu = smmu_domain->smmu;
+ 	struct arm_smmu_cmdq_ent cmd;
++	int ret;
++
++	ret = arm_smmu_rpm_get(smmu);
++	if (ret)
++		return;
+ 
+ 	/*
+ 	 * NOTE: when io-pgtable is in non-strict mode, we may get here with
+@@ -2271,6 +2304,8 @@ static void arm_smmu_tlb_inv_context(void *cookie)
+ 		arm_smmu_cmdq_issue_cmd_with_sync(smmu, &cmd);
+ 	}
+ 	arm_smmu_atc_inv_domain(smmu_domain, 0, 0);
++
++	arm_smmu_rpm_put(smmu);
+ }
+ 
+ static void __arm_smmu_tlb_inv_range(struct arm_smmu_cmdq_ent *cmd,
+@@ -2353,6 +2388,11 @@ static void arm_smmu_tlb_inv_range_domain(unsigned long iova, size_t size,
+ 			.leaf	= leaf,
+ 		},
+ 	};
++	int ret;
++
++	ret = arm_smmu_rpm_get(smmu_domain->smmu);
++	if (ret)
++		return;
+ 
+ 	if (smmu_domain->stage == ARM_SMMU_DOMAIN_S1) {
+ 		cmd.opcode	= smmu_domain->smmu->features & ARM_SMMU_FEAT_E2H ?
+@@ -2378,6 +2418,8 @@ static void arm_smmu_tlb_inv_range_domain(unsigned long iova, size_t size,
+ 	 * zapped an entire table.
+ 	 */
+ 	arm_smmu_atc_inv_domain(smmu_domain, iova, size);
++
++	arm_smmu_rpm_put(smmu_domain->smmu);
+ }
+ 
+ void arm_smmu_tlb_inv_range_asid(unsigned long iova, size_t size, int asid,
+@@ -2392,8 +2434,15 @@ void arm_smmu_tlb_inv_range_asid(unsigned long iova, size_t size, int asid,
+ 			.leaf	= leaf,
+ 		},
+ 	};
++	int ret;
++
++	ret = arm_smmu_rpm_get(smmu_domain->smmu);
++	if (ret)
++		return;
+ 
+ 	__arm_smmu_tlb_inv_range(&cmd, iova, size, granule, smmu_domain);
++
++	arm_smmu_rpm_put(smmu_domain->smmu);
+ }
+ 
+ static void arm_smmu_tlb_inv_page_nosync(struct iommu_iotlb_gather *gather,
+@@ -3038,6 +3087,12 @@ static int arm_smmu_attach_dev(struct iommu_domain *domain, struct device *dev)
+ 	} else if (arm_smmu_ssids_in_use(&master->cd_table))
+ 		return -EBUSY;
+ 
++	ret = arm_smmu_rpm_get(smmu);
++	if (ret) {
++		dev_info(smmu->dev, "[%s] power_status:%d\n", __func__, ret);
++		return -EBUSY;
++	}
++
+ 	/*
+ 	 * Prevent arm_smmu_share_asid() from trying to change the ASID
+ 	 * of either the old or new domain while we are working on it.
+@@ -3049,6 +3104,7 @@ static int arm_smmu_attach_dev(struct iommu_domain *domain, struct device *dev)
+ 	ret = arm_smmu_attach_prepare(&state, domain);
+ 	if (ret) {
+ 		mutex_unlock(&arm_smmu_asid_lock);
++		arm_smmu_rpm_put(smmu);
+ 		return ret;
+ 	}
+ 
+@@ -3074,6 +3130,7 @@ static int arm_smmu_attach_dev(struct iommu_domain *domain, struct device *dev)
+ 
+ 	arm_smmu_attach_commit(&state);
+ 	mutex_unlock(&arm_smmu_asid_lock);
++	arm_smmu_rpm_put(smmu);
+ 	return 0;
+ }
+ 
+@@ -3216,7 +3273,13 @@ static void arm_smmu_attach_dev_ste(struct iommu_domain *domain,
+ 		.old_domain = iommu_get_domain_for_dev(dev),
+ 		.ssid = IOMMU_NO_PASID,
+ 	};
++	int ret;
+ 
++	ret = arm_smmu_rpm_get(master->smmu);
++	if (ret) {
++		dev_info(master->smmu->dev, "[%s] power_status:%d\n", __func__, ret);
++		return;
++	}
+ 	/*
+ 	 * Do not allow any ASID to be changed while are working on the STE,
+ 	 * otherwise we could miss invalidations.
+@@ -3244,7 +3307,7 @@ static void arm_smmu_attach_dev_ste(struct iommu_domain *domain,
+ 	arm_smmu_install_ste_for_dev(master, ste);
+ 	arm_smmu_attach_commit(&state);
+ 	mutex_unlock(&arm_smmu_asid_lock);
+-
++	arm_smmu_rpm_put(master->smmu);
+ 	/*
+ 	 * This has to be done after removing the master from the
+ 	 * arm_smmu_domain->devices to avoid races updating the same context
+@@ -4799,10 +4862,17 @@ static int arm_smmu_device_probe(struct platform_device *pdev)
+ 		if (irq > 0)
+ 			smmu->gerr_irq = irq;
+ 	}
++
++	ret = arm_smmu_rpm_get(smmu);
++	if (ret) {
++		dev_info(smmu->dev, "[%s] power_status fail:%d\n", __func__, ret);
++		return ret;
++	}
++
+ 	/* Probe the h/w */
+ 	ret = arm_smmu_device_hw_probe(smmu);
+ 	if (ret)
+-		return ret;
++		goto err_pm_put;
+ 
+ 	/* Initialise in-memory data structures */
+ 	ret = arm_smmu_init_structures(smmu);
+@@ -4840,6 +4910,8 @@ static int arm_smmu_device_probe(struct platform_device *pdev)
+ 	arm_smmu_device_disable(smmu);
+ err_free_iopf:
+ 	iopf_queue_free(smmu->evtq.iopf);
++err_pm_put:
++	arm_smmu_rpm_put(smmu);
+ 	return ret;
+ }
+ 
+@@ -4857,8 +4929,16 @@ static void arm_smmu_device_remove(struct platform_device *pdev)
+ static void arm_smmu_device_shutdown(struct platform_device *pdev)
+ {
+ 	struct arm_smmu_device *smmu = platform_get_drvdata(pdev);
++	int ret;
+ 
++	ret = arm_smmu_rpm_get(smmu);
++	if (ret) {
++		dev_info(smmu->dev, "[%s] power_status:%d\n", __func__, ret);
++		return;
++	}
+ 	arm_smmu_device_disable(smmu);
++
++	arm_smmu_rpm_put(smmu);
+ }
+ 
+ static const struct of_device_id arm_smmu_of_match[] = {
 diff --git a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.h b/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.h
-index 99eeb6143c49..f45c4bf84bc1 100644
+index f45c4bf84bc1..cd96ff9cbc54 100644
 --- a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.h
 +++ b/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.h
 @@ -792,6 +792,7 @@ struct arm_smmu_device {
  
  	struct rb_root			streams;
  	struct mutex			streams_mutex;
-+	const struct arm_smmu_v3_impl	*impl;
++
+ 	const struct arm_smmu_v3_impl	*impl;
  };
  
- struct arm_smmu_stream {
-@@ -998,6 +999,13 @@ int arm_smmu_cmdq_issue_cmdlist(struct arm_smmu_device *smmu,
- 				struct arm_smmu_cmdq *cmdq, u64 *cmds, int n,
- 				bool sync);
+@@ -1004,6 +1005,8 @@ struct arm_smmu_v3_impl {
+ 	int (*combined_irq_handle)(int irq, struct arm_smmu_device *smmu_dev);
+ 	int (*smmu_evt_handler)(int irq, struct arm_smmu_device *smmu_dev,
+ 				u64 *evt, struct ratelimit_state *rs);
++	int (*smmu_power_get)(struct arm_smmu_device *smmu);
++	int (*smmu_power_put)(struct arm_smmu_device *smmu);
+ };
  
-+/* Implementation details */
-+struct arm_smmu_v3_impl {
-+	int (*combined_irq_handle)(int irq, struct arm_smmu_device *smmu_dev);
-+	int (*smmu_evt_handler)(int irq, struct arm_smmu_device *smmu_dev,
-+				u64 *evt, struct ratelimit_state *rs);
-+};
-+
  struct arm_smmu_device *arm_smmu_v3_impl_init(struct arm_smmu_device *smmu);
- #if IS_ENABLED(CONFIG_ARM_SMMU_V3_MEDIATEK)
- struct arm_smmu_device *arm_smmu_v3_impl_mtk_init(struct arm_smmu_device *smmu);
 -- 
 2.46.0
 
