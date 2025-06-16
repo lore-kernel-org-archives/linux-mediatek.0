@@ -4,109 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEB71C71155
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jun 2025 11:35:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C04C5C71136
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jun 2025 14:11:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:References:In-Reply-To:Date:Content-Type:Subject:To
-	:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zbYNG3njVAtH1dEsJCylZZ7mhn29KltrlG0PxCAQEX4=; b=KHMERt8QlBAbVY
-	MyuAxxhFUlz6hzSYd8Bjfut+FbD+kB00zd67zrUapuLDXswwwTgDB+GuKJr7bd/Q9D5Nbll/VNq3L
-	dit9uYeiibjRE1WQU6EiQ12KJ7vnn20TZMRhvxECQUKb7CPci1GByPRdY1KY8H06DALw9pY57pB6w
-	mpdffpIBiwxTVzQyiLdR5DsZzmjJI72CFNtTPYXYy+cN++VFY2FwYGMNohQSx+XtJ/WBs3btcPjMW
-	8C2JMe/dvCNvoqEuanNGIlzkhCWL1/1V2khnitigrIHjnYzbOoaRzsoLjW3W/Uq1BIDu4Q503znwG
-	NEzfwaBzXotSwP9gVGjQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=np1h4zJ5vXfQTar5Dx3KmNyhdbcnNiAHewzhEqh18oU=; b=a1GKvgSt2J8PQ+a4jNk3kqHDPF
+	OP3zaRpexhNZkU8kGGcyCHg6KuODgzFKtI27Vv99c9ielVN4hO0lBQRDjUfHtDVENuCcgcTrzd87j
+	UCa9EhAbb9mFUyDpzARHSeKuPaVOsVC1KIr6uBZfd+mjNU3AkQ/Vq4gma1n2ywyJPT2Y6vCAoKWQB
+	WImT/bzesoNUM3Nm1q4CSGDWZRi1BoQyt7RLHTsQbCgwjHc59WlrT03btOMILMtFtMNrJ8QuWmGnx
+	oh6QOqI6LPAEkA4s+/k0lz5nDQ6/6ZwaXeLdqjvj2pYDivViA9WVaXh6l+hfi2V6LwSj+KcKScz1W
+	3EWsk3zQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uR87p-00000004Ddo-3sP5;
-	Mon, 16 Jun 2025 11:35:41 +0000
-Received: from mout.gmx.net ([212.227.17.22])
+	id 1uRAYO-00000004f5P-17m9;
+	Mon, 16 Jun 2025 14:11:16 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uR78z-000000044yP-3APF;
-	Mon, 16 Jun 2025 10:32:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1750069959; x=1750674759; i=frank-w@public-files.de;
-	bh=zbYNG3njVAtH1dEsJCylZZ7mhn29KltrlG0PxCAQEX4=;
-	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
-	 Content-Type:Date:In-Reply-To:References:
-	 Content-Transfer-Encoding:cc:content-transfer-encoding:
-	 content-type:date:from:message-id:mime-version:reply-to:subject:
-	 to;
-	b=hZEMnAZW/7mUOevdHKb5DW58hT1pv0jATDArPLJLr/bMpiQlhBtjWGcggVguBZIC
-	 8bKreWfebe4JKxHucnkEJoHb+Y+f6VZhokMOi9bBfdoqkArsxnUOBoepBMfhBMAIN
-	 EG0cAY68KIUipno2njp79/5AK70PJR5dirqfuaRVQ9sMMgiv1NMTtbjstL54iSyDE
-	 uxJZabGCkQFe/wgkELZRA/iN4TYTUskglFymhOXcifousmL3UUH1QPR0h0pnEd6EF
-	 jzcK7WaWDOv0syCGlM9sCAMY3moi4+LKX0SSA8rU/3TH4ie8gZO2NEMi1/juKlcLy
-	 KDbTwkE+LB4dExakkg==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [100.67.37.206] ([100.67.37.206]) by
- trinity-msg-rest-gmx-gmx-live-b647dc579-4qvpp (via HTTP); Mon, 16 Jun 2025
- 10:32:39 +0000
+	id 1uR9JT-00000004R5g-1ekG;
+	Mon, 16 Jun 2025 12:51:48 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 5BF725C5E76;
+	Mon, 16 Jun 2025 12:49:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 52777C4CEEA;
+	Mon, 16 Jun 2025 12:51:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1750078306;
+	bh=np1h4zJ5vXfQTar5Dx3KmNyhdbcnNiAHewzhEqh18oU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=TjAUlyTtBOGRAMwHP5h3X24rmszmA6db1aspcZNSHbYZ6qZEqmJjdwJPjYsssyLxS
+	 Bch3rD0SseU04z/ZD9PcI1s26szSeFoKpA4sHN/s+Ph0djr1nSIaC2OlzDx6ifwEla
+	 Xku1wY3S+3z9hL6h4lUvVCvT/CdqNgMPxp1JwmUPPKQ5AYRygcIFtNcDt6YCFLG1+U
+	 39/LvzPFDQH8o9stOpc6qdFXumTW+iQB51r9zW0Dx1SD8TyYIz1pntGeN9/+3h5snO
+	 IYz2OzNZEUMmUr4QHPwgiaFlJ0g3OOyrUjUpD4dIfRrd1AfHrUvIOT2IvynENs3Q0N
+	 gSzh+4t+4hXDA==
+Date: Mon, 16 Jun 2025 14:51:44 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: Eric Dumazet <edumazet@google.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Paolo Abeni <pabeni@redhat.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net-next] net: airoha: Add TCP LRO support
+Message-ID: <aFATYATliil63D5R@lore-desk>
+References: <20250610-airoha-eth-lro-v1-1-3b128c407fd8@kernel.org>
+ <CANn89iJsNWkWzAJbOvaBNjozuLOQBcpVo1bnvfeGq5Zm6h9e=Q@mail.gmail.com>
+ <aEg1lvstEFgiZST1@lore-rh-laptop>
+ <20250611173626.54f2cf58@kernel.org>
+ <aEtAZq8Th7nOdakk@lore-rh-laptop>
+ <20250612155721.4bb76ab1@kernel.org>
 MIME-Version: 1.0
-Message-ID: <trinity-137d83ca-9fe9-4bc3-8482-ddaac9077b0d-1750069959310@trinity-msg-rest-gmx-gmx-live-b647dc579-4qvpp>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: robh@kernel.org, krzk+dt@kernel.org, lorenzo@kernel.org
-Subject: Aw: [PATCH v4 01/13] dt-bindings: net: mediatek,net: update for
- mt7988
-Content-Type: text/plain; charset=UTF-8
-Date: Mon, 16 Jun 2025 10:32:39 +0000
-In-Reply-To: <20250616095828.160900-2-linux@fw-web.de>
-References: <20250616095828.160900-1-linux@fw-web.de>
- <20250616095828.160900-2-linux@fw-web.de>
-X-UI-CLIENT-META-MAIL-DROP: W10=
-X-Provags-ID: V03:K1:+PsAnRdYyRCcfuZ2aEIpeS3SraFNWACiWUPVZYdvuwi0fRlgjDTUG7NvRhmFPpU/PlGQH
- dNyNcklHMTkuXYr8XJh8tnSgdBzJJxsP97ipbekVAmzMHwLit/DoXqHvswlgmM8vY68NDpsdRFnz
- JZ43nEv+mjbp9r8pzElylUKBIayKmn7DDvtZFUEkBUUiOpmGzVc+xz6i6dCatSZhG8ngMqhptyCv
- PwzVg8qBXpdER0VlWJGyLWCd32Mx5/UN0VZD7/oMg/Ds52L9LDgEzwQRPYYu/dQJ9Tdzl9qoZCl4
- JuDd5aCHCZjc8rdsPA5ReRt77vgnj1w9JUjnQG9WDxxyjrrEpLDoZvti9XhWeRPwHw=
-UI-OutboundReport: notjunk:1;M01:P0:tTrr5nZYwHw=;IXSYPgh53TyZcIkZciMzpWDlETX
- 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
- nlSOZp
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="W+ocVnvdJxRF6oLW"
+Content-Disposition: inline
+In-Reply-To: <20250612155721.4bb76ab1@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250616_033250_090085_7D08095C 
-X-CRM114-Status: UNSURE (   5.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250616_055147_474975_AEFF190A 
+X-CRM114-Status: GOOD (  18.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,24 +76,63 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-pm@vger.kernel.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux@fw-web.de, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rob, Krzysztof and Lorenzo,
 
-I got message from your mailserver, that my patch-mails are detected as Sp=
-am and blocked (to=20
-other address than i used - seems like forwarding from kernel.org to gmail=
-.com). I want to make
-sure, you get it...
+--W+ocVnvdJxRF6oLW
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-I see it in dt-bindings patchwork, so replacing the content with a link.
+> On Thu, 12 Jun 2025 23:02:30 +0200 Lorenzo Bianconi wrote:
+> > > I'm not Eric but FWIW 256B is not going to help much. It's best to ke=
+ep
+> > > the len / truesize ratio above 50%, so with 32k buffers we're talking
+> > > about copying multiple frames. =20
+> >=20
+> > what I mean here is reallocate the skb if the true size is small (e.g. =
+below
+> > 256B) in order to avoid consuming the high order page from the page_poo=
+l. Maybe
+> > we can avoid it if reducing the page order to 2 for LRO queues provide
+> > comparable results.
+>=20
+> Hm, truesize is the buffer size, right? If the driver allocated n bytes
+> of memory for packets it sent up the stack, the truesizes of the skbs
+> it generated must add up to approximately n bytes.
 
-https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250616095=
-828.160900-2-linux@fw-web.de/
+With 'truesize' I am referring to the real data size contained in the x-ord=
+er
+page returned by the hw. If this size is small, I was thinking to just allo=
+cate
+a skb for it, copy the data from the x-order page into it and re-insert the
+x-order page into the page_pool running page_pool_put_full_page().
+Let me do some tests with order-2 page to see if the GRO can compensate the
+reduced page size.
 
-only kept angelo, me and ML in this response to not spam people too much.
+Regards,
+Lorenzo
 
-regards Frank
+>=20
+> So if the HW places one aggregation session per buffer, and the buffer
+> is 32kB -- to avoid mem use ratio < 25% you'd need to copy all sessions
+> smaller than 8kB?
+>=20
+> If I'm not making sense - just ignore, I haven't looked at the rest of
+> the driver :)
+>=20
+
+--W+ocVnvdJxRF6oLW
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaFATYAAKCRA6cBh0uS2t
+rBWaAQDOyU+4+eHsLnA3e8ZOON1SFtM4mDYagCpnTCvcmbG07QEAkgJ0dm5XXjOS
+2MFXXDc12/UzCLmREkx436FYDzH0Mwk=
+=oAr6
+-----END PGP SIGNATURE-----
+
+--W+ocVnvdJxRF6oLW--
 
