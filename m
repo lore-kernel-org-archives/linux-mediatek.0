@@ -4,77 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05A97C71135
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jun 2025 06:39:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC868C71135
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jun 2025 07:05:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=wi4kfeydm6LjlXnqhgFk6S0wXYIGS71UkUdZ20kTVvY=; b=CSokgwS/ep2cHCF0bwhqp/UfBB
-	ZSq9jJTK13pFvDrHbuh6rWEer2M+LQjhGbNfBAC8itR3g+/5c1DtGu5T3n0zUUbcQwIdb5yrBJpbC
-	CYOdT21X75vXhDU5HcZ4gH1ZbWlRsdEw6AArnjsyc+Gc4xONU/wERGDGbL7E4PqKHrO1xVds7ogg8
-	vrxd9rPyPiyceHCtmFoGq6KIpBIrhz2EIYYu4SMvOSB90rDgJRYFwbh2lHYfSgSunRQ6mCNgb4SM5
-	ZRkUoX6WSCF6tGNzDzUDGW6sZCi5VpEN/pdLNMhE+bSbA9cLDB3XnP1uxYh2TZzbUGiJKtxXnyAjr
-	R6NC3R3w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=InuKAAGjHu/C7GD/p6y1dIS+oWspdPvUrz6/e8cjyKM=; b=yG/KgYpOW3RPwmDFtgJGSePh3e
+	jKyIKtQzhnWVdvM+kmnwUAcEx8dWzLgXc/hKeQNBtl4+q7ONQ3ovWLBaMRXMmOnOe7/8KigjPiIr1
+	MYyE/XSaNnxnc5rKVjqWV4tXSeOxHNV9iku5wOz7hKUi6R4QjZtVWnVcQxZlgFtKW3614/3BelKLX
+	IQ4ZVJLLr/cuyFZQu3OMOdLxjesbygHouUk6HwfjjsK2QwJDl1QsftPsmy2IoXafZLKFgQ4ISuA7/
+	HF8p+R1DYXX1WqVzklggQ9482qqW5XSO9/nUKqzMhrigkTP6Kx7ekQdfYNiZKYZ2uH2wm2wd4gGuP
+	EiXmc5PQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uR3Ul-00000003Wrm-29UJ;
-	Mon, 16 Jun 2025 06:39:03 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1uR3uM-00000003abX-1qH1;
+	Mon, 16 Jun 2025 07:05:30 +0000
+Received: from mout.gmx.net ([212.227.17.22])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uR3Sn-00000003WeX-1INS
-	for linux-mediatek@lists.infradead.org;
-	Mon, 16 Jun 2025 06:37:02 +0000
-X-UUID: 4aa3f6e44a7c11f09f706fa2197c6ceb-20250615
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=wi4kfeydm6LjlXnqhgFk6S0wXYIGS71UkUdZ20kTVvY=;
-	b=O/ugijWVoHMMiEuiDbeEw1hLqXobOrCKZRhtdPYVmES46g+2f2cR6pVG/xW7jGn7EmAPhHkh52JfYtfFEezJxi4jmnmczEfu8b+BB3kVS8F2uWBMiKKTGDAjbep9i4/acAA9urLP6HfSLd1e2yCTef8GPHxlHEQ2Yg3vk2Vcwsc=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.3,REQID:878c362e-8df0-41a8-95bc-93f95d2d73b9,IP:0,UR
-	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-25
-X-CID-META: VersionHash:09905cf,CLOUDID:2ad1b903-0d95-4f6b-a95f-3c560ebcf3ab,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 4aa3f6e44a7c11f09f706fa2197c6ceb-20250615
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
-	(envelope-from <mingyen.hsieh@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1154201685; Sun, 15 Jun 2025 23:36:53 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Mon, 16 Jun 2025 14:36:50 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Mon, 16 Jun 2025 14:36:50 +0800
-From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
-	<Leon.Yen@mediatek.com>, <Michael.Lo@mediatek.com>,
-	<allan.wang@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
-	<km.lin@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
-	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Ming Yen Hsieh
-	<mingyen.hsieh@mediatek.com>, <stable@vger.kernel.org>
-Subject: [PATCH] wifi: mt76: mt7925: fix incorrect scan probe IE handling for hw_scan
-Date: Mon, 16 Jun 2025 14:36:49 +0800
-Message-ID: <20250616063649.1100503-1-mingyen.hsieh@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1uR3qZ-00000003Zyv-18KF;
+	Mon, 16 Jun 2025 07:01:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1750057280; x=1750662080; i=frank-w@public-files.de;
+	bh=InuKAAGjHu/C7GD/p6y1dIS+oWspdPvUrz6/e8cjyKM=;
+	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
+	 Content-Type:Date:In-Reply-To:References:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=s2UVLpUKJZyqePN0VoRDHjcH1kF2nvZKAqTZkzdJ3S1G1FhxLe/WJ7aonJgYwff1
+	 2O7pslpgw6AoB9xR1d+Lp2pQuxrpjw4e7vRRvzCQCJE9Le8pURc9y1BzdaDseApBW
+	 vGKi3V4o+j/N+t8sgHoYJlOfYH7EYq5jZ1g3AEaGpqqlIIfpajDNXPPYcaa6QNwtz
+	 HS5/BrZ1I/KpeER6QopNP6/0JUw9kUSZ6tF+9OJjWZ+JZ70abf1sefc9pPUhTNMWT
+	 Bs6vg9RrfIqyhdldZ0+XsproGILWz+1DSAmbEKySlpL5WDQzzQPV9G6OQp2f/k9ZN
+	 VbxjqO4BMB+mS72rWg==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [100.67.37.206] ([100.67.37.206]) by
+ trinity-msg-rest-gmx-gmx-live-b647dc579-tr2th (via HTTP); Mon, 16 Jun 2025
+ 07:01:20 +0000
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Message-ID: <trinity-e9eaf8fd-42f1-46d5-b1df-3bfefe02b2fe-1750057280436@trinity-msg-rest-gmx-gmx-live-b647dc579-tr2th>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: mason-cw.chang@mediatek.com, rafael@kernel.org,
+ daniel.lezcano@linaro.org, rui.zhang@intel.com, lukasz.luba@arm.com,
+ angelogioacchino.delregno@collabora.com, nfraprado@collabora.com,
+ jpanis@baylibre.com, npitre@baylibre.com, colin.i.king@gmail.com,
+ u.kleine-koenig@baylibre.com, wenst@chromium.org, linux-pm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, daniel@makrotopia.org,
+ steven.liu@mediatek.com, sam.shih@mediatek.com
+Cc: mason-cw.chang@mediatek.com
+Subject: Aw: [PATCH 0/3] thermal/drivers/mediatek/lvts_thermal: add mt7988
+ lvts commands
+Content-Type: text/plain; charset=UTF-8
+Date: Mon, 16 Jun 2025 07:01:20 +0000
+In-Reply-To: <20250526102659.30225-1-mason-cw.chang@mediatek.com>
+References: <20250526102659.30225-1-mason-cw.chang@mediatek.com>
+X-UI-CLIENT-META-MAIL-DROP: W10=
+X-Provags-ID: V03:K1:E53Jv9HXOWkrKn1ZmdCThVsKfrzyzuGZargrqRZrhq4Jf1N6adv3cJ2SO3q/CtWy8d1d/
+ QDM9voUlQrOto5dwjYfZWRz4yPGaMpj5j0PIhveWyIfGmukm4lJdw+qRF8g5xZigd97/80PljnoQ
+ H8ZrO1S5pA+KCV21QjyAF1d3rOVeZzzMO0CfDykQZKy1Pztvw0C+hv8rbqBrIxsegEJF5iyfSKP0
+ r4WZa67IPl1lKRtoLF3B1SdTESGO/2b3C5xJh94nV4fOA2mNfxuFfOgbRims31qA5sc6MRAMUNFf
+ lw41SniqEtVepmdTyGLN3TgvPEvq317HVyJqOzvxi5npkIetYQ1kamys4S/E8OxFUA=
+UI-OutboundReport: notjunk:1;M01:P0:PxlaLSE8vxo=;EPEHr1o7va+Z4JcCx7lU/6b8+Cc
+ 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
+ LFSEZB56NrtCrz7ufFA==
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250615_233701_367298_F3E28B74 
-X-CRM114-Status: GOOD (  14.99  )
+X-CRM114-CacheID: sfid-20250616_000135_607988_4E259CA0 
+X-CRM114-Status: UNSURE (   8.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,192 +129,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 
-The IEs should be processed and filled into the command tlv separately
-according to each band.
+> Gesendet: Montag, 26. Mai 2025 um 12:26
+> Von: "Mason Chang" <mason-cw.chang@mediatek.com>
+> Betreff: [PATCH 0/3] thermal/drivers/mediatek/lvts_thermal: add mt7988 l=
+vts commands
+>
+> Add the LVTS commands for Mediatek Filogic 880/MT7988.
+>=20
+> This series fixes severely abnormal and inaccurate LVTS temperature
+> readings when using the default commands.
+>=20
+> Signed-off-by: Mason Chang <mason-cw.chang@mediatek.com>
 
-Cc: stable@vger.kernel.org
-Fixes: c948b5da6bbe ("wifi: mt76: mt7925: add Mediatek Wi-Fi7 driver for mt7925 chips")
-Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
----
- .../net/wireless/mediatek/mt76/mt7925/main.c  |  2 +-
- .../net/wireless/mediatek/mt76/mt7925/mcu.c   | 75 +++++++++++++++----
- .../net/wireless/mediatek/mt76/mt7925/mcu.h   |  5 +-
- 3 files changed, 63 insertions(+), 19 deletions(-)
+Hi
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-index 555ef302ae97..506387b4ce13 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-@@ -1540,7 +1540,7 @@ mt7925_start_sched_scan(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 
- 	mt792x_mutex_acquire(dev);
- 
--	err = mt7925_mcu_sched_scan_req(mphy, vif, req);
-+	err = mt7925_mcu_sched_scan_req(mphy, vif, req, ies);
- 	if (err < 0)
- 		goto out;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index ef1d42af96f7..9993d47e643c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -192,6 +192,7 @@ mt7925_connac_mcu_set_wow_ctrl(struct mt76_phy *phy, struct ieee80211_vif *vif,
- 			       bool suspend, struct cfg80211_wowlan *wowlan)
- {
- 	struct mt76_vif_link *mvif = (struct mt76_vif_link *)vif->drv_priv;
-+	struct ieee80211_scan_ies ies = {};
- 	struct mt76_dev *dev = phy->dev;
- 	struct {
- 		struct {
-@@ -227,7 +228,7 @@ mt7925_connac_mcu_set_wow_ctrl(struct mt76_phy *phy, struct ieee80211_vif *vif,
- 		req.wow_ctrl_tlv.trigger |= (UNI_WOW_DETECT_TYPE_DISCONNECT |
- 					     UNI_WOW_DETECT_TYPE_BCN_LOST);
- 	if (wowlan->nd_config) {
--		mt7925_mcu_sched_scan_req(phy, vif, wowlan->nd_config);
-+		mt7925_mcu_sched_scan_req(phy, vif, wowlan->nd_config, &ies);
- 		req.wow_ctrl_tlv.trigger |= UNI_WOW_DETECT_TYPE_SCH_SCAN_HIT;
- 		mt7925_mcu_sched_scan_enable(phy, vif, suspend);
- 	}
-@@ -3085,6 +3086,54 @@ int mt7925_mcu_set_dbdc(struct mt76_phy *phy, bool enable)
- 	return err;
- }
- 
-+static void
-+mt7925_mcu_build_scan_ie_tlv(struct mt76_dev *mdev,
-+			     struct sk_buff *skb,
-+			     struct ieee80211_scan_ies *scan_ies)
-+{
-+	u32 max_len = sizeof(struct scan_ie_tlv) + MT76_CONNAC_SCAN_IE_LEN;
-+	struct scan_ie_tlv *ie;
-+	enum nl80211_band i;
-+	struct tlv *tlv;
-+	const u8 *ies;
-+	u16 ies_len;
-+
-+	for (i = 0; i <= NL80211_BAND_6GHZ; i++) {
-+		if (i == NL80211_BAND_60GHZ)
-+			continue;
-+
-+		ies = scan_ies->ies[i];
-+		ies_len = scan_ies->len[i];
-+
-+		if (!ies || !ies_len)
-+			continue;
-+
-+		if (ies_len > max_len)
-+			return;
-+
-+		tlv = mt76_connac_mcu_add_tlv(skb, UNI_SCAN_IE,
-+					      sizeof(*ie) + ies_len);
-+		ie = (struct scan_ie_tlv *)tlv;
-+
-+		memcpy(ie->ies, ies, ies_len);
-+		ie->ies_len = cpu_to_le16(ies_len);
-+
-+		switch (i) {
-+		case NL80211_BAND_2GHZ:
-+			ie->band = 1;
-+			break;
-+		case NL80211_BAND_6GHZ:
-+			ie->band = 3;
-+			break;
-+		default:
-+			ie->band = 2;
-+			break;
-+		}
-+
-+		max_len -= (sizeof(*ie) + ies_len);
-+	}
-+}
-+
- int mt7925_mcu_hw_scan(struct mt76_phy *phy, struct ieee80211_vif *vif,
- 		       struct ieee80211_scan_request *scan_req)
- {
-@@ -3110,7 +3159,8 @@ int mt7925_mcu_hw_scan(struct mt76_phy *phy, struct ieee80211_vif *vif,
- 
- 	max_len = sizeof(*hdr) + sizeof(*req) + sizeof(*ssid) +
- 		  sizeof(*bssid) * MT7925_RNR_SCAN_MAX_BSSIDS +
--		  sizeof(*chan_info) + sizeof(*misc) + sizeof(*ie);
-+		  sizeof(*chan_info) + sizeof(*misc) + sizeof(*ie) +
-+		  MT76_CONNAC_SCAN_IE_LEN;
- 
- 	skb = mt76_mcu_msg_alloc(mdev, NULL, max_len);
- 	if (!skb)
-@@ -3192,13 +3242,6 @@ int mt7925_mcu_hw_scan(struct mt76_phy *phy, struct ieee80211_vif *vif,
- 	}
- 	chan_info->channel_type = sreq->n_channels ? 4 : 0;
- 
--	tlv = mt76_connac_mcu_add_tlv(skb, UNI_SCAN_IE, sizeof(*ie));
--	ie = (struct scan_ie_tlv *)tlv;
--	if (sreq->ie_len > 0) {
--		memcpy(ie->ies, sreq->ie, sreq->ie_len);
--		ie->ies_len = cpu_to_le16(sreq->ie_len);
--	}
--
- 	req->scan_func |= SCAN_FUNC_SPLIT_SCAN;
- 
- 	tlv = mt76_connac_mcu_add_tlv(skb, UNI_SCAN_MISC, sizeof(*misc));
-@@ -3209,6 +3252,9 @@ int mt7925_mcu_hw_scan(struct mt76_phy *phy, struct ieee80211_vif *vif,
- 		req->scan_func |= SCAN_FUNC_RANDOM_MAC;
- 	}
- 
-+	/* Append scan probe IEs as the last tlv */
-+	mt7925_mcu_build_scan_ie_tlv(mdev, skb, &scan_req->ies);
-+
- 	err = mt76_mcu_skb_send_msg(mdev, skb, MCU_UNI_CMD(SCAN_REQ),
- 				    true);
- 	if (err < 0)
-@@ -3220,7 +3266,8 @@ EXPORT_SYMBOL_GPL(mt7925_mcu_hw_scan);
- 
- int mt7925_mcu_sched_scan_req(struct mt76_phy *phy,
- 			      struct ieee80211_vif *vif,
--			      struct cfg80211_sched_scan_request *sreq)
-+			      struct cfg80211_sched_scan_request *sreq,
-+			      struct ieee80211_scan_ies *ies)
- {
- 	struct mt76_vif_link *mvif = (struct mt76_vif_link *)vif->drv_priv;
- 	struct ieee80211_channel **scan_list = sreq->channels;
-@@ -3308,12 +3355,8 @@ int mt7925_mcu_sched_scan_req(struct mt76_phy *phy,
- 	}
- 	chan_info->channel_type = sreq->n_channels ? 4 : 0;
- 
--	tlv = mt76_connac_mcu_add_tlv(skb, UNI_SCAN_IE, sizeof(*ie));
--	ie = (struct scan_ie_tlv *)tlv;
--	if (sreq->ie_len > 0) {
--		memcpy(ie->ies, sreq->ie, sreq->ie_len);
--		ie->ies_len = cpu_to_le16(sreq->ie_len);
--	}
-+	/* Append scan probe IEs as the last tlv */
-+	mt7925_mcu_build_scan_ie_tlv(mdev, skb, ies);
- 
- 	return mt76_mcu_skb_send_msg(mdev, skb, MCU_UNI_CMD(SCAN_REQ),
- 				     true);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
-index 3dddadb7457b..c34b28769782 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
-@@ -269,7 +269,7 @@ struct scan_ie_tlv {
- 	__le16 ies_len;
- 	u8 band;
- 	u8 pad;
--	u8 ies[MT76_CONNAC_SCAN_IE_LEN];
-+	u8 ies[];
- };
- 
- struct scan_misc_tlv {
-@@ -674,7 +674,8 @@ int mt7925_mcu_cancel_hw_scan(struct mt76_phy *phy,
- 			      struct ieee80211_vif *vif);
- int mt7925_mcu_sched_scan_req(struct mt76_phy *phy,
- 			      struct ieee80211_vif *vif,
--			      struct cfg80211_sched_scan_request *sreq);
-+			      struct cfg80211_sched_scan_request *sreq,
-+			      struct ieee80211_scan_ies *ies);
- int mt7925_mcu_sched_scan_enable(struct mt76_phy *phy,
- 				 struct ieee80211_vif *vif,
- 				 bool enable);
--- 
-2.34.1
+just a friedly reminder for maintainers, is the patch series ok or does it=
+ need any changes?
 
+regards Frank
 
