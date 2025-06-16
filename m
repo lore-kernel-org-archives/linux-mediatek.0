@@ -4,67 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C04C5C71136
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jun 2025 14:11:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14630C71159
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jun 2025 15:27:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=np1h4zJ5vXfQTar5Dx3KmNyhdbcnNiAHewzhEqh18oU=; b=a1GKvgSt2J8PQ+a4jNk3kqHDPF
-	OP3zaRpexhNZkU8kGGcyCHg6KuODgzFKtI27Vv99c9ielVN4hO0lBQRDjUfHtDVENuCcgcTrzd87j
-	UCa9EhAbb9mFUyDpzARHSeKuPaVOsVC1KIr6uBZfd+mjNU3AkQ/Vq4gma1n2ywyJPT2Y6vCAoKWQB
-	WImT/bzesoNUM3Nm1q4CSGDWZRi1BoQyt7RLHTsQbCgwjHc59WlrT03btOMILMtFtMNrJ8QuWmGnx
-	oh6QOqI6LPAEkA4s+/k0lz5nDQ6/6ZwaXeLdqjvj2pYDivViA9WVaXh6l+hfi2V6LwSj+KcKScz1W
-	3EWsk3zQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Ygj9TjOfjQ/NdzUcUqlBJpH8gb+mnv4/bas08gkNg/g=; b=bOI1aGUA5ZcRvc
+	kYgsY+oJc9rfZami1cUOEo6MMhJs74ywnxyIhgNlTfhGrGVaDfVgqmxRckeJwLpwdMvUQd/h5+I3D
+	bKKYsFWJknLU73UVZKfsOrRvSrr9p7R19Bzs0IOoes2GHwTw/wt0Acp76QeDQ8aKbHnQOMrqAlIh/
+	U8gmD71V391h5arvAK1+hFI8HZp0wM8sT6/IW31iswvVNuJC0vUzV8+pTDX3BV2Z6GGJQaM8CIvzv
+	a3nmkIIqyqId5ga7+J7XLuuZhJEktxB6NbWWviK9DIH/7/z5a/RR54MFzTDM8oSxsv4T9Ox1ALgiw
+	QABvow7N1lmMsILi25SQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRAYO-00000004f5P-17m9;
-	Mon, 16 Jun 2025 14:11:16 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1uRBkI-00000004rFf-3LQx;
+	Mon, 16 Jun 2025 15:27:38 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uR9JT-00000004R5g-1ekG;
-	Mon, 16 Jun 2025 12:51:48 +0000
+	id 1uRA9n-00000004aZB-1yz6;
+	Mon, 16 Jun 2025 13:45:51 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 5BF725C5E76;
-	Mon, 16 Jun 2025 12:49:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 52777C4CEEA;
-	Mon, 16 Jun 2025 12:51:46 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 737C961139;
+	Mon, 16 Jun 2025 13:45:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CB234C4CEEA;
+	Mon, 16 Jun 2025 13:45:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750078306;
-	bh=np1h4zJ5vXfQTar5Dx3KmNyhdbcnNiAHewzhEqh18oU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=TjAUlyTtBOGRAMwHP5h3X24rmszmA6db1aspcZNSHbYZ6qZEqmJjdwJPjYsssyLxS
-	 Bch3rD0SseU04z/ZD9PcI1s26szSeFoKpA4sHN/s+Ph0djr1nSIaC2OlzDx6ifwEla
-	 Xku1wY3S+3z9hL6h4lUvVCvT/CdqNgMPxp1JwmUPPKQ5AYRygcIFtNcDt6YCFLG1+U
-	 39/LvzPFDQH8o9stOpc6qdFXumTW+iQB51r9zW0Dx1SD8TyYIz1pntGeN9/+3h5snO
-	 IYz2OzNZEUMmUr4QHPwgiaFlJ0g3OOyrUjUpD4dIfRrd1AfHrUvIOT2IvynENs3Q0N
-	 gSzh+4t+4hXDA==
-Date: Mon, 16 Jun 2025 14:51:44 +0200
+	s=k20201202; t=1750081550;
+	bh=RTUvtWJIHeJfRXaRZvoP7GhruXdkJkNjDL2jCXJOtRE=;
+	h=From:Subject:Date:To:Cc:From;
+	b=EmWNsdkctCoADDzcTZHXywQyCBFhSrqhSKZJpPBH5SxlROx3RB2/NViPa/2ENnRKI
+	 utQKiSm5ix1t8G4Azb+NNH7SmhHq0oae2q/kA7O/OqEUtqHKQcd/hmvwa10ZHIuw4F
+	 09njSbYfB+rAm3/1VXZZhkfdcoU5iwdTkw+FhNzLlDvYIqy6gwl1/zU50Mn5KhWQOW
+	 ZUTWtskPkTzJLG3ghhw6u25wm2jnqu1lP0cAFO9oqxSPg5MekIi3+Wx4pJ8QSK59Rm
+	 cRLIVNOl6DZaVH2C1HFToKgtkLeO/lbmuOcFVX7qa6CQ1T9tX69Wf1lzjCkl/Fq/Og
+	 OWpKq0cqnp1WA==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: Eric Dumazet <edumazet@google.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Paolo Abeni <pabeni@redhat.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net-next] net: airoha: Add TCP LRO support
-Message-ID: <aFATYATliil63D5R@lore-desk>
-References: <20250610-airoha-eth-lro-v1-1-3b128c407fd8@kernel.org>
- <CANn89iJsNWkWzAJbOvaBNjozuLOQBcpVo1bnvfeGq5Zm6h9e=Q@mail.gmail.com>
- <aEg1lvstEFgiZST1@lore-rh-laptop>
- <20250611173626.54f2cf58@kernel.org>
- <aEtAZq8Th7nOdakk@lore-rh-laptop>
- <20250612155721.4bb76ab1@kernel.org>
+Subject: [PATCH net-next v2 0/2] net: airoha: Improve hwfd
+ buffer/descriptor queues setup
+Date: Mon, 16 Jun 2025 15:45:39 +0200
+Message-Id: <20250616-airoha-hw-num-desc-v2-0-bb328c0b8603@kernel.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="W+ocVnvdJxRF6oLW"
-Content-Disposition: inline
-In-Reply-To: <20250612155721.4bb76ab1@kernel.org>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250616_055147_474975_AEFF190A 
-X-CRM114-Status: GOOD (  18.62  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAMgUGgC/22NwQrCMBBEf0X27EoSWls9+R/SQ0y2zaImstGql
+ P67seDN45th3kyQSZgy7FcTCI2cOcUCZr0CF2wcCNkXBqNMrba6QsuSgsXwxPi4oqfsUOmdU01
+ pXWWgDG9CPb8W6bErHDjfk7yXj1F/05+u/qcbNSps+7b11lb25JvDmSTSZZNkgG6e5w+OKBOIt
+ QAAAA==
+X-Change-ID: 20250614-airoha-hw-num-desc-019c07061c42
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Simon Horman <horms@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+X-Mailer: b4 0.14.2
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,60 +75,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Compute the number of hwfd buffers/descriptors according to the reserved
+memory size if provided via DTS.
+Reduce the required hwfd buffers queue size for QDMA1.
 
---W+ocVnvdJxRF6oLW
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+---
+Changes in v2:
+- Rely on div_u64 to compute number of hw descriptors
+- Link to v1: https://lore.kernel.org/r/20250615-airoha-hw-num-desc-v1-0-8f88daa4abd7@kernel.org
 
-> On Thu, 12 Jun 2025 23:02:30 +0200 Lorenzo Bianconi wrote:
-> > > I'm not Eric but FWIW 256B is not going to help much. It's best to ke=
-ep
-> > > the len / truesize ratio above 50%, so with 32k buffers we're talking
-> > > about copying multiple frames. =20
-> >=20
-> > what I mean here is reallocate the skb if the true size is small (e.g. =
-below
-> > 256B) in order to avoid consuming the high order page from the page_poo=
-l. Maybe
-> > we can avoid it if reducing the page order to 2 for LRO queues provide
-> > comparable results.
->=20
-> Hm, truesize is the buffer size, right? If the driver allocated n bytes
-> of memory for packets it sent up the stack, the truesizes of the skbs
-> it generated must add up to approximately n bytes.
+---
+Lorenzo Bianconi (2):
+      net: airoha: Compute number of descriptors according to reserved memory size
+      net: airoha: Differentiate hwfd buffer size for QDMA0 and QDMA1
 
-With 'truesize' I am referring to the real data size contained in the x-ord=
-er
-page returned by the hw. If this size is small, I was thinking to just allo=
-cate
-a skb for it, copy the data from the x-order page into it and re-insert the
-x-order page into the page_pool running page_pool_put_full_page().
-Let me do some tests with order-2 page to see if the GRO can compensate the
-reduced page size.
+ drivers/net/ethernet/airoha/airoha_eth.c | 27 ++++++++++++++++-----------
+ 1 file changed, 16 insertions(+), 11 deletions(-)
+---
+base-commit: 8909f5f4ecd551c2299b28e05254b77424c8c7dc
+change-id: 20250614-airoha-hw-num-desc-019c07061c42
 
-Regards,
-Lorenzo
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
->=20
-> So if the HW places one aggregation session per buffer, and the buffer
-> is 32kB -- to avoid mem use ratio < 25% you'd need to copy all sessions
-> smaller than 8kB?
->=20
-> If I'm not making sense - just ignore, I haven't looked at the rest of
-> the driver :)
->=20
-
---W+ocVnvdJxRF6oLW
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaFATYAAKCRA6cBh0uS2t
-rBWaAQDOyU+4+eHsLnA3e8ZOON1SFtM4mDYagCpnTCvcmbG07QEAkgJ0dm5XXjOS
-2MFXXDc12/UzCLmREkx436FYDzH0Mwk=
-=oAr6
------END PGP SIGNATURE-----
-
---W+ocVnvdJxRF6oLW--
 
