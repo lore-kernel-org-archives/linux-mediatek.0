@@ -4,89 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F608C71135
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jun 2025 10:21:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0EF0C71136
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jun 2025 10:30:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H3wLlyw8govUof7jzDiaEVO+xcofIEdKMOe3pzartzs=; b=TErnESRGjEUoEx30IGiWpBAofP
-	3R5/LRBBcoWdP6vjdMgsgLX8TYLC1le5tX/mtUKxJku4N1qIkMXLaNT4xD4l4292L0aFEz4zR+qc8
-	P73aGhYAJmSzWUpFc2WAtVm7MBKfmfL+MHwwKYHwKjT7D9nGIHumF68h9hNoi/PAE6rIfgd2Rhi1c
-	kxBM3yq11iYoF18v6OuHoMR3Zg/VKSNB6LiZ1uCmIEtJHEdjWkLhLM8e86GSkaUwMkV5A1U78MPYG
-	8lzHy9m9jKXZEJkn626UUW8TZdbz1BzS4Y2CA6ONEYFn1fAtfmQyfraMvFpZKueQEMjLqX/WkX6OT
-	oVKMmT7w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XhALaljWnjaGr85bFIghJ1UUjcItby2nFHJdSA2Y72w=; b=M8klIS6+HlY97TuednjSHnON8z
+	W24XCQxiZ6Zn9JgYJ7CmmEF+CgINg0/8twY5oFVHE7wQFQkLada5pUYgP3EtPwxrR+io+5Sg7pduM
+	3h25krsOJynIuazMWpFvhXwye0eXnlCDmzDyyFmYsj2BjqFZDnxI0edYwdTZPw1Q3bN3MLXau4ghj
+	C8h9DUkLBl1QDx4WKGxIDWtTi6lIFSorP/GC0RvcZbc2Mg6Lp4qCgb9hMrKsziWH2HQ2Yg0AcZwC7
+	3zxGQJNW2BFSQ7YEH3R3fDFFb7XNXbynKybLUXLdpE1KCsDcyf3/7YvouUfG/JroF4e20BpNTihj6
+	/b1xltLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uR6xf-000000043QQ-3CWX;
-	Mon, 16 Jun 2025 10:21:07 +0000
-Received: from out-18.smtpout.orange.fr ([193.252.22.18] helo=out.smtpout.orange.fr)
+	id 1uR76R-000000044au-349h;
+	Mon, 16 Jun 2025 10:30:11 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uR6H4-00000003w4w-0FFG;
-	Mon, 16 Jun 2025 09:37:08 +0000
-Received: from [172.16.82.72] ([124.33.176.97])
-	by smtp.orange.fr with ESMTPA
-	id R6GpufzEh5CROR6GquoLPE; Mon, 16 Jun 2025 11:37:02 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wanadoo.fr;
-	s=t20230301; t=1750066622;
-	bh=H3wLlyw8govUof7jzDiaEVO+xcofIEdKMOe3pzartzs=;
-	h=Message-ID:Date:MIME-Version:Subject:To:From;
-	b=OEyRP9xW44ewXUweqboT5llf1e4621CPOiXfomOMnuGe8fCHddB6LBFiu0TwHmzM8
-	 UyaZ98d7nUFc0r4kYXFoXtVhIrtlUKhu6bLcLYankmzdni5YPm0/2BFsCac+G63mpC
-	 9CuKPxZmibBTRc2xNF8C8DMSTxr2C68HL3zGXVXEIGodQQJ+FnPGx+n6uZk7YGF3s7
-	 kppAgo078Os2kmioe2fqN1jPOl75ZwDfY0rx6+n36e6m1K1i0TCDtYQzu4zlSQWysy
-	 Nf80YeuBgis4QeSasjiSFXk+oIl7siJqJxsD+T7+yvrm5FxlQEWtFxFF3ARhNlClp3
-	 krHPbjPpzjBMA==
-X-ME-Helo: [172.16.82.72]
-X-ME-Auth: bWFpbGhvbC52aW5jZW50QHdhbmFkb28uZnI=
-X-ME-Date: Mon, 16 Jun 2025 11:37:02 +0200
-X-ME-IP: 124.33.176.97
-Message-ID: <1716571a-664b-4b14-b94c-f76303766ec0@wanadoo.fr>
-Date: Mon, 16 Jun 2025 18:36:51 +0900
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 4/5] net: can: mcp251x: use new GPIO line value setter
- callbacks
+	id 1uR6b0-00000003zJ8-3txY
+	for linux-mediatek@lists.infradead.org;
+	Mon, 16 Jun 2025 09:57:44 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1uR6ag-0002GD-6S; Mon, 16 Jun 2025 11:57:22 +0200
+Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1uR6ac-003mk1-1V;
+	Mon, 16 Jun 2025 11:57:18 +0200
+Received: from pengutronix.de (p5b1645f7.dip0.t-ipconnect.de [91.22.69.247])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(Client did not present a certificate)
+	(Authenticated sender: mkl-all@blackshift.org)
+	by smtp.blackshift.org (Postfix) with ESMTPSA id D3E53428695;
+	Mon, 16 Jun 2025 09:57:17 +0000 (UTC)
+Date: Mon, 16 Jun 2025 11:57:16 +0200
+From: Marc Kleine-Budde <mkl@pengutronix.de>
 To: Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-can@vger.kernel.org,
- linux-arm-msm@vger.kernel.org,
- Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
- Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Linus Walleij <linus.walleij@linaro.org>,
- "Chester A. Unal" <chester.a.unal@arinc9.com>,
- Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Marc Kleine-Budde <mkl@pengutronix.de>,
- Heiner Kallweit <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>
+Cc: Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>, 
+	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+	Linus Walleij <linus.walleij@linaro.org>, "Chester A. Unal" <chester.a.unal@arinc9.com>, 
+	Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Vincent Mailhol <mailhol.vincent@wanadoo.fr>, 
+	Heiner Kallweit <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-can@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+Subject: Re: [PATCH v2 3/5] net: can: mcp251x: propagate the return value of
+ mcp251x_spi_write()
+Message-ID: <20250616-authentic-competent-bustard-e31498-mkl@pengutronix.de>
 References: <20250616-gpiochip-set-rv-net-v2-0-cae0b182a552@linaro.org>
- <20250616-gpiochip-set-rv-net-v2-4-cae0b182a552@linaro.org>
-Content-Language: en-US
-From: Vincent Mailhol <mailhol.vincent@wanadoo.fr>
-Autocrypt: addr=mailhol.vincent@wanadoo.fr; keydata=
- xjMEZluomRYJKwYBBAHaRw8BAQdAf+/PnQvy9LCWNSJLbhc+AOUsR2cNVonvxhDk/KcW7FvN
- LFZpbmNlbnQgTWFpbGhvbCA8bWFpbGhvbC52aW5jZW50QHdhbmFkb28uZnI+wrIEExYKAFoC
- GwMFCQp/CJcFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4AWIQTtj3AFdOZ/IOV06OKrX+uI
- bbuZwgUCZx41XhgYaGtwczovL2tleXMub3BlbnBncC5vcmcACgkQq1/riG27mcIYiwEAkgKK
- BJ+ANKwhTAAvL1XeApQ+2NNNEwFWzipVAGvTRigA+wUeyB3UQwZrwb7jsQuBXxhk3lL45HF5
- 8+y4bQCUCqYGzjgEZx4y8xIKKwYBBAGXVQEFAQEHQJrbYZzu0JG5w8gxE6EtQe6LmxKMqP6E
- yR33sA+BR9pLAwEIB8J+BBgWCgAmFiEE7Y9wBXTmfyDldOjiq1/riG27mcIFAmceMvMCGwwF
- CQPCZwAACgkQq1/riG27mcJU7QEA+LmpFhfQ1aij/L8VzsZwr/S44HCzcz5+jkxnVVQ5LZ4B
- ANOCpYEY+CYrld5XZvM8h2EntNnzxHHuhjfDOQ3MAkEK
-In-Reply-To: <20250616-gpiochip-set-rv-net-v2-4-cae0b182a552@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+ <20250616-gpiochip-set-rv-net-v2-3-cae0b182a552@linaro.org>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="e4kyy2hl3xavjzza"
+Content-Disposition: inline
+In-Reply-To: <20250616-gpiochip-set-rv-net-v2-3-cae0b182a552@linaro.org>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: mkl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250616_023706_511931_A4D14981 
-X-CRM114-Status: UNSURE (   7.29  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250616_025742_961965_55799C68 
+X-CRM114-Status: GOOD (  13.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,19 +90,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 16/06/2025 at 16:24, Bartosz Golaszewski wrote:
+
+--e4kyy2hl3xavjzza
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v2 3/5] net: can: mcp251x: propagate the return value of
+ mcp251x_spi_write()
+MIME-Version: 1.0
+
+On 16.06.2025 09:24:06, Bartosz Golaszewski wrote:
 > From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-> 
-> struct gpio_chip now has callbacks for setting line values that return
-> an integer, allowing to indicate failures. Convert the driver to using
-> them.
-> 
+>=20
+> Add an integer return value to mcp251x_write_bits() and use it to
+> propagate the one returned by mcp251x_spi_write(). Return that value on
+> error in the request() GPIO callback.
+>=20
 > Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 
-Reviewed-by: Vincent Mailhol <mailhol.vincent@wanadoo.fr>
+Reviewed-by: Marc Kleine-Budde <mkl@pengutronix.de>
 
+Feel free to mainline the 2 CAN patches via the net-next tree directly.
 
-Yours sincerely,
-Vincent Mailhol
+regards,
+Marc
 
+--=20
+Pengutronix e.K.                 | Marc Kleine-Budde          |
+Embedded Linux                   | https://www.pengutronix.de |
+Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
+Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
+
+--e4kyy2hl3xavjzza
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEn/sM2K9nqF/8FWzzDHRl3/mQkZwFAmhP6nkACgkQDHRl3/mQ
+kZxs6wgAhFu5HOzU+o2sA/iQUZtoFgGRCGlnrRtplsyqOkJuBOv+EbNYewvtRN3L
+auIWb+i9/gNN7LtktKhKgqQ/w3ZP+dXNqktHOODiNT6EbzdIF4XpUzGEq1cG7Gaa
+SCYw1XiSs1A4p88Vr0sa15bYmRam7OK16HTquSz0yPXeTGdc/mjdYnOD6Zu8bVM7
+p8E0Z6zcjxDsagIp99SIUpJvyUat2LkMxi+3aKx4vCcDgm5WsEniGjFITJm0SmvJ
+yUlCyfN5HEjiQVI1Pc4Ns8ngROMfciVzVoTPfghS957w1aNM8SGQB+5qeX+UctWf
+iofixBKdnPKxxjesIAlu3SjuYLm/jg==
+=UtNp
+-----END PGP SIGNATURE-----
+
+--e4kyy2hl3xavjzza--
 
