@@ -4,61 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9CDEC71135
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Jun 2025 20:04:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 637ACC71157
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jun 2025 03:09:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=D+pAFU9AytArnIwqdWcPlCccdu0jBWh6uQ/wP44N9Jo=; b=WecjrNkJe1/t9S
-	CBCVfP7m8otCwuk4mtiUQDADKnoofJ0EnBhPfVnkJYkDJzPe1xnqQ9vsviWJyfP/e+QEj7nMsjjte
-	5OS7CNLuSDVOWM3xZD6sB0DPcH3KmBTLg980CWGUy3V3QtQe9w7wBpo9ztaVGmY5+lwvIThK16FwD
-	s/9W0DdJW/io4ae+MA8y8LoyHLJnJr4vFK4nmBw4b8MqXPG2HVG+eSNzHFyYlpha1u9ufO5EcaAxV
-	oNe44eE/G07HtwUG2SBUl78LiLeUG/DIf76A/iGHRW0yo/v/4O3/fUiOw+5pUiVRLd3Zu6WKiZDEP
-	rjQn+hmATQyQZdcazEGA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=umZZODBC0zwW+FQGVQ1VvC9xChtDdOxEYWQjHr8vmZw=; b=mKz9C0My84juK25/g8+34+jwIJ
+	xH91y77vqP33jUDoys/54DuNQMtFfVGKhABG7nVEWtJUVCFpCi6gQL9HHNN0vr6O5+A/8c1wRXGIl
+	KGnGpe6fTEl+dtHR4dnx06CFk9IHcZdHekUEMh/HhQMDNS0l3BOpmTWuxzXPGjIwGk7ohjxFf4pZo
+	TJzpQ2sjQJWBiuL0Si3BxlXRks89rYleRXQYL3Ox1LulNuK4D0VGzpygSJMgYIrDbp4xLcGpHmq7K
+	/QObUl99ybqxbcDI1ECp7BOixJKJjXY3NqRHuV7GZ4vSgeoji1zV9ZGbRUx1VSn/+8MIFR6Q/2m/R
+	8Ae6k3sQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQtag-00000002nhv-0Xc0;
-	Sun, 15 Jun 2025 20:04:30 +0000
-Received: from mxout3.routing.net ([2a03:2900:1:a::8])
+	id 1uR0EB-00000003ECj-1M8p;
+	Mon, 16 Jun 2025 03:09:43 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uQtYR-00000002na6-1oWN;
-	Sun, 15 Jun 2025 20:02:12 +0000
-Received: from mxbox4.masterlogin.de (unknown [192.168.10.79])
-	by mxout3.routing.net (Postfix) with ESMTP id 6324E6022C;
-	Sun, 15 Jun 2025 20:02:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1750017729;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=D+pAFU9AytArnIwqdWcPlCccdu0jBWh6uQ/wP44N9Jo=;
-	b=SnQIebM+9MKdNtdv9x3At12yoE/FHiYKjhbH68HfMwBOlmVkpOuzTKRvB1Z24RYj+BPSef
-	HI+Riy+dj13SXZnMnoiCOcJHPXyn7WeqyA0HQpENSV3rHU2e/aTFyDa/Yiza/xi8bAPU+V
-	5kLMeS8lrn3noh0JkNEIu+18Og2Hv2o=
-Received: from [127.0.0.1] (fttx-pool-217.61.157.124.bambit.de [217.61.157.124])
-	by mxbox4.masterlogin.de (Postfix) with ESMTPSA id 84A6C8034B;
-	Sun, 15 Jun 2025 20:02:08 +0000 (UTC)
-Date: Sun, 15 Jun 2025 22:02:08 +0200
-From: Frank Wunderlich <linux@fw-web.de>
-To: Daniel Golle <daniel@makrotopia.org>
-Subject: =?US-ASCII?Q?Re=3A_=5Bnet-next_v3_3/3=5D_net=3A_ethernet=3A_mtk=5Feth=5F?=
- =?US-ASCII?Q?soc=3A_change_code_to_skip_first_IRQ_completely?=
-User-Agent: K-9 Mail for Android
-In-Reply-To: <aE8ja1fbAtvWx2GN@pidgin.makrotopia.org>
-References: <20250615150333.166202-1-linux@fw-web.de> <20250615150333.166202-4-linux@fw-web.de> <aE8ja1fbAtvWx2GN@pidgin.makrotopia.org>
-Message-ID: <B8138460-D6EA-4142-B0D9-14C93B15D5B8@fw-web.de>
+	id 1uR01a-00000003CnQ-4Bl3;
+	Mon, 16 Jun 2025 02:56:44 +0000
+X-UUID: 840875824a5d11f09eb0dd999d3936bf-20250615
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=umZZODBC0zwW+FQGVQ1VvC9xChtDdOxEYWQjHr8vmZw=;
+	b=bm/nr8l5c4yKanc+nOIpT0Bu1GoMYHmOQlKsM0+BCxuNH91CkaZU3uvhw11g3SaKj/UJCg5mvIZ48GbhOGzSEe6/x4k+kE0b3fYjkcEWwTKgz8YqRrf5u+Eb7IG6JWDc4QrLipt748EXCQaQe7LH+8rwEA9C2NHfEb+KM6AF3I8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.3,REQID:05764be4-ed8d-4d47-8518-95b98f80229f,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:09905cf,CLOUDID:cd810277-7521-4364-b0ef-cd7d9c0ecbde,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 840875824a5d11f09eb0dd999d3936bf-20250615
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <xueqi.zhang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1645102320; Sun, 15 Jun 2025 19:56:35 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Mon, 16 Jun 2025 10:56:31 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Mon, 16 Jun 2025 10:56:31 +0800
+From: Xueqi Zhang <xueqi.zhang@mediatek.com>
+To: Yong Wu <yong.wu@mediatek.com>, Will Deacon <will@kernel.org>, Robin
+ Murphy <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>, Rob Herring
+	<robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+	<conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>, Ning li
+	<ning.li@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<devicetree@vger.kernel.org>, <iommu@lists.linux.dev>, Xueqi Zhang
+	<xueqi.zhang@mediatek.com>
+Subject: [RFC PATCH 0/8] Add mt8196 SMMU support
+Date: Mon, 16 Jun 2025 10:56:06 +0800
+Message-ID: <20250616025628.25454-1-xueqi.zhang@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Mail-ID: 9b720d70-be23-44b8-94ac-4f9468184a23
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250615_130211_670544_50E86478 
-X-CRM114-Status: GOOD (  16.21  )
+X-CRM114-CacheID: sfid-20250615_195643_040821_C3A3BC17 
+X-CRM114-Status: GOOD (  10.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,80 +86,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, Simon Horman <horms@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 15=2E Juni 2025 21:49:43 MESZ schrieb Daniel Golle <daniel@makrotopia=2E=
-org>:
->On Sun, Jun 15, 2025 at 05:03:18PM +0200, Frank Wunderlich wrote:
->> From: Frank Wunderlich <frank-w@public-files=2Ede>
->>=20
->> On SoCs without MTK_SHARED_INT capability (mt7621 + mt7628) the first
->> IRQ (eth->irq[0]) was read but never used=2E Skip reading it now too=2E
->>=20
->> Signed-off-by: Frank Wunderlich <frank-w@public-files=2Ede>
->> ---
->>  drivers/net/ethernet/mediatek/mtk_eth_soc=2Ec | 11 ++++++++---
->>  drivers/net/ethernet/mediatek/mtk_eth_soc=2Eh |  4 ++--
->>  2 files changed, 10 insertions(+), 5 deletions(-)
->>=20
->> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc=2Ec b/drivers/ne=
-t/ethernet/mediatek/mtk_eth_soc=2Ec
->> index 9aec67c9c6d7=2E=2E4d7de282b940 100644
->> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc=2Ec
->> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc=2Ec
->> @@ -3346,10 +3346,15 @@ static int mtk_get_irqs(struct platform_device =
-*pdev, struct mtk_eth *eth)
->>  		return 0;
->> =20
->>  	for (i =3D 0; i < MTK_ETH_IRQ_MAX; i++) {
->> -		if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT) && i > 0)
->> -			eth->irq[i] =3D eth->irq[MTK_ETH_IRQ_SHARED];
->> +		if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT)) {
->> +			if (i =3D=3D 0)
->> +				eth->irq[MTK_ETH_IRQ_SHARED] =3D platform_get_irq(pdev, i);
->> +			else
->> +				eth->irq[i] =3D eth->irq[MTK_ETH_IRQ_SHARED];
->> +		} else if (i < 2)  //skip the 1st and 4th IRQ on !MTK_SHARED_INT
->
->Please use conformant comment style, ie=2E do not use '//' but always use
->'/* =2E=2E=2E */' instead, on a dedicated line=2E
+This patchset add mt8196 SMMU support.
+1. Mediatek SMMU interrupt is low level active rather than the
+standard edge. Process Mediatek SMMU wrapper interrupt and dump
+detailed information when a translation fault occurs.
+2. In some projects, Mediatek also have EL2 driver, so put the pm
+operation in TFA(EL3), then all the kernel and EL2 could control
+the pm. Thus implement rpm get/put function which send smc call to
+TFA to get/put SMMU power.
 
-Ok,not sure if the comment should stay :)
-It was a comment for me and i forgot to remove it=2E
+Xueqi Zhang (8):
+  dt-bindings: iommu: mediatek: Add mt8196 support
+  iommu/arm-smmu-v3: Add SMMU implementation
+  iommu/arm-smmu-v3: Add implementation for MT8196 MM SMMU
+  iommu/arm-smmu-v3: Add implementation for MT8196 APU SMMU
+  iommu/arm-smmu-v3: Add IRQ handle for smmu impl
+  iommu/arm-smmu-v3: mediatek: Add wrapper handle for IRQ
+  iommu/arm-smmu-v3: Invoke rpm operation before accessing the hw
+  iommu/arm-smmu-v3: mediatek: Implement rpm get/put function
 
->> +			eth->irq[i] =3D platform_get_irq(pdev, i + 1);
->>  		else
->> -			eth->irq[i] =3D platform_get_irq(pdev, i);
->> +			continue;
->> =20
->>  		if (eth->irq[i] < 0) {
->>  			dev_err(&pdev->dev, "no IRQ%d resource found\n", i);
->> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc=2Eh b/drivers/ne=
-t/ethernet/mediatek/mtk_eth_soc=2Eh
->> index 6b1208d05f79=2E=2Eff2ae3c80179 100644
->> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc=2Eh
->> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc=2Eh
->> @@ -643,8 +643,8 @@
->>  #define MTK_MAC_FSM(x)		(0x1010C + ((x) * 0x100))
->> =20
->>  #define MTK_ETH_IRQ_SHARED	0
->> -#define MTK_ETH_IRQ_TX		1
->> -#define MTK_ETH_IRQ_RX		2
->> +#define MTK_ETH_IRQ_TX		0
->> +#define MTK_ETH_IRQ_RX		1
->>  #define MTK_ETH_IRQ_MAX		3
->
->Shouldn't MAX be 1 now?
+ .../bindings/iommu/arm,smmu-v3.yaml           |  24 +-
+ drivers/iommu/arm/Kconfig                     |   7 +
+ drivers/iommu/arm/arm-smmu-v3/Makefile        |   3 +-
+ .../iommu/arm/arm-smmu-v3/arm-smmu-v3-impl.c  |  16 +
+ .../arm/arm-smmu-v3/arm-smmu-v3-mediatek.c    | 536 ++++++++++++++++++
+ drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c   |  96 +++-
+ drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.h   |  14 +
+ 7 files changed, 691 insertions(+), 5 deletions(-)
+ create mode 100644 drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3-impl.c
+ create mode 100644 drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3-mediatek.c
 
-No as we still need to loop over the first 3 irqs
-on the older devicetrees=2E Or was the MAX
-intented for anything else (e=2Eg=2E array size for
-storing the sw irqs - not changed this yet,but
-imho thi should be 2 now if SHARED_INT does
-not need 3 entries)?
+-- 
+2.46.0
 
-
-regards Frank
 
