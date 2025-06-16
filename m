@@ -4,72 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E8B4C7115A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jun 2025 03:27:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F4FDC71159
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jun 2025 03:27:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EZ7HgUs7/vySNSb2uPcrZkXj0ZWbSiFjRGFESlydo6E=; b=mdI5CEevjO+LANFO/52J3ysYW3
-	ty0zfvAb6VIvKTRdjdI8yXZa1GYvwwbFZgt9bT/fV99NlXKQsA8OAwMiFRvUJXffBLR0tXcHkiHIN
-	EFl69mgMFnFbukkDWeteYktKBjT7GeoKjwt6zZCOmaSPmrpZ+0T2xS2mJ2xgu9NWp3NJP2selhC8f
-	s85j8M6ARSIAyBUDYyfHAVO6mu8zEtENdpDhYuARUoF5nX3Cb56nfq9pVC6wOxXAAireCOY1W2Z0J
-	9HygKnLGZk+plXHAJ/HNeAE98wukvAaS6gVJqQA79bTTA/k/htJsaVZKfj2g9t3XeTZIgoNlRXsWw
-	QwhTD0cw==;
+	bh=VBckLV6jNByzkSdMQw8AHIGDrw+A/A7qK4UW3zfX+Kk=; b=ioxgrJRb6Z2m0WowQWa5MpL4xK
+	lQ/wYLpbVIyO5U83Dc74WFc11AyihAaNvjFSf/d0iGKp4Z70rPXnNhozOU/5CbUUUgkSulNEz7oR5
+	W+vbncbePVvVTK1CM3B5NJytQfnWEE6pByqBjH8+F21FWMtkHwg+PbeyKse4/7ASRGWyqM3bo9/Nb
+	PKXdhL6KkUj7Msmc+CCmpQUAj7krp7uV6sPE7cl1Dz4AlbV7Of0Hb+wtg4RaQR1A0KsXFb5o4ucHZ
+	f2UKNXN5k9swSjfAtQNPxiL2kyBBC16aiFp8i1i91rHsEaIDyi6dHtkgR5/YpvaV238nccsPvSCy0
+	h7Clog9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uR0Vb-00000003Fq6-2ytn;
+	id 1uR0Vb-00000003FpO-1EXM;
 	Mon, 16 Jun 2025 03:27:43 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uR0H0-00000003EN0-2JXk
-	for linux-mediatek@bombadil.infradead.org;
-	Mon, 16 Jun 2025 03:12:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=EZ7HgUs7/vySNSb2uPcrZkXj0ZWbSiFjRGFESlydo6E=; b=qMkAEU7jowdXE63w+eecTKRaue
-	rlNMOp7zc0ihZiy/4Ha6Gqb2yBf5NuqwgQuvYYbDUvouRIK20RDxOXAyF4+GMYeH0su0tYP0TnUuR
-	r+uhMPzmB12u8Dptd7pjAf6458WvmPctgzc+cG0yJn6MZWzdO9jJcgIVasnb+3EvRsM+dBJdJG2qs
-	AdpT6s4us3swDdbDcKsYtMKagnHl891VNjRy9NrfH9Ol5ynHp8PGakwZXa8xDmtCqsDKkyb7WYkKm
-	7Kyi6/0nwn3Er5AE1QP9gWAjJdI+4JtxDMsxWnnmZ6e5ilv4FNV/coeslgdjrFVq3nHwizMYFNG8H
-	nCmN4AhA==;
 Received: from mailgw01.mediatek.com ([216.200.240.184])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uR0Gm-00000003U4N-3bqy
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uR0Go-00000003EMN-4368
 	for linux-mediatek@lists.infradead.org;
-	Mon, 16 Jun 2025 03:12:36 +0000
-X-UUID: 8910f6c64a5d11f09f706fa2197c6ceb-20250615
+	Mon, 16 Jun 2025 03:12:28 +0000
+X-UUID: 858726884a5d11f09f706fa2197c6ceb-20250615
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=EZ7HgUs7/vySNSb2uPcrZkXj0ZWbSiFjRGFESlydo6E=;
-	b=rN0Ac8S7+Xi4XeFZYg36Vx0Oa2TZpKAkUreZVXT9tWhviGKG5I9CDdSL+Cyh7PRtjfCXzZnjlMDGhOR6BLEkKW54LwErK173pFiTiNe5/r9OJmP2FJNVvv0RkHdHdyLW0LYLHes1TNz4WXoqXtGmtIFzgitPdwfqoU2Q1tfAuD0=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=VBckLV6jNByzkSdMQw8AHIGDrw+A/A7qK4UW3zfX+Kk=;
+	b=lF+ViI/Q55Q68ANrrcMRpas9q+fzGc4+qK7bItFPOojM6rJTXxnLHkMgLRojTMmCUrhN9mpNykZ8z+GmelHdJ1p7tpkqAkNL2ahA5yeFeGVQyx574RJp0xgRVPt+e0ZCSP28KeG30ZdK3mjmzv1fVo0jA7ZBzmgRkgwbs8w189I=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.3,REQID:0fbf2e07-0b1d-4466-8ad7-3c717c282dd3,IP:0,UR
+X-CID-O-INFO: VERSION:1.2.3,REQID:fe324a1d-9c95-4b75-920d-ef8fe25e30dd,IP:0,UR
 	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
 	elease,TS:0
-X-CID-META: VersionHash:09905cf,CLOUDID:853d7d28-fdd2-4021-9c0c-83548fdcf243,B
+X-CID-META: VersionHash:09905cf,CLOUDID:b893b703-0d95-4f6b-a95f-3c560ebcf3ab,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
 	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
 	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 8910f6c64a5d11f09f706fa2197c6ceb-20250615
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+X-UUID: 858726884a5d11f09f706fa2197c6ceb-20250615
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <xueqi.zhang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 703803202; Sun, 15 Jun 2025 19:56:44 -0700
+	with ESMTP id 984824708; Sun, 15 Jun 2025 19:56:38 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Mon, 16 Jun 2025 10:56:40 +0800
+ 15.2.1258.39; Mon, 16 Jun 2025 10:56:34 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Mon, 16 Jun 2025 10:56:39 +0800
+ 15.2.1258.39 via Frontend Transport; Mon, 16 Jun 2025 10:56:33 +0800
 From: Xueqi Zhang <xueqi.zhang@mediatek.com>
 To: Yong Wu <yong.wu@mediatek.com>, Will Deacon <will@kernel.org>, Robin
  Murphy <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>, Rob Herring
@@ -81,9 +66,9 @@ CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>, Ning li
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<devicetree@vger.kernel.org>, <iommu@lists.linux.dev>, Xueqi Zhang
 	<xueqi.zhang@mediatek.com>
-Subject: [RFC PATCH 4/8] iommu/arm-smmu-v3: Add implementation for MT8196 APU SMMU
-Date: Mon, 16 Jun 2025 10:56:10 +0800
-Message-ID: <20250616025628.25454-5-xueqi.zhang@mediatek.com>
+Subject: [RFC PATCH 1/8] dt-bindings: iommu: mediatek: Add mt8196 support
+Date: Mon, 16 Jun 2025 10:56:07 +0800
+Message-ID: <20250616025628.25454-2-xueqi.zhang@mediatek.com>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20250616025628.25454-1-xueqi.zhang@mediatek.com>
 References: <20250616025628.25454-1-xueqi.zhang@mediatek.com>
@@ -91,8 +76,9 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250616_041234_583565_125F6057 
-X-CRM114-Status: GOOD (  13.65  )
+X-CRM114-CacheID: sfid-20250615_201227_041698_D18264ED 
+X-CRM114-Status: UNSURE (   9.54  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,83 +93,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a special implementation for mediatek APU SMMU. APU SMMU need to
-wait APU SMMU's power which depends on APU driver. Therefore, add the
-label mediatek,smmu-parent to point to the power device that the
-smmu depends on. If the device has not finished probing, return
--EPROBE_DEFER.
+1. Mediatek has its own implementation for wrapper interrupts and
+power management. Add the SoC specific compatible for MT8196
+implementing arm,smmu-v3.
+2. APU SMMU need wait until its power is ready, thus add a phandle
+smmu-mediatek-parents to its power node.
 
 Signed-off-by: Xueqi Zhang <xueqi.zhang@mediatek.com>
 ---
- .../arm/arm-smmu-v3/arm-smmu-v3-mediatek.c    | 32 +++++++++++++++++++
- 1 file changed, 32 insertions(+)
+ .../bindings/iommu/arm,smmu-v3.yaml           | 24 ++++++++++++++++++-
+ 1 file changed, 23 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3-mediatek.c b/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3-mediatek.c
-index c00ee687d839..48290366e596 100644
---- a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3-mediatek.c
-+++ b/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3-mediatek.c
-@@ -15,10 +15,12 @@
- #include "arm-smmu-v3.h"
+diff --git a/Documentation/devicetree/bindings/iommu/arm,smmu-v3.yaml b/Documentation/devicetree/bindings/iommu/arm,smmu-v3.yaml
+index 75fcf4cb52d9..c9a99e54de69 100644
+--- a/Documentation/devicetree/bindings/iommu/arm,smmu-v3.yaml
++++ b/Documentation/devicetree/bindings/iommu/arm,smmu-v3.yaml
+@@ -20,7 +20,12 @@ properties:
+   $nodename:
+     pattern: "^iommu@[0-9a-f]*"
+   compatible:
+-    const: arm,smmu-v3
++    - description: MediaTek SoCs implementing "arm,smmu-v3"
++      items:
++        - enum:
++            - mediatek,mt8196-apu-smmu
++            - mediatek,mt8196-mm-smmu
++        - const: arm,smmu-v3
  
- #define MTK_SMMU_COMP_STR_LEN		64
-+#define SMMU_REQUIRE_PARENT		BIT(5)
- #define MTK_SMMU_HAS_FLAG(pdata, _x)    (!!(((pdata)->flags) & (_x)))
+   reg:
+     maxItems: 1
+@@ -69,11 +74,28 @@ properties:
+       register access with page 0 offsets. Set for Cavium ThunderX2 silicon that
+       doesn't support SMMU page1 register space.
  
- enum mtk_smmu_type {
- 	MTK_SMMU_MM,
-+	MTK_SMMU_APU,
- 	MTK_SMMU_TYPE_NUM,
- };
- 
-@@ -36,12 +38,18 @@ static const struct mtk_smmu_v3_plat mt8196_data_mm = {
- 	.smmu_type		= MTK_SMMU_MM,
- };
- 
-+static const struct mtk_smmu_v3_plat mt8196_data_apu = {
-+	.smmu_type		= MTK_SMMU_APU,
-+	.flags			= SMMU_REQUIRE_PARENT,
-+};
++  mediatek,smmu-parents:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      A phandle to the SMMU's power node. The SMMU should wait until its power
++      is ready
 +
- struct mtk_smmu_v3_of_device_data {
- 	char			compatible[MTK_SMMU_COMP_STR_LEN];
- 	const void		*data;
- };
+ required:
+   - compatible
+   - reg
+   - '#iommu-cells'
  
- static const struct mtk_smmu_v3_of_device_data mtk_smmu_v3_of_ids[] = {
-+	{ .compatible = "mediatek,mt8196-apu-smmu", .data = &mt8196_data_apu},
- 	{ .compatible = "mediatek,mt8196-mm-smmu", .data = &mt8196_data_mm},
- };
++allOf:
++  - if:  # for SMMU need to wait its power node
++      properties:
++        compatible:
++          contains:
++            enum:
++              - mediatek,mt8196-apu-smmu
++    then:
++      required:
++        - mediatek,smmu-parents
++
+ additionalProperties: false
  
-@@ -79,5 +87,29 @@ struct arm_smmu_device *arm_smmu_v3_impl_mtk_init(struct arm_smmu_device *smmu)
- 		return ERR_PTR(-EINVAL);
- 	}
- 
-+	if (MTK_SMMU_HAS_FLAG(mtk_smmu_v3->plat_data, SMMU_REQUIRE_PARENT)) {
-+		parent_node = of_parse_phandle(dev->of_node, "mediatek,smmu-parent", 0);
-+		if (!parent_node) {
-+			dev_err(dev, "Lack its parent node.\n");
-+			return ERR_PTR(-EINVAL);
-+		}
-+		if (!of_device_is_available(parent_node)) {
-+			of_node_put(parent_node);
-+			return ERR_PTR(-EINVAL);
-+		}
-+
-+		parent_pdev = of_find_device_by_node(parent_node);
-+		of_node_put(parent_node);
-+		if (!parent_pdev) {
-+			dev_err(dev, "Lack its parent devices.\n");
-+			return ERR_PTR(-ENODEV);
-+		}
-+
-+		if (!platform_get_drvdata(parent_pdev)) {
-+			dev_err(dev, "Delay since its parent driver is not ready.\n");
-+			return ERR_PTR(-EPROBE_DEFER);
-+		}
-+	}
-+
- 	return &mtk_smmu_v3->smmu;
- }
+ examples:
 -- 
 2.46.0
 
