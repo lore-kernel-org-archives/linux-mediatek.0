@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4722C71136
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jun 2025 15:28:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71DA9C71155
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Jun 2025 15:28:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5MvXG5PAiwz8XzaFTnHf1HnbuTHtldBzN6cyXVVyD7o=; b=GBG1Vv5c3nj+FdXNY3Ir0RYIyh
-	St3hDy8aEJWsDPzEXGIb3r3lFJFeamLNQFmOBJ0vYGs6+Zovbsx2qfdE0lpIEkXhBqEwpxlgmb63Y
-	gkKUR6/U94Hi2r7whAyIsZ1ZCXQY/u1oQC8TA1aYJhwlKC1sTw6M/tPCZjrSLKZXH7TwknBxvbnDk
-	wZN9aKKiUbEvmVLpuuF/XuDQT6sDjNxif8ke8HYJ0v1xbzT3vNLdgbcP7H6IL6P1d7h//rBqnWWPl
-	/XjuXAKD8xqF/Gyh2n4pwQTeF7erFF22yXdt4GWXHh4R4Id0RdubRSV0ZKLojtVtB2A4wVlPTrxMo
-	R27nawdg==;
+	bh=WUkb6/mgnVV/xoEsYAU6JRD3HSBIDfnpeiwH4GEEbEA=; b=fIF6BquZaj3+aEHbqaKQVmtUph
+	WKMsXOXwLFYHOpF38u3hrc5+OcurPF230FJTXdJ5tnJ5HM6842c9absjTAtef9MS2IeJIufSRZKVr
+	Fps8ECyZKxoy+a2padPSSZZSCwDqilaSzrgnD7a+U9GxFG6uNAkYN/FMC+p3lTd+yYE7HgPnxA8zV
+	MDl/FKeMjw+qv/xTuXp4PIBFjny98g5OxFW8+LbBY3WErro4PuYSaSqfMwJuGWYpBSwEjIWD6d97y
+	5rtgPgXyS6ZIN5w63uLWOLfzmOHSVIx1QyC3UX8OZMKbZHShreyK9dlr7YmoxDVWxSBYZkVdL2XZj
+	xucxw2Og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRBkt-00000004sCk-01TY;
-	Mon, 16 Jun 2025 15:28:15 +0000
+	id 1uRBkx-00000004sHq-1TCs;
+	Mon, 16 Jun 2025 15:28:19 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRBWb-00000004nxL-0d4g;
-	Mon, 16 Jun 2025 15:13:30 +0000
+	id 1uRBXD-00000004nzq-0NR7;
+	Mon, 16 Jun 2025 15:14:08 +0000
 Received: from pendragon.ideasonboard.com (81-175-209-231.bb.dnainternet.fi [81.175.209.231])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 357B7346;
-	Mon, 16 Jun 2025 17:13:13 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 55562346;
+	Mon, 16 Jun 2025 17:13:54 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1750086793;
-	bh=0HNCExAqJ+LaxU1ueCxhXgS3CX0/GTT4qiqhOCeleZE=;
+	s=mail; t=1750086834;
+	bh=aNDbKOOjHpsSVm/u+QK5zaGokrrj0d/sOrb/9/P49gE=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=cd+rEl4LeP/ZHIM4gWEMYhjqXD0/rin9VjD52OOHdZvIkqhRoZaWZn00QN6bJnKA6
-	 pVExi1IbQLR4xfrlBC/dpwg8ODX0SRU7pxY8ZM2CFH8LzJOKfAccxMJQ+5H54VHgVS
-	 rCMxoyNkNFjfyxiC7+vvZacma5jP5aesiq8AWwhs=
-Date: Mon, 16 Jun 2025 18:13:09 +0300
+	b=QM67Xzx99jtSxFtbVWkxi9ny3lkeshszCYykwUWs4y08YnSKdKJ/O207ngwOCheOQ
+	 TcS9TWQkg/ZF3B5IT/PRnJdD6ZeF54pordOC63Upxph3fPlOeSwafp7l71BiZ0xPAD
+	 TAv/k4j+OiUsCXXAJRp6zom83aLOsyaQGJY4FajI=
+Date: Mon, 16 Jun 2025 18:13:50 +0300
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: Thomas Zimmermann <tzimmermann@suse.de>
 Cc: simona@ffwll.ch, airlied@gmail.com, mripard@kernel.org,
@@ -48,19 +48,20 @@ Cc: simona@ffwll.ch, airlied@gmail.com, mripard@kernel.org,
 	virtualization@lists.linux.dev, spice-devel@lists.freedesktop.org,
 	linux-renesas-soc@vger.kernel.org,
 	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
-	intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org
-Subject: Re: [PATCH v5 25/25] drm/xlnx: Compute dumb-buffer sizes with
- drm_mode_size_dumb()
-Message-ID: <20250616151309.GF10542@pendragon.ideasonboard.com>
+	intel-xe@lists.freedesktop.org, xen-devel@lists.xenproject.org,
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>
+Subject: Re: [PATCH v5 17/25] drm/renesas/rcar-du: Compute dumb-buffer sizes
+ with drm_mode_size_dumb()
+Message-ID: <20250616151350.GG10542@pendragon.ideasonboard.com>
 References: <20250613090431.127087-1-tzimmermann@suse.de>
- <20250613090431.127087-26-tzimmermann@suse.de>
+ <20250613090431.127087-18-tzimmermann@suse.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20250613090431.127087-26-tzimmermann@suse.de>
+In-Reply-To: <20250613090431.127087-18-tzimmermann@suse.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250616_081329_329063_466A0732 
-X-CRM114-Status: GOOD (  14.55  )
+X-CRM114-CacheID: sfid-20250616_081407_267108_33BFF542 
+X-CRM114-Status: GOOD (  14.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,46 +80,52 @@ Hi Thomas,
 
 Thank you for the patch.
 
-On Fri, Jun 13, 2025 at 11:00:44AM +0200, Thomas Zimmermann wrote:
+On Fri, Jun 13, 2025 at 11:00:36AM +0200, Thomas Zimmermann wrote:
 > Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
 > buffer size. Align the pitch according to hardware requirements.
 > 
 > Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 > Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> Cc: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+> Cc: Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>
 
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Reviewed-by: Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>
 
 > ---
->  drivers/gpu/drm/xlnx/zynqmp_kms.c | 7 +++++--
+>  drivers/gpu/drm/renesas/rcar-du/rcar_du_kms.c | 7 +++++--
 >  1 file changed, 5 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/gpu/drm/xlnx/zynqmp_kms.c b/drivers/gpu/drm/xlnx/zynqmp_kms.c
-> index b47463473472..7ea0cd4f71d3 100644
-> --- a/drivers/gpu/drm/xlnx/zynqmp_kms.c
-> +++ b/drivers/gpu/drm/xlnx/zynqmp_kms.c
-> @@ -19,6 +19,7 @@
+> diff --git a/drivers/gpu/drm/renesas/rcar-du/rcar_du_kms.c b/drivers/gpu/drm/renesas/rcar-du/rcar_du_kms.c
+> index 4c8fe83dd610..dd353fb858ef 100644
+> --- a/drivers/gpu/drm/renesas/rcar-du/rcar_du_kms.c
+> +++ b/drivers/gpu/drm/renesas/rcar-du/rcar_du_kms.c
+> @@ -11,6 +11,7 @@
+>  #include <drm/drm_atomic_helper.h>
 >  #include <drm/drm_crtc.h>
 >  #include <drm/drm_device.h>
->  #include <drm/drm_drv.h>
 > +#include <drm/drm_dumb_buffers.h>
->  #include <drm/drm_encoder.h>
->  #include <drm/drm_fbdev_dma.h>
->  #include <drm/drm_fourcc.h>
-> @@ -363,10 +364,12 @@ static int zynqmp_dpsub_dumb_create(struct drm_file *file_priv,
->  				    struct drm_mode_create_dumb *args)
+>  #include <drm/drm_framebuffer.h>
+>  #include <drm/drm_gem_dma_helper.h>
+>  #include <drm/drm_gem_framebuffer_helper.h>
+> @@ -407,8 +408,8 @@ int rcar_du_dumb_create(struct drm_file *file, struct drm_device *dev,
+>  			struct drm_mode_create_dumb *args)
 >  {
->  	struct zynqmp_dpsub *dpsub = to_zynqmp_dpsub(drm);
-> -	unsigned int pitch = DIV_ROUND_UP(args->width * args->bpp, 8);
+>  	struct rcar_du_device *rcdu = to_rcar_du_device(dev);
+> -	unsigned int min_pitch = DIV_ROUND_UP(args->width * args->bpp, 8);
+>  	unsigned int align;
 > +	int ret;
 >  
->  	/* Enforce the alignment constraints of the DMA engine. */
-> -	args->pitch = ALIGN(pitch, dpsub->dma_align);
-> +	ret = drm_mode_size_dumb(drm, args, dpsub->dma_align, 0);
+>  	/*
+>  	 * The R8A7779 DU requires a 16 pixels pitch alignment as documented,
+> @@ -419,7 +420,9 @@ int rcar_du_dumb_create(struct drm_file *file, struct drm_device *dev,
+>  	else
+>  		align = 16 * args->bpp / 8;
+>  
+> -	args->pitch = roundup(min_pitch, align);
+> +	ret = drm_mode_size_dumb(dev, args, align, 0);
 > +	if (ret)
 > +		return ret;
 >  
->  	return drm_gem_dma_dumb_create_internal(file_priv, drm, args);
+>  	return drm_gem_dma_dumb_create_internal(file, dev, args);
 >  }
 
 -- 
