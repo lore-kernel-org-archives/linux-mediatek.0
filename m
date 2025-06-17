@@ -4,78 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F3E2C71136
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Jun 2025 17:11:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 868B9C71136
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Jun 2025 20:33:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=DM70jmBk+8+pNXMrSmDw0F0d1r4Q4LzFUoMuNsxPcH4=; b=p3u+jffMh+P7N2fVwoH3fHxhl7
-	laxH6rIT4qVN2Xj35vCuPEbXNcA2stPkhNWko7BUelaWD0wAtZjMPsn5TLUpYaVUOTnYXjkifLdHw
-	L2Z1DRDfGMtkdZl6lYB6Is38KnyrdptCX7Dzu4BRCUC2A4tVT8pU8vr068c0PjJS17o3uYIsKKZe7
-	PJKtKmXuu0rKUfLysctjSovDJUN6n6ypSw0gz7QlGtOVloj0Xw1rRm3RoOAeF1n1YqGPMdAY1E9mC
-	XnJQ+dMTReoVywVpNNkthyZRfRMuaBGNOi3KMV0QVLA+oUD4khtBxi7ioi4BG2i/aGmt0rNzfetoz
-	cKmal3CA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ytge0DvQREpsX3FPr8UiIpU+73HOBfPpUENAsXp5RGw=; b=CV72TZhtxHYcLkFMIRJ9+udHA7
+	35KgXXZhHFNtSjN32TLkvnNd9s1ySYL2Pj1SmTz3Jm7bERfbRYKuQImO5AGzGxZmY2FGoY3iaIi/O
+	nUKMEEVV+7wZODAQBQUpDs4PRY68DumLSoF72gc1I3BgT9qHPkv749Eo6eJQkK8oyIkpzpTG+cwar
+	P1g8VGXvxv5ryxdAl1sbGbvVZ/F2lxR5LnqTs6/rIDEwlweG+ypcTTW+H6jw+yf5voXQU4wL6klAD
+	sWAeQ9qi6le+1gofUnhO9tsoSBTwPg1MDdNYOxJjKlxwKAbAiGtvPIAl2pR8+LyQ7SFWVdrW5W6v5
+	9iMYXk+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRZqn-00000007zJF-34Vt;
-	Tue, 17 Jun 2025 17:11:57 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1uRczU-00000008Lyh-31JQ;
+	Tue, 17 Jun 2025 20:33:08 +0000
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRYdT-00000007nv3-06iw;
-	Tue, 17 Jun 2025 15:54:08 +0000
-X-UUID: 492ac1a44b9311f09f706fa2197c6ceb-20250617
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=DM70jmBk+8+pNXMrSmDw0F0d1r4Q4LzFUoMuNsxPcH4=;
-	b=Js1PFMfbr+Kni92Htg/UjrRVzwKN0SJuv+R9I0eBGAeZTW5YUG0Hb9xJYsGSMVqLNxO39RVkVAxTTOsdDTwrrlSRJYnkYNlT7qZlX+W6IFjbaTGraw0itmnfbN455gI1oEY0I0+WDtOFHxPN/uTwFEhcC35k33+CaEh7WSGoIwY=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.3,REQID:2adb1122-74ed-4f2d-a68b-c597dfbf8dca,IP:0,UR
-	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:-5
-X-CID-META: VersionHash:09905cf,CLOUDID:5e67c903-0d95-4f6b-a95f-3c560ebcf3ab,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:99|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,
-	LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 492ac1a44b9311f09f706fa2197c6ceb-20250617
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
-	(envelope-from <kuyo.chang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1759085317; Tue, 17 Jun 2025 08:54:00 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Tue, 17 Jun 2025 23:53:57 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Tue, 17 Jun 2025 23:53:57 +0800
-From: Kuyo Chang <kuyo.chang@mediatek.com>
-To: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>,
-	Juri Lelli <juri.lelli@redhat.com>, Vincent Guittot
-	<vincent.guittot@linaro.org>, Dietmar Eggemann <dietmar.eggemann@arm.com>,
-	Steven Rostedt <rostedt@goodmis.org>, Ben Segall <bsegall@google.com>, Mel
- Gorman <mgorman@suse.de>, Valentin Schneider <vschneid@redhat.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: John Stultz <jstultz@google.com>, kuyo chang <kuyo.chang@mediatek.com>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH v2 1/1] sched/deadline: Fix dl_server runtime calculation formula
-Date: Tue, 17 Jun 2025 23:52:49 +0800
-Message-ID: <20250617155355.1479777-1-kuyo.chang@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1uRcxJ-00000008LqH-06sS;
+	Tue, 17 Jun 2025 20:30:54 +0000
+Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-23526264386so61134605ad.2;
+        Tue, 17 Jun 2025 13:30:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1750192252; x=1750797052; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=ytge0DvQREpsX3FPr8UiIpU+73HOBfPpUENAsXp5RGw=;
+        b=iW0maKkM9urvr2+piZVaq3vVC0Q8PUwAwschA4WJvjsWYkAUAkFEc3oKqgTL7I6VtN
+         +yknvySUQv5tL4HXtxuQk5XJjBTY5RSXjQcQ04tTl0fiFEZeHUHfs2YICJ/3Kmlg8lth
+         Wu4m7oLL1jc188NKcl5zwXcAOQaZITUh74txm6ZOPqehWU6fKYuQjNC4jZNHdeikPlkb
+         6Lb/u3OdtQnirS+Au/bIJ9xoE5diOn+hVEHja8biFZjg1lViJIOFKk51Yk+S7twjiH7h
+         DsHoFgii6C85NE/zgvfd147jaJYv68CkHLVRukL7eqWy0z1wmAw7A8ZYhelopByxet4L
+         6lQw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1750192252; x=1750797052;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ytge0DvQREpsX3FPr8UiIpU+73HOBfPpUENAsXp5RGw=;
+        b=hm74tm26WJ1uDdwmIt4MUbqeCFIvmDz53unleWJ+c1ioHUwkxQiczXkOzG3fPyZw+e
+         25B07JypCEUHExjoc2tL2B27RFyEimCrXfFoT6OmENilIkYXidGje3Q27r2L/k6dHzhd
+         E9OJYKNSEYlYxAxHYwndCWwAkoUqRXwjYEtO4e2wo0w+4CgR4TQ9r3WrMtcKLrlRBS7b
+         7EHjgFBlpmxMiNOlLhsRF+PKQE4N+4y8BefA5ps5vKVkXJUbolzVRWwdbppfGBacD+xA
+         57ZEhKmrj6LgAcFhuWwE/S8+fcxyAviSWtOqExQDCzVUub+3HAcUiXt+MNwuT1FscwFS
+         WeXw==
+X-Forwarded-Encrypted: i=1; AJvYcCV5LuzEoy1gaMnT77FXb5fki3Rmb3hrvb9rcLP93ZIZxfprkRsYFw5NmGFzdqzvJ7Q5spjM1zq0t71lfw1ZW+0u@lists.infradead.org, AJvYcCW/jXakIZiNdOQ8/j6bOT5Cnfiy+vHlgYKGjhqSd9gi8k8RgOYTc9NkYURJPX3mKgHuz2iei4Zvd3mFmrygPKw=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz1HTHrplTLgR1La/4ibYMtVIPklCUgAmyhMWpp4sxIkLxZTL+s
+	5X8LbI+DHXSghGnLhQkFMv8Deg4c72PkjynjFWUivOlQZzhLwha9P2mn
+X-Gm-Gg: ASbGncupP+PHf1UkXUO0S+3PJyoDumEaaHdwyAHkvocOMofzhRjlTLVuPQQeSCX2e0A
+	3BV6pszZ1IeQRp42yAhgBf+CveyzK4kqLs/PPLfEhv0DZXgpQIbNntFU7NXPqnoWn+5xgjEI8Jw
+	bMj4Facj4VFSgKsluSnx43A/csHhUHlIf8JXCzC0ZOWefxQ0iLd7WjlyJcay9OxSDr2VH5VuPgd
+	dBMQjcEsgr0lKKCl7EVGZkMuauGp/P++vWzdkfNoxA7Ocb5c16SguG+5b8F1NVuZB56lAOdRW83
+	Wzt+OeQ/gzDdX3lCT2mnnOW4WuyZHtEunq5ItcsWn2tfdWystTk2DO1LM+HSy3A=
+X-Google-Smtp-Source: AGHT+IEl1LF76euKDmEK2b2BXIXslDp9/iHoV2XPh1E20bcvG0JJxY9n8fjrWmH0V9E0TDySKBwOcA==
+X-Received: by 2002:a17:903:b88:b0:234:9094:3fb1 with SMTP id d9443c01a7336-2366b3c2d82mr257503495ad.35.1750192249605;
+        Tue, 17 Jun 2025 13:30:49 -0700 (PDT)
+Received: from google.com ([2620:15c:9d:2:8d7d:9cdc:2836:83cb])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b2fe1642e0asm9364972a12.17.2025.06.17.13.30.48
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 17 Jun 2025 13:30:49 -0700 (PDT)
+Date: Tue, 17 Jun 2025 13:30:45 -0700
+From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-input@vger.kernel.org, 
+	Douglas Anderson <dianders@chromium.org>, "Rob Herring (Arm)" <robh@kernel.org>
+Subject: Re: [PATCH v3 1/6] dt-bindings: HID: i2c-hid: elan: Introduce Elan
+ eKTH8D18
+Message-ID: <zcdks6nwmnahlgp6vvbxmmlbfbafzluuxgb52byiisuoy7ewzu@kao7yhx2u3qt>
+References: <20250617082004.1653492-1-wenst@chromium.org>
+ <20250617082004.1653492-2-wenst@chromium.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250617082004.1653492-2-wenst@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250617_085407_089634_44D21E93 
-X-CRM114-Status: GOOD (  11.73  )
+X-CRM114-CacheID: sfid-20250617_133053_063948_B87EA17F 
+X-CRM114-Status: GOOD (  14.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,70 +99,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: kuyo chang <kuyo.chang@mediatek.com>
+On Tue, Jun 17, 2025 at 04:19:58PM +0800, Chen-Yu Tsai wrote:
+> The Elan eKTH8D18 touchscreen controller is an I2C HID device with a
+> longer boot-up time. Power sequence timing wise it is compatible with
+> the eKTH6A12NAY, with a power-on delay of at least 5ms, 20ms
+> out-of-reset for I2C ack response, and 150ms out-of-reset for I2C HID
+> enumeration, both shorter than what the eKTH6A12NAY requires.
+> Enumeration and subsequent operation follows the I2C HID standard.
+> 
+> Add a compatible string for it with the ekth6a12nay one as a fallback.
+> No enum was used as it is rare to actually add new entries. These
+> chips are commonly completely backward compatible, and unless the
+> power sequencing delays change, there is no real effort being made to
+> keep track of new parts, which come out constantly.
+> 
+> Also drop the constraints on the I2C address since it's not really
+> part of the binding.
+> 
+> Reviewed-by: Douglas Anderson <dianders@chromium.org>
+> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
-[Symptom]
-The calculation formula for dl_server runtime is based on
-Frequency/capacity scale-invariance.
-This will cause excessive RT latency (expect absolute time).
+Applied, thank you.
 
-[Analysis]
-Consider the following case under a Big.LITTLE architecture:
-
-Assume the runtime is: 50,000,000 ns, and Frequency/capacity
-scale-invariance defined as below:
-
-Frequency scale-invariance: 100
-Capacity scale-invariance: 50
-First by Frequency scale-invariance,
-the runtime is scaled to 50,000,000 * 100 >> 10 = 4,882,812
-Then by capacity scale-invariance,
-it is further scaled to 4,882,812 * 50 >> 10 = 238,418.
-
-So it will scaled to 238,418 ns.
-
-[Solution]
-The runtime for dl_server should be fixed time
-asis RT bandwidth control.
-Fix the runtime calculation formula for the dl_server.
-
-Signed-off-by: kuyo chang <kuyo.chang@mediatek.com>
-Acked-by: Juri Lelli <juri.lelli@redhat.com>
-Suggested-by: Peter Zijlstra <peterz@infradead.org>
-
-v1: https://lore.kernel.org/all/20250614020524.631521-1-kuyo.chang@mediatek.com/
-
----
- kernel/sched/deadline.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
-
-diff --git a/kernel/sched/deadline.c b/kernel/sched/deadline.c
-index ad45a8fea245..f68a158d01e9 100644
---- a/kernel/sched/deadline.c
-+++ b/kernel/sched/deadline.c
-@@ -1504,7 +1504,9 @@ static void update_curr_dl_se(struct rq *rq, struct sched_dl_entity *dl_se, s64
- 	if (dl_entity_is_special(dl_se))
- 		return;
- 
--	scaled_delta_exec = dl_scaled_delta_exec(rq, dl_se, delta_exec);
-+	scaled_delta_exec = delta_exec;
-+	if (!dl_se->dl_server)
-+		scaled_delta_exec = dl_scaled_delta_exec(rq, dl_se, delta_exec);
- 
- 	dl_se->runtime -= scaled_delta_exec;
- 
-@@ -1624,7 +1626,9 @@ void dl_server_update_idle_time(struct rq *rq, struct task_struct *p)
- 	if (delta_exec < 0)
- 		return;
- 
--	scaled_delta_exec = dl_scaled_delta_exec(rq, &rq->fair_server, delta_exec);
-+	scaled_delta_exec = delta_exec;
-+	if (!rq->fair_server.dl_server)
-+		scaled_delta_exec = dl_scaled_delta_exec(rq, &rq->fair_server, delta_exec);
- 
- 	rq->fair_server.runtime -= scaled_delta_exec;
- 
 -- 
-2.45.2
-
+Dmitry
 
