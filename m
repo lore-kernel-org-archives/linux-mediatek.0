@@ -4,108 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D45E6C7115B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Jun 2025 17:10:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAA0DC71136
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Jun 2025 17:11:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8nZJ22rsS0RPWxh3ZE7aCZVwueQlyLoqt+SFU6IEEhY=; b=gPfYbqvOgPV/6pyCbeObvGpXhj
-	NZGO3BHeotfbxTbYFn6Jg9XXO6r4NawXSCVpRp0hP3+tYlPsP7lF6kzCBgkwx29qy3JfvyjD8ZUrG
-	uAIqXl8tyeGyT7vTyYgO+CzHD3TW6rGqPtOz/kw1yBxJk4hkuN67hHEPD8Cgqz8ZNddma8vUKaD8W
-	dvEC09vBUhqhoRNsUvf94xcyxacOIndVt15O7YfScEt+nKIhWPAy/0NzndxtL+I8Ft9Yc20eDjiNi
-	PvWurcv8PoHsQFJs4laHzXX4gBrAGVfM+su7Y+ABL4GXYAFBE9HhkqNQPCbCxCt0hNOPoElbbDR7V
-	UHxROQCg==;
+	bh=9s2dyGPNLxaRzqeYJTVLCMecCVoqT9XB6FQqbhLwfD0=; b=VSdCTUgjXOAmTQzkwxjEZy3M4v
+	T9vMuzcjGyNJfbd9AIhGA+fb5/NGKS2l8zANWeUECY0IFT6yMaUe4geKLHv0jloZyQgQI4noQ3xIq
+	+Psnf4WS38xhtucS9p68nFR5ypeTCJNX23gLqr1QpdI89dSTp7Ej/nwpNH10GXqyUruAUQuiHFQmq
+	BW6eRaAchtrFhNF74+BTbXccbEcmvPVsB1PwE19wCmQt+rMMm8kimcXTj4H9NVKyV3c/YnNnC1Ggj
+	VI8sdEi0QD+Kl+B85O6rn7aZjOXM6jUxJjfdY/SLCjWIK44TU08RlsGcghCBzzXQRbQA3JMxSkRJS
+	oFiIIzmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRZpX-00000007xcI-0mqg;
-	Tue, 17 Jun 2025 17:10:39 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1uRZqI-00000007ygj-1R4C;
+	Tue, 17 Jun 2025 17:11:26 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRXET-00000007XbK-1jlf
-	for linux-mediatek@lists.infradead.org;
-	Tue, 17 Jun 2025 14:24:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1750170252;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=8nZJ22rsS0RPWxh3ZE7aCZVwueQlyLoqt+SFU6IEEhY=;
-	b=YFeDjSQTrqWCTahBS30hWV+IV7DHoV3tktIPAZK6D/rrVqcytVXp66Tc3bjOwCE1PcFNz+
-	RM7s0ECJExLWvuR+IMvwIQoMytkFT+FC7oMWnPjyM4Z+GgORPhoASKBA4lutYjLVP97P5d
-	/EAKX2khl6Z8YajtRZ/jErZe1k/9iRc=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-447-l_ZBLz_gMfumfbwC5wMUCg-1; Tue, 17 Jun 2025 10:23:57 -0400
-X-MC-Unique: l_ZBLz_gMfumfbwC5wMUCg-1
-X-Mimecast-MFC-AGG-ID: l_ZBLz_gMfumfbwC5wMUCg_1750170236
-Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-4530623eb8fso41556665e9.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 17 Jun 2025 07:23:57 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750170236; x=1750775036;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=8nZJ22rsS0RPWxh3ZE7aCZVwueQlyLoqt+SFU6IEEhY=;
-        b=QubtXjozxdSn17suul9m5wo/hA2sHsd0NeD0tcOM0mZsne8QSxXiNV6JhoJoW1UwRT
-         ld8/1NMv+qRJESLh0iWIsZoEMc6BQBlNGfsw5oJr9X/eY6RKobNfvg3Nso9S9rq2Na4I
-         JhPTbHgJr7ky+ULEShwN7Tc5UdKutXm6ODCGRTS74aeaRF1h/Z4t9yvV+uAw3/kD7hF5
-         AQ24peW5CnGWFiSMNC2NU1ZyAM64F6Wd4HS+NuBnlWoGqOF1mWm2DjlIDu4Di2yJ30N3
-         eGxSpSQ1efDFnoQ5vJlTYG/l8lcXX5F6aVOZCP3V5SXwAgjProTPB3OYq66M8pr31Era
-         8P/A==
-X-Forwarded-Encrypted: i=1; AJvYcCXwZO8HGhlxf5IlJunQdHCKqqzcZ1Ws5fPmKfANyygfgSt84DO4bBbyrRw5OnFzAQAtwP6/Bp80kC517Bz2fg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy6ghiTmku1dw3rXX5Y0lT8IIDHNBaiHnStHtZ1DzEwPhUR7c7z
-	VcGm6aZSvLADmBycZJO/1zTa/pAty+HYUbhxmq5Rnj2b5wzmL2SwWUUhzSmTe/UO3TueYh2j6xG
-	cRVhff1rUYa+BSwab0GwKa9ox3FG5j570l5NKvVwkZwlJ0qSWdcTVri+Rl+k28kybACQ4vO1X6A
-	==
-X-Gm-Gg: ASbGnctmMYojokQvQ7CA1W5gjgoe9ieflb9Ykc0INRUdfU5ueQSQi42QUxa9PYrkQtX
-	eOtdvueDSIPMeqQbmSLZ9a+xT8nmcbkxfJggVBW/46jJfIs4ey7jvpUHi29doXWzFuHjRA1GMCg
-	Ke/+pdaCOsGcOMozhbMwoR/yjCy58+PtiyVa5t7v2FGy8aJsSvlZcKy+kHGP+4yOPiJWSZ4UVDS
-	gGLhwGU8B1uk2LFYeTEOkj1zrv3Nn2YBMJGiafe3OcveoaABH7jMp/tWYW5qU4H6lVSJTaQnp3N
-	kJ1PqKcoiAefehOwjkSxLNbx3qn7YCN7c9Qg2i1Z30ljb9qDgYoSug==
-X-Received: by 2002:a05:600c:5396:b0:43d:172:50b1 with SMTP id 5b1f17b1804b1-4533cac8fdbmr122013255e9.29.1750170236082;
-        Tue, 17 Jun 2025 07:23:56 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGFXdSBOaD0bkiX6RgDIIItmoJz66Z98LumAPn/RVxW5in7JWmC1em46bTnPvZqEArSrV/R5Q==
-X-Received: by 2002:a05:600c:5396:b0:43d:172:50b1 with SMTP id 5b1f17b1804b1-4533cac8fdbmr122013005e9.29.1750170235702;
-        Tue, 17 Jun 2025 07:23:55 -0700 (PDT)
-Received: from jlelli-thinkpadt14gen4.remote.csb ([151.29.151.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4532e25302dsm171997755e9.26.2025.06.17.07.23.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Jun 2025 07:23:55 -0700 (PDT)
-Date: Tue, 17 Jun 2025 16:23:53 +0200
-From: Juri Lelli <juri.lelli@redhat.com>
-To: Peter Zijlstra <peterz@infradead.org>
-Cc: Kuyo Chang <kuyo.chang@mediatek.com>, Ingo Molnar <mingo@redhat.com>,
-	Vincent Guittot <vincent.guittot@linaro.org>,
-	Dietmar Eggemann <dietmar.eggemann@arm.com>,
-	Steven Rostedt <rostedt@goodmis.org>,
-	Ben Segall <bsegall@google.com>, Mel Gorman <mgorman@suse.de>,
-	Valentin Schneider <vschneid@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	jstultz <jstultz@google.com>, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/1] sched/deadline: Fix fair_server runtime calculation
- formula
-Message-ID: <aFF6eYzMahzQ9sxE@jlelli-thinkpadt14gen4.remote.csb>
-References: <20250614020524.631521-1-kuyo.chang@mediatek.com>
- <20250617085558.GN1613376@noisy.programming.kicks-ass.net>
- <aFFgi_9yxLN-auBE@jlelli-thinkpadt14gen4.remote.csb>
- <20250617141437.GW1613376@noisy.programming.kicks-ass.net>
+	id 1uRY0f-00000007iJB-1A2d;
+	Tue, 17 Jun 2025 15:14:02 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 57987A51498;
+	Tue, 17 Jun 2025 15:14:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A8F4EC4CEE7;
+	Tue, 17 Jun 2025 15:13:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1750173240;
+	bh=VzacSK8CHt4963WLrZki0L0yVFovLxHcIRT7RHBkl5g=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=h56s71rzs/udGDVL1EShezKp0igc+0Rne8OItAUMPt/V+imFOpByZva5b6rNSPCPz
+	 x10s7tra/R4mERRgf1U6LZdeQuS0OjGghdedHAzChpkjI4cmakcBFle+SkXx+xKxO3
+	 fQEQ6CsdJ0QtyeRFsfnzAkg34fORkchNKKRSmoBWH6E1VgFnVavZK75gAUYGoE0sms
+	 KN0t3zoB/6qZ2Qm+4xkeFhn8DBLPh4Y5NLk0NUNI2c5YktuwVjsmUFIaAoxRA9pFKF
+	 WMuWczHQy+H+fLL+0dnlFXqnt0zphLrMZa092gk7WuVwIhvxN7cNTHhHH/0/fPX3Xd
+	 jtgAQcoYn0Yhg==
+Date: Tue, 17 Jun 2025 10:13:54 -0500
+From: Rob Herring <robh@kernel.org>
+To: Frank Wunderlich <linux@fw-web.de>
+Subject: Re: [PATCH v4 01/13] dt-bindings: net: mediatek,net: update for
+ mt7988
+Message-ID: <20250617151354.GA2392458-robh@kernel.org>
+References: <20250616095828.160900-1-linux@fw-web.de>
+ <20250616095828.160900-2-linux@fw-web.de>
 MIME-Version: 1.0
-In-Reply-To: <20250617141437.GW1613376@noisy.programming.kicks-ass.net>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: gYkSDx9Nu_ooAT_Cgb2Y7sU0j8-2b6rjGOghYVspxTw_1750170236
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <20250616095828.160900-2-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250617_072413_525031_2B53CD5E 
-X-CRM114-Status: GOOD (  13.17  )
+X-CRM114-CacheID: sfid-20250617_081401_444987_92ABCD69 
+X-CRM114-Status: GOOD (  19.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,33 +67,99 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, linux-pm@vger.kernel.org, Chanwoo Choi <cw00.choi@samsung.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, Johnson Wang <johnson.wang@mediatek.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Jia-Wei Chang <jia-wei.chang@mediatek.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, Kyungmin Park <kyungmin.park@samsung.com>, Georgi Djakov <djakov@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17/06/25 16:14, Peter Zijlstra wrote:
-> On Tue, Jun 17, 2025 at 02:33:15PM +0200, Juri Lelli wrote:
-
-...
-
-> > To me it looks like we want this (no scaling) for fair_server (and
-> > possibly scx_server?) as for them we are only looking into a 'fixed
-> > time' type of isolation. Full fledged servers (hierarchical scheduling)
-> > maybe have it configurable, or enabled by default as a start (as we have
-> > it today).
+On Mon, Jun 16, 2025 at 11:58:11AM +0200, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> Right. Then we should write the above like:
+> Update binding for mt7988 which has 3 gmac and 2 reg items.
 > 
-> 	scaled_delta_exec = delta_exec;
-> 	if (!dl_se->dl_server)
-> 		scaled_delta_exec = dl_scaled_delta_exec(rq, dl_se, delta_exec);
+> With RSS-IRQs the interrupt max-items is now 6. Add interrupt-names
+> to make them accessible by name.
 > 
-> and let any later server users add bits on if they want more options.
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+> v4:
+> - increase max interrupts to 8 because of RSS/LRO interrupts
 
-Works for me. Looks cleaner also.
+But the schema says 6?
 
-Kuyo, can you please update your patch then?
-
-Thanks,
-Juri
-
+> - dropped Robs RB due to this change
+> - allow interrupt names
+> - add interrupt-names without reserved IRQs on mt7988
+>   this requires mtk driver patch:
+>   https://patchwork.kernel.org/project/netdevbpf/patch/20250616080738.117993-2-linux@fw-web.de/
+> 
+> v2:
+> - change reg to list of items
+> ---
+>  .../devicetree/bindings/net/mediatek,net.yaml | 28 ++++++++++++++++---
+>  1 file changed, 24 insertions(+), 4 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+> index 9e02fd80af83..f8025f73b1cb 100644
+> --- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
+> +++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+> @@ -28,7 +28,10 @@ properties:
+>        - ralink,rt5350-eth
+>  
+>    reg:
+> -    maxItems: 1
+> +    items:
+> +      - description: Register for accessing the MACs.
+> +      - description: SoC internal SRAM used for DMA operations.
+> +    minItems: 1
+>  
+>    clocks:
+>      minItems: 2
+> @@ -40,7 +43,11 @@ properties:
+>  
+>    interrupts:
+>      minItems: 1
+> -    maxItems: 4
+> +    maxItems: 6
+> +
+> +  interrupt-names:
+> +    minItems: 1
+> +    maxItems: 6
+>  
+>    power-domains:
+>      maxItems: 1
+> @@ -348,7 +355,17 @@ allOf:
+>      then:
+>        properties:
+>          interrupts:
+> -          minItems: 4
+> +          minItems: 2
+> +
+> +        interrupt-names:
+> +          minItems: 2
+> +          items:
+> +            - const: tx
+> +            - const: rx
+> +            - const: rx-ring0
+> +            - const: rx-ring1
+> +            - const: rx-ring2
+> +            - const: rx-ring3
+>  
+>          clocks:
+>            minItems: 24
+> @@ -381,8 +398,11 @@ allOf:
+>              - const: xgp2
+>              - const: xgp3
+>  
+> +        reg:
+> +          minItems: 2
+> +
+>  patternProperties:
+> -  "^mac@[0-1]$":
+> +  "^mac@[0-2]$":
+>      type: object
+>      unevaluatedProperties: false
+>      allOf:
+> -- 
+> 2.43.0
+> 
 
