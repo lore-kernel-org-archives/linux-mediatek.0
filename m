@@ -4,106 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13B43C71157
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Jun 2025 13:17:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C497C71136
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Jun 2025 13:24:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Jo+IXIxSNIYAuiTCVjY+MjOblSENU+5Bkagj0uUgN34=; b=V+m0WmQqDTKuEh2zQIvjs9r/de
-	A1xiEUbmBv30S2lusrDJKe9WburPD83FST+TA1plJvfQ3ZQoUmbRbFdZhJYx7/0xCy74PZcBUR8Ah
-	VgKQezBcwHnU7pgjZ9atBPnVWnywV0xYcxX2iG4umfQNWNng0QhahCzHH5kIGYDm3Ez5s0+3GklyT
-	nCSoubM5LSkiN1WsCT9Du69MuX0nK06egJYi23fk4ImyEFQFSQzuEtdTta8OoBVAyLxraZeDD22po
-	Ae1R0N/eeCFDcpyzenNrpjOE2ejdMpMnt9apSL97r6YZKKquXCY+8GGY/UgkcCSdZQQb+mltuCwex
-	bonMkaag==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IJGnTu2P8k2zWLpKT9gQ0C6Ynav6qAdbDTnXBuG6SzE=; b=xllPPMqCaiL0Kn0k9l73irKcJQ
+	4Adz+E1h4frypDsJ+GpKzSqnRMMFUozULlVmFsUAaIqfrGoPDQNyx+bKe/UpN2OrJNPx15R/EYpZq
+	gJzU2SN5LbgwP2vrVkXpjav1bVTb7j+nQnFhvENnYauGDio/IZomDvQJ4H/uJGNbPrPRri5oKqYMj
+	kJiUIbbsTsb6iHG3PZyQBTZM8g9+U2eyJtpVF+E4PhVKNFsjoByJJL16mF9K44P1Brv1HJ2hoyeT8
+	IOvR804lCNfF7pMn98Ukr1JjyeWmCMGc44f2N5PDCb2+MT/dLSb1dHe/cXk4rk+ukiAnsAyT5cRGV
+	GODs0H1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRWBs-00000007JjZ-0vPs;
-	Tue, 17 Jun 2025 13:17:28 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1uRWIT-00000007L4l-0CH3;
+	Tue, 17 Jun 2025 13:24:17 +0000
+Received: from mail-vk1-xa31.google.com ([2607:f8b0:4864:20::a31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRVVC-00000007Cbx-0gss
-	for linux-mediatek@lists.infradead.org;
-	Tue, 17 Jun 2025 12:33:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1750163601;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Jo+IXIxSNIYAuiTCVjY+MjOblSENU+5Bkagj0uUgN34=;
-	b=CapEiCO/ELiSKdE/ZT8m97KIMN9HMhemALxizF/VZsdPbdpf/3Q3fSV/4YVZzDccyLg359
-	Q1qrCAn7pP+qUmCc3dZAapJbGNgUg61D53YxX5jpFvkjCky8CQ+ApB4xZkpQefM01t4v+s
-	tScF7da/DbZMSvzwiHoIy+BBGTHo27E=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-544-Di4VwiyyPICrCZAEPprCcg-1; Tue, 17 Jun 2025 08:33:19 -0400
-X-MC-Unique: Di4VwiyyPICrCZAEPprCcg-1
-X-Mimecast-MFC-AGG-ID: Di4VwiyyPICrCZAEPprCcg_1750163598
-Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-450cb8f8b1bso11721685e9.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 17 Jun 2025 05:33:19 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750163598; x=1750768398;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+	id 1uRVul-00000007G9j-1bwK;
+	Tue, 17 Jun 2025 12:59:48 +0000
+Received: by mail-vk1-xa31.google.com with SMTP id 71dfb90a1353d-525b44b7720so1330720e0c.0;
+        Tue, 17 Jun 2025 05:59:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1750165186; x=1750769986; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Jo+IXIxSNIYAuiTCVjY+MjOblSENU+5Bkagj0uUgN34=;
-        b=c8m1Nt1HvrV6lVU/C3JVscmYT+b48zZSTh0HeqLkkF4GqvBo+zpKRcU2O0GVhKrzwj
-         h0kq1hIKukG4J1kj1cACwhHzaA0f74m55p4zUm1KUceK9WXXjeS7XOsBX16aa+ZLXUwW
-         gELBbM8viIGomnem7mfpViPxruCzN9hZSMd+eOd5/sfQOMTF+wG4mcJKlDQ28fsrekOC
-         XVtWGv89314fnS6uxggjYD8FWwqI4Td9UmGQbyxda4zQSSMxpO0PwxBhDppkj3jHvkXP
-         0s/9tWarBiRMP/6oNU0h2JAJWUbRM5Dut75XFB8RhqP1kp/0sIJgp3la0YKIsmgohdLn
-         44xA==
-X-Forwarded-Encrypted: i=1; AJvYcCWq6G/qjguBcBAON3pQMx2Scz2W86u8vPSOL28qDVyxKkdgEIUdzL4SrOxvSKdKifZqMNhlDUNNxAg0vorx5Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyDCFZNqboRRd6jyU3hAlCHmni5rV8WdVu++6Rt6HoHL2JNTq/G
-	umwV+jgcCTmkqn++rDXg4PiDiBmrw4TG9zpatj5sfeSkl+QBckLAmgBP5MueswVk2DwHUe5H7hQ
-	LNT/Ax6NDjDs0LjUOSG0rtpw6jUkKYQjgWOopdxdN1SJ1xenZh8Tc0N8Q+DPg+UNmewgfyRDlSg
-	==
-X-Gm-Gg: ASbGncvrNAMXHfFM6ntntgXGM72wSEAhUKzoJXQ0+dDplk9ONpZZuoY22JBb9KoIUt1
-	uORjmMeLITdvHkM0R2uomg2hmuO0ZdxrJSkOgw8DBhgiKcqsTxUfdV1bC3pLaWfmJMJSBC4W35s
-	V7ZJQriry/9E9gqP8kv2UInQ1HkLeIAj9DaYoPI/B+PoF/bWTT3CDLt6+EyjBxfhnpnNXpz4qTM
-	3DL5zIjDXhBK/V3zvKFTXnilaE4ZaxcjFDjr4sVYAj9Y5/hW2gnwHDZpM7LWqFmI6NXveRi9Fqb
-	8wUUc4Dr0hcL4qaTINZFkK6mRcUcTTWzjzXm38EgzUY1Quoufg7/aw==
-X-Received: by 2002:a05:600c:3587:b0:43c:f70a:2af0 with SMTP id 5b1f17b1804b1-4533cb48951mr120533815e9.16.1750163598479;
-        Tue, 17 Jun 2025 05:33:18 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEk1xWsef/FxGyotWPmKQtLjGTobu8UAwOJhzqxxuFF2cZ9pfD3uHBQHPFjkme52CF+GzKbfg==
-X-Received: by 2002:a05:600c:3587:b0:43c:f70a:2af0 with SMTP id 5b1f17b1804b1-4533cb48951mr120533385e9.16.1750163598021;
-        Tue, 17 Jun 2025 05:33:18 -0700 (PDT)
-Received: from jlelli-thinkpadt14gen4.remote.csb ([151.29.151.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4532dea1cc5sm179772325e9.16.2025.06.17.05.33.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Jun 2025 05:33:17 -0700 (PDT)
-Date: Tue, 17 Jun 2025 14:33:15 +0200
-From: Juri Lelli <juri.lelli@redhat.com>
-To: Peter Zijlstra <peterz@infradead.org>
-Cc: Kuyo Chang <kuyo.chang@mediatek.com>, Ingo Molnar <mingo@redhat.com>,
-	Vincent Guittot <vincent.guittot@linaro.org>,
-	Dietmar Eggemann <dietmar.eggemann@arm.com>,
-	Steven Rostedt <rostedt@goodmis.org>,
-	Ben Segall <bsegall@google.com>, Mel Gorman <mgorman@suse.de>,
-	Valentin Schneider <vschneid@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	jstultz <jstultz@google.com>, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/1] sched/deadline: Fix fair_server runtime calculation
- formula
-Message-ID: <aFFgi_9yxLN-auBE@jlelli-thinkpadt14gen4.remote.csb>
-References: <20250614020524.631521-1-kuyo.chang@mediatek.com>
- <20250617085558.GN1613376@noisy.programming.kicks-ass.net>
+        bh=IJGnTu2P8k2zWLpKT9gQ0C6Ynav6qAdbDTnXBuG6SzE=;
+        b=GhHBkvYdbeLm5S2p5fAes7jUJHQVt0WXgJHjiqy8nWJRyLMNIwQBwszHngsMB5MWfn
+         WTpj5ZQnmUVA+xJS6bMGGhwjuHZG0hLLIrn/MtZW4BlIxn4hCv6KI1u6nqEZxxMNZEr+
+         iq3yae2Y8VJON+KsIYCLOxoQ5AeT5J/wu7mL5I3L7LmZHDRaDZITwhrQ3S0y8IYPZLn5
+         gi84r/5JKJeAWA6ZpwgxnbXJd+mzl33z+bZzKkuV/8othcW7/6A8BgvXfDAIGIeeEkH6
+         f4iZGt9aHpPYTU/qXNnl3zOvBaHLIv+Ma/j3i3WoKpzolcPVECaM+sUHdvqiyMdfQFbg
+         uWBA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1750165186; x=1750769986;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=IJGnTu2P8k2zWLpKT9gQ0C6Ynav6qAdbDTnXBuG6SzE=;
+        b=lwi/rw9ScsyafSiTtNdswiJV5KMB9JR4thbIrjtRG5dVWsOgI6yt0c+/cVDQyKiwir
+         ySKG2H/7qRfQsgQ6WKAv3J3ZOqWwTAo8w7uwwB1BUL/vik7VHZ6nOEw9LLz/OTZXpfHa
+         PCwWAGVWkc2PAPmjseLSoZ97HYKZkL/UrituOnU+8OSnoDDBH5Hwzh9b/dMb8x5eALCt
+         YCWK/Qh0EcuiFad4eR6EMZrIAVh4wFxQI50Xbzrk046ZuLQi+mEzoztLRDZ1xCplA/92
+         aPboTpUbsQ5Z9Wwbo9gCaoMTZQlyoniCFy4b8CjbswKWqDBOOSGDES+0i41/xq6sfmQ6
+         86lQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUFVIl5SvRpSxkIRjXOvMsbidJOYHpk4f5oVspO4U/0viiag99Hq2lB1z4JMreuiY4tv6OnE31QrvL2wRRvDt0=@lists.infradead.org, AJvYcCWnCWiRkhZE7qH/pPF3mYRncWkSIAiqC6jAqutIg7LuwxqvnFxaMjc8MQsmq/M3q6X8mt+oJoQy45PEYxyVcw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywj/5toczqYiGSb7Dn1uhNMbMJEhyZDpGukjxo4JJ8X5f0U0bHX
+	MAF8/tc6gRkr4lMOkAAnv/Vz768OGNxbvrbb0nVUxNic7WimVvMCGprvQq9lMfScC3S4KonP/f/
+	FePnh9R0Wb04BrLPXgjv6RZbOsQkgMpl+01dT
+X-Gm-Gg: ASbGncvJxtPRZVSXV8JFYN2TQBqpmpSvaA9/ywOauTKJcr45aU/k4eE2PUMAdz51ZM9
+	8ckXg1vUGpokENvJq5KLI3SApHVhr6tsPQwv482AUIOOx0OrfW0miGBi0SVS5p1rGsYrhCCGoUp
+	pHaSpF37mUKRZ+GRlmuGVrNkwlCE0nxPqIDNqZouwtag==
+X-Google-Smtp-Source: AGHT+IFyDxk9ofOoSE1jUdDwuXC6uj68bPw86gFHeN0xbFulbam2J1M/auQRgbuNa5uXdcywAXE8tSUc/+x2hYqgo2M=
+X-Received: by 2002:a05:6122:4586:b0:52f:47de:3700 with SMTP id
+ 71dfb90a1353d-53149677e4amr8402312e0c.5.1750165185838; Tue, 17 Jun 2025
+ 05:59:45 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20250617085558.GN1613376@noisy.programming.kicks-ass.net>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: mpopA4qFLCvq-0_U81KX9Ge4dj3Odc1tMHs972AlKsA_1750163598
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+References: <20250613090431.127087-1-tzimmermann@suse.de> <20250613090431.127087-8-tzimmermann@suse.de>
+In-Reply-To: <20250613090431.127087-8-tzimmermann@suse.de>
+From: Inki Dae <daeinki@gmail.com>
+Date: Tue, 17 Jun 2025 21:59:08 +0900
+X-Gm-Features: Ac12FXy1YqAOwtksyoMPU_mcRXzK8GOxRWP5F_To6gWRQ1V5y95DviShSwJIG6g
+Message-ID: <CAAQKjZOiz3Z42N_GEPzqU=CCfim+Z7oCuyxuji6Guj_dKYsimw@mail.gmail.com>
+Subject: Re: [PATCH v5 07/25] drm/exynos: Compute dumb-buffer sizes with drm_mode_size_dumb()
+To: Thomas Zimmermann <tzimmermann@suse.de>
+Cc: simona@ffwll.ch, airlied@gmail.com, mripard@kernel.org, 
+	maarten.lankhorst@linux.intel.com, geert@linux-m68k.org, 
+	tomi.valkeinen@ideasonboard.com, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, freedreno@lists.freedesktop.org, 
+	linux-arm-msm@vger.kernel.org, imx@lists.linux.dev, 
+	linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org, 
+	virtualization@lists.linux.dev, spice-devel@lists.freedesktop.org, 
+	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-tegra@vger.kernel.org, intel-xe@lists.freedesktop.org, 
+	xen-devel@lists.xenproject.org, Seung-Woo Kim <sw0312.kim@samsung.com>, 
+	Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
+	Alim Akhtar <alim.akhtar@samsung.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250617_053322_281037_3EF696FB 
-X-CRM114-Status: GOOD (  21.34  )
+X-CRM114-CacheID: sfid-20250617_055947_422879_115E81CC 
+X-CRM114-Status: GOOD (  14.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,60 +103,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17/06/25 10:55, Peter Zijlstra wrote:
-> On Sat, Jun 14, 2025 at 10:04:55AM +0800, Kuyo Chang wrote:
-> > From: kuyo chang <kuyo.chang@mediatek.com>
-> > 
-> > [Symptom]
-> > The calculation formula for fair_server runtime is based on
-> > Frequency/CPU scale-invariance.
-> > This will cause excessive RT latency (expect absolute time).
-> > 
-> > [Analysis]
-> > Consider the following case under a Big.LITTLE architecture:
-> > 
-> > Assume the runtime is : 50,000,000 ns, and FIE/CIE as below
-> > FIE: 100
-> > CIE:50
-> > First by FIE, the runtime is scaled to 50,000,000 * 100 >> 10 = 4,882,812
-> > Then by CIE, it is further scaled to 4,882,812 * 50 >> 10 = 238,418.
-> 
-> What's this FIE/CIE stuff? Is that some ARM lingo?
-> 
-> 
-> > diff --git a/kernel/sched/deadline.c b/kernel/sched/deadline.c
-> > index ad45a8fea245..8bfa846cf0dc 100644
-> > --- a/kernel/sched/deadline.c
-> > +++ b/kernel/sched/deadline.c
-> > @@ -1504,7 +1504,10 @@ static void update_curr_dl_se(struct rq *rq, struct sched_dl_entity *dl_se, s64
-> >  	if (dl_entity_is_special(dl_se))
-> >  		return;
-> >  
-> > -	scaled_delta_exec = dl_scaled_delta_exec(rq, dl_se, delta_exec);
-> > +	if (dl_se == &rq->fair_server)
-> > +		scaled_delta_exec = delta_exec;
-> > +	else
-> > +		scaled_delta_exec = dl_scaled_delta_exec(rq, dl_se, delta_exec);
-> 
-> Juri, the point it a bit moot atm, but is this something specific to the
-> fair_server in particular, or all servers?
+2025=EB=85=84 6=EC=9B=94 13=EC=9D=BC (=EA=B8=88) =EC=98=A4=ED=9B=84 6:05, T=
+homas Zimmermann <tzimmermann@suse.de>=EB=8B=98=EC=9D=B4 =EC=9E=91=EC=84=B1=
+:
+>
+> Call drm_mode_size_dumb() to compute dumb-buffer scanline pitch and
+> buffer size. No alignment required.
+>
 
-I believe for other servers (i.e., rt-server work from Yuri and Luca) it
-might be useful to have it configurable somehow. I actually had a recent
-discussion about this concerning single task entities (traditional
-deadline servers) for which as well there might be cases where one might
-want not to scale considering frequency and capacity.
+Acked-by : Inki Dae <inki.dae@samsung.com>
 
-> Because if this is something all servers require then the above is
-> ofcourse wrong.
+Thanks,
+Inki Dae
 
-To me it looks like we want this (no scaling) for fair_server (and
-possibly scx_server?) as for them we are only looking into a 'fixed
-time' type of isolation. Full fledged servers (hierarchical scheduling)
-maybe have it configurable, or enabled by default as a start (as we have
-it today).
-
-Best,
-Juri
-
+> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+> Cc: Inki Dae <inki.dae@samsung.com>
+> Cc: Seung-Woo Kim <sw0312.kim@samsung.com>
+> Cc: Kyungmin Park <kyungmin.park@samsung.com>
+> Cc: Krzysztof Kozlowski <krzk@kernel.org>
+> Cc: Alim Akhtar <alim.akhtar@samsung.com>
+> ---
+>  drivers/gpu/drm/exynos/exynos_drm_gem.c | 8 +++++---
+>  1 file changed, 5 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/exynos/exynos_drm_gem.c b/drivers/gpu/drm/ex=
+ynos/exynos_drm_gem.c
+> index 4787fee4696f..ffa1c02b4b1e 100644
+> --- a/drivers/gpu/drm/exynos/exynos_drm_gem.c
+> +++ b/drivers/gpu/drm/exynos/exynos_drm_gem.c
+> @@ -11,6 +11,7 @@
+>  #include <linux/shmem_fs.h>
+>  #include <linux/module.h>
+>
+> +#include <drm/drm_dumb_buffers.h>
+>  #include <drm/drm_prime.h>
+>  #include <drm/drm_vma_manager.h>
+>  #include <drm/exynos_drm.h>
+> @@ -330,15 +331,16 @@ int exynos_drm_gem_dumb_create(struct drm_file *fil=
+e_priv,
+>         unsigned int flags;
+>         int ret;
+>
+> +       ret =3D drm_mode_size_dumb(dev, args, 0, 0);
+> +       if (ret)
+> +               return ret;
+> +
+>         /*
+>          * allocate memory to be used for framebuffer.
+>          * - this callback would be called by user application
+>          *      with DRM_IOCTL_MODE_CREATE_DUMB command.
+>          */
+>
+> -       args->pitch =3D args->width * ((args->bpp + 7) / 8);
+> -       args->size =3D args->pitch * args->height;
+> -
+>         if (is_drm_iommu_supported(dev))
+>                 flags =3D EXYNOS_BO_NONCONTIG | EXYNOS_BO_WC;
+>         else
+> --
+> 2.49.0
+>
+>
 
