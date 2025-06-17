@@ -4,61 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5737AC71136
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Jun 2025 17:11:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F3E2C71136
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Jun 2025 17:11:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4y61tvVtL+Nu9zAfwj8f/C4Um0svSaW4IhjMC/PKRbY=; b=kxkuJZB7LgojHJ
-	GYn0T8mIuXJmbdttcKkegCLvoTAGRlIg1kW1WK3E+PzEDGJwf8zG/jg7jVtvCi4MsHc/AS9UJGMSX
-	vbm6BEKtN3fQSSchJh5D4RCDLxUn2RTRZf7UBuQ3NiHPGbOK53w23R5H3ZeWd3XfutdZKMAJsB0UZ
-	mFEzleSuDqu2rV0asWao7dtbC46w5VnxkFPr7Jc4U9ruO+B//3kBy58YYCqdiGBN5+9j2JMjYrfEj
-	9f7MBxAWgQrgBvq+SM2K/KP1IVxFYuHUlTaHSyqbSBR1YxP6wijcKpsr1YMvGTBFLasU/gHmvKIXh
-	AqggZRet8zv9P32pswaw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=DM70jmBk+8+pNXMrSmDw0F0d1r4Q4LzFUoMuNsxPcH4=; b=p3u+jffMh+P7N2fVwoH3fHxhl7
+	laxH6rIT4qVN2Xj35vCuPEbXNcA2stPkhNWko7BUelaWD0wAtZjMPsn5TLUpYaVUOTnYXjkifLdHw
+	L2Z1DRDfGMtkdZl6lYB6Is38KnyrdptCX7Dzu4BRCUC2A4tVT8pU8vr068c0PjJS17o3uYIsKKZe7
+	PJKtKmXuu0rKUfLysctjSovDJUN6n6ypSw0gz7QlGtOVloj0Xw1rRm3RoOAeF1n1YqGPMdAY1E9mC
+	XnJQ+dMTReoVywVpNNkthyZRfRMuaBGNOi3KMV0QVLA+oUD4khtBxi7ioi4BG2i/aGmt0rNzfetoz
+	cKmal3CA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRZqj-00000007zBy-2mRK;
-	Tue, 17 Jun 2025 17:11:53 +0000
-Received: from mxout4.routing.net ([2a03:2900:1:a::9])
+	id 1uRZqn-00000007zJF-34Vt;
+	Tue, 17 Jun 2025 17:11:57 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRYSQ-00000007l7S-0s5o;
-	Tue, 17 Jun 2025 15:42:43 +0000
-Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
-	by mxout4.routing.net (Postfix) with ESMTP id C7804100949;
-	Tue, 17 Jun 2025 15:42:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1750174954;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=4y61tvVtL+Nu9zAfwj8f/C4Um0svSaW4IhjMC/PKRbY=;
-	b=tCiFaxQfSyRl2HQrruBNDzRHlIucijlwJHs9wUz8grfg4jPl8cjBHtsE9+0MXnK2mhqW77
-	aoemFKp3k0OyAzqkBwmpD5t4WiKrDCfkiSzPM/zuYi2jiNT6tIdvtbdMchKxj6GU3vCEOF
-	sK7BDBpkB4XHraZiaJ4BgJsHZFFeO5A=
-Received: from [IPv6:::1] (unknown [IPv6:2a01:599:80e:f26f:d033:b886:5aa2:2cc2])
-	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 1868B360564;
-	Tue, 17 Jun 2025 15:42:32 +0000 (UTC)
-Date: Tue, 17 Jun 2025 17:42:31 +0200
-From: Frank Wunderlich <linux@fw-web.de>
-To: Rob Herring <robh@kernel.org>
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v4_01/13=5D_dt-bindings=3A_n?=
- =?US-ASCII?Q?et=3A_mediatek=2Cnet=3A_update_for_mt7988?=
-User-Agent: K-9 Mail for Android
-In-Reply-To: <20250617151354.GA2392458-robh@kernel.org>
-References: <20250616095828.160900-1-linux@fw-web.de> <20250616095828.160900-2-linux@fw-web.de> <20250617151354.GA2392458-robh@kernel.org>
-Message-ID: <D1ACA985-56B7-48B6-8DFA-3B93AF893127@fw-web.de>
+	id 1uRYdT-00000007nv3-06iw;
+	Tue, 17 Jun 2025 15:54:08 +0000
+X-UUID: 492ac1a44b9311f09f706fa2197c6ceb-20250617
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=DM70jmBk+8+pNXMrSmDw0F0d1r4Q4LzFUoMuNsxPcH4=;
+	b=Js1PFMfbr+Kni92Htg/UjrRVzwKN0SJuv+R9I0eBGAeZTW5YUG0Hb9xJYsGSMVqLNxO39RVkVAxTTOsdDTwrrlSRJYnkYNlT7qZlX+W6IFjbaTGraw0itmnfbN455gI1oEY0I0+WDtOFHxPN/uTwFEhcC35k33+CaEh7WSGoIwY=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.3,REQID:2adb1122-74ed-4f2d-a68b-c597dfbf8dca,IP:0,UR
+	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:-5
+X-CID-META: VersionHash:09905cf,CLOUDID:5e67c903-0d95-4f6b-a95f-3c560ebcf3ab,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:99|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,
+	LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 492ac1a44b9311f09f706fa2197c6ceb-20250617
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+	(envelope-from <kuyo.chang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1759085317; Tue, 17 Jun 2025 08:54:00 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Tue, 17 Jun 2025 23:53:57 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Tue, 17 Jun 2025 23:53:57 +0800
+From: Kuyo Chang <kuyo.chang@mediatek.com>
+To: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>,
+	Juri Lelli <juri.lelli@redhat.com>, Vincent Guittot
+	<vincent.guittot@linaro.org>, Dietmar Eggemann <dietmar.eggemann@arm.com>,
+	Steven Rostedt <rostedt@goodmis.org>, Ben Segall <bsegall@google.com>, Mel
+ Gorman <mgorman@suse.de>, Valentin Schneider <vschneid@redhat.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: John Stultz <jstultz@google.com>, kuyo chang <kuyo.chang@mediatek.com>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+Subject: [PATCH v2 1/1] sched/deadline: Fix dl_server runtime calculation formula
+Date: Tue, 17 Jun 2025 23:52:49 +0800
+Message-ID: <20250617155355.1479777-1-kuyo.chang@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Mail-ID: dc9dec3d-80df-4759-b36b-a6ba1f02e733
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250617_084242_564081_AEE265DA 
-X-CRM114-Status: GOOD (  11.53  )
+X-CRM114-CacheID: sfid-20250617_085407_089634_44D21E93 
+X-CRM114-Status: GOOD (  11.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,133 +87,73 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, linux-pm@vger.kernel.org, Chanwoo Choi <cw00.choi@samsung.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, Johnson Wang <johnson.wang@mediatek.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Jia-Wei Chang <jia-wei.chang@mediatek.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, Kyungmin Park <kyungmin.park@samsung.com>, Georgi Djakov <djakov@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 17=2E Juni 2025 17:13:54 MESZ schrieb Rob Herring <robh@kernel=2Eorg>:
->On Mon, Jun 16, 2025 at 11:58:11AM +0200, Frank Wunderlich wrote:
->> From: Frank Wunderlich <frank-w@public-files=2Ede>
->>=20
->> Update binding for mt7988 which has 3 gmac and 2 reg items=2E
->>=20
->> With RSS-IRQs the interrupt max-items is now 6=2E Add interrupt-names
->> to make them accessible by name=2E
->>=20
->> Signed-off-by: Frank Wunderlich <frank-w@public-files=2Ede>
->> ---
->> v4:
->> - increase max interrupts to 8 because of RSS/LRO interrupts
->
->But the schema says 6?
+From: kuyo chang <kuyo.chang@mediatek.com>
 
-Yes it was an error in changelog,see mail i
- sent later to you and ML=2E 8 was previously
- because original version had 2 reserved irqs
- around rx+tx i dropped later by using
- irq-names=2E
+[Symptom]
+The calculation formula for dl_server runtime is based on
+Frequency/capacity scale-invariance.
+This will cause excessive RT latency (expect absolute time).
 
-See my patch introducing irq-names in mtk
-eth driver:
+[Analysis]
+Consider the following case under a Big.LITTLE architecture:
 
-<https://patchwork=2Ekernel=2Eorg/project/linux-mediatek/patch/20250616080=
-738=2E117993-2-linux@fw-web=2Ede/>
+Assume the runtime is: 50,000,000 ns, and Frequency/capacity
+scale-invariance defined as below:
 
-Original (downstream/sdk) was (but=20
-index-based):
+Frequency scale-invariance: 100
+Capacity scale-invariance: 50
+First by Frequency scale-invariance,
+the runtime is scaled to 50,000,000 * 100 >> 10 = 4,882,812
+Then by capacity scale-invariance,
+it is further scaled to 4,882,812 * 50 >> 10 = 238,418.
 
-rsv
-rx
-tx
-rsv/misc
-rx-ring0
-=2E=2E=2E
-rx-ring3
+So it will scaled to 238,418 ns.
 
-So total 8 and i don't wanted to add 2=20
-reserved irq to dts forever so i decided
-moving to irq-names now=2E
+[Solution]
+The runtime for dl_server should be fixed time
+asis RT bandwidth control.
+Fix the runtime calculation formula for the dl_server.
 
->> - dropped Robs RB due to this change
->> - allow interrupt names
->> - add interrupt-names without reserved IRQs on mt7988
->>   this requires mtk driver patch:
->>   https://patchwork=2Ekernel=2Eorg/project/netdevbpf/patch/202506160807=
-38=2E117993-2-linux@fw-web=2Ede/
->>=20
->> v2:
->> - change reg to list of items
->> ---
->>  =2E=2E=2E/devicetree/bindings/net/mediatek,net=2Eyaml | 28 +++++++++++=
-+++++---
->>  1 file changed, 24 insertions(+), 4 deletions(-)
->>=20
->> diff --git a/Documentation/devicetree/bindings/net/mediatek,net=2Eyaml =
-b/Documentation/devicetree/bindings/net/mediatek,net=2Eyaml
->> index 9e02fd80af83=2E=2Ef8025f73b1cb 100644
->> --- a/Documentation/devicetree/bindings/net/mediatek,net=2Eyaml
->> +++ b/Documentation/devicetree/bindings/net/mediatek,net=2Eyaml
->> @@ -28,7 +28,10 @@ properties:
->>        - ralink,rt5350-eth
->> =20
->>    reg:
->> -    maxItems: 1
->> +    items:
->> +      - description: Register for accessing the MACs=2E
->> +      - description: SoC internal SRAM used for DMA operations=2E
->> +    minItems: 1
->> =20
->>    clocks:
->>      minItems: 2
->> @@ -40,7 +43,11 @@ properties:
->> =20
->>    interrupts:
->>      minItems: 1
->> -    maxItems: 4
->> +    maxItems: 6
->> +
->> +  interrupt-names:
->> +    minItems: 1
->> +    maxItems: 6
->> =20
->>    power-domains:
->>      maxItems: 1
->> @@ -348,7 +355,17 @@ allOf:
->>      then:
->>        properties:
->>          interrupts:
->> -          minItems: 4
->> +          minItems: 2
->> +
->> +        interrupt-names:
->> +          minItems: 2
->> +          items:
->> +            - const: tx
->> +            - const: rx
->> +            - const: rx-ring0
->> +            - const: rx-ring1
->> +            - const: rx-ring2
->> +            - const: rx-ring3
->> =20
->>          clocks:
->>            minItems: 24
->> @@ -381,8 +398,11 @@ allOf:
->>              - const: xgp2
->>              - const: xgp3
->> =20
->> +        reg:
->> +          minItems: 2
->> +
->>  patternProperties:
->> -  "^mac@[0-1]$":
->> +  "^mac@[0-2]$":
->>      type: object
->>      unevaluatedProperties: false
->>      allOf:
->> --=20
->> 2=2E43=2E0
->>=20
+Signed-off-by: kuyo chang <kuyo.chang@mediatek.com>
+Acked-by: Juri Lelli <juri.lelli@redhat.com>
+Suggested-by: Peter Zijlstra <peterz@infradead.org>
 
+v1: https://lore.kernel.org/all/20250614020524.631521-1-kuyo.chang@mediatek.com/
 
-regards Frank
+---
+ kernel/sched/deadline.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/kernel/sched/deadline.c b/kernel/sched/deadline.c
+index ad45a8fea245..f68a158d01e9 100644
+--- a/kernel/sched/deadline.c
++++ b/kernel/sched/deadline.c
+@@ -1504,7 +1504,9 @@ static void update_curr_dl_se(struct rq *rq, struct sched_dl_entity *dl_se, s64
+ 	if (dl_entity_is_special(dl_se))
+ 		return;
+ 
+-	scaled_delta_exec = dl_scaled_delta_exec(rq, dl_se, delta_exec);
++	scaled_delta_exec = delta_exec;
++	if (!dl_se->dl_server)
++		scaled_delta_exec = dl_scaled_delta_exec(rq, dl_se, delta_exec);
+ 
+ 	dl_se->runtime -= scaled_delta_exec;
+ 
+@@ -1624,7 +1626,9 @@ void dl_server_update_idle_time(struct rq *rq, struct task_struct *p)
+ 	if (delta_exec < 0)
+ 		return;
+ 
+-	scaled_delta_exec = dl_scaled_delta_exec(rq, &rq->fair_server, delta_exec);
++	scaled_delta_exec = delta_exec;
++	if (!rq->fair_server.dl_server)
++		scaled_delta_exec = dl_scaled_delta_exec(rq, &rq->fair_server, delta_exec);
+ 
+ 	rq->fair_server.runtime -= scaled_delta_exec;
+ 
+-- 
+2.45.2
+
 
