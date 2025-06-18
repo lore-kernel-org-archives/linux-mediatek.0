@@ -4,63 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D963C7115E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jun 2025 19:11:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D569C71157
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jun 2025 19:46:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eTsSA5tSG0BBeG/tO1836ylFVVkJ0QYKSkBxCV3iQpM=; b=LCORRGu36nvfu6SupYM5A2dZC/
-	FyB/Qkfv1ygBk+0iweXBPki3ao2T/qIyKXofcAr8G84hOsdMKr2j3ZCwcaECOtP7p+kNwSVVnHHj8
-	xxPp/Pp0dYnu8qBQyG+Dv6gNlSF7SmD37g0ZJ5MdvLCaO6b8eSLDpewx4VgGS7YZ3yHhooS4SahHD
-	fskGf5O7OfDXgiCHN0QNQyIUpw1AZTyeLqLRw4KVFY92cmGLGrIjbuHmXLvTZS9L3/B+hUh011Y7S
-	9piDMo8ngL7d64NUkxGbhbOHYGk6hdVaKNEQc8y9kxrfdHPS+O3iZZtOMS0mQCAfWXC8hNPPoNfPZ
-	ONDrI/sg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PWvHiMHTgOAPIc8uIv9IBhWsaldOSguvhvdROMsWe0g=; b=2ge7nWlhcGH7Ihhgb26IFtdOVD
+	14vu+yDvKxve7ypk0o8wEsmeyn5fu0eghkt81YVunMoVCJb3q7xuNUUJaDABG8/ygpk5t8l7p0nTE
+	1Jw7CFc/yXU6RKiS7Llbu2FUNhBFcOWv82WcSozOESh45weGQHg4g4W22aJZdKRvWxDsQ40GSKGwC
+	W8ktGyAP/s6r/h9qsQ49tIyjBLXFNUCejMk8eSmSlnMSJzpgO0yfzZsclrGSl7211h/x86i8rNnCO
+	mUU10d5g7Zr/Tizp3JYgFZKfjG6rjVI7ii5M9elhv1lhaHc+WA40Cc+v9atBcVybq5VG8271sMSzi
+	2VY0lSSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRyCP-0000000BA6e-3iue;
-	Wed, 18 Jun 2025 19:11:53 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uRyjr-0000000BFvu-2ugE;
+	Wed, 18 Jun 2025 19:46:27 +0000
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRwne-0000000Atc9-12Pl;
-	Wed, 18 Jun 2025 17:42:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=eTsSA5tSG0BBeG/tO1836ylFVVkJ0QYKSkBxCV3iQpM=; b=gqcyXCKAIjcERbqUt1Ljgjsk0p
-	3h6fxO0etkd70l/E21ZfcZ45FWeA/IFIuOtBqiyOIRE0/bKzDpMLSBQBFgsViCMjvoayPIaiyz4DN
-	kjkzLI8vgbewwVzsUDgP/+TCmo8KFLJyJddjOBNk+5+OVbrYVha1Co7eq3M0i3V8HSPHo4U7UHm1p
-	TcbWrtj9/mVSTxDaOtM67HZa56xrIy+GPxGYqNr1t5s4KEpax2D111d5ZlWO5Rv4hcC/wAvjQ9VsI
-	GUrjRAMsivP1e18oNpApsVVEsSuneLs8l3kOJSgoSDLioF/+6kcY1CF89IrH3gfQEwod6AamJO4ce
-	ZNa8lGYw==;
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRwnb-00000004Eax-3SdL;
-	Wed, 18 Jun 2025 17:42:13 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.98.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1uRwez-000000004uy-0gef;
-	Wed, 18 Jun 2025 17:41:59 +0000
-Date: Wed, 18 Jun 2025 19:41:50 +0200
-From: Daniel Golle <daniel@makrotopia.org>
-To: Frank Wunderlich <linux@fw-web.de>
-Subject: Re: [net-next v5 3/3] net: ethernet: mtk_eth_soc: skip first IRQ if
- not used
-Message-ID: <aFL6XhghHobju0th@pidgin.makrotopia.org>
-References: <20250618130717.75839-1-linux@fw-web.de>
- <20250618130717.75839-4-linux@fw-web.de>
+	id 1uRyjg-0000000BFpM-1wFX
+	for linux-mediatek@lists.infradead.org;
+	Wed, 18 Jun 2025 19:46:17 +0000
+Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-553b3316160so4709599e87.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 18 Jun 2025 12:46:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1750275975; x=1750880775; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=PWvHiMHTgOAPIc8uIv9IBhWsaldOSguvhvdROMsWe0g=;
+        b=T7/VFxB976Q52PxiFGbzNPKoNb5I6jCNGVg2m9jl1ucdBWmgkflkvE3yDuRR5Pani1
+         K1tbPOGuXoO4l2UEYm2fgrWWWUV03SYU3Qq7+zpfJT/puInnutbn/7BuPx11jefrtpye
+         qDn0xkxC0GL/EaJN32x78TvuN0Ry1/n9VzNXfP5NwZxXX+DGMHmSvBn9GUUpZ5zxqSxy
+         BkpcuP1gSXJ92XCCrldTw/ON49QyxZ4jRdfcOtccy2wCtiO30/JN8hXJelOrc6IgphTL
+         t7z9Zu/lzsgHnxdw1/zpKlPBPO8rBRGNs2seMoeR/tK+kpry0NlEW5iaKPE0IN03jbFc
+         fAQQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1750275975; x=1750880775;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=PWvHiMHTgOAPIc8uIv9IBhWsaldOSguvhvdROMsWe0g=;
+        b=XgngGpejOkAB/8qNCLHmxqiWCj8K3/bBAxj57+UzHXoCjbDnDPqir/x0R1Z6LIj4oX
+         3Rl/0d4AKtQvVDUGaSCKl9YJ50Wz2gpUvWQZTP9P7UXcaxcgUsBwgzcUWaQbr/h6rwBN
+         zoHSMOxQjjNtAujHpWEJ8cvHHtbpEGH+NRL5XBMOYNosfSfHgZpFeEsnprDE9z8c5VGL
+         gKxmsCt/qZY+EVw7RYz1HBjJ0C3tN9cuaMAvzxipD6cIK/oMngIZTqxT1H7fSmDWBr2u
+         0g4w1E1v/hkO4oXsYinTaKjAh46fT9ZY4gBtDPxfRoimSpT26axUQl8y1rwvomtHNIdE
+         aSWg==
+X-Forwarded-Encrypted: i=1; AJvYcCUseXPrgSIjlJ6d1CJl4ukhp5RLjqYhC6FIESm8Jvvywxaf97IwUboL8eG9yptvv7Bem49o5iBORNg2Ms9p4g==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy/8DcUFthwZ7WJGyMmswhcihD6Y1YhjSU3bin9Vw4S6OUjBxOu
+	1IB1etLvBrGcwoY5sKskPTYum0MW6YKCnJzNKVKYvcDhzvy7XlnN3xI1p+pJ4tW+1HXXQK3hGQ8
+	OopznLzg0UG3ahoQoUymQWvtq+5bOQ75YVTCvI4Q=
+X-Gm-Gg: ASbGncs4LdtxVYjSsDB9daEN5jd4/QiQKVVr9wMXQAMp2Wi+KZn6fRf6H+IjvzZggY7
+	LuJ5W88tQTpA1QU4ovK6sZuuvNnCIHz7fGEzf14ygMUZkfpZG4pe0Ftwj4m5BPTNfgmZN3F9uYQ
+	mi3x+hAkY77q+QWFDE67/OYwMWUCOIPxoTH0/a6P5SmgLllAOUslw1dOoCwvAZaUguLg7PFDbB
+X-Google-Smtp-Source: AGHT+IHPdx+3fxpJ0DR6n/XRBFuiyzE1w1ppJxiNw05htrhFVe3cOLpbgxBnZwtM5kwSo/F27oMBBGKVd1F/n0eZfpg=
+X-Received: by 2002:a05:6512:2314:b0:553:a60d:6898 with SMTP id
+ 2adb3069b0e04-553b6f2bc6emr4879979e87.45.1750275974437; Wed, 18 Jun 2025
+ 12:46:14 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250618130717.75839-4-linux@fw-web.de>
+References: <20250617155355.1479777-1-kuyo.chang@mediatek.com>
+ <CANDhNCrUtLCU86hNk4qyfbqn9eXsmbzgzJCxYmXGRCko0r=VbQ@mail.gmail.com> <bbb9a1f3b796e8d7bd0010bf0f4862d67368516a.camel@mediatek.com>
+In-Reply-To: <bbb9a1f3b796e8d7bd0010bf0f4862d67368516a.camel@mediatek.com>
+From: John Stultz <jstultz@google.com>
+Date: Wed, 18 Jun 2025 12:46:03 -0700
+X-Gm-Features: AX0GCFuASm5Kk-lAqXK-5L46ROAuwfALSQP_c8yuQf0EFiqFxlNrc_DV2E-CP5M
+Message-ID: <CANDhNCoT0WDZ4A-OAN5=qu1wuvOdM5F=1skQsS0gnGTZsntinA@mail.gmail.com>
+Subject: Re: [PATCH v2 1/1] sched/deadline: Fix dl_server runtime calculation formula
+To: Kuyo Chang <kuyo.chang@mediatek.com>
+Cc: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>, 
+	Juri Lelli <juri.lelli@redhat.com>, Vincent Guittot <vincent.guittot@linaro.org>, 
+	Dietmar Eggemann <dietmar.eggemann@arm.com>, Steven Rostedt <rostedt@goodmis.org>, 
+	Ben Segall <bsegall@google.com>, Mel Gorman <mgorman@suse.de>, 
+	Valentin Schneider <vschneid@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250618_184211_927639_B39001BF 
-X-CRM114-Status: GOOD (  29.82  )
+X-CRM114-CacheID: sfid-20250618_124616_524148_C559A1A5 
+X-CRM114-Status: GOOD (  30.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,108 +97,121 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>, arinc.unal@arinc9.com, linux-mediatek@lists.infradead.org, Simon Horman <horms@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 18, 2025 at 03:07:14PM +0200, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> On SoCs without MTK_SHARED_INT capability (all except mt7621 and
-> mt7628) platform_get_irq() is called for the first IRQ (eth->irq[0])
-> but it is never used.
+On Tue, Jun 17, 2025 at 8:41=E2=80=AFPM Kuyo Chang <kuyo.chang@mediatek.com=
+> wrote:
+> Thanks for cleaner code suggestion, how about this?
+>
+> diff --git a/kernel/sched/deadline.c b/kernel/sched/deadline.c
+> index f68a158d01e9..3ccffdf4dec6 100644
+> --- a/kernel/sched/deadline.c
+> +++ b/kernel/sched/deadline.c
+> @@ -1505,7 +1505,7 @@ static void update_curr_dl_se(struct rq *rq,
+> struct sched_dl_entity *dl_se, s64
+>                 return;
+>
+>         scaled_delta_exec =3D delta_exec;
+> -       if (!dl_se->dl_server)
+> +       if (!dl_server(dl_se))
+>                 scaled_delta_exec =3D dl_scaled_delta_exec(rq, dl_se,
+> delta_exec);
+>
+>         dl_se->runtime -=3D scaled_delta_exec;
 
-I know that technically MTK_SHARED_INT is a capability flag, but it's
-rather a non-capability. Hardware having dedicated interrupts for RX and
-TX is "more capable" than (older, legacy) hardware with just one shared
-interrupt for both...
+This bit above looks good to me.
 
-So maybe better:
-"On SoCs with dedicated RX and TX interrupts (all except MT7621 and
-MT7628) ..."
+> @@ -1614,12 +1614,13 @@ static void update_curr_dl_se(struct rq *rq,
+> struct sched_dl_entity *dl_se, s64
+>  void dl_server_update_idle_time(struct rq *rq, struct task_struct *p)
+>  {
+>         s64 delta_exec, scaled_delta_exec;
+> +       struct sched_dl_entity *dl_se =3D &rq->fair_server;
+>
+> -       if (!rq->fair_server.dl_defer)
+> +       if (!dl_se->dl_defer)
+>                 return;
+>
+>         /* no need to discount more */
+> -       if (rq->fair_server.runtime < 0)
+> +       if (dl_se->runtime < 0)
+>                 return;
+>
+>         delta_exec =3D rq_clock_task(rq) - p->se.exec_start;
+> @@ -1627,14 +1628,14 @@ void dl_server_update_idle_time(struct rq *rq,
+> struct task_struct *p)
+>                 return;
+>
+>         scaled_delta_exec =3D delta_exec;
+> -       if (!rq->fair_server.dl_server)
+> -               scaled_delta_exec =3D dl_scaled_delta_exec(rq, &rq-
+> >fair_server, delta_exec);
+> +       if (!dl_server(dl_se))
+> +               scaled_delta_exec =3D dl_scaled_delta_exec(rq, dl_se,
+> delta_exec);
+>
+> -       rq->fair_server.runtime -=3D scaled_delta_exec;
+> +       dl_se->runtime -=3D scaled_delta_exec;
+>
+> -       if (rq->fair_server.runtime < 0) {
+> -               rq->fair_server.dl_defer_running =3D 0;
+> -               rq->fair_server.runtime =3D 0;
+> +       if (dl_se->runtime < 0) {
+> +               dl_se->dl_defer_running =3D 0;
+> +               dl_se->runtime =3D 0;
+>         }
 
-Reading the datasheet of some recent MediaTek SoC it is worth
-noting that there are 4 interrupts assigned to the frame engine and
-the FE_INT_GRP register can be used to assign functions to them.
+Apologies if I'm confused, or my feedback added confusion, but I'm not
+sure I see this chunk as a readability improvement, right off.
 
-So technically, calling them RX and TX in DT is wrong, becaues they
-are fe_int0, fe_int1, fe_int2 and fe_int3, which are then assigned
-one or more functions by the driver using that FE_INT_GRP register.
+The indirection of rq->fair_server to a stack local dl_se makes it
+less obvious what is being acted upon (might be confused for the dl_se
+of the task ptr passed in).
+Further, the dl_server() check is confusing as I think we're only
+considering dl_servers here (the existing fair_server and potentially
+future servers added), right?
 
-However, it's the driver then assigns QDMA TX to fe_int1 and RX to
-fe_int2 while leaving fe_int0 and fe_int3 unsued.
+I think your original logic for this function of just dropping the
+scaled_delta_exec for the rq->fair_server.runtime addition makes the
+most sense.
 
-That's what the magic value 0x21021000 which is written to FE_INT_GRP
-register does.
-
-On MT7988 and newer, in addition to those 4 frame engine interrupts
-there are **another 4** interrupts for PDMA, typically used to
-service 4 RX rings while one of the fe_int* is used to indicate
-TX done.
-
-> Skip the first IRQ and reduce the IRQ-count to 2.
-> 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
-> v5:
-> - change commit title and description
-> v4:
-> - drop >2 condition as max is already 2 and drop the else continue
-> - update comment to explain which IRQs are taken in legacy way
-> ---
->  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 12 ++++++++----
->  drivers/net/ethernet/mediatek/mtk_eth_soc.h |  4 ++--
->  2 files changed, 10 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> index 875e477a987b..7990c84b2b56 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> @@ -3354,10 +3354,14 @@ static int mtk_get_irqs(struct platform_device *pdev, struct mtk_eth *eth)
->  	 * the second is for TX, and the third is for RX.
->  	 */
->  	for (i = 0; i < MTK_FE_IRQ_NUM; i++) {
-> -		if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT) && i > 0)
-> -			eth->irq[i] = eth->irq[MTK_FE_IRQ_SHARED];
-> -		else
-> -			eth->irq[i] = platform_get_irq(pdev, i);
-> +		if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT)) {
-> +			if (i == 0)
-
-This would make it even more readable:
-			if (i == MTK_FE_IRQ_SHARED)
+When we have additional dl_servers to handle here, I think we can
+refactor/abstract out this logic as makes most sense when they arrive.
 
 
-Other than that looks good to me:
+>         p->se.exec_start =3D rq_clock_task(rq);
+>
+> If it's ok, should I split it into two separate patches
+> 1.Fix dl_server runtime calculation formula
+> 2.cleaner code patch
+>
+> or just submit it as a single patch?
 
-Reviewed-by: Daniel Golle <daniel@makrotopia.org>
+Others can correct me, but I think just a single fix makes sense.
 
-> +				eth->irq[MTK_FE_IRQ_SHARED] = platform_get_irq(pdev, i);
-> +			else
-> +				eth->irq[i] = eth->irq[MTK_FE_IRQ_SHARED];
-> +		} else {
-> +			eth->irq[i] = platform_get_irq(pdev, i + 1);
-> +		}
->  
->  		if (eth->irq[i] < 0) {
->  			dev_err(&pdev->dev, "no IRQ%d resource found\n", i);
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> index 8cdf1317dff5..9261c0e13b59 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> @@ -643,8 +643,8 @@
->  #define MTK_MAC_FSM(x)		(0x1010C + ((x) * 0x100))
->  
->  #define MTK_FE_IRQ_SHARED	0
-> -#define MTK_FE_IRQ_TX		1
-> -#define MTK_FE_IRQ_RX		2
-> +#define MTK_FE_IRQ_TX		0
-> +#define MTK_FE_IRQ_RX		1
->  #define MTK_FE_IRQ_NUM		(MTK_FE_IRQ_RX + 1)
->  
->  struct mtk_rx_dma {
-> -- 
-> 2.43.0
-> 
-> 
+
+> > I'm a little confused on the conditional here. Is
+> > fair_server.dl_server ever not true (after the first call to
+> > dl_server_start())?
+> >
+> For now, it's true.
+>
+> But based on our previous discussion,
+> use the dl_server flag to identify and handle a 'fixed time' type of
+> isolation.
+> This approach makes it easier to extend and allows multiple servers to
+> configure it as needed.
+
+So from my read of the previous thread, it sounded like the
+dl_server() check in update_curr_dl_se() is good for now, as there's
+only the fair_server, but when other servers arrive we may need to
+have a configurable bit on the server to determine if we scale or not.
+For dl_server_update_idle_time(), I think each future dl_server will
+need to be handled individually (and the code likely refactored to do
+that cleanly), but I think its premature to try to handle that now, so
+I'd just keep the original simpliciation for that patch.
+
+thanks!
+-john
 
