@@ -4,66 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01262C71136
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jun 2025 01:43:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A108C71157
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jun 2025 03:41:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bYv0Lur8E97sb2QuHlsSSGh9x671eSUeTz28YUFJkJA=; b=k5TRO8GplU8K/k2EmViYVvJUlK
-	9Gy+P65kNN2L1mrJEAzWg3IHyhc5ly758Yer1lmBevi4cGoJXEtQYHXphZJcHrkSjLVpGulPBWz8Q
-	MtcNHlu/IlWKnU3duzKYw49g7dbR/ePMCrfPPA1NNjdg0lrJVHju+SUYu2U79o9fQwLLBQUGLW/ui
-	5h9IahlZq/hWoj33cdzi7QwEzZ+zpB7J1HkESzlsneNAeZhwfB2Dg9pvNKKHlKSEeQtQe3mtrunfD
-	sIbBFvAKPBXS80e1nf0Q+J2yoZXLdr1g/OPYHmShO36zM3232bdKawuvuA7iQGnmFugQ4X8ejLaoT
-	/tRPNYzQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0mo63V3QovSHkpNE8wUbgfm1mAKC72zCbSTyRHS1N38=; b=bIu+HLqEpTeL3MSW/DiqYqWoC6
+	XhrD1w3zl4DXF+3QLJ9fkQMqoFHSn/jt5ThnI8ftZTvTIBh6ST6UUiU9Gz5b0enO6sgR8RyjtpzTX
+	PaReUBc/FCM7YqI47G8MWSJxHEF7gE08+5TCC+A5OOTWoTH31gVxd2AAnV9UhBvx6/Vx4PRr3FjVe
+	Yb9RBGGKHcsmMJdJyVzaM2uH095LCjuvvqJ0VREG2m7vFyg22P59iIUuyXbZ7Zfv/HcFY1tlc4tOR
+	IjO9tU3mr8Xb0ryPn5AKCepgDVsjXaVFGZ7vIWHgHqhFUqloZfZrXE3Rmj1nwOlzOIyawwRl8UB4j
+	Pai9+RAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRhq7-00000008mC5-3sFO;
-	Wed, 18 Jun 2025 01:43:47 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uRjfv-00000008vCa-2oDo;
+	Wed, 18 Jun 2025 03:41:23 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRhn8-00000008li1-3alz;
-	Wed, 18 Jun 2025 01:40:42 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 8496A629C5;
-	Wed, 18 Jun 2025 01:40:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 348C4C4CEF0;
-	Wed, 18 Jun 2025 01:40:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750210841;
-	bh=dWWHgiEt3tYWTZRgQm02U8aGJUCEgTY0w6sEmnkU+4s=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=dw/g8ufyu11VCbuMaNH4zZzsZdGQI+Frv2Bdhof0fbxSnVzrdeBylNSHvRJhDwibv
-	 QD3nGymvb8a2VPn8/d/F+xH5C2fcdkUVNUfs9gBSYOYcnoBtQf/YiioPQ8qWhU/1Fi
-	 /TwI0Cz59/BlnTyiC5q7u6K6bE2XF85SWcYyM4R8LcW5T8dAQ6pLOup1yl6nQK2rwo
-	 tNb+jVEzw8TSsodBpO8MgA6c/kh20BoqSecflSaYFp9EDsbuguuuZnpJU8gCvFN5nQ
-	 WmlL/8Ss+ex1zz0eLaE1Kz/w/ns6U8ZH+eTjGkqyptLL6PEMAm3kXr+3w1NQjjOHsu
-	 npR4ZTWw/z2xg==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id EADD338111DD;
-	Wed, 18 Jun 2025 01:41:10 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1uRjfs-00000008vBP-0PFc;
+	Wed, 18 Jun 2025 03:41:21 +0000
+X-UUID: 15a328fe4bf611f09eb0dd999d3936bf-20250617
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=0mo63V3QovSHkpNE8wUbgfm1mAKC72zCbSTyRHS1N38=;
+	b=iC8+uMw+daTGob0NNqe25JWr1gmfaYe/do1VzhKVvzpFEnX+30gLRSI+4q42i8dQJDdU1a3WSGgQBJlB3rn0DrLoM9LY8/wBfhQnkVUfIrrjhDzYT0rmC2c11TBEOVdy/BGyuJVaZ6STDqLvk1kflG646eMUZ2ZCcjKvyJNGqzc=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.3,REQID:91bf011f-1534-4e78-9e9c-76bedcc71d45,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:09905cf,CLOUDID:3599cd58-abad-4ac2-9923-3af0a8a9a079,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102,TC:nil,Content:0|50,
+	EDM:-3,IP:nil,URL:99|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0
+	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 15a328fe4bf611f09eb0dd999d3936bf-20250617
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
+	(envelope-from <kuyo.chang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1836231241; Tue, 17 Jun 2025 20:41:14 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Wed, 18 Jun 2025 11:41:11 +0800
+Received: from [10.233.130.16] (10.233.130.16) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.1258.39 via Frontend
+ Transport; Wed, 18 Jun 2025 11:41:11 +0800
+Message-ID: <bbb9a1f3b796e8d7bd0010bf0f4862d67368516a.camel@mediatek.com>
+Subject: Re: [PATCH v2 1/1] sched/deadline: Fix dl_server runtime
+ calculation formula
+From: Kuyo Chang <kuyo.chang@mediatek.com>
+To: John Stultz <jstultz@google.com>
+CC: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>,
+	Juri Lelli <juri.lelli@redhat.com>, Vincent Guittot
+	<vincent.guittot@linaro.org>, Dietmar Eggemann <dietmar.eggemann@arm.com>,
+	Steven Rostedt <rostedt@goodmis.org>, Ben Segall <bsegall@google.com>, "Mel
+ Gorman" <mgorman@suse.de>, Valentin Schneider <vschneid@redhat.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Date: Wed, 18 Jun 2025 11:41:11 +0800
+In-Reply-To: <CANDhNCrUtLCU86hNk4qyfbqn9eXsmbzgzJCxYmXGRCko0r=VbQ@mail.gmail.com>
+References: <20250617155355.1479777-1-kuyo.chang@mediatek.com>
+	 <CANDhNCrUtLCU86hNk4qyfbqn9eXsmbzgzJCxYmXGRCko0r=VbQ@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.52.3-0ubuntu1 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH v2 0/5] net: use new GPIO line value setter callbacks
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <175021086974.3761578.16857215533657509710.git-patchwork-notify@kernel.org>
-Date: Wed, 18 Jun 2025 01:41:09 +0000
-References: <20250616-gpiochip-set-rv-net-v2-0-cae0b182a552@linaro.org>
-In-Reply-To: <20250616-gpiochip-set-rv-net-v2-0-cae0b182a552@linaro.org>
-To: Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: andrew@lunn.ch, olteanv@gmail.com, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- linus.walleij@linaro.org, chester.a.unal@arinc9.com, daniel@makrotopia.org,
- dqfext@gmail.com, sean.wang@mediatek.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, mkl@pengutronix.de,
- mailhol.vincent@wanadoo.fr, hkallweit1@gmail.com, linux@armlinux.org.uk,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-can@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, bartosz.golaszewski@linaro.org
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250617_204120_140073_3F410767 
+X-CRM114-Status: GOOD (  34.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,38 +92,187 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+On Tue, 2025-06-17 at 14:02 -0700, John Stultz wrote:
+>=20
+> External email : Please do not click links or open attachments until
+> you have verified the sender or the content.
+>=20
+>=20
+> On Tue, Jun 17, 2025 at 8:54=E2=80=AFAM Kuyo Chang <kuyo.chang@mediatek.c=
+om>
+> wrote:
+> >=20
+> > From: kuyo chang <kuyo.chang@mediatek.com>
+> >=20
+> > [Symptom]
+> > The calculation formula for dl_server runtime is based on
+> > Frequency/capacity scale-invariance.
+> > This will cause excessive RT latency (expect absolute time).
+> >=20
+> > [Analysis]
+> > Consider the following case under a Big.LITTLE architecture:
+> >=20
+> > Assume the runtime is: 50,000,000 ns, and Frequency/capacity
+> > scale-invariance defined as below:
+> >=20
+> > Frequency scale-invariance: 100
+> > Capacity scale-invariance: 50
+> > First by Frequency scale-invariance,
+> > the runtime is scaled to 50,000,000 * 100 >> 10 =3D 4,882,812
+> > Then by capacity scale-invariance,
+> > it is further scaled to 4,882,812 * 50 >> 10 =3D 238,418.
+> >=20
+> > So it will scaled to 238,418 ns.
+> >=20
+> > [Solution]
+> > The runtime for dl_server should be fixed time
+> > asis RT bandwidth control.
+> > Fix the runtime calculation formula for the dl_server.
+>=20
+> Thanks again for iterating on this patch! I've got a few minor nits
+> below.
+>=20
+> > Signed-off-by: kuyo chang <kuyo.chang@mediatek.com>
+> > Acked-by: Juri Lelli <juri.lelli@redhat.com>
+> > Suggested-by: Peter Zijlstra <peterz@infradead.org>
+> >=20
+> > v1:
+> > https://lore.kernel.org/all/20250614020524.631521-1-kuyo.chang@mediatek=
+.com/
+> >=20
+> > ---
+> > =C2=A0kernel/sched/deadline.c | 8 ++++++--
+> > =C2=A01 file changed, 6 insertions(+), 2 deletions(-)
+> >=20
+> > diff --git a/kernel/sched/deadline.c b/kernel/sched/deadline.c
+> > index ad45a8fea245..f68a158d01e9 100644
+> > --- a/kernel/sched/deadline.c
+> > +++ b/kernel/sched/deadline.c
+> > @@ -1504,7 +1504,9 @@ static void update_curr_dl_se(struct rq *rq,
+> > struct sched_dl_entity *dl_se, s64
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (dl_entity_is_special(dl_=
+se))
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 return;
+> >=20
+> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 scaled_delta_exec =3D dl_scaled_d=
+elta_exec(rq, dl_se,
+> > delta_exec);
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 scaled_delta_exec =3D delta_exec;
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (!dl_se->dl_server)
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 scaled_delta_exec =3D dl_scaled_delta_exec(rq, dl_se,
+> > delta_exec);
+>=20
+> Just a nit, but would
+> =C2=A0=C2=A0=C2=A0 if (!dl_server(dl_se))
+>=20
+> be a little cleaner/consistent with other readers?
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 dl_se->runtime -=3D scaled_d=
+elta_exec;
+> >=20
+> > @@ -1624,7 +1626,9 @@ void dl_server_update_idle_time(struct rq
+> > *rq, struct task_struct *p)
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (delta_exec < 0)
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 return;
+> >=20
+> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 scaled_delta_exec =3D dl_scaled_d=
+elta_exec(rq, &rq-
+> > >fair_server, delta_exec);
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 scaled_delta_exec =3D delta_exec;
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (!rq->fair_server.dl_server)
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 scaled_delta_exec =3D dl_scaled_delta_exec(rq, &rq-
+> > >fair_server, delta_exec);
+> >=20
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 rq->fair_server.runtime -=3D=
+ scaled_delta_exec;
+>=20
+Thanks for cleaner code suggestion, how about this?
 
-This series was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
 
-On Mon, 16 Jun 2025 09:24:03 +0200 you wrote:
-> Commit 98ce1eb1fd87e ("gpiolib: introduce gpio_chip setters that return
-> values") added new line setter callbacks to struct gpio_chip. They allow
-> to indicate failures to callers. We're in the process of converting all
-> GPIO controllers to using them before removing the old ones. This series
-> converts all GPIO chips implemented under drivers/net/.
-> 
-> Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-> 
-> [...]
+diff --git a/kernel/sched/deadline.c b/kernel/sched/deadline.c
+index f68a158d01e9..3ccffdf4dec6 100644
+--- a/kernel/sched/deadline.c
++++ b/kernel/sched/deadline.c
+@@ -1505,7 +1505,7 @@ static void update_curr_dl_se(struct rq *rq,
+struct sched_dl_entity *dl_se, s64
+ 		return;
+=20
+ 	scaled_delta_exec =3D delta_exec;
+-	if (!dl_se->dl_server)
++	if (!dl_server(dl_se))
+ 		scaled_delta_exec =3D dl_scaled_delta_exec(rq, dl_se,
+delta_exec);
+=20
+ 	dl_se->runtime -=3D scaled_delta_exec;
+@@ -1614,12 +1614,13 @@ static void update_curr_dl_se(struct rq *rq,
+struct sched_dl_entity *dl_se, s64
+ void dl_server_update_idle_time(struct rq *rq, struct task_struct *p)
+ {
+ 	s64 delta_exec, scaled_delta_exec;
++	struct sched_dl_entity *dl_se =3D &rq->fair_server;
+=20
+-	if (!rq->fair_server.dl_defer)
++	if (!dl_se->dl_defer)
+ 		return;
+=20
+ 	/* no need to discount more */
+-	if (rq->fair_server.runtime < 0)
++	if (dl_se->runtime < 0)
+ 		return;
+=20
+ 	delta_exec =3D rq_clock_task(rq) - p->se.exec_start;
+@@ -1627,14 +1628,14 @@ void dl_server_update_idle_time(struct rq *rq,
+struct task_struct *p)
+ 		return;
+=20
+ 	scaled_delta_exec =3D delta_exec;
+-	if (!rq->fair_server.dl_server)
+-		scaled_delta_exec =3D dl_scaled_delta_exec(rq, &rq-
+>fair_server, delta_exec);
++	if (!dl_server(dl_se))
++		scaled_delta_exec =3D dl_scaled_delta_exec(rq, dl_se,
+delta_exec);
+=20
+-	rq->fair_server.runtime -=3D scaled_delta_exec;
++	dl_se->runtime -=3D scaled_delta_exec;
+=20
+-	if (rq->fair_server.runtime < 0) {
+-		rq->fair_server.dl_defer_running =3D 0;
+-		rq->fair_server.runtime =3D 0;
++	if (dl_se->runtime < 0) {
++		dl_se->dl_defer_running =3D 0;
++		dl_se->runtime =3D 0;
+ 	}
+=20
+ 	p->se.exec_start =3D rq_clock_task(rq);
 
-Here is the summary with links:
-  - [v2,1/5] net: dsa: vsc73xx: use new GPIO line value setter callbacks
-    https://git.kernel.org/netdev/net-next/c/c73832445bf2
-  - [v2,2/5] net: dsa: mt7530: use new GPIO line value setter callbacks
-    https://git.kernel.org/netdev/net-next/c/4a03562794a3
-  - [v2,3/5] net: can: mcp251x: propagate the return value of mcp251x_spi_write()
-    https://git.kernel.org/netdev/net-next/c/b9e3c7af9e4d
-  - [v2,4/5] net: can: mcp251x: use new GPIO line value setter callbacks
-    https://git.kernel.org/netdev/net-next/c/5d31311715b5
-  - [v2,5/5] net: phy: qca807x: use new GPIO line value setter callbacks
-    https://git.kernel.org/netdev/net-next/c/dea3be40464a
+If it's ok, should I split it into two separate patches
+1.Fix dl_server runtime calculation formula
+2.cleaner code patch
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+or just submit it as a single patch?
 
+> I'm a little confused on the conditional here. Is
+> fair_server.dl_server ever not true (after the first call to
+> dl_server_start())?
+>=20
+For now, it's true.
+
+But based on our previous discussion,
+use the dl_server flag to identify and handle a 'fixed time' type of
+isolation.
+This approach makes it easier to extend and allows multiple servers to
+configure it as needed.
+
+> Also, in the discussion on your first version, it seemed there might
+> be a need for different servers to have different requirements, but
+> it
+> seemed like fair_server would always not want to be scaled.
+>=20
+> thanks
+> -john
 
 
