@@ -4,107 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CFB6C7115A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jun 2025 13:06:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E73ADC71157
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jun 2025 13:08:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hC/rxmNEx7lBs7LXqlf7wlayqnKtYiiYbKP9iLo7bEA=; b=VL12LsBgtcnOfOeh4DGspjRJ1v
-	eEjhdFSNniruOsFwRude5oXQSPa+aB9DSDE1P1z/NbBG3j+zO7iy7NdAv9Lqz6wNrvKuR6Fmtuefp
-	prRYhYBZI7lzAilErgxxhLPq2d9I94uOAWpUgYm1jYh75nF2SEEBzHPKDldiAqtmlImZaP3UP8u5i
-	FnEj4r/6v8P+TVo9nklW4SokmiRp03Dj93e0wo+U3MNXmFRTc4xH3Z9LA9oueZUt98s2bPBJ4Og2Q
-	V4odINC0Iu5a8k8zK89y9A+v8AocIIDSgxQVC3YPYIa52LSNEMkjzvWpvNYpcjarWdnskq2prxK6C
-	1TEr6EOw==;
+	bh=Dn2ph2mkRUbTFNZLkAEFvorPY5MaAM3g9LKeDgumlGU=; b=Rix7EZtox3DqHsC4jDf42aNp0Y
+	8h3huoMQ+saI4Xw8aCQBF5VPy7CdkLpU0z+fqDTxdi65XCG3frKxuksqE2fYYd1GG9WUUSDeHObBF
+	EmAtHGARAF7BD8kF5slE36gBZbLmC8odX4aGXjGTQNbo4RIbAc1+Amzr2pVe1IpZRv1pVSxg5R07l
+	BroOTQe64eOuRPJvH8Mi5NLkf77InLje9g/5n0BVSTDC2wbdXLwfeULENw/41wu96taenOROWQRtF
+	jQNS+QK3fSU7BayG+D/S8+dPdakE5DMH4uC0qsGcUJ9qhQom8IWN2wN8WnPwK39mT/jkSgpn7JVTR
+	4m0Zy70g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRsUT-0000000AE9l-1I3D;
-	Wed, 18 Jun 2025 13:06:09 +0000
-Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
+	id 1uRsWf-0000000AEWU-3hnb;
+	Wed, 18 Jun 2025 13:08:25 +0000
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRqws-00000009vs4-03sl
+	id 1uRr1c-00000009wrg-11Si
 	for linux-mediatek@lists.infradead.org;
-	Wed, 18 Jun 2025 11:27:24 +0000
-Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-54b10594812so7023436e87.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 18 Jun 2025 04:27:21 -0700 (PDT)
+	Wed, 18 Jun 2025 11:32:17 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-553a4f3ae42so5848501e87.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 18 Jun 2025 04:32:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1750246040; x=1750850840; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1750246334; x=1750851134; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=hC/rxmNEx7lBs7LXqlf7wlayqnKtYiiYbKP9iLo7bEA=;
-        b=pZiZPQBX8EJE7nz32SiRxA/TOBcim3s9/WCTO7cPUh8Q2MqJKj0tv38M7DRF34lx/A
-         JUI2JhN9tJEOFLeP6/YP/HGiqcp6qYyVifBm8RvI5IBSburIFWvC16EMwp8cFgF60eCu
-         X3EENXPsATqCG7U/fmoRJmFsHuoZEeiK3/Os28Hj5NiadA2SYQfnG1Vxi8KNsgkMEMYR
-         O8ogZn3IzBeYQSBMGCq3/GjEF2aUJWJzXTw+/KQQYG56xVrexe2k9IwNEz2iveTgAdBe
-         Jm+irj5tp+Zm3Sb1hSKYNF/YZMxhOc5QGHMPnuV2n+9iEBkXdixVMupsdC6lrmpnOXGU
-         EO1Q==
+        bh=Dn2ph2mkRUbTFNZLkAEFvorPY5MaAM3g9LKeDgumlGU=;
+        b=EKqWDH20QK05Yf9eqv9mZ/mNS0BQBJ1P/h0bxPKiQxuOKG5i4BoAF6+bltZm98KN2/
+         cVBI3Ng2yJqcmOiOEK2bKvQI9jeRYlgdF8a63E96WrjYzV/barOSz0576jPaFvMBkIiC
+         EJ+7W3yluJpq8u1VqCvOljHEw3eCcdokmuDYn/ODlzJl5l7LlqW/UBo9rvV5gR+s/bUc
+         pd+LMxhnwaKlBgh2LCsu9IxIsygyCVZJe4/PII1ZUablH+08t1RUht109xuNW6CTTr2i
+         dWBPcErxzoU4vHs8LMFcx8SIuPkmYtKRAIEWfmeSEjdSqqp9b6HOEodDUD0u0gCvOWEz
+         GJ8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750246040; x=1750850840;
+        d=1e100.net; s=20230601; t=1750246334; x=1750851134;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=hC/rxmNEx7lBs7LXqlf7wlayqnKtYiiYbKP9iLo7bEA=;
-        b=b5zmB83m8JjwfgJ6z96o3MIZRMAHjkgAZzxfza9tZjckXUqmzXZkeDp2ex46k8N+y8
-         XVxKzq7J9gXduSbH7EO6NYZlbMfaZy9I4oo4EL2Tqz0EC09v2JsipgjGDm/+wDe9Z3K3
-         xighJcw16WVpmJD3MOLgUmDLwtHMAzfuUiToTd9UniLrjXMdfz2NJoIWUwos3J6X5H3/
-         EYMQQUhnXjskhQKPHYODO+GtIO81aFUTGzMCf1pFAetJdRfbyUg2/xTNZI4kvcNS0NHK
-         EytMdw1GhUgF2bN0Eb/1BH3yeXtEimVhpmILUf4kQm5nGxXWv9aLb0XeC3s+jISkt3Ui
-         nnWw==
-X-Forwarded-Encrypted: i=1; AJvYcCW1x3AJ0GR1OzIz0C8RNr+muMaruHN8aNVgPADfbKGGy1K85+g6uyfc4b+R/bDu5bMrWsvd4GdwbVHvfLm0QQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw4NJm/KIfIqQBVzDT24f/QaX5/aRFFWFUyzXKwzZNZEJ4oOuDs
-	50kuyoX4TR3svrY1cF/tdN5rOsxXjstZfBF4t/DYK41SJaiajs3tXY2zilCxFE8P2pmCaCkymew
-	RfXyoLtrcQ+Rxw94As1ZvTTE4iMW8lBtIbyyXLHNrWg==
-X-Gm-Gg: ASbGncsroctRsiorEQjj7rAjxPdK19lTPbf3kXGlYyBkOHEXxbSpRMN3un4CKfAnCkj
-	bPEUkyqT3aCE4WyUb3+mtu+aReUmQ+QVJkoJoCFOXiHfhlhYYYvChzkgKIfNG+gDS1cAbmISQM3
-	2LmZ8MWCuoJglHtt3lZNxtFeighDJQEPvjUA/TF9mBHuU=
-X-Google-Smtp-Source: AGHT+IH9N3s8eV4QAoWcV3ZISC8T6rNpJ4leRaY7YHuJFlZ4bPXaxx7Hzh/4jfbIVAzp1tapzbe+4WLXZFpaeF/7BEk=
-X-Received: by 2002:a05:6512:39c8:b0:553:2bf7:77ac with SMTP id
- 2adb3069b0e04-553b6f15af6mr5016567e87.41.1750246040209; Wed, 18 Jun 2025
- 04:27:20 -0700 (PDT)
+        bh=Dn2ph2mkRUbTFNZLkAEFvorPY5MaAM3g9LKeDgumlGU=;
+        b=hIpaREk2y/s+upTXDOU4sMQV43WLeBXvd7YSWvfYAXURDzKpHLP46QMusm08ptKcsO
+         HamWsF1Y15iEW72IbrxYr2YbbZ+3k9zdUD5VFh0SG2UJToGj7pTQ+793ur2GwEpSsTUv
+         mQYd6HWy8bl37myhvc68z2L9HHJaQRe+l5sVpZHRgnNGbHinmlGsDJ7Rx5DUDJxs6obR
+         R30K+dEoHUDHW4IV112R05kmVis2vAF5QGa5FF3dOpL0tQgRTeogZepIxvYY5WNi5mPG
+         ujnUztz/esmQZe0TFQmHskI7JeQICUKBJLaLRwtG0OlUsykWt4sZ99mIwRqBayW7BK5U
+         Zozg==
+X-Forwarded-Encrypted: i=1; AJvYcCVlPsLl4BixCwcocsvwQHWe7V0k882PwsDGqj80p0zrUAra/y+3hLwjJlsPwMiYNXhOSzkSVDeZ3zevWnVapg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxX7UYxvPZduNBlREhP06/2gbq086o9pyh3HqXA6m27i4+oKVmQ
+	AlAZRwn0chYX7UWX0vUyCjlf51U5dfgDAbhmy4NFHR6g225Dkct9d/I4pOAC26UL0TXZSMPfE89
+	7RRhSduU7gYNlbrm5ZXWeWGm0sPK90nwt5WojSQw5gQ==
+X-Gm-Gg: ASbGncs0LGvrY7b+55a7Ozvc4QHK5msgZ+NX1m5iTHIFaIPDXFCBKWpV9X6FzwYZMM3
+	/PytJt5eUWVNo0dIHnDLaa/DALrZEx4n2/mBEsri6lIdIiFX3vxgHZ6sIIVzVmrBnmQRezt7veJ
+	iSe5Et79V/U+uWnFtPEF2tzF/8sf+OiWJb6/2j2G8q51c=
+X-Google-Smtp-Source: AGHT+IG/cXE1HQ3EEXy0cPSnaDLNTuKJgzCF0qLdhOb/5CcGOOw+a/DTjj5TWhlAS5cXMjlqM/mbx0AMV43GUJjmW2k=
+X-Received: by 2002:a05:6512:31d6:b0:553:2e4a:bb58 with SMTP id
+ 2adb3069b0e04-553b6e7337amr4658199e87.9.1750246334530; Wed, 18 Jun 2025
+ 04:32:14 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250611-pinctrl-const-desc-v2-0-b11c1d650384@linaro.org>
-In-Reply-To: <20250611-pinctrl-const-desc-v2-0-b11c1d650384@linaro.org>
+References: <20250611104348.192092-1-jirislaby@kernel.org> <20250611104348.192092-17-jirislaby@kernel.org>
+In-Reply-To: <20250611104348.192092-17-jirislaby@kernel.org>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Wed, 18 Jun 2025 13:27:09 +0200
-X-Gm-Features: AX0GCFuhKOslIDouO5PgG3-FBiOJa3cs6VfF8AgbesblIRkK52-2f8uLA9uvwos
-Message-ID: <CACRpkdb1YqS00tEeyAUTjjJ-EQQbH5wfE8QzZt-UFwQYCfNHRg@mail.gmail.com>
-Subject: Re: [PATCH v2 00/17] pinctrl: Constify pointers to 'pinctrl_desc' and more
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Basavaraj Natikar <Basavaraj.Natikar@amd.com>, Shyam Sundar S K <Shyam-sundar.S-k@amd.com>, 
-	Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
-	Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>, 
-	Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>, 
-	Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>, 
-	=?UTF-8?Q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, 
-	=?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Ray Jui <rjui@broadcom.com>, 
-	Scott Branden <sbranden@broadcom.com>, Geert Uytterhoeven <geert+renesas@glider.be>, 
-	David Rhodes <david.rhodes@cirrus.com>, Richard Fitzgerald <rf@opensource.cirrus.com>, 
-	Charles Keepax <ckeepax@opensource.cirrus.com>, Lorenzo Bianconi <lorenzo@kernel.org>, 
-	Sean Wang <sean.wang@kernel.org>, Jesper Nilsson <jesper.nilsson@axis.com>, 
-	Lars Persson <lars.persson@axis.com>, Damien Le Moal <dlemoal@kernel.org>, 
-	Vladimir Zapolskiy <vz@mleia.com>, Michal Simek <michal.simek@amd.com>, 
-	Emil Renner Berthing <kernel@esmil.dk>, Jianlong Huang <jianlong.huang@starfivetech.com>, 
-	Hal Feng <hal.feng@starfivetech.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+Date: Wed, 18 Jun 2025 13:32:03 +0200
+X-Gm-Features: AX0GCFvVR50_3aX2UCUBcxsZuxXj9BpNTfKCs9hxZHJvTphADGhBSjR3yjyWU08
+Message-ID: <CACRpkdYkgHzEnqN3VA2MqBChjtwjC+Fhem7Bo3PdnfGZQgQ99Q@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: Use dev_fwnode()
+To: "Jiri Slaby (SUSE)" <jirislaby@kernel.org>
+Cc: linux-kernel@vger.kernel.org, tglx@linutronix.de, 
+	Sean Wang <sean.wang@kernel.org>, linux-gpio@vger.kernel.org, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Manivannan Sadhasivam <mani@kernel.org>, 
-	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org, 
-	linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
-	linux-sound@vger.kernel.org, patches@opensource.cirrus.com, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@axis.com, 
-	linux-riscv@lists.infradead.org, linux-rtc@vger.kernel.org, 
-	linux-stm32@st-md-mailman.stormreply.com, 
-	Florian Fainelli <florian.fainelli@broadcom.com>
+	Ludovic Desroches <ludovic.desroches@microchip.com>, 
+	Nicolas Ferre <nicolas.ferre@microchip.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
+	Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Samuel Holland <samuel@sholland.org>, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250618_042722_065368_0295B3F8 
-X-CRM114-Status: GOOD (  10.24  )
+X-CRM114-CacheID: sfid-20250618_043216_276364_26DA5151 
+X-CRM114-Status: UNSURE (   9.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,28 +103,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 11, 2025 at 8:14=E2=80=AFAM Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> wrote:
+On Wed, Jun 11, 2025 at 12:44=E2=80=AFPM Jiri Slaby (SUSE) <jirislaby@kerne=
+l.org> wrote:
 
-> Changes in v2:
-> - Add Rb tags
-> - Patch #1: rephrase commit msg (Geert)
-> - Patch #2: fix/require dependency on OF
-> - Link to v1: https://lore.kernel.org/r/20250528-pinctrl-const-desc-v1-0-=
-76fe97899945@linaro.org
+> irq_domain_create_simple() takes fwnode as the first argument. It can be
+> extracted from the struct device using dev_fwnode() helper instead of
+> using of_node with of_fwnode_handle().
 >
-> Description:
-> ------------
-> In several drivers pointers to 'struct pinctrl_desc' is not modified, so
-> since core does not modify it, it can be made as const.
+> So use the dev_fwnode() helper.
 >
-> Dependencies/merging:
-> ---------------------
-> Patch #4 "pinctrl: Constify pointers to 'pinctrl_desc'" is a
-> prerequisite for all further patches, including RTC patch, therefore
-> probably everything should be via main pinctrl tree.
+> Signed-off-by: Jiri Slaby (SUSE) <jirislaby@kernel.org>
+> Cc: Sean Wang <sean.wang@kernel.org>
+> Cc: Linus Walleij <linus.walleij@linaro.org>
+> Cc: linux-gpio@vger.kernel.org
 
-Patches applied!
+Patch applied!
 
 Yours,
 Linus Walleij
