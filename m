@@ -4,64 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 069F9C71157
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jun 2025 07:55:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3865DC7115B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jun 2025 07:57:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3t9x0QJtja4DCzZdLaPNBsn/8hVoTJhyYvRLwmkOrgE=; b=DspO5jbJnHFvPRjMMp//CDYZef
-	PHx5BsGopr/nBGvu50qyYmC0ywugO2Hy32npQowBy/8RqprWAL9PefgriacvVuBOlUe3xtcAmx5vr
-	L+blTt88TXO8f4on9ud7CrDG/l6qjhrcj35fnf+MHcjgJn70d9fddljTe1tpAzzDYQ4rstO1RSgcU
-	kDPQN4D694O0j0E1FpI9ubyBJmbGMTspSM8gOYbyctLaNe/wnEZ6EcoD9Ui0Bbkwjkc//dkQY1HQ+
-	3Lf96NkSOnBs6fBubR7WSRE/OpJ4WDhGltGM3ugTi/t5czQ/doWHvtXhTxyRqEHuQggRu+hMp2kX3
-	qHgxQoqQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=aC64CEq1Onwzg7hQyJBpP3n73y+2vG8xqxjywocSUUI=; b=JoJJBX9qG/SBqGyhbXhBA55zi1
+	YddnV9HMO12Yx0AxmukMmjDT+vWUC18CHKr6K6jlqJo5dU73iC9+eVvIyKJpa4Q9m4wxaCVaeOAbP
+	iAC/s+qr6pPtx5mKSuAawUWJFGXPJV/tafgciA2GsLgYyZ6TwVpuU1LEefzwvRPdh+t4fBE5E6h6m
+	YPTFxVNPKRLcWcWdWlWFU8CKhCyAn/1h68RJYfG0K7WY5c8Li3qflFQJq9VV0vtpbAr0Gw9i7XFcQ
+	IxKM+IJofKJ7vg00pGWQ+zCRPpiPhygeSUXaO4oo1atBnrtXj1ViG7XjGUDBE1yI5KqrH4EM8gRPq
+	GmpWwc8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRnds-00000009LTK-0U9J;
-	Wed, 18 Jun 2025 07:55:32 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1uRng3-00000009Lop-0eFT;
+	Wed, 18 Jun 2025 07:57:47 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRnXK-00000009KU1-2265;
-	Wed, 18 Jun 2025 07:48:47 +0000
+	id 1uRnYQ-00000009Kal-0M1M;
+	Wed, 18 Jun 2025 07:49:55 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B52E045007;
-	Wed, 18 Jun 2025 07:48:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 43521C4CEE7;
-	Wed, 18 Jun 2025 07:48:45 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 8DF134A288;
+	Wed, 18 Jun 2025 07:49:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1D9BBC4CEE7;
+	Wed, 18 Jun 2025 07:49:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750232925;
-	bh=zmxmRAuGPbnBoWImjaQfSrdRisEJjiibW7+o0uMkNko=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=X4ZTWC+MQ2HneiK1Z1/U+4C8CiA96Jz5ldqrn8y+xTFQGtPGFvwo3X/8tMVLBpGQ+
-	 cTuWbi4Cvw1PUHn7X4lpo/rt2RSxTQRMBYTFkzr0MJBYXc0xpw6R1UEix/eNBoX3XW
-	 gUd9+Zm6vbS0dOQFYhAX72ARIkbo31U4N+oE/J3c1ubS98uunV4rbPcc0DEncHEFD1
-	 npHpPuWaTjMB0GlOrLMio1xvggAvpzmWyJRwO/2SqzSJQwK37uzzb6KLnqFHDwB1dK
-	 Y/jMjhyhsEM8VaLQXz+OZ3n5rg3CR63CMDnsgEpyXxN0JvYRB1HRrWr/NID7IeTvlQ
-	 Ar8mVnlIv/maA==
+	s=k20201202; t=1750232993;
+	bh=aC64CEq1Onwzg7hQyJBpP3n73y+2vG8xqxjywocSUUI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=FujFC+7Ahq84E2eCe+Iiou4DRzWv2GhCOKy0IPaIsSQypsdcoCFpIHGUboR85UBkm
+	 FvLILNyJOE7g/IDFE9scsVoaGTGPmbAYEHTLI0DDgydUhYlhYz8XNTmazgJGu6maGL
+	 sLstO3vI5FXbowGzjg2IDWMa9cWPTFyOuT4blRD2K17dPJljo2l3JR02ksGjsWwvpw
+	 dB8NXfC7BKglijPdr4A7aXSCdp9qLPZzk8O5WJwg/9KZJHO4/PG6I5EN22ral76jBS
+	 JAN163WWy4+TW+4GlIraP6DyBcNaAerYnA2/kS1S7mRb4Q0BZtUL5iiSa6NXqIIfBC
+	 1Xi8l+90P9WZg==
+Date: Wed, 18 Jun 2025 09:49:51 +0200
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Wed, 18 Jun 2025 09:48:05 +0200
-Subject: [PATCH net v3 2/2] net: airoha: Differentiate hwfd buffer size for
- QDMA0 and QDMA1
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+	Simon Horman <horms@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net-next v2 0/2] net: airoha: Improve hwfd
+ buffer/descriptor queues setup
+Message-ID: <aFJvnxVVM_sdSpKX@lore-desk>
+References: <20250616-airoha-hw-num-desc-v2-0-bb328c0b8603@kernel.org>
+ <20250617183244.641d9cd3@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250618-airoha-hw-num-desc-v3-2-18a6487cd75e@kernel.org>
-References: <20250618-airoha-hw-num-desc-v3-0-18a6487cd75e@kernel.org>
-In-Reply-To: <20250618-airoha-hw-num-desc-v3-0-18a6487cd75e@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Simon Horman <horms@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="v6JufC9cwr1xoEbW"
+Content-Disposition: inline
+In-Reply-To: <20250617183244.641d9cd3@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250618_004846_552371_B8019B6F 
-X-CRM114-Status: GOOD (  11.78  )
+X-CRM114-CacheID: sfid-20250618_004954_143551_48B2E3E7 
+X-CRM114-Status: UNSURE (   9.41  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,62 +78,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In oreder to reduce the required hwfd buffers queue size for QDMA1,
-differentiate hwfd buffer size for QDMA0 and QDMA1 and use 2KB for QDMA0
-and 1KB for QDMA1.
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+--v6JufC9cwr1xoEbW
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 1b7fd7ee0cbf3e1f7717110c70e9c5183fdd93d4..06dea3a13e77ce11f35dbd36966a34c5ef229c11 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -1068,14 +1068,15 @@ static int airoha_qdma_init_hfwd_queues(struct airoha_qdma *qdma)
- 	int size, index, num_desc = HW_DSCP_NUM;
- 	struct airoha_eth *eth = qdma->eth;
- 	int id = qdma - &eth->qdma[0];
-+	u32 status, buf_size;
- 	dma_addr_t dma_addr;
- 	const char *name;
--	u32 status;
- 
- 	name = devm_kasprintf(eth->dev, GFP_KERNEL, "qdma%d-buf", id);
- 	if (!name)
- 		return -ENOMEM;
- 
-+	buf_size = id ? AIROHA_MAX_PACKET_SIZE / 2 : AIROHA_MAX_PACKET_SIZE;
- 	index = of_property_match_string(eth->dev->of_node,
- 					 "memory-region-names", name);
- 	if (index >= 0) {
-@@ -1096,9 +1097,9 @@ static int airoha_qdma_init_hfwd_queues(struct airoha_qdma *qdma)
- 		/* Compute the number of hw descriptors according to the
- 		 * reserved memory size and the payload buffer size
- 		 */
--		num_desc = rmem->size / AIROHA_MAX_PACKET_SIZE;
-+		num_desc = div_u64(rmem->size, buf_size);
- 	} else {
--		size = AIROHA_MAX_PACKET_SIZE * num_desc;
-+		size = buf_size * num_desc;
- 		if (!dmam_alloc_coherent(eth->dev, size, &dma_addr,
- 					 GFP_KERNEL))
- 			return -ENOMEM;
-@@ -1111,9 +1112,10 @@ static int airoha_qdma_init_hfwd_queues(struct airoha_qdma *qdma)
- 		return -ENOMEM;
- 
- 	airoha_qdma_wr(qdma, REG_FWD_DSCP_BASE, dma_addr);
-+	/* QDMA0: 2KB. QDMA1: 1KB */
- 	airoha_qdma_rmw(qdma, REG_HW_FWD_DSCP_CFG,
- 			HW_FWD_DSCP_PAYLOAD_SIZE_MASK,
--			FIELD_PREP(HW_FWD_DSCP_PAYLOAD_SIZE_MASK, 0));
-+			FIELD_PREP(HW_FWD_DSCP_PAYLOAD_SIZE_MASK, !!id));
- 	airoha_qdma_rmw(qdma, REG_FWD_DSCP_LOW_THR, FWD_DSCP_LOW_THR_MASK,
- 			FIELD_PREP(FWD_DSCP_LOW_THR_MASK, 128));
- 	airoha_qdma_rmw(qdma, REG_LMGR_INIT_CFG,
+> On Mon, 16 Jun 2025 15:45:39 +0200 Lorenzo Bianconi wrote:
+> > Compute the number of hwfd buffers/descriptors according to the reserved
+> > memory size if provided via DTS.
+> > Reduce the required hwfd buffers queue size for QDMA1.
+>=20
+> Same question regarding target tree, FWIW
 
--- 
-2.49.0
+ack, fine. I will post v3 targeting net tree.
 
+Regards,
+Lorenzo
+
+--v6JufC9cwr1xoEbW
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaFJvnwAKCRA6cBh0uS2t
+rHwQAQDRWhuDKkooK+3SdVhoIcSjVlWNQW9cx1j+py4qwhHrxwD/REl0bOTp+6/n
+fZd/+nOnfqJphhHl2l5TM92s7tbawAI=
+=pcct
+-----END PGP SIGNATURE-----
+
+--v6JufC9cwr1xoEbW--
 
