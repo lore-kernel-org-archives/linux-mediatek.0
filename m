@@ -4,66 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96F7BC7115B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jun 2025 16:01:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BF27C71157
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jun 2025 16:08:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=trroXU93EYK0HpRYK6NyRWOhBYcZDpDonMFpc3M9xZg=; b=WwF7zgEJlJtXeV
-	NKL/OG+ydkVCRdu1f+kZpND7gC3jSc7xmvLrq9IgmHV0IVS5f4d0gBXouirNWeA6D9ZCfKOrlMCe7
-	hWJDYUVXoJHdWudLqh71xGTh1yzW/5sQy5eVIKqes54VpLBTU8qgicQzCK9FgWUqsKT0NWfe7p8Jf
-	wNPoqo7+wZbaYW5z15LtXA6pDHCbMFaxzPhjlhECXd6GRwQITUJPQ06S942h/sXej9u6qWdtl0atf
-	zMs/NdAtWMp5aRoAkAQ6Ysq0TZGTY8U+ai9JCJqxDg4sQpyTQSuhwOQt3cjLotlNRAS7Mr0MMUftQ
-	A7e/zYPUQ0tSHqYSs7Hg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=361/w2s39uIsBSkc/Vfv0lndyaZuHMALTiabihSnPGs=; b=Nfpw9hsDHiqNFRTeXU6TTdguPT
+	8k2bw+YcjMuW+o25LR45ra83GhksBXvnQ+k3fJ4NYbVo3B9bgSMRZYZMyDNyJNVQ+0b7DsG9phkzB
+	W7IvqaHi5xRnLyUurnMW9SYdx2TV2ALWfZbentSHm+IVPNYMn3vOIb6hLiWtd3FQZ5R1xj4Irjpsi
+	EA9EvYlDRIH/zBFHsq2YEXNjiK4D7BsCDjxOIgwnzq8wHt1GAIFfLCRQWFMmBmhBuoZm5udZf+JLX
+	JfZLXA8bbKoWvJ7CDNnVO1A+e7O1JEf/ZXAVgZfrk0XnZXoQ0w3qUxkG/9lrAry5Pe/m/8WnV2BLM
+	z7aiiiTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRvEZ-0000000Afeh-0V8f;
-	Wed, 18 Jun 2025 16:01:55 +0000
-Received: from mxout2.routing.net ([2a03:2900:1:a::b])
+	id 1uRvKc-0000000AgzO-05v9;
+	Wed, 18 Jun 2025 16:08:10 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRsVo-0000000AENH-3BMx;
-	Wed, 18 Jun 2025 13:07:34 +0000
-Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
-	by mxout2.routing.net (Postfix) with ESMTP id 8FE9C60254;
-	Wed, 18 Jun 2025 13:07:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1750252050;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=trroXU93EYK0HpRYK6NyRWOhBYcZDpDonMFpc3M9xZg=;
-	b=Y+zLjhmVUMhcz8Tz01Lw9TxB7+n2a23EDXs3CCikCe/CiRy9FHCs8otDeu1qNJX3QN53/z
-	hs2uFTs4Tr2C/nWP7VT/Lw1askSqXJYycdqzFdAgxhs5ObEAcyWIpwSEcCjxV8kkkeqTQn
-	lNHf5Ko61dZfd2YiJRrgZkMJzbtt2AM=
-Received: from frank-u24.. (fttx-pool-80.245.76.73.bambit.de [80.245.76.73])
-	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 54D7B122703;
-	Wed, 18 Jun 2025 13:07:30 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: Felix Fietkau <nbd@nbd.name>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [net-next v5 1/3] net: ethernet: mtk_eth_soc: support named IRQs
-Date: Wed, 18 Jun 2025 15:07:12 +0200
-Message-ID: <20250618130717.75839-2-linux@fw-web.de>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250618130717.75839-1-linux@fw-web.de>
-References: <20250618130717.75839-1-linux@fw-web.de>
+	id 1uRteR-0000000APn1-0tE2;
+	Wed, 18 Jun 2025 14:20:32 +0000
+X-UUID: 6138b8e84c4f11f09f706fa2197c6ceb-20250618
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=361/w2s39uIsBSkc/Vfv0lndyaZuHMALTiabihSnPGs=;
+	b=sDaHsAuqFAi5Cd4vH8mhpoAbQgBCSRaFcOwdbayC5+Ae9jw7nZYJ9WaXzX3YDggpfvY5P803+e6QX5tmXA51Zj4gTvOFJdj2+t+jvgG7cAo1glmq16ceJvgvMv+VvfhfZ/GSa3UF56r6jxs8tz+pK0vU7T+LQ+8qsk/uXGuxp/k=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.3,REQID:48b62bc8-eddd-40ae-98b4-fdae4bfae4c8,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:09905cf,CLOUDID:bc859928-fdd2-4021-9c0c-83548fdcf243,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102,TC:nil,Content:0|50,
+	EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
+	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 6138b8e84c4f11f09f706fa2197c6ceb-20250618
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
+	(envelope-from <kuyo.chang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2074375719; Wed, 18 Jun 2025 07:20:26 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Wed, 18 Jun 2025 22:20:22 +0800
+Received: from [10.233.130.16] (10.233.130.16) by mtkmbs13n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.1258.39 via Frontend
+ Transport; Wed, 18 Jun 2025 22:20:22 +0800
+Message-ID: <089882f95b1b910f7feecddd0ad9b17f38394c64.camel@mediatek.com>
+Subject: Re: [RFC PATCH 1/1] sched/deadline: Fix RT task potential
+ starvation when expiry time passed
+From: Kuyo Chang <kuyo.chang@mediatek.com>
+To: Juri Lelli <juri.lelli@redhat.com>
+CC: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>,
+	Vincent Guittot <vincent.guittot@linaro.org>, Dietmar Eggemann
+	<dietmar.eggemann@arm.com>, Steven Rostedt <rostedt@goodmis.org>, "Ben
+ Segall" <bsegall@google.com>, Mel Gorman <mgorman@suse.de>, "Valentin
+ Schneider" <vschneid@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, jstultz
+	<jstultz@google.com>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Date: Wed, 18 Jun 2025 22:20:23 +0800
+In-Reply-To: <aFAyN4rfssKmbUE5@jlelli-thinkpadt14gen4.remote.csb>
+References: <20250615131129.954975-1-kuyo.chang@mediatek.com>
+	 <aFAyN4rfssKmbUE5@jlelli-thinkpadt14gen4.remote.csb>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.52.3-0ubuntu1 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250618_060732_963851_03AE32D4 
-X-CRM114-Status: GOOD (  20.60  )
+X-CRM114-CacheID: sfid-20250618_072031_272277_BCCB6D22 
+X-CRM114-Status: GOOD (  23.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,98 +89,98 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, arinc.unal@arinc9.com, linux-kernel@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-mediatek@lists.infradead.org, Simon Horman <horms@kernel.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+On Mon, 2025-06-16 at 17:03 +0200, Juri Lelli wrote:
+>=20
+> External email : Please do not click links or open attachments until
+> you have verified the sender or the content.
+>=20
+>=20
+> Hello,
+>=20
+> >=20
+> > [Proposed Solution]:
+> > ------------------
+> > Instead of immediately re-enqueuing the DL entity on timer
+> > registration
+> > failure, this change ensures the DL entity is properly replenished
+> > and
+> > the timer is restarted, preventing RT potential starvation.
+> >=20
+> > Signed-off-by: kuyo chang <kuyo.chang@mediatek.com>
+> > ---
+> > =C2=A0kernel/sched/deadline.c | 8 +++++---
+> > =C2=A01 file changed, 5 insertions(+), 3 deletions(-)
+> >=20
+> > diff --git a/kernel/sched/deadline.c b/kernel/sched/deadline.c
+> > index ad45a8fea245..e50cb76c961b 100644
+> > --- a/kernel/sched/deadline.c
+> > +++ b/kernel/sched/deadline.c
+> > @@ -1556,10 +1556,12 @@ static void update_curr_dl_se(struct rq
+> > *rq, struct sched_dl_entity *dl_se, s64
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 }
+> >=20
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 if (unlikely(is_dl_boosted(dl_se) ||
+> > !start_dl_timer(dl_se))) {
+> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (dl_server(dl_se))
+> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0 enqueue_dl_entity(dl_se,
+> > ENQUEUE_REPLENISH);
+> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 else
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (dl_server(dl_se)) {
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0 replenish_dl_new_period(dl_se, rq);
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0 start_dl_timer(dl_se);
+>=20
+> But, even today, enqueue_dl_entity() is called with ENQUEUE_REPLENISH
+> flag, so I don't get why you say 're-enqueues the DL entity without
+> properly replenishing'.
+>=20
+> Also, why restarting the replenishing timer right after having
+> replenished the entity?
+>=20
 
-Add named interrupts and keep index based fallback for existing
-devicetrees.
+When dl_defer_running =3D 1 and the running time has been exhausted,=20
+it means that the dl_server should stop at this point.
+However, if start_dl_timer() returns a failure, it indicates that the
+actual time spent consuming the running time was unexpectedly long.=20
+=20
+At this point, there are two options:
+[as-is] 1. re-enqueuing the dl entity with ENQUEUE_REPLENISH will clear
+the throttled flag=20
+and re-enqueue the dl entity to keep the fair_server running.=20
+enqueue_dl_entity(dl_se, ENQUEUE_REPLENISH);
+=3D> replenish_dl_entity
+  =3D> replenish_dl_new_period(dl_se, rq);
+  =3D> dl_se->dl_yielded =3D 0;
+  =3D> dl_se->dl_throttled =3D 0;
+=3D> __enqueue_dl_entity(dl_se);
 
-Currently only rx and tx IRQs are defined to be used with mt7988, but
-later extended with RSS/LRO support.
+[to-be] 2. To avoid RT latency, the fair_server should remain throttled
+while replenishing the dl_se.=20
+Once replenishing is complete, we can ensure that a timer is
+successfully started.=20
+When the timer is triggered, the throttled state will be cleared,
+ensuring that RT tasks can execute during this interval.
+=20
+It is a policy decision for dealing with the case of failure in
+start_dl_timer().
+The second approach is better for real-time (RT) latency in my opinion,
+as RT tasks must be prioritized.
 
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-Reviewed-by: Simon Horman <horms@kernel.org>
----
-v5:
-- fix typo in description
-- add comments from previous patch #3 with changes suggested by simon
-
-v2:
-- move irqs loading part into own helper function
-- reduce indentation
-- place mtk_get_irqs helper before the irq_handler (note for simon)
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 46 ++++++++++++++++-----
- 1 file changed, 35 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index b76d35069887..39b673ed7495 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -3337,6 +3337,37 @@ static void mtk_tx_timeout(struct net_device *dev, unsigned int txqueue)
- 	schedule_work(&eth->pending_work);
- }
- 
-+static int mtk_get_irqs(struct platform_device *pdev, struct mtk_eth *eth)
-+{
-+	int i;
-+
-+	/* future SoCs beginning with MT7988 should use named IRQs in dts */
-+	eth->irq[1] = platform_get_irq_byname(pdev, "tx");
-+	eth->irq[2] = platform_get_irq_byname(pdev, "rx");
-+	if (eth->irq[1] >= 0 && eth->irq[2] >= 0)
-+		return 0;
-+
-+	/* legacy way:
-+	 * On MTK_SHARED_INT SoCs (MT7621 + MT7628) the first IRQ is taken
-+	 * from devicetree and used for both RX and TX - it is shared.
-+	 * On SoCs with non-shared IRQs the first entry is not used,
-+	 * the second is for TX, and the third is for RX.
-+	 */
-+	for (i = 0; i < 3; i++) {
-+		if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT) && i > 0)
-+			eth->irq[i] = eth->irq[0];
-+		else
-+			eth->irq[i] = platform_get_irq(pdev, i);
-+
-+		if (eth->irq[i] < 0) {
-+			dev_err(&pdev->dev, "no IRQ%d resource found\n", i);
-+			return -ENXIO;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
- static irqreturn_t mtk_handle_irq_rx(int irq, void *_eth)
- {
- 	struct mtk_eth *eth = _eth;
-@@ -5106,17 +5137,10 @@ static int mtk_probe(struct platform_device *pdev)
- 		}
- 	}
- 
--	for (i = 0; i < 3; i++) {
--		if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT) && i > 0)
--			eth->irq[i] = eth->irq[0];
--		else
--			eth->irq[i] = platform_get_irq(pdev, i);
--		if (eth->irq[i] < 0) {
--			dev_err(&pdev->dev, "no IRQ%d resource found\n", i);
--			err = -ENXIO;
--			goto err_wed_exit;
--		}
--	}
-+	err = mtk_get_irqs(pdev, eth);
-+	if (err)
-+		goto err_wed_exit;
-+
- 	for (i = 0; i < ARRAY_SIZE(eth->clks); i++) {
- 		eth->clks[i] = devm_clk_get(eth->dev,
- 					    mtk_clks_source_name[i]);
--- 
-2.43.0
+> Thanks,
+> Juri
+>=20
 
 
