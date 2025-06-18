@@ -4,58 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91C1DC7115D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jun 2025 19:11:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D963C7115E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jun 2025 19:11:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
 	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Bd5Oz0QcRTHeOq6fUu6c0Z1NcWn4wQETEI7MPv479G8=; b=t4LaWvR+GsglfY8BHgLDirjdTR
-	uuIrzvWAkwjXyyJpMM2LvmJw5+LYO30odcBQalYUuXOlkhNVa4P1dBstWS3qnxnDW0c2JKsKX/g4y
-	OTt88+0jyANbP2BnSlAoacQDxaqNljnueNbCCmTrRAjesmWD0LaMmvWPi0zRjgZbpMW/5GjDk7nYx
-	8BOQ1WE6DWWJT2oDLZvF/1yFk3dYdJWiQWspfR0MY84R1MCnBzy5xzeuY72gqKU7jqWsosuiK7y+o
-	Ix7ovGB7vQUZgFf/BOvsjXJs+hN+BZs2lpSWdL1uP6En4CAnA9cwg0DeU3uIAL/70l1YPNDoaxohB
-	MEKuDQAg==;
+	bh=eTsSA5tSG0BBeG/tO1836ylFVVkJ0QYKSkBxCV3iQpM=; b=LCORRGu36nvfu6SupYM5A2dZC/
+	FyB/Qkfv1ygBk+0iweXBPki3ao2T/qIyKXofcAr8G84hOsdMKr2j3ZCwcaECOtP7p+kNwSVVnHHj8
+	xxPp/Pp0dYnu8qBQyG+Dv6gNlSF7SmD37g0ZJ5MdvLCaO6b8eSLDpewx4VgGS7YZ3yHhooS4SahHD
+	fskGf5O7OfDXgiCHN0QNQyIUpw1AZTyeLqLRw4KVFY92cmGLGrIjbuHmXLvTZS9L3/B+hUh011Y7S
+	9piDMo8ngL7d64NUkxGbhbOHYGk6hdVaKNEQc8y9kxrfdHPS+O3iZZtOMS0mQCAfWXC8hNPPoNfPZ
+	ONDrI/sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRyCN-0000000BA2F-23Fs;
-	Wed, 18 Jun 2025 19:11:51 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uRyCP-0000000BA6e-3iue;
+	Wed, 18 Jun 2025 19:11:53 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRwji-0000000AsUR-03vq;
-	Wed, 18 Jun 2025 17:38:11 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E0D234A96F;
-	Wed, 18 Jun 2025 17:38:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 640D9C4CEEF;
-	Wed, 18 Jun 2025 17:38:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750268288;
-	bh=i76VuE3Aq3hkZ2sq2815FwgqFtHsSev/sM8xJboxVA0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Gy4wyw7Y974jROrWoiVVP96W7MZfhfIw26Rom0+USF/ynDOVUyhqKUnvQnPHJRnJX
-	 h9hkcAVWDmBqr6TbFW9u5tuscOsfQGmBfBsVzL3higBrMyKjGt4XMyyI2/HKnAMOHl
-	 HyKkYg3mn+1yv778lVizhJZGsODXA/gPUMhgeuWn+xFUeoczWAn7rFYBH277UjiM2e
-	 jq8XzslfshPrL7m4JM+Al4ry31QX0n5EJW+S/5YiGxlmv0eqtE1uY75IQQEgUwHqxc
-	 y/qhRviqh/RTh26cf7OpNuWbhs0k0kihiHk9N/je41BR7VYiNzFaY4zwfoY8MM9vU4
-	 NwSVJi031yZBw==
-Date: Wed, 18 Jun 2025 12:38:07 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
+	id 1uRwne-0000000Atc9-12Pl;
+	Wed, 18 Jun 2025 17:42:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=eTsSA5tSG0BBeG/tO1836ylFVVkJ0QYKSkBxCV3iQpM=; b=gqcyXCKAIjcERbqUt1Ljgjsk0p
+	3h6fxO0etkd70l/E21ZfcZ45FWeA/IFIuOtBqiyOIRE0/bKzDpMLSBQBFgsViCMjvoayPIaiyz4DN
+	kjkzLI8vgbewwVzsUDgP/+TCmo8KFLJyJddjOBNk+5+OVbrYVha1Co7eq3M0i3V8HSPHo4U7UHm1p
+	TcbWrtj9/mVSTxDaOtM67HZa56xrIy+GPxGYqNr1t5s4KEpax2D111d5ZlWO5Rv4hcC/wAvjQ9VsI
+	GUrjRAMsivP1e18oNpApsVVEsSuneLs8l3kOJSgoSDLioF/+6kcY1CF89IrH3gfQEwod6AamJO4ce
+	ZNa8lGYw==;
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uRwnb-00000004Eax-3SdL;
+	Wed, 18 Jun 2025 17:42:13 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.98.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1uRwez-000000004uy-0gef;
+	Wed, 18 Jun 2025 17:41:59 +0000
+Date: Wed, 18 Jun 2025 19:41:50 +0200
+From: Daniel Golle <daniel@makrotopia.org>
 To: Frank Wunderlich <linux@fw-web.de>
-Subject: Re: [PATCH v4 01/13] dt-bindings: net: mediatek,net: update for
- mt7988
-Message-ID: <175026826312.2322513.8876769837630455596.robh@kernel.org>
-References: <20250616095828.160900-1-linux@fw-web.de>
- <20250616095828.160900-2-linux@fw-web.de>
+Subject: Re: [net-next v5 3/3] net: ethernet: mtk_eth_soc: skip first IRQ if
+ not used
+Message-ID: <aFL6XhghHobju0th@pidgin.makrotopia.org>
+References: <20250618130717.75839-1-linux@fw-web.de>
+ <20250618130717.75839-4-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250616095828.160900-2-linux@fw-web.de>
+In-Reply-To: <20250618130717.75839-4-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250618_103810_072464_D49BA585 
-X-CRM114-Status: GOOD (  13.59  )
+X-CRM114-CacheID: sfid-20250618_184211_927639_B39001BF 
+X-CRM114-Status: GOOD (  29.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,36 +72,108 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Conor Dooley <conor+dt@kernel.org>, Daniel Golle <daniel@makrotopia.org>, Eric Dumazet <edumazet@google.com>, linux-pm@vger.kernel.org, Chanwoo Choi <cw00.choi@samsung.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, Johnson Wang <johnson.wang@mediatek.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, devicetree@vger.kernel.org, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Jia-Wei Chang <jia-wei.chang@mediatek.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Kyungmin Park <kyungmin.park@samsung.com>, Georgi Djakov <djakov@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, Felix Fietkau <nbd@nbd.name>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>, arinc.unal@arinc9.com, linux-mediatek@lists.infradead.org, Simon Horman <horms@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Mon, 16 Jun 2025 11:58:11 +0200, Frank Wunderlich wrote:
+On Wed, Jun 18, 2025 at 03:07:14PM +0200, Frank Wunderlich wrote:
 > From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> Update binding for mt7988 which has 3 gmac and 2 reg items.
-> 
-> With RSS-IRQs the interrupt max-items is now 6. Add interrupt-names
-> to make them accessible by name.
+> On SoCs without MTK_SHARED_INT capability (all except mt7621 and
+> mt7628) platform_get_irq() is called for the first IRQ (eth->irq[0])
+> but it is never used.
+
+I know that technically MTK_SHARED_INT is a capability flag, but it's
+rather a non-capability. Hardware having dedicated interrupts for RX and
+TX is "more capable" than (older, legacy) hardware with just one shared
+interrupt for both...
+
+So maybe better:
+"On SoCs with dedicated RX and TX interrupts (all except MT7621 and
+MT7628) ..."
+
+Reading the datasheet of some recent MediaTek SoC it is worth
+noting that there are 4 interrupts assigned to the frame engine and
+the FE_INT_GRP register can be used to assign functions to them.
+
+So technically, calling them RX and TX in DT is wrong, becaues they
+are fe_int0, fe_int1, fe_int2 and fe_int3, which are then assigned
+one or more functions by the driver using that FE_INT_GRP register.
+
+However, it's the driver then assigns QDMA TX to fe_int1 and RX to
+fe_int2 while leaving fe_int0 and fe_int3 unsued.
+
+That's what the magic value 0x21021000 which is written to FE_INT_GRP
+register does.
+
+On MT7988 and newer, in addition to those 4 frame engine interrupts
+there are **another 4** interrupts for PDMA, typically used to
+service 4 RX rings while one of the fe_int* is used to indicate
+TX done.
+
+> Skip the first IRQ and reduce the IRQ-count to 2.
 > 
 > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 > ---
+> v5:
+> - change commit title and description
 > v4:
-> - increase max interrupts to 8 because of RSS/LRO interrupts
-> - dropped Robs RB due to this change
-> - allow interrupt names
-> - add interrupt-names without reserved IRQs on mt7988
->   this requires mtk driver patch:
->   https://patchwork.kernel.org/project/netdevbpf/patch/20250616080738.117993-2-linux@fw-web.de/
-> 
-> v2:
-> - change reg to list of items
+> - drop >2 condition as max is already 2 and drop the else continue
+> - update comment to explain which IRQs are taken in legacy way
 > ---
->  .../devicetree/bindings/net/mediatek,net.yaml | 28 ++++++++++++++++---
->  1 file changed, 24 insertions(+), 4 deletions(-)
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 12 ++++++++----
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.h |  4 ++--
+>  2 files changed, 10 insertions(+), 6 deletions(-)
 > 
+> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> index 875e477a987b..7990c84b2b56 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> @@ -3354,10 +3354,14 @@ static int mtk_get_irqs(struct platform_device *pdev, struct mtk_eth *eth)
+>  	 * the second is for TX, and the third is for RX.
+>  	 */
+>  	for (i = 0; i < MTK_FE_IRQ_NUM; i++) {
+> -		if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT) && i > 0)
+> -			eth->irq[i] = eth->irq[MTK_FE_IRQ_SHARED];
+> -		else
+> -			eth->irq[i] = platform_get_irq(pdev, i);
+> +		if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT)) {
+> +			if (i == 0)
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+This would make it even more readable:
+			if (i == MTK_FE_IRQ_SHARED)
 
+
+Other than that looks good to me:
+
+Reviewed-by: Daniel Golle <daniel@makrotopia.org>
+
+> +				eth->irq[MTK_FE_IRQ_SHARED] = platform_get_irq(pdev, i);
+> +			else
+> +				eth->irq[i] = eth->irq[MTK_FE_IRQ_SHARED];
+> +		} else {
+> +			eth->irq[i] = platform_get_irq(pdev, i + 1);
+> +		}
+>  
+>  		if (eth->irq[i] < 0) {
+>  			dev_err(&pdev->dev, "no IRQ%d resource found\n", i);
+> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+> index 8cdf1317dff5..9261c0e13b59 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+> @@ -643,8 +643,8 @@
+>  #define MTK_MAC_FSM(x)		(0x1010C + ((x) * 0x100))
+>  
+>  #define MTK_FE_IRQ_SHARED	0
+> -#define MTK_FE_IRQ_TX		1
+> -#define MTK_FE_IRQ_RX		2
+> +#define MTK_FE_IRQ_TX		0
+> +#define MTK_FE_IRQ_RX		1
+>  #define MTK_FE_IRQ_NUM		(MTK_FE_IRQ_RX + 1)
+>  
+>  struct mtk_rx_dma {
+> -- 
+> 2.43.0
+> 
+> 
 
