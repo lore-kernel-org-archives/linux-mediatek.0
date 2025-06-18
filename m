@@ -4,65 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1F94C71157
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jun 2025 17:33:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3BCFC71157
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jun 2025 18:01:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VDeTpQ4QaePlaHR+35lToDv+5wtBgSaX0308LTxujqs=; b=v/9fBqn5AhgPtwOU6T/c9JEWl/
-	E9lH0Gu8N3pCPSCuvYAyD85yI3YZvhcSZQlkPtcsO05fzB5q5cbrVemp9SkXvL1UiDrtc4k9/GG2d
-	XIxKB02AbtnmpNmBpC+F1JG6pso+Re3NZx3odnqjak2XFKqJ0p4jkRxE02X8JVOuwDPPXGbOYqgPg
-	glc7e45eAZaxv+Gy8CD5L0NXQZ9LrDt0qlkeJOKjvgeKEGPU7k1pZYUc6UY/vZTdPOp2+1U8T2Gxj
-	3R30497IdPvsaabURNe61kP9kusyJ94fi6KurgebH7pkVwFbDC3/PKjslzjUTWxJ/BE+sU/xln4jv
-	SWDLPoaQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=N7tr9vCzas4Dcx7c2Tgeu4LP6gHZKQuy1GdaO/TFlr4=; b=uGfXEgV7Zn/zNV
+	/efK2yzG7JkLiXF2706aGA+6EQcQwkeqEiNYytIp8IWMYmF47ahDVHN5D+vfZfY/IMdfnTrHVgrlW
+	yOlHeY/LPOktehf4l3HusvOD3HGt25ssSPdluxGb/m+wUpyiwstX2nBf/6eNT3su12+TwQ9igsLO9
+	Xeb9wqpp+gcqc2HkBwvQ9j+yb52e4fcXlic7Ro0fq4A9qGsszox01rllgekJp7OeeWUfAZDcb7DZw
+	zdpfEkO1+O3VlXmN/mGdLT0n74K6gZml4001+LbvFq8EzLFmt7n7azMT1fZfzLSJ04G6QTiqomHOy
+	Fs32sgMGrDYPll6o9Ibg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRwfM-0000000As0z-3ZGN;
-	Wed, 18 Jun 2025 17:33:40 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1uRx6g-0000000B0jH-3r1e;
+	Wed, 18 Jun 2025 18:01:54 +0000
+Received: from mxout1.routing.net ([2a03:2900:1:a::a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRvl8-0000000AjzL-2THF;
-	Wed, 18 Jun 2025 16:35:36 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id B6EF3A52440;
-	Wed, 18 Jun 2025 16:35:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9EAB9C4CEE7;
-	Wed, 18 Jun 2025 16:35:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750264533;
-	bh=TxFe6c1htu78AlW8pSUBk042YOu73xddSRufqG/XuNc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=WS+err14mKEvX/jOQ7z+Q/9qJWhYAW+QCzvtnLbtokjl7vebb6NXqf6S0Qy309PZt
-	 /7XQ8RnBI5uBdAOy0iloelLIeCQSgiilX75/R0/IMwb1jt62+bJErtxLp3cfaZe/h9
-	 WCVvqs3WhaEyR7LYHfbhnh7Xm2m+VHZp2lK4DPry5O+s/pwPpTZz1htzJvuzTH1quh
-	 IlIn6AIcuntaqt3eULW4nzdW4L/Z7Y4l8pwSd2Cusg/wvMSZoOBg0vieFjgLaVJfxl
-	 nsGWGokJDh4OF+HESnd335gCIaql6LQQB6Ac1OB16nhKHj8L6Ee/Tnvi/cbrv0YU+9
-	 nukvYHw9U8Ahw==
-Date: Wed, 18 Jun 2025 17:35:29 +0100
-From: Simon Horman <horms@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net v3 2/2] net: airoha: Differentiate hwfd buffer size
- for QDMA0 and QDMA1
-Message-ID: <20250618163529.GS1699@horms.kernel.org>
-References: <20250618-airoha-hw-num-desc-v3-0-18a6487cd75e@kernel.org>
- <20250618-airoha-hw-num-desc-v3-2-18a6487cd75e@kernel.org>
+	id 1uRu7E-0000000AUy7-1IWZ;
+	Wed, 18 Jun 2025 14:50:17 +0000
+Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
+	by mxout1.routing.net (Postfix) with ESMTP id 3474E41ADE;
+	Wed, 18 Jun 2025 14:50:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1750258214;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=N7tr9vCzas4Dcx7c2Tgeu4LP6gHZKQuy1GdaO/TFlr4=;
+	b=Nbknur+18KqPDja5RX/s65/bE/pPe42K7+j6BqbbBZ2lfnz1+IlheE52B92cm6xDpE+eM3
+	+1J2JXUED1AfYvVCBLE/WbHiocrItKJfci05mR4apGeGPAdDixOTM5mR2MMA0ap8wmz/zh
+	dXnO3+qaeB8OGQJndQ74liL4RhdsOEM=
+Received: from [127.0.0.1] (fttx-pool-80.245.76.73.bambit.de [80.245.76.73])
+	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 0453F360048;
+	Wed, 18 Jun 2025 14:50:12 +0000 (UTC)
+Date: Wed, 18 Jun 2025 16:50:13 +0200
+From: Frank Wunderlich <linux@fw-web.de>
+To: Daniel Golle <daniel@makrotopia.org>
+Subject: Re: [net-next v5 1/3] net: ethernet: mtk_eth_soc: support named IRQs
+User-Agent: K-9 Mail for Android
+In-Reply-To: <aFLFYe8mq4tbLfdf@pidgin.makrotopia.org>
+References: <20250618130717.75839-1-linux@fw-web.de> <20250618130717.75839-2-linux@fw-web.de> <aFLFYe8mq4tbLfdf@pidgin.makrotopia.org>
+Message-ID: <601853CD-F47A-452A-87AC-668E73A3E971@fw-web.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250618-airoha-hw-num-desc-v3-2-18a6487cd75e@kernel.org>
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Mail-ID: e609ebad-906a-455e-bb64-4bc71f18ceb5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250618_093534_691833_1AAD5A6F 
-X-CRM114-Status: UNSURE (   9.29  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250618_075016_509270_E0028460 
+X-CRM114-Status: GOOD (  13.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,23 +69,64 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>, arinc.unal@arinc9.com, linux-mediatek@lists.infradead.org, Simon Horman <horms@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 18, 2025 at 09:48:05AM +0200, Lorenzo Bianconi wrote:
-> In oreder to reduce the required hwfd buffers queue size for QDMA1,
+Am 18=2E Juni 2025 15:55:45 MESZ schrieb Daniel Golle <daniel@makrotopia=2E=
+org>:
+>On Wed, Jun 18, 2025 at 03:07:12PM +0200, Frank Wunderlich wrote:
+>> From: Frank Wunderlich <frank-w@public-files=2Ede>
+>>=20
+>> Add named interrupts and keep index based fallback for existing
+>> devicetrees=2E
+>>=20
+>> Currently only rx and tx IRQs are defined to be used with mt7988, but
+>> later extended with RSS/LRO support=2E
+>>=20
+>> Signed-off-by: Frank Wunderlich <frank-w@public-files=2Ede>
+>> Reviewed-by: Simon Horman <horms@kernel=2Eorg>
+>> =20
+>> +static int mtk_get_irqs(struct platform_device *pdev, struct mtk_eth *=
+eth)
+>> +{
+>> +	int i;
+>> +
+>> +	/* future SoCs beginning with MT7988 should use named IRQs in dts */
+>> +	eth->irq[1] =3D platform_get_irq_byname(pdev, "tx");
+>> +	eth->irq[2] =3D platform_get_irq_byname(pdev, "rx");
+>> +	if (eth->irq[1] >=3D 0 && eth->irq[2] >=3D 0)
+>> +		return 0;
+>
+>I'd rather extend that logic and fall back to the legacy way only in case
+>of -ENXIO=2E Ie=2E add here:
+>
+>if (eth->irq[1] !=3D -ENXIO)
+>	return eth->irq[1];
+>
+>if (eth->irq[2] !=3D -ENXIO)
+>	return eth->irq[2];
 
-nit: order
+I would do this later after the consts are used
+ instead of index numbers,just to not add lines
+ that are changed later again=2EBetter adding the
+ lines already with the consts=2E
 
-> differentiate hwfd buffer size for QDMA0 and QDMA1 and use 2KB for QDMA0
-> and 1KB for QDMA1.
+>Maybe also output a warning at this point in case MTK_SHARED_INT is no
+>set, to recommend users to update their device tree to named interrupts=
+=2E
 
-I think this patch description could benefit from explaining the why.
+I understand the reason behind (documentation
+ which irq is used for which purpose),but
+ previous devicetrees of non-shared SoCs using
+ at least the reserved irq 0=2E Mt7986 has 0 and 3
+ defined in dts=2E That could be tricky in binding,
+ so my way was starting with irq names now for
+ new additions and leaving existing dts as they
+ are=2E
 
-> 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Maybe i should add the mt7988 ethernet binding change from my dts series h=
+ere=2E=2E=2E
 
-Code changes look good to me.
-
-...
+regards Frank
 
