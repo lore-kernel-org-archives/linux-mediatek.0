@@ -4,80 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECB20C7115A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jun 2025 17:01:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F30BC71157
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jun 2025 17:16:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6TAtb5+WwQF8Qk8Et8Rzp5oL8SQyUzBDnJHXSFDwr3A=; b=BJEPK509lUNJp/cUlWGaWmF837
-	bMqrBGTsKbiDCAkeiQYq/mFQPlgFERKgJGYFwGLPYm/c9LIDPqRU4fOfDOZxxQ34UsK50HvQhALYp
-	9t5o9mQ6GuBS/hSa9XIgm4Xpw0HkIo1884YEPgwFEQ2N1DTywXFqE8kvCKCWBoKjtd9JdTdO5kL22
-	d348YJCPwDW2JUW3zXeTvA49DSdSObHp0jjVWltC80YdhmOlI0xutYESLgSEo8hESxJRKb8GXTKhv
-	sZLQioRgURZnwgeJ6JX/pX6lxf8NmSD/xQ7Ql12B0Q2/NaOtmHTLbbLIsdGLGoKTHbXhhlbMLbovW
-	PLQsKQMA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=R8TYFDiksgklK5x53zlk7GXLxBUpXGWS8/QWLup/HFY=; b=V0cfybI0pJkEuW
+	1Gd7ar3H4TgsIpV2XyWBDrLUsfImpOUlVOip5J/xFAohYcA9dsoA5o8diTv7EOpk7LRlgAiui7U29
+	aJRPsr7BxZO04n4DYY6HH8HW2z7IDe0G188Bxu24w9BU4IpztiilsH7S9YyrSk/urrTuy2ywPsuWW
+	YNLCVbdcZAEm1JvCey3rojK3Tt1pQggQ2+7jNYVKZtOASnP4JU4K7Qeju40sdgbzrfxIq9NFUKglP
+	G6ZZmGcMEXRZDo3qFvsE4+RLIEmf/oPBDVQpRtg2HzFRkrOv+lyfa4w43a2veVEhh3bm4K1ZTm5CW
+	oEaTp/mHebJM+0sB+pOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRw9t-0000000AnTt-25m9;
-	Wed, 18 Jun 2025 17:01:09 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uRwP8-0000000ApBl-0RmN;
+	Wed, 18 Jun 2025 17:16:54 +0000
+Received: from mxout2.routing.net ([2a03:2900:1:a::b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRuSG-0000000AYWj-114Q;
-	Wed, 18 Jun 2025 15:12:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=6TAtb5+WwQF8Qk8Et8Rzp5oL8SQyUzBDnJHXSFDwr3A=; b=YMQ5DLQE93ges3zM2lG2Xrqcd3
-	w/XoBQ7+/X9PJHl91QRQiJly0pG2GxthYef3RCfoCGKG9mM7lHy93JmbRYYbX6w7bc0dMYJ0TDiBW
-	5MqKGj0dmEicBvvU1wGAgN22P4+yQv32Tuto7OOd3WzFL9RLyulPS5le3kCMd7LlL6WZLYPaH/O38
-	i0PxIctXsUZo1WjC7In+Pf+bcz2sgBo9T6rdJ0FBUCW4NungHh9MLWm1idZe/jjM6fyFk6vakAHMD
-	O2nhxr2MwsGjG3WpIY7M3sGkGxJPoF1AQl1tLYK+6ttfE6EFKhwfpHQBKn1VEmOQ5fqcEwIQZ38am
-	w+TIqaaw==;
-Received: from dfw.source.kernel.org ([139.178.84.217])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRuSD-000000048a6-33BH;
-	Wed, 18 Jun 2025 15:11:59 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 0C4FC5C4D68;
-	Wed, 18 Jun 2025 15:09:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1B024C4CEF0;
-	Wed, 18 Jun 2025 15:11:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750259513;
-	bh=Wzjwsii8yfmolxkQkAgPYhRM7Z6/qgUkeAnXTcoCpI8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=lt1GhWFdXGvw/76cv1ejyxtlWvo27KOCHf7dFV6dHavnMPdRL4A/VL1rB5aOiplVh
-	 dLY7uNPH/1/fdcngFvNd8+pdFr6c9+mKgxsvKjJ8rvjJeMkcUe49vyEQ9EP5KAv7gW
-	 sCtbdbiPHGCdMRnb9TLNI5n94cjLq9YSD64VZYnF4tK/lr2VjwBCPJ4wVBl/vF3Xph
-	 oOktN++khB2MAHlHz2BMV9LPHJOSHPOYgVfrk14Hj7APsG3qzBh8MTKpx7xRXkDIYk
-	 SwAhiSwGAGRccJtMIoRPKEjzJ0kpuvi128kKL9YlpASiEFmZjNz6VycDMJvrmcV5Fs
-	 qxrJr5FvyHVdw==
-Date: Wed, 18 Jun 2025 11:11:51 -0400
-From: Sasha Levin <sashal@kernel.org>
-To: Johan Hovold <johan@kernel.org>
-Cc: patches@lists.linux.dev, stable@vger.kernel.org,
-	Brian Norris <briannorris@chromium.org>,
-	Thomas Gleixner <tglx@linutronix.de>, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Aleksandrs Vinarskis <alex.vinarskis@gmail.com>
-Subject: Re: [PATCH AUTOSEL 6.15 092/110] genirq: Retain disable depth for
- managed interrupts across CPU hotplug
-Message-ID: <aFLXN5Rbx_egQBeB@lappy>
-References: <20250601232435.3507697-1-sashal@kernel.org>
- <20250601232435.3507697-92-sashal@kernel.org>
- <aELf3QmuEJOlR7Dv@hovoldconsulting.com>
+	id 1uRsVp-0000000AENM-120R;
+	Wed, 18 Jun 2025 13:07:35 +0000
+Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
+	by mxout2.routing.net (Postfix) with ESMTP id 185E260300;
+	Wed, 18 Jun 2025 13:07:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1750252051;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=R8TYFDiksgklK5x53zlk7GXLxBUpXGWS8/QWLup/HFY=;
+	b=GRVyP+7XYwHbXbkkIjsdwALJCy1LgQQ4gMFDDlrU8flaPcT0imKCGtA714W+91mShFL2xh
+	+M7y+joguRtaK1mrIkaqVgxwRzG7/VHtrgYLkUnrBCFgARcWU8HrLWFQdLYBsr1pvp31qZ
+	EraoDOvtRLRFGuY7igtcnnwxmgz81m4=
+Received: from frank-u24.. (fttx-pool-80.245.76.73.bambit.de [80.245.76.73])
+	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id D31F2122703;
+	Wed, 18 Jun 2025 13:07:30 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: Felix Fietkau <nbd@nbd.name>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [net-next v5 3/3] net: ethernet: mtk_eth_soc: skip first IRQ if not used
+Date: Wed, 18 Jun 2025 15:07:14 +0200
+Message-ID: <20250618130717.75839-4-linux@fw-web.de>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250618130717.75839-1-linux@fw-web.de>
+References: <20250618130717.75839-1-linux@fw-web.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii; format=flowed
-Content-Disposition: inline
-In-Reply-To: <aELf3QmuEJOlR7Dv@hovoldconsulting.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250618_161157_961210_37128F1A 
-X-CRM114-Status: GOOD (  15.37  )
+X-CRM114-CacheID: sfid-20250618_060733_430963_AE90E05D 
+X-CRM114-Status: GOOD (  16.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,60 +75,68 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, arinc.unal@arinc9.com, linux-kernel@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-mediatek@lists.infradead.org, Simon Horman <horms@kernel.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 06, 2025 at 02:32:29PM +0200, Johan Hovold wrote:
->On Sun, Jun 01, 2025 at 07:24:14PM -0400, Sasha Levin wrote:
->> From: Brian Norris <briannorris@chromium.org>
->>
->> [ Upstream commit 788019eb559fd0b365f501467ceafce540e377cc ]
->>
->> Affinity-managed interrupts can be shut down and restarted during CPU
->> hotunplug/plug. Thereby the interrupt may be left in an unexpected state.
->> Specifically:
->>
->>  1. Interrupt is affine to CPU N
->>  2. disable_irq() -> depth is 1
->>  3. CPU N goes offline
->>  4. irq_shutdown() -> depth is set to 1 (again)
->>  5. CPU N goes online
->>  6. irq_startup() -> depth is set to 0 (BUG! driver expects that the interrupt
->>     		     	      	        still disabled)
->>  7. enable_irq() -> depth underflow / unbalanced enable_irq() warning
->>
->> This is only a problem for managed interrupts and CPU hotplug, all other
->> cases like request()/free()/request() truly needs to reset a possibly stale
->> disable depth value.
->>
->> Provide a startup function, which takes the disable depth into account, and
->> invoked it for the managed interrupts in the CPU hotplug path.
->>
->> This requires to change irq_shutdown() to do a depth increment instead of
->> setting it to 1, which allows to retain the disable depth, but is harmless
->> for the other code paths using irq_startup(), which will still reset the
->> disable depth unconditionally to keep the original correct behaviour.
->>
->> A kunit tests will be added separately to cover some of these aspects.
->>
->> [ tglx: Massaged changelog ]
->>
->> Suggested-by: Thomas Gleixner <tglx@linutronix.de>
->> Signed-off-by: Brian Norris <briannorris@chromium.org>
->> Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
->> Link: https://lore.kernel.org/all/20250514201353.3481400-2-briannorris@chromium.org
->> Signed-off-by: Sasha Levin <sashal@kernel.org>
->
->This one breaks suspend of laptops like the Lenovo ThinkPad T14s. Issue
->was just reported here by Alex:
->
->	https://lore.kernel.org/lkml/24ec4adc-7c80-49e9-93ee-19908a97ab84@gmail.com/
->
->Please drop from all stable queues for now.
+From: Frank Wunderlich <frank-w@public-files.de>
 
-Will do, thanks!
+On SoCs without MTK_SHARED_INT capability (all except mt7621 and
+mt7628) platform_get_irq() is called for the first IRQ (eth->irq[0])
+but it is never used.
+Skip the first IRQ and reduce the IRQ-count to 2.
 
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+---
+v5:
+- change commit title and description
+v4:
+- drop >2 condition as max is already 2 and drop the else continue
+- update comment to explain which IRQs are taken in legacy way
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 12 ++++++++----
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h |  4 ++--
+ 2 files changed, 10 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 875e477a987b..7990c84b2b56 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -3354,10 +3354,14 @@ static int mtk_get_irqs(struct platform_device *pdev, struct mtk_eth *eth)
+ 	 * the second is for TX, and the third is for RX.
+ 	 */
+ 	for (i = 0; i < MTK_FE_IRQ_NUM; i++) {
+-		if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT) && i > 0)
+-			eth->irq[i] = eth->irq[MTK_FE_IRQ_SHARED];
+-		else
+-			eth->irq[i] = platform_get_irq(pdev, i);
++		if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT)) {
++			if (i == 0)
++				eth->irq[MTK_FE_IRQ_SHARED] = platform_get_irq(pdev, i);
++			else
++				eth->irq[i] = eth->irq[MTK_FE_IRQ_SHARED];
++		} else {
++			eth->irq[i] = platform_get_irq(pdev, i + 1);
++		}
+ 
+ 		if (eth->irq[i] < 0) {
+ 			dev_err(&pdev->dev, "no IRQ%d resource found\n", i);
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index 8cdf1317dff5..9261c0e13b59 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -643,8 +643,8 @@
+ #define MTK_MAC_FSM(x)		(0x1010C + ((x) * 0x100))
+ 
+ #define MTK_FE_IRQ_SHARED	0
+-#define MTK_FE_IRQ_TX		1
+-#define MTK_FE_IRQ_RX		2
++#define MTK_FE_IRQ_TX		0
++#define MTK_FE_IRQ_RX		1
+ #define MTK_FE_IRQ_NUM		(MTK_FE_IRQ_RX + 1)
+ 
+ struct mtk_rx_dma {
 -- 
-Thanks,
-Sasha
+2.43.0
+
 
