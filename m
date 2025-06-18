@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 082C6C71136
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jun 2025 00:01:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC135C71157
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jun 2025 01:37:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lyMpJogwVQ/tZ73qOYdz6EzgKEWG6zTOwJhhnHthPQM=; b=WLvBroMxOx+yBrAY8NXJ2qUjm7
-	KFM42RKAvrz+s2RoEzCz+UFteiPgPWX8ZNCDkUXT4Qnalgdk+gc572bBJRiN8qzKLw7mhhoUDmM89
-	8KcONuIsHfwJ1StHQXVEpla1DHv2ZMq3jJFA/W1wWap9YSgMk5hP/UNEjSxq3e/lFSRZhYgWl6sbn
-	2m/bXqzDnGaJJLtUHP2KiQujXqqmBpxbjTbcHnvNgThCR6zLXm8slxRpYruXY+w4u+CwTqlb9kvic
-	VOUbmKzOSogqj1liI9nS4q4BwtV1rdthMhncmpBPG+hy9S1mMQ9I6qDI9D+8Q2RGYf4XSK4LWATSz
-	oi8XPTwQ==;
+	bh=J75SlLYXLlBO7wssiAHVyOJ7VlFCCM338jXDoIyXWaw=; b=l6vKCB5ne/BIu3ctH7TYOR/Dy7
+	5wsAomt9JIm/xyDLmeUtLZWcDvzKZHAP7FXnNVZOEj9tpWaln1Oo5j7/HPF/cLTX++mDak8h/AxsV
+	OlouFOHhkao9lHKs0JUsgx0LfDPWETmTBTOIQ80hVLfjCYEO2H7tlsNtdhn4oYfgWBfTKwTo27QcC
+	DRk+kvWnOlwS/0a+e0+R927EuOW1T1tCmK7iVNwiIjFeu07UVmaxTMwUGPgB1MbPG0Ut65lVgDNta
+	4YyfrMi7bUmOCPHjFdq/+7tJxnA6PhRLnZDLcCEZ6J6mdaEwy0fUVry1ztua5ohHOGdSImXD+PtX3
+	ThBUKoHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRgFI-00000008ezX-0COf;
-	Wed, 18 Jun 2025 00:01:40 +0000
+	id 1uRhjb-00000008lNC-0ucv;
+	Wed, 18 Jun 2025 01:37:03 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uReqC-00000008WMu-23kY;
-	Tue, 17 Jun 2025 22:31:41 +0000
+	id 1uRhfT-00000008kxc-0Ou5;
+	Wed, 18 Jun 2025 01:32:48 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id CF4AA5C5576;
-	Tue, 17 Jun 2025 22:29:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AE23CC4CEE3;
-	Tue, 17 Jun 2025 22:31:37 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id C8B7C5C5F61;
+	Wed, 18 Jun 2025 01:30:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 98AE9C4CEE3;
+	Wed, 18 Jun 2025 01:32:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750199498;
-	bh=daWIuCnKOqJxZjDHibvmOWaePziSzoIYshMdU3ihRCQ=;
+	s=k20201202; t=1750210366;
+	bh=J75SlLYXLlBO7wssiAHVyOJ7VlFCCM338jXDoIyXWaw=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=OlDv6axZhMMRiln0sTMZjX+4xP3daKbFPzNgMsZXR73qzPxX9Djhcknu1eFzKfrq0
-	 hDkf/EwKs7v+MyOU5hxueGOLLj4bb+jMK1IaQJP6//3OJ5lv+jxDbTpCKWMJj9uLtS
-	 9JfHonaUVBUsUvObWK2dBHSzHjIzmgrMHGfdumwWNV83weAdEyLdFjpNEyDJ8TA3Qz
-	 uWKS209HY9QM/ibGkEBrKqOYroAvdzPt29gyHBXQLa4WaS3orfXpFLtvV8ZwzAdRzq
-	 XdO1SSLN6jEd3JNJzcPrNlj0JZhDEnvunKqpAlHtFX/+igsEDHAi9J9J9WIK498NeA
-	 EUHTwOEQYDeSw==
-Date: Tue, 17 Jun 2025 15:31:31 -0700
+	b=nPnWAZjJQtcvGlZzCEcQjxYV2v10yVc7Zn2RCEHfikH8DNB3Eyjh9Hm5QoXwLEAY/
+	 ocyCCrqfe0gqLkezku9M1RQ+j9NDTL0YyIuDN/RrJ8bGM8fr1nr89Gdg3x2ICcpmua
+	 wFRtpwrvqex4w9Mdu/bKK0Xka5I8f1o+ecz/u8zAM76dSdN2+LQpgg1o4N6iz7CVzw
+	 D6hDHsuZ8sHxT2zmiLpemMQM1Tz/sf+VJoS48p9LNpGU5i251C3AFXHsUEYbus21uw
+	 30Aj+mEV3VK5iOALierPJ/1mYh3xe9Q5YLjd5xbhWZOB651M2ORglP3j1Ev0STPJeM
+	 ztGHcgsEtoEUw==
+Date: Tue, 17 Jun 2025 18:32:44 -0700
 From: Jakub Kicinski <kuba@kernel.org>
 To: Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
@@ -49,17 +49,17 @@ Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
  <pabeni@redhat.com>, Simon Horman <horms@kernel.org>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  netdev@vger.kernel.org
-Subject: Re: [PATCH net-next] net: airoha: Always check return value from
- airoha_ppe_foe_get_entry()
-Message-ID: <20250617153131.56a783c4@kernel.org>
-In-Reply-To: <20250616-check-ret-from-airoha_ppe_foe_get_entry-v1-1-1acae5d677f7@kernel.org>
-References: <20250616-check-ret-from-airoha_ppe_foe_get_entry-v1-1-1acae5d677f7@kernel.org>
+Subject: Re: [PATCH net-next v2 0/2] net: airoha: Improve hwfd
+ buffer/descriptor queues setup
+Message-ID: <20250617183244.641d9cd3@kernel.org>
+In-Reply-To: <20250616-airoha-hw-num-desc-v2-0-bb328c0b8603@kernel.org>
+References: <20250616-airoha-hw-num-desc-v2-0-bb328c0b8603@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250617_153140_572730_891E810A 
-X-CRM114-Status: UNSURE (   8.21  )
+X-CRM114-CacheID: sfid-20250617_183247_185657_C9EB4625 
+X-CRM114-Status: UNSURE (   6.35  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,14 +75,10 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 16 Jun 2025 12:27:06 +0200 Lorenzo Bianconi wrote:
-> Subject: [PATCH net-next] net: airoha: Always check return value from airoha_ppe_foe_get_entry()
-> 
-> airoha_ppe_foe_get_entry routine can return NULL, so check the returned
-> pointer is not NULL in airoha_ppe_foe_flow_l2_entry_update()
-> 
-> Fixes: b81e0f2b58be3 ("net: airoha: Add FLOW_CLS_STATS callback support")
+On Mon, 16 Jun 2025 15:45:39 +0200 Lorenzo Bianconi wrote:
+> Compute the number of hwfd buffers/descriptors according to the reserved
+> memory size if provided via DTS.
+> Reduce the required hwfd buffers queue size for QDMA1.
 
-Looks like the commit under fixes is in net, is the tree in the subject
-wrong?
+Same question regarding target tree, FWIW
 
