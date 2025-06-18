@@ -4,62 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBB8BC71157
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jun 2025 16:46:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECB20C7115A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jun 2025 17:01:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oL+UivKoF5os9z3qBOAG1K1muz/j+dGSv5h1Fe6j3Z0=; b=gAP42fpC6ro/RsRIj/UNCeITjv
-	T53Eqf3MozBf+IYhA5Ihnkh7Z6CfMzlpr4kraB6oLQj/b4jNGIITW+uORJsQ1KrJUNDVVfTServ12
-	pV0I9/vhF+2T/1VAp14n7pWnZ69Cv+mBpyt4jLs31spO2Y9mhRG6nSbO8bV8QoEVLAnQ5nXnj2kBt
-	1TsmZbLfpf2LEMnMZP/XAaDWQ/EYGZHPu8V+BRQ0/JyQ2gy9FRgtpF5df37LO001q41lr2qmnTkQ/
-	/8bNy3qJWTd2vbzuGmTNACWj63CXL+Qv+UQ+mvwdUBdvSKaxq78wNK346/cDLAswdrgUUVhcWhBTx
-	tZGM8NEg==;
+	bh=6TAtb5+WwQF8Qk8Et8Rzp5oL8SQyUzBDnJHXSFDwr3A=; b=BJEPK509lUNJp/cUlWGaWmF837
+	bMqrBGTsKbiDCAkeiQYq/mFQPlgFERKgJGYFwGLPYm/c9LIDPqRU4fOfDOZxxQ34UsK50HvQhALYp
+	9t5o9mQ6GuBS/hSa9XIgm4Xpw0HkIo1884YEPgwFEQ2N1DTywXFqE8kvCKCWBoKjtd9JdTdO5kL22
+	d348YJCPwDW2JUW3zXeTvA49DSdSObHp0jjVWltC80YdhmOlI0xutYESLgSEo8hESxJRKb8GXTKhv
+	sZLQioRgURZnwgeJ6JX/pX6lxf8NmSD/xQ7Ql12B0Q2/NaOtmHTLbbLIsdGLGoKTHbXhhlbMLbovW
+	PLQsKQMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRvw5-0000000AlDz-3d7z;
-	Wed, 18 Jun 2025 16:46:53 +0000
+	id 1uRw9t-0000000AnTt-25m9;
+	Wed, 18 Jun 2025 17:01:09 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRtH4-0000000ANHn-4B7B;
-	Wed, 18 Jun 2025 13:56:22 +0000
+	id 1uRuSG-0000000AYWj-114Q;
+	Wed, 18 Jun 2025 15:12:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=oL+UivKoF5os9z3qBOAG1K1muz/j+dGSv5h1Fe6j3Z0=; b=XdRnp5KXbhdYeyGMXZkMI1Kf0T
-	QdKkbFDYmnp6R76Rfev/lyZlGvdsxg/AEjE5u66gKjW+YoLb1pjE2zB3dVJ4l2CrrWrlkoyR92nmA
-	32uxTI9ZMKXKw4PFx03NFaZej05EyqkhYwwUqqRnE7jnDHSh2+HYQt369/21uY/YGBmV90XOhLAQD
-	4+L5QQkNDAaN6mozbODaklZXl6/EkDr6Gxtw3/Fj1DwEwCn8oZI6EJQjvVs0Ca3XVkqbcxj81QWX8
-	DOqwdMOHBoh303vjPe+jDw22gfhSltxbqNhW88y1ysDKf0C0auqKUsdSaf2D0UzsEnAlLfzQMVGs+
-	94wL/bHw==;
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	bh=6TAtb5+WwQF8Qk8Et8Rzp5oL8SQyUzBDnJHXSFDwr3A=; b=YMQ5DLQE93ges3zM2lG2Xrqcd3
+	w/XoBQ7+/X9PJHl91QRQiJly0pG2GxthYef3RCfoCGKG9mM7lHy93JmbRYYbX6w7bc0dMYJ0TDiBW
+	5MqKGj0dmEicBvvU1wGAgN22P4+yQv32Tuto7OOd3WzFL9RLyulPS5le3kCMd7LlL6WZLYPaH/O38
+	i0PxIctXsUZo1WjC7In+Pf+bcz2sgBo9T6rdJ0FBUCW4NungHh9MLWm1idZe/jjM6fyFk6vakAHMD
+	O2nhxr2MwsGjG3WpIY7M3sGkGxJPoF1AQl1tLYK+6ttfE6EFKhwfpHQBKn1VEmOQ5fqcEwIQZ38am
+	w+TIqaaw==;
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRtH2-000000044m5-2WBK;
-	Wed, 18 Jun 2025 13:56:22 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.98.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1uRt8G-000000003fP-1YpV;
-	Wed, 18 Jun 2025 13:55:58 +0000
-Date: Wed, 18 Jun 2025 15:55:45 +0200
-From: Daniel Golle <daniel@makrotopia.org>
-To: Frank Wunderlich <linux@fw-web.de>
-Subject: Re: [net-next v5 1/3] net: ethernet: mtk_eth_soc: support named IRQs
-Message-ID: <aFLFYe8mq4tbLfdf@pidgin.makrotopia.org>
-References: <20250618130717.75839-1-linux@fw-web.de>
- <20250618130717.75839-2-linux@fw-web.de>
+	id 1uRuSD-000000048a6-33BH;
+	Wed, 18 Jun 2025 15:11:59 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 0C4FC5C4D68;
+	Wed, 18 Jun 2025 15:09:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1B024C4CEF0;
+	Wed, 18 Jun 2025 15:11:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1750259513;
+	bh=Wzjwsii8yfmolxkQkAgPYhRM7Z6/qgUkeAnXTcoCpI8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=lt1GhWFdXGvw/76cv1ejyxtlWvo27KOCHf7dFV6dHavnMPdRL4A/VL1rB5aOiplVh
+	 dLY7uNPH/1/fdcngFvNd8+pdFr6c9+mKgxsvKjJ8rvjJeMkcUe49vyEQ9EP5KAv7gW
+	 sCtbdbiPHGCdMRnb9TLNI5n94cjLq9YSD64VZYnF4tK/lr2VjwBCPJ4wVBl/vF3Xph
+	 oOktN++khB2MAHlHz2BMV9LPHJOSHPOYgVfrk14Hj7APsG3qzBh8MTKpx7xRXkDIYk
+	 SwAhiSwGAGRccJtMIoRPKEjzJ0kpuvi128kKL9YlpASiEFmZjNz6VycDMJvrmcV5Fs
+	 qxrJr5FvyHVdw==
+Date: Wed, 18 Jun 2025 11:11:51 -0400
+From: Sasha Levin <sashal@kernel.org>
+To: Johan Hovold <johan@kernel.org>
+Cc: patches@lists.linux.dev, stable@vger.kernel.org,
+	Brian Norris <briannorris@chromium.org>,
+	Thomas Gleixner <tglx@linutronix.de>, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Aleksandrs Vinarskis <alex.vinarskis@gmail.com>
+Subject: Re: [PATCH AUTOSEL 6.15 092/110] genirq: Retain disable depth for
+ managed interrupts across CPU hotplug
+Message-ID: <aFLXN5Rbx_egQBeB@lappy>
+References: <20250601232435.3507697-1-sashal@kernel.org>
+ <20250601232435.3507697-92-sashal@kernel.org>
+ <aELf3QmuEJOlR7Dv@hovoldconsulting.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=us-ascii; format=flowed
 Content-Disposition: inline
-In-Reply-To: <20250618130717.75839-2-linux@fw-web.de>
+In-Reply-To: <aELf3QmuEJOlR7Dv@hovoldconsulting.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250618_145620_709690_D18EA60C 
-X-CRM114-Status: GOOD (  25.18  )
+X-CRM114-CacheID: sfid-20250618_161157_961210_37128F1A 
+X-CRM114-Status: GOOD (  15.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,93 +89,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>, arinc.unal@arinc9.com, linux-mediatek@lists.infradead.org, Simon Horman <horms@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 18, 2025 at 03:07:12PM +0200, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> Add named interrupts and keep index based fallback for existing
-> devicetrees.
-> 
-> Currently only rx and tx IRQs are defined to be used with mt7988, but
-> later extended with RSS/LRO support.
-> 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> Reviewed-by: Simon Horman <horms@kernel.org>
->  
-> +static int mtk_get_irqs(struct platform_device *pdev, struct mtk_eth *eth)
-> +{
-> +	int i;
-> +
-> +	/* future SoCs beginning with MT7988 should use named IRQs in dts */
-> +	eth->irq[1] = platform_get_irq_byname(pdev, "tx");
-> +	eth->irq[2] = platform_get_irq_byname(pdev, "rx");
-> +	if (eth->irq[1] >= 0 && eth->irq[2] >= 0)
-> +		return 0;
+On Fri, Jun 06, 2025 at 02:32:29PM +0200, Johan Hovold wrote:
+>On Sun, Jun 01, 2025 at 07:24:14PM -0400, Sasha Levin wrote:
+>> From: Brian Norris <briannorris@chromium.org>
+>>
+>> [ Upstream commit 788019eb559fd0b365f501467ceafce540e377cc ]
+>>
+>> Affinity-managed interrupts can be shut down and restarted during CPU
+>> hotunplug/plug. Thereby the interrupt may be left in an unexpected state.
+>> Specifically:
+>>
+>>  1. Interrupt is affine to CPU N
+>>  2. disable_irq() -> depth is 1
+>>  3. CPU N goes offline
+>>  4. irq_shutdown() -> depth is set to 1 (again)
+>>  5. CPU N goes online
+>>  6. irq_startup() -> depth is set to 0 (BUG! driver expects that the interrupt
+>>     		     	      	        still disabled)
+>>  7. enable_irq() -> depth underflow / unbalanced enable_irq() warning
+>>
+>> This is only a problem for managed interrupts and CPU hotplug, all other
+>> cases like request()/free()/request() truly needs to reset a possibly stale
+>> disable depth value.
+>>
+>> Provide a startup function, which takes the disable depth into account, and
+>> invoked it for the managed interrupts in the CPU hotplug path.
+>>
+>> This requires to change irq_shutdown() to do a depth increment instead of
+>> setting it to 1, which allows to retain the disable depth, but is harmless
+>> for the other code paths using irq_startup(), which will still reset the
+>> disable depth unconditionally to keep the original correct behaviour.
+>>
+>> A kunit tests will be added separately to cover some of these aspects.
+>>
+>> [ tglx: Massaged changelog ]
+>>
+>> Suggested-by: Thomas Gleixner <tglx@linutronix.de>
+>> Signed-off-by: Brian Norris <briannorris@chromium.org>
+>> Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
+>> Link: https://lore.kernel.org/all/20250514201353.3481400-2-briannorris@chromium.org
+>> Signed-off-by: Sasha Levin <sashal@kernel.org>
+>
+>This one breaks suspend of laptops like the Lenovo ThinkPad T14s. Issue
+>was just reported here by Alex:
+>
+>	https://lore.kernel.org/lkml/24ec4adc-7c80-49e9-93ee-19908a97ab84@gmail.com/
+>
+>Please drop from all stable queues for now.
 
-I'd rather extend that logic and fall back to the legacy way only in case
-of -ENXIO. Ie. add here:
+Will do, thanks!
 
-if (eth->irq[1] != -ENXIO)
-	return eth->irq[1];
-
-if (eth->irq[2] != -ENXIO)
-	return eth->irq[2];
-
-Maybe also output a warning at this point in case MTK_SHARED_INT is no
-set, to recommend users to update their device tree to named interrupts.
-
-> +
-> +	/* legacy way:
-> +	 * On MTK_SHARED_INT SoCs (MT7621 + MT7628) the first IRQ is taken
-> +	 * from devicetree and used for both RX and TX - it is shared.
-> +	 * On SoCs with non-shared IRQs the first entry is not used,
-> +	 * the second is for TX, and the third is for RX.
-> +	 */
-> +	for (i = 0; i < 3; i++) {
-> +		if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT) && i > 0)
-> +			eth->irq[i] = eth->irq[0];
-> +		else
-> +			eth->irq[i] = platform_get_irq(pdev, i);
-> +
-> +		if (eth->irq[i] < 0) {
-> +			dev_err(&pdev->dev, "no IRQ%d resource found\n", i);
-> +			return -ENXIO;
-> +		}
-> +	}
-> +
-> +	return 0;
-> +}
-> +
->  static irqreturn_t mtk_handle_irq_rx(int irq, void *_eth)
->  {
->  	struct mtk_eth *eth = _eth;
-> @@ -5106,17 +5137,10 @@ static int mtk_probe(struct platform_device *pdev)
->  		}
->  	}
->  
-> -	for (i = 0; i < 3; i++) {
-> -		if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT) && i > 0)
-> -			eth->irq[i] = eth->irq[0];
-> -		else
-> -			eth->irq[i] = platform_get_irq(pdev, i);
-> -		if (eth->irq[i] < 0) {
-> -			dev_err(&pdev->dev, "no IRQ%d resource found\n", i);
-> -			err = -ENXIO;
-> -			goto err_wed_exit;
-> -		}
-> -	}
-> +	err = mtk_get_irqs(pdev, eth);
-> +	if (err)
-> +		goto err_wed_exit;
-> +
->  	for (i = 0; i < ARRAY_SIZE(eth->clks); i++) {
->  		eth->clks[i] = devm_clk_get(eth->dev,
->  					    mtk_clks_source_name[i]);
-> -- 
-> 2.43.0
-> 
-> 
+-- 
+Thanks,
+Sasha
 
