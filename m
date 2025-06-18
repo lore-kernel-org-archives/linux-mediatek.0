@@ -4,66 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F30BC71157
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jun 2025 17:16:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64C64C7115A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Jun 2025 17:31:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=R8TYFDiksgklK5x53zlk7GXLxBUpXGWS8/QWLup/HFY=; b=V0cfybI0pJkEuW
-	1Gd7ar3H4TgsIpV2XyWBDrLUsfImpOUlVOip5J/xFAohYcA9dsoA5o8diTv7EOpk7LRlgAiui7U29
-	aJRPsr7BxZO04n4DYY6HH8HW2z7IDe0G188Bxu24w9BU4IpztiilsH7S9YyrSk/urrTuy2ywPsuWW
-	YNLCVbdcZAEm1JvCey3rojK3Tt1pQggQ2+7jNYVKZtOASnP4JU4K7Qeju40sdgbzrfxIq9NFUKglP
-	G6ZZmGcMEXRZDo3qFvsE4+RLIEmf/oPBDVQpRtg2HzFRkrOv+lyfa4w43a2veVEhh3bm4K1ZTm5CW
-	oEaTp/mHebJM+0sB+pOw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MnlKsyG4fMWCQaM8lEHdPX48UNrwNSibT67INrhosJg=; b=qGs4mfDIjGXk11fk0el8r3oOmv
+	90nvikyN8xHhs+vyPLRMyoJXrsMQCW/C0E0LF2YSE6zD+RwX+DELE4jm6ZWbfDQBYT5q8UWeRbAM4
+	s07j0h+h1CjYO4ReSiU8O0t+xHMr3c4GzNbWSTHAxK1zoDvbPhiPMPfJyrAHEP/eVxWZn6enG/+M6
+	PJE66NdAXdCz4sqCtKaJQzO/sQ+HwOvCC60Zu6H13bPbTZ20m/NPaJMVbQbgutuAARbZL8pxIH2LM
+	2piL1eqjMVDQem93xHIvTFSgNZQa+ACvHkkDYTJU6tLt5mIlloOXRX0inqrNTAUWN2tSwx9UfvGoz
+	PNkIa4MQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRwP8-0000000ApBl-0RmN;
-	Wed, 18 Jun 2025 17:16:54 +0000
-Received: from mxout2.routing.net ([2a03:2900:1:a::b])
+	id 1uRwdA-0000000ArXy-30Ij;
+	Wed, 18 Jun 2025 17:31:24 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uRsVp-0000000AENM-120R;
-	Wed, 18 Jun 2025 13:07:35 +0000
-Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
-	by mxout2.routing.net (Postfix) with ESMTP id 185E260300;
-	Wed, 18 Jun 2025 13:07:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1750252051;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=R8TYFDiksgklK5x53zlk7GXLxBUpXGWS8/QWLup/HFY=;
-	b=GRVyP+7XYwHbXbkkIjsdwALJCy1LgQQ4gMFDDlrU8flaPcT0imKCGtA714W+91mShFL2xh
-	+M7y+joguRtaK1mrIkaqVgxwRzG7/VHtrgYLkUnrBCFgARcWU8HrLWFQdLYBsr1pvp31qZ
-	EraoDOvtRLRFGuY7igtcnnwxmgz81m4=
-Received: from frank-u24.. (fttx-pool-80.245.76.73.bambit.de [80.245.76.73])
-	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id D31F2122703;
-	Wed, 18 Jun 2025 13:07:30 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: Felix Fietkau <nbd@nbd.name>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
+	id 1uRvkM-0000000Ajue-0zSV;
+	Wed, 18 Jun 2025 16:34:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=MnlKsyG4fMWCQaM8lEHdPX48UNrwNSibT67INrhosJg=; b=bTry5vSGReg0fSd/S00Wejr22W
+	XsBdHJdQXB8cIr1GyS/T/YKfh9yOUVmHmEnwALoYaRA3ZLWByEVtH3M5XJTeEqtzxzh8xmHfVbz4c
+	Ccx9L2iT0DvUjhuA2Q6SS70uuvN5SMRM6DXkWiRpG7SFsBV/DwXEIjWxTGn1CG5TumgEbjHPlXM4D
+	LF73o8Ky1cgVPa6sByCJhEG+QacZ/9phcpqowXknhK5OeF1pBhErUozlGgOEjiG+LXGJsH6tXm7ww
+	LMLnZ47f+AQR7zv1coYRMec1YD2wGUmGJic9uKNAUUGA+Gjirap1aFAmPgwBUkcaNkUGErSGMsVcO
+	Hm3l91RQ==;
+Received: from nyc.source.kernel.org ([147.75.193.91])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uRvkJ-00000004C25-2ZG1;
+	Wed, 18 Jun 2025 16:34:45 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 3DC7CA51B33;
+	Wed, 18 Jun 2025 16:34:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 26D14C4CEE7;
+	Wed, 18 Jun 2025 16:34:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1750264477;
+	bh=ZpjxbXJilygZEa1TmasV23ZFXaekM2vT4FxyFQzIqSA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=FhljU//iM84aUdVU8yuWaVilgx676eJhlxkMjsp8ZvVPjIj7WnUaN6i85prBo4YTx
+	 0KYOgkUCisvck2qI3pOpodE1buIr/eI9jDqIZBcLCHp1dI1vuFNMa7uNYBCZsWiuK6
+	 hoRHmxH3bLyqdOcDjoDSld86OS3NtmVHFZHeUEFu60mOzVCYbwGMhOmnkUxJfkDQRH
+	 B8MAd8VxIVuzhDMyJ+q0PO9wgeC3Sq4lsI2Y/0CRETbYYYb+re4CZpZmfc65yx//71
+	 +k8EYCkImnaDRGNiuP6sq5vEpLXOV6QO518mY0nBGV972wP8xCU+37uYpGcaj5XrpJ
+	 4Y2Z/Qqnoxoiw==
+Date: Wed, 18 Jun 2025 17:34:33 +0100
+From: Simon Horman <horms@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [net-next v5 3/3] net: ethernet: mtk_eth_soc: skip first IRQ if not used
-Date: Wed, 18 Jun 2025 15:07:14 +0200
-Message-ID: <20250618130717.75839-4-linux@fw-web.de>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250618130717.75839-1-linux@fw-web.de>
-References: <20250618130717.75839-1-linux@fw-web.de>
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net v3 1/2] net: airoha: Compute number of descriptors
+ according to reserved memory size
+Message-ID: <20250618163433.GR1699@horms.kernel.org>
+References: <20250618-airoha-hw-num-desc-v3-0-18a6487cd75e@kernel.org>
+ <20250618-airoha-hw-num-desc-v3-1-18a6487cd75e@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250618-airoha-hw-num-desc-v3-1-18a6487cd75e@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250618_060733_430963_AE90E05D 
-X-CRM114-Status: GOOD (  16.84  )
+X-CRM114-CacheID: sfid-20250618_173443_819566_E1DA9D5A 
+X-CRM114-Status: UNSURE (   9.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,68 +88,17 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, arinc.unal@arinc9.com, linux-kernel@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-mediatek@lists.infradead.org, Simon Horman <horms@kernel.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+On Wed, Jun 18, 2025 at 09:48:04AM +0200, Lorenzo Bianconi wrote:
+> In order to not exceed the reserved memory size for hwfd buffers,
+> compute the number of hwfd buffers/descriptors according to the
+> reserved memory size and the size of each hwfd buffer (2KB).
+> 
+> Fixes: 3a1ce9e3d01b ("net: airoha: Add the capability to allocate hwfd buffers via reserved-memory")
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-On SoCs without MTK_SHARED_INT capability (all except mt7621 and
-mt7628) platform_get_irq() is called for the first IRQ (eth->irq[0])
-but it is never used.
-Skip the first IRQ and reduce the IRQ-count to 2.
-
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
----
-v5:
-- change commit title and description
-v4:
-- drop >2 condition as max is already 2 and drop the else continue
-- update comment to explain which IRQs are taken in legacy way
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 12 ++++++++----
- drivers/net/ethernet/mediatek/mtk_eth_soc.h |  4 ++--
- 2 files changed, 10 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 875e477a987b..7990c84b2b56 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -3354,10 +3354,14 @@ static int mtk_get_irqs(struct platform_device *pdev, struct mtk_eth *eth)
- 	 * the second is for TX, and the third is for RX.
- 	 */
- 	for (i = 0; i < MTK_FE_IRQ_NUM; i++) {
--		if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT) && i > 0)
--			eth->irq[i] = eth->irq[MTK_FE_IRQ_SHARED];
--		else
--			eth->irq[i] = platform_get_irq(pdev, i);
-+		if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT)) {
-+			if (i == 0)
-+				eth->irq[MTK_FE_IRQ_SHARED] = platform_get_irq(pdev, i);
-+			else
-+				eth->irq[i] = eth->irq[MTK_FE_IRQ_SHARED];
-+		} else {
-+			eth->irq[i] = platform_get_irq(pdev, i + 1);
-+		}
- 
- 		if (eth->irq[i] < 0) {
- 			dev_err(&pdev->dev, "no IRQ%d resource found\n", i);
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 8cdf1317dff5..9261c0e13b59 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -643,8 +643,8 @@
- #define MTK_MAC_FSM(x)		(0x1010C + ((x) * 0x100))
- 
- #define MTK_FE_IRQ_SHARED	0
--#define MTK_FE_IRQ_TX		1
--#define MTK_FE_IRQ_RX		2
-+#define MTK_FE_IRQ_TX		0
-+#define MTK_FE_IRQ_RX		1
- #define MTK_FE_IRQ_NUM		(MTK_FE_IRQ_RX + 1)
- 
- struct mtk_rx_dma {
--- 
-2.43.0
+Reviewed-by: Simon Horman <horms@kernel.org>
 
 
