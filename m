@@ -4,83 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41EB8C7115B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jun 2025 15:45:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B2B1C7115A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jun 2025 15:47:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=niIEC24pa2jxdKXkefJ3vkZfAtNqJpvIieuArrIyjOQ=; b=wOPMEM+8Vh55BhQihz1XMPRZmg
-	fNbuj6bUnfNkhe4uRyc3BBKFZE8a0Fza74V8qdyMFvNYrtA5NJ1g1vsv9vph0gXLzuyuEOH+k5R0t
-	Z8UEqQBV3CUVA+ohfkxDm0qHl69uXQLw0U2YfYlyPelWzszpE9HfIHxwrqepOBueQdnp7+ybt/Nsd
-	K8FcaMOalnMK8KPl0fuyBbWIKh8ABx+ELLVEAxkYH0M1OYMRmp6LbEPqKHo115+hvb0l6bLLFom96
-	awGfsihwNVr94TrAj0QHz/jHhZ+oHtXmzu+D0r79u4QF+UelH7pRF49z6yplOulMNAwHrKSIBxXE4
-	prR6/iWQ==;
+	bh=KJkap0N2OMLX4SZzoJrJa5HCSWmYHsAVwalxNjL+MLQ=; b=A0FRGYye3bRMZs1FYc7SYWSYl8
+	d3qzaUL6QW7aorf+7ga2hh5E9avWYq+kt6XN6vvPRR/ly+xskfmS0MbG/ipgG/Tr/zvmakzkLdPSL
+	jbEg8EsbHdhYC1eLcM9RIJxBeijBSRZKYusTBCKbsMjBfEYfZL3vE3H8tGd8Ct+fTaHjYy86lRClm
+	rWk1do1p41FS0izb6mZtCfQZtHp64jfCzNesUjrRSM46j0lFE3bzWmkBSmFodEiq2q/V3z0u90AOZ
+	kgA25szWeyvRy2DnBzNnlNWL9zKkfIgiT6Xum2SXorQr7PoocLoBVSdbTRb0AllaNb+wDC2MajkkE
+	j3iLZ9+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSHRn-0000000DRuH-3zoW;
-	Thu, 19 Jun 2025 15:45:03 +0000
-Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34])
+	id 1uSHUU-0000000DWBc-2EXw;
+	Thu, 19 Jun 2025 15:47:50 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSDK0-0000000Cqfy-1UnH
-	for linux-mediatek@lists.infradead.org;
-	Thu, 19 Jun 2025 11:20:45 +0000
-Received: by mail-yb1-xb34.google.com with SMTP id 3f1490d57ef6-e8187601f85so679465276.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 19 Jun 2025 04:20:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1750332043; x=1750936843; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=niIEC24pa2jxdKXkefJ3vkZfAtNqJpvIieuArrIyjOQ=;
-        b=QZt8lqDvVmkO6EjTJwnRNGre11Cu4SS2KpHTqiesXVT/SJ5P/HtT//1QTGY87/BXx/
-         UnID803UoRnuw+1hGeBfpPGbuij398xrws08BN8yoiSfOl6JCPhjrFs19VGKmc1GXgU3
-         /s4azL0ILygmWWZzktGcPEdws+yo7VxEOXFY5OBaJU8L+kSYZzT/YeCJTlZ7PcFokAg8
-         rwrEPwbmPthntGcrQdjnOP20Ac0SFh2PDVhJCMyalYMJt17iV5esT5I53TxkJSr25kX7
-         3Rt+/M0J2r4rfZXlPIlZAHh/TkZmDf4ZEdfXLdYxbB4dF1bi2oVBr0zn1kyYfxdSUvOf
-         vvdA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750332043; x=1750936843;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=niIEC24pa2jxdKXkefJ3vkZfAtNqJpvIieuArrIyjOQ=;
-        b=nmRjyI34IlR6RCt4TFxYe7tJCn/864lagtMQazky5ocbLkJaTF45+uwz3klnXKiV/H
-         sb2IuKdsgGnq+88sIIeviUeWeFAx6ZVnK/m61H+LAw+zM63x2SObnAGS6MS4eSC4D51v
-         hGSiMtmTx0CQCnp2A/1R9qXBVlVl4C6JRnSnVuwFU1sqazwNhJp2i9l7tAyc71Iqys8x
-         8QDkjj+dw7QGhTFsHRZfdkbf5HVIN45bKEFtCOaDKnIbZIWAGWdj3AeHdpW5kaA75q5u
-         uV6xzaRnPZPx3awdesFjVCsOYZ2K7rEn8+byWrcHuo+U3W+C8R0OU8V3GJcwbrQRnfwh
-         2QRg==
-X-Forwarded-Encrypted: i=1; AJvYcCVsEUFybYuI8c0GaRjSb/Vn8I2ecn2Vr/EHexaINwtmRGGNbNyDLl0Er+QMKn0svwtfTYrrhA3qwv0dNCcP1A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzquBliYNk0dg8uK+UESxXKGZii9r3yR4voJdge7vzQJRfaEMDI
-	WnTsvOrDlSX5EQ6mTqHrqUvNQxGWdiQ9fxob/AP0EcJI5ejiqTu+JktsS8UVI/7w8fpCqkp/gRp
-	p2AVSi2w8O8YB7zqgahEXrgCycbNL6JqEMufsiYLCuA==
-X-Gm-Gg: ASbGncvWaby/Zvr9KsIjujATkra5H6muNbHYZ84LE9raMhiRSunfPdKhGwvWqnt8wiB
-	4EJ3xDFqXFXziur97XulNPqSZHXNWTHLK9OCN5iQJnT3B4UQ24rNT5/HL6s38Rw18L2vtkaBciP
-	g3ushFhhoXDY6fciELUtKoLTh93kHsZkldU0E40nPnLskD
-X-Google-Smtp-Source: AGHT+IF2iE0ox/gzxKHz5bI8Q+Pkgb8UWe4OY/z3MjCCMZXinEnzR7Rqk/xTiCIm/KwZ4rpmEsnSRUYX7m4o4AQKZbE=
-X-Received: by 2002:a05:6902:cc6:b0:e81:7e16:aad7 with SMTP id
- 3f1490d57ef6-e822ac7a461mr27597842276.24.1750332043584; Thu, 19 Jun 2025
- 04:20:43 -0700 (PDT)
+	id 1uSEVH-0000000D4cd-3TNI;
+	Thu, 19 Jun 2025 12:36:27 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 41871629E3;
+	Thu, 19 Jun 2025 12:36:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 345D0C4CEEE;
+	Thu, 19 Jun 2025 12:36:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1750336587;
+	bh=0aZ6hvd/IjVOBqGmz7MszhMOejk6IpZuPtDdl9PW9vs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=CI7fEyodMGaW5jyKK8UY6kiGubgfymOHPJnBbUgexQqVw6f1vhwj+IWYYJCLvi1Mr
+	 Edsd3Ntro02FIelndIezoK8WBnFGAHgSiGmGtUUp7/xwv8EsRz9kI+hCic8n8tEclK
+	 M40tzSqGmjaBEDQKiJRC+bVFQwFrOvwKDMpHDGBlpqv9O/JU/0Fri55OQptM5Pm24c
+	 n2lC5jnDCRGON/s+HlPLM2X7ws9YYSjaut69jLh/emaeHrnFeN0EDxMtJRoriHcCVl
+	 m5Qprn+xiHtHiRVOYHZT9cVUhu5kYE8xJw0G5Tb//D4ud1ap7V2LCRo4pKoqH0Y1pX
+	 ga2+nPkAM9W3Q==
+Date: Thu, 19 Jun 2025 13:36:23 +0100
+From: Simon Horman <horms@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net v4 2/2] net: airoha: Differentiate hwfd buffer size
+ for QDMA0 and QDMA1
+Message-ID: <20250619123623.GL1699@horms.kernel.org>
+References: <20250619-airoha-hw-num-desc-v4-0-49600a9b319a@kernel.org>
+ <20250619-airoha-hw-num-desc-v4-2-49600a9b319a@kernel.org>
 MIME-Version: 1.0
-References: <174972756982.3337526.6755001617701603082.stgit@mhiramat.tok.corp.google.com>
-In-Reply-To: <174972756982.3337526.6755001617701603082.stgit@mhiramat.tok.corp.google.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Thu, 19 Jun 2025 13:20:07 +0200
-X-Gm-Features: AX0GCFvXjxV2EcT_wfBSHPu57s1TY2VkiQlHaijGThkd0p21SEv0wZoDeoPKInc
-Message-ID: <CAPDyKFpCPLCxp54yjBAaLz2tJK6Ouk-ikpvs9uby7aXnic=U7Q@mail.gmail.com>
-Subject: Re: [PATCH] mtk-sd: Prevent memory corruption from DMA map failure
-To: "Masami Hiramatsu (Google)" <mhiramat@kernel.org>
-Cc: Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Tomasz Figa <tfiga@chromium.org>, 
-	Sergey Senozhatsky <senozhatsky@chromium.org>, linux-mmc@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250619_042044_394785_83A31B7D 
-X-CRM114-Status: GOOD (  21.34  )
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250619-airoha-hw-num-desc-v4-2-49600a9b319a@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,65 +73,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 12 Jun 2025 at 13:26, Masami Hiramatsu (Google)
-<mhiramat@kernel.org> wrote:
->
-> From: Masami Hiramatsu (Google) <mhiramat@kernel.org>
->
-> If msdc_prepare_data() fails to map the DMA region, the request is
-> not prepared for data receiving, but msdc_start_data() proceeds
-> the DMA with previous setting.
-> Since this will lead a memory corruption, we have to stop the
-> request operation soon after the msdc_prepare_data() fails to
-> prepare it.
->
-> Signed-off-by: Masami Hiramatsu (Google) <mhiramat@kernel.org>
+On Thu, Jun 19, 2025 at 09:07:25AM +0200, Lorenzo Bianconi wrote:
+> EN7581 SoC allows configuring the size and the number of buffers in
+> hwfd payload queue for both QDMA0 and QDMA1.
+> In order to reduce the required DRAM used for hwfd buffers queues and
+> decrease the memory footprint, differentiate hwfd buffer size for QDMA0
+> and QDMA1 and reduce hwfd buffer size to 1KB for QDMA1 (WAN) while
+> maintaining 2KB for QDMA0 (LAN).
+> 
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-Applied to fixes and by adding a fixes/stable tag, thanks!
+Hi Lorenzo,
 
-Kind regards
-Uffe
+Thanks for the updated commit message.
 
+Reviewed-by: Simon Horman <horms@kernel.org>
 
-> ---
->  drivers/mmc/host/mtk-sd.c |   17 ++++++++++++++++-
->  1 file changed, 16 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 3594010bc229..56b4999fe58f 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -834,6 +834,11 @@ static void msdc_prepare_data(struct msdc_host *host, struct mmc_data *data)
->         }
->  }
->
-> +static bool msdc_data_prepared(struct mmc_data *data)
-> +{
-> +       return data->host_cookie & MSDC_PREPARE_FLAG;
-> +}
-> +
->  static void msdc_unprepare_data(struct msdc_host *host, struct mmc_data *data)
->  {
->         if (data->host_cookie & MSDC_ASYNC_FLAG)
-> @@ -1466,8 +1471,18 @@ static void msdc_ops_request(struct mmc_host *mmc, struct mmc_request *mrq)
->         WARN_ON(!host->hsq_en && host->mrq);
->         host->mrq = mrq;
->
-> -       if (mrq->data)
-> +       if (mrq->data) {
->                 msdc_prepare_data(host, mrq->data);
-> +               if (!msdc_data_prepared(mrq->data)) {
-> +                       /*
-> +                        * Failed to prepare DMA area, fail fast before
-> +                        * starting any commands.
-> +                        */
-> +                       mrq->cmd->error = -ENOSPC;
-> +                       mmc_request_done(mmc_from_priv(host), mrq);
-> +                       return;
-> +               }
-> +       }
->
->         /* if SBC is required, we have HW option and SW option.
->          * if HW option is enabled, and SBC does not have "special" flags,
->
 
