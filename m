@@ -4,58 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56FD1C7115B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jun 2025 11:28:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5910C7115B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jun 2025 11:33:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AFesUtvoBfhbE6YxWAu0WERDgQE/CPZqj02M4P7AWqI=; b=aajBIJxGyqJXLgfeH8e44MOP0R
-	6FFz687i6+esMdVW+AeTTf3oGATVhqccxTqENlXGlB7N2/nIcUTl1k9mlYD456dCQHsoTxWHchviv
-	j4HAIyB6LOReuXUoc6l9wJQUCGDN3TvwRaba9DhWo5+gYLjx1KrlHc4EGJeZsHTj0K6UNuaJRSQn9
-	Bw4x9xUBrUxBiQNLnS8d5ecAuMdLuJEJAdLhGhrekvyk1geVX3TFh/GqEa4IvjACcf2JtfmpDilMk
-	14l5Z9QbSqP/GygLb67eqURxkf8x1+QeyIXzVIgjRrcR6t972orBbspTlepLFIPR/tx64FcZr9cfU
-	Zywjyjeg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OcYH8hblyOqphSxkfLeFjpUcClvEpIu8NxtFsTsW5Nw=; b=zFptghZFlxAFGaLTpNdvElA5Mi
+	LQlLYwIzwdbnG6AaZp+Q1BIGXwneDq0cud+1hwVYJzJoCzYdDeLOHDceqUwBhDjfhIs8o7F34oa/y
+	9CD7x/62Kl/k7JoB4Eh2FR3PxXY79UVjnbwCIBJYncOxFcHuP5sdXdscHEFONgnStLIBun5+QTwLK
+	7oFiq0d7bQAXSBQqfIIp6N+I47kyeu4Wi6ILHAtfGYvgzBCWIjEyWO37gcm/e+mqolIDgG4zNeDv7
+	SWej6968L2yV7gs3471aYIrphgB1QiXiNTMFS8mgQzzxCQrajl+nrg9suleyskQlnfk8VqmI2m1iG
+	kIps9OaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSDR4-0000000Creq-1Id3;
-	Thu, 19 Jun 2025 11:28:02 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1uSDW7-0000000CtUg-2pjU;
+	Thu, 19 Jun 2025 11:33:15 +0000
+Received: from mout.gmx.net ([212.227.17.21])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSC72-0000000ChVY-2zQ2;
-	Thu, 19 Jun 2025 10:03:17 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B8D9C5C5BE4;
-	Thu, 19 Jun 2025 10:00:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B0CE9C4CEEA;
-	Thu, 19 Jun 2025 10:03:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750327395;
-	bh=+NmzNqs4ioHLre1LisHUVsrMGUyewytWYBtMJl8Nzdk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=u6oZyWiWcI3x2ARJ2V8VEh9o7zxxRBSP4MYbwjVqFs9axHGNnC0qD+nUO2IMyuOb4
-	 diXOATtBrJVhrsWfLdRh5Q1+v18E0G+VgEavr8uOiadAWCp/Dxj/rlHOF2d92JKlG6
-	 tzLxVb4jyx0sEQGE5qWR4GJDhRdJocdfnhC6Lj7VMbkQmt7ni3Q7wtWEf+XKCt9ykD
-	 MpyQha8f/0Yl5FoDumPUOOLLELlNcA2QC4NrhYvkA9hPfqUSXNNqgLKDBUMGkPB5f6
-	 QV48kl2WieXcct/+o58B5UuGos4/FHvFSIpGI58yYm+2NDdIcgfcfVu/sCCKY/lWa/
-	 SbF2olp8sJifA==
-Date: Thu, 19 Jun 2025 11:03:09 +0100
-From: Simon Horman <horms@kernel.org>
-To: Frank Wunderlich <linux@fw-web.de>
-Subject: Re: [net-next v5 3/3] net: ethernet: mtk_eth_soc: skip first IRQ if
- not used
-Message-ID: <20250619100309.GC1699@horms.kernel.org>
+	id 1uSCYz-0000000Cl6O-1i8z;
+	Thu, 19 Jun 2025 10:32:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1750329125; x=1750933925; i=frank-w@public-files.de;
+	bh=OcYH8hblyOqphSxkfLeFjpUcClvEpIu8NxtFsTsW5Nw=;
+	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
+	 Content-Type:Date:In-Reply-To:References:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=Nw2ZDB1MJgjSypAStXwuh1Gbt5FKe1o2iDNYFgB1Mb38X1cBM9/DUysb1uHHLEpL
+	 tUjH9krcooMov1LXLi6BTJfbuC4HVG2c2/gqkh95BFC5OQCJaU8SKZbzpxI0ngiqq
+	 Mu+mOgQYjGcQFggN3UnUq78OEOjA2g9sWXrCpjmfXO+Qq/ArF2qjUo39VS5vIZgFG
+	 wrynAUod06o9TDLTYIo9xGId/GX3KQoh8XTrRq7bPlqjZWwq7egt5ti6xhuLI6jUH
+	 QauFfSnJ9zjX8zG8+mxrpOmWVwifPWr2AlQkHaXu8uZ30kqeFgi/vdxO2u7qD2IG2
+	 UcenJ0Tpj7apFQo2Ug==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [100.64.250.227] ([100.64.250.227]) by
+ trinity-msg-rest-gmx-gmx-live-b647dc579-9795v (via HTTP); Thu, 19 Jun 2025
+ 10:32:05 +0000
+MIME-Version: 1.0
+Message-ID: <trinity-98eee496-129f-43c7-8d3f-4a77f4a183b9-1750329125336@trinity-msg-rest-gmx-gmx-live-b647dc579-9795v>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: horms@kernel.org, linux@fw-web.de
+Cc: nbd@nbd.name, sean.wang@mediatek.com, lorenzo@kernel.org,
+ andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, daniel@makrotopia.org,
+ arinc.unal@arinc9.com
+Subject: Aw: Re: [net-next v5 3/3] net: ethernet: mtk_eth_soc: skip first
+ IRQ if not used
+Content-Type: text/plain; charset=UTF-8
+Date: Thu, 19 Jun 2025 10:32:05 +0000
+In-Reply-To: <20250619100309.GC1699@horms.kernel.org>
 References: <20250618130717.75839-1-linux@fw-web.de>
  <20250618130717.75839-4-linux@fw-web.de>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250618130717.75839-4-linux@fw-web.de>
+ <20250619100309.GC1699@horms.kernel.org>
+X-UI-CLIENT-META-MAIL-DROP: W10=
+X-Provags-ID: V03:K1:ifZaB0TqILOfFP6+5o3LfKPHICLlxtenulQfOOEgY2f7tACewlBl3QLnsAj1aMLZYtvH6
+ npjRu0EOI51tAGdS9VkCwnbATYO+ViMaRfHy0GeW3oHCqjXq2X0EYFFF/2jxfEuwKq46BGz05UKu
+ GKZDt+Qva4mWA9Dk14indJ8u5jWlEWhPkSjyrsIgWl7eQk7ngpQ8ACY327QoBnIHw7RSyZ6q1kCR
+ ht9Hn9Zk2u0Bz3Sw2jVbc1iW2A8/3K/1W7+B8j8hhW14tZRd+hMWNokDLsjCeve8ThOTO5SWJkWF
+ 8fTQ48zmuNnOSPwKxv+9VXdWh6QWqBU5SaRA6u746ln8ZDQ2fvBpb7C1yJiCU9XX8Q=
+UI-OutboundReport: notjunk:1;M01:P0:hCRhkC8HBc4=;DGXBDvuDhiJCdGE8BCakk/+Hi/v
+ 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
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250619_030316_788005_484B8D57 
-X-CRM114-Status: GOOD (  11.70  )
+X-CRM114-CacheID: sfid-20250619_033209_819075_8A43A2F1 
+X-CRM114-Status: GOOD (  16.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,26 +125,61 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>, arinc.unal@arinc9.com, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 18, 2025 at 03:07:14PM +0200, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> On SoCs without MTK_SHARED_INT capability (all except mt7621 and
-> mt7628) platform_get_irq() is called for the first IRQ (eth->irq[0])
-> but it is never used.
-> Skip the first IRQ and reduce the IRQ-count to 2.
-> 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
-> v5:
-> - change commit title and description
-> v4:
-> - drop >2 condition as max is already 2 and drop the else continue
-> - update comment to explain which IRQs are taken in legacy way
+Hi Simon
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+> Gesendet: Donnerstag, 19. Juni 2025 um 12:03
+> Von: "Simon Horman" <horms@kernel.org>
+> Betreff: Re: [net-next v5 3/3] net: ethernet: mtk_eth_soc: skip first IR=
+Q if not used
+>
+> On Wed, Jun 18, 2025 at 03:07:14PM +0200, Frank Wunderlich wrote:
+> > From: Frank Wunderlich <frank-w@public-files.de>
+> >=20
+> > On SoCs without MTK_SHARED_INT capability (all except mt7621 and
+> > mt7628) platform_get_irq() is called for the first IRQ (eth->irq[0])
+> > but it is never used.
+> > Skip the first IRQ and reduce the IRQ-count to 2.
+> >=20
+> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> > ---
+> > v5:
+> > - change commit title and description
+> > v4:
+> > - drop >2 condition as max is already 2 and drop the else continue
+> > - update comment to explain which IRQs are taken in legacy way
+>=20
+> Reviewed-by: Simon Horman <horms@kernel.org>
 
+thank you very much
+
+i guess RB is still valid with changes requested by Daniel?
+
+    net: ethernet: mtk_eth_soc: skip first IRQ if not used
+   =20
+    On SoCs with dedicated RX and TX interrupts (all except MT7621 and
+    MT7628) platform_get_irq() is called for the first IRQ (eth->irq[0])
+    but it is never used.
+    Skip the first IRQ and reduce the IRQ-count to 2.
+
+code (changed condition "if (i =3D=3D MTK_FE_IRQ_SHARED)")
+        for (i =3D 0; i < MTK_FE_IRQ_NUM; i++) {
+-               if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT) && i > 0)
+-                       eth->irq[i] =3D eth->irq[MTK_FE_IRQ_SHARED];
+-               else
+-                       eth->irq[i] =3D platform_get_irq(pdev, i);
++               if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT)) {
++                       if (i =3D=3D MTK_FE_IRQ_SHARED)
++                               eth->irq[MTK_FE_IRQ_SHARED] =3D platform_g=
+et_irq(pdev, i);
++                       else
++                               eth->irq[i] =3D eth->irq[MTK_FE_IRQ_SHARED=
+];
++               } else {
++                       eth->irq[i] =3D platform_get_irq(pdev, i + 1);
++               }
+
+regards Frank
 
