@@ -4,77 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37FF2C7115C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jun 2025 15:45:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41EB8C7115B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jun 2025 15:45:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=D+CCFp+Wc7beQ37y1zJonANxhmhz8jMYorTeDhJV7TE=; b=2Rufsv02xQpLfw7kFyQhIz1r94
-	SKr8VeBsiPStz3ouaqX2Cn/LXzdENZ674QB8/Pe4YVLY++ZNbzK8dv6tQLfTj/iVtNtFJTsuvSr8M
-	YkDigrg3wY++1JzfCEU0NfM5cb0vaaj/13LagzwAEG+RkRQA6fsFTd8xRn1UJUS3kSpiuYGnFYWtQ
-	ymMgVrNOG7yvMPDfbHxYW3nVA9BkI4WDv5PZJktLocGA3ywYMTKpxy7dNpgs559ErsiEOsQep23mf
-	nkkZnTeEmgp7yzvUOuqTj7hC4QchbmHwRR663P+N9ghCAw+kZHpbStkJUlQoNJjCp7aFSewEZIvza
-	1TS0ga1w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=niIEC24pa2jxdKXkefJ3vkZfAtNqJpvIieuArrIyjOQ=; b=wOPMEM+8Vh55BhQihz1XMPRZmg
+	fNbuj6bUnfNkhe4uRyc3BBKFZE8a0Fza74V8qdyMFvNYrtA5NJ1g1vsv9vph0gXLzuyuEOH+k5R0t
+	Z8UEqQBV3CUVA+ohfkxDm0qHl69uXQLw0U2YfYlyPelWzszpE9HfIHxwrqepOBueQdnp7+ybt/Nsd
+	K8FcaMOalnMK8KPl0fuyBbWIKh8ABx+ELLVEAxkYH0M1OYMRmp6LbEPqKHo115+hvb0l6bLLFom96
+	awGfsihwNVr94TrAj0QHz/jHhZ+oHtXmzu+D0r79u4QF+UelH7pRF49z6yplOulMNAwHrKSIBxXE4
+	prR6/iWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSHRi-0000000DRkC-0EQI;
-	Thu, 19 Jun 2025 15:44:58 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1uSHRn-0000000DRuH-3zoW;
+	Thu, 19 Jun 2025 15:45:03 +0000
+Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSDJZ-0000000Cqau-1WmS
+	id 1uSDK0-0000000Cqfy-1UnH
 	for linux-mediatek@lists.infradead.org;
-	Thu, 19 Jun 2025 11:20:18 +0000
-X-UUID: 5c50c4fa4cff11f09eb0dd999d3936bf-20250619
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=D+CCFp+Wc7beQ37y1zJonANxhmhz8jMYorTeDhJV7TE=;
-	b=laUZKVVvI0Q9v/dQsf3J5BQ1Rmd0oSJMY5HLOH7zjo4ILltKw0DeiGQ1YpBUe1/2g4w9odjjsdqFGTia0bJfKQAg/nEgpktRLvCcY52w81iJ9X/tciyXsMxJ383NRKAuTXcv8iZ0s9HMzUDJqQjHrm+42NgDPkxl9aZyU8SMVG4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.3,REQID:8678f66c-12c8-4400-8d94-1aea5209e842,IP:0,UR
-	L:0,TC:0,Content:-25,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:-55
-X-CID-META: VersionHash:09905cf,CLOUDID:7b35a328-fdd2-4021-9c0c-83548fdcf243,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:2,IP:nil
-	,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:
-	1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 5c50c4fa4cff11f09eb0dd999d3936bf-20250619
-Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
-	(envelope-from <mingyen.hsieh@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 569157024; Thu, 19 Jun 2025 04:20:09 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Thu, 19 Jun 2025 19:20:01 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Thu, 19 Jun 2025 19:20:05 +0800
-From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
-	<Leon.Yen@mediatek.com>, <Michael.Lo@mediatek.com>,
-	<allan.wang@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
-	<km.lin@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
-	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Leon Yen <leon.yen@mediatek.com>, "Ming
- Yen Hsieh" <mingyen.hsieh@mediatek.com>
-Subject: [PATCH] wifi: mt76: Limit the concurrent STA and SoftAP to operate on the same channel
-Date: Thu, 19 Jun 2025 19:20:05 +0800
-Message-ID: <20250619112005.2071110-1-mingyen.hsieh@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	Thu, 19 Jun 2025 11:20:45 +0000
+Received: by mail-yb1-xb34.google.com with SMTP id 3f1490d57ef6-e8187601f85so679465276.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 19 Jun 2025 04:20:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1750332043; x=1750936843; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=niIEC24pa2jxdKXkefJ3vkZfAtNqJpvIieuArrIyjOQ=;
+        b=QZt8lqDvVmkO6EjTJwnRNGre11Cu4SS2KpHTqiesXVT/SJ5P/HtT//1QTGY87/BXx/
+         UnID803UoRnuw+1hGeBfpPGbuij398xrws08BN8yoiSfOl6JCPhjrFs19VGKmc1GXgU3
+         /s4azL0ILygmWWZzktGcPEdws+yo7VxEOXFY5OBaJU8L+kSYZzT/YeCJTlZ7PcFokAg8
+         rwrEPwbmPthntGcrQdjnOP20Ac0SFh2PDVhJCMyalYMJt17iV5esT5I53TxkJSr25kX7
+         3Rt+/M0J2r4rfZXlPIlZAHh/TkZmDf4ZEdfXLdYxbB4dF1bi2oVBr0zn1kyYfxdSUvOf
+         vvdA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1750332043; x=1750936843;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=niIEC24pa2jxdKXkefJ3vkZfAtNqJpvIieuArrIyjOQ=;
+        b=nmRjyI34IlR6RCt4TFxYe7tJCn/864lagtMQazky5ocbLkJaTF45+uwz3klnXKiV/H
+         sb2IuKdsgGnq+88sIIeviUeWeFAx6ZVnK/m61H+LAw+zM63x2SObnAGS6MS4eSC4D51v
+         hGSiMtmTx0CQCnp2A/1R9qXBVlVl4C6JRnSnVuwFU1sqazwNhJp2i9l7tAyc71Iqys8x
+         8QDkjj+dw7QGhTFsHRZfdkbf5HVIN45bKEFtCOaDKnIbZIWAGWdj3AeHdpW5kaA75q5u
+         uV6xzaRnPZPx3awdesFjVCsOYZ2K7rEn8+byWrcHuo+U3W+C8R0OU8V3GJcwbrQRnfwh
+         2QRg==
+X-Forwarded-Encrypted: i=1; AJvYcCVsEUFybYuI8c0GaRjSb/Vn8I2ecn2Vr/EHexaINwtmRGGNbNyDLl0Er+QMKn0svwtfTYrrhA3qwv0dNCcP1A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzquBliYNk0dg8uK+UESxXKGZii9r3yR4voJdge7vzQJRfaEMDI
+	WnTsvOrDlSX5EQ6mTqHrqUvNQxGWdiQ9fxob/AP0EcJI5ejiqTu+JktsS8UVI/7w8fpCqkp/gRp
+	p2AVSi2w8O8YB7zqgahEXrgCycbNL6JqEMufsiYLCuA==
+X-Gm-Gg: ASbGncvWaby/Zvr9KsIjujATkra5H6muNbHYZ84LE9raMhiRSunfPdKhGwvWqnt8wiB
+	4EJ3xDFqXFXziur97XulNPqSZHXNWTHLK9OCN5iQJnT3B4UQ24rNT5/HL6s38Rw18L2vtkaBciP
+	g3ushFhhoXDY6fciELUtKoLTh93kHsZkldU0E40nPnLskD
+X-Google-Smtp-Source: AGHT+IF2iE0ox/gzxKHz5bI8Q+Pkgb8UWe4OY/z3MjCCMZXinEnzR7Rqk/xTiCIm/KwZ4rpmEsnSRUYX7m4o4AQKZbE=
+X-Received: by 2002:a05:6902:cc6:b0:e81:7e16:aad7 with SMTP id
+ 3f1490d57ef6-e822ac7a461mr27597842276.24.1750332043584; Thu, 19 Jun 2025
+ 04:20:43 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+References: <174972756982.3337526.6755001617701603082.stgit@mhiramat.tok.corp.google.com>
+In-Reply-To: <174972756982.3337526.6755001617701603082.stgit@mhiramat.tok.corp.google.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Thu, 19 Jun 2025 13:20:07 +0200
+X-Gm-Features: AX0GCFvXjxV2EcT_wfBSHPu57s1TY2VkiQlHaijGThkd0p21SEv0wZoDeoPKInc
+Message-ID: <CAPDyKFpCPLCxp54yjBAaLz2tJK6Ouk-ikpvs9uby7aXnic=U7Q@mail.gmail.com>
+Subject: Re: [PATCH] mtk-sd: Prevent memory corruption from DMA map failure
+To: "Masami Hiramatsu (Google)" <mhiramat@kernel.org>
+Cc: Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Tomasz Figa <tfiga@chromium.org>, 
+	Sergey Senozhatsky <senozhatsky@chromium.org>, linux-mmc@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250619_042017_416525_4D384B42 
-X-CRM114-Status: GOOD (  12.26  )
+X-CRM114-CacheID: sfid-20250619_042044_394785_83A31B7D 
+X-CRM114-Status: GOOD (  21.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,96 +95,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Leon Yen <leon.yen@mediatek.com>
+On Thu, 12 Jun 2025 at 13:26, Masami Hiramatsu (Google)
+<mhiramat@kernel.org> wrote:
+>
+> From: Masami Hiramatsu (Google) <mhiramat@kernel.org>
+>
+> If msdc_prepare_data() fails to map the DMA region, the request is
+> not prepared for data receiving, but msdc_start_data() proceeds
+> the DMA with previous setting.
+> Since this will lead a memory corruption, we have to stop the
+> request operation soon after the msdc_prepare_data() fails to
+> prepare it.
+>
+> Signed-off-by: Masami Hiramatsu (Google) <mhiramat@kernel.org>
 
-Due to the lack of NoA(Notice of Absence) mechanism in SoftAP mode, it is
-inappropriate to allow concurrent SoftAP and STA to operate on the
-different channels.
+Applied to fixes and by adding a fixes/stable tag, thanks!
 
-This patch restricts the concurrent SoftAP and STA to be setup on the same
-channel only.
+Kind regards
+Uffe
 
-Signed-off-by: Leon Yen <leon.yen@mediatek.com>
-Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
----
- .../net/wireless/mediatek/mt76/mt792x_core.c  | 42 ++++++++++++++++---
- 1 file changed, 36 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_core.c b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-index 7f572f8afc02..869fd90202b8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-@@ -28,7 +28,7 @@ static const struct ieee80211_iface_combination if_comb[] = {
- 	},
- };
- 
--static const struct ieee80211_iface_limit if_limits_chanctx[] = {
-+static const struct ieee80211_iface_limit if_limits_chanctx_mcc[] = {
- 	{
- 		.max = 2,
- 		.types = BIT(NL80211_IFTYPE_STATION) |
-@@ -36,8 +36,7 @@ static const struct ieee80211_iface_limit if_limits_chanctx[] = {
- 	},
- 	{
- 		.max = 1,
--		.types = BIT(NL80211_IFTYPE_AP) |
--			 BIT(NL80211_IFTYPE_P2P_GO)
-+		.types = BIT(NL80211_IFTYPE_P2P_GO)
- 	},
- 	{
- 		.max = 1,
-@@ -45,16 +44,47 @@ static const struct ieee80211_iface_limit if_limits_chanctx[] = {
- 	}
- };
- 
--static const struct ieee80211_iface_combination if_comb_chanctx[] = {
-+static const struct ieee80211_iface_combination if_comb_chanctx_mcc[] = {
- 	{
--		.limits = if_limits_chanctx,
--		.n_limits = ARRAY_SIZE(if_limits_chanctx),
-+		.limits = if_limits_chanctx_mcc,
-+		.n_limits = ARRAY_SIZE(if_limits_chanctx_mcc),
- 		.max_interfaces = 3,
- 		.num_different_channels = 2,
- 		.beacon_int_infra_match = false,
- 	}
- };
- 
-+static const struct ieee80211_iface_limit if_limits_chanctx_scc[] = {
-+	{
-+		.max = 2,
-+		.types = BIT(NL80211_IFTYPE_STATION) |
-+			 BIT(NL80211_IFTYPE_P2P_CLIENT)
-+	},
-+	{
-+		.max = 1,
-+		.types = BIT(NL80211_IFTYPE_AP)
-+	},
-+	{
-+		.max = 1,
-+		.types = BIT(NL80211_IFTYPE_P2P_DEVICE)
-+	}
-+};
-+
-+static const struct ieee80211_iface_combination if_comb_chanctx_scc[] = {
-+	{
-+		.limits = if_limits_chanctx_scc,
-+		.n_limits = ARRAY_SIZE(if_limits_chanctx_scc),
-+		.max_interfaces = 3,
-+		.num_different_channels = 1,
-+		.beacon_int_infra_match = false,
-+	}
-+};
-+
-+static const struct ieee80211_iface_combination if_comb_chanctx[] = {
-+		if_comb_chanctx_mcc[0],
-+		if_comb_chanctx_scc[0],
-+};
-+
- void mt792x_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
- 	       struct sk_buff *skb)
- {
--- 
-2.34.1
-
+> ---
+>  drivers/mmc/host/mtk-sd.c |   17 ++++++++++++++++-
+>  1 file changed, 16 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index 3594010bc229..56b4999fe58f 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -834,6 +834,11 @@ static void msdc_prepare_data(struct msdc_host *host, struct mmc_data *data)
+>         }
+>  }
+>
+> +static bool msdc_data_prepared(struct mmc_data *data)
+> +{
+> +       return data->host_cookie & MSDC_PREPARE_FLAG;
+> +}
+> +
+>  static void msdc_unprepare_data(struct msdc_host *host, struct mmc_data *data)
+>  {
+>         if (data->host_cookie & MSDC_ASYNC_FLAG)
+> @@ -1466,8 +1471,18 @@ static void msdc_ops_request(struct mmc_host *mmc, struct mmc_request *mrq)
+>         WARN_ON(!host->hsq_en && host->mrq);
+>         host->mrq = mrq;
+>
+> -       if (mrq->data)
+> +       if (mrq->data) {
+>                 msdc_prepare_data(host, mrq->data);
+> +               if (!msdc_data_prepared(mrq->data)) {
+> +                       /*
+> +                        * Failed to prepare DMA area, fail fast before
+> +                        * starting any commands.
+> +                        */
+> +                       mrq->cmd->error = -ENOSPC;
+> +                       mmc_request_done(mmc_from_priv(host), mrq);
+> +                       return;
+> +               }
+> +       }
+>
+>         /* if SBC is required, we have HW option and SW option.
+>          * if HW option is enabled, and SBC does not have "special" flags,
+>
 
