@@ -4,107 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97E0DC7115B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jun 2025 15:49:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BD22C7115C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jun 2025 15:49:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=j6QZTbgBsBIWN9k4dZ6Hk3/RHB+MOYXXgpk4gPxs+OQ=; b=fJN+QZRC9ftBNn2dSK/ccF0Jc7
-	7lkEPaAMKeiRiadWfjBEy58FyfsMUZ2Om1I/dGI4+VZ4SskfC0CvxvdRT/lc3NqRMNxiaCRzFbURu
-	NZU8Mz9D781Q5OtPYOZhXR46xrIwHlwAFCVB4wYR3BOQThowWvAUfGdMr7hZSjpdNBe6i2Mynatyj
-	A8wdu7WanL5TxC8OL4MFDOSrJtDJOBrVkY8i5cMnTSLZHI0OJ6B2qwkVX/u3QIK1qfEiiq1qyTRam
-	UGY+8+FqdzQYAIAz5AxD7d3OKsVgdvTmJ2jvZbvgMC2K6aQttlo/HF3uzQifU37OmVxe1sJMwf3eg
-	VHiwyb8g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HS2lUJltRvHPUIa4JQpyFGxD+jJplBBokp6RSnTT/O0=; b=oqF9G2Vil/ylul
+	yD1dQMl3AcPSii59iylrZjWb9lVkQBKa1Q+mswVPa0NZKkZAidPupt6iFhcHsNEWPhN8Bv1RtwsSl
+	WMdMrhuV+oFOpacB11EDDZS5uuOUmoHfT2N+oz4aoHJqGoOjTckRdWxN/LYQYollIyJ6YpQWJKEwt
+	mZXfX1KqHGgB9yTmSKE24f6TYfH7MQbISqDVo1EIpQQGArUVT+7bpPhenOtUVcvbtgZP3jiijWu0w
+	BiPwFFafJ/CDAGGbSd5g9e2MgoHs2AklRr3msZ8+qlwLwBWOOciL8SdMP4rpCIQ0AHwnD434f+w/Y
+	jPzZ5r9w3sxAi9xQX+kw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSHW2-0000000DYRf-3wxl;
-	Thu, 19 Jun 2025 15:49:26 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1uSHW8-0000000DYcG-0uhf;
+	Thu, 19 Jun 2025 15:49:32 +0000
+Received: from mxout3.routing.net ([2a03:2900:1:a::8])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSF5A-0000000D8NN-1Lwa
-	for linux-mediatek@lists.infradead.org;
-	Thu, 19 Jun 2025 13:13:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1750338809;
+	id 1uSFCy-0000000D9N4-3s5s;
+	Thu, 19 Jun 2025 13:21:38 +0000
+Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
+	by mxout3.routing.net (Postfix) with ESMTP id 7241361634;
+	Thu, 19 Jun 2025 13:21:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1750339295;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=j6QZTbgBsBIWN9k4dZ6Hk3/RHB+MOYXXgpk4gPxs+OQ=;
-	b=gYaR5fGuCZKJKmXcPWIDn1m6BMadsgDlb66jwK/+D/hY4B1dwdwWIGmtnqRd59RqvHLzQB
-	SjUC5OBBcav+CneAHRKHUKmumqk9mQ8L0aRKaWL2fEdsmDRjKwt20NHPYKzpkVdiwZuOjC
-	yfhIMTpHBRTbFb/eAavP4gLBnWGwSHo=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-512-o88NMlqqMQ-cHVV0bHrMZg-1; Thu, 19 Jun 2025 09:13:28 -0400
-X-MC-Unique: o88NMlqqMQ-cHVV0bHrMZg-1
-X-Mimecast-MFC-AGG-ID: o88NMlqqMQ-cHVV0bHrMZg_1750338807
-Received: by mail-wm1-f69.google.com with SMTP id 5b1f17b1804b1-450cb8f8b1bso887845e9.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 19 Jun 2025 06:13:28 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750338807; x=1750943607;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=j6QZTbgBsBIWN9k4dZ6Hk3/RHB+MOYXXgpk4gPxs+OQ=;
-        b=SQwIgA8AYVsjJrrSEQBqLVwtl95baYwcg9fTR+kNkMztVkUsTm1+QBZ64o0Hsk1E3y
-         lziu85IkuJRkeG5SXWjChbmROtbZnmzxzQn9XhTqfH3HDUjnegCFWpveoetHiBEyf7lz
-         WLMk989TteFE7vUULxFZuN/nX/BmPEjUFuOtsPfQqDEe0rgUdyLBB6dU2g4hN8aqV8eT
-         uDcbCQ4XNQDH/WMSIH9/cMm8j/7wEM54mOTKbs2j+rezyoXRiaExcf16DXQ4VwnmOY4e
-         2cKunJ1hidBj6TQ7A5Q3x3CDaPbzvSUpp6uG/A+xYvY27BqRMh+7/+gy3Hrr5Pkt2K9q
-         oahw==
-X-Forwarded-Encrypted: i=1; AJvYcCUlbcq0xWUO80pIHmnqoKwNXLONDRBHRAkZHarNJuO///TArGL10ZJrbiStP836BDnl5lklzivBcj94I01Mfg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwQXnd2LGKxXfSWQoMPcgKeZdy4lDdrZU94ihqSswnFcLsOcmYx
-	13yv8xtDMfMRHo+rv/PajlqazeFFxC2oKc4s+2IG5Es2+WtqdszARFLFp2mTAirD2O4R1m8RcXh
-	AF2v1gJU0+OCd/I0KIRcTmo73J2VMa/Ttt3I//22drRVfw/F3z2suL30W6lE1u4jJNC/q/mTirw
-	==
-X-Gm-Gg: ASbGncvdJ8PewbpNWX2+4gBXc1oiQCR70UkYdfBk8A6y8HlWLjx+3F865AybSurJWPk
-	LuYoIYWWhg1AIYjithgO2XMkDPmYYkg13s0bBUd1Co48rO9ypyoRfGnMhICUGoXUV8wT/6fV+0m
-	UnQwdgU5idaDLH5t0y4lVGimEdKlYla1s6ITJ7YKn4ySGestPwNCDD8UZhENVO7E4f0TSNVpeCP
-	64v2XCR5A+Iu6O3OdaSJbmKcsanOylPJgx+nLwaTCUMZhl6qnsTvqbUXHPLRnFJjkjRUQw6f4df
-	O9sGsW405ZIEn/wloRqUcqTju54ov117fAfOqk5jmDk6hRID6KU2YA==
-X-Received: by 2002:a05:600c:1c12:b0:44b:1f5b:8c85 with SMTP id 5b1f17b1804b1-4533caf5e9fmr223551245e9.13.1750338807292;
-        Thu, 19 Jun 2025 06:13:27 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGMD/1y+DW1U7YZaLtAM718HwgsMR2hyVtSoS0D2IF1BJD9ZA4K+FKXjkc1zCzOuZWEA10NWA==
-X-Received: by 2002:a05:600c:1c12:b0:44b:1f5b:8c85 with SMTP id 5b1f17b1804b1-4533caf5e9fmr223550895e9.13.1750338806871;
-        Thu, 19 Jun 2025 06:13:26 -0700 (PDT)
-Received: from jlelli-thinkpadt14gen4.remote.csb ([151.47.246.160])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4536087c247sm16215935e9.9.2025.06.19.06.13.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Jun 2025 06:13:25 -0700 (PDT)
-Date: Thu, 19 Jun 2025 15:13:21 +0200
-From: Juri Lelli <juri.lelli@redhat.com>
-To: Kuyo Chang <kuyo.chang@mediatek.com>
-Cc: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>,
-	Vincent Guittot <vincent.guittot@linaro.org>,
-	Dietmar Eggemann <dietmar.eggemann@arm.com>,
-	Steven Rostedt <rostedt@goodmis.org>,
-	Ben Segall <bsegall@google.com>, Mel Gorman <mgorman@suse.de>,
-	Valentin Schneider <vschneid@redhat.com>,
+	bh=HS2lUJltRvHPUIa4JQpyFGxD+jJplBBokp6RSnTT/O0=;
+	b=IiGc5phLz6zEsG8qlLtRtYkeD0bxYWoox9fQ+43vKyLGjgVxaEeH1iHA5zfIgBSd1ZCEk4
+	V1ubV+Y3pQfoZx2RbzOsF54ca/gKjmr8j71jJEn7E1xN1FSAhgAMzMdGx+CInY0Za374fU
+	jCekEa0SyjdgSt9Tu9DYJrfkR0itzcU=
+Received: from frank-u24.. (fttx-pool-80.245.76.73.bambit.de [80.245.76.73])
+	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 395D21226AA;
+	Thu, 19 Jun 2025 13:21:35 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: Felix Fietkau <nbd@nbd.name>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	jstultz <jstultz@google.com>, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [RFC PATCH 1/1] sched/deadline: Fix RT task potential starvation
- when expiry time passed
-Message-ID: <aFQM8TdZIIvvGv8T@jlelli-thinkpadt14gen4.remote.csb>
-References: <20250615131129.954975-1-kuyo.chang@mediatek.com>
- <aFAyN4rfssKmbUE5@jlelli-thinkpadt14gen4.remote.csb>
- <089882f95b1b910f7feecddd0ad9b17f38394c64.camel@mediatek.com>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [net-next v6 4/4] net: ethernet: mtk_eth_soc: only use legacy mode on missing IRQ name
+Date: Thu, 19 Jun 2025 15:21:24 +0200
+Message-ID: <20250619132125.78368-5-linux@fw-web.de>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250619132125.78368-1-linux@fw-web.de>
+References: <20250619132125.78368-1-linux@fw-web.de>
 MIME-Version: 1.0
-In-Reply-To: <089882f95b1b910f7feecddd0ad9b17f38394c64.camel@mediatek.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 93Wv_L3MkysZWhVLXAHFwoaD4lr4BG_rAgNZw2rTJQ0_1750338807
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250619_061332_427742_0B2E6A9E 
-X-CRM114-Status: GOOD (  20.88  )
+X-CRM114-CacheID: sfid-20250619_062137_271414_072F1C46 
+X-CRM114-Status: GOOD (  10.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,53 +75,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, arinc.unal@arinc9.com, linux-kernel@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-mediatek@lists.infradead.org, Simon Horman <horms@kernel.org>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 18/06/25 22:20, Kuyo Chang wrote:
+From: Frank Wunderlich <frank-w@public-files.de>
 
-...
+If platform_get_irq_byname returns -ENXIO fall back to legacy (index
+based) mode, but on other errors function should return this error.
 
-> When dl_defer_running = 1 and the running time has been exhausted, 
-> it means that the dl_server should stop at this point.
-> However, if start_dl_timer() returns a failure, it indicates that the
-> actual time spent consuming the running time was unexpectedly long. 
->  
-> At this point, there are two options:
-> [as-is] 1. re-enqueuing the dl entity with ENQUEUE_REPLENISH will clear
-> the throttled flag 
-> and re-enqueue the dl entity to keep the fair_server running. 
-> enqueue_dl_entity(dl_se, ENQUEUE_REPLENISH);
-> => replenish_dl_entity
->   => replenish_dl_new_period(dl_se, rq);
->   => dl_se->dl_yielded = 0;
->   => dl_se->dl_throttled = 0;
-> => __enqueue_dl_entity(dl_se);
-> 
-> [to-be] 2. To avoid RT latency, the fair_server should remain throttled
-> while replenishing the dl_se. 
-> Once replenishing is complete, we can ensure that a timer is
-> successfully started. 
-> When the timer is triggered, the throttled state will be cleared,
-> ensuring that RT tasks can execute during this interval.
->  
-> It is a policy decision for dealing with the case of failure in
-> start_dl_timer().
-> The second approach is better for real-time (RT) latency in my opinion,
-> as RT tasks must be prioritized.
+Suggested-by: Daniel Golle <daniel@makrotopia.org>
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-OK, I think I see your points, but I am still not sure I fully
-understand the link with the issue you describe in the changelog - the
-relation with "DL replenish lagged too much", that is.
-
-Could you please expand on the details of the situation that is opening
-up for the issue your patch is addressing? Do you know why we hit the
-corner case that causes the warning in the first place?
-
-I would like to understand exactly what we are trying to fix before
-deciding how to fix it, sorry if I am being dense. :-)
-
-Thanks,
-Juri
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 67ba8927be46..f8a907747db4 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -3346,6 +3346,13 @@ static int mtk_get_irqs(struct platform_device *pdev, struct mtk_eth *eth)
+ 	if (eth->irq[MTK_FE_IRQ_TX] >= 0 && eth->irq[MTK_FE_IRQ_RX] >= 0)
+ 		return 0;
+ 
++	/* only use legacy mode if platform_get_irq_byname returned -ENXIO */
++	if (eth->irq[MTK_FE_IRQ_TX] != -ENXIO)
++		return eth->irq[MTK_FE_IRQ_TX];
++
++	if (eth->irq[MTK_FE_IRQ_RX] != -ENXIO)
++		return eth->irq[MTK_FE_IRQ_RX];
++
+ 	/* legacy way:
+ 	 * On MTK_SHARED_INT SoCs (MT7621 + MT7628) the first IRQ is taken
+ 	 * from devicetree and used for both RX and TX - it is shared.
+-- 
+2.43.0
 
 
