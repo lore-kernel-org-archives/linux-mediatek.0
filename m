@@ -4,66 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C850C71159
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jun 2025 06:19:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C0D0C71136
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jun 2025 06:23:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DqHNEbbR8Ze7dyYo7f0QgeK+Y4R9ODp7Tnqv7tsUimI=; b=uLnbilxvmMq90NO8jXfsDk6cIu
-	fKaI+MjJEG611wZtnUPeNf4ZFyw8W9G2S/KAevnPlGCmPMho48K1kVyt2reJ933MEFpbY8VH1TwGE
-	hXYHMXSHJ4gC8ObA7Q+anvD1Yc1XP21jwq+0BrwghM2mpzzlyVHrbqk+SBhayyixJfbE71zCMps6M
-	+sk4smlVal4mm2t6kj4XYDlwnWGqa2P9f2O/+6mtD9fBlrCjTRrjEMGThiZDawv7PegfTjtBr+Wqm
-	sTzLn1bQPvARXMKVFhrIRDWFkNDe7ocq35Czzt1xHXYwtXpC+FgEw85PpvfxgvXgkqze/jWDeZG3p
-	FAqbvLIA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=cifxfO68sswLfMzRosn/MCLxerczOOgP1JQm2wve+Mg=; b=pwfsqNMrv5SfgH
+	lDYbTNCOqJ+EM0bGZDS1A9YGpTipbd8feJWVXCRK9/5/xJmtPqiRV6P8cQSBCaDL4Rds2YR0lIsgY
+	9v+N+5vDu74erH8ipntlizKO2PUWSDwEHKiHipBhuY0JGLy58s30ZfZBfRRJjIj+I50uEzYBlWlSQ
+	FwTEtfQVOHPwdv+LpBfzQka/HVMfVZ+egZJTObLRLre8YRWT3Xi7G8ywjXAPlkiLk9318leEZoSD+
+	KkmV7xajVuXVSM+ijNVR4kRWdBqYelXcs+Yal4B4RSltqM76QIPyitvntykB29ZlXLoe6VtCF1Fqv
+	Qg0QA7BVeHbKchdXZ5XQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uS8c2-0000000C8sq-2OAP;
-	Thu, 19 Jun 2025 06:19:02 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uS8gO-0000000C9Cb-131x;
+	Thu, 19 Jun 2025 06:23:32 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uS8Cl-0000000C6Md-3zBy;
-	Thu, 19 Jun 2025 05:52:57 +0000
+	id 1uS8Gv-0000000C6sP-0J7O;
+	Thu, 19 Jun 2025 05:57:14 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1750312373;
-	bh=S+P2It97TueKH/kAbwyhYnXNnN0tqQNO09MpJUtK+fQ=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=kuzMUVdAfcV/tHeVYxKywMBdeZTdXvqN6JkF+2Z+7W0I52mstLMSE7Hz5+xwDmqtO
-	 v2PFVxqDnc8wJVCegk6de7OGF8y2WwNVXIQH6sZiBVmwuAG/xYSZ4m86ZXYTshMhPE
-	 uSOgkuJuDxXv90Ay6AnmiSK6ASsE/SrMwPVKZ+f/m1PX4JqXuPpGqYyqA/n3TBRBKY
-	 U8NBmXgQ6fum4McfnLKB/Er6Km7G+u5Jtt53+F2clY2n8HjuUO3zjnI9PIZy5yVJiU
-	 AS8MLCwH0dNT0xj3wQ+cggx/LdAIwefMq0C0zkFzJXSuKCms7HflAeBODKztyHSv+s
-	 MpbNWr27zyWPA==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	s=mail; t=1750312631;
+	bh=D/xlw55EoSMWX+1oNBIVOI7WZ/cWsoba7+lpu84WuNQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=HYePmHLQBPfH9nqNrBiWlUk9B7aSLg1PcCX6BQGVyy1svSIar9TjqA+9hmSzVyIDE
+	 zG4F9kSlE1W7H+GxLABGyl+VdZACo0DO+7z1srK6g5VsLuwe0iCfTfPNBQp7WvFzw0
+	 DMsJ5/0IZliTgBFXU7jjyokLq9Nj21GNr3pmXJS3EHt00dv6hAdx11Ru9DMpoiSjb3
+	 tSGM0qBjCCnLTZh+YChAp7g1T/JbCqvGmA/8+50mO7perxqmfusXI0MMhDkHJbIAIY
+	 /tW6PeOrGSMbe0RBwzzOZTMbbLxIuZe+7YqzE56U7oPlx27ZVfQhfmDX54auoyrX6h
+	 NoHEjjqxML6sQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 716E717E06BF;
-	Thu, 19 Jun 2025 07:52:53 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, 
- Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
- Chen-Yu Tsai <wenst@chromium.org>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-input@vger.kernel.org
-In-Reply-To: <20250617082004.1653492-1-wenst@chromium.org>
-References: <20250617082004.1653492-1-wenst@chromium.org>
-Subject: Re: (subset) [PATCH v3 0/6] arm64: mediatek: mt8186-corsola:
- Consolidate and add new devices
-Message-Id: <175031237337.17587.18276191221301074786.b4-ty@collabora.com>
-Date: Thu, 19 Jun 2025 07:52:53 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id EC68417E1559;
+	Thu, 19 Jun 2025 07:57:09 +0200 (CEST)
+Message-ID: <9cdf0624-f9bb-4b11-973e-9480fd655136@collabora.com>
+Date: Thu, 19 Jun 2025 07:57:09 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 00/13] further mt7988 devicetree work
+To: Frank Wunderlich <linux@fw-web.de>,
+ MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ Chanwoo Choi <cw00.choi@samsung.com>, Georgi Djakov <djakov@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+References: <20250616095828.160900-1-linux@fw-web.de>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250616095828.160900-1-linux@fw-web.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250618_225256_171608_9F1C69F3 
-X-CRM114-Status: UNSURE (   7.05  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250618_225713_262082_62C85E33 
+X-CRM114-Status: GOOD (  22.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,34 +78,111 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, linux-pm@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, DENG Qingfang <dqfext@gmail.com>, Johnson Wang <johnson.wang@mediatek.com>, linux-mediatek@lists.infradead.org, Jia-Wei Chang <jia-wei.chang@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 17 Jun 2025 16:19:57 +0800, Chen-Yu Tsai wrote:
-> This is v3 of my "component probe for Corsola devices" series.
+Il 16/06/25 11:58, Frank Wunderlich ha scritto:
+> From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> Changes since v2:
-> - Rebased onto next-20250616
-> - Collected reviewed-by tags
-> - Dropped driver changes that are already in v6.16-rc1
-> 
-> [...]
 
-Applied to v6.16-next/dts64, thanks!
-
-[2/6] dt-bindings: arm: mediatek: Merge MT8186 Voltorb entries
-      commit: b292005d5cafb0993f7ff2c0477d5b71cbd3e387
-[3/6] dt-bindings: arm: mediatek: Add MT8186 Squirtle Chromebooks
-      commit: a883bc5dc12d52a6a8d5afbd0131be55f0684364
-[4/6] arm64: dts: mediatek: mt8186-steelix: Mark second source components for probing
-      commit: 5349994cfd89ca17b8a820ddb41e4572d9e52b49
-[5/6] arm64: dts: mediatek: mt8186: Merge Voltorb device trees
-      commit: 14e8332e5c5d3b9f8ccfa1f3e0dfe05ca136ba2a
-[6/6] arm64: dts: mediatek: mt8186: Add Squirtle Chromebooks
-      commit: f7ef352d45b71e6f3cb7bb572f68eaa0981e9e5c
+I think that this series is ready to be applied; however, I need someone to take
+the bindings before I can apply the devicetree part to the MediaTek trees.
 
 Cheers,
 Angelo
+
+
+> This series continues mt7988 devicetree work
+> 
+> - Extend cpu frequency scaling with CCI
+> - GPIO leds
+> - Basic network-support (ethernet controller + builtin switch + SFP Cages)
+> 
+> depencies (i hope this list is complete and latest patches/series linked):
+> 
+> support interrupt-names because reserved IRQs are now dropped, so index based access is now wrong
+> https://patchwork.kernel.org/project/netdevbpf/patch/20250616080738.117993-2-linux@fw-web.de/
+> 
+> for SFP-Function (macs currently disabled):
+> 
+> PCS clearance which is a 1.5 year discussion currently ongoing
+> 
+> e.g. something like this (one of):
+> * https://patchwork.kernel.org/project/netdevbpf/patch/20250610233134.3588011-4-sean.anderson@linux.dev/ (v6)
+> * https://patchwork.kernel.org/project/netdevbpf/patch/20250511201250.3789083-4-ansuelsmth@gmail.com/ (v4)
+> * https://patchwork.kernel.org/project/netdevbpf/patch/ba4e359584a6b3bc4b3470822c42186d5b0856f9.1721910728.git.daniel@makrotopia.org/
+> 
+> full usxgmii driver:
+> https://patchwork.kernel.org/project/netdevbpf/patch/07845ec900ba41ff992875dce12c622277592c32.1702352117.git.daniel@makrotopia.org/
+> 
+> first PCS-discussion is here:
+> https://patchwork.kernel.org/project/netdevbpf/patch/8aa905080bdb6760875d62cb3b2b41258837f80e.1702352117.git.daniel@makrotopia.org/
+> 
+> and then dts nodes for sgmiisys+usxgmii+2g5 firmware
+> 
+> when above depencies are solved the mac1/2 can be enabled and 2.5G phy/SFP slots will work.
+> 
+> changes:
+> v4:
+>    net-binding:
+>      - allow interrupt names and increase max interrupts to 6 because of RSS/LRO interrupts
+>        (dropped Robs RB due to this change)
+> 
+>    dts-patches:
+>    - add interrupts for RSS/LRO and interrupt-names for ethernet node
+>    - eth-reg and clock whitespace-fix
+>    - comment for fixed-link on gmac0
+>    - drop phy-mode properties as suggested by andrew
+>    - drop phy-connection-type on 2g5 board
+>    - reorder some properties
+>    - update 2g5 phy node
+>      - unit-name dec instead of hex to match reg property
+>      - move compatible before reg
+>      - drop phy-mode
+> 
+> v3:
+>    - dropped patches already applied (SPI+thermal)
+>    - added soc specific cci compatible (new binding patch + changed dts)
+>    - enable 2g5 phy because driver is now merged
+>    - add patch for cleaning up unnecessary pins
+>    - add patch for gpio-leds
+>    - add patch for adding ethernet aliases
+> 
+> v2:
+>    - change reg to list of items in eth binding
+>    - changed mt7530 binding:
+>      - unevaluatedProperties=false
+>      - mediatek,pio subproperty
+>      - from patternProperty to property
+>    - board specific properties like led function and labels moved to bpi-r4 dtsi
+> 
+> 
+> Frank Wunderlich (13):
+>    dt-bindings: net: mediatek,net: update for mt7988
+>    dt-bindings: net: dsa: mediatek,mt7530: add dsa-port definition for
+>      mt7988
+>    dt-bindings: net: dsa: mediatek,mt7530: add internal mdio bus
+>    dt-bindings: interconnect: add mt7988-cci compatible
+>    arm64: dts: mediatek: mt7988: add cci node
+>    arm64: dts: mediatek: mt7988: add basic ethernet-nodes
+>    arm64: dts: mediatek: mt7988: add switch node
+>    arm64: dts: mediatek: mt7988a-bpi-r4: add proc-supply for cci
+>    arm64: dts: mediatek: mt7988a-bpi-r4: drop unused pins
+>    arm64: dts: mediatek: mt7988a-bpi-r4: add gpio leds
+>    arm64: dts: mediatek: mt7988a-bpi-r4: add aliases for ethernet
+>    arm64: dts: mediatek: mt7988a-bpi-r4: add sfp cages and link to gmac
+>    arm64: dts: mediatek: mt7988a-bpi-r4: configure switch phys and leds
+> 
+>   .../bindings/interconnect/mediatek,cci.yaml   |  11 +-
+>   .../bindings/net/dsa/mediatek,mt7530.yaml     |  24 +-
+>   .../devicetree/bindings/net/mediatek,net.yaml |  28 +-
+>   .../mediatek/mt7988a-bananapi-bpi-r4-2g5.dts  |  11 +
+>   .../dts/mediatek/mt7988a-bananapi-bpi-r4.dts  |  19 ++
+>   .../dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi | 198 ++++++-----
+>   arch/arm64/boot/dts/mediatek/mt7988a.dtsi     | 307 +++++++++++++++++-
+>   7 files changed, 498 insertions(+), 100 deletions(-)
+> 
 
 
 
