@@ -4,42 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF966C7115A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jun 2025 15:49:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B56EC7115C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jun 2025 15:49:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=eQ7YWrPQH4eKb2hcGi9xzFrlY9L4wPx8/nkdEx2cSuc=; b=fGhTmbyFUjC5AM
-	tLQ6YL+ho1BbP6kQ+f9NqQCcttUL1pKT9VuiPgNq+KecSTh6g2GQKtkYQyvf5bKqzGZsZg0TfLUBT
-	+Rz+MpZoDP5J+GOsxBMCqrejBRMkV2doWsDJulpk5MIHvmz3thXOBxbxCSDaJIO0JqRewuyrTuZ0R
-	0NXL4lnHXPbLHAxA2JEzfN+wKuo4rhqmRcUwDqldatYI0QsvXzm3oaVSCVvtdlfPBRiLcwx1IAJql
-	menpOY8y3kR5ckPphc5bSxqzs62fprIrma1LnOvO3f8Pti34qc2WZBpDsKNk0IHQcN07aZUbjjnAz
-	hJsd3DGo4nE4PohRYpIw==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=y2r8lo6RJvLluKg4KIZxEwc9bRBev7HH1fZd4pPyLJ4=; b=GtQ1agXCYqzJcQ
+	Gu7/sjLZ1+EfBXrWzEIQnXtwQC4MCjimR+b06nyVBVvF+kf3AHZmW9WlpPST3HvoHwYyu4RDLELGd
+	qS2rVbu6t/2w7u6K9muZdjREDyaaTYTDxmBdQRs9YqaBTV+Wo87ThgNPgO4CtRgGH/z4BF7DgiKwT
+	yLFu6tk+nj20UnaOsjIGsn2yUY1iSBQXPG/6ddCpQVsAPbxSk/aSUGH0E1Avx/xfXecLwzwPk4aH3
+	Qa+RbU6UudY1TN6aVoQMgW3csLgr4epxGFt0icLjmblRaG3YLf53Z7T3GpbY6CaRutnqDaDZDEJtI
+	ZUkMNoQobzY5sjgpJjHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSHWA-0000000DYgx-3TT4;
-	Thu, 19 Jun 2025 15:49:34 +0000
-Received: from mxout3.routing.net ([2a03:2900:1:a::8])
+	id 1uSHWC-0000000DYj5-0AXZ;
+	Thu, 19 Jun 2025 15:49:36 +0000
+Received: from mxout1.routing.net ([2a03:2900:1:a::a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSFCy-0000000D9N0-3mSD;
-	Thu, 19 Jun 2025 13:21:38 +0000
+	id 1uSFCy-0000000D9N2-3moG;
+	Thu, 19 Jun 2025 13:21:39 +0000
 Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
-	by mxout3.routing.net (Postfix) with ESMTP id 69E1B61633;
+	by mxout1.routing.net (Postfix) with ESMTP id E246D3FD38;
 	Thu, 19 Jun 2025 13:21:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1750339294;
+	s=20200217; t=1750339295;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=eQ7YWrPQH4eKb2hcGi9xzFrlY9L4wPx8/nkdEx2cSuc=;
-	b=w/NBMfkZg41xJNspRvdAMMJP0SmfIqfenp3BdYrDzVBF5j7z30iwx+sbem56jOMphsWs4j
-	k1HiEyoA9TOd3Hgh7WUDo4QypezNrQ/WL0xmCw4Lq7lgNjXj0RgG3OH93xhtFfe3kw3mRp
-	+wfmwaeZe9Q5+ohKOglSZcdMgvGrdbk=
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=y2r8lo6RJvLluKg4KIZxEwc9bRBev7HH1fZd4pPyLJ4=;
+	b=Swo6EbCTkmGPSfjbgZm9hWHRt2vQ2x0oa968ia9OGzruIclnOlLddRZzzecYYyFxSyreLn
+	ukuh7uOuCjzW/heQExis61VIf8xJWzE+pEJdu1T28YNeKg9imuaq8mKkAFvXLWFFELvZ5V
+	53riNFQ8myJK6L1R6jHz+VACdezutoY=
 Received: from frank-u24.. (fttx-pool-80.245.76.73.bambit.de [80.245.76.73])
-	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 246471226B5;
+	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id A5C7F1226AA;
 	Thu, 19 Jun 2025 13:21:34 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: Felix Fietkau <nbd@nbd.name>,
@@ -52,15 +53,17 @@ To: Felix Fietkau <nbd@nbd.name>,
 	Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [net-next v6 0/4] rework IRQ handling in mtk_eth_soc
-Date: Thu, 19 Jun 2025 15:21:20 +0200
-Message-ID: <20250619132125.78368-1-linux@fw-web.de>
+Subject: [net-next v6 2/4] net: ethernet: mtk_eth_soc: add consts for irq index
+Date: Thu, 19 Jun 2025 15:21:22 +0200
+Message-ID: <20250619132125.78368-3-linux@fw-web.de>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250619132125.78368-1-linux@fw-web.de>
+References: <20250619132125.78368-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250619_062137_266689_D0039850 
-X-CRM114-Status: GOOD (  11.27  )
+X-CRM114-CacheID: sfid-20250619_062137_269247_E07151C2 
+X-CRM114-Status: GOOD (  19.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,58 +81,127 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-This series introduces named IRQs while keeping the index based way
-for older dts.
-Further it makes some cleanup like adding consts for index access and
-avoids loading first IRQ which was not used on non SHARED_INT SoCs.
-    
-changes:
-    v6:
-    - change irq names from tx/rx to fe1/fe2 because reserved irqs
-      are usable and not bound to specific function
-    - dropped Simons RB because of this
-    - updated description of patch "skip first IRQ if not used" and
-      use MTK_FE_IRQ_SHARED instead of 0 in condition too
-    - add "only use legacy mode on missing IRQ name" patch
-    
-    v5:
-    - fixed typo in patch 1
-    - moved comments from previous patch #3 to patch #1 with changes suggested by simon
-    - rename consts to be compatible with upcoming RSS/LRO changes
-      MTK_ETH_IRQ_SHARED => MTK_FE_IRQ_SHARED
-      MTK_ETH_IRQ_TX => MTK_FE_IRQ_TX
-      MTK_ETH_IRQ_RX => MTK_FE_IRQ_RX
-      MTK_ETH_IRQ_MAX => MTK_FE_IRQ_NUM
-    - change commit title and description in patch 3
-    
-    v4:
-    - calculate max from last (rx) irq index and use it for array size too
-    - drop >2 condition as max is already 2 and drop the else continue
-    - update comment to explain which IRQs are taken in legacy way
-    
-    v3:
-    added patches
-    - #2 (add constants for irq index)
-    - #3 (skip first IRQ on ! MTK_SHARED_INT)
-    to the v2 non-series patch
-    
-    https://patchwork.kernel.org/project/netdevbpf/patch/20250615084521.32329-1-linux@fw-web.de/
-    
-    Tested on BPI-R4/mt7988 with IRQ names and BPI-R2/mt7623 and BPI-R3/mt7986 with upstreamed
-    dts via index-mode.
-    I do not have any MTK_SHARED_INT (mt7621/mt7628) boards to testing.
+Use consts instead of fixed integers for accessing IRQ array.
 
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+Reviewed-by: Simon Horman <horms@kernel.org>
+Reviewed-by: Daniel Golle <daniel@makrotopia.org>
+---
+v5:
+- rename consts to be compatible with upcoming RSS/LRO changes
+  MTK_ETH_IRQ_SHARED => MTK_FE_IRQ_SHARED
+  MTK_ETH_IRQ_TX => MTK_FE_IRQ_TX
+  MTK_ETH_IRQ_RX => MTK_FE_IRQ_RX
+  MTK_ETH_IRQ_MAX => MTK_FE_IRQ_NUM
+v4:
+- calculate max from last (rx) irq index and use it for array size too
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 22 ++++++++++-----------
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h |  7 ++++++-
+ 2 files changed, 17 insertions(+), 12 deletions(-)
 
-Frank Wunderlich (4):
-  net: ethernet: mtk_eth_soc: support named IRQs
-  net: ethernet: mtk_eth_soc: add consts for irq index
-  net: ethernet: mtk_eth_soc: skip first IRQ if not used
-  net: ethernet: mtk_eth_soc: only use legacy mode on missing IRQ name
-
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 69 ++++++++++++++++-----
- drivers/net/ethernet/mediatek/mtk_eth_soc.h |  7 ++-
- 2 files changed, 58 insertions(+), 18 deletions(-)
-
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index c5deb8183afe..efffdd7e131e 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -3341,9 +3341,9 @@ static int mtk_get_irqs(struct platform_device *pdev, struct mtk_eth *eth)
+ 	int i;
+ 
+ 	/* future SoCs beginning with MT7988 should use named IRQs in dts */
+-	eth->irq[1] = platform_get_irq_byname(pdev, "fe1");
+-	eth->irq[2] = platform_get_irq_byname(pdev, "fe2");
+-	if (eth->irq[1] >= 0 && eth->irq[2] >= 0)
++	eth->irq[MTK_FE_IRQ_TX] = platform_get_irq_byname(pdev, "fe1");
++	eth->irq[MTK_FE_IRQ_RX] = platform_get_irq_byname(pdev, "fe2");
++	if (eth->irq[MTK_FE_IRQ_TX] >= 0 && eth->irq[MTK_FE_IRQ_RX] >= 0)
+ 		return 0;
+ 
+ 	/* legacy way:
+@@ -3352,9 +3352,9 @@ static int mtk_get_irqs(struct platform_device *pdev, struct mtk_eth *eth)
+ 	 * On SoCs with non-shared IRQs the first entry is not used,
+ 	 * the second is for TX, and the third is for RX.
+ 	 */
+-	for (i = 0; i < 3; i++) {
++	for (i = 0; i < MTK_FE_IRQ_NUM; i++) {
+ 		if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT) && i > 0)
+-			eth->irq[i] = eth->irq[0];
++			eth->irq[i] = eth->irq[MTK_FE_IRQ_SHARED];
+ 		else
+ 			eth->irq[i] = platform_get_irq(pdev, i);
+ 
+@@ -3420,7 +3420,7 @@ static void mtk_poll_controller(struct net_device *dev)
+ 
+ 	mtk_tx_irq_disable(eth, MTK_TX_DONE_INT);
+ 	mtk_rx_irq_disable(eth, eth->soc->rx.irq_done_mask);
+-	mtk_handle_irq_rx(eth->irq[2], dev);
++	mtk_handle_irq_rx(eth->irq[MTK_FE_IRQ_RX], dev);
+ 	mtk_tx_irq_enable(eth, MTK_TX_DONE_INT);
+ 	mtk_rx_irq_enable(eth, eth->soc->rx.irq_done_mask);
+ }
+@@ -4906,7 +4906,7 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
+ 	eth->netdev[id]->features |= eth->soc->hw_features;
+ 	eth->netdev[id]->ethtool_ops = &mtk_ethtool_ops;
+ 
+-	eth->netdev[id]->irq = eth->irq[0];
++	eth->netdev[id]->irq = eth->irq[MTK_FE_IRQ_SHARED];
+ 	eth->netdev[id]->dev.of_node = np;
+ 
+ 	if (MTK_HAS_CAPS(eth->soc->caps, MTK_SOC_MT7628))
+@@ -5183,17 +5183,17 @@ static int mtk_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT)) {
+-		err = devm_request_irq(eth->dev, eth->irq[0],
++		err = devm_request_irq(eth->dev, eth->irq[MTK_FE_IRQ_SHARED],
+ 				       mtk_handle_irq, 0,
+ 				       dev_name(eth->dev), eth);
+ 	} else {
+-		err = devm_request_irq(eth->dev, eth->irq[1],
++		err = devm_request_irq(eth->dev, eth->irq[MTK_FE_IRQ_TX],
+ 				       mtk_handle_irq_tx, 0,
+ 				       dev_name(eth->dev), eth);
+ 		if (err)
+ 			goto err_free_dev;
+ 
+-		err = devm_request_irq(eth->dev, eth->irq[2],
++		err = devm_request_irq(eth->dev, eth->irq[MTK_FE_IRQ_RX],
+ 				       mtk_handle_irq_rx, 0,
+ 				       dev_name(eth->dev), eth);
+ 	}
+@@ -5239,7 +5239,7 @@ static int mtk_probe(struct platform_device *pdev)
+ 		} else
+ 			netif_info(eth, probe, eth->netdev[i],
+ 				   "mediatek frame engine at 0x%08lx, irq %d\n",
+-				   eth->netdev[i]->base_addr, eth->irq[0]);
++				   eth->netdev[i]->base_addr, eth->irq[MTK_FE_IRQ_SHARED]);
+ 	}
+ 
+ 	/* we run 2 devices on the same DMA ring so we need a dummy device
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index 6f72a8c8ae1e..8cdf1317dff5 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -642,6 +642,11 @@
+ 
+ #define MTK_MAC_FSM(x)		(0x1010C + ((x) * 0x100))
+ 
++#define MTK_FE_IRQ_SHARED	0
++#define MTK_FE_IRQ_TX		1
++#define MTK_FE_IRQ_RX		2
++#define MTK_FE_IRQ_NUM		(MTK_FE_IRQ_RX + 1)
++
+ struct mtk_rx_dma {
+ 	unsigned int rxd1;
+ 	unsigned int rxd2;
+@@ -1292,7 +1297,7 @@ struct mtk_eth {
+ 	struct net_device		*dummy_dev;
+ 	struct net_device		*netdev[MTK_MAX_DEVS];
+ 	struct mtk_mac			*mac[MTK_MAX_DEVS];
+-	int				irq[3];
++	int				irq[MTK_FE_IRQ_NUM];
+ 	u32				msg_enable;
+ 	unsigned long			sysclk;
+ 	struct regmap			*ethsys;
 -- 
 2.43.0
 
