@@ -4,63 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1602BC7115B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jun 2025 07:52:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9ACEEC7115E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jun 2025 08:01:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=D1DwgAqZmnxOplufHqA6i8WfeSgxDtSaWAIcQaiVles=; b=s6XfDJSpMjBKh5rpRp2KhkR2vW
-	lvanyYjhydxnwcIGl2aTBc4iF/C7RsIIIq6gkbFWQ6BD8KIDLylFBReTG2SO4EN4DRuMH59X0sqdQ
-	WK6gTT0Qwt9tBwmqn+PuYGGvuAyx4gJaYqzcTUgA37uK72hb7r+ltgxRa1/dQttkLqjM3Xvaxl8Vy
-	lTt/zokf/2jlAi5So1zGH2oP8a039iOvhNgPiZY/FY6/5PFyoarmZuzxvUKmPDzpfaDIht/ErdhQ7
-	AIUiMjVv/quGOmpt7TJYoygyzXq1oG44UcXmXhkZ5tPnHpAB/ToSmBkZV7YvyXhrD+6lz/qdYB9xm
-	KJ3LZIAw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=waa0tpkCKiHZk7WUJJIS/rThJf704mbh76mxtiYq81o=; b=naLlH0DfTJu6yS
+	x2ncCrkqbiiyVjG4niL4FCra48ASi0ow0fhD+xX3ssq4VZWdBorQbPoFaVv2UWwhB9srQGoRytjpn
+	AShLd0oqhCqesmfPxyGBvH7d8pzUHLyPbddxlfo1F+52T0BfWWYGO2g8QV1Rg0p6mLfDIAXHws9mt
+	zitgJL7/zw02DpB7Etk+PyRGlXuyyAj73txwEkBnfEN/a5xheYCKWUBQIY+q2SrTPvntXTB3O0AxF
+	yB9MkMV7gs1Brpq1S0sKQylFrTja2kND233RtgqPmLxMHFxJ/ELnHOf47mG0CuFAtvu0zcP6gCD9w
+	q1Cj3hs7aBE/4GN4ZQeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSA3z-0000000CM5q-3FqR;
-	Thu, 19 Jun 2025 07:51:59 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uSACn-0000000CNbj-3X3Y;
+	Thu, 19 Jun 2025 08:01:05 +0000
+Received: from mout.gmx.net ([212.227.15.18])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uS9US-0000000CGvr-2Qad;
-	Thu, 19 Jun 2025 07:15:16 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 09DD061148;
-	Thu, 19 Jun 2025 07:15:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3DAF0C4CEEA;
-	Thu, 19 Jun 2025 07:15:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750317315;
-	bh=D1DwgAqZmnxOplufHqA6i8WfeSgxDtSaWAIcQaiVles=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Ibtu6rhxGmbpSKWTPfUH1/XbY7GRdQ8rxiUGWd+Gb57xX02+lP4VOAJsEJogF29KJ
-	 rphv8a2wTnI6ORq/z//tcv2ttd7t4KShzvjIsM2a7IepYvVX0eiZQGwnIv6rTHmTiv
-	 1JqreC7OBVInMWSYef7FhhBd9Qr6T6Api9V3rf6S4HYvQNF5VQQJaRxP1/jAaOGYfJ
-	 U2YEfC6cgHqPmJ6dmsag1rjh1YcgrEEIXBqtOOailFKctgWkVS10YvkWoohsURT1Of
-	 TgvMxoaBt3RarnJIOJtNGqcJyYBJ+7a2j7cPb+QVnvmVanypfsbxTnXWR5s4q6S8XJ
-	 m9fbgVAmNczGw==
-Date: Thu, 19 Jun 2025 09:15:13 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Simon Horman <horms@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net v3 2/2] net: airoha: Differentiate hwfd buffer size
- for QDMA0 and QDMA1
-Message-ID: <aFO5Afg_s7ClEBfd@lore-desk>
-References: <20250618-airoha-hw-num-desc-v3-0-18a6487cd75e@kernel.org>
- <20250618-airoha-hw-num-desc-v3-2-18a6487cd75e@kernel.org>
- <20250618163529.GS1699@horms.kernel.org>
+	id 1uS9gp-0000000CIEx-3OAD;
+	Thu, 19 Jun 2025 07:28:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1750318060; x=1750922860; i=frank-w@public-files.de;
+	bh=waa0tpkCKiHZk7WUJJIS/rThJf704mbh76mxtiYq81o=;
+	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
+	 References:Message-ID:MIME-Version:Content-Type:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=UUj5/2ZlVTmsOTcBj0uoIeI/f3n/Bi8B0/9zxTrVPwqyI8TdWBgWYjnr21mbHUWY
+	 R8tboJA+SNf0F4PFKFUtyg+7fmzsY+k+0A17unR8ws1iYkiFVx2Z4d5H9N4YVl9//
+	 chct74iQVq5/hgVGFI2jlyi+C3aRtF7SDwbjC3M0EIbzDSMnCuuhdruIMsF/Qlh1G
+	 mSruxeE/RDxDlQN0IkAL1kkaYnwPcoEznMHD2+2XhJo+g5/mawXQPB4+Ra4YrTF2e
+	 jBk7kpw9DnlgxohrPm+XFoJUKW+mIzyabCgGSgDHNJ/fbrgEKz1h+aoAYeQaFDXXl
+	 bdN1H8xbNAMY8QO4lg==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [127.0.0.1] ([80.245.76.73]) by mail.gmx.net (mrgmx004
+ [212.227.17.190]) with ESMTPSA (Nemesis) id 1MQe5k-1u6lBd2yxi-00PdST; Thu, 19
+ Jun 2025 09:27:39 +0200
+Date: Thu, 19 Jun 2025 09:27:23 +0200
+From: Frank Wunderlich <frank-w@public-files.de>
+To: "Rob Herring (Arm)" <robh@kernel.org>, Frank Wunderlich <linux@fw-web.de>
+CC: DENG Qingfang <dqfext@gmail.com>, Jia-Wei Chang <jia-wei.chang@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
+ Jakub Kicinski <kuba@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ devicetree@vger.kernel.org, Georgi Djakov <djakov@kernel.org>,
+ linux-kernel@vger.kernel.org, Chanwoo Choi <cw00.choi@samsung.com>,
+ linux-arm-kernel@lists.infradead.org,
+ =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+ linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Felix Fietkau <nbd@nbd.name>, "David S. Miller" <davem@davemloft.net>,
+ Andrew Lunn <andrew@lunn.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Eric Dumazet <edumazet@google.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>,
+ Conor Dooley <conor+dt@kernel.org>, Vladimir Oltean <olteanv@gmail.com>,
+ Paolo Abeni <pabeni@redhat.com>, MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Johnson Wang <johnson.wang@mediatek.com>
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v4_01/13=5D_dt-bindings=3A_n?=
+ =?US-ASCII?Q?et=3A_mediatek=2Cnet=3A_update_for_mt7988?=
+User-Agent: K-9 Mail for Android
+In-Reply-To: <175026826312.2322513.8876769837630455596.robh@kernel.org>
+References: <20250616095828.160900-1-linux@fw-web.de> <20250616095828.160900-2-linux@fw-web.de> <175026826312.2322513.8876769837630455596.robh@kernel.org>
+Message-ID: <9BC433E2-B764-4DE6-A760-D054D981F652@public-files.de>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="c7RPTkHoZWeVpev3"
-Content-Disposition: inline
-In-Reply-To: <20250618163529.GS1699@horms.kernel.org>
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:q+Q3bL2VPEIF7bQ0QHxlDWXPnd/Ii5Fo66vg5xZ5klhHgyhraJ3
+ mc3YMx436z3Wp28bYyctybXZJq48fZ5LrWJlCl6ZxqDAWnw/o7HwIB0rtdAcCgLrjVRW5EH
+ B6IpU8mBap9ufFBpTSCbsw8gvVCDRZXOHVMbG9oGlS561WFrQCMzmdgOTeR+tIY2cdVA0V7
+ iX3hGZCHjR9KdFN/yPHNA==
+UI-OutboundReport: notjunk:1;M01:P0:WQzJv+DCJ1c=;LweDzB+7EvdV75Z5+FSp/bctZkP
+ 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
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250619_002804_141071_E36FB784 
+X-CRM114-Status: GOOD (  11.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,49 +138,53 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Am 18=2E Juni 2025 19:38:07 MESZ schrieb "Rob Herring (Arm)" <robh@kernel=
+=2Eorg>:
+>
+>On Mon, 16 Jun 2025 11:58:11 +0200, Frank Wunderlich wrote:
+>> From: Frank Wunderlich <frank-w@public-files=2Ede>
+>>=20
+>> Update binding for mt7988 which has 3 gmac and 2 reg items=2E
+>>=20
+>> With RSS-IRQs the interrupt max-items is now 6=2E Add interrupt-names
+>> to make them accessible by name=2E
+>>=20
+>> Signed-off-by: Frank Wunderlich <frank-w@public-files=2Ede>
+>> ---
+>> v4:
+>> - increase max interrupts to 8 because of RSS/LRO interrupts
+>> - dropped Robs RB due to this change
+>> - allow interrupt names
+>> - add interrupt-names without reserved IRQs on mt7988
+>>   this requires mtk driver patch:
+>>   https://patchwork=2Ekernel=2Eorg/project/netdevbpf/patch/202506160807=
+38=2E117993-2-linux@fw-web=2Ede/
+>>=20
+>> v2:
+>> - change reg to list of items
+>> ---
+>>  =2E=2E=2E/devicetree/bindings/net/mediatek,net=2Eyaml | 28 +++++++++++=
++++++---
+>>  1 file changed, 24 insertions(+), 4 deletions(-)
+>>=20
+>
+>Reviewed-by: Rob Herring (Arm) <robh@kernel=2Eorg>
 
---c7RPTkHoZWeVpev3
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Thank you rob=2E
 
-On Jun 18, Simon Horman wrote:
-> On Wed, Jun 18, 2025 at 09:48:05AM +0200, Lorenzo Bianconi wrote:
-> > In oreder to reduce the required hwfd buffers queue size for QDMA1,
->=20
-> nit: order
->=20
-> > differentiate hwfd buffer size for QDMA0 and QDMA1 and use 2KB for QDMA0
-> > and 1KB for QDMA1.
->=20
-> I think this patch description could benefit from explaining the why.
+Have you seen my reponse to coverletter? Got info from mtk that reserved i=
+rqs are not unusable (only currently unused) and imho they should be upstre=
+amed too but without a special meaning=2E
 
-ack, I will fix it in v4.
+What do you think?
 
-Regards,
-Lorenzo
+I would increase the interupts count to 8 and name the reserved irqs fe0=
+=2E=2Efe3=2E can i keep your RB or should i drop it again?
 
->=20
-> >=20
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
->=20
-> Code changes look good to me.
->=20
-> ...
 
---c7RPTkHoZWeVpev3
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaFO5AQAKCRA6cBh0uS2t
-rIwBAP0RZ9PNUgbLCSYPqx4FhrZV1dpCiWEV5Lr9YWjupvgdswD9Fmkbo1+DKV4J
-ctX+IDWkc3i4+9GPSn2QfWAqtbFJ4gQ=
-=N1tC
------END PGP SIGNATURE-----
-
---c7RPTkHoZWeVpev3--
+regards Frank
 
