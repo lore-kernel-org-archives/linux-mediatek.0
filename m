@@ -4,116 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5910C7115B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jun 2025 11:33:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37FF2C7115C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jun 2025 15:45:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OcYH8hblyOqphSxkfLeFjpUcClvEpIu8NxtFsTsW5Nw=; b=zFptghZFlxAFGaLTpNdvElA5Mi
-	LQlLYwIzwdbnG6AaZp+Q1BIGXwneDq0cud+1hwVYJzJoCzYdDeLOHDceqUwBhDjfhIs8o7F34oa/y
-	9CD7x/62Kl/k7JoB4Eh2FR3PxXY79UVjnbwCIBJYncOxFcHuP5sdXdscHEFONgnStLIBun5+QTwLK
-	7oFiq0d7bQAXSBQqfIIp6N+I47kyeu4Wi6ILHAtfGYvgzBCWIjEyWO37gcm/e+mqolIDgG4zNeDv7
-	SWej6968L2yV7gs3471aYIrphgB1QiXiNTMFS8mgQzzxCQrajl+nrg9suleyskQlnfk8VqmI2m1iG
-	kIps9OaQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=D+CCFp+Wc7beQ37y1zJonANxhmhz8jMYorTeDhJV7TE=; b=2Rufsv02xQpLfw7kFyQhIz1r94
+	SKr8VeBsiPStz3ouaqX2Cn/LXzdENZ674QB8/Pe4YVLY++ZNbzK8dv6tQLfTj/iVtNtFJTsuvSr8M
+	YkDigrg3wY++1JzfCEU0NfM5cb0vaaj/13LagzwAEG+RkRQA6fsFTd8xRn1UJUS3kSpiuYGnFYWtQ
+	ymMgVrNOG7yvMPDfbHxYW3nVA9BkI4WDv5PZJktLocGA3ywYMTKpxy7dNpgs559ErsiEOsQep23mf
+	nkkZnTeEmgp7yzvUOuqTj7hC4QchbmHwRR663P+N9ghCAw+kZHpbStkJUlQoNJjCp7aFSewEZIvza
+	1TS0ga1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSDW7-0000000CtUg-2pjU;
-	Thu, 19 Jun 2025 11:33:15 +0000
-Received: from mout.gmx.net ([212.227.17.21])
+	id 1uSHRi-0000000DRkC-0EQI;
+	Thu, 19 Jun 2025 15:44:58 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSCYz-0000000Cl6O-1i8z;
-	Thu, 19 Jun 2025 10:32:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1750329125; x=1750933925; i=frank-w@public-files.de;
-	bh=OcYH8hblyOqphSxkfLeFjpUcClvEpIu8NxtFsTsW5Nw=;
-	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
-	 Content-Type:Date:In-Reply-To:References:
-	 Content-Transfer-Encoding:cc:content-transfer-encoding:
-	 content-type:date:from:message-id:mime-version:reply-to:subject:
-	 to;
-	b=Nw2ZDB1MJgjSypAStXwuh1Gbt5FKe1o2iDNYFgB1Mb38X1cBM9/DUysb1uHHLEpL
-	 tUjH9krcooMov1LXLi6BTJfbuC4HVG2c2/gqkh95BFC5OQCJaU8SKZbzpxI0ngiqq
-	 Mu+mOgQYjGcQFggN3UnUq78OEOjA2g9sWXrCpjmfXO+Qq/ArF2qjUo39VS5vIZgFG
-	 wrynAUod06o9TDLTYIo9xGId/GX3KQoh8XTrRq7bPlqjZWwq7egt5ti6xhuLI6jUH
-	 QauFfSnJ9zjX8zG8+mxrpOmWVwifPWr2AlQkHaXu8uZ30kqeFgi/vdxO2u7qD2IG2
-	 UcenJ0Tpj7apFQo2Ug==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [100.64.250.227] ([100.64.250.227]) by
- trinity-msg-rest-gmx-gmx-live-b647dc579-9795v (via HTTP); Thu, 19 Jun 2025
- 10:32:05 +0000
+	id 1uSDJZ-0000000Cqau-1WmS
+	for linux-mediatek@lists.infradead.org;
+	Thu, 19 Jun 2025 11:20:18 +0000
+X-UUID: 5c50c4fa4cff11f09eb0dd999d3936bf-20250619
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=D+CCFp+Wc7beQ37y1zJonANxhmhz8jMYorTeDhJV7TE=;
+	b=laUZKVVvI0Q9v/dQsf3J5BQ1Rmd0oSJMY5HLOH7zjo4ILltKw0DeiGQ1YpBUe1/2g4w9odjjsdqFGTia0bJfKQAg/nEgpktRLvCcY52w81iJ9X/tciyXsMxJ383NRKAuTXcv8iZ0s9HMzUDJqQjHrm+42NgDPkxl9aZyU8SMVG4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.3,REQID:8678f66c-12c8-4400-8d94-1aea5209e842,IP:0,UR
+	L:0,TC:0,Content:-25,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:-55
+X-CID-META: VersionHash:09905cf,CLOUDID:7b35a328-fdd2-4021-9c0c-83548fdcf243,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:2,IP:nil
+	,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:
+	1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 5c50c4fa4cff11f09eb0dd999d3936bf-20250619
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
+	(envelope-from <mingyen.hsieh@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 569157024; Thu, 19 Jun 2025 04:20:09 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Thu, 19 Jun 2025 19:20:01 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Thu, 19 Jun 2025 19:20:05 +0800
+From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
+	<Leon.Yen@mediatek.com>, <Michael.Lo@mediatek.com>,
+	<allan.wang@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
+	<km.lin@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
+	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, Leon Yen <leon.yen@mediatek.com>, "Ming
+ Yen Hsieh" <mingyen.hsieh@mediatek.com>
+Subject: [PATCH] wifi: mt76: Limit the concurrent STA and SoftAP to operate on the same channel
+Date: Thu, 19 Jun 2025 19:20:05 +0800
+Message-ID: <20250619112005.2071110-1-mingyen.hsieh@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Message-ID: <trinity-98eee496-129f-43c7-8d3f-4a77f4a183b9-1750329125336@trinity-msg-rest-gmx-gmx-live-b647dc579-9795v>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: horms@kernel.org, linux@fw-web.de
-Cc: nbd@nbd.name, sean.wang@mediatek.com, lorenzo@kernel.org,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, daniel@makrotopia.org,
- arinc.unal@arinc9.com
-Subject: Aw: Re: [net-next v5 3/3] net: ethernet: mtk_eth_soc: skip first
- IRQ if not used
-Content-Type: text/plain; charset=UTF-8
-Date: Thu, 19 Jun 2025 10:32:05 +0000
-In-Reply-To: <20250619100309.GC1699@horms.kernel.org>
-References: <20250618130717.75839-1-linux@fw-web.de>
- <20250618130717.75839-4-linux@fw-web.de>
- <20250619100309.GC1699@horms.kernel.org>
-X-UI-CLIENT-META-MAIL-DROP: W10=
-X-Provags-ID: V03:K1:ifZaB0TqILOfFP6+5o3LfKPHICLlxtenulQfOOEgY2f7tACewlBl3QLnsAj1aMLZYtvH6
- npjRu0EOI51tAGdS9VkCwnbATYO+ViMaRfHy0GeW3oHCqjXq2X0EYFFF/2jxfEuwKq46BGz05UKu
- GKZDt+Qva4mWA9Dk14indJ8u5jWlEWhPkSjyrsIgWl7eQk7ngpQ8ACY327QoBnIHw7RSyZ6q1kCR
- ht9Hn9Zk2u0Bz3Sw2jVbc1iW2A8/3K/1W7+B8j8hhW14tZRd+hMWNokDLsjCeve8ThOTO5SWJkWF
- 8fTQ48zmuNnOSPwKxv+9VXdWh6QWqBU5SaRA6u746ln8ZDQ2fvBpb7C1yJiCU9XX8Q=
-UI-OutboundReport: notjunk:1;M01:P0:hCRhkC8HBc4=;DGXBDvuDhiJCdGE8BCakk/+Hi/v
- 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
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250619_033209_819075_8A43A2F1 
-X-CRM114-Status: GOOD (  16.07  )
+X-CRM114-CacheID: sfid-20250619_042017_416525_4D384B42 
+X-CRM114-Status: GOOD (  12.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,58 +89,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Simon
+From: Leon Yen <leon.yen@mediatek.com>
 
-> Gesendet: Donnerstag, 19. Juni 2025 um 12:03
-> Von: "Simon Horman" <horms@kernel.org>
-> Betreff: Re: [net-next v5 3/3] net: ethernet: mtk_eth_soc: skip first IR=
-Q if not used
->
-> On Wed, Jun 18, 2025 at 03:07:14PM +0200, Frank Wunderlich wrote:
-> > From: Frank Wunderlich <frank-w@public-files.de>
-> >=20
-> > On SoCs without MTK_SHARED_INT capability (all except mt7621 and
-> > mt7628) platform_get_irq() is called for the first IRQ (eth->irq[0])
-> > but it is never used.
-> > Skip the first IRQ and reduce the IRQ-count to 2.
-> >=20
-> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> > ---
-> > v5:
-> > - change commit title and description
-> > v4:
-> > - drop >2 condition as max is already 2 and drop the else continue
-> > - update comment to explain which IRQs are taken in legacy way
->=20
-> Reviewed-by: Simon Horman <horms@kernel.org>
+Due to the lack of NoA(Notice of Absence) mechanism in SoftAP mode, it is
+inappropriate to allow concurrent SoftAP and STA to operate on the
+different channels.
 
-thank you very much
+This patch restricts the concurrent SoftAP and STA to be setup on the same
+channel only.
 
-i guess RB is still valid with changes requested by Daniel?
+Signed-off-by: Leon Yen <leon.yen@mediatek.com>
+Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+---
+ .../net/wireless/mediatek/mt76/mt792x_core.c  | 42 ++++++++++++++++---
+ 1 file changed, 36 insertions(+), 6 deletions(-)
 
-    net: ethernet: mtk_eth_soc: skip first IRQ if not used
-   =20
-    On SoCs with dedicated RX and TX interrupts (all except MT7621 and
-    MT7628) platform_get_irq() is called for the first IRQ (eth->irq[0])
-    but it is never used.
-    Skip the first IRQ and reduce the IRQ-count to 2.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_core.c b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
+index 7f572f8afc02..869fd90202b8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_core.c
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
+@@ -28,7 +28,7 @@ static const struct ieee80211_iface_combination if_comb[] = {
+ 	},
+ };
+ 
+-static const struct ieee80211_iface_limit if_limits_chanctx[] = {
++static const struct ieee80211_iface_limit if_limits_chanctx_mcc[] = {
+ 	{
+ 		.max = 2,
+ 		.types = BIT(NL80211_IFTYPE_STATION) |
+@@ -36,8 +36,7 @@ static const struct ieee80211_iface_limit if_limits_chanctx[] = {
+ 	},
+ 	{
+ 		.max = 1,
+-		.types = BIT(NL80211_IFTYPE_AP) |
+-			 BIT(NL80211_IFTYPE_P2P_GO)
++		.types = BIT(NL80211_IFTYPE_P2P_GO)
+ 	},
+ 	{
+ 		.max = 1,
+@@ -45,16 +44,47 @@ static const struct ieee80211_iface_limit if_limits_chanctx[] = {
+ 	}
+ };
+ 
+-static const struct ieee80211_iface_combination if_comb_chanctx[] = {
++static const struct ieee80211_iface_combination if_comb_chanctx_mcc[] = {
+ 	{
+-		.limits = if_limits_chanctx,
+-		.n_limits = ARRAY_SIZE(if_limits_chanctx),
++		.limits = if_limits_chanctx_mcc,
++		.n_limits = ARRAY_SIZE(if_limits_chanctx_mcc),
+ 		.max_interfaces = 3,
+ 		.num_different_channels = 2,
+ 		.beacon_int_infra_match = false,
+ 	}
+ };
+ 
++static const struct ieee80211_iface_limit if_limits_chanctx_scc[] = {
++	{
++		.max = 2,
++		.types = BIT(NL80211_IFTYPE_STATION) |
++			 BIT(NL80211_IFTYPE_P2P_CLIENT)
++	},
++	{
++		.max = 1,
++		.types = BIT(NL80211_IFTYPE_AP)
++	},
++	{
++		.max = 1,
++		.types = BIT(NL80211_IFTYPE_P2P_DEVICE)
++	}
++};
++
++static const struct ieee80211_iface_combination if_comb_chanctx_scc[] = {
++	{
++		.limits = if_limits_chanctx_scc,
++		.n_limits = ARRAY_SIZE(if_limits_chanctx_scc),
++		.max_interfaces = 3,
++		.num_different_channels = 1,
++		.beacon_int_infra_match = false,
++	}
++};
++
++static const struct ieee80211_iface_combination if_comb_chanctx[] = {
++		if_comb_chanctx_mcc[0],
++		if_comb_chanctx_scc[0],
++};
++
+ void mt792x_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
+ 	       struct sk_buff *skb)
+ {
+-- 
+2.34.1
 
-code (changed condition "if (i =3D=3D MTK_FE_IRQ_SHARED)")
-        for (i =3D 0; i < MTK_FE_IRQ_NUM; i++) {
--               if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT) && i > 0)
--                       eth->irq[i] =3D eth->irq[MTK_FE_IRQ_SHARED];
--               else
--                       eth->irq[i] =3D platform_get_irq(pdev, i);
-+               if (MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT)) {
-+                       if (i =3D=3D MTK_FE_IRQ_SHARED)
-+                               eth->irq[MTK_FE_IRQ_SHARED] =3D platform_g=
-et_irq(pdev, i);
-+                       else
-+                               eth->irq[i] =3D eth->irq[MTK_FE_IRQ_SHARED=
-];
-+               } else {
-+                       eth->irq[i] =3D platform_get_irq(pdev, i + 1);
-+               }
-
-regards Frank
 
