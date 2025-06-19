@@ -4,71 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98112C7115B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jun 2025 15:48:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8656C7115A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Jun 2025 15:48:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HirNLTF6E7mhNhLaSQKScEQLOYAqQZVgjyZpc3XGDrg=; b=xr6HIsAqHsW+knuATG28SiRLKs
-	2bG6MhIfrbtnAG6Pua6UrpXHSL54UgDdwcICH5bB7l5HEHAdEiYCWk46cqqEYzzajzNxhbd5FdVOB
-	+0FEyTvM6F61AIffBRPyP4Rn8NMBkA74zXAKcqEwO2Og3KDWz+/Pa2okV/AEX6XG5SHkbBfpxucLi
-	+BhWxXJnEy0rXtd8xnHDd1Omo4QAxub1pDU3SpzCXnaToGEL74QGwwjUgFn+ZJ9P8xwlEeyJzWXFm
-	8wQc4OANZevJRQigPnt2vv+Oif0wCdNj47KTPpvRkAfgQp8xopAiWIJaq8gqEM1bzHmuGVSxxuiFz
-	WmL060Hg==;
+	bh=p5edE6++HzN3Nzjso20D35ZUNuuvgj0lx7kcEPbqrsE=; b=Q0EHtp0LlEJla86X/o0cIvg9Po
+	evTTbhicrvfv0ATUSSco0w8P3V55hQeID5CRNu+kzAn+YuevfJqRPRtxHs414mszuZ4zubCX1E6N8
+	2XD8haFM4PmP3cqj3mHG8vpzu7DS7rsHGMTjA5AOsGs/Dn57aJczkVeZJuXkkseTTqlnplRZYUJe6
+	LKcaoG2S1RwP9CZAgccKkHJczwlXTN6yKpksHPOXsEDFeazS2mJ6aZ414ObjRLwg2belfEJCXU85T
+	q1P/9xA/nEjpuCnqHeOWYEhhRivQdypd5MH3u70utM0DLa5PyNsSTX5PDQXLh/KJwmL+glAnlEuCj
+	gbWvjsGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSHUq-0000000DWfV-2CO5;
-	Thu, 19 Jun 2025 15:48:12 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1uSHVC-0000000DX7t-2BwH;
+	Thu, 19 Jun 2025 15:48:34 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSEXi-0000000D4vc-2J66;
-	Thu, 19 Jun 2025 12:38:59 +0000
+	id 1uSEk5-0000000D697-2YYf;
+	Thu, 19 Jun 2025 12:51:45 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id C9667A54493;
-	Thu, 19 Jun 2025 12:38:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3CD5EC4CEEA;
-	Thu, 19 Jun 2025 12:38:54 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 8E07A60010;
+	Thu, 19 Jun 2025 12:51:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F2FE2C4CEEA;
+	Thu, 19 Jun 2025 12:51:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750336737;
-	bh=0O8KUs11HYzYDV9dS+Fjh+t+vw87oB0LvVgWoJBSoKI=;
+	s=k20201202; t=1750337503;
+	bh=jf4r8tgAjTvpdpKxRLoaxzrCAVbjkq3ldG/x5W5pyvs=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=emSXN9QNT3nkgNQTuAleo3mJHp4mZ0ARLDH9YcB5KZfxJhext93gFSgvVOAJScqdJ
-	 G5fB2V2QcQ9rDIO5Sb3u0vVsPysUlfbhTkEWgCSMcF+/b/98dNvK7u7OIps8FVWID0
-	 07I+/dBO6Ij7UUHpr4m9jVILeLIJimvgAmvPtmVq3TfzUfx4e5DvsYLgg0WnAnnObJ
-	 AtwLwuwSY3qRoW/yFQeB4sXurSWkn2TlJGzItFPQPUgGPyje5ERerhuu21IujH8SPd
-	 t2WzcvqtBzmirpKBx95bxkuNxtB8kpIWHEEI8JROzkPoQ9iMKsnIWYEX6oYkFV/Jai
-	 wyVBqjyFb3gfA==
-Date: Thu, 19 Jun 2025 13:38:52 +0100
+	b=W4MybcCJF1lABKI9a7riHG+6PTE0QcucL0hZ4M34wv7OTCvCZfZGuOo+kVnWC3cEO
+	 U3FQisF755IPTJNMM7bMV4veMXVWtTvgRAH3xPcx5Rl9PAc7nFvKdUyS3L0//XKDK7
+	 gwMj65vrO35mz3TYPzEQGtoYEdepRF/sHTm6eWTSBYDfh9zG99REXBoAc276RlFNPY
+	 nyPZge73icoghlUhijZoJNNYxD3kQb1nyPjTImO8g3cmMD52koGLUiOI8EqZAeBg3k
+	 DmHTzxu7+Wy7p0zbcPY36hQyfxL7swAY3+CARw3aGsRq8suXvvYGirKJKIJjshyKFD
+	 D790cK1tdSZ5g==
+Date: Thu, 19 Jun 2025 13:51:37 +0100
 From: Simon Horman <horms@kernel.org>
 To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Frank Wunderlich <linux@fw-web.de>, Felix Fietkau <nbd@nbd.name>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+Cc: linux@fw-web.de, nbd@nbd.name, sean.wang@mediatek.com,
+	lorenzo@kernel.org, andrew+netdev@lunn.ch, davem@davemloft.net,
+	edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
 	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Daniel Golle <daniel@makrotopia.org>, arinc.unal@arinc9.com
-Subject: Re: [net-next v4 1/3] net: ethernet: mtk_eth_soc: support named IRQs
-Message-ID: <20250619123852.GM1699@horms.kernel.org>
-References: <20250616080738.117993-1-linux@fw-web.de>
- <20250616080738.117993-2-linux@fw-web.de>
- <9FD09C8D-A9DC-4270-AB4A-6EBE25959F12@public-files.de>
+	linux-mediatek@lists.infradead.org, daniel@makrotopia.org,
+	arinc.unal@arinc9.com
+Subject: Re: Re: [net-next v5 3/3] net: ethernet: mtk_eth_soc: skip first IRQ
+ if not used
+Message-ID: <20250619125137.GN1699@horms.kernel.org>
+References: <20250618130717.75839-1-linux@fw-web.de>
+ <20250618130717.75839-4-linux@fw-web.de>
+ <20250619100309.GC1699@horms.kernel.org>
+ <trinity-98eee496-129f-43c7-8d3f-4a77f4a183b9-1750329125336@trinity-msg-rest-gmx-gmx-live-b647dc579-9795v>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <9FD09C8D-A9DC-4270-AB4A-6EBE25959F12@public-files.de>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250619_053858_655527_0D64B68F 
-X-CRM114-Status: GOOD (  16.88  )
+In-Reply-To: <trinity-98eee496-129f-43c7-8d3f-4a77f4a183b9-1750329125336@trinity-msg-rest-gmx-gmx-live-b647dc579-9795v>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,51 +77,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 19, 2025 at 09:44:34AM +0200, Frank Wunderlich wrote:
-> Am 16. Juni 2025 10:07:34 MESZ schrieb Frank Wunderlich <linux@fw-web.de>:
-> >From: Frank Wunderlich <frank-w@public-files.de>
+On Thu, Jun 19, 2025 at 10:32:05AM +0000, Frank Wunderlich wrote:
+> Hi Simon
+> 
+> > Gesendet: Donnerstag, 19. Juni 2025 um 12:03
+> > Von: "Simon Horman" <horms@kernel.org>
+> > Betreff: Re: [net-next v5 3/3] net: ethernet: mtk_eth_soc: skip first IRQ if not used
 > >
-> >Add named interrupts and keep index based fallback for exiting devicetrees.
-> >
-> >Currently only rx and tx IRQs are defined to be used with mt7988, but
-> >later extended with RSS/LRO support.
-> >
-> >Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> >Reviewed-by: Simon Horman <horms@kernel.org>
-> >---
-> >v2:
-> >- move irqs loading part into own helper function
-> >- reduce indentation
-> >- place mtk_get_irqs helper before the irq_handler (note for simon)
-> >---
-> > drivers/net/ethernet/mediatek/mtk_eth_soc.c | 39 +++++++++++++++------
-> > 1 file changed, 28 insertions(+), 11 deletions(-)
-> >
-> >diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> >index b76d35069887..81ae8a6fe838 100644
-> >--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> >+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> >@@ -3337,6 +3337,30 @@ static void mtk_tx_timeout(struct net_device *dev, unsigned int txqueue)
-> > 	schedule_work(&eth->pending_work);
-> > }
+> > On Wed, Jun 18, 2025 at 03:07:14PM +0200, Frank Wunderlich wrote:
+> > > From: Frank Wunderlich <frank-w@public-files.de>
+> > > 
+> > > On SoCs without MTK_SHARED_INT capability (all except mt7621 and
+> > > mt7628) platform_get_irq() is called for the first IRQ (eth->irq[0])
+> > > but it is never used.
+> > > Skip the first IRQ and reduce the IRQ-count to 2.
+> > > 
+> > > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> > > ---
+> > > v5:
+> > > - change commit title and description
+> > > v4:
+> > > - drop >2 condition as max is already 2 and drop the else continue
+> > > - update comment to explain which IRQs are taken in legacy way
 > > 
-> >+static int mtk_get_irqs(struct platform_device *pdev, struct mtk_eth *eth)
-> >+{
-> >+	int i;
-> >+
-> >+	eth->irq[1] = platform_get_irq_byname(pdev, "tx");
-> >+	eth->irq[2] = platform_get_irq_byname(pdev, "rx");
+> > Reviewed-by: Simon Horman <horms@kernel.org>
 > 
-> Hi Simon,
+> thank you very much
 > 
-> I got information that reserved frame-engine 
->  irqs are not unusable and have no fixed
->  meaning. So i would add fe0..fe3 in
->  dts+binding and change these names from
-> tx/rx to fe1 and fe2.
-> 
-> Can i keep your RB here?
+> i guess RB is still valid with changes requested by Daniel?
 
-Since the meaning is changing somewhat maybe best to drop the RB.
-I'll look out for the new version to review.
+Yes, thanks for asking.
 
