@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5987C71155
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Jun 2025 09:45:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBE03C71155
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Jun 2025 09:48:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zCArQQjnZOoBXdfm7YKc01KniAiMbD7wl2wyNkiAMyg=; b=Ar1Yz4kFnYZfHZ
-	9XQGdyKpqZw3Dr6CXqanLnjvF92rIZwE5Eox6djyParUWZ7FS62xnQe/gq+S5B2HuEb6bFYggiv5i
-	z01yX4Tj63vW45DhZuDcgmpWQ2NMCNPdi2j0wE/MsM0ROaYARMYWz+y9wVPa55DaLYZqptF1zsnY0
-	dxOrihIp/apshyY747ugqunklEc/ubsezPPT93vbDoGXHw+xBhkwKzRtcbkDtCFwZ1SElsNHeKkIH
-	zxe584EeuDiC63nNMKhk4Bw0F0/m2Z17b6l+W8WmXX97aqyQ+QjH4FmRCxh51OKYBwRVvYwnO5o3M
-	z+wpp/sYSSR+mUNZ+4dA==;
+	List-Owner; bh=c58atM53j6xJlfjeW4uz3/6gYrG19vaD/Ky2Z6w23+4=; b=VTllknNVxL5NHD
+	V9lPN13W9sRttT6lxq4eMtAnArXWsOvpJyshfdqpxpaxAvNB5yJk4hGiMDPZcdbNzo0dj6aaUX/bu
+	j5+AS0sqKQJN/ULwcXc712erB6aKKvgFBw+5vDj75QdcwrzXyJeZ/9FDWr9Vm8isIm9VmzY37RTDL
+	NuT2bVrdr/W8nJsqTFVwJ8/IoGWe2/Qk7cabGmmvvqCyfxBoBeabTNhpgnaxqH2OevY4RA4SDeppY
+	2Exat3TJweX1I2yBWvX/55EmEKCl0SGeVb8kZNLjOywebe8hLpF9pB9TZjY7X3Eq/fd+5Xk675DTw
+	RB+fmzN78kZnt1Mp/FfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSYJo-0000000FFFy-3Xzw;
-	Fri, 20 Jun 2025 09:45:56 +0000
+	id 1uSYMD-0000000FFgr-3oZa;
+	Fri, 20 Jun 2025 09:48:25 +0000
 Received: from mxout1.routing.net ([2a03:2900:1:a::a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSXER-0000000F50t-29wB;
-	Fri, 20 Jun 2025 08:36:21 +0000
+	id 1uSXET-0000000F53F-0c4K;
+	Fri, 20 Jun 2025 08:36:22 +0000
 Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
-	by mxout1.routing.net (Postfix) with ESMTP id 3175441AE7;
-	Fri, 20 Jun 2025 08:36:14 +0000 (UTC)
+	by mxout1.routing.net (Postfix) with ESMTP id 0B0F341AF6;
+	Fri, 20 Jun 2025 08:36:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1750408574;
+	s=20200217; t=1750408575;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=zCArQQjnZOoBXdfm7YKc01KniAiMbD7wl2wyNkiAMyg=;
-	b=YI9zSEQdeBYAqmmmV1QzC1wYG2krKNkrT/rDfMrYZlrrNJgDe1Ds13WH7MPz1YKM8oOeqq
-	bgpbGIy3fN2F2Q26OEFvfCRX9X2Va1wjq8B5xuEMBn1tNfstnG9+RRxr8OXOjNlz2aXCv4
-	rdnnu0Tm6vGueuClZKlrirQVpNd7pfs=
+	bh=c58atM53j6xJlfjeW4uz3/6gYrG19vaD/Ky2Z6w23+4=;
+	b=i0XOCLwIdwQDzHE+0dLDAW4xoMBRTciKgKMRk8LVVu5wdIatkfVoYZSIw9SpEaCrFmRh4l
+	7KiTDzB6MdhmfI6CNGq/FJvnIWIrlxPvIbmVZPxnw0adwO0SWdfmhIPGIvcxT26s41Vc71
+	8KWLXPpK9sLVr4I/ZEIwr0CElCYC6DY=
 Received: from frank-u24.. (fttx-pool-157.180.225.81.bambit.de [157.180.225.81])
-	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id C9F861226F1;
-	Fri, 20 Jun 2025 08:36:13 +0000 (UTC)
+	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id A5DDB1226F1;
+	Fri, 20 Jun 2025 08:36:14 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: MyungJoo Ham <myungjoo.ham@samsung.com>,
 	Kyungmin Park <kyungmin.park@samsung.com>,
@@ -58,17 +58,17 @@ To: MyungJoo Ham <myungjoo.ham@samsung.com>,
 	Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v5 09/13] arm64: dts: mediatek: mt7988a-bpi-r4: drop unused pins
-Date: Fri, 20 Jun 2025 10:35:40 +0200
-Message-ID: <20250620083555.6886-10-linux@fw-web.de>
+Subject: [PATCH v5 11/13] arm64: dts: mediatek: mt7988a-bpi-r4: add aliases for ethernet
+Date: Fri, 20 Jun 2025 10:35:42 +0200
+Message-ID: <20250620083555.6886-12-linux@fw-web.de>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250620083555.6886-1-linux@fw-web.de>
 References: <20250620083555.6886-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250620_013619_708500_CC01C9C2 
-X-CRM114-Status: UNSURE (   8.48  )
+X-CRM114-CacheID: sfid-20250620_013621_326608_E1D2A21C 
+X-CRM114-Status: UNSURE (   9.26  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,149 +87,31 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-Pins were moved from SoC dtsi to Board level dtsi without cleaning up
-to needed ones. Drop the unused pins now.
+Add aliases for gmacs to allow bootloader setting mac-adresses.
 
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi | 89 -------------------
- 1 file changed, 89 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
-index afa9e3b2b16a..30affedf84d4 100644
+index 21eb91c8609f..20073eb4d1bd 100644
 --- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
-@@ -223,18 +223,6 @@ &pcie3 {
- };
+@@ -8,6 +8,12 @@
+ #include "mt7988a.dtsi"
  
- &pio {
--	mdio0_pins: mdio0-pins {
--		mux {
--			function = "eth";
--			groups = "mdc_mdio0";
--		};
--
--		conf {
--			pins = "SMI_0_MDC", "SMI_0_MDIO";
--			drive-strength = <8>;
--		};
--	};
--
- 	i2c0_pins: i2c0-g0-pins {
- 		mux {
- 			function = "i2c";
-@@ -249,20 +237,6 @@ mux {
- 		};
+ / {
++	aliases {
++		ethernet0 = &gmac0;
++		ethernet1 = &gmac1;
++		ethernet2 = &gmac2;
++	};
++
+ 	chosen {
+ 		stdout-path = "serial0:115200n8";
  	};
- 
--	i2c1_sfp_pins: i2c1-sfp-g0-pins {
--		mux {
--			function = "i2c";
--			groups = "i2c1_sfp";
--		};
--	};
--
--	i2c2_0_pins: i2c2-g0-pins {
--		mux {
--			function = "i2c";
--			groups = "i2c2_0";
--		};
--	};
--
- 	i2c2_1_pins: i2c2-g1-pins {
- 		mux {
- 			function = "i2c";
-@@ -298,34 +272,6 @@ mux {
- 		};
- 	};
- 
--	gbe0_led1_pins: gbe0-led1-pins {
--		mux {
--			function = "led";
--			groups = "gbe0_led1";
--		};
--	};
--
--	gbe1_led1_pins: gbe1-led1-pins {
--		mux {
--			function = "led";
--			groups = "gbe1_led1";
--		};
--	};
--
--	gbe2_led1_pins: gbe2-led1-pins {
--		mux {
--			function = "led";
--			groups = "gbe2_led1";
--		};
--	};
--
--	gbe3_led1_pins: gbe3-led1-pins {
--		mux {
--			function = "led";
--			groups = "gbe3_led1";
--		};
--	};
--
- 	i2p5gbe_led0_pins: 2p5gbe-led0-pins {
- 		mux {
- 			function = "led";
-@@ -333,13 +279,6 @@ mux {
- 		};
- 	};
- 
--	i2p5gbe_led1_pins: 2p5gbe-led1-pins {
--		mux {
--			function = "led";
--			groups = "2p5gbe_led1";
--		};
--	};
--
- 	mmc0_pins_emmc_45: mmc0-emmc-45-pins {
- 		mux {
- 			function = "flash";
-@@ -361,40 +300,12 @@ mux {
- 		};
- 	};
- 
--	snfi_pins: snfi-pins {
--		mux {
--			function = "flash";
--			groups = "snfi";
--		};
--	};
--
--	spi0_pins: spi0-pins {
--		mux {
--			function = "spi";
--			groups = "spi0";
--		};
--	};
--
- 	spi0_flash_pins: spi0-flash-pins {
- 		mux {
- 			function = "spi";
- 			groups = "spi0", "spi0_wp_hold";
- 		};
- 	};
--
--	spi2_pins: spi2-pins {
--		mux {
--			function = "spi";
--			groups = "spi2";
--		};
--	};
--
--	spi2_flash_pins: spi2-flash-pins {
--		mux {
--			function = "spi";
--			groups = "spi2", "spi2_wp_hold";
--		};
--	};
- };
- 
- &pwm {
 -- 
 2.43.0
 
