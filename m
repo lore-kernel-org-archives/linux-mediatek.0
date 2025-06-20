@@ -4,58 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3ACBC7115C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Jun 2025 20:08:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 501FAC7115B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Jun 2025 20:14:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
 	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9KruWtUSeB6NsR1odUtqSoeuIJ0mCcg9WFxQ2DRKLKk=; b=xhNQyjmlA686A56+T+7kv54eQe
-	IwR41PEM0RC5iAVcSb4uXywr7VthvpxfG/BVIhd2tLtsZg/PGVrRbMlwfRWIlhK8/S9yAdgpWQBOT
-	W8Q2f7s4dED3rNeRxyl4tKzm1PTLEaYWMGOt7GXHvO+Zc+BPzipqXYamiqe1zLMeZyL4hHKn7NNgY
-	Rce5flZ5maXtPm7menmfdiijjHUaO4pb8KMT+okWghiqpXyd207FtLA1vqamPjWRIW56IeE00WKr1
-	uqFd9NRUBkA82n+V2rh2DSDZ2gTApWBGIokf1zMknFL78CS9K/IbsCMWByULis1MS8/kUZdJZX0p1
-	x/DS7uAA==;
+	bh=PvFMufsCpm5w0/A74ukxIpIFr7N/PeNgt8iDsS5iuN4=; b=uIyw8cDVmC876rbfQsbQ2UxUyX
+	gFEswIi6bs8q55XQUbt9SVVGSevIjT7ph/0eMtgJkDR3+M6iuWLyOGDE8lxLL/luZbGCQy1P9M4YZ
+	SPbmVGsyFkC14plIm9LCd5TncgnSZlDHWHN03ihBVuAISuzQmRdJ7zqNiGLZGvvWa2j9IWrXgM8Lk
+	AwO8munBRQ+q6jw9FUo5CfVpSYzHcIO2QzV1S6clFMmBufyjeEZzt/jXR0DiBzZ8jG2hPfZpbbMTR
+	R79iFC6rR/txSChd3QhIzj+vOcUqTWv5VwpeA0rxqaSrWvPfcBUPcodpGyOxEx/f5H8x1cCJYhHvL
+	FADdWIhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSi1q-0000000GVFQ-3OYp;
-	Fri, 20 Jun 2025 20:08:02 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1uSi8X-0000000GVY2-0oyG;
+	Fri, 20 Jun 2025 20:14:57 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uShzZ-0000000GV4M-0721;
-	Fri, 20 Jun 2025 20:05:42 +0000
+	id 1uSi6D-0000000GVSi-2909;
+	Fri, 20 Jun 2025 20:12:34 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B8F244A424;
-	Fri, 20 Jun 2025 20:05:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 57E66C4CEE3;
-	Fri, 20 Jun 2025 20:05:36 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 3C9425C6913;
+	Fri, 20 Jun 2025 20:10:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 27238C4CEE3;
+	Fri, 20 Jun 2025 20:12:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750449939;
-	bh=HOxYtJiJhp46YLvbFulkT1F/asJMDlxZP1IWVBEjXfA=;
+	s=k20201202; t=1750450352;
+	bh=YYSRaHlyrbAaccJjfWsT2+6At5/W7em9BngvMnpBJ7M=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KCB6Fm1oTrMy2LPUNC4qXipFbuoKfd1jGJegQFU8E6ZUoSbDeoDAxdCxkj8X0mQmP
-	 5alX7XpBFWIWNl74FpcP8/ICcOq8LqiTu69KMq2xgE9PWS2YmGdPyNeD07TueXdOW5
-	 E1JklMx94VxyYK2/53uxZYeftv7fwlBdVHeJjNdroH3xaLo2X55iWOBYqlCxwQFfAj
-	 8Qr1QAKEtp5argWqeGAbaJdJdIq6IVWTRzK0iRkwpSP1DqzO3742sl/0tlmRshf1qx
-	 JH/vETnciESzAQREioUx0WGnNpH3dCpzb8VZtmvXXZtwIcQ3NLlm5S8UHPT1WLbIOF
-	 8sXpY+9UIKSQg==
-Date: Fri, 20 Jun 2025 21:05:34 +0100
+	b=qsGqfWUBMxMbTb06I0yd5YGUxXNtIqY9C2qg9XBKc0LFsUBYSLoOZ3Edes/2KQfkW
+	 vEe7G/RNEy3Izz7DzbdSWjv1k3kKZXO2EztDEvNAEA7odHtl5DES3cCNV3kZsOV3fX
+	 0Bp92mmvwpdDScPjVqplz58xvHba3974/MMnECQSh3SNiIOmOh8r/HY2DZaJewleg/
+	 M4kpJClZ2Qib3cnbZ6nhC+B7qTjySx46eT0XG0UvUYVlBgR+VHqZ5UDfSlhV0n3ndl
+	 P7dMAKWYXSzgOyZn7nkffk2BtyMMyUbT4axml4XWX9jHbc6Oa5LrWHdlAUgLNoWG+z
+	 +79zW+MBAyRCQ==
+Date: Fri, 20 Jun 2025 21:12:26 +0100
 From: Simon Horman <horms@kernel.org>
 To: Frank Wunderlich <linux@fw-web.de>
-Subject: Re: [net-next v6 4/4] net: ethernet: mtk_eth_soc: only use legacy
- mode on missing IRQ name
-Message-ID: <20250620200534.GE9190@horms.kernel.org>
+Subject: Re: [net-next v6 1/4] net: ethernet: mtk_eth_soc: support named IRQs
+Message-ID: <20250620201226.GF9190@horms.kernel.org>
 References: <20250619132125.78368-1-linux@fw-web.de>
- <20250619132125.78368-5-linux@fw-web.de>
+ <20250619132125.78368-2-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250619132125.78368-5-linux@fw-web.de>
+In-Reply-To: <20250619132125.78368-2-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250620_130541_087981_75D1DF3E 
-X-CRM114-Status: UNSURE (   8.39  )
+X-CRM114-CacheID: sfid-20250620_131233_588120_FB0F2608 
+X-CRM114-Status: UNSURE (   8.46  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -72,13 +71,15 @@ Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 19, 2025 at 03:21:24PM +0200, Frank Wunderlich wrote:
+On Thu, Jun 19, 2025 at 03:21:21PM +0200, Frank Wunderlich wrote:
 > From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> If platform_get_irq_byname returns -ENXIO fall back to legacy (index
-> based) mode, but on other errors function should return this error.
+> Add named interrupts and keep index based fallback for existing
+> devicetrees.
 > 
-> Suggested-by: Daniel Golle <daniel@makrotopia.org>
+> Currently only rx and tx IRQs are defined to be used with mt7988, but
+> later extended with RSS/LRO support.
+> 
 > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 
 Reviewed-by: Simon Horman <horms@kernel.org>
