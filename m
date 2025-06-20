@@ -4,82 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2256FC7115B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Jun 2025 03:01:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7882DC7115D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Jun 2025 09:23:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yK0QfK4ZZxsvW9hBbrEOHPwZIvhCT7JXP6hfmrcRiuA=; b=RKzcbsWj4y752JeV1FBkERAvbx
-	ZeZsSH8vRxgWUb4Jug0d7pQ5McOKwptoX57aS9Fy6UgbwXHF6UEW8mo9yFKEWgJ0zBZtl8iZOHtFb
-	rSKN+pwj445p/5W/oX27zRn5rEvc99Xv1Ay2KAp09h7M6HWy9cgmZw5nc8l8GRC6zQji+DFgqJfcH
-	k+VeP1kDijMoCBGQxmkfQ+JgphvUUPGV+B3b7OMjIT9FQZo8wNUcdySMWsF8Gr0W9lq1BzjjuuomQ
-	37NoJ/TUvyvg3JEHY1cfycspPNLDjoUz3MNkek1RRKuoiM+vOF5LNyIJiJR4Md5lfmc8+ezcvXezs
-	IdZDv+2A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=fEipcKAdukHIximsR/pW1XDMAY4xIuxLf5mfX3Vm1mQ=; b=H7gMsQuETlhVBl
+	T8UpMV88ukA/SEBggp7EA2yEnk1z42xdODf58Q/kF/4HOZNwgtbweAx/DIVB8zuNbqP95ZvcVW5gt
+	NAjYqZpCydq26C/6PQ+KqF/tIhNJBS9EzK4x4QCc5oBjvYgeqbQVuXF/dtdkPl9t1HLZ+zUGosvF+
+	/3pfo3/DrqmTm6nc+/vCpA+VElxPb5KxHuFDd5TxgGcnQdt4twzJDtSwofBQcSX9EsRqbGJ8d2EJ4
+	NU7fCWsDwHeE1Tr0zWmG0GTa8R/S4yRycAO1zvoMjZ6nUbecvjB83TZa72XXNSHi7dVdfRRpQAzy+
+	s7mfek+23z+vof1ouo0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSS03-0000000Ed5I-3u5l;
-	Fri, 20 Jun 2025 03:01:07 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1uSXxa-0000000FB6y-2Bk4;
+	Fri, 20 Jun 2025 09:22:58 +0000
+Received: from mxout4.routing.net ([2a03:2900:1:a::9])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSRzy-0000000Ed3y-2Opn;
-	Fri, 20 Jun 2025 03:01:06 +0000
-X-UUID: c93470704d8211f09f706fa2197c6ceb-20250619
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=yK0QfK4ZZxsvW9hBbrEOHPwZIvhCT7JXP6hfmrcRiuA=;
-	b=pi1JJyOnWxkyPEfTE5AYixZMXKSt8WyfyXAcX9lineZ2knnwS9U7whZmzzoSIwAX65vp2htCCLc+WoCugLimEHbs5xRjZ17tsfAxLtwcSl0o/osDblSy/OlDcUnMoaVxS6Epk34o5v9+WhU94/6soy9DdKgA7Qls4PkzMoBNUPo=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.3,REQID:f7d29fc3-0f11-4838-96ed-385a108fe559,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:09905cf,CLOUDID:06b9a828-fdd2-4021-9c0c-83548fdcf243,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102,TC:nil,Content:0|50,
-	EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
-	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: c93470704d8211f09f706fa2197c6ceb-20250619
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
-	(envelope-from <kuyo.chang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 27328747; Thu, 19 Jun 2025 20:00:56 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Fri, 20 Jun 2025 11:00:53 +0800
-Received: from [10.233.130.16] (10.233.130.16) by mtkmbs13n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.1258.39 via Frontend
- Transport; Fri, 20 Jun 2025 11:00:53 +0800
-Message-ID: <6ec534be0618de3e2b4d81555e5f24155326c0b9.camel@mediatek.com>
-Subject: Re: [RFC PATCH 1/1] sched/deadline: Fix RT task potential
- starvation when expiry time passed
-From: Kuyo Chang <kuyo.chang@mediatek.com>
-To: Juri Lelli <juri.lelli@redhat.com>
-CC: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>,
-	Vincent Guittot <vincent.guittot@linaro.org>, Dietmar Eggemann
-	<dietmar.eggemann@arm.com>, Steven Rostedt <rostedt@goodmis.org>, "Ben
- Segall" <bsegall@google.com>, Mel Gorman <mgorman@suse.de>, "Valentin
- Schneider" <vschneid@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, jstultz
-	<jstultz@google.com>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Date: Fri, 20 Jun 2025 11:00:53 +0800
-In-Reply-To: <aFQM8TdZIIvvGv8T@jlelli-thinkpadt14gen4.remote.csb>
-References: <20250615131129.954975-1-kuyo.chang@mediatek.com>
-	 <aFAyN4rfssKmbUE5@jlelli-thinkpadt14gen4.remote.csb>
-	 <089882f95b1b910f7feecddd0ad9b17f38394c64.camel@mediatek.com>
-	 <aFQM8TdZIIvvGv8T@jlelli-thinkpadt14gen4.remote.csb>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.52.3-0ubuntu1 
+	id 1uSXEM-0000000F4x6-32Lz;
+	Fri, 20 Jun 2025 08:36:16 +0000
+Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
+	by mxout4.routing.net (Postfix) with ESMTP id ECE71100870;
+	Fri, 20 Jun 2025 08:36:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1750408571;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=fEipcKAdukHIximsR/pW1XDMAY4xIuxLf5mfX3Vm1mQ=;
+	b=GupZjz9UnsS2GlDvj8TRtLdgxoX4+KHTXmbCVdO6hD6eyKHVlnqFQSY6hcQXY53bECn7kZ
+	C/C9hlI9OQR5EDcuRr89vT+6cQll16EexXh8rMlwCJcPHUTqvPo89KN4w/V5GFBaW90VY3
+	vuUmSmQ811u5DjKwi5hjYxvYpHNAG2Q=
+Received: from frank-u24.. (fttx-pool-157.180.225.81.bambit.de [157.180.225.81])
+	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 91770122700;
+	Fri, 20 Jun 2025 08:36:10 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: MyungJoo Ham <myungjoo.ham@samsung.com>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	Chanwoo Choi <cw00.choi@samsung.com>,
+	Georgi Djakov <djakov@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v5 01/13] dt-bindings: net: mediatek,net: update for mt7988
+Date: Fri, 20 Jun 2025 10:35:32 +0200
+Message-ID: <20250620083555.6886-2-linux@fw-web.de>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250620083555.6886-1-linux@fw-web.de>
+References: <20250620083555.6886-1-linux@fw-web.de>
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250619_200102_618675_D7A470C2 
-X-CRM114-Status: GOOD (  27.29  )
+X-CRM114-CacheID: sfid-20250620_013614_921881_892A7944 
+X-CRM114-Status: GOOD (  11.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,82 +80,107 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Landen Chao <Landen.Chao@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, linux-pm@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, DENG Qingfang <dqfext@gmail.com>, Johnson Wang <johnson.wang@mediatek.com>, linux-mediatek@lists.infradead.org, Jia-Wei Chang <jia-wei.chang@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2025-06-19 at 15:13 +0200, Juri Lelli wrote:
->=20
-> External email : Please do not click links or open attachments until
-> you have verified the sender or the content.
->=20
->=20
-> On 18/06/25 22:20, Kuyo Chang wrote:
->=20
-> ...
->=20
-> > When dl_defer_running =3D 1 and the running time has been exhausted,
-> > it means that the dl_server should stop at this point.
-> > However, if start_dl_timer() returns a failure, it indicates that
-> > the
-> > actual time spent consuming the running time was unexpectedly long.
-> >=20
-> > At this point, there are two options:
-> > [as-is] 1. re-enqueuing the dl entity with ENQUEUE_REPLENISH will
-> > clear
-> > the throttled flag
-> > and re-enqueue the dl entity to keep the fair_server running.
-> > enqueue_dl_entity(dl_se, ENQUEUE_REPLENISH);
-> > =3D> replenish_dl_entity
-> > =C2=A0 =3D> replenish_dl_new_period(dl_se, rq);
-> > =C2=A0 =3D> dl_se->dl_yielded =3D 0;
-> > =C2=A0 =3D> dl_se->dl_throttled =3D 0;
-> > =3D> __enqueue_dl_entity(dl_se);
-> >=20
-> > [to-be] 2. To avoid RT latency, the fair_server should remain
-> > throttled
-> > while replenishing the dl_se.
-> > Once replenishing is complete, we can ensure that a timer is
-> > successfully started.
-> > When the timer is triggered, the throttled state will be cleared,
-> > ensuring that RT tasks can execute during this interval.
-> >=20
-> > It is a policy decision for dealing with the case of failure in
-> > start_dl_timer().
-> > The second approach is better for real-time (RT) latency in my
-> > opinion,
-> > as RT tasks must be prioritized.
->=20
-> OK, I think I see your points, but I am still not sure I fully
-> understand the link with the issue you describe in the changelog -
-> the
-> relation with "DL replenish lagged too much", that is.
->=20
-> Could you please expand on the details of the situation that is
-> opening
-> up for the issue your patch is addressing? Do you know why we hit the
-> corner case that causes the warning in the first place?
->=20
+From: Frank Wunderlich <frank-w@public-files.de>
 
-"DL replenish lagged too much" means the fair_server took much longer
-than expected to use up its running time,
-so the deadline fell way behind the clock (which is also why
-start_dl_timer() failed).=20
-In this situation, just replenishing one dl_period isn=E2=80=99t enough to
-catch up.
-=20
-A corner case is when there are too many IRQs or IPIs in the system.
-In this case, runtime gets consumed very slowly, and the fair_server
-keep running without being throttled.
-Even the runtime is exhausted finally, the fair_server would be
-restarted immediately.
-In the end, IRQs, IPIs, and fair tasks can take over the whole system,
-no chance for RT tasks to run.
+Update binding for mt7988 which has 3 gmac and 2 reg items.
 
-> I would like to understand exactly what we are trying to fix before
-> deciding how to fix it, sorry if I am being dense. :-)
->=20
-> Thanks,
-> Juri
->=20
+MT7988 has 4 FE IRQs (currently only 2 are used) and the 4 IRQs for
+use with RSS/LRO later.
+
+Add interrupt-names to make them accessible by name.
+
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+---
+v5:
+- fix v4 logmessage and change description a bit describing how i get
+  the irq count.
+- update binding for 8 irqs with different names (rx,tx => fe0..fe3)
+  including the 2 reserved irqs which can be used later
+- change rx-ringX to pdmaX to be closer to hardware documentation
+
+v4:
+- increase max interrupts to 6 because of adding RSS/LRO interrupts (4)
+  and dropping 2 reserved irqs (0+3) around rx+tx
+- dropped Robs RB due to this change
+- allow interrupt names
+- add interrupt-names without reserved IRQs on mt7988
+  this requires mtk driver patch:
+  https://patchwork.kernel.org/project/netdevbpf/patch/20250616080738.117993-2-linux@fw-web.de/
+
+v2:
+- change reg to list of items
+---
+ .../devicetree/bindings/net/mediatek,net.yaml | 30 ++++++++++++++++---
+ 1 file changed, 26 insertions(+), 4 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+index 9e02fd80af83..9465b40683ad 100644
+--- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
++++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+@@ -28,7 +28,10 @@ properties:
+       - ralink,rt5350-eth
+ 
+   reg:
+-    maxItems: 1
++    items:
++      - description: Register for accessing the MACs.
++      - description: SoC internal SRAM used for DMA operations.
++    minItems: 1
+ 
+   clocks:
+     minItems: 2
+@@ -40,7 +43,11 @@ properties:
+ 
+   interrupts:
+     minItems: 1
+-    maxItems: 4
++    maxItems: 8
++
++  interrupt-names:
++    minItems: 1
++    maxItems: 8
+ 
+   power-domains:
+     maxItems: 1
+@@ -348,7 +355,19 @@ allOf:
+     then:
+       properties:
+         interrupts:
+-          minItems: 4
++          minItems: 2
++
++        interrupt-names:
++          minItems: 2
++          items:
++            - const: fe0
++            - const: fe1
++            - const: fe2
++            - const: fe3
++            - const: pdma0
++            - const: pdma1
++            - const: pdma2
++            - const: pdma3
+ 
+         clocks:
+           minItems: 24
+@@ -381,8 +400,11 @@ allOf:
+             - const: xgp2
+             - const: xgp3
+ 
++        reg:
++          minItems: 2
++
+ patternProperties:
+-  "^mac@[0-1]$":
++  "^mac@[0-2]$":
+     type: object
+     unevaluatedProperties: false
+     allOf:
+-- 
+2.43.0
 
 
