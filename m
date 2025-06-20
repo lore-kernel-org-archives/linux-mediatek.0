@@ -4,61 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 073D6C7115C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Jun 2025 15:01:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9367C7115C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Jun 2025 15:33:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4t8CzLVhNt5hF8pMcM5IOUENWih9yn+woULSXFUDlTY=; b=IHHtRvdVZ1xJ8qguUHTvhSOYwm
-	pGg+sZ9tosxxdtipnG4WAkOwQNLCdr3ES4iNk+wSZhbE4oWqjWJQ3jcMeqA2Odmeos3kVr+Z1uHkw
-	qiyXtcCzQBMg4RfU0V3vw9qro0SIb3ZbWjdrwc6gc4tjovFiDUeElwF5bN9/+W4IcanY99wwvivgu
-	QQ5ele6d3G3aswHIszMVBTF1gE8WQ83a5t42izwwFUIXDErlVURPPZba4GP9+G2/QhR/pNxjW8EuW
-	l4ztu5nqtWLtjpwwBB3LD2vQ29UgPfXm6OfqXSWZqZ8a0g3nb7IlsU/X9a8tSlI+TKuvCiL8js6tD
-	7sbYv8YQ==;
+	bh=cN1LA4ycWLYTHnDpp5XY9WIgVZkngojcPUNGmlqXWbc=; b=1aq7hWdsJBNQqykfrBg/2mTEso
+	L+M1cBYc1FgBTqgA9SWO/kacG2Vobha3TXJNkMeZ3rdQ94nLJecYseA5/FCPj9OyylpRCroTGyrhH
+	zGctFTb+rATnBnOrJj1mXPbx69p5HgIRE6bXqoFoMXNp18QYWxF7ndlYMgl0zHl90udTzqEOdlUjJ
+	YfxFtJSyThgMd3OWQxK1i1k33C47BGo9sxGjmJyvEMEire5LIctC38uymGGmAPnZK0W1zMTEzs1i3
+	UKnbT06XNyz+c8kpKfIzHR6d2qWNVVf7xpZpMmxWdVsRJEdpGhObtTTrgK0I2XyHufKZ15mt4QXfM
+	hJzsMYVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSdF2-0000000Fv8C-1CgG;
-	Fri, 20 Jun 2025 15:01:20 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSdCl-0000000Fuvi-2eEZ;
-	Fri, 20 Jun 2025 14:59:02 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 860EA16F2;
-	Fri, 20 Jun 2025 07:58:36 -0700 (PDT)
-Received: from [10.1.30.22] (e122027.cambridge.arm.com [10.1.30.22])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id A9B423F673;
-	Fri, 20 Jun 2025 07:58:51 -0700 (PDT)
-Message-ID: <7f4d377c-c84a-43e0-9e4d-3d616ac4ef40@arm.com>
-Date: Fri, 20 Jun 2025 15:58:49 +0100
+	id 1uSdjv-0000000FzQJ-1ipg;
+	Fri, 20 Jun 2025 15:33:15 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uSdZU-0000000FxCx-2mGm
+	for linux-mediatek@lists.infradead.org;
+	Fri, 20 Jun 2025 15:22:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1750432946;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=cN1LA4ycWLYTHnDpp5XY9WIgVZkngojcPUNGmlqXWbc=;
+	b=d0caeUqITTRgH3jrOPfV9zlRVfxR/NRN9XGg9QL5+UGDSYaj1/gEg42n1RK1irXgq7sA7B
+	9Z0eNdQRomWmIv1lFx8eYCFQamV2GF9TE54WGQTaiItKMgioQ8k4hPJSf22dCu9Jof+1Yc
+	/Ubi+fbS6h7FjepitrTG6KipbCHiOek=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-280-WiyyvWiNOEeWK7ZweyTp1w-1; Fri, 20 Jun 2025 11:22:24 -0400
+X-MC-Unique: WiyyvWiNOEeWK7ZweyTp1w-1
+X-Mimecast-MFC-AGG-ID: WiyyvWiNOEeWK7ZweyTp1w_1750432943
+Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-45334219311so10143855e9.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 20 Jun 2025 08:22:24 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1750432943; x=1751037743;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=cN1LA4ycWLYTHnDpp5XY9WIgVZkngojcPUNGmlqXWbc=;
+        b=lPrTDtfES1YbbL5GKb0emKByUzpUvw7Ox3d3qDeQxGxLPGShgB8kIPv/qTFcykSmPw
+         Tte3CjEWuowUcdQMfq7JQA2g/T9wCjHNq67uZPLcBcBPeqalHdvb/mwMyfrs5lDN6V0h
+         IXnb7zDOsxE25J9hPUG3aqCiHZ+/vhhvh8fDRsjUSbj+AEKWs2Uxjy1TGTgygjRE722c
+         6i7+LN7pTh0K2Rk14no+IVYwrEE5fihllekVsWL3XcrXpsjg4MObFUQ/3Rtdi2gLOuxE
+         NGxdej+K5mJnFawC7FZ4cH1v9DzuaD/Q6G5RlhOru+vao6MiwmYnZAKf0GAJ9oRmAKzO
+         Sjhw==
+X-Forwarded-Encrypted: i=1; AJvYcCW8Pqb4JvTtfenfRJ1XCowx/owIbE7a/uCZkxeihUHsj1KSQTNjiidjnaMuQmlqU9V2cRh/HwV1NKwY2E7JYQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx6h2UhSbggg04pzD4y91b0U0JX4U3NwmvPeJb0RtVRcuf00CLt
+	wkSGLaiDub1fLvT0gdrQR5FOtHKLyTS4AX6P88qtaMoUI4+SeXNsDYoBPHqwaG+DYGGNM4mVPfD
+	/kDurKz4kiX9G35AUOVVRq0HfDKJALA/FC0IOUTW8jNdMWsAs/yb+7OCzRUZGAnELLIlJ5EbyWA
+	==
+X-Gm-Gg: ASbGncv3v2hLklX5+5CBNpnjvKceUAxyf0is56F41Pilgtn4OXntwcBoNkdcgcymDPX
+	GyaUA9XIpaNan/y6pf2c5rTbEquJ8jLbSJ17zjHQJCbg3oXG8X1nOPwnKestHZvhun3gH0r2rXr
+	bccnohKE9/BWj3phJFhS/jt1260lB4yn86AwY4yTuhn28ZnbpsP+dLLnNpiclyjiiIhXSK2QFrH
+	/EnzdfRky6iCy2zuGSD7HIaJj+o/IEsbfc/7dRfctIm0xp3O8XXnrGMkjr0JK1AukcM0y/ttsMI
+	95wZHiNuStBm68W8Yn1bGOhirb9qqho/t3GqVRy80HhRW2fCQK4k
+X-Received: by 2002:a05:600c:4ec6:b0:43d:94:2d1e with SMTP id 5b1f17b1804b1-453659c5990mr33686695e9.13.1750432943261;
+        Fri, 20 Jun 2025 08:22:23 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEZmVpv8KaX6/5zmsF8suS17BhoS4C59H1HpKJfGYz4l67tvqNN65MS3ZSI+H8wSDwwq8cC1A==
+X-Received: by 2002:a05:600c:4ec6:b0:43d:94:2d1e with SMTP id 5b1f17b1804b1-453659c5990mr33686485e9.13.1750432942892;
+        Fri, 20 Jun 2025 08:22:22 -0700 (PDT)
+Received: from jlelli-thinkpadt14gen4.remote.csb ([151.47.238.47])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-45364705748sm28034795e9.28.2025.06.20.08.22.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 20 Jun 2025 08:22:21 -0700 (PDT)
+Date: Fri, 20 Jun 2025 17:22:17 +0200
+From: Juri Lelli <juri.lelli@redhat.com>
+To: Kuyo Chang <kuyo.chang@mediatek.com>
+Cc: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>,
+	Vincent Guittot <vincent.guittot@linaro.org>,
+	Dietmar Eggemann <dietmar.eggemann@arm.com>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	Ben Segall <bsegall@google.com>, Mel Gorman <mgorman@suse.de>,
+	Valentin Schneider <vschneid@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	jstultz <jstultz@google.com>, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [RFC PATCH 1/1] sched/deadline: Fix RT task potential starvation
+ when expiry time passed
+Message-ID: <aFV8qeH__bw0chWM@jlelli-thinkpadt14gen4.remote.csb>
+References: <20250615131129.954975-1-kuyo.chang@mediatek.com>
+ <aFAyN4rfssKmbUE5@jlelli-thinkpadt14gen4.remote.csb>
+ <089882f95b1b910f7feecddd0ad9b17f38394c64.camel@mediatek.com>
+ <aFQM8TdZIIvvGv8T@jlelli-thinkpadt14gen4.remote.csb>
+ <6ec534be0618de3e2b4d81555e5f24155326c0b9.camel@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 0/5] Add Mali GPU support for Mediatek MT8370 SoC
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Boris Brezillon <boris.brezillon@collabora.com>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Conor Dooley <conor.dooley@microchip.com>
-References: <20250509-mt8370-enable-gpu-v6-0-2833888cb1d3@collabora.com>
-From: Steven Price <steven.price@arm.com>
-Content-Language: en-GB
-In-Reply-To: <20250509-mt8370-enable-gpu-v6-0-2833888cb1d3@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+In-Reply-To: <6ec534be0618de3e2b4d81555e5f24155326c0b9.camel@mediatek.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: tKzv7AWUxuYeUR9M_9kQ773g0KlKf6VSkbgq0YXTT3A_1750432943
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250620_075859_762528_10D1DE69 
-X-CRM114-Status: GOOD (  28.08  )
+X-CRM114-CacheID: sfid-20250620_082228_776278_9197A7DF 
+X-CRM114-Status: GOOD (  18.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,173 +123,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-All 5 patches push to drm-misc-next.
+On 20/06/25 11:00, Kuyo Chang wrote:
+
+...
+
+> "DL replenish lagged too much" means the fair_server took much longer
+> than expected to use up its running time,
+> so the deadline fell way behind the clock (which is also why
+> start_dl_timer() failed). 
+> In this situation, just replenishing one dl_period isn’t enough to
+> catch up.
+>  
+> A corner case is when there are too many IRQs or IPIs in the system.
+> In this case, runtime gets consumed very slowly, and the fair_server
+> keep running without being throttled.
+> Even the runtime is exhausted finally, the fair_server would be
+> restarted immediately.
+> In the end, IRQs, IPIs, and fair tasks can take over the whole system,
+> no chance for RT tasks to run.
+
+Thanks for the additional explanation.
+
+The way I understand it now is the following (of course please correct
+me if I am still not getting it :)
+
+- a dl_server is actively servicing NORMAL tasks, but suffers lot of IRQ
+  load and cannot make much progress
+- it does anyway make progress, but it reaches update_curr_dl_se@throttle
+  only when its current deadline is past rq_clock
+- dl_runtime_exceeded() branch is entered, but start_dl_timer() fails as
+  the computed act is still in the past
+- enqueue_dl_entity(REPLENISH) call replenish_dl_entity() which tries to
+  add runtime and advance the deadline, but time moved on so far that
+  deadline is still behind rq_clock() and so "DL replenish ..." is
+  printed
+- replenish_dl_new_period() updates runtime and deadline from current
+  clock and the dl-server is put back to run (so it continues to run
+  over/starve FIFO tasks)
+
+It looks like your proposed fix might work in this particular corner
+case, but I am not 100% comfortable with not trying to replenish
+properly (catch up with runtime) at all. I wonder if we might then start
+missing some other corner case. Maybe we could try to catch this
+particular corner case before even attempting to start the dl_timer,
+since we know it will fail, and do something at that point?
 
 Thanks,
-Steve
-
-On 09/05/2025 11:12, Louis-Alexis Eyraud wrote:
-> This patchset adds the support of the ARM Mali G57 MC2 GPU (Valhall-JM,
-> dual core), integrated in the Mediatek MT8370 SoC, to the panfrost
-> driver and to the mt8370.dtsi include file.
-> 
-> Since v4 patchset was sent, the [1] patchset adds in panfrost driver
-> the AARCH64_4K page table format support and enablement for Mediatek
-> SoC with integrated Arm Mali-G57, already supported in panfrost driver
-> (like MT8188, MT8192, MT8195, MT8390, MT8395...).
-> As MT8370 SoC is a less powerful variant of MT8390 (same GPU but with
-> one less core for MT8370), I've reworked the second patch
-> ('drm/panfrost: Add support for Mali on the MT8370 SoC') to enable the
-> AARCH64_4K mode on this SoC as well by adding specific MT8370 platform
-> data to set the needed flag.
-> The previous patch revision uses MT8186 platform data because despite
-> having different GPU architecture (Mali G52 2EE MC2 for MT8186, making
-> them not compatible), using the same plaform data, for describing the
-> same power management features only, was okay.
-> But now, the platform data also contains the GPU configuration quirk
-> bitfield that needs to be modified to enable the AARCH64_4K page table
-> format, and in order not to change MT8186 behaviour, I add specific
-> MT8370 platform data.
-> 
-> I've tested this patchset on a Mediatek Genio 510 EVK board,
-> with a kernel based on linux-next (tag: next-20250502).
-> 
-> The panfrost driver probed with the following messages:
-> ```
-> panfrost 13000000.gpu: clock rate = 390000000
-> panfrost 13000000.gpu: mali-g57 id 0x9093 major 0x0 minor 0x0 status 0x0
-> panfrost 13000000.gpu: features: 00000000,000019f7, issues: 00000003,
->   80000400
-> panfrost 13000000.gpu: Features: L2:0x08130206 Shader:0x00000000
->   Tiler:0x00000809 Mem:0x1 MMU:0x00002830 AS:0xff JS:0x7
-> panfrost 13000000.gpu: shader_present=0x5 l2_present=0x1
-> [drm] Initialized panfrost 1.3.0 for 13000000.gpu on minor 0
-> ```
-> 
-> Running glmark2-es2-drm is also OK:
-> ```
-> =======================================================
->     glmark2 2023.01
-> =======================================================
->     OpenGL Information
->     GL_VENDOR:      Mesa
->     GL_RENDERER:    Mali-G57 (Panfrost)
->     GL_VERSION:     OpenGL ES 3.1 Mesa 25.0.3-1
->     Surface Config: buf=32 r=8 g=8 b=8 a=8 depth=24 stencil=0 samples=0
->     Surface Size:   1200x1920 fullscreen
-> =======================================================
-> [build] use-vbo=false: FPS: 952 FrameTime: 1.051 ms
-> [build] use-vbo=true: FPS: 983 FrameTime: 1.018 ms
-> [texture] texture-filter=nearest: FPS: 906 FrameTime: 1.105 ms
-> [texture] texture-filter=linear: FPS: 908 FrameTime: 1.102 ms
-> [texture] texture-filter=mipmap: FPS: 883 FrameTime: 1.134 ms
-> [shading] shading=gouraud: FPS: 838 FrameTime: 1.194 ms
-> [shading] shading=blinn-phong-inf: FPS: 778 FrameTime: 1.287 ms
-> [shading] shading=phong: FPS: 583 FrameTime: 1.717 ms
-> [shading] shading=cel: FPS: 553 FrameTime: 1.809 ms
-> [bump] bump-render=high-poly: FPS: 573 FrameTime: 1.747 ms
-> [bump] bump-render=normals: FPS: 868 FrameTime: 1.153 ms
-> [bump] bump-render=height: FPS: 707 FrameTime: 1.415 ms
-> [effect2d] kernel=0,1,0;1,-4,1;0,1,0;: FPS: 454 FrameTime: 2.204 ms
-> [effect2d] kernel=1,1,1,1,1;1,1,1,1,1;1,1,1,1,1;: FPS: 172 FrameTime:
->   5.843 ms
-> [pulsar] light=false:quads=5:texture=false: FPS: 770 FrameTime:
->   1.300 ms
-> [desktop] blur-radius=5:effect=blur:passes=1:separable=true:windows=4:
->   FPS: 161 FrameTime: 6.235 ms
-> [desktop] effect=shadow:windows=4: FPS: 484 FrameTime: 2.069 ms
-> [buffer] columns=200:interleave=false:update-dispersion=0.9:update-fraction
->   =0.5:update-method=map: FPS: 512 FrameTime: 1.955 ms
-> [buffer] columns=200:interleave=false:update-dispersion=0.9:update-fraction
->   =0.5:update-method=subdata: FPS: 513 FrameTime: 1.952 ms
-> [buffer] columns=200:interleave=true:update-dispersion=0.9:update-fraction
->   =0.5:update-method=map: FPS: 577 FrameTime: 1.735 ms
-> [ideas] speed=duration: FPS: 448 FrameTime: 2.235 ms
-> [jellyfish] <default>: FPS: 226 FrameTime: 4.440 ms
-> [terrain] <default>: FPS: 38 FrameTime: 26.861 ms
-> [shadow] <default>: FPS: 328 FrameTime: 3.051 ms
-> [refract] <default>: FPS: 72 FrameTime: 13.937 ms
-> [conditionals] fragment-steps=0:vertex-steps=0: FPS: 844 FrameTime:
->   1.186 ms
-> [conditionals] fragment-steps=5:vertex-steps=0: FPS: 685 FrameTime: 
->   1.462 ms
-> [conditionals] fragment-steps=0:vertex-steps=5: FPS: 833 FrameTime:
->   1.201 ms
-> [function] fragment-complexity=low:fragment-steps=5: FPS: 830 FrameTime:
->   1.205 ms
-> [function] fragment-complexity=medium:fragment-steps=5: FPS: 525 FrameTime:
->   1.905 ms
-> [loop] fragment-loop=false:fragment-steps=5:vertex-steps=5: FPS: 837
->   FrameTime: 1.195 ms
-> [loop] fragment-steps=5:fragment-uniform=false:vertex-steps=5: FPS: 835 
->   FrameTime: 1.199 ms
-> [loop] fragment-steps=5:fragment-uniform=true:vertex-steps=5: FPS: 550
->   FrameTime: 1.820 ms
-> =======================================================
->                                   glmark2 Score: 611 
-> =======================================================
-> ```
-> 
-> [1] https://lore.kernel.org/dri-devel/20250324185801.168664-1-ariel.dalessandro@collabora.com/
-> 
-> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-> ---
-> Changes in v6:
-> - Add two new patches to commonize and drop duplicated data related to 
->   the power domain and supplies definitions for Mediatek SoC
-> - Remove useless comment and rework MT8370 platform data to use
->   mediatek_pm_domains and default_supplies arrays in 'drm/panfrost: Add
->   support for Mali on the MT8370 SoC'
-> - Update code-review trailer
-> - Link to v5: https://lore.kernel.org/r/20250502-mt8370-enable-gpu-v5-0-98e247b30151@collabora.com
-> 
-> Changes in v5:
-> - Rebase on linux-next (tqg: next-2020501)
-> - Rework 'drm/panfrost: Add support for Mali on the MT8370 SoC' patch
->   to have MT8370 support with its AARCH64_4K page table format support enabled 
-> - Drop code-review trailers from 'drm/panfrost: Add support for Mali on
->   the MT8370 SoC' patch due to major changes in content and commit message
-> - Add ack trailer for 'dt-bindings: gpu: mali-bifrost: Add compatible 
->   for MT8370 SoC' patch
-> - Add glmark2-es2-drm benchmark results in cover letter
-> - Link to v4: https://lore.kernel.org/r/20250211-mt8370-enable-gpu-v4-0-77deb7a75c23@collabora.com
-> 
-> Changes in v4:
-> - Add warning comment in mt8370.dtsi about GPU node override
-> - Reword "dt-bindings: gpu: mali-bifrost: Add compatible for MT8370
->   SoC" commit message
-> - Add code-review trailers
-> - Link to v3: https://lore.kernel.org/r/20250207-mt8370-enable-gpu-v3-0-75e9b902f9c1@collabora.com
-> 
-> Changes in v3:
-> - Rebased on linux-next (tag: next-20250207)
-> - Remove prerequisite change/patch ids
-> - Reword commit messages to better explicit compatible needs
-> - Link to v2: https://lore.kernel.org/r/20250130-mt8370-enable-gpu-v2-0-c154d0815db5@collabora.com
-> 
-> Changes in v2:
-> - Rework "drm/panfrost: Add support for Mali on the MT8370 SoC" to avoid
->   data structure duplication, as requested by Krzysztof Kozlowski
-> - Reword commit messages to use imperative mood and make new compatible
->   need more explicit
-> - Link to v1: https://lore.kernel.org/r/20250116-mt8370-enable-gpu-v1-0-0a6b78e925c8@collabora.com
-> 
-> ---
-> Louis-Alexis Eyraud (5):
->       dt-bindings: gpu: mali-bifrost: Add compatible for MT8370 SoC
->       drm/panfrost: Drop duplicated Mediatek supplies arrays
->       drm/panfrost: Commonize Mediatek power domain array definitions
->       drm/panfrost: Add support for Mali on the MT8370 SoC
->       arm64: dts: mediatek: mt8370: Enable gpu support
-> 
->  .../devicetree/bindings/gpu/arm,mali-bifrost.yaml  |  5 +-
->  arch/arm64/boot/dts/mediatek/mt8370.dtsi           | 16 ++++++
->  drivers/gpu/drm/panfrost/panfrost_drv.c            | 61 ++++++++++++----------
->  3 files changed, 53 insertions(+), 29 deletions(-)
-> ---
-> base-commit: 1c51b1ba38c07e4f999802eb708bf798dd5f5d1b
-> change-id: 20250115-mt8370-enable-gpu-3b6f595fa63d
-> 
-> Best regards,
+Juri
 
 
