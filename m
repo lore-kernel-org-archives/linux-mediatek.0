@@ -4,75 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D080EC7115B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Jun 2025 20:29:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54ECAC7115B
+	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Jun 2025 02:56:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:Subject:
-	Message-ID:Date:From:MIME-Version:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=OKiK32kFE3K17oXdM4Ui5D7ygEP5HcZ5gRlOoGAswjY=; b=pta5RXCv8aR6mIl6hGuX0v7+oC
-	buHkjPF+8X6p54xKJjhU9QkqAnvbUQs3voo0PVwAlZG0KRUBi1MQO25CQ9D5xVpaVbxMRFjKK4ldt
-	lZL8nLGeEzVS/NKD5ApD9tstyf1xt+2Tedt0AVm7+JrDPwe3QLJFB4A2fQx4KDYOOeHV5O5wnmnKz
-	6YWjkrJAKWwOpWeNnk3hQUtVul8lQk+GndD3TWZ5zpgKIImGQTWzbxoHVjOdtnz8x7nP+9zJPiBt8
-	Zhx/rfAA6rJdkEst+Wo0zlZZGYxXFEjeA1+aVUrE6uMEEdkfMvlh8PwEW5oFeNrmITmkOCgyyr08M
-	MxAQFMzA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CDv7yqQhXCn/WwLVae9uHSPtlIKjf+0DhbUVabTmYD8=; b=0xzb/FeZdOJaYWyJimV1R+o/GG
+	y6JpE+FimdgB7w+hkfchnBuFbkGHQLeQ9qCv1gn2HYhLdV/gWyh4XP6ib15+F8oV2chCGny9EHA22
+	Tv3JC4sm/ETwubRHzY2h0/9fxQXaGGOQeMqqB6MkC/H0wenSbjOgjZtWrrOAOCcFeh4bHUL64Bx64
+	oXqJh4KFRI7UiJnLm+wSZmsSPSaLtP+mQIfEMBqAxWoA5cZMO4oSQ1qvWeA/O4qNOwKe+LE4wYagQ
+	FLfNvGxMpoeGcvJknS78WfUa8WZvLZYnQKJV9BSVHs5JZMbXMyZu4FAGsRFsoec8OCC8KFutcPgJ1
+	sMxney0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSiMz-0000000GXPs-1qQ6;
-	Fri, 20 Jun 2025 20:29:53 +0000
-Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
+	id 1uSoOp-0000000H0IA-1k39;
+	Sat, 21 Jun 2025 02:56:11 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSiMO-0000000GXLq-3mwR
-	for linux-mediatek@lists.infradead.org;
-	Fri, 20 Jun 2025 20:29:17 +0000
-Received: by mail-lj1-x22d.google.com with SMTP id 38308e7fff4ca-32b50f357ecso18642551fa.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 20 Jun 2025 13:29:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1750451355; x=1751056155; darn=lists.infradead.org;
-        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=OKiK32kFE3K17oXdM4Ui5D7ygEP5HcZ5gRlOoGAswjY=;
-        b=J/mE7/wT97cAh++VsxutG8CAHNsa+qxhpfpwKi4rpY/QZ9z6HbUN96GKwk0u/Hv/D8
-         TpPJvtY4HJUi7ltK369e5zbR9dbwbyPY1mxJtF7826KdDlXBaI7/8WGtqE3g1YB3MSP6
-         POMXjKEdqD9pzCVDwNkmy04LDwuiqClcj/dkJsZ9KF30eSYwh5gh8KY7TxBZA2VNvfEL
-         uxTaid5j9E6Omry/VZOqKG6wxytW5oW3fusHpXFsU6O8Htb2TrmLRnLZLAD5V+xWEcB3
-         i/d8R4yvN2W8/p72D/o0X35tJMf5j3QbNk2LKWEHxL9LozuwTGgtuekZIvaUxHZNhw4f
-         bjGg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750451355; x=1751056155;
-        h=to:subject:message-id:date:from:mime-version:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=OKiK32kFE3K17oXdM4Ui5D7ygEP5HcZ5gRlOoGAswjY=;
-        b=ah0ePzu8FS1/SrbwK6fT+Z4h6Z4GDTTAaFyH6Q4FY63pZF4o0DsKxR/uSPWlEmgAeu
-         CmB95Xp3MltqkllOZTnn7mie7h9oWN/nLNWeJEazuqN+7Uj6pJkklWEhkvLXgoN5zl3Z
-         SisybcgO3FKVXTU7iI4a5hKzaWj0/GHjBgqnwNn1b+ewPivA6RjWY2iJPSojzes1ujBK
-         kmU7lwFcVgiSMxPxhNdamugpreJb+ga0Qz7/7j0w+0xBVVC/BQ3I3kLvQVXeibPB3Pwc
-         pV1Q9i9us71bMrc6xN6TsDX6mw1v+aKeZZPI+iO1aN366H6qhJ6gJ1cyBoUT5AKNXI4X
-         rXGw==
-X-Gm-Message-State: AOJu0Yzk+nfdpEadpoU+4Zv2OQVqi28I977BCDvl5DkPTOs2/aLXtl5u
-	O8Gc/Av80F7dz3WlXavcymIYDy4PT6KcPDwdyP/URJiDMtJXGW3pTr/+/SX4MI/nfsc8Cg7MpQi
-	HNaPSTxapcK6XvbbATwOYfr1rCsA6L/smyV1g
-X-Gm-Gg: ASbGncuME+9flROWUCTcLpLTHiEq6TD52lslBteLBD8fQMSrZF8PDPizdaF4ToZYxlX
-	tJT46eD5LVwt6BnG2QfNBLlRJ1y3/d7C9j8WpiAsRCmioHwKjcvxdapn+K1BVKDRiaWmAuNiaQ3
-	GDSXCqApOR2h1h/yMwFMHuQxGD67XhI8NbIOaMZeC3oDvKsmUGMyQ/sQ==
-X-Google-Smtp-Source: AGHT+IGJBlmnjNsJ8ZQvJWGUxp8+how5XFS8riQ9QCf/991DI7vScbyRt8fP1opphz/1VA7BiC9D+2E4ubYW/k3nxI4=
-X-Received: by 2002:a2e:b5b0:0:b0:32a:ec98:e14d with SMTP id
- 38308e7fff4ca-32b991fc08fmr10850851fa.16.1750451354449; Fri, 20 Jun 2025
- 13:29:14 -0700 (PDT)
-MIME-Version: 1.0
-From: Tadas basix <skarpinis@gmail.com>
-Date: Fri, 20 Jun 2025 21:29:02 +0100
-X-Gm-Features: AX0GCFuyIvBEhfhL_JuPeH76UwlS6SE18THg7gaCE8BMhx0_Rt3BMG-T-azEpYc
-Message-ID: <CAJg4s7RHZz+-AUuq4pnhZRL21MDKx5G98kcNX=Sic-RG7LmrGw@mail.gmail.com>
-Subject: mt7925
-To: linux-mediatek@lists.infradead.org
+	id 1uSoO2-0000000H0DO-3d8D;
+	Sat, 21 Jun 2025 02:55:24 +0000
+X-UUID: 2b00a2924e4b11f09f706fa2197c6ceb-20250620
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=CDv7yqQhXCn/WwLVae9uHSPtlIKjf+0DhbUVabTmYD8=;
+	b=mp05lNgv4aa9B/4S8oHLdmasi5oh1mHVJB0O9/6/s+Olbf2z0tTTT5j5rqLpEvLmPSGET7Gj+Siw5oHt5H7XHt6RIicZ+K0thEXrEplxNl8YvAOymsu3IYWAA3N5Nu0W7UqZttWZnbyiOlq4U/58CCO1zOjKVVjlhk/hgNztdUk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.2.3,REQID:1856e71d-6754-41a2-af4f-6aa5637cdcd9,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:09905cf,CLOUDID:c5ddb128-fdd2-4021-9c0c-83548fdcf243,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102,TC:nil,Content:0|50,
+	EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
+	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 2b00a2924e4b11f09f706fa2197c6ceb-20250620
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <kuyo.chang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 502462539; Fri, 20 Jun 2025 19:55:19 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Sat, 21 Jun 2025 10:55:15 +0800
+Received: from [10.233.130.16] (10.233.130.16) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.1258.39 via Frontend
+ Transport; Sat, 21 Jun 2025 10:55:15 +0800
+Message-ID: <a1103727ffaaf5f4d1b077bc09a3cc5168c5708d.camel@mediatek.com>
+Subject: Re: [RFC PATCH 1/1] sched/deadline: Fix RT task potential
+ starvation when expiry time passed
+From: Kuyo Chang <kuyo.chang@mediatek.com>
+To: Juri Lelli <juri.lelli@redhat.com>
+CC: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>,
+	Vincent Guittot <vincent.guittot@linaro.org>, Dietmar Eggemann
+	<dietmar.eggemann@arm.com>, Steven Rostedt <rostedt@goodmis.org>, "Ben
+ Segall" <bsegall@google.com>, Mel Gorman <mgorman@suse.de>, "Valentin
+ Schneider" <vschneid@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, jstultz
+	<jstultz@google.com>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Date: Sat, 21 Jun 2025 10:55:16 +0800
+In-Reply-To: <aFV8qeH__bw0chWM@jlelli-thinkpadt14gen4.remote.csb>
+References: <20250615131129.954975-1-kuyo.chang@mediatek.com>
+	 <aFAyN4rfssKmbUE5@jlelli-thinkpadt14gen4.remote.csb>
+	 <089882f95b1b910f7feecddd0ad9b17f38394c64.camel@mediatek.com>
+	 <aFQM8TdZIIvvGv8T@jlelli-thinkpadt14gen4.remote.csb>
+	 <6ec534be0618de3e2b4d81555e5f24155326c0b9.camel@mediatek.com>
+	 <aFV8qeH__bw0chWM@jlelli-thinkpadt14gen4.remote.csb>
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.52.3-0ubuntu1 
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250620_132916_943579_44D071EF 
-X-CRM114-Status: UNSURE (   2.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250620_195522_913161_EA7AE827 
+X-CRM114-Status: GOOD (  22.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,22 +96,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello, Bluetooth not working on latest archlinux kernel 6.15: Jun 17
-09:27:02 archlinux-pc kernel: usb 3-7: device descriptor read/64,
-error -71 Jun 17 09:27:02 archlinux-pc kernel: usb 3-7: device
-descriptor read/64, error -71 Jun 17 09:27:03 archlinux-pc kernel: usb
-3-7: device descriptor read/64, error -71 Jun 17 09:27:03 archlinux-pc
-kernel: usb 3-7: device descriptor read/64, error -71 Jun 17 09:27:04
-archlinux-pc kernel: usb 3-7: device not accepting address 9, error
--71 Jun 17 09:27:05 archlinux-pc kernel: usb 3-7: device not accepting
-address 10, error -71 please fix.
+On Fri, 2025-06-20 at 17:22 +0200, Juri Lelli wrote:
+>=20
+> External email : Please do not click links or open attachments until
+> you have verified the sender or the content.
+>=20
+>=20
+> On 20/06/25 11:00, Kuyo Chang wrote:
+>=20
+> ...
+>=20
+> >=20
+>=20
+> Thanks for the additional explanation.
+>=20
+> The way I understand it now is the following (of course please
+> correct
+> me if I am still not getting it :)
+>=20
+> - a dl_server is actively servicing NORMAL tasks, but suffers lot of
+> IRQ
+> =C2=A0 load and cannot make much progress
+> - it does anyway make progress, but it reaches
+> update_curr_dl_se@throttle
+> =C2=A0 only when its current deadline is past rq_clock
+> - dl_runtime_exceeded() branch is entered, but start_dl_timer() fails
+> as
+> =C2=A0 the computed act is still in the past
+> - enqueue_dl_entity(REPLENISH) call replenish_dl_entity() which tries
+> to
+> =C2=A0 add runtime and advance the deadline, but time moved on so far tha=
+t
+> =C2=A0 deadline is still behind rq_clock() and so "DL replenish ..." is
+> =C2=A0 printed
+> - replenish_dl_new_period() updates runtime and deadline from current
+> =C2=A0 clock and the dl-server is put back to run (so it continues to run
+> =C2=A0 over/starve FIFO tasks)
+>=20
 
-Jun 17 13:57:40 archlinux-pc kernel: Bluetooth: hci1: HW/SW Version:
-0x00000000, Build Time: 20250526153203 Jun 17 13:57:50 archlinux-pc
-kernel: Bluetooth: hci1: Execution of wmt command timed out Jun 17
-13:57:50 archlinux-pc kernel: Bluetooth: hci1: Failed to send wmt
-patch dwnld (-110) Jun 17 13:57:50 archlinux-pc kernel: Bluetooth:
-hci1: Failed to set up firmware (-110) Jun 17 13:57:50 archlinux-pc
-kernel: Bluetooth: hci1: HCI Enhanced Setup Synchronous Connection
-command is advertised, but not supported.
+Yes, "DL replenish ..." is the critical clue for identifying the root
+cause of this issue.
+
+> It looks like your proposed fix might work in this particular corner
+> case, but I am not 100% comfortable with not trying to replenish
+> properly (catch up with runtime) at all. I wonder if we might then
+> start
+> missing some other corner case. Maybe we could try to catch this
+> particular corner case before even attempting to start the dl_timer,
+> since we know it will fail, and do something at that point?
+>=20
+
+You can consider the patch more as an error-proofing mechanism, and so
+far, it has been working well on our platform.
+However, it might be better to catch this particular corner case in
+advance to prevent the issue.
+> Thanks,
+> Juri
+>=20
+
 
