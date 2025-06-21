@@ -4,84 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54ECAC7115B
-	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Jun 2025 02:56:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52336C7115C
+	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Jun 2025 08:38:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CDv7yqQhXCn/WwLVae9uHSPtlIKjf+0DhbUVabTmYD8=; b=0xzb/FeZdOJaYWyJimV1R+o/GG
-	y6JpE+FimdgB7w+hkfchnBuFbkGHQLeQ9qCv1gn2HYhLdV/gWyh4XP6ib15+F8oV2chCGny9EHA22
-	Tv3JC4sm/ETwubRHzY2h0/9fxQXaGGOQeMqqB6MkC/H0wenSbjOgjZtWrrOAOCcFeh4bHUL64Bx64
-	oXqJh4KFRI7UiJnLm+wSZmsSPSaLtP+mQIfEMBqAxWoA5cZMO4oSQ1qvWeA/O4qNOwKe+LE4wYagQ
-	FLfNvGxMpoeGcvJknS78WfUa8WZvLZYnQKJV9BSVHs5JZMbXMyZu4FAGsRFsoec8OCC8KFutcPgJ1
-	sMxney0g==;
+	bh=suVnQvsGEV8jCLR7EWqQ6LhJALtHVEOYpwn3iZU8550=; b=X5aKxJIym4l86kM8faKmtJFAiL
+	9MY3q07ESR5pL1Y/DvnxZ5EfQfFqzz84LgYyDVOTamBrJX99O9y5d0JlxjRSHwtQNMP7MobPlTEJE
+	ra0WVLH0bc0tWzTtcqwvq8SVrDE8j0nbsJLG0bDI6etxHrZ30NvgX6kOjP4OUmtfoWHswq5GKHruI
+	6WJhQ2TX9aaVjuIpNmeNfby6fuiM4b8bSWG6fzvfWCuM3TF7r5zmDpoj8hH40pB+pkgMqBlEfgyPL
+	Lil0Lu8dk3p6a79yIbqUd31rE8xntL5TAvm3LD3uc7b27MJdkOCmSiDkMWhEUGSP/XZrrPMI77RNA
+	dqHki+pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSoOp-0000000H0IA-1k39;
-	Sat, 21 Jun 2025 02:56:11 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1uStjc-0000000HG3Y-2WGV;
+	Sat, 21 Jun 2025 08:38:00 +0000
+Received: from mgamail.intel.com ([198.175.65.20])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uSoO2-0000000H0DO-3d8D;
-	Sat, 21 Jun 2025 02:55:24 +0000
-X-UUID: 2b00a2924e4b11f09f706fa2197c6ceb-20250620
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=CDv7yqQhXCn/WwLVae9uHSPtlIKjf+0DhbUVabTmYD8=;
-	b=mp05lNgv4aa9B/4S8oHLdmasi5oh1mHVJB0O9/6/s+Olbf2z0tTTT5j5rqLpEvLmPSGET7Gj+Siw5oHt5H7XHt6RIicZ+K0thEXrEplxNl8YvAOymsu3IYWAA3N5Nu0W7UqZttWZnbyiOlq4U/58CCO1zOjKVVjlhk/hgNztdUk=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.2.3,REQID:1856e71d-6754-41a2-af4f-6aa5637cdcd9,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:09905cf,CLOUDID:c5ddb128-fdd2-4021-9c0c-83548fdcf243,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102,TC:nil,Content:0|50,
-	EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
-	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 2b00a2924e4b11f09f706fa2197c6ceb-20250620
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
-	(envelope-from <kuyo.chang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 502462539; Fri, 20 Jun 2025 19:55:19 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Sat, 21 Jun 2025 10:55:15 +0800
-Received: from [10.233.130.16] (10.233.130.16) by mtkmbs11n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.1258.39 via Frontend
- Transport; Sat, 21 Jun 2025 10:55:15 +0800
-Message-ID: <a1103727ffaaf5f4d1b077bc09a3cc5168c5708d.camel@mediatek.com>
-Subject: Re: [RFC PATCH 1/1] sched/deadline: Fix RT task potential
- starvation when expiry time passed
-From: Kuyo Chang <kuyo.chang@mediatek.com>
-To: Juri Lelli <juri.lelli@redhat.com>
-CC: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>,
-	Vincent Guittot <vincent.guittot@linaro.org>, Dietmar Eggemann
-	<dietmar.eggemann@arm.com>, Steven Rostedt <rostedt@goodmis.org>, "Ben
- Segall" <bsegall@google.com>, Mel Gorman <mgorman@suse.de>, "Valentin
- Schneider" <vschneid@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, jstultz
-	<jstultz@google.com>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Date: Sat, 21 Jun 2025 10:55:16 +0800
-In-Reply-To: <aFV8qeH__bw0chWM@jlelli-thinkpadt14gen4.remote.csb>
-References: <20250615131129.954975-1-kuyo.chang@mediatek.com>
-	 <aFAyN4rfssKmbUE5@jlelli-thinkpadt14gen4.remote.csb>
-	 <089882f95b1b910f7feecddd0ad9b17f38394c64.camel@mediatek.com>
-	 <aFQM8TdZIIvvGv8T@jlelli-thinkpadt14gen4.remote.csb>
-	 <6ec534be0618de3e2b4d81555e5f24155326c0b9.camel@mediatek.com>
-	 <aFV8qeH__bw0chWM@jlelli-thinkpadt14gen4.remote.csb>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.52.3-0ubuntu1 
+	id 1uSthK-0000000HFuN-3E3C;
+	Sat, 21 Jun 2025 08:35:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1750494939; x=1782030939;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=IxnvwpPtE9uiMFUZjHjsqPPB12QCtRhBXJ2KaoEI0sk=;
+  b=mJVUJZ/GMMKyymdeTYHvn+8A/55SzicpiBvQu39pcyzUcplA2cx0vXlC
+   HGBdOhjy1DozdoiUX4BciqkEpZddnH6/PwR6uIW2vF0ATfBYJ8ehbTTd1
+   wswSbL1nR3ozRt9FVXJiba7VPaCx9QgF0XKAse1uvZQtUDppeOvM+8f4Y
+   OxoKbE2dXNJwFypl6PLwsYP0yaL4bIOB2qFsH5b2arKW4geIXq2fcTx5C
+   KZCwz0Ag4FuI/Je3PFmXRLaN+Fgjs5xqaxNnAjBOGfq1FXmStbsO+L6Au
+   pVtOLLaeEXJhiyQ/VhocZiuBrHnUjLHfKHShzMRuevXvUTeczWLL+p61G
+   g==;
+X-CSE-ConnectionGUID: yext3jtkTz+K9U51v6VVXQ==
+X-CSE-MsgGUID: lIKtIlzxSXaPdA8wLq24mA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11469"; a="52459037"
+X-IronPort-AV: E=Sophos;i="6.16,253,1744095600"; 
+   d="scan'208";a="52459037"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Jun 2025 01:35:33 -0700
+X-CSE-ConnectionGUID: x3bpnHumREixSSOk2WjHgQ==
+X-CSE-MsgGUID: tYh93x4SQcS5i6AK0sfC5g==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,253,1744095600"; 
+   d="scan'208";a="150897564"
+Received: from lkp-server01.sh.intel.com (HELO e8142ee1dce2) ([10.239.97.150])
+  by orviesa009.jf.intel.com with ESMTP; 21 Jun 2025 01:35:28 -0700
+Received: from kbuild by e8142ee1dce2 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1uSth7-000MU4-1R;
+	Sat, 21 Jun 2025 08:35:25 +0000
+Date: Sat, 21 Jun 2025 16:34:28 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Darren.Ye" <darren.ye@mediatek.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Bartosz Golaszewski <brgl@bgdev.pl>
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+	Darren Ye <darren.ye@mediatek.com>,
+	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Subject: Re: [PATCH v5 01/10] ASoC: mediatek: common: modify mtk afe platform
+ driver for mt8196
+Message-ID: <202506211649.TGCEqNZ6-lkp@intel.com>
+References: <20250620094140.11093-2-darren.ye@mediatek.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250620094140.11093-2-darren.ye@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250620_195522_913161_EA7AE827 
-X-CRM114-Status: GOOD (  22.15  )
+X-CRM114-CacheID: sfid-20250621_013538_876668_B93FB10F 
+X-CRM114-Status: GOOD (  15.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,62 +100,101 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2025-06-20 at 17:22 +0200, Juri Lelli wrote:
->=20
-> External email : Please do not click links or open attachments until
-> you have verified the sender or the content.
->=20
->=20
-> On 20/06/25 11:00, Kuyo Chang wrote:
->=20
-> ...
->=20
-> >=20
->=20
-> Thanks for the additional explanation.
->=20
-> The way I understand it now is the following (of course please
-> correct
-> me if I am still not getting it :)
->=20
-> - a dl_server is actively servicing NORMAL tasks, but suffers lot of
-> IRQ
-> =C2=A0 load and cannot make much progress
-> - it does anyway make progress, but it reaches
-> update_curr_dl_se@throttle
-> =C2=A0 only when its current deadline is past rq_clock
-> - dl_runtime_exceeded() branch is entered, but start_dl_timer() fails
-> as
-> =C2=A0 the computed act is still in the past
-> - enqueue_dl_entity(REPLENISH) call replenish_dl_entity() which tries
-> to
-> =C2=A0 add runtime and advance the deadline, but time moved on so far tha=
-t
-> =C2=A0 deadline is still behind rq_clock() and so "DL replenish ..." is
-> =C2=A0 printed
-> - replenish_dl_new_period() updates runtime and deadline from current
-> =C2=A0 clock and the dl-server is put back to run (so it continues to run
-> =C2=A0 over/starve FIFO tasks)
->=20
+Hi Darren.Ye,
 
-Yes, "DL replenish ..." is the critical clue for identifying the root
-cause of this issue.
+kernel test robot noticed the following build warnings:
 
-> It looks like your proposed fix might work in this particular corner
-> case, but I am not 100% comfortable with not trying to replenish
-> properly (catch up with runtime) at all. I wonder if we might then
-> start
-> missing some other corner case. Maybe we could try to catch this
-> particular corner case before even attempting to start the dl_timer,
-> since we know it will fail, and do something at that point?
->=20
+[auto build test WARNING on broonie-sound/for-next]
+[also build test WARNING on broonie-spi/for-next robh/for-next linus/master v6.16-rc2 next-20250620]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-You can consider the patch more as an error-proofing mechanism, and so
-far, it has been working well on our platform.
-However, it might be better to catch this particular corner case in
-advance to prevent the issue.
-> Thanks,
-> Juri
->=20
+url:    https://github.com/intel-lab-lkp/linux/commits/Darren-Ye/ASoC-mediatek-common-modify-mtk-afe-platform-driver-for-mt8196/20250620-174746
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+patch link:    https://lore.kernel.org/r/20250620094140.11093-2-darren.ye%40mediatek.com
+patch subject: [PATCH v5 01/10] ASoC: mediatek: common: modify mtk afe platform driver for mt8196
+config: hexagon-allmodconfig (https://download.01.org/0day-ci/archive/20250621/202506211649.TGCEqNZ6-lkp@intel.com/config)
+compiler: clang version 17.0.6 (https://github.com/llvm/llvm-project 6009708b4367171ccdbf4b5905cb6a803753fe18)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250621/202506211649.TGCEqNZ6-lkp@intel.com/reproduce)
 
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202506211649.TGCEqNZ6-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+>> sound/soc/mediatek/common/mtk-afe-platform-driver.c:125:18: warning: shift count is negative [-Wshift-count-negative]
+     125 |         pcm_ptr_bytes = MTK_ALIGN_16BYTES(hw_ptr - hw_base);
+         |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   sound/soc/mediatek/common/mtk-afe-platform-driver.h:15:37: note: expanded from macro 'MTK_ALIGN_16BYTES'
+      15 | #define MTK_ALIGN_16BYTES(x) ((x) & GENMASK(39, 4))
+         |                                     ^~~~~~~~~~~~~~
+   include/linux/bits.h:87:31: note: expanded from macro 'GENMASK'
+      87 |         (GENMASK_INPUT_CHECK(h, l) + __GENMASK(h, l))
+         |                                      ^~~~~~~~~~~~~~~
+   include/uapi/linux/bits.h:7:56: note: expanded from macro '__GENMASK'
+       7 | #define __GENMASK(h, l) (((~_UL(0)) << (l)) & (~_UL(0) >> (BITS_PER_LONG - 1 - (h))))
+         |                                                        ^  ~~~~~~~~~~~~~~~~~~~~~~~~~
+   1 warning generated.
+
+
+vim +125 sound/soc/mediatek/common/mtk-afe-platform-driver.c
+
+    79	
+    80	snd_pcm_uframes_t mtk_afe_pcm_pointer(struct snd_soc_component *component,
+    81					      struct snd_pcm_substream *substream)
+    82	{
+    83		struct snd_soc_pcm_runtime *rtd = snd_soc_substream_to_rtd(substream);
+    84		struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
+    85		struct mtk_base_afe_memif *memif = &afe->memif[snd_soc_rtd_to_cpu(rtd, 0)->id];
+    86		const struct mtk_base_memif_data *memif_data = memif->data;
+    87		struct regmap *regmap = afe->regmap;
+    88		struct device *dev = afe->dev;
+    89		unsigned int hw_ptr_lower32 = 0, hw_ptr_upper32 = 0;
+    90		unsigned int hw_base_lower32 = 0, hw_base_upper32 = 0;
+    91		unsigned long long hw_ptr = 0, hw_base = 0;
+    92		int ret;
+    93		unsigned long long pcm_ptr_bytes = 0;
+    94	
+    95		ret = regmap_read(regmap, memif_data->reg_ofs_cur, &hw_ptr_lower32);
+    96		if (ret || hw_ptr_lower32 == 0) {
+    97			dev_err(dev, "%s hw_ptr_lower32 err\n", __func__);
+    98			goto POINTER_RETURN_FRAMES;
+    99		}
+   100	
+   101		if (memif_data->reg_ofs_cur_msb) {
+   102			ret = regmap_read(regmap, memif_data->reg_ofs_cur_msb, &hw_ptr_upper32);
+   103			if (ret) {
+   104				dev_err(dev, "%s hw_ptr_upper32 err\n", __func__);
+   105				goto POINTER_RETURN_FRAMES;
+   106			}
+   107		}
+   108	
+   109		ret = regmap_read(regmap, memif_data->reg_ofs_base, &hw_base_lower32);
+   110		if (ret || hw_base_lower32 == 0) {
+   111			dev_err(dev, "%s hw_base_lower32 err\n", __func__);
+   112			goto POINTER_RETURN_FRAMES;
+   113		}
+   114		if (memif_data->reg_ofs_base_msb) {
+   115			ret = regmap_read(regmap, memif_data->reg_ofs_base_msb, &hw_base_upper32);
+   116			if (ret) {
+   117				dev_err(dev, "%s hw_base_upper32 err\n", __func__);
+   118				goto POINTER_RETURN_FRAMES;
+   119			}
+   120		}
+   121		hw_ptr = ((unsigned long long)hw_ptr_upper32 << 32) + hw_ptr_lower32;
+   122		hw_base = ((unsigned long long)hw_base_upper32 << 32) + hw_base_lower32;
+   123	
+   124	POINTER_RETURN_FRAMES:
+ > 125		pcm_ptr_bytes = MTK_ALIGN_16BYTES(hw_ptr - hw_base);
+   126		return bytes_to_frames(substream->runtime, (ssize_t)pcm_ptr_bytes);
+   127	}
+   128	EXPORT_SYMBOL_GPL(mtk_afe_pcm_pointer);
+   129	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
