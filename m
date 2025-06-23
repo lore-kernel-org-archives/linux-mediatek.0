@@ -4,68 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0201C77B7C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 02:46:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6F81C7115B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 05:19:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rHRP5v/VtkFeSiIV7E0m7moG4UEVXxAKFT2RtvO9tRc=; b=WWftlpEPEgGjew6tzDDlUDQ+JR
-	qorYAH50JwXx39UndkXbo10ULaUqXBT21gVp/fgkwwQBUWofkY1Bajzf/A7STTfBC84KNkuQGJJjp
-	kRdiuMYh0n93wUfcG7H9k7ssjYx3NBx7ZbhbBRdfOQtqr+t+dcK2n/uPnF1PXPhm3Kd3ZNNY3Sl7B
-	MgNwQ/1l162W44Jo1gBX3ZTVqSzZl8xwLL/dAx+H8JWsi82q981DGgvga2rOapn9IleQhuu1NLHf9
-	sSN8qjnfIvNVwLM5iI67TSOioo+85pKNztTwzBOWkg466xBimmYUsNW5vvc1TD4kpJ5xckoTfaciu
-	PgZcs8MQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=En0pq+jCzMYs3olwKBVBf+cE3fdHEMn7c2+JHjmC2Bc=; b=Va1UM39DzQMl9g7WdE45lQU2PL
+	FwLGW6kTRjFPgJ8QR57WBQnE8Qnx7nmQM0DrC/LQYKOBK3wMaHVqskvZ+eVuC//k7xDZv4TYGD4CW
+	VXR1X5XODlaYxru0715Fke6R4DfkwBS+o5fZPIfT5EeMKNuyXxUEi25MeT0rCgoor0ZMP6qbHPWCs
+	OdtnewfCPs5nOgv7F7hTIc1rTf9J3Kzwsgf2bmO/taCcGIg3agN0eBKpqqYzU0AL5yU1XA0/aZeju
+	qw7wL/mFxBv/SvBCjhGpwx2ivMB/6UvZs1aGd4qoOvdT07n+f/nMYgTAgyCNqTGxA6qdtxRu7LOCW
+	t/B5t3Yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTXCO-00000001SSQ-0uwi;
-	Mon, 23 Jun 2025 02:46:20 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1uTZaN-00000001bKt-0MO4;
+	Mon, 23 Jun 2025 05:19:15 +0000
+Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTX5S-00000001RhP-2Fxj;
-	Mon, 23 Jun 2025 02:39:12 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 74FF4A4F5FD;
-	Mon, 23 Jun 2025 02:39:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2A615C4CEF1;
-	Mon, 23 Jun 2025 02:39:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750646349;
-	bh=Fvdn22+aLwNt5IcX7plkjuYY6MzRdeiquj8xeSPIR2A=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=Kdm5nweSN23bTVlDMGIMReXxN4GS3yWfedMLMBuQO7ca+w72Y5ovB3tnUqRWM7gPB
-	 AY6DnY76QvHN0OxJ9hLv/cOQf+s48Tey4xdfal9Jp0c/44XjKj4LRJSqNXXrAOaGSh
-	 A0fIsDdL1faLQjYHfJUSHFZW28h0fhn3ToCz2Ceq1n8VjrJDygu0/7dveF2P1ZmZj1
-	 dUMfsSf83yt/CF5D3MH/pzr6lvx1SYttFn8iH3Yn/TX2HaPsC7HSUC/8cBKIFY0FRf
-	 Ly3bm5Dz3a3HwHsFT/9cr50wErRo48wbJF0Lg6hAC5VkYCPSHK7eAiZPAFhBA8t3Y1
-	 P5PRYsBHYAqkw==
-Date: Sun, 22 Jun 2025 21:39:08 -0500
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1uTZY6-00000001bCu-0gBy;
+	Mon, 23 Jun 2025 05:16:55 +0000
+Received: by mail-pj1-x102a.google.com with SMTP id 98e67ed59e1d1-311e2cc157bso2886094a91.2;
+        Sun, 22 Jun 2025 22:16:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1750655813; x=1751260613; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=En0pq+jCzMYs3olwKBVBf+cE3fdHEMn7c2+JHjmC2Bc=;
+        b=kaPjan7BhjqnUI+Ini1our2Ft8mtat9jf9BIcbCt01FKxC2K9UsKLl90HTFpxfE37y
+         543P/A+aZp2XSE/XUkSnuQ13dqu2tk49uT36mb53+qoN9FTjclIBl4kVboNIJTD911Yv
+         p5xGLY+cJRrWZOTg8O21uHFFEWS5/D58q8M8dEAhlndY/ehGzT0Rcoociz//BjMj+7X4
+         MvvHO0hD9HgDhAI3atYRivu9JkxDulOjS9VEryNV+xcrpEFU2pgVjm1x+SriZC+LNrod
+         F683Qs95vstYoA+UO6Zw5M6spvNLeBi+rI+WMhKU63KhnXMWEce9EsfXizdH5QjxmbMb
+         fSQQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1750655813; x=1751260613;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=En0pq+jCzMYs3olwKBVBf+cE3fdHEMn7c2+JHjmC2Bc=;
+        b=sr4/TkeZqEYIeZCfgEjdcSG33e6OEm8KXDawGtk+eDwZroQgUe2QTp3kUHfhZ95Vlx
+         /fNNcdoJTc4KVurK3b98Nj8KNZO5Sn2DCdHR+/eW19Ja0q9P1D4pkuH5MfAE/b9qyfBV
+         Rst4GKbKfr9E+/KZS74dTuN0B1OJAhkQ3p0ZriJLeU59nS23HtoDU4QFd+LpNODXq8Al
+         o4jUtSX5OA95uXmSJpmKW7YSBEBM7awEQowEWa7gdP0oA8+kRS3IdYt33bwK3N4xwt6h
+         6rSontm+CpYCS1q+rpH+b33tZGAhPPwdqiE1ezu9GoZwF2CFVnix2sxWVZVOaxbaXb2x
+         zthg==
+X-Forwarded-Encrypted: i=1; AJvYcCWjOdteGPnJ95dEi6mmTjGSMGko6J3oOxjABhRNPs1eGYzyzovOjjtFO3NfXQllWM0ywoju/RebiTa988zF7fc=@lists.infradead.org, AJvYcCXxuP9msStdwe1Mb6Yca/8QAHsdAMC+EDcsFiw7m75ZFjyNJktN61DW+/ba8XVhpC/DVGp3mHxGdN+2LvI2cexA@lists.infradead.org
+X-Gm-Message-State: AOJu0YwavriI4L8URnaUPZHoOxqnrBrsFm1XS4UKdJFohvG4bsQEghEL
+	5bm9EmN9ylDiTDwcaoHv3DA6b0+hmlvae84ufIg1OhYsq/UViivsTIYJ
+X-Gm-Gg: ASbGncsCcqEQu3SCX2zoOW03Ninylq3FdrTrj6nVn3DN5g606Ngmbs7RrRQjHo2Etp/
+	7hDtpeF8rt6aEEjZiXm/ktecqN1gpHKp4RXFi8n1haemyi8+Fquj1+qvJ4Y76VuTVp0IO9cVRMo
+	yEokgzCZZ7JPxTSj3QKypfoLAqEHYDuZla/vkuEMXy0p4j8M1ps1/ReQdB0TUo6SdZVaVFphK49
+	1JFUf5qHrjXB/hqqtkrYa82UvSQGKgHpE2Cl0671ht7iTPgb523Hjz5Fksi3Q2FrIr1qxwZzt1L
+	QwRdVIgfd/rYAZ/gRoCgAxfGmVBYNA0vR9bfeM7qpbTDx0GcRWmxi7G9DE+YVU9Rq1lV8oBN
+X-Google-Smtp-Source: AGHT+IG9TUKXoeyvlp4X4lyFMSjBOFbruQUMqCiCZF+ohvgS9TLgNer/JkiWcjcRvc8wDgqad/VFHw==
+X-Received: by 2002:a17:90b:390f:b0:311:e8cc:425d with SMTP id 98e67ed59e1d1-3159d6470dbmr17802629a91.10.1750655812825;
+        Sun, 22 Jun 2025 22:16:52 -0700 (PDT)
+Received: from Barrys-MBP.hub ([118.92.21.225])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3159e06ce4bsm7136997a91.38.2025.06.22.22.16.46
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Sun, 22 Jun 2025 22:16:52 -0700 (PDT)
+From: Barry Song <21cnbao@gmail.com>
+To: nphamcs@gmail.com
+Cc: 21cnbao@gmail.com,
+	akpm@linux-foundation.org,
+	andrew.yang@mediatek.com,
+	angelogioacchino.delregno@collabora.com,
+	casper.li@mediatek.com,
+	chinwen.chang@mediatek.com,
+	hannes@cmpxchg.org,
+	james.hsu@mediatek.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-mm@kvack.org,
+	matthias.bgg@gmail.com,
+	minchan@kernel.org,
+	qun-wei.lin@mediatek.com,
+	rppt@kernel.org,
+	senozhatsky@chromium.org,
+	sj@kernel.org
+Subject: Re: [PATCH] mm: Add Kcompressd for accelerated memory compression
+Date: Mon, 23 Jun 2025 17:16:42 +1200
+Message-Id: <20250623051642.3645-1-21cnbao@gmail.com>
+X-Mailer: git-send-email 2.39.3 (Apple Git-146)
+In-Reply-To: <CAKEwX=ObLVcbR9q7ZvR3WE2hhmxLpk1bSuvcbWZwo5o5vPCDRA@mail.gmail.com>
+References: <CAKEwX=ObLVcbR9q7ZvR3WE2hhmxLpk1bSuvcbWZwo5o5vPCDRA@mail.gmail.com>
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Jiri Slaby <jirislaby@kernel.org>, 
- Daniel Lezcano <daniel.lezcano@linaro.org>, linux-watchdog@vger.kernel.org, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Wim Van Sebroeck <wim@linux-watchdog.org>, 
- Thomas Gleixner <tglx@linutronix.de>, Russell King <linux@armlinux.org.uk>, 
- Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
- linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Sean Wang <sean.wang@mediatek.com>, Guenter Roeck <linux@roeck-us.net>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>
-To: Max Shevchenko <wctrl@proton.me>
-In-Reply-To: <20250620-mt6572-v1-0-e2d47820f042@proton.me>
-References: <20250620-mt6572-v1-0-e2d47820f042@proton.me>
-Message-Id: <175064594753.881101.7250770438494415279.robh@kernel.org>
-Subject: Re: [PATCH 00/11] ASoC: mediatek: Add support for MT6572 SoC
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250622_193910_713575_404714DE 
-X-CRM114-Status: GOOD (  19.16  )
+X-CRM114-CacheID: sfid-20250622_221654_205449_15789C90 
+X-CRM114-Status: GOOD (  30.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,81 +113,147 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Nhat,
 
-On Fri, 20 Jun 2025 18:40:39 +0300, Max Shevchenko wrote:
-> This series of patches adds support for the MT6572 SoC and
-> the JTY D101 tablet and Lenovo A369i smartphone based on it.
-> 
-> Signed-off-by: Max Shevchenko <wctrl@proton.me>
-> ---
-> Max Shevchenko (11):
->       dt-bindings: serial: mediatek,uart: add MT6572
->       dt-bindings: interrupt-controller: mediatek,mt6577-sysirq: add MT6572
->       dt-bindings: timer: mediatek: add MT6572
->       dt-bindings: watchdog: mediatek,mtk-wdt: add MT6572
->       dt-bindings: vendor-prefixes: add JTY
->       dt-bindings: arm: mediatek: add boards based on the MT6572 SoC
->       ARM: mediatek: show the hardware name for the MT6572
->       ARM: mediatek: add MT6572 smp bring up code
->       ARM: dts: mediatek: add basic support for MT6572 SoC
->       ARM: dts: mediatek: add basic support for JTY D101 board
->       ARM: dts: mediatek: add basic support for Lenovo A369i board
-> 
->  .../devicetree/bindings/arm/mediatek.yaml          |   5 +
->  .../mediatek,mt6577-sysirq.yaml                    |   1 +
->  .../devicetree/bindings/serial/mediatek,uart.yaml  |   1 +
->  .../devicetree/bindings/timer/mediatek,timer.yaml  |   1 +
->  .../devicetree/bindings/vendor-prefixes.yaml       |   2 +
->  .../bindings/watchdog/mediatek,mtk-wdt.yaml        |   1 +
->  arch/arm/boot/dts/mediatek/Makefile                |   2 +
->  arch/arm/boot/dts/mediatek/mt6572-jty-d101.dts     |  62 ++++++++++++
->  arch/arm/boot/dts/mediatek/mt6572-lenovo-a369i.dts |  57 +++++++++++
->  arch/arm/boot/dts/mediatek/mt6572.dtsi             | 105 +++++++++++++++++++++
->  arch/arm/mach-mediatek/Kconfig                     |   4 +
->  arch/arm/mach-mediatek/mediatek.c                  |   1 +
->  arch/arm/mach-mediatek/platsmp.c                   |   7 ++
->  13 files changed, 249 insertions(+)
-> ---
-> base-commit: 0ff41df1cb268fc69e703a08a57ee14ae967d0ca
-> change-id: 20250619-mt6572-ef78a3d45168
-> 
-> Best regards,
-> --
-> Max Shevchenko <wctrl@proton.me>
-> 
-> 
-> 
+On Wed, Jun 18, 2025 at 2:21 AM Nhat Pham <nphamcs@gmail.com> wrote:
+>
+> On Sun, Jun 15, 2025 at 8:41 PM Barry Song <21cnbao@gmail.com> wrote:
+> > >>
+> > >> That seems unnecessary. There is an existing method for asynchronous
+> > >> writeback, and pageout() is naturally fully set up to handle this.
+> > >>
+> > >> IMO the better way to do this is to make zswap_store() (and
+> > >> zram_bio_write()?) asynchronous. Make those functions queue the work
+> > >> and wake the compression daemon, and then have the daemon call
+> > >> folio_end_writeback() / bio_endio() when it's done with it.
+> >
+> > > +1.
+> >
+> >
+> > But,
+> > How could this be possible for zswap? zswap_store() is only a frontend —
+> > we still need its return value to determine whether __swap_writepage()
+> > is required. Waiting for the result of zswap_store() is inherently a
+> > synchronous step.
+>
+> Hmm, I might be misunderstanding either of you, but it sounds like
+> what you're describing here does not contradict what Johannes is
+> proposing?
 
+It seems contradictory: Johannes proposes that zswap could behave like zRAM
+by invoking `folio_end_writeback()` or `bio_endio()`, but this doesn’t align
+with actual behavior since zswap_store might not end `swap_writeout()`—it may
+still proceed to `__swap_writeback()` to complete the final steps.
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
+Meanwhile, Qun-wei’s RFC has already explored using `folio_end_writeback()` and
+`bio_endio()` at the end of `__swap_writepage()` for zRAM, though that approach
+also has its own issues.
 
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
+>
+> >
+> > My point is that folio_end_writeback() and bio_endio() can only be
+> > called after the entire zswap_store() → __swap_writepage() sequence is
+> > completed. That’s why both are placed in the new kcompressed.
+>
+> Hmm, how about:
+>
+> 1. Inside zswap_store(), we first obtain the obj_cgroup reference,
+> check cgroup and pool limit, and grab a zswap pool reference (in
+> effect, determining the slot allocator and compressor).
+>
+> 2. Next, we try to queue the work to kcompressd, saving the folio and
+> the zswap pool (and whatever else we need for the continuation). If
+> this fails, we can proceed with the old synchronous path.
+>
+> 3. In kcompressed daemon, we perform the continuation of
+> zswap_store(): compression, slot allocation, storing, zswap's LRU
+> modification, etc. If this fails, we check if the mem_cgroup enables
+> writeback. If it's enabled, we can call __swap_writepage(). Ideally,
+> if writeback is disabled, we should activate the page, but it might
+> not be possible since shrink_folio_list() might already re-add the
+> page to the inactive lru. Maybe some modification of pageout() and
+> shrink_folio_list() can make this work, but I haven't thought too
+> deeply about it :) If it's impossible, we can perform async
+> compression only for cgroups that enable writeback for now. Once we
+> fix zswap's handling of incompressible pages, we can revisit this
+> decision (+ SJ).
+>
+> TLDR: move the work-queueing step forward a bit, into the middle of
+> zswap_store().
+>
+> One benefit of this is we skip pages of cgroups that disable zswap, or
+> when zswap pool is full.
 
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
+I assume you meant something like the following:
 
-  pip3 install dtschema --upgrade
+bool try_to_sched_async_zswap_store()
+{
+	get_obj_cgroup_from_folio()
+	if (err) goto xxx;
+	zswap_check_limits();
+	if (err) goto xxx;
+	zswap_pool_current_get()
+	if (err) goto xxx;
+	   
+	queue_folio_to_kcompressd(folio);
+	return true;
 
+xxx:
+	error handler things;
+	return false;
+}
 
-This patch series was applied (using b4) to base:
- Base: using specified base-commit 0ff41df1cb268fc69e703a08a57ee14ae967d0ca
+If this function returns true, it suggests that compression requests  
+have been queued to kcompressd. Following that, in kcompressd():
 
-If this is not the correct base, please add 'base-commit' tag
-(or use b4 which does this automatically)
+int __zswap_store(folio)
+{
+	for(i=0;i<nr_pages;i++) {
+		zswap_store_page();
+		if (err) return err;
+	}
+	return 0;
+}
 
-New warnings running 'make CHECK_DTBS=y for arch/arm/boot/dts/mediatek/' for 20250620-mt6572-v1-0-e2d47820f042@proton.me:
+kcompressd()
+{
+	while(folio_queue_is_not_empty) {
+		folio = dequeue_folio();
+		if (folio_queued_by_zswap(folio)) {
+			if(!__zswap_store(folio))
+				continue;
+		}
+		if ((zswap_store_page_fails && mem_cgroup_zswap_writeback_enabled()) ||
+		    folio_queued_by_zram) {
+			__swap_writepage();
+		}
+	}
+}
 
-arch/arm/boot/dts/mediatek/mt6572-jty-d101.dtb: / (jty,d101): memory: False schema does not allow {'device_type': ['memory'], 'reg': [[2147483648, 1073741824]]}
-	from schema $id: http://devicetree.org/schemas/root-node.yaml#
-arch/arm/boot/dts/mediatek/mt6572-lenovo-a369i.dtb: / (lenovo,a369i): memory: False schema does not allow {'device_type': ['memory'], 'reg': [[2147483648, 536870912]]}
-	from schema $id: http://devicetree.org/schemas/root-node.yaml#
+In kswapd, we will need to do
+int swap_writeout(struct folio *folio, struct swap_iocb **swap_plug)
+{
+	...
+	if (try_to_sched_async_zswap_store(folio))
+		return;
+	if (is_sync_comp_blkdev(swap)) {
+		queue_folio_to_kcompressd(folio);
+		return;
+	}
+	__swap_writepage();
+}
 
+To be honest, I'm not sure if there's a flag that indicates whether the  
+folio was queued by zswap or zram. If not, we may need to add a member  
+associated with folio pointers in the queue between kswapd and kcompressd,  
+since we need to identify zswap cases. Maybe we can reuse bit 0 of the  
+folio pointer?
 
+What I mean is: while queuing, if the folio is queued by zswap, we do  
+`pointer |= BIT(0)`. Then in kcompressd, we restore the original folio  
+with `folio = pointer & ~BIT(0)`. It's a bit ugly, but I’m not sure  
+there’s a better approach.
 
-
-
+Thanks
+Barry
 
