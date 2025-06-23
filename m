@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6442BC77B7C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 15:21:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56DA5C77B7C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 15:24:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=m6QFCiWa5Zy6iUa6OtPjlcTMOCRib9xDreqjyCmWWOc=; b=y+y2B79F7Y2g1WETy2ahp0RdPg
-	ipua2o5GBm9rrJ84Nf/c1016BZNglKLn74TeCdGX30PL5XQxyC1lN6dlfxZUoyBpYQTbK5xZgkj1D
-	oEF7s7jH7q3DSQF4PEa0SzvmrkJjdu1VSK0aICbYAHzKmOWIP1M9c43JPlsgMQ1TWaqJT/rsFybHd
-	w3CqKcz1RDyBneojMhVicCxKnVaXjR6kEagRjIe+icmSvVohjt0scOaO8QrwZK413oqYMwVjK5H17
-	2hqY4VZHwGDTEAWd6NQ114FLD3zx/EXuUju1jDns+wUqFiUplkyEg0eZu6ZDW5/MUinJ7IVXuUo0c
-	XwOy73Eg==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jfew289h2YKL7y42Tigk9r+EQG43qGYxbP+/iUbiafw=; b=E0r48UxG/5hO0eUm0TWafmI+76
+	uJm4Yoj6SIWTmy5d8pKTmuN+zRjArjGIEMfJHTqsLvV150uyiHr1QwaxDZvUw04jsnAX4q5/yFK5H
+	T3TzPdukbhErMl5vcObf356RsQfP/H7skhKN+jB+NquIUv7SZZJt1V48WccCoU5uPOZbMiy3jVx0x
+	eA1xwpAcZv6D/TGHHUSk2j9NcOIS/IqhsyzKKbjkeAN7Msc/y7ilieljnsWSaa1CZ/Mr6mEzp2DBa
+	WGmb6ewwJlEPyLEiFK81vX/8F5nxv6XAlGc9JNz4aGRAm/+LobtitGrrKEsrzoBcX5JnXQRolEr65
+	HkcP4H6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTizP-00000003D9C-1jeY;
-	Mon, 23 Jun 2025 15:21:43 +0000
+	id 1uTj1i-00000003Dbv-3Hn2;
+	Mon, 23 Jun 2025 15:24:06 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTftP-00000002bV4-41Cx;
+	id 1uTftQ-00000002bV5-2lbD;
 	Mon, 23 Jun 2025 12:03:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1750680198;
-	bh=3nnjzdKDL/XFZioXMgbkMzk/XvnybYXfQac1elnYKk0=;
-	h=From:To:Cc:Subject:Date:From;
-	b=k6RSQSAOKKvHMpOXyLsoGT1dnJCjdRQDwxSGY61BzZUTS3VjCE9JIOoTBFekGL6yc
-	 ++vTE/zycKImJfVDxqPfw5ryZW6DihXBZz1oW+mu1EIZWwWlSOJWM0ZgUzTAssA2yo
-	 KnlkSFu9hrXjLSIYOIDxwLxfNNuU8dlzcV5ZyJJxBf6OTrUAI/VfqdEGLxSiDLV74v
-	 Da/0QpbaaUlsfVjDRq52ei26DLRVx/+AMQ1Wn8s0Qbk5JP0joqszyp2GuAYy1WszFe
-	 qJgdZ41doiknFjDhDbe565XiGgN4b5VfbyOsTIJbOOALl5jY1cbcrf2Bnwx7PrODJw
-	 wCKNzizFDh2NQ==
+	s=mail; t=1750680199;
+	bh=tOpD5LTV/P8tm/1UAfOVh6bSUSeBFltYVVD8Ct+QpFM=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=BPXElbYC3D6vKdJHilYWDaXvnIxCXG/COLTXYBdOwULJ+hNDORKb4FIgpddGRpDwX
+	 G4gMXKXSMZKCANDv1FP45YLB5LljbXixmNAY4MjBIEdpAsKPSW3aTIf0XKqx8dpF9Z
+	 bsktZbufErjX3MZOPqYvOZWpb+Eq/+FlMPefUFFnMKBR8yoHisN8zgiCLita9zI36G
+	 UNGlL480/C50S3vhdawEvIk/cs6G4Z48/do0+Qs2q85T1nc9Hl1D/O/0JmLoSdixEB
+	 E+NHGAkXRUPfQCrpOL1axLY6MVUcKdlt3NPBouzbQkVA3suCVjTkHNK8FZa5SisHru
+	 XdvCDRxe4QRrw==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EE7BB17E090E;
-	Mon, 23 Jun 2025 14:03:17 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C3B1C17E0EC0;
+	Mon, 23 Jun 2025 14:03:18 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunfeng.yun@mediatek.com
 Cc: vkoul@kernel.org,
@@ -54,16 +54,17 @@ Cc: vkoul@kernel.org,
 	linux-phy@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	kernel@collabora.com
-Subject: [PATCH v1 0/2] MediaTek TPHY Cleanups
-Date: Mon, 23 Jun 2025 14:03:13 +0200
-Message-ID: <20250623120315.109881-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v1 1/2] phy: mediatek: tphy: Clarify and add kerneldoc to mtk_phy_pdata
+Date: Mon, 23 Jun 2025 14:03:14 +0200
+Message-ID: <20250623120315.109881-2-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.49.0
+In-Reply-To: <20250623120315.109881-1-angelogioacchino.delregno@collabora.com>
+References: <20250623120315.109881-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250623_050320_147092_25BB3655 
-X-CRM114-Status: UNSURE (   4.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250623_050320_847171_35B96CB0 
+X-CRM114-Status: GOOD (  13.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,17 +79,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-While doing my usual round of cleanups, I've found some room for
-improvement in the MediaTek T-PHY driver. This series performs some
-cleanups on that.
+As struct mtk_phy_pdata was almost fully documented, transfer
+the comments into kerneldoc on top.
+While at it, also rewrite the comments to both improve the writing
+writing and the actual information in the documentation, and add a
+description for the `version` member of the structure.
 
-AngeloGioacchino Del Regno (2):
-  phy: mediatek: tphy: Clarify and add kerneldoc to mtk_phy_pdata
-  phy: mediatek: tphy: Cleanup and document slew calibration
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/phy/mediatek/phy-mtk-tphy.c | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
 
- drivers/phy/mediatek/phy-mtk-tphy.c | 65 ++++++++++++++++-------------
- 1 file changed, 37 insertions(+), 28 deletions(-)
-
+diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
+index 644a34bd2b0b..858824b4476e 100644
+--- a/drivers/phy/mediatek/phy-mtk-tphy.c
++++ b/drivers/phy/mediatek/phy-mtk-tphy.c
+@@ -277,19 +277,19 @@ enum mtk_phy_version {
+ 	MTK_PHY_V3,
+ };
+ 
++/**
++ * mtk_phy_pdata - SoC specific platform data
++ * @avoid_rx_sen_degradation: Avoid TX Sensitivity level degradation (MT6795/8173 only)
++ * @sw_pll_48m_to_26m:        Workaround for V3 IP (MT8195) - switch the 48MHz PLL from
++ *                            fractional mode to integer to output 26MHz for U2PHY
++ * @sw_efuse_supported:       Switches off eFuse auto-load from PHY and applies values
++ *                            read from different nvmem (usually different eFuse array)
++ *                            that is pointed at in the device tree node for this PHY
++ * @version:                  PHY IP Version
++ */
+ struct mtk_phy_pdata {
+-	/* avoid RX sensitivity level degradation only for mt8173 */
+ 	bool avoid_rx_sen_degradation;
+-	/*
+-	 * workaround only for mt8195, HW fix it for others of V3,
+-	 * u2phy should use integer mode instead of fractional mode of
+-	 * 48M PLL, fix it by switching PLL to 26M from default 48M
+-	 */
+ 	bool sw_pll_48m_to_26m;
+-	/*
+-	 * Some SoCs (e.g. mt8195) drop a bit when use auto load efuse,
+-	 * support sw way, also support it for v2/v3 optionally.
+-	 */
+ 	bool sw_efuse_supported;
+ 	enum mtk_phy_version version;
+ };
 -- 
 2.49.0
 
