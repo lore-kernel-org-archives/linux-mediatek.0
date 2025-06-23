@@ -4,66 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2ECB4C7115B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 10:34:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E678C77B7F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 10:56:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ExmDqCUkQR6jZtfP5vYSrhMYk2o6MDN1u7yT91N+/Bg=; b=WdeVsogL43NKMqrNwmRU632QUi
-	zRz/pNen1gkByzslb7tJepYAhfc3Dc4KXEcBJAcmZNXdWyaOC3M54Ji95bkH3LoWCPvtzdNt/6co6
-	dnjw32d/cEFK3H9ewGtWFw7ulipnvyU8ykhB0/zE/DWPzYqZhwBkAaEkXmyeRdNhhZdsgNfzdXFSP
-	+gJAkt9ZCgkgY/Yx2WY+0BNB+esmgqc/b8E8oCZDom/NbOwB9bfEKA5GhzqhC0KJaNc3icLAVmeP6
-	4PheInbNai0KiNufimDT5f+gU4KoBYfeJrlf6R3LaDVOSQG56EaP0U7+Tt9bKljKgm8cva6Ug7f0U
-	NHmyMZEQ==;
+	bh=wu/SyywuiRlisW0aW7lLo+PYhMmhT/4RFRE8xEbDjuQ=; b=sJsbRYjyfxmBNp+Ky2A1VdlgRH
+	/drzudOcCIUhE3Ns9y36pZ+rCqp+V2Nj4PEhjsGPgbAqWj+WRE2PEJYlGPxmtnYXCnuCp/LOThkaE
+	Do2AgWQfyy/kFPut5lQz7I3exkUMwy2afs9ebfe7TAAeS7S0Dd1HeUBOWeslnuWsXCiOBfp6qW/jO
+	Qc0uVzlHirxDQlfpnDX2G5hQbz1CfW7zPxk6QV9HLz6Muw12HSyLsmvxPVz1c1AxsInXrjVx+6+rq
+	qc3TVqoj+xpStQr+PcBM28rwdlAXf5VBEh0BgDbVIVnLpKCt8+mK7j69q79SC0pNKXZ1kRIfT9xLl
+	qnS/Ho+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTeVR-00000002Mvg-0hxA;
-	Mon, 23 Jun 2025 10:34:29 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uTeqL-00000002SAK-3h6A;
+	Mon, 23 Jun 2025 10:56:05 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTdvG-00000002G9Z-23mF;
-	Mon, 23 Jun 2025 09:57:07 +0000
+	id 1uTdym-00000002GsQ-1dRY;
+	Mon, 23 Jun 2025 10:00:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=wu/SyywuiRlisW0aW7lLo+PYhMmhT/4RFRE8xEbDjuQ=; b=BNogiDU6/T90iqHKLkjUCMJP+Z
+	jg08CWAZ4bvwbHq7yp2UtcA5yGLHWTBQft64oxs3EeTGdKCiUiOjaYpANb9c5t/NJ1ENP4a3G8+o4
+	EGYG//9HzJ7Ggq1nkxJ+DAN9obHmr+/ROxAAzrO5zwrSKmg4h+SCNr5A8sHNMHj8yJh5ebRIAgpy3
+	6JK2e7dlR6lfhcrBAFA/m7s0XnBV7E7v597m/wHKkNC/raQOHqJA8VHF3labl1TjqJkbWq3STazNa
+	Lup7fr2QOM4UNvS10y1vHDCG/B71MfQA6doTsAp/JvOIgy1ZpRdhbqduUuWdWia94h1BcSfRoE2yN
+	TJwCLBOg==;
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uTdyj-00000005B5Y-2bVE;
+	Mon, 23 Jun 2025 10:00:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1750672625;
-	bh=vgWm7jmOVVRzfgaQT6LeLtOXW+FZMqRHHMx2jmBo6ZY=;
+	s=mail; t=1750672839;
+	bh=azGXJdCm5N9ox1CX4W1ejM3eFCxe8pQ98riu47qRbvM=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=kuQvgV4f27X0GiIFF3oN6c1a29VlG0nyTqYg4HX+X5nM39c37k3yTYvkFscLNKWal
-	 qZLN9xAVvAmFe/unOSmD+iIFfNwa5yluAxHKn714f60zmAG5NMr7i7viMNuvmk8Zsh
-	 qKpGDDTIsXqIpInG49O3KyUJR04Y+XScPaJzj2RGk4/ciUvMQfcAv9tdHc7SS2/fsH
-	 OQGG16DGVo+7CyqII2f0s1cdYhprjKKprUKfgv/eLkT/ZZUL2gadhL1mSwjqsH05To
-	 civyUR9lW6+POo4xRngFh38QrSL14xbhHaJ32Rinti8bOmSSqhfzKOHwJjAUIDEzhE
-	 V6YJnJvglbxUw==
+	b=CqVdI0rgmn2em9VHynK5GO6uxLO1OEuYOYS1cr8UcReWhkjNCKzELFdE9QGTSAOqa
+	 UopxqvWO4ycokOttWfoyGsNu8suJ9vOi98oA7hWKP/s153HkB5WFB/xyVKelFlqgG8
+	 h4to9kqPyl1/Ca2wX6FW9/YmnvPVhQkjEI5N4Z6pwT9NS76MykJ+FqPVGl0rjVfzE7
+	 JeADfqzPxPsLa7qsG6O7BytRBs1Imn5AvqamwC0yWSzBH7sHpB9Htu3T9RzLDb7UiL
+	 5neeP8qw0r/DJSsJnmvjg8/Gwp+0mEn55cEgFPUY6l5+3G9fS/V+PCeGY+9qqHOpvj
+	 8RbrFBDVWKMXw==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8AE2A17E0CF9;
-	Mon, 23 Jun 2025 11:57:04 +0200 (CEST)
-Message-ID: <64451537-86e1-4c5f-bbbd-c9164d0c2dd3@collabora.com>
-Date: Mon, 23 Jun 2025 11:57:04 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id AC07917E06BF;
+	Mon, 23 Jun 2025 12:00:38 +0200 (CEST)
+Message-ID: <d3d92eb4-b42b-4bb5-ad98-8b1da324507f@collabora.com>
+Date: Mon, 23 Jun 2025 12:00:38 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/4] mmc: mtk-sd: use default PATCH_BIT register values
- for mt7620
-To: Shiji Yang <yangshiji66@outlook.com>, linux-mmc@vger.kernel.org
-Cc: Chaotian Jing <chaotian.jing@mediatek.com>,
- Ulf Hansson <ulf.hansson@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <OSBPR01MB16708176FE57F691359D0943BC7DA@OSBPR01MB1670.jpnprd01.prod.outlook.com>
- <OSBPR01MB1670CE92711CE9EF6601122EBC7DA@OSBPR01MB1670.jpnprd01.prod.outlook.com>
+Subject: Re: NULL pointer exception in drivers/memory/mtk-smi.c
+To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Yong Wu <yong.wu@mediatek.com>
+References: <allge3h2abtjfj77idsnwccurxi2jnbcv6qcxar5f5m3jjmpvs@a4mmfghdhtv4>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <OSBPR01MB1670CE92711CE9EF6601122EBC7DA@OSBPR01MB1670.jpnprd01.prod.outlook.com>
+In-Reply-To: <allge3h2abtjfj77idsnwccurxi2jnbcv6qcxar5f5m3jjmpvs@a4mmfghdhtv4>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250623_025706_681331_60EBD911 
-X-CRM114-Status: GOOD (  15.07  )
+X-CRM114-CacheID: sfid-20250623_110041_912287_7B73B7D7 
+X-CRM114-Status: GOOD (  12.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,53 +92,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 19/06/25 07:35, Shiji Yang ha scritto:
-> The register map definitions of these PATCH_BIT registers seem to be
-> slightly different from other variants. Use their default values to
-> respect the vendor SDK driver behaviors.
+Il 17/06/25 17:18, Uwe Kleine-König ha scritto:
+> Hello,
+> 
+> on a 6.16-rc2 kernel running on an mt8365-evk I occasionally hit the
+> following during boot:
+> 
+> [    6.304796] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000000
+> [    6.305069] platform 1400d000.rdma: Adding to iommu group 0
+> [    6.305924] Mem abort info:
+> [    6.307867]   ESR = 0x0000000096000004
+> [    6.309032]   EC = 0x25: DABT (current EL), IL = 32 bits
+> [    6.309731]   SET = 0, FnV = 0
+> [    6.310126]   EA = 0, S1PTW = 0
+> [    6.310189] platform 14016000.rdma: Adding to iommu group 0
+> [    6.310532]   FSC = 0x04: level 0 translation fault
+> [    6.312001] Data abort info:
+> [    6.312144] mtk-iommu 10205000.iommu: bound 14003000.larb (ops mtk_smi_larb_component_ops)
+> [    6.312381]   ISV = 0, ISS = 0x00000004, ISS2 = 0x00000000
+> [    6.313433] mtk-iommu 10205000.iommu: bound 17010000.larb (ops mtk_smi_larb_component_ops)
+> [    6.314112]   CM = 0, WnR = 0, TnD = 0, TagAccess = 0
+> [    6.315156] mtk-iommu 10205000.iommu: bound 15001000.larb (ops mtk_smi_larb_component_ops)
+> [    6.315812]   GCS = 0, Overlay = 0, DirtyBit = 0, Xs = 0
+> [    6.315822] user pgtable: 4k pages, 48-bit VAs, pgdp=0000000046fde000
+> [    6.315829] [0000000000000000] pgd=0000000000000000, p4d=0000000000000000
+> [    6.315846] Internal error: Oops: 0000000096000004 [#1]  SMP
+> [    6.315852] Modules linked in: mediatek_drm(+) drm_dma_helper drm_display_helper drm_client_lib drm_kms_helper mt8365_mt6357
+> [    6.316909] mtk-iommu 10205000.iommu: bound 16010000.larb (ops mtk_smi_larb_component_ops)
+> [    6.317563]  mtk_mmsys mtk_mutex
+> [    6.318471] probe of 10205000.iommu returned 0 after 19235 usecs
+> [    6.319221]  mtk_cmdq_helper snd_soc_mt8365_pcm snd_soc_mtk_common snd_soc_mt6357 pwm_mediatek
+> [    6.324638] CPU: 1 UID: 0 PID: 112 Comm: (udev-worker) Not tainted 6.16.0-rc2-00015-g44a5ab7a7958-dirty #27 PREEMPT
+> [    6.325964] Hardware name: MediaTek MT8365 Open Platform EVK (DT)
+> [    6.326732] pstate: 60000005 (nZCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+> [    6.327563] probe of 11201000.usb:connector returned 517 after 6627 usecs
+> [    6.327609] pc : mtk_smi_larb_config_port_gen2_general+0x9c/0x1e8
+> [    6.329228] lr : mtk_smi_larb_resume+0x90/0xd8
+> [    6.329792] sp : ffff80008219b650
+> [    6.330210] x29: ffff80008219b660 x28: ffff80008219bc20 x27: ffff000002fd6938
+> [    6.331112] x26: 0000000000000000 x25: 0000000000000000 x24: ffff800080f9b8d8
+> [    6.332015] x23: ffff000005aa8e90 x22: 0000000000000003 x21: ffff000002fd6810
+> [    6.332918] x20: ffff000002fd6810 x19: ffff000005aa8e80 x18: 00000000ffffffff
+> [    6.333821] x17: 74706164612d6c76 x16: 6f2d707369642d6b x15: 6574616964656d2f
+> [    6.334723] x14: ffff800081b8b0c0 x13: 6c766f2d70736964 x12: 2d6b657461696465
+> [    6.335626] x11: 766972643d4d4554 x10: ffff800081c8bc7c x9 : 0000000000000004
+> [    6.336528] x8 : ffff80008219b578 x7 : ffff80008219b630 x6 : 0000000000000004
+> [    6.337430] x5 : ffff80008219b5b8 x4 : ffff800080f9b8d8 x3 : 0000000000000000
+> [    6.338333] x2 : 0000000000000000 x1 : 0000000000000000 x0 : 0000000000000000
+> [    6.339236] Call trace:
+> [    6.339546]  mtk_smi_larb_config_port_gen2_general+0x9c/0x1e8 (P)
+> [    6.340318]  mtk_smi_larb_resume+0x90/0xd8
+> [    6.340838]  pm_generic_runtime_resume+0x2c/0x44
+> [    6.341426]  __genpd_runtime_resume+0x30/0x7c
+> [    6.341979]  genpd_runtime_resume+0xd8/0x288
+> [    6.342522]  __rpm_callback+0x48/0x1dc
+> [    6.343001]  rpm_callback+0x74/0x80
+> [    6.343445]  rpm_resume+0x468/0x63c
+> [    6.343889]  __pm_runtime_resume+0x4c/0x90
+> [    6.344410]  pm_runtime_get_suppliers+0x60/0x8c
+> [    6.344985]  __driver_probe_device+0x48/0x12c
+> [    6.345539]  driver_probe_device+0xd8/0x15c
+> [    6.346070]  __driver_attach+0x94/0x19c
+> [    6.346558]  bus_for_each_dev+0x78/0xd4
+> [    6.347046]  driver_attach+0x24/0x30
+> [    6.347501]  bus_add_driver+0xe4/0x208
+> [    6.347977]  driver_register+0x60/0x128
+> [    6.348465]  __platform_register_drivers+0x60/0xe8
+> [    6.349071]  mtk_drm_init+0x24/0x1000 [mediatek_drm]
+> [    6.349736]  do_one_initcall+0x58/0x268
+> [    6.350226]  do_init_module+0x58/0x238
+> [    6.350705]  load_module+0x1db8/0x1e84
+> [    6.351181]  init_module_from_file+0x84/0xc4
+> [    6.351723]  __arm64_sys_finit_module+0x144/0x328
+> [    6.352321]  invoke_syscall.constprop.0+0x50/0xe4
+> [    6.352919]  do_el0_svc+0x40/0xc4
+> [    6.353342]  el0_svc+0x48/0x1a0
+> [    6.353744]  el0t_64_sync_handler+0x10c/0x138
+> [    6.354297]  el0t_64_sync+0x198/0x19c
+> [    6.354765] Code: 39400025 35ffff05 f9404a60 371805a6 (b9400000)
+> [    6.355533] ---[ end trace 0000000000000000 ]---
+> 
+> I think this is larb->mmu being NULL in line 277 of
+> drivers/memory/mtk-smi.c.
+> 
+> Does this ring a bell?
 > 
 
-Just read the values that do work from the registers on your board and on
-the downstream kernel, after which, map the resulting value to the patch
-bits that you can find here in this driver.
+No, not really... but I can connect you with a colleague of mine that has a MT8365
+EVK that works just fine.
 
-If there's any difference, add the relevant definitions.
+Louis, can you please follow up?
 
-Cheers,
+Thanks,
 Angelo
 
-> Signed-off-by: Shiji Yang <yangshiji66@outlook.com>
-> ---
->   drivers/mmc/host/mtk-sd.c | 9 ++++++---
->   1 file changed, 6 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 276d4e324..8933cd089 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -1939,7 +1939,8 @@ static void msdc_init_hw(struct msdc_host *host)
->   	val |= FIELD_PREP(MSDC_CKGEN_MSDC_DLY_SEL, 1);
->   
->   	/* First MSDC_PATCH_BIT setup is done: pull the trigger! */
-> -	writel(val, host->base + MSDC_PATCH_BIT);
-> +	if (!host->dev_comp->mips_mt762x)
-> +		writel(val, host->base + MSDC_PATCH_BIT);
->   
->   	/* Set wr data, crc status, cmd response turnaround period for UHS104 */
->   	pb1_val = FIELD_PREP(MSDC_PB1_WRDAT_CRC_TACNTR, 1);
-> @@ -2002,8 +2003,10 @@ static void msdc_init_hw(struct msdc_host *host)
->   		pb2_val |= MSDC_PB2_SUPPORT_64G;
->   
->   	/* Patch Bit 1/2 setup is done: pull the trigger! */
-> -	writel(pb1_val, host->base + MSDC_PATCH_BIT1);
-> -	writel(pb2_val, host->base + MSDC_PATCH_BIT2);
-> +	if (!host->dev_comp->mips_mt762x) {
-> +		writel(pb1_val, host->base + MSDC_PATCH_BIT1);
-> +		writel(pb2_val, host->base + MSDC_PATCH_BIT2);
-> +	}
->   	sdr_set_bits(host->base + EMMC50_CFG0, EMMC50_CFG_CFCSTS_SEL);
->   
->   	if (host->dev_comp->data_tune) {
+> Best regards
+> Uwe
 
 
 
