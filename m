@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 799D9C77B7F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 14:21:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6F94C7115B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 14:23:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=LOjXmaimuYzCDVD8J8YQj7tqbZLwH8GSuglqbXGHcbA=; b=YooONbFQUsOpfM2h5tHNHG2jeA
-	D1Q7Pid36004hVKK9m5gqIYLRU1ENkCDK8e+YUWu7chS5RXb99uE8+svFkR7g7EWX2mVqFkieCtuT
-	UzcMQYVQN7LdCvYMhSI393ojMs5cxO7rnM5jp0kQNzu3rUGRnxAX2tOwFle99AMvwkN6niM2g+ic6
-	eUoSpX9ANbM0ZC3fnOYkA86x974MKIldoGJWeXsIAX6slhbQM0ovV1Gx9kW77P88DpVKhfRB53LFz
-	0RdS56L2T/C/F3nvFN3K/WhsUhjzGQDdxgiboInncKKgox67Fz9nvUeVY114leVp09aYqp4iPkuUf
-	Dv7VuGCA==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=E3WGzJ2zaL66SOjEsX+QXPJDpsQHzP9m3zoz5Wl8nC4=; b=RCqydx0zYw0VRgRbi+7cEUPdFY
+	dLmVLiC3ysNBp/DJ/8Aba66I8fVChHGgxgnDkCJdvDnHjaytElbR3qkCp8Uem7Tz/sFuKVlsZlaK0
+	DKNcrSlLIUR3tOvkczQEea3mp8tGruNZGrRx1gEaabbftzyMQSRHJYkt7Eo5603hN0l6yav0CXqXM
+	PLHxOvz81YRQalEq3m68Yc1IDjR3WhrV4m0nSDQeQQGCAFOz+MDEuMWncoSCCDEHqMKRpErHCzMm9
+	SFm0hwa81KP8by2t2RpJL2G19RcrthQLpDPRorGwnZLRMRUKMSv9LqstL1IajmpTHOFIr4SNyL72i
+	kFWWueUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTi2m-000000031gF-05cR;
-	Mon, 23 Jun 2025 14:21:08 +0000
+	id 1uTi54-000000032E2-1oeU;
+	Mon, 23 Jun 2025 14:23:30 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTfrY-00000002atu-2L8E;
-	Mon, 23 Jun 2025 12:01:25 +0000
+	id 1uTfrZ-00000002atx-0eZj;
+	Mon, 23 Jun 2025 12:01:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1750680083;
-	bh=YMJ1LS+KoR0M9I0Sxf/wRosogdBiBEWRZnfRRB9Zjw8=;
-	h=From:To:Cc:Subject:Date:From;
-	b=eNMZ7LqnqvnP39GaVTEhiQlRuMnKYwlHyzY38hOHZKoLBeZK9aMwYAcf5fcIsmJGP
-	 7U1UIEGty2G7qpEZwwS/cwnMe62eIaRPbKLRyBZiYsmjbbF7IvdSVSJRhJgzMZtjRe
-	 9c5rOLlEjFd5NxKTFg8a3yogSfUlvJAgn/4Ze7shDUp3fThXSSI8/2LkJso2BmmruE
-	 y9Kwb1uDXBKzaTg4GTY6odYw5PqBaHQLlDh/LZWTNOWqqpYX/rnDYTiGJbzx67vxKv
-	 SRk65wYFI958m3ByiUETTYyRQ+T6vgRjaQ1r/V0wyMcvd7wJAVGGvnZqu8DQabcIkf
-	 blaf4EoYLAgFw==
+	bh=vL7vsZnHZXjhrnXm1+pOHRiqQJaLYZAMfyW8Ay4L6Ug=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=R+nrE6pTnZW3Qec8oxp/sYkd8N6AQksyP99/7xe66jIVWPB6+vD3CPyw5zJ+LCMWC
+	 2DpRHq+OVAJs1OdyJBDq+d1HjXTPTR8mOaFslfe3q4W8JbFdVoU1SVUhZIRV3hlAYt
+	 XnFF/Cm30MTtDQeeQpIKAEs9HmT3jr8bjy2SqLIaXCdBwSQlhaW8sT+LSBgiCtQTh6
+	 ogDiGa0qt3mP4A+urCPeVammDnVLwCHbuXxhdjcGHuai9yv+HDLSH9LVLQoWk0Th2d
+	 TUjDOFFDxn3B9iy7blvaNEEuD3GDwarTsn6qTb1Yi5Cswb32+N86J4069+GAqzTzjv
+	 He0XDdaljhutA==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4F33117E0EC0;
-	Mon, 23 Jun 2025 14:01:22 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 374A017E10D5;
+	Mon, 23 Jun 2025 14:01:23 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: ukleinek@kernel.org
 Cc: robh@kernel.org,
@@ -57,15 +57,17 @@ Cc: robh@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH v1 0/3] pwm-mediatek: Add support for MT6991/MT8196 SoCs
-Date: Mon, 23 Jun 2025 14:01:15 +0200
-Message-ID: <20250623120118.109170-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v1 1/3] dt-bindings: pwm: mediatek,mt2712-pwm: Add support for MT6991/MT8196
+Date: Mon, 23 Jun 2025 14:01:16 +0200
+Message-ID: <20250623120118.109170-2-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.49.0
+In-Reply-To: <20250623120118.109170-1-angelogioacchino.delregno@collabora.com>
+References: <20250623120118.109170-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250623_050124_770900_3474B3B6 
-X-CRM114-Status: UNSURE (   7.91  )
+X-CRM114-CacheID: sfid-20250623_050125_343548_AE6EB135 
+X-CRM114-Status: UNSURE (   8.48  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,18 +83,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series adds support for the PWM IP, version 3.002, found in the
-MT6991 Dimensity 9400 Smartphone SoC and in the MT8196 Chromebook SoC.
+Add compatible strings for the MediaTek Dimensity 9400 MT6991 and
+for the MT8196 Chromebook SoC, having the same PWM IP v3.0.2.
 
-AngeloGioacchino Del Regno (3):
-  dt-bindings: pwm: mediatek,mt2712-pwm: Add support for MT6991/MT8196
-  pwm: pwm-mediatek: Pass PWM_CK_26M_SEL from platform data
-  pwm: pwm-mediatek: Add support for PWM IP V3.0.2 in MT6991/MT8196
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml         | 5 +++++
+ 1 file changed, 5 insertions(+)
 
- .../bindings/pwm/mediatek,mt2712-pwm.yaml     |  5 +++
- drivers/pwm/pwm-mediatek.c                    | 38 +++++++++++--------
- 2 files changed, 28 insertions(+), 15 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml b/Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml
+index d515c09e1021..fc31758a40b0 100644
+--- a/Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml
++++ b/Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml
+@@ -18,6 +18,7 @@ properties:
+       - enum:
+           - mediatek,mt2712-pwm
+           - mediatek,mt6795-pwm
++          - mediatek,mt6991-pwm
+           - mediatek,mt7622-pwm
+           - mediatek,mt7623-pwm
+           - mediatek,mt7628-pwm
+@@ -32,6 +33,10 @@ properties:
+           - enum:
+               - mediatek,mt8195-pwm
+           - const: mediatek,mt8183-pwm
++      - items:
++          - enum:
++              - mediatek,mt8196-pwm
++          - const: mediatek,mt6991-pwm
+ 
+   reg:
+     maxItems: 1
 -- 
 2.49.0
 
