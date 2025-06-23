@@ -4,67 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 266B3C7115B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 15:26:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70AE3C77B7F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 15:31:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G9t2y3tyZjYPBLarIFtUoA4o7nS0qFOFN06yvaTheJs=; b=Z5h1szvLInIHAem1CZ9AMiF2J6
-	uYEQBRvIus6T4egBIK7yGapikLXwtVl2jq/tdxO4KrK+4r4IiO02PQyHtm1AuaGf25phKYlH6plvR
-	7+00CODkDuDUquG4Q+ImU573lmHg790gPIaDMsMfGEecTjvQRaUAQe3vUcTu+N5mIAXb/bSQSpjCE
-	VfDWl+OROcvCrbgq2lbMq7gwUI6CgMrvI48u5nTfwqDBa0NV9ygKZ57n1JW45PHUO2Kq0mc3LeKH/
-	PeLdbIGIK3CU70jypbYDRSx3T1X6I3m75dn82A2Lov+tJKPiGDUaVLu4k4+gavjK5gaGlVl3ml6zA
-	sKmaF/OA==;
+	bh=Ta3WZqL5sk0Mne1WoZc62il08AwI4oyyWxmIyIfrOXc=; b=WW+FmmoMXTge1qTG+WeDEW1aV8
+	n7tyQs65oWtyYvKLfpy9o4YiD+1vOM+3OvC+1Qx9BgI0TTbp3SNI1aAhE8ptHi+BNAiron1398B7C
+	zzgP5XL20Z+R/uM6+51ozRqknQ41kW1FMZ52dgM7b0N+AMGScV6Sqz90NUbVYdLHwwdXQ16KFfruV
+	bUfmRxHZBGW/0EyYYgGUOqlY2EgW20sXSCCEKB2P3ZJ881uhUoi2jcNcYYWBTSQ91eIVzQEm02pD0
+	3RVZ6B+TUop3m6+u8TXGE7NP9XqZ5y9MQcvmiNy7bBbW3BwjgJxzHEKUrXoavwA5RUgNlhC/MMg/T
+	o+aouq8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTj44-00000003E3K-0Y07;
-	Mon, 23 Jun 2025 15:26:32 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uTj8k-00000003FDq-0XRU;
+	Mon, 23 Jun 2025 15:31:22 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTftR-00000002bVJ-1qoW;
-	Mon, 23 Jun 2025 12:03:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1750680200;
-	bh=Kep1UgV29OPQ4w66WpWqd9vnrdD0pGwhoXX2kcCncG8=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=BUzmfupdU6G5IRchHGNXcuAebw5hxhpDacHOT/DWgyEzLViO9xtUWxUcQ+gP9b8uF
-	 ndeIDVomCTwt6eJ+5DcV/s10pqt3z38Hy4XUGciZ7PVOps0f3jazLLIwHIenfzt2r/
-	 rtBLwhk2HcASt+uzC36u8Iii2WbuCPFfehLLp32R5HDZgZHleS0E6cF1iiCpdTHil1
-	 eH5qfPRptEesQLj7FLzqou88V6ruGw4bXvT8ld4uNnSg0MqVjQ68ZctKMRtLaTDmsV
-	 12svNUv9f9nuWa40CUPMRd/dKLDIYuwDuTrPNmdj4w+taFBIMo+X6Bxptg5PEbaU0h
-	 6hHD95Wu/jwnw==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9107417E10D5;
-	Mon, 23 Jun 2025 14:03:19 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: chunfeng.yun@mediatek.com
-Cc: vkoul@kernel.org,
-	kishon@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-phy@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	kernel@collabora.com
-Subject: [PATCH v1 2/2] phy: mediatek: tphy: Cleanup and document slew calibration
-Date: Mon, 23 Jun 2025 14:03:15 +0200
-Message-ID: <20250623120315.109881-3-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250623120315.109881-1-angelogioacchino.delregno@collabora.com>
-References: <20250623120315.109881-1-angelogioacchino.delregno@collabora.com>
+	id 1uTg29-00000002dJM-1zCj;
+	Mon, 23 Jun 2025 12:12:22 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 15ACD4AA87;
+	Mon, 23 Jun 2025 12:12:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6020DC4CEEA;
+	Mon, 23 Jun 2025 12:12:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1750680740;
+	bh=loOUJIQr+qUEW6o9ZxGsrjaE4988YPr7iwZh3UArESo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=XBOkkLeu5kmfliNt9G/hdS1pmLkw614one20LVvyu1XHTcO5DZ9Kmg7OLmON5K0fG
+	 1QhwZglMpkvnEaudY4Whgk9Zivh8iUetQhyAirAvQXH9/mdryiVI0UtyAQgJ+PC526
+	 M5doIi/1rjGJ3WNu9DgCCE8ZEdk3+UnPjNwb5nuZmGBkXvlRssweoJTiATNX5fQ2Ms
+	 T4e+AcASfagtUmcDIJHpVEqyO/C6u4kPkRpeZ6KURKqKYJSvrIV70NcoiqJdvmL6kI
+	 IIIIOgefj8TTaXBCcKOfQN3KvwMZE6x56rGwJ0LfmAaBCqJ7xpH40Dck84wy3tfMgg
+	 t95vFUAuE5MOQ==
+Message-ID: <ef64816f-0ba2-4a12-bef8-aa10e44793e1@kernel.org>
+Date: Mon, 23 Jun 2025 14:12:14 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 09/30] dt-bindings: clock: mediatek: Describe MT8196
+ peripheral clock controllers
+To: Laura Nao <laura.nao@collabora.com>, mturquette@baylibre.com,
+ sboyd@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ p.zabel@pengutronix.de, richardcochran@gmail.com
+Cc: guangjie.song@mediatek.com, wenst@chromium.org,
+ linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+ kernel@collabora.com
+References: <20250623102940.214269-1-laura.nao@collabora.com>
+ <20250623102940.214269-10-laura.nao@collabora.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <20250623102940.214269-10-laura.nao@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250623_050321_629277_934D6198 
-X-CRM114-Status: GOOD (  19.00  )
+X-CRM114-CacheID: sfid-20250623_051221_563689_03274FC1 
+X-CRM114-Status: GOOD (  13.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,141 +123,177 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-While it's true that, generally, the T-PHY V3 does not support the
-slew calibration process, some minor versions of it actually do,
-moreover, some SoCs may not support this even though the version
-of the PHY IP does.
+On 23/06/2025 12:29, Laura Nao wrote:
+> +properties:
+> +  compatible:
+> +    items:
+> +      - enum:
+> +          - mediatek,mt8196-adsp
+> +          - mediatek,mt8196-imp-iic-wrap-c
+> +          - mediatek,mt8196-imp-iic-wrap-e
+> +          - mediatek,mt8196-imp-iic-wrap-n
+> +          - mediatek,mt8196-imp-iic-wrap-w
+> +          - mediatek,mt8196-mdpsys0
+> +          - mediatek,mt8196-mdpsys1
+> +          - mediatek,mt8196-pericfg-ao
+> +          - mediatek,mt8196-pextp0cfg-ao
+> +          - mediatek,mt8196-pextp1cfg-ao
+> +          - mediatek,mt8196-ufscfg-ao
+> +          - mediatek,mt8196-vencsys
+> +          - mediatek,mt8196-vencsys-c1
+> +          - mediatek,mt8196-vencsys-c2
+> +          - mediatek,mt8196-vdecsys
+> +          - mediatek,mt8196-vdecsys-soc
+> +      - const: syscon
 
-The reference clock and rate coefficient parameters are used only
-for slew calibration: move those to platform data, then document
-and change the checks in hs_slew_rate_calibrate() to perform the
-calibration only if:
- - EYE value was not supplied (pre-calculated calibration); and
- - Slew reference clock value is present (not zero); and
- - Slew coefficient is present (not zero).
+Why everything is syscon?
 
-Moreover, change the probe function to always check if both the
-slew reference clock and coefficient properties are present and,
-if not, assign the value from platform data (which, as reminder,
-if not added means that it's zero!), instead of checking the PHY
-IP version.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/phy/mediatek/phy-mtk-tphy.c | 45 +++++++++++++++++------------
- 1 file changed, 27 insertions(+), 18 deletions(-)
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  '#clock-cells':
+> +    const: 1
+> +
+> +  '#reset-cells':
+> +    const: 1
+> +
+> +  mediatek,hardware-voter:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description: A phandle of the hw voter node
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - '#clock-cells'
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    pericfg_ao: clock-controller@16640000 {
+> +        compatible = "mediatek,mt8196-pericfg-ao", "syscon";
+> +        reg = <0x16640000 0x1000>;
+> +        mediatek,hardware-voter = <&scp_hwv>;
+> +        #clock-cells = <1>;
+> +    };
+> +  - |
+> +    pextp0cfg_ao: clock-controller@169b0000 {
+> +        compatible = "mediatek,mt8196-pextp0cfg-ao", "syscon";
+> +        reg = <0x169b0000 0x1000>;
+> +        #clock-cells = <1>;
+> +        #reset-cells = <1>;
+> +    };
+> diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt8196-sys-clock.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt8196-sys-clock.yaml
+> new file mode 100644
+> index 000000000000..363ebe87c525
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/clock/mediatek,mt8196-sys-clock.yaml
+> @@ -0,0 +1,76 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/clock/mediatek,mt8196-sys-clock.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek System Clock Controller for MT8196
+> +
+> +maintainers:
+> +  - Guangjie Song <guangjie.song@mediatek.com>
+> +  - Laura Nao <laura.nao@collabora.com>
+> +
+> +description: |
+> +  The clock architecture in MediaTek SoCs is structured like below:
+> +  PLLs -->
+> +          dividers -->
+> +                      muxes
+> +                           -->
+> +                              clock gate
+> +
+> +  The apmixedsys, apmixedsys_gp2, vlpckgen, armpll, ccipll, mfgpll and ptppll
+> +  provide most of the PLLs which are generated from the SoC's 26MHZ crystal oscillator.
+> +  The topckgen, topckgen_gp2 and vlpckgen provide dividers and muxes which
+> +  provide the clock source to other IP blocks.
+> +
+> +properties:
+> +  compatible:
+> +    items:
+> +      - enum:
+> +          - mediatek,mt8196-apmixedsys
+> +          - mediatek,mt8196-armpll-b-pll-ctrl
+> +          - mediatek,mt8196-armpll-bl-pll-ctrl
+> +          - mediatek,mt8196-armpll-ll-pll-ctrl
+> +          - mediatek,mt8196-apmixedsys-gp2
+> +          - mediatek,mt8196-ccipll-pll-ctrl
+> +          - mediatek,mt8196-mfgpll-pll-ctrl
+> +          - mediatek,mt8196-mfgpll-sc0-pll-ctrl
+> +          - mediatek,mt8196-mfgpll-sc1-pll-ctrl
+> +          - mediatek,mt8196-ptppll-pll-ctrl
+> +          - mediatek,mt8196-topckgen
+> +          - mediatek,mt8196-topckgen-gp2
+> +          - mediatek,mt8196-vlpckgen
+> +      - const: syscon
 
-diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
-index 858824b4476e..e5ce1255d735 100644
---- a/drivers/phy/mediatek/phy-mtk-tphy.c
-+++ b/drivers/phy/mediatek/phy-mtk-tphy.c
-@@ -210,8 +210,6 @@
- #define P2F_USB_FM_VALID	BIT(0)
- #define P2F_RG_FRCK_EN		BIT(8)
- 
--#define U3P_REF_CLK		26	/* MHZ */
--#define U3P_SLEW_RATE_COEF	28
- #define U3P_SR_COEF_DIVISOR	1000
- #define U3P_FM_DET_CYCLE_CNT	1024
- 
-@@ -285,12 +283,16 @@ enum mtk_phy_version {
-  * @sw_efuse_supported:       Switches off eFuse auto-load from PHY and applies values
-  *                            read from different nvmem (usually different eFuse array)
-  *                            that is pointed at in the device tree node for this PHY
-+ * @slew_ref_clk_mhz:         Default reference clock (in MHz) for slew rate calibration
-+ * @slew_rate_coefficient:    Coefficient for slew rate calibration
-  * @version:                  PHY IP Version
-  */
- struct mtk_phy_pdata {
- 	bool avoid_rx_sen_degradation;
- 	bool sw_pll_48m_to_26m;
- 	bool sw_efuse_supported;
-+	u8 slew_ref_clock_mhz;
-+	u8 slew_rate_coefficient;
- 	enum mtk_phy_version version;
- };
- 
-@@ -686,12 +688,14 @@ static void hs_slew_rate_calibrate(struct mtk_tphy *tphy,
- 	int fm_out;
- 	u32 tmp;
- 
--	/* HW V3 doesn't support slew rate cal anymore */
--	if (tphy->pdata->version == MTK_PHY_V3)
--		return;
--
--	/* use force value */
--	if (instance->eye_src)
-+	/*
-+	 * If a fixed HS slew rate (EYE) value was supplied, don't run the
-+	 * calibration sequence and prefer using that value instead; also,
-+	 * if there is no reference clock for slew calibration or there is
-+	 * no slew coefficient, this means that the slew rate calibration
-+	 * sequence is not supported.
-+	 */
-+	if (instance->eye_src || !tphy->src_ref_clk || !tphy->src_coef)
- 		return;
- 
- 	/* enable USB ring oscillator */
-@@ -1516,12 +1520,16 @@ static const struct phy_ops mtk_tphy_ops = {
- 
- static const struct mtk_phy_pdata tphy_v1_pdata = {
- 	.avoid_rx_sen_degradation = false,
-+	.slew_ref_clock_mhz = 26,
-+	.slew_rate_coefficient = 28,
- 	.version = MTK_PHY_V1,
- };
- 
- static const struct mtk_phy_pdata tphy_v2_pdata = {
- 	.avoid_rx_sen_degradation = false,
- 	.sw_efuse_supported = true,
-+	.slew_ref_clock_mhz = 26,
-+	.slew_rate_coefficient = 28,
- 	.version = MTK_PHY_V2,
- };
- 
-@@ -1532,6 +1540,8 @@ static const struct mtk_phy_pdata tphy_v3_pdata = {
- 
- static const struct mtk_phy_pdata mt8173_pdata = {
- 	.avoid_rx_sen_degradation = true,
-+	.slew_ref_clock_mhz = 26,
-+	.slew_rate_coefficient = 28,
- 	.version = MTK_PHY_V1,
- };
- 
-@@ -1561,7 +1571,7 @@ static int mtk_tphy_probe(struct platform_device *pdev)
- 	struct resource *sif_res;
- 	struct mtk_tphy *tphy;
- 	struct resource res;
--	int port;
-+	int port, ret;
- 
- 	tphy = devm_kzalloc(dev, sizeof(*tphy), GFP_KERNEL);
- 	if (!tphy)
-@@ -1591,15 +1601,14 @@ static int mtk_tphy_probe(struct platform_device *pdev)
- 		}
- 	}
- 
--	if (tphy->pdata->version < MTK_PHY_V3) {
--		tphy->src_ref_clk = U3P_REF_CLK;
--		tphy->src_coef = U3P_SLEW_RATE_COEF;
--		/* update parameters of slew rate calibrate if exist */
--		device_property_read_u32(dev, "mediatek,src-ref-clk-mhz",
--					 &tphy->src_ref_clk);
--		device_property_read_u32(dev, "mediatek,src-coef",
--					 &tphy->src_coef);
--	}
-+	/* Optional properties for slew calibration variation */
-+	ret = device_property_read_u32(dev, "mediatek,src-ref-clk-mhz", &tphy->src_ref_clk);
-+	if (ret)
-+		tphy->src_ref_clk = tphy->pdata->slew_ref_clock_mhz;
-+
-+	ret = device_property_read_u32(dev, "mediatek,src-coef", &tphy->src_coef);
-+	if (ret)
-+		tphy->src_coef = tphy->pdata->slew_rate_coefficient;
- 
- 	port = 0;
- 	for_each_child_of_node_scoped(np, child_np) {
--- 
-2.49.0
+Why everything is syscon?
 
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  '#clock-cells':
+> +    const: 1
+> +
+> +  mediatek,hardware-voter:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description: A phandle of the hw voter node
+
+Do not copy property name to description, but say something useful - for
+what? And why this cannot be or is not a proper interconnect?
+
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - '#clock-cells'
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    apmixedsys_clk: syscon@10000800 {
+> +        compatible = "mediatek,mt8196-apmixedsys", "syscon";
+> +        reg = <0x10000800 0x1000>;
+> +        #clock-cells = <1>;
+> +    };
+> +  - |
+> +    topckgen: syscon@10000000 {
+> +        compatible = "mediatek,mt8196-topckgen", "syscon";
+> +        reg = <0x10000000 0x800>;
+> +        mediatek,hardware-voter = <&scp_hwv>;
+> +        #clock-cells = <1>;
+> +    };
+> +
+
+
+
+> +#define CLK_OVL1_DLO9					56
+> +#define CLK_OVL1_DLO10					57
+> +#define CLK_OVL1_DLO11					58
+> +#define CLK_OVL1_DLO12					59
+> +#define CLK_OVL1_OVLSYS_RELAY0				60
+> +#define CLK_OVL1_OVL_INLINEROT0				61
+> +#define CLK_OVL1_SMI					62
+> +
+> +
+> +/* VDEC_SOC_GCON_BASE */
+> +#define CLK_VDE1_LARB1_CKEN				0
+> +#define CLK_VDE1_LAT_CKEN				3
+
+IDs increment by 1, not 3.
+
+
+
+Best regards,
+Krzysztof
 
