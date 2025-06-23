@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3051C77B7C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 15:16:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF992C77B7C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 15:16:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c+Q9TVvJ9tsglhVBzQiBlKyQc/WfcgOg0cM8TT9elI0=; b=AGpIQF1s9wFzGi
-	2AuyXM5yc3uT6vIo5FvcG6+bXPa8aWxGsBqnWuKOGXaDurWcO+Yh9f2uKRWNIKsY60luyewc4S8Tu
-	/DxImddqcM1fxYQlNhbOlpnudjocyZVWs7TuxUi3SQ6nXDqLHwgA/bK7b08AYg2D35DTu5OwT9YUz
-	UA+kv1Ub4QhmN1YCVU6fOGJaX1EAT3onhqxbKSxSVe9VzU4uz2kWs5chAEQqxKssqChqmIkdOrPD7
-	N9l4kBiBxTOgn3tFn53lRom7gJVZWJB5yUJ0Fk2fCD0gJwD84moLgiU3BEnzfDPNR5jmluhuDwLLG
-	fyfEqpOX5ZQ2/PHnCWug==;
+	List-Owner; bh=Np4gP+kVZ9dH3S8OkU+k3ieJFZn7l6DRLrAoselSPRg=; b=bUxKTRppbe0BSg
+	uLHx89uXy9exQRzPrOlmfvAGxCyNQUMiQkMwXfmsNV0dMhgiUb6sYDCVCemXcG56KWXrzZb7GjJyU
+	9V+ST+IvB3Y05J2yxijXWfn9zGv6tkgYezpkDLs+d2uP6A90Vml+FI0ttlEEXkup1e81MFvzIoLF+
+	+xBgGRimwK38mvfNflEB1dcfnaffSkaB8YdY3yrWdihvYN0uxhbJ1njiLlu6G44hLS0pRVP2J+hyB
+	GBx+g1MzbHsoI9R5PMq50z4wH3IjgtldeljgnFb671ZcrIWeynGmkc/9fMn2bQROoAWbXKw2mYRrQ
+	o8dUwM9HEGOHKezxy/JQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTiu2-00000003BnA-27iR;
-	Mon, 23 Jun 2025 15:16:10 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uTiuB-00000003BqG-3T8C;
+	Mon, 23 Jun 2025 15:16:19 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTfsF-00000002bFV-3GCW;
-	Mon, 23 Jun 2025 12:02:09 +0000
+	id 1uTfsH-00000002bG1-0IIn;
+	Mon, 23 Jun 2025 12:02:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1750680126;
-	bh=kS1FKeIiY4VaHPD7evpKdiT1ch7pGWqfaXruUb6PTY8=;
+	s=mail; t=1750680127;
+	bh=eim72WFFw0hgS/DlK1JwbuAVE47pGc2rjtb1MD+9DwM=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Sn9zTKy0w+DK2Q2Qiti3CtuaLd4wdZtctGm+tkfpTp/UB/zVsBkieH/VCrfVMChbI
-	 w8gPupRTvNXljb6+ZNfKFfXjbpmbBt49XMyIghOuYSTuQHmZfGdiQXjcOEZrjXlpBR
-	 OLOyvD4Kq09UEZ3HlCpf3xgLR2NKCdjfmOaVgmaYhNEA9yTAoolMbo8oCmh+VueC2c
-	 jcRGVCu+sJ6nbc4zK+gDvy4TeNu1i5bp7+rLqCcDPoOVsBrZXTpgrzjCxhj1G6OGxv
-	 hj7BvLEJcxvlWNecj9/2hecMzavd/AORlHc5hNlDToiOYAx3QSmr8wtb5OoGJYEFut
-	 rZ9JR7x2sC+MQ==
+	b=Bax/+hUXRf3vYM5Uir6RHyrcs6CzrgdYjTAPJ2N0cYFZUev4eGTmA63KLEsSHX7pV
+	 OXwWZ5Tj+R8BnTi9U4qdast8r36NC4bRR3KdtLhY5En4FK8TWV10VcozqjvtpJ2Nbb
+	 WV6fLizrVVvQhpdppzRrgRfuQvLEKzRuAaTAJMPuOKkCbL++nHoIeVDwxzXaMF948x
+	 SEwq9RWWs+7rMpsDuD2bmIE7gMzsmR6XQK0MnI1Wbgh+TGdE3B55wv072kUQWZFWLO
+	 JEaGKkrJLwQbAgHeVrT3gP+kYwbxAuM6VB/RLbTBgdSjxOn7PvqSSeEwewmvp+I0Yd
+	 kFSnfXkamNkfw==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A0CD617E35D3;
-	Mon, 23 Jun 2025 14:02:05 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id AD86717E35E7;
+	Mon, 23 Jun 2025 14:02:06 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: linux-mediatek@lists.infradead.org
-Subject: [PATCH v1 08/13] pmdomain: mediatek: Add support for secure HWCCF infra power on
-Date: Mon, 23 Jun 2025 14:01:49 +0200
-Message-ID: <20250623120154.109429-9-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v1 09/13] pmdomain: mediatek: Convert all SoCs to new style regmap retrieval
+Date: Mon, 23 Jun 2025 14:01:50 +0200
+Message-ID: <20250623120154.109429-10-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250623120154.109429-1-angelogioacchino.delregno@collabora.com>
 References: <20250623120154.109429-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250623_050207_966973_6909E426 
-X-CRM114-Status: GOOD (  16.76  )
+X-CRM114-CacheID: sfid-20250623_050209_291305_1BE07259 
+X-CRM114-Status: GOOD (  11.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,144 +71,234 @@ Cc: robh@kernel.org, conor+dt@kernel.org, mbrugger@suse.com, y.oudjana@protonmai
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some SoCs, like the MediaTek Dimensity 9400 (MT6991), have granular
-power controls and will disable power to the infracfg to save power
-when the platform is in deeper sleep states (or when no IP in the
-the infracfg macro-block is in use).
-
-These chips also cannot control the infracfg power states directly
-via AP register writes as those are protected by the secure world.
-
-Add a new MTK_SCPD_INFRA_PWR_CTL cap and, if present, make a call
-to the secure world to poweron the infracfg block, as the HWV IP
-resides in there, when executing HWV domains power sequences.
+Add the bus_prot_blocks handle and declare num_bus_prot_blocks to
+allow all of the currently supported AArch64 MediaTek SoCs to use
+the new style regmap retrieval in the driver when a new style
+devicetree declaring the mediatek,bus-protection phandle(s) in
+the main power controller node is found.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/pmdomain/mediatek/mtk-pm-domains.c | 40 ++++++++++++++++++++--
- drivers/pmdomain/mediatek/mtk-pm-domains.h |  1 +
- 2 files changed, 39 insertions(+), 2 deletions(-)
+ drivers/pmdomain/mediatek/mt6795-pm-domains.h | 5 +++++
+ drivers/pmdomain/mediatek/mt8167-pm-domains.h | 5 +++++
+ drivers/pmdomain/mediatek/mt8173-pm-domains.h | 5 +++++
+ drivers/pmdomain/mediatek/mt8183-pm-domains.h | 5 +++++
+ drivers/pmdomain/mediatek/mt8186-pm-domains.h | 5 +++++
+ drivers/pmdomain/mediatek/mt8188-pm-domains.h | 6 ++++++
+ drivers/pmdomain/mediatek/mt8192-pm-domains.h | 5 +++++
+ drivers/pmdomain/mediatek/mt8195-pm-domains.h | 5 +++++
+ drivers/pmdomain/mediatek/mt8365-pm-domains.h | 6 ++++++
+ 9 files changed, 47 insertions(+)
 
-diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-index 977e4e7de831..101ce20d5be4 100644
---- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
-+++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-@@ -15,6 +15,7 @@
- #include <linux/regmap.h>
- #include <linux/regulator/consumer.h>
- #include <linux/soc/mediatek/infracfg.h>
-+#include <linux/soc/mediatek/mtk_sip_svc.h>
+diff --git a/drivers/pmdomain/mediatek/mt6795-pm-domains.h b/drivers/pmdomain/mediatek/mt6795-pm-domains.h
+index a3f7785b04bd..dc8e9f8877ad 100644
+--- a/drivers/pmdomain/mediatek/mt6795-pm-domains.h
++++ b/drivers/pmdomain/mediatek/mt6795-pm-domains.h
+@@ -9,6 +9,9 @@
+ /*
+  * MT6795 power domain support
+  */
++static enum scpsys_bus_prot_block scpsys_bus_prot_blocks_mt6795[] = {
++	BUS_PROT_BLOCK_INFRA
++};
  
- #include "mt6735-pm-domains.h"
- #include "mt6795-pm-domains.h"
-@@ -51,6 +52,8 @@
- #define PWR_RTFF_SAVE_FLAG		BIT(27)
- #define PWR_RTFF_UFS_CLK_DIS		BIT(28)
- 
-+#define MTK_SIP_KERNEL_HWCCF_CONTROL	MTK_SIP_SMC_CMD(0x540)
-+
- struct scpsys_domain {
- 	struct generic_pm_domain genpd;
- 	const struct scpsys_domain_data *data;
-@@ -116,6 +119,15 @@ static bool scpsys_hwv_domain_is_enable_done(struct scpsys_domain *pd)
- 	return (val[0] & mask) && (val[1] & mask) && !(val[2] & mask);
- }
- 
-+static int scpsys_sec_infra_power_on(bool on)
-+{
-+	struct arm_smccc_res res;
-+	unsigned long cmd = on ? 1 : 0;
-+
-+	arm_smccc_smc(MTK_SIP_KERNEL_HWCCF_CONTROL, cmd, 0, 0, 0, 0, 0, 0, &res);
-+	return res.a0;
-+}
-+
- static int scpsys_sram_enable(struct scpsys_domain *pd)
- {
- 	u32 expected_ack, pdn_ack = pd->data->sram_pdn_ack_bits;
-@@ -291,9 +303,15 @@ static int scpsys_hwv_power_on(struct generic_pm_domain *genpd)
- 	u32 val;
- 	int ret;
- 
-+	if (MTK_SCPD_CAPS(pd, MTK_SCPD_INFRA_PWR_CTL)) {
-+		ret = scpsys_sec_infra_power_on(true);
-+		if (ret)
-+			return ret;
-+	}
-+
- 	ret = scpsys_regulator_enable(pd->supply);
- 	if (ret)
--		return ret;
-+		goto err_infra;
- 
- 	ret = clk_bulk_prepare_enable(pd->num_clks, pd->clks);
- 	if (ret)
-@@ -344,6 +362,9 @@ static int scpsys_hwv_power_on(struct generic_pm_domain *genpd)
- 	/* It's done! Disable the HWV low power subsystem clocks */
- 	clk_bulk_disable_unprepare(pd->num_subsys_clks, pd->subsys_clks);
- 
-+	if (MTK_SCPD_CAPS(pd, MTK_SCPD_INFRA_PWR_CTL))
-+		scpsys_sec_infra_power_on(false);
-+
- 	return 0;
- 
- err_disable_subsys_clks:
-@@ -352,6 +373,9 @@ static int scpsys_hwv_power_on(struct generic_pm_domain *genpd)
- 	clk_bulk_disable_unprepare(pd->num_clks, pd->clks);
- err_reg:
- 	scpsys_regulator_disable(pd->supply);
-+err_infra:
-+	if (MTK_SCPD_CAPS(pd, MTK_SCPD_INFRA_PWR_CTL))
-+		scpsys_sec_infra_power_on(false);
- 	return ret;
+ static const struct scpsys_domain_data scpsys_domain_data_mt6795[] = {
+ 	[MT6795_POWER_DOMAIN_VDEC] = {
+@@ -107,6 +110,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt6795[] = {
+ static const struct scpsys_soc_data mt6795_scpsys_data = {
+ 	.domains_data = scpsys_domain_data_mt6795,
+ 	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt6795),
++	.bus_prot_blocks = scpsys_bus_prot_blocks_mt6795,
++	.num_bus_prot_blocks = ARRAY_SIZE(scpsys_bus_prot_blocks_mt6795),
  };
  
-@@ -363,9 +387,15 @@ static int scpsys_hwv_power_off(struct generic_pm_domain *genpd)
- 	u32 val;
- 	int ret;
+ #endif /* __SOC_MEDIATEK_MT6795_PM_DOMAINS_H */
+diff --git a/drivers/pmdomain/mediatek/mt8167-pm-domains.h b/drivers/pmdomain/mediatek/mt8167-pm-domains.h
+index 8a0e898b79ab..f6ee48a711a1 100644
+--- a/drivers/pmdomain/mediatek/mt8167-pm-domains.h
++++ b/drivers/pmdomain/mediatek/mt8167-pm-domains.h
+@@ -12,6 +12,9 @@
+ /*
+  * MT8167 power domain support
+  */
++static enum scpsys_bus_prot_block scpsys_bus_prot_blocks_mt8167[] = {
++	BUS_PROT_BLOCK_INFRA
++};
  
-+	if (MTK_SCPD_CAPS(pd, MTK_SCPD_INFRA_PWR_CTL)) {
-+		ret = scpsys_sec_infra_power_on(true);
-+		if (ret)
-+			return ret;
-+	}
-+
- 	ret = clk_bulk_prepare_enable(pd->num_subsys_clks, pd->subsys_clks);
- 	if (ret)
--		return ret;
-+		goto err_infra;
- 
- 	/* Make sure the HW Voter is idle and able to accept commands */
- 	ret = regmap_read_poll_timeout_atomic(scpsys->base, hwv->done, val,
-@@ -407,10 +437,16 @@ static int scpsys_hwv_power_off(struct generic_pm_domain *genpd)
- 
- 	scpsys_regulator_disable(pd->supply);
- 
-+	if (MTK_SCPD_CAPS(pd, MTK_SCPD_INFRA_PWR_CTL))
-+		scpsys_sec_infra_power_on(false);
-+
- 	return 0;
- 
- err_disable_subsys_clks:
- 	clk_bulk_disable_unprepare(pd->num_subsys_clks, pd->subsys_clks);
-+err_infra:
-+	if (MTK_SCPD_CAPS(pd, MTK_SCPD_INFRA_PWR_CTL))
-+		scpsys_sec_infra_power_on(false);
- 	return ret;
+ static const struct scpsys_domain_data scpsys_domain_data_mt8167[] = {
+ 	[MT8167_POWER_DOMAIN_MM] = {
+@@ -99,6 +102,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8167[] = {
+ static const struct scpsys_soc_data mt8167_scpsys_data = {
+ 	.domains_data = scpsys_domain_data_mt8167,
+ 	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt8167),
++	.bus_prot_blocks = scpsys_bus_prot_blocks_mt8167,
++	.num_bus_prot_blocks = ARRAY_SIZE(scpsys_bus_prot_blocks_mt8167),
  };
  
-diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.h b/drivers/pmdomain/mediatek/mtk-pm-domains.h
-index 6fe06c4a06e1..8adf23d4d0f9 100644
---- a/drivers/pmdomain/mediatek/mtk-pm-domains.h
-+++ b/drivers/pmdomain/mediatek/mtk-pm-domains.h
-@@ -16,6 +16,7 @@
- #define MTK_SCPD_SRAM_PDN_INVERTED	BIT(9)
- #define MTK_SCPD_MODEM_PWRSEQ		BIT(10)
- #define MTK_SCPD_SKIP_RESET_B		BIT(11)
-+#define MTK_SCPD_INFRA_PWR_CTL		BIT(12)
- #define MTK_SCPD_CAPS(_scpd, _x)	((_scpd)->data ?		\
- 					 (_scpd)->data->caps & (_x) :	\
- 					 (_scpd)->hwv_data->caps & (_x))
+ #endif /* __SOC_MEDIATEK_MT8167_PM_DOMAINS_H */
+diff --git a/drivers/pmdomain/mediatek/mt8173-pm-domains.h b/drivers/pmdomain/mediatek/mt8173-pm-domains.h
+index 7be0f47f5214..561a644b5d1c 100644
+--- a/drivers/pmdomain/mediatek/mt8173-pm-domains.h
++++ b/drivers/pmdomain/mediatek/mt8173-pm-domains.h
+@@ -9,6 +9,9 @@
+ /*
+  * MT8173 power domain support
+  */
++static enum scpsys_bus_prot_block scpsys_bus_prot_blocks_mt8173[] = {
++	BUS_PROT_BLOCK_INFRA
++};
+ 
+ static const struct scpsys_domain_data scpsys_domain_data_mt8173[] = {
+ 	[MT8173_POWER_DOMAIN_VDEC] = {
+@@ -118,6 +121,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8173[] = {
+ static const struct scpsys_soc_data mt8173_scpsys_data = {
+ 	.domains_data = scpsys_domain_data_mt8173,
+ 	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt8173),
++	.bus_prot_blocks = scpsys_bus_prot_blocks_mt8173,
++	.num_bus_prot_blocks = ARRAY_SIZE(scpsys_bus_prot_blocks_mt8173),
+ };
+ 
+ #endif /* __SOC_MEDIATEK_MT8173_PM_DOMAINS_H */
+diff --git a/drivers/pmdomain/mediatek/mt8183-pm-domains.h b/drivers/pmdomain/mediatek/mt8183-pm-domains.h
+index c4c1b63d85b1..3742782a2702 100644
+--- a/drivers/pmdomain/mediatek/mt8183-pm-domains.h
++++ b/drivers/pmdomain/mediatek/mt8183-pm-domains.h
+@@ -9,6 +9,9 @@
+ /*
+  * MT8183 power domain support
+  */
++static enum scpsys_bus_prot_block scpsys_bus_prot_blocks_mt8183[] = {
++	BUS_PROT_BLOCK_INFRA, BUS_PROT_BLOCK_SMI
++};
+ 
+ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+ 	[MT8183_POWER_DOMAIN_AUDIO] = {
+@@ -290,6 +293,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+ static const struct scpsys_soc_data mt8183_scpsys_data = {
+ 	.domains_data = scpsys_domain_data_mt8183,
+ 	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt8183),
++	.bus_prot_blocks = scpsys_bus_prot_blocks_mt8183,
++	.num_bus_prot_blocks = ARRAY_SIZE(scpsys_bus_prot_blocks_mt8183),
+ };
+ 
+ #endif /* __SOC_MEDIATEK_MT8183_PM_DOMAINS_H */
+diff --git a/drivers/pmdomain/mediatek/mt8186-pm-domains.h b/drivers/pmdomain/mediatek/mt8186-pm-domains.h
+index cbac715c38fa..00b9861af7c9 100644
+--- a/drivers/pmdomain/mediatek/mt8186-pm-domains.h
++++ b/drivers/pmdomain/mediatek/mt8186-pm-domains.h
+@@ -13,6 +13,9 @@
+ /*
+  * MT8186 power domain support
+  */
++static enum scpsys_bus_prot_block scpsys_bus_prot_blocks_mt8186[] = {
++	BUS_PROT_BLOCK_INFRA
++};
+ 
+ static const struct scpsys_domain_data scpsys_domain_data_mt8186[] = {
+ 	[MT8186_POWER_DOMAIN_MFG0] = {
+@@ -361,6 +364,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8186[] = {
+ static const struct scpsys_soc_data mt8186_scpsys_data = {
+ 	.domains_data = scpsys_domain_data_mt8186,
+ 	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt8186),
++	.bus_prot_blocks = scpsys_bus_prot_blocks_mt8186,
++	.num_bus_prot_blocks = ARRAY_SIZE(scpsys_bus_prot_blocks_mt8186),
+ };
+ 
+ #endif /* __SOC_MEDIATEK_MT8186_PM_DOMAINS_H */
+diff --git a/drivers/pmdomain/mediatek/mt8188-pm-domains.h b/drivers/pmdomain/mediatek/mt8188-pm-domains.h
+index 007235be9efe..3a989e83e9b7 100644
+--- a/drivers/pmdomain/mediatek/mt8188-pm-domains.h
++++ b/drivers/pmdomain/mediatek/mt8188-pm-domains.h
+@@ -14,6 +14,10 @@
+  * MT8188 power domain support
+  */
+ 
++static enum scpsys_bus_prot_block scpsys_bus_prot_blocks_mt8188[] = {
++	BUS_PROT_BLOCK_INFRA
++};
++
+ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
+ 	[MT8188_POWER_DOMAIN_MFG0] = {
+ 		.name = "mfg0",
+@@ -685,6 +689,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
+ static const struct scpsys_soc_data mt8188_scpsys_data = {
+ 	.domains_data = scpsys_domain_data_mt8188,
+ 	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt8188),
++	.bus_prot_blocks = scpsys_bus_prot_blocks_mt8188,
++	.num_bus_prot_blocks = ARRAY_SIZE(scpsys_bus_prot_blocks_mt8188),
+ };
+ 
+ #endif /* __SOC_MEDIATEK_MT8188_PM_DOMAINS_H */
+diff --git a/drivers/pmdomain/mediatek/mt8192-pm-domains.h b/drivers/pmdomain/mediatek/mt8192-pm-domains.h
+index 6f139eed3769..5d62fac5f682 100644
+--- a/drivers/pmdomain/mediatek/mt8192-pm-domains.h
++++ b/drivers/pmdomain/mediatek/mt8192-pm-domains.h
+@@ -9,6 +9,9 @@
+ /*
+  * MT8192 power domain support
+  */
++static enum scpsys_bus_prot_block scpsys_bus_prot_blocks_mt8192[] = {
++	BUS_PROT_BLOCK_INFRA
++};
+ 
+ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+ 	[MT8192_POWER_DOMAIN_AUDIO] = {
+@@ -380,6 +383,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+ static const struct scpsys_soc_data mt8192_scpsys_data = {
+ 	.domains_data = scpsys_domain_data_mt8192,
+ 	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt8192),
++	.bus_prot_blocks = scpsys_bus_prot_blocks_mt8192,
++	.num_bus_prot_blocks = ARRAY_SIZE(scpsys_bus_prot_blocks_mt8192),
+ };
+ 
+ #endif /* __SOC_MEDIATEK_MT8192_PM_DOMAINS_H */
+diff --git a/drivers/pmdomain/mediatek/mt8195-pm-domains.h b/drivers/pmdomain/mediatek/mt8195-pm-domains.h
+index 59aa031ae632..9405e8f62eaf 100644
+--- a/drivers/pmdomain/mediatek/mt8195-pm-domains.h
++++ b/drivers/pmdomain/mediatek/mt8195-pm-domains.h
+@@ -13,6 +13,9 @@
+ /*
+  * MT8195 power domain support
+  */
++static enum scpsys_bus_prot_block scpsys_bus_prot_blocks_mt8195[] = {
++	BUS_PROT_BLOCK_INFRA
++};
+ 
+ static const struct scpsys_domain_data scpsys_domain_data_mt8195[] = {
+ 	[MT8195_POWER_DOMAIN_PCIE_MAC_P0] = {
+@@ -661,6 +664,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8195[] = {
+ static const struct scpsys_soc_data mt8195_scpsys_data = {
+ 	.domains_data = scpsys_domain_data_mt8195,
+ 	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt8195),
++	.bus_prot_blocks = scpsys_bus_prot_blocks_mt8195,
++	.num_bus_prot_blocks = ARRAY_SIZE(scpsys_bus_prot_blocks_mt8195),
+ };
+ 
+ #endif /* __SOC_MEDIATEK_MT8195_PM_DOMAINS_H */
+diff --git a/drivers/pmdomain/mediatek/mt8365-pm-domains.h b/drivers/pmdomain/mediatek/mt8365-pm-domains.h
+index 6fbd5ef8d672..33265ab8ce76 100644
+--- a/drivers/pmdomain/mediatek/mt8365-pm-domains.h
++++ b/drivers/pmdomain/mediatek/mt8365-pm-domains.h
+@@ -33,6 +33,10 @@
+ 			      _sta_mask, _sta,				\
+ 			      BUS_PROT_INVERTED | BUS_PROT_REG_UPDATE)
+ 
++static enum scpsys_bus_prot_block scpsys_bus_prot_blocks_mt8365[] = {
++	BUS_PROT_BLOCK_INFRA, BUS_PROT_BLOCK_INFRA_NAO, BUS_PROT_BLOCK_SMI
++};
++
+ static const struct scpsys_domain_data scpsys_domain_data_mt8365[] = {
+ 	[MT8365_POWER_DOMAIN_MM] = {
+ 		.name = "mm",
+@@ -190,6 +194,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8365[] = {
+ static const struct scpsys_soc_data mt8365_scpsys_data = {
+ 	.domains_data = scpsys_domain_data_mt8365,
+ 	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt8365),
++	.bus_prot_blocks = scpsys_bus_prot_blocks_mt8365,
++	.num_bus_prot_blocks = ARRAY_SIZE(scpsys_bus_prot_blocks_mt8365),
+ };
+ 
+ #endif /* __SOC_MEDIATEK_MT8365_PM_DOMAINS_H */
 -- 
 2.49.0
 
