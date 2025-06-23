@@ -4,72 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E83E4C77B7F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 13:47:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B58C5C7115B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 13:49:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S4GX5rlRwhxZPfUKOpyuGC46aOP+upjXPQWyAvs3ujs=; b=zldqjzqnsBtsioMIfVCRN7I7pB
-	MOqJKqGhlqpI5mxdFdMYwxTIfMJPJ8K8AIoBU9t9qtu+CgDvRm4Paes8JcVxi4+f8b3cBAWgZNRV8
-	CWEaKtvKXbXX38Fr8gNT+h+ueDNYRNv9rNK8wlSkj4pEyl2M30o6lP+M5UATpc8N819fcuJ8crxBw
-	EUgbtx6wSNoOK2WZNYJyYv9IJxr6R0zLlPPV9sU4QpNSmCBEp1MFvpN+7rGULqA3BeytwJb8dPhUD
-	b/fBQD2VSttEEMEttGmAErbW8JldyUwKEMWOvWg7RLJ/8VAie18Q9600adrpZbRO3n/1Ad7VOgcsi
-	+TxhZ3aA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=DbcDc+IG7ceB1l/HrbT7G6y1r/C3Gz6KlGFgQb3W2cs=; b=YXXgPXhHELGrhc/nhIchSt2j+5
+	qceSdyZsE9GT7MTdxnVJBJP+eL0YUT4pmZmz48yeCSa4n3xf24hXeuwL9bHECq/P75rKzC6RNcTMu
+	J+U2a6/foHaWAowT0JmjVUO9XPDuFfC+wK1dRTKcSpQmVO0u3snAs8FqzlOEvlmonuZBzmJOKHIBq
+	4HmmXz8PB8/ia3b0pj/HBRdvwyynLKfPaPRq686VzaHZqc7yuvQIDeCwy3bvCD8MVU2Oo641TM7oU
+	0wSw5OgDW/73jVdgRsbJrhSPssOKiCceUxj4wWlw84nMWuHmx2UuvrDo9kd3GPcDC00cClzHTDc4Y
+	HNtmba/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uThWD-00000002v1v-3sqZ;
-	Mon, 23 Jun 2025 13:47:29 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uThYX-00000002vXd-16rm;
+	Mon, 23 Jun 2025 13:49:53 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTfqo-00000002aem-3jgn;
-	Mon, 23 Jun 2025 12:00:40 +0000
+	id 1uTfqu-00000002ahI-00Jp;
+	Mon, 23 Jun 2025 12:00:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1750680037;
-	bh=hwpThepsWhMf6cvFRx2LaoZ30WrXd8SgI7HAfBuuR6E=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=eMTwXSBiY0cidzZpzlKGIzGqjiEhdJwpGelh7DoIkXO5ViA7lNUJ7XCP/JrRdHNDD
-	 crWUWyDvzcfxDmmmWEb2NsEDAfgKPcnAbL1scjYf0+H2tEPnUtzeTfP21PR2KH5533
-	 qWJ/FXExYN0sRN7Mveb9J55gsbsyQHBxYf0KH9pn+0XJs7qmL2vGI68PG30Nhw3sLn
-	 9mi859CQAUzFrJ8/cBVSrqt7qAaYVl3YkYLxvfFKGPlNtVb7fbWXPwLU5VPN/1ap2k
-	 Gctm2PrUIOB/b8yJKtwZUuH4o0wx+9UYZUakIeHR6Maqtfe2mCfzwmBuhpVifrXcv6
-	 rOk5gTvRb96TQ==
+	s=mail; t=1750680042;
+	bh=L64oS5oGbehf+YNHePJC72/WhERGwszDWnrm0/Z0chc=;
+	h=From:To:Cc:Subject:Date:From;
+	b=lTm5xWynSZKYnhz7zmnQU+M7KgR1b+Bc4nXJOS5JE359ichLEZdUmDWIafdtqu8oQ
+	 qqGxgkKMBE6iDQXLZ4Y165hzRDpgaEN/n4JpF4zSN5ZBq8m3McMM6HBs32iMVms0R4
+	 9Gnyec/KgshslQ7sptRxwdm8B48Lmdhrh4pL/2yIKtQ1c4NAgEM5JNgdhUm6TaHXU8
+	 IPSZeeREuLU+g/UxtbGW8Dr4TcP6mgjpF3CcbiZ4/N+77SLTr8tGGbZlTejXTVS+ox
+	 azc1dwWgjMIHGvwatEIC01OteKliqKnxRyZWRAqUHB6lJLFSHizYr9Xm88q1hz2ED0
+	 fEjdxLgUNUGxA==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 91C0417E156E;
-	Mon, 23 Jun 2025 14:00:36 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 196ED17E090E;
+	Mon, 23 Jun 2025 14:00:42 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: jic23@kernel.org
-Cc: dlechner@baylibre.com,
-	nuno.sa@analog.com,
-	andy@kernel.org,
-	robh@kernel.org,
+To: lee@kernel.org
+Cc: robh@kernel.org,
 	krzk+dt@kernel.org,
 	conor+dt@kernel.org,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	linux-iio@vger.kernel.org,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH v1 5/5] iio: adc: mt6359: Add support for MediaTek MT6373 PMIC AUXADC
-Date: Mon, 23 Jun 2025 14:00:28 +0200
-Message-ID: <20250623120028.108809-6-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v1 0/2] mfd: Add driver for multifunction MediaTek SPMI PMICs
+Date: Mon, 23 Jun 2025 14:00:36 +0200
+Message-ID: <20250623120038.108891-1-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250623120028.108809-1-angelogioacchino.delregno@collabora.com>
-References: <20250623120028.108809-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250623_050039_107129_BDBF0B9D 
-X-CRM114-Status: GOOD (  12.32  )
+X-CRM114-CacheID: sfid-20250623_050044_187825_F627D284 
+X-CRM114-Status: UNSURE (   9.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,102 +79,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MediaTek MT6373 is a PMIC found on MT8196/MT6991 board designs
-and communicates with the SoC over SPMI.
+Some MediaTek SPMI PMICs, like MT6363 and MT6373, are multi-function
+devices, as they have and expose multiple sub-devices; moreover, some
+of those also contain an interrupt controller, managing internal IPs
+interrupts: for those, a chained interrupt handler is registered, which
+parent is the SPMI controller itself.
 
-This PMIC integrates an Auxiliary ADC (AUXADC) which has a grand
-total of 54 channels, of which usually only 9 are used as this
-is usually paired with MT6363 on the same board.
+This series adds support for the MT6363, MT6373 SPMI PMICs and their
+interrupt controller.
 
-For the Auxiliary ADC part, this reuses the same register layout
-as the MT6363 PMIC, but exposes only a subset of the ADC chans.
+AngeloGioacchino Del Regno (2):
+  dt-bindings: mfd: Add binding for MediaTek MT6363 series SPMI PMIC
+  drivers: mfd: Add support for MediaTek SPMI PMICs and MT6363/73
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/iio/adc/mt6359-auxadc.c | 49 +++++++++++++++++++++++++++++++++
- 1 file changed, 49 insertions(+)
+ .../bindings/mfd/mediatek,mt6363.yaml         |  98 +++++
+ drivers/mfd/Kconfig                           |  17 +
+ drivers/mfd/Makefile                          |   1 +
+ drivers/mfd/mtk-spmi-pmic.c                   | 410 ++++++++++++++++++
+ include/linux/mfd/mt6363.h                    |  26 ++
+ include/linux/mfd/mt6373.h                    |  21 +
+ 6 files changed, 573 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mt6363.yaml
+ create mode 100644 drivers/mfd/mtk-spmi-pmic.c
+ create mode 100644 include/linux/mfd/mt6363.h
+ create mode 100644 include/linux/mfd/mt6373.h
 
-diff --git a/drivers/iio/adc/mt6359-auxadc.c b/drivers/iio/adc/mt6359-auxadc.c
-index f49b0b6e78da..909586282c1e 100644
---- a/drivers/iio/adc/mt6359-auxadc.c
-+++ b/drivers/iio/adc/mt6359-auxadc.c
-@@ -51,6 +51,7 @@
- #define MT6363_EXT_CHAN_MASK		GENMASK(2, 0)
- #define MT6363_EXT_PURES_MASK		GENMASK(4, 3)
-  #define MT6363_PULLUP_RES_100K		0
-+ #define MT6363_PULLUP_RES_30K		1
-  #define MT6363_PULLUP_RES_OPEN		3
- 
- #define MTK_AUXADC_HAS_FLAG(pdata, msk)	((pdata)->flags & (MTK_PMIC_AUXADC_##msk))
-@@ -419,6 +420,43 @@ static const u16 mt6363_auxadc_regs[] = {
- 	[PMIC_AUXADC_IMP1]	= 0x1209,
- };
- 
-+static const struct iio_chan_spec mt6373_auxadc_channels[] = {
-+	MTK_PMIC_IIO_CHAN(MT6363, chip_temp, CHIP_TEMP, 4, 12, IIO_TEMP),
-+	MTK_PMIC_IIO_CHAN(MT6363, vcore_temp, VCORE_TEMP, 38, 12, IIO_TEMP),
-+	MTK_PMIC_IIO_CHAN(MT6363, vproc_temp, VPROC_TEMP, 39, 12, IIO_TEMP),
-+	MTK_PMIC_IIO_CHAN(MT6363, vgpu_temp, VGPU_TEMP, 40, 12, IIO_TEMP),
-+
-+	/* For VIN, ADC12 holds the result depending on which GPIO was activated */
-+	MTK_PMIC_IIO_CHAN(MT6363, in1_v, VIN1, 45, 15, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6363, in2_v, VIN2, 45, 15, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6363, in3_v, VIN3, 45, 15, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6363, in4_v, VIN4, 45, 15, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6363, in5_v, VIN5, 45, 15, IIO_VOLTAGE),
-+};
-+
-+static const struct mtk_pmic_auxadc_chan mt6373_auxadc_ch_desc[] = {
-+	MTK_PMIC_ADC_CHAN(CHIP_TEMP, PMIC_AUXADC_RQST0, 4, PMIC_AUXADC_ADC0, 15, 32, 1, 1),
-+	MTK_PMIC_ADC_CHAN(VCORE_TEMP, PMIC_AUXADC_RQST3, 0, PMIC_AUXADC_ADC0, 15, 32, 1, 1),
-+	MTK_PMIC_ADC_CHAN(VPROC_TEMP, PMIC_AUXADC_RQST3, 1, PMIC_AUXADC_ADC0, 15, 32, 1, 1),
-+	MTK_PMIC_ADC_CHAN(VGPU_TEMP, PMIC_AUXADC_RQST3, 2, PMIC_AUXADC_ADC0, 15, 32, 1, 1),
-+
-+	MTK_PMIC_ADC_EXT_CHAN(VIN1,
-+			      PMIC_AUXADC_RQST1, 4, PMIC_AUXADC_ADC0, 15,
-+			      PMIC_AUXADC_SDMADC_CON0, 1, MT6363_PULLUP_RES_30K, 32, 1, 1),
-+	MTK_PMIC_ADC_EXT_CHAN(VIN2,
-+			      PMIC_AUXADC_RQST1, 4, PMIC_AUXADC_ADC0, 15,
-+			      PMIC_AUXADC_SDMADC_CON0, 2, MT6363_PULLUP_RES_OPEN, 32, 1, 1),
-+	MTK_PMIC_ADC_EXT_CHAN(VIN3,
-+			      PMIC_AUXADC_RQST1, 4, PMIC_AUXADC_ADC0, 15,
-+			      PMIC_AUXADC_SDMADC_CON0, 3, MT6363_PULLUP_RES_OPEN, 32, 1, 1),
-+	MTK_PMIC_ADC_EXT_CHAN(VIN4,
-+			      PMIC_AUXADC_RQST1, 4, PMIC_AUXADC_ADC0, 15,
-+			      PMIC_AUXADC_SDMADC_CON0, 4, MT6363_PULLUP_RES_OPEN, 32, 1, 1),
-+	MTK_PMIC_ADC_EXT_CHAN(VIN5,
-+			      PMIC_AUXADC_RQST1, 4, PMIC_AUXADC_ADC0, 15,
-+			      PMIC_AUXADC_SDMADC_CON0, 5, MT6363_PULLUP_RES_OPEN, 32, 1, 1),
-+};
-+
- static void mt6358_stop_imp_conv(struct mt6359_auxadc *adc_dev)
- {
- 	const struct mtk_pmic_auxadc_info *cinfo = adc_dev->chip_info;
-@@ -560,6 +598,16 @@ static const struct mtk_pmic_auxadc_info mt6363_chip_info = {
- 	.vref_mv = 1840,
- };
- 
-+static const struct mtk_pmic_auxadc_info mt6373_chip_info = {
-+	.model_name = "MT6373",
-+	.channels = mt6373_auxadc_channels,
-+	.num_channels = ARRAY_SIZE(mt6373_auxadc_channels),
-+	.desc = mt6373_auxadc_ch_desc,
-+	.regs = mt6363_auxadc_regs,
-+	.flags = MTK_PMIC_AUXADC_IS_SPMI | MTK_PMIC_AUXADC_NO_RESET,
-+	.vref_mv = 1840,
-+};
-+
- static void mt6359_auxadc_reset(struct mt6359_auxadc *adc_dev)
- {
- 	const struct mtk_pmic_auxadc_info *cinfo = adc_dev->chip_info;
-@@ -796,6 +844,7 @@ static const struct of_device_id mt6359_auxadc_of_match[] = {
- 	{ .compatible = "mediatek,mt6358-auxadc", .data = &mt6358_chip_info },
- 	{ .compatible = "mediatek,mt6359-auxadc", .data = &mt6359_chip_info },
- 	{ .compatible = "mediatek,mt6363-auxadc", .data = &mt6363_chip_info },
-+	{ .compatible = "mediatek,mt6373-auxadc", .data = &mt6373_chip_info },
- 	{ }
- };
- MODULE_DEVICE_TABLE(of, mt6359_auxadc_of_match);
 -- 
 2.49.0
 
