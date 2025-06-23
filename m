@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCA56C7115B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 14:45:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A586C77B7C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 14:47:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Q/tooEH/UVxXiEu9MgF6HR3SC4IpSWLoHgm8CBeobAk=; b=R0lFL2ZCntQFtl76Xu0X6W7/oB
-	6J6mmHiXu0KeZBMQg0aSnS4e8lS+cizR4Fb+xJTbXlQu+EVuTxJ/DuIe81LArAuF0UzVDyFzLezqj
-	bkyMvz4067fEKpFWkg8vZjasvdXTGsCUOK5MeBOpFmxUDKH+CEdGqMdAtRh6JcuXVaUTFEi2l33ZK
-	xQGqdLrb7qwu7zpuaq6DOeTfsaQGBnx2sMCvLGnBWjENNuw3mJOxcI1okisyVyTwVriaj0NATAs6g
-	b+F48yaBfygnFSR0dMJqJAJtAkHW2SZ9Dsjch8ZJPz21jcwOjfqLZoy/O+H9sDBJ3E2YLXQetY2bu
-	L2HdnD5A==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ng3hN8k9p0RV0r9yi43ppO7Q4cpUfGdxdpjlyOhf/No=; b=tGp8Qiz50JIx+S2rq53dueqfnk
+	HlceAcCaV1/GsAqTdlUQY/uWXPZSdXilOA04R7y8SgEBnTgaRfrA1sDCbCiu2zSPr3Ntei1xGv8Lc
+	tHQk5q66Tx7Z8KcNhnfQIcGPGEBKGQJrz24aAh9cWNBeLdp1LxyKVI+88ZXewKy3r1sqdF83UsZwh
+	NXYOkKZVIPBiZQQ+eRFZzrcpy05qu5rjpAv462sBK4InPHPT3Pgz7YF5cIHksL4rfEkfH+dbJj3wN
+	oyKPuBgfQs0N6MCRWUb2vfETeUFa7BuAIPVQqON+5g3JTT4YM6vF8Km5JE2Mz9rcPFeOUKzPiEY4z
+	ZMCRzgfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTiPt-000000036FI-3Oxv;
-	Mon, 23 Jun 2025 14:45:01 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uTiSD-000000036hi-0ziE;
+	Mon, 23 Jun 2025 14:47:25 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTfry-00000002b7U-33fI;
-	Mon, 23 Jun 2025 12:01:51 +0000
+	id 1uTfrz-00000002b7a-2J7G;
+	Mon, 23 Jun 2025 12:01:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1750680109;
-	bh=YIGrVZxLhyBBB2bhjM5wCiH2IvtXz0uJ3k9n6G/Zu2Q=;
-	h=From:To:Cc:Subject:Date:From;
-	b=orNKuMbywOTu4Ixkiys9qdBo5vnLhEA+GFbvOTmErNFIZ2sgUJbo9A3Vh72W+geLY
-	 5DpUmXHfBkHsd8xC6KXFbaOMaI47V+Nf5T0NEGycg9WO+PFkn9nB9WWY6t7MygLsPf
-	 F6gwMZKOr8LeYG5mTAnGsnDLLsk95dyHxPBlvAD2mjQAR2Z3JDSOYa9Ht6TxLSi6ol
-	 iXc00Dspb3Lw0Epi3AFBAaD9JlppFe70Adkuzd2iO9W7IuW6Q+QhnhLxJn8qFp0nT+
-	 dBmHw4r02aQIOStDUy2ngV1smbzUt37CQoxMCrNkVXLsTfhjs6EAdIhCq858s1elMA
-	 kzPDNIx0wZnNg==
+	s=mail; t=1750680110;
+	bh=q4xguAEv20thxhkNrNlpmM17Rq+I44PLFPaJdl62SdU=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=or0ZvmSfj/H5UL8XHYNj8c1tbJRxWQgEOqYkV/7HUnP5kNFdZLzrJqsxl7ooqoror
+	 kTMdyqyjThxetQcsb3CNO8A/1q2Y6LkRHnei18u/m10no7W6o5ULXcKydpep3lkxD9
+	 xNp+1os8VOUkDQBQzssLAugosURYjGRPChCGlbKI1f3pKtSIKo9pnRgdBHosp+/CIx
+	 Q3FoUGe0q9nSxiJK3Xb/dPDvH0T+KVRAd/bGXK0oymkkLMBIch+w1vd6QsJb+jaazU
+	 NiSmDBV56mo/Eln7K6/YtMVF/LKcJpJ9ZAkI7u4bgGhmHsil6sJj2lUYBVpux3b9CB
+	 dQuAAOe2aF/Ag==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B254217E090E;
-	Mon, 23 Jun 2025 14:01:48 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9AE1417E0EC0;
+	Mon, 23 Jun 2025 14:01:49 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: lgirdwood@gmail.com
 Cc: broonie@kernel.org,
@@ -56,15 +56,17 @@ Cc: broonie@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH v1 0/4] regulator: dvfsrc: Add support for MT8196 and MT6893
-Date: Mon, 23 Jun 2025 14:01:40 +0200
-Message-ID: <20250623120144.109359-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v1 1/4] dt-bindings: regulator: mediatek-dvfsrc: Add MT6893 support
+Date: Mon, 23 Jun 2025 14:01:41 +0200
+Message-ID: <20250623120144.109359-2-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.49.0
+In-Reply-To: <20250623120144.109359-1-angelogioacchino.delregno@collabora.com>
+References: <20250623120144.109359-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250623_050150_911436_D0EBFBB0 
-X-CRM114-Status: UNSURE (   6.54  )
+X-CRM114-CacheID: sfid-20250623_050151_738756_DA866D65 
+X-CRM114-Status: UNSURE (   8.46  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,19 +82,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series adds support for the DVFSRC regulators found on the MediaTek
-MT8196 Chromebook SoC and the (unrelated) MT6893 Dimensity 1200.
+Add a compatible for the MediaTek Dimensity 1200 (MT6893) SoC's
+regulators over DVFSRC.
+This SoC uses different values for the vsel, hence it is not
+compatible with the currently supported ones.
 
-AngeloGioacchino Del Regno (4):
-  dt-bindings: regulator: mediatek-dvfsrc: Add MT6893 support
-  regulator: mtk-dvfsrc: Add support for Dimensity 1200 MT6893
-  dt-bindings: regulator: mediatek-dvfsrc: Add MT8196 support
-  regulator: mtk-dvfsrc: Add support for MediaTek MT8196 DVFSRC
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../bindings/regulator/mediatek,mt6873-dvfsrc-regulator.yaml     | 1 +
+ 1 file changed, 1 insertion(+)
 
- .../mediatek,mt6873-dvfsrc-regulator.yaml     |  2 +
- drivers/regulator/mtk-dvfsrc-regulator.c      | 38 +++++++++++++++++++
- 2 files changed, 40 insertions(+)
-
+diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6873-dvfsrc-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6873-dvfsrc-regulator.yaml
+index 704828687970..acac5c869f2c 100644
+--- a/Documentation/devicetree/bindings/regulator/mediatek,mt6873-dvfsrc-regulator.yaml
++++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6873-dvfsrc-regulator.yaml
+@@ -17,6 +17,7 @@ properties:
+   compatible:
+     enum:
+       - mediatek,mt6873-dvfsrc-regulator
++      - mediatek,mt6893-dvfsrc-regulator
+       - mediatek,mt8183-dvfsrc-regulator
+       - mediatek,mt8192-dvfsrc-regulator
+       - mediatek,mt8195-dvfsrc-regulator
 -- 
 2.49.0
 
