@@ -4,101 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6F81C7115B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 05:19:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11491C7115B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 06:32:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=En0pq+jCzMYs3olwKBVBf+cE3fdHEMn7c2+JHjmC2Bc=; b=Va1UM39DzQMl9g7WdE45lQU2PL
-	FwLGW6kTRjFPgJ8QR57WBQnE8Qnx7nmQM0DrC/LQYKOBK3wMaHVqskvZ+eVuC//k7xDZv4TYGD4CW
-	VXR1X5XODlaYxru0715Fke6R4DfkwBS+o5fZPIfT5EeMKNuyXxUEi25MeT0rCgoor0ZMP6qbHPWCs
-	OdtnewfCPs5nOgv7F7hTIc1rTf9J3Kzwsgf2bmO/taCcGIg3agN0eBKpqqYzU0AL5yU1XA0/aZeju
-	qw7wL/mFxBv/SvBCjhGpwx2ivMB/6UvZs1aGd4qoOvdT07n+f/nMYgTAgyCNqTGxA6qdtxRu7LOCW
-	t/B5t3Yg==;
+	bh=WdKe8zvjQUFTSojxLI/rQWZSTGiI6bm2KGRlBUPs3xs=; b=As6doppbHmaZFAv/Z0ObxWB5Zz
+	dal7+DAG8ClXMBCDpQP846BwjLzlCD8O2EvhFw0fBk2DYXO7CEp8zN+bHt0DdWyZdOBT26tPP7P90
+	qHLeK4IkahgEV0Ejd0fcVI+wwjlPv3mby9so9EGAQsuw7QmpjTmAzBwViWcTKWzqLzS4Js8wPfNJ+
+	lPvLgAAruy5yi5OHmviZzFgnDU3wkUTb56JTTSAMXLmZ5WJu9+DOXo8o0LYX72SsW+5bROIJ1spGh
+	/jJco3l3PBmJwDQNv1BIUxQXb+QNCRbabOOP7xQyQOLMD1WgtrSEEuG9S3XGWn4Mdi4y5mqpBVFC9
+	TVzcvASA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTZaN-00000001bKt-0MO4;
-	Mon, 23 Jun 2025 05:19:15 +0000
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
+	id 1uTajD-00000001jq3-1bks;
+	Mon, 23 Jun 2025 06:32:27 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTZY6-00000001bCu-0gBy;
-	Mon, 23 Jun 2025 05:16:55 +0000
-Received: by mail-pj1-x102a.google.com with SMTP id 98e67ed59e1d1-311e2cc157bso2886094a91.2;
-        Sun, 22 Jun 2025 22:16:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1750655813; x=1751260613; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=En0pq+jCzMYs3olwKBVBf+cE3fdHEMn7c2+JHjmC2Bc=;
-        b=kaPjan7BhjqnUI+Ini1our2Ft8mtat9jf9BIcbCt01FKxC2K9UsKLl90HTFpxfE37y
-         543P/A+aZp2XSE/XUkSnuQ13dqu2tk49uT36mb53+qoN9FTjclIBl4kVboNIJTD911Yv
-         p5xGLY+cJRrWZOTg8O21uHFFEWS5/D58q8M8dEAhlndY/ehGzT0Rcoociz//BjMj+7X4
-         MvvHO0hD9HgDhAI3atYRivu9JkxDulOjS9VEryNV+xcrpEFU2pgVjm1x+SriZC+LNrod
-         F683Qs95vstYoA+UO6Zw5M6spvNLeBi+rI+WMhKU63KhnXMWEce9EsfXizdH5QjxmbMb
-         fSQQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750655813; x=1751260613;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=En0pq+jCzMYs3olwKBVBf+cE3fdHEMn7c2+JHjmC2Bc=;
-        b=sr4/TkeZqEYIeZCfgEjdcSG33e6OEm8KXDawGtk+eDwZroQgUe2QTp3kUHfhZ95Vlx
-         /fNNcdoJTc4KVurK3b98Nj8KNZO5Sn2DCdHR+/eW19Ja0q9P1D4pkuH5MfAE/b9qyfBV
-         Rst4GKbKfr9E+/KZS74dTuN0B1OJAhkQ3p0ZriJLeU59nS23HtoDU4QFd+LpNODXq8Al
-         o4jUtSX5OA95uXmSJpmKW7YSBEBM7awEQowEWa7gdP0oA8+kRS3IdYt33bwK3N4xwt6h
-         6rSontm+CpYCS1q+rpH+b33tZGAhPPwdqiE1ezu9GoZwF2CFVnix2sxWVZVOaxbaXb2x
-         zthg==
-X-Forwarded-Encrypted: i=1; AJvYcCWjOdteGPnJ95dEi6mmTjGSMGko6J3oOxjABhRNPs1eGYzyzovOjjtFO3NfXQllWM0ywoju/RebiTa988zF7fc=@lists.infradead.org, AJvYcCXxuP9msStdwe1Mb6Yca/8QAHsdAMC+EDcsFiw7m75ZFjyNJktN61DW+/ba8XVhpC/DVGp3mHxGdN+2LvI2cexA@lists.infradead.org
-X-Gm-Message-State: AOJu0YwavriI4L8URnaUPZHoOxqnrBrsFm1XS4UKdJFohvG4bsQEghEL
-	5bm9EmN9ylDiTDwcaoHv3DA6b0+hmlvae84ufIg1OhYsq/UViivsTIYJ
-X-Gm-Gg: ASbGncsCcqEQu3SCX2zoOW03Ninylq3FdrTrj6nVn3DN5g606Ngmbs7RrRQjHo2Etp/
-	7hDtpeF8rt6aEEjZiXm/ktecqN1gpHKp4RXFi8n1haemyi8+Fquj1+qvJ4Y76VuTVp0IO9cVRMo
-	yEokgzCZZ7JPxTSj3QKypfoLAqEHYDuZla/vkuEMXy0p4j8M1ps1/ReQdB0TUo6SdZVaVFphK49
-	1JFUf5qHrjXB/hqqtkrYa82UvSQGKgHpE2Cl0671ht7iTPgb523Hjz5Fksi3Q2FrIr1qxwZzt1L
-	QwRdVIgfd/rYAZ/gRoCgAxfGmVBYNA0vR9bfeM7qpbTDx0GcRWmxi7G9DE+YVU9Rq1lV8oBN
-X-Google-Smtp-Source: AGHT+IG9TUKXoeyvlp4X4lyFMSjBOFbruQUMqCiCZF+ohvgS9TLgNer/JkiWcjcRvc8wDgqad/VFHw==
-X-Received: by 2002:a17:90b:390f:b0:311:e8cc:425d with SMTP id 98e67ed59e1d1-3159d6470dbmr17802629a91.10.1750655812825;
-        Sun, 22 Jun 2025 22:16:52 -0700 (PDT)
-Received: from Barrys-MBP.hub ([118.92.21.225])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3159e06ce4bsm7136997a91.38.2025.06.22.22.16.46
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Sun, 22 Jun 2025 22:16:52 -0700 (PDT)
-From: Barry Song <21cnbao@gmail.com>
-To: nphamcs@gmail.com
-Cc: 21cnbao@gmail.com,
-	akpm@linux-foundation.org,
-	andrew.yang@mediatek.com,
-	angelogioacchino.delregno@collabora.com,
-	casper.li@mediatek.com,
-	chinwen.chang@mediatek.com,
-	hannes@cmpxchg.org,
-	james.hsu@mediatek.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-mm@kvack.org,
-	matthias.bgg@gmail.com,
-	minchan@kernel.org,
-	qun-wei.lin@mediatek.com,
-	rppt@kernel.org,
-	senozhatsky@chromium.org,
-	sj@kernel.org
-Subject: Re: [PATCH] mm: Add Kcompressd for accelerated memory compression
-Date: Mon, 23 Jun 2025 17:16:42 +1200
-Message-Id: <20250623051642.3645-1-21cnbao@gmail.com>
-X-Mailer: git-send-email 2.39.3 (Apple Git-146)
-In-Reply-To: <CAKEwX=ObLVcbR9q7ZvR3WE2hhmxLpk1bSuvcbWZwo5o5vPCDRA@mail.gmail.com>
-References: <CAKEwX=ObLVcbR9q7ZvR3WE2hhmxLpk1bSuvcbWZwo5o5vPCDRA@mail.gmail.com>
+	id 1uTaN1-00000001grH-1Ana;
+	Mon, 23 Jun 2025 06:09:32 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 3E284A50079;
+	Mon, 23 Jun 2025 06:09:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 28E59C4CEED;
+	Mon, 23 Jun 2025 06:09:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1750658969;
+	bh=PNHYsFG5NwLTdXL4ZX15juhfF+vA0FSIDNnfrT5LYJ8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Bvccnq/HXIbUblT5RrRtuAtCGHJuyMSm1Z/UMMJtou3oboBKjzaJShWzRGacGss13
+	 mVw6eUVJUEFvn573v2h9O1Sg9EwFqebJ2E4AEYntQxQGtSXeVlu7nfGo84TRnh4yCL
+	 RhdYeT1Vd+sBT7jh7vOc7BkKT+P9nkdNEQcwqmZFqmvcU8IaOnVE939FUGlMhL/ghc
+	 FlnS72275/iEu6OAwcV49oCsgqpogcJcHctjQAqy1/sngt/aO2EqIza0XcC8FkQ6xq
+	 ocnyJWPOe7NRrbts4g7jOV7z+EpbIgs+rod7dElCbvrbKiAzmRzNw1BbBWXYsmElyI
+	 KfXU9HAlZSyLw==
+Message-ID: <ab698ba0-6c6e-4d52-bef8-a6843aaa6cbf@kernel.org>
+Date: Mon, 23 Jun 2025 08:09:21 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 01/13] dt-bindings: net: mediatek,net: update for
+ mt7988
+To: frank-w@public-files.de, Frank Wunderlich <linux@fw-web.de>
+Cc: MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ Chanwoo Choi <cw00.choi@samsung.com>, Georgi Djakov <djakov@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Jia-Wei Chang <jia-wei.chang@mediatek.com>,
+ Johnson Wang <johnson.wang@mediatek.com>, =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?=
+ <arinc.unal@arinc9.com>, Landen Chao <Landen.Chao@mediatek.com>,
+ DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
+ Daniel Golle <daniel@makrotopia.org>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Felix Fietkau <nbd@nbd.name>, linux-pm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20250620083555.6886-1-linux@fw-web.de>
+ <20250620083555.6886-2-linux@fw-web.de>
+ <jnrlk7lwob2qel453wy2igaravxt4lqgkzfl4hctybwk7qvmwm@pciwvmzkxatd>
+ <100D79A2-12A9-478D-81F7-F2E5229C4269@public-files.de>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <100D79A2-12A9-478D-81F7-F2E5229C4269@public-files.de>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250622_221654_205449_15789C90 
-X-CRM114-Status: GOOD (  30.87  )
+X-CRM114-CacheID: sfid-20250622_230931_463390_FD6D1568 
+X-CRM114-Status: GOOD (  26.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,147 +136,147 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Nhat,
+On 22/06/2025 13:44, Frank Wunderlich wrote:
+> Hi,
+> 
+> Thank you for review.
+> 
+> Am 22. Juni 2025 13:10:31 MESZ schrieb Krzysztof Kozlowski <krzk@kernel.org>:
+>> On Fri, Jun 20, 2025 at 10:35:32AM +0200, Frank Wunderlich wrote:
+>>> From: Frank Wunderlich <frank-w@public-files.de>
+>>>
+>>> Update binding for mt7988 which has 3 gmac and 2 reg items.
+>>
+>> Why?
+> 
+> I guess this is for reg? Socs toll mt7986 afair
+>  get the SRAM register by offset to the MAC
+>  register.
+> On mt7988 we started defining it directly.
 
-On Wed, Jun 18, 2025 at 2:21 AM Nhat Pham <nphamcs@gmail.com> wrote:
->
-> On Sun, Jun 15, 2025 at 8:41 PM Barry Song <21cnbao@gmail.com> wrote:
-> > >>
-> > >> That seems unnecessary. There is an existing method for asynchronous
-> > >> writeback, and pageout() is naturally fully set up to handle this.
-> > >>
-> > >> IMO the better way to do this is to make zswap_store() (and
-> > >> zram_bio_write()?) asynchronous. Make those functions queue the work
-> > >> and wake the compression daemon, and then have the daemon call
-> > >> folio_end_writeback() / bio_endio() when it's done with it.
-> >
-> > > +1.
-> >
-> >
-> > But,
-> > How could this be possible for zswap? zswap_store() is only a frontend —
-> > we still need its return value to determine whether __swap_writepage()
-> > is required. Waiting for the result of zswap_store() is inherently a
-> > synchronous step.
->
-> Hmm, I might be misunderstanding either of you, but it sounds like
-> what you're describing here does not contradict what Johannes is
-> proposing?
+This should be explained in commit msg. Why are you doing the changes...
 
-It seems contradictory: Johannes proposes that zswap could behave like zRAM
-by invoking `folio_end_writeback()` or `bio_endio()`, but this doesn’t align
-with actual behavior since zswap_store might not end `swap_writeout()`—it may
-still proceed to `__swap_writeback()` to complete the final steps.
+> 
+>>> MT7988 has 4 FE IRQs (currently only 2 are used) and the 4 IRQs for
+>>> use with RSS/LRO later.
+>>>
+>>> Add interrupt-names to make them accessible by name.
+>>>
+> ...
+>>>    reg:
+>>> -    maxItems: 1
+>>> +    items:
+>>> +      - description: Register for accessing the MACs.
+>>> +      - description: SoC internal SRAM used for DMA operations.
+>>
+>> SRAM like mmio-sram?
+> 
+> Not sure,but as far as i understand the driver
+>  the sram is used to handle tx packets directly
+>  on the soc (less dram operations).
+> 
+> As mt7988 is the first 10Gbit/s capable SoC
+>  there are some changes. But do we really need 
+>  a new binding? We also thing abour adding
+>  RSS/LRO to mt7986 too,so we come into
+>  similar situation regarding the Interrupts/  
+>  -names.
 
-Meanwhile, Qun-wei’s RFC has already explored using `folio_end_writeback()` and
-`bio_endio()` at the end of `__swap_writepage()` for zRAM, though that approach
-also has its own issues.
+If it is mmio-sram, then it is definitely not reg property.
 
->
-> >
-> > My point is that folio_end_writeback() and bio_endio() can only be
-> > called after the entire zswap_store() → __swap_writepage() sequence is
-> > completed. That’s why both are placed in the new kcompressed.
->
-> Hmm, how about:
->
-> 1. Inside zswap_store(), we first obtain the obj_cgroup reference,
-> check cgroup and pool limit, and grab a zswap pool reference (in
-> effect, determining the slot allocator and compressor).
->
-> 2. Next, we try to queue the work to kcompressd, saving the folio and
-> the zswap pool (and whatever else we need for the continuation). If
-> this fails, we can proceed with the old synchronous path.
->
-> 3. In kcompressed daemon, we perform the continuation of
-> zswap_store(): compression, slot allocation, storing, zswap's LRU
-> modification, etc. If this fails, we check if the mem_cgroup enables
-> writeback. If it's enabled, we can call __swap_writepage(). Ideally,
-> if writeback is disabled, we should activate the page, but it might
-> not be possible since shrink_folio_list() might already re-add the
-> page to the inactive lru. Maybe some modification of pageout() and
-> shrink_folio_list() can make this work, but I haven't thought too
-> deeply about it :) If it's impossible, we can perform async
-> compression only for cgroups that enable writeback for now. Once we
-> fix zswap's handling of incompressible pages, we can revisit this
-> decision (+ SJ).
->
-> TLDR: move the work-queueing step forward a bit, into the middle of
-> zswap_store().
->
-> One benefit of this is we skip pages of cgroups that disable zswap, or
-> when zswap pool is full.
+Anyway
+wrap emails
+according to list
+discussion rules.
 
-I assume you meant something like the following:
+> 
+>>> +    minItems: 1
+>>>  
+>>>    clocks:
+>>>      minItems: 2
+>>> @@ -40,7 +43,11 @@ properties:
+>>>  
+>>>    interrupts:
+>>>      minItems: 1
+>>> -    maxItems: 4
+>>> +    maxItems: 8
+>>> +
+>>> +  interrupt-names:
+>>> +    minItems: 1
+>>> +    maxItems: 8
+>>
+>> So now all variants get unspecified names? You need to define it. Or
+>> just drop.
+> 
+> Most socs using the Fe-irqs like mt7988,some
+>  specify only 3 and 2 soc (mt762[18]) have only
+>  1 shared irq. But existing dts not yet using the
+>  irq-names.
+> Thats why i leave it undefined here and
+>  defining it only for mt7988 below. But leaving it
+>  open to add irq names to other socs like filogic
+>  socs (mt798x) where we are considering
+>  adding rss/lro support too.
+> 
 
-bool try_to_sched_async_zswap_store()
-{
-	get_obj_cgroup_from_folio()
-	if (err) goto xxx;
-	zswap_check_limits();
-	if (err) goto xxx;
-	zswap_pool_current_get()
-	if (err) goto xxx;
-	   
-	queue_folio_to_kcompressd(folio);
-	return true;
+I explained this is wrong. Your binding must be specific, not flexible.
 
-xxx:
-	error handler things;
-	return false;
-}
+>>>  
+>>>    power-domains:
+>>>      maxItems: 1
+>>> @@ -348,7 +355,19 @@ allOf:
+>>>      then:
+>>>        properties:
+>>>          interrupts:
+>>> -          minItems: 4
+>>> +          minItems: 2
+>>
+>> Why? Didn't you say it has 4?
+> 
+> Sorry missed to change it after adding the 2
+>  reserved fe irqs back again (i tried adding only used irqs - rx+tx,but got info that all irqs can be used - for future functions - so added all available).
+> 
+>>> +
+>>> +        interrupt-names:
+>>> +          minItems: 2
+>>> +          items:
+>>> +            - const: fe0
+>>> +            - const: fe1
+>>> +            - const: fe2
+>>> +            - const: fe3
+>>> +            - const: pdma0
+>>> +            - const: pdma1
+>>> +            - const: pdma2
+>>> +            - const: pdma3
+>>>  
+>>>          clocks:
+>>>            minItems: 24
+>>> @@ -381,8 +400,11 @@ allOf:
+>>>              - const: xgp2
+>>>              - const: xgp3
+>>>  
+>>> +        reg:
+>>> +          minItems: 2
+>>
+>>
+>> And all else? Why they got 2 reg and 8 interrupts now? All variants are
+>> now affected/changed. We have been here: you need to write specific
+>> bindings.
+> 
+> Mt7988 is more powerful and we wanted to add
+>  all irqs available to have less problems when
+>  adding rss support later. E.g. mt7986 also have
+>  the pdma irqs,but they are not part of
+>  binding+dts yet. Thats 1 reason why
+>  introducing irq-names now. And this block is
+>  for mt7988 only...the other still have a regcount of 1 (min-items).
 
-If this function returns true, it suggests that compression requests  
-have been queued to kcompressd. Following that, in kcompressd():
+This explains me nothing. Why do you change other hardware? Why when
+doing something for MT7988 you also state that other SoCs have different
+number of interrupts?
 
-int __zswap_store(folio)
-{
-	for(i=0;i<nr_pages;i++) {
-		zswap_store_page();
-		if (err) return err;
-	}
-	return 0;
-}
 
-kcompressd()
-{
-	while(folio_queue_is_not_empty) {
-		folio = dequeue_folio();
-		if (folio_queued_by_zswap(folio)) {
-			if(!__zswap_store(folio))
-				continue;
-		}
-		if ((zswap_store_page_fails && mem_cgroup_zswap_writeback_enabled()) ||
-		    folio_queued_by_zram) {
-			__swap_writepage();
-		}
-	}
-}
 
-In kswapd, we will need to do
-int swap_writeout(struct folio *folio, struct swap_iocb **swap_plug)
-{
-	...
-	if (try_to_sched_async_zswap_store(folio))
-		return;
-	if (is_sync_comp_blkdev(swap)) {
-		queue_folio_to_kcompressd(folio);
-		return;
-	}
-	__swap_writepage();
-}
-
-To be honest, I'm not sure if there's a flag that indicates whether the  
-folio was queued by zswap or zram. If not, we may need to add a member  
-associated with folio pointers in the queue between kswapd and kcompressd,  
-since we need to identify zswap cases. Maybe we can reuse bit 0 of the  
-folio pointer?
-
-What I mean is: while queuing, if the folio is queued by zswap, we do  
-`pointer |= BIT(0)`. Then in kcompressd, we restore the original folio  
-with `folio = pointer & ~BIT(0)`. It's a bit ugly, but I’m not sure  
-there’s a better approach.
-
-Thanks
-Barry
+Best regards,
+Krzysztof
 
