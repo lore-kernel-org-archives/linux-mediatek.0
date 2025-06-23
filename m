@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 033B5C7115B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 12:30:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8845FC7115B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 12:53:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kb3X6oCbO03+O5FUqoPTMI9SC5qg51rCYtryB5UOG84=; b=HNcBjbJSiEqypPwhzEm0lu4ndR
-	fWPpP9gj6Q/cAQ39ye0ikXT7kcPlb8x53OPEx4o2exfhX0F0xbKSGBg/Bv1NcZmozz3/p4Vbhceqq
-	TMH3x1c+KeT5gmtZPosh8q10fGPIFHdI6YWsApElrBvdTANLT71WtAqBO4JbxZ6OdVLciOBEzDi9Q
-	3zyuohjKfHYewXjTtMP2C0Ni4S9pcD0DGuAGTXweknEw4nqjmrpeaDMwR4Snr3XUozwoUc6ckHcI4
-	qX/bnJjVnGEdGwKVAGuSeNvDY2WtWP3UqinVlNpPDBodjuurMpx2qgerotLqYO1RHV8k1lq1JfnpI
-	smvZT3hA==;
+	bh=0Cw4gLVTEj41qd71UbYcQXltNv/HIrv2J6jXCx+5O9E=; b=bpqtEcaSy0ZwMwbTC3KoPDCq9t
+	6Y2tHwXHLejkdbBz31BYXMRybB8Z8UcYZ7ioF+lncYA7VpzFYGdo30SH3HFmFZioV3v0PKb0iavur
+	XZIxtIwvCdBsHdrkj6lptwYQQxe2lDTJjdX5aIa8xNpyCFCcadVGFVnvMU9vEtNTV9rCsEm882PDF
+	pon5G0Y9IRoUTmMaVR19W359Jb82FGi0SwjvxdbbBx4ly2yqa9AVcT4rkRRYOEElCE6woufH37+B0
+	eO2hXesq52CXRGVls8W38vc0RnLbL4cpaXP6LQEQCbSIoDdrXd6FHwoddOW8LI9fuJPEnmEbCga80
+	55bOh6hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTgJe-00000002hH4-3rl7;
-	Mon, 23 Jun 2025 12:30:26 +0000
+	id 1uTgfl-00000002mMo-2UtM;
+	Mon, 23 Jun 2025 12:53:17 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTeSC-00000002MGm-2GEo;
-	Mon, 23 Jun 2025 10:31:09 +0000
+	id 1uTeRa-00000002M0r-18Xr;
+	Mon, 23 Jun 2025 10:30:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1750674667;
-	bh=dJ5sI20tp1diFS6ne8k9ATvo0R0aRFweq4g1hPQN7tc=;
+	s=mail; t=1750674628;
+	bh=Cby/X1WV3HopZtvi73KSTUoPTPZcfuR/lZXjxwDwr/A=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=EdwuI3RHPSaWXVGlwOKWMiXklZfBngTs/iIh/+CMyUWzLjO7WZpnWLgcFAA4VcxfP
-	 pGqrXE3EEq2sfPyp9BMMA8LQZv8KY5rqFIRl6GYnv1u4ftDIkROpmdgUJVl3JR3nIN
-	 7NCZCqor4k7gsTSLN4CdCoB7vT5Yi4SROa2wD4pqouD3KobSyJq0CC5YCcZ1ZtdBLI
-	 /k5ABruNxpzvy7euyBpvWjIEKP09qaNkhb64zveXU+hYPhZY5V6ExRD8HHrVPV1ACA
-	 ZB1Dco7EecSLEuPgl6FZfNy/M638hR4lU18u8N/D1hQIAB27iYWEsilH8GhMvxAl4w
-	 gOlsmGWsuym4g==
+	b=S+l/mtFHnyYwE1eT37KU1f5VAUd9yRClm/3UBRTYs/t4JqXIbPhEqLetEbj9wjgFu
+	 /laM/3myPav4hDdXrUTPZnrao7cySic2woomeAKuL/ZJSfatWBTD8XrKY7OXwMHuHm
+	 B5baqgw3l6mJWdFYhLYmg2xhltJ8K4jRIaiCaTHi14XeWhyB5I78suFIFMKeoITE+L
+	 SVjrq+w4VhfO/giV3IVus4vYNfBI4/fZZBA+KclD5ztt5vE511to7Pjek5gX41E03h
+	 MENQL/1g9ihMTfFQ8SaC2vD6rYZZj7QswE5UGcRz6tV7fmvPDMAZL6VJaBQFZekuQc
+	 0m5jKnsu8Jk8Q==
 Received: from laura.lan (unknown [IPv6:2001:b07:646b:e2:e046:b666:1d47:e832])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laura.nao)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EAD1417E0FDB;
-	Mon, 23 Jun 2025 12:31:05 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B9F4F17E1560;
+	Mon, 23 Jun 2025 12:30:27 +0200 (CEST)
 From: Laura Nao <laura.nao@collabora.com>
 To: mturquette@baylibre.com,
 	sboyd@kernel.org,
@@ -63,18 +63,17 @@ Cc: guangjie.song@mediatek.com,
 	netdev@vger.kernel.org,
 	kernel@collabora.com,
 	Laura Nao <laura.nao@collabora.com>
-Subject: [PATCH 30/30] clk: mediatek: mt8196: Add UFS and PEXTP0/1 reset controllers
-Date: Mon, 23 Jun 2025 12:29:40 +0200
-Message-Id: <20250623102940.214269-31-laura.nao@collabora.com>
+Subject: [PATCH 02/30] clk: mediatek: clk-pll: Add ops for PLLs using set/clr regs and FENC
+Date: Mon, 23 Jun 2025 12:29:12 +0200
+Message-Id: <20250623102940.214269-3-laura.nao@collabora.com>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250623102940.214269-1-laura.nao@collabora.com>
 References: <20250623102940.214269-1-laura.nao@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250623_033108_756132_4D13B6E7 
-X-CRM114-Status: UNSURE (   9.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250623_033030_471135_66E139BD 
+X-CRM114-Status: GOOD (  15.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,145 +88,140 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+MT8196 uses a combination of set/clr registers to control the PLL
+enable state, along with a FENC bit to check the preparation status.
+Add new set of PLL clock operations with support for set/clr enable and
+FENC status logic.
 
-Add definitions to register the reset controllers found in the
-UFS and PEXTP clock controllers.
-
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Laura Nao <laura.nao@collabora.com>
 ---
- drivers/clk/mediatek/clk-mt8196-pextp.c  | 36 ++++++++++++++++++++++++
- drivers/clk/mediatek/clk-mt8196-ufs_ao.c | 25 ++++++++++++++++
- 2 files changed, 61 insertions(+)
+ drivers/clk/mediatek/clk-pll.c | 42 +++++++++++++++++++++++++++++++++-
+ drivers/clk/mediatek/clk-pll.h |  5 ++++
+ 2 files changed, 46 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/clk/mediatek/clk-mt8196-pextp.c b/drivers/clk/mediatek/clk-mt8196-pextp.c
-index 938100e4836b..9a7623bf2b1c 100644
---- a/drivers/clk/mediatek/clk-mt8196-pextp.c
-+++ b/drivers/clk/mediatek/clk-mt8196-pextp.c
-@@ -6,6 +6,7 @@
-  *                    Laura Nao <laura.nao@collabora.com>
-  */
- #include <dt-bindings/clock/mediatek,mt8196-clock.h>
-+#include <dt-bindings/reset/mediatek,mt8196-resets.h>
- #include <linux/clk-provider.h>
- #include <linux/module.h>
- #include <linux/of_device.h>
-@@ -13,6 +14,9 @@
+diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
+index 49ca25dd5418..8f46de77f42d 100644
+--- a/drivers/clk/mediatek/clk-pll.c
++++ b/drivers/clk/mediatek/clk-pll.c
+@@ -37,6 +37,13 @@ int mtk_pll_is_prepared(struct clk_hw *hw)
+ 	return (readl(pll->en_addr) & BIT(pll->data->pll_en_bit)) != 0;
+ }
  
- #include "clk-gate.h"
- #include "clk-mtk.h"
-+#include "reset.h"
++static int mtk_pll_fenc_is_prepared(struct clk_hw *hw)
++{
++	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
 +
-+#define MT8196_PEXTP_RST0_SET_OFFSET	0x8
++	return readl(pll->fenc_addr) & pll->fenc_mask;
++}
++
+ static unsigned long __mtk_pll_recalc_rate(struct mtk_clk_pll *pll, u32 fin,
+ 		u32 pcw, int postdiv)
+ {
+@@ -274,6 +281,25 @@ void mtk_pll_unprepare(struct clk_hw *hw)
+ 	writel(r, pll->pwr_addr);
+ }
  
- static const struct mtk_gate_regs pext_cg_regs = {
- 	.set_ofs = 0x18,
-@@ -41,9 +45,25 @@ static const struct mtk_gate pext_clks[] = {
- 	GATE_PEXT(CLK_PEXT_PEXTP_VLP_AO_P0_LP, "pext_pextp_vlp_ao_p0_lp", "clk26m", 19),
++static int mtk_pll_prepare_setclr(struct clk_hw *hw)
++{
++	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
++
++	writel(BIT(pll->data->pll_en_bit), pll->en_set_addr);
++
++	/* Wait 20us after enable for the PLL to stabilize */
++	udelay(20);
++
++	return 0;
++}
++
++static void mtk_pll_unprepare_setclr(struct clk_hw *hw)
++{
++	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
++
++	writel(BIT(pll->data->pll_en_bit), pll->en_clr_addr);
++}
++
+ const struct clk_ops mtk_pll_ops = {
+ 	.is_prepared	= mtk_pll_is_prepared,
+ 	.prepare	= mtk_pll_prepare,
+@@ -283,6 +309,16 @@ const struct clk_ops mtk_pll_ops = {
+ 	.set_rate	= mtk_pll_set_rate,
  };
  
-+static u16 pext_rst_ofs[] = { MT8196_PEXTP_RST0_SET_OFFSET };
-+
-+static u16 pext_rst_idx_map[] = {
-+	[MT8196_PEXTP0_RST0_PCIE0_MAC] = 0,
-+	[MT8196_PEXTP0_RST0_PCIE0_PHY] = 1,
++const struct clk_ops mtk_pll_fenc_clr_set_ops = {
++	.is_prepared	= mtk_pll_fenc_is_prepared,
++	.prepare	= mtk_pll_prepare_setclr,
++	.unprepare	= mtk_pll_unprepare_setclr,
++	.recalc_rate	= mtk_pll_recalc_rate,
++	.round_rate	= mtk_pll_round_rate,
++	.set_rate	= mtk_pll_set_rate,
 +};
++EXPORT_SYMBOL_GPL(mtk_pll_fenc_clr_set_ops);
 +
-+static const struct mtk_clk_rst_desc pext_rst_desc = {
-+	.version = MTK_RST_SET_CLR,
-+	.rst_bank_ofs = pext_rst_ofs,
-+	.rst_bank_nr = ARRAY_SIZE(pext_rst_ofs),
-+	.rst_idx_map = pext_rst_idx_map,
-+	.rst_idx_map_nr = ARRAY_SIZE(pext_rst_idx_map),
-+};
+ struct clk_hw *mtk_clk_register_pll_ops(struct mtk_clk_pll *pll,
+ 					const struct mtk_pll_data *data,
+ 					void __iomem *base,
+@@ -315,6 +351,9 @@ struct clk_hw *mtk_clk_register_pll_ops(struct mtk_clk_pll *pll,
+ 	pll->hw.init = &init;
+ 	pll->data = data;
+ 
++	pll->fenc_addr = base + data->fenc_sta_ofs;
++	pll->fenc_mask = BIT(data->fenc_sta_bit);
 +
- static const struct mtk_clk_desc pext_mcd = {
- 	.clks = pext_clks,
- 	.num_clks = ARRAY_SIZE(pext_clks),
-+	.rst_desc = &pext_rst_desc,
+ 	init.name = data->name;
+ 	init.flags = (data->flags & PLL_AO) ? CLK_IS_CRITICAL : 0;
+ 	init.ops = pll_ops;
+@@ -337,12 +376,13 @@ struct clk_hw *mtk_clk_register_pll(const struct mtk_pll_data *data,
+ {
+ 	struct mtk_clk_pll *pll;
+ 	struct clk_hw *hw;
++	const struct clk_ops *pll_ops = data->ops ? data->ops : &mtk_pll_ops;
+ 
+ 	pll = kzalloc(sizeof(*pll), GFP_KERNEL);
+ 	if (!pll)
+ 		return ERR_PTR(-ENOMEM);
+ 
+-	hw = mtk_clk_register_pll_ops(pll, data, base, &mtk_pll_ops);
++	hw = mtk_clk_register_pll_ops(pll, data, base, pll_ops);
+ 	if (IS_ERR(hw))
+ 		kfree(pll);
+ 
+diff --git a/drivers/clk/mediatek/clk-pll.h b/drivers/clk/mediatek/clk-pll.h
+index c4d06bb11516..7fdc5267a2b5 100644
+--- a/drivers/clk/mediatek/clk-pll.h
++++ b/drivers/clk/mediatek/clk-pll.h
+@@ -29,6 +29,7 @@ struct mtk_pll_data {
+ 	u32 reg;
+ 	u32 pwr_reg;
+ 	u32 en_mask;
++	u32 fenc_sta_ofs;
+ 	u32 pd_reg;
+ 	u32 tuner_reg;
+ 	u32 tuner_en_reg;
+@@ -51,6 +52,7 @@ struct mtk_pll_data {
+ 	u32 en_clr_reg;
+ 	u8 pll_en_bit; /* Assume 0, indicates BIT(0) by default */
+ 	u8 pcw_chg_bit;
++	u8 fenc_sta_bit;
  };
  
- static const struct mtk_gate pext1_clks[] = {
-@@ -69,9 +89,25 @@ static const struct mtk_gate pext1_clks[] = {
- 	GATE_PEXT(CLK_PEXT1_PEXTP_VLP_AO_P2_LP, "pext1_pextp_vlp_ao_p2_lp", "clk26m", 27),
+ /*
+@@ -72,6 +74,8 @@ struct mtk_clk_pll {
+ 	void __iomem	*en_addr;
+ 	void __iomem	*en_set_addr;
+ 	void __iomem	*en_clr_addr;
++	void __iomem	*fenc_addr;
++	u32		fenc_mask;
+ 	const struct mtk_pll_data *data;
  };
  
-+static u16 pext1_rst_idx_map[] = {
-+	[MT8196_PEXTP1_RST0_PCIE1_MAC] = 0,
-+	[MT8196_PEXTP1_RST0_PCIE1_PHY] = 1,
-+	[MT8196_PEXTP1_RST0_PCIE2_MAC] = 8,
-+	[MT8196_PEXTP1_RST0_PCIE2_PHY] = 9,
-+};
-+
-+static const struct mtk_clk_rst_desc pext1_rst_desc = {
-+	.version = MTK_RST_SET_CLR,
-+	.rst_bank_ofs = pext_rst_ofs,
-+	.rst_bank_nr = ARRAY_SIZE(pext_rst_ofs),
-+	.rst_idx_map = pext1_rst_idx_map,
-+	.rst_idx_map_nr = ARRAY_SIZE(pext1_rst_idx_map),
-+};
-+
- static const struct mtk_clk_desc pext1_mcd = {
- 	.clks = pext1_clks,
- 	.num_clks = ARRAY_SIZE(pext1_clks),
-+	.rst_desc = &pext1_rst_desc,
- };
+@@ -82,6 +86,7 @@ void mtk_clk_unregister_plls(const struct mtk_pll_data *plls, int num_plls,
+ 			     struct clk_hw_onecell_data *clk_data);
  
- static const struct of_device_id of_match_clk_mt8196_pextp[] = {
-diff --git a/drivers/clk/mediatek/clk-mt8196-ufs_ao.c b/drivers/clk/mediatek/clk-mt8196-ufs_ao.c
-index 49f4f4af7f41..858706b3ba6f 100644
---- a/drivers/clk/mediatek/clk-mt8196-ufs_ao.c
-+++ b/drivers/clk/mediatek/clk-mt8196-ufs_ao.c
-@@ -6,6 +6,7 @@
-  *                    Laura Nao <laura.nao@collabora.com>
-  */
- #include <dt-bindings/clock/mediatek,mt8196-clock.h>
-+#include <dt-bindings/reset/mediatek,mt8196-resets.h>
- #include <linux/clk-provider.h>
- #include <linux/module.h>
- #include <linux/of_device.h>
-@@ -14,6 +15,9 @@
- #include "clk-gate.h"
- #include "clk-mtk.h"
+ extern const struct clk_ops mtk_pll_ops;
++extern const struct clk_ops mtk_pll_fenc_clr_set_ops;
  
-+#define MT8196_UFSAO_RST0_SET_OFFSET	0x48
-+#define MT8196_UFSAO_RST1_SET_OFFSET	0x148
-+
- static const struct mtk_gate_regs ufsao0_cg_regs = {
- 	.set_ofs = 0x108,
- 	.clr_ofs = 0x10c,
-@@ -59,9 +63,30 @@ static const struct mtk_gate ufsao_clks[] = {
- 	GATE_UFSAO1(CLK_UFSAO_PHY_SAP, "ufsao_phy_sap", "clk26m", 8),
- };
- 
-+static u16 ufsao_rst_ofs[] = {
-+	MT8196_UFSAO_RST0_SET_OFFSET,
-+	MT8196_UFSAO_RST1_SET_OFFSET
-+};
-+
-+static u16 ufsao_rst_idx_map[] = {
-+	[MT8196_UFSAO_RST0_UFS_MPHY] = 8,
-+	[MT8196_UFSAO_RST1_UFS_UNIPRO] = 1 * RST_NR_PER_BANK + 0,
-+	[MT8196_UFSAO_RST1_UFS_CRYPTO] = 1 * RST_NR_PER_BANK + 1,
-+	[MT8196_UFSAO_RST1_UFSHCI] = 1 * RST_NR_PER_BANK + 2,
-+};
-+
-+static const struct mtk_clk_rst_desc ufsao_rst_desc = {
-+	.version = MTK_RST_SET_CLR,
-+	.rst_bank_ofs = ufsao_rst_ofs,
-+	.rst_bank_nr = ARRAY_SIZE(ufsao_rst_ofs),
-+	.rst_idx_map = ufsao_rst_idx_map,
-+	.rst_idx_map_nr = ARRAY_SIZE(ufsao_rst_idx_map),
-+};
-+
- static const struct mtk_clk_desc ufsao_mcd = {
- 	.clks = ufsao_clks,
- 	.num_clks = ARRAY_SIZE(ufsao_clks),
-+	.rst_desc = &ufsao_rst_desc,
- };
- 
- static const struct of_device_id of_match_clk_mt8196_ufs_ao[] = {
+ static inline struct mtk_clk_pll *to_mtk_clk_pll(struct clk_hw *hw)
+ {
 -- 
 2.39.5
 
