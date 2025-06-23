@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6F94C7115B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 14:23:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CFD1C7115B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 14:25:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E3WGzJ2zaL66SOjEsX+QXPJDpsQHzP9m3zoz5Wl8nC4=; b=RCqydx0zYw0VRgRbi+7cEUPdFY
-	dLmVLiC3ysNBp/DJ/8Aba66I8fVChHGgxgnDkCJdvDnHjaytElbR3qkCp8Uem7Tz/sFuKVlsZlaK0
-	DKNcrSlLIUR3tOvkczQEea3mp8tGruNZGrRx1gEaabbftzyMQSRHJYkt7Eo5603hN0l6yav0CXqXM
-	PLHxOvz81YRQalEq3m68Yc1IDjR3WhrV4m0nSDQeQQGCAFOz+MDEuMWncoSCCDEHqMKRpErHCzMm9
-	SFm0hwa81KP8by2t2RpJL2G19RcrthQLpDPRorGwnZLRMRUKMSv9LqstL1IajmpTHOFIr4SNyL72i
-	kFWWueUg==;
+	bh=xt7OUTrywPktYOJiuZd2evNh+8FRdKWZrQtH2q8IKGQ=; b=o0hm3eJQbY3ipaBr11eHhvqw21
+	WCjEpbygwLYZSyWmSVF7uReT096z2iD2cwyB0lKEHzCECnky5zcmUKtj3x+VrktxTRE/n6D4CwG63
+	zZQ38cW5/I3LgJCr4jqB/wj9y1giWoX0OWssemxm/EKH1c1Yet/0UWABA/owMOFhTUjvIiveQa1ne
+	cjvqUKztazzv68YzFLbaQDjThxx77cadKL0o52iap75p2xQFSNMEFqRsQqafdgIy7VWb6OsnItn6S
+	EdtPkRqLhv1ggIMZBMi4Wc0JnBJ8WDnxa9r9oZ25HsNMPYF4pODKuAim+BJQDvUy+qwKITfLOdXaL
+	imleaFqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTi54-000000032E2-1oeU;
-	Mon, 23 Jun 2025 14:23:30 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uTi7N-000000032c7-24yd;
+	Mon, 23 Jun 2025 14:25:53 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTfrZ-00000002atx-0eZj;
-	Mon, 23 Jun 2025 12:01:26 +0000
+	id 1uTfra-00000002auO-08tW;
+	Mon, 23 Jun 2025 12:01:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1750680083;
-	bh=vL7vsZnHZXjhrnXm1+pOHRiqQJaLYZAMfyW8Ay4L6Ug=;
+	s=mail; t=1750680084;
+	bh=jSa1CeNENoFw2VoytQdb/vKwJWtYXw3LRI1EfB29zsk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=R+nrE6pTnZW3Qec8oxp/sYkd8N6AQksyP99/7xe66jIVWPB6+vD3CPyw5zJ+LCMWC
-	 2DpRHq+OVAJs1OdyJBDq+d1HjXTPTR8mOaFslfe3q4W8JbFdVoU1SVUhZIRV3hlAYt
-	 XnFF/Cm30MTtDQeeQpIKAEs9HmT3jr8bjy2SqLIaXCdBwSQlhaW8sT+LSBgiCtQTh6
-	 ogDiGa0qt3mP4A+urCPeVammDnVLwCHbuXxhdjcGHuai9yv+HDLSH9LVLQoWk0Th2d
-	 TUjDOFFDxn3B9iy7blvaNEEuD3GDwarTsn6qTb1Yi5Cswb32+N86J4069+GAqzTzjv
-	 He0XDdaljhutA==
+	b=Hz+rDVLFYVk9aesmFoK7AUvOnSCgSNGelPgUL8KirXBzeGKQK7/JpbImOKHbqeWYo
+	 Qq4/+fNuG46SUyxlpO8zc0obuD6adi2PIdw3kNLsEojIVs/jowOIUANu6vAvX3/16/
+	 VEH1KxQ0Z2Iq0vzIqEXCDLoVSjV+0gTCNlwbGSnhTQrY3p5YO2IUeQACD69olNEwtX
+	 Hlyib3bfzTt185zoixW9BnDXDSAOKX2C6Cp8mFrWOKgRzTMnhyZLHAWaoL00jJvVZI
+	 SmUjkSpS3kJ8Tc2PSZwKm3JQ0QmQmJTCogdeZTceX+efIdKjEKWXyRNfDWJMjU3rGB
+	 wQHn3WINjsOEA==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 374A017E10D5;
-	Mon, 23 Jun 2025 14:01:23 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 10E8717E090E;
+	Mon, 23 Jun 2025 14:01:24 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: ukleinek@kernel.org
 Cc: robh@kernel.org,
@@ -57,18 +57,17 @@ Cc: robh@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH v1 1/3] dt-bindings: pwm: mediatek,mt2712-pwm: Add support for MT6991/MT8196
-Date: Mon, 23 Jun 2025 14:01:16 +0200
-Message-ID: <20250623120118.109170-2-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v1 2/3] pwm: pwm-mediatek: Pass PWM_CK_26M_SEL from platform data
+Date: Mon, 23 Jun 2025 14:01:17 +0200
+Message-ID: <20250623120118.109170-3-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250623120118.109170-1-angelogioacchino.delregno@collabora.com>
 References: <20250623120118.109170-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250623_050125_343548_AE6EB135 
-X-CRM114-Status: UNSURE (   8.48  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250623_050126_240863_7B15EC0E 
+X-CRM114-Status: GOOD (  14.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,37 +82,138 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add compatible strings for the MediaTek Dimensity 9400 MT6991 and
-for the MT8196 Chromebook SoC, having the same PWM IP v3.0.2.
+In preparation for adding support for new SoCs, remove variable
+has_ck_26m_sel from pwm_mediatek_of_data and replace it with a
+u16 pwm_ck_26m_sel_reg, meant to hold the register offset for
+PWM_CK_26M_SEL.
+
+Also, since the reg offset is guaranteed to never be zero, the
+logic to check for "has_ck_26m_sel" is changed to check if the
+register offset in pwm_ck_26m_sel_reg is more than zero.
+
+Analogously, when writing, use the register offset from platform
+data instead of using the PWM_CK_26M_SEL definition.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml         | 5 +++++
- 1 file changed, 5 insertions(+)
+ drivers/pwm/pwm-mediatek.c | 24 +++++++++---------------
+ 1 file changed, 9 insertions(+), 15 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml b/Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml
-index d515c09e1021..fc31758a40b0 100644
---- a/Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml
-+++ b/Documentation/devicetree/bindings/pwm/mediatek,mt2712-pwm.yaml
-@@ -18,6 +18,7 @@ properties:
-       - enum:
-           - mediatek,mt2712-pwm
-           - mediatek,mt6795-pwm
-+          - mediatek,mt6991-pwm
-           - mediatek,mt7622-pwm
-           - mediatek,mt7623-pwm
-           - mediatek,mt7628-pwm
-@@ -32,6 +33,10 @@ properties:
-           - enum:
-               - mediatek,mt8195-pwm
-           - const: mediatek,mt8183-pwm
-+      - items:
-+          - enum:
-+              - mediatek,mt8196-pwm
-+          - const: mediatek,mt6991-pwm
+diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
+index 7eaab5831499..38e9e9dc91c6 100644
+--- a/drivers/pwm/pwm-mediatek.c
++++ b/drivers/pwm/pwm-mediatek.c
+@@ -36,7 +36,7 @@
+ struct pwm_mediatek_of_data {
+ 	unsigned int num_pwms;
+ 	bool pwm45_fixup;
+-	bool has_ck_26m_sel;
++	u16 pwm_ck_26m_sel_reg;
+ 	const unsigned int *reg_offset;
+ };
  
-   reg:
-     maxItems: 1
+@@ -134,8 +134,8 @@ static int pwm_mediatek_config(struct pwm_chip *chip, struct pwm_device *pwm,
+ 		return -EINVAL;
+ 
+ 	/* Make sure we use the bus clock and not the 26MHz clock */
+-	if (pc->soc->has_ck_26m_sel)
+-		writel(0, pc->regs + PWM_CK_26M_SEL);
++	if (pc->soc->pwm_ck_26m_sel_reg)
++		writel(0, pc->regs + pc->soc->pwm_ck_26m_sel_reg);
+ 
+ 	/* Using resolution in picosecond gets accuracy higher */
+ 	resolution = (u64)NSEC_PER_SEC * 1000;
+@@ -291,84 +291,78 @@ static int pwm_mediatek_probe(struct platform_device *pdev)
+ static const struct pwm_mediatek_of_data mt2712_pwm_data = {
+ 	.num_pwms = 8,
+ 	.pwm45_fixup = false,
+-	.has_ck_26m_sel = false,
+ 	.reg_offset = mtk_pwm_reg_offset_v1,
+ };
+ 
+ static const struct pwm_mediatek_of_data mt6795_pwm_data = {
+ 	.num_pwms = 7,
+ 	.pwm45_fixup = false,
+-	.has_ck_26m_sel = false,
+ 	.reg_offset = mtk_pwm_reg_offset_v1,
+ };
+ 
+ static const struct pwm_mediatek_of_data mt7622_pwm_data = {
+ 	.num_pwms = 6,
+ 	.pwm45_fixup = false,
+-	.has_ck_26m_sel = true,
++	.pwm_ck_26m_sel_reg = PWM_CK_26M_SEL,
+ 	.reg_offset = mtk_pwm_reg_offset_v1,
+ };
+ 
+ static const struct pwm_mediatek_of_data mt7623_pwm_data = {
+ 	.num_pwms = 5,
+ 	.pwm45_fixup = true,
+-	.has_ck_26m_sel = false,
+ 	.reg_offset = mtk_pwm_reg_offset_v1,
+ };
+ 
+ static const struct pwm_mediatek_of_data mt7628_pwm_data = {
+ 	.num_pwms = 4,
+ 	.pwm45_fixup = true,
+-	.has_ck_26m_sel = false,
+ 	.reg_offset = mtk_pwm_reg_offset_v1,
+ };
+ 
+ static const struct pwm_mediatek_of_data mt7629_pwm_data = {
+ 	.num_pwms = 1,
+ 	.pwm45_fixup = false,
+-	.has_ck_26m_sel = false,
+ 	.reg_offset = mtk_pwm_reg_offset_v1,
+ };
+ 
+ static const struct pwm_mediatek_of_data mt7981_pwm_data = {
+ 	.num_pwms = 3,
+ 	.pwm45_fixup = false,
+-	.has_ck_26m_sel = true,
++	.pwm_ck_26m_sel_reg = PWM_CK_26M_SEL,
+ 	.reg_offset = mtk_pwm_reg_offset_v2,
+ };
+ 
+ static const struct pwm_mediatek_of_data mt7986_pwm_data = {
+ 	.num_pwms = 2,
+ 	.pwm45_fixup = false,
+-	.has_ck_26m_sel = true,
++	.pwm_ck_26m_sel_reg = PWM_CK_26M_SEL,
+ 	.reg_offset = mtk_pwm_reg_offset_v1,
+ };
+ 
+ static const struct pwm_mediatek_of_data mt7988_pwm_data = {
+ 	.num_pwms = 8,
+ 	.pwm45_fixup = false,
+-	.has_ck_26m_sel = false,
+ 	.reg_offset = mtk_pwm_reg_offset_v2,
+ };
+ 
+ static const struct pwm_mediatek_of_data mt8183_pwm_data = {
+ 	.num_pwms = 4,
+ 	.pwm45_fixup = false,
+-	.has_ck_26m_sel = true,
++	.pwm_ck_26m_sel_reg = PWM_CK_26M_SEL,
+ 	.reg_offset = mtk_pwm_reg_offset_v1,
+ };
+ 
+ static const struct pwm_mediatek_of_data mt8365_pwm_data = {
+ 	.num_pwms = 3,
+ 	.pwm45_fixup = false,
+-	.has_ck_26m_sel = true,
++	.pwm_ck_26m_sel_reg = PWM_CK_26M_SEL,
+ 	.reg_offset = mtk_pwm_reg_offset_v1,
+ };
+ 
+ static const struct pwm_mediatek_of_data mt8516_pwm_data = {
+ 	.num_pwms = 5,
+ 	.pwm45_fixup = false,
+-	.has_ck_26m_sel = true,
++	.pwm_ck_26m_sel_reg = PWM_CK_26M_SEL,
+ 	.reg_offset = mtk_pwm_reg_offset_v1,
+ };
+ 
 -- 
 2.49.0
 
