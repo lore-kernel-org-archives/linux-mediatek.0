@@ -4,76 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C47CC7EE2A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 12:53:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2FF1C77B7F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 13:14:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YPmb20tFQE3JIOo4ai9QhJeedODPoF5GDYtSCYg4tQs=; b=hxEPBCZaAo01mAs8vRbLE/toLd
-	VmmzCuQYpSNdajggKMFb7G5+qM5dJSBgZdjrkJkDno0OQnGqDTprnvk0StooBKUYrIhl0WIfQ0zS1
-	Dh2yNfvyJ9HaY1RNaMUgq19X4c7Fzt8hLBEfZ0iXL9o+QbIogm0K9ibyoDjhlqKjaEAjVEZfPSb5K
-	XhQcMAzskCFAltcEuTC9pkqSt7kIQZaxVEFnasjmM6qSX33L1wtt1HBZnu+M9ds3VbE7wz5/c6ISi
-	jy5JcWz/dKlqc2AaMlz3YN/kZzuXFFar0UGUC/NdvlHOvIVTSYwu+G/jhUVGp1GdIddUuhlLCargc
-	HN6CyMMQ==;
+	bh=Bci8p3IZMtUnGVV/yGdgCwUbxn3sfGQwj0xpFyR4dSU=; b=1qjqU++ZcDBaswSNZWRl3rqh1G
+	I/ugvOva+l8M0uszmh1YgC5v82YlL1l4YNuL6MiR1yRk4tFci2Oqr51uZR95HiQZffaw/XM9nLeAm
+	iE3rxIioKJsGHhLmpuTu9J51ZLMqAx4mF5WI3OD2xyvjHCqUU1zeuLKDapYWmDGq0fZJJoREZqa8l
+	jm5DDW7xuI/7qH1BUnAAngFN4C/vSqq5SH49hc4C3EeVD5H2VV/7TRYquDYlaIJgKtL75YgOauGmQ
+	9Ubv0FnaCUdA8EqnKx6jZ1SDF486naUBHapRemYJ6gTzYM9WrKVjNP5FguxO7FfDhgC0QIwkC1n5S
+	X9w2bdmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTgfm-00000002mNW-15bH;
-	Mon, 23 Jun 2025 12:53:18 +0000
+	id 1uTh0d-00000002q4l-2wZp;
+	Mon, 23 Jun 2025 13:14:51 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTeRf-00000002M3D-2nW1;
-	Mon, 23 Jun 2025 10:30:36 +0000
+	id 1uTfRy-00000002WDB-31Ka;
+	Mon, 23 Jun 2025 11:35:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1750674634;
-	bh=89lBI/O3EQXrPrcZMgnt468Ulxe9REXZhCDPIpFRIBQ=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=LUgljFYsUgi3oY6gi5NG9/r31xVgs933+xUlgvtDfb8l00aDXTnsUrc5rWo/tUVLN
-	 AjefVdEmWTSoGPOeBRB9YMcrZlYehwDJEkOCe1Cho4gKOdEfqLR0KGpp1yyK1NDoDH
-	 duOmUwcJJCdM6p83GW9DZWaLsSV3jR573fzKpzgD+UGNv+E66Du4uM8cLxTt88xvLm
-	 Ow7wfP68jhBdVZXTNYnisgPlhOMdzwB/VutUDLw8ro49uRoyktFFZlvCRR/tbV5YIG
-	 f4NwxYY3fkpQuMEghpVAEhy6ZcVPatP8UfFvVzZKW82UHOVk3kJlaYZXUHkC+Lnw9/
-	 LQLz5XLRl28ew==
-Received: from laura.lan (unknown [IPv6:2001:b07:646b:e2:e046:b666:1d47:e832])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	s=mail; t=1750678497;
+	bh=T5SUbISDYE0U3ndj/fUfEJmuuEiLHNdsAPnultnjOuw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=jOvyQqig1PXeIOkhqzTJgc7CWTlzPM9KLhSl2nLshTqwFckdzO+82Np+/okVsuEaX
+	 5kkdlePa/8gq1xcYhx+xs0XRxM9TBlpYMfTmHGgC4QVU5il9u35gKo8H3+XHY2dGQH
+	 nRfSi33UNd/LdXQfyNrhinj0JYL6FlfqbrjH0qM37dOvlEjx7/HlbSXPLZQvadz3r8
+	 Pf2ZRjUCWnjjEZSLL+ML+7Qlo+OpizSOXDkNpCA2b16A3gqSogfQNiRdxmD7oHjcRh
+	 p8TwbTE1zl8jbXlb3WdhPMul2g/UpyNCqEK3rTC8bjXtzE0Xx/yTaPBJ4kjl9x1zf3
+	 kmW+TX9FPCPTQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: laura.nao)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EA02017E0FDB;
-	Mon, 23 Jun 2025 12:30:32 +0200 (CEST)
-From: Laura Nao <laura.nao@collabora.com>
-To: mturquette@baylibre.com,
-	sboyd@kernel.org,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	p.zabel@pengutronix.de,
-	richardcochran@gmail.com
-Cc: guangjie.song@mediatek.com,
-	wenst@chromium.org,
-	linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	netdev@vger.kernel.org,
-	kernel@collabora.com,
-	Laura Nao <laura.nao@collabora.com>
-Subject: [PATCH 06/30] clk: mediatek: clk-gate: Refactor mtk_clk_register_gate to use mtk_gate struct
-Date: Mon, 23 Jun 2025 12:29:16 +0200
-Message-Id: <20250623102940.214269-7-laura.nao@collabora.com>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250623102940.214269-1-laura.nao@collabora.com>
-References: <20250623102940.214269-1-laura.nao@collabora.com>
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2598217E0184;
+	Mon, 23 Jun 2025 13:34:56 +0200 (CEST)
+Message-ID: <88a04bcc-b287-432c-b309-5c76259ceda3@collabora.com>
+Date: Mon, 23 Jun 2025 13:34:55 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 00/30] Add support for MT8196 clock controllers
+To: Laura Nao <laura.nao@collabora.com>, mturquette@baylibre.com,
+ sboyd@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, p.zabel@pengutronix.de, richardcochran@gmail.com
+Cc: guangjie.song@mediatek.com, wenst@chromium.org,
+ linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+ kernel@collabora.com
+References: <20250623102940.214269-1-laura.nao@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250623102940.214269-1-laura.nao@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250623_033035_850920_60BE584E 
-X-CRM114-Status: GOOD (  10.72  )
+X-CRM114-CacheID: sfid-20250623_043458_913664_4B6C7194 
+X-CRM114-Status: GOOD (  13.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,80 +79,122 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT8196 uses a HW voter for gate enable/disable control, with
-set/clr/sta registers located in a separate regmap. Refactor
-mtk_clk_register_gate() to take a struct mtk_gate instead of individual
-parameters, avoiding the need to add three extra arguments to support
-HW voter register offsets.
+Il 23/06/25 12:29, Laura Nao ha scritto:
+> This patch series introduces support for the clock controllers on the
+> MediaTek MT8196 platform, following up on an earlier submission[1].
+> 
+> MT8196 uses a hardware voting mechanism to control some of the clock muxes
+> and gates, along with a fence register responsible for tracking PLL and mux
+> gate readiness. The series introduces support for these voting and fence
+> mechanisms, and includes drivers for all clock controllers on the platform.
+> 
 
-Signed-off-by: Laura Nao <laura.nao@collabora.com>
----
- drivers/clk/mediatek/clk-gate.c | 35 ++++++++++++---------------------
- 1 file changed, 13 insertions(+), 22 deletions(-)
+Whole series is
 
-diff --git a/drivers/clk/mediatek/clk-gate.c b/drivers/clk/mediatek/clk-gate.c
-index 67d9e741c5e7..0375ccad4be3 100644
---- a/drivers/clk/mediatek/clk-gate.c
-+++ b/drivers/clk/mediatek/clk-gate.c
-@@ -152,12 +152,9 @@ const struct clk_ops mtk_clk_gate_ops_no_setclr_inv = {
- };
- EXPORT_SYMBOL_GPL(mtk_clk_gate_ops_no_setclr_inv);
- 
--static struct clk_hw *mtk_clk_register_gate(struct device *dev, const char *name,
--					 const char *parent_name,
--					 struct regmap *regmap, int set_ofs,
--					 int clr_ofs, int sta_ofs, u8 bit,
--					 const struct clk_ops *ops,
--					 unsigned long flags)
-+static struct clk_hw *mtk_clk_register_gate(struct device *dev,
-+						const struct mtk_gate *gate,
-+						struct regmap *regmap)
- {
- 	struct mtk_clk_gate *cg;
- 	int ret;
-@@ -167,17 +164,17 @@ static struct clk_hw *mtk_clk_register_gate(struct device *dev, const char *name
- 	if (!cg)
- 		return ERR_PTR(-ENOMEM);
- 
--	init.name = name;
--	init.flags = flags | CLK_SET_RATE_PARENT;
--	init.parent_names = parent_name ? &parent_name : NULL;
--	init.num_parents = parent_name ? 1 : 0;
--	init.ops = ops;
-+	init.name = gate->name;
-+	init.flags = gate->flags | CLK_SET_RATE_PARENT;
-+	init.parent_names = gate->parent_name ? &gate->parent_name : NULL;
-+	init.num_parents = gate->parent_name ? 1 : 0;
-+	init.ops = gate->ops;
- 
- 	cg->regmap = regmap;
--	cg->set_ofs = set_ofs;
--	cg->clr_ofs = clr_ofs;
--	cg->sta_ofs = sta_ofs;
--	cg->bit = bit;
-+	cg->set_ofs = gate->regs->set_ofs;
-+	cg->clr_ofs = gate->regs->clr_ofs;
-+	cg->sta_ofs = gate->regs->sta_ofs;
-+	cg->bit = gate->shift;
- 
- 	cg->hw.init = &init;
- 
-@@ -228,13 +225,7 @@ int mtk_clk_register_gates(struct device *dev, struct device_node *node,
- 			continue;
- 		}
- 
--		hw = mtk_clk_register_gate(dev, gate->name, gate->parent_name,
--					    regmap,
--					    gate->regs->set_ofs,
--					    gate->regs->clr_ofs,
--					    gate->regs->sta_ofs,
--					    gate->shift, gate->ops,
--					    gate->flags);
-+		hw = mtk_clk_register_gate(dev, gate, regmap);
- 
- 		if (IS_ERR(hw)) {
- 			pr_err("Failed to register clk %s: %pe\n", gate->name,
--- 
-2.39.5
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+(as I reviewed this entire thing internally and before submission anyway :-D)
+
+Cheers,
+Angelo
+
+
+> [1] https://lore.kernel.org/all/20250307032942.10447-1-guangjie.song@mediatek.com/
+> 
+> AngeloGioacchino Del Regno (2):
+>    dt-bindings: reset: Add MediaTek MT8196 Reset Controller binding
+>    clk: mediatek: mt8196: Add UFS and PEXTP0/1 reset controllers
+> 
+> Laura Nao (28):
+>    clk: mediatek: clk-pll: Add set/clr regs for shared PLL enable control
+>    clk: mediatek: clk-pll: Add ops for PLLs using set/clr regs and FENC
+>    clk: mediatek: clk-mux: Add ops for mux gates with set/clr/upd and
+>      FENC
+>    clk: mediatek: clk-mtk: Introduce mtk_clk_get_hwv_regmap()
+>    clk: mediatek: clk-mux: Add ops for mux gates with HW voter and FENC
+>    clk: mediatek: clk-gate: Refactor mtk_clk_register_gate to use
+>      mtk_gate struct
+>    clk: mediatek: clk-gate: Add ops for gates with HW voter
+>    clk: mediatek: clk-mtk: Add MUX_DIV_GATE macro
+>    dt-bindings: clock: mediatek: Describe MT8196 peripheral clock
+>      controllers
+>    clk: mediatek: Add MT8196 apmixedsys clock support
+>    clk: mediatek: Add MT8196 topckgen clock support
+>    clk: mediatek: Add MT8196 topckgen2 clock support
+>    clk: mediatek: Add MT8196 vlpckgen clock support
+>    clk: mediatek: Add MT8196 peripheral clock support
+>    clk: mediatek: Add MT8196 ufssys clock support
+>    clk: mediatek: Add MT8196 pextpsys clock support
+>    clk: mediatek: Add MT8196 adsp clock support
+>    clk: mediatek: Add MT8196 I2C clock support
+>    clk: mediatek: Add MT8196 mcu clock support
+>    clk: mediatek: Add MT8196 mdpsys clock support
+>    clk: mediatek: Add MT8196 mfg clock support
+>    clk: mediatek: Add MT8196 disp0 clock support
+>    clk: mediatek: Add MT8196 disp1 clock support
+>    clk: mediatek: Add MT8196 disp-ao clock support
+>    clk: mediatek: Add MT8196 ovl0 clock support
+>    clk: mediatek: Add MT8196 ovl1 clock support
+>    clk: mediatek: Add MT8196 vdecsys clock support
+>    clk: mediatek: Add MT8196 vencsys clock support
+> 
+>   .../bindings/clock/mediatek,mt8196-clock.yaml |   79 ++
+>   .../clock/mediatek,mt8196-sys-clock.yaml      |   76 +
+>   drivers/clk/mediatek/Kconfig                  |   78 +
+>   drivers/clk/mediatek/Makefile                 |   14 +
+>   drivers/clk/mediatek/clk-gate.c               |  106 +-
+>   drivers/clk/mediatek/clk-gate.h               |    3 +
+>   drivers/clk/mediatek/clk-mt8196-adsp.c        |  193 +++
+>   drivers/clk/mediatek/clk-mt8196-apmixedsys.c  |  203 +++
+>   drivers/clk/mediatek/clk-mt8196-disp0.c       |  169 +++
+>   drivers/clk/mediatek/clk-mt8196-disp1.c       |  170 +++
+>   .../clk/mediatek/clk-mt8196-imp_iic_wrap.c    |  117 ++
+>   drivers/clk/mediatek/clk-mt8196-mcu.c         |  166 +++
+>   drivers/clk/mediatek/clk-mt8196-mdpsys.c      |  187 +++
+>   drivers/clk/mediatek/clk-mt8196-mfg.c         |  150 ++
+>   drivers/clk/mediatek/clk-mt8196-ovl0.c        |  154 ++
+>   drivers/clk/mediatek/clk-mt8196-ovl1.c        |  153 ++
+>   drivers/clk/mediatek/clk-mt8196-peri_ao.c     |  144 ++
+>   drivers/clk/mediatek/clk-mt8196-pextp.c       |  131 ++
+>   drivers/clk/mediatek/clk-mt8196-topckgen.c    | 1257 +++++++++++++++++
+>   drivers/clk/mediatek/clk-mt8196-topckgen2.c   |  662 +++++++++
+>   drivers/clk/mediatek/clk-mt8196-ufs_ao.c      |  109 ++
+>   drivers/clk/mediatek/clk-mt8196-vdec.c        |  253 ++++
+>   drivers/clk/mediatek/clk-mt8196-vdisp_ao.c    |   78 +
+>   drivers/clk/mediatek/clk-mt8196-venc.c        |  235 +++
+>   drivers/clk/mediatek/clk-mt8196-vlpckgen.c    |  769 ++++++++++
+>   drivers/clk/mediatek/clk-mtk.c                |   16 +
+>   drivers/clk/mediatek/clk-mtk.h                |   23 +
+>   drivers/clk/mediatek/clk-mux.c                |  119 +-
+>   drivers/clk/mediatek/clk-mux.h                |   76 +
+>   drivers/clk/mediatek/clk-pll.c                |   46 +-
+>   drivers/clk/mediatek/clk-pll.h                |    9 +
+>   .../dt-bindings/clock/mediatek,mt8196-clock.h |  867 ++++++++++++
+>   .../reset/mediatek,mt8196-resets.h            |   26 +
+>   33 files changed, 6814 insertions(+), 24 deletions(-)
+>   create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt8196-clock.yaml
+>   create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt8196-sys-clock.yaml
+>   create mode 100644 drivers/clk/mediatek/clk-mt8196-adsp.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt8196-apmixedsys.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt8196-disp0.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt8196-disp1.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt8196-imp_iic_wrap.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt8196-mcu.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt8196-mdpsys.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt8196-mfg.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt8196-ovl0.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt8196-ovl1.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt8196-peri_ao.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt8196-pextp.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt8196-topckgen.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt8196-topckgen2.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt8196-ufs_ao.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt8196-vdec.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt8196-vdisp_ao.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt8196-venc.c
+>   create mode 100644 drivers/clk/mediatek/clk-mt8196-vlpckgen.c
+>   create mode 100644 include/dt-bindings/clock/mediatek,mt8196-clock.h
+>   create mode 100644 include/dt-bindings/reset/mediatek,mt8196-resets.h
+> 
 
 
