@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B58C5C7115B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 13:49:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DA7AC7115B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 13:52:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=DbcDc+IG7ceB1l/HrbT7G6y1r/C3Gz6KlGFgQb3W2cs=; b=YXXgPXhHELGrhc/nhIchSt2j+5
-	qceSdyZsE9GT7MTdxnVJBJP+eL0YUT4pmZmz48yeCSa4n3xf24hXeuwL9bHECq/P75rKzC6RNcTMu
-	J+U2a6/foHaWAowT0JmjVUO9XPDuFfC+wK1dRTKcSpQmVO0u3snAs8FqzlOEvlmonuZBzmJOKHIBq
-	4HmmXz8PB8/ia3b0pj/HBRdvwyynLKfPaPRq686VzaHZqc7yuvQIDeCwy3bvCD8MVU2Oo641TM7oU
-	0wSw5OgDW/73jVdgRsbJrhSPssOKiCceUxj4wWlw84nMWuHmx2UuvrDo9kd3GPcDC00cClzHTDc4Y
-	HNtmba/Q==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bwBecsBOmSGFA7pjl9BOc8j0DYs8Wz1q3M+NxfVNGzo=; b=Ct9yi7jisfpPC/RKI3dEOYyOFb
+	y8XyJhxL/i7pgkxQmJ9UojhnWvBKrTuusvNmb1pPc0goXfKr3tBOlbYCyGeBjsXOGZkvW9HDahJqT
+	d8Jw1yyklAGuElGyEXt2gILNKaYh3Fab1iq4/HKxtephm+aPQp6GEP1ujwvQS0kTO2yqwHPmlMULq
+	nabYooOkmYTNSaD+YL4SSLsKqNw2i8tnT/1omxDekccyFWFE/Vn6Z5b3DyKIF9BbZjFcbqZOOnQr5
+	B1UZxrrHTligv9zQgIIiUfm2TvUj4zGv0o+/5DoRDVRy9s0ICf3EfGDEkk4sRCTvhQm5aJDYfHRIV
+	8bXvlYlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uThYX-00000002vXd-16rm;
-	Mon, 23 Jun 2025 13:49:53 +0000
+	id 1uThat-00000002w3A-1K1y;
+	Mon, 23 Jun 2025 13:52:19 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTfqu-00000002ahI-00Jp;
-	Mon, 23 Jun 2025 12:00:45 +0000
+	id 1uTfqu-00000002ahO-3ca0;
+	Mon, 23 Jun 2025 12:00:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1750680042;
-	bh=L64oS5oGbehf+YNHePJC72/WhERGwszDWnrm0/Z0chc=;
-	h=From:To:Cc:Subject:Date:From;
-	b=lTm5xWynSZKYnhz7zmnQU+M7KgR1b+Bc4nXJOS5JE359ichLEZdUmDWIafdtqu8oQ
-	 qqGxgkKMBE6iDQXLZ4Y165hzRDpgaEN/n4JpF4zSN5ZBq8m3McMM6HBs32iMVms0R4
-	 9Gnyec/KgshslQ7sptRxwdm8B48Lmdhrh4pL/2yIKtQ1c4NAgEM5JNgdhUm6TaHXU8
-	 IPSZeeREuLU+g/UxtbGW8Dr4TcP6mgjpF3CcbiZ4/N+77SLTr8tGGbZlTejXTVS+ox
-	 azc1dwWgjMIHGvwatEIC01OteKliqKnxRyZWRAqUHB6lJLFSHizYr9Xm88q1hz2ED0
-	 fEjdxLgUNUGxA==
+	s=mail; t=1750680043;
+	bh=2i9D/Zo0bHCIzZwFD7oHDpeE4683Ra7aYgCvchcNmYQ=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=VuJYd0GUJ9t58nxH7UOPVMBpXr/qFGoqikuKtWiTa+MMmn6HOJMvr7W7J+ZbqeVtv
+	 GZFm09BhnQnmSAnuDi9cF04YhMeENegB5j0likr0F67ctOPm/XsQ5IpM8LWKOHt/pq
+	 dTI7s6Tozlp8ldhSAEFpu84at9FU56wnAc/f9FITtt4RaA5TBz77YlS9xts3qBDRqX
+	 nnwV3Jb7H4zafw/HbJGqMU9jfs27k7pj3GGp/DRHzRkLA3UaJaly26LoyOPkHJN3XJ
+	 Hc918klkBYx6BJ9Ma424yZRdCU59Dlrvg3F0Hp0VtOoLAbuxvtEqgXL1bw3j7TCg0d
+	 m21tIXKPNO9uw==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 196ED17E090E;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DED9617E0EC0;
 	Mon, 23 Jun 2025 14:00:42 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: lee@kernel.org
@@ -55,16 +55,17 @@ Cc: robh@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH v1 0/2] mfd: Add driver for multifunction MediaTek SPMI PMICs
-Date: Mon, 23 Jun 2025 14:00:36 +0200
-Message-ID: <20250623120038.108891-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v1 1/2] dt-bindings: mfd: Add binding for MediaTek MT6363 series SPMI PMIC
+Date: Mon, 23 Jun 2025 14:00:37 +0200
+Message-ID: <20250623120038.108891-2-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.49.0
+In-Reply-To: <20250623120038.108891-1-angelogioacchino.delregno@collabora.com>
+References: <20250623120038.108891-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250623_050044_187825_F627D284 
-X-CRM114-Status: UNSURE (   9.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250623_050045_043179_EACE7826 
+X-CRM114-Status: GOOD (  13.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,31 +80,123 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some MediaTek SPMI PMICs, like MT6363 and MT6373, are multi-function
-devices, as they have and expose multiple sub-devices; moreover, some
-of those also contain an interrupt controller, managing internal IPs
-interrupts: for those, a chained interrupt handler is registered, which
-parent is the SPMI controller itself.
+Add a binding for the MediaTek MT6363/6373 (and similar) multi
+function PMICs connected over SPMI.
 
-This series adds support for the MT6363, MT6373 SPMI PMICs and their
-interrupt controller.
+These PMICs are found on board designs using newer MediaTek SoCs,
+such as the Dimensity 9400 Smartphone chip, or the Chromebook
+MT8196 chip.
 
-AngeloGioacchino Del Regno (2):
-  dt-bindings: mfd: Add binding for MediaTek MT6363 series SPMI PMIC
-  drivers: mfd: Add support for MediaTek SPMI PMICs and MT6363/73
-
- .../bindings/mfd/mediatek,mt6363.yaml         |  98 +++++
- drivers/mfd/Kconfig                           |  17 +
- drivers/mfd/Makefile                          |   1 +
- drivers/mfd/mtk-spmi-pmic.c                   | 410 ++++++++++++++++++
- include/linux/mfd/mt6363.h                    |  26 ++
- include/linux/mfd/mt6373.h                    |  21 +
- 6 files changed, 573 insertions(+)
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../bindings/mfd/mediatek,mt6363.yaml         | 98 +++++++++++++++++++
+ 1 file changed, 98 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mt6363.yaml
- create mode 100644 drivers/mfd/mtk-spmi-pmic.c
- create mode 100644 include/linux/mfd/mt6363.h
- create mode 100644 include/linux/mfd/mt6373.h
 
+diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6363.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6363.yaml
+new file mode 100644
+index 000000000000..2ce57e659d12
+--- /dev/null
++++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6363.yaml
+@@ -0,0 +1,98 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/mfd/mediatek,mt6363.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek MT6363 series SPMI PMICs multi-function device
++
++maintainers:
++  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
++
++description: |
++  Some MediaTek Power Management ICs (PMICs) found in board designs with
++  the Helio, Dimensity and/or Kompanio series of SoCs are interfaced to
++  the chip via the System Power Management Interface (SPMI) bus.
++
++  These PMICs are multi-function devices with various sub modules.
++  For example, those may include one, or more of the following:
++  - Auxiliary ADC Controller
++  - Clock Controller
++  - eFuses
++  - GPIO Controller
++  - Interrupt Controller
++  - Keys
++  - LEDs Controller
++  - Regulators
++  - RTC
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt6363
++          - mediatek,mt6373
++
++  reg:
++    maxItems: 1
++
++  '#address-cells':
++    const: 0
++
++  '#size-cells':
++    const: 0
++
++  interrupts:
++    maxItems: 1
++
++  interrupt-controller: true
++
++  "#interrupt-cells":
++    const: 3
++
++  adc:
++    type: object
++    $ref: /schemas/iio/adc/mediatek,mt6359-auxadc.yaml#
++    unevaluatedProperties: false
++
++  regulators:
++    type: object
++    oneOf:
++      - $ref: /schemas/regulator/mediatek,mt6363-regulator.yaml#
++      - $ref: /schemas/regulator/mediatek,mt6373-regulator.yaml#
++    additionalProperties: true
++
++  keys:
++    type: object
++    $ref: /schemas/input/mediatek,pmic-keys.yaml
++    unevaluatedProperties: false
++
++required:
++  - compatible
++  - reg
++  - '#address-cells'
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/irq.h>
++    #include <dt-bindings/spmi/spmi.h>
++
++    spmi {
++      #address-cells = <2>;
++      #size-cells = <0>;
++
++      pmic@4 {
++        compatible = "mediatek,mt6363";
++        reg = <0x4 SPMI_USID>;
++        interrupts = <4 64 IRQ_TYPE_LEVEL_HIGH>;
++        interrupt-controller;
++        #address-cells = <0>;
++        #interrupt-cells = <3>;
++
++        regulators {
++            compatible = "mediatek,mt6363-regulator";
++        };
++      };
++    };
 -- 
 2.49.0
 
