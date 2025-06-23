@@ -4,62 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D23EC7115B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 17:48:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6561BC7115B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 18:02:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9h5W4CZb41J9mEMMU6ZZk+XRq4XRRTtTn42DnFEFGEQ=; b=xfP4c40g0/DTxjyTpr8VSld4u+
-	57ANBIpVNcNHFcYBhHWn7OtrYeaMaw4gTRevMvrbgYwKzTEsFK94YpriRlSiyMMJwFnA9S+OxuRV1
-	tySBE9tPNlc2WqlrJXxoJvf5/vj8v0BSV7rVi/PBCCojw37Ey4YuVkVryk1PqV5TbiF3Ww2yn2yst
-	C6BdK89W5TyqoaBUsb62svXXM4GP1M8HDpDL0u7fJcNfKvbhDEnBfMQyQTlqHHSskwBgnzMshFyAY
-	DrV9CR1fSjNQZgJwFL2gtn6xIMuRrD5yx6vcryzZtTzM1MRANlqnErKmCkzjxs7CU4V+5H33IRX48
-	qBbSBHaQ==;
+	bh=z7V0n2nV5tNUuCcI8fD5M/BeiXn4ecQeMTpcNlY3ll0=; b=VBeLnY2OsOMyFTLyiK0ZU3Ghhz
+	/P+P8YmP01FyarOrGYzPFQtkijEuRRg9skdLZBbUwKCuatbBNvqnSwBg827J9pO5P/dfwHlO6sI3l
+	EJ26IU8hokgOByIlHDFzKFj8KAtqXuqBOkmPjOFjFgSpOV3LZZM1q38zFSvTxFORITgYmp/02QR2J
+	ImKDw7WBHSf6IoNiRu+c5gZGSBKDiAbVhYwVF6TNiXqdOH+mxI9q+wwCU6RTeHOzD37A98xlLJmBM
+	acD8YRl7+dxqwGGolVeAZY5JLUJmmB5ZEJKQI9sWEi0W3YHUJRh1kzLjCkStio1tGQfuAgmdoCwn8
+	u+Drq6vA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTlHD-00000003bZA-3yEq;
-	Mon, 23 Jun 2025 17:48:15 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1uTlV1-00000003dNl-2IlL;
+	Mon, 23 Jun 2025 18:02:31 +0000
+Received: from mgamail.intel.com ([198.175.65.18])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTi3m-000000031xi-0XZm;
-	Mon, 23 Jun 2025 14:22:11 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 0B7A85C5DB6;
-	Mon, 23 Jun 2025 14:19:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 13C01C4CEEA;
-	Mon, 23 Jun 2025 14:22:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750688529;
-	bh=M8/FB18nORJdfDyegU9zi8E3Z4snaCgnu0tkxZFO1MA=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=imQ0wxZSqqpK9O+CKmtdYgA7zX444k0D+P/xGxcsMHNi0t5HHoQFbzfyUpLJ/INPy
-	 Ae7mEAFxSUkYY7TIccBy1jdNxc84YLUSe4DaTp+gaUiPdx2P8814uacmsuv8OXzfwF
-	 tX+tl7fkVGFELnjSKSrOh7LC5AGSgp+wVq5PyPGMrK8gK4PKyJZOsIXodHOBt4fWg0
-	 1J4/qtxL7YIIBzj1bN012w/fC7s/DgLpgAcAphyKoWD04o255JAy+4aBYhKup2yAyV
-	 ewmgZgb8vmG+e0QFViZ7udLfHuXHqYZGp2Ln5vwN+3tYLOfmWmuhjHtKMEuITO3GBL
-	 LRbEDXQEX4lFA==
-Date: Mon, 23 Jun 2025 09:22:08 -0500
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: lee@kernel.org, linux-kernel@vger.kernel.org, conor+dt@kernel.org, 
- linux-arm-kernel@lists.infradead.org, krzk+dt@kernel.org, 
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, 
- kernel@collabora.com, devicetree@vger.kernel.org
+	id 1uTiBn-000000033Vn-3dr6;
+	Mon, 23 Jun 2025 14:30:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1750689028; x=1782225028;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=48eVt2PPcxAS9n4RtU7GsK0fPkHm0p1WawWnWIodk7o=;
+  b=EzWgIbUZZfQjLil/cuAboJPFsnYu00B4C/va0yT9i+IiTCcsrc1E96u3
+   da5Mwl7xOJaXwyICx3x4G3IJ1WRSRIRpGUPU2HfTU5zBj1WWaSvZKb8D3
+   v7F8iFJ/ASklf1sbtnObMV4DMX8AOBRUftLOIZ/DOLBpXTmyhhUmBIjO/
+   vMczHqIAUw6GmyuE97uMnAzm69Offt4Vf5P6ZUAvIQAmbOqJBjNBbxV+0
+   6JMJtNafAA8Up4LrPKjmSyBjMJ6IcQwr0iUubvDvbK+TELLGlsSn8OZTH
+   fpQ9QwRQsORxqxigECMiy2MP7ICPthKKGCKVsbW622ivXDIAGGlbRn8Xh
+   w==;
+X-CSE-ConnectionGUID: 3aY12pbOSc2WBKsLo/jLEQ==
+X-CSE-MsgGUID: fq9PSDPvSQqLA8wPS9gonA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11473"; a="53031899"
+X-IronPort-AV: E=Sophos;i="6.16,258,1744095600"; 
+   d="scan'208";a="53031899"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Jun 2025 07:30:26 -0700
+X-CSE-ConnectionGUID: H7JwwNNASkipLkEQE+BTyw==
+X-CSE-MsgGUID: xVHtY9bDRp25jG8Rf2mRPQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,258,1744095600"; 
+   d="scan'208";a="155914307"
+Received: from smile.fi.intel.com ([10.237.72.52])
+  by fmviesa005.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Jun 2025 07:30:22 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.98.2)
+	(envelope-from <andriy.shevchenko@intel.com>)
+	id 1uTiBf-00000009CQ9-0zoy;
+	Mon, 23 Jun 2025 17:30:19 +0300
+Date: Mon, 23 Jun 2025 17:30:18 +0300
+From: Andy Shevchenko <andriy.shevchenko@intel.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20250623120038.108891-2-angelogioacchino.delregno@collabora.com>
-References: <20250623120038.108891-1-angelogioacchino.delregno@collabora.com>
- <20250623120038.108891-2-angelogioacchino.delregno@collabora.com>
-Message-Id: <175068852802.3230004.1923972457454728043.robh@kernel.org>
-Subject: Re: [PATCH v1 1/2] dt-bindings: mfd: Add binding for MediaTek
- MT6363 series SPMI PMIC
+Cc: jic23@kernel.org, dlechner@baylibre.com, nuno.sa@analog.com,
+	andy@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
+	conor+dt@kernel.org, matthias.bgg@gmail.com,
+	linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v1 4/5] iio: adc: mt6359: Add support for MediaTek MT6363
+ PMIC AUXADC
+Message-ID: <aFlk-l5LhgO8dnXK@smile.fi.intel.com>
+References: <20250623120028.108809-1-angelogioacchino.delregno@collabora.com>
+ <20250623120028.108809-5-angelogioacchino.delregno@collabora.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250623120028.108809-5-angelogioacchino.delregno@collabora.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250623_072210_247873_FD735085 
-X-CRM114-Status: GOOD (  11.87  )
+X-CRM114-CacheID: sfid-20250623_073027_953621_CFDA7122 
+X-CRM114-Status: GOOD (  18.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,53 +94,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Mon, 23 Jun 2025 14:00:37 +0200, AngeloGioacchino Del Regno wrote:
-> Add a binding for the MediaTek MT6363/6373 (and similar) multi
-> function PMICs connected over SPMI.
+On Mon, Jun 23, 2025 at 02:00:27PM +0200, AngeloGioacchino Del Regno wrote:
+> MediaTek MT6363 is a PMIC found on MT8196/MT6991 board designs
+> and communicates with the SoC over SPMI.
 > 
-> These PMICs are found on board designs using newer MediaTek SoCs,
-> such as the Dimensity 9400 Smartphone chip, or the Chromebook
-> MT8196 chip.
+> This PMIC integrates an Auxiliary ADC (AUXADC) which has a grand
+> total of 54 ADC channels: 49 PMIC-internal channels, 2 external
+> NTC thermistor channels and 2 generic ADC channels (mapped to 7
+> PMIC ADC external inputs).
 > 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  .../bindings/mfd/mediatek,mt6363.yaml         | 98 +++++++++++++++++++
->  1 file changed, 98 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mt6363.yaml
+> To use a generic ADC channel it is necessary to enable one of
+> the PMIC ADC inputs at a time and only then start the reading,
+> so in this case it is possible to read only one external input
+> for each generic ADC channel.
 > 
+> Due to the lack of documentation, this implementation supports
+> using only one generic ADC channel, hence supports reading only
+> one external input at a time.
 
-My bot found errors running 'make dt_binding_check' on your patch:
+> +#define MT6363_EXT_CHAN_MASK		GENMASK(2, 0)
+> +#define MT6363_EXT_PURES_MASK		GENMASK(4, 3)
+> + #define MT6363_PULLUP_RES_100K		0
+> + #define MT6363_PULLUP_RES_OPEN		3
 
-yamllint warnings/errors:
+I would rather expect the two spaces after #define. This most likely will break
+syntax highlighting in (some of) the editors.
 
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/mfd/mediatek,mt6363.yaml:
-	Error in referenced schema matching $id: http://devicetree.org/schemas/regulator/mediatek,mt6363-regulator.yaml
-	Tried these paths (check schema $id if path is wrong):
-	/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/regulator/mediatek,mt6363-regulator.yaml
-	/usr/local/lib/python3.11/dist-packages/dtschema/schemas/regulator/mediatek,mt6363-regulator.yaml
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/mfd/mediatek,mt6363.example.dtb: pmic@4 (mediatek,mt6363): regulators: 'oneOf' conditional failed, one must be fixed:
-	{'compatible': ['mediatek,mt6363-regulator']} should not be valid under {'description': "Can't find referenced schema: http://devicetree.org/schemas/regulator/mediatek,mt6363-regulator.yaml#"}
-	{'compatible': ['mediatek,mt6363-regulator']} should not be valid under {'description': "Can't find referenced schema: http://devicetree.org/schemas/regulator/mediatek,mt6373-regulator.yaml#"}
-	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6363.yaml#
-Documentation/devicetree/bindings/mfd/mediatek,mt6363.example.dtb: /example-0/spmi/pmic@4/regulators: failed to match any schema with compatible: ['mediatek,mt6363-regulator']
+...
 
-doc reference errors (make refcheckdocs):
+> +#define MTK_PMIC_ADC_EXT_CHAN(_ch_idx, _req_idx, _req_bit, _rdy_idx, _rdy_bit,	\
+> +			      _ext_sel_idx, _ext_sel_ch, _ext_sel_pu,		\
+> +			      _samples, _rnum, _rdiv)				\
 
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250623120038.108891-2-angelogioacchino.delregno@collabora.com
+Wondering, and it's out of scope here, if we can go to use a macro for
+initialization of struct *_fract.
 
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
+>  	[PMIC_AUXADC_CHAN_##_ch_idx] = {					\
+>  		.req_idx = _req_idx,						\
+>  		.req_mask = BIT(_req_bit),					\
+>  		.rdy_idx = _rdy_idx,						\
+>  		.rdy_mask = BIT(_rdy_bit),					\
+> +		.ext_sel_idx = _ext_sel_idx,					\
+> +		.ext_sel_ch = _ext_sel_ch,					\
+> +		.ext_sel_pu = _ext_sel_pu,					\
+>  		.num_samples = _samples,					\
+>  		.r_ratio = { _rnum, _rdiv }					\
+>  	}
 
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
+Perhaps something in math.h as
 
-pip3 install dtschema --upgrade
+#define INIT_STRUCT_FRACT_UXX(n, d) ...
 
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
+...
+
+> +	if (MTK_AUXADC_HAS_FLAG(cinfo, IS_SPMI)) {
+> +		/* If the previous read succeeded, this can't fail */
+> +		regmap_read(regmap, reg - 1, &lval);
+
+No error check? lval may contain garbage here, right?
+
+> +		val = (val << 8) | lval;
+
+Is it guaranteed that lval is always less than 256 (if unsigned)?
+
+> +	}
+
+...
+
+> +		regmap_update_bits(regmap, cinfo->regs[desc->ext_sel_idx],
+> +				   MT6363_EXT_PURES_MASK, ext_sel);
+
+No  error check?
+
+> +	}
+
+-- 
+With Best Regards,
+Andy Shevchenko
+
 
 
