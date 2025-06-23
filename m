@@ -4,111 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A2B6C77B7C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 18:42:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3534C7115B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 22:05:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:References:In-Reply-To:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=45lmqAUYpUykmyRNsOjFpkel3OPLmML527QXdh0o9zU=; b=CX09y7wLfOj5tvMMJWoc2o3fKy
-	1PLis21RabGeLZ2pd6acRS5oMCBtWgONw32+islHC20xjOX2hPSnJPdAFPAh6ryOimwBWWnqbZ5le
-	uw1cgrc+0jq7RFa0zy821n79uCGZW3HgznNdXjsvT/tiqzA7hF0MCe3kPethUOQeb4OvyPh++gg2Q
-	7w85KA/YlcBj/wynSM0mw6D5/ZVeo6JgLpm3yKCQumqNR/Ni6j82KcXU9Gz20iDvUHzCzjmVbDMXC
-	eu5vzv/KXRwz1h7x0oPhZwJbuoNQEQjLNS36jXAkRvWseKVJqe10ejSu2TEXZUrZ5rTudV1JlTnNN
-	sAZVWOTw==;
+	bh=XRx2ygGON68DaC/gtiwKh8VTYLOnLvGNtc5thNaQgcw=; b=31SCNoYj3JztZJYmPIwhPFseQc
+	MeZcSKqXyy31LS9YuAFAYq3+fRHKcIlRIR/wmybOFQFB0gW9SIrADHqIGUbHCKtuIOFJp/7WkK9QS
+	L0QlieTDf1I4mAn95Y/k9SoUri9i0SWCtrp/q+1iojzs6QISs6YKh6HWTlCiekV1lzIQiN4Gq90Sn
+	6vwr00l3PXeq3DTr4kTjq3LkstwqNzvcTcOB1hXBlaOl1deQ6uKHzKcXIFOIP6RW+NOGsZW245y4L
+	3keajQKWuYmF+ZXwq+VypdKoMFcp5y0hGsGcbOjSNBeiZpFqG6lmqg97owf3nSmDdFKEpHnqVkyzx
+	kBOaqKxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTm87-00000003j87-0FUH;
-	Mon, 23 Jun 2025 18:42:55 +0000
-Received: from relay9-d.mail.gandi.net ([217.70.183.199])
+	id 1uTpI4-000000044UU-3gUn;
+	Mon, 23 Jun 2025 22:05:24 +0000
+Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTis0-00000003BPb-3unj;
-	Mon, 23 Jun 2025 15:14:06 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id EC94944288;
-	Mon, 23 Jun 2025 15:13:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1750691640;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=45lmqAUYpUykmyRNsOjFpkel3OPLmML527QXdh0o9zU=;
-	b=Dk4DRySeiEHJkC5ucZz7LZZ5UhTo8qfaM+NNpNfIAmI8eb71jZ1iyZigWxGJIVUh/eddQP
-	8Xl1XY+V1ya18+kaQTE+VfNrEVges9y6YeLXaGu/C3rRQVwdpYLIzr+sV2HHzE/5UmgjzB
-	/+xepzhCWX1cw6Sjteg1eK+SyfTf1nG848+wARLHC34oEtB0GGeHyHyWCzEjD96U8cz4ZV
-	Q9lHqj9ZKe3ogELbhBMi//RQzmrzPpFKAf5qiAiUT/AZUHomVPjE09J5Bf3w9srIdSfWcY
-	Yt4Oua24qVH3rU576TSTUWjL+lZ5mN7oW47CVCJAgdJIvxqw3/Z3LAIlRF5uqQ==
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-To: Pan Chuang <panchuang@vivo.com>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>,  Daniel Lezcano
- <daniel.lezcano@linaro.org>,  Zhang Rui <rui.zhang@intel.com>,  Lukasz
- Luba <lukasz.luba@arm.com>,  Markus Mayer <mmayer@broadcom.com>,  Broadcom
- internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-  Florian Fainelli <florian.fainelli@broadcom.com>,  Shawn Guo
- <shawnguo@kernel.org>,  Sascha Hauer <s.hauer@pengutronix.de>,
-  Pengutronix Kernel Team <kernel@pengutronix.de>,  Fabio Estevam
- <festevam@gmail.com>,  zhanghongchen <zhanghongchen@loongson.cn>,  Yinbo
- Zhu <zhuyinbo@loongson.cn>,  Amit Kucheria <amitk@kernel.org>,  Thara
- Gopinath <thara.gopinath@gmail.com>,  Niklas =?utf-8?Q?S=C3=B6derlund?=
- <niklas.soderlund@ragnatech.se>,  Geert Uytterhoeven
- <geert+renesas@glider.be>,  Magnus Damm <magnus.damm@gmail.com>,  Heiko
- Stuebner <heiko@sntech.de>,  Bartlomiej Zolnierkiewicz
- <bzolnier@gmail.com>,  Krzysztof Kozlowski <krzk@kernel.org>,  Alim Akhtar
- <alim.akhtar@samsung.com>,  Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-  Alexandre Torgue <alexandre.torgue@foss.st.com>,  Vasily Khoruzhick
- <anarsoul@gmail.com>,  Yangtao Li <tiny.windzz@gmail.com>,  Chen-Yu Tsai
- <wens@csie.org>,  Jernej Skrabec <jernej.skrabec@gmail.com>,  Samuel
- Holland <samuel@sholland.org>,  Thierry Reding <thierry.reding@gmail.com>,
-  Jonathan Hunter <jonathanh@nvidia.com>,  Kunihiko Hayashi
- <hayashi.kunihiko@socionext.com>,  Masami Hiramatsu <mhiramat@kernel.org>,
-  Thomas Gleixner <tglx@linutronix.de>,  Matthias Brugger
- <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>,  Srinivas Pandruvada
- <srinivas.pandruvada@linux.intel.com>,  Greg KH
- <gregkh@linuxfoundation.org>,  Peter Zijlstra <peterz@infradead.org>,
-  =?utf-8?Q?N=C3=ADcolas?= F. R. A. Prado <nfraprado@collabora.com>,  Conor
- Dooley
- <conor.dooley@microchip.com>,  Julien Panis <jpanis@baylibre.com>,  Arnd
- Bergmann <arnd@arndb.de>,  Uwe =?utf-8?Q?Kleine-K=C3=B6nig?=
- <u.kleine-koenig@baylibre.com>,  Colin Ian King <colin.i.king@gmail.com>,
-  Raphael Gallais-Pou <rgallaispou@gmail.com>,  Patrice Chotard
- <patrice.chotard@foss.st.com>,  Jonathan Cameron
- <Jonathan.Cameron@huawei.com>,  "Jiri Slaby (SUSE)"
- <jirislaby@kernel.org>,  Sebastian Andrzej Siewior
- <bigeasy@linutronix.de>,  Andrew Morton <akpm@linux-foundation.org>,
-  Costa Shulyupin <costa.shul@redhat.com>,  Yury Norov
- <yury.norov@gmail.com>,  Cheng-Yang Chou <yphbchou0911@gmail.com>,  Caleb
- Sander Mateos <csander@purestorage.com>,  linux-pm@vger.kernel.org,
-  linux-kernel@vger.kernel.org,  linux-arm-kernel@lists.infradead.org,
-  imx@lists.linux.dev,  linux-arm-msm@vger.kernel.org,
-  linux-renesas-soc@vger.kernel.org,  linux-rockchip@lists.infradead.org,
-  linux-samsung-soc@vger.kernel.org,
-  linux-stm32@st-md-mailman.stormreply.com,  linux-sunxi@lists.linux.dev,
-  linux-tegra@vger.kernel.org,  linux-mediatek@lists.infradead.org,
-  Yangtao Li <frank.li@vivo.com>,  Uwe =?utf-8?Q?Kleine-K=C3=B6nig?=
- <u.kleine-koenig@pengutronix.de>
-Subject: Re: [PATCH v6 01/24] genirq/devres: Add
- devm_request_threaded_irq_probe() and devm_request_irq_probe()
-In-Reply-To: <20250623123054.472216-2-panchuang@vivo.com> (Pan Chuang's
-	message of "Mon, 23 Jun 2025 20:30:34 +0800")
-References: <20250623123054.472216-1-panchuang@vivo.com>
-	<20250623123054.472216-2-panchuang@vivo.com>
-User-Agent: mu4e 1.12.7; emacs 30.1
-Date: Mon, 23 Jun 2025 17:13:54 +0200
-Message-ID: <87a55ywkwd.fsf@bootlin.com>
+	id 1uTkzz-00000003Z5n-22bX;
+	Mon, 23 Jun 2025 17:30:28 +0000
+Received: by mail-lj1-x22c.google.com with SMTP id 38308e7fff4ca-32b3b250621so41641221fa.2;
+        Mon, 23 Jun 2025 10:30:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1750699825; x=1751304625; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=XRx2ygGON68DaC/gtiwKh8VTYLOnLvGNtc5thNaQgcw=;
+        b=mQFIsLHlAh+qbmuv4aP7WBLYR9Pdh3YbC0yOMSRVHcpUT/OvksX26nKSSNAP8f2J7p
+         A7mrAApQ9uX6F7xcVB+ZqAtQVBN0MsmSaBQ0cAvWaaSZkOalUbcfx8Mt4Jpf4Of1gA7t
+         T1O0bG0iz64NdcUjaHPRsQz1BssQoQ7m0SnX3KgApx2r1UGeGzOwEJrAiXHTCV5GKY7R
+         hElFZXSXqQnA/MwwsiNyjYOxZwjlrPKbQMzQ+leyyQOLGorpfxy2w5EvvJp2V5vsgbrd
+         1NsgjjmEZ5TJMLza7oLqGerZQmpq6rJrfXtGnOyAPsPQXxPxNbbn5zv3XJ5m3cX3gVP4
+         cO2g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1750699825; x=1751304625;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=XRx2ygGON68DaC/gtiwKh8VTYLOnLvGNtc5thNaQgcw=;
+        b=TfYNnw2De18YpX4zXwsW6mGxT8Ks8AKFg8gL8Iu0pAA0Qwpv3aUFh0aAFARSPWWu4+
+         pYKc2iVO+4+KpmB4xog0k1+SxQAi3LrJzPKRTh0jcaBKYQi9azsCar4N8x8OiVHy6rvd
+         pT65O2wtHJX/xp+PAWzVvQsS0K4fcdu6iOX0d6fp/fcy2oYQYSqqtVIcqSNsR1WzR998
+         +NwVoxXevkWlzGMvZUy0CH937yT6ie8fBwJ8PDJOvq3ZFa0uxELeI5mIt2RsmAB5N9iA
+         eMeSDjIRyMtx9fgaQg6AAaxPpMpd8D6TiGV4ji5lE6ydPNCv8lKnFEu21ER3TTfuOdwB
+         439g==
+X-Forwarded-Encrypted: i=1; AJvYcCUxeJdbAAchf23fbO7HY7wweUk3i6nkjtaJYdSWU9q9bZc2sTZRzbNH+96t2d3uHuLQI4nUhbypK2Q5ugyboQs=@lists.infradead.org, AJvYcCXA/u2n0yJM0n2JzE/TNwF/lHPDDW6631VqfJWG5AIWiCAzFzy6ewaEtUYSjmiO2D+SLNsYE0b7t4GTHLteZGxT@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz/JN03dMr42FVHHVqwUacgsOskXPIcrs3MwXmJ2LMwslrO1TfT
+	5kSfZl8kJ4S/wojCJA0zG65Dpxc61+WhO1rFMEmaZ/f2AAN+Mh5NXJQxf294t3+xID9UKS5yqjU
+	R739GdlyQagvnvkgMX5lj5cUgeI77XxQ=
+X-Gm-Gg: ASbGnctPt1+y4AhEraDW8Z9Vjg0G+FlHKm1lXFN4xD5brzoLEtj6nITI4YUDce5GQ9x
+	CIf+t3rC9Qz3SqZXo4SAwLb8HLn2tF4gWuvSd2RryNyqujpMc1xqYMqTSII5AvluGOYMy4bi9Ue
+	/4/RX1ZAu3kK38HFTGHZPTCsOWZvQCqx3ijV/q30gh5A==
+X-Google-Smtp-Source: AGHT+IHyqF/zUWPtp+0ZEzV6kVohh/dVuHVOrwyoaqqRb8CbyietJFOO8QAtGYViBm0uTfYLshN81twTdhq7CL9TmZ8=
+X-Received: by 2002:a2e:bc05:0:b0:32c:a006:2a1d with SMTP id
+ 38308e7fff4ca-32ca0062f65mr19202371fa.4.1750699824943; Mon, 23 Jun 2025
+ 10:30:24 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+References: <20250623102359.2684-1-ot_zhangchao.zhang@mediatek.com>
+ <20250623102359.2684-2-ot_zhangchao.zhang@mediatek.com> <3df0b3f2-0d73-4116-8bbf-37020892e773@kernel.org>
+In-Reply-To: <3df0b3f2-0d73-4116-8bbf-37020892e773@kernel.org>
+From: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
+Date: Mon, 23 Jun 2025 13:30:12 -0400
+X-Gm-Features: AX0GCFsnpLQwwKtnijqZGlv0tstZiyS3XM4yXHsIdV3Lgvijxwc-1eNX5GxkkhQ
+Message-ID: <CABBYNZJ8qJTjyzfZBBCbYCon1zinRbxOmUvvPbheqUNSTh13_Q@mail.gmail.com>
+Subject: Re: [PATCH v4 1/1] Bluetooth: mediatek: add gpio pin to reset bt
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>, Marcel Holtmann <marcel@holtmann.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Deren Wu <deren.Wu@mediatek.com>, 
+	Chris Lu <chris.lu@mediatek.com>, Hao Qin <Hao.qin@mediatek.com>, 
+	linux-bluetooth <linux-bluetooth@vger.kernel.org>, 
+	linux-kernel <linux-kernel@vger.kernel.org>, 
+	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+	linux-mediatek <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-GND-State: clean
-X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtddvgddujeefhecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfitefpfffkpdcuggftfghnshhusghstghrihgsvgenuceurghilhhouhhtmecufedtudenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvvefujghffgffkfggtgfgsehtqhertddtreejnecuhfhrohhmpefoihhquhgvlhcutfgrhihnrghluceomhhiqhhuvghlrdhrrgihnhgrlhessghoohhtlhhinhdrtghomheqnecuggftrfgrthhtvghrnhepffeghfejtdefieeguddukedujeektdeihfelleeuieeuveehkedvleduheeivdefnecukfhppeeltddrkeelrdduieefrdduvdejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepledtrdekledrudeifedruddvjedphhgvlhhopehlohgtrghlhhhoshhtpdhmrghilhhfrhhomhepmhhiqhhuvghlrdhrrgihnhgrlhessghoohhtlhhinhdrtghomhdpnhgspghrtghpthhtohepjedtpdhrtghpthhtohepphgrnhgthhhurghnghesvhhivhhordgtohhmpdhrtghpthhtoheprhgrfhgrvghlsehkvghrnhgvlhdrohhrghdprhgtphhtthhopegurghnihgvlhdrlhgviigtrghnoheslhhinhgrrhhordhorhhgpdhrtghpthhtoheprhhuihdriihhrghnghesihhnthgvlhdrtghomhdprhgtphhtthhopehluhhkrghsiidrlhhusggrsegrrhhmrdgtohhmpdhrtghpthhtohepmhhmrgihv
- ghrsegsrhhorggutghomhdrtghomhdprhgtphhtthhopegstghmqdhkvghrnhgvlhdqfhgvvggusggrtghkqdhlihhsthessghrohgruggtohhmrdgtohhmpdhrtghpthhtohepfhhlohhrihgrnhdrfhgrihhnvghllhhisegsrhhorggutghomhdrtghomh
-X-GND-Sasl: miquel.raynal@bootlin.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250623_081405_268350_0EA41A34 
-X-CRM114-Status: GOOD (  15.32  )
+X-CRM114-CacheID: sfid-20250623_103027_552499_6BCB20C7 
+X-CRM114-Status: GOOD (  24.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,33 +101,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Pan,
+Hi,
 
-On 23/06/2025 at 20:30:34 +08, Pan Chuang <panchuang@vivo.com> wrote:
-
-> From: Yangtao Li <frank.li@vivo.com>
+On Mon, Jun 23, 2025 at 7:55=E2=80=AFAM Krzysztof Kozlowski <krzk@kernel.or=
+g> wrote:
 >
-> There are more than 700 calls to devm_request_threaded_irq method and
-> more than 1000 calls to devm_request_irq method. Most drivers only
-> request one interrupt resource, and these error messages are basically
-> the same. If error messages are printed everywhere, more than 2000 lines
-> of code can be saved by removing the msg in the driver.
+> On 23/06/2025 12:23, Zhangchao Zhang wrote:
+> > Makes the platform Bluetooth to be reset by hardware pin,
+> > it provides two methods to do it for mediatek controller,
+> > and it has been tested locally many times and can reset normally.
+> >
+> > When an exception occurs, resetting Bluetooth by hardware pin
+> > is more stable than resetting Bluetooth by software.
+> > If the corresponding pin is not found in dts,
+> > bluetooth can also be reset successfully.
+> >
+> > Co-developed: Hao Qin <hao.qin@mediatek.com>
+> > Co-developed: Chris Lu <chris.lu@mediatek.com>
+> > Co-developed: Jiande Lu <jiande.lu@mediatek.com>
+> > Signed-off-by: Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>
+> > ---
+> >  drivers/bluetooth/btmtk.c | 69 +++++++++++++++++++++++++++++++++++++++
+> >  drivers/bluetooth/btmtk.h |  5 +++
+> >  2 files changed, 74 insertions(+)
+> >
+> > diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+> > index 4390fd571dbd..3e5f3ca6f0d5 100644
+> > --- a/drivers/bluetooth/btmtk.c
+> > +++ b/drivers/bluetooth/btmtk.c
+> > @@ -6,6 +6,8 @@
+> >  #include <linux/firmware.h>
+> >  #include <linux/usb.h>
+> >  #include <linux/iopoll.h>
+> > +#include <linux/of.h>
+> > +#include <linux/of_gpio.h>
+> >  #include <linux/unaligned.h>
+> >
+> >  #include <net/bluetooth/bluetooth.h>
+> > @@ -109,6 +111,65 @@ static void btmtk_coredump_notify(struct hci_dev *=
+hdev, int state)
+> >       }
+> >  }
+> >
+> > +static void btmtk_reset_by_gpio_work(struct work_struct *work)
+> > +{
+> > +     struct btmtk_reset_gpio *reset_gpio_data =3D
+> > +                     container_of(work, struct btmtk_reset_gpio, reset=
+_work.work);
+> > +
+> > +     gpio_direction_output(reset_gpio_data->gpio_number, 1);
+> > +     kfree(reset_gpio_data);
+> > +}
+> > +
+> > +static int btmtk_reset_by_gpio(struct hci_dev *hdev)
+> > +{
+> > +     struct btmtk_data *data =3D hci_get_priv(hdev);
+> > +     struct btmtk_reset_gpio *reset_gpio_data;
+> > +     struct device_node *node;
+> > +     int reset_gpio_number;
+> > +
+> > +     node =3D of_find_compatible_node(NULL, NULL, "mediatek,usb-blueto=
+oth");
+>
+>
+> Can you finally respond to the comments you got weeks ago at v1?
+>
+> NAK and I will keep NAKing your patches because total disregard to
+> review is not going to make this patch accepted.
 
-[...]
+Can someone at mediatek respond to Krzysztof, he is the maintainer of
+device tree, so he has the authority to NAK patches so you guys better
+start addressing his requests.
 
-> So add devm_request_threaded_irq_probe() and devm_request_irq_probe(),
-> which ensure that all error handling branches print error information.
-> In this way, when this function fails, the upper-layer functions can
-> directly return an error code without missing debugging information.
-> Otherwise, the error message will be printed redundantly or missing.
-
-While I understand the goal and adhere to it, may I challenge the use of
-a yet another intermediate function that 99% of the users will anyway
-use? Wouldn't it be more straightforward to just add the error message
-in the existing functions directly? If we really want an alternative, it
-may be created and called in the few places where a dev_err_probe()
-might not be relevant.
-
-Thanks,
-Miqu=C3=A8l
+--=20
+Luiz Augusto von Dentz
 
