@@ -4,71 +4,223 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D5CEC7115B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 15:55:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06B1EC77B7C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 15:55:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ADz6F7CrU2KqMVcYLuKYCByXywfkZmHQX21wBOfuK50=; b=web03Z6tOVkSC7XXFxUpc+wOra
-	L2Ut+1W+Y09AUtz51jntJ2DHESTO7s4z3rd+M06U0SmSH626HaFzRKxGzk0Ai7huA1WpWcoZCijen
-	JE1Uy7QdSvWRK1hhCi++7pBIeEW0zJF53lH6n7bUrZ8aPvHXbvQdXuc/e7R6RTTDwqcsCed6Zd5w6
-	n98pYqNJ6lW0UVrj6y8CvEqYJNcIHOBhPDhcHk6Yz2EY+6f5J5MAYui9Mv/qWVCeDvmtXaszqWCZg
-	ydxGoGP+a72Zfo+QbuE74q9hJKgvlLZSTTQg5r/p8KVKTnjaDObuoT5gIJ+X8KGt4LU89orZ1qgh2
-	Lg/PmZFQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=DDBV6B31uO1pa022sfof1l2E+pfWOIJ2LDwkRo+GA18=; b=xnkESAGLA1ab2r9O9CmG8NG4nX
+	lMNh99SG/Xu/wv0R1ufZtYnDVI+xcmtSQWjmUrzmsuJB0aye+dtJlDOUClt81V7mOnkl4FLOw/XlO
+	23rvPcb3zLlOAconjYBzDL+SUgkdHGv9naqtBUbeaVgm5cCMdLkgKnVfivF8T0CfAuw8qKnytuNqi
+	7cA/QSOYAfUZLcUhNou3Liqp5o1/VbIlk9+XMWpanb7Jllxx8ts098usjw5pgJsMJrZNSfcXsW1An
+	NnVY3qw0LZYUAwMWWjIK+ecCdHKFKXv/7GBpJy+1Q+WTf+aLRS2KjH5MftgBOlER215BXg9iwJzyW
+	ar9YZ+Zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTjW2-00000003K4f-0vbV;
-	Mon, 23 Jun 2025 15:55:26 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uTjW2-00000003K4t-3g3q;
+	Mon, 23 Jun 2025 15:55:27 +0000
+Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTgHR-00000002glg-0cET;
-	Mon, 23 Jun 2025 12:28:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1750681687;
-	bh=L3lwm4Q79M0itc0l84wAC7ShG2c5tjBD0AKvgW2+PHg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=A1PlZFFGfM1WxjDwRSi2gG2bnXsvodBiTa3IQX1Iaqlw1rzqHEZu4rjeDYU7YymrS
-	 TCWH9rVwp06kgswjOGnb6hXnZoKxsBD3wwoRVboOoKyYG9BRPbGmeImTCUHH/rsYwI
-	 0nfJV9ok/6U9iROToQz4yqnQys6R9wgSe9qii2e4SiRvlX/JS6NPa8W345gEgv4q+m
-	 vwxFXZJWXf14HR0LFYOmY5BQnht6y1p5dKbKvSH+ey94HnIFGcVWrRO9bp2Sd0qway
-	 NQqHJP+VZ6+ezTOPKrU94Y+6QHfpovYna7+oXgpTfuiGcBrcofvC1Xmr7UmAbWf1Ol
-	 MHpyJe1JyCnJg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id BBA1417E05BD;
-	Mon, 23 Jun 2025 14:28:06 +0200 (CEST)
-Message-ID: <b21b9865-7344-45ab-8f03-09cbd8b961b5@collabora.com>
-Date: Mon, 23 Jun 2025 14:28:06 +0200
+	id 1uTgKx-00000002hYd-1NyY;
+	Mon, 23 Jun 2025 12:31:48 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=ClYzKlUakW87iLc80/AqnywHo4cJKw8X7VFuq7BkqOcDgeBgAa3LBNWJmjEtPo0QiFXT8S74nGl/lFHKemwk4SQ8qAkoDCimPlMzMrI55Ba0nSjFHZ27d3XYDbzs4MRQEzUR4oMKZks6Ry2KGAhUrlkZ+jmqLaGjBWjUQAzIiVRQoK9qz48Ur10gzdEI3tlj5qZ1EtZ8wq4T0p2RjqjiQAHoaVA824wNf4AXfl2PsOYiiDCU/i7pj/YwaM5aXkytpRqEiCQlQG1b6aJ0Yf9iuhcjgLfON5PWIoFODuyHwLj8Qoekh55VDIWE0wojoWwGLhA99JMm2E3T5RSFomDkhQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=DDBV6B31uO1pa022sfof1l2E+pfWOIJ2LDwkRo+GA18=;
+ b=cHxM2Y/ZE4R7JnJuJgiIvCuFBxhgQ1pvAOG5dArAaIiVH28D85KBWEK4wHW/5q7/ZFTrG8sgnpmZMLWwPTCG3iJugZnyhfJagtbm9hupjsNl5TSt+HQceT1NjrUDzFhjzff/kAVU0S4bRPdlvjOMYFo88nMbJQKWiBpIhj0LxvBUUoiVxbUWA9ULejFBk0+6Qa06BI77hW1wvNKY91z1ZIDFINNO98k83UnVq4Hjhz+epPuiBTvNpMhPesZr/jw+qq5cIlxXWyV73KmNrJekSdf3tHhBqAHK0TfdsK1Bid1Uvw0q9KQex/1Q1GqWZm1W5rSAApJ7AfPHiF2FCIUKbQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
+ dkim=pass header.d=vivo.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=DDBV6B31uO1pa022sfof1l2E+pfWOIJ2LDwkRo+GA18=;
+ b=GrlxxR9pZmTnxf2exnJEJmlVYGHCP5ebIefH8BArKRCP5d9qpYFPdT+bMs5iauTiDr4kMpbAO2K5F3OGbxR4tbaNpiU4NV5v9rTS6yCggwx2UtLxljqgg4xZALp6wVq+SSju/Yt8O0GZ1HQ7+ayB3/hf06Y83sJ71+Ay4+leodbIqBpIuPWXBdzQGCmoNB76H9BZk3BKQAGvIiDqGiFAhfWQKLu7Ck3/0u4mSW1LT8b5uIEn5IJe0+KqZqp/grZJPYqLb7L2T5X8jXyEeqdrWozs575VbeO7LwasJusIzc2JRmIiZZdmdEv2UjvxHwtHv6JLcQ8mBnuWowbRH7iTSA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=vivo.com;
+Received: from OS8PR06MB7663.apcprd06.prod.outlook.com (2603:1096:604:2ac::8)
+ by TY0PR06MB5185.apcprd06.prod.outlook.com (2603:1096:400:21f::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8857.26; Mon, 23 Jun
+ 2025 12:31:35 +0000
+Received: from OS8PR06MB7663.apcprd06.prod.outlook.com
+ ([fe80::46a5:9b06:416e:1e49]) by OS8PR06MB7663.apcprd06.prod.outlook.com
+ ([fe80::46a5:9b06:416e:1e49%3]) with mapi id 15.20.8857.026; Mon, 23 Jun 2025
+ 12:31:35 +0000
+From: Pan Chuang <panchuang@vivo.com>
+To: "Rafael J. Wysocki" <rafael@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@linaro.org>,
+	Zhang Rui <rui.zhang@intel.com>,
+	Lukasz Luba <lukasz.luba@arm.com>,
+	Miquel Raynal <miquel.raynal@bootlin.com>,
+	Markus Mayer <mmayer@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	zhanghongchen <zhanghongchen@loongson.cn>,
+	Yinbo Zhu <zhuyinbo@loongson.cn>,
+	Amit Kucheria <amitk@kernel.org>,
+	Thara Gopinath <thara.gopinath@gmail.com>,
+	=?UTF-8?q?Niklas=20S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Bartlomiej Zolnierkiewicz <bzolnier@gmail.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Vasily Khoruzhick <anarsoul@gmail.com>,
+	Yangtao Li <tiny.windzz@gmail.com>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>,
+	Peter Zijlstra <peterz@infradead.org>,
+	Greg KH <gregkh@linuxfoundation.org>,
+	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
+	Julien Panis <jpanis@baylibre.com>,
+	Arnd Bergmann <arnd@arndb.de>,
+	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
+	Raphael Gallais-Pou <rgallaispou@gmail.com>,
+	Patrice Chotard <patrice.chotard@foss.st.com>,
+	"Jiri Slaby (SUSE)" <jirislaby@kernel.org>,
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+	"Paul E. McKenney" <paulmck@kernel.org>,
+	Cheng-Yang Chou <yphbchou0911@gmail.com>,
+	Costa Shulyupin <costa.shul@redhat.com>,
+	Caleb Sander Mateos <csander@purestorage.com>,
+	Yury Norov <yury.norov@gmail.com>,
+	linux-pm@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	imx@lists.linux.dev,
+	linux-arm-msm@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Cc: Pan Chuang <panchuang@vivo.com>
+Subject: [PATCH v6 00/24] Convert to use devm_request*_irq_probe()
+Date: Mon, 23 Jun 2025 20:30:33 +0800
+Message-Id: <20250623123054.472216-1-panchuang@vivo.com>
+X-Mailer: git-send-email 2.34.1
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: SI2PR02CA0051.apcprd02.prod.outlook.com
+ (2603:1096:4:196::10) To OS8PR06MB7663.apcprd06.prod.outlook.com
+ (2603:1096:604:2ac::8)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 09/30] dt-bindings: clock: mediatek: Describe MT8196
- peripheral clock controllers
-To: Krzysztof Kozlowski <krzk@kernel.org>, Laura Nao
- <laura.nao@collabora.com>, mturquette@baylibre.com, sboyd@kernel.org,
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, p.zabel@pengutronix.de, richardcochran@gmail.com
-Cc: guangjie.song@mediatek.com, wenst@chromium.org,
- linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
- kernel@collabora.com
-References: <20250623102940.214269-1-laura.nao@collabora.com>
- <20250623102940.214269-10-laura.nao@collabora.com>
- <ef64816f-0ba2-4a12-bef8-aa10e44793e1@kernel.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <ef64816f-0ba2-4a12-bef8-aa10e44793e1@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: OS8PR06MB7663:EE_|TY0PR06MB5185:EE_
+X-MS-Office365-Filtering-Correlation-Id: f1c08ef5-d1e0-41dc-26e1-08ddb251e3f7
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|52116014|7416014|376014|366016|1800799024|921020|38350700014;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?TFphQUQxbjVrWHhDelVvK1RaZGFjNnU5bE5jREo2SDhzV0oraUgrSjBEanor?=
+ =?utf-8?B?cThWR1YyMGxZNTdkUmtWRGREVVFXM0JYbVliQ2hvMk9PYzdYRXdPZzhoQzli?=
+ =?utf-8?B?VkNzS09XcTJBN3B0V0JmS2VVTEZmQTdSOGFxVnlGMWo3bkEzYTNYWlZKdUtm?=
+ =?utf-8?B?R0pnNjFjN0o5cUJ5WDBVQkJydlU5QVRvZEJMam1lQVVVVW16NzRvVEZ4Uko3?=
+ =?utf-8?B?OWNUSS9RS01JVzJ5ejAxaytyYk5uelFscG5ZejFtTVBqL3hHWXlpbk5QNlRE?=
+ =?utf-8?B?Y2R4Z1VaLzhUeEtRZFBYanc0YzRVWWRPelpRMkRlYlltT3BQUldmL1QxUHBO?=
+ =?utf-8?B?K0UyS29TWE5reXJGbTVnQUZYY3N4M2tmYWVvRHdTaGdLVlVFbzdMSWxIUmRq?=
+ =?utf-8?B?TnY1VzEwNVVhU0svV3RGZUxLeC8zWnFKRE9RU2w4Yjh3Q3RBTnQ1bENTMGIw?=
+ =?utf-8?B?aGxaVzR3Q0JDZVdNTG9jYnFpWHQ5azZZSm05OFoyM0p1ek1NdE95RzlhckhU?=
+ =?utf-8?B?cW5nYWdQaysxZHY0V210NVltOVpTSld0NUdIRWFSbi9sMHRINTV4WENQTWZH?=
+ =?utf-8?B?V2syaVpubC8xSGtTOVVWb2kwR1dNWk9iaGFwY0lmTmlEMnJoNE15QTc3Vmh5?=
+ =?utf-8?B?bm53RXJNZkkxb3BvZDRYUDZ3dXVBRDB6dVNqVmV0eUlQbmtCcEVMOXpKdVky?=
+ =?utf-8?B?WjUrNFBScFlhVUt6WEEvbGRxYWlmZGU2YjlQamlpcGNHeEdHdzdBdlVQMGRj?=
+ =?utf-8?B?VXl0STM4KzVVMHNONXZNc0VNcGpKaGZvWkZHQXN0cy9VMmcwVjZuM0tPQ0Iv?=
+ =?utf-8?B?a1laOWJhV2JzWFFEMm9HajVxdmZXWWpreUFaSisrRlZJdTVERWpSeVpKbEJM?=
+ =?utf-8?B?SkQ3Z0x0WmxMYUI1V2RRaUdkVGZPL01Zd2ZJVExIWHBIazVRUmpNOWhoNXVo?=
+ =?utf-8?B?YkRRckxvSEwyeU9hbnFyVTlxQ0ZrelJtQjVza0VHUlBUWWk3bU55NktIM0J5?=
+ =?utf-8?B?VGdMaHYzWHQwQUVrMW1hYTdBSmpUYTBIckdNNGRHN3laeXJlQlBIeGREMWxh?=
+ =?utf-8?B?b0V4dklsV1lRcW1XUlBPTmhrUGorWGwzbWJXU05pTHBsa01FNGgxK1IwMzZh?=
+ =?utf-8?B?N09DVTR4Q3l4YUU2Mjh5QXEwcDNsWTFlc1VudmVwbEN3WUNQemNLVUpGa09p?=
+ =?utf-8?B?Zk54YjdHcDNiZGtKb3I4UjZXRStSTzJEMnBwdFZoWDNocTgzQWtCRWdiMEVH?=
+ =?utf-8?B?dmtVSndLRW1CY0hmV0tKL1EyNDI2cExFeDhDRUJkMFhUNkU1WDBYcmlkbFpa?=
+ =?utf-8?B?MWRqeUwwUEhrM2haTlBDS2JtRFF2MmxyaVEzWmNoazlHNlhhTkJweVdrQjVs?=
+ =?utf-8?B?L0VwdElFLzJlSjZ1bUtmb1A4ZGd0aHdpZFdSOG52dVBkZXEvZXBqMjRvSVRX?=
+ =?utf-8?B?R094ZGliNkEwRmVKSXNiZXlmeE9PcDdkMVZZdlpwWFNDaUhOMlMxRCt5a1Vv?=
+ =?utf-8?B?c2ZSMkdMQmJzK3NITUVCd1huVWh1UFg4RnJrTjFmbmFvT1I2UGltY21RZ3kx?=
+ =?utf-8?B?UFlWazJ0dnNINmdSV2U3d29hOW1yUWNPK0s1QXM2UXJsbUk4NVZNUkllMHND?=
+ =?utf-8?B?WnlWbTdEVVhwOExmcWtMNWlkNTNuMHh4LzJ1TnZVVHljaWpMNG5IaUNxdk5u?=
+ =?utf-8?B?SFgrVHVLUEh5MGUwcmNucVlTcGF5aGoremc5b3J3YnFoUm01L1Z1bEJmUHZI?=
+ =?utf-8?B?L0F5ZmJVQ1BLUmZOYkgvUUpDSnhtWWpvcVk4bVFGYy9oSWJHOEtNVUJKWGoz?=
+ =?utf-8?B?eVRQSzRTNE9qdVdVNFBlbkZUWlhMZTlDSjA5Q282ZEhxWms5c3JqdXBlSDhk?=
+ =?utf-8?B?ODVyQVBUeG0vcjY2TmdHVTRWSVFkdk1DUmIvZXBFNDhwRVA0NWYxV2hFNS9k?=
+ =?utf-8?B?ZmpPZHlFWXYzSzVrSk5taTJMcGU5ejAvaTUyVFRreFlhNzVBcSt3NTNwMjZG?=
+ =?utf-8?Q?2g6nbIXDHkuDJdVqhd0d6aiIc4xEPs=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:OS8PR06MB7663.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(52116014)(7416014)(376014)(366016)(1800799024)(921020)(38350700014);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?aFRGK1ZnV0FLazN0Y09mQVV0RUdUUzFFSzhHV3hwc0hZUEpjQ2RKOExXeWNF?=
+ =?utf-8?B?U0YwMUlOc2V5R3J0eU9tNHp2Y3pzUGpIUU1EUFZXQURrdGYwZGNvd3pRQmF2?=
+ =?utf-8?B?RTJlblBYNkhvODQrRGt5TjFVb001VHdVcHJWcXlVRk5NRnhhdXJZYUFyemRa?=
+ =?utf-8?B?YTYyeXJJMnE4eHFtYktGN2xVTGlFRlFwb1N1c2RQUDUwc2hBWGZJWWhOUWJz?=
+ =?utf-8?B?dU54YUJEYTFLKzhFSnZaNWo0bHg5ZVVhelptWUxIRU1FV1BaKzVIbm8vbUND?=
+ =?utf-8?B?MndSRFdjK1JYbmxSaW9lNngrMFNYSXB3amlQWTRTN1lyT0FENjcvMFcxSWlU?=
+ =?utf-8?B?QnJHamk5dDlsWW9sNC94Rk5VSm56MXFMYWtvalFUUUIyWVFwenlBZjNmcFNK?=
+ =?utf-8?B?a00xWmNXRmZDQW05cGU4dHlIRE1zUHdxQkxqWFUxWDUzbEQ3aUloR3dacjRo?=
+ =?utf-8?B?Z05hOGVndDVKUkNiV2s0aWdhYzM4Y3BCSFV6cGpkZE03YUtkcHEzQmxBYVpF?=
+ =?utf-8?B?MUR2T1dnZ0JyaWJnMi9zV0xxNzErUDRwdlJJTFdBbzFLTWRabHZsaHozVTZB?=
+ =?utf-8?B?RjdmNlhxUEZoclNWUjJoMW0wZnp0NjRVaDA4dEh4enJQM2RGWnJ6R3NBNVRP?=
+ =?utf-8?B?NVBnNG5mbC8va2lFY1lLRzN3N0d5elV1Y1IrOTk5OTY5UjErTm5HRzFFT2VV?=
+ =?utf-8?B?T1RjYmFaUE9tK1U2d0RyTGF3eWl0bVNOSit1cFVGblBwY0pIaEQwdTE4UlRN?=
+ =?utf-8?B?bHZLeDRMTG9Cd3BJeTF1M292OFZOL1JGVTQ4ZmZFclVianhtVjAwZ1h2M0Ji?=
+ =?utf-8?B?V2J5NVBzWEdoREl6RlFCaDhrMU9FZVB2UGMxbDhOTUxxdk1Ma2pnZUtJbFNR?=
+ =?utf-8?B?Y3laZ1AwajJFbVVCdElKZXJ0MFFMYWtrYjV5WU5aRVFUNDVxWkVzQWEvMExI?=
+ =?utf-8?B?VWVYNDZaRVZNQUwwOTUxeG1kdjU0dUJmdGkvK2Uxd0RZK1o1Z2t1dnBNR2lB?=
+ =?utf-8?B?QTdWMkRpNWFkNTk0VVdzT3BTU2dhV21LMTR0eE10VzdDaUpoYlE3djdHaWFQ?=
+ =?utf-8?B?YXpwM1ZraW11emVUZmZ4RW5VY3R5aXRJYk11L0puT2FOcWhKT2xiMjk1Lyto?=
+ =?utf-8?B?TGJMVzNvNDFoTXJXdDhjYXFlOWJvR1F3dXV0OGFZbkNzbHVyN2ZLcUNtOTZs?=
+ =?utf-8?B?YUdNaXpDWXZPcG4yZmpScjNzMW5yYkRBY0crTDA1ZERRdlVWYzVnbXNjRDB2?=
+ =?utf-8?B?aER3SWZKSjlFeEtPME5va2NYb2hzTHJLZCtxR1J2MER6RThEV3FiU24zS1pM?=
+ =?utf-8?B?SUZZbkRHZmdyREFVTEI2UGdEcHVjNmRsZVpUZFBoR1ZPRG9HYnA4RVJHU0Jz?=
+ =?utf-8?B?aTVjT2xjbVFYdDRNVGw2ejAzbUl4VGJCbkRqd0F5NnFrZUJkUk00WFBOVEFP?=
+ =?utf-8?B?TDN4eTQ0QXgxTmg1dXlIZXZHODZaVFBWb2NVREFtVkJrUi8yclVrcnVJdVFh?=
+ =?utf-8?B?d3QycGEvZDRTVGZqTGJPYnU0RjdvdSs0NWs3MWVwMTZaVDVmK25DTFM5Y0xD?=
+ =?utf-8?B?M0JHSlgzemo1cFJib0gyRGNtZXNQMGNJZVZSbTRpdDZqdUlsSmo2em04Mi81?=
+ =?utf-8?B?NDAxMTBRdkhuM3VDQ3ZhbUNhK011akhNdTNNTTlScVVPWWszeEZlRnh0Sy9O?=
+ =?utf-8?B?R293ak55ZmVQV1ZYWVk2a0JoU3d2NjlBbjNxc0h2NUhYUU1XUTdwSm9VemJy?=
+ =?utf-8?B?RjN4dE92cFlKc3Q3c1c1NEZDKzRpUDRBL0F4dGttODZncC9UL2sxVTg3SGJY?=
+ =?utf-8?B?aHhhY1hqRlI3K3ltcFNiOHViSFBUbXVEbjlCOTgxamlwTVVNT2VqQzFtTFBJ?=
+ =?utf-8?B?OWxlQjIyZmhwdXFVZ01RTEJ1MEJ4cDg4VUlrWi84a0ZRZFhyYlIreFl1NER5?=
+ =?utf-8?B?SHRQUk5mRndtS3NONHF3ZVRFVjg3dU1EU0RFQlRWUkg1UU9mV1lMSzFCNTda?=
+ =?utf-8?B?ZkZvUXloMVgzQituVElScUN6NU84Zm5ibDBzdHNaYzFmYjFzSDdmcUZWeWYv?=
+ =?utf-8?B?azFYaytMZmpPeU4xV3hjTXdqMXcvcTV0b0xPNWY4UzZub2dwcEw5K0k0eFQy?=
+ =?utf-8?Q?yZaQi34CdSMe5EbJv7LZDGYyU?=
+X-OriginatorOrg: vivo.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f1c08ef5-d1e0-41dc-26e1-08ddb251e3f7
+X-MS-Exchange-CrossTenant-AuthSource: OS8PR06MB7663.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Jun 2025 12:31:35.0341
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: V4SvOuCrRE1NxOi+Aw4BCbHhy0oqH1NBLm2bc7zNz+GWjnEDXrD3JLvTNrUThBQuSMuAnpq+qyXBWtDnMdvcEw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY0PR06MB5185
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250623_052809_342496_A8218022 
-X-CRM114-Status: GOOD (  15.01  )
+X-CRM114-CacheID: sfid-20250623_053147_602246_FEFC22C5 
+X-CRM114-Status: GOOD (  14.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,192 +235,118 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 23/06/25 14:12, Krzysztof Kozlowski ha scritto:
-> On 23/06/2025 12:29, Laura Nao wrote:
->> +properties:
->> +  compatible:
->> +    items:
->> +      - enum:
->> +          - mediatek,mt8196-adsp
->> +          - mediatek,mt8196-imp-iic-wrap-c
->> +          - mediatek,mt8196-imp-iic-wrap-e
->> +          - mediatek,mt8196-imp-iic-wrap-n
->> +          - mediatek,mt8196-imp-iic-wrap-w
->> +          - mediatek,mt8196-mdpsys0
->> +          - mediatek,mt8196-mdpsys1
->> +          - mediatek,mt8196-pericfg-ao
->> +          - mediatek,mt8196-pextp0cfg-ao
->> +          - mediatek,mt8196-pextp1cfg-ao
->> +          - mediatek,mt8196-ufscfg-ao
->> +          - mediatek,mt8196-vencsys
->> +          - mediatek,mt8196-vencsys-c1
->> +          - mediatek,mt8196-vencsys-c2
->> +          - mediatek,mt8196-vdecsys
->> +          - mediatek,mt8196-vdecsys-soc
->> +      - const: syscon
-> 
-> Why everything is syscon?
-> 
-> 
->> +
->> +  reg:
->> +    maxItems: 1
->> +
->> +  '#clock-cells':
->> +    const: 1
->> +
->> +  '#reset-cells':
->> +    const: 1
->> +
->> +  mediatek,hardware-voter:
->> +    $ref: /schemas/types.yaml#/definitions/phandle
->> +    description: A phandle of the hw voter node
->> +
->> +required:
->> +  - compatible
->> +  - reg
->> +  - '#clock-cells'
->> +
->> +additionalProperties: false
->> +
->> +examples:
->> +  - |
->> +    pericfg_ao: clock-controller@16640000 {
->> +        compatible = "mediatek,mt8196-pericfg-ao", "syscon";
->> +        reg = <0x16640000 0x1000>;
->> +        mediatek,hardware-voter = <&scp_hwv>;
->> +        #clock-cells = <1>;
->> +    };
->> +  - |
->> +    pextp0cfg_ao: clock-controller@169b0000 {
->> +        compatible = "mediatek,mt8196-pextp0cfg-ao", "syscon";
->> +        reg = <0x169b0000 0x1000>;
->> +        #clock-cells = <1>;
->> +        #reset-cells = <1>;
->> +    };
->> diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt8196-sys-clock.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt8196-sys-clock.yaml
->> new file mode 100644
->> index 000000000000..363ebe87c525
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/clock/mediatek,mt8196-sys-clock.yaml
->> @@ -0,0 +1,76 @@
->> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
->> +%YAML 1.2
->> +---
->> +$id: http://devicetree.org/schemas/clock/mediatek,mt8196-sys-clock.yaml#
->> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->> +
->> +title: MediaTek System Clock Controller for MT8196
->> +
->> +maintainers:
->> +  - Guangjie Song <guangjie.song@mediatek.com>
->> +  - Laura Nao <laura.nao@collabora.com>
->> +
->> +description: |
->> +  The clock architecture in MediaTek SoCs is structured like below:
->> +  PLLs -->
->> +          dividers -->
->> +                      muxes
->> +                           -->
->> +                              clock gate
->> +
->> +  The apmixedsys, apmixedsys_gp2, vlpckgen, armpll, ccipll, mfgpll and ptppll
->> +  provide most of the PLLs which are generated from the SoC's 26MHZ crystal oscillator.
->> +  The topckgen, topckgen_gp2 and vlpckgen provide dividers and muxes which
->> +  provide the clock source to other IP blocks.
->> +
->> +properties:
->> +  compatible:
->> +    items:
->> +      - enum:
->> +          - mediatek,mt8196-apmixedsys
->> +          - mediatek,mt8196-armpll-b-pll-ctrl
->> +          - mediatek,mt8196-armpll-bl-pll-ctrl
->> +          - mediatek,mt8196-armpll-ll-pll-ctrl
->> +          - mediatek,mt8196-apmixedsys-gp2
->> +          - mediatek,mt8196-ccipll-pll-ctrl
->> +          - mediatek,mt8196-mfgpll-pll-ctrl
->> +          - mediatek,mt8196-mfgpll-sc0-pll-ctrl
->> +          - mediatek,mt8196-mfgpll-sc1-pll-ctrl
->> +          - mediatek,mt8196-ptppll-pll-ctrl
->> +          - mediatek,mt8196-topckgen
->> +          - mediatek,mt8196-topckgen-gp2
->> +          - mediatek,mt8196-vlpckgen
->> +      - const: syscon
-> 
-> Why everything is syscon?
+There are more than 700 calls to devm_request_threaded_irq method and
+more than 1000 calls to devm_request_irq method. Most drivers only
+request one interrupt resource, and these error messages are basically
+the same. If error messages are printed everywhere, more than 2000 lines
+of code can be saved by removing the msg in the driver.
 
-Like all other MediaTek SoCs - each sub-IP has its own clock controller, and all
-of those sub-IPs have part of the system controller.
+And tglx point out that:
 
-It's just a MediaTek SoC being a... MediaTek SoC.
+  If we actually look at the call sites of
+  devm_request_threaded_irq() then the vast majority of them print more or
+  less lousy error messages. A quick grep/sed/awk/sort/uniq revealed
 
-> 
->> +
->> +  reg:
->> +    maxItems: 1
->> +
->> +  '#clock-cells':
->> +    const: 1
->> +
->> +  mediatek,hardware-voter:
->> +    $ref: /schemas/types.yaml#/definitions/phandle
->> +    description: A phandle of the hw voter node
-> 
-> Do not copy property name to description, but say something useful - for
-> what? And why this cannot be or is not a proper interconnect?
-> 
+     519 messages total (there are probably more)
 
-Laura, please check the commit description of my power domains HWV patches
-here: 20250623120154.109429-8-angelogioacchino.delregno@collabora.com
+     352 unique messages
 
-...and follow what krzk just said which... well, my bad for not complaining
-about this during internal reviewing.
+     323 unique messages after lower casing
 
->> +
->> +required:
->> +  - compatible
->> +  - reg
->> +  - '#clock-cells'
->> +
->> +additionalProperties: false
->> +
->> +examples:
->> +  - |
->> +    apmixedsys_clk: syscon@10000800 {
->> +        compatible = "mediatek,mt8196-apmixedsys", "syscon";
->> +        reg = <0x10000800 0x1000>;
->> +        #clock-cells = <1>;
->> +    };
->> +  - |
->> +    topckgen: syscon@10000000 {
->> +        compatible = "mediatek,mt8196-topckgen", "syscon";
->> +        reg = <0x10000000 0x800>;
->> +        mediatek,hardware-voter = <&scp_hwv>;
->> +        #clock-cells = <1>;
->> +    };
->> +
-> 
-> 
-> 
->> +#define CLK_OVL1_DLO9					56
->> +#define CLK_OVL1_DLO10					57
->> +#define CLK_OVL1_DLO11					58
->> +#define CLK_OVL1_DLO12					59
->> +#define CLK_OVL1_OVLSYS_RELAY0				60
->> +#define CLK_OVL1_OVL_INLINEROT0				61
->> +#define CLK_OVL1_SMI					62
->> +
->> +
->> +/* VDEC_SOC_GCON_BASE */
->> +#define CLK_VDE1_LARB1_CKEN				0
->> +#define CLK_VDE1_LAT_CKEN				3
-> 
-> IDs increment by 1, not 3.
+         Those 323 are mostly just variants of the same patterns with
+         slight modifications in formatting and information provided.
 
-Thank you, Krzysztof - sharp as always!
+     186 of these messages do not deliver any useful information,
+         e.g. "no irq", "
 
-Cheers,
-Angelo
+     The most useful one of all is: "could request wakeup irq: %d"
+
+  So there is certainly an argument to be made that this particular
+  function should print a well formatted and informative error message.
+
+  It's not a general allocator like kmalloc(). It's specialized and in the
+  vast majority of cases failing to request the interrupt causes the
+  device probe to fail. So having proper and consistent information why
+  the device cannot be used _is_ useful.
+
+So add devm_request_threaded_irq_probe() and devm_request_irq_probe(),
+which ensure that all error handling branches print error information.
+In this way, when this function fails, the upper-layer functions can
+directly return an error code without missing debugging information.
+Otherwise, the error message will be printed redundantly or missing.
+
+Hi tglx and Rafael,
+
+Could you please consider merging the entire series into your branch? 
+To be honest, I don't know whether merging into the irq repository or
+the pm repository is the right approach.
+
+Pan Chuang (2):
+  thermal/drivers/loongson2: convert to use devm_request*_irq_probe()
+  thermal/drivers/airoha: convert to use devm_request*_irq_probe()
+
+Yangtao Li (22):
+  genirq/devres: Add devm_request_threaded_irq_probe() and
+    devm_request_irq_probe()
+  thermal/drivers/sun8i: convert to use devm_request*_irq_probe()
+  thermal/drivers/armada: convert to use devm_request*_irq_probe()
+  thermal/drivers/broadcom: convert to use devm_request*_irq_probe()
+  thermal/drivers/tegra: convert to use devm_request*_irq_probe()
+  thermal/drivers/qcom/lmh: convert to use devm_request*_irq_probe()
+  thermal/drivers/db8500: convert to use devm_request*_irq_probe()
+  thermal/drivers/renesas/rcar: convert to use devm_request*_irq_probe()
+  thermal/drivers/qcom/temp-alarm: convert to use
+    devm_request*_irq_probe()
+  thermal: intel: int340x: processor_thermal: convert to use
+    devm_request*_irq_probe()
+  thermal/drivers/exynos: convert to use devm_request*_irq_probe()
+  thermal/drivers/hisi: convert to use devm_request*_irq_probe()
+  thermal/drivers/rockchip: convert to use devm_request*_irq_probe()
+  thermal/drivers/renesas/rcar_gen3: convert to use
+    devm_request*_irq_probe()
+  thermal/drivers/mediatek/lvts_thermal: convert to use
+    devm_request*_irq_probe()
+  thermal/drivers/max77620: convert to use devm_request*_irq_probe()
+  thermal/drivers/intel/bxt_pmic: convert to use
+    devm_request*_irq_probe()
+  thermal/drivers/stm: convert to use devm_request*_irq_probe()
+  thermal/drivers/qcom/tsens-v0_1: convert to use
+    devm_request*_irq_probe()
+  thermal/drivers/qcom/spmi-adc-tm5: convert to use
+    devm_request*_irq_probe()
+  thermal/drivers/uniphier: convert to use devm_request*_irq_probe()
+  thermal/drivers/imx: convert to use devm_request*_irq_probe()
+
+ drivers/thermal/airoha_thermal.c              | 10 ++---
+ drivers/thermal/armada_thermal.c              | 13 +++---
+ drivers/thermal/broadcom/brcmstb_thermal.c    | 11 +++--
+ drivers/thermal/db8500_thermal.c              | 16 +++----
+ drivers/thermal/hisi_thermal.c                | 12 +++---
+ drivers/thermal/imx_thermal.c                 | 11 +++--
+ .../processor_thermal_device_pci.c            | 24 +++++------
+ .../thermal/intel/intel_bxt_pmic_thermal.c    | 11 ++---
+ drivers/thermal/loongson2_thermal.c           |  8 ++--
+ drivers/thermal/max77620_thermal.c            | 24 +++++------
+ drivers/thermal/mediatek/lvts_thermal.c       |  6 +--
+ drivers/thermal/qcom/lmh.c                    |  7 ++-
+ drivers/thermal/qcom/qcom-spmi-adc-tm5.c      |  5 ++-
+ drivers/thermal/qcom/qcom-spmi-temp-alarm.c   |  4 +-
+ drivers/thermal/qcom/tsens.c                  | 23 +++++-----
+ drivers/thermal/renesas/rcar_gen3_thermal.c   |  7 +--
+ drivers/thermal/renesas/rcar_thermal.c        |  9 ++--
+ drivers/thermal/rockchip_thermal.c            | 12 +++---
+ drivers/thermal/samsung/exynos_tmu.c          | 12 +++---
+ drivers/thermal/st/st_thermal_memmap.c        | 12 +++---
+ drivers/thermal/st/stm_thermal.c              | 14 +++---
+ drivers/thermal/sun8i_thermal.c               |  6 +--
+ drivers/thermal/tegra/soctherm.c              | 38 ++++++++--------
+ drivers/thermal/tegra/tegra30-tsensor.c       |  9 ++--
+ drivers/thermal/uniphier_thermal.c            |  6 +--
+ include/linux/interrupt.h                     | 15 +++++++
+ kernel/irq/devres.c                           | 43 +++++++++++++++++++
+ 27 files changed, 197 insertions(+), 171 deletions(-)
+
+-- 
+2.39.0
 
 
