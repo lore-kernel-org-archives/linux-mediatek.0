@@ -4,48 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B1C5C7115D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 06:34:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A970CC7115B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 06:37:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=krJNjULOa2yyEOZ6mixwsOEYhkq7UxHHJpSt0EyjRXQ=; b=0N1VIUFf0lmxScjL1s1tn+aSpe
-	gbDAnitgP0mctpij8lsDe1xjIP3X2pVbxVuoH0UOHGRSyv2Lj67m3PTifbU5QmsKqxyCYO7CM0dm1
-	umeOHkBdFcrh4m+0uYAuPZXfcynQHkeMJvd5t/U/Hgcsrbf1M3u89lyIio3lv9H3lr2IOsYr2mmU1
-	SWrCjtt9cRhUUIiWh1u3j5CSRwqd4FtlixIspOFKgx1Z0fNp19MCAXnCKlehKcr918wrvobnDyeSG
-	naoZXoO77ODqB+vWgYMQRktRzJBvhspqvOauo2he3xvEgO//5JhfYTfyT64+8XLmwAgSYxX4S77bu
-	a9+XqT2g==;
+	bh=VmGy2LwoD4c7TYtIYADmynGSftVoFTkUb3gkx2bChKw=; b=m9O6QJQCSaPGM9wU6yLPMe/2ik
+	YTnTlovE1vt4DN8sXxL3nyNIzDzvnxBVYF19asoU4jk9XBW91bKVDmXomXSQ8Qy1UJGo1zalYV0yl
+	nurcpH0wiPXejq7VuokIGEDXdSe8BXJslzPWjA1/DyiTjXLUpOA9EAshk64G8oljYQXj7qPEBkbLB
+	VBiZw21jB2hpySmsQLR5Tlf0ocWlfSrLdF0NX77GbICq3FSRSCkJ3/Tyvkw89/bGcqkedEXztUS84
+	4f1XbaceiunieKWZBbwfRUxSAdHX7D+ZEXmm7uvzGEN8mAQeLTxgbwWoR9E6YHlkA9Y+5MXDnVsJE
+	d2DO0dsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTalW-00000001k3K-2Is3;
-	Mon, 23 Jun 2025 06:34:50 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uTanr-00000001kEi-2tJH;
+	Mon, 23 Jun 2025 06:37:15 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTaP6-00000001hEy-3H0z;
-	Mon, 23 Jun 2025 06:11:41 +0000
+	id 1uTaPj-00000001hMZ-1gxX;
+	Mon, 23 Jun 2025 06:12:19 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B9A785C58C4;
-	Mon, 23 Jun 2025 06:09:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1FA46C4CEEF;
-	Mon, 23 Jun 2025 06:11:34 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id B999161135;
+	Mon, 23 Jun 2025 06:12:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B8F7EC4CEED;
+	Mon, 23 Jun 2025 06:12:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750659099;
-	bh=uG9S9uq5V1TVuuk+S38NklO6swzSbL2R/TJNZQBZugw=;
+	s=k20201202; t=1750659138;
+	bh=islpwpJM+dMryWHf8OoygwS9tO88ESAaSUnvDXZYY9M=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=gPRUcZK3gVCsIUJgeyMrmI5i/5wUvMdor/SFTbVyjd6TWUKMjKfkHnHrlTNlJhKz0
-	 oJfuVMnBM1/SOfqq4sJXk5k8cKHzrHfUvGg9+jHWi4WkXj5O5c5Mu0X8yeZ2czKxVv
-	 nzHJbBcQnjqkJJ6t5XmXxjWNRlLM3bClAu5DqJI/DWLo3+LldzNjM6+0u31+MjP2O7
-	 d4o+9koz1SI49+IWSEf/iR9Trlfg6LoYYcOGTkXH2ZUyKc5XCZBVF7mij367jPon9w
-	 cov9nGCNhW/pfnx7jPw2wiW/Cf5Loe6YNDTf/irmRsW4+rtCSnXmIYmaQrwip+SOQu
-	 f029YhaB5JVWw==
-Message-ID: <d6fbaa2a-81f9-42bf-9d68-020cf01a004e@kernel.org>
-Date: Mon, 23 Jun 2025 08:11:33 +0200
+	b=ZX+KQKUoWZoybee6E+BLJAimjB2SHpHLjzSzBCNHo96/yaqeGg7jwEKvOpsNV8fZF
+	 xa7C4hQoBxKgk7ZCc2Xk6o+n3J/4nPC4CN9p2Mswf5z5uiE+sAxIRpP/2sqL2/WjZY
+	 UsZPlLM6I1UyLfVeeg8PllubuPewg+iRzDwIOkuLEVgn0BU8bZQjYaiWekyDR2gw+Q
+	 //8zxgByH+/zOtcjGh8aZ8FCZvNJW/Lk5TNdEDju6H2sfZy/rVzIEKLc+r4ZjTzQ4J
+	 IJfIA2jsMC3SA2DUwm7w5P+mIl76pezhrczqpBc0HOSud8R/JNP40qDx+EOHtABYbZ
+	 04qy/EuQ5+feg==
+Message-ID: <beff8c62-5cc5-4256-81f4-aa5a8f2dc433@kernel.org>
+Date: Mon, 23 Jun 2025 08:12:12 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 01/11] dt-bindings: serial: mediatek,uart: add MT6572
+Subject: Re: [PATCH 09/11] ARM: dts: mediatek: add basic support for MT6572
+ SoC
 To: wctrl@proton.me, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Jiri Slaby <jirislaby@kernel.org>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
@@ -60,7 +61,7 @@ Cc: linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-watchdog@vger.kernel.org
 References: <20250620-mt6572-v1-0-e2d47820f042@proton.me>
- <20250620-mt6572-v1-1-e2d47820f042@proton.me>
+ <20250620-mt6572-v1-9-e2d47820f042@proton.me>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -106,13 +107,9 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20250620-mt6572-v1-1-e2d47820f042@proton.me>
+In-Reply-To: <20250620-mt6572-v1-9-e2d47820f042@proton.me>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250622_231140_905157_B0EBEDA6 
-X-CRM114-Status: UNSURE (   6.70  )
-X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,11 +127,72 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On 20/06/2025 17:40, Max Shevchenko via B4 Relay wrote:
 > From: Max Shevchenko <wctrl@proton.me>
 > 
-> Add a compatible string for serial on the MT6572 SoC.
+> Add basic support for the MediaTek MT6572 SoC.
 > 
 > Signed-off-by: Max Shevchenko <wctrl@proton.me>
+> ---
+>  arch/arm/boot/dts/mediatek/mt6572.dtsi | 105 +++++++++++++++++++++++++++++++++
+>  1 file changed, 105 insertions(+)
+> 
+> diff --git a/arch/arm/boot/dts/mediatek/mt6572.dtsi b/arch/arm/boot/dts/mediatek/mt6572.dtsi
+> new file mode 100644
+> index 0000000000000000000000000000000000000000..dd12231ca745be7455e99391abd2d708f2f1a8a9
+> --- /dev/null
+> +++ b/arch/arm/boot/dts/mediatek/mt6572.dtsi
+> @@ -0,0 +1,105 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (c) 2025 Max Shevchenko <wctrl@proton.me>
+> + */
+> +
+> +#include <dt-bindings/interrupt-controller/irq.h>
+> +#include <dt-bindings/interrupt-controller/arm-gic.h>
+> +
+> +/ {
+> +	#address-cells = <1>;
+> +	#size-cells = <1>;
+> +	compatible = "mediatek,mt6572";
+> +	interrupt-parent = <&sysirq>;
+> +
+> +	cpus {
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +		enable-method = "mediatek,mt6589-smp";
+> +
+> +		cpu@0 {
+> +			device_type = "cpu";
+> +			compatible = "arm,cortex-a7";
+> +			reg = <0x0>;
+> +		};
+> +		cpu@1 {
+> +			device_type = "cpu";
+> +			compatible = "arm,cortex-a7";
+> +			reg = <0x1>;
+> +		};
+> +	};
+> +
+> +	system_clk: dummy13m {
+> +		compatible = "fixed-clock";
+> +		clock-frequency = <13000000>;
+> +		#clock-cells = <0>;
+> +	};
+> +
+> +	rtc_clk: dummy32k {
+> +		compatible = "fixed-clock";
+> +		clock-frequency = <32000>;
+> +		#clock-cells = <0>;
+> +	};
+> +
+> +	uart_clk: dummy26m {
+> +		compatible = "fixed-clock";
+> +		clock-frequency = <26000000>;
+> +		#clock-cells = <0>;
+> +	};
+> +
+> +	watchdog: watchdog@10007000 {
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Missing soc node.
+
 
 Best regards,
 Krzysztof
