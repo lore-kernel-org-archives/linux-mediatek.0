@@ -4,50 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE5C0C77B7F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 10:16:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17F64C7115B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 10:16:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rdv1PxmvFCh9wiNgGRosrM0Uc3xj+4CFvasqWSPAQqQ=; b=vZzKXtT5f26pAX
-	25+lC4Mqz7l5xWfRFbdZZnaJ3vROi+m44vN2nOLwxryGOUshlEl7Z6HM0n2TGhmGIbpITX/Cxzkby
-	Bme0d/CYgQQYmW482KM+qWsQJ99WQKUqAby8ri7h52R7qLVOUsi6G95xWCPRsnp+TDi7y0PxM8Jv8
-	KMOfD95as5sm4UhYismVcdZpGhy9yQdle8jMWTfelXRDIwdOZu5K/3LK9JUWwdbMZB7F+Et32lE93
-	7f2Gr/WIxckEI8lY2cboKZR5Mm5n7Jpq6LFaCL4aZFr0zFpMqQSfXK6EzpUR/ZmyL/ZS8VttW+GHD
-	uR4MtopuZK1VRSVs3v5Q==;
+	List-Owner; bh=dAhLw8ix9vTodMyuqVidjoZiElBE05wHApINWeqOpZA=; b=UAYKrPDtRB2ZVY
+	J4WABZ4f5k4Jl5sBPXHpGiL0ILvt73c9ri6fgeOVJtv9oH0vF5pFFAcYdNlOGA+lVt86QF5SW9A48
+	ZHSy1/lfJdyBK7LaQtMqiO2kSfxmiV8fDhn7k5+nfMJgg27dLJJCnRe3g2Kwu/3hDrZJMWB2XoOvn
+	BAqddfQJrmNWvWO4xDRZ64xcBdBd3OasUACkPtn0AbENHyeskym1lI7IYRm4XZgrrQFAOHPcysQc9
+	FZZ9hi6wyeBdvR+SA2rQ062LRwMfrE1v98A4jheUd36qYGmD64mi+GQubryLLz2PEWSK0qlFGYzco
+	n1Uhu7fSgV4gr59dnb4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTeDe-00000002Jdu-3DQD;
-	Mon, 23 Jun 2025 10:16:06 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uTeEB-00000002Jht-0cXB;
+	Mon, 23 Jun 2025 10:16:39 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTdXB-00000002BPt-1Ite;
-	Mon, 23 Jun 2025 09:32:15 +0000
+	id 1uTdXT-00000002BTa-3j8V;
+	Mon, 23 Jun 2025 09:32:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=dAhLw8ix9vTodMyuqVidjoZiElBE05wHApINWeqOpZA=; b=D8s57iFf8jfRAGAC+643neiesG
+	G/QfiSe0vM/bN7sK5JoHcORGZrIG9T/KGO9L8tgB+fAxUxARwybavua8TY8fCULinhJvJDiLKWAhG
+	lIaPo66SmmZrM3pMFVHOvcykjEribcCt0zdMo0Uu1yywIKypyjAlElqRZ20JtShr8moBJO6dmWS3t
+	z8s76GjP9YHjaCuP03fYb+lKpu8/sKhNn5kVl1in3elJsJwYq8SJScuP8swpS5C79sQHGZJbGyNzt
+	pwsFO+Ycsj5CzDb4mM7r3TgSP72uqyYaZ6VKeCO2QzkoewCjLMHEbW37fSUJ8M26mHf5RimObERO2
+	eea6K9vg==;
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uTdXQ-00000005Akd-1Si8;
+	Mon, 23 Jun 2025 09:32:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1750671131;
-	bh=Uh1SmrFE3wdw/cPkwQjay39ohrqiBFdxOB2U7Xc19d8=;
+	s=mail; t=1750671146;
+	bh=36tf2K/9hUByUZGrXncX4bNZ2l5rw2ra9GVPJ2PLCa0=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=B2AkBD2+MPg1Miz03CgmE94LPkTv+3zBIl2so/3V/ZZDm7qxsKOhnnN4SGNHxBCXP
-	 xcgnJEfiLj4/pdM9jaw+0GvsUIkVLMxrB2RXW5BnBL/9Ad3QCfUq0jZ071XFy4xbVq
-	 P8nFJTXbg428VGkr98cZfUmEeoBw7clNt8AMSZfvCFWhbO+13kply1YnVUpMpHcZR6
-	 363+CagJx8mjHgkAxSFXKc2yq/7GeeGCzSx2PT3GN/jVQfza7kHozxhJyXhGwuaLc8
-	 AmuB01YrL4whEGQ3JWwzFXCNmx9ejr3z+22vjZPl6tVsuwFb3Wmii62QElaPHBFg3N
-	 TBFx4vB8zwIHA==
+	b=MTBpNLRkEKEkVz5HWfPsaefWPF4KLf5W0VPAu0pSafLVBQ50mxtEzmfJwnPadjE4m
+	 yo8PWJFEbbMoebAU+WCvR6UBobF1hZM6pMMo1iEfX0sw8zVm4JEjzmQFF0JdkuOzGE
+	 h50nJ2XnOrBEunWptBVlVo9vCeJLQiKv+Vb13C2lk/Ej8ICx28iqexYbxpIDrQ3XUs
+	 7OGgftAlLQRi2py9fggXQfhW3bW4Tb6y2/WGYXYN3TCXXbAUfnGUfkbcc8xjSutNa4
+	 Mj5tSy/DMvjqJNVlFi9axNTVDTlCDRD3sZXtBxVVRcnXE7qRNibXxxbVNqgbzXxTDP
+	 4XnKqxEcx2WiQ==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6AD1E17E05BD;
-	Mon, 23 Jun 2025 11:32:10 +0200 (CEST)
-Message-ID: <61ed8a51-9714-482f-ae92-184a991560ce@collabora.com>
-Date: Mon, 23 Jun 2025 11:32:09 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 30C4D17E05BD;
+	Mon, 23 Jun 2025 11:32:25 +0200 (CEST)
+Message-ID: <df51b1ce-a205-4e4c-90a0-e827f87a44a1@collabora.com>
+Date: Mon, 23 Jun 2025 11:32:24 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 07/13] arm64: dts: mediatek: mt7988: add switch node
+Subject: Re: [PATCH v5 03/13] dt-bindings: net: dsa: mediatek,mt7530: add
+ internal mdio bus
 To: Frank Wunderlich <linux@fw-web.de>,
  MyungJoo Ham <myungjoo.ham@samsung.com>,
  Kyungmin Park <kyungmin.park@samsung.com>,
@@ -59,15 +74,15 @@ To: Frank Wunderlich <linux@fw-web.de>,
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
  Matthias Brugger <matthias.bgg@gmail.com>
 References: <20250620083555.6886-1-linux@fw-web.de>
- <20250620083555.6886-8-linux@fw-web.de>
+ <20250620083555.6886-4-linux@fw-web.de>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250620083555.6886-8-linux@fw-web.de>
+In-Reply-To: <20250620083555.6886-4-linux@fw-web.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250623_023213_497062_C517AC5A 
-X-CRM114-Status: UNSURE (   6.41  )
+X-CRM114-CacheID: sfid-20250623_103229_532122_1DDD0DF0 
+X-CRM114-Status: UNSURE (   6.37  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,12 +102,12 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Il 20/06/25 10:35, Frank Wunderlich ha scritto:
 > From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> Add mt7988 builtin mt753x switch nodes.
+> Mt7988 buildin switch has own mdio bus where ge-phys are connected.
+> Add related property for this.
 > 
-> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
 
 
