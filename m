@@ -4,55 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41533C7115B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 17:01:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D23EC7115B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 17:48:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oWXHzMFQWrf3zwl6nd3ar71G9P2ea95Xb7EiOWcUnfA=; b=jqUnHTnM2nopTIQK3Du4+DO93W
-	2o5PBNxdQGLb967YejK1OiYNRLhfge7YdDsuBjcqWbZlwOPG6IL7aNTJh3ysdMzS+diTb0zI2WqJf
-	JCsyuGPFdbfvW3jyxrCxS1AmmpsE7eM4q5atK5H04x78voRsGkdsUsc48m98rEdbuBoQi2QP8CoJo
-	CjBakW+5pxmcVCFuD1tR4HZq+EHCurfZOA+Mo97eEpq052asZAOen6eo0JoyQZQiiJ2N0duoHvP4O
-	JJgD19+lvx/CNA+hT1r6IabWvspjt3iac6SF1o8oynZ2jexIca4V3P2rry/nQNc5JaooBB5BCIebo
-	pia7z/OQ==;
+	bh=9h5W4CZb41J9mEMMU6ZZk+XRq4XRRTtTn42DnFEFGEQ=; b=xfP4c40g0/DTxjyTpr8VSld4u+
+	57ANBIpVNcNHFcYBhHWn7OtrYeaMaw4gTRevMvrbgYwKzTEsFK94YpriRlSiyMMJwFnA9S+OxuRV1
+	tySBE9tPNlc2WqlrJXxoJvf5/vj8v0BSV7rVi/PBCCojw37Ey4YuVkVryk1PqV5TbiF3Ww2yn2yst
+	C6BdK89W5TyqoaBUsb62svXXM4GP1M8HDpDL0u7fJcNfKvbhDEnBfMQyQTlqHHSskwBgnzMshFyAY
+	DrV9CR1fSjNQZgJwFL2gtn6xIMuRrD5yx6vcryzZtTzM1MRANlqnErKmCkzjxs7CU4V+5H33IRX48
+	qBbSBHaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTkXS-00000003V5K-0PUk;
-	Mon, 23 Jun 2025 17:00:58 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uThFh-00000002siv-2AL3;
-	Mon, 23 Jun 2025 13:30:26 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 8641E113E;
-	Mon, 23 Jun 2025 06:30:06 -0700 (PDT)
-Received: from pluto (usa-sjc-mx-foss1.foss.arm.com [172.31.20.19])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id B7C723F58B;
-	Mon, 23 Jun 2025 06:30:22 -0700 (PDT)
-Date: Mon, 23 Jun 2025 14:30:15 +0100
-From: Cristian Marussi <cristian.marussi@arm.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Cristian Marussi <cristian.marussi@arm.com>, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
-	sudeep.holla@arm.com, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, arm-scmi@vger.kernel.org,
-	kernel@collabora.com
-Subject: Re: [PATCH v1 0/2] firmware: Add MediaTek TinySYS SCMI Protocol
-Message-ID: <aFlW5zVERnpwIkS4@pluto>
-References: <20250623120136.109311-1-angelogioacchino.delregno@collabora.com>
- <aFlFw-AjqxXcIuBO@pluto>
- <9e8d0dfc-7dc4-461d-afd9-bd381219422f@collabora.com>
+	id 1uTlHD-00000003bZA-3yEq;
+	Mon, 23 Jun 2025 17:48:15 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uTi3m-000000031xi-0XZm;
+	Mon, 23 Jun 2025 14:22:11 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 0B7A85C5DB6;
+	Mon, 23 Jun 2025 14:19:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 13C01C4CEEA;
+	Mon, 23 Jun 2025 14:22:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1750688529;
+	bh=M8/FB18nORJdfDyegU9zi8E3Z4snaCgnu0tkxZFO1MA=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=imQ0wxZSqqpK9O+CKmtdYgA7zX444k0D+P/xGxcsMHNi0t5HHoQFbzfyUpLJ/INPy
+	 Ae7mEAFxSUkYY7TIccBy1jdNxc84YLUSe4DaTp+gaUiPdx2P8814uacmsuv8OXzfwF
+	 tX+tl7fkVGFELnjSKSrOh7LC5AGSgp+wVq5PyPGMrK8gK4PKyJZOsIXodHOBt4fWg0
+	 1J4/qtxL7YIIBzj1bN012w/fC7s/DgLpgAcAphyKoWD04o255JAy+4aBYhKup2yAyV
+	 ewmgZgb8vmG+e0QFViZ7udLfHuXHqYZGp2Ln5vwN+3tYLOfmWmuhjHtKMEuITO3GBL
+	 LRbEDXQEX4lFA==
+Date: Mon, 23 Jun 2025 09:22:08 -0500
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <9e8d0dfc-7dc4-461d-afd9-bd381219422f@collabora.com>
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: lee@kernel.org, linux-kernel@vger.kernel.org, conor+dt@kernel.org, 
+ linux-arm-kernel@lists.infradead.org, krzk+dt@kernel.org, 
+ linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, 
+ kernel@collabora.com, devicetree@vger.kernel.org
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250623120038.108891-2-angelogioacchino.delregno@collabora.com>
+References: <20250623120038.108891-1-angelogioacchino.delregno@collabora.com>
+ <20250623120038.108891-2-angelogioacchino.delregno@collabora.com>
+Message-Id: <175068852802.3230004.1923972457454728043.robh@kernel.org>
+Subject: Re: [PATCH v1 1/2] dt-bindings: mfd: Add binding for MediaTek
+ MT6363 series SPMI PMIC
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250623_063025_598777_85DBE5CA 
-X-CRM114-Status: GOOD (  25.44  )
+X-CRM114-CacheID: sfid-20250623_072210_247873_FD735085 
+X-CRM114-Status: GOOD (  11.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,47 +74,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 23, 2025 at 02:32:24PM +0200, AngeloGioacchino Del Regno wrote:
-> Il 23/06/25 14:17, Cristian Marussi ha scritto:
-> > On Mon, Jun 23, 2025 at 02:01:34PM +0200, AngeloGioacchino Del Regno wrote:
-> > > This series adds basic support for the MediaTek TinySYS SCMI Protocol,
-> > > found on the MediaTek Dimensity 9200, 9300 and 9400, other than on the
-> > > MT8196 Chromebook SoC.
-> > > 
-> > > This is used to communicate with the CM_MGR and other MCUs for power
-> > > management purposes.
-> > 
-> > Hi Angelo,
-> > 
-> > thanks for this.
-> > 
-> > I will do a proper review in the coming days of this series anyway, but
-> > upfront for future V2:
-> > 
-> > - you should provide some sort of documentation for this new
-> >    vendor protocol and its messages, as an example from IMX:
-> > 
-> > 	drivers/firmware/arm_scmi/vendors/imx/imx95.rst
-> 
-> Noted.
-> 
-> > 
-> > - where is the SCMI driver that will call all the new vendor ops
-> >    defined in: scmi_mtk_protocol.h ?
-> 
-> This was tested with code that is not clean at all (hence I can't push it upstream)
-> and well... I didn't think about the fact that, effectively, without an user, this
-> code ends up being unused.
-> 
-> I can't promise to send a clean user in this cycle, but I would really appreciate
-> if you could still check the protocol code, so that if there's anything that you
-> can spot I can fix it while the rest gets done :-)
 
-Sure, I will anyway review, but a driver user exampe would be useful, maybe
-posting it at the end of the series as a NOT-FOR-UPSTREAM/RFC (something like that)
-so that we can have an iddea of the usage patterns while being aware that it is
-still not clean for upstream.
+On Mon, 23 Jun 2025 14:00:37 +0200, AngeloGioacchino Del Regno wrote:
+> Add a binding for the MediaTek MT6363/6373 (and similar) multi
+> function PMICs connected over SPMI.
+> 
+> These PMICs are found on board designs using newer MediaTek SoCs,
+> such as the Dimensity 9400 Smartphone chip, or the Chromebook
+> MT8196 chip.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  .../bindings/mfd/mediatek,mt6363.yaml         | 98 +++++++++++++++++++
+>  1 file changed, 98 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mt6363.yaml
+> 
 
-Thanks,
-Cristian
+My bot found errors running 'make dt_binding_check' on your patch:
+
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/mfd/mediatek,mt6363.yaml:
+	Error in referenced schema matching $id: http://devicetree.org/schemas/regulator/mediatek,mt6363-regulator.yaml
+	Tried these paths (check schema $id if path is wrong):
+	/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/regulator/mediatek,mt6363-regulator.yaml
+	/usr/local/lib/python3.11/dist-packages/dtschema/schemas/regulator/mediatek,mt6363-regulator.yaml
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/mfd/mediatek,mt6363.example.dtb: pmic@4 (mediatek,mt6363): regulators: 'oneOf' conditional failed, one must be fixed:
+	{'compatible': ['mediatek,mt6363-regulator']} should not be valid under {'description': "Can't find referenced schema: http://devicetree.org/schemas/regulator/mediatek,mt6363-regulator.yaml#"}
+	{'compatible': ['mediatek,mt6363-regulator']} should not be valid under {'description': "Can't find referenced schema: http://devicetree.org/schemas/regulator/mediatek,mt6373-regulator.yaml#"}
+	from schema $id: http://devicetree.org/schemas/mfd/mediatek,mt6363.yaml#
+Documentation/devicetree/bindings/mfd/mediatek,mt6363.example.dtb: /example-0/spmi/pmic@4/regulators: failed to match any schema with compatible: ['mediatek,mt6363-regulator']
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250623120038.108891-2-angelogioacchino.delregno@collabora.com
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
+
 
