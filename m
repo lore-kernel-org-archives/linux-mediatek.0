@@ -4,70 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CAB6C77B7C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jun 2025 11:19:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43EF1C77B7F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jun 2025 11:19:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=EsdaN36gSjFpobSTWfbMh7p5nojTzYYXEfOQtA2pVNQ=; b=a+IfCqq7ab5+zKDtLQ+unL9YIP
-	KTbYrD3J0rKZPX9xqTSnHtAMXiXznlLxtBtRLQsNpv8NYC3hIVsu+K5Lc60Q2vGGPGJyfFiPGAxsL
-	U7l4DHw9ks4iAO8Dzsr1SiXnNDFpI4cBRCzS67ESuliw2Ua11adSKKPIS6duUsbTmvJGJP9Urev0N
-	kr8GxHwYAPXuq7bCJoJFi71LkC884VgOayjP6vHPSVHu31M6sE8Hvm2nav7vh0NQjh+EJ6CZwcOTY
-	XPAndNx4wvMADYWUs7gkW4AUkBtFBzYt83jn9i6RIYpd7dZQ9BD2v7lXjdkz9ID1hr2fAFMeEbjTP
-	76H2J7NA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PmKtYLO9DDYaj9Me5RnB2od40m2nfSC9/3iVyLRTgPc=; b=U2twejQ1lCvoMqI5NWsVVmJ03Z
+	YQZzJaTeIPKZpVqDlXyTUZAoJSuwJQ9TkdhxdwqwJ9MIyfMU4HUHDTlH/mEZmgPwQqWQ0f6vcmS3D
+	/hElsyQ/PgF6z0RhcMuGiNm9L1BtAb0AfgIB/vgbFXZplEpCZ1Io8hvTDuuiSd3XN/pPJiMBAtTwX
+	4OFW0Uf8/yNkRqKi7vR+9p+wFQy7c20vYX1e3lFaFVJPaT/HbuoBSyhof8fKnOED5G3hvcXl5wggm
+	GwYco9rcjaoaZlHC6oXZRqEjp0P1QVwCxi/Q/mh2kTPUyOvTFwjmq8C/ovyDnxi7zb2++ToUEJtMi
+	vWB5PunA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uU1gS-00000005PuO-2S31;
-	Tue, 24 Jun 2025 11:19:24 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1uU1gn-00000005Q2T-0rwt;
+	Tue, 24 Jun 2025 11:19:45 +0000
+Received: from galois.linutronix.de ([193.142.43.55])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uU13x-00000005KdR-0V1J;
-	Tue, 24 Jun 2025 10:39:38 +0000
-X-UUID: 831cd2a450e711f09eb0dd999d3936bf-20250624
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=EsdaN36gSjFpobSTWfbMh7p5nojTzYYXEfOQtA2pVNQ=;
-	b=nJQxH2ZRDsql5sL1JcI75F+IRBdEur9GMgvL/tI2nOSGl1ZSNy5To6mkc6lVtOZbV6/US3PTxnCwLzRnstQfTPPhg2ST4Yalsc6rynmd7iNjsvsVLf2WN6/596VRjxhl1cs8tDN5mZ8Mj29KNKyYGxDxLgnZNG0byKHBoFlGSLk=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.2,REQID:69b38ba8-3aa5-4587-9594-ea14e018609d,IP:0,UR
-	L:0,TC:0,Content:0,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-30
-X-CID-META: VersionHash:9eb4ff7,CLOUDID:66d5945f-2aa0-4c76-8faa-804d844c7164,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:2,IP:nil
-	,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:
-	1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 831cd2a450e711f09eb0dd999d3936bf-20250624
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
-	(envelope-from <jason-jh.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1709929381; Tue, 24 Jun 2025 03:39:31 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Tue, 24 Jun 2025 18:39:28 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Tue, 24 Jun 2025 18:39:28 +0800
-From: Jason-JH Lin <jason-jh.lin@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2] soc: mediatek: mtk-mutex: Fix confusing usage of MUTEX_MOD2
-Date: Tue, 24 Jun 2025 18:39:03 +0800
-Message-ID: <20250624103928.408194-1-jason-jh.lin@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1uU14R-00000005Ki3-38Ek;
+	Tue, 24 Jun 2025 10:40:09 +0000
+From: Thomas Gleixner <tglx@linutronix.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020; t=1750761604;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=PmKtYLO9DDYaj9Me5RnB2od40m2nfSC9/3iVyLRTgPc=;
+	b=v1IFWcFrbObYtAZ/RT0Kppv2+R1ysQJUiAOhyBDBdBD7GRafKVhWIJlEp4M1/MAbW7r3Ca
+	o8ExT+FJNwE1MLi5ZHj7mixRk7DPF7y0JESsK+b/BXPx0H36L3GknAlPGKQ80sDZSd8kX8
+	c7tk3xzYOhkh9+PB8l0sOAqBJbObspXXOYombtNTWorYQc/dnlFuIdXCWjoZNydWHsEEfw
+	BxAB1cxurgSdDrVSKVwi91WSkw72/7/zhYIxKx2zfbMR8WyyBWVel7X/khQj5qlBzANr+W
+	waHxljQ3WDmwbOBvDQ6fj/PD/LbBRXtKBrQTzgU9iEnxcn0NlO2wYO/ak4OZtw==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020e; t=1750761604;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=PmKtYLO9DDYaj9Me5RnB2od40m2nfSC9/3iVyLRTgPc=;
+	b=3q5D0uT4oSfP2VhfCp/l4dQktoBuSpc64H38sBuCNB8bE8D63GfRugryCyLDa3R+2guT87
+	o5CUyJOaQUdlplCw==
+To: Pan Chuang <panchuang@vivo.com>, "Rafael J. Wysocki"
+ <rafael@kernel.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui
+ <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>, Miquel Raynal
+ <miquel.raynal@bootlin.com>, Markus Mayer <mmayer@broadcom.com>, Broadcom
+ internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+ Florian Fainelli <florian.fainelli@broadcom.com>, Shawn Guo
+ <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix
+ Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>,
+ zhanghongchen <zhanghongchen@loongson.cn>, Yinbo Zhu
+ <zhuyinbo@loongson.cn>, Amit Kucheria <amitk@kernel.org>, Thara Gopinath
+ <thara.gopinath@gmail.com>, Niklas =?utf-8?Q?S=C3=B6derlund?=
+ <niklas.soderlund@ragnatech.se>, Geert Uytterhoeven
+ <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, Heiko
+ Stuebner <heiko@sntech.de>, Bartlomiej Zolnierkiewicz
+ <bzolnier@gmail.com>, Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar
+ <alim.akhtar@samsung.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, Vasily Khoruzhick
+ <anarsoul@gmail.com>, Yangtao Li <tiny.windzz@gmail.com>, Chen-Yu Tsai
+ <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland
+ <samuel@sholland.org>, Thierry Reding <thierry.reding@gmail.com>, Jonathan
+ Hunter <jonathanh@nvidia.com>, Kunihiko Hayashi
+ <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Srinivas Pandruvada
+ <srinivas.pandruvada@linux.intel.com>, Greg KH
+ <gregkh@linuxfoundation.org>, Peter Zijlstra <peterz@infradead.org>,
+ =?utf-8?Q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>,
+ Conor Dooley
+ <conor.dooley@microchip.com>, Julien Panis <jpanis@baylibre.com>, Arnd
+ Bergmann <arnd@arndb.de>, Uwe =?utf-8?Q?Kleine-K=C3=B6nig?=
+ <u.kleine-koenig@baylibre.com>,
+ Colin Ian King <colin.i.king@gmail.com>, Raphael Gallais-Pou
+ <rgallaispou@gmail.com>, Patrice Chotard <patrice.chotard@foss.st.com>,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>, "Jiri Slaby (SUSE)"
+ <jirislaby@kernel.org>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ Andrew Morton <akpm@linux-foundation.org>, Costa Shulyupin
+ <costa.shul@redhat.com>, Yury Norov <yury.norov@gmail.com>, Cheng-Yang
+ Chou <yphbchou0911@gmail.com>, Caleb Sander Mateos
+ <csander@purestorage.com>, linux-pm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ imx@lists.linux.dev, linux-arm-msm@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
+ linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: Yangtao Li <frank.li@vivo.com>, Uwe =?utf-8?Q?Kleine-K=C3=B6nig?=
+ <u.kleine-koenig@pengutronix.de>, Jonathan Cameron
+ <Jonathan.Cameron@Huawei.com>, Pan Chuang <panchuang@vivo.com>
+Subject: Re: [PATCH v6 01/24] genirq/devres: Add
+ devm_request_threaded_irq_probe() and devm_request_irq_probe()
+In-Reply-To: <20250623123054.472216-2-panchuang@vivo.com>
+References: <20250623123054.472216-1-panchuang@vivo.com>
+ <20250623123054.472216-2-panchuang@vivo.com>
+Date: Tue, 24 Jun 2025 10:13:10 +0200
+Message-ID: <87h605o8vd.ffs@tglx>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250624_033937_172015_8463ABA2 
-X-CRM114-Status: GOOD (  17.49  )
+X-CRM114-CacheID: sfid-20250624_034007_944426_F589B578 
+X-CRM114-Status: GOOD (  29.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,306 +117,121 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Xiandong Wang <xiandong.wang@mediatek.com>, Jason-JH Lin <jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Zhenxing Qin <zhenxing.qin@mediatek.com>, linux-kernel@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Paul-PL Chen <paul-pl.chen@mediatek.com>, Xavier Chang <xavier.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Yongqiang Niu <yongqiang.niu@mediatek.com>, Sirius Wang <sirius.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Jarried Lin <jarried.lin@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The usage of MUTEX_MOD1 and MUTEX_MOD2 for calculating mod settings
-over 32 has been confusing. To improve consistency and clarity, these
-defines need to fit into the same MUTEX_MOD define as possible.
+On Mon, Jun 23 2025 at 20:30, Pan Chuang wrote:
+> +/**
+> + * devm_request_threaded_irq_probe - request irq for a managed device with error msg (recommended in probe)
+> + * @dev:	Device to request interrupt for
+> + * @irq:	Interrupt line to allocate
+> + * @handler:	Function to be called when the IRQ occurs
+> + * @thread_fn:	Function to be called in a threaded interrupt context. NULL
+> + *		for devices which handle everything in @handler
+> + * @irqflags:	Interrupt type flags
+> + * @devname:	An ascii name for the claiming device, dev_name(dev) if NULL
+> + * @dev_id:	A cookie passed back to the handler function
+> + * @info:	Optional additional error log
+> + *
+> + * This is a variant of the devm_request_threaded_irq function.
+> + * It will print an error message by default when the request fails,
+> + * and the consumer can add a special error msg.
+> + *
+> + * Except for the extra @info argument, this function takes the
+> + * same arguments and performs the same function as
+> + * devm_request_threaded_irq(). IRQs requested with this function will be
+> + * automatically freed on driver detach.
 
-However, MUTEX_MOD1 cannot be directly used for all SoCs because,
-for example, the mod1 register (0x34) of MT2712 is not adjacent to
-its mod0 register (0x2c). To address this, a `mutex_mod1_reg` field
-is introduced in the mutex driver data structure. This allows all
-SoCs to use a unified MUTEX_MOD to determine their register offsets.
+I really have to ask why you need the extra info argument. It's not
+providing any really value.
 
-With this change, the separate usage of MUTEX_MOD1 and MUTEX_MOD2 is
-eliminated, simplifying the logic for obtaining offsets and mod IDs.
+What's important when the interrupt request fails?
 
-Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/soc/mediatek/mtk-mutex.c | 109 ++++++++++++++++---------------
- 1 file changed, 56 insertions(+), 53 deletions(-)
+    1) The device, which is identifiable by @devname and/or dev_name(@dev)
 
-diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
-index aaa965d4b050..38179e8cd98f 100644
---- a/drivers/soc/mediatek/mtk-mutex.c
-+++ b/drivers/soc/mediatek/mtk-mutex.c
-@@ -17,16 +17,35 @@
- 
- #define MT2701_MUTEX0_MOD0			0x2c
- #define MT2701_MUTEX0_SOF0			0x30
-+#define MT2701_MUTEX0_MOD1			0x34
-+
- #define MT8183_MUTEX0_MOD0			0x30
-+#define MT8183_MUTEX0_MOD1			0x34
- #define MT8183_MUTEX0_SOF0			0x2c
- 
- #define DISP_REG_MUTEX_EN(n)			(0x20 + 0x20 * (n))
- #define DISP_REG_MUTEX(n)			(0x24 + 0x20 * (n))
- #define DISP_REG_MUTEX_RST(n)			(0x28 + 0x20 * (n))
--#define DISP_REG_MUTEX_MOD(mutex_mod_reg, n)	(mutex_mod_reg + 0x20 * (n))
--#define DISP_REG_MUTEX_MOD1(mutex_mod_reg, n)	((mutex_mod_reg) + 0x20 * (n) + 0x4)
-+/*
-+ * Some SoCs may have multiple MUTEX_MOD registers as more than 32 mods
-+ * are present, hence requiring multiple 32-bits registers.
-+ *
-+ * The mutex_table_mod fully represents that by defining the number of
-+ * the mod sequentially, later used as a bit number, which can be more
-+ * than 0..31.
-+ *
-+ * In order to retain compatibility with older SoCs, we perform R/W on
-+ * the single 32 bits registers, but this requires us to translate the
-+ * mutex ID bit accordingly.
-+ */
-+#define DISP_REG_MUTEX_MOD(mutex, id, n) ({ \
-+	const typeof(mutex) _mutex = (mutex); \
-+	u32 _offset = (id) < 32 ? \
-+		      _mutex->data->mutex_mod_reg : \
-+		      _mutex->data->mutex_mod1_reg; \
-+	_offset + 0x20 * (n); \
-+})
- #define DISP_REG_MUTEX_SOF(mutex_sof_reg, n)	(mutex_sof_reg + 0x20 * (n))
--#define DISP_REG_MUTEX_MOD2(n)			(0x34 + 0x20 * (n))
- 
- #define INT_MUTEX				BIT(1)
- 
-@@ -334,6 +353,7 @@ struct mtk_mutex_data {
- 	const u8 *mutex_table_mod;
- 	const u16 *mutex_sof;
- 	const u16 mutex_mod_reg;
-+	const u16 mutex_mod1_reg;
- 	const u16 mutex_sof_reg;
- 	const bool no_clk;
- };
-@@ -714,6 +734,7 @@ static const struct mtk_mutex_data mt2701_mutex_driver_data = {
- 	.mutex_mod = mt2701_mutex_mod,
- 	.mutex_sof = mt2712_mutex_sof,
- 	.mutex_mod_reg = MT2701_MUTEX0_MOD0,
-+	.mutex_mod1_reg = MT2701_MUTEX0_MOD1,
- 	.mutex_sof_reg = MT2701_MUTEX0_SOF0,
- };
- 
-@@ -721,6 +742,7 @@ static const struct mtk_mutex_data mt2712_mutex_driver_data = {
- 	.mutex_mod = mt2712_mutex_mod,
- 	.mutex_sof = mt2712_mutex_sof,
- 	.mutex_mod_reg = MT2701_MUTEX0_MOD0,
-+	.mutex_mod1_reg = MT2701_MUTEX0_MOD1,
- 	.mutex_sof_reg = MT2701_MUTEX0_SOF0,
- };
- 
-@@ -728,6 +750,7 @@ static const struct mtk_mutex_data mt6795_mutex_driver_data = {
- 	.mutex_mod = mt8173_mutex_mod,
- 	.mutex_sof = mt6795_mutex_sof,
- 	.mutex_mod_reg = MT2701_MUTEX0_MOD0,
-+	.mutex_mod1_reg = MT2701_MUTEX0_MOD1,
- 	.mutex_sof_reg = MT2701_MUTEX0_SOF0,
- };
- 
-@@ -735,6 +758,7 @@ static const struct mtk_mutex_data mt8167_mutex_driver_data = {
- 	.mutex_mod = mt8167_mutex_mod,
- 	.mutex_sof = mt8167_mutex_sof,
- 	.mutex_mod_reg = MT2701_MUTEX0_MOD0,
-+	.mutex_mod1_reg = MT2701_MUTEX0_MOD1,
- 	.mutex_sof_reg = MT2701_MUTEX0_SOF0,
- 	.no_clk = true,
- };
-@@ -743,6 +767,7 @@ static const struct mtk_mutex_data mt8173_mutex_driver_data = {
- 	.mutex_mod = mt8173_mutex_mod,
- 	.mutex_sof = mt2712_mutex_sof,
- 	.mutex_mod_reg = MT2701_MUTEX0_MOD0,
-+	.mutex_mod1_reg = MT2701_MUTEX0_MOD1,
- 	.mutex_sof_reg = MT2701_MUTEX0_SOF0,
- };
- 
-@@ -750,6 +775,7 @@ static const struct mtk_mutex_data mt8183_mutex_driver_data = {
- 	.mutex_mod = mt8183_mutex_mod,
- 	.mutex_sof = mt8183_mutex_sof,
- 	.mutex_mod_reg = MT8183_MUTEX0_MOD0,
-+	.mutex_mod1_reg = MT8183_MUTEX0_MOD1,
- 	.mutex_sof_reg = MT8183_MUTEX0_SOF0,
- 	.mutex_table_mod = mt8183_mutex_table_mod,
- 	.no_clk = true,
-@@ -757,6 +783,7 @@ static const struct mtk_mutex_data mt8183_mutex_driver_data = {
- 
- static const struct mtk_mutex_data mt8186_mdp_mutex_driver_data = {
- 	.mutex_mod_reg = MT8183_MUTEX0_MOD0,
-+	.mutex_mod1_reg = MT8183_MUTEX0_MOD1,
- 	.mutex_sof_reg = MT8183_MUTEX0_SOF0,
- 	.mutex_table_mod = mt8186_mdp_mutex_table_mod,
- };
-@@ -765,6 +792,7 @@ static const struct mtk_mutex_data mt8186_mutex_driver_data = {
- 	.mutex_mod = mt8186_mutex_mod,
- 	.mutex_sof = mt8186_mutex_sof,
- 	.mutex_mod_reg = MT8183_MUTEX0_MOD0,
-+	.mutex_mod1_reg = MT8183_MUTEX0_MOD1,
- 	.mutex_sof_reg = MT8183_MUTEX0_SOF0,
- };
- 
-@@ -772,12 +800,14 @@ static const struct mtk_mutex_data mt8188_mutex_driver_data = {
- 	.mutex_mod = mt8188_mutex_mod,
- 	.mutex_sof = mt8188_mutex_sof,
- 	.mutex_mod_reg = MT8183_MUTEX0_MOD0,
-+	.mutex_mod1_reg = MT8183_MUTEX0_MOD1,
- 	.mutex_sof_reg = MT8183_MUTEX0_SOF0,
- };
- 
- static const struct mtk_mutex_data mt8188_vpp_mutex_driver_data = {
- 	.mutex_sof = mt8188_mutex_sof,
- 	.mutex_mod_reg = MT8183_MUTEX0_MOD0,
-+	.mutex_mod1_reg = MT8183_MUTEX0_MOD1,
- 	.mutex_sof_reg = MT8183_MUTEX0_SOF0,
- 	.mutex_table_mod = mt8188_mdp_mutex_table_mod,
- };
-@@ -786,6 +816,7 @@ static const struct mtk_mutex_data mt8192_mutex_driver_data = {
- 	.mutex_mod = mt8192_mutex_mod,
- 	.mutex_sof = mt8183_mutex_sof,
- 	.mutex_mod_reg = MT8183_MUTEX0_MOD0,
-+	.mutex_mod1_reg = MT8183_MUTEX0_MOD1,
- 	.mutex_sof_reg = MT8183_MUTEX0_SOF0,
- };
- 
-@@ -793,12 +824,14 @@ static const struct mtk_mutex_data mt8195_mutex_driver_data = {
- 	.mutex_mod = mt8195_mutex_mod,
- 	.mutex_sof = mt8195_mutex_sof,
- 	.mutex_mod_reg = MT8183_MUTEX0_MOD0,
-+	.mutex_mod1_reg = MT8183_MUTEX0_MOD1,
- 	.mutex_sof_reg = MT8183_MUTEX0_SOF0,
- };
- 
- static const struct mtk_mutex_data mt8195_vpp_mutex_driver_data = {
- 	.mutex_sof = mt8195_mutex_sof,
- 	.mutex_mod_reg = MT8183_MUTEX0_MOD0,
-+	.mutex_mod1_reg = MT8183_MUTEX0_MOD1,
- 	.mutex_sof_reg = MT8183_MUTEX0_SOF0,
- 	.mutex_table_mod = mt8195_mutex_table_mod,
- };
-@@ -807,6 +840,7 @@ static const struct mtk_mutex_data mt8365_mutex_driver_data = {
- 	.mutex_mod = mt8365_mutex_mod,
- 	.mutex_sof = mt8183_mutex_sof,
- 	.mutex_mod_reg = MT8183_MUTEX0_MOD0,
-+	.mutex_mod1_reg = MT8183_MUTEX0_MOD1,
- 	.mutex_sof_reg = MT8183_MUTEX0_SOF0,
- 	.no_clk = true,
- };
-@@ -859,7 +893,7 @@ void mtk_mutex_add_comp(struct mtk_mutex *mutex,
- 	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
- 						 mutex[mutex->id]);
- 	unsigned int reg;
--	unsigned int sof_id;
-+	unsigned int sof_id, mod_id;
- 	unsigned int offset;
- 
- 	WARN_ON(&mtx->mutex[mutex->id] != mutex);
-@@ -890,18 +924,11 @@ void mtk_mutex_add_comp(struct mtk_mutex *mutex,
- 		sof_id = MUTEX_SOF_DP_INTF1;
- 		break;
- 	default:
--		if (mtx->data->mutex_mod[id] < 32) {
--			offset = DISP_REG_MUTEX_MOD(mtx->data->mutex_mod_reg,
--						    mutex->id);
--			reg = readl_relaxed(mtx->regs + offset);
--			reg |= 1 << mtx->data->mutex_mod[id];
--			writel_relaxed(reg, mtx->regs + offset);
--		} else {
--			offset = DISP_REG_MUTEX_MOD2(mutex->id);
--			reg = readl_relaxed(mtx->regs + offset);
--			reg |= 1 << (mtx->data->mutex_mod[id] - 32);
--			writel_relaxed(reg, mtx->regs + offset);
--		}
-+		offset = DISP_REG_MUTEX_MOD(mtx, mtx->data->mutex_mod[id], mutex->id);
-+		mod_id = mtx->data->mutex_mod[id] % 32;
-+		reg = readl_relaxed(mtx->regs + offset);
-+		reg |= BIT(mod_id);
-+		writel_relaxed(reg, mtx->regs + offset);
- 		return;
- 	}
- 
-@@ -917,6 +944,7 @@ void mtk_mutex_remove_comp(struct mtk_mutex *mutex,
- 	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
- 						 mutex[mutex->id]);
- 	unsigned int reg;
-+	unsigned int mod_id;
- 	unsigned int offset;
- 
- 	WARN_ON(&mtx->mutex[mutex->id] != mutex);
-@@ -936,18 +964,11 @@ void mtk_mutex_remove_comp(struct mtk_mutex *mutex,
- 						  mutex->id));
- 		break;
- 	default:
--		if (mtx->data->mutex_mod[id] < 32) {
--			offset = DISP_REG_MUTEX_MOD(mtx->data->mutex_mod_reg,
--						    mutex->id);
--			reg = readl_relaxed(mtx->regs + offset);
--			reg &= ~(1 << mtx->data->mutex_mod[id]);
--			writel_relaxed(reg, mtx->regs + offset);
--		} else {
--			offset = DISP_REG_MUTEX_MOD2(mutex->id);
--			reg = readl_relaxed(mtx->regs + offset);
--			reg &= ~(1 << (mtx->data->mutex_mod[id] - 32));
--			writel_relaxed(reg, mtx->regs + offset);
--		}
-+		offset = DISP_REG_MUTEX_MOD(mtx, mtx->data->mutex_mod[id], mutex->id);
-+		mod_id = mtx->data->mutex_mod[id] % 32;
-+		reg = readl_relaxed(mtx->regs + offset);
-+		reg &= ~BIT(mod_id);
-+		writel_relaxed(reg, mtx->regs + offset);
- 		break;
- 	}
- }
-@@ -1023,7 +1044,7 @@ int mtk_mutex_write_mod(struct mtk_mutex *mutex,
- 	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
- 						 mutex[mutex->id]);
- 	unsigned int reg;
--	u32 reg_offset, id_offset = 0;
-+	u32 offset, mod_id;
- 
- 	WARN_ON(&mtx->mutex[mutex->id] != mutex);
- 
-@@ -1033,34 +1054,16 @@ int mtk_mutex_write_mod(struct mtk_mutex *mutex,
- 		return -EINVAL;
- 	}
- 
--	/*
--	 * Some SoCs may have multiple MUTEX_MOD registers as more than 32 mods
--	 * are present, hence requiring multiple 32-bits registers.
--	 *
--	 * The mutex_table_mod fully represents that by defining the number of
--	 * the mod sequentially, later used as a bit number, which can be more
--	 * than 0..31.
--	 *
--	 * In order to retain compatibility with older SoCs, we perform R/W on
--	 * the single 32 bits registers, but this requires us to translate the
--	 * mutex ID bit accordingly.
--	 */
--	if (mtx->data->mutex_table_mod[idx] < 32) {
--		reg_offset = DISP_REG_MUTEX_MOD(mtx->data->mutex_mod_reg,
--						mutex->id);
--	} else {
--		reg_offset = DISP_REG_MUTEX_MOD1(mtx->data->mutex_mod_reg,
--						 mutex->id);
--		id_offset = 32;
--	}
-+	offset = DISP_REG_MUTEX_MOD(mtx, mtx->data->mutex_table_mod[idx], mutex->id);
-+	mod_id = mtx->data->mutex_table_mod[idx] % 32;
- 
--	reg = readl_relaxed(mtx->regs + reg_offset);
-+	reg = readl_relaxed(mtx->regs + offset);
- 	if (clear)
--		reg &= ~BIT(mtx->data->mutex_table_mod[idx] - id_offset);
-+		reg &= ~BIT(mod_id);
- 	else
--		reg |= BIT(mtx->data->mutex_table_mod[idx] - id_offset);
-+		reg |= BIT(mod_id);
- 
--	writel_relaxed(reg, mtx->regs + reg_offset);
-+	writel_relaxed(reg, mtx->regs + offset);
- 
- 	return 0;
- }
--- 
-2.43.0
+    2) The interrupt number
 
+    3) The error code
+
+If you want to be more expressive then you can also print out the
+handler function symbols, which makes it even more useful to map back
+into the affected driver.
+
+As you cited correctly I said back then:
+
+  "So there is certainly an argument to be made that this particular
+   function should print a well formatted and informative error
+   message."
+
+This particular function is: devm_request_threaded_irq().
+
+IOW, I did not ask you should go an create a new one, right?
+
+The extra @info argument is just proliferating the nonsensical
+information which driver developers put into the output. I just looked
+through a couple of your thermal patches (hint, I had to chase them
+manually because you failed to thread them properly). While most of them
+provide NULL, the two adding 'alarm' are really not providing any useful
+information.
+
+The point is, that the information is aimed at developers and not to be
+helpful for Joe User to identify/fix a problem. If the driver
+developer/maintainer is not able to track back the information (name,
+number, error code) to the driver in question, then the added "foo" info
+is not going to make him any smarter.
+
+If that happens, then being able to map it back to the driver is only 1%
+of the problem analysis, simply because you need to decode the
+underlying problem (DT, vector exhaustion, memory exhaustion ....) to be
+able to address it.
+
+So just make devm_request.*irq() emit a uniform and informative message
+on fail and you can go and remove all the homebrewn useless error prints
+from the drivers.
+
+It does not matter at all if there are duplicated error messages for a
+release or two until all drivers have been cleaned up. This is not the
+common case and only rarely triggered. So what?
+
+> +int devm_request_threaded_irq_probe(struct device *dev, unsigned int irq,
+> +				    irq_handler_t handler, irq_handler_t thread_fn,
+> +				    unsigned long irqflags, const char *devname,
+> +				    void *dev_id, const char *info)
+> +{
+> +	int rc;
+> +
+> +	rc = devm_request_threaded_irq(dev, irq, handler, NULL, irqflags, devname, dev_id);
+
+This is just wrong as you fail to hand in thread_fn.
+
+Q: How was this code ever tested?
+A: Not at all.
+
+> Could you please consider merging the entire series into your branch? 
+
+You're seriously asking that for something which is so obviously broken?
+
+> +	if (rc) {
+> +		return dev_err_probe(dev, rc, "Failed to request %sinterrupt %u %s %s\n",
+> +				     thread_fn ? "threaded " : "", irq, devname ? : dev_name(dev),
+> +				     info ? : "");
+
+This is wrong too because devm_request_threaded_irq() allows you to hand
+in both a hard interrupt and a threaded handler and either one of them
+can be NULL.
+
+So what you want to add in devm_request_threaded_irq() is something like
+this:
+
+	if (rc < 0) {
+		return dev_err_probe(dev, rc, "request_irq(%u) %pS %pS %s\n",
+                        	     handler, thread_fn, devname ? : "");
+        }
+
+dev_err_probe() already prefixes the caller string with 'error ', so
+there is no need for a lenghty 'failed to request ....' novel.
+
+Thanks,
+
+        tglx
 
