@@ -4,76 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7A6DC7EE30
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jun 2025 17:53:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09FD8C77B7F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jun 2025 18:47:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2r4LQY8N9S38XIvZhBEoqY2n9JYGJTHvwo5zKsEYVsw=; b=KeZcQ3NH7h205RrsW5RlNZYTJk
-	OfzeQl3D7DnOMRBTrVBfKsWDxDsSn1Eh+lLWaq/VwpjszkuK/QGVBFbpQTVX5xJS6soR1V11IvU+h
-	rmfYuCv73CDDZssRX6ckeyCeCWGLmD6GwNezep7zLhWfJC1jhND1GLY/TU2Y/Xnrna7ionKPk5Qbr
-	4xKx2V/nNyld7B2s5LCfQ1MEFO9frNytpXlf7cuIE5RWIXTjMRhv+/Zh2vjV4YGVfCDVF+f74LreP
-	8lD+06c3Bj49pk9rUkjJayC92bz6b897XSIK0GF1mCXAcD/AH+ZIPOKJc0Cim2eaX9GxcEhW+STti
-	ThsBDn5w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kwBZPzxn17JvK+V65zGyJFMJb6zC4Pj40uxCg1alNFo=; b=AuhEdOlB9ltsOD1BPFT2j12v3I
+	3PRaW4BbUZeyekVa9CdPRVrMWItv9cQJzKP+b393Rck+iTaw2ZbKp3ZuhK8TfF++1iJKIlZ/DFCmN
+	KBb/hc3pZOsUeRyCvJXTquE1Oz5MaXmXKquK25wWhow9sfIJwYNaGjIbWVl+sqNh2b1D4Ox7sP/Fb
+	g5WePKdLTU25lQQClYu24hBZT46uK63unO/Btr3lTVUT+IcUTId9+PtQUpexXnQDD/FcIMjaDj/dJ
+	t6vVzZcB57LCyv0Jd3h7peMno9Ww4dgJPDFE7owNW/2XdEK2mSgjXys9b296vcWFSDcWvdU82Hhvu
+	RaAI8jTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uU7pz-00000006QX9-0Z12;
-	Tue, 24 Jun 2025 17:53:39 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uU8fk-00000006Y1X-1ec7;
+	Tue, 24 Jun 2025 18:47:08 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uU4im-00000005vfj-1cT6;
-	Tue, 24 Jun 2025 14:34:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1750775639;
-	bh=2dmleE75d1cFIoYjoDBS7h5u2So5NUz/o2Sx0fmIbl4=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ELn8+qECSbdS0prXT6Qii5iRbcMasYWE0xK/fGpGwzTgM7VJrRsnpmsKu//BY91yI
-	 6YNB7DDgL2Acyrt7uDj0CEbJgVMJMqi2SLP3RZpjC9/irYnhkj7AbWUZyflr4FBu7/
-	 5v3Q6KPmfrrStcyIv1nv+Vt1Jmw1SX7PVWMVFYo7Huy2GnHc5K3zI/ofsBQVOt3N23
-	 Ab8C0wmqR7koCfmRO8+U1/2/5049wOTzD8AsGDKv6PqvCm/nLD9LQxnwOuM3apW7EV
-	 8qxNBL9j1SFU4khGGi3SZ6KP1Hi8nM9b0iw5HXM6HsmUPLfAkym6fJSFVyvqEppQGs
-	 o1GADA4KaulBw==
-Received: from laura.lan (unknown [IPv6:2001:b07:646b:e2:d2c7:2075:2c3c:38e5])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laura.nao)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0FBC017E0EA4;
-	Tue, 24 Jun 2025 16:33:58 +0200 (CEST)
-From: Laura Nao <laura.nao@collabora.com>
-To: mturquette@baylibre.com,
-	sboyd@kernel.org,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	p.zabel@pengutronix.de,
-	richardcochran@gmail.com
-Cc: guangjie.song@mediatek.com,
-	wenst@chromium.org,
-	linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	netdev@vger.kernel.org,
-	kernel@collabora.com,
-	Laura Nao <laura.nao@collabora.com>
-Subject: [PATCH v2 21/29] clk: mediatek: Add MT8196 mdpsys clock support
-Date: Tue, 24 Jun 2025 16:32:12 +0200
-Message-Id: <20250624143220.244549-22-laura.nao@collabora.com>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250624143220.244549-1-laura.nao@collabora.com>
-References: <20250624143220.244549-1-laura.nao@collabora.com>
+	id 1uU5Ja-000000063Bu-1E18;
+	Tue, 24 Jun 2025 15:12:03 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1750777912; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=PbWcPMPdsiBjI5yUuATEXqR6754nuRTTSI93To7cx/Jc83GNnq9oB8Na81keGobkNvVJuGleN5AU6u83eLxxNciNYRfFSI95L6Vc5fN1QrUU5xTmzImF7QmzlVnZdhdZH+f1nC2G4PUdwQscV333ufz/5znCuOLOLqrusgw7Fdc=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1750777912; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=kwBZPzxn17JvK+V65zGyJFMJb6zC4Pj40uxCg1alNFo=; 
+	b=jPeyuZU/ylhALvNgHeFNYAuq4cjuEyvRf7BaqGil6SWCK4Q1Q8fRQyhGaaSH0GIvxaxuPWfhM2LhJtmgxRcn47bCoouuP1Ep01GcYHh+QJQSry2pqKQMuU3SSAHlJX1QPC0zsX4cj8k7e9LG1e4BGp/xiycrROC5fSpumcAybQw=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nfraprado@collabora.com;
+	dmarc=pass header.from=<nfraprado@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1750777912;
+	s=zohomail; d=collabora.com; i=nfraprado@collabora.com;
+	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
+	bh=kwBZPzxn17JvK+V65zGyJFMJb6zC4Pj40uxCg1alNFo=;
+	b=Bf9YSS1Ga0DU0J+XC2yEcnc1NKTcDJnu0rTxNkBIt6iga3H6/8JOtOI7Qk3mRziO
+	kA8ENF4z2QoaRaCkUJ5RKq8tn+sZwwBDEJ4WNJqXadd6JZGUTC+bHrlFDVsDCYzzYwj
+	ZQnhcFsLz2Q8w8B3LpuJsyt0rmOlis+U8f9PH7fs=
+Received: by mx.zohomail.com with SMTPS id 1750777910578164.21030726920253;
+	Tue, 24 Jun 2025 08:11:50 -0700 (PDT)
+Message-ID: <44767efb5f7eac1e5605dffdf531e805bc06b920.camel@collabora.com>
+Subject: Re: [PATCH v1 0/6] regulator: Add support for MediaTek
+ MT6316/6363/6373 PMICs
+From: =?ISO-8859-1?Q?N=EDcolas?= "F. R. A. Prado" <nfraprado@collabora.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	broonie@kernel.org
+Cc: lgirdwood@gmail.com, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org,  matthias.bgg@gmail.com, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org,  linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,  kernel@collabora.com
+Date: Tue, 24 Jun 2025 11:11:48 -0400
+In-Reply-To: <20250623120016.108732-1-angelogioacchino.delregno@collabora.com>
+References: <20250623120016.108732-1-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.46.4-2 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250624_073400_713393_1B25CD7B 
-X-CRM114-Status: GOOD (  16.05  )
+X-CRM114-CacheID: sfid-20250624_081202_423844_0C05D4DA 
+X-CRM114-Status: UNSURE (   7.18  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,242 +82,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for the MT8196 mdpsys clock controller, which provides clock
-gate control for MDP.
+On Mon, 2025-06-23 at 14:00 +0200, AngeloGioacchino Del Regno wrote:
+> This series adds support for three new MediaTek PMICs: MT6316, MT6363
+> and MT6373 and their variants - used in board designs featuring the
+> MediaTek MT8196 Chromebook SoC, or the MT6991 Dimensity 9400
+> Smartphone
+> SoC.
+>=20
+> AngeloGioacchino Del Regno (6):
+> =C2=A0 dt-bindings: regulator: Document MediaTek MT6316 PMIC Regulators
+> =C2=A0 regulator: Add support for MediaTek MT6316 SPMI PMIC Regulators
+> =C2=A0 dt-bindings: regulator: Document MediaTek MT6363 PMIC Regulators
+> =C2=A0 regulator: Add support for MediaTek MT6363 SPMI PMIC Regulators
+> =C2=A0 dt-bindings: regulator: Document MediaTek MT6373 PMIC Regulators
+> =C2=A0 regulator: Add support for MediaTek MT6373 SPMI PMIC Regulators
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Laura Nao <laura.nao@collabora.com>
----
- drivers/clk/mediatek/Kconfig             |   7 +
- drivers/clk/mediatek/Makefile            |   1 +
- drivers/clk/mediatek/clk-mt8196-mdpsys.c | 187 +++++++++++++++++++++++
- 3 files changed, 195 insertions(+)
- create mode 100644 drivers/clk/mediatek/clk-mt8196-mdpsys.c
+For the whole series:
 
-diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-index ed1073c5b432..c193295d4136 100644
---- a/drivers/clk/mediatek/Kconfig
-+++ b/drivers/clk/mediatek/Kconfig
-@@ -1089,6 +1089,13 @@ config COMMON_CLK_MT8196_MCUSYS
- 	help
- 	  This driver supports MediaTek MT8196 mcusys clocks.
- 
-+config COMMON_CLK_MT8196_MDPSYS
-+	tristate "Clock driver for MediaTek MT8196 mdpsys"
-+	depends on COMMON_CLK_MT8196
-+	default m
-+	help
-+	  This driver supports MediaTek MT8196 mdpsys clocks.
-+
- config COMMON_CLK_MT8196_PEXTPSYS
- 	tristate "Clock driver for MediaTek MT8196 pextpsys"
- 	depends on COMMON_CLK_MT8196
-diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index 7b284ccc1b48..b9a54d65e27c 100644
---- a/drivers/clk/mediatek/Makefile
-+++ b/drivers/clk/mediatek/Makefile
-@@ -166,6 +166,7 @@ obj-$(CONFIG_COMMON_CLK_MT8196) += clk-mt8196-apmixedsys.o clk-mt8196-topckgen.o
- obj-$(CONFIG_COMMON_CLK_MT8196_ADSP) += clk-mt8196-adsp.o
- obj-$(CONFIG_COMMON_CLK_MT8196_IMP_IIC_WRAP) += clk-mt8196-imp_iic_wrap.o
- obj-$(CONFIG_COMMON_CLK_MT8196_MCUSYS) += clk-mt8196-mcu.o
-+obj-$(CONFIG_COMMON_CLK_MT8196_MDPSYS) += clk-mt8196-mdpsys.o
- obj-$(CONFIG_COMMON_CLK_MT8196_PEXTPSYS) += clk-mt8196-pextp.o
- obj-$(CONFIG_COMMON_CLK_MT8196_UFSSYS) += clk-mt8196-ufs_ao.o
- obj-$(CONFIG_COMMON_CLK_MT8365) += clk-mt8365-apmixedsys.o clk-mt8365.o
-diff --git a/drivers/clk/mediatek/clk-mt8196-mdpsys.c b/drivers/clk/mediatek/clk-mt8196-mdpsys.c
-new file mode 100644
-index 000000000000..87ac3b52fcbc
---- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt8196-mdpsys.c
-@@ -0,0 +1,187 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Copyright (c) 2025 MediaTek Inc.
-+ *                    Guangjie Song <guangjie.song@mediatek.com>
-+ * Copyright (c) 2025 Collabora Ltd.
-+ *                    Laura Nao <laura.nao@collabora.com>
-+ */
-+
-+#include "clk-gate.h"
-+#include "clk-mtk.h"
-+
-+#include <dt-bindings/clock/mediatek,mt8196-clock.h>
-+#include <linux/clk-provider.h>
-+#include <linux/module.h>
-+#include <linux/of_device.h>
-+#include <linux/platform_device.h>
-+
-+static const struct mtk_gate_regs mdp0_cg_regs = {
-+	.set_ofs = 0x104,
-+	.clr_ofs = 0x108,
-+	.sta_ofs = 0x100,
-+};
-+
-+static const struct mtk_gate_regs mdp1_cg_regs = {
-+	.set_ofs = 0x114,
-+	.clr_ofs = 0x118,
-+	.sta_ofs = 0x110,
-+};
-+
-+static const struct mtk_gate_regs mdp2_cg_regs = {
-+	.set_ofs = 0x124,
-+	.clr_ofs = 0x128,
-+	.sta_ofs = 0x120,
-+};
-+
-+#define GATE_MDP0(_id, _name, _parent, _shift) {	\
-+		.id = _id,				\
-+		.name = _name,				\
-+		.parent_name = _parent,			\
-+		.regs = &mdp0_cg_regs,			\
-+		.shift = _shift,			\
-+		.flags = CLK_OPS_PARENT_ENABLE,		\
-+		.ops = &mtk_clk_gate_ops_setclr,	\
-+	}
-+
-+#define GATE_MDP1(_id, _name, _parent, _shift) {	\
-+		.id = _id,				\
-+		.name = _name,				\
-+		.parent_name = _parent,			\
-+		.regs = &mdp1_cg_regs,			\
-+		.shift = _shift,			\
-+		.flags = CLK_OPS_PARENT_ENABLE,		\
-+		.ops = &mtk_clk_gate_ops_setclr,	\
-+	}
-+
-+#define GATE_MDP2(_id, _name, _parent, _shift) {	\
-+		.id = _id,				\
-+		.name = _name,				\
-+		.parent_name = _parent,			\
-+		.regs = &mdp2_cg_regs,			\
-+		.shift = _shift,			\
-+		.flags = CLK_OPS_PARENT_ENABLE,		\
-+		.ops = &mtk_clk_gate_ops_setclr,	\
-+	}
-+
-+static const struct mtk_gate mdp1_clks[] = {
-+	/* MDP1-0 */
-+	GATE_MDP0(CLK_MDP1_MDP_MUTEX0, "mdp1_mdp_mutex0", "mdp", 0),
-+	GATE_MDP0(CLK_MDP1_SMI0, "mdp1_smi0", "mdp", 1),
-+	GATE_MDP0(CLK_MDP1_APB_BUS, "mdp1_apb_bus", "mdp", 2),
-+	GATE_MDP0(CLK_MDP1_MDP_RDMA0, "mdp1_mdp_rdma0", "mdp", 3),
-+	GATE_MDP0(CLK_MDP1_MDP_RDMA1, "mdp1_mdp_rdma1", "mdp", 4),
-+	GATE_MDP0(CLK_MDP1_MDP_RDMA2, "mdp1_mdp_rdma2", "mdp", 5),
-+	GATE_MDP0(CLK_MDP1_MDP_BIRSZ0, "mdp1_mdp_birsz0", "mdp", 6),
-+	GATE_MDP0(CLK_MDP1_MDP_HDR0, "mdp1_mdp_hdr0", "mdp", 7),
-+	GATE_MDP0(CLK_MDP1_MDP_AAL0, "mdp1_mdp_aal0", "mdp", 8),
-+	GATE_MDP0(CLK_MDP1_MDP_RSZ0, "mdp1_mdp_rsz0", "mdp", 9),
-+	GATE_MDP0(CLK_MDP1_MDP_RSZ2, "mdp1_mdp_rsz2", "mdp", 10),
-+	GATE_MDP0(CLK_MDP1_MDP_TDSHP0, "mdp1_mdp_tdshp0", "mdp", 11),
-+	GATE_MDP0(CLK_MDP1_MDP_COLOR0, "mdp1_mdp_color0", "mdp", 12),
-+	GATE_MDP0(CLK_MDP1_MDP_WROT0, "mdp1_mdp_wrot0", "mdp", 13),
-+	GATE_MDP0(CLK_MDP1_MDP_WROT1, "mdp1_mdp_wrot1", "mdp", 14),
-+	GATE_MDP0(CLK_MDP1_MDP_WROT2, "mdp1_mdp_wrot2", "mdp", 15),
-+	GATE_MDP0(CLK_MDP1_MDP_FAKE_ENG0, "mdp1_mdp_fake_eng0", "mdp", 16),
-+	GATE_MDP0(CLK_MDP1_APB_DB, "mdp1_apb_db", "mdp", 17),
-+	GATE_MDP0(CLK_MDP1_MDP_DLI_ASYNC0, "mdp1_mdp_dli_async0", "mdp", 18),
-+	GATE_MDP0(CLK_MDP1_MDP_DLI_ASYNC1, "mdp1_mdp_dli_async1", "mdp", 19),
-+	GATE_MDP0(CLK_MDP1_MDP_DLO_ASYNC0, "mdp1_mdp_dlo_async0", "mdp", 20),
-+	GATE_MDP0(CLK_MDP1_MDP_DLO_ASYNC1, "mdp1_mdp_dlo_async1", "mdp", 21),
-+	GATE_MDP0(CLK_MDP1_MDP_DLI_ASYNC2, "mdp1_mdp_dli_async2", "mdp", 22),
-+	GATE_MDP0(CLK_MDP1_MDP_DLO_ASYNC2, "mdp1_mdp_dlo_async2", "mdp", 23),
-+	GATE_MDP0(CLK_MDP1_MDP_DLO_ASYNC3, "mdp1_mdp_dlo_async3", "mdp", 24),
-+	GATE_MDP0(CLK_MDP1_IMG_DL_ASYNC0, "mdp1_img_dl_async0", "mdp", 25),
-+	GATE_MDP0(CLK_MDP1_MDP_RROT0, "mdp1_mdp_rrot0", "mdp", 26),
-+	GATE_MDP0(CLK_MDP1_MDP_MERGE0, "mdp1_mdp_merge0", "mdp", 27),
-+	GATE_MDP0(CLK_MDP1_MDP_C3D0, "mdp1_mdp_c3d0", "mdp", 28),
-+	GATE_MDP0(CLK_MDP1_MDP_FG0, "mdp1_mdp_fg0", "mdp", 29),
-+	GATE_MDP0(CLK_MDP1_MDP_CLA2, "mdp1_mdp_cla2", "mdp", 30),
-+	GATE_MDP0(CLK_MDP1_MDP_DLO_ASYNC4, "mdp1_mdp_dlo_async4", "mdp", 31),
-+	/* MDP1-1 */
-+	GATE_MDP1(CLK_MDP1_VPP_RSZ0, "mdp1_vpp_rsz0", "mdp", 0),
-+	GATE_MDP1(CLK_MDP1_VPP_RSZ1, "mdp1_vpp_rsz1", "mdp", 1),
-+	GATE_MDP1(CLK_MDP1_MDP_DLO_ASYNC5, "mdp1_mdp_dlo_async5", "mdp", 2),
-+	GATE_MDP1(CLK_MDP1_IMG0, "mdp1_img0", "mdp", 3),
-+	GATE_MDP1(CLK_MDP1_F26M, "mdp1_f26m", "clk26m", 27),
-+	/* MDP1-2 */
-+	GATE_MDP2(CLK_MDP1_IMG_DL_RELAY0, "mdp1_img_dl_relay0", "mdp", 0),
-+	GATE_MDP2(CLK_MDP1_IMG_DL_RELAY1, "mdp1_img_dl_relay1", "mdp", 8),
-+};
-+
-+static const struct mtk_clk_desc mdp1_mcd = {
-+	.clks = mdp1_clks,
-+	.num_clks = ARRAY_SIZE(mdp1_clks),
-+	.need_runtime_pm = true,
-+};
-+
-+
-+static const struct mtk_gate mdp_clks[] = {
-+	/* MDP0 */
-+	GATE_MDP0(CLK_MDP_MDP_MUTEX0, "mdp_mdp_mutex0", "mdp", 0),
-+	GATE_MDP0(CLK_MDP_SMI0, "mdp_smi0", "mdp", 1),
-+	GATE_MDP0(CLK_MDP_APB_BUS, "mdp_apb_bus", "mdp", 2),
-+	GATE_MDP0(CLK_MDP_MDP_RDMA0, "mdp_mdp_rdma0", "mdp", 3),
-+	GATE_MDP0(CLK_MDP_MDP_RDMA1, "mdp_mdp_rdma1", "mdp", 4),
-+	GATE_MDP0(CLK_MDP_MDP_RDMA2, "mdp_mdp_rdma2", "mdp", 5),
-+	GATE_MDP0(CLK_MDP_MDP_BIRSZ0, "mdp_mdp_birsz0", "mdp", 6),
-+	GATE_MDP0(CLK_MDP_MDP_HDR0, "mdp_mdp_hdr0", "mdp", 7),
-+	GATE_MDP0(CLK_MDP_MDP_AAL0, "mdp_mdp_aal0", "mdp", 8),
-+	GATE_MDP0(CLK_MDP_MDP_RSZ0, "mdp_mdp_rsz0", "mdp", 9),
-+	GATE_MDP0(CLK_MDP_MDP_RSZ2, "mdp_mdp_rsz2", "mdp", 10),
-+	GATE_MDP0(CLK_MDP_MDP_TDSHP0, "mdp_mdp_tdshp0", "mdp", 11),
-+	GATE_MDP0(CLK_MDP_MDP_COLOR0, "mdp_mdp_color0", "mdp", 12),
-+	GATE_MDP0(CLK_MDP_MDP_WROT0, "mdp_mdp_wrot0", "mdp", 13),
-+	GATE_MDP0(CLK_MDP_MDP_WROT1, "mdp_mdp_wrot1", "mdp", 14),
-+	GATE_MDP0(CLK_MDP_MDP_WROT2, "mdp_mdp_wrot2", "mdp", 15),
-+	GATE_MDP0(CLK_MDP_MDP_FAKE_ENG0, "mdp_mdp_fake_eng0", "mdp", 16),
-+	GATE_MDP0(CLK_MDP_APB_DB, "mdp_apb_db", "mdp", 17),
-+	GATE_MDP0(CLK_MDP_MDP_DLI_ASYNC0, "mdp_mdp_dli_async0", "mdp", 18),
-+	GATE_MDP0(CLK_MDP_MDP_DLI_ASYNC1, "mdp_mdp_dli_async1", "mdp", 19),
-+	GATE_MDP0(CLK_MDP_MDP_DLO_ASYNC0, "mdp_mdp_dlo_async0", "mdp", 20),
-+	GATE_MDP0(CLK_MDP_MDP_DLO_ASYNC1, "mdp_mdp_dlo_async1", "mdp", 21),
-+	GATE_MDP0(CLK_MDP_MDP_DLI_ASYNC2, "mdp_mdp_dli_async2", "mdp", 22),
-+	GATE_MDP0(CLK_MDP_MDP_DLO_ASYNC2, "mdp_mdp_dlo_async2", "mdp", 23),
-+	GATE_MDP0(CLK_MDP_MDP_DLO_ASYNC3, "mdp_mdp_dlo_async3", "mdp", 24),
-+	GATE_MDP0(CLK_MDP_IMG_DL_ASYNC0, "mdp_img_dl_async0", "mdp", 25),
-+	GATE_MDP0(CLK_MDP_MDP_RROT0, "mdp_mdp_rrot0", "mdp", 26),
-+	GATE_MDP0(CLK_MDP_MDP_MERGE0, "mdp_mdp_merge0", "mdp", 27),
-+	GATE_MDP0(CLK_MDP_MDP_C3D0, "mdp_mdp_c3d0", "mdp", 28),
-+	GATE_MDP0(CLK_MDP_MDP_FG0, "mdp_mdp_fg0", "mdp", 29),
-+	GATE_MDP0(CLK_MDP_MDP_CLA2, "mdp_mdp_cla2", "mdp", 30),
-+	GATE_MDP0(CLK_MDP_MDP_DLO_ASYNC4, "mdp_mdp_dlo_async4", "mdp", 31),
-+	/* MDP1 */
-+	GATE_MDP1(CLK_MDP_VPP_RSZ0, "mdp_vpp_rsz0", "mdp", 0),
-+	GATE_MDP1(CLK_MDP_VPP_RSZ1, "mdp_vpp_rsz1", "mdp", 1),
-+	GATE_MDP1(CLK_MDP_MDP_DLO_ASYNC5, "mdp_mdp_dlo_async5", "mdp", 2),
-+	GATE_MDP1(CLK_MDP_IMG0, "mdp_img0", "mdp", 3),
-+	GATE_MDP1(CLK_MDP_F26M, "mdp_f26m", "clk26m", 27),
-+	/* MDP2 */
-+	GATE_MDP2(CLK_MDP_IMG_DL_RELAY0, "mdp_img_dl_relay0", "mdp", 0),
-+	GATE_MDP2(CLK_MDP_IMG_DL_RELAY1, "mdp_img_dl_relay1", "mdp", 8),
-+};
-+
-+static const struct mtk_clk_desc mdp_mcd = {
-+	.clks = mdp_clks,
-+	.num_clks = ARRAY_SIZE(mdp_clks),
-+	.need_runtime_pm = true,
-+};
-+
-+static const struct of_device_id of_match_clk_mt8196_mdpsys[] = {
-+	{ .compatible = "mediatek,mt8196-mdpsys1", .data = &mdp1_mcd },
-+	{ .compatible = "mediatek,mt8196-mdpsys0", .data = &mdp_mcd },
-+	{ /* sentinel */ }
-+};
-+MODULE_DEVICE_TABLE(of, of_match_clk_mt8196_mdpsys);
-+
-+static struct platform_driver clk_mt8196_mdpsys_drv = {
-+	.probe = mtk_clk_simple_probe,
-+	.remove = mtk_clk_simple_remove,
-+	.driver = {
-+		.name = "clk-mt8196-mdpsys",
-+		.of_match_table = of_match_clk_mt8196_mdpsys,
-+	},
-+};
-+module_platform_driver(clk_mt8196_mdpsys_drv);
-+
-+MODULE_DESCRIPTION("MediaTek MT8196 Multimedia Data Path clocks driver");
-+MODULE_LICENSE("GPL");
--- 
-2.39.5
+Reviewed-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
 
+(as I internally reviewed it before submission)
+
+--=20
+Thanks,
+
+N=C3=ADcolas
 
