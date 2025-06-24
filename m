@@ -4,81 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C64BC71157
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jun 2025 04:00:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E2D9C77B7C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jun 2025 04:09:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eEY0+4y3gdNHlGFTzn9MLgiD1FrJm+HM+oTRXBGFjmU=; b=r2Nxyf9OXVRRO7WxqHfb4Yrz4U
-	Gi7pRiRLj4AzExSCqeJJ8IBrXU2OclDKJTtCZvXYrRqFcR5Wbp2XIw8P037ys5Z7xOhjZ6zknlzlF
-	+3HtME+GBe8s9wRaEz4Y51TiV6MAzM12cF/wORm+JeiNaOwRWL/BIEUykqQHm4ezRPc7XavxpceHj
-	wQQTnTEYpFkTb9i6kS6D6DatDr/4CO1Cxn+YNM16aZccsCcCpl5cFvs89nt/a2DOuF9w+wIyIiD3E
-	QGHqF/dd9ZtkeIRzcyJGnxrKeoOJiJEPJjGZF/SNMIGXgdnTQf49elqKtyMrC2q9Dg1uPAkSngBkx
-	jrTi0XOw==;
+	bh=iZLBQ5GMO3S5FZKU93RAqvRqbEiTSgWH++nyXw8Nmek=; b=N6mRddiIjTO7MJeeYPIFXF3hG8
+	kxuNLSpphJ3yqWuniWwvSXWnxc8/FTu3iVHHfoiJbQlKHwqeinXvSXm/s3q9vBt7txIVC57omRdCZ
+	fUfzem112XgVMVH7MB2qf9JnromLul2KPxvzRT1fiCzP95UUt/L4mjoKdxJEtMK3Eve2+YRvNWShv
+	rRh7PlFKAPOWXj/KJ0eQLGiXz5OoSmEIqbgr55D5j8qm5KtorRB2Qlb31F7TSy+k1D13/Ghvae8Pj
+	e62piODMJ15R22UpeDAkK5p9OraKUgcldctU+6a9qtAkmELhA8MsosCZe8DjL+EIFIW4nRJ3Ket9s
+	j3dsLq7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTupL-00000004aeY-2pkt;
-	Tue, 24 Jun 2025 04:00:07 +0000
-Received: from mgamail.intel.com ([192.198.163.17])
+	id 1uTuyQ-00000004awb-3gNL;
+	Tue, 24 Jun 2025 04:09:30 +0000
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTumn-00000004aOt-3VVr;
-	Tue, 24 Jun 2025 03:57:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1750737449; x=1782273449;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=KMEHcEq0X+pga2fcQQgj1lL/UKHHxkGD3F5FhJ7ooD8=;
-  b=hai3S5MzFYLhhdkLe7aut2e3FV/XSshACCtMO0ezKa4vpcjDkuJ20GUD
-   2MQ9GMYzSbtgWSNcZHDOob+UNA61dV8DaHdNpdKviSUcIxqB93PTzfA3x
-   0gp+S06HuVuEU8xP/YFFJvbh6W2i0ihJZn3B7TUJTngfFmgQpNxwTrqtE
-   BS2W9c56f//cVa/XYCVGyumWOcV1yTTJZ0ehwCvochQl1EPOifXeZqaEa
-   hjTxdMfbvgyMYP84tqhlhjo71c135sXFbg30yG3xMQ+uj17s1s97Fdy4u
-   bM2IJ2iOIgI2Cdm1F2gB9KCEu7LcU5vhPpqNpDTpLF2M8DM5a23bOmqzU
-   A==;
-X-CSE-ConnectionGUID: bL28e3K1R+e45y+fJUMTgQ==
-X-CSE-MsgGUID: ftDO3DnwT3yDpYw2lU+rVg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11473"; a="52900006"
-X-IronPort-AV: E=Sophos;i="6.16,260,1744095600"; 
-   d="scan'208";a="52900006"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
-  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Jun 2025 20:57:25 -0700
-X-CSE-ConnectionGUID: VRKdCaRxSG6B/sLih1UGgA==
-X-CSE-MsgGUID: UwxYRyrQQxy2q7hZRfl5dw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,260,1744095600"; 
-   d="scan'208";a="157282862"
-Received: from lkp-server01.sh.intel.com (HELO e8142ee1dce2) ([10.239.97.150])
-  by fmviesa004.fm.intel.com with ESMTP; 23 Jun 2025 20:57:22 -0700
-Received: from kbuild by e8142ee1dce2 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1uTume-000RhR-2W;
-	Tue, 24 Jun 2025 03:57:20 +0000
-Date: Tue, 24 Jun 2025 11:56:58 +0800
-From: kernel test robot <lkp@intel.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	broonie@kernel.org
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	lgirdwood@gmail.com, robh@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v1 2/6] regulator: Add support for MediaTek MT6316 SPMI
- PMIC Regulators
-Message-ID: <202506241156.TWxCzjh3-lkp@intel.com>
-References: <20250623120016.108732-3-angelogioacchino.delregno@collabora.com>
+	id 1uTuyN-00000004avs-36Ld
+	for linux-mediatek@lists.infradead.org;
+	Tue, 24 Jun 2025 04:09:29 +0000
+Received: by mail-pf1-x433.google.com with SMTP id d2e1a72fcca58-747c2cc3419so6103b3a.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 23 Jun 2025 21:09:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1750738166; x=1751342966; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=iZLBQ5GMO3S5FZKU93RAqvRqbEiTSgWH++nyXw8Nmek=;
+        b=X8MlNozrhph/KL3uoKomVWkojbyemlzS1R7IExBQ26GUHCRFgJyHRxktp6BuTMOOzb
+         vypnHa6IiiAYdeSWhC9Xk5y2yKp65urFCluSOGidbZklO7hOx+V7GvNkp2vPEvbj/hkw
+         NEHO3/boRN0rgeLFMjpapeDZMiTth7obKOh5A=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1750738166; x=1751342966;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=iZLBQ5GMO3S5FZKU93RAqvRqbEiTSgWH++nyXw8Nmek=;
+        b=Y+pc/pM2tge5++axVJ2C2YMSqJ6wFOW3jN0oHgtwPJIJMlKrelVnx7Jkq43Nk90Qau
+         Fizzk/pvJDMHMnn1ccjTi5+xN/n6DE0xtHWnHFazgUaWTZ8vMuR3zSFcP9MT27RCEeb5
+         c6AdPi4CmlnMN7G3Q17ZgqdoOXC/EGVvG8lYKkax37Ix3+TxRW6+5vaqdSyVuQWaYF0/
+         S+VrKlcp1964AE/bXoWeg6+yl3qRAdrg6wRs1yrYjU7ni144lyi5Ky7q7We7UXd9Elld
+         ETj5hGmLVJJDt555RmErxLx4ElAsaDZ4wk2R7pC3JeWwQ6hrUk8jsKxFmuwFGvep0ZWA
+         Zerw==
+X-Gm-Message-State: AOJu0YwWycsPbdN5RQw0LJiZCmU4b1loZl0YJ/9+B8gR5MVchJO1qXsh
+	UuUPniM27M/u0Idi8oNXh7+1O6qylSj/4QjZcDJ6d3XCOP9QY779Eq5XNPLBfrNeMw==
+X-Gm-Gg: ASbGncujzZtBC05doQKZapD3mqKSHTHdJsaZKEOVxSJcR5PK2GoDHE9Jn/M65WzyhTw
+	XCcfzaRQfekBt0a9BoRS2fTijdsqMgZXq06xfq3XZ2JBHU6CVdwjP8ooeFRWWH9Hz9262Wm5s1Y
+	1Prx+EqMHg62kwOOkCeMHrvyBeJsnrQYmtW2pX0NATdbEx3FKsYBuBYbR+9ZknQDIdCWRDqb8MO
+	IWn0XVTIyQIGDiEsMTlolytlp+jsomScbAPIAIksYxM2aNOG48cfkcv8ZdLVm6Oz4n+5dlDxoG1
+	UG4+kFyNXBh59go4d2fHyI8gxQJofpn2j16kRcorXaiw6o3elGZJu7U=
+X-Google-Smtp-Source: AGHT+IE7k5HWqp6yZ4coLK9zxOOKVUatWn7F2bJv6NZWHFFs+9T9PielkjniSbuXSSxVbFmuLwM0yQ==
+X-Received: by 2002:a05:6a00:b8f:b0:736:3ea8:4805 with SMTP id d2e1a72fcca58-7490d7a170cmr19157532b3a.7.1750738166415;
+        Mon, 23 Jun 2025 21:09:26 -0700 (PDT)
+Received: from google.com ([2401:fa00:1:10:9e4d:2f37:d5ea:8954])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-749b5e4069csm679035b3a.65.2025.06.23.21.09.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 23 Jun 2025 21:09:26 -0700 (PDT)
+Date: Tue, 24 Jun 2025 12:09:22 +0800
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-mediatek@lists.infradead.org, robh@kernel.org, krzk+dt@kernel.org,
+	conor+dt@kernel.org, matthias.bgg@gmail.com, weiyi.lu@mediatek.com,
+	tinghan.shen@mediatek.com, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com
+Subject: Re: [PATCH v1 1/2] arm64: dts: mediatek: mt8195: Add subsys clks for
+ PCIe power domains
+Message-ID: <20250624040922.GA1077353@google.com>
+References: <20250402090615.25871-1-angelogioacchino.delregno@collabora.com>
+ <20250402090615.25871-2-angelogioacchino.delregno@collabora.com>
+ <CAGXv+5GHf5D3JDh+OZ-Cxf91PTAGYk2+jvuwK1gymy=k1YOo_A@mail.gmail.com>
+ <33847b76-11b5-4233-a5e6-9f8fd3c691a2@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20250623120016.108732-3-angelogioacchino.delregno@collabora.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <33847b76-11b5-4233-a5e6-9f8fd3c691a2@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250623_205729_941682_6178477B 
-X-CRM114-Status: GOOD (  13.97  )
+X-CRM114-CacheID: sfid-20250623_210928_076446_9AC26852 
+X-CRM114-Status: GOOD (  27.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,101 +101,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi AngeloGioacchino,
+On Wed, Apr 02, 2025 at 12:07:16PM +0200, AngeloGioacchino Del Regno wrote:
+> Il 02/04/25 11:34, Chen-Yu Tsai ha scritto:
+> > On Wed, Apr 2, 2025 at 5:10 PM AngeloGioacchino Del Regno
+> > <angelogioacchino.delregno@collabora.com> wrote:
+> > > 
+> > > The PCIe MAC needs the sram to be powered on for internal IP
+> > > access and it has always worked before because the bootloader
+> > > on Chromebooks was leaving the PCIe PERI_AO MEM clocks on
+> > > before booting the kernel.
+> > > Add the SRAM (mem) clock as a subsystem clock on the PCIe MAC
+> > > P0 and P1 to correctly describe the hardware and to avoid any
+> > > issue with bootloaders behaving differently.
+> > > 
+> > > Fixes: 2b515194bf0c ("arm64: dts: mt8195: Add power domains controller")
+> > > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> > > ---
+> > >   arch/arm64/boot/dts/mediatek/mt8195.dtsi | 4 ++++
+> > >   1 file changed, 4 insertions(+)
+> > > 
+> > > diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> > > index b33726da900b..0cb96cba727a 100644
+> > > --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> > > +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> > > @@ -792,12 +792,16 @@ power-domain@MT8195_POWER_DOMAIN_CAM_MRAW {
+> > > 
+> > >                                  power-domain@MT8195_POWER_DOMAIN_PCIE_MAC_P0 {
+> > >                                          reg = <MT8195_POWER_DOMAIN_PCIE_MAC_P0>;
+> > > +                                       clocks = <&pericfg_ao CLK_PERI_AO_PCIE_P0_MEM>;
+> > > +                                       clock-names = "ss-pextp0-mem";
+> > 
+> > Doesn't the PCIe host controller already reference this clock?
+> > 
+> > >                                          mediatek,infracfg = <&infracfg_ao>;
+> > >                                          #power-domain-cells = <0>;
+> > >                                  };
+> > > 
+> > >                                  power-domain@MT8195_POWER_DOMAIN_PCIE_MAC_P1 {
+> > >                                          reg = <MT8195_POWER_DOMAIN_PCIE_MAC_P1>;
+> > > +                                       clocks = <&pericfg_ao CLK_PERI_AO_PCIE_P1_MEM>;
+> > > +                                       clock-names = "ss-pextp1-mem";
+> > 
+> > Not this one though, since:
+> > 
+> >           /* Designer has connect pcie1 with peri_mem_p0 clock */
+> >           <&pericfg_ao CLK_PERI_AO_PCIE_P0_MEM>;
+> > 
+> 
+> I'm not sure what this comment refers to - as in, whether this is referring
+> to the board designer or to the SoC//IP designer...
 
-kernel test robot noticed the following build warnings:
+When MediaTek says "designer" they are referring to the hardware designer,
+in this case I believe it would be the SoC-level hardware designer /
+integrator.
 
-[auto build test WARNING on broonie-regulator/for-next]
-[also build test WARNING on linus/master v6.16-rc3 next-20250623]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/AngeloGioacchino-Del-Regno/dt-bindings-regulator-Document-MediaTek-MT6316-PMIC-Regulators/20250623-200316
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
-patch link:    https://lore.kernel.org/r/20250623120016.108732-3-angelogioacchino.delregno%40collabora.com
-patch subject: [PATCH v1 2/6] regulator: Add support for MediaTek MT6316 SPMI PMIC Regulators
-config: i386-buildonly-randconfig-004-20250624 (https://download.01.org/0day-ci/archive/20250624/202506241156.TWxCzjh3-lkp@intel.com/config)
-compiler: clang version 20.1.2 (https://github.com/llvm/llvm-project 58df0ef89dd64126512e4ee27b4ac3fd8ddf6247)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250624/202506241156.TWxCzjh3-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202506241156.TWxCzjh3-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
->> drivers/regulator/mt6316-regulator.c:205:14: warning: variable 'ret' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
-     205 |                 } else if (cur_mode == REGULATOR_MODE_IDLE) {
-         |                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   drivers/regulator/mt6316-regulator.c:218:6: note: uninitialized use occurs here
-     218 |         if (ret) {
-         |             ^~~
-   drivers/regulator/mt6316-regulator.c:205:10: note: remove the 'if' if its condition is always true
-     205 |                 } else if (cur_mode == REGULATOR_MODE_IDLE) {
-         |                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   drivers/regulator/mt6316-regulator.c:189:19: note: initialize the variable 'ret' to silence this warning
-     189 |         int cur_mode, ret;
-         |                          ^
-         |                           = 0
->> drivers/regulator/mt6316-regulator.c:193:25: warning: variable 'regmap' is uninitialized when used here [-Wuninitialized]
-     193 |                 ret = regmap_set_bits(regmap, info->modeset_reg, info->modeset_mask);
-         |                                       ^~~~~~
-   drivers/regulator/mt6316-regulator.c:188:23: note: initialize the variable 'regmap' to silence this warning
-     188 |         struct regmap *regmap;
-         |                              ^
-         |                               = NULL
-   2 warnings generated.
-
-
-vim +205 drivers/regulator/mt6316-regulator.c
-
-   183	
-   184	static int mt6316_regulator_set_mode(struct regulator_dev *rdev,
-   185					     unsigned int mode)
-   186	{
-   187		struct mt6316_regulator_info *info = rdev_get_drvdata(rdev);
-   188		struct regmap *regmap;
-   189		int cur_mode, ret;
-   190	
-   191		switch (mode) {
-   192		case REGULATOR_MODE_FAST:
- > 193			ret = regmap_set_bits(regmap, info->modeset_reg, info->modeset_mask);
-   194			break;
-   195		case REGULATOR_MODE_NORMAL:
-   196			cur_mode = mt6316_regulator_get_mode(rdev);
-   197			if (cur_mode < 0) {
-   198				ret = cur_mode;
-   199				break;
-   200			}
-   201	
-   202			if (cur_mode == REGULATOR_MODE_FAST) {
-   203				ret = regmap_clear_bits(regmap, info->modeset_reg, info->modeset_mask);
-   204				break;
- > 205			} else if (cur_mode == REGULATOR_MODE_IDLE) {
-   206				ret = regmap_clear_bits(regmap, info->lp_mode_reg, info->lp_mode_mask);
-   207				if (ret == 0)
-   208					usleep_range(100, 200);
-   209			}
-   210			break;
-   211		case REGULATOR_MODE_IDLE:
-   212			ret = regmap_set_bits(regmap, info->lp_mode_reg, info->lp_mode_mask);
-   213			break;
-   214		default:
-   215			ret = -EINVAL;
-   216		}
-   217	
-   218		if (ret) {
-   219			dev_err(&rdev->dev, "Failed to set mode %u: %d\n", mode, ret);
-   220			return ret;
-   221		}
-   222	
-   223		return 0;
-   224	}
-   225	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+> ...but if MediaTek can clarify, I'd be happy :-)
+> 
+> Cheers,
+> Angelo
+> 
+> > 
+> > ChenYu
+> > 
+> > >                                          mediatek,infracfg = <&infracfg_ao>;
+> > >                                          #power-domain-cells = <0>;
+> > >                                  };
+> > > --
+> > > 2.48.1
+> > > 
+> > > 
+> 
 
