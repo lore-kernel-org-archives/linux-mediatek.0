@@ -4,70 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E606C77B7C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jun 2025 12:18:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20368C77B7F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jun 2025 12:30:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=nqHVGMxhDg52YSCi1jgl7ccHJpCWVWC3C9YGgQGOt9A=; b=1lOsrFO2zwyc3intMNWdnom5ng
-	uaVBH9scfEkYA8Pv+TxcOUu8VNt153Cczb20Na2Oxz6KJ2qJnSvisk2dFJt/e2JUGINjvYolcYQkk
-	llA9tXd5nSZ8ANsOdtySj52S32hUVaSPNJj6SIZHOiG4F2EI1aeaoJCtwI28yHL1iAW1D6BzCpEbn
-	UBeYBgTORrN5UuH8XwOx6XpxXrMponVZX5mvNaIQSC//dnHRptklre+AvEll5jf2uK57A2e687ym/
-	abHfyhFNefR5x8TGAIK8irC4O1w9sxmmpUYk4TVSzBVLKz7oKIEaNzSW9heSdgQRqBfF9c5VF6QEv
-	3Vlsd8eQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0pEN8gXZgdAsFBjyK1sPhSnwBV3mYYXNO1YIRz4tk4A=; b=sP/86YlawK52IFELp7m+5vTOKG
+	7IRDSQzrrktF5Tlb64ovoJ11dBs8gBVW/xjCeIaQBP+UTBmQKqAVIBzrSrwnKkSPupBH7BgDV/rj9
+	2WRQnhFsXRar5JMd7Scs6koMxB79mxRa+u+0SnLbv1d+ESLTKyC6twDX/UgTI+Dp1YRVcGkQJ/SXC
+	KaHLff1AogotQJNahO+AyOjXR41+FN2odMPBMKZxtSQtahwFF8e5u7CXhyW7lDcsCIo+nHxP7uMyw
+	NPsTJN81DcpDhXjLMRCm0KsE3nTABHSoWWyl9jE67ozIIMRoLyqOakN0nYL7P5vXMEPProdaRcuy6
+	YtGs5Lnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uU2bq-00000005XOR-0nGz;
-	Tue, 24 Jun 2025 12:18:42 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1uU2nc-00000005aOT-0cxI;
+	Tue, 24 Jun 2025 12:30:52 +0000
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uU1tA-00000005RGq-1n9r;
-	Tue, 24 Jun 2025 11:32:33 +0000
-X-UUID: e7e1f0b450ee11f09eb0dd999d3936bf-20250624
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=nqHVGMxhDg52YSCi1jgl7ccHJpCWVWC3C9YGgQGOt9A=;
-	b=Gq40pf+SfwLUvv9DiX3g+fwWPt6caPt6bBMiwRseDJBIzc9jWlOz9bZtaP3qfSwo/HlYOLrfzOdc9sfppRN4Y7dC40//bhrcjaosr0sFgNYlKQnY9O+BPRFPTOz+RW6Rg3uPU3gUYV47caj8iH7V9wIRffY53MTAeAmmL4mTA9k=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.2,REQID:cc951a3e-07fc-45d6-ae9f-190012713afc,IP:0,UR
-	L:0,TC:0,Content:0,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-30
-X-CID-META: VersionHash:9eb4ff7,CLOUDID:42e82582-cc21-4267-87cf-e75829fa6365,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:2,IP:nil
-	,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:
-	1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0
-X-CID-BAS: 0,_,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: e7e1f0b450ee11f09eb0dd999d3936bf-20250624
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
-	(envelope-from <jason-jh.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1066440267; Tue, 24 Jun 2025 04:32:27 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Tue, 24 Jun 2025 19:32:23 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Tue, 24 Jun 2025 19:32:23 +0800
-From: Jason-JH Lin <jason-jh.lin@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, David Airlie <airlied@gmail.com>
-Subject: [PATCH v2] drm/mediatek: Add wait_event_timeout when disabling plane
-Date: Tue, 24 Jun 2025 19:31:41 +0800
-Message-ID: <20250624113223.443274-1-jason-jh.lin@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1uU2fl-00000005YjM-1t1R
+	for linux-mediatek@lists.infradead.org;
+	Tue, 24 Jun 2025 12:22:46 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-adb37582eb5so62649566b.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 24 Jun 2025 05:22:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1750767764; x=1751372564; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=0pEN8gXZgdAsFBjyK1sPhSnwBV3mYYXNO1YIRz4tk4A=;
+        b=L8hX6gEvDldy5rw8/SBOzQlT0Qo4X8kxgjK05AEKkvrplV9pCe5+sDg7PyFR/f2GAN
+         JbqgKmXHbtjoilNuhN2fgMTf8W2FLpSl5Qu4wQUS62Ig2g8o8MLQ1/KP1Nx3yNI3PmIn
+         jDnecbLqGcmmdu0PABprvTaUAhsYqAbltNlRp04o4sqwon61S0yxFxKPAyEc4iQbanXG
+         Ks8yaNe7JCMobd2YLHusPX76PMaArEgw5D3yebHDbJrqJ4EWyx0WPI3ZAnLgWSGg3c+z
+         bGpNxxlkVmhioUUu0mxXdLfyJFXRdb17Va5UxemcZDwoaUWwz16+5DWA4U8vnv1lZd6S
+         ZsRw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1750767764; x=1751372564;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=0pEN8gXZgdAsFBjyK1sPhSnwBV3mYYXNO1YIRz4tk4A=;
+        b=r4OruvDqVTqx1LWxUHqoW5wnGwjdIdWTHGg4+w/WHpAZ9LfK+YTbiuXYiRj0MEjBKO
+         ZdwFbNFZVuCGMpBqQBvD8TIpMSYB762jNJWXHQFExDFQ8dEqTm06PHh/sYla0y3kOARB
+         /EPw8RS5K6cc5cc/T7z64Qm7o4YnpncfANMpTamzronDTwOX+Zlm8OaY+uvNbU1Q7b4Q
+         lIN8S10eIh6cjwgUIan33NTPgt9FepxdHhGNokchEiPuFjSzeeSWsnkaAK2mGV9xYro5
+         k2PWYZDVkqQ4bIFMpBzePwNkvm9URpPdlvVZmpKckSsz9EoIPDFwnmnu+jhtVRq4PIIO
+         AM6Q==
+X-Forwarded-Encrypted: i=1; AJvYcCXtsCGeXvqTgc3zXwAOqyv1h/6DeXEqa+4whadO/wFsyrkbo4NU8VKZ+Xo5VMUjo9VAKkJEk7+Jvc2+R2PpOA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwEZRPSkQxI09NlFNaEoOWGWp+trN+UbkocDcM12Fo8AmJHlavH
+	l0RjTjiQbGkNKAiNl98t4h4C3iiPxxBZYqEYyIhyxcwbC2jO3uqjtvhFMp2PgFFann4=
+X-Gm-Gg: ASbGncvc3hRVaTLq5C8czFjtQBLHskWbQP2ACjCaLgOB6nzo6mOFMuexiRh4D8GLyyy
+	ymDfmTcSLNLsotwBn0iDOGVm9YMbXfWqdFOP95LIdu6cCA0ZnnWP8alXKzRj1Mum/ulDEyOHiiO
+	oSL9wcnQcZdjWxphajsHNA+xwMRtd+eLX6GVgt5ROanLgesMU0gtYQcJtYChZxRw4ckTJZKSPSI
+	LzYehBG2PgLIfmkFmAGRDgGsY8Bc9cYzKMw1rEMCNEYCEBKVhDquRCKfU6IM29mBlFWmWNdc5dS
+	xG130hPEbMxdzz7CWzcsoXeXj1NYJTtDLnHDTYS/pvg8BAkSIGPmo9bCXgWObFG0rJbfQQNTGPS
+	Hai3sZm5wvMzjntYY
+X-Google-Smtp-Source: AGHT+IHClClHU8Au2E96p3VcVy/ff0krSWCye8OOGPLD9aP9mvkIHbrhp24LtglbjPmIGsJ5dSea2w==
+X-Received: by 2002:a17:907:d91:b0:ade:3094:d70d with SMTP id a640c23a62f3a-ae057b2c11bmr476040266b.16.1750767763870;
+        Tue, 24 Jun 2025 05:22:43 -0700 (PDT)
+Received: from [192.168.1.29] ([178.197.222.89])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ae0b3448efbsm56794966b.177.2025.06.24.05.22.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 24 Jun 2025 05:22:43 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Date: Tue, 24 Jun 2025 14:22:31 +0200
+Subject: [PATCH v3 2/3] iommu: omap: Use
+ syscon_regmap_lookup_by_phandle_args
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250624-syscon-phandle-args-iommu-v3-2-1a36487d69b8@linaro.org>
+References: <20250624-syscon-phandle-args-iommu-v3-0-1a36487d69b8@linaro.org>
+In-Reply-To: <20250624-syscon-phandle-args-iommu-v3-0-1a36487d69b8@linaro.org>
+To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, 
+ Robin Murphy <robin.murphy@arm.com>, Yong Wu <yong.wu@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: iommu@lists.linux.dev, linux-kernel@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1817;
+ i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
+ bh=Y2CybwO5O92qFRzmf6MiBBMqXPDVGxgZvsyOnSjjQXA=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBoWpiNSYzTl+2MUxaNx8XvXO4QwkWAl2BTxp+79
+ MVamFK8qjeJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaFqYjQAKCRDBN2bmhouD
+ 15sLEACByAyjNTvE5aoZpmaIOtqtDYxUQAJh1mOrJv0pfkE1rBoG8yp6pAowtxtJEEwgfEcU5F5
+ BKuN1dDYXM226/q2h2cDfS/EB/wYD4OcdC04BGpnhGrAn8l7z/p0QLoA+R8rahrL6Kmeurej1wp
+ 3I6MHQW/6mc7byXrEdjooXdl8zoK82GRQTm+GYSPL9dWxCNA9Jp4dfwdapw1V7KM4Xn+OzyIEZE
+ 0HyZOFfz72MCMXNBN6QiHMf62AZVoXMpu5HXzTiC+sQ4XNNngE6aeYz/99QuCkOpX+bsjAi+V3q
+ 8VPQeqkwbN+HaQZL7AGa0bGDViT8s0G6hY3w5hReKey6o/obX5VaBgcJn8dShzJ9N4VW64MvEkE
+ JzWuwnYmRHZZicPdB9a7usUhHnBeMThAqBOQx/VXoZOAvcLwPuFDbv5x73BbZ03KMs27+Fi9vgO
+ ScfFSK6YRA3sCBneffseNwpdbLsFFRITJN1pZSn8o4HqFTmRsS3HPCOtqnQEMRLEb2mnJISWcw9
+ 1lOOtBpQWZH0fgynm+mJGTl4ATeMTvpeW9RH7OyfWKnbrZ2Fr8zwWyhgeex1AeJJcL4QMibillA
+ WwrzuSgeLfN2UbX/ORvzOUZMmnQw6xlla3/5O8TpYG8PAa+ElTtlYy2c7EtwCcwfzfV2igtykwS
+ pDPqxuoBKGaKq/w==
+X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
+ fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250624_043232_484044_4FC1A314 
-X-CRM114-Status: GOOD (  17.02  )
+X-CRM114-CacheID: sfid-20250624_052245_496376_F9134BA3 
+X-CRM114-Status: GOOD (  10.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,107 +118,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Xiandong Wang <xiandong.wang@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Jason-JH Lin <jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Zhenxing Qin <zhenxing.qin@mediatek.com>, linux-kernel@vger.kernel.org, Yongqiang Niu <yongqiang.niu@mediatek.com>, Project_Global_Chrome_Upstream_Group@mediatek.com, Paul-PL Chen <paul-pl.chen@mediatek.com>, Xavier Chang <xavier.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>, Sirius Wang <sirius.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Jarried Lin <jarried.lin@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Our hardware registers are set through GCE, not by the CPU.
-DRM might assume the hardware is disabled immediately after calling
-atomic_disable() of drm_plane, but it is only truly disabled after the
-GCE IRQ is triggered.
+Use syscon_regmap_lookup_by_phandle_args() which is a wrapper over
+syscon_regmap_lookup_by_phandle() combined with getting the syscon
+argument.  Except simpler code this annotates within one line that given
+phandle has arguments, so grepping for code would be easier.
 
-Additionally, the cursor plane in DRM uses async_commit, so DRM will
-not wait for vblank and will free the buffer immediately after calling
-atomic_disable().
+There is also no real benefit in printing errors on missing syscon
+argument, because this is done just too late: runtime check on
+static/build-time data.  Dtschema and Devicetree bindings offer the
+static/build-time check for this already.
 
-To prevent the framebuffer from being freed before the layer disable
-settings are configured into the hardware, which can cause an IOMMU
-fault error, a wait_event_timeout has been added to wait for the
-ddp_cmdq_cb() callback,indicating that the GCE IRQ has been triggered.
-
-Fixes: 119f5173628a ("drm/mediatek: Add DRM Driver for Mediatek SoC MT8173.")
-Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Robin Murphy <robin.murphy@arm.com>
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- drivers/gpu/drm/mediatek/mtk_crtc.c  | 31 ++++++++++++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_crtc.h  |  1 +
- drivers/gpu/drm/mediatek/mtk_plane.c |  5 +++++
- 3 files changed, 37 insertions(+)
+ drivers/iommu/omap-iommu.c | 10 ++--------
+ 1 file changed, 2 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_crtc.c b/drivers/gpu/drm/mediatek/mtk_crtc.c
-index 8f6fba4217ec..0c856cc679de 100644
---- a/drivers/gpu/drm/mediatek/mtk_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_crtc.c
-@@ -719,6 +719,37 @@ int mtk_crtc_plane_check(struct drm_crtc *crtc, struct drm_plane *plane,
- 	return 0;
- }
+diff --git a/drivers/iommu/omap-iommu.c b/drivers/iommu/omap-iommu.c
+index 4448c0a512137c79195112eea25d762266c77bc3..30fdbabbc9c652990e6cd31d3c0a1a06633df9e6 100644
+--- a/drivers/iommu/omap-iommu.c
++++ b/drivers/iommu/omap-iommu.c
+@@ -1127,18 +1127,12 @@ static int omap_iommu_dra7_get_dsp_system_cfg(struct platform_device *pdev,
+ 	if (!of_device_is_compatible(np, "ti,dra7-dsp-iommu"))
+ 		return 0;
  
-+void mtk_crtc_plane_disable(struct drm_crtc *crtc, struct drm_plane *plane)
-+{
-+	struct mtk_crtc *mtk_crtc = to_mtk_crtc(crtc);
-+	struct mtk_plane_state *plane_state = to_mtk_plane_state(plane->state);
-+	int i;
-+
-+	/* no need to wait for disabling the plane by CPU */
-+	if (!mtk_crtc->cmdq_client.chan)
-+		return;
-+
-+	if (!mtk_crtc->enabled)
-+		return;
-+
-+	/* set pending plane state to disabled */
-+	for (i = 0; i < mtk_crtc->layer_nr; i++) {
-+		struct drm_plane *mtk_plane = &mtk_crtc->planes[i];
-+		struct mtk_plane_state *mtk_plane_state = to_mtk_plane_state(mtk_plane->state);
-+
-+		if (mtk_plane->index == plane->index) {
-+			memcpy(mtk_plane_state, plane_state, sizeof(*plane_state));
-+			break;
-+		}
-+	}
-+	mtk_crtc_update_config(mtk_crtc, false);
-+
-+	/* wait for planes to be disabled by CMDQ */
-+	wait_event_timeout(mtk_crtc->cb_blocking_queue,
-+			   mtk_crtc->cmdq_vblank_cnt == 0,
-+			   msecs_to_jiffies(500));
-+}
-+
- void mtk_crtc_async_update(struct drm_crtc *crtc, struct drm_plane *plane,
- 			   struct drm_atomic_state *state)
- {
-diff --git a/drivers/gpu/drm/mediatek/mtk_crtc.h b/drivers/gpu/drm/mediatek/mtk_crtc.h
-index 388e900b6f4d..828f109b83e7 100644
---- a/drivers/gpu/drm/mediatek/mtk_crtc.h
-+++ b/drivers/gpu/drm/mediatek/mtk_crtc.h
-@@ -21,6 +21,7 @@ int mtk_crtc_create(struct drm_device *drm_dev, const unsigned int *path,
- 		    unsigned int num_conn_routes);
- int mtk_crtc_plane_check(struct drm_crtc *crtc, struct drm_plane *plane,
- 			 struct mtk_plane_state *state);
-+void mtk_crtc_plane_disable(struct drm_crtc *crtc, struct drm_plane *plane);
- void mtk_crtc_async_update(struct drm_crtc *crtc, struct drm_plane *plane,
- 			   struct drm_atomic_state *plane_state);
- struct device *mtk_crtc_dma_dev_get(struct drm_crtc *crtc);
-diff --git a/drivers/gpu/drm/mediatek/mtk_plane.c b/drivers/gpu/drm/mediatek/mtk_plane.c
-index 655106bbb76d..59edbe26f01e 100644
---- a/drivers/gpu/drm/mediatek/mtk_plane.c
-+++ b/drivers/gpu/drm/mediatek/mtk_plane.c
-@@ -285,9 +285,14 @@ static void mtk_plane_atomic_disable(struct drm_plane *plane,
- 	struct drm_plane_state *new_state = drm_atomic_get_new_plane_state(state,
- 									   plane);
- 	struct mtk_plane_state *mtk_plane_state = to_mtk_plane_state(new_state);
-+	struct drm_plane_state *old_state = drm_atomic_get_old_plane_state(state,
-+									   plane);
-+
- 	mtk_plane_state->pending.enable = false;
- 	wmb(); /* Make sure the above parameter is set before update */
- 	mtk_plane_state->pending.dirty = true;
-+
-+	mtk_crtc_plane_disable(old_state->crtc, plane);
- }
+-	obj->syscfg =
+-		syscon_regmap_lookup_by_phandle(np, "ti,syscon-mmuconfig");
++	obj->syscfg = syscon_regmap_lookup_by_phandle_args(np, "ti,syscon-mmuconfig",
++							   1, &obj->id);
+ 	if (IS_ERR(obj->syscfg))
+ 		return dev_err_probe(&pdev->dev, PTR_ERR(obj->syscfg),
+ 				     "ti,syscon-mmuconfig property is missing\n");
  
- static void mtk_plane_atomic_update(struct drm_plane *plane,
+-	if (of_property_read_u32_index(np, "ti,syscon-mmuconfig", 1,
+-				       &obj->id)) {
+-		dev_err(&pdev->dev, "couldn't get the IOMMU instance id within subsystem\n");
+-		return -EINVAL;
+-	}
+-
+ 	if (obj->id != 0 && obj->id != 1) {
+ 		dev_err(&pdev->dev, "invalid IOMMU instance id\n");
+ 		return -EINVAL;
+
 -- 
-2.43.0
+2.48.1
 
 
