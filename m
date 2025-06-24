@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C93FFC77B7F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jun 2025 17:16:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 232BCC77B7C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jun 2025 17:20:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
 	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
 	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kSHnx67T+jpZvYiQlfO4tnE2dRkuMUOdaYmF/xatSC0=; b=cpjedUPqqw3NWraN0SsX5Mi/HN
-	KZr057wn54F55tZmZlSbEItd8uTrVVtPCIUSONyckNju5GD0SvOFN8sss/SecE5s61t33Isb4Gp9q
-	nREE0ubdRk17iy0txD4KqkCA+MMTyfkH5LEd1KebqfnznNvbCqTG+l7zD3PW2A/yx5sBBreCzyuEg
-	+HzpI3LtFgJQEIwnrnVeZyoDY3a+blXayieVGA41tdjJj3cE+Iidnxxqv3g6/J7ZFuyqYzKHdYbks
-	Gecj5zjtL6X/uLGbitag4QavecS7D5dl/qmBmMucbyDagRVSpjT6dMhhOYrO7rCLo+dljtznA9S6l
-	7Q13rR8Q==;
+	bh=C9Hv1uTZX3yr514rv90DZ1Rmj6G2ElIhixYW3I7htvM=; b=znUJEcXqN0kCJ7goMeB+dQPw+4
+	JCfWm1g9uDq/quUi9hYbxaTwKEnxrNV9QgIpDeXgVLSOAA/0QPLp9AdepLTzHIt2dt2uD3P6xcDg6
+	R4KP5f8Ygo5lFgaxoCxjwHUDhhtr9+0Cb3M+xx38G3/GiT0XTI5u1QS909Y6cXqD2t5QPm48OiZXO
+	8/+5/rs56M0IcR/DNVeZJ/jwQLEhRwPIpfqF3X39R4XCc4ora7GDYUEy/k5Oil1WfHzYz2KIge8Qn
+	OX6cWhNQ6Mf0A+WQvPLiMBUAWBn3vXBFL8HTHxYWEdYr/7vyU74bKWKDCzrj55WlZYz3JFQGCsSLO
+	BWSlU+dA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uU7Fj-00000006Mpk-32C2;
-	Tue, 24 Jun 2025 17:16:11 +0000
-Received: from sender4-op-o15.zoho.com ([136.143.188.15])
+	id 1uU7KE-00000006NMh-2qCF;
+	Tue, 24 Jun 2025 17:20:50 +0000
+Received: from sender4-op-o14.zoho.com ([136.143.188.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uU50E-00000005zC5-2RAq;
-	Tue, 24 Jun 2025 14:52:03 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1750776710; cv=none; 
+	id 1uU5BY-000000061h1-2KwB;
+	Tue, 24 Jun 2025 15:03:45 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1750777414; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=Xt3PJMc94npRzsKUUNOptdjji8xPxW1Sj2npQLaB59QHt+dQtACPIGm7YLYvNvY9VLs47yB6PUsMspBXQfQpvkOe/jtLu1Ixo2atntkpLvkOdRVzvJ9JLGE9zeWN1kSl+Z/0rYVJQeFHZ6CtKCetAAmAx9Bs8Em0Lbcfm3FbagU=
+	b=QNhvekAmOyJlSaTPeOgdH1E2Ub4zERAV6edgOXXdI0FUdEpW7V/FCSUdBUnW6H6Puq5FmetNYBwHUNWM0Zs3H+3ExFeDFWsKbiSh/xoyDX/vKm2wf0GCkTF4wFVQDfXQDYeOMYkCrbz2vBVYuilte/Sm/cY8weRn6C3jDdQCXUA=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1750776710; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=kSHnx67T+jpZvYiQlfO4tnE2dRkuMUOdaYmF/xatSC0=; 
-	b=ECrpO4gdU/mi52UbTk8CsNhlEsyj2jpZnoIUDDVluuA8ZQmwrFczd3Z3J2zGwjIhwSqaBvBqhckV4BUFf/droeTTFWTYCn/nhq/iYJLseKfmiiau4BFexN8Zz/ijDNIdQEARmBDjba2YPXWyvz11xChuTvn3c3gaINkzs/39udk=
+	t=1750777414; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=C9Hv1uTZX3yr514rv90DZ1Rmj6G2ElIhixYW3I7htvM=; 
+	b=eTcwFEa7cgN+sJI/MQaEVvj7GY/8WfHQnvRO2JLi4xtAnO1D3JxYrKSVtjLJfXxxl4LDFpTfzppV3hMaG9pw9E5WguludlhgLxIKODPZP9Sd55q7m2iWRlW7hTpGewYANIk3rsdwMgHD0plHMcqM8+HkrPAX+8AqJndn1CSimE0=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nfraprado@collabora.com;
 	dmarc=pass header.from=<nfraprado@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1750776710;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1750777414;
 	s=zohomail; d=collabora.com; i=nfraprado@collabora.com;
 	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=kSHnx67T+jpZvYiQlfO4tnE2dRkuMUOdaYmF/xatSC0=;
-	b=cYa51I6o5mFxTZmRxRBCZOruLKWUyntdzp3+fZ/EJcTKGCAoOpELxu6AHGOL2O5v
-	8eJnoj7vJx7TdMIzT0q6mvTgdgAH38PI28V2znYj7/6IA8lY8p2UCdKl6zfVREK5y8Y
-	7M2d0erJHzI4TpT9zpY/mQFBxIKDrnLL/QCpUdjk=
-Received: by mx.zohomail.com with SMTPS id 1750776709269118.9496903087603;
-	Tue, 24 Jun 2025 07:51:49 -0700 (PDT)
-Message-ID: <30acde756538f532fed042a4679f8791cefb407c.camel@collabora.com>
-Subject: Re: [PATCH v1 0/5] SPMI: MediaTek: Add support for multi-bus
+	bh=C9Hv1uTZX3yr514rv90DZ1Rmj6G2ElIhixYW3I7htvM=;
+	b=BGcojCJTmLwUDU/okdPTeoxUIln1VdOuHJw0JK+z3tpC8f5TzfqvTCYFeb0gxFgT
+	4hURD370c1Ndko/lmXC0l0G0BCuyD1QjzmESRKGIEwiw0up6sZhKXfeUwzUeBFhWbN1
+	l67b63G1lgJAFVeI5OjUXFyy/kNX7mdkFQ3J+cBs=
+Received: by mx.zohomail.com with SMTPS id 1750777412568887.5168202530137;
+	Tue, 24 Jun 2025 08:03:32 -0700 (PDT)
+Message-ID: <60d033a5380674c3ad45d3245de63aacc5d73f73.camel@collabora.com>
+Subject: Re: [PATCH v1 0/2] mfd: Add driver for multifunction MediaTek SPMI
+ PMICs
 From: =?ISO-8859-1?Q?N=EDcolas?= "F. R. A. Prado" <nfraprado@collabora.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	sboyd@kernel.org
+	lee@kernel.org
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
-	matthias.bgg@gmail.com, hsin-hsiung.wang@mediatek.com, 
-	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	kernel@collabora.com
-Date: Tue, 24 Jun 2025 10:51:47 -0400
-In-Reply-To: <20250623120047.108961-1-angelogioacchino.delregno@collabora.com>
-References: <20250623120047.108961-1-angelogioacchino.delregno@collabora.com>
+ matthias.bgg@gmail.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org,  linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,  kernel@collabora.com
+Date: Tue, 24 Jun 2025 11:03:30 -0400
+In-Reply-To: <20250623120038.108891-1-angelogioacchino.delregno@collabora.com>
+References: <20250623120038.108891-1-angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 User-Agent: Evolution 3.46.4-2 
 MIME-Version: 1.0
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250624_075202_731892_3B652DC7 
-X-CRM114-Status: UNSURE (   9.35  )
+X-CRM114-CacheID: sfid-20250624_080344_650534_A47A9079 
+X-CRM114-Status: UNSURE (   9.40  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,33 +83,23 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On Mon, 2025-06-23 at 14:00 +0200, AngeloGioacchino Del Regno wrote:
-> This series adds basic support for multi-bus (multi-master) SPMI
-> controllers, as found in the MediaTek MT8196 Chromebook SoC and
-> the MediaTek MT6991 Dimensity 9400 Smartphone SoC, including RCS
-> interrupt handling and per-bus registration.
+> Some MediaTek SPMI PMICs, like MT6363 and MT6373, are multi-function
+> devices, as they have and expose multiple sub-devices; moreover, some
+> of those also contain an interrupt controller, managing internal IPs
+> interrupts: for those, a chained interrupt handler is registered,
+> which
+> parent is the SPMI controller itself.
 >=20
-> AngeloGioacchino Del Regno (5):
-> =C2=A0 dt-bindings: spmi: Add MediaTek MT8196 SPMI 2 Arbiter/Controllers
-> =C2=A0 spmi: mtk-pmif: Add multi-bus support for SPMI 2.0
-> =C2=A0 spmi: mtk-pmif: Keep spinlock until read is fully done
-> =C2=A0 spmi: mtk-pmif: Implement Request Capable Slave (RCS) interrupt
-> =C2=A0 spmi: mtk-pmif: Add support for MT8196 SPMI Controller
+> This series adds support for the MT6363, MT6373 SPMI PMICs and their
+> interrupt controller.
 >=20
-> =C2=A0.../bindings/spmi/mediatek,mt8196-spmi.yaml=C2=A0=C2=A0 | 138 +++++
-> =C2=A0drivers/spmi/spmi-mtk-pmif.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 471 +++++=
-++++++++++-
-> --
-> =C2=A02 files changed, 530 insertions(+), 79 deletions(-)
-> =C2=A0create mode 100644
-> Documentation/devicetree/bindings/spmi/mediatek,mt8196-spmi.yaml
->=20
+> AngeloGioacchino Del Regno (2):
+> =C2=A0 dt-bindings: mfd: Add binding for MediaTek MT6363 series SPMI PMIC
+> =C2=A0 drivers: mfd: Add support for MediaTek SPMI PMICs and MT6363/73
 
 For the whole series:
 
 Reviewed-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
-
-(as I internally reviewed it before submission)
 
 --=20
 Thanks,
