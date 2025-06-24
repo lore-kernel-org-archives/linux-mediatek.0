@@ -4,71 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEF39C77B7C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jun 2025 19:54:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DBB2C77B7F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jun 2025 19:54:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3+XTKpEiNYrYrQNEx7zBBd9tGAKVmroU4kJyUaRvTlY=; b=F187wtCowZEqrv9XVc/MTwPEx2
-	lkONqu+p+Lchu339xPo8QH4eIlB1D8TsnKOy3i7vQCI+kV5gV2204XPD1CBMzEcKZM4c1YdK/C8sz
-	ioKXGiWjSmU++2MVcrwTrR5f9gATeGrwhPK5tj5VwuP7t7DRidFcrAXCjVUIjYzcag9Lu9kZR3WjI
-	KVeMVf8cbapaylJL8CM9XGmdLCZNvxDk0mlXGIE4Pn5eIm0W2DvX5mIz2i7fIe0stNsrdO+CY1mkF
-	Vq1lkxzph63kJpx4wZqjH80zabH38/al84M17G62Sr7uHaLXgYYp/9bD7HZv/aEoFma4A1XMpo8Ny
-	kUsg/3gg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BXVkZvyl2iCu06wewF9pzvY2+zd2lj+jtZhOikL8maQ=; b=d13SaakNrzDzRmDjKQWoWSi9Kg
+	j28AKGpGX8sA/vtZjCJRNNcEenS1jVkofsSClW8uImHyVqLhcvaL1feqkN0fptoU7UEJevWsmIzbi
+	xz36EVZ61f8U+exilDpWc0Pkqp461h9y9Si+qlDhkfO2hvrCs5TQfGXTsdl6odhQDO4bgdSgP28TH
+	k8YnoqIqZLZdKPLoKKr4DsIkhMH//J+Tx33WTrLQYKkKnjwoqmcDevR6fKtKTQ1KzWPK2M5fK8IAf
+	MK/YuuW1HSsXuicpvolzryCnWLGZHMPrDUdtMBNg70CnusLrdBQGMVTvp3d+LXlE4EwAkfzsHNhuQ
+	53u/cxEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uU9j3-00000006fE2-0kUw;
-	Tue, 24 Jun 2025 19:54:37 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uU9j9-00000006fK3-1hva;
+	Tue, 24 Jun 2025 19:54:43 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uU5ti-00000006BdC-1nEW;
-	Tue, 24 Jun 2025 15:49:23 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1750780152; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=nhM6xzFKQLignkPZ/NGXslADyUBs01OBDRtEGhcYbEZLQGf8X++La8SK8bC4+Ep+pG4NDeBk7ldt/PmAcUwHLQAhHIBkrJl+G2icqEjZGA88um/8uXeLESnCeveaO2Sqlx2ssV+EZHeA04IQK4nTIlbJQ+7JJzoWL2lDvcLidTg=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1750780152; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=3+XTKpEiNYrYrQNEx7zBBd9tGAKVmroU4kJyUaRvTlY=; 
-	b=fslOD0wYoTicBABQ5dKJGop85WUGIP8Gf7QKyA66Q36NNT+f9XEPfE6a9cQpNesBZuqe2kgLSDPkO+dfvDn5u9qbPyRpHBivsWb0QxEAVyKVGmpCEzrib0a75B05/cYjHkJhNxrq1JkFsVCMmbClNIhuL/wQtsLnpwLAcWK3ocE=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nfraprado@collabora.com;
-	dmarc=pass header.from=<nfraprado@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1750780152;
-	s=zohomail; d=collabora.com; i=nfraprado@collabora.com;
-	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=3+XTKpEiNYrYrQNEx7zBBd9tGAKVmroU4kJyUaRvTlY=;
-	b=Mf+1u2nZer5UaeOmVDDAG1ecTp+wTtSEGZa9C3cYt9i/q4ByEvX5DGQq90zHOwAn
-	2/GOLXkRK5exFiNuHju7XzqZIHCmL20orHuNSEIRGWVBLR9FlyMSJlOokbhtLDnXggx
-	bYiEGIiz6n8lHpUWi/XVRSNEguEbKc1oG0rnjXyc=
-Received: by mx.zohomail.com with SMTPS id 1750780149757734.6410007359632;
-	Tue, 24 Jun 2025 08:49:09 -0700 (PDT)
-Message-ID: <c05ff44f1df5276a0a548cbfc7589d45520a54bb.camel@collabora.com>
-Subject: Re: [PATCH v2 00/29] Add support for MT8196 clock controllers
-From: =?ISO-8859-1?Q?N=EDcolas?= "F. R. A. Prado" <nfraprado@collabora.com>
-To: Laura Nao <laura.nao@collabora.com>, mturquette@baylibre.com, 
+	id 1uU66g-00000006EIu-2yvg;
+	Tue, 24 Jun 2025 16:02:46 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 25B1361142;
+	Tue, 24 Jun 2025 16:02:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A7930C4CEF0;
+	Tue, 24 Jun 2025 16:02:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1750780966;
+	bh=59vKwFQx3AuIQaKLpbI7Gr6S80FF6YFWqpzvUTNuNHg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=nJMAcTEV70blxKnFZgvWFj2LWgEVDASymi4c29tCl8hSzWuVeXZJ+ZOAWzmqqNBEq
+	 tPocBU8eX+0uR3/rbfFZegavpbkY3zAZ6sAu9buNCWGpUJtKZhK00L8oDiOiU6Y5+G
+	 E7aU9GyptmKYvXYd5cJYn9E5suctfkYAPXm1GqgGzPHPXeqcF3c4jdb5nD0ilJ9Fx5
+	 lLB6E0dhf143xbWxlb5bbBT6omnPqtA22VPwk5sbOmQKDCmKwsSSdGUsBbJ2BYZ7j9
+	 mopvFhMlqc5LeLvkAriVtSKZNSjjFZHcW5PYT5/p+Gd8T3Rm/lanedzZbrBP7EUxxx
+	 fDaycEvRxhqIQ==
+Message-ID: <7dfba01a-6ede-44c2-87e3-3ecb439b48e3@kernel.org>
+Date: Tue, 24 Jun 2025 18:02:39 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 09/29] dt-bindings: clock: mediatek: Describe MT8196
+ peripheral clock controllers
+To: Laura Nao <laura.nao@collabora.com>, mturquette@baylibre.com,
  sboyd@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
-  matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
  p.zabel@pengutronix.de, richardcochran@gmail.com
 Cc: guangjie.song@mediatek.com, wenst@chromium.org,
- linux-clk@vger.kernel.org,  devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org,  linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,  netdev@vger.kernel.org,
+ linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
  kernel@collabora.com
-Date: Tue, 24 Jun 2025 11:49:07 -0400
-In-Reply-To: <20250624143220.244549-1-laura.nao@collabora.com>
 References: <20250624143220.244549-1-laura.nao@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.46.4-2 
-MIME-Version: 1.0
-X-ZohoMailClient: External
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250624_084922_510906_C8BF219E 
-X-CRM114-Status: GOOD (  14.70  )
+ <20250624143220.244549-10-laura.nao@collabora.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <20250624143220.244549-10-laura.nao@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,90 +120,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2025-06-24 at 16:31 +0200, Laura Nao wrote:
-> Add support for MT8196 clock controllers
->=20
-> This patch series introduces support for the clock controllers on the
-> MediaTek MT8196 platform, following up on an earlier submission[1].
->=20
-> MT8196 uses a hardware voting mechanism to control some of the clock
-> muxes
-> and gates, along with a fence register responsible for tracking PLL
-> and mux
-> gate readiness. The series introduces support for these voting and
-> fence
-> mechanisms, and includes drivers for all clock controllers on the
-> platform.
->=20
-> [1]
-> https://lore.kernel.org/all/20250307032942.10447-1-guangjie.song@mediatek=
-.com/
->=20
-> Changes in v2:
-> - Fixed incorrect ID numbering in mediatek,mt8196-clock.h
-> - Improved description for 'mediatek,hardware-voter' in
-> mediatek,mt8196-clock.yaml and mediatek,mt8196-sys-clock.yaml
-> - Added description for '#reset-cells' in mediatek,mt8196-clock.yaml
-> - Added missing mediatek,mt8196-vdisp-ao compatible in
-> mediatek,mt8196-clock.yaml
-> - Fixed license in mediatek,mt8196-resets.h
-> - Fixed missing of_match_table in clk-mt8196-vdisp_ao.c
-> - Squashed commit adding UFS and PEXTP reset controller support
-> - Reordered commits to place reset controller binding before
-> dependent drivers
-> - Added R-b tags
->=20
-> Link to v1:
-> https://lore.kernel.org/all/20250623102940.214269-1-laura.nao@collabora.c=
-om/
->=20
-> AngeloGioacchino Del Regno (1):
-> =C2=A0 dt-bindings: reset: Add MediaTek MT8196 Reset Controller binding
->=20
-> Laura Nao (28):
-> =C2=A0 clk: mediatek: clk-pll: Add set/clr regs for shared PLL enable
-> control
-> =C2=A0 clk: mediatek: clk-pll: Add ops for PLLs using set/clr regs and
-> FENC
-> =C2=A0 clk: mediatek: clk-mux: Add ops for mux gates with set/clr/upd and
-> =C2=A0=C2=A0=C2=A0 FENC
-> =C2=A0 clk: mediatek: clk-mtk: Introduce mtk_clk_get_hwv_regmap()
-> =C2=A0 clk: mediatek: clk-mux: Add ops for mux gates with HW voter and
-> FENC
-> =C2=A0 clk: mediatek: clk-gate: Refactor mtk_clk_register_gate to use
-> =C2=A0=C2=A0=C2=A0 mtk_gate struct
-> =C2=A0 clk: mediatek: clk-gate: Add ops for gates with HW voter
-> =C2=A0 clk: mediatek: clk-mtk: Add MUX_DIV_GATE macro
-> =C2=A0 dt-bindings: clock: mediatek: Describe MT8196 peripheral clock
-> =C2=A0=C2=A0=C2=A0 controllers
-> =C2=A0 clk: mediatek: Add MT8196 apmixedsys clock support
-> =C2=A0 clk: mediatek: Add MT8196 topckgen clock support
-> =C2=A0 clk: mediatek: Add MT8196 topckgen2 clock support
-> =C2=A0 clk: mediatek: Add MT8196 vlpckgen clock support
-> =C2=A0 clk: mediatek: Add MT8196 peripheral clock support
-> =C2=A0 clk: mediatek: Add MT8196 ufssys clock support
-> =C2=A0 clk: mediatek: Add MT8196 pextpsys clock support
-> =C2=A0 clk: mediatek: Add MT8196 adsp clock support
-> =C2=A0 clk: mediatek: Add MT8196 I2C clock support
-> =C2=A0 clk: mediatek: Add MT8196 mcu clock support
-> =C2=A0 clk: mediatek: Add MT8196 mdpsys clock support
-> =C2=A0 clk: mediatek: Add MT8196 mfg clock support
-> =C2=A0 clk: mediatek: Add MT8196 disp0 clock support
-> =C2=A0 clk: mediatek: Add MT8196 disp1 clock support
-> =C2=A0 clk: mediatek: Add MT8196 disp-ao clock support
-> =C2=A0 clk: mediatek: Add MT8196 ovl0 clock support
-> =C2=A0 clk: mediatek: Add MT8196 ovl1 clock support
-> =C2=A0 clk: mediatek: Add MT8196 vdecsys clock support
-> =C2=A0 clk: mediatek: Add MT8196 vencsys clock support
+On 24/06/2025 16:32, Laura Nao wrote:
+> +  '#reset-cells':
+> +    const: 1
+> +    description:
+> +      Reset lines for PEXTP0/1 and UFS blocks.
+> +
+> +  mediatek,hardware-voter:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description:
+> +      On the MT8196 SoC, a Hardware Voter (HWV) backed by a fixed-function
+> +      MCU manages clock and power domain control across the AP and other
+> +      remote processors. By aggregating their votes, it ensures clocks are
+> +      safely enabled/disabled and power domains are active before register
+> +      access.
 
-For the whole series:
+Resource voting is not via any phandle, but either interconnects or
+required opps for power domain.
 
-Reviewed-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
+I already commented on this, so don't send v3 with the same.
 
-(as I internally reviewed it before submission)
-
---=20
-Thanks,
-
-N=C3=ADcolas
+Best regards,
+Krzysztof
 
