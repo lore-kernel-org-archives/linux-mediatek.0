@@ -4,56 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33CF5C77B7F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jun 2025 19:55:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 516F1C77B7F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jun 2025 22:15:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JI17jfGVb1g/QMqGoomF8hB7m62tDw1VCJzR/C1p+kI=; b=XAM2WSnYH0oovmW1kVFHKcN08c
-	z84+hfpVqbuydS41kX/9P7mxD46G6xzwOkPsZ/5DMkXjmhB6IAuJJB5pRoQp+NqBhEGrOmbI2tBCs
-	4S/aSmx9fjBLHqAlGXiHNf6lyuKc0q4xIaTNQL0CjqIJR2S0XVgqnYDPXerK6zxnUQPsNUdTLFzAG
-	GEIyuJ+iuZulOWDOjUysEHQdZ4EX8t3lTtDI5EQjh8xzQu1nq9spI1vK82a26SbyiF1QYfY4K5pIA
-	lDvC+V6MBF3BMJ6xrRtQ7oOuzInd5ZytjULqehMPSmTn8XhfUFI0uvlzdcTZKyFeGhsG6tY1O1itq
-	f/gr9Rhw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/kf40PxT0IJX/WJz44JiFx7wbhkUQvB3T9l8pvppweA=; b=LdnKZVDzfgH/hxX7KvQLv9EYBj
+	6VgePu31B4qzk/97jAeBVuLEbTkgak41WEofUOe99BgWpXdb5h8haj+iF/kYePoMFL2kE+HrJpNFP
+	Qu8s0/Z0Fc16axp2KTBvc/XsH3kRMY1ih/uJOQtseVWC9SivPgFikysNZ5zB/WGepzHMguiLDRKWN
+	Hlokeu/XNMSlfXOLQCDqu1Zle89aZrbbqaw+rQFRCcIDTUWjGwph4lRvkaP3vyYZCw1FlsATpzVAB
+	3ArBYT1hdeWSmOcGmjD3HiDPc7ZJZZv6+2nCBd/WMB2SYoqLJuf/L8yU7AjcFCZ4iXY0GqlYH+UVK
+	0Ykyrnpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uU9k3-00000006goN-15bK;
-	Tue, 24 Jun 2025 19:55:39 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uU7ZT-00000006Ok6-0QWq;
-	Tue, 24 Jun 2025 17:36:36 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 613AA113E;
-	Tue, 24 Jun 2025 10:36:15 -0700 (PDT)
-Received: from [10.57.29.113] (unknown [10.57.29.113])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 7FC4E3F58B;
-	Tue, 24 Jun 2025 10:36:31 -0700 (PDT)
-Message-ID: <33672077-77b9-476c-9565-b78aae2a38de@arm.com>
-Date: Tue, 24 Jun 2025 18:36:29 +0100
+	id 1uUBvp-00000006yJ2-31SF;
+	Tue, 24 Jun 2025 22:15:57 +0000
+Received: from mgamail.intel.com ([198.175.65.14])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uUBkY-00000006wMy-1KRX
+	for linux-mediatek@lists.infradead.org;
+	Tue, 24 Jun 2025 22:04:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1750802658; x=1782338658;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=Zu3c4TEciOFpYKhtQCdJJWXJ3340BlRL7VaZjg54aAQ=;
+  b=exSUw6RWfnWE04Cm4/tb+YpEbo3gYvmwO4kzJdf7ECIX9AZIJiMFecN9
+   Yd9LMbexKlXcuTdPapyT3WHVKnrobtUSTrhVgMNA78pVDiImU15ztnkz4
+   XzOrUlcgF4h1+njgN4xmSWCABZXgPa9az4/PK0fcn3uUk/6fYwso31SU5
+   4JMB+2K2S+J0f+qcCZPO8ElLCT5rgYUofnsFgVZ1PPaL/lXkLPx7e6EbH
+   +mwmPqY7CxGZfCuaucgalX+AlB8UCxZv+L615uJpaXTMcEIUp3bxvxjoH
+   kxTAGki4/tlm/dWficsxVsFv1BZKqvR40GxA8P2pHgrg6isJOGepFUq23
+   Q==;
+X-CSE-ConnectionGUID: kQFfRyO9T5CUl7PKBrXbxQ==
+X-CSE-MsgGUID: jyjaGpwcQN6R+CdT9JYKHg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11474"; a="56844358"
+X-IronPort-AV: E=Sophos;i="6.16,263,1744095600"; 
+   d="scan'208";a="56844358"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jun 2025 15:04:16 -0700
+X-CSE-ConnectionGUID: 5Ozi9P3WTIOAKzMKDUEs1g==
+X-CSE-MsgGUID: qqIAdIHAT9aizBTGHjWQcg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,263,1744095600"; 
+   d="scan'208";a="183076432"
+Received: from lkp-server01.sh.intel.com (HELO e8142ee1dce2) ([10.239.97.150])
+  by orviesa002.jf.intel.com with ESMTP; 24 Jun 2025 15:04:12 -0700
+Received: from kbuild by e8142ee1dce2 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1uUBkP-000SYU-2w;
+	Tue, 24 Jun 2025 22:04:09 +0000
+Date: Wed, 25 Jun 2025 06:04:04 +0800
+From: kernel test robot <lkp@intel.com>
+To: Mingyen Hsieh <mingyen.hsieh@mediatek.com>, nbd@nbd.name,
+	lorenzo@kernel.org
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	deren.wu@mediatek.com, Sean.Wang@mediatek.com,
+	Leon.Yen@mediatek.com, Michael.Lo@mediatek.com,
+	allan.wang@mediatek.com, Eric-SY.Chang@mediatek.com,
+	km.lin@mediatek.com, Quan.Zhou@mediatek.com, Ryder.Lee@mediatek.com,
+	Shayne.Chen@mediatek.com, linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+Subject: Re: [PATCH] wifi: mt76: Limit the concurrent STA and SoftAP to
+ operate on the same channel
+Message-ID: <202506250512.Q0I4znsF-lkp@intel.com>
+References: <20250619112005.2071110-1-mingyen.hsieh@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 3/3] iommu: mtk_iommu_v1: Simplify by dropping local
- 'mtk_mapping' variable
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
- Yong Wu <yong.wu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: iommu@lists.linux.dev, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-References: <20250624-syscon-phandle-args-iommu-v3-0-1a36487d69b8@linaro.org>
- <20250624-syscon-phandle-args-iommu-v3-3-1a36487d69b8@linaro.org>
-From: Robin Murphy <robin.murphy@arm.com>
-Content-Language: en-GB
-In-Reply-To: <20250624-syscon-phandle-args-iommu-v3-3-1a36487d69b8@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250619112005.2071110-1-mingyen.hsieh@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250624_103635_188754_CDF1929F 
-X-CRM114-Status: GOOD (  22.15  )
+X-CRM114-CacheID: sfid-20250624_150418_400903_D30A576B 
+X-CRM114-Status: GOOD (  10.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,68 +95,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2025-06-24 1:22 pm, Krzysztof Kozlowski wrote:
-> Storing 'data->mapping' in local variable in
-> mtk_iommu_v1_probe_finalize() does not make the code easier to read.
-> Use the 'data->mapping' directly.
-> 
-> ARM64 W=1 builds also complain with:
-> 
->    mtk_iommu_v1.c:512:28: error: variable 'mtk_mapping' set but not used [-Werror,-Wunused-but-set-variable]
-> 
-> but this is not being fixed here and 'data' still won't be used in such
-> compile test.
+Hi Mingyen,
 
-Sorry, I guess that's on me for doing the COMPILE_TEST stubs the lazy 
-way... TBH I'm still not sure this driver hasn't completely bitrotted, 
-but if we're touching it at all we should probably actually fix the 
-warning, e.g.:
+kernel test robot noticed the following build errors:
 
--#define arm_iommu_attach_device(...)   -ENODEV
-+#define arm_iommu_attach_device(d, m)  ((void)m, -ENODEV)
+[auto build test ERROR on wireless-next/main]
+[also build test ERROR on wireless/main linus/master v6.16-rc3 next-20250624]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-or perhaps make it a less lazy static inline.
+url:    https://github.com/intel-lab-lkp/linux/commits/Mingyen-Hsieh/wifi-mt76-Limit-the-concurrent-STA-and-SoftAP-to-operate-on-the-same-channel/20250619-192503
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless-next.git main
+patch link:    https://lore.kernel.org/r/20250619112005.2071110-1-mingyen.hsieh%40mediatek.com
+patch subject: [PATCH] wifi: mt76: Limit the concurrent STA and SoftAP to operate on the same channel
+config: riscv-allyesconfig (https://download.01.org/0day-ci/archive/20250625/202506250512.Q0I4znsF-lkp@intel.com/config)
+compiler: clang version 16.0.6 (https://github.com/llvm/llvm-project 7cbf1a2591520c2491aa35339f227775f4d3adf6)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250625/202506250512.Q0I4znsF-lkp@intel.com/reproduce)
 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> 
-> ---
-> 
-> Old warning is changed now to:
-> 
->    error: variable 'data' set but not used [-Werror,-Wunused-but-set-variable]
-> ---
->   drivers/iommu/mtk_iommu_v1.c | 4 +---
->   1 file changed, 1 insertion(+), 3 deletions(-)
-> 
-> diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-> index 66824982e05fbfdda224276ad41b90f9d5f9ca4e..bbe3e9d901c69ac6405d9549a4481fc80f1adb80 100644
-> --- a/drivers/iommu/mtk_iommu_v1.c
-> +++ b/drivers/iommu/mtk_iommu_v1.c
-> @@ -509,14 +509,12 @@ static struct iommu_device *mtk_iommu_v1_probe_device(struct device *dev)
->   
->   static void mtk_iommu_v1_probe_finalize(struct device *dev)
->   {
-> -	struct dma_iommu_mapping *mtk_mapping;
->   	struct mtk_iommu_v1_data *data;
->   	int err;
->   
->   	data        = dev_iommu_priv_get(dev);
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202506250512.Q0I4znsF-lkp@intel.com/
 
-And for the sake of a readability cleanup you may as well fold this into 
-the declaration line as well. And then maybe also whack a __maybe_unused 
-on it, for even less effort than the first silly thing I thought of 
-above... :)
+All errors (new ones prefixed by >>):
 
-Thanks,
-Robin.
+>> drivers/net/wireless/mediatek/mt76/mt792x_core.c:84:3: error: initializer element is not a compile-time constant
+                   if_comb_chanctx_mcc[0],
+                   ^~~~~~~~~~~~~~~~~~~~~~
+   1 error generated.
 
-> -	mtk_mapping = data->mapping;
->   
-> -	err = arm_iommu_attach_device(dev, mtk_mapping);
-> +	err = arm_iommu_attach_device(dev, data->mapping);
->   	if (err)
->   		dev_err(dev, "Can't create IOMMU mapping - DMA-OPS will not work\n");
->   }
-> 
 
+vim +84 drivers/net/wireless/mediatek/mt76/mt792x_core.c
+
+    82	
+    83	static const struct ieee80211_iface_combination if_comb_chanctx[] = {
+  > 84			if_comb_chanctx_mcc[0],
+    85			if_comb_chanctx_scc[0],
+    86	};
+    87	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
