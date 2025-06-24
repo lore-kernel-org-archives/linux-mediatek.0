@@ -4,79 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51C09C77B7F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jun 2025 12:13:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E606C77B7C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jun 2025 12:18:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LGCT5eRYjmFviKIY/lV6E5VTvm4jFqZV5t+tNlA13zw=; b=LBUIZkPvaoDcpxvq081tJ9InPC
-	h3FAxAWc0O53YolSOkdM6pNtvyqaqvA4XcwikokSL/0xrrqfCnu5YWpH99eaKRhfdSO0EEPpcAVt6
-	LAjRYq+YTD9QzZ9537ZYoTkRdvDZq4aBdR4/aIPQz8SO2cyEo8XXDMptIq0lMWyWpHKQBd4rpQrbO
-	+sALFfliq1qFkMs4lQo4um6vXjwmXhboMFcDacEOxAw6AAwk1tEYGGDFI6xJFR7TE85FRKXxqgiPu
-	0DvPSSU36MxcfhNDyTjiUve0I8fGH/1SPnRLxcQEVd3Uln0Wt9A7T7BYq/g2kez6WFEyBeBQZljGl
-	5ieStPVw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=nqHVGMxhDg52YSCi1jgl7ccHJpCWVWC3C9YGgQGOt9A=; b=1lOsrFO2zwyc3intMNWdnom5ng
+	uaVBH9scfEkYA8Pv+TxcOUu8VNt153Cczb20Na2Oxz6KJ2qJnSvisk2dFJt/e2JUGINjvYolcYQkk
+	llA9tXd5nSZ8ANsOdtySj52S32hUVaSPNJj6SIZHOiG4F2EI1aeaoJCtwI28yHL1iAW1D6BzCpEbn
+	UBeYBgTORrN5UuH8XwOx6XpxXrMponVZX5mvNaIQSC//dnHRptklre+AvEll5jf2uK57A2e687ym/
+	abHfyhFNefR5x8TGAIK8irC4O1w9sxmmpUYk4TVSzBVLKz7oKIEaNzSW9heSdgQRqBfF9c5VF6QEv
+	3Vlsd8eQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uU2X7-00000005W7R-1CKS;
-	Tue, 24 Jun 2025 12:13:49 +0000
-Received: from mgamail.intel.com ([198.175.65.20])
+	id 1uU2bq-00000005XOR-0nGz;
+	Tue, 24 Jun 2025 12:18:42 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uU1kE-00000005QQR-0AX8;
-	Tue, 24 Jun 2025 11:23:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1750764198; x=1782300198;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=jiKUfZqjG7qOZGQfCaAa2+Vnx3BVrYF0VLfPGeJuxmY=;
-  b=NLHE207e76koI8+eT2LvCyWwLLpe1qGE7uiRlohVZvF5ZQoG34CgxIl5
-   GfZWAmKTbx6wMBIQeXnhC/6PcaebnPF4NX7wrfKVrGDycfIos9NSibZhw
-   UYwR/Eh0MYXArq5a/TZYhmt1DbXAqvzcIrdEVUbAHcbXQjaFYTalRtMHa
-   k5B8yXMtTS6HQVZTjbdSENwpfNJ1LX3H1z0MUl4wYVHEUvBcfRAFHnfPi
-   HfiYEEwRabu5N0hssVIOWWn8/wzB4TNsX8HOHuMTaDD7l7fTkfD6k/4JW
-   9Sjfvee+7pGvOfdvCpx9ixWDV4BhU8ExXjoOOyMDm7+5Fu7FQARJx8fwX
-   A==;
-X-CSE-ConnectionGUID: tQTYp8UoS62Jk7wvgARTnw==
-X-CSE-MsgGUID: IhqzKCghSluNcu6OOGXApg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11473"; a="52721279"
-X-IronPort-AV: E=Sophos;i="6.16,261,1744095600"; 
-   d="scan'208";a="52721279"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
-  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jun 2025 04:23:12 -0700
-X-CSE-ConnectionGUID: kxUeEGS9Qhe2/bO/DnAVLw==
-X-CSE-MsgGUID: 3f3kdLdqTwuaN2cQTp+PAw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,261,1744095600"; 
-   d="scan'208";a="151373519"
-Received: from lkp-server01.sh.intel.com (HELO e8142ee1dce2) ([10.239.97.150])
-  by orviesa006.jf.intel.com with ESMTP; 24 Jun 2025 04:23:09 -0700
-Received: from kbuild by e8142ee1dce2 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1uU1k2-000S3W-2D;
-	Tue, 24 Jun 2025 11:23:06 +0000
-Date: Tue, 24 Jun 2025 19:22:32 +0800
-From: kernel test robot <lkp@intel.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	jassisinghbrar@gmail.com
-Cc: oe-kbuild-all@lists.linux.dev, robh@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v1 2/2] mailbox: Add MediaTek TinySYS MHU-like Mailbox
-Message-ID: <202506241946.HEKwafHB-lkp@intel.com>
-References: <20250623120127.109237-3-angelogioacchino.delregno@collabora.com>
+	id 1uU1tA-00000005RGq-1n9r;
+	Tue, 24 Jun 2025 11:32:33 +0000
+X-UUID: e7e1f0b450ee11f09eb0dd999d3936bf-20250624
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=nqHVGMxhDg52YSCi1jgl7ccHJpCWVWC3C9YGgQGOt9A=;
+	b=Gq40pf+SfwLUvv9DiX3g+fwWPt6caPt6bBMiwRseDJBIzc9jWlOz9bZtaP3qfSwo/HlYOLrfzOdc9sfppRN4Y7dC40//bhrcjaosr0sFgNYlKQnY9O+BPRFPTOz+RW6Rg3uPU3gUYV47caj8iH7V9wIRffY53MTAeAmmL4mTA9k=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.2,REQID:cc951a3e-07fc-45d6-ae9f-190012713afc,IP:0,UR
+	L:0,TC:0,Content:0,EDM:-30,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-30
+X-CID-META: VersionHash:9eb4ff7,CLOUDID:42e82582-cc21-4267-87cf-e75829fa6365,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:2,IP:nil
+	,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:
+	1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: e7e1f0b450ee11f09eb0dd999d3936bf-20250624
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
+	(envelope-from <jason-jh.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1066440267; Tue, 24 Jun 2025 04:32:27 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Tue, 24 Jun 2025 19:32:23 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Tue, 24 Jun 2025 19:32:23 +0800
+From: Jason-JH Lin <jason-jh.lin@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, David Airlie <airlied@gmail.com>
+Subject: [PATCH v2] drm/mediatek: Add wait_event_timeout when disabling plane
+Date: Tue, 24 Jun 2025 19:31:41 +0800
+Message-ID: <20250624113223.443274-1-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250623120127.109237-3-angelogioacchino.delregno@collabora.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250624_042318_123136_34E02082 
-X-CRM114-Status: GOOD (  18.30  )
+X-CRM114-CacheID: sfid-20250624_043232_484044_4FC1A314 
+X-CRM114-Status: GOOD (  17.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,133 +79,107 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Xiandong Wang <xiandong.wang@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Jason-JH Lin <jason-jh.lin@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Zhenxing Qin <zhenxing.qin@mediatek.com>, linux-kernel@vger.kernel.org, Yongqiang Niu <yongqiang.niu@mediatek.com>, Project_Global_Chrome_Upstream_Group@mediatek.com, Paul-PL Chen <paul-pl.chen@mediatek.com>, Xavier Chang <xavier.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>, Sirius Wang <sirius.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Jarried Lin <jarried.lin@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi AngeloGioacchino,
+Our hardware registers are set through GCE, not by the CPU.
+DRM might assume the hardware is disabled immediately after calling
+atomic_disable() of drm_plane, but it is only truly disabled after the
+GCE IRQ is triggered.
 
-kernel test robot noticed the following build errors:
+Additionally, the cursor plane in DRM uses async_commit, so DRM will
+not wait for vblank and will free the buffer immediately after calling
+atomic_disable().
 
-[auto build test ERROR on jassibrar-mailbox/for-next]
-[also build test ERROR on robh/for-next soc/for-next linus/master v6.16-rc3 next-20250623]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+To prevent the framebuffer from being freed before the layer disable
+settings are configured into the hardware, which can cause an IOMMU
+fault error, a wait_event_timeout has been added to wait for the
+ddp_cmdq_cb() callback,indicating that the GCE IRQ has been triggered.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/AngeloGioacchino-Del-Regno/dt-bindings-mailbox-Add-MediaTek-TinySYS-MHU-mailbox/20250623-201139
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/jassibrar/mailbox.git for-next
-patch link:    https://lore.kernel.org/r/20250623120127.109237-3-angelogioacchino.delregno%40collabora.com
-patch subject: [PATCH v1 2/2] mailbox: Add MediaTek TinySYS MHU-like Mailbox
-config: i386-allmodconfig (https://download.01.org/0day-ci/archive/20250624/202506241946.HEKwafHB-lkp@intel.com/config)
-compiler: gcc-12 (Debian 12.2.0-14) 12.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250624/202506241946.HEKwafHB-lkp@intel.com/reproduce)
+Fixes: 119f5173628a ("drm/mediatek: Add DRM Driver for Mediatek SoC MT8173.")
+Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/gpu/drm/mediatek/mtk_crtc.c  | 31 ++++++++++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_crtc.h  |  1 +
+ drivers/gpu/drm/mediatek/mtk_plane.c |  5 +++++
+ 3 files changed, 37 insertions(+)
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202506241946.HEKwafHB-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-   drivers/mailbox/mtk-tinysys-mailbox.c: In function 'mtk_tinysys_mhu_mbox_startup':
->> drivers/mailbox/mtk-tinysys-mailbox.c:95:9: error: implicit declaration of function 'irq_clear_status_flags' [-Werror=implicit-function-declaration]
-      95 |         irq_clear_status_flags(priv->irq, IRQ_NOAUTOEN);
-         |         ^~~~~~~~~~~~~~~~~~~~~~
->> drivers/mailbox/mtk-tinysys-mailbox.c:95:43: error: 'IRQ_NOAUTOEN' undeclared (first use in this function); did you mean 'IRQF_NO_AUTOEN'?
-      95 |         irq_clear_status_flags(priv->irq, IRQ_NOAUTOEN);
-         |                                           ^~~~~~~~~~~~
-         |                                           IRQF_NO_AUTOEN
-   drivers/mailbox/mtk-tinysys-mailbox.c:95:43: note: each undeclared identifier is reported only once for each function it appears in
-   drivers/mailbox/mtk-tinysys-mailbox.c: In function 'mtk_tinysys_mhu_mbox_probe':
->> drivers/mailbox/mtk-tinysys-mailbox.c:152:9: error: implicit declaration of function 'irq_set_status_flags' [-Werror=implicit-function-declaration]
-     152 |         irq_set_status_flags(priv->irq, IRQ_NOAUTOEN);
-         |         ^~~~~~~~~~~~~~~~~~~~
-   drivers/mailbox/mtk-tinysys-mailbox.c:152:41: error: 'IRQ_NOAUTOEN' undeclared (first use in this function); did you mean 'IRQF_NO_AUTOEN'?
-     152 |         irq_set_status_flags(priv->irq, IRQ_NOAUTOEN);
-         |                                         ^~~~~~~~~~~~
-         |                                         IRQF_NO_AUTOEN
-   cc1: some warnings being treated as errors
-
-
-vim +/irq_clear_status_flags +95 drivers/mailbox/mtk-tinysys-mailbox.c
-
-    90	
-    91	static int mtk_tinysys_mhu_mbox_startup(struct mbox_chan *chan)
-    92	{
-    93		struct mtk_tinysys_mhu_mbox *priv = to_mtk_tinysys_mhu_mbox(chan->mbox);
-    94	
-  > 95		irq_clear_status_flags(priv->irq, IRQ_NOAUTOEN);
-    96		enable_irq(priv->irq);
-    97	
-    98		return 0;
-    99	}
-   100	
-   101	static void mtk_tinysys_mhu_mbox_shutdown(struct mbox_chan *chan)
-   102	{
-   103		struct mtk_tinysys_mhu_mbox *priv = to_mtk_tinysys_mhu_mbox(chan->mbox);
-   104	
-   105		disable_irq(priv->irq);
-   106	}
-   107	
-   108	static const struct mbox_chan_ops tinysys_mbox_chan_ops = {
-   109		.send_data = mtk_tinysys_mhu_mbox_send_data,
-   110		.startup = mtk_tinysys_mhu_mbox_startup,
-   111		.shutdown = mtk_tinysys_mhu_mbox_shutdown,
-   112		.last_tx_done = mtk_tinysys_mhu_mbox_last_tx_done,
-   113	};
-   114	
-   115	static int mtk_tinysys_mhu_mbox_probe(struct platform_device *pdev)
-   116	{
-   117		struct device *dev = &pdev->dev;
-   118		struct mtk_tinysys_mhu_mbox *priv;
-   119		struct mbox_controller *mbox;
-   120		int ret;
-   121	
-   122		/* Allocate memory for device */
-   123		priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-   124		if (!priv)
-   125			return -ENOMEM;
-   126	
-   127		priv->base = devm_platform_ioremap_resource(pdev, 0);
-   128		if (IS_ERR(priv->base))
-   129			return PTR_ERR(priv->base);
-   130	
-   131		priv->irq = platform_get_irq(pdev, 0);
-   132		if (priv->irq < 0)
-   133			return priv->irq;
-   134	
-   135		priv->pdata = device_get_match_data(dev);
-   136		if (!priv->pdata)
-   137			return -EINVAL;
-   138	
-   139		mbox = &priv->mbox;
-   140		mbox->dev = dev;
-   141		mbox->ops = &tinysys_mbox_chan_ops;
-   142		mbox->txdone_irq = false;
-   143		mbox->txdone_poll = true;
-   144		mbox->txpoll_period = 1;
-   145		mbox->num_chans = 1;
-   146		mbox->chans = devm_kzalloc(dev, sizeof(*mbox->chans), GFP_KERNEL);
-   147		if (!mbox->chans)
-   148			return -ENOMEM;
-   149	
-   150		platform_set_drvdata(pdev, priv);
-   151	
- > 152		irq_set_status_flags(priv->irq, IRQ_NOAUTOEN);
-   153		ret = devm_request_irq(dev, priv->irq, mtk_tinysys_mhu_mbox_irq,
-   154				       IRQF_TRIGGER_NONE, dev_name(dev), mbox->chans);
-   155		if (ret < 0)
-   156			return ret;
-   157	
-   158		ret = devm_mbox_controller_register(dev, &priv->mbox);
-   159		if (ret)
-   160			return dev_err_probe(dev, ret, "Failed to register mailbox\n");
-   161	
-   162		return 0;
-   163	}
-   164	
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_crtc.c b/drivers/gpu/drm/mediatek/mtk_crtc.c
+index 8f6fba4217ec..0c856cc679de 100644
+--- a/drivers/gpu/drm/mediatek/mtk_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_crtc.c
+@@ -719,6 +719,37 @@ int mtk_crtc_plane_check(struct drm_crtc *crtc, struct drm_plane *plane,
+ 	return 0;
+ }
+ 
++void mtk_crtc_plane_disable(struct drm_crtc *crtc, struct drm_plane *plane)
++{
++	struct mtk_crtc *mtk_crtc = to_mtk_crtc(crtc);
++	struct mtk_plane_state *plane_state = to_mtk_plane_state(plane->state);
++	int i;
++
++	/* no need to wait for disabling the plane by CPU */
++	if (!mtk_crtc->cmdq_client.chan)
++		return;
++
++	if (!mtk_crtc->enabled)
++		return;
++
++	/* set pending plane state to disabled */
++	for (i = 0; i < mtk_crtc->layer_nr; i++) {
++		struct drm_plane *mtk_plane = &mtk_crtc->planes[i];
++		struct mtk_plane_state *mtk_plane_state = to_mtk_plane_state(mtk_plane->state);
++
++		if (mtk_plane->index == plane->index) {
++			memcpy(mtk_plane_state, plane_state, sizeof(*plane_state));
++			break;
++		}
++	}
++	mtk_crtc_update_config(mtk_crtc, false);
++
++	/* wait for planes to be disabled by CMDQ */
++	wait_event_timeout(mtk_crtc->cb_blocking_queue,
++			   mtk_crtc->cmdq_vblank_cnt == 0,
++			   msecs_to_jiffies(500));
++}
++
+ void mtk_crtc_async_update(struct drm_crtc *crtc, struct drm_plane *plane,
+ 			   struct drm_atomic_state *state)
+ {
+diff --git a/drivers/gpu/drm/mediatek/mtk_crtc.h b/drivers/gpu/drm/mediatek/mtk_crtc.h
+index 388e900b6f4d..828f109b83e7 100644
+--- a/drivers/gpu/drm/mediatek/mtk_crtc.h
++++ b/drivers/gpu/drm/mediatek/mtk_crtc.h
+@@ -21,6 +21,7 @@ int mtk_crtc_create(struct drm_device *drm_dev, const unsigned int *path,
+ 		    unsigned int num_conn_routes);
+ int mtk_crtc_plane_check(struct drm_crtc *crtc, struct drm_plane *plane,
+ 			 struct mtk_plane_state *state);
++void mtk_crtc_plane_disable(struct drm_crtc *crtc, struct drm_plane *plane);
+ void mtk_crtc_async_update(struct drm_crtc *crtc, struct drm_plane *plane,
+ 			   struct drm_atomic_state *plane_state);
+ struct device *mtk_crtc_dma_dev_get(struct drm_crtc *crtc);
+diff --git a/drivers/gpu/drm/mediatek/mtk_plane.c b/drivers/gpu/drm/mediatek/mtk_plane.c
+index 655106bbb76d..59edbe26f01e 100644
+--- a/drivers/gpu/drm/mediatek/mtk_plane.c
++++ b/drivers/gpu/drm/mediatek/mtk_plane.c
+@@ -285,9 +285,14 @@ static void mtk_plane_atomic_disable(struct drm_plane *plane,
+ 	struct drm_plane_state *new_state = drm_atomic_get_new_plane_state(state,
+ 									   plane);
+ 	struct mtk_plane_state *mtk_plane_state = to_mtk_plane_state(new_state);
++	struct drm_plane_state *old_state = drm_atomic_get_old_plane_state(state,
++									   plane);
++
+ 	mtk_plane_state->pending.enable = false;
+ 	wmb(); /* Make sure the above parameter is set before update */
+ 	mtk_plane_state->pending.dirty = true;
++
++	mtk_crtc_plane_disable(old_state->crtc, plane);
+ }
+ 
+ static void mtk_plane_atomic_update(struct drm_plane *plane,
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.43.0
+
 
