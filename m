@@ -4,70 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09FD8C77B7F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jun 2025 18:47:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEF39C77B7C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jun 2025 19:54:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
 	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
 	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kwBZPzxn17JvK+V65zGyJFMJb6zC4Pj40uxCg1alNFo=; b=AuhEdOlB9ltsOD1BPFT2j12v3I
-	3PRaW4BbUZeyekVa9CdPRVrMWItv9cQJzKP+b393Rck+iTaw2ZbKp3ZuhK8TfF++1iJKIlZ/DFCmN
-	KBb/hc3pZOsUeRyCvJXTquE1Oz5MaXmXKquK25wWhow9sfIJwYNaGjIbWVl+sqNh2b1D4Ox7sP/Fb
-	g5WePKdLTU25lQQClYu24hBZT46uK63unO/Btr3lTVUT+IcUTId9+PtQUpexXnQDD/FcIMjaDj/dJ
-	t6vVzZcB57LCyv0Jd3h7peMno9Ww4dgJPDFE7owNW/2XdEK2mSgjXys9b296vcWFSDcWvdU82Hhvu
-	RaAI8jTA==;
+	bh=3+XTKpEiNYrYrQNEx7zBBd9tGAKVmroU4kJyUaRvTlY=; b=F187wtCowZEqrv9XVc/MTwPEx2
+	lkONqu+p+Lchu339xPo8QH4eIlB1D8TsnKOy3i7vQCI+kV5gV2204XPD1CBMzEcKZM4c1YdK/C8sz
+	ioKXGiWjSmU++2MVcrwTrR5f9gATeGrwhPK5tj5VwuP7t7DRidFcrAXCjVUIjYzcag9Lu9kZR3WjI
+	KVeMVf8cbapaylJL8CM9XGmdLCZNvxDk0mlXGIE4Pn5eIm0W2DvX5mIz2i7fIe0stNsrdO+CY1mkF
+	Vq1lkxzph63kJpx4wZqjH80zabH38/al84M17G62Sr7uHaLXgYYp/9bD7HZv/aEoFma4A1XMpo8Ny
+	kUsg/3gg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uU8fk-00000006Y1X-1ec7;
-	Tue, 24 Jun 2025 18:47:08 +0000
+	id 1uU9j3-00000006fE2-0kUw;
+	Tue, 24 Jun 2025 19:54:37 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uU5Ja-000000063Bu-1E18;
-	Tue, 24 Jun 2025 15:12:03 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1750777912; cv=none; 
+	id 1uU5ti-00000006BdC-1nEW;
+	Tue, 24 Jun 2025 15:49:23 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1750780152; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=PbWcPMPdsiBjI5yUuATEXqR6754nuRTTSI93To7cx/Jc83GNnq9oB8Na81keGobkNvVJuGleN5AU6u83eLxxNciNYRfFSI95L6Vc5fN1QrUU5xTmzImF7QmzlVnZdhdZH+f1nC2G4PUdwQscV333ufz/5znCuOLOLqrusgw7Fdc=
+	b=nhM6xzFKQLignkPZ/NGXslADyUBs01OBDRtEGhcYbEZLQGf8X++La8SK8bC4+Ep+pG4NDeBk7ldt/PmAcUwHLQAhHIBkrJl+G2icqEjZGA88um/8uXeLESnCeveaO2Sqlx2ssV+EZHeA04IQK4nTIlbJQ+7JJzoWL2lDvcLidTg=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1750777912; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=kwBZPzxn17JvK+V65zGyJFMJb6zC4Pj40uxCg1alNFo=; 
-	b=jPeyuZU/ylhALvNgHeFNYAuq4cjuEyvRf7BaqGil6SWCK4Q1Q8fRQyhGaaSH0GIvxaxuPWfhM2LhJtmgxRcn47bCoouuP1Ep01GcYHh+QJQSry2pqKQMuU3SSAHlJX1QPC0zsX4cj8k7e9LG1e4BGp/xiycrROC5fSpumcAybQw=
+	t=1750780152; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=3+XTKpEiNYrYrQNEx7zBBd9tGAKVmroU4kJyUaRvTlY=; 
+	b=fslOD0wYoTicBABQ5dKJGop85WUGIP8Gf7QKyA66Q36NNT+f9XEPfE6a9cQpNesBZuqe2kgLSDPkO+dfvDn5u9qbPyRpHBivsWb0QxEAVyKVGmpCEzrib0a75B05/cYjHkJhNxrq1JkFsVCMmbClNIhuL/wQtsLnpwLAcWK3ocE=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nfraprado@collabora.com;
 	dmarc=pass header.from=<nfraprado@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1750777912;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1750780152;
 	s=zohomail; d=collabora.com; i=nfraprado@collabora.com;
 	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=kwBZPzxn17JvK+V65zGyJFMJb6zC4Pj40uxCg1alNFo=;
-	b=Bf9YSS1Ga0DU0J+XC2yEcnc1NKTcDJnu0rTxNkBIt6iga3H6/8JOtOI7Qk3mRziO
-	kA8ENF4z2QoaRaCkUJ5RKq8tn+sZwwBDEJ4WNJqXadd6JZGUTC+bHrlFDVsDCYzzYwj
-	ZQnhcFsLz2Q8w8B3LpuJsyt0rmOlis+U8f9PH7fs=
-Received: by mx.zohomail.com with SMTPS id 1750777910578164.21030726920253;
-	Tue, 24 Jun 2025 08:11:50 -0700 (PDT)
-Message-ID: <44767efb5f7eac1e5605dffdf531e805bc06b920.camel@collabora.com>
-Subject: Re: [PATCH v1 0/6] regulator: Add support for MediaTek
- MT6316/6363/6373 PMICs
+	bh=3+XTKpEiNYrYrQNEx7zBBd9tGAKVmroU4kJyUaRvTlY=;
+	b=Mf+1u2nZer5UaeOmVDDAG1ecTp+wTtSEGZa9C3cYt9i/q4ByEvX5DGQq90zHOwAn
+	2/GOLXkRK5exFiNuHju7XzqZIHCmL20orHuNSEIRGWVBLR9FlyMSJlOokbhtLDnXggx
+	bYiEGIiz6n8lHpUWi/XVRSNEguEbKc1oG0rnjXyc=
+Received: by mx.zohomail.com with SMTPS id 1750780149757734.6410007359632;
+	Tue, 24 Jun 2025 08:49:09 -0700 (PDT)
+Message-ID: <c05ff44f1df5276a0a548cbfc7589d45520a54bb.camel@collabora.com>
+Subject: Re: [PATCH v2 00/29] Add support for MT8196 clock controllers
 From: =?ISO-8859-1?Q?N=EDcolas?= "F. R. A. Prado" <nfraprado@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	broonie@kernel.org
-Cc: lgirdwood@gmail.com, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org,  matthias.bgg@gmail.com, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org,  linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,  kernel@collabora.com
-Date: Tue, 24 Jun 2025 11:11:48 -0400
-In-Reply-To: <20250623120016.108732-1-angelogioacchino.delregno@collabora.com>
-References: <20250623120016.108732-1-angelogioacchino.delregno@collabora.com>
+To: Laura Nao <laura.nao@collabora.com>, mturquette@baylibre.com, 
+ sboyd@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+  matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+ p.zabel@pengutronix.de, richardcochran@gmail.com
+Cc: guangjie.song@mediatek.com, wenst@chromium.org,
+ linux-clk@vger.kernel.org,  devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org,  linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,  netdev@vger.kernel.org,
+ kernel@collabora.com
+Date: Tue, 24 Jun 2025 11:49:07 -0400
+In-Reply-To: <20250624143220.244549-1-laura.nao@collabora.com>
+References: <20250624143220.244549-1-laura.nao@collabora.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 User-Agent: Evolution 3.46.4-2 
 MIME-Version: 1.0
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250624_081202_423844_0C05D4DA 
-X-CRM114-Status: UNSURE (   7.18  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250624_084922_510906_C8BF219E 
+X-CRM114-Status: GOOD (  14.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,20 +83,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2025-06-23 at 14:00 +0200, AngeloGioacchino Del Regno wrote:
-> This series adds support for three new MediaTek PMICs: MT6316, MT6363
-> and MT6373 and their variants - used in board designs featuring the
-> MediaTek MT8196 Chromebook SoC, or the MT6991 Dimensity 9400
-> Smartphone
-> SoC.
+On Tue, 2025-06-24 at 16:31 +0200, Laura Nao wrote:
+> Add support for MT8196 clock controllers
 >=20
-> AngeloGioacchino Del Regno (6):
-> =C2=A0 dt-bindings: regulator: Document MediaTek MT6316 PMIC Regulators
-> =C2=A0 regulator: Add support for MediaTek MT6316 SPMI PMIC Regulators
-> =C2=A0 dt-bindings: regulator: Document MediaTek MT6363 PMIC Regulators
-> =C2=A0 regulator: Add support for MediaTek MT6363 SPMI PMIC Regulators
-> =C2=A0 dt-bindings: regulator: Document MediaTek MT6373 PMIC Regulators
-> =C2=A0 regulator: Add support for MediaTek MT6373 SPMI PMIC Regulators
+> This patch series introduces support for the clock controllers on the
+> MediaTek MT8196 platform, following up on an earlier submission[1].
+>=20
+> MT8196 uses a hardware voting mechanism to control some of the clock
+> muxes
+> and gates, along with a fence register responsible for tracking PLL
+> and mux
+> gate readiness. The series introduces support for these voting and
+> fence
+> mechanisms, and includes drivers for all clock controllers on the
+> platform.
+>=20
+> [1]
+> https://lore.kernel.org/all/20250307032942.10447-1-guangjie.song@mediatek=
+.com/
+>=20
+> Changes in v2:
+> - Fixed incorrect ID numbering in mediatek,mt8196-clock.h
+> - Improved description for 'mediatek,hardware-voter' in
+> mediatek,mt8196-clock.yaml and mediatek,mt8196-sys-clock.yaml
+> - Added description for '#reset-cells' in mediatek,mt8196-clock.yaml
+> - Added missing mediatek,mt8196-vdisp-ao compatible in
+> mediatek,mt8196-clock.yaml
+> - Fixed license in mediatek,mt8196-resets.h
+> - Fixed missing of_match_table in clk-mt8196-vdisp_ao.c
+> - Squashed commit adding UFS and PEXTP reset controller support
+> - Reordered commits to place reset controller binding before
+> dependent drivers
+> - Added R-b tags
+>=20
+> Link to v1:
+> https://lore.kernel.org/all/20250623102940.214269-1-laura.nao@collabora.c=
+om/
+>=20
+> AngeloGioacchino Del Regno (1):
+> =C2=A0 dt-bindings: reset: Add MediaTek MT8196 Reset Controller binding
+>=20
+> Laura Nao (28):
+> =C2=A0 clk: mediatek: clk-pll: Add set/clr regs for shared PLL enable
+> control
+> =C2=A0 clk: mediatek: clk-pll: Add ops for PLLs using set/clr regs and
+> FENC
+> =C2=A0 clk: mediatek: clk-mux: Add ops for mux gates with set/clr/upd and
+> =C2=A0=C2=A0=C2=A0 FENC
+> =C2=A0 clk: mediatek: clk-mtk: Introduce mtk_clk_get_hwv_regmap()
+> =C2=A0 clk: mediatek: clk-mux: Add ops for mux gates with HW voter and
+> FENC
+> =C2=A0 clk: mediatek: clk-gate: Refactor mtk_clk_register_gate to use
+> =C2=A0=C2=A0=C2=A0 mtk_gate struct
+> =C2=A0 clk: mediatek: clk-gate: Add ops for gates with HW voter
+> =C2=A0 clk: mediatek: clk-mtk: Add MUX_DIV_GATE macro
+> =C2=A0 dt-bindings: clock: mediatek: Describe MT8196 peripheral clock
+> =C2=A0=C2=A0=C2=A0 controllers
+> =C2=A0 clk: mediatek: Add MT8196 apmixedsys clock support
+> =C2=A0 clk: mediatek: Add MT8196 topckgen clock support
+> =C2=A0 clk: mediatek: Add MT8196 topckgen2 clock support
+> =C2=A0 clk: mediatek: Add MT8196 vlpckgen clock support
+> =C2=A0 clk: mediatek: Add MT8196 peripheral clock support
+> =C2=A0 clk: mediatek: Add MT8196 ufssys clock support
+> =C2=A0 clk: mediatek: Add MT8196 pextpsys clock support
+> =C2=A0 clk: mediatek: Add MT8196 adsp clock support
+> =C2=A0 clk: mediatek: Add MT8196 I2C clock support
+> =C2=A0 clk: mediatek: Add MT8196 mcu clock support
+> =C2=A0 clk: mediatek: Add MT8196 mdpsys clock support
+> =C2=A0 clk: mediatek: Add MT8196 mfg clock support
+> =C2=A0 clk: mediatek: Add MT8196 disp0 clock support
+> =C2=A0 clk: mediatek: Add MT8196 disp1 clock support
+> =C2=A0 clk: mediatek: Add MT8196 disp-ao clock support
+> =C2=A0 clk: mediatek: Add MT8196 ovl0 clock support
+> =C2=A0 clk: mediatek: Add MT8196 ovl1 clock support
+> =C2=A0 clk: mediatek: Add MT8196 vdecsys clock support
+> =C2=A0 clk: mediatek: Add MT8196 vencsys clock support
 
 For the whole series:
 
