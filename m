@@ -4,69 +4,195 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46280C7EE2A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jun 2025 07:46:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C620BC77B7F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jun 2025 09:40:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7dP8V4Ujy+J6fUCIArSc2uppUlbkMjVdZESx3qPO3/c=; b=pxjs+9Lfn30sIgXp3RkJkayhOe
-	9jV/7vdQpFXK8TmrNBfY6gogd0W5MZeqhnSIKoPsJ/WOPfc4JCtuJ8zPasYSXSA7vnTyiLaugdI9Z
-	QLKsl5SIE3AcY67JsedEx0U/G9z8lVSUvb3kPbVpB9NOxw0WWXhw1I2BzK9qh9kLbl/z68JVz7/t/
-	I4485piKW/zR+J7NvBc1a19zmj6r0RoF2gTrtxD8glqGigGAFn5wrTgjF5ZuxU+WOpX97NV8EDVeo
-	4orXWTtopeWh/2Bil59ETtY1+Qu3h/O9M7SnzeKL8CKaeQ5O1Gj0sNcBACidmvHc6cl0oKw8mj1nm
-	Z06WXWvg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/FQ//ezKfnMKjX8kgk39IDg/klicoBXtpcAqIWwIcBY=; b=n85KCchzpBmXzP1TArt3spGVi6
+	hhgvkyaEvjvpO40QN+CeBvKkecfsCXd533NvASDLkACj7NFL5UCD0qEmaGd6kOhEcL3cjP7EzBVw7
+	ty8NxMimV5Vne323OvXnYj6O4PLzHOJCk2vmMMpxVxko8LEACf9FrNnoeFHhdZQFq6eNWB9NjQC5n
+	6OTOHoxUKtzuNJ8KZAmkmal88h8J15lZ2KKSSpAu2/ejQhNiyj6NaYIU/QDbHGy+idb5IbfrXnzAw
+	dSptVvGlG2O+E6pBl8+rj8gZ4HJWYyZ3Y8nl7hyK43FyDR+cwXSNy0qQN5P0CBCW44rKIfSPZjfqA
+	VIxSt+Yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTyMs-00000004vYw-1205;
-	Tue, 24 Jun 2025 07:46:58 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uU08W-00000005Cbi-064d;
+	Tue, 24 Jun 2025 09:40:16 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTyCE-00000004tDT-0GiZ;
-	Tue, 24 Jun 2025 07:35:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1750750556;
-	bh=vm1NjlqRpfQIZ5mVSjWfG+74U7mYql3BgJEGh6N2Nz4=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=lijCkXKSrtPOPwswgeHkky1KCuBMmlrAzpK+vLqwnaRDx+EeqIMx3VVWwqMnBdt4G
-	 cb9qyHvfVonBgUYfsn2oiXY9y5lVAPMsOgpIQp6017nd96Jhscxnl2RnsP6hbnErqu
-	 IE/hDb87PAevZBkVdyZE+PZ4h6rlYEZZav7RDlCUqJJDJ6wBYkauT5oQDV6NInugP7
-	 ZJfc0udBjJfCUT1xr1wqFeAgBc3Ij2ga6bCl9cRbD8PyND5Ja6/JMGiwsORVcQAmWM
-	 tEsLny/jlIpbjZJREvGRSGpLMLURg9TNzFc4ym6wo+kR+eGdWvAOA9mDMcls2NZ3yH
-	 eN76b6jDKtjJg==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EBA4217E0FDB;
-	Tue, 24 Jun 2025 09:35:55 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: broonie@kernel.org
-Cc: lgirdwood@gmail.com,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	kernel@collabora.com
-Subject: [PATCH v2 6/6] regulator: Add support for MediaTek MT6373 SPMI PMIC Regulators
-Date: Tue, 24 Jun 2025 09:35:48 +0200
-Message-ID: <20250624073548.29732-7-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250624073548.29732-1-angelogioacchino.delregno@collabora.com>
-References: <20250624073548.29732-1-angelogioacchino.delregno@collabora.com>
+	id 1uU08U-00000005Caj-1Fyi;
+	Tue, 24 Jun 2025 09:40:15 +0000
+X-UUID: 36c6780450df11f09eb0dd999d3936bf-20250624
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=/FQ//ezKfnMKjX8kgk39IDg/klicoBXtpcAqIWwIcBY=;
+	b=VdE2ITg82Dw2/IRjwv2PraWhjNkeNB7lUCrXmYotPU06aU9hoof4EWke395UV6vYFDmmPsq13/nAhElMgmNIV2CwC0NlWrNrfdfvhQ6Fgsps3fIhEc4lG5YXNYIqycidvI2xNqycJVCRaIOHT0VIPsM4NPcrb40fdYLw7eE6Nkk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.2,REQID:62a5f4f5-4c21-4d26-806a-c43fca48c847,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:9eb4ff7,CLOUDID:06828273-15a7-4ae6-ad4b-94c27b45c266,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111,TC:nil,Conte
+	nt:0|50,EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,
+	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 36c6780450df11f09eb0dd999d3936bf-20250624
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
+	(envelope-from <ck.hu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1013235207; Tue, 24 Jun 2025 02:40:07 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Tue, 24 Jun 2025 17:40:04 +0800
+Received: from TYDPR03CU002.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Tue, 24 Jun 2025 17:40:04 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=AWKeGLEOFuZWiLWt4DJiP3hXwualHoDh4cQUMybGHPgpTl5XiBB7qAa8xduivOa25K/t97xB6mheE6n/eCgsEUDjTyHXoJ4shzADIYugWDvVVmGyeiF9EXWOw4T3INyqD98sM2YEGJvIdA3JflGBgPE5e9OE5kDxFWrYdQ5W483a2hG3jLUje5mrU5luHgUFiyP6PpMUzig9OYG/n3vzzEJ+H0VzMvmDXtXw2jrbIUxQTiLz7AtUZ4WDsOrbadsRYMuotFPfIVPoQ2LV8YMwJ/F6csoWy5WLLQv+jvFiQuAvTfJy4LNw1YuP0qMQB6v4IdPnJHbRZ6yxUVTfdKoS+A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=/FQ//ezKfnMKjX8kgk39IDg/klicoBXtpcAqIWwIcBY=;
+ b=KKJtGdaxhhEZtbKNLVpMYSf31ugTBzfN/i6h461ds3JeLzC5t91i9+Ok3XHDBDXtndHAuRHAEUUStiB4yaDFDn20ZJw5Zcoxbch0/USYm8Msqxc0FP4AUzCYneWZ0/C0R/YujsmHAlU3NvDeKCtXJCJqqCOC4inudPKsRXJlVP/9gxmIwa4FLkWLOmwA/2vjhda4KH4Lo2ZDHhHY/x+oJVs7RZ6wQhR76rY6LMyXVKyjuH451kfPmSWT6Tk6uihJek1cGOYzeTDvhooOcIvsQjvbLj8KCTPgMTI/1VBLNVYTTkeqKcpUf5mIGKR9jjNDNNLEgFyXqZwq2kpsFPijNg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=/FQ//ezKfnMKjX8kgk39IDg/klicoBXtpcAqIWwIcBY=;
+ b=shdfqDQVKzXtBzqbncdJe4t+9CHEN0AAFJeB1yot+irS3cVsYQ5XoO5nOwk8bKbd6xbw2s5pBd8aUd87cUoTbHiVvZa6KPf8uG3plYerFjpJgUHKamKa/LGa0NrJpBGPGuG6ix1DBHjzjA6NAwauK8do8XJV22ms8illoEXPWKE=
+Received: from TYZPR03MB6624.apcprd03.prod.outlook.com (2603:1096:400:1f4::13)
+ by SEZPR03MB7875.apcprd03.prod.outlook.com (2603:1096:101:185::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8857.27; Tue, 24 Jun
+ 2025 09:39:58 +0000
+Received: from TYZPR03MB6624.apcprd03.prod.outlook.com
+ ([fe80::9ce6:1e85:c4a7:2a54]) by TYZPR03MB6624.apcprd03.prod.outlook.com
+ ([fe80::9ce6:1e85:c4a7:2a54%5]) with mapi id 15.20.8835.027; Tue, 24 Jun 2025
+ 09:39:58 +0000
+From: =?utf-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
+To: =?utf-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
+	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, "AngeloGioacchino Del
+ Regno" <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH] drm/mediatek: Add wait_event_timeout when disabling plane
+Thread-Topic: [PATCH] drm/mediatek: Add wait_event_timeout when disabling
+ plane
+Thread-Index: AQHbyvbejB/zfD8/0kyGbYWOlhuMybQSQfaA
+Date: Tue, 24 Jun 2025 09:39:58 +0000
+Message-ID: <d46b431600ad2e5e2b3639b8bea784dd6c151bfd.camel@mediatek.com>
+References: <20250522085149.3361598-1-jason-jh.lin@mediatek.com>
+In-Reply-To: <20250522085149.3361598-1-jason-jh.lin@mediatek.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+user-agent: Evolution 3.52.3-0ubuntu1 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR03MB6624:EE_|SEZPR03MB7875:EE_
+x-ms-office365-filtering-correlation-id: 46671ef6-aa92-406c-9916-08ddb303158d
+x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|376014|366016|38070700018;
+x-microsoft-antispam-message-info: =?utf-8?B?YUFwV25lVHBsdDFUZDl3aWNicFRUUFpBQ2NnN0l2aWxBaWJQNk84dFpjcklC?=
+ =?utf-8?B?b2dtMTU3dFpDTUpSWnBVUGRjN21KRWhzL2g0THNEQkI1SWFjTTRYaE56RGRH?=
+ =?utf-8?B?NXVld2tZS0FqYjlZbTdpYTNRYzNxeGszcE9VUURJNkZhek1ZYk83UFRRRHdZ?=
+ =?utf-8?B?cnExcjRoR2R4L0hNTTh6TjMxQ01oYzlvTVNVYkxRdisxOGhlZXFuVUNlRWk1?=
+ =?utf-8?B?SmRYaTlrNnBweHdRdEMySWdiak81Qm15Q0JHRDNUb3ZZOHg3bFBydG9PRkox?=
+ =?utf-8?B?aWtuQk5uM0dTK01vM05MQ0lDOHBuK0NzaFNoMldKYzBObmZ5SlFNOVZRRFNm?=
+ =?utf-8?B?KzJFL0ZFUW5kbUpWWm9wNWZQcGhtRDEweWhTTCtUVmJIblFNamFFTXE4Tjly?=
+ =?utf-8?B?Z3AreDlVTkhRWldHOEJLR3JmTXJiN1QxY0lPM2pmaXhROUdhditVNWhYU1Z0?=
+ =?utf-8?B?YmdRaTRESkZ6VS95K2VQazZBUXhDczY5SkhYTXRDN3Z1cGZpOVpIWUVjTm9p?=
+ =?utf-8?B?OFZrVk1jdzJLa0dkblhLOVZ1eWhNVVZ5SS94VzVKNkNTV045ZG1pZEs5SUUy?=
+ =?utf-8?B?YXYyNUNaUTdCVlV6MVhZWG0weGlKRHpZSE8rVjh0ZTZWMDJjZkIrREhZRjYw?=
+ =?utf-8?B?ZnhmYVlhT2FCSHdJSUgvem5NVytQOGovSE9Nd3kwcDhXeUpZa3dkeXd6RXY0?=
+ =?utf-8?B?YXI1VlRRRkhHV1dXbnduVlhaVWRyUWYyZU9pMWR3SHBXVVUrRjJjK1FXVkdH?=
+ =?utf-8?B?bWRlYnF1NGdIT2NXTm5zU05WU0NkczBROTloS1pZc3NLRGVRQnNtWnU3R1FQ?=
+ =?utf-8?B?QzBqN2RCbWc5WlFCWDA3Y2R6ekNvMGNjejNHeEl6TFk3bHBkQWgrUis4Skdm?=
+ =?utf-8?B?Rk1QekkyRWUxUWhmM0JoUUZDWENNMGVRVWFPS2ZkVHZaY0kwM3pJQ3RJbXU0?=
+ =?utf-8?B?WmlaeFRmdlZ0SkxWK3Nuci9IeWJSRVFRTVEyV2lveEZrTXh3SENVVW50bDBW?=
+ =?utf-8?B?Q1c5MGZyajQ0eE1nUk9ITEpEUCtYWFlOZisxdlptTmJqazhnc1RhNTRKQm5h?=
+ =?utf-8?B?enJBNkZnd3JUd2FCY0l5ZmxjcUZRV3J4UkN6UXR3MkptSWFYYk8wSTVRbGZQ?=
+ =?utf-8?B?Z0dTWUFUTG5DVGhWa05nNUxwVmk1TWNRM2ZTaTRGd3RGSkNzWnpNcEtEVTJk?=
+ =?utf-8?B?Z29rNlY4OTJwNHJ1TDhxb3lmTEdqbktRSFBqZm5LQmNLK2RvMGhweHYyU0Rv?=
+ =?utf-8?B?T0JmaUNweW1wTmM3QXZ6Qnd2a3RrZmp5VUlReU1YMXBXK1ZqcDBwU0YyMmJY?=
+ =?utf-8?B?c01MRXJBTGttNlNhUEg3Z1hWYS9tWjFzaXl1eDR1TDMwUHJzUWdva1VvMGl4?=
+ =?utf-8?B?QVNqTW9TdFlhS1JJUG4yRTV2b0RlNnRvL0ZhRjNNTHp5cVN3ZW9YUzB6VWZB?=
+ =?utf-8?B?STFlZXlpUkswSVRoQXFUbnhYRjUzWnlINFFmM1p2RWdmOG5wRUc0RnpLKzdF?=
+ =?utf-8?B?RUdYUmtlNmJ0cHNhUi80b2JhTmYyUnM1WkNiNWZydXp2L2FtNElPYmFxNlFB?=
+ =?utf-8?B?TThrZjVqdXZQM2x5VVN6NmtzR3hoRVJzQU9HaERwaFp5M24yaW9JYncvRm8z?=
+ =?utf-8?B?L0FSVHRueWpaOGQ1QmErZ1o4ZTZGUmVDTHhWdWNqZmZCWldwM0lRc2pyTGxY?=
+ =?utf-8?B?bGpWZmpxNG51RHd0eEJuS3FpOUl2UU9QaC9ON2YrMktHMmdMQkNSK0xmVEs2?=
+ =?utf-8?B?T0Rldms2c25uQ2tjS0xZRTJOajFWWDBQVEV6R3NLeWNSd3pjMFVPa3k5bjYr?=
+ =?utf-8?B?clhIMnlnbXExMU1rMGEvL2o0Zm5QNWFMeG5hRU5nSytrcWdXTFR6RFNCVUNE?=
+ =?utf-8?B?L1JSVXN2S2RpdHA1aXNyaTB2cWhmQnRjZ3V4cUU4OFpkQmUrSGhBNlNjVXp2?=
+ =?utf-8?B?dmtPM3ViWExva2tCa21Jb1FwanIxc2t2eG8rencreThPSUNqQzlvTWlYZm9V?=
+ =?utf-8?Q?iC++GdcCb2e0hrt3iljWU4WG+P8wOo=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB6624.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(366016)(38070700018);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?RVZvcExtUXhHcXd4SWwvWEU4WkZ2ald4cXQwKzEyWXRpL1czbkpOSm1FZ2tr?=
+ =?utf-8?B?VmJEdk5IM21rZEY3NWhrK2JuMWFOK3ROelptMEptTGw1VHVQK0d2UlBUVDFh?=
+ =?utf-8?B?aWdzcmdRMDNNTEVMYzQ0YnI3THVPTDdTRGtyVkpoVTZxcHZ2Njl5UCtrZ2Iy?=
+ =?utf-8?B?UFRaZ2FNK3lWMHpsL2N0ZVJWbzF2SDBmZVpSTWVmSlVGOGN3Tmg4bXJxTHlw?=
+ =?utf-8?B?ZlVrUSt3S1BwOTV5ZUUxSjFZeUVva0xWREVZUU1YQm5PS0tlV1pUeEplSUlp?=
+ =?utf-8?B?RU1kMjhGcXhMa2hCOXlNMkNhOVJyY1gvZEVPV1Jyc1F2aG9GME5zMEUyVEdO?=
+ =?utf-8?B?ZnpWWm5sRVVPb3RoTFV3YVRGU2JlVEY3cE5IYkErOG8rN3lPWnZPSERoKzZK?=
+ =?utf-8?B?ank2NFdHT3FWYWJCanV4ZmQ5TUVTaWJIZGtTRk8zd1dFT3JiTkFiQUNTNi9p?=
+ =?utf-8?B?MlVOekpydTVtdnRraFRRaTgrMnpHd2VycE1XVVlVaGpCMEJVYTBabTUxODZQ?=
+ =?utf-8?B?aWlSR1MzOXJ2b1VwTXRmYXROaTVmNGJNY1RvamU3dHRwbGdNNkJucUx2Skp1?=
+ =?utf-8?B?TjBDWnU4MmhBbTlIU082dTE1K3RVMTFEakhMempPUXlwWjNTZDhmNE1wdWVS?=
+ =?utf-8?B?bzlsR2xwb2srT280S2UwaEVVR1B3c1p0RGdMek43YTBpQTdWQmI2WFZBRzdx?=
+ =?utf-8?B?VkR1Z2ZicDdyUWhUQno2OERaeDlWa1Q1TzRBaUl4SjhoQ1pWVlJOZUJ1ZTNU?=
+ =?utf-8?B?YlVPaEYwQ1QxZkFKQmhaazYrTmdJWjZQaTdvVDlSUGo4R2RzalEvUk9WcWlJ?=
+ =?utf-8?B?SEoySTl5ZG9zWjJsNjNsM2Q4MDdXM05wdHZmMHp6M2xTMStvNXV3OVZyaEJp?=
+ =?utf-8?B?dGZuTlNhMWhRK1dPZEUvanZtZDdrcWJZbFl0d21ieTNvbXo1L25CbDdaY1Bp?=
+ =?utf-8?B?eU1UOGVBTGZRWVdYYVFXYVpad0dxRS8rekRpZ1BVZWowdGZPK09SQWl1RlF4?=
+ =?utf-8?B?R2w4cGRtVzRaWllBeWZtTUpxL081cTlOS3crYWJIbVhjYXBselU1U1lONnh4?=
+ =?utf-8?B?d2tuRTB6TXAzc0tOZW1idFVreGt3YURTNWpjWHBqdUhmcllvSkxnbkVWV1BK?=
+ =?utf-8?B?Z1NZZUFaNHhISkI3cE5ZUEJreVVZblhzU3VwY1ZRK3A3OVp5bXBlUnNTRURY?=
+ =?utf-8?B?MkJCb3BhOVZWcnR5WGdNMHY3STBXanphK084TVFUeXhtVUNSeWVtNWFMOTlO?=
+ =?utf-8?B?Ty9xSTg1akdMVlp3Skl2cmhzYnFCMk5GdEhsUFdkRnVjQjNOY01acGFqODkr?=
+ =?utf-8?B?d3E5SE02a1J6U1JwUWpBMllsWVZ3cFJBRzVNWGkzWEdxNXZ5RFgvWW0wTDZu?=
+ =?utf-8?B?VnFMNXFPdzNEN01LRXZ0dzQ4RjhzK1hON01kQldXSFo0dGhaSUZ0c2VPemxU?=
+ =?utf-8?B?YVk0MkRYOGZ0RFFlV01KWDZMSUQzM3VWMWovL09mSzA1V0UzVlpySm9HWXVm?=
+ =?utf-8?B?Qi8yTXFZWVFIa296YTJ3Q0JKcFFOaWpMNjVudUtKeFdoNkZNNFlMZjBIR3V1?=
+ =?utf-8?B?d3hFK3ppcThEam1ReFVZSFppM0E1RktQcjBVQUIwZlNXRmx4TnZYZEhkSmRG?=
+ =?utf-8?B?dzF4dmlzcGZLTUpBYXdtYWNlTkRndWRzaENoWi9hZ2paanh4VGpQTWFzNlZt?=
+ =?utf-8?B?U2xqejA5YWZwTm92RHM1VVp1ckdraXhpbTNLQzVRL2VEdHc3cy9kZ1VqNktH?=
+ =?utf-8?B?dzZVR0JIWERQV0U4RW81YkRKcVNUVkk1cXExYnF4dWR6QnloYm9hOVUwUHJC?=
+ =?utf-8?B?WHE0Wm95UHR3bW11SzZUNlBvZnRtREZkcVJIaGNDTTJCYnNkdFROd3Y0WGFK?=
+ =?utf-8?B?ejhhNkZrLzlwYThqYlBZQlQ5Wmw4Mjl2VTRpMGxaaTFWQm95MVZYanhmaktP?=
+ =?utf-8?B?SHdyOW9lNWZ5VzIzbFM5OW5mQk4zSUgxZjhRenJPc05XVVVVaS9ONHBiSnZq?=
+ =?utf-8?B?NHkzSDVueHNZNHBlOEttZi9OaFU5SSsxZzJpNE96bnM5bFZ0ZWVlajFSS0Rm?=
+ =?utf-8?B?MGFMMzB5RXVnVG5aSWlldFFMZDlBQ3JYUzBYeS9VMHl6VHRrbzFlUUxHRnlK?=
+ =?utf-8?Q?RVCZHIAS2Vg+uZNYz0HluHiky?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <4C4A425CBFED2B40942560D46E06BA16@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB6624.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 46671ef6-aa92-406c-9916-08ddb303158d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Jun 2025 09:39:58.4256
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: A9Uf/sgzqF1KGMzhqidArE0xyx7tx0xWpVptaiVW8ALqmSS9omU8weM4syeIg1n/0pCJeDms4M1sOuiIhfQJDQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR03MB7875
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250624_003558_394997_66A7E656 
-X-CRM114-Status: GOOD (  23.60  )
+X-CRM114-CacheID: sfid-20250624_024014_370702_6B53BF12 
+X-CRM114-Status: GOOD (  22.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,955 +204,90 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: "wenst@chromium.org" <wenst@chromium.org>, =?utf-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>, =?utf-8?B?WmhlbnhpbmcgUWluICjnp6bmjK/lhbQp?= <Zhenxing.Qin@mediatek.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, =?utf-8?B?UGF1bC1wbCBDaGVuICjpmbPmn4/pnJYp?= <Paul-pl.Chen@mediatek.com>, =?utf-8?B?WGF2aWVyIENoYW5nICjlvLXnjbvmlocp?= <Xavier.Chang@mediatek.com>, =?utf-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, =?utf-8?B?WW9uZ3FpYW5nIE5pdSAo54mb5rC45by6KQ==?= <yongqiang.niu@mediatek.com>, =?utf-8?B?U2lyaXVzIFdhbmcgKOeOi+eak+aYsSk=?= <Sirius.Wang@mediatek.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a driver for the regulators found on the MediaTek MT6373 PMIC,
-fully controlled by SPMI interface.
-Similarly to MT6363, this PMIC regulates voltage with input range
-of 2.6-5.0V, and features 10 buck converters and 25 LDOs.
-
-This PMIC is usually found on board designs using the MT6991 or
-MT8196 SoC, in combination with the MT6363 PMIC.
-
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/regulator/Kconfig                  |   9 +
- drivers/regulator/Makefile                 |   1 +
- drivers/regulator/mt6373-regulator.c       | 729 +++++++++++++++++++++
- include/linux/regulator/mt6373-regulator.h | 154 +++++
- 4 files changed, 893 insertions(+)
- create mode 100644 drivers/regulator/mt6373-regulator.c
- create mode 100644 include/linux/regulator/mt6373-regulator.h
-
-diff --git a/drivers/regulator/Kconfig b/drivers/regulator/Kconfig
-index f2ab06538b8c..1b80cee7cfa1 100644
---- a/drivers/regulator/Kconfig
-+++ b/drivers/regulator/Kconfig
-@@ -953,6 +953,15 @@ config REGULATOR_MT6370
- 	  This driver supports the control for DisplayBias voltages and one
- 	  general purpose LDO which is commonly used to drive the vibrator.
- 
-+config REGULATOR_MT6373
-+	tristate "MT6373 SPMI PMIC regulator driver"
-+	depends on SPMI || COMPILE_TEST
-+	help
-+          Say Y here to enable support for buck and LDO regulators found in
-+          the MediaTek MT6373 SPMI PMIC and its variants.
-+	  This driver supports the control of different power rails of device
-+	  through regulator interface.
-+
- config REGULATOR_MT6380
- 	tristate "MediaTek MT6380 PMIC"
- 	depends on MTK_PMIC_WRAP
-diff --git a/drivers/regulator/Makefile b/drivers/regulator/Makefile
-index 9dd19f4227ea..f75abb140d8d 100644
---- a/drivers/regulator/Makefile
-+++ b/drivers/regulator/Makefile
-@@ -113,6 +113,7 @@ obj-$(CONFIG_REGULATOR_MT6359)	+= mt6359-regulator.o
- obj-$(CONFIG_REGULATOR_MT6360) += mt6360-regulator.o
- obj-$(CONFIG_REGULATOR_MT6363) += mt6363-regulator.o
- obj-$(CONFIG_REGULATOR_MT6370) += mt6370-regulator.o
-+obj-$(CONFIG_REGULATOR_MT6373) += mt6373-regulator.o
- obj-$(CONFIG_REGULATOR_MT6380)	+= mt6380-regulator.o
- obj-$(CONFIG_REGULATOR_MT6397)	+= mt6397-regulator.o
- obj-$(CONFIG_REGULATOR_MTK_DVFSRC) += mtk-dvfsrc-regulator.o
-diff --git a/drivers/regulator/mt6373-regulator.c b/drivers/regulator/mt6373-regulator.c
-new file mode 100644
-index 000000000000..e4a68d5d02a4
---- /dev/null
-+++ b/drivers/regulator/mt6373-regulator.c
-@@ -0,0 +1,729 @@
-+// SPDX-License-Identifier: GPL-2.0
-+//
-+// Copyright (c) 2024 MediaTek Inc.
-+// Copyright (c) 2025 Collabora Ltd
-+//                    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+
-+#include <linux/bitfield.h>
-+#include <linux/delay.h>
-+#include <linux/devm-helpers.h>
-+#include <linux/err.h>
-+#include <linux/interrupt.h>
-+#include <linux/kernel.h>
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/of_device.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
-+
-+#include <linux/regulator/driver.h>
-+#include <linux/regulator/machine.h>
-+#include <linux/regulator/mt6373-regulator.h>
-+#include <linux/regulator/of_regulator.h>
-+
-+#define MT6373_REGULATOR_MODE_NORMAL	0
-+#define MT6373_REGULATOR_MODE_FCCM	1
-+#define MT6373_REGULATOR_MODE_LP	2
-+#define MT6373_REGULATOR_MODE_ULP	3
-+
-+#define EN_SET_OFFSET			0x1
-+#define EN_CLR_OFFSET			0x2
-+
-+#define MT6373_RG_RSV_SWREG_H		0xa09
-+#define MT6373_PLG_CFG_ELR1		0x3ab
-+#define MT6373_ELR_MASK			0xc
-+
-+#define OC_IRQ_ENABLE_DELAY_MS		10
-+
-+/* Unlock key for mode setting */
-+#define MT6373_BUCK_TOP_UNLOCK_VALUE	0x5543
-+
-+enum {
-+	MT6373_ID_VBUCK0,
-+	MT6373_ID_VBUCK1,
-+	MT6373_ID_VBUCK2,
-+	MT6373_ID_VBUCK3,
-+	MT6373_ID_VBUCK4,
-+	MT6373_ID_VBUCK4_UFS,
-+	MT6373_ID_VBUCK5,
-+	MT6373_ID_VBUCK6,
-+	MT6373_ID_VBUCK7,
-+	MT6373_ID_VBUCK8,
-+	MT6373_ID_VBUCK9,
-+	MT6373_ID_VUSB,
-+	MT6373_ID_VAUX18,
-+	MT6373_ID_VRF13_AIF,
-+	MT6373_ID_VRF18_AIF,
-+	MT6373_ID_VRFIO18_AIF,
-+	MT6373_ID_VRF09_AIF,
-+	MT6373_ID_VRF12_AIF,
-+	MT6373_ID_VANT18,
-+	MT6373_ID_VSRAM_DIGRF_AIF,
-+	MT6373_ID_VIBR,
-+	MT6373_ID_VIO28,
-+	MT6373_ID_VFP,
-+	MT6373_ID_VTP,
-+	MT6373_ID_VMCH,
-+	MT6373_ID_VMC,
-+	MT6373_ID_VAUD18,
-+	MT6373_ID_VCN33_1,
-+	MT6373_ID_VCN33_2,
-+	MT6373_ID_VCN33_3,
-+	MT6373_ID_VCN18IO,
-+	MT6373_ID_VEFUSE,
-+	MT6373_ID_VMCH_EINT_HIGH,
-+	MT6373_ID_VMCH_EINT_LOW
-+};
-+
-+/**
-+ * struct mt6373_regulator_info - MT6373 regulators information
-+ * @desc: Regulator description structure
-+ * @lp_mode_reg: Low Power mode register (normal/idle)
-+ * @lp_mode_mask: Low Power mode regulator mask
-+ * @modeset_reg: AUTO/PWM mode register
-+ * @modeset_mask: AUTO/PWM regulator mask
-+ * @vocal_reg: Voltage Output Calibration register
-+ * @vocal_mask: Voltage Output Calibration regulator mask
-+ * @oc_work: Delayed work for enabling overcurrent IRQ
-+ * @irq: Interrupt for overcurrent event
-+ */
-+struct mt6373_regulator_info {
-+	struct regulator_desc desc;
-+	u16 lp_mode_reg;
-+	u16 lp_mode_mask;
-+	u16 modeset_reg;
-+	u16 modeset_mask;
-+	u16 vocal_reg;
-+	u16 vocal_mask;
-+	struct delayed_work oc_work;
-+	int irq;
-+};
-+
-+#define MT6373_BUCK(match, vreg, min, max, step, en_reg, en_bit, vs_reg,\
-+		    vs_mask, lp_reg, lp_bit, mset_reg, mset_bit)	\
-+[MT6373_ID_##vreg] = {							\
-+	.desc = {							\
-+		.name = match,						\
-+		.of_match = of_match_ptr(match),			\
-+		.ops = &mt6373_vreg_setclr_ops,				\
-+		.type = REGULATOR_VOLTAGE,				\
-+		.id = MT6373_ID_##vreg,					\
-+		.owner = THIS_MODULE,					\
-+		.n_voltages = (max - min) / step + 1,			\
-+		.min_uV = min,						\
-+		.uV_step = step,					\
-+		.enable_reg = en_reg,					\
-+		.enable_mask = BIT(en_bit),				\
-+		.vsel_reg = vs_reg,					\
-+		.vsel_mask = vs_mask,					\
-+		.of_map_mode = mt6373_map_mode,				\
-+	},								\
-+	.lp_mode_reg = lp_reg,						\
-+	.lp_mode_mask = BIT(lp_bit),					\
-+	.modeset_reg = mset_reg,					\
-+	.modeset_mask = BIT(mset_bit),					\
-+}
-+
-+#define MT6373_LDO_L(match, vreg, min, max, step, en_reg, vs_reg,	\
-+		     vs_mask)						\
-+[MT6373_ID_##vreg] = {							\
-+	.desc = {							\
-+		.name = match,						\
-+		.of_match = of_match_ptr(match),			\
-+		.ops = &mt6373_ldo_linear_ops,				\
-+		.type = REGULATOR_VOLTAGE,				\
-+		.id = MT6373_ID_##vreg,					\
-+		.owner = THIS_MODULE,					\
-+		.n_voltages = (max - min) / step + 1,			\
-+		.min_uV = min,						\
-+		.uV_step = step,					\
-+		.enable_reg = en_reg,					\
-+		.enable_mask = BIT(0),					\
-+		.vsel_reg = vs_reg,					\
-+		.vsel_mask = vs_mask,					\
-+		.of_map_mode = mt6373_map_mode,				\
-+	},								\
-+	.lp_mode_reg = en_reg,						\
-+	.lp_mode_mask = BIT(1),						\
-+}
-+
-+#define MT6373_LDO_VT_OPS(match, vreg, vops, vtable, en_reg, vs_reg,	\
-+			  cal_reg)					\
-+[MT6373_ID_##vreg] = {							\
-+	.desc = {							\
-+		.name = match,						\
-+		.of_match = of_match_ptr(match),			\
-+		.ops = &vops,						\
-+		.type = REGULATOR_VOLTAGE,				\
-+		.id = MT6373_ID_##vreg,					\
-+		.owner = THIS_MODULE,					\
-+		.volt_table = vtable,					\
-+		.n_voltages = ARRAY_SIZE(vtable),			\
-+		.enable_reg = en_reg,					\
-+		.enable_mask = BIT(0),					\
-+		.vsel_reg = vs_reg,					\
-+		.vsel_mask = MT6373_PMIC_RG_LDO_VT_VOCALSEL_MASK,	\
-+		.of_map_mode = mt6373_map_mode,				\
-+	},								\
-+	.vocal_reg = cal_reg,						\
-+	.vocal_mask = MT6373_PMIC_RG_LDO_VT_VOCALSEL_MASK,		\
-+	.lp_mode_reg = en_reg,						\
-+	.lp_mode_mask = BIT(1),						\
-+}
-+
-+#define MT6373_LDO_VT(match, vreg, vtable, en_reg, vsel_reg, cal_reg)	\
-+	MT6373_LDO_VT_OPS(match, vreg, mt6373_ldo_vtable_ops, vtable,	\
-+			  en_reg, vsel_reg, cal_reg)
-+
-+static const unsigned int ldo_volt_table1[] = {
-+	1200000, 1300000, 1500000, 1700000, 1800000, 2000000, 2100000, 2200000,
-+	2700000, 2800000, 2900000, 3000000, 3100000, 3300000, 3400000, 3500000,
-+};
-+
-+static const unsigned int ldo_volt_table2[] = {
-+	1800000, 1900000, 2000000, 2100000, 2200000, 2300000, 2400000, 2500000,
-+	2600000, 2700000, 2800000, 2900000, 3000000, 3100000, 3200000, 3300000,
-+};
-+
-+static const unsigned int ldo_volt_table3[] = {
-+	600000,  700000,  800000,  900000,  1000000, 1100000, 1200000, 1300000,
-+	1400000, 1500000, 1600000, 1700000, 1800000, 1900000, 2000000, 2100000,
-+};
-+
-+static const unsigned int ldo_volt_table4[] = {
-+	1200000, 1300000, 1500000, 1700000, 1800000, 2000000, 2500000, 2600000,
-+	2700000, 2800000, 2900000, 3000000, 3100000, 3300000, 3400000, 3500000,
-+};
-+
-+static const unsigned int ldo_volt_table5[] = {
-+	900000, 1000000, 1100000, 1200000, 1300000, 1700000, 1800000, 1810000,
-+};
-+
-+static int mt6373_vreg_enable_setclr(struct regulator_dev *rdev)
-+{
-+	return regmap_write(rdev->regmap, rdev->desc->enable_reg + EN_SET_OFFSET,
-+			    rdev->desc->enable_mask);
-+}
-+
-+static int mt6373_vreg_disable_setclr(struct regulator_dev *rdev)
-+{
-+	return regmap_write(rdev->regmap, rdev->desc->enable_reg + EN_CLR_OFFSET,
-+			    rdev->desc->enable_mask);
-+}
-+
-+static inline unsigned int mt6373_map_mode(unsigned int mode)
-+{
-+	switch (mode) {
-+	case MT6373_REGULATOR_MODE_NORMAL:
-+		return REGULATOR_MODE_NORMAL;
-+	case MT6373_REGULATOR_MODE_FCCM:
-+		return REGULATOR_MODE_FAST;
-+	case MT6373_REGULATOR_MODE_LP:
-+		return REGULATOR_MODE_IDLE;
-+	case MT6373_REGULATOR_MODE_ULP:
-+		return REGULATOR_MODE_STANDBY;
-+	default:
-+		return REGULATOR_MODE_INVALID;
-+	}
-+}
-+
-+static int mt6373_vmch_eint_enable(struct regulator_dev *rdev)
-+{
-+	const struct regulator_desc *rdesc = rdev->desc;
-+	unsigned int val;
-+	int ret;
-+
-+	if (rdesc->id == MT6373_ID_VMCH_EINT_HIGH)
-+		val = MT6373_PMIC_RG_LDO_VMCH_EINT_POL_BIT;
-+	else
-+		val = 0;
-+
-+	ret = regmap_update_bits(rdev->regmap, MT6373_LDO_VMCH_EINT,
-+				 MT6373_PMIC_RG_LDO_VMCH_EINT_POL_BIT, val);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_set_bits(rdev->regmap, MT6373_PMIC_RG_LDO_VMCH_ADDR,
-+			      rdesc->enable_mask);
-+	if (ret)
-+		return ret;
-+
-+	return regmap_set_bits(rdev->regmap, rdesc->enable_reg, rdesc->enable_mask);
-+}
-+
-+static int mt6373_vmch_eint_disable(struct regulator_dev *rdev)
-+{
-+	const struct regulator_desc *rdesc = rdev->desc;
-+	int ret;
-+
-+	ret = regmap_clear_bits(rdev->regmap, MT6373_PMIC_RG_LDO_VMCH_ADDR,
-+				rdesc->enable_mask);
-+	if (ret)
-+		return ret;
-+
-+	/* Wait for VMCH discharging */
-+	usleep_range(1500, 1600);
-+
-+	return regmap_clear_bits(rdev->regmap, rdesc->enable_reg, rdesc->enable_mask);
-+}
-+
-+static unsigned int mt6373_regulator_get_mode(struct regulator_dev *rdev)
-+{
-+	struct mt6373_regulator_info *info = rdev_get_drvdata(rdev);
-+	unsigned int val;
-+	int ret;
-+
-+	ret = regmap_read(rdev->regmap, info->modeset_reg, &val);
-+	if (ret) {
-+		dev_err(&rdev->dev, "Failed to get mt6373 mode: %d\n", ret);
-+		return ret;
-+	}
-+
-+	if (val & info->modeset_mask)
-+		return REGULATOR_MODE_FAST;
-+
-+	ret = regmap_read(rdev->regmap, info->lp_mode_reg, &val);
-+	val &= info->lp_mode_mask;
-+	if (ret) {
-+		dev_err(&rdev->dev, "Failed to get lp mode: %d\n", ret);
-+		return ret;
-+	}
-+
-+	if (val)
-+		return REGULATOR_MODE_IDLE;
-+	else
-+		return REGULATOR_MODE_NORMAL;
-+}
-+
-+static int mt6373_buck_unlock(struct regmap *map, bool unlock)
-+{
-+	u16 buf = unlock ? MT6373_BUCK_TOP_UNLOCK_VALUE : 0;
-+
-+	return regmap_bulk_write(map, MT6373_BUCK_TOP_KEY_PROT_LO, &buf, sizeof(buf));
-+}
-+
-+static int mt6373_regulator_set_mode(struct regulator_dev *rdev,
-+				     unsigned int mode)
-+{
-+	struct mt6373_regulator_info *info = rdev_get_drvdata(rdev);
-+	struct regmap *regmap;
-+	int cur_mode, ret;
-+
-+	switch (mode) {
-+	case REGULATOR_MODE_FAST:
-+		ret = mt6373_buck_unlock(regmap, true);
-+		if (ret)
-+			break;
-+
-+		ret = regmap_set_bits(regmap, info->modeset_reg, info->modeset_mask);
-+
-+		mt6373_buck_unlock(regmap, false);
-+		break;
-+	case REGULATOR_MODE_NORMAL:
-+		cur_mode = mt6373_regulator_get_mode(rdev);
-+		if (cur_mode < 0) {
-+			ret = cur_mode;
-+			break;
-+		}
-+
-+		if (cur_mode == REGULATOR_MODE_FAST) {
-+			ret = mt6373_buck_unlock(regmap, true);
-+			if (ret)
-+				break;
-+
-+			ret = regmap_clear_bits(regmap, info->modeset_reg, info->modeset_mask);
-+
-+			mt6373_buck_unlock(regmap, false);
-+			break;
-+		} else if (cur_mode == REGULATOR_MODE_IDLE) {
-+			ret = regmap_clear_bits(regmap, info->lp_mode_reg, info->lp_mode_mask);
-+			if (ret == 0)
-+				usleep_range(100, 200);
-+		}
-+		break;
-+	case REGULATOR_MODE_IDLE:
-+		ret = regmap_set_bits(regmap, info->lp_mode_reg, info->lp_mode_mask);
-+		break;
-+	default:
-+		ret = -EINVAL;
-+	}
-+
-+	if (ret) {
-+		dev_err(&rdev->dev, "Failed to set mode %u: %d\n", mode, ret);
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static const struct regulator_ops mt6373_vreg_setclr_ops = {
-+	.list_voltage = regulator_list_voltage_linear,
-+	.map_voltage = regulator_map_voltage_linear,
-+	.set_voltage_sel = regulator_set_voltage_sel_regmap,
-+	.get_voltage_sel = regulator_get_voltage_sel_regmap,
-+	.set_voltage_time_sel = regulator_set_voltage_time_sel,
-+	.enable = mt6373_vreg_enable_setclr,
-+	.disable = mt6373_vreg_disable_setclr,
-+	.is_enabled = regulator_is_enabled_regmap,
-+	.set_mode = mt6373_regulator_set_mode,
-+	.get_mode = mt6373_regulator_get_mode,
-+};
-+
-+static const struct regulator_ops mt6373_ldo_linear_ops = {
-+	.list_voltage = regulator_list_voltage_linear,
-+	.map_voltage = regulator_map_voltage_linear,
-+	.set_voltage_sel = regulator_set_voltage_sel_regmap,
-+	.get_voltage_sel = regulator_get_voltage_sel_regmap,
-+	.set_voltage_time_sel = regulator_set_voltage_time_sel,
-+	.enable = regulator_enable_regmap,
-+	.disable = regulator_disable_regmap,
-+	.is_enabled = regulator_is_enabled_regmap,
-+	.set_mode = mt6373_regulator_set_mode,
-+	.get_mode = mt6373_regulator_get_mode,
-+};
-+
-+static const struct regulator_ops mt6373_ldo_vtable_ops = {
-+	.list_voltage = regulator_list_voltage_table,
-+	.map_voltage = regulator_map_voltage_iterate,
-+	.set_voltage_sel = regulator_set_voltage_sel_regmap,
-+	.get_voltage_sel = regulator_get_voltage_sel_regmap,
-+	.set_voltage_time_sel = regulator_set_voltage_time_sel,
-+	.enable = regulator_enable_regmap,
-+	.disable = regulator_disable_regmap,
-+	.is_enabled = regulator_is_enabled_regmap,
-+	.set_mode = mt6373_regulator_set_mode,
-+	.get_mode = mt6373_regulator_get_mode,
-+};
-+
-+static const struct regulator_ops mt6373_vmch_eint_ops = {
-+	.list_voltage = regulator_list_voltage_table,
-+	.map_voltage = regulator_map_voltage_iterate,
-+	.set_voltage_sel = regulator_set_voltage_sel_regmap,
-+	.get_voltage_sel = regulator_get_voltage_sel_regmap,
-+	.set_voltage_time_sel = regulator_set_voltage_time_sel,
-+	.enable = mt6373_vmch_eint_enable,
-+	.disable = mt6373_vmch_eint_disable,
-+	.is_enabled = regulator_is_enabled_regmap,
-+	.set_mode = mt6373_regulator_set_mode,
-+	.get_mode = mt6373_regulator_get_mode,
-+};
-+
-+/* The array is indexed by id(MT6373_ID_XXX) */
-+static struct mt6373_regulator_info mt6373_regulators[] = {
-+	MT6373_BUCK("vbuck0", VBUCK0, 0, 1193750, 6250,
-+		    MT6373_PMIC_RG_BUCK0_EN_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VBUCK0_EN_BIT,
-+		    MT6373_PMIC_RG_BUCK_VBUCK0_VOSEL_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VOSEL_MASK,
-+		    MT6373_PMIC_RG_BUCK0_LP_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VBUCK0_LP_BIT,
-+		    MT6373_PMIC_RG_BUCK0_FCCM_ADDR,
-+		    MT6373_PMIC_RG_VBUCK0_FCCM_BIT),
-+	MT6373_BUCK("vbuck1", VBUCK1, 0, 1193750, 6250,
-+		    MT6373_PMIC_RG_BUCK0_EN_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VBUCK1_EN_BIT,
-+		    MT6373_PMIC_RG_BUCK_VBUCK1_VOSEL_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VOSEL_MASK,
-+		    MT6373_PMIC_RG_BUCK0_LP_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VBUCK1_LP_BIT,
-+		    MT6373_PMIC_RG_BUCK0_FCCM_ADDR,
-+		    MT6373_PMIC_RG_VBUCK1_FCCM_BIT),
-+	MT6373_BUCK("vbuck2", VBUCK2, 0, 1193750, 6250,
-+		    MT6373_PMIC_RG_BUCK0_EN_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VBUCK2_EN_BIT,
-+		    MT6373_PMIC_RG_BUCK_VBUCK2_VOSEL_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VOSEL_MASK,
-+		    MT6373_PMIC_RG_BUCK0_LP_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VBUCK2_LP_BIT,
-+		    MT6373_PMIC_RG_BUCK0_FCCM_ADDR,
-+		    MT6373_PMIC_RG_VBUCK2_FCCM_BIT),
-+	MT6373_BUCK("vbuck3", VBUCK3, 0, 1193750, 6250,
-+		    MT6373_PMIC_RG_BUCK0_EN_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VBUCK3_EN_BIT,
-+		    MT6373_PMIC_RG_BUCK_VBUCK3_VOSEL_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VOSEL_MASK,
-+		    MT6373_PMIC_RG_BUCK0_LP_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VBUCK3_LP_BIT,
-+		    MT6373_PMIC_RG_BUCK0_FCCM_ADDR,
-+		    MT6373_PMIC_RG_VBUCK3_FCCM_BIT),
-+	MT6373_BUCK("vbuck4", VBUCK4, 0, 1193750, 6250,
-+		    MT6373_PMIC_RG_BUCK0_EN_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VBUCK4_EN_BIT,
-+		    MT6373_PMIC_RG_BUCK_VBUCK4_VOSEL_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VOSEL_MASK,
-+		    MT6373_PMIC_RG_BUCK0_LP_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VBUCK4_LP_BIT,
-+		    MT6373_PMIC_RG_BUCK0_FCCM_ADDR,
-+		    MT6373_PMIC_RG_VBUCK4_FCCM_BIT),
-+	MT6373_BUCK("vbuck4-ufs", VBUCK4_UFS, 0, 2650125, 13875,
-+		    MT6373_PMIC_RG_BUCK0_EN_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VBUCK4_EN_BIT,
-+		    MT6373_PMIC_RG_BUCK_VBUCK4_VOSEL_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VOSEL_MASK,
-+		    MT6373_PMIC_RG_BUCK0_LP_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VBUCK4_LP_BIT,
-+		    MT6373_PMIC_RG_BUCK0_1_FCCM_ADDR,
-+		    MT6373_PMIC_RG_VBUCK4_FCCM_BIT),
-+	MT6373_BUCK("vbuck5", VBUCK5, 0, 1193750, 6250,
-+		    MT6373_PMIC_RG_BUCK0_EN_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VBUCK5_EN_BIT,
-+		    MT6373_PMIC_RG_BUCK_VBUCK5_VOSEL_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VOSEL_MASK,
-+		    MT6373_PMIC_RG_BUCK0_LP_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VBUCK5_LP_BIT,
-+		    MT6373_PMIC_RG_BUCK0_1_FCCM_ADDR,
-+		    MT6373_PMIC_RG_VBUCK5_FCCM_BIT),
-+	MT6373_BUCK("vbuck6", VBUCK6, 0, 1193750, 6250,
-+		    MT6373_PMIC_RG_BUCK0_EN_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VBUCK6_EN_BIT,
-+		    MT6373_PMIC_RG_BUCK_VBUCK6_VOSEL_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VOSEL_MASK,
-+		    MT6373_PMIC_RG_BUCK0_LP_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VBUCK6_LP_BIT,
-+		    MT6373_PMIC_RG_BUCK0_1_FCCM_ADDR,
-+		    MT6373_PMIC_RG_VBUCK6_FCCM_BIT),
-+	MT6373_BUCK("vbuck7", VBUCK7, 0, 1193750, 6250,
-+		    MT6373_PMIC_RG_BUCK0_EN_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VBUCK7_EN_BIT,
-+		    MT6373_PMIC_RG_BUCK_VBUCK7_VOSEL_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VOSEL_MASK,
-+		    MT6373_PMIC_RG_BUCK0_LP_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VBUCK7_LP_BIT,
-+		    MT6373_PMIC_RG_BUCK0_1_FCCM_ADDR,
-+		    MT6373_PMIC_RG_VBUCK7_FCCM_BIT),
-+	MT6373_BUCK("vbuck8", VBUCK8, 0, 1193750, 6250,
-+		    MT6373_PMIC_RG_BUCK1_EN_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VBUCK8_EN_BIT,
-+		    MT6373_PMIC_RG_BUCK_VBUCK8_VOSEL_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VOSEL_MASK,
-+		    MT6373_PMIC_RG_BUCK1_LP_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VBUCK8_LP_BIT,
-+		    MT6373_PMIC_RG_BUCK1_FCCM_ADDR,
-+		    MT6373_PMIC_RG_VBUCK8_FCCM_BIT),
-+	MT6373_BUCK("vbuck9", VBUCK9, 0, 1193750, 6250,
-+		    MT6373_PMIC_RG_BUCK1_EN_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VBUCK9_EN_BIT,
-+		    MT6373_PMIC_RG_BUCK_VBUCK9_VOSEL_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VOSEL_MASK,
-+		    MT6373_PMIC_RG_BUCK1_LP_ADDR,
-+		    MT6373_PMIC_RG_BUCK_VBUCK9_LP_BIT,
-+		    MT6373_PMIC_RG_BUCK1_FCCM_ADDR,
-+		    MT6373_PMIC_RG_VBUCK9_FCCM_BIT),
-+	MT6373_LDO_L("vsram-digrf-aif", VSRAM_DIGRF_AIF, 400000, 1193750, 6250,
-+		     MT6373_PMIC_RG_LDO_VSRAM_DIGRF_AIF_ADDR,
-+		     MT6373_PMIC_RG_LDO_VSRAM_DIGRF_AIF_VOSEL_ADDR,
-+		     MT6373_PMIC_RG_LDO_VSRAM_DIGRF_AIF_VOSEL_MASK),
-+	MT6373_LDO_VT("vusb", VUSB, ldo_volt_table1,
-+		      MT6373_PMIC_RG_LDO_VUSB_ADDR,
-+		      MT6373_PMIC_RG_VUSB_VOSEL_ADDR,
-+		      MT6373_PMIC_RG_VUSB_VOCAL_ADDR),
-+	MT6373_LDO_VT("vaux18", VAUX18, ldo_volt_table2,
-+		      MT6373_PMIC_RG_LDO_VAUX18_ADDR,
-+		      MT6373_PMIC_RG_VAUX18_VOSEL_ADDR,
-+		      MT6373_PMIC_RG_VAUX18_VOCAL_ADDR),
-+	MT6373_LDO_VT("vrf13-aif", VRF13_AIF, ldo_volt_table3,
-+		      MT6373_PMIC_RG_LDO_VRF13_AIF_ADDR,
-+		      MT6373_PMIC_RG_VRF13_AIF_VOSEL_ADDR,
-+		      MT6373_PMIC_RG_VRF13_AIF_VOCAL_ADDR),
-+	MT6373_LDO_VT("vrf18-aif", VRF18_AIF, ldo_volt_table3,
-+		      MT6373_PMIC_RG_LDO_VRF18_AIF_ADDR,
-+		      MT6373_PMIC_RG_VRF18_AIF_VOSEL_ADDR,
-+		      MT6373_PMIC_RG_VRF18_AIF_VOCAL_ADDR),
-+	MT6373_LDO_VT("vrfio18-aif", VRFIO18_AIF, ldo_volt_table3,
-+		      MT6373_PMIC_RG_LDO_VRFIO18_AIF_ADDR,
-+		      MT6373_PMIC_RG_VRFIO18_AIF_VOSEL_ADDR,
-+		      MT6373_PMIC_RG_VRFIO18_AIF_VOCAL_ADDR),
-+	MT6373_LDO_VT("vrf09-aif", VRF09_AIF, ldo_volt_table3,
-+		      MT6373_PMIC_RG_LDO_VRF09_AIF_ADDR,
-+		      MT6373_PMIC_RG_VRF09_AIF_VOSEL_ADDR,
-+		      MT6373_PMIC_RG_VRF09_AIF_VOCAL_ADDR),
-+	MT6373_LDO_VT("vrf12-aif", VRF12_AIF, ldo_volt_table5,
-+		      MT6373_PMIC_RG_LDO_VRF12_AIF_ADDR,
-+		      MT6373_PMIC_RG_VRF12_AIF_VOSEL_ADDR,
-+		      MT6373_PMIC_RG_VRF12_AIF_VOCAL_ADDR),
-+	MT6373_LDO_VT("vant18", VANT18, ldo_volt_table3,
-+		      MT6373_PMIC_RG_LDO_VANT18_ADDR,
-+		      MT6373_PMIC_RG_VANT18_VOSEL_ADDR,
-+		      MT6373_PMIC_RG_VANT18_VOCAL_ADDR),
-+	MT6373_LDO_VT("vibr", VIBR, ldo_volt_table1,
-+		      MT6373_PMIC_RG_LDO_VIBR_ADDR,
-+		      MT6373_PMIC_RG_VIBR_VOSEL_ADDR,
-+		      MT6373_PMIC_RG_VIBR_VOCAL_ADDR),
-+	MT6373_LDO_VT("vio28", VIO28, ldo_volt_table1,
-+		      MT6373_PMIC_RG_LDO_VIO28_ADDR,
-+		      MT6373_PMIC_RG_VIO28_VOSEL_ADDR,
-+		      MT6373_PMIC_RG_VIO28_VOCAL_ADDR),
-+	MT6373_LDO_VT("vfp", VFP, ldo_volt_table1,
-+		      MT6373_PMIC_RG_LDO_VFP_ADDR,
-+		      MT6373_PMIC_RG_VFP_VOSEL_ADDR,
-+		      MT6373_PMIC_RG_VFP_VOCAL_ADDR),
-+	MT6373_LDO_VT("vtp", VTP, ldo_volt_table1,
-+		      MT6373_PMIC_RG_LDO_VTP_ADDR,
-+		      MT6373_PMIC_RG_VTP_VOSEL_ADDR,
-+		      MT6373_PMIC_RG_VTP_VOCAL_ADDR),
-+	MT6373_LDO_VT("vmch", VMCH, ldo_volt_table4,
-+		      MT6373_PMIC_RG_LDO_VMCH_ADDR,
-+		      MT6373_PMIC_RG_VMCH_VOSEL_ADDR,
-+		      MT6373_PMIC_RG_VMCH_VOCAL_ADDR),
-+	MT6373_LDO_VT("vmc", VMC, ldo_volt_table1,
-+		      MT6373_PMIC_RG_LDO_VMC_ADDR,
-+		      MT6373_PMIC_RG_VMC_VOSEL_ADDR,
-+		      MT6373_PMIC_RG_VMC_VOCAL_ADDR),
-+	MT6373_LDO_VT("vaud18", VAUD18, ldo_volt_table3,
-+		      MT6373_PMIC_RG_LDO_VAUD18_ADDR,
-+		      MT6373_PMIC_RG_VAUD18_VOSEL_ADDR,
-+		      MT6373_PMIC_RG_VAUD18_VOCAL_ADDR),
-+	MT6373_LDO_VT("vcn33-1", VCN33_1, ldo_volt_table4,
-+		      MT6373_PMIC_RG_LDO_VCN33_1_ADDR,
-+		      MT6373_PMIC_RG_VCN33_1_VOSEL_ADDR,
-+		      MT6373_PMIC_RG_VCN33_1_VOCAL_ADDR),
-+	MT6373_LDO_VT("vcn33-2", VCN33_2, ldo_volt_table4,
-+		      MT6373_PMIC_RG_LDO_VCN33_2_ADDR,
-+		      MT6373_PMIC_RG_VCN33_2_VOSEL_ADDR,
-+		      MT6373_PMIC_RG_VCN33_2_VOCAL_ADDR),
-+	MT6373_LDO_VT("vcn33-3", VCN33_3, ldo_volt_table4,
-+		      MT6373_PMIC_RG_LDO_VCN33_3_ADDR,
-+		      MT6373_PMIC_RG_VCN33_3_VOSEL_ADDR,
-+		      MT6373_PMIC_RG_VCN33_3_VOCAL_ADDR),
-+	MT6373_LDO_VT("vcn18io", VCN18IO, ldo_volt_table3,
-+		      MT6373_PMIC_RG_LDO_VCN18IO_ADDR,
-+		      MT6373_PMIC_RG_VCN18IO_VOSEL_ADDR,
-+		      MT6373_PMIC_RG_VCN18IO_VOCAL_ADDR),
-+	MT6373_LDO_VT("vefuse", VEFUSE, ldo_volt_table1,
-+		      MT6373_PMIC_RG_LDO_VEFUSE_ADDR,
-+		      MT6373_PMIC_RG_VEFUSE_VOSEL_ADDR,
-+		      MT6373_PMIC_RG_VEFUSE_VOCAL_ADDR),
-+	MT6373_LDO_VT_OPS("vmch-eint-high", VMCH_EINT_HIGH,
-+			  mt6373_vmch_eint_ops, ldo_volt_table4,
-+			  MT6373_LDO_VMCH_EINT,
-+			  MT6373_PMIC_RG_VMCH_VOSEL_ADDR,
-+			  MT6373_PMIC_RG_VMC_VOCAL_ADDR),
-+	MT6373_LDO_VT_OPS("vmch-eint-low", VMCH_EINT_LOW,
-+			  mt6373_vmch_eint_ops, ldo_volt_table4,
-+			  MT6373_LDO_VMCH_EINT,
-+			  MT6373_PMIC_RG_VMCH_VOSEL_ADDR,
-+			  MT6373_PMIC_RG_VMC_VOCAL_ADDR),
-+};
-+
-+static void mt6373_oc_irq_enable_work(struct work_struct *work)
-+{
-+	struct delayed_work *dwork = to_delayed_work(work);
-+	struct mt6373_regulator_info *info =
-+		container_of(dwork, struct mt6373_regulator_info, oc_work);
-+
-+	enable_irq(info->irq);
-+}
-+
-+static irqreturn_t mt6373_oc_isr(int irq, void *data)
-+{
-+	struct regulator_dev *rdev = (struct regulator_dev *)data;
-+	struct mt6373_regulator_info *info = rdev_get_drvdata(rdev);
-+
-+	disable_irq_nosync(info->irq);
-+
-+	if (regulator_is_enabled_regmap(rdev))
-+		regulator_notifier_call_chain(rdev, REGULATOR_EVENT_OVER_CURRENT, NULL);
-+
-+	schedule_delayed_work(&info->oc_work, msecs_to_jiffies(OC_IRQ_ENABLE_DELAY_MS));
-+
-+	return IRQ_HANDLED;
-+}
-+
-+static int mt6373_regulator_probe(struct platform_device *pdev)
-+{
-+	struct regulator_config config = {};
-+	struct mt6373_regulator_info *info;
-+	struct regulator_dev *rdev;
-+	bool is_vbuck4_hw_ctrl;
-+	bool is_cw_variant;
-+	int i, ret;
-+	u32 val;
-+
-+	config.regmap = dev_get_regmap(pdev->dev.parent, NULL);
-+	if (!config.regmap)
-+		return dev_err_probe(&pdev->dev, -ENODEV, "Cannot get regmap\n");
-+
-+	config.dev = &pdev->dev;
-+
-+	/* Read PMIC variant information */
-+	ret = regmap_read(config.regmap, MT6373_PLG_CFG_ELR1, &val);
-+	if (ret)
-+		return dev_err_probe(&pdev->dev, ret, "Cannot read ID register\n");
-+
-+	val = FIELD_GET(MT6373_ELR_VARIANT_MASK, val);
-+	is_cw_variant = (val == MT6373_ELR_VARIANT_MT6373CW);
-+
-+	/* Read Reserved-SW information */
-+	ret = regmap_read(config.regmap, MT6373_RG_RSV_SWREG_H, &val);
-+	if (ret)
-+		return dev_err_probe(&pdev->dev, ret, "Cannot read RSV_SW register\n");
-+
-+	is_vbuck4_hw_ctrl = val & MT6373_RG_RSV_SWREG_VBUCK4_HW_CTRL;
-+
-+	for (i = 0; i < ARRAY_SIZE(mt6373_regulators); i++) {
-+		info = &mt6373_regulators[i];
-+
-+		/* MT6373CW does not have a VBUCK4_UFS regulator */
-+		if (is_cw_variant && info->desc.id == MT6373_ID_VBUCK4_UFS)
-+			continue;
-+
-+		/* VBUCK4 vreg software control is not allowed if in hw_ctrl mode */
-+		if (is_vbuck4_hw_ctrl && info->desc.id == MT6373_ID_VBUCK4)
-+			continue;
-+
-+		info->irq = platform_get_irq_byname_optional(pdev, info->desc.name);
-+
-+		config.driver_data = info;
-+		rdev = devm_regulator_register(&pdev->dev, &info->desc, &config);
-+		if (IS_ERR(rdev))
-+			return dev_err_probe(&pdev->dev, PTR_ERR(rdev),
-+					     "failed to register %s\n", info->desc.name);
-+
-+		if (info->irq <= 0)
-+			continue;
-+		ret = devm_request_threaded_irq(&pdev->dev, info->irq, NULL,
-+						mt6373_oc_isr, IRQF_ONESHOT,
-+						info->desc.name, rdev);
-+		if (ret)
-+			return dev_err_probe(&pdev->dev, ret,
-+					     "Failed to request overcurrent IRQ for %s\n",
-+					     info->desc.name);
-+
-+		INIT_DELAYED_WORK(&info->oc_work, mt6373_oc_irq_enable_work);
-+	}
-+
-+	return 0;
-+}
-+
-+static void mt6373_regulator_shutdown(struct platform_device *pdev)
-+{
-+	struct regmap *regmap;
-+
-+	regmap = dev_get_regmap(pdev->dev.parent, NULL);
-+	if (!regmap) {
-+		dev_err(&pdev->dev, "Cannot get regmap for shutdown!\n");
-+		return;
-+	}
-+
-+	regmap_write(regmap, MT6373_TOP_CFG_ELR5, MT6373_TOP_CFG_ELR5_SHUTDOWN);
-+}
-+
-+static const struct of_device_id mt6373_regulator_match[] = {
-+	{ .compatible = "mediatek,mt6373-regulator" },
-+	{ /* sentinel */ }
-+};
-+
-+static struct platform_driver mt6373_regulator_driver = {
-+	.driver = {
-+		.name = "mt6373-regulator",
-+		.probe_type = PROBE_PREFER_ASYNCHRONOUS,
-+		.of_match_table = mt6373_regulator_match,
-+	},
-+	.probe = mt6373_regulator_probe,
-+	.shutdown = mt6373_regulator_shutdown
-+};
-+module_platform_driver(mt6373_regulator_driver);
-+
-+MODULE_AUTHOR("AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>");
-+MODULE_DESCRIPTION("MediaTek MT6373 PMIC Regulator Driver");
-+MODULE_LICENSE("GPL");
-diff --git a/include/linux/regulator/mt6373-regulator.h b/include/linux/regulator/mt6373-regulator.h
-new file mode 100644
-index 000000000000..b1cdee3df54f
---- /dev/null
-+++ b/include/linux/regulator/mt6373-regulator.h
-@@ -0,0 +1,154 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * Copyright (c) 2024 MediaTek Inc.
-+ * Copyright (c) 2025 Collabora Ltd
-+ */
-+
-+#include <linux/bits.h>
-+
-+#ifndef __LINUX_REGULATOR_MT6373_H
-+#define __LINUX_REGULATOR_MT6373_H
-+
-+/* Register */
-+#define MT6373_BUCK_TOP_KEY_PROT_LO		0x142a
-+#define MT6373_TOP_CFG_ELR5			0x147
-+#define MT6373_TOP_CFG_ELR5_SHUTDOWN		BIT(0)
-+
-+#define MT6373_PMIC_RG_BUCK0_EN_ADDR		0x240
-+#define MT6373_PMIC_RG_BUCK_VBUCK0_EN_BIT	0
-+#define MT6373_PMIC_RG_BUCK_VBUCK1_EN_BIT	1
-+#define MT6373_PMIC_RG_BUCK_VBUCK2_EN_BIT	2
-+#define MT6373_PMIC_RG_BUCK_VBUCK3_EN_BIT	3
-+#define MT6373_PMIC_RG_BUCK_VBUCK4_EN_BIT	4
-+#define MT6373_PMIC_RG_BUCK_VBUCK5_EN_BIT	5
-+#define MT6373_PMIC_RG_BUCK_VBUCK6_EN_BIT	6
-+#define MT6373_PMIC_RG_BUCK_VBUCK7_EN_BIT	7
-+
-+#define MT6373_PMIC_RG_BUCK1_EN_ADDR		0x243
-+#define MT6373_PMIC_RG_BUCK_VBUCK8_EN_BIT	0
-+#define MT6373_PMIC_RG_BUCK_VBUCK9_EN_BIT	1
-+
-+#define MT6373_PMIC_RG_BUCK0_LP_ADDR		0x246
-+#define MT6373_PMIC_RG_BUCK_VBUCK0_LP_BIT	0
-+#define MT6373_PMIC_RG_BUCK_VBUCK1_LP_BIT	1
-+#define MT6373_PMIC_RG_BUCK_VBUCK2_LP_BIT	2
-+#define MT6373_PMIC_RG_BUCK_VBUCK3_LP_BIT	3
-+#define MT6373_PMIC_RG_BUCK_VBUCK4_LP_BIT	4
-+#define MT6373_PMIC_RG_BUCK_VBUCK5_LP_BIT	5
-+#define MT6373_PMIC_RG_BUCK_VBUCK6_LP_BIT	6
-+#define MT6373_PMIC_RG_BUCK_VBUCK7_LP_BIT	7
-+
-+#define MT6373_PMIC_RG_BUCK1_LP_ADDR		0x249
-+#define MT6373_PMIC_RG_BUCK_VBUCK8_LP_BIT	0
-+#define MT6373_PMIC_RG_BUCK_VBUCK9_LP_BIT	1
-+
-+#define MT6373_PMIC_RG_BUCK_VBUCK0_VOSEL_ADDR	0x24c
-+#define MT6373_PMIC_RG_BUCK_VBUCK1_VOSEL_ADDR	0x24d
-+#define MT6373_PMIC_RG_BUCK_VBUCK2_VOSEL_ADDR	0x24e
-+#define MT6373_PMIC_RG_BUCK_VBUCK3_VOSEL_ADDR	0x24f
-+#define MT6373_PMIC_RG_BUCK_VBUCK4_VOSEL_ADDR	0x250
-+#define MT6373_PMIC_RG_BUCK_VBUCK5_VOSEL_ADDR	0x251
-+#define MT6373_PMIC_RG_BUCK_VBUCK6_VOSEL_ADDR	0x252
-+#define MT6373_PMIC_RG_BUCK_VBUCK7_VOSEL_ADDR	0x253
-+#define MT6373_PMIC_RG_BUCK_VBUCK8_VOSEL_ADDR	0x254
-+#define MT6373_PMIC_RG_BUCK_VBUCK9_VOSEL_ADDR	0x255
-+#define MT6373_PMIC_RG_BUCK_VOSEL_MASK		GENMASK(8, 0)
-+
-+#define MT6373_PLG_CFG_ELR1			0x3ab
-+#define MT6373_ELR_VARIANT_MASK			GENMASK(3, 2)
-+#define MT6373_ELR_VARIANT_MT6373CW		1
-+#define MT6373_RG_RSV_SWREG_H			0xa09
-+#define MT6373_RG_RSV_SWREG_VBUCK4_HW_CTRL	BIT(0)
-+
-+#define MT6373_PMIC_RG_BUCK1_FCCM_ADDR		0x199d
-+#define MT6373_PMIC_RG_VBUCK8_FCCM_BIT		6
-+#define MT6373_PMIC_RG_VBUCK9_FCCM_BIT		7
-+
-+#define MT6373_PMIC_RG_BUCK0_FCCM_ADDR		0x1a32
-+#define MT6373_PMIC_RG_VBUCK0_FCCM_BIT		0
-+#define MT6373_PMIC_RG_VBUCK1_FCCM_BIT		1
-+#define MT6373_PMIC_RG_VBUCK2_FCCM_BIT		2
-+#define MT6373_PMIC_RG_VBUCK3_FCCM_BIT		3
-+
-+#define MT6373_PMIC_RG_BUCK0_1_FCCM_ADDR	0x1ab2
-+#define MT6373_PMIC_RG_VBUCK4_FCCM_BIT		0
-+#define MT6373_PMIC_RG_VBUCK5_FCCM_BIT		1
-+#define MT6373_PMIC_RG_VBUCK6_FCCM_BIT		2
-+#define MT6373_PMIC_RG_VBUCK7_FCCM_BIT		3
-+
-+#define MT6373_PMIC_RG_LDO_VSRAM_DIGRF_AIF_VOSEL_ADDR	0x1b39
-+#define MT6373_PMIC_RG_LDO_VSRAM_DIGRF_AIF_VOSEL_MASK	GENMASK(6, 0)
-+
-+#define MT6373_PMIC_RG_LDO_VAUD18_ADDR		0x1b87
-+#define MT6373_PMIC_RG_LDO_VUSB_ADDR		0x1b95
-+#define MT6373_PMIC_RG_LDO_VAUX18_ADDR		0x1ba3
-+#define MT6373_PMIC_RG_LDO_VRF13_AIF_ADDR	0x1bb1
-+#define MT6373_PMIC_RG_LDO_VRF18_AIF_ADDR	0x1bbf
-+#define MT6373_PMIC_RG_LDO_VRFIO18_AIF_ADDR	0x1bcd
-+#define MT6373_PMIC_RG_LDO_VCN33_1_ADDR		0x1c07
-+#define MT6373_PMIC_RG_LDO_VCN33_2_ADDR		0x1c15
-+#define MT6373_PMIC_RG_LDO_VCN33_3_ADDR		0x1c23
-+#define MT6373_PMIC_RG_LDO_VCN18IO_ADDR		0x1c31
-+#define MT6373_PMIC_RG_LDO_VRF09_AIF_ADDR	0x1c3f
-+#define MT6373_PMIC_RG_LDO_VRF12_AIF_ADDR	0x1c4d
-+#define MT6373_PMIC_RG_LDO_VANT18_ADDR		0x1c87
-+#define MT6373_PMIC_RG_LDO_VEFUSE_ADDR		0x1ca3
-+#define MT6373_PMIC_RG_LDO_VMCH_ADDR		0x1cb1
-+#define MT6373_LDO_VMCH_EINT			0x1cbf
-+#define MT6373_PMIC_RG_LDO_VMCH_EINT_POL_BIT	BIT(2)
-+#define MT6373_PMIC_RG_LDO_VMC_ADDR		0x1cc0
-+#define MT6373_PMIC_RG_LDO_VIBR_ADDR		0x1cce
-+#define MT6373_PMIC_RG_LDO_VIO28_ADDR		0x1d07
-+#define MT6373_PMIC_RG_LDO_VFP_ADDR		0x1d15
-+#define MT6373_PMIC_RG_LDO_VTP_ADDR		0x1d23
-+#define MT6373_PMIC_RG_LDO_VSIM1_ADDR		0x1d31
-+#define MT6373_PMIC_RG_LDO_VSIM2_ADDR		0x1d40
-+#define MT6373_PMIC_RG_LDO_VSIM2_LP_ADDR	0x1d40
-+#define MT6373_PMIC_RG_LDO_VSRAM_DIGRF_AIF_ADDR	0x1d87
-+#define MT6373_PMIC_RG_VAUX18_VOCAL_ADDR	0x1e08
-+#define MT6373_PMIC_RG_VAUX18_VOSEL_ADDR	0x1e09
-+#define MT6373_PMIC_RG_VUSB_VOCAL_ADDR		0x1e0c
-+#define MT6373_PMIC_RG_VUSB_VOSEL_ADDR		0x1e0d
-+#define MT6373_PMIC_RG_VCN33_1_VOCAL_ADDR	0x1e10
-+#define MT6373_PMIC_RG_VCN33_1_VOSEL_ADDR	0x1e11
-+#define MT6373_PMIC_RG_VCN33_2_VOCAL_ADDR	0x1e14
-+#define MT6373_PMIC_RG_VCN33_2_VOSEL_ADDR	0x1e15
-+#define MT6373_PMIC_RG_VCN33_3_VOCAL_ADDR	0x1e18
-+#define MT6373_PMIC_RG_VCN33_3_VOSEL_ADDR	0x1e19
-+#define MT6373_PMIC_RG_VMCH_VOCAL_ADDR		0x1e1c
-+#define MT6373_PMIC_RG_VMCH_VOSEL_ADDR		0x1e1d
-+#define MT6373_PMIC_RG_VEFUSE_VOCAL_ADDR	0x1e20
-+#define MT6373_PMIC_RG_VEFUSE_VOSEL_ADDR	0x1e21
-+#define MT6373_PMIC_RG_VMC_VOCAL_ADDR		0x1e24
-+#define MT6373_PMIC_RG_VMC_VOSEL_ADDR		0x1e25
-+#define MT6373_PMIC_RG_VIBR_VOCAL_ADDR		0x1e28
-+#define MT6373_PMIC_RG_VIBR_VOSEL_ADDR		0x1e29
-+#define MT6373_PMIC_RG_VIO28_VOCAL_ADDR		0x1e2c
-+#define MT6373_PMIC_RG_VIO28_VOSEL_ADDR		0x1e2d
-+#define MT6373_PMIC_RG_VFP_VOCAL_ADDR		0x1e30
-+#define MT6373_PMIC_RG_VFP_VOSEL_ADDR		0x1e31
-+#define MT6373_PMIC_RG_VTP_VOCAL_ADDR		0x1e34
-+#define MT6373_PMIC_RG_VTP_VOSEL_ADDR		0x1e35
-+#define MT6373_PMIC_RG_VSIM1_VOCAL_ADDR		0x1e38
-+#define MT6373_PMIC_RG_VSIM1_VOSEL_ADDR		0x1e39
-+#define MT6373_PMIC_RG_VSIM2_VOCAL_ADDR		0x1e3c
-+#define MT6373_PMIC_RG_VSIM2_VOSEL_ADDR		0x1e3d
-+#define MT6373_PMIC_RG_VAUD18_VOCAL_ADDR	0x1e88
-+#define MT6373_PMIC_RG_VAUD18_VOSEL_ADDR	0x1e89
-+#define MT6373_PMIC_RG_VRF18_AIF_VOCAL_ADDR	0x1e8c
-+#define MT6373_PMIC_RG_VRF18_AIF_VOSEL_ADDR	0x1e8d
-+#define MT6373_PMIC_RG_VCN18IO_VOCAL_ADDR	0x1e90
-+#define MT6373_PMIC_RG_VCN18IO_VOSEL_ADDR	0x1e91
-+#define MT6373_PMIC_RG_VRFIO18_AIF_VOCAL_ADDR	0x1e94
-+#define MT6373_PMIC_RG_VRFIO18_AIF_VOSEL_ADDR	0x1e95
-+#define MT6373_PMIC_RG_VANT18_VOCAL_ADDR	0x1e98
-+#define MT6373_PMIC_RG_VANT18_VOSEL_ADDR	0x1e99
-+#define MT6373_PMIC_RG_VRF13_AIF_VOCAL_ADDR	0x1f08
-+#define MT6373_PMIC_RG_VRF13_AIF_VOSEL_ADDR	0x1f09
-+#define MT6373_PMIC_RG_VRF12_AIF_VOCAL_ADDR	0x1f0c
-+#define MT6373_PMIC_RG_VRF12_AIF_VOSEL_ADDR	0x1f0d
-+#define MT6373_PMIC_RG_VRF09_AIF_VOCAL_ADDR	0x1f88
-+#define MT6373_PMIC_RG_VRF09_AIF_VOSEL_ADDR	0x1f89
-+#define MT6373_PMIC_RG_LDO_VT_VOCALSEL_MASK	GENMASK(7, 0)
-+
-+#endif /* __LINUX_REGULATOR_MT6363_H */
--- 
-2.49.0
-
+T24gVGh1LCAyMDI1LTA1LTIyIGF0IDE2OjM0ICswODAwLCBKYXNvbi1KSCBMaW4gd3JvdGU6DQo+
+IE91ciBoYXJkd2FyZSByZWdpc3RlcnMgYXJlIHNldCB0aHJvdWdoIEdDRSwgbm90IGJ5IHRoZSBD
+UFUuDQo+IERSTSBtaWdodCBhc3N1bWUgdGhlIGhhcmR3YXJlIGlzIGRpc2FibGVkIGltbWVkaWF0
+ZWx5IGFmdGVyIGNhbGxpbmcNCj4gYXRvbWljX2Rpc2FibGUoKSBvZiBkcm1fcGxhbmUsIGJ1dCBp
+dCBpcyBvbmx5IHRydWx5IGRpc2FibGVkIGFmdGVyIHRoZQ0KPiBHQ0UgSVJRIGlzIHRyaWdnZXJl
+ZC4NCj4gDQo+IEFkZGl0aW9uYWxseSwgdGhlIGN1cnNvciBwbGFuZSBpbiBEUk0gdXNlcyBhc3lu
+Y19jb21taXQsIHNvIERSTSB3aWxsDQo+IG5vdCB3YWl0IGZvciB2YmxhbmsgYW5kIHdpbGwgZnJl
+ZSB0aGUgYnVmZmVyIGltbWVkaWF0ZWx5IGFmdGVyIGNhbGxpbmcNCj4gYXRvbWljX2Rpc2FibGUo
+KS4NCj4gDQo+IFRvIHByZXZlbnQgdGhlIGZyYW1lYnVmZmVyIGZyb20gYmVpbmcgZnJlZWQgYmVm
+b3JlIHRoZSBsYXllciBkaXNhYmxlDQo+IHNldHRpbmdzIGFyZSBjb25maWd1cmVkIGludG8gdGhl
+IGhhcmR3YXJlLCB3aGljaCBjYW4gY2F1c2UgYW4gSU9NTVUNCj4gZmF1bHQgZXJyb3IsIGEgd2Fp
+dF9ldmVudF90aW1lb3V0IGhhcyBiZWVuIGFkZGVkIHRvIHdhaXQgZm9yIHRoZQ0KPiBkZHBfY21k
+cV9jYigpIGNhbGxiYWNrLGluZGljYXRpbmcgdGhhdCB0aGUgR0NFIElSUSBoYXMgYmVlbiB0cmln
+Z2VyZWQuDQo+IA0KPiBGaXhlczogMTE5ZjUxNzM2MjhhICgiZHJtL21lZGlhdGVrOiBBZGQgRFJN
+IERyaXZlciBmb3IgTWVkaWF0ZWsgU29DIE1UODE3My4iKQ0KPiBTaWduZWQtb2ZmLWJ5OiBKYXNv
+bi1KSCBMaW4gPGphc29uLWpoLmxpbkBtZWRpYXRlay5jb20+DQo+IC0tLQ0KPiAgZHJpdmVycy9n
+cHUvZHJtL21lZGlhdGVrL210a19jcnRjLmMgIHwgMzAgKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKw0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19jcnRjLmggIHwgIDEgKw0KPiAg
+ZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19wbGFuZS5jIHwgIDUgKysrKysNCj4gIDMgZmls
+ZXMgY2hhbmdlZCwgMzYgaW5zZXJ0aW9ucygrKQ0KPiANCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfY3J0Yy5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
+a19jcnRjLmMNCj4gaW5kZXggOGY2ZmJhNDIxN2VjLi45NDRhM2QxZTVlYzkgMTAwNjQ0DQo+IC0t
+LSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfY3J0Yy5jDQo+ICsrKyBiL2RyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfY3J0Yy5jDQo+IEBAIC03MTksNiArNzE5LDM2IEBAIGludCBt
+dGtfY3J0Y19wbGFuZV9jaGVjayhzdHJ1Y3QgZHJtX2NydGMgKmNydGMsIHN0cnVjdCBkcm1fcGxh
+bmUgKnBsYW5lLA0KPiAgCXJldHVybiAwOw0KPiAgfQ0KPiAgDQo+ICt2b2lkIG10a19jcnRjX3Bs
+YW5lX2Rpc2FibGUoc3RydWN0IGRybV9jcnRjICpjcnRjLCBzdHJ1Y3QgZHJtX3BsYW5lICpwbGFu
+ZSkNCj4gK3sNCj4gKwlzdHJ1Y3QgbXRrX2NydGMgKm10a19jcnRjID0gdG9fbXRrX2NydGMoY3J0
+Yyk7DQo+ICsJc3RydWN0IG10a19wbGFuZV9zdGF0ZSAqcGxhbmVfc3RhdGUgPSB0b19tdGtfcGxh
+bmVfc3RhdGUocGxhbmUtPnN0YXRlKTsNCj4gKwlpbnQgaTsNCj4gKw0KPiArCWlmICghbXRrX2Ny
+dGMtPmVuYWJsZWQpDQo+ICsJCXJldHVybjsNCj4gKw0KPiArCS8qIHNldCBwZW5kaW5nIHBsYW5l
+IHN0YXRlIHRvIGRpc2FibGVkICovDQo+ICsJZm9yIChpID0gMDsgaSA8IG10a19jcnRjLT5sYXll
+cl9ucjsgaSsrKSB7DQo+ICsJCXN0cnVjdCBkcm1fcGxhbmUgKm10a19wbGFuZSA9ICZtdGtfY3J0
+Yy0+cGxhbmVzW2ldOw0KPiArCQlzdHJ1Y3QgbXRrX3BsYW5lX3N0YXRlICptdGtfcGxhbmVfc3Rh
+dGUgPSB0b19tdGtfcGxhbmVfc3RhdGUobXRrX3BsYW5lLT5zdGF0ZSk7DQo+ICsNCj4gKwkJaWYg
+KG10a19wbGFuZS0+aW5kZXggPT0gcGxhbmUtPmluZGV4KSB7DQo+ICsJCQltZW1jcHkobXRrX3Bs
+YW5lX3N0YXRlLCBwbGFuZV9zdGF0ZSwgc2l6ZW9mKCpwbGFuZV9zdGF0ZSkpOw0KDQpJbiBjb21t
+aXQgbWVzc2FnZSwgeW91IG1lbnRpb24gR0NFIGZsb3cgaGFzIHByb2JsZW0uDQpUaGlzIGFsc28g
+bW9kaWZ5IG5vbi1HQ0UgZmxvdy4NCklmIG5vbi1HQ0UgZmxvdyBkb2VzIG5vdCBuZWVkIHRoaXMs
+IG1vdmUgdGhpcyB0byBHQ0UgZmxvdy4NCg0KPiArCQkJYnJlYWs7DQo+ICsJCX0NCj4gKwl9DQo+
+ICsJbXRrX2NydGNfdXBkYXRlX2NvbmZpZyhtdGtfY3J0YywgZmFsc2UpOw0KPiArDQo+ICsjaWYg
+SVNfUkVBQ0hBQkxFKENPTkZJR19NVEtfQ01EUSkNCj4gKwkvKiB3YWl0IGZvciBwbGFuZXMgdG8g
+YmUgZGlzYWJsZWQgYnkgY21kcSAqLw0KPiArCWlmIChtdGtfY3J0Yy0+Y21kcV9jbGllbnQuY2hh
+bikNCj4gKwkJd2FpdF9ldmVudF90aW1lb3V0KG10a19jcnRjLT5jYl9ibG9ja2luZ19xdWV1ZSwN
+Cj4gKwkJCQkgICBtdGtfY3J0Yy0+Y21kcV92YmxhbmtfY250ID09IDAsDQoNCkNoZWNrICdtdGtf
+Y3J0Yy0+Y21kcV92YmxhbmtfY250ID09IDAnIG1heSBiZSBub3QgZ29vZC4NCklmIGEgdmlkZW8g
+aXMgcGxheWluZyBhbmQgbXRrX2NydGNfdXBkYXRlX2NvbmZpZygpIHdvdWxkIGJlIGNhbGwgZXZl
+cnkgZnJhbWUsDQptdGtfY3J0Yy0+Y21kcV92YmxhbmtfY250IG1heSBub3QgYmUgemVybyBhbmQg
+Y3Vyc29yIHdvdWxkIGJlIGJsb2NrIHVudGlsIHRpbWVvdXQuDQoNClJlZ2FyZHMsDQpDSw0KDQo+
+ICsJCQkJICAgbXNlY3NfdG9famlmZmllcyg1MDApKTsNCj4gKyNlbmRpZg0KPiArfQ0KPiArDQo+
+ICB2b2lkIG10a19jcnRjX2FzeW5jX3VwZGF0ZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMsIHN0cnVj
+dCBkcm1fcGxhbmUgKnBsYW5lLA0KPiAgCQkJICAgc3RydWN0IGRybV9hdG9taWNfc3RhdGUgKnN0
+YXRlKQ0KPiAgew0KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19j
+cnRjLmggYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2NydGMuaA0KPiBpbmRleCAzODhl
+OTAwYjZmNGQuLjgyOGYxMDliODNlNyAxMDA2NDQNCj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21l
+ZGlhdGVrL210a19jcnRjLmgNCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19j
+cnRjLmgNCj4gQEAgLTIxLDYgKzIxLDcgQEAgaW50IG10a19jcnRjX2NyZWF0ZShzdHJ1Y3QgZHJt
+X2RldmljZSAqZHJtX2RldiwgY29uc3QgdW5zaWduZWQgaW50ICpwYXRoLA0KPiAgCQkgICAgdW5z
+aWduZWQgaW50IG51bV9jb25uX3JvdXRlcyk7DQo+ICBpbnQgbXRrX2NydGNfcGxhbmVfY2hlY2so
+c3RydWN0IGRybV9jcnRjICpjcnRjLCBzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSwNCj4gIAkJCSBz
+dHJ1Y3QgbXRrX3BsYW5lX3N0YXRlICpzdGF0ZSk7DQo+ICt2b2lkIG10a19jcnRjX3BsYW5lX2Rp
+c2FibGUoc3RydWN0IGRybV9jcnRjICpjcnRjLCBzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSk7DQo+
+ICB2b2lkIG10a19jcnRjX2FzeW5jX3VwZGF0ZShzdHJ1Y3QgZHJtX2NydGMgKmNydGMsIHN0cnVj
+dCBkcm1fcGxhbmUgKnBsYW5lLA0KPiAgCQkJICAgc3RydWN0IGRybV9hdG9taWNfc3RhdGUgKnBs
+YW5lX3N0YXRlKTsNCj4gIHN0cnVjdCBkZXZpY2UgKm10a19jcnRjX2RtYV9kZXZfZ2V0KHN0cnVj
+dCBkcm1fY3J0YyAqY3J0Yyk7DQo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX3BsYW5lLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX3BsYW5lLmMNCj4g
+aW5kZXggNjU1MTA2YmJiNzZkLi41OWVkYmUyNmYwMWUgMTAwNjQ0DQo+IC0tLSBhL2RyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfcGxhbmUuYw0KPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVk
+aWF0ZWsvbXRrX3BsYW5lLmMNCj4gQEAgLTI4NSw5ICsyODUsMTQgQEAgc3RhdGljIHZvaWQgbXRr
+X3BsYW5lX2F0b21pY19kaXNhYmxlKHN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lLA0KPiAgCXN0cnVj
+dCBkcm1fcGxhbmVfc3RhdGUgKm5ld19zdGF0ZSA9IGRybV9hdG9taWNfZ2V0X25ld19wbGFuZV9z
+dGF0ZShzdGF0ZSwNCj4gIAkJCQkJCQkJCSAgIHBsYW5lKTsNCj4gIAlzdHJ1Y3QgbXRrX3BsYW5l
+X3N0YXRlICptdGtfcGxhbmVfc3RhdGUgPSB0b19tdGtfcGxhbmVfc3RhdGUobmV3X3N0YXRlKTsN
+Cj4gKwlzdHJ1Y3QgZHJtX3BsYW5lX3N0YXRlICpvbGRfc3RhdGUgPSBkcm1fYXRvbWljX2dldF9v
+bGRfcGxhbmVfc3RhdGUoc3RhdGUsDQo+ICsJCQkJCQkJCQkgICBwbGFuZSk7DQo+ICsNCj4gIAlt
+dGtfcGxhbmVfc3RhdGUtPnBlbmRpbmcuZW5hYmxlID0gZmFsc2U7DQo+ICAJd21iKCk7IC8qIE1h
+a2Ugc3VyZSB0aGUgYWJvdmUgcGFyYW1ldGVyIGlzIHNldCBiZWZvcmUgdXBkYXRlICovDQo+ICAJ
+bXRrX3BsYW5lX3N0YXRlLT5wZW5kaW5nLmRpcnR5ID0gdHJ1ZTsNCj4gKw0KPiArCW10a19jcnRj
+X3BsYW5lX2Rpc2FibGUob2xkX3N0YXRlLT5jcnRjLCBwbGFuZSk7DQo+ICB9DQo+ICANCj4gIHN0
+YXRpYyB2b2lkIG10a19wbGFuZV9hdG9taWNfdXBkYXRlKHN0cnVjdCBkcm1fcGxhbmUgKnBsYW5l
+LA0KDQo=
 
