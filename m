@@ -4,63 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6450C77B7C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Jun 2025 22:15:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC614C7115B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Jun 2025 01:22:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cN0aaT6+bUw/Kg1Ouvk9kDnxJXHWJDCZ1stvd2Xc8u4=; b=kT949A/tkjDqyP5iaXw6fQx0vL
-	IVSdooVI9DmnaeihTzeWFTyhAQwfQjIh4rY5lC84lUI/vuxsMyBk0hlG6DmKW884XL4sdlqfy12gH
-	ixohX6sYsjry2UivKAuEJIeshVhbbWHkjEwv+GQ/UR3shO05/2rwVCOXmObrkKM2IDXOWoOGvJqMN
-	JMRvKCProZ8ACx+Nt0TumFOXnnbaeFNHKLkMMM3P7Ki8o0L+DLmeZ7iPQcQ8UH8hgnN2ek3MG5wNR
-	cVMEyAE83xovVb7l4vHVBq8gNWFiNwTOdaSznXXhKrJO1wN+aYx4ytRk1aZc5Gkcfa4opdtZJnAqM
-	YyxnB0qQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:
+	References:Date:Message-Id:From:Subject:Content-Transfer-Encoding:
+	MIME-Version:Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pswaEvXrxqiCuPqguUrIpa+69TcLaVsgIe/a8Du3h30=; b=c3PJmjr6Bcn9JO8ImKjLtDssnD
+	yC+o542YAtFRFVBVFqcfTD0ARK9DRkJn1DvJs4WtBe2L46eo8P7HWMk8lnsu/q+Uc/7i8h1QVKk5k
+	x7+kbgo012mMxH0+tD72g3mpfKPQgm2u1KA0chKyzXwy/U2jms3tRqjdNYyFVB8ep3OLEXfguTUBE
+	AlkwvXvzdIRNCmv5bppA0RSLHH0avUjCAVEu6j76xlCFZwAKzWbIrfGJMiQH39ZfrNeeVCZfnOQh0
+	ivr6L74rEotU2tfU6r4htv1SJDVZgMVQ94LTL0BzAuG+GOHouH+a7tc6imKtoEQR2nt7WUwaLbw2Z
+	pQN7T0xA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTpRS-000000045em-3sxG;
-	Mon, 23 Jun 2025 22:15:06 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1uTsMW-00000004MNW-3I6f;
+	Tue, 24 Jun 2025 01:22:12 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uTlB0-00000003aOs-2Wyp;
-	Mon, 23 Jun 2025 17:41:51 +0000
+	id 1uTsK9-00000004M5E-33Q3;
+	Tue, 24 Jun 2025 01:19:45 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 6907AA50B29;
-	Mon, 23 Jun 2025 17:41:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 03739C4CEEA;
-	Mon, 23 Jun 2025 17:41:46 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id E7172629C6;
+	Tue, 24 Jun 2025 01:19:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B4619C4CEF3;
+	Tue, 24 Jun 2025 01:19:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750700509;
-	bh=xN/A8HvexlN7YR43s6eAIX13svQo3ngl0HP/TpVfgL8=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=JkLc4AK5rsNIaammDjeW4cmKVnVKAoa2c54D5jWoFfJvWgMWEZBsO6E746V/w2EHR
-	 uW8gGVkIe10A50Dadg5750SaRxEOw6bc7ZZSalsTsbSvAJr3DKikCBQlyVpLrR3rnB
-	 WggFC+r7Tq3wCbGXgAwZ/rLPWsF/J6LW883h+BwV0CfmzrRKjaelkXb/bQW/thljcE
-	 Dwgpd1XRh/1ZbR9NCzkB/5SsCPh7yumJTLdtgGVbONVFll5ikzQ7AqmZSv3dEgX+fV
-	 sNlURWvQXOQF3iXJ7bvYJCAOzae9+86xObv2DzJH8R1nTj0Uv21APn03y1wf9XHz7D
-	 cQfJnitoVHhmg==
-From: Mark Brown <broonie@kernel.org>
-To: lgirdwood@gmail.com, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
- matthias.bgg@gmail.com, linux-kernel@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, kernel@collabora.com
-In-Reply-To: <20250623120144.109359-1-angelogioacchino.delregno@collabora.com>
-References: <20250623120144.109359-1-angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v1 0/4] regulator: dvfsrc: Add support for MT8196 and
- MT6893
-Message-Id: <175070050673.180798.18078248798013183788.b4-ty@kernel.org>
-Date: Mon, 23 Jun 2025 18:41:46 +0100
-MIME-Version: 1.0
+	s=k20201202; t=1750727984;
+	bh=i8HmAnFDktLAN6p9Nv9fj36EDKY0uQqypdcdnsV1cUE=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=qbApFGTxhNc7UDhHKJ6J3UJL7OJd4o9QzP04wE6FkvuMWVkHWcMPGiR4XeEhNt/jt
+	 Hm7XfNrXcBTbOyvml0OjsO7A5senyOlKulf7qbDc0gGriU7VfqDi6IWwa2LpHL4yzP
+	 eK99+RUI+1DmZhKSI8BvenGL+bVwY1Y8WkBSTih7Lsqtu2ADfL7JHkXQtoi3FsH24Z
+	 1291NiwRQsGbpvbC2yBqJUZXUhCrq/vlj75dbhjJkwFMqZNViC4BhQdrTYnBymlQbU
+	 JOmCCL1QYq132gIQfwfOiakDt4uED1sNUxCjXIbdKRY2PKwdZJJvx+nKnERCTYwunC
+	 oPtTLXkOyNigQ==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id EBE5239FEB7D;
+	Tue, 24 Jun 2025 01:20:12 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.15-dev-08c49
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250623_104150_721371_3B8F5270 
-X-CRM114-Status: GOOD (  11.65  )
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Re: [net-next v6 0/4] rework IRQ handling in mtk_eth_soc
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <175072801175.3355543.2001178239431704817.git-patchwork-notify@kernel.org>
+Date: Tue, 24 Jun 2025 01:20:11 +0000
+References: <20250619132125.78368-1-linux@fw-web.de>
+In-Reply-To: <20250619132125.78368-1-linux@fw-web.de>
+To: Frank Wunderlich <linux@fw-web.de>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,53 +65,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: angelogioacchino.delregno@collabora.com, netdev@vger.kernel.org, sean.wang@mediatek.com, linux-kernel@vger.kernel.org, daniel@makrotopia.org, andrew+netdev@lunn.ch, edumazet@google.com, arinc.unal@arinc9.com, linux-mediatek@lists.infradead.org, horms@kernel.org, matthias.bgg@gmail.com, kuba@kernel.org, pabeni@redhat.com, lorenzo@kernel.org, davem@davemloft.net, linux-arm-kernel@lists.infradead.org, nbd@nbd.name
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 23 Jun 2025 14:01:40 +0200, AngeloGioacchino Del Regno wrote:
-> This series adds support for the DVFSRC regulators found on the MediaTek
-> MT8196 Chromebook SoC and the (unrelated) MT6893 Dimensity 1200.
+Hello:
+
+This series was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Thu, 19 Jun 2025 15:21:20 +0200 you wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> AngeloGioacchino Del Regno (4):
->   dt-bindings: regulator: mediatek-dvfsrc: Add MT6893 support
->   regulator: mtk-dvfsrc: Add support for Dimensity 1200 MT6893
->   dt-bindings: regulator: mediatek-dvfsrc: Add MT8196 support
->   regulator: mtk-dvfsrc: Add support for MediaTek MT8196 DVFSRC
+> This series introduces named IRQs while keeping the index based way
+> for older dts.
+> Further it makes some cleanup like adding consts for index access and
+> avoids loading first IRQ which was not used on non SHARED_INT SoCs.
 > 
 > [...]
 
-Applied to
+Here is the summary with links:
+  - [net-next,v6,1/4] net: ethernet: mtk_eth_soc: support named IRQs
+    https://git.kernel.org/netdev/net-next/c/ee85b483fefb
+  - [net-next,v6,2/4] net: ethernet: mtk_eth_soc: add consts for irq index
+    https://git.kernel.org/netdev/net-next/c/498190100992
+  - [net-next,v6,3/4] net: ethernet: mtk_eth_soc: skip first IRQ if not used
+    https://git.kernel.org/netdev/net-next/c/9c0feca0a68b
+  - [net-next,v6,4/4] net: ethernet: mtk_eth_soc: only use legacy mode on missing IRQ name
+    https://git.kernel.org/netdev/net-next/c/070e98dd4e26
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-Thanks!
-
-[1/4] dt-bindings: regulator: mediatek-dvfsrc: Add MT6893 support
-      commit: a6c05c2e6871c94b349703c1ec8584763797fd8e
-[2/4] regulator: mtk-dvfsrc: Add support for Dimensity 1200 MT6893
-      commit: 7aafbb463be85472dc6db194ab9df45fd497c998
-[3/4] dt-bindings: regulator: mediatek-dvfsrc: Add MT8196 support
-      commit: ae77b8e8b0326818bd170818b37d055aa57a1569
-[4/4] regulator: mtk-dvfsrc: Add support for MediaTek MT8196 DVFSRC
-      commit: 024f39fff6d222cedde361f7fe34d9ba4e6afb92
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
 
 
