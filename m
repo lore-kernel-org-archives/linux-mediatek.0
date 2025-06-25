@@ -4,52 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06C3AC77B7C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jun 2025 14:36:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39E51C77B7C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jun 2025 17:36:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nzrcHeeI0vyHtikZnoF2zxUYMZ5i72Uyxy835+Y382g=; b=aR4QTr983wGeLDIua2KMwgaUxz
-	vG1eJMlLgbetL2hStIphUw/Gd3EQaOCxBZyyyQmfv6fUkUhkiCvyni+8UbQUe63h5JaBazPiKhhCu
-	oCQtsMJBdP4K2fUDOL3NPXW4gw5fBgisHpKu9DPz1YNPQxi/6D0WVG53chkJzZ+4bRUlz88kelSS7
-	GVQYlbgxmne2apUzUThX+ngB1SPRHT5yxF8fwjrY/Wgv/cj4cOY+UfzwCpzLz9cw4lw7CGSdz3b8d
-	Voz1zV8NhqXXrLjRZ7evuHEHou9EwQfkoFE83I5kydI/Ejm7lQ7H6MhiTq+aKjwx0feoja3quTEVv
-	47HND+Bw==;
+	bh=O5YJEcwRuUtpDHbhsb/3sWkPjdZx9TeN+3uB303OOYs=; b=ysQU8Sv/sUKrPTJYGaqmYCm9qQ
+	9rq+MHnEJjacjYR6+VNnTH6wiDET8N9v3PwK7pZV7QEhhgnFuQU6UXe0Mr+Hw3taxwMo7Shgj5vTR
+	ZZ3BfDVxMra3bcVvSoInWZIn58a+4N1T4RmafgWjL460rm2XTq8pzM+hufM1EikgJMD9OhF3d9COQ
+	RP5HNaLyT53QP50hYUyDOU/Kq/mmtG0ifVTTk1oAflsONLv0QImIggVXv5ziCK6KPXtVoCKAur8Wg
+	tv4RadkTGjNpPs9l1AxCxyQUHvCnekfa4Mh0gFvyQsC438X3d3UJV/F/wpWtqBruoJ0NcEI8pqOeZ
+	FzddPXkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUREF-00000008z6w-2ChO;
-	Wed, 25 Jun 2025 14:35:59 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uUU31-00000009T1R-1ewE;
+	Wed, 25 Jun 2025 17:36:35 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUNy5-00000008Q0K-12CG;
-	Wed, 25 Jun 2025 11:07:05 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 4EA6461547;
-	Wed, 25 Jun 2025 11:07:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 84DF0C4CEF3;
-	Wed, 25 Jun 2025 11:06:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750849624;
-	bh=Du5M54IwYdOnXf3aWRLYEWi5vYiuJM7fkemw9YzMmhI=;
+	id 1uUPSE-00000008etC-42t3;
+	Wed, 25 Jun 2025 12:42:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1750855336;
+	bh=3HMbk0mlakx6BcqWOIOd4rz9lzz+qzLD1ex6XrftVc8=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=V2npjSuGkDaZbAiIfvwChljQPGkoIx25/DuLkqurOMb68Mtv9JxFZ9Xs2DqbAfwwt
-	 MOZB5Fli4sKbXoWq8PcHKAgoDvnYVIQ67YSYn7p5ElRJyPTq2TcUp1LN+USkozNjOm
-	 XLPf4KDOSKBe0UqsLPnYrAP4p3crqE2MnWuCGHfaMWgrR0rVct+2BS6yAXClZvom/j
-	 sa5iXgml/zyhDooN2wJFS3TULsVcXX27FGAxjLEIoS7H8AvrjgKeMjYSbhm7h1Y/4a
-	 oh8EgY9Lr4/5+X/H/Wunb9WehB8mer9EsWFowRkPCsRI1+i6ODYnjOSHl+KoDApXv2
-	 mquTNGLIgOpiA==
-Message-ID: <86654ad1-a2ab-4add-b9de-4d56c67f377b@kernel.org>
-Date: Wed, 25 Jun 2025 13:06:57 +0200
+	b=kUvKEvfP28rCadwxCPxPAhgINhFv3i+gKsNHbIxhS6lgOKanUqqojUkYpmTFl+2qU
+	 xKEFQ6Mftpep0s/y/DE2CLmB6jJc3tq3tKgFS2Y5SAn+TAjuElOcRu5r07h2agLESi
+	 GbsR+DcVn808Nybdup+HbY5g1/X58/38H3JO04TKrM8Sm7S+1XSfYCyiuv3wSHmxAT
+	 P/Y7+hwzIZplzxTq0Pb9T8krjfgSN/7Az2Dw2fQrGlxvdXUkGE7Kb+bgXjMWj82z63
+	 tbRQQePrDju6i22poUBAYZXHQGhVw7OQNkhV9lMBG4fw4Z8xepWyff7IidpBO+aAe5
+	 9p5OceBXbSxGA==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E0BE117E0202;
+	Wed, 25 Jun 2025 14:42:15 +0200 (CEST)
+Message-ID: <312f321f-2e49-48ac-bc41-a741f5e3b3a5@collabora.com>
+Date: Wed, 25 Jun 2025 14:42:15 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2 09/29] dt-bindings: clock: mediatek: Describe MT8196
  peripheral clock controllers
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Laura Nao <laura.nao@collabora.com>, mturquette@baylibre.com,
- sboyd@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+To: Krzysztof Kozlowski <krzk@kernel.org>, Laura Nao
+ <laura.nao@collabora.com>, mturquette@baylibre.com, sboyd@kernel.org,
+ robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
  matthias.bgg@gmail.com, p.zabel@pengutronix.de, richardcochran@gmail.com
 Cc: guangjie.song@mediatek.com, wenst@chromium.org,
  linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
@@ -62,54 +64,15 @@ References: <20250624143220.244549-1-laura.nao@collabora.com>
  <284a4ee5-806b-45f9-8d57-d02ec291e389@collabora.com>
  <0870a2ba-936b-4eb2-a570-f2c9dea471b8@kernel.org>
  <9fc32523-5009-4f48-8d82-6c3fd285801d@collabora.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+ <29eeae4f-59ed-4781-88b1-4fd76714ecb6@kernel.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <9fc32523-5009-4f48-8d82-6c3fd285801d@collabora.com>
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <29eeae4f-59ed-4781-88b1-4fd76714ecb6@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250625_054219_169490_4286D2DE 
+X-CRM114-Status: GOOD (  37.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,75 +87,181 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 25/06/2025 11:45, AngeloGioacchino Del Regno wrote:
-> Il 25/06/25 10:57, Krzysztof Kozlowski ha scritto:
->> On 25/06/2025 10:20, AngeloGioacchino Del Regno wrote:
->>> Il 24/06/25 18:02, Krzysztof Kozlowski ha scritto:
->>>> On 24/06/2025 16:32, Laura Nao wrote:
->>>>> +  '#reset-cells':
->>>>> +    const: 1
->>>>> +    description:
->>>>> +      Reset lines for PEXTP0/1 and UFS blocks.
->>>>> +
->>>>> +  mediatek,hardware-voter:
->>>>> +    $ref: /schemas/types.yaml#/definitions/phandle
->>>>> +    description:
->>>>> +      On the MT8196 SoC, a Hardware Voter (HWV) backed by a fixed-function
->>>>> +      MCU manages clock and power domain control across the AP and other
->>>>> +      remote processors. By aggregating their votes, it ensures clocks are
->>>>> +      safely enabled/disabled and power domains are active before register
->>>>> +      access.
+Il 25/06/25 13:05, Krzysztof Kozlowski ha scritto:
+> On 25/06/2025 11:45, AngeloGioacchino Del Regno wrote:
+>> Il 25/06/25 10:57, Krzysztof Kozlowski ha scritto:
+>>> On 25/06/2025 10:20, AngeloGioacchino Del Regno wrote:
+>>>> Il 24/06/25 18:02, Krzysztof Kozlowski ha scritto:
+>>>>> On 24/06/2025 16:32, Laura Nao wrote:
+>>>>>> +  '#reset-cells':
+>>>>>> +    const: 1
+>>>>>> +    description:
+>>>>>> +      Reset lines for PEXTP0/1 and UFS blocks.
+>>>>>> +
+>>>>>> +  mediatek,hardware-voter:
+>>>>>> +    $ref: /schemas/types.yaml#/definitions/phandle
+>>>>>> +    description:
+>>>>>> +      On the MT8196 SoC, a Hardware Voter (HWV) backed by a fixed-function
+>>>>>> +      MCU manages clock and power domain control across the AP and other
+>>>>>> +      remote processors. By aggregating their votes, it ensures clocks are
+>>>>>> +      safely enabled/disabled and power domains are active before register
+>>>>>> +      access.
+>>>>>
+>>>>> Resource voting is not via any phandle, but either interconnects or
+>>>>> required opps for power domain.
 >>>>
->>>> Resource voting is not via any phandle, but either interconnects or
->>>> required opps for power domain.
+>>>> Sorry, I'm not sure who is actually misunderstanding what, here... let me try to
+>>>> explain the situation:
+>>>>
+>>>> This is effectively used as a syscon - as in, the clock controllers need to perform
+>>>> MMIO R/W on both the clock controller itself *and* has to place a vote to the clock
+>>>> controller specific HWV register.
 >>>
->>> Sorry, I'm not sure who is actually misunderstanding what, here... let me try to
->>> explain the situation:
+>>> syscon is not the interface to place a vote for clocks. "clocks"
+>>> property is.
 >>>
->>> This is effectively used as a syscon - as in, the clock controllers need to perform
->>> MMIO R/W on both the clock controller itself *and* has to place a vote to the clock
->>> controller specific HWV register.
+>>>>
+>>>> This is done for MUX-GATE and GATE clocks, other than for power domains.
+>>>>
+>>>> Note that the HWV system is inside of the power domains controller, and it's split
+>>>> on a per hardware macro-block basis (as per usual MediaTek hardware layout...).
+>>>>
+>>>> The HWV, therefore, does *not* vote for clock *rates* (so, modeling OPPs would be
+>>>> a software quirk, I think?), does *not* manage bandwidth (and interconnect is for
+>>>> voting BW only?), and is just a "switch to flip".
+>>>
+>>> That's still clocks. Gate is a clock.
+>>>
+>>>>
+>>>> Is this happening because the description has to be improved and creating some
+>>>> misunderstanding, or is it because we are underestimating and/or ignoring something
+>>>> here?
+>>>>
+>>>
+>>> Other vendors, at least qcom, represent it properly - clocks. Sometimes
+>>> they mix up and represent it as power domains, but that's because
+>>> downstream is a mess and because we actually (at upstream) don't really
+>>> know what is inside there - is it a clock or power domain.
+>>>
 >>
->> syscon is not the interface to place a vote for clocks. "clocks"
->> property is.
+>> ....but the hardware voter cannot be represented as a clock, because you use it
+>> for clocks *or* power domains (but at the same time, and of course in different
+>> drivers, and in different *intertwined* registers).
 >>
->>>
->>> This is done for MUX-GATE and GATE clocks, other than for power domains.
->>>
->>> Note that the HWV system is inside of the power domains controller, and it's split
->>> on a per hardware macro-block basis (as per usual MediaTek hardware layout...).
->>>
->>> The HWV, therefore, does *not* vote for clock *rates* (so, modeling OPPs would be
->>> a software quirk, I think?), does *not* manage bandwidth (and interconnect is for
->>> voting BW only?), and is just a "switch to flip".
+>> So the hardware voter itself (and/or bits inside of its registers) cannot be
+>> represented as a clock :\
 >>
->> That's still clocks. Gate is a clock.
->>
->>>
->>> Is this happening because the description has to be improved and creating some
->>> misunderstanding, or is it because we are underestimating and/or ignoring something
->>> here?
->>>
->>
->> Other vendors, at least qcom, represent it properly - clocks. Sometimes
->> they mix up and represent it as power domains, but that's because
->> downstream is a mess and because we actually (at upstream) don't really
->> know what is inside there - is it a clock or power domain.
->>
+>> In the context of clocks, it's used for clocks, (and not touching power domains at
+>> all), but in the context of power domains it's used for power domains (and not
+>> touching clocks at all).
 > 
-> ....but the hardware voter cannot be represented as a clock, because you use it
-> for clocks *or* power domains (but at the same time, and of course in different
-> drivers, and in different *intertwined* registers).
+> I don't understand this. Earlier you mentioned "MUX-GATE and GATE
+> clocks", so these are clocks, right? How these clocks are used in other
+> places as power domains?
 
-BTW:
+I think you've misread, or I've explained badly enough to make you misread...
+let me describe some more to try to let you understand this properly.
 
-git grep mediatek,hardware-voter
-0 results
+The hardware voter is a unit that is used to vote for "flipping various switches",
+in particular, you can vote for, *either*:
+  - Enabling or disabling a *clock*; or
+  - Enabling or disabling a *power domain*.
 
-so I do not accept explanation that you use it in different drivers. Now
-is the first time this is being upstream, so now is the time when this
-is shaped.
+There may be multiple (by hardware, in-silicon) copies of the Hardware Voter; in
+the specific case of the MediaTek Dimensity 9400 MT6991 and of the MediaTek MT8196
+Chromebook SoC, there is only one instance.
 
-Best regards,
-Krzysztof
+The Hardware Voter, there, is located in the SCPSYS macro-block.
+
+The SCPSYS macro-block contains:
+  - A system controller
+  - A Hardware Voter IP (new in MT6991/MT8196)
+  - A power domains controller
+  - Other hardware that is not relevant for this discussion
+
+The HWV is MMIO-accessible, and there is one (small, for now) set of registers,
+allowing to vote for turning on/off one (or maybe multiple too, not sure about
+that as there's no documentation and when I tried with multi-votes it didn't work)
+clk/pd at a time.
+
+Probably not important but worth mentioning: the HWV can vote for clocks or for
+power domains in macro-blocks outside of its own (so, outside of the SCPSYS block,
+for example - it can vote to turn on a clock or a power domain in HFRPSYS as well).
+
+The register set in the HWV is *not* split between clock voters and PDs voters,
+in the sense that the register set of clock voters is *not contiguous*; trying
+to be as clear as possible, you have something like (mock register names ahead):
+  0x0 - CLOCK_VOTER_0 (each bit is a clock)
+  0x4 - PD_VOTER_0 (each bit is a power domain)
+  0x8 - SECURE_WORLD_CLOCK_VOTER_1
+  0xc - PD_VOTER_1
+  0x10 - SECURE_WORLD_PD_VOTER_0
+
+...etc etc.
+
+ >> If they are, this either has to be fixed or
+> apparently this is a power domain and use it as power domain also here.
+
+So no, clocks are not used as power domains, and power domains are not used as
+clocks; we are talking purely about something that aggregates votes internally
+and decides to turn on/off "whatever thing it is" (one of the clocks, or one of
+the power domains) - and to do that, you flip a bit in a register, and then you
+read another two registers to know the status of the internal state machine....
+
+....and you do that atomically, this can't sleep, the system has to lock up
+until HWV is done (I think I know what you're thinking, and yes, it's really
+like this) otherwise you're surely racing.
+
+> 
+> Really, something called as hardware voter is not that uncommon and it
+> does fit existing bindings.
+> 
+
+Do you mean the interconnect/qcom/bcm-voter.c?
+
+That one seems to aggregate votes in software to place a vote in a hardware voter
+(the Bus Clock Manager) and I see it as being really convoluted.
+
+For MediaTek's HWV, you don't need to aggregate anything - actually, the HWV itself
+is taking care of aggregating requests internally...
+
+Also, checking sdx75 and x1e80100 DTs, I see a virtual clock controller described,
+placing votes through the bcm-voter, and with clocks that looks like being kind
+of disguised/faked as interconnects?
+
+That's a bit unclear, and even if I'm wrong about those being disguised as icc,
+and not virtual, purely looking at the usage of the clk_virt and bcm-voters, I
+seriously don't think that any similar structure with interconnect would fit
+MediaTek SoCs in any way...
+
+>>
+>> I'm not sure what qcom does - your reply makes me think that they did it such that
+>> the clocks part is in a MMIO and the power domains part is in a different MMIO,
+>> without having clock/pd intertwined voting registers...
+> 
+> No, you just never have direct access to hardware. You place votes and
+> votes go to the firmware. Now depending on person submitting it or
+> writing internal docs, they call it differently, but eventually it is
+> the same. You want to vote for some specific signal to be active or
+> running at some performance level.
+> 
+
+Okay then there is one similarity, but it's different; MTK HWV is only arbitering
+a on/off request; Nothing else.
+
+No RATE votes.
+No performance levels.
+Literally, that's it.
+
+You have direct access to the hardware, and you can also access the same HW that is
+arbitered by HWV, effectively overriding whatever HWV is voting for, and you're
+free to race with HWV if you want, even (why would you want that I don't know, but
+anyway..!).
+
+Am I still missing anything, or have you got any other doubt, question,
+consideration, (etc)?
+
+Cheers,
+Angelo
+
 
