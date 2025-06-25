@@ -4,65 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BEF5C7EE30
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jun 2025 11:06:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1E3BC7EE30
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jun 2025 11:07:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jW+1owoXB17P5r64LajIjS3sX8kkAAWkaGx1PzmHB28=; b=eOQzTJ6qNQGM2oo5YOmxIOom/I
-	Us8iXn7T23l8fKRUywdxfoxl6mh6XdJ50DXuFCeOVv/Vg0RHaY30WCsO0akPltatx9xT51ot4gih4
-	W2zvJj7qpXRUKlpYQx1CLT4NDyuYUjWXr+UU8rUooe15mNBefPsS2I2ZVofPIGeQRjcxQVqOb9n/7
-	9vYIpbB6ismZ1sy5wnV3Yu+VcAR5pIFSWuyOH1O6vAY/jHTQRjEZ2ZaEb80bTVnGxjAT39mU94qTU
-	HroK24gU3sSgbdWZvXm978BjsABhvM5zpa4YPDvYeCN2P9X4Og3Bq4+QZ6AxamGZCSj5YWlL3fsn1
-	5e9e2k2g==;
+	bh=vJ3mwn0o0bNWIsKKV9EgOQNug5ExZy+GsquJ5hq125c=; b=A64zLS5YV7I5P5S8Q9qDEzhRp8
+	rYz3zN0+7gGb5mlUuQyuAlQftvGjko2bieRXJO7Iie4WZEKLhQJcp5u2J7p3U7nwwWEGiA/lvopo6
+	VlTy5j74cA+nin5Uh3pNFsJ4kzR51MbsVbJmxTFgE5Yak3G8BOtaxfsZgj01mF/JueJUbxN4RLV9G
+	wZRZfNRmgBcoE7btfVy3yEdYgEPE8P+yJyKJhr+ZSlPcD++fu2b5pWjvlA0GKTfEzL7OvqLUgZBqC
+	qNI/xXZK+WBMHGUiyzKsu074b5h3eZ1dps/nmFh62gMkyG6C1RE2eEW44soJwS+dNAb0JVJ9furFO
+	RYDlW8Jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUNxv-00000008PtH-2OoB;
-	Wed, 25 Jun 2025 11:06:55 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uUNyc-00000008QKm-4BKV;
+	Wed, 25 Jun 2025 11:07:39 +0000
+Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUMrr-00000008EDj-38F0;
-	Wed, 25 Jun 2025 09:56:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1750845393;
-	bh=4xm4c13qx8idD1PxG/L3wpwYyNMMWRmKlcFlDq52U5k=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=WdXpS5PPPTIiIaoqFVj5y1vTb//tmgQC2R/tV/xLrxtk3pU8M0Eh7cdaIqJF7Wyss
-	 kJeB3crnj6hiXOnmidIzo7ag7KxtJcE/ZCUY8Z2he8A4y2257zSIgmlhLSGnmY9BwX
-	 +m7p00yI191UDTo1b/8B7IDPl/rUEtZsjpYwIV1LbnukwMIheKzc53cMCpCeqhd8gC
-	 Hn0fKvoXtXeBflrQJyP8iTKiLUAUUVHlgzBQFPQfPGNd5p6lmd8VG1pBcRNTzza+Ey
-	 m2RlNlgKWCVIuHY5RYeZQcgUyAjwfKAonV7qo62XWD7ct2NeYB/28CnPDLReXZ9Ubv
-	 sZC1xdcMPCyIQ==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5D4D317E10C7;
-	Wed, 25 Jun 2025 11:56:33 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
-In-Reply-To: <20250520-en7581-net-v1-1-5317f8e829ad@kernel.org>
-References: <20250520-en7581-net-v1-1-5317f8e829ad@kernel.org>
-Subject: Re: [PATCH] arm64: dts: airoha: en7581: Add ethernet nodes to
- EN7581 SoC evaluation board
-Message-Id: <175084539329.84221.11886997318219077095.b4-ty@collabora.com>
-Date: Wed, 25 Jun 2025 11:56:33 +0200
+	id 1uUNDE-00000008I73-1wfz;
+	Wed, 25 Jun 2025 10:18:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
+	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=vJ3mwn0o0bNWIsKKV9EgOQNug5ExZy+GsquJ5hq125c=; b=uoFUjwJ8Jh3yc0ecE27bc1VUee
+	1EonnoamVyY+y7eJXmxmzochQ/PjP8cTbux05fhoXcdUGc3FgWxQTynwWLJTMVZR4ZbilwvmXcwrS
+	N/tibEuTq4/LbUL9TYdQ01QGR1IHfEPmi2wKF6sSsnUuHP8GX3Zmf1CVOI4eEtdYP8UI=;
+Received: from p54ae9243.dip0.t-ipconnect.de ([84.174.146.67] helo=nf.local)
+	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.96)
+	(envelope-from <nbd@nbd.name>)
+	id 1uUNCi-003Twy-0A;
+	Wed, 25 Jun 2025 12:18:08 +0200
+Message-ID: <26e6c7f7-a35f-4ebb-a55b-ade2ac7c20bb@nbd.name>
+Date: Wed, 25 Jun 2025 12:18:07 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v10 RESEND] wifi: mt76: mt7915: add wds support when wed
+ is enabled
+To: Shengyu Qu <wiagn233@outlook.com>, pkshih@realtek.com,
+ lorenzo@kernel.org, ryder.lee@mediatek.com, shayne.chen@mediatek.com,
+ sean.wang@mediatek.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, johannes.berg@intel.com,
+ miriam.rachel.korenblit@intel.com, christophe.jaillet@wanadoo.fr,
+ greearb@candelatech.com, howard-yh.hsu@mediatek.com,
+ StanleyYP.Wang@mediatek.com, deren.wu@mediatek.com,
+ chui-hao.chiu@mediatek.com, quic_adisi@quicinc.com, gustavoars@kernel.org,
+ razvan.grigore@vampirebyte.ro, linux-wireless@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Cc: Sujuan Chen <sujuan.chen@mediatek.com>, Bo Jiao <bo.jiao@mediatek.com>
+References: <OSZPR01MB84342A0E21AAD111ED7AF6B198B82@OSZPR01MB8434.jpnprd01.prod.outlook.com>
+ <TY4PR01MB1443294C4D36DF73852B4E79B9878A@TY4PR01MB14432.jpnprd01.prod.outlook.com>
+From: Felix Fietkau <nbd@nbd.name>
+Content-Language: en-US
+Autocrypt: addr=nbd@nbd.name; keydata=
+ xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
+ ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
+ Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
+ AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
+ vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
+ wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
+ TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
+ l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
+ dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
+ HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
+ VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
+ CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
+ VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
+ Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
+ DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
+ wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
+ f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
+ aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
+ FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
+ TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
+ GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
+ cL98efvrjdstUfTCP2pfetyN
+In-Reply-To: <TY4PR01MB1443294C4D36DF73852B4E79B9878A@TY4PR01MB14432.jpnprd01.prod.outlook.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250625_025635_934771_D30BF7F9 
-X-CRM114-Status: UNSURE (   5.57  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250625_031840_582743_A24A68A7 
+X-CRM114-Status: GOOD (  13.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,19 +106,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 20 May 2025 15:41:35 +0200, Lorenzo Bianconi wrote:
-> Introduce ethernet controller nodes to EN7581 SoC and EN7581 evaluation
-> board.
+On 24.06.25 16:11, Shengyu Qu wrote:
+> Hi Felix,
 > 
-> 
+> Please, tell me if this patch needs any polishing. I really don't know
+> why this patch still not get merged after such a long time(and 2x
+> resend), especially it already got a Reviewed-by and is a bugfix.
 
-Applied to v6.16-next/dts64, thanks!
+Hi Shengyu,
 
-[1/1] arm64: dts: airoha: en7581: Add ethernet nodes to EN7581 SoC evaluation board
-      commit: a40b35819ba9fce0e942bd89600cbd78da8304f0
+sorry it took such a long time for me to take a look at this patch.
+I don't see how it can even work properly in its current form, because 
+of at least one bug:
 
-Cheers,
-Angelo
+When switching from non-wds to wds mode, the code calls 
+mt7915_mac_sta_add in order to create the new sta. However, after 
+changes that I made a while back, this function does not actually upload 
+the station to the MCU anymore, since it is called on the NOTEXIST->NONE 
+transition before assoc. Without corresponding ASSOC/AUTHORIZE events 
+(handled by mt7915_mac_sta_event), the firmware doesn't get any data for 
+the new wcid.
 
+That said, I finally got around to starting to rework your patch myself. 
+I will let you know when I have something ready for testing, hopefully 
+later today.
 
+- Felix
 
