@@ -4,62 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07044C7115C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jun 2025 04:45:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25354C7115C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jun 2025 05:08:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Mime-Version:References:In-Reply-To:Message-Id:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oxhKtwaA63Fos0S2DVop/2E5u/CuV9J2sGATS1cbp6I=; b=DcuCVryLUX8cwrIbNH6utAxmS7
-	8KuveCDUJ2JBxvWUQiaLd6me37ZwbNAfETkJDYH1pW3CD9v98ZZEanOVke1/yvdXBQSWDZG6Gr8lM
-	Vm3PLu/n6PFs+CZ5Fg3L7jai1LLHeAkH0QozaPDPyqFj8JDD03qumTHQnUH0opdVRoK0LyopUQs62
-	SjVYrblygoRr/SG6OdWKRbhP5FClGfqie3rNk/ffrkO48ZtrJPaVPYf3fVbPNG7gmeZwMOltP4mqr
-	l9DlxeYcozZp52puuXoyIrAyaCdK99kbX58C1i1TMhWnD2HKAkr8rkfyfYvFTZ6uZlOLR5OhzMSvn
-	eRNp2nSA==;
+	bh=wYL0zDoEF8tBEVV2CM33ngyEh5/p8g2bCwVDJFJP1+w=; b=pJOFUiFPojx/AlFRw9Dl2JFZA+
+	SsWjHLTx9+tI+6MTK5rdjp9IbffM8GuakIIPfhOtDAB2j1Q+jAqx8yJQELSTyzgeyE6z1cj5qxNUn
+	p/yZLsLvUOIKD5cpMgihbArFI8JP6fud3W4XanAecfsGoYIsKBPcSRcf9N+A4OrLmDzCcd84cXuCa
+	BkXGdl5ZbnLCAPBrueUpmw/9cdkeDGIDGZVPUtRB53Sh0tw0tIMuORWqR74kRD85f8zluEQv1lnu5
+	zRIn47XPJ1WrIMEi4wE2vMEGX1voT+YNqMIZgXE48ILKq27jzaOt8dSFzEDVmi7AeiyHGyBVmpJ9b
+	ff/49nJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUI0g-00000007XUN-17jg;
-	Wed, 25 Jun 2025 04:45:22 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uUIMp-00000007Z3v-1M4h;
+	Wed, 25 Jun 2025 05:08:15 +0000
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUHyN-00000007X8z-2sTW;
-	Wed, 25 Jun 2025 04:42:59 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E0047614C6;
-	Wed, 25 Jun 2025 04:42:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 28CA3C4CEEA;
-	Wed, 25 Jun 2025 04:42:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750826577;
-	bh=s0Uf4rDKwjy1dsp7E1aDOpTFmlXsypuC2uqpLNZ5DKY=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=kpr1HQMca3yxYzZRwgASl7KM9m5QByPLHuYDp8quWxFse6APaNTIh2d/R6GX4wQYF
-	 zlMCV4rLSly8vPfih+25aD7oiEhIKwj+FtCtQHmXTIFp/SDYmrq3xdM37PQISvprY4
-	 W07TOosv3dtwmSUeVemySj27HYVuIaTmksNRRLbD+Y44sPaK7s+/fycu6HqutouwWu
-	 +07mC9cMZ/h8A0LObzrYf4Z4Ajq874qs71LWj6KJVM0EM+aoy95qk7G5Q5tQoUD3We
-	 D2uO5L/oFgb6+hQYARDgkC7Xy8ugK+EpTVHaDrCI3hgXWr0GBaCRKCdXShDgD37cWK
-	 R32u0jXlYYLNQ==
-Date: Wed, 25 Jun 2025 13:42:54 +0900
-From: Masami Hiramatsu (Google) <mhiramat@kernel.org>
-To: Sergey Senozhatsky <senozhatsky@chromium.org>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Chaotian Jing
- <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Tomasz Figa <tfiga@chromium.org>, linux-mmc@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] mtk-sd: Prevent memory corruption from DMA map failure
-Message-Id: <20250625134254.7cbd72feb80d8d050f2f005d@kernel.org>
-In-Reply-To: <cifhvofebjuanprzcs2duv6r22r5reibzm7nub4xfya3h3rmwe@ujpf5wadwh3c>
-References: <174972756982.3337526.6755001617701603082.stgit@mhiramat.tok.corp.google.com>
-	<kgxqtfdrlc5m5kgprjajt4xtngken2u2locauzhsxm7kcowusa@44ncy4vhy5vx>
-	<cifhvofebjuanprzcs2duv6r22r5reibzm7nub4xfya3h3rmwe@ujpf5wadwh3c>
-X-Mailer: Sylpheed 3.8.0beta1 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+	id 1uUILB-00000007Ywc-30mX
+	for linux-mediatek@lists.infradead.org;
+	Wed, 25 Jun 2025 05:06:34 +0000
+Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-55351af2fc6so6299579e87.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 24 Jun 2025 22:06:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1750827991; x=1751432791; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=wYL0zDoEF8tBEVV2CM33ngyEh5/p8g2bCwVDJFJP1+w=;
+        b=TqlfvKopWzIsPOTiKOMVhv2Lx+kOW7zlA3p1KJ/bv3kJDhLM84U4vrYFo9INhZ/Hti
+         IHS7rpCMBzsKSzewkjrUZwaJsR3M47CAxEw96yYwlYdj7XBvmD071Vd9A5axUyswkum3
+         a6BeMMwb0wtVvdAiWtLORgHFN7l0sw5uoVgY4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1750827991; x=1751432791;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=wYL0zDoEF8tBEVV2CM33ngyEh5/p8g2bCwVDJFJP1+w=;
+        b=SSe5KHqtVtRHW5/tj38tvmqIKgsc66TaSnWoEWcwsSyUsgdiB5fbWmwrQhu8ev0jEb
+         Czld90Zv6yxF4ZawcMRKa7cV3P7TpOZJQrjob96sgIEGcN8SJvG0eSRvwEvkUJKGBObz
+         Ge4bBOHd9D6pkprwQ80vQN9ZkfZY6CJN6nI2rUCTyzWVYhA4CMG3ryi9CNqYl5BKm/dt
+         W6TAW8fcpcACFvE91vHqlVsM+q6xMbrb3jtKza8Y1wKSAd8voG72I3cFWCyYEfOZQ1u0
+         yFMKbSOsTc8YDCkOY+kNqsr000beKq1dDpLaYFGAnX1wDs2LgZcChcmJzPSEWhOm4XIj
+         w6Kw==
+X-Forwarded-Encrypted: i=1; AJvYcCUE+N0+EoMZuVSj1Mhaup+CSDfrWmt9rm6OKhmUd+BORi5Yh0Toi9eQxWYCHxeuEi5rKQvhTXwzekMvwXIvXQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz3LcMwJBcOEFCa5SuPdWYBLYrW3zHj55QX7OZb7m8mpY5VoT5p
+	X3otJ3Ft0eTgFgJCTeip91DQ1THaB6cHkXeF1SvxYQPv67h/HPNOVRDzsi8amIpPgfbQ0agpo8Z
+	3sWV/WopwHc6K1EbN+4AvT0A4EnfeahrTzEJHAfEi
+X-Gm-Gg: ASbGnctKwQV6g4cwhhN+l+o1cZWh7irMS+diKgbZNK4hCZHW8o51hwyq4Qh3koVVsTE
+	YKSGBx68HLQDstu19FSAlsLAbOkp9yPZHoOCy0Pf5iwFWOZH9eFhz3ZfyDdOwvmnYWwibDWBMkB
+	Xbkf5B1u0i1J5oaIDxCVGXZttA2ltI/xl0tQW+te6DcGKihYyou/NV3GwQEYQslEc3ClVldQ==
+X-Google-Smtp-Source: AGHT+IEPnjDPdzCHrxS9FLolva0rhORMM3QulXsmJfUCrp8Q42wqK3RvPIsJ5XM2NL3tU4k3s1Ue9EkMUcYihQ9AaGg=
+X-Received: by 2002:a05:6512:b97:b0:553:2f57:f8af with SMTP id
+ 2adb3069b0e04-554fdce9e0dmr449486e87.20.1750827991225; Tue, 24 Jun 2025
+ 22:06:31 -0700 (PDT)
+MIME-Version: 1.0
+References: <20250624073548.29732-1-angelogioacchino.delregno@collabora.com> <20250624073548.29732-3-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250624073548.29732-3-angelogioacchino.delregno@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 25 Jun 2025 13:06:20 +0800
+X-Gm-Features: Ac12FXzHd-cnN4TUsA_r-2fnEM30GQ1asEGL9sR_0RQ8CDW8gNp231ivBudzbiA
+Message-ID: <CAGXv+5G-s6+sF-PS0iywC5uxMkrfH1FskWG_HcHAi_tfuHWtZA@mail.gmail.com>
+Subject: Re: [PATCH v2 2/6] regulator: Add support for MediaTek MT6316 SPMI
+ PMIC Regulators
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: broonie@kernel.org, lgirdwood@gmail.com, robh@kernel.org, 
+	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, 
+	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	kernel@collabora.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250624_220633_769139_3DAF40E0 
+X-CRM114-Status: GOOD (  30.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,55 +95,265 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 25 Jun 2025 13:13:18 +0900
-Sergey Senozhatsky <senozhatsky@chromium.org> wrote:
+Hi,
 
-> On (25/06/25 12:56), Sergey Senozhatsky wrote:
-> > On (25/06/12 20:26), Masami Hiramatsu (Google) wrote:
-> > [..]
-> > > @@ -1466,8 +1471,18 @@ static void msdc_ops_request(struct mmc_host *mmc, struct mmc_request *mrq)
-> > >  	WARN_ON(!host->hsq_en && host->mrq);
-> > >  	host->mrq = mrq;
-> > >  
-> > > -	if (mrq->data)
-> > > +	if (mrq->data) {
-> > >  		msdc_prepare_data(host, mrq->data);
-> > > +		if (!msdc_data_prepared(mrq->data)) {
-> > > +			/*
-> > > +			 * Failed to prepare DMA area, fail fast before
-> > > +			 * starting any commands.
-> > > +			 */
-> > > +			mrq->cmd->error = -ENOSPC;
-> > > +			mmc_request_done(mmc_from_priv(host), mrq);
-> > 
-> > Do we end up having a stale/dangling host->mrq pointer here?
-> 
-> Something like this maybe?
-
-Good catch! I thought it is cleared in mmc_request_done(), but not.
-I agree we need to clean it up since it is set in msdc_ops_request().
-
-Reviewed-by: Masami Hiramatsu (Google) <mhiramat@kernel.org>
-
-Thanks,
-
-> 
+On Tue, Jun 24, 2025 at 3:46=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Add a driver for the regulators found on all types of the MediaTek
+> MT6316 SPMI PMIC, fully controlled by SPMI interface and featuring
+> four step down DCDC (buck) converters.
+>
+> In particular, this includes support for:
+>  - MT6316(BP/VP):    2+2 Phase (Phase 1: buck1+2, Phase 2: buck3+4)
+>  - MT6316(CP/HP/KP): 3+1 Phase (Phase 1: buck1+2+4, Phase 2: buck3)
+>  - MT6316(DP/TP):    4+0 Phase (Single phase, buck1+2+3+4)
+>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
 > ---
-> 
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index b12cfb9a5e5f..46bb770ace41 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -1498,6 +1498,7 @@ static void msdc_ops_request(struct mmc_host *mmc, struct mmc_request *mrq)
->  			 */
->  			mrq->cmd->error = -ENOSPC;
->  			mmc_request_done(mmc_from_priv(host), mrq);
-> +			host->mrq = NULL;
->  			return;
->  		}
->  	}
+>  drivers/regulator/Kconfig            |   9 +
+>  drivers/regulator/Makefile           |   1 +
+>  drivers/regulator/mt6316-regulator.c | 345 +++++++++++++++++++++++++++
+>  3 files changed, 355 insertions(+)
+>  create mode 100644 drivers/regulator/mt6316-regulator.c
+>
+> diff --git a/drivers/regulator/Kconfig b/drivers/regulator/Kconfig
+> index 6d8988387da4..bca2ebbd89b7 100644
+> --- a/drivers/regulator/Kconfig
+> +++ b/drivers/regulator/Kconfig
+> @@ -864,6 +864,15 @@ config REGULATOR_MT6315
+>           This driver supports the control of different power rails of de=
+vice
+>           through regulator interface.
+>
+> +config REGULATOR_MT6316
+> +       tristate "MT6316 SPMI PMIC regulator driver"
+> +       depends on SPMI || COMPILE_TEST
+> +       help
+> +          Say Y here to enable support for 2+2, 3+1 and 4 phase regulato=
+rs
+> +          found in the MediaTek MT6316 BP, CP, DP, HP, VP and TP SPMI PM=
+ICs.
+> +         This driver supports the control of different power rails of de=
+vice
+> +         through regulator interface.
+> +
+>  config REGULATOR_MT6323
+>         tristate "MediaTek MT6323 PMIC"
+>         depends on MFD_MT6397
+> diff --git a/drivers/regulator/Makefile b/drivers/regulator/Makefile
+> index c0bc7a0f4e67..58643e35d2cc 100644
+> --- a/drivers/regulator/Makefile
+> +++ b/drivers/regulator/Makefile
+> @@ -103,6 +103,7 @@ obj-$(CONFIG_REGULATOR_MP886X) +=3D mp886x.o
+>  obj-$(CONFIG_REGULATOR_MPQ7920) +=3D mpq7920.o
+>  obj-$(CONFIG_REGULATOR_MT6311) +=3D mt6311-regulator.o
+>  obj-$(CONFIG_REGULATOR_MT6315) +=3D mt6315-regulator.o
+> +obj-$(CONFIG_REGULATOR_MT6315)  +=3D mt6316-regulator.o
+>  obj-$(CONFIG_REGULATOR_MT6323) +=3D mt6323-regulator.o
+>  obj-$(CONFIG_REGULATOR_MT6331) +=3D mt6331-regulator.o
+>  obj-$(CONFIG_REGULATOR_MT6332) +=3D mt6332-regulator.o
+> diff --git a/drivers/regulator/mt6316-regulator.c b/drivers/regulator/mt6=
+316-regulator.c
+> new file mode 100644
+> index 000000000000..952852bbe923
+> --- /dev/null
+> +++ b/drivers/regulator/mt6316-regulator.c
+> @@ -0,0 +1,345 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +//
+> +// Copyright (c) 2024 MediaTek Inc.
+> +// Copyright (c) 2025 Collabora Ltd
+> +//                    AngeloGioacchino Del Regno <angelogioacchino.delre=
+gno@collabora.com>
+> +
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/regmap.h>
+> +#include <linux/spmi.h>
+> +
+> +#include <linux/regulator/driver.h>
+> +#include <linux/regulator/machine.h>
+> +#include <linux/regulator/of_regulator.h>
+> +
+> +#define MT6316_BUCK_MODE_AUTO                  0
+> +#define MT6316_BUCK_MODE_FORCE_PWM             1
+> +#define MT6316_BUCK_MODE_LP                    2
+> +
+> +#define MT6316_CHIP_ID                         0x20b
+> +#define MT6316_BUCK_TOP_CON0                   0x1440
+> +#define EN_SET_OFFSET                          0x1
+> +#define EN_CLR_OFFSET                          0x2
+> +
+> +#define MT6316_BUCK_TOP_CON1                   0x1443
+> +
+> +#define MT6316_BUCK_TOP_ELR0                   0x1448
+> +#define MT6316_BUCK_TOP_ELR2                   0x144a
+> +#define MT6316_BUCK_TOP_ELR4                   0x144c
+> +#define MT6316_BUCK_TOP_ELR6                   0x144e
+> +#define MT6316_VSEL_MASK                       GENMASK(8, 0)
+> +
+> +#define MT6316_VBUCK1_DBG                      0x14a8
+> +#define MT6316_VBUCK2_DBG                      0x1528
+> +#define MT6316_VBUCK3_DBG                      0x15a8
+> +#define MT6316_VBUCK4_DBG                      0x1628
+> +#define MT6316_BUCK_QI                         BIT(0)
+> +
+> +#define MT6316_BUCK_TOP_4PHASE_TOP_ANA_CON0    0x1688
+> +#define MT6316_BUCK_TOP_4PHASE_TOP_ELR_0       0x1690
+> +
+> +enum mt6316_type {
+> +       MT6316_TYPE_2PHASE,
+> +       MT6316_TYPE_3PHASE,
+> +       MT6316_TYPE_4PHASE
+> +};
+> +
+> +/**
+> + * struct mt6316_regulator_info - MT6316 regulators information
+> + * @desc: Regulator description structure
+> + * @debug_reg: Debug register for regulator status
+> + * @lp_mode_reg: Low Power mode register (normal/idle)
+> + * @lp_mode_mask: Low Power mode regulator mask
+> + * @modeset_reg: AUTO/PWM mode register
+> + * @modeset_mask: AUTO/PWM regulator mask
+> + */
+> +struct mt6316_regulator_info {
+> +       struct regulator_desc desc;
+> +       u16 debug_reg;
+> +       u16 lp_mode_reg;
+> +       u16 lp_mode_mask;
+> +       u16 modeset_reg;
+> +       u16 modeset_mask;
+> +};
+> +
+> +#define MT6316_BUCK(match, vreg_id, min, max, step, vs_reg)            \
+> +{                                                                      \
+> +       .desc =3D {                                                      =
+ \
+> +               .name =3D match,                                         =
+ \
+> +               .of_match =3D of_match_ptr(match),                       =
+ \
+> +               .ops =3D &mt6316_vreg_setclr_ops,                        =
+ \
+> +               .type =3D REGULATOR_VOLTAGE,                             =
+ \
+> +               .owner =3D THIS_MODULE,                                  =
+ \
+> +               .n_voltages =3D (max - min) / step + 1,                  =
+ \
+> +               .min_uV =3D min,                                         =
+ \
+> +               .uV_step =3D step,                                       =
+ \
+> +               .enable_reg =3D MT6316_BUCK_TOP_CON0,                    =
+ \
+> +               .enable_mask =3D BIT(vreg_id - 1),                       =
+ \
+> +               .vsel_reg =3D vs_reg,                                    =
+ \
+> +               .vsel_mask =3D MT6316_VSEL_MASK,                         =
+ \
+> +               .of_map_mode =3D mt6316_map_mode,                        =
+ \
+> +       },                                                              \
+> +       .lp_mode_reg =3D MT6316_BUCK_TOP_CON1,                           =
+ \
+> +       .lp_mode_mask =3D BIT(vreg_id - 1),                              =
+ \
+> +       .modeset_reg =3D MT6316_BUCK_TOP_4PHASE_TOP_ANA_CON0,            =
+ \
+> +       .modeset_mask =3D BIT(vreg_id - 1),                              =
+ \
+> +       .debug_reg =3D MT6316_VBUCK##vreg_id##_DBG,                      =
+ \
+> +}
+
+[...]
+
+> +
+> +/* MT6316BP/VP - 2+2 phase buck */
+> +static struct mt6316_regulator_info mt6316bv_regulators[] =3D {
+> +       MT6316_BUCK("vbuck12", 1, 0, 1277500, 2500, MT6316_BUCK_TOP_ELR0)=
+,
+> +       MT6316_BUCK("vbuck34", 3, 0, 1277500, 2500, MT6316_BUCK_TOP_ELR4)=
+,
+
+                                    ^
+While this is technically correct as the selector does start from 0,
+I don't think the regulator can actually go down to 0V. In the past
+for the MT6311 / MT6315, MediaTek always added a standard minimum
+voltage in the device tree.
+
+I believe a combination of setting .linear_min_sel and adjusting min_uV
+and n_voltages is the correct solution.
+
+> +};
+> +
+> +/* MT6316CP/HP/KP - 3+1 phase buck */
+> +static struct mt6316_regulator_info mt6316chk_regulators[] =3D {
+> +       MT6316_BUCK("vbuck124", 1, 0, 1277500, 2500, MT6316_BUCK_TOP_ELR0=
+),
+> +       MT6316_BUCK("vbuck3", 3, 0, 1277500, 2500, MT6316_BUCK_TOP_ELR4),
+> +};
+> +
+> +/* MT6316DP/TP - 4 phase buck */
+> +static struct mt6316_regulator_info mt6316dt_regulators[] =3D {
+> +       MT6316_BUCK("vbuck1234", 1, 0, 1277500, 2500, MT6316_BUCK_TOP_ELR=
+0),
+> +};
+> +
+> +static const struct regmap_config mt6316_spmi_regmap_config =3D {
+> +       .reg_bits       =3D 16,
+> +       .val_bits       =3D 8,
+> +       .max_register   =3D 0x1700,
+> +       .fast_io        =3D true,
+> +};
+> +
+> +static int mt6316_regulator_probe(struct spmi_device *sdev)
+> +{
+> +       struct regulator_config config =3D {};
+> +       struct mt6316_regulator_info *info;
+> +       struct regulator_dev *rdev;
+> +       enum mt6316_type type;
+> +       int num_vregs, ret;
+> +       unsigned int i;
+> +       u32 chip_id;
+> +
+> +       config.regmap =3D devm_regmap_init_spmi_ext(sdev, &mt6316_spmi_re=
+gmap_config);
+> +       if (IS_ERR(config.regmap))
+> +               return PTR_ERR(config.regmap);
+> +
+> +       /*
+> +        * The first read is expected to fail: this PMIC needs to be woke=
+n up
+> +        * and that can be done with any activity over the SPMI bus.
+> +        */
+> +       regmap_read(config.regmap, MT6316_CHIP_ID, &chip_id);
+> +
+> +       /* The second read, instead, shall not fail! */
+> +       ret =3D regmap_read(config.regmap, MT6316_CHIP_ID, &chip_id);
+> +       if (ret) {
+> +               dev_err(&sdev->dev, "Cannot read Chip ID!\n");
+> +               return ret;
+> +       }
+> +       dev_dbg(&sdev->dev, "Chip ID: 0x%x\n", chip_id);
+> +
+> +       config.dev =3D &sdev->dev;
+> +
+> +       type =3D (uintptr_t)device_get_match_data(&sdev->dev);
+> +       switch (type) {
+> +       case MT6316_TYPE_2PHASE:
+
+Instead of being tied to the compatible string / PMIC variant,
+I wonder if this is something that can be read back from the
+PMIC. You wouldn't need so many variant compatible strings if
+that's the case.
+
+FWIW we do that for some of the X-Powers AXP PMICs.
 
 
--- 
-Masami Hiramatsu (Google) <mhiramat@kernel.org>
+ChenYu
 
