@@ -4,84 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4971C8300F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jun 2025 18:29:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85C61C83000
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jun 2025 18:29:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Veo/EkQfpGxbM3XVCxagCpuTTV1oNK7Wv3ZngYE5NJo=; b=F8wTHuP9bSiQACXqZzauFU+AaR
-	R/MMFAQdgO50rdxMSmDPY00Ny8gpAZpS2RTWi4+mXSI9AYkEqjJzUXgvXhszZ/+9jtRsE/XfQz5Gn
-	8B+Ur1/sk3FQ5o0sg3JPEAzLVGZ7dYOVPyq6JZWNk9ncSOKhSADJ56pWsAcEzQ6cD8xmqIfp5Jvkv
-	VILn0hLmpadhBCTFpPG2ahpPum2cs3tLgh1UILqYo7BMk4L8niiq9WkX/70BLFRUYgBFbEt6XVblq
-	hSA35fxVMBeYw5T9ZbG+Rnps8Zl77dktw7tw3NGHhWmlHaDDZHg1W/DX6Y/4DGArCBNpah4Q+ceHu
-	ASQbbGog==;
+	bh=jI3TC+ytQK7wb5FzGmyYvvaetqrg8PjBZ5grgtsldCU=; b=agEOpwGPY3NGn9n1mS54/Mt+66
+	CanXSXQxYVNxckzc+kiZhh2XRthKE8cd0SVAA72sFjDKgIE+5Y8R3Ea8NT3LoKZ8xsXHRiQNwSYMf
+	Le+neLJnrnm85BGfVOfzW8MmOiEkXLQ/Va0u2rSzuaR3OthBAOLZnwqpI8i/2AGS/LTXc6dqASYmg
+	6kNetq0OE4ComyIt7MNupxChNuyYsPkFmBZ0ASFahAaHOLjDQlBqWEi2MuCHFJqf3qS0YCU8HZfJq
+	k6vpivaeRqMtnKAIqMyiXgkLTUkVbOckTgQcRcwKNP6OpBo64MkN8p75BJpURGf84wGey0FFhopRf
+	ityJe/vg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUUrp-00000009ZOo-3rnf;
-	Wed, 25 Jun 2025 18:29:05 +0000
-Received: from mgamail.intel.com ([198.175.65.14])
+	id 1uUUru-00000009ZWc-1Ie4;
+	Wed, 25 Jun 2025 18:29:10 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUR62-00000008xzg-2uNB;
-	Wed, 25 Jun 2025 14:27:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1750861651; x=1782397651;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=aiCBfShnv6jIIgQ4bpuIfMp5r40wbfensHpHCEm3pBM=;
-  b=j4MyHNuwMag55iNOJZnf2Z7ZgtaqS5Nl0CvILkeSE+DjmdvFi7CPEaw0
-   55tlA6E25QR3k1zENwgXXO0OsthRt8Lbz2pOiC07po0rAu/xyc7UJl1dx
-   kYCBfAnGCvmjAsKaPAzsGOfk4sFahoZgfX16ODtFyNV8RoKK1QeE0fMan
-   4m/cFGycO3FopN0Oyfch/IR+sKy02crEmf6IonursNEtntk3syes6/wgU
-   JCy/dqaEIBj6fUAURKI9KHpUtIfBWFTxXQA+l2Pjasl60mMtUaSN3+Un1
-   g33p/WiwBneuqjsRHhLngY8EqU2ZA70dKoIMLZQbWO41ZoikE/Sw63gBB
-   g==;
-X-CSE-ConnectionGUID: Gsju0hZZTxmRW5mROlK/qg==
-X-CSE-MsgGUID: kTH6YPhXQD6RsHPVPvj6ew==
-X-IronPort-AV: E=McAfee;i="6800,10657,11475"; a="56920077"
-X-IronPort-AV: E=Sophos;i="6.16,264,1744095600"; 
-   d="scan'208";a="56920077"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
-  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Jun 2025 07:27:25 -0700
-X-CSE-ConnectionGUID: NYVNjaqgRd2C28PhusN2oA==
-X-CSE-MsgGUID: Vm3m4nwNToS9MwdDCSPhkw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,264,1744095600"; 
-   d="scan'208";a="175877583"
-Received: from smile.fi.intel.com ([10.237.72.52])
-  by fmviesa002.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Jun 2025 07:27:21 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.98.2)
-	(envelope-from <andriy.shevchenko@intel.com>)
-	id 1uUR5q-00000009nnt-1JQk;
-	Wed, 25 Jun 2025 17:27:18 +0300
-Date: Wed, 25 Jun 2025 17:27:18 +0300
-From: Andy Shevchenko <andriy.shevchenko@intel.com>
+	id 1uURDH-00000008z0J-3QZO;
+	Wed, 25 Jun 2025 14:35:01 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 74817A52063;
+	Wed, 25 Jun 2025 14:34:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 918EBC4CEEA;
+	Wed, 25 Jun 2025 14:34:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1750862098;
+	bh=z3DlrwGS2dulcUFskpXwOZRGYXJoYMk2ic/qJ7NGQ98=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ZFIqdS12pTHVGBcdnEP8Mhwbq8Vn1QSVptDV8QSj9OzKInmqJJlubSE0Rcic8OqV4
+	 FeQEaSu4ab1LNWXUe9qIiFlo04j9zzeCeUbRb/cK32ZPel6jnJ+gRL6lwXoBcVqJsI
+	 bxxyLcZ91QyiWLVmMUrT4a+7Y0fZW1oP7bgStgZ6pIJqYujkCU+n3LiLV9bIKPKl7G
+	 JhOO1Z//ElDB/3t9iR8B3cgnf6F69y2hIl9fVMflxTpeEx3bNLm4dGpDZlLxUYsaDg
+	 AhQT94SqA19zhZZTVryynJbE+77vBQyjheGKvGaIFhivXut/xhCvtIQYk7MxxcznAV
+	 0qZ4uj9UwOGOQ==
+Date: Wed, 25 Jun 2025 16:34:55 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@kernel.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: jic23@kernel.org, dlechner@baylibre.com, nuno.sa@analog.com,
-	andy@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, matthias.bgg@gmail.com,
-	linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v1 4/5] iio: adc: mt6359: Add support for MediaTek MT6363
- PMIC AUXADC
-Message-ID: <aFwHRigf95hPKTE7@smile.fi.intel.com>
-References: <20250623120028.108809-1-angelogioacchino.delregno@collabora.com>
- <20250623120028.108809-5-angelogioacchino.delregno@collabora.com>
- <aFlk-l5LhgO8dnXK@smile.fi.intel.com>
- <1b173e16-f681-4256-8dd2-92db2e90ca73@collabora.com>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
+	matthias.bgg@gmail.com, john@phrozen.org, linux-pwm@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v1 0/3] pwm-mediatek: Add support for MT6991/MT8196 SoCs
+Message-ID: <z3jombms3o6466wsxx66xkuppyjdzeiwphke343llinhsl3vmj@t35gj3dc2fxm>
+References: <20250623120118.109170-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="p5zmvddaeyo4hoae"
 Content-Disposition: inline
-In-Reply-To: <1b173e16-f681-4256-8dd2-92db2e90ca73@collabora.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+In-Reply-To: <20250623120118.109170-1-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250625_072730_769308_3E01F8EF 
-X-CRM114-Status: GOOD (  16.67  )
+X-CRM114-CacheID: sfid-20250625_073459_919360_3B7DE100 
+X-CRM114-Status: GOOD (  10.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,52 +73,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 25, 2025 at 03:29:47PM +0200, AngeloGioacchino Del Regno wrote:
-> Il 23/06/25 16:30, Andy Shevchenko ha scritto:
-> > On Mon, Jun 23, 2025 at 02:00:27PM +0200, AngeloGioacchino Del Regno wrote:
 
-...
+--p5zmvddaeyo4hoae
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Subject: Re: [PATCH v1 0/3] pwm-mediatek: Add support for MT6991/MT8196 SoCs
+MIME-Version: 1.0
 
-> > > +	if (MTK_AUXADC_HAS_FLAG(cinfo, IS_SPMI)) {
-> > > +		/* If the previous read succeeded, this can't fail */
-> > > +		regmap_read(regmap, reg - 1, &lval);
-> > 
-> > No error check? lval may contain garbage here, right?
-> 
-> No, because if the previous read succeeded, this can't fail, and also cannot ever
-> possibly contain garbage (and if it does, - but again, that can't happen - there is
-> no way to validate that because valid values are [0x00..0xff] anyway).
+Hello,
 
-Never say never. Any regmap_*() call that performs I/O might fail. You can't
-predict with 100% guarantee the HW behaviour in all possible scenarios.
+On Mon, Jun 23, 2025 at 02:01:15PM +0200, AngeloGioacchino Del Regno wrote:
+> This series adds support for the PWM IP, version 3.002, found in the
+> MT6991 Dimensity 9400 Smartphone SoC and in the MT8196 Chromebook SoC.
 
-> > > +		val = (val << 8) | lval;
-> > 
-> > Is it guaranteed that lval is always less than 256 (if unsigned)?
-> 
-> Yes, with SPMI that is guaranteed.
-> 
-> > > +	}
+applied all three patches to
 
-...
+	https://git.kernel.org/pub/scm/linux/kernel/git/ukleinek/linux.git pwm/for-next
 
-> > > +		regmap_update_bits(regmap, cinfo->regs[desc->ext_sel_idx],
-> > > +				   MT6363_EXT_PURES_MASK, ext_sel);
-> > 
-> > No  error check?
-> 
-> No, because if the previous reads and/or writes succeeded, it is impossible for
-> this to fail :-)
+as material for the next merge window.
 
-Ditto.
+Best regards
+Uwe
 
-I.o.w. the failed regmap_*() call can be a signal that something on the
-communication channel with the HW went wrong, Depending on the severity of this
-call the device driver may decide what to do next.
+--p5zmvddaeyo4hoae
+Content-Type: application/pgp-signature; name="signature.asc"
 
--- 
-With Best Regards,
-Andy Shevchenko
+-----BEGIN PGP SIGNATURE-----
 
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmhcCQ0ACgkQj4D7WH0S
+/k797ggAh4/X9IUMj216zP9Qt66t/ivkC1Z+SDL2dpjzRMEwFuAhDo1EsHRRymfS
+L98tEHQ00vOfPPg2qxs8I2zFRKgNieSef2xgEGSt/eGH1KxPxg05pgTUjEV5l88V
+spN1/cKXf7ndw+iHibA4tYXOeciigNN8WrcAont+mk9mvEw0o1Rg7ma4OW26qrCm
+g0CVqVsNvAxoqQ7AJrsXk67N/y5LLdcpwOvfKK/2aEehL2A5Jaz2Txa/RBX2Fv58
+akRrqrLZ3mKDXL3GD/ZOY+Rpr3J4/qwMCn14ZbL4t5/Lu1f2shk+aeOS9KJK/QJc
+rkTCrfOsoNcuAvkNliKqtl/H+g7UJg==
+=Agi6
+-----END PGP SIGNATURE-----
 
+--p5zmvddaeyo4hoae--
 
