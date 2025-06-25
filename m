@@ -4,71 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57F72C7EE33
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6A62C7EE39
 	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jun 2025 10:08:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5NMUpzlAjkVNCDzB2vsmlQzcJw6ZBeudXGSQ7kcKWaE=; b=vaRy7J5g+KMRg5bXDr5nikFlRc
-	kZ94RJsADv9NcnwU/7V6sWfYZBMHjKRTEmjrNd3MvpS7YmMbu9ojhz5hTK2mEunALzZU35OZPTF/z
-	q5Y1hwHrEqC3TnsLhJDoT0SXBtLqEGBb9SSEiBkoW19B9TOAgw/RCCT5pP2T2yCsESzgrxHwGWa2n
-	d5+nyU5Q1DPoNZksuEJ5f1TqclRh/slhgvis9KhQUV1iK7jfLobe8ULk7+UpQ7TSKMUd+yngakyIU
-	hxqh6i3OpQTmikn7rJSznWhea7br4VPZAMgIEvD5sw1Oog14w3vbx/zOiAzJry9kUJAOI7qWLI3n0
-	PGDdf7sA==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=VHG46qePRTbpWA1WuU7Cofgqdo2WqWeWDnrTcNG/Fbc=; b=Xw8wZ0gB0lWD6rbMLWWGjbAPAG
+	yu+8vl8jxrLO+b5xyWSldY8X4GVmFngRKRlEGZZRjYhlCNfMJqZtYR59h7LWnTRcdejGfMtUc92US
+	/cIwpc7AI40d4xrZ+3CVkKhqs82XhS+MWC2KyLXpaxiaUtp86uYkgqeVtRNLl8SnRk+ICUeQBE2bQ
+	oOaZ/WoaKV71Z8WWBx/SylGkwToUQi0gruQjnNxZbIoogSk9k1G+KXS5tmd21MFNYbUWgc/j6UkNQ
+	6Dl0qNNX8FUEhdfU1VCYNphdrKUOM79lwxazD3RaBsZ6ZKNggl4nZWMpqpuJFBEFZCJpINQePJYd3
+	HGYDsy/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUN3k-00000008G5v-0VL3;
-	Wed, 25 Jun 2025 10:08:52 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uUN3i-00000008G41-2lBQ;
+	Wed, 25 Jun 2025 10:08:50 +0000
+Received: from mgamail.intel.com ([198.175.65.15])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uULN5-00000007wHw-0yxE;
-	Wed, 25 Jun 2025 08:20:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1750839641;
-	bh=X7oTNFrJswgIHuNpvVbuXC5hVcIhk6YzrRYWyDXt1A8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=mGBN/kkYxKPsfPV+wFXdq2SphIgBlVWTcC6D7AJkr1jrcYwLwCmKVKxiT01KjqaGK
-	 6pEpbEje9rU2Y0ybrbmIkuZVuyvMIZUlNgvTjgvXN7LgdH22O7GO6pLLJU4lLe+U+x
-	 A7jL5tVuJZ1dAZ5JPxsoGf3P6yolap74oUjuPYbSd4WWF60bcr/uy1yTW4cm1pvtw5
-	 8Ixf4l0SWw1US/srSN3EoE4Tjevca1Mgfhs4N77XXLavkctZ8/OV//1IUDt9Sb5XQC
-	 jHHkoux7D1n49f93d2U6Ngd0z3/m87sXwbx4g9p8JqrGmNHDuJp/iFzO6DctlvQ84b
-	 THjvTrOCv/nkg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3CC9F17E0DD0;
-	Wed, 25 Jun 2025 10:20:40 +0200 (CEST)
-Message-ID: <284a4ee5-806b-45f9-8d57-d02ec291e389@collabora.com>
-Date: Wed, 25 Jun 2025 10:20:39 +0200
+	id 1uULHe-00000007vQE-2Ouf;
+	Wed, 25 Jun 2025 08:15:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1750839307; x=1782375307;
+  h=from:to:cc:subject:date:message-id:mime-version:
+   content-transfer-encoding;
+  bh=VcCasfOKf3wY7lXUeCooCr/f7j0f+z8fz2NB7sEXlwA=;
+  b=MLWLEBRJ/myjFCWlLX9se9DU2PJb8Ke2D5RZXJCv37SHFADBhjvr6pjY
+   ZkEnh4l/1xOwC6FgJCQFzp7yXreQRthMcu08AYcZ/hwUSTiU8Ot8C/qCe
+   Rj3SwI2oTPRCZOMc5gvm1596bvFHPG69Bn2/UEcItcj83D/ZB9xeCGw6b
+   pCuWoa+wSv09yA2qdpVeiumch7rZV3AXdUi907haGLLaQKBlvfBqycRLy
+   ZGuWB7CCbfINqSgM1vnneYFtdpB3tiu3GbUUuGiNBn+p5iJwFCMsnkhFl
+   Pd4BgHF8tzzo+OB3WuyKmMY2LVbJtgGeGTioMhvqYOC8XBmnBluUoNG/G
+   A==;
+X-CSE-ConnectionGUID: vm00gCzqQYWe7anyZCbppQ==
+X-CSE-MsgGUID: fwP8AJ3WQDamSydetTThMw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11474"; a="56775911"
+X-IronPort-AV: E=Sophos;i="6.16,264,1744095600"; 
+   d="scan'208";a="56775911"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Jun 2025 01:15:06 -0700
+X-CSE-ConnectionGUID: SEsMtY16SReC2E4iL3FkOA==
+X-CSE-MsgGUID: 4EhfEAXgQKqA5x5dAH4ATw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,264,1744095600"; 
+   d="scan'208";a="156716161"
+Received: from klitkey1-mobl1.ger.corp.intel.com (HELO kekkonen.fi.intel.com) ([10.245.245.155])
+  by orviesa004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Jun 2025 01:15:04 -0700
+Received: from punajuuri.localdomain (unknown [192.168.240.130])
+	by kekkonen.fi.intel.com (Postfix) with ESMTP id C24FC11F742;
+	Wed, 25 Jun 2025 11:15:01 +0300 (EEST)
+Received: from sailus by punajuuri.localdomain with local (Exim 4.96)
+	(envelope-from <sakari.ailus@linux.intel.com>)
+	id 1uULHZ-009zq9-2U;
+	Wed, 25 Jun 2025 11:15:01 +0300
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6 krs, Bertel Jungin Aukio 5, 02600 Espoo
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: linux-mediatek@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jassi Brar <jassisinghbrar@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH] mailbox: mtk-cmdq: Switch to pm_runtime_put_autosuspend()
+Date: Wed, 25 Jun 2025 11:15:01 +0300
+Message-Id: <20250625081501.2382657-1-sakari.ailus@linux.intel.com>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 09/29] dt-bindings: clock: mediatek: Describe MT8196
- peripheral clock controllers
-To: Krzysztof Kozlowski <krzk@kernel.org>, Laura Nao
- <laura.nao@collabora.com>, mturquette@baylibre.com, sboyd@kernel.org,
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, p.zabel@pengutronix.de, richardcochran@gmail.com
-Cc: guangjie.song@mediatek.com, wenst@chromium.org,
- linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
- kernel@collabora.com
-References: <20250624143220.244549-1-laura.nao@collabora.com>
- <20250624143220.244549-10-laura.nao@collabora.com>
- <7dfba01a-6ede-44c2-87e3-3ecb439b48e3@kernel.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <7dfba01a-6ede-44c2-87e3-3ecb439b48e3@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250625_012043_431253_9D10BFD2 
-X-CRM114-Status: GOOD (  15.48  )
+X-CRM114-CacheID: sfid-20250625_011506_652819_603EEC1A 
+X-CRM114-Status: GOOD (  11.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,54 +91,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 24/06/25 18:02, Krzysztof Kozlowski ha scritto:
-> On 24/06/2025 16:32, Laura Nao wrote:
->> +  '#reset-cells':
->> +    const: 1
->> +    description:
->> +      Reset lines for PEXTP0/1 and UFS blocks.
->> +
->> +  mediatek,hardware-voter:
->> +    $ref: /schemas/types.yaml#/definitions/phandle
->> +    description:
->> +      On the MT8196 SoC, a Hardware Voter (HWV) backed by a fixed-function
->> +      MCU manages clock and power domain control across the AP and other
->> +      remote processors. By aggregating their votes, it ensures clocks are
->> +      safely enabled/disabled and power domains are active before register
->> +      access.
-> 
-> Resource voting is not via any phandle, but either interconnects or
-> required opps for power domain.
+__pm_runtime_put_autosuspend() was meant to be used by callers that needed
+to put the Runtime PM usage_count without marking the device's last busy
+timestamp. It was however seen that the Runtime PM autosuspend related
+functions should include that call. Thus switch the driver to
+use pm_runtime_put_autosuspend().
 
-Sorry, I'm not sure who is actually misunderstanding what, here... let me try to
-explain the situation:
+Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+---
+ drivers/mailbox/mtk-cmdq-mailbox.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-This is effectively used as a syscon - as in, the clock controllers need to perform
-MMIO R/W on both the clock controller itself *and* has to place a vote to the clock
-controller specific HWV register.
-
-This is done for MUX-GATE and GATE clocks, other than for power domains.
-
-Note that the HWV system is inside of the power domains controller, and it's split
-on a per hardware macro-block basis (as per usual MediaTek hardware layout...).
-
-The HWV, therefore, does *not* vote for clock *rates* (so, modeling OPPs would be
-a software quirk, I think?), does *not* manage bandwidth (and interconnect is for
-voting BW only?), and is just a "switch to flip".
-
-Is this happening because the description has to be improved and creating some
-misunderstanding, or is it because we are underestimating and/or ignoring something
-here?
-
-Cheers,
-Angelo
-
-> 
-> I already commented on this, so don't send v3 with the same.
-> 
-> Best regards,
-> Krzysztof
-
-
+diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+index ab4e8d1954a1..532929916e99 100644
+--- a/drivers/mailbox/mtk-cmdq-mailbox.c
++++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+@@ -390,7 +390,7 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
+ 
+ 	task = kzalloc(sizeof(*task), GFP_ATOMIC);
+ 	if (!task) {
+-		__pm_runtime_put_autosuspend(cmdq->mbox.dev);
++		pm_runtime_put_autosuspend(cmdq->mbox.dev);
+ 		return -ENOMEM;
+ 	}
+ 
+@@ -440,7 +440,7 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
+ 	list_move_tail(&task->list_entry, &thread->task_busy_list);
+ 
+ 	pm_runtime_mark_last_busy(cmdq->mbox.dev);
+-	__pm_runtime_put_autosuspend(cmdq->mbox.dev);
++	pm_runtime_put_autosuspend(cmdq->mbox.dev);
+ 
+ 	return 0;
+ }
+@@ -488,7 +488,7 @@ static void cmdq_mbox_shutdown(struct mbox_chan *chan)
+ 	spin_unlock_irqrestore(&thread->chan->lock, flags);
+ 
+ 	pm_runtime_mark_last_busy(cmdq->mbox.dev);
+-	__pm_runtime_put_autosuspend(cmdq->mbox.dev);
++	pm_runtime_put_autosuspend(cmdq->mbox.dev);
+ }
+ 
+ static int cmdq_mbox_flush(struct mbox_chan *chan, unsigned long timeout)
+@@ -528,7 +528,7 @@ static int cmdq_mbox_flush(struct mbox_chan *chan, unsigned long timeout)
+ out:
+ 	spin_unlock_irqrestore(&thread->chan->lock, flags);
+ 	pm_runtime_mark_last_busy(cmdq->mbox.dev);
+-	__pm_runtime_put_autosuspend(cmdq->mbox.dev);
++	pm_runtime_put_autosuspend(cmdq->mbox.dev);
+ 
+ 	return 0;
+ 
+@@ -543,7 +543,7 @@ static int cmdq_mbox_flush(struct mbox_chan *chan, unsigned long timeout)
+ 		return -EFAULT;
+ 	}
+ 	pm_runtime_mark_last_busy(cmdq->mbox.dev);
+-	__pm_runtime_put_autosuspend(cmdq->mbox.dev);
++	pm_runtime_put_autosuspend(cmdq->mbox.dev);
+ 	return 0;
+ }
+ 
+-- 
+2.39.5
 
 
