@@ -4,69 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B995DC7EE2A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jun 2025 21:38:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CAEDC7EE2A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jun 2025 21:38:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oTp0vKqj7VpMXAfHxRYqXVkfyzmgLQ4uxRgPuEKZ2ik=; b=WYBGzcWd3xgOObi2QCvmcppKij
-	3do+WRmnO7do/U2USmyRrXF4+Y4GIRewnmB+bamuf0duEb2qiZAG8vVLavkWE5p4SSwtq3ANObNIg
-	nxpCKp+CSQIc9Vik0PKPtUNz9hq3f4j8n2aLPrZFWC+5/ubbBZy2m34pZSfrObd1UY+760/uRMMar
-	mhs2TlYbr2o++rho83EeMykq0OpWlarJnRr8wtTUfHMX4wAB/oltPRuT6WjT2kN5N7J55VTYkA2ZW
-	wOz0KjlirSsne5N6Y0Pg2MTbw8kIVzvbxv0Rx91CL+GzZ+F09zq0Ojy1BgNLBQguLtkJB2sYZALLk
-	eE+Px27w==;
+	bh=WtFTJfF6gIKQ2nNjQqOnc55REx3wzdOuI73n1KphcxY=; b=e5kAqxNut+gA2K7fTE6C4Gy53V
+	l3XrTaNPH5RxWB7wK9p/MtJFygEI0UG5IzLiWoxBb4Wt0ZC68PPg7o7X8lZRystrANlWFRTEre/PD
+	Xbg+uAfKRhZL8abM/wBFk+f84dVQJmnA3g1wRdfW4LW0zSY0n5cXBWZgqEhYf4K9BxQdB8SkZhfIJ
+	u+57eA2JPiic/jPPmzbew/+ar0vFn34+Fyd0rtAJ4UUigV4vZaMKE2DXZF6rehBFnXDsXb/iifBjH
+	c4SCaeeYYAtqIG8JlMKbW4lckDP9PUNFakOGeDH8ahfTuF09ILGhmlRWZrP8xXlxwIT1mPmn9d+xK
+	nj4+DPSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUXpV-00000009yfs-2XUQ;
-	Wed, 25 Jun 2025 21:38:53 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uUXpa-00000009yjb-0rsO;
+	Wed, 25 Jun 2025 21:38:58 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUVC5-00000009eSi-16wI;
-	Wed, 25 Jun 2025 18:50:03 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1750877396; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=JiSk+zhM7F5ibFdpsLxBXZOw5FFL0tY//URjMrwoUWAq7glbxS7xfKaWw/P7FzPngt1ttrP/xODIuZHGhynCWNh6/uo/Nqnr7+Y+XqhF8eqaEPXQHuKgSqaF1z+oII5asBw/PEfqmIQy+MFikTkl8XrgM+o9BXtq3E0uWJN0jXE=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1750877396; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=oTp0vKqj7VpMXAfHxRYqXVkfyzmgLQ4uxRgPuEKZ2ik=; 
-	b=lagqQquSjRWq+Baquzdtczl4KH08gSFGXjYKK281lnFU2//2NPEHgFY5Yqq+NfJaA2lEBw+jk+hu+7kptZ7lG9oimLsGWNX59hLg8yL9sR+xCwkdRzTvsxUu80g0R8qSt5DftD7OuqxKs/gTz2YFm0kABSMTUWstbCwFSBXgApY=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nfraprado@collabora.com;
-	dmarc=pass header.from=<nfraprado@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1750877396;
-	s=zohomail; d=collabora.com; i=nfraprado@collabora.com;
-	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=oTp0vKqj7VpMXAfHxRYqXVkfyzmgLQ4uxRgPuEKZ2ik=;
-	b=EMlpcbeT0igJJzPZrOc217CB++Rox3jgRaBjALv6UKPus8MBz09Z8RmKf+ceOwzC
-	yokK2o2kkhT2yu2M5ziR5UIB01/5dqHDj5+IrKwFW3s8INUVJMYQj7218knl1s2uqLh
-	3GGryVtWH9dd2Y4mmfsFLuwnEbFw2OfcLYpeuYAo=
-Received: by mx.zohomail.com with SMTPS id 17508773949391017.7029644182626;
-	Wed, 25 Jun 2025 11:49:54 -0700 (PDT)
-Message-ID: <f3135961b2fe2c2b5cb3c29d76eb3d818d7a766a.camel@collabora.com>
-Subject: Re: [PATCH v4 1/1] drm/mediatek: Adjust bandwidth limit for DP
-From: =?ISO-8859-1?Q?N=EDcolas?= "F. R. A. Prado" <nfraprado@collabora.com>
-To: Liankun Yang <liankun.yang@mediatek.com>, chunkuang.hu@kernel.org, 
- p.zabel@pengutronix.de, airlied@gmail.com, simona@ffwll.ch,
- matthias.bgg@gmail.com,  angelogioacchino.delregno@collabora.com,
- mac.shen@mediatek.com,  peng.liu@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Date: Wed, 25 Jun 2025 14:49:53 -0400
-In-Reply-To: <20250625095446.31726-1-liankun.yang@mediatek.com>
-References: <20250625095446.31726-1-liankun.yang@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.46.4-2 
+	id 1uUWUo-00000009ol0-09tn;
+	Wed, 25 Jun 2025 20:13:30 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 3B236A52E4F;
+	Wed, 25 Jun 2025 20:13:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B437DC4CEEA;
+	Wed, 25 Jun 2025 20:13:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1750882404;
+	bh=zPNkKYayJIxWTUaQnmIIX16h79rDQcRVFOg5N+6RMbY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=uUguQlRutLZB2kKQ6PnH4vIkUeBzHe5x+mixpdSni6mitWR5mhUOUL2sySgP72aHB
+	 L4dz6RNCtbVIMRri4m9+NCGom6RdOzRXwCf63a5zZSDItNxHTjpMh7xEPcVKhL8fZ3
+	 4PaHLD9uOm0Jg/tZPKPL//MhqChA8KEeJqQYrZ5jR8/OmDdiz5rw6fP7uE1AVmPb5N
+	 pQaTyh8wDHi8D7IUOPD89lr83ZJxqGmwBW2MHbONymszfIfkE0WR5XCKUZxE8vrlQH
+	 2t/r9Rn2RPa0Rp1T3txmSJ3Oq2cRr/p/cZQTtYg+TnyAukV9AerUSDdLPrXI6wA4nw
+	 pWSsZ7yIOBtlA==
+Date: Wed, 25 Jun 2025 15:13:23 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: gregkh@linuxfoundation.org, linux-i2c@vger.kernel.org,
+	jirislaby@kernel.org, linux-serial@vger.kernel.org,
+	devicetree@vger.kernel.org, conor+dt@kernel.org,
+	qii.wang@mediatek.com, andi.shyti@kernel.org, kernel@collabora.com,
+	linux-arm-kernel@lists.infradead.org, krzk+dt@kernel.org,
+	matthias.bgg@gmail.com, daniel.lezcano@linaro.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	tglx@linutronix.de
+Subject: Re: [PATCH 1/3] dt-bindings: timer: mediatek,timer: Add MediaTek
+ MT8196 compatible
+Message-ID: <175088240336.2135179.14074379043587358741.robh@kernel.org>
+References: <20250611110800.458164-1-angelogioacchino.delregno@collabora.com>
+ <20250611110800.458164-2-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-X-ZohoMailClient: External
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250611110800.458164-2-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250625_115001_376542_E676B36C 
-X-CRM114-Status: GOOD (  17.90  )
+X-CRM114-CacheID: sfid-20250625_131326_145660_E56EA268 
+X-CRM114-Status: UNSURE (   9.07  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,56 +79,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2025-06-25 at 17:54 +0800, Liankun Yang wrote:
-> By adjusting the order of link training and relocating it to HPD,
-> link training can identify the usability of each lane in the current
-> link.
->=20
-> It also supports handling signal instability and weakness due to
-> environmental issues, enabling the acquisition of a stable bandwidth
-> for the current link. Subsequently, DP work can proceed based on
-> the actual maximum bandwidth.
->=20
-> It should training in the hpd event thread.
-> Check the mode with lane count and link rate of training.
->=20
-> If we're eDP and capabilities were already parsed we can skip
-> reading again because eDP panels aren't hotpluggable hence the
-> caps and training information won't ever change in a boot life
->=20
-> Therefore, bridge typec judgment is required for edp training in
-> atomic_enable function.
->=20
-> Signed-off-by: Liankun Yang <liankun.yang@mediatek.com>
+
+On Wed, 11 Jun 2025 13:07:58 +0200, AngeloGioacchino Del Regno wrote:
+> Add a new compatible for the MediaTek MT8196 SoC, fully compatible
+> with MT6765.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
-> Change in V4:
-> - Tested the internal eDP display on MT8195 Tomato and it is fine.
-> Per suggestion from the previous thread:
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20250318140236.=
-13650-2-liankun.yang@mediatek.com/
+>  Documentation/devicetree/bindings/timer/mediatek,timer.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+> 
 
-Hi,
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
-I tested this patch on MT8195 Tomato, on top of next-20250625. Indeed
-the internal eDP display is unaffected by this commit: it still works
-fine.
-
-The external displays though not so much. I tested 3 different
-displays, using 2 different USBC-to-HDMI adapters, and in all cases the
-behavior was the same:
-- Before the patch, the image on the display is completely corrupted
-and unusable. The only discernible element on the display is the mouse
-cursor, which shows perfectly fine. Occasionally no image will be shown
-at all, but most of the times, the behavior is as described.
-- After the patch, nothing ever shows at all on the display. It is
-always black.
-
-So while the external display support on Tomato is basically broken as
-of the latest next, this patch seems to regress the support even
-further.
-
---=20
-Thanks,
-
-N=C3=ADcolas
 
