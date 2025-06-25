@@ -4,84 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D648C7115C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jun 2025 03:59:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDF02C7115C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jun 2025 04:11:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9o0KljyHVk+7sXYfHcEUOJPUxLqwYfEPoUFxmr/QpIE=; b=LKnDZ9jw97FgmMywZ3dHIluvd3
-	8FzjvpnY/vkpeBuy5uCeoUUertTu68Y82lPOCU9DH2Vp4kk6WhGr0aFUt/XbpqFOxhvP2/pwfsE4Z
-	RjAqK3k9hNb7cqVpxNjtK4nto6hPreR0AFMz8q1N14co0ETP350PCMEX3rsd1eGE4qgikqYdHckxt
-	W8bubM+S7KZ4Ps2mCep8T0xbCkwTPsub5+kVJ0eVkkiBxOqrvKwGjaaR3pp5zQH6Ueut1HXpkIqxB
-	26bFBjZcvQ41uiasfS3b0OihGsVUAWOLpyPXQhqr9Y3Pv69tZRahNHpyQBKtpPH2U7/NyQAPlgQ1S
-	6lIC8gOQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=cPmre8+oBAXt4/pXa4kpg6IRg6WUJKjYgdfMZtsh7dY=; b=A0SZ1o8qbSQji/Zcg/+KeZLrxY
+	2Nr/PeFu8Q/AadPZQ3idSebURXNQWZFQm9/8GKW1GWQgZaRKu6OrbRTKMMgcdG7vHhAAvPNa/Ou0J
+	1tHorVluPTVh1IaRY9xPZeTV+2whz6pSP+2jYTMFRpd5n+8o/FUjjOClYMbsbTOIO79uYsKMKeBiL
+	4TCOXC2decBDUoFdkQPiA5miu7GeRjQWUxWXknEzCwFeXwzR2qDw0WD9S3a6Rh9GMssiQJYitZpBe
+	b9id2b6XRzQkEvKfwZJ+v19YABklT8OoN8AG2av6bU6fJu0pudAD20li1tXWTR6edesVhLkOdL9X/
+	M7PLdU2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUHHx-00000007Rcg-3YTx;
-	Wed, 25 Jun 2025 03:59:09 +0000
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+	id 1uUHTZ-00000007SM0-0kqh;
+	Wed, 25 Jun 2025 04:11:09 +0000
+Received: from smtp84.cstnet.cn ([159.226.251.84] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUHFc-00000007RUK-07p1
-	for linux-mediatek@lists.infradead.org;
-	Wed, 25 Jun 2025 03:56:45 +0000
-Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-234c5b57557so67351355ad.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 24 Jun 2025 20:56:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1750823803; x=1751428603; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=9o0KljyHVk+7sXYfHcEUOJPUxLqwYfEPoUFxmr/QpIE=;
-        b=mN0E95gDo7hgGDRquZMz1ec8sVcnd5Oam0LgnzZ2vMRmJALtrrUYB+kMg0a+ET2DUY
-         gDNhIsepGsV+zPhKZdH3usCUJWcXaNHFxCY43aUjhyWlyzu+m7zZWltj3F8P/tt3+OF3
-         L0+Kre7PMDViVD5NCyTzBgFjOvO+64OGXzP/Y=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750823803; x=1751428603;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=9o0KljyHVk+7sXYfHcEUOJPUxLqwYfEPoUFxmr/QpIE=;
-        b=wZaSkQ29tt+y7FE7GEPgVe9oFTdvpQjqdbJcRPqHExKin0tQEAHVuy1nTtd2izu/sw
-         r5QeF+RF2MwIcDgXzl3lh/CQT/DbWzM80UKoFcO6rgNoJJnGgvUWnSRAaDog0CJDS3wC
-         EUTA7FlwPH7GojlLJdfgHpx81TH+1+fNuFno5cuSml5SkiE6Gqa864rDYZknp1xLRdf9
-         5Im47WDlRsmSTEd21u7gy+Hk8wa/FuTDoxc9LeO4CuXpzb9PSO+r2qM7+1pyzZR6VX2L
-         2WS+JZJA2I0ZDAXBqbeANzZYIiNDyubeJC6oOIMKKMteJdaZ4L3VPciMnzLy4CirQWAT
-         RLKg==
-X-Forwarded-Encrypted: i=1; AJvYcCUSgD/yNHgIDjQD6CCXYQCwLMcsb0SxPSbIlrarbw0PoIZhHEtdbF2y+WMuML1DZhJD0UK0ku0q/2I3c402xQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzbp9TAKx6SD1sIIkyCOcnN3tcNQuR1BPmSBQKgtVhvIrAz3FKw
-	62ID+WyX7Fws3u3ulJEJX/HWVJ2PmTKP5DCyQr7kz6XUauv65RRI15ybrZAbkqPcug==
-X-Gm-Gg: ASbGncsc2XVlJPu2MJo1HaNqcnzizlY85AWB5xNMW16rf0sBpboFsDsBSmJxkdz0Nl1
-	9ToYl7ho60/fB4xNJq2jmfXEQOqH4wmJ6qF2krMf/itnGfDe+UloDKa8dthZZYfS+hMcyM3ysE8
-	GksGW9Wk1zxZA5KtakqaoUe5G6OscS+MbbQxHZ8LQ7TcvEgBiTVAUSKL9a5LlPbKv9SGXY0cg/F
-	8mNSkihy0QV0H7iKpXlu4RGofHm6rpQtRZbr+wspSZLChbwT7gDeSQoCt2P0hNXUqVGEIK3JxlJ
-	3E6uvj+s2D/A9g00P9lMQBoPjQCx1jYLTY3pzN2D3+4C5ZWq07YsLynCyuvR9Z6t+A==
-X-Google-Smtp-Source: AGHT+IG+CeEoTYFYhlYaB+yW8OoKCv/2xwINqlcoXHtLLRpl6uhTmRRfAU8psN49GXJz73OFHB26Yw==
-X-Received: by 2002:a17:903:1b2f:b0:234:c5c1:9b7a with SMTP id d9443c01a7336-23823f65e32mr21155175ad.8.1750823802811;
-        Tue, 24 Jun 2025 20:56:42 -0700 (PDT)
-Received: from google.com ([2401:fa00:8f:203:301e:ee9a:3fb5:c761])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-237d875bc8asm118910865ad.258.2025.06.24.20.56.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 24 Jun 2025 20:56:42 -0700 (PDT)
-Date: Wed, 25 Jun 2025 12:56:37 +0900
-From: Sergey Senozhatsky <senozhatsky@chromium.org>
-To: "Masami Hiramatsu (Google)" <mhiramat@kernel.org>
-Cc: Chaotian Jing <chaotian.jing@mediatek.com>, 
-	Ulf Hansson <ulf.hansson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Tomasz Figa <tfiga@chromium.org>, 
-	Sergey Senozhatsky <senozhatsky@chromium.org>, linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] mtk-sd: Prevent memory corruption from DMA map failure
-Message-ID: <kgxqtfdrlc5m5kgprjajt4xtngken2u2locauzhsxm7kcowusa@44ncy4vhy5vx>
-References: <174972756982.3337526.6755001617701603082.stgit@mhiramat.tok.corp.google.com>
+	id 1uUHRF-00000007SC5-30CM;
+	Wed, 25 Jun 2025 04:08:47 +0000
+Received: from localhost (unknown [124.16.138.129])
+	by APP-05 (Coremail) with SMTP id zQCowACHCglJdltottQjCQ--.56888S2;
+	Wed, 25 Jun 2025 12:08:41 +0800 (CST)
+From: Chen Ni <nichen@iscas.ac.cn>
+To: marcel@holtmann.org,
+	luiz.dentz@gmail.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	chris.lu@mediatek.com
+Cc: linux-bluetooth@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Chen Ni <nichen@iscas.ac.cn>
+Subject: [PATCH] Bluetooth: btmtk: Add missing usb_free_urb()
+Date: Wed, 25 Jun 2025 12:07:03 +0800
+Message-Id: <20250625040703.1021358-1-nichen@iscas.ac.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <174972756982.3337526.6755001617701603082.stgit@mhiramat.tok.corp.google.com>
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: zQCowACHCglJdltottQjCQ--.56888S2
+X-Coremail-Antispam: 1UD129KBjvdXoW7JF43GrWxJrWfZr4kXFWkWFg_yoWfXrgE9w
+	10yry7Wr4UG3srA3W2y3yfuFZFkr1rXF97WF9agry3XFyDWr1UC3WjqFyDtasrWr4DKF17
+	Aws5uay8Jr1xJjkaLaAFLSUrUUUUbb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUIcSsGvfJTRUUUbTAFF20E14v26r4j6ryUM7CY07I20VC2zVCF04k26cxKx2IYs7xG
+	6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8w
+	A2z4x0Y4vE2Ix0cI8IcVAFwI0_Xr0_Ar1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Cr0_
+	Gr1UM28EF7xvwVC2z280aVAFwI0_Cr1j6rxdM28EF7xvwVC2z280aVCY1x0267AKxVW0oV
+	Cq3wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0
+	I7IYx2IY67AKxVWUJVWUGwAv7VC2z280aVAFwI0_Gr0_Cr1lOx8S6xCaFVCjc4AY6r1j6r
+	4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwACI402YVCY1x02628v
+	n2kIc2xKxwCY1x0262kKe7AKxVWUtVW8ZwCY02Avz4vE14v_Gryl42xK82IYc2Ij64vIr4
+	1l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1lx2IqxVAqx4xG67AKxVWUJVWUGwC20s026x8GjcxK
+	67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r1q6r43MIIYrxkI7VAKI48JMIIF0xvE2Ix0cI
+	8IcVAFwI0_Jr0_JF4lIxAIcVC0I7IYx2IY6xkF7I0E14v26r1j6r4UMIIF0xvE42xK8VAv
+	wI8IcIk0rVWUJVWUCwCI42IY6I8E87Iv67AKxVWUJVW8JwCI42IY6I8E87Iv6xkF7I0E14
+	v26r4j6r4UJbIYCTnIWIevJa73UjIFyTuYvjfU8oGQDUUUU
+X-Originating-IP: [124.16.138.129]
+X-CM-SenderInfo: xqlfxv3q6l2u1dvotugofq/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250624_205644_158579_AC34F54C 
-X-CRM114-Status: GOOD (  13.94  )
+X-CRM114-CacheID: sfid-20250624_210846_117165_EDF22D99 
+X-CRM114-Status: UNSURE (   8.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,38 +83,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On (25/06/12 20:26), Masami Hiramatsu (Google) wrote:
-[..]
-> +static bool msdc_data_prepared(struct mmc_data *data)
-> +{
-> +	return data->host_cookie & MSDC_PREPARE_FLAG;
-> +}
-> +
->  static void msdc_unprepare_data(struct msdc_host *host, struct mmc_data *data)
->  {
->  	if (data->host_cookie & MSDC_ASYNC_FLAG)
-> @@ -1466,8 +1471,18 @@ static void msdc_ops_request(struct mmc_host *mmc, struct mmc_request *mrq)
->  	WARN_ON(!host->hsq_en && host->mrq);
->  	host->mrq = mrq;
->  
-> -	if (mrq->data)
-> +	if (mrq->data) {
->  		msdc_prepare_data(host, mrq->data);
-> +		if (!msdc_data_prepared(mrq->data)) {
-> +			/*
-> +			 * Failed to prepare DMA area, fail fast before
-> +			 * starting any commands.
-> +			 */
-> +			mrq->cmd->error = -ENOSPC;
-> +			mmc_request_done(mmc_from_priv(host), mrq);
+Add missing usb_free_urb() on failure path after usb_alloc_urb().
 
-Do we end up having a stale/dangling host->mrq pointer here?
+Fixes: ceac1cb0259d ("Bluetooth: btusb: mediatek: add ISO data transmission functions")
+Signed-off-by: Chen Ni <nichen@iscas.ac.cn>
+---
+ drivers/bluetooth/btmtk.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-> +			return;
-> +		}
-> +	}
->  
->  	/* if SBC is required, we have HW option and SW option.
->  	 * if HW option is enabled, and SBC does not have "special" flags,
-> 
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index 4390fd571dbd..a95b1074ad36 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -1043,8 +1043,10 @@ struct urb *alloc_mtk_intr_urb(struct hci_dev *hdev, struct sk_buff *skb,
+ 	if (!urb)
+ 		return ERR_PTR(-ENOMEM);
+ 
+-	if (btmtk_isopkt_pad(hdev, skb))
++	if (btmtk_isopkt_pad(hdev, skb)) {
++		usb_free_urb(urb);
+ 		return ERR_PTR(-EINVAL);
++	}
+ 
+ 	pipe = usb_sndintpipe(btmtk_data->udev,
+ 			      btmtk_data->isopkt_tx_ep->bEndpointAddress);
+-- 
+2.25.1
+
 
