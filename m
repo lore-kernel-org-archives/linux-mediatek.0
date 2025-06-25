@@ -4,63 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEEBEC77B7C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jun 2025 20:37:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B995DC7EE2A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jun 2025 21:38:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Vs/BpRvqo3RSUOfPZTsHUBa9sgSnrh22rc/am0XRDfE=; b=dtPM2Czbz08gchAfxAczvIixsK
-	1pWMvjRpoYHsnWxsDyib5kiHgYHUJRas4FKvAje8YKSy6ahS1yhTOWivF2tO4J0oq7ZyC2dkDI/UJ
-	xoKsd9mJ+1ssiOS/cBSQPpGD/P69B77pgYe8Q1jc9MVDWjWWz7u00ijWmb4g/odbwO9s2vkTfYtr1
-	LvHBeS18g81T71wZBGKVjqiVDifQNNp27/an3KMqp0vIxztjXbLTvtTcGlwngse0Sxh3w4lX9fKuB
-	ca+5K5P5bihMLhl0zk9AUjbu9PP9WymxS5OwHSLnFRY/I9sleUnJrxeGwIb43mrrWvFk86MKI+QUC
-	FtMf3B2A==;
+	bh=oTp0vKqj7VpMXAfHxRYqXVkfyzmgLQ4uxRgPuEKZ2ik=; b=WYBGzcWd3xgOObi2QCvmcppKij
+	3do+WRmnO7do/U2USmyRrXF4+Y4GIRewnmB+bamuf0duEb2qiZAG8vVLavkWE5p4SSwtq3ANObNIg
+	nxpCKp+CSQIc9Vik0PKPtUNz9hq3f4j8n2aLPrZFWC+5/ubbBZy2m34pZSfrObd1UY+760/uRMMar
+	mhs2TlYbr2o++rho83EeMykq0OpWlarJnRr8wtTUfHMX4wAB/oltPRuT6WjT2kN5N7J55VTYkA2ZW
+	wOz0KjlirSsne5N6Y0Pg2MTbw8kIVzvbxv0Rx91CL+GzZ+F09zq0Ojy1BgNLBQguLtkJB2sYZALLk
+	eE+Px27w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUWrq-00000009tD6-0Jgy;
-	Wed, 25 Jun 2025 20:37:14 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uUXpV-00000009yfs-2XUQ;
+	Wed, 25 Jun 2025 21:38:53 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUWUw-00000009oms-0DyL;
-	Wed, 25 Jun 2025 20:13:34 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 06EFB61424;
-	Wed, 25 Jun 2025 20:13:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 973C9C4CEEA;
-	Wed, 25 Jun 2025 20:13:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750882412;
-	bh=vTsBed0/2n4hgLLsMZJbBT7tPunlaecDCOUWKSB9iKc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=nMWvYaVQPQyDYChTBCCtpkl2eJ1Y0z1/MwmTrHjVb4rGwihuNQoL74YUppu391Gxa
-	 NYHED/Whl6jW+MdrNSkfFrN7M+k0swslAPnJzGPQKYsopX3SDhOBqEXJXqOJ4nptuh
-	 GdZu5s/sefBWOZo1oYBlmzB6K1Ye9veNHSIJJzhsXyRG2cGTk45obyrvLL8Vqls+XT
-	 siiXLstk1eP6kYUk9t1EFs+z1yNAkL/6mFncVYrzACwMO+nwqvDhpb9D5eed6O+t0g
-	 3IVPM18af1RzFtGWr3jMUncGIneZ3CRsTVYxGIKZH9/OLppVixB74ZiOjvMCx42NSB
-	 hwt1vQ1+WB79w==
-Date: Wed, 25 Jun 2025 15:13:31 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: krzk+dt@kernel.org, conor+dt@kernel.org, linux-i2c@vger.kernel.org,
-	matthias.bgg@gmail.com, daniel.lezcano@linaro.org,
-	linux-mediatek@lists.infradead.org, qii.wang@mediatek.com,
-	kernel@collabora.com, linux-serial@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	jirislaby@kernel.org, gregkh@linuxfoundation.org,
-	andi.shyti@kernel.org, linux-kernel@vger.kernel.org,
-	tglx@linutronix.de
-Subject: Re: [PATCH 2/3] dt-bindings: serial: mediatek,uart: Add compatible
- for MT8196
-Message-ID: <175088241131.2135556.8017034319394467736.robh@kernel.org>
-References: <20250611110800.458164-1-angelogioacchino.delregno@collabora.com>
- <20250611110800.458164-3-angelogioacchino.delregno@collabora.com>
+	id 1uUVC5-00000009eSi-16wI;
+	Wed, 25 Jun 2025 18:50:03 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1750877396; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=JiSk+zhM7F5ibFdpsLxBXZOw5FFL0tY//URjMrwoUWAq7glbxS7xfKaWw/P7FzPngt1ttrP/xODIuZHGhynCWNh6/uo/Nqnr7+Y+XqhF8eqaEPXQHuKgSqaF1z+oII5asBw/PEfqmIQy+MFikTkl8XrgM+o9BXtq3E0uWJN0jXE=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1750877396; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=oTp0vKqj7VpMXAfHxRYqXVkfyzmgLQ4uxRgPuEKZ2ik=; 
+	b=lagqQquSjRWq+Baquzdtczl4KH08gSFGXjYKK281lnFU2//2NPEHgFY5Yqq+NfJaA2lEBw+jk+hu+7kptZ7lG9oimLsGWNX59hLg8yL9sR+xCwkdRzTvsxUu80g0R8qSt5DftD7OuqxKs/gTz2YFm0kABSMTUWstbCwFSBXgApY=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nfraprado@collabora.com;
+	dmarc=pass header.from=<nfraprado@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1750877396;
+	s=zohomail; d=collabora.com; i=nfraprado@collabora.com;
+	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
+	bh=oTp0vKqj7VpMXAfHxRYqXVkfyzmgLQ4uxRgPuEKZ2ik=;
+	b=EMlpcbeT0igJJzPZrOc217CB++Rox3jgRaBjALv6UKPus8MBz09Z8RmKf+ceOwzC
+	yokK2o2kkhT2yu2M5ziR5UIB01/5dqHDj5+IrKwFW3s8INUVJMYQj7218knl1s2uqLh
+	3GGryVtWH9dd2Y4mmfsFLuwnEbFw2OfcLYpeuYAo=
+Received: by mx.zohomail.com with SMTPS id 17508773949391017.7029644182626;
+	Wed, 25 Jun 2025 11:49:54 -0700 (PDT)
+Message-ID: <f3135961b2fe2c2b5cb3c29d76eb3d818d7a766a.camel@collabora.com>
+Subject: Re: [PATCH v4 1/1] drm/mediatek: Adjust bandwidth limit for DP
+From: =?ISO-8859-1?Q?N=EDcolas?= "F. R. A. Prado" <nfraprado@collabora.com>
+To: Liankun Yang <liankun.yang@mediatek.com>, chunkuang.hu@kernel.org, 
+ p.zabel@pengutronix.de, airlied@gmail.com, simona@ffwll.ch,
+ matthias.bgg@gmail.com,  angelogioacchino.delregno@collabora.com,
+ mac.shen@mediatek.com,  peng.liu@mediatek.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Date: Wed, 25 Jun 2025 14:49:53 -0400
+In-Reply-To: <20250625095446.31726-1-liankun.yang@mediatek.com>
+References: <20250625095446.31726-1-liankun.yang@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.46.4-2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250611110800.458164-3-angelogioacchino.delregno@collabora.com>
+X-ZohoMailClient: External
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250625_115001_376542_E676B36C 
+X-CRM114-Status: GOOD (  17.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,17 +81,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Wed, 11 Jun 2025 13:07:59 +0200, AngeloGioacchino Del Regno wrote:
-> Add a compatible string for the MediaTek MT8196 Chromebook SoC,
-> which UART IPs are fully compatible with MT6577.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+On Wed, 2025-06-25 at 17:54 +0800, Liankun Yang wrote:
+> By adjusting the order of link training and relocating it to HPD,
+> link training can identify the usability of each lane in the current
+> link.
+>=20
+> It also supports handling signal instability and weakness due to
+> environmental issues, enabling the acquisition of a stable bandwidth
+> for the current link. Subsequently, DP work can proceed based on
+> the actual maximum bandwidth.
+>=20
+> It should training in the hpd event thread.
+> Check the mode with lane count and link rate of training.
+>=20
+> If we're eDP and capabilities were already parsed we can skip
+> reading again because eDP panels aren't hotpluggable hence the
+> caps and training information won't ever change in a boot life
+>=20
+> Therefore, bridge typec judgment is required for edp training in
+> atomic_enable function.
+>=20
+> Signed-off-by: Liankun Yang <liankun.yang@mediatek.com>
 > ---
->  Documentation/devicetree/bindings/serial/mediatek,uart.yaml | 1 +
->  1 file changed, 1 insertion(+)
-> 
+> Change in V4:
+> - Tested the internal eDP display on MT8195 Tomato and it is fine.
+> Per suggestion from the previous thread:
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20250318140236.=
+13650-2-liankun.yang@mediatek.com/
 
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
+Hi,
 
+I tested this patch on MT8195 Tomato, on top of next-20250625. Indeed
+the internal eDP display is unaffected by this commit: it still works
+fine.
+
+The external displays though not so much. I tested 3 different
+displays, using 2 different USBC-to-HDMI adapters, and in all cases the
+behavior was the same:
+- Before the patch, the image on the display is completely corrupted
+and unusable. The only discernible element on the display is the mouse
+cursor, which shows perfectly fine. Occasionally no image will be shown
+at all, but most of the times, the behavior is as described.
+- After the patch, nothing ever shows at all on the display. It is
+always black.
+
+So while the external display support on Tomato is basically broken as
+of the latest next, this patch seems to regress the support even
+further.
+
+--=20
+Thanks,
+
+N=C3=ADcolas
 
