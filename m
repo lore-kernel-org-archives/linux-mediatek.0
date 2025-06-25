@@ -4,62 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24DCFC7EE2A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jun 2025 17:41:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4971C8300F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jun 2025 18:29:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SuJveAC2vB2S8WmBVDeBuIY2xXf46zvkMnrwsVP1Fok=; b=pwAJaTbTkps2sv
-	Bhs499O5Bt1DgkMi4gnT3szc+8Jdiwzoh0YxPHGStzflRkUCyMD+z+PEac26h2QriVxpaW9F8nBQp
-	sb9uSWto2IIcm0c5m+wbJVaOVON3LIYUmMbhFuNKOWzf+TqIU/y98fWxGWAt5HQ3uHWCR4OW60rZJ
-	IjQ5AS/McwcKIUtY5dnRBl/J54sgia2XQzkhSH3waFCXYkRYNz55FE7Cg4h9/3TCDuB4iwJkBH9pv
-	rSXLklk1dMYz4T79GUxx8eMm/4trHvL/s0ECQtVPrLe7m3XWVUaGHRx4lA6iWF1G6gdt5sNUqYRFE
-	dtohbrM8vROhyqI4Nxkw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Veo/EkQfpGxbM3XVCxagCpuTTV1oNK7Wv3ZngYE5NJo=; b=F8wTHuP9bSiQACXqZzauFU+AaR
+	R/MMFAQdgO50rdxMSmDPY00Ny8gpAZpS2RTWi4+mXSI9AYkEqjJzUXgvXhszZ/+9jtRsE/XfQz5Gn
+	8B+Ur1/sk3FQ5o0sg3JPEAzLVGZ7dYOVPyq6JZWNk9ncSOKhSADJ56pWsAcEzQ6cD8xmqIfp5Jvkv
+	VILn0hLmpadhBCTFpPG2ahpPum2cs3tLgh1UILqYo7BMk4L8niiq9WkX/70BLFRUYgBFbEt6XVblq
+	hSA35fxVMBeYw5T9ZbG+Rnps8Zl77dktw7tw3NGHhWmlHaDDZHg1W/DX6Y/4DGArCBNpah4Q+ceHu
+	ASQbbGog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUU7a-00000009VUi-0vZu;
-	Wed, 25 Jun 2025 17:41:18 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uUUrp-00000009ZOo-3rnf;
+	Wed, 25 Jun 2025 18:29:05 +0000
+Received: from mgamail.intel.com ([198.175.65.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUQeh-00000008spn-1WnN;
-	Wed, 25 Jun 2025 13:59:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1750859953;
-	bh=z6KwqZF+sEV50fj8SbrBHrXmDWlvuqDf00T6QA4XK3A=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=REm88+4+zz3+IyPKjLA0OJL6d8PS+BNPUGGHAhKYRDmp1waQFubcjN8ieSfLcGiW4
-	 ErR0V2g+nDUxOyyOQ/uvZDgR5GkAgnI7V7TL7yDIhUgi15zuQOHeolcAKs3R/o9Dk6
-	 +63M2CXDKny0mbzuZ9Yn0a/7i+2cr1FhnNaLh/Adk9rBv1NPpw4zjY1/oYt1OJZmQD
-	 TKAssXn0AQNv/jISsP3zXqdM1lG1qF5wZf1mrF8PDnUlL1pMIv08MBE5pJyoxqDrDV
-	 dTfk+Lf0rv+sY8lHhFBHDSD2TnhzUKDEcM43gzAMHee896E82TiEqzWFbcxPqrro/q
-	 k1HdKQnp0hR9g==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8EF6E17E090E;
-	Wed, 25 Jun 2025 15:59:12 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Jason-JH Lin <jason-jh.lin@mediatek.com>
-In-Reply-To: <20250624103928.408194-1-jason-jh.lin@mediatek.com>
-References: <20250624103928.408194-1-jason-jh.lin@mediatek.com>
-Subject: Re: [PATCH v2] soc: mediatek: mtk-mutex: Fix confusing usage of
- MUTEX_MOD2
-Message-Id: <175085995249.270142.13954093211913290780.b4-ty@collabora.com>
-Date: Wed, 25 Jun 2025 15:59:12 +0200
+	id 1uUR62-00000008xzg-2uNB;
+	Wed, 25 Jun 2025 14:27:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1750861651; x=1782397651;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=aiCBfShnv6jIIgQ4bpuIfMp5r40wbfensHpHCEm3pBM=;
+  b=j4MyHNuwMag55iNOJZnf2Z7ZgtaqS5Nl0CvILkeSE+DjmdvFi7CPEaw0
+   55tlA6E25QR3k1zENwgXXO0OsthRt8Lbz2pOiC07po0rAu/xyc7UJl1dx
+   kYCBfAnGCvmjAsKaPAzsGOfk4sFahoZgfX16ODtFyNV8RoKK1QeE0fMan
+   4m/cFGycO3FopN0Oyfch/IR+sKy02crEmf6IonursNEtntk3syes6/wgU
+   JCy/dqaEIBj6fUAURKI9KHpUtIfBWFTxXQA+l2Pjasl60mMtUaSN3+Un1
+   g33p/WiwBneuqjsRHhLngY8EqU2ZA70dKoIMLZQbWO41ZoikE/Sw63gBB
+   g==;
+X-CSE-ConnectionGUID: Gsju0hZZTxmRW5mROlK/qg==
+X-CSE-MsgGUID: kTH6YPhXQD6RsHPVPvj6ew==
+X-IronPort-AV: E=McAfee;i="6800,10657,11475"; a="56920077"
+X-IronPort-AV: E=Sophos;i="6.16,264,1744095600"; 
+   d="scan'208";a="56920077"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Jun 2025 07:27:25 -0700
+X-CSE-ConnectionGUID: NYVNjaqgRd2C28PhusN2oA==
+X-CSE-MsgGUID: Vm3m4nwNToS9MwdDCSPhkw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,264,1744095600"; 
+   d="scan'208";a="175877583"
+Received: from smile.fi.intel.com ([10.237.72.52])
+  by fmviesa002.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Jun 2025 07:27:21 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.98.2)
+	(envelope-from <andriy.shevchenko@intel.com>)
+	id 1uUR5q-00000009nnt-1JQk;
+	Wed, 25 Jun 2025 17:27:18 +0300
+Date: Wed, 25 Jun 2025 17:27:18 +0300
+From: Andy Shevchenko <andriy.shevchenko@intel.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: jic23@kernel.org, dlechner@baylibre.com, nuno.sa@analog.com,
+	andy@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
+	conor+dt@kernel.org, matthias.bgg@gmail.com,
+	linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v1 4/5] iio: adc: mt6359: Add support for MediaTek MT6363
+ PMIC AUXADC
+Message-ID: <aFwHRigf95hPKTE7@smile.fi.intel.com>
+References: <20250623120028.108809-1-angelogioacchino.delregno@collabora.com>
+ <20250623120028.108809-5-angelogioacchino.delregno@collabora.com>
+ <aFlk-l5LhgO8dnXK@smile.fi.intel.com>
+ <1b173e16-f681-4256-8dd2-92db2e90ca73@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.14.2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1b173e16-f681-4256-8dd2-92db2e90ca73@collabora.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250625_065915_578397_83F91646 
-X-CRM114-Status: UNSURE (   9.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250625_072730_769308_3E01F8EF 
+X-CRM114-Status: GOOD (  16.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,30 +93,55 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Xiandong Wang <xiandong.wang@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Zhenxing Qin <zhenxing.qin@mediatek.com>, linux-kernel@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Paul-PL Chen <paul-pl.chen@mediatek.com>, Xavier Chang <xavier.chang@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Yongqiang Niu <yongqiang.niu@mediatek.com>, Sirius Wang <sirius.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Jarried Lin <jarried.lin@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 24 Jun 2025 18:39:03 +0800, Jason-JH Lin wrote:
-> The usage of MUTEX_MOD1 and MUTEX_MOD2 for calculating mod settings
-> over 32 has been confusing. To improve consistency and clarity, these
-> defines need to fit into the same MUTEX_MOD define as possible.
+On Wed, Jun 25, 2025 at 03:29:47PM +0200, AngeloGioacchino Del Regno wrote:
+> Il 23/06/25 16:30, Andy Shevchenko ha scritto:
+> > On Mon, Jun 23, 2025 at 02:00:27PM +0200, AngeloGioacchino Del Regno wrote:
+
+...
+
+> > > +	if (MTK_AUXADC_HAS_FLAG(cinfo, IS_SPMI)) {
+> > > +		/* If the previous read succeeded, this can't fail */
+> > > +		regmap_read(regmap, reg - 1, &lval);
+> > 
+> > No error check? lval may contain garbage here, right?
 > 
-> However, MUTEX_MOD1 cannot be directly used for all SoCs because,
-> for example, the mod1 register (0x34) of MT2712 is not adjacent to
-> its mod0 register (0x2c). To address this, a `mutex_mod1_reg` field
-> is introduced in the mutex driver data structure. This allows all
-> SoCs to use a unified MUTEX_MOD to determine their register offsets.
+> No, because if the previous read succeeded, this can't fail, and also cannot ever
+> possibly contain garbage (and if it does, - but again, that can't happen - there is
+> no way to validate that because valid values are [0x00..0xff] anyway).
+
+Never say never. Any regmap_*() call that performs I/O might fail. You can't
+predict with 100% guarantee the HW behaviour in all possible scenarios.
+
+> > > +		val = (val << 8) | lval;
+> > 
+> > Is it guaranteed that lval is always less than 256 (if unsigned)?
 > 
-> [...]
+> Yes, with SPMI that is guaranteed.
+> 
+> > > +	}
 
-Applied to v6.16-next/soc, thanks!
+...
 
-[1/1] soc: mediatek: mtk-mutex: Fix confusing usage of MUTEX_MOD2
-      commit: 331db44e70dacfb6bf1e17d92fae7b1c9517ca6c
+> > > +		regmap_update_bits(regmap, cinfo->regs[desc->ext_sel_idx],
+> > > +				   MT6363_EXT_PURES_MASK, ext_sel);
+> > 
+> > No  error check?
+> 
+> No, because if the previous reads and/or writes succeeded, it is impossible for
+> this to fail :-)
 
-Cheers,
-Angelo
+Ditto.
+
+I.o.w. the failed regmap_*() call can be a signal that something on the
+communication channel with the HW went wrong, Depending on the severity of this
+call the device driver may decide what to do next.
+
+-- 
+With Best Regards,
+Andy Shevchenko
 
 
 
