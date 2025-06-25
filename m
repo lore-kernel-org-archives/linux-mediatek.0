@@ -4,109 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B268DC77B7C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jun 2025 14:26:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D39EC77B7C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jun 2025 14:33:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IgTZ8Doaenns0kp6CShEz6lSSfLEv08t3KTz58dMq24=; b=UvyypKx7B9G/D8ffGomBrHmfri
-	06vprQ66AVCEtdEuEu/kYgfGiEb7GGfUVgwKZAFJNiyHCo9ZdKcyts1SBEd4uffefkpaSfeXWz1aT
-	CuhxwNUp45chfmSvCvbedGe5+9ek+M0FveQ2PuwZ1pXOMrxSZj91qSwuzhMfffbo3mV6UIY1GrF4d
-	hNJDTZ6P9vghyD3jNgP7iUbGiAvy8vbyAEl0+QdDbSdwWJNahO/MGlyJF1lEZurARn8aPfAqsr2j5
-	/aNj2RjtKrsK5N7WwoV5chQaUp8tA1JOltyBOvtoWDwOvCQx+aKtrhNj8/qrpYKNlOVuVqlWeinjm
-	ktR9Zofw==;
+	bh=KQ5fOSvzxaL+bGOnzMkvb9uvp9/gX29vSEKbsoQM5Ro=; b=cdqF8Owh2pW5RRrOTGoGblendp
+	DJ0HO8hA4O1KMvsEhBIfJX/WL4PgTjx2nIb++0H6f4fQIIx0mxWzrL9Yh+/D6kaY3XTM1PnO47BmZ
+	xWYnq0Dsg4vje8BSlA13SlSersTxbV9GDabMNIo6oS5B9eqP3hqkH4ERFHIMOgzRfdJ1TJaTB+PaY
+	kUS2UDZ6OV1eE+cXOMZeSxNsuKLzAdYOYp//t9pMDgrTMeAvx3P2j2mu5A/dmJFvMmZTdDKpUCOTL
+	7GaKZgD5fXfT57CRAAPRdrW6dZrzzvzWwIUVHKb6HN2JaYyhCJUkYKiABjMiIxJKiOlX0csMEyKDP
+	6TiD3aXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUR5A-00000008xo0-3nQX;
-	Wed, 25 Jun 2025 14:26:36 +0000
+	id 1uURBz-00000008yin-0wAM;
+	Wed, 25 Jun 2025 14:33:39 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUNrz-00000008P0r-0VYD;
-	Wed, 25 Jun 2025 11:00:47 +0000
+	id 1uUNwy-00000008Pj1-1wdV;
+	Wed, 25 Jun 2025 11:05:56 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:Message-ID:
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
 	Sender:Reply-To:Content-ID:Content-Description;
-	bh=IgTZ8Doaenns0kp6CShEz6lSSfLEv08t3KTz58dMq24=; b=NSid9maMn5AqRTlDqW9pxPxKk6
-	gfT+97LocowRS8CfXDY59zh2YII+1OQYHVPZJO2COhAVk+ClGJqUyck5fOKE0B56NNFeamDKYN12v
-	swRW8361917GVs8C+LX3ZTbLopW5PhSVbU5Sa0DWYa13Cu+fScjYuWbjN8RTxBKhBuot+0uarpbhE
-	eix8TZ9T0/h+CO1dThql9i9dShqrP1dwCv9vpSl3eg9OlpEN5XSPT3iEQxnMHjTsarN0LtxFhlkV4
-	eSFNtclRFislotWMd8oEk3O9YBb0f9z3Gj4ZeFJ42NYjwN1JpSYIsjUFUmsvVdW9dRJy1HZOLMDRp
-	jRlnFlsQ==;
-Received: from nbd.name ([46.4.11.11])
+	bh=KQ5fOSvzxaL+bGOnzMkvb9uvp9/gX29vSEKbsoQM5Ro=; b=f2yt0AcZID1Y6SlYqcvEEgM+v0
+	dDy62lPhnrfU6m74rQltkPXNMqy1ZhYkcYtHVx1TD+YP3UIpad4XLlBtxCzlZ1wBwhwwcs6zmCi/R
+	R0GMQWVmYNspz9YQJcn5ALErghdf0knOG+gCkvZqsx4QkAWpFDfvO46OWWwVSTvJ92IGzXD50rhMx
+	2Ylc+m1yFQhX1B+NKEKjWbkHeJn8RKdvGaY2SdgITNW9AUTtgj74/lw57iAKF5OpXnfrUKDWpswoy
+	G8AOOHtaFbUicvBW4z377YkTMbTJKUfK+h6N5aeRcg/O0sNA38LbT5PC5FH65fjPC1CJyIieMGpKI
+	j2kbukew==;
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUNrw-00000005oES-1zhM;
-	Wed, 25 Jun 2025 11:00:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:References:
-	Cc:To:From:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
-	List-Post:List-Owner:List-Archive;
-	bh=IgTZ8Doaenns0kp6CShEz6lSSfLEv08t3KTz58dMq24=; b=EMJQkoC5JNoF48oFw9eQq064dB
-	qqtHg0ny2kZgJMYBU5xwAkh8CAez0GyaiTNIIGwfHB+AfC3atp8/vIW2dxVD467ydq0HJfjD1Du61
-	SfD8/LU5m1GWYmTZiG4G5MVN+bf3pMXbG6FJwJFz7aS6eUyONmbSlpDmepBfYHMjKKmM=;
-Received: from p54ae9243.dip0.t-ipconnect.de ([84.174.146.67] helo=nf.local)
-	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-	(Exim 4.96)
-	(envelope-from <nbd@nbd.name>)
-	id 1uUNrX-003V5L-2c;
-	Wed, 25 Jun 2025 13:00:19 +0200
-Message-ID: <3903ee21-c87d-4a2c-b688-d64a5796b6c0@nbd.name>
-Date: Wed, 25 Jun 2025 13:00:18 +0200
+	id 1uUNwv-00000005oID-2KrI;
+	Wed, 25 Jun 2025 11:05:55 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 2F042A522D2;
+	Wed, 25 Jun 2025 11:05:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C8E92C4CEEA;
+	Wed, 25 Jun 2025 11:05:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1750849551;
+	bh=4lPd6KAvzXLpR40aJR9oTpfeEv7nnPZ/tTvk3e0XF4M=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=tulmo0CJdcLK2dbqrKEF7umDt2un0BQ5K2ElGgLeR6Hc7GH9nI2x5boFteE3GRRb7
+	 rDUBDDQnyglthoIHmG3QAESsvF9sROfEAA5ssM4NRAKUQtfJIDJ/XahkqkNu0dmuMR
+	 WLcffsAoUvm7a+floCkuu2aDhxSHhLIvL9w8Ng7yeZvsFKlT8sKHI7Kcqs65qbHIQJ
+	 +1ZYLSc676lj+IqY7w0OeNG7paY4Pa7GBQjwJqrIhMBCTbdmVlH0Sn0uJgVYh5HMAi
+	 Sf63AA98YQcmTPw5Snf/6SrQ/3w434pcaaVKsTOubklkd5o/53lpUaAVDHDIQzwSTD
+	 7ruDKt5dHClrg==
+Message-ID: <29eeae4f-59ed-4781-88b1-4fd76714ecb6@kernel.org>
+Date: Wed, 25 Jun 2025 13:05:45 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v10 RESEND] wifi: mt76: mt7915: add wds support when wed
- is enabled
-From: Felix Fietkau <nbd@nbd.name>
-To: Shengyu Qu <wiagn233@outlook.com>, pkshih@realtek.com,
- lorenzo@kernel.org, ryder.lee@mediatek.com, shayne.chen@mediatek.com,
- sean.wang@mediatek.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, johannes.berg@intel.com,
- miriam.rachel.korenblit@intel.com, christophe.jaillet@wanadoo.fr,
- greearb@candelatech.com, howard-yh.hsu@mediatek.com,
- StanleyYP.Wang@mediatek.com, deren.wu@mediatek.com,
- chui-hao.chiu@mediatek.com, quic_adisi@quicinc.com, gustavoars@kernel.org,
- razvan.grigore@vampirebyte.ro, linux-wireless@vger.kernel.org,
+Subject: Re: [PATCH v2 09/29] dt-bindings: clock: mediatek: Describe MT8196
+ peripheral clock controllers
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Laura Nao <laura.nao@collabora.com>, mturquette@baylibre.com,
+ sboyd@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, p.zabel@pengutronix.de, richardcochran@gmail.com
+Cc: guangjie.song@mediatek.com, wenst@chromium.org,
+ linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Cc: Sujuan Chen <sujuan.chen@mediatek.com>, Bo Jiao <bo.jiao@mediatek.com>
-References: <OSZPR01MB84342A0E21AAD111ED7AF6B198B82@OSZPR01MB8434.jpnprd01.prod.outlook.com>
- <TY4PR01MB1443294C4D36DF73852B4E79B9878A@TY4PR01MB14432.jpnprd01.prod.outlook.com>
- <26e6c7f7-a35f-4ebb-a55b-ade2ac7c20bb@nbd.name>
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+ kernel@collabora.com
+References: <20250624143220.244549-1-laura.nao@collabora.com>
+ <20250624143220.244549-10-laura.nao@collabora.com>
+ <7dfba01a-6ede-44c2-87e3-3ecb439b48e3@kernel.org>
+ <284a4ee5-806b-45f9-8d57-d02ec291e389@collabora.com>
+ <0870a2ba-936b-4eb2-a570-f2c9dea471b8@kernel.org>
+ <9fc32523-5009-4f48-8d82-6c3fd285801d@collabora.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
-Autocrypt: addr=nbd@nbd.name; keydata=
- xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
- ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
- Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
- AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
- vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
- wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
- TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
- l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
- dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
- HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
- VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
- CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
- VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
- Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
- DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
- wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
- f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
- aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
- FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
- TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
- GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
- cL98efvrjdstUfTCP2pfetyN
-In-Reply-To: <26e6c7f7-a35f-4ebb-a55b-ade2ac7c20bb@nbd.name>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <9fc32523-5009-4f48-8d82-6c3fd285801d@collabora.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250625_120044_703323_6588A49E 
-X-CRM114-Status: GOOD (  27.76  )
+X-CRM114-CacheID: sfid-20250625_120554_025986_526B95BE 
+X-CRM114-Status: GOOD (  25.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,441 +141,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 25.06.25 12:18, Felix Fietkau wrote:
-> On 24.06.25 16:11, Shengyu Qu wrote:
->> Hi Felix,
->> 
->> Please, tell me if this patch needs any polishing. I really don't know
->> why this patch still not get merged after such a long time(and 2x
->> resend), especially it already got a Reviewed-by and is a bugfix.
+On 25/06/2025 11:45, AngeloGioacchino Del Regno wrote:
+> Il 25/06/25 10:57, Krzysztof Kozlowski ha scritto:
+>> On 25/06/2025 10:20, AngeloGioacchino Del Regno wrote:
+>>> Il 24/06/25 18:02, Krzysztof Kozlowski ha scritto:
+>>>> On 24/06/2025 16:32, Laura Nao wrote:
+>>>>> +  '#reset-cells':
+>>>>> +    const: 1
+>>>>> +    description:
+>>>>> +      Reset lines for PEXTP0/1 and UFS blocks.
+>>>>> +
+>>>>> +  mediatek,hardware-voter:
+>>>>> +    $ref: /schemas/types.yaml#/definitions/phandle
+>>>>> +    description:
+>>>>> +      On the MT8196 SoC, a Hardware Voter (HWV) backed by a fixed-function
+>>>>> +      MCU manages clock and power domain control across the AP and other
+>>>>> +      remote processors. By aggregating their votes, it ensures clocks are
+>>>>> +      safely enabled/disabled and power domains are active before register
+>>>>> +      access.
+>>>>
+>>>> Resource voting is not via any phandle, but either interconnects or
+>>>> required opps for power domain.
+>>>
+>>> Sorry, I'm not sure who is actually misunderstanding what, here... let me try to
+>>> explain the situation:
+>>>
+>>> This is effectively used as a syscon - as in, the clock controllers need to perform
+>>> MMIO R/W on both the clock controller itself *and* has to place a vote to the clock
+>>> controller specific HWV register.
+>>
+>> syscon is not the interface to place a vote for clocks. "clocks"
+>> property is.
+>>
+>>>
+>>> This is done for MUX-GATE and GATE clocks, other than for power domains.
+>>>
+>>> Note that the HWV system is inside of the power domains controller, and it's split
+>>> on a per hardware macro-block basis (as per usual MediaTek hardware layout...).
+>>>
+>>> The HWV, therefore, does *not* vote for clock *rates* (so, modeling OPPs would be
+>>> a software quirk, I think?), does *not* manage bandwidth (and interconnect is for
+>>> voting BW only?), and is just a "switch to flip".
+>>
+>> That's still clocks. Gate is a clock.
+>>
+>>>
+>>> Is this happening because the description has to be improved and creating some
+>>> misunderstanding, or is it because we are underestimating and/or ignoring something
+>>> here?
+>>>
+>>
+>> Other vendors, at least qcom, represent it properly - clocks. Sometimes
+>> they mix up and represent it as power domains, but that's because
+>> downstream is a mess and because we actually (at upstream) don't really
+>> know what is inside there - is it a clock or power domain.
+>>
 > 
-> Hi Shengyu,
+> ....but the hardware voter cannot be represented as a clock, because you use it
+> for clocks *or* power domains (but at the same time, and of course in different
+> drivers, and in different *intertwined* registers).
 > 
-> sorry it took such a long time for me to take a look at this patch.
-> I don't see how it can even work properly in its current form, because
-> of at least one bug:
+> So the hardware voter itself (and/or bits inside of its registers) cannot be
+> represented as a clock :\
 > 
-> When switching from non-wds to wds mode, the code calls
-> mt7915_mac_sta_add in order to create the new sta. However, after
-> changes that I made a while back, this function does not actually upload
-> the station to the MCU anymore, since it is called on the NOTEXIST->NONE
-> transition before assoc. Without corresponding ASSOC/AUTHORIZE events
-> (handled by mt7915_mac_sta_event), the firmware doesn't get any data for
-> the new wcid.
-> 
-> That said, I finally got around to starting to rework your patch myself.
-> I will let you know when I have something ready for testing, hopefully
-> later today.
+> In the context of clocks, it's used for clocks, (and not touching power domains at
+> all), but in the context of power domains it's used for power domains (and not
+> touching clocks at all).
 
-Here's my first draft:
+I don't understand this. Earlier you mentioned "MUX-GATE and GATE
+clocks", so these are clocks, right? How these clocks are used in other
+places as power domains? If they are, this either has to be fixed or
+apparently this is a power domain and use it as power domain also here.
 
----
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 14927a92f9d1..f1d1b0ebd074 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -28,6 +28,9 @@
-  
-  #define MT76_TOKEN_FREE_THR	64
-  
-+#define MT76_WED_WDS_MIN    256
-+#define MT76_WED_WDS_MAX    272
-+
-  #define MT_QFLAG_WED_RING	GENMASK(1, 0)
-  #define MT_QFLAG_WED_TYPE	GENMASK(4, 2)
-  #define MT_QFLAG_WED		BIT(5)
-@@ -1181,6 +1184,7 @@ void mt76_wed_dma_reset(struct mt76_dev *dev);
-  int mt76_wed_net_setup_tc(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
-  			  struct net_device *netdev, enum tc_setup_type type,
-  			  void *type_data);
-+
-  #ifdef CONFIG_NET_MEDIATEK_SOC_WED
-  u32 mt76_wed_init_rx_buf(struct mtk_wed_device *wed, int size);
-  int mt76_wed_offload_enable(struct mtk_wed_device *wed);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-index b287b7d9394e..ec2287459587 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-@@ -1385,7 +1385,7 @@ static ssize_t mt7915_sta_fixed_rate_set(struct file *file,
-  
-  out:
-  	vif = container_of((void *)msta->vif, struct ieee80211_vif, drv_priv);
--	ret = mt7915_mcu_set_fixed_rate_ctrl(dev, vif, sta, &phy, field);
-+	ret = mt7915_mcu_set_fixed_rate_ctrl(dev, vif, sta, &msta->wcid, &phy, field);
-  	if (ret)
-  		return -EFAULT;
-  
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-index 9400e4af2a04..e3e65848a17f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-@@ -1991,7 +1991,7 @@ void mt7915_mac_sta_rc_work(struct work_struct *work)
-  		if (changed & (IEEE80211_RC_SUPP_RATES_CHANGED |
-  			       IEEE80211_RC_NSS_CHANGED |
-  			       IEEE80211_RC_BW_CHANGED))
--			mt7915_mcu_add_rate_ctrl(dev, vif, sta, true);
-+			mt7915_mcu_add_rate_ctrl(dev, vif, sta, &msta->wcid, true);
-  
-  		if (changed & IEEE80211_RC_SMPS_CHANGED)
-  			mt7915_mcu_add_smps(dev, vif, sta);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-index fe0639c14bf9..0227ea8665f1 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-@@ -747,7 +747,13 @@ int mt7915_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
-  	bool ext_phy = mvif->phy != &dev->phy;
-  	int idx;
-  
--	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7915_WTBL_STA);
-+	if (mtk_wed_device_active(&dev->mt76.mmio.wed) &&
-+	    !is_mt7915(&dev->mt76) &&
-+	    test_bit(MT_WCID_FLAG_4ADDR, &msta->wcid.flags))
-+		idx = __mt76_wcid_alloc(mdev->wcid_mask, MT76_WED_WDS_MIN,
-+					MT76_WED_WDS_MAX);
-+	else
-+		idx = mt76_wcid_alloc(mdev->wcid_mask, MT7915_WTBL_STA);
-  	if (idx < 0)
-  		return -ENOSPC;
-  
-@@ -836,7 +842,7 @@ int mt7915_mac_sta_event(struct mt76_dev *mdev, struct ieee80211_vif *vif,
-  		addr = mt7915_mac_wtbl_lmac_addr(dev, msta->wcid.idx, 30);
-  		mt76_rmw_field(dev, addr, GENMASK(7, 0), 0xa0);
-  
--		ret = mt7915_mcu_add_rate_ctrl(dev, vif, sta, false);
-+		ret = mt7915_mcu_add_rate_ctrl(dev, vif, sta, &msta->wcid, false);
-  		if (ret)
-  			return ret;
-  
-@@ -1267,6 +1273,40 @@ mt7915_set_bitrate_mask(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
-  	return 0;
-  }
-  
-+static void mt7915_sta_wed_set_4addr(struct mt7915_dev *dev, struct ieee80211_vif *vif,
-+				     struct ieee80211_sta *sta)
-+{
-+	struct mt7915_sta *msta = (struct mt7915_sta *)sta->drv_priv;
-+	int min = MT76_WED_WDS_MIN, max = MT76_WED_WDS_MAX;
-+	int idx, prev_idx = msta->wcid.idx;
-+	struct mt76_wcid wcid = msta->wcid;
-+	int state;
-+
-+	if (!is_mt7915(&dev->mt76))
-+		return;
-+
-+	if (msta->wcid.idx >= min && msta->wcid.idx < max)
-+		return;
-+
-+	idx = __mt76_wcid_alloc(dev->mt76.wcid_mask, min, max);
-+	if (idx < 0)
-+		return;
-+
-+	wcid.idx = idx;
-+	state = msta->wcid.sta ? CONN_STATE_PORT_SECURE : CONN_STATE_DISCONNECT;
-+	__mt7915_mcu_add_sta(dev, vif, sta, &wcid, state, true);
-+	mt7915_mcu_add_rate_ctrl(dev, vif, sta, &wcid, false);
-+	rcu_assign_pointer(dev->mt76.wcid[idx], &msta->wcid);
-+	msta->wcid.idx = idx;
-+
-+	synchronize_rcu();
-+
-+	rcu_assign_pointer(dev->mt76.wcid[prev_idx], NULL);
-+	mt76_wcid_mask_clear(dev->mt76.wcid_mask, prev_idx);
-+	wcid.idx = prev_idx;
-+	__mt7915_mcu_add_sta(dev, vif, sta, &wcid, CONN_STATE_DISCONNECT, false);
-+}
-+
-  static void mt7915_sta_set_4addr(struct ieee80211_hw *hw,
-  				 struct ieee80211_vif *vif,
-  				 struct ieee80211_sta *sta,
-@@ -1280,6 +1320,9 @@ static void mt7915_sta_set_4addr(struct ieee80211_hw *hw,
-  	else
-  		clear_bit(MT_WCID_FLAG_4ADDR, &msta->wcid.flags);
-  
-+	if (mtk_wed_device_active(&dev->mt76.mmio.wed) && enabled)
-+		mt7915_sta_wed_set_4addr(dev, vif, sta);
-+
-  	if (!msta->wcid.sta)
-  		return;
-  
-@@ -1729,15 +1772,19 @@ mt7915_net_fill_forward_path(struct ieee80211_hw *hw,
-  	if (!mtk_wed_device_active(wed))
-  		return -ENODEV;
-  
--	if (msta->wcid.idx > 0xff)
-+	if (msta->wcid.idx > MT7915_WTBL_STA)
-  		return -EIO;
-  
-  	path->type = DEV_PATH_MTK_WDMA;
-  	path->dev = ctx->dev;
-  	path->mtk_wdma.wdma_idx = wed->wdma_idx;
-  	path->mtk_wdma.bss = mvif->mt76.idx;
--	path->mtk_wdma.wcid = is_mt7915(&dev->mt76) ? msta->wcid.idx : 0x3ff;
-  	path->mtk_wdma.queue = phy != &dev->phy;
-+	if (test_bit(MT_WCID_FLAG_4ADDR, &msta->wcid.flags) ||
-+	    is_mt7915(&dev->mt76))
-+		path->mtk_wdma.wcid = msta->wcid.idx;
-+	else
-+		path->mtk_wdma.wcid = 0x3ff;
-  
-  	ctx->dev = NULL;
-  
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index cf948628e588..26497b580eb6 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -1359,6 +1359,7 @@ mt7915_mcu_get_mmps_mode(enum ieee80211_smps_mode smps)
-  int mt7915_mcu_set_fixed_rate_ctrl(struct mt7915_dev *dev,
-  				   struct ieee80211_vif *vif,
-  				   struct ieee80211_sta *sta,
-+				   struct mt76_wcid *wcid,
-  				   void *data, u32 field)
-  {
-  	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
-@@ -1430,7 +1431,7 @@ int mt7915_mcu_add_smps(struct mt7915_dev *dev, struct ieee80211_vif *vif,
-  	if (ret)
-  		return ret;
-  
--	return mt7915_mcu_set_fixed_rate_ctrl(dev, vif, sta, NULL,
-+	return mt7915_mcu_set_fixed_rate_ctrl(dev, vif, sta, &msta->wcid, NULL,
-  					      RATE_PARAM_MMPS_UPDATE);
-  }
-  
-@@ -1439,17 +1440,19 @@ mt7915_mcu_set_spe_idx(struct mt7915_dev *dev, struct ieee80211_vif *vif,
-  		       struct ieee80211_sta *sta)
-  {
-  	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
-+	struct mt7915_sta *msta = (struct mt7915_sta *)sta->drv_priv;
-  	struct mt76_phy *mphy = mvif->phy->mt76;
-  	u8 spe_idx = mt76_connac_spe_idx(mphy->antenna_mask);
-  
--	return mt7915_mcu_set_fixed_rate_ctrl(dev, vif, sta, &spe_idx,
--					      RATE_PARAM_SPE_UPDATE);
-+	return mt7915_mcu_set_fixed_rate_ctrl(dev, vif, sta, &msta->wcid,
-+					      &spe_idx, RATE_PARAM_SPE_UPDATE);
-  }
-  
-  static int
-  mt7915_mcu_add_rate_ctrl_fixed(struct mt7915_dev *dev,
-  			       struct ieee80211_vif *vif,
--			       struct ieee80211_sta *sta)
-+			       struct ieee80211_sta *sta,
-+			       struct mt76_wcid *wcid)
-  {
-  	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
-  	struct cfg80211_chan_def *chandef = &mvif->phy->mt76->chandef;
-@@ -1497,7 +1500,7 @@ mt7915_mcu_add_rate_ctrl_fixed(struct mt7915_dev *dev,
-  
-  	/* fixed single rate */
-  	if (nrates == 1) {
--		ret = mt7915_mcu_set_fixed_rate_ctrl(dev, vif, sta, &phy,
-+		ret = mt7915_mcu_set_fixed_rate_ctrl(dev, vif, sta, wcid, &phy,
-  						     RATE_PARAM_FIXED_MCS);
-  		if (ret)
-  			return ret;
-@@ -1519,7 +1522,7 @@ mt7915_mcu_add_rate_ctrl_fixed(struct mt7915_dev *dev,
-  		else
-  			mt76_rmw_field(dev, addr, GENMASK(15, 12), phy.sgi);
-  
--		ret = mt7915_mcu_set_fixed_rate_ctrl(dev, vif, sta, &phy,
-+		ret = mt7915_mcu_set_fixed_rate_ctrl(dev, vif, sta, wcid, &phy,
-  						     RATE_PARAM_FIXED_GI);
-  		if (ret)
-  			return ret;
-@@ -1527,7 +1530,7 @@ mt7915_mcu_add_rate_ctrl_fixed(struct mt7915_dev *dev,
-  
-  	/* fixed HE_LTF */
-  	if (mask->control[band].he_ltf != GENMASK(7, 0)) {
--		ret = mt7915_mcu_set_fixed_rate_ctrl(dev, vif, sta, &phy,
-+		ret = mt7915_mcu_set_fixed_rate_ctrl(dev, vif, sta, wcid, &phy,
-  						     RATE_PARAM_FIXED_HE_LTF);
-  		if (ret)
-  			return ret;
-@@ -1640,15 +1643,14 @@ mt7915_mcu_sta_rate_ctrl_tlv(struct sk_buff *skb, struct mt7915_dev *dev,
-  }
-  
-  int mt7915_mcu_add_rate_ctrl(struct mt7915_dev *dev, struct ieee80211_vif *vif,
--			     struct ieee80211_sta *sta, bool changed)
-+			     struct ieee80211_sta *sta, struct mt76_wcid *wcid,
-+			     bool changed)
-  {
-  	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
--	struct mt7915_sta *msta = (struct mt7915_sta *)sta->drv_priv;
-  	struct sk_buff *skb;
-  	int ret;
-  
--	skb = mt76_connac_mcu_alloc_sta_req(&dev->mt76, &mvif->mt76,
--					    &msta->wcid);
-+	skb = mt76_connac_mcu_alloc_sta_req(&dev->mt76, &mvif->mt76, wcid);
-  	if (IS_ERR(skb))
-  		return PTR_ERR(skb);
-  
-@@ -1673,7 +1675,7 @@ int mt7915_mcu_add_rate_ctrl(struct mt7915_dev *dev, struct ieee80211_vif *vif,
-  	 * and updates as peer fixed rate parameters, which overrides
-  	 * sta_rec_ra and firmware rate control algorithm.
-  	 */
--	return mt7915_mcu_add_rate_ctrl_fixed(dev, vif, sta);
-+	return mt7915_mcu_add_rate_ctrl_fixed(dev, vif, sta, wcid);
-  }
-  
-  static int
-@@ -1704,8 +1706,9 @@ mt7915_mcu_add_group(struct mt7915_dev *dev, struct ieee80211_vif *vif,
-  				 sizeof(req), true);
-  }
-  
--int mt7915_mcu_add_sta(struct mt7915_dev *dev, struct ieee80211_vif *vif,
--		       struct ieee80211_sta *sta, int conn_state, bool newly)
-+int __mt7915_mcu_add_sta(struct mt7915_dev *dev, struct ieee80211_vif *vif,
-+			 struct ieee80211_sta *sta,  struct mt76_wcid *wcid,
-+			 int conn_state, bool newly)
-  {
-  	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
-  	struct ieee80211_link_sta *link_sta;
-@@ -1715,9 +1718,10 @@ int mt7915_mcu_add_sta(struct mt7915_dev *dev, struct ieee80211_vif *vif,
-  
-  	msta = sta ? (struct mt7915_sta *)sta->drv_priv : &mvif->sta;
-  	link_sta = sta ? &sta->deflink : NULL;
-+	if (!wcid)
-+		wcid = &msta->wcid;
-  
--	skb = mt76_connac_mcu_alloc_sta_req(&dev->mt76, &mvif->mt76,
--					    &msta->wcid);
-+	skb = mt76_connac_mcu_alloc_sta_req(&dev->mt76, &mvif->mt76, wcid);
-  	if (IS_ERR(skb))
-  		return PTR_ERR(skb);
-  
-@@ -2413,10 +2417,20 @@ int mt7915_mcu_init_firmware(struct mt7915_dev *dev)
-  
-  	mt76_connac_mcu_del_wtbl_all(&dev->mt76);
-  
--	if ((mtk_wed_device_active(&dev->mt76.mmio.wed) &&
--	     is_mt7915(&dev->mt76)) ||
--	    !mtk_wed_get_rx_capa(&dev->mt76.mmio.wed))
--		mt7915_mcu_wa_cmd(dev, MCU_WA_PARAM_CMD(CAPABILITY), 0, 0, 0);
-+#if IS_ENABLED(CONFIG_NET_MEDIATEK_SOC_WED)
-+	if (mtk_wed_device_active(&dev->mt76.mmio.wed)) {
-+		if (is_mt7915(&dev->mt76) ||
-+		    !mtk_wed_get_rx_capa(&dev->mt76.mmio.wed))
-+			ret = mt7915_mcu_wa_cmd(dev, MCU_WA_PARAM_CMD(CAPABILITY),
-+						0, 0, 0);
-+		else
-+			ret = mt7915_mcu_wa_cmd(dev, MCU_WA_PARAM_CMD(SET),
-+						MCU_WA_PARAM_WED_VERSION,
-+						dev->mt76.mmio.wed.rev_id, 0);
-+		if (ret)
-+			return ret;
-+	}
-+#endif
-  
-  	ret = mt7915_mcu_set_mwds(dev, 1);
-  	if (ret)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-index 086ad89ecd91..989f24cb49eb 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-@@ -278,6 +278,7 @@ enum {
-  	MCU_WA_PARAM_PDMA_RX = 0x04,
-  	MCU_WA_PARAM_CPU_UTIL = 0x0b,
-  	MCU_WA_PARAM_RED = 0x0e,
-+	MCU_WA_PARAM_WED_VERSION = 0x32,
-  	MCU_WA_PARAM_RED_SETTING = 0x40,
-  };
-  
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index 2e94347c46d6..c781058a416f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -455,8 +455,16 @@ int mt7915_mcu_add_dev_info(struct mt7915_phy *phy,
-  			    struct ieee80211_vif *vif, bool enable);
-  int mt7915_mcu_add_bss_info(struct mt7915_phy *phy,
-  			    struct ieee80211_vif *vif, int enable);
--int mt7915_mcu_add_sta(struct mt7915_dev *dev, struct ieee80211_vif *vif,
--		       struct ieee80211_sta *sta, int conn_state, bool newly);
-+int __mt7915_mcu_add_sta(struct mt7915_dev *dev, struct ieee80211_vif *vif,
-+			 struct ieee80211_sta *sta, struct mt76_wcid *wcid,
-+			 int conn_state, bool newly);
-+static inline int
-+mt7915_mcu_add_sta(struct mt7915_dev *dev, struct ieee80211_vif *vif,
-+		   struct ieee80211_sta *sta, int conn_state, bool newly)
-+{
-+    return __mt7915_mcu_add_sta(dev, vif, sta, NULL, conn_state, newly);
-+}
-+
-  int mt7915_mcu_add_tx_ba(struct mt7915_dev *dev,
-  			 struct ieee80211_ampdu_params *params,
-  			 bool add);
-@@ -472,7 +480,8 @@ int mt7915_mcu_add_beacon(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
-  int mt7915_mcu_add_obss_spr(struct mt7915_phy *phy, struct ieee80211_vif *vif,
-  			    struct ieee80211_he_obss_pd *he_obss_pd);
-  int mt7915_mcu_add_rate_ctrl(struct mt7915_dev *dev, struct ieee80211_vif *vif,
--			     struct ieee80211_sta *sta, bool changed);
-+			     struct ieee80211_sta *sta, struct mt76_wcid *wcid,
-+			     bool changed);
-  int mt7915_mcu_add_smps(struct mt7915_dev *dev, struct ieee80211_vif *vif,
-  			struct ieee80211_sta *sta);
-  int mt7915_set_channel(struct mt76_phy *mphy);
-@@ -482,6 +491,7 @@ int mt7915_mcu_update_edca(struct mt7915_dev *dev, void *req);
-  int mt7915_mcu_set_fixed_rate_ctrl(struct mt7915_dev *dev,
-  				   struct ieee80211_vif *vif,
-  				   struct ieee80211_sta *sta,
-+				   struct mt76_wcid *wcid,
-  				   void *data, u32 field);
-  int mt7915_mcu_set_eeprom(struct mt7915_dev *dev);
-  int mt7915_mcu_get_eeprom(struct mt7915_dev *dev, u32 offset, u8 *read_buf);
-diff --git a/drivers/net/wireless/mediatek/mt76/util.c b/drivers/net/wireless/mediatek/mt76/util.c
-index 95b3dc96e4c4..9fa60d380ede 100644
---- a/drivers/net/wireless/mediatek/mt76/util.c
-+++ b/drivers/net/wireless/mediatek/mt76/util.c
-@@ -42,12 +42,19 @@ bool ____mt76_poll_msec(struct mt76_dev *dev, u32 offset, u32 mask, u32 val,
-  }
-  EXPORT_SYMBOL_GPL(____mt76_poll_msec);
-  
--int mt76_wcid_alloc(u32 *mask, int size)
-+int __mt76_wcid_alloc(u32 *mask, int min, int size)
-  {
-+	u32 min_mask = ~0;
-  	int i, idx = 0, cur;
-  
-+	mask += min / 32;
-+	min %= 32;
-+	if (min > 0)
-+		min_mask = ~((1 << min) - 1);
-+
-  	for (i = 0; i < DIV_ROUND_UP(size, 32); i++) {
--		idx = ffs(~mask[i]);
-+		idx = ffs(~mask[i] & min_mask);
-+		min_mask = ~0;
-  		if (!idx)
-  			continue;
-  
-@@ -62,7 +69,7 @@ int mt76_wcid_alloc(u32 *mask, int size)
-  
-  	return -1;
-  }
--EXPORT_SYMBOL_GPL(mt76_wcid_alloc);
-+EXPORT_SYMBOL_GPL(__mt76_wcid_alloc);
-  
-  int mt76_get_min_avg_rssi(struct mt76_dev *dev, u8 phy_idx)
-  {
-diff --git a/drivers/net/wireless/mediatek/mt76/util.h b/drivers/net/wireless/mediatek/mt76/util.h
-index 260965dde94c..bca2893f980e 100644
---- a/drivers/net/wireless/mediatek/mt76/util.h
-+++ b/drivers/net/wireless/mediatek/mt76/util.h
-@@ -27,7 +27,12 @@ enum {
-  #define MT76_INCR(_var, _size) \
-  	(_var = (((_var) + 1) % (_size)))
-  
--int mt76_wcid_alloc(u32 *mask, int size);
-+int __mt76_wcid_alloc(u32 *mask, int min, int size);
-+
-+static inline int mt76_wcid_alloc(u32 *mask, int size)
-+{
-+	return __mt76_wcid_alloc(mask, 0, size);
-+}
-  
-  static inline void
-  mt76_wcid_mask_set(u32 *mask, int idx)
--- 
-2.49.0
+Really, something called as hardware voter is not that uncommon and it
+does fit existing bindings.
+
+> 
+> I'm not sure what qcom does - your reply makes me think that they did it such that
+> the clocks part is in a MMIO and the power domains part is in a different MMIO,
+> without having clock/pd intertwined voting registers...
+
+No, you just never have direct access to hardware. You place votes and
+votes go to the firmware. Now depending on person submitting it or
+writing internal docs, they call it differently, but eventually it is
+the same. You want to vote for some specific signal to be active or
+running at some performance level.
+
+> 
+> Still not sure what to do here, then...
+> 
+> Cheers,
+> Angelo
 
 
+Best regards,
+Krzysztof
 
