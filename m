@@ -4,73 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E274DC7115C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jun 2025 11:04:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49240C7EE30
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Jun 2025 11:06:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FkI6wheyoM7qp04MAt7wghDDstcSeE9ta3Zpr2NHOjw=; b=Hi7UkihUQShXfme6wGv+CI9LV6
-	RaM27YeEyXicWBkXjNKxeqZFA4pT9wO8dMq817m+UjOIuR3n+kfLd3Ts/9zyI76NHJ839EJQ6Lv1/
-	urjUKzbwxZXOWeGqWP7cVacFoeyfMXs/bTtulmxYWwKz4BBV655qYh2eARiun6i3a6zD7NOaJK30m
-	HbnyAXRpWJsRWoI9gJZ5KYo+4bcJElZMtcgwhU/z0xZy6GlKNhHA5JEP/wGFvj2f56unnKDN4c3Vh
-	+Ix9Sme0CR129y05jbYFL6/bLsVBw6dqhWkGhZyRBib+HVDhmJgtmxI1vmp6lDd68Gfh/XOH6iNmK
-	luqajCOg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=uaERh9WXMUH50buLEjUZuWOW4z8gIJvNjLqZNnawyZ0=; b=q+bksxTbRZ4VecazHupsmoAYE2
+	IMUuYI3+YinJO35eMyTNjXaupG5MxRqpgVvhUeJXkBQ/mIhaS4qmBEiFjwuLagmudk+O6INRuF+2v
+	Xi+hLrYSU5mtxM5gXuuKcW6DH/giqw/cz66YyuskH0kxgPxx4Q78nqi2uNdiIqtTmQB7VNootYAgP
+	H1ZjUN89FwAmoDKE7t4VGAO3ova8oQ5J/1mVA1VY0DuPOWUCoIr5iYk7rSFcNp9hz/VhAson1nqIt
+	CbvLqZuMgJzewg1gJoj81bqwah+mmq6X9gS3XPeKhdR9eLsAV1QqH5DRLBwmMixMTiaajE7vtPlVS
+	khldZ0IQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUNve-00000008PVN-1ivN;
-	Wed, 25 Jun 2025 11:04:34 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uUNxl-00000008Pru-0yps;
+	Wed, 25 Jun 2025 11:06:45 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUMhJ-00000008Apl-3Id0;
-	Wed, 25 Jun 2025 09:45:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1750844739;
-	bh=WGq9BnLFRlvgaj6JRyQGZWMVZ81/AYyKEllbs2pFfUQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=GBU4AKGca8KnCekeyVnEecyJmPoVJ7wlpqhQnR8iWTyHHoOmXtft89FJs/f+zClQV
-	 hbB+VfZY7un9VwtAeD07AeKh1UjGVKVG0FXBySpj02ixuj48s0NNREvPRmj0d9EPD7
-	 hSIJOAuxT7B8J5+oGL74kB+VAGj6Ot/Aizw8daZNKJV66x8egWZH/vgxHYgxIcSZaa
-	 WmI79YohY/fz4whCsSj0MdwFqEGHo978IvhMhR13I0Nov+bqXurBJuTpdWIgcPj42X
-	 3v82NQL/5x4kqHRLDpAuyf0qYvJ43Ib9grHcg+NmAWGMum2+fmyXCcLkwX19utj+VX
-	 As/O7jLCKPSbg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B9EBB17E0CE3;
-	Wed, 25 Jun 2025 11:45:38 +0200 (CEST)
-Message-ID: <9fc32523-5009-4f48-8d82-6c3fd285801d@collabora.com>
-Date: Wed, 25 Jun 2025 11:45:38 +0200
+	id 1uUMqI-00000008Dql-2U1R;
+	Wed, 25 Jun 2025 09:55:00 +0000
+X-UUID: 71608fa651aa11f09f706fa2197c6ceb-20250625
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=uaERh9WXMUH50buLEjUZuWOW4z8gIJvNjLqZNnawyZ0=;
+	b=q0MLzdobaOUU30Wi1YSs7cJjdpq1nk85W+IZBN1qP5qlT7ItYf+qipztTjpwffmqw5SRB6FiAtTQw9OlNPZ2r5IRJ5Y5kwD/9Muk6HLoZgKpQiW3bSyVCArJZeYqZV1Tf5INU/CJZ/Ue16T1/fICOACaSPeBGGMtLhJK/aKdxzw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.2,REQID:043e9f6a-1cb5-41c8-b56d-64cf1244e58c,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:9eb4ff7,CLOUDID:7b738d73-15a7-4ae6-ad4b-94c27b45c266,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:99|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,
+	LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 71608fa651aa11f09f706fa2197c6ceb-20250625
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <liankun.yang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2107001860; Wed, 25 Jun 2025 02:54:53 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Wed, 25 Jun 2025 17:54:49 +0800
+Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Wed, 25 Jun 2025 17:54:48 +0800
+From: Liankun Yang <liankun.yang@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
+	<simona@ffwll.ch>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <mac.shen@mediatek.com>,
+	<peng.liu@mediatek.com>, <liankun.yang@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+Subject: [PATCH v4 1/1] drm/mediatek: Adjust bandwidth limit for DP
+Date: Wed, 25 Jun 2025 17:54:17 +0800
+Message-ID: <20250625095446.31726-1-liankun.yang@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 09/29] dt-bindings: clock: mediatek: Describe MT8196
- peripheral clock controllers
-To: Krzysztof Kozlowski <krzk@kernel.org>, Laura Nao
- <laura.nao@collabora.com>, mturquette@baylibre.com, sboyd@kernel.org,
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, p.zabel@pengutronix.de, richardcochran@gmail.com
-Cc: guangjie.song@mediatek.com, wenst@chromium.org,
- linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
- kernel@collabora.com
-References: <20250624143220.244549-1-laura.nao@collabora.com>
- <20250624143220.244549-10-laura.nao@collabora.com>
- <7dfba01a-6ede-44c2-87e3-3ecb439b48e3@kernel.org>
- <284a4ee5-806b-45f9-8d57-d02ec291e389@collabora.com>
- <0870a2ba-936b-4eb2-a570-f2c9dea471b8@kernel.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <0870a2ba-936b-4eb2-a570-f2c9dea471b8@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250625_024541_998127_C156D67F 
-X-CRM114-Status: GOOD (  22.85  )
+X-CRM114-CacheID: sfid-20250625_025458_661751_7F2C0908 
+X-CRM114-Status: GOOD (  17.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,78 +87,125 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/06/25 10:57, Krzysztof Kozlowski ha scritto:
-> On 25/06/2025 10:20, AngeloGioacchino Del Regno wrote:
->> Il 24/06/25 18:02, Krzysztof Kozlowski ha scritto:
->>> On 24/06/2025 16:32, Laura Nao wrote:
->>>> +  '#reset-cells':
->>>> +    const: 1
->>>> +    description:
->>>> +      Reset lines for PEXTP0/1 and UFS blocks.
->>>> +
->>>> +  mediatek,hardware-voter:
->>>> +    $ref: /schemas/types.yaml#/definitions/phandle
->>>> +    description:
->>>> +      On the MT8196 SoC, a Hardware Voter (HWV) backed by a fixed-function
->>>> +      MCU manages clock and power domain control across the AP and other
->>>> +      remote processors. By aggregating their votes, it ensures clocks are
->>>> +      safely enabled/disabled and power domains are active before register
->>>> +      access.
->>>
->>> Resource voting is not via any phandle, but either interconnects or
->>> required opps for power domain.
->>
->> Sorry, I'm not sure who is actually misunderstanding what, here... let me try to
->> explain the situation:
->>
->> This is effectively used as a syscon - as in, the clock controllers need to perform
->> MMIO R/W on both the clock controller itself *and* has to place a vote to the clock
->> controller specific HWV register.
-> 
-> syscon is not the interface to place a vote for clocks. "clocks"
-> property is.
-> 
->>
->> This is done for MUX-GATE and GATE clocks, other than for power domains.
->>
->> Note that the HWV system is inside of the power domains controller, and it's split
->> on a per hardware macro-block basis (as per usual MediaTek hardware layout...).
->>
->> The HWV, therefore, does *not* vote for clock *rates* (so, modeling OPPs would be
->> a software quirk, I think?), does *not* manage bandwidth (and interconnect is for
->> voting BW only?), and is just a "switch to flip".
-> 
-> That's still clocks. Gate is a clock.
-> 
->>
->> Is this happening because the description has to be improved and creating some
->> misunderstanding, or is it because we are underestimating and/or ignoring something
->> here?
->>
-> 
-> Other vendors, at least qcom, represent it properly - clocks. Sometimes
-> they mix up and represent it as power domains, but that's because
-> downstream is a mess and because we actually (at upstream) don't really
-> know what is inside there - is it a clock or power domain.
-> 
+By adjusting the order of link training and relocating it to HPD,
+link training can identify the usability of each lane in the current link.
 
-....but the hardware voter cannot be represented as a clock, because you use it
-for clocks *or* power domains (but at the same time, and of course in different
-drivers, and in different *intertwined* registers).
+It also supports handling signal instability and weakness due to
+environmental issues, enabling the acquisition of a stable bandwidth
+for the current link. Subsequently, DP work can proceed based on
+the actual maximum bandwidth.
 
-So the hardware voter itself (and/or bits inside of its registers) cannot be
-represented as a clock :\
+It should training in the hpd event thread.
+Check the mode with lane count and link rate of training.
 
-In the context of clocks, it's used for clocks, (and not touching power domains at
-all), but in the context of power domains it's used for power domains (and not
-touching clocks at all).
+If we're eDP and capabilities were already parsed we can skip
+reading again because eDP panels aren't hotpluggable hence the
+caps and training information won't ever change in a boot life
 
-I'm not sure what qcom does - your reply makes me think that they did it such that
-the clocks part is in a MMIO and the power domains part is in a different MMIO,
-without having clock/pd intertwined voting registers...
+Therefore, bridge typec judgment is required for edp training in
+atomic_enable function.
 
-Still not sure what to do here, then...
+Signed-off-by: Liankun Yang <liankun.yang@mediatek.com>
+---
+Change in V4:
+- Tested the internal eDP display on MT8195 Tomato and it is fine.
+Per suggestion from the previous thread:
+https://patchwork.kernel.org/project/linux-mediatek/patch/20250318140236.13650-2-liankun.yang@mediatek.com/
 
-Cheers,
-Angelo
+Change in V3:
+- Remove 'mtk_dp->enabled = false" in atomic disable.
+- Remove 'mtk_dp->enabled = true" in atomic enable.
+Per suggestion from the previous thread:
+https://patchwork.kernel.org/project/linux-mediatek/patch/20241025083036.8829-4-liankun.yang@mediatek.com/
+
+Change in V2:
+- Adjust DP training timing.
+- Adjust parse capabilities timing.
+- Add power on/off for connect/disconnect.
+Per suggestion from the previous thread:
+https://patchwork.kernel.org/project/linux-mediatek/patch/20240315015233.2023-1-liankun.yang@mediatek.com/
+---
+ drivers/gpu/drm/mediatek/mtk_dp.c | 42 +++++++++++++++++++------------
+ 1 file changed, 26 insertions(+), 16 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
+index a5b10b2545dc..36e07954965b 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dp.c
++++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+@@ -1976,6 +1976,7 @@ static irqreturn_t mtk_dp_hpd_event_thread(int hpd, void *dev)
+ 	struct mtk_dp *mtk_dp = dev;
+ 	unsigned long flags;
+ 	u32 status;
++	int ret;
+ 
+ 	if (mtk_dp->need_debounce && mtk_dp->train_info.cable_plugged_in)
+ 		msleep(100);
+@@ -1994,9 +1995,27 @@ static irqreturn_t mtk_dp_hpd_event_thread(int hpd, void *dev)
+ 			memset(&mtk_dp->info.audio_cur_cfg, 0,
+ 			       sizeof(mtk_dp->info.audio_cur_cfg));
+ 
++			/* power off aux */
++			mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
++					   DP_PWR_STATE_BANDGAP_TPLL,
++					   DP_PWR_STATE_MASK);
++
+ 			mtk_dp->need_debounce = false;
+ 			mod_timer(&mtk_dp->debounce_timer,
+ 				  jiffies + msecs_to_jiffies(100) - 1);
++		} else {
++			mtk_dp_aux_panel_poweron(mtk_dp, true);
++
++			ret = mtk_dp_parse_capabilities(mtk_dp);
++			if (ret)
++				drm_err(mtk_dp->drm_dev, "Can't parse capabilities\n");
++
++			/* Training */
++			ret = mtk_dp_training(mtk_dp);
++			if (ret)
++				drm_err(mtk_dp->drm_dev, "Training failed, %d\n", ret);
++
++			mtk_dp_aux_panel_poweron(mtk_dp, false);
+ 		}
+ 	}
+ 
+@@ -2161,17 +2180,6 @@ static const struct drm_edid *mtk_dp_edid_read(struct drm_bridge *bridge,
+ 	}
+ 
+ 	drm_edid = drm_edid_read_ddc(connector, &mtk_dp->aux.ddc);
+-
+-	/*
+-	 * Parse capability here to let atomic_get_input_bus_fmts and
+-	 * mode_valid use the capability to calculate sink bitrates.
+-	 */
+-	if (mtk_dp_parse_capabilities(mtk_dp)) {
+-		drm_err(mtk_dp->drm_dev, "Can't parse capabilities\n");
+-		drm_edid_free(drm_edid);
+-		drm_edid = NULL;
+-	}
+-
+ 	if (drm_edid) {
+ 		/*
+ 		 * FIXME: get rid of drm_edid_raw()
+@@ -2366,11 +2374,13 @@ static void mtk_dp_bridge_atomic_enable(struct drm_bridge *bridge,
+ 
+ 	mtk_dp_aux_panel_poweron(mtk_dp, true);
+ 
+-	/* Training */
+-	ret = mtk_dp_training(mtk_dp);
+-	if (ret) {
+-		drm_err(mtk_dp->drm_dev, "Training failed, %d\n", ret);
+-		goto power_off_aux;
++	if (mtk_dp->data->bridge_type == DRM_MODE_CONNECTOR_eDP) {
++		/* Training */
++		ret = mtk_dp_training(mtk_dp);
++		if (ret) {
++			drm_err(mtk_dp->drm_dev, "Training failed, %d\n", ret);
++			goto power_off_aux;
++		}
+ 	}
+ 
+ 	ret = mtk_dp_video_config(mtk_dp);
+-- 
+2.45.2
+
 
