@@ -4,76 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBBB8C7EE2A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Jun 2025 03:05:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C437AC7EE2A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Jun 2025 03:08:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=o9zZenT208Kdh9QhO8IBxP3KLL+36xJprHwoxaJOxRs=; b=mRPulZ6AkQGeyanhDOXcpZQS/n
-	Assl/A9RrKvhAtcLjfCYZaefwrprzEvUocVtme/UtFrJFZJU5Pdn94+GosXRC9VUTcqAMHmYEeysv
-	tkAiW2r6IkUcLeTGiRM6ohs7+G0aU7MNNW1Bui3vJMq6NO8N/vE2uQtYyVdRe+NGjrAUuJhRyhOpX
-	sZxaCFQORGUQaqM09KlIfAWb1xhWgL+H+Vhcp95yy2LseOz++o/qeTijvSPLA0VEgKfbVSiwr25+j
-	WAgwQM0GrBKXNGRW5IlSIoDWmYMG5cexGt2I30irPmzSke5k5WMuyIkYmS0CAjw1PJS2ttCAGXkvI
-	oulIRDwQ==;
+	bh=wXFYblXOa8sAjKJvpfnO+lgSgX7PZc4bUh7Zp2/KkE8=; b=U7nNRjh9/Dy5MbjfnD+Gva928A
+	YLA40sg5Kb9q4MkXnqAkoYzV0I1CKLRUUMmpG8qMgnsJWH7Kf+XM+NDTt3+X6xOHMeMuhV09TEO3l
+	QbdpUOJFepDpH2vqw+9cKajQQoAJIi0WX9pBdpDLe7HlZQo+VpFIe6V6mnVLnhJhBO+M+GuZOzKB2
+	wC2K4clOB2ULPpcFH7hL7s95FLMbq2UO8LF1CcoPHD5iNVqGV8j5yxLKYCS1fh+7i1InxSHSYy3P5
+	sSbAB6XR7ku2pxqUYVZXzAMAApdWNd5OvB6eFFUfmLAIwwa26vX7cJF7o8ZWYmqwaRghfdRwzHb+C
+	BF6WEJPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUcvW-0000000AVIs-02ex;
-	Thu, 26 Jun 2025 03:05:26 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1uUcye-0000000AVTy-2wC3;
+	Thu, 26 Jun 2025 03:08:40 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUcfK-0000000AUA6-3F5E
-	for linux-mediatek@lists.infradead.org;
-	Thu, 26 Jun 2025 02:48:43 +0000
-X-UUID: 0d3e06aa523811f09eb0dd999d3936bf-20250625
+	id 1uUcya-0000000AVTI-2smX;
+	Thu, 26 Jun 2025 03:08:38 +0000
+X-UUID: d71a736c523a11f09f706fa2197c6ceb-20250625
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=o9zZenT208Kdh9QhO8IBxP3KLL+36xJprHwoxaJOxRs=;
-	b=QLs+eZZz5xQ1mWAIQ+2guEJiLu/NSdjyscqY2RKsn0aeH6CEdlxXLf8iKcaFsPHZQjEA9htvRTMiYalGQlnNT+YQzf2OhLY7l3XbG22bOigkPyVodVq29ILW1BsThEjMoEKSZhb2ZTh6dxfXKARbXeCVAuvgg0ENnLCTQpUmaqg=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=wXFYblXOa8sAjKJvpfnO+lgSgX7PZc4bUh7Zp2/KkE8=;
+	b=JQ14nGusReL5OTZz9bAg21lyPikedxotCuc6yhHN66DFHE9uf1yv56ITcMKiquV4neNGwG7HIIg1QbbXcR5tAM3qQbdS26ACgtSMLamOrTnXhCcfupvW1xiFYCSHrO7UhRBYo+PNrcSfwiSJeX7uCT5aIZ0O3dKUQsM/EtDn73Q=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.2,REQID:08a8158f-60f3-43e0-aee4-7383c9f7cb9d,IP:0,UR
+X-CID-O-INFO: VERSION:1.3.2,REQID:df3a9048-1029-460a-a5ee-a3a8a97a11a0,IP:0,UR
 	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:-5
-X-CID-META: VersionHash:9eb4ff7,CLOUDID:de353682-cc21-4267-87cf-e75829fa6365,B
+X-CID-META: VersionHash:9eb4ff7,CLOUDID:70b0a55f-2aa0-4c76-8faa-804d844c7164,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
-	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
+	l,URL:99|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,
+	LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 0d3e06aa523811f09eb0dd999d3936bf-20250625
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <michael-cy.lee@mediatek.com>)
+X-UUID: d71a736c523a11f09f706fa2197c6ceb-20250625
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <kuyo.chang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 981928464; Wed, 25 Jun 2025 19:48:34 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+	with ESMTP id 127621637; Wed, 25 Jun 2025 20:08:31 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Thu, 26 Jun 2025 10:48:31 +0800
+ 15.2.1258.39; Thu, 26 Jun 2025 11:08:28 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Thu, 26 Jun 2025 10:48:31 +0800
-From: Michael-CY Lee <michael-cy.lee@mediatek.com>
-To: linux-wireless <linux-wireless@vger.kernel.org>
-CC: Johannes Berg <johannes@sipsolutions.net>, Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>, Evelyn Tsai
-	<evelyn.tsai@mediatek.com>, Money Wang <money.wang@mediatek.com>,
-	linux-mediatek <linux-mediatek@lists.infradead.org>, Michael-CY Lee
-	<michael-cy.lee@mediatek.com>
-Subject: [PATCH] wifi: mac80211: break the outer loop if target nontransmitted BSSID profile is found in ieee802_11_find_bssid_profile()
-Date: Thu, 26 Jun 2025 10:48:25 +0800
-Message-ID: <20250626024825.2231721-1-michael-cy.lee@mediatek.com>
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Thu, 26 Jun 2025 11:08:28 +0800
+From: Kuyo Chang <kuyo.chang@mediatek.com>
+To: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>,
+	Juri Lelli <juri.lelli@redhat.com>, Vincent Guittot
+	<vincent.guittot@linaro.org>, Dietmar Eggemann <dietmar.eggemann@arm.com>,
+	Steven Rostedt <rostedt@goodmis.org>, Ben Segall <bsegall@google.com>, "Mel
+ Gorman" <mgorman@suse.de>, Valentin Schneider <vschneid@redhat.com>,
+	"Matthias Brugger" <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: John Stultz <jstultz@google.com>, kuyo chang <kuyo.chang@mediatek.com>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+Subject: [PATCH v3 1/1] sched/deadline: Fix dl_server runtime calculation formula
+Date: Thu, 26 Jun 2025 11:07:17 +0800
+Message-ID: <20250626030746.2245365-1-kuyo.chang@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250625_194842_816775_F4E5707C 
-X-CRM114-Status: UNSURE (   7.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250625_200836_728083_91F82894 
+X-CRM114-Status: GOOD (  11.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,31 +90,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If the target nontransmitted BSSID profile is found, the outer for-loop
-should be broken, otherwise the "profile_len" might be incorrectly
-overwritten.
+From: kuyo chang <kuyo.chang@mediatek.com>
 
-Fixes: 5023b14cf4df ("mac80211: support profile split between elements")
-Signed-off-by: Michael-CY Lee <michael-cy.lee@mediatek.com>
+[Symptom]
+The calculation formula for dl_server runtime is based on
+Frequency/capacity scale-invariance.
+This will cause excessive RT latency (expect absolute time).
+
+[Analysis]
+Consider the following case under a Big.LITTLE architecture:
+
+Assume the runtime is: 50,000,000 ns, and Frequency/capacity
+scale-invariance defined as below:
+
+Frequency scale-invariance: 100
+Capacity scale-invariance: 50
+First by Frequency scale-invariance,
+the runtime is scaled to 50,000,000 * 100 >> 10 = 4,882,812
+Then by capacity scale-invariance,
+it is further scaled to 4,882,812 * 50 >> 10 = 238,418.
+
+So it will scaled to 238,418 ns.
+
+[Solution]
+The runtime for dl_server should be fixed time
+asis RT bandwidth control.
+Fix the runtime calculation formula for the dl_server.
+
+Signed-off-by: kuyo chang <kuyo.chang@mediatek.com>
+Acked-by: Juri Lelli <juri.lelli@redhat.com>
+Suggested-by: Peter Zijlstra <peterz@infradead.org>
+Suggested-by: John Stultz <jstultz@google.com>
+Tested-by: John Stultz <jstultz@google.com>
+
+v1: https://lore.kernel.org/all/20250614020524.631521-1-kuyo.chang@mediatek.com/
+v2: https://lore.kernel.org/all/20250617155355.1479777-1-kuyo.chang@mediatek.com/
+
+Change-Id: Iaaa1ec78f405586c22ba56230ef1143206daa2d0
 ---
- net/mac80211/parse.c | 3 +++
- 1 file changed, 3 insertions(+)
+ kernel/sched/deadline.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/net/mac80211/parse.c b/net/mac80211/parse.c
-index 96584b39215e..a985a439051a 100644
---- a/net/mac80211/parse.c
-+++ b/net/mac80211/parse.c
-@@ -815,6 +815,9 @@ static size_t ieee802_11_find_bssid_profile(const u8 *start, size_t len,
- 				break;
- 			}
- 		}
-+
-+		if (found)
-+			break;
- 	}
+diff --git a/kernel/sched/deadline.c b/kernel/sched/deadline.c
+index ad45a8fea245..96a21f38fcc3 100644
+--- a/kernel/sched/deadline.c
++++ b/kernel/sched/deadline.c
+@@ -1504,7 +1504,9 @@ static void update_curr_dl_se(struct rq *rq, struct sched_dl_entity *dl_se, s64
+ 	if (dl_entity_is_special(dl_se))
+ 		return;
  
- 	return found ? profile_len : 0;
+-	scaled_delta_exec = dl_scaled_delta_exec(rq, dl_se, delta_exec);
++	scaled_delta_exec = delta_exec;
++	if (!dl_server(dl_se))
++		scaled_delta_exec = dl_scaled_delta_exec(rq, dl_se, delta_exec);
+ 
+ 	dl_se->runtime -= scaled_delta_exec;
+ 
+@@ -1624,7 +1626,9 @@ void dl_server_update_idle_time(struct rq *rq, struct task_struct *p)
+ 	if (delta_exec < 0)
+ 		return;
+ 
+-	scaled_delta_exec = dl_scaled_delta_exec(rq, &rq->fair_server, delta_exec);
++	scaled_delta_exec = delta_exec;
++	if (!rq->fair_server.dl_server)
++		scaled_delta_exec = dl_scaled_delta_exec(rq, &rq->fair_server, delta_exec);
+ 
+ 	rq->fair_server.runtime -= scaled_delta_exec;
+ 
 -- 
-2.25.1
+2.45.2
 
 
