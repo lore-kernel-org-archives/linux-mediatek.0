@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A38FC77B7F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jun 2025 21:31:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A67DC77B7F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jun 2025 21:33:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JgraXe/pONHc5HPtprX9iG27Cj8CjsvRq3WlT8031sg=; b=4U/SPX1UFHifdntEuHBImMUIPB
-	LfhWGh8kZPO0UNTT0CD4HRd22DqObAbDIfnSjsKJywp+jAuKjMLmvYkeJaMpy62mZ9sCiKwdBp57m
-	WJdtTPc9DvBeqACHXSNz2k97+naC26EX3TGiMFW+4UkGqKz9bQmj0u9P8ruEaOMcZVJd7588cqHej
-	EcUKdt8PuLbrP3npfhfZdOXQO5chBXKqKJjF1r8o+j9mQaZIzmSC4MIdJ1WFl2CYC+okCprZlfsv9
-	5ub4xc6DwSKAMQjYVINzOgHgKPnJSym5BJt9wp72Twa++njAnJVG/hOG8tkAs+dN/xjZNFs1mQF70
-	2Yin+Y2Q==;
+	bh=HXhFhQI+iaSZ0sHJkSQtYhbB0e7RvLP0R0qt3uhrJyw=; b=JegPyHWUP4vcWVukxXAORmDFFA
+	iQFAslZGs/+iExudaAVipTMNPSi+jL1qPTh/0lhmRKral/Se/UULdPEY8WWX3GPR4hCWCycsOxAn1
+	ywokslM/6UpxXu+tIgUDcsRpuWLdLZi1ikMfTjanWnb+/paxJmQ7zxvfk+eJFetaJYwqI3xMaGqHL
+	wylSeKARWV94OxYBu5bRphsOPUoc482QZENyPsmHMzyOg2y39cEbWSKMlfv2F7tnJMIYmMOAUECWS
+	5lUlmkzY2udw60ZiKKUZ9oE4IN8WQwP0N+LG35bswqet8SpWqOsG63gbrlZoeFNlpnp8uIhbaGHg5
+	86xFQCDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVGfX-0000000FrHR-0ZWJ;
-	Fri, 27 Jun 2025 21:31:35 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1uVGho-0000000FrWr-1Dym;
+	Fri, 27 Jun 2025 21:33:56 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVGX8-0000000FqFi-3OaA;
-	Fri, 27 Jun 2025 21:22:55 +0000
+	id 1uVGXE-0000000FqHI-3EuC;
+	Fri, 27 Jun 2025 21:23:01 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 539295C6428;
-	Fri, 27 Jun 2025 21:22:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E0189C4CEE3;
-	Fri, 27 Jun 2025 21:22:52 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 13DF643FDD;
+	Fri, 27 Jun 2025 21:23:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BD704C4CEE3;
+	Fri, 27 Jun 2025 21:22:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751059373;
-	bh=dKyxY/bPjE3fZt8bSWNegDuc+jZKxTxZmy1Wiiwm/TE=;
+	s=k20201202; t=1751059379;
+	bh=4kv5wxyDcd8ccxR2sHbhKnL/yZ6+0PwtOkGdcdzU23Y=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=jvrNs1FSoHgcTi1oM2A35k2hTcOFuUXZERNsEOILi3zQ/qDyZ+BRxqyPoBLRXq0hh
-	 Bb3sqzGHEDPkbS7LYG7VZLtnmwZqMPR+zTBfk3mMvKAzpfI6YtJeSuThUSVUhOm/2u
-	 5vEvnhCRSivsdt9/bJkKCAYWWJwVXmhUV7rs/eGXHaTg0j73SVPGMICz19cXE7GXi3
-	 moGAgD1P7Gi3uKP5wzsgXV9YVp87G1b0eo/x25VrroxeadQ3YHPTjwF75S26kp84pG
-	 2zh0KgZzNW2okXRc5jG4H/x/KNINz0vtuOjdCluV/CVrMYoJdULalOowMNh79pkety
-	 6oI1zRv8I2CMg==
-Date: Fri, 27 Jun 2025 16:22:52 -0500
+	b=DVbXRiBaKTezjZCqKRnYofdLdMXAHITbVsU4vgkWepM7Jz1xr2LC5z2GWcbxnAhOt
+	 P5aP7fqWMcFrNSh1zXxe94Tb3YqnXUuJFPxEa+j0fXKf/l5ZT20A0PUfyVe4TPmPpo
+	 vi44C3dTa4O3yf7RrjPYn+qZnIhKixfgX0UwsykhEfL95g+98OEGL59iYBpv+/EGxW
+	 tSRtKuXhARnTZlvBUlio3k7wCsQICKsIt5Xcz/8rgoz6cu04skDq11LIHL69ERJeVK
+	 kd97wIPH/Em6sO6QixfTDDHctWcOaXNbUAYpelxdp6DupvoSbUb1iW/hT3wl729PSV
+	 WrYuCXuUm3L5w==
+Date: Fri, 27 Jun 2025 16:22:59 -0500
 From: "Rob Herring (Arm)" <robh@kernel.org>
 To: Max Shevchenko <wctrl@proton.me>
-Cc: linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
+Cc: linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-serial@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Jiri Slaby <jirislaby@kernel.org>, linux-watchdog@vger.kernel.org,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Russell King <linux@armlinux.org.uk>, linux-serial@vger.kernel.org,
-	Sean Wang <sean.wang@mediatek.com>,
-	Guenter Roeck <linux@roeck-us.net>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Wim Van Sebroeck <wim@linux-watchdog.org>,
-	devicetree@vger.kernel.org, Thomas Gleixner <tglx@linutronix.de>,
-	Conor Dooley <conor+dt@kernel.org>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 03/11] dt-bindings: timer: mediatek: add MT6572
-Message-ID: <175105937161.165965.1627946015902524006.robh@kernel.org>
+	Russell King <linux@armlinux.org.uk>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-arm-kernel@lists.infradead.org,
+	Daniel Lezcano <daniel.lezcano@linaro.org>,
+	linux-kernel@vger.kernel.org, Thomas Gleixner <tglx@linutronix.de>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Jiri Slaby <jirislaby@kernel.org>,
+	Guenter Roeck <linux@roeck-us.net>, linux-watchdog@vger.kernel.org,
+	Wim Van Sebroeck <wim@linux-watchdog.org>
+Subject: Re: [PATCH v2 04/11] dt-bindings: watchdog: mediatek,mtk-wdt: add
+ MT6572
+Message-ID: <175105937841.166232.1267784883426829813.robh@kernel.org>
 References: <20250626-mt6572-v2-0-f7f842196986@proton.me>
- <20250626-mt6572-v2-3-f7f842196986@proton.me>
+ <20250626-mt6572-v2-4-f7f842196986@proton.me>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250626-mt6572-v2-3-f7f842196986@proton.me>
+In-Reply-To: <20250626-mt6572-v2-4-f7f842196986@proton.me>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250627_142254_884827_7D35B9A0 
-X-CRM114-Status: UNSURE (   9.94  )
+X-CRM114-CacheID: sfid-20250627_142300_827757_7395E77C 
+X-CRM114-Status: UNSURE (   9.62  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,13 +86,13 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 26 Jun 2025 11:53:56 +0300, Max Shevchenko wrote:
-> Add a compatible string for timer on the MT6572 SoC.
+On Thu, 26 Jun 2025 11:53:57 +0300, Max Shevchenko wrote:
+> Add a compatible string for watchdog on the MT6572 SoC.
 > 
 > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > Signed-off-by: Max Shevchenko <wctrl@proton.me>
 > ---
->  Documentation/devicetree/bindings/timer/mediatek,timer.yaml | 1 +
+>  Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml | 1 +
 >  1 file changed, 1 insertion(+)
 > 
 
