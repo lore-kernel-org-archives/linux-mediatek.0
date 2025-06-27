@@ -4,68 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A17BC77B7F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jun 2025 08:47:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7290DC7EE31
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jun 2025 09:44:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e7y5MruCTMcX1J0jmgCi7PebS1+PMwkROzLoHu89tmA=; b=Tkfev/yPjgkq+egov20xcrdPiq
-	Z5YieFeRFqLzGuuf/5I3VPEW6SApFiryp3v3iJ/Zt+PzDoGu9pUK5UXkQGx5efhk0v/ka8eWyEAdS
-	bj9wZqhENF4nkVy4sNyhHiG6tX4M3qWLK7HAvYA3bliv77zGp+emb+GAKv3zAPSUlJ606diMds7G7
-	LFkQnTh6iTk6xMtgX/7vhOjPPZZFCeJ2zcS1FuJ7C8ioVOM27MxZ/NfMwiOJGlL5jMNsjo1PhCOcO
-	zNTcqq+lnSCYijiNUVj5WUHTogZM1lJqQkEuZNo4eChWci11HaaGPRnbt8VM9mgy6SxumwBoeAoH/
-	7StgnM6Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=jreIx6PtT6w4BeFa0dDuav4vW2DugASqzYf5r6DK060=; b=T/ULabeD331/jCUIs5kWu2LYpM
+	TP82BpeEILooZkXYt1yyv1Y6XNUqwHDqzAJb0uQ8Cyk/bHqJmj17SeJCpYKxaH2CaM4cdAZ5m6Hmx
+	bVCb7EPFK9cL3y1x2lE77LgxSPHjEd4u1pFvxj2V6Pc7mHuhtwPLONV1VVacXetUMWek93z5LTNLu
+	BVUuzLpcz9qdxvnaFEkUy3oiQwjjMz8siSUeDqyW10y6qhx2xaA/hPvj8Az96GlHx3faW9xNglc/D
+	Hv1JqctVfuEuSUY9rn05v0fdhRYWHU7ovPJHSMkipqHtJC6eyBut38NfjOy3RKm5Qjbzva1xh56l9
+	pv/G3UGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uV4jr-0000000Dzse-0l4r;
-	Fri, 27 Jun 2025 08:47:15 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uV5dU-0000000E9Rd-3KQR;
+	Fri, 27 Jun 2025 09:44:44 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uV4hX-0000000DzQG-3ent;
-	Fri, 27 Jun 2025 08:44:51 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 05E686144D;
-	Fri, 27 Jun 2025 08:44:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C807BC4CEE3;
-	Fri, 27 Jun 2025 08:44:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751013890;
-	bh=RTLLpwAcPZOfKhzKTWv9DijE/pyyo/yM7NlOJeC3mSc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=D8BnQ4a2qY+T7f6Nj93ZdhYrpdcPOQOWkuZ8+ABcMmaaalqNwlzCVewwvEgKG6BXN
-	 ELWtADd0yAz+SoTC/LZgdsX4Ushlh5KbRxIGqcRmn+9J+0ZO4TLxmwbgDWK9x6bN+H
-	 10Vsq5P6ufR4FKHGBpEc4FJLcUKby3zlkCiJ+N/vb7jd98zAZkmsowWvFUxuZBy/US
-	 nalHm8bz7WEsfTHX4KPH/CS3zgKjx1DcskmR5Vq0fHOvdrK4oLUi0ln10/uPriktBK
-	 uYQ4uVZUxK8GfgwwpJsTo8mRVpqk+ML+kUwBmHPrMhNHUqt5KImfrhwoJ7SlperKMh
-	 BRGsPXnnQmfTg==
-Date: Fri, 27 Jun 2025 10:44:47 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Laura Nao <laura.nao@collabora.com>, mturquette@baylibre.com, 
-	sboyd@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
-	matthias.bgg@gmail.com, p.zabel@pengutronix.de, richardcochran@gmail.com, 
-	guangjie.song@mediatek.com, wenst@chromium.org, linux-clk@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
-	kernel@collabora.com
-Subject: Re: [PATCH v2 09/29] dt-bindings: clock: mediatek: Describe MT8196
- peripheral clock controllers
-Message-ID: <20250627-camouflaged-utopian-hedgehog-11ea2c@krzk-bin>
-References: <20250624143220.244549-1-laura.nao@collabora.com>
- <20250624143220.244549-10-laura.nao@collabora.com>
- <7dfba01a-6ede-44c2-87e3-3ecb439b48e3@kernel.org>
- <284a4ee5-806b-45f9-8d57-d02ec291e389@collabora.com>
- <0870a2ba-936b-4eb2-a570-f2c9dea471b8@kernel.org>
- <9fc32523-5009-4f48-8d82-6c3fd285801d@collabora.com>
- <86654ad1-a2ab-4add-b9de-4d56c67f377b@kernel.org>
- <ae478fd7-c627-433c-a614-b76dcd4164d2@collabora.com>
+	id 1uV5dS-0000000E9QZ-2PdI;
+	Fri, 27 Jun 2025 09:44:43 +0000
+X-UUID: 56ad7b82533b11f09eb0dd999d3936bf-20250627
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=jreIx6PtT6w4BeFa0dDuav4vW2DugASqzYf5r6DK060=;
+	b=U57TunGZD5Y2k+AvAiTKcyNyrC/krbuxptVD+XTIEfT5iFEcIe7Z74u4kP7o8Fo9F2kD/KQF4QID5rIHJxDF/Tf/FMkP7O5q89iiLmYRw3sw08i0b9nuznB+T/L0pJgplDg8W4jC6zg7602ERUi8aQNqdZUhFAsacuFxtYN9mkk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.2,REQID:c3820e30-f935-471d-a6f5-41a915cb1aa7,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:9eb4ff7,CLOUDID:224ea273-15a7-4ae6-ad4b-94c27b45c266,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 56ad7b82533b11f09eb0dd999d3936bf-20250627
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
+	(envelope-from <ot_zexin.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1770681319; Fri, 27 Jun 2025 02:44:37 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Fri, 27 Jun 2025 17:44:32 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Fri, 27 Jun 2025 17:44:32 +0800
+From: Zexin Wang <ot_zexin.wang@mediatek.com>
+To: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
+	<linux@roeck-us.net>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
+	<krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-watchdog@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Zexin Wang <ot_zexin.wang@mediatek.com>
+Subject: [PATCH 0/2] watchdog: mediatek: Add compatible for MT8189
+Date: Fri, 27 Jun 2025 17:44:18 +0800
+Message-ID: <20250627094431.11772-1-ot_zexin.wang@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <ae478fd7-c627-433c-a614-b76dcd4164d2@collabora.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250627_024442_618364_983628E4 
+X-CRM114-Status: UNSURE (   9.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,102 +88,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 25, 2025 at 02:48:39PM +0200, AngeloGioacchino Del Regno wrote:
-> Il 25/06/25 13:06, Krzysztof Kozlowski ha scritto:
-> > On 25/06/2025 11:45, AngeloGioacchino Del Regno wrote:
-> > > Il 25/06/25 10:57, Krzysztof Kozlowski ha scritto:
-> > > > On 25/06/2025 10:20, AngeloGioacchino Del Regno wrote:
-> > > > > Il 24/06/25 18:02, Krzysztof Kozlowski ha scritto:
-> > > > > > On 24/06/2025 16:32, Laura Nao wrote:
-> > > > > > > +  '#reset-cells':
-> > > > > > > +    const: 1
-> > > > > > > +    description:
-> > > > > > > +      Reset lines for PEXTP0/1 and UFS blocks.
-> > > > > > > +
-> > > > > > > +  mediatek,hardware-voter:
-> > > > > > > +    $ref: /schemas/types.yaml#/definitions/phandle
-> > > > > > > +    description:
-> > > > > > > +      On the MT8196 SoC, a Hardware Voter (HWV) backed by a fixed-function
-> > > > > > > +      MCU manages clock and power domain control across the AP and other
-> > > > > > > +      remote processors. By aggregating their votes, it ensures clocks are
-> > > > > > > +      safely enabled/disabled and power domains are active before register
-> > > > > > > +      access.
-> > > > > > 
-> > > > > > Resource voting is not via any phandle, but either interconnects or
-> > > > > > required opps for power domain.
-> > > > > 
-> > > > > Sorry, I'm not sure who is actually misunderstanding what, here... let me try to
-> > > > > explain the situation:
-> > > > > 
-> > > > > This is effectively used as a syscon - as in, the clock controllers need to perform
-> > > > > MMIO R/W on both the clock controller itself *and* has to place a vote to the clock
-> > > > > controller specific HWV register.
-> > > > 
-> > > > syscon is not the interface to place a vote for clocks. "clocks"
-> > > > property is.
-> > > > 
-> > > > > 
-> > > > > This is done for MUX-GATE and GATE clocks, other than for power domains.
-> > > > > 
-> > > > > Note that the HWV system is inside of the power domains controller, and it's split
-> > > > > on a per hardware macro-block basis (as per usual MediaTek hardware layout...).
-> > > > > 
-> > > > > The HWV, therefore, does *not* vote for clock *rates* (so, modeling OPPs would be
-> > > > > a software quirk, I think?), does *not* manage bandwidth (and interconnect is for
-> > > > > voting BW only?), and is just a "switch to flip".
-> > > > 
-> > > > That's still clocks. Gate is a clock.
-> > > > 
-> > > > > 
-> > > > > Is this happening because the description has to be improved and creating some
-> > > > > misunderstanding, or is it because we are underestimating and/or ignoring something
-> > > > > here?
-> > > > > 
-> > > > 
-> > > > Other vendors, at least qcom, represent it properly - clocks. Sometimes
-> > > > they mix up and represent it as power domains, but that's because
-> > > > downstream is a mess and because we actually (at upstream) don't really
-> > > > know what is inside there - is it a clock or power domain.
-> > > > 
-> > > 
-> > > ....but the hardware voter cannot be represented as a clock, because you use it
-> > > for clocks *or* power domains (but at the same time, and of course in different
-> > > drivers, and in different *intertwined* registers).
-> > 
-> > BTW:
-> > 
-> > git grep mediatek,hardware-voter
-> > 0 results
-> > 
-> > so I do not accept explanation that you use it in different drivers. Now
-> > is the first time this is being upstream, so now is the time when this
-> > is shaped.
-> 
-> I was simply trying to explain how I'm using it in the current design and nothing
-> else; and I am happy to understand what other solution could there be for this and
-> if there's anything cleaner.
-> 
-> You see what I do, and I'm *sure* that you definitely know that my goal is *not* to
-> just tick yet another box, but to make things right, - and with the best possible
-> shape and, especially, community agreement.
+This patch series introduces support for the MT8189 watchdog driver
+by add compatible.
 
-Ack, I understand. Your case here is really not different from all
-others. Interface is different, hardware is different, but the concept -
-you place votes via some intermediary - is completely the same which
-qcom is doing since years and maybe other vendors as well.
+Zexin Wang (2):
+  watchdog: mediatek: Add compatible for MT8189
+  dt-bindings: watchdog: mediatek: Add support for MT8189
 
-And I expect more and more of this in case of Mediatek, so in the future
-you will be plcing votes not only for on/off but also for values.
-Everyone goes there, mobile, automotive... maybe IoT lags behind because
-performance there is not that important, but all others need top
-performance with top energy saving which they cannot do in Linux and
-they move it to firmware (SCMI, hw voter, dedicated blocks, whatever).
+ Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml | 1 +
+ drivers/watchdog/mtk_wdt.c                                       | 1 +
+ 2 files changed, 2 insertions(+)
 
-You need to start designing this proper with that future in mind and
-syscon is a strong no-go. Whether this is clocks, power domains or
-interconnects - dunno yet, maybe both.
-
-Best regards,
-Krzysztof
+-- 
+2.45.2
 
 
