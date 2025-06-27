@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 863DFC7EE2A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jun 2025 21:55:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0230C77B7F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jun 2025 22:00:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=69cNHYjLpx/w+u60C8k4eJr98/7ujj3Iriw8qzewW2g=; b=PRNn4xOQwbGdQ/PM0rtYPufKZK
-	UdUFc5SLfie7ZPsPeyua8EKDfnbcD6t7y/m1kBE0gSYw8SJhRnZ+wJwFOk+e4u9O0HIUukDPc4JNA
-	/FoLq5iu/4nMiEhd2hUr0cvIoC3jgSy0BdYKLkf+SPXSNhfyIo3zHEJIEgt1qt7W8t/wDoddK/tdJ
-	9Icn9tGewjseIjcOqt9/TweHHfKiZNd6nfxxpRYaUQOSaZeOOCGZj4NdSpDNv/lghU2Prq0LGItfU
-	fvqQLe12nvrnD+GLVGzOTcnhG/rRCOJod/UQk8ES/5E04hB5CP+e6TxfzkIFY0aNg2hajGsgIfl02
-	D14nLz4g==;
+	bh=oJbY3eHjLiF2WlGFoHs9FvJ6YwnMx+E2OC/qZe2uYUo=; b=12BqFsJL/iTIiq9lb8rtP3/AgN
+	BvSlh+kgPb6JthQnaMriguOvyp1ckMVTMAbTdMXnKduEHRyLSbLUOLug5kOa/oXKC25QGPArqFROi
+	wqzte/hhIflcnmOnvFEL+6uurSDm6qR6ejX7sf+eM7bULVFHcRAB10PFCQdBh4IujdhN/LI9myQsb
+	X+HGuYEau6+XsRDhDw4p0NQa1k8yue9br/9Kcdgr9GbIoXD5iJySxEkA/KIYGeRAgwONEBl/l0yIM
+	WqqkoFb5Y5Z5oR7B7If5GErS0vXOmqxr3utfWzqD6Dc6c7l11E0GEV39/detNJTi7tS5BuzhHzd4a
+	vAYfpFJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVH2s-0000000Ftud-23nI;
-	Fri, 27 Jun 2025 21:55:42 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uVH7P-0000000FuIa-1KAB;
+	Fri, 27 Jun 2025 22:00:23 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVGtd-0000000FsjA-1uCh;
-	Fri, 27 Jun 2025 21:46:09 +0000
+	id 1uVGvo-0000000Ft3r-1DvU;
+	Fri, 27 Jun 2025 21:48:25 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 9648061435;
-	Fri, 27 Jun 2025 21:46:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 25672C4CEE3;
-	Fri, 27 Jun 2025 21:46:08 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id D272F5C4638;
+	Fri, 27 Jun 2025 21:48:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5FBDAC4CEE3;
+	Fri, 27 Jun 2025 21:48:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751060768;
-	bh=Wa4ecWizOT5Iqtise/QjGf4n6skn5SZMXAZ5hYrTYRM=;
+	s=k20201202; t=1751060902;
+	bh=YHqgPMpv3lbWQeN0ahS3Aj9hJ6fjkJUfFUhz0ULMu7A=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=DRrBwM0QoCU5lHi0MAk1WbFBSz7918jSwXcUAsuuaA90vjTItz66KSqlfnTGIvm3s
-	 63f3KpVEH8MM0fZ1M7lrpffXGgXIi3T3nje13ZvJQ/8lLHnxt+5YfxOySB2pfE96RS
-	 0Y8rRTKoblzxauvdBHy6Ri/hiOEk15gRlI/hRt3KFeRJvGBNfGmfaT0zrHvOx3puD2
-	 vZdeYh0ZVEMQNhtSiY8gbL66yJh6j4ooCO+CsYxent72DRn2wNZ9CpYXeOdz4yW4qG
-	 Jt7tLQN3EyBIYrIaUY6MePBhDVSOfoxAiT7u/0mCb9Ln1eWkV9hkDZum7bONuz0Vd3
-	 MjnwtJlybu7gw==
-Date: Fri, 27 Jun 2025 16:46:07 -0500
+	b=r0BXBCTmzuRvWVnE7dxBQGa3Co6tx7KvAwnAhhiYVSX2/D/E+FJFebyvI9k9NYUJz
+	 gdf9K4aKDNQb15RrHtY60rJqhLFvKegk3BV4qPqDJtuPLRduzxHOApkqUneiWv7DNS
+	 xhc+QwFW6vRblmxDPS/2WdkVphzzIeoRflCbu7yMX/MX0gEjQSpPB92CVvoyAl1LRb
+	 jEIfbQJHecV4BSUPukdJvB6y6Fmdn++G6c1RRPrNR43cnv4lawKW+rYi49XXmwj4BV
+	 Yme2khNgG9Fiv9Fz/s3cCLOuDB+ftj+BSHLrFpJkxk2TipiC6SqeKKc6WvbBS9C4y/
+	 hhOq+ufF43bkA==
+Date: Fri, 27 Jun 2025 16:48:21 -0500
 From: Rob Herring <robh@kernel.org>
 To: Christian Marangi <ansuelsmth@gmail.com>
 Cc: Lee Jones <lee@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -63,15 +63,18 @@ Cc: Lee Jones <lee@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [net-next PATCH v15 03/12] dt-bindings: net: dsa: Document
- support for Airoha AN8855 DSA Switch
-Message-ID: <20250627214607.GA193659-robh@kernel.org>
+Subject: Re: [net-next PATCH v15 05/12] dt-bindings: mfd: Document support
+ for Airoha AN8855 Switch SoC
+Message-ID: <20250627214821.GA195510-robh@kernel.org>
 References: <20250626212321.28114-1-ansuelsmth@gmail.com>
- <20250626212321.28114-4-ansuelsmth@gmail.com>
+ <20250626212321.28114-6-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250626212321.28114-4-ansuelsmth@gmail.com>
+In-Reply-To: <20250626212321.28114-6-ansuelsmth@gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250627_144824_412535_4BCC2B46 
+X-CRM114-Status: GOOD (  17.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,68 +89,144 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 26, 2025 at 11:23:02PM +0200, Christian Marangi wrote:
-> Document support for Airoha AN8855 5-port Gigabit Switch.
+On Thu, Jun 26, 2025 at 11:23:04PM +0200, Christian Marangi wrote:
+> Document support for Airoha AN8855 Switch SoC. This SoC expose various
+> peripherals like an Ethernet Switch, a NVMEM provider and Ethernet PHYs.
 > 
-> It does expose the 5 Internal PHYs on the MDIO bus and each port
-> can access the Switch register space by configurting the PHY page.
+> It does also support i2c and timers but those are not currently
+> supported/used.
 > 
 > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 > ---
->  .../net/dsa/airoha,an8855-switch.yaml         | 86 +++++++++++++++++++
->  1 file changed, 86 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml
+>  .../bindings/mfd/airoha,an8855.yaml           | 175 ++++++++++++++++++
+>  1 file changed, 175 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/mfd/airoha,an8855.yaml
 > 
-> diff --git a/Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml b/Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml
+> diff --git a/Documentation/devicetree/bindings/mfd/airoha,an8855.yaml b/Documentation/devicetree/bindings/mfd/airoha,an8855.yaml
 > new file mode 100644
-> index 000000000000..fbb9219fadae
+> index 000000000000..a683db4f41d1
 > --- /dev/null
-> +++ b/Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml
-> @@ -0,0 +1,86 @@
+> +++ b/Documentation/devicetree/bindings/mfd/airoha,an8855.yaml
+> @@ -0,0 +1,175 @@
 > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
 > +%YAML 1.2
 > +---
-> +$id: http://devicetree.org/schemas/net/dsa/airoha,an8855-switch.yaml#
+> +$id: http://devicetree.org/schemas/mfd/airoha,an8855.yaml#
 > +$schema: http://devicetree.org/meta-schemas/core.yaml#
 > +
-> +title: Airoha AN8855 Gigabit Switch
+> +title: Airoha AN8855 Switch SoC
 > +
 > +maintainers:
 > +  - Christian Marangi <ansuelsmth@gmail.com>
 > +
 > +description: >
-> +  Airoha AN8855 is a 5-port Gigabit Switch.
+> +  Airoha AN8855 Switch is a SoC that expose various peripherals like an
+> +  Ethernet Switch, a NVMEM provider and Ethernet PHYs.
 > +
-> +  It does expose the 5 Internal PHYs on the MDIO bus and each port
-> +  can access the Switch register space by configurting the PHY page.
-> +
-> +$ref: dsa.yaml#/$defs/ethernet-ports
+> +  It does also support i2c and timers but those are not currently
+> +  supported/used.
 > +
 > +properties:
 > +  compatible:
-> +    const: airoha,an8855-switch
+> +    const: airoha,an8855
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  reset-gpios: true
+> +
+> +  efuse:
+> +    type: object
+> +    $ref: /schemas/nvmem/airoha,an8855-efuse.yaml
+> +    description: EFUSE exposed by the Airoha AN8855 SoC
+> +
+> +  ethernet-switch:
+> +    type: object
+> +    $ref: /schemas/net/dsa/airoha,an8855-switch.yaml
+> +    description: Switch exposed by the Airoha AN8855 SoC
+> +
+> +  mdio:
+> +    type: object
+> +    $ref: /schemas/net/airoha,an8855-mdio.yaml
+> +    description: MDIO exposed by the Airoha AN8855 SoC
 > +
 > +required:
 > +  - compatible
+> +  - reg
+> +  - mdio
+> +  - ethernet-switch
 > +
-> +unevaluatedProperties: false
+> +additionalProperties: false
 > +
 > +examples:
 > +  - |
-> +    ethernet-switch {
-> +        compatible = "airoha,an8855-switch";
+> +    #include <dt-bindings/gpio/gpio.h>
 > +
-> +        ports {
-
-ethernet-ports is preferred.
-
-> +            #address-cells = <1>;
-> +            #size-cells = <0>;
+> +    mdio {
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
 > +
-> +            port@0 {
+> +        soc@1 {
+> +            compatible = "airoha,an8855";
+> +            reg = <1>;
+> +
+> +            reset-gpios = <&pio 39 0>;
+> +
+> +            efuse {
+> +                compatible = "airoha,an8855-efuse";
+> +
+> +                #nvmem-cell-cells = <0>;
+> +
+> +                nvmem-layout {
+> +                    compatible = "fixed-layout";
+> +                    #address-cells = <1>;
+> +                    #size-cells = <1>;
+> +
+> +                    shift_sel_port0_tx_a: shift-sel-port0-tx-a@c {
+> +                       reg = <0xc 0x4>;
+> +                    };
+> +
+> +                    shift_sel_port0_tx_b: shift-sel-port0-tx-b@10 {
+> +                        reg = <0x10 0x4>;
+> +                    };
+> +
+> +                    shift_sel_port0_tx_c: shift-sel-port0-tx-c@14 {
+> +                        reg = <0x14 0x4>;
+> +                    };
+> +
+> +                    shift_sel_port0_tx_d: shift-sel-port0-tx-d@18 {
+> +                       reg = <0x18 0x4>;
+> +                    };
+> +
+> +                    shift_sel_port1_tx_a: shift-sel-port1-tx-a@1c {
+> +                        reg = <0x1c 0x4>;
+> +                    };
+> +
+> +                    shift_sel_port1_tx_b: shift-sel-port1-tx-b@20 {
+> +                        reg = <0x20 0x4>;
+> +                    };
+> +
+> +                    shift_sel_port1_tx_c: shift-sel-port1-tx-c@24 {
+> +                       reg = <0x24 0x4>;
+> +                    };
+> +
+> +                    shift_sel_port1_tx_d: shift-sel-port1-tx-d@28 {
+> +                        reg = <0x28 0x4>;
+> +                    };
+> +                };
+> +            };
+> +
+> +            ethernet-switch {
+> +                compatible = "airoha,an8855-switch";
+> +
+> +                ports {
 
-And ethernet-port@0
+Same comment here.
 
+Why do we need 2 examples of the same thing? Isn't this 1 complete 
+example here enough?
 
 Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+
+Rob
 
