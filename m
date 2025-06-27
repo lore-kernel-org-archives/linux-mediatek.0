@@ -4,94 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFCE3C7EE31
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jun 2025 07:00:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7334FC7EE39
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jun 2025 07:39:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UfXqL1VCpMdcfpMpfKfH39ExE2JdNIFR6jVxQI6Iv4Q=; b=K69zwKbyVYvd3C4JrXkmBH5P/h
-	1kevsCHFwdXJ4KI9X/tpgA4ho9LuJ5hnz/VDJAdEXAi9W5snXFeGeYNnPheu7AsBKJoMFD9+oQgS2
-	K1Qrx0UVAuYFiGdGG1pz9OViPkbsllKxbiyNNf15MRPOVKIU6+Vw14eI1E4WQhWe5OdqC9eUo1QZN
-	Vl0UD9Smw8Cz+qdRL4tR66nk1vSk3Zc8P89/ZCYYVBWggKGiDWZb0o1rjRNh8uKuVmXqnWljtV+nL
-	ZQE0waXrcIoJwtELurqUu2XAkQmwa37xMzukpveAIwioPhff4xs0ZGsCiyzinpyblgRhQBAAj1+0n
-	xkqVA1LQ==;
+	bh=aiy+F/Thxk00DAZfAeDvbH8iwPOVeSIk3RRSbBB7wL8=; b=Z5iPa1mdiJdpn5mqL0qF5lZvB7
+	Scm9vZXig0lADlKP9VtDPngxNivhKT3Hob5qC5BPgWwhdEj3zYPB5Qgrp10PfpeAp6/njZSegZ+y6
+	L29aytXG1adujVLaJTJ5ZdXw2YSUfxXXg2LveqR8wK0HYUyfUGQKEJS3GcgPW+lVIpicLpfYBHmUN
+	78SfX/JJ5fk7MGhc4QOV6fsSGQfR1MiopXLIR0ulUO0l7IsZlE+/uHK4GPbP6HT7ST+u8sJW0kpCx
+	CILxZTbZ8KmQWopFNRoWWSZilv8Jz/mku7Pqca0+MX0eXiZUZ3ncjbflynWl6uAWzpH3VjznASROq
+	Yk7ycdVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uV347-0000000DlFp-0Hzl;
-	Fri, 27 Jun 2025 07:00:03 +0000
+	id 1uV3gc-0000000Dqcc-3tvO;
+	Fri, 27 Jun 2025 07:39:50 +0000
 Received: from mail.8bytes.org ([85.214.250.239])
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uV30s-0000000Dkgk-1Xew;
-	Fri, 27 Jun 2025 06:56:43 +0000
+	id 1uV3Pk-0000000Dokg-2Jwq;
+	Fri, 27 Jun 2025 07:22:25 +0000
 Received: from 8bytes.org (p4ffe03ae.dip0.t-ipconnect.de [79.254.3.174])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mail.8bytes.org (Postfix) with ESMTPSA id B2DBE4D686;
-	Fri, 27 Jun 2025 08:56:36 +0200 (CEST)
+	by mail.8bytes.org (Postfix) with ESMTPSA id 53E654EF8A;
+	Fri, 27 Jun 2025 09:22:23 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=8bytes.org;
-	s=default; t=1751007397;
-	bh=8cyCUVLrNKS6tVu4VEKnS5rU8EEbVvMM4YBN4njzgJc=;
+	s=default; t=1751008943;
+	bh=Dk/pBSmbJ17G6vO11eCrfBy5crU9pUYl5+E7dDjzLlY=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=XU+Ec1H6zYbpoJnBguJ7GDr9FEN9rGsre0pu8KqaKGy81Z4kSMmAWmsLnuh8C6DXX
-	 NNDbZaaw/8hi+SEmWsp5x3pevvQorZ/gnxPIioOfE8HvHGxwz1755SXHcf4LYAXtZ2
-	 4mCpj7FQzDFz6VXNwUJwKVqKYmzDv8PJ9OZQsqYZo+D5KCzC+3KXRAYaDgs30cvzbf
-	 b9rnpd2DjGQE4e7TFeqIpB49EWs2qUxIo370ZNhi4u0ii2sX+By78Bt9A5CzII9ZQu
-	 qAYA7JvY8BJ+VxyGicYP9L2BwXzRfRdSbcDYET1GuYoeHH7ug+hgwd2x2yUSyjfWiH
-	 g0r0oGD4DIalg==
-Date: Fri, 27 Jun 2025 08:56:35 +0200
+	b=W90/rGBohRzRVv6HgAAOv7PSVTsfEuTP3aUn5CDsuQmDT9XlTMO+0gR7jIt0qcOLH
+	 fkmIndB80JUhTMxMGfy+d1/kyocyju5bZT8qEjBljyb0u9vPzJG4D+7RnsQz3zE3JV
+	 b2wkrrhZGz2vgvXJ1siyMPBFgrA3rt+yCiLp6JTvNmd6/QnMFjW4t9FOgkOlaQT3xK
+	 hPRXD8cf6rHD+eSRVVZnnQbenZF1hhilsdK0Xlfki1yrDNefaZVf+cQXWYchV0A8hy
+	 RXkvZ+UGxAxk71dthG2jEp/vThsIzYGxldIoPKcl+npZucUoE0YYcw2j1zrYs7FHOo
+	 0+P4869YykfoA==
+Date: Fri, 27 Jun 2025 09:22:22 +0200
 From: Joerg Roedel <joro@8bytes.org>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Cc: Alexandre Ghiti <alex@ghiti.fr>, Alim Akhtar <alim.akhtar@samsung.com>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Albert Ou <aou@eecs.berkeley.edu>, asahi@lists.linux.dev,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Gerald Schaefer <gerald.schaefer@linux.ibm.com>,
-	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
-	Janne Grunau <j@jannau.net>,
-	Jean-Philippe Brucker <jean-philippe@linaro.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Matthew Rosato <mjrosato@linux.ibm.com>,
-	Neal Gompa <neal@gompa.dev>, Orson Zhai <orsonzhai@gmail.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Paul Walmsley <paul.walmsley@sifive.com>,
-	Rob Clark <robin.clark@oss.qualcomm.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Samuel Holland <samuel@sholland.org>, Sven Peter <sven@kernel.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Krishna Reddy <vdumpa@nvidia.com>, virtualization@lists.linux.dev,
-	Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>,
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
 	Yong Wu <yong.wu@mediatek.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Lu Baolu <baolu.lu@linux.intel.com>,
-	Kevin Tian <kevin.tian@intel.com>, patches@lists.linux.dev,
-	Niklas Schnelle <schnelle@linux.ibm.com>,
-	Sven Peter <sven@svenpeter.dev>,
-	Tomasz Jeznach <tjeznach@rivosinc.com>
-Subject: Re: [PATCH v2 0/7] Remove ops.pgsize_bitmap
-Message-ID: <aF5Ao_yAbTGCPh3u@8bytes.org>
-References: <0-v2-68a2e1ba507c+1fb-iommu_rm_ops_pgsize_jgg@nvidia.com>
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	iommu@lists.linux.dev, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v3 0/3] iommu: omap: Simplify few things
+Message-ID: <aF5GrmCO7AkkKLaI@8bytes.org>
+References: <20250624-syscon-phandle-args-iommu-v3-0-1a36487d69b8@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <0-v2-68a2e1ba507c+1fb-iommu_rm_ops_pgsize_jgg@nvidia.com>
+In-Reply-To: <20250624-syscon-phandle-args-iommu-v3-0-1a36487d69b8@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250626_235642_549447_82E9B541 
-X-CRM114-Status: UNSURE (   7.09  )
+X-CRM114-CacheID: sfid-20250627_002224_805720_5092F8D0 
+X-CRM114-Status: UNSURE (   7.42  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -107,14 +77,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Jason Gunthorpe (7):
->   qiommu/arm-smmu-v3: Remove iommu_ops pgsize_bitmap
->   iommu/arm-smmu: Remove iommu_ops pgsize_bitmap
->   iommu: Remove ops.pgsize_bitmap from drivers that don't use it
->   iommu: Remove iommu_ops pgsize_bitmap from simple drivers
->   iommu/mtk: Remove iommu_ops pgsize_bitmap
->   iommu/qcom: Remove iommu_ops pgsize_bitmap
->   iommu: Remove ops->pgsize_bitmap
+On Tue, Jun 24, 2025 at 02:22:29PM +0200, Krzysztof Kozlowski wrote:
+> Krzysztof Kozlowski (3):
+>       iommu: omap: Drop redundant check if ti,syscon-mmuconfig exists
+>       iommu: omap: Use syscon_regmap_lookup_by_phandle_args
+>       iommu: mtk_iommu_v1: Simplify by dropping local 'mtk_mapping' variable
 
-Applied, thanks Jason.
+Applied patches 1 and 2 to the ti/omap branch, thanks.
 
