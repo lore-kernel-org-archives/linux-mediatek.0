@@ -4,87 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 064EBC7EE31
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jun 2025 02:51:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6444C7EE30
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jun 2025 03:07:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KIyz0TyYX+Z3NqBUdZDf3ZSHxoRX7/bXEgMDfSI548Y=; b=giZR2Jn57X09KeZV9ftGesuPT0
-	PCvWJtHru7ioGgvqyI63ZTcv0MRWPUUOF+QkjaswHP/CCsPHIEnOxQ9TlaVVgxVfMMifdN5DnvqYq
-	UqMDoVrdn4vJmLVdEzRBvHUejrOtCU9YxW27hvhw4HeahuJd0c7PcycO5XUR+AApEIySnOYe44Neo
-	dedbIroJb9OyxDCIuHEVQAs1XQVNQ3o8+YnxXevDmmj7d0z3r4xB4qN3HpIIi49ZCIWLbATM9jtYm
-	k0jK2i6bWSwyq9ajBgGpCmpiBEl6qPahGrO+a+4Rmia4G8Q4yBG7MOR/Aks246V3DYbQV8TyFT9TY
-	Llxl1tbw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OV4Vv1j62T0J9EDR2MBzhy7KvS/mL5uJgVrkoezDvk4=; b=JwGmQ9VtFGnGFFIcMBM4SwguVl
+	lr0lbllOPw23LMncUkV9XIr5WmjIBZuFvnAunCbghh/B4N/XcE03VifHJF1Kcnv+O16/P3YbiJnuM
+	IeM/Xy7d3vpZDKPE/zJLVbdelUb8BEvntuQ4LaydzzDyxwbIP+qlMQEs4+NKvOqIKtIOKfehe36YP
+	8SQeRYOjYO4S3/ZK30GJMsWsvFghnr8SpJpjcI2wnkUYpeMOkyJ1tzwKKkT3MIeXweUax2iJkltat
+	7ifHOgeiWPy3cRsMFird137FR0PYWCos7U9cs62o78DC3R6vwoyplw5mv7z8WCJk1HnhAw5l5mlGc
+	MhSK59Yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUzBY-0000000DOEM-25yR;
-	Fri, 27 Jun 2025 02:51:28 +0000
-Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+	id 1uUzQa-0000000DPoq-0pEg;
+	Fri, 27 Jun 2025 03:07:00 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUz9D-0000000DNuj-0yL7
-	for linux-mediatek@lists.infradead.org;
-	Fri, 27 Jun 2025 02:49:05 +0000
-Received: by mail-lf1-x130.google.com with SMTP id 2adb3069b0e04-553b82f3767so1742560e87.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 26 Jun 2025 19:49:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1750992540; x=1751597340; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=KIyz0TyYX+Z3NqBUdZDf3ZSHxoRX7/bXEgMDfSI548Y=;
-        b=OJn2LmL50WIuad0hrEaAiQeauyBljgdp7zo2HvgyHOvtahNmWzCo0QGpb/jtCZmKpC
-         sMitrlbthMYH7IFwXjWDK/Vc1465cnqyZAQLTrParyhP61sSMZVeqSx2V5nDjJQoO7kC
-         d3aUvmKkIM9jfkISIUg1U+IMWdesZ5e7fWnn8QqD84Xe1czAbWWyLkkLGeCd0TKll8gS
-         uo2w2RvNOyF+XdW+fX90IA2HnqnKMD/mQLfGyhx56sIlQv4qo0OU9SIaaaqRD1EklCYw
-         EO4u5RucM5N+SaXxeb8fM1M1gOA1+KFJMX/9GSk3Mkv3ECwLJtXD0fSjl7++bHEtVuoM
-         82ag==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1750992540; x=1751597340;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=KIyz0TyYX+Z3NqBUdZDf3ZSHxoRX7/bXEgMDfSI548Y=;
-        b=k1EIKEnT97CSFUnrbJZIRcWaVaL56tv6uz4ygDUl4Pp1vbqXnJfKg/PS8FQpVf7hnN
-         pqd51pQWhjE99f+evIpYeiEo1j8NroOfC3OcYqaXk403kZh6ho9S9WL9JYsJJLJiUti2
-         8wpm7hMSqQpknKWyFHPo6nU+hyVruHUApc3JSQPw+mN0T1uho+QGwbQTsZUayXOFjWzS
-         N8Uf+iPRNWhjCNUsktKdcQU4vb0fPkmpDN2KXZQifEusSHECXiEu4msFMOb5vHk6TJjv
-         UGu140ySKbJkBiuiDXsuY7pJkGDZYfQEzlT0lyNEcrMaP23eivQOCLn119/ZjAPoGEd/
-         bvZQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVujztucnluxOsp97jzfG05lsyNBjurAtl+2V0Uc/DZZcRsQUSl7iJZJuYh4jjmdGKEKqL89M/pK2RPQfb0XA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxtMHamtt7rnK5Z8l1qSoIeNpH9ShOlEmS8yxRZHEWg9FNh55Ng
-	SQaiMD8OE6QM39BVmvgp2iLdYqlVAj4D4BlVRe09aOgeZ2SFMjlxtTmK3LyDWglusucEVynVLqN
-	zC0Kcyj3I2QLAow6Ec6JUN7bSmlAtmin5mplULiA=
-X-Gm-Gg: ASbGncs82jxQvjcFJInwOet81kltx8JrCzY1ErWQC1qsB1YzevH/Ij1XymyX2qNqu89
-	Uek2VxZfxB6uEiY3voTOAQLzVTa7+nyMbYv/yi1W5d2KjYzYqyViATekgCxTrPP3hwwylCKNwOu
-	my9qvOlfKK3eo9+ZiDnqXISPOZFeJh4j6fdnzg5GGv3SLt4EfpDTy9qVDmobWs8Qapalz8PRiu
-X-Google-Smtp-Source: AGHT+IEzF/swD5xaOdJR7lMJjb1yXBvdw4JiGquGN0u5dPeY58LAcd6ntfOPW/1JZJGrYX4JaKsPUJ8VGHh+iWR50cE=
-X-Received: by 2002:a05:6512:4007:b0:553:5283:980f with SMTP id
- 2adb3069b0e04-5550ba29ed0mr628392e87.51.1750992540108; Thu, 26 Jun 2025
- 19:49:00 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250627022837.3331827-1-kuyo.chang@mediatek.com>
-In-Reply-To: <20250627022837.3331827-1-kuyo.chang@mediatek.com>
-From: John Stultz <jstultz@google.com>
-Date: Thu, 26 Jun 2025 19:48:48 -0700
-X-Gm-Features: Ac12FXwf59eyhe3NIP1HlmImClaDAHzqNeVDRK7bbuvKnPBO5OcLJhb39G9nTn8
-Message-ID: <CANDhNCorm58L9CqHyNORgfk=++HkCttmyCkM23Pn8rXV7cF41Q@mail.gmail.com>
-Subject: Re: [PATCH V4 1/1] sched/deadline: Fix dl_server runtime calculation formula
-To: Kuyo Chang <kuyo.chang@mediatek.com>
-Cc: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>, 
-	Juri Lelli <juri.lelli@redhat.com>, Vincent Guittot <vincent.guittot@linaro.org>, 
-	Dietmar Eggemann <dietmar.eggemann@arm.com>, Steven Rostedt <rostedt@goodmis.org>, 
-	Ben Segall <bsegall@google.com>, Mel Gorman <mgorman@suse.de>, 
-	Valentin Schneider <vschneid@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+	id 1uUzMV-0000000DPRm-1pGH;
+	Fri, 27 Jun 2025 03:02:49 +0000
+X-UUID: 30147a9e530311f09f706fa2197c6ceb-20250626
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=OV4Vv1j62T0J9EDR2MBzhy7KvS/mL5uJgVrkoezDvk4=;
+	b=o9dNvPwpSbmiE8l6zluijkcE2FcSLAqpk2KZ986d7dbSVWRceIGYj/DDeZWkDWaXV7npTioza0WO4GzIaebM+/plz3KBrBF56MUoUZe1UB4fdJJsN0IJm9h6eInhzXyAbYMi3U0fzmV8xVKiYBB2amTbsV7xHvi4R0C7MLSbiOE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.2,REQID:f79b41e1-fc8a-4f29-870a-f255fdf8d338,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:9eb4ff7,CLOUDID:a43c9d14-6a0e-4a76-950f-481909c914a4,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102,TC:nil,Content:0|50,
+	EDM:-3,IP:nil,URL:99|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0
+	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 30147a9e530311f09f706fa2197c6ceb-20250626
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
+	(envelope-from <kuyo.chang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 533628040; Thu, 26 Jun 2025 20:02:40 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Fri, 27 Jun 2025 11:02:36 +0800
+Received: from [10.233.130.16] (10.233.130.16) by mtkmbs13n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.1258.39 via Frontend
+ Transport; Fri, 27 Jun 2025 11:02:36 +0800
+Message-ID: <c057bbc383ab5525172b22a4f3480acbcac12045.camel@mediatek.com>
+Subject: Re: [PATCH v3 1/1] sched/deadline: Fix dl_server runtime
+ calculation formula
+From: Kuyo Chang <kuyo.chang@mediatek.com>
+To: John Stultz <jstultz@google.com>
+CC: Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>,
+	Juri Lelli <juri.lelli@redhat.com>, Vincent Guittot
+	<vincent.guittot@linaro.org>, Dietmar Eggemann <dietmar.eggemann@arm.com>,
+	Steven Rostedt <rostedt@goodmis.org>, Ben Segall <bsegall@google.com>, "Mel
+ Gorman" <mgorman@suse.de>, Valentin Schneider <vschneid@redhat.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Date: Fri, 27 Jun 2025 11:02:37 +0800
+In-Reply-To: <CANDhNCpNZd+s9+ZXU=+4t3CyV=7weFsbWQEx2=M9yphx6szt8Q@mail.gmail.com>
+References: <20250626030746.2245365-1-kuyo.chang@mediatek.com>
+	 <CANDhNCpNZd+s9+ZXU=+4t3CyV=7weFsbWQEx2=M9yphx6szt8Q@mail.gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.52.3-0ubuntu1 
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250626_194903_291571_54C4BBD5 
-X-CRM114-Status: GOOD (  34.92  )
+X-CRM114-CacheID: sfid-20250626_200247_486702_ACB80604 
+X-CRM114-Status: GOOD (  39.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,92 +92,164 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 26, 2025 at 7:28=E2=80=AFPM Kuyo Chang <kuyo.chang@mediatek.com=
+On Wed, 2025-06-25 at 22:25 -0700, John Stultz wrote:
+>=20
+>=20
+>=20
+> On Wed, Jun 25, 2025 at 8:08=E2=80=AFPM Kuyo Chang <kuyo.chang@mediatek.c=
+om>
 > wrote:
-> In our testing with 6.12 based kernel on a big.LITTLE system, we were
+> > [Symptom]
+> > The calculation formula for dl_server runtime is based on
+> > Frequency/capacity scale-invariance.
+> > This will cause excessive RT latency (expect absolute time).
+>=20
+> I appreciate your symptom/analysis/solution markers, but they are a
+> little unconventional for commit messages, so you might consider
+> dropping them.
+>=20
+> Further, you're explaining the cause of the problem before you
+> describe what you were seeing.
+>=20
+> I might suggest rewording as:
+> "In our testing with 6.12 based kernel on a big.LITTLE system, we
+> were
 > seeing instances of RT tasks being blocked from running on the LITTLE
 > cpus for multiple seconds of time, apparently by the dl_server. This
-> far exceeds the default configured 50ms per second runtime.
->
-> This is due to the fair dl_server runtime calculation being scaled
-> for frequency & capacity of the cpu.
->
-> Consider the following case under a Big.LITTLE architecture:
-> Assume the runtime is: 50,000,000 ns, and Frequency/capacity
-> scale-invariance defined as below:
-> Frequency scale-invariance: 100
-> Capacity scale-invariance: 50
-> First by Frequency scale-invariance,
-> the runtime is scaled to 50,000,000 * 100 >> 10 =3D 4,882,812
-> Then by capacity scale-invariance,
-> it is further scaled to 4,882,812 * 50 >> 10 =3D 238,418.
-> So it will scaled to 238,418 ns.
->
+> far exceeds the default configured 50ms per second runtime."
+>=20
+> Then you can get into the analysis where you can state as you had
+> above:
+> "This is due to the fair dl_server runtime calculation being scaled
+> for frequency & capacity of the cpu"
+>=20
+> > [Analysis]
+> > Consider the following case under a Big.LITTLE architecture:
+> >=20
+> > Assume the runtime is: 50,000,000 ns, and Frequency/capacity
+> > scale-invariance defined as below:
+> >=20
+> > Frequency scale-invariance: 100
+> > Capacity scale-invariance: 50
+> > First by Frequency scale-invariance,
+> > the runtime is scaled to 50,000,000 * 100 >> 10 =3D 4,882,812
+> > Then by capacity scale-invariance,
+> > it is further scaled to 4,882,812 * 50 >> 10 =3D 238,418.
+> >=20
+> > So it will scaled to 238,418 ns.
+>=20
+> This part is all good, but you might want to make it more clear why
+> the smaller scaled "runtime" value here results in longer delays for
+> RT tasks.
+> ie:
+>=20
 > This smaller "accounted runtime" value is what ends up being
 > subtracted against the fair-server's runtime for the current period.
 > Thus after 50ms of real time, we've only accounted ~238us against the
 > fair servers runtime. This 209:1 ratio in this example means that on
 > the smaller cpu the fair server is allowed to continue running,
-> blocking RT tasks, for over 10 seconds before it exhausts its supposed
-> 50ms of runtime.  And on other hardware configurations it can be even
+> blocking RT tasks, for over 10 seconds before it exhausts its
+> supposed
+> 50ms of runtime.=C2=A0 And on other hardware configurations it can be eve=
+n
 > worse.
->
-> For the fair deadline_server, to prevent realtime tasks from being
+>=20
+> > [Solution]
+> > The runtime for dl_server should be fixed time
+> > asis RT bandwidth control.
+> > Fix the runtime calculation formula for the dl_server.
+>=20
+> I think this can be stated more simply as:
+> "For the fair deadline_server, to prevent realtime tasks from being
 > unexpectedly delayed, we really do want to use fixed time, and not
-> scaled time for smaller capacity/frequency cpus. So remove the scaling
-> from the fair server's accounting to fix this.
->
+> scaled time for smaller capacity/frequency cpus. So remove the
+> scaling
+> from the fair server's accounting to fix this."
+>=20
+> > Signed-off-by: kuyo chang <kuyo.chang@mediatek.com>
+> > Acked-by: Juri Lelli <juri.lelli@redhat.com>
+> > Suggested-by: Peter Zijlstra <peterz@infradead.org>
+> > Suggested-by: John Stultz <jstultz@google.com>
+> > Tested-by: John Stultz <jstultz@google.com>
+> >=20
+> > v1:
+> > https://lore.kernel.org/all/20250614020524.631521-1-kuyo.chang@mediatek=
+.com/
+> > v2:
+> > https://lore.kernel.org/all/20250617155355.1479777-1-kuyo.chang@mediate=
+k.com/
+>=20
+> Please add a "---" line above the version data so it doesn't get
+> added
+> to the commit history.
+>=20
+> > Change-Id: Iaaa1ec78f405586c22ba56230ef1143206daa2d0
+>=20
+> Also no Change-Ids in upstream targeted commits.
+> ./scripts/checkpatch.pl should warn you about this, and its a good
+> idea in general to run that before submitting.
+>=20
+> > ---
+> > =C2=A0kernel/sched/deadline.c | 8 ++++++--
+> > =C2=A01 file changed, 6 insertions(+), 2 deletions(-)
+> >=20
+> > diff --git a/kernel/sched/deadline.c b/kernel/sched/deadline.c
+> > index ad45a8fea245..96a21f38fcc3 100644
+> > --- a/kernel/sched/deadline.c
+> > +++ b/kernel/sched/deadline.c
+> > @@ -1504,7 +1504,9 @@ static void update_curr_dl_se(struct rq *rq,
+> > struct sched_dl_entity *dl_se, s64
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (dl_entity_is_special(dl_=
+se))
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 return;
+> >=20
+> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 scaled_delta_exec =3D dl_scaled_d=
+elta_exec(rq, dl_se,
+> > delta_exec);
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 scaled_delta_exec =3D delta_exec;
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (!dl_server(dl_se))
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 scaled_delta_exec =3D dl_scaled_delta_exec(rq, dl_se,
+> > delta_exec);
+> >=20
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 dl_se->runtime -=3D scaled_d=
+elta_exec;
+> >=20
+> > @@ -1624,7 +1626,9 @@ void dl_server_update_idle_time(struct rq
+> > *rq, struct task_struct *p)
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (delta_exec < 0)
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 return;
+> >=20
+> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 scaled_delta_exec =3D dl_scaled_d=
+elta_exec(rq, &rq-
+> > >fair_server, delta_exec);
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 scaled_delta_exec =3D delta_exec;
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (!rq->fair_server.dl_server)
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 scaled_delta_exec =3D dl_scaled_delta_exec(rq, &rq-
+> > >fair_server, delta_exec);
+>=20
+> I still feel like these lines don't make much sense, and it seems
+> like
+> they could be dropped.=C2=A0 When is (!rq->fair_server.dl_server) true?
+>=20
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 rq->fair_server.runtime -=3D=
+ scaled_delta_exec;
+> >=20
+> > --
+>=20
+> Thanks so much again for finding this issue and resubmitting this
+> patch! I really do want to see this land quickly as it addresses a
+> pretty big issue.
 
-Thanks again for revising the commit message, this version is easier
-(for me at least) to follow.
+Thanks for your reminder and suggestion.
+Update to v4 as below link :)
 
+https://lore.kernel.org/all/20250627022837.3331827-1-kuyo.chang@mediatek.co=
+m/
 
-> diff --git a/kernel/sched/deadline.c b/kernel/sched/deadline.c
-> index ad45a8fea245..96a21f38fcc3 100644
-> --- a/kernel/sched/deadline.c
-> +++ b/kernel/sched/deadline.c
-> @@ -1624,7 +1626,9 @@ void dl_server_update_idle_time(struct rq *rq, stru=
-ct task_struct *p)
->         if (delta_exec < 0)
->                 return;
->
-> -       scaled_delta_exec =3D dl_scaled_delta_exec(rq, &rq->fair_server, =
-delta_exec);
-> +       scaled_delta_exec =3D delta_exec;
-> +       if (!rq->fair_server.dl_server)
-> +               scaled_delta_exec =3D dl_scaled_delta_exec(rq, &rq->fair_=
-server, delta_exec);
->
->         rq->fair_server.runtime -=3D scaled_delta_exec;
+> -john
 
-As I mentioned earlier, I still don't see this conditional as making a
-lot of sense, as I don't believe there is time when this function
-would be called and (!rq->fair_server.dl_server) would be true.
-And even if there were, I'm not sure it makes sense to scale the time
-interval based on the fair_server.dl_server flag.
-
-From a separate discussion, you highlighted that it might be useful
-once we have multiple dl_server types, which may want scaled
-accounting, but I think in that case we should use an explicit flag
-instead of the dl_server bit to denote if the accounting should be
-scaled or not.
-
-So, since your patch is a fix for a pretty bad bug, I think it should
-be focused on fixing the issue in the simplest and clearest way for
-the existing code, and not be too worried about integrating with
-future changes that haven't landed.
-
-Then, as those future changes land, we can see how best to generalize
-the decision to scale or not scale the accounting on a dl_server.
-
-That said, the conditional is a bit of a moot point, since I don't
-think we'll actually hit it, and I'm motivated to get the bug you are
-fixing resolved, so I wouldn't object if this went in as-is, but it
-seems like it would be much cleaner to just drop that conditional as
-you did in the original version of this patch.
-
-Thanks so much again for your iterating on this change here! I really
-appreciate your efforts to both find this issue as well as to get it
-fixed!
--john
 
