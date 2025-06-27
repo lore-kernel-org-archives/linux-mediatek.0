@@ -4,74 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AABB3C7EE2A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jun 2025 21:36:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDE02C77B7F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jun 2025 21:53:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9VD2KFnwD9ka8go5Vt6Q2d+aNS5659F2LUTDccgn6XM=; b=uPciypAozIQrBVXt/GAkG9UAtd
-	Vls+YXSKVbuCJurP0Ym8FYNL1GVat1WkjX1KEAngF4E8QQxXEmYbOjfjLaewymDEe/w5TQoYsdO+H
-	myiTg/vhiNgWG69MMcYQD1umTfPb443G5XAQtq/EeXUEk+DQMok+h+zdMk7wsD1SAwIgmt1miuGig
-	5KqoJKyinKFSpVWKb8rQ3rPhiozmiBEaAD3lvqsieZlHPLgHh1PVnHUC+Mng6FwLpQQ6xhWhp52pI
-	maO7fK6dE0Nqkhytc1rKB76nV0vwqObdSbF552SEHSKY2mBV/wmeAyiYo4t1zIPGtRlIs8r5vzxAo
-	Tc9H+BhA==;
+	bh=wqENPvGBHFWUsyFgZ18/L+kH9jVbtb5/qgokMbAREj4=; b=cqzamMal+wFOZ2CaYvc0zX3ama
+	7KTSGJC4OlGm781mB7rvhtwtuH/v7kL0lngyeImdZl7gcyo+dtOKUUoun88ljO8y9xFSXaI5I9EkN
+	CbccSOAeVqcxy+VVvK5CmeU6QqtvenCSybGs8aiaP0/cxegA3Za1DB1R8RT2R1suU70JhtwopLT7s
+	POraaLcV9qwtZzmOz0YrMlE3+CRP+aGxtRlgoch7i79rAIJ3+GA75quDQ1ZbKURRMoc7bIbTa33g0
+	tNCARnsACaI9h9AV53nYtUvMJWgvUaHA8Mqv0DEGP4XIC3C8sWli93hVUZ/0teBZxIw/KtAFsO9pS
+	Y2AqP1Lw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVGkE-0000000FroG-3AHh;
-	Fri, 27 Jun 2025 21:36:26 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uVH0b-0000000FtnN-1tHj;
+	Fri, 27 Jun 2025 21:53:21 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVGXd-0000000FqOr-1fji;
-	Fri, 27 Jun 2025 21:23:26 +0000
+	id 1uVGsB-0000000FsWW-2kBM;
+	Fri, 27 Jun 2025 21:44:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 13E7F4664A;
-	Fri, 27 Jun 2025 21:23:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CBB0DC4CEE3;
-	Fri, 27 Jun 2025 21:23:24 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 15E0461435;
+	Fri, 27 Jun 2025 21:44:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A4687C4CEE3;
+	Fri, 27 Jun 2025 21:44:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751059404;
-	bh=eJFxYUVuTiYmn7RP5+jGfs2IdBuQ1seJOqX9HC6rdao=;
+	s=k20201202; t=1751060678;
+	bh=b4bjcqtYTMlbCBJkkYv4E30QbkPwT0gz6mXrIsFMar4=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=bZaVSjkBqdnNT0peaZv6ETmCYkq+FDmct4kamm4Gftide9hPz1b6ZIZ0Z5OAzqEMX
-	 LJ3R5wCvC+FxOC8l9kO0f94lQh0mO8lgBZlGr/7cIXeg2BjQEN1/1km6EuzS2Uj6jM
-	 QpXp+oiPmpju1r0CZFoI4Gy5BRBn7a6ZBllXipZupSAWKWwbF3gHJFNPAUA+dHufmi
-	 HMcVStRTYoSPDZR7IvHSgYkujoFqxYcETVGCHatR2kpIHNjpxo5hM9Q6vR44FDnJPs
-	 SQOxL0OOdtyMpZR2g888TF1EcnOjaqdRHO9UTB1UAtGZR1ovHm3AjMnTawrF3tArhD
-	 EzJ1QzegVxM8Q==
-Date: Fri, 27 Jun 2025 16:23:24 -0500
+	b=X7LZXGuMzoYAPwAVmFLgM9ZXHBrFMbRhTDriRlOw/PJEGiL5TsFIW55+ILevN3XMZ
+	 e0I6+5cJhuher+4bqd+U2LfXSYPU1v+C8ZXAhGEOqJ0SfhsGyEAePZNtQCakduJ0tv
+	 3UTT1loKWWpkGN1J0XT9NCfWxPctHlKYyf4GuAqyB+iDe6ka2AUX82cXGALqIwXk7F
+	 1a/R2EQr9ihzEcrnjSusgAEB93D6/wSeg0xDv4Wy5aDEHyotgzbh+Fg5R3SWQa0qXs
+	 0ka6FS6xpazzLpq5KgRvPF2slmlnFRq1YDEQ/rCtEWQMLOPQH07iLvCdIQjCNuvKhX
+	 JK3kJJ14iL/tg==
+Date: Fri, 27 Jun 2025 16:44:37 -0500
 From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Max Shevchenko <wctrl@proton.me>
-Cc: Conor Dooley <conor+dt@kernel.org>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Jiri Slaby <jirislaby@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Wim Van Sebroeck <wim@linux-watchdog.org>,
-	devicetree@vger.kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Russell King <linux@armlinux.org.uk>, linux-serial@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: linux-mediatek@lists.infradead.org,
+	Russell King <linux@armlinux.org.uk>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Sean Wang <sean.wang@mediatek.com>,
-	Guenter Roeck <linux@roeck-us.net>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Lee Jones <lee@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-watchdog@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 06/11] dt-bindings: arm: mediatek: add boards based on
- the MT6572 SoC
-Message-ID: <175105940347.167208.8424905965473353735.robh@kernel.org>
-References: <20250626-mt6572-v2-0-f7f842196986@proton.me>
- <20250626-mt6572-v2-6-f7f842196986@proton.me>
+	Jakub Kicinski <kuba@kernel.org>, devicetree@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	Eric Dumazet <edumazet@google.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Simon Horman <horms@kernel.org>,
+	Srinivas Kandagatla <srini@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	Vladimir Oltean <olteanv@gmail.com>, netdev@vger.kernel.org,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"David S. Miller" <davem@davemloft.net>
+Subject: Re: [net-next PATCH v15 02/12] dt-bindings: net: Document support
+ for Airoha AN8855 Switch PBUS MDIO
+Message-ID: <175106067736.193475.3574090852380015869.robh@kernel.org>
+References: <20250626212321.28114-1-ansuelsmth@gmail.com>
+ <20250626212321.28114-3-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250626-mt6572-v2-6-f7f842196986@proton.me>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250627_142325_455991_5D01B75D 
-X-CRM114-Status: GOOD (  10.16  )
+In-Reply-To: <20250626212321.28114-3-ansuelsmth@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,16 +89,22 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 26 Jun 2025 11:53:59 +0300, Max Shevchenko wrote:
-> Add entries for the JTY D101 tablet and the Lenovo A369i smartphone.
+On Thu, 26 Jun 2025 23:23:01 +0200, Christian Marangi wrote:
+> Document support for Airoha AN8855 PBUS MDIO. Airoha AN8855 Switch
+> expose a way to access internal PHYs via Switch register.
+> This is named internally PBUS and does the function of an MDIO bus
+> for the internal PHYs.
 > 
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Signed-off-by: Max Shevchenko <wctrl@proton.me>
+> It does support a maximum of 5 PHYs (matching the number of port
+> the Switch support)
+> 
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 > ---
->  Documentation/devicetree/bindings/arm/mediatek.yaml | 5 +++++
->  1 file changed, 5 insertions(+)
+>  .../bindings/net/airoha,an8855-mdio.yaml      | 57 +++++++++++++++++++
+>  1 file changed, 57 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/net/airoha,an8855-mdio.yaml
 > 
 
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
 
