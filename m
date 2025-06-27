@@ -4,63 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E746C7EE2A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jun 2025 20:07:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D6C2C7EE2A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jun 2025 20:19:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3fRcZWlxD0oE1gfBZKarcALkmG9bip35YO45KWPYWSE=; b=HIheNC25NRaOm/bUjiI5n7wrDn
-	tggU4qcMJIyjFeBc/88BSlKBdMCtQMJX1DyaCJ9ES/dIA22zDn/P/LSaWgwTmEB23qI5OEFQwQsCo
-	fdo4b+Mif9sRZC1ryosdTCXwbkeV14pRzFj8xaW3A4NXGIKm7JPzCJdjbI9qrCfp2c/DgrQgzsHhu
-	CY+aCpJmbMSKG2n9MwGqu2z9vNAvHKogXzn+9fK4JPqREe97dl2gMSFycydYVl2EHV9FcE5JIEknw
-	4KVa3s5EQ/Oq5+KMwqgXfnZzDf4C7VoFVM+vUEDrYqgMQ1tIa7Jcm/OncLslLh24N3Rt90xIWZK/l
-	6OqVNC1Q==;
+	bh=IClg3koNX1rpXgeqgGWAy2P2TrvFqSBm3yrz7DXFiYc=; b=XRBdBA6xiE596xnMMgW2MhV+Jf
+	dI1yeBXqrMRcx//HdCzWjVjpiTgnKvh5fdEUKMxyPKFlYSvUl1A35lXHhaPpHadJhQwbu24p9aZbZ
+	CoLCfE2x8YwJvMRgV/CbQoG83O+rJ9GkEyCSj69yPkaeg3qzDGqYVuAu/HiEqIBfUOXXASfCYOX01
+	1khXxe3jrlC4UH0/XjsGpEEsKI8hpI0BVocQI5bptu4mAqqK1KXO6+UY4CK93rbAO6Ra1vuoZrxFD
+	kYpbvrk++OOQauak+lOTPlKq2vQ5Z1FZbTys6/koPfPJ9XBtHk3DZxa62tBD/zp7wZgOXXPdikGmE
+	VFppcMRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVFMU-0000000Fika-42nd;
-	Fri, 27 Jun 2025 20:07:50 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uVFXs-0000000Fjpz-32oQ;
+	Fri, 27 Jun 2025 20:19:36 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVFMI-0000000FifD-0JEV;
-	Fri, 27 Jun 2025 20:07:39 +0000
+	id 1uVFQQ-0000000Fj62-0xxd;
+	Fri, 27 Jun 2025 20:11:54 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id CC57B5C6DB1;
-	Fri, 27 Jun 2025 20:07:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 63393C4CEE3;
-	Fri, 27 Jun 2025 20:07:36 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 6689A61435;
+	Fri, 27 Jun 2025 20:11:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F2E32C4CEE3;
+	Fri, 27 Jun 2025 20:11:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751054856;
-	bh=evi9mrGpfq42RtZCClIuGM2tsnpjZlb3N0ftCknmAJ0=;
+	s=k20201202; t=1751055113;
+	bh=j480d8kCKmPEv/s1I085hF2TgeZLCw2SbopKfGFaiCc=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=dAh8YiI5mCaW34lHKtdKCXr+8HAOMMwPUhydtdeIAAgVDnAoccZXq4QlSbq7wLnaY
-	 +icmkC7dh4qVpD9rK8gZvSWPbaGaF28iMDGKLJZqNLHG/B9dbxu+AB/fvhh8HNzFgP
-	 CgDKVjQBbSbkRLh2FAHx49ytuLJyhaGj8MWsJGCvKKqZu0mSFAgN+FRsLLWUDs26hU
-	 wXA5lF98WraRg/8x50dLx17BkCukQwOxCYEbG3DgAfs6mUDr/vQU5EUO+p/RIc9syg
-	 gBqpgrn0GTrONoP32XqBYsKai7UEnYPqIEW7E2IW7op7lQl4DsCRelgw3tUPLQGD79
-	 kkq4b/ZgbLoUA==
-Date: Fri, 27 Jun 2025 15:07:35 -0500
+	b=oS8WYC9x/7XhB5hLSlEiIiX+fhE4IFlUON6lQtVaHwQKQqTI/neox5yvPgnmoHIDU
+	 BPZjNf6mASLzwlTkMLu6Q+3K0TNkeeUQyp1/CbH5aJ1IVNGg1QbgXvOZRRHua9FewX
+	 p5vzDP4GoiK6VczT2MuY8ldfpKNb1ZuS5zDqLmHM0wkJn0NkM9tNyapWTy7L9b7DRF
+	 DgnPmwybwvVD39nIvbfjS3sh/80OkM0A9fOx9v2rJnP41n0h3ScdbwNvV8NM3W0BKn
+	 FqaLVTTGyNm4FQVl9a1R4Ndt8w8qG+91ijqc2TYb9wsuXkpRrOUmDJIalXECE+d4QP
+	 bTJoZ7iqO6ykA==
+Date: Fri, 27 Jun 2025 15:11:52 -0500
 From: Rob Herring <robh@kernel.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: sboyd@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
-	matthias.bgg@gmail.com, hsin-hsiung.wang@mediatek.com,
-	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v1 1/5] dt-bindings: spmi: Add MediaTek MT8196 SPMI 2
- Arbiter/Controllers
-Message-ID: <20250627200735.GA4094329-robh@kernel.org>
-References: <20250623120047.108961-1-angelogioacchino.delregno@collabora.com>
- <20250623120047.108961-2-angelogioacchino.delregno@collabora.com>
+Cc: jianjun.wang@mediatek.com, ryder.lee@mediatek.com, bhelgaas@google.com,
+	lpieralisi@kernel.org, kwilczynski@kernel.org,
+	manivannan.sadhasivam@linaro.org, krzk+dt@kernel.org,
+	conor+dt@kernel.org, matthias.bgg@gmail.com,
+	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v1 2/3] dt-bindings: PCI: mediatek-gen3: Add support for
+ MT6991/MT8196
+Message-ID: <20250627201152.GA4114099-robh@kernel.org>
+References: <20250623120058.109036-1-angelogioacchino.delregno@collabora.com>
+ <20250623120058.109036-3-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250623120047.108961-2-angelogioacchino.delregno@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250627_130738_200554_E6B85DAB 
-X-CRM114-Status: GOOD (  17.62  )
+In-Reply-To: <20250623120058.109036-3-angelogioacchino.delregno@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,169 +74,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 23, 2025 at 02:00:43PM +0200, AngeloGioacchino Del Regno wrote:
-> Document the MT8196 SPMI 2.0 Controller with a new schema.
-> This is a MIPI SPMI 2.0 compliant IP, composed of a main arbiter
-> and two SPMI master controllers with Request Capable Slave (RCS)
-> support.
+On Mon, Jun 23, 2025 at 02:00:57PM +0200, AngeloGioacchino Del Regno wrote:
+> Add compatible strings for MT8196 and MT6991 (which are fully
+> compatible between each other) and clock definitions.
+> 
+> These new SoCs don't have tl_96m and tl_32k clocks, but need
+> an AHB to APB bus clock and a low power clock.
 > 
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  .../bindings/spmi/mediatek,mt8196-spmi.yaml   | 138 ++++++++++++++++++
->  1 file changed, 138 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/spmi/mediatek,mt8196-spmi.yaml
+>  .../bindings/pci/mediatek-pcie-gen3.yaml      | 35 +++++++++++++++++++
+>  1 file changed, 35 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/spmi/mediatek,mt8196-spmi.yaml b/Documentation/devicetree/bindings/spmi/mediatek,mt8196-spmi.yaml
-> new file mode 100644
-> index 000000000000..d7eb63e81a5c
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/spmi/mediatek,mt8196-spmi.yaml
-> @@ -0,0 +1,138 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/spmi/mediatek,mt8196-spmi.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek MT8196 SPMI 2.0 Controller
-> +
-> +maintainers:
-> +  - Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> +
-> +description:
-> +  The MediaTek MT8196 SoC features a SPMI version 2.0 compliant controller,
-> +  with internal wrapping arbitration logic to allow for multiple on-chip
-> +  devices to control up to two SPMI buses.
-> +  The main arbiter also acts as an interrupt controller, arbitering also
-> +  the interrupts coming from SPMI-connected devices into each of the nested
-> +  interrupt controllers from any of the present SPMI buses.
-> +
-> +properties:
-> +  compatible:
-> +    oneOf:
-> +      - enum:
-> +          - mediatek,mt8196-spmi
+> diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+> index 162406e0691a..02cddf0246ce 100644
+> --- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+> +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+> @@ -52,7 +52,12 @@ properties:
+>                - mediatek,mt8188-pcie
+>                - mediatek,mt8195-pcie
+>            - const: mediatek,mt8192-pcie
 > +      - items:
 > +          - enum:
-> +              - mediatek,mt6991-spmi
-> +          - const: mediatek,mt8196-spmi
+> +              - mediatek,mt6991-pcie
+> +          - const: mediatek,mt8196-pcie
+>        - const: mediatek,mt8192-pcie
+> +      - const: mediatek,mt8196-pcie
+>        - const: airoha,en7581-pcie
+>  
+>    reg:
+> @@ -212,6 +217,36 @@ allOf:
+>  
+>          mediatek,pbus-csr: false
+>  
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
+> +              - mediatek,mt8196-pcie
+> +    then:
+> +      properties:
+> +        clocks:
+> +          minItems: 6
 > +
-> +  ranges: true
+> +        clock-names:
+> +          items:
+> +            - const: pl_250m
+> +            - const: tl_26m
+> +            - const: bus
+> +            - const: low_power
+> +            - const: peri_26m
+> +            - const: peri_mem
 > +
-> +  '#address-cells':
-> +    const: 1
-> +
-> +  '#size-cells':
-> +    const: 1
-> +
-> +patternProperties:
-> +  "^spmi@[a-f0-9]+$":
-> +    type: object
-> +    $ref: /schemas/spmi/spmi.yaml
-> +    unevaluatedProperties: false
-> +
-> +    properties:
-> +      reg:
-> +        items:
-> +          - description: controller interface registers
-> +          - description: spmi master controller registers
-> +
-> +      reg-names:
-> +        items:
-> +          - const: pmif
-> +          - const: spmimst
-> +
-> +      clocks:
-> +        items:
-> +          - description: controller interface system clock
-> +          - description: controller interface timer clock
-> +          - description: spmi controller master clock
-> +
-> +      clock-names:
-> +        items:
-> +          - const: pmif_sys_ck
-> +          - const: pmif_tmr_ck
-> +          - const: spmimst_clk_mux
-> +
-> +      interrupts:
-> +        maxItems: 1
-> +
-> +      interrupt-names:
-> +        const: rcs
-> +
-> +      interrupt-controller: true
-> +
-> +      "#interrupt-cells":
-> +        const: 3
-> +        description: |
-> +          cell 1: slave ID for the requested interrupt (0-15)
-> +          cell 2: the requested peripheral interrupt (0-7)
-> +          cell 3: interrupt flags indicating level-sense information,
-> +                  as defined in dt-bindings/interrupt-controller/irq.h
-> +    required:
-> +      - reg
-> +      - reg-names
-> +      - clocks
-> +      - clock-names
-> +      - interrupts
-> +      - interrupt-names
-> +      - interrupt-controller
-> +      - "#interrupt-cells"
-> +
-> +required:
-> +  - compatible
-> +  - ranges
-> +  - '#address-cells'
-> +  - '#size-cells'
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +
-> +    soc {
-> +      #address-cells = <2>;
-> +      #size-cells = <2>;
-> +
-> +      spmi-arbiter@1c018000 {
-> +        compatible = "mediatek,mt8196-spmi";
-> +        ranges = <0 0 0x1c018000 0x4900>;
-> +        #address-cells = <1>;
-> +        #size-cells = <1>;
-> +
-> +        spmi@0 {
-> +          reg = <0 0x900>, <0x4800 0x100>;
-> +          reg-names = "pmif", "spmimst";
-> +          interrupts-extended = <&pio 292 IRQ_TYPE_LEVEL_HIGH>;
-> +          interrupt-names = "rcs";
-> +         interrupt-controller;
+> +        resets:
+> +          minItems: 1
 
-Indentation error.
+The min is already 1.
 
-Otherwise,
-
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
-
-> +          #interrupt-cells = <3>;
-> +          clocks = <&pmif_sys>, <&pmif_tmr>, <&spmi_mst>;
-> +          clock-names = "pmif_sys_ck", "pmif_tmr_ck", "spmimst_clk_mux";
-> +        };
+> +          maxItems: 2
 > +
-> +        spmi@2000 {
-> +          reg = <0x2000 0x900>, <0x4000 0x100>;
-> +          reg-names = "pmif", "spmimst";
-> +          interrupts-extended = <&pio 291 IRQ_TYPE_LEVEL_HIGH>;
-> +          interrupt-names = "rcs";
-> +          interrupt-controller;
-> +          #interrupt-cells = <3>;
-> +          clocks = <&pmif_sys>, <&pmif_tmr>, <&spmi_mst>;
-> +          clock-names = "pmif_sys_ck", "pmif_tmr_ck", "spmimst_clk_mux";
-> +        };
-> +      };
-> +    };
-> +...
+> +        reset-names:
+> +          minItems: 1
+> +          maxItems: 2
+
+It would be good to define what the names are. I assume they are fixed 
+and not just any of the allowed ones.
+
+> +
+> +        mediatek,pbus-csr: false
+> +
+>    - if:
+>        properties:
+>          compatible:
 > -- 
 > 2.49.0
 > 
