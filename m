@@ -4,65 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45373C7EE32
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jun 2025 00:08:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E190C7EE32
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jun 2025 00:51:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6EBkDTY1DVUwVzOvzQgyYtm8oQtXhbvi3mvrRtVqpno=; b=RcgjMh6gmVkHRaRWVFNxIndGOF
-	Hl35barnrVqKrEG+EDzzZjgeHzQ3t5zHRV25cb16kMEPF9SSgcqFsNxb3lMVhwBK8ZyvSZG15aoJ6
-	F5H69C4U2ww+j8v2mMgmuugurS0iZctxx9f9eBdpulFLcpY3nMSm9I6/hs+RF1SOJRd+REa6gPgkq
-	I99DMgTHPF8Hfhz/N1kd2vJ/IZtxiuY3CCIZXxzFZCIfIfg8e77zeyuTWotr8OH8uQYBUPSk87A4c
-	FaC5KeIiq7bJCm6K4zxLgnvBTDX5wZ26BKs+FsFT55J23zBq2Zk3i+V5Co74BC8XVEcloLfxMtU2l
-	7eT4m3/w==;
+	bh=l/Lj2O3Fl3V+yFfxK6lI8xQpWZAZ5Dqiye7be9pLZEM=; b=RkPwJ/WFoOqjEBF01Y3KDAaClc
+	hTgiUHkE0J8z2v/GKLrjycVNK7cP2zUZ8gvddT64E5Bf4d8GAu5CGx8rSSHBx+7nBqO54Rz4M6LL2
+	/37cZjX9JSefzhICkbZ/AgeComirlmtD6QnqKCVtTmaHwCp8NoL5u2XXB56cJDRSOLqtWrmcxMDSE
+	ZzSkaBYQvrYMbfNmdAsVanTtBxwcmUhuB+Ti/1OLIAGLXMqu0dyswKFIb7v0bV9x+jl2u9vThVam9
+	hkBfkFDgengqmhQgLFPyxg6jwoTEYBflFGqSzlixWtGcakHhjHQr1wGSov5Bib+9F1tVzV/VmCUi/
+	7yvYC5Iw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUweG-0000000DAae-01xV;
-	Fri, 27 Jun 2025 00:08:56 +0000
+	id 1uUxJG-0000000DFfq-1uf4;
+	Fri, 27 Jun 2025 00:51:18 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uUvKz-0000000Cy0U-1LF5;
-	Thu, 26 Jun 2025 22:44:58 +0000
+	id 1uUwop-0000000DBmm-2B3k;
+	Fri, 27 Jun 2025 00:19:52 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id EC47744731;
-	Thu, 26 Jun 2025 22:44:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D903C4CEEB;
-	Thu, 26 Jun 2025 22:44:56 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id DEFAC457C3;
+	Fri, 27 Jun 2025 00:19:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BE18CC4CEEB;
+	Fri, 27 Jun 2025 00:19:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1750977896;
-	bh=iIVxK75n9yifPDH8xfQqAE4cWRG5nMYGTwZryyQ4vxI=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=oF71iFGUJtNGLoUJckRGl4g6TBbZB6rRaYacVDiaeV+RJuIdIun5xbEGgLq6owLoZ
-	 TPrmGyojuS3ZO95jLuPwmJVwsceBa9jXH4SHOpXyAy9e5EXbpy6GQzoGndU4cou+3z
-	 3CbOlOzGg62A+oEYfq7ZQOS4w8y+mxniEAiSEArs6YDh6BFP4N5tWiOZu57ihil281
-	 e9HosDW8+Mu27iNNbUBSxg0xDL4f45m5ALWSEbDVl/Ty3KojXZqujnXxTeH6/NeyUV
-	 NaQgdFV6yFyjA0qnzqeEulDsfjr3P2gQwvPi+6B5yatq5f5Wkf5EaX7pGDEEyOccE7
-	 ugIJe5IsQ+3Og==
-From: Vinod Koul <vkoul@kernel.org>
-To: sean.wang@mediatek.com, matthias.bgg@gmail.com, 
- angelogioacchino.delregno@collabora.com, eugen.hristev@linaro.org, 
- Qiu-ji Chen <chenqiuji666@gmail.com>
-Cc: dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- baijiaju1990@gmail.com, stable@vger.kernel.org, 
- kernel test robot <lkp@intel.com>
-In-Reply-To: <20250606090017.5436-1-chenqiuji666@gmail.com>
-References: <20250606090017.5436-1-chenqiuji666@gmail.com>
-Subject: Re: [PATCH v2] dmaengine: mediatek: Fix a flag reuse error in
- mtk_cqdma_tx_status()
-Message-Id: <175097789639.71042.9318764811054484272.b4-ty@kernel.org>
-Date: Thu, 26 Jun 2025 15:44:56 -0700
-MIME-Version: 1.0
+	s=k20201202; t=1750983590;
+	bh=A/GPq/k9Nay0IeBg/c26bLVz5zmhn+66UN35AjQ18KY=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=GPHakjTEzBgJZYFQzPu07aArQupswCEtrO40OOgknyCfhs7wzAbukHHOCtiIik1ra
+	 anDHFJgX1j30s2e/PgCiC8BGB2i2C6gqwaeLyb7eDz3qb0ZnI+1i2VpG8BHruj2pvU
+	 MIC+VrIUbmaqtochAcwS5svxt6d8nsOnn2wPflOpzvGQsOp35J+zZKWEV/GRsex5ma
+	 lyJH0WM1TO837tJfisqPPN/HByu+mSvvs84Z5ef4b5nHB8sAbpRORG+VlF7UHiMcZt
+	 rJ9EsWc1G/sbPPM5W0biLBCkucVokm/BFg6kbknpJ0xVr4QZeNFSSngYMRmela7uvl
+	 0Unc7pcUINj/w==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 33CE13A40FCB;
+	Fri, 27 Jun 2025 00:20:18 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.13.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net] net: airoha: Get rid of dma_sync_single_for_device()
+ in airoha_qdma_fill_rx_queue()
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <175098361699.1380299.1821906889134866551.git-patchwork-notify@kernel.org>
+Date: Fri, 27 Jun 2025 00:20:16 +0000
+References: <20250625-airoha-sync-for-device-v1-1-923741deaabf@kernel.org>
+In-Reply-To: <20250625-airoha-sync-for-device-v1-1-923741deaabf@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250626_154457_396994_5100262D 
-X-CRM114-Status: UNSURE (   5.06  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250626_171951_581533_60153EB7 
+X-CRM114-Status: GOOD (  10.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,20 +75,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hello:
 
-On Fri, 06 Jun 2025 17:00:17 +0800, Qiu-ji Chen wrote:
-> Fixed a flag reuse bug in the mtk_cqdma_tx_status() function.
+This patch was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Wed, 25 Jun 2025 16:43:15 +0200 you wrote:
+> Since the page_pool for airoha_eth driver is created with
+> PP_FLAG_DMA_SYNC_DEV flag, we do not need to sync_for_device each page
+> received from the pool since it is already done by the page_pool codebase.
 > 
+> Fixes: 23020f049327 ("net: airoha: Introduce ethernet support for EN7581 SoC")
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 > 
+> [...]
 
-Applied, thanks!
+Here is the summary with links:
+  - [net] net: airoha: Get rid of dma_sync_single_for_device() in airoha_qdma_fill_rx_queue()
+    https://git.kernel.org/netdev/net-next/c/4cd9d227ab83
 
-[1/1] dmaengine: mediatek: Fix a flag reuse error in mtk_cqdma_tx_status()
-      commit: 8eba2187391e5ab49940cd02d6bd45a5617f4daf
-
-Best regards,
+You are awesome, thank you!
 -- 
-~Vinod
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
 
 
