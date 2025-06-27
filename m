@@ -4,58 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE666C77B7F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jun 2025 20:26:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A08F5C7EE2A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jun 2025 21:29:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=anT+MpcAETEZTFVNotlxJrIA1V52NxZb8yCs+oSUW7A=; b=bxNcpemEl/HXHQ6iscFBMV0/1B
-	9QHFqxsNOfa6nngYabp4dsvTMmpav5CiLYthxxspsblqLSaoZN+uAc3xdzytiWnjQQValYkFX1Sxh
-	0Z2Weglsyccv8Ongl8jlU7GlDYSl8axI/cV34iGdnNjYNtmS2EIgsuyBSi8de25dEUbiYdAW1QYgX
-	kYBLX0y5Lh2Je710C/lmBzSnHmLdyIx1PxSkvY8oToc9N45x4D7zKDcpntJ+3lL2R6aUgQISQVSCi
-	SxeuJDFV46NbdYFPUFv5WhzbSVQKTwkNEIx97xqmeF40U+PVfmFN40TOVg0WzgZ3kcQwmlUeItkkI
-	aczcCgrQ==;
+	bh=sUQc63ZSqLYqu5x+OVH4DZV+PY3biEigmwd9eR3q1gE=; b=mUkK3bs/c+V/eqy9DN9cugCZHk
+	8g0kqoN+c+RCrKx1dkNOF+WNZoXrsUXKiXRDpJ1tp04P4rGbXr/Xq8D7fl1AEx++dnU1xxAPEebbF
+	ToFJdtNKB/MFCmdNIfeLjyEfUFfG1wFqqMATkmJ7H3dHUBJcCkuSXt2TARwDw89f9NPF++S6Fwc30
+	CFMrBVno+xcE4/hj66VXfQVl4nrQCiVj4LgzuoObNy4246Uer50Qwv71vMYO7sfyMuIRpvpQpFlGx
+	GCaGBTADb18tTw6+oGaXodzOtWUtQGKjjTvwXGWJ6VspmPZXtKjB7kfnnf8+652nvRHA2AY0Wz+Km
+	7MLaniiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVFeg-0000000FkXs-3hFr;
-	Fri, 27 Jun 2025 20:26:38 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uVGdG-0000000FqyZ-0Rn5;
+	Fri, 27 Jun 2025 21:29:14 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVFU9-0000000FjXT-28yu;
-	Fri, 27 Jun 2025 20:15:47 +0000
+	id 1uVGWz-0000000FqCe-1rK8;
+	Fri, 27 Jun 2025 21:22:45 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E113944CD4;
-	Fri, 27 Jun 2025 20:15:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A5257C4CEE3;
-	Fri, 27 Jun 2025 20:15:44 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 88B5961435;
+	Fri, 27 Jun 2025 21:22:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 24855C4CEE3;
+	Fri, 27 Jun 2025 21:22:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751055344;
-	bh=A1HZdHwLlVd1wktKvcUvDiv1sLcJQsvaROUniDdEirI=;
+	s=k20201202; t=1751059364;
+	bh=f/Hjt44z5eQtUir5T1oW77jFYNUvVS0e+aUkWqb1azU=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qrHiXih+BZdymtaHzgqTsVDdu1FEBGcLRQgLhv1aG2fsboVDOZbVMbynjwTaX3sNA
-	 iWGag08iZ4mv30r/ci/yihUghINwgdiMVZhoZBh3bnyRsXN5OthTcrzdiFHQ41xlmk
-	 2woK0MPlzohsTuK9e63xEhfpn+73hPWvc9IN1IsA3hHrKBOYPv/FvVYXSbyu6VGn8c
-	 i19BkmMr0OojSpgJxRcDIwIPlwJ1tP+2svqvKBr7A8H3B8V5Gr3lGA8x91em23ot1z
-	 K/BMTKv86TfG4EaUgc3t9yudO3Bo4hTMV48TuVsbF7MWaeEADllTHH67D/o+viXmad
-	 hTLcRg4Fpphdw==
-Date: Fri, 27 Jun 2025 15:15:43 -0500
-From: Rob Herring <robh@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v1 01/13] dt-bindings: power: mediatek: Document
- mediatek,bus-protection
-Message-ID: <20250627201543.GA4171766-robh@kernel.org>
-References: <20250623120154.109429-1-angelogioacchino.delregno@collabora.com>
- <20250623120154.109429-2-angelogioacchino.delregno@collabora.com>
+	b=JcBllNNALh/S23+GMaSDwmJr3LC2G/WQrNYvN2TZ9DuEQ3WU3uGjD1MP5+GwVvhP9
+	 Qi0IK9xq81jM1WJoA+xKJQGG2gPJZzz7gfanv99rv7smAQzg3os9J3y/Ccaf7w+eKq
+	 vnKJWTf/nxT9R5g6va1mhj+8WdoqItsn2lUTIPjmiOTZkai2H7/bCFu9cEx2ah2QQh
+	 NEj0p+B3E/i41U4JQ6ihAAuDQ7w9S3kXo0vApRZxq8s/8+4+PBPtf6LCN+sD1XjgQA
+	 DSMx0jCwiPzWFM6ZukJbNYR8xygxZwSZixb8+VbqGbLfhRzrd9MqYOUnBwTZc+knc7
+	 eb0Vii0FyvAmg==
+Date: Fri, 27 Jun 2025 16:22:43 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Max Shevchenko <wctrl@proton.me>
+Cc: Russell King <linux@armlinux.org.uk>, linux-serial@vger.kernel.org,
+	Conor Dooley <conor+dt@kernel.org>, linux-watchdog@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Wim Van Sebroeck <wim@linux-watchdog.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Daniel Lezcano <daniel.lezcano@linaro.org>,
+	Guenter Roeck <linux@roeck-us.net>,
+	Jiri Slaby <jirislaby@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Sean Wang <sean.wang@mediatek.com>,
+	linux-arm-kernel@lists.infradead.org,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH v2 02/11] dt-bindings: interrupt-controller:
+ mediatek,mt6577-sysirq: add MT6572
+Message-ID: <175105936297.165672.12493055283897899399.robh@kernel.org>
+References: <20250626-mt6572-v2-0-f7f842196986@proton.me>
+ <20250626-mt6572-v2-2-f7f842196986@proton.me>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250623120154.109429-2-angelogioacchino.delregno@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250627_131545_589834_4980580D 
-X-CRM114-Status: GOOD (  18.67  )
+In-Reply-To: <20250626-mt6572-v2-2-f7f842196986@proton.me>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,104 +79,20 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, conor+dt@kernel.org, mbrugger@suse.com, y.oudjana@protonmail.com, linux-pm@vger.kernel.org, ulf.hansson@linaro.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, lihongbo22@huawei.com, wenst@chromium.org, matthias.bgg@gmail.com, mandyjh.liu@mediatek.com, krzk+dt@kernel.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 23, 2025 at 02:01:42PM +0200, AngeloGioacchino Del Regno wrote:
-> Add a new mediatek,bus-protection property in the main power
-> controller node and deprecate the old mediatek,infracfg,
-> mediatek,infracfg-nao and mediatek,smi properties located in
-> the children.
-> 
-> This is done in order to both simplify the power controller
-> nodes and in preparation for adding support for new generation
-> SoCs like MT8196/MT6991 and other variants, which will need
-> to set protection on new busses.
 
-Protection like access controls? We have the access-controller binding 
-for that.
-
+On Thu, 26 Jun 2025 11:53:55 +0300, Max Shevchenko wrote:
+> Add a compatible string for sysirq on the MT6572 SoC.
 > 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Max Shevchenko <wctrl@proton.me>
 > ---
->  .../power/mediatek,power-controller.yaml      | 40 +++++++++++++++++++
->  1 file changed, 40 insertions(+)
+>  .../devicetree/bindings/interrupt-controller/mediatek,mt6577-sysirq.yaml | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> index 9c7cc632abee..2530c873bb3c 100644
-> --- a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> +++ b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> @@ -44,6 +44,18 @@ properties:
->    '#size-cells':
->      const: 0
->  
-> +  mediatek,bus-protection:
-> +    $ref: /schemas/types.yaml#/definitions/phandle-array
-> +    description:
-> +      A number of phandles to external blocks to set and clear the required
-> +      bits to enable or disable bus protection, necessary to avoid any bus
-> +      faults while enabling or disabling a power domain.
-> +      For example, this may hold phandles to INFRACFG and SMI.
-> +    minItems: 1
-> +    maxItems: 3
-> +    items:
-> +      maxItems: 1
-> +
->  patternProperties:
->    "^power-domain@[0-9a-f]+$":
->      $ref: "#/$defs/power-domain-node"
-> @@ -123,14 +135,17 @@ $defs:
->        mediatek,infracfg:
->          $ref: /schemas/types.yaml#/definitions/phandle
->          description: phandle to the device containing the INFRACFG register range.
-> +        deprecated: true
->  
->        mediatek,infracfg-nao:
->          $ref: /schemas/types.yaml#/definitions/phandle
->          description: phandle to the device containing the INFRACFG-NAO register range.
-> +        deprecated: true
->  
->        mediatek,smi:
->          $ref: /schemas/types.yaml#/definitions/phandle
->          description: phandle to the device containing the SMI register range.
-> +        deprecated: true
->  
->      required:
->        - reg
-> @@ -138,6 +153,31 @@ $defs:
->  required:
->    - compatible
->  
-> +allOf:
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            enum:
-> +              - mediatek,mt8183-power-controller
-> +    then:
-> +      properties:
-> +        mediatek,bus-protection:
-> +          minItems: 2
-> +          maxItems: 2
-> +
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            enum:
-> +              - mediatek,mt8365-power-controller
-> +    then:
-> +      properties:
-> +        mediatek,bus-protection:
-> +          minItems: 3
-> +          maxItems: 3
-> +
->  additionalProperties: false
->  
->  examples:
-> -- 
-> 2.49.0
-> 
+
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
+
 
