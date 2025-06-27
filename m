@@ -4,62 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D6C2C7EE2A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jun 2025 20:19:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE225C77B7F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jun 2025 20:21:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IClg3koNX1rpXgeqgGWAy2P2TrvFqSBm3yrz7DXFiYc=; b=XRBdBA6xiE596xnMMgW2MhV+Jf
-	dI1yeBXqrMRcx//HdCzWjVjpiTgnKvh5fdEUKMxyPKFlYSvUl1A35lXHhaPpHadJhQwbu24p9aZbZ
-	CoLCfE2x8YwJvMRgV/CbQoG83O+rJ9GkEyCSj69yPkaeg3qzDGqYVuAu/HiEqIBfUOXXASfCYOX01
-	1khXxe3jrlC4UH0/XjsGpEEsKI8hpI0BVocQI5bptu4mAqqK1KXO6+UY4CK93rbAO6Ra1vuoZrxFD
-	kYpbvrk++OOQauak+lOTPlKq2vQ5Z1FZbTys6/koPfPJ9XBtHk3DZxa62tBD/zp7wZgOXXPdikGmE
-	VFppcMRA==;
+	bh=bjqI/TL1jjUy9OEupRkPIs2W1FI7rT/bc36wQWBg5Jw=; b=hF1nrMx3oHNVclSw61HYxQaYpD
+	2mc/sdPHP+zS4gUKKFKzuzPMKQ4fjOd+OfKfQNTsZf1Rz0R6h7hxTiL2T/IP8giPmFCuyZehRNB6J
+	l0f1/5i91bg0WfrrIRTDQ5821j4+3TuaZwmIQ0yGUptFd2zhQ2mWuhXwf/vpS4UP3uvvYogoBqjXz
+	b8iuzCkyYy6/JgNV4GkfWE1NCIK3LKleWHXgnlZ3ekhFrP9Jk9A8ZMQiEsKqgdA/0vmwPRRciZ8+u
+	zxPBCTSTUj0xHbr5wu44AQI9B2uxl7O2LGAII/zBNhQhDDs0aG2la481wUbBiB0qGI+F2Lkp7cNar
+	oAbW8BcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVFXs-0000000Fjpz-32oQ;
-	Fri, 27 Jun 2025 20:19:36 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uVFa9-0000000Fk4Q-3DUb;
+	Fri, 27 Jun 2025 20:21:57 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVFQQ-0000000Fj62-0xxd;
-	Fri, 27 Jun 2025 20:11:54 +0000
+	id 1uVFQr-0000000Fj9J-21fl;
+	Fri, 27 Jun 2025 20:12:21 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6689A61435;
-	Fri, 27 Jun 2025 20:11:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F2E32C4CEE3;
-	Fri, 27 Jun 2025 20:11:52 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id DC89361435;
+	Fri, 27 Jun 2025 20:12:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6C113C4CEE3;
+	Fri, 27 Jun 2025 20:12:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751055113;
-	bh=j480d8kCKmPEv/s1I085hF2TgeZLCw2SbopKfGFaiCc=;
+	s=k20201202; t=1751055140;
+	bh=s0Xged9J2HnvN6x2GXvoVG4DhENWGLcw1Wvk3UDfhk0=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=oS8WYC9x/7XhB5hLSlEiIiX+fhE4IFlUON6lQtVaHwQKQqTI/neox5yvPgnmoHIDU
-	 BPZjNf6mASLzwlTkMLu6Q+3K0TNkeeUQyp1/CbH5aJ1IVNGg1QbgXvOZRRHua9FewX
-	 p5vzDP4GoiK6VczT2MuY8ldfpKNb1ZuS5zDqLmHM0wkJn0NkM9tNyapWTy7L9b7DRF
-	 DgnPmwybwvVD39nIvbfjS3sh/80OkM0A9fOx9v2rJnP41n0h3ScdbwNvV8NM3W0BKn
-	 FqaLVTTGyNm4FQVl9a1R4Ndt8w8qG+91ijqc2TYb9wsuXkpRrOUmDJIalXECE+d4QP
-	 bTJoZ7iqO6ykA==
-Date: Fri, 27 Jun 2025 15:11:52 -0500
-From: Rob Herring <robh@kernel.org>
+	b=dbvaIv84Q8/hxga+QPQuAVOJo1iAVrT3k3tciBHSB01FYbsIbgXMqUtXbZrrFDe7X
+	 OnKj4xc8bpec1TE1VMfxS3vlCZrcGxvj7bc4r/NIR12UEp/SiKK/CgY2CumCXTuN7V
+	 8ojRypb9bxPPbTwJJTbX8Y0o79DHcv9DNRt7NoAumwz+/uSm65r2kqL93yx6KZuk2k
+	 vsuNKV59kFj7IlI25mMmAv0GEed5gou1mK4SZao+NxLP+Ze3pG4lvXbCZD8EujeMN7
+	 G7xBF+ar5OYrvQi6rlNIqhmgeLhNuhYmpf3qvkYTWYnf7f0L7XCyGqDRTGHUWiQKp9
+	 LaEvc20NP2RCg==
+Date: Fri, 27 Jun 2025 15:12:19 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: jianjun.wang@mediatek.com, ryder.lee@mediatek.com, bhelgaas@google.com,
-	lpieralisi@kernel.org, kwilczynski@kernel.org,
-	manivannan.sadhasivam@linaro.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, matthias.bgg@gmail.com,
-	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+Cc: conor+dt@kernel.org, kernel@collabora.com, krzk+dt@kernel.org,
+	linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v1 2/3] dt-bindings: PCI: mediatek-gen3: Add support for
- MT6991/MT8196
-Message-ID: <20250627201152.GA4114099-robh@kernel.org>
-References: <20250623120058.109036-1-angelogioacchino.delregno@collabora.com>
- <20250623120058.109036-3-angelogioacchino.delregno@collabora.com>
+	linux-arm-kernel@lists.infradead.org, jassisinghbrar@gmail.com
+Subject: Re: [PATCH v1 1/2] dt-bindings: mailbox: Add MediaTek TinySYS MHU
+ mailbox
+Message-ID: <175105513896.4155718.5094277254740319329.robh@kernel.org>
+References: <20250623120127.109237-1-angelogioacchino.delregno@collabora.com>
+ <20250623120127.109237-2-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250623120058.109036-3-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250623120127.109237-2-angelogioacchino.delregno@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,80 +71,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 23, 2025 at 02:00:57PM +0200, AngeloGioacchino Del Regno wrote:
-> Add compatible strings for MT8196 and MT6991 (which are fully
-> compatible between each other) and clock definitions.
+
+On Mon, 23 Jun 2025 14:01:26 +0200, AngeloGioacchino Del Regno wrote:
+> Add a binding for the MediaTek TinySYS MHU mailbox, used for IPC
+> with the TinySYS hardware integrated in various MediaTek SoCs.
 > 
-> These new SoCs don't have tl_96m and tl_32k clocks, but need
-> an AHB to APB bus clock and a low power clock.
+> This mailbox handles a custom MHU enabling communication through
+> the TinySYS SCMI protocol.
 > 
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  .../bindings/pci/mediatek-pcie-gen3.yaml      | 35 +++++++++++++++++++
->  1 file changed, 35 insertions(+)
+>  .../mediatek,mt6985-tinysys-mhu-mbox.yaml     | 52 +++++++++++++++++++
+>  1 file changed, 52 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/mailbox/mediatek,mt6985-tinysys-mhu-mbox.yaml
 > 
-> diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> index 162406e0691a..02cddf0246ce 100644
-> --- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> @@ -52,7 +52,12 @@ properties:
->                - mediatek,mt8188-pcie
->                - mediatek,mt8195-pcie
->            - const: mediatek,mt8192-pcie
-> +      - items:
-> +          - enum:
-> +              - mediatek,mt6991-pcie
-> +          - const: mediatek,mt8196-pcie
->        - const: mediatek,mt8192-pcie
-> +      - const: mediatek,mt8196-pcie
->        - const: airoha,en7581-pcie
->  
->    reg:
-> @@ -212,6 +217,36 @@ allOf:
->  
->          mediatek,pbus-csr: false
->  
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            enum:
-> +              - mediatek,mt8196-pcie
-> +    then:
-> +      properties:
-> +        clocks:
-> +          minItems: 6
-> +
-> +        clock-names:
-> +          items:
-> +            - const: pl_250m
-> +            - const: tl_26m
-> +            - const: bus
-> +            - const: low_power
-> +            - const: peri_26m
-> +            - const: peri_mem
-> +
-> +        resets:
-> +          minItems: 1
 
-The min is already 1.
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
-> +          maxItems: 2
-> +
-> +        reset-names:
-> +          minItems: 1
-> +          maxItems: 2
-
-It would be good to define what the names are. I assume they are fixed 
-and not just any of the allowed ones.
-
-> +
-> +        mediatek,pbus-csr: false
-> +
->    - if:
->        properties:
->          compatible:
-> -- 
-> 2.49.0
-> 
 
