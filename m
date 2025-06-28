@@ -4,71 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E2C6C54ED1
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Jun 2025 17:30:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E8F6C7EE39
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Jun 2025 20:33:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Po3wYPbug5oitTRavuGEWn/QaJpRE4HKrgqN22L2B/4=; b=o1l3kkNLO+51/n
-	oPOJtezwaLAi5L6OotoLB4n1IHiNijFzSLZWZVZxaZ1t2OHTH4JUiQV9/MpHiDl0ugNLStMMGZ0iM
-	d7SvOR/u7mgttd5G6ym49TJPgsU/c7751UZ01KNpkdepJcDV9TIswmse5cC8ShEuSNf2BxW4IIQAs
-	n3otDybi/X6O0Hz0lSWG7uvvWctbbG2r982+VoodWoaIA55j4Er5yIwlSqiW4j9em07wCpDIsr61j
-	xDmpGldyJllQ9Oz94Cw7sdjE6JM8QJZQs35dus8myiRNkQ24yXjzQEx2cxS+Yt0U5019TpvUp/h1O
-	3ba67JQZ5PBSiQryTggQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8Mjv0Fv9u3TZrEyl5AH9cikD+LqgdLhmD6eGorACPAU=; b=Y18eKiELjei1Hj0RG5PHR08LEj
+	2GT7OBC5iXZRjXebshXexTbUrpTgTMkkgFx8/tgtwEZWNkRW4rtwBvknx11VVQ6N979HtvNYW+/pz
+	hXhaoWbrU7IT2ZwtRPQ+CMG1QEcanLEua8J3mqAsXaFYCCCH9Wj9Gi+k/xJC2pp2Ns70qKn5/0W8S
+	i3E578Iw9hOtnW5Qt5XG/nE5Yqx6D0vQeCWTmB4E5Luf5hi4jas1W91pm4rczw5l6mMuSTrdsGBKh
+	xTsBdszuf3TcJAybTjkda7YSMHnJ9GUUWdNP/nx8GPBh3dyxkYp+PgKvimrnC++vc/fg4XV58lsQK
+	V3COoQEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVZNt-0000000H7YQ-181g;
-	Sat, 28 Jun 2025 17:30:37 +0000
-Received: from mxout1.routing.net ([2a03:2900:1:a::a])
+	id 1uVcEx-0000000HI95-2nUu;
+	Sat, 28 Jun 2025 20:33:35 +0000
+Received: from mgamail.intel.com ([192.198.163.9])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVYpZ-0000000H3TR-3PwI;
-	Sat, 28 Jun 2025 16:55:11 +0000
-Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
-	by mxout1.routing.net (Postfix) with ESMTP id B4279403EE;
-	Sat, 28 Jun 2025 16:55:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1751129707;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Po3wYPbug5oitTRavuGEWn/QaJpRE4HKrgqN22L2B/4=;
-	b=DUpJPhzMrOSPLgVdf1ACK+cqKOO2lsxeMwkRoM1hiATKw9hAAPs0Sor8b/Kf3Hvbp33K38
-	aBFfBztTF28auBb4xLLL2xibhDT7My7mAIcWNcsqUt/kwwGGQHCTYbCYjoaEMxc146XT0Z
-	EGCkE4DfxFL3e4xBUnEdGkU0EAxS+RU=
-Received: from frank-u24.. (fttx-pool-217.61.150.139.bambit.de [217.61.150.139])
-	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 4AF8F1226DC;
-	Sat, 28 Jun 2025 16:55:07 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: MyungJoo Ham <myungjoo.ham@samsung.com>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	Chanwoo Choi <cw00.choi@samsung.com>,
-	Georgi Djakov <djakov@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Vladimir Oltean <olteanv@gmail.com>,
+	id 1uVcCd-0000000HI3z-2dvP;
+	Sat, 28 Jun 2025 20:31:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1751142671; x=1782678671;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=jj3Wf8/p/EcjaNqLJXtMs6VmzdJXUP1vBHIwniCxulE=;
+  b=kMCHXuPkb53ACm4YvyUS3JTk2yGcnJEFkoBxWcmlKgczosGIvst9R9IQ
+   x0ujPR1uu5tecEf9J/dMh8REVEPFrFvvRwnnoYZ6ZVCbdXvs6fs4fV8AH
+   8rd3SOCHDbfhCfNBeCyzRQn3jLuY1D6IFdKRvllE2OSfvJbm0vKlvzP62
+   tFRDVUUW4CLhPNPXYXFwZIn96GIOtAT2ZYKV8U8MNgIK7zsJZ4OkNn9Bz
+   JMOyU/+vFCA0ZkwNajbhKTMssCc7DQDBr+THCK83jEVXeiit1Anj4zqoT
+   EztX5+8eprtemMKfrKyJCfDdZqmNsFQD6+V+l22VXrXOFlGHRZ08FbuHQ
+   g==;
+X-CSE-ConnectionGUID: MhyOkZIPQu21RMmi1110/A==
+X-CSE-MsgGUID: 8SfFTqxIQLOkNICyVR+0uQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11478"; a="64110349"
+X-IronPort-AV: E=Sophos;i="6.16,273,1744095600"; 
+   d="scan'208";a="64110349"
+Received: from orviesa007.jf.intel.com ([10.64.159.147])
+  by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Jun 2025 13:31:09 -0700
+X-CSE-ConnectionGUID: 74A3WXuHTc+lcVO1G28YbQ==
+X-CSE-MsgGUID: rxJqBR8CQH2Fhq95SW+GlA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,273,1744095600"; 
+   d="scan'208";a="153265867"
+Received: from lkp-server01.sh.intel.com (HELO e8142ee1dce2) ([10.239.97.150])
+  by orviesa007.jf.intel.com with ESMTP; 28 Jun 2025 13:31:03 -0700
+Received: from kbuild by e8142ee1dce2 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1uVcCT-000XMc-1c;
+	Sat, 28 Jun 2025 20:31:01 +0000
+Date: Sun, 29 Jun 2025 04:30:38 +0800
+From: kernel test robot <lkp@intel.com>
+To: Daniel Golle <daniel@makrotopia.org>, Felix Fietkau <nbd@nbd.name>,
+	Frank Wunderlich <frank-w@public-files.de>,
+	Eric Woudstra <ericwouds@gmail.com>, Elad Yifee <eladwf@gmail.com>,
+	Bo-Cun Chen <bc-bocun.chen@mediatek.com>,
+	Sky Huang <skylake.huang@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v7 13/14] arm64: dts: mediatek: mt7988a-bpi-r4: add sfp cages and link to gmac
-Date: Sat, 28 Jun 2025 18:54:48 +0200
-Message-ID: <20250628165451.85884-14-linux@fw-web.de>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250628165451.85884-1-linux@fw-web.de>
-References: <20250628165451.85884-1-linux@fw-web.de>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: oe-kbuild-all@lists.linux.dev, netdev@vger.kernel.org
+Subject: Re: [PATCH net/next 3/3] net: ethernet: mtk_eth_soc: use genpool
+ allocator for SRAM
+Message-ID: <202506290403.FwUOUzZq-lkp@intel.com>
+References: <566ca90fc59ad0d3aff8bc8dc22ebaf0544bce47.1751072868.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <566ca90fc59ad0d3aff8bc8dc22ebaf0544bce47.1751072868.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250628_095510_135052_57A2D9DE 
-X-CRM114-Status: GOOD (  10.41  )
+X-CRM114-CacheID: sfid-20250628_133111_688924_FD54CFFF 
+X-CRM114-Status: GOOD (  13.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,118 +97,67 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Landen Chao <Landen.Chao@mediatek.com>, =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, linux-pm@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, DENG Qingfang <dqfext@gmail.com>, Johnson Wang <johnson.wang@mediatek.com>, linux-mediatek@lists.infradead.org, Lorenzo Bianconi <lorenzo@kernel.org>, linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+Hi Daniel,
 
-Add SFP cages to Bananapi-R4 board. The 2.5g phy variant only contains the
-wan-SFP, so add this to common dtsi and the lan-sfp only to the dual-SFP
-variant.
+kernel test robot noticed the following build warnings:
 
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
-v4:
-- update 2g5-board (reorder and drop phy-connection-type)
-- order sfp properties
-v3:
-- enable mac with 2.5g phy on r4 phy variant because driver is now mainline
----
- .../mediatek/mt7988a-bananapi-bpi-r4-2g5.dts  | 11 +++++++++++
- .../dts/mediatek/mt7988a-bananapi-bpi-r4.dts  | 19 +++++++++++++++++++
- .../dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi | 19 +++++++++++++++++++
- 3 files changed, 49 insertions(+)
+[auto build test WARNING on net-next/main]
+[also build test WARNING on next-20250627]
+[cannot apply to net/main linus/master v6.16-rc3]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts
-index 53de9c113f60..6f0c81e3fd94 100644
---- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts
-@@ -9,3 +9,14 @@ / {
- 	model = "Banana Pi BPI-R4 (1x SFP+, 1x 2.5GbE)";
- 	chassis-type = "embedded";
- };
-+
-+&gmac1 {
-+	phy = <&int_2p5g_phy>;
-+	phy-mode = "internal";
-+	status = "okay";
-+};
-+
-+&int_2p5g_phy {
-+	pinctrl-0 = <&i2p5gbe_led0_pins>;
-+	pinctrl-names = "i2p5gbe-led";
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
-index 36bd1ef2efab..4b3796ba82e3 100644
---- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
-@@ -8,6 +8,25 @@ / {
- 	compatible = "bananapi,bpi-r4", "mediatek,mt7988a";
- 	model = "Banana Pi BPI-R4 (2x SFP+)";
- 	chassis-type = "embedded";
-+
-+	/* SFP2 cage (LAN) */
-+	sfp2: sfp2 {
-+		compatible = "sff,sfp";
-+		i2c-bus = <&i2c_sfp2>;
-+		maximum-power-milliwatt = <3000>;
-+
-+		los-gpios = <&pio 2 GPIO_ACTIVE_HIGH>;
-+		mod-def0-gpios = <&pio 83 GPIO_ACTIVE_LOW>;
-+		rate-select0-gpios = <&pio 3 GPIO_ACTIVE_LOW>;
-+		tx-disable-gpios = <&pio 0 GPIO_ACTIVE_HIGH>;
-+		tx-fault-gpios = <&pio 1 GPIO_ACTIVE_HIGH>;
-+	};
-+};
-+
-+&gmac1 {
-+	managed = "in-band-status";
-+	phy-mode = "usxgmii";
-+	sfp = <&sfp2>;
- };
- 
- &pca9545 {
-diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
-index 20073eb4d1bd..4d709ee527df 100644
---- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
-@@ -63,6 +63,19 @@ reg_3p3v: regulator-3p3v {
- 		regulator-boot-on;
- 		regulator-always-on;
- 	};
-+
-+	/* SFP1 cage (WAN) */
-+	sfp1: sfp1 {
-+		compatible = "sff,sfp";
-+		i2c-bus = <&i2c_sfp1>;
-+		maximum-power-milliwatt = <3000>;
-+
-+		los-gpios = <&pio 54 GPIO_ACTIVE_HIGH>;
-+		mod-def0-gpios = <&pio 82 GPIO_ACTIVE_LOW>;
-+		rate-select0-gpios = <&pio 21 GPIO_ACTIVE_LOW>;
-+		tx-disable-gpios = <&pio 70 GPIO_ACTIVE_HIGH>;
-+		tx-fault-gpios = <&pio 69 GPIO_ACTIVE_HIGH>;
-+	};
- };
- 
- &cci {
-@@ -133,6 +146,12 @@ map-cpu-active-low {
- 	};
- };
- 
-+&gmac2 {
-+	managed = "in-band-status";
-+	phy-mode = "usxgmii";
-+	sfp = <&sfp1>;
-+};
-+
- &i2c0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&i2c0_pins>;
+url:    https://github.com/intel-lab-lkp/linux/commits/Daniel-Golle/net-ethernet-mtk_eth_soc-improve-support-for-named-interrupts/20250628-093324
+base:   net-next/main
+patch link:    https://lore.kernel.org/r/566ca90fc59ad0d3aff8bc8dc22ebaf0544bce47.1751072868.git.daniel%40makrotopia.org
+patch subject: [PATCH net/next 3/3] net: ethernet: mtk_eth_soc: use genpool allocator for SRAM
+config: arm-randconfig-003-20250629 (https://download.01.org/0day-ci/archive/20250629/202506290403.FwUOUzZq-lkp@intel.com/config)
+compiler: arm-linux-gnueabi-gcc (GCC) 8.5.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250629/202506290403.FwUOUzZq-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202506290403.FwUOUzZq-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+   drivers/net/ethernet/mediatek/mtk_eth_soc.c: In function 'mtk_dma_ring_alloc':
+>> drivers/net/ethernet/mediatek/mtk_eth_soc.c:1282:10: warning: returning 'int' from a function with return type 'void *' makes pointer from integer without a cast [-Wint-conversion]
+      return -ENOMEM;
+             ^
+
+
+vim +1282 drivers/net/ethernet/mediatek/mtk_eth_soc.c
+
+  1275	
+  1276	static void *mtk_dma_ring_alloc(struct mtk_eth *eth, size_t size,
+  1277					dma_addr_t *dma_handle)
+  1278	{
+  1279		void *dma_ring;
+  1280	
+  1281		if (WARN_ON(mtk_use_legacy_sram(eth)))
+> 1282			return -ENOMEM;
+  1283	
+  1284		if (eth->sram_pool) {
+  1285			dma_ring = (void *)gen_pool_alloc(eth->sram_pool, size);
+  1286			if (!dma_ring)
+  1287				return dma_ring;
+  1288			*dma_handle = gen_pool_virt_to_phys(eth->sram_pool, (unsigned long)dma_ring);
+  1289		} else {
+  1290			dma_ring = dma_alloc_coherent(eth->dma_dev, size, dma_handle,
+  1291						      GFP_KERNEL);
+  1292		}
+  1293	
+  1294		return dma_ring;
+  1295	}
+  1296	
+
 -- 
-2.43.0
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
