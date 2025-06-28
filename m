@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 162D6C54ED1
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Jun 2025 12:46:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FEB3C54ED1
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Jun 2025 12:49:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VXooSqfTiYF8QRyuWG3LaEuo/Kl8NEK8b7CDo7mKVng=; b=ll/jhHo7YHI8jKGW8GnkfDvt/Q
-	5zLrFQhnIrmu2hoSvZ1/rEflK6/5QNQdTG5QuJskc5I74qGy1zxNRm1Are0vU0TFSaJnse4LoV4+u
-	vs6kp94CD2SJzzdCYh49KA0Y6/62iktaSN/G2kdNWxfRzy9VdWUlvAs72h90QMnV/qCBLNAxl7UPG
-	7aJAlCrxGCc8e96AbW2WmtSyoXky/LsA8o67zRIUsLlO05uwM3zla7xNgFdLftL0KJIjo5NfgieNG
-	kel9tBV7t7iu4U4CqfrIovaWXNiyDVjlgGrt8949tCU3DmScQAPojKSg7l7+vx1i0kemQbOy2CxMV
-	s10XCEvQ==;
+	bh=6CBHzcIEyIfrrp/jgt+bojLwE75XZOCrPg8dSqWu/dE=; b=auKaQ7+NyvACD9+hgv5VQFXDez
+	qbXs0TWR6v9YWMB4X8nuMHllB3qojt1vzlohVUToHyYC099knssvZCPsZd4guiue1BQV0EotaV/D3
+	AkO9Mb81ZjQe49s6WITY98Fx1ayZjKWgB/lcpjrhSstUrEdYYt0DSWlmD6kHXvvYGMHubv37rT1mK
+	iWFumiwqokg+tSuxZEjfe83HlJOhq+WvheWE8Rh+02D3AJpYtPCYQBMrXERhQ5N7l+/a88n9RNCb3
+	B0lqiJ09FDtBrxkLbDhTDbdY8JYKH6nLAoIVvQ6X3KJHz1bCtsA/dHo56WlOPVpWQuVy7N5Vug/zb
+	8DvNP0Yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVUwm-0000000GnZx-0M6v;
-	Sat, 28 Jun 2025 12:46:20 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uVUzZ-0000000Gnm6-0nQ2;
+	Sat, 28 Jun 2025 12:49:13 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVUtE-0000000GnLY-15wK;
-	Sat, 28 Jun 2025 12:42:41 +0000
+	id 1uVUxE-0000000GndO-1Wtr;
+	Sat, 28 Jun 2025 12:46:49 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1E294434DC;
-	Sat, 28 Jun 2025 12:42:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 30241C4CEEA;
-	Sat, 28 Jun 2025 12:42:32 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id B40BE5C474F;
+	Sat, 28 Jun 2025 12:46:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B34DFC4CEEA;
+	Sat, 28 Jun 2025 12:46:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751114559;
-	bh=uz0uXr8i25BQ6ZgJ2ilXdK3mcLciGG2O9XOkL9Dq8Es=;
+	s=k20201202; t=1751114807;
+	bh=wUe+nVnTTOKVrNaON8elGY7mOedI9kTWmIJ+RKfs+y8=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=aV5PqiLg3KRFT61SdFcutDzByClT9xRHUz1D/NzhmFFpUVaxgRIZZe4zKYq7Vkwg+
-	 z+tnXwli0bT7y6VKR0XzwWnOZI0yOaug7fXLH14dVsrByG492htjwhc+mTGZgJ+PAg
-	 RtJHt/davF1rNVSgtvvb1D3AOg7s/SJLjYY8jYKz0YhSCxRMgEAwKlxfxTQV8isnFC
-	 MqdhB5DZVITkpa59IN3ZwvjyFPhOHcZYk/e9jIDIWRZ6KBLL6Bd/o1cH32zyGMIt2j
-	 9TFlprqo8EoPG2CJzmpcR0rOjOnuzVLwGoHOttHZwePA3WDq7PRW61QavHoCw1vzgV
-	 qh1JMmzKWwMTw==
-Message-ID: <43b4c2bb-a1ed-4f6d-9977-512617130337@kernel.org>
-Date: Sat, 28 Jun 2025 14:42:30 +0200
+	b=X9t5+Z1SJPG5x6zfns7+4hjoEr/8OvEfvqhcDtKjrSg5sec3j4r3OEhtrQVc8eEi7
+	 y7YNESG3hHz1UqvRY1lQ97U7rwalSWCqbwjrcKQr/IA/DIuTAzwdWHn6hN52QCmxXf
+	 K3M3djoWqHTaqONEYSk48LKMdJuT2ZiOhqMPh7jlQZCqR1dczdsJNkV1u3JsaJ3kxA
+	 PSQOJs3TyYEYpegJzIrH9VpVdy80WGh1lgLa6eFkgsDCmfJMeEtKoM2vLw6JjuJ+6G
+	 zqkriuqSkoeyHSH+EXtheVtmKCzluKvKauLf1+qg6bnTfZJcG0ecanZTTB8sirLVjv
+	 jx9Bx3BG5O/4w==
+Message-ID: <f2a5dc9b-4e3c-4b6c-8a6c-7a54f6af077e@kernel.org>
+Date: Sat, 28 Jun 2025 14:46:39 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 10/10] ASoC: dt-bindings: mediatek,mt8189-nau8825: add
- mt8189-nau8825 document
+Subject: Re: [PATCH 08/10] ASoC: dt-bindings: mediatek,mt8189-afe-pcm: add
+ audio afe document
 To: Cyril <Cyril.Chao@mediatek.com>, Liam Girdwood <lgirdwood@gmail.com>,
  Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
@@ -58,7 +58,7 @@ Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
  linux-mediatek@lists.infradead.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20250628071442.31155-1-Cyril.Chao@mediatek.com>
- <20250628071442.31155-11-Cyril.Chao@mediatek.com>
+ <20250628071442.31155-9-Cyril.Chao@mediatek.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -104,12 +104,13 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20250628071442.31155-11-Cyril.Chao@mediatek.com>
+In-Reply-To: <20250628071442.31155-9-Cyril.Chao@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250628_054240_479798_B2AE2D02 
-X-CRM114-Status: GOOD (  13.36  )
+X-CRM114-CacheID: sfid-20250628_054648_492427_278BF583 
+X-CRM114-Status: UNSURE (   8.14  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,48 +128,18 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On 28/06/2025 09:14, Cyril wrote:
 > From: Cyril Chao <Cyril.Chao@mediatek.com>
 > 
-> Add document for mt8189 board with nau8825.
+> Add mt8189 audio afe document.
 > 
 > Signed-off-by: Cyril Chao <Cyril.Chao@mediatek.com>
-
-Why does the binding come after user? Follow submitting patches in DT.
-
 > ---
->  .../sound/mediatek,mt8189-nau8825.yaml        | 103 ++++++++++++++++++
->  1 file changed, 103 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8189-nau8825.yaml
+>  .../sound/mediatek,mt8189-afe-pcm.yaml        | 162 ++++++++++++++++++
+>  1 file changed, 162 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8189-afe-pcm.yaml
 > 
-> diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8189-nau8825.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8189-nau8825.yaml
-> new file mode 100644
-> index 000000000..331c537d3
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/sound/mediatek,mt8189-nau8825.yaml
-> @@ -0,0 +1,103 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/sound/mediatek,mt8189-nau8825.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek MT8189 ASoC sound card
-> +
-> +maintainers:
-> +  - Darren Ye <darren.ye@mediatek.com>
-> +  - Cyril Chao <cyril.chao@mediatek.com>
-> +
-> +allOf:
-> +  - $ref: sound-card-common.yaml#
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - mediatek,mt8189-nau8825-sound
-> +      - mediatek,mt8189-rt5650-sound
-> +      - mediatek,mt8189-rt5682s-sound
-> +      - mediatek,mt8189-rt5682i-sound
+All your properties should follow same order as DTS coding style, but...
+ meh...
 
-Sound is redundant. Can it be anything else?
-
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Best regards,
 Krzysztof
