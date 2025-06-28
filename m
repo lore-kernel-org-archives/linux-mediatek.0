@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E2C0C54ED1
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Jun 2025 09:22:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 608B5C54ED1
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Jun 2025 09:24:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Cu4UvP0WhUrIwMsfp2DxE5DkGiBKGgC1AcTaw2pOQM0=; b=jLO+tlOOJgmUP6
-	wKH7d6PpbFws6TYhsjSCg9ASfYDHbUY++UeD31xMtlLS42mHroFon1hgMFJyDREjnvlFMveTqPlej
-	n03a5bxWp8q5Dk94RzXHoqiUHFIs8FsnzC//Z3tgjVCTmklccS8SROkbMlmZFs+vJtZRv/iRm4XwF
-	tLmCnR13ejDLCAA50hkn+8kQnliLhkWYMQNIQzKin+ezNiySbGf4DDDpqbATdDmuD1f08TUKJjzMX
-	J/TBfHzQVcY0QW5zbgYeBqE1itXTXfZr2i15ei76Khq3LA84rJz6RRWjXJc7NZrMuerfc2Zgoh6ko
-	/9MjfsiNFqzOkSD5N3xQ==;
+	List-Owner; bh=DgeEoJwP1RRKkglcECdGpkEEfNbWqvY35txVx4ntqiU=; b=25zfrtOpNiTlGr
+	AB/KRZpWQQjA2jwsQgnE+mh7dA8r0aAZubHdoAk4c9D7/txhLYqJ3S7ZKUO1SG7LkbBF2sxfsESf5
+	r4SA4g2zZ6fXNPBe2WKgwvTo9y4eqMMEm7uxRG7ysECDah0Wsoe/WGzGqDCFSIElH3u0oZnEmxDEd
+	0aiMeIEz8xU4Cb2Hu4lZ30pCBusigzCYn/dCpvWM+ndKbi09jAspaKVBkVWr8grBfEJjj+XtA2EFn
+	urHVIH6gvPRYLeiePyaB/icin9U2ajiBiDdu6dj2ij13GylItPFuWIF4Wt9K+X6pnMzDgjTHqjP/n
+	WM8xBopwI53+xF7GO3WA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVRld-0000000GcjA-1UBP;
-	Sat, 28 Jun 2025 09:22:37 +0000
-Received: from mxout4.routing.net ([2a03:2900:1:a::9])
+	id 1uVRnu-0000000GcuR-1suF;
+	Sat, 28 Jun 2025 09:24:58 +0000
+Received: from mxout2.routing.net ([2a03:2900:1:a::b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVRaI-0000000GbDp-4861;
+	id 1uVRaJ-0000000GbDw-0uoQ;
 	Sat, 28 Jun 2025 09:10:58 +0000
 Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
-	by mxout4.routing.net (Postfix) with ESMTP id CC4D61012C5;
-	Sat, 28 Jun 2025 09:10:50 +0000 (UTC)
+	by mxout2.routing.net (Postfix) with ESMTP id 920895FD7B;
+	Sat, 28 Jun 2025 09:10:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
 	s=20200217; t=1751101851;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=Cu4UvP0WhUrIwMsfp2DxE5DkGiBKGgC1AcTaw2pOQM0=;
-	b=XRUHkz4sk/+TiMTXPz7i5l7SO4tBFYawgJzsgXqtumLQW9Fl/hOb1OvPWXBYxW13uV31Ul
-	+BfZQeAUgMqVGl3X3WvVdozFVRJZi+0K3JPhzLJ6X/ZGUK9ejFV5Lv1bb9sBn9dvbSWuPT
-	JARBZxakcP1ONmnp5+j2i5N5fQJ3byA=
+	bh=DgeEoJwP1RRKkglcECdGpkEEfNbWqvY35txVx4ntqiU=;
+	b=AjLz9OmzYbggR4Ei1+YPIRF1/sNAVGGSlsI/4Z7ZjbytXLQ9j9wcZpPaQrcjjmARskZkHp
+	T17tmyPEjUCgU2g8LYa7l3TxXAJC0y2jpiska5emk0t0/2BbGdUlV/ZRTmPJz8anEqRC43
+	qsjNZkd+CitzoEwR8MRKESJdsfdm1PE=
 Received: from frank-u24.. (fttx-pool-217.61.150.139.bambit.de [217.61.150.139])
-	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 6ACAA12272D;
-	Sat, 28 Jun 2025 09:10:50 +0000 (UTC)
+	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 3618212272D;
+	Sat, 28 Jun 2025 09:10:51 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: MyungJoo Ham <myungjoo.ham@samsung.com>,
 	Kyungmin Park <kyungmin.park@samsung.com>,
@@ -58,17 +58,17 @@ To: MyungJoo Ham <myungjoo.ham@samsung.com>,
 	Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v6 01/15] dt-bindings: net: mediatek,net: update for mt7988
-Date: Sat, 28 Jun 2025 11:10:25 +0200
-Message-ID: <20250628091043.57645-2-linux@fw-web.de>
+Subject: [PATCH v6 03/15] dt-bindings: net: mediatek,net: update for mt7988
+Date: Sat, 28 Jun 2025 11:10:27 +0200
+Message-ID: <20250628091043.57645-4-linux@fw-web.de>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250628091043.57645-1-linux@fw-web.de>
 References: <20250628091043.57645-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250628_021055_306419_C3834C69 
-X-CRM114-Status: GOOD (  13.13  )
+X-CRM114-CacheID: sfid-20250628_021055_394846_E3203B89 
+X-CRM114-Status: GOOD (  12.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,15 +91,14 @@ operations.
 
 MT7988 has 4 FE IRQs (currently only 2 are used) and 4 IRQs for use
 with RSS/LRO later.
-Add interrupt-names to make them accessible by name.
 
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 ---
 v6:
+- split out the interrupt-names into separate patch
 - update irq(name) min count to 4
-- move interrupt-names up and limiting for all socs below
-- add sram-property and drop second reg entry
-- drop minitems as there is only 1 item left now
+- add sram-property
+- drop second reg entry and minitems as there is only 1 item left again
 
 v5:
 - fix v4 logmessage and change description a bit describing how i get
@@ -120,11 +119,11 @@ v4:
 v2:
 - change reg to list of items
 ---
- .../devicetree/bindings/net/mediatek,net.yaml | 47 +++++++++++++++++--
- 1 file changed, 44 insertions(+), 3 deletions(-)
+ Documentation/devicetree/bindings/net/mediatek,net.yaml | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b/Documentation/devicetree/bindings/net/mediatek,net.yaml
-index 9e02fd80af83..74a139000f60 100644
+index 6672db206b38..74a139000f60 100644
 --- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
 +++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
 @@ -28,7 +28,8 @@ properties:
@@ -137,28 +136,7 @@ index 9e02fd80af83..74a139000f60 100644
  
    clocks:
      minItems: 2
-@@ -40,7 +41,19 @@ properties:
- 
-   interrupts:
-     minItems: 1
--    maxItems: 4
-+    maxItems: 8
-+
-+  interrupt-names:
-+    minItems: 1
-+    items:
-+      - const: fe0
-+      - const: fe1
-+      - const: fe2
-+      - const: fe3
-+      - const: pdma0
-+      - const: pdma1
-+      - const: pdma2
-+      - const: pdma3
- 
-   power-domains:
-     maxItems: 1
-@@ -54,6 +67,10 @@ properties:
+@@ -66,6 +67,10 @@ properties:
        - const: gmac
        - const: ppe
  
@@ -169,80 +147,7 @@ index 9e02fd80af83..74a139000f60 100644
    mediatek,ethsys:
      $ref: /schemas/types.yaml#/definitions/phandle
      description:
-@@ -135,6 +152,10 @@ allOf:
-           minItems: 3
-           maxItems: 3
- 
-+        interrupt-names:
-+          minItems: 3
-+          maxItems: 3
-+
-         clocks:
-           minItems: 4
-           maxItems: 4
-@@ -166,6 +187,9 @@ allOf:
-         interrupts:
-           maxItems: 1
- 
-+        interrupt-namess:
-+          maxItems: 1
-+
-         clocks:
-           minItems: 2
-           maxItems: 2
-@@ -192,6 +216,10 @@ allOf:
-           minItems: 3
-           maxItems: 3
- 
-+        interrupt-names:
-+          minItems: 3
-+          maxItems: 3
-+
-         clocks:
-           minItems: 11
-           maxItems: 11
-@@ -232,6 +260,10 @@ allOf:
-           minItems: 3
-           maxItems: 3
- 
-+        interrupt-names:
-+          minItems: 3
-+          maxItems: 3
-+
-         clocks:
-           minItems: 17
-           maxItems: 17
-@@ -274,6 +306,9 @@ allOf:
-         interrupts:
-           minItems: 4
- 
-+        interrupt-names:
-+          minItems: 4
-+
-         clocks:
-           minItems: 15
-           maxItems: 15
-@@ -312,6 +347,9 @@ allOf:
-         interrupts:
-           minItems: 4
- 
-+        interrupt-names:
-+          minItems: 4
-+
-         clocks:
-           minItems: 15
-           maxItems: 15
-@@ -350,6 +388,9 @@ allOf:
-         interrupts:
-           minItems: 4
- 
-+        interrupt-names:
-+          minItems: 4
-+
-         clocks:
-           minItems: 24
-           maxItems: 24
-@@ -382,7 +423,7 @@ allOf:
+@@ -418,7 +423,7 @@ allOf:
              - const: xgp3
  
  patternProperties:
