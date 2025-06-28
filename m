@@ -4,63 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88E22C7EE2A
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Jun 2025 01:40:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C01E8C54ED1
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Jun 2025 07:15:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fPR+6Pbpp2eRoPmgTtV40tbuJO4+VIz6K0OrjMjKz0s=; b=FMqbmi47nJbHI+1pzT6MpMvynQ
-	rm0TYxwftBULkxAT9ri+BkazwkGgLVGjBWuWwbJxrp0FRBZuy6X2JKVH4p6HIJOISYXNGRin+YcK/
-	886QbtbAaNzjZg+TSRIjStCTwdj9doyT7Rzkqg3Y6XPlZ32pxq8iw8+uNBwZ8QNX1cQsHHAMZNw62
-	XIWMV9wVKiK1TeVTKxJwPNgnl4A30IJT/bHP34crDqObi+BdVJkmDJk8mBiUYsNuWVvSGiK1L4hbA
-	rriJ/3CyVB7gK1t4l3db3V8rwuD5Zml8dSPkIdDcxysKgmK/zJKS8APE84H1ALrAZnM/LrzWWDdmn
-	7Q7ccvyg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=V6Z/4K6Yt+prO9BrSpsKqwbnEWAEKzGbOjbsOQhnb3g=; b=NnTy2zm8cLdRNW3WVvCA+HT1Zj
+	3ek6DDg2GxhUv+TZJb3W3MZokvNJHS4qD0CX90lLeX+ixgvb6wE22QTilC5qI4Sqqd9fl7jgUuVVp
+	+W4TMutcczffYQeLTJR/kaOFtt/RkSYYO3WF8HkB28e6iUdhP/57NWxri9UZb2lJc6z3fX1EDv51Q
+	4JNvmSDZ0S12YIK+Yae+Dfs2pbFygHYoSbGRosEVAcJ/59YlLrzrF/q5QsJcAl+dPlOLgPn/gZvUa
+	NfnEsek+M+oAgRPOS9acSwAqL+hDc+r0XZ04ubRdrLPEP1NL8TdyaGZA/z/y5xQIIHtb455oaVrFH
+	iNSSm/rA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVKXw-0000000G9P8-0Llq;
-	Sat, 28 Jun 2025 01:40:00 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1uVPm8-0000000GTwV-11Ko;
+	Sat, 28 Jun 2025 07:15:00 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVKP3-0000000G8eH-1VJZ;
-	Sat, 28 Jun 2025 01:30:50 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.98.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1uVKOx-000000004Qv-36TR;
-	Sat, 28 Jun 2025 01:30:43 +0000
-Date: Sat, 28 Jun 2025 02:30:40 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Felix Fietkau <nbd@nbd.name>,
-	Frank Wunderlich <frank-w@public-files.de>,
-	Eric Woudstra <ericwouds@gmail.com>, Elad Yifee <eladwf@gmail.com>,
-	Bo-Cun Chen <bc-bocun.chen@mediatek.com>,
-	Sky Huang <skylake.huang@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1uVPm5-0000000GTvy-20ts;
+	Sat, 28 Jun 2025 07:14:58 +0000
+X-UUID: 9411944053ef11f09eb0dd999d3936bf-20250628
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=V6Z/4K6Yt+prO9BrSpsKqwbnEWAEKzGbOjbsOQhnb3g=;
+	b=PHQzhf4k8O8kDrovyVrSlv5biV2etqm6lqCdEszB+smfwKlrZDsncT46fRvPUXIvMV1LArylq5mFiHz9jrXSnahZqlEZ730OQtk2Dk0WqHCqJEySW9NJFbERR6zbHqhzMRboArcqFeoKRseEvbXlzLslf1EKRYMwx934gve34Ps=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.2,REQID:7f2509e2-0f40-43f6-a318-056c44b59e3e,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:9eb4ff7,CLOUDID:cbb14a82-cc21-4267-87cf-e75829fa6365,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 9411944053ef11f09eb0dd999d3936bf-20250628
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <cyril.chao@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1985023913; Sat, 28 Jun 2025 00:14:49 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Sat, 28 Jun 2025 15:14:43 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Sat, 28 Jun 2025 15:14:44 +0800
+From: Cyril <Cyril.Chao@mediatek.com>
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, "Rob
+ Herring" <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, "Conor
+ Dooley" <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net/next 3/3] net: ethernet: mtk_eth_soc: use genpool
- allocator for SRAM
-Message-ID: <566ca90fc59ad0d3aff8bc8dc22ebaf0544bce47.1751072868.git.daniel@makrotopia.org>
-References: <cover.1751072868.git.daniel@makrotopia.org>
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>
+CC: <linux-sound@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<cyril.chao@mediatek.com>, Cyril <Cyril.Chao@mediatek.com>
+Subject: [PATCH 00/10] ASoC: mediatek: Add support for MT8189 SoC
+Date: Sat, 28 Jun 2025 15:14:08 +0800
+Message-ID: <20250628071442.31155-1-Cyril.Chao@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1751072868.git.daniel@makrotopia.org>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250627_183049_553345_D2CD4EF1 
-X-CRM114-Status: GOOD (  22.32  )
+X-CRM114-CacheID: sfid-20250628_001457_526673_C1C6B383 
+X-CRM114-Status: GOOD (  10.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,246 +90,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use a dedicated "mmio-sram" and the genpool allocator instead of
-open-coding SRAM allocation for DMA rings.
-Keep support for legacy device trees but notify the user via a
-warning.
+Based on tag: next-20250626, linux-next/master
 
-Co-developed-by: Frank Wunderlich <frank-w@public-files.de>
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 119 +++++++++++++-------
- drivers/net/ethernet/mediatek/mtk_eth_soc.h |   4 +-
- 2 files changed, 83 insertions(+), 40 deletions(-)
+This series of patches adds support for Mediatek AFE of MT8189 SoC.
+Patches are based on broonie tree "for-next" branch.
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 8f55069441f4..adae59a3dfa4 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -27,6 +27,7 @@
- #include <net/dsa.h>
- #include <net/dst_metadata.h>
- #include <net/page_pool/helpers.h>
-+#include <linux/genalloc.h>
- 
- #include "mtk_eth_soc.h"
- #include "mtk_wed.h"
-@@ -1267,6 +1268,44 @@ static void *mtk_max_lro_buf_alloc(gfp_t gfp_mask)
- 	return (void *)data;
- }
- 
-+static bool mtk_use_legacy_sram(struct mtk_eth *eth)
-+{
-+	return !eth->sram_pool && MTK_HAS_CAPS(eth->soc->caps, MTK_SRAM);
-+}
-+
-+static void *mtk_dma_ring_alloc(struct mtk_eth *eth, size_t size,
-+				dma_addr_t *dma_handle)
-+{
-+	void *dma_ring;
-+
-+	if (WARN_ON(mtk_use_legacy_sram(eth)))
-+		return -ENOMEM;
-+
-+	if (eth->sram_pool) {
-+		dma_ring = (void *)gen_pool_alloc(eth->sram_pool, size);
-+		if (!dma_ring)
-+			return dma_ring;
-+		*dma_handle = gen_pool_virt_to_phys(eth->sram_pool, (unsigned long)dma_ring);
-+	} else {
-+		dma_ring = dma_alloc_coherent(eth->dma_dev, size, dma_handle,
-+					      GFP_KERNEL);
-+	}
-+
-+	return dma_ring;
-+}
-+
-+static void mtk_dma_ring_free(struct mtk_eth *eth, size_t size, void *dma_ring,
-+			      dma_addr_t dma_handle)
-+{
-+	if (WARN_ON(mtk_use_legacy_sram(eth)))
-+		return;
-+
-+	if (eth->sram_pool)
-+		gen_pool_free(eth->sram_pool, (unsigned long)dma_ring, size);
-+	else
-+		dma_free_coherent(eth->dma_dev, size, dma_ring, dma_handle);
-+}
-+
- /* the qdma core needs scratch memory to be setup */
- static int mtk_init_fq_dma(struct mtk_eth *eth)
- {
-@@ -1276,13 +1315,12 @@ static int mtk_init_fq_dma(struct mtk_eth *eth)
- 	dma_addr_t dma_addr;
- 	int i, j, len;
- 
--	if (MTK_HAS_CAPS(eth->soc->caps, MTK_SRAM))
-+	if (!mtk_use_legacy_sram(eth)) {
-+		eth->scratch_ring = mtk_dma_ring_alloc(eth, cnt * soc->tx.desc_size,
-+						       &eth->phy_scratch_ring);
-+	} else {
- 		eth->scratch_ring = eth->sram_base;
--	else
--		eth->scratch_ring = dma_alloc_coherent(eth->dma_dev,
--						       cnt * soc->tx.desc_size,
--						       &eth->phy_scratch_ring,
--						       GFP_KERNEL);
-+	}
- 
- 	if (unlikely(!eth->scratch_ring))
- 		return -ENOMEM;
-@@ -2620,12 +2658,11 @@ static int mtk_tx_alloc(struct mtk_eth *eth)
- 	if (!ring->buf)
- 		goto no_tx_mem;
- 
--	if (MTK_HAS_CAPS(soc->caps, MTK_SRAM)) {
-+	if (!mtk_use_legacy_sram(eth)) {
-+		ring->dma = mtk_dma_ring_alloc(eth, ring_size * sz, &ring->phys);
-+	} else {
- 		ring->dma = eth->sram_base + soc->tx.fq_dma_size * sz;
- 		ring->phys = eth->phy_scratch_ring + soc->tx.fq_dma_size * (dma_addr_t)sz;
--	} else {
--		ring->dma = dma_alloc_coherent(eth->dma_dev, ring_size * sz,
--					       &ring->phys, GFP_KERNEL);
- 	}
- 
- 	if (!ring->dma)
-@@ -2726,9 +2763,9 @@ static void mtk_tx_clean(struct mtk_eth *eth)
- 		kfree(ring->buf);
- 		ring->buf = NULL;
- 	}
--	if (!MTK_HAS_CAPS(soc->caps, MTK_SRAM) && ring->dma) {
--		dma_free_coherent(eth->dma_dev,
--				  ring->dma_size * soc->tx.desc_size,
-+
-+	if (!mtk_use_legacy_sram(eth) && ring->dma) {
-+		mtk_dma_ring_free(eth, ring->dma_size * soc->tx.desc_size,
- 				  ring->dma, ring->phys);
- 		ring->dma = NULL;
- 	}
-@@ -2793,6 +2830,9 @@ static int mtk_rx_alloc(struct mtk_eth *eth, int ring_no, int rx_flag)
- 		ring->dma = dma_alloc_coherent(eth->dma_dev,
- 				rx_dma_size * eth->soc->rx.desc_size,
- 				&ring->phys, GFP_KERNEL);
-+	} else if (eth->sram_pool) {
-+		ring->dma = mtk_dma_ring_alloc(eth, rx_dma_size * eth->soc->rx.desc_size,
-+					       &ring->phys);
- 	} else {
- 		struct mtk_tx_ring *tx_ring = &eth->tx_ring;
- 
-@@ -2921,6 +2961,11 @@ static void mtk_rx_clean(struct mtk_eth *eth, struct mtk_rx_ring *ring, bool in_
- 				  ring->dma_size * eth->soc->rx.desc_size,
- 				  ring->dma, ring->phys);
- 		ring->dma = NULL;
-+	} else if (!mtk_use_legacy_sram(eth) && ring->dma) {
-+		mtk_dma_ring_free(eth,
-+				  ring->dma_size * eth->soc->rx.desc_size,
-+				  ring->dma, ring->phys);
-+		ring->dma = NULL;
- 	}
- 
- 	if (ring->page_pool) {
-@@ -3287,9 +3332,8 @@ static void mtk_dma_free(struct mtk_eth *eth)
- 			netdev_tx_reset_subqueue(eth->netdev[i], j);
- 	}
- 
--	if (!MTK_HAS_CAPS(soc->caps, MTK_SRAM) && eth->scratch_ring) {
--		dma_free_coherent(eth->dma_dev,
--				  MTK_QDMA_RING_SIZE * soc->tx.desc_size,
-+	if (!mtk_use_legacy_sram(eth) && eth->scratch_ring) {
-+		mtk_dma_ring_free(eth, soc->tx.fq_dma_size * soc->tx.desc_size,
- 				  eth->scratch_ring, eth->phy_scratch_ring);
- 		eth->scratch_ring = NULL;
- 		eth->phy_scratch_ring = 0;
-@@ -5009,7 +5053,7 @@ static int mtk_sgmii_init(struct mtk_eth *eth)
- 
- static int mtk_probe(struct platform_device *pdev)
- {
--	struct resource *res = NULL, *res_sram;
-+	struct resource *res = NULL;
- 	struct device_node *mac_np;
- 	struct mtk_eth *eth;
- 	int err, i;
-@@ -5029,20 +5073,6 @@ static int mtk_probe(struct platform_device *pdev)
- 	if (MTK_HAS_CAPS(eth->soc->caps, MTK_SOC_MT7628))
- 		eth->ip_align = NET_IP_ALIGN;
- 
--	if (MTK_HAS_CAPS(eth->soc->caps, MTK_SRAM)) {
--		/* SRAM is actual memory and supports transparent access just like DRAM.
--		 * Hence we don't require __iomem being set and don't need to use accessor
--		 * functions to read from or write to SRAM.
--		 */
--		if (mtk_is_netsys_v3_or_greater(eth)) {
--			eth->sram_base = (void __force *)devm_platform_ioremap_resource(pdev, 1);
--			if (IS_ERR(eth->sram_base))
--				return PTR_ERR(eth->sram_base);
--		} else {
--			eth->sram_base = (void __force *)eth->base + MTK_ETH_SRAM_OFFSET;
--		}
--	}
--
- 	if (MTK_HAS_CAPS(eth->soc->caps, MTK_36BIT_DMA)) {
- 		err = dma_set_mask(&pdev->dev, DMA_BIT_MASK(36));
- 		if (!err)
-@@ -5117,16 +5147,27 @@ static int mtk_probe(struct platform_device *pdev)
- 			err = -EINVAL;
- 			goto err_destroy_sgmii;
- 		}
-+
- 		if (MTK_HAS_CAPS(eth->soc->caps, MTK_SRAM)) {
--			if (mtk_is_netsys_v3_or_greater(eth)) {
--				res_sram = platform_get_resource(pdev, IORESOURCE_MEM, 1);
--				if (!res_sram) {
--					err = -EINVAL;
--					goto err_destroy_sgmii;
-+			eth->sram_pool = of_gen_pool_get(pdev->dev.of_node, "sram", 0);
-+			if (!eth->sram_pool) {
-+				if (!mtk_is_netsys_v3_or_greater(eth)) {
-+					/*
-+					 * Legacy support for missing 'sram' node in DT.
-+					 * SRAM is actual memory and supports transparent access
-+					 * just like DRAM. Hence we don't require __iomem being
-+					 * set and don't need to use accessor functions to read from
-+					 * or write to SRAM.
-+					 */
-+					eth->sram_base = (void __force *)eth->base +
-+							 MTK_ETH_SRAM_OFFSET;
-+					eth->phy_scratch_ring = res->start + MTK_ETH_SRAM_OFFSET;
-+					dev_warn(&pdev->dev,
-+						 "legacy DT: using hard-coded SRAM offset.\n");
-+				} else {
-+					dev_err(&pdev->dev, "Could not get SRAM pool\n");
-+					return -ENODEV;
- 				}
--				eth->phy_scratch_ring = res_sram->start;
--			} else {
--				eth->phy_scratch_ring = res->start + MTK_ETH_SRAM_OFFSET;
- 			}
- 		}
- 	}
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 1ad9075a9b69..0104659e37f0 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -1245,7 +1245,8 @@ struct mtk_soc_data {
-  * @dev:		The device pointer
-  * @dma_dev:		The device pointer used for dma mapping/alloc
-  * @base:		The mapped register i/o base
-- * @sram_base:		The mapped SRAM base
-+ * @sram_base:		The mapped SRAM base (deprecated)
-+ * @sram_pool:		Pointer to SRAM pool used for DMA descriptor rings
-  * @page_lock:		Make sure that register operations are atomic
-  * @tx_irq__lock:	Make sure that IRQ register operations are atomic
-  * @rx_irq__lock:	Make sure that IRQ register operations are atomic
-@@ -1292,6 +1293,7 @@ struct mtk_eth {
- 	struct device			*dma_dev;
- 	void __iomem			*base;
- 	void				*sram_base;
-+	struct gen_pool			*sram_pool;
- 	spinlock_t			page_lock;
- 	spinlock_t			tx_irq_lock;
- 	spinlock_t			rx_irq_lock;
+Cyril Chao (10):
+  ASoC: mediatek: mt8189: add common header
+  ASoC: mediatek: mt8189: support audio clock control
+  ASoC: mediatek: mt8189: support ADDA in platform driver
+  ASoC: mediatek: mt8189: support I2S in platform driver
+  ASoC: mediatek: mt8189: support TDM in platform driver
+  ASoC: mediatek: mt8189: support PCM in platform driver
+  ASoC: mediatek: mt8189: add platform driver
+  ASoC: dt-bindings: mediatek,mt8189-afe-pcm: add audio afe document
+  ASoC: mediatek: mt8189: add machine driver with nau8825
+  ASoC: dt-bindings: mediatek,mt8189-nau8825: add mt8189-nau8825
+    document
+
+ .../sound/mediatek,mt8189-afe-pcm.yaml        |   162 +
+ .../sound/mediatek,mt8189-nau8825.yaml        |   103 +
+ sound/soc/mediatek/Kconfig                    |    28 +
+ sound/soc/mediatek/Makefile                   |     1 +
+ sound/soc/mediatek/mt8189/Makefile            |    18 +
+ sound/soc/mediatek/mt8189/mt8189-afe-clk.c    |   763 ++
+ sound/soc/mediatek/mt8189/mt8189-afe-clk.h    |   109 +
+ sound/soc/mediatek/mt8189/mt8189-afe-common.h |   294 +
+ sound/soc/mediatek/mt8189/mt8189-afe-pcm.c    |  2682 ++++
+ sound/soc/mediatek/mt8189/mt8189-dai-adda.c   |  1327 ++
+ sound/soc/mediatek/mt8189/mt8189-dai-i2s.c    |  1795 +++
+ sound/soc/mediatek/mt8189/mt8189-dai-pcm.c    |   337 +
+ sound/soc/mediatek/mt8189/mt8189-dai-tdm.c    |   828 ++
+ .../mediatek/mt8189/mt8189-interconnection.h  |    97 +
+ sound/soc/mediatek/mt8189/mt8189-nau8825.c    |  1054 ++
+ sound/soc/mediatek/mt8189/mt8189-reg.h        | 10773 ++++++++++++++++
+ 16 files changed, 20371 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8189-afe-pcm.yaml
+ create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8189-nau8825.yaml
+ create mode 100644 sound/soc/mediatek/mt8189/Makefile
+ create mode 100644 sound/soc/mediatek/mt8189/mt8189-afe-clk.c
+ create mode 100644 sound/soc/mediatek/mt8189/mt8189-afe-clk.h
+ create mode 100644 sound/soc/mediatek/mt8189/mt8189-afe-common.h
+ create mode 100644 sound/soc/mediatek/mt8189/mt8189-afe-pcm.c
+ create mode 100644 sound/soc/mediatek/mt8189/mt8189-dai-adda.c
+ create mode 100644 sound/soc/mediatek/mt8189/mt8189-dai-i2s.c
+ create mode 100644 sound/soc/mediatek/mt8189/mt8189-dai-pcm.c
+ create mode 100644 sound/soc/mediatek/mt8189/mt8189-dai-tdm.c
+ create mode 100644 sound/soc/mediatek/mt8189/mt8189-interconnection.h
+ create mode 100644 sound/soc/mediatek/mt8189/mt8189-nau8825.c
+ create mode 100644 sound/soc/mediatek/mt8189/mt8189-reg.h
+
 -- 
-2.50.0
+2.46.0
+
 
