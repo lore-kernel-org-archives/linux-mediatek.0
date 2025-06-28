@@ -4,87 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 108E5C7EE2A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Jun 2025 23:24:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8008CC77B7F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Jun 2025 00:38:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ucJkPKtW7Pg719flpv7obuaScxhby2iCUB5MbPa/kpk=; b=rU3WITEdGl9pSUMSizSAIfAbfc
-	k0E5vpiH+JUc3sQLjeWI8AcQzQKa4SyXtXCmanaYtYybeYNdpV/IQFZFE4BRlLnghJTZUsfQXS945
-	IDXfXs8FrePgpeXPgH0R8I8YgZgk5TyJUiIEda6b61wTENFBEJ4SNRo6viK9D6QcSBOqneOvECdE3
-	5H4XqrWZOQhpNl1WDj5Alo66MhGWnCWC4sKKWBdlgx7Dgfwi/1OuyDttWRvLTS3YSL0+p5gSuJ+2s
-	Otncxm2wz7V1u7BaX6mVX7xhm86HNDGrVzn7MgiWkWiEvtyuyPGulzXFhvAmplwsQ78YYA8yAlE6S
-	rcRFgwNw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2IjCx//d1qx+mqfIPU3sajy9SJfXmPgvsGkk3PQ/Qvo=; b=qihPLRXxWa6yEb8aJbrbYGB3kg
+	L9GzA0MHemOt5EemWUcfQpRuQv5MourYnD6A1lEVvZveXXlxMprfjnFmFI943Iarz9fiH8J8U2EPr
+	EWShMry9Z8eeZx7f4voL6nKSla+/J8SrRSPWXX4y+Y7MRLhDeSVrbzYdIa50N/3qn/5o5KTKf38lV
+	sa0Q2XcRdSCnqA46sCTJpNqN80lhZ5frspJF+TXboAKlcTA0JdotOVrRoo/TzeikWk9b5UDHfaEX3
+	yyq5sUifPu74KrHXnGq8EBaWv50HAHHQdLD6b1dMZNuuQu6XmjfuItqFJ0MHV21HDx/Z1LcZRc4/a
+	yBy6y0NA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVIQT-0000000G0fd-0VcK;
-	Fri, 27 Jun 2025 23:24:09 +0000
-Received: from mail-qt1-x834.google.com ([2607:f8b0:4864:20::834])
+	id 1uVJac-0000000G5gx-2bZu;
+	Sat, 28 Jun 2025 00:38:42 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVIO9-0000000G0YX-36J4;
-	Fri, 27 Jun 2025 23:21:46 +0000
-Received: by mail-qt1-x834.google.com with SMTP id d75a77b69052e-4a44e94f0b0so36049671cf.1;
-        Fri, 27 Jun 2025 16:21:45 -0700 (PDT)
+	id 1uVJYH-0000000G5W3-2O63;
+	Sat, 28 Jun 2025 00:36:19 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-45377776935so3277195e9.3;
+        Fri, 27 Jun 2025 17:36:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1751066504; x=1751671304; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ucJkPKtW7Pg719flpv7obuaScxhby2iCUB5MbPa/kpk=;
-        b=Cp7HzT5EtN7mcTIcJG6YIcoOjlO4n+mNhbHvoz4fD1con42KWtnASB9ATNa9HgoBOD
-         k0ZIPOpYtjiC40cYbwnZ5NP2JGiJerV5BozIv5/G2R2BhODpgK169ey8uQfpXlZ0D/xH
-         HrGwa2wFGJNIbE5pxDkGDXhBURTiZ0nkO1zNR8w50qHDv33VdP+q4ZhN2YWtRZ4BPFBv
-         V7RGnGYFav3YNYIN25WErPZLWmW1sO9cwFwVqiPcMGfiTZjfYer6nf5gTdrBF/kZIJ7B
-         m+njrlslxvclyKcf8VE871/N+XoGZe/QO1nqaKz51ctgiCEuy1TeJJKxrWH8LVnm7YYz
-         CvNQ==
+        d=gmail.com; s=20230601; t=1751070975; x=1751675775; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=2IjCx//d1qx+mqfIPU3sajy9SJfXmPgvsGkk3PQ/Qvo=;
+        b=JfB/rOr2WGo7pwG6SfoxeGF0RcWtI+VjvZw+Kf1JKhoaq3Q6OTsQCc7Df4NOeackxu
+         nhjyPovSEBZX2TCasprZaqZI2c1zyqfGHnx4P6RpqATfHWtvMCt99aRCSZORJgoO5Uhz
+         QMrrBNHm51Pz8OfZHrveprq1xBlXlqhOgJ8jmo+fyV7kK+ILEa0s1CthA7taZHQqCuPA
+         mlbBaMzT3VsmwtDfNVuQa64by5piYAN8jDCi/kgxSsA95jcjxhKdq7kYMgW7EkMRS4D2
+         HbEbpXPtvMnK8nboqS1k4SNU0wruEBJZKxC1W57woIETMZSq+Z1G7f+SD5ElrwLCjHI2
+         9nKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751066504; x=1751671304;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ucJkPKtW7Pg719flpv7obuaScxhby2iCUB5MbPa/kpk=;
-        b=KoVUkpeZnXzuvFOBALoei0f+zNB149wITJMnnDPmoGo4vjmxCi+UIf19MPorYIp1rB
-         xbyUeVCp4oQfJQV3vT4WKNELMr4WUr/lnFI78uJ/JZeqtR8kLeIdL160k48QMBYuHmSJ
-         ykn0cHenTEwcZh+kmGBxGUxOZMPqO7THgPL2IfuLALs779X8E96QARQWzE2rO4ymofoy
-         zxI7SKCTnwas6MDblgBTWlmkNAQXqLwFSaqjZdUzkKTdveb94XlDrWwcbY4rN86kwWil
-         gHZQUaFFinQ2uLvLI6/IvMHx1MUPQypnEsBpSpxv+bIfs82wSpwgi8Jnq6Yv2UlxdScQ
-         4IyA==
-X-Forwarded-Encrypted: i=1; AJvYcCUeYX35fDaxLsEbeLB9t5zPyIEjxJc8pmVpyFOmN3+L+e0kRDLsZd02A0y6WvoNcukUpvieb+oXkZFtOZnYA8GE@lists.infradead.org, AJvYcCXhvDgI44InVldL+u7+Cl1zDfzO7/k7PRicHQ2jzjhkrakU8Kk0Nops/2vhjxFSmnY6pBd96F7vt4TF5FBkk9o=@lists.infradead.org
-X-Gm-Message-State: AOJu0YyjQUNYyuAhQk1FLpwaoUJu9kuVdF7NAwqXYPNH83OYcXIEpfxV
-	PLl0xpHRx8Fn7cFLMdWJFN1XZAajkigaoGIK6jF9gJap4VszlqffVmxd4PY8WcmAtEt7x6KJzxZ
-	GimyzE8RBHBB7rsg8V4odIUbtf9xuu3I=
-X-Gm-Gg: ASbGncv1km6V8C0nkTYmYHVkffdHzEEGIQ3AXB1UE5QdPESnFKJGLJJHTFMYBpltJIQ
-	THS/bHlW573es1+4SaKf91kpHjA2esvXNhxf7w8hg2pHY27wRE/NkkJoxGitstcEWWpqIYwHteo
-	nDD28ENHH0C+Q1bqx6jQoN0tyTT5hCSq+NhCXY7VD4QVs=
-X-Google-Smtp-Source: AGHT+IHt7Bnl1QDdVB6cTrkscdZrmsp2tuuy01YtS0lHhra3cCiP4pdY5RNPLzOZWdY2wMvLK7r6ZqOWRGCudJ2pzN8=
-X-Received: by 2002:a05:6214:19e2:b0:6e4:2dd7:5c88 with SMTP id
- 6a1803df08f44-70005d01547mr81865596d6.38.1751066503861; Fri, 27 Jun 2025
- 16:21:43 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1751070975; x=1751675775;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=2IjCx//d1qx+mqfIPU3sajy9SJfXmPgvsGkk3PQ/Qvo=;
+        b=U+0ToKM5bZpe6TJJcBh19GO70GMhVmGOi268InBL8mLuR70ZRBhzdG73ZEnX8PEIav
+         1AU+GHc6fvYs8lxjN8oybhhpfD4s8Lg+27xiMX3yxACT591KGRjBxLWjUVBil3AMucxO
+         6f5FL+xgYWAX512EP1xb/NlrznuacPcFlapKtb52D5n9Jwnukh3zJKZc1IhFSnX18HFj
+         lenA3ZMYixh3MbBYhqtdodI6C5ZVvbbvd5HaSrnTdhTJDfSznfHt7m67F+bdPmY7MfAM
+         21IZl5sMfTfhabUoBS6c75MBvtMAANXNzAxx4UO0jOYwCTy+tLFy94T+54tgv9ldWJMc
+         Zv6w==
+X-Forwarded-Encrypted: i=1; AJvYcCUPBEvjvVGaiQIQwqMF+SM65ondyOt9SYBpo4+NrKo3n6RvRXNoz4PjDiHxfHrOBQecUQez/Zp+sbw5EXS+91I=@lists.infradead.org, AJvYcCVLr4RBENctcJe7cmnJ6T/X/AcQ5w0tDjeJavwzULSrwuJIVyp/gqCCaXIvG65SGmKIxbWuA0TCD3HuQpVjcYIf@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy7MxSt8we+Wc4UuulaUd6KWYUYFytRHtPYKIUbudVCQq47++nX
+	xpByLusWTtgyE1kpwHsYe8wPPwg6lqYTJzzO09/0QJ1gfP8WengIEJ0aC0+fuQ==
+X-Gm-Gg: ASbGncvTDdieTP08lmNxMFF5aFn38/dRsjpDG0E/O8fgGT63xsCxbXAT1YyKXWYXUnU
+	WDi4ZlHaDakmfo53mLnF3zjFDgYA+xCdccpwnQFr6OQwuPm5P/Wssc6Hct+O4b1tORCWcndoDyw
+	+uhxkl/zaBcLS3O6uAog0IccJud4tfOxCmKRBnHigQe/8DCQKqU5Og7wg0bdVakoAXDnKwBKEaf
+	C/pwKqHMsKrsieNwarG3x6VFJ6rqc1kaCHKapjuhrj00I/XN82lvnsXP3P4KxRUAcDoF/bLyfJJ
+	7CyEPQ7se7yUbJHtowdoJ4er0r/W6q/RWGjbVFF9e/R4sm2Ys0A0krE3j327tPygOAOCVJxDb7j
+	kiyVFtBLMRqanLuMyWw==
+X-Google-Smtp-Source: AGHT+IEHtgdm3EqO3yYOzPZBoBm9oQn2yfor9srRlvtz2pBRLHW+QMm335DExTwAQ8ukAdcvDpliTw==
+X-Received: by 2002:a05:600c:1e0d:b0:439:643a:c8d5 with SMTP id 5b1f17b1804b1-4538edf0902mr66989185e9.0.1751070975337;
+        Fri, 27 Jun 2025 17:36:15 -0700 (PDT)
+Received: from Ansuel-XPS. (93-34-88-225.ip49.fastwebnet.it. [93.34.88.225])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-453823c57d7sm99310995e9.40.2025.06.27.17.36.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 27 Jun 2025 17:36:14 -0700 (PDT)
+Message-ID: <685f38fe.050a0220.90fe0.c75c@mx.google.com>
+X-Google-Original-Message-ID: <aF84-zuyPkn07ui4@Ansuel-XPS.>
+Date: Sat, 28 Jun 2025 02:36:11 +0200
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Rob Herring <robh@kernel.org>
+Cc: Lee Jones <lee@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Srinivas Kandagatla <srini@kernel.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>, Simon Horman <horms@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [net-next PATCH v15 05/12] dt-bindings: mfd: Document support
+ for Airoha AN8855 Switch SoC
+References: <20250626212321.28114-1-ansuelsmth@gmail.com>
+ <20250626212321.28114-6-ansuelsmth@gmail.com>
+ <20250627214821.GA195510-robh@kernel.org>
 MIME-Version: 1.0
-References: <CAKEwX=ObLVcbR9q7ZvR3WE2hhmxLpk1bSuvcbWZwo5o5vPCDRA@mail.gmail.com>
- <20250623051642.3645-1-21cnbao@gmail.com>
-In-Reply-To: <20250623051642.3645-1-21cnbao@gmail.com>
-From: Nhat Pham <nphamcs@gmail.com>
-Date: Fri, 27 Jun 2025 16:21:32 -0700
-X-Gm-Features: Ac12FXw9SLcgHLB1-sjIGFMt6c57r8Qm130o6AnwRJ48KBb5RI23RH4t3Y7AL0Q
-Message-ID: <CAKEwX=MTuxSbbSWaKOwdjAgdar2=D83UW-j9mV3qDSg+ZHHwkA@mail.gmail.com>
-Subject: Re: [PATCH] mm: Add Kcompressd for accelerated memory compression
-To: Barry Song <21cnbao@gmail.com>
-Cc: akpm@linux-foundation.org, andrew.yang@mediatek.com, 
-	angelogioacchino.delregno@collabora.com, casper.li@mediatek.com, 
-	chinwen.chang@mediatek.com, hannes@cmpxchg.org, james.hsu@mediatek.com, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-mm@kvack.org, 
-	matthias.bgg@gmail.com, minchan@kernel.org, qun-wei.lin@mediatek.com, 
-	rppt@kernel.org, senozhatsky@chromium.org, sj@kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250627214821.GA195510-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250627_162145_780234_D493D38F 
-X-CRM114-Status: GOOD (  41.17  )
+X-CRM114-CacheID: sfid-20250627_173617_619361_25AE5FD2 
+X-CRM114-Status: GOOD (  21.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,190 +117,150 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jun 22, 2025 at 10:16=E2=80=AFPM Barry Song <21cnbao@gmail.com> wro=
-te:
+On Fri, Jun 27, 2025 at 04:48:21PM -0500, Rob Herring wrote:
+> On Thu, Jun 26, 2025 at 11:23:04PM +0200, Christian Marangi wrote:
+> > Document support for Airoha AN8855 Switch SoC. This SoC expose various
+> > peripherals like an Ethernet Switch, a NVMEM provider and Ethernet PHYs.
+> > 
+> > It does also support i2c and timers but those are not currently
+> > supported/used.
+> > 
+> > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> > ---
+> >  .../bindings/mfd/airoha,an8855.yaml           | 175 ++++++++++++++++++
+> >  1 file changed, 175 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/mfd/airoha,an8855.yaml
+> > 
+> > diff --git a/Documentation/devicetree/bindings/mfd/airoha,an8855.yaml b/Documentation/devicetree/bindings/mfd/airoha,an8855.yaml
+> > new file mode 100644
+> > index 000000000000..a683db4f41d1
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/mfd/airoha,an8855.yaml
+> > @@ -0,0 +1,175 @@
+> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/mfd/airoha,an8855.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: Airoha AN8855 Switch SoC
+> > +
+> > +maintainers:
+> > +  - Christian Marangi <ansuelsmth@gmail.com>
+> > +
+> > +description: >
+> > +  Airoha AN8855 Switch is a SoC that expose various peripherals like an
+> > +  Ethernet Switch, a NVMEM provider and Ethernet PHYs.
+> > +
+> > +  It does also support i2c and timers but those are not currently
+> > +  supported/used.
+> > +
+> > +properties:
+> > +  compatible:
+> > +    const: airoha,an8855
+> > +
+> > +  reg:
+> > +    maxItems: 1
+> > +
+> > +  reset-gpios: true
+> > +
+> > +  efuse:
+> > +    type: object
+> > +    $ref: /schemas/nvmem/airoha,an8855-efuse.yaml
+> > +    description: EFUSE exposed by the Airoha AN8855 SoC
+> > +
+> > +  ethernet-switch:
+> > +    type: object
+> > +    $ref: /schemas/net/dsa/airoha,an8855-switch.yaml
+> > +    description: Switch exposed by the Airoha AN8855 SoC
+> > +
+> > +  mdio:
+> > +    type: object
+> > +    $ref: /schemas/net/airoha,an8855-mdio.yaml
+> > +    description: MDIO exposed by the Airoha AN8855 SoC
+> > +
+> > +required:
+> > +  - compatible
+> > +  - reg
+> > +  - mdio
+> > +  - ethernet-switch
+> > +
+> > +additionalProperties: false
+> > +
+> > +examples:
+> > +  - |
+> > +    #include <dt-bindings/gpio/gpio.h>
+> > +
+> > +    mdio {
+> > +        #address-cells = <1>;
+> > +        #size-cells = <0>;
+> > +
+> > +        soc@1 {
+> > +            compatible = "airoha,an8855";
+> > +            reg = <1>;
+> > +
+> > +            reset-gpios = <&pio 39 0>;
+> > +
+> > +            efuse {
+> > +                compatible = "airoha,an8855-efuse";
+> > +
+> > +                #nvmem-cell-cells = <0>;
+> > +
+> > +                nvmem-layout {
+> > +                    compatible = "fixed-layout";
+> > +                    #address-cells = <1>;
+> > +                    #size-cells = <1>;
+> > +
+> > +                    shift_sel_port0_tx_a: shift-sel-port0-tx-a@c {
+> > +                       reg = <0xc 0x4>;
+> > +                    };
+> > +
+> > +                    shift_sel_port0_tx_b: shift-sel-port0-tx-b@10 {
+> > +                        reg = <0x10 0x4>;
+> > +                    };
+> > +
+> > +                    shift_sel_port0_tx_c: shift-sel-port0-tx-c@14 {
+> > +                        reg = <0x14 0x4>;
+> > +                    };
+> > +
+> > +                    shift_sel_port0_tx_d: shift-sel-port0-tx-d@18 {
+> > +                       reg = <0x18 0x4>;
+> > +                    };
+> > +
+> > +                    shift_sel_port1_tx_a: shift-sel-port1-tx-a@1c {
+> > +                        reg = <0x1c 0x4>;
+> > +                    };
+> > +
+> > +                    shift_sel_port1_tx_b: shift-sel-port1-tx-b@20 {
+> > +                        reg = <0x20 0x4>;
+> > +                    };
+> > +
+> > +                    shift_sel_port1_tx_c: shift-sel-port1-tx-c@24 {
+> > +                       reg = <0x24 0x4>;
+> > +                    };
+> > +
+> > +                    shift_sel_port1_tx_d: shift-sel-port1-tx-d@28 {
+> > +                        reg = <0x28 0x4>;
+> > +                    };
+> > +                };
+> > +            };
+> > +
+> > +            ethernet-switch {
+> > +                compatible = "airoha,an8855-switch";
+> > +
+> > +                ports {
+> 
+> Same comment here.
+> 
+> Why do we need 2 examples of the same thing? Isn't this 1 complete 
+> example here enough?
 >
-> Hi Nhat,
->
-> On Wed, Jun 18, 2025 at 2:21=E2=80=AFAM Nhat Pham <nphamcs@gmail.com> wro=
-te:
-> >
-> > On Sun, Jun 15, 2025 at 8:41=E2=80=AFPM Barry Song <21cnbao@gmail.com> =
-wrote:
-> > > >>
-> > > >> That seems unnecessary. There is an existing method for asynchrono=
-us
-> > > >> writeback, and pageout() is naturally fully set up to handle this.
-> > > >>
-> > > >> IMO the better way to do this is to make zswap_store() (and
-> > > >> zram_bio_write()?) asynchronous. Make those functions queue the wo=
-rk
-> > > >> and wake the compression daemon, and then have the daemon call
-> > > >> folio_end_writeback() / bio_endio() when it's done with it.
-> > >
-> > > > +1.
-> > >
-> > >
-> > > But,
-> > > How could this be possible for zswap? zswap_store() is only a fronten=
-d =E2=80=94
-> > > we still need its return value to determine whether __swap_writepage(=
-)
-> > > is required. Waiting for the result of zswap_store() is inherently a
-> > > synchronous step.
-> >
-> > Hmm, I might be misunderstanding either of you, but it sounds like
-> > what you're describing here does not contradict what Johannes is
-> > proposing?
->
-> It seems contradictory: Johannes proposes that zswap could behave like zR=
-AM
-> by invoking `folio_end_writeback()` or `bio_endio()`, but this doesn=E2=
-=80=99t align
-> with actual behavior since zswap_store might not end `swap_writeout()`=E2=
-=80=94it may
-> still proceed to `__swap_writeback()` to complete the final steps.
->
-> Meanwhile, Qun-wei=E2=80=99s RFC has already explored using `folio_end_wr=
-iteback()` and
-> `bio_endio()` at the end of `__swap_writepage()` for zRAM, though that ap=
-proach
-> also has its own issues.
 
+Do you prefer if I drop example from every other schema and keep only
+this?
 
-Hmm OK. I'll let Johannes comment on this then :)
+And with this change is it ok to keep the review tag?
 
->
-> >
-> > >
-> > > My point is that folio_end_writeback() and bio_endio() can only be
-> > > called after the entire zswap_store() =E2=86=92 __swap_writepage() se=
-quence is
-> > > completed. That=E2=80=99s why both are placed in the new kcompressed.
-> >
-> > Hmm, how about:
-> >
-> > 1. Inside zswap_store(), we first obtain the obj_cgroup reference,
-> > check cgroup and pool limit, and grab a zswap pool reference (in
-> > effect, determining the slot allocator and compressor).
-> >
-> > 2. Next, we try to queue the work to kcompressd, saving the folio and
-> > the zswap pool (and whatever else we need for the continuation). If
-> > this fails, we can proceed with the old synchronous path.
-> >
-> > 3. In kcompressed daemon, we perform the continuation of
-> > zswap_store(): compression, slot allocation, storing, zswap's LRU
-> > modification, etc. If this fails, we check if the mem_cgroup enables
-> > writeback. If it's enabled, we can call __swap_writepage(). Ideally,
-> > if writeback is disabled, we should activate the page, but it might
-> > not be possible since shrink_folio_list() might already re-add the
-> > page to the inactive lru. Maybe some modification of pageout() and
-> > shrink_folio_list() can make this work, but I haven't thought too
-> > deeply about it :) If it's impossible, we can perform async
-> > compression only for cgroups that enable writeback for now. Once we
-> > fix zswap's handling of incompressible pages, we can revisit this
-> > decision (+ SJ).
-> >
-> > TLDR: move the work-queueing step forward a bit, into the middle of
-> > zswap_store().
-> >
-> > One benefit of this is we skip pages of cgroups that disable zswap, or
-> > when zswap pool is full.
->
-> I assume you meant something like the following:
->
-> bool try_to_sched_async_zswap_store()
-> {
->         get_obj_cgroup_from_folio()
->         if (err) goto xxx;
->         zswap_check_limits();
->         if (err) goto xxx;
->         zswap_pool_current_get()
->         if (err) goto xxx;
->
->         queue_folio_to_kcompressd(folio);
-
-Something like this, yeah. Can queue_folio_to_kcompressd() fail? If
-so, we can also try synchronous compression on failure here
-(__zswap_store() ?).
-
-
->         return true;
->
-> xxx:
->         error handler things;
->         return false;
-> }
->
-> If this function returns true, it suggests that compression requests
-> have been queued to kcompressd. Following that, in kcompressd():
->
-> int __zswap_store(folio)
-> {
->         for(i=3D0;i<nr_pages;i++) {
->                 zswap_store_page();
->                 if (err) return err;
->         }
->         return 0;
-> }
->
-> kcompressd()
-> {
->         while(folio_queue_is_not_empty) {
->                 folio =3D dequeue_folio();
->                 if (folio_queued_by_zswap(folio)) {
->                         if(!__zswap_store(folio))
->                                 continue;
->                 }
->                 if ((zswap_store_page_fails && mem_cgroup_zswap_writeback=
-_enabled()) ||
->                     folio_queued_by_zram) {
-
-If !mem_cgroup_zswap_writeback_enabled(), I wonder if we can activate
-the page here?
-
->                         __swap_writepage();
->                 }
->         }
-> }
->
-> In kswapd, we will need to do
-> int swap_writeout(struct folio *folio, struct swap_iocb **swap_plug)
-> {
->         ...
->         if (try_to_sched_async_zswap_store(folio))
->                 return;
->         if (is_sync_comp_blkdev(swap)) {
->                 queue_folio_to_kcompressd(folio);
->                 return;
->         }
->         __swap_writepage();
-> }
->
-> To be honest, I'm not sure if there's a flag that indicates whether the
-> folio was queued by zswap or zram. If not, we may need to add a member
-
-I don't think there is.
-
-> associated with folio pointers in the queue between kswapd and kcompressd=
-,
-> since we need to identify zswap cases. Maybe we can reuse bit 0 of the
-> folio pointer?
->
-> What I mean is: while queuing, if the folio is queued by zswap, we do
-> `pointer |=3D BIT(0)`. Then in kcompressd, we restore the original folio
-> with `folio =3D pointer & ~BIT(0)`. It's a bit ugly, but I=E2=80=99m not =
-sure
-> there=E2=80=99s a better approach.
-
-I think this approach is fine.
-
-We can also hack struct zswap_entry, but that would require an extra
-xarray look up. OTOH, if we can assume that zram users will not enable
-zswap, we might optimize that lookup away? Not sure if it's much
-cleaner than just pointer tagging though.
-
->
-> Thanks
-> Barry
+-- 
+	Ansuel
 
