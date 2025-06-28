@@ -4,88 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED6AEC54ED1
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Jun 2025 22:27:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0271FC54ED1
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Jun 2025 22:41:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2UQtUEDTJSDEeLkJsq1ZrHW9YY3v+PbBh/DVd24iZ1Y=; b=467MlfuZXL4hozKGyKxfYmixPy
-	2xXWBm4JuyWKiNt1KSui9SjUXQGj0BC9OEI+rQi1zcElFVpdLTIIcamdXfsY1RQNhZMishNOe3Z+k
-	C2KHFuXrNoU4xz6nhFCc4hY/rIVviOgHGUYxqOWO6ePImquFh2HIk/2/uN1OmrXVZ8y0VW7p5gSO6
-	v/WPpdNqGk+QG0Ia2706zx/wCxtmjUVBWD+xHcvF9OQK/3lo+aYeEZZbWTg7zCe+zmuKmoXp0Z7q5
-	01Wq34RgRRDPmPmmAd1n+Me6Cr4YOPTPGIxFs0w3WHiX2+QZAly1f3gwO4UaKFo2NRwpFM/VLaed0
-	cWR5P7EQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=1Kv/5FIXJr4w7f7JBuDHHoZ7UQF55jJFpe21AqRti80=; b=UL+eYTDS4XA/FVI+9M3nQK16ps
+	E0Z3mvfSuCOUJ+QKUGdeVwxyCNgavGipvah7/z2qUIZH+1icbHE6jwDIQIAHZ6aaRa21uepuQGx+y
+	FmaNsSk2FqBma/MhMGrCTITiOdmrEWlcpWND1FHn45gHxRfg9feeTU2FbTlUH9xIXAEqbVFelWR9A
+	g3n2G9JWIytTFndxzeABslTzUkG+oCgxjIQXXTgMO4QYlL1sjel1uP+Qv3i//mbsRtmNk4d1iA/F8
+	Hr4ajM9E2nY98Yfnml1NBG6hWSGTBcOKAmBl6jqk4fu+hyn93OrLf2o5GAAX0YZCKUIogx8hVDA17
+	KorfAIuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVe1T-0000000HLrh-0BnT;
-	Sat, 28 Jun 2025 22:27:47 +0000
-Received: from mgamail.intel.com ([192.198.163.18])
+	id 1uVeES-0000000HMTn-3Cat;
+	Sat, 28 Jun 2025 22:41:12 +0000
+Received: from mx4.wp.pl ([212.77.101.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVdz9-0000000HLmx-2G6A;
-	Sat, 28 Jun 2025 22:25:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1751149523; x=1782685523;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=NlE2HCBxhFmElmkcJijAmIgQDwbR3P7Sc58DdxZL8NQ=;
-  b=mBmYA0hauCHJEo+0rAmGkkHSWfWy+xztwqTd+Hq1UuJXzDSxLOo/qEa2
-   DeEnkWP4QIyMgTR5Th0aSGNRLm+UkXoJlY93UJ8EZQY3iMfQdujL8uoS/
-   yb89STp9t3NV0+WNL1FchHNcV8SgmAv/wTmGJxQ8SkmnsUVYn1eTD28wO
-   rF83eQMfvSvmrFHjRzIsEA0emOaqHf1VDVIP5tevd77MRt5vdSU8c8pRa
-   z9iLb5/qyfXb1tcSHIvsatAcYT4f7R8dSlOeCNJvRas9dThxDKhYwYT8Q
-   JlvX5ddScTbFsY6PTjICkNdhVLbZfIko1wEIpN2+iS4HFWQZjdFgM+sJ9
-   w==;
-X-CSE-ConnectionGUID: UPMISyfoTli6lO03rGaoQg==
-X-CSE-MsgGUID: e8YtXm5ISU6XfH+wm0N0UQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11478"; a="52650292"
-X-IronPort-AV: E=Sophos;i="6.16,273,1744095600"; 
-   d="scan'208";a="52650292"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
-  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Jun 2025 15:25:18 -0700
-X-CSE-ConnectionGUID: /EELPRmGSAWN3g5MCHDQvw==
-X-CSE-MsgGUID: NvdqI8dOQNC2hVqoWqivTw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,273,1744095600"; 
-   d="scan'208";a="153647705"
-Received: from lkp-server01.sh.intel.com (HELO e8142ee1dce2) ([10.239.97.150])
-  by fmviesa008.fm.intel.com with ESMTP; 28 Jun 2025 15:25:13 -0700
-Received: from kbuild by e8142ee1dce2 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1uVdyx-000XRO-1J;
-	Sat, 28 Jun 2025 22:25:11 +0000
-Date: Sun, 29 Jun 2025 06:24:53 +0800
-From: kernel test robot <lkp@intel.com>
-To: Daniel Golle <daniel@makrotopia.org>, Felix Fietkau <nbd@nbd.name>,
-	Frank Wunderlich <frank-w@public-files.de>,
-	Eric Woudstra <ericwouds@gmail.com>, Elad Yifee <eladwf@gmail.com>,
-	Bo-Cun Chen <bc-bocun.chen@mediatek.com>,
-	Sky Huang <skylake.huang@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	id 1uVeC8-0000000HMGG-3rqf
+	for linux-mediatek@lists.infradead.org;
+	Sat, 28 Jun 2025 22:38:51 +0000
+Received: (wp-smtpd smtp.wp.pl 29690 invoked from network); 29 Jun 2025 00:38:39 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wp.pl; s=20241105;
+          t=1751150319; bh=1Kv/5FIXJr4w7f7JBuDHHoZ7UQF55jJFpe21AqRti80=;
+          h=From:To:Subject;
+          b=K/FNRWU7zM9HVqBDxaqZKuZqrcf8NBx4gZQKCR1NaMbM3e8LVAYyZcT8SbFdmVOAF
+           3MfJFhwI2Q6hQRIf43qP2SiZfhebNSe1BVjg8rW8v9NfsBmnnOK8MtoevrRM4Iff3E
+           WJNIPjumyEPJ26UbmwVhk9tjQBUw+OW6vbE3lXxwzWynH9wuygI7DelNq7lmTraXVI
+           HMJ4B0rwju5WHn41jls9oaPfv78qeVbfXokqCs85ufqLZkwcTZ7lxLQbE/2CT5lSa9
+           9OZvSEkdqvI3YMiFDMYn2CN7g9xkTCgOH4Xqw+nR0U6Jb7CYNOeb+sqtwarsWD1yky
+           3C9s35tSRffeg==
+Received: from 83.24.145.121.ipv4.supernova.orange.pl (HELO laptop-olek.lan) (olek2@wp.pl@[83.24.145.121])
+          (envelope-sender <olek2@wp.pl>)
+          by smtp.wp.pl (WP-SMTPD) with ECDHE-RSA-AES256-GCM-SHA384 encrypted SMTP
+          for <rafael@kernel.org>; 29 Jun 2025 00:38:39 +0200
+From: Aleksander Jan Bajkowski <olek2@wp.pl>
+To: rafael@kernel.org,
+	daniel.lezcano@linaro.org,
+	rui.zhang@intel.com,
+	lukasz.luba@arm.com,
+	jic23@kernel.org,
+	dlechner@baylibre.com,
+	nuno.sa@analog.com,
+	andy@kernel.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	olek2@wp.pl,
+	zhiyong.tao@mediatek.com,
+	linux-pm@vger.kernel.org,
+	linux-iio@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Cc: oe-kbuild-all@lists.linux.dev, netdev@vger.kernel.org
-Subject: Re: [PATCH net/next 3/3] net: ethernet: mtk_eth_soc: use genpool
- allocator for SRAM
-Message-ID: <202506290627.8dPD2PJ1-lkp@intel.com>
-References: <566ca90fc59ad0d3aff8bc8dc22ebaf0544bce47.1751072868.git.daniel@makrotopia.org>
+Subject: [PATCH 0/3] Add thermal sensors support for MT7981
+Date: Sun, 29 Jun 2025 00:38:34 +0200
+Message-Id: <20250628223837.848244-1-olek2@wp.pl>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <566ca90fc59ad0d3aff8bc8dc22ebaf0544bce47.1751072868.git.daniel@makrotopia.org>
+Content-Transfer-Encoding: 8bit
+X-WP-MailID: b810258631e11cb24906138186427c35
+X-WP-AV: skaner antywirusowy Poczty Wirtualnej Polski
+X-WP-SPAM: NO 000000A [4TMU]                               
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250628_152523_592209_EF5D6505 
-X-CRM114-Status: GOOD (  12.67  )
+X-CRM114-CacheID: sfid-20250628_153849_436925_4F363A02 
+X-CRM114-Status: UNSURE (   7.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,64 +90,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Daniel,
+This patch adds support for the temperature sensor in the MT7981 SoC.
+This sensor is exactly the same as the one in the MT7986.
 
-kernel test robot noticed the following build errors:
+Aleksander Jan Bajkowski (3):
+  arm64: dts: mediatek: add thermal sensor support on mt7981
+  thermal/drivers/mediatek: Add support for MT7981 SoC
+  dt-bindings: iio: adc: Add support for MT7981
 
-[auto build test ERROR on net-next/main]
-[also build test ERROR on next-20250627]
-[cannot apply to net/main linus/master v6.16-rc3]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Daniel-Golle/net-ethernet-mtk_eth_soc-improve-support-for-named-interrupts/20250628-093324
-base:   net-next/main
-patch link:    https://lore.kernel.org/r/566ca90fc59ad0d3aff8bc8dc22ebaf0544bce47.1751072868.git.daniel%40makrotopia.org
-patch subject: [PATCH net/next 3/3] net: ethernet: mtk_eth_soc: use genpool allocator for SRAM
-config: sh-allmodconfig (https://download.01.org/0day-ci/archive/20250629/202506290627.8dPD2PJ1-lkp@intel.com/config)
-compiler: sh4-linux-gcc (GCC) 15.1.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250629/202506290627.8dPD2PJ1-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202506290627.8dPD2PJ1-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-   drivers/net/ethernet/mediatek/mtk_eth_soc.c: In function 'mtk_dma_ring_alloc':
->> drivers/net/ethernet/mediatek/mtk_eth_soc.c:1282:24: error: returning 'int' from a function with return type 'void *' makes pointer from integer without a cast [-Wint-conversion]
-    1282 |                 return -ENOMEM;
-         |                        ^
-
-
-vim +1282 drivers/net/ethernet/mediatek/mtk_eth_soc.c
-
-  1275	
-  1276	static void *mtk_dma_ring_alloc(struct mtk_eth *eth, size_t size,
-  1277					dma_addr_t *dma_handle)
-  1278	{
-  1279		void *dma_ring;
-  1280	
-  1281		if (WARN_ON(mtk_use_legacy_sram(eth)))
-> 1282			return -ENOMEM;
-  1283	
-  1284		if (eth->sram_pool) {
-  1285			dma_ring = (void *)gen_pool_alloc(eth->sram_pool, size);
-  1286			if (!dma_ring)
-  1287				return dma_ring;
-  1288			*dma_handle = gen_pool_virt_to_phys(eth->sram_pool, (unsigned long)dma_ring);
-  1289		} else {
-  1290			dma_ring = dma_alloc_coherent(eth->dma_dev, size, dma_handle,
-  1291						      GFP_KERNEL);
-  1292		}
-  1293	
-  1294		return dma_ring;
-  1295	}
-  1296	
+ .../iio/adc/mediatek,mt2701-auxadc.yaml       |  1 +
+ arch/arm64/boot/dts/mediatek/mt7981b.dtsi     | 29 ++++++++++++++++++-
+ drivers/thermal/mediatek/auxadc_thermal.c     |  4 +++
+ 3 files changed, 33 insertions(+), 1 deletion(-)
 
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.39.5
+
 
