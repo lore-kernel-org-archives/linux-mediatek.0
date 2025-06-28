@@ -4,30 +4,30 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 077B5C54ED1
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Jun 2025 09:39:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBED5C54ED1
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Jun 2025 09:41:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c58atM53j6xJlfjeW4uz3/6gYrG19vaD/Ky2Z6w23+4=; b=AzGNuIVXAIm846
-	lVUdUYNWakbCNpvpiEpat/HTa4Y+unBNPi93Mq31/Q9akAhqUVT/68su4pfPR+PtgGtY6LBgn5dSh
-	G3FIy4ju7oy4MABDA5PAQYnwmioAhQcXH/bpMfQkXA1CSRpRMgriHh/VOKEycAv6m6WQK54liv8VC
-	3Ls6lSQWj76ieI28NU2Qz5a+BpQwmJnuIKR8YzoMzMzIf7+1njb7yfI6M7WjReOX8nrJ18fQ/6eYX
-	tmcCrVCK6lKMROlclVASs3JbvI31mwdaCuhagzI6dRn9/VoWpM/Hf5X++EqorAc3HvRzjI7u2uR9B
-	/WWHkExValkQc4zA5JeQ==;
+	List-Owner; bh=7sHWoK+S4dor/cCGOhSqusJFB/am18LqdmWaQ7hQvKA=; b=yTo8OunixHH7MZ
+	QELcac4Dma1Vrj/blvQ0LetdYg9Cg72wLpwUHFeBTbunyWwNr+CHg0pSEh+gduhXimLCjGziuETYF
+	lCMPoT510byVP2UdoctuRoSzSiExrPgRposHzrzG/J/j0JkIdpVx1af/aXZzXXW4PB7QN2b6IxOmz
+	fck3xnaHR889Qbk3yw9PXIBxILDaog4e0kiWCiSiSBHvPObrhWgOcGbjwWrWRBUbSSSfdSzEPWldG
+	2NHvfn02A124Cne2hpm14Us+A3DzJae7Vsa7zxVHu+LPyod54ZgNDiohvirfFOm1L8UPw05+l9SXH
+	PWjy8cD0i6maNalsAORA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVS1c-0000000Gdv8-0IWd;
-	Sat, 28 Jun 2025 09:39:08 +0000
-Received: from mxout3.routing.net ([2a03:2900:1:a::8])
+	id 1uVS3s-0000000Ge4a-1bB2;
+	Sat, 28 Jun 2025 09:41:28 +0000
+Received: from mxout4.routing.net ([2a03:2900:1:a::9])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVRaM-0000000GbGo-2uuc;
+	id 1uVRaN-0000000GbH5-1fu5;
 	Sat, 28 Jun 2025 09:11:00 +0000
 Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
-	by mxout3.routing.net (Postfix) with ESMTP id 8491461665;
+	by mxout4.routing.net (Postfix) with ESMTP id 23ACA1012D4;
 	Sat, 28 Jun 2025 09:10:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
 	s=20200217; t=1751101855;
@@ -35,13 +35,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=c58atM53j6xJlfjeW4uz3/6gYrG19vaD/Ky2Z6w23+4=;
-	b=CN8hTQ6F2JgD81hp5vRG+KaTQmCq/h5BnDTH2xfxCOyxMXx2MqsRyUxIv93BLL/5So2t8c
-	kW3XrAaJvthnvFP1+dzAxC8SESEyaWq1MVaE4isWSNERCz39runHqQYjMD/7cTY1VThfFZ
-	A4ieKYI9gEkzKXA08pIuR3C25iRMiqo=
+	bh=7sHWoK+S4dor/cCGOhSqusJFB/am18LqdmWaQ7hQvKA=;
+	b=u9GW4OQzOc7exqNlyrupVC5dvGApSPBP01ub9s1y8CHn9MRHiDm8ASmvngNGAUT/hoOzd3
+	aPpr+la+tXw9KAcqYE764SjOCPlvFc8IOecVitfGMurjhvBGkcBcGIORvcDQvX+zs2hvOe
+	4tJAeSCDGvuvN0uef0l8eQg4zVaEecI=
 Received: from frank-u24.. (fttx-pool-217.61.150.139.bambit.de [217.61.150.139])
-	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 2C47812272D;
-	Sat, 28 Jun 2025 09:10:55 +0000 (UTC)
+	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id BF1011226F5;
+	Sat, 28 Jun 2025 09:10:54 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: MyungJoo Ham <myungjoo.ham@samsung.com>,
 	Kyungmin Park <kyungmin.park@samsung.com>,
@@ -58,17 +58,17 @@ To: MyungJoo Ham <myungjoo.ham@samsung.com>,
 	Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v6 13/15] arm64: dts: mediatek: mt7988a-bpi-r4: add aliases for ethernet
-Date: Sat, 28 Jun 2025 11:10:37 +0200
-Message-ID: <20250628091043.57645-14-linux@fw-web.de>
+Subject: [PATCH v6 12/15] arm64: dts: mediatek: mt7988a-bpi-r4: add gpio leds
+Date: Sat, 28 Jun 2025 11:10:36 +0200
+Message-ID: <20250628091043.57645-13-linux@fw-web.de>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250628091043.57645-1-linux@fw-web.de>
 References: <20250628091043.57645-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250628_021058_892454_6E0CBADD 
-X-CRM114-Status: UNSURE (   9.46  )
+X-CRM114-CacheID: sfid-20250628_021059_588917_AE444CC6 
+X-CRM114-Status: UNSURE (   8.69  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,31 +87,48 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-Add aliases for gmacs to allow bootloader setting mac-adresses.
+Bananapi R4 has a green and a blue led which can be switched by gpio.
+Green led is for running state so default on.
+
+Green led also shares pin with eeprom writeprotect where led off allows
+writing to eeprom.
 
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi | 6 ++++++
- 1 file changed, 6 insertions(+)
+ .../dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
-index 21eb91c8609f..20073eb4d1bd 100644
+index 30affedf84d4..21eb91c8609f 100644
 --- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
-@@ -8,6 +8,12 @@
- #include "mt7988a.dtsi"
+@@ -21,6 +21,25 @@ fan: pwm-fan {
+ 		status = "okay";
+ 	};
  
- / {
-+	aliases {
-+		ethernet0 = &gmac0;
-+		ethernet1 = &gmac1;
-+		ethernet2 = &gmac2;
++	gpio-leds {
++		compatible = "gpio-leds";
++
++		led_green: led-green {
++			function = LED_FUNCTION_STATUS;
++			color = <LED_COLOR_ID_GREEN>;
++			gpios = <&pio 79 GPIO_ACTIVE_HIGH>;
++			default-state = "on";
++		};
++
++		led_blue: led-blue {
++			function = LED_FUNCTION_WPS;
++			color = <LED_COLOR_ID_BLUE>;
++			gpios = <&pio 63 GPIO_ACTIVE_HIGH>;
++			default-state = "off";
++		};
 +	};
 +
- 	chosen {
- 		stdout-path = "serial0:115200n8";
- 	};
++
+ 	reg_1p8v: regulator-1p8v {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "fixed-1.8V";
 -- 
 2.43.0
 
