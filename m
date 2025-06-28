@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8111C7EE32
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Jun 2025 07:47:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CCE9C54ED1
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Jun 2025 07:50:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
 	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OttYEYSGsa6fmMgQuQ6ACm+QP5p6Nu/umyUb7AyO7Eg=; b=4FHU+two9zwwzdaldR8fa6IrHa
-	U1IgmWB3WT6dfGAyMyoJ/jg8GJG5aTEeJtt61EtszqRx9xoV/IZiR0TP2d64z6F9i7sWdiDB8zhTK
-	wP/PkbKDWT/cvroRsa2rFPXOhon1xQsulRkm7Em20F3nDrraakrxeuJ4aZgOl8E/re7idsCp2iyyG
-	8iAj4sU/T/laBWXw6EAEQbRuHwCvUYv4Bt0w3zhZKx+L00IE9yLzDvdbhmmdYoj+joANxQUQqGk+i
-	OqsVCIIXVHDWruFeSY9r8bI0sCWY6wAYQBLzOpiqRhR+cPkslWk6BG4fulz9yHGsCS56HeFch3Ovj
-	8VLlpadA==;
+	bh=5en0Kaj+kw2e4lzOEeWUYL1+XRABVcsrt5UjiXRZbPk=; b=Our1iilbHFH9ZjH/S4WRBwx5iI
+	iovQ4QMp3SDFfg6u4/Swt+fIaP5QsYlI+Qe3gQHathe0Sk6NwIp+AzH0hVenmPduiul7W6LdHaIgK
+	3B6W7ZhygUcg64SAMVH59ZLbbuSOYqbtoWFdghE+kXRh0fJ35cgRt+D7PiSh6d0BXagIHce9wXDrE
+	Bar3blxtP4c6ns7QajVogypI6SBLkpOncuuA4IyCvfDMlvGDUrb78/hsJmoy6mOUvlmjSSnhr/vuL
+	YmUdK+/xxem3+ZbmubxWNNQSFgMcahQJ+cho6ongTIeUuAqX452nPJFbW9FW6Rj3J0roqIYtEgxwr
+	kpVxe/hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVQHv-0000000GWrB-2PIP;
-	Sat, 28 Jun 2025 07:47:51 +0000
+	id 1uVQKB-0000000GWy2-2oLK;
+	Sat, 28 Jun 2025 07:50:11 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVQFc-0000000GWfS-0Ioa;
-	Sat, 28 Jun 2025 07:45:29 +0000
+	id 1uVQFq-0000000GWh1-2AG4;
+	Sat, 28 Jun 2025 07:45:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=OttYEYSGsa6fmMgQuQ6ACm+QP5p6Nu/umyUb7AyO7Eg=; b=NPumxxan5JbLaOahIw2KDrjgix
-	JWPttDRwbstlKJlN02rVvomyp+59v5OvcuihXU3uK3n8zOB57RxZ3Jq2GSeFHzKa5wTXge4XrnIT4
-	3RWNMmlu/RbP0sIceNo/14C9KvUd7MetTrSJPssjZO2gY0bGv36dMDxE0OJN3KtFZBzQ=;
+	bh=5en0Kaj+kw2e4lzOEeWUYL1+XRABVcsrt5UjiXRZbPk=; b=uiBx9dcysLAijZ6nr9fHen0bEE
+	zfOltBKotGihTWnKUTVBerCU1Sz99PVIEky+erLecvYEPiPSd/mCQu9pixz+7kdXU3VTChLRDdf9o
+	iw8NR2TPfI1O8x0IbKiBA4Ljjmq60EpxRN/5bQpY9LCOK3R2NWb5Ypc0DGcFDUe88Oxo=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1uVQF8-00HDmt-S5; Sat, 28 Jun 2025 09:44:58 +0200
-Date: Sat, 28 Jun 2025 09:44:58 +0200
+	id 1uVQFc-00HDno-FP; Sat, 28 Jun 2025 09:45:28 +0200
+Date: Sat, 28 Jun 2025 09:45:28 +0200
 From: Andrew Lunn <andrew@lunn.ch>
 To: Daniel Golle <daniel@makrotopia.org>
-Subject: Re: [PATCH net/next 1/3] net: ethernet: mtk_eth_soc: improve support
- for named interrupts
-Message-ID: <02a89062-456f-41de-a89b-c4963aae2d7f@lunn.ch>
+Subject: Re: [PATCH net/next 2/3] net: ethernet: mtk_eth_soc: fix kernel-doc
+ comment
+Message-ID: <bf7f8685-f51b-4b92-916d-96c1fa16fce7@lunn.ch>
 References: <cover.1751072868.git.daniel@makrotopia.org>
- <d1b744685a464c5cd353107555faca6cd965d158.1751072868.git.daniel@makrotopia.org>
+ <00249671d424622e780f0dcafe6924f634b632ce.1751072868.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <d1b744685a464c5cd353107555faca6cd965d158.1751072868.git.daniel@makrotopia.org>
+In-Reply-To: <00249671d424622e780f0dcafe6924f634b632ce.1751072868.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250628_004528_119190_5EB75BA0 
-X-CRM114-Status: UNSURE (   8.83  )
+X-CRM114-CacheID: sfid-20250628_004542_550981_920D6BD0 
+X-CRM114-Status: UNSURE (   8.28  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -68,11 +68,9 @@ Cc: Sky Huang <skylake.huang@mediatek.com>, netdev@vger.kernel.org, Sean Wang <s
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jun 28, 2025 at 02:30:23AM +0100, Daniel Golle wrote:
-> Use platform_get_irq_byname_optional() to avoid outputting error
-> messages when using legacy device trees which rely identifying
-> interrupts only by index. Instead, output a warning notifying the user
-> to update their device tree.
+On Sat, Jun 28, 2025 at 02:30:31AM +0100, Daniel Golle wrote:
+> Fix and add some missing field descriptions to kernel-doc comment of
+> struct mtk_eth.
 > 
 > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
