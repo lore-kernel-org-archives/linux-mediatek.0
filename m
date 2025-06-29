@@ -4,82 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 159B1C7EE39
-	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Jun 2025 21:00:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 769F7C7EE39
+	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Jun 2025 22:24:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gJVZKSVaSOfixf0yBTWqJgolNGXGzJTY/oeqr1f6HN8=; b=ouUiSpCwP5P5G0djelyZKdtoTz
-	PM3dCVMssDQFcnONSMeKLb/WC1UFBO1w9xXpwjdsivLDaiJC/W6RVr46Alj6A3pB9S1vHBS/OLi98
-	nuwOcVMb7OAtWm6Jvpw+d2SI1SPOCPtqQSoEz/YiI9oVD5JxN9ecYAEpFmBvK9FCnjCM+Zp9Dz5YL
-	z53ROZ4BVor0HnlwXMYl5t7Od4ARHssCYxIjO0AvluHnXnXTe7c6xXeppl8Rardxs9cPN1Pnq1S9P
-	1HXfxx9ytU6DHYcLIFP5ZOABGix62Es+N9smafRBMjEP6mkoifR7IGPKRDi23tvsgr/uBciIUadeT
-	c0oKYq0w==;
+	bh=0GjMCpwI1NKc9d8AVCfYrCo14uPmKjffa7wcb2ZinqM=; b=QL4abg7i2MVEHjetf/P8Eh1vH+
+	wX1q/84vGQcBaQjvrLQZr7HWcaAudSBwTPiS2IEH7fP554K59b7TYKNekRYMrv06PAuKtsxcrysFz
+	PAwlHauLBepIktfix56PrV1wpDu7CxcQ5ocd8EAVSNAAyUAM/FSiRqfCN42kRi+AijQsE2Is8WT1x
+	8WKQiEd42MnDtAAZs5qCQnXYj6SfhYcsSxzavRbiaP35cAFHx7cXulq1k1lmQDTBRMe3EqvTlNF1K
+	kV7h/ilfA7Q1tig5fkGYDglPhdy4wa62xW5e13u6FuUpQ7pfefyKZ/Hk8loDVme9cHLJN70jcs0QU
+	YXid3nWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVz87-00000000k10-1Bgn;
-	Sun, 29 Jun 2025 21:00:03 +0000
-Received: from mgamail.intel.com ([198.175.65.9])
+	id 1uW0Rc-00000000o2E-29Ts;
+	Sun, 29 Jun 2025 22:24:16 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVz5m-00000000jqj-3l04;
-	Sun, 29 Jun 2025 20:57:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1751230659; x=1782766659;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=4sGclJ7JPmOXEyw1qCkUxmj9+SxiJpgXHWGQ3kI7L8E=;
-  b=eygVsrlgeKdTWf9igBbSSHZ6wOYVEWN41p/4nSBCbMq6s2EOHxgtbSDQ
-   pzBA0tKrvIQQx2LempI2nUQ64fybv+jxZBUBTLpSImbwzeuRRZwvtlIIr
-   1L7ArfHCLo0gd0OyuW1qyf7ohXCF/V6xvoJE6oKGtVO0N9CaQDOQH+P87
-   7U8mpt1m9VqMyGcqz/K/l8bLxPdyyLZ7wXi06Se5OGt/3J2zMXMlKkvDd
-   zW5sT1ZH4UF7BkJgpjxKIQ2N/9nBe7hNpib5TUABtaIk5hKVKg6Hls+MS
-   o4RMHxjcPPLtuQTMTBmf6Xhmejg68JfPGiYjdahN60FeX553wlWL2R/Xo
-   g==;
-X-CSE-ConnectionGUID: TgDDpHAKTHyXJvoCT9+GPw==
-X-CSE-MsgGUID: jE1KQOW2QGWcG8de+GBPGQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11479"; a="76006850"
-X-IronPort-AV: E=Sophos;i="6.16,276,1744095600"; 
-   d="scan'208";a="76006850"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Jun 2025 13:57:34 -0700
-X-CSE-ConnectionGUID: yqedKzWcThKyEa84V8mKAQ==
-X-CSE-MsgGUID: 2xMj3oDGTH6CIdlGLr8kEA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,276,1744095600"; 
-   d="scan'208";a="152780971"
-Received: from lkp-server01.sh.intel.com (HELO e8142ee1dce2) ([10.239.97.150])
-  by orviesa006.jf.intel.com with ESMTP; 29 Jun 2025 13:57:29 -0700
-Received: from kbuild by e8142ee1dce2 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1uVz5b-000YE2-1w;
-	Sun, 29 Jun 2025 20:57:27 +0000
-Date: Mon, 30 Jun 2025 04:56:37 +0800
-From: kernel test robot <lkp@intel.com>
-To: Laura Nao <laura.nao@collabora.com>, mturquette@baylibre.com,
-	sboyd@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, p.zabel@pengutronix.de,
-	richardcochran@gmail.com
-Cc: oe-kbuild-all@lists.linux.dev, guangjie.song@mediatek.com,
-	wenst@chromium.org, linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	id 1uW0PH-00000000nnh-3gkb;
+	Sun, 29 Jun 2025 22:21:53 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.98.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1uW0PB-000000002J3-0WMf;
+	Sun, 29 Jun 2025 22:21:45 +0000
+Date: Sun, 29 Jun 2025 23:21:42 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Felix Fietkau <nbd@nbd.name>,
+	Frank Wunderlich <frank-w@public-files.de>,
+	Eric Woudstra <ericwouds@gmail.com>, Elad Yifee <eladwf@gmail.com>,
+	Bo-Cun Chen <bc-bocun.chen@mediatek.com>,
+	Sky Huang <skylake.huang@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	kernel@collabora.com, Laura Nao <laura.nao@collabora.com>
-Subject: Re: [PATCH v2 22/29] clk: mediatek: Add MT8196 mfg clock support
-Message-ID: <202506300416.dbAiyBcI-lkp@intel.com>
-References: <20250624143220.244549-23-laura.nao@collabora.com>
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net-next v2 1/3] net: ethernet: mtk_eth_soc: improve support
+ for named interrupts
+Message-ID: <20460fe0dee9f1c42f3c1b64177dd569a6fe4ef4.1751229149.git.daniel@makrotopia.org>
+References: <cover.1751229149.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250624143220.244549-23-laura.nao@collabora.com>
+In-Reply-To: <cover.1751229149.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250629_135738_998474_CA44C16A 
-X-CRM114-Status: GOOD (  13.15  )
+X-CRM114-CacheID: sfid-20250629_152151_920907_9F67171B 
+X-CRM114-Status: GOOD (  11.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,48 +75,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Laura,
+Use platform_get_irq_byname_optional() to avoid outputting error
+messages when using legacy device trees which rely identifying
+interrupts only by index. Instead, output a warning notifying the user
+to update their device tree.
 
-kernel test robot noticed the following build warnings:
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+---
+v2: no changes
 
-[auto build test WARNING on clk/clk-next]
-[also build test WARNING on linus/master v6.16-rc3 next-20250627]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Laura-Nao/clk-mediatek-clk-pll-Add-set-clr-regs-for-shared-PLL-enable-control/20250624-225217
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/clk/linux.git clk-next
-patch link:    https://lore.kernel.org/r/20250624143220.244549-23-laura.nao%40collabora.com
-patch subject: [PATCH v2 22/29] clk: mediatek: Add MT8196 mfg clock support
-config: arm64-randconfig-r053-20250629 (https://download.01.org/0day-ci/archive/20250630/202506300416.dbAiyBcI-lkp@intel.com/config)
-compiler: clang version 21.0.0git (https://github.com/llvm/llvm-project e04c938cc08a90ae60440ce22d072ebc69d67ee8)
-rustc: rustc 1.78.0 (9b00956e5 2024-04-29)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202506300416.dbAiyBcI-lkp@intel.com/
-
-cocci warnings: (new ones prefixed by >>)
->> drivers/clk/mediatek/clk-mt8196-mfg.c:143:3-8: No need to set .owner here. The core will do it.
-
-vim +143 drivers/clk/mediatek/clk-mt8196-mfg.c
-
-   137	
-   138	static struct platform_driver clk_mt8196_mfg_drv = {
-   139		.probe = clk_mt8196_mfg_probe,
-   140		.remove = clk_mt8196_mfg_remove,
-   141		.driver = {
-   142			.name = "clk-mt8196-mfg",
- > 143			.owner = THIS_MODULE,
-   144			.of_match_table = of_match_clk_mt8196_mfg,
-   145		},
-   146	};
-   147	module_platform_driver(clk_mt8196_mfg_drv);
-   148	
-
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index f8a907747db4..8f55069441f4 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -3341,17 +3341,22 @@ static int mtk_get_irqs(struct platform_device *pdev, struct mtk_eth *eth)
+ 	int i;
+ 
+ 	/* future SoCs beginning with MT7988 should use named IRQs in dts */
+-	eth->irq[MTK_FE_IRQ_TX] = platform_get_irq_byname(pdev, "fe1");
+-	eth->irq[MTK_FE_IRQ_RX] = platform_get_irq_byname(pdev, "fe2");
++	eth->irq[MTK_FE_IRQ_TX] = platform_get_irq_byname_optional(pdev, "fe1");
++	eth->irq[MTK_FE_IRQ_RX] = platform_get_irq_byname_optional(pdev, "fe2");
+ 	if (eth->irq[MTK_FE_IRQ_TX] >= 0 && eth->irq[MTK_FE_IRQ_RX] >= 0)
+ 		return 0;
+ 
+-	/* only use legacy mode if platform_get_irq_byname returned -ENXIO */
++	/* only use legacy mode if platform_get_irq_byname_optional returned -ENXIO */
+ 	if (eth->irq[MTK_FE_IRQ_TX] != -ENXIO)
+-		return eth->irq[MTK_FE_IRQ_TX];
++		return dev_err_probe(&pdev->dev, eth->irq[MTK_FE_IRQ_TX],
++				     "Error requesting FE TX IRQ\n");
+ 
+ 	if (eth->irq[MTK_FE_IRQ_RX] != -ENXIO)
+-		return eth->irq[MTK_FE_IRQ_RX];
++		return dev_err_probe(&pdev->dev, eth->irq[MTK_FE_IRQ_RX],
++				     "Error requesting FE RX IRQ\n");
++
++	if (!MTK_HAS_CAPS(eth->soc->caps, MTK_SHARED_INT))
++		dev_warn(&pdev->dev, "legacy DT: missing interrupt-names.");
+ 
+ 	/* legacy way:
+ 	 * On MTK_SHARED_INT SoCs (MT7621 + MT7628) the first IRQ is taken
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.50.0
 
