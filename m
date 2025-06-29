@@ -4,70 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66F0EC7EE30
-	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Jun 2025 18:23:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 159B1C7EE39
+	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Jun 2025 21:00:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Myxtx+Y7/VaI8ABGRupGWXUe5PVGaahjgE4X+AhP3TM=; b=EshWzvzWeNNdkrA3Xi3dVHiHo+
-	5n2Qa1+lEoqX2/pJsfsJP/occOelv6Fk4qoJYzy3Co4nOiaMZHx6/HL1E+4YN/2H+5EnU2oEMOGuP
-	P/xjNAiUbVUJDuPYZQKGI9J5ZTIF/67GysRh6r+iHFGNFUaYbgQA6tW/vOKrwLckM4KYciwNYry5+
-	85BxPg2vJr+ArAWi3kQidX8w649BS+GWQSbTrOrzu6Zn1AvDQR7xCSy36GxYoy6FTnur3ZasfTa+I
-	lxlzs8mzoDvQoFs2bdT7MeeW6LpT5ShdP35yQBQCkJZP+6mHFlz8pm3VAqml2fhcW9xph7zSDECOo
-	c6RlbTVQ==;
+	bh=gJVZKSVaSOfixf0yBTWqJgolNGXGzJTY/oeqr1f6HN8=; b=ouUiSpCwP5P5G0djelyZKdtoTz
+	PM3dCVMssDQFcnONSMeKLb/WC1UFBO1w9xXpwjdsivLDaiJC/W6RVr46Alj6A3pB9S1vHBS/OLi98
+	nuwOcVMb7OAtWm6Jvpw+d2SI1SPOCPtqQSoEz/YiI9oVD5JxN9ecYAEpFmBvK9FCnjCM+Zp9Dz5YL
+	z53ROZ4BVor0HnlwXMYl5t7Od4ARHssCYxIjO0AvluHnXnXTe7c6xXeppl8Rardxs9cPN1Pnq1S9P
+	1HXfxx9ytU6DHYcLIFP5ZOABGix62Es+N9smafRBMjEP6mkoifR7IGPKRDi23tvsgr/uBciIUadeT
+	c0oKYq0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVwgv-00000000ZYf-2FWw;
-	Sun, 29 Jun 2025 18:23:49 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1uVz87-00000000k10-1Bgn;
+	Sun, 29 Jun 2025 21:00:03 +0000
+Received: from mgamail.intel.com ([198.175.65.9])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVwgt-00000000ZY0-34fU;
-	Sun, 29 Jun 2025 18:23:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=Myxtx+Y7/VaI8ABGRupGWXUe5PVGaahjgE4X+AhP3TM=; b=2BExNKnzg/xdwxUfR70MEs+omD
-	rWHPQp6QwjrGMrAaY5LVF0Yq8UVGDbvUgH7dP/sK9feaCAJs8J+aY4XPYsaMRVQBMHNxAcqKrrvSA
-	p4Tq1D+srrUj+fQc/tZ1J6T7lq8RjAAXTAHbHI11eNajevRsOL3fbUkQP8gNsiHoIdzo=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1uVwgi-00HIEC-Uz; Sun, 29 Jun 2025 20:23:36 +0200
-Date: Sun, 29 Jun 2025 20:23:36 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Sky Huang <skylake.huang@mediatek.com>, netdev@vger.kernel.org,
-	Sean Wang <sean.wang@mediatek.com>,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	Eric Dumazet <edumazet@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1uVz5m-00000000jqj-3l04;
+	Sun, 29 Jun 2025 20:57:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1751230659; x=1782766659;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=4sGclJ7JPmOXEyw1qCkUxmj9+SxiJpgXHWGQ3kI7L8E=;
+  b=eygVsrlgeKdTWf9igBbSSHZ6wOYVEWN41p/4nSBCbMq6s2EOHxgtbSDQ
+   pzBA0tKrvIQQx2LempI2nUQ64fybv+jxZBUBTLpSImbwzeuRRZwvtlIIr
+   1L7ArfHCLo0gd0OyuW1qyf7ohXCF/V6xvoJE6oKGtVO0N9CaQDOQH+P87
+   7U8mpt1m9VqMyGcqz/K/l8bLxPdyyLZ7wXi06Se5OGt/3J2zMXMlKkvDd
+   zW5sT1ZH4UF7BkJgpjxKIQ2N/9nBe7hNpib5TUABtaIk5hKVKg6Hls+MS
+   o4RMHxjcPPLtuQTMTBmf6Xhmejg68JfPGiYjdahN60FeX553wlWL2R/Xo
+   g==;
+X-CSE-ConnectionGUID: TgDDpHAKTHyXJvoCT9+GPw==
+X-CSE-MsgGUID: jE1KQOW2QGWcG8de+GBPGQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11479"; a="76006850"
+X-IronPort-AV: E=Sophos;i="6.16,276,1744095600"; 
+   d="scan'208";a="76006850"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Jun 2025 13:57:34 -0700
+X-CSE-ConnectionGUID: yqedKzWcThKyEa84V8mKAQ==
+X-CSE-MsgGUID: 2xMj3oDGTH6CIdlGLr8kEA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,276,1744095600"; 
+   d="scan'208";a="152780971"
+Received: from lkp-server01.sh.intel.com (HELO e8142ee1dce2) ([10.239.97.150])
+  by orviesa006.jf.intel.com with ESMTP; 29 Jun 2025 13:57:29 -0700
+Received: from kbuild by e8142ee1dce2 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1uVz5b-000YE2-1w;
+	Sun, 29 Jun 2025 20:57:27 +0000
+Date: Mon, 30 Jun 2025 04:56:37 +0800
+From: kernel test robot <lkp@intel.com>
+To: Laura Nao <laura.nao@collabora.com>, mturquette@baylibre.com,
+	sboyd@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
+	conor+dt@kernel.org, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, p.zabel@pengutronix.de,
+	richardcochran@gmail.com
+Cc: oe-kbuild-all@lists.linux.dev, guangjie.song@mediatek.com,
+	wenst@chromium.org, linux-clk@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	Bo-Cun Chen <bc-bocun.chen@mediatek.com>,
-	Eric Woudstra <ericwouds@gmail.com>, Elad Yifee <eladwf@gmail.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Felix Fietkau <nbd@nbd.name>
-Subject: Re: [PATCH net/next 3/3] net: ethernet: mtk_eth_soc: use genpool
- allocator for SRAM
-Message-ID: <ea30ed46-b0b5-4ade-8267-f6f4a45fdd5d@lunn.ch>
-References: <cover.1751072868.git.daniel@makrotopia.org>
- <566ca90fc59ad0d3aff8bc8dc22ebaf0544bce47.1751072868.git.daniel@makrotopia.org>
- <f9bec387-1858-4c79-bb4b-60e744457c9f@lunn.ch>
- <aGFM1UQ1P3IQjoex@makrotopia.org>
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	kernel@collabora.com, Laura Nao <laura.nao@collabora.com>
+Subject: Re: [PATCH v2 22/29] clk: mediatek: Add MT8196 mfg clock support
+Message-ID: <202506300416.dbAiyBcI-lkp@intel.com>
+References: <20250624143220.244549-23-laura.nao@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <aGFM1UQ1P3IQjoex@makrotopia.org>
+In-Reply-To: <20250624143220.244549-23-laura.nao@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250629_112347_775631_05FCA756 
-X-CRM114-Status: GOOD (  17.66  )
+X-CRM114-CacheID: sfid-20250629_135738_998474_CA44C16A 
+X-CRM114-Status: GOOD (  13.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,40 +94,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jun 29, 2025 at 03:25:25PM +0100, Daniel Golle wrote:
-> On Sat, Jun 28, 2025 at 10:13:51AM +0200, Andrew Lunn wrote:
-> > > +static void *mtk_dma_ring_alloc(struct mtk_eth *eth, size_t size,
-> > > +				dma_addr_t *dma_handle)
-> > > +{
-> > > +	void *dma_ring;
-> > > +
-> > > +	if (WARN_ON(mtk_use_legacy_sram(eth)))
-> > > +		return -ENOMEM;
-> > > +
-> > > +	if (eth->sram_pool) {
-> > > +		dma_ring = (void *)gen_pool_alloc(eth->sram_pool, size);
-> > > +		if (!dma_ring)
-> > > +			return dma_ring;
-> > > +		*dma_handle = gen_pool_virt_to_phys(eth->sram_pool, (unsigned long)dma_ring);
-> > 
-> > I don't particularly like all the casting backwards and forwards
-> > between unsigned long and void *. These two APIs are not really
-> > compatible with each other. So any sort of wrapping is going to be
-> > messy.
-> > 
-> > Maybe define a cookie union:
-> > 
-> > struct mtk_dma_cookie {
-> > 	union {
-> > 		unsigned long gen_pool;
-> > 		void *coherent;
-> > 	}
-> > }
-> 
-> I've implemented that idea and the diffstat grew quite a lot. Also,
-> it didn't really make the code more readable (see below why).
+Hi Laura,
 
-O.K, thanks for trying. Please keep with the casts back and forth.
+kernel test robot noticed the following build warnings:
 
-	Andrew
+[auto build test WARNING on clk/clk-next]
+[also build test WARNING on linus/master v6.16-rc3 next-20250627]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Laura-Nao/clk-mediatek-clk-pll-Add-set-clr-regs-for-shared-PLL-enable-control/20250624-225217
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/clk/linux.git clk-next
+patch link:    https://lore.kernel.org/r/20250624143220.244549-23-laura.nao%40collabora.com
+patch subject: [PATCH v2 22/29] clk: mediatek: Add MT8196 mfg clock support
+config: arm64-randconfig-r053-20250629 (https://download.01.org/0day-ci/archive/20250630/202506300416.dbAiyBcI-lkp@intel.com/config)
+compiler: clang version 21.0.0git (https://github.com/llvm/llvm-project e04c938cc08a90ae60440ce22d072ebc69d67ee8)
+rustc: rustc 1.78.0 (9b00956e5 2024-04-29)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202506300416.dbAiyBcI-lkp@intel.com/
+
+cocci warnings: (new ones prefixed by >>)
+>> drivers/clk/mediatek/clk-mt8196-mfg.c:143:3-8: No need to set .owner here. The core will do it.
+
+vim +143 drivers/clk/mediatek/clk-mt8196-mfg.c
+
+   137	
+   138	static struct platform_driver clk_mt8196_mfg_drv = {
+   139		.probe = clk_mt8196_mfg_probe,
+   140		.remove = clk_mt8196_mfg_remove,
+   141		.driver = {
+   142			.name = "clk-mt8196-mfg",
+ > 143			.owner = THIS_MODULE,
+   144			.of_match_table = of_match_clk_mt8196_mfg,
+   145		},
+   146	};
+   147	module_platform_driver(clk_mt8196_mfg_drv);
+   148	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
