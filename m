@@ -4,67 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0833CC7EE39
-	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Jun 2025 16:35:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B36BC7EE30
+	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Jun 2025 17:24:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QzWqpMkWLli5Ubb9ocpLNQLSO34HJRoESJlwzoAXrOM=; b=wHEPv8+pFZumA6MhpKXIRDwCQJ
-	Q/8kR3+K6KGIQrayOntKaG5SUKy9MmaPGGXxvc6LAZMZNa5Wi1fcrrwJv/fWJ8MIlR6A2UrI0YiQq
-	XYiO4+YL2WDDmzAPhSGEIEsRWdni9UmgbOXf8zeVNfNX9ozo5i3/7xB6EZL5LfFsSHDh5wXgWiqJD
-	hPCWJ1jORHq0krjCo6fNtxgySB1C8cHB9OmU+6hqEHZwZMGn2WCggg0JEYEeNgDe2Ft/q9L8MnPXq
-	gSj9Gu+pFx8NmErUVxt1FPYI+rJPuxiiUtWwTq/cZJq8me9o/Ce4nRE/qBqvui5w+vFhrFCatqikZ
-	xdd7oXMQ==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Diy1MlYscq1DF0Zv66TQbVLrO14SzJmah7qWSQHod6M=; b=3DA1idq5yCTz1komVlWw9aRyNp
+	g7YEoAXJVrVnAlXXhoaQiDWvPeWjMMSLvNydrSo2yeDP6Wc2FuwUte6EQl/7YXkTQ9GeHUzrepnpo
+	Qpwt3Al3nLnG059QJDhiPB8GQ5rR+ck28OEoFWceFWIhqZI4jeY0NJeUHqGyGVKywr+djE1FMvFhJ
+	Z9PmqWLjvvewFk4jGuTdrIoUHV8M/PluDiLpqVgL1buebfbqNjHZkXs6JoNUvBuG2QzgdHjo3qIDM
+	16sN+fHfpa3m2LNojmKvwXvxR3atTiiW01GIj/ZxKd4ezLhV+4hjsiHJ/BHbZVUGv5pm7YzSgJvwE
+	V5Y7h/dA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVv0E-00000000Sd1-07ms;
-	Sun, 29 Jun 2025 16:35:38 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1uVvlq-00000000VVk-2YJ8;
+	Sun, 29 Jun 2025 17:24:50 +0000
+Received: from mail-ot1-x331.google.com ([2607:f8b0:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVuxu-00000000SYB-0AC5;
-	Sun, 29 Jun 2025 16:33:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id A9B484376C;
-	Sun, 29 Jun 2025 16:33:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EF621C4CEEB;
-	Sun, 29 Jun 2025 16:33:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751214792;
-	bh=ef6rQZIC/ziH2BA7dycq513/pksDVMKdMUwcu1DRESk=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=U3403vbl5suB3BrPuAl8KFrQvJDwX3oceR5hJkBeRfCQTkr2VPdRgfrIy6osO9NaM
-	 5iFhBP+D/40TQiUYWJ6359Q7YctQi90tChVaGzd/piy31o1J7zGtQ60leZlTI56YEQ
-	 HXGVpSxU15mXzACinvG8PiaVVr9xoKaSxX6+tSwFlihR1rtZQ9GcbOj/0oWL+jZPEM
-	 /4rfI+Miu1+9+I1gs4fVgLf3WFVwUf/eAEBjAfUY/1WkDKwyfBpEaGseUd4hndXfqX
-	 cSamFty1PIZTQ1ZvfmQQDTxr5Q2do3HK4pvp5GVbzPUYm/FU7XkqC8Bg2UpqfBtmIM
-	 UwLaJxoPnDipg==
-Date: Sun, 29 Jun 2025 17:33:02 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Aleksander Jan Bajkowski <olek2@wp.pl>
-Cc: rafael@kernel.org, daniel.lezcano@linaro.org, rui.zhang@intel.com,
- lukasz.luba@arm.com, dlechner@baylibre.com, nuno.sa@analog.com,
- andy@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- zhiyong.tao@mediatek.com, linux-pm@vger.kernel.org,
- linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 2/3] thermal/drivers/mediatek: Add support for MT7981
- SoC
-Message-ID: <20250629173302.265b67ec@jic23-huawei>
-In-Reply-To: <20250628223837.848244-3-olek2@wp.pl>
-References: <20250628223837.848244-1-olek2@wp.pl>
-	<20250628223837.848244-3-olek2@wp.pl>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.48; x86_64-pc-linux-gnu)
+	id 1uVvlm-00000000VV2-2U0p
+	for linux-mediatek@lists.infradead.org;
+	Sun, 29 Jun 2025 17:24:49 +0000
+Received: by mail-ot1-x331.google.com with SMTP id 46e09a7af769-72c47631b4cso1108874a34.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 29 Jun 2025 10:24:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1751217885; x=1751822685; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:to:subject:user-agent:mime-version:date:message-id:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=Diy1MlYscq1DF0Zv66TQbVLrO14SzJmah7qWSQHod6M=;
+        b=LqPKzIR+ASZDR8+i1HO9GbleJI+IctZuozE/VoO/G/wc39F6sHqDxI4QCgzKd1eCwB
+         rpjppucOFEKru/35Pwq16ab5ubtV85bgAfajfHBgYQls2hJhZ95hdBYiKMKgtLQU5WXs
+         PV5Y8xXLWT1iCkR4fqQml8ido2lAEutmpIFgC7LRLkdunln0gKYdXnu2SqywqNNR9FAV
+         Wq4VDfYaofNaqD7SeJtFI/0VD0ZMLe42OOWoKvT2lKCMrZs16vF/uElzlwIOFivpLdu0
+         cFaRN/IXhxZzCzzgIUbcmOlWRF5EatoMVJy8RDnLhvPDvBDhTFR3BRWOlIiXTBv/p1hp
+         fRYg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1751217885; x=1751822685;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Diy1MlYscq1DF0Zv66TQbVLrO14SzJmah7qWSQHod6M=;
+        b=TH1qAlO9M8qgg7TBGmwe8wN6N4w8443OknXxQbyC9gErBpeEfDE+y4Z0rF2t+GhE0L
+         agN1pK06SfDY+Dntm/eJMrqiUduxeW5f86ynDQZ3JiPYXxpvIrAiI95dlWVishZfUYVQ
+         +TwDvkb3+gL9wE4Y/u/So+d6NkLCmvawUIQwVNklxmxNHCFtanffQwtr3Z+L3bB1MTSQ
+         EuRGQ8hC9n1HTiQ9kgfWvVZeTEHFjl31eJluGSHPYm/tIxKDKVAOOjFDvkaL0iI1uW37
+         ykYvzhEc0zcziUEEZaQ1AJafynXn70SQKeCmlV31onyTWoiGCyIckCBde67WedQF6LPd
+         RHWg==
+X-Forwarded-Encrypted: i=1; AJvYcCWKqxU9FnQJprXLAxz2DvHoTk4E7M0rDMonOVMlHQ2o8TW7okCiHTv6zzDw4XLstjvAfxhxlvjdXViW1nLSHg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxreuHNo1cwBYdtCxX9BbHKRkN8FdPVnOcO98QLOtx7RjDPfU/j
+	I5iiQxMlOxByrwjdVoIdH/ppcYJUNRGn0pyhw2WkMB/Iv4w862GbWywzBG/YUdfjsd4=
+X-Gm-Gg: ASbGncvWUdxjy9OUcxNFKWiIQruZd9KeDHhID1sDYFBK9eLFwsYgc8JzfSxQeMttBys
+	0k3TX5gHwz/mQrUI9Ps0ycCrEUEjKFDTPhwrQeKy7vmsVrNVreapXCopbL49kgihTAk7eEvuwEr
+	5Sh8sGudIXSiBP1wQKGv6KwvkRctGvpGtdYjciMSs9B4/j5lDxrNfrYHzsAsm2TBmKzwa0fzGKX
+	8VE0tBc8SO15GX2JdREkXvOn1zUoDqpXIS+NBkCRF797XH4NJ9+tsmYxY7QkpX+mqHPKGwlWElx
+	u1hvnpE7LdHFM2euZbqmieMgYxyIhxgnPiKE9ttOVetPVCLU9c3Psudx+kknF+UsZlVxDwqk7me
+	MyDm+lBXlQvrEJfyJBFc4PC+u+aIjFVqFo5e+4Gd8MykoRt/+zw==
+X-Google-Smtp-Source: AGHT+IEK2rnn6/CI2tLl625vjrG+arb7O1+sLlYYhwkeqs1zOcrydEV8o9HIf7UnVmK1VGPUEVYPLQ==
+X-Received: by 2002:a05:6830:3898:b0:72b:8fd3:e2dc with SMTP id 46e09a7af769-73afc5c1555mr9130015a34.21.1751217885111;
+        Sun, 29 Jun 2025 10:24:45 -0700 (PDT)
+Received: from ?IPV6:2600:8803:e7e4:1d00:4876:5a0d:2fea:6208? ([2600:8803:e7e4:1d00:4876:5a0d:2fea:6208])
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-73afb006a02sm1328459a34.23.2025.06.29.10.24.42
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 29 Jun 2025 10:24:43 -0700 (PDT)
+Message-ID: <9422d6db-5ada-4a93-88b2-74f1217fa771@baylibre.com>
+Date: Sun, 29 Jun 2025 12:24:41 -0500
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/3] Add thermal sensors support for MT7981
+To: Aleksander Jan Bajkowski <olek2@wp.pl>, rafael@kernel.org,
+ daniel.lezcano@linaro.org, rui.zhang@intel.com, lukasz.luba@arm.com,
+ jic23@kernel.org, nuno.sa@analog.com, andy@kernel.org, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, zhiyong.tao@mediatek.com,
+ linux-pm@vger.kernel.org, linux-iio@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20250628223837.848244-1-olek2@wp.pl>
+Content-Language: en-US
+From: David Lechner <dlechner@baylibre.com>
+In-Reply-To: <20250628223837.848244-1-olek2@wp.pl>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250629_093314_105914_201FE8BF 
-X-CRM114-Status: GOOD (  16.27  )
+X-CRM114-CacheID: sfid-20250629_102446_873127_74B16FB9 
+X-CRM114-Status: GOOD (  14.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,40 +105,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 29 Jun 2025 00:38:36 +0200
-Aleksander Jan Bajkowski <olek2@wp.pl> wrote:
-
-> The temperature sensor support on the MT7981 is exactly the same
-> as on the MT7986.
+On 6/28/25 5:38 PM, Aleksander Jan Bajkowski wrote:
+> This patch adds support for the temperature sensor in the MT7981 SoC.
+> This sensor is exactly the same as the one in the MT7986.
 > 
-> Signed-off-by: Aleksander Jan Bajkowski <olek2@wp.pl>
-> ---
->  drivers/thermal/mediatek/auxadc_thermal.c | 4 ++++
->  1 file changed, 4 insertions(+)
+> Aleksander Jan Bajkowski (3):
+>   arm64: dts: mediatek: add thermal sensor support on mt7981
+>   thermal/drivers/mediatek: Add support for MT7981 SoC
+>   dt-bindings: iio: adc: Add support for MT7981
+
+When considering building and testing at each commit, it would make sense
+to reverse the order of these patches to reduce the possibility of errors.
+
 > 
-> diff --git a/drivers/thermal/mediatek/auxadc_thermal.c b/drivers/thermal/mediatek/auxadc_thermal.c
-> index 9ee2e7283435..020324901505 100644
-> --- a/drivers/thermal/mediatek/auxadc_thermal.c
-> +++ b/drivers/thermal/mediatek/auxadc_thermal.c
-> @@ -1149,6 +1149,10 @@ static const struct of_device_id mtk_thermal_of_match[] = {
->  		.compatible = "mediatek,mt7622-thermal",
->  		.data = (void *)&mt7622_thermal_data,
->  	},
-> +	{
-> +		.compatible = "mediatek,mt7981-thermal",
-> +		.data = (void *)&mt7986_thermal_data,
-
-Random drive by question.  Why the (void *) casts?
-
-static const struct mtk_thermal_data mt7986_thermal_data;
-is the definition and data is a const void * so
-you should be able to assign directly without a cast and not
-have the casting away of const only to assign it to a
-const void *
-
-> +	},
->  	{
->  		.compatible = "mediatek,mt7986-thermal",
->  		.data = (void *)&mt7986_thermal_data,
+>  .../iio/adc/mediatek,mt2701-auxadc.yaml       |  1 +
+>  arch/arm64/boot/dts/mediatek/mt7981b.dtsi     | 29 ++++++++++++++++++-
+>  drivers/thermal/mediatek/auxadc_thermal.c     |  4 +++
+>  3 files changed, 33 insertions(+), 1 deletion(-)
+> 
 
 
