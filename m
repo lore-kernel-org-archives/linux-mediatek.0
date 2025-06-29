@@ -4,80 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4415BC54ED1
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Jun 2025 22:48:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 858B7C7EE30
+	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Jun 2025 14:25:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:
-	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PLFZP/c9fNvh8aFmRu8dwrDO4a59iqD2hrb5gF14geE=; b=e29G+D0SNxuLq6ydXYjoXGrh+S
-	FEabCoeVNS1rLUh8fULpgN1GvOYzLNuEtq9ig7CAr5pywQNyYT9EhuK+Snt3cXDgh7qYqwj9rmuTb
-	+Fn/fj0eTc6Nl+heX/8kWUvopi7VjDhXZ3FZ6tvoib7XzA12QJ1nlqXv2t2mJIlVp9c9TzVCWjQQ5
-	07iamLD2ftSB1SceESrWI/qtZLnDZXj4MA2b+u33SHlCJ/5iWF+2SANtD8sXB+JWfbkJRVJdFDMSA
-	KA9JK2CFQl0qZZreM+sEdYKQCKy+jN9mDn8RYSTiN4jKvmX0Kglp+Y2mlyy23fWiJcf4tVFwf769y
-	ReHixjKA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MsAnUNCeAQMgmRMgnpNuSgudOIjBf1HmAiS1Sp4b8qg=; b=2o+bbHJ1vPl0yDppdPsLDPMLTJ
+	/X+7mTyurxy8+VI1+zYzmdAsOrrenFsKPo1AjjpHB4ZkfxHcuvSAwnVIBtO/EVg5HcHvFmj6wpfn6
+	TvB3nl6trCRJAXHzsXEcfwmB2gx7zuB0O/46X70HO99AHysTMCdsRZqelCTtvroCHvRlzW7oEfLFS
+	ZCIuGh30NUZhUdIhsjKBP+SP0pQ3bLO+iqONIvdfRePqs4YIbRuCLnjVnupw/LVsPIcLzkEtsBRVU
+	q5+vfYiaY4/G647KRUUw7Dc5efQyYC8iqqmWzPJS2VLDQVM7nml47HunZ7lre/xc503xMq8YZTDUR
+	7kL5QeLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVeLG-0000000HN99-0j70;
-	Sat, 28 Jun 2025 22:48:14 +0000
-Received: from mx4.wp.pl ([212.77.101.12])
+	id 1uVsya-00000000M0t-0yzH;
+	Sun, 29 Jun 2025 14:25:48 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVeCH-0000000HMIC-2N3x
-	for linux-mediatek@lists.infradead.org;
-	Sat, 28 Jun 2025 22:38:59 +0000
-Received: (wp-smtpd smtp.wp.pl 31775 invoked from network); 29 Jun 2025 00:38:50 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wp.pl; s=20241105;
-          t=1751150330; bh=PLFZP/c9fNvh8aFmRu8dwrDO4a59iqD2hrb5gF14geE=;
-          h=From:To:Subject;
-          b=DA4EkO1km60TxTqeraujBDCqDogUVqwBDW2gBzfS1/Ql17TfWYvX3NRrSTg632jPr
-           KRonXKDXCv7MhYi0BwjNpjoSs4DumxQV1TglAgLsh5xFARZbFkEiGrOPvxsCjN0cd1
-           D3jBp++nicZwmEJdUarKweJAw8vq4MtasIy4WUMA3pqqFdADD3be4nmj7RBW0KEof7
-           iQ27EiYbdton953KwsGw2UHMQx0KNueCnN0aNcXxCUJyChlEhSK1B7PiMovmbHVipL
-           xKsOb3ULAMmc2szMwdNtvPxZBs2M3VVp1aU+kmDCKJiKQC0HEjND19uE9dh65AfNkB
-           hKD3oZItvq5hA==
-Received: from 83.24.145.121.ipv4.supernova.orange.pl (HELO laptop-olek.lan) (olek2@wp.pl@[83.24.145.121])
-          (envelope-sender <olek2@wp.pl>)
-          by smtp.wp.pl (WP-SMTPD) with ECDHE-RSA-AES256-GCM-SHA384 encrypted SMTP
-          for <rafael@kernel.org>; 29 Jun 2025 00:38:50 +0200
-From: Aleksander Jan Bajkowski <olek2@wp.pl>
-To: rafael@kernel.org,
-	daniel.lezcano@linaro.org,
-	rui.zhang@intel.com,
-	lukasz.luba@arm.com,
-	jic23@kernel.org,
-	dlechner@baylibre.com,
-	nuno.sa@analog.com,
-	andy@kernel.org,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	olek2@wp.pl,
-	zhiyong.tao@mediatek.com,
-	linux-pm@vger.kernel.org,
-	linux-iio@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	id 1uVsyX-00000000Lzo-0fUg;
+	Sun, 29 Jun 2025 14:25:46 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.98.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1uVsyM-0000000015j-3WGk;
+	Sun, 29 Jun 2025 14:25:34 +0000
+Date: Sun, 29 Jun 2025 15:25:25 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Sky Huang <skylake.huang@mediatek.com>, netdev@vger.kernel.org,
+	Sean Wang <sean.wang@mediatek.com>,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	Eric Dumazet <edumazet@google.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH 3/3] dt-bindings: iio: adc: Add support for MT7981
-Date: Sun, 29 Jun 2025 00:38:37 +0200
-Message-Id: <20250628223837.848244-4-olek2@wp.pl>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250628223837.848244-1-olek2@wp.pl>
-References: <20250628223837.848244-1-olek2@wp.pl>
+	Bo-Cun Chen <bc-bocun.chen@mediatek.com>,
+	Eric Woudstra <ericwouds@gmail.com>, Elad Yifee <eladwf@gmail.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Felix Fietkau <nbd@nbd.name>
+Subject: Re: [PATCH net/next 3/3] net: ethernet: mtk_eth_soc: use genpool
+ allocator for SRAM
+Message-ID: <aGFM1UQ1P3IQjoex@makrotopia.org>
+References: <cover.1751072868.git.daniel@makrotopia.org>
+ <566ca90fc59ad0d3aff8bc8dc22ebaf0544bce47.1751072868.git.daniel@makrotopia.org>
+ <f9bec387-1858-4c79-bb4b-60e744457c9f@lunn.ch>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-WP-MailID: e666d4a039fb80211d7087c5597d3d6c
-X-WP-AV: skaner antywirusowy Poczty Wirtualnej Polski
-X-WP-SPAM: NO 0000000 [IZMh]                               
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <f9bec387-1858-4c79-bb4b-60e744457c9f@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250628_153857_756503_9C73A0C9 
-X-CRM114-Status: UNSURE (   7.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250629_072545_196988_4FFF7521 
+X-CRM114-Status: GOOD (  18.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,27 +76,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The temperature sensor in the MT7981 is same as in the MT7986.
-Add compatible string for mt7981.
+On Sat, Jun 28, 2025 at 10:13:51AM +0200, Andrew Lunn wrote:
+> > +static void *mtk_dma_ring_alloc(struct mtk_eth *eth, size_t size,
+> > +				dma_addr_t *dma_handle)
+> > +{
+> > +	void *dma_ring;
+> > +
+> > +	if (WARN_ON(mtk_use_legacy_sram(eth)))
+> > +		return -ENOMEM;
+> > +
+> > +	if (eth->sram_pool) {
+> > +		dma_ring = (void *)gen_pool_alloc(eth->sram_pool, size);
+> > +		if (!dma_ring)
+> > +			return dma_ring;
+> > +		*dma_handle = gen_pool_virt_to_phys(eth->sram_pool, (unsigned long)dma_ring);
+> 
+> I don't particularly like all the casting backwards and forwards
+> between unsigned long and void *. These two APIs are not really
+> compatible with each other. So any sort of wrapping is going to be
+> messy.
+> 
+> Maybe define a cookie union:
+> 
+> struct mtk_dma_cookie {
+> 	union {
+> 		unsigned long gen_pool;
+> 		void *coherent;
+> 	}
+> }
 
-Signed-off-by: Aleksander Jan Bajkowski <olek2@wp.pl>
----
- .../devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml      | 1 +
- 1 file changed, 1 insertion(+)
+I've implemented that idea and the diffstat grew quite a lot. Also,
+it didn't really make the code more readable (see below why).
 
-diff --git a/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml b/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml
-index b489c984c1bb..ceb914dde15b 100644
---- a/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml
-+++ b/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml
-@@ -26,6 +26,7 @@ properties:
-           - mediatek,mt2712-auxadc
-           - mediatek,mt6765-auxadc
-           - mediatek,mt7622-auxadc
-+          - mediatek,mt7981-auxadc
-           - mediatek,mt7986-auxadc
-           - mediatek,mt8173-auxadc
-       - items:
--- 
-2.39.5
+> 
+> Only dma_handle appears to be used by the rest of the code, so only
+> the _alloc and _free need to know about the union.
 
+That's not true. The void* ring->dma is used to access the RX and TX
+descriptors, so keeping it void* is useful and using the struct you
+are suggesting will make things even more messy than they already are.
+
+See all the places in the code where we assume ring->dma being void*.
+Converting all of those to use struct mtk_dma_cookie will not make things
+better imho.
+
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/net/ethernet/mediatek/mtk_eth_soc.c#n1337
+
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/net/ethernet/mediatek/mtk_eth_soc.c#n1345
+
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/net/ethernet/mediatek/mtk_eth_soc.c#n1358
+
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/net/ethernet/mediatek/mtk_eth_soc.c#n1804
+
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/net/ethernet/mediatek/mtk_eth_soc.c#n2172
+
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/net/ethernet/mediatek/mtk_eth_soc.c#n2490
+
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/net/ethernet/mediatek/mtk_eth_soc.c#n2638
+
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/net/ethernet/mediatek/mtk_eth_soc.c#n2668
+
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/net/ethernet/mediatek/mtk_eth_soc.c#n2904
+
+I think keeping the two casts in mtk_dma_ring_alloc() and
+mtk_dma_ring_free() is the better option.
 
