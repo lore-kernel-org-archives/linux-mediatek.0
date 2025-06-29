@@ -4,69 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21D91C7EE39
-	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Jun 2025 14:54:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0833CC7EE39
+	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Jun 2025 16:35:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Cc:To
-	:Subject:Message-ID:From:Content-Transfer-Encoding:Content-Type:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kDcARP6CMmcJuYEL59wH4tdcs7qBxPVhWeD7yb9xdM4=; b=0kDWX/11WXUukzg5ObZu10pHnU
-	1tC0dycj/b1iahr157Mk57ycQeMmhHrsGm1Xw7V3ZeqUt4pqPiwrZ6ZXIcprkDB4xoM92NGpUyT2o
-	tScqM6z8pWP9n60H1u+8BCh6IIQXEr+ahW3x9q7z528sRWqF8GjEf/OJOXiUKU1g/FkM/nEHfFj0Q
-	kDzCsKA67E9jNkB+OkePPj5koW7gShd3S8qrJFGQCI5X9pfCPxym5HlP0kUNw2nSBkPvI0eFcNjSu
-	yBh1FE/fekuROAyD0nKPzZopjcfDkfD+6ad0nef1POKrH7orkdV9GjF6IpXgcLw3ADPYjdzITxcr0
-	WJBJ4C0A==;
+	bh=QzWqpMkWLli5Ubb9ocpLNQLSO34HJRoESJlwzoAXrOM=; b=wHEPv8+pFZumA6MhpKXIRDwCQJ
+	Q/8kR3+K6KGIQrayOntKaG5SUKy9MmaPGGXxvc6LAZMZNa5Wi1fcrrwJv/fWJ8MIlR6A2UrI0YiQq
+	XYiO4+YL2WDDmzAPhSGEIEsRWdni9UmgbOXf8zeVNfNX9ozo5i3/7xB6EZL5LfFsSHDh5wXgWiqJD
+	hPCWJ1jORHq0krjCo6fNtxgySB1C8cHB9OmU+6hqEHZwZMGn2WCggg0JEYEeNgDe2Ft/q9L8MnPXq
+	gSj9Gu+pFx8NmErUVxt1FPYI+rJPuxiiUtWwTq/cZJq8me9o/Ce4nRE/qBqvui5w+vFhrFCatqikZ
+	xdd7oXMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVtQP-00000000Nx1-400a;
-	Sun, 29 Jun 2025 14:54:33 +0000
-Received: from out-177.mta1.migadu.com ([2001:41d0:203:375::b1])
+	id 1uVv0E-00000000Sd1-07ms;
+	Sun, 29 Jun 2025 16:35:38 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uVtQM-00000000NvA-3MUq
-	for linux-mediatek@lists.infradead.org;
-	Sun, 29 Jun 2025 14:54:33 +0000
+	id 1uVuxu-00000000SYB-0AC5;
+	Sun, 29 Jun 2025 16:33:15 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id A9B484376C;
+	Sun, 29 Jun 2025 16:33:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EF621C4CEEB;
+	Sun, 29 Jun 2025 16:33:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1751214792;
+	bh=ef6rQZIC/ziH2BA7dycq513/pksDVMKdMUwcu1DRESk=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=U3403vbl5suB3BrPuAl8KFrQvJDwX3oceR5hJkBeRfCQTkr2VPdRgfrIy6osO9NaM
+	 5iFhBP+D/40TQiUYWJ6359Q7YctQi90tChVaGzd/piy31o1J7zGtQ60leZlTI56YEQ
+	 HXGVpSxU15mXzACinvG8PiaVVr9xoKaSxX6+tSwFlihR1rtZQ9GcbOj/0oWL+jZPEM
+	 /4rfI+Miu1+9+I1gs4fVgLf3WFVwUf/eAEBjAfUY/1WkDKwyfBpEaGseUd4hndXfqX
+	 cSamFty1PIZTQ1ZvfmQQDTxr5Q2do3HK4pvp5GVbzPUYm/FU7XkqC8Bg2UpqfBtmIM
+	 UwLaJxoPnDipg==
+Date: Sun, 29 Jun 2025 17:33:02 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Aleksander Jan Bajkowski <olek2@wp.pl>
+Cc: rafael@kernel.org, daniel.lezcano@linaro.org, rui.zhang@intel.com,
+ lukasz.luba@arm.com, dlechner@baylibre.com, nuno.sa@analog.com,
+ andy@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ zhiyong.tao@mediatek.com, linux-pm@vger.kernel.org,
+ linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 2/3] thermal/drivers/mediatek: Add support for MT7981
+ SoC
+Message-ID: <20250629173302.265b67ec@jic23-huawei>
+In-Reply-To: <20250628223837.848244-3-olek2@wp.pl>
+References: <20250628223837.848244-1-olek2@wp.pl>
+	<20250628223837.848244-3-olek2@wp.pl>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.48; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
-	t=1751208864;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=kDcARP6CMmcJuYEL59wH4tdcs7qBxPVhWeD7yb9xdM4=;
-	b=bg7hi60p2EvQw+jlWo+D3xjgX3zrQRNhTbhDlO2wcFmGjZP6cjHZZte79RK5shv08wZFFW
-	Io3C9z+9mSq5aFk4vnqW/l3baxaua94shRPOGy5pkw/B7FtOK25wuGiLe/m+p2BISHHFYV
-	GstmwT4CHBvok5WTwh3dVZQDgQooqi8=
-Date: Sun, 29 Jun 2025 14:54:19 +0000
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Frank Wunderlich" <frank.wunderlich@linux.dev>
-Message-ID: <15a39258ece1eee5f42ef6d244befd88f9671a08@linux.dev>
-TLS-Required: No
-Subject: Re: [PATCH net/next 3/3] net: ethernet: mtk_eth_soc: use genpool
- allocator for SRAM
-To: "Andrew Lunn" <andrew@lunn.ch>, "Daniel Golle" <daniel@makrotopia.org>
-Cc: "Sky Huang" <skylake.huang@mediatek.com>, netdev@vger.kernel.org, "Sean
- Wang" <sean.wang@mediatek.com>, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, "Andrew Lunn" <andrew+netdev@lunn.ch>,
- "Eric Dumazet" <edumazet@google.com>, "Matthias Brugger"
- <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, "Bo-Cun
- Chen" <bc-bocun.chen@mediatek.com>, "Eric Woudstra"
- <ericwouds@gmail.com>, "Elad Yifee" <eladwf@gmail.com>, "Jakub Kicinski"
- <kuba@kernel.org>, "Paolo Abeni" <pabeni@redhat.com>, "Lorenzo Bianconi"
- <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>,
- "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
- "Felix Fietkau" <nbd@nbd.name>
-In-Reply-To: <f9bec387-1858-4c79-bb4b-60e744457c9f@lunn.ch>
-References: <cover.1751072868.git.daniel@makrotopia.org>
- <566ca90fc59ad0d3aff8bc8dc22ebaf0544bce47.1751072868.git.daniel@makrotopia.org>
- <f9bec387-1858-4c79-bb4b-60e744457c9f@lunn.ch>
-X-Migadu-Flow: FLOW_OUT
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250629_075431_577533_EC38AB16 
-X-CRM114-Status: GOOD (  11.76  )
+X-CRM114-CacheID: sfid-20250629_093314_105914_201FE8BF 
+X-CRM114-Status: GOOD (  16.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,60 +79,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Andrew,
+On Sun, 29 Jun 2025 00:38:36 +0200
+Aleksander Jan Bajkowski <olek2@wp.pl> wrote:
 
-> Gesendet: Samstag, 28. Juni 2025 um 10:13
-> Von: "Andrew Lunn" <andrew@lunn.ch>
-> Betreff: Re: [PATCH net/next 3/3] net: ethernet: mtk_eth_soc: use genpo=
-ol allocator for SRAM
->
-> > +static void *mtk_dma_ring_alloc(struct mtk_eth *eth, size_t size,
-> > +				dma_addr_t *dma_handle)
-> > +{
-> > +	void *dma_ring;
-> > +
-> > +	if (WARN_ON(mtk_use_legacy_sram(eth)))
-> > +		return -ENOMEM;
-> > +
-> > +	if (eth->sram_pool) {
-> > +		dma_ring =3D (void *)gen_pool_alloc(eth->sram_pool, size);
-> > +		if (!dma_ring)
-> > +			return dma_ring;
-> > +		*dma_handle =3D gen_pool_virt_to_phys(eth->sram_pool, (unsigned lo=
-ng)dma_ring);
->=20
->=20I don't particularly like all the casting backwards and forwards
-> between unsigned long and void *. These two APIs are not really
-> compatible with each other. So any sort of wrapping is going to be
-> messy.
->=20
->=20Maybe define a cookie union:
->=20
->=20struct mtk_dma_cookie {
-> 	union {
-> 		unsigned long gen_pool;
-> 		void *coherent;
-> 	}
-> }
->=20
->=20Only dma_handle appears to be used by the rest of the code, so only
-> the _alloc and _free need to know about the union.
+> The temperature sensor support on the MT7981 is exactly the same
+> as on the MT7986.
+> 
+> Signed-off-by: Aleksander Jan Bajkowski <olek2@wp.pl>
+> ---
+>  drivers/thermal/mediatek/auxadc_thermal.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/drivers/thermal/mediatek/auxadc_thermal.c b/drivers/thermal/mediatek/auxadc_thermal.c
+> index 9ee2e7283435..020324901505 100644
+> --- a/drivers/thermal/mediatek/auxadc_thermal.c
+> +++ b/drivers/thermal/mediatek/auxadc_thermal.c
+> @@ -1149,6 +1149,10 @@ static const struct of_device_id mtk_thermal_of_match[] = {
+>  		.compatible = "mediatek,mt7622-thermal",
+>  		.data = (void *)&mt7622_thermal_data,
+>  	},
+> +	{
+> +		.compatible = "mediatek,mt7981-thermal",
+> +		.data = (void *)&mt7986_thermal_data,
 
-do you mean use the union only for the casts or using it globally for all=
- the access
-to the dma struct (and so changing the return type of the alloc function)=
-?
+Random drive by question.  Why the (void *) casts?
 
-first i made here [1]
+static const struct mtk_thermal_data mt7986_thermal_data;
+is the definition and data is a const void * so
+you should be able to assign directly without a cast and not
+have the casting away of const only to assign it to a
+const void *
 
-second was tried by daniel and is much more change.
+> +	},
+>  	{
+>  		.compatible = "mediatek,mt7986-thermal",
+>  		.data = (void *)&mt7986_thermal_data,
 
-OT: btw. have you took a look in the PCS decision case [1]?
-
-regards Frank
-
-[1] https://github.com/frank-w/BPI-Router-Linux/commit/ea963012375e4ac989=
-47a703b5eaf21fdf221ee1
-[2] https://lore.kernel.org/netdev/24c4dfe9-ae3a-4126-b4ec-baac7754a669@l=
-inux.dev/
 
