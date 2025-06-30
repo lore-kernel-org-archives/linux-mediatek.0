@@ -4,50 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0ADD1C83029
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jun 2025 19:35:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3098CC83033
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jun 2025 20:02:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ykkdq5dP0u/etXS+eO5X0bCbRkZdQiuVu7/uLxddAZg=; b=TsJQwhilhlXM+n1dVgjrIPCdf7
-	dPay2+4VW3UnzSYJClnRrygnX/ccqXv/xmLQLHIFmi0UCiVtmtBcf+lGI1UQ/zxpg65oAFBqHWfRR
-	0u3D5377HKacLvYr7vIgXrvxcltQPoDBt+BKHrdHrj9f8lxxjV+fKEkuNhevOi5udeTIGEGfpNamF
-	D/RF5jmpUK9NjRacXrxBoL9Hww9oAfIWTJl7zoLbEk0CVduDjslnvhdVZ/Z20OXkgSXKpS15ZYmYo
-	W6pFjBfL0l/Z7T5Emy2Qn2UmOu/cYwSdpmWRAaLFl88GZbmUGsSEO7o9HfQ6TBVt+TMczQ/gNloiC
-	kHPcFevw==;
+	bh=rBUTDTzHFfwcfiT7i6BHSGVXrToMoBPF9YjK4qz9/CM=; b=OQMgzx0ZagIB+qTkhScm2YjLhs
+	NeTEnBvPjYeBTNm/j7Twe4pWDjoDNrNv3AvL+z5cZyg0uMyID/TlQbnQs7oeqZnfrPttHdIsfx74q
+	9bO8qkDH0oMMOc0Co29mVQQtFjAq8dijyWxw1/G/7BeaaGSKUCCmJvcx/uuVqRR4oQi96kWfU9+cu
+	vzhj01FlF4inF0i9TkxNOD2BUMm+RAWuPHIOM/uyw/fUn/s0DhNDMnOGYwPEM6c582W92PUi+LrSM
+	ILVr991ebMQP7S7DALDwp061ah06tlk/VPQ1OMg+49B7SVzJUu/+CSF46xtqrD7XmV49E1Jx86oY8
+	/eUzVZbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWKI9-00000003J1N-0ONK;
-	Mon, 30 Jun 2025 19:35:49 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1uWKhx-00000003LvS-0xqr;
+	Mon, 30 Jun 2025 20:02:29 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWJ6u-00000003BNu-0Hy4;
-	Mon, 30 Jun 2025 18:20:09 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.98.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1uWJ6Y-000000006fR-2UuI;
-	Mon, 30 Jun 2025 18:19:46 +0000
-Date: Mon, 30 Jun 2025 19:19:42 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Simon Horman <horms@kernel.org>
-Subject: Re: [PATCH net-next v2 3/3] net: ethernet: mtk_eth_soc: use genpool
- allocator for SRAM
-Message-ID: <aGLVPo9M-RhTowmw@makrotopia.org>
-References: <cover.1751229149.git.daniel@makrotopia.org>
- <61897c7a3dcc0b2976ec2118226c06c220b00a80.1751229149.git.daniel@makrotopia.org>
- <20250630162959.GA57523@horms.kernel.org>
+	id 1uWKfc-00000003LiM-0P19;
+	Mon, 30 Jun 2025 20:00:05 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1751313593; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=oIyis2lLopynTJij4VlBnmivGgF3rJiq5l0M9s4Gb9dTR0a4XO7JFS0I8PWuLEbP2Vqln/JcxEJadChK7k/WpviSiUJuKuEGxCYxL52r2rC7yRYgkDRiXq0hJv/EtX7oSoRZbwkzz2GaFLdDERDZc/89zdttry8CcTzA5qV3YZw=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1751313593; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=rBUTDTzHFfwcfiT7i6BHSGVXrToMoBPF9YjK4qz9/CM=; 
+	b=WCPdN3ntfbZw5YLGEYsETWBGt+VZpOrJpBG0FxQY4i+t2wIHE+2h3UEshYE1Sai8dYafsxRNkzBh9LBNdSHCyOUq2/gcKir9/GJAEZz3X0AB1aujzTk1DC5ScmbIRluUXi/K7TR7rASsTQdOh4Twp/ZhwPKT34clh5rY4VyPYQE=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nfraprado@collabora.com;
+	dmarc=pass header.from=<nfraprado@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1751313593;
+	s=zohomail; d=collabora.com; i=nfraprado@collabora.com;
+	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
+	bh=rBUTDTzHFfwcfiT7i6BHSGVXrToMoBPF9YjK4qz9/CM=;
+	b=SWLqK6BwRQHFLSqizYCw1ukwzLPYtLySRrigRfm6BKHU+S7rphQY2YZhCXRBgIEl
+	SaDeB4CiA/KP939AYQF1y+iv/PMgTpb8K8nbfrUErz8j5RGxnMEqJn465ZDEawpTg+4
+	bFjQZGfMjthNskVrx4KrB7Uv9NhqrEUY6kmN2EZc=
+Received: by mx.zohomail.com with SMTPS id 1751313591718941.3513556291028;
+	Mon, 30 Jun 2025 12:59:51 -0700 (PDT)
+Message-ID: <48f573941d64217240f4750534e17faf4af0e3f6.camel@collabora.com>
+Subject: Re: [PATCH] Input: mtk-pmic-keys: Fix null pointer dereference when
+ no compatible data
+From: =?ISO-8859-1?Q?N=EDcolas?= "F. R. A. Prado" <nfraprado@collabora.com>
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>, AngeloGioacchino Del Regno
+	 <angelogioacchino.delregno@collabora.com>
+Cc: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, kernel@collabora.com,
+ linux-input@vger.kernel.org,  linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,  linux-mediatek@lists.infradead.org
+Date: Mon, 30 Jun 2025 15:59:46 -0400
+In-Reply-To: <d373gpdyqejppdysdbb4k6aat5i33epnqsebxdkjbrgfwsnqtm@43si4kmjvsmq>
+References: <20250630-mtk-pmic-keys-fix-crash-v1-1-e47351fa9d1f@collabora.com>
+	 <28111607-d5a2-4b54-964a-d010fb99193a@collabora.com>
+	 <d373gpdyqejppdysdbb4k6aat5i33epnqsebxdkjbrgfwsnqtm@43si4kmjvsmq>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.46.4-2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250630162959.GA57523@horms.kernel.org>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250630_112008_105967_7B46F012 
-X-CRM114-Status: GOOD (  26.76  )
+X-CRM114-CacheID: sfid-20250630_130004_200532_977C05F3 
+X-CRM114-Status: GOOD (  15.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -59,65 +80,46 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sky Huang <skylake.huang@mediatek.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Bo-Cun Chen <bc-bocun.chen@mediatek.com>, Eric Woudstra <ericwouds@gmail.com>, Elad Yifee <eladwf@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 30, 2025 at 05:29:59PM +0100, Simon Horman wrote:
-> On Sun, Jun 29, 2025 at 11:22:44PM +0100, Daniel Golle wrote:
-> > Use a dedicated "mmio-sram" and the genpool allocator instead of
-> > open-coding SRAM allocation for DMA rings.
-> > Keep support for legacy device trees but notify the user via a
-> > warning to update.
-> > 
-> > Co-developed-by: Frank Wunderlich <frank-w@public-files.de>
-> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-> > ---
-> > v2: fix return type of mtk_dma_ring_alloc() in case of error
-> > 
-> >  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 120 +++++++++++++-------
-> >  drivers/net/ethernet/mediatek/mtk_eth_soc.h |   4 +-
-> >  2 files changed, 84 insertions(+), 40 deletions(-)
-> > 
-> > diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> 
-> ...
-> 
-> > @@ -5117,16 +5148,27 @@ static int mtk_probe(struct platform_device *pdev)
-> >  			err = -EINVAL;
-> >  			goto err_destroy_sgmii;
-> >  		}
-> > +
-> >  		if (MTK_HAS_CAPS(eth->soc->caps, MTK_SRAM)) {
-> > -			if (mtk_is_netsys_v3_or_greater(eth)) {
-> > -				res_sram = platform_get_resource(pdev, IORESOURCE_MEM, 1);
-> > -				if (!res_sram) {
-> > -					err = -EINVAL;
-> > -					goto err_destroy_sgmii;
-> > +			eth->sram_pool = of_gen_pool_get(pdev->dev.of_node, "sram", 0);
-> > +			if (!eth->sram_pool) {
-> > +				if (!mtk_is_netsys_v3_or_greater(eth)) {
-> > +					/*
-> > +					 * Legacy support for missing 'sram' node in DT.
-> > +					 * SRAM is actual memory and supports transparent access
-> > +					 * just like DRAM. Hence we don't require __iomem being
-> > +					 * set and don't need to use accessor functions to read from
-> > +					 * or write to SRAM.
-> > +					 */
-> > +					eth->sram_base = (void __force *)eth->base +
-> > +							 MTK_ETH_SRAM_OFFSET;
-> > +					eth->phy_scratch_ring = res->start + MTK_ETH_SRAM_OFFSET;
-> > +					dev_warn(&pdev->dev,
-> > +						 "legacy DT: using hard-coded SRAM offset.\n");
-> > +				} else {
-> > +					dev_err(&pdev->dev, "Could not get SRAM pool\n");
-> > +					return -ENODEV;
-> 
-> Hi Daniel,
-> 
-> Rather than returning, should this
-> jump to err_destroy_sgmii to avoid leaking resources?
+On Mon, 2025-06-30 at 08:25 -0700, Dmitry Torokhov wrote:
+> On Mon, Jun 30, 2025 at 04:06:53PM +0200, AngeloGioacchino Del Regno
+> wrote:
+> > Il 30/06/25 16:03, Louis-Alexis Eyraud ha scritto:
+>=20
+> [... snip ...]
+>=20
+> > > @@ -316,6 +316,9 @@ static int mtk_pmic_keys_probe(struct
+> > > platform_device *pdev)
+> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0const struct of_devic=
+e_id *of_id =3D
+> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0of_match_device(of_mtk_pmic_keys_match_tbl,
+> > > &pdev->dev);
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0if (!of_id)
+> > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0return -EINVAL;
+> >=20
+> > Please, change this to `return -ENODEV;`
+>=20
+> No, this definitely should not be a "silent" error because it
+> indicates
+> there is something wrong with the kernel.
+>=20
+> Stepping back, why do we even enter mtk_pmic_keys_probe() if there is
+> not a matching OF ID? Are there any other patches that are not
+> upstream?
 
-Yes, you are right. I'll fix that in v3.
+I'm guessing it's because the driver can be probed by a parent MFD
+driver, drivers/mfd/mt6397-core.c, and the compatibles defined in the
+MFD don't necessarily match the ones in the pmic-keys driver, for
+instance 'mediatek,mt6359-keys' is only listed in the MFD. Adding the
+missing compatibles to the pmic-keys driver should fix this.
+
+
+--=20
+Thanks,
+
+N=C3=ADcolas
 
