@@ -4,87 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12820C8302B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jun 2025 16:15:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92B3EC8302D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jun 2025 17:46:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fFMt2MdBt4V+3jVyKnzW2CbyNPSCknGZaPAUm9S6KuY=; b=0QTTVwYdzsAJqQ2GdUAGvmEi9q
-	eaLfvZYbpvqGSTsYU0MD1S5YZ7yiMchObk3z+7YcWfapVltXR3rtsRfyvrmP/LkIl+rDVoF4fGQH5
-	DIGte9QOc6nGtkpWx/YSEG5cUZ39az2gZ9tRh0M0QDhPBvuqV7LD657AOwKZAP+8KMkpxzIPswLYu
-	YI2z2AkiCJcBRf/Ap98OMFXWi25hkDUoYUrX/6zL60jt9RThfP7XLUyt60Gji0orITf45gi0mFTcy
-	yczo+fDPLWz02zTmyN8HfAzkkbIRGTEqdw7M25UDeEJiumjz8kFDQRWYIfkeI+v0f0jtDnzt8VhUw
-	ZB7z8CRw==;
+	bh=awZjfbKFfxqOGQ7r6snUTi/ikRJxrFTKlvF1V0NogYU=; b=sXytqpm0Aztdnx0H07C4tRpFUl
+	0XYECsjLuKCyi8GodvtKmUDjZVmgnit1GAu3hiAqCG2+fLhw1aINHMgiYPZyIyY8hJfkruBEvv7Br
+	svP8PJ/0xIPBBG9EfLyVfw8szviyLY0EWiLEZGbF8x7tp8OMgejDxn6DYTQcdoBRBnOC9jD8mG+SC
+	c3yX8I6r9brKJRMSd+zO+ELDjcokovf2rXWVSj0O3onw3Lzf9ErO4AmKVwmX877XxLWG8uHuCgqfh
+	h9iycyxeIoOhL/r6JJLfqW58UVb7JseIhaNCHk7u2lOKwUI5COeRiHlCavLLoJ85x7BwgDiuFkYwQ
+	LNB7jLzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWHAU-00000002rOA-0n4Q;
-	Mon, 30 Jun 2025 16:15:42 +0000
-Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
+	id 1uWIZx-000000036em-3wZB;
+	Mon, 30 Jun 2025 17:46:05 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWGNV-00000002kEV-0TFC;
-	Mon, 30 Jun 2025 15:25:06 +0000
-Received: by mail-pg1-x530.google.com with SMTP id 41be03b00d2f7-b2c2c762a89so4343582a12.0;
-        Mon, 30 Jun 2025 08:25:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1751297104; x=1751901904; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=fFMt2MdBt4V+3jVyKnzW2CbyNPSCknGZaPAUm9S6KuY=;
-        b=OA6SHVBd/wOKoQ9Oz6UBoZLWUlktpY443zY25pgJYvynaK7RtRrnFNp8tBDtU90Mae
-         OpJL9vyb7ePC4qjTRpYM9epvan6EAhX/qhLTdmtnvFRBzhK26fcOMxKpmJWgwKsSNZVM
-         5eKX06Ete+qpcm11FWsl7CMVwu6rit4IrOd0uNoEo+0uljKxwvYFk6tn6NGNvzwsYSKj
-         3RVIqXjiUAZ60WZRUHTrpcuULxJAgOG4cM0BAj94N+meP1AuphrCaMuZNSAXeAkrkV1L
-         WTFw4huN1b/qoYk2jRb/2TisgmAhTRHNt/Hci0VtHJHLCaBQB3uQzuN/o18/OMlmYA47
-         1dlg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751297104; x=1751901904;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=fFMt2MdBt4V+3jVyKnzW2CbyNPSCknGZaPAUm9S6KuY=;
-        b=miOXCZxYm8NxPjOIsE0mAAjxKfeEGpWIihCz4WPdQhTx1tY/e8vQr9yeaXr4FPHPUX
-         dM3ZKQEb4yUbSNxi6QVdCFKxWdutnxL4uJ+9Ja1utJJxMSRlTSI60jNMdLII6V5WIZMS
-         twKOTYq3WoBDBzpaVMZKlHvdxygwKpAhkbCmc+WC5TbfE5RC3iliYO+qNPziGF21cn+P
-         kCbVzY5APoznxG44yn5pBFYw8tSj5zkIWMjdybIl2W2Qod9NoKBLiSW8MsRUygZCzLMJ
-         zF4dlP3bDcwgAnMUHnSGyfKqcW0I7DvlGzZMUy+/AxlK6IAVtDCPpmluYVC2i8lV+azN
-         VaqQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVD/x6OBdYg2oyffdZ7aXjj6xccNKuTh1ZuIUkYfW+OurKrQcK1b8Nz3d1gfCuHKqZ6liR0jwadtcT8GEPn3Exn@lists.infradead.org, AJvYcCWp1GjO5PZwqAFDh+xKTTqamwF9bjg/iDM5CaaOs/HAk9N2G0hYzZD7YUhexSlCwuIctkI3a+RL6o38vlsmieE=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwNELcTDk10Ze9TynWemJEKtvcni+gxoj/rWwmxVIR7jPXvFFWI
-	39QyGiTBtHGY7qF1V/E86Zhck8vmsr/81ZTUibJxkPzdtn2M59M6ZRtN
-X-Gm-Gg: ASbGncsGoyZUGt9ImXOUKtZl8yW/5mFA6NLPilQ3tDRc6IkASXTjOfZd7ilPkD3hJj2
-	z2w8zSAeIpQiuVM13OlaD89Po7YnJ/DsEE4ZGnuvCHBckCMXZEInnAssAn8kGQ+BFpYSXbGn98G
-	UKkK1ll4lvDjnDrtjjtZT/LtrgYOEVL+vtmDaQBn04jQoWZY0Noa6TpJgj/HSFPQ99TvJETe9NJ
-	ffOA5l5e8Tnxh+a0tIxnDZ9PlkFo6s5c080sWdsQBBR88XdZkPUNOxmyONUhcjMdyK3s28s6oBl
-	AhqonnZaAiUIDeBSCg+KLyWDg4AIo7dBG7McCiR26/bl9L7Utkb0XGvGNNEj+Q==
-X-Google-Smtp-Source: AGHT+IGi/BV1hm+wNmwcS/bd33jUP4+OQR0MfEr1fQJGvAe2GucDnTzkLjVIBYkKRzDtwbp3LLJong==
-X-Received: by 2002:a05:6a21:329c:b0:220:7994:1df1 with SMTP id adf61e73a8af0-220a16e46d5mr24227498637.31.1751297103625;
-        Mon, 30 Jun 2025 08:25:03 -0700 (PDT)
-Received: from google.com ([2620:15c:9d:2:c92b:c666:1f8:990e])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b350d81f0ecsm3185769a12.27.2025.06.30.08.25.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 30 Jun 2025 08:25:03 -0700 (PDT)
-Date: Mon, 30 Jun 2025 08:25:00 -0700
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, kernel@collabora.com, linux-input@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] Input: mtk-pmic-keys: Fix null pointer dereference when
- no compatible data
-Message-ID: <d373gpdyqejppdysdbb4k6aat5i33epnqsebxdkjbrgfwsnqtm@43si4kmjvsmq>
-References: <20250630-mtk-pmic-keys-fix-crash-v1-1-e47351fa9d1f@collabora.com>
- <28111607-d5a2-4b54-964a-d010fb99193a@collabora.com>
+	id 1uWHOT-00000002vm8-0jWA;
+	Mon, 30 Jun 2025 16:30:09 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id E0A3F61126;
+	Mon, 30 Jun 2025 16:30:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2B14FC4CEE3;
+	Mon, 30 Jun 2025 16:30:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1751301006;
+	bh=0HxkYgJxPovw38S/ncV1y0Tb+2e4bvKdNpiGuJwX7+k=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=GWS6p1ZqJY1wyPDCa5Q+4k7uUZFH7e1dhC6M0vVyKzT0AWn1SyJC1X1g/4Hqu/63a
+	 3WJAloRinPotqkJKcJxkD7KgWvhkyIcaKT8cfy6pTMBVbKyFRUTqRrNd51K/P+gy3G
+	 8Yp58LunVtmh0MFDS+s35dAS32ijVX60vAV6hmVTY0b2dHAbKmPBb7v1XH58A29SGo
+	 H3hoDDjwJ5fUR/VD9TgSokq65t0ANmV6I8CsnYSpRaJmBF/i7wY3OS+jRqqxRiefw/
+	 qzfYVjeL+W/AC+4ihwgUS1oDXrhHGh9KWunYqEVkUDgyXYkIoQDFOg+b98ZAZmbje9
+	 Vdsgs/5TwzvlQ==
+Date: Mon, 30 Jun 2025 17:29:59 +0100
+From: Simon Horman <horms@kernel.org>
+To: Daniel Golle <daniel@makrotopia.org>
+Subject: Re: [PATCH net-next v2 3/3] net: ethernet: mtk_eth_soc: use genpool
+ allocator for SRAM
+Message-ID: <20250630162959.GA57523@horms.kernel.org>
+References: <cover.1751229149.git.daniel@makrotopia.org>
+ <61897c7a3dcc0b2976ec2118226c06c220b00a80.1751229149.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <28111607-d5a2-4b54-964a-d010fb99193a@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250630_082505_149356_56B50A16 
-X-CRM114-Status: GOOD (  13.35  )
+In-Reply-To: <61897c7a3dcc0b2976ec2118226c06c220b00a80.1751229149.git.daniel@makrotopia.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,30 +64,72 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Sky Huang <skylake.huang@mediatek.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Bo-Cun Chen <bc-bocun.chen@mediatek.com>, Eric Woudstra <ericwouds@gmail.com>, Elad Yifee <eladwf@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 30, 2025 at 04:06:53PM +0200, AngeloGioacchino Del Regno wrote:
-> Il 30/06/25 16:03, Louis-Alexis Eyraud ha scritto:
-
-[... snip ...]
-
-> > @@ -316,6 +316,9 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
-> >   	const struct of_device_id *of_id =
-> >   		of_match_device(of_mtk_pmic_keys_match_tbl, &pdev->dev);
-> > +	if (!of_id)
-> > +		return -EINVAL;
+On Sun, Jun 29, 2025 at 11:22:44PM +0100, Daniel Golle wrote:
+> Use a dedicated "mmio-sram" and the genpool allocator instead of
+> open-coding SRAM allocation for DMA rings.
+> Keep support for legacy device trees but notify the user via a
+> warning to update.
 > 
-> Please, change this to `return -ENODEV;`
+> Co-developed-by: Frank Wunderlich <frank-w@public-files.de>
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
+> v2: fix return type of mtk_dma_ring_alloc() in case of error
+> 
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 120 +++++++++++++-------
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.h |   4 +-
+>  2 files changed, 84 insertions(+), 40 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
 
-No, this definitely should not be a "silent" error because it indicates
-there is something wrong with the kernel.
+...
 
-Stepping back, why do we even enter mtk_pmic_keys_probe() if there is
-not a matching OF ID? Are there any other patches that are not upstream?
+> @@ -5117,16 +5148,27 @@ static int mtk_probe(struct platform_device *pdev)
+>  			err = -EINVAL;
+>  			goto err_destroy_sgmii;
+>  		}
+> +
+>  		if (MTK_HAS_CAPS(eth->soc->caps, MTK_SRAM)) {
+> -			if (mtk_is_netsys_v3_or_greater(eth)) {
+> -				res_sram = platform_get_resource(pdev, IORESOURCE_MEM, 1);
+> -				if (!res_sram) {
+> -					err = -EINVAL;
+> -					goto err_destroy_sgmii;
+> +			eth->sram_pool = of_gen_pool_get(pdev->dev.of_node, "sram", 0);
+> +			if (!eth->sram_pool) {
+> +				if (!mtk_is_netsys_v3_or_greater(eth)) {
+> +					/*
+> +					 * Legacy support for missing 'sram' node in DT.
+> +					 * SRAM is actual memory and supports transparent access
+> +					 * just like DRAM. Hence we don't require __iomem being
+> +					 * set and don't need to use accessor functions to read from
+> +					 * or write to SRAM.
+> +					 */
+> +					eth->sram_base = (void __force *)eth->base +
+> +							 MTK_ETH_SRAM_OFFSET;
+> +					eth->phy_scratch_ring = res->start + MTK_ETH_SRAM_OFFSET;
+> +					dev_warn(&pdev->dev,
+> +						 "legacy DT: using hard-coded SRAM offset.\n");
+> +				} else {
+> +					dev_err(&pdev->dev, "Could not get SRAM pool\n");
+> +					return -ENODEV;
 
-Thanks.
+Hi Daniel,
 
--- 
-Dmitry
+Rather than returning, should this
+jump to err_destroy_sgmii to avoid leaking resources?
+
+Flagged by Smatch.
+
+>  				}
+> -				eth->phy_scratch_ring = res_sram->start;
+> -			} else {
+> -				eth->phy_scratch_ring = res->start + MTK_ETH_SRAM_OFFSET;
+>  			}
+>  		}
+>  	}
 
