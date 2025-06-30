@@ -4,66 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6063FC8302D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jun 2025 14:11:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12820C8302B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jun 2025 16:15:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zc4ylgb6+MFsrbuHonCIQpa3MbY2BoIU82ykavGCZ7U=; b=mSd/C+uQTUoosTwNbcTYRLmxEg
-	1huMTYqbKS9XfnY9lmYWjHcB0wK1ToR4pWgzb8td/Hyo3+5n7oIQztZ1hArSgy6o6I3OO/g+T2gqx
-	+CqStvTiOcplmSfgg4n5kJn6Ey6N2oU7I65wk+x5OKD/mNBshyEN2oHGGTfXOHrM+Nbsv4hh1RJNJ
-	ugWRECG+y4JOVLECNbeELJMQtTOZpztqNvjzqSQRFRHiV09KHTKKjYowmbgg2mi92kG1lmJ9bkcQ3
-	aNl4fo/ntYpwxu7aA7YfcHxb/U5Dgjmw0eTHUHHOxG2tdLNzBtLdwSi1NIVwWUoeQ3xICKWhRVcoE
-	6ZnPlpkQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fFMt2MdBt4V+3jVyKnzW2CbyNPSCknGZaPAUm9S6KuY=; b=0QTTVwYdzsAJqQ2GdUAGvmEi9q
+	eaLfvZYbpvqGSTsYU0MD1S5YZ7yiMchObk3z+7YcWfapVltXR3rtsRfyvrmP/LkIl+rDVoF4fGQH5
+	DIGte9QOc6nGtkpWx/YSEG5cUZ39az2gZ9tRh0M0QDhPBvuqV7LD657AOwKZAP+8KMkpxzIPswLYu
+	YI2z2AkiCJcBRf/Ap98OMFXWi25hkDUoYUrX/6zL60jt9RThfP7XLUyt60Gji0orITf45gi0mFTcy
+	yczo+fDPLWz02zTmyN8HfAzkkbIRGTEqdw7M25UDeEJiumjz8kFDQRWYIfkeI+v0f0jtDnzt8VhUw
+	ZB7z8CRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWFEh-00000002UzF-1Pf8;
-	Mon, 30 Jun 2025 14:11:55 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uWHAU-00000002rOA-0n4Q;
+	Mon, 30 Jun 2025 16:15:42 +0000
+Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWF9s-00000002UB1-1VJa;
-	Mon, 30 Jun 2025 14:06:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1751292414;
-	bh=aXUQzya147D+E9h9sZ8cErZjWGD9r2nOzIbz/t9quC4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=e2OwKV8gAfiDBjtzHjhTabtudAl2lm/AyvzsOyHomDOWHHc1V/dCQ7/4yw5didNce
-	 wW7UEDH8YoC6HBIsWci7Ry7BL55JOmVLgll305JRlLYxms64/BsFpATRGHLs3zMNXZ
-	 Q3c7WCtJnKr0lM8XQm2RhJO/minRY3/4fvsSF3u6NytosA6+zu2QpA6+l+g9aK1gUs
-	 a8U5w4J4WJk1zqtwNbsn+6Ypou0THrnlgcAFW63Woatrz5O/zYrgwP9MMRpNHN4ahm
-	 4h5S5xj6SYsjzKtaJAlutSuM62zXphEfV9uOC75oj09U1F58DugKHV1D7575CyM6O8
-	 TlJRcozp/5KfQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1CDCD17E0985;
-	Mon, 30 Jun 2025 16:06:54 +0200 (CEST)
-Message-ID: <28111607-d5a2-4b54-964a-d010fb99193a@collabora.com>
-Date: Mon, 30 Jun 2025 16:06:53 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1uWGNV-00000002kEV-0TFC;
+	Mon, 30 Jun 2025 15:25:06 +0000
+Received: by mail-pg1-x530.google.com with SMTP id 41be03b00d2f7-b2c2c762a89so4343582a12.0;
+        Mon, 30 Jun 2025 08:25:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1751297104; x=1751901904; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=fFMt2MdBt4V+3jVyKnzW2CbyNPSCknGZaPAUm9S6KuY=;
+        b=OA6SHVBd/wOKoQ9Oz6UBoZLWUlktpY443zY25pgJYvynaK7RtRrnFNp8tBDtU90Mae
+         OpJL9vyb7ePC4qjTRpYM9epvan6EAhX/qhLTdmtnvFRBzhK26fcOMxKpmJWgwKsSNZVM
+         5eKX06Ete+qpcm11FWsl7CMVwu6rit4IrOd0uNoEo+0uljKxwvYFk6tn6NGNvzwsYSKj
+         3RVIqXjiUAZ60WZRUHTrpcuULxJAgOG4cM0BAj94N+meP1AuphrCaMuZNSAXeAkrkV1L
+         WTFw4huN1b/qoYk2jRb/2TisgmAhTRHNt/Hci0VtHJHLCaBQB3uQzuN/o18/OMlmYA47
+         1dlg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1751297104; x=1751901904;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=fFMt2MdBt4V+3jVyKnzW2CbyNPSCknGZaPAUm9S6KuY=;
+        b=miOXCZxYm8NxPjOIsE0mAAjxKfeEGpWIihCz4WPdQhTx1tY/e8vQr9yeaXr4FPHPUX
+         dM3ZKQEb4yUbSNxi6QVdCFKxWdutnxL4uJ+9Ja1utJJxMSRlTSI60jNMdLII6V5WIZMS
+         twKOTYq3WoBDBzpaVMZKlHvdxygwKpAhkbCmc+WC5TbfE5RC3iliYO+qNPziGF21cn+P
+         kCbVzY5APoznxG44yn5pBFYw8tSj5zkIWMjdybIl2W2Qod9NoKBLiSW8MsRUygZCzLMJ
+         zF4dlP3bDcwgAnMUHnSGyfKqcW0I7DvlGzZMUy+/AxlK6IAVtDCPpmluYVC2i8lV+azN
+         VaqQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVD/x6OBdYg2oyffdZ7aXjj6xccNKuTh1ZuIUkYfW+OurKrQcK1b8Nz3d1gfCuHKqZ6liR0jwadtcT8GEPn3Exn@lists.infradead.org, AJvYcCWp1GjO5PZwqAFDh+xKTTqamwF9bjg/iDM5CaaOs/HAk9N2G0hYzZD7YUhexSlCwuIctkI3a+RL6o38vlsmieE=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwNELcTDk10Ze9TynWemJEKtvcni+gxoj/rWwmxVIR7jPXvFFWI
+	39QyGiTBtHGY7qF1V/E86Zhck8vmsr/81ZTUibJxkPzdtn2M59M6ZRtN
+X-Gm-Gg: ASbGncsGoyZUGt9ImXOUKtZl8yW/5mFA6NLPilQ3tDRc6IkASXTjOfZd7ilPkD3hJj2
+	z2w8zSAeIpQiuVM13OlaD89Po7YnJ/DsEE4ZGnuvCHBckCMXZEInnAssAn8kGQ+BFpYSXbGn98G
+	UKkK1ll4lvDjnDrtjjtZT/LtrgYOEVL+vtmDaQBn04jQoWZY0Noa6TpJgj/HSFPQ99TvJETe9NJ
+	ffOA5l5e8Tnxh+a0tIxnDZ9PlkFo6s5c080sWdsQBBR88XdZkPUNOxmyONUhcjMdyK3s28s6oBl
+	AhqonnZaAiUIDeBSCg+KLyWDg4AIo7dBG7McCiR26/bl9L7Utkb0XGvGNNEj+Q==
+X-Google-Smtp-Source: AGHT+IGi/BV1hm+wNmwcS/bd33jUP4+OQR0MfEr1fQJGvAe2GucDnTzkLjVIBYkKRzDtwbp3LLJong==
+X-Received: by 2002:a05:6a21:329c:b0:220:7994:1df1 with SMTP id adf61e73a8af0-220a16e46d5mr24227498637.31.1751297103625;
+        Mon, 30 Jun 2025 08:25:03 -0700 (PDT)
+Received: from google.com ([2620:15c:9d:2:c92b:c666:1f8:990e])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b350d81f0ecsm3185769a12.27.2025.06.30.08.25.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 30 Jun 2025 08:25:03 -0700 (PDT)
+Date: Mon, 30 Jun 2025 08:25:00 -0700
+From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, kernel@collabora.com, linux-input@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
 Subject: Re: [PATCH] Input: mtk-pmic-keys: Fix null pointer dereference when
  no compatible data
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: kernel@collabora.com, linux-input@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+Message-ID: <d373gpdyqejppdysdbb4k6aat5i33epnqsebxdkjbrgfwsnqtm@43si4kmjvsmq>
 References: <20250630-mtk-pmic-keys-fix-crash-v1-1-e47351fa9d1f@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250630-mtk-pmic-keys-fix-crash-v1-1-e47351fa9d1f@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+ <28111607-d5a2-4b54-964a-d010fb99193a@collabora.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <28111607-d5a2-4b54-964a-d010fb99193a@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250630_070656_546395_770471B9 
-X-CRM114-Status: GOOD (  21.63  )
+X-CRM114-CacheID: sfid-20250630_082505_149356_56B50A16 
+X-CRM114-Status: GOOD (  13.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,94 +99,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 30/06/25 16:03, Louis-Alexis Eyraud ha scritto:
-> In mtk_pmic_keys_probe function, the of_match_device function is
-> called to retrieve the compatible platform device info but its return
-> data pointer is not checked. It can lead to a null pointer deference
-> later when accessing the data field, if of_match_device returned a null
-> pointer. So, add a pointer check after calling of_match_device function
-> and return an EINVAL error in null case.
+On Mon, Jun 30, 2025 at 04:06:53PM +0200, AngeloGioacchino Del Regno wrote:
+> Il 30/06/25 16:03, Louis-Alexis Eyraud ha scritto:
+
+[... snip ...]
+
+> > @@ -316,6 +316,9 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
+> >   	const struct of_device_id *of_id =
+> >   		of_match_device(of_mtk_pmic_keys_match_tbl, &pdev->dev);
+> > +	if (!of_id)
+> > +		return -EINVAL;
 > 
-> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-> ---
-> This patch fixes a NULL pointer dereference that occurs during the
-> mtk_pmic_keys driver probe and observed at least on Mediatek Genio
-> 1200-EVK board with a kernel based on linux-next (tag: 20250630),
-> when it is configured to have mtk_pmic_keys driver as builtin
-> (CONFIG_KEYBOARD_MTK_PMIC=y):
-> ```
-> Unable to handle kernel NULL pointer dereference at virtual address
->    00000000000000c0
-> Mem abort info:
->    ESR = 0x0000000096000004
->    EC = 0x25: DABT (current EL), IL = 32 bits
->    SET = 0, FnV = 0
->    EA = 0, S1PTW = 0
->    FSC = 0x04: level 0 translation fault
-> Data abort info:
->    ISV = 0, ISS = 0x00000004, ISS2 = 0x00000000
->    CM = 0, WnR = 0, TnD = 0, TagAccess = 0
->    GCS = 0, Overlay = 0, DirtyBit = 0, Xs = 0
-> [00000000000000c0] user address but active_mm is swapper
-> Internal error: Oops: 0000000096000004 [#1]  SMP
-> Modules linked in:
-> CPU: 4 UID: 0 PID: 1 Comm: swapper/0 Not tainted
->    6.16.0-rc4-next-20250630-00001-gea99c662a089 #145 PREEMPT
-> Hardware name: MediaTek Genio 1200 EVK-P1V2-EMMC (DT)
-> pstate: 60400009 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-> pc : mtk_pmic_keys_probe+0x94/0x500
-> lr : mtk_pmic_keys_probe+0x78/0x500
-> sp : ffff80008275bb30
-> x29: ffff80008275bb70 x28: ffff80008202bbb0 x27: ffff800081df00b0
-> x26: ffff800081ef9060 x25: ffff0000c6fcf400 x24: 0000000000000000
-> x23: 0000000000000000 x22: ffff0000c6fcf410 x21: ffff0000c09f8480
-> x20: ffff0000c09f4b80 x19: 0000000000000000 x18: 00000000ffffffff
-> x17: ffff8000824cb228 x16: 00000000d7fcbc9e x15: ffff0000c0a2b274
-> x14: ffff80008275bad0 x13: ffff0000c0a2ba1c x12: 786d692d696d6373
-> x11: 0000000000000040 x10: 0000000000000001 x9 : 0000000000000000
-> x8 : ffff0000c09f8500 x7 : 0000000000000000 x6 : 000000000000003f
-> x5 : 0000000000000040 x4 : ffff0000c6fcf410 x3 : ffff0000c6fcf6c0
-> x2 : ffff0000c09f8400 x1 : ffff0000c36da000 x0 : ffff0000c6fcf410
-> Call trace:
->   mtk_pmic_keys_probe+0x94/0x500 (P)
->   platform_probe+0x68/0xdc
->   really_probe+0xbc/0x2c0
->   __driver_probe_device+0x78/0x120
->   driver_probe_device+0x3c/0x154
->   __driver_attach+0x90/0x1a0
->   bus_for_each_dev+0x7c/0xdc
->   driver_attach+0x24/0x30
->   bus_add_driver+0xe4/0x208
->   driver_register+0x68/0x130
->   __platform_driver_register+0x24/0x30
->   pmic_keys_pdrv_init+0x1c/0x28
->   do_one_initcall+0x60/0x1d4
->   kernel_init_freeable+0x24c/0x2b4
->   kernel_init+0x20/0x140
->   ret_from_fork+0x10/0x20
-> Code: aa1603e0 f90006b6 f9400681 f9000aa1 (f9406261)
-> ---[ end trace 0000000000000000 ]---
-> ```
-> ---
->   drivers/input/keyboard/mtk-pmic-keys.c | 3 +++
->   1 file changed, 3 insertions(+)
-> 
-> diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
-> index 061d48350df661dd26832b307e1460ee8b8fd535..42fb93086db308ad87a276be4b53e9725a3a701b 100644
-> --- a/drivers/input/keyboard/mtk-pmic-keys.c
-> +++ b/drivers/input/keyboard/mtk-pmic-keys.c
-> @@ -316,6 +316,9 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
->   	const struct of_device_id *of_id =
->   		of_match_device(of_mtk_pmic_keys_match_tbl, &pdev->dev);
->   
-> +	if (!of_id)
-> +		return -EINVAL;
+> Please, change this to `return -ENODEV;`
 
-Please, change this to `return -ENODEV;`
+No, this definitely should not be a "silent" error because it indicates
+there is something wrong with the kernel.
 
-after which:
+Stepping back, why do we even enter mtk_pmic_keys_probe() if there is
+not a matching OF ID? Are there any other patches that are not upstream?
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Thanks.
 
-
+-- 
+Dmitry
 
