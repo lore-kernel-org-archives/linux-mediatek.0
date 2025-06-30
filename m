@@ -4,74 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C935C83000
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jun 2025 07:46:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D97A7C83000
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jun 2025 07:55:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Vkm7ndSyWEiHKhQCrUp4v+h+OKVyKKcagg7tWrQNG9g=; b=Dl33q3z0+JBpRVB+8BWKkD9XQq
-	5dmRVttrMSP45CN7oB5bZX3jCHGr8m/lLV/x+YXdU8A130Me3uARRrJ/+3FjubgNDRq0wDdGiOcKE
-	px5q1ye1ISt/j8hQ7v+6xmlYdupnGIoXesLpc7tsnbSoO2kj0+DpSpsy3UpJloDGPzBIb/vKSE4xX
-	n2Lx88YOdo08N0MkvilXiO9aJh1JO3nrWs7wDj6sYd7wOPbOiAF7MZnpuFCXNzbE+lnFcWXzEzS9L
-	Dt0ms0qCOJdqUdbgasgXED5kwzsGIZCbZH7VrHbvWJkBw5Ob2NM4TOfXjZVjmLQhxxXyglNhwqOAc
-	7do3lzCg==;
+	bh=c4X2yb/Ia/WKA6aB12Dhj9GiRh5GrfWYkfDqH4jphck=; b=xN7uWrvHk1M7/s6KTlEDMje6Rk
+	3t9of3hdPNF+O+a/I1poqd7eCJBLLfyvivAICKZr+iUbByGVvwQP2H/TiTQeEYEs9TtK3QFR4qewU
+	t439RWnMWjAUeUtTE23EU8tAH97TjQLZWArEqDhm+IZx8hz8b2LfMxL5TworBeHIoe5vmXt3tDZbc
+	WbZsg1Zxnf4cgdB3ZtsIl8lbKy9NqpZe4jmoLXxn9TtgG4z6eubxWq/rnqgWJlp1Gt4ehUW9TYeZT
+	EU3qL/zFw+1bimlUZvzr3A/ve+IeaORZkhcBEmLOhKMRzQrw6904qL6EHZapwb5UErbJF9JpvxOpX
+	CFU6R5Vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uW9Dc-00000001UaH-1SdT;
-	Mon, 30 Jun 2025 07:46:24 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uW9Mn-00000001WmG-21wG;
+	Mon, 30 Jun 2025 07:55:53 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uW97W-00000001Tam-11kS;
-	Mon, 30 Jun 2025 07:40:07 +0000
+	id 1uW9Jw-00000001WD1-1YuM;
+	Mon, 30 Jun 2025 07:52:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1751269204;
-	bh=iH1qk3TEX8/F3Emk7ZAE9XR+BHZMvxK9JDSs6Kw85jc=;
+	s=mail; t=1751269974;
+	bh=F4dN++TbVjarRlIMkNwmoUP9mUy+taXHwWY073gkpLI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=gr5NT1if6XlCE2qsdH9o0xepxlYgTTZ4D/QniOhC0dV3fBtRw2Z2dgnCV+3z1DPeK
-	 AnyCSJ0TME+k1kBS6+GBAtc0LhBcpvltE2znV2MYcbk5t7KO5evyGZ/Ur5OkJH8Ou9
-	 Kn/ciSR8yQUnQAPVDNqgckO2/YdiYNVQSODq/DU4gGCXkNl9u+f9Iib5XPF9KlKQAY
-	 5JXxy/yZZk0M//UtjclBY8vlpg26YjMXnZ7mp0fNKRmOgrNVQrdjuZrtxTE2vrR57i
-	 p4JJFRlKQ8CoUc5814rgVPAPjtZuw61FmRSRLMYv//7Ncxr/tFpaVTFIuV/0OaBRza
-	 1T4CORk31jDRw==
+	b=X1qzCi4a6sZ+fy5WJ4JZADlnr9O/1cCWEIIRDCBxrBLYUPVapMum6TTLTwo1WRkiU
+	 pnjTWkvKzeRRIu2W+JiUeYhXCGo+ZgLjnRgehgEmndKhlNzKjV1597Ry9ERBOHFqcn
+	 WvRoSTsqEvNu3XpwBAii7E+jOzPedFPBpdjBfty339KiF/WdSMXERm22akYtEGRQUG
+	 hAvNRcxR547RCyEiRzsW7oQ3pwz7eeXt4nNjnnF3MaEqonMiIW94J089z2KePOHvCx
+	 qOFZW67huLbUxkwKlR0fZXoHCDRU6vVfQ6mMC1f+z+BVo2hVcgdCi/yTAhSncWeUhV
+	 dkOE94Xq2N87g==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A9D0817E0657;
-	Mon, 30 Jun 2025 09:40:03 +0200 (CEST)
-Message-ID: <5177a9cd-7ba1-4697-89a1-1ecae7b0a28a@collabora.com>
-Date: Mon, 30 Jun 2025 09:40:02 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DD1CD17E0B0D;
+	Mon, 30 Jun 2025 09:52:53 +0200 (CEST)
+Message-ID: <c5dffc8c-2abe-4fd3-a062-6d1adb417d27@collabora.com>
+Date: Mon, 30 Jun 2025 09:52:53 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 01/11] dt-bindings: serial: mediatek,uart: add MT6572
-To: wctrl@proton.me, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Jiri Slaby <jirislaby@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
- <linux@roeck-us.net>, Sean Wang <sean.wang@mediatek.com>,
- Russell King <linux@armlinux.org.uk>
-Cc: linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-watchdog@vger.kernel.org,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-References: <20250626-mt6572-v2-0-f7f842196986@proton.me>
- <20250626-mt6572-v2-1-f7f842196986@proton.me>
+Subject: Re: [PATCH v2 3/6] dt-bindings: regulator: Document MediaTek MT6363
+ PMIC Regulators
+To: Chen-Yu Tsai <wenst@chromium.org>, Krzysztof Kozlowski <krzk@kernel.org>
+Cc: broonie@kernel.org, lgirdwood@gmail.com, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com
+References: <20250624073548.29732-1-angelogioacchino.delregno@collabora.com>
+ <20250624073548.29732-4-angelogioacchino.delregno@collabora.com>
+ <20250627-neon-hidden-sheep-ed8dae@krzk-bin>
+ <CAGXv+5GLJ7cfAQW_kbTqqe_QO+RfU7KL57n77qenpDiRS5BybA@mail.gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20250626-mt6572-v2-1-f7f842196986@proton.me>
+In-Reply-To: <CAGXv+5GLJ7cfAQW_kbTqqe_QO+RfU7KL57n77qenpDiRS5BybA@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250630_004006_435398_8A9B11DC 
-X-CRM114-Status: UNSURE (   6.89  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250630_005256_590631_010F893D 
+X-CRM114-Status: GOOD (  26.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,15 +81,129 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/06/25 10:53, Max Shevchenko via B4 Relay ha scritto:
-> From: Max Shevchenko <wctrl@proton.me>
-> 
-> Add a compatible string for serial on the MT6572 SoC.
-> 
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> Signed-off-by: Max Shevchenko <wctrl@proton.me>
+Il 30/06/25 05:25, Chen-Yu Tsai ha scritto:
+> On Fri, Jun 27, 2025 at 4:24 PM Krzysztof Kozlowski <krzk@kernel.org> wrote:
+>>
+>> On Tue, Jun 24, 2025 at 09:35:45AM +0200, AngeloGioacchino Del Regno wrote:
+>>> Add bindings for the regulators found in the MediaTek MT6363 PMIC,
+>>> usually found in board designs using the MT6991 Dimensity 9400 and
+>>> on MT8196 Kompanio SoC for Chromebooks, along with the MT6316 and
+>>> MT6373 PMICs.
+>>>
+>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>> ---
+>>>   .../regulator/mediatek,mt6363-regulator.yaml  | 123 ++++++++++++++++++
+>>>   1 file changed, 123 insertions(+)
+>>>   create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6363-regulator.yaml
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6363-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6363-regulator.yaml
+>>> new file mode 100644
+>>> index 000000000000..f866c89c56f7
+>>> --- /dev/null
+>>> +++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6363-regulator.yaml
+>>> @@ -0,0 +1,123 @@
+>>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+>>> +%YAML 1.2
+>>> +---
+>>> +$id: http://devicetree.org/schemas/regulator/mediatek,mt6363-regulator.yaml#
+>>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>>> +
+>>> +title: MediaTek MT6363 PMIC Regulators
+>>> +
+>>> +maintainers:
+>>> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>> +
+>>> +description:
+>>> +  The MT6363 SPMI PMIC provides 10 BUCK and 26 LDO (Low Dropout) regulators
+>>> +  and can optionally provide overcurrent warnings with one ocp interrupt
+>>> +  for each voltage regulator.
+>>> +
+>>> +properties:
+>>> +  compatible:
+>>> +    const: mediatek,mt6363-regulator
+>>> +
+>>> +  interrupts:
+>>> +    description: Overcurrent warning interrupts
+>>
+>> Are you sure interrupts are physically not connected?
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Yes, I'm sure, they are not.
+
+> 
+> Side note:
+> 
+> I wonder if we really need to describe _all_ the interrupts here.
+> 
+> Looking at the PMIC as a whole, the interrupt tree is something like
+> 
+> SoC <- SPMI inband IRQ - PMIC top level IRQ block <- sub-function IRQ blocks:
+> 
+>      - BUCK (buck regulator over current)
+>      - LDO (LDO regulator over current)
+>      - PSC (key press / system low voltage)
+>      - MISC (protected registers accessed / SPMI stuff)
+> 
+> And some other blocks that may apply to other MediaTek PMICs:
+> 
+>      - HK (some threshold triggered interrupt)
+>      - BM (battery management related)
+> 
+> The thing I'm trying to get to is that all these interrupt vectors are
+> internal to the whole PMIC. Do we really need to spell them out in the
+> device tree? The top level compatible should already imply how all the
+> internals are wired up.
+> 
+
+Chen-Yu:
+
+Yes, we do: not all boards need overcurrent protection on all of the rails, but
+especially, in the past I have seen (multiple times) board designs (not MediaTek,
+but that doesn't mean anything) that will trigger the overcurrent protection due
+to a high inrush upon rail enablement - in these cases, the ocp would have to be
+either ignored completely or reset and read after a while.
+
+Not only that: since not all rails are actually used, due to EMI (and other issues
+which usually mean suboptimally built boards) some of those may randomly trigger
+OCP, and that's another case in which that should be ignored.
+
+So... yes, we want to define the overcurrent interrupts in the devicetree.
+
+> 
+> ChenYu
+> 
+>>> +    minItems: 1
+>>> +    maxItems: 36
+>>> +
+>>> +  interrupt-names:
+>>> +    description:
+>>> +      Names for the overcurrent interrupts are the same as the name
+>>> +      of a regulator (hence the same as each regulator's node name).
+>>> +      For example, the interrupt name for regulator vs2 will be "vs2".
+>>
+>> You need to define the items or pattern if this is really flexible in
+>> the hardware (not drivers).
+
+krzk:
+
+It's flexible in the hardware... but how do I define a pattern here?
+I avoided to define the items because you can miss some; I mean....
+
+You may have, on one board:
+"vs1", "vsram", "someother", "another"
+
+on another: "vsram", "another"
+
+...and another: "vs1", "another"
+
+(etc etc)
+
+Is there any way to allow missing items in between?
+Because then there's 36 possible items, so there are more than 100 possible
+combinations (keeping the order, but missing something in between..!).
+
+Cheers,
+Angelo
+
 
 
 
