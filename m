@@ -4,86 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6ED83C8302D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jun 2025 08:36:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FE23C8302D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jun 2025 09:25:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kVgaB3k9Sbz8/PUf8gTuXUEgwfS3TrY+vZ/LVCHdKio=; b=MpI9QyTPolJRk62IdflDJ09rwf
-	djiC+YMfOZRJwcb4y1xPIvtFfRl50EeH3kWlGesqt6oTF44qXa4HtLHY2pRXWsz+KzxL05n8+0k92
-	2Q4pq2ki0Jw6iNz9UcqpI7lGWcp2yeC6e0xYYVSxvhuVqiZvQeF29/tXWjiHoK93MKZX6RY2AOrKt
-	Otpe6dj1nvGAA7cJ1X1Dwz/KRkvtp9vWlf3aoH0RhSZPh2eJBplzQ0EO0UzCrlGUTCymGTSaZbDUb
-	an4JkQUgihKBFAZ/XsNCVPQVA+Lxiw04NEEPJUDKzUGDgpMRmvUb7+YvM/Ik60czNg54nQsR3dlLc
-	KrjZlvfQ==;
+	bh=v2u//fd4EFcpaBS/IQkVtJyRd3I9pwXSI+lEMjRiApI=; b=0FjEgtnsgQmht53Ipfu+giMJV9
+	wnErUjoer8a4V53a/McZWVOZG3WqZmkyo8mWWiB6xhMM4un4bXdli3bmx20FPTcqypi12nMAK8wtM
+	E4OKQkoj6XWNTK+UopI4/GUG63Owr6caz7L4WrNUuHnu942lko/sBNpti0t1jGj0nTEyJ+cQ2Xy48
+	DgaWOJsQY20IsBMRqhKthvukfagZD2kkosrAHhMbVBZVPm5pftwVS/iyvTEqfgV0OziL1SdnT3kkC
+	3C6x4CHI1GfxBMRoIrTKej4BeanIMFAv/cZ0NaIrbxrrwO8GxwwXXwcESJ5qx8qS7sRaK8Domzy3k
+	scTBjZMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uW9zZ-00000001d5Q-3BJP;
-	Mon, 30 Jun 2025 08:35:57 +0000
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+	id 1uWAls-00000001kS7-44ce;
+	Mon, 30 Jun 2025 09:25:52 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uW9yS-00000001cvy-13ZK
-	for linux-mediatek@lists.infradead.org;
-	Mon, 30 Jun 2025 08:34:49 +0000
-Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-553bcf41440so4187500e87.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 30 Jun 2025 01:34:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1751272486; x=1751877286; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=kVgaB3k9Sbz8/PUf8gTuXUEgwfS3TrY+vZ/LVCHdKio=;
-        b=D6QhVbfrDIjci5nfD7Hy9d7rikfSFEgsq64bAC9TjHvNfSUa2DUcpOzXMDDiUtOSLk
-         +svyRHzu+1N7RBbgsvZMmDJW5ADh47lCqmZJE4G01M8U9EZFkj1bNIcaOabtJb2E+UQL
-         j8Fkmg2bWBUgZHhmCkILQ4wERziBYoFod/2JQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751272486; x=1751877286;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=kVgaB3k9Sbz8/PUf8gTuXUEgwfS3TrY+vZ/LVCHdKio=;
-        b=rMcPM1AU8OmdC+tZoU2c8SNjgEnpdeYajBm/lS1f8r/XJ4X9AihVeZVMu79yCZOu30
-         KEFCnaNi45adytSbV+OrRWMNbHPJn11/fEfEpG8BcxqJIOJu5+7dUMsfdjJGCI0hpoUK
-         NZ65bKednnzFuGOXNxSRCzCRq7IW4vcdCX6ug0zJ9vD0SGnVDqYKehc5NEm+uHBjvkIn
-         SDcjnWn/jzx/C+lQ8oRTR8/56EwHhZfUz7h0sLEPMx93aR1Wfq0VqMNel0rLK4fCRdxt
-         JXZpq0hdLIy0hEhDUGmWPCjpHHeHt/4E5P6b+sfi6sei6TvvxF64qjWmJ9TKktEAek4S
-         UEtA==
-X-Forwarded-Encrypted: i=1; AJvYcCXbrbFfMS0LMt94tUAF9IAMpcyI5EJNU406zF3DjBaHtCDqAUmDq40fqyyH31SzrbVoHqU+ioioyrt9Ox7u+w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxTT1J62UGtVv5wjPVLvTVMXwT1s1OHacZ+bBvb4N6W88TWM58O
-	6ourUsnMpDnjrwkyC3o+82aN577tUiRb5EBBBEbuqRkZL12ogns2iRxVFjrtO5AZ55w8u6TksDY
-	JJixhIpG8ZPAUhkrLeUrR2plQaINcEnTlYTmGClc3
-X-Gm-Gg: ASbGnctEYsJbBqtC5hnIbC1xIVbjN9JiagdtEqrNAFV34c587hFNKAQtwoO5jACvBIk
-	LVm9Juw1m07O0EuCUOmaZmQkdSI016jShK0BTK/M4g639cTQ9JH9+4XtFwYnqOPOY4lYnLVRZVU
-	veUfFBd8vHTBW+yJjwDwYQB2xVrxHni5WO4oRXJmkQEVRWISXG2+y1gGSYU/WQ2L5xymxYRq0=
-X-Google-Smtp-Source: AGHT+IHlFcd7ds08VjRkhAd4B5pJTIKQJ0FaK20eZC09ottQSiiIyrXWfmbyhysoyNz0SfAaoXhAnX9I8zWuiDZ9khk=
-X-Received: by 2002:a05:6512:b12:b0:554:f79d:ce59 with SMTP id
- 2adb3069b0e04-5550b9ee228mr3819454e87.27.1751272486439; Mon, 30 Jun 2025
- 01:34:46 -0700 (PDT)
+	id 1uWAhP-00000001jsp-1STM;
+	Mon, 30 Jun 2025 09:21:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1751275273;
+	bh=FaC7ng9Vooo+/dQhWvHrAnu4R1uEUjUTJTh9ZaIqjFk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=K9NFrjwweh31n6a9Rkoh7wwZfpCuW4G6LnI9IymM+aLCgtxrZKmcRrC600glBSS3z
+	 6QHlHpq35WFTGhdBnkPAdjKg/BSQB1k96+fp78+KkOpnbuT9JFgYbv913lqFpnw8yy
+	 WxJ2i1qaoQd0/+fyNxMdlSm0DLWXKjXe2Wb38z9Ud0/fQOAjGN5vsXHbfIsr4chLGu
+	 8pXgGjLrvmP6Vm8FnpAbugBLbXyi9kTMIBdmWI6J+l/TSheIB/mcfsH7a0OHXMFjE8
+	 ltP2IFkV3tIgDdNf0sfBrQM/MtVmY6xIWNREP1GvU3SdaCzcSimiljRxWcOneEQm57
+	 mWtpUmjgMpmdg==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 66DFB17E0286;
+	Mon, 30 Jun 2025 11:21:12 +0200 (CEST)
+Message-ID: <d3f4d826-b5d4-4ae8-8232-bf0a7fdad2fa@collabora.com>
+Date: Mon, 30 Jun 2025 11:21:11 +0200
 MIME-Version: 1.0
-References: <20250624073548.29732-1-angelogioacchino.delregno@collabora.com>
- <20250624073548.29732-4-angelogioacchino.delregno@collabora.com>
- <20250627-neon-hidden-sheep-ed8dae@krzk-bin> <CAGXv+5GLJ7cfAQW_kbTqqe_QO+RfU7KL57n77qenpDiRS5BybA@mail.gmail.com>
- <c5dffc8c-2abe-4fd3-a062-6d1adb417d27@collabora.com>
-In-Reply-To: <c5dffc8c-2abe-4fd3-a062-6d1adb417d27@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 30 Jun 2025 16:34:35 +0800
-X-Gm-Features: Ac12FXy9Bg8iczKYCRzfVVALHWEDTg9agbPGYTVqjyGmcI5uPshlMdfvswpTnDg
-Message-ID: <CAGXv+5EwLDue4y6fVuyNd-z1mytqXJJhQuohhe3htT-XiNcGHw@mail.gmail.com>
-Subject: Re: [PATCH v2 3/6] dt-bindings: regulator: Document MediaTek MT6363
- PMIC Regulators
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Krzysztof Kozlowski <krzk@kernel.org>, broonie@kernel.org, lgirdwood@gmail.com, 
-	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
-	matthias.bgg@gmail.com, linux-kernel@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, kernel@collabora.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 09/29] dt-bindings: clock: mediatek: Describe MT8196
+ peripheral clock controllers
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Laura Nao <laura.nao@collabora.com>, mturquette@baylibre.com,
+ sboyd@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, p.zabel@pengutronix.de, richardcochran@gmail.com,
+ guangjie.song@mediatek.com, wenst@chromium.org, linux-clk@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org, kernel@collabora.com
+References: <20250624143220.244549-1-laura.nao@collabora.com>
+ <20250624143220.244549-10-laura.nao@collabora.com>
+ <7dfba01a-6ede-44c2-87e3-3ecb439b48e3@kernel.org>
+ <284a4ee5-806b-45f9-8d57-d02ec291e389@collabora.com>
+ <0870a2ba-936b-4eb2-a570-f2c9dea471b8@kernel.org>
+ <9fc32523-5009-4f48-8d82-6c3fd285801d@collabora.com>
+ <29eeae4f-59ed-4781-88b1-4fd76714ecb6@kernel.org>
+ <312f321f-2e49-48ac-bc41-a741f5e3b3a5@collabora.com>
+ <20250627-ingenious-tourmaline-wapiti-fa7676@krzk-bin>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250627-ingenious-tourmaline-wapiti-fa7676@krzk-bin>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250630_013448_419770_9BB8267F 
-X-CRM114-Status: GOOD (  40.57  )
+X-CRM114-CacheID: sfid-20250630_022115_760746_63F5899A 
+X-CRM114-Status: GOOD (  50.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,184 +88,232 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Il 27/06/25 10:37, Krzysztof Kozlowski ha scritto:
+> On Wed, Jun 25, 2025 at 02:42:15PM +0200, AngeloGioacchino Del Regno wrote:
+>> Il 25/06/25 13:05, Krzysztof Kozlowski ha scritto:
+>>> On 25/06/2025 11:45, AngeloGioacchino Del Regno wrote:
+>>>> Il 25/06/25 10:57, Krzysztof Kozlowski ha scritto:
+>>>>> On 25/06/2025 10:20, AngeloGioacchino Del Regno wrote:
+>>>>>> Il 24/06/25 18:02, Krzysztof Kozlowski ha scritto:
+>>>>>>> On 24/06/2025 16:32, Laura Nao wrote:
+>>>>>>>> +  '#reset-cells':
+>>>>>>>> +    const: 1
+>>>>>>>> +    description:
+>>>>>>>> +      Reset lines for PEXTP0/1 and UFS blocks.
+>>>>>>>> +
+>>>>>>>> +  mediatek,hardware-voter:
+>>>>>>>> +    $ref: /schemas/types.yaml#/definitions/phandle
+>>>>>>>> +    description:
+>>>>>>>> +      On the MT8196 SoC, a Hardware Voter (HWV) backed by a fixed-function
+>>>>>>>> +      MCU manages clock and power domain control across the AP and other
+>>>>>>>> +      remote processors. By aggregating their votes, it ensures clocks are
+>>>>>>>> +      safely enabled/disabled and power domains are active before register
+>>>>>>>> +      access.
+>>>>>>>
+>>>>>>> Resource voting is not via any phandle, but either interconnects or
+>>>>>>> required opps for power domain.
+>>>>>>
+>>>>>> Sorry, I'm not sure who is actually misunderstanding what, here... let me try to
+>>>>>> explain the situation:
+>>>>>>
+>>>>>> This is effectively used as a syscon - as in, the clock controllers need to perform
+>>>>>> MMIO R/W on both the clock controller itself *and* has to place a vote to the clock
+>>>>>> controller specific HWV register.
+>>>>>
+>>>>> syscon is not the interface to place a vote for clocks. "clocks"
+>>>>> property is.
+>>>>>
+>>>>>>
+>>>>>> This is done for MUX-GATE and GATE clocks, other than for power domains.
+>>>>>>
+>>>>>> Note that the HWV system is inside of the power domains controller, and it's split
+>>>>>> on a per hardware macro-block basis (as per usual MediaTek hardware layout...).
+>>>>>>
+>>>>>> The HWV, therefore, does *not* vote for clock *rates* (so, modeling OPPs would be
+>>>>>> a software quirk, I think?), does *not* manage bandwidth (and interconnect is for
+>>>>>> voting BW only?), and is just a "switch to flip".
+>>>>>
+>>>>> That's still clocks. Gate is a clock.
+>>>>>
+>>>>>>
+>>>>>> Is this happening because the description has to be improved and creating some
+>>>>>> misunderstanding, or is it because we are underestimating and/or ignoring something
+>>>>>> here?
+>>>>>>
+>>>>>
+>>>>> Other vendors, at least qcom, represent it properly - clocks. Sometimes
+>>>>> they mix up and represent it as power domains, but that's because
+>>>>> downstream is a mess and because we actually (at upstream) don't really
+>>>>> know what is inside there - is it a clock or power domain.
+>>>>>
+>>>>
+>>>> ....but the hardware voter cannot be represented as a clock, because you use it
+>>>> for clocks *or* power domains (but at the same time, and of course in different
+>>>> drivers, and in different *intertwined* registers).
+>>>>
+>>>> So the hardware voter itself (and/or bits inside of its registers) cannot be
+>>>> represented as a clock :\
+>>>>
+>>>> In the context of clocks, it's used for clocks, (and not touching power domains at
+>>>> all), but in the context of power domains it's used for power domains (and not
+>>>> touching clocks at all).
+>>>
+>>> I don't understand this. Earlier you mentioned "MUX-GATE and GATE
+>>> clocks", so these are clocks, right? How these clocks are used in other
+>>> places as power domains?
+>>
+>> I think you've misread, or I've explained badly enough to make you misread...
+>> let me describe some more to try to let you understand this properly.
+>>
+>> The hardware voter is a unit that is used to vote for "flipping various switches",
+>> in particular, you can vote for, *either*:
+>>   - Enabling or disabling a *clock*; or
+>>   - Enabling or disabling a *power domain*.
+>>
+>> There may be multiple (by hardware, in-silicon) copies of the Hardware Voter; in
+>> the specific case of the MediaTek Dimensity 9400 MT6991 and of the MediaTek MT8196
+>> Chromebook SoC, there is only one instance.
+> 
+> Everything so far very similar to qcom... They do exactly like that.
+> 
+>>
+>> The Hardware Voter, there, is located in the SCPSYS macro-block.
+>>
+>> The SCPSYS macro-block contains:
+>>   - A system controller
+>>   - A Hardware Voter IP (new in MT6991/MT8196)
+>>   - A power domains controller
+>>   - Other hardware that is not relevant for this discussion
+>>
+>> The HWV is MMIO-accessible, and there is one (small, for now) set of registers,
+>> allowing to vote for turning on/off one (or maybe multiple too, not sure about
+>> that as there's no documentation and when I tried with multi-votes it didn't work)
+>> clk/pd at a time.
+> 
+> Sure, the only difference against qcom is interface - qcom uses
+> remoteprocs channels, here you have MMIO. The interface does not matter
+> though.
+> 
+>>
+>> Probably not important but worth mentioning: the HWV can vote for clocks or for
+>> power domains in macro-blocks outside of its own (so, outside of the SCPSYS block,
+>> for example - it can vote to turn on a clock or a power domain in HFRPSYS as well).
+> 
+> Same for qcom.
+> 
+>>
+>> The register set in the HWV is *not* split between clock voters and PDs voters,
+>> in the sense that the register set of clock voters is *not contiguous*; trying
+>> to be as clear as possible, you have something like (mock register names ahead):
+>>   0x0 - CLOCK_VOTER_0 (each bit is a clock)
+>>   0x4 - PD_VOTER_0 (each bit is a power domain)
+>>   0x8 - SECURE_WORLD_CLOCK_VOTER_1
+>>   0xc - PD_VOTER_1
+>>   0x10 - SECURE_WORLD_PD_VOTER_0
+>>
+>> ...etc etc.
+> 
+> OK
+> 
+>>
+>>>> If they are, this either has to be fixed or
+>>> apparently this is a power domain and use it as power domain also here.
+>>
+>> So no, clocks are not used as power domains, and power domains are not used as
+>> clocks; we are talking purely about something that aggregates votes internally
+> 
+> OK
+> 
+>> and decides to turn on/off "whatever thing it is" (one of the clocks, or one of
+>> the power domains) - and to do that, you flip a bit in a register, and then you
+>> read another two registers to know the status of the internal state machine....
+> 
+> Sure. This is 100% not syscon, though. You must not do it via syscon,
+> because you will be flopping bits of other devices in this driver.
+> What's more, the actual implementation - registers for voting - is
+> irrelevant to this device here. This device here wants:
+> power domain
+> or
+> clock
+> 
+> Hm... don't we have bindings for this? Wait, we have!
+> 
+>>
+>> ....and you do that atomically, this can't sleep, the system has to lock up
+>> until HWV is done (I think I know what you're thinking, and yes, it's really
+>> like this) otherwise you're surely racing.
+> 
+> Sure, no problems here.
+> 
+>>
+>>>
+>>> Really, something called as hardware voter is not that uncommon and it
+>>> does fit existing bindings.
+>>>
+>>
+>> Do you mean the interconnect/qcom/bcm-voter.c?
+> 
+> This and many others - all rpm/rpmh/rsc are for that.
+> 
+>>
+>> That one seems to aggregate votes in software to place a vote in a hardware voter
+>> (the Bus Clock Manager) and I see it as being really convoluted.
+> 
+> I do not say that drivers are example to follow. Actually, I do not
+> recommend even DT bindings!
+> 
+>>
+>> For MediaTek's HWV, you don't need to aggregate anything - actually, the HWV itself
+>> is taking care of aggregating requests internally...
+>>
+>> Also, checking sdx75 and x1e80100 DTs, I see a virtual clock controller described,
+>> placing votes through the bcm-voter, and with clocks that looks like being kind
+>> of disguised/faked as interconnects?
+> 
+> Don't remember exactly, but I don't think it matters. What matters is
+> you need to choose appropriate representation for your votes.
+>>
+>> That's a bit unclear, and even if I'm wrong about those being disguised as icc,
+>> and not virtual, purely looking at the usage of the clk_virt and bcm-voters, I
+>> seriously don't think that any similar structure with interconnect would fit
+>> MediaTek SoCs in any way...
+> 
+> 
+>>
+>>>>
+>>>> I'm not sure what qcom does - your reply makes me think that they did it such that
+>>>> the clocks part is in a MMIO and the power domains part is in a different MMIO,
+>>>> without having clock/pd intertwined voting registers...
+>>>
+>>> No, you just never have direct access to hardware. You place votes and
+>>> votes go to the firmware. Now depending on person submitting it or
+>>> writing internal docs, they call it differently, but eventually it is
+>>> the same. You want to vote for some specific signal to be active or
+>>> running at some performance level.
+>>>
+>>
+>> Okay then there is one similarity, but it's different; MTK HWV is only arbitering
+>> a on/off request; Nothing else.
+> 
+> Does not matter, still the same concept.
+> 
+> In 2026 or 2027 you will do other votes as well...
+> 
 
-On Mon, Jun 30, 2025 at 3:52=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 30/06/25 05:25, Chen-Yu Tsai ha scritto:
-> > On Fri, Jun 27, 2025 at 4:24=E2=80=AFPM Krzysztof Kozlowski <krzk@kerne=
-l.org> wrote:
-> >>
-> >> On Tue, Jun 24, 2025 at 09:35:45AM +0200, AngeloGioacchino Del Regno w=
-rote:
-> >>> Add bindings for the regulators found in the MediaTek MT6363 PMIC,
-> >>> usually found in board designs using the MT6991 Dimensity 9400 and
-> >>> on MT8196 Kompanio SoC for Chromebooks, along with the MT6316 and
-> >>> MT6373 PMICs.
-> >>>
-> >>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@=
-collabora.com>
-> >>> ---
-> >>>   .../regulator/mediatek,mt6363-regulator.yaml  | 123 +++++++++++++++=
-+++
-> >>>   1 file changed, 123 insertions(+)
-> >>>   create mode 100644 Documentation/devicetree/bindings/regulator/medi=
-atek,mt6363-regulator.yaml
-> >>>
-> >>> diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6=
-363-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,m=
-t6363-regulator.yaml
-> >>> new file mode 100644
-> >>> index 000000000000..f866c89c56f7
-> >>> --- /dev/null
-> >>> +++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6363-reg=
-ulator.yaml
-> >>> @@ -0,0 +1,123 @@
-> >>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> >>> +%YAML 1.2
-> >>> +---
-> >>> +$id: http://devicetree.org/schemas/regulator/mediatek,mt6363-regulat=
-or.yaml#
-> >>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> >>> +
-> >>> +title: MediaTek MT6363 PMIC Regulators
-> >>> +
-> >>> +maintainers:
-> >>> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.=
-com>
-> >>> +
-> >>> +description:
-> >>> +  The MT6363 SPMI PMIC provides 10 BUCK and 26 LDO (Low Dropout) reg=
-ulators
-> >>> +  and can optionally provide overcurrent warnings with one ocp inter=
-rupt
-> >>> +  for each voltage regulator.
-> >>> +
-> >>> +properties:
-> >>> +  compatible:
-> >>> +    const: mediatek,mt6363-regulator
-> >>> +
-> >>> +  interrupts:
-> >>> +    description: Overcurrent warning interrupts
-> >>
-> >> Are you sure interrupts are physically not connected?
->
-> Yes, I'm sure, they are not.
->
-> >
-> > Side note:
-> >
-> > I wonder if we really need to describe _all_ the interrupts here.
-> >
-> > Looking at the PMIC as a whole, the interrupt tree is something like
-> >
-> > SoC <- SPMI inband IRQ - PMIC top level IRQ block <- sub-function IRQ b=
-locks:
-> >
-> >      - BUCK (buck regulator over current)
-> >      - LDO (LDO regulator over current)
-> >      - PSC (key press / system low voltage)
-> >      - MISC (protected registers accessed / SPMI stuff)
-> >
-> > And some other blocks that may apply to other MediaTek PMICs:
-> >
-> >      - HK (some threshold triggered interrupt)
-> >      - BM (battery management related)
-> >
-> > The thing I'm trying to get to is that all these interrupt vectors are
-> > internal to the whole PMIC. Do we really need to spell them out in the
-> > device tree? The top level compatible should already imply how all the
-> > internals are wired up.
-> >
->
-> Chen-Yu:
->
-> Yes, we do: not all boards need overcurrent protection on all of the rail=
-s, but
-> especially, in the past I have seen (multiple times) board designs (not M=
-ediaTek,
-> but that doesn't mean anything) that will trigger the overcurrent protect=
-ion due
-> to a high inrush upon rail enablement - in these cases, the ocp would hav=
-e to be
-> either ignored completely or reset and read after a while.
->
-> Not only that: since not all rails are actually used, due to EMI (and oth=
-er issues
-> which usually mean suboptimally built boards) some of those may randomly =
-trigger
-> OCP, and that's another case in which that should be ignored.
->
-> So... yes, we want to define the overcurrent interrupts in the devicetree=
-.
+Yeah, okay I think I got your point.
 
-I understand the use case, but I think that's kind of giving the interrupts
-property a second meaning.
+Now that I can understand the sense I think I can come up with some nicer solution.
 
-Instead, if you look at the common regulator bindings, there is a
-"regulator-over-current-protection" which signals that over current
-protection should be enabled for a given regulator. Perhaps you could
-use that? I think this common property also implies that over current
-protection has to be explicitly enabled.
+Thanks for all :-)
+Angelo
 
-> >
-> > ChenYu
-> >
-> >>> +    minItems: 1
-> >>> +    maxItems: 36
-> >>> +
-> >>> +  interrupt-names:
-> >>> +    description:
-> >>> +      Names for the overcurrent interrupts are the same as the name
-> >>> +      of a regulator (hence the same as each regulator's node name).
-> >>> +      For example, the interrupt name for regulator vs2 will be "vs2=
-".
-> >>
-> >> You need to define the items or pattern if this is really flexible in
-> >> the hardware (not drivers).
->
-> krzk:
->
-> It's flexible in the hardware... but how do I define a pattern here?
-> I avoided to define the items because you can miss some; I mean....
->
-> You may have, on one board:
-> "vs1", "vsram", "someother", "another"
->
-> on another: "vsram", "another"
->
-> ...and another: "vs1", "another"
->
-> (etc etc)
->
-> Is there any way to allow missing items in between?
-> Because then there's 36 possible items, so there are more than 100 possib=
-le
-> combinations (keeping the order, but missing something in between..!).
+>>
+>> No RATE votes.
+>> No performance levels.
+>> Literally, that's it.
+> 
+> Best regards,
+> Krzysztof
+> 
 
-I recently saw in the net/snps,dwmac.yaml binding the following:
-
-  clock-names:
-    minItems: 1
-    maxItems: 10
-    additionalItems: true
-    contains:
-      enum:
-        - stmmaceth
-        - pclk
-        - ptp_ref
-
-I suppose you could adapt this pattern, list all the possibilities, and
-set additionalItems to false. I don't think it can pick out duplicates
-though.
-
-
-ChenYu
-
-> Cheers,
-> Angelo
->
->
->
 
