@@ -4,98 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B7E3C8302D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jun 2025 13:47:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30E5EC8302D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jun 2025 14:05:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vqz5wu4a9+fyxIcUMARw02jDw0fFs9t8Ss/9EgTuY8g=; b=1A3MPxR6k+D2i3HPmhIFf6MfOz
-	FOXp0OlYVePzMdxjACd1p1jqM93EA2BJL/LGMcdnYKE6z+zF+XBZvijfRixzFRZjZL8Ih3Uc7KY/F
-	I24/yYvoLXgE+KdVcM3nljRsTO7ZcBJCCZO3LyB9r5hGDRzKoQ6JSl7V+ZqiKpM6ehvOZTInGJMSC
-	qlsuEL8IhtGKHch5yZWwSU8qA1DO/4VYroZmWxm8VvbnHRGE9P+CR07lG1VXxOa3v0q5DuLfdvSuA
-	UQolp7Zg+VZFvVKeiVdLOWXfLuj79Zjto4ylO9OC1c5Ko1Ajs0IYLNGFk2Y0xSu+/Zp1Zr7khdyPe
-	PRKUlX3Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=fO1wJyjrg6quMBG+VeM90z2dGJYWGzPRsE2LAqLBFmY=; b=iWbw8MYew/cER2UrvdgTbRbqTG
+	mB74ccNd9FpMbFKOqs/UQUcfAJ1CJP+hwgDEMmsZ+yxTMXnAXP4pW1CPRInMxOlkiiHrbUAG+7tcm
+	r3/gbtKGccLGbkdgFWzqSgZs24k6t2UvRYio4E+iVsQbEcOzxUMOL4VTABEis9m9MEIYqGrePPllc
+	TE/UhfAH19QRLs/BvPOn07EPAkaCVgJCmMX9+9pj0Yn/lZmjl+yvPeE6ecDVZP0WRWoJ6TiyZ+fSV
+	Sjlu14DZLIu96Ey2fjHvzfVANkuWyO4AnXMSWILG/jfHhmbjaLdzxGCOcDevPKbyNRiPjH9pE5OXg
+	KNo5ou7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWErT-00000002QZg-1Rva;
-	Mon, 30 Jun 2025 13:47:55 +0000
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+	id 1uWF7y-00000002Tmz-0UKy;
+	Mon, 30 Jun 2025 14:04:58 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWEaQ-00000002Ni5-1pdr;
-	Mon, 30 Jun 2025 13:30:19 +0000
-Received: by mail-pf1-x42f.google.com with SMTP id d2e1a72fcca58-747c2cc3419so4241802b3a.2;
-        Mon, 30 Jun 2025 06:30:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1751290218; x=1751895018; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:sender:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=vqz5wu4a9+fyxIcUMARw02jDw0fFs9t8Ss/9EgTuY8g=;
-        b=ILP+drC/ASsUF8AbTNbfSUBBHhZfYlGM5/QdPg+1R32ihfEFECkMIxla2oa/snybX5
-         0MCVu8hBiqA1vfouBU1DIrRglWGIWZgzcgOIs/e+VfbpTptIKHr8j7+r3jgjXgDveR7l
-         ObzThtMy0SSWmmN+KYPgJ536Y16xrdXZOta9/IPTpx2KQlkWSe1Z53afNzZ69kzcQbPY
-         jykJKNI8lEFrvfuWYzlCOT6IyRmIO/BWi9n7hCz7RFmfMGoI3hObfoCV2OELC6V067oo
-         +yIW3R8SfCEukBd427gxCIq6i9Drd528JV5B2EDcA9gjyr7sJv8a2MJDzLvNww40HuKu
-         5frQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751290218; x=1751895018;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:sender:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=vqz5wu4a9+fyxIcUMARw02jDw0fFs9t8Ss/9EgTuY8g=;
-        b=oQzHXXVTaOUOWKEhplQ0XgSasBRoiOkOzWYUwjjfY4w/aS9ssBddxe8+Y0ARPp7a99
-         65fVNqzS3Zmi3BSgNYqQU1WFYtpeQ/GzAylLTUxrHGpaUm55GDqCVCwwZDszxFrmNFk1
-         zi3sSc3VO4qBeyyOh/eyABLxtfHmkDmeF9V9s+VZLfyL6p57DkmQOtLUczjrzW5wzzzX
-         g0zdDjtBnkR/xAuj/l2D6hCpMjPVzuA5lyNRTQuM/PPECi64ZdukA7Fxt638EtFtaZsq
-         v1z7lJUi2JqlJb31BuMyBzPcJr9DHz3PklBKD6370seSSAuoNbGAzLZVcm6n07l7pca0
-         b6Pw==
-X-Forwarded-Encrypted: i=1; AJvYcCU3vAr5EEwKvwa+nCzsL91uolxRd/yhPXUmyEqqFzjnqyYrVgKafauvNpGdFOfprHfXlVcsULETBC6rQqTC5Jk=@lists.infradead.org, AJvYcCUEudfZxqLxtMCD4S3pRc1Pvn6U6BglbSWbOrgThLzydJDZasDXFuO/luGYD0HYknLN7uN+EeZ+IMZCy3s28Q0X@lists.infradead.org
-X-Gm-Message-State: AOJu0YxXwGlblCnysFuxRzKP6tHMMPJXHjUqPzNeov9275Wn6XSlkk/a
-	DkCGAZeFBfad+wWGXDy1Jic1Xpq5RtL9uPizLR1O/6cwnO/KYk+9LNCv
-X-Gm-Gg: ASbGncsnVmr9smBr+TzDtkC9su3iUUQ0ZkAob7bXTUA6MGBsmDhYeL4UFjAfkj+6qk/
-	atmsn8OyPUINYhBI0mA9ukTNy+6ikQcvRaezSZ7Py7n0he9wcH4N0dx2AJ5H/T3LwOZebtq9/00
-	II1eeRuNx7XwG4BpDp0auSZ2lXTYItFNoAJHTFni429Xx9Byt54hbx7obAcAyveBjMSQXqveqAc
-	BasTVLEAWatPozXrdkMcA6GRcHVbS4YnsZLyCmmdUrqofE6m1WCSA/Cq24NKSzY5mRGFsy45kzz
-	RVPNmcfrP1K+9t43RAMXkaPqEZeZ26+N5LXZ0J7+28fhBHiaNo03enY/paZup6xDD9tTlxux8S0
-	h2ML/4kyhsg==
-X-Google-Smtp-Source: AGHT+IHsEfXOWrT8Uf27lIFmnKIwzXoqP5mPWVdDMXddwdbdnzqfqiqgg5d8T6nDpFccz1puGjbcBw==
-X-Received: by 2002:a05:6a20:c90e:b0:21f:53e4:1925 with SMTP id adf61e73a8af0-220a12dbff0mr19639755637.10.1751290217517;
-        Mon, 30 Jun 2025 06:30:17 -0700 (PDT)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:da43:aeff:fecc:bfd5])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b350d81f0ecsm2964147a12.27.2025.06.30.06.30.15
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 30 Jun 2025 06:30:15 -0700 (PDT)
-Date: Mon, 30 Jun 2025 06:30:15 -0700
-From: Guenter Roeck <linux@roeck-us.net>
-To: wctrl@proton.me
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Jiri Slaby <jirislaby@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Wim Van Sebroeck <wim@linux-watchdog.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Russell King <linux@armlinux.org.uk>, linux-kernel@vger.kernel.org,
-	linux-serial@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-watchdog@vger.kernel.org
-Subject: Re: [PATCH v2 05/11] dt-bindings: vendor-prefixes: add JTY
-Message-ID: <4c48a544-1252-40fe-8dd7-17ec848f6957@roeck-us.net>
-References: <20250626-mt6572-v2-0-f7f842196986@proton.me>
- <20250626-mt6572-v2-5-f7f842196986@proton.me>
+	id 1uWF7k-00000002TkP-1pe9;
+	Mon, 30 Jun 2025 14:04:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1751292282;
+	bh=lJo4k2xVeiDebpwc+lYdH4ZwZHtPsq3pOUWr892pgog=;
+	h=From:Date:Subject:To:Cc:From;
+	b=Y5fPjOcofU4G1ItuixmiIZQ7ZR3mTg9aTWlF2wqf9c25xRK4agkwggxNZ+s3uqH2Q
+	 Ee+0qRSB1BSSP1dH/gZWfNEzDfc35PKIN5UnBJCIlCvHR0VsPKOXrMbAT9J2g5auXL
+	 K+PRPbF9CzNQ03ZgDfmPHsleV6/tZlT8Xy1LCWG4Y/hcQqBGV9bUXsf8Rt0wLRspMN
+	 r+aEJi37BW8SNko2suUgtG6jliHSzqFMqnfdfsEzHXEjbT+EhVrLhIUMKduQoH81oe
+	 eenEeyGGs3R99mZXgL7cwGDOarDA1OVad4yKD+eL83vt2WkIzKY+J3d/PpSOgiLEpc
+	 JzaTTg3OhiA5Q==
+Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: laeyraud)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id AA1B417E07F2;
+	Mon, 30 Jun 2025 16:04:41 +0200 (CEST)
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Date: Mon, 30 Jun 2025 16:03:44 +0200
+Subject: [PATCH] Input: mtk-pmic-keys: Fix null pointer dereference when no
+ compatible data
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250626-mt6572-v2-5-f7f842196986@proton.me>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250630-mtk-pmic-keys-fix-crash-v1-1-e47351fa9d1f@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAD+ZYmgC/zWNwQrCMBBEfyXs2YUYjUh/RXpI48YuJWnNRqmU/
+ ntDi8c3w8xbQCgzCTRqgUxfFh5ThfNJge9dehHyszIYbay+XTTGMuAU2eNAP8HAM/rspMer6ax
+ 1wdw1BajrKVMt9+dHe3Cm96cKyhFC54TQjzFyaVSiueBfAu26bnCUhzmaAAAA
+X-Change-ID: 20250630-mtk-pmic-keys-fix-crash-42b55af280ef
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: kernel@collabora.com, linux-input@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1751292281; l=3806;
+ i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
+ bh=lJo4k2xVeiDebpwc+lYdH4ZwZHtPsq3pOUWr892pgog=;
+ b=4hOq21N8D5aFlEKW2DcSULezu6veN9g5798DGmTfklmb5u7sWpNRKE7KpYYGunYkHmoo6aZQW
+ qz9saAYUu5mCtAHnUIH7z8d/6nfLeardHGP1xhvfpOSAjUxiCQIHQbz
+X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
+ pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250630_063018_474253_87A685C9 
-X-CRM114-Status: GOOD (  14.23  )
+X-CRM114-CacheID: sfid-20250630_070444_663068_5EFF838D 
+X-CRM114-Status: GOOD (  14.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,37 +87,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 26, 2025 at 11:53:58AM +0300, Max Shevchenko via B4 Relay wrote:
-> From: Max Shevchenko <wctrl@proton.me>
-> 
-> JTY produced low-cost Android tablets based on various
-> MediaTek MT65xx SoCs.
-> 
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Signed-off-by: Max Shevchenko <wctrl@proton.me>
+In mtk_pmic_keys_probe function, the of_match_device function is
+called to retrieve the compatible platform device info but its return
+data pointer is not checked. It can lead to a null pointer deference
+later when accessing the data field, if of_match_device returned a null
+pointer. So, add a pointer check after calling of_match_device function
+and return an EINVAL error in null case.
 
-Acked-by: Guenter Roeck <linux@roeck-us.net>
+Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+---
+This patch fixes a NULL pointer dereference that occurs during the
+mtk_pmic_keys driver probe and observed at least on Mediatek Genio
+1200-EVK board with a kernel based on linux-next (tag: 20250630),
+when it is configured to have mtk_pmic_keys driver as builtin
+(CONFIG_KEYBOARD_MTK_PMIC=y):
+```
+Unable to handle kernel NULL pointer dereference at virtual address
+  00000000000000c0
+Mem abort info:
+  ESR = 0x0000000096000004
+  EC = 0x25: DABT (current EL), IL = 32 bits
+  SET = 0, FnV = 0
+  EA = 0, S1PTW = 0
+  FSC = 0x04: level 0 translation fault
+Data abort info:
+  ISV = 0, ISS = 0x00000004, ISS2 = 0x00000000
+  CM = 0, WnR = 0, TnD = 0, TagAccess = 0
+  GCS = 0, Overlay = 0, DirtyBit = 0, Xs = 0
+[00000000000000c0] user address but active_mm is swapper
+Internal error: Oops: 0000000096000004 [#1]  SMP
+Modules linked in:
+CPU: 4 UID: 0 PID: 1 Comm: swapper/0 Not tainted 
+  6.16.0-rc4-next-20250630-00001-gea99c662a089 #145 PREEMPT 
+Hardware name: MediaTek Genio 1200 EVK-P1V2-EMMC (DT)
+pstate: 60400009 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+pc : mtk_pmic_keys_probe+0x94/0x500
+lr : mtk_pmic_keys_probe+0x78/0x500
+sp : ffff80008275bb30
+x29: ffff80008275bb70 x28: ffff80008202bbb0 x27: ffff800081df00b0
+x26: ffff800081ef9060 x25: ffff0000c6fcf400 x24: 0000000000000000
+x23: 0000000000000000 x22: ffff0000c6fcf410 x21: ffff0000c09f8480
+x20: ffff0000c09f4b80 x19: 0000000000000000 x18: 00000000ffffffff
+x17: ffff8000824cb228 x16: 00000000d7fcbc9e x15: ffff0000c0a2b274
+x14: ffff80008275bad0 x13: ffff0000c0a2ba1c x12: 786d692d696d6373
+x11: 0000000000000040 x10: 0000000000000001 x9 : 0000000000000000
+x8 : ffff0000c09f8500 x7 : 0000000000000000 x6 : 000000000000003f
+x5 : 0000000000000040 x4 : ffff0000c6fcf410 x3 : ffff0000c6fcf6c0
+x2 : ffff0000c09f8400 x1 : ffff0000c36da000 x0 : ffff0000c6fcf410
+Call trace:
+ mtk_pmic_keys_probe+0x94/0x500 (P)
+ platform_probe+0x68/0xdc
+ really_probe+0xbc/0x2c0
+ __driver_probe_device+0x78/0x120
+ driver_probe_device+0x3c/0x154
+ __driver_attach+0x90/0x1a0
+ bus_for_each_dev+0x7c/0xdc
+ driver_attach+0x24/0x30
+ bus_add_driver+0xe4/0x208
+ driver_register+0x68/0x130
+ __platform_driver_register+0x24/0x30
+ pmic_keys_pdrv_init+0x1c/0x28
+ do_one_initcall+0x60/0x1d4
+ kernel_init_freeable+0x24c/0x2b4
+ kernel_init+0x20/0x140
+ ret_from_fork+0x10/0x20
+Code: aa1603e0 f90006b6 f9400681 f9000aa1 (f9406261) 
+---[ end trace 0000000000000000 ]---
+```
+---
+ drivers/input/keyboard/mtk-pmic-keys.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-> ---
->  Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-> index 86f6a19b28ae217643bf7a63a471f74819d18238..517bd129288c96483ffe358127ce8e16f60d902b 100644
-> --- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
-> +++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-> @@ -782,6 +782,8 @@ patternProperties:
->      description: Jide Tech
->    "^joz,.*":
->      description: JOZ BV
-> +  "^jty,.*":
-> +    description: JTY
->    "^kam,.*":
->      description: Kamstrup A/S
->    "^karo,.*":
-> 
-> -- 
-> 2.50.0
-> 
-> 
+diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
+index 061d48350df661dd26832b307e1460ee8b8fd535..42fb93086db308ad87a276be4b53e9725a3a701b 100644
+--- a/drivers/input/keyboard/mtk-pmic-keys.c
++++ b/drivers/input/keyboard/mtk-pmic-keys.c
+@@ -316,6 +316,9 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
+ 	const struct of_device_id *of_id =
+ 		of_match_device(of_mtk_pmic_keys_match_tbl, &pdev->dev);
+ 
++	if (!of_id)
++		return -EINVAL;
++
+ 	keys = devm_kzalloc(&pdev->dev, sizeof(*keys), GFP_KERNEL);
+ 	if (!keys)
+ 		return -ENOMEM;
+
+---
+base-commit: c6a68d8f7b81a6ce8962885408cc2d0c1f8b9470
+change-id: 20250630-mtk-pmic-keys-fix-crash-42b55af280ef
+
+Best regards,
+-- 
+Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+
 
