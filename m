@@ -4,58 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40640C83030
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jun 2025 22:14:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB1FEC83033
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jun 2025 22:26:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=szK0J+EuwrE1IYcofSwepObo43x0XQFxl9Sd1cicOCE=; b=IcJQ4VG99Dd2/11RBUM/cKSPbK
-	BHZnrj35bndzMlP/8KYp/23R4XU3M5tXRPxZTUwbZeSOKoPsOMOg/hoD4Zt3+IxtZOm15e9CYojlz
-	JNi/+IyhC5LmfONnH27OIpfEwKKl67Ej81LRlMmPkascW8rDEeSh7jTj82bh84o0GoxzRs+wUSwkw
-	e3uIbr9We7XM8To5HM+/+kK0mfcGcAqnbB55x+0EnUPpu3UwtYuLKhLymqq9gvMLQXThuuCNKS0hs
-	9GRqMWzH/OcnnAyxuoe+wr4/D4qMLDO/jK1gBZ+ljiB7NM53/FZ0H/AQWfQhNRe6d5JvkxOUgIi6Y
-	GD8tVbeQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:Cc:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DfXdfCU1JXYHWgM00Dwc4NWjntBjNe637EIYzIR8E9M=; b=289SIWSR1UwOkDZZhwjEEB4sbC
+	cbmtIPp2kbnNQn1UMt0xtdszG5WirZuvCIxcwDD/2BTWzssrJtNyMhOe6LM7rCZLNdaIGn68x89Zx
+	trBOB76UgFGfAl42MeB0AiltEKh0Nq/dVAJbANdLsGzS2UsYRUeVCemBEiVQ/dZ13Hn/Vz30rEZCZ
+	IriZCwF/iKCl6WIjKdnJUNmj7GQUv96tp0UY4fa2IQVAeiEPGJGneHrTf2Tog8RJxFtuM+52Ryycz
+	HFXYWACVHcs8mjCs7vdmLhlpYXj2xlyjmNjAaoMfpzYLSaFgjUupbswiHql4m3vOlM5R7XjG9Puz+
+	KSgT0rcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWMm5-00000003ZVK-3Pj5;
-	Mon, 30 Jun 2025 22:14:53 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWMhB-00000003Yzc-0Ncr;
-	Mon, 30 Jun 2025 22:09:50 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 297DCA49737;
-	Mon, 30 Jun 2025 22:09:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AF04EC4CEE3;
-	Mon, 30 Jun 2025 22:09:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751321387;
-	bh=vAzj++/jV6VTrg7u4E0pCrASorfa+yLITSBpP77hHl8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=A9Imj+mO/QgIz7SWK0mNab70Z88CDunmh9M8KADNqYvlLnFC5D2BgSIDrHE9BtLv+
-	 /aWq8MzPF3+mScKk3EM0iovaOf6RkMGgeOv265jMuntlojLdfQB4Qpv4xg1f6CECAg
-	 62udJlHcZTiq4WYezlr4S2HrEkEi8Of515lhBiZ3RVjF0UWVUW4tJ4N5vitRntRdSj
-	 k7JtULNJN949UaHL45oSdzQAcBXqETd1kcPLWL6m/CKfWCX0WrTA4DzUvw7nacI3Lt
-	 qxhuWOuPcc7eRXnYIgDHGJa0nUg3s61vaIJ9sSPC3QJjhRF1fCh5wtzT4S1QfIndVN
-	 dc0uooeHkQzeg==
-Date: Mon, 30 Jun 2025 17:09:46 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v1 11/13] dt-bindings: power: Add support for MT8196
- power controllers
-Message-ID: <175132138645.3512206.17376450738040159326.robh@kernel.org>
-References: <20250623120154.109429-1-angelogioacchino.delregno@collabora.com>
- <20250623120154.109429-12-angelogioacchino.delregno@collabora.com>
+	id 1uWMwv-00000003anB-37NR;
+	Mon, 30 Jun 2025 22:26:05 +0000
+Received: from linux.microsoft.com ([13.77.154.182])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uWMua-00000003aSv-1i92;
+	Mon, 30 Jun 2025 22:23:41 +0000
+Received: from [100.65.217.140] (unknown [20.236.10.206])
+	by linux.microsoft.com (Postfix) with ESMTPSA id 600CF201A4B1;
+	Mon, 30 Jun 2025 15:23:37 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 600CF201A4B1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
+	s=default; t=1751322218;
+	bh=DfXdfCU1JXYHWgM00Dwc4NWjntBjNe637EIYzIR8E9M=;
+	h=Date:Cc:Subject:To:References:From:In-Reply-To:From;
+	b=AcgUP7F5Xs4efIzQ5AVmdKa7P852sKqoOBD9OFtayslYiPtUbgrNCaPsB5x3Gld0L
+	 LP1XW6CcFe5MMWGw+TQYVQ9v4jHISvIhVkeCZpleKKdszGvQhRpLVlunF5jrreMfri
+	 Oz/KtwqHFyjwVxxQTH3wGx+4JaIlZHQAou0j86rs=
+Message-ID: <44e48ee7-07a8-4bbc-a98b-095bb1d585a0@linux.microsoft.com>
+Date: Mon, 30 Jun 2025 15:23:36 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250623120154.109429-12-angelogioacchino.delregno@collabora.com>
+User-Agent: Mozilla Thunderbird
+Cc: eahariha@linux.microsoft.com,
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ kernel@collabora.com, linux-input@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
+Subject: Re: [PATCH] Input: mtk-pmic-keys: Fix null pointer dereference when
+ no compatible data
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+References: <20250630-mtk-pmic-keys-fix-crash-v1-1-e47351fa9d1f@collabora.com>
+ <41f3cc74-694e-41be-b767-20c7561990b8@linux.microsoft.com>
+ <667whxdsghpao5irl66oh66l5y55m4k6n3ztifaizbqtrzccju@cmghlz2yauxq>
+From: Easwar Hariharan <eahariha@linux.microsoft.com>
+Content-Language: en-US
+In-Reply-To: <667whxdsghpao5irl66oh66l5y55m4k6n3ztifaizbqtrzccju@cmghlz2yauxq>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250630_150949_191498_B713A306 
-X-CRM114-Status: GOOD (  11.13  )
+X-CRM114-CacheID: sfid-20250630_152340_477770_49DBA2BC 
+X-CRM114-Status: GOOD (  10.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,29 +74,25 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, ulf.hansson@linaro.org, mbrugger@suse.com, y.oudjana@protonmail.com, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, mandyjh.liu@mediatek.com, lihongbo22@huawei.com, wenst@chromium.org, matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, krzk+dt@kernel.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Mon, 23 Jun 2025 14:01:52 +0200, AngeloGioacchino Del Regno wrote:
-> Add support for the power controllers found in the MediaTek MT8196
-> Chromebook SoC.
+On 6/30/2025 2:46 PM, Dmitry Torokhov wrote:
+> On Mon, Jun 30, 2025 at 01:18:40PM -0700, Easwar Hariharan wrote:
+>>
+>> Also, it may make sense to CC: stable@vger.kernel.org for backports
 > 
-> This chip has three power controllers, two of which located in the
-> SCP subsystems (where one can be directly controlled and the other
-> can be controlled only through the HW Voter IP), and one located
-> in the Multimedia HFRP subsystem, controllable only through the HW
-> Voter IP.
+> What for? Stable does not need a patch papering over an oops, it needs a
+> patch making the keypad working on the affected device.
 > 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  .../power/mediatek,power-controller.yaml      |  4 ++
->  .../dt-bindings/power/mediatek,mt8196-power.h | 58 +++++++++++++++++++
->  2 files changed, 62 insertions(+)
->  create mode 100644 include/dt-bindings/power/mediatek,mt8196-power.h
+> Thanks.
 > 
 
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
+I don't have a stake either way, it was simply a suggestion, since it qualifies
+IMHO, per https://www.kernel.org/doc/html/latest/process/stable-kernel-rules.html,
+the patch "...fixes a problem like an oops..."
 
+The proper fix might well be, as Nicolas suggested, adding the required compatibles.
+
+- Easwar (he/him)
 
