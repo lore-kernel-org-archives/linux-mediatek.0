@@ -4,75 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFB40C7EE39
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jun 2025 08:11:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6ED83C8302D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jun 2025 08:36:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=hA5xu5/nGaa0Kk0uJvXqrtZyhBddrOKROYtY/NQCRsk=; b=ACSrkLywkXAjxOs3ZBk6vWVIbS
-	H86hBKybw1U4ahmuAuwOPCJ3f9xRJm+I61sm3EKt5kFyuGqCk6KSWGf0aEA/79JF5qwFi4dNskYU6
-	32s2FQhrRR7u0WzqdKe1aXaPtLd6k4LjOoEYtVYRbxKUNESsmz7aEJ0h+uHD4JyzALhdtqKw4pSVc
-	thxqLE4HomCcs9MONO7qWrKDuW9OtSsFoGmV5b9/JWPfWz4B9kAyERGMxe89Xz8FQ98NDk/rmEt0f
-	H1FxOcGx3cY+GkqGb9A5/795mra2zDSb5s/2+v/N86igCSVJvJCiMQC+wi/v8RRUEykaufAWRVktN
-	fBAmn+Lg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kVgaB3k9Sbz8/PUf8gTuXUEgwfS3TrY+vZ/LVCHdKio=; b=MpI9QyTPolJRk62IdflDJ09rwf
+	djiC+YMfOZRJwcb4y1xPIvtFfRl50EeH3kWlGesqt6oTF44qXa4HtLHY2pRXWsz+KzxL05n8+0k92
+	2Q4pq2ki0Jw6iNz9UcqpI7lGWcp2yeC6e0xYYVSxvhuVqiZvQeF29/tXWjiHoK93MKZX6RY2AOrKt
+	Otpe6dj1nvGAA7cJ1X1Dwz/KRkvtp9vWlf3aoH0RhSZPh2eJBplzQ0EO0UzCrlGUTCymGTSaZbDUb
+	an4JkQUgihKBFAZ/XsNCVPQVA+Lxiw04NEEPJUDKzUGDgpMRmvUb7+YvM/Ik60czNg54nQsR3dlLc
+	KrjZlvfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uW9cK-00000001aAE-0roS;
-	Mon, 30 Jun 2025 08:11:56 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1uW9zZ-00000001d5Q-3BJP;
+	Mon, 30 Jun 2025 08:35:57 +0000
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uW9Z6-00000001Ziv-2nkE;
-	Mon, 30 Jun 2025 08:08:37 +0000
-X-UUID: 68b2ccd8558911f09f706fa2197c6ceb-20250630
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=hA5xu5/nGaa0Kk0uJvXqrtZyhBddrOKROYtY/NQCRsk=;
-	b=Tp51RyP2i6WJs8h6+tA04Owau4vBZ3qbghhida59sdfW2YwykI7+sbpToOVUpE7Ql8AlyS6yDQ59yZ+wciC5SOdUcLhlx259wr3h40LHGa4IjhlCJl1VN+PcQ3Y4ZGZi/KcJjAhz3Vq6Vp7SiczMoEyJ5vtTzn4HuYxhHV2eD+s=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.2,REQID:10bcf0ad-76f0-4435-968f-2f973128ee3d,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:9eb4ff7,CLOUDID:78c3b573-15a7-4ae6-ad4b-94c27b45c266,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
-	l,URL:99|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,
-	LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 68b2ccd8558911f09f706fa2197c6ceb-20250630
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
-	(envelope-from <liankun.yang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1758775946; Mon, 30 Jun 2025 01:08:30 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Mon, 30 Jun 2025 16:08:26 +0800
-Received: from mszsdhlt06.gcn.mediatek.inc (10.16.6.206) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Mon, 30 Jun 2025 16:08:26 +0800
-From: Liankun Yang <liankun.yang@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>, <airlied@gmail.com>,
-	<simona@ffwll.ch>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <mac.shen@mediatek.com>,
-	<peng.liu@mediatek.com>, <liankun.yang@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-CC: <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: [PATCH v5 1/1] drm/mediatek: Adjust bandwidth limit for DP
-Date: Mon, 30 Jun 2025 15:58:06 +0800
-Message-ID: <20250630080824.7107-1-liankun.yang@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1uW9yS-00000001cvy-13ZK
+	for linux-mediatek@lists.infradead.org;
+	Mon, 30 Jun 2025 08:34:49 +0000
+Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-553bcf41440so4187500e87.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 30 Jun 2025 01:34:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1751272486; x=1751877286; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=kVgaB3k9Sbz8/PUf8gTuXUEgwfS3TrY+vZ/LVCHdKio=;
+        b=D6QhVbfrDIjci5nfD7Hy9d7rikfSFEgsq64bAC9TjHvNfSUa2DUcpOzXMDDiUtOSLk
+         +svyRHzu+1N7RBbgsvZMmDJW5ADh47lCqmZJE4G01M8U9EZFkj1bNIcaOabtJb2E+UQL
+         j8Fkmg2bWBUgZHhmCkILQ4wERziBYoFod/2JQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1751272486; x=1751877286;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=kVgaB3k9Sbz8/PUf8gTuXUEgwfS3TrY+vZ/LVCHdKio=;
+        b=rMcPM1AU8OmdC+tZoU2c8SNjgEnpdeYajBm/lS1f8r/XJ4X9AihVeZVMu79yCZOu30
+         KEFCnaNi45adytSbV+OrRWMNbHPJn11/fEfEpG8BcxqJIOJu5+7dUMsfdjJGCI0hpoUK
+         NZ65bKednnzFuGOXNxSRCzCRq7IW4vcdCX6ug0zJ9vD0SGnVDqYKehc5NEm+uHBjvkIn
+         SDcjnWn/jzx/C+lQ8oRTR8/56EwHhZfUz7h0sLEPMx93aR1Wfq0VqMNel0rLK4fCRdxt
+         JXZpq0hdLIy0hEhDUGmWPCjpHHeHt/4E5P6b+sfi6sei6TvvxF64qjWmJ9TKktEAek4S
+         UEtA==
+X-Forwarded-Encrypted: i=1; AJvYcCXbrbFfMS0LMt94tUAF9IAMpcyI5EJNU406zF3DjBaHtCDqAUmDq40fqyyH31SzrbVoHqU+ioioyrt9Ox7u+w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxTT1J62UGtVv5wjPVLvTVMXwT1s1OHacZ+bBvb4N6W88TWM58O
+	6ourUsnMpDnjrwkyC3o+82aN577tUiRb5EBBBEbuqRkZL12ogns2iRxVFjrtO5AZ55w8u6TksDY
+	JJixhIpG8ZPAUhkrLeUrR2plQaINcEnTlYTmGClc3
+X-Gm-Gg: ASbGnctEYsJbBqtC5hnIbC1xIVbjN9JiagdtEqrNAFV34c587hFNKAQtwoO5jACvBIk
+	LVm9Juw1m07O0EuCUOmaZmQkdSI016jShK0BTK/M4g639cTQ9JH9+4XtFwYnqOPOY4lYnLVRZVU
+	veUfFBd8vHTBW+yJjwDwYQB2xVrxHni5WO4oRXJmkQEVRWISXG2+y1gGSYU/WQ2L5xymxYRq0=
+X-Google-Smtp-Source: AGHT+IHlFcd7ds08VjRkhAd4B5pJTIKQJ0FaK20eZC09ottQSiiIyrXWfmbyhysoyNz0SfAaoXhAnX9I8zWuiDZ9khk=
+X-Received: by 2002:a05:6512:b12:b0:554:f79d:ce59 with SMTP id
+ 2adb3069b0e04-5550b9ee228mr3819454e87.27.1751272486439; Mon, 30 Jun 2025
+ 01:34:46 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+References: <20250624073548.29732-1-angelogioacchino.delregno@collabora.com>
+ <20250624073548.29732-4-angelogioacchino.delregno@collabora.com>
+ <20250627-neon-hidden-sheep-ed8dae@krzk-bin> <CAGXv+5GLJ7cfAQW_kbTqqe_QO+RfU7KL57n77qenpDiRS5BybA@mail.gmail.com>
+ <c5dffc8c-2abe-4fd3-a062-6d1adb417d27@collabora.com>
+In-Reply-To: <c5dffc8c-2abe-4fd3-a062-6d1adb417d27@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Mon, 30 Jun 2025 16:34:35 +0800
+X-Gm-Features: Ac12FXy9Bg8iczKYCRzfVVALHWEDTg9agbPGYTVqjyGmcI5uPshlMdfvswpTnDg
+Message-ID: <CAGXv+5EwLDue4y6fVuyNd-z1mytqXJJhQuohhe3htT-XiNcGHw@mail.gmail.com>
+Subject: Re: [PATCH v2 3/6] dt-bindings: regulator: Document MediaTek MT6363
+ PMIC Regulators
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>, broonie@kernel.org, lgirdwood@gmail.com, 
+	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
+	matthias.bgg@gmail.com, linux-kernel@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, kernel@collabora.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250630_010836_716641_A5FAB9DE 
-X-CRM114-Status: GOOD (  19.01  )
+X-CRM114-CacheID: sfid-20250630_013448_419770_9BB8267F 
+X-CRM114-Status: GOOD (  40.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,152 +98,184 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-By adjusting the order of link training and relocating it to HPD,
-link training can identify the usability of each lane in the current link.
+Hi,
 
-It also supports handling signal instability and weakness due to
-environmental issues, enabling the acquisition of a stable bandwidth
-for the current link. Subsequently, DP work can proceed based on
-the actual maximum bandwidth.
+On Mon, Jun 30, 2025 at 3:52=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 30/06/25 05:25, Chen-Yu Tsai ha scritto:
+> > On Fri, Jun 27, 2025 at 4:24=E2=80=AFPM Krzysztof Kozlowski <krzk@kerne=
+l.org> wrote:
+> >>
+> >> On Tue, Jun 24, 2025 at 09:35:45AM +0200, AngeloGioacchino Del Regno w=
+rote:
+> >>> Add bindings for the regulators found in the MediaTek MT6363 PMIC,
+> >>> usually found in board designs using the MT6991 Dimensity 9400 and
+> >>> on MT8196 Kompanio SoC for Chromebooks, along with the MT6316 and
+> >>> MT6373 PMICs.
+> >>>
+> >>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@=
+collabora.com>
+> >>> ---
+> >>>   .../regulator/mediatek,mt6363-regulator.yaml  | 123 +++++++++++++++=
++++
+> >>>   1 file changed, 123 insertions(+)
+> >>>   create mode 100644 Documentation/devicetree/bindings/regulator/medi=
+atek,mt6363-regulator.yaml
+> >>>
+> >>> diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6=
+363-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,m=
+t6363-regulator.yaml
+> >>> new file mode 100644
+> >>> index 000000000000..f866c89c56f7
+> >>> --- /dev/null
+> >>> +++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6363-reg=
+ulator.yaml
+> >>> @@ -0,0 +1,123 @@
+> >>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> >>> +%YAML 1.2
+> >>> +---
+> >>> +$id: http://devicetree.org/schemas/regulator/mediatek,mt6363-regulat=
+or.yaml#
+> >>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> >>> +
+> >>> +title: MediaTek MT6363 PMIC Regulators
+> >>> +
+> >>> +maintainers:
+> >>> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.=
+com>
+> >>> +
+> >>> +description:
+> >>> +  The MT6363 SPMI PMIC provides 10 BUCK and 26 LDO (Low Dropout) reg=
+ulators
+> >>> +  and can optionally provide overcurrent warnings with one ocp inter=
+rupt
+> >>> +  for each voltage regulator.
+> >>> +
+> >>> +properties:
+> >>> +  compatible:
+> >>> +    const: mediatek,mt6363-regulator
+> >>> +
+> >>> +  interrupts:
+> >>> +    description: Overcurrent warning interrupts
+> >>
+> >> Are you sure interrupts are physically not connected?
+>
+> Yes, I'm sure, they are not.
+>
+> >
+> > Side note:
+> >
+> > I wonder if we really need to describe _all_ the interrupts here.
+> >
+> > Looking at the PMIC as a whole, the interrupt tree is something like
+> >
+> > SoC <- SPMI inband IRQ - PMIC top level IRQ block <- sub-function IRQ b=
+locks:
+> >
+> >      - BUCK (buck regulator over current)
+> >      - LDO (LDO regulator over current)
+> >      - PSC (key press / system low voltage)
+> >      - MISC (protected registers accessed / SPMI stuff)
+> >
+> > And some other blocks that may apply to other MediaTek PMICs:
+> >
+> >      - HK (some threshold triggered interrupt)
+> >      - BM (battery management related)
+> >
+> > The thing I'm trying to get to is that all these interrupt vectors are
+> > internal to the whole PMIC. Do we really need to spell them out in the
+> > device tree? The top level compatible should already imply how all the
+> > internals are wired up.
+> >
+>
+> Chen-Yu:
+>
+> Yes, we do: not all boards need overcurrent protection on all of the rail=
+s, but
+> especially, in the past I have seen (multiple times) board designs (not M=
+ediaTek,
+> but that doesn't mean anything) that will trigger the overcurrent protect=
+ion due
+> to a high inrush upon rail enablement - in these cases, the ocp would hav=
+e to be
+> either ignored completely or reset and read after a while.
+>
+> Not only that: since not all rails are actually used, due to EMI (and oth=
+er issues
+> which usually mean suboptimally built boards) some of those may randomly =
+trigger
+> OCP, and that's another case in which that should be ignored.
+>
+> So... yes, we want to define the overcurrent interrupts in the devicetree=
+.
 
-It should training in the hpd event thread.
-Check the mode with lane count and link rate of training.
+I understand the use case, but I think that's kind of giving the interrupts
+property a second meaning.
 
-If we're eDP and capabilities were already parsed we can skip
-reading again because eDP panels aren't hotpluggable hence the
-caps and training information won't ever change in a boot life
+Instead, if you look at the common regulator bindings, there is a
+"regulator-over-current-protection" which signals that over current
+protection should be enabled for a given regulator. Perhaps you could
+use that? I think this common property also implies that over current
+protection has to be explicitly enabled.
 
-Therefore, bridge typec judgment is required for edp training in
-atomic_enable function.
+> >
+> > ChenYu
+> >
+> >>> +    minItems: 1
+> >>> +    maxItems: 36
+> >>> +
+> >>> +  interrupt-names:
+> >>> +    description:
+> >>> +      Names for the overcurrent interrupts are the same as the name
+> >>> +      of a regulator (hence the same as each regulator's node name).
+> >>> +      For example, the interrupt name for regulator vs2 will be "vs2=
+".
+> >>
+> >> You need to define the items or pattern if this is really flexible in
+> >> the hardware (not drivers).
+>
+> krzk:
+>
+> It's flexible in the hardware... but how do I define a pattern here?
+> I avoided to define the items because you can miss some; I mean....
+>
+> You may have, on one board:
+> "vs1", "vsram", "someother", "another"
+>
+> on another: "vsram", "another"
+>
+> ...and another: "vs1", "another"
+>
+> (etc etc)
+>
+> Is there any way to allow missing items in between?
+> Because then there's 36 possible items, so there are more than 100 possib=
+le
+> combinations (keeping the order, but missing something in between..!).
 
-Because DP will enter idle pattern state after DP training,the current
-DP link state is ready and can be prepared to output the video.
-Therefore, the following actions do not require the wall-mounted
-aux_panel power, and set DP enable to true.
+I recently saw in the net/snps,dwmac.yaml binding the following:
 
-Signed-off-by: Liankun Yang <liankun.yang@mediatek.com>
----
-Change in V5:
-- Fixed the issue that the 4th version of the patch caused DP to have no screen.
-Per suggestion from the previous thread:
-https://patchwork.kernel.org/project/linux-mediatek/patch/20250625095446.31726-1-liankun.yang@mediatek.com/
+  clock-names:
+    minItems: 1
+    maxItems: 10
+    additionalItems: true
+    contains:
+      enum:
+        - stmmaceth
+        - pclk
+        - ptp_ref
 
-Change in V4:
-- Tested the internal eDP display on MT8195 Tomato and it is fine.
-Per suggestion from the previous thread:
-https://patchwork.kernel.org/project/linux-mediatek/patch/20250318140236.13650-2-liankun.yang@mediatek.com/
+I suppose you could adapt this pattern, list all the possibilities, and
+set additionalItems to false. I don't think it can pick out duplicates
+though.
 
-Change in V3:
-- Remove 'mtk_dp->enabled = false" in atomic disable.
-- Remove 'mtk_dp->enabled = true" in atomic enable.
-Per suggestion from the previous thread:
-https://patchwork.kernel.org/project/linux-mediatek/patch/20241025083036.8829-4-liankun.yang@mediatek.com/
 
-Change in V2:
-- Adjust DP training timing.
-- Adjust parse capabilities timing.
-- Add power on/off for connect/disconnect.
-Per suggestion from the previous thread:
-https://patchwork.kernel.org/project/linux-mediatek/patch/20240315015233.2023-1-liankun.yang@mediatek.com/
----
- drivers/gpu/drm/mediatek/mtk_dp.c | 45 ++++++++++++++++++-------------
- 1 file changed, 27 insertions(+), 18 deletions(-)
+ChenYu
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index a5b10b2545dc..1010263f2510 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -1976,6 +1976,7 @@ static irqreturn_t mtk_dp_hpd_event_thread(int hpd, void *dev)
- 	struct mtk_dp *mtk_dp = dev;
- 	unsigned long flags;
- 	u32 status;
-+	int ret;
- 
- 	if (mtk_dp->need_debounce && mtk_dp->train_info.cable_plugged_in)
- 		msleep(100);
-@@ -1994,9 +1995,28 @@ static irqreturn_t mtk_dp_hpd_event_thread(int hpd, void *dev)
- 			memset(&mtk_dp->info.audio_cur_cfg, 0,
- 			       sizeof(mtk_dp->info.audio_cur_cfg));
- 
-+			mtk_dp->enabled = false;
-+			/* power off aux */
-+			mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
-+			       DP_PWR_STATE_BANDGAP_TPLL,
-+			       DP_PWR_STATE_MASK);
-+
- 			mtk_dp->need_debounce = false;
- 			mod_timer(&mtk_dp->debounce_timer,
- 				  jiffies + msecs_to_jiffies(100) - 1);
-+		} else {
-+			mtk_dp_aux_panel_poweron(mtk_dp, true);
-+
-+			ret = mtk_dp_parse_capabilities(mtk_dp);
-+			if (ret)
-+				drm_err(mtk_dp->drm_dev, "Can't parse capabilities\n");
-+
-+			/* Training */
-+			ret = mtk_dp_training(mtk_dp);
-+			if (ret)
-+				drm_err(mtk_dp->drm_dev, "Training failed, %d\n", ret);
-+
-+			mtk_dp->enabled = true;
- 		}
- 	}
- 
-@@ -2161,17 +2181,6 @@ static const struct drm_edid *mtk_dp_edid_read(struct drm_bridge *bridge,
- 	}
- 
- 	drm_edid = drm_edid_read_ddc(connector, &mtk_dp->aux.ddc);
--
--	/*
--	 * Parse capability here to let atomic_get_input_bus_fmts and
--	 * mode_valid use the capability to calculate sink bitrates.
--	 */
--	if (mtk_dp_parse_capabilities(mtk_dp)) {
--		drm_err(mtk_dp->drm_dev, "Can't parse capabilities\n");
--		drm_edid_free(drm_edid);
--		drm_edid = NULL;
--	}
--
- 	if (drm_edid) {
- 		/*
- 		 * FIXME: get rid of drm_edid_raw()
-@@ -2366,11 +2375,13 @@ static void mtk_dp_bridge_atomic_enable(struct drm_bridge *bridge,
- 
- 	mtk_dp_aux_panel_poweron(mtk_dp, true);
- 
--	/* Training */
--	ret = mtk_dp_training(mtk_dp);
--	if (ret) {
--		drm_err(mtk_dp->drm_dev, "Training failed, %d\n", ret);
--		goto power_off_aux;
-+	if (mtk_dp->data->bridge_type == DRM_MODE_CONNECTOR_eDP) {
-+		/* Training */
-+		ret = mtk_dp_training(mtk_dp);
-+		if (ret) {
-+			drm_err(mtk_dp->drm_dev, "Training failed, %d\n", ret);
-+			goto power_off_aux;
-+		}
- 	}
- 
- 	ret = mtk_dp_video_config(mtk_dp);
-@@ -2390,7 +2401,6 @@ static void mtk_dp_bridge_atomic_enable(struct drm_bridge *bridge,
- 		       sizeof(mtk_dp->info.audio_cur_cfg));
- 	}
- 
--	mtk_dp->enabled = true;
- 	mtk_dp_update_plugged_status(mtk_dp);
- 
- 	return;
-@@ -2405,7 +2415,6 @@ static void mtk_dp_bridge_atomic_disable(struct drm_bridge *bridge,
- {
- 	struct mtk_dp *mtk_dp = mtk_dp_from_bridge(bridge);
- 
--	mtk_dp->enabled = false;
- 	mtk_dp_update_plugged_status(mtk_dp);
- 	mtk_dp_video_enable(mtk_dp, false);
- 	mtk_dp_audio_mute(mtk_dp, true);
--- 
-2.45.2
-
+> Cheers,
+> Angelo
+>
+>
+>
 
