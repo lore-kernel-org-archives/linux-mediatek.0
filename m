@@ -4,83 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95ACEC83030
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jun 2025 23:03:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B57BC8302F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Jun 2025 23:08:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=/kcwhdLYH9QDCoM+AkPn/ixYQdxBo2mfkENfGHWF2vw=; b=OcriFSqb+oizstrnB9vR4g9nsj
-	PKhGPROWcYhk+rSH+UGAZIJisR8lnT8yzJhw6JMB8WVPQaDIHMbr5l23DWz/SDucuILlzieud2Obe
-	WPQiCeUJ6W4qpI10KEasY7tEKW9VlOlkNrys2ngA1c3qWZlZFgYmyGi6Gcecu6if34ObmKgyc3tYY
-	gPL6VjH44zAVIg9qV07bTSvc4kpaQHmbdKUYxBJaBpsbVwZD5wvO7Ai9p7U4AmppGA7f0i8f0sh+0
-	K8ekIlotyVlDwNGtYMM6aIItnbZhx32oFHxfz+uhMW4IKCaEAm+6Oc+lRgSW6Ex517NQgWeu4dILL
-	ULla2wlg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DcMIWFES6oqAmi3k3/qne93pIx7ZR4rKJz2Nj99pEyU=; b=O7AvG1PBsyoQbt7RLbiMJEKdxk
+	+d1D7S75DSsxnvt/Gbrz5Q2WslZIYOmznH+ggh8Q9nHEdJ4NQnyTLiuVGYFSGlOcxMQ1nNmlCrwkU
+	TuF0c1/HrZiw6bq1mM5G5+IBWjT7auKrSdgFtWEPl5uTwgKJ+/leX0DRFuf/FgyZWrVCrNwH45fZu
+	DIuTyrAX5839/Ystd7ysvLnT30etqN3Caim+6tDxq0RN4BeM8IyKLiZYxbkQOSBCwLVVGvW/h8zUi
+	COd8mKJLjvtNwJcYXUihbvh/UsRwrHkaLzRA0X0/mLgY1bWdDOVQvojVNC0g/+PSKGCgGcTN0gGCt
+	iBs7/8iw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWNXD-00000003ezp-396g;
-	Mon, 30 Jun 2025 23:03:35 +0000
-Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
+	id 1uWNbs-00000003fN2-1zBV;
+	Mon, 30 Jun 2025 23:08:24 +0000
+Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWNUs-00000003erz-1zxN;
-	Mon, 30 Jun 2025 23:01:11 +0000
-Received: by mail-pg1-x536.google.com with SMTP id 41be03b00d2f7-b31c6c9959cso3358149a12.1;
-        Mon, 30 Jun 2025 16:01:10 -0700 (PDT)
+	id 1uWNXR-00000003f37-144P;
+	Mon, 30 Jun 2025 23:03:50 +0000
+Received: by mail-pg1-x52b.google.com with SMTP id 41be03b00d2f7-b170c99aa49so4062072a12.1;
+        Mon, 30 Jun 2025 16:03:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1751324469; x=1751929269; darn=lists.infradead.org;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=/kcwhdLYH9QDCoM+AkPn/ixYQdxBo2mfkENfGHWF2vw=;
-        b=KqhY5WW4LMcdjRdJ25NvkQx+RRnR5Bl3+AR7X2Sljt8wvKYANrq69tiguDmTzkPXDn
-         4s0s9E4Hf6SPImv54uaPIyLIby5XK0mZx5gpPYfwcQLPeVON7T+pLJpGJ+/vWazyZRVR
-         wdG17N3samLqr2RnHjDfxwYOHybKjCmNiuOGx1W36GdCxOz8lOWFSihLJetIjtryN/BK
-         dL3tVivHLNqzvVSJM/TmkM5kJkxci/Y/IQEN0c5vwXItGjpaEmg/IZ0gZIASoQDb7eeU
-         iaUsNAnJv4tSi43qIMYKVA7xJ5YcsBPw3JmD2x6qn5cnrtY3eN+gtioaLM1ak23aRINw
-         ufeA==
+        d=gmail.com; s=20230601; t=1751324628; x=1751929428; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=DcMIWFES6oqAmi3k3/qne93pIx7ZR4rKJz2Nj99pEyU=;
+        b=PEtnGMcn66rLC44aATdv3ayJMiTerrXRVwVRnj1N4EEM9Kdzc0T379TF1ryvojTfe7
+         NOhCDQhYXnQeVAoKXhfBDhZjYSToIldCJpj5fUza7u0pHT5FUBRcNIxLwaJ6ip7jyr5q
+         ZN4RnSmc65YYnO5h9hjTkduurW7u1jKLY70YWwGDBG+WQ/96Wo7s7VwWgBp+cJF7eWxr
+         9sSnC20pvKxeHQgLMRpYKZNjPIHvD2HWFzTMV1JWAq6B+A+SAxfH6V89NYHHhVWKJNuS
+         fJi6nXv1Uor7bUuMfkbgJbbLmeX1sp0VEX7LuNz1MlastxD3TJEk5C3i+zCbp6e5THCj
+         YuaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751324469; x=1751929269;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+        d=1e100.net; s=20230601; t=1751324628; x=1751929428;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=/kcwhdLYH9QDCoM+AkPn/ixYQdxBo2mfkENfGHWF2vw=;
-        b=gxENP1sso8Engb2Oek18rzvwZexxkh9wW3Fe6gC0aG/9Estu8yJOkOhDSPAfP5whtY
-         b8aGTC5rsWQoFAF/xitlhsRr07DqaR1d4axWqgxYIYHFdplQfFpD4WTzEWTR1dkUjFhz
-         vT38h3vNOZGmYbfUIoJFuyoSEiEql4tzB2rajDaWrPHqqM8TEChFVdNx2z5+PF0Gclaw
-         V70BnaiIu9qGN+ljo48QwnWoY6BI/43h6Mk9uoADcnMyiw3GCWzokkZs0P8BGwfHh/+m
-         CwIa8fNR9IgWDadfwqIRymmtpW2AFwE6TSdUKXTZRyrKM8JXu6h4g0n31BTG1ncLdJkJ
-         e1qw==
-X-Forwarded-Encrypted: i=1; AJvYcCUUKjY3b0gEOqMCO85nqX3qUAFLHEC0TwxW/VpGzyxZj9/m6J2vdiXTHw+v8KL2BKuK3Qyh16fPeOAPjkCPMWEq@lists.infradead.org, AJvYcCUqUDsharqqnqsGECd7myoxEQ12DJSXoOw8MFmRCds/5cLBblqt4u03qt/mqP7MylnAclqr6KrKmWRVB9T3OFo=@lists.infradead.org
-X-Gm-Message-State: AOJu0YywFYAlTXGFXpHx1MJxOA4G5Z0alRY5zCWtGtWVB2MoLvBxjHvK
-	C8lGGfAbwUjfVVK8mBPzym9uyYcoR/XvBSps3uzmUH2z+ITqpkKrCS6n
-X-Gm-Gg: ASbGncvdeGovs92XEwnSXxR2R7JNPNxbU56tFZ/04DrOV1Hqrrxh8vIbovZzg0Nqx34
-	v1vtRNAUdrCKjFu4LYjHb2ugeGY2uJo8OT+mRhoU+hwE5+6rF9h/VpGF8AJcGkcZD5id6e9JQjS
-	VTxlKBJf1tKJCxlZzkMPAgtupohzmIQVQNprAAD0PnweiXgHAvO5oBkc6MFj/Hb8Rn71qWJn/X0
-	YX6XO7OUf55MgZH0kYPMFvcrGUYzR8UGVzgIyQ8y7YjJmeov7UbAG1L7lDO56lFK38DvY+HKOCM
-	l0JwE6gXS6yzqYo2B9z+r7wp3NZ5UG7pJ43Et4nxl9zMyhcuimjpRUbU+06xZA==
-X-Google-Smtp-Source: AGHT+IH/YP+qsLsAUJeoIl5Ftc1VJsIoDYRrAzxIfVfqHDzSeIu+OzhjwmD/bR84c4zzsWnFKLgMSw==
-X-Received: by 2002:a17:90b:5348:b0:311:f684:d3cd with SMTP id 98e67ed59e1d1-318c910a649mr27346171a91.12.1751324469281;
-        Mon, 30 Jun 2025 16:01:09 -0700 (PDT)
+        bh=DcMIWFES6oqAmi3k3/qne93pIx7ZR4rKJz2Nj99pEyU=;
+        b=vYSafn+01NUvvzuyxb/CwnaB1shiAjdpZsF6s+DmUnHPZC1S6J2omj4bO7ZJlUGCv6
+         nd617hTQlGJTjP/xGkdyuvXzs3sA5BcGT8WLjgD1I5mpPOwFtGUYLJGKBfJgWnlfF5LS
+         Zxa/umtR/ntZf094Y47Gvh4hBS9TUYyIrpIvUbt61yoG6wl6dKRTmj56oZHvK3DLsROA
+         to49WUM7vagSFogwi6tWvgcjCZYlUy8NUR+IvOvvJOALPxglet1QPgU3ADbJweWrjuR7
+         MUG39yeqU0DQ50AFX+jfeAVxMQ+8iFifF1+mBpMt34HH8u7xbQk3elm+tq3kh7LVjy3V
+         jlOQ==
+X-Forwarded-Encrypted: i=1; AJvYcCV/p+AhAMqf9GaogXcxBRBba4IvjEJswF53cOFh6ar1BUjte5aE3R942Q38wB2vBoESxrhvwplL4BKLuxq7euQ=@lists.infradead.org, AJvYcCVq1Ofs34TMKuuz9fMBuP+qfH9Ik8d4oeq5sNZ2TS2Ouuk6ix2WgWy1q7DnAtU3PCeGFNO6xzTv5dxNeD5fXTK7@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw5iRrMtR4mEm+qR1KyalycYqdowdXxK6A7vhdhSRW9xHyF/0Mh
+	OUNEOibb1tZGBGM+zWXeIYXhNf7btNAhpJHZr9uAj+Baodw6lqlk45z4
+X-Gm-Gg: ASbGncv+Xjsv0Qgn0LD3EJNxyV7wW/IUzwyspRomm1RYzsR8llZHpR7De2FODZEwYIy
+	C+k5hNFDSTD0FTWfI6n+j5bH37OKrVN0khx0QoMpZNwB9orEmneCmHDmHaGmeSjpRCcTiCJiKOa
+	fG1dF0ZQ3P2QGFhrU5cq5igq2kP27vLzmJsMch3hvfggsi9Woftd1Ffn2fbynPSHiak593/7YVM
+	62Pf3UIiIJSsQXbks/qtdbvGVamn3rjsl3jCbSDQhJ6ctQ0NEa8NkNF7eg+SKZxkO5m19ey/YyN
+	dsKZwBHvdYKC2nGBsthh9/SHBPlL+0UPtVOxvNyODWK3vonJvSVFAk1RXruzZw==
+X-Google-Smtp-Source: AGHT+IHKbAQSwj+eXwJLDhBipfTSg+qZzjJ6I0tpy1EaDnqoZVZaoA25wQdULxKVIR4F7iCenLZ2Jw==
+X-Received: by 2002:a17:90b:2c90:b0:312:ec3b:82c0 with SMTP id 98e67ed59e1d1-318c9314d79mr21601226a91.29.1751324628355;
+        Mon, 30 Jun 2025 16:03:48 -0700 (PDT)
 Received: from google.com ([2620:15c:9d:2:c92b:c666:1f8:990e])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-315f5441770sm14974126a91.48.2025.06.30.16.01.08
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-31a494237adsm214315a91.0.2025.06.30.16.03.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 30 Jun 2025 16:01:08 -0700 (PDT)
-Date: Mon, 30 Jun 2025 16:01:06 -0700
+        Mon, 30 Jun 2025 16:03:48 -0700 (PDT)
+Date: Mon, 30 Jun 2025 16:03:45 -0700
 From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: Lee Jones <lee@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Yassine Oudjana <y.oudjana@protonmail.com>, 
-	=?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>, Fabien Parent <fparent@baylibre.com>, Reported-by: 
-	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, linux-kernel@vger.kernel.org, 
+To: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, Matthias Brugger <matthias.bgg@gmail.com>, kernel@collabora.com, 
+	linux-input@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH] MFD: mt6397: do not use generic name for keypad sub-devices
-Message-ID: <r4k3pgd3ew3ypne7ernxuzwgniiyvzosbce4cfajbcu7equblt@yato35tjb3lw>
+Subject: Re: [PATCH] Input: mtk-pmic-keys: Fix null pointer dereference when
+ no compatible data
+Message-ID: <yconjvlgrgqsiyclce426i2u4pqcheqxeqxa6fpduqrxtn7njb@jr4nvqvmad2k>
+References: <20250630-mtk-pmic-keys-fix-crash-v1-1-e47351fa9d1f@collabora.com>
+ <28111607-d5a2-4b54-964a-d010fb99193a@collabora.com>
+ <d373gpdyqejppdysdbb4k6aat5i33epnqsebxdkjbrgfwsnqtm@43si4kmjvsmq>
+ <48f573941d64217240f4750534e17faf4af0e3f6.camel@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <48f573941d64217240f4750534e17faf4af0e3f6.camel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250630_160110_517862_F375540C 
-X-CRM114-Status: GOOD (  15.00  )
+X-CRM114-CacheID: sfid-20250630_160349_295816_5738F7CB 
+X-CRM114-Status: GOOD (  23.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,85 +103,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Do not use "mtk-pmic-keys" when creating sub-device for the keypad to
-make sure the keypad driver will only bind to the sub-device if it has
-support for the variant/has matching compatible.
+On Mon, Jun 30, 2025 at 03:59:46PM -0400, Nícolas F. R. A. Prado wrote:
+> On Mon, 2025-06-30 at 08:25 -0700, Dmitry Torokhov wrote:
+> > On Mon, Jun 30, 2025 at 04:06:53PM +0200, AngeloGioacchino Del Regno
+> > wrote:
+> > > Il 30/06/25 16:03, Louis-Alexis Eyraud ha scritto:
+> > 
+> > [... snip ...]
+> > 
+> > > > @@ -316,6 +316,9 @@ static int mtk_pmic_keys_probe(struct
+> > > > platform_device *pdev)
+> > > >         const struct of_device_id *of_id =
+> > > >                 of_match_device(of_mtk_pmic_keys_match_tbl,
+> > > > &pdev->dev);
+> > > > +       if (!of_id)
+> > > > +               return -EINVAL;
+> > > 
+> > > Please, change this to `return -ENODEV;`
+> > 
+> > No, this definitely should not be a "silent" error because it
+> > indicates
+> > there is something wrong with the kernel.
+> > 
+> > Stepping back, why do we even enter mtk_pmic_keys_probe() if there is
+> > not a matching OF ID? Are there any other patches that are not
+> > upstream?
+> 
+> I'm guessing it's because the driver can be probed by a parent MFD
+> driver, drivers/mfd/mt6397-core.c, and the compatibles defined in the
+> MFD don't necessarily match the ones in the pmic-keys driver, for
+> instance 'mediatek,mt6359-keys' is only listed in the MFD. Adding the
+> missing compatibles to the pmic-keys driver should fix this.
 
-Reported-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Fixes: 6e31bb8d3a63 ("mfd: mt6397: Add initial support for MT6328")
-Fixes: de58cee8c6b8 ("mfd: mt6397-core: Add MT6357 PMIC support")
-Fixes: 4a901e305011 ("mfd: mt6397-core: Add resources for PMIC keys for MT6359")
-Cc: stable@vger.kernel.org
-Signed-off-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
----
+I think if we stop using the generic "mtk-pmic-keys" in MFD core it
+should solve the issue. I just sent out a patch...
 
-This is not tested so if someone with hardware could try it out that
-would be great. I *think* it should work...
-
- drivers/mfd/mt6397-core.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-index 5f8ed8988907..3e58d0764c7e 100644
---- a/drivers/mfd/mt6397-core.c
-+++ b/drivers/mfd/mt6397-core.c
-@@ -136,7 +136,7 @@ static const struct mfd_cell mt6323_devs[] = {
- 		.name = "mt6323-led",
- 		.of_compatible = "mediatek,mt6323-led"
- 	}, {
--		.name = "mtk-pmic-keys",
-+		.name = "mt6323-keys",
- 		.num_resources = ARRAY_SIZE(mt6323_keys_resources),
- 		.resources = mt6323_keys_resources,
- 		.of_compatible = "mediatek,mt6323-keys"
-@@ -153,7 +153,7 @@ static const struct mfd_cell mt6328_devs[] = {
- 		.name = "mt6328-regulator",
- 		.of_compatible = "mediatek,mt6328-regulator"
- 	}, {
--		.name = "mtk-pmic-keys",
-+		.name = "mt6328-keys",
- 		.num_resources = ARRAY_SIZE(mt6328_keys_resources),
- 		.resources = mt6328_keys_resources,
- 		.of_compatible = "mediatek,mt6328-keys"
-@@ -175,7 +175,7 @@ static const struct mfd_cell mt6357_devs[] = {
- 		.name = "mt6357-sound",
- 		.of_compatible = "mediatek,mt6357-sound"
- 	}, {
--		.name = "mtk-pmic-keys",
-+		.name = "mt6357-keys",
- 		.num_resources = ARRAY_SIZE(mt6357_keys_resources),
- 		.resources = mt6357_keys_resources,
- 		.of_compatible = "mediatek,mt6357-keys"
-@@ -196,7 +196,7 @@ static const struct mfd_cell mt6331_mt6332_devs[] = {
- 		.name = "mt6332-regulator",
- 		.of_compatible = "mediatek,mt6332-regulator"
- 	}, {
--		.name = "mtk-pmic-keys",
-+		.name = "mt6331-keys",
- 		.num_resources = ARRAY_SIZE(mt6331_keys_resources),
- 		.resources = mt6331_keys_resources,
- 		.of_compatible = "mediatek,mt6331-keys"
-@@ -240,7 +240,7 @@ static const struct mfd_cell mt6359_devs[] = {
- 	},
- 	{ .name = "mt6359-sound", },
- 	{
--		.name = "mtk-pmic-keys",
-+		.name = "mt6359-keys",
- 		.num_resources = ARRAY_SIZE(mt6359_keys_resources),
- 		.resources = mt6359_keys_resources,
- 		.of_compatible = "mediatek,mt6359-keys"
-@@ -272,7 +272,7 @@ static const struct mfd_cell mt6397_devs[] = {
- 		.name = "mt6397-pinctrl",
- 		.of_compatible = "mediatek,mt6397-pinctrl",
- 	}, {
--		.name = "mtk-pmic-keys",
-+		.name = "mt6397-keys",
- 		.num_resources = ARRAY_SIZE(mt6397_keys_resources),
- 		.resources = mt6397_keys_resources,
- 		.of_compatible = "mediatek,mt6397-keys"
--- 
-2.50.0.727.gbf7dc18ff4-goog
-
+Thanks.
 
 -- 
 Dmitry
