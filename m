@@ -4,160 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23107C83038
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Jul 2025 19:00:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93443C8303F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Jul 2025 19:00:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MwCrqmYe9TCJHuYWG2jCcUWVn5259lJARsV/a3PINFE=; b=O2U2hGhNskgOBCEWaw1SpnSwyK
-	SI10yof+LekfwMLAR9P9J+yJIu5VkX3E+dcElfoYjDkynofw17BNeQNU4VmnupjIfjmPuxkSsuT0f
-	zqm+glsGpJvYvCo5+jsEQfJThxGB6vH+fD0ImBjTkF+2PcdPX8Gj4YqkVfVaDL+I7WEFUZI74OoEq
-	iI8R0IpxuiqWeqyVleym6GUU3Tfen4gCpLHQGx9QyZcdJb9uqKeJdAdMhpRl9ZpVXSXrsbjoJkibA
-	1F5zojn7OyykRaqeTBwjeePCbx8SyTwBsRzayU3wn90hkjrIvMCJBAGAfBbmXlaP8ri8HDA/xMonJ
-	rLJSFLaw==;
+	bh=xk6elp7+GNhOSfGgHSBskSrkAu5rtLm+QGtFYvJqEBk=; b=OwmniFdpfjXh8mRzvUy+g6azHn
+	9QkJVAa5JBKliVLPoj3lYP654+zTdr09Rw/faZGqaV/vMg7AbFLV8izOaUyoxVcJD/ju+n8dJ8Piv
+	q1/ALuoCWuL0BJb4Lc0NKn45gGRCFalsothA0HnZ3Hbxqwo7ux/5SCxRwd0KNWr6RjQicQYBS2AXz
+	UbsEC1etDMh11pNtEpxF98Fpm+pEdkCRoPPTT6n2qTOBngvKhXgrCyhTB75cJ/3lYSauQUhkBaCj5
+	wTXCcBn8sDoEqDFdLHImxSHX2t9c3+8HQY5AsffN1gE88o1gpuaGay0OSAgyroDnf0hHaKmRq90Fp
+	aH2/qSYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWgDQ-00000006PC7-1SUg;
-	Tue, 01 Jul 2025 19:00:24 +0000
-Received: from mail-qk1-x734.google.com ([2607:f8b0:4864:20::734])
+	id 1uWgDV-00000006PGy-0BNj;
+	Tue, 01 Jul 2025 19:00:29 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWdnl-000000062CM-01zL;
-	Tue, 01 Jul 2025 16:25:46 +0000
-Received: by mail-qk1-x734.google.com with SMTP id af79cd13be357-7d45f5fde50so170855985a.2;
-        Tue, 01 Jul 2025 09:25:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1751387144; x=1751991944; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=MwCrqmYe9TCJHuYWG2jCcUWVn5259lJARsV/a3PINFE=;
-        b=lAsYTX5Q/b+rJKmHkojnbcUBDqsB9ytu+fhYKWzmWwNJlzCWFYgVES5ZbrKhTdviM6
-         VDRmXT8LyObUh/jbKHz7i5u1zzUa82H3RBjo++gK/unnXy+NQmF0zRqoLhqNWkb+e1ZI
-         vsVO2M+ffNINvaXYC7OTgUukugegJ0rr4ciCuJMin6ZGLSJwwouRCYqLAnuuJFKR+uTD
-         pCH8Avp6kw54rHrZgF9zaG8ECiRfaG0u919F/C5/MpUzncrAU8R2YsabnuK+NWqtGQ+Y
-         v3ZbPrgazCjdagcviyfzgHAOjmADovYmyb0JFlYUBzrpVSQcHLJNXwecqthl2MbCIUig
-         thgg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751387144; x=1751991944;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=MwCrqmYe9TCJHuYWG2jCcUWVn5259lJARsV/a3PINFE=;
-        b=XQYXy+zWldHiBuIns2EtlPIjzIamKmUSjRheQBYZ0T3tsbMgnmiiGTU6o06Faq+pz5
-         D8HglteAq0PQOacRTjoIeZnpV5A7BqSKBdNZCV9NzHw8aerMVGSvHbUo8KyoWko53pyo
-         Q7QkSFBQnikubGL+7AzV+drlUcrpwons5PYGY6mDvOvbuez50ZORm0cWkbb/OOslFTgf
-         7a+A9G/a/tc1sLvxH6X0yvGydQyqGKP7SGpLWPpudrE26AGEnU84JVdo0orhQVz+W0/Z
-         AV07Y8hDjqiMaQbpW5BmKbc4aYcSxG1xjWwuNsGoxBZYrsv1QfOrQ7WiLEfHdaUnEDmg
-         g9Wg==
-X-Forwarded-Encrypted: i=1; AJvYcCUKh8TeSfhhtBzC5nGJAcSCSat1dpJA7xMBF6gJw527FIDsvad5aE4h16zlhYM4NKr+sYNaj1jvoyqDT2/6MLA=@lists.infradead.org, AJvYcCULJJbxVwRbtzIK78BGRsMC9sYc1PjLI+noAd+cuRq2G6PpyeOD5htwGrYP+980iYPcr08cYjIOTQOh@lists.infradead.org, AJvYcCUMOqvntwMRqIpkaluQQWpvot6WwrPOpj09/W+dAgSV4qhtpqFEbt/kbeIjvJiq3jeR5ztBueDzhC+r/D8vmIWnbA==@lists.infradead.org, AJvYcCV3IeoCKjZGiMT8GtoTk+EvLV2k8bnvnAeLXyAyFlqpJVS0E8xCYM4mDM0wKkhy6jesA1DM2FGlKpcvDBjezjA=@lists.infradead.org, AJvYcCV8vXWSNrDhWuzR7SZyFeYNWxHSKY5hPPA/pv3XD/MHpJo7EdGCAJKWnsXV8KbKV1IJky4hQib8IpUpbYwF@lists.infradead.org
-X-Gm-Message-State: AOJu0YwEmsffPNIfxb3eTE6ixHo27IzX9+fqcxHkkxhTj6g6Vh4O63OB
-	akSn/RFgLllXPsQxIwO/uKItHxz+kGZV4Y6zwrOJxdPcwFFmThFl02ay
-X-Gm-Gg: ASbGnctck+xuNSkRFKw0FQdEMq9CDUt+DPBvSMIab4iDckQ7MkyHkRivJi7pBwJHG+X
-	e22ISRhYGN7CddTDcj+TZzz5l6u6Js/nrfeduhqL4tYMLQd6thtUzBrYvogVv8n0qYFTTcVdpKP
-	1Fe1N6/GrfcSbJupRkSJmAkJLpCOdjDmmLgi94NXtMFyA1sztabDM7r3Wv7OLRZHKwdpCzkQvUL
-	e9sZrMrdVG4AVTdebShr38LY3MOvSy0mvXKv26cCrc576ZN4cBmzUjKhw6zsoU1SJioCyW4XKLL
-	lDUUXQPUSTbJfHrV8hTm9Dc/7jnXbYmouqm8wAfAXWSchaxRMg==
-X-Google-Smtp-Source: AGHT+IFaquJkOuj7GD/t4hRYC7j2CE8mxqIujMtOYOepN4kjeXyf+EKHtvQBv03/JpyXmxYQUG4sHA==
-X-Received: by 2002:a05:620a:1a1a:b0:7c5:95e6:ce1d with SMTP id af79cd13be357-7d4438566f9mr2476294085a.0.1751387143543;
-        Tue, 01 Jul 2025 09:25:43 -0700 (PDT)
-Received: from geday ([2804:7f2:800b:55e2::dead:c001])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6fd772e4305sm86349236d6.66.2025.07.01.09.25.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 01 Jul 2025 09:25:43 -0700 (PDT)
-Date: Tue, 1 Jul 2025 13:25:19 -0300
-From: Geraldo Nascimento <geraldogabriel@gmail.com>
-To: Waqar Hameed <waqar.hameed@axis.com>
-Cc: Vignesh Raghavendra <vigneshr@ti.com>,
-	Julien Panis <jpanis@baylibre.com>,
-	William Breathitt Gray <wbg@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Bartosz Golaszewski <brgl@bgdev.pl>, Peter Rosin <peda@axentia.se>,
-	Jonathan Cameron <jic23@kernel.org>,
-	David Lechner <dlechner@baylibre.com>,
-	Nuno =?utf-8?B?U8Oh?= <nuno.sa@analog.com>,
-	Andy Shevchenko <andy@kernel.org>,
-	Cosmin Tanislav <cosmin.tanislav@analog.com>,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Michael Hennerich <Michael.Hennerich@analog.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matteo Martelli <matteomartelli3@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Francesco Dolcini <francesco@dolcini.it>,
-	=?utf-8?Q?Jo=C3=A3o_Paulo_Gon=C3=A7alves?= <jpaulo.silvagoncalves@gmail.com>,
-	Hugo Villeneuve <hvilleneuve@dimonoff.com>,
-	Subhajit Ghosh <subhajit.ghosh@tweaklogic.com>,
-	Mudit Sharma <muditsharma.info@gmail.com>,
-	Gerald Loacker <gerald.loacker@wolfvision.net>,
-	Song Qiang <songqiang1304521@gmail.com>, Crt Mori <cmo@melexis.com>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Ulf Hansson <ulf.hansson@linaro.org>,
-	Karol Gugala <kgugala@antmicro.com>,
-	Mateusz Holenko <mholenko@antmicro.com>,
-	Gabriel Somlo <gsomlo@gmail.com>, Joel Stanley <joel@jms.id.au>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Vladimir Oltean <vladimir.oltean@nxp.com>,
-	Wei Fang <wei.fang@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Sebastian Reichel <sre@kernel.org>,
-	Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Han Xu <han.xu@nxp.com>, Haibo Chen <haibo.chen@nxp.com>,
-	Yogesh Gaur <yogeshgaur.83@gmail.com>,
-	Mark Brown <broonie@kernel.org>, Avri Altman <avri.altman@wdc.com>,
-	Bart Van Assche <bvanassche@acm.org>,
-	"James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
-	"Martin K. Petersen" <martin.petersen@oracle.com>,
-	Souradeep Chowdhury <quic_schowdhu@quicinc.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
-	Bard Liao <yung-chuan.liao@linux.intel.com>,
-	Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
-	Daniel Baluta <daniel.baluta@nxp.com>,
-	Kai Vehmanen <kai.vehmanen@linux.intel.com>,
-	Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>, kernel@axis.com,
-	linux-iio@vger.kernel.org, linux-omap@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org,
-	linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-input@vger.kernel.org,
-	linux-mmc@vger.kernel.org, imx@lists.linux.dev,
-	netdev@vger.kernel.org, linux-phy@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, linux-pm@vger.kernel.org,
-	linux-pwm@vger.kernel.org, linux-amlogic@lists.infradead.org,
-	linux-spi@vger.kernel.org, linux-scsi@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org, linux-usb@vger.kernel.org,
-	sound-open-firmware@alsa-project.org, linux-sound@vger.kernel.org
-Subject: Re: [PATCH] Remove error prints for devm_add_action_or_reset()
-Message-ID: <aGQL72Ssa4RHShIp@geday>
-References: <pnd7c0s6ji2.fsf@axis.com>
- <aGP92Aqcxt-x78nu@geday>
- <pndsejf6g5k.fsf@axis.com>
+	id 1uWduk-000000063Mf-0QKx;
+	Tue, 01 Jul 2025 16:32:59 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id BDDA143A8F;
+	Tue,  1 Jul 2025 16:32:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 759A9C4CEEB;
+	Tue,  1 Jul 2025 16:32:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1751387577;
+	bh=DKU+hY2Pi8zMDGgIyWh0V+54nxG1K37l+J7KI53nCWY=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=KzHvv04Wn0A1brDCcoyn5UjpHQJF6OUINA3RUK+fdO2OVhy5EEjoxUwYnOhjS4pCB
+	 JmDT0tmx21+fzo/fop3OHhS/5PmQgErX6Q2Tq48UZfWV6fCwu+g7jK76F46It89A2L
+	 fKuxxQ0WFN9L2jM/ds8giXe0TACzG3+3ds/nqB+c0Nidvitj5T8HHzGcLCy86HBsaV
+	 JAWXBWeF8Ny/roZYO9D6TNlkIIYzXt3moX4mow5JBy9uv1r5NNUvUB1CsvE0y2/dw9
+	 CMCMSGx8av8q3tFegW0J/5XRPdsFqNTkeu4OYHyJRWw5/2t0GaY7hnKXcd3faSOZCz
+	 oMEJ4KNxXXHzQ==
+Date: Tue, 01 Jul 2025 11:32:56 -0500
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <pndsejf6g5k.fsf@axis.com>
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: laura.nao@collabora.com, matthias.bgg@gmail.com, 
+ quic_hyiwei@quicinc.com, devicetree@vger.kernel.org, kabel@kernel.org, 
+ kernel@collabora.com, arnd@arndb.de, ulf.hansson@linaro.org, 
+ linux-kernel@vger.kernel.org, conor+dt@kernel.org, khilman@baylibre.com, 
+ pjp@fedoraproject.org, u.kleine-koenig@baylibre.com, 
+ linux-mediatek@lists.infradead.org, nm@ti.com, tudor.ambarus@linaro.org, 
+ m.wilczynski@samsung.com, drew@pdp7.com, krzk@kernel.org, 
+ linux-arm-kernel@lists.infradead.org, gregkh@linuxfoundation.org
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250701151149.136365-3-angelogioacchino.delregno@collabora.com>
+References: <20250701151149.136365-1-angelogioacchino.delregno@collabora.com>
+ <20250701151149.136365-3-angelogioacchino.delregno@collabora.com>
+Message-Id: <175138757651.1874576.12579481478499163218.robh@kernel.org>
+Subject: Re: [RFC PATCH 2/3] dt-bindings: firmware: Document the MediaTek
+ Hardware Voter (HWV)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250701_092545_046339_75702DD3 
-X-CRM114-Status: GOOD (  24.85  )
+X-CRM114-CacheID: sfid-20250701_093258_178054_A96395E6 
+X-CRM114-Status: GOOD (  10.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -172,39 +78,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 01, 2025 at 06:15:51PM +0200, Waqar Hameed wrote:
-> On Tue, Jul 01, 2025 at 12:25 -0300 Geraldo Nascimento <geraldogabriel@gmail.com> wrote:
-> 
-> > [Some people who received this message don't often get email from geraldogabriel@gmail.com. Learn why this is important at https://aka.ms/LearnAboutSenderIdentification ]
-> >
-> > On Tue, Jul 01, 2025 at 05:03:33PM +0200, Waqar Hameed wrote:
-> >> When `devm_add_action_or_reset()` fails, it is due to a failed memory
-> >> allocation and will thus return `-ENOMEM`. `dev_err_probe()` doesn't do
-> >> anything when error is `-ENOMEM`. Therefore, remove the useless call to
-> >> `dev_err_probe()` when `devm_add_action_or_reset()` fails, and just
-> >> return the value instead.
-> >
-> > Hi Waqar,
-> >
-> > thank you for the patch. However I personally advise you to split the
-> > patches per-file and remember to then precede each individual patch
-> > subject with the proper subsystem and driver touched.
-> >
-> > While this looks like a nit-pick, it really isn't, and my suggestion
-> > will make reviewing much more easier and you'll get your Reviewed-by's
-> > and Acked-by's much more smoothly.
-> >
-> > The cover-letter should probably be preceded by "treewide" instead of
-> > a specific subsystem.
-> 
-> Thank you for the suggestion Geraldo! I will do that (as also answered
-> to David).
 
-You're welcome Waqar! Note that David's suggestion is even smarter than
-mine: instead of patch-bombing lots of maintainers with changes unrelated
-to their subsystems through a treewide change, he suggests you split the
-patch into one series per subsystem. This is indeed advisable.
+On Tue, 01 Jul 2025 17:11:48 +0200, AngeloGioacchino Del Regno wrote:
+> Add documentation for the new MediaTek Hardware Voter, found in
+> MediaTek SoCs like the MT8196 Kompanio Ultra for Chromebooks and
+> the MT6991 Dimensity 9400 for Smartphones.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  .../mediatek,mt6991-hardware-voter.yaml       | 70 +++++++++++++++++++
+>  1 file changed, 70 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/firmware/mediatek,mt6991-hardware-voter.yaml
+> 
 
-Thanks,
-Geraldo Nascimento
+My bot found errors running 'make dt_binding_check' on your patch:
+
+yamllint warnings/errors:
+./Documentation/devicetree/bindings/firmware/mediatek,mt6991-hardware-voter.yaml:44:2: [warning] wrong indentation: expected 2 but found 1 (indentation)
+
+dtschema/dtc warnings/errors:
+Documentation/devicetree/bindings/firmware/mediatek,mt6991-hardware-voter.example.dts:39.35-43.11: Warning (unit_address_vs_reg): /example-0/clock-controller@16640000: node has a unit name, but no reg or ranges property
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/firmware/mediatek,mt6991-hardware-voter.example.dtb: system-controller@14500000 (mediatek,mt6991-hardware-voter): power-controller:compatible:0: 'mediatek,mt8196-hwv-scp-power-controller' is not one of ['mediatek,mt6735-power-controller', 'mediatek,mt6795-power-controller', 'mediatek,mt6893-power-controller', 'mediatek,mt8167-power-controller', 'mediatek,mt8173-power-controller', 'mediatek,mt8183-power-controller', 'mediatek,mt8186-power-controller', 'mediatek,mt8188-power-controller', 'mediatek,mt8192-power-controller', 'mediatek,mt8195-power-controller', 'mediatek,mt8365-power-controller']
+	from schema $id: http://devicetree.org/schemas/firmware/mediatek,mt6991-hardware-voter.yaml#
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/firmware/mediatek,mt6991-hardware-voter.example.dtb: system-controller@14500000 (mediatek,mt6991-hardware-voter): reg: [[0, 340787200], [0, 12288]] is too long
+	from schema $id: http://devicetree.org/schemas/firmware/mediatek,mt6991-hardware-voter.yaml#
+Documentation/devicetree/bindings/firmware/mediatek,mt6991-hardware-voter.example.dtb: /example-0/system-controller@14500000/power-controller: failed to match any schema with compatible: ['mediatek,mt8196-hwv-scp-power-controller']
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250701151149.136365-3-angelogioacchino.delregno@collabora.com
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
+
 
