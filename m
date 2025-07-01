@@ -4,57 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F392CC7EE30
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Jul 2025 07:31:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48696C7EE30
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Jul 2025 07:50:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/PXAjNqo4dVKHrMRVuneCrUS3mECjOACVoWNer/R9x0=; b=u8bNsfBbKOd5KZ6Kzqdtk/q3fA
-	etg+Edh6POMeKHQjxpBv5Z6a+4NTREW5uAOVQp35e1AvZG3nlWY8i+k0S+1Isv30cSrNonqQsSpG4
-	M/xJxFMnUqVdrHKgo/hx4T/ukqoZWALvQOow2gJq2L6WvZFx5YjMvF0gzaowmvIuQWUOLtEQSTjXN
-	hSTYqglvO5dCvXL9d07T5tNYaL4tzSKsP/QKwg/tefebwV5ciRJMYslmY3TvllUpCuGhtEjkWVmp1
-	SdOB8vYuqcJxDzYCqxXVd9XBPe39o7BXFsKjVndzoyCa2+6fKUFoie0NyMeNJXSU06xnsC4je0c/k
-	PLEDSECQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=t6zEHMj5mdxiy0H/Ex5pSYfUMyIDT87DlhMkRAKVdfc=; b=h16/bxg2kb+pzNs5Af97n75gH5
+	w3X+zi08yIc1bQCBtkEV4CZvkqdhtBSlr5fk9jJYg6swfPMHMSEhsZzvty4Iq7czZX4EknoGOL4Ie
+	lnTK0zMM0n0wtwLOhF2uGkCiFIoXsZ2OB6GyDuYTvcQI7DF7GnL3SNGzoHw6h0GkXqpw4UwoUsk1N
+	uc06iSZdF5zLU/5KkUcsO/hsJ72b9IKhdp41Xxj7G7Io6NLySP9XoK8g/9/WbrGASgzzNfs6y9R4O
+	g7WvJl1tVQswwjVv4ufIU7KeIcg+dnsf5hPPhzlZPj/ZZMQOBeEW5sW5DCt1Av00V91Ab6H/BkNTO
+	tE5U7a1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWVSg-00000004H7L-3djg;
-	Tue, 01 Jul 2025 07:31:26 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1uWVl7-00000004Jpd-2k8g;
+	Tue, 01 Jul 2025 07:50:29 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWUit-00000004Bd0-1Vdl;
-	Tue, 01 Jul 2025 06:44:08 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 64C99A50F3C;
-	Tue,  1 Jul 2025 06:44:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3BD05C4CEEB;
-	Tue,  1 Jul 2025 06:44:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751352246;
-	bh=tL9Chr28UTYs0r/wuqu9zvyT99diInJK0WfEdylmUj0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Lh025Qaq+S/Muo2dNV1h0GhM3fKgnEA6JLKYH+/HHtYhv/B5VBjpTMwZQJyppnPgZ
-	 euWtE13Qw+4ccgs71DJwBCX2GCPhqCCOHYQfMujIdPXDRD6gwsag4MANNdCy16MNh3
-	 3ih7MkdpVbqCUJII6mJKLC9+a8LluTyvVmb2WqLHTiwle7mmCBqUZ6kE0/0Wg4Whx9
-	 /RwXepHdfZ19iFXj1crWKN1MnCJXeoo5+mGyGTYsReZhT4laWRXidEUcbXjc6ani9K
-	 5twV9IY+3JYFDA13b8N0GcsGzFuDB8NGl85UrSXPhOhCGiaecpTD8rNU6hHK+QRFYD
-	 nnKLErJA479ZA==
-Date: Tue, 1 Jul 2025 08:44:02 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Frank Wunderlich <linux@fw-web.de>
-Subject: Re: [PATCH v7 01/14] dt-bindings: net: mediatek,net: allow irq names
-Message-ID: <20250701-wisteria-walrus-of-perfection-bdfbec@krzk-bin>
-References: <20250628165451.85884-1-linux@fw-web.de>
- <20250628165451.85884-2-linux@fw-web.de>
+	id 1uWVSN-00000004H4V-0qzH;
+	Tue, 01 Jul 2025 07:31:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1751355065;
+	bh=UEJCp0kLrVN60JijFimfY4cx5ReWcbWGz2tn84YNl9o=;
+	h=From:Date:Subject:To:Cc:From;
+	b=VJiOoAxvI4d6W5/5+ZhHQ/ernRfdMMl2DaI1jos8owUcBcjPsZwg9kLwsbJzujNbg
+	 OgchCqqWdUBrQALiSqnC2iode9QtODK8isPC9f5cf9nwOd+VsjTFjvQWXyak9os19N
+	 JwktkrHuxFrADF21STGu0v+kNwoqVEYzmyp65HXKcnPSnqXymBIU7lunzYhoBq5D4I
+	 Cjb13lDcn1o+Hs53HbnoFiFLxusMEL+5Lv9+J0o1+7V2Js/433DSYarEhgDaqDIBLR
+	 hEyrinptgSfMLmS3yti1R8jWLWDiQyhVofs7vxC9ZmiZlhAiWjvL8G5/0JoaJgEhkh
+	 /FvG2KYC5KynQ==
+Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: laeyraud)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 82E7717E0342;
+	Tue,  1 Jul 2025 09:31:04 +0200 (CEST)
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Date: Tue, 01 Jul 2025 09:30:40 +0200
+Subject: [PATCH] drm/mediatek: dsi: Fix DSI host and panel bridge
+ pre-enable order
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20250628165451.85884-2-linux@fw-web.de>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250701-mediatek-drm-fix-dsi-panel-init-v1-1-7af4adb9fdeb@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAJ+OY2gC/zWNQQqDMBBFrxJm3YGo0YVXKS7GZGyHNtEmsQji3
+ RsqLt/n894OiaNwgl7tEPkrSeZQoLopsE8KD0ZxhaHWdau7RqNnJ5T5hS56nGRDlwQXCvxGCZK
+ xIjO2jbFGUwfFskQur3/hPpwc+bOWUD5HGCkx2tl7yb0KvGW8YjAcxw/h6vdiogAAAA==
+X-Change-ID: 20250630-mediatek-drm-fix-dsi-panel-init-1a4b534c40a6
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Aradhya Bhatia <a-bhatia1@ti.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ Dmitry Baryshkov <lumag@kernel.org>, Maxime Ripard <mripard@kernel.org>, 
+ Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1751355064; l=2696;
+ i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
+ bh=UEJCp0kLrVN60JijFimfY4cx5ReWcbWGz2tn84YNl9o=;
+ b=OeqpFOdg0cEKjdsvCTKe8qTt2Imn73FY6gR8H8q+YymCd96FwzBIHhaQFOKIpSqxKMq4JJF0o
+ o1MhvzJiSwvDRRZOMy96lZNGYutb40j6mRzmLUdoIpxYeK82akXmJy9
+X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
+ pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250630_234407_528531_65393F2B 
-X-CRM114-Status: GOOD (  19.89  )
+X-CRM114-CacheID: sfid-20250701_003107_418776_942D4B8B 
+X-CRM114-Status: GOOD (  12.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,140 +88,72 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, Rob Herring <robh@kernel.org>, linux-pm@vger.kernel.org, Chanwoo Choi <cw00.choi@samsung.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, Johnson Wang <johnson.wang@mediatek.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, Kyungmin Park <kyungmin.park@samsung.com>, Georgi Djakov <djakov@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jun 28, 2025 at 06:54:36PM +0200, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> In preparation for MT7988 and RSS/LRO allow the interrupt-names
+Since commit c9b1150a68d9 ("drm/atomic-helper: Re-order bridge chain
+pre-enable and post-disable"), the bridge pre_enable callbacks are now
+called before crtc enable, and the bridge post_disable callbacks after
+the crtc disable.
+In the mediatek-drm driver, this change leads to transfer errors on
+mtk_dsi_host_transfer callback processing during the panel bridge
+pre-enable sequence because the DSI host bridge pre_enable and CRTC
+enable sequences, that are enabling the required clocks and PHY using
+mtk_dsi_poweron function, are called after.
 
-Why? What preparation, what is the purpose of adding the names, what do
-they solve?
+So, in order to fix this call order issue, request the DSI host bridge
+be pre-enabled before panel bridge by setting pre_enable_prev_first
+flag on DSI device bridge in the mtk_dsi_host_attach function.
 
-> property. Also increase the maximum IRQ count to 8 (4 FE + 4 RSS),
+Fixes: c9b1150a68d9 ("drm/atomic-helper: Re-order bridge chain pre-enable and post-disable")
+Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+---
+This patch fixes an issue that can be observed on boards such as
+MediatekGenio 1200-EVK or 350-EVK with a kernel based on linux-next
+(tag: next-20250635) since commit c9b1150a68d9 ("drm/atomic-helper:
+Re-order bridge chain pre-enable and post-disable"). 
+In boot logs, there are multiples errors such as IRQ timeouts and
+panel init errors, leading the DSI panel not being enabled: 
 
-Why? There is no user of 8 items.
+Example on Genio 1200-EVK:
+```
+[drm] Wait DSI IRQ(0x00000002) Timeout
+panel-himax-hx8279 1c008000.dsi.0: sending generic data b0 05 failed:
+  -62
+[drm] Wait DSI IRQ(0x00000008) Timeout
+[drm:mtk_dsi_host_transfer [mediatek_drm]] *ERROR* failed to switch cmd
+ mode
+panel-himax-hx8279 1c008000.dsi.0: sending DCS SET_DISPLAY_ON failed:
+  -62
+```
+---
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-> but set boundaries for all compatibles same as irq count.
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index d7726091819c4762698b41060b3d4d8d27940238..0e2bcd5f67b767d92f2697a5b8183f67ee178a38 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -1002,6 +1002,12 @@ static int mtk_dsi_host_attach(struct mipi_dsi_host *host,
+ 			return PTR_ERR(dsi->next_bridge);
+ 	}
+ 
++	/*
++	 * set flag to request the DSI host bridge be pre-enabled before device bridge
++	 * in the chain, so the DSI host is ready when the device bridge is pre-enabled
++	 */
++	dsi->next_bridge->pre_enable_prev_first = true;
++
+ 	drm_bridge_add(&dsi->bridge);
+ 
+ 	ret = component_add(host->dev, &mtk_dsi_component_ops);
 
-Your patch does not do it.
-
-> 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
-> v7: fixed wrong rebase
-> v6: new patch splitted from the mt7988 changes
-> ---
->  .../devicetree/bindings/net/mediatek,net.yaml | 38 ++++++++++++++++++-
->  1 file changed, 37 insertions(+), 1 deletion(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b/Documentation/devicetree/bindings/net/mediatek,net.yaml
-> index 9e02fd80af83..6672db206b38 100644
-> --- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
-> +++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
-> @@ -40,7 +40,19 @@ properties:
->  
->    interrupts:
->      minItems: 1
-> -    maxItems: 4
-> +    maxItems: 8
-> +
-> +  interrupt-names:
-> +    minItems: 1
-> +    items:
-> +      - const: fe0
-> +      - const: fe1
-> +      - const: fe2
-> +      - const: fe3
-> +      - const: pdma0
-> +      - const: pdma1
-> +      - const: pdma2
-> +      - const: pdma3
->  
->    power-domains:
->      maxItems: 1
-> @@ -135,6 +147,10 @@ allOf:
->            minItems: 3
->            maxItems: 3
->  
-> +        interrupt-names:
-> +          minItems: 3
-> +          maxItems: 3
-> +
->          clocks:
->            minItems: 4
->            maxItems: 4
-> @@ -166,6 +182,9 @@ allOf:
->          interrupts:
->            maxItems: 1
->  
-> +        interrupt-namess:
-> +          maxItems: 1
-> +
->          clocks:
->            minItems: 2
->            maxItems: 2
-> @@ -192,6 +211,10 @@ allOf:
->            minItems: 3
->            maxItems: 3
->  
-> +        interrupt-names:
-> +          minItems: 3
-> +          maxItems: 3
-> +
->          clocks:
->            minItems: 11
->            maxItems: 11
-> @@ -232,6 +255,10 @@ allOf:
->            minItems: 3
->            maxItems: 3
->  
-> +        interrupt-names:
-> +          minItems: 3
-> +          maxItems: 3
-> +
->          clocks:
->            minItems: 17
->            maxItems: 17
-> @@ -274,6 +301,9 @@ allOf:
->          interrupts:
->            minItems: 4
->  
-> +        interrupt-names:
-> +          minItems: 4
-> +
->          clocks:
->            minItems: 15
->            maxItems: 15
-> @@ -312,6 +342,9 @@ allOf:
->          interrupts:
->            minItems: 4
->  
-> +        interrupt-names:
-> +          minItems: 4
-
-8 interrupts is now valid?
-
-> +
->          clocks:
->            minItems: 15
->            maxItems: 15
-> @@ -350,6 +383,9 @@ allOf:
->          interrupts:
->            minItems: 4
->  
-> +        interrupt-names:
-> +          minItems: 4
-
-So why sudenly this device gets 8 interrupts? This makes no sense,
-nothing explained in the commit msg.
-
-I understand nothing from this patch and I already asked you to clearly
-explain why you are doing things. This patch on its own makes no sense.
+---
+base-commit: c6a68d8f7b81a6ce8962885408cc2d0c1f8b9470
+change-id: 20250630-mediatek-drm-fix-dsi-panel-init-1a4b534c40a6
 
 Best regards,
-Krzysztof
+-- 
+Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
 
