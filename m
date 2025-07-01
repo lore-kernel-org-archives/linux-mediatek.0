@@ -4,131 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA116C8302F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Jul 2025 10:52:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C642C8303D
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Jul 2025 11:04:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fzinALOKJSg5BHqUrqm0HfAIrQmnYOWWzYnc9uuZeLo=; b=CWuhWUaNi/Qq/K
-	WJpgIQWjl9dfeSEQpwW1cBmOWCKz6lx7TiBqy1wObGjGgtKp+IPqFOkLAHSu6VqGbRms9AsDGDH+y
-	f9gEjEDV1O8r7VHrr6+AZBEzh00G1gfuskEsC2WSArhH3VWaTGt4/OLaQfk1SRGvKZLSouprFxF86
-	E05F4lP3uuFeSgKBYsZREaaQlW26Rdy7H0V8weg0iv0ZFqRMAkDu5Gzb5rq/Xz4/eB+arYBFrwX4h
-	shIaJleuJ5RVud3rTm1AV830t46G6o8Jg9rkdd/eNwBOMQRdVwAca5nm+VkieJWKVUW03xzosu+NT
-	NGPPX2bknrK66wt6r5Lw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bOs+4yBxdgeIOQ3L+qpYzP58KIbPbK84kJo8I8Osoa4=; b=reWI4F+LyMrT4dO+v/wTOoOXyz
+	6jwIOU2zZvsJStbmJLHr9GooMPVw0S3WvJPmZmHFnwVQmIlJH8N85f+8ex5wZEzhSD67L2zvjJ1wj
+	OVoma4tnt9fXBcmbTuhODgwqoSyT67LMD26A6ya80sCS5rrsNklSv9LoIloL0s6WiH8hZzrDW7SZB
+	9yuY0j6dxfmMrsqXOmQZLGxlbQYszS599Mk31Y8VZ8YmpRPOYlVK0VsJpB3rFUbwFMdeTUtcziTVs
+	JZ50YI1ZRO6Xha+F7K7jb0UjrW0F8AA0Cd+1TcynHJ/XlNh9glNhvQL44igBwF6MggEV+y07ZG2Dv
+	XBIEm1NQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWYbC-00000004njf-3NGX;
-	Tue, 01 Jul 2025 10:52:26 +0000
-Received: from mout.gmx.net ([212.227.15.15])
+	id 1uWYmh-00000004pC6-2dFE;
+	Tue, 01 Jul 2025 11:04:19 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWYb9-00000004ni4-0iM2;
-	Tue, 01 Jul 2025 10:52:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1751367099; x=1751971899; i=frank-w@public-files.de;
-	bh=fzinALOKJSg5BHqUrqm0HfAIrQmnYOWWzYnc9uuZeLo=;
-	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
-	 References:Message-ID:MIME-Version:Content-Type:
-	 Content-Transfer-Encoding:cc:content-transfer-encoding:
-	 content-type:date:from:message-id:mime-version:reply-to:subject:
-	 to;
-	b=q6ygmPaTuDGvJa475IHhXhS1mWBLh7P5g1oIVBeGG+/bd5MGYcn0rhnD7WerUTNn
-	 +sxj0GO2hzp7TBRPTTizuisLpIwy7dSAJkAR4Ufcpj2qNdiXZxzic0ELDMRKI6zz9
-	 PT8yfkxKvKlMVbM0Tg50OL1q/b0nSifKzYhz8dUiV+yCoxv2NbnNpqdKAb2a+Reki
-	 Q7zgqccbq69ixST29bjf6fhnmqpDemcJ3XHjgxBNJER5I7Ek3jUmnml3hrxiPWtHt
-	 BOsN723eBEciXhelCoNKjLGQQ+9uoNRcVjvfTeuhCDJsoBjy3T04PoY1PNZ9r0210
-	 mQoAC3nZ1PbsNnbPpg==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [IPv6:::1] ([80.187.118.70]) by mail.gmx.net (mrgmx005
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1MZkpR-1uAqar2qiF-00YN80; Tue, 01
- Jul 2025 12:51:39 +0200
-Date: Tue, 01 Jul 2025 12:51:31 +0200
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Krzysztof Kozlowski <krzk@kernel.org>, Frank Wunderlich <linux@fw-web.de>
-CC: MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>, Georgi Djakov <djakov@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Johnson Wang <johnson.wang@mediatek.com>,
- =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
- Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
- linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v7 01/14] dt-bindings: net: mediatek,net: allow irq names
-User-Agent: K-9 Mail for Android
-In-Reply-To: <20250701-wisteria-walrus-of-perfection-bdfbec@krzk-bin>
-References: <20250628165451.85884-1-linux@fw-web.de> <20250628165451.85884-2-linux@fw-web.de> <20250701-wisteria-walrus-of-perfection-bdfbec@krzk-bin>
-Message-ID: <9AF787EF-A184-4492-A6F1-50B069D780E7@public-files.de>
+	id 1uWYgs-00000004oUf-0R8D;
+	Tue, 01 Jul 2025 10:58:19 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 09F87A52EED;
+	Tue,  1 Jul 2025 10:58:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BB174C4CEEB;
+	Tue,  1 Jul 2025 10:58:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1751367496;
+	bh=fevrYmYKDOiJ2smfFONJqA3GH4hDj/8aAOo/6KjTtkI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Yj3ni6pmbztQxjncDscxzlfllX1jePVP447M+Ruz72SpzDZoEGlt/kfbGY1gJVWM6
+	 iqng2cK0+CgpY9W+FVQIqFG8W0OEY6ZP+XJ7tIebCVrbWw0Hw4w1CE/leCG246QBh6
+	 jocETkmJQ+njPSrX27y+kuAMOJ7rIu5dd7awjK2gKLJNyIvr9IFloIKBC8BuqM0n9q
+	 L+kYQ5W/xnsrb+6x+BUQbyTXXz7JLKRKXA+P34gavMdIXbbaBHU0N6+oHnR2XbH4FG
+	 Qf5cnw3kNtClk0elPte1ElT5DijShDcwdjBDaKuhQB6XVSWi4oJ4sAAHvb+zqnOrW5
+	 3m53dPNpajr9Q==
+Date: Tue, 1 Jul 2025 11:58:11 +0100
+From: Lee Jones <lee@kernel.org>
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Yassine Oudjana <y.oudjana@protonmail.com>,
+	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
+	Fabien Parent <fparent@baylibre.com>, Reported-by: 
+	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org;
+Subject: Re: [PATCH] MFD: mt6397: do not use generic name for keypad
+ sub-devices
+Message-ID: <20250701105811.GI10134@google.com>
+References: <r4k3pgd3ew3ypne7ernxuzwgniiyvzosbce4cfajbcu7equblt@yato35tjb3lw>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:/x13cGSdXeC8a3AZxM86LjNC4QW9IjV/yKhknGpUw58qFVsmBUk
- ManrKwGyZL++1Rgi13uVdYel61STP231jKRojunlUxXrrplSqVsRsRTgN0qu03NSKmzdPP+
- gpXAspXnmqtd6y9LjyPcWQnM67Ya0vTSbd1yf8x+GGeBQvb4wKdZnQSto2cV3wE9BwRdIe7
- 75RVRsjc4O7gF9RO63S6w==
-UI-OutboundReport: notjunk:1;M01:P0:IwHMtIvjAYg=;YDRSDgoITeSH1NIvelvbRaSGEis
- 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
- QrcpWXy1JQV2vISFETlQ==
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <r4k3pgd3ew3ypne7ernxuzwgniiyvzosbce4cfajbcu7equblt@yato35tjb3lw>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250701_035223_502131_9348F2F5 
-X-CRM114-Status: GOOD (  20.57  )
+X-CRM114-CacheID: sfid-20250701_035818_270372_581EDC8E 
+X-CRM114-Status: GOOD (  24.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -140,174 +75,101 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 1=2E Juli 2025 08:44:02 MESZ schrieb Krzysztof Kozlowski <krzk@kernel=2E=
-org>:
->On Sat, Jun 28, 2025 at 06:54:36PM +0200, Frank Wunderlich wrote:
->> From: Frank Wunderlich <frank-w@public-files=2Ede>
->>=20
->> In preparation for MT7988 and RSS/LRO allow the interrupt-names
->
->Why? What preparation, what is the purpose of adding the names, what do
->they solve?
+On Mon, 30 Jun 2025, Dmitry Torokhov wrote:
 
-Devicetree handled by the mtk_eth_soc driver have
-a wild mix of shared and non-shared irq definitions
-accessed by index (shared use index 0,
-non-shared
-using 1+2)=2E Some soc have only 3 FE irqs (like mt7622)=2E
+> Do not use "mtk-pmic-keys" when creating sub-device for the keypad to
+> make sure the keypad driver will only bind to the sub-device if it has
+> support for the variant/has matching compatible.
+> 
+> Reported-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+> Fixes: 6e31bb8d3a63 ("mfd: mt6397: Add initial support for MT6328")
+> Fixes: de58cee8c6b8 ("mfd: mt6397-core: Add MT6357 PMIC support")
+> Fixes: 4a901e305011 ("mfd: mt6397-core: Add resources for PMIC keys for MT6359")
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+> ---
+> 
+> This is not tested so if someone with hardware could try it out that
+> would be great. I *think* it should work...
 
-This makes it unclear which irq is used for what
-on which SoC=2E Adding names for irq cleans this a bit
-in device tree and driver=2E
+My suspicion is that this will not work.  Providing compatible strings
+here is only for device to node matching.  I do not believe the drivers
+will probe using them.
 
->> property=2E Also increase the maximum IRQ count to 8 (4 FE + 4 RSS),
->
->Why? There is no user of 8 items=2E
+You don't need H/W to test this theory.  You can just feed in a DTB and
+see if it probes.  QEMU should be good enough for this.
 
-MT7988 *with* RSS/LRO (not yet supported by driver
-yet,but i add the irqs in devicetree in this series)
-use 8 irqs,but RSS is optional and 4 irqs get working
-ethernet stack=2E
+>  drivers/mfd/mt6397-core.c | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
+> index 5f8ed8988907..3e58d0764c7e 100644
+> --- a/drivers/mfd/mt6397-core.c
+> +++ b/drivers/mfd/mt6397-core.c
+> @@ -136,7 +136,7 @@ static const struct mfd_cell mt6323_devs[] = {
+>  		.name = "mt6323-led",
+>  		.of_compatible = "mediatek,mt6323-led"
+>  	}, {
+> -		.name = "mtk-pmic-keys",
+> +		.name = "mt6323-keys",
+>  		.num_resources = ARRAY_SIZE(mt6323_keys_resources),
+>  		.resources = mt6323_keys_resources,
+>  		.of_compatible = "mediatek,mt6323-keys"
+> @@ -153,7 +153,7 @@ static const struct mfd_cell mt6328_devs[] = {
+>  		.name = "mt6328-regulator",
+>  		.of_compatible = "mediatek,mt6328-regulator"
+>  	}, {
+> -		.name = "mtk-pmic-keys",
+> +		.name = "mt6328-keys",
+>  		.num_resources = ARRAY_SIZE(mt6328_keys_resources),
+>  		.resources = mt6328_keys_resources,
+>  		.of_compatible = "mediatek,mt6328-keys"
+> @@ -175,7 +175,7 @@ static const struct mfd_cell mt6357_devs[] = {
+>  		.name = "mt6357-sound",
+>  		.of_compatible = "mediatek,mt6357-sound"
+>  	}, {
+> -		.name = "mtk-pmic-keys",
+> +		.name = "mt6357-keys",
+>  		.num_resources = ARRAY_SIZE(mt6357_keys_resources),
+>  		.resources = mt6357_keys_resources,
+>  		.of_compatible = "mediatek,mt6357-keys"
+> @@ -196,7 +196,7 @@ static const struct mfd_cell mt6331_mt6332_devs[] = {
+>  		.name = "mt6332-regulator",
+>  		.of_compatible = "mediatek,mt6332-regulator"
+>  	}, {
+> -		.name = "mtk-pmic-keys",
+> +		.name = "mt6331-keys",
+>  		.num_resources = ARRAY_SIZE(mt6331_keys_resources),
+>  		.resources = mt6331_keys_resources,
+>  		.of_compatible = "mediatek,mt6331-keys"
+> @@ -240,7 +240,7 @@ static const struct mfd_cell mt6359_devs[] = {
+>  	},
+>  	{ .name = "mt6359-sound", },
+>  	{
+> -		.name = "mtk-pmic-keys",
+> +		.name = "mt6359-keys",
+>  		.num_resources = ARRAY_SIZE(mt6359_keys_resources),
+>  		.resources = mt6359_keys_resources,
+>  		.of_compatible = "mediatek,mt6359-keys"
+> @@ -272,7 +272,7 @@ static const struct mfd_cell mt6397_devs[] = {
+>  		.name = "mt6397-pinctrl",
+>  		.of_compatible = "mediatek,mt6397-pinctrl",
+>  	}, {
+> -		.name = "mtk-pmic-keys",
+> +		.name = "mt6397-keys",
+>  		.num_resources = ARRAY_SIZE(mt6397_keys_resources),
+>  		.resources = mt6397_keys_resources,
+>  		.of_compatible = "mediatek,mt6397-keys"
+> -- 
+> 2.50.0.727.gbf7dc18ff4-goog
+> 
+> 
+> -- 
+> Dmitry
 
-I hope this explanation makes things clearer=2E=2E=2E
-
->> but set boundaries for all compatibles same as irq count=2E
->
->Your patch does not do it=2E
-
-I set Min/max-items for interrupt names below like
-interrupts count defined=2E
-
->>=20
->> Signed-off-by: Frank Wunderlich <frank-w@public-files=2Ede>
->> ---
->> v7: fixed wrong rebase
->> v6: new patch splitted from the mt7988 changes
->> ---
->>  =2E=2E=2E/devicetree/bindings/net/mediatek,net=2Eyaml | 38 +++++++++++=
-+++++++-
->>  1 file changed, 37 insertions(+), 1 deletion(-)
->>=20
->> diff --git a/Documentation/devicetree/bindings/net/mediatek,net=2Eyaml =
-b/Documentation/devicetree/bindings/net/mediatek,net=2Eyaml
->> index 9e02fd80af83=2E=2E6672db206b38 100644
->> --- a/Documentation/devicetree/bindings/net/mediatek,net=2Eyaml
->> +++ b/Documentation/devicetree/bindings/net/mediatek,net=2Eyaml
->> @@ -40,7 +40,19 @@ properties:
->> =20
->>    interrupts:
->>      minItems: 1
->> -    maxItems: 4
->> +    maxItems: 8
->> +
->> +  interrupt-names:
->> +    minItems: 1
->> +    items:
->> +      - const: fe0
->> +      - const: fe1
->> +      - const: fe2
->> +      - const: fe3
->> +      - const: pdma0
->> +      - const: pdma1
->> +      - const: pdma2
->> +      - const: pdma3
->> =20
->>    power-domains:
->>      maxItems: 1
->> @@ -135,6 +147,10 @@ allOf:
->>            minItems: 3
->>            maxItems: 3
->> =20
->> +        interrupt-names:
->> +          minItems: 3
->> +          maxItems: 3
->> +
->>          clocks:
->>            minItems: 4
->>            maxItems: 4
->> @@ -166,6 +182,9 @@ allOf:
->>          interrupts:
->>            maxItems: 1
->> =20
->> +        interrupt-namess:
->> +          maxItems: 1
->> +
->>          clocks:
->>            minItems: 2
->>            maxItems: 2
->> @@ -192,6 +211,10 @@ allOf:
->>            minItems: 3
->>            maxItems: 3
->> =20
->> +        interrupt-names:
->> +          minItems: 3
->> +          maxItems: 3
->> +
->>          clocks:
->>            minItems: 11
->>            maxItems: 11
->> @@ -232,6 +255,10 @@ allOf:
->>            minItems: 3
->>            maxItems: 3
->> =20
->> +        interrupt-names:
->> +          minItems: 3
->> +          maxItems: 3
->> +
->>          clocks:
->>            minItems: 17
->>            maxItems: 17
->> @@ -274,6 +301,9 @@ allOf:
->>          interrupts:
->>            minItems: 4
->> =20
->> +        interrupt-names:
->> +          minItems: 4
->> +
->>          clocks:
->>            minItems: 15
->>            maxItems: 15
->> @@ -312,6 +342,9 @@ allOf:
->>          interrupts:
->>            minItems: 4
->> =20
->> +        interrupt-names:
->> +          minItems: 4
->
->8 interrupts is now valid?
->
->> +
->>          clocks:
->>            minItems: 15
->>            maxItems: 15
->> @@ -350,6 +383,9 @@ allOf:
->>          interrupts:
->>            minItems: 4
->> =20
->> +        interrupt-names:
->> +          minItems: 4
->
->So why sudenly this device gets 8 interrupts? This makes no sense,
->nothing explained in the commit msg=2E
-
-4 FrameEngine IRQs are required to be defined (currently 2 are used in dri=
-ver)=2E
-The other 4 are optional,but added in the devicetree
-to not run into problems supporting old devicetree
-when adding RSS/LRO to driver=2E
-
->I understand nothing from this patch and I already asked you to clearly
->explain why you are doing things=2E This patch on its own makes no sense=
-=2E
->
->Best regards,
->Krzysztof
->
-
-
-regards Frank
+-- 
+Lee Jones [李琼斯]
 
