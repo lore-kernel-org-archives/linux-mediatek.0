@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89382C8302F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Jul 2025 06:32:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25E48C83038
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Jul 2025 06:36:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xy+7YTnauU9oxJWZBuBQAQ7UutfVpvVMJMRQUq4fm7o=; b=qjhSRbKSEczQVwgDlmIXBFN5fA
-	N0UVqDYjFMfNxMDsnoM8i1WbfwXDtb4Fd5I/6mNZt1rJdiIbw+Dnd6Zo7Fapjh+6NvLWQI4+j8qYP
-	5WOYq+rXH7mAG+LSQ1oRigNk5B2P3+xkNod8FtQuCZdJ8jNEPztR5MZgArtDqJfl4oSz9qiMH64DW
-	GEWew/Qn4ZVj3vsw7e4CENgmLcpOjlfccBw3wDX/e6rMk4OwOO8cH3B+F3V/73tXipI6/h/WyH2wj
-	FcYSx7yk9X9Ly2RBTiUBa0BKNE2TtuPwtzdCQoh3za5zLgr6h3hgQB5ZePFHKIm3EPiP/A2MkZzpn
-	5Fdz2TWw==;
+	bh=8l1sqhvOS358KHBhSYMYV66VwE6jfqDj9d9WSZSjiVg=; b=nmKC+BV8BHe+jtb0f+/tSsarxc
+	uiarw2AiuXvAvutFoBuzqFoRGI++ImCtQQ/0QCH0Go1WUmFH8oUi5EftiiJ13PLJJYfQafTNvdLmA
+	+ArC5eUG7z3daRDFyiCLO+e9//s3gIJYLTiiBIODbw+t+GNU3YJL0rznwnA2yw+S5QHe0VZlEA/XR
+	41E4z0/bGjFsF2ATlhqK6tJMVDoQ/47RKw48k9hqJ9DZpi5/DoWLdLWqcQVhC1M72ZIi4KYaWDu4s
+	TRh78QcO8giNOXJix0Kkrx1oB/eAbuwtrJN3z6cFLaMJ8yxm9Sf4TkCUuvyOsEpHeUM6UvHX0/XkK
+	ZQ/CbNgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWUXG-000000049sw-1MVp;
-	Tue, 01 Jul 2025 06:32:06 +0000
+	id 1uWUbr-00000004AQv-3j7x;
+	Tue, 01 Jul 2025 06:36:51 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWU94-000000046OQ-406j;
-	Tue, 01 Jul 2025 06:07:06 +0000
+	id 1uWU96-000000046Ok-1x4P;
+	Tue, 01 Jul 2025 06:07:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Reply-To:Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Content-ID:Content-Description;
-	bh=xy+7YTnauU9oxJWZBuBQAQ7UutfVpvVMJMRQUq4fm7o=; b=l/fczaNHD6fcL1EtsEQwfgiL96
-	oGBrqD+ntX1GhjMRJ/O+6gENp1vdijEnz3PP0O5psNe3DiIqB5YAWA/TBmzKvpqtQ3+dMjK3iC/oT
-	NgaH0SzDwpjU0KDs2PwcZQQ1ZwNVGHktLnSeGaRaYQ0JrL3Fw0GhVLdiiPB5v3In+hnAOsgqwDx3C
-	5kBfJmVro07aEq+7b+L/E92VRjO5IG0cOd8eyczU1HI18AaftFhveAnhqfNUarxonBJl9GlLNo1UK
-	g6f6KJpZSo+Va2R+wC0ZNx/CAkuRjyWxK2z9XIWxkfZGHoc5emnh1ByHge66LiPR/m0ieO0tAb53l
-	FMJjM7Kw==;
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	bh=8l1sqhvOS358KHBhSYMYV66VwE6jfqDj9d9WSZSjiVg=; b=dRFFJy/kBaT6eqAY68vumbLN3J
+	NZFCmkH5FIvtI65gk/HPiOlRgWQ/iNxg6hxxk5S/la3Ov1w1DY5dr8m6oHOIRRJPciz6atmonCoLQ
+	PWg/QhcT31+nD6CzN94vPAkv4C6B12chhBUJSZ5zgC6lSUVlwMyKBQBMS4XDj0qMr7BC5PiXe6T1m
+	dsqMTTwZEz7RH8cYUIJX+x0kb3vrviNNypdufJ/2W1MzUIpsUcaki7of/euVhgJWjQ0LZ8TMYgxVy
+	9KBS1qe2bNqvrsaST3BfVFId/lmgwAGO1lXAylJBQXriclBLkPD+M+Kuoq8759jbqFqrgGupY+pPF
+	92ySaJ0A==;
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWU90-00000006wo7-3bnC;
-	Tue, 01 Jul 2025 06:07:05 +0000
+	id 1uWU92-00000006wo9-0FrZ;
+	Tue, 01 Jul 2025 06:07:07 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 2F0A2A50F3C;
+	by sea.source.kernel.org (Postfix) with ESMTP id 58073463BD;
 	Tue,  1 Jul 2025 06:06:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id AADDAC4CEF1;
-	Tue,  1 Jul 2025 06:06:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 1D449C4AF15;
+	Tue,  1 Jul 2025 06:06:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751350018;
-	bh=+qw9STpx921ZvRbNnhmcwiGWbXEwmuoqRUHJicA/m+o=;
+	s=k20201202; t=1751350019;
+	bh=AUPv/TDoKd6ieMqlLaY3QqCSEU6AU3dk77+aCznD0MM=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=F6Cwxjt316ZGig1tlGw7ch9m216TRj+9exZ9GVKgPHfddW6UpBwgZLffWnV6DSW0C
-	 y7q9AdXkpNjPMMii+5mYDR1bH3SJ3sUHogrnOLGzRNxZddKRuY+pCJy60J1mu6DRhI
-	 pE/NuSPIQkiUVjwGrHFYfQlSgjz46NOYwAxJi9pXO7OypiDixVuOtnzhkCtqI1jQ5V
-	 uxXyc0gNig0+0sXwI3k64F1EYFOfQpxdoo7vKUivK3a63CKLHXecikpYakhvAg1axj
-	 GLQItRIOUyJWmNseOqgO0i7qYR/cuF6D9F5Aa6UnC0Wi7FhYEs72Ub8yEVtGU2zGg0
-	 yBpX3ZawhRR2g==
+	b=Hdv65AWu04h6Y+USEVMjghPvOQN02pbP1+0CfOVD0eJ4F6lm2xh+1pyARpHMdi3Kc
+	 BRmc8JrRIp7QNtdqsB5w0Rr/i81WVqrJas0Wcc32MlMeJfESAuoFSjnE545HiJkmQN
+	 hTP9+iL78qgB/Pjgl6+gjl8SsKklixEXE6vSGcudhZP6m75OwR9vsJI4eKptuDiXg1
+	 hU1tTUabAMOEaZx6Ir8bkbAQTO5Nbf0sF3CqtcnuvnQ3SZQVbds7eB73VE9C9XdL+y
+	 uCXlitWi7eiDCweOUWbH50tq3DCTp8iOMlHDBFIC1oSmG7wRPTnXrrYbjo0BXwm3qc
+	 wltqAa9uaj9eg==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A1233C8303B;
-	Tue,  1 Jul 2025 06:06:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1631AC8302F;
+	Tue,  1 Jul 2025 06:06:59 +0000 (UTC)
 From: Max Shevchenko via B4 Relay <devnull+wctrl.proton.me@kernel.org>
-Date: Tue, 01 Jul 2025 09:06:57 +0300
-Subject: [PATCH v3 03/11] dt-bindings: timer: mediatek: add MT6572
+Date: Tue, 01 Jul 2025 09:07:05 +0300
+Subject: [PATCH v3 11/11] ARM: dts: mediatek: add basic support for Lenovo
+ A369i board
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250701-mt6572-v3-3-8937cfa33f95@proton.me>
+Message-Id: <20250701-mt6572-v3-11-8937cfa33f95@proton.me>
 References: <20250701-mt6572-v3-0-8937cfa33f95@proton.me>
 In-Reply-To: <20250701-mt6572-v3-0-8937cfa33f95@proton.me>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
@@ -83,20 +84,19 @@ Cc: linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-watchdog@vger.kernel.org, 
  Max Shevchenko <wctrl@proton.me>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1751350015; l=993;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1751350015; l=2277;
  i=wctrl@proton.me; s=20250603; h=from:subject:message-id;
- bh=o0ix7fgxDyGX/dNwoXME14P/IebZ5vKxE9iUMbF1tQw=;
- b=bMmAZgKeoncqK29G1cdfBQz+qO+g6RH0tldg21aARRClvtL9nleKHUfrB5cL3Q/BqgD7NqkNf
- W4HhlKJOZsBDd6Sbx3fQbfEqixpfbnaUIw3APZAoQ63fuJDz7OQxwW6
+ bh=4u8PvwUsCoKzaBq7UBptniJ7BDz8n6fIUr+Q5q3mwbA=;
+ b=Uzj5mcLQClajwlRJViaDK/g+mUwo+Ycev+dFwwINpM/yRdOPnJlTia8HWmEl+Cj5f5xt1nV4c
+ OpIhwLTD21ZDdZUG46gR9BxG/ZM5Ene4w7zv/531j6oYrzLjCyuMgys
 X-Developer-Key: i=wctrl@proton.me; a=ed25519;
  pk=JXUx3mL/OrnRvbK57HXgugBjEBKq4QgDKJqp7BALm74=
 X-Endpoint-Received: by B4 Relay for wctrl@proton.me/20250603 with
  auth_id=421
 X-Original-From: Max Shevchenko <wctrl@proton.me>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250701_070703_468941_21187487 
-X-CRM114-Status: UNSURE (   9.27  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250701_070704_608202_AAE56F1A 
+X-CRM114-Status: GOOD (  14.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,27 +114,90 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Max Shevchenko <wctrl@proton.me>
 
-Add a compatible string for timer on the MT6572 SoC.
+This smartphone uses a MediaTek MT6572 system-on-chip with 512MB of RAM.
+It can currently boot into initramfs with a working UART and
+Simple Framebuffer using already initialized panel by the bootloader.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
 Signed-off-by: Max Shevchenko <wctrl@proton.me>
 ---
- Documentation/devicetree/bindings/timer/mediatek,timer.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm/boot/dts/mediatek/Makefile                |  1 +
+ arch/arm/boot/dts/mediatek/mt6572-lenovo-a369i.dts | 56 ++++++++++++++++++++++
+ 2 files changed, 57 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/timer/mediatek,timer.yaml b/Documentation/devicetree/bindings/timer/mediatek,timer.yaml
-index f68fc7050c5687930e2ca6b6fa8f0b7a208803da..d5b574bfd2caad1bc54ef6bd1768d94055383727 100644
---- a/Documentation/devicetree/bindings/timer/mediatek,timer.yaml
-+++ b/Documentation/devicetree/bindings/timer/mediatek,timer.yaml
-@@ -26,6 +26,7 @@ properties:
-       - items:
-           - enum:
-               - mediatek,mt2701-timer
-+              - mediatek,mt6572-timer
-               - mediatek,mt6580-timer
-               - mediatek,mt6582-timer
-               - mediatek,mt6589-timer
+diff --git a/arch/arm/boot/dts/mediatek/Makefile b/arch/arm/boot/dts/mediatek/Makefile
+index cb869a1aaec21a1d99f7f2a829b84672a3f52726..e48de3efeb3b9ab00108cc28afa8da525d0ec14a 100644
+--- a/arch/arm/boot/dts/mediatek/Makefile
++++ b/arch/arm/boot/dts/mediatek/Makefile
+@@ -2,6 +2,7 @@
+ dtb-$(CONFIG_ARCH_MEDIATEK) += \
+ 	mt2701-evb.dtb \
+ 	mt6572-jty-d101.dtb \
++	mt6572-lenovo-a369i.dtb \
+ 	mt6580-evbp1.dtb \
+ 	mt6582-prestigio-pmt5008-3g.dtb \
+ 	mt6589-aquaris5.dtb \
+diff --git a/arch/arm/boot/dts/mediatek/mt6572-lenovo-a369i.dts b/arch/arm/boot/dts/mediatek/mt6572-lenovo-a369i.dts
+new file mode 100644
+index 0000000000000000000000000000000000000000..523e93647fdcf564404b720abe35ec7322cffa1e
+--- /dev/null
++++ b/arch/arm/boot/dts/mediatek/mt6572-lenovo-a369i.dts
+@@ -0,0 +1,56 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (c) 2025 Max Shevchenko <wctrl@proton.me>
++ */
++
++/dts-v1/;
++#include "mt6572.dtsi"
++
++/ {
++	model = "Lenovo A369i";
++	compatible = "lenovo,a369i", "mediatek,mt6572";
++
++	aliases {
++		serial0 = &uart0;
++	};
++
++	chosen {
++		#address-cells = <1>;
++		#size-cells = <1>;
++		stdout-path = "serial0:921600n8";
++
++		framebuffer: framebuffer@9fa00000 {
++			compatible = "simple-framebuffer";
++			memory-region = <&framebuffer_reserved>;
++			width = <480>;
++			height = <800>;
++			stride = <(480 * 2)>;
++			format = "r5g6b5";
++		};
++	};
++
++	memory {
++		device_type = "memory";
++		reg = <0x80000000 0x20000000>;
++	};
++
++	reserved-memory {
++		#address-cells = <1>;
++		#size-cells = <1>;
++		ranges;
++
++		connsys@80000000 {
++			reg = <0x80000000 0x100000>;
++			no-map;
++		};
++
++		framebuffer_reserved: framebuffer@9fa00000 {
++			reg = <0x9fa00000 0x600000>;
++			no-map;
++		};
++	};
++};
++
++&uart0 {
++	status = "okay";
++};
 
 -- 
 2.50.0
