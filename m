@@ -4,158 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5762AC7EE30
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Jul 2025 18:02:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25081C7EE30
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Jul 2025 18:09:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H69zG5gO7h9M6iKs5G+TtTbg5NtVZiozRw1J2ZHqQt8=; b=KEldCuZFWEzu69/yiwmCR5+qdT
-	ByCd+J53k6frydT2KlVfrle65UZdMtXiLySqXsW/sjEbKN3F8Cy5Cq5WEza1VcU7kqIwDAiqqwkmQ
-	+orLxKO67pX9y8pQMJDbjpYJ8K5phzQysVobHDTZ3mnloz71rEDnE9y2T88KvzCMIqKAyC5MUVWOd
-	V+OJGfjMcBJja1aeTJ02oG5+kFbN/cLV0cEsrEuvMF0klw4Vopc/QaINBSGbp93oYZoLJ7wBUQ9fD
-	Wwc7su7/x+tC8FI7lOz5VLm0tIJiMpi/3j1ZWAzfzlfSyjMJA4v04JI0XGGjIH/okmwZiFphmpA6P
-	D4IRPP9Q==;
+	bh=fZo3sdpuPwHDkQxoOdSiJhqwtfbwH2U8Ti4MZLZ3hpg=; b=YUVR8Wqj3BeNOd9WINJOzNo/ZG
+	Tkx++3kllT9HBUq4TUt8skPl40Hfzj5Me/GEFMjAWLVriIrtXTuhdFqaPWp/BuoqesjVjWY8sqFo7
+	XmCaIFvqiEuxpDtwx6Gq5ATh+LfCXvXVoJ/TSObQs0iBDIqJvobDZeUTf8b/uiq+bq00Omznn21W6
+	9WgjwCr6zpSFNztsTbD2WRgH3hZoWAyj1riJzHt+WFk9PcX9PZ+5LGiOlnE7d1r0DkAtbFGcZ3VEI
+	V+OvMBdT+5O+rBSmR6a/qMNAEbZuYx8Tb9VBvV/68ebSYxlBobBfHDACuLqJd6GHfLFLT8ICjKs7v
+	0oWvuthQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWfJc-00000006I8h-0NnL;
-	Tue, 01 Jul 2025 18:02:44 +0000
-Received: from mail-qv1-xf29.google.com ([2607:f8b0:4864:20::f29])
+	id 1uWfQX-00000006J7L-38d6;
+	Tue, 01 Jul 2025 18:09:53 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWcrZ-00000005sZZ-3rT2;
-	Tue, 01 Jul 2025 15:25:39 +0000
-Received: by mail-qv1-xf29.google.com with SMTP id 6a1803df08f44-6fafdd322d3so38215446d6.3;
-        Tue, 01 Jul 2025 08:25:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1751383537; x=1751988337; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=H69zG5gO7h9M6iKs5G+TtTbg5NtVZiozRw1J2ZHqQt8=;
-        b=fzk1h6BCEI8LPPFqKo3vx5lm2kf5rIemtvaP9XjPa2TmeZL/nLgHrV7m9u+ovHgg8c
-         6f3GKrmoto2AixJnEs10LK9h69pIvbhwdMFHxSPRZUmIFeeIsuF8pbASy3fcCS4Mc0Wn
-         Ew5V7UJC4FsOMyHuL03U+JyoKsfspBgwdiYIo3byJk3c/HMWZrgNsWbRrOJB2nlL+cUu
-         +zjQZ5OhAZN6sSwcGvt3FxsxGt5C7Rmn/r0nTSSJ3REpAkgo4YTpF2cYDQ7aFHrT4Qie
-         l5jwBcsvbWTT6p7JXlkM0X0GISCABp1InEOzD9JwDcj0ycGp1fqcb1sx4tFo5fvRUzyP
-         xVgw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751383537; x=1751988337;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=H69zG5gO7h9M6iKs5G+TtTbg5NtVZiozRw1J2ZHqQt8=;
-        b=EcfwYkY5+tO0XG8kXqtdc076W1pJBdwaTE+r49tLvYqqCFIBsytd23MVmlRX5lGlZo
-         jP5vDf9qtrlqde1NR7hcFZ8nEnMBEuUrLQYqUm0yU/o/nQq2TItx6/KMoHYSQo0ggTIq
-         22RdbO11lCtxZpc5iQ9+COWBUOCTLqeWhPUWzGASCPcoHioC4rmILEcdQB3aCl06k2Ec
-         Yi50DDnGLjZNTyclS3cjNd4DzUGhyRV+JZCp4Sb3bh1fWGpfXT3wf1sTaNgGbMgRwvbM
-         66urYiJfGDy/f0JiHB1rZZbC07CF2FXOf3lGCyC5qOrZ8Rk7TIizux4gXQFVYHxDEEqe
-         SSlg==
-X-Forwarded-Encrypted: i=1; AJvYcCU9IfheQqaRDQuT6h123AVUsSQzKy94lpp3++L3yP8EOsjD/v3F0q+Z/pJcHt5zCXgu3F3IYSIo+DiFccN8xgY=@lists.infradead.org, AJvYcCUw2IEJpm54lBEJPFoGF29J30PBWJmMGLbuz48kB9WWlRug4oWxzejvcIyl9sc2Rbeo38nW5pl5DxsD@lists.infradead.org, AJvYcCWkuDQ09Z+43kyIqq21j3Sjs4PpoWWaSigFuiKzDaG+IQsXJu7ooPHFfuE+oaShy8YvvRxn3QyVbH29GVPu@lists.infradead.org, AJvYcCXMQXlA/V70u6GuxBcC/ipjnou/wkZdgDT9OkH4ENp2Xuc8K6mizY89CYuoxkh172syoHRFaq9ZvVKVzDewGyo=@lists.infradead.org, AJvYcCXMwFeClWt0e+ykAjh1Mdv5I296SJDiJtxdR8mCMN355NCVYa/qv7BbrODn4ABzK5rdtV+Sqmu8pop0noKfGRxdwA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz1CJMLRCUo9o1fo5Hu5dq1xHZnwYXKe85bzbId0sB58hyH29NT
-	QR7wY+nGZfwCwWsQnhqgqj71jYyxh7ANqVASWjTz2LwueCL1Tdxs+wgz
-X-Gm-Gg: ASbGncsv4hTuxCnUsZXINKXwzKb+L6xDUxpZCfB4PmVlZok5OlsqOE8IHSzE32utws0
-	5dJj+xU7Aw6PC2oyzApAerH/JJOvtso+E3Ha04ITCxo4kvNYYBfpvo1AnN9p+ziLaXm/GVKCdDz
-	rUVw9RplGM+0EtT0VUlZB1TGrtV+ypGCCiMtwqBVK5g+9qCUgqQ8GctO4AbFkqnox2cYpViehJy
-	kuGiZHrk7A7100wf0NffZvSg+dVnzh2NceqtI+OsKW+fEzPIvg7i6ecR+UI/US7mJ1UI/EoAs0c
-	qEHaNlFgFVThxGQsxO2Sn/YHKSnzMQyFgoUXIyMuKRHrlKSzov2aucS+A91U
-X-Google-Smtp-Source: AGHT+IFGwV5rgzZNlThD3qZhxiETqJeu0UK36HZAls92ncvO2dh0OxLl48BruxfcxiFAUDT+MVUh3g==
-X-Received: by 2002:a05:6214:d08:b0:6e8:fbb7:675b with SMTP id 6a1803df08f44-7000291854amr270803556d6.32.1751383536220;
-        Tue, 01 Jul 2025 08:25:36 -0700 (PDT)
-Received: from geday ([2804:7f2:800b:517d::dead:c001])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6fd771acfe6sm85521916d6.31.2025.07.01.08.25.14
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 01 Jul 2025 08:25:35 -0700 (PDT)
-Date: Tue, 1 Jul 2025 12:25:12 -0300
-From: Geraldo Nascimento <geraldogabriel@gmail.com>
-To: Waqar Hameed <waqar.hameed@axis.com>
-Cc: Vignesh Raghavendra <vigneshr@ti.com>,
-	Julien Panis <jpanis@baylibre.com>,
-	William Breathitt Gray <wbg@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Bartosz Golaszewski <brgl@bgdev.pl>, Peter Rosin <peda@axentia.se>,
-	Jonathan Cameron <jic23@kernel.org>,
-	David Lechner <dlechner@baylibre.com>,
-	Nuno =?utf-8?B?U8Oh?= <nuno.sa@analog.com>,
-	Andy Shevchenko <andy@kernel.org>,
-	Cosmin Tanislav <cosmin.tanislav@analog.com>,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Michael Hennerich <Michael.Hennerich@analog.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matteo Martelli <matteomartelli3@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Francesco Dolcini <francesco@dolcini.it>,
-	=?utf-8?Q?Jo=C3=A3o_Paulo_Gon=C3=A7alves?= <jpaulo.silvagoncalves@gmail.com>,
-	Hugo Villeneuve <hvilleneuve@dimonoff.com>,
-	Subhajit Ghosh <subhajit.ghosh@tweaklogic.com>,
-	Mudit Sharma <muditsharma.info@gmail.com>,
-	Gerald Loacker <gerald.loacker@wolfvision.net>,
-	Song Qiang <songqiang1304521@gmail.com>, Crt Mori <cmo@melexis.com>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Ulf Hansson <ulf.hansson@linaro.org>,
-	Karol Gugala <kgugala@antmicro.com>,
-	Mateusz Holenko <mholenko@antmicro.com>,
-	Gabriel Somlo <gsomlo@gmail.com>, Joel Stanley <joel@jms.id.au>,
-	Claudiu Manoil <claudiu.manoil@nxp.com>,
-	Vladimir Oltean <vladimir.oltean@nxp.com>,
-	Wei Fang <wei.fang@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Sebastian Reichel <sre@kernel.org>,
-	Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Han Xu <han.xu@nxp.com>, Haibo Chen <haibo.chen@nxp.com>,
-	Yogesh Gaur <yogeshgaur.83@gmail.com>,
-	Mark Brown <broonie@kernel.org>, Avri Altman <avri.altman@wdc.com>,
-	Bart Van Assche <bvanassche@acm.org>,
-	"James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
-	"Martin K. Petersen" <martin.petersen@oracle.com>,
-	Souradeep Chowdhury <quic_schowdhu@quicinc.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
-	Bard Liao <yung-chuan.liao@linux.intel.com>,
-	Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
-	Daniel Baluta <daniel.baluta@nxp.com>,
-	Kai Vehmanen <kai.vehmanen@linux.intel.com>,
-	Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>, kernel@axis.com,
-	linux-iio@vger.kernel.org, linux-omap@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org,
-	linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-input@vger.kernel.org,
-	linux-mmc@vger.kernel.org, imx@lists.linux.dev,
-	netdev@vger.kernel.org, linux-phy@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, linux-pm@vger.kernel.org,
-	linux-pwm@vger.kernel.org, linux-amlogic@lists.infradead.org,
-	linux-spi@vger.kernel.org, linux-scsi@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org, linux-usb@vger.kernel.org,
-	sound-open-firmware@alsa-project.org, linux-sound@vger.kernel.org
-Subject: Re: [PATCH] Remove error prints for devm_add_action_or_reset()
-Message-ID: <aGP92Aqcxt-x78nu@geday>
-References: <pnd7c0s6ji2.fsf@axis.com>
+	id 1uWctW-00000005swU-1FH8;
+	Tue, 01 Jul 2025 15:27:39 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 74B69A52CAC;
+	Tue,  1 Jul 2025 15:27:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F0580C4CEEB;
+	Tue,  1 Jul 2025 15:27:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1751383657;
+	bh=deOOm4QcL7MGMhnnJDbv+UDHPY3BMHSo/frXEHKF5X8=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=rghLY/8BHAu53z3akbUfh1aMAkBQZxgMkqEvR+OZUhnTPwkM2hecE5v0hMasdd3TL
+	 eet2X0VTNfi6/WccpbmNCHrQuWr7bB3gYn45raboZMyykkrF4onzn6PzPagia78UXJ
+	 2nYcMg3k2RuhNokxkghYCwqxUV+kpT4WsXxIV/3blGBRYEDVFnAhl9BqTFyQXXpKQi
+	 vV6bXV6C98xDztwRuqaWfxBgH7ceFnEtjEtHiwLvKSG5UNGuzS1FcHcBLcvGej5sDC
+	 7/3nVq+QTD22caCiCd6v9VqGgOieyKTbK2GMrXFZK0gH77KtRIAj/lJzQhEne3N1jw
+	 a9bLXzseQ/LmA==
+Date: Tue, 01 Jul 2025 10:27:36 -0500
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <pnd7c0s6ji2.fsf@axis.com>
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: linux-watchdog@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, 
+ Jiri Slaby <jirislaby@kernel.org>, Russell King <linux@armlinux.org.uk>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ devicetree@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ linux-mediatek@lists.infradead.org, 
+ Daniel Lezcano <daniel.lezcano@linaro.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Sean Wang <sean.wang@mediatek.com>, linux-arm-kernel@lists.infradead.org, 
+ Guenter Roeck <linux@roeck-us.net>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+ Thomas Gleixner <tglx@linutronix.de>, 
+ Wim Van Sebroeck <wim@linux-watchdog.org>, linux-serial@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>
+To: Max Shevchenko <wctrl@proton.me>
+In-Reply-To: <20250701-mt6572-v3-0-8937cfa33f95@proton.me>
+References: <20250701-mt6572-v3-0-8937cfa33f95@proton.me>
+Message-Id: <175138000372.1627755.5505703571113478205.robh@kernel.org>
+Subject: Re: [PATCH v3 00/11] ARM: Add support for MediaTek MT6572 SoC
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250701_082537_963138_1CEF01A4 
-X-CRM114-Status: GOOD (  15.51  )
+X-CRM114-CacheID: sfid-20250701_082738_479231_763ECE61 
+X-CRM114-Status: GOOD (  22.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -170,26 +81,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 01, 2025 at 05:03:33PM +0200, Waqar Hameed wrote:
-> When `devm_add_action_or_reset()` fails, it is due to a failed memory
-> allocation and will thus return `-ENOMEM`. `dev_err_probe()` doesn't do
-> anything when error is `-ENOMEM`. Therefore, remove the useless call to
-> `dev_err_probe()` when `devm_add_action_or_reset()` fails, and just
-> return the value instead.
 
-Hi Waqar,
+On Tue, 01 Jul 2025 09:06:54 +0300, Max Shevchenko wrote:
+> This series of patches adds support for the MT6572 SoC and
+> the JTY D101 tablet and Lenovo A369i smartphone based on it.
+> 
+> Signed-off-by: Max Shevchenko <wctrl@proton.me>
+> ---
+> Changes in v3:
+> - Remove the compatible property from the SoC devicetree
+> - Link to v2: https://lore.kernel.org/r/20250626-mt6572-v2-0-f7f842196986@proton.me
+> 
+> Changes in v2:
+> - Drop the status property for the board devicetrees
+> - Add an soc node for the MT6572 and reorder the nodes and properties
+> - Change the commit title to a more descriptive one
+> - Change the cover title to the correct one
+> - Link to v1: https://lore.kernel.org/r/20250620-mt6572-v1-0-e2d47820f042@proton.me
+> 
+> ---
+> Max Shevchenko (11):
+>       dt-bindings: serial: mediatek,uart: add MT6572
+>       dt-bindings: interrupt-controller: mediatek,mt6577-sysirq: add MT6572
+>       dt-bindings: timer: mediatek: add MT6572
+>       dt-bindings: watchdog: mediatek,mtk-wdt: add MT6572
+>       dt-bindings: vendor-prefixes: add JTY
+>       dt-bindings: arm: mediatek: add boards based on the MT6572 SoC
+>       ARM: mediatek: add board_dt_compat entry for the MT6572 SoC
+>       ARM: mediatek: add MT6572 smp bring up code
+>       ARM: dts: mediatek: add basic support for MT6572 SoC
+>       ARM: dts: mediatek: add basic support for JTY D101 board
+>       ARM: dts: mediatek: add basic support for Lenovo A369i board
+> 
+>  .../devicetree/bindings/arm/mediatek.yaml          |   5 +
+>  .../mediatek,mt6577-sysirq.yaml                    |   1 +
+>  .../devicetree/bindings/serial/mediatek,uart.yaml  |   1 +
+>  .../devicetree/bindings/timer/mediatek,timer.yaml  |   1 +
+>  .../devicetree/bindings/vendor-prefixes.yaml       |   2 +
+>  .../bindings/watchdog/mediatek,mtk-wdt.yaml        |   1 +
+>  arch/arm/boot/dts/mediatek/Makefile                |   2 +
+>  arch/arm/boot/dts/mediatek/mt6572-jty-d101.dts     |  61 ++++++++++++
+>  arch/arm/boot/dts/mediatek/mt6572-lenovo-a369i.dts |  56 +++++++++++
+>  arch/arm/boot/dts/mediatek/mt6572.dtsi             | 108 +++++++++++++++++++++
+>  arch/arm/mach-mediatek/Kconfig                     |   4 +
+>  arch/arm/mach-mediatek/mediatek.c                  |   1 +
+>  arch/arm/mach-mediatek/platsmp.c                   |   7 ++
+>  13 files changed, 250 insertions(+)
+> ---
+> base-commit: 0ff41df1cb268fc69e703a08a57ee14ae967d0ca
+> change-id: 20250619-mt6572-ef78a3d45168
+> 
+> Best regards,
+> --
+> Max Shevchenko <wctrl@proton.me>
+> 
+> 
+> 
 
-thank you for the patch. However I personally advise you to split the
-patches per-file and remember to then precede each individual patch
-subject with the proper subsystem and driver touched.
 
-While this looks like a nit-pick, it really isn't, and my suggestion
-will make reviewing much more easier and you'll get your Reviewed-by's
-and Acked-by's much more smoothly.
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
 
-The cover-letter should probably be preceded by "treewide" instead of
-a specific subsystem.
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
 
-Thank you,
-Geraldo Nascimento
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
+
+  pip3 install dtschema --upgrade
+
+
+This patch series was applied (using b4) to base:
+ Base: using specified base-commit 0ff41df1cb268fc69e703a08a57ee14ae967d0ca
+
+If this is not the correct base, please add 'base-commit' tag
+(or use b4 which does this automatically)
+
+New warnings running 'make CHECK_DTBS=y for arch/arm/boot/dts/mediatek/' for 20250701-mt6572-v3-0-8937cfa33f95@proton.me:
+
+arch/arm/boot/dts/mediatek/mt6572-lenovo-a369i.dtb: / (lenovo,a369i): memory: False schema does not allow {'device_type': ['memory'], 'reg': [[2147483648, 536870912]]}
+	from schema $id: http://devicetree.org/schemas/root-node.yaml#
+arch/arm/boot/dts/mediatek/mt6572-jty-d101.dtb: / (jty,d101): memory: False schema does not allow {'device_type': ['memory'], 'reg': [[2147483648, 1073741824]]}
+	from schema $id: http://devicetree.org/schemas/root-node.yaml#
+arch/arm/boot/dts/mediatek/mt7623n-bananapi-bpi-r2.dtb: pcie@1,0: 'device_type' is a required property
+	from schema $id: http://devicetree.org/schemas/pci/pci-bus-common.yaml#
+arch/arm/boot/dts/mediatek/mt7623a-rfb-nand.dtb: ethernet@1b100000 (mediatek,mt7623-eth): clocks: [[16, 110], [48, 2], [48, 4], [48, 3], [3, 8]] is too long
+	from schema $id: http://devicetree.org/schemas/net/mediatek,net.yaml#
+
+
+
+
+
 
