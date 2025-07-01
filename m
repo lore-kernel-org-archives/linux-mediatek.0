@@ -4,66 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C642C8303D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Jul 2025 11:04:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1A97C7EE30
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Jul 2025 14:22:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bOs+4yBxdgeIOQ3L+qpYzP58KIbPbK84kJo8I8Osoa4=; b=reWI4F+LyMrT4dO+v/wTOoOXyz
-	6jwIOU2zZvsJStbmJLHr9GooMPVw0S3WvJPmZmHFnwVQmIlJH8N85f+8ex5wZEzhSD67L2zvjJ1wj
-	OVoma4tnt9fXBcmbTuhODgwqoSyT67LMD26A6ya80sCS5rrsNklSv9LoIloL0s6WiH8hZzrDW7SZB
-	9yuY0j6dxfmMrsqXOmQZLGxlbQYszS599Mk31Y8VZ8YmpRPOYlVK0VsJpB3rFUbwFMdeTUtcziTVs
-	JZ50YI1ZRO6Xha+F7K7jb0UjrW0F8AA0Cd+1TcynHJ/XlNh9glNhvQL44igBwF6MggEV+y07ZG2Dv
-	XBIEm1NQ==;
+	bh=/dd7QkhhLgybTvngS3Mt0OP4YTQvR8YV4zvUQV+Qq/k=; b=LPxxBrOXMG0rd2zHG12UuXmlS/
+	7JJfGkvhTdGiyACsZIuieH2G7TwumrDehn/d6Ee/FYs56PEFUcYDcyUNa3ToQj8iIXykRlXoLpagL
+	5R2DSZePnAln54Ll73uns/6JY+9gmn8vEwDV4vDu3jE0MYdpx9DUA+7CYV9qMMq0jQfzfzcRmBzVA
+	xY/GxY2f29xt0egSoko6BCsvTZ6IGdNIIkL0XKyntIM0zzcNWXmAm5yruIUwZyJmyIs4sqDZyMwd+
+	g3M4/xAnNCi51yr7ALtxp7QEuOIW1TkOlE4S1LUJ/OUMY2EcIvJYjnEzVr4r0YMuFImiGq8mnpFKy
+	wFXEEOLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWYmh-00000004pC6-2dFE;
-	Tue, 01 Jul 2025 11:04:19 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1uWbsn-00000005gdM-3KUi;
+	Tue, 01 Jul 2025 14:22:49 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWYgs-00000004oUf-0R8D;
-	Tue, 01 Jul 2025 10:58:19 +0000
+	id 1uWaSa-00000005NyI-3qil;
+	Tue, 01 Jul 2025 12:51:42 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 09F87A52EED;
-	Tue,  1 Jul 2025 10:58:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BB174C4CEEB;
-	Tue,  1 Jul 2025 10:58:14 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 8F5B45C48DB;
+	Tue,  1 Jul 2025 12:51:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AF4D2C4CEEB;
+	Tue,  1 Jul 2025 12:51:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751367496;
-	bh=fevrYmYKDOiJ2smfFONJqA3GH4hDj/8aAOo/6KjTtkI=;
+	s=k20201202; t=1751374299;
+	bh=hcZz3rU5GXHb1XwGjVGR0cCvs4ggRLDrLsKOp0GI6yg=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Yj3ni6pmbztQxjncDscxzlfllX1jePVP447M+Ruz72SpzDZoEGlt/kfbGY1gJVWM6
-	 iqng2cK0+CgpY9W+FVQIqFG8W0OEY6ZP+XJ7tIebCVrbWw0Hw4w1CE/leCG246QBh6
-	 jocETkmJQ+njPSrX27y+kuAMOJ7rIu5dd7awjK2gKLJNyIvr9IFloIKBC8BuqM0n9q
-	 L+kYQ5W/xnsrb+6x+BUQbyTXXz7JLKRKXA+P34gavMdIXbbaBHU0N6+oHnR2XbH4FG
-	 Qf5cnw3kNtClk0elPte1ElT5DijShDcwdjBDaKuhQB6XVSWi4oJ4sAAHvb+zqnOrW5
-	 3m53dPNpajr9Q==
-Date: Tue, 1 Jul 2025 11:58:11 +0100
-From: Lee Jones <lee@kernel.org>
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Yassine Oudjana <y.oudjana@protonmail.com>,
-	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
-	Fabien Parent <fparent@baylibre.com>, Reported-by: 
-	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org;
-Subject: Re: [PATCH] MFD: mt6397: do not use generic name for keypad
- sub-devices
-Message-ID: <20250701105811.GI10134@google.com>
-References: <r4k3pgd3ew3ypne7ernxuzwgniiyvzosbce4cfajbcu7equblt@yato35tjb3lw>
+	b=OCT9E9CLG+oV0efdzT66es8TgBeQDw2n0sCcdC9KxaF1ZLQzoYQ6GnJvF6RMqQS0K
+	 7R+00L0purFY8aNvakdp5I99wV3JQDUTdjkzerSV3+1EPEjcO9hF8c6cwu8twaJiTe
+	 m4L1MjY28l4vQOP9Ar039RGk1iOO/fsOdMJ1a0QkN/HiY9Bv9iJ6rmSmGi0b39kAGU
+	 84YZjvF9TeD2lgpnLgaK/+93PNTYwMPNJZMxsL0TkJS4XAroV7hcQug1Kj695cizYC
+	 Uqi0ChRgr8gx5BrC8Q5LpmSSoBpuwe8Wz7BfeL5zyH2FWcnJeF3J5Am/gbAhPAYBiE
+	 hQYb5J+AIgeew==
+Date: Tue, 1 Jul 2025 13:51:33 +0100
+From: Simon Horman <horms@kernel.org>
+To: Daniel Golle <daniel@makrotopia.org>
+Subject: Re: [PATCH net-next v2 3/3] net: ethernet: mtk_eth_soc: use genpool
+ allocator for SRAM
+Message-ID: <20250701125133.GQ41770@horms.kernel.org>
+References: <cover.1751229149.git.daniel@makrotopia.org>
+ <61897c7a3dcc0b2976ec2118226c06c220b00a80.1751229149.git.daniel@makrotopia.org>
+ <20250630162959.GA57523@horms.kernel.org>
+ <aGLVPo9M-RhTowmw@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <r4k3pgd3ew3ypne7ernxuzwgniiyvzosbce4cfajbcu7equblt@yato35tjb3lw>
+In-Reply-To: <aGLVPo9M-RhTowmw@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250701_035818_270372_581EDC8E 
-X-CRM114-Status: GOOD (  24.21  )
+X-CRM114-CacheID: sfid-20250701_055141_041052_F1F30740 
+X-CRM114-Status: GOOD (  29.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,101 +69,68 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Sky Huang <skylake.huang@mediatek.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Bo-Cun Chen <bc-bocun.chen@mediatek.com>, Eric Woudstra <ericwouds@gmail.com>, Elad Yifee <eladwf@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 30 Jun 2025, Dmitry Torokhov wrote:
-
-> Do not use "mtk-pmic-keys" when creating sub-device for the keypad to
-> make sure the keypad driver will only bind to the sub-device if it has
-> support for the variant/has matching compatible.
+On Mon, Jun 30, 2025 at 07:19:42PM +0100, Daniel Golle wrote:
+> On Mon, Jun 30, 2025 at 05:29:59PM +0100, Simon Horman wrote:
+> > On Sun, Jun 29, 2025 at 11:22:44PM +0100, Daniel Golle wrote:
+> > > Use a dedicated "mmio-sram" and the genpool allocator instead of
+> > > open-coding SRAM allocation for DMA rings.
+> > > Keep support for legacy device trees but notify the user via a
+> > > warning to update.
+> > > 
+> > > Co-developed-by: Frank Wunderlich <frank-w@public-files.de>
+> > > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> > > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> > > ---
+> > > v2: fix return type of mtk_dma_ring_alloc() in case of error
+> > > 
+> > >  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 120 +++++++++++++-------
+> > >  drivers/net/ethernet/mediatek/mtk_eth_soc.h |   4 +-
+> > >  2 files changed, 84 insertions(+), 40 deletions(-)
+> > > 
+> > > diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> > 
+> > ...
+> > 
+> > > @@ -5117,16 +5148,27 @@ static int mtk_probe(struct platform_device *pdev)
+> > >  			err = -EINVAL;
+> > >  			goto err_destroy_sgmii;
+> > >  		}
+> > > +
+> > >  		if (MTK_HAS_CAPS(eth->soc->caps, MTK_SRAM)) {
+> > > -			if (mtk_is_netsys_v3_or_greater(eth)) {
+> > > -				res_sram = platform_get_resource(pdev, IORESOURCE_MEM, 1);
+> > > -				if (!res_sram) {
+> > > -					err = -EINVAL;
+> > > -					goto err_destroy_sgmii;
+> > > +			eth->sram_pool = of_gen_pool_get(pdev->dev.of_node, "sram", 0);
+> > > +			if (!eth->sram_pool) {
+> > > +				if (!mtk_is_netsys_v3_or_greater(eth)) {
+> > > +					/*
+> > > +					 * Legacy support for missing 'sram' node in DT.
+> > > +					 * SRAM is actual memory and supports transparent access
+> > > +					 * just like DRAM. Hence we don't require __iomem being
+> > > +					 * set and don't need to use accessor functions to read from
+> > > +					 * or write to SRAM.
+> > > +					 */
+> > > +					eth->sram_base = (void __force *)eth->base +
+> > > +							 MTK_ETH_SRAM_OFFSET;
+> > > +					eth->phy_scratch_ring = res->start + MTK_ETH_SRAM_OFFSET;
+> > > +					dev_warn(&pdev->dev,
+> > > +						 "legacy DT: using hard-coded SRAM offset.\n");
+> > > +				} else {
+> > > +					dev_err(&pdev->dev, "Could not get SRAM pool\n");
+> > > +					return -ENODEV;
+> > 
+> > Hi Daniel,
+> > 
+> > Rather than returning, should this
+> > jump to err_destroy_sgmii to avoid leaking resources?
 > 
-> Reported-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-> Fixes: 6e31bb8d3a63 ("mfd: mt6397: Add initial support for MT6328")
-> Fixes: de58cee8c6b8 ("mfd: mt6397-core: Add MT6357 PMIC support")
-> Fixes: 4a901e305011 ("mfd: mt6397-core: Add resources for PMIC keys for MT6359")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-> ---
-> 
-> This is not tested so if someone with hardware could try it out that
-> would be great. I *think* it should work...
+> Yes, you are right. I'll fix that in v3.
 
-My suspicion is that this will not work.  Providing compatible strings
-here is only for device to node matching.  I do not believe the drivers
-will probe using them.
-
-You don't need H/W to test this theory.  You can just feed in a DTB and
-see if it probes.  QEMU should be good enough for this.
-
->  drivers/mfd/mt6397-core.c | 12 ++++++------
->  1 file changed, 6 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-> index 5f8ed8988907..3e58d0764c7e 100644
-> --- a/drivers/mfd/mt6397-core.c
-> +++ b/drivers/mfd/mt6397-core.c
-> @@ -136,7 +136,7 @@ static const struct mfd_cell mt6323_devs[] = {
->  		.name = "mt6323-led",
->  		.of_compatible = "mediatek,mt6323-led"
->  	}, {
-> -		.name = "mtk-pmic-keys",
-> +		.name = "mt6323-keys",
->  		.num_resources = ARRAY_SIZE(mt6323_keys_resources),
->  		.resources = mt6323_keys_resources,
->  		.of_compatible = "mediatek,mt6323-keys"
-> @@ -153,7 +153,7 @@ static const struct mfd_cell mt6328_devs[] = {
->  		.name = "mt6328-regulator",
->  		.of_compatible = "mediatek,mt6328-regulator"
->  	}, {
-> -		.name = "mtk-pmic-keys",
-> +		.name = "mt6328-keys",
->  		.num_resources = ARRAY_SIZE(mt6328_keys_resources),
->  		.resources = mt6328_keys_resources,
->  		.of_compatible = "mediatek,mt6328-keys"
-> @@ -175,7 +175,7 @@ static const struct mfd_cell mt6357_devs[] = {
->  		.name = "mt6357-sound",
->  		.of_compatible = "mediatek,mt6357-sound"
->  	}, {
-> -		.name = "mtk-pmic-keys",
-> +		.name = "mt6357-keys",
->  		.num_resources = ARRAY_SIZE(mt6357_keys_resources),
->  		.resources = mt6357_keys_resources,
->  		.of_compatible = "mediatek,mt6357-keys"
-> @@ -196,7 +196,7 @@ static const struct mfd_cell mt6331_mt6332_devs[] = {
->  		.name = "mt6332-regulator",
->  		.of_compatible = "mediatek,mt6332-regulator"
->  	}, {
-> -		.name = "mtk-pmic-keys",
-> +		.name = "mt6331-keys",
->  		.num_resources = ARRAY_SIZE(mt6331_keys_resources),
->  		.resources = mt6331_keys_resources,
->  		.of_compatible = "mediatek,mt6331-keys"
-> @@ -240,7 +240,7 @@ static const struct mfd_cell mt6359_devs[] = {
->  	},
->  	{ .name = "mt6359-sound", },
->  	{
-> -		.name = "mtk-pmic-keys",
-> +		.name = "mt6359-keys",
->  		.num_resources = ARRAY_SIZE(mt6359_keys_resources),
->  		.resources = mt6359_keys_resources,
->  		.of_compatible = "mediatek,mt6359-keys"
-> @@ -272,7 +272,7 @@ static const struct mfd_cell mt6397_devs[] = {
->  		.name = "mt6397-pinctrl",
->  		.of_compatible = "mediatek,mt6397-pinctrl",
->  	}, {
-> -		.name = "mtk-pmic-keys",
-> +		.name = "mt6397-keys",
->  		.num_resources = ARRAY_SIZE(mt6397_keys_resources),
->  		.resources = mt6397_keys_resources,
->  		.of_compatible = "mediatek,mt6397-keys"
-> -- 
-> 2.50.0.727.gbf7dc18ff4-goog
-> 
-> 
-> -- 
-> Dmitry
-
--- 
-Lee Jones [李琼斯]
+Thanks.
 
