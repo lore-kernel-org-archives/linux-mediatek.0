@@ -4,131 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C35CDC8302F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Jul 2025 10:36:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48AD7C7EE30
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Jul 2025 10:49:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cqCL16doApCg2zZ7bwDUqitLshWF7HWzSvNM7J3qWcY=; b=nwxmF7xcSRcksl
-	0yB7vZTL5OctFBa4i3Zf+oviFLZ24yHBKldfHKw2vegUbgg0EwY0bgRfgM1We143gQ37EMxQjc0nG
-	4CE6ELWmZxNChoGxUUgwrEn5PCvso87iT2+7Jn9IvHK4tCZtppmKStlwXjy0hJTYCJvjVRB/z7CSf
-	tRpjjCZMBQpjQidjLlL2zl0+bHjihvkM//9NbNdrgY9vkeRzhlAGWPvseHfaM+DPtpWfOcDhRmg9K
-	zMXkoTGmk6zP/+xLftUDplzVneA38qkrVRZB1qMggLPfQra3GMjPj6aVFkv/kaHhsru2NQFkphtLA
-	0nLHDJdRwqxyJmosq+OA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ddBFBPzbnf0YkGeiYFfOnISLgT7HwdwnXCPaNqmBGeE=; b=Xre+2nbWOxJ9zg3CXUAcSiUgQW
+	ZnTSIMk3I+6Z+5Yr3R683ekCGH/AwsITJsKVdW/RtUep/sYLMp7SlI087wfIOpP4TQu9I57klviKH
+	zXmoKGIriMiZyyEMBOV2EafxDq+5VmApzQBMu4IodzsaCCRoX1jOMBuMN5FVAwcthoTVADWEmllwX
+	ctmMh9Y7C/WSmICUeU4uYy0Jmg/pwdm956T4NLLHIz36CQe1imQOON4sJ7PwFMgoLkMnJV81dn7/W
+	0MV+ScTdHxgP//v7bTyvEkj10acAEYeN1lzMaEn7Sq5dN0t5v5KoHMFjATgeUvmMwWjI/kspEXhn0
+	VnMCTzEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWYLp-00000004leH-0M8w;
-	Tue, 01 Jul 2025 10:36:33 +0000
-Received: from mout.gmx.net ([212.227.17.21])
+	id 1uWYYK-00000004n80-3Uct;
+	Tue, 01 Jul 2025 10:49:28 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWYJT-00000004lJW-01F9;
-	Tue, 01 Jul 2025 10:34:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1751366038; x=1751970838; i=frank-w@public-files.de;
-	bh=cqCL16doApCg2zZ7bwDUqitLshWF7HWzSvNM7J3qWcY=;
-	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
-	 References:Message-ID:MIME-Version:Content-Type:
-	 Content-Transfer-Encoding:cc:content-transfer-encoding:
-	 content-type:date:from:message-id:mime-version:reply-to:subject:
-	 to;
-	b=EAg/CecV4gJ+9UbG5OzBX9GVtapTeT2fSy2xKbkGHz5txreMdpc9NaYpb3y8n6RD
-	 olBi+pcGoJ7iTCIsemQoK9MESh9B8iVI9li+TnVRkqVluDcy4nwcNGYAfWfbwOKgq
-	 FscEnoxqRAlXgCf23SxkHvQlvfXUEY4fXUaba/CTNYKeO4skznFNuMrrt6kdha5zW
-	 eJKno3jMlxvt3Qxbibx4i0c0HYMJ1m5FXqK1OAlVgZiXPPP6nsVeg6AUcS3UlWdKI
-	 Pv7EHNbyn8Hi7vlxJb/hSfuG1Cj+jD0wIGVYOUKWklDIxMXQjitvA1ovYm5e5yqTN
-	 zmk0wJJ6dk1W4m7uHw==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [IPv6:::1] ([80.187.118.70]) by mail.gmx.net (mrgmx105
- [212.227.17.168]) with ESMTPSA (Nemesis) id 1MNbkp-1uKlx71myR-00V8CJ; Tue, 01
- Jul 2025 12:33:58 +0200
-Date: Tue, 01 Jul 2025 12:33:46 +0200
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Krzysztof Kozlowski <krzk@kernel.org>, Frank Wunderlich <linux@fw-web.de>
-CC: MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>, Georgi Djakov <djakov@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Johnson Wang <johnson.wang@mediatek.com>,
- =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
- Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
- linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v7_02/14=5D_dt-bindings=3A_n?=
- =?US-ASCII?Q?et=3A_mediatek=2Cnet=3A_update_for_mt7988?=
-User-Agent: K-9 Mail for Android
-In-Reply-To: <20250701-rebel-mellow-parrot-fda216@krzk-bin>
-References: <20250628165451.85884-1-linux@fw-web.de> <20250628165451.85884-3-linux@fw-web.de> <20250701-rebel-mellow-parrot-fda216@krzk-bin>
-Message-ID: <8C311FDD-094A-4F1C-AE26-7E3ABB337C14@public-files.de>
+	id 1uWYYH-00000004n6l-3V5k
+	for linux-mediatek@lists.infradead.org;
+	Tue, 01 Jul 2025 10:49:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1751366963;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ddBFBPzbnf0YkGeiYFfOnISLgT7HwdwnXCPaNqmBGeE=;
+	b=ZbyP7B67kIg2VxWy8A8jm1/ruLc3gUFy2r5huj/157foWRHmxJYaGNxmDIQY2/zPedqtV7
+	0wmSjEI1STS/uIPyBgLN1lcxxpFqkOGPgr59RsPqy0Cs5z9IAxwGT937DWbgooNjQYOCGW
+	lYAglPDkzL0zIYz+0P7me1iaeeSBqog=
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
+ [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-138-8-ESkqxkPdW7WLLTX_0B9Q-1; Tue, 01 Jul 2025 06:49:22 -0400
+X-MC-Unique: 8-ESkqxkPdW7WLLTX_0B9Q-1
+X-Mimecast-MFC-AGG-ID: 8-ESkqxkPdW7WLLTX_0B9Q_1751366962
+Received: by mail-qk1-f197.google.com with SMTP id af79cd13be357-7d09ed509aaso822061285a.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 01 Jul 2025 03:49:22 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1751366962; x=1751971762;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ddBFBPzbnf0YkGeiYFfOnISLgT7HwdwnXCPaNqmBGeE=;
+        b=G3s3knhYEWpg4STn/6R9Ccenrge96K+Rfm7T5qqreRdv8wn+U/Z9ItEnTQlukIQsYU
+         LSoQy86zUcGDMWISfHrmUEGmwooA0EWnbtkNmasmm62+zpxVhykyboRQFdTnBtBczSfr
+         mPB85UFIjoxjTQECzMQXApg+FRIRPAwMLh/cVbuvzy7tHh13C8dJV0xVNvQEACvbnMI/
+         xS68sn7ydXjqyf4RL3TLNshe8JsUQYrOWvJQOQbqFXMJQr+ur0QjBZ/hdSJADqQCR6GC
+         adv/UpXuFbU2pT7UaxNVIyC7Xm0mJ65zNKhoQLcrhqmMsSXPsV9KSpIItpdN+Fvm26rV
+         AdNw==
+X-Forwarded-Encrypted: i=1; AJvYcCVGq9KsqOOdAHIHgWJxRuaKfbR/RRFv6My91En/jlpHwI+khzPBv482VpQbzVc0VDlb+5C9qVxYAOa/j8ou4A==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx6fdRMnCAU/+LmmK5joU7pRCd6WrojFAlhspMf1+RTsyfevbwn
+	I3A6R2xJ+Z2OLpa6BgTkJAGT4rylqwPwYgt5c0w+CIo0DPp+Dhf2/UJiZqmWID9J8oWDLn0hrtm
+	Wt+vzEXbYP/gFOCcxRfDkNKABcELjCgUK7MqWEemCSFz8ydoIIS8wQ6yLvLVGh3r8oOF/0lzLzw
+	==
+X-Gm-Gg: ASbGncvBivNPJ4lEaqdzxsJZc2zVftQujw/SzQBOJzPkCs8tR2Yo6PRBe9nPlCxG/V0
+	BJ7UiwFZCyaSpBEpR+BQLxnbL9cVQ67JDnpG5PXk3hWr+9VuGESVWZoPgy3G6P+uAo8oao3UF1f
+	2tuyWB2djbvVmWeVtP9SSYa/GAjtv3FBplpNDQOUNvty8fvkMPEtxkZkcaGdTRW5N/UJvm/eq9U
+	QCi2N+79w8cYHLHFrOSkfSqhzn6w9tIwVF0HQva0Uv3l7hEVBz4ncJsX2l/uxlwPuzQO2MLIxty
+	LpBYdmYRsIA0clZIMYdWNvmYqt1wqp1KwIVwYEqonOVUlgog9CDMVk66UjeS/E+FuWt0EPEwqP1
+	h4myGow==
+X-Received: by 2002:a05:620a:3946:b0:7d3:a66d:4f3c with SMTP id af79cd13be357-7d443920b10mr2626489285a.7.1751366962078;
+        Tue, 01 Jul 2025 03:49:22 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFnx1+CJslWQPujj9MUyy/pZg3IhJl9cLZ/bmEw7NJQYC0MyetSF73gR/8qFtva/Zgbza2a/g==
+X-Received: by 2002:a05:620a:3946:b0:7d3:a66d:4f3c with SMTP id af79cd13be357-7d443920b10mr2626484485a.7.1751366961461;
+        Tue, 01 Jul 2025 03:49:21 -0700 (PDT)
+Received: from jlelli-thinkpadt14gen4.remote.csb (host-2-102-80-182.as13285.net. [2.102.80.182])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-7d443167d48sm748686385a.32.2025.07.01.03.49.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 01 Jul 2025 03:49:20 -0700 (PDT)
+Date: Tue, 1 Jul 2025 11:49:15 +0100
+From: Juri Lelli <juri.lelli@redhat.com>
+To: John Stultz <jstultz@google.com>
+Cc: Kuyo Chang <kuyo.chang@mediatek.com>, Ingo Molnar <mingo@redhat.com>,
+	Peter Zijlstra <peterz@infradead.org>,
+	Vincent Guittot <vincent.guittot@linaro.org>,
+	Dietmar Eggemann <dietmar.eggemann@arm.com>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	Ben Segall <bsegall@google.com>, Mel Gorman <mgorman@suse.de>,
+	Valentin Schneider <vschneid@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH V4 1/1] sched/deadline: Fix dl_server runtime calculation
+ formula
+Message-ID: <aGO9KyiJNAm7DLb0@jlelli-thinkpadt14gen4.remote.csb>
+References: <20250627022837.3331827-1-kuyo.chang@mediatek.com>
+ <CANDhNCorm58L9CqHyNORgfk=++HkCttmyCkM23Pn8rXV7cF41Q@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:iDZ1HFnWblMRrSKckbE7RIe6FOjqP9jVceGRYihPuH0T9KW/xO4
- VwQWhlNKHAwO7w4FA/k1dAHrSE7gSECcacV1yG+FR8WeXYaQMbhRK8zKiPmHZxmtk0se36m
- XR3vDuQUsLb89KxskuGksrzMrEeBM5gHPkrT1Bsmh/f/EqszFblF1ijG1uYExmPRao1PHxR
- epZk/OGyNc7chl+Dn18KQ==
-UI-OutboundReport: notjunk:1;M01:P0:ykrTOmJyAiw=;o2diJZbdNd3QRu6F/nKuXR6oxcJ
- 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
+In-Reply-To: <CANDhNCorm58L9CqHyNORgfk=++HkCttmyCkM23Pn8rXV7cF41Q@mail.gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: -7VJrqQrP4Ezr3VbR1wCIh7lIj_BZybOgPfKpX-OowI_1751366962
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250701_033407_419258_12EBD23E 
-X-CRM114-Status: GOOD (  21.43  )
+X-CRM114-CacheID: sfid-20250701_034925_946651_DFB8951D 
+X-CRM114-Status: GOOD (  43.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -140,110 +118,93 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 1=2E Juli 2025 08:41:42 MESZ schrieb Krzysztof Kozlowski <krzk@kernel=2E=
-org>:
->On Sat, Jun 28, 2025 at 06:54:37PM +0200, Frank Wunderlich wrote:
->> From: Frank Wunderlich <frank-w@public-files=2Ede>
->>=20
->> Update binding for mt7988 which has 3 gmac and a sram for dma
->> operations=2E
->
->I asked why you are updating=2E You claim you update because it has 3
->GMAC=2E=2E=2E but that's irrelevant, because it is easy to answer with: i=
-t did
->not have 3 GMAC before?
->
->So same question: Provide real reason why you are making updates=2E That'=
-s
->why you have commit msg=2E
+On 26/06/25 19:48, John Stultz wrote:
+> On Thu, Jun 26, 2025 at 7:28 PM Kuyo Chang <kuyo.chang@mediatek.com> wrote:
+> > In our testing with 6.12 based kernel on a big.LITTLE system, we were
+> > seeing instances of RT tasks being blocked from running on the LITTLE
+> > cpus for multiple seconds of time, apparently by the dl_server. This
+> > far exceeds the default configured 50ms per second runtime.
+> >
+> > This is due to the fair dl_server runtime calculation being scaled
+> > for frequency & capacity of the cpu.
+> >
+> > Consider the following case under a Big.LITTLE architecture:
+> > Assume the runtime is: 50,000,000 ns, and Frequency/capacity
+> > scale-invariance defined as below:
+> > Frequency scale-invariance: 100
+> > Capacity scale-invariance: 50
+> > First by Frequency scale-invariance,
+> > the runtime is scaled to 50,000,000 * 100 >> 10 = 4,882,812
+> > Then by capacity scale-invariance,
+> > it is further scaled to 4,882,812 * 50 >> 10 = 238,418.
+> > So it will scaled to 238,418 ns.
+> >
+> > This smaller "accounted runtime" value is what ends up being
+> > subtracted against the fair-server's runtime for the current period.
+> > Thus after 50ms of real time, we've only accounted ~238us against the
+> > fair servers runtime. This 209:1 ratio in this example means that on
+> > the smaller cpu the fair server is allowed to continue running,
+> > blocking RT tasks, for over 10 seconds before it exhausts its supposed
+> > 50ms of runtime.  And on other hardware configurations it can be even
+> > worse.
+> >
+> > For the fair deadline_server, to prevent realtime tasks from being
+> > unexpectedly delayed, we really do want to use fixed time, and not
+> > scaled time for smaller capacity/frequency cpus. So remove the scaling
+> > from the fair server's accounting to fix this.
+> >
+> 
+> Thanks again for revising the commit message, this version is easier
+> (for me at least) to follow.
+> 
+> 
+> > diff --git a/kernel/sched/deadline.c b/kernel/sched/deadline.c
+> > index ad45a8fea245..96a21f38fcc3 100644
+> > --- a/kernel/sched/deadline.c
+> > +++ b/kernel/sched/deadline.c
+> > @@ -1624,7 +1626,9 @@ void dl_server_update_idle_time(struct rq *rq, struct task_struct *p)
+> >         if (delta_exec < 0)
+> >                 return;
+> >
+> > -       scaled_delta_exec = dl_scaled_delta_exec(rq, &rq->fair_server, delta_exec);
+> > +       scaled_delta_exec = delta_exec;
+> > +       if (!rq->fair_server.dl_server)
+> > +               scaled_delta_exec = dl_scaled_delta_exec(rq, &rq->fair_server, delta_exec);
+> >
+> >         rq->fair_server.runtime -= scaled_delta_exec;
+> 
+> As I mentioned earlier, I still don't see this conditional as making a
+> lot of sense, as I don't believe there is time when this function
+> would be called and (!rq->fair_server.dl_server) would be true.
+> And even if there were, I'm not sure it makes sense to scale the time
+> interval based on the fair_server.dl_server flag.
+> 
+> From a separate discussion, you highlighted that it might be useful
+> once we have multiple dl_server types, which may want scaled
+> accounting, but I think in that case we should use an explicit flag
+> instead of the dl_server bit to denote if the accounting should be
+> scaled or not.
+> 
+> So, since your patch is a fix for a pretty bad bug, I think it should
+> be focused on fixing the issue in the simplest and clearest way for
+> the existing code, and not be too worried about integrating with
+> future changes that haven't landed.
+> 
+> Then, as those future changes land, we can see how best to generalize
+> the decision to scale or not scale the accounting on a dl_server.
+> 
+> That said, the conditional is a bit of a moot point, since I don't
+> think we'll actually hit it, and I'm motivated to get the bug you are
+> fixing resolved, so I wouldn't object if this went in as-is, but it
+> seems like it would be much cleaner to just drop that conditional as
+> you did in the original version of this patch.
 
-MT7988 had always 3 gmac,but no dts with ethernet
-node till now=2E
-As i try to upstream the dts,i fell over this=2E
+I agree. It would be better to drop the conditional.
 
-Imho changing the regex for the mac subnodes was
-simply forgotten to be updated on initial mt7988
-support patch=2E
+Thanks!
+Juri
 
-I try to rephrase it like this:
-
-Binding was not aware for 3 MAC subnodes because
-previous mediatek SoC had only 2=2E Change this to allow
-3 GMAC in mt7988 devicetree=2E
->
->>=20
->> MT7988 has 4 FE IRQs (currently only 2 are used) and 4 IRQs for use
->
->mt7988 or MT7988? gmac or GMAC? SRAM or SRAM? and so on=2E=2E=2E it is no=
-t
->easy to read and understand your commit msgs=2E
-
-Ok,i always write those names in uppercase=2E
-
->> with RSS/LRO later=2E
->>=20
->> Signed-off-by: Frank Wunderlich <frank-w@public-files=2Ede>
->> ---
->> v6:
->> - split out the interrupt-names into separate patch
->> - update irq(name) min count to 4
->> - add sram-property
->> - drop second reg entry and minitems as there is only 1 item left again
->>=20
->> v5:
->> - fix v4 logmessage and change description a bit describing how i get
->>   the irq count=2E
->> - update binding for 8 irqs with different names (rx,tx =3D> fe0=2E=2Ef=
-e3)
->>   including the 2 reserved irqs which can be used later
->> - change rx-ringX to pdmaX to be closer to hardware documentation
->>=20
->> v4:
->> - increase max interrupts to 6 because of adding RSS/LRO interrupts (4)
->>   and dropping 2 reserved irqs (0+3) around rx+tx
->> - dropped Robs RB due to this change
->> - allow interrupt names
->> - add interrupt-names without reserved IRQs on mt7988
->>   this requires mtk driver patch:
->>   https://patchwork=2Ekernel=2Eorg/project/netdevbpf/patch/202506160807=
-38=2E117993-2-linux@fw-web=2Ede/
->>=20
->> v2:
->> - change reg to list of items
->> ---
->>  Documentation/devicetree/bindings/net/mediatek,net=2Eyaml | 9 +++++++-=
--
->>  1 file changed, 7 insertions(+), 2 deletions(-)
->>=20
->> diff --git a/Documentation/devicetree/bindings/net/mediatek,net=2Eyaml =
-b/Documentation/devicetree/bindings/net/mediatek,net=2Eyaml
->> index 6672db206b38=2E=2E74a139000f60 100644
->> --- a/Documentation/devicetree/bindings/net/mediatek,net=2Eyaml
->> +++ b/Documentation/devicetree/bindings/net/mediatek,net=2Eyaml
->> @@ -28,7 +28,8 @@ properties:
->>        - ralink,rt5350-eth
->> =20
->>    reg:
->> -    maxItems: 1
->> +    items:
->> +      - description: Register for accessing the MACs=2E
->
->Why making this change? It's redundant and nothing in commit msg
->explains that=2E
-
-I was instructed (where we had 2 regs in previous
-Version) to name the regs=2E=2E=2Ebut as we have one reg
-again,i can drop this change=2E Thought a description=20
-is better than a count=2E
-
->Best regards,
->Krzysztof
->
-
-
-regards Frank
 
