@@ -4,103 +4,123 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93B36C83013
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jul 2025 06:10:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBC76C7EE30
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jul 2025 06:35:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zAuDr7CJTG6BXfoOgtbxJ+plAHY1s1i2/nyaAxba2a4=; b=z8DewrGGGhdQ7F9STzwmju/UjB
-	FTnzf4hSWR+DCxWPTGy8thHIwndTLnPBX+m1caHzDva78V2EJdh8OOaUVznFscKlH7izTl1RopLkG
-	mMxN0lqG+Cxq++uTzCRVQxWeSpBSli/cSe/FhGX7lHTU3Lopo4g/N6JHVkz548TA/Ir0U4/Ne79H5
-	7uVzfcTmGAUo7el3eD6EpJGDC3AgN7y21Nv6/vyaX+pfEXgRpzIaDaqRN3uDAs69K9KrSF7VfHXw7
-	/bRw4KJe1GF+fwYewpt5pfw/XLA0/DOvgy0yreZ5PckB7p7bisw23oS0vTuOOvxNDD5gSZ1Zncp2D
-	+t2deaZA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xS0IdcHaHUufFLhR7+FYUNt6WcQLp/FOgecB+MGx5co=; b=2fnYgPTrNqbPeavM2bcBH2CNJw
+	p7fjEqy8qQVPWM9dwPNCFMCKUwxXbMJFiEiyHFFVJokDh5zfUZVx7guEqj13mZa04N8AECnXCsJdO
+	8ose6/gHe6RbPiAU2ku6jM+uBqWwAl3phpBbMA8nwc9Vi6EdnRqEYT1jxkGzpOY+rZ8pb20GHOmTa
+	dXeQwaHs7btCYWLVSivHCNuphJ1o43fu/LLocng5MF/nCF03c2VZuH2MqxjyBd1jvOxl9G3b0xC0O
+	aytXUJTdbd+jzJtMVELFVr2pcUdNb03Nckc3F5kZg0xN3OaNyzfcqrExpxWeTDWNTAvbrqh80oG8w
+	c7nzIqqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWqfz-00000007Mza-0Fc7;
-	Wed, 02 Jul 2025 06:10:35 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1uWr4J-00000007Peg-3Rbf;
+	Wed, 02 Jul 2025 06:35:43 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWqfw-00000007Myb-24Em;
-	Wed, 02 Jul 2025 06:10:33 +0000
+	id 1uWqyh-00000007PLn-3mSP;
+	Wed, 02 Jul 2025 06:29:57 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 24D4BA42123;
-	Wed,  2 Jul 2025 06:10:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3C363C4CEEE;
-	Wed,  2 Jul 2025 06:10:30 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 69F1A5C598A;
+	Wed,  2 Jul 2025 06:29:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F8E7C4CEEE;
+	Wed,  2 Jul 2025 06:29:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751436630;
-	bh=jTxeZTxuIEmptXyaI8i1uVNMBzq5osaRO+bZp5mu0is=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=NWDG0isC2uNjFuDe3JPfxbgnNDiLAKGklW9DTAz2P2ytBJL6UdEXbpir70IkxkiAq
-	 SYkAm13wd/ZsySAUN5mpMILP27UykLjLZUAdZ6vezYSbTyP9dQxmkL9u/OyZAYHu/i
-	 X3LQcVAgGFGbEzb+q8Z531JFZRAQo0bpaB0ZDV/3xFobNA5KtUEBq4kNjYPGXQduZI
-	 8oVmPxcqY6payAVFbG7VJsnuXAKVzeVVxQwGG/pG8UoCPEwlLYYuWOpJke1I3ef+M+
-	 8KCc9jnbv0IxFnscmMd4Mw+jJ9Vt7o/dWCo1vsVauS75cHMsFA/slfRWgrJdUO8p+Y
-	 0R/P3vu3ytNbA==
-Date: Wed, 2 Jul 2025 08:10:28 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@kernel.org>
-To: Andy Shevchenko <andy.shevchenko@gmail.com>
-Cc: Waqar Hameed <waqar.hameed@axis.com>, 
-	Vignesh Raghavendra <vigneshr@ti.com>, Julien Panis <jpanis@baylibre.com>, 
-	William Breathitt Gray <wbg@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, 
-	Bartosz Golaszewski <brgl@bgdev.pl>, Peter Rosin <peda@axentia.se>, 
-	Jonathan Cameron <jic23@kernel.org>, David Lechner <dlechner@baylibre.com>, 
-	Nuno =?utf-8?B?U8Oh?= <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>, 
-	Cosmin Tanislav <cosmin.tanislav@analog.com>, Lars-Peter Clausen <lars@metafoo.de>, 
-	Michael Hennerich <Michael.Hennerich@analog.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Matteo Martelli <matteomartelli3@gmail.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Francesco Dolcini <francesco@dolcini.it>, 
-	=?utf-8?Q?Jo=C3=A3o_Paulo_Gon=C3=A7alves?= <jpaulo.silvagoncalves@gmail.com>, Hugo Villeneuve <hvilleneuve@dimonoff.com>, 
-	Subhajit Ghosh <subhajit.ghosh@tweaklogic.com>, Mudit Sharma <muditsharma.info@gmail.com>, 
-	Gerald Loacker <gerald.loacker@wolfvision.net>, Song Qiang <songqiang1304521@gmail.com>, 
-	Crt Mori <cmo@melexis.com>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
-	Ulf Hansson <ulf.hansson@linaro.org>, Karol Gugala <kgugala@antmicro.com>, 
-	Mateusz Holenko <mholenko@antmicro.com>, Gabriel Somlo <gsomlo@gmail.com>, Joel Stanley <joel@jms.id.au>, 
-	Claudiu Manoil <claudiu.manoil@nxp.com>, Vladimir Oltean <vladimir.oltean@nxp.com>, 
-	Wei Fang <wei.fang@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>, 
-	Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, 
-	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, 
-	Paolo Abeni <pabeni@redhat.com>, Vinod Koul <vkoul@kernel.org>, 
-	Kishon Vijay Abraham I <kishon@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, Sebastian Reichel <sre@kernel.org>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
-	Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Han Xu <han.xu@nxp.com>, Haibo Chen <haibo.chen@nxp.com>, 
-	Yogesh Gaur <yogeshgaur.83@gmail.com>, Mark Brown <broonie@kernel.org>, 
-	Avri Altman <avri.altman@wdc.com>, Bart Van Assche <bvanassche@acm.org>, 
-	"James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>, "Martin K. Petersen" <martin.petersen@oracle.com>, 
-	Souradeep Chowdhury <quic_schowdhu@quicinc.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Peter Ujfalusi <peter.ujfalusi@linux.intel.com>, 
-	Bard Liao <yung-chuan.liao@linux.intel.com>, Ranjani Sridharan <ranjani.sridharan@linux.intel.com>, 
-	Daniel Baluta <daniel.baluta@nxp.com>, Kai Vehmanen <kai.vehmanen@linux.intel.com>, 
-	Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
-	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, kernel@axis.com, 
-	linux-iio@vger.kernel.org, linux-omap@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-gpio@vger.kernel.org, linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-input@vger.kernel.org, 
-	linux-mmc@vger.kernel.org, imx@lists.linux.dev, netdev@vger.kernel.org, 
-	linux-phy@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-pm@vger.kernel.org, 
-	linux-pwm@vger.kernel.org, linux-amlogic@lists.infradead.org, linux-spi@vger.kernel.org, 
-	linux-scsi@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-usb@vger.kernel.org, 
-	sound-open-firmware@alsa-project.org, linux-sound@vger.kernel.org
-Subject: Re: [PATCH] Remove error prints for devm_add_action_or_reset()
-Message-ID: <zxtyk4vly2salnoy3lng2ni7pzu3wg6qnmucadnclfigrd2m2m@i6xcrmvh34r5>
-References: <pnd7c0s6ji2.fsf@axis.com>
- <ylr7cuxldwb24ccenen4khtyddzq3owgzzfblbohkdxb7p7eeo@qpuddn6wrz3x>
- <CAHp75Ve=Zas8=6YKoPeTRrvjCaTyyRAyJG1gBLripqZgQpfg7g@mail.gmail.com>
+	s=k20201202; t=1751437795;
+	bh=AMRFxCWLdoWrMp2ZhjH6hlkSlVARLzk+UVFFQga9tCs=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=OBIy9Vkk7iB1SMBH4EXyad+ksf6gTOMwt8nGqer9NdvAujLPALLnLUVFWazyHSnZO
+	 kokNV8dkwznSbVcSLtu31gUjgptca+jnHj9LEeJAdCg4HTcq5pIl41leDpVKMrvZCH
+	 MDH7RXmxox3+h/25dFUWiixuCnCYRKlM1oxYeNPXN/UsRkmaC3DqtpZMD4BRBPMwfM
+	 x4SZWDIXXF1N+aN6pVjfNjW+C8o4oYyvxVSDQwtPRozG3UERuuG8njhzyOPd2m5Wm0
+	 cTPYJPZ/7XTaJthPKzZezng4VKQ6kaFtyokmaXOoQH+pz+XzFsoYjvROi1qhxR4uem
+	 lN+osU6+Lq3og==
+Message-ID: <24081402-4690-4a1b-a6d0-adab803d0049@kernel.org>
+Date: Wed, 2 Jul 2025 08:29:46 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="k77zpjuydsxyj3qv"
-Content-Disposition: inline
-In-Reply-To: <CAHp75Ve=Zas8=6YKoPeTRrvjCaTyyRAyJG1gBLripqZgQpfg7g@mail.gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 02/14] dt-bindings: net: mediatek,net: update for
+ mt7988
+To: frank-w@public-files.de, Frank Wunderlich <linux@fw-web.de>
+Cc: MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ Chanwoo Choi <cw00.choi@samsung.com>, Georgi Djakov <djakov@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Johnson Wang <johnson.wang@mediatek.com>, =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?=
+ <arinc.unal@arinc9.com>, Landen Chao <Landen.Chao@mediatek.com>,
+ DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
+ Daniel Golle <daniel@makrotopia.org>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Felix Fietkau <nbd@nbd.name>, linux-pm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20250628165451.85884-1-linux@fw-web.de>
+ <20250628165451.85884-3-linux@fw-web.de>
+ <20250701-rebel-mellow-parrot-fda216@krzk-bin>
+ <8C311FDD-094A-4F1C-AE26-7E3ABB337C14@public-files.de>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <8C311FDD-094A-4F1C-AE26-7E3ABB337C14@public-files.de>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250701_231032_667439_F9AA8D89 
-X-CRM114-Status: GOOD (  25.74  )
+X-CRM114-CacheID: sfid-20250701_232956_028786_B13F6C86 
+X-CRM114-Status: GOOD (  15.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,77 +135,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 01/07/2025 12:33, Frank Wunderlich wrote:
+> Am 1. Juli 2025 08:41:42 MESZ schrieb Krzysztof Kozlowski <krzk@kernel.org>:
+>> On Sat, Jun 28, 2025 at 06:54:37PM +0200, Frank Wunderlich wrote:
+>>> From: Frank Wunderlich <frank-w@public-files.de>
+>>>
+>>> Update binding for mt7988 which has 3 gmac and a sram for dma
+>>> operations.
+>>
+>> I asked why you are updating. You claim you update because it has 3
+>> GMAC... but that's irrelevant, because it is easy to answer with: it did
+>> not have 3 GMAC before?
+>>
+>> So same question: Provide real reason why you are making updates. That's
+>> why you have commit msg.
+> 
+> MT7988 had always 3 gmac,but no dts with ethernet
+> node till now.
+> As i try to upstream the dts,i fell over this.
 
---k77zpjuydsxyj3qv
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH] Remove error prints for devm_add_action_or_reset()
-MIME-Version: 1.0
+What does it mean? Are you adding new device or not? Nothing explains
+that something was missing.
 
-Hello Andy,
+> 
+> Imho changing the regex for the mac subnodes was
+> simply forgotten to be updated on initial mt7988
+> support patch.
 
-On Tue, Jul 01, 2025 at 08:57:02PM +0300, Andy Shevchenko wrote:
-> On Tue, Jul 1, 2025 at 8:44=E2=80=AFPM Uwe Kleine-K=C3=B6nig <ukleinek@ke=
-rnel.org> wrote:
-> > On Tue, Jul 01, 2025 at 05:03:33PM +0200, Waqar Hameed wrote:
->=20
-> ...
->=20
-> > With that
-> >
-> >         ret =3D devm_add_action_or_reset(dev, meson_pwm_s4_put_clk,
-> >                                        meson->channels[i].clk);
-> >         if (ret)
-> >                 return dev_err_probe(dev, ret,
-> >                                      "Failed to add clk_put action\n");
-> >
-> > from drivers/pwm/pwm-meson.c is optimized to
-> >
-> >         ret =3D devm_add_action_or_reset(dev, meson_pwm_s4_put_clk,
-> >                                        meson->channels[i].clk);
-> >         if (ret)
-> >                 return ret;
-> >
-> > .
-> >
-> > I would prefer this approach, because a) there is no need to drop all
-> > dev_err_probe()s after devm_add_action_or_reset() and b) the
-> > dev_err_probe()s could stay for consistency in the error paths of a
-> > driver.
->=20
-> Why do we need a dev_err_probe() after devm_add_action*()? I would
-> expect that the original call (if needed) can spit out a message.
+Fix
+your
+wrapping because
+it is
+difficult
+to follow
+such
+style.
 
-I'm not a big fan of API functions that emit an error message. In
-general the caller knows better what went wrong (here:
-devm_add_action_or_reset() doesn't know this to be about the clk_put
-action), so the error message can be more expressive.
+> 
+> I try to rephrase it like this:
+> 
+> Binding was not aware for 3 MAC subnodes because
+> previous mediatek SoC had only 2. Change this to allow
+> 3 GMAC in mt7988 devicetree.
 
-Also in general an API function doesn't know if a failure is fatal or if
-the consumer handles the failure just well and if the call is part of a
-driver's .probe() so it's unclear if dev_err_probe() can/should be used.
-(I admit that the last two probably don't apply to
-devm_add_action_or_reset() but that's not a good enough reason to
-make this function special. Every special case is a maintanance burden.)
+So a fix for existing? Than add Fixes tag, describe the issue and fix
+ONLY that issue.
 
-My two =C2=A2,
-Uwe
-
---k77zpjuydsxyj3qv
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmhkzVEACgkQj4D7WH0S
-/k4QBQf9Em2pqsnQTecp04ABJJapZRnih78NLCfEr+OSLp62HS+/R6qdnaueQp3c
-snWhr/KeS8lMJkfhBrRz7mtGC8nKRmUxJX5dVG2x47hs2LAAyBQ528DJscHxvlZf
-GMOpPcMVMCyEE2s+LXKg+027cbqGV3oa60NL6VbzadTPoGrjxEdftDezQftDsxsu
-TGm7XMEbxP+TO6ZdVtF8HmKAfaLmh5QKwXn0D8UCSe8LVjtlvlDD7RI6MNqpHNiH
-yr28f1rCDnAut6qhCa9g3zsSYlmBpztpd56Y3hSn3kLXtVz3OBx+Py7jDsyV/QuU
-NBEpFQGKyurRCKocUTGotAcog+9ozA==
-=azmY
------END PGP SIGNATURE-----
-
---k77zpjuydsxyj3qv--
+Best regards,
+Krzysztof
 
