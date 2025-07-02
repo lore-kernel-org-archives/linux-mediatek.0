@@ -4,93 +4,126 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 046D5C83F0C
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jul 2025 22:07:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEBECC8303C
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jul 2025 22:46:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DKgWS7/qdk7+Eg50DbHdDl8mGYC2JyCvr3ER8bCDhe0=; b=2S+GnW0ZdPr86tdd7Co7qTQ5gz
-	z9QMjBnC4VrZ/feQn1cjPBwiqlYL700fSGFm310CiV6LzvK5oO/lnwnq0Lh26ZvPg/DUG0xNNyVC8
-	DsP+ugAR/h4e2XLLioNuoHE+yVlbwT2sdTTqEOhijT3vNfcj2BMSg1/TkXSL9IAidMLnJYkpr4cGY
-	ZoLWpXMtktyGELklD7cFg3QqBLJ12V+bGaUvkBqgEeJ2nmyxeRAFwCmQxVKMG0SsOtfwHnRSFeNrK
-	Xz8ZJA1Cmhr61yiquCtv8dc6+mlhvFsAYjZIItaTwRxfsIcy0Qc/pfBMb9TLGAEX3frqTwk9loTQ7
-	9M2SI0Ow==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nGM9DZwF/Fd/OQyKb81XdMAcCKZwqXE+v9fpqIkuHk8=; b=AGZ1FP3sfEa+vtL+0+cEEOEGUw
+	LQvgLN94DcLHUrfp2VwV9HVCInLIB4JX8ruEwEd6/FRvcUGR0DdWTUmtvTFp0HN2Y1mo5PxfcWQWz
+	n8rxO/r0rW0BH7OO7bUb4D+RWocysunrbzLHPcWXvxZ5W1YB3s4OCKlcssMm4GkCf9hz0mw93jEGo
+	u5FKhDEQR2GbkiMcbknOhXOEO8aU/AE03w61Q87ZDRnEo4X3Xr+1e6jtTIyxSwhhatMtohttRqi17
+	sqU2fv0dr4sCKPdjqyw3FmI3tbBxf+QjYnH4LgrjjFbhgIwx52pWb+rqhL2158cZWvL380g9409Mp
+	Qm8OK29A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uX5bZ-00000009fEK-446t;
-	Wed, 02 Jul 2025 22:07:01 +0000
-Received: from mail-oi1-x234.google.com ([2607:f8b0:4864:20::234])
+	id 1uX6DS-00000009js3-1No5;
+	Wed, 02 Jul 2025 22:46:10 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uX5Vu-00000009eSz-1Zb0
+	id 1uX6DM-00000009jpZ-3hKk
 	for linux-mediatek@lists.infradead.org;
-	Wed, 02 Jul 2025 22:01:13 +0000
-Received: by mail-oi1-x234.google.com with SMTP id 5614622812f47-40af40aef06so4779339b6e.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 02 Jul 2025 15:01:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1751493669; x=1752098469; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:to:subject:user-agent:mime-version:date:message-id:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=DKgWS7/qdk7+Eg50DbHdDl8mGYC2JyCvr3ER8bCDhe0=;
-        b=WooR+1HdRQWiduCdupF76Q0IXersiThNPnhc1Ta2dKGm4sonyTgJdanxa8ldVUI4sN
-         bkeZvI5Nc0LY+elyrxrE3q/O2X47BZk4kVMA9+IZGRGl8WqGcjUjp7aVPmUZ2zftrMUg
-         5wdcUKNRsOOuAtm5yRRb7BeqB8i8skzWxM5iSeDbbKnV1o/bmFHdiFVvs/4q+JsSuUPs
-         D1uYeWAH1IHCyxHPwIbNA3ESONhbx7cNl93vGlfXgc+k+vtvxyhXAVu+LVrwGk7jyG02
-         lWDYrmzgjMOgzytM+kMkEwhfndsLQ3dVr59b1U0x5GzM052OrOkXHe4Kyd7q1OYIMyZD
-         /t3w==
+	Wed, 02 Jul 2025 22:46:08 +0000
+Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 562E5Wt7001269
+	for <linux-mediatek@lists.infradead.org>; Wed, 2 Jul 2025 22:46:02 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to; s=qcppdkim1; bh=nGM9DZwF/Fd/OQyKb81XdMAc
+	CKZwqXE+v9fpqIkuHk8=; b=mm6wrDXhutFr3uHC6qXUeeftTGzqIOoRT77c+zOW
+	KhrL5iogdPPtxctY+wOJyx/UCrc2keVFfwbWeRsMeMlVGpgsHLtg+cway7Y+7/mX
+	1Fn33tizx/wqTgjlkVDDnwTdmVEJFgI9auaXt7NBQvF0YSHAq7Qp+yqrtparSEJW
+	fpkAuV87++k+c8bWywdmd0yy/lkbLtvw6obky8xTn/GsvjIkMzs0CdI2BnEKfnZ9
+	kypp792UseyoI7eeNSxLzZOBd2W1Kz1p/GkaKTMys6rWd38STbIMs+xarMeXk93J
+	1iYsOlH4donFFrvzpib73KIdBqDScU5nBpzLrcBtTrrIHw==
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com [209.85.222.197])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 47j8s9p8m6-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Wed, 02 Jul 2025 22:46:02 +0000 (GMT)
+Received: by mail-qk1-f197.google.com with SMTP id af79cd13be357-7d38c5c3130so815401385a.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 02 Jul 2025 15:46:02 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751493669; x=1752098469;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=DKgWS7/qdk7+Eg50DbHdDl8mGYC2JyCvr3ER8bCDhe0=;
-        b=LdqP+h6qe5RBtqAlpdEy76LtGzxpUrZv3XoaN7QX0mfR8ZYzDg97rImf2wS+lfsBGz
-         WOoJs25UVfr4NOnZJ2U+mIH4kesb/sRWIYC9IlKRQLS0Vfww2WaYo1IVAoX5YfhG9Sip
-         ZAkrgZUVQyc8LMG58SYphauMnZObwwXS0Phti1ERQTzuM8qtRp+S8nB/E7akzjBbMn4b
-         l163TELNa+o7A/bDRlVlI8Whvo7hjF8WoWTjnMf54woAfpH8dDeGbiuk7/bCW8BUseHV
-         lTQEIXnQhW8RzDOGE1pVyxApdzq+b9Kgu5dvLDWwFHiilGn+UUeVu60e/bXoXYdE+E97
-         D7iQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXwQr8nzkOrJlGo9k7VTSxdNurnTILK9IW5UjGSgiaD4eF6Eg56SkWZRfdN8FqOyvVzu+1NyJ/DgpjzGANCNQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzy0Dz0k7w6Cbd6PtbhmE5fEljC4k15DKW4r/kkTAlfpjC4tXva
-	8MdhWzVzhaWKlzBeeeU9tRwrAl23WJ3jtj44Atf93U6uPtoolE74GJuClSl4WDfjg7I=
-X-Gm-Gg: ASbGncsz/+pJks6GCwCsfl9Y9fm0PfdY0eW6iva5QpipuUDBGI5PkYnPrFMYQY4r1qN
-	QFzXzZFAaQsPbqK+a/Fvc7MePHaFpqPkLpkaaSreYkQ3mHqgF0ahQpg+ep+KSxXCQaY5CU+UEFm
-	s/6nb0G8EHKJcFu7YIfkfaQW8HdFXZC8ZmrlvzG2IeUokEz3tA5uA3RIuy7Yw7/jeIFYjmfXiYO
-	kU6lKuHsOvyIQcug3uJ50ryQ582Q3I5Z71Z7fd6w76fSMxFdgpU4zkRGfi01oGYYDgEX1zphITr
-	Zyg4mVJdVyBf8hHF7v8OHloc8bSYOpZ9NZtdYKjQHznnulnyYH33maH7ybwr86WcUIyiWoq65Zk
-	3xdQhPyGDDw8srwP53CYp0iNw6oJCg4YMf1dch8E=
-X-Google-Smtp-Source: AGHT+IHKZNhePlF0+T6dWuoOeOIoDbpvywH95ABuicUB05Dmc1aVoalsdNueqPirXs97Btv0KkGWcg==
-X-Received: by 2002:a05:6808:e8a:b0:403:3673:65f0 with SMTP id 5614622812f47-40b88b25dc6mr3169424b6e.31.1751493668851;
-        Wed, 02 Jul 2025 15:01:08 -0700 (PDT)
-Received: from ?IPV6:2600:8803:e7e4:1d00:5c00:24f0:997b:5458? ([2600:8803:e7e4:1d00:5c00:24f0:997b:5458])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-40b32420c83sm2747613b6e.36.2025.07.02.15.01.07
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 02 Jul 2025 15:01:08 -0700 (PDT)
-Message-ID: <a30cbe3a-7d1b-4072-880e-99688657a093@baylibre.com>
-Date: Wed, 2 Jul 2025 17:01:07 -0500
+        d=1e100.net; s=20230601; t=1751496362; x=1752101162;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=nGM9DZwF/Fd/OQyKb81XdMAcCKZwqXE+v9fpqIkuHk8=;
+        b=gTlSZznywmngO3TzXrlOmzOgpge/AMmOYKi/2+f5hhX9qO/5MyZTZhmpUFxSzBZTmv
+         MWq4m6KXDFaSw7jXmN755X8ITjSRPGHy3pp/wWXOln9UyVcsADGCX6lVuBJ7bKEBmeYE
+         ysFbb9qERwJYt0T58mv01yxuFAfz/QzJZW5A07wVlnqMUeq/PMBLDQtv6l+5IGHpqnZz
+         CDeiHc9ssY03b1mGPgpJIm9ZSzfJQmitZOq0WhFfwm3YT7JoWhBKQbgYxB/VqJQ49Qyg
+         /OUESEXvgek6kYZhkZibdJNl3UjHYfTXEKjMjUzctOxemu5N07KeVnsaMiR/GAhtJWOf
+         /vOg==
+X-Forwarded-Encrypted: i=1; AJvYcCWBMnLURO0tI+mWqZifIByMagUcZI7vC8LqULmoP4UEJwWlVW/JEtY0Ux5/cNLUSQsO/jJk7ZHOajMdC26fbA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxB8i9ryG2nl42rtKz1gApvyTzxy3xgQRFOiANcHEoTawJjX4Y4
+	niw/0dNer4+8VdHC3Tuq5/2lgGy67MrwcVj532JNGvG0AnkvJWMCCihHBcSRpDly+3akB4vuyjg
+	v3O4ra3XRwO55ObB701uKqqoleET4es88qivmv3IrNXNpPbhiAnIrgEiAimWeefrkbjxcKZEN6j
+	U=
+X-Gm-Gg: ASbGncvP4RdSyxk7rN1cZs7cyeSjBfoQmXiRAqeRAal51Jpp5y3e+sqvC5etY39U2Rv
+	lS7R3BrKMrry+dsPy8762niCYTKVY+3sEc5qUN8AW8AJVP0hFtaV4U4ZwhERIPAwaa/ImOOxsoB
+	3kVGKRbgu3IEPCtsNSAwly5WjblY/FsgWnZDSrkr2eMVpz0xr4kscrIN5reV5rlpoyAqwouZ5PL
+	AsgC6LhHwLywrwR2rCWVU10w570cztsb2RFoX9+rMAF0Y3m2wvEx4Y+gTxK/0qFxC/W2BrkNVBW
+	UD+qnucLOCqIJdGvc6KY1oBPBb6iSUn4DkjVsLuwnN/ftlBEO8f9zPGTx52aUUVISB/NOxTswl/
+	mb6ODI324c939uaA86q3JLYIgdpEXO7KI/1Q=
+X-Received: by 2002:a05:620a:468e:b0:7ca:ca00:735 with SMTP id af79cd13be357-7d5d1478c26mr195295085a.41.1751496361792;
+        Wed, 02 Jul 2025 15:46:01 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHnZ1KfGDoGnAnKKb48QCXInkKCn1fPiOPT/0wf5tLma0vYWc3UfPox1mlLLdjDhi6HGr8ihw==
+X-Received: by 2002:a05:620a:468e:b0:7ca:ca00:735 with SMTP id af79cd13be357-7d5d1478c26mr195292485a.41.1751496361431;
+        Wed, 02 Jul 2025 15:46:01 -0700 (PDT)
+Received: from umbar.lan (2001-14ba-a0c3-3a00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a0c3:3a00:264b:feff:fe8b:be8a])
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-32cd2eed872sm20589301fa.86.2025.07.02.15.46.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 02 Jul 2025 15:46:00 -0700 (PDT)
+Date: Thu, 3 Jul 2025 01:45:58 +0300
+From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+To: Andy Yan <andyshrk@163.com>
+Cc: mripard@kernel.org, neil.armstrong@linaro.org,
+        dri-devel@lists.freedesktop.org, dianders@chromium.org,
+        jani.nikula@intel.com, lyude@redhat.com, jonathanh@nvidia.com,
+        p.zabel@pengutronix.de, simona@ffwll.ch, victor.liu@nxp.com,
+        rfoss@kernel.org, chunkuang.hu@kernel.org,
+        cristian.ciocaltea@collabora.com, Laurent.pinchart@ideasonboard.com,
+        linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+        linux-kernel@vger.kernel.org, freedreno@lists.freedesktop.org,
+        Andy Yan <andy.yan@rock-chips.com>
+Subject: Re: [PATCH v2 1/2] drm/bridge: Make dp/hdmi_audio_* callback keep
+ the same paramter order with get_modes
+Message-ID: <roqsr25rk6psidxikgj6gejil2n6yne5gsbuvbnanhtpuqivj6@fqxazmw26hru>
+References: <20250702111453.102539-1-andyshrk@163.com>
+ <20250702111453.102539-2-andyshrk@163.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/2] dt-bindings: iio: adc: Add support for MT7981
-To: Aleksander Jan Bajkowski <olek2@wp.pl>, jic23@kernel.org,
- nuno.sa@analog.com, andy@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, zhiyong.tao@mediatek.com,
- linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20250702214830.255898-1-olek2@wp.pl>
- <20250702214830.255898-2-olek2@wp.pl>
-Content-Language: en-US
-From: David Lechner <dlechner@baylibre.com>
-In-Reply-To: <20250702214830.255898-2-olek2@wp.pl>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250702111453.102539-2-andyshrk@163.com>
+X-Authority-Analysis: v=2.4 cv=H/Pbw/Yi c=1 sm=1 tr=0 ts=6865b6aa cx=c_pps
+ a=50t2pK5VMbmlHzFWWp8p/g==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
+ a=Wb1JkmetP80A:10 a=s8YR1HE3AAAA:8 a=Byx-y9mGAAAA:8 a=EUspDBNiAAAA:8
+ a=ywvnwGVb1iWAczny1xEA:9 a=CjuIK1q_8ugA:10 a=IoWCM6iH3mJn3m4BftBB:22
+ a=jGH_LyMDp9YhSvY-UuyI:22
+X-Proofpoint-ORIG-GUID: Hvf7lrS6NnCyrTEloauvJD8cDWpl23PB
+X-Proofpoint-GUID: Hvf7lrS6NnCyrTEloauvJD8cDWpl23PB
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzAyMDE4OSBTYWx0ZWRfX7tNK6ylt9+lH
+ J2v4BbtYXGxx7aNs1Ln93ftAtv400xFnM7jwcIhmHnB9h4XNm5V3tZu+RE6CK7RZvILiPf/K7Qp
+ sX7E+CjJQ8LUq+yvSbXe4QkPxP/3BT6wXIpP+7vEjBwMhRmJSzij76RyEH1vJ8HdQ2x6ZM+ozvG
+ iRwte2kmesBCQksZipp1QaKerG00P67dUfByrJjW3NpK0QqtRvevAJOnB9VbhD5WmTE04P2z19k
+ LZf3KlfKG2rxcew1yHwhkfaEeqWRP2tsvku4BAijkEogO+y9k1P9gQOe6SSfMQJS1wzXZmBI06h
+ AVOxNWo6Yq1V+7FqWMwrczIQHzr3zvsboEwfQP71XDDD40QL3a6nx5NPUVZnfVymXecZVi8F8dc
+ s2BLzMRlUbJlDznoqVzAztmWLBaJ+JOZLfi42RKwLqJw6FR9Li5oX7N+A7tf94tvg2mV0uW6
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.7,FMLib:17.12.80.40
+ definitions=2025-07-02_04,2025-07-02_04,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0 malwarescore=0 suspectscore=0 mlxlogscore=810
+ priorityscore=1501 clxscore=1015 mlxscore=0 lowpriorityscore=0 spamscore=0
+ adultscore=0 bulkscore=0 phishscore=0 classifier=spam authscore=0 authtc=n/a
+ authcc= route=outbound adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2505280000 definitions=main-2507020189
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250702_150110_531688_45C0BF75 
-X-CRM114-Status: GOOD (  16.83  )
+X-CRM114-CacheID: sfid-20250702_154605_044167_3D771AA6 
+X-CRM114-Status: GOOD (  12.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,50 +138,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/2/25 4:48 PM, Aleksander Jan Bajkowski wrote:
-> The temperature sensor in the MT7981 is same as in the MT7986.
-> Add compatible string for mt7981.
+On Wed, Jul 02, 2025 at 07:14:43PM +0800, Andy Yan wrote:
+> From: Andy Yan <andy.yan@rock-chips.com>
 > 
-> Signed-off-by: Aleksander Jan Bajkowski <olek2@wp.pl>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  .../devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml      | 1 +
->  1 file changed, 1 insertion(+)
+> Make the dp/hdmi_audio_* callback maintain the same parameter order as
+> get_modes and edid_read: first the bridge, then the connector.
 > 
-> diff --git a/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml b/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml
-> index b489c984c1bb..ceb914dde15b 100644
-> --- a/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml
-> +++ b/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml
-> @@ -26,6 +26,7 @@ properties:
->            - mediatek,mt2712-auxadc
->            - mediatek,mt6765-auxadc
->            - mediatek,mt7622-auxadc
-> +          - mediatek,mt7981-auxadc
->            - mediatek,mt7986-auxadc
->            - mediatek,mt8173-auxadc
->        - items:
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> 
+> Signed-off-by: Andy Yan <andyshrk@163.com>
 
-The new compatible with fallback should look like this:
+No extra empty line between tags.
 
-diff --git a/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml b/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml
-index b489c984c1bb..14363389f30a 100644
---- a/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml
-+++ b/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml
-@@ -32,6 +32,10 @@ properties:
-           - enum:
-               - mediatek,mt7623-auxadc
-           - const: mediatek,mt2701-auxadc
-+      - items:
-+          - enum:
-+              - mediatek,mt7981-auxadc
-+          - const: mediatek,mt7986-auxadc
-       - items:
-           - enum:
-               - mediatek,mt6893-auxadc
----
+With that fixed:
 
-Then you can validate that the next patch matches the bindings with
-`make CHECK_DTBS=1`. I would expect it to fail currently since the
-binding is specifying a compatible without a fallback but the .dts
-uses a fallback.
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+
+
+
+
+-- 
+With best wishes
+Dmitry
 
