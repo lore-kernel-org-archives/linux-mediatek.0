@@ -4,123 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBC76C7EE30
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jul 2025 06:35:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AA82C83013
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jul 2025 06:57:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xS0IdcHaHUufFLhR7+FYUNt6WcQLp/FOgecB+MGx5co=; b=2fnYgPTrNqbPeavM2bcBH2CNJw
-	p7fjEqy8qQVPWM9dwPNCFMCKUwxXbMJFiEiyHFFVJokDh5zfUZVx7guEqj13mZa04N8AECnXCsJdO
-	8ose6/gHe6RbPiAU2ku6jM+uBqWwAl3phpBbMA8nwc9Vi6EdnRqEYT1jxkGzpOY+rZ8pb20GHOmTa
-	dXeQwaHs7btCYWLVSivHCNuphJ1o43fu/LLocng5MF/nCF03c2VZuH2MqxjyBd1jvOxl9G3b0xC0O
-	aytXUJTdbd+jzJtMVELFVr2pcUdNb03Nckc3F5kZg0xN3OaNyzfcqrExpxWeTDWNTAvbrqh80oG8w
-	c7nzIqqQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9vXwC7TmnSByyss6OYDQpxWuOZH00pqiV823Vv5KjDs=; b=c3t90/oKIR5pRdULemzB6mS2Q5
+	P5zpH+sumC47QZs17NXYK+LsGVDgKzu1Vpb5ci1FbTkok53s3DUEYiPduRO+4GqmXqAx4Oal6NTlt
+	MhP/6kXon1fEVFm5mVwG3zzlkOLfejZNcyTxL8N8nQmp+Je4HwpDCEld4iw+tjOxNF40NWNJctVNq
+	+K8drKyd1j+KFjEhQmpcwyGDngwyBYUwE9L1/5OlIfzvosDVrcW+u2P9+W5xK9jBMrqG8ts+mXW46
+	DLYDGovAm0pL90J4gZV1jmM7Kad3mEAKCJ1BdeL2CXUJwjaD8FEc5OWCEUPGuxXoj1ySwhjC3fAGW
+	XWh6EREQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWr4J-00000007Peg-3Rbf;
-	Wed, 02 Jul 2025 06:35:43 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uWrP3-00000007SBU-1xJy;
+	Wed, 02 Jul 2025 06:57:09 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWqyh-00000007PLn-3mSP;
-	Wed, 02 Jul 2025 06:29:57 +0000
+	id 1uWrIj-00000007RcY-08qm;
+	Wed, 02 Jul 2025 06:50:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=9vXwC7TmnSByyss6OYDQpxWuOZH00pqiV823Vv5KjDs=; b=YyPY0Tut0i3UTr3lDDO+2ME9Ot
+	GcsBd4y6/TFHC7zvPwGuZLaGU3N3A7vytcb2oAyJC59P5843lEINYFs/xikbW7OXDCNDk3zj4FUML
+	9tjLaX5bYHSVCy/JdxFWi2m7VCJkyPUkS4DZU9NVp58VQPnlSoDzGtGIOzLi/7Lyik+rgGO8C5nGm
+	hyFCV/66ahjYW+qS1Aac4ey4FgfgygeWxinU7fCEnDYW0RDHMjaDmCe5e1Oeh6VUHN5bxskVK2Pov
+	u7PucZDNJlUou9esMl5E0MSvGS3QrFyAKKdntiIS1ZycZe2/lZXTrnGj2huQNRwIi3G/UpjyuAS9e
+	y5vuAhmw==;
+Received: from dfw.source.kernel.org ([139.178.84.217])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uWrIf-00000007Hlc-1cqU;
+	Wed, 02 Jul 2025 06:50:35 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 69F1A5C598A;
-	Wed,  2 Jul 2025 06:29:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F8E7C4CEEE;
-	Wed,  2 Jul 2025 06:29:48 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id C46145C58B7;
+	Wed,  2 Jul 2025 06:50:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DDD4DC4CEEE;
+	Wed,  2 Jul 2025 06:50:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751437795;
-	bh=AMRFxCWLdoWrMp2ZhjH6hlkSlVARLzk+UVFFQga9tCs=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=OBIy9Vkk7iB1SMBH4EXyad+ksf6gTOMwt8nGqer9NdvAujLPALLnLUVFWazyHSnZO
-	 kokNV8dkwznSbVcSLtu31gUjgptca+jnHj9LEeJAdCg4HTcq5pIl41leDpVKMrvZCH
-	 MDH7RXmxox3+h/25dFUWiixuCnCYRKlM1oxYeNPXN/UsRkmaC3DqtpZMD4BRBPMwfM
-	 x4SZWDIXXF1N+aN6pVjfNjW+C8o4oYyvxVSDQwtPRozG3UERuuG8njhzyOPd2m5Wm0
-	 cTPYJPZ/7XTaJthPKzZezng4VKQ6kaFtyokmaXOoQH+pz+XzFsoYjvROi1qhxR4uem
-	 lN+osU6+Lq3og==
-Message-ID: <24081402-4690-4a1b-a6d0-adab803d0049@kernel.org>
-Date: Wed, 2 Jul 2025 08:29:46 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 02/14] dt-bindings: net: mediatek,net: update for
- mt7988
-To: frank-w@public-files.de, Frank Wunderlich <linux@fw-web.de>
-Cc: MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>, Georgi Djakov <djakov@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Johnson Wang <johnson.wang@mediatek.com>, =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?=
- <arinc.unal@arinc9.com>, Landen Chao <Landen.Chao@mediatek.com>,
- DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
- Daniel Golle <daniel@makrotopia.org>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Felix Fietkau <nbd@nbd.name>, linux-pm@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20250628165451.85884-1-linux@fw-web.de>
- <20250628165451.85884-3-linux@fw-web.de>
- <20250701-rebel-mellow-parrot-fda216@krzk-bin>
- <8C311FDD-094A-4F1C-AE26-7E3ABB337C14@public-files.de>
+	s=k20201202; t=1751439031;
+	bh=f5xtgW85Pmdkf7NAY39l9hBBBHkw6klVthxbcAS/Ie4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=sipMSGhkq0VFiX5ymwlHzS/MjVKHUxSc88FYG16G//+tL5CwjMpqo6nNNc9snQj/b
+	 +aSjM5thzzVDm1yZqRiqMepTU/vLbHrUfW7dXcuhqEC/RQ47wHd3K+459C3VOqIpAB
+	 QN6CcOlzsQOefhEAy4biMovrYq4dWOXQGGqnSBu2CkQ5c+0a/LvKr/qQKePDEDH7w+
+	 dsZDwGfkVIz8YmMGCVwXzx+yVc6NxmwktV2/VTwR7ObkylMx3zxrxoavuDXSLWRefq
+	 vDL7xxF9dXWflHtbn18QLotOSMyOXX+Yactxsg+0tlBfCW3rlPxYaAuL3q9pVQiw1R
+	 4Q/D2LMrJ1cKg==
+Date: Wed, 2 Jul 2025 08:50:28 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <8C311FDD-094A-4F1C-AE26-7E3ABB337C14@public-files.de>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: robh@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, 
+	ulf.hansson@linaro.org, arnd@arndb.de, m.wilczynski@samsung.com, nm@ti.com, 
+	khilman@baylibre.com, kabel@kernel.org, quic_hyiwei@quicinc.com, pjp@fedoraproject.org, 
+	tudor.ambarus@linaro.org, drew@pdp7.com, u.kleine-koenig@baylibre.com, 
+	gregkh@linuxfoundation.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, laura.nao@collabora.com, 
+	kernel@collabora.com
+Subject: Re: [RFC PATCH 2/3] dt-bindings: firmware: Document the MediaTek
+ Hardware Voter (HWV)
+Message-ID: <20250702-debonair-lynx-of-serenity-ee7138@krzk-bin>
+References: <20250701151149.136365-1-angelogioacchino.delregno@collabora.com>
+ <20250701151149.136365-3-angelogioacchino.delregno@collabora.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20250701151149.136365-3-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250701_232956_028786_B13F6C86 
-X-CRM114-Status: GOOD (  15.72  )
+X-CRM114-CacheID: sfid-20250702_075034_118209_305CB570 
+X-CRM114-Status: GOOD (  19.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,52 +91,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 01/07/2025 12:33, Frank Wunderlich wrote:
-> Am 1. Juli 2025 08:41:42 MESZ schrieb Krzysztof Kozlowski <krzk@kernel.org>:
->> On Sat, Jun 28, 2025 at 06:54:37PM +0200, Frank Wunderlich wrote:
->>> From: Frank Wunderlich <frank-w@public-files.de>
->>>
->>> Update binding for mt7988 which has 3 gmac and a sram for dma
->>> operations.
->>
->> I asked why you are updating. You claim you update because it has 3
->> GMAC... but that's irrelevant, because it is easy to answer with: it did
->> not have 3 GMAC before?
->>
->> So same question: Provide real reason why you are making updates. That's
->> why you have commit msg.
+On Tue, Jul 01, 2025 at 05:11:48PM +0200, AngeloGioacchino Del Regno wrote:
+> Add documentation for the new MediaTek Hardware Voter, found in
+> MediaTek SoCs like the MT8196 Kompanio Ultra for Chromebooks and
+> the MT6991 Dimensity 9400 for Smartphones.
 > 
-> MT7988 had always 3 gmac,but no dts with ethernet
-> node till now.
-> As i try to upstream the dts,i fell over this.
-
-What does it mean? Are you adding new device or not? Nothing explains
-that something was missing.
-
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  .../mediatek,mt6991-hardware-voter.yaml       | 70 +++++++++++++++++++
+>  1 file changed, 70 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/firmware/mediatek,mt6991-hardware-voter.yaml
 > 
-> Imho changing the regex for the mac subnodes was
-> simply forgotten to be updated on initial mt7988
-> support patch.
+> diff --git a/Documentation/devicetree/bindings/firmware/mediatek,mt6991-hardware-voter.yaml b/Documentation/devicetree/bindings/firmware/mediatek,mt6991-hardware-voter.yaml
+> new file mode 100644
+> index 000000000000..173b74c23a91
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/firmware/mediatek,mt6991-hardware-voter.yaml
+> @@ -0,0 +1,70 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +# Copyright 2025 Collabora Ltd
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/firmware/mediatek,mt6991-hardware-voter.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek Hardware Voter (HWV)
+> +
+> +maintainers:
+> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> +
+> +description:
+> +  The MediaTek Hardware Voter (HWV) is a SoC-internal fixed-function MCU
+> +  used to collect votes from both the Application Processor and from the
+> +  various other remote processors present in the SoC, and transparently
+> +  turn on or off various hardware resources (for example, power domains
+> +  or system clocks) based on aggregation of votes done in the HWV MCU's
+> +  internal state machine, therefore guaranteeing synchronization of the
+> +  hardware resource requests between all components of the SoC and hence
+> +  avoiding, for example, unclocked or unpowered access to the hardware.
+> +
+> +properties:
+> +  $nodename:
+> +    pattern: "^system-controller@[0-9a-f]+$"
+> +
+> +  compatible:
+> +    const: mediatek,mt6991-hardware-voter
+> +
+> +  reg:
+> +    items:
+> +      - description: Address and size of the Hardware Voter MMIO
+> +
 
-Fix
-your
-wrapping because
-it is
-difficult
-to follow
-such
-style.
+No resources here, so this should go to power controller
 
-> 
-> I try to rephrase it like this:
-> 
-> Binding was not aware for 3 MAC subnodes because
-> previous mediatek SoC had only 2. Change this to allow
-> 3 GMAC in mt7988 devicetree.
+> +  power-controller:
+> +    $ref: /schemas/power/mediatek,power-controller.yaml
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +
+> +additionalProperties: true
+> +
+> +examples:
+> + - |
+> +   scp_hwv: system-controller@14500000 {
+> +     compatible = "mediatek,mt6991-hardware-voter";
+> +     reg = <0 0x14500000 0 0x3000>;
+> +
+> +     power-controller {
+> +       compatible = "mediatek,mt8196-hwv-scp-power-controller";
 
-So a fix for existing? Than add Fixes tag, describe the issue and fix
-ONLY that issue.
+mt8196 in mt6991 is very confusing.
+
+Anyway, this does not address my comment at all. You again create some
+sort of syscon for voting, so no. You are supposed to use generic API
+for voting: clocks, power domains, interconnects - whatever is there
+applicable or necessary.
 
 Best regards,
 Krzysztof
+
 
