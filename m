@@ -4,78 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 152E5C83F04
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jul 2025 12:11:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FE3FC77B7C
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jul 2025 13:20:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=i0f2S/Q0/+orl3Pvf55FTU5OEoFqQoshECzHEuVQu1w=; b=mSQ/XhWFO4lQNHyrM8iXm5ioOI
-	KQmWuII8ZVKKHB33bOh5RAEHH5RVfEqSBRNimUv/7Q897QwNV+EWO+edoJmiuIfFG3S7mfTSyeWUp
-	nKCeZsnUeZtLSxs7Vg/CZS7frxlkXDUQxsLzobkfpSABiA82QRuIFVFAu13ANLJRYJVC+xm88mct2
-	i4m1EgyZ1fOzTZMQ3X7K+/CbU0eFEVaNiigUTEv7uw8kbbeqqPG+oEMBuRJto2fUo4kdjLPEgn/JI
-	Z0rBBqUoosVEKFT9R451NQ5IMsrt3TC1VWY9yrb1YW4GITPGqxSm9ppjHMMr4/ZoCHMWr2JaqXDsl
-	V2vFTAFw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=HsGHZeDLRcosGuwALT4r1u45hzbPWUF+FK6Vc+CPIpI=; b=ygiK9+F7ivx6MHUPKwy+0UQB1y
+	1CwHVGL8JMm8ZuUNcZqQqT2XluuQzIUuGEbgsPbhGjLXADiTaoxNQrMyAhFTQjxFEFtivsxjI4In4
+	RkgtwKThzwxIoA9151JM5gxmLBc9FzP/9I6szCixPcNgK9ZKZRVhOPfng/HZK32r/bcs62+J0ybmA
+	c6ro54+TbNM18TRHZL2jO7dvA8TgusNt6VHPcXkoDSWZSqh4btW2d0NlmJLtbcp7Qa8cGAU+5lK9R
+	0jUqajXFbjfCbErryOXkdQOT0X3KQ/u3ei5YAId+Ufbgs+NnGc6DBoQDR229UlAk6nymhYpB5jCRe
+	35N2XYiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWwJW-00000008GAu-0wO0;
-	Wed, 02 Jul 2025 12:11:46 +0000
-Received: from m16.mail.163.com ([117.135.210.3])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uWvRO-0000000868d-1gsj
-	for linux-mediatek@lists.infradead.org;
-	Wed, 02 Jul 2025 11:15:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=i0
-	f2S/Q0/+orl3Pvf55FTU5OEoFqQoshECzHEuVQu1w=; b=fuKNpMPGl1GrC6zT/j
-	ryv7stS5bo+lHDMIhiNSCabGAjg9heesCXJXGBtIwftMX4Ux5a7f8BYpa58cVfFe
-	r26iak0/Mt43cbhbTkNbaKbtv5qZnnnUk1AsX0nSayIBOmlLoi5KgYfs1bI3MFNa
-	tYZVDpM3/VTrqXYCIJpSyrYBs=
-Received: from ProDesk.. (unknown [])
-	by gzsmtp5 (Coremail) with SMTP id QCgvCgCHTGOvFGVoldg0Aw--.49301S3;
-	Wed, 02 Jul 2025 19:15:02 +0800 (CST)
-From: Andy Yan <andyshrk@163.com>
-To: dmitry.baryshkov@oss.qualcomm.com
-Cc: mripard@kernel.org,
-	neil.armstrong@linaro.org,
-	dri-devel@lists.freedesktop.org,
-	dianders@chromium.org,
-	jani.nikula@intel.com,
-	lyude@redhat.com,
-	jonathanh@nvidia.com,
-	p.zabel@pengutronix.de,
-	simona@ffwll.ch,
-	victor.liu@nxp.com,
-	rfoss@kernel.org,
-	chunkuang.hu@kernel.org,
-	cristian.ciocaltea@collabora.com,
-	Laurent.pinchart@ideasonboard.com,
-	linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	freedreno@lists.freedesktop.org,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Andy Yan <andyshrk@163.com>
-Subject: [PATCH v2 1/2] drm/bridge: Make dp/hdmi_audio_* callback keep the same paramter order with get_modes
-Date: Wed,  2 Jul 2025 19:14:43 +0800
-Message-ID: <20250702111453.102539-2-andyshrk@163.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250702111453.102539-1-andyshrk@163.com>
-References: <20250702111453.102539-1-andyshrk@163.com>
+	id 1uWxNn-00000008QXr-2B7v;
+	Wed, 02 Jul 2025 13:20:15 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uWxIM-00000008Pj2-3LrU;
+	Wed, 02 Jul 2025 13:14:40 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.98.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1uWxI8-000000007sk-0DKJ;
+	Wed, 02 Jul 2025 13:14:24 +0000
+Date: Wed, 2 Jul 2025 14:14:20 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Felix Fietkau <nbd@nbd.name>,
+	Frank Wunderlich <frank-w@public-files.de>,
+	Eric Woudstra <ericwouds@gmail.com>, Elad Yifee <eladwf@gmail.com>,
+	Bo-Cun Chen <bc-bocun.chen@mediatek.com>,
+	Sky Huang <skylake.huang@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net-next v5 0/3] net: ethernet: mtk_eth_soc: improve device
+ tree handling
+Message-ID: <cover.1751461762.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: QCgvCgCHTGOvFGVoldg0Aw--.49301S3
-X-Coremail-Antispam: 1Uf129KBjvAXoWfJF4xtw1UtryrAw17ZryDAwb_yoW8Cr4xWo
-	WxAa9Y9a1Fq34kXrWktF12gF4Yv3Zxtan3Wrn5KaykWayUK347tF1IgF1UtFy7ZF4agr4D
-	Zw1DG348ArnrAan7n29KB7ZKAUJUUUU8529EdanIXcx71UUUUU7v73VFW2AGmfu7bjvjm3
-	AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvj4RDMa1UUUUU
-X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBkA1+XmhlDvqMoAABsp
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250702_041550_796249_D7AB70A4 
-X-CRM114-Status: GOOD (  13.78  )
+X-CRM114-CacheID: sfid-20250702_061438_834356_E6CC4C90 
+X-CRM114-Status: GOOD (  13.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,465 +73,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Andy Yan <andy.yan@rock-chips.com>
+This series further improves the mtk_eth_soc driver in preparation to
+complete upstream support for the MediaTek MT7988 SoC family.
 
-Make the dp/hdmi_audio_* callback maintain the same parameter order as
-get_modes and edid_read: first the bridge, then the connector.
+Frank Wunderlich's previous attempt to have the ethernet node included
+in mt7988a.dtsi and cover support for MT7988 in the device tree bindings
+was criticized for the way mtk_eth_soc references SRAM in device tree[1].
 
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+Having a 2nd 'reg' property, like introduced by commit ebb1e4f9cf38
+("net: ethernet: mtk_eth_soc: add support for in-SoC SRAM") isn't
+acceptable and a dedicated "mmio-sram" node should be used instead.
 
-Signed-off-by: Andy Yan <andyshrk@163.com>
----
+In order to make the code more clean and readable, the existing
+hardcoded offsets for the scratch ring, RX and TX rings are dropped in
+favor of using the generic allocator. However, support for the hardcoded
+offset of the SRAM itself being included as part of the Ethernet's "reg"
+MMIO space is kept as it will still be required in order to support
+existing legacy device trees of the MT7986 SoC family.
 
-Changes in v2:
-- First included in this series.
+While at it also replace confusing error messages when using legacy
+device trees without "interrupt-names" with a warning informing users
+that they are using a legacy device tree.
 
- drivers/gpu/drm/bridge/adv7511/adv7511.h      | 16 ++++-----
- .../gpu/drm/bridge/adv7511/adv7511_audio.c    | 12 +++----
- drivers/gpu/drm/bridge/adv7511/adv7511_cec.c  |  4 +--
- drivers/gpu/drm/bridge/lontium-lt9611.c       | 12 +++----
- drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c  | 12 +++----
- .../gpu/drm/display/drm_bridge_connector.c    | 18 +++++-----
- drivers/gpu/drm/msm/dp/dp_audio.c             |  8 ++---
- drivers/gpu/drm/msm/dp/dp_audio.h             |  8 ++---
- drivers/gpu/drm/msm/hdmi/hdmi.h               |  8 ++---
- drivers/gpu/drm/msm/hdmi/hdmi_audio.c         |  8 ++---
- include/drm/drm_bridge.h                      | 36 +++++++++----------
- 11 files changed, 71 insertions(+), 71 deletions(-)
+[1]: https://patchwork.ozlabs.org/comment/3533543/
 
-diff --git a/drivers/gpu/drm/bridge/adv7511/adv7511.h b/drivers/gpu/drm/bridge/adv7511/adv7511.h
-index 71bb64e5f481..85ebead9809c 100644
---- a/drivers/gpu/drm/bridge/adv7511/adv7511.h
-+++ b/drivers/gpu/drm/bridge/adv7511/adv7511.h
-@@ -399,8 +399,8 @@ static inline struct adv7511 *bridge_to_adv7511(struct drm_bridge *bridge)
- }
- 
- #ifdef CONFIG_DRM_I2C_ADV7511_CEC
--int adv7511_cec_init(struct drm_connector *connector,
--		     struct drm_bridge *bridge);
-+int adv7511_cec_init(struct drm_bridge *bridge,
-+		     struct drm_connector *connector);
- int adv7511_cec_enable(struct drm_bridge *bridge, bool enable);
- int adv7511_cec_log_addr(struct drm_bridge *bridge, u8 addr);
- int adv7511_cec_transmit(struct drm_bridge *bridge, u8 attempts,
-@@ -424,12 +424,12 @@ int adv7533_attach_dsi(struct adv7511 *adv);
- int adv7533_parse_dt(struct device_node *np, struct adv7511 *adv);
- 
- #ifdef CONFIG_DRM_I2C_ADV7511_AUDIO
--int adv7511_hdmi_audio_startup(struct drm_connector *connector,
--			       struct drm_bridge *bridge);
--void adv7511_hdmi_audio_shutdown(struct drm_connector *connector,
--				 struct drm_bridge *bridge);
--int adv7511_hdmi_audio_prepare(struct drm_connector *connector,
--			       struct drm_bridge *bridge,
-+int adv7511_hdmi_audio_startup(struct drm_bridge *bridge,
-+			       struct drm_connector *connector);
-+void adv7511_hdmi_audio_shutdown(struct drm_bridge *bridge,
-+				 struct drm_connector *connector);
-+int adv7511_hdmi_audio_prepare(struct drm_bridge *bridge,
-+			       struct drm_connector *connector,
- 			       struct hdmi_codec_daifmt *fmt,
- 			       struct hdmi_codec_params *hparms);
- #else /*CONFIG_DRM_I2C_ADV7511_AUDIO */
-diff --git a/drivers/gpu/drm/bridge/adv7511/adv7511_audio.c b/drivers/gpu/drm/bridge/adv7511/adv7511_audio.c
-index 915c3b967216..766b1c96bc88 100644
---- a/drivers/gpu/drm/bridge/adv7511/adv7511_audio.c
-+++ b/drivers/gpu/drm/bridge/adv7511/adv7511_audio.c
-@@ -55,8 +55,8 @@ static int adv7511_update_cts_n(struct adv7511 *adv7511)
- 	return 0;
- }
- 
--int adv7511_hdmi_audio_prepare(struct drm_connector *connector,
--			       struct drm_bridge *bridge,
-+int adv7511_hdmi_audio_prepare(struct drm_bridge *bridge,
-+			       struct drm_connector *connector,
- 			       struct hdmi_codec_daifmt *fmt,
- 			       struct hdmi_codec_params *hparms)
- {
-@@ -168,8 +168,8 @@ int adv7511_hdmi_audio_prepare(struct drm_connector *connector,
- 	return 0;
- }
- 
--int adv7511_hdmi_audio_startup(struct drm_connector *connector,
--			       struct drm_bridge *bridge)
-+int adv7511_hdmi_audio_startup(struct drm_bridge *bridge,
-+			       struct drm_connector *connector)
- {
- 	struct adv7511 *adv7511 = bridge_to_adv7511(bridge);
- 
-@@ -206,8 +206,8 @@ int adv7511_hdmi_audio_startup(struct drm_connector *connector,
- 	return 0;
- }
- 
--void adv7511_hdmi_audio_shutdown(struct drm_connector *connector,
--				 struct drm_bridge *bridge)
-+void adv7511_hdmi_audio_shutdown(struct drm_bridge *bridge,
-+				 struct drm_connector *connector)
- {
- 	struct adv7511 *adv7511 = bridge_to_adv7511(bridge);
- 
-diff --git a/drivers/gpu/drm/bridge/adv7511/adv7511_cec.c b/drivers/gpu/drm/bridge/adv7511/adv7511_cec.c
-index 822265426f58..8ecbc25dc647 100644
---- a/drivers/gpu/drm/bridge/adv7511/adv7511_cec.c
-+++ b/drivers/gpu/drm/bridge/adv7511/adv7511_cec.c
-@@ -346,8 +346,8 @@ static int adv7511_cec_parse_dt(struct device *dev, struct adv7511 *adv7511)
- 	return 0;
- }
- 
--int adv7511_cec_init(struct drm_connector *connector,
--		     struct drm_bridge *bridge)
-+int adv7511_cec_init(struct drm_bridge *bridge,
-+		     struct drm_connector *connector)
- {
- 	struct adv7511 *adv7511 = bridge_to_adv7511(bridge);
- 	struct device *dev = &adv7511->i2c_main->dev;
-diff --git a/drivers/gpu/drm/bridge/lontium-lt9611.c b/drivers/gpu/drm/bridge/lontium-lt9611.c
-index d6ee79c1e427..ff85ac8130b4 100644
---- a/drivers/gpu/drm/bridge/lontium-lt9611.c
-+++ b/drivers/gpu/drm/bridge/lontium-lt9611.c
-@@ -936,8 +936,8 @@ lt9611_hdmi_tmds_char_rate_valid(const struct drm_bridge *bridge,
- 	return MODE_OK;
- }
- 
--static int lt9611_hdmi_audio_startup(struct drm_connector *connector,
--				     struct drm_bridge *bridge)
-+static int lt9611_hdmi_audio_startup(struct drm_bridge *bridge,
-+				     struct drm_connector *connector)
- {
- 	struct lt9611 *lt9611 = bridge_to_lt9611(bridge);
- 
-@@ -952,8 +952,8 @@ static int lt9611_hdmi_audio_startup(struct drm_connector *connector,
- 	return 0;
- }
- 
--static int lt9611_hdmi_audio_prepare(struct drm_connector *connector,
--				     struct drm_bridge *bridge,
-+static int lt9611_hdmi_audio_prepare(struct drm_bridge *bridge,
-+				     struct drm_connector *connector,
- 				     struct hdmi_codec_daifmt *fmt,
- 				     struct hdmi_codec_params *hparms)
- {
-@@ -974,8 +974,8 @@ static int lt9611_hdmi_audio_prepare(struct drm_connector *connector,
- 								       &hparms->cea);
- }
- 
--static void lt9611_hdmi_audio_shutdown(struct drm_connector *connector,
--				       struct drm_bridge *bridge)
-+static void lt9611_hdmi_audio_shutdown(struct drm_bridge *bridge,
-+				       struct drm_connector *connector)
- {
- 	struct lt9611 *lt9611 = bridge_to_lt9611(bridge);
- 
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-index 7ade80f02a94..f9438e39b94a 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-@@ -440,8 +440,8 @@ static void dw_hdmi_qp_set_sample_rate(struct dw_hdmi_qp *hdmi, unsigned long lo
- 	dw_hdmi_qp_set_cts_n(hdmi, cts, n);
- }
- 
--static int dw_hdmi_qp_audio_enable(struct drm_connector *connector,
--				   struct drm_bridge *bridge)
-+static int dw_hdmi_qp_audio_enable(struct drm_bridge *bridge,
-+				   struct drm_connector *connector)
- {
- 	struct dw_hdmi_qp *hdmi = dw_hdmi_qp_from_bridge(bridge);
- 
-@@ -451,8 +451,8 @@ static int dw_hdmi_qp_audio_enable(struct drm_connector *connector,
- 	return 0;
- }
- 
--static int dw_hdmi_qp_audio_prepare(struct drm_connector *connector,
--				    struct drm_bridge *bridge,
-+static int dw_hdmi_qp_audio_prepare(struct drm_bridge *bridge,
-+				    struct drm_connector *connector,
- 				    struct hdmi_codec_daifmt *fmt,
- 				    struct hdmi_codec_params *hparms)
- {
-@@ -497,8 +497,8 @@ static void dw_hdmi_qp_audio_disable_regs(struct dw_hdmi_qp *hdmi)
- 		       AVP_DATAPATH_PACKET_AUDIO_SWDISABLE, GLOBAL_SWDISABLE);
- }
- 
--static void dw_hdmi_qp_audio_disable(struct drm_connector *connector,
--				     struct drm_bridge *bridge)
-+static void dw_hdmi_qp_audio_disable(struct drm_bridge *bridge,
-+				     struct drm_connector *connector)
- {
- 	struct dw_hdmi_qp *hdmi = dw_hdmi_qp_from_bridge(bridge);
- 
-diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
-index 6cdb432dbc30..717d96530c38 100644
---- a/drivers/gpu/drm/display/drm_bridge_connector.c
-+++ b/drivers/gpu/drm/display/drm_bridge_connector.c
-@@ -463,7 +463,7 @@ static int drm_bridge_connector_audio_startup(struct drm_connector *connector)
- 		if (!bridge->funcs->hdmi_audio_startup)
- 			return 0;
- 
--		return bridge->funcs->hdmi_audio_startup(connector, bridge);
-+		return bridge->funcs->hdmi_audio_startup(bridge, connector);
- 	}
- 
- 	if (bridge_connector->bridge_dp_audio) {
-@@ -472,7 +472,7 @@ static int drm_bridge_connector_audio_startup(struct drm_connector *connector)
- 		if (!bridge->funcs->dp_audio_startup)
- 			return 0;
- 
--		return bridge->funcs->dp_audio_startup(connector, bridge);
-+		return bridge->funcs->dp_audio_startup(bridge, connector);
- 	}
- 
- 	return -EINVAL;
-@@ -489,13 +489,13 @@ static int drm_bridge_connector_audio_prepare(struct drm_connector *connector,
- 	if (bridge_connector->bridge_hdmi_audio) {
- 		bridge = bridge_connector->bridge_hdmi_audio;
- 
--		return bridge->funcs->hdmi_audio_prepare(connector, bridge, fmt, hparms);
-+		return bridge->funcs->hdmi_audio_prepare(bridge, connector, fmt, hparms);
- 	}
- 
- 	if (bridge_connector->bridge_dp_audio) {
- 		bridge = bridge_connector->bridge_dp_audio;
- 
--		return bridge->funcs->dp_audio_prepare(connector, bridge, fmt, hparms);
-+		return bridge->funcs->dp_audio_prepare(bridge, connector, fmt, hparms);
- 	}
- 
- 	return -EINVAL;
-@@ -509,12 +509,12 @@ static void drm_bridge_connector_audio_shutdown(struct drm_connector *connector)
- 
- 	if (bridge_connector->bridge_hdmi_audio) {
- 		bridge = bridge_connector->bridge_hdmi_audio;
--		bridge->funcs->hdmi_audio_shutdown(connector, bridge);
-+		bridge->funcs->hdmi_audio_shutdown(bridge, connector);
- 	}
- 
- 	if (bridge_connector->bridge_dp_audio) {
- 		bridge = bridge_connector->bridge_dp_audio;
--		bridge->funcs->dp_audio_shutdown(connector, bridge);
-+		bridge->funcs->dp_audio_shutdown(bridge, connector);
- 	}
- }
- 
-@@ -531,7 +531,7 @@ static int drm_bridge_connector_audio_mute_stream(struct drm_connector *connecto
- 		if (!bridge->funcs->hdmi_audio_mute_stream)
- 			return -ENOTSUPP;
- 
--		return bridge->funcs->hdmi_audio_mute_stream(connector, bridge,
-+		return bridge->funcs->hdmi_audio_mute_stream(bridge, connector,
- 							     enable, direction);
- 	}
- 
-@@ -541,7 +541,7 @@ static int drm_bridge_connector_audio_mute_stream(struct drm_connector *connecto
- 		if (!bridge->funcs->dp_audio_mute_stream)
- 			return -ENOTSUPP;
- 
--		return bridge->funcs->dp_audio_mute_stream(connector, bridge,
-+		return bridge->funcs->dp_audio_mute_stream(bridge, connector,
- 							   enable, direction);
- 	}
- 
-@@ -604,7 +604,7 @@ static int drm_bridge_connector_hdmi_cec_init(struct drm_connector *connector)
- 	if (!bridge->funcs->hdmi_cec_init)
- 		return 0;
- 
--	return bridge->funcs->hdmi_cec_init(connector, bridge);
-+	return bridge->funcs->hdmi_cec_init(bridge, connector);
- }
- 
- static const struct drm_connector_hdmi_cec_funcs drm_bridge_connector_hdmi_cec_funcs = {
-diff --git a/drivers/gpu/drm/msm/dp/dp_audio.c b/drivers/gpu/drm/msm/dp/dp_audio.c
-index f8bfb908f9b4..a0830bffdca5 100644
---- a/drivers/gpu/drm/msm/dp/dp_audio.c
-+++ b/drivers/gpu/drm/msm/dp/dp_audio.c
-@@ -173,8 +173,8 @@ static struct msm_dp_audio_private *msm_dp_audio_get_data(struct msm_dp *msm_dp_
- 	return container_of(msm_dp_audio, struct msm_dp_audio_private, msm_dp_audio);
- }
- 
--int msm_dp_audio_prepare(struct drm_connector *connector,
--			 struct drm_bridge *bridge,
-+int msm_dp_audio_prepare(struct drm_bridge *bridge,
-+			 struct drm_connector *connector,
- 			 struct hdmi_codec_daifmt *daifmt,
- 			 struct hdmi_codec_params *params)
- {
-@@ -216,8 +216,8 @@ int msm_dp_audio_prepare(struct drm_connector *connector,
- 	return rc;
- }
- 
--void msm_dp_audio_shutdown(struct drm_connector *connector,
--			   struct drm_bridge *bridge)
-+void msm_dp_audio_shutdown(struct drm_bridge *bridge,
-+			   struct drm_connector *connecter)
- {
- 	struct msm_dp_audio_private *audio;
- 	struct msm_dp *msm_dp_display;
-diff --git a/drivers/gpu/drm/msm/dp/dp_audio.h b/drivers/gpu/drm/msm/dp/dp_audio.h
-index 58fc14693e48..66b32215c0f3 100644
---- a/drivers/gpu/drm/msm/dp/dp_audio.h
-+++ b/drivers/gpu/drm/msm/dp/dp_audio.h
-@@ -44,12 +44,12 @@ struct msm_dp_audio *msm_dp_audio_get(struct platform_device *pdev,
-  */
- void msm_dp_audio_put(struct msm_dp_audio *msm_dp_audio);
- 
--int msm_dp_audio_prepare(struct drm_connector *connector,
--			 struct drm_bridge *bridge,
-+int msm_dp_audio_prepare(struct drm_bridge *bridge,
-+			 struct drm_connector *connector,
- 			 struct hdmi_codec_daifmt *daifmt,
- 			 struct hdmi_codec_params *params);
--void msm_dp_audio_shutdown(struct drm_connector *connector,
--			   struct drm_bridge *bridge);
-+void msm_dp_audio_shutdown(struct drm_bridge *bridge,
-+			   struct drm_connector *connector);
- 
- #endif /* _DP_AUDIO_H_ */
- 
-diff --git a/drivers/gpu/drm/msm/hdmi/hdmi.h b/drivers/gpu/drm/msm/hdmi/hdmi.h
-index d5e572d10d6a..1d02d4e1ed5b 100644
---- a/drivers/gpu/drm/msm/hdmi/hdmi.h
-+++ b/drivers/gpu/drm/msm/hdmi/hdmi.h
-@@ -200,12 +200,12 @@ struct hdmi_codec_daifmt;
- struct hdmi_codec_params;
- 
- int msm_hdmi_audio_update(struct hdmi *hdmi);
--int msm_hdmi_bridge_audio_prepare(struct drm_connector *connector,
--				  struct drm_bridge *bridge,
-+int msm_hdmi_bridge_audio_prepare(struct drm_bridge *bridge,
-+				  struct drm_connector *connector,
- 				  struct hdmi_codec_daifmt *daifmt,
- 				  struct hdmi_codec_params *params);
--void msm_hdmi_bridge_audio_shutdown(struct drm_connector *connector,
--				    struct drm_bridge *bridge);
-+void msm_hdmi_bridge_audio_shutdown(struct drm_bridge *bridge,
-+				    struct drm_connector *connector);
- 
- /*
-  * hdmi bridge:
-diff --git a/drivers/gpu/drm/msm/hdmi/hdmi_audio.c b/drivers/gpu/drm/msm/hdmi/hdmi_audio.c
-index b9ec14ef2c20..d9a8dc9dae8f 100644
---- a/drivers/gpu/drm/msm/hdmi/hdmi_audio.c
-+++ b/drivers/gpu/drm/msm/hdmi/hdmi_audio.c
-@@ -122,8 +122,8 @@ int msm_hdmi_audio_update(struct hdmi *hdmi)
- 	return 0;
- }
- 
--int msm_hdmi_bridge_audio_prepare(struct drm_connector *connector,
--				  struct drm_bridge *bridge,
-+int msm_hdmi_bridge_audio_prepare(struct drm_bridge *bridge,
-+				  struct drm_connector *connector,
- 				  struct hdmi_codec_daifmt *daifmt,
- 				  struct hdmi_codec_params *params)
- {
-@@ -163,8 +163,8 @@ int msm_hdmi_bridge_audio_prepare(struct drm_connector *connector,
- 	return msm_hdmi_audio_update(hdmi);
- }
- 
--void msm_hdmi_bridge_audio_shutdown(struct drm_connector *connector,
--				    struct drm_bridge *bridge)
-+void msm_hdmi_bridge_audio_shutdown(struct drm_bridge *bridge,
-+				    struct drm_connector *connector)
- {
- 	struct hdmi_bridge *hdmi_bridge = to_hdmi_bridge(bridge);
- 	struct hdmi *hdmi = hdmi_bridge->hdmi;
-diff --git a/include/drm/drm_bridge.h b/include/drm/drm_bridge.h
-index 7f66f9018c10..7a75b449bc91 100644
---- a/include/drm/drm_bridge.h
-+++ b/include/drm/drm_bridge.h
-@@ -817,8 +817,8 @@ struct drm_bridge_funcs {
- 	 * Returns:
- 	 * 0 on success, a negative error code otherwise
- 	 */
--	int (*hdmi_audio_startup)(struct drm_connector *connector,
--				  struct drm_bridge *bridge);
-+	int (*hdmi_audio_startup)(struct drm_bridge *bridge,
-+				  struct drm_connector *connector);
- 
- 	/**
- 	 * @hdmi_audio_prepare:
-@@ -831,8 +831,8 @@ struct drm_bridge_funcs {
- 	 * Returns:
- 	 * 0 on success, a negative error code otherwise
- 	 */
--	int (*hdmi_audio_prepare)(struct drm_connector *connector,
--				  struct drm_bridge *bridge,
-+	int (*hdmi_audio_prepare)(struct drm_bridge *bridge,
-+				  struct drm_connector *connector,
- 				  struct hdmi_codec_daifmt *fmt,
- 				  struct hdmi_codec_params *hparms);
- 
-@@ -847,8 +847,8 @@ struct drm_bridge_funcs {
- 	 * Returns:
- 	 * 0 on success, a negative error code otherwise
- 	 */
--	void (*hdmi_audio_shutdown)(struct drm_connector *connector,
--				    struct drm_bridge *bridge);
-+	void (*hdmi_audio_shutdown)(struct drm_bridge *bridge,
-+				    struct drm_connector *connector);
- 
- 	/**
- 	 * @hdmi_audio_mute_stream:
-@@ -861,12 +861,12 @@ struct drm_bridge_funcs {
- 	 * Returns:
- 	 * 0 on success, a negative error code otherwise
- 	 */
--	int (*hdmi_audio_mute_stream)(struct drm_connector *connector,
--				      struct drm_bridge *bridge,
-+	int (*hdmi_audio_mute_stream)(struct drm_bridge *bridge,
-+				      struct drm_connector *connector,
- 				      bool enable, int direction);
- 
--	int (*hdmi_cec_init)(struct drm_connector *connector,
--			     struct drm_bridge *bridge);
-+	int (*hdmi_cec_init)(struct drm_bridge *bridge,
-+			     struct drm_connector *connector);
- 
- 	int (*hdmi_cec_enable)(struct drm_bridge *bridge, bool enable);
- 
-@@ -886,8 +886,8 @@ struct drm_bridge_funcs {
- 	 * Returns:
- 	 * 0 on success, a negative error code otherwise
- 	 */
--	int (*dp_audio_startup)(struct drm_connector *connector,
--				struct drm_bridge *bridge);
-+	int (*dp_audio_startup)(struct drm_bridge *bridge,
-+				struct drm_connector *connector);
- 
- 	/**
- 	 * @dp_audio_prepare:
-@@ -900,8 +900,8 @@ struct drm_bridge_funcs {
- 	 * Returns:
- 	 * 0 on success, a negative error code otherwise
- 	 */
--	int (*dp_audio_prepare)(struct drm_connector *connector,
--				struct drm_bridge *bridge,
-+	int (*dp_audio_prepare)(struct drm_bridge *bridge,
-+				struct drm_connector *connector,
- 				struct hdmi_codec_daifmt *fmt,
- 				struct hdmi_codec_params *hparms);
- 
-@@ -916,8 +916,8 @@ struct drm_bridge_funcs {
- 	 * Returns:
- 	 * 0 on success, a negative error code otherwise
- 	 */
--	void (*dp_audio_shutdown)(struct drm_connector *connector,
--				  struct drm_bridge *bridge);
-+	void (*dp_audio_shutdown)(struct drm_bridge *bridge,
-+				  struct drm_connector *connector);
- 
- 	/**
- 	 * @dp_audio_mute_stream:
-@@ -930,8 +930,8 @@ struct drm_bridge_funcs {
- 	 * Returns:
- 	 * 0 on success, a negative error code otherwise
- 	 */
--	int (*dp_audio_mute_stream)(struct drm_connector *connector,
--				    struct drm_bridge *bridge,
-+	int (*dp_audio_mute_stream)(struct drm_bridge *bridge,
-+				    struct drm_connector *connector,
- 				    bool enable, int direction);
- 
- 	/**
+Daniel Golle (3):
+  net: ethernet: mtk_eth_soc: improve support for named interrupts
+  net: ethernet: mtk_eth_soc: fix kernel-doc comment
+  net: ethernet: mtk_eth_soc: use generic allocator for SRAM
+
+ drivers/net/ethernet/mediatek/Kconfig       |   1 +
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 167 +++++++++++---------
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h |  11 +-
+ 3 files changed, 101 insertions(+), 78 deletions(-)
+
 -- 
-2.43.0
-
+2.50.0
 
