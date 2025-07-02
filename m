@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B5F3C8303C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5151BC83F03
 	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jul 2025 21:59:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=QkGp+3Fu5XVnyvQn7eeIzbmUQEGbR66f9BykQ6InEVE=; b=nOmA9jqtalviBvX3t1ioCpCcWw
-	GJwTX3wHaeF3kjzxTC6KM1FMR6JBEKusVGxOjdzue5ae9A+AiCHIw9rEDnkx6eKMrh9apXchix0K/
-	SVHSiUR4eN1DsRG8sZk3v2lRLKI9vjdv075xY9VzLNOPQg+HMczXiDcS4sIRWDDCCsud6Am3nojHw
-	2W/CBM5CyQxFnB8zGFnSEJLyu424kEnq4Plp6Gg/ejcbtr5ntvrcDbsitpN1LF5YfAavNEKbGkGH1
-	gruiRjBz9rI8IbopEWnhrGEiQcgVAH1VAOZHlMT4GRIQ/2e2m/nI4Snq/Lv1QLZlxOmkx7aWlpS91
-	kMpbanrQ==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:
+	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iYgWJ8J7BoGFxKck1RjrUitwIQvjD7tq0nYE84HRdJ4=; b=pl5PSuBzHYGs+Fm6vqvV41gQK5
+	nAYvMGg8n5NPT0xLi8Ph1+Qrr68h1XT7AFBDSFwiJb0yXIIDBDB7ZbiCDbp0SiWFYRiDHp9DhDuhW
+	2ZXVTXYEnRxb2iUMhzJrF7TRF4aOTWL3ofOAyKRksQL6RevvSMwx00vZgVX6ayh2ZRjD90wKlLknY
+	jG0/AHg0FcIMNDe0wV3cfKCaTDkj7fWtHrbA4ZxupNJ2+yybL4fhx9QHM8L5LoOZOpASTRxl5rHhw
+	MZVoShIV4qOxArx81PNYzJVdJIaGgbhhK2FVFp7Hd6Dh8xJrczq5TA1pYvUno8TntmvH5xuvShSoC
+	whKNIGBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uX5UW-00000009eDj-1crX;
+	id 1uX5UW-00000009eDe-0O1w;
 	Wed, 02 Jul 2025 21:59:44 +0000
 Received: from mx4.wp.pl ([212.77.101.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uX5QC-00000009dqB-1EkC
+	id 1uX5QC-00000009dqD-1EpH
 	for linux-mediatek@lists.infradead.org;
-	Wed, 02 Jul 2025 21:55:18 +0000
-Received: (wp-smtpd smtp.wp.pl 32088 invoked from network); 2 Jul 2025 23:48:32 +0200
+	Wed, 02 Jul 2025 21:55:17 +0000
+Received: (wp-smtpd smtp.wp.pl 32885 invoked from network); 2 Jul 2025 23:48:34 +0200
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wp.pl; s=20241105;
-          t=1751492912; bh=QkGp+3Fu5XVnyvQn7eeIzbmUQEGbR66f9BykQ6InEVE=;
+          t=1751492914; bh=iYgWJ8J7BoGFxKck1RjrUitwIQvjD7tq0nYE84HRdJ4=;
           h=From:To:Subject;
-          b=FGUQmwg25MZJfDyKf2+cF2PhiPOB+37g3E5FT3rMQcQydFO54zwxuDyzU7uFrAztD
-           KvvuhPyeVWkqZpy2WqHUOW8EmjsXDdAjanDvF3k2NyWHTW7glIr5pY3S1Tfi0JdVEH
-           TJ9M8cfvKFWzm8uCEwEt5ujFQbvww9T7IOokBRnKoNMHgy3MDdUfUXOZbJD7uIaTOi
-           PmUYxv7Cn4alRfUlRTF5PIHSzvbn13coAP+RvxvjjILw0T/QXhUCVpITLyMmrZyvSy
-           NzntldPX6C+4buYcZrfHm2Xj/WJqTDTtpi5sMLKAJC9ijQdOWUcMwo6jBXDK9tNKRl
-           bD4EBh6RsiXHw==
+          b=kXJookvAoghUWQJckr2S92QLrUOqw6bSmwcRElr8a9q+J5sv11Q+Fnsrg+CLavybB
+           jr6rLaP3YmenP/R9z2VDjiLDV2fogADZSTegegBIHEGhvp7p9Poog1qe5EaMUWmFa4
+           h9CZDu3ScZCaA/srJCA2dG92hiaIBKO47mFFx0MHvaXoCXKsQXoP07ypCBHD/4QEx2
+           JbskowpLQDLbmmP7vKB31A0F3T1/ZmxgIJgIKiguARHWbD+XFfUH4jah2NgPK32Own
+           a4QAlSRj9yAjFNIKssonYCo/1RcP9RzMS5dUQF4yjqfWm4a8qKpx7ddQTTlGUj8JxE
+           kBRDD5rTg4EYA==
 Received: from 83.5.239.54.ipv4.supernova.orange.pl (HELO laptop-olek.lan) (olek2@wp.pl@[83.5.239.54])
           (envelope-sender <olek2@wp.pl>)
           by smtp.wp.pl (WP-SMTPD) with ECDHE-RSA-AES256-GCM-SHA384 encrypted SMTP
-          for <jic23@kernel.org>; 2 Jul 2025 23:48:32 +0200
+          for <jic23@kernel.org>; 2 Jul 2025 23:48:34 +0200
 From: Aleksander Jan Bajkowski <olek2@wp.pl>
 To: jic23@kernel.org,
 	dlechner@baylibre.com,
@@ -58,18 +58,20 @@ To: jic23@kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 0/2] Add thermal sensors support for MT7981
-Date: Wed,  2 Jul 2025 23:48:28 +0200
-Message-Id: <20250702214830.255898-1-olek2@wp.pl>
+Subject: [PATCH v2 1/2] dt-bindings: iio: adc: Add support for MT7981
+Date: Wed,  2 Jul 2025 23:48:29 +0200
+Message-Id: <20250702214830.255898-2-olek2@wp.pl>
 X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20250702214830.255898-1-olek2@wp.pl>
+References: <20250702214830.255898-1-olek2@wp.pl>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-WP-MailID: de0d4fa9d5cfaba10f7407784c50ddb1
+X-WP-MailID: 4531e8972fbbdfc366c72f9ccf260a9d
 X-WP-AV: skaner antywirusowy Poczty Wirtualnej Polski
-X-WP-SPAM: NO 000000A [UYPk]                               
+X-WP-SPAM: NO 0000000 [4UOh]                               
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250702_145516_503048_2EC07DF8 
-X-CRM114-Status: UNSURE (   8.89  )
+X-CRM114-CacheID: sfid-20250702_145516_490655_CC74D09D 
+X-CRM114-Status: UNSURE (   8.16  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,21 +87,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds support for the temperature sensor in the MT7981 SoC.
-This sensor is exactly the same as the one in the MT7986.
+The temperature sensor in the MT7981 is same as in the MT7986.
+Add compatible string for mt7981.
 
-Changes in v2:
- - added fallback to an existing compatible string
- - removed second patch as obsolete
+Signed-off-by: Aleksander Jan Bajkowski <olek2@wp.pl>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml      | 1 +
+ 1 file changed, 1 insertion(+)
 
-Aleksander Jan Bajkowski (2):
-  dt-bindings: iio: adc: Add support for MT7981
-  arm64: dts: mediatek: add thermal sensor support on mt7981
-
- .../iio/adc/mediatek,mt2701-auxadc.yaml       |  1 +
- arch/arm64/boot/dts/mediatek/mt7981b.dtsi     | 32 ++++++++++++++++++-
- 2 files changed, 32 insertions(+), 1 deletion(-)
-
+diff --git a/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml b/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml
+index b489c984c1bb..ceb914dde15b 100644
+--- a/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml
++++ b/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml
+@@ -26,6 +26,7 @@ properties:
+           - mediatek,mt2712-auxadc
+           - mediatek,mt6765-auxadc
+           - mediatek,mt7622-auxadc
++          - mediatek,mt7981-auxadc
+           - mediatek,mt7986-auxadc
+           - mediatek,mt8173-auxadc
+       - items:
 -- 
 2.39.5
 
