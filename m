@@ -4,80 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 591D1C83030
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 22:19:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E48EFC83030
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 22:38:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=wTT5B/xkvp1SW2xZRiZIiqcFcYhItnKtVlUHBwlFw7Q=; b=l42IOcaJJNVsul0ghi4ZJJguf/
-	fJOcBZHn2JHbbnr/svtQFcoRza1jx/NrPJR6ayVyL64YitU6CudW0LZOWUbvbm9BCwR7nSmmIZVQG
-	+0grMUHvgt3unomwuucFK/Ni+1V68colXrrEejEq2slZTZIaGXy7iyyj6vwd6xTWq6yprHcJ5boOz
-	btIpq+3XzdjWoDfBww/oAxV+zRvMmz3UIFlOHC70dVngwPkWmy+wF945tCvZ0/UsC73sQMKxwoU9X
-	kyMkDj/HuRRI0eNrZNRiFf7WCrRdxGoxKdScccX7teLOuIm8DnwRs/efbDIbscA7MwgLKo4DSAnzK
-	/06FuVrA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:To:From:Reply-To:Cc:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zgxsuIMDDXARhsRWgLrILUs/XsyS+TZEtoBBb/RsYm0=; b=jWSwQft1aZ6owhO1Ys/i/igkkX
+	pgZSwGTBpZeaH4KIRR0u1F0Rn9NIQTvnANZDEP9uS0FB50XZqExBbnU0vTXixGS1rjk6PrrMHTZ4u
+	0TOiB2CC0BnpAMhh6Uk9jUaqDBoF2CWF9YFuOwVuNZhWAXyBgPDy2/BjESTQrHACFUruGPjMkUzJc
+	uzS3Y2lDDZaTeMmxhNDQ/P6GftmOKnBp7Sg1nS+xHX09dWgucp966ZAJe5bYyREbr8i1A9dxF6kJw
+	YyoZRQnL/m78AlS12a1EX4Jmf4SGV9zJSQaUzIjTxY+qZV6kNlPhuPdA3khC3TXpq6A9B3W0De+Bd
+	btFtCzSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXSGr-0000000Ci3s-3h3G;
-	Thu, 03 Jul 2025 22:19:09 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1uXSZT-0000000CkA3-1u0c;
+	Thu, 03 Jul 2025 22:38:23 +0000
+Received: from galois.linutronix.de ([2a0a:51c0:0:12e:550::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXOmT-0000000CFZw-3pwH;
-	Thu, 03 Jul 2025 18:35:35 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 3439CA539DF;
-	Thu,  3 Jul 2025 18:35:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 85A71C4CEE3;
-	Thu,  3 Jul 2025 18:35:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751567732;
-	bh=MBHO2Lp90PjrfqVCqAlyfS1xa5ydxsxVFITQfZTnBrQ=;
-	h=From:To:Cc:Subject:Date:From;
-	b=LzzOVJm5R/ZxgePynHa0bVwans+jGaLjduqqB8omRZUFK/UsZxI7mB7YFt1OhLpIJ
-	 2drrZ+QEKyTda8SfmOaBBZ4ME0du8/rXZeEXITq81ZtvtZYreW74elidIZU5+inc02
-	 8HRqIu302nb+VKLdctcTyQ/rCQ76hsr5XDH1y1uGIMKk60wG6gDWu+WBvRFPFCoYZR
-	 8u+waa0geqvAult9hoCG2FMohPB3dGBBmfzBW0uZgdBHKkPU92BSG2pnI8tDKIksNk
-	 EM5NvJ4BXxvIG0Xz1JgzTxUqQggpY9kJlhZagkHheB9ybX8vUHGkP5d3ECW1+zroLO
-	 MxZSC4nI5Qk6g==
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Cheng-Yi Chiang <cychiang@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>,
-	Guenter Roeck <groeck@chromium.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	Benson Leung <bleung@chromium.org>,
-	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
-	Bard Liao <yung-chuan.liao@linux.intel.com>,
-	Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
-	Daniel Baluta <daniel.baluta@nxp.com>,
-	Kai Vehmanen <kai.vehmanen@linux.intel.com>,
-	Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chrome-platform@lists.linux.dev,
-	linux-sound@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	sound-open-firmware@alsa-project.org,
-	imx@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] ASoC: Use of_reserved_mem_region_to_resource() for "memory-region"
-Date: Thu,  3 Jul 2025 13:35:21 -0500
-Message-ID: <20250703183523.2075276-1-robh@kernel.org>
-X-Mailer: git-send-email 2.47.2
+	id 1uXQ5s-0000000CP3y-01A8;
+	Thu, 03 Jul 2025 19:59:41 +0000
+From: Thomas Gleixner <tglx@linutronix.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020; t=1751572775;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=zgxsuIMDDXARhsRWgLrILUs/XsyS+TZEtoBBb/RsYm0=;
+	b=FEw4D24yX86GGy1rTWJ6zgH6Tlp5yOHO2h19VrQVJd4soMjXNtcLFhCIhBmDcIfo3afyMj
+	GH127yUbXDNuBwtaRHEi3ZdZq1EtVgrFX538bhU2DxEWijBcrYdtsbcPrHNXmmJo9oigK2
+	p8tlXD9sQkkbAEVYgixGuE4g/C1C8SERxleQFZ6JK4QAYdSnvoCipiRlj9XG1+zgC+PcYi
+	P1+WPyUM/DcSNaeacoqIXzqO0l/JuCUlWJVgJtqJD9sBqQW82ryw/C9BjBZLTQ2Ex85h76
+	JpECmRlt2nY9d/HdGO8XKDQWVUSZHBMUUcyw4iSOA9qF3eLPWuCRcbf7lfETnQ==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020e; t=1751572775;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=zgxsuIMDDXARhsRWgLrILUs/XsyS+TZEtoBBb/RsYm0=;
+	b=gcOi8AamD60gBuSLM6+XBj7cc6BNGHuWvnQ0nejzuIxbahpVhbP1ZuQex8HvkFndFkmXZR
+	hOi5o2qE1taW8LDw==
+To: Michael Kelley <mhklinux@outlook.com>, Nam Cao <namcao@linutronix.de>,
+ Marc Zyngier <maz@kernel.org>, Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, Manivannan
+ Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, Bjorn Helgaas
+ <bhelgaas@google.com>, "linux-pci@vger.kernel.org"
+ <linux-pci@vger.kernel.org>, "linux-kernel@vger.kernel.org"
+ <linux-kernel@vger.kernel.org>, Karthikeyan Mitran
+ <m.karthikeyan@mobiveil.co.in>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>,
+ Thomas
+ Petazzoni <thomas.petazzoni@bootlin.com>, Pali =?utf-8?Q?Roh=C3=A1r?=
+ <pali@kernel.org>, "K
+ . Y . Srinivasan" <kys@microsoft.com>, Haiyang Zhang
+ <haiyangz@microsoft.com>, Wei Liu <wei.liu@kernel.org>, Dexuan Cui
+ <decui@microsoft.com>, Joyce Ooi <joyce.ooi@intel.com>, Jim Quinlan
+ <jim2101024@gmail.com>, Nicolas Saenz Julienne <nsaenz@kernel.org>,
+ Florian
+ Fainelli <florian.fainelli@broadcom.com>, Broadcom internal kernel review
+ list <bcm-kernel-feedback-list@broadcom.com>, Ray Jui <rjui@broadcom.com>,
+ Scott Branden <sbranden@broadcom.com>, Ryder Lee <ryder.lee@mediatek.com>,
+ Jianjun Wang <jianjun.wang@mediatek.com>, Marek Vasut
+ <marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda
+ <yoshihiro.shimoda.uh@renesas.com>, Michal Simek <michal.simek@amd.com>,
+ Daire McNamara <daire.mcnamara@microchip.com>, Nirmal Patel
+ <nirmal.patel@linux.intel.com>, Jonathan Derrick
+ <jonathan.derrick@linux.dev>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, "linux-hyperv@vger.kernel.org"
+ <linux-hyperv@vger.kernel.org>, "linux-rpi-kernel@lists.infradead.org"
+ <linux-rpi-kernel@lists.infradead.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-renesas-soc@vger.kernel.org" <linux-renesas-soc@vger.kernel.org>
+Subject: RE: [PATCH 14/16] PCI: hv: Switch to msi_create_parent_irq_domain()
+In-Reply-To: <SN6PR02MB4157A6F9B2ABD3C69CE5B521D443A@SN6PR02MB4157.namprd02.prod.outlook.com>
+References: <cover.1750858083.git.namcao@linutronix.de>
+ <024f0122314198fe0a42fef01af53e8953a687ec.1750858083.git.namcao@linutronix.de>
+ <SN6PR02MB4157A6F9B2ABD3C69CE5B521D443A@SN6PR02MB4157.namprd02.prod.outlook.com>
+Date: Thu, 03 Jul 2025 21:59:34 +0200
+Message-ID: <87cyaht595.ffs@tglx>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250703_113534_085008_E4342ADF 
-X-CRM114-Status: GOOD (  14.69  )
+X-CRM114-CacheID: sfid-20250703_125940_184641_28275323 
+X-CRM114-Status: GOOD (  16.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,206 +104,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use the newly added of_reserved_mem_region_to_resource() function to
-handle "memory-region" properties.
+On Thu, Jul 03 2025 at 17:41, Michael Kelley wrote:
+> From: Nam Cao <namcao@linutronix.de> Sent: Thursday, June 26, 2025 7:48 AM
+>> 
+>> Move away from the legacy MSI domain setup, switch to use
+>> msi_create_parent_irq_domain().
+>
+> From a build standpoint, this patch does not apply cleanly to
+> linux-next20250630. See also an issue below where a needed irq
+> function isn't exported.
 
-Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
----
- sound/soc/codecs/cros_ec_codec.c       | 30 ++++++++++-----------
- sound/soc/sof/imx/imx-common.c         | 36 +++++---------------------
- sound/soc/sof/mediatek/mt8186/mt8186.c | 11 +-------
- sound/soc/sof/mediatek/mt8195/mt8195.c | 11 +-------
- 4 files changed, 22 insertions(+), 66 deletions(-)
+Does it conflict against the PCI tree?
 
-diff --git a/sound/soc/codecs/cros_ec_codec.c b/sound/soc/codecs/cros_ec_codec.c
-index 571222ec520c..937c8cec682a 100644
---- a/sound/soc/codecs/cros_ec_codec.c
-+++ b/sound/soc/codecs/cros_ec_codec.c
-@@ -18,6 +18,7 @@
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/of_address.h>
-+#include <linux/of_reserved_mem.h>
- #include <linux/platform_data/cros_ec_commands.h>
- #include <linux/platform_data/cros_ec_proto.h>
- #include <linux/platform_device.h>
-@@ -961,7 +962,6 @@ static int cros_ec_codec_platform_probe(struct platform_device *pdev)
- 	struct ec_response_ec_codec_get_capabilities r;
- 	int ret;
- #ifdef CONFIG_OF
--	struct device_node *node;
- 	struct resource res;
- 	u64 ec_shm_size;
- 	const __be32 *regaddr_p;
-@@ -981,22 +981,18 @@ static int cros_ec_codec_platform_probe(struct platform_device *pdev)
- 			priv->ec_shm_addr, priv->ec_shm_len);
- 	}
- 
--	node = of_parse_phandle(dev->of_node, "memory-region", 0);
--	if (node) {
--		ret = of_address_to_resource(node, 0, &res);
--		if (!ret) {
--			priv->ap_shm_phys_addr = res.start;
--			priv->ap_shm_len = resource_size(&res);
--			priv->ap_shm_addr =
--				(uint64_t)(uintptr_t)devm_ioremap_wc(
--					dev, priv->ap_shm_phys_addr,
--					priv->ap_shm_len);
--			priv->ap_shm_last_alloc = priv->ap_shm_phys_addr;
--
--			dev_dbg(dev, "ap_shm_phys_addr=%#llx len=%#x\n",
--				priv->ap_shm_phys_addr, priv->ap_shm_len);
--		}
--		of_node_put(node);
-+	ret = of_reserved_mem_region_to_resource(dev->of_node, 0, &res);
-+	if (!ret) {
-+		priv->ap_shm_phys_addr = res.start;
-+		priv->ap_shm_len = resource_size(&res);
-+		priv->ap_shm_addr =
-+			(uint64_t)(uintptr_t)devm_ioremap_wc(
-+				dev, priv->ap_shm_phys_addr,
-+				priv->ap_shm_len);
-+		priv->ap_shm_last_alloc = priv->ap_shm_phys_addr;
-+
-+		dev_dbg(dev, "ap_shm_phys_addr=%#llx len=%#x\n",
-+			priv->ap_shm_phys_addr, priv->ap_shm_len);
- 	}
- #endif
- 
-diff --git a/sound/soc/sof/imx/imx-common.c b/sound/soc/sof/imx/imx-common.c
-index 62bf707aa909..f00b381cec3b 100644
---- a/sound/soc/sof/imx/imx-common.c
-+++ b/sound/soc/sof/imx/imx-common.c
-@@ -282,11 +282,8 @@ static int imx_region_name_to_blk_type(const char *region_name)
- static int imx_parse_ioremap_memory(struct snd_sof_dev *sdev)
- {
- 	const struct imx_chip_info *chip_info;
--	struct reserved_mem *reserved;
- 	struct platform_device *pdev;
--	struct device_node *res_np;
--	phys_addr_t base, size;
--	struct resource *res;
-+	struct resource *res, _res;
- 	int i, blk_type, ret;
- 
- 	pdev = to_platform_device(sdev->dev);
-@@ -307,37 +304,18 @@ static int imx_parse_ioremap_memory(struct snd_sof_dev *sdev)
- 						     "failed to fetch %s resource\n",
- 						     chip_info->memory[i].name);
- 
--			base = res->start;
--			size = resource_size(res);
- 		} else {
--			ret = of_property_match_string(pdev->dev.of_node,
--						       "memory-region-names",
--						       chip_info->memory[i].name);
-+			ret = of_reserved_mem_region_to_resource_byname(pdev->dev.of_node,
-+									chip_info->memory[i].name,
-+									&_res);
- 			if (ret < 0)
- 				return dev_err_probe(sdev->dev, ret,
--						     "no valid index for %s\n",
-+						     "no valid entry for %s\n",
- 						     chip_info->memory[i].name);
--
--			res_np = of_parse_phandle(pdev->dev.of_node,
--						  "memory-region",
--						  ret);
--			if (!res_np)
--				return dev_err_probe(sdev->dev, -ENODEV,
--						     "failed to parse phandle %s\n",
--						     chip_info->memory[i].name);
--
--			reserved = of_reserved_mem_lookup(res_np);
--			of_node_put(res_np);
--			if (!reserved)
--				return dev_err_probe(sdev->dev, -ENODEV,
--						     "failed to get %s reserved\n",
--						     chip_info->memory[i].name);
--
--			base = reserved->base;
--			size = reserved->size;
-+			res = &_res;
- 		}
- 
--		sdev->bar[blk_type] = devm_ioremap(sdev->dev, base, size);
-+		sdev->bar[blk_type] = devm_ioremap_resource(sdev->dev, res);
- 		if (!sdev->bar[blk_type])
- 			return dev_err_probe(sdev->dev,
- 					     -ENOMEM,
-diff --git a/sound/soc/sof/mediatek/mt8186/mt8186.c b/sound/soc/sof/mediatek/mt8186/mt8186.c
-index 7ff080452cbe..c1bea967737d 100644
---- a/sound/soc/sof/mediatek/mt8186/mt8186.c
-+++ b/sound/soc/sof/mediatek/mt8186/mt8186.c
-@@ -12,7 +12,6 @@
- #include <linux/delay.h>
- #include <linux/firmware.h>
- #include <linux/io.h>
--#include <linux/of_address.h>
- #include <linux/of_irq.h>
- #include <linux/of_platform.h>
- #include <linux/of_reserved_mem.h>
-@@ -46,7 +45,6 @@ static int platform_parse_resource(struct platform_device *pdev, void *data)
- {
- 	struct resource *mmio;
- 	struct resource res;
--	struct device_node *mem_region;
- 	struct device *dev = &pdev->dev;
- 	struct mtk_adsp_chip_info *adsp = data;
- 	int ret;
-@@ -57,14 +55,7 @@ static int platform_parse_resource(struct platform_device *pdev, void *data)
- 		return ret;
- 	}
- 
--	mem_region = of_parse_phandle(dev->of_node, "memory-region", 1);
--	if (!mem_region) {
--		dev_err(dev, "no memory-region sysmem phandle\n");
--		return -ENODEV;
--	}
--
--	ret = of_address_to_resource(mem_region, 0, &res);
--	of_node_put(mem_region);
-+	ret = of_reserved_mem_region_to_resource(dev->of_node, 1, &res);
- 	if (ret) {
- 		dev_err(dev, "of_address_to_resource sysmem failed\n");
- 		return ret;
-diff --git a/sound/soc/sof/mediatek/mt8195/mt8195.c b/sound/soc/sof/mediatek/mt8195/mt8195.c
-index 3b3582d74510..4d6e9300a9c0 100644
---- a/sound/soc/sof/mediatek/mt8195/mt8195.c
-+++ b/sound/soc/sof/mediatek/mt8195/mt8195.c
-@@ -12,7 +12,6 @@
- #include <linux/delay.h>
- #include <linux/firmware.h>
- #include <linux/io.h>
--#include <linux/of_address.h>
- #include <linux/of_irq.h>
- #include <linux/of_platform.h>
- #include <linux/of_reserved_mem.h>
-@@ -46,7 +45,6 @@ static int platform_parse_resource(struct platform_device *pdev, void *data)
- {
- 	struct resource *mmio;
- 	struct resource res;
--	struct device_node *mem_region;
- 	struct device *dev = &pdev->dev;
- 	struct mtk_adsp_chip_info *adsp = data;
- 	int ret;
-@@ -57,14 +55,7 @@ static int platform_parse_resource(struct platform_device *pdev, void *data)
- 		return ret;
- 	}
- 
--	mem_region = of_parse_phandle(dev->of_node, "memory-region", 1);
--	if (!mem_region) {
--		dev_err(dev, "no memory-region sysmem phandle\n");
--		return -ENODEV;
--	}
--
--	ret = of_address_to_resource(mem_region, 0, &res);
--	of_node_put(mem_region);
-+	ret = of_reserved_mem_region_to_resource(dev->of_node, 1, &res);
- 	if (ret) {
- 		dev_err(dev, "of_address_to_resource sysmem failed\n");
- 		return ret;
--- 
-2.47.2
+> At runtime, I've done basic smoke testing on an x86 VM in the Azure
+> cloud that has a Mellanox NIC VF and two NVMe devices as PCI devices.
+> So far everything looks good. But I'm still doing additional testing, and
+> I want to also test on an ARM64 VM. Please give me another day or two
+> to be completely satisfied.
 
+Sure.
+>> +static void hv_pcie_domain_free(struct irq_domain *d, unsigned int virq, unsigned int nr_irqs)
+>> +{
+>> +	struct msi_domain_info *info = d->host_data;
+>> +
+>> +	for (int i = 0; i < nr_irqs; i++)
+>> +		hv_msi_free(d, info, virq + i);
+>> +
+>> +	irq_domain_free_irqs_top(d, virq, nr_irqs);
+>
+> This code can be built as a module, so irq_domain_free_irqs_top() needs to be
+> exported, which it currently is not.
+
+Nam, can you please create a seperate patch, which exports this and take
+care of the conflict?
+
+Thanks,
+
+        tglx
 
