@@ -4,122 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C594BC77B7C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 10:27:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B66FAC77B7C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 11:53:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uIu44BVx7umB6WKEOOFl7I+1RhsnHSgM1SeyJ8yQlcQ=; b=bfh8lz1ojKFkINejtvV3ga9GTO
-	m9Hbk9AvleAi6KskSeV96IHMEC+LsnUBP4wo9EAy+a4bBPRfPrvSxdBEKkctt//u9S84uuQz0lSYt
-	TYCVjTULaR494jQbXzwZD6u/HSDHn0bkv0B0DTzg4ztrusoZYTqFYTULcBnXrqMbAhSmaienG+e2s
-	K4wqkwJbADhn2z6qIsquuEg8xaSUDCX40yNoDPv5WcVpbw8ZYOizFfw/OhIVLgrH1YIQgtKc4TUXx
-	g2a68I/Jw5oGP5jjt2VSi5VkborkYDaVgWvW7gslI/WoweX3rguwyWXKsXrpyN4IeojySl3iK+jz/
-	micccRBg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PUMUxTQyz4Rw+I/k6r4nKllDMvLQcH1q/9NQSkvh/Tc=; b=Aq7qh8S5BBNaipQ3lb5rSbFKN+
+	KdjQzXMo68ZCM7HBRORYCWJE3sfaw5usrhivlHwUsah0sPuRKv6r6dOY80oDY7hxYyEPXTH+BZcV2
+	Oag7zw+42hV1qPNop+d/ySHLD953OthWctX4bOJ1DfREUZOyaBlH9Ww9yqiCvIoBIptXJlw1Lod2d
+	ZoEhssaWfcOTUnKTLXhLxpeGjnfL0YojnnxNgLUmfi8+Gks5zbLbstZ32B072Xl2tWIm8KEm1x5ZO
+	33fMEZ3u1xY1VisbwhqW9kH+eJH1nud5ijJHtNEi2xX5rT45UVaJLszFsCxCklpfDTJoGQb5euwht
+	DAXc2ZIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXH9w-0000000AzCl-3HFQ;
-	Thu, 03 Jul 2025 10:27:16 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1uXIVK-0000000BEK6-3TRJ;
+	Thu, 03 Jul 2025 11:53:26 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXH7Z-0000000AyTM-1sNR;
-	Thu, 03 Jul 2025 10:24:50 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id CCC5E5C03B5;
-	Thu,  3 Jul 2025 10:24:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 74F69C4CEF1;
-	Thu,  3 Jul 2025 10:24:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751538288;
-	bh=k4+6WuZl1JFuQMq5bahDJoYnn3TBUy2TMNw/4Wabxqw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=krAAxnOYouM5U1/q0ftUuPyl+7q4y2XMy9vaLMYA2uC8XRQ0IsPHVw5mAsxQimOG7
-	 5XtPhrzPMBKpicendXu+uVma6GANLTbQ4DSkocTcrTUI7uE/KWotvBNCxk8JAnM8rP
-	 UMfQalkC33lvIaGAPy/DngGRO4fJBUudjO+CxStcaxsnp0IJGxvLAKdsQqZdTTs/sq
-	 FF+4MIWta8HEMfuYapcZd1YYKGNjHbAM6RMtiKZM57rpsCoy/VenMTDu34//2L8X13
-	 Xe3RJbnrs3VopOeR0XGpONh3X64J1kX0YGCV+1idryHh3kM81D/kgiWnSHo2Gdp/Ce
-	 F5U++EhAEGvIw==
-Message-ID: <8b8a58f0-9e18-47d6-8382-1d16d630ea15@kernel.org>
-Date: Thu, 3 Jul 2025 12:24:38 +0200
+	id 1uXHLW-0000000B1qj-1kVn;
+	Thu, 03 Jul 2025 10:39:16 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1751539145; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=OGmTYjb87a/HQQfJ80nuoMM3J5giu9DFlFLheBZM1lWvnWDiOMp9wWhc6sM77tEy1ydXz087rntZgP0XRPFayh7/+6AIYl4/GsM1wkQ3n8qa6H0FCKLoRUVY6HRRJ61CZ9b1OB/QBYNTWJ3UA09pcCeMVrIaAE3yG/LAQMsMunA=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1751539145; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=PUMUxTQyz4Rw+I/k6r4nKllDMvLQcH1q/9NQSkvh/Tc=; 
+	b=gYW8iVfmd0xLbwpe/lltOymsMhP2xnfMuf9kG5gDgz4TIM77kd5B/HOrZYUOxLvR/HxU5dRuW5kbHKrZAECfrY4FR6TvgZRFrBMwIyVjXu0l4aNreUspfiSwGUYHgp026ULp0m84Y1wDGwJtZOeb9kzDr9ML2p9IyKB0j+jh7IE=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
+	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1751539145;
+	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
+	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
+	bh=PUMUxTQyz4Rw+I/k6r4nKllDMvLQcH1q/9NQSkvh/Tc=;
+	b=Ua4joRz7J0WXVyQAc9oiuwImuog9VPquGVoKz8hsGX4MlyXyvGKyYEWhXUMYSB1b
+	bxWzSzqxKFQXqxPM/+iZ+zse3v9BlcQY/CYJ239YdacuajaqPPZhXqldqhvDkvEt+pJ
+	elYxIhb16kp8exk5hBD/X4HuM6rC5REb8wCqfDBU=
+Received: by mx.zohomail.com with SMTPS id 1751539143453232.01329008697712;
+	Thu, 3 Jul 2025 03:39:03 -0700 (PDT)
+Message-ID: <8958966b96140aaaae97b480b7a6c1698a6d2ae2.camel@collabora.com>
+Subject: Re: [PATCH] MFD: mt6397: do not use generic name for keypad
+ sub-devices
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Lee Jones <lee@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	 <angelogioacchino.delregno@collabora.com>, Yassine Oudjana
+	 <y.oudjana@protonmail.com>, =?ISO-8859-1?Q?N=EDcolas?= "F. R. A. Prado"
+	 <nfraprado@collabora.com>, Fabien Parent <fparent@baylibre.com>, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Date: Thu, 03 Jul 2025 12:38:59 +0200
+In-Reply-To: <r4k3pgd3ew3ypne7ernxuzwgniiyvzosbce4cfajbcu7equblt@yato35tjb3lw>
+References: <r4k3pgd3ew3ypne7ernxuzwgniiyvzosbce4cfajbcu7equblt@yato35tjb3lw>
+Organization: Collabora Ltd
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/2] dt-bindings: dsp: mediatek: add mt8196 dsp
- document
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "hailong.fan" <hailong.fan@mediatek.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Liam Girdwood <lgirdwood@gmail.com>,
- Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
- Bard Liao <yung-chuan.liao@linux.intel.com>,
- Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
- Daniel Baluta <daniel.baluta@nxp.com>,
- Kai Vehmanen <kai.vehmanen@linux.intel.com>,
- Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
- Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- sound-open-firmware@alsa-project.org, linux-sound@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20250703075632.20758-1-hailong.fan@mediatek.com>
- <20250703075632.20758-2-hailong.fan@mediatek.com>
- <defd70cb-4351-4b0b-b4d0-dd1ff831615c@kernel.org>
- <61784658-c71d-458b-8934-5f5db2330bc0@collabora.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <61784658-c71d-458b-8934-5f5db2330bc0@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250703_032449_586626_5BCAFFCA 
-X-CRM114-Status: UNSURE (   7.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250703_033914_519724_D033AAB5 
+X-CRM114-Status: GOOD (  22.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,35 +83,115 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 03/07/2025 11:05, AngeloGioacchino Del Regno wrote:
->>> +
->>> +  clocks:
->>> +    items:
->>> +      - description: mux for dsp clock
->>> +      - description: 26M clock
->>> +      - description: ADSP PLL clock
->>> +
->>> +  clock-names:
->>> +    items:
->>> +      - const: adsp_sel
->>
->> Isn't this called audiodsp in other bindings?
->>
->>> +      - const: clk26m
->>
->> Don't use frequencies. How is the pin or input called in datasheet? How
->> other devices call it?
-> 
-> In the datasheet, this is called.... CLK26M (really).
-> 
-OK, this is a valid argument, however we still try to unify the inputs
-so bindings can share such pieces. It is discouraged to have similar
-devices with different bindings in only one place: clk26m -> clk27m or
-whatever other number.
+Hi Dmitry,
 
-Common is also to name the clock input based on the purpose (like bus, ref).
+On Mon, 2025-06-30 at 16:01 -0700, Dmitry Torokhov wrote:
+> Do not use "mtk-pmic-keys" when creating sub-device for the keypad to
+> make sure the keypad driver will only bind to the sub-device if it
+> has
+> support for the variant/has matching compatible.
+>=20
+> Reported-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+> Fixes: 6e31bb8d3a63 ("mfd: mt6397: Add initial support for MT6328")
+> Fixes: de58cee8c6b8 ("mfd: mt6397-core: Add MT6357 PMIC support")
+> Fixes: 4a901e305011 ("mfd: mt6397-core: Add resources for PMIC keys
+> for MT6359")
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+> ---
+>=20
+> This is not tested so if someone with hardware could try it out that
+> would be great. I *think* it should work...
+>=20
+> =C2=A0drivers/mfd/mt6397-core.c | 12 ++++++------
+> =C2=A01 file changed, 6 insertions(+), 6 deletions(-)
+>=20
+> diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
+> index 5f8ed8988907..3e58d0764c7e 100644
+> --- a/drivers/mfd/mt6397-core.c
+> +++ b/drivers/mfd/mt6397-core.c
+> @@ -136,7 +136,7 @@ static const struct mfd_cell mt6323_devs[] =3D {
+> =C2=A0		.name =3D "mt6323-led",
+> =C2=A0		.of_compatible =3D "mediatek,mt6323-led"
+> =C2=A0	}, {
+> -		.name =3D "mtk-pmic-keys",
+> +		.name =3D "mt6323-keys",
+> =C2=A0		.num_resources =3D ARRAY_SIZE(mt6323_keys_resources),
+> =C2=A0		.resources =3D mt6323_keys_resources,
+> =C2=A0		.of_compatible =3D "mediatek,mt6323-keys"
+> @@ -153,7 +153,7 @@ static const struct mfd_cell mt6328_devs[] =3D {
+> =C2=A0		.name =3D "mt6328-regulator",
+> =C2=A0		.of_compatible =3D "mediatek,mt6328-regulator"
+> =C2=A0	}, {
+> -		.name =3D "mtk-pmic-keys",
+> +		.name =3D "mt6328-keys",
+> =C2=A0		.num_resources =3D ARRAY_SIZE(mt6328_keys_resources),
+> =C2=A0		.resources =3D mt6328_keys_resources,
+> =C2=A0		.of_compatible =3D "mediatek,mt6328-keys"
+> @@ -175,7 +175,7 @@ static const struct mfd_cell mt6357_devs[] =3D {
+> =C2=A0		.name =3D "mt6357-sound",
+> =C2=A0		.of_compatible =3D "mediatek,mt6357-sound"
+> =C2=A0	}, {
+> -		.name =3D "mtk-pmic-keys",
+> +		.name =3D "mt6357-keys",
+> =C2=A0		.num_resources =3D ARRAY_SIZE(mt6357_keys_resources),
+> =C2=A0		.resources =3D mt6357_keys_resources,
+> =C2=A0		.of_compatible =3D "mediatek,mt6357-keys"
+> @@ -196,7 +196,7 @@ static const struct mfd_cell mt6331_mt6332_devs[]
+> =3D {
+> =C2=A0		.name =3D "mt6332-regulator",
+> =C2=A0		.of_compatible =3D "mediatek,mt6332-regulator"
+> =C2=A0	}, {
+> -		.name =3D "mtk-pmic-keys",
+> +		.name =3D "mt6331-keys",
+> =C2=A0		.num_resources =3D ARRAY_SIZE(mt6331_keys_resources),
+> =C2=A0		.resources =3D mt6331_keys_resources,
+> =C2=A0		.of_compatible =3D "mediatek,mt6331-keys"
+> @@ -240,7 +240,7 @@ static const struct mfd_cell mt6359_devs[] =3D {
+> =C2=A0	},
+> =C2=A0	{ .name =3D "mt6359-sound", },
+> =C2=A0	{
+> -		.name =3D "mtk-pmic-keys",
+> +		.name =3D "mt6359-keys",
+> =C2=A0		.num_resources =3D ARRAY_SIZE(mt6359_keys_resources),
+> =C2=A0		.resources =3D mt6359_keys_resources,
+> =C2=A0		.of_compatible =3D "mediatek,mt6359-keys"
+> @@ -272,7 +272,7 @@ static const struct mfd_cell mt6397_devs[] =3D {
+> =C2=A0		.name =3D "mt6397-pinctrl",
+> =C2=A0		.of_compatible =3D "mediatek,mt6397-pinctrl",
+> =C2=A0	}, {
+> -		.name =3D "mtk-pmic-keys",
+> +		.name =3D "mt6397-keys",
+> =C2=A0		.num_resources =3D ARRAY_SIZE(mt6397_keys_resources),
+> =C2=A0		.resources =3D mt6397_keys_resources,
+> =C2=A0		.of_compatible =3D "mediatek,mt6397-keys"
+> --=20
+> 2.50.0.727.gbf7dc18ff4-goog
+>=20
+Thanks for the patch.
 
+I've tested it with a kernel based on next-20250702 on both Mediatek
+Genio 350-EVK and Genio 1200-EVK boards with mtk-pmic-keys driver
+enabled either as builtin or module.
 
-Best regards,
-Krzysztof
+With the Genio 350-EVK, the mtk-pmic-keys driver probes OK:=20
+```
+[    0.601874] input: mtk-pmic-keys as
+/devices/platform/soc/1000d000.pwrap/1000d000.pwrap:pmic/mt6357-
+keys/input/input0
+```
+The keys work too.
+
+For the Genio 1200-EVK, it fails to probe as expected (because
+'mediatek,mt6359-keys' compatible is missing) and there is indeed no
+kernel panic in the builtin case (the issue I reported with my patch)
+```
+[    0.459178] mt6359-keys: Failed to locate of_node [id: -1]
+```
+
+Tested-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com> # on
+Mediatek Genio 350-EVK and Genio 1200-EVK
+
+Regards,
+Louis-Alexis
 
