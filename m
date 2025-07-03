@@ -4,84 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65480C83F05
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 22:06:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D367BC83F03
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 22:11:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=z8GgfWrnJFJHxADsbByj/O1WY+W+lK44BD1usBbr6PQ=; b=X3rUq5KU7rmbIp
-	ZDU4+RnFdHWJ0ygttb3F9/LqyPo/36jcaD3smBgMar9/CwkSsqtgcrOlArHR8MzwKVsFgPgPNtD6z
-	Zg0N2SbSj3xwxtofgj7qa+I28ylf/Mt5Ye/rempSDXpPA6rysFmEekymR/3p0toxKth5FhYRyTCId
-	Lreg3n/YD11JE82yNPstzvoGKLs1RTh95vreoIwjf9b8PcSZ3IYXjZ3T0eUhZu1yGGN0U4k0hT0Ns
-	4T9iGKYa3K8AZ/drLEb/KpHN25DFW0SApG8akbUvcpgbmAwa/RpHjq+6axF2TqBvDN9C4EdugGmBm
-	TR6mXYtO4GRUfBZmVFBQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=22BvjIts/tRLjOiRSQ0ydnh8aTC8pvyJ/BDnwvoxbN8=; b=px4j9riwVu3zAcdpiZTs5arYVz
+	IOcc4Y+qbWyDuX7elElqCuB6ZQ74wmpw6qU8ln6GZwGU40dZ63vPPwlOAqXqnQMCRMg/hvMD8RJGf
+	f/beB5QEobLfXpUkuOH1bUEa7erhOZn0ttnhAKi1A34JGWRhXaTghssYHi86zd6XUd6xSiDN1U2KV
+	zQe1DeyQYb1/xeD5ABF01UUycyiTowlJDLLJ4C3hKAco0tduyAsJd56N6GBZYGzf2ZhOZxvcd7UK7
+	iEVnbq5LUC3v1+P/eKs7PkNIgmeBG5ag9lgeqjcLAvM7GlXzu3y8ZaOb54O5M+1mijjTOH8Ew94ol
+	tZAqjxPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXS4g-0000000CgF4-3S7i;
-	Thu, 03 Jul 2025 22:06:34 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uXS9t-0000000Ch97-3UfE;
+	Thu, 03 Jul 2025 22:11:57 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXNjA-0000000C8na-2MFz;
-	Thu, 03 Jul 2025 17:28:04 +0000
+	id 1uXOly-0000000CFSK-05Is;
+	Thu, 03 Jul 2025 18:35:03 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7831C61453;
-	Thu,  3 Jul 2025 17:28:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E5D73C4CEE3;
-	Thu,  3 Jul 2025 17:28:02 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 5B0CFA5388A;
+	Thu,  3 Jul 2025 18:35:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D2872C4CEE3;
+	Thu,  3 Jul 2025 18:35:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751563683;
-	bh=7DItQyd/iDiXcaQ1oEjOGACHtzfWw4WzefkYn8OTkwU=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=H5ZftxTxWMfwxHZ+Pz3upY30k01iBoXdImqR+W/HMOoyYzD3f9V7nCF4lK/kiNDZk
-	 Iv/a4u5MSqT8IyVdWMKt/77YNztWhnMVkI9jWlOVKXqlAoxQpMObMsOsZNgt3mrBzd
-	 azBm0mh/xpH1TaR6W097mqBwLGUYZw+hfLFuqmy0dHTsMlEx3NfczGuOn3DQJBYmTs
-	 rmwl0RQjoupydZDcb1P37q76NVU3kFSi5kZwkrCDNvz1ducn1Tc2kKbXh0JmDQBSVI
-	 hQjavWGtQqoz8VzpB9ZusWsjtax/P5fIQ0C+xaskpPdNwILfdXtRyVYmu4AXYp6DXJ
-	 eN5ZOW0iYQJgA==
-Date: Thu, 3 Jul 2025 12:28:01 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Nam Cao <namcao@linutronix.de>
-Cc: Marc Zyngier <maz@kernel.org>, Thomas Gleixner <tglx@linutronix.de>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
-	Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>,
-	Hou Zhiqiang <Zhiqiang.Hou@nxp.com>,
-	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
-	Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>,
-	"K . Y . Srinivasan" <kys@microsoft.com>,
-	Haiyang Zhang <haiyangz@microsoft.com>,
-	Wei Liu <wei.liu@kernel.org>, Dexuan Cui <decui@microsoft.com>,
-	Joyce Ooi <joyce.ooi@intel.com>, Jim Quinlan <jim2101024@gmail.com>,
-	Nicolas Saenz Julienne <nsaenz@kernel.org>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Marek Vasut <marek.vasut+renesas@gmail.com>,
-	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
-	Michal Simek <michal.simek@amd.com>,
-	Daire McNamara <daire.mcnamara@microchip.com>,
-	Nirmal Patel <nirmal.patel@linux.intel.com>,
-	Jonathan Derrick <jonathan.derrick@linux.dev>,
+	s=k20201202; t=1751567701;
+	bh=YJKKfyjeTLipLIbW9YUX7ZZw5bOsRg+ciBYcLvfmROM=;
+	h=From:To:Cc:Subject:Date:From;
+	b=ZKXi/4onZSUjyQ1OleUJcYE4YmFwEh7X0nbKrfMVKwEdb+WXMe+PLMK0RKlWDNMKC
+	 YE2zVZ0LYm6EHbDuszGdMQlTDTfwKO5t/6iLAEKWdVw9ueQF59Zv40YOrbBgc+uz1Q
+	 l8OxmobvEIGzFLRgysUpM+9RJe/Q/h4amADhuSfztU3fUOxteU3y/rXq2Q82APsT/J
+	 7Oxe5n4nPWhns8rAza+Vzf7GuTI3RmSLC4kBdKpKx+cEF4BLaV0PHb6RpkHYLk2PK2
+	 gJ4o/B3a440ZAytJe204t2wQF+DF9ivpfiyDXnKyxaLOpIdwtPTSkxS2zW9NVCLjge
+	 JQLSDIdM5QfBQ==
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Felix Fietkau <nbd@nbd.name>,
+	Sean Wang <sean.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org, linux-hyperv@vger.kernel.org,
-	linux-rpi-kernel@lists.infradead.org,
+	Alex Elder <elder@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org
-Subject: Re: [PATCH 00/16] PCI: MSI parent domain conversion
-Message-ID: <20250703172801.GA1934994@bhelgaas>
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] net: Use of_reserved_mem_region_to_resource{_byname}() for "memory-region"
+Date: Thu,  3 Jul 2025 13:34:57 -0500
+Message-ID: <20250703183459.2074381-1-robh@kernel.org>
+X-Mailer: git-send-email 2.47.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1750858083.git.namcao@linutronix.de>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250703_113502_189296_B39B1B78 
+X-CRM114-Status: GOOD (  20.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,68 +80,230 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 26, 2025 at 04:47:50PM +0200, Nam Cao wrote:
-> The initial implementation of PCI/MSI interrupt domains in the hierarchical
-> interrupt domain model used a shortcut by providing a global PCI/MSI
-> domain.
-> 
-> This works because the PCI/MSI[X] hardware is standardized and uniform, but
-> it violates the basic design principle of hierarchical interrupt domains:
-> Each hardware block involved in the interrupt delivery chain should have a
-> separate interrupt domain.
-> 
-> For PCI/MSI[X], the interrupt controller is per PCI device and not a global
-> made-up entity.
-> 
-> Unsurprisingly, the shortcut turned out to have downsides as it does not
-> allow dynamic allocation of interrupt vectors after initialization and it
-> prevents supporting IMS on PCI. For further details, see:
-> 
-> https://lore.kernel.org/lkml/20221111120501.026511281@linutronix.de/
-> 
-> The solution is implementing per device MSI domains, this means the
-> entities which provide global PCI/MSI domain so far have to implement MSI
-> parent domain functionality instead.
-> 
-> This series converts the PCI controller drivers to implement MSI parent
-> domain.
-> 
->  drivers/pci/Kconfig                           |   1 +
->  drivers/pci/controller/Kconfig                |  11 +
->  drivers/pci/controller/dwc/Kconfig            |   1 +
->  .../pci/controller/dwc/pcie-designware-host.c |  68 ++----
->  drivers/pci/controller/dwc/pcie-designware.h  |   1 -
->  drivers/pci/controller/mobiveil/Kconfig       |   1 +
->  .../controller/mobiveil/pcie-mobiveil-host.c  |  42 ++--
->  .../pci/controller/mobiveil/pcie-mobiveil.h   |   1 -
->  drivers/pci/controller/pci-aardvark.c         |  59 ++---
->  drivers/pci/controller/pci-hyperv.c           |  98 ++++++--
->  drivers/pci/controller/pcie-altera-msi.c      |  44 ++--
->  drivers/pci/controller/pcie-brcmstb.c         |  44 ++--
->  drivers/pci/controller/pcie-iproc-msi.c       |  45 ++--
->  drivers/pci/controller/pcie-mediatek-gen3.c   |  67 ++---
->  drivers/pci/controller/pcie-mediatek.c        |  46 ++--
->  drivers/pci/controller/pcie-rcar-host.c       |  69 ++----
->  drivers/pci/controller/pcie-xilinx-dma-pl.c   |  48 ++--
->  drivers/pci/controller/pcie-xilinx-nwl.c      |  45 ++--
->  drivers/pci/controller/pcie-xilinx.c          |  55 +++--
->  drivers/pci/controller/plda/Kconfig           |   1 +
->  drivers/pci/controller/plda/pcie-plda-host.c  |  44 ++--
->  drivers/pci/controller/plda/pcie-plda.h       |   1 -
->  drivers/pci/controller/vmd.c                  | 229 +++++++++---------
->  23 files changed, 504 insertions(+), 517 deletions(-)
+Use the newly added of_reserved_mem_region_to_resource{_byname}()
+functions to handle "memory-region" properties.
 
-Looks good to me, thanks!  I think Mani will probably pick this up.
+The error handling is a bit different for mtk_wed_mcu_load_firmware().
+A failed match of the "memory-region-names" would skip the entry, but
+then other errors in the lookup and retrieval of the address would not
+skip the entry. However, that distinction is not really important.
+Either the region is available and usable or it is not. So now, errors
+from of_reserved_mem_region_to_resource() are ignored so the region is
+simply skipped.
 
-I might have included the specific "legacy MSI domain" thing you're
-replacing.  It looks like you're replacing pci_msi_create_irq_domain()
-with msi_create_parent_irq_domain()?
+Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+---
+ drivers/net/ethernet/airoha/airoha_npu.c    | 25 ++++++----------
+ drivers/net/ethernet/mediatek/mtk_wed.c     | 24 ++++------------
+ drivers/net/ethernet/mediatek/mtk_wed_mcu.c | 32 +++++++--------------
+ drivers/net/ipa/ipa_main.c                  | 12 ++------
+ 4 files changed, 27 insertions(+), 66 deletions(-)
 
-Minor merge conflict in pcie-mediatek-gen3.c with dcbea1c7e94e ("PCI:
-mediatek-gen3: Use dev_fwnode() for irq_domain_create_linear()").  No
-problem, we can easily fix that up.
+diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ethernet/airoha/airoha_npu.c
+index 0e5b8c21b9aa..4e8deb87f751 100644
+--- a/drivers/net/ethernet/airoha/airoha_npu.c
++++ b/drivers/net/ethernet/airoha/airoha_npu.c
+@@ -161,7 +161,7 @@ static int airoha_npu_send_msg(struct airoha_npu *npu, int func_id,
+ }
+ 
+ static int airoha_npu_run_firmware(struct device *dev, void __iomem *base,
+-				   struct reserved_mem *rmem)
++				   struct resource *res)
+ {
+ 	const struct firmware *fw;
+ 	void __iomem *addr;
+@@ -178,7 +178,7 @@ static int airoha_npu_run_firmware(struct device *dev, void __iomem *base,
+ 		goto out;
+ 	}
+ 
+-	addr = devm_ioremap(dev, rmem->base, rmem->size);
++	addr = devm_ioremap_resource(dev, res);
+ 	if (!addr) {
+ 		ret = -ENOMEM;
+ 		goto out;
+@@ -474,9 +474,8 @@ static const struct regmap_config regmap_config = {
+ static int airoha_npu_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+-	struct reserved_mem *rmem;
+ 	struct airoha_npu *npu;
+-	struct device_node *np;
++	struct resource res;
+ 	void __iomem *base;
+ 	int i, irq, err;
+ 
+@@ -498,15 +497,9 @@ static int airoha_npu_probe(struct platform_device *pdev)
+ 	if (IS_ERR(npu->regmap))
+ 		return PTR_ERR(npu->regmap);
+ 
+-	np = of_parse_phandle(dev->of_node, "memory-region", 0);
+-	if (!np)
+-		return -ENODEV;
+-
+-	rmem = of_reserved_mem_lookup(np);
+-	of_node_put(np);
+-
+-	if (!rmem)
+-		return -ENODEV;
++	err = of_reserved_mem_region_to_resource(dev->of_node, 0, &res);
++	if (err)
++		return err;
+ 
+ 	irq = platform_get_irq(pdev, 0);
+ 	if (irq < 0)
+@@ -539,12 +532,12 @@ static int airoha_npu_probe(struct platform_device *pdev)
+ 	if (err)
+ 		return err;
+ 
+-	err = airoha_npu_run_firmware(dev, base, rmem);
++	err = airoha_npu_run_firmware(dev, base, &res);
+ 	if (err)
+ 		return dev_err_probe(dev, err, "failed to run npu firmware\n");
+ 
+ 	regmap_write(npu->regmap, REG_CR_NPU_MIB(10),
+-		     rmem->base + NPU_EN7581_FIRMWARE_RV32_MAX_SIZE);
++		     res.start + NPU_EN7581_FIRMWARE_RV32_MAX_SIZE);
+ 	regmap_write(npu->regmap, REG_CR_NPU_MIB(11), 0x40000); /* SRAM 256K */
+ 	regmap_write(npu->regmap, REG_CR_NPU_MIB(12), 0);
+ 	regmap_write(npu->regmap, REG_CR_NPU_MIB(21), 1);
+@@ -552,7 +545,7 @@ static int airoha_npu_probe(struct platform_device *pdev)
+ 
+ 	/* setting booting address */
+ 	for (i = 0; i < NPU_NUM_CORES; i++)
+-		regmap_write(npu->regmap, REG_CR_BOOT_BASE(i), rmem->base);
++		regmap_write(npu->regmap, REG_CR_BOOT_BASE(i), res.start);
+ 	usleep_range(1000, 2000);
+ 
+ 	/* enable NPU cores */
+diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
+index 351dd152f4f3..73c26fcfd85e 100644
+--- a/drivers/net/ethernet/mediatek/mtk_wed.c
++++ b/drivers/net/ethernet/mediatek/mtk_wed.c
+@@ -1318,26 +1318,14 @@ mtk_wed_rro_ring_alloc(struct mtk_wed_device *dev, struct mtk_wed_ring *ring,
+ static int
+ mtk_wed_rro_alloc(struct mtk_wed_device *dev)
+ {
+-	struct reserved_mem *rmem;
+-	struct device_node *np;
+-	int index;
++	struct resource res;
++	int ret;
+ 
+-	index = of_property_match_string(dev->hw->node, "memory-region-names",
+-					 "wo-dlm");
+-	if (index < 0)
+-		return index;
+-
+-	np = of_parse_phandle(dev->hw->node, "memory-region", index);
+-	if (!np)
+-		return -ENODEV;
+-
+-	rmem = of_reserved_mem_lookup(np);
+-	of_node_put(np);
+-
+-	if (!rmem)
+-		return -ENODEV;
++	ret = of_reserved_mem_region_to_resource_byname(dev->hw->node, "wo-dlm", &res);
++	if (ret)
++		return ret;
+ 
+-	dev->rro.miod_phys = rmem->base;
++	dev->rro.miod_phys = res.start;
+ 	dev->rro.fdbk_phys = MTK_WED_MIOD_COUNT + dev->rro.miod_phys;
+ 
+ 	return mtk_wed_rro_ring_alloc(dev, &dev->rro.ring,
+diff --git a/drivers/net/ethernet/mediatek/mtk_wed_mcu.c b/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
+index c06e5ad18b01..8498b35ec7a6 100644
+--- a/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
++++ b/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
+@@ -234,25 +234,19 @@ int mtk_wed_mcu_msg_update(struct mtk_wed_device *dev, int id, void *data,
+ }
+ 
+ static int
+-mtk_wed_get_memory_region(struct mtk_wed_hw *hw, int index,
++mtk_wed_get_memory_region(struct mtk_wed_hw *hw, const char *name,
+ 			  struct mtk_wed_wo_memory_region *region)
+ {
+-	struct reserved_mem *rmem;
+-	struct device_node *np;
+-
+-	np = of_parse_phandle(hw->node, "memory-region", index);
+-	if (!np)
+-		return -ENODEV;
+-
+-	rmem = of_reserved_mem_lookup(np);
+-	of_node_put(np);
++	struct resource res;
++	int ret;
+ 
+-	if (!rmem)
+-		return -ENODEV;
++	ret = of_reserved_mem_region_to_resource_byname(hw->node, name, &res);
++	if (ret)
++		return 0;
+ 
+-	region->phy_addr = rmem->base;
+-	region->size = rmem->size;
+-	region->addr = devm_ioremap(hw->dev, region->phy_addr, region->size);
++	region->phy_addr = res.start;
++	region->size = resource_size(&res);
++	region->addr = devm_ioremap_resource(hw->dev, &res);
+ 
+ 	return !region->addr ? -EINVAL : 0;
+ }
+@@ -319,13 +313,7 @@ mtk_wed_mcu_load_firmware(struct mtk_wed_wo *wo)
+ 
+ 	/* load firmware region metadata */
+ 	for (i = 0; i < ARRAY_SIZE(mem_region); i++) {
+-		int index = of_property_match_string(wo->hw->node,
+-						     "memory-region-names",
+-						     mem_region[i].name);
+-		if (index < 0)
+-			continue;
+-
+-		ret = mtk_wed_get_memory_region(wo->hw, index, &mem_region[i]);
++		ret = mtk_wed_get_memory_region(wo->hw, mem_region[i].name, &mem_region[i]);
+ 		if (ret)
+ 			return ret;
+ 	}
+diff --git a/drivers/net/ipa/ipa_main.c b/drivers/net/ipa/ipa_main.c
+index f25f6e2cf58c..25500c5a6928 100644
+--- a/drivers/net/ipa/ipa_main.c
++++ b/drivers/net/ipa/ipa_main.c
+@@ -9,7 +9,7 @@
+ #include <linux/io.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+-#include <linux/of_address.h>
++#include <linux/of_reserved_mem.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/types.h>
+@@ -586,7 +586,6 @@ static void ipa_deconfig(struct ipa *ipa)
+ static int ipa_firmware_load(struct device *dev)
+ {
+ 	const struct firmware *fw;
+-	struct device_node *node;
+ 	struct resource res;
+ 	phys_addr_t phys;
+ 	const char *path;
+@@ -594,14 +593,7 @@ static int ipa_firmware_load(struct device *dev)
+ 	void *virt;
+ 	int ret;
+ 
+-	node = of_parse_phandle(dev->of_node, "memory-region", 0);
+-	if (!node) {
+-		dev_err(dev, "DT error getting \"memory-region\" property\n");
+-		return -EINVAL;
+-	}
+-
+-	ret = of_address_to_resource(node, 0, &res);
+-	of_node_put(node);
++	ret = of_reserved_mem_region_to_resource(dev->of_node, 0, &res);
+ 	if (ret) {
+ 		dev_err(dev, "error %d getting \"memory-region\" resource\n",
+ 			ret);
+-- 
+2.47.2
 
-The "++i" in vmd.c stuck out to me since "i++" is so much more common.
-
-Acked-by: Bjorn Helgaas <bhelgaas@google.com>
 
