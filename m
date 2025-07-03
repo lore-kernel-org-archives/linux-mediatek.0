@@ -4,112 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3830C83F03
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 22:38:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7253C83F03
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 22:39:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:To:From:Reply-To:Cc:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DTXvd5Uvp6Q4AKEPN0WQMwq/tMxtiUVrV4mMQxECWg4=; b=MnKgbLiwWIiYNkA7zT5RXlmTu/
-	zqfqXlj1l2UQ8/Lt4gUczygoGdvIK+NMNn+EB0tTZ5Yt/OKy6IRQ0zuHj354C9F8E6EzzRp1kTaiR
-	NFQY6GNxsQVMiRP4ghNvGBDq6f2uzhPJQvYc12d0QR8NvTDcyCRNuKbIgkxgNEFm6KZ83hK01en65
-	3s2kOfpFVCdIHOFtNaK+LFbZNX+1kJi/UULGsw+dFqfCSwwPQWUCY6zS1gpD91Pnb8kTh6elW54aU
-	zoblyGSpoeVjlhUaIiQjda+fqYE5Q5vjmU2GqNQAa9zxMRWw5mQ1v11UM0AIf0WPKHnbNtfbQf66y
-	tNzGoO3Q==;
+	bh=IuSfHDCBdrHLll9p6MJyRsE2HoBAkIn29Et99Ze6jio=; b=ayYIttXCoaY3UokzkmA96NrGXx
+	le6faI9PeZyVZOoKqK/Mn8jjKDMhQm2zpF8nZb4Z+vQwlva8cxToH4Y51KD+rvGeALMcedcaxURfc
+	NZZ9BwI8EbulsahtjgjYSshnP5FS8R5fTYzj3mGISuNNSAR2KLtObGIYaZOSpCAyoXonQ61/kDz9k
+	szNYWLy/DX0iuNhhaRliiknsZdeXwxN0AJjMquyLQl1Fu2DPu5h78asP0nylQ90uow9lTJVrf9St/
+	vBDB5m9nNv9LHG7UyqNWmw/+WI1mAEWBdJidPjUk5HmMNkekVG5s33XlQpzlTUUfdldyKJyXXOQnb
+	3V4bKqHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXSZy-0000000CkKW-3zxE;
-	Thu, 03 Jul 2025 22:38:54 +0000
-Received: from casper.infradead.org ([90.155.50.34])
+	id 1uXSaV-0000000CkSn-2pn7;
+	Thu, 03 Jul 2025 22:39:27 +0000
+Received: from galois.linutronix.de ([193.142.43.55])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXR3P-0000000CZCf-2o6c;
-	Thu, 03 Jul 2025 21:01:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=DTXvd5Uvp6Q4AKEPN0WQMwq/tMxtiUVrV4mMQxECWg4=; b=eHbkUpvZHga1VvDSiTyTIqOhp0
-	BJJUJ/s7r/Oti4BL8fowmXQWpzxgutuhwJM+dd9+AR9lu0KpvQADtGj8/M4bZfweCbdJ9zlqNudnm
-	bfHFw1/S5J9UG1XJ2SuwVRq5zrHerOBi8efz3j5jDGB0+aF1PmAVgdP/FCVDbnzax6i71rc8YApIy
-	hOSa1ET/sO1s72kMF8LBKo6/5ccmNvKZVfVRZ7tMcVVir8Zg3RPe2qA7ZWft0ORjkEIsjr5M6y2oT
-	8kY7T4LY5+93Ns0gyKmxwa6YZ96Rz/VPzTZN+1/j59Hb13+Ddu1A/dUDs8xGpLkkIY7xiXzx4kCE7
-	RTUjl/pg==;
-Received: from galois.linutronix.de ([2a0a:51c0:0:12e:550::1])
-	by casper.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXR3K-0000000EPXR-37Bs;
-	Thu, 03 Jul 2025 21:01:10 +0000
-Date: Thu, 3 Jul 2025 23:00:56 +0200
+	id 1uXRNK-0000000Cbkp-2sQT;
+	Thu, 03 Jul 2025 21:21:48 +0000
+From: Thomas Gleixner <tglx@linutronix.de>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020; t=1751576458;
+	s=2020; t=1751577705;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 to:to:cc:mime-version:mime-version:content-type:content-type:
 	 in-reply-to:in-reply-to:references:references;
-	bh=DTXvd5Uvp6Q4AKEPN0WQMwq/tMxtiUVrV4mMQxECWg4=;
-	b=dTn5r7531nUAApuRrJVEdSU1yHQgN8OqgV/tVp18i0lXAnb6BkUZgnHlf7StaSFIv0Jz9M
-	BNNct7Wcf3Poy9tY7EAT9Iv0/Znzi3/8d4/cCyrLJ+jswLaS3RHVFrD2HuVu8VHATIkPvO
-	XQTJ9RS88X/x7KoggIeL5yOlHBDZ3b+BN42a8aWclYymUVLxZ1arwKhzpODAoDqgufFswo
-	8UNzyNBkAaC/orKnvXhYvUMZGfJCQsiuDsvGprxUEc9UZHIGlhDHp19N2pX5+0YgB04iQw
-	uPk2PRvtk4WZCK2bI5q+tmxx3ytZUeE2DMLnQjzoCEl2sh5+gpYGBiLSlHMbNA==
+	bh=IuSfHDCBdrHLll9p6MJyRsE2HoBAkIn29Et99Ze6jio=;
+	b=IYFrFYQO1tfIhbWjskMeQI3itoJRVBQPFIp4KWK/W9o2gLiFMGY1NsFToYDsjlvCKSiKHo
+	H2S4Qu1mRNSIt3K3en8Fh1k0EUCNuiIQJaqguEEqYDN0eXSMkVU4zsEn5aS0o20XQrSoUf
+	VVyJfxNZz6//D3xUnzWPRP/Dp/prbUDboTms9jp+MIO+uSt89tu1tJp9LJtuC14NEgOaQN
+	1yGyOAagwpTVosMu3JunoyyswO9/WeIV2NloYE8HhIgb3bCR/Fimti4aZo4pCwA3LLOMjb
+	hZ4JjzeQKhS3AD3KbXyzmYIuJREaDa0ph/YnxVF60rigy3hMwNijBHtxkTXxoA==
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020e; t=1751576458;
+	s=2020e; t=1751577705;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 to:to:cc:mime-version:mime-version:content-type:content-type:
 	 in-reply-to:in-reply-to:references:references;
-	bh=DTXvd5Uvp6Q4AKEPN0WQMwq/tMxtiUVrV4mMQxECWg4=;
-	b=mcFlxZK5m7AaTULHDD29cnWKaEO4XCMTydboJXdrQ9VKl2m7LlecU8z5SM+r0xOGESw1hx
-	APh3s/XqB5ssTKAA==
-From: Nam Cao <namcao@linutronix.de>
-To: Michael Kelley <mhklinux@outlook.com>
-Cc: Thomas Gleixner <tglx@linutronix.de>, Marc Zyngier <maz@kernel.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	"linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>,
-	Hou Zhiqiang <Zhiqiang.Hou@nxp.com>,
-	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
-	Pali =?iso-8859-1?Q?Roh=E1r?= <pali@kernel.org>,
-	"K . Y . Srinivasan" <kys@microsoft.com>,
-	Haiyang Zhang <haiyangz@microsoft.com>,
-	Wei Liu <wei.liu@kernel.org>, Dexuan Cui <decui@microsoft.com>,
-	Joyce Ooi <joyce.ooi@intel.com>, Jim Quinlan <jim2101024@gmail.com>,
-	Nicolas Saenz Julienne <nsaenz@kernel.org>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Marek Vasut <marek.vasut+renesas@gmail.com>,
-	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
-	Michal Simek <michal.simek@amd.com>,
-	Daire McNamara <daire.mcnamara@microchip.com>,
-	Nirmal Patel <nirmal.patel@linux.intel.com>,
-	Jonathan Derrick <jonathan.derrick@linux.dev>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"linux-hyperv@vger.kernel.org" <linux-hyperv@vger.kernel.org>,
-	"linux-rpi-kernel@lists.infradead.org" <linux-rpi-kernel@lists.infradead.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-renesas-soc@vger.kernel.org" <linux-renesas-soc@vger.kernel.org>
-Subject: Re: [PATCH 14/16] PCI: hv: Switch to msi_create_parent_irq_domain()
-Message-ID: <20250703210056.sDzAytHT@linutronix.de>
+	bh=IuSfHDCBdrHLll9p6MJyRsE2HoBAkIn29Et99Ze6jio=;
+	b=bWaXK53cGighMH1SvpiRBNIK5QAIv7RA0O/M2RZwhs34n1vzCdNAXb5cYJ922PNXjSOsGq
+	qbgroTxaCeSOdKCQ==
+To: Michael Kelley <mhklinux@outlook.com>, Nam Cao <namcao@linutronix.de>,
+ Marc
+ Zyngier <maz@kernel.org>, Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, Manivannan
+ Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, Bjorn Helgaas
+ <bhelgaas@google.com>, "linux-pci@vger.kernel.org"
+ <linux-pci@vger.kernel.org>, "linux-kernel@vger.kernel.org"
+ <linux-kernel@vger.kernel.org>, Karthikeyan Mitran
+ <m.karthikeyan@mobiveil.co.in>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>,
+ Thomas
+ Petazzoni <thomas.petazzoni@bootlin.com>, Pali =?utf-8?Q?Roh=C3=A1r?=
+ <pali@kernel.org>, "K
+ . Y . Srinivasan" <kys@microsoft.com>, Haiyang Zhang
+ <haiyangz@microsoft.com>, Wei Liu <wei.liu@kernel.org>, Dexuan Cui
+ <decui@microsoft.com>, Joyce Ooi <joyce.ooi@intel.com>, Jim Quinlan
+ <jim2101024@gmail.com>, Nicolas Saenz Julienne <nsaenz@kernel.org>,
+ Florian
+ Fainelli <florian.fainelli@broadcom.com>, Broadcom internal kernel review
+ list <bcm-kernel-feedback-list@broadcom.com>, Ray Jui <rjui@broadcom.com>,
+ Scott Branden <sbranden@broadcom.com>, Ryder Lee <ryder.lee@mediatek.com>,
+ Jianjun Wang <jianjun.wang@mediatek.com>, Marek Vasut
+ <marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda
+ <yoshihiro.shimoda.uh@renesas.com>, Michal Simek <michal.simek@amd.com>,
+ Daire McNamara <daire.mcnamara@microchip.com>, Nirmal Patel
+ <nirmal.patel@linux.intel.com>, Jonathan Derrick
+ <jonathan.derrick@linux.dev>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, "linux-hyperv@vger.kernel.org"
+ <linux-hyperv@vger.kernel.org>, "linux-rpi-kernel@lists.infradead.org"
+ <linux-rpi-kernel@lists.infradead.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-renesas-soc@vger.kernel.org" <linux-renesas-soc@vger.kernel.org>
+Subject: RE: [PATCH 14/16] PCI: hv: Switch to msi_create_parent_irq_domain()
+In-Reply-To: <SN6PR02MB41576745C28D8F49081B8E77D443A@SN6PR02MB4157.namprd02.prod.outlook.com>
 References: <cover.1750858083.git.namcao@linutronix.de>
  <024f0122314198fe0a42fef01af53e8953a687ec.1750858083.git.namcao@linutronix.de>
  <SN6PR02MB4157A6F9B2ABD3C69CE5B521D443A@SN6PR02MB4157.namprd02.prod.outlook.com>
  <87cyaht595.ffs@tglx>
  <SN6PR02MB41576745C28D8F49081B8E77D443A@SN6PR02MB4157.namprd02.prod.outlook.com>
+Date: Thu, 03 Jul 2025 23:21:44 +0200
+Message-ID: <87zfdlrmvr.ffs@tglx>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <SN6PR02MB41576745C28D8F49081B8E77D443A@SN6PR02MB4157.namprd02.prod.outlook.com>
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250703_220106_824542_852D0CF1 
-X-CRM114-Status: GOOD (  24.14  )
+X-CRM114-CacheID: sfid-20250703_142146_866610_E6AA0EB2 
+X-CRM114-Status: UNSURE (   9.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,65 +108,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 03, 2025 at 08:15:07PM +0000, Michael Kelley wrote:
+On Thu, Jul 03 2025 at 20:15, Michael Kelley wrote:
 > From: Thomas Gleixner <tglx@linutronix.de> Sent: Thursday, July 3, 2025 1:00 PM
-> > 
-> > On Thu, Jul 03 2025 at 17:41, Michael Kelley wrote:
-> > > From: Nam Cao <namcao@linutronix.de> Sent: Thursday, June 26, 2025 7:48 AM
-> > >>
-> > >> Move away from the legacy MSI domain setup, switch to use
-> > >> msi_create_parent_irq_domain().
-> > >
-> > > From a build standpoint, this patch does not apply cleanly to
-> > > linux-next20250630. See also an issue below where a needed irq
-> > > function isn't exported.
-> > 
-> > Does it conflict against the PCI tree?
-> 
+>> Does it conflict against the PCI tree?
+>
 > There's no conflict in the "next" or "for-linus" tags in
 > https://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git/.
-> 
+>
 > The conflict is with Patch 2 of this series:
-> 
+>
 > https://lore.kernel.org/linux-hyperv/1749650984-9193-1-git-send-email-shradhagupta@linux.microsoft.com/
-> 
+>
 > which is in netdev/net-next.
 
-I need some guidance here. If I make it apply cleanly to linux-next, it
-won't apply to pci tree.
+That's a trivial one. There are two ways to handle it:
 
-I saw this type of conflict being resolved during merging to Linus's tree.
-Shouldn't we do the same for this case?
+  1) Take it through the PCI tree and provide a conflict resolution for
+     linux-next and later for Linus as reference.
 
-> Michael
-> 
-> > 
-> > > At runtime, I've done basic smoke testing on an x86 VM in the Azure
-> > > cloud that has a Mellanox NIC VF and two NVMe devices as PCI devices.
-> > > So far everything looks good. But I'm still doing additional testing, and
-> > > I want to also test on an ARM64 VM. Please give me another day or two
-> > > to be completely satisfied.
+  2) Route it through the net-next tree with an updated patch.
 
-Good to hear, thanks!
+As there are no further dependencies (aside of the missing export which
+is needed anyway) it's obvious to pick #2 as it creates the least
+headaches. Assumed that the PCI folks have no objections.
 
-> > Sure.
-> > >> +static void hv_pcie_domain_free(struct irq_domain *d, unsigned int virq, unsigned int nr_irqs)
-> > >> +{
-> > >> +	struct msi_domain_info *info = d->host_data;
-> > >> +
-> > >> +	for (int i = 0; i < nr_irqs; i++)
-> > >> +		hv_msi_free(d, info, virq + i);
-> > >> +
-> > >> +	irq_domain_free_irqs_top(d, virq, nr_irqs);
-> > >
-> > > This code can be built as a module, so irq_domain_free_irqs_top() needs to be
-> > > exported, which it currently is not.
-> > 
-> > Nam, can you please create a seperate patch, which exports this and take
-> > care of the conflict?
+Michael, as you have resolved the conflict already, can you please
+either take care of it yourself or provide the resolution here as
+reference for Nam?
 
-Will do.
+Thanks,
 
-Best regards,
-Nam
+        tglx
 
