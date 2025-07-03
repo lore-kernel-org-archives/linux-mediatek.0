@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66828C77B7C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 15:33:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 570DBC83F03
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 15:35:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZIvwyQ4PUprtYpegCqSfNywCoxWQF3PgP8EXeWA7/BU=; b=OruEjcRqy/PBUhvff+IqQutzDh
-	US9IgU5WGeT3QTaXYb8zIC6TEmyCRKk7yOM+6q8NWV141kN9WsPbpU5Bd2Uuujf7gE/MmEY1EeicD
-	f9pVTrAKpA9hYl1+WuiNbU8eBP4hWjm2ke7S9YNRlr853WgmebPCgMBCrkuAHkRNUlOOfPnF2rZIj
-	bXNAwuWg85rgbmj9ONaHtEpGIbJKzSo0k35NQBLaOR19FC/h1O0naW3dKZL0Tdj5QBE/lH5F5qE/Z
-	9A9K+yeAZeGwJMEM3BlQG7sgYtOhnMAhYX/tza6vIJ0JTqZhXXpEL6cwExLpoG/t4ir7MfmKncpS9
-	blG/PkdQ==;
+	bh=81HmvwHeiUSGmL4dZb3PXIm6QmppJrUMFGfEmXnv22o=; b=fkS2qbhz1qe45J7rK8OKnKajxo
+	RpZfAXJ0fSC4miZ+WlrR6XGUGqYR/BQyaRVS/jN+yZfQWn6kH3SW08FX9R7HRLAjzlDv28XGHWJcz
+	hxCG1y7AyNHkiOv/F8cKlac31kV1XfxiLxkjwLXczgeYiwNfQdOplhkiQSPkQRd36Er+H9cSSEpUA
+	NAA8OpHlEt32g0cHDHD5HTdYAX/72byExcyauSIoZ1DfSAZiKVlp3xWDRVEIVNSd9fjv5hprIP0aD
+	/06FBD7y/9lp7blBsmc3H8/yXnT9RDmZljFW2QMH8m1zaQnRZubAnY2Egj+02mbdhcaab8wSL+7l+
+	UbKrec5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXLw2-0000000BpzL-3wdK;
-	Thu, 03 Jul 2025 15:33:14 +0000
+	id 1uXLyO-0000000BqTO-1KGg;
+	Thu, 03 Jul 2025 15:35:40 +0000
 Received: from galois.linutronix.de ([193.142.43.55])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXK5A-0000000BVo0-0P8X;
-	Thu, 03 Jul 2025 13:34:33 +0000
+	id 1uXK7e-0000000BWMo-3vrE;
+	Thu, 03 Jul 2025 13:37:08 +0000
 From: Thomas Gleixner <tglx@linutronix.de>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020; t=1751549670;
+	s=2020; t=1751549825;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 in-reply-to:in-reply-to:references:references;
-	bh=ZIvwyQ4PUprtYpegCqSfNywCoxWQF3PgP8EXeWA7/BU=;
-	b=l1udAsokKLScIuqBvN8DegegnRK49KLBCAG9FW+f93GZWXVy22m/JUJMzpZKqr3DX8VSMB
-	STSlh1a1KXjoDTb+Gx1SU6tNCMOhZPj+CArBPGQ45EBtN1Vt4DE7KCBq8jLXu79sPKoHeu
-	Fs91uIpUIN/PhcKQLGE/106p33KF/mxN2IlOOaGqbyrfMm3ISdeci1aP4IAwvjrRfobVHj
-	OXlDRtA2bDkYBIEnF0MLvV8G/TetnH/ZtFPRYj+3wNc4eDpFSKpJ6RPNplc64rQjKxaRgK
-	7XcDpYbDUt3yd6IF8rltbiBovk9J9B/r53Kox/ges44ZuFRAFqBEEQwVPBXVNw==
+	bh=81HmvwHeiUSGmL4dZb3PXIm6QmppJrUMFGfEmXnv22o=;
+	b=jPlD8resdPQkScUW8H+r89NtnlB219MoiJ/YnR9hyuhHe+XmwvqwrJk92WU7yjoFjzYWLy
+	BaMnX7X+9lPLrwOSdnnw1YCmaYuPss9YJmbwUMLyNevM/vvufC8TlQ1pH9/qfPxecTRgs5
+	dLbL0aTegfclO/rvENzRnIh45mTmsIhuzJrGeJ9gF7F8wnJxN9ublP00XeQLJZjdTBGhcr
+	QKTMoJmZAXMzqRkIV2K5vsfuHiMypGgCXumXCfK2jimOe7YQqVa6iWsGcYkRZ7EOG5Ea4U
+	inn89QrpwP4IdxEKkkLHhQ5RSts4S6c4W1Mon7P8r1X2pDKTdMRR/+4qTouolA==
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020e; t=1751549670;
+	s=2020e; t=1751549825;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 in-reply-to:in-reply-to:references:references;
-	bh=ZIvwyQ4PUprtYpegCqSfNywCoxWQF3PgP8EXeWA7/BU=;
-	b=fDwiMDAz/Q7eYBgrZ0taV3R9DNy4wR+6pGV4OJlldbXkJ3xPfiJNKJfVVOX2tncCUv3R4k
-	h+whtou+At064iDw==
+	bh=81HmvwHeiUSGmL4dZb3PXIm6QmppJrUMFGfEmXnv22o=;
+	b=rFlMcXtVEOh3SYdsFm5qqJb37aRdK7toIdXVLCjHNoOEx2tQ/KjUuH8sry3ci/ccMEdwrG
+	oWuuPvIAHCNYC5Aw==
 To: Nam Cao <namcao@linutronix.de>, Marc Zyngier <maz@kernel.org>, Lorenzo
  Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?=
  <kwilczynski@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>, Rob
@@ -73,17 +73,17 @@ To: Nam Cao <namcao@linutronix.de>, Marc Zyngier <maz@kernel.org>, Lorenzo
  linux-rpi-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-renesas-soc@vger.kernel.org
 Cc: Nam Cao <namcao@linutronix.de>
-Subject: Re: [PATCH 15/16] PCI: vmd: Convert to lock guards
-In-Reply-To: <836cca37449c70922a2bea1fb13f37940a7a7132.1750858083.git.namcao@linutronix.de>
+Subject: Re: [PATCH 16/16] PCI: vmd: Switch to msi_create_parent_irq_domain()
+In-Reply-To: <de3f1d737831b251e9cd2cbf9e4c732a5bbba13a.1750858083.git.namcao@linutronix.de>
 References: <cover.1750858083.git.namcao@linutronix.de>
- <836cca37449c70922a2bea1fb13f37940a7a7132.1750858083.git.namcao@linutronix.de>
-Date: Thu, 03 Jul 2025 15:34:29 +0200
-Message-ID: <877c0pv1ne.ffs@tglx>
+ <de3f1d737831b251e9cd2cbf9e4c732a5bbba13a.1750858083.git.namcao@linutronix.de>
+Date: Thu, 03 Jul 2025 15:37:04 +0200
+Message-ID: <874ivtv1j3.ffs@tglx>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250703_063432_271551_C85D8837 
-X-CRM114-Status: UNSURE (   4.93  )
+X-CRM114-CacheID: sfid-20250703_063707_107377_7622C400 
+X-CRM114-Status: UNSURE (   5.20  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -100,7 +100,9 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On Thu, Jun 26 2025 at 16:48, Nam Cao wrote:
-> Convert lock/unlock pairs to lock guard and tidy up the code.
+
+> Move away from the legacy MSI domain setup, switch to use
+> msi_create_parent_irq_domain().
 >
 > Signed-off-by: Nam Cao <namcao@linutronix.de>
 
