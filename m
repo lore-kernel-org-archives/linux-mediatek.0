@@ -4,69 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20704C83F03
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 17:02:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BA7FC83F04
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 17:06:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
-	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q/iOuHj5KX9GuXeKQABZ2gCw3mHlOv+e0egMHCqcqhc=; b=bI7jf45x4+9FbFCHDR7N0SWJYs
-	yph8mQhrPsxW6wvqdtjBqYs9IdDFacY6HXWxQm1eCtyC1rXoBofGJ1uXsEHD8tPkrE/Jl/yTEUPH/
-	DftgIKgNCtKd4iNpoXDnQEXewV0yShtjwDpnu9lA1J+rR2x8VW8wGtIdv1vElUVsKzkDdgaq1Wf0H
-	ubrwglrxw/ItyU6zRn11mj0y9+pUyCJTpZcC8KGBaQXSk6cFXM59E3rAiF27P21iUgkRvTPTlTts3
-	9LV1JAGQ/wXz01XHoZ9Zkp+6B3bxYYt6gShx61qhkJCgmzRmYsBY56I4M2lNdVMKIBfTAR2vM4oK4
-	UqgEcxSQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LkkfXkgiKSoWp3Wmt4rSi0jtVVgHMseHF6s00lnxL8c=; b=X9vgv1Rx5L+FmjNMH+eG+vYnbp
+	q9ulNobCGwqLCbwetdPFGTPjpJ8CNgaZ6ssoqfWeZO4af5nlvZoo35H3pfX0epQvb1Duh1MV7KFgy
+	BLroDNIx1zOsE9ICxW/jqKRnA/wVaPix/i1i9UCWijt5I8QSi0VGNDOvw7Bfj8msSicr8wnem+KiK
+	xwLQW6RQdOYoDk/O/071qU8431WVvKjdlAc6bvRQGpBRsmfVt72z4jCZh4hlqfIQAiGYbkOhFDG/D
+	PO8HBQ07PHzkT4YpC7IqaQ7x6ZCFV2wo3k+82y7yCE3w2f314lTuKtiunQ4njEb/EMPHYq1rDqVQO
+	6oAengDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXNK4-0000000C4GI-2MOv;
-	Thu, 03 Jul 2025 17:02:08 +0000
-Received: from relay16.mail.gandi.net ([217.70.178.236])
+	id 1uXNOh-0000000C4wh-165H;
+	Thu, 03 Jul 2025 17:06:55 +0000
+Received: from mgamail.intel.com ([198.175.65.9])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXKtC-0000000BezC-0CjS;
-	Thu, 03 Jul 2025 14:26:15 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 236EB449C8;
-	Thu,  3 Jul 2025 14:26:10 +0000 (UTC)
-From: Bastien Nocera <hadess@hadess.net>
-To: trivial@kernel.org,
-	Marcel Holtmann <marcel@holtmann.org>,
-	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sven Peter <sven@kernel.org>,
-	Janne Grunau <j@jannau.net>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	Neal Gompa <neal@gompa.dev>,
-	Johan Hedberg <johan.hedberg@gmail.com>,
-	Ingo Molnar <mingo@kernel.org>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	Bastien Nocera <hadess@hadess.net>,
-	Al Viro <viro@zeniv.linux.org.uk>,
-	Kees Cook <kees@kernel.org>,
-	Erick Archer <erick.archer@outlook.com>,
-	Chris Lu <chris.lu@mediatek.com>,
-	linux-bluetooth@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	asahi@lists.linux.dev
-Subject: [PATCH 7/7] Bluetooth: Fix typos
-Date: Thu,  3 Jul 2025 16:24:35 +0200
-Message-ID: <20250703142542.985248-8-hadess@hadess.net>
-X-Mailer: git-send-email 2.50.0
-In-Reply-To: <20250703142542.985248-1-hadess@hadess.net>
-References: <20250703142542.985248-1-hadess@hadess.net>
+	id 1uXKvO-0000000BfUM-0GqQ;
+	Thu, 03 Jul 2025 14:28:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1751552910; x=1783088910;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=wdOiIKGzccCM8RErNFNe99zd9fwOK9DCthug8lO8Z6o=;
+  b=IwNv9E0U6NE3SWqn75Xn1WOU5gl+/0Q8P1MmZ8G+YPwF/mUO104WrId5
+   uUTAilObIzCLF8+sBqO4X7Ne5jG7NagUAWLnuKsK8HVPDrCtXcEk2MWsS
+   DYJiTpQdLKBTaRBNx70QMGnyQ+bzNzZRybJo+zP7VfrgvisiItkbsp80n
+   hVxAON3e5v0oAPYl03S80l6da0PwNIVxW6UVOVU41+07JAouvZBusRM1d
+   G34Y/c7oEs0H2Xrled9Gd2DIkxBaFruVCVhb9Qao3UDiq0GfQLcsj47Yt
+   063RGyPYK6AxB30Sbe3wvLd/3d0xq8EARWALvSGZhF0okUnbDfLr1UGFD
+   A==;
+X-CSE-ConnectionGUID: q94PEfKORtWE8LzUuKvbzg==
+X-CSE-MsgGUID: 4UDKyhXYSo6Hf4DjMmIb/w==
+X-IronPort-AV: E=McAfee;i="6800,10657,11483"; a="76428403"
+X-IronPort-AV: E=Sophos;i="6.16,284,1744095600"; 
+   d="scan'208";a="76428403"
+Received: from fmviesa009.fm.intel.com ([10.60.135.149])
+  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Jul 2025 07:28:29 -0700
+X-CSE-ConnectionGUID: CYkZp2T+SbuWhmncdTXPFw==
+X-CSE-MsgGUID: WO/ooU8XSsS2eIyewNFEWg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,284,1744095600"; 
+   d="scan'208";a="154750352"
+Received: from smile.fi.intel.com ([10.237.72.52])
+  by fmviesa009.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Jul 2025 07:28:25 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.98.2)
+	(envelope-from <andriy.shevchenko@intel.com>)
+	id 1uXKvG-0000000CE9C-0huU;
+	Thu, 03 Jul 2025 17:28:22 +0300
+Date: Thu, 3 Jul 2025 17:28:21 +0300
+From: Andy Shevchenko <andriy.shevchenko@intel.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: jic23@kernel.org, dlechner@baylibre.com, nuno.sa@analog.com,
+	andy@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
+	conor+dt@kernel.org, matthias.bgg@gmail.com,
+	linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v2 4/6] iio: adc: mt6359: Move reference voltage to
+ platform data
+Message-ID: <aGaThTSAriz46D7T@smile.fi.intel.com>
+References: <20250703141146.171431-1-angelogioacchino.delregno@collabora.com>
+ <20250703141146.171431-5-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-GND-State: clean
-X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdefgddvtdehudcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfitefpfffkpdcuggftfghnshhusghstghrihgsvgenuceurghilhhouhhtmecufedtudenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffojghfggfgsedtkeertdertddtnecuhfhrohhmpeeurghsthhivghnucfpohgtvghrrgcuoehhrgguvghssheshhgruggvshhsrdhnvghtqeenucggtffrrghtthgvrhhnpeekteetgeettdehieduiedttdetffelleehtdejkeeluedvgfffvdevteetudfhkeenucfkphepvdgrtddumegvfeegmegvtgejfeemtghfvddtmeejudgurgemfegsugemvddtrgelmedufeefnecuvehluhhsthgvrhfuihiivgepieenucfrrghrrghmpehinhgvthepvdgrtddumegvfeegmegvtgejfeemtghfvddtmeejudgurgemfegsugemvddtrgelmedufeefpdhhvghlohepohhlihhmphhitgdpmhgrihhlfhhrohhmpehhrgguvghssheshhgruggvshhsrdhnvghtpdhnsggprhgtphhtthhopedvfedprhgtphhtthhopehtrhhivhhirghlsehkvghrnhgvlhdrohhrghdprhgtphhtthhopehmrghrtggvlheshhholhhtmhgrnhhnrdhorhhgpdhrtghpthhtoheplhhuihiirdguvghnthiisehgmhgrihhlrdgtohhmpdhrtghpthhtohepshgvrghnrdifrghnghesmhgvughirghtvghkrdgtohhmpdhrtghpthhtohepmhgrthhth
- hhirghsrdgsghhgsehgmhgrihhlrdgtohhmpdhrtghpthhtoheprghnghgvlhhoghhiohgrtggthhhinhhordguvghlrhgvghhnohestgholhhlrggsohhrrgdrtghomhdprhgtphhtthhopehsvhgvnheskhgvrhhnvghlrdhorhhgpdhrtghpthhtohepjhesjhgrnhhnrghurdhnvght
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250703141146.171431-5-angelogioacchino.delregno@collabora.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250703_072614_222408_43A1209C 
-X-CRM114-Status: GOOD (  17.80  )
+X-CRM114-CacheID: sfid-20250703_072830_147367_AF2448C1 
+X-CRM114-Status: UNSURE (   9.04  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,92 +95,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Found by codespell.
+On Thu, Jul 03, 2025 at 04:11:44PM +0200, AngeloGioacchino Del Regno wrote:
+> In preparation to add support for new PMICs, add a `vref_mv`
 
-Signed-off-by: Bastien Nocera <hadess@hadess.net>
----
- net/bluetooth/hci_conn.c  | 2 +-
- net/bluetooth/hci_event.c | 4 ++--
- net/bluetooth/hci_sync.c  | 2 +-
- net/bluetooth/lib.c       | 2 +-
- net/bluetooth/smp.c       | 2 +-
- 5 files changed, 6 insertions(+), 6 deletions(-)
+I still think that the vref_mV is a better naming.
 
-diff --git a/net/bluetooth/hci_conn.c b/net/bluetooth/hci_conn.c
-index 4f379184df5b..cb360adbb6ec 100644
---- a/net/bluetooth/hci_conn.c
-+++ b/net/bluetooth/hci_conn.c
-@@ -814,7 +814,7 @@ static int hci_le_big_terminate(struct hci_dev *hdev, u8 big, struct hci_conn *c
-  *
-  * Detects if there any BIS left connected in a BIG
-  * broadcaster: Remove advertising instance and terminate BIG.
-- * broadcaster receiver: Teminate BIG sync and terminate PA sync.
-+ * broadcaster receiver: Terminate BIG sync and terminate PA sync.
-  */
- static void bis_cleanup(struct hci_conn *conn)
- {
-diff --git a/net/bluetooth/hci_event.c b/net/bluetooth/hci_event.c
-index 66052d6aaa1d..a546cb058e8e 100644
---- a/net/bluetooth/hci_event.c
-+++ b/net/bluetooth/hci_event.c
-@@ -5754,7 +5754,7 @@ static void le_conn_complete_evt(struct hci_dev *hdev, u8 status,
- 	conn->state = BT_CONFIG;
- 
- 	/* Store current advertising instance as connection advertising instance
--	 * when sotfware rotation is in use so it can be re-enabled when
-+	 * when software rotation is in use so it can be re-enabled when
- 	 * disconnected.
- 	 */
- 	if (!ext_adv_capable(hdev))
-@@ -7077,7 +7077,7 @@ static void hci_le_big_info_adv_report_evt(struct hci_dev *hdev, void *data,
- /* Entries in this table shall have their position according to the subevent
-  * opcode they handle so the use of the macros above is recommend since it does
-  * attempt to initialize at its proper index using Designated Initializers that
-- * way events without a callback function can be ommited.
-+ * way events without a callback function can be omitted.
-  */
- static const struct hci_le_ev {
- 	void (*func)(struct hci_dev *hdev, void *data, struct sk_buff *skb);
-diff --git a/net/bluetooth/hci_sync.c b/net/bluetooth/hci_sync.c
-index 6687f2a4d1eb..febad7922008 100644
---- a/net/bluetooth/hci_sync.c
-+++ b/net/bluetooth/hci_sync.c
-@@ -5633,7 +5633,7 @@ int hci_abort_conn_sync(struct hci_dev *hdev, struct hci_conn *conn, u8 reason)
- 	}
- 
- 	/* Cleanup hci_conn object if it cannot be cancelled as it
--	 * likelly means the controller and host stack are out of sync
-+	 * likely means the controller and host stack are out of sync
- 	 * or in case of LE it was still scanning so it can be cleanup
- 	 * safely.
- 	 */
-diff --git a/net/bluetooth/lib.c b/net/bluetooth/lib.c
-index 43aa01fd07b9..305044a84478 100644
---- a/net/bluetooth/lib.c
-+++ b/net/bluetooth/lib.c
-@@ -54,7 +54,7 @@ EXPORT_SYMBOL(baswap);
-  * bt_to_errno() - Bluetooth error codes to standard errno
-  * @code: Bluetooth error code to be converted
-  *
-- * This function takes a Bluetooth error code as input and convets
-+ * This function takes a Bluetooth error code as input and converts
-  * it to an equivalent Unix/standard errno value.
-  *
-  * Return:
-diff --git a/net/bluetooth/smp.c b/net/bluetooth/smp.c
-index 47f359f24d1f..5b4ade03bdcc 100644
---- a/net/bluetooth/smp.c
-+++ b/net/bluetooth/smp.c
-@@ -3172,7 +3172,7 @@ static void smp_ready_cb(struct l2cap_chan *chan)
- 	/* No need to call l2cap_chan_hold() here since we already own
- 	 * the reference taken in smp_new_conn_cb(). This is just the
- 	 * first time that we tie it to a specific pointer. The code in
--	 * l2cap_core.c ensures that there's no risk this function wont
-+	 * l2cap_core.c ensures that there's no risk this function won't
- 	 * get called if smp_new_conn_cb was previously called.
- 	 */
- 	conn->smp = chan;
+> the AUXADC_VOLT_FULL definition.
+> 
+> As a consequence, the definition was also removed.
+
 -- 
-2.50.0
+With Best Regards,
+Andy Shevchenko
+
 
 
