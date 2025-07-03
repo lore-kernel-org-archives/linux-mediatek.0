@@ -4,30 +4,30 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E48FFC83F03
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 21:00:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C02ADC83F03
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 21:00:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
 	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IskFXUJdamXGNLMP6+5PbhBsy/pjKTWHhTltzX7oPs4=; b=goD1bU/c4I7c/g4jT13qseWJ5k
-	3Zbl0ruDUGrqJuk/xIS34TB+rurYD4J0ykDmFs/8O3D22Mb37a4NZKecVZMZK1e45z9Wo6d2JXk0v
-	uNbJN7LvWcJP3360QnE9gJ9jEJg+SqL5Y4VBZbdmCShxkJ1/YedYhz1tsBf5WNGKNJFhfGCihZXou
-	n5gwjFiViFxcipuW8jMktruUCCTrDX51GQlGjkG5BnakLDe0idaovzu/xD1uGGj/o0WhD0AFhMWzK
-	cVrvouK19qcl4PT06tHWo8O30TSrF9nROJewToJIYWQFaAjK2B2yZQWO1jIKzhrkLGpW3BHWKQvLs
-	Eeu5HULQ==;
+	bh=xT6SrN5pr4qSM3zSOSVKVjaRsDLmZj7uk3zwVR7OWGo=; b=JaTQD0jjds2hORUdFmUx90Bsnq
+	vpRAFUIyhgnIFBxeQuRSyOkGC6g5qoYQA69vVNtDoH7zK4Bd1u+NohmjxEHjnf+GBGG5irvuD8KEN
+	7B3e3+ujAC3cty5ioFnumA9VqsQWWeJQ50wGgYavqW6F6U39kDaa0cwIv8c03lfbw6iJeh6t8V5g9
+	iFHir+HqFyVF0IiElfZHjkA2tSeAM0sgKw0YJqpx6Hx+9OuAGRddeZuklnG1VG3vnj9MiV0oOM+Jf
+	+EZwNV55PmBOl5Tx7WzNGXIeV7LrWn0ECfjgSHzp5oHkiwfb+Q1BCygkYukV3gSLguqMzgjMVYxOU
+	HpDPzB4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXR2l-0000000CYAD-1KLe;
-	Thu, 03 Jul 2025 21:00:31 +0000
-Received: from relay6-d.mail.gandi.net ([2001:4b98:dc4:8::226])
+	id 1uXR2q-0000000CYHG-3cIV;
+	Thu, 03 Jul 2025 21:00:36 +0000
+Received: from relay6-d.mail.gandi.net ([217.70.183.198])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXNZy-0000000C6mD-0gvZ;
-	Thu, 03 Jul 2025 17:18:35 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id 08A6C442C1;
-	Thu,  3 Jul 2025 17:18:29 +0000 (UTC)
+	id 1uXNa0-0000000C6mb-0Q74;
+	Thu, 03 Jul 2025 17:18:37 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id 67760442BF;
+	Thu,  3 Jul 2025 17:18:32 +0000 (UTC)
 From: Bastien Nocera <hadess@hadess.net>
 To: trivial@kernel.org,
 	Marcel Holtmann <marcel@holtmann.org>,
@@ -52,9 +52,9 @@ To: trivial@kernel.org,
 	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	asahi@lists.linux.dev
-Subject: [PATCH v2 2/7] Bluetooth: btmtk: Fix typo in log string
-Date: Thu,  3 Jul 2025 19:16:56 +0200
-Message-ID: <20250703171815.1011001-3-hadess@hadess.net>
+Subject: [PATCH v2 3/7] Bluetooth: btrtl: Fix typo in comment
+Date: Thu,  3 Jul 2025 19:16:57 +0200
+Message-ID: <20250703171815.1011001-4-hadess@hadess.net>
 X-Mailer: git-send-email 2.50.0
 In-Reply-To: <20250703171815.1011001-1-hadess@hadess.net>
 References: <20250703171815.1011001-1-hadess@hadess.net>
@@ -66,8 +66,8 @@ X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdefgddvtdekiecutefuodetggdotef
  hhirghsrdgsghhgsehgmhgrihhlrdgtohhmpdhrtghpthhtoheprghnghgvlhhoghhiohgrtggthhhinhhordguvghlrhgvghhnohestgholhhlrggsohhrrgdrtghomhdprhgtphhtthhopehsvhgvnheskhgvrhhnvghlrdhorhhgpdhrtghpthhtohepjhesjhgrnhhnrghurdhnvght
 X-GND-Sasl: hadess@hadess.net
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250703_101834_338028_2FC563A7 
-X-CRM114-Status: GOOD (  10.76  )
+X-CRM114-CacheID: sfid-20250703_101836_272351_83E129FD 
+X-CRM114-Status: GOOD (  12.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,22 +86,22 @@ Found by codespell.
 
 Signed-off-by: Bastien Nocera <hadess@hadess.net>
 ---
- drivers/bluetooth/btmtkuart.c | 2 +-
+ drivers/bluetooth/btrtl.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/bluetooth/btmtkuart.c b/drivers/bluetooth/btmtkuart.c
-index c97e260fcb0c..4208ebecd560 100644
---- a/drivers/bluetooth/btmtkuart.c
-+++ b/drivers/bluetooth/btmtkuart.c
-@@ -316,7 +316,7 @@ mtk_stp_split(struct btmtkuart_dev *bdev, const unsigned char *data, int count,
+diff --git a/drivers/bluetooth/btrtl.c b/drivers/bluetooth/btrtl.c
+index 7838c89e529e..7c556c37c659 100644
+--- a/drivers/bluetooth/btrtl.c
++++ b/drivers/bluetooth/btrtl.c
+@@ -693,7 +693,7 @@ static int rtlbt_parse_firmware(struct hci_dev *hdev,
  
- 		/* Resync STP when unexpected data is being read */
- 		if (shdr->prefix != 0x80 || bdev->stp_dlen > 2048) {
--			bt_dev_err(bdev->hdev, "stp format unexpect (%d, %d)",
-+			bt_dev_err(bdev->hdev, "stp format unexpected (%d, %d)",
- 				   shdr->prefix, bdev->stp_dlen);
- 			bdev->stp_cursor = 2;
- 			bdev->stp_dlen = 0;
+ 	/* Loop from the end of the firmware parsing instructions, until
+ 	 * we find an instruction that identifies the "project ID" for the
+-	 * hardware supported by this firwmare file.
++	 * hardware supported by this firmware file.
+ 	 * Once we have that, we double-check that project_id is suitable
+ 	 * for the hardware we are working with.
+ 	 */
 -- 
 2.50.0
 
