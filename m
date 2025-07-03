@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A9CDC83030
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 20:57:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C967C83030
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 20:57:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mrLcFFTBNy2GALhK2bqsbtufwTc98WKvdD69kxXbf7s=; b=s+fAD53hxy7ixec+WiDYBFxPRm
-	RNGZzP9VTrNqlR38JLrv7qUGsYzse/HBc9GsGXfFAT15PnbCXDKCpT41LnyzhfLFm84ogM8pEuYVs
-	mc1g/QASASz06t1GvlHFpMpmb+SP/HNMTxo4HEAXu+wUg299N551oJ4sICP9o/NY3jqoHHHyG2z6G
-	5uAue+T4pnRKK+znZnUSdm+YlKMdGlLlNhAKL0dy4SHQSMP1YCRj14jFvq8nHsZJE20oAufdJ/l7u
-	81Gbtje5Yux1lLDabZLtHj+UOEkv2XmNyWdmCJIi/pexVIHI/a+sNyEoPD3/a5/wyR/S1lgDJYO2P
-	ceAc+2WQ==;
+	bh=8D89p5uqoZLfESzyqhuwvQsVk9HQPJQB2bYzCDELvfc=; b=n88hgVl9LFyxDxVVj63O1Uv/3+
+	tt1zMe/F75z8tFzGSVL6XeY/VB0T7fEuFRXbCM6h9Ce1nQul5WOAFgESvMfcuszBN4oa4n7Dsjhle
+	uLIXjmv9QzSuBbVW29dObgrIWXegJcWTdz2z4pQhYymSr7eN+El9NefzdnO+9Sc0mJXjutd+iCOnu
+	RQsTfdBb8SYiYN9dVnldhmonNg5XYPcav67C5RRTgrjICvwEktJG9Q+gP9Ml5W4nmF4KxTGZ0uNtk
+	c2x8ygECwDsNZxqA02kU/RNVsB3Xj4gtYW5VNpuKR4AILStIYW/ZjydQKXop3v3cShJs2UQ/APUqK
+	bxpAOnCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXR00-0000000CTx9-0Wa4;
-	Thu, 03 Jul 2025 20:57:40 +0000
+	id 1uXR01-0000000CU08-2r2R;
+	Thu, 03 Jul 2025 20:57:41 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXM4q-0000000Brrx-4BLo;
-	Thu, 03 Jul 2025 15:42:22 +0000
+	id 1uXM4r-0000000Brs1-3FoC;
+	Thu, 03 Jul 2025 15:42:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1751557339;
-	bh=QTbnWAayA30BBivWJPpqyOG+fUTqPYXweWMPu/sAVpw=;
+	s=mail; t=1751557340;
+	bh=d4fgjGNkQ+CXstPzPLDXaigiQXlneekXtm2M8pLICrA=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=fuECaOsRJ+a5oKQv/+vraH3cGWALtojlLUzAlblxBoqEmM+B0kHCQcsqsN4fZpMHp
-	 h8R2raZElyNnef+3cjyYAd+HaZ/Db6p4B7UYuD+jfIZmZJdQDclhb0UM4ynmJWdH5/
-	 xFY33Ley4YTSJH3xnj/bDjJC6KUdRRdakq9Xi968iGhnMOpDG+dOSWMRJtPMikkbLE
-	 jGYxI/76dIZbEcsigPEJpV+dkY4EEKu5U+o568BGTGG0z8y5d7Q321xHNByDa47v2y
-	 OnQZljJXiqBp91Vh+9q2dTTdsaj7yuec8790J4pGPrxGn91OT0Idujv6y1fKYezkY5
-	 vigfm0jVqPxHw==
+	b=cr+e74aaI3XBMprb3FkyJFS/LV1rzmN82Pu0ZYaG+QivXXQyS+w51mMOirYNccVlQ
+	 PjKyVpuGrnnD07L4zOJF3gF4Le7fj3XN1vtV75QRvNZ0ELdQWN81WIbbyWtMDgUrUW
+	 Zv+5KbTfli0NEWnWm+ay636fv50hbdEySWbxDZSEsOVSn84a8dKbO6tqN/z7BmrgzL
+	 A6zyjG1Pqw/R1cqwz2BmFY9omF3h6ctqLoWezG/BsWbsvafEv1Iv/k77dEtyjD0UBI
+	 wTlj82un8OotF1/9DHGppj6WI5040K/xeukg9U6awqrsfnZZQ8ivMqv3o7BnLawxcm
+	 p+Z9sWkqs43MA==
 Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B288617E0B1E;
-	Thu,  3 Jul 2025 17:42:18 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 69C6817E0EBD;
+	Thu,  3 Jul 2025 17:42:19 +0200 (CEST)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Thu, 03 Jul 2025 17:41:03 +0200
-Subject: [PATCH 1/3] Input: mtk-pmic-keys - add support for MT6359 PMIC
- keys
+Date: Thu, 03 Jul 2025 17:41:04 +0200
+Subject: [PATCH 2/3] arm64: dts: mediatek: mt8390-genio-common: Add Home
+ MT6359 PMIC key support
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250703-add-mt6359-pmic-keys-support-v1-1-21a4d2774e34@collabora.com>
+Message-Id: <20250703-add-mt6359-pmic-keys-support-v1-2-21a4d2774e34@collabora.com>
 References: <20250703-add-mt6359-pmic-keys-support-v1-0-21a4d2774e34@collabora.com>
 In-Reply-To: <20250703-add-mt6359-pmic-keys-support-v1-0-21a4d2774e34@collabora.com>
 To: Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
@@ -63,16 +63,17 @@ Cc: kernel@collabora.com, linux-input@vger.kernel.org,
  linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
  Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1751557337; l=1760;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1751557337; l=780;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=QTbnWAayA30BBivWJPpqyOG+fUTqPYXweWMPu/sAVpw=;
- b=khzbvBhxLyH1a2Q/3rP/3wy8zQTM35b3ONQBLfWQnTAxVIyv5iTy90OoIV3ClQHtjZmALABm+
- b3jKceypMLRAPrZ+EwbNQPJmjG9TuHyf1RyWX8dDqBkzaIHV34Ra676
+ bh=d4fgjGNkQ+CXstPzPLDXaigiQXlneekXtm2M8pLICrA=;
+ b=bnfzKGs+imz4mZg4UjsRjY9v61NAPDNnVI0EEbI+9pZdXNCTGd+EyoSKkiDaQSA7fSJfqXShB
+ WOmYphl8Jw4B58JXT29cOZakM4rMlYPP75EHKh+rmhJ/Gn3TvynwjvM
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250703_084221_211941_D3BB9673 
-X-CRM114-Status: GOOD (  11.21  )
+X-CRM114-CacheID: sfid-20250703_084221_995729_D420F888 
+X-CRM114-Status: UNSURE (   9.21  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,55 +88,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add PMIC key support on MT6359 SoC.
+Add in mt8390-genio-common dtsi file the support of Home MT6359 PMIC
+key.
 
 Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- drivers/input/keyboard/mtk-pmic-keys.c | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
-index 061d48350df661dd26832b307e1460ee8b8fd535..50e2e792c91d2626d3f282d04a1db60845827ef2 100644
---- a/drivers/input/keyboard/mtk-pmic-keys.c
-+++ b/drivers/input/keyboard/mtk-pmic-keys.c
-@@ -12,6 +12,7 @@
- #include <linux/mfd/mt6331/registers.h>
- #include <linux/mfd/mt6357/registers.h>
- #include <linux/mfd/mt6358/registers.h>
-+#include <linux/mfd/mt6359/registers.h>
- #include <linux/mfd/mt6397/core.h>
- #include <linux/mfd/mt6397/registers.h>
- #include <linux/module.h>
-@@ -117,6 +118,19 @@ static const struct mtk_pmic_regs mt6358_regs = {
- 	.rst_lprst_mask = MTK_PMIC_RST_DU_MASK,
+diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
+index eaf45d42cd347a2bd2db8af9ecef8f83f70c9183..a2cdecd2b9034e2f295d817e846d6ed1845e686a 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
+@@ -1161,6 +1161,10 @@ power-key {
+ 			linux,keycodes = <KEY_POWER>;
+ 			wakeup-source;
+ 		};
++
++		home {
++			linux,keycodes = <KEY_HOME>;
++		};
+ 	};
  };
  
-+static const struct mtk_pmic_regs mt6359_regs = {
-+	.keys_regs[MTK_PMIC_PWRKEY_INDEX] =
-+		MTK_PMIC_KEYS_REGS(MT6359_TOPSTATUS,
-+				   0x2, MT6359_PSC_TOP_INT_CON0, 0x5,
-+				   MTK_PMIC_PWRKEY_RST),
-+	.keys_regs[MTK_PMIC_HOMEKEY_INDEX] =
-+		MTK_PMIC_KEYS_REGS(MT6359_TOPSTATUS,
-+				   0x8, MT6359_PSC_TOP_INT_CON0, 0xa,
-+				   MTK_PMIC_HOMEKEY_RST),
-+	.pmic_rst_reg = MT6359_TOP_RST_MISC,
-+	.rst_lprst_mask = MTK_PMIC_RST_DU_MASK,
-+};
-+
- struct mtk_pmic_keys_info {
- 	struct mtk_pmic_keys *keys;
- 	const struct mtk_pmic_keys_regs *regs;
-@@ -296,6 +310,9 @@ static const struct of_device_id of_mtk_pmic_keys_match_tbl[] = {
- 	}, {
- 		.compatible = "mediatek,mt6358-keys",
- 		.data = &mt6358_regs,
-+	}, {
-+		.compatible = "mediatek,mt6359-keys",
-+		.data = &mt6359_regs,
- 	}, {
- 		/* sentinel */
- 	}
 
 -- 
 2.50.0
