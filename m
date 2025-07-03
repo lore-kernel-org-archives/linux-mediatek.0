@@ -4,125 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 082EEC83030
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 22:39:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC1DFC83F03
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 22:39:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B8EhHwVKYpVrPJqxIdjJWt6imKVtstqw6FBfSw5Dfcs=; b=eIgDdV9eU3FMZZ3Ta+EJFlwI0P
-	0uA2LstWpXxvwRpIM8xER4sT9OpDo2n9UGOuhrnMVtwvfB86hMMjGMB7vINO6J64ncEdGB70epMyY
-	5Y+KHtpgQ3+PsfTCFt/07WLqpA4P5Swnp/4rzds0tmdE5DqkDVUjInwo2lDyAwRJOFriMtH3DDnDF
-	5Td19grlm+8utz/M4fP6TdWJ8EzrmhRxF+map7dLDsciSFRxrGXYVnlZOg7WRtRVcdOnAeCOvDodI
-	k4Oj/V9hyVn4cV5t3k2u/dChCezlT+clMRZZN5/cgnIr610owQ5H8QMpSDd0aEhoefn7dpkT6yqmG
-	V7z2+WZw==;
+	bh=ZfBlx6Su5IrNrWTwuvKm1AACwg1ryPnRlXyNWRIQY6o=; b=YVVdw5MqO7PLmpcnb5h3KprFPD
+	3JOGA1kroT2BqQ2tTp4yyrKiCmOyIk8Crq8uLsqyKRQDs1yOZWG5wKyEhw7Yxm9rpsSPlzDznXNbb
+	WIgoYuTLENBo9N6YQ0L62rI2FU9KQ0+J3Fp0Vsh88hJ3OIGc86xaVJaaT8T0V6+Aax0fVhrdq8yrA
+	D76Q8FNYtoFoRG9B8GvWyRa1vecJA5hAoI/DULRT0QZTOTdcQm5ubtLpi9T7r/SfR3HS6mTtEYadb
+	exYqS0KMBUf+jng2ZoM96EddNHmLFE4nhFlh4rRpeT+q816pkZzC4zvB/TRqxUrx3qEPpuhfGg4My
+	8wE8CPUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXSaW-0000000CkT3-028B;
-	Thu, 03 Jul 2025 22:39:28 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1uXSas-0000000Ckde-3bzk;
+	Thu, 03 Jul 2025 22:39:50 +0000
+Received: from galois.linutronix.de ([2a0a:51c0:0:12e:550::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXRTB-0000000CcKC-3ZvU
-	for linux-mediatek@lists.infradead.org;
-	Thu, 03 Jul 2025 21:27:51 +0000
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 563F51QW018851
-	for <linux-mediatek@lists.infradead.org>; Thu, 3 Jul 2025 21:27:48 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to; s=qcppdkim1; bh=B8EhHwVKYpVrPJqxIdjJWt6i
-	mKVtstqw6FBfSw5Dfcs=; b=BGrvMhL0TDNFCs2LhwEFqzu7QOyx7f+cCW2mp+kZ
-	0wLWqk+5N17jvzzu1Ejzhf6b5Rn5C4e8oNlufBfaxIEAiv6ngFCB8Uoui1q2PqP7
-	larACg6xkL6YsWwjNraGORUubtDCBCWV/64XJ5Yg8dVetIFaNAO10I/WdIYmNkoY
-	ZhvNxY5PnPdLW3+AYQrEYb8Ftu6+WtnUYzQ9zMhK3jSzheM04/qjbaVX2g97YAin
-	KLdDNnC+7V7hW4zi1gbXwYC2uza1NUhPNB0YI0EWgdJczDQ/35bUTDtLe+y4gaVW
-	7Ul3qtUlNrw3LTZ0km0RYzuTt3fjoGcN8jZ606Mm+xYJpw==
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com [209.85.222.199])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 47j8fxstj6-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Thu, 03 Jul 2025 21:27:47 +0000 (GMT)
-Received: by mail-qk1-f199.google.com with SMTP id af79cd13be357-7d4576e83cdso65901285a.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 03 Jul 2025 14:27:47 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751578067; x=1752182867;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=B8EhHwVKYpVrPJqxIdjJWt6imKVtstqw6FBfSw5Dfcs=;
-        b=jv6TT/iLPnFy8vaSSQKeZOP0KGXloh6DgZadNn/RzyScMUf0OGW1FlGgKv6tHs/AMG
-         63u9WyUZxVlLhyHeOTLbprBOmlDBEYPAU5cjIJo3wYzo61IATaZbfLDtnbgMEx7Eeod3
-         /91o4P3ETApvyC5DxgzUMKP41ZmLPd7iYRkmpNvubf+GeearnMDSTS8pv+3r3qYk1hjI
-         TLiF4sqTwriWk5RzpgnNwUG+tGLMC5KzCJTTn8XhnbgZza9VrC1LwmaaXTAQyT5EchO8
-         td2vie/CR8cuXWiGVe8HRjDkwH1qewY3TVyRXxad04JqJcF5rriQxFO3BfDvUzb+VwAE
-         xdiA==
-X-Forwarded-Encrypted: i=1; AJvYcCWa9VvXDXWboZmdQYvHCn3BZu68e3nRLsr4aa8qoFMEhQv6wwF3V0rR7wgZc/zSMXKOqbK36ObAyuIl+DcVYw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YymE4sauu40x2NX8KQDEz9X4NI83KGwg+zlvV6FqmSRBOHAziqL
-	Q9OL9DYBxJZxspzRvafROdicme8pOh8ycsjQ8A6nPvW6bGWvwEwb9wI2O2r5hk94nMtWNdkWt6g
-	AsRHjzx7ckiTlpSIm7V4rKzH2uicwb5SYwlUSuR28sBp1+d2cH9BF4FgBj2+p0MNLd3fevdpxt6
-	0=
-X-Gm-Gg: ASbGncsGPjhS/+jI2OEhtL9j2Pj9c1qb2FpkAFkVoLcQfLlcLU3jAwnVygI9c6XMeH4
-	iswNwjE3XDYwAkPKzPAoGc+1GM69JXcbuRUUCrCADsbkhw059FRrY5x5Sp7CvJbSkM32JoO3acC
-	GxrJbKhkFhMhrHyxinWuBvkNQj7ABvUlBf7uPzAMPMrIXU3DowKrzEWnY3l+v1o3kg+f1NxzyjH
-	mur/KcJ9wN+ZSVTdy3bPIkvMy1ZLj/mYsO/gYhPTrUDXr0WWLPg9exc9n8PLP6mLjyOBkph9A6I
-	l8y4zNKNB+QWJGlVnpo7sXextFmNjD27cKohf+wTLh/ldpOiUyb5m0/xTqaUjQ0HYYBzNkPQLV8
-	uZQ4oESMe0M1XdvGsPyk2LJtfOBZMYOYifrM=
-X-Received: by 2002:a05:620a:3d86:b0:7d5:ca37:79a0 with SMTP id af79cd13be357-7d5ddae521cmr2891385a.18.1751578066807;
-        Thu, 03 Jul 2025 14:27:46 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEMJrZqqPZZas9zZzBzoVxAUKC2qdaPz2216jh1dVtgBGxiblPPM6KkbjiAzq0lqA6zcxM0YQ==
-X-Received: by 2002:a05:620a:3d86:b0:7d5:ca37:79a0 with SMTP id af79cd13be357-7d5ddae521cmr2888085a.18.1751578066366;
-        Thu, 03 Jul 2025 14:27:46 -0700 (PDT)
-Received: from umbar.lan (2001-14ba-a0c3-3a00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a0c3:3a00:264b:feff:fe8b:be8a])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-55638494f6dsm72675e87.123.2025.07.03.14.27.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 03 Jul 2025 14:27:44 -0700 (PDT)
-Date: Fri, 4 Jul 2025 00:27:43 +0300
-From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-To: Andy Yan <andyshrk@163.com>
-Cc: mripard@kernel.org, neil.armstrong@linaro.org,
-        dri-devel@lists.freedesktop.org, dianders@chromium.org,
-        jani.nikula@intel.com, lyude@redhat.com, jonathanh@nvidia.com,
-        p.zabel@pengutronix.de, simona@ffwll.ch, victor.liu@nxp.com,
-        rfoss@kernel.org, chunkuang.hu@kernel.org,
-        cristian.ciocaltea@collabora.com, Laurent.pinchart@ideasonboard.com,
-        linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
-        linux-kernel@vger.kernel.org, freedreno@lists.freedesktop.org,
-        Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: [PATCH v3 2/2] drm/bridge: Pass down connector to drm bridge
- detect hook
-Message-ID: <chznjpcx6p2vn3i5jt52peikhipzjiwzlr74gx6mzp3wjstr6p@6zhhknnl3zek>
-References: <20250703125027.311109-1-andyshrk@163.com>
- <20250703125027.311109-3-andyshrk@163.com>
+	id 1uXRrK-0000000Cek8-44Xc;
+	Thu, 03 Jul 2025 21:52:48 +0000
+From: Thomas Gleixner <tglx@linutronix.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020; t=1751579565;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ZfBlx6Su5IrNrWTwuvKm1AACwg1ryPnRlXyNWRIQY6o=;
+	b=l+1wDbtmX5AiOOWEeigcXFhl+t2sTg0fHkUt5qJoqkmSBNRCXEXQXzn4U5Tm2LI/yu7c+U
+	XexkvkxZYhwEUaXRifilsiQeAjeM2ZcyBFPslBQh/AV+WCSzGorg9LkFwMExhRslqoeJp8
+	O3dT3G9x99c0XqaiDsAIS5SCBB3zcBoQ4ZtaDMeBh+GO2sdqsONGleQB7K5wJUK2ix2SdA
+	pRNnB0TQhRJN1mxyeb26CSM92iZW/xIh8UNMII619fFwRx60DDGvjqTEba9PaRXgLHtKm+
+	n4fqWlSrHoXXxoPVXsBoDFJrYc0cdF1A8M9zD2YEUQhO1GtDiAu1hYXdx1ojSg==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020e; t=1751579565;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ZfBlx6Su5IrNrWTwuvKm1AACwg1ryPnRlXyNWRIQY6o=;
+	b=dWJYNReIOQ2eB8r/KfLfgDmz4t7V9E3h7DMRPjyZluvj3HLgsHSM3z8I7W5OY/BD31GY2L
+	+Lnnu56yF4QvHoDA==
+To: Nam Cao <namcao@linutronix.de>, Michael Kelley <mhklinux@outlook.com>
+Cc: Marc Zyngier <maz@kernel.org>, Lorenzo Pieralisi
+ <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?=
+ <kwilczynski@kernel.org>,
+ Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
+ Bjorn Helgaas <bhelgaas@google.com>, "linux-pci@vger.kernel.org"
+ <linux-pci@vger.kernel.org>, "linux-kernel@vger.kernel.org"
+ <linux-kernel@vger.kernel.org>, Karthikeyan Mitran
+ <m.karthikeyan@mobiveil.co.in>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Pali =?utf-8?Q?Roh=C3=A1?=
+ =?utf-8?Q?r?=
+ <pali@kernel.org>, "K . Y . Srinivasan" <kys@microsoft.com>, Haiyang Zhang
+ <haiyangz@microsoft.com>, Wei Liu <wei.liu@kernel.org>, Dexuan Cui
+ <decui@microsoft.com>, Joyce Ooi <joyce.ooi@intel.com>, Jim Quinlan
+ <jim2101024@gmail.com>, Nicolas Saenz Julienne <nsaenz@kernel.org>,
+ Florian Fainelli <florian.fainelli@broadcom.com>, Broadcom internal kernel
+ review list <bcm-kernel-feedback-list@broadcom.com>, Ray Jui
+ <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, Ryder Lee
+ <ryder.lee@mediatek.com>, Jianjun Wang <jianjun.wang@mediatek.com>, Marek
+ Vasut <marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda
+ <yoshihiro.shimoda.uh@renesas.com>, Michal Simek <michal.simek@amd.com>,
+ Daire McNamara <daire.mcnamara@microchip.com>, Nirmal Patel
+ <nirmal.patel@linux.intel.com>, Jonathan Derrick
+ <jonathan.derrick@linux.dev>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, "linux-hyperv@vger.kernel.org"
+ <linux-hyperv@vger.kernel.org>, "linux-rpi-kernel@lists.infradead.org"
+ <linux-rpi-kernel@lists.infradead.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-renesas-soc@vger.kernel.org" <linux-renesas-soc@vger.kernel.org>
+Subject: Re: [PATCH 14/16] PCI: hv: Switch to msi_create_parent_irq_domain()
+In-Reply-To: <20250703210056.sDzAytHT@linutronix.de>
+References: <cover.1750858083.git.namcao@linutronix.de>
+ <024f0122314198fe0a42fef01af53e8953a687ec.1750858083.git.namcao@linutronix.de>
+ <SN6PR02MB4157A6F9B2ABD3C69CE5B521D443A@SN6PR02MB4157.namprd02.prod.outlook.com>
+ <87cyaht595.ffs@tglx>
+ <SN6PR02MB41576745C28D8F49081B8E77D443A@SN6PR02MB4157.namprd02.prod.outlook.com>
+ <20250703210056.sDzAytHT@linutronix.de>
+Date: Thu, 03 Jul 2025 23:52:44 +0200
+Message-ID: <87qzyxrlg3.ffs@tglx>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250703125027.311109-3-andyshrk@163.com>
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzAzMDE3NyBTYWx0ZWRfX1olln03i0i8D
- JYIp17SMFMUth83xR7NgkHCFGn7LgCNryQ24MZp4jI5/diIxdtiRhHjwJ/07p1aN/bYpnxD3Qg0
- dye6nABdBVL617ebBNt2UGLev1Zloh7dFnbgzOfRy/mPTFwS9zHw3P8yajgnH+tVV08YGva0cbg
- vuJWIlgtq4b/lWIiwJVNSsBIEGUPCZ+lcEG1f87DsEVTk91ttIoao9PZmaPIa4KBYyWFqatEAWh
- 7JeVXw8di2jLcADp2BKyRlqysYi7yhEnpR+CE9VQ4OhxREVF0mUvJt3XixGJogAgnMkrx1V2gvy
- U8iG1qLpl9AwYXZmSRTf0sr1neb7fyzxGYFm3R1F8tz8ZYbWEb5LsSz5ASZsvtBLgIs25u9qAzI
- B98S9JX7GCl1LyGSQ/uJB5plVarjjnVtGHcefmvIav1gCN4pYbAFQp4kGBQz31ItLmZKqvP8
-X-Proofpoint-GUID: s2T1uXhm7AYdYCbd9dszXMvop9SHKjCz
-X-Proofpoint-ORIG-GUID: s2T1uXhm7AYdYCbd9dszXMvop9SHKjCz
-X-Authority-Analysis: v=2.4 cv=TqPmhCXh c=1 sm=1 tr=0 ts=6866f5d3 cx=c_pps
- a=HLyN3IcIa5EE8TELMZ618Q==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
- a=Wb1JkmetP80A:10 a=s8YR1HE3AAAA:8 a=EUspDBNiAAAA:8 a=nJWoAq30JnpefaDr-ZMA:9
- a=CjuIK1q_8ugA:10 a=bTQJ7kPSJx9SKPbeHEYW:22 a=jGH_LyMDp9YhSvY-UuyI:22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.7,FMLib:17.12.80.40
- definitions=2025-07-03_05,2025-07-02_04,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 bulkscore=0 mlxlogscore=808 suspectscore=0 adultscore=0
- phishscore=0 malwarescore=0 clxscore=1015 lowpriorityscore=0 mlxscore=0
- impostorscore=0 spamscore=0 classifier=spam authscore=0 authtc=n/a authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2505280000
- definitions=main-2507030177
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250703_142750_007412_7AEFAA2F 
-X-CRM114-Status: GOOD (  16.41  )
+X-CRM114-CacheID: sfid-20250703_145247_152672_10E46B73 
+X-CRM114-Status: UNSURE (   8.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,29 +107,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 03, 2025 at 08:49:53PM +0800, Andy Yan wrote:
-> From: Andy Yan <andy.yan@rock-chips.com>
-> 
-> In some application scenarios, we hope to get the corresponding
-> connector when the bridge's detect hook is invoked.
-> 
-> In most cases, we can get the connector by drm_atomic_get_connector_for_encoder
-> if the encoder attached to the bridge is enabled, however there will
-> still be some scenarios where the detect hook of the bridge is called
-> but the corresponding encoder has not been enabled yet. For instance,
-> this occurs when the device is hot plug in for the first time.
-> 
-> Since the call to bridge's detect is initiated by the connector, passing
-> down the corresponding connector directly will make things simpler.
-> 
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
-> ---
-> 
+On Thu, Jul 03 2025 at 23:00, Nam Cao wrote:
+> On Thu, Jul 03, 2025 at 08:15:07PM +0000, Michael Kelley wrote:
+>> which is in netdev/net-next.
+>
+> I need some guidance here. If I make it apply cleanly to linux-next, it
+> won't apply to pci tree.
+>
+> I saw this type of conflict being resolved during merging to Linus's tree.
+> Shouldn't we do the same for this case?
 
-Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-
-
--- 
-With best wishes
-Dmitry
+There are many ways to skin a cat. See my other reply.
 
