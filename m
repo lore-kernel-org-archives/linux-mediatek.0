@@ -4,89 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB1E1C83030
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 20:58:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30CB1C83F03
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 21:00:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=prWJz74m5rfRQ97FrkwQm8W3Nfiw8mTBiOQN25+dW0I=; b=AOT69Dg+yWfhY++UcgDpOWnOfo
-	z6Bo0BGocw49fZy8fjdxU53JIE3lOPVeqoHZQEkLkCBAGHQGlShSK07Gv1EyprU7qi2biBN5S0dlM
-	v3K4L+WeubM4+lwcPMaP2PexparSFWXhAPVOB/uZWr6MXlNfhm/eQwbQlurKyUigAZcV8mqEgcyIP
-	PP5QBGSSdtL2cXhAPRlsdbbvKCfHyjDT66GzkecvRlS702oUKUpmXwbgJvdPMZYw41A3nysWfgRMM
-	HMYkQC6DG/IovzRboT6IWhcqwHBlvFovJ/koCwFhFdlJHZ6BuvnJPGQSktNP/6/Rlr/jBKzwZMutf
-	dQeqVuuA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=af1gXahHDj3+vTGl3zYYql5gtv9egPIFOeLtJr5k0gc=; b=WP73CGs2+1dC+roSLxG8yyvlpG
+	Wc69DBDvw0g1PG/LMbB6T7WYz5CWqwMRmWyNhdacNM+NofahFUNTUeAZ3fcb9g/FLAFN0mN8/o33K
+	e5gdMUOC7ErAKLoSz/G//vMQGw3dtAbpwc3kJ0muBDPvQG8YLsTae6sk2EdQLDKZnadeL8bz8ZFne
+	gGApCp4dG+u5xHydvre7CAM2lyi4vGKhyp0Jz1MCqc5XiipUor1hHedBiuWaswceDvQHXpNupG8cY
+	d2DjG8DOXpr69ZgJWFdl7sLSYazmSABb2n8lYbGARYFuh1qV6QmzsVdLNZsujmWND+s48lJSUecP6
+	Q642/1Nw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXR0T-0000000CUie-2jzQ;
-	Thu, 03 Jul 2025 20:58:09 +0000
-Received: from mail-gw02.astralinux.ru ([93.188.205.243])
+	id 1uXR2L-0000000CXZ3-2iOG;
+	Thu, 03 Jul 2025 21:00:05 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXMJC-0000000BuFR-0B7L;
-	Thu, 03 Jul 2025 15:57:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=astralinux.ru;
-	s=mail; t=1751558223;
-	bh=/5x31bYLbnmAB83D37kcWKmGopV4qwGGMcLgHfFnwYY=;
-	h=From:To:Cc:Subject:Date:From;
-	b=gr9PokIw4mIydopjmsjlW9V00fNc/aOuSYdYpsM6iLdWO/JXrAyvB97mwUZP+1Uoq
-	 +a6gELptkbQ4K0U3gYkSJaYHnNc2KGpf4CIrhTDoDPiBSfMhl6kTMgrJI2OO6h98vr
-	 xB58gK0sZSTYYH+obolVodBju+V5feyUlj2AJz0ZcAuJttgTt9d6ofYSeAT1WU3YdD
-	 6dFX4DHqYhwVMNBz9KC8BNoQZlQR/1ieoMyyPmjNfdV6lNZlbUHduV1pmrzvQczTjd
-	 62C8sdytROg9EIuwQxsYteCbrFNDydAmjDWh2JUBKs4GseXbYjfNuruQ/fcp5Z4eY5
-	 pHkPfc0EyM1Ug==
-Received: from gca-msk-a-srv-ksmg01.astralinux.ru (localhost [127.0.0.1])
-	by mail-gw02.astralinux.ru (Postfix) with ESMTP id 5C9D21FA52;
-	Thu,  3 Jul 2025 18:57:03 +0300 (MSK)
-Received: from new-mail.astralinux.ru (unknown [10.177.185.198])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail-gw02.astralinux.ru (Postfix) with ESMTPS;
-	Thu,  3 Jul 2025 18:57:02 +0300 (MSK)
-Received: from localhost.localdomain (unknown [10.198.59.101])
-	by new-mail.astralinux.ru (Postfix) with ESMTPA id 4bY1bv6HP3z16Hnq;
-	Thu,  3 Jul 2025 18:56:59 +0300 (MSK)
-From: Anastasia Belova <abelova@astralinux.ru>
-To: stable@vger.kernel.org,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Anastasia Belova <abelova@astralinux.ru>,
-	Marcel Holtmann <marcel@holtmann.org>,
-	Johan Hedberg <johan.hedberg@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	linux-bluetooth@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	lvc-project@linuxtesting.org,
-	Yake Yang <yake.yang@mediatek.com>,
-	Sasha Levin <sashal@kernel.org>
-Subject: [PATCH 5.10] Bluetooth: btmtksdio: fix use-after-free at btmtksdio_recv_event
-Date: Thu,  3 Jul 2025 18:56:56 +0300
-Message-ID: <20250703155657.32865-1-abelova@astralinux.ru>
-X-Mailer: git-send-email 2.47.0
+	id 1uXN0Y-0000000C1qT-0EY7
+	for linux-mediatek@lists.infradead.org;
+	Thu, 03 Jul 2025 16:41:59 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-ae0c571f137so14716866b.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 03 Jul 2025 09:41:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1751560916; x=1752165716; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=af1gXahHDj3+vTGl3zYYql5gtv9egPIFOeLtJr5k0gc=;
+        b=FgtYaiKyAEHsUturd+FvsZsqgS7gAnLHFpzoLyQTIs0iCxBk2po5nLOtrQfpcYIDVQ
+         Yw/CW6heNyo/aiMpPgHGvnb6Y4oI7WXG5vKJJc+gmIlGKLSPXIQs93NlxHo+0c8m3INr
+         pLUFqihzCRSaBrX/kOUL9ghZ5R9Y8p81UyeqNHdFoU1+4Lwv4MK8dT33WqGbMF2cNkEU
+         1cBgSS8BN130753tqR9P/AaUMwXfolf4PtmD7XTrFrtAS6kxNmFHstNjTqWghSFZ9m/f
+         Gp0Ikjh7cW55Ltl3rz4UF+fqurJg+JYuR4qN3zdUCTyuQAz5OhDSsgbD/WJ6pjDoPR96
+         iH2Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1751560916; x=1752165716;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=af1gXahHDj3+vTGl3zYYql5gtv9egPIFOeLtJr5k0gc=;
+        b=UD7rrVgVunoASLRuezErLivlVlttqaFP9QLjjA8zjyMinzCyEkUkmlWI48aQYhFvql
+         nt6x6u/p5jPsphXGTskBIE8izNQnm4oLYuZ6nfI9fF3okMZPivB0NPSX1QJUyt1FgwGw
+         gGbsggsZ98IMwgnq6eWKIQdFFwpwN/2uXuipkzFao4htnOJW8/X6tEIl/60q7aDxZdON
+         toJhPV3G5J1VOy1JsiqZu7UEzY2SPtcgKK4KVoHfQkG2/4qioNp7AZ+ujWwur1uBDgCH
+         1P0mfujDxK6oXrZVyeatMw5pKuzisFnUy7O5KavzzGDm9qcaP/5JySGPd0v9qTLqaOtL
+         sbqg==
+X-Forwarded-Encrypted: i=1; AJvYcCWQT7bLb5FWNvf0nD8b+hXbT3vLumqg/ZFZin3ulx9IJQFBbmzOpo4DHiiKAU/jY7rZUDfsAr8LCj1UsYL0yA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YydzgUYEU3EwhiA1vodmGPU/cT6NJzuYIFcZZT/dQXH+dODj9xH
+	phUn/zgSMXGWmW7HVpBy9kP8hvxYahwgoe5IgnJgYbxeTjRrrShJawZwmedHIV4InD8=
+X-Gm-Gg: ASbGncuIUfmEPFNdE5wFiSLOhoCZga9sX7wQ2jOWX0DLaDpmJWMv9oxgWEq5cWF+Atl
+	+/u4Yri7dxA7tiTR8iSPwKy0Y0ncSCAAmMzD7rZceFWEJKzSY8VdzGb8ICKS9H94MqG4zUqnQrE
+	AL7L2a4eexJ/FprHYmIDHK48JRu2tdet4jlvYpWGb2paiisV+FOMX6sUwJ4uziVW33A+VTVPIYq
+	tQC/hCr2XSUyT3uovlammvX8qZ0+qTctECtNJQo9w+UOeIEV6wF8nISBhkelqvQmNJyHgCHzxzp
+	1R+0jHB3y8QKPDe0WvZ/mvFdAUzi/Kp6tGlR8FKglddvH3PU0onr80dZdGpkAoCNlGCz6UIa1Qc
+	wL9wn5bpkpWPqhaJV16FhDH6PiSv9
+X-Google-Smtp-Source: AGHT+IG1Q6T7zYtraRTxu4LE7BnHzIirGKXY1QxEhawuvlIUwK7MxzBM9eQBF4eG96mIbzTvlvveTQ==
+X-Received: by 2002:a17:906:eecd:b0:ad8:9b5d:2c1e with SMTP id a640c23a62f3a-ae3d8c9dcb1mr434769866b.29.1751560915895;
+        Thu, 03 Jul 2025 09:41:55 -0700 (PDT)
+Received: from localhost (p200300f65f06ab0400000000000001b9.dip0.t-ipconnect.de. [2003:f6:5f06:ab04::1b9])
+        by smtp.gmail.com with UTF8SMTPSA id a640c23a62f3a-ae3f6958586sm5003066b.72.2025.07.03.09.41.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 03 Jul 2025 09:41:55 -0700 (PDT)
+Date: Thu, 3 Jul 2025 18:41:53 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, 
+	iommu@lists.linux.dev
+Subject: Re: NULL pointer exception in drivers/memory/mtk-smi.c
+Message-ID: <lri2gdwioe3on3unzrnmezv4pnxke6lmixrsvargeupdcywweo@j6xoz36xjdoh>
+References: <allge3h2abtjfj77idsnwccurxi2jnbcv6qcxar5f5m3jjmpvs@a4mmfghdhtv4>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-KSMG-AntiPhishing: NotDetected
-X-KSMG-AntiSpam-Auth: dkim=none
-X-KSMG-AntiSpam-Envelope-From: abelova@astralinux.ru
-X-KSMG-AntiSpam-Info: LuaCore: 63 0.3.63 9cc2b4b18bf16653fda093d2c494e542ac094a39, {Tracking_uf_ne_domains}, {Tracking_from_domain_doesnt_match_to}, d41d8cd98f00b204e9800998ecf8427e.com:7.1.1;astralinux.ru:7.1.1;127.0.0.199:7.1.2;new-mail.astralinux.ru:7.1.1, FromAlignment: s
-X-KSMG-AntiSpam-Interceptor-Info: scan successful
-X-KSMG-AntiSpam-Lua-Profiles: 194547 [Jul 03 2025]
-X-KSMG-AntiSpam-Method: none
-X-KSMG-AntiSpam-Rate: 0
-X-KSMG-AntiSpam-Status: not_detected
-X-KSMG-AntiSpam-Version: 6.1.1.11
-X-KSMG-AntiVirus: Kaspersky Secure Mail Gateway, version 2.1.0.7854, bases: 2025/07/03 14:34:00 #27614855
-X-KSMG-AntiVirus-Status: NotDetected, skipped
-X-KSMG-LinksScanning: NotDetected
-X-KSMG-Message-Action: skipped
-X-KSMG-Rule-ID: 1
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="mmnkz7o7pwgteghy"
+Content-Disposition: inline
+In-Reply-To: <allge3h2abtjfj77idsnwccurxi2jnbcv6qcxar5f5m3jjmpvs@a4mmfghdhtv4>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250703_085710_426627_18548C3E 
-X-CRM114-Status: GOOD (  13.68  )
+X-CRM114-CacheID: sfid-20250703_094158_186831_5CD55484 
+X-CRM114-Status: GOOD (  19.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,87 +101,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
 
-[ Upstream commit 0fab6361c4ba17d1b43a991bef4238a3c1754d35 ]
+--mmnkz7o7pwgteghy
+Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: NULL pointer exception in drivers/memory/mtk-smi.c
+MIME-Version: 1.0
 
-We should not access skb buffer data anymore after hci_recv_frame was
-called.
+Hello,
 
-[   39.634809] BUG: KASAN: use-after-free in btmtksdio_recv_event+0x1b0
-[   39.634855] Read of size 1 at addr ffffff80cf28a60d by task kworker
-[   39.634962] Call trace:
-[   39.634974]  dump_backtrace+0x0/0x3b8
-[   39.634999]  show_stack+0x20/0x2c
-[   39.635016]  dump_stack_lvl+0x60/0x78
-[   39.635040]  print_address_description+0x70/0x2f0
-[   39.635062]  kasan_report+0x154/0x194
-[   39.635079]  __asan_report_load1_noabort+0x44/0x50
-[   39.635099]  btmtksdio_recv_event+0x1b0/0x1c4
-[   39.635129]  btmtksdio_txrx_work+0x6cc/0xac4
-[   39.635157]  process_one_work+0x560/0xc5c
-[   39.635177]  worker_thread+0x7ec/0xcc0
-[   39.635195]  kthread+0x2d0/0x3d0
-[   39.635215]  ret_from_fork+0x10/0x20
-[   39.635247] Allocated by task 0:
-[   39.635260] (stack is not available)
-[   39.635281] Freed by task 2392:
-[   39.635295]  kasan_save_stack+0x38/0x68
-[   39.635319]  kasan_set_track+0x28/0x3c
-[   39.635338]  kasan_set_free_info+0x28/0x4c
-[   39.635357]  ____kasan_slab_free+0x104/0x150
-[   39.635374]  __kasan_slab_free+0x18/0x28
-[   39.635391]  slab_free_freelist_hook+0x114/0x248
-[   39.635410]  kfree+0xf8/0x2b4
-[   39.635427]  skb_free_head+0x58/0x98
-[   39.635447]  skb_release_data+0x2f4/0x410
-[   39.635464]  skb_release_all+0x50/0x60
-[   39.635481]  kfree_skb+0xc8/0x25c
-[   39.635498]  hci_event_packet+0x894/0xca4 [bluetooth]
-[   39.635721]  hci_rx_work+0x1c8/0x68c [bluetooth]
-[   39.635925]  process_one_work+0x560/0xc5c
-[   39.635951]  worker_thread+0x7ec/0xcc0
-[   39.635970]  kthread+0x2d0/0x3d0
-[   39.635990]  ret_from_fork+0x10/0x20
-[   39.636021] The buggy address belongs to the object at ffffff80cf28a600
-                which belongs to the cache kmalloc-512 of size 512
-[   39.636039] The buggy address is located 13 bytes inside of
-                512-byte region [ffffff80cf28a600, ffffff80cf28a800)
+[expanding the audience a bit according to the drivers that are involved
+now that the problem is better understood]
 
-Fixes: 9aebfd4a2200 ("Bluetooth: mediatek: add support for MediaTek MT7663S and MT7668S SDIO devices")
-Co-developed-by: Yake Yang <yake.yang@mediatek.com>
-Signed-off-by: Yake Yang <yake.yang@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Marcel Holtmann <marcel@holtmann.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
-Signed-off-by: Anastasia Belova <abelova@astralinux.ru>
----
-Backport fix for CVE-2022-49470
- drivers/bluetooth/btmtksdio.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+On Tue, Jun 17, 2025 at 05:18:30PM +0200, Uwe Kleine-K=F6nig wrote:
+> on a 6.16-rc2 kernel running on an mt8365-evk I occasionally hit the
+> following during boot:
 
-diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-index c41560be39fb..6b31ee1a1dd9 100644
---- a/drivers/bluetooth/btmtksdio.c
-+++ b/drivers/bluetooth/btmtksdio.c
-@@ -331,6 +331,7 @@ static int btmtksdio_recv_event(struct hci_dev *hdev, struct sk_buff *skb)
- {
- 	struct btmtksdio_dev *bdev = hci_get_drvdata(hdev);
- 	struct hci_event_hdr *hdr = (void *)skb->data;
-+	u8 evt = hdr->evt;
- 	int err;
- 
- 	/* Fix up the vendor event id with 0xff for vendor specific instead
-@@ -355,7 +356,7 @@ static int btmtksdio_recv_event(struct hci_dev *hdev, struct sk_buff *skb)
- 	if (err < 0)
- 		goto err_free_skb;
- 
--	if (hdr->evt == HCI_EV_VENDOR) {
-+	if (evt == HCI_EV_VENDOR) {
- 		if (test_and_clear_bit(BTMTKSDIO_TX_WAIT_VND_EVT,
- 				       &bdev->tx_state)) {
- 			/* Barrier to sync with other CPUs */
--- 
-2.43.0
+I invested some time now to understand the issue. So here comes what I
+understood, maybe that helps someone to spot the fix to the described
+problem.=20
 
+With a configuration that has all drivers built-in but
+
+	CONFIG_DRM_MEDIATEK=3Dm
+	CONFIG_MTK_IOMMU=3Dm
+
+and=20
+
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index cb95fecf6016..d4320db7cd2d 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -1387,14 +1387,15 @@ static int mtk_iommu_probe(struct platform_device *=
+pdev)
+ 		goto out_list_del;
+=20
+ 	ret =3D iommu_device_register(&data->iommu, &mtk_iommu_ops, dev);
+ 	if (ret)
+ 		goto out_sysfs_remove;
+=20
+ 	if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_MM)) {
++		msleep(10000);
+ 		ret =3D component_master_add_with_match(dev, &mtk_iommu_com_ops, match);
+ 		if (ret)
+ 			goto out_device_unregister;
+ 	}
+ 	return ret;
+=20
+ out_device_unregister:
+
+I can reliably trigger the race.
+
+With that sleep in place iommu_device_register() completes quickly which
+enables probing of the devices with drivers contained in the
+drm_mediatek module (because the modules are loaded in parallel on
+a different CPU).
+
+Then generic driver code calls resume on all suppliers for devices to
+bind, among them the four larb devices. However due to
+component_master_add_with_match() not being called yet, the larb devices
+are not yet bound to the iommu device and so larb->mmu is still NULL.
+The latter is a problem in mtk_smi_larb_config_port_gen2_general() which
+is called from mtk_smi_larb_resume().
+
+I don't know what the right fix here is, but maybe someone else does?
+
+Best regards
+Uwe
+
+--mmnkz7o7pwgteghy
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmhmss4ACgkQj4D7WH0S
+/k4xfAgAo8//U5/g2i21yMqMBVXTs2xxgBcBuLMjuj7nazzxU/t2NCbyfDBSYY5b
+VnbwhSsyWIShTgehlQ9KqlgvwmeDuArdtjNsmsG6XaNAbC2xmgo0qy8g1M20Bhpu
+cPoHpbn2a7Do99/XlSCJseysvIBKIEBndBl6tC8gmVRFSCw4DttijBeKN/Kaj9Is
+fGGhKbdv0NCywa9YanAX/WlkxWspmvpiCMM3uKa2r/PlYJ31PsgD5eWQv9XpSvSC
+EkHtXWh5Ykq4YYaadFi6ZI5B8Hx7mTlaDH08SZmgKSzc0UfdVl3qG8YnKBiAuH8Y
+1Q6g+GM7xC3yvyyGwYYPyvMPRDSyyw==
+=s/aj
+-----END PGP SIGNATURE-----
+
+--mmnkz7o7pwgteghy--
 
