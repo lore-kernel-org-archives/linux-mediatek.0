@@ -4,79 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E476BC83030
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 09:09:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53409C83030
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 10:22:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kwiVJneQVf/VtDHcWot/MPQfEPz0Z500X9dQlHVEMzQ=; b=HQTQomP9rPIxpV5m5vZW9oLC2Q
-	XD+jm8aFP1mgHaX88IqNv0qPyewTzKL3s7P3uaPZutDLqm+hwJ/y+XhC/LJc87YSO9VdYfDAm6kBi
-	I9YqhhlN/JkZLqZByn+2QKiMkF+HnGIUWo2Votl2u+wKIUsr1nMsT4mVPGlAVryBTT3oZEcDhW6MU
-	+UrwXzMuQCx2e0aVmOFLtCl0KneUFuexOdvVHaLktjun5pbbtTT9on52rROGLFtBGPLhVEkfuZmR7
-	DUHrfPCLdqggTy5fkm3FvWnbC1dw3ioAEH9945VJ7X/ryuoVkLworaTcY8pobIIykqR+YCBnnHu8D
-	E+1D/Q2w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=id0cMj2KAebMuH6gkinUodtE/Di6TDiK55rKHLM11Cw=; b=hWs7UB8WRKZwGSPdoLM5UeeP0t
+	MRfFcCi8K0+RQlh7UJLpaFZ8uj329KIc5Agj9zkDhA+faD1QNZyL/tnF9VJ+gtKfp8pu7J4iMsGf6
+	cCDS4nX7MI67+8h8DrOzDRYT+xUkSxH3vzkFePumE31VJz48qs6UJ+VF764v1qxIeEUE+UtM+bgNy
+	6Z7ppOPL18hm/kVbHxIujkli1h1YS6ZVOpWGBuXZR1N6XycHcDtl7SyDbK4nqz7CbCJxjaA03HVMU
+	gSGYcgH9vHRhmTGxTODtmbsSVR7AE/PuBlpZUZQcBstyESgWcq4eq9Mkutv0EzSbTuEEEcQjBQBgp
+	4CPPJbRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXFwK-0000000AmOK-1Lt0;
-	Thu, 03 Jul 2025 09:09:08 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1uXH4r-0000000Ay6R-2oQo;
+	Thu, 03 Jul 2025 10:22:01 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXFtF-0000000Am2S-1GSc;
-	Thu, 03 Jul 2025 09:06:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1751533554;
-	bh=o7ihHA2Q35n6QKlFvsZKa9COyquLcNt5mCn8m+1tFU8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=jD2rqfu8XGYNUbVU7GBmmeROYTve58GYtMAlKIznmihPhxQr0RthkFGL10O/fgbFc
-	 2y2G6+HFHYkbohoVTDR5PxfvNLW9FNZUG/VqqnE4jt2ysvXAbflmEYHyBNVjDGwPhn
-	 sDzox8Wisz+jgc5HOP1FKtgMQWaHZDqsBeFbzGqYDK2T6h2Lpla3Uu4bVtzomaboIK
-	 jp7edKX2qlTrbS828NQJyFrZ+92m1WG+FPbD3bOYBixS7kDsYyg93bMVhVXCLx6ms5
-	 c5WAF9pukJnAm4c7UMVSZLa0xpv2PaKE+RlHmVMSvwse7uMlC4hdj1IW92x646BqMl
-	 6DrvKRLIb0LCw==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 807BB17E07C9;
-	Thu,  3 Jul 2025 11:05:53 +0200 (CEST)
-Message-ID: <61784658-c71d-458b-8934-5f5db2330bc0@collabora.com>
-Date: Thu, 3 Jul 2025 11:05:52 +0200
+	id 1uXH2T-0000000Axol-46W2;
+	Thu, 03 Jul 2025 10:19:35 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id B19DEA52ECD;
+	Thu,  3 Jul 2025 10:19:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3C5F3C4CEE3;
+	Thu,  3 Jul 2025 10:19:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1751537972;
+	bh=6r+LqpL6KA2efSJCVmUCNNxEdOtaWMQouGC4z+YYw4E=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=YNFLo32UcazxUvoPjazKAKec3zRIhjcZjy9aZW5xIpR7iyYaXGfJEgFQ4qSKLj9s7
+	 Hh33md7sT92kyDqWEutMGiywsTixGcMRLcYIshnSFZ+6pdD/FT2+y5mJQIziwtEVCL
+	 ztnxPL+RQza6KXSwqUCAyEDm5djhFVYJS9Fsv3wXIRkzE/vC/pkDnApbju1QnsHXyv
+	 VWDIVzggWvxBRs7JfRi/aV0SSfbWbjujR0kYoFv+N5rgQBu+ypzm51e4xjfVqte15f
+	 xH6pBYioIQQGFtNQfjnCtLy+x51KBUezJ6vrnUOwZHT+XAiNhbm9aczLaLqfohTfNM
+	 UD32VD/x8dD4w==
+Date: Thu, 03 Jul 2025 05:19:31 -0500
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/2] dt-bindings: dsp: mediatek: add mt8196 dsp
- document
-To: Krzysztof Kozlowski <krzk@kernel.org>,
- "hailong.fan" <hailong.fan@mediatek.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Liam Girdwood <lgirdwood@gmail.com>,
- Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
- Bard Liao <yung-chuan.liao@linux.intel.com>,
- Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
- Daniel Baluta <daniel.baluta@nxp.com>,
- Kai Vehmanen <kai.vehmanen@linux.intel.com>,
- Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
- Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- sound-open-firmware@alsa-project.org, linux-sound@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Kai Vehmanen <kai.vehmanen@linux.intel.com>, 
+ Bard Liao <yung-chuan.liao@linux.intel.com>, 
+ Daniel Baluta <daniel.baluta@nxp.com>, 
+ Peter Ujfalusi <peter.ujfalusi@linux.intel.com>, 
+ linux-kernel@vger.kernel.org, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com, 
+ Jaroslav Kysela <perex@perex.cz>, 
+ Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>, 
+ devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Takashi Iwai <tiwai@suse.com>, sound-open-firmware@alsa-project.org, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>
+To: "hailong.fan" <hailong.fan@mediatek.com>
+In-Reply-To: <20250703075632.20758-2-hailong.fan@mediatek.com>
 References: <20250703075632.20758-1-hailong.fan@mediatek.com>
  <20250703075632.20758-2-hailong.fan@mediatek.com>
- <defd70cb-4351-4b0b-b4d0-dd1ff831615c@kernel.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <defd70cb-4351-4b0b-b4d0-dd1ff831615c@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Message-Id: <175153797140.484478.11959606684592113866.robh@kernel.org>
+Subject: Re: [PATCH v2 1/2] dt-bindings: dsp: mediatek: add mt8196 dsp
+ document
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250703_020557_521404_030BA8DF 
-X-CRM114-Status: GOOD (  17.45  )
+X-CRM114-CacheID: sfid-20250703_031934_154785_4E243982 
+X-CRM114-Status: GOOD (  13.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,106 +87,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 03/07/25 10:08, Krzysztof Kozlowski ha scritto:
-> On 03/07/2025 09:56, hailong.fan wrote:
->> From: Hailong Fan <hailong.fan@mediatek.com>
->>
->> This patch adds mt8196 dsp document. The dsp is used for Sound Open
-> 
-> Please do not use "This commit/patch/change", but imperative mood. See
-> longer explanation here:
-> https://elixir.bootlin.com/linux/v5.17.1/source/Documentation/process/submitting-patches.rst#L95
-> 
->> Firmware driver node. It includes registers,  clocks, memory regions,
->> and mailbox for dsp.
->>
->> Signed-off-by: Hailong Fan <hailong.fan@mediatek.com>
->> ---
->>   .../bindings/sound/mediatek,mt8196-dsp.yaml   | 95 +++++++++++++++++++
->>   1 file changed, 95 insertions(+)
->>   create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8196-dsp.yaml
->>
->> diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8196-dsp.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8196-dsp.yaml
->> new file mode 100644
->> index 000000000000..68f594f476e8
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/sound/mediatek,mt8196-dsp.yaml
 
-Wrong folder; this should go to dsp/mediatek,mt8196-dsp.yaml ....
-
-...but then I don't get why MT8196 wasn't simply added to mediatek,mt8186-dsp.yaml.
-
->> @@ -0,0 +1,95 @@
->> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
->> +%YAML 1.2
->> +---
->> +$id: http://devicetree.org/schemas/sound/mediatek,mt8196-dsp.yaml#
->> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->> +
->> +title: MediaTek mt8196 DSP core
->> +
->> +maintainers:
->> +  - Hailong Fan <hailong.fan@mediatek.com>
->> +
->> +description: The MediaTek mt8196 SoC mt8196 contain a DSP core used for advanced
+On Thu, 03 Jul 2025 15:56:23 +0800, hailong.fan wrote:
+> From: Hailong Fan <hailong.fan@mediatek.com>
 > 
-> Missing blank line. Look at other bindings. Also does not look wrapped
-> at 80 (see Linux coding style doc).
+> This patch adds mt8196 dsp document. The dsp is used for Sound Open
+> Firmware driver node. It includes registers,  clocks, memory regions,
+> and mailbox for dsp.
+> 
+> Signed-off-by: Hailong Fan <hailong.fan@mediatek.com>
+> ---
+>  .../bindings/sound/mediatek,mt8196-dsp.yaml   | 95 +++++++++++++++++++
+>  1 file changed, 95 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8196-dsp.yaml
 > 
 
-There's also a typo, "mt8196 SoC mt8196"
+My bot found errors running 'make dt_binding_check' on your patch:
 
-> 
->> +  pre- and post- audio processing.
->> +
->> +properties:
->> +  compatible:
->> +    const: mediatek,mt8196-dsp
->> +
->> +  reg:
->> +    items:
->> +      - description: DSP configuration registers
->> +      - description: DSP SRAM
->> +      - description: DSP secure registers
->> +      - description: DSP bus registers
->> +
->> +  reg-names:
->> +    items:
->> +      - const: cfg
->> +      - const: sram
->> +      - const: sec
->> +      - const: bus
->> +
->> +  clocks:
->> +    items:
->> +      - description: mux for dsp clock
->> +      - description: 26M clock
->> +      - description: ADSP PLL clock
->> +
->> +  clock-names:
->> +    items:
->> +      - const: adsp_sel
-> 
-> Isn't this called audiodsp in other bindings?
-> 
->> +      - const: clk26m
-> 
-> Don't use frequencies. How is the pin or input called in datasheet? How
-> other devices call it?
+yamllint warnings/errors:
 
-In the datasheet, this is called.... CLK26M (really).
+dtschema/dtc warnings/errors:
+Documentation/devicetree/bindings/sound/mediatek,mt8196-dsp.example.dts:18:18: fatal error: dt-bindings/clock/mt8196-clk.h: No such file or directory
+   18 |         #include <dt-bindings/clock/mt8196-clk.h>
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make[2]: *** [scripts/Makefile.dtbs:131: Documentation/devicetree/bindings/sound/mediatek,mt8196-dsp.example.dtb] Error 1
+make[2]: *** Waiting for unfinished jobs....
+make[1]: *** [/builds/robherring/dt-review-ci/linux/Makefile:1525: dt_binding_check] Error 2
+make: *** [Makefile:248: __sub-make] Error 2
 
-Cheers,
-Angelo
+doc reference errors (make refcheckdocs):
 
-> 
->> +      - const: adsppll
->> +
->> +  power-domains:
->> +    maxItems: 1
->> +
-> Best regards,
-> Krzysztof
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250703075632.20758-2-hailong.fan@mediatek.com
 
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
 
 
