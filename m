@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BA7FC83F04
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 17:06:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A48D1C77B7C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 17:11:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LkkfXkgiKSoWp3Wmt4rSi0jtVVgHMseHF6s00lnxL8c=; b=X9vgv1Rx5L+FmjNMH+eG+vYnbp
-	q9ulNobCGwqLCbwetdPFGTPjpJ8CNgaZ6ssoqfWeZO4af5nlvZoo35H3pfX0epQvb1Duh1MV7KFgy
-	BLroDNIx1zOsE9ICxW/jqKRnA/wVaPix/i1i9UCWijt5I8QSi0VGNDOvw7Bfj8msSicr8wnem+KiK
-	xwLQW6RQdOYoDk/O/071qU8431WVvKjdlAc6bvRQGpBRsmfVt72z4jCZh4hlqfIQAiGYbkOhFDG/D
-	PO8HBQ07PHzkT4YpC7IqaQ7x6ZCFV2wo3k+82y7yCE3w2f314lTuKtiunQ4njEb/EMPHYq1rDqVQO
-	6oAengDA==;
+	bh=5eagcih7gQ/E0aNfelN22ndMMCDGMvVxcLtEyEfE050=; b=1tt29Qeb2loMijG2Mj9GnQ1T8P
+	lCA3b/ieJ8aK0b1YLY4g+0bw4gbLLWQB6Wrj9yqzOIDPwchqo8DMuNtCSLqa1Ahw4PRQEiGj5kLBH
+	UF0c609YIE9zwX1eadDQn41bsQ1qJxTo3FnsaK4HgSQOvrEAtUFS7KPv0VYFgAA4raLdtJxcunQIt
+	fec3TINHh8ymUBNy5EzugBLrOJdbiQ9aoSI0Lb5piZizqrprFcrlfeL6z3ZM/Qm2FHFaQBY+EZhbc
+	VG3eh4sH9VG0ZXNzpvBw+1PquKAaMuehbqLWPv8pOnHiT+lCDQYci53QeMkUmqTihmmHQARrE0kEq
+	ZTc+vt7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXNOh-0000000C4wh-165H;
-	Thu, 03 Jul 2025 17:06:55 +0000
-Received: from mgamail.intel.com ([198.175.65.9])
+	id 1uXNTT-0000000C5ZG-3mza;
+	Thu, 03 Jul 2025 17:11:51 +0000
+Received: from mgamail.intel.com ([192.198.163.7])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXKvO-0000000BfUM-0GqQ;
-	Thu, 03 Jul 2025 14:28:31 +0000
+	id 1uXKxG-0000000Bfy0-0Hgg;
+	Thu, 03 Jul 2025 14:30:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1751552910; x=1783088910;
+  t=1751553026; x=1783089026;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=wdOiIKGzccCM8RErNFNe99zd9fwOK9DCthug8lO8Z6o=;
-  b=IwNv9E0U6NE3SWqn75Xn1WOU5gl+/0Q8P1MmZ8G+YPwF/mUO104WrId5
-   uUTAilObIzCLF8+sBqO4X7Ne5jG7NagUAWLnuKsK8HVPDrCtXcEk2MWsS
-   DYJiTpQdLKBTaRBNx70QMGnyQ+bzNzZRybJo+zP7VfrgvisiItkbsp80n
-   hVxAON3e5v0oAPYl03S80l6da0PwNIVxW6UVOVU41+07JAouvZBusRM1d
-   G34Y/c7oEs0H2Xrled9Gd2DIkxBaFruVCVhb9Qao3UDiq0GfQLcsj47Yt
-   063RGyPYK6AxB30Sbe3wvLd/3d0xq8EARWALvSGZhF0okUnbDfLr1UGFD
-   A==;
-X-CSE-ConnectionGUID: q94PEfKORtWE8LzUuKvbzg==
-X-CSE-MsgGUID: 4UDKyhXYSo6Hf4DjMmIb/w==
-X-IronPort-AV: E=McAfee;i="6800,10657,11483"; a="76428403"
+  bh=+7Tp7mxCk+lHbCkMLaMMOj3pQFJ6m6rrmptwiX2ag3U=;
+  b=jKDvTvg9OTeZk6aN26AbrWKtf6vDd1WzkOniu/z4LJQemcO9B5z2vbXL
+   RcND9fucq/ws5K04dSjyr0WIU6v1ZKQYFOO6+Py2y6XewST7otljk6vJ1
+   r5+kZlZOBRDZQ50G9JcJ2dF16o5XFTlXVfGrWE5ir/NYHiFYHyBiveIvt
+   26lG1tsrN+Cx03BoKFBWMf+R5p5XON/T/39NB3ckAGrHNH+1vRodEbllt
+   LfdjbFz9c2ScK+leXrj1/rIyZVYyGdX7aEUQMyQCkCwVjhEvwilhcbFQC
+   WA/hdYzgRNZurgYH18PBp+jTEb85Kyk9il0CdyurG9KdZDIWJAGb73ZFS
+   w==;
+X-CSE-ConnectionGUID: IbvaxHcJS86u8BMLm+lfmg==
+X-CSE-MsgGUID: 7YR6OxaLR8iO4N8Ki8P6yQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11483"; a="79319353"
 X-IronPort-AV: E=Sophos;i="6.16,284,1744095600"; 
-   d="scan'208";a="76428403"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Jul 2025 07:28:29 -0700
-X-CSE-ConnectionGUID: CYkZp2T+SbuWhmncdTXPFw==
-X-CSE-MsgGUID: WO/ooU8XSsS2eIyewNFEWg==
+   d="scan'208";a="79319353"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Jul 2025 07:30:26 -0700
+X-CSE-ConnectionGUID: eA+mFOxLQj+7OWl0Mm1sDw==
+X-CSE-MsgGUID: pF6OSx0VSE+KewFcfBhPTA==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.16,284,1744095600"; 
-   d="scan'208";a="154750352"
+   d="scan'208";a="153814024"
 Received: from smile.fi.intel.com ([10.237.72.52])
-  by fmviesa009.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Jul 2025 07:28:25 -0700
+  by orviesa006.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Jul 2025 07:30:22 -0700
 Received: from andy by smile.fi.intel.com with local (Exim 4.98.2)
 	(envelope-from <andriy.shevchenko@intel.com>)
-	id 1uXKvG-0000000CE9C-0huU;
-	Thu, 03 Jul 2025 17:28:22 +0300
-Date: Thu, 3 Jul 2025 17:28:21 +0300
+	id 1uXKx8-0000000CEAh-3598;
+	Thu, 03 Jul 2025 17:30:18 +0300
+Date: Thu, 3 Jul 2025 17:30:18 +0300
 From: Andy Shevchenko <andriy.shevchenko@intel.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: jic23@kernel.org, dlechner@baylibre.com, nuno.sa@analog.com,
@@ -66,20 +66,18 @@ Cc: jic23@kernel.org, dlechner@baylibre.com, nuno.sa@analog.com,
 	linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v2 4/6] iio: adc: mt6359: Move reference voltage to
- platform data
-Message-ID: <aGaThTSAriz46D7T@smile.fi.intel.com>
+Subject: Re: [PATCH v2 0/6] iio: Add support for MT6363/6373 Auxiliary ADC
+Message-ID: <aGaT-rSmUoukjvR7@smile.fi.intel.com>
 References: <20250703141146.171431-1-angelogioacchino.delregno@collabora.com>
- <20250703141146.171431-5-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250703141146.171431-5-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250703141146.171431-1-angelogioacchino.delregno@collabora.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
  krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250703_072830_147367_AF2448C1 
-X-CRM114-Status: UNSURE (   9.04  )
+X-CRM114-CacheID: sfid-20250703_073026_131606_8E4301A5 
+X-CRM114-Status: UNSURE (   9.91  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -95,14 +93,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 03, 2025 at 04:11:44PM +0200, AngeloGioacchino Del Regno wrote:
-> In preparation to add support for new PMICs, add a `vref_mv`
-
-I still think that the vref_mV is a better naming.
-
-> the AUXADC_VOLT_FULL definition.
+On Thu, Jul 03, 2025 at 04:11:40PM +0200, AngeloGioacchino Del Regno wrote:
+> Changes in v2:
+>  - Added error checks to all regmap r/w operations
+>  - Moved adc_vref addition to different commit
+>  - Various other fixes
 > 
-> As a consequence, the definition was also removed.
+> This series adds support for the Auxiliary ADC IP found on the new
+> MediaTek MT6363 and MT6373 PMICs, found on board designs featuring
+> the MT8196 Chromebook SoC or the MT6991 Dimensity 9400 Smartphone SoC.
+
+Overall LGTM, but one nit-pick in one patch.
 
 -- 
 With Best Regards,
