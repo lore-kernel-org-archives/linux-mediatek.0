@@ -4,64 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C42BC83F05
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 21:52:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E72BFC83030
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 22:06:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EIGTeSFGl+y3lSh82LnuwOwDvyKO/NJTdsF2vBpDxJ0=; b=hehVAf7KRmD+ZuCWlJH5bjm/cz
-	SQcdaNpft+Lm6EYuuodMk09UgLvUVaPoyhSx9uEvgbhLqN7aeUlf3/RGToVzTn4OXTmRdx3pzKaDI
-	ld4Uk9sOO6sHPBE7nv5w/z7d/zgr4DFA4MUUbr7Pao4HtELqI+vacFMsBsLPOtf1B9/4jh2lEqeNJ
-	IxGXXFyh8/HxoUpr5EuN+qPM+dbTghE/ICOqj8AcBPIq0fraPNpTMFkv/Yl3V/BeGcLccynPfI+10
-	j3FFQcCjJpoWSwTzpe93xJtqiXnJHBo4he7/cOzB61pBBSITFj6Wj6VMcPii0hPgaZrvPIPxOvZot
-	N9fsis/g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
+	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Q/iOuHj5KX9GuXeKQABZ2gCw3mHlOv+e0egMHCqcqhc=; b=TD/MnND3Xa16GfABpysUuUUI4B
+	AL0NhH97v4cVxP2oWBwp5Ktq/Cg+8w2VT5+InZSi5EgHlHBi1d6zEmlRRHOQn8KMVyaJ8kv75V2vU
+	hvQcJIgnMzSVOLdE2gRBNmNyz4pUn4H4X+b73Xf5TbU4HDw35fWyqD0dICZwoPQcD7flTYDc4d0P6
+	aBAghtuU5vFGmZRL94gz43E4vJEeZHM1+hjAklfZSqXneOhfIQ5RJA1RvD3fZfxqbc+JC2iVX/pwZ
+	1BHCTNtG3ZNk93mvAVTbon/nsrcBcrHPXlg/mxlCj4w913hZp4qxuqyvmYZ8CIbZ8kiKezkQX+5zp
+	1SZ3KEyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXRrH-0000000Ceiw-3Jkx;
-	Thu, 03 Jul 2025 21:52:43 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uXS4Z-0000000Cg6u-2QlS;
+	Thu, 03 Jul 2025 22:06:27 +0000
+Received: from relay6-d.mail.gandi.net ([217.70.183.198])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXOfH-0000000CEpq-0r5z;
-	Thu, 03 Jul 2025 18:28:08 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1751567269; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=EAwRzK/atLZp81y99CJDlb538jQm470pWJL4qPIlO8yDaz/DWV2sIUxttUGQHjEl44LLYuE4sHAVToGp3ItB4hvFekOq1tkPgSHMhWmyBO0b+edEooKS8kV0ovrSYr3icN1n4sMdmnLop98XqG7Sk9kEt8I1Ab6bAzG/USpdsiA=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1751567269; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=EIGTeSFGl+y3lSh82LnuwOwDvyKO/NJTdsF2vBpDxJ0=; 
-	b=oB0LfmZBG66ZUZ/wv2kO3rQ97NauunYjM3/lZhpzefJ4wUSNUf15RztBrKGu7NBuyE4lFC5hwuyj0wBCPTHU3df5Eiq/AV1roJVSMbp0NyYEYnzBRPBNR0yKbmGWAgK0ZHyWewIRMIjFESDHy9RjAEGPSiA7vsdR0h17mRUOduQ=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nfraprado@collabora.com;
-	dmarc=pass header.from=<nfraprado@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1751567269;
-	s=zohomail; d=collabora.com; i=nfraprado@collabora.com;
-	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=EIGTeSFGl+y3lSh82LnuwOwDvyKO/NJTdsF2vBpDxJ0=;
-	b=lB5lACBUqAuSqEfnmk/y2Ek/zH4biccP08KIK/ORsFGlJv/GtpNvLOKD96lJEfkC
-	io0PymrNsahr9NRUjcE28owwMk57ai76yrZR6iFrzMzFSYWU6z6+jjXEMIOVNENEopU
-	OUosdZjl2cu7sFBOMDJ6QRDtaa1d5+CmypeIdqss=
-Received: by mx.zohomail.com with SMTPS id 1751567267207310.7183175991179;
-	Thu, 3 Jul 2025 11:27:47 -0700 (PDT)
-Message-ID: <5bfcd5e059e86a96807426bfc6543209d09b557f.camel@collabora.com>
-Subject: Re: [PATCH 00/10] pmdomain: Partial refactor, support modem and RTFF
-From: =?ISO-8859-1?Q?N=EDcolas?= "F. R. A. Prado" <nfraprado@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	linux-mediatek@lists.infradead.org
-Date: Thu, 03 Jul 2025 14:27:45 -0400
-In-Reply-To: <20250703110247.99927-1-angelogioacchino.delregno@collabora.com>
-References: <20250703110247.99927-1-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.1-1 
+	id 1uXNaA-0000000C6q2-0D04;
+	Thu, 03 Jul 2025 17:18:47 +0000
+Received: by mail.gandi.net (Postfix) with ESMTPSA id DD0E6442C9;
+	Thu,  3 Jul 2025 17:18:41 +0000 (UTC)
+From: Bastien Nocera <hadess@hadess.net>
+To: trivial@kernel.org,
+	Marcel Holtmann <marcel@holtmann.org>,
+	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sven Peter <sven@kernel.org>,
+	Janne Grunau <j@jannau.net>,
+	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
+	Neal Gompa <neal@gompa.dev>,
+	Johan Hedberg <johan.hedberg@gmail.com>,
+	Ingo Molnar <mingo@kernel.org>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Bastien Nocera <hadess@hadess.net>,
+	Al Viro <viro@zeniv.linux.org.uk>,
+	Kees Cook <kees@kernel.org>,
+	Erick Archer <erick.archer@outlook.com>,
+	Chris Lu <chris.lu@mediatek.com>,
+	linux-bluetooth@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	asahi@lists.linux.dev
+Subject: [PATCH v2 7/7] Bluetooth: Fix typos in comments
+Date: Thu,  3 Jul 2025 19:17:01 +0200
+Message-ID: <20250703171815.1011001-8-hadess@hadess.net>
+X-Mailer: git-send-email 2.50.0
+In-Reply-To: <20250703171815.1011001-1-hadess@hadess.net>
+References: <20250703171815.1011001-1-hadess@hadess.net>
 MIME-Version: 1.0
-X-ZohoMailClient: External
+Content-Transfer-Encoding: 8bit
+X-GND-State: clean
+X-GND-Score: -100
+X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdefgddvtdekiecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfitefpfffkpdcuggftfghnshhusghstghrihgsvgenuceurghilhhouhhtmecufedtudenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffojghfggfgsedtkeertdertddtnecuhfhrohhmpeeurghsthhivghnucfpohgtvghrrgcuoehhrgguvghssheshhgruggvshhsrdhnvghtqeenucggtffrrghtthgvrhhnpeekteetgeettdehieduiedttdetffelleehtdejkeeluedvgfffvdevteetudfhkeenucfkphepvdgrtddumegvfeegmegvtgejfeemtghfvddtmeejudgurgemfegsugemvddtrgelmedufeefnecuvehluhhsthgvrhfuihiivgepieenucfrrghrrghmpehinhgvthepvdgrtddumegvfeegmegvtgejfeemtghfvddtmeejudgurgemfegsugemvddtrgelmedufeefpdhhvghlohepohhlihhmphhitgdpmhgrihhlfhhrohhmpehhrgguvghssheshhgruggvshhsrdhnvghtpdhnsggprhgtphhtthhopedvfedprhgtphhtthhopehtrhhivhhirghlsehkvghrnhgvlhdrohhrghdprhgtphhtthhopehmrghrtggvlheshhholhhtmhgrnhhnrdhorhhgpdhrtghpthhtoheplhhuihiirdguvghnthiisehgmhgrihhlrdgtohhmpdhrtghpthhtohepshgvrghnrdifrghnghesmhgvughirghtvghkrdgtohhmpdhrtghpthhtohepmhgrthhth
+ hhirghsrdgsghhgsehgmhgrihhlrdgtohhmpdhrtghpthhtoheprghnghgvlhhoghhiohgrtggthhhinhhordguvghlrhgvghhnohestgholhhlrggsohhrrgdrtghomhdprhgtphhtthhopehsvhgvnheskhgvrhhnvghlrdhorhhgpdhrtghpthhtohepjhesjhgrnhhnrghurdhnvght
+X-GND-Sasl: hadess@hadess.net
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250703_112807_325660_924AA406 
-X-CRM114-Status: GOOD (  10.65  )
+X-CRM114-CacheID: sfid-20250703_101846_217259_9A2FDAC8 
+X-CRM114-Status: GOOD (  18.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,51 +79,95 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, mbrugger@suse.com, y.oudjana@protonmail.com, linux-pm@vger.kernel.org, ulf.hansson@linaro.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, mandyjh.liu@mediatek.com, lihongbo22@huawei.com, wenst@chromium.org, matthias.bgg@gmail.com, krzk+dt@kernel.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2025-07-03 at 13:02 +0200, AngeloGioacchino Del Regno wrote:
-> This series is a subset of [1], leaving out the Hardware Voter
-> specific
-> bits for MT8196 until the discussion around it reaches a conclusion.
-[..]
-> Compared to v1 in [1]:
-> =C2=A0- Changed mediatek,bus-protection to access-controllers
-> =C2=A0=C2=A0 as suggested by Rob (thanks!)
-> =C2=A0- Added commits to document #access-controller-cells on all of
-> =C2=A0=C2=A0 the access control providers
-[..]
-> [1]
-> https://lore.kernel.org/all/20250623120154.109429-1-angelogioacchino.delr=
-egno@collabora.com
->=20
-> AngeloGioacchino Del Regno (10):
-> =C2=A0 dt-bindings: memory: mtk-smi: Document #access-controller-cells
-> =C2=A0 dt-bindings: clock: mediatek: Document #access-controller-cells
-> =C2=A0 dt-bindings: power: mediatek: Document access-controllers property
-> =C2=A0 pmdomain: mediatek: Refactor bus protection regmaps retrieval
-> =C2=A0 pmdomain: mediatek: Handle SoCs with inverted SRAM power-down bits
-> =C2=A0 pmdomain: mediatek: Move ctl sequences out of power_on/off
-> functions
-> =C2=A0 pmdomain: mediatek: Add support for modem power sequences
-> =C2=A0 pmdomain: mediatek: Add support for RTFF Hardware in MT8196/MT6991
-> =C2=A0 pmdomain: mediatek: Convert all SoCs to new style regmap retrieval
-> =C2=A0 arm64: dts: mediatek: Convert all SoCs to use access-controllers
+Found by codespell.
 
-As already pointed out by rob's bot you're missing adding the
-properties to
+Signed-off-by: Bastien Nocera <hadess@hadess.net>
+---
+ net/bluetooth/hci_conn.c  | 2 +-
+ net/bluetooth/hci_event.c | 4 ++--
+ net/bluetooth/hci_sync.c  | 2 +-
+ net/bluetooth/lib.c       | 2 +-
+ net/bluetooth/smp.c       | 2 +-
+ 5 files changed, 6 insertions(+), 6 deletions(-)
 
-mediatek,mt8195-sys-clock.yaml
-mediatek,mt8188-sys-clock.yaml
+diff --git a/net/bluetooth/hci_conn.c b/net/bluetooth/hci_conn.c
+index 4f379184df5b..cb360adbb6ec 100644
+--- a/net/bluetooth/hci_conn.c
++++ b/net/bluetooth/hci_conn.c
+@@ -814,7 +814,7 @@ static int hci_le_big_terminate(struct hci_dev *hdev, u8 big, struct hci_conn *c
+  *
+  * Detects if there any BIS left connected in a BIG
+  * broadcaster: Remove advertising instance and terminate BIG.
+- * broadcaster receiver: Teminate BIG sync and terminate PA sync.
++ * broadcaster receiver: Terminate BIG sync and terminate PA sync.
+  */
+ static void bis_cleanup(struct hci_conn *conn)
+ {
+diff --git a/net/bluetooth/hci_event.c b/net/bluetooth/hci_event.c
+index 66052d6aaa1d..a546cb058e8e 100644
+--- a/net/bluetooth/hci_event.c
++++ b/net/bluetooth/hci_event.c
+@@ -5754,7 +5754,7 @@ static void le_conn_complete_evt(struct hci_dev *hdev, u8 status,
+ 	conn->state = BT_CONFIG;
+ 
+ 	/* Store current advertising instance as connection advertising instance
+-	 * when sotfware rotation is in use so it can be re-enabled when
++	 * when software rotation is in use so it can be re-enabled when
+ 	 * disconnected.
+ 	 */
+ 	if (!ext_adv_capable(hdev))
+@@ -7077,7 +7077,7 @@ static void hci_le_big_info_adv_report_evt(struct hci_dev *hdev, void *data,
+ /* Entries in this table shall have their position according to the subevent
+  * opcode they handle so the use of the macros above is recommend since it does
+  * attempt to initialize at its proper index using Designated Initializers that
+- * way events without a callback function can be ommited.
++ * way events without a callback function can be omitted.
+  */
+ static const struct hci_le_ev {
+ 	void (*func)(struct hci_dev *hdev, void *data, struct sk_buff *skb);
+diff --git a/net/bluetooth/hci_sync.c b/net/bluetooth/hci_sync.c
+index 6687f2a4d1eb..febad7922008 100644
+--- a/net/bluetooth/hci_sync.c
++++ b/net/bluetooth/hci_sync.c
+@@ -5633,7 +5633,7 @@ int hci_abort_conn_sync(struct hci_dev *hdev, struct hci_conn *conn, u8 reason)
+ 	}
+ 
+ 	/* Cleanup hci_conn object if it cannot be cancelled as it
+-	 * likelly means the controller and host stack are out of sync
++	 * likely means the controller and host stack are out of sync
+ 	 * or in case of LE it was still scanning so it can be cleanup
+ 	 * safely.
+ 	 */
+diff --git a/net/bluetooth/lib.c b/net/bluetooth/lib.c
+index 43aa01fd07b9..305044a84478 100644
+--- a/net/bluetooth/lib.c
++++ b/net/bluetooth/lib.c
+@@ -54,7 +54,7 @@ EXPORT_SYMBOL(baswap);
+  * bt_to_errno() - Bluetooth error codes to standard errno
+  * @code: Bluetooth error code to be converted
+  *
+- * This function takes a Bluetooth error code as input and convets
++ * This function takes a Bluetooth error code as input and converts
+  * it to an equivalent Unix/standard errno value.
+  *
+  * Return:
+diff --git a/net/bluetooth/smp.c b/net/bluetooth/smp.c
+index 47f359f24d1f..5b4ade03bdcc 100644
+--- a/net/bluetooth/smp.c
++++ b/net/bluetooth/smp.c
+@@ -3172,7 +3172,7 @@ static void smp_ready_cb(struct l2cap_chan *chan)
+ 	/* No need to call l2cap_chan_hold() here since we already own
+ 	 * the reference taken in smp_new_conn_cb(). This is just the
+ 	 * first time that we tie it to a specific pointer. The code in
+-	 * l2cap_core.c ensures that there's no risk this function wont
++	 * l2cap_core.c ensures that there's no risk this function won't
+ 	 * get called if smp_new_conn_cb was previously called.
+ 	 */
+ 	conn->smp = chan;
+-- 
+2.50.0
 
-on patch 2. But other than that, for the whole series (since the tag
-wasn't added from the previous version):
-
-Reviewed-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
-
---=20
-Thanks,
-
-N=C3=ADcolas
 
