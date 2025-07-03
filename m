@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85BF4C83030
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 08:13:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0D0CC77B7C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 08:18:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kBQLLOmhu8//RFVllkbvSvChAUKkYiXtBBWsP1yQZJ8=; b=pEcm7yqT6KufNYdDpsUlauCGIF
-	pqQcAjkAOChfvLMvPhJeQfnbmCPGLYyqP1WxOzK4nCKkNzv60PuCjVCqGiZ+iAH/4K2+dTwUHHrmx
-	Z2+D7O6BV64bYa00+gFOMFtj6Oe2rllR0rxqHqEcsbkNeN2LwpjLgr2IRj9go2V6CqaJokhUKazGr
-	0H/wqc3CzDWQTzZKdaBoWAgCrWqQAPWgtQD1zXoPGPvWxRrGKf5uR1mD6QvqHCmz2v895XrM0g1CL
-	BsOeRG5Gcmnarp39P4LnDs7z/chSK926Te/u8Yzu3v3N3Sxrk1GVVp1vSohAjG3px+n7C6UozTALl
-	Kx9ABFzA==;
+	bh=i/iGXymbVgNuurydK/IcOHrA6N2DZUF7NkoTNmSKj/k=; b=SivjDEHquKUxKAcwHFPIFcwyuB
+	o5MVFCaV21B3f4NEeMzUQr5mllFBQxCQf23LPt9mb4iysd16k6QI2KyAd51LIfGl7Po8B36Fkm2uq
+	mLcWHBszX3jBoIkQs1Pja2mXEtLKyDiB7p6YJuJkjqIevEhGJlcLsTJuwjS/rJz8BqRCQ59zV5DcR
+	i/H2WNLcEGW37ue0u0W1OygIKrFxUUqG724ciU2mO6MisczsuoFj1m3+a6aFa+Zi7c+oFSFUynI+A
+	d/TAjmvyt7bHp5QWaa1a+mvOr8EE6l99CMPvdOxYKVoPSdBBfijJdsr4obE1s7IIJZYYLF0mjao9P
+	qkwzm8LA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXF4g-0000000AdVp-0Obh;
-	Thu, 03 Jul 2025 08:13:42 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uXF9J-0000000Ae9T-3Ued;
+	Thu, 03 Jul 2025 08:18:29 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXEvA-0000000Abt4-3Y0k;
-	Thu, 03 Jul 2025 08:03:52 +0000
+	id 1uXEvz-0000000Ac3l-1KsD;
+	Thu, 03 Jul 2025 08:04:44 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 4A75061142;
-	Thu,  3 Jul 2025 08:03:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ADFD4C4CEEE;
-	Thu,  3 Jul 2025 08:03:46 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 770C3A536AD;
+	Thu,  3 Jul 2025 08:04:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7208EC4CEE3;
+	Thu,  3 Jul 2025 08:04:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751529832;
-	bh=8dt959W9DWr4IWf1oCIoifPgEicuXF+5YbkemiFCmXU=;
+	s=k20201202; t=1751529882;
+	bh=i/iGXymbVgNuurydK/IcOHrA6N2DZUF7NkoTNmSKj/k=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=n7vcIRN+L9GF0pU06pjFH+uudjzn04CWC4O+B45UvHhx4D2GcMMvaAFF0rlz9x4qr
-	 X7cn7ebW0UTP3oIa2lhzJN/NWypJ+BKuWWVuQt4V/cyOL6RFipUcBtP0tp2rnfX5t5
-	 toO2s0ns3Zi98FpC/l1jBibgmd/ucRpqKM7lWv1z9xi2Nk9O7o7vKXCgg9cKGZKEpe
-	 DvuEFIQRZomLAjFEVYydGcSJGllhPXT6u0nfFbuskOnhKaJQp6pBT/hllyZYJm9v5T
-	 C9qnt2PE5LX8t8Hv1M7NOVbRPUO71ySR0KSC/Z3lzmdegn0Aw8JSIsq31spKJ2+IHn
-	 7T6cq2LCm56pw==
-Message-ID: <1e08ec21-e863-4720-8604-df0640624a83@kernel.org>
-Date: Thu, 3 Jul 2025 10:03:44 +0200
+	b=kAM1Jn36Pz6CMvZHvihRBjfkuyPPp3YFTYGL1AZFAlRUPCvJ+NRZnofreNg+zJBcA
+	 0DRfpGhYOaTLl6rdViNDpqtXVAX2F4LYuTwG7F+gZILeNLiXROfRF4r9HWKIV2V/8z
+	 3MHPMrJ0ygkw2mIBJZ8SfdV74szgpdEBtoj4BToY4Op6xU2ZRNEMN1TGRchys4fwxa
+	 3vh6ySZsyLFETqvecw6JkbfgWp1G7axaxB5FulTvXvdsAPheZzNhbWnNsQVG+Rtmy8
+	 9mNQ+AiE55h1I/EjL3bGNMHBaS1Ok/vlh3G9o3YmOCYTi9rzNTffKLkzf69jJM9ePi
+	 HrNJaIngfMF2A==
+Message-ID: <a42a8774-fc1d-4928-a37f-f6ea5e26f2ee@kernel.org>
+Date: Thu, 3 Jul 2025 10:04:34 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH next 2/3] ASoC: tas2781: fix reset-gpio polarity
+Subject: Re: [PATCH next 1/3] ASoC: dt-bindings: tas2781: fix reset polarity
 To: Catalin Popescu <catalin.popescu@leica-geosystems.com>,
  lgirdwood@gmail.com, broonie@kernel.org, robh@kernel.org,
  krzk+dt@kernel.org, conor+dt@kernel.org, shenghao-ding@ti.com,
@@ -56,7 +56,6 @@ Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
  linux-mediatek@lists.infradead.org, m.felsch@pengutronix.de,
  bsp-development.geo@leica-geosystems.com
 References: <20250703075037.2558549-1-catalin.popescu@leica-geosystems.com>
- <20250703075037.2558549-2-catalin.popescu@leica-geosystems.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -102,9 +101,13 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20250703075037.2558549-2-catalin.popescu@leica-geosystems.com>
+In-Reply-To: <20250703075037.2558549-1-catalin.popescu@leica-geosystems.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250703_010443_512991_044A9AF9 
+X-CRM114-Status: UNSURE (   5.18  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,21 +123,12 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 03/07/2025 09:50, Catalin Popescu wrote:
-> Both TAS2563 & TAS2781 have an active low reset, yet the driver assumes
-> an active high reset. Hence, in order to get the chip out of reset we
-> need to lie to the devicetree about the reset polarity. The patch fixes
-> the driver so it could work no matter the polarity and leaves it to the
-> devicetree to define the correct polarity.
-> 
-> Signed-off-by: Catalin Popescu <catalin.popescu@leica-geosystems.com>
+> Both TAS2563 & TAS2781 have a reset active low. Yet, the binding wrongly
+> indicates an active high reset.
 
 
-This breaks all existing in-tree and out-tree users.
-
-DTS patches are independent, so you cannot fix in-tree that way. Anyway,
-you cannot fix other users, so sorry, you are stuck with this or you
-need some tricks (I once did for a qcom codec, but I don't know if this
-is really the solution and my case was easier about the users).
+This is just an example, not a binding. If there is an inverter, then
+maybe the example was correct?
 
 Best regards,
 Krzysztof
