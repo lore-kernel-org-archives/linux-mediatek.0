@@ -4,71 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B66FAC77B7C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 11:53:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 417FDC77B7C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 12:07:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PUMUxTQyz4Rw+I/k6r4nKllDMvLQcH1q/9NQSkvh/Tc=; b=Aq7qh8S5BBNaipQ3lb5rSbFKN+
-	KdjQzXMo68ZCM7HBRORYCWJE3sfaw5usrhivlHwUsah0sPuRKv6r6dOY80oDY7hxYyEPXTH+BZcV2
-	Oag7zw+42hV1qPNop+d/ySHLD953OthWctX4bOJ1DfREUZOyaBlH9Ww9yqiCvIoBIptXJlw1Lod2d
-	ZoEhssaWfcOTUnKTLXhLxpeGjnfL0YojnnxNgLUmfi8+Gks5zbLbstZ32B072Xl2tWIm8KEm1x5ZO
-	33fMEZ3u1xY1VisbwhqW9kH+eJH1nud5ijJHtNEi2xX5rT45UVaJLszFsCxCklpfDTJoGQb5euwht
-	DAXc2ZIA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:Message-ID:References:In-Reply-To:
+	Subject:To:From:Date:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=IUOk9rg8FJKLiO2I6XaC3qKD4aR5RnkKJ8cRJENolq0=; b=zPFD6lhcBDU3uB
+	bpPo0vPHiBC47i3Nu0l5/KIhcIWhsfKz90p06svTXslYK8qIqcJny/6x0f5sDDRN3pqob3tacl3q7
+	5yhO2zhyDngpzn6VaO/lespWDom1K8HdG/qPOT1/EiKwkUF9uEx/VD4pT/GDxB6jLBKyKrRX5nsw2
+	pxkQT1q2aQEEmbdf/MLe9iVHH97rrO7od34BO9ceBuhTju3GBcWeNpFqV3dwzLMEn1pKeWIkEk0Pe
+	cz0P1guokUtwKXMb159WaRyyQrNpacCIcImM0OoSVQPHnoLGTqAcKeM9wq5VrhO4yiP5bGkuDWWKi
+	YwGznswW1MpQwT5R9uIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXIVK-0000000BEK6-3TRJ;
-	Thu, 03 Jul 2025 11:53:26 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1uXIjF-0000000BGZo-2dgR;
+	Thu, 03 Jul 2025 12:07:49 +0000
+Received: from mxout3.routing.net ([2a03:2900:1:a::8])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXHLW-0000000B1qj-1kVn;
-	Thu, 03 Jul 2025 10:39:16 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1751539145; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=OGmTYjb87a/HQQfJ80nuoMM3J5giu9DFlFLheBZM1lWvnWDiOMp9wWhc6sM77tEy1ydXz087rntZgP0XRPFayh7/+6AIYl4/GsM1wkQ3n8qa6H0FCKLoRUVY6HRRJ61CZ9b1OB/QBYNTWJ3UA09pcCeMVrIaAE3yG/LAQMsMunA=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1751539145; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=PUMUxTQyz4Rw+I/k6r4nKllDMvLQcH1q/9NQSkvh/Tc=; 
-	b=gYW8iVfmd0xLbwpe/lltOymsMhP2xnfMuf9kG5gDgz4TIM77kd5B/HOrZYUOxLvR/HxU5dRuW5kbHKrZAECfrY4FR6TvgZRFrBMwIyVjXu0l4aNreUspfiSwGUYHgp026ULp0m84Y1wDGwJtZOeb9kzDr9ML2p9IyKB0j+jh7IE=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
-	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1751539145;
-	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
-	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=PUMUxTQyz4Rw+I/k6r4nKllDMvLQcH1q/9NQSkvh/Tc=;
-	b=Ua4joRz7J0WXVyQAc9oiuwImuog9VPquGVoKz8hsGX4MlyXyvGKyYEWhXUMYSB1b
-	bxWzSzqxKFQXqxPM/+iZ+zse3v9BlcQY/CYJ239YdacuajaqPPZhXqldqhvDkvEt+pJ
-	elYxIhb16kp8exk5hBD/X4HuM6rC5REb8wCqfDBU=
-Received: by mx.zohomail.com with SMTPS id 1751539143453232.01329008697712;
-	Thu, 3 Jul 2025 03:39:03 -0700 (PDT)
-Message-ID: <8958966b96140aaaae97b480b7a6c1698a6d2ae2.camel@collabora.com>
-Subject: Re: [PATCH] MFD: mt6397: do not use generic name for keypad
- sub-devices
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Lee Jones <lee@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	 <angelogioacchino.delregno@collabora.com>, Yassine Oudjana
-	 <y.oudjana@protonmail.com>, =?ISO-8859-1?Q?N=EDcolas?= "F. R. A. Prado"
-	 <nfraprado@collabora.com>, Fabien Parent <fparent@baylibre.com>, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Date: Thu, 03 Jul 2025 12:38:59 +0200
-In-Reply-To: <r4k3pgd3ew3ypne7ernxuzwgniiyvzosbce4cfajbcu7equblt@yato35tjb3lw>
-References: <r4k3pgd3ew3ypne7ernxuzwgniiyvzosbce4cfajbcu7equblt@yato35tjb3lw>
-Organization: Collabora Ltd
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
+	id 1uXHhL-0000000B5bH-3RXv;
+	Thu, 03 Jul 2025 11:01:49 +0000
+Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
+	by mxout3.routing.net (Postfix) with ESMTP id CC90E60470;
+	Thu,  3 Jul 2025 11:01:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1751540502;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=IUOk9rg8FJKLiO2I6XaC3qKD4aR5RnkKJ8cRJENolq0=;
+	b=mg0ppVZEIw2vFYZi1hGkgJFJzAXnpBgCwsBZ+eYDHO0mNLiKdLRhwZzoTD4po6PiM9nvFJ
+	q0THIholsJJYhvoQrILHnJu65UtCGFkNtZDA24jOfd/E/spJoSTHi0pdax7rqLjmpS/VcA
+	3IhAAhmnP1/f+bskKEhHPKQtnFk07Qc=
+Received: from webmail.hosting.de (unknown [134.0.26.148])
+	by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 7E23B3603D0;
+	Thu,  3 Jul 2025 11:01:40 +0000 (UTC)
 MIME-Version: 1.0
-X-ZohoMailClient: External
+Date: Thu, 03 Jul 2025 13:01:40 +0200
+From: "Frank Wunderlich (linux)" <linux@fw-web.de>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [PATCH v7 01/14] dt-bindings: net: mediatek,net: allow irq names
+In-Reply-To: <158755b2-7b1c-4b1c-8577-b00acbfadbdc@kernel.org>
+References: <20250628165451.85884-1-linux@fw-web.de>
+ <20250628165451.85884-2-linux@fw-web.de>
+ <20250701-wisteria-walrus-of-perfection-bdfbec@krzk-bin>
+ <9AF787EF-A184-4492-A6F1-50B069D780E7@public-files.de>
+ <158755b2-7b1c-4b1c-8577-b00acbfadbdc@kernel.org>
+Message-ID: <b68435e3e44de0532fc1e0c2e7f7bf54@fw-web.de>
+X-Sender: linux@fw-web.de
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+Content-Transfer-Encoding: 7bit
+X-Mail-ID: f16835e3-c754-4e77-8260-ceabe9311a0a
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250703_033914_519724_D033AAB5 
-X-CRM114-Status: GOOD (  22.32  )
+X-CRM114-CacheID: sfid-20250703_040148_174109_E1C47B48 
+X-CRM114-Status: GOOD (  41.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,118 +73,273 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, Rob Herring <robh@kernel.org>, linux-pm@vger.kernel.org, Chanwoo Choi <cw00.choi@samsung.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, Johnson Wang <johnson.wang@mediatek.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?UTF-8?Q?Ar=C4=B1n=C3=A7_?= =?UTF-8?Q?=C3=9CNAL?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, Kyungmin Park <kyungmin.park@samsung.com>, Georgi Djakov <djakov@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Dmitry,
+Am 2025-07-02 08:27, schrieb Krzysztof Kozlowski:
+> On 01/07/2025 12:51, Frank Wunderlich wrote:
+>> Am 1. Juli 2025 08:44:02 MESZ schrieb Krzysztof Kozlowski 
+>> <krzk@kernel.org>:
+>>> On Sat, Jun 28, 2025 at 06:54:36PM +0200, Frank Wunderlich wrote:
+>>>> From: Frank Wunderlich <frank-w@public-files.de>
+>>>> 
+>>>> In preparation for MT7988 and RSS/LRO allow the interrupt-names
+>>> 
+>>> Why? What preparation, what is the purpose of adding the names, what 
+>>> do
+>>> they solve?
+>> 
+>> Devicetree handled by the mtk_eth_soc driver have
+>> a wild mix of shared and non-shared irq definitions
+>> accessed by index (shared use index 0,
+>> non-shared
+>> using 1+2). Some soc have only 3 FE irqs (like mt7622).
+>> 
+>> This makes it unclear which irq is used for what
+>> on which SoC. Adding names for irq cleans this a bit
+>> in device tree and driver.
+> 
+> It's implied ABI now, even if the binding did not express that. But
+> interrupt-names are not necessary to express that at all. Look at other
+> bindings: we express the list by describing the items:
+> items:
+>   - description: foo
+>   - ... bar
 
-On Mon, 2025-06-30 at 16:01 -0700, Dmitry Torokhov wrote:
-> Do not use "mtk-pmic-keys" when creating sub-device for the keypad to
-> make sure the keypad driver will only bind to the sub-device if it
-> has
-> support for the variant/has matching compatible.
->=20
-> Reported-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-> Fixes: 6e31bb8d3a63 ("mfd: mt6397: Add initial support for MT6328")
-> Fixes: de58cee8c6b8 ("mfd: mt6397-core: Add MT6357 PMIC support")
-> Fixes: 4a901e305011 ("mfd: mt6397-core: Add resources for PMIC keys
-> for MT6359")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-> ---
->=20
-> This is not tested so if someone with hardware could try it out that
-> would be great. I *think* it should work...
->=20
-> =C2=A0drivers/mfd/mt6397-core.c | 12 ++++++------
-> =C2=A01 file changed, 6 insertions(+), 6 deletions(-)
->=20
-> diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-> index 5f8ed8988907..3e58d0764c7e 100644
-> --- a/drivers/mfd/mt6397-core.c
-> +++ b/drivers/mfd/mt6397-core.c
-> @@ -136,7 +136,7 @@ static const struct mfd_cell mt6323_devs[] =3D {
-> =C2=A0		.name =3D "mt6323-led",
-> =C2=A0		.of_compatible =3D "mediatek,mt6323-led"
-> =C2=A0	}, {
-> -		.name =3D "mtk-pmic-keys",
-> +		.name =3D "mt6323-keys",
-> =C2=A0		.num_resources =3D ARRAY_SIZE(mt6323_keys_resources),
-> =C2=A0		.resources =3D mt6323_keys_resources,
-> =C2=A0		.of_compatible =3D "mediatek,mt6323-keys"
-> @@ -153,7 +153,7 @@ static const struct mfd_cell mt6328_devs[] =3D {
-> =C2=A0		.name =3D "mt6328-regulator",
-> =C2=A0		.of_compatible =3D "mediatek,mt6328-regulator"
-> =C2=A0	}, {
-> -		.name =3D "mtk-pmic-keys",
-> +		.name =3D "mt6328-keys",
-> =C2=A0		.num_resources =3D ARRAY_SIZE(mt6328_keys_resources),
-> =C2=A0		.resources =3D mt6328_keys_resources,
-> =C2=A0		.of_compatible =3D "mediatek,mt6328-keys"
-> @@ -175,7 +175,7 @@ static const struct mfd_cell mt6357_devs[] =3D {
-> =C2=A0		.name =3D "mt6357-sound",
-> =C2=A0		.of_compatible =3D "mediatek,mt6357-sound"
-> =C2=A0	}, {
-> -		.name =3D "mtk-pmic-keys",
-> +		.name =3D "mt6357-keys",
-> =C2=A0		.num_resources =3D ARRAY_SIZE(mt6357_keys_resources),
-> =C2=A0		.resources =3D mt6357_keys_resources,
-> =C2=A0		.of_compatible =3D "mediatek,mt6357-keys"
-> @@ -196,7 +196,7 @@ static const struct mfd_cell mt6331_mt6332_devs[]
-> =3D {
-> =C2=A0		.name =3D "mt6332-regulator",
-> =C2=A0		.of_compatible =3D "mediatek,mt6332-regulator"
-> =C2=A0	}, {
-> -		.name =3D "mtk-pmic-keys",
-> +		.name =3D "mt6331-keys",
-> =C2=A0		.num_resources =3D ARRAY_SIZE(mt6331_keys_resources),
-> =C2=A0		.resources =3D mt6331_keys_resources,
-> =C2=A0		.of_compatible =3D "mediatek,mt6331-keys"
-> @@ -240,7 +240,7 @@ static const struct mfd_cell mt6359_devs[] =3D {
-> =C2=A0	},
-> =C2=A0	{ .name =3D "mt6359-sound", },
-> =C2=A0	{
-> -		.name =3D "mtk-pmic-keys",
-> +		.name =3D "mt6359-keys",
-> =C2=A0		.num_resources =3D ARRAY_SIZE(mt6359_keys_resources),
-> =C2=A0		.resources =3D mt6359_keys_resources,
-> =C2=A0		.of_compatible =3D "mediatek,mt6359-keys"
-> @@ -272,7 +272,7 @@ static const struct mfd_cell mt6397_devs[] =3D {
-> =C2=A0		.name =3D "mt6397-pinctrl",
-> =C2=A0		.of_compatible =3D "mediatek,mt6397-pinctrl",
-> =C2=A0	}, {
-> -		.name =3D "mtk-pmic-keys",
-> +		.name =3D "mt6397-keys",
-> =C2=A0		.num_resources =3D ARRAY_SIZE(mt6397_keys_resources),
-> =C2=A0		.resources =3D mt6397_keys_resources,
-> =C2=A0		.of_compatible =3D "mediatek,mt6397-keys"
-> --=20
-> 2.50.0.727.gbf7dc18ff4-goog
->=20
-Thanks for the patch.
+ok, so i need to define descriptions for all interrupts instead of only 
+increasing the count. Ok, was not clear to me.
 
-I've tested it with a kernel based on next-20250702 on both Mediatek
-Genio 350-EVK and Genio 1200-EVK boards with mtk-pmic-keys driver
-enabled either as builtin or module.
+so something like this:
 
-With the Genio 350-EVK, the mtk-pmic-keys driver probes OK:=20
-```
-[    0.601874] input: mtk-pmic-keys as
-/devices/platform/soc/1000d000.pwrap/1000d000.pwrap:pmic/mt6357-
-keys/input/input0
-```
-The keys work too.
+item0: on SoCs with shared IRQ (mt762[18]) used for RX+TX, on other free 
+to be used
+item1: on non-shared SoCs used for TX
+item2: on non-shared SoCs used for RX (except RSS/LRO is used)
+item3: reserved / currently unused
+item4-7: IRQs for RSS/LRO
 
-For the Genio 1200-EVK, it fails to probe as expected (because
-'mediatek,mt6359-keys' compatible is missing) and there is indeed no
-kernel panic in the builtin case (the issue I reported with my patch)
-```
-[    0.459178] mt6359-keys: Failed to locate of_node [id: -1]
-```
+>> 
+>>>> property. Also increase the maximum IRQ count to 8 (4 FE + 4 RSS),
+>>> 
+>>> Why? There is no user of 8 items.
+>> 
+>> MT7988 *with* RSS/LRO (not yet supported by driver
+>> yet,but i add the irqs in devicetree in this series)
+>> use 8 irqs,but RSS is optional and 4 irqs get working
+>> ethernet stack.
+> 
+> That's separate change than fixing ABI and that user MUST BE HERE. You
+> cannot add some future interrupts for some future device. Adding new
+> device is the only reason to add more interrupts.
 
-Tested-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com> # on
-Mediatek Genio 350-EVK and Genio 1200-EVK
+MT7988 is basicly new because there is no devicetree there yet...only 
+driver and
+this (incomplete) binding.
 
-Regards,
-Louis-Alexis
+>> 
+>> I hope this explanation makes things clearer...
+> 
+> 
+> Commit msg must explain all this, not me asking.
+> 
+>> 
+>>>> but set boundaries for all compatibles same as irq count.
+>>> 
+>>> Your patch does not do it.
+>> 
+>> I set Min/max-items for interrupt names below like
+>> interrupts count defined.
+> 
+> No, you don't. It's all fluid and flexible - limited constraints.
+
+i thought i can limit is by setting the MaxItems in the soc-spcific 
+blocks below.
+What reason does MaxItems have there if not this? of course if there is 
+any Soc not
+having a specific block it is open.But this is also the case for 
+interrupts property
+handles the same way before.
+
+I only left it open on mt7988 (only set minitems because all 8 can be 
+used, but 4 are required).
+
+>> 
+>>>> 
+>>>> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+>>>> ---
+>>>> v7: fixed wrong rebase
+>>>> v6: new patch splitted from the mt7988 changes
+>>>> ---
+>>>>  .../devicetree/bindings/net/mediatek,net.yaml | 38 
+>>>> ++++++++++++++++++-
+>>>>  1 file changed, 37 insertions(+), 1 deletion(-)
+>>>> 
+>>>> diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml 
+>>>> b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+>>>> index 9e02fd80af83..6672db206b38 100644
+>>>> --- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
+>>>> +++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+>>>> @@ -40,7 +40,19 @@ properties:
+>>>> 
+>>>>    interrupts:
+>>>>      minItems: 1
+>>>> -    maxItems: 4
+>>>> +    maxItems: 8
+>>>> +
+>>>> +  interrupt-names:
+>>>> +    minItems: 1
+>>>> +    items:
+>>>> +      - const: fe0
+>>>> +      - const: fe1
+>>>> +      - const: fe2
+>>>> +      - const: fe3
+>>>> +      - const: pdma0
+>>>> +      - const: pdma1
+>>>> +      - const: pdma2
+>>>> +      - const: pdma3
+>>>> 
+>>>>    power-domains:
+>>>>      maxItems: 1
+>>>> @@ -135,6 +147,10 @@ allOf:
+>>>>            minItems: 3
+>>>>            maxItems: 3
+>>>> 
+>>>> +        interrupt-names:
+>>>> +          minItems: 3
+>>>> +          maxItems: 3
+
+limited here to the same as interrupts.
+
+>>>>          clocks:
+>>>>            minItems: 4
+>>>>            maxItems: 4
+>>>> @@ -166,6 +182,9 @@ allOf:
+>>>>          interrupts:
+>>>>            maxItems: 1
+>>>> 
+>>>> +        interrupt-namess:
+>>>> +          maxItems: 1
+dito
+
+>>>>          clocks:
+>>>>            minItems: 2
+>>>>            maxItems: 2
+>>>> @@ -192,6 +211,10 @@ allOf:
+>>>>            minItems: 3
+>>>>            maxItems: 3
+>>>> 
+>>>> +        interrupt-names:
+>>>> +          minItems: 3
+>>>> +          maxItems: 3
+dito and so on
+
+>>>>          clocks:
+>>>>            minItems: 11
+>>>>            maxItems: 11
+>>>> @@ -232,6 +255,10 @@ allOf:
+>>>>            minItems: 3
+>>>>            maxItems: 3
+>>>> 
+>>>> +        interrupt-names:
+>>>> +          minItems: 3
+>>>> +          maxItems: 3
+>>>> +
+>>>>          clocks:
+>>>>            minItems: 17
+>>>>            maxItems: 17
+>>>> @@ -274,6 +301,9 @@ allOf:
+>>>>          interrupts:
+>>>>            minItems: 4
+>>>> 
+>>>> +        interrupt-names:
+>>>> +          minItems: 4
+>>>> +
+>>>>          clocks:
+>>>>            minItems: 15
+>>>>            maxItems: 15
+>>>> @@ -312,6 +342,9 @@ allOf:
+>>>>          interrupts:
+>>>>            minItems: 4
+>>>> 
+>>>> +        interrupt-names:
+>>>> +          minItems: 4
+>>> 
+>>> 8 interrupts is now valid?
+>>> 
+>>>> +
+>>>>          clocks:
+>>>>            minItems: 15
+>>>>            maxItems: 15
+>>>> @@ -350,6 +383,9 @@ allOf:
+>>>>          interrupts:
+>>>>            minItems: 4
+>>>> 
+>>>> +        interrupt-names:
+>>>> +          minItems: 4
+>>> 
+>>> So why sudenly this device gets 8 interrupts? This makes no sense,
+>>> nothing explained in the commit msg.
+>> 
+>> 4 FrameEngine IRQs are required to be defined (currently 2 are used in 
+>> driver).
+>> The other 4 are optional,but added in the devicetree
+> 
+> There were only 4 before and you do not explain why all devices get 8.
+> You mentioned that MT7988 has 8 but now make 8 for all other variants!
+> 
+> Why you are not answering this question?
+
+The original binding excluded the 4 RSS/LRO IRQs as this is an optional 
+feature not
+yet available in driver. It is needed to get the full speed on the 10G 
+interfaces.
+MT7988 is the first SoC which has 10G MACs. Older Socs like mt7986 and 
+mt7981 can also
+support RSS/LRO to reduce cpu load. But here we will run into the "new 
+kernel - old
+devicetree" issue, if we try to upstream this. Maybe we do not add this 
+because these
+only have 2.5G MACs.
+
+>> to not run into problems supporting old devicetree
+>> when adding RSS/LRO to driver.
+> 
+> This is not about driver, it does not matter for the driver. Binding 
+> and
+> DTS are supposed to be complete.
+
+if i upstream the ethernet-node now with only 4 IRQS, we have to extend 
+them later and
+have to deal with only 4 IRQs in driver to be compatible with older DTS. 
+So newer
+kernel with RSS/LRO support cannot work with older DT.
+To avoid this i add all related IRQs now (from DT perspective a new 
+device - there is
+no mt7988 device with ethernet node in devicetree yet).
+
+>> 
+>>> I understand nothing from this patch and I already asked you to 
+>>> clearly
+>>> explain why you are doing things. This patch on its own makes no 
+>>> sense.
+
+i tried to explain :(
+i have a working dts for mt7988 and try to upstream it in this series 
+and thats the
+cause i have to update the binding. Imho i cannot increase the 
+interrupt-count in SoC
+specific block (e.g. setting count globally to 4 but to 8 for only 
+mt7988).
+
+I added interrupt-names to get it cleaner in driver (access via name 
+instead of
+index). And also in Devicetree we see the meaning of IRQs without 
+looking through
+driver. I see really no reason for not adding the interrupt names.
+
+>>> Best regards,
+>>> Krzysztof
+
+regards Frank
 
