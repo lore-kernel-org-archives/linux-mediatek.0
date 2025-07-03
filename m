@@ -4,62 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA426C83F03
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 15:40:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC20EC83F03
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 16:09:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BYf/S9xtt01/l1c14cB1l1e58lU7oORyVWQF3hvnGxk=; b=smVbaOIotZqgjiBDuR3wGOAfGB
-	iZQmpJTkfsWdI/qWPoqYdiMDYJWQs/MapTVOOnfERTwdj9Wk1mVmVqhVGxk7cF4boabuLMRZcIYRv
-	LtCQReCUuKnq7c2X1D7+1AzGVUKPmd/6diWHLS/ZI6+tOZZOljZZCbQ2eCf7XTzj9h7pv9FZ9aCdB
-	ICD+7mVIf1xjtdqwC/5BITECnpz1+KcIUV3E0GcMI6p/nYUPz43CrDvVo2cDs3sPfS5ADXcPSlq2C
-	1JG+ryE8yQA26jqhcm1ce9ZeWhi0UWFPuSbtjV/NzBVn3WSg1bWcq6AREjOEybBEq4QyYDlNBdY/C
-	2OoBIyJw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=6nibRdhuL2j27qs0nOM5Kl2XsO5WK/xzvx2wHrcxyLc=; b=SjGJ0L9RXfTXievM8pS4fxoE5+
+	wCoJu3V0akSEV/L+Ic+g0bc21LPWGrsLYCxlfjfPwptmaSGHXpyQEPBOWpHhquLdU7EcTIVU+JGdV
+	tfUr08ZyANMhVLVoDnEe45JbTU1oSIYq6UhIQpIgAcZELG27+z1QX8QQ7x59MeIfOpvwWN2HQMJgr
+	nBeQgjKGWI5IUNAdrfwnSQp+Q+dWFL1aa3T/8D72PqbPNPxxmN3nfXc7lUy2ycBJCe86nPc9ARziW
+	u0gN9NJHqsvgfvMNzGjZ+IYyUXarjHch9u/RV/rlSbr65vc3DAhTfRYxIaJe1+rnHnxhnr6KYfDyg
+	2RN/nwgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXM32-0000000BrXv-3CHs;
-	Thu, 03 Jul 2025 15:40:28 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1uXMUt-0000000Bwjk-0uNc;
+	Thu, 03 Jul 2025 16:09:15 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXKCK-0000000BX1A-1gCL;
-	Thu, 03 Jul 2025 13:41:57 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 59F43A53819;
-	Thu,  3 Jul 2025 13:41:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D8872C4CEE3;
-	Thu,  3 Jul 2025 13:41:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751550115;
-	bh=AzCyOeLYvvkd8ESz+bYjZcDSyDUTK6UgemqQUMKPmC8=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=O3EaC7pG9AYMtZ1GnmxlMDAujjKd2jjjy8oV9NgoYzH33twFw/sto/xm7oA/kF4wm
-	 QKXDolNstpowlpxlrxtFoYSELRJCAvHsmAyB9bIO4x0OOcS3jLkwCJPhzS/Xh5rqgz
-	 hk1vVueopNKfKZwerZQwRC1wTfPrEKXOhzdgvICHl5lxnT3QGCcSpRVfZwU2Yvpf2P
-	 gwlN76MM4FZmH3RjfneQUsu52PA9EtUPDjDJyOSwwjbtj7GzYI4Hl0r3FlkazbeZzQ
-	 YrlMpFfSPcWldPwJK0mnkJCRlSXQFfqiCuJbJ6NKbsa+4YwMgk3ttTtcbZ6Kkg8s4G
-	 1KS1rB+xP+p8w==
-Date: Thu, 03 Jul 2025 08:41:53 -0500
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1uXKfG-0000000BcDW-3lil;
+	Thu, 03 Jul 2025 14:11:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1751551909;
+	bh=qNbhqJeNbhpXv1o7b2f0VNuXEeUdtZei3EuXHU8wbYQ=;
+	h=From:To:Cc:Subject:Date:From;
+	b=R0L2jmeCjUngw0SFHUg0wwmWulgTkrFrxcdEncCutPv1i3/RPMT8zWCNkNNKBuvJG
+	 MdS4h6KXRPdfkdeTY5la2J9B06iuyf+P1NNTGClZomMHumPJpPovZmpsIbSd9Jut5a
+	 z9TfarWMf0DSx6yV4eU69w9Jxt/3k2yynOg1/WU+urfzm0hbCTqk4v1ZL+GGxP7hLQ
+	 GiL1FIUYEQOUkgJE550cvzks1+uvodw8Ml5KdALXURNkxH3OtFOZWM8jR5nuBWmG3c
+	 QTFqUrtvsBEnzY2NEwt3rYI/ck2DBWD8n6s/0Nb0s2OqUHpmxAUPvVHDkEs8QIBG4e
+	 2gnb9GfBSvzaQ==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6C06917E0676;
+	Thu,  3 Jul 2025 16:11:48 +0200 (CEST)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: jic23@kernel.org
+Cc: dlechner@baylibre.com,
+	nuno.sa@analog.com,
+	andy@kernel.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-iio@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	kernel@collabora.com
+Subject: [PATCH v2 0/6] iio: Add support for MT6363/6373 Auxiliary ADC
+Date: Thu,  3 Jul 2025 16:11:40 +0200
+Message-ID: <20250703141146.171431-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: linux-kernel@vger.kernel.org, nuno.sa@analog.com, conor+dt@kernel.org, 
- zhiyong.tao@mediatek.com, matthias.bgg@gmail.com, linux-iio@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, 
- krzk+dt@kernel.org, andy@kernel.org, 
- angelogioacchino.delregno@collabora.com, linux-mediatek@lists.infradead.org, 
- dlechner@baylibre.com, jic23@kernel.org
-To: Aleksander Jan Bajkowski <olek2@wp.pl>
-In-Reply-To: <20250702214830.255898-1-olek2@wp.pl>
-References: <20250702214830.255898-1-olek2@wp.pl>
-Message-Id: <175155007600.1164337.2694125057173487421.robh@kernel.org>
-Subject: Re: [PATCH v2 0/2] Add thermal sensors support for MT7981
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250703_064156_583676_B54466B8 
-X-CRM114-Status: GOOD (  17.10  )
+X-CRM114-CacheID: sfid-20250703_071151_088459_D096BBFF 
+X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,89 +84,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Changes in v2:
+ - Added error checks to all regmap r/w operations
+ - Moved adc_vref addition to different commit
+ - Various other fixes
 
-On Wed, 02 Jul 2025 23:48:28 +0200, Aleksander Jan Bajkowski wrote:
-> This patch adds support for the temperature sensor in the MT7981 SoC.
-> This sensor is exactly the same as the one in the MT7986.
-> 
-> Changes in v2:
->  - added fallback to an existing compatible string
->  - removed second patch as obsolete
-> 
-> Aleksander Jan Bajkowski (2):
->   dt-bindings: iio: adc: Add support for MT7981
->   arm64: dts: mediatek: add thermal sensor support on mt7981
-> 
->  .../iio/adc/mediatek,mt2701-auxadc.yaml       |  1 +
->  arch/arm64/boot/dts/mediatek/mt7981b.dtsi     | 32 ++++++++++++++++++-
->  2 files changed, 32 insertions(+), 1 deletion(-)
-> 
-> --
-> 2.39.5
-> 
-> 
-> 
+This series adds support for the Auxiliary ADC IP found on the new
+MediaTek MT6363 and MT6373 PMICs, found on board designs featuring
+the MT8196 Chromebook SoC or the MT6991 Dimensity 9400 Smartphone SoC.
 
+AngeloGioacchino Del Regno (6):
+  dt-bindings: iio: adc: mt6359: Add MT6363 PMIC AuxADC
+  dt-bindings: iio: adc: mt6359: Add MT6373 PMIC AuxADC
+  iio: adc: mt6359: Add ready register index and mask to channel data
+  iio: adc: mt6359: Move reference voltage to platform data
+  iio: adc: mt6359: Add support for MediaTek MT6363 PMIC AUXADC
+  iio: adc: mt6359: Add support for MediaTek MT6373 PMIC AUXADC
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
+ .../iio/adc/mediatek,mt6359-auxadc.yaml       |   2 +
+ drivers/iio/adc/mt6359-auxadc.c               | 440 +++++++++++++++---
+ .../iio/adc/mediatek,mt6363-auxadc.h          |  24 +
+ .../iio/adc/mediatek,mt6373-auxadc.h          |  19 +
+ 4 files changed, 416 insertions(+), 69 deletions(-)
+ create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6363-auxadc.h
+ create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6373-auxadc.h
 
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
-
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
-
-  pip3 install dtschema --upgrade
-
-
-This patch series was applied (using b4) to base:
- Base: attempting to guess base-commit...
- Base: tags/next-20250702 (exact match)
-
-If this is not the correct base, please add 'base-commit' tag
-(or use b4 which does this automatically)
-
-New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/mediatek/' for 20250702214830.255898-1-olek2@wp.pl:
-
-arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dtb: thermal@1100c800 (mediatek,mt7981-thermal): compatible: ['mediatek,mt7981-thermal', 'mediatek,mt7986-thermal'] is too long
-	from schema $id: http://devicetree.org/schemas/thermal/mediatek,thermal.yaml#
-arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dtb: thermal@1100c800 (mediatek,mt7981-thermal): Unevaluated properties are not allowed ('compatible' was unexpected)
-	from schema $id: http://devicetree.org/schemas/thermal/mediatek,thermal.yaml#
-arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dtb: adc@1100d000 (mediatek,mt7981-auxadc): compatible: 'oneOf' conditional failed, one must be fixed:
-	['mediatek,mt7981-auxadc', 'mediatek,mt7986-auxadc', 'mediatek,mt7622-auxadc'] is too long
-	'mediatek,mt7981-auxadc' is not one of ['mediatek,mt7623-auxadc']
-	'mediatek,mt7981-auxadc' is not one of ['mediatek,mt6893-auxadc', 'mediatek,mt8183-auxadc', 'mediatek,mt8186-auxadc', 'mediatek,mt8188-auxadc', 'mediatek,mt8195-auxadc', 'mediatek,mt8516-auxadc']
-	'mediatek,mt2701-auxadc' was expected
-	'mediatek,mt8173-auxadc' was expected
-	from schema $id: http://devicetree.org/schemas/iio/adc/mediatek,mt2701-auxadc.yaml#
-arch/arm64/boot/dts/mediatek/mt7981b-cudy-wr3000-v1.dtb: thermal@1100c800 (mediatek,mt7981-thermal): compatible: ['mediatek,mt7981-thermal', 'mediatek,mt7986-thermal'] is too long
-	from schema $id: http://devicetree.org/schemas/thermal/mediatek,thermal.yaml#
-arch/arm64/boot/dts/mediatek/mt7981b-cudy-wr3000-v1.dtb: thermal@1100c800 (mediatek,mt7981-thermal): Unevaluated properties are not allowed ('compatible' was unexpected)
-	from schema $id: http://devicetree.org/schemas/thermal/mediatek,thermal.yaml#
-arch/arm64/boot/dts/mediatek/mt7981b-cudy-wr3000-v1.dtb: adc@1100d000 (mediatek,mt7981-auxadc): compatible: 'oneOf' conditional failed, one must be fixed:
-	['mediatek,mt7981-auxadc', 'mediatek,mt7986-auxadc', 'mediatek,mt7622-auxadc'] is too long
-	'mediatek,mt7981-auxadc' is not one of ['mediatek,mt7623-auxadc']
-	'mediatek,mt7981-auxadc' is not one of ['mediatek,mt6893-auxadc', 'mediatek,mt8183-auxadc', 'mediatek,mt8186-auxadc', 'mediatek,mt8188-auxadc', 'mediatek,mt8195-auxadc', 'mediatek,mt8516-auxadc']
-	'mediatek,mt2701-auxadc' was expected
-	'mediatek,mt8173-auxadc' was expected
-	from schema $id: http://devicetree.org/schemas/iio/adc/mediatek,mt2701-auxadc.yaml#
-arch/arm64/boot/dts/mediatek/mt7981b-xiaomi-ax3000t.dtb: thermal@1100c800 (mediatek,mt7981-thermal): compatible: ['mediatek,mt7981-thermal', 'mediatek,mt7986-thermal'] is too long
-	from schema $id: http://devicetree.org/schemas/thermal/mediatek,thermal.yaml#
-arch/arm64/boot/dts/mediatek/mt7981b-xiaomi-ax3000t.dtb: thermal@1100c800 (mediatek,mt7981-thermal): Unevaluated properties are not allowed ('compatible' was unexpected)
-	from schema $id: http://devicetree.org/schemas/thermal/mediatek,thermal.yaml#
-arch/arm64/boot/dts/mediatek/mt7981b-xiaomi-ax3000t.dtb: adc@1100d000 (mediatek,mt7981-auxadc): compatible: 'oneOf' conditional failed, one must be fixed:
-	['mediatek,mt7981-auxadc', 'mediatek,mt7986-auxadc', 'mediatek,mt7622-auxadc'] is too long
-	'mediatek,mt7981-auxadc' is not one of ['mediatek,mt7623-auxadc']
-	'mediatek,mt7981-auxadc' is not one of ['mediatek,mt6893-auxadc', 'mediatek,mt8183-auxadc', 'mediatek,mt8186-auxadc', 'mediatek,mt8188-auxadc', 'mediatek,mt8195-auxadc', 'mediatek,mt8516-auxadc']
-	'mediatek,mt2701-auxadc' was expected
-	'mediatek,mt8173-auxadc' was expected
-	from schema $id: http://devicetree.org/schemas/iio/adc/mediatek,mt2701-auxadc.yaml#
-
-
-
-
+-- 
+2.49.0
 
 
