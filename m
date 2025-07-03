@@ -4,183 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62796C77B7C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 14:03:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36C67C77B7C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 14:27:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yGCCbh4KuqUPiKHZ/+Fe0AVejGZinAzNtFFfz80lC7w=; b=ZCroB3CuIpyEXNDQxxGruSMhTy
-	AB8LTxi/qLLVFIc/EfjbFl0l2MwSL5kN3Ru39D7n8Ig9VJN+PBAG6UdO2N+m2NoUsbpQHiCIrfTrS
-	08nJVvFTmSKjsvv3lBI3uq8P1O1JczbrvpBn+VETOEzpgQ9vAvWmF2eLHJ3suB4lTJZ1F7k3LZEta
-	sIIlS582BzQ6Rbdwcoen1SfO4tMRiK3Vron5MsfUSN/zApWzW+WEBNkTuIIks5sil7Tto5fYMt7Li
-	mn/It0kQpBkNEQw/7E6TyTWIMkczT1+pnMkOaxbxTqdzSAxJtqPue7EPqQzMSPz3ji4xRVBokf15D
-	RQjFc3+A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2Q7OSlq1bRv9hRHpFjARlpMwmtpPP8e9ajvSvgKB04o=; b=vLz9dRWdkzSkeJT4lq2JhKTyHC
+	msUWKzTQAzMZ4fc3H+TlxXGhTVoOKm7ZJ8PT/r8EYtidXZrQmph+bkli+GEha0m5WjRFMNDxmfkjC
+	q/Zpsp1EkNJJthk5F7krHMPsSvA42YMp66dhczrHFzkpEHrVZftSVo4SzqvuRAhNu6vdc4g9hfCVk
+	cthihVAZCV6p82ErGIKoTWmctDAw/D9ZwslfjQ+hsnV7A3usrdSZAIIxg7wIrdiyn+7dJId1cdS8i
+	h5ZtmjqNqwo8cSaNJNd9MBVpwspkZpbtJ907ruaBOIrYGASlX2FbN21jiTFlwGOvvcd7Tze06aEPw
+	TLWqYG3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXKXa-0000000BaUj-3s6z;
-	Thu, 03 Jul 2025 14:03:54 +0000
-Received: from mail-northeuropeazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c200::3] helo=DU2PR03CU002.outbound.protection.outlook.com)
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXJ4E-0000000BKq0-00Il;
-	Thu, 03 Jul 2025 12:29:31 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=siaMjFDpfgVgGp1zQ8oeCrsohflpZuwOYT8+hni+Q5LiPEy37TtpWKfI2JdMYMLwQ6VJf5Kr1hTF/+1rVTE/Vet9nL+m+yTZQu/aHlWfqMotuFoKftFkbcYXaP1Y8/5eM5jle1aczyaPudXSd+iq8Y3g6PgJMW5oOqVToUfu2JJ1xTp6Tc7v3rflrqzynXknPm745ho1WUEbDsojJTKHmEZ4D/cHCpKo/ev9Hfa9jg4va9Vj7o3GKyfrDyyUuohMXVktZmnT2V120c3gYB48iq3LXdForK/SsNdRRs4Cg87Zoi4H5Pdwksgjx7SJriOBWzs7JfDSv0HBXEXz1lDC9w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=yGCCbh4KuqUPiKHZ/+Fe0AVejGZinAzNtFFfz80lC7w=;
- b=Z5Yu8iSvKjGJYDxbk4QDvTAtgavO5cHEUhq+wovPlOi2WJTsk6Qvm2c+nfjhdr6EvdPKkto0mLQBUfpf7DKq/Z20uVXmo1BJ8cwL1flTg0T/t6R9ptBhQ0jFs1TRoe0k0egHoxa8wX0YBl8387EGQof7J3xJ51wvpGy2i7XkbGRfs9BYgRTJsaAJlh7s9kSp9ITpTqc61aPj1xCtOtAPqVMXKCuCjcLni5AVbcXbEmwbyyXD8o61eHJyHcQl3VuyzwXrPGgIT8ps3dVd9FadF1974/tTafPiHr/wRvqViOi6D8SRDVNrcqTEnHl7RbF1j93A3kw5/XnikYssE9S11Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=leica-geosystems.com; dmarc=pass action=none
- header.from=leica-geosystems.com; dkim=pass header.d=leica-geosystems.com;
- arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=leica-geosystems.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=yGCCbh4KuqUPiKHZ/+Fe0AVejGZinAzNtFFfz80lC7w=;
- b=Snvf23Qc6Gfig/GlplGz6Dm4jEH14VTGdz57KTwKmKu5ODO2rZ+WqwKkegUo/lconPYncdqDZNgov19JuqqjRMjgwnefDdPE83V2lwUeLD2YUmc9ssBKG9745yA3SqRm6v3QnCwB8Oxoo5qCmOPnQQpqlnC0hLfGukg0LwTXE8o=
-Received: from AM9PR06MB7300.eurprd06.prod.outlook.com (2603:10a6:20b:2ce::7)
- by VI2PR06MB9214.eurprd06.prod.outlook.com (2603:10a6:800:22b::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8901.21; Thu, 3 Jul
- 2025 12:29:26 +0000
-Received: from AM9PR06MB7300.eurprd06.prod.outlook.com
- ([fe80::96d6:3806:3e29:9b56]) by AM9PR06MB7300.eurprd06.prod.outlook.com
- ([fe80::96d6:3806:3e29:9b56%4]) with mapi id 15.20.8901.021; Thu, 3 Jul 2025
- 12:29:26 +0000
-From: POPESCU Catalin <catalin.popescu@leica-geosystems.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>, "lgirdwood@gmail.com"
-	<lgirdwood@gmail.com>, "broonie@kernel.org" <broonie@kernel.org>,
-	"robh@kernel.org" <robh@kernel.org>, "krzk+dt@kernel.org"
-	<krzk+dt@kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
-	"shenghao-ding@ti.com" <shenghao-ding@ti.com>, "kevin-lu@ti.com"
-	<kevin-lu@ti.com>, "baojun.xu@ti.com" <baojun.xu@ti.com>, "perex@perex.cz"
-	<perex@perex.cz>, "tiwai@suse.com" <tiwai@suse.com>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>
-CC: "linux-sound@vger.kernel.org" <linux-sound@vger.kernel.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "m.felsch@pengutronix.de"
-	<m.felsch@pengutronix.de>, GEO-CHHER-bsp-development
-	<bsp-development.geo@leica-geosystems.com>
-Subject: Re: [PATCH next 2/3] ASoC: tas2781: fix reset-gpio polarity
-Thread-Topic: [PATCH next 2/3] ASoC: tas2781: fix reset-gpio polarity
-Thread-Index: AQHb6+8wdDGyTCprKkqkastOZc4Cr7QgCh8AgABKO4A=
-Date: Thu, 3 Jul 2025 12:29:26 +0000
-Message-ID: <72ba4fbe-eb2c-4e8a-8118-9b264af04f31@leica-geosystems.com>
-References: <20250703075037.2558549-1-catalin.popescu@leica-geosystems.com>
- <20250703075037.2558549-2-catalin.popescu@leica-geosystems.com>
- <1e08ec21-e863-4720-8604-df0640624a83@kernel.org>
-In-Reply-To: <1e08ec21-e863-4720-8604-df0640624a83@kernel.org>
-Accept-Language: en-CH, en-US
-Content-Language: aa
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=leica-geosystems.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: AM9PR06MB7300:EE_|VI2PR06MB9214:EE_
-x-ms-office365-filtering-correlation-id: 30d4d34a-97c4-41c4-0909-08ddba2d3fd8
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|366016|7416014|1800799024|376014|38070700018|921020;
-x-microsoft-antispam-message-info: =?utf-8?B?ZXJ3WDRuM1MzRFVMdWg3NFFuWG1IRngxbzlwbzNJNzVVMEVJaGpvaXdpaDFr?=
- =?utf-8?B?b2R2ak80REVLSnVUVDJqS1ZJMnlnbzZLMmVadnZTTVJXQ0Z4dFhIRmF5QkFV?=
- =?utf-8?B?aytjUDNLNkYwd1Q5NzNqS0J6ZVp2Z2NLUm9Ya2E3WVlBMnMxYWhhRHNlRG5O?=
- =?utf-8?B?Zzc3blExMmtVY3FXRjJwSVZmQzNmU3V3MlpIakdlbWVEeHJJbkxrNXZFK1pK?=
- =?utf-8?B?Uk95ajhoSTlMdEUwRnltMGVxMmNaczRTZERjSjlSYlUxR1lIT0trYXV1UWl6?=
- =?utf-8?B?cEo3bU5Qa2tmMDhsZXNwUFMyREJONEdUMml0cTFxWE5ZMHZFOWYyVUQwV2Za?=
- =?utf-8?B?b3JiRFVIZzR6aHlIcm85V1Y1Y1ZnWTh3Qy9ua1FqbXZObEx5WUZBK2dPRm9J?=
- =?utf-8?B?SmZZOGx1ZCs0K0FMTzBhb2wybCtjL1Z6aXhsK1gvcHZkUHZCWjFXOStFVjBv?=
- =?utf-8?B?QmlFMnNzNDhiYyt0UUd1dmY4T1pkTVFCaDc5eVk3L0hpSjdwa29JdHFya3Nl?=
- =?utf-8?B?V1o5K3lERGgxMlY2WUJ3bjd2d055RGt5aXdRNldwVTMxS0syQngxQVJJVTJr?=
- =?utf-8?B?UVhWRzd5OUhHcHdxR0VvR082eTlwQjFPNEtxVEhyaFJuU2FLRjdBN1BTTy9H?=
- =?utf-8?B?clk2UFdDeXU4allYSGN2NnNDSExqMkh5aXVBRXFJMnRjejFXZ3E4NzVITXU3?=
- =?utf-8?B?amNXdHlKNW1KSEVTS25nUkd0cUFjVzErTHgzeEVPUTA0T1RremZOSXRXc3ZB?=
- =?utf-8?B?L3VBZ0JhaWJZcTczalY0SFlHcm1oL0g3U09RbHBPbG9QZGVYWDBjVE4wenhB?=
- =?utf-8?B?QitiNU5GMm93TkIxeE43aXdYVGlDUm1GdDBIOWQ2TWtXVjNkeFAvOVkyQW5t?=
- =?utf-8?B?MUhxejlmOEpPaDJKSXdOVitmdnhyQjRNazRnUWo4MzBrSlkvM2k0c2RjNFJs?=
- =?utf-8?B?QjU4ZXJ5N08vZGpJelpFMmUvWDNTam1haldzQlByNnFwYXViN3l2ZWlzZGw5?=
- =?utf-8?B?a3JjMVJ2dnR6ZFN3NVczTHh2cm5qbUw0V1FJclRmTVNOK2xOWUphRzFjY2VD?=
- =?utf-8?B?ZGtpN0FEUVdTd05KRWRyZ2J4OU9LU21Lekw1THZQWFMxejArbjhiTzBDb09x?=
- =?utf-8?B?Um1qejRXcDRnTGhKMkdrTXd1Rlppa1hkNS9DVjEyNXFTaWFMeDBOU01xbm5T?=
- =?utf-8?B?UUluSzdOS1JzTFhidVNRWVZFS01wTERMMU83YW80R2xGVnZhWkdTVzlFaVhV?=
- =?utf-8?B?NHJHaERDUm5JMmZSdGdOVUhnbnViZ3VBcEM3T3I2Rit2bWJ4ZElNNmZXQVRt?=
- =?utf-8?B?UUNQc05XVlRKcEJqa0J6MlhjK0xQN2JoSU11aDF1QzZlejh5T1pPY3VxRkVw?=
- =?utf-8?B?THV3a1o3WUdKd1JTeXZzR2JPN0VhVG5MNVBNemYrSkFWSURQZjZYeWlOZk1o?=
- =?utf-8?B?SHRzTTZ5b2FKTCtHdFF4TG5rRGNKZm5vVW9URDhZY3lnTmc0eDMyZGpLdUd5?=
- =?utf-8?B?YncvbjVOSGhqMllCeGo5SFRzdG5RNFdySjJzWjhEd3pTcXZZNG1BZjZpZHFV?=
- =?utf-8?B?eCtPTklTYzNwS2hpMDhjQjlLcmk4SlpVeGs5SlFwMk1iOGJCc3FwdlZUUnVR?=
- =?utf-8?B?WHdHbDFocjM1QzZPL3N5aklEMXRxd2Fob0cwZmtTcW90S1RQY0NXYWw5UnQ4?=
- =?utf-8?B?Tk4zRGw4RHhMaTN1MmZHYmdCVFNucWJHcktpeUhGSWlxbVZEcDhNOXFmblZM?=
- =?utf-8?B?a2hKTmNYQ0N1cVBsVXVEbGIrOFBLK09qOGNYUmhJVkYzZXc2SWxwRnRyQVVn?=
- =?utf-8?B?d0QxeXNKUXhoREJvc3pZb25MNnl6cm1HanJGZmp6N3pCZEFWYVArc3V1dS9k?=
- =?utf-8?B?SkNQQ0dkQW0yNnN1VmhRb3FacW10alh4cXdiVGZ4a1ZUUlZsVnNUWGk0eDlP?=
- =?utf-8?B?VUdPOHFaWVdNeUREdHpLOXI5SlFMMUVUWHFuUjlmaS8zZXVMamNVMTRvdU8w?=
- =?utf-8?Q?9ehEc41gK60D6wkx+rLa1Opz2ToTQM=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR06MB7300.eurprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(7416014)(1800799024)(376014)(38070700018)(921020);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?RjA4ekVPYnJnT1FQamluY1NvWEdJakhkemg3N05iYmFtV2lkMEJoaTlIZDFn?=
- =?utf-8?B?N0d4QVVvcngxWGp1ajBLYzlXT0tidVpOK3VGZDI4SkRqL1p3NDNoK0lJTHJk?=
- =?utf-8?B?Z1hVU0grK243eE9BMk11b0xCelEyUTkrbSs3YUZFVXZVcUNmOE9ReXVyTEZz?=
- =?utf-8?B?TGxnT2dheTV6MnpvUUtJeWQ0bUhxeFVtbjJ4YW1yanF3NzlKanU2NmRSZUZi?=
- =?utf-8?B?Nit4TWZ1RFFJSEdxN3BVTSsramQ2R0M3eG5yVHRQOVYyOGRpZXhwUGdjWEJw?=
- =?utf-8?B?YVdTUUhlOU5uamVHb0R6SDlndXc0bHlyamp5SHo4SndJYjZNcU5jaWptanlz?=
- =?utf-8?B?UlB3WXp6d2RJak84bktaMllKWUFsUTcxNG1TN0srT2tSRWxWSFNNdlM4aXZx?=
- =?utf-8?B?QjdHZGFGL01UQi9BV0lYSVJlYW5pZFpxN3EvUDlOMjVMa0g5bFBBdVNydjNK?=
- =?utf-8?B?bWN4VE43MlQxNVRnVGRVVWVob0V3NkRCTllSMnh4aFJSQVpRdXBEc3BpQWQ2?=
- =?utf-8?B?cTc2bEVyNlI2c0dzWXUzd2pWRFpXazR6QmU3RzdsQTRPNWI5OTNGTTFBM29H?=
- =?utf-8?B?NWhaQ3U1R0g4dUQ4U050eGxQOGtSdnZkZno0SlMyakd5R0hNaDZzQUVWQ2hX?=
- =?utf-8?B?cG1JTmRUMy9MNkFNTGo0NEpwZk9CSGYrb1hxOUhFSkZJNkpLMXNiK1kvRFYr?=
- =?utf-8?B?Q1pVODlIbTczbXN3aWgxaXVGMVEyUktkV20waEhDbW5DdUwzMnU5RHhHUitu?=
- =?utf-8?B?bU5mZDF5enR6a1JKemVvVzR5NDBaaXU1eEFWZ2hZdUorbGJ2empvZy8zMkIw?=
- =?utf-8?B?anJGNFRxVWhHaWg0K1ZsVXVvYmJmcSttNktXRGQzRGZIc2I4QzB6YmRnZUow?=
- =?utf-8?B?N3RoWXdKaVNDUUMrYVMzRDcraXA2Q2tKd2dkVlVEZnp0ZnNlQUduaU9VV2dj?=
- =?utf-8?B?aUN3OTJDVUphR1BuWVBRTGp6NU1UV0hmODFqUVZMTWY2NldZV3c0azQzMVFw?=
- =?utf-8?B?UUlYdkVFb2EzY2lHNFRyL1N6YytUWkNXdmlycTlHTkxYczNyZjVVTlpFdU9D?=
- =?utf-8?B?U1c5TW9yWUh3MWtUbGQrMUplNjBhbUgvUmlGNGxPUm13OHZMbWVYVlo1b21H?=
- =?utf-8?B?SUFiVU9UcG5iWWo1NW01aU5uRUNCcFd2ZllOcFBCN2R0QmMrLytMenpCRGEy?=
- =?utf-8?B?YzA3TXBvbVFMOUxUeS85WS94YVp5WlFUK1lWaDJXR2I1SlYrQitLWlVlaHQ3?=
- =?utf-8?B?cnlyQk5qUHZrSFBLU0pzVllPTG16YTMwQWZieVFVd1VTSTZDblhGdmJpMnll?=
- =?utf-8?B?MnRxR0pQMW9JNXBWZE1SVm50dTQ4MVlSVk5jcHg4bEVacjRGN0ZOdDdFbjdo?=
- =?utf-8?B?WWV0cVowTEd1RlZDbTZ2dytzWUUrU0d0L2tPTGd6WVpDY3o5ZzJpODJOS2VS?=
- =?utf-8?B?S0tRbnRQTjdOYlh6d25VYXp6K1Z0Yi9lMDh4REVWOVhvN09FQ21Ed1ZnVHox?=
- =?utf-8?B?MkNVa1RpbldzZmV0MVBYa2tHekhYUzlmOW5laHFNWW0rMWc0SkRpaTVuNWkx?=
- =?utf-8?B?Q3p6UURyUnZpTFFaK3NwS0VLeVFGOWVlU0NRWVlpdGMyTzdSUFBwRVlIOHp5?=
- =?utf-8?B?VzNJeEZ6NlBDQWVITnFLd2xoc3NKNlB6U0diYVFCRlRDNGNJbWI0aEZ2OWt0?=
- =?utf-8?B?V3VlRlN1T09QRjNybmtJWHBuWW00bEN4djFmMWJTWGlhNnBHWkpwZllOZFlX?=
- =?utf-8?B?U3NTM2VySjh5QTNTMVRtbk5qTlFPQjRCbExlRU9tVTlSSWFvckRJdmZCU0Qz?=
- =?utf-8?B?WW1hVXJ6UHZiU3h1ZmpNby9LcC9BVzBCMlMzcGFGZ2l0bDAzNmtwanVxYmF0?=
- =?utf-8?B?RHdBb0QxaUIydXlxVmNZdUMzYmRsbnF3ZzUzYnpHc21oby9lb0YzNS8vc042?=
- =?utf-8?B?dWNkbExUcnR2QkljRElRT2tCeUdpa2diMnJGNGpkeE0xVy9NVkNyTDJ1SnFk?=
- =?utf-8?B?U29RZnhQNTNFdUhGVGFIYVBqYUdkYlFrUEltc0NrU2cwdEZubWFHQUpjUlBa?=
- =?utf-8?B?SUVuTkVFZHNzRXpPOTlTTExxZEpoc2RpZW9iOU1oKzdFNzk0cVMvQzEwUWNl?=
- =?utf-8?B?QWJYeitIKytxa0xBRTlZVisreWx3WkJxRkZQcHJLSC9BV0dpODc4bGtHcHZ2?=
- =?utf-8?B?eGc9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <65D9DB459CFC1348ADBFABDF618D98AB@eurprd06.prod.outlook.com>
-Content-Transfer-Encoding: base64
+	id 1uXKur-0000000BfIR-1Nm2;
+	Thu, 03 Jul 2025 14:27:57 +0000
+Received: from m16.mail.163.com ([117.135.210.3])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uXJPW-0000000BOS6-054l
+	for linux-mediatek@lists.infradead.org;
+	Thu, 03 Jul 2025 12:51:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=2Q
+	7OSlq1bRv9hRHpFjARlpMwmtpPP8e9ajvSvgKB04o=; b=mKyDea8aptL9nPJ4Za
+	5S1CqcLnuy9Gub6Ccdf7UOnTr4j36XyKhcDvKKe9F32BqwZZFu99crgbeVWnTccm
+	OIuZRp+wIkv5lMMBoEzBm4DWSj1NuDnMItFJ5Y9pLdYQ4F4IOtHcnN8z3StTMvJJ
+	U2LrLbYzFKTbYV1l4o6+KCy8w=
+Received: from ProDesk.. (unknown [])
+	by gzga-smtp-mtada-g0-3 (Coremail) with SMTP id _____wAXBAyWfGZoVnrrCA--.37969S3;
+	Thu, 03 Jul 2025 20:50:37 +0800 (CST)
+From: Andy Yan <andyshrk@163.com>
+To: dmitry.baryshkov@oss.qualcomm.com
+Cc: mripard@kernel.org,
+	neil.armstrong@linaro.org,
+	dri-devel@lists.freedesktop.org,
+	dianders@chromium.org,
+	jani.nikula@intel.com,
+	lyude@redhat.com,
+	jonathanh@nvidia.com,
+	p.zabel@pengutronix.de,
+	simona@ffwll.ch,
+	victor.liu@nxp.com,
+	rfoss@kernel.org,
+	chunkuang.hu@kernel.org,
+	cristian.ciocaltea@collabora.com,
+	Laurent.pinchart@ideasonboard.com,
+	linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	freedreno@lists.freedesktop.org,
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: [PATCH v3 1/2] drm/bridge: Make dp/hdmi_audio_* callback keep the same paramter order with get_modes
+Date: Thu,  3 Jul 2025 20:49:52 +0800
+Message-ID: <20250703125027.311109-2-andyshrk@163.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250703125027.311109-1-andyshrk@163.com>
+References: <20250703125027.311109-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-OriginatorOrg: leica-geosystems.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: AM9PR06MB7300.eurprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 30d4d34a-97c4-41c4-0909-08ddba2d3fd8
-X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Jul 2025 12:29:26.3744
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 1b16ab3e-b8f6-4fe3-9f3e-2db7fe549f6a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: eDOTGQHbyvmQpIfvVDPW3IpYjvrS4t977MyRKXfgNb9tvRxImOTNqTrWyl9nGeb/B/a6PnkU5WFHygYQNLAVRztmfnBvaUm4anGbE3Hyw7FlEtTvBdm7ePTIJSQJakES
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI2PR06MB9214
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: _____wAXBAyWfGZoVnrrCA--.37969S3
+X-Coremail-Antispam: 1Uf129KBjvAXoWfJF4xtw1UtryrAw17ZryDAwb_yoW8CryUuo
+	WxAa9Y9a1Fq34kXrWktF12gF4Yv3Zxtan3Wrn5KaykWayUK347tF1IgF1UtFy7ZF4agr4D
+	Zw1DG348ArnrAan7n29KB7ZKAUJUUUU8529EdanIXcx71UUUUU7v73VFW2AGmfu7bjvjm3
+	AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvjxU3tCzDUUUU
+X-Originating-IP: [58.22.7.114]
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBEgZ-XmhmeHp1rQAAsh
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250703_052930_106743_53BFE082 
-X-CRM114-Status: GOOD (  16.79  )
+X-CRM114-CacheID: sfid-20250703_055130_405392_30823C2D 
+X-CRM114-Status: GOOD (  13.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -195,25 +89,467 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gMDMvMDcvMjAyNSAxMDowMywgS3J6eXN6dG9mIEtvemxvd3NraSB3cm90ZToNCj4gVGhpcyBl
-bWFpbCBpcyBub3QgZnJvbSBIZXhhZ29u4oCZcyBPZmZpY2UgMzY1IGluc3RhbmNlLiBQbGVhc2Ug
-YmUgY2FyZWZ1bCB3aGlsZSBjbGlja2luZyBsaW5rcywgb3BlbmluZyBhdHRhY2htZW50cywgb3Ig
-cmVwbHlpbmcgdG8gdGhpcyBlbWFpbC4NCj4NCj4NCj4gT24gMDMvMDcvMjAyNSAwOTo1MCwgQ2F0
-YWxpbiBQb3Blc2N1IHdyb3RlOg0KPj4gQm90aCBUQVMyNTYzICYgVEFTMjc4MSBoYXZlIGFuIGFj
-dGl2ZSBsb3cgcmVzZXQsIHlldCB0aGUgZHJpdmVyIGFzc3VtZXMNCj4+IGFuIGFjdGl2ZSBoaWdo
-IHJlc2V0LiBIZW5jZSwgaW4gb3JkZXIgdG8gZ2V0IHRoZSBjaGlwIG91dCBvZiByZXNldCB3ZQ0K
-Pj4gbmVlZCB0byBsaWUgdG8gdGhlIGRldmljZXRyZWUgYWJvdXQgdGhlIHJlc2V0IHBvbGFyaXR5
-LiBUaGUgcGF0Y2ggZml4ZXMNCj4+IHRoZSBkcml2ZXIgc28gaXQgY291bGQgd29yayBubyBtYXR0
-ZXIgdGhlIHBvbGFyaXR5IGFuZCBsZWF2ZXMgaXQgdG8gdGhlDQo+PiBkZXZpY2V0cmVlIHRvIGRl
-ZmluZSB0aGUgY29ycmVjdCBwb2xhcml0eS4NCj4+DQo+PiBTaWduZWQtb2ZmLWJ5OiBDYXRhbGlu
-IFBvcGVzY3UgPGNhdGFsaW4ucG9wZXNjdUBsZWljYS1nZW9zeXN0ZW1zLmNvbT4NCj4NCj4gVGhp
-cyBicmVha3MgYWxsIGV4aXN0aW5nIGluLXRyZWUgYW5kIG91dC10cmVlIHVzZXJzLg0KPg0KPiBE
-VFMgcGF0Y2hlcyBhcmUgaW5kZXBlbmRlbnQsIHNvIHlvdSBjYW5ub3QgZml4IGluLXRyZWUgdGhh
-dCB3YXkuIEFueXdheSwNCj4geW91IGNhbm5vdCBmaXggb3RoZXIgdXNlcnMsIHNvIHNvcnJ5LCB5
-b3UgYXJlIHN0dWNrIHdpdGggdGhpcyBvciB5b3UNCj4gbmVlZCBzb21lIHRyaWNrcyAoSSBvbmNl
-IGRpZCBmb3IgYSBxY29tIGNvZGVjLCBidXQgSSBkb24ndCBrbm93IGlmIHRoaXMNCj4gaXMgcmVh
-bGx5IHRoZSBzb2x1dGlvbiBhbmQgbXkgY2FzZSB3YXMgZWFzaWVyIGFib3V0IHRoZSB1c2Vycyku
-DQo+DQo+IEJlc3QgcmVnYXJkcywNCj4gS3J6eXN6dG9mDQoNClRoZW4sIEknbGwga2VlcCBseWlu
-ZyB0byBteSBkZXZpY2V0cmVlIGFuZCBzdGljayB3aXRoIHRoZSBjdXJyZW50IGRyaXZlci4NClRo
-eCBmb3IgdGhlIHJldmlldyENCg0KQlIsDQpDYXRhbGluDQoNCg==
+From: Andy Yan <andy.yan@rock-chips.com>
+
+Make the dp/hdmi_audio_* callback maintain the same parameter order as
+get_modes and edid_read: first the bridge, then the connector.
+
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+---
+
+Changes in v3:
+- Remove redundant SoB
+
+Changes in v2:
+- First included in this series.
+
+ drivers/gpu/drm/bridge/adv7511/adv7511.h      | 16 ++++-----
+ .../gpu/drm/bridge/adv7511/adv7511_audio.c    | 12 +++----
+ drivers/gpu/drm/bridge/adv7511/adv7511_cec.c  |  4 +--
+ drivers/gpu/drm/bridge/lontium-lt9611.c       | 12 +++----
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c  | 12 +++----
+ .../gpu/drm/display/drm_bridge_connector.c    | 18 +++++-----
+ drivers/gpu/drm/msm/dp/dp_audio.c             |  8 ++---
+ drivers/gpu/drm/msm/dp/dp_audio.h             |  8 ++---
+ drivers/gpu/drm/msm/hdmi/hdmi.h               |  8 ++---
+ drivers/gpu/drm/msm/hdmi/hdmi_audio.c         |  8 ++---
+ include/drm/drm_bridge.h                      | 36 +++++++++----------
+ 11 files changed, 71 insertions(+), 71 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/adv7511/adv7511.h b/drivers/gpu/drm/bridge/adv7511/adv7511.h
+index 71bb64e5f481..85ebead9809c 100644
+--- a/drivers/gpu/drm/bridge/adv7511/adv7511.h
++++ b/drivers/gpu/drm/bridge/adv7511/adv7511.h
+@@ -399,8 +399,8 @@ static inline struct adv7511 *bridge_to_adv7511(struct drm_bridge *bridge)
+ }
+ 
+ #ifdef CONFIG_DRM_I2C_ADV7511_CEC
+-int adv7511_cec_init(struct drm_connector *connector,
+-		     struct drm_bridge *bridge);
++int adv7511_cec_init(struct drm_bridge *bridge,
++		     struct drm_connector *connector);
+ int adv7511_cec_enable(struct drm_bridge *bridge, bool enable);
+ int adv7511_cec_log_addr(struct drm_bridge *bridge, u8 addr);
+ int adv7511_cec_transmit(struct drm_bridge *bridge, u8 attempts,
+@@ -424,12 +424,12 @@ int adv7533_attach_dsi(struct adv7511 *adv);
+ int adv7533_parse_dt(struct device_node *np, struct adv7511 *adv);
+ 
+ #ifdef CONFIG_DRM_I2C_ADV7511_AUDIO
+-int adv7511_hdmi_audio_startup(struct drm_connector *connector,
+-			       struct drm_bridge *bridge);
+-void adv7511_hdmi_audio_shutdown(struct drm_connector *connector,
+-				 struct drm_bridge *bridge);
+-int adv7511_hdmi_audio_prepare(struct drm_connector *connector,
+-			       struct drm_bridge *bridge,
++int adv7511_hdmi_audio_startup(struct drm_bridge *bridge,
++			       struct drm_connector *connector);
++void adv7511_hdmi_audio_shutdown(struct drm_bridge *bridge,
++				 struct drm_connector *connector);
++int adv7511_hdmi_audio_prepare(struct drm_bridge *bridge,
++			       struct drm_connector *connector,
+ 			       struct hdmi_codec_daifmt *fmt,
+ 			       struct hdmi_codec_params *hparms);
+ #else /*CONFIG_DRM_I2C_ADV7511_AUDIO */
+diff --git a/drivers/gpu/drm/bridge/adv7511/adv7511_audio.c b/drivers/gpu/drm/bridge/adv7511/adv7511_audio.c
+index 915c3b967216..766b1c96bc88 100644
+--- a/drivers/gpu/drm/bridge/adv7511/adv7511_audio.c
++++ b/drivers/gpu/drm/bridge/adv7511/adv7511_audio.c
+@@ -55,8 +55,8 @@ static int adv7511_update_cts_n(struct adv7511 *adv7511)
+ 	return 0;
+ }
+ 
+-int adv7511_hdmi_audio_prepare(struct drm_connector *connector,
+-			       struct drm_bridge *bridge,
++int adv7511_hdmi_audio_prepare(struct drm_bridge *bridge,
++			       struct drm_connector *connector,
+ 			       struct hdmi_codec_daifmt *fmt,
+ 			       struct hdmi_codec_params *hparms)
+ {
+@@ -168,8 +168,8 @@ int adv7511_hdmi_audio_prepare(struct drm_connector *connector,
+ 	return 0;
+ }
+ 
+-int adv7511_hdmi_audio_startup(struct drm_connector *connector,
+-			       struct drm_bridge *bridge)
++int adv7511_hdmi_audio_startup(struct drm_bridge *bridge,
++			       struct drm_connector *connector)
+ {
+ 	struct adv7511 *adv7511 = bridge_to_adv7511(bridge);
+ 
+@@ -206,8 +206,8 @@ int adv7511_hdmi_audio_startup(struct drm_connector *connector,
+ 	return 0;
+ }
+ 
+-void adv7511_hdmi_audio_shutdown(struct drm_connector *connector,
+-				 struct drm_bridge *bridge)
++void adv7511_hdmi_audio_shutdown(struct drm_bridge *bridge,
++				 struct drm_connector *connector)
+ {
+ 	struct adv7511 *adv7511 = bridge_to_adv7511(bridge);
+ 
+diff --git a/drivers/gpu/drm/bridge/adv7511/adv7511_cec.c b/drivers/gpu/drm/bridge/adv7511/adv7511_cec.c
+index 822265426f58..8ecbc25dc647 100644
+--- a/drivers/gpu/drm/bridge/adv7511/adv7511_cec.c
++++ b/drivers/gpu/drm/bridge/adv7511/adv7511_cec.c
+@@ -346,8 +346,8 @@ static int adv7511_cec_parse_dt(struct device *dev, struct adv7511 *adv7511)
+ 	return 0;
+ }
+ 
+-int adv7511_cec_init(struct drm_connector *connector,
+-		     struct drm_bridge *bridge)
++int adv7511_cec_init(struct drm_bridge *bridge,
++		     struct drm_connector *connector)
+ {
+ 	struct adv7511 *adv7511 = bridge_to_adv7511(bridge);
+ 	struct device *dev = &adv7511->i2c_main->dev;
+diff --git a/drivers/gpu/drm/bridge/lontium-lt9611.c b/drivers/gpu/drm/bridge/lontium-lt9611.c
+index d6ee79c1e427..ff85ac8130b4 100644
+--- a/drivers/gpu/drm/bridge/lontium-lt9611.c
++++ b/drivers/gpu/drm/bridge/lontium-lt9611.c
+@@ -936,8 +936,8 @@ lt9611_hdmi_tmds_char_rate_valid(const struct drm_bridge *bridge,
+ 	return MODE_OK;
+ }
+ 
+-static int lt9611_hdmi_audio_startup(struct drm_connector *connector,
+-				     struct drm_bridge *bridge)
++static int lt9611_hdmi_audio_startup(struct drm_bridge *bridge,
++				     struct drm_connector *connector)
+ {
+ 	struct lt9611 *lt9611 = bridge_to_lt9611(bridge);
+ 
+@@ -952,8 +952,8 @@ static int lt9611_hdmi_audio_startup(struct drm_connector *connector,
+ 	return 0;
+ }
+ 
+-static int lt9611_hdmi_audio_prepare(struct drm_connector *connector,
+-				     struct drm_bridge *bridge,
++static int lt9611_hdmi_audio_prepare(struct drm_bridge *bridge,
++				     struct drm_connector *connector,
+ 				     struct hdmi_codec_daifmt *fmt,
+ 				     struct hdmi_codec_params *hparms)
+ {
+@@ -974,8 +974,8 @@ static int lt9611_hdmi_audio_prepare(struct drm_connector *connector,
+ 								       &hparms->cea);
+ }
+ 
+-static void lt9611_hdmi_audio_shutdown(struct drm_connector *connector,
+-				       struct drm_bridge *bridge)
++static void lt9611_hdmi_audio_shutdown(struct drm_bridge *bridge,
++				       struct drm_connector *connector)
+ {
+ 	struct lt9611 *lt9611 = bridge_to_lt9611(bridge);
+ 
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+index 7ade80f02a94..f9438e39b94a 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+@@ -440,8 +440,8 @@ static void dw_hdmi_qp_set_sample_rate(struct dw_hdmi_qp *hdmi, unsigned long lo
+ 	dw_hdmi_qp_set_cts_n(hdmi, cts, n);
+ }
+ 
+-static int dw_hdmi_qp_audio_enable(struct drm_connector *connector,
+-				   struct drm_bridge *bridge)
++static int dw_hdmi_qp_audio_enable(struct drm_bridge *bridge,
++				   struct drm_connector *connector)
+ {
+ 	struct dw_hdmi_qp *hdmi = dw_hdmi_qp_from_bridge(bridge);
+ 
+@@ -451,8 +451,8 @@ static int dw_hdmi_qp_audio_enable(struct drm_connector *connector,
+ 	return 0;
+ }
+ 
+-static int dw_hdmi_qp_audio_prepare(struct drm_connector *connector,
+-				    struct drm_bridge *bridge,
++static int dw_hdmi_qp_audio_prepare(struct drm_bridge *bridge,
++				    struct drm_connector *connector,
+ 				    struct hdmi_codec_daifmt *fmt,
+ 				    struct hdmi_codec_params *hparms)
+ {
+@@ -497,8 +497,8 @@ static void dw_hdmi_qp_audio_disable_regs(struct dw_hdmi_qp *hdmi)
+ 		       AVP_DATAPATH_PACKET_AUDIO_SWDISABLE, GLOBAL_SWDISABLE);
+ }
+ 
+-static void dw_hdmi_qp_audio_disable(struct drm_connector *connector,
+-				     struct drm_bridge *bridge)
++static void dw_hdmi_qp_audio_disable(struct drm_bridge *bridge,
++				     struct drm_connector *connector)
+ {
+ 	struct dw_hdmi_qp *hdmi = dw_hdmi_qp_from_bridge(bridge);
+ 
+diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
+index 6cdb432dbc30..717d96530c38 100644
+--- a/drivers/gpu/drm/display/drm_bridge_connector.c
++++ b/drivers/gpu/drm/display/drm_bridge_connector.c
+@@ -463,7 +463,7 @@ static int drm_bridge_connector_audio_startup(struct drm_connector *connector)
+ 		if (!bridge->funcs->hdmi_audio_startup)
+ 			return 0;
+ 
+-		return bridge->funcs->hdmi_audio_startup(connector, bridge);
++		return bridge->funcs->hdmi_audio_startup(bridge, connector);
+ 	}
+ 
+ 	if (bridge_connector->bridge_dp_audio) {
+@@ -472,7 +472,7 @@ static int drm_bridge_connector_audio_startup(struct drm_connector *connector)
+ 		if (!bridge->funcs->dp_audio_startup)
+ 			return 0;
+ 
+-		return bridge->funcs->dp_audio_startup(connector, bridge);
++		return bridge->funcs->dp_audio_startup(bridge, connector);
+ 	}
+ 
+ 	return -EINVAL;
+@@ -489,13 +489,13 @@ static int drm_bridge_connector_audio_prepare(struct drm_connector *connector,
+ 	if (bridge_connector->bridge_hdmi_audio) {
+ 		bridge = bridge_connector->bridge_hdmi_audio;
+ 
+-		return bridge->funcs->hdmi_audio_prepare(connector, bridge, fmt, hparms);
++		return bridge->funcs->hdmi_audio_prepare(bridge, connector, fmt, hparms);
+ 	}
+ 
+ 	if (bridge_connector->bridge_dp_audio) {
+ 		bridge = bridge_connector->bridge_dp_audio;
+ 
+-		return bridge->funcs->dp_audio_prepare(connector, bridge, fmt, hparms);
++		return bridge->funcs->dp_audio_prepare(bridge, connector, fmt, hparms);
+ 	}
+ 
+ 	return -EINVAL;
+@@ -509,12 +509,12 @@ static void drm_bridge_connector_audio_shutdown(struct drm_connector *connector)
+ 
+ 	if (bridge_connector->bridge_hdmi_audio) {
+ 		bridge = bridge_connector->bridge_hdmi_audio;
+-		bridge->funcs->hdmi_audio_shutdown(connector, bridge);
++		bridge->funcs->hdmi_audio_shutdown(bridge, connector);
+ 	}
+ 
+ 	if (bridge_connector->bridge_dp_audio) {
+ 		bridge = bridge_connector->bridge_dp_audio;
+-		bridge->funcs->dp_audio_shutdown(connector, bridge);
++		bridge->funcs->dp_audio_shutdown(bridge, connector);
+ 	}
+ }
+ 
+@@ -531,7 +531,7 @@ static int drm_bridge_connector_audio_mute_stream(struct drm_connector *connecto
+ 		if (!bridge->funcs->hdmi_audio_mute_stream)
+ 			return -ENOTSUPP;
+ 
+-		return bridge->funcs->hdmi_audio_mute_stream(connector, bridge,
++		return bridge->funcs->hdmi_audio_mute_stream(bridge, connector,
+ 							     enable, direction);
+ 	}
+ 
+@@ -541,7 +541,7 @@ static int drm_bridge_connector_audio_mute_stream(struct drm_connector *connecto
+ 		if (!bridge->funcs->dp_audio_mute_stream)
+ 			return -ENOTSUPP;
+ 
+-		return bridge->funcs->dp_audio_mute_stream(connector, bridge,
++		return bridge->funcs->dp_audio_mute_stream(bridge, connector,
+ 							   enable, direction);
+ 	}
+ 
+@@ -604,7 +604,7 @@ static int drm_bridge_connector_hdmi_cec_init(struct drm_connector *connector)
+ 	if (!bridge->funcs->hdmi_cec_init)
+ 		return 0;
+ 
+-	return bridge->funcs->hdmi_cec_init(connector, bridge);
++	return bridge->funcs->hdmi_cec_init(bridge, connector);
+ }
+ 
+ static const struct drm_connector_hdmi_cec_funcs drm_bridge_connector_hdmi_cec_funcs = {
+diff --git a/drivers/gpu/drm/msm/dp/dp_audio.c b/drivers/gpu/drm/msm/dp/dp_audio.c
+index f8bfb908f9b4..a0830bffdca5 100644
+--- a/drivers/gpu/drm/msm/dp/dp_audio.c
++++ b/drivers/gpu/drm/msm/dp/dp_audio.c
+@@ -173,8 +173,8 @@ static struct msm_dp_audio_private *msm_dp_audio_get_data(struct msm_dp *msm_dp_
+ 	return container_of(msm_dp_audio, struct msm_dp_audio_private, msm_dp_audio);
+ }
+ 
+-int msm_dp_audio_prepare(struct drm_connector *connector,
+-			 struct drm_bridge *bridge,
++int msm_dp_audio_prepare(struct drm_bridge *bridge,
++			 struct drm_connector *connector,
+ 			 struct hdmi_codec_daifmt *daifmt,
+ 			 struct hdmi_codec_params *params)
+ {
+@@ -216,8 +216,8 @@ int msm_dp_audio_prepare(struct drm_connector *connector,
+ 	return rc;
+ }
+ 
+-void msm_dp_audio_shutdown(struct drm_connector *connector,
+-			   struct drm_bridge *bridge)
++void msm_dp_audio_shutdown(struct drm_bridge *bridge,
++			   struct drm_connector *connecter)
+ {
+ 	struct msm_dp_audio_private *audio;
+ 	struct msm_dp *msm_dp_display;
+diff --git a/drivers/gpu/drm/msm/dp/dp_audio.h b/drivers/gpu/drm/msm/dp/dp_audio.h
+index 58fc14693e48..66b32215c0f3 100644
+--- a/drivers/gpu/drm/msm/dp/dp_audio.h
++++ b/drivers/gpu/drm/msm/dp/dp_audio.h
+@@ -44,12 +44,12 @@ struct msm_dp_audio *msm_dp_audio_get(struct platform_device *pdev,
+  */
+ void msm_dp_audio_put(struct msm_dp_audio *msm_dp_audio);
+ 
+-int msm_dp_audio_prepare(struct drm_connector *connector,
+-			 struct drm_bridge *bridge,
++int msm_dp_audio_prepare(struct drm_bridge *bridge,
++			 struct drm_connector *connector,
+ 			 struct hdmi_codec_daifmt *daifmt,
+ 			 struct hdmi_codec_params *params);
+-void msm_dp_audio_shutdown(struct drm_connector *connector,
+-			   struct drm_bridge *bridge);
++void msm_dp_audio_shutdown(struct drm_bridge *bridge,
++			   struct drm_connector *connector);
+ 
+ #endif /* _DP_AUDIO_H_ */
+ 
+diff --git a/drivers/gpu/drm/msm/hdmi/hdmi.h b/drivers/gpu/drm/msm/hdmi/hdmi.h
+index d5e572d10d6a..1d02d4e1ed5b 100644
+--- a/drivers/gpu/drm/msm/hdmi/hdmi.h
++++ b/drivers/gpu/drm/msm/hdmi/hdmi.h
+@@ -200,12 +200,12 @@ struct hdmi_codec_daifmt;
+ struct hdmi_codec_params;
+ 
+ int msm_hdmi_audio_update(struct hdmi *hdmi);
+-int msm_hdmi_bridge_audio_prepare(struct drm_connector *connector,
+-				  struct drm_bridge *bridge,
++int msm_hdmi_bridge_audio_prepare(struct drm_bridge *bridge,
++				  struct drm_connector *connector,
+ 				  struct hdmi_codec_daifmt *daifmt,
+ 				  struct hdmi_codec_params *params);
+-void msm_hdmi_bridge_audio_shutdown(struct drm_connector *connector,
+-				    struct drm_bridge *bridge);
++void msm_hdmi_bridge_audio_shutdown(struct drm_bridge *bridge,
++				    struct drm_connector *connector);
+ 
+ /*
+  * hdmi bridge:
+diff --git a/drivers/gpu/drm/msm/hdmi/hdmi_audio.c b/drivers/gpu/drm/msm/hdmi/hdmi_audio.c
+index b9ec14ef2c20..d9a8dc9dae8f 100644
+--- a/drivers/gpu/drm/msm/hdmi/hdmi_audio.c
++++ b/drivers/gpu/drm/msm/hdmi/hdmi_audio.c
+@@ -122,8 +122,8 @@ int msm_hdmi_audio_update(struct hdmi *hdmi)
+ 	return 0;
+ }
+ 
+-int msm_hdmi_bridge_audio_prepare(struct drm_connector *connector,
+-				  struct drm_bridge *bridge,
++int msm_hdmi_bridge_audio_prepare(struct drm_bridge *bridge,
++				  struct drm_connector *connector,
+ 				  struct hdmi_codec_daifmt *daifmt,
+ 				  struct hdmi_codec_params *params)
+ {
+@@ -163,8 +163,8 @@ int msm_hdmi_bridge_audio_prepare(struct drm_connector *connector,
+ 	return msm_hdmi_audio_update(hdmi);
+ }
+ 
+-void msm_hdmi_bridge_audio_shutdown(struct drm_connector *connector,
+-				    struct drm_bridge *bridge)
++void msm_hdmi_bridge_audio_shutdown(struct drm_bridge *bridge,
++				    struct drm_connector *connector)
+ {
+ 	struct hdmi_bridge *hdmi_bridge = to_hdmi_bridge(bridge);
+ 	struct hdmi *hdmi = hdmi_bridge->hdmi;
+diff --git a/include/drm/drm_bridge.h b/include/drm/drm_bridge.h
+index 7f66f9018c10..7a75b449bc91 100644
+--- a/include/drm/drm_bridge.h
++++ b/include/drm/drm_bridge.h
+@@ -817,8 +817,8 @@ struct drm_bridge_funcs {
+ 	 * Returns:
+ 	 * 0 on success, a negative error code otherwise
+ 	 */
+-	int (*hdmi_audio_startup)(struct drm_connector *connector,
+-				  struct drm_bridge *bridge);
++	int (*hdmi_audio_startup)(struct drm_bridge *bridge,
++				  struct drm_connector *connector);
+ 
+ 	/**
+ 	 * @hdmi_audio_prepare:
+@@ -831,8 +831,8 @@ struct drm_bridge_funcs {
+ 	 * Returns:
+ 	 * 0 on success, a negative error code otherwise
+ 	 */
+-	int (*hdmi_audio_prepare)(struct drm_connector *connector,
+-				  struct drm_bridge *bridge,
++	int (*hdmi_audio_prepare)(struct drm_bridge *bridge,
++				  struct drm_connector *connector,
+ 				  struct hdmi_codec_daifmt *fmt,
+ 				  struct hdmi_codec_params *hparms);
+ 
+@@ -847,8 +847,8 @@ struct drm_bridge_funcs {
+ 	 * Returns:
+ 	 * 0 on success, a negative error code otherwise
+ 	 */
+-	void (*hdmi_audio_shutdown)(struct drm_connector *connector,
+-				    struct drm_bridge *bridge);
++	void (*hdmi_audio_shutdown)(struct drm_bridge *bridge,
++				    struct drm_connector *connector);
+ 
+ 	/**
+ 	 * @hdmi_audio_mute_stream:
+@@ -861,12 +861,12 @@ struct drm_bridge_funcs {
+ 	 * Returns:
+ 	 * 0 on success, a negative error code otherwise
+ 	 */
+-	int (*hdmi_audio_mute_stream)(struct drm_connector *connector,
+-				      struct drm_bridge *bridge,
++	int (*hdmi_audio_mute_stream)(struct drm_bridge *bridge,
++				      struct drm_connector *connector,
+ 				      bool enable, int direction);
+ 
+-	int (*hdmi_cec_init)(struct drm_connector *connector,
+-			     struct drm_bridge *bridge);
++	int (*hdmi_cec_init)(struct drm_bridge *bridge,
++			     struct drm_connector *connector);
+ 
+ 	int (*hdmi_cec_enable)(struct drm_bridge *bridge, bool enable);
+ 
+@@ -886,8 +886,8 @@ struct drm_bridge_funcs {
+ 	 * Returns:
+ 	 * 0 on success, a negative error code otherwise
+ 	 */
+-	int (*dp_audio_startup)(struct drm_connector *connector,
+-				struct drm_bridge *bridge);
++	int (*dp_audio_startup)(struct drm_bridge *bridge,
++				struct drm_connector *connector);
+ 
+ 	/**
+ 	 * @dp_audio_prepare:
+@@ -900,8 +900,8 @@ struct drm_bridge_funcs {
+ 	 * Returns:
+ 	 * 0 on success, a negative error code otherwise
+ 	 */
+-	int (*dp_audio_prepare)(struct drm_connector *connector,
+-				struct drm_bridge *bridge,
++	int (*dp_audio_prepare)(struct drm_bridge *bridge,
++				struct drm_connector *connector,
+ 				struct hdmi_codec_daifmt *fmt,
+ 				struct hdmi_codec_params *hparms);
+ 
+@@ -916,8 +916,8 @@ struct drm_bridge_funcs {
+ 	 * Returns:
+ 	 * 0 on success, a negative error code otherwise
+ 	 */
+-	void (*dp_audio_shutdown)(struct drm_connector *connector,
+-				  struct drm_bridge *bridge);
++	void (*dp_audio_shutdown)(struct drm_bridge *bridge,
++				  struct drm_connector *connector);
+ 
+ 	/**
+ 	 * @dp_audio_mute_stream:
+@@ -930,8 +930,8 @@ struct drm_bridge_funcs {
+ 	 * Returns:
+ 	 * 0 on success, a negative error code otherwise
+ 	 */
+-	int (*dp_audio_mute_stream)(struct drm_connector *connector,
+-				    struct drm_bridge *bridge,
++	int (*dp_audio_mute_stream)(struct drm_bridge *bridge,
++				    struct drm_connector *connector,
+ 				    bool enable, int direction);
+ 
+ 	/**
+-- 
+2.43.0
+
 
