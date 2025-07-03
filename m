@@ -4,70 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E72BFC83030
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 22:06:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65480C83F05
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 22:06:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
-	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q/iOuHj5KX9GuXeKQABZ2gCw3mHlOv+e0egMHCqcqhc=; b=TD/MnND3Xa16GfABpysUuUUI4B
-	AL0NhH97v4cVxP2oWBwp5Ktq/Cg+8w2VT5+InZSi5EgHlHBi1d6zEmlRRHOQn8KMVyaJ8kv75V2vU
-	hvQcJIgnMzSVOLdE2gRBNmNyz4pUn4H4X+b73Xf5TbU4HDw35fWyqD0dICZwoPQcD7flTYDc4d0P6
-	aBAghtuU5vFGmZRL94gz43E4vJEeZHM1+hjAklfZSqXneOhfIQ5RJA1RvD3fZfxqbc+JC2iVX/pwZ
-	1BHCTNtG3ZNk93mvAVTbon/nsrcBcrHPXlg/mxlCj4w913hZp4qxuqyvmYZ8CIbZ8kiKezkQX+5zp
-	1SZ3KEyg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=z8GgfWrnJFJHxADsbByj/O1WY+W+lK44BD1usBbr6PQ=; b=X3rUq5KU7rmbIp
+	ZDU4+RnFdHWJ0ygttb3F9/LqyPo/36jcaD3smBgMar9/CwkSsqtgcrOlArHR8MzwKVsFgPgPNtD6z
+	Zg0N2SbSj3xwxtofgj7qa+I28ylf/Mt5Ye/rempSDXpPA6rysFmEekymR/3p0toxKth5FhYRyTCId
+	Lreg3n/YD11JE82yNPstzvoGKLs1RTh95vreoIwjf9b8PcSZ3IYXjZ3T0eUhZu1yGGN0U4k0hT0Ns
+	4T9iGKYa3K8AZ/drLEb/KpHN25DFW0SApG8akbUvcpgbmAwa/RpHjq+6axF2TqBvDN9C4EdugGmBm
+	TR6mXYtO4GRUfBZmVFBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXS4Z-0000000Cg6u-2QlS;
-	Thu, 03 Jul 2025 22:06:27 +0000
-Received: from relay6-d.mail.gandi.net ([217.70.183.198])
+	id 1uXS4g-0000000CgF4-3S7i;
+	Thu, 03 Jul 2025 22:06:34 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXNaA-0000000C6q2-0D04;
-	Thu, 03 Jul 2025 17:18:47 +0000
-Received: by mail.gandi.net (Postfix) with ESMTPSA id DD0E6442C9;
-	Thu,  3 Jul 2025 17:18:41 +0000 (UTC)
-From: Bastien Nocera <hadess@hadess.net>
-To: trivial@kernel.org,
-	Marcel Holtmann <marcel@holtmann.org>,
-	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
+	id 1uXNjA-0000000C8na-2MFz;
+	Thu, 03 Jul 2025 17:28:04 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 7831C61453;
+	Thu,  3 Jul 2025 17:28:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E5D73C4CEE3;
+	Thu,  3 Jul 2025 17:28:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1751563683;
+	bh=7DItQyd/iDiXcaQ1oEjOGACHtzfWw4WzefkYn8OTkwU=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=H5ZftxTxWMfwxHZ+Pz3upY30k01iBoXdImqR+W/HMOoyYzD3f9V7nCF4lK/kiNDZk
+	 Iv/a4u5MSqT8IyVdWMKt/77YNztWhnMVkI9jWlOVKXqlAoxQpMObMsOsZNgt3mrBzd
+	 azBm0mh/xpH1TaR6W097mqBwLGUYZw+hfLFuqmy0dHTsMlEx3NfczGuOn3DQJBYmTs
+	 rmwl0RQjoupydZDcb1P37q76NVU3kFSi5kZwkrCDNvz1ducn1Tc2kKbXh0JmDQBSVI
+	 hQjavWGtQqoz8VzpB9ZusWsjtax/P5fIQ0C+xaskpPdNwILfdXtRyVYmu4AXYp6DXJ
+	 eN5ZOW0iYQJgA==
+Date: Thu, 3 Jul 2025 12:28:01 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Nam Cao <namcao@linutronix.de>
+Cc: Marc Zyngier <maz@kernel.org>, Thomas Gleixner <tglx@linutronix.de>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+	Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>,
+	Hou Zhiqiang <Zhiqiang.Hou@nxp.com>,
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+	Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>,
+	"K . Y . Srinivasan" <kys@microsoft.com>,
+	Haiyang Zhang <haiyangz@microsoft.com>,
+	Wei Liu <wei.liu@kernel.org>, Dexuan Cui <decui@microsoft.com>,
+	Joyce Ooi <joyce.ooi@intel.com>, Jim Quinlan <jim2101024@gmail.com>,
+	Nicolas Saenz Julienne <nsaenz@kernel.org>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Marek Vasut <marek.vasut+renesas@gmail.com>,
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+	Michal Simek <michal.simek@amd.com>,
+	Daire McNamara <daire.mcnamara@microchip.com>,
+	Nirmal Patel <nirmal.patel@linux.intel.com>,
+	Jonathan Derrick <jonathan.derrick@linux.dev>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sven Peter <sven@kernel.org>,
-	Janne Grunau <j@jannau.net>,
-	Alyssa Rosenzweig <alyssa@rosenzweig.io>,
-	Neal Gompa <neal@gompa.dev>,
-	Johan Hedberg <johan.hedberg@gmail.com>,
-	Ingo Molnar <mingo@kernel.org>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	Bastien Nocera <hadess@hadess.net>,
-	Al Viro <viro@zeniv.linux.org.uk>,
-	Kees Cook <kees@kernel.org>,
-	Erick Archer <erick.archer@outlook.com>,
-	Chris Lu <chris.lu@mediatek.com>,
-	linux-bluetooth@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-hyperv@vger.kernel.org,
+	linux-rpi-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	asahi@lists.linux.dev
-Subject: [PATCH v2 7/7] Bluetooth: Fix typos in comments
-Date: Thu,  3 Jul 2025 19:17:01 +0200
-Message-ID: <20250703171815.1011001-8-hadess@hadess.net>
-X-Mailer: git-send-email 2.50.0
-In-Reply-To: <20250703171815.1011001-1-hadess@hadess.net>
-References: <20250703171815.1011001-1-hadess@hadess.net>
+	linux-renesas-soc@vger.kernel.org
+Subject: Re: [PATCH 00/16] PCI: MSI parent domain conversion
+Message-ID: <20250703172801.GA1934994@bhelgaas>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-GND-State: clean
-X-GND-Score: -100
-X-GND-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdefgddvtdekiecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfitefpfffkpdcuggftfghnshhusghstghrihgsvgenuceurghilhhouhhtmecufedtudenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffojghfggfgsedtkeertdertddtnecuhfhrohhmpeeurghsthhivghnucfpohgtvghrrgcuoehhrgguvghssheshhgruggvshhsrdhnvghtqeenucggtffrrghtthgvrhhnpeekteetgeettdehieduiedttdetffelleehtdejkeeluedvgfffvdevteetudfhkeenucfkphepvdgrtddumegvfeegmegvtgejfeemtghfvddtmeejudgurgemfegsugemvddtrgelmedufeefnecuvehluhhsthgvrhfuihiivgepieenucfrrghrrghmpehinhgvthepvdgrtddumegvfeegmegvtgejfeemtghfvddtmeejudgurgemfegsugemvddtrgelmedufeefpdhhvghlohepohhlihhmphhitgdpmhgrihhlfhhrohhmpehhrgguvghssheshhgruggvshhsrdhnvghtpdhnsggprhgtphhtthhopedvfedprhgtphhtthhopehtrhhivhhirghlsehkvghrnhgvlhdrohhrghdprhgtphhtthhopehmrghrtggvlheshhholhhtmhgrnhhnrdhorhhgpdhrtghpthhtoheplhhuihiirdguvghnthiisehgmhgrihhlrdgtohhmpdhrtghpthhtohepshgvrghnrdifrghnghesmhgvughirghtvghkrdgtohhmpdhrtghpthhtohepmhgrthhth
- hhirghsrdgsghhgsehgmhgrihhlrdgtohhmpdhrtghpthhtoheprghnghgvlhhoghhiohgrtggthhhinhhordguvghlrhgvghhnohestgholhhlrggsohhrrgdrtghomhdprhgtphhtthhopehsvhgvnheskhgvrhhnvghlrdhorhhgpdhrtghpthhtohepjhesjhgrnhhnrghurdhnvght
-X-GND-Sasl: hadess@hadess.net
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250703_101846_217259_9A2FDAC8 
-X-CRM114-Status: GOOD (  18.02  )
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1750858083.git.namcao@linutronix.de>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,92 +96,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Found by codespell.
+On Thu, Jun 26, 2025 at 04:47:50PM +0200, Nam Cao wrote:
+> The initial implementation of PCI/MSI interrupt domains in the hierarchical
+> interrupt domain model used a shortcut by providing a global PCI/MSI
+> domain.
+> 
+> This works because the PCI/MSI[X] hardware is standardized and uniform, but
+> it violates the basic design principle of hierarchical interrupt domains:
+> Each hardware block involved in the interrupt delivery chain should have a
+> separate interrupt domain.
+> 
+> For PCI/MSI[X], the interrupt controller is per PCI device and not a global
+> made-up entity.
+> 
+> Unsurprisingly, the shortcut turned out to have downsides as it does not
+> allow dynamic allocation of interrupt vectors after initialization and it
+> prevents supporting IMS on PCI. For further details, see:
+> 
+> https://lore.kernel.org/lkml/20221111120501.026511281@linutronix.de/
+> 
+> The solution is implementing per device MSI domains, this means the
+> entities which provide global PCI/MSI domain so far have to implement MSI
+> parent domain functionality instead.
+> 
+> This series converts the PCI controller drivers to implement MSI parent
+> domain.
+> 
+>  drivers/pci/Kconfig                           |   1 +
+>  drivers/pci/controller/Kconfig                |  11 +
+>  drivers/pci/controller/dwc/Kconfig            |   1 +
+>  .../pci/controller/dwc/pcie-designware-host.c |  68 ++----
+>  drivers/pci/controller/dwc/pcie-designware.h  |   1 -
+>  drivers/pci/controller/mobiveil/Kconfig       |   1 +
+>  .../controller/mobiveil/pcie-mobiveil-host.c  |  42 ++--
+>  .../pci/controller/mobiveil/pcie-mobiveil.h   |   1 -
+>  drivers/pci/controller/pci-aardvark.c         |  59 ++---
+>  drivers/pci/controller/pci-hyperv.c           |  98 ++++++--
+>  drivers/pci/controller/pcie-altera-msi.c      |  44 ++--
+>  drivers/pci/controller/pcie-brcmstb.c         |  44 ++--
+>  drivers/pci/controller/pcie-iproc-msi.c       |  45 ++--
+>  drivers/pci/controller/pcie-mediatek-gen3.c   |  67 ++---
+>  drivers/pci/controller/pcie-mediatek.c        |  46 ++--
+>  drivers/pci/controller/pcie-rcar-host.c       |  69 ++----
+>  drivers/pci/controller/pcie-xilinx-dma-pl.c   |  48 ++--
+>  drivers/pci/controller/pcie-xilinx-nwl.c      |  45 ++--
+>  drivers/pci/controller/pcie-xilinx.c          |  55 +++--
+>  drivers/pci/controller/plda/Kconfig           |   1 +
+>  drivers/pci/controller/plda/pcie-plda-host.c  |  44 ++--
+>  drivers/pci/controller/plda/pcie-plda.h       |   1 -
+>  drivers/pci/controller/vmd.c                  | 229 +++++++++---------
+>  23 files changed, 504 insertions(+), 517 deletions(-)
 
-Signed-off-by: Bastien Nocera <hadess@hadess.net>
----
- net/bluetooth/hci_conn.c  | 2 +-
- net/bluetooth/hci_event.c | 4 ++--
- net/bluetooth/hci_sync.c  | 2 +-
- net/bluetooth/lib.c       | 2 +-
- net/bluetooth/smp.c       | 2 +-
- 5 files changed, 6 insertions(+), 6 deletions(-)
+Looks good to me, thanks!  I think Mani will probably pick this up.
 
-diff --git a/net/bluetooth/hci_conn.c b/net/bluetooth/hci_conn.c
-index 4f379184df5b..cb360adbb6ec 100644
---- a/net/bluetooth/hci_conn.c
-+++ b/net/bluetooth/hci_conn.c
-@@ -814,7 +814,7 @@ static int hci_le_big_terminate(struct hci_dev *hdev, u8 big, struct hci_conn *c
-  *
-  * Detects if there any BIS left connected in a BIG
-  * broadcaster: Remove advertising instance and terminate BIG.
-- * broadcaster receiver: Teminate BIG sync and terminate PA sync.
-+ * broadcaster receiver: Terminate BIG sync and terminate PA sync.
-  */
- static void bis_cleanup(struct hci_conn *conn)
- {
-diff --git a/net/bluetooth/hci_event.c b/net/bluetooth/hci_event.c
-index 66052d6aaa1d..a546cb058e8e 100644
---- a/net/bluetooth/hci_event.c
-+++ b/net/bluetooth/hci_event.c
-@@ -5754,7 +5754,7 @@ static void le_conn_complete_evt(struct hci_dev *hdev, u8 status,
- 	conn->state = BT_CONFIG;
- 
- 	/* Store current advertising instance as connection advertising instance
--	 * when sotfware rotation is in use so it can be re-enabled when
-+	 * when software rotation is in use so it can be re-enabled when
- 	 * disconnected.
- 	 */
- 	if (!ext_adv_capable(hdev))
-@@ -7077,7 +7077,7 @@ static void hci_le_big_info_adv_report_evt(struct hci_dev *hdev, void *data,
- /* Entries in this table shall have their position according to the subevent
-  * opcode they handle so the use of the macros above is recommend since it does
-  * attempt to initialize at its proper index using Designated Initializers that
-- * way events without a callback function can be ommited.
-+ * way events without a callback function can be omitted.
-  */
- static const struct hci_le_ev {
- 	void (*func)(struct hci_dev *hdev, void *data, struct sk_buff *skb);
-diff --git a/net/bluetooth/hci_sync.c b/net/bluetooth/hci_sync.c
-index 6687f2a4d1eb..febad7922008 100644
---- a/net/bluetooth/hci_sync.c
-+++ b/net/bluetooth/hci_sync.c
-@@ -5633,7 +5633,7 @@ int hci_abort_conn_sync(struct hci_dev *hdev, struct hci_conn *conn, u8 reason)
- 	}
- 
- 	/* Cleanup hci_conn object if it cannot be cancelled as it
--	 * likelly means the controller and host stack are out of sync
-+	 * likely means the controller and host stack are out of sync
- 	 * or in case of LE it was still scanning so it can be cleanup
- 	 * safely.
- 	 */
-diff --git a/net/bluetooth/lib.c b/net/bluetooth/lib.c
-index 43aa01fd07b9..305044a84478 100644
---- a/net/bluetooth/lib.c
-+++ b/net/bluetooth/lib.c
-@@ -54,7 +54,7 @@ EXPORT_SYMBOL(baswap);
-  * bt_to_errno() - Bluetooth error codes to standard errno
-  * @code: Bluetooth error code to be converted
-  *
-- * This function takes a Bluetooth error code as input and convets
-+ * This function takes a Bluetooth error code as input and converts
-  * it to an equivalent Unix/standard errno value.
-  *
-  * Return:
-diff --git a/net/bluetooth/smp.c b/net/bluetooth/smp.c
-index 47f359f24d1f..5b4ade03bdcc 100644
---- a/net/bluetooth/smp.c
-+++ b/net/bluetooth/smp.c
-@@ -3172,7 +3172,7 @@ static void smp_ready_cb(struct l2cap_chan *chan)
- 	/* No need to call l2cap_chan_hold() here since we already own
- 	 * the reference taken in smp_new_conn_cb(). This is just the
- 	 * first time that we tie it to a specific pointer. The code in
--	 * l2cap_core.c ensures that there's no risk this function wont
-+	 * l2cap_core.c ensures that there's no risk this function won't
- 	 * get called if smp_new_conn_cb was previously called.
- 	 */
- 	conn->smp = chan;
--- 
-2.50.0
+I might have included the specific "legacy MSI domain" thing you're
+replacing.  It looks like you're replacing pci_msi_create_irq_domain()
+with msi_create_parent_irq_domain()?
 
+Minor merge conflict in pcie-mediatek-gen3.c with dcbea1c7e94e ("PCI:
+mediatek-gen3: Use dev_fwnode() for irq_domain_create_linear()").  No
+problem, we can easily fix that up.
+
+The "++i" in vmd.c stuck out to me since "i++" is so much more common.
+
+Acked-by: Bjorn Helgaas <bhelgaas@google.com>
 
