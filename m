@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E80DC77B7C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 15:06:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50048C77B7C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 15:06:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4kcJobrOnoamaBnANOlfQkU1M63AHPCa2YelSe1E0P8=; b=Mck64u/dZfzwXig/j7jU9sV/8K
-	Pt1VoyPEv83bHFn0zrtbs3szCf50TrSd9MQ5So811NlvH0TVF3xcZTkDTJda/SVJAxpS3ksWaPLph
-	MSkIFSxYUBROHYmO0C48RIsol6uhW3C91z9hID4A6tGYYrT2FGHnfl8qXpxTFtv4+NTveLiIR8+4r
-	/128xNR0WY5N7mwGEHmkeKojRFyMR/CxJStWkCIn4KlwLA+QZ5L2GhXhRVWDoiOyomUt4d5nUpPb5
-	gxeF9I4zeot8v7M2DFb1Sbz5qhSoWLt71ZdO7mmy/fy0R2qVOt9NI1VXgJ6ejzRQx9T68tpcv3k2H
-	v3yQJZ+A==;
+	bh=4kcJobrOnoamaBnANOlfQkU1M63AHPCa2YelSe1E0P8=; b=SBJTaPLTflkaoV0Rjv1bJB2gpz
+	lmkIl5sB2LdRc3QvAdq3HZQkq0idSdd3/G7nYBTRZVIhyqzbqIL4IFJVnE04qgQV9PuePidcaZa7m
+	hsloxgIaupfzvWcZaQ4WqfZWIzPLwM1sR28EBYNAPdxSMwd83BFFq0Pp5jil7fVTJhkiMUtQLQXCu
+	0Y+RgT1AZvOwmXbAiyeW8Z10s7F1xkI036yZE7hpYNfHRbPjx4AiL6ay/9uYKWhVqfoUqAUWrSUMm
+	3yKPjjbrRo6RB4HtxZGX7sCWOqq86SKXWhaTN4RT2dCiCbqB0ZGlZTxdsKTpTvfadnLITL3gbDhzL
+	CYL0f/lw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXLVz-0000000BlLd-3czS;
-	Thu, 03 Jul 2025 15:06:19 +0000
+	id 1uXLWA-0000000BlOJ-1MT3;
+	Thu, 03 Jul 2025 15:06:30 +0000
 Received: from galois.linutronix.de ([2a0a:51c0:0:12e:550::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXJu7-0000000BTjV-3ZdS;
-	Thu, 03 Jul 2025 13:23:09 +0000
+	id 1uXJul-0000000BTqn-0Wbb;
+	Thu, 03 Jul 2025 13:23:48 +0000
 From: Thomas Gleixner <tglx@linutronix.de>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020; t=1751548986;
+	s=2020; t=1751549025;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 in-reply-to:in-reply-to:references:references;
 	bh=4kcJobrOnoamaBnANOlfQkU1M63AHPCa2YelSe1E0P8=;
-	b=xC0QnuAEc04sBgR4HMWyRNm1U65w395OnXhMa1jHCr1Nwf+/Cb99qCTcA22DatUsqDw+kP
-	fGl+laAt2AytEx3YiCVIsW6ovu7FlI/rP0LpqbRpz51UU1X+vrvqCzJ+k7Cbrat+PyKsje
-	XtixNmvImDx9wfJk8VMXeEYkPyl5vp3Jw8X3bwxGjFd0SeguYu4Bue1H6lEnqNgV9LegIK
-	BDcNTWGA3bKn34VtdEGhmImKEUEZqLkrUECCmArAnbKFtWNXLg9cbfdAGwE2C5YNOn7Zir
-	41LbC/GUhVzFkb57DI47qYBetrVv0ksnSCQljNzs6ryIte2JUMzRK/6IXm3YFA==
+	b=nI8X3+8vEX+1EWEXH08JIbva4rFenlJJLnDApU/i7hk7+A2lwIQmkWAuvmKaCrG/Tet/1Z
+	d6hGb145XYe5hHXhdSPK+eQdiCwWlzexHd3OnrPtkCwnFPAq4kroShrZ0vcUMP7B9ILgUT
+	77LFbUef4SXe1ajSl1irzYGx/LLItKiM/EKPYGcFqI1mNavwqEkR2iavwNzjY1Frgg9HoL
+	7cw2nhSupOtH2EmCRNznRumyZkAhnkO2huNQHntFKWQFthUI4ipHCoNCB/rlggrVwWWY4M
+	fYmKDgRVcOSqbSPgSoyHDdRtTcRDNXXYQlVW3ePj4RBhSa4sGhHnRJy2Lrr6xg==
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020e; t=1751548986;
+	s=2020e; t=1751549025;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 in-reply-to:in-reply-to:references:references;
 	bh=4kcJobrOnoamaBnANOlfQkU1M63AHPCa2YelSe1E0P8=;
-	b=er0tgDB8ilg6NCvHlG8ud9UWY6a0M+a8DiwGV4vUQAXQpDm6FJF6PhanChRTnR76Oztfl1
-	dydTWR5BZC3hOcCA==
+	b=BNMZhoDIoCqKQl4F7lMSzayHIGLUGHcZN0a2UZXJxy88STjRWhXCEprSFfaGcKqwXnbmcY
+	x7ld3dbG8BeB+DCw==
 To: Nam Cao <namcao@linutronix.de>, Marc Zyngier <maz@kernel.org>, Lorenzo
  Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?=
  <kwilczynski@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>, Rob
@@ -73,18 +73,17 @@ To: Nam Cao <namcao@linutronix.de>, Marc Zyngier <maz@kernel.org>, Lorenzo
  linux-rpi-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-renesas-soc@vger.kernel.org
 Cc: Nam Cao <namcao@linutronix.de>
-Subject: Re: [PATCH 05/16] PCI: brcmstb: Switch to
- msi_create_parent_irq_domain()
-In-Reply-To: <fa72703e06c2ee2c7554082c7152913eb0dd294f.1750858083.git.namcao@linutronix.de>
+Subject: Re: [PATCH 06/16] PCI: iproc: Switch to msi_create_parent_irq_domain()
+In-Reply-To: <53946d74caf1fd134a1820eac82c3cf64d48779f.1750858083.git.namcao@linutronix.de>
 References: <cover.1750858083.git.namcao@linutronix.de>
- <fa72703e06c2ee2c7554082c7152913eb0dd294f.1750858083.git.namcao@linutronix.de>
-Date: Thu, 03 Jul 2025 15:23:05 +0200
-Message-ID: <87zfdlv26e.ffs@tglx>
+ <53946d74caf1fd134a1820eac82c3cf64d48779f.1750858083.git.namcao@linutronix.de>
+Date: Thu, 03 Jul 2025 15:23:44 +0200
+Message-ID: <87wm8pv25b.ffs@tglx>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250703_062308_022108_72D659D9 
-X-CRM114-Status: UNSURE (   5.20  )
+X-CRM114-CacheID: sfid-20250703_062347_300032_35FB5750 
+X-CRM114-Status: UNSURE (   5.28  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
