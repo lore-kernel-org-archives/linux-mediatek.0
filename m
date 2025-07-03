@@ -4,75 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDD37C83F04
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 14:27:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3B74C77B7C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 14:47:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=3MGa7aUIUrsqSH5jzhVO2fccWDlbAAU4JB3lQ6tDZMI=; b=NNOgwOoj69E3UJZnmbCoE+5mok
-	DTfcT/amwZknG3xMB0iW4eSPkSLBD1glXgH2wqBfFKgMaJNUX7zQnFtFrzQ/QDFtkVapi6U9YzkCv
-	tP7CieA1v2ADXXVKjoW3esI9sasT0Nsy9/RgyavyNSDwL2egjiG+lgIT3lJy0BL8pE7Y2V/pYQv2s
-	65evxHOwSVxzWJoOo92cx+QuCKAPqTw0Zp7InlnCiv4xga3NgQIVarKZiUEO+dh9hq7TmwS8wil3d
-	f9aUkyQRhRAlMaygRP61oKr+g3WrKGe661+fUKjc2htMGiEvGLiuiof9bv7GBUuW0Kb5Dxd4ARw8G
-	nvyRkpZQ==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xxCDbfqDi4jyoIkuioFvmEtmdb36QhkW5Zr1XiVAe9I=; b=4N4pB08jIWycT/tJNmcS0p1VWh
+	TMdHEfOrvGSfuuzD1d0kWrY4RQj89tD3hiGRAS+rub3vpThyL7WyrlODRsXM46NrdvAJvP1E/WZ7W
+	hgb0wfAOJXIKocuDXiFL6SayfsF7bbIxlJaTYe7gNIOgxsDGIDl+MSetSUCh5fIYZlWM8vcdwxAOZ
+	Q9/3D/dl+PaoqWYE8HdsGkcMF3JV1Fe2ADjwug14xhb7hbkEosw2gxNMXUT9IrPDrrX9xzsEpAnBG
+	yGw1Ytbn+5+oDh6FL2v7w17GcpZNp1sTkDpACu7dpVR/DZlVYv8lNkNX3sK2HtbSMjIsRRgGVBv2C
+	w0JfORvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXKus-0000000BfJC-3L9y;
-	Thu, 03 Jul 2025 14:27:58 +0000
-Received: from m16.mail.163.com ([117.135.210.4])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXJPX-0000000BOTb-03kt
-	for linux-mediatek@lists.infradead.org;
-	Thu, 03 Jul 2025 12:51:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=3M
-	Ga7aUIUrsqSH5jzhVO2fccWDlbAAU4JB3lQ6tDZMI=; b=pmle+Jf+7uIoBLtNKD
-	xi1b+D8KcNunRsFTEJia3+2C6/zC0gicTdnwnl4yVUZjVDwsHptAhPc9f3D0hRbx
-	0s5RkxMaXBtwEYpvEYHNefuKt6VEqNljQ5iDvtEHNM7zHv9/vVDgXMIKXmD6BhgU
-	aIjZ429cMAPxWuk06/+TY8Q3Y=
-Received: from ProDesk.. (unknown [])
-	by gzga-smtp-mtada-g0-3 (Coremail) with SMTP id _____wAXBAyWfGZoVnrrCA--.37969S2;
-	Thu, 03 Jul 2025 20:50:34 +0800 (CST)
-From: Andy Yan <andyshrk@163.com>
-To: dmitry.baryshkov@oss.qualcomm.com
-Cc: mripard@kernel.org,
-	neil.armstrong@linaro.org,
-	dri-devel@lists.freedesktop.org,
-	dianders@chromium.org,
-	jani.nikula@intel.com,
-	lyude@redhat.com,
-	jonathanh@nvidia.com,
-	p.zabel@pengutronix.de,
-	simona@ffwll.ch,
-	victor.liu@nxp.com,
-	rfoss@kernel.org,
-	chunkuang.hu@kernel.org,
-	cristian.ciocaltea@collabora.com,
-	Laurent.pinchart@ideasonboard.com,
-	linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	freedreno@lists.freedesktop.org,
-	Andy Yan <andyshrk@163.com>
-Subject: [PATCH v3 0/2] Pass down connector to drm bridge detect hook
-Date: Thu,  3 Jul 2025 20:49:51 +0800
-Message-ID: <20250703125027.311109-1-andyshrk@163.com>
-X-Mailer: git-send-email 2.43.0
+	id 1uXLDS-0000000Bia0-0Vko;
+	Thu, 03 Jul 2025 14:47:10 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uXJdF-0000000BQxt-0ITB;
+	Thu, 03 Jul 2025 13:05:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1751547939;
+	bh=GpN8xHP63XM+oTXtjDyjENa6zCm9aLFaBITzhIXThVU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=KDACpp1QMNA461z1ue9x8IPlUIObuv3owwbXpsmhy/7s7y+cNE8tEQwkbHNVtAGXv
+	 DX2S4cgAFcTAxMhSBQXX/G25TJZinfcgxebypD+fShb5YQeZIaRRUbEqXti4KxZud5
+	 6TmA8LjhiGLj9Tf+54Dit/E/69zHbDceZIcll+NeEDzLWD1si2Dp0z+l2n+GRh5g7Q
+	 nYZEzXikzlJSBgn/4TYgft7oXmhI4h2kD90EqEzPCEhkf4JxbKkWauc2FdJkMEkvGG
+	 7q9LeqpcWAI56/TD50rWtCyZmux4fLksYhfgIv7OogR/cX2mGFr7V3KmSUXQYbF0DU
+	 auIIAMI3Loqhg==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A313717E0506;
+	Thu,  3 Jul 2025 15:05:38 +0200 (CEST)
+Message-ID: <183a3b40-cd06-437a-84d9-9949965bf176@collabora.com>
+Date: Thu, 3 Jul 2025 15:05:38 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wAXBAyWfGZoVnrrCA--.37969S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxAw48KrWfKF1UWr4UWr15urg_yoW5Kw4UpF
-	W2gFyavryxAF4aka1xAF18AF90y3Z7XFWrKry2v3sI93WFvF1UArsxAayrXryDGFyxJr12
-	ywn7GrWxGF12yaUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zRSkshUUUUU=
-X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbBkBx-XmhmehVGHAAAsW
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 4/5] iio: adc: mt6359: Add support for MediaTek MT6363
+ PMIC AUXADC
+To: Jonathan Cameron <jic23@kernel.org>
+Cc: dlechner@baylibre.com, nuno.sa@analog.com, andy@kernel.org,
+ robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, linux-iio@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com
+References: <20250623120028.108809-1-angelogioacchino.delregno@collabora.com>
+ <20250623120028.108809-5-angelogioacchino.delregno@collabora.com>
+ <20250628170118.2bd3e68b@jic23-huawei>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250628170118.2bd3e68b@jic23-huawei>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250703_055131_435165_62F3ED12 
-X-CRM114-Status: GOOD (  12.73  )
+X-CRM114-CacheID: sfid-20250703_060541_413902_25198318 
+X-CRM114-Status: GOOD (  56.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,90 +81,318 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Il 28/06/25 18:01, Jonathan Cameron ha scritto:
+> On Mon, 23 Jun 2025 14:00:27 +0200
+> AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> wrote:
+> 
+>> MediaTek MT6363 is a PMIC found on MT8196/MT6991 board designs
+>> and communicates with the SoC over SPMI.
+>>
+>> This PMIC integrates an Auxiliary ADC (AUXADC) which has a grand
+>> total of 54 ADC channels: 49 PMIC-internal channels, 2 external
+>> NTC thermistor channels and 2 generic ADC channels (mapped to 7
+>> PMIC ADC external inputs).
+>>
+>> To use a generic ADC channel it is necessary to enable one of
+>> the PMIC ADC inputs at a time and only then start the reading,
+>> so in this case it is possible to read only one external input
+>> for each generic ADC channel.
+>>
+>> Due to the lack of documentation, this implementation supports
+>> using only one generic ADC channel, hence supports reading only
+>> one external input at a time.
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Hi,
+> 
+> A few comments that may or may not overlap with Andy's review.
+> 
+> thanks,
+> 
+> Jonathan
+> 
+>> ---
+>>   drivers/iio/adc/mt6359-auxadc.c | 238 +++++++++++++++++++++++++++++---
+>>   1 file changed, 217 insertions(+), 21 deletions(-)
+>>
+>> diff --git a/drivers/iio/adc/mt6359-auxadc.c b/drivers/iio/adc/mt6359-auxadc.c
+>> index ae7b65f5f551..f49b0b6e78da 100644
+>> --- a/drivers/iio/adc/mt6359-auxadc.c
+>> +++ b/drivers/iio/adc/mt6359-auxadc.c
+> 
+>> +enum mtk_pmic_auxadc_flags {
+>> +	MTK_PMIC_AUXADC_IS_SPMI = BIT(0),
+>> +	MTK_PMIC_AUXADC_NO_RESET = BIT(1),
+>> +};
+> 
+> With just two bits I think flags obscures what is going on over
+> a pair of separate booleans.
+> 
 
-In some application scenarios, we hope to get the corresponding
-connector when the bridge's detect hook is invoked.
+Okay, I'll change this to two booleans then!
 
-For example, we may want to call drm_dp_read_sink_count_cap(which needs
-a drm_connector) at the dp deteck hook, intel_dp and nouveau_dp do this
-at it's connector's detetc_ctx/detect hook.
+>>   };
+>> @@ -123,7 +155,9 @@ struct mtk_pmic_auxadc_chan {
+>>    * @desc:           PMIC AUXADC channel data
+>>    * @regs:           List of PMIC specific registers
+>>    * @sec_unlock_key: Security unlock key for HK_TOP writes
+>> + * @vref_mv:        AUXADC Reference Voltage (VREF) in millivolts
+>>    * @imp_adc_num:    ADC channel for battery impedance readings
+>> + * @flags:          Feature flags
+>>    * @read_imp:       Callback to read impedance channels
+>>    */
+>>   struct mtk_pmic_auxadc_info {
+>> @@ -133,22 +167,33 @@ struct mtk_pmic_auxadc_info {
+>>   	const struct mtk_pmic_auxadc_chan *desc;
+>>   	const u16 *regs;
+>>   	u16 sec_unlock_key;
+>> +	u16 vref_mv;
+> I'd not worry about the space saving here and instead make this a u32 so that
+> can avoid the casting when using this.
+> 
 
-But for a bridge driver, it's detect hook is initiated by the connector,
-there is no connector passed down.
+Okay, will do.
 
-In most cases, we can get the connector by
-drm_atomic_get_connector_for_encoder
-if the encoder attached to the bridge is enabled, however there will
-still be some scenarios where the detect hook of the bridge is called
-but the corresponding encoder has not been enabled yet. For instance,
-this occurs when the device is hot plug in for the first time.
+>>   	u8 imp_adc_num;
+>> +	u8 flags;
+> 
+> As above. Pair of bool preferred.
+> 
+>>   	int (*read_imp)(struct mt6359_auxadc *adc_dev,
+>>   			const struct iio_chan_spec *chan, int *vbat, int *ibat);
+>>   };
+> 
+>>   static void mt6358_stop_imp_conv(struct mt6359_auxadc *adc_dev)
+>>   {
+>>   	const struct mtk_pmic_auxadc_info *cinfo = adc_dev->chip_info;
+>> @@ -379,13 +488,13 @@ static int mt6359_read_imp(struct mt6359_auxadc *adc_dev,
+>>   	int ret;
+>>   
+>>   	/* Start conversion */
+>> -	regmap_write(regmap, cinfo->regs[PMIC_AUXADC_IMP0], MT6359_IMP0_CONV_EN);
+>> +	regmap_write(regmap, cinfo->regs[desc->req_idx], desc->req_mask);
+> 
+> Given desc->req_idx is not introduced in this patch, why is this needed now
+> but not previously?  Maybe this change belongs in a separate patch with
+> a description to explain that.
+> 
 
-Since the call to bridge's detect is initiated by the connector, passing
-down the corresponding connector directly will make things simpler.
+Oh wow, many many many... many thanks for catching this!!!!
 
-Before preparing this patch, we have had some discussions on the details
-here[0].
+This change was not supposed to be in this commit, as I had implemented both
+the IBAT and VBAT "IMP" for the 6363 but then left them out because I was in
+doubt whether to add them here or if they are read from the fuel gauge chip
+transparently and in firmware; I wouldn't even be able to test that on the
+MT8196 Chromebook that I'm bringing up, because the battery is managed by EC
+instead, unlike smartphones.
 
-PATCH1 adjust the dp/hdmi_audio_* callback parameters order, make it
-maintain the same parameter order as get_modes and edid_read.
-PATCH2 add connector to detect hook.
+I have to remove that from mt6359_read_imp, the addition was unintentional;
+only mt6359_auxadc_read_adc() should use it (and already did before this commit).
 
-[0]https://patchwork.freedesktop.org/patch/640712/?series=143573&rev=5
+>>   	ret = regmap_read_poll_timeout(regmap, cinfo->regs[desc->rdy_idx],
+>>   				       val, val & desc->rdy_mask,
+>>   				       IMP_POLL_DELAY_US, AUXADC_TIMEOUT_US);
+>>   
+>>   	/* Stop conversion regardless of the result */
+>> -	regmap_write(regmap, cinfo->regs[PMIC_AUXADC_IMP0], 0);
+>> +	regmap_write(regmap, cinfo->regs[desc->req_idx], 0);
+>>   	if (ret)
+>>   		return ret;
+>>   
+>> @@ -416,6 +525,7 @@ static const struct mtk_pmic_auxadc_info mt6357_chip_info = {
+>>   	.regs = mt6357_auxadc_regs,
+>>   	.imp_adc_num = MT6357_IMP_ADC_NUM,
+>>   	.read_imp = mt6358_read_imp,
+>> +	.vref_mv = 1800,
+>>   };
+>>   
+>>   static const struct mtk_pmic_auxadc_info mt6358_chip_info = {
+>> @@ -426,6 +536,7 @@ static const struct mtk_pmic_auxadc_info mt6358_chip_info = {
+>>   	.regs = mt6358_auxadc_regs,
+>>   	.imp_adc_num = MT6358_IMP_ADC_NUM,
+>>   	.read_imp = mt6358_read_imp,
+>> +	.vref_mv = 1800,
+>>   };
+>>   
+>>   static const struct mtk_pmic_auxadc_info mt6359_chip_info = {
+>> @@ -436,6 +547,17 @@ static const struct mtk_pmic_auxadc_info mt6359_chip_info = {
+>>   	.regs = mt6359_auxadc_regs,
+>>   	.sec_unlock_key = 0x6359,
+>>   	.read_imp = mt6359_read_imp,
+>> +	.vref_mv = 1800,
+> 
+> Add vref_mv and code using it in a precursor patch.  Not a problem that all
+> vref_mv will be 1800 at that point.  That way we can quickly see that it
+> has no affect on existing parts, and simplify what is present in this patch.
+> 
 
-Changes in v3:
-- Remove redundant SoB
+Right, I agree. I'll move that addition to a separate patch.
 
-Changes in v2:
-- Make dp/hdmi_audio_* callback keep the same par get_modes
+>> +};
+>> +
+>> +static const struct mtk_pmic_auxadc_info mt6363_chip_info = {
+>> +	.model_name = "MT6363",
+>> +	.channels = mt6363_auxadc_channels,
+>> +	.num_channels = ARRAY_SIZE(mt6363_auxadc_channels),
+>> +	.desc = mt6363_auxadc_ch_desc,
+>> +	.regs = mt6363_auxadc_regs,
+>> +	.flags = MTK_PMIC_AUXADC_IS_SPMI | MTK_PMIC_AUXADC_NO_RESET,
+>> +	.vref_mv = 1840,
+>>   };
+>>   
+>>   static void mt6359_auxadc_reset(struct mt6359_auxadc *adc_dev)
+>> @@ -464,27 +586,74 @@ static int mt6359_auxadc_read_adc(struct mt6359_auxadc *adc_dev,
+>>   	const struct mtk_pmic_auxadc_info *cinfo = adc_dev->chip_info;
+>>   	const struct mtk_pmic_auxadc_chan *desc = &cinfo->desc[chan->scan_index];
+>>   	struct regmap *regmap = adc_dev->regmap;
+>> -	u32 val;
+>> +	u32 reg, rdy_mask, val, lval;
+>> +	u8 ext_sel;
+>>   	int ret;
+>>   
+>> +	if (desc->ext_sel_idx >= 0) {
+>> +		ext_sel = FIELD_PREP(MT6363_EXT_PURES_MASK, desc->ext_sel_pu);
+>> +		ext_sel |= FIELD_PREP(MT6363_EXT_CHAN_MASK, desc->ext_sel_ch);
+>> +
+>> +		ret = regmap_update_bits(regmap, cinfo->regs[desc->ext_sel_idx],
+>> +					 MT6363_EXT_PURES_MASK | MT6363_EXT_CHAN_MASK,
+>> +					 ext_sel);
+>> +		if (ret)
+>> +			return ret;
+>> +	}
+>> +
+>>   	/* Request to start sampling for ADC channel */
+>>   	ret = regmap_write(regmap, cinfo->regs[desc->req_idx], desc->req_mask);
+>>   	if (ret)
+>> -		return ret;
+>> +		goto end;
+>>   
+>>   	/* Wait until all samples are averaged */
+>>   	fsleep(desc->num_samples * AUXADC_AVG_TIME_US);
+>>   
+>> -	ret = regmap_read_poll_timeout(regmap,
+>> -				       cinfo->regs[PMIC_AUXADC_ADC0] + (chan->address << 1),
+>> -				       val, val & PMIC_AUXADC_RDY_BIT,
+>> +	reg = cinfo->regs[PMIC_AUXADC_ADC0] + (chan->address << 1);
+>> +	rdy_mask = PMIC_AUXADC_RDY_BIT;
+>> +
+>> +	/*
+>> +	 * Even though for both PWRAP and SPMI cases the ADC HW signals that
+>> +	 * the data is ready by setting AUXADC_RDY_BIT, for SPMI the register
+>> +	 * read is only 8 bits long: for this case, the check has to be done
+>> +	 * on the ADC(x)_H register (high bits) and the rdy_mask needs to be
+>> +	 * shifted to the right by the same 8 bits.
+>> +	 */
+>> +	if (MTK_AUXADC_HAS_FLAG(cinfo, IS_SPMI)) {
+> 
+> This is getting close to the point where the complexity for the IS_SPMI case
+> is compled enough you'd be better off just splitting the code.  I'd try that
+> and see if it ends up neater than this.
+> 
 
-Andy Yan (2):
-  drm/bridge: Make dp/hdmi_audio_* callback keep the same paramter order
-    with get_modes
-  drm/bridge: Pass down connector to drm bridge detect hook
+That was the first thing I did... but it's not so many changes... I'd be ending
+up almost completely duplicating this driver for no reason.
 
- drivers/gpu/drm/bridge/adv7511/adv7511.h      | 16 +++----
- .../gpu/drm/bridge/adv7511/adv7511_audio.c    | 12 +++---
- drivers/gpu/drm/bridge/adv7511/adv7511_cec.c  |  4 +-
- drivers/gpu/drm/bridge/adv7511/adv7511_drv.c  |  3 +-
- drivers/gpu/drm/bridge/analogix/anx7625.c     |  2 +-
- .../drm/bridge/cadence/cdns-mhdp8546-core.c   |  3 +-
- drivers/gpu/drm/bridge/chrontel-ch7033.c      |  2 +-
- drivers/gpu/drm/bridge/display-connector.c    | 11 +++--
- drivers/gpu/drm/bridge/ite-it6263.c           |  3 +-
- drivers/gpu/drm/bridge/ite-it6505.c           |  2 +-
- drivers/gpu/drm/bridge/ite-it66121.c          |  3 +-
- drivers/gpu/drm/bridge/lontium-lt8912b.c      |  6 +--
- drivers/gpu/drm/bridge/lontium-lt9611.c       | 15 +++----
- drivers/gpu/drm/bridge/lontium-lt9611uxc.c    |  3 +-
- .../bridge/megachips-stdpxxxx-ge-b850v3-fw.c  |  3 +-
- drivers/gpu/drm/bridge/sii902x.c              |  3 +-
- drivers/gpu/drm/bridge/simple-bridge.c        |  2 +-
- drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c  | 14 +++----
- drivers/gpu/drm/bridge/synopsys/dw-hdmi.c     |  3 +-
- drivers/gpu/drm/bridge/tc358767.c             |  5 ++-
- drivers/gpu/drm/bridge/ti-sn65dsi86.c         |  3 +-
- drivers/gpu/drm/bridge/ti-tfp410.c            |  2 +-
- drivers/gpu/drm/bridge/ti-tpd12s015.c         |  8 +++-
- .../gpu/drm/display/drm_bridge_connector.c    | 20 ++++-----
- drivers/gpu/drm/drm_bridge.c                  |  5 ++-
- drivers/gpu/drm/mediatek/mtk_dp.c             |  3 +-
- drivers/gpu/drm/mediatek/mtk_hdmi.c           |  3 +-
- drivers/gpu/drm/msm/dp/dp_audio.c             |  8 ++--
- drivers/gpu/drm/msm/dp/dp_audio.h             |  8 ++--
- drivers/gpu/drm/msm/dp/dp_drm.c               |  3 +-
- drivers/gpu/drm/msm/hdmi/hdmi.h               | 10 ++---
- drivers/gpu/drm/msm/hdmi/hdmi_audio.c         |  8 ++--
- drivers/gpu/drm/msm/hdmi/hdmi_bridge.c        |  2 +-
- drivers/gpu/drm/msm/hdmi/hdmi_hpd.c           |  4 +-
- drivers/gpu/drm/rockchip/rk3066_hdmi.c        |  2 +-
- drivers/gpu/drm/xlnx/zynqmp_dp.c              |  3 +-
- include/drm/drm_bridge.h                      | 42 ++++++++++---------
- 37 files changed, 139 insertions(+), 110 deletions(-)
+I'm mostly sure that there won't be any more spmi-specific differences in the
+AuxADC, but if one day turns out I'm wrong, I guess we can always split the
+driver in two and move the SPMI platforms away... but again, I'm mostly sure
+that won't happen.
 
--- 
-2.43.0
+>> +		rdy_mask >>= 8;
+>> +		reg += 1;
+>> +	}
+>> +
+>> +	ret = regmap_read_poll_timeout(regmap, reg, val, val & rdy_mask,
+>>   				       AUXADC_POLL_DELAY_US, AUXADC_TIMEOUT_US);
+>> -	if (ret)
+>> -		return ret;
+>> +	if (ret) {
+>> +		dev_dbg(adc_dev->dev, "ADC read timeout for chan %lu\n", chan->address);
+>> +		goto end;
+>> +	}
+>> +
+>> +	if (MTK_AUXADC_HAS_FLAG(cinfo, IS_SPMI)) {
+>> +		/* If the previous read succeeded, this can't fail */
+> 
+> As per discussion with Andy, I don't think we can ever assume that.
+> 
 
-base-commit: 56e5375b23f342dfa3179395aacc1b47395fddf7
-branch: drm-misc-next
+I'll add all the checks around :-)
+
+>> +		regmap_read(regmap, reg - 1, &lval);
+>> +		val = (val << 8) | lval;
+>> +	}
+>>   
+>> -	/* Stop sampling */
+> 
+> If you have code that ends up with an internal goto for a specific
+> block, that often suggests you should be factoring some code out to simplify
+> the flow.
+> 
+> I would take everything between the activiate ADC GPIO and deactivate out
+> as another function.  That will still need a goto to get to the stop
+> sampling but then we won't have the dance below where we do some
+> stuff from the main code flow on error and then exit (with more after
+> that not run).
+> 
+
+Actually, I have removed the goto as well - I moved everything but the write
+to stop the sampling to a new function; I'm calling it, then stopping the
+sampling unconditionally, as was already done before.
+
+To let you understand, this is the description:
+/**
+  * mt6359_auxadc_sample_value() - Start ADC channel sampling and read value
+  * @adc_dev: Main driver structure
+  * @out:     Preallocated variable to store the value read from HW
+  *
+  * This function starts the sampling for an ADC channel, waits until all
+  * of the samples are averaged and then reads the value from the HW.
+  *
+  * Note that the caller must stop the ADC sampling on its own, as this
+  * function *never* stops it.
+  *
+  * Return:
+  * Negative number for error;
+  * Upon success returns zero and writes the read value to *out.
+  */
+
+...you can imagine the rest, or anyway I'm sending a v2 shortly :-)
+
+>> +end:
+>> +	/* Stop sampling unconditionally... */
+>>   	regmap_write(regmap, cinfo->regs[desc->req_idx], 0);
+>>   
+>> +	/* ...and deactivate the ADC GPIO if previously done */
+>> +	if (desc->ext_sel_idx >= 0) {
+>> +		ext_sel = FIELD_PREP(MT6363_EXT_PURES_MASK, MT6363_PULLUP_RES_OPEN);
+>> +
+>> +		regmap_update_bits(regmap, cinfo->regs[desc->ext_sel_idx],
+>> +				   MT6363_EXT_PURES_MASK, ext_sel);
+>> +	}
+>> +
+>> +	/* Check if we reached this point because of an error or regular flow */
+>> +	if (ret)
+>> +		return ret;
+>> +
+>> +	/* Everything went fine, give back the ADC reading */
+>>   	*out = val & GENMASK(chan->scan_type.realbits - 1, 0);
+>>   	return 0;
+>>   }
+>> @@ -505,7 +674,7 @@ static int mt6359_auxadc_read_raw(struct iio_dev *indio_dev,
+>>   	int ret;
+>>   
+>>   	if (mask == IIO_CHAN_INFO_SCALE) {
+>> -		*val = desc->r_ratio.numerator * AUXADC_VOLT_FULL;
+>> +		*val = desc->r_ratio.numerator * (u32)cinfo->vref_mv;
+> 
+> As above.  If vref_mv was already a (u32) no need to cast here.
+
+Changed!
+
+Cheers,
+Angelo
+
+
 
 
