@@ -4,67 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10154C83F03
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 22:14:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 591D1C83030
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 22:19:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=eDO8I3naK//cosZlYZcBUUh8nM6O2c8g3w+ut8LSeyM=; b=k8WRHMCZE9ICOidTesOJVZ8sRm
-	GJt2m+7c2gKXq5ydfbf6UyI/NwWVSoPUfgjYYbnwMOjlOsnjz51TkAheQcVy0lqOqtryearKix4wT
-	FYo6Ol6m/qwbriEVRaoAoGap5gFZh7yRoWx1LkaNtyZROXgV8dJekLexnqhU5aZhyxAr50g5iLTEP
-	sFvUvxlKO8o+Y/JgPdWI81Q9mDB+T9HntjOxtrbaGPfwNg/O8CZqIXbkr4y5xSZx8jP8jkmMrpKi2
-	gAk2AaRqeEMGuRpPjvneSNhkD3Ym1D9GHqzQPWBlwz66U5ykVeixO1wzxFucopmZyQFu5i+YdfjxC
-	gQ8k7myg==;
+	bh=wTT5B/xkvp1SW2xZRiZIiqcFcYhItnKtVlUHBwlFw7Q=; b=l42IOcaJJNVsul0ghi4ZJJguf/
+	fJOcBZHn2JHbbnr/svtQFcoRza1jx/NrPJR6ayVyL64YitU6CudW0LZOWUbvbm9BCwR7nSmmIZVQG
+	+0grMUHvgt3unomwuucFK/Ni+1V68colXrrEejEq2slZTZIaGXy7iyyj6vwd6xTWq6yprHcJ5boOz
+	btIpq+3XzdjWoDfBww/oAxV+zRvMmz3UIFlOHC70dVngwPkWmy+wF945tCvZ0/UsC73sQMKxwoU9X
+	kyMkDj/HuRRI0eNrZNRiFf7WCrRdxGoxKdScccX7teLOuIm8DnwRs/efbDIbscA7MwgLKo4DSAnzK
+	/06FuVrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXSCE-0000000ChTp-0UD0;
-	Thu, 03 Jul 2025 22:14:22 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uXSGr-0000000Ci3s-3h3G;
+	Thu, 03 Jul 2025 22:19:09 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXOm3-0000000CFUe-2UfS;
-	Thu, 03 Jul 2025 18:35:08 +0000
+	id 1uXOmT-0000000CFZw-3pwH;
+	Thu, 03 Jul 2025 18:35:35 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 11FBD5C676F;
-	Thu,  3 Jul 2025 18:35:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 76A11C4CEEB;
-	Thu,  3 Jul 2025 18:35:06 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 3439CA539DF;
+	Thu,  3 Jul 2025 18:35:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 85A71C4CEE3;
+	Thu,  3 Jul 2025 18:35:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751567706;
-	bh=oQJxz7AsS+vnaXVxBJfrbdUGXV9WZlv60FGu/AgCo/8=;
+	s=k20201202; t=1751567732;
+	bh=MBHO2Lp90PjrfqVCqAlyfS1xa5ydxsxVFITQfZTnBrQ=;
 	h=From:To:Cc:Subject:Date:From;
-	b=CD0XQ8SIrPwDatdyuxIeN97jUm5gWGeYJoxaMC/IQuTCKLCbTRhuwNbO3OUQNqYtJ
-	 OjkXulFwfGmXq5/zzJNRxYDLzvFbxkFxEpi+jQuRWaVjCVNrzN9rkgGqemAfVp9tT5
-	 yk+Bx8jWkS+efI7OxHif+7pGeUXJw5MTHaQy0dcP/+GFiqcnRrosO79UcvGcuZwVLU
-	 Vhig93WWef1H5iPAWNxS0azpS+VLTjMZ3rmQRviiXPdwkA5xbCdnMufvjHzuj1YIjx
-	 WukkFz2Zpt4bHXdsHIv9QyNrFaIBx+zVNsoSZxpNKH/xIWmk4iQsdpq6fZsIvC7WvT
-	 I0VyNgJ6NBHPQ==
+	b=LzzOVJm5R/ZxgePynHa0bVwans+jGaLjduqqB8omRZUFK/UsZxI7mB7YFt1OhLpIJ
+	 2drrZ+QEKyTda8SfmOaBBZ4ME0du8/rXZeEXITq81ZtvtZYreW74elidIZU5+inc02
+	 8HRqIu302nb+VKLdctcTyQ/rCQ76hsr5XDH1y1uGIMKk60wG6gDWu+WBvRFPFCoYZR
+	 8u+waa0geqvAult9hoCG2FMohPB3dGBBmfzBW0uZgdBHKkPU92BSG2pnI8tDKIksNk
+	 EM5NvJ4BXxvIG0Xz1JgzTxUqQggpY9kJlhZagkHheB9ybX8vUHGkP5d3ECW1+zroLO
+	 MxZSC4nI5Qk6g==
 From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Jeff Johnson <jjohnson@kernel.org>,
-	Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
+To: Cheng-Yi Chiang <cychiang@chromium.org>,
+	Tzung-Bi Shih <tzungbi@kernel.org>,
+	Guenter Roeck <groeck@chromium.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Benson Leung <bleung@chromium.org>,
+	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
+	Bard Liao <yung-chuan.liao@linux.intel.com>,
+	Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
+	Daniel Baluta <daniel.baluta@nxp.com>,
+	Kai Vehmanen <kai.vehmanen@linux.intel.com>,
+	Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-wireless@vger.kernel.org,
-	ath10k@lists.infradead.org,
+Cc: chrome-platform@lists.linux.dev,
+	linux-sound@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	ath11k@lists.infradead.org,
+	sound-open-firmware@alsa-project.org,
+	imx@lists.linux.dev,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH] wireless: Use of_reserved_mem_region_to_resource() for "memory-region"
-Date: Thu,  3 Jul 2025 13:35:01 -0500
-Message-ID: <20250703183502.2074538-1-robh@kernel.org>
+Subject: [PATCH] ASoC: Use of_reserved_mem_region_to_resource() for "memory-region"
+Date: Thu,  3 Jul 2025 13:35:21 -0500
+Message-ID: <20250703183523.2075276-1-robh@kernel.org>
 X-Mailer: git-send-email 2.47.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250703_113507_718445_D0139C76 
-X-CRM114-Status: GOOD (  16.05  )
+X-CRM114-CacheID: sfid-20250703_113534_085008_E4342ADF 
+X-CRM114-Status: GOOD (  14.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,192 +95,202 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Use the newly added of_reserved_mem_region_to_resource() function to
 handle "memory-region" properties.
 
-The error handling is a bit different for ath10k. "memory-region" is
-optional, so failed lookup is not an error. But then an error in
-of_address_to_resource() is treated as an error. However, that
-distinction is not really important. Either the region is available
-and usable or it is not. So now, it is just
-of_reserved_mem_region_to_resource() which is checked for an error.
-
 Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
 ---
- drivers/net/wireless/ath/ath10k/snoc.c        | 14 +++----------
- drivers/net/wireless/ath/ath11k/ahb.c         | 17 +++------------
- drivers/net/wireless/ath/ath11k/qmi.c         | 17 ++++-----------
- .../net/wireless/mediatek/mt76/mt7915/soc.c   | 21 +++++++------------
- 4 files changed, 18 insertions(+), 51 deletions(-)
+ sound/soc/codecs/cros_ec_codec.c       | 30 ++++++++++-----------
+ sound/soc/sof/imx/imx-common.c         | 36 +++++---------------------
+ sound/soc/sof/mediatek/mt8186/mt8186.c | 11 +-------
+ sound/soc/sof/mediatek/mt8195/mt8195.c | 11 +-------
+ 4 files changed, 22 insertions(+), 66 deletions(-)
 
-diff --git a/drivers/net/wireless/ath/ath10k/snoc.c b/drivers/net/wireless/ath/ath10k/snoc.c
-index b2bf9d72b92f..5c61a3abd33b 100644
---- a/drivers/net/wireless/ath/ath10k/snoc.c
-+++ b/drivers/net/wireless/ath/ath10k/snoc.c
-@@ -13,7 +13,7 @@
- #include <linux/property.h>
- #include <linux/regulator/consumer.h>
- #include <linux/remoteproc/qcom_rproc.h>
--#include <linux/of_address.h>
+diff --git a/sound/soc/codecs/cros_ec_codec.c b/sound/soc/codecs/cros_ec_codec.c
+index 571222ec520c..937c8cec682a 100644
+--- a/sound/soc/codecs/cros_ec_codec.c
++++ b/sound/soc/codecs/cros_ec_codec.c
+@@ -18,6 +18,7 @@
+ #include <linux/module.h>
+ #include <linux/of.h>
+ #include <linux/of_address.h>
 +#include <linux/of_reserved_mem.h>
- #include <linux/iommu.h>
- 
- #include "ce.h"
-@@ -1557,19 +1557,11 @@ static void ath10k_modem_deinit(struct ath10k *ar)
- static int ath10k_setup_msa_resources(struct ath10k *ar, u32 msa_size)
- {
- 	struct device *dev = ar->dev;
--	struct device_node *node;
- 	struct resource r;
+ #include <linux/platform_data/cros_ec_commands.h>
+ #include <linux/platform_data/cros_ec_proto.h>
+ #include <linux/platform_device.h>
+@@ -961,7 +962,6 @@ static int cros_ec_codec_platform_probe(struct platform_device *pdev)
+ 	struct ec_response_ec_codec_get_capabilities r;
  	int ret;
+ #ifdef CONFIG_OF
+-	struct device_node *node;
+ 	struct resource res;
+ 	u64 ec_shm_size;
+ 	const __be32 *regaddr_p;
+@@ -981,22 +981,18 @@ static int cros_ec_codec_platform_probe(struct platform_device *pdev)
+ 			priv->ec_shm_addr, priv->ec_shm_len);
+ 	}
  
 -	node = of_parse_phandle(dev->of_node, "memory-region", 0);
 -	if (node) {
--		ret = of_address_to_resource(node, 0, &r);
--		of_node_put(node);
--		if (ret) {
--			dev_err(dev, "failed to resolve msa fixed region\n");
--			return ret;
+-		ret = of_address_to_resource(node, 0, &res);
+-		if (!ret) {
+-			priv->ap_shm_phys_addr = res.start;
+-			priv->ap_shm_len = resource_size(&res);
+-			priv->ap_shm_addr =
+-				(uint64_t)(uintptr_t)devm_ioremap_wc(
+-					dev, priv->ap_shm_phys_addr,
+-					priv->ap_shm_len);
+-			priv->ap_shm_last_alloc = priv->ap_shm_phys_addr;
+-
+-			dev_dbg(dev, "ap_shm_phys_addr=%#llx len=%#x\n",
+-				priv->ap_shm_phys_addr, priv->ap_shm_len);
 -		}
--
-+	ret = of_reserved_mem_region_to_resource(dev->of_node, 0, &r);
+-		of_node_put(node);
++	ret = of_reserved_mem_region_to_resource(dev->of_node, 0, &res);
 +	if (!ret) {
- 		ar->msa.paddr = r.start;
- 		ar->msa.mem_size = resource_size(&r);
- 		ar->msa.vaddr = devm_memremap(dev, ar->msa.paddr,
-diff --git a/drivers/net/wireless/ath/ath11k/ahb.c b/drivers/net/wireless/ath/ath11k/ahb.c
-index fde1ce43c499..2e8a77ceb8bb 100644
---- a/drivers/net/wireless/ath/ath11k/ahb.c
-+++ b/drivers/net/wireless/ath/ath11k/ahb.c
-@@ -9,8 +9,8 @@
- #include <linux/property.h>
- #include <linux/of_device.h>
- #include <linux/of.h>
-+#include <linux/of_reserved_mem.h>
- #include <linux/dma-mapping.h>
--#include <linux/of_address.h>
- #include <linux/iommu.h>
- #include "ahb.h"
- #include "debug.h"
-@@ -919,16 +919,10 @@ static int ath11k_ahb_setup_msa_resources(struct ath11k_base *ab)
++		priv->ap_shm_phys_addr = res.start;
++		priv->ap_shm_len = resource_size(&res);
++		priv->ap_shm_addr =
++			(uint64_t)(uintptr_t)devm_ioremap_wc(
++				dev, priv->ap_shm_phys_addr,
++				priv->ap_shm_len);
++		priv->ap_shm_last_alloc = priv->ap_shm_phys_addr;
++
++		dev_dbg(dev, "ap_shm_phys_addr=%#llx len=%#x\n",
++			priv->ap_shm_phys_addr, priv->ap_shm_len);
+ 	}
+ #endif
+ 
+diff --git a/sound/soc/sof/imx/imx-common.c b/sound/soc/sof/imx/imx-common.c
+index 62bf707aa909..f00b381cec3b 100644
+--- a/sound/soc/sof/imx/imx-common.c
++++ b/sound/soc/sof/imx/imx-common.c
+@@ -282,11 +282,8 @@ static int imx_region_name_to_blk_type(const char *region_name)
+ static int imx_parse_ioremap_memory(struct snd_sof_dev *sdev)
  {
- 	struct ath11k_ahb *ab_ahb = ath11k_ahb_priv(ab);
- 	struct device *dev = ab->dev;
--	struct device_node *node;
- 	struct resource r;
- 	int ret;
+ 	const struct imx_chip_info *chip_info;
+-	struct reserved_mem *reserved;
+ 	struct platform_device *pdev;
+-	struct device_node *res_np;
+-	phys_addr_t base, size;
+-	struct resource *res;
++	struct resource *res, _res;
+ 	int i, blk_type, ret;
  
--	node = of_parse_phandle(dev->of_node, "memory-region", 0);
--	if (!node)
--		return -ENOENT;
--
--	ret = of_address_to_resource(node, 0, &r);
--	of_node_put(node);
-+	ret = of_reserved_mem_region_to_resource(dev->of_node, 0, &r);
- 	if (ret) {
- 		dev_err(dev, "failed to resolve msa fixed region\n");
- 		return ret;
-@@ -937,12 +931,7 @@ static int ath11k_ahb_setup_msa_resources(struct ath11k_base *ab)
- 	ab_ahb->fw.msa_paddr = r.start;
- 	ab_ahb->fw.msa_size = resource_size(&r);
+ 	pdev = to_platform_device(sdev->dev);
+@@ -307,37 +304,18 @@ static int imx_parse_ioremap_memory(struct snd_sof_dev *sdev)
+ 						     "failed to fetch %s resource\n",
+ 						     chip_info->memory[i].name);
  
--	node = of_parse_phandle(dev->of_node, "memory-region", 1);
--	if (!node)
--		return -ENOENT;
+-			base = res->start;
+-			size = resource_size(res);
+ 		} else {
+-			ret = of_property_match_string(pdev->dev.of_node,
+-						       "memory-region-names",
+-						       chip_info->memory[i].name);
++			ret = of_reserved_mem_region_to_resource_byname(pdev->dev.of_node,
++									chip_info->memory[i].name,
++									&_res);
+ 			if (ret < 0)
+ 				return dev_err_probe(sdev->dev, ret,
+-						     "no valid index for %s\n",
++						     "no valid entry for %s\n",
+ 						     chip_info->memory[i].name);
 -
--	ret = of_address_to_resource(node, 0, &r);
--	of_node_put(node);
-+	ret = of_reserved_mem_region_to_resource(dev->of_node, 1, &r);
- 	if (ret) {
- 		dev_err(dev, "failed to resolve ce fixed region\n");
- 		return ret;
-diff --git a/drivers/net/wireless/ath/ath11k/qmi.c b/drivers/net/wireless/ath/ath11k/qmi.c
-index 2782f4723e41..fb53efbc5b68 100644
---- a/drivers/net/wireless/ath/ath11k/qmi.c
-+++ b/drivers/net/wireless/ath/ath11k/qmi.c
-@@ -11,7 +11,7 @@
- #include "debug.h"
- #include "hif.h"
- #include <linux/of.h>
--#include <linux/of_address.h>
-+#include <linux/of_reserved_mem.h>
- #include <linux/ioport.h>
+-			res_np = of_parse_phandle(pdev->dev.of_node,
+-						  "memory-region",
+-						  ret);
+-			if (!res_np)
+-				return dev_err_probe(sdev->dev, -ENODEV,
+-						     "failed to parse phandle %s\n",
+-						     chip_info->memory[i].name);
+-
+-			reserved = of_reserved_mem_lookup(res_np);
+-			of_node_put(res_np);
+-			if (!reserved)
+-				return dev_err_probe(sdev->dev, -ENODEV,
+-						     "failed to get %s reserved\n",
+-						     chip_info->memory[i].name);
+-
+-			base = reserved->base;
+-			size = reserved->size;
++			res = &_res;
+ 		}
+ 
+-		sdev->bar[blk_type] = devm_ioremap(sdev->dev, base, size);
++		sdev->bar[blk_type] = devm_ioremap_resource(sdev->dev, res);
+ 		if (!sdev->bar[blk_type])
+ 			return dev_err_probe(sdev->dev,
+ 					     -ENOMEM,
+diff --git a/sound/soc/sof/mediatek/mt8186/mt8186.c b/sound/soc/sof/mediatek/mt8186/mt8186.c
+index 7ff080452cbe..c1bea967737d 100644
+--- a/sound/soc/sof/mediatek/mt8186/mt8186.c
++++ b/sound/soc/sof/mediatek/mt8186/mt8186.c
+@@ -12,7 +12,6 @@
+ #include <linux/delay.h>
  #include <linux/firmware.h>
+ #include <linux/io.h>
+-#include <linux/of_address.h>
  #include <linux/of_irq.h>
-@@ -2038,23 +2038,14 @@ static int ath11k_qmi_alloc_target_mem_chunk(struct ath11k_base *ab)
- static int ath11k_qmi_assign_target_mem_chunk(struct ath11k_base *ab)
+ #include <linux/of_platform.h>
+ #include <linux/of_reserved_mem.h>
+@@ -46,7 +45,6 @@ static int platform_parse_resource(struct platform_device *pdev, void *data)
  {
- 	struct device *dev = ab->dev;
--	struct device_node *hremote_node = NULL;
--	struct resource res;
-+	struct resource res = {};
- 	u32 host_ddr_sz;
- 	int i, idx, ret;
- 
- 	for (i = 0, idx = 0; i < ab->qmi.mem_seg_count; i++) {
- 		switch (ab->qmi.target_mem[i].type) {
- 		case HOST_DDR_REGION_TYPE:
--			hremote_node = of_parse_phandle(dev->of_node, "memory-region", 0);
--			if (!hremote_node) {
--				ath11k_dbg(ab, ATH11K_DBG_QMI,
--					   "fail to get hremote_node\n");
--				return -ENODEV;
--			}
--
--			ret = of_address_to_resource(hremote_node, 0, &res);
--			of_node_put(hremote_node);
-+			ret = of_reserved_mem_region_to_resource(dev->of_node, 0, &res);
- 			if (ret) {
- 				ath11k_dbg(ab, ATH11K_DBG_QMI,
- 					   "fail to get reg from hremote\n");
-@@ -2093,7 +2084,7 @@ static int ath11k_qmi_assign_target_mem_chunk(struct ath11k_base *ab)
- 			}
- 
- 			if (ath11k_core_coldboot_cal_support(ab)) {
--				if (hremote_node) {
-+				if (resource_size(&res)) {
- 					ab->qmi.target_mem[idx].paddr =
- 							res.start + host_ddr_sz;
- 					ab->qmi.target_mem[idx].iaddr =
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/soc.c b/drivers/net/wireless/mediatek/mt76/mt7915/soc.c
-index c823a7554a3a..5f19b506cc50 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/soc.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/soc.c
-@@ -284,20 +284,15 @@ static int mt798x_wmac_coninfra_check(struct mt7915_dev *dev)
- static int mt798x_wmac_coninfra_setup(struct mt7915_dev *dev)
- {
- 	struct device *pdev = dev->mt76.dev;
--	struct reserved_mem *rmem;
--	struct device_node *np;
-+	struct resource res;
- 	u32 val;
-+	int ret;
- 
--	np = of_parse_phandle(pdev->of_node, "memory-region", 0);
--	if (!np)
--		return -EINVAL;
--
--	rmem = of_reserved_mem_lookup(np);
--	of_node_put(np);
--	if (!rmem)
--		return -EINVAL;
-+	ret = of_reserved_mem_region_to_resource(pdev->of_node, 0, &res);
-+	if (ret)
-+		return ret;
- 
--	val = (rmem->base >> 16) & MT_TOP_MCU_EMI_BASE_MASK;
-+	val = (res.start >> 16) & MT_TOP_MCU_EMI_BASE_MASK;
- 
- 	if (is_mt7986(&dev->mt76)) {
- 		/* Set conninfra subsys PLL check */
-@@ -318,8 +313,8 @@ static int mt798x_wmac_coninfra_setup(struct mt7915_dev *dev)
- 			       MT_TOP_EFUSE_BASE_MASK, 0x11f20000 >> 16);
+ 	struct resource *mmio;
+ 	struct resource res;
+-	struct device_node *mem_region;
+ 	struct device *dev = &pdev->dev;
+ 	struct mtk_adsp_chip_info *adsp = data;
+ 	int ret;
+@@ -57,14 +55,7 @@ static int platform_parse_resource(struct platform_device *pdev, void *data)
+ 		return ret;
  	}
  
--	mt76_wr(dev, MT_INFRA_BUS_EMI_START, rmem->base);
--	mt76_wr(dev, MT_INFRA_BUS_EMI_END, rmem->size);
-+	mt76_wr(dev, MT_INFRA_BUS_EMI_START, res.start);
-+	mt76_wr(dev, MT_INFRA_BUS_EMI_END, resource_size(&res));
+-	mem_region = of_parse_phandle(dev->of_node, "memory-region", 1);
+-	if (!mem_region) {
+-		dev_err(dev, "no memory-region sysmem phandle\n");
+-		return -ENODEV;
+-	}
+-
+-	ret = of_address_to_resource(mem_region, 0, &res);
+-	of_node_put(mem_region);
++	ret = of_reserved_mem_region_to_resource(dev->of_node, 1, &res);
+ 	if (ret) {
+ 		dev_err(dev, "of_address_to_resource sysmem failed\n");
+ 		return ret;
+diff --git a/sound/soc/sof/mediatek/mt8195/mt8195.c b/sound/soc/sof/mediatek/mt8195/mt8195.c
+index 3b3582d74510..4d6e9300a9c0 100644
+--- a/sound/soc/sof/mediatek/mt8195/mt8195.c
++++ b/sound/soc/sof/mediatek/mt8195/mt8195.c
+@@ -12,7 +12,6 @@
+ #include <linux/delay.h>
+ #include <linux/firmware.h>
+ #include <linux/io.h>
+-#include <linux/of_address.h>
+ #include <linux/of_irq.h>
+ #include <linux/of_platform.h>
+ #include <linux/of_reserved_mem.h>
+@@ -46,7 +45,6 @@ static int platform_parse_resource(struct platform_device *pdev, void *data)
+ {
+ 	struct resource *mmio;
+ 	struct resource res;
+-	struct device_node *mem_region;
+ 	struct device *dev = &pdev->dev;
+ 	struct mtk_adsp_chip_info *adsp = data;
+ 	int ret;
+@@ -57,14 +55,7 @@ static int platform_parse_resource(struct platform_device *pdev, void *data)
+ 		return ret;
+ 	}
  
- 	mt76_rr(dev, MT_CONN_INFRA_EFUSE);
- 
+-	mem_region = of_parse_phandle(dev->of_node, "memory-region", 1);
+-	if (!mem_region) {
+-		dev_err(dev, "no memory-region sysmem phandle\n");
+-		return -ENODEV;
+-	}
+-
+-	ret = of_address_to_resource(mem_region, 0, &res);
+-	of_node_put(mem_region);
++	ret = of_reserved_mem_region_to_resource(dev->of_node, 1, &res);
+ 	if (ret) {
+ 		dev_err(dev, "of_address_to_resource sysmem failed\n");
+ 		return ret;
 -- 
 2.47.2
 
