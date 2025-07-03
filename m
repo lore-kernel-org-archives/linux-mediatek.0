@@ -4,81 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A48D1C77B7C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 17:11:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9A9EC77B7C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 17:14:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5eagcih7gQ/E0aNfelN22ndMMCDGMvVxcLtEyEfE050=; b=1tt29Qeb2loMijG2Mj9GnQ1T8P
-	lCA3b/ieJ8aK0b1YLY4g+0bw4gbLLWQB6Wrj9yqzOIDPwchqo8DMuNtCSLqa1Ahw4PRQEiGj5kLBH
-	UF0c609YIE9zwX1eadDQn41bsQ1qJxTo3FnsaK4HgSQOvrEAtUFS7KPv0VYFgAA4raLdtJxcunQIt
-	fec3TINHh8ymUBNy5EzugBLrOJdbiQ9aoSI0Lb5piZizqrprFcrlfeL6z3ZM/Qm2FHFaQBY+EZhbc
-	VG3eh4sH9VG0ZXNzpvBw+1PquKAaMuehbqLWPv8pOnHiT+lCDQYci53QeMkUmqTihmmHQARrE0kEq
-	ZTc+vt7w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:Cc:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EFFbXDp6C52Qp3ufM99aJcHE6kgv0crG6musmf5vcj0=; b=0rBGsWkqyPyBbJzGp7MZD/XehA
+	ABqy16V8hQAlOf2C2XMsYWniyy9PRe630lFy6P/+xam+eSY6ZvYXkJAS7Dr/VNsVeghqOMuG8GPpH
+	Lvri8RUej7VEAg2HO2n07aH4Q/28RALyAt40uTYhdLcyK1es33wvBmg4WqA1j4IFm1E5O/Vhj+J9/
+	I+l0gSAylafo5NGNxnWkI92ps0hJCjAhFX9KQOQWRAOch0dzfvtfBdJ0VXtjjhgMXTLrroGD3GaNu
+	Jbiy97YpxM2N/Hb7B/BNaiSkgBmIWJgG0M4XNCnvutgkQF4GElFQvQZV5GmJHf3yEfL6v7RJbvNHq
+	5IrvxwcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXNTT-0000000C5ZG-3mza;
-	Thu, 03 Jul 2025 17:11:51 +0000
-Received: from mgamail.intel.com ([192.198.163.7])
+	id 1uXNVo-0000000C6D6-2zoj;
+	Thu, 03 Jul 2025 17:14:16 +0000
+Received: from mx3.molgen.mpg.de ([141.14.17.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXKxG-0000000Bfy0-0Hgg;
-	Thu, 03 Jul 2025 14:30:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1751553026; x=1783089026;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=+7Tp7mxCk+lHbCkMLaMMOj3pQFJ6m6rrmptwiX2ag3U=;
-  b=jKDvTvg9OTeZk6aN26AbrWKtf6vDd1WzkOniu/z4LJQemcO9B5z2vbXL
-   RcND9fucq/ws5K04dSjyr0WIU6v1ZKQYFOO6+Py2y6XewST7otljk6vJ1
-   r5+kZlZOBRDZQ50G9JcJ2dF16o5XFTlXVfGrWE5ir/NYHiFYHyBiveIvt
-   26lG1tsrN+Cx03BoKFBWMf+R5p5XON/T/39NB3ckAGrHNH+1vRodEbllt
-   LfdjbFz9c2ScK+leXrj1/rIyZVYyGdX7aEUQMyQCkCwVjhEvwilhcbFQC
-   WA/hdYzgRNZurgYH18PBp+jTEb85Kyk9il0CdyurG9KdZDIWJAGb73ZFS
-   w==;
-X-CSE-ConnectionGUID: IbvaxHcJS86u8BMLm+lfmg==
-X-CSE-MsgGUID: 7YR6OxaLR8iO4N8Ki8P6yQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11483"; a="79319353"
-X-IronPort-AV: E=Sophos;i="6.16,284,1744095600"; 
-   d="scan'208";a="79319353"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
-  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Jul 2025 07:30:26 -0700
-X-CSE-ConnectionGUID: eA+mFOxLQj+7OWl0Mm1sDw==
-X-CSE-MsgGUID: pF6OSx0VSE+KewFcfBhPTA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,284,1744095600"; 
-   d="scan'208";a="153814024"
-Received: from smile.fi.intel.com ([10.237.72.52])
-  by orviesa006.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Jul 2025 07:30:22 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.98.2)
-	(envelope-from <andriy.shevchenko@intel.com>)
-	id 1uXKx8-0000000CEAh-3598;
-	Thu, 03 Jul 2025 17:30:18 +0300
-Date: Thu, 3 Jul 2025 17:30:18 +0300
-From: Andy Shevchenko <andriy.shevchenko@intel.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: jic23@kernel.org, dlechner@baylibre.com, nuno.sa@analog.com,
-	andy@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, matthias.bgg@gmail.com,
-	linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v2 0/6] iio: Add support for MT6363/6373 Auxiliary ADC
-Message-ID: <aGaT-rSmUoukjvR7@smile.fi.intel.com>
-References: <20250703141146.171431-1-angelogioacchino.delregno@collabora.com>
+	id 1uXL3T-0000000Bh0b-2HVD;
+	Thu, 03 Jul 2025 14:36:53 +0000
+Received: from [141.14.220.36] (g36.guest.molgen.mpg.de [141.14.220.36])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: pmenzel)
+	by mx.molgen.mpg.de (Postfix) with ESMTPSA id 9F6E3601D7115;
+	Thu, 03 Jul 2025 16:35:33 +0200 (CEST)
+Message-ID: <6be1c1c6-8d8a-49e3-bb14-dc8fcbfc2c50@molgen.mpg.de>
+Date: Thu, 3 Jul 2025 16:35:32 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250703141146.171431-1-angelogioacchino.delregno@collabora.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/7] Bluetooth: btrtl: Fix typo
+To: Bastien Nocera <hadess@hadess.net>
+References: <20250703142542.985248-1-hadess@hadess.net>
+ <20250703142542.985248-4-hadess@hadess.net>
+Content-Language: en-US
+Cc: trivial@kernel.org, Marcel Holtmann <marcel@holtmann.org>,
+ Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>,
+ Alyssa Rosenzweig <alyssa@rosenzweig.io>, Neal Gompa <neal@gompa.dev>,
+ Johan Hedberg <johan.hedberg@gmail.com>, Ingo Molnar <mingo@kernel.org>,
+ Thomas Gleixner <tglx@linutronix.de>, Al Viro <viro@zeniv.linux.org.uk>,
+ Kees Cook <kees@kernel.org>, Erick Archer <erick.archer@outlook.com>,
+ Chris Lu <chris.lu@mediatek.com>, linux-bluetooth@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, asahi@lists.linux.dev
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20250703142542.985248-4-hadess@hadess.net>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250703_073026_131606_8E4301A5 
-X-CRM114-Status: UNSURE (   9.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250703_073651_723686_7AB865FE 
+X-CRM114-Status: GOOD (  16.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,21 +76,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 03, 2025 at 04:11:40PM +0200, AngeloGioacchino Del Regno wrote:
-> Changes in v2:
->  - Added error checks to all regmap r/w operations
->  - Moved adc_vref addition to different commit
->  - Various other fixes
+Dear Bastien,
+
+
+Am 03.07.25 um 16:24 schrieb Bastien Nocera:
+> Found by codespell.
 > 
-> This series adds support for the Auxiliary ADC IP found on the new
-> MediaTek MT6363 and MT6373 PMICs, found on board designs featuring
-> the MT8196 Chromebook SoC or the MT6991 Dimensity 9400 Smartphone SoC.
+> Signed-off-by: Bastien Nocera <hadess@hadess.net>
+> ---
+>   drivers/bluetooth/btrtl.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/bluetooth/btrtl.c b/drivers/bluetooth/btrtl.c
+> index 7838c89e529e..3d137944c458 100644
+> --- a/drivers/bluetooth/btrtl.c
+> +++ b/drivers/bluetooth/btrtl.c
+> @@ -693,7 +693,7 @@ static int rtlbt_parse_firmware(struct hci_dev *hdev,
+>   
+>   	/* Loop from the end of the firmware parsing instructions, until
+>   	 * we find an instruction that identifies the "project ID" for the
+> -	 * hardware supported by this firwmare file.
+> +	 * hardware supported by this firmwmare file.
 
-Overall LGTM, but one nit-pick in one patch.
+Without the second m.
 
--- 
-With Best Regards,
-Andy Shevchenko
+>   	 * Once we have that, we double-check that project_id is suitable
+>   	 * for the hardware we are working with.
+>   	 */
 
 
+Kind regards,
+
+Paul
+
+
+PS: Should you resend, it’d be great if you wrote in the summary/title 
+if it’s in a comment or in a log string.
 
