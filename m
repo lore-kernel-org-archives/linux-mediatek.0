@@ -4,72 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DFA2C83030
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 12:34:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 955E9C77B7C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jul 2025 12:41:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Np4gP+kVZ9dH3S8OkU+k3ieJFZn7l6DRLrAoselSPRg=; b=iU1svS9Y/Q2JgM
-	ZSlv0uQ0SFg1vW1+zoDR1vWKPe5nQfpQTUwo4lw1leA0IkJ1Icm/V4/lL1K3sQBEYk49bnBJlhXmK
-	OF7UKE95CPuqu0Q38S31XG64WimyOp4ammWmu/yqL1Hv4e0PoRHIauCAzEA/l5mXL+He2HKSBLIS4
-	bZ1InZrGzeR+7t6xbeNaQqIM6MTlAe7nspl3MS7Q8HDedt5ISyZ2b3l83qrS5v4emkmyK0HORKDA5
-	TEemhIy7DS2Frjgkn9qKk9XcPFrb3ivKlLPIsNW0/ECu39Xkuvue7G0pOUXjK1ULOfdionBppb/nd
-	Urv9p89iKpLD96SOixBA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dI69ri/EaV+tRdPKe/oBg6h4lvOGu3Vkj944fBiFCGc=; b=24oc52KWfpo0eL0MX85irYujno
+	U/daL3M5d2rqYEFOi04zzsTfoTg7YSUNDJhGwlIvpQ4o/LK/ZNCDIdBLM/y4vtgXlU62cX5LBUCUc
+	/86Z/uusHzjU1IUuebwloDG6qm6np6y2o1XHTpRNUhkhw7MZ4L9msLpNslhGozHyWOETZXqWhzYSe
+	IJ66wq+xjKbbYdeUHpDu7g0cJkFLZ9BrtQEkn3LD32UxMIQRSElRd66EyjPROpbXDzruSD4NKRIiG
+	vHAV5KjCbhStJOpFJxDkn43w1y6qtEl0Rh+f3Gq3B8Gnlv3Q3J/sYuZdvxiTR5NfJ2DPOeqLJwSAs
+	mc/G3IWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXJ8j-0000000BLX7-1V9m;
-	Thu, 03 Jul 2025 12:34:09 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uXJFh-0000000BMaK-1l78;
+	Thu, 03 Jul 2025 12:41:21 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXHif-0000000B61K-2rMD;
-	Thu, 03 Jul 2025 11:03:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=Np4gP+kVZ9dH3S8OkU+k3ieJFZn7l6DRLrAoselSPRg=; b=a5SmEN1lokztZtNF4HCFWGaExs
-	EpeWl+JVe1cG19qajhOzUNefW+Xy4UmEIzNOOZuj8t9fHax1d6qWkAVNm5d0GXt5p2r2k2oWEGgyQ
-	xqcIwyZZO6JOfe14kiuWKckt8N1cbg7u4GONvPABhTvMRW3eK+N8GqFIhyzBV4MrQH15uBPilNAx4
-	tMYgp99hHqBQp2N8kjYJSeJ1eQHjASEG7EEW1HBGA7nmdl8SRof/roOj15vOePPafkQ6fTzOIJyGa
-	8IUhQrPog1pBoRHTRcGSzLX9f/uBsA2Dd5QmnEdpUnIglOu10EVER6rCij2vXBzSFi8VzE3ede79U
-	eQ89YHHw==;
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXHic-00000007g68-2Cng;
-	Thu, 03 Jul 2025 11:03:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1751540580;
-	bh=eim72WFFw0hgS/DlK1JwbuAVE47pGc2rjtb1MD+9DwM=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=GYDVRFMxetn67Ao1IeHBmjHWuR9rLSycwXpKNdUsxMFw284f/wqIyXZ8hmZZ5RHOg
-	 9mVYDw5fKcf8XxC4DAcWlNP6vNRDq61WcEz74SP5S/sLWxMQGDGA8cBTBuJ6Bi3CZg
-	 1zMFdhTXYoCkXG8L4kyTX0loe4LhRN6CYEFZwK09Mx8PsIrp/94bW7TN5WNZ3UPQt6
-	 nXUTwMnHaCjKDbfVusG20dZUbrnoM/xFyBG7qbXQMK8fVh3ehqlEqB7JnnqhpNqBJs
-	 GjuOMYgFjQ0iCRowa4aJVX8WfUJd6JcaFkN8Uq+5dDgwMzuoEqcFKEBgXe9bwJNjBu
-	 bXdEQevmDs12A==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E10A717E1008;
-	Thu,  3 Jul 2025 13:02:59 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: linux-mediatek@lists.infradead.org
-Subject: [PATCH 09/10] pmdomain: mediatek: Convert all SoCs to new style regmap retrieval
-Date: Thu,  3 Jul 2025 13:02:46 +0200
-Message-ID: <20250703110247.99927-10-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250703110247.99927-1-angelogioacchino.delregno@collabora.com>
-References: <20250703110247.99927-1-angelogioacchino.delregno@collabora.com>
+	id 1uXIEm-0000000BAyv-3UD4;
+	Thu, 03 Jul 2025 11:36:21 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.98.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1uXIES-000000004sT-1IDF;
+	Thu, 03 Jul 2025 11:36:00 +0000
+Date: Thu, 3 Jul 2025 12:35:56 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: "Frank Wunderlich (linux)" <linux@fw-web.de>
+Subject: Re: [PATCH v7 01/14] dt-bindings: net: mediatek,net: allow irq names
+Message-ID: <aGZrHMnpMMzNkIjF@makrotopia.org>
+References: <20250628165451.85884-1-linux@fw-web.de>
+ <20250628165451.85884-2-linux@fw-web.de>
+ <20250701-wisteria-walrus-of-perfection-bdfbec@krzk-bin>
+ <9AF787EF-A184-4492-A6F1-50B069D780E7@public-files.de>
+ <158755b2-7b1c-4b1c-8577-b00acbfadbdc@kernel.org>
+ <b68435e3e44de0532fc1e0c2e7f7bf54@fw-web.de>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <b68435e3e44de0532fc1e0c2e7f7bf54@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250703_120306_809873_8CCE89AC 
-X-CRM114-Status: GOOD (  11.54  )
+X-CRM114-CacheID: sfid-20250703_043620_868326_133B6627 
+X-CRM114-Status: GOOD (  36.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,239 +61,89 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, mbrugger@suse.com, y.oudjana@protonmail.com, linux-pm@vger.kernel.org, ulf.hansson@linaro.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, mandyjh.liu@mediatek.com, lihongbo22@huawei.com, wenst@chromium.org, matthias.bgg@gmail.com, krzk+dt@kernel.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
+Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, Eric Dumazet <edumazet@google.com>, Rob Herring <robh@kernel.org>, linux-pm@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, Chanwoo Choi <cw00.choi@samsung.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, Johnson Wang <johnson.wang@mediatek.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Kyungmin Park <kyungmin.park@samsung.com>, Georgi Djakov <djakov@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the bus_prot_blocks handle and declare num_bus_prot_blocks to
-allow all of the currently supported AArch64 MediaTek SoCs to use
-the new style regmap retrieval in the driver when a new style
-devicetree declaring the mediatek,bus-protection phandle(s) in
-the main power controller node is found.
+On Thu, Jul 03, 2025 at 01:01:40PM +0200, Frank Wunderlich (linux) wrote:
+> Am 2025-07-02 08:27, schrieb Krzysztof Kozlowski:
+> > On 01/07/2025 12:51, Frank Wunderlich wrote:
+> > > Am 1. Juli 2025 08:44:02 MESZ schrieb Krzysztof Kozlowski
+> > > <krzk@kernel.org>:
+> > > > On Sat, Jun 28, 2025 at 06:54:36PM +0200, Frank Wunderlich wrote:
+> > > > > From: Frank Wunderlich <frank-w@public-files.de>
+> > > > > 
+> > > > > In preparation for MT7988 and RSS/LRO allow the interrupt-names
+> > > > 
+> > > > Why? What preparation, what is the purpose of adding the names,
+> > > > what do
+> > > > they solve?
+> > > 
+> > > Devicetree handled by the mtk_eth_soc driver have
+> > > a wild mix of shared and non-shared irq definitions
+> > > accessed by index (shared use index 0,
+> > > non-shared
+> > > using 1+2). Some soc have only 3 FE irqs (like mt7622).
+> > > 
+> > > This makes it unclear which irq is used for what
+> > > on which SoC. Adding names for irq cleans this a bit
+> > > in device tree and driver.
+> > 
+> > It's implied ABI now, even if the binding did not express that. But
+> > interrupt-names are not necessary to express that at all. Look at other
+> > bindings: we express the list by describing the items:
+> > items:
+> >   - description: foo
+> >   - ... bar
+> 
+> ok, so i need to define descriptions for all interrupts instead of only
+> increasing the count. Ok, was not clear to me.
+> 
+> so something like this:
+> 
+> item0: on SoCs with shared IRQ (mt762[18]) used for RX+TX, on other free to
+> be used
+> item1: on non-shared SoCs used for TX
+> item2: on non-shared SoCs used for RX (except RSS/LRO is used)
+> item3: reserved / currently unused
+> item4-7: IRQs for RSS/LRO
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/pmdomain/mediatek/mt6795-pm-domains.h | 5 +++++
- drivers/pmdomain/mediatek/mt8167-pm-domains.h | 5 +++++
- drivers/pmdomain/mediatek/mt8173-pm-domains.h | 5 +++++
- drivers/pmdomain/mediatek/mt8183-pm-domains.h | 5 +++++
- drivers/pmdomain/mediatek/mt8186-pm-domains.h | 5 +++++
- drivers/pmdomain/mediatek/mt8188-pm-domains.h | 6 ++++++
- drivers/pmdomain/mediatek/mt8192-pm-domains.h | 5 +++++
- drivers/pmdomain/mediatek/mt8195-pm-domains.h | 5 +++++
- drivers/pmdomain/mediatek/mt8365-pm-domains.h | 6 ++++++
- 9 files changed, 47 insertions(+)
+These descriptions match the current *software* use of those interrupts,
+however, DT should describe the hardware and esp. item0 up to item3 could
+be used in different ways in the future (by programming MTK_FE_INT_GRP
+register differently).
 
-diff --git a/drivers/pmdomain/mediatek/mt6795-pm-domains.h b/drivers/pmdomain/mediatek/mt6795-pm-domains.h
-index a3f7785b04bd..dc8e9f8877ad 100644
---- a/drivers/pmdomain/mediatek/mt6795-pm-domains.h
-+++ b/drivers/pmdomain/mediatek/mt6795-pm-domains.h
-@@ -9,6 +9,9 @@
- /*
-  * MT6795 power domain support
-  */
-+static enum scpsys_bus_prot_block scpsys_bus_prot_blocks_mt6795[] = {
-+	BUS_PROT_BLOCK_INFRA
-+};
- 
- static const struct scpsys_domain_data scpsys_domain_data_mt6795[] = {
- 	[MT6795_POWER_DOMAIN_VDEC] = {
-@@ -107,6 +110,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt6795[] = {
- static const struct scpsys_soc_data mt6795_scpsys_data = {
- 	.domains_data = scpsys_domain_data_mt6795,
- 	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt6795),
-+	.bus_prot_blocks = scpsys_bus_prot_blocks_mt6795,
-+	.num_bus_prot_blocks = ARRAY_SIZE(scpsys_bus_prot_blocks_mt6795),
- };
- 
- #endif /* __SOC_MEDIATEK_MT6795_PM_DOMAINS_H */
-diff --git a/drivers/pmdomain/mediatek/mt8167-pm-domains.h b/drivers/pmdomain/mediatek/mt8167-pm-domains.h
-index 8a0e898b79ab..f6ee48a711a1 100644
---- a/drivers/pmdomain/mediatek/mt8167-pm-domains.h
-+++ b/drivers/pmdomain/mediatek/mt8167-pm-domains.h
-@@ -12,6 +12,9 @@
- /*
-  * MT8167 power domain support
-  */
-+static enum scpsys_bus_prot_block scpsys_bus_prot_blocks_mt8167[] = {
-+	BUS_PROT_BLOCK_INFRA
-+};
- 
- static const struct scpsys_domain_data scpsys_domain_data_mt8167[] = {
- 	[MT8167_POWER_DOMAIN_MM] = {
-@@ -99,6 +102,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8167[] = {
- static const struct scpsys_soc_data mt8167_scpsys_data = {
- 	.domains_data = scpsys_domain_data_mt8167,
- 	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt8167),
-+	.bus_prot_blocks = scpsys_bus_prot_blocks_mt8167,
-+	.num_bus_prot_blocks = ARRAY_SIZE(scpsys_bus_prot_blocks_mt8167),
- };
- 
- #endif /* __SOC_MEDIATEK_MT8167_PM_DOMAINS_H */
-diff --git a/drivers/pmdomain/mediatek/mt8173-pm-domains.h b/drivers/pmdomain/mediatek/mt8173-pm-domains.h
-index 7be0f47f5214..561a644b5d1c 100644
---- a/drivers/pmdomain/mediatek/mt8173-pm-domains.h
-+++ b/drivers/pmdomain/mediatek/mt8173-pm-domains.h
-@@ -9,6 +9,9 @@
- /*
-  * MT8173 power domain support
-  */
-+static enum scpsys_bus_prot_block scpsys_bus_prot_blocks_mt8173[] = {
-+	BUS_PROT_BLOCK_INFRA
-+};
- 
- static const struct scpsys_domain_data scpsys_domain_data_mt8173[] = {
- 	[MT8173_POWER_DOMAIN_VDEC] = {
-@@ -118,6 +121,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8173[] = {
- static const struct scpsys_soc_data mt8173_scpsys_data = {
- 	.domains_data = scpsys_domain_data_mt8173,
- 	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt8173),
-+	.bus_prot_blocks = scpsys_bus_prot_blocks_mt8173,
-+	.num_bus_prot_blocks = ARRAY_SIZE(scpsys_bus_prot_blocks_mt8173),
- };
- 
- #endif /* __SOC_MEDIATEK_MT8173_PM_DOMAINS_H */
-diff --git a/drivers/pmdomain/mediatek/mt8183-pm-domains.h b/drivers/pmdomain/mediatek/mt8183-pm-domains.h
-index c4c1b63d85b1..3742782a2702 100644
---- a/drivers/pmdomain/mediatek/mt8183-pm-domains.h
-+++ b/drivers/pmdomain/mediatek/mt8183-pm-domains.h
-@@ -9,6 +9,9 @@
- /*
-  * MT8183 power domain support
-  */
-+static enum scpsys_bus_prot_block scpsys_bus_prot_blocks_mt8183[] = {
-+	BUS_PROT_BLOCK_INFRA, BUS_PROT_BLOCK_SMI
-+};
- 
- static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
- 	[MT8183_POWER_DOMAIN_AUDIO] = {
-@@ -290,6 +293,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
- static const struct scpsys_soc_data mt8183_scpsys_data = {
- 	.domains_data = scpsys_domain_data_mt8183,
- 	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt8183),
-+	.bus_prot_blocks = scpsys_bus_prot_blocks_mt8183,
-+	.num_bus_prot_blocks = ARRAY_SIZE(scpsys_bus_prot_blocks_mt8183),
- };
- 
- #endif /* __SOC_MEDIATEK_MT8183_PM_DOMAINS_H */
-diff --git a/drivers/pmdomain/mediatek/mt8186-pm-domains.h b/drivers/pmdomain/mediatek/mt8186-pm-domains.h
-index cbac715c38fa..00b9861af7c9 100644
---- a/drivers/pmdomain/mediatek/mt8186-pm-domains.h
-+++ b/drivers/pmdomain/mediatek/mt8186-pm-domains.h
-@@ -13,6 +13,9 @@
- /*
-  * MT8186 power domain support
-  */
-+static enum scpsys_bus_prot_block scpsys_bus_prot_blocks_mt8186[] = {
-+	BUS_PROT_BLOCK_INFRA
-+};
- 
- static const struct scpsys_domain_data scpsys_domain_data_mt8186[] = {
- 	[MT8186_POWER_DOMAIN_MFG0] = {
-@@ -361,6 +364,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8186[] = {
- static const struct scpsys_soc_data mt8186_scpsys_data = {
- 	.domains_data = scpsys_domain_data_mt8186,
- 	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt8186),
-+	.bus_prot_blocks = scpsys_bus_prot_blocks_mt8186,
-+	.num_bus_prot_blocks = ARRAY_SIZE(scpsys_bus_prot_blocks_mt8186),
- };
- 
- #endif /* __SOC_MEDIATEK_MT8186_PM_DOMAINS_H */
-diff --git a/drivers/pmdomain/mediatek/mt8188-pm-domains.h b/drivers/pmdomain/mediatek/mt8188-pm-domains.h
-index 007235be9efe..3a989e83e9b7 100644
---- a/drivers/pmdomain/mediatek/mt8188-pm-domains.h
-+++ b/drivers/pmdomain/mediatek/mt8188-pm-domains.h
-@@ -14,6 +14,10 @@
-  * MT8188 power domain support
-  */
- 
-+static enum scpsys_bus_prot_block scpsys_bus_prot_blocks_mt8188[] = {
-+	BUS_PROT_BLOCK_INFRA
-+};
-+
- static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
- 	[MT8188_POWER_DOMAIN_MFG0] = {
- 		.name = "mfg0",
-@@ -685,6 +689,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
- static const struct scpsys_soc_data mt8188_scpsys_data = {
- 	.domains_data = scpsys_domain_data_mt8188,
- 	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt8188),
-+	.bus_prot_blocks = scpsys_bus_prot_blocks_mt8188,
-+	.num_bus_prot_blocks = ARRAY_SIZE(scpsys_bus_prot_blocks_mt8188),
- };
- 
- #endif /* __SOC_MEDIATEK_MT8188_PM_DOMAINS_H */
-diff --git a/drivers/pmdomain/mediatek/mt8192-pm-domains.h b/drivers/pmdomain/mediatek/mt8192-pm-domains.h
-index 6f139eed3769..5d62fac5f682 100644
---- a/drivers/pmdomain/mediatek/mt8192-pm-domains.h
-+++ b/drivers/pmdomain/mediatek/mt8192-pm-domains.h
-@@ -9,6 +9,9 @@
- /*
-  * MT8192 power domain support
-  */
-+static enum scpsys_bus_prot_block scpsys_bus_prot_blocks_mt8192[] = {
-+	BUS_PROT_BLOCK_INFRA
-+};
- 
- static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
- 	[MT8192_POWER_DOMAIN_AUDIO] = {
-@@ -380,6 +383,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
- static const struct scpsys_soc_data mt8192_scpsys_data = {
- 	.domains_data = scpsys_domain_data_mt8192,
- 	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt8192),
-+	.bus_prot_blocks = scpsys_bus_prot_blocks_mt8192,
-+	.num_bus_prot_blocks = ARRAY_SIZE(scpsys_bus_prot_blocks_mt8192),
- };
- 
- #endif /* __SOC_MEDIATEK_MT8192_PM_DOMAINS_H */
-diff --git a/drivers/pmdomain/mediatek/mt8195-pm-domains.h b/drivers/pmdomain/mediatek/mt8195-pm-domains.h
-index 59aa031ae632..9405e8f62eaf 100644
---- a/drivers/pmdomain/mediatek/mt8195-pm-domains.h
-+++ b/drivers/pmdomain/mediatek/mt8195-pm-domains.h
-@@ -13,6 +13,9 @@
- /*
-  * MT8195 power domain support
-  */
-+static enum scpsys_bus_prot_block scpsys_bus_prot_blocks_mt8195[] = {
-+	BUS_PROT_BLOCK_INFRA
-+};
- 
- static const struct scpsys_domain_data scpsys_domain_data_mt8195[] = {
- 	[MT8195_POWER_DOMAIN_PCIE_MAC_P0] = {
-@@ -661,6 +664,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8195[] = {
- static const struct scpsys_soc_data mt8195_scpsys_data = {
- 	.domains_data = scpsys_domain_data_mt8195,
- 	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt8195),
-+	.bus_prot_blocks = scpsys_bus_prot_blocks_mt8195,
-+	.num_bus_prot_blocks = ARRAY_SIZE(scpsys_bus_prot_blocks_mt8195),
- };
- 
- #endif /* __SOC_MEDIATEK_MT8195_PM_DOMAINS_H */
-diff --git a/drivers/pmdomain/mediatek/mt8365-pm-domains.h b/drivers/pmdomain/mediatek/mt8365-pm-domains.h
-index 6fbd5ef8d672..33265ab8ce76 100644
---- a/drivers/pmdomain/mediatek/mt8365-pm-domains.h
-+++ b/drivers/pmdomain/mediatek/mt8365-pm-domains.h
-@@ -33,6 +33,10 @@
- 			      _sta_mask, _sta,				\
- 			      BUS_PROT_INVERTED | BUS_PROT_REG_UPDATE)
- 
-+static enum scpsys_bus_prot_block scpsys_bus_prot_blocks_mt8365[] = {
-+	BUS_PROT_BLOCK_INFRA, BUS_PROT_BLOCK_INFRA_NAO, BUS_PROT_BLOCK_SMI
-+};
-+
- static const struct scpsys_domain_data scpsys_domain_data_mt8365[] = {
- 	[MT8365_POWER_DOMAIN_MM] = {
- 		.name = "mm",
-@@ -190,6 +194,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8365[] = {
- static const struct scpsys_soc_data mt8365_scpsys_data = {
- 	.domains_data = scpsys_domain_data_mt8365,
- 	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt8365),
-+	.bus_prot_blocks = scpsys_bus_prot_blocks_mt8365,
-+	.num_bus_prot_blocks = ARRAY_SIZE(scpsys_bus_prot_blocks_mt8365),
- };
- 
- #endif /* __SOC_MEDIATEK_MT8365_PM_DOMAINS_H */
--- 
-2.49.0
+I think using interrupt-names fe0...fe3 and pdma0...pdma3 is still the
+best option, so the driver can request the interrupts by name which is
+much more readable in the driver code and SoC's dtsi than relying on a
+specific order.
 
+> > 
+> > There were only 4 before and you do not explain why all devices get 8.
+> > You mentioned that MT7988 has 8 but now make 8 for all other variants!
+> > 
+> > Why you are not answering this question?
+> 
+> The original binding excluded the 4 RSS/LRO IRQs as this is an optional
+> feature not
+> yet available in driver. It is needed to get the full speed on the 10G
+> interfaces.
+> MT7988 is the first SoC which has 10G MACs. Older Socs like mt7986 and
+> mt7981 can also
+> support RSS/LRO to reduce cpu load. But here we will run into the "new
+> kernel - old
+> devicetree" issue, if we try to upstream this. Maybe we do not add this
+> because these
+> only have 2.5G MACs.
+
+It might be important to note that
+
+MT7621, MT7628: 1 IRQ
+MT7622, MT7623: 3 IRQs (only two used by the driver for now)
+MT7981, MT7986: 4 IRQs (only two used by the driver for now)
+
+While older SoCs MT7981 and MT7986 have limited support for *either LRO
+or RSS* in hardware, only MT7988 got 4 frame-engine IRQs like MT7981 and
+MT7986 and an additional 4 IRQs for the 4 RX DMA rings on top of that,
+so a total of 8, and can do both RSS and LRO.
 
