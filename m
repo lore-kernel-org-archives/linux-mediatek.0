@@ -4,90 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A355C83F03
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jul 2025 13:51:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39359C8303D
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jul 2025 14:21:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kM65gUyDV8Nq6O0X5HePJHOOeCngpBNSIlUrnpmpZME=; b=ebfxd+E5mtrrkkAvrIkPIGpHaj
-	708CTIJYY3Hh8edgxGtfRrRzRTnytqv/VVqCPqKz4XNiEI6wvDdSGj59N0gS1iuup0xdtP3mEmDTa
-	0Dntaf+Ky4ozN5UBFGjHjjHkJ7hT8fntxk1ifpc5kLw7tlOraeQkscfH5vxe/La8QR2X87Y4xY05b
-	b6oLaXtfXEb11aBAEurM1CFW14NU6BRO7D+MJp1foFzMdLtwiGP+zcV+xUQ+CNAiJ3Wx4Merg7Upd
-	EGL7ORP4rlg3XDXoWYDE5hJQfJtbBj5YtxVoAhEGP/TJzJh5yY03KErqsiA4/7gNvoMbZjgQXi7RN
-	Wp4VCcaA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ejMKBHWNKl9mQoEViy73YjZohnREweBs4rwRhvOzSEQ=; b=BcaNU6M1scqxLwNSxBTG9HX0GI
+	hgzNm3kuI1dUQVQ6XgzDgGd6y5BjUAIkIoaXGwYC0Ig4pZbzzANh8wnS8TUWgoZ/tAfnCn4qpQTzU
+	7Ee+7xrPgkJE9v482TIXi/PBWevhg8kfM8bdXb8GDA1S5DEQuclBIndioLNUtbMcJ7P9cx+X8P5j7
+	MCDKN8bTrvwmMEWZPsc+i3jSWLCJcIFCLE+kHFcmxRSlD3Cye6XZLCD/nBWAcupTw2dLszB9tSRpL
+	2HKGyz0oa7TcvGAYO0JQOw910Im+sKN4YvvhfKQR3NyCYFaIL9GP8e9UxbygkgVmMh104Dc97IQge
+	WzE2cDhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXgpB-0000000Ea5S-1gDw;
-	Fri, 04 Jul 2025 13:51:33 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1uXhIE-0000000Eefo-1kha;
+	Fri, 04 Jul 2025 14:21:34 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXfhk-0000000EPQI-1ezy;
-	Fri, 04 Jul 2025 12:39:50 +0000
-Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-3a4fd1ba177so648254f8f.0;
-        Fri, 04 Jul 2025 05:39:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1751632786; x=1752237586; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=kM65gUyDV8Nq6O0X5HePJHOOeCngpBNSIlUrnpmpZME=;
-        b=mpFM41RmcdAKRFWkI4gb5g8MQ/bE3qI7+2SdbZr+Qic49ej2bspr0UxGvQ/eK6r0K2
-         S+TS+oNiEmL5Lb2HSa9Qab2L2WLQirsrXJ6byzYe3LFvLi23i4wrWVZjWMC9p69XveTz
-         pHpTBAtkukwCQEg0vULhTvB9AVpEAgMtPivglTqLbdLKDKmO3Fp3OrQmlhmRRkTXNUu7
-         H2PAgMt1aMy5Y6IjeIvdd+qe/2JKEP/U8W7ATbQFwWs+Y6FSDaFk0V19YalsDw6pxPOE
-         wtukSMyZj6Kc3f8EvK6L2fEY289ByrHGVNiwg2flLF/NCG3MSVB40ERBM+mR8f2BPPwA
-         sKXw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751632786; x=1752237586;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=kM65gUyDV8Nq6O0X5HePJHOOeCngpBNSIlUrnpmpZME=;
-        b=ItwHFLPJYNSAzN8vWou6h2I04gERG1vPfBWmjNtYM5aOE3WTuxikPF3KvwRc3xeSQS
-         /9SIKSo+gUkaIsZ09+/tMuRchKzW92AyNUCo7JqhipJaVekb/XgzDEA44XxBm4YCnTea
-         FGAEBp5LqkhIJWuUbz3dCgpo95YEMlyMPQ8dfi3Ro4iM9Vusi+HokTY1BPHqiNUkRhP0
-         8pKegookSlBUEbIgATNT4aiRsJIScIa5jpsMVc0ofw4HGir2sZLnkCYNxys1icJQWBVJ
-         3Em6wgD46AONKh7kA7Lx/vogIU5m81hT274sKDWBqHxtg1SSuGeLNrE+56/ySZb1BToa
-         yOXQ==
-X-Forwarded-Encrypted: i=1; AJvYcCU+Z1Si9AeJj8fqQYxlsO1KbVvMWbr+65Pso8m3qnBqdB2fWIzFrIARczGLQWXkcOHwchKxMyfyYs7rOT1GCAD3@lists.infradead.org, AJvYcCVYnfLbhh4wBeehMSMeZz0j0IjbHn7DRmJ+rA+rxLXpoTksjolTXUszFZIUv5buFsPestOlYRAW/qRpewP/3p0=@lists.infradead.org
-X-Gm-Message-State: AOJu0YwPgjM1wJ4gYGwuAb2CxyfZR5dH6VPCMKclfe49kp69FahS8LBA
-	s02oCNkhdk7tI5kCk6FvkJmE7sa71HgILvndzWvHclvv2Msbqlr/keGEIqlj6WFEKcI=
-X-Gm-Gg: ASbGnctW/lyH/W5YKQXWIAsdqd/gnnSn0gdeVPrkOWGPvZT6ziWB2egEiUsJc6TeaZD
-	rT3ec35g+oXevZT7QF2MbqQDajGLOPyCrwR3vYY11SxPJCUd5b0I3KueLDcfEvxeVJ9glwxAbnl
-	BA/pJi7XChYrcAyt40PGs7Hoh+oL+bWgY7r7RFhHAUAKNXXfrqwvYCNBe0P8wxs7RXzQxHhlf41
-	YOIN0/SsiWhfy5L+OXZiLooXaX/XCm8IQ5C4GRwf8HPevmy/IZjT4uV5yaD9fATK40st4Uzb32U
-	Eu/k+KBiwsZTa871J2m7cjzsxBccdseDh2SDGheX3v+6UDzeyOo/g/3yD0n5XxzNKaH55g==
-X-Google-Smtp-Source: AGHT+IGEZQqooZXYhGVoWPdBr2vTu84V+4w3rPWYqllSwEygO+t6NPXOBmMzmHVAtMjkZ8S2Ox0sXg==
-X-Received: by 2002:a05:6000:4911:b0:3a5:2915:ed68 with SMTP id ffacd0b85a97d-3b495ccbb9emr2195447f8f.28.1751632786152;
-        Fri, 04 Jul 2025 05:39:46 -0700 (PDT)
-Received: from [192.168.1.187] ([161.230.67.253])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3b47030b4f6sm2467772f8f.10.2025.07.04.05.39.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 04 Jul 2025 05:39:45 -0700 (PDT)
-Message-ID: <ab0a407412c705e409d9d26591543713a092c13f.camel@gmail.com>
-Subject: Re: [PATCH v2 0/6] iio: Add support for MT6363/6373 Auxiliary ADC
-From: Nuno =?ISO-8859-1?Q?S=E1?= <noname.nuno@gmail.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	jic23@kernel.org
-Cc: dlechner@baylibre.com, nuno.sa@analog.com, andy@kernel.org,
- robh@kernel.org, 	krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, 	linux-iio@vger.kernel.org,
- devicetree@vger.kernel.org, 	linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, 	linux-mediatek@lists.infradead.org,
- kernel@collabora.com
-Date: Fri, 04 Jul 2025 13:39:56 +0100
-In-Reply-To: <20250703141146.171431-1-angelogioacchino.delregno@collabora.com>
-References: <20250703141146.171431-1-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.2 
+	id 1uXg9T-0000000ETIN-3Mau;
+	Fri, 04 Jul 2025 13:08:28 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id 4CA735C6526;
+	Fri,  4 Jul 2025 13:08:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9EABAC4CEE3;
+	Fri,  4 Jul 2025 13:08:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1751634507;
+	bh=tQbN0zpDKtZUkhv/MpLlcCccFqUgkW64nZndPIHZEfQ=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=anzXzF2uMEeKjaXubq2vr+o1Z7qkBGyYRG8NnDMFZjsAS97unymxdNGhOc/dMEgQF
+	 LPVTDBCkbTypHKFZ1Sy1TpmG+/e1XEkYmNXTnf76JqeRvGF4B9wJXdZxDeUD4gwCbx
+	 85lTxmunxhPgLQGfv99kyBbinH5gsHyAMcLTP4RGaHADZLUGAyFnRXZMshq8LeB599
+	 aMS+Z6AC3lJlyOX6FMFdFrQb0ymYcdAL3SOrH0if4xNa6NSSPqehmNKcDOrT2JEdmt
+	 +Oul4BJruit9wb5uZA52gIuQFpoGAjVfUk//kF+gvEzqGHhgCPljHN3iYmltiHSuLe
+	 tIggKCmSRq4/Q==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Fri, 04 Jul 2025 15:08:05 +0200
+Subject: [PATCH mt76 1/9] wifi: mt76: fix vif link allocation
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250704-mt7996-mlo-fixes-v1-1-356456c73f43@kernel.org>
+References: <20250704-mt7996-mlo-fixes-v1-0-356456c73f43@kernel.org>
+In-Reply-To: <20250704-mt7996-mlo-fixes-v1-0-356456c73f43@kernel.org>
+To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Bo Jiao <Bo.Jiao@mediatek.com>, Peter Chiu <chui-hao.chiu@mediatek.com>
+Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250704_053948_432184_E87F1DDA 
-X-CRM114-Status: GOOD (  10.55  )
+X-CRM114-CacheID: sfid-20250704_060827_890735_BE9B6F25 
+X-CRM114-Status: GOOD (  11.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,41 +75,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2025-07-03 at 16:11 +0200, AngeloGioacchino Del Regno wrote:
-> Changes in v2:
-> =C2=A0- Added error checks to all regmap r/w operations
-> =C2=A0- Moved adc_vref addition to different commit
-> =C2=A0- Various other fixes
->=20
-> This series adds support for the Auxiliary ADC IP found on the new
-> MediaTek MT6363 and MT6373 PMICs, found on board designs featuring
-> the MT8196 Chromebook SoC or the MT6991 Dimensity 9400 Smartphone SoC.
->=20
-> AngeloGioacchino Del Regno (6):
-> =C2=A0 dt-bindings: iio: adc: mt6359: Add MT6363 PMIC AuxADC
-> =C2=A0 dt-bindings: iio: adc: mt6359: Add MT6373 PMIC AuxADC
-> =C2=A0 iio: adc: mt6359: Add ready register index and mask to channel dat=
-a
-> =C2=A0 iio: adc: mt6359: Move reference voltage to platform data
-> =C2=A0 iio: adc: mt6359: Add support for MediaTek MT6363 PMIC AUXADC
-> =C2=A0 iio: adc: mt6359: Add support for MediaTek MT6373 PMIC AUXADC
->=20
-> =C2=A0.../iio/adc/mediatek,mt6359-auxadc.yaml=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 |=C2=A0=C2=A0 2 +
-> =C2=A0drivers/iio/adc/mt6359-auxadc.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 440 +++++++++++++++---
-> =C2=A0.../iio/adc/mediatek,mt6363-auxadc.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 24 +
-> =C2=A0.../iio/adc/mediatek,mt6373-auxadc.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 19 +
-> =C2=A04 files changed, 416 insertions(+), 69 deletions(-)
-> =C2=A0create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6363-auxa=
-dc.h
-> =C2=A0create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6373-auxa=
-dc.h
+From: Felix Fietkau <nbd@nbd.name>
 
+Reuse the vif deflink for link_id = 0 in order to avoid confusion with
+vif->bss_conf, which also gets a link id of 0.
 
-LGTM,
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+---
+ drivers/net/wireless/mediatek/mt76/channel.c | 4 ++--
+ drivers/net/wireless/mediatek/mt76/mt76.h    | 5 ++++-
+ 2 files changed, 6 insertions(+), 3 deletions(-)
 
-Reviewed-by: Nuno S=C3=A1 <nuno.sa@analog.com>
+diff --git a/drivers/net/wireless/mediatek/mt76/channel.c b/drivers/net/wireless/mediatek/mt76/channel.c
+index cc2d888e3f17a58512e6282686b446109ec7ab3c..77b75792eb488e9c5da9ca8026c04157182c13a4 100644
+--- a/drivers/net/wireless/mediatek/mt76/channel.c
++++ b/drivers/net/wireless/mediatek/mt76/channel.c
+@@ -173,13 +173,13 @@ void mt76_unassign_vif_chanctx(struct ieee80211_hw *hw,
+ 	if (!mlink)
+ 		goto out;
+ 
+-	if (link_conf != &vif->bss_conf)
++	if (mlink != (struct mt76_vif_link *)vif->drv_priv)
+ 		rcu_assign_pointer(mvif->link[link_id], NULL);
+ 
+ 	dev->drv->vif_link_remove(phy, vif, link_conf, mlink);
+ 	mlink->ctx = NULL;
+ 
+-	if (link_conf != &vif->bss_conf)
++	if (mlink != (struct mt76_vif_link *)vif->drv_priv)
+ 		kfree_rcu(mlink, rcu_head);
+ 
+ out:
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 14927a92f9d1b313253158c0e53dce8fab9fba18..022d83bb03da1803440c942c9343b709d76aecd4 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -1865,6 +1865,9 @@ mt76_vif_link(struct mt76_dev *dev, struct ieee80211_vif *vif, int link_id)
+ 	struct mt76_vif_link *mlink = (struct mt76_vif_link *)vif->drv_priv;
+ 	struct mt76_vif_data *mvif = mlink->mvif;
+ 
++	if (!link_id)
++		return mlink;
++
+ 	return mt76_dereference(mvif->link[link_id], dev);
+ }
+ 
+@@ -1875,7 +1878,7 @@ mt76_vif_conf_link(struct mt76_dev *dev, struct ieee80211_vif *vif,
+ 	struct mt76_vif_link *mlink = (struct mt76_vif_link *)vif->drv_priv;
+ 	struct mt76_vif_data *mvif = mlink->mvif;
+ 
+-	if (link_conf == &vif->bss_conf)
++	if (link_conf == &vif->bss_conf || !link_conf->link_id)
+ 		return mlink;
+ 
+ 	return mt76_dereference(mvif->link[link_conf->link_id], dev);
+
+-- 
+2.50.0
+
 
