@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82E62C83F03
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jul 2025 14:36:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07A8DC8303D
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jul 2025 15:00:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5j+ildZKdAgbAL0LgvuikIYArGpe1jtgC3xFGYVg0vU=; b=4EwDfhM1qz2xXv8V6qTY3+64SV
-	EcGsnd4sPs6ZCPItpPIkSww+vLl9w/O4HTWpEcQSy/swRxJj+irEUXyRWcIC16bznEHA5xmUfLC3p
-	WKDSKFcKKtQLKdYGJTTR1qFBHhboFKja3754G0NVFx2rOJuvTycs3QldVcTLXFnTuJOLBkWyFqYWx
-	kiBpZgYcJDIgUxwsLIS1tm6EBb1F4KYQQnEg3x0rjBMrXYnYo34WteeSipfFsg+VQglvQQejLstxX
-	aVf+UQ82a8epcAHXPpKU6zNYM/JRHm+/71LKm2TDt7+WIJbYkYlyQEMaLZ22CU8JLSJGtdU33JqqD
-	hjDmifeQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XjG6krBKsTsQzxiUiao38idBoOrhUxlYC9EyW6WDU3c=; b=QbYObnsJ175T7SKq75TcL8o7sz
+	lCMXz+YuZk7yowUF8zEekM4lb4GFINcFb5sM8yPqvWz5joaMeSLVtn8UeqZuTffq0vXfKJgjXd9qg
+	rMl6J2MMpBy6p0Dq4qR/6MOcd6UQSTt2H1TFbR7EfOmYLrvlQR1bIM1/w3lzFrTl08ozaSCFmK4Vh
+	xm7SMK0SHEzSxI/kZAbByUgIM7qyImdZsc89Jx11oVWqRMcwSpeAYZ3M762j6SB4iYyt+Otso+Hr+
+	y7Y5mCEYbAFw+oUwMAZHM11MCGzF6oKuUnb/i3xv6Zrphb/6Djc9HGvvsBHTplvdDVApTGq6qnQGY
+	Z3Jt9kTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXhWk-0000000EgVN-2UJW;
-	Fri, 04 Jul 2025 14:36:34 +0000
+	id 1uXhtZ-0000000Ek47-16vc;
+	Fri, 04 Jul 2025 15:00:09 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXg9g-0000000ETKg-2FAH;
-	Fri, 04 Jul 2025 13:08:41 +0000
+	id 1uXhhY-0000000Ei5G-2rz6;
+	Fri, 04 Jul 2025 14:47:45 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 464AB44B38;
-	Fri,  4 Jul 2025 13:08:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C89E2C4CEEB;
-	Fri,  4 Jul 2025 13:08:39 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id D782D43647;
+	Fri,  4 Jul 2025 14:47:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 83B40C4CEE3;
+	Fri,  4 Jul 2025 14:47:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751634520;
-	bh=0J163NQ2g6iT1JWmoTnRElFmVhhyQWnZB3Sm6WBqxYI=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=kr/rEHuwj5fB0VR4i2MVTfDTBCvShkGCupuPkp6XlfLP86Rk3VavV1JjZfEX2+/E1
-	 tXmIsy3NSLe/b/jS35DS4Pujb2TaarVpaGB7XM7O5EaeeNzcexzNfVRKOzdr17JlUj
-	 KFIDoKGExUYNUOGEfQEswH2hu4yJS2If/SDOMbdp9ucuCwrl6vNQAsmR9VgBnuGObs
-	 xvi8g/5qxkg+G4N3Q6ftibwj865HZm2EUmz5xT3xRMpJqknzwOBXoWjdDOxR5TeOOn
-	 PjWwE6G/4Xdx6y68XWx4sCPe0j/jdeAUjBehaan+WSKTJjcnpTtBpcQ9iw6LMSz+DN
-	 AzXELV6R8DeKA==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Fri, 04 Jul 2025 15:08:10 +0200
-Subject: [PATCH mt76 6/9] wifi: mt76: mt7996: Fix possible OOB access in
- mt7996_tx()
+	s=k20201202; t=1751640463;
+	bh=jwcVzcOp2LjEkMGfNXiETyByGfXvf0/LAVTF7MdWfQs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=n0O6zElYoWbmZPP62cHIicYkg9GvCc4BngwLsq0dhP3JHuG6080LbkeE9dT2X44J0
+	 8cjfLBtQm1+kC3BeST7xFCi/y7AauHxUuUyBf/7c9mdavwY8hMspOAlUIasbuY4dz+
+	 F/aa4+Ewkzotdx/iAEQHPXUNII2iIV9Y7S/QH8NNKNi4vI+7D3BjY+1DxcwIo6oquh
+	 WUcqs7dUk4rn8dUlPEYnuF5/GAwtkp1Rt+NtIxmpmZXs4ZbnvZcZQUtXOfcHYENiGc
+	 ZWLr6ohYJYngdlFj0PbJDTVCYTizi79LQO7hKCWPvJH7sTRLpthtuwe9a1x5GO4uzr
+	 9OGtnxU4LljJg==
+Date: Fri, 4 Jul 2025 15:47:39 +0100
+From: Simon Horman <horms@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net-next 1/6] net: airoha: npu: Add NPU wlan memory
+ initialization commands
+Message-ID: <20250704144739.GZ41770@horms.kernel.org>
+References: <20250702-airoha-en7581-wlan-offlaod-v1-0-803009700b38@kernel.org>
+ <20250702-airoha-en7581-wlan-offlaod-v1-1-803009700b38@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250704-mt7996-mlo-fixes-v1-6-356456c73f43@kernel.org>
-References: <20250704-mt7996-mlo-fixes-v1-0-356456c73f43@kernel.org>
-In-Reply-To: <20250704-mt7996-mlo-fixes-v1-0-356456c73f43@kernel.org>
-To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Bo Jiao <Bo.Jiao@mediatek.com>, Peter Chiu <chui-hao.chiu@mediatek.com>
-Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250702-airoha-en7581-wlan-offlaod-v1-1-803009700b38@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250704_060840_597014_19F76031 
-X-CRM114-Status: GOOD (  12.18  )
+X-CRM114-CacheID: sfid-20250704_074744_747407_0D24CAFB 
+X-CRM114-Status: UNSURE (   8.67  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,60 +77,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fis possible Out-Of-Boundary access in mt7996_tx routine if link_id is
-set to IEEE80211_LINK_UNSPECIFIED
+On Wed, Jul 02, 2025 at 12:23:30AM +0200, Lorenzo Bianconi wrote:
+> Introduce wlan_init_reserved_memory callback used by MT76 driver during
+> NPU wlan offloading setup.
+> This is a preliminary patch to enable wlan flowtable offload for EN7581
+> SoC with MT76 driver.
+> 
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-Fixes: 3ce8acb86b661 ("wifi: mt76: mt7996: Update mt7996_tx to MLO support")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/wireless/mediatek/mt76/mt7996/main.c | 17 ++++++++++++-----
- 1 file changed, 12 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-index d1f90dea512bade652743611b7d062863a63ccfe..6404514556419f75b69a783d96b0920157263e04 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-@@ -1216,10 +1216,17 @@ static void mt7996_tx(struct ieee80211_hw *hw,
- 
- 	if (vif) {
- 		struct mt7996_vif *mvif = (void *)vif->drv_priv;
--		struct mt76_vif_link *mlink;
-+		struct mt76_vif_link *mlink = &mvif->deflink.mt76;
- 
--		mlink = rcu_dereference(mvif->mt76.link[link_id]);
--		if (mlink && mlink->wcid)
-+		if (link_id < IEEE80211_LINK_UNSPECIFIED)
-+			mlink = rcu_dereference(mvif->mt76.link[link_id]);
-+
-+		if (!mlink) {
-+			ieee80211_free_txskb(hw, skb);
-+			goto unlock;
-+		}
-+
-+		if (mlink->wcid)
- 			wcid = mlink->wcid;
- 
- 		if (mvif->mt76.roc_phy &&
-@@ -1228,7 +1235,7 @@ static void mt7996_tx(struct ieee80211_hw *hw,
- 			if (mphy->roc_link)
- 				wcid = mphy->roc_link->wcid;
- 		} else {
--			mphy = mt76_vif_link_phy(&mvif->deflink.mt76);
-+			mphy = mt76_vif_link_phy(mlink);
- 		}
- 	}
- 
-@@ -1237,7 +1244,7 @@ static void mt7996_tx(struct ieee80211_hw *hw,
- 		goto unlock;
- 	}
- 
--	if (control->sta) {
-+	if (control->sta && link_id < IEEE80211_LINK_UNSPECIFIED) {
- 		struct mt7996_sta *msta = (void *)control->sta->drv_priv;
- 		struct mt7996_sta_link *msta_link;
- 
-
--- 
-2.50.0
+Reviewed-by: Simon Horman <horms@kernel.org>
 
 
