@@ -4,79 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF591C83F03
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jul 2025 11:21:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B55EC83F0C
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jul 2025 11:21:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PhUBC2e0hoTUPcZ0PfEi91DTT+QY4avDsR2LwRkrfIE=; b=sxSF6GoYAuLH+6dI91ON8QUsNJ
-	BVouSHplMR1HUrAaQfXNw7xtHUacnCQOnhEwzQKhUNMoy9q6DwJ343KtXFf2DaR4GKvk3N44aZF8w
-	dsI7BNFwki1VhueU4NhzG13I1TOFJrXn+S06xXFjKuOhaRMXnjdGIEqpHZ8L0qLN1BSyXkjEvzcuD
-	tIHp9nDDiTiL8V2EZYryrfgfItlzh3ApjvTlH4F9AjZSShSMGC7IUOcSiGDSZBPde115CGhRnvDJT
-	7SDljzw4So3XT8PmUbA6XefLmf1Kzlso9s46Tn/GZcaS3EI6vCFRY4ipmQ8OnFnMCSYoe/Ga3LSZE
-	qB04flGw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=i2XDHJ0MeEQmXTlZkkvpVFiRAD3UEq3gNigfSYol0ps=; b=sA8/kC3Afkb4yZaYxVaL4va9OF
+	wDkMOUCqZd+/5wQNfeyJWbpqWY3M/tPP6vOgYPi5ftl/UVzqxylZj5JYsVLODpgcqzwcpHW2mfoiA
+	IDO+WMnU5HB1ZPo6y1XJbQk3W7Bsr3GDbLSfBxBfZByUGlBYycstulQ9YBLaZ+150FGbSxpP4UOc+
+	1LVvyUBRg/Wzz+bUDIP4OrHLFHHvpmzSsUSZEwphdL262qKuuaL/Ke7j2gbKjo/tOSRuOHGRce+X2
+	akB2dBFc1i/RpzV3+9g0nlF0DJ82dHSIHuxshOOY5zjwlszPSWi+SU6CfYc4jDhzP/bBU3G3F/U/J
+	dmB4eycA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXeU0-0000000EBmo-1nOc;
-	Fri, 04 Jul 2025 11:21:32 +0000
-Received: from mgamail.intel.com ([198.175.65.9])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXbFD-0000000DcxD-3tV4;
-	Fri, 04 Jul 2025 07:54:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1751615643; x=1783151643;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=CWpHJt0mAGlZmpQFo1TAIOu+B6eRgVjwmndVF9RzlEU=;
-  b=UoJSx5gn4DLSS6OE0AcrJwjNMmRSFf9BnqCDbi6SxXl4KpWFAh2iEsgG
-   o0VdAAvqQK6CmA37K/7z4wl2pkA8KZrb9KW0C4uj4prFb6q4H4oWItx2V
-   kFhs1O1Ixf6cTAJQguCBg5KhP93yZKXmmDNHEuIV1/VBlMZNlEDeUFDq2
-   +7o25/6hetRz//K5CkSTqy0BfFPNVfINtmAZcHBlMzoNXRkw2u/QwogAB
-   lFoVjTTnMgK372geXbULU5dGzpBWemUguj1gNj9o0W3LGsv96mgXKvfYp
-   QlOjolNq9NC8PfzcSsEuAk9KzT2dJTMvJxYvyz+wzxEoCShc/Vx++qPLq
-   g==;
-X-CSE-ConnectionGUID: aq1EMJM8TE+EbwBEROX3gg==
-X-CSE-MsgGUID: RMUC+vMbTuiM1lJ9jcY3qQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11483"; a="76494455"
-X-IronPort-AV: E=Sophos;i="6.16,286,1744095600"; 
-   d="scan'208";a="76494455"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Jul 2025 00:54:03 -0700
-X-CSE-ConnectionGUID: uzep9yVhRC2bPONuEIo4wQ==
-X-CSE-MsgGUID: XbAEsj6mSMenUt/c5Hz3CQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,286,1744095600"; 
-   d="scan'208";a="158924157"
-Received: from jkrzyszt-mobl2.ger.corp.intel.com (HELO svinhufvud.fi.intel.com) ([10.245.244.244])
-  by ORVIESA003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Jul 2025 00:54:00 -0700
-Received: from svinhufvud.lan (localhost [IPv6:::1])
-	by svinhufvud.fi.intel.com (Postfix) with ESMTP id 648B844424;
-	Fri,  4 Jul 2025 10:53:58 +0300 (EEST)
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6 krs, Bertel Jungin Aukio 5, 02600 Espoo
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Marcel Holtmann <marcel@holtmann.org>,
-	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-bluetooth@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	id 1uXeU9-0000000EBzA-2fts;
+	Fri, 04 Jul 2025 11:21:41 +0000
+Received: from mail.8bytes.org ([85.214.250.239])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uXbr9-0000000DkdY-23jj;
+	Fri, 04 Jul 2025 08:33:16 +0000
+Received: from 8bytes.org (p4ffe03ae.dip0.t-ipconnect.de [79.254.3.174])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.8bytes.org (Postfix) with ESMTPSA id C85A94D68A;
+	Fri,  4 Jul 2025 10:33:10 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=8bytes.org;
+	s=default; t=1751617990;
+	bh=1Wb4ZmTEJsSifboKDjUkFOYzbSZxSp7Cj7bjm5Uh7PE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=CNnwCTPpeQ3dIUBs3CEaEcBZC9ZSCczy9UgnBvT7RwXD1li0Fl8Ns8E8bRwMZ8hb1
+	 aQVU10Jcq3V0vKhxLAUFoQ/yGL8ptcDaFIb/hDqL4JajHDN/IFDoi5rKadoCQLbTve
+	 5yD2txFQ7Rj6wyMYHK60tT7rAsOkkrOg4a0bZ0yWrS2x/2rZnS8fqRG1daeQysxkNa
+	 sA7BKstvqe0xAnCjwwsPwYDyOvyh35vX+heZDh0EsJcrm1lBRiJCc4HWcHEGxzz5x8
+	 b+xhiH7C2xJu2YcPBLrbFndAWwFjAANtkqudWJB4wt42MxtqZjuB/cL2+mzE5olZKY
+	 gC4UcxuJ7rqcg==
+Date: Fri, 4 Jul 2025 10:33:09 +0200
+From: Joerg Roedel <joro@8bytes.org>
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: will@kernel.org, iommu@lists.linux.dev,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH 03/80] Bluetooth: Remove redundant pm_runtime_mark_last_busy() calls
-Date: Fri,  4 Jul 2025 10:53:58 +0300
-Message-Id: <20250704075358.3216833-1-sakari.ailus@linux.intel.com>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250704075225.3212486-1-sakari.ailus@linux.intel.com>
-References: <20250704075225.3212486-1-sakari.ailus@linux.intel.com>
+	linux-mediatek@lists.infradead.org, yong.wu@mediatek.com,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH] iommu/mediatek-v1: Tidy up probe_finalize
+Message-ID: <aGeRxYJrd48SIlJF@8bytes.org>
+References: <7c78149504900bc6c98a9c48f4418934b72d89ac.1751036478.git.robin.murphy@arm.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <7c78149504900bc6c98a9c48f4418934b72d89ac.1751036478.git.robin.murphy@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250704_005404_014838_D894FEC5 
-X-CRM114-Status: GOOD (  13.81  )
+X-CRM114-CacheID: sfid-20250704_013315_742590_BDB64F77 
+X-CRM114-Status: UNSURE (   7.04  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,118 +74,9 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-pm_runtime_put_autosuspend(), pm_runtime_put_sync_autosuspend(),
-pm_runtime_autosuspend() and pm_request_autosuspend() now include a call
-to pm_runtime_mark_last_busy(). Remove the now-reduntant explicit call to
-pm_runtime_mark_last_busy().
+On Fri, Jun 27, 2025 at 04:07:10PM +0100, Robin Murphy wrote:
+>  drivers/iommu/mtk_iommu_v1.c | 8 ++------
+>  1 file changed, 2 insertions(+), 6 deletions(-)
 
-Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
----
-The cover letter of the set can be found here
-<URL:https://lore.kernel.org/linux-pm/20250704075225.3212486-1-sakari.ailus@linux.intel.com>.
-
-In brief, this patch depends on PM runtime patches adding marking the last
-busy timestamp in autosuspend related functions. The patches are here, on
-rc2:
-
-        git://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm.git \
-                pm-runtime-6.17-rc1
-
- drivers/bluetooth/btmtksdio.c | 1 -
- drivers/bluetooth/hci_bcm.c   | 3 ---
- drivers/bluetooth/hci_h5.c    | 2 --
- drivers/bluetooth/hci_intel.c | 3 ---
- 4 files changed, 9 deletions(-)
-
-diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-index c16a3518b8ff..83aee551a848 100644
---- a/drivers/bluetooth/btmtksdio.c
-+++ b/drivers/bluetooth/btmtksdio.c
-@@ -615,7 +615,6 @@ static void btmtksdio_txrx_work(struct work_struct *work)
- 
- 	sdio_release_host(bdev->func);
- 
--	pm_runtime_mark_last_busy(bdev->dev);
- 	pm_runtime_put_autosuspend(bdev->dev);
- }
- 
-diff --git a/drivers/bluetooth/hci_bcm.c b/drivers/bluetooth/hci_bcm.c
-index 9684eb16059b..08f9a232e375 100644
---- a/drivers/bluetooth/hci_bcm.c
-+++ b/drivers/bluetooth/hci_bcm.c
-@@ -326,7 +326,6 @@ static irqreturn_t bcm_host_wake(int irq, void *data)
- 	bt_dev_dbg(bdev, "Host wake IRQ");
- 
- 	pm_runtime_get(bdev->dev);
--	pm_runtime_mark_last_busy(bdev->dev);
- 	pm_runtime_put_autosuspend(bdev->dev);
- 
- 	return IRQ_HANDLED;
-@@ -710,7 +709,6 @@ static int bcm_recv(struct hci_uart *hu, const void *data, int count)
- 		mutex_lock(&bcm_device_lock);
- 		if (bcm->dev && bcm_device_exists(bcm->dev)) {
- 			pm_runtime_get(bcm->dev->dev);
--			pm_runtime_mark_last_busy(bcm->dev->dev);
- 			pm_runtime_put_autosuspend(bcm->dev->dev);
- 		}
- 		mutex_unlock(&bcm_device_lock);
-@@ -749,7 +747,6 @@ static struct sk_buff *bcm_dequeue(struct hci_uart *hu)
- 	skb = skb_dequeue(&bcm->txq);
- 
- 	if (bdev) {
--		pm_runtime_mark_last_busy(bdev->dev);
- 		pm_runtime_put_autosuspend(bdev->dev);
- 	}
- 
-diff --git a/drivers/bluetooth/hci_h5.c b/drivers/bluetooth/hci_h5.c
-index d0d4420c1a0f..e932d66a1cc0 100644
---- a/drivers/bluetooth/hci_h5.c
-+++ b/drivers/bluetooth/hci_h5.c
-@@ -592,7 +592,6 @@ static int h5_recv(struct hci_uart *hu, const void *data, int count)
- 
- 	if (hu->serdev) {
- 		pm_runtime_get(&hu->serdev->dev);
--		pm_runtime_mark_last_busy(&hu->serdev->dev);
- 		pm_runtime_put_autosuspend(&hu->serdev->dev);
- 	}
- 
-@@ -634,7 +633,6 @@ static int h5_enqueue(struct hci_uart *hu, struct sk_buff *skb)
- 
- 	if (hu->serdev) {
- 		pm_runtime_get_sync(&hu->serdev->dev);
--		pm_runtime_mark_last_busy(&hu->serdev->dev);
- 		pm_runtime_put_autosuspend(&hu->serdev->dev);
- 	}
- 
-diff --git a/drivers/bluetooth/hci_intel.c b/drivers/bluetooth/hci_intel.c
-index 811f33701f84..6240ee23e030 100644
---- a/drivers/bluetooth/hci_intel.c
-+++ b/drivers/bluetooth/hci_intel.c
-@@ -280,7 +280,6 @@ static irqreturn_t intel_irq(int irq, void *dev_id)
- 
- 	/* Host/Controller are now LPM resumed, trigger a new delayed suspend */
- 	pm_runtime_get(&idev->pdev->dev);
--	pm_runtime_mark_last_busy(&idev->pdev->dev);
- 	pm_runtime_put_autosuspend(&idev->pdev->dev);
- 
- 	return IRQ_HANDLED;
-@@ -371,7 +370,6 @@ static void intel_busy_work(struct work_struct *work)
- 	list_for_each_entry(idev, &intel_device_list, list) {
- 		if (intel->hu->tty->dev->parent == idev->pdev->dev.parent) {
- 			pm_runtime_get(&idev->pdev->dev);
--			pm_runtime_mark_last_busy(&idev->pdev->dev);
- 			pm_runtime_put_autosuspend(&idev->pdev->dev);
- 			break;
- 		}
-@@ -1003,7 +1001,6 @@ static int intel_enqueue(struct hci_uart *hu, struct sk_buff *skb)
- 	list_for_each_entry(idev, &intel_device_list, list) {
- 		if (hu->tty->dev->parent == idev->pdev->dev.parent) {
- 			pm_runtime_get_sync(&idev->pdev->dev);
--			pm_runtime_mark_last_busy(&idev->pdev->dev);
- 			pm_runtime_put_autosuspend(&idev->pdev->dev);
- 			break;
- 		}
--- 
-2.39.5
-
+Applied, thanks Robin.
 
