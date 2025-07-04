@@ -4,64 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E115DC8303D
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jul 2025 15:09:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C675EC83F03
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jul 2025 16:07:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=y2VGVficsKZdMB7jd4IO88jbeeY5cNqJJaO2Adkm9qA=; b=gi++0kVyABv427iLggET4M78Mc
-	AvPElabnyKze2wnIkPxZSVoOSk9me3grpMlZ4I39IS2Wq6qGmaZ5CtJxd3Ky9PsyFSlgfcvUQYXa6
-	cLAGojYImKjpuScMTOKVu5mEX2YfhZyZBiBKAy/VMti/uSp7h8+3AW+FAbWzV/Iu+LcxI6w/iroXw
-	NxGIK1iPp2QPJ/3wQzcRY5mzbEQVSw6uXYyjiYwl09qwnYOKiNTEUxAWHOBLsL+sLaYkooj0U+Tf4
-	OvDSSZjuQCWgH4kjiHApaSbxGiSHnWLCfk4DxyF11RpVX+EB/le13gHa/odTe9oEUOAxISUZaXzyL
-	0GiwO6Ow==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZRw8bJBUl7TCVNH8Klw5RQtx3+bFYmtsMNcnAX9UJTI=; b=DkvfsAhrVWb7T39lLtdr08KHBu
+	FP5nruBiSiTISnepcBnZRCYgddL2bPsBWFYzXzlDTx/kQ8bftVQZRZs8f7Q8f88qppsxbeQfNKnZL
+	kcRgzIsn/txtRnnihgUOaOo8YUFz/RPxKq5jSFzUZB6yoJjKjC+qoP165RSlTg0wDS7aMIPbzgd6K
+	atq3yDJiOK9BQy7CmpHFYbns69CO7n/g2MrbgHftpU0MPxzEY+PpDtKdl5CjgSESV2+5vdFCfxAta
+	V0Cz7X+al1PCkZQ52ZcHH7wvJUXaj6Hx/PWS9bkePCAHWfsbtkIAPjcWHQrYgyPCe5Kz9V1ZtrVCu
+	t0qcTIxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXi30-0000000Em0n-3e3M;
-	Fri, 04 Jul 2025 15:09:54 +0000
-Received: from nyc.source.kernel.org ([147.75.193.91])
+	id 1uXiwk-0000000EuWM-34jG;
+	Fri, 04 Jul 2025 16:07:30 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXhph-0000000Ejcv-46XT;
-	Fri, 04 Jul 2025 14:56:11 +0000
+	id 1uXimt-0000000EtJT-09qx;
+	Fri, 04 Jul 2025 15:57:20 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 378EAA53C9A;
-	Fri,  4 Jul 2025 14:56:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A8EB5C4CEE3;
-	Fri,  4 Jul 2025 14:56:06 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 67E965C6294;
+	Fri,  4 Jul 2025 15:57:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C2C95C4CEE3;
+	Fri,  4 Jul 2025 15:57:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751640968;
-	bh=wUe1tVAHYsVRseV1SJHF2HIemjtOqk7S/dvCijh60G8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=eGJ3O1NCJMPg5dnuVN/zqoFOgMns+rl4jUZc+UNbXHrrz9npKf1O8QyxyVf5iloKG
-	 c4JajbJuXqEsL+1p2cqfv4ConEiPImRiPQPLVG4xua62g+F7+bW3nOG2UaUQqTh9Xn
-	 rkXnefrEoj2QFS34DqK9Rw97pP1tsP9z1/vhR5ZNK4SEDj584PeU3dKI0VxVGQjSLC
-	 ughOBVG/UYns4sBDANtdSg4oqV0SuyrM/HOPY6ohrMr+LQT0AP2PxxCXmKjxXEdtKi
-	 k3PQuwiOun2z/LwRrtcus0ZXYr9UCQgxjirtH5Y8M6khfITF0Xx+f4RNmmpPQfsFgc
-	 Cu6g752/2s58w==
-Date: Fri, 4 Jul 2025 15:56:04 +0100
-From: Simon Horman <horms@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net-next 4/6] net: airoha: npu: Read NPU interrupt lines
- from the DTS
-Message-ID: <20250704145604.GD41770@horms.kernel.org>
-References: <20250702-airoha-en7581-wlan-offlaod-v1-0-803009700b38@kernel.org>
- <20250702-airoha-en7581-wlan-offlaod-v1-4-803009700b38@kernel.org>
+	s=k20201202; t=1751644638;
+	bh=8AiV8GZ8dXSm8Gr4E1ix6z5OY/73wpxxP/YoaU2wWsg=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=vCYB0L4ef5CtdNA76NK99aEBeqswiQI3Fr8kzqCEAdZLZOggQCVZGyBB3vmBB34NW
+	 4qx1EkPEHv6V7bWrQfJ+aqgwHsY/fnSnxF8nKrGisZxTP4gRiX8qqnaZsk8FUxdXQN
+	 KQ3vjX7XtRXJNKbsN9f1rwng5MYzR/4x7emG6fhHMjULEPUNnXSbo0lERflm5YZnx9
+	 CAiaBXdUJVF8u9cShVm7CLKV+lfl8o2EHovC3hToDsycP1AFRFGwI/CmDzFNUIcaF/
+	 VjEztecmEpBU7W27v7ueEfwcRUxjjdkA52FJljwFQHHl0GDnzC1aGn00SOBd+/6dN0
+	 Yk5M9sG81tcbg==
+From: Mark Brown <broonie@kernel.org>
+To: Cheng-Yi Chiang <cychiang@chromium.org>, 
+ Tzung-Bi Shih <tzungbi@kernel.org>, Guenter Roeck <groeck@chromium.org>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Benson Leung <bleung@chromium.org>, 
+ Peter Ujfalusi <peter.ujfalusi@linux.intel.com>, 
+ Bard Liao <yung-chuan.liao@linux.intel.com>, 
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>, 
+ Daniel Baluta <daniel.baluta@nxp.com>, 
+ Kai Vehmanen <kai.vehmanen@linux.intel.com>, 
+ Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>, 
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ "Rob Herring (Arm)" <robh@kernel.org>
+Cc: chrome-platform@lists.linux.dev, linux-sound@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, sound-open-firmware@alsa-project.org, 
+ imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <20250703183523.2075276-1-robh@kernel.org>
+References: <20250703183523.2075276-1-robh@kernel.org>
+Subject: Re: [PATCH] ASoC: Use of_reserved_mem_region_to_resource() for
+ "memory-region"
+Message-Id: <175164463151.103413.17242498440518772923.b4-ty@kernel.org>
+Date: Fri, 04 Jul 2025 16:57:11 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250702-airoha-en7581-wlan-offlaod-v1-4-803009700b38@kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.15-dev-cff91
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250704_075610_089333_0D583F9C 
-X-CRM114-Status: GOOD (  10.20  )
+X-CRM114-CacheID: sfid-20250704_085719_122796_AE42F4AB 
+X-CRM114-Status: GOOD (  10.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,15 +89,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 02, 2025 at 12:23:33AM +0200, Lorenzo Bianconi wrote:
-> Read all NPU supported IRQ lines from NPU device-tree node.
-> This is a preliminary patch to enable wlan flowtable offload for EN7581
-> SoC.
+On Thu, 03 Jul 2025 13:35:21 -0500, Rob Herring (Arm) wrote:
+> Use the newly added of_reserved_mem_region_to_resource() function to
+> handle "memory-region" properties.
 > 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> 
 
-Hi Lorenzo,
+Applied to
 
-I think a bit more information is needed on how you plan to use this.
-Ideally in the form of a patch that does so.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+
+Thanks!
+
+[1/1] ASoC: Use of_reserved_mem_region_to_resource() for "memory-region"
+      commit: bc163baef57002c08b3afe64cdd2f55f55a765eb
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
