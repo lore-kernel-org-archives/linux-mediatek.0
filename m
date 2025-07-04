@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BCD4C83F03
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jul 2025 15:05:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C115DC83F03
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jul 2025 15:07:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JwPESGhWKv+7KcG7Y+6hg6ArUz7BLGZW3c250YalFrk=; b=JVxD3dA9EF1E94nNjwHeE4oeau
-	NXvdElDQEEqCIJigtFKl4A5GFrxzXX0n+ENYivWDjqcTOyFzgUNjZOlOQH7SrlfJL6vGpw69XCIs6
-	3+lhOEcXyuTX7zxsRIf1Ps/k9j8W1b6RS9zrKeInjdSZL15zs4rBwKZ10AjsxIPse1oaGczxAft0J
-	R2jZ3Xs4ENvevzher135jx+74K/TbCPPnrOueGPNtnbU4UI0oItMh0KcImVnqOltTE5FTf8xmazc6
-	LbLmTnW81BbmWxxeVVFgSEK0T2UDddGctL0Sf+Itm3qOVktEDfWZlQfqLt+jb/a5ddjyG46sErh7U
-	AFz9sxFA==;
+	bh=4zfUJz82lCcOlEvES9OKZvhzjAWT7OKMPA/+q8H16l8=; b=weC+n8Zt9seOlOFi5TKND49H41
+	iSdgDQt8CHJavt1b4o5Mbe/2dlJ2rFDzxxJKxGwNhdXt6p39iZlCueEgcsQiNF+WvAXhShhtPBvEW
+	tjuU7nBnTxe8AG0CKy9KEXkggeo1C/Z1RbePIvn84b/sA5i3PEW2o9+J5CCs6Ls06I0HZ+7xRGfyT
+	6zXac5ieK9OL4X/kEyo8emhs0daoaIJYH5ppe/RBCS+JDpfMG0Q8ZYg7zbAZpWXnCw/R8ipRndU+C
+	seZ7Ugauyv9UZWcpA64S9l6BSEqkrfutoWvvjgxs3qrfx+2cqpsvZlDXd0AsvsqgGP1D+y7+joepi
+	wciyJtWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXhyM-0000000Ekk8-1OUf;
-	Fri, 04 Jul 2025 15:05:06 +0000
+	id 1uXi0g-0000000ElOg-3RbU;
+	Fri, 04 Jul 2025 15:07:30 +0000
 Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXhlq-0000000Ej5p-0HAn;
-	Fri, 04 Jul 2025 14:52:11 +0000
+	id 1uXhmE-0000000Ej9X-2A4t;
+	Fri, 04 Jul 2025 14:52:35 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 3F0CDA53C98;
-	Fri,  4 Jul 2025 14:52:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ADAFEC4CEE3;
-	Fri,  4 Jul 2025 14:52:06 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id C97D1A53C98;
+	Fri,  4 Jul 2025 14:52:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45462C4CEE3;
+	Fri,  4 Jul 2025 14:52:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751640728;
-	bh=KYFuRsqR/zu9FKP7GnSfbAmTbkR2pR9lH10PSgYV828=;
+	s=k20201202; t=1751640753;
+	bh=wvOUH9o5gF0uSYr6gvxt4vxQuZRlLrBQ6mBTFf1tR+c=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=UgSkqDYNHPRrNBMyLjRXv6KNc88Uo7f+E64cgYIKYBk+GHqPoAEhzpf7ou0EO7lqL
-	 83WYucbPjic+d50gqC6WzcgvliuTcdwRB43sy+DJXRnIIU4gZvI9iUKh9RNOxvr4k8
-	 bygqVu9rcHADe/eBZmVFYXzdcBpSX1wpXoV1eJQzE6bdHsSkXiHBIOpt0PJPETnXvn
-	 5TxSkZT6wkizA1OVN455wCvarspTCHh5hxW8v5Q0hOUNDAAUsQ8N4VDI70hY5P2Cyv
-	 zPHrxfZjQ6kzkwHgs6mIIhxZoSj8iyAzxPyCaAxnteaTkEa0cyTHZ0yFthoh/GkMln
-	 a9Z5CZugJDZlw==
-Date: Fri, 4 Jul 2025 15:52:04 +0100
+	b=pkDeEF/aBKKjiyfySfAjHWe+wKIukH1FABhdvHAn5Focb1nEhYzIM0QS2MWnKCp17
+	 SkWenXLA1NkTCT9p0SjGCICseqYQ3ZoHgXXyLCWUIOMHNVFl2A9b4psdS7MYRJZ+lM
+	 tHlMG5+EYOmuCJL/KfaFn9fRZ6KCD5eGAGeARiEK5FmjtZ7ofBqjnfjzeAIrEcJ3Hf
+	 CNQLW+Yy680g0P4W5Ew84TgJj3MFNiYJsqzD4qEw7yN7qqPpNqqqcgHW8cg68FAL1n
+	 Sat727tIQTMcYeJteADAs1b/ryX051qt07Xv67OValRQ7mzDqIMy32Q614E0sqcb3Y
+	 LFkWfSKsuK2qQ==
+Date: Fri, 4 Jul 2025 15:52:28 +0100
 From: Simon Horman <horms@kernel.org>
 To: Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
@@ -50,18 +50,18 @@ Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net-next 3/6] net: airoha: npu: Add wlan irq management
- callbacks
-Message-ID: <20250704145204.GB41770@horms.kernel.org>
+Subject: Re: [PATCH net-next 5/6] net: airoha: npu: Enable core 3 for WiFi
+ offloading
+Message-ID: <20250704145228.GC41770@horms.kernel.org>
 References: <20250702-airoha-en7581-wlan-offlaod-v1-0-803009700b38@kernel.org>
- <20250702-airoha-en7581-wlan-offlaod-v1-3-803009700b38@kernel.org>
+ <20250702-airoha-en7581-wlan-offlaod-v1-5-803009700b38@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250702-airoha-en7581-wlan-offlaod-v1-3-803009700b38@kernel.org>
+In-Reply-To: <20250702-airoha-en7581-wlan-offlaod-v1-5-803009700b38@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250704_075210_175061_8A488948 
-X-CRM114-Status: UNSURE (   8.83  )
+X-CRM114-CacheID: sfid-20250704_075234_627727_3BD8998D 
+X-CRM114-Status: UNSURE (   7.14  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,10 +77,9 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 02, 2025 at 12:23:32AM +0200, Lorenzo Bianconi wrote:
-> Introduce callbacks used by the MT76 driver to configure NPU SoC
-> interrupts. This is a preliminary patch to enable wlan flowtable
-> offload for EN7581 SoC with MT76 driver.
+On Wed, Jul 02, 2025 at 12:23:34AM +0200, Lorenzo Bianconi wrote:
+> NPU core 3 is responsible for WiFi offloading so enable it during NPU
+> probe.
 > 
 > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
