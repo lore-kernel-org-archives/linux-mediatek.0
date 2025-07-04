@@ -4,103 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1BB5C83F03
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jul 2025 08:08:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F1DBC83030
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jul 2025 08:39:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jpBAcyCN4P10EAu/CJbWGD95dsGLpgeNcWvqA8BQ/SE=; b=0Bj4q+5cL7XgUo2ZWjMRKX4XUI
-	w1hQPPw2GrdB+NcnPbV5qwQmj9mU1KLwWLGYSROo34aCCgGB/P14/ZEs3yD8b6GvnyfFwYR880ztU
-	Uf7ox2PA6TOixf2TBo5PXtF/3u4R6IXrojv46tMmEQKLIxMpq4gpMuQ622AI4fF/zn7qGaTRKLahB
-	d2v2QWOkt7sTM9a8U/cdHSsroweQthf/AxP7G/JEsDObTnoEUni2Ioot0y3NLcwWcWc6PTD0zT31Y
-	od5n30GdwxqK4KnIigzx+17c4+cDCYVQAPviGxsEnzOERetfxY2m5obnpyxsM9O4+K/gB1iriBTSM
-	XAj2NrZg==;
+	bh=j08NgyGjmrnbNPUCkwPQ3u7ge+EV+at/S04p3C28HuU=; b=IO5sP7/7N50ZPR83ugYwAQJABQ
+	DTbEUyx//ZF3hzqz+pSGxqTr1IqpZz9MIP7eu2qnHmq9Z1spYZiPDuqabSX/YVvyLPoxxc3s79wK7
+	vlx6Oar8vZqhvbY+D/37ozU3m6WbTmF5pj9SfiPDZ8SOXR1NRVUrGru8I0rzQ3pc5H1wMYaBZN8q4
+	CYbHBf6uODKt12niIZJtHEQfxdidpM8sKOV+g2bKRj9xQ6h43aG7E/3Awu6YWStuXcaSDVbk5auJ1
+	7WdVOoZabNbYqfrxRLTz007IO7LmvVP2rIVhbhzQrCNakMsay7fUwB9SOVSpmjUVxWG5F+2m0Lrau
+	baEbZ7YQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXbT9-0000000DfY2-0Fmy;
-	Fri, 04 Jul 2025 08:08:27 +0000
-Received: from mgamail.intel.com ([198.175.65.9])
+	id 1uXbxG-0000000DlXq-3SPm;
+	Fri, 04 Jul 2025 08:39:34 +0000
+Received: from mgamail.intel.com ([198.175.65.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXbFM-0000000DcxD-1v1t;
-	Fri, 04 Jul 2025 07:54:13 +0000
+	id 1uXbGK-0000000DdGu-1Nm5;
+	Fri, 04 Jul 2025 07:55:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1751615652; x=1783151652;
+  t=1751615713; x=1783151713;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=IxQt0PoKk8BTvmWimbOLB4rG5iTXBM6oigomry2CjPY=;
-  b=D92tnGd2m9P53WqJb0niLhfIsHbgwKtc8XcrDKbH483z+Cc/bX68KsL+
-   Itm/mEtg40fMrZRI/rwdy5Wv65cqtDrnKsRMkJo8bTLL1s6TCVC5lEWuK
-   VmLKGK5ztxNRgiAJciHAQt2K/wIrA8VbZR0kS5yDmYlM5lqZtk9z1bGIl
-   CrgpzW9xY1A8lVczapq8jGYbRP2ZNT+rOmu+FRZ3dNfwjvQXP6xrj06wc
-   krCIwVi1oR3OPzoOgUks7NRBmtcLseYSkap1VP6G/aR2isgCqUIVTw4mD
-   nsesNMChZuXKM2rXJKnfK5AqGNGVHxIWfA5ezBA0zGqZOnUIVAP8WcqnD
+  bh=VtrMMS/EYac2mYN0thS6RYOHnRUoRDdcw8Uw9hEQxe0=;
+  b=icQ3+5/WAaILEIZFaldD8dAXwhlDEkePUJd+iJr+qxs2uvpVs8e45yyB
+   /mn5memNp0T95qXSZ/jSxozFniNaTua2domLZEkPvjFj1LiYWtc/XZbkO
+   n4VCxGp/V6A8/J+VE2kaDxTO1aUhSjzYeRE5kfe12RksKo2OUJVaPvdyq
+   ZW7bvIuGZ7SrQZ1oDkFWzI0QNfxu1B6YUvQ7zDOHTMlEeP1357ZIomToh
+   rzVh4xQuXyVY1FEYFBoakEqZEIMFwD9+QEpy+kiAQwGH8MpGogZ9t+Qr4
+   ij1jsjuiyOuG0d9CFV8NNIk5l/mMxzP/0L9DdgATeu+AMZBhjADqLUM5w
    w==;
-X-CSE-ConnectionGUID: lscCBWMqTYSdhIdfROClqg==
-X-CSE-MsgGUID: EFGlNN9mRoW/7dZyVOuCig==
-X-IronPort-AV: E=McAfee;i="6800,10657,11483"; a="76494516"
+X-CSE-ConnectionGUID: uy711cjJRmW7L1G0szsoxg==
+X-CSE-MsgGUID: 1NDZLJLFSNK0lEkaR+K8WQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11483"; a="64194327"
 X-IronPort-AV: E=Sophos;i="6.16,286,1744095600"; 
-   d="scan'208";a="76494516"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Jul 2025 00:54:11 -0700
-X-CSE-ConnectionGUID: TZWybnM3T2OaX6AYFlRSrA==
-X-CSE-MsgGUID: EyGJEJv5SXuqPS0vZtHSNw==
+   d="scan'208";a="64194327"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Jul 2025 00:55:03 -0700
+X-CSE-ConnectionGUID: jIXe8cbqS1yvqeVuXvR2hw==
+X-CSE-MsgGUID: 1doSRlVvQPm86EldGdrOEA==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.16,286,1744095600"; 
-   d="scan'208";a="158924166"
+   d="scan'208";a="158616706"
 Received: from jkrzyszt-mobl2.ger.corp.intel.com (HELO svinhufvud.fi.intel.com) ([10.245.244.244])
-  by ORVIESA003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Jul 2025 00:54:02 -0700
+  by fmviesa003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Jul 2025 00:54:55 -0700
 Received: from svinhufvud.lan (localhost [IPv6:::1])
-	by svinhufvud.fi.intel.com (Postfix) with ESMTP id 18CED4445A;
-	Fri,  4 Jul 2025 10:54:00 +0300 (EEST)
+	by svinhufvud.fi.intel.com (Postfix) with ESMTP id CB15944843;
+	Fri,  4 Jul 2025 10:54:53 +0300 (EEST)
 Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6 krs, Bertel Jungin Aukio 5, 02600 Espoo
 From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Olivia Mackall <olivia@selenic.com>,
-	Herbert Xu <herbert@gondor.apana.org.au>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Hadar Gat <hadar.gat@arm.com>,
-	Sean Wang <sean.wang@mediatek.com>,
+To: Peter Chen <peter.chen@kernel.org>,
+	Pawel Laszczak <pawell@cadence.com>,
+	Roger Quadros <rogerq@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Thinh Nguyen <Thinh.Nguyen@synopsys.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Michal Simek <michal.simek@amd.com>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Mathias Nyman <mathias.nyman@intel.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Avi Fishman <avifishman70@gmail.com>,
-	Tomer Maimon <tmaimon77@gmail.com>,
-	Tali Perry <tali.perry1@gmail.com>,
-	Patrick Venture <venture@google.com>,
-	Nancy Yuen <yuenn@google.com>,
-	Benjamin Fair <benjaminfair@google.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
-	Marek Vasut <marex@denx.de>,
-	Gatien Chevallier <gatien.chevallier@foss.st.com>
-Cc: linux-crypto@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Bastien Nocera <hadess@hadess.net>,
+	Bin Liu <b-liu@ti.com>
+Cc: linux-usb@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
+	imx@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	openbmc@lists.ozlabs.org,
-	linux-rockchip@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com
-Subject: [PATCH 05/80] hwrng: Remove redundant pm_runtime_mark_last_busy() calls
-Date: Fri,  4 Jul 2025 10:53:59 +0300
-Message-Id: <20250704075359.3217036-1-sakari.ailus@linux.intel.com>
+	linux-tegra@vger.kernel.org,
+	linux-omap@vger.kernel.org
+Subject: [PATCH 67/80] usb: Remove redundant pm_runtime_mark_last_busy() calls
+Date: Fri,  4 Jul 2025 10:54:53 +0300
+Message-Id: <20250704075453.3222311-1-sakari.ailus@linux.intel.com>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250704075225.3212486-1-sakari.ailus@linux.intel.com>
 References: <20250704075225.3212486-1-sakari.ailus@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250704_005412_541218_A2A9B6E4 
-X-CRM114-Status: GOOD (  13.53  )
+X-CRM114-CacheID: sfid-20250704_005512_462404_4F183EC5 
+X-CRM114-Status: GOOD (  16.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,115 +125,351 @@ rc2:
         git://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm.git \
                 pm-runtime-6.17-rc1
 
- drivers/char/hw_random/atmel-rng.c     | 1 -
- drivers/char/hw_random/cctrng.c        | 1 -
- drivers/char/hw_random/mtk-rng.c       | 1 -
- drivers/char/hw_random/npcm-rng.c      | 1 -
- drivers/char/hw_random/omap3-rom-rng.c | 1 -
- drivers/char/hw_random/rockchip-rng.c  | 3 ---
- drivers/char/hw_random/stm32-rng.c     | 1 -
- 7 files changed, 9 deletions(-)
+ drivers/usb/cdns3/cdns3-gadget.c            | 1 -
+ drivers/usb/cdns3/cdnsp-gadget.c            | 1 -
+ drivers/usb/chipidea/core.c                 | 1 -
+ drivers/usb/chipidea/otg_fsm.c              | 1 -
+ drivers/usb/dwc3/core.c                     | 2 --
+ drivers/usb/dwc3/dwc3-am62.c                | 1 -
+ drivers/usb/dwc3/dwc3-imx8mp.c              | 1 -
+ drivers/usb/dwc3/dwc3-pci.c                 | 1 -
+ drivers/usb/dwc3/dwc3-xilinx.c              | 1 -
+ drivers/usb/gadget/udc/cdns2/cdns2-gadget.c | 1 -
+ drivers/usb/host/xhci-mtk.c                 | 1 -
+ drivers/usb/host/xhci-tegra.c               | 1 -
+ drivers/usb/misc/apple-mfi-fastcharge.c     | 1 -
+ drivers/usb/mtu3/mtu3_plat.c                | 1 -
+ drivers/usb/musb/musb_core.c                | 5 -----
+ drivers/usb/musb/musb_debugfs.c             | 5 -----
+ drivers/usb/musb/musb_dsps.c                | 1 -
+ drivers/usb/musb/musb_gadget.c              | 4 ----
+ drivers/usb/musb/omap2430.c                 | 1 -
+ 19 files changed, 31 deletions(-)
 
-diff --git a/drivers/char/hw_random/atmel-rng.c b/drivers/char/hw_random/atmel-rng.c
-index d2b00458761e..6ed24be3481d 100644
---- a/drivers/char/hw_random/atmel-rng.c
-+++ b/drivers/char/hw_random/atmel-rng.c
-@@ -80,7 +80,6 @@ static int atmel_trng_read(struct hwrng *rng, void *buf, size_t max,
- 	ret = 4;
+diff --git a/drivers/usb/cdns3/cdns3-gadget.c b/drivers/usb/cdns3/cdns3-gadget.c
+index d9d8dc05b235..168707213ed9 100644
+--- a/drivers/usb/cdns3/cdns3-gadget.c
++++ b/drivers/usb/cdns3/cdns3-gadget.c
+@@ -3251,7 +3251,6 @@ static void cdns3_gadget_exit(struct cdns *cdns)
+ 	priv_dev = cdns->gadget_dev;
+ 
+ 
+-	pm_runtime_mark_last_busy(cdns->dev);
+ 	pm_runtime_put_autosuspend(cdns->dev);
+ 
+ 	usb_del_gadget(&priv_dev->gadget);
+diff --git a/drivers/usb/cdns3/cdnsp-gadget.c b/drivers/usb/cdns3/cdnsp-gadget.c
+index 55f95f41b3b4..2ffe24a6e477 100644
+--- a/drivers/usb/cdns3/cdnsp-gadget.c
++++ b/drivers/usb/cdns3/cdnsp-gadget.c
+@@ -1996,7 +1996,6 @@ static void cdnsp_gadget_exit(struct cdns *cdns)
+ 	struct cdnsp_device *pdev = cdns->gadget_dev;
+ 
+ 	devm_free_irq(pdev->dev, cdns->dev_irq, pdev);
+-	pm_runtime_mark_last_busy(cdns->dev);
+ 	pm_runtime_put_autosuspend(cdns->dev);
+ 	usb_del_gadget_udc(&pdev->gadget);
+ 	cdnsp_gadget_free_endpoints(pdev);
+diff --git a/drivers/usb/chipidea/core.c b/drivers/usb/chipidea/core.c
+index 694b4a8e4e1d..a6ce73dcc871 100644
+--- a/drivers/usb/chipidea/core.c
++++ b/drivers/usb/chipidea/core.c
+@@ -1372,7 +1372,6 @@ static int ci_controller_resume(struct device *dev)
+ 	ci->in_lpm = false;
+ 	if (ci->wakeup_int) {
+ 		ci->wakeup_int = false;
+-		pm_runtime_mark_last_busy(ci->dev);
+ 		pm_runtime_put_autosuspend(ci->dev);
+ 		enable_irq(ci->irq);
+ 		if (ci_otg_is_fsm_mode(ci))
+diff --git a/drivers/usb/chipidea/otg_fsm.c b/drivers/usb/chipidea/otg_fsm.c
+index a093544482d5..929536dc96ec 100644
+--- a/drivers/usb/chipidea/otg_fsm.c
++++ b/drivers/usb/chipidea/otg_fsm.c
+@@ -629,7 +629,6 @@ int ci_otg_fsm_work(struct ci_hdrc *ci)
+ 				ci_otg_queue_work(ci);
+ 			}
+ 		} else if (ci->fsm.otg->state == OTG_STATE_A_HOST) {
+-			pm_runtime_mark_last_busy(ci->dev);
+ 			pm_runtime_put_autosuspend(ci->dev);
+ 			return 0;
+ 		}
+diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
+index 8002c23a5a02..77b309ebd704 100644
+--- a/drivers/usb/dwc3/core.c
++++ b/drivers/usb/dwc3/core.c
+@@ -279,7 +279,6 @@ static void __dwc3_set_mode(struct work_struct *work)
+ 	}
  
  out:
--	pm_runtime_mark_last_busy(trng->dev);
- 	pm_runtime_put_sync_autosuspend(trng->dev);
- 	return ret;
+-	pm_runtime_mark_last_busy(dwc->dev);
+ 	pm_runtime_put_autosuspend(dwc->dev);
+ 	mutex_unlock(&dwc->mutex);
  }
-diff --git a/drivers/char/hw_random/cctrng.c b/drivers/char/hw_random/cctrng.c
-index 4db198849695..a5be9258037f 100644
---- a/drivers/char/hw_random/cctrng.c
-+++ b/drivers/char/hw_random/cctrng.c
-@@ -98,7 +98,6 @@ static void cc_trng_pm_put_suspend(struct device *dev)
- {
- 	int rc = 0;
+@@ -2642,7 +2641,6 @@ int dwc3_runtime_idle(struct dwc3 *dwc)
+ 		break;
+ 	}
  
 -	pm_runtime_mark_last_busy(dev);
- 	rc = pm_runtime_put_autosuspend(dev);
- 	if (rc)
- 		dev_err(dev, "pm_runtime_put_autosuspend returned %x\n", rc);
-diff --git a/drivers/char/hw_random/mtk-rng.c b/drivers/char/hw_random/mtk-rng.c
-index b7fa1bc1122b..c89171df7635 100644
---- a/drivers/char/hw_random/mtk-rng.c
-+++ b/drivers/char/hw_random/mtk-rng.c
-@@ -98,7 +98,6 @@ static int mtk_rng_read(struct hwrng *rng, void *buf, size_t max, bool wait)
- 		max -= sizeof(u32);
+ 	pm_runtime_autosuspend(dev);
+ 
+ 	return 0;
+diff --git a/drivers/usb/dwc3/dwc3-am62.c b/drivers/usb/dwc3/dwc3-am62.c
+index 9db8f3ca493d..e11d7643f966 100644
+--- a/drivers/usb/dwc3/dwc3-am62.c
++++ b/drivers/usb/dwc3/dwc3-am62.c
+@@ -292,7 +292,6 @@ static int dwc3_ti_probe(struct platform_device *pdev)
+ 	/* Setting up autosuspend */
+ 	pm_runtime_set_autosuspend_delay(dev, DWC3_AM62_AUTOSUSPEND_DELAY);
+ 	pm_runtime_use_autosuspend(dev);
+-	pm_runtime_mark_last_busy(dev);
+ 	pm_runtime_put_autosuspend(dev);
+ 	return 0;
+ 
+diff --git a/drivers/usb/dwc3/dwc3-imx8mp.c b/drivers/usb/dwc3/dwc3-imx8mp.c
+index 3edc5aca76f9..37700d95bc09 100644
+--- a/drivers/usb/dwc3/dwc3-imx8mp.c
++++ b/drivers/usb/dwc3/dwc3-imx8mp.c
+@@ -307,7 +307,6 @@ static int dwc3_imx8mp_resume(struct dwc3_imx8mp *dwc3_imx, pm_message_t msg)
+ 	if (dwc3_imx->wakeup_pending) {
+ 		dwc3_imx->wakeup_pending = false;
+ 		if (dwc->current_dr_role == DWC3_GCTL_PRTCAP_DEVICE) {
+-			pm_runtime_mark_last_busy(dwc->dev);
+ 			pm_runtime_put_autosuspend(dwc->dev);
+ 		} else {
+ 			/*
+diff --git a/drivers/usb/dwc3/dwc3-pci.c b/drivers/usb/dwc3/dwc3-pci.c
+index 54a4ee2b90b7..07dfa0b5d184 100644
+--- a/drivers/usb/dwc3/dwc3-pci.c
++++ b/drivers/usb/dwc3/dwc3-pci.c
+@@ -321,7 +321,6 @@ static void dwc3_pci_resume_work(struct work_struct *work)
+ 		return;
  	}
  
--	pm_runtime_mark_last_busy(priv->dev);
- 	pm_runtime_put_sync_autosuspend(priv->dev);
+-	pm_runtime_mark_last_busy(&dwc3->dev);
+ 	pm_runtime_put_sync_autosuspend(&dwc3->dev);
+ }
+ #endif
+diff --git a/drivers/usb/dwc3/dwc3-xilinx.c b/drivers/usb/dwc3/dwc3-xilinx.c
+index 1e28d6f50ed0..0a8c47876ff9 100644
+--- a/drivers/usb/dwc3/dwc3-xilinx.c
++++ b/drivers/usb/dwc3/dwc3-xilinx.c
+@@ -383,7 +383,6 @@ static int __maybe_unused dwc3_xlnx_runtime_resume(struct device *dev)
  
- 	return retval || !wait ? retval : -EIO;
-diff --git a/drivers/char/hw_random/npcm-rng.c b/drivers/char/hw_random/npcm-rng.c
-index 3e308c890bd2..40d6e29dea03 100644
---- a/drivers/char/hw_random/npcm-rng.c
-+++ b/drivers/char/hw_random/npcm-rng.c
-@@ -80,7 +80,6 @@ static int npcm_rng_read(struct hwrng *rng, void *buf, size_t max, bool wait)
- 		max--;
+ static int __maybe_unused dwc3_xlnx_runtime_idle(struct device *dev)
+ {
+-	pm_runtime_mark_last_busy(dev);
+ 	pm_runtime_autosuspend(dev);
+ 
+ 	return 0;
+diff --git a/drivers/usb/gadget/udc/cdns2/cdns2-gadget.c b/drivers/usb/gadget/udc/cdns2/cdns2-gadget.c
+index 7e69944ef18a..9b53daf76583 100644
+--- a/drivers/usb/gadget/udc/cdns2/cdns2-gadget.c
++++ b/drivers/usb/gadget/udc/cdns2/cdns2-gadget.c
+@@ -2415,7 +2415,6 @@ int cdns2_gadget_resume(struct cdns2_device *pdev, bool hibernated)
+ 
+ void cdns2_gadget_remove(struct cdns2_device *pdev)
+ {
+-	pm_runtime_mark_last_busy(pdev->dev);
+ 	pm_runtime_put_autosuspend(pdev->dev);
+ 
+ 	usb_del_gadget(&pdev->gadget);
+diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+index 208558cf822d..06043c7c3100 100644
+--- a/drivers/usb/host/xhci-mtk.c
++++ b/drivers/usb/host/xhci-mtk.c
+@@ -670,7 +670,6 @@ static int xhci_mtk_probe(struct platform_device *pdev)
  	}
  
--	pm_runtime_mark_last_busy(priv->dev);
- 	pm_runtime_put_sync_autosuspend(priv->dev);
+ 	device_enable_async_suspend(dev);
+-	pm_runtime_mark_last_busy(dev);
+ 	pm_runtime_put_autosuspend(dev);
+ 	pm_runtime_forbid(dev);
  
- 	return retval || !wait ? retval : -EIO;
-diff --git a/drivers/char/hw_random/omap3-rom-rng.c b/drivers/char/hw_random/omap3-rom-rng.c
-index 8064c792caf0..aa71f61c3dc9 100644
---- a/drivers/char/hw_random/omap3-rom-rng.c
-+++ b/drivers/char/hw_random/omap3-rom-rng.c
-@@ -56,7 +56,6 @@ static int omap3_rom_rng_read(struct hwrng *rng, void *data, size_t max, bool w)
- 	else
- 		r = 4;
+diff --git a/drivers/usb/host/xhci-tegra.c b/drivers/usb/host/xhci-tegra.c
+index 0c7af44d4dae..554b03e3ae92 100644
+--- a/drivers/usb/host/xhci-tegra.c
++++ b/drivers/usb/host/xhci-tegra.c
+@@ -1394,7 +1394,6 @@ static void tegra_xhci_id_work(struct work_struct *work)
+ 		}
  
--	pm_runtime_mark_last_busy(ddata->dev);
- 	pm_runtime_put_autosuspend(ddata->dev);
+ 		tegra_xhci_set_port_power(tegra, true, true);
+-		pm_runtime_mark_last_busy(tegra->dev);
  
- 	return r;
-diff --git a/drivers/char/hw_random/rockchip-rng.c b/drivers/char/hw_random/rockchip-rng.c
-index fb4a30b95507..6e3ed4b85605 100644
---- a/drivers/char/hw_random/rockchip-rng.c
-+++ b/drivers/char/hw_random/rockchip-rng.c
-@@ -223,7 +223,6 @@ static int rk3568_rng_read(struct hwrng *rng, void *buf, size_t max, bool wait)
- 	/* Read random data stored in the registers */
- 	memcpy_fromio(buf, rk_rng->base + TRNG_RNG_DOUT, to_read);
- out:
--	pm_runtime_mark_last_busy(rk_rng->dev);
- 	pm_runtime_put_sync_autosuspend(rk_rng->dev);
- 
- 	return (ret < 0) ? ret : to_read;
-@@ -263,7 +262,6 @@ static int rk3576_rng_read(struct hwrng *rng, void *buf, size_t max, bool wait)
- 	memcpy_fromio(buf, rk_rng->base + RKRNG_TRNG_DATA0, to_read);
- 
- out:
--	pm_runtime_mark_last_busy(rk_rng->dev);
- 	pm_runtime_put_sync_autosuspend(rk_rng->dev);
- 
- 	return (ret < 0) ? ret : to_read;
-@@ -355,7 +353,6 @@ static int rk3588_rng_read(struct hwrng *rng, void *buf, size_t max, bool wait)
- 	/* close the TRNG */
- 	rk_rng_writel(rk_rng, TRNG_V1_CTRL_NOP, TRNG_V1_CTRL);
- 
--	pm_runtime_mark_last_busy(rk_rng->dev);
- 	pm_runtime_put_sync_autosuspend(rk_rng->dev);
- 
- 	return (ret < 0) ? ret : to_read;
-diff --git a/drivers/char/hw_random/stm32-rng.c b/drivers/char/hw_random/stm32-rng.c
-index 98edbe796bc5..9a8c00586ab0 100644
---- a/drivers/char/hw_random/stm32-rng.c
-+++ b/drivers/char/hw_random/stm32-rng.c
-@@ -255,7 +255,6 @@ static int stm32_rng_read(struct hwrng *rng, void *data, size_t max, bool wait)
+ 	} else {
+ 		if (tegra->otg_usb3_port >= 0)
+diff --git a/drivers/usb/misc/apple-mfi-fastcharge.c b/drivers/usb/misc/apple-mfi-fastcharge.c
+index 8e852f4b8262..47b38dcc2992 100644
+--- a/drivers/usb/misc/apple-mfi-fastcharge.c
++++ b/drivers/usb/misc/apple-mfi-fastcharge.c
+@@ -134,7 +134,6 @@ static int apple_mfi_fc_set_property(struct power_supply *psy,
+ 		ret = -EINVAL;
  	}
  
- exit_rpm:
--	pm_runtime_mark_last_busy(priv->dev);
- 	pm_runtime_put_sync_autosuspend(priv->dev);
+-	pm_runtime_mark_last_busy(&mfi->udev->dev);
+ 	pm_runtime_put_autosuspend(&mfi->udev->dev);
  
- 	return retval || !wait ? retval : -EIO;
+ 	return ret;
+diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
+index 7b5a431acb56..cc8a864dbd63 100644
+--- a/drivers/usb/mtu3/mtu3_plat.c
++++ b/drivers/usb/mtu3/mtu3_plat.c
+@@ -431,7 +431,6 @@ static int mtu3_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	device_enable_async_suspend(dev);
+-	pm_runtime_mark_last_busy(dev);
+ 	pm_runtime_put_autosuspend(dev);
+ 	pm_runtime_forbid(dev);
+ 
+diff --git a/drivers/usb/musb/musb_core.c b/drivers/usb/musb/musb_core.c
+index c7234b236971..0acc62569ae5 100644
+--- a/drivers/usb/musb/musb_core.c
++++ b/drivers/usb/musb/musb_core.c
+@@ -2031,7 +2031,6 @@ static void musb_pm_runtime_check_session(struct musb *musb)
+ 		if (!musb->session)
+ 			break;
+ 		trace_musb_state(musb, devctl, "Allow PM on possible host mode disconnect");
+-		pm_runtime_mark_last_busy(musb->controller);
+ 		pm_runtime_put_autosuspend(musb->controller);
+ 		musb->session = false;
+ 		return;
+@@ -2063,7 +2062,6 @@ static void musb_pm_runtime_check_session(struct musb *musb)
+ 					      msecs_to_jiffies(3000));
+ 	} else {
+ 		trace_musb_state(musb, devctl, "Allow PM with no session");
+-		pm_runtime_mark_last_busy(musb->controller);
+ 		pm_runtime_put_autosuspend(musb->controller);
+ 	}
+ 
+@@ -2090,7 +2088,6 @@ static void musb_irq_work(struct work_struct *data)
+ 		sysfs_notify(&musb->controller->kobj, NULL, "mode");
+ 	}
+ 
+-	pm_runtime_mark_last_busy(musb->controller);
+ 	pm_runtime_put_autosuspend(musb->controller);
+ }
+ 
+@@ -2564,7 +2561,6 @@ musb_init_controller(struct device *dev, int nIrq, void __iomem *ctrl)
+ 	musb_init_debugfs(musb);
+ 
+ 	musb->is_initialized = 1;
+-	pm_runtime_mark_last_busy(musb->controller);
+ 	pm_runtime_put_autosuspend(musb->controller);
+ 
+ 	return 0;
+@@ -2887,7 +2883,6 @@ static int musb_resume(struct device *dev)
+ 			error);
+ 	spin_unlock_irqrestore(&musb->lock, flags);
+ 
+-	pm_runtime_mark_last_busy(dev);
+ 	pm_runtime_put_autosuspend(dev);
+ 
+ 	return 0;
+diff --git a/drivers/usb/musb/musb_debugfs.c b/drivers/usb/musb/musb_debugfs.c
+index 2d623284edf6..5092d62c2062 100644
+--- a/drivers/usb/musb/musb_debugfs.c
++++ b/drivers/usb/musb/musb_debugfs.c
+@@ -106,7 +106,6 @@ static int musb_regdump_show(struct seq_file *s, void *unused)
+ 		}
+ 	}
+ 
+-	pm_runtime_mark_last_busy(musb->controller);
+ 	pm_runtime_put_autosuspend(musb->controller);
+ 	return 0;
+ }
+@@ -119,7 +118,6 @@ static int musb_test_mode_show(struct seq_file *s, void *unused)
+ 
+ 	pm_runtime_get_sync(musb->controller);
+ 	test = musb_readb(musb->mregs, MUSB_TESTMODE);
+-	pm_runtime_mark_last_busy(musb->controller);
+ 	pm_runtime_put_autosuspend(musb->controller);
+ 
+ 	if (test == (MUSB_TEST_FORCE_HOST | MUSB_TEST_FORCE_FS))
+@@ -216,7 +214,6 @@ static ssize_t musb_test_mode_write(struct file *file,
+ 	musb_writeb(musb->mregs, MUSB_TESTMODE, test);
+ 
+ ret:
+-	pm_runtime_mark_last_busy(musb->controller);
+ 	pm_runtime_put_autosuspend(musb->controller);
+ 	return count;
+ }
+@@ -243,7 +240,6 @@ static int musb_softconnect_show(struct seq_file *s, void *unused)
+ 		reg = musb_readb(musb->mregs, MUSB_DEVCTL);
+ 		connect = reg & MUSB_DEVCTL_SESSION ? 1 : 0;
+ 
+-		pm_runtime_mark_last_busy(musb->controller);
+ 		pm_runtime_put_autosuspend(musb->controller);
+ 		break;
+ 	default:
+@@ -304,7 +300,6 @@ static ssize_t musb_softconnect_write(struct file *file,
+ 		}
+ 	}
+ 
+-	pm_runtime_mark_last_busy(musb->controller);
+ 	pm_runtime_put_autosuspend(musb->controller);
+ 	return count;
+ }
+diff --git a/drivers/usb/musb/musb_dsps.c b/drivers/usb/musb/musb_dsps.c
+index 12f587ab8511..9f93ed59a7e6 100644
+--- a/drivers/usb/musb/musb_dsps.c
++++ b/drivers/usb/musb/musb_dsps.c
+@@ -296,7 +296,6 @@ static void otg_timer(struct timer_list *t)
+ 	if (err < 0)
+ 		dev_err(dev, "%s resume work: %i\n", __func__, err);
+ 	spin_unlock_irqrestore(&musb->lock, flags);
+-	pm_runtime_mark_last_busy(dev);
+ 	pm_runtime_put_autosuspend(dev);
+ }
+ 
+diff --git a/drivers/usb/musb/musb_gadget.c b/drivers/usb/musb/musb_gadget.c
+index 6869c58367f2..f6ea91df80e4 100644
+--- a/drivers/usb/musb/musb_gadget.c
++++ b/drivers/usb/musb/musb_gadget.c
+@@ -1258,7 +1258,6 @@ static int musb_gadget_queue(struct usb_ep *ep, struct usb_request *req,
+ 
+ unlock:
+ 	spin_unlock_irqrestore(&musb->lock, lockflags);
+-	pm_runtime_mark_last_busy(musb->controller);
+ 	pm_runtime_put_autosuspend(musb->controller);
+ 
+ 	return status;
+@@ -1642,7 +1641,6 @@ static void musb_gadget_work(struct work_struct *work)
+ 	spin_lock_irqsave(&musb->lock, flags);
+ 	musb_pullup(musb, musb->softconnect);
+ 	spin_unlock_irqrestore(&musb->lock, flags);
+-	pm_runtime_mark_last_busy(musb->controller);
+ 	pm_runtime_put_autosuspend(musb->controller);
+ }
+ 
+@@ -1862,7 +1860,6 @@ static int musb_gadget_start(struct usb_gadget *g,
+ 	if (musb->xceiv && musb->xceiv->last_event == USB_EVENT_ID)
+ 		musb_platform_set_vbus(musb, 1);
+ 
+-	pm_runtime_mark_last_busy(musb->controller);
+ 	pm_runtime_put_autosuspend(musb->controller);
+ 
+ 	return 0;
+@@ -1915,7 +1912,6 @@ static int musb_gadget_stop(struct usb_gadget *g)
+ 	 */
+ 
+ 	/* Force check of devctl register for PM runtime */
+-	pm_runtime_mark_last_busy(musb->controller);
+ 	pm_runtime_put_autosuspend(musb->controller);
+ 
+ 	return 0;
+diff --git a/drivers/usb/musb/omap2430.c b/drivers/usb/musb/omap2430.c
+index 2970967a4fd2..191901317d7f 100644
+--- a/drivers/usb/musb/omap2430.c
++++ b/drivers/usb/musb/omap2430.c
+@@ -151,7 +151,6 @@ static void omap_musb_set_mailbox(struct omap2430_glue *glue)
+ 	default:
+ 		dev_dbg(musb->controller, "ID float\n");
+ 	}
+-	pm_runtime_mark_last_busy(musb->controller);
+ 	pm_runtime_put_autosuspend(musb->controller);
+ 	atomic_notifier_call_chain(&musb->xceiv->notifier,
+ 			musb->xceiv->last_event, NULL);
 -- 
 2.39.5
 
