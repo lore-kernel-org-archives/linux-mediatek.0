@@ -4,61 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E56B7C8303D
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jul 2025 13:35:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A355C83F03
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jul 2025 13:51:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KYrMAhv+NK+zdqIVGuZ7RCJMusx+WMYcfygjFG4pgvg=; b=XG171AsD2LMZVkofHiVL1t42Wh
-	mX6ZaFBGMcEBRlRrMAMOa9VsN5QjbWAjJqi7g9XGowssoX6kx+ywnYPiWK589P6Y5FuBAZlvX1iwk
-	0EUVLlfGSemHwRpSvry0jUEup66XwQSqie40BfBhk5SUtLmwc4IXV3IWzKFjlFvteJeFg9zGw2vBr
-	HmpRai/7vvyfNTrcSbQGDPf/GPvp57EQG+OPzOttCy36f4ssKHYvf50wNwzkID6X6h9Ahpab4jkhM
-	xDXVrLUoMCTSus8m/+xuWoj2kxxuF9D4T3Wzz8YhteYzYhHPseJimm5T5ODqPBQnJYjhA+JXxWvJ0
-	iQs2lXqA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kM65gUyDV8Nq6O0X5HePJHOOeCngpBNSIlUrnpmpZME=; b=ebfxd+E5mtrrkkAvrIkPIGpHaj
+	708CTIJYY3Hh8edgxGtfRrRzRTnytqv/VVqCPqKz4XNiEI6wvDdSGj59N0gS1iuup0xdtP3mEmDTa
+	0Dntaf+Ky4ozN5UBFGjHjjHkJ7hT8fntxk1ifpc5kLw7tlOraeQkscfH5vxe/La8QR2X87Y4xY05b
+	b6oLaXtfXEb11aBAEurM1CFW14NU6BRO7D+MJp1foFzMdLtwiGP+zcV+xUQ+CNAiJ3Wx4Merg7Upd
+	EGL7ORP4rlg3XDXoWYDE5hJQfJtbBj5YtxVoAhEGP/TJzJh5yY03KErqsiA4/7gNvoMbZjgQXi7RN
+	Wp4VCcaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXgZW-0000000EXB5-23iX;
-	Fri, 04 Jul 2025 13:35:22 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uXgpB-0000000Ea5S-1gDw;
+	Fri, 04 Jul 2025 13:51:33 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXg9p-0000000ETN7-0PQE;
-	Fri, 04 Jul 2025 13:08:49 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5223861457;
-	Fri,  4 Jul 2025 13:08:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A75A6C4CEE3;
-	Fri,  4 Jul 2025 13:08:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751634528;
-	bh=MNN957gl/XvFVsV+v94sSjjJXgimNA11TE2gLceFiKQ=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=TG3HQW/EXwpyrvLIWf6ZxyjxUFkliXFdXt15xnEykwu04weKly1VM4PwNr+fLibXf
-	 K+bJiEpO7FTZa26CNyBzErF05GIHjXfYO4XJPLBmpViE3YppgkfbwH/fkTe8k9NPID
-	 V2XfO22p92pgMGv19e2oYvPzXlXxydGtanQIVbvUfc1YYVU44I0JdmrIAcOdBgvKKq
-	 6wiPLvX7B7tI97scXnclJr/hojA9GTKLEJI/0rrqZv8r057uDIe7Q1Qs/QBDU0Mjfw
-	 R/hRXxHEqOxPw5awKfcOALD6YksJ1hAnFaNJVvZD1Z2VaQCWQTjUyerwwgC6IPku7M
-	 Ji705VbFK2l6A==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Fri, 04 Jul 2025 15:08:13 +0200
-Subject: [PATCH mt76 9/9] wifi: mt76: mt7996: Move num_sta accounting in
- mt7996_mac_sta_{add,remove}_links
+	id 1uXfhk-0000000EPQI-1ezy;
+	Fri, 04 Jul 2025 12:39:50 +0000
+Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-3a4fd1ba177so648254f8f.0;
+        Fri, 04 Jul 2025 05:39:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1751632786; x=1752237586; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=kM65gUyDV8Nq6O0X5HePJHOOeCngpBNSIlUrnpmpZME=;
+        b=mpFM41RmcdAKRFWkI4gb5g8MQ/bE3qI7+2SdbZr+Qic49ej2bspr0UxGvQ/eK6r0K2
+         S+TS+oNiEmL5Lb2HSa9Qab2L2WLQirsrXJ6byzYe3LFvLi23i4wrWVZjWMC9p69XveTz
+         pHpTBAtkukwCQEg0vULhTvB9AVpEAgMtPivglTqLbdLKDKmO3Fp3OrQmlhmRRkTXNUu7
+         H2PAgMt1aMy5Y6IjeIvdd+qe/2JKEP/U8W7ATbQFwWs+Y6FSDaFk0V19YalsDw6pxPOE
+         wtukSMyZj6Kc3f8EvK6L2fEY289ByrHGVNiwg2flLF/NCG3MSVB40ERBM+mR8f2BPPwA
+         sKXw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1751632786; x=1752237586;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=kM65gUyDV8Nq6O0X5HePJHOOeCngpBNSIlUrnpmpZME=;
+        b=ItwHFLPJYNSAzN8vWou6h2I04gERG1vPfBWmjNtYM5aOE3WTuxikPF3KvwRc3xeSQS
+         /9SIKSo+gUkaIsZ09+/tMuRchKzW92AyNUCo7JqhipJaVekb/XgzDEA44XxBm4YCnTea
+         FGAEBp5LqkhIJWuUbz3dCgpo95YEMlyMPQ8dfi3Ro4iM9Vusi+HokTY1BPHqiNUkRhP0
+         8pKegookSlBUEbIgATNT4aiRsJIScIa5jpsMVc0ofw4HGir2sZLnkCYNxys1icJQWBVJ
+         3Em6wgD46AONKh7kA7Lx/vogIU5m81hT274sKDWBqHxtg1SSuGeLNrE+56/ySZb1BToa
+         yOXQ==
+X-Forwarded-Encrypted: i=1; AJvYcCU+Z1Si9AeJj8fqQYxlsO1KbVvMWbr+65Pso8m3qnBqdB2fWIzFrIARczGLQWXkcOHwchKxMyfyYs7rOT1GCAD3@lists.infradead.org, AJvYcCVYnfLbhh4wBeehMSMeZz0j0IjbHn7DRmJ+rA+rxLXpoTksjolTXUszFZIUv5buFsPestOlYRAW/qRpewP/3p0=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwPgjM1wJ4gYGwuAb2CxyfZR5dH6VPCMKclfe49kp69FahS8LBA
+	s02oCNkhdk7tI5kCk6FvkJmE7sa71HgILvndzWvHclvv2Msbqlr/keGEIqlj6WFEKcI=
+X-Gm-Gg: ASbGnctW/lyH/W5YKQXWIAsdqd/gnnSn0gdeVPrkOWGPvZT6ziWB2egEiUsJc6TeaZD
+	rT3ec35g+oXevZT7QF2MbqQDajGLOPyCrwR3vYY11SxPJCUd5b0I3KueLDcfEvxeVJ9glwxAbnl
+	BA/pJi7XChYrcAyt40PGs7Hoh+oL+bWgY7r7RFhHAUAKNXXfrqwvYCNBe0P8wxs7RXzQxHhlf41
+	YOIN0/SsiWhfy5L+OXZiLooXaX/XCm8IQ5C4GRwf8HPevmy/IZjT4uV5yaD9fATK40st4Uzb32U
+	Eu/k+KBiwsZTa871J2m7cjzsxBccdseDh2SDGheX3v+6UDzeyOo/g/3yD0n5XxzNKaH55g==
+X-Google-Smtp-Source: AGHT+IGEZQqooZXYhGVoWPdBr2vTu84V+4w3rPWYqllSwEygO+t6NPXOBmMzmHVAtMjkZ8S2Ox0sXg==
+X-Received: by 2002:a05:6000:4911:b0:3a5:2915:ed68 with SMTP id ffacd0b85a97d-3b495ccbb9emr2195447f8f.28.1751632786152;
+        Fri, 04 Jul 2025 05:39:46 -0700 (PDT)
+Received: from [192.168.1.187] ([161.230.67.253])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3b47030b4f6sm2467772f8f.10.2025.07.04.05.39.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 04 Jul 2025 05:39:45 -0700 (PDT)
+Message-ID: <ab0a407412c705e409d9d26591543713a092c13f.camel@gmail.com>
+Subject: Re: [PATCH v2 0/6] iio: Add support for MT6363/6373 Auxiliary ADC
+From: Nuno =?ISO-8859-1?Q?S=E1?= <noname.nuno@gmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	jic23@kernel.org
+Cc: dlechner@baylibre.com, nuno.sa@analog.com, andy@kernel.org,
+ robh@kernel.org, 	krzk+dt@kernel.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, 	linux-iio@vger.kernel.org,
+ devicetree@vger.kernel.org, 	linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, 	linux-mediatek@lists.infradead.org,
+ kernel@collabora.com
+Date: Fri, 04 Jul 2025 13:39:56 +0100
+In-Reply-To: <20250703141146.171431-1-angelogioacchino.delregno@collabora.com>
+References: <20250703141146.171431-1-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250704-mt7996-mlo-fixes-v1-9-356456c73f43@kernel.org>
-References: <20250704-mt7996-mlo-fixes-v1-0-356456c73f43@kernel.org>
-In-Reply-To: <20250704-mt7996-mlo-fixes-v1-0-356456c73f43@kernel.org>
-To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Bo Jiao <Bo.Jiao@mediatek.com>, Peter Chiu <chui-hao.chiu@mediatek.com>
-Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250704_053948_432184_E87F1DDA 
+X-CRM114-Status: GOOD (  10.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,171 +102,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Move phy num_sta accounting in mt7996_mac_sta_add() and
-mt7996_mac_sta_remove() routines in order to take into account all
-possibles MLO links.
+On Thu, 2025-07-03 at 16:11 +0200, AngeloGioacchino Del Regno wrote:
+> Changes in v2:
+> =C2=A0- Added error checks to all regmap r/w operations
+> =C2=A0- Moved adc_vref addition to different commit
+> =C2=A0- Various other fixes
+>=20
+> This series adds support for the Auxiliary ADC IP found on the new
+> MediaTek MT6363 and MT6373 PMICs, found on board designs featuring
+> the MT8196 Chromebook SoC or the MT6991 Dimensity 9400 Smartphone SoC.
+>=20
+> AngeloGioacchino Del Regno (6):
+> =C2=A0 dt-bindings: iio: adc: mt6359: Add MT6363 PMIC AuxADC
+> =C2=A0 dt-bindings: iio: adc: mt6359: Add MT6373 PMIC AuxADC
+> =C2=A0 iio: adc: mt6359: Add ready register index and mask to channel dat=
+a
+> =C2=A0 iio: adc: mt6359: Move reference voltage to platform data
+> =C2=A0 iio: adc: mt6359: Add support for MediaTek MT6363 PMIC AUXADC
+> =C2=A0 iio: adc: mt6359: Add support for MediaTek MT6373 PMIC AUXADC
+>=20
+> =C2=A0.../iio/adc/mediatek,mt6359-auxadc.yaml=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 |=C2=A0=C2=A0 2 +
+> =C2=A0drivers/iio/adc/mt6359-auxadc.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 440 +++++++++++++++---
+> =C2=A0.../iio/adc/mediatek,mt6363-auxadc.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 24 +
+> =C2=A0.../iio/adc/mediatek,mt6373-auxadc.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 19 +
+> =C2=A04 files changed, 416 insertions(+), 69 deletions(-)
+> =C2=A0create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6363-auxa=
+dc.h
+> =C2=A0create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6373-auxa=
+dc.h
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/wireless/mediatek/mt76/mt7996/main.c | 58 +++++++++++++-----------
- 1 file changed, 32 insertions(+), 26 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-index ea0cdd092a3f396c2a8cb655ff941b833fb9983e..f846b8309ae2e9c39f9d5f2a21ca1edd89dcdf0c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-@@ -960,8 +960,8 @@ mt7996_mac_sta_deinit_link(struct mt7996_dev *dev,
- }
- 
- static void
--mt7996_mac_sta_remove_links(struct mt7996_dev *dev, struct ieee80211_sta *sta,
--			    unsigned long links)
-+mt7996_mac_sta_remove_links(struct mt7996_dev *dev, struct ieee80211_vif *vif,
-+			    struct ieee80211_sta *sta, unsigned long links)
- {
- 	struct mt7996_sta *msta = (struct mt7996_sta *)sta->drv_priv;
- 	struct mt76_dev *mdev = &dev->mt76;
-@@ -969,6 +969,8 @@ mt7996_mac_sta_remove_links(struct mt7996_dev *dev, struct ieee80211_sta *sta,
- 
- 	for_each_set_bit(link_id, &links, IEEE80211_MLD_MAX_NUM_LINKS) {
- 		struct mt7996_sta_link *msta_link = NULL;
-+		struct mt7996_vif_link *link;
-+		struct mt76_phy *mphy;
- 
- 		msta_link = rcu_replace_pointer(msta->link[link_id], msta_link,
- 						lockdep_is_held(&mdev->mutex));
-@@ -976,6 +978,15 @@ mt7996_mac_sta_remove_links(struct mt7996_dev *dev, struct ieee80211_sta *sta,
- 			continue;
- 
- 		mt7996_mac_sta_deinit_link(dev, msta_link);
-+		link = mt7996_vif_link(dev, vif, link_id);
-+		if (!link)
-+			continue;
-+
-+		mphy = mt76_vif_link_phy(&link->mt76);
-+		if (!mphy)
-+			continue;
-+
-+		mphy->num_sta--;
- 		if (msta->deflink_id == link_id) {
- 			msta->deflink_id = IEEE80211_LINK_UNSPECIFIED;
- 			continue;
-@@ -997,6 +1008,7 @@ mt7996_mac_sta_add_links(struct mt7996_dev *dev, struct ieee80211_vif *vif,
- 		struct ieee80211_bss_conf *link_conf;
- 		struct ieee80211_link_sta *link_sta;
- 		struct mt7996_vif_link *link;
-+		struct mt76_phy *mphy;
- 
- 		if (rcu_access_pointer(msta->link[link_id]))
- 			continue;
-@@ -1023,12 +1035,19 @@ mt7996_mac_sta_add_links(struct mt7996_dev *dev, struct ieee80211_vif *vif,
- 					       link_id);
- 		if (err)
- 			goto error_unlink;
-+
-+		mphy = mt76_vif_link_phy(&link->mt76);
-+		if (!mphy) {
-+			err = -EINVAL;
-+			goto error_unlink;
-+		}
-+		mphy->num_sta++;
- 	}
- 
- 	return 0;
- 
- error_unlink:
--	mt7996_mac_sta_remove_links(dev, sta, new_links);
-+	mt7996_mac_sta_remove_links(dev, vif, sta, new_links);
- 
- 	return err;
- }
-@@ -1045,7 +1064,7 @@ mt7996_mac_sta_change_links(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 
- 	mutex_lock(&dev->mt76.mutex);
- 
--	mt7996_mac_sta_remove_links(dev, sta, rem);
-+	mt7996_mac_sta_remove_links(dev, vif, sta, rem);
- 	ret = mt7996_mac_sta_add_links(dev, vif, sta, add);
- 
- 	mutex_unlock(&dev->mt76.mutex);
-@@ -1054,25 +1073,21 @@ mt7996_mac_sta_change_links(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- }
- 
- static int
--mt7996_mac_sta_add(struct mt76_phy *mphy, struct ieee80211_vif *vif,
-+mt7996_mac_sta_add(struct mt7996_dev *dev, struct ieee80211_vif *vif,
- 		   struct ieee80211_sta *sta)
- {
--	struct mt76_dev *mdev = mphy->dev;
--	struct mt7996_dev *dev = container_of(mdev, struct mt7996_dev, mt76);
- 	struct mt7996_sta *msta = (struct mt7996_sta *)sta->drv_priv;
- 	struct mt7996_vif *mvif = (struct mt7996_vif *)vif->drv_priv;
- 	unsigned long links = sta->valid_links ? sta->valid_links : BIT(0);
- 	int err;
- 
--	mutex_lock(&mdev->mutex);
-+	mutex_lock(&dev->mt76.mutex);
- 
- 	msta->deflink_id = IEEE80211_LINK_UNSPECIFIED;
- 	msta->vif = mvif;
- 	err = mt7996_mac_sta_add_links(dev, vif, sta, links);
--	if (!err)
--		mphy->num_sta++;
- 
--	mutex_unlock(&mdev->mutex);
-+	mutex_unlock(&dev->mt76.mutex);
- 
- 	return err;
- }
-@@ -1150,19 +1165,14 @@ mt7996_mac_sta_event(struct mt7996_dev *dev, struct ieee80211_vif *vif,
- }
- 
- static void
--mt7996_mac_sta_remove(struct mt76_phy *mphy, struct ieee80211_vif *vif,
-+mt7996_mac_sta_remove(struct mt7996_dev *dev, struct ieee80211_vif *vif,
- 		      struct ieee80211_sta *sta)
- {
--	struct mt76_dev *mdev = mphy->dev;
--	struct mt7996_dev *dev = container_of(mdev, struct mt7996_dev, mt76);
- 	unsigned long links = sta->valid_links ? sta->valid_links : BIT(0);
- 
--	mutex_lock(&mdev->mutex);
--
--	mt7996_mac_sta_remove_links(dev, sta, links);
--	mphy->num_sta--;
--
--	mutex_unlock(&mdev->mutex);
-+	mutex_lock(&dev->mt76.mutex);
-+	mt7996_mac_sta_remove_links(dev, vif, sta, links);
-+	mutex_unlock(&dev->mt76.mutex);
- }
- 
- static int
-@@ -1170,20 +1180,16 @@ mt7996_sta_state(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 		 struct ieee80211_sta *sta, enum ieee80211_sta_state old_state,
- 		 enum ieee80211_sta_state new_state)
- {
--	struct mt76_phy *mphy = mt76_vif_phy(hw, vif);
- 	struct mt7996_dev *dev = mt7996_hw_dev(hw);
- 	enum mt76_sta_event ev;
- 
--	if (!mphy)
--		return -EINVAL;
--
- 	if (old_state == IEEE80211_STA_NOTEXIST &&
- 	    new_state == IEEE80211_STA_NONE)
--		return mt7996_mac_sta_add(mphy, vif, sta);
-+		return mt7996_mac_sta_add(dev, vif, sta);
- 
- 	if (old_state == IEEE80211_STA_NONE &&
- 	    new_state == IEEE80211_STA_NOTEXIST)
--		mt7996_mac_sta_remove(mphy, vif, sta);
-+		mt7996_mac_sta_remove(dev, vif, sta);
- 
- 	if (old_state == IEEE80211_STA_AUTH &&
- 	    new_state == IEEE80211_STA_ASSOC)
+LGTM,
 
--- 
-2.50.0
-
+Reviewed-by: Nuno S=C3=A1 <nuno.sa@analog.com>
 
