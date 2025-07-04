@@ -4,67 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3660C83F05
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jul 2025 11:21:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8225BC8303D
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jul 2025 11:52:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Npsdh7o/phl+J0hTe78rjYAxCLG4BlzPDCZswKqor3Y=; b=N5g25PjI/Af1YG36JN8uq3GHc1
-	tm5se8AR0FLUkkq4gePjBEGHVVXPoq4zonmbniFwDbbezfypl2ANSY7aNbRXEko5W7NzMB1FLRCJJ
-	hqgi1O2peDB2ZMhf9io03YVSHhO4kcmlUvPBj6nECTzgp5/t45hCLNpFW6K2pHLCxHeuI2hJ1OcAZ
-	tCUpdnuvYLxMPjdyMOw9hg6kE7qs+z0HeeQXk4JPUKFhfwToolQtb3jNcGR2vz7PdPufmlLIhJHrJ
-	WfDQEFJGjTystfanylMb4pXiDQcwaibR9UqhUP1U7v9NmbiQcGvZKAo0T+RnR/e1K4Bs7xy9VsdxH
-	Rd5Jm5Gg==;
+	bh=4BxPSNuI1K+0U+zGcMRGFuPmBq+1SIMVgn3s+fjE3jI=; b=qeZgDX4hKeoVg/zG/nyPO+G69F
+	aHCCncqQLkoyyMaNYt4CYxZdXu99DTVQt1xuxWSZYNAtw7Ywr/dhfnLWKWl2ypUkyJPYgn+L7iMbc
+	BU8fTsOWl3fiBfViMzQBRP7JgFRfPugjJjSKB929NqdqKWxhGnOMLI04c0Zaq5yH+cbJ36rvZOJTS
+	fxT2zp0kdr9sTrhFR0iEUT1AQaai7KW9yVEMEzFza1CXYyCLywcu2AgKrOZQ/mNctIykg1AQnaKjZ
+	aCGCrNh1DTiGb6mTTVoi3x0YF7EvrD3wMG/ZPa5486B+q0A8dtvHlrgfmy9nZX2xfPiGcFalz2i6a
+	10i/Vmww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXeUA-0000000EC1X-3lap;
-	Fri, 04 Jul 2025 11:21:42 +0000
-Received: from casper.infradead.org ([90.155.50.34])
+	id 1uXeyA-0000000EHoX-4ARb;
+	Fri, 04 Jul 2025 11:52:42 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXbtE-0000000DkuX-1IQ7;
-	Fri, 04 Jul 2025 08:35:24 +0000
+	id 1uXcSE-0000000DtKZ-0f1t;
+	Fri, 04 Jul 2025 09:11:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=Npsdh7o/phl+J0hTe78rjYAxCLG4BlzPDCZswKqor3Y=; b=Z5Uyd6WafiGI7Vj8mvDeVq4djE
-	qakNSYai6eHyIpoQkdTzaKX7zqRJfyAVahsqdKs1IGgeht/7jtw4gTXnR3Alg1M2rFIOZgXn/7roD
-	jCVja9IVRUsPmFN6lUlIO7KIr0P1d2l90Vkc3DG9RKXxvo5D0o30C0+7oQdcphpH4ei4Ni4rWvZWd
-	o2u7U6mfbUx9FnudypN/+rgpXqyp8Wrx+5WWgjx2pTSH+w5mqnhpZgdFAC6rPjRa8AnFhaJ9fTDgt
-	voPz9xhG5y/GtENkxuTYiF9dG5m6Ja+2spJ/waLdpMpV/lM3kaIMaKd1gK/SVgkTpDnvIIHdHpRhk
-	8E0YXKyQ==;
-Received: from 77-249-17-252.cable.dynamic.v4.ziggo.nl ([77.249.17.252] helo=noisy.programming.kicks-ass.net)
-	by casper.infradead.org with esmtpsa (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXbt9-0000000GDWP-1cvL;
-	Fri, 04 Jul 2025 08:35:19 +0000
-Received: by noisy.programming.kicks-ass.net (Postfix, from userid 1000)
-	id 8EB56300212; Fri, 04 Jul 2025 10:35:18 +0200 (CEST)
-Date: Fri, 4 Jul 2025 10:35:18 +0200
-From: Peter Zijlstra <peterz@infradead.org>
-To: John Stultz <jstultz@google.com>
-Cc: Kuyo Chang <kuyo.chang@mediatek.com>, Ingo Molnar <mingo@redhat.com>,
-	Juri Lelli <juri.lelli@redhat.com>,
-	Vincent Guittot <vincent.guittot@linaro.org>,
-	Dietmar Eggemann <dietmar.eggemann@arm.com>,
-	Steven Rostedt <rostedt@goodmis.org>,
-	Ben Segall <bsegall@google.com>, Mel Gorman <mgorman@suse.de>,
-	Valentin Schneider <vschneid@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v5 1/1] sched/deadline: Fix dl_server runtime calculation
- formula
-Message-ID: <20250704083518.GE2001818@noisy.programming.kicks-ass.net>
-References: <20250702021440.2594736-1-kuyo.chang@mediatek.com>
- <CANDhNCqYCpdhYS9afdKeY34Bmw8MXyqKWCSTxOZNLTjYrUaVXg@mail.gmail.com>
+	bh=4BxPSNuI1K+0U+zGcMRGFuPmBq+1SIMVgn3s+fjE3jI=; b=BFrc+/Xa70soRxiHabgixAFKaP
+	8lphfuA+NH0gBBx+ZWo7scOwa6TlzBhkkmLoJeqGlZeG+uiQD+0fRbCONT6/g1oxaSsagAUbGGEs/
+	kr5Na4dfucnF/7CRTUh+7HdcbVdSy48e6HCmLuBTuOauyUMWWXdxrfJ6+d7NDTlAt2ry6Tb6gGhdD
+	dXx0qKJCcDFtl9NV3nmrv+y96TXBJyNz0xyi7bgHWfgv877pEO9MRIW9LT7bSfXGElNy/l8Betm74
+	KLwYGEBzgTOX5mYCd2dkG5cNpWklm3bqyIGFbD2DJV/xMTg5kiPtPwg2j78dUunuJTx9YYKg4yvnB
+	Y2cFQTxg==;
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uXcSB-00000007tHl-1NRD;
+	Fri, 04 Jul 2025 09:11:33 +0000
+Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-453398e90e9so4263315e9.1;
+        Fri, 04 Jul 2025 02:11:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1751620289; x=1752225089; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=4BxPSNuI1K+0U+zGcMRGFuPmBq+1SIMVgn3s+fjE3jI=;
+        b=c2LkHCilyESzRtjTWfCYJfc1ncNNyUqS4kxliF1PXE/bh04ql/H9lQUtWm3prVhbsf
+         5kTbpx3MaZaeXLNAy/aP10j2+kNWEW5luut6eYLGaFY9rqTxONCmA34XElOdB4UATlVJ
+         odQIma5XhWJZo/K4MPwfAmRjZsEFZUXjDiOAO5xuhGGit3CciQ0p0f48t6maj5tQC09k
+         gHgDVmMWTATeAldWZkxandT3wa/GVOmUFvc0N77tpUbkXen3VdYGp5VroQScM4AG3KH8
+         /RlDt7WRdWxqW9koSb4ZGgt8bX4zRDmsa1HdZtZ6wYUEP1ecK9rSHldvMXBHwM2EQBbx
+         yeHw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1751620289; x=1752225089;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=4BxPSNuI1K+0U+zGcMRGFuPmBq+1SIMVgn3s+fjE3jI=;
+        b=iubKQ5oJhfbDWE9pGL6MyzTrXHDHo4yUDF45sg545hnUOM++ebGdKp7MEhCE0fl4c+
+         Y0R4YSIdEjOcQCyJDrpDtxE8kyO7rjq23vQpENtwgj5Aj0BSlTPU+e2/xcIb+zsf/Vtd
+         XQKrfb0M0b6dl2it3SOsFW0FBAZ4yQBOC874Cxp1V6AZB1S7Ca6K4KT7wjWiVPEYKyUE
+         5tpJeP78ScKWppOdP5mOHuSLVQimKsZTlZ5OCQtXiSOorMhcYU+d2f9kygd2xnjHHz3C
+         xs446Od4pmQjo49UK6GhCderlua2m6ptqxyK2bMYUjAi830qGxL247n18G4mV34M/Tbe
+         Mjhg==
+X-Forwarded-Encrypted: i=1; AJvYcCUVKx/UPXPq4XXANe08Bcllgri24LrwpLIDXuc/9FJXYfhCqlS/Cxd1uUnuS4U0BBCa0AXtttmlRp8pGoBmXGA=@lists.infradead.org, AJvYcCX1FWHTs2WCmbJUAkjxPKaKWZbM9Hi5n20ifxQ4vrVyBMtZM/I/O0qmPtrvRAoOfA/505E5+W7vo3tgDokHn799@lists.infradead.org
+X-Gm-Message-State: AOJu0YxwTT7gRKsgEb5npME4w8fLcph2ywGhyOdLjPM1LhTo5f9yZDXh
+	4Auoq3QUAFrGe+mYIel9t99Ci5mIh06rq+Ma3igCPfBfkqihaqyDWiqY
+X-Gm-Gg: ASbGncuFB+rZFEsY+RgsNv9hO00f+9beC2ZjKNw1CDjmI0umCvVFoluKjYjUlJNf9zI
+	lowsTLc/8AwE87q93RQ9PW3ebcsSfmkSdHH0gKYFtq6QUeNLKHurw/wRqRuS8djEZVV/odiSdEz
+	t49vQnR+wP/nNZe07YZ8riaX0q1gytiPwOJnC3gIn0PRFxO75J1bRTmoP4jZNHOlIabuiY9zxjB
+	4tCBt9FYkClSwWGeaZTIXB1IEzin61P55aPYrU9RiGV5rfcXq2X9/w0oXmgYcKSQuqYDzi73g98
+	YbkzB5b1rY953Cmz/kGSzSNXe0UaYxM72HPNuFCi3NcwYwE5D3VHcowLQ4iSnGK4UAK44VsU3++
+	UJ1SjQObPKtAA4Td+/sEQn8qNlVy7aXVOOgvFql2F6t9eOO/z
+X-Google-Smtp-Source: AGHT+IEifZ9+Qoefw6C59P68ghxiOjv/mmB7vnLxOoNgNMQhGBq65x9dlLFXIorvyQQpoQF/016xrw==
+X-Received: by 2002:a05:6000:2f83:b0:3a5:8934:493a with SMTP id ffacd0b85a97d-3b4964e56c8mr1521328f8f.44.1751620288471;
+        Fri, 04 Jul 2025 02:11:28 -0700 (PDT)
+Received: from orome (p200300e41f4e9b00f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f4e:9b00:f22f:74ff:fe1f:3a53])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-454a9bcececsm49889865e9.23.2025.07.04.02.11.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 04 Jul 2025 02:11:27 -0700 (PDT)
+Date: Fri, 4 Jul 2025 11:11:25 +0200
+From: Thierry Reding <thierry.reding@gmail.com>
+To: Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: Peter Chen <peter.chen@kernel.org>, 
+	Pawel Laszczak <pawell@cadence.com>, Roger Quadros <rogerq@kernel.org>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Thinh Nguyen <Thinh.Nguyen@synopsys.com>, 
+	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	Michal Simek <michal.simek@amd.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, 
+	Mathias Nyman <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	Bastien Nocera <hadess@hadess.net>, Bin Liu <b-liu@ti.com>, linux-usb@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org, linux-omap@vger.kernel.org
+Subject: Re: [PATCH 67/80] usb: Remove redundant pm_runtime_mark_last_busy()
+ calls
+Message-ID: <ycajp5zwm65aauacebivz5773qhe2tmhcn7wqhorjybarfs5qq@su6kxog6t66k>
+References: <20250704075225.3212486-1-sakari.ailus@linux.intel.com>
+ <20250704075453.3222311-1-sakari.ailus@linux.intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="dd3rsrobpe5enhed"
 Content-Disposition: inline
-In-Reply-To: <CANDhNCqYCpdhYS9afdKeY34Bmw8MXyqKWCSTxOZNLTjYrUaVXg@mail.gmail.com>
+In-Reply-To: <20250704075453.3222311-1-sakari.ailus@linux.intel.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250704_101131_429011_1D04442E 
+X-CRM114-Status: GOOD (  15.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,59 +122,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 01, 2025 at 08:28:12PM -0700, John Stultz wrote:
-> On Tue, Jul 1, 2025 at 7:14???PM Kuyo Chang <kuyo.chang@mediatek.com> wrote:
-> >
-> > In our testing with 6.12 based kernel on a big.LITTLE system, we were
-> > seeing instances of RT tasks being blocked from running on the LITTLE
-> > cpus for multiple seconds of time, apparently by the dl_server. This
-> > far exceeds the default configured 50ms per second runtime.
-> >
-> > This is due to the fair dl_server runtime calculation being scaled
-> > for frequency & capacity of the cpu.
-> >
-> > Consider the following case under a Big.LITTLE architecture:
-> > Assume the runtime is: 50,000,000 ns, and Frequency/capacity
-> > scale-invariance defined as below:
-> > Frequency scale-invariance: 100
-> > Capacity scale-invariance: 50
-> > First by Frequency scale-invariance,
-> > the runtime is scaled to 50,000,000 * 100 >> 10 = 4,882,812
-> > Then by capacity scale-invariance,
-> > it is further scaled to 4,882,812 * 50 >> 10 = 238,418.
-> > So it will scaled to 238,418 ns.
-> >
-> > This smaller "accounted runtime" value is what ends up being
-> > subtracted against the fair-server's runtime for the current period.
-> > Thus after 50ms of real time, we've only accounted ~238us against the
-> > fair servers runtime. This 209:1 ratio in this example means that on
-> > the smaller cpu the fair server is allowed to continue running,
-> > blocking RT tasks, for over 10 seconds before it exhausts its supposed
-> > 50ms of runtime.  And on other hardware configurations it can be even
-> > worse.
-> >
-> > For the fair deadline_server, to prevent realtime tasks from being
-> > unexpectedly delayed, we really do want to use fixed time, and not
-> > scaled time for smaller capacity/frequency cpus. So remove the scaling
-> > from the fair server's accounting to fix this.
-> >
-> > Signed-off-by: kuyo chang <kuyo.chang@mediatek.com>
-> > Acked-by: Juri Lelli <juri.lelli@redhat.com>
-> > Suggested-by: Peter Zijlstra <peterz@infradead.org>
-> > Suggested-by: John Stultz <jstultz@google.com>
-> > Tested-by: John Stultz <jstultz@google.com>
-> 
-> Thanks so much again for the multiple iterations here.
-> 
-> I've re-tested this and it still looks good.
-> 
-> For what its worth:
-> Acked-by: John Stultz <jstultz@google.com>
-> 
-> Juril/Peter: if/when you take this, could you add a:
-> Fixes: a110a81c52a9 ("sched/deadline: Deferrable dl server")
 
-Nice, b4 picked it up and DTRT.
+--dd3rsrobpe5enhed
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH 67/80] usb: Remove redundant pm_runtime_mark_last_busy()
+ calls
+MIME-Version: 1.0
 
-Thanks!
+On Fri, Jul 04, 2025 at 10:54:53AM +0300, Sakari Ailus wrote:
+> pm_runtime_put_autosuspend(), pm_runtime_put_sync_autosuspend(),
+> pm_runtime_autosuspend() and pm_request_autosuspend() now include a call
+> to pm_runtime_mark_last_busy(). Remove the now-reduntant explicit call to
+> pm_runtime_mark_last_busy().
+>=20
+> Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
+[...]
+> diff --git a/drivers/usb/host/xhci-tegra.c b/drivers/usb/host/xhci-tegra.c
+> index 0c7af44d4dae..554b03e3ae92 100644
+> --- a/drivers/usb/host/xhci-tegra.c
+> +++ b/drivers/usb/host/xhci-tegra.c
+> @@ -1394,7 +1394,6 @@ static void tegra_xhci_id_work(struct work_struct *=
+work)
+>  		}
+> =20
+>  		tegra_xhci_set_port_power(tegra, true, true);
+> -		pm_runtime_mark_last_busy(tegra->dev);
+> =20
+>  	} else {
+>  		if (tegra->otg_usb3_port >=3D 0)
+
+pm_runtime_mark_last_busy() was previously called conditionally only for
+host mode, but not for peripheral mode. That said, since that call was
+now moved into the pm_runtime_put_autosuspend(), any issues would
+already have been introduced by the series that this depends on, so
+we'll see if there's any fallout.
+
+Acked-by: Thierry Reding <treding@nvidia.com>
+
+--dd3rsrobpe5enhed
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmhnmr0ACgkQ3SOs138+
+s6FhWRAAmqKDqeofJQ11k5izwUxvfuUGMikCMaAXOhGyv2+Tokqg6xbVpQ/LTy3A
+jW7wNUyH5ZjWFprk7RPURsZpkc8ruTDl3bmWdSdp+DlV5VNfEYs1fqreyNsOF1k/
+a++KWAlrXA7VRbSlFdMj6W6SjudMMjWby6Pm2K7I8pDuJQdOwSuBf0bWgN95JEiu
+MEf7+WORXLjgJToa1eiPE9aPSMqS+vOMhkrhJLfrsCmwqoG5CUnIJXf6wnaN5hqq
+QGKPnHXbDocqwAaMFkzX1/nSahQOIl4A882n8JB885SajqJ81BnjWVaUFnS2RDfS
+aPDiHDlZ+xs/Ix8ISxgpY6MPoMalnKlf3pkQ3FWrgS/NyTNryLm9bBT/SbhJVddC
+kAShqX2e8jXSn1MbNhLryWBJYdQ7jWagl5HwL2/R1w6BzY69iwUKHK/1Pi3SHFY9
+ryW8wlQGR2/ukqPqFPZVfXMmcX00Zuu+JIaiSscFM/Q5I3n47JIYmsFSWsertbI6
+DTkF9fKh5n1npEGFeUCilrG9b1bsYM+BJIrwqZ+7qfpgKb1uxC6yjdIlDLwkOLjy
+gc0ZORc30ulN3X2p+KUzVnte27Q3llclgZoISLYfv0+wkWvQcNYuBCBSvpajeqMe
+dC9Twi/Dm657HYa4TfqcD3EMTgt//GUiOVxKCHqOlQhXpEvQMuM=
+=lUG1
+-----END PGP SIGNATURE-----
+
+--dd3rsrobpe5enhed--
 
