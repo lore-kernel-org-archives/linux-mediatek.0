@@ -4,92 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E6BBC83030
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jul 2025 03:39:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98F94C83030
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jul 2025 04:35:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FDt34RbEYo0vqpY00U9ijTPtHhHk6iMis9c9F4GmtsA=; b=2jmpHIGfzovsJ9UP4Ddg2hcvrW
-	bsLNLyjFZEyOdh+oy0KcnQL0sWCcDS/LeNQoYPqC0Q74lcn26PPkXO4cKW8PM25Ayt84lcR5MvrIQ
-	zCbdsRQxkJu7I/+BP2m3l1eVgEfKhEHHsCb1VcGYMhWzHjqoCBpBEDiAHLlZ+PhukjXZab2p67Y4h
-	w5VIWHV6zgHiZWzBAZmenANxy8qLziBmBMzANkGAnkvZrxm7U1SA25BZJtMroSq0t9CA1uNzAqO6g
-	HUMBJTOSXaM0BZWh4FJy4lDU4mnmPORhzMKDPu7E7TyolaNa4uGhnyG1QcbRpWaeGwal8Kac5NxrT
-	2RA2OHZA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Lu5UwG3gkU9yDfSYrynq/q3LHcvqLFRt2qUTkA3VXJ4=; b=uA3r3OhWhpzKzuBZPtKrZ9wQBk
+	Q11nluATmxe3t5m3tvIpd9LQiCl1ZoqV419C5H5ppxTAjeMALvLcsuCeWhvVtldSKuZ3WlWIcGv6L
+	+G9H7V5zoTEbVubLuHXEDXmZ4rqVM6WwGS3Oid8mVAhxsn0dfCczkxgbEVSaQk/qz2y3zCsYhJkL1
+	iKoOFhPMkBKPG5gpbLlgXBJan+Jo+UEIaLSoIPgbQS90JyWt3AMrAyu22z9exiagWnK8Q5yc3ivQ2
+	iH539/RxQ6WZZbFfdGwxYX8ruX7m8tYu3aEF5TTo3gz7MwdPuW+g4m0CkpcWpVOU1FfDLaGOxg4uu
+	RRd5Xhwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXXGy-0000000DAIm-31Qe;
-	Fri, 04 Jul 2025 03:39:36 +0000
-Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
+	id 1uXY91-0000000DFtk-48MQ;
+	Fri, 04 Jul 2025 04:35:27 +0000
+Received: from galois.linutronix.de ([2a0a:51c0:0:12e:550::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXXGw-0000000DAHm-23gl
-	for linux-mediatek@lists.infradead.org;
-	Fri, 04 Jul 2025 03:39:35 +0000
-Received: by mail-yw1-x1131.google.com with SMTP id 00721157ae682-70f94fe1e40so18991997b3.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 03 Jul 2025 20:39:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1751600372; x=1752205172; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=FDt34RbEYo0vqpY00U9ijTPtHhHk6iMis9c9F4GmtsA=;
-        b=Pb7Ti/CH/+5sJoQXJgCAMoyveqV9F7pfWVveWMERAn87N+UY3YpbWFbh6DaFRf8Y5P
-         Dy8M/fUuXrA4fYBKmWHGaClTMne+f1bPfJfzbRhcIQRuRdZGZJ5uxv664yFEaxCVSQL7
-         5R+z3kWWVz0217NrdAx5yXS5vssSe7jp1se2U=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751600372; x=1752205172;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=FDt34RbEYo0vqpY00U9ijTPtHhHk6iMis9c9F4GmtsA=;
-        b=FrWYMtf9iY1k1zgaUuIUDM6SnQIWkDQ1eiDEfLQFAZKr7befT19e0Jw/s8rNh3ukEy
-         H6T4wH9D1tVwkj2fKKVAfwfvfd3HAV9iYFWIR1J9Fvm15H5lwPkr8/5nb5ipy4OGta14
-         h9V4h4kwOfXGrcHMNPkL6e+kxBrlT1QJJW3VRKz7K4zHw5jmigvTNssHUjKinF/GjPoB
-         2tsunC1hSoIJmb3ItCC3P1jgcgY+k3HHg6jwPvJH2G+d8Ix0uWm0MciGwGUL5iP45qT8
-         n87OYwI4hBnyVJ+OACYsUfeXXsPBmsQxXkJvGly+MN5IMa0QCwWuDCzmR8QyTk3ywRKY
-         WPjA==
-X-Forwarded-Encrypted: i=1; AJvYcCUEuC7bPY5+uDUkwdPnsQeBCKsZyJJz9l/LvZfnyu6gVl1Qqe2S1kWov0pIsyaJt8kTu2afFjqPkvrqIbwrPA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzdBsALVAS7dF3RDMspxtitMGDkd6ACH7MT2oWY6adVHEF8lfOk
-	jypsj0IYXgpVIWHZesZvoxpBxCBHETIkcrFRJQsP/PXbIfELJdPzLy1crhfggb4+n1+s5CHbHlL
-	rkUXhXvg5ez6n9NjqhMANGl4D9ssyolhMtQ40AM5v
-X-Gm-Gg: ASbGncu/JwmPX6JO8CLzz3Dg0W0IogPVu/cSUHZmLLgCmYFZepm6+13nOUIuy1SgHcb
-	BNCU3tR+rbh1AznOXb+u2LyXKl6oAYtoQ3bCz83JDNKh52Ufop1DWcCzTp+uJ3Mb6+Zo+ru/WD6
-	5gAZaEAZlfq8wDsRYA6LjpNjUVcHX+uz6Sq3BEUwmmXa5x
-X-Google-Smtp-Source: AGHT+IEpv4/ABsyEPWBaSbnhDaxcTMMoASH0qOMAb1EUBzfvoB9Rs9KL0TsrqeATirMWAbb6GqIiVFu78+U/gU30DoM=
-X-Received: by 2002:a05:690c:46c5:b0:712:cc11:aff with SMTP id
- 00721157ae682-716672d3d02mr24980587b3.11.1751600372350; Thu, 03 Jul 2025
- 20:39:32 -0700 (PDT)
+	id 1uXY6f-0000000DFgF-1uGv;
+	Fri, 04 Jul 2025 04:33:02 +0000
+Date: Fri, 4 Jul 2025 06:32:55 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020; t=1751603577;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Lu5UwG3gkU9yDfSYrynq/q3LHcvqLFRt2qUTkA3VXJ4=;
+	b=ietRwSSaofHPYLX3xPHbQaRdwmhUvR0oG8Jl0ekizuf2VPs/EAlorh3boX28GKlEeceUNn
+	VhpeW/GXutZoVkHxMSzLCoatSTmRx/nqXRYuTIyxAT0QqF9bqPjstMq67AaQvZd1qbGdVN
+	X3N0QU6YDX0FoIUDwBw704MktK9Q7N+uT5gw7OJLt0Iv9w9AZx/MK2Rhh/rtKsPn7C2Omg
+	kKxjyGuxpdrjagqrItkq6cwY+dflmv6h0qZ0LmPEmiJX7FIX7NZzYuK1i9xBimF3CYHdYI
+	4GGQLFD6S5e3aP4UiR2M1E2S1J1Hq26eLabdb/UgzCr3SlmFRGh5AZbtW3kWUQ==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020e; t=1751603577;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Lu5UwG3gkU9yDfSYrynq/q3LHcvqLFRt2qUTkA3VXJ4=;
+	b=7fMAXDZLA+9VHQVCrhjUDQ7LNL/DeUPGCzycSMx6ONMfNd12NQ/irqPvP3F1XlTvENIrMK
+	LKJgQV0TOcmWrbBA==
+From: Nam Cao <namcao@linutronix.de>
+To: Michael Kelley <mhklinux@outlook.com>
+Cc: Thomas Gleixner <tglx@linutronix.de>, Marc Zyngier <maz@kernel.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	"linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>,
+	Hou Zhiqiang <Zhiqiang.Hou@nxp.com>,
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+	Pali =?iso-8859-1?Q?Roh=E1r?= <pali@kernel.org>,
+	"K . Y . Srinivasan" <kys@microsoft.com>,
+	Haiyang Zhang <haiyangz@microsoft.com>,
+	Wei Liu <wei.liu@kernel.org>, Dexuan Cui <decui@microsoft.com>,
+	Joyce Ooi <joyce.ooi@intel.com>, Jim Quinlan <jim2101024@gmail.com>,
+	Nicolas Saenz Julienne <nsaenz@kernel.org>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Marek Vasut <marek.vasut+renesas@gmail.com>,
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+	Michal Simek <michal.simek@amd.com>,
+	Daire McNamara <daire.mcnamara@microchip.com>,
+	Nirmal Patel <nirmal.patel@linux.intel.com>,
+	Jonathan Derrick <jonathan.derrick@linux.dev>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"linux-hyperv@vger.kernel.org" <linux-hyperv@vger.kernel.org>,
+	"linux-rpi-kernel@lists.infradead.org" <linux-rpi-kernel@lists.infradead.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"linux-renesas-soc@vger.kernel.org" <linux-renesas-soc@vger.kernel.org>
+Subject: Re: [PATCH 14/16] PCI: hv: Switch to msi_create_parent_irq_domain()
+Message-ID: <20250704043255.JCK9HyRj@linutronix.de>
+References: <cover.1750858083.git.namcao@linutronix.de>
+ <024f0122314198fe0a42fef01af53e8953a687ec.1750858083.git.namcao@linutronix.de>
+ <SN6PR02MB4157A6F9B2ABD3C69CE5B521D443A@SN6PR02MB4157.namprd02.prod.outlook.com>
+ <87cyaht595.ffs@tglx>
+ <SN6PR02MB41576745C28D8F49081B8E77D443A@SN6PR02MB4157.namprd02.prod.outlook.com>
+ <87zfdlrmvr.ffs@tglx>
+ <SN6PR02MB41573141969F6B3028099C65D442A@SN6PR02MB4157.namprd02.prod.outlook.com>
 MIME-Version: 1.0
-References: <20250703183523.2075276-1-robh@kernel.org> <aGdAmGGPDA71rDE3@google.com>
-In-Reply-To: <aGdAmGGPDA71rDE3@google.com>
-From: Cheng-yi Chiang <cychiang@chromium.org>
-Date: Fri, 4 Jul 2025 11:39:05 +0800
-X-Gm-Features: Ac12FXx1clDJs40GrPtAnmhl7h9XO9sxxgXTs_ThD6wPGcXtPD9F4XTO-6ZiN-s
-Message-ID: <CAFv8NwJcwD0wqJAoe99M+dQYA383n0g9U+5+Z77uuQ2d=Ac5pA@mail.gmail.com>
-Subject: Re: [PATCH] ASoC: Use of_reserved_mem_region_to_resource() for "memory-region"
-To: Tzung-Bi Shih <tzungbi@kernel.org>
-Cc: "Rob Herring (Arm)" <robh@kernel.org>, Guenter Roeck <groeck@chromium.org>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Benson Leung <bleung@chromium.org>, 
-	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>, 
-	Bard Liao <yung-chuan.liao@linux.intel.com>, 
-	Ranjani Sridharan <ranjani.sridharan@linux.intel.com>, Daniel Baluta <daniel.baluta@nxp.com>, 
-	Kai Vehmanen <kai.vehmanen@linux.intel.com>, 
-	Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, chrome-platform@lists.linux.dev, 
-	linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	sound-open-firmware@alsa-project.org, imx@lists.linux.dev, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <SN6PR02MB41573141969F6B3028099C65D442A@SN6PR02MB4157.namprd02.prod.outlook.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250703_203934_553688_3C1B86CC 
-X-CRM114-Status: UNSURE (   9.13  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250703_213301_640832_F7C7A2B0 
+X-CRM114-Status: GOOD (  19.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,18 +112,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 4, 2025 at 10:46=E2=80=AFAM Tzung-Bi Shih <tzungbi@kernel.org> =
-wrote:
->
-> On Thu, Jul 03, 2025 at 01:35:21PM -0500, Rob Herring (Arm) wrote:
-> > Use the newly added of_reserved_mem_region_to_resource() function to
-> > handle "memory-region" properties.
-> >
-> > Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
->
-> Reviewed-by: Tzung-Bi Shih <tzungbi@kernel.org>
+On Fri, Jul 04, 2025 at 02:27:01AM +0000, Michael Kelley wrote:
+> I haven't resolved the conflict. As a shortcut for testing I just
+> removed the conflicting patch since it is for a Microsoft custom NIC
+> ("MANA") that's not in the configuration I'm testing with. I'll have to
+> look more closely to figure out the resolution.
+> 
+> Separately, this patch (the switch to misc_create_parent_irq_domain)
+> isn't working for Linux VMs on Hyper-V on ARM64. The initial symptom
+> is that interrupts from the NVMe controller aren't getting handled
+> and everything hangs. Here's the dmesg output:
+> 
+> [   84.463419] hv_vmbus: registering driver hv_pci
+> [   84.463875] hv_pci abee639e-0b9d-49b7-9a07-c54ba8cd5734: PCI VMBus probing: Using version 0x10004
+> [   84.464518] hv_pci abee639e-0b9d-49b7-9a07-c54ba8cd5734: PCI host bridge to bus 0b9d:00
+> [   84.464529] pci_bus 0b9d:00: root bus resource [mem 0xfc0000000-0xfc00fffff window]
+> [   84.464531] pci_bus 0b9d:00: No busn resource found for root bus, will use [bus 00-ff]
+> [   84.465211] pci 0b9d:00:00.0: [1414:b111] type 00 class 0x010802 PCIe Endpoint
+> [   84.466657] pci 0b9d:00:00.0: BAR 0 [mem 0xfc0000000-0xfc00fffff 64bit]
+> [   84.481923] pci_bus 0b9d:00: busn_res: [bus 00-ff] end is updated to 00
+> [   84.481936] pci 0b9d:00:00.0: BAR 0 [mem 0xfc0000000-0xfc00fffff 64bit]: assigned
+> [   84.482413] nvme nvme0: pci function 0b9d:00:00.0
+> [   84.482513] nvme 0b9d:00:00.0: enabling device (0000 -> 0002)
+> [   84.556871] irq 17, desc: 00000000e8529819, depth: 0, count: 0, unhandled: 0
+> [   84.556883] ->handle_irq():  0000000062fa78bc, handle_bad_irq+0x0/0x270
+> [   84.556892] ->irq_data.chip(): 00000000ba07832f, 0xffff00011469dc30
+> [   84.556895] ->action(): 0000000069f160b3
+> [   84.556896] ->action->handler(): 00000000e15d8191, nvme_irq+0x0/0x3e8
+> [  172.307920] watchdog: BUG: soft lockup - CPU#6 stuck for 26s! [kworker/6:1H:195]
 
-Thanks for the patch!
+Thanks for the report.
 
-Reviewed-by: Cheng-Yi Chiang <cychiang@chromium.org>
+On arm64, this driver relies on the parent irq domain to set handler. So
+the driver must not overwrite it to NULL.
+
+This should cures it:
+
+diff --git a/drivers/pci/controller/pci-hyperv.c b/drivers/pci/controller/pci-hyperv.c
+index 3a24fadddb83..f4a435b0456c 100644
+--- a/drivers/pci/controller/pci-hyperv.c
++++ b/drivers/pci/controller/pci-hyperv.c
+@@ -577,8 +577,6 @@ static void hv_pci_onchannelcallback(void *context);
+ 
+ #ifdef CONFIG_X86
+ #define DELIVERY_MODE	APIC_DELIVERY_MODE_FIXED
+-#define FLOW_HANDLER	handle_edge_irq
+-#define FLOW_NAME	"edge"
+ 
+ static int hv_pci_irqchip_init(void)
+ {
+@@ -723,8 +721,6 @@ static void hv_arch_irq_unmask(struct irq_data *data)
+ #define HV_PCI_MSI_SPI_START	64
+ #define HV_PCI_MSI_SPI_NR	(1020 - HV_PCI_MSI_SPI_START)
+ #define DELIVERY_MODE		0
+-#define FLOW_HANDLER		NULL
+-#define FLOW_NAME		NULL
+ #define hv_msi_prepare		NULL
+ 
+ struct hv_pci_chip_data {
+@@ -2162,8 +2158,9 @@ static int hv_pcie_domain_alloc(struct irq_domain *d, unsigned int virq, unsigne
+ 		return ret;
+ 
+ 	for (int i = 0; i < nr_irqs; i++) {
+-		irq_domain_set_info(d, virq + i, 0, &hv_msi_irq_chip, NULL, FLOW_HANDLER, NULL,
+-				    FLOW_NAME);
++		irq_domain_set_hwirq_and_chip(d, virq + i, 0, &hv_msi_irq_chip, NULL);
++		if (IS_ENABLED(CONFIG_X86))
++			__irq_set_handler(virq + i, handle_edge_irq, 0, "edge");
+ 	}
+ 
+ 	return 0;
 
