@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21B85C83F03
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jul 2025 14:21:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82E62C83F03
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jul 2025 14:36:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UIh1pmSY2iCvVHFdiL9mgPjsREaH7LtF8UqDDd2a/yU=; b=j7gYupNa4MX5Im2XBGOg3PBViS
-	2bOV5T0l1oy8HTvW6iZ8k+qNRBjaN+IZUm9fJ9IMtswK9xMDakIlqbmyy4GRSo48CyJVrrfLttZvm
-	Nsc5L/xmAJ/OY+jXWyG/Z/39SKaxEZTouenmq3BcQsHfOD18bTU9CtHNCbjgTdVEM2wet9wlEVa6j
-	3rm/IItEtTuWgwINhZ27Gei7Yj6PPrWK66OaLuONM7UIRtq5+8nxNGuNOtr49CK+B4jppnNeP6Jk9
-	EWZ8PPkc2OY6YUQAP6Rw21qadJhjGnlS4rbyJzpR52lUkjgmbOZC0ceCVLBJGSAf9l9SkLA9GQm5Y
-	C4mna0Lw==;
+	bh=5j+ildZKdAgbAL0LgvuikIYArGpe1jtgC3xFGYVg0vU=; b=4EwDfhM1qz2xXv8V6qTY3+64SV
+	EcGsnd4sPs6ZCPItpPIkSww+vLl9w/O4HTWpEcQSy/swRxJj+irEUXyRWcIC16bznEHA5xmUfLC3p
+	WKDSKFcKKtQLKdYGJTTR1qFBHhboFKja3754G0NVFx2rOJuvTycs3QldVcTLXFnTuJOLBkWyFqYWx
+	kiBpZgYcJDIgUxwsLIS1tm6EBb1F4KYQQnEg3x0rjBMrXYnYo34WteeSipfFsg+VQglvQQejLstxX
+	aVf+UQ82a8epcAHXPpKU6zNYM/JRHm+/71LKm2TDt7+WIJbYkYlyQEMaLZ22CU8JLSJGtdU33JqqD
+	hjDmifeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXhIF-0000000EegL-1Bqq;
-	Fri, 04 Jul 2025 14:21:35 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uXhWk-0000000EgVN-2UJW;
+	Fri, 04 Jul 2025 14:36:34 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXg9b-0000000ETJt-2hcy;
-	Fri, 04 Jul 2025 13:08:36 +0000
+	id 1uXg9g-0000000ETKg-2FAH;
+	Fri, 04 Jul 2025 13:08:41 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 2BD0C5C57C5;
-	Fri,  4 Jul 2025 13:08:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7E829C4CEE3;
-	Fri,  4 Jul 2025 13:08:34 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 464AB44B38;
+	Fri,  4 Jul 2025 13:08:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C89E2C4CEEB;
+	Fri,  4 Jul 2025 13:08:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751634514;
-	bh=13s+yUJkFfS3KoiwPRRfaKBkp+syuO1jDT4DF9d14Tc=;
+	s=k20201202; t=1751634520;
+	bh=0J163NQ2g6iT1JWmoTnRElFmVhhyQWnZB3Sm6WBqxYI=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=utiiFBeC12pPXuC2G8rvmRsKlTB4bE8w5JKGI3ccQ8SCSpovT3aox5ZW16Zi6bPd3
-	 DZ5di+LFJokeBXGySSgvwQU0dsHctEZU8tEMTOW5pZ5JKG5xFUyfMLGlHiMlcKkElm
-	 gzVK7ga40TznMkN+4OFh2/2MlOmppja0xKxi/oZFZIpYGOQJlD0f9odZPkGSejTqw8
-	 hLsNUfKCu8o59GnK5iShUocwuO9lrQASq9g/GCbH6lZMhI7MeBTM12S2n3MVEFJ/ud
-	 OxDZSNezNHLIe2Rd59H1WT+rrxFC02tM9RnusghgC6BPv87o1OmNHFiSA8cvoPEoIR
-	 MJlgDTaKKbqVw==
+	b=kr/rEHuwj5fB0VR4i2MVTfDTBCvShkGCupuPkp6XlfLP86Rk3VavV1JjZfEX2+/E1
+	 tXmIsy3NSLe/b/jS35DS4Pujb2TaarVpaGB7XM7O5EaeeNzcexzNfVRKOzdr17JlUj
+	 KFIDoKGExUYNUOGEfQEswH2hu4yJS2If/SDOMbdp9ucuCwrl6vNQAsmR9VgBnuGObs
+	 xvi8g/5qxkg+G4N3Q6ftibwj865HZm2EUmz5xT3xRMpJqknzwOBXoWjdDOxR5TeOOn
+	 PjWwE6G/4Xdx6y68XWx4sCPe0j/jdeAUjBehaan+WSKTJjcnpTtBpcQ9iw6LMSz+DN
+	 AzXELV6R8DeKA==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Fri, 04 Jul 2025 15:08:08 +0200
-Subject: [PATCH mt76 4/9] wifi: mt76: mt7996: Do not set wcid.sta to 1 in
- mt7996_mac_sta_event()
+Date: Fri, 04 Jul 2025 15:08:10 +0200
+Subject: [PATCH mt76 6/9] wifi: mt76: mt7996: Fix possible OOB access in
+ mt7996_tx()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250704-mt7996-mlo-fixes-v1-4-356456c73f43@kernel.org>
+Message-Id: <20250704-mt7996-mlo-fixes-v1-6-356456c73f43@kernel.org>
 References: <20250704-mt7996-mlo-fixes-v1-0-356456c73f43@kernel.org>
 In-Reply-To: <20250704-mt7996-mlo-fixes-v1-0-356456c73f43@kernel.org>
 To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
@@ -60,9 +60,8 @@ Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, Lorenzo Bianconi <lorenzo@kernel.org>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250704_060835_732411_212149BF 
-X-CRM114-Status: UNSURE (   9.10  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250704_060840_597014_19F76031 
+X-CRM114-Status: GOOD (  12.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,26 +76,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-msta_link->wcid.sta is already set to 1 in mt7996_mac_sta_init_link
-routine.
+Fis possible Out-Of-Boundary access in mt7996_tx routine if link_id is
+set to IEEE80211_LINK_UNSPECIFIED
 
+Fixes: 3ce8acb86b661 ("wifi: mt76: mt7996: Update mt7996_tx to MLO support")
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt7996/main.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/net/wireless/mediatek/mt76/mt7996/main.c | 17 ++++++++++++-----
+ 1 file changed, 12 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-index 5283aee619a9811f2e75fa4434ceced9185991f0..d1f90dea512bade652743611b7d062863a63ccfe 100644
+index d1f90dea512bade652743611b7d062863a63ccfe..6404514556419f75b69a783d96b0920157263e04 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-@@ -1119,7 +1119,6 @@ mt7996_mac_sta_event(struct mt7996_dev *dev, struct ieee80211_vif *vif,
- 				return err;
+@@ -1216,10 +1216,17 @@ static void mt7996_tx(struct ieee80211_hw *hw,
  
- 			msta_link->wcid.tx_info |= MT_WCID_TX_INFO_SET;
--			msta_link->wcid.sta = 1;
- 			break;
- 		case MT76_STA_EVENT_AUTHORIZE:
- 			err = mt7996_mcu_add_sta(dev, link_conf, link_sta,
+ 	if (vif) {
+ 		struct mt7996_vif *mvif = (void *)vif->drv_priv;
+-		struct mt76_vif_link *mlink;
++		struct mt76_vif_link *mlink = &mvif->deflink.mt76;
+ 
+-		mlink = rcu_dereference(mvif->mt76.link[link_id]);
+-		if (mlink && mlink->wcid)
++		if (link_id < IEEE80211_LINK_UNSPECIFIED)
++			mlink = rcu_dereference(mvif->mt76.link[link_id]);
++
++		if (!mlink) {
++			ieee80211_free_txskb(hw, skb);
++			goto unlock;
++		}
++
++		if (mlink->wcid)
+ 			wcid = mlink->wcid;
+ 
+ 		if (mvif->mt76.roc_phy &&
+@@ -1228,7 +1235,7 @@ static void mt7996_tx(struct ieee80211_hw *hw,
+ 			if (mphy->roc_link)
+ 				wcid = mphy->roc_link->wcid;
+ 		} else {
+-			mphy = mt76_vif_link_phy(&mvif->deflink.mt76);
++			mphy = mt76_vif_link_phy(mlink);
+ 		}
+ 	}
+ 
+@@ -1237,7 +1244,7 @@ static void mt7996_tx(struct ieee80211_hw *hw,
+ 		goto unlock;
+ 	}
+ 
+-	if (control->sta) {
++	if (control->sta && link_id < IEEE80211_LINK_UNSPECIFIED) {
+ 		struct mt7996_sta *msta = (void *)control->sta->drv_priv;
+ 		struct mt7996_sta_link *msta_link;
+ 
 
 -- 
 2.50.0
