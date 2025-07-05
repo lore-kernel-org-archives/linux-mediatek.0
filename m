@@ -4,97 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06CB3C8303D
-	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Jul 2025 10:04:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47D1BC8303C
+	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Jul 2025 21:12:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S7gL8dYOn6HntTdoNOII9WcyvTWhgCfl9lUbpV4BSls=; b=rGW3Whkp6iUvJ82mpwyI+7068m
-	GYf5J7FPL4Pcy//KBT0XxnlfmMCatIKCmDqPkiRUWRmo+hrIFnaAO39uid128/s9Il4q3DElcO/BE
-	Vrixea67nPROfCDVPp3R6YqmjA89scWRvdxLMWyGUyshUUO2Oq2tRzL6aRqkc8ELsvxPZrvoxDjY1
-	Q0z1ht9L7xrYI6wHV+tzyaEqkWWnsiv/o9zIJ75Kr/Ck8p9AjhXqobHNUWjB4SKq+2LKTn5dPi+ES
-	A5VDiHmzPlBeOHFs/fetRRfC7pk9wzaG77Q6j1NgprDi41PPMgoJQ/4tdZs9pE568LWCAQ1C/saJs
-	pqR7Kdkg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=dMqvztKcH8gFT0oG0FKmYP0NuC6kriORGSSgKYcBMhU=; b=lOELWVJASaOJQs
+	fdrzaurGyYQIpehIBCcxoFU/MeKkiFi7kdZqfl4CNoNzJxTYOU9Zk0taNjGJ+MnAWkJMscUomAOIg
+	s/y35MlVimMAhBqOCtWS8Q9SyBVFRdoqGAh1mGrXddAfyyG8iWLO3GuVo/yge4Rgbo9QxpClZfQGx
+	ydrP2PaQ8c6Emud0DfZar3BQQHoWmqh0PclAK4UDNC5GovybY2Kn8vrQ6Ez78XduUj8HnX+lYiHCA
+	jDCSPRxcbeQDpVm+++vX2oEcA8+ZHqX+xUW/NW6IJW2BNL1A3jSCNJgLJ26D3FYEx5AGITVRBg+t2
+	LP/nPzVL0R2s6+1VqP3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXzlA-0000000GNiJ-2KXo;
-	Sat, 05 Jul 2025 10:04:40 +0000
-Received: from galois.linutronix.de ([2a0a:51c0:0:12e:550::1])
+	id 1uYABS-0000000H0rv-1UPR;
+	Sat, 05 Jul 2025 21:12:30 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uXzio-0000000GNDc-3s8L;
-	Sat, 05 Jul 2025 10:02:16 +0000
-Date: Sat, 5 Jul 2025 12:02:11 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020; t=1751709733;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=S7gL8dYOn6HntTdoNOII9WcyvTWhgCfl9lUbpV4BSls=;
-	b=QryWv1kobeUtwnxLuKJ37S6P8dABaWh9TKOGc6zMPDghXt2id9g6pM+FYsMis+ZKJBTVnj
-	dlnc4u4f0GfCPVtSF6CbPb8KTJ8TBAw6gTF8p7KtEjpgbZfG/Tp238Kt2oVG/JiK4Yv86d
-	TmK8kxBOghlbVe7uwkQvgmpIZn1AeKVkyRDP1L1qDIwY+BB6JWJJGMCn4E86xhKLJLfqIZ
-	2rHlzbD3g/DlC3hbV2SaFJ2hywtVHkcbGf7F7HvL6X4DZPT5+w7iWsEv258XUOom/m6Av1
-	sDJJaJgZmk27zMD1f/rKLs3Mr2NJu0tT+SUkxrBrdJJ7iMCZz1C2qtat2oJVrg==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020e; t=1751709733;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=S7gL8dYOn6HntTdoNOII9WcyvTWhgCfl9lUbpV4BSls=;
-	b=rNYWzMQyLXhzp3rk6oAdNJ4riQJleM33X757xJJVV0sKCPdsOXDWifHu++6mf5hqn28UWl
-	IO/D0kVyNb7D4FAQ==
-From: Nam Cao <namcao@linutronix.de>
-To: Michael Kelley <mhklinux@outlook.com>
-Cc: Marc Zyngier <maz@kernel.org>, Thomas Gleixner <tglx@linutronix.de>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	"linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>,
-	Hou Zhiqiang <Zhiqiang.Hou@nxp.com>,
-	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
-	Pali =?iso-8859-1?Q?Roh=E1r?= <pali@kernel.org>,
-	"K . Y . Srinivasan" <kys@microsoft.com>,
-	Haiyang Zhang <haiyangz@microsoft.com>,
-	Wei Liu <wei.liu@kernel.org>, Dexuan Cui <decui@microsoft.com>,
-	Joyce Ooi <joyce.ooi@intel.com>, Jim Quinlan <jim2101024@gmail.com>,
-	Nicolas Saenz Julienne <nsaenz@kernel.org>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Marek Vasut <marek.vasut+renesas@gmail.com>,
-	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
-	Michal Simek <michal.simek@amd.com>,
-	Daire McNamara <daire.mcnamara@microchip.com>,
-	Nirmal Patel <nirmal.patel@linux.intel.com>,
-	Jonathan Derrick <jonathan.derrick@linux.dev>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"linux-hyperv@vger.kernel.org" <linux-hyperv@vger.kernel.org>,
-	"linux-rpi-kernel@lists.infradead.org" <linux-rpi-kernel@lists.infradead.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-renesas-soc@vger.kernel.org" <linux-renesas-soc@vger.kernel.org>
-Subject: Re: [PATCH 14/16] PCI: hv: Switch to msi_create_parent_irq_domain()
-Message-ID: <20250705100211.8Lcszko3@linutronix.de>
-References: <cover.1750858083.git.namcao@linutronix.de>
- <024f0122314198fe0a42fef01af53e8953a687ec.1750858083.git.namcao@linutronix.de>
- <SN6PR02MB41571145B5ECA505CDA6BD90D44DA@SN6PR02MB4157.namprd02.prod.outlook.com>
- <20250705094655.sEu3KWbJ@linutronix.de>
+	id 1uYA98-0000000H0bn-0QNJ;
+	Sat, 05 Jul 2025 21:10:07 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 6593C43EAA;
+	Sat,  5 Jul 2025 21:10:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BCB2EC4CEE7;
+	Sat,  5 Jul 2025 21:10:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1751749804;
+	bh=n3rcFQ+MPVHTDhl/5n07Sg92l9DRbmRw4++LxHuXcDw=;
+	h=From:Subject:Date:To:Cc:From;
+	b=GyIZzY/OcIOU6APTBF/8YB0x1W2aljG+aIEkrb08i4ZqK/KsiUytQWa/2g06PX+Dt
+	 PgYBtCWrpDGF02CVtMwBCr/smCQh4999kc+G5a//fTI2ub++T3BVjcXIqG2N1xaLYV
+	 hd13YXERrd1S1rOkynbbbYYCCezNKRR34TjgHuzVx456IStS0EGI3LR5iNV1WI0OYP
+	 6SCw1yUkgq1qbmzYQEj12etkzR4u/nNSeVWOl0aKLXudTiMwjETHVG+p5M/6dMNsw8
+	 jrNFAZG3yJLiexc0gDocvIhTFcjNNzXkFhdrsQNeYHxgXU8mtzS2MAPR3I6FnovarM
+	 /4c6H7Hydf9zA==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH net-next v2 0/7] net: airoha: Introduce NPU callbacks for
+ wlan offloading
+Date: Sat, 05 Jul 2025 23:09:44 +0200
+Message-Id: <20250705-airoha-en7581-wlan-offlaod-v2-0-3cf32785e381@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250705094655.sEu3KWbJ@linutronix.de>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAJiUaWgC/33NQQ7CIBCF4as0rB0zUCvUlfcwXWA7tMQGzGCqp
+ uHuYhO3Lv+3+N4qErGnJE7VKpgWn3wMJdSuEv1kw0jgh9JCoWpQowTrOU4WKOjGSHjONkB0brZ
+ xgKPu28E6Zw66FgW4Mzn/2vBLV3ry6RH5vX0t8rv+WPWPXSQgGKwRW414rc35Rhxo3kceRZdz/
+ gBSL4hPxQAAAA==
+X-Change-ID: 20250701-airoha-en7581-wlan-offlaod-67c9daff8473
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ devicetree@vger.kernel.org, Simon Horman <horms@kernel.org>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250705_030215_100263_719F40A4 
-X-CRM114-Status: GOOD (  11.85  )
+X-CRM114-CacheID: sfid-20250705_141006_168662_A59A7D4A 
+X-CRM114-Status: UNSURE (   8.51  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,23 +81,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jul 05, 2025 at 11:46:59AM +0200, Nam Cao wrote:
-> On Sat, Jul 05, 2025 at 03:51:48AM +0000, Michael Kelley wrote:
-> > From: Nam Cao <namcao@linutronix.de> Sent: Thursday, June 26, 2025 7:48 AM
-> > > 
-> > > Move away from the legacy MSI domain setup, switch to use
-> > > msi_create_parent_irq_domain().
-> > 
-> > With the additional tweak to this patch that you supplied separately,
-> > everything in my testing on both x86 and arm64 seems to work OK. So
-> > that's all good.
->
-> Thanks so much for examining the patch,
+Similar to wired traffic, EN7581 SoC allows to offload traffic to/from
+the MT76 wireless NIC configuring the NPU module via the Netfilter
+flowtable. This series introduces the necessary NPU callback used by
+the MT76 driver in order to enable the offloading.
+Subsequent patches will introduce the required MT76 support.
 
-Btw, you probably would also be interested in
-https://lore.kernel.org/lkml/cover.1751277765.git.namcao@linutronix.de/
+---
+Changes in v2:
+- Introduce binding for memory regions used for wlan offload
+- Rely on of_reserved_mem_region_to_resource_byname
+- Export just wlan_{send,get}_msg NPU callback for MT76
+- Improve commit messages
+- Link to v1: https://lore.kernel.org/r/20250702-airoha-en7581-wlan-offlaod-v1-0-803009700b38@kernel.org
 
-which does a similar conversion for the other hyperv driver.
+---
+Lorenzo Bianconi (7):
+      dt-bindings: net: airoha: npu: Add memory regions used for wlan offload
+      net: airoha: npu: Add NPU wlan memory initialization commands
+      net: airoha: npu: Add wlan_{send,get}_msg NPU callbacks
+      net: airoha: npu: Add wlan irq management callbacks
+      net: airoha: npu: Read NPU wlan interrupt lines from the DTS
+      net: airoha: npu: Enable core 3 for WiFi offloading
+      net: airoha: Add airoha_offload.h header
 
-Nam
+ .../devicetree/bindings/net/airoha,en7581-npu.yaml |  20 +-
+ drivers/net/ethernet/airoha/airoha_npu.c           | 180 ++++++++++++++-
+ drivers/net/ethernet/airoha/airoha_npu.h           |  36 ---
+ drivers/net/ethernet/airoha/airoha_ppe.c           |   2 +-
+ include/linux/soc/airoha/airoha_offload.h          | 256 +++++++++++++++++++++
+ 5 files changed, 450 insertions(+), 44 deletions(-)
+---
+base-commit: 6b9fd8857b9fc4dd62e7cd300327f0e48dd76642
+change-id: 20250701-airoha-en7581-wlan-offlaod-67c9daff8473
+
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
+
 
