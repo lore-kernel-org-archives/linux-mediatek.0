@@ -4,62 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2567C83F03
-	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Jul 2025 10:47:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4441BC83F03
+	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Jul 2025 13:27:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9oWZzpuBiMoMhIqwMikeRHFqBVSF2gRgoQP9QiFP2Kc=; b=rS9PmJAdrA47aKd7wgYa/wa/B1
-	3W+Ru8d3Xqg7vMVbouX54fGBmQluKCLicAVialN44EDxTUjX6hYgX7GDEZk0BpEYG5tG4XgCb5YnX
-	3aF5/upVK8II/HzHwa0f8+HhtqvDrcAlINaEJfaVgVM1PesR8vPjIDxKcPvV0wGbMBOBZds8yj5II
-	wyEP44wpR9GRifwxvmj1AWKs9W0oPn15F+iVfKa0Ex+q4yybk2TVUHo5SPHSOi027cMYFocCWh9gI
-	nzot9ZJqtpWbpGJwUjubzi/LsHtw6wr33DG2Z3sizYBbBTXC7yxRvjU8F8VKTEtkKeFeI2GiqTHis
-	lPMu5W+g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=EB6hNHt8FOhHLQ2d1gn4ZCXh4990JbNQXr8yU3xNg5Y=; b=htK90GI8SkPM8Y
+	ITJ0VTtq7heH9yqrknD4QSlljUcsDf+tS56ArfkmAxjtJCrK+np9kCVWruxfWYl86bcfHfPBdeAUg
+	NOr9T71++GPL6fKm10D6rhKYXmqeMU5jRwY41lDawmEaFn4H7T8DuecRqLadAKnewxR3JVtqahLYd
+	A+qlwzYwoa7lg/ylGD1bQkQoVWryns4sldpDWRAtjE1Kx/Xzixe9FGmG47HKJbAiCynSJNngjy3rh
+	1bcvDN1Tr4mJqsxKsE8tjwQwOrb7TVwOldllBIFdc54PzfW3b8pYwI+mJ/ahczcPq2Ho0Xy0inUBD
+	bHWeEdXec3SQMC9HgeLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYMu8-000000009DT-0Muz;
-	Sun, 06 Jul 2025 10:47:28 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uYPOs-00000000ITB-2NWc;
+	Sun, 06 Jul 2025 13:27:22 +0000
+Received: from mxout3.routing.net ([2a03:2900:1:a::8])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYMrp-00000000949-2H2R;
-	Sun, 06 Jul 2025 10:45:05 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id B8B9960007;
-	Sun,  6 Jul 2025 10:45:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1983CC4CEED;
-	Sun,  6 Jul 2025 10:44:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751798703;
-	bh=relSNinZmZOhsw3SUrIKIcecYWDMki2gp5tmi3W3ukw=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=ZD6sbyevNQWtttBPqjhEmI+oJWV/FQ7TsYfcJppRl85pe0PAb7wpjQkzoBBol/Zvl
-	 3msv5fbaGw+TraDwcmPtAhuDsv/lL++0tL2w8laWmOwCYQHAxm9RQ1QEqK581SECz7
-	 Vh+1rGdqqbtO/f/WPMc7vfZHzXjVeEXP1JACBt7HGNrxQJow15n/63pj9w4QbxPkyI
-	 Np06V1hjKl7MPqukKPMIczLAv5NcCu8ZCUHt/1ChaEGo/fQN008wV5tJsz807jaeQG
-	 xN46KtMLN0WBFd70DLbE72QW0bYk/uuOArm6U7LzrDrbOagPT37HemtrIrUKiv5VL+
-	 3V1G5ZnZT4gRQ==
-Date: Sun, 6 Jul 2025 11:44:55 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Nuno =?UTF-8?B?U8Oh?= <noname.nuno@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- dlechner@baylibre.com, nuno.sa@analog.com, andy@kernel.org,
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, linux-iio@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com
-Subject: Re: [PATCH v2 0/6] iio: Add support for MT6363/6373 Auxiliary ADC
-Message-ID: <20250706114455.26748e20@jic23-huawei>
-In-Reply-To: <ab0a407412c705e409d9d26591543713a092c13f.camel@gmail.com>
-References: <20250703141146.171431-1-angelogioacchino.delregno@collabora.com>
-	<ab0a407412c705e409d9d26591543713a092c13f.camel@gmail.com>
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-pc-linux-gnu)
+	id 1uYPKC-00000000Hjb-0oQz;
+	Sun, 06 Jul 2025 13:22:33 +0000
+Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
+	by mxout3.routing.net (Postfix) with ESMTP id C915C604DB;
+	Sun,  6 Jul 2025 13:22:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1751808148;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=EB6hNHt8FOhHLQ2d1gn4ZCXh4990JbNQXr8yU3xNg5Y=;
+	b=QXuWPtnjGrubMHvjoedppmQdjg5/RwFPMhmlbV5gQoeTmfH2yxE0oTsLz6Aer4dC65al4V
+	m4L0ER2jwxIQ6GGlGQV9c4ruSRZlN+mMKD8QT1ck5ZGwok/S+Hv7JQRh/jnoPlkTNrsqu0
+	9Z1k0oXV9RxDiHhcOgDlV5q7toYSD88=
+Received: from frank-u24.. (fttx-pool-194.15.86.111.bambit.de [194.15.86.111])
+	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 702CD1226A5;
+	Sun,  6 Jul 2025 13:22:27 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: MyungJoo Ham <myungjoo.ham@samsung.com>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	Chanwoo Choi <cw00.choi@samsung.com>,
+	Georgi Djakov <djakov@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Johnson Wang <johnson.wang@mediatek.com>,
+	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Felix Fietkau <nbd@nbd.name>
+Subject: [PATCH v8 02/16] dt-bindings: net: mediatek,net: allow up to 8 IRQs
+Date: Sun,  6 Jul 2025 15:21:57 +0200
+Message-ID: <20250706132213.20412-3-linux@fw-web.de>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250706132213.20412-1-linux@fw-web.de>
+References: <20250706132213.20412-1-linux@fw-web.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250706_062232_382769_4AA80E2E 
+X-CRM114-Status: GOOD (  10.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,52 +88,43 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, linux-pm@vger.kernel.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 04 Jul 2025 13:39:56 +0100
-Nuno S=C3=A1 <noname.nuno@gmail.com> wrote:
+From: Frank Wunderlich <frank-w@public-files.de>
 
-> On Thu, 2025-07-03 at 16:11 +0200, AngeloGioacchino Del Regno wrote:
-> > Changes in v2:
-> > =C2=A0- Added error checks to all regmap r/w operations
-> > =C2=A0- Moved adc_vref addition to different commit
-> > =C2=A0- Various other fixes
-> >=20
-> > This series adds support for the Auxiliary ADC IP found on the new
-> > MediaTek MT6363 and MT6373 PMICs, found on board designs featuring
-> > the MT8196 Chromebook SoC or the MT6991 Dimensity 9400 Smartphone SoC.
-> >=20
-> > AngeloGioacchino Del Regno (6):
-> > =C2=A0 dt-bindings: iio: adc: mt6359: Add MT6363 PMIC AuxADC
-> > =C2=A0 dt-bindings: iio: adc: mt6359: Add MT6373 PMIC AuxADC
-> > =C2=A0 iio: adc: mt6359: Add ready register index and mask to channel d=
-ata
-> > =C2=A0 iio: adc: mt6359: Move reference voltage to platform data
-> > =C2=A0 iio: adc: mt6359: Add support for MediaTek MT6363 PMIC AUXADC
-> > =C2=A0 iio: adc: mt6359: Add support for MediaTek MT6373 PMIC AUXADC
-> >=20
-> > =C2=A0.../iio/adc/mediatek,mt6359-auxadc.yaml=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 |=C2=A0=C2=A0 2 +
-> > =C2=A0drivers/iio/adc/mt6359-auxadc.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 440 +++++++++++++++---
-> > =C2=A0.../iio/adc/mediatek,mt6363-auxadc.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 24 +
-> > =C2=A0.../iio/adc/mediatek,mt6373-auxadc.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 19 +
-> > =C2=A04 files changed, 416 insertions(+), 69 deletions(-)
-> > =C2=A0create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6363-au=
-xadc.h
-> > =C2=A0create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6373-au=
-xadc.h =20
->=20
->=20
-> LGTM,
->=20
-> Reviewed-by: Nuno S=C3=A1 <nuno.sa@analog.com>
->=20
-Applied to the togreg branch of iio.git.  Initially pushed out as testing
-for 0-day to take a first look and see if we missed anything.
-Jonathan
+Increase the maximum IRQ count to 8 (4 FE + 4 RSS/LRO).
+
+Frame-engine-IRQs (max 4):
+MT7621, MT7628: 1 IRQ
+MT7622, MT7623: 3 IRQs (only two used by the driver for now)
+MT7981, MT7986, MT7988: 4 IRQs (only two used by the driver for now)
+
+Mediatek Filogic SoCs (mt798x) have 4 additional IRQs for RSS and/or
+LRO.
+
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+---
+v8: separate irq-count change from interrupt-names patch
+---
+ Documentation/devicetree/bindings/net/mediatek,net.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+index 175d1d011dc6..766224e4ed86 100644
+--- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
++++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+@@ -40,7 +40,7 @@ properties:
+ 
+   interrupts:
+     minItems: 1
+-    maxItems: 4
++    maxItems: 8
+ 
+   power-domains:
+     maxItems: 1
+-- 
+2.43.0
 
 
