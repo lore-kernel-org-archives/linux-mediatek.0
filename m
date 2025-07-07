@@ -4,73 +4,162 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69A99C8303C
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jul 2025 18:52:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CD3AC8303C
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jul 2025 19:09:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TdR6EPiemGpohVq7T8ccywqpepfo1bqholedAB1HuL8=; b=AACC3vq6OnFXnx+zzUj/G0mW6m
-	vpK6fkOsiKChTatznjtAKwsYJO2RshhP6Q/kxdY3/j3tlYo42jie3TePDizVPkvz1OJ1kUIPSHPKe
-	79WEtzovRznvJcBuQVMxgah99KYIoLmISoRraSW68ln8MfmO0LkqnpSDvM9UFcUhI6ueoQoLavvcY
-	Jk7EaUDavieHD1COJeMyVQ5A0qGe5+exIeAz7s6d6B/jcKZo/ljVgex0vZAf3F8dpOJFc2tUFXUoR
-	Kl47904JGG1Arg11haoYIAzPJBH/3W2TIBqmWBuscHRBmJmu4nU6GbL+dOGsW9RHMMdw0aMAblkFp
-	WR4zFzKQ==;
+	bh=SJwK6YgqsM4stkQe7Tu92yomLR5YFC9vOoAX5n5n9vY=; b=jV9LzN5qTH81Pj35pddr/Ze4qR
+	D8pRgBpJ04qVuYp3lDp3+KwleJiTYgH22I2jK2W5XH05l091tVowiKlDpB/d6RDtB53CsVwsftm0Z
+	aIWYbv1Nv8HuzJAWQqD5l4by5JcHJcrHjmh7dcAiJtmJ02cDxFRnRxsgRKSbX6d6exUqilhrCjK1R
+	t2dxGudWT6HO17DY6nR01OOWRlQtkBIgpMWDCQvsuM4+fZyb1Jnr1TWoktv5XUVRbru+WwtUaKDwQ
+	QEO74/2TokehRKcGGxG/A7Kem+CnHCbf5GH2pASl551m0bkocx34wIs4bD1DLaWn24jQz5gxN4vYq
+	hA/2x96g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYqwz-00000003Muh-43SH;
-	Mon, 07 Jul 2025 18:52:25 +0000
-Received: from s3.sipsolutions.net ([2a01:4f8:242:246e::2] helo=sipsolutions.net)
+	id 1uYrD9-00000003PGE-0M4s;
+	Mon, 07 Jul 2025 19:09:07 +0000
+Received: from mail-bn7nam10olkn20824.outbound.protection.outlook.com ([2a01:111:f403:2804::824] helo=NAM10-BN7-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYqhQ-00000003Jp8-0ubH;
-	Mon, 07 Jul 2025 18:36:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
-	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
-	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
-	Resent-Cc:Resent-Message-ID; bh=TdR6EPiemGpohVq7T8ccywqpepfo1bqholedAB1HuL8=;
-	t=1751913379; x=1753122979; b=qeqq+7o5fEFKuAcI1MQogfw5uP6euQLaPkYQy4lQ0LkmFSy
-	W2rIOf3qEUGcFrOZaTNbEbavdL4Lp/ZvJsmjrJaxinHJZT2rM0P95Eq9mEIn1KtmGR9xPn8mxVnMN
-	6MjH2ojfNFMl15fnKeVDVQorggXsWwfiTibbQxKIZo2fsCtlqBGZ45QKNFnigyEzBYBv6RaRGfcQA
-	r2Qkpyf1jk5R8t0SJUh+cfPyRuQKjkDEb3j1+hDhJp/Bh3yZU0oKTmorWU8nv3B17iCCy020beoTI
-	Ph9D/XDqLoXz3fxsIv9ghoC8p21yniaiikWjaRNgY8tyWVI21mXcEhEmcOSakt1g==;
-Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
-	(Exim 4.98.2)
-	(envelope-from <johannes@sipsolutions.net>)
-	id 1uYqhJ-0000000ApJ4-2NVt;
-	Mon, 07 Jul 2025 20:36:14 +0200
-Message-ID: <b3a63d616c1ca337f6b9d14a9afaafe73bfbe8cc.camel@sipsolutions.net>
-Subject: Re: [PATCH 0/6] wifi: rt2x00: add OF bindings + cleanup
-From: Johannes Berg <johannes@sipsolutions.net>
-To: Rosen Penev <rosenp@gmail.com>
-Cc: linux-wireless@vger.kernel.org, yangshiji66@qq.com,
- ansuelsmth@gmail.com,  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
- <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,  Thomas
- Bogendoerfer <tsbogend@alpha.franken.de>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
- <angelogioacchino.delregno@collabora.com>, Stanislaw Gruszka
- <stf_xl@wp.pl>,  "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE
- BINDINGS"	 <devicetree@vger.kernel.org>, open list
- <linux-kernel@vger.kernel.org>,  "open list:MIPS"
- <linux-mips@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"	
- <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>
-Date: Mon, 07 Jul 2025 20:36:10 +0200
-In-Reply-To: <CAKxU2N9vs5o4tj-9KxCHKevWU+J9wv+ZCOeD8o602y1GY8FzNw@mail.gmail.com> (sfid-20250707_194212_070361_0730191B)
-References: <20250706214111.45687-1-rosenp@gmail.com>
-	 <8c6f18ca47bf0dd78b6675d8b94000679b6c75cd.camel@sipsolutions.net>
-	 <CAKxU2N9vs5o4tj-9KxCHKevWU+J9wv+ZCOeD8o602y1GY8FzNw@mail.gmail.com>
-	 (sfid-20250707_194212_070361_0730191B)
-Content-Type: text/plain; charset="UTF-8"
+	id 1uYr8Z-00000003OUB-3lJR;
+	Mon, 07 Jul 2025 19:04:25 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=hKHexP14x7QFhLukBf5GeXxOkTx/zhTjaK1XuOUhhE7o9OPNQz5zbyqhZfy0iTbeLlBrrxBccmi8F0/POCGCKvVqmYw9m+VU4cQeqItO+vDeQS8iCx88tqA139P91NbDsClnP+UOEKqA2mjuqaVya21GWyKY1MowgVERljPwCADO952Gk8NZWc36Zmm8WdR3hspOJ2AG/wHAKMOvTOr+rYCc+RtjgQlq1pxKutfCPKff4pdHpX0G70EoD/kxRwgCDqOWReBJtcJNU1TkRMlaoeEznpQlaIBJbWF5fTLzNqo3aCxdbv/0vf5O0OQp2IcrSmqZH38HFebu/NZMJCPUGw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=SJwK6YgqsM4stkQe7Tu92yomLR5YFC9vOoAX5n5n9vY=;
+ b=T9pS0zKmTK4fx5LOiE8PzeuGeuZRIYMhU51eEGumr2mtc2FFfTw7CP2pbJnd7/BzUvrLuvQTtBB4vRIKswNb6IPSWjreMhn/LWjiJFKCmT1H+32pztOSyFPf1fwPOm2KodYXmIxdyUhInI7zgguLqZtDyWw7mMPc/SArpAKoPU3bfGsTUDvULsSTxgPYjL78zbVuHJKv+rAbdS3G+/Sgfhv3HZpqiJMwKx2zGaS/+u/MZFUnDY9UiwFeGeKBN0dXuzmb53bloUtxI7WgfsGFZzY1Wj6FbPrc5DoNkN193r1pUzHLy6wdFKKogy2Z7ov1A876NK3Ee4Jue8TIGP0Tpw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=SJwK6YgqsM4stkQe7Tu92yomLR5YFC9vOoAX5n5n9vY=;
+ b=oJs4fRJer36qz4JZYE02rz7Gr1HYHUoFW4564dwK3HDILAqOP0ma6mR16oEs8ZKL5Crtr/fWiX66sbAFLjHFWUQg5gkki+MjTW+ALv7YETLf4b/X69sH1mcskVpnY8DKrv07LXWVJN/G9I0LaCg84yUcUezXK8+k6owAVifZNKXikwFf7U869jNhtAIbPDtm8UE+ushyvhNogAX9yqq8D+FhKMfUOj8MUD0pc0O09hizrJqThl29o/Mwu+vKNWDtMxt+yHR/QGYsddGg4olWEUlf3tfsnPA6E1jSiY+tDn7zytgvY8yB9qd+Eo0nhjHM8j7pcR9GIcSOUacSTPBOXw==
+Received: from SN6PR02MB4157.namprd02.prod.outlook.com (2603:10b6:805:33::23)
+ by CH3PR02MB9564.namprd02.prod.outlook.com (2603:10b6:610:120::21) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8901.24; Mon, 7 Jul
+ 2025 19:04:17 +0000
+Received: from SN6PR02MB4157.namprd02.prod.outlook.com
+ ([fe80::cedd:1e64:8f61:b9df]) by SN6PR02MB4157.namprd02.prod.outlook.com
+ ([fe80::cedd:1e64:8f61:b9df%4]) with mapi id 15.20.8901.018; Mon, 7 Jul 2025
+ 19:04:17 +0000
+From: Michael Kelley <mhklinux@outlook.com>
+To: Nam Cao <namcao@linutronix.de>
+CC: Marc Zyngier <maz@kernel.org>, Thomas Gleixner <tglx@linutronix.de>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?iso-8859-2?Q?Krzysztof_Wilczy=F1ski?= <kwilczynski@kernel.org>, Manivannan
+ Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, Bjorn Helgaas
+	<bhelgaas@google.com>, "linux-pci@vger.kernel.org"
+	<linux-pci@vger.kernel.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, Karthikeyan Mitran
+	<m.karthikeyan@mobiveil.co.in>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Thomas
+ Petazzoni <thomas.petazzoni@bootlin.com>, =?iso-8859-2?Q?Pali_Roh=E1r?=
+	<pali@kernel.org>, "K . Y . Srinivasan" <kys@microsoft.com>, Haiyang Zhang
+	<haiyangz@microsoft.com>, Wei Liu <wei.liu@kernel.org>, Dexuan Cui
+	<decui@microsoft.com>, Joyce Ooi <joyce.ooi@intel.com>, Jim Quinlan
+	<jim2101024@gmail.com>, Nicolas Saenz Julienne <nsaenz@kernel.org>, Florian
+ Fainelli <florian.fainelli@broadcom.com>, Broadcom internal kernel review
+ list <bcm-kernel-feedback-list@broadcom.com>, Ray Jui <rjui@broadcom.com>,
+	Scott Branden <sbranden@broadcom.com>, Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>, Marek Vasut
+	<marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda
+	<yoshihiro.shimoda.uh@renesas.com>, Michal Simek <michal.simek@amd.com>,
+	Daire McNamara <daire.mcnamara@microchip.com>, Nirmal Patel
+	<nirmal.patel@linux.intel.com>, Jonathan Derrick
+	<jonathan.derrick@linux.dev>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-hyperv@vger.kernel.org"
+	<linux-hyperv@vger.kernel.org>, "linux-rpi-kernel@lists.infradead.org"
+	<linux-rpi-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "linux-renesas-soc@vger.kernel.org"
+	<linux-renesas-soc@vger.kernel.org>
+Subject: RE: [PATCH 14/16] PCI: hv: Switch to msi_create_parent_irq_domain()
+Thread-Topic: [PATCH 14/16] PCI: hv: Switch to msi_create_parent_irq_domain()
+Thread-Index: AQHb5qqGWI9T0Ene10yNxUr1s0p/CbQi5NWggABxUYCAAAREgIADuHVQ
+Date: Mon, 7 Jul 2025 19:04:17 +0000
+Message-ID: <SN6PR02MB4157200C58AF0AB4A809ECD9D44FA@SN6PR02MB4157.namprd02.prod.outlook.com>
+References: <cover.1750858083.git.namcao@linutronix.de>
+ <024f0122314198fe0a42fef01af53e8953a687ec.1750858083.git.namcao@linutronix.de>
+ <SN6PR02MB41571145B5ECA505CDA6BD90D44DA@SN6PR02MB4157.namprd02.prod.outlook.com>
+ <20250705094655.sEu3KWbJ@linutronix.de>
+ <20250705100211.8Lcszko3@linutronix.de>
+In-Reply-To: <20250705100211.8Lcszko3@linutronix.de>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SN6PR02MB4157:EE_|CH3PR02MB9564:EE_
+x-ms-office365-filtering-correlation-id: b8b302f7-98b1-4102-4027-08ddbd89129d
+x-microsoft-antispam: BCL:0;ARA:14566002|8062599009|461199028|8060799012|102099032|1602099012|40105399003|440099028|3412199025|4302099013|10035399007;
+x-microsoft-antispam-message-info: =?iso-8859-2?Q?6/moQj09QuneH/gLa1VE1zawmIerm85paVT6Bhsl+wHJsUU32688eExyxY?=
+ =?iso-8859-2?Q?6D3aBXJGcHqdZzqL6oTHEDPKewW6MdKwzzEGsHTXicv5uE4oBcBKfZa73H?=
+ =?iso-8859-2?Q?z3IgWnDgt3P3fycGSL90vDwfsizN+5qO2SU9GpbMU78pNmCloHxAhjAL5q?=
+ =?iso-8859-2?Q?pkNM/JHoETdMCyMM1WUR18jrCjXeKBKb70qcdS9Yvs4rvHR4QAmKdBCDAv?=
+ =?iso-8859-2?Q?1Ecw8ws18AByY9H1kdwYk5mMcjVX/T0VAvUq+IljbGPGBIvbaBY7K4+v27?=
+ =?iso-8859-2?Q?F5fJgFiKn4bco+c1gWv+TP4401UUg1q6vygnwg4wRoEUynHAsC0/y10h0M?=
+ =?iso-8859-2?Q?lbsSl2xbsH9htvq2rzBRmunUTlHMiYP48uIGi+nwXZ5xRcRfLEDfa5nwTI?=
+ =?iso-8859-2?Q?iclszbufLWTNEA+g0uHm4+2+5TT4qnqOA0P+Nboo2WECfpx9guX8RcWFMh?=
+ =?iso-8859-2?Q?Ju6jwMb2TpwSEFmxomjWyN6do1uNKCjAt/JyhK1BelIaJGw6bzSyYXBZv+?=
+ =?iso-8859-2?Q?lQaMHeixvs9koDmfChjj0w7RlNlaOQMXDs3VMDPX71/y+KiFS1u0tMSq8W?=
+ =?iso-8859-2?Q?kBaQnulsYL9uCkB9fph0q0vxm7GZNWox8AG+X+GmjGSDnKLMbfoco6bCSu?=
+ =?iso-8859-2?Q?0vDKHgBXe6288AsnU1lwsVDn/cnFgSi4lDfPSHrhxWUOoAA34UvVRrp+fe?=
+ =?iso-8859-2?Q?PA9Pbz7Bv9nU2B157iUiITr9o4Ed4k82uUdOf0ZEM6JRU44xxWHuT3ACU3?=
+ =?iso-8859-2?Q?EyOYtWCGov9MqnZ67XcK6nH3uFOc6F2KbmzQQM5m46j7Bj3DjSygX7mxV0?=
+ =?iso-8859-2?Q?0FdA2/hLOJ9v5VYSQ5j1roKPcrUDsGpy4S9xKL17m78WsndiGb3Mhj616b?=
+ =?iso-8859-2?Q?v7YLUXr+l6/Fhtl6gRqDS3TmC8qng36fCUy4Z/CEBSUbVTO4rpAuCmZLAh?=
+ =?iso-8859-2?Q?2IvZjJjrCOQaOkOfMHAYBBjvwQndDXmI2Q70d+A1BksIMkJrj+eDR3EP39?=
+ =?iso-8859-2?Q?fBXFzLes4hRqo6Clnh8SG4PUjHTttPCGCL4N54TiYzxwprsuZfnaPfxoR6?=
+ =?iso-8859-2?Q?NbgcdCcTX0ddR7Grpe0Wmgija+iffA4gHykDgF4ho/3U5ciXTrClCKCxYB?=
+ =?iso-8859-2?Q?PhDmujqXjW7YRafCg5LjE7QEROW6JGmHCC8CipCWnI8If51xM1HlVeGXCt?=
+ =?iso-8859-2?Q?G5GfMm/i/OQISNBTn3PGXd6aFvaM3ivB+UyzGE22QCBFxKVDGZQk2KYg?=
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-2?Q?B06H8nIeYCea0Q5P9dPinGipdB0PvtV7GisfUQz5k82ZQTuSndLFm99tBb?=
+ =?iso-8859-2?Q?lVyOxevYWutwWvwTyTDXDX+Z30WbcBpu58ymcSt7HEcy436eej521UCg/u?=
+ =?iso-8859-2?Q?tjCqAxzxZ0EE9W/94Y6ZhoP+xLrc0j26OFJeH/S+B40pZBUFXz8Y9aS4VA?=
+ =?iso-8859-2?Q?kchFBqAyyUE8GfeJOKwSrXW6QKnCZ6yX/Tn8fe4fRktTeOruuwZLnPowtc?=
+ =?iso-8859-2?Q?mfWuRDluj6d33xgwIHbg9OpihdBupG/tEMuupaXQQ4VVHg6/JOdy2wv79r?=
+ =?iso-8859-2?Q?tRgW6XqA0DkDGKIUjQHSfhGpf7mfYASJ9nTxdJ3A0CmGfb/v4KbYXHK7IZ?=
+ =?iso-8859-2?Q?UeuyTGHLUM8Pckx+0JhbdHWTqfFzKR1QnZoHskLyzK/zyG/nnc9bKfkHZG?=
+ =?iso-8859-2?Q?TVJ06ZJeImoHuraEsRiqOzyRiCRxErPfieE//gee4dIGPvnF8aZzeXxnGL?=
+ =?iso-8859-2?Q?LSykhxBUBJlW3D8GUccpjMpS6mpq2+vz3uYuti0Uf1cGgjHDAYGgCbkMLZ?=
+ =?iso-8859-2?Q?nBZn17KeoIn9gT+7gjmY31zM4atyrrfKUpV1zkKCWJs4ALKJHq7rVXzfJT?=
+ =?iso-8859-2?Q?Sfrlrq1gR4De3tzh9ptcqtKuR6A3KCn1CTCYlzsvcsgL1b8s9cLFCjU15U?=
+ =?iso-8859-2?Q?mJVLYzNf0bIGSHU8pJB6HIRMfMDlCmbMEJxbv45HQogkmvuIFxP2mHRrkK?=
+ =?iso-8859-2?Q?mF4Anc4H7fheMKOqiu+L4ersMDOXNGlOthnrkGVtu0mH2KOCrHXTRPFYc3?=
+ =?iso-8859-2?Q?+a9cytTZBTHDmCcrIIPdi1l85w9BETDjt82Z0U5G4t5Z5R7e6YyzSXjqrN?=
+ =?iso-8859-2?Q?OpFnRa5F88jsyfOAjv3F3AuRcz6SPamtuOSuI3EZDv8mS0eYs8dC5N2g0T?=
+ =?iso-8859-2?Q?f0QHgV4AE5D+5ekljDXpgf9Z8+WMKYmpdWQ3su+COiqQORtM78oZIthhPi?=
+ =?iso-8859-2?Q?fvrXybWoAIqO6SsrSKFakaQ8DrWhknkjM9QRFUn9DW+AnPaTKU46v83WgY?=
+ =?iso-8859-2?Q?QCBkqwOjLULvAgw1HzZWgGtvjdBq8YOGRKbGjS6r22tpwj6o34coiUnkXB?=
+ =?iso-8859-2?Q?3nO9HhCu3XznxIj/54sQRIpBxj7NR1kEFTiCQoEWhjUfG7Dn4mOnkT059S?=
+ =?iso-8859-2?Q?IT4hOgdBwb/i1sjh5jbtfFuCapbNKhCe4TwhwgsGX3Xrk/9qL0eZqhj8TS?=
+ =?iso-8859-2?Q?bLz6g/o96/AmHmEqm7+whgAlwOoQFaxyJqjF8o9OPbIUrxVGqwgsb3q/nJ?=
+ =?iso-8859-2?Q?FRycf8PEVmZNpsAhdl3qf6pg2N6vX7tWHa0ZeWxt4=3D?=
+Content-Type: text/plain; charset="iso-8859-2"
 Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
 MIME-Version: 1.0
-X-malware-bazaar: not-scanned
+X-OriginatorOrg: outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR02MB4157.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-CrossTenant-Network-Message-Id: b8b302f7-98b1-4102-4027-08ddbd89129d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Jul 2025 19:04:17.6686
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-rms-persistedconsumerorg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR02MB9564
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250707_113620_284172_82884E0D 
-X-CRM114-Status: GOOD (  12.41  )
+X-CRM114-CacheID: sfid-20250707_120423_952363_CFC39112 
+X-CRM114-Status: GOOD (  18.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,28 +174,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2025-07-07 at 10:41 -0700, Rosen Penev wrote:
-> On Mon, Jul 7, 2025 at 2:01=E2=80=AFAM Johannes Berg <johannes@sipsolutio=
-ns.net> wrote:
-> >=20
-> > On Sun, 2025-07-06 at 14:41 -0700, Rosen Penev wrote:
-> > > It doesn't even compile. Added OF bindings, documentation, and other
-> > > stuff to hopefully this doesn't happen again.
-> > >=20
-> > > Rosen Penev (6):
-> > >   wifi: rt2x00: fix compilation
-> > >=20
-> >=20
-> > That was half covered by Felix already, and really shouldn't do two
-> > things at the same time anyway.
-> Just saw what you're talking about. That's gonna be annoying though.
-> The COMPILE_TEST commit will cause compilation to fail and the bot to
-> complain before Felix' patch gets merged.
+From: Nam Cao <namcao@linutronix.de> Sent: Saturday, July 5, 2025 3:02 AM
+>=20
+> On Sat, Jul 05, 2025 at 11:46:59AM +0200, Nam Cao wrote:
+> > On Sat, Jul 05, 2025 at 03:51:48AM +0000, Michael Kelley wrote:
+> > > From: Nam Cao <namcao@linutronix.de> Sent: Thursday, June 26, 2025 7:=
+48 AM
+> > > >
+> > > > Move away from the legacy MSI domain setup, switch to use
+> > > > msi_create_parent_irq_domain().
+> > >
+> > > With the additional tweak to this patch that you supplied separately,
+> > > everything in my testing on both x86 and arm64 seems to work OK. So
+> > > that's all good.
+> >
+> > Thanks so much for examining the patch,
+>=20
+> Btw, you probably would also be interested in
+> https://lore.kernel.org/lkml/cover.1751277765.git.namcao@linutronix.de/
+>=20
+> which does a similar conversion for the other hyperv driver.
 >=20
 
-Yeah well. That doesn't really mean it should be merged together though,
-and we can pretty easily make that work by just putting the further work
-in after net/wireless is merged back.
+Thanks. I had seen this other small series for the driver used by Linux
+when running as the root partition (i.e., "dom0") on the Hyper-V
+hypervisor. Unfortunately, I have less familiarity with that configuration,
+and I lack access to hardware needed to run and test it. Someone at
+Microsoft would need to look at the patches and give them a basic smoke
+test with Linux-as-root.
 
-johannes
+FWIW, I was a Microsoft employee for many years, working on Linux
+guests on Hyper-V. But I retired about 2 years ago. Though I've kept my
+hands in Linux kernel work, my access to hardware configs is more
+limited than when I was an employee -- now it's guest VMs on my
+personal laptop and Azure VMs.
+
+Michael
 
