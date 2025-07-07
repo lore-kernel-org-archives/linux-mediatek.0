@@ -4,148 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3279C83F07
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jul 2025 11:12:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D713C83F07
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jul 2025 11:16:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=siStwAWYKo6n77k71GRZdgIZ15JPl5J741/byKkZ9eQ=; b=bATbLcq/X+Y4RS
-	RFDZc4sSl2u35sfenu6bJRDwBovhOQNFVe0XCn+5gSkTVEegCBOqXY+p+LJM/DvYhE5BCBSrVAIFH
-	iz4qA6q9/tw3QqwNHyyQAwbYDnO1KTfe1Kp2ShhJGEk/Yq3hth57yYB1ptKISdxqHRIQzis4S0C3i
-	B5+m+zPMvJvhYbyVBlMDpYfhmVyz1+yumy9ZSGnD4jPi86QZ7U7+dPTq/O5BZD0KPMBl8UIhrOkxb
-	GebQl2wyUg8CHON1x6OwVJUJPugRJv/sD17F7oIKMB7ctduVWrPvrb2K4UIKm3BaOPfSAeHKa/1U+
-	NnT90zN/t09KbDXfk+iQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=O/h3urZeBSuyLzEKrjaoIhDbStHH8t4huRWNHfTUPVk=; b=ayr/sK+RMjfyoPNVHwBvKLofng
+	3uG4pZFXAO4vq64I8VrMPFmeR0ZzULlu3t18R0SIfyQDGLIawfDDfuIeRlAievdOYmyX/6PctE2vF
+	2GrkOW3AT522oKntNndLmwh+EXb5RGpVsEwCNyOeO4QLwq0BilwTB0s9PUnyKWoCxRQCAE7HeEwN9
+	YKML9X1K4n8laLy58ftkPkrUg2KOVEvnmW18/qlR6xuoUctipAP3kH18Q9p9Q0K8AEFdNDb++kIwf
+	3qlJUOQjPmqHUNSm9fhGdRWgazsG/JK4+XB2jWELvpwBiLOxqNCSk9eS5E4eMhP4mHzd8xM5nTESr
+	1mZ03GHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYjlU-00000002FKt-0aei;
-	Mon, 07 Jul 2025 11:12:04 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1uYjq4-00000002Ftc-0lpD;
+	Mon, 07 Jul 2025 11:16:48 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYjKF-00000002Biy-1owM;
-	Mon, 07 Jul 2025 10:43:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:Message-ID:References:In-Reply-To:Reply-to:Subject:CC:To:From:
-	Date:Sender:Content-ID:Content-Description;
-	bh=siStwAWYKo6n77k71GRZdgIZ15JPl5J741/byKkZ9eQ=; b=GZZJ1awG0m4TPJxNTD6U0Vi2wO
-	1IYr7qAtxESkzG6LHwtgfB6Ed9go0XkiS4gHv/M19svg8cUftuwsuOXZgH9hNTXOO3JcrkEWl/Ocj
-	WE1Hb/aAfx4l+1+vxc8KwADReMv0dMV+XQ+8EsDCQYuZVd08IRSCbQdJXPM/UxJLUjr3tpX46evSI
-	cn71m1qf4Xp1YYeHheObJyqXm/L4fm8P7AsZ8QVhz4iYjRMeJw2hlVkXeansPeeUaVcrEgSgj8N3m
-	8GiVxXp/wrcBw6tYScX9/D6cCMErx7cDMPZcOjLzf2u8Yi3IM9dzDCDpitn/Gx1J5hhQmDyXPRPZy
-	geOmRk8w==;
-Received: from mout.gmx.net ([212.227.15.19])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYjKC-00000008SVw-13Mj;
-	Mon, 07 Jul 2025 10:43:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1751885003; x=1752489803; i=frank-w@public-files.de;
-	bh=siStwAWYKo6n77k71GRZdgIZ15JPl5J741/byKkZ9eQ=;
-	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
-	 References:Message-ID:MIME-Version:Content-Type:
-	 Content-Transfer-Encoding:cc:content-transfer-encoding:
-	 content-type:date:from:message-id:mime-version:reply-to:subject:
-	 to;
-	b=E37ud7G+9g2YlM9xpGfUF179tz6T8rWvjTuWCcwKDVo2X3fdYe+tcOm4oAXdX9vh
-	 tHiL6PUWzBtAg9kjm8WumPYioZ2hziSPebOqacz6CdmIkvpQpQWTeF+wwqwHEYLTk
-	 jVnUrIpzilHurw+T6F5SOKaZXO9W+H7Zw3zB/Vjr2lGXXwW5irEg4J66r1J84gbiG
-	 9Dbo3OlkKG9TDEK1mSbQ1B2RVv7a542XYqdCYRN9OyF0FkRXW1DhdD+j4L+s65/i+
-	 TEbTBC2CVP5QaCrthqUbYg48qe4PMDbUa+9Jk/HBSC6Iy47l7R2l0HQOlZjOQ1Kzu
-	 Qlu09EVPT68xt5MuUw==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [IPv6:::1] ([80.187.119.38]) by mail.gmx.net (mrgmx004
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1MiacH-1vCTr21Vbj-00h8za; Mon, 07
- Jul 2025 12:43:23 +0200
-Date: Mon, 07 Jul 2025 12:43:10 +0200
-From: Frank Wunderlich <frank-w@public-files.de>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Frank Wunderlich <linux@fw-web.de>, Krzysztof Kozlowski <krzk@kernel.org>
-CC: MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>, Georgi Djakov <djakov@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Johnson Wang <johnson.wang@mediatek.com>,
- =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
- Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
- linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v8_02/16=5D_dt-bindings=3A_n?=
- =?US-ASCII?Q?et=3A_mediatek=2Cnet=3A_allow_up_to_8_IRQs?=
-User-Agent: K-9 Mail for Android
-In-Reply-To: <90a3191f-882d-4302-afd5-e73e751b5b95@collabora.com>
-References: <20250706132213.20412-1-linux@fw-web.de> <20250706132213.20412-3-linux@fw-web.de> <20250707-modest-awesome-baboon-aec601@krzk-bin> <B875B8FF-FEDB-4BBD-8843-9BA6E4E89A45@fw-web.de> <90a3191f-882d-4302-afd5-e73e751b5b95@collabora.com>
-Message-ID: <9696BB13-9D1E-48D3-B323-03AD23110CF5@public-files.de>
+	id 1uYjKS-00000002Bks-0gQx;
+	Mon, 07 Jul 2025 10:44:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1751885046;
+	bh=SjYXX7ZDI39EwB3CpttIlw1Vl4E8XtC1XpyQv46bDcs=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=MLpkOaTAJLq4MlrgIGANDFNa+JH58OcI6UYNWz/PJEFtQcnmTL/RIx8x27u3R/myf
+	 jZMJyaM26Ev9l5IitO46i1LH/ENLfRMgk9batqZ8+o/RlOqpnl4t+a522dY6kyY1ZS
+	 tI4r0mziRd2JgKo/oZIP1/oLouUSQeWebAMEVYdxNT3Kf80lzK+HLofHTgTGKdIn1l
+	 slcINFRYB82/9SfjGD3s9Nxs2pDgs2XHC0R5dBhjVMiXKEwZtjvl+H4T1JAwvRLieK
+	 cNKSbM+nzmOYeTEyE7vv9qBtcud49x8Wvv/atmaSumhHGWzR2RP1XLvaZh1sRjvkMf
+	 9xMdydt8MqLDQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6ABA517E06BF;
+	Mon,  7 Jul 2025 12:44:05 +0200 (CEST)
+Message-ID: <5a196563-9589-4d00-a042-1dbb0295b0a5@collabora.com>
+Date: Mon, 7 Jul 2025 12:44:04 +0200
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:eEibhPpTc+nC0XwVozeDH6Yqv088RssljOwOdpNQnoC32fPtW0g
- Sr7vV3t9w1E+Np5DiYmAwyVE8y5aFxvvDHff0VIzxOArLdeSfBoCXCKnWrG+uiSMBxA47MM
- wLzCwrUEP0hVXQgBJ95DKrfxc8QEh+87c5QiRiDk9jpO/YFYZIJu3lNRiYCYGMv8B3iZt+2
- UX8ZEuKRiU3pzy7mdja5w==
-UI-OutboundReport: notjunk:1;M01:P0:YbRdyvRp4tc=;YgJxQ77T+oektOhqNJA0CRFV95z
- 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
- P7bnOr0H3wJu7oqSs10drVc=
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 0/6] iio: Add support for MT6363/6373 Auxiliary ADC
+To: Jonathan Cameron <jic23@kernel.org>, =?UTF-8?Q?Nuno_S=C3=A1?=
+ <noname.nuno@gmail.com>
+Cc: dlechner@baylibre.com, nuno.sa@analog.com, andy@kernel.org,
+ robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, linux-iio@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com
+References: <20250703141146.171431-1-angelogioacchino.delregno@collabora.com>
+ <ab0a407412c705e409d9d26591543713a092c13f.camel@gmail.com>
+ <20250706114455.26748e20@jic23-huawei>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20250706114455.26748e20@jic23-huawei>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250707_114352_569365_64B22C65 
-X-CRM114-Status: GOOD (  21.44  )
+X-CRM114-CacheID: sfid-20250707_034408_342913_12372616 
+X-CRM114-Status: GOOD (  13.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -157,107 +78,51 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo,
+Il 06/07/25 12:44, Jonathan Cameron ha scritto:
+> On Fri, 04 Jul 2025 13:39:56 +0100
+> Nuno Sá <noname.nuno@gmail.com> wrote:
+> 
+>> On Thu, 2025-07-03 at 16:11 +0200, AngeloGioacchino Del Regno wrote:
+>>> Changes in v2:
+>>>   - Added error checks to all regmap r/w operations
+>>>   - Moved adc_vref addition to different commit
+>>>   - Various other fixes
+>>>
+>>> This series adds support for the Auxiliary ADC IP found on the new
+>>> MediaTek MT6363 and MT6373 PMICs, found on board designs featuring
+>>> the MT8196 Chromebook SoC or the MT6991 Dimensity 9400 Smartphone SoC.
+>>>
+>>> AngeloGioacchino Del Regno (6):
+>>>    dt-bindings: iio: adc: mt6359: Add MT6363 PMIC AuxADC
+>>>    dt-bindings: iio: adc: mt6359: Add MT6373 PMIC AuxADC
+>>>    iio: adc: mt6359: Add ready register index and mask to channel data
+>>>    iio: adc: mt6359: Move reference voltage to platform data
+>>>    iio: adc: mt6359: Add support for MediaTek MT6363 PMIC AUXADC
+>>>    iio: adc: mt6359: Add support for MediaTek MT6373 PMIC AUXADC
+>>>
+>>>   .../iio/adc/mediatek,mt6359-auxadc.yaml       |   2 +
+>>>   drivers/iio/adc/mt6359-auxadc.c               | 440 +++++++++++++++---
+>>>   .../iio/adc/mediatek,mt6363-auxadc.h          |  24 +
+>>>   .../iio/adc/mediatek,mt6373-auxadc.h          |  19 +
+>>>   4 files changed, 416 insertions(+), 69 deletions(-)
+>>>   create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6363-auxadc.h
+>>>   create mode 100644 include/dt-bindings/iio/adc/mediatek,mt6373-auxadc.h
+>>
+>>
+>> LGTM,
+>>
+>> Reviewed-by: Nuno Sá <nuno.sa@analog.com>
+>>
+> Applied to the togreg branch of iio.git.  Initially pushed out as testing
+> for 0-day to take a first look and see if we missed anything.
+> Jonathan
+> 
 
-Am 7=2E Juli 2025 12:06:02 MESZ schrieb AngeloGioacchino Del Regno <angelo=
-gioacchino=2Edelregno@collabora=2Ecom>:
->Il 07/07/25 09:30, Frank Wunderlich ha scritto:
->> Am 7=2E Juli 2025 08:31:11 MESZ schrieb Krzysztof Kozlowski <krzk@kerne=
-l=2Eorg>:
->>> On Sun, Jul 06, 2025 at 03:21:57PM +0200, Frank Wunderlich wrote:
->>>> From: Frank Wunderlich <frank-w@public-files=2Ede>
->>>>=20
->>>> Increase the maximum IRQ count to 8 (4 FE + 4 RSS/LRO)=2E
->>>=20
->>> Because? Hardware was updated? It was missing before?
->>=20
->> There is no RSS support in driver yet,so IRQs were not added to existin=
-g DTS yet=2E
->>=20
->
->That's the problem=2E It's the hardware that you should've described, not=
- the driver=2E
->
->In short, you should've allowed the interrupts from the get-go, and you w=
-ouldn't
->be in this situation now :-)
+Thanks for that!
 
-I have not upstreamed MT7981 or MT7986=2E I also do not want to say anybod=
-y else did this wrong=2E
-I'm happy that MT7986 is working in mainline=2E It was basicly not taken i=
-nto account that these IRQs may be needed in future=2E
-
-The technical documents are often not complete and we get some information=
- step-by-step while testing=2E
-Or it was not seen when documents are too large :) many reasons why it was=
- "forgotten to add"=2E
-We use what we get from sdk and docs and try to make it compatible with ma=
-inline=2E=2E=2E=2Eno optimal process,but it is like it is=2E
-
-We are all humans :)
-
->Again, it's not the driver but the hardware that you're describing=2E
-
-Frame engine works with 4,but we wanted to do better than mt798[16] and ad=
-d all known IRQs
-for MT7988 and update the older SoCs in next step=2E
-
->As long as you are fixing the description of the hardware, even for all t=
-hree,
->I am personally even fine with breaking the ABI, because the hardware des=
-cription
->has been wrong for all that time=2E
-
-As some patches now are applied i can add the missing IRQs for MT798[16] i=
-n next round and=20
-maybe the sram too to not having the binding errors long time=2E
-
->Just don't send those as Fixes commits, but next time you upstream someth=
-ing you
->must keep in mind that in bindings/dts you're describing hardware - the d=
-river is
->something that should not drive any decision in what you write in binding=
-s=2E
->
->We're humans, so stuff like this happens - I'm not saying that you shall =
-not make
->mistakes - but again please, for the next time, please please please keep=
- in mind
->what I just said :-)
->
->Now the options are two:
-> - Break the ABI; or
-> - Allow 4 or 8 interrupts (not 5, not 6, not 7)
->
->and that - not just on MT7988 but also on 81 and 86 in one go=2E
-
-I would add dts patches for MT798[16] in next version adding the RSS/LRO I=
-RQs,
-interrupt-names and the sram node and set the interrupt minItems to 8 for =
-these=2E
-
->Not sure if the second one is feasible, and I'm considering the first opt=
-ion only
->because of that; if the second option can be done, act like I never ever =
-considered
->the first=2E
-
-Maybe the cleanest way is like i described above? Afaik second is not poss=
-ible=2E
-
-My intention is that RSS/LRO is ONLY working with interrupt-names so drive=
-r can handle also=20
-old dtb (skip function if irqs are not found via name)=2E
-
-I hope this is a good way to go=2E=2E=2E
-
->Cheers,
->Angelo
-
-
-regards Frank
+Cheers,
+Angelo
 
