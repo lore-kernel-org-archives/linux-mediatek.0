@@ -4,64 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 968A4C83F07
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jul 2025 06:48:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03878C83F07
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jul 2025 07:09:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SWm5LxhKmrywMoCEYdgjN0BNytVEflb/JVj8EEYJYMo=; b=SS1IkiOfiUsosv5JSWEGAVJP59
-	GOPDdH9H2fbpfceX79xP2SaOKG/1joo+nv6IuAda9WUo0LdIwmz9Ss24CgVbuhGJyfhhUHfRvtX7K
-	JDjc3tHFt7AbasxTc273YYNP02Po+Xg+wZ5N3LLpglc9ru0kV7Xy2ig4l9JxoqzRvpQ+kdT156gRy
-	6jYdudjOph/D7+ChVDHGM2FeslpaNsWYLZSrwTU5Qw2VHrannM5SFBJ59N8uyn6lZ9GLx/+8TWKuz
-	882Y0p64qsupq257iNo+blJPhFNbHg++k+RgP/UJkxV04AyK7emXWBxuQXw6nYhYZV1vkMFNGuPem
-	qiVHVB/w==;
+	bh=avKUAohrDA/+wA3qSmnXdrsmCJ0Gc5OKyqucbbfoVig=; b=OI/OTcJ7vd1GnW9RXrQ52vkN5u
+	0JikqD/GUh13yn5BfRoGAX9vCO8fv7/4qplJWYg3q6xFhq1PAntofINQIcnMdUJnJN70yWe23CHEb
+	IVwkct0s/BiLOWPy3bb3bQSdFlpfX2cccgb4JA0LkID5U6MrhRmVlUBfgTMvDbRw9MAMqplBYoAD3
+	wvAFk7S9zNUVP2OnwQUus4DQsnem1tqxXbWbgjGZidzLixquBQQPb0QdMLu340KEaaY4pboMkvduD
+	mQSF3VIvgZa8VQDDYC2u8OqmtXvYwCKZNZPmzKYUp8Wm3y8E1Jfw5t/nhLzAfT/838zAzpaEf6OZq
+	67wNy2fQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYfef-00000001ZyR-09rP;
-	Mon, 07 Jul 2025 06:48:45 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1uYfyH-00000001dW3-17Ym;
+	Mon, 07 Jul 2025 07:09:01 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYfcK-00000001ZnM-3ZJo;
-	Mon, 07 Jul 2025 06:46:21 +0000
+	id 1uYfun-00000001d6z-1EP6;
+	Mon, 07 Jul 2025 07:05:25 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id C0C54A53195;
-	Mon,  7 Jul 2025 06:46:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DF30BC4CEE3;
-	Mon,  7 Jul 2025 06:46:18 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id B0A906112D;
+	Mon,  7 Jul 2025 07:05:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DB729C4CEE3;
+	Mon,  7 Jul 2025 07:05:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751870779;
-	bh=3mMLUGq667LvTYPmJqf0R3Fs9bpeNw58j22K0qFkatw=;
+	s=k20201202; t=1751871924;
+	bh=PGd9A/5X3od+Z3ffVuEq/O0FzpECV5LP8wKFT6Fvjms=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=iBWDFjlBJ1XYPU3rdiNgM8Sz93wOwSI2GhNllcVQXRUgUiW2QEbGCmiYBwdiHQd1/
-	 jsw0Q8J7um77KQxSCaBIjIdC+a/UKSMaBrIXFFxtwCO18+lgfne/uOkWDS0uWs1Beu
-	 RuJUTGziQHbZ6eVOUIIYTCPsYMpaWEnKkEYMNvehWs5TgNyaZDZwRjMivKYBu3KjGy
-	 AtdT9vojGAL8kani6hqpd9cNH1vXQcETZdw53+WL0IAth22k15uZF2Jqsz4vcfaS+q
-	 2VbBEfdHMIyBGZ73Jo6IRqsJAQU4DeGOYmhmtqG9Pf90X4wnBU2iZjuf2h+sVmMVzi
-	 zkJFdUvQhiDhw==
-Date: Mon, 7 Jul 2025 08:46:16 +0200
+	b=AvVog57eSaJ7QWXH8nmeb4XuVlKZryiU7ZDpRGgHKMWBPpORbIA4VvVU4UjYEO6NZ
+	 QVCRtXiPnoW61uFvKUy5XyExVtoUlttp9QbU+jBFqCgUZMVLP+TTZHPX3XUNzynoXL
+	 UnIyEH9ch4evzaTB/JVTGpSjYIVDc/VneTCzKuOdTPqMlxW0Et6/Dobd7VM50eyRU0
+	 wtEFQ0mR7Sc13PlbzNAsFHa2k2eYrkcXrPaecBEPZve2zpln3yCSGHj2E7G8HXw5rj
+	 VBftwCkKF0AltFaSzuyVnXTOwIJ5zMCmVmKecigiDHo2sRuL0U2bmQZsBbtGqUEpVL
+	 7b70fNU/wqDVA==
+Date: Mon, 7 Jul 2025 09:05:21 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: jianjun.wang@mediatek.com, ryder.lee@mediatek.com, bhelgaas@google.com, 
-	lpieralisi@kernel.org, kwilczynski@kernel.org, manivannan.sadhasivam@linaro.org, 
-	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, 
-	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v2 2/3] dt-bindings: PCI: mediatek-gen3: Add support for
- MT6991/MT8196
-Message-ID: <20250707-large-nocturnal-dormouse-c93deb@krzk-bin>
-References: <20250703120847.121826-1-angelogioacchino.delregno@collabora.com>
- <20250703120847.121826-3-angelogioacchino.delregno@collabora.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, 
+	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH net-next v2 1/7] dt-bindings: net: airoha: npu: Add
+ memory regions used for wlan offload
+Message-ID: <20250707-topaz-pillbug-of-fame-859822@krzk-bin>
+References: <20250705-airoha-en7581-wlan-offlaod-v2-0-3cf32785e381@kernel.org>
+ <20250705-airoha-en7581-wlan-offlaod-v2-1-3cf32785e381@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20250703120847.121826-3-angelogioacchino.delregno@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250706_234620_955607_D932561B 
-X-CRM114-Status: UNSURE (   8.02  )
-X-CRM114-Notice: Please train this message.
+In-Reply-To: <20250705-airoha-en7581-wlan-offlaod-v2-1-3cf32785e381@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,27 +73,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 03, 2025 at 02:08:46PM +0200, AngeloGioacchino Del Regno wrote:
-> +    then:
-> +      properties:
-> +        clocks:
-> +          minItems: 6
+On Sat, Jul 05, 2025 at 11:09:45PM +0200, Lorenzo Bianconi wrote:
+> Document memory regions used by Airoha EN7581 NPU for wlan traffic
+> offloading.
+> 
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  .../devicetree/bindings/net/airoha,en7581-npu.yaml   | 20 ++++++++++++++++----
+>  1 file changed, 16 insertions(+), 4 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml b/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
+> index 76dd97c3fb4004674dc30a54c039c1cc19afedb3..db9269d1801bafa9be3b6c199a9e30cd23f4aea9 100644
+> --- a/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
+> +++ b/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
+> @@ -41,15 +41,25 @@ properties:
+>        - description: wlan irq line5
+>  
+>    memory-region:
+> -    maxItems: 1
+> -    description:
+> -      Memory used to store NPU firmware binary.
+> +    items:
+> +      - description: NPU firmware binary region
+> +      - description: NPU wlan offload RX buffers region
+> +      - description: NPU wlan offload TX buffers region
+> +      - description: NPU wlan offload TX packet identifiers region
 > +
-> +        clock-names:
-> +          items:
-> +            - const: pl_250m
-> +            - const: tl_26m
-> +            - const: bus
-> +            - const: low_power
-> +            - const: peri_26m
-> +            - const: peri_mem
-> +
-> +        resets:
+> +  memory-region-names:
+> +    items:
+> +      - const: binary
 
-minItems: 2 is needed (that's a change since some time, comparing to
-what was year or earlier)
+Rather: firmware
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> +      - const: pkt
+> +      - const: tx-pkt
+> +      - const: tx-bufid
+>  
+>  required:
+>    - compatible
+>    - reg
+>    - interrupts
+>    - memory-region
+> +  - memory-region-names
+
+That's ABI break.
 
 Best regards,
 Krzysztof
