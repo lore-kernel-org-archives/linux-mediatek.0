@@ -4,58 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EB04C8303C
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jul 2025 06:37:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 968A4C83F07
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jul 2025 06:48:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pRe9GZzGgR0ivgIssr0fKgerDSmSULCi3EW9ELnuqSo=; b=z4K0fpPpcE7aZAFF8q1dXzdJHc
-	0l6rHhtvjgnmgPDqznNe1H70jGwDdM9OIZK1z/6R09f6ebZDD0lEjqNXSocVQMFtFqXGK/LA7KKYG
-	bC8qATME5oaveO45kORRCJPjEyd4Rvc3nQrszAP5vZAK/4Jby4b+KeLetJdgV6r1p89XF5A3Fx5wp
-	WvG7qjfVFED4uyroAsGWA/WPvafKZJkp5A7bdhaOUH9rZva/divx7LXNXuLgiMCJKpi2hH8dFy71K
-	JH/l5HNwpHIqLAb7eXnR+GlOdn3pXkc0ELFICiLvjtdSAG+SCYvZuukmuxjnG41IDjAGvNosB+ZQI
-	bpUkMJUg==;
+	bh=SWm5LxhKmrywMoCEYdgjN0BNytVEflb/JVj8EEYJYMo=; b=SS1IkiOfiUsosv5JSWEGAVJP59
+	GOPDdH9H2fbpfceX79xP2SaOKG/1joo+nv6IuAda9WUo0LdIwmz9Ss24CgVbuhGJyfhhUHfRvtX7K
+	JDjc3tHFt7AbasxTc273YYNP02Po+Xg+wZ5N3LLpglc9ru0kV7Xy2ig4l9JxoqzRvpQ+kdT156gRy
+	6jYdudjOph/D7+ChVDHGM2FeslpaNsWYLZSrwTU5Qw2VHrannM5SFBJ59N8uyn6lZ9GLx/+8TWKuz
+	882Y0p64qsupq257iNo+blJPhFNbHg++k+RgP/UJkxV04AyK7emXWBxuQXw6nYhYZV1vkMFNGuPem
+	qiVHVB/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYfTQ-00000001Z1r-0juQ;
-	Mon, 07 Jul 2025 06:37:08 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1uYfef-00000001ZyR-09rP;
+	Mon, 07 Jul 2025 06:48:45 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYfQ4-00000001YmM-0QQt;
-	Mon, 07 Jul 2025 06:33:41 +0000
+	id 1uYfcK-00000001ZnM-3ZJo;
+	Mon, 07 Jul 2025 06:46:21 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 250915C5837;
-	Mon,  7 Jul 2025 06:33:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3E327C4CEE3;
-	Mon,  7 Jul 2025 06:33:38 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id C0C54A53195;
+	Mon,  7 Jul 2025 06:46:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DF30BC4CEE3;
+	Mon,  7 Jul 2025 06:46:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751870018;
-	bh=h24qSJ8Oi8rLBWzEyRk9kWuH5HysbbgpfVyMwQU3sDQ=;
+	s=k20201202; t=1751870779;
+	bh=3mMLUGq667LvTYPmJqf0R3Fs9bpeNw58j22K0qFkatw=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=PNVts38qKFiTktRXWRXh6+TlqSdyDKDvCa2/ImWYK0/XxpNZsykfGB7JAQ20u1kRV
-	 5EP+uNwiFYIFBVDX8fo6U5cWii2AKx0S9qBMhTmAc6QUsjnEv+vr4kYn4Bqi4ZkzlT
-	 MH3efX8fVmTsr6/tqCPYnxOv8vyuW4zBZZPO1Th3LSd9pbceYxdgmkLIlrtPDjxBne
-	 oxuosy7fbK1EragWHWFY2PNmm0zpGs88gg8mIRTabCuDkqvGRLnaW2Fi+NxCQ+m96W
-	 jPrKdtxC7rgg7cl9C1pOQX/LcFJSgM1tsQNoEXmYw87DfUgxr0iNri7SeOk19+aGGi
-	 raLJ94KvYDJDw==
-Date: Mon, 7 Jul 2025 08:33:36 +0200
+	b=iBWDFjlBJ1XYPU3rdiNgM8Sz93wOwSI2GhNllcVQXRUgUiW2QEbGCmiYBwdiHQd1/
+	 jsw0Q8J7um77KQxSCaBIjIdC+a/UKSMaBrIXFFxtwCO18+lgfne/uOkWDS0uWs1Beu
+	 RuJUTGziQHbZ6eVOUIIYTCPsYMpaWEnKkEYMNvehWs5TgNyaZDZwRjMivKYBu3KjGy
+	 AtdT9vojGAL8kani6hqpd9cNH1vXQcETZdw53+WL0IAth22k15uZF2Jqsz4vcfaS+q
+	 2VbBEfdHMIyBGZ73Jo6IRqsJAQU4DeGOYmhmtqG9Pf90X4wnBU2iZjuf2h+sVmMVzi
+	 zkJFdUvQhiDhw==
+Date: Mon, 7 Jul 2025 08:46:16 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Frank Wunderlich <linux@fw-web.de>
-Subject: Re: [PATCH v8 04/16] dt-bindings: net: mediatek,net: add sram
- property
-Message-ID: <20250707-masked-ambrosial-pegasus-2ff8fc@krzk-bin>
-References: <20250706132213.20412-1-linux@fw-web.de>
- <20250706132213.20412-5-linux@fw-web.de>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: jianjun.wang@mediatek.com, ryder.lee@mediatek.com, bhelgaas@google.com, 
+	lpieralisi@kernel.org, kwilczynski@kernel.org, manivannan.sadhasivam@linaro.org, 
+	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, 
+	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v2 2/3] dt-bindings: PCI: mediatek-gen3: Add support for
+ MT6991/MT8196
+Message-ID: <20250707-large-nocturnal-dormouse-c93deb@krzk-bin>
+References: <20250703120847.121826-1-angelogioacchino.delregno@collabora.com>
+ <20250703120847.121826-3-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20250706132213.20412-5-linux@fw-web.de>
+In-Reply-To: <20250703120847.121826-3-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250706_233340_181211_F3E1BBB6 
-X-CRM114-Status: UNSURE (   7.37  )
+X-CRM114-CacheID: sfid-20250706_234620_955607_D932561B 
+X-CRM114-Status: UNSURE (   8.02  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -68,16 +73,30 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, Rob Herring <robh@kernel.org>, linux-pm@vger.kernel.org, Chanwoo Choi <cw00.choi@samsung.com>, MyungJoo Ham <myungjoo.ham@samsung.com>, Johnson Wang <johnson.wang@mediatek.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, Kyungmin Park <kyungmin.park@samsung.com>, Georgi Djakov <djakov@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jul 06, 2025 at 03:21:59PM +0200, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> Meditak Filogic SoCs (MT798x) have dedicated MMIO-SRAM for dma operations.
+On Thu, Jul 03, 2025 at 02:08:46PM +0200, AngeloGioacchino Del Regno wrote:
+> +    then:
+> +      properties:
+> +        clocks:
+> +          minItems: 6
+> +
+> +        clock-names:
+> +          items:
+> +            - const: pl_250m
+> +            - const: tl_26m
+> +            - const: bus
+> +            - const: low_power
+> +            - const: peri_26m
+> +            - const: peri_mem
+> +
+> +        resets:
 
-You need "sram: false" for other variants.
+minItems: 2 is needed (that's a change since some time, comparing to
+what was year or earlier)
+
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Best regards,
 Krzysztof
