@@ -4,70 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C568BC8303C
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jul 2025 15:30:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BFD1C8303C
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jul 2025 15:49:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tbMPXxhvpgl9gB5jqtJ3zLdGn3BnaX0ozabRRokp71E=; b=V57v8ZJtynD1jkxfzVWqjzYCaP
-	Sl35nQDgQCOK6Wa1BAzuD9QrjcuPdBeo84XFePGR4eLpUwNeQNzdesKcd+OtWYgyfMY314Cqgvr+Q
-	HDpJICfL78JUb/hn0DovAWmfJ1xFc9y9TAJ/sQGohvQlzFamjHBL24eY6brmAJtSHf0K7dYfGQWw6
-	4vCRVbWBVkXPmEe+avnvbhjwtf/iC4B9JmdRes0xCbd1YYMOo1eFtCa6NXuQnpCbMZaLPoCaPCHs1
-	BjIDDIhAuXTk0Sz8IJPqqGl8ZHV5+EOssWuA6RhqyNoJHPlefoXz52kGVrBeruVIPQ7kHOBlIdNaO
-	71z6ZXaQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hNy9q8E+jaKYA95rrAmxOa1YboE2IejBQgnmMkL288c=; b=SUoBSt2C5atlPSk9O4x6MZfEEI
+	a0468FVMc2mI/dZ0Adh8SwvWnx6X67So2w5SPYfKAu+WVNKK4J+Vepq8mJavVcmE32CWLJFd4agUW
+	5oJFJTSGI6jwJXUHscAbrCx1QpywjFML/thtOTYh4xLCFFTdNVC/6yGVGQcDHeVEDBQe3/qMBbDxf
+	DNEkjsPLPq6+QlJnbWQ5UF68XS1Js62OvMKx9SQRALbY97FWPraBk2OeGE+mctZMSAy6XnDmOceHS
+	yf+Jwg4g0yhUbr+zGlyljDoCAJQqAOyHZe6J0bOmtv43GZiv1iBvZKDNy3DtXT46NZSSAlJykISsv
+	3HS/hrUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYnnl-00000002rrH-2u2E;
-	Mon, 07 Jul 2025 15:30:41 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uYo6B-00000002vGT-3Tpb;
+	Mon, 07 Jul 2025 15:49:43 +0000
+Received: from 004.mia.mailroute.net ([199.89.3.7])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYnhd-00000002qZH-0CVo;
-	Mon, 07 Jul 2025 15:24:21 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id D222161466;
-	Mon,  7 Jul 2025 15:24:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 16595C4CEE3;
-	Mon,  7 Jul 2025 15:24:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751901859;
-	bh=oes/+xn1RurzvrkWTc5SPMVdbj1/SKqgEqmxACEehrM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=vCuz4onVvZwugFdTpv7P/0j4lrHYxUcEusn5UZ6Sc3j7ztX/K+Gpa453lYKJ13EmY
-	 z73CmYgE5BggoGsBNG5/6zY9fi98PeDM+w1CSjMwqWyqgM7Ul78pQk0mEtzaY9GIGc
-	 QJsjHURQIfWsqtV6KZwGq/Z0xRsrUpk9RdMopt9wi8VtTduJvP6Ss1E0ZQrqPfgoZ7
-	 XJQHZMgFVGIS2XWGtbkQKAZK+NZntMD0y28Zwk1/CGDBtGBj5ZwM/muNm8GFJVRRTq
-	 8qPt404gevgFXZzBS/3g6qkNxDEKs8rvNdwx/TRROq9pFCHoW8EDcbbV4pHIRSTUCO
-	 UQO2KdE3eXKtg==
-Date: Mon, 7 Jul 2025 17:24:16 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, Simon Horman <horms@kernel.org>,
-	Felix Fietkau <nbd@nbd.name>
-Subject: Re: [PATCH net-next v2 2/7] net: airoha: npu: Add NPU wlan memory
- initialization commands
-Message-ID: <aGvmoJ83EtYOIa0K@lore-desk>
-References: <20250705-airoha-en7581-wlan-offlaod-v2-0-3cf32785e381@kernel.org>
- <20250705-airoha-en7581-wlan-offlaod-v2-2-3cf32785e381@kernel.org>
- <20250707-agile-aardwolf-of-politeness-29fead@krzk-bin>
- <aGt2L1e3xbWVoqOO@lore-desk>
- <679e6fd2-967f-4057-9ccd-92a37ecc4819@kernel.org>
+	id 1uYnwt-00000002tcG-1HTx;
+	Mon, 07 Jul 2025 15:40:08 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 004.mia.mailroute.net (Postfix) with ESMTP id 4bbT2W6Yp2zm0ySb;
+	Mon,  7 Jul 2025 15:40:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1751902801; x=1754494802; bh=hNy9q8E+jaKYA95rrAmxOa1Y
+	boE2IejBQgnmMkL288c=; b=thtA1SXUtKqdE6w0yDKP75OWI1o/e8/VAs2EmRQt
+	ySYhzHcqBG5NI8K4z6949nonnkm/OnuZKh+UQDZnhOoXGP6V9utxiH5qMYVNqn6y
+	6gqV0hKbqRXFvm9pEwjK4R1Nk9Ka7ii+JZnyqLkkKIfxtmr+Aot+8HMzFTL0u19g
+	IVnRM5Oxi+maxqVNc+n4CvwIZnCv92439lzc2dHqhxpUwJFpi+ef2XJgDMshHU/i
+	n5J+GdiEmGf6W9HafRxNUwibr9SziBTLMwNrXO8JqM0b+Q0vcvlxqhTu/AiA0Xwc
+	zr8z99TNQiZ9/lE/cVCXwvBQ8C/UEWKAFdmNHd/tHrhdfw==
+X-Virus-Scanned: by MailRoute
+Received: from 004.mia.mailroute.net ([127.0.0.1])
+ by localhost (004.mia [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id 822Kd6-Eq7YK; Mon,  7 Jul 2025 15:40:01 +0000 (UTC)
+Received: from [100.66.154.22] (unknown [104.135.204.82])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bvanassche@acm.org)
+	by 004.mia.mailroute.net (Postfix) with ESMTPSA id 4bbT2J2NTCzm0ySj;
+	Mon,  7 Jul 2025 15:39:51 +0000 (UTC)
+Message-ID: <9f281874-21b7-4561-914a-52c8ef16b03a@acm.org>
+Date: Mon, 7 Jul 2025 08:39:50 -0700
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="OT/S5wyakOFftJE4"
-Content-Disposition: inline
-In-Reply-To: <679e6fd2-967f-4057-9ccd-92a37ecc4819@kernel.org>
+User-Agent: Mozilla Thunderbird
+Subject: =?UTF-8?B?UmU6IOWbnuimhjogW1BBVENIXSBzY3NpOiB1ZnM6IHByZXZlbnRpbmcg?=
+ =?UTF-8?Q?bus_hang_crash_during_emergency_power_off?=
+To: =?UTF-8?B?Qm8gWWUgKOWPtuazoik=?= <Bo.Ye@mediatek.com>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: =?UTF-8?B?WGl1anVhbiBUYW4gKOiwreengOWonyk=?= <xiujuan.tan@mediatek.com>,
+ =?UTF-8?B?UWlsaW4gVGFuICjosK3pupLpup8p?= <Qilin.Tan@mediatek.com>,
+ "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
+References: <20250519073814.167264-1-bo.ye@mediatek.com>
+ <a15b8f6e-5ad5-4d16-98d4-79cf63619f6e@acm.org>
+ <SEYPR03MB6531CD4D3FAD80339F8E693B944FA@SEYPR03MB6531.apcprd03.prod.outlook.com>
+Content-Language: en-US
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <SEYPR03MB6531CD4D3FAD80339F8E693B944FA@SEYPR03MB6531.apcprd03.prod.outlook.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250707_084007_442218_ABD99D63 
+X-CRM114-Status: UNSURE (   9.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,87 +96,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 7/7/25 12:49 AM, Bo Ye (=E5=8F=B6=E6=B3=A2) wrote:
+> Thank you for your feedback.
+> I believe ufshcd_wait_for_doorbell_clr() can handle both legacy single=20
+> doorbell mode and MCQ [ ... ]
 
---OT/S5wyakOFftJE4
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Agreed.
 
-> On 07/07/2025 09:24, Lorenzo Bianconi wrote:
-> >> On Sat, Jul 05, 2025 at 11:09:46PM +0200, Lorenzo Bianconi wrote:
-> >>> +
-> >>>  struct airoha_npu *airoha_npu_get(struct device *dev, dma_addr_t *st=
-ats_addr)
-> >>>  {
-> >>>  	struct platform_device *pdev;
-> >>> @@ -493,6 +573,7 @@ static int airoha_npu_probe(struct platform_devic=
-e *pdev)
-> >>>  	npu->ops.ppe_deinit =3D airoha_npu_ppe_deinit;
-> >>>  	npu->ops.ppe_flush_sram_entries =3D airoha_npu_ppe_flush_sram_entri=
-es;
-> >>>  	npu->ops.ppe_foe_commit_entry =3D airoha_npu_foe_commit_entry;
-> >>> +	npu->ops.wlan_init_reserved_memory =3D airoha_npu_wlan_init_memory;
-> >>
-> >> I cannot find in your code single place calling this (later you add a
-> >> wrapper... which is not called either).
-> >>
-> >> All this looks like dead code...
-> >=20
-> > As pointed out in the commit log, these callbacks will be used by MT76 =
-driver
-> > to initialize the NPU reserved memory and registers during driver probe=
- in
-> > order to initialize the WiFi offloading. Since MT76 patches are going v=
-ia
-> > the wireless tree, I needed to add these callbacks first.
->=20
-> Cover letter does not link to your NPU patchset. You cannot add dead
-> code to the kernel and now it is pure dead code. Post your user - in
-> this or separate patchset.
+> Therefore, the current implementation should support both modes.
+> Please let me know if you have further concerns.
 
-I guess you mean the related MT76 patches are not linked in the cover-lette=
-r,
-right? I have not posted them yet.
+The Fixes tag seems wrong to me. I think it should be changed into the
+following:
 
->=20
-> Your explanation of dependency is also confusing. If these are added to
-> wireless tree (considering last experience how they rebase and cannot
-> easily handle cross tree merges), how does it solve your problem? You
-> will have it in one tree but not in the other, so still nothing...
-> That's anyway separate problem, because main issue is you add code which
-> we cannot even verify how it is being used.
+Fixes: 19a198b67767 ("scsi: ufs: core: Set SDEV_OFFLINE when UFS is shut=20
+down")
 
-My main point here is wireless tree can't acutally merge the MT76 patches
-since, without the net-next ones (this series), it will not compile (so I
-posted net-next patches as preliminary ones for MT76 changes).
-Moreover, this is the same approach we used when we added WED support to
-mtk_eth_soc driver and the related MT76 support.
-However, I am fine to post the MT76 changes as RFC and just refer to it in
-this series cover-letter. Agree?=20
+I will add more comments as a reply to the original patch.
 
->=20
-> So far I see ABI break, but without user cannot judge. And that's the
-> hard reason this cannot be accepted.
-
-if you mean the dts changes, I will fix them in v3.
-
-Regards,
-Lorenzo
-
->=20
-> Best regards,
-> Krzysztof
-
---OT/S5wyakOFftJE4
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaGvmoAAKCRA6cBh0uS2t
-rDczAPsFgaNtjWprKaC6Z+VfmUNzguMJ9HSaKYKBDoZw5TyM1gD8CclHT+w5VNy/
-s041k48snp6/uVkoTA4CjRMJt0+DKQM=
-=aXb3
------END PGP SIGNATURE-----
-
---OT/S5wyakOFftJE4--
+Bart.
 
