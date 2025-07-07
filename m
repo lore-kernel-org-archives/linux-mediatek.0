@@ -4,72 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DA0AC83F07
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jul 2025 12:13:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0049C8303C
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jul 2025 12:59:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RCIHWgkQqmUL63XQqiNyO8uPfuqf2Y86fI+gXEWVRtA=; b=VFG5HunWzenY2VKFifpEfvWciE
-	eNG5/ynBpaRJvLrcLea+4vNgIJDsC0gE8afQ/5R5qW6kGr+Mk56m501MEdLLBJleXA4RwqHUS1oVe
-	RygQAt0R/LB7I3HPsIbitfwZhS1PSVUhFjv8TyzucBKdMpYT/qcXETjE0wIp52ym0aEXj5YPS/6kU
-	lac7AGu7/5bn/1GHa56oKvJEgQyqxeGiuPeIb2kFluyYyY/xwzV79B48stWxjh0eNDsb8TPhB90sh
-	4FH5qnPa/+DsxZk2qntjJAy4CFiNdiBv7Rj5AvNHkI+6VdQ9gkRQyu57G6oWfUwNokkjrfNXna0lZ
-	wVqSoPSw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=P7B/KAoETvcbg8WkPG1QTVhRm2y4W3lQglMRuOnYMR4=; b=kdo6Lj/W8nobgi
+	9KDBh2yE7nSCm9ebfPBm1C4qJUcTQn4SSiqWZNh78gpqJRuHd/KlBmSP5SaoATs99R5K2HCmyISLu
+	YH3ZKjxT28X29uGBy9Z/Je3m4x2HfK5KSHbBJnOQMVnu1KS9hsLPOxnqqAlBDA0k5lzCPn51OdDAY
+	I/CB00PaCE0JYBty9/v0n70XWKqVRK1BGm8uhgBxSYAFy5dqvD2QXTuH0A3Is40yCPHL7sOUt8K2k
+	VTjMivzWBx6OfGQhuCQry2RpIlPbiE+f9e71k0EqKvqUX9C1KDyW1Yj2JochiNQI8fso2uv6SI+hN
+	jLhCSPqije4dWIvoPGWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYkj9-00000002OMZ-16I8;
-	Mon, 07 Jul 2025 12:13:43 +0000
+	id 1uYlRi-00000002TBB-0S0G;
+	Mon, 07 Jul 2025 12:59:46 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYjH0-00000002BHN-15Kl;
-	Mon, 07 Jul 2025 10:40:36 +0000
+	id 1uYjWK-00000002DCR-2dgd;
+	Mon, 07 Jul 2025 10:56:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1751884832;
-	bh=ftsLVap/wQlouELe/Vz9orQAIVOxIgjrr2GNre4BLO8=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=B7DLECwTBwHQR2zWawtF42o2tFXjdd3QqG1B6XFHT3n2tS6NqaqBelm94sj/z/ytD
-	 smZL80SW7UQffIp0texTk5dsel7xOuE9tEPq0i9yQWo+imdQYCJ5glfi6tWxbt17Y2
-	 Nepl6s9NimyCchbFWfzaWbaZT6ZjSAYl/Lr4e7hJe5EomOEJkz6nd/b/+4m6WzFrVy
-	 VqOjQgCuBEMqpqcPEd3kemCJ1AMomnonNTzIR+vLOpfv+FIgp5SSXmjHxzses7xp79
-	 0E82tbR61xpa+e6Kp9caOj0mhIkHPFjMk40kQQMrTF3xwyormY45spheEc/NSbAHQT
-	 t35jkJvRzXmYA==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	s=mail; t=1751885783;
+	bh=tZzpJ1Lo2cmtrq4MyCjpJiEHM0yEw3fJD2CdCiZOAkY=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=NPfH2oXnXKXYljNb9a4X8KmJ3OrIg3Pj5GanNOL+st7z9TiulXYZ4KKi9GdBZzBoL
+	 0aEGTe0E2Y8m2lSLO2N2ipJ15gWrNxjJSELslMr9mbvv9fwkZuXUGLbMYlmkdnSPVc
+	 J+DRA3Dmfztk7Uh6jIady+Vdojw0W39fWr8h405ocay9b5u4Di0WUtVuVOjj0Ctgy8
+	 AsMW0VQ0otldVFBfWT1tPGVrucY2JPHoFMZ5EfY74YIX4jbeL9L90sYZHap5i97tqS
+	 ecK3QXELWp6IGHeX5pih5EFFOmC2qW2EQ4bGbEXaiPA03vy9c7uWEoVk4oZuABabE6
+	 xsI57Wo7ZPrSA==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6C89B17E0630;
-	Mon,  7 Jul 2025 12:40:31 +0200 (CEST)
-Message-ID: <9560d4d2-5346-4d0a-a96f-c96ebe335f3c@collabora.com>
-Date: Mon, 7 Jul 2025 12:40:30 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 2/3] dt-bindings: firmware: Document the MediaTek
- Hardware Voter (HWV)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1A68F17E11ED;
+	Mon,  7 Jul 2025 12:56:22 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>, robh@kernel.org,
- conor+dt@kernel.org
-Cc: matthias.bgg@gmail.com, ulf.hansson@linaro.org, arnd@arndb.de,
- m.wilczynski@samsung.com, nm@ti.com, khilman@baylibre.com, kabel@kernel.org,
- quic_hyiwei@quicinc.com, pjp@fedoraproject.org, tudor.ambarus@linaro.org,
- drew@pdp7.com, u.kleine-koenig@baylibre.com, gregkh@linuxfoundation.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- laura.nao@collabora.com, kernel@collabora.com
-References: <20250701151149.136365-1-angelogioacchino.delregno@collabora.com>
- <20250701151149.136365-3-angelogioacchino.delregno@collabora.com>
- <20250702-debonair-lynx-of-serenity-ee7138@krzk-bin>
- <d41a6c60-5368-4bcd-b028-2477e42e29bb@collabora.com>
-Content-Language: en-US
-In-Reply-To: <d41a6c60-5368-4bcd-b028-2477e42e29bb@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: linux-mediatek@lists.infradead.org
+Subject: [PATCH v2 07/10] pmdomain: mediatek: Add support for modem power sequences
+Date: Mon,  7 Jul 2025 12:56:02 +0200
+Message-ID: <20250707105605.98248-8-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.49.0
+In-Reply-To: <20250707105605.98248-1-angelogioacchino.delregno@collabora.com>
+References: <20250707105605.98248-1-angelogioacchino.delregno@collabora.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250707_034034_615256_C80F9CE1 
-X-CRM114-Status: GOOD (  37.54  )
+X-CRM114-CacheID: sfid-20250707_035624_842961_B04D6D90 
+X-CRM114-Status: GOOD (  15.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,236 +68,104 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: robh@kernel.org, conor+dt@kernel.org, mbrugger@suse.com, y.oudjana@protonmail.com, =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>, linux-pm@vger.kernel.org, ulf.hansson@linaro.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, mandyjh.liu@mediatek.com, lihongbo22@huawei.com, wenst@chromium.org, matthias.bgg@gmail.com, krzk+dt@kernel.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 03/07/25 10:56, AngeloGioacchino Del Regno ha scritto:
-> Il 02/07/25 08:50, Krzysztof Kozlowski ha scritto:
->> On Tue, Jul 01, 2025 at 05:11:48PM +0200, AngeloGioacchino Del Regno wrote:
->>> Add documentation for the new MediaTek Hardware Voter, found in
->>> MediaTek SoCs like the MT8196 Kompanio Ultra for Chromebooks and
->>> the MT6991 Dimensity 9400 for Smartphones.
->>>
->>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>> ---
->>>   .../mediatek,mt6991-hardware-voter.yaml       | 70 +++++++++++++++++++
->>>   1 file changed, 70 insertions(+)
->>>   create mode 100644 Documentation/devicetree/bindings/firmware/mediatek,mt6991- 
->>> hardware-voter.yaml
->>>
->>> diff --git a/Documentation/devicetree/bindings/firmware/mediatek,mt6991- 
->>> hardware-voter.yaml b/Documentation/devicetree/bindings/firmware/ 
->>> mediatek,mt6991-hardware-voter.yaml
->>> new file mode 100644
->>> index 000000000000..173b74c23a91
->>> --- /dev/null
->>> +++ b/Documentation/devicetree/bindings/firmware/mediatek,mt6991-hardware- 
->>> voter.yaml
->>> @@ -0,0 +1,70 @@
->>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
->>> +# Copyright 2025 Collabora Ltd
->>> +%YAML 1.2
->>> +---
->>> +$id: http://devicetree.org/schemas/firmware/mediatek,mt6991-hardware-voter.yaml#
->>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->>> +
->>> +title: MediaTek Hardware Voter (HWV)
->>> +
->>> +maintainers:
->>> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>> +
->>> +description:
->>> +  The MediaTek Hardware Voter (HWV) is a SoC-internal fixed-function MCU
->>> +  used to collect votes from both the Application Processor and from the
->>> +  various other remote processors present in the SoC, and transparently
->>> +  turn on or off various hardware resources (for example, power domains
->>> +  or system clocks) based on aggregation of votes done in the HWV MCU's
->>> +  internal state machine, therefore guaranteeing synchronization of the
->>> +  hardware resource requests between all components of the SoC and hence
->>> +  avoiding, for example, unclocked or unpowered access to the hardware.
->>> +
->>> +properties:
->>> +  $nodename:
->>> +    pattern: "^system-controller@[0-9a-f]+$"
->>> +
->>> +  compatible:
->>> +    const: mediatek,mt6991-hardware-voter
->>> +
->>> +  reg:
->>> +    items:
->>> +      - description: Address and size of the Hardware Voter MMIO
->>> +
->>
->> No resources here, so this should go to power controller
->>
->>> +  power-controller:
->>> +    $ref: /schemas/power/mediatek,power-controller.yaml
->>> +
->>> +required:
->>> +  - compatible
->>> +  - reg
->>> +
->>> +additionalProperties: true
->>> +
->>> +examples:
->>> + - |
->>> +   scp_hwv: system-controller@14500000 {
->>> +     compatible = "mediatek,mt6991-hardware-voter";
->>> +     reg = <0 0x14500000 0 0x3000>;
->>> +
->>> +     power-controller {
->>> +       compatible = "mediatek,mt8196-hwv-scp-power-controller";
->>
->> mt8196 in mt6991 is very confusing.
->>
-> 
-> Yeah that wasn't intentional; fyi, it's almost the same soc, that's why I mixed
-> them up... :-)
-> 
->> Anyway, this does not address my comment at all. You again create some
->> sort of syscon for voting, so no. You are supposed to use generic API
->> for voting: clocks, power domains, interconnects - whatever is there
->> applicable or necessary.
->>
-> 
-> Making that loud and clear: Interconnect is not applicable.
-> 
-> The only way to do what you're proposing would be to add a bunch of `reg`
-> to each devicetree node for each clock controller and each power controller;
-> I can do that, but looks a bit dirty - and still yet another syscon-like
-> alternative, but without having a real syscon declared in there.
-> 
-> Mind you - both clock and power controllers are writing both to their own
-> register space (and enabling external regulators, etc, for power domains)
-> and to the hardware voter MMIO (which means that the HWV, in hardware, is
-> fundamentally broken).
-> 
-> After this reply, the only option that is left to me is the following:
-> 
->          topckgen: clock-controller@10000000 {
->              compatible = "mediatek,mt8196-topckgen", "syscon";
->              reg = <0 0x10000000 0 0x800>, <0 0x14500010 0 0x48>,
->                    <0 0x14502c08 0 0x24>;
->              reg-names = "base", "hwvoter-base", "hwvoter-status";
->              #clock-cells = <1>;
->          };
-> 
->          imp_iic_wrap_north: clock-controller@13c30000 {
->              compatible = "mediatek,mt8196-imp-iic-wrap-n", "syscon";
->              reg = <0 0x13c30000 0 0x1000>, <0 0x14500000 0 0xc>,
->                    <0 0x14502c00 0 0xc>;
->              reg-names = "base", "hwvoter-base", "hwvoter-status";
->              #clock-cells = <1>;
->          };
-> 
->          /* Power Manager with Hardware Voter */
->          spm_hwv: power-controller@14500218 {
->              compatible = "mediatek,mt8196-hwv-scp-power-controller";
->              reg = <0 0x14500218 0 0x20>, <0 0x14501410 0 0x20>,
->                    <0 0x14505514 0 0xc>;
->              reg-names = "hwvoter-base", "hwvoter-status", "hwvoter-ack";
->              #address-cells = <1>;
->              #size-cells = <0>;
->              #power-domain-cells = <1>;
-> 
->              /* SCPSYS hardware voter power domains */
->              mm_proc_dormant: power-domain@MT8196_POWER_DOMAIN_MM_PROC_DORMANT {
->                  ..... etc, all power domains
-> 
-> At this point, I'm really not sure that this would be better than just passing
-> the mediatek,hardware-voter syscon to the clock controllers - as what I've done
-> previously was effectively representing the hardware in the devicetree as it is,
-> matching the real HW layout 1:1 (because again, each of the whole HWV MCU(s) are
-> embedded into each of the two power controllers, one for System power, and one
-> for Multimedia power).
-> 
-> (btw, hardware speaking, the power controller is child of a system controller:
-> there are two system controllers - "scpsystem" is for "compute part", and the
-> "hfrpsystem" is for the "multimedia part" of the soc).
-> 
->   _______________________________________
-> |                                       |
-> | SYSTEM CONTROLLER (SCPSYS or HFRPSYS) |
-> |   _____________________               |
-> |  |                     |              | <===> Clock Controllers (more than one)
-> |  | Power Controller    |     SOME     |       (provide subsystem clocks for iso
-> |  |                     |    OTHER     |        during power domain enablement
-> |  |     ______________  |   BLOCKS     |        even if a PD is voted)
-> |  |    |              | |              |       non-subsystem clocks are voted,
-> |  |    | HW Voter MCU | |              |       but subsystem ones are not voted
-> |  |    |______________| |              |
-> |  |_____________________|              | ===> Rest of the SoC
-> |_______________________________________|
-> 
-> 
-> Hence I'm asking you - does your idea still stand?
-> 
-> Because after this, sorry for that - this doesn't want to be an attack - but
-> I'm starting to have doubts about an approach that doesn't involve syscons.
-> 
-> Cheers,
-> Angelo
+Add support for the modem power domains by adding its specific
+power sequence in functions scpsys_modem_pwrseq_{on,off}() and
+call them if the flag MTK_SCPD_MODEM_PWRSEQ is present.
 
-Sorry for the double reply, wanted to add some more words :-)
+While at it, since some SoC models need to skip setting/clearing
+the PWR_RST_B_BIT, also add a MTK_SCPD_SKIP_RESET_B flag for that.
 
-As a note, I also thought about doing the following:
+Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/pmdomain/mediatek/mtk-pm-domains.c | 41 ++++++++++++++++++++--
+ drivers/pmdomain/mediatek/mtk-pm-domains.h |  2 ++
+ 2 files changed, 41 insertions(+), 2 deletions(-)
 
-	/* Secondary SCPSYS block with HWV capabilities */
-	scp1_hwv: system-controller@14500000 {
-		compatible = "mediatek,mt8196-scpsys", "syscon", "simple-mfd";
-		reg = <0 0x14500000 0 0x3000>;
-
-		/* SCP Power Manager with Hardware Voter */
-		spm_hwv: power-controller {
-			compatible = "mediatek,mt8196-hwv-scp-power-controller";
-			#address-cells = <1>;
-			#size-cells = <0>;
-			#power-domain-cells = <1>;
-
-			/* SCPSYS hardware voter power domains */
-			mm_proc_dormant: power-domain@MT8196_POWER_DOMAIN_MM_PROC_DORMANT {
-			..... etc etc
-			};
-		};
-
-		imp_iic_wrap_north: clock-controller@13c30000 {
-			compatible = "mediatek,mt8196-imp-iic-wrap-n", "syscon";
-			reg = <0 0x13c30000 0 0x1000>;
-			#clock-cells = <1>;
-		};
-	};
-
-...but that's also not applicable, because the clock controllers are physically
-*not* inside of the scpsys1 block, so that would *also* misrepresent the hardware
-in the devicetree (besides still using a syscon in a way or another).
-
-So... I really don't see any way out of that, which really leaves me with the two
-options that I described in the previous reply.
-
-Summarizing, either:
-  - Adding hwv MMIOs (a bunch of, and each very small) to each clock controller (but
-    still all of them are poking at the same HWV controller, and I foresee that this
-    will backfire in some future iteration of the HWV hardware)
-  - Reverting back to using the "mediatek,hardware-voter" syscon, like done in
-    https://lore.kernel.org/20250624143220.244549-10-laura.nao@collabora.com
-
-I tried really hard and thought about this for weeks (actually, started even before
-your feedback on Laura's series), but now I'm out of practical options that are
-both correctly representing the hardware and not making the implementation fragile
-(or actually more fragile than the actually broken HW implementation's fragility,
-anyway).
-
-And besides - re-reading what I wrote after a bunch of days, the first option of
-adding a bunch of hwv mmios to all of the clock controllers is, in my opinion, a
-(dirty) hack - because those mmios don't belong to the clock controllers, and would
-again misrepresent the hardware in DT - especially keeping in mind the fact that
-the clock controllers can be controlled with *and* (not or) without the HWV (and in
-some instances, even if using HWV, we must still write to the clock controllers'
-mmio for extra programming, as explained before).
-
-Every second I think about this I get more and more convinced that my way of
-passing the SCPSYS-HWV system controller handle as a syscon is right.
-
-Angelo
+diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+index 92a3b523002b..e3a332bda70e 100644
+--- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
++++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+@@ -279,6 +279,36 @@ static void scpsys_ctl_pwrseq_off(struct scpsys_domain *pd)
+ 	regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_ON_BIT);
+ }
+ 
++static int scpsys_modem_pwrseq_on(struct scpsys_domain *pd)
++{
++	struct scpsys *scpsys = pd->scpsys;
++	bool tmp;
++	int ret;
++
++	if (!MTK_SCPD_CAPS(pd, MTK_SCPD_SKIP_RESET_B))
++		regmap_set_bits(scpsys->base, pd->data->ctl_offs, PWR_RST_B_BIT);
++
++	regmap_set_bits(scpsys->base, pd->data->ctl_offs, PWR_ON_BIT);
++
++	/* wait until PWR_ACK = 1 */
++	ret = readx_poll_timeout(scpsys_domain_is_on, pd, tmp, tmp, MTK_POLL_DELAY_US,
++				 MTK_POLL_TIMEOUT);
++	if (ret < 0)
++		return ret;
++
++	return 0;
++}
++
++static void scpsys_modem_pwrseq_off(struct scpsys_domain *pd)
++{
++	struct scpsys *scpsys = pd->scpsys;
++
++	regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_ON_BIT);
++
++	if (!MTK_SCPD_CAPS(pd, MTK_SCPD_SKIP_RESET_B))
++		regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_RST_B_BIT);
++}
++
+ static int scpsys_power_on(struct generic_pm_domain *genpd)
+ {
+ 	struct scpsys_domain *pd = container_of(genpd, struct scpsys_domain, genpd);
+@@ -297,7 +327,11 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+ 		regmap_clear_bits(scpsys->base, pd->data->ext_buck_iso_offs,
+ 				  pd->data->ext_buck_iso_mask);
+ 
+-	ret = scpsys_ctl_pwrseq_on(pd);
++	if (MTK_SCPD_CAPS(pd, MTK_SCPD_MODEM_PWRSEQ))
++		ret = scpsys_modem_pwrseq_on(pd);
++	else
++		ret = scpsys_ctl_pwrseq_on(pd);
++
+ 	if (ret)
+ 		goto err_pwr_ack;
+ 
+@@ -366,7 +400,10 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+ 
+ 	clk_bulk_disable_unprepare(pd->num_subsys_clks, pd->subsys_clks);
+ 
+-	scpsys_ctl_pwrseq_off(pd);
++	if (MTK_SCPD_CAPS(pd, MTK_SCPD_MODEM_PWRSEQ))
++		scpsys_modem_pwrseq_off(pd);
++	else
++		scpsys_ctl_pwrseq_off(pd);
+ 
+ 	/* wait until PWR_ACK = 0 */
+ 	ret = readx_poll_timeout(scpsys_domain_is_on, pd, tmp, !tmp, MTK_POLL_DELAY_US,
+diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.h b/drivers/pmdomain/mediatek/mtk-pm-domains.h
+index fbbfb23a8739..931a54f1c5ca 100644
+--- a/drivers/pmdomain/mediatek/mtk-pm-domains.h
++++ b/drivers/pmdomain/mediatek/mtk-pm-domains.h
+@@ -14,6 +14,8 @@
+ #define MTK_SCPD_HAS_INFRA_NAO		BIT(7)
+ #define MTK_SCPD_STRICT_BUS_PROTECTION	BIT(8)
+ #define MTK_SCPD_SRAM_PDN_INVERTED	BIT(9)
++#define MTK_SCPD_MODEM_PWRSEQ		BIT(10)
++#define MTK_SCPD_SKIP_RESET_B		BIT(11)
+ #define MTK_SCPD_CAPS(_scpd, _x)	((_scpd)->data->caps & (_x))
+ 
+ #define SPM_VDE_PWR_CON			0x0210
+-- 
+2.49.0
 
 
