@@ -4,78 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96382C83F07
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jul 2025 08:09:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA78FC8303C
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jul 2025 08:27:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OK8p+gJrVIr64UGgL8ox7/n071xyuSynkQOAEVTADiA=; b=JpOx8InNSzsMY/EKuYBO54CSV9
-	6WDHFKAVb2NPl00Tg0QTTW1d9+eQWf4sIZPqc4Js6YFrSipoqoI8um62ETn0cM+sgmxIjAX0VSyel
-	MY19beKLz2F8KZCKMkR7PNN30zI2Pk75Q+uMRQXByRi0px7oGgXUup/44+AA5bO8Q5dSpq3IO4dro
-	0V8kAoq3qpOGKecDI+qDxwq7BjMZJpsKE9Y3RXBxVjcLcUMAF7z+nwjr4EYxzjZfh/v7GmQdo8/aH
-	d/uNXI7Eem6kQ+NumWtiPl89LjO37U2H0oxEKCyVmlaEtejiwFeu708PsMbPxpIBJj9Y+ItkAjs3U
-	OQE+ECuQ==;
+	bh=cevL/+9LupPnvd4Ub2fYO4b+8k5nrz+MqxehWljwZAw=; b=dkopxfjHcjjAcS8eFE8U4Cr/se
+	7gaNpwXPUjrsNed6Yb5nOj/fIb6WhAPvb17P6SX8rv6Xs9i1VNayDpGNYo30Y8sTT8Y1y6BEL/LZ2
+	LKx6w/F0UZ1yehFYhpUp8cRb59HnAP+WxEhTEURUWbXiY7voS26tTuLvKu+JIKxRRBN1ilUiRTzq5
+	sCvYRikLdIuGSWbLKku8usyrr8ZZhTZ5FQ1cbl9gnc9km3YPKBTisfaaOLiAKUan1enycr1olaGrB
+	8YS/bQPm/sYHD8rW0slSnmi3uWm16fJ3UReDvhzG//r82iyitInbf4lGQ/wo82e0fNzm7xj2+2LPX
+	tEdQNf3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYguL-00000001oXE-2NFn;
-	Mon, 07 Jul 2025 08:09:01 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1uYhCg-00000001qws-11yU;
+	Mon, 07 Jul 2025 08:27:58 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYgKd-00000001hCc-3cqD;
-	Mon, 07 Jul 2025 07:32:09 +0000
-X-UUID: 79218e125b0411f09eb0dd999d3936bf-20250707
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From; bh=OK8p+gJrVIr64UGgL8ox7/n071xyuSynkQOAEVTADiA=;
-	b=qdUJgwzytyIBtsupHBZAHPiEKJpjeKNTvEsiSP5BFPvQyiZR9W8kMT9HRgfM1MqMsZtvcuYWyf1eXm6EGEY+M0J9e9AfHgjGOit2ZGZxB2Y9yhThf/oBIvO+vvBsl3wlyKbvlLX7U6FYjzcxfFi5tJVG0l5sUzWkHec0LRCiOjQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.2,REQID:60fd06b0-32bc-4859-94a8-030c6a38ea76,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:9eb4ff7,CLOUDID:fc2ff473-15a7-4ae6-ad4b-94c27b45c266,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
-	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
-	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 79218e125b0411f09eb0dd999d3936bf-20250707
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <kyrie.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1999486996; Mon, 07 Jul 2025 00:32:01 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Mon, 7 Jul 2025 15:31:58 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Mon, 7 Jul 2025 15:31:58 +0800
-From: Kyrie Wu <kyrie.wu@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
-	<krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Kyrie Wu <kyrie.wu@mediatek.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH v7 12/12] media: mediatek: jpeg: add jpeg smmu sid setting
-Date: Mon, 7 Jul 2025 15:31:45 +0800
-Message-ID: <20250707073146.3581-13-kyrie.wu@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20250707073146.3581-1-kyrie.wu@mediatek.com>
-References: <20250707073146.3581-1-kyrie.wu@mediatek.com>
+	id 1uYgWM-00000001jNM-0ysk;
+	Mon, 07 Jul 2025 07:44:15 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id B02835C59A6;
+	Mon,  7 Jul 2025 07:44:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 05302C4CEE3;
+	Mon,  7 Jul 2025 07:44:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1751874253;
+	bh=/jD354R592s4zJMZWD0+ePhWTUfRC108q7YO8NMu23U=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=PQwE1vX/yXNQiTs0tbmqSybnQiotd/y2C054/icFvOPoTd/5CYEyCj/rNejwoLLg8
+	 Wo7F3vCp2rjnfLbqI5rlb2kmjuOp1AZK+41hek1e/EokISgDLMYScJ1e8dY8dL6SF6
+	 qHa42qLz8g1OahyZjW91CYPx2KTc83LjTClaojuVRIaaDOMCGD5w3FcNc+YZyenALM
+	 XLO1gBN6b5LU/hLRqWOb/iyqOnOOhTDijfAuZbR8lQLgaFUZy3ZxUfN6klJ29K1XUe
+	 B/Z7yJ1NABIxdnpYMxJ/0g05uE0aPdkmfB9rx71B6nuIS7Z2S0XZ0taQ+pTLBiwTD2
+	 Em3J3a8sKeZ9w==
+Date: Mon, 7 Jul 2025 13:13:57 +0530
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: Nam Cao <namcao@linutronix.de>
+Cc: Marc Zyngier <maz@kernel.org>, Thomas Gleixner <tglx@linutronix.de>, 
+	Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, 
+	Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+	Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>, "K . Y . Srinivasan" <kys@microsoft.com>, 
+	Haiyang Zhang <haiyangz@microsoft.com>, Wei Liu <wei.liu@kernel.org>, Dexuan Cui <decui@microsoft.com>, 
+	Joyce Ooi <joyce.ooi@intel.com>, Jim Quinlan <jim2101024@gmail.com>, 
+	Nicolas Saenz Julienne <nsaenz@kernel.org>, Florian Fainelli <florian.fainelli@broadcom.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Ray Jui <rjui@broadcom.com>, 
+	Scott Branden <sbranden@broadcom.com>, Ryder Lee <ryder.lee@mediatek.com>, 
+	Jianjun Wang <jianjun.wang@mediatek.com>, Marek Vasut <marek.vasut+renesas@gmail.com>, 
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Michal Simek <michal.simek@amd.com>, 
+	Daire McNamara <daire.mcnamara@microchip.com>, Nirmal Patel <nirmal.patel@linux.intel.com>, 
+	Jonathan Derrick <jonathan.derrick@linux.dev>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-arm-kernel@lists.infradead.org, 
+	linux-hyperv@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org
+Subject: Re: [PATCH 00/16] PCI: MSI parent domain conversion
+Message-ID: <zkjevl46rosm276lirw5vzdhogeug4cpjnvhcgkcwzxm4s4rfj@gcxaexfotlsr>
+References: <cover.1750858083.git.namcao@linutronix.de>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+In-Reply-To: <cover.1750858083.git.namcao@linutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250707_003207_898687_B8E1DBD2 
-X-CRM114-Status: GOOD (  18.74  )
+X-CRM114-CacheID: sfid-20250707_004414_351472_F01DA01F 
+X-CRM114-Status: GOOD (  16.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,264 +87,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a configuration to set jpeg dec & enc smmu sid
+On Thu, Jun 26, 2025 at 04:47:50PM GMT, Nam Cao wrote:
+> The initial implementation of PCI/MSI interrupt domains in the hierarchical
+> interrupt domain model used a shortcut by providing a global PCI/MSI
+> domain.
+> 
+> This works because the PCI/MSI[X] hardware is standardized and uniform, but
+> it violates the basic design principle of hierarchical interrupt domains:
+> Each hardware block involved in the interrupt delivery chain should have a
+> separate interrupt domain.
+> 
+> For PCI/MSI[X], the interrupt controller is per PCI device and not a global
+> made-up entity.
+> 
+> Unsurprisingly, the shortcut turned out to have downsides as it does not
+> allow dynamic allocation of interrupt vectors after initialization and it
+> prevents supporting IMS on PCI. For further details, see:
+> 
+> https://lore.kernel.org/lkml/20221111120501.026511281@linutronix.de/
+> 
+> The solution is implementing per device MSI domains, this means the
+> entities which provide global PCI/MSI domain so far have to implement MSI
+> parent domain functionality instead.
+> 
+> This series converts the PCI controller drivers to implement MSI parent
+> domain.
+> 
 
-Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
----
- .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 37 +++++++++++++++++++
- .../platform/mediatek/jpeg/mtk_jpeg_core.h    | 15 ++++++++
- .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.c  | 23 ++++++++++++
- .../platform/mediatek/jpeg/mtk_jpeg_enc_hw.c  | 23 ++++++++++++
- 4 files changed, 98 insertions(+)
+Applied the series except patch 14/16 to pci/controller/msi-parent, thanks!
 
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-index 1b6d691186f4..50aee7fe5142 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-@@ -15,6 +15,7 @@
- #include <linux/of_platform.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
-+#include <linux/regmap.h>
- #include <linux/slab.h>
- #include <linux/spinlock.h>
- #include <media/v4l2-event.h>
-@@ -1614,6 +1615,20 @@ static irqreturn_t mtk_jpeg_enc_done(struct mtk_jpeg_dev *jpeg)
- 	return IRQ_HANDLED;
- }
- 
-+static void mtk_jpeg_enc_set_smmu_sid(struct mtk_jpegenc_comp_dev *jpeg)
-+{
-+	struct mtk_jpeg_dev *mjpeg = jpeg->master_dev;
-+
-+	if (!mjpeg->variant->support_smmu || !jpeg->smmu_regmap)
-+		return;
-+
-+	regmap_update_bits(jpeg->smmu_regmap, JPEG_ENC_SMMU_SID,
-+			   JPG_REG_GUSER_ID_MASK <<
-+			   JPG_REG_ENC_GUSER_ID_SHIFT,
-+			   JPG_REG_GUSER_ID_ENC_SID <<
-+			   JPG_REG_ENC_GUSER_ID_SHIFT);
-+}
-+
- static void mtk_jpegenc_worker(struct work_struct *work)
- {
- 	struct mtk_jpegenc_comp_dev *comp_jpeg[MTK_JPEGENC_HW_MAX];
-@@ -1675,6 +1690,9 @@ static void mtk_jpegenc_worker(struct work_struct *work)
- 	jpeg_dst_buf->frame_num = ctx->total_frame_num;
- 	ctx->total_frame_num++;
- 	mtk_jpeg_enc_reset(comp_jpeg[hw_id]->reg_base);
-+
-+	mtk_jpeg_enc_set_smmu_sid(comp_jpeg[hw_id]);
-+
- 	mtk_jpeg_set_enc_dst(ctx,
- 			     comp_jpeg[hw_id]->reg_base,
- 			     &dst_buf->vb2_buf);
-@@ -1702,6 +1720,20 @@ static void mtk_jpegenc_worker(struct work_struct *work)
- 	v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
- }
- 
-+static void mtk_jpeg_dec_set_smmu_sid(struct mtk_jpegdec_comp_dev *jpeg)
-+{
-+	struct mtk_jpeg_dev *mjpeg = jpeg->master_dev;
-+
-+	if (!mjpeg->variant->support_smmu || !jpeg->smmu_regmap)
-+		return;
-+
-+	regmap_update_bits(jpeg->smmu_regmap, JPEG_DEC_SMMU_SID,
-+			   JPG_REG_GUSER_ID_MASK <<
-+			   JPG_REG_DEC_GUSER_ID_SHIFT,
-+			   JPG_REG_GUSER_ID_DEC_SID <<
-+			   JPG_REG_DEC_GUSER_ID_SHIFT);
-+}
-+
- static void mtk_jpegdec_worker(struct work_struct *work)
- {
- 	struct mtk_jpeg_ctx *ctx = container_of(work, struct mtk_jpeg_ctx,
-@@ -1785,6 +1817,9 @@ static void mtk_jpegdec_worker(struct work_struct *work)
- 	jpeg_dst_buf->frame_num = ctx->total_frame_num;
- 	ctx->total_frame_num++;
- 	mtk_jpeg_dec_reset(comp_jpeg[hw_id]->reg_base);
-+
-+	mtk_jpeg_dec_set_smmu_sid(comp_jpeg[hw_id]);
-+
- 	mtk_jpeg_dec_set_config(comp_jpeg[hw_id]->reg_base,
- 				jpeg->variant->support_34bit,
- 				&jpeg_src_buf->dec_param,
-@@ -1944,6 +1979,7 @@ static struct mtk_jpeg_variant mtk8196_jpegenc_drvdata = {
- 	.cap_q_default_fourcc = V4L2_PIX_FMT_JPEG,
- 	.multi_core = true,
- 	.jpeg_worker = mtk_jpegenc_worker,
-+	.support_smmu = true,
- };
- 
- static const struct mtk_jpeg_variant mtk8195_jpegdec_drvdata = {
-@@ -1970,6 +2006,7 @@ static const struct mtk_jpeg_variant mtk8196_jpegdec_drvdata = {
- 	.cap_q_default_fourcc = V4L2_PIX_FMT_YUV420M,
- 	.multi_core = true,
- 	.jpeg_worker = mtk_jpegdec_worker,
-+	.support_smmu = true,
- };
- 
- static const struct of_device_id mtk_jpeg_match[] = {
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-index 33f7fbc4ca5e..6e8304680393 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-@@ -11,6 +11,7 @@
- 
- #include <linux/clk.h>
- #include <linux/interrupt.h>
-+#include <linux/mfd/syscon.h>
- #include <media/v4l2-ctrls.h>
- #include <media/v4l2-device.h>
- #include <media/v4l2-fh.h>
-@@ -34,6 +35,14 @@
- 
- #define MTK_JPEG_MAX_EXIF_SIZE	(64 * 1024)
- 
-+#define JPEG_DEC_SMMU_SID				0
-+#define JPEG_ENC_SMMU_SID				0
-+#define JPG_REG_GUSER_ID_MASK			0x7
-+#define JPG_REG_GUSER_ID_DEC_SID		0x4
-+#define JPG_REG_GUSER_ID_ENC_SID		0x5
-+#define JPG_REG_DEC_GUSER_ID_SHIFT		8
-+#define JPG_REG_ENC_GUSER_ID_SHIFT		4
-+
- #define MTK_JPEG_ADDR_MASK GENMASK(1, 0)
- 
- /**
-@@ -65,6 +74,7 @@ enum mtk_jpeg_ctx_state {
-  * @multi_core:		mark jpeg hw is multi_core or not
-  * @jpeg_worker:		jpeg dec or enc worker
-  * @support_34bit:	flag to check support for 34-bit DMA address
-+ * @support_smmu:	flag to check if support smmu
-  */
- struct mtk_jpeg_variant {
- 	struct clk_bulk_data *clks;
-@@ -82,6 +92,7 @@ struct mtk_jpeg_variant {
- 	bool multi_core;
- 	void (*jpeg_worker)(struct work_struct *work);
- 	bool support_34bit;
-+	bool support_smmu;
- };
- 
- struct mtk_jpeg_src_buf {
-@@ -150,6 +161,7 @@ struct mtk_jpegdec_clk {
-  * @hw_param:		jpeg encode hw parameters
-  * @hw_state:		record hw state
-  * @hw_lock:		spinlock protecting the hw device resource
-+ * @smmu_regmap:	SMMU registers mapping
-  */
- struct mtk_jpegenc_comp_dev {
- 	struct device *dev;
-@@ -163,6 +175,7 @@ struct mtk_jpegenc_comp_dev {
- 	enum mtk_jpeg_hw_state hw_state;
- 	/* spinlock protecting the hw device resource */
- 	spinlock_t hw_lock;
-+	struct regmap *smmu_regmap;
- };
- 
- /**
-@@ -177,6 +190,7 @@ struct mtk_jpegenc_comp_dev {
-  * @hw_param:			jpeg decode hw parameters
-  * @hw_state:			record hw state
-  * @hw_lock:			spinlock protecting hw
-+ * @smmu_regmap:		SMMU registers mapping
-  */
- struct mtk_jpegdec_comp_dev {
- 	struct device *dev;
-@@ -190,6 +204,7 @@ struct mtk_jpegdec_comp_dev {
- 	enum mtk_jpeg_hw_state hw_state;
- 	/* spinlock protecting the hw device resource */
- 	spinlock_t hw_lock;
-+	struct regmap *smmu_regmap;
- };
- 
- /**
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-index e453a1634f33..da753a636eaa 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-@@ -624,6 +624,25 @@ static int mtk_jpegdec_hw_init_irq(struct mtk_jpegdec_comp_dev *dev)
- 	return 0;
- }
- 
-+static int mtk_jpegdec_smmu_init(struct mtk_jpegdec_comp_dev *dev)
-+{
-+	struct mtk_jpeg_dev *master_dev = dev->master_dev;
-+
-+	if (!master_dev->variant->support_smmu)
-+		return 0;
-+
-+	dev->smmu_regmap =
-+		syscon_regmap_lookup_by_phandle(dev->plat_dev->dev.of_node,
-+						"mediatek,smmu-config");
-+	if (IS_ERR(dev->smmu_regmap)) {
-+		return dev_err_probe(dev->dev, PTR_ERR(dev->smmu_regmap),
-+				     "mmap smmu_base failed(%ld)\n",
-+				     PTR_ERR(dev->smmu_regmap));
-+	}
-+
-+	return 0;
-+}
-+
- static int mtk_jpegdec_hw_probe(struct platform_device *pdev)
- {
- 	struct mtk_jpegdec_clk *jpegdec_clk;
-@@ -677,6 +696,10 @@ static int mtk_jpegdec_hw_probe(struct platform_device *pdev)
- 	dev->master_dev = master_dev;
- 	master_dev->max_hw_count++;
- 
-+	ret = mtk_jpegdec_smmu_init(dev);
-+	if (ret)
-+		return ret;
-+
- 	platform_set_drvdata(pdev, dev);
- 	pm_runtime_enable(&pdev->dev);
- 	ret = devm_clk_bulk_get(dev->dev,
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-index f30dccc93ecf..5e8a5cb4850e 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-@@ -348,6 +348,25 @@ static int mtk_jpegenc_hw_init_irq(struct mtk_jpegenc_comp_dev *dev)
- 	return 0;
- }
- 
-+static int mtk_jpegenc_smmu_init(struct mtk_jpegenc_comp_dev *dev)
-+{
-+	struct mtk_jpeg_dev *master_dev = dev->master_dev;
-+
-+	if (!master_dev->variant->support_smmu)
-+		return 0;
-+
-+	dev->smmu_regmap =
-+		syscon_regmap_lookup_by_phandle(dev->plat_dev->dev.of_node,
-+						"mediatek,smmu-config");
-+	if (IS_ERR(dev->smmu_regmap)) {
-+		return dev_err_probe(dev->dev, PTR_ERR(dev->smmu_regmap),
-+				     "mmap smmu_base failed(%ld)\n",
-+				     PTR_ERR(dev->smmu_regmap));
-+	}
-+
-+	return 0;
-+}
-+
- static int mtk_jpegenc_hw_probe(struct platform_device *pdev)
- {
- 	struct mtk_jpegenc_clk *jpegenc_clk;
-@@ -399,6 +418,10 @@ static int mtk_jpegenc_hw_probe(struct platform_device *pdev)
- 	dev->master_dev = master_dev;
- 	master_dev->max_hw_count++;
- 
-+	ret = mtk_jpegenc_smmu_init(dev);
-+	if (ret)
-+		return ret;
-+
- 	platform_set_drvdata(pdev, dev);
- 	pm_runtime_enable(&pdev->dev);
- 	ret = devm_clk_bulk_get(dev->dev,
+- Mani
+
+>  drivers/pci/Kconfig                           |   1 +
+>  drivers/pci/controller/Kconfig                |  11 +
+>  drivers/pci/controller/dwc/Kconfig            |   1 +
+>  .../pci/controller/dwc/pcie-designware-host.c |  68 ++----
+>  drivers/pci/controller/dwc/pcie-designware.h  |   1 -
+>  drivers/pci/controller/mobiveil/Kconfig       |   1 +
+>  .../controller/mobiveil/pcie-mobiveil-host.c  |  42 ++--
+>  .../pci/controller/mobiveil/pcie-mobiveil.h   |   1 -
+>  drivers/pci/controller/pci-aardvark.c         |  59 ++---
+>  drivers/pci/controller/pci-hyperv.c           |  98 ++++++--
+>  drivers/pci/controller/pcie-altera-msi.c      |  44 ++--
+>  drivers/pci/controller/pcie-brcmstb.c         |  44 ++--
+>  drivers/pci/controller/pcie-iproc-msi.c       |  45 ++--
+>  drivers/pci/controller/pcie-mediatek-gen3.c   |  67 ++---
+>  drivers/pci/controller/pcie-mediatek.c        |  46 ++--
+>  drivers/pci/controller/pcie-rcar-host.c       |  69 ++----
+>  drivers/pci/controller/pcie-xilinx-dma-pl.c   |  48 ++--
+>  drivers/pci/controller/pcie-xilinx-nwl.c      |  45 ++--
+>  drivers/pci/controller/pcie-xilinx.c          |  55 +++--
+>  drivers/pci/controller/plda/Kconfig           |   1 +
+>  drivers/pci/controller/plda/pcie-plda-host.c  |  44 ++--
+>  drivers/pci/controller/plda/pcie-plda.h       |   1 -
+>  drivers/pci/controller/vmd.c                  | 229 +++++++++---------
+>  23 files changed, 504 insertions(+), 517 deletions(-)
+> 
+> -- 
+> 2.39.5
+> 
+
 -- 
-2.46.0
-
+மணிவண்ணன் சதாசிவம்
 
