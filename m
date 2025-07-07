@@ -4,77 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01366C8303C
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jul 2025 10:48:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4C65C8303C
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jul 2025 11:12:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FmuINJdXDEDTHhnmdbjOCrQJdWB/HStrd+tBDYfRqEc=; b=e6NKBaxQHpXs4z
-	VH9SUFnSC59nrf5C0yrF8hyTUk0/AvZa2wxiGO2f0h3+dKQM+luEYYeb9zktTpH+80fE2fGz8L2k2
-	QzzuIMRh9uihzRSG78xybKuBFt5HLDL8MFyzEr5weaqJGPBF/uvln49tsRVEMQOwKtrtGWUI6Jh2G
-	X0Q3BtdwHhK/bU8iPN4q+QAyx4dX6u0xVuX0iOQKWFWpMRMSdGYHdY1Upje7rvIH9LwpntaZ1P6Ln
-	9awj3wMZv8903JdoqfaIfWkBlmNe+FL0qxuYsOfNckZ6UFiU7g6T7nI2Mna+e7McIfKvGBdUIbhiB
-	EfAogzky8QQIW34E/r7g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VVqK2vEKOfCOED6mMam18P/SsPX92DckFNgrT1kaFjA=; b=Lt5vgKGHvG9676+maKq/FVmljx
+	NM+7GDKO7d9j8UI09Tsd0MGbz55ZrENlj6pKQmf5Gs0Q8YdLGIgVyBm0C+TeyBtcin7zr9Z/qbB4/
+	oHHh46fqH8D+wFvwhPR4MIL996sELlKALDo8XPm39U61If93+8ieXOUZwcUlADic1Dgljq+P5sZrX
+	UCdAVLge4fgyWmlbuMLvooOucNvzb6/DDsPdXfY/4IIXH4owxw9RP0mG5w41hrd2FSk18W0PJtjZl
+	jwmBcFp9zQb5JDV1ykxBsH4I8E/Ikl5cUPymE6FpOQcyugnEkQCh8sAy8YSv0h7OEXm6Yp0O23YYz
+	Ka2k+Q/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYjOW-00000002CKm-3xep;
-	Mon, 07 Jul 2025 10:48:20 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1uYjlT-00000002FKp-3Yhk;
+	Mon, 07 Jul 2025 11:12:03 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYipm-000000026le-2jtA;
-	Mon, 07 Jul 2025 10:12:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1751883145;
-	bh=r0u0KcLgNzqStPxSo8tNTI+lkrR1NVJwDZIEcjacuXA=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=n9KLjXG54zD5nFCXqGHYJz1ZCGMjNx4MjrSwYaLCagMT0d5jOA7Ql42QP/jyVKxOl
-	 WyH/nVjMD6yR8Zw3Ut4FLF2g1tZ351hEXfY9ltZmvSZKEEES8iuZqdIfZF+LDll/v0
-	 4Ouk3jZ5v5wN7zL6x2ZhEMNqav1VVZMP1lqs9Z67ZxMv79/JpWjsFjzH9vg9+Z+++q
-	 wiXgYhxW43HUKJBV32Ms6HV+Bdqhj5mThE6+z6h3ZN8PcbndePIEjjJ7+MPJB1EBmy
-	 hkutms8W7aKyUu0a6cRL9NtzFritm3VP7iTrlUZ07NkUJVoyGvcjgK0LBuZrjK7n2T
-	 8+zlzF7Gj5ueQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A6C9A17E0523;
-	Mon,  7 Jul 2025 12:12:23 +0200 (CEST)
-Message-ID: <f4d046ea-f599-4b4b-a50b-bae00f9f3996@collabora.com>
-Date: Mon, 7 Jul 2025 12:12:23 +0200
+	id 1uYjK1-00000002Bgw-3KwM;
+	Mon, 07 Jul 2025 10:43:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=VVqK2vEKOfCOED6mMam18P/SsPX92DckFNgrT1kaFjA=; b=llG7O4sgfJUSMxSqynpQ8nfPof
+	ueMIGKtwHAHkjB//2bQBViS9nZw0kHmHiO7gmVHUEUvitAuqRcasj7bG5HqGNY/pNJ1zLxrja6fsf
+	gSlqUVuczTzww3+dDgYSnb2cPvIYixbTg8BnVOWMr5Afhqm2H+TXGgJXlPzi08tpJ73dk31hEhOR8
+	Q7fofX9to9BwgV5V+mfPeC+IwupK4KAZth3S2zOpzx2tNq6+FRyHXxBdyOnJPtxwjJp4dF4KgU5FX
+	8CcRX2LryLJiTofuEDPwWwwisb0WagkAen1egcgMux+T2hxAfX79bBkkrOEl5EVpSRiNVZ9QkTRPR
+	4JepuJWw==;
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uYjJy-00000008SUY-2P9x;
+	Mon, 07 Jul 2025 10:43:40 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 37671A53EBE;
+	Mon,  7 Jul 2025 10:43:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ED05DC4CEF5;
+	Mon,  7 Jul 2025 10:43:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1751885014;
+	bh=ZAHncvRq/os3HYtn8J7X9/8sN0J5JEZiybhSWcC8h+8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=QiDoMvaMaEtgtwLkbm7fWeJkr74MnR9ckIpH80fi864JSTlJW8GAN+l4MQWNo/QIr
+	 KDoX+f13espcJXebVoABhzBqq8HV+GR1+B27AMR1DUe7cOvaBti79jKPsDVm40IQKv
+	 6wd5DeUd8v6lV9xth8qOBezBUrCPRfODIbomdLpfUmgkeIUKIx5/GUpwxVRLgVDpXt
+	 0lJGqztvJw9fvqFYY1wZ018EOUwfoslkiwCMdpHT2lP4Mg0dAo5FsnvO/9VLI1hDBl
+	 zamXhcQZEOLlZVd7alhNqDcn8BuEzs4w1CZe3YRmg0cROX90bT4zliB2UFS/1+9nOL
+	 WLgwzoxlObrCA==
+Date: Mon, 7 Jul 2025 11:43:29 +0100
+From: Simon Horman <horms@kernel.org>
+To: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Alex Elder <elder@kernel.org>, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] net: Use of_reserved_mem_region_to_resource{_byname}()
+ for "memory-region"
+Message-ID: <20250707104329.GF89747@horms.kernel.org>
+References: <20250703183459.2074381-1-robh@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 04/16] dt-bindings: net: mediatek,net: add sram
- property
-To: Frank Wunderlich <linux@fw-web.de>,
- MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>, Georgi Djakov <djakov@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Johnson Wang <johnson.wang@mediatek.com>, =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?=
- <arinc.unal@arinc9.com>, Landen Chao <Landen.Chao@mediatek.com>,
- DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
- Daniel Golle <daniel@makrotopia.org>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Felix Fietkau <nbd@nbd.name>
-References: <20250706132213.20412-1-linux@fw-web.de>
- <20250706132213.20412-5-linux@fw-web.de>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20250706132213.20412-5-linux@fw-web.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250703183459.2074381-1-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250707_031226_840935_F00573AF 
-X-CRM114-Status: UNSURE (   8.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250707_114339_095504_04D4C5E1 
+X-CRM114-Status: GOOD (  22.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,28 +91,98 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-pm@vger.kernel.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/07/25 15:21, Frank Wunderlich ha scritto:
-> From: Frank Wunderlich <frank-w@public-files.de>
+On Thu, Jul 03, 2025 at 01:34:57PM -0500, Rob Herring (Arm) wrote:
+> Use the newly added of_reserved_mem_region_to_resource{_byname}()
+> functions to handle "memory-region" properties.
 > 
-> Meditak Filogic SoCs (MT798x) have dedicated MMIO-SRAM for dma operations.
-> 
-> MT7981 and MT7986 currently use static offset to ethernet MAC register
-> which will be changed in separate patch once this way is accepted.
-> 
-> Add "sram" property to map ethernet controller to dedicated mmio-sram node.
-> 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> The error handling is a bit different for mtk_wed_mcu_load_firmware().
+> A failed match of the "memory-region-names" would skip the entry, but
+> then other errors in the lookup and retrieval of the address would not
+> skip the entry. However, that distinction is not really important.
+> Either the region is available and usable or it is not. So now, errors
+> from of_reserved_mem_region_to_resource() are ignored so the region is
+> simply skipped.
 
-Honestly, I was more comfortable adding the sram to the reg list instead,
-but I know that you got a negative review for that. Oh well.
+Thanks for explaining this, it's much appreciated.
 
-Please disallow the sram property on SoCs that don't have the SRAM (sram: false),
-after which:
+> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+> ---
+>  drivers/net/ethernet/airoha/airoha_npu.c    | 25 ++++++----------
+>  drivers/net/ethernet/mediatek/mtk_wed.c     | 24 ++++------------
+>  drivers/net/ethernet/mediatek/mtk_wed_mcu.c | 32 +++++++--------------
+>  drivers/net/ipa/ipa_main.c                  | 12 ++------
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+FWIIW, I would slightly prefer one patch per driver.
 
+...
+
+> diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
+> index 351dd152f4f3..73c26fcfd85e 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_wed.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_wed.c
+> @@ -1318,26 +1318,14 @@ mtk_wed_rro_ring_alloc(struct mtk_wed_device *dev, struct mtk_wed_ring *ring,
+>  static int
+>  mtk_wed_rro_alloc(struct mtk_wed_device *dev)
+>  {
+> -	struct reserved_mem *rmem;
+> -	struct device_node *np;
+> -	int index;
+> +	struct resource res;
+> +	int ret;
+>  
+> -	index = of_property_match_string(dev->hw->node, "memory-region-names",
+> -					 "wo-dlm");
+> -	if (index < 0)
+> -		return index;
+> -
+> -	np = of_parse_phandle(dev->hw->node, "memory-region", index);
+> -	if (!np)
+> -		return -ENODEV;
+> -
+> -	rmem = of_reserved_mem_lookup(np);
+> -	of_node_put(np);
+> -
+> -	if (!rmem)
+> -		return -ENODEV;
+> +	ret = of_reserved_mem_region_to_resource_byname(dev->hw->node, "wo-dlm", &res);
+
+Please consider line-wrapping the line above so it is 80 columns wide or
+less, as is still preferred for Networking code.
+
+> +	if (ret)
+> +		return ret;
+>  
+> -	dev->rro.miod_phys = rmem->base;
+> +	dev->rro.miod_phys = res.start;
+>  	dev->rro.fdbk_phys = MTK_WED_MIOD_COUNT + dev->rro.miod_phys;
+>  
+>  	return mtk_wed_rro_ring_alloc(dev, &dev->rro.ring,
+
+> diff --git a/drivers/net/ethernet/mediatek/mtk_wed_mcu.c b/drivers/net/ethernet/mediatek/mtk_wed_mcu.c
+
+...
+
+> @@ -319,13 +313,7 @@ mtk_wed_mcu_load_firmware(struct mtk_wed_wo *wo)
+>  
+>  	/* load firmware region metadata */
+>  	for (i = 0; i < ARRAY_SIZE(mem_region); i++) {
+> -		int index = of_property_match_string(wo->hw->node,
+> -						     "memory-region-names",
+> -						     mem_region[i].name);
+> -		if (index < 0)
+> -			continue;
+> -
+> -		ret = mtk_wed_get_memory_region(wo->hw, index, &mem_region[i]);
+> +		ret = mtk_wed_get_memory_region(wo->hw, mem_region[i].name, &mem_region[i]);
+
+Ditto.
+
+>  		if (ret)
+>  			return ret;
+>  	}
+
+...
 
