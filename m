@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03878C83F07
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jul 2025 07:09:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 605A0C83F07
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jul 2025 07:13:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=avKUAohrDA/+wA3qSmnXdrsmCJ0Gc5OKyqucbbfoVig=; b=OI/OTcJ7vd1GnW9RXrQ52vkN5u
-	0JikqD/GUh13yn5BfRoGAX9vCO8fv7/4qplJWYg3q6xFhq1PAntofINQIcnMdUJnJN70yWe23CHEb
-	IVwkct0s/BiLOWPy3bb3bQSdFlpfX2cccgb4JA0LkID5U6MrhRmVlUBfgTMvDbRw9MAMqplBYoAD3
-	wvAFk7S9zNUVP2OnwQUus4DQsnem1tqxXbWbgjGZidzLixquBQQPb0QdMLu340KEaaY4pboMkvduD
-	mQSF3VIvgZa8VQDDYC2u8OqmtXvYwCKZNZPmzKYUp8Wm3y8E1Jfw5t/nhLzAfT/838zAzpaEf6OZq
-	67wNy2fQ==;
+	bh=tkQtnaRsJ20jyaFaiLhsOSC7W2gr3SevbNDp7oONAsM=; b=O8LZzQnaGap/B15W1uEzPlbTZy
+	jdGFVW7XXtM9RtClUXoVXX62ypXuL6gAerV6kJbvmYUimXxsLOdKiddsDYVMqFpnY5eZEKy1yu//X
+	sh0+sQ8ttI/MJfFJhuHImUoDHk45vnJYM2ZRYeJeI6XRTZxViJdSyRBDD3raReK2zVUhZHW1/dRFj
+	xGvhbe6vR84Uf8IChVnkfRCJu4qO9rd1sJ0BtkqYnHOEMWC701yKGh4yjCNnknY34UlKxTbHAZDI0
+	AEWkuutn0m9D1CzEWyJVCoxLCT90xhaxd3r7OLo6CzRnSjGpbIz65uBfRiFLLwdajVFvQrTgtpGBo
+	Qt2rJlWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYfyH-00000001dW3-17Ym;
-	Mon, 07 Jul 2025 07:09:01 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uYg2s-00000001eRX-1KaF;
+	Mon, 07 Jul 2025 07:13:46 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYfun-00000001d6z-1EP6;
-	Mon, 07 Jul 2025 07:05:25 +0000
+	id 1uYfyU-00000001dZM-151h;
+	Mon, 07 Jul 2025 07:09:15 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id B0A906112D;
-	Mon,  7 Jul 2025 07:05:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DB729C4CEE3;
-	Mon,  7 Jul 2025 07:05:23 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 7A6FEA5333E;
+	Mon,  7 Jul 2025 07:09:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 960E2C4CEE3;
+	Mon,  7 Jul 2025 07:09:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751871924;
-	bh=PGd9A/5X3od+Z3ffVuEq/O0FzpECV5LP8wKFT6Fvjms=;
+	s=k20201202; t=1751872153;
+	bh=S1UTgehB4MPmn84p3V9HOqZpYRl7v/ht9OhQV+Nr504=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=AvVog57eSaJ7QWXH8nmeb4XuVlKZryiU7ZDpRGgHKMWBPpORbIA4VvVU4UjYEO6NZ
-	 QVCRtXiPnoW61uFvKUy5XyExVtoUlttp9QbU+jBFqCgUZMVLP+TTZHPX3XUNzynoXL
-	 UnIyEH9ch4evzaTB/JVTGpSjYIVDc/VneTCzKuOdTPqMlxW0Et6/Dobd7VM50eyRU0
-	 wtEFQ0mR7Sc13PlbzNAsFHa2k2eYrkcXrPaecBEPZve2zpln3yCSGHj2E7G8HXw5rj
-	 VBftwCkKF0AltFaSzuyVnXTOwIJ5zMCmVmKecigiDHo2sRuL0U2bmQZsBbtGqUEpVL
-	 7b70fNU/wqDVA==
-Date: Mon, 7 Jul 2025 09:05:21 +0200
+	b=qG5pfSUOmBaq8lNU2TWtv0QM43A9NYz9tVpSmKYXdASiAJ84lcEl9cgy7RKtWtO4W
+	 h9SAmhlRpN4bD1ZtRL8TIppC5Q+obq5kRppsoZMBXRsGMFRqlaXMv0QX2vC/m536CV
+	 6qwvKiHsPr0bC5UfkpdtSlYYjWyqdjvSz1vQz7MI2unOWoxcesknabRbv+j8mSzCyq
+	 Jykj3Gxi5uPaTy2QtbaEum0nebTWNBUyOI0+9loMzIL9a44DunwjnwKgAT/i8XBd8r
+	 daSW0YTwu30bakF91aoBCKtaFDOHB/b4NEqmG36ZvfDPBr7t3SMSrtXolkmKWSR+u0
+	 ed+kOs13WejjA==
+Date: Mon, 7 Jul 2025 09:09:10 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: Andrew Lunn <andrew+netdev@lunn.ch>, 
@@ -49,16 +49,19 @@ Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, 
 	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
 	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH net-next v2 1/7] dt-bindings: net: airoha: npu: Add
- memory regions used for wlan offload
-Message-ID: <20250707-topaz-pillbug-of-fame-859822@krzk-bin>
+	devicetree@vger.kernel.org, Simon Horman <horms@kernel.org>
+Subject: Re: [PATCH net-next v2 2/7] net: airoha: npu: Add NPU wlan memory
+ initialization commands
+Message-ID: <20250707-agile-aardwolf-of-politeness-29fead@krzk-bin>
 References: <20250705-airoha-en7581-wlan-offlaod-v2-0-3cf32785e381@kernel.org>
- <20250705-airoha-en7581-wlan-offlaod-v2-1-3cf32785e381@kernel.org>
+ <20250705-airoha-en7581-wlan-offlaod-v2-2-3cf32785e381@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20250705-airoha-en7581-wlan-offlaod-v2-1-3cf32785e381@kernel.org>
+In-Reply-To: <20250705-airoha-en7581-wlan-offlaod-v2-2-3cf32785e381@kernel.org>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250707_000914_374630_22AF337E 
+X-CRM114-Status: GOOD (  10.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,50 +76,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jul 05, 2025 at 11:09:45PM +0200, Lorenzo Bianconi wrote:
-> Document memory regions used by Airoha EN7581 NPU for wlan traffic
-> offloading.
-> 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  .../devicetree/bindings/net/airoha,en7581-npu.yaml   | 20 ++++++++++++++++----
->  1 file changed, 16 insertions(+), 4 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml b/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
-> index 76dd97c3fb4004674dc30a54c039c1cc19afedb3..db9269d1801bafa9be3b6c199a9e30cd23f4aea9 100644
-> --- a/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
-> +++ b/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
-> @@ -41,15 +41,25 @@ properties:
->        - description: wlan irq line5
->  
->    memory-region:
-> -    maxItems: 1
-> -    description:
-> -      Memory used to store NPU firmware binary.
-> +    items:
-> +      - description: NPU firmware binary region
-> +      - description: NPU wlan offload RX buffers region
-> +      - description: NPU wlan offload TX buffers region
-> +      - description: NPU wlan offload TX packet identifiers region
+On Sat, Jul 05, 2025 at 11:09:46PM +0200, Lorenzo Bianconi wrote:
 > +
-> +  memory-region-names:
-> +    items:
-> +      - const: binary
+>  struct airoha_npu *airoha_npu_get(struct device *dev, dma_addr_t *stats_addr)
+>  {
+>  	struct platform_device *pdev;
+> @@ -493,6 +573,7 @@ static int airoha_npu_probe(struct platform_device *pdev)
+>  	npu->ops.ppe_deinit = airoha_npu_ppe_deinit;
+>  	npu->ops.ppe_flush_sram_entries = airoha_npu_ppe_flush_sram_entries;
+>  	npu->ops.ppe_foe_commit_entry = airoha_npu_foe_commit_entry;
+> +	npu->ops.wlan_init_reserved_memory = airoha_npu_wlan_init_memory;
 
-Rather: firmware
+I cannot find in your code single place calling this (later you add a
+wrapper... which is not called either).
 
-> +      - const: pkt
-> +      - const: tx-pkt
-> +      - const: tx-bufid
->  
->  required:
->    - compatible
->    - reg
->    - interrupts
->    - memory-region
-> +  - memory-region-names
-
-That's ABI break.
+All this looks like dead code...
 
 Best regards,
 Krzysztof
