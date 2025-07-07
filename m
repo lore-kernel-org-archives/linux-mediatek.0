@@ -4,66 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF2B5C83F03
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jul 2025 02:55:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B724C8303C
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jul 2025 05:45:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YDCot9PU6iJOj66kRNCpKxoXN03fEcc5IKkfLxk0R/A=; b=QBQ8pIabd+qpGoiP30pFlzy37I
-	PrRdpeXsBxH6SEIPEJLMP34K+6BRwBQR1IAM1MYinVOPC9aFw82AyLqliMzyAFr/F5atE2RqXVWAi
-	ml+f+51/QY4cEhmNUHnQ8rRXAJRmIbb4hAHCujFnbiaDRsqmFYoMvz94p4s6/dZY5OuoGLJdaIS9T
-	uCaOtQwjsirL01huG0M7iU6VeLbsv8mnzd+F0lQFAGly+/jSgyCjjX4jJOoeGIddDwrAyGJllhrVd
-	U5wrhQfdy8UqJDRJPhH4zTwQC7vWSfz3O7ko9fa+CuagAcUTXaICZZIQCyMKKv25/e1RzJoeNScSb
-	rkhtmE4g==;
+	bh=TjDPXrs+zzYZW1yqvvmbPXKx/SyU09v9UIvfMCfLWik=; b=zkwxGBVi6y9gmR309gPoUn520I
+	xolMokPX6EU9TxwgKgL4xEqL9f38a/wAywPCtXYzQ/DweKVauJieMlBYEfbC2hM/avnONi6SLTXQp
+	kfvo4qOa4WRDQ8elyC8bbgDWbknoTliV9XORJGjoZmXdWEbKjE6VGIsv/61ni/SLnsy01dT8eWkgF
+	fHgJBBjG5ybsdIMwA0oriPnB/wblnm5cnzCep/IKSMBSfeWEOuIhxGngAVkFUf60t0mO5dyJqGNsv
+	zjl9fAXYokeGr2ltppvW1q5L/tI3o8eVqH3r2Z43k9QRkE+MHxGKN9kELfYNrsMHZgE/vQHXQL6e1
+	0h3uI8qQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYc1A-00000001F9j-3PMv;
-	Mon, 07 Jul 2025 02:55:44 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1uYefn-00000001TKn-3V3V;
+	Mon, 07 Jul 2025 05:45:51 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYbrz-00000001Dw1-0MsW;
-	Mon, 07 Jul 2025 02:46:16 +0000
+	id 1uYech-00000001Ssl-0PhF;
+	Mon, 07 Jul 2025 05:42:40 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 3DC5A5C4A69;
-	Mon,  7 Jul 2025 02:46:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E48BFC4CEF2;
-	Mon,  7 Jul 2025 02:46:13 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 8675C46179;
+	Mon,  7 Jul 2025 05:42:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CDA5EC4CEF4;
+	Mon,  7 Jul 2025 05:42:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751856374;
-	bh=Z7aWQ9So+xlnwsCVx6yoE8yP6pTBwpth7HMkM+BK+Ww=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=duwN0/KF3JGook/rqYvpM9WAyxMITcPajCXLEbnDnS/H4ai9ZNyB3CL6MBprotE/A
-	 mGdxbUmAJ5AdCb2WjxyhoaXgftyZgmKgaKf5gb1ChzigNCjt0OGcW5kL4F2GnN/2ci
-	 iMTbFft5sb2UWSpE+iP0Shu+LIpZDA+c1oVb3HyhKbE1IiJR8AxCSAfgVsTcNDWtPW
-	 Wj0wV4vvxpR/TOTBQbuKoulRVx/EKSkKH9aDgHPhcRZC10TV2BX02QXSXcm2A1scEu
-	 fLZ0ecOQ2OgLP5pnCl82BUsfDyd1GV6fWCUZYW8yXJOTVCdbtBWhxXHLnUbn8sBY3R
-	 ub+My+dtipybg==
-Date: Sun, 06 Jul 2025 21:46:13 -0500
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Conor Dooley <conor+dt@kernel.org>, dri-devel@lists.freedesktop.org, 
- Matthias Brugger <matthias.bgg@gmail.com>, linaro-mm-sig@lists.linaro.org, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, linux-kernel@vger.kernel.org, 
- linux-media@vger.kernel.org, 
- Project_Global_Chrome_Upstream_Group@mediatek.com, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, devicetree@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+	s=k20201202; t=1751866958;
+	bh=DYxEwke6KQfAip5v2Jtz2Vpn6CF/js+HUrRQ9qzGcvA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=UYcuETOeDFCBCzio5Luj3iLUeQLKqO/4YJ1FYL51lb8F6z4FScS+B5tMnBlkGb9yP
+	 5Mpfej0WC0NLKucQ356U0gDdjukScfT9PYSkMWfSwx4gZncxmpOCjHoNJg61j0NWsO
+	 aAGd4L5BUsSj57XbmIzaW/1O9ZArSNS6czEXW6URDSIi/cJ44ylnOBp1EYe5Lv7Rh8
+	 lp1v2kAYD6dsgyz3FvizlRcsBl/I0FJLiKvJjMVl+/v1vJqRYIzJZUrqI9NVHVezBL
+	 9PSM4lSFImsSeG/Yd3d7I6xw2wUTLhPwWxagCH/XScIHGIJI/WZ76JEhntsIZ9Y2W8
+	 UnJ/ARQ9SWzRA==
+Date: Mon, 7 Jul 2025 07:42:35 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
 To: shangyao lin <shangyao.lin@mediatek.com>
-In-Reply-To: <20250707013154.4055874-5-shangyao.lin@mediatek.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v2 01/13] dt-bindings: media: mediatek: add camisp binding
+Message-ID: <20250707-amazing-catfish-of-reward-f4c5ba@krzk-bin>
 References: <20250707013154.4055874-1-shangyao.lin@mediatek.com>
- <20250707013154.4055874-5-shangyao.lin@mediatek.com>
-Message-Id: <175185636950.997517.4974488495469369107.robh@kernel.org>
-Subject: Re: [PATCH v2 04/13] dt-bindings: media: mediatek: add cam-yuv
- binding
+ <20250707013154.4055874-2-shangyao.lin@mediatek.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20250707013154.4055874-2-shangyao.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250706_194615_215612_6725DAF5 
-X-CRM114-Status: GOOD (  13.25  )
+X-CRM114-CacheID: sfid-20250706_224239_154242_A947BC74 
+X-CRM114-Status: UNSURE (   9.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,70 +77,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Mon, 07 Jul 2025 09:31:45 +0800, shangyao lin wrote:
+On Mon, Jul 07, 2025 at 09:31:42AM +0800, shangyao lin wrote:
 > From: "shangyao.lin" <shangyao.lin@mediatek.com>
 > 
 > Add camera isp7x module device document.
+
+Missing SoB, missing checkpatch.
+
 > 
 > ---
 > 
 > Changes in v2:
->   - Rename binding file to mediatek,mt8188-cam-yuv.yaml
+>   - Rename binding file to mediatek,mt8188-camisp.yaml
+>   - Split bindings into four separate patches (one per YAML file)
 >   - Various fixes per review comments
 >   - Update maintainers list
 > 
 > Signed-off-by: shangyao.lin <shangyao.lin@mediatek.com>
-> ---
->  .../mediatek/mediatek,mt8188-cam-yuv.yaml     | 134 ++++++++++++++++++
->  1 file changed, 134 insertions(+)
->  create mode 100755 Documentation/devicetree/bindings/media/mediatek/mediatek,mt8188-cam-yuv.yaml
-> 
 
-My bot found errors running 'make dt_binding_check' on your patch:
+Apply this patch and see by yourself.
 
-yamllint warnings/errors:
+This wasn't tested either, so I will skip review.
 
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/media/mediatek/mediatek,mt8188-cam-yuv.yaml: properties:reg-names: {'items': [{'const': 'base'}, {'const': 'inner_base'}], 'minItems': 1, 'maxItems': 2, 'description': 'Names for each register region. Must be "base" and optionally "inner_base".'} should not be valid under {'required': ['maxItems']}
-	hint: "maxItems" is not needed with an "items" list
-	from schema $id: http://devicetree.org/meta-schemas/items.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/media/mediatek/mediatek,mt8188-cam-yuv.yaml: properties:clock-names: {'items': [{'const': 'camsys_cam2mm0_cgpdn'}, {'const': 'camsys_cam2mm1_cgpdn'}, {'const': 'camsys_cam2sys_cgpdn'}, {'const': 'camsys_yuva_larbx'}, {'const': 'camsys_yuva_cam_cgpdn'}, {'const': 'camsys_yuva_camtg_cgpdn'}, {'const': 'camsys_yuvb_larbx_cgpdn'}, {'const': 'camsys_yuvb_cam_cgpdn'}, {'const': 'camsys_yuvb_camtg_cgpdn'}], 'minItems': 4, 'maxItems': 16, 'description': 'Names of the clocks, must match the order of the clocks property.'} should not be valid under {'required': ['maxItems']}
-	hint: "maxItems" is not needed with an "items" list
-	from schema $id: http://devicetree.org/meta-schemas/items.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/media/mediatek/mediatek,mt8188-cam-yuv.yaml: $id: Cannot determine base path from $id, relative path/filename doesn't match actual path or filename
- 	 $id: http://devicetree.org/schemas/media/mediatek/mediatek,cam-yuv.yaml
- 	file: /builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/media/mediatek/mediatek,mt8188-cam-yuv.yaml
-Documentation/devicetree/bindings/media/mediatek/mediatek,mt8188-cam-yuv.example.dts:33.13-43: Warning (reg_format): /example-0/soc/yuv@16050000:reg: property has invalid length (16 bytes) (#address-cells == 2, #size-cells == 1)
-Documentation/devicetree/bindings/media/mediatek/mediatek,mt8188-cam-yuv.example.dts:37.13-59: Warning (dma_ranges_format): /example-0/soc/yuv@16050000:dma-ranges: "dma-ranges" property has invalid length (24 bytes) (parent #address-cells == 2, child #address-cells == 2, #size-cells == 1)
-Documentation/devicetree/bindings/media/mediatek/mediatek,mt8188-cam-yuv.example.dtb: Warning (pci_device_reg): Failed prerequisite 'reg_format'
-Documentation/devicetree/bindings/media/mediatek/mediatek,mt8188-cam-yuv.example.dtb: Warning (pci_device_bus_num): Failed prerequisite 'reg_format'
-Documentation/devicetree/bindings/media/mediatek/mediatek,mt8188-cam-yuv.example.dtb: Warning (simple_bus_reg): Failed prerequisite 'reg_format'
-Documentation/devicetree/bindings/media/mediatek/mediatek,mt8188-cam-yuv.example.dtb: Warning (i2c_bus_reg): Failed prerequisite 'reg_format'
-Documentation/devicetree/bindings/media/mediatek/mediatek,mt8188-cam-yuv.example.dtb: Warning (spi_bus_reg): Failed prerequisite 'reg_format'
-Documentation/devicetree/bindings/media/mediatek/mediatek,mt8188-cam-yuv.example.dts:31.24-58.13: Warning (avoid_default_addr_size): /example-0/soc/yuv@16050000: Relying on default #address-cells value
-Documentation/devicetree/bindings/media/mediatek/mediatek,mt8188-cam-yuv.example.dts:31.24-58.13: Warning (avoid_default_addr_size): /example-0/soc/yuv@16050000: Relying on default #size-cells value
-Documentation/devicetree/bindings/media/mediatek/mediatek,mt8188-cam-yuv.example.dtb: Warning (unique_unit_address_if_enabled): Failed prerequisite 'avoid_default_addr_size'
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/media/mediatek/mediatek,mt8188-cam-yuv.example.dtb: yuv@16050000 (mediatek,mt8188-cam-yuv): clock-names:3: 'camsys_yuva_larbx' was expected
-	from schema $id: http://devicetree.org/schemas/media/mediatek/mediatek,cam-yuv.yaml#
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/media/mediatek/mediatek,mt8188-cam-yuv.example.dtb: yuv@16050000 (mediatek,mt8188-cam-yuv): dma-ranges: [[2], [0], [0], [1073741824], [1], [0]] is too long
-	from schema $id: http://devicetree.org/schemas/media/mediatek/mediatek,cam-yuv.yaml#
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250707013154.4055874-5-shangyao.lin@mediatek.com
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
+Best regards,
+Krzysztof
 
 
