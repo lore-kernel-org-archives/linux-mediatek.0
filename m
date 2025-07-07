@@ -4,75 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA78FC8303C
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jul 2025 08:27:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1DC1C83F07
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jul 2025 09:30:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cevL/+9LupPnvd4Ub2fYO4b+8k5nrz+MqxehWljwZAw=; b=dkopxfjHcjjAcS8eFE8U4Cr/se
-	7gaNpwXPUjrsNed6Yb5nOj/fIb6WhAPvb17P6SX8rv6Xs9i1VNayDpGNYo30Y8sTT8Y1y6BEL/LZ2
-	LKx6w/F0UZ1yehFYhpUp8cRb59HnAP+WxEhTEURUWbXiY7voS26tTuLvKu+JIKxRRBN1ilUiRTzq5
-	sCvYRikLdIuGSWbLKku8usyrr8ZZhTZ5FQ1cbl9gnc9km3YPKBTisfaaOLiAKUan1enycr1olaGrB
-	8YS/bQPm/sYHD8rW0slSnmi3uWm16fJ3UReDvhzG//r82iyitInbf4lGQ/wo82e0fNzm7xj2+2LPX
-	tEdQNf3w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oHnqQubrlpoRmXbS5/cz4lO/4jc1jVNARLLcqqXyJ7c=; b=rFwnR9mXA92T4hiRAkoVqBdFXu
+	lR6yMKzw3SJo0kE1Xuc/wr09YU7OMhgqan2hws9Tks2zVwoBW3YrgNOhzQl5iICqE36Yhu61GbRb0
+	7zKdGSuPb+sjMfzSubzOp5AF78YZs/epRjAw/H0ar4R3DoyNkNaFLtupDRs3dUVaz4gG6K8wv8Gxs
+	9sCLfjwtAXtwBcdkZOJ5ak44oNW/vSanV5oP0u8FBL4CiuUaZL4YaSm6ufin+bmK+3a1ZcO736KqO
+	WrDW/PvRqjVZSTnH2aToy+oleDVm4Wb2DSO8GX8zcufBW0/G13gt5UNC07YimpilqNi/BJH0bSE2G
+	nrdGPPPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYhCg-00000001qws-11yU;
-	Mon, 07 Jul 2025 08:27:58 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1uYiAo-00000001z87-0qXN;
+	Mon, 07 Jul 2025 09:30:06 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYgWM-00000001jNM-0ysk;
-	Mon, 07 Jul 2025 07:44:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id B02835C59A6;
-	Mon,  7 Jul 2025 07:44:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 05302C4CEE3;
-	Mon,  7 Jul 2025 07:44:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751874253;
-	bh=/jD354R592s4zJMZWD0+ePhWTUfRC108q7YO8NMu23U=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=PQwE1vX/yXNQiTs0tbmqSybnQiotd/y2C054/icFvOPoTd/5CYEyCj/rNejwoLLg8
-	 Wo7F3vCp2rjnfLbqI5rlb2kmjuOp1AZK+41hek1e/EokISgDLMYScJ1e8dY8dL6SF6
-	 qHa42qLz8g1OahyZjW91CYPx2KTc83LjTClaojuVRIaaDOMCGD5w3FcNc+YZyenALM
-	 XLO1gBN6b5LU/hLRqWOb/iyqOnOOhTDijfAuZbR8lQLgaFUZy3ZxUfN6klJ29K1XUe
-	 B/Z7yJ1NABIxdnpYMxJ/0g05uE0aPdkmfB9rx71B6nuIS7Z2S0XZ0taQ+pTLBiwTD2
-	 Em3J3a8sKeZ9w==
-Date: Mon, 7 Jul 2025 13:13:57 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Nam Cao <namcao@linutronix.de>
-Cc: Marc Zyngier <maz@kernel.org>, Thomas Gleixner <tglx@linutronix.de>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, 
-	Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
-	Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>, "K . Y . Srinivasan" <kys@microsoft.com>, 
-	Haiyang Zhang <haiyangz@microsoft.com>, Wei Liu <wei.liu@kernel.org>, Dexuan Cui <decui@microsoft.com>, 
-	Joyce Ooi <joyce.ooi@intel.com>, Jim Quinlan <jim2101024@gmail.com>, 
-	Nicolas Saenz Julienne <nsaenz@kernel.org>, Florian Fainelli <florian.fainelli@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Ray Jui <rjui@broadcom.com>, 
-	Scott Branden <sbranden@broadcom.com>, Ryder Lee <ryder.lee@mediatek.com>, 
-	Jianjun Wang <jianjun.wang@mediatek.com>, Marek Vasut <marek.vasut+renesas@gmail.com>, 
-	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Michal Simek <michal.simek@amd.com>, 
-	Daire McNamara <daire.mcnamara@microchip.com>, Nirmal Patel <nirmal.patel@linux.intel.com>, 
-	Jonathan Derrick <jonathan.derrick@linux.dev>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-arm-kernel@lists.infradead.org, 
-	linux-hyperv@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org
-Subject: Re: [PATCH 00/16] PCI: MSI parent domain conversion
-Message-ID: <zkjevl46rosm276lirw5vzdhogeug4cpjnvhcgkcwzxm4s4rfj@gcxaexfotlsr>
-References: <cover.1750858083.git.namcao@linutronix.de>
+	id 1uYhW1-00000001tB5-1xRJ;
+	Mon, 07 Jul 2025 08:47:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1751878075;
+	bh=wuHu5L8stqYfI+1TQxbJC5m2b/XKqI3Lh3s9ovq7pYI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=U1GjuxXjoxQtoqcWavS3RVxNki9j+uqYA9N0VVt9UjazobtZOpf+Tq2H3LUBbnuQR
+	 tnSBz+HUP9MR68AhdhdzxcmxlQkHKaj0L5Pry+ihY7KKUJn1efKpbOIl+ZRJuyh659
+	 3jlEFGU8DOB18eKYPu2YSe7TWhChhd1goor2vWebJ2dTALhQX7nekmAs62ugKx0iHx
+	 V4VLza1mKFIK2ETB9EUwvTBXxevEEB454vJ+lEl6YupoPsHNrnp/i2bmbom7ZkkXN4
+	 w1FkkwJqvh2HOl9ktbCIx5Ef8q7/TYTfkSg9VQbmqvMXkTAVc8NOg776lwLpd2Huf7
+	 USgY1oY/3hXmA==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 95EF717E07C9;
+	Mon,  7 Jul 2025 10:47:54 +0200 (CEST)
+Message-ID: <d818cad4-9eff-4fd6-b46c-d1fc24f7130b@collabora.com>
+Date: Mon, 7 Jul 2025 10:47:53 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: NULL pointer exception in drivers/memory/mtk-smi.c
+To: =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>,
+ "u.kleine-koenig@baylibre.com" <u.kleine-koenig@baylibre.com>
+Cc: "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+ "krzk@kernel.org" <krzk@kernel.org>,
+ "iommu@lists.linux.dev" <iommu@lists.linux.dev>
+References: <allge3h2abtjfj77idsnwccurxi2jnbcv6qcxar5f5m3jjmpvs@a4mmfghdhtv4>
+ <lri2gdwioe3on3unzrnmezv4pnxke6lmixrsvargeupdcywweo@j6xoz36xjdoh>
+ <1dbebbf290413eae9af13312028c2d19d3441a09.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <1dbebbf290413eae9af13312028c2d19d3441a09.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <cover.1750858083.git.namcao@linutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250707_004414_351472_F01DA01F 
-X-CRM114-Status: GOOD (  16.30  )
+X-CRM114-CacheID: sfid-20250707_014757_679938_115A4A81 
+X-CRM114-Status: GOOD (  31.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,66 +82,137 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 26, 2025 at 04:47:50PM GMT, Nam Cao wrote:
-> The initial implementation of PCI/MSI interrupt domains in the hierarchical
-> interrupt domain model used a shortcut by providing a global PCI/MSI
-> domain.
+Il 07/07/25 09:24, Yong Wu (吴勇) ha scritto:
+> On Thu, 2025-07-03 at 18:41 +0200, Uwe Kleine-König wrote:
+>> Hello,
+>>
+>> [expanding the audience a bit according to the drivers that are
+>> involved
+>> now that the problem is better understood]
+>>
+>> On Tue, Jun 17, 2025 at 05:18:30PM +0200, Uwe Kleine-König wrote:
+>>> on a 6.16-rc2 kernel running on an mt8365-evk I occasionally hit
+>>> the
+>>> following during boot:
+>>
+>> I invested some time now to understand the issue. So here comes what
+>> I
+>> understood, maybe that helps someone to spot the fix to the described
+>> problem.
+>>
+>> With a configuration that has all drivers built-in but
+>>
+>> 	CONFIG_DRM_MEDIATEK=m
+>> 	CONFIG_MTK_IOMMU=m
+>>
+>> and
+>>
+>> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+>> index cb95fecf6016..d4320db7cd2d 100644
+>> --- a/drivers/iommu/mtk_iommu.c
+>> +++ b/drivers/iommu/mtk_iommu.c
+>> @@ -1387,14 +1387,15 @@ static int mtk_iommu_probe(struct
+>> platform_device *pdev)
+>>   		goto out_list_del;
+>>   
+>>   	ret = iommu_device_register(&data->iommu, &mtk_iommu_ops, dev);
+>>   	if (ret)
+>>   		goto out_sysfs_remove;
+>>   
+>>   	if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_MM)) {
+>> +		msleep(10000);
+>>   		ret = component_master_add_with_match(dev,
+>> &mtk_iommu_com_ops, match);
+>>   		if (ret)
+>>   			goto out_device_unregister;
+>>   	}
+>>   	return ret;
+>>   
+>>   out_device_unregister:
+>>
+>> I can reliably trigger the race.
+>>
+>> With that sleep in place iommu_device_register() completes quickly
+>> which
+>> enables probing of the devices with drivers contained in the
+>> drm_mediatek module (because the modules are loaded in parallel on
+>> a different CPU).
+>>
+>> Then generic driver code calls resume on all suppliers for devices to
+>> bind, among them the four larb devices. However due to
+>> component_master_add_with_match() not being called yet, the larb
+>> devices
+>> are not yet bound to the iommu device and so larb->mmu is still NULL.
+>> The latter is a problem in mtk_smi_larb_config_port_gen2_general()
+>> which
+>> is called from mtk_smi_larb_resume().
 > 
-> This works because the PCI/MSI[X] hardware is standardized and uniform, but
-> it violates the basic design principle of hierarchical interrupt domains:
-> Each hardware block involved in the interrupt delivery chain should have a
-> separate interrupt domain.
+> Hi Uwe,
 > 
-> For PCI/MSI[X], the interrupt controller is per PCI device and not a global
-> made-up entity.
+> Thanks for your help. In this case, it looks like the disp probe occurs
+> before the smi_larb_bind operation, we need to let disp wait for the
+> bind to complete.
 > 
-> Unsurprisingly, the shortcut turned out to have downsides as it does not
-> allow dynamic allocation of interrupt vectors after initialization and it
-> prevents supporting IMS on PCI. For further details, see:
+> --- a/drivers/memory/mtk-smi.c
+> +++ b/drivers/memory/mtk-smi.c
+> @@ -666,6 +666,10 @@ static int __maybe_unused
+> mtk_smi_larb_resume(struct device *dev)
+>          if (MTK_SMI_CAPS(larb->larb_gen->flags_general,
+> MTK_SMI_FLAG_SLEEP_CTL))
+>                  mtk_smi_larb_sleep_ctrl_disable(larb);
 > 
-> https://lore.kernel.org/lkml/20221111120501.026511281@linutronix.de/
+> +     /* The larb_bind operation may be later than the master probe. */
+> +       if (!larb->mmu)
+> +               return -EPROBE_DEFER;
+> +
+>          /* Configure the basic setting for this larb */
 > 
-> The solution is implementing per device MSI domains, this means the
-> entities which provide global PCI/MSI domain so far have to implement MSI
-> parent domain functionality instead.
 > 
-> This series converts the PCI controller drivers to implement MSI parent
-> domain.
+> Hi Angelo,
+>   Do you have any suggestion?
 > 
 
-Applied the series except patch 14/16 to pci/controller/msi-parent, thanks!
+I don't have the necessary bandwidth to really broadly research about this, but
+there's two ideas:
 
-- Mani
+1. What if we disable PM OPS until MMU is bound? That would avoid calls to
+    larb_resume().....
+2. Instead of component, we could register a device - which carries its own suspend
+    and resume ops; the device would be registered only after all local arbiters
+    are bound, so there would be no suspend/resume ops until everything is in place.
+    That's more or less how it's done in drivers/usb/core/port.c
 
->  drivers/pci/Kconfig                           |   1 +
->  drivers/pci/controller/Kconfig                |  11 +
->  drivers/pci/controller/dwc/Kconfig            |   1 +
->  .../pci/controller/dwc/pcie-designware-host.c |  68 ++----
->  drivers/pci/controller/dwc/pcie-designware.h  |   1 -
->  drivers/pci/controller/mobiveil/Kconfig       |   1 +
->  .../controller/mobiveil/pcie-mobiveil-host.c  |  42 ++--
->  .../pci/controller/mobiveil/pcie-mobiveil.h   |   1 -
->  drivers/pci/controller/pci-aardvark.c         |  59 ++---
->  drivers/pci/controller/pci-hyperv.c           |  98 ++++++--
->  drivers/pci/controller/pcie-altera-msi.c      |  44 ++--
->  drivers/pci/controller/pcie-brcmstb.c         |  44 ++--
->  drivers/pci/controller/pcie-iproc-msi.c       |  45 ++--
->  drivers/pci/controller/pcie-mediatek-gen3.c   |  67 ++---
->  drivers/pci/controller/pcie-mediatek.c        |  46 ++--
->  drivers/pci/controller/pcie-rcar-host.c       |  69 ++----
->  drivers/pci/controller/pcie-xilinx-dma-pl.c   |  48 ++--
->  drivers/pci/controller/pcie-xilinx-nwl.c      |  45 ++--
->  drivers/pci/controller/pcie-xilinx.c          |  55 +++--
->  drivers/pci/controller/plda/Kconfig           |   1 +
->  drivers/pci/controller/plda/pcie-plda-host.c  |  44 ++--
->  drivers/pci/controller/plda/pcie-plda.h       |   1 -
->  drivers/pci/controller/vmd.c                  | 229 +++++++++---------
->  23 files changed, 504 insertions(+), 517 deletions(-)
+Probably N.1 would work best - we could...
+
+probe:
+pm_runtime_set_active(larb->smi.dev);
+pm_runtime_forbid(larb->smi.dev);
+
+bind:
+larb->mmu = ...
+larb->bank = ...
+
+pm_runtime_set_suspended(larb->smi.dev);
+pm_runtime_allow(larb->smi.dev);
+
+
+...the next usage/wakeup should then call resume() but at that point we're sure
+that larb->mmu is actually initialized, because we allowed PM resume only after
+binding.
+
+I want to repeat - I didn't make any extensive research, just a fast read and
+threw some ideas on the table without any testing or anything else :-)
+
+Cheers,
+Angelo
+
 > 
-> -- 
-> 2.39.5
+> Thanks.
 > 
+>>
+>> I don't know what the right fix here is, but maybe someone else does?
+>>
+>> Best regards
+>> Uwe
 
--- 
-மணிவண்ணன் சதாசிவம்
 
