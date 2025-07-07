@@ -4,77 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53249C71130
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jul 2025 17:06:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE416C8303C
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jul 2025 18:35:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DhBmOe4x1JLcoZy9mys+lB4+WJiQRcQ3Aao9PKPfMf8=; b=rxnkpAdQXauiC39ifWlbZVkOxi
-	FEFlEZPnLqn0QF/2mvhik1nMh4G8kQ9X/hf81NWByb3JJOz2MagDaZq878zo46VqPrqRVhQt/koVZ
-	+B42/PLJLBzIDJl7qfSMesZrZLb43u3n1+Y1xkX2EjvWN5CIS9GE9cPePfFKd0XVUm+ZRWPtSgYsz
-	S9IYQjFLIlRhl4TqllJBD8Nwl4UdxjU8TNh/zrvoD6r//fmPlhPjIjZIgC9ZxO2BpeRU3c8Q9QUUK
-	bVkqGKT37UK9ZX6/iYPok/avaP+OZnO4KQAgias7ytFMFhPacO2IIC8m2htUZL7kAktDFe07nOS/i
-	kUA3CNKg==;
+	bh=42jtsUDXPCPmNytXrx59THHUxajHEyTomBc5xpmWMc0=; b=D30C/3aWWu9XYQqVWN0fj/BVzI
+	p1rBhonWMWzuVdVGw0QjIesQJU+RdTTD7URSja6HLyRzIgWseq0Wa650pyHJ6ID7YqTZTJ4zaASWW
+	m7OnNa2uN6tLQxppw488GqZFSyowJTC4IQLabihft38ZNm1GIJqe1nOfRXTLK8iYUprnIEPh44owO
+	vj5MXdU0wMyskcZsh3+6UrkdrMNJqoqpjFfSFZCHcTtnuHUkVjqlF4zq7C4HsvCBR2jxY2+PPJgDT
+	+6V2xypealoqueL0VWJEdVpi0aJRyBUsG9m5IKcGVvHpSyZzwvhai41W3spYf1bR4lnHG8y3ExXNx
+	qP61lJQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYpIO-000000037ZN-2z2J;
-	Mon, 07 Jul 2025 17:06:24 +0000
-Received: from 003.mia.mailroute.net ([199.89.3.6])
+	id 1uYqgl-00000003JbT-1XH5;
+	Mon, 07 Jul 2025 18:35:39 +0000
+Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYoUU-00000002zp3-3cgx;
-	Mon, 07 Jul 2025 16:14:53 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 003.mia.mailroute.net (Postfix) with ESMTP id 4bbTpd6XF1zltKGZ;
-	Mon,  7 Jul 2025 16:14:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1751904887; x=1754496888; bh=DhBmOe4x1JLcoZy9mys+lB4+
-	WJiQRcQ3Aao9PKPfMf8=; b=XCzhS0MhtHZh1gZfve9dCCHnaQ14ohGk/X9Al/G4
-	WG8xmUu0nDRuTkjj5caY+e5sBmnc4rdlHVAIQl2karkC8vuCbg0+PJkxy6QQXMIf
-	nNvr7YdzL9WUmRHpLsKAW6zaTVQb86ezgxVMHgrHByXTSYM1olbx48Ipl+To23Eh
-	RBrrMxAeheBcJ4jaSVlDOgeYVKaI3pZHYNchGZKq79XzcuFE2GDjMEn/EAMUkms7
-	BJsmdxqA6yygCkjQ17Ypq1XU840d/a74YyEj9VjIYdLrbu0TMmxsk5oZ7q5FfRgF
-	kfR8rJsrzmjWN3vzvumoynJ1JO3FFoCB8NwLH8rSMi9/Hw==
-X-Virus-Scanned: by MailRoute
-Received: from 003.mia.mailroute.net ([127.0.0.1])
- by localhost (003.mia [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id SVxenN_q8gk4; Mon,  7 Jul 2025 16:14:47 +0000 (UTC)
-Received: from [100.66.154.22] (unknown [104.135.204.82])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 003.mia.mailroute.net (Postfix) with ESMTPSA id 4bbTpQ64vXzlng93;
-	Mon,  7 Jul 2025 16:14:37 +0000 (UTC)
-Message-ID: <2700084c-5241-468a-a80e-971e42560d31@acm.org>
-Date: Mon, 7 Jul 2025 09:14:36 -0700
+	id 1uYpqz-00000003CLc-3PAX;
+	Mon, 07 Jul 2025 17:42:10 +0000
+Received: by mail-yw1-x1136.google.com with SMTP id 00721157ae682-70e75f30452so22311137b3.2;
+        Mon, 07 Jul 2025 10:42:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1751910129; x=1752514929; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=42jtsUDXPCPmNytXrx59THHUxajHEyTomBc5xpmWMc0=;
+        b=Hue/P1H4tOOz3H5xaVHzkOszy1NOasNJB3irKSmH7gM8Hh+W5+hPHQrwYertHOOAR6
+         NGE7Vod8KphnnOCWvlnDwwZzaYu/H2eyND0NiWeQsglMK9z3cY3uliMMdfSRs5yhBZRs
+         cAFAIs0FkRwtHJPxrNNPDS34/zn7Xf4B4+BGV5Opd5EqMhJd8QMyirAj+ICz6jQtzZBV
+         WhjDGWhm2sb+op8il0aKNTWlHAXhjmvznxf7N5bk2K1ZF4qa1BVLizKTsbyIp8UubQ2R
+         VUw4npj0qgrppdsw/uoFMbLMUs0VCM/BZM3qKYw8uDBoJIqCQfXfLj9y8knh2gv7ZLFb
+         9jyQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1751910129; x=1752514929;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=42jtsUDXPCPmNytXrx59THHUxajHEyTomBc5xpmWMc0=;
+        b=YsC3OZtpWvqusyxr/v0zaLeRq2MqHPN5TSnCt6f80mkkC5QKRbn72BA4ggkcHsMEyZ
+         JPbPwkmoJ4NiRd6LmxEne6zzhrbP4BWyyKKvZoMF1USLJQA7Tzl6/nhxn1uJgTMwcp35
+         ZzWTzUrFjulhgeKntL0DT9IVoxc5jHFma3aLDKRdykeMEv3ohwfYnGJGIdpmY6mlSwxG
+         +UE6H0flXWKg+ic9HerThIVEEf2KiW8VHBw5hjBNF32oovxWGnDeZ7e4LnclJSiOW0eN
+         0UEkV/9xfW46iU0TLyEo5P9kr5j4WTcPknTYRbMWf1GkW60GqyHDeBWQNIXYc9lkKm5v
+         Yfrg==
+X-Forwarded-Encrypted: i=1; AJvYcCVKM2NCVvGc9/ZboN9LrbGLB3WHq116KOBqyJDEyMruj/xtCogiR42bTiiXoMLmcE2dqWdVDWDlJMNdftABN+HE@lists.infradead.org, AJvYcCX/xy1PFN76nd98RWFnY8+ZjEggzar7zzTRFfxxk6H3WV8RX/wl7mOszfqLC4p0Z7ykZ1ViHY9xI87KDE/4/wU=@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz6qhlU4XQkWTbwQF6o3QG3I/42W+D5MCgXP3/No3//yTTYKs2q
+	Ml3YFXAKFWn0dqnOpkE5o324ey+pwtkxS5iKOVWiEaFo0Lvt4nf6DaoormFxKI6aUEK2Gw5sOtr
+	bJwnKqAcAy4CJ0+0jNKwVKmK0FX2zcTNfQaRHcJc=
+X-Gm-Gg: ASbGnculVkOAiW9Glwv9Zoa4ynsB1hGTt1jdmWv2LY+e2SVd4hqL4eRb6oVy3eMVWsF
+	J9TQXndJolLWwI9vqDom/roIvuBnFb8n05hEbBGBbfjLrKM70GmLeUMxbyfxdtjaPXuFzUwKEcB
+	K0kZg/Qzil260ZnTC/WROrfikICFae41ZQy5j+7sNG4cTMvnhmdn7hVe05
+X-Google-Smtp-Source: AGHT+IGdu+lUB6aYqtWH4AiO6Py1SgyDO+jxiLBNa4PCqXrusbUeunWL1E2NWxsWS+1ctn1q5K5//624lv0vLW+ua3Q=
+X-Received: by 2002:a05:690c:f8e:b0:70c:c013:f2f with SMTP id
+ 00721157ae682-7179e44d3e9mr7404627b3.35.1751910128762; Mon, 07 Jul 2025
+ 10:42:08 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] scsi: ufs: preventing bus hang crash during emergency
- power off
-To: Bo Ye <bo.ye@mediatek.com>, Alim Akhtar <alim.akhtar@samsung.com>,
- Avri Altman <avri.altman@wdc.com>,
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: xiujuan.tan@mediatek.com, Qilin Tan <qilin.tan@mediatek.com>,
- linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20250519073814.167264-1-bo.ye@mediatek.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20250519073814.167264-1-bo.ye@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20250706214111.45687-1-rosenp@gmail.com> <8c6f18ca47bf0dd78b6675d8b94000679b6c75cd.camel@sipsolutions.net>
+In-Reply-To: <8c6f18ca47bf0dd78b6675d8b94000679b6c75cd.camel@sipsolutions.net>
+From: Rosen Penev <rosenp@gmail.com>
+Date: Mon, 7 Jul 2025 10:41:58 -0700
+X-Gm-Features: Ac12FXwpmQW7d4a2Au2Yz5auZhjQPGBnlW83MkM8UJ0V9bkuM1yY9_y20XPBBjc
+Message-ID: <CAKxU2N9vs5o4tj-9KxCHKevWU+J9wv+ZCOeD8o602y1GY8FzNw@mail.gmail.com>
+Subject: Re: [PATCH 0/6] wifi: rt2x00: add OF bindings + cleanup
+To: Johannes Berg <johannes@sipsolutions.net>
+Cc: linux-wireless@vger.kernel.org, yangshiji66@qq.com, ansuelsmth@gmail.com, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Stanislaw Gruszka <stf_xl@wp.pl>, 
+	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, 
+	"open list:MIPS" <linux-mips@vger.kernel.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250707_091450_986965_8E59E2E6 
-X-CRM114-Status: GOOD (  18.43  )
+X-CRM114-CacheID: sfid-20250707_104209_848873_12646701 
+X-CRM114-Status: GOOD (  12.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,43 +99,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On 5/19/25 12:38 AM, Bo Ye wrote:
-> The root cause is that scsi_device_quiesce and blk_mq_freeze_queue
-> only drain the requests in the request queue but don't guarantee that
-> all requests have been dispatched to the UFS host and completed.
-> Requests may remain pending in the hardware dispatch queue and be
-> rescheduled later.
-
-The above is confusing. scsi_device_quiesce() drains both the request
-queue and the hardware queues for all commands associated with a single
-logical unit. The problem that you are encountering is probably that
-scsi_device_quiesce() is only called for the WLUN but not for the other
-logical units and hence that there still may be commands being processed
-for other logical units after scsi_device_quiesce() has returned.
-
-> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-> index 7735421e3991..a1013aea8e90 100644
-> --- a/drivers/ufs/core/ufshcd.c
-> +++ b/drivers/ufs/core/ufshcd.c
-> @@ -10262,6 +10262,7 @@ static void ufshcd_wl_shutdown(struct device *dev)
->   		scsi_device_set_state(sdev, SDEV_OFFLINE);
->   		mutex_unlock(&sdev->state_mutex);
->   	}
-> +	ufshcd_wait_for_doorbell_clr(hba, 5 * USEC_PER_SEC);
->   	__ufshcd_wl_suspend(hba, UFS_SHUTDOWN_PM);
->   
->   	/*
-
-The name of the ufshcd_wait_for_doorbell_clr() function is confusing
-since "doorbell" refers to a legacy single doorbell mode concept while
-the function supports both legacy mode and MCQ. After this patch has
-been queued I plan to submit a patch that renames this function.
-
-If the patch description of this patch is improved I will add my
-Reviewed-by to this patch.
-
-Thanks,
-
-Bart.
+On Mon, Jul 7, 2025 at 2:01=E2=80=AFAM Johannes Berg <johannes@sipsolutions=
+.net> wrote:
+>
+> On Sun, 2025-07-06 at 14:41 -0700, Rosen Penev wrote:
+> > It doesn't even compile. Added OF bindings, documentation, and other
+> > stuff to hopefully this doesn't happen again.
+> >
+> > Rosen Penev (6):
+> >   wifi: rt2x00: fix compilation
+> >
+>
+> That was half covered by Felix already, and really shouldn't do two
+> things at the same time anyway.
+Just saw what you're talking about. That's gonna be annoying though.
+The COMPILE_TEST commit will cause compilation to fail and the bot to
+complain before Felix' patch gets merged.
+>
+> Also please add [PATCH wireless] or [PATCH wireless-next] prefix when
+> you submit patches, to make it clear where the series is targeted. In
+> this case, you probably should've split it up, but Felix already covered
+> the immediate bug.
+Will do.
+>
+> johannes
 
