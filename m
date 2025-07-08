@@ -4,75 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39540C71130
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jul 2025 06:55:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D04CBC8303C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jul 2025 07:14:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QgkicBTpwhIu4KhwMQ9MKtUqejjyYnHk87N/snpkRoM=; b=VFo1Yc+jUna0yuq+WbJZj6F2hn
-	kg9nEcuRCVkWQZKobvfMdk/3ZWuwJgVsJFgZN6kVxI4sY9Ii9wbQsx6fbeuF3Cdvu0R/A4mmCTTli
-	iQHuDtEhiLzvQFBaVEZ6n2x8sEuwnNLZwFIMrtOF72pwzGcVvA6x3TUPePNVOCfWXNwXDVmsLM6zQ
-	0Dl8mwhndrL9XErFAbOCm+JpX2Ds7lsuKi1iKsm3vJrrZ9KQpWIJ8G0FIQeaDNV7UMDfLCf1U8NON
-	1A3s9bGLpKvAe23YghEGjDQoZp3BTHOC1SYUtX59gGuzCOVtNpZqp7j4V1nWq/HlP8pMQTfM8zJ7u
-	Qa79G0Uw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=CncBn72Po4xfVSHEBJOvuxgfjvMFR73s62uElzwlrsY=; b=Byr/rIy4RUQQlj
+	OxhhhDPw2Krq0YixqIP63/lhi9JTRE4hlcEC+dCYzTL4hN0IinTE+FANBoKkZE8TCKRxNV/Rgew9q
+	+Nw7HdnBnjnixwboONOVZ1b1DwfIuF+1dVLDtbL2rIHpDOl2DOybkWLoqQ/kh6UG9A1dvJG3+h7ud
+	CTI7XC2ettGPufgMd+pxKe2Cqc7+DCFOeH0sCNW4i0g80WseTRoeFp5ILQDiY2EM7KrZNTd3pfRvo
+	4Dgvn7ChTUduWFK0h0VuWCjR7+WRNX9FrL3sqpaeKEif2+OKlfemlS+2IYwB8WMQqd4ovLHwsb4OZ
+	9qplXS5QiZclTdzaS7SQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZ2Ed-00000004VgH-2s3M;
-	Tue, 08 Jul 2025 06:55:23 +0000
-Received: from s3.sipsolutions.net ([2a01:4f8:242:246e::2] helo=sipsolutions.net)
+	id 1uZ2XV-00000004YRI-1Cak;
+	Tue, 08 Jul 2025 07:14:53 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZ2Bh-00000004V5Y-2kOf;
-	Tue, 08 Jul 2025 06:52:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
-	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
-	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
-	Resent-Cc:Resent-Message-ID; bh=QgkicBTpwhIu4KhwMQ9MKtUqejjyYnHk87N/snpkRoM=;
-	t=1751957541; x=1753167141; b=Dfdsw+Bj2iBCJHeB8JN/EUh8VbbV/3x+0Y2buBSwHvp9+JO
-	+uHK8yHA902jM5dK2S96MzUFXimK9NYme/g0gJUU5Q9K3vluuiMDXnQoE1+DXxSuZfQfOB7Wwl2Mc
-	xudu2t/YQVLW1xM+kQqUV/MV74eVAhb7ev9dO2SztfnCpT5fQ81WBaB52WWzr6c8EZc96JT9my0TU
-	aGEhl+oEzTSgMcRKgvd1M8zSEUTva1h0HRowWqSEw5dFZq4KnQWi6pIOdRUhA+gO9Zwx9BPij0QKQ
-	5ZXQN5jWsTtzNIv4UcTYtILCs7suFRUuDT3Grt8YuiidlbdpRUjCtqX00TBVmlyA==;
-Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
-	(Exim 4.98.2)
-	(envelope-from <johannes@sipsolutions.net>)
-	id 1uZ2BD-0000000BePp-1ddS;
-	Tue, 08 Jul 2025 08:51:54 +0200
-Message-ID: <304f48242d99fec81990d492777cb45a58aa038c.camel@sipsolutions.net>
-Subject: Re: [PATCH 0/6] wifi: rt2x00: add OF bindings + cleanup
-From: Johannes Berg <johannes@sipsolutions.net>
-To: Rosen Penev <rosenp@gmail.com>
-Cc: linux-wireless@vger.kernel.org, yangshiji66@qq.com,
- ansuelsmth@gmail.com,  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
- <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,  Thomas
- Bogendoerfer <tsbogend@alpha.franken.de>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
- <angelogioacchino.delregno@collabora.com>, Stanislaw Gruszka
- <stf_xl@wp.pl>,  "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE
- BINDINGS"	 <devicetree@vger.kernel.org>, open list
- <linux-kernel@vger.kernel.org>,  "open list:MIPS"
- <linux-mips@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"	
- <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>
-Date: Tue, 08 Jul 2025 08:51:44 +0200
-In-Reply-To: <CAKxU2N-XviPav1Bh0yidyMUr=QbMr=0jyYyHKc+h0oaM9vak=Q@mail.gmail.com> (sfid-20250708_005520_408645_C4B0336E)
-References: <20250706214111.45687-1-rosenp@gmail.com>
-	 <8c6f18ca47bf0dd78b6675d8b94000679b6c75cd.camel@sipsolutions.net>
-	 <CAKxU2N9vs5o4tj-9KxCHKevWU+J9wv+ZCOeD8o602y1GY8FzNw@mail.gmail.com>
-	 <b3a63d616c1ca337f6b9d14a9afaafe73bfbe8cc.camel@sipsolutions.net>
-	 <CAKxU2N-XviPav1Bh0yidyMUr=QbMr=0jyYyHKc+h0oaM9vak=Q@mail.gmail.com>
-	 (sfid-20250708_005520_408645_C4B0336E)
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
+	id 1uZ2V9-00000004YDh-3eX6;
+	Tue, 08 Jul 2025 07:12:27 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 4541661463;
+	Tue,  8 Jul 2025 07:12:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9B3CBC4CEED;
+	Tue,  8 Jul 2025 07:12:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1751958747;
+	bh=gjo96x9e45Yxy/9KO1uojpXNo9dbAQFOswgfQn3glyk=;
+	h=From:Subject:Date:To:Cc:From;
+	b=McnzOBb7/RzDNvcdlzM1uSubEdBkiig7ZRA5PyG+8wyb0LBeN+lV/uZNuOuEbTjQk
+	 MQfoxQg/Xk3SwjfTZCJiNtFq4h5wqmWi9zTCZYq8sYSVWu4bHMWkKEUb4sQrSWvmxo
+	 FdIkGuBQ6iISqJH9gpQdCUMO6wbcaYhhvaS+gtML4Ony8fITM6mKhqwQHnLYN7hL+e
+	 Lhdyy+ZJx54sweX/XtZIUzlWfdL7ydaYwgmVBhbBVSC5zogXwMV0d5Pbr10+fzHtm1
+	 25j8nRvbnchGllJLG34a4DvTm62xRANOEtVYuyyDns1en2l6i7fi71yWcdxsASwRYf
+	 l9UfsK9lJXCWg==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH mt76 0/2] Fix MT7996 driver performance in the mixed
+ MLO/non-MLO scenario
+Date: Tue, 08 Jul 2025 09:12:03 +0200
+Message-Id: <20250708-mt7996-mlo-fixes-v2-v1-0-f2682818a8a3@kernel.org>
 MIME-Version: 1.0
-X-malware-bazaar: not-scanned
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250707_235221_715107_A7015F7C 
-X-CRM114-Status: GOOD (  12.16  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAMPEbGgC/x3LQQqAIBBA0avErBtQodSuEi2ixhpICw0JwrsnL
+ R+f/0KiyJRgaF6IlDnxGSpk28Cyz2Ej5LUalFCd0MKgv7W1PfrjRMcPJcwK1866nqSSxjqo5xX
+ pb3Ucp1I+14tdCGUAAAA=
+X-Change-ID: 20250708-mt7996-mlo-fixes-v2-d59f6e12189f
+To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Peter Chiu <chui-hao.chiu@mediatek.com>, 
+ Money Wang <Money.Wang@mediatek.com>, 
+ Evelyn Tsai <evelyn.tsai@mediatek.com>
+Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ MeiChia Chiu <meichia.chiu@mediatek.com>, 
+ Howard Hsu <howard-yh.hsu@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,24 +80,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2025-07-07 at 15:55 -0700, Rosen Penev wrote:
-> >=20
-> > Yeah well. That doesn't really mean it should be merged together though=
-,
-> > and we can pretty easily make that work by just putting the further wor=
-k
-> > in after net/wireless is merged back.
-> Looking at it again, I'm effectively removing rt2x00soc.c . Meaning
-> Felix' patch is mostly useless here.
+Two more fixes to improve MT7996 driver performances in the mixed
+MLO/non-MLO scenario
 
-But we're not going to put your changes into 6.16. They're not even
-entirely ready yet, from what I see in the thread.
+---
+Lorenzo Bianconi (2):
+      wifi: mt76: mt7996: Overwrite unspecified link_id in mt7996_tx()
+      wifi: mt76: mt7996: Fix mt7996_mcu_sta_ba wcid configuration
 
-> It might make more sense to submit this series at a later time.
->=20
+ drivers/net/wireless/mediatek/mt76/mt7996/main.c   | 32 ++++++++++++++--------
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c    | 12 ++++----
+ drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h |  3 +-
+ 3 files changed, 30 insertions(+), 17 deletions(-)
+---
+base-commit: e553ac0d7616d6bcd06ed0c5f6126ce83097b31a
+change-id: 20250708-mt7996-mlo-fixes-v2-d59f6e12189f
 
-By end of the week Felix's patch should be in wireless-next too, if I
-get all the things done right...
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
-johannes
 
