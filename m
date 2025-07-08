@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAC2EC8303C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jul 2025 10:18:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CF60C83F0F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jul 2025 10:22:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BYVWqBDuV8m7HidOYvo6oSjOV7wiCQCv03/6xvMA1E0=; b=RluZck131HzwqKP7jHIK9xLiHK
-	0tB5qavHKgKai2lQ0PTWwzBXUiA6BTN41blhbDu79yX8MrtyK8O8km7PsQGuXiZgkzwZdR0lFiQOS
-	WyLfUuYw8sKMT3DMgpbuujZ8o7gl9qzZ1KSVtSKxqfDNofYC21Ro/wDP1Q+gv8jUEQ4I33bXIGqdf
-	gsCKquaLeWHbzeM1ibkkfZ91rpKJ6JZMfR6XW2vvJ89nG+CvyjFrnO7j91ih4NpWkGCylbRTbbXdx
-	KG9dv5yTErw/OIp2thAzGu2seNrO1Kfsh9EZ0dOFZWJW4g3yB5laghsMoVar1r0qsy1b9eq5j/FDj
-	4Nz34hsw==;
+	bh=lpGeu0fct+3VmHlRdU5eb8NMKV/Ar7w1D2lbejumdKs=; b=FYT+pTtbw0D2pWykeojHMKoILF
+	8cEvSP0J0lZ4VctLLZyojfI4TSNRSZfxu5LjG6FSXccZ5dvaEyPTCeTyBW4W+/x5f5mxE9NMKnguT
+	aOZwf+ltVvCuP3xad5mWEH/9ODNhI6ojmIg0V2CrSM9aIrSc1OnerdLyxTDJitwRMngmju9s5cm3h
+	z6ixvBtIIMPRMsVqHSCRDmxHiMRuVUDPmLdTXSP6+MoJ9+FWNdldBpRqwCkIMHzvzw8fTXKhXQzw6
+	HIdnR/5BCIWKEZXJmO9m2o4p8vbM8NDfRrJvkWfjHuRPTGzKpg2mz1K1oYA0satp8fWQiwQQjMspB
+	Lve+aXAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZ5Oq-000000052kH-2ayZ;
-	Tue, 08 Jul 2025 10:18:08 +0000
-Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
+	id 1uZ5TP-000000053Ya-2xDh;
+	Tue, 08 Jul 2025 10:22:51 +0000
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZ58j-00000004zqe-0nEL;
-	Tue, 08 Jul 2025 10:01:30 +0000
-Received: by mail-pg1-x536.google.com with SMTP id 41be03b00d2f7-b31d489a76dso3405375a12.1;
-        Tue, 08 Jul 2025 03:01:28 -0700 (PDT)
+	id 1uZ5B6-000000050Hi-1DO0;
+	Tue, 08 Jul 2025 10:03:58 +0000
+Received: by mail-pl1-x633.google.com with SMTP id d9443c01a7336-236470b2dceso35336445ad.0;
+        Tue, 08 Jul 2025 03:03:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1751968888; x=1752573688; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1751969035; x=1752573835; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=BYVWqBDuV8m7HidOYvo6oSjOV7wiCQCv03/6xvMA1E0=;
-        b=ex47zJH9YdMoFYhk8T2eHs9IRmiQPWsF2yFXSQ2n+FGfE8kD3XPFUPYMqkEoTnvrGp
-         au4DuBii0sOI2vpF6drBzsHRqd0AgzE9O2g+4ztO4rmpcf2BGr7woX2dM+KD1Qh9+aVS
-         AStNxe0bPhRJMzMqUTj4Re+CaODZBLksCSKokUHhBZ6kSldjZY3SOsY/QZbwm2ZJQPy9
-         7EcfV53hnTZGBfTKTCUtg13mohppQNWm765dLt5P4nzGkfbkHIxL0SXYhLSlFE+nWMDd
-         jU6JntY7Cc2tDKlOYIQSym48wZTjh/GwsY448VYu9kBhQSIWtlnBaBBBXlXfdNKWYp/9
-         hWIg==
+        bh=lpGeu0fct+3VmHlRdU5eb8NMKV/Ar7w1D2lbejumdKs=;
+        b=ccYde1dW10BIFSAj15l4699/ADChUoVUrq8Qx8th3DT/fo4W29BjSmD5KFuMrULMHs
+         WbveVRE1QPpZgrg7oM2rrhR0lH+qelY3aDAJwAMPP2Lc0D3GXu9VinzY5sx61DNzXTtp
+         6dH5a1HIUWFX2OHoq5WqOQzIBhecnX6dyTu2JlH3X6UwHyVeXQTCfZ6B6R0uPvEFNlNg
+         T46P/ueQPpolx9tM6Tf1KbtuIQSNqnx36LIva4Mk0tRM2pnXamm0Ch+XqviKzgKYpY7u
+         6hPSFhgE2vBUuAcfnmcDSU5du17l/qF6W3zgx5FEmW1NDeyC3U17UVrse9Uf4JQvkvAy
+         YR2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751968888; x=1752573688;
+        d=1e100.net; s=20230601; t=1751969035; x=1752573835;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=BYVWqBDuV8m7HidOYvo6oSjOV7wiCQCv03/6xvMA1E0=;
-        b=ky0IBDqXyBV0n6WzIIAPTy3sViCuEAjSn1Jo3ow1ibiKMooQThc/e0aNY/oRD9aJFv
-         DiNAH6mh9MgW6EwknN4S7jKpNCooEZdUtM8INp+oMdOflI8/FlRMpyEul31E36gyrO+n
-         HjacgY8YTwFoUJZCg+yXwjvN5lw/dlrJ2xdt5+qj5GX4EkY3ybsXtxOmqPK/zdhHAOka
-         HbSJkcRKaml9p/dFs74pchz54870W52KfRuaj0lSdg7yPy4s66qyuZhwGkhOIghyP5Cv
-         knbwqjP8Js0g9wBY4VQjcm1aF5uBl8DWeFJJdDcFVikU3iTNZxrlGkgbFH6t1ui6REne
-         IYpg==
-X-Forwarded-Encrypted: i=1; AJvYcCVagGCUNzuxzzPoGkaPP0UgObM43jzhJAD/PYyif9WGZS82gWwRZ7qo1KdhIkwrP4F09WqSdLBFQVWt8ZKiUAwG@lists.infradead.org, AJvYcCXcx7zjo0U247n4g92Euc2MXBk4FP0YtMJp+aHIyxX6D6FL5gtU78I3DiRn35RTmo4bpZ17lE1pfl1b7yw1XJg=@lists.infradead.org
-X-Gm-Message-State: AOJu0YzwcqWHCNHdcP+THoo8MML59nMA+BZbB3bgHTdukggubYTi0Wwh
-	r6qdQnWbEh4sfykx9FvZPlh1e77KeMPSYQtyeEXDIdnf3cbcLxjwqy7nfutXkmR0zXkFYmPlRIp
-	2pqhTi8Kap0MhmmueLTKFwFgcF3Plt1hsnh17
-X-Gm-Gg: ASbGncv+y9GSZEnVPcAK5MLcPsSLswStUCyMWR4hQyJncPE+txZ4zeeuKCsn6gRCsk2
-	xuzY8cLmsDa6qoiXvoZDxiJO+e8dxnzbnvYuftuwzKdARCQdKcSlIEkhnaux7WcClpZHMm3WRm5
-	6NhpruLvH0zUcp/0KNL4NtyK4/lGiTl08ZHKj9Kdsc
-X-Google-Smtp-Source: AGHT+IGYKEJK2xo4dPc6y1F7cjXea1ETy9xhjndwr4Pdcn3GQxSSY8T38dioJ0DFG99A1R8cEUN75ggzKI5af6Tbcd4=
-X-Received: by 2002:a17:90b:3c8f:b0:313:1a8c:c2d3 with SMTP id
- 98e67ed59e1d1-31aadd8535fmr18447334a91.22.1751968888351; Tue, 08 Jul 2025
- 03:01:28 -0700 (PDT)
+        bh=lpGeu0fct+3VmHlRdU5eb8NMKV/Ar7w1D2lbejumdKs=;
+        b=eRQrkjNXj+m+dhgimkxCslXDEY9yvhoYdxZmhRW2igrKWwPjZ812+IYw0UiU1WC+AY
+         DZ6nyke8eFQ+ms+VyS3qpIaLXItTKx+1eCOPEno875DqfC9FRUJy56CmX5egnDqK0Nyq
+         mpXF3WP4s/XT4Qk1Dzsvy3R7BN50xDFsOclO6vIky2pjQZZvWWM9mExf3HJoVg3tWu8v
+         8F82ojELS8Quq9e2Wrxsud//RvZZuimpXYipKPnVkWxQOpB6qw8g8X7qj5ReEXsx8V9Q
+         ASo9qqDTalMeKn6Jv4f+12ok2TBKNUASjtQCszhXcVA45gyuaudv+GoFagmI/FOmZdLJ
+         Xb9w==
+X-Forwarded-Encrypted: i=1; AJvYcCU5fIMrXjKimhQewF89Dx0/4pHM8AGsrtC9QdW2eyZ+WljBV4Ku71unb5GJK2qI35YtNRH3dr+NECys+blJp/M=@lists.infradead.org, AJvYcCXqgoyyM6PW6p9JygHtkLZKyGmeSs38hCqeiDhHWKWoCIoNYOuqI7njSfp7ITECU5Yny3VubYOTSb+In0SB8t7Y@lists.infradead.org
+X-Gm-Message-State: AOJu0YxSQmvgDW3HKr5X91c7P/iq4p68RANDDeBYDxGsVUsoE4jCbD+J
+	fHRt2rvdxsLfqib94Rblj4xJmHmXrY578V4fuFZZeD6M3qNrWcIvWIJ9uxwbq5ac5RTPsYxlLQE
+	Osx8rzh2uXRi2NaTi0cPpGpNg+aKXUoM=
+X-Gm-Gg: ASbGncuWOlVnscHMXTgq6WZwGN0vYhtN+1Sm1VsQia11vAGUNLzG6BDeBA5kzYn8dYQ
+	7WggduuU6F/s720E3m5vDnV3EE8RfiiZ2djIgv1Q75YkdwzvzxxRQAmMAAlBmyJcW0Li1QjxWBJ
+	r+Rn+h8CnjKnsVlW+Ms5cdSBR0yvBhBeINHObVvzDh
+X-Google-Smtp-Source: AGHT+IHCEfcIS2hUnEdB9PbPmt5ZD9T64WlU2Ot8WUjUZqgiMJ9d2john/gI6sTWhRffzI0DT19R2HBQAqTyVFgmv0M=
+X-Received: by 2002:a17:903:a47:b0:23c:8f21:ac59 with SMTP id
+ d9443c01a7336-23c8f21addemr149130485ad.29.1751969035426; Tue, 08 Jul 2025
+ 03:03:55 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250706214111.45687-1-rosenp@gmail.com> <20250706214111.45687-3-rosenp@gmail.com>
-In-Reply-To: <20250706214111.45687-3-rosenp@gmail.com>
+References: <20250706214111.45687-1-rosenp@gmail.com> <20250706214111.45687-4-rosenp@gmail.com>
+In-Reply-To: <20250706214111.45687-4-rosenp@gmail.com>
 From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Date: Tue, 8 Jul 2025 12:01:17 +0200
-X-Gm-Features: Ac12FXypn69TyIfigXU2ITYLudOZytlc3g_sKOneE3FvF9rspGTP0tpBLxtSZas
-Message-ID: <CAMhs-H8Ts8nreYppvbXFuTkvcEUGCurjUtjMy1XrfVzv4q8k4g@mail.gmail.com>
-Subject: Re: [PATCH 2/6] wifi: rt2x00: remove mod_name from platform_driver
+Date: Tue, 8 Jul 2025 12:03:44 +0200
+X-Gm-Features: Ac12FXwhjylZMsoY4rDqa01BVMXMM5PiGD4HvSivpj3vJ2MwrtIBDDKsIP82h3Y
+Message-ID: <CAMhs-H9PcmyNsZsU_JujV0PkRmJX5HSc0TBMR05OWmhUP0ByYA@mail.gmail.com>
+Subject: Re: [PATCH 3/6] wifi: rt2800soc: allow loading from OF
 To: Rosen Penev <rosenp@gmail.com>
 Cc: linux-wireless@vger.kernel.org, Johannes Berg <johannes@sipsolutions.net>, 
 	yangshiji66@qq.com, ansuelsmth@gmail.com, Rob Herring <robh@kernel.org>, 
@@ -84,9 +84,8 @@ Cc: linux-wireless@vger.kernel.org, Johannes Berg <johannes@sipsolutions.net>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250708_030129_225595_46B287A1 
-X-CRM114-Status: UNSURE (   9.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250708_030356_324153_BDE5241F 
+X-CRM114-Status: GOOD (  12.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,13 +103,24 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Sun, Jul 6, 2025 at 11:41=E2=80=AFPM Rosen Penev <rosenp@gmail.com> wrot=
 e:
 >
-> mod_name is a legacy debugging feature with no real modern use. An
-> analysis of the underlying MIPS setup code reveals it to also be unused.
+> Add a single bindng to help the already present dts files load the
+> driver. More are possible but there doesn't seem to be a significant
+> difference between them to justify this.
+
+typo: s/bindng/binding
+
+>
+> Use wifi name per dtschema requirements.
+>
+> The data field will be used to remove the custom non static probe
+> function and use of_device_get_match_data.
 >
 > Signed-off-by: Rosen Penev <rosenp@gmail.com>
 > ---
->  drivers/net/wireless/ralink/rt2x00/rt2800soc.c | 1 -
->  1 file changed, 1 deletion(-)
+>  drivers/net/wireless/ralink/rt2x00/rt2800soc.c | 7 +++++++
+>  1 file changed, 7 insertions(+)
+
+With the typo fixed:
 
 Reviewed-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 
