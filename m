@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1350AC71130
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jul 2025 04:57:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04584C8303C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jul 2025 06:04:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Vr5j3HktXmdBuql9hRLpcA8htD63sRgEruV9zFxQJSk=; b=BZn2JREFHIdd2PbgK/6GD8UHTn
-	cIaCxZvKMCy23m89C1do3gmZ3By2l4Ll1M7HW91Z1013aBPuLQNcfBCg91tb2DeHWD94TPfJnJ/Xr
-	aI3E3JgLpK+xjXS/PdX0F8nkIwku2IXZNA9bJD+DQCMxwI1B9G4LHfo2e4nuKQ12eGMYrzqlN0c2k
-	XwMAFyCRHVd4IlcwhgdBFoE7PitrA25PUvBtW1RwE0cLOLvmnLOQXR4oIIsudN+us1Pvu9Fwy9GlN
-	A5NO9CxpVQKh0v+K7yrmtxDIsNpw9yUpzOIL4d+yLrRKXVj4z8zMwHi3DztH/zsQowkQLg9Z7gZdx
-	Y00KQ5Zg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=SmnDLQMvlZ5p5M7y6ywDYdMNOlGcOTiBdLsaKeylsC4=; b=wV8r7U6h5a5Xu4cgifE+s6fJcu
+	Edr5ulFTaJdNlbBfgHPcBxOZ44Jl9vNvH3niHm53lsWCrAwSblohB5k6vCnK/lOawcPMH8eWRpCpL
+	FYGgm81EGSShHXve8RzQoTuaeb/O16qFxNFWeuEHZWyNgpV+bTTAhvqFzSLUGjbKdRJOEM6HHbmZK
+	FE+3i0K4XmAoyuNuzX95oePK8kfwswO26SqSRy4Uh3lVmoq+qh+sX4sJ2O78LTU+iA8L60JSc1q24
+	9T8SHPewoVxcJDxVcIQTrPdOoC8LENLRICX7d1aZYZalmaRk8zaJwtIdVz3uzT2jKKTBopf8dHd6s
+	TuYOWYaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZ0P0-00000004HiL-01sn;
-	Tue, 08 Jul 2025 04:57:58 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1uZ1Rc-00000004Ns5-0Vcw;
+	Tue, 08 Jul 2025 06:04:44 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZ0Ow-00000004Hhd-2Q1O
-	for linux-mediatek@lists.infradead.org;
-	Tue, 08 Jul 2025 04:57:56 +0000
-Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-5561c20e2d5so4419255e87.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 07 Jul 2025 21:57:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1751950673; x=1752555473; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Vr5j3HktXmdBuql9hRLpcA8htD63sRgEruV9zFxQJSk=;
-        b=bct2CJWwEY/YrxttZ2PY21XwLPzbvKi0DyrCMGpyaWNyTjXW3wJbeW7ATiuj9264pX
-         yGiEDoOP7wypDlCAsMYDJwvG1VEKw2ybsa6xbDvtXkJuOnKQ72P0lVMQvdRXOfWIMsKU
-         +e0247//+oR/a/1bphIb/O5oKNND91Dkpt5zQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751950673; x=1752555473;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Vr5j3HktXmdBuql9hRLpcA8htD63sRgEruV9zFxQJSk=;
-        b=U4aetmBcKfMWp2TSNuEtG73SQOOicAwhRYP3c/56MoK76VyPEZw9zlKDkUduAMVgG8
-         nZA4x1Cd9WqOMdYhp+jxQmuDCZIZQsaJ6e6LuMs1R+tetYZFILOgwGTpN953igjKNfT/
-         529Cugh3n920BX+E9pqe4o7n/M+Vq32EEYVAdII+QM8LNctuzGnh7bEQNe7j7oLf3vF2
-         n7YkErad9j3iWfFUpr+6v4GcJYudE9WHRwjeR5kG4ksm15U4D56/QOx8Hyel4boeGZ2G
-         vh+8LoayXrXddmzGn1Rp22FLt6JFSzL8pKvr3cbIGR9/5w4HB91gY208VjwoQfDxgGoG
-         G0ZA==
-X-Gm-Message-State: AOJu0YwxcO53Wm7qsFtPn3iU/VU3yDm1+FKzth9DERO7W6xkAcnpAJjC
-	g0CQbPYpZJPmf4BcfLB3QBayU+Czx2wRaapCfgJSPfsPtz7ol61cW7KlPVFEipYOv/s7dYwEJm7
-	9pmY8yjTCAvquHq52q2eyFQj19tzZeI3rCJjmNzbw
-X-Gm-Gg: ASbGnctsEe2QKbaczKRBgXVIY60sBf/Z8j+o9FvTsDC2cIjcEHQZMt2EGMcnUZEc1UE
-	nTKqDAabPW+4nJCzXjrvXwnCIvH9v5cO8jOkjM9W/tvX1fbvUyjmqeabCipMWnVhs/EQuTQHteC
-	d1Da8bHwLikSzg0cF0/AHWMCgsGNVu1kh/F0P7DR3MkkE4ckZ90+A8tx/29L0NRH7Z/8VEW2E=
-X-Google-Smtp-Source: AGHT+IGiKmRVVctKEN/87vc8xFNDgCG4gqbvI6NjBIPAZYuz9GsA3JMVpKP+W+7I3VmAlOaA1Oceumi0sItLoIdM0rg=
-X-Received: by 2002:a05:6512:ad2:b0:553:a456:a0d4 with SMTP id
- 2adb3069b0e04-557f830d866mr441986e87.15.1751950672522; Mon, 07 Jul 2025
- 21:57:52 -0700 (PDT)
+	id 1uZ1PF-00000004NYk-2vNF;
+	Tue, 08 Jul 2025 06:02:19 +0000
+X-UUID: 14f786225bc111f09f706fa2197c6ceb-20250707
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=SmnDLQMvlZ5p5M7y6ywDYdMNOlGcOTiBdLsaKeylsC4=;
+	b=geoNyks+i8qD7f3U50D7AdEQidRFcDS6V5+Fg8oWMRfajdG13CIZ82n4ziYha0knhLeBvf0d61ZYtjb9ML+u4I1AY6KwtL0QC8f4mCsfp2sGxxCeXyxf7QO9SypOZpO1Uyh630geSljAyo5SSMvQ8lgMC+6d0RS2POppZ9rhE9E=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.2,REQID:9295e5ed-ee8e-4f69-b891-707a28402744,IP:0,UR
+	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-25
+X-CID-META: VersionHash:9eb4ff7,CLOUDID:9572a518-744b-4ed9-9ccc-90bf001fb3bb,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 14f786225bc111f09f706fa2197c6ceb-20250707
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
+	(envelope-from <ot_zhangchao.zhang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 416137905; Mon, 07 Jul 2025 23:02:08 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Tue, 8 Jul 2025 14:02:05 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Tue, 8 Jul 2025 14:02:04 +0800
+From: Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob
+ Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor
+ Dooley <conor+dt@kernel.org>
+CC: Sean Wang <sean.wang@mediatek.com>, Jiande Lu <jiande.lu@mediatek.com>,
+	Deren Wu <deren.Wu@mediatek.com>, Chris Lu <chris.lu@mediatek.com>, Hao Qin
+	<Hao.qin@mediatek.com>, Wallace Yu <Wallace.Yu@mediatek.com>, linux-bluetooth
+	<linux-bluetooth@vger.kernel.org>, linux-kernel
+	<linux-kernel@vger.kernel.org>, linux-arm-kernel
+	<linux-arm-kernel@lists.infradead.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, devicetree
+	<devicetree@vger.kernel.org>, Zhangchao Zhang
+	<ot_zhangchao.zhang@mediatek.com>
+Subject: [PATCH v6 0/1] Bluetooth: mediatek: add gpio pin to reset bt
+Date: Tue, 8 Jul 2025 14:01:47 +0800
+Message-ID: <20250708060150.27375-1-ot_zhangchao.zhang@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-References: <20250707134451.154346-1-angelogioacchino.delregno@collabora.com> <20250707134451.154346-5-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20250707134451.154346-5-angelogioacchino.delregno@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 8 Jul 2025 12:57:41 +0800
-X-Gm-Features: Ac12FXxoiikXF1-TFEleSvh2qQAz2WaU9ADuyjClvcWDyJXjaLPqVQRaBRPRGBU
-Message-ID: <CAGXv+5GbcyEEBaEhB1QY5uZ-CnKpvRgOYhqv==d72KXkVSSB3g@mail.gmail.com>
-Subject: Re: [PATCH v2 4/8] regulator: Add support for MediaTek MT6363 SPMI
- PMIC Regulators
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-mediatek@lists.infradead.org, lee@kernel.org, robh@kernel.org, 
-	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, 
-	lgirdwood@gmail.com, broonie@kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	kernel@collabora.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250707_215754_934861_A2BE03CF 
-X-CRM114-Status: GOOD (  31.87  )
+X-CRM114-CacheID: sfid-20250707_230218_098338_5FDDC426 
+X-CRM114-Status: UNSURE (   9.70  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,314 +94,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Reset Bluetooth using hardware pin via dts
 
-On Mon, Jul 7, 2025 at 10:29=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Add a driver for the regulators found on the MT6363 PMIC, fully
-> controlled by SPMI interface.
-> This PMIC regulates voltage with an input range of 2.6-5.0V, and
-> features 10 buck converters and 26 LDOs.
->
-> Link: https://lore.kernel.org/r/20250624073548.29732-5-angelogioacchino.d=
-elregno@collabora.com
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
-> ---
->  drivers/regulator/Kconfig                  |    9 +
->  drivers/regulator/Makefile                 |    1 +
->  drivers/regulator/mt6363-regulator.c       | 1076 ++++++++++++++++++++
->  include/linux/regulator/mt6363-regulator.h |  326 ++++++
->  4 files changed, 1412 insertions(+)
->  create mode 100644 drivers/regulator/mt6363-regulator.c
->  create mode 100644 include/linux/regulator/mt6363-regulator.h
->
-> diff --git a/drivers/regulator/Kconfig b/drivers/regulator/Kconfig
-> index 81f2acd0f960..d770e51f7ad1 100644
-> --- a/drivers/regulator/Kconfig
-> +++ b/drivers/regulator/Kconfig
-> @@ -936,6 +936,15 @@ config REGULATOR_MT6360
->           2-channel buck with Thermal Shutdown and Overload Protection
->           6-channel High PSRR and Low Dropout LDO.
->
-> +config REGULATOR_MT6363
-> +       tristate "MT6363 SPMI PMIC regulator driver"
-> +       depends on SPMI || COMPILE_TEST
-> +       help
-> +          Say Y here to enable support for regulators found in the Media=
-Tek
-> +          MT6363 SPMI PMIC.
-> +         This driver supports the control of different power rails of de=
-vice
-> +         through regulator interface.
-> +
->  config REGULATOR_MT6370
->         tristate "MT6370 SubPMIC Regulator"
->         depends on MFD_MT6370
-> diff --git a/drivers/regulator/Makefile b/drivers/regulator/Makefile
-> index 46c0e75f6107..41eaeac5547d 100644
-> --- a/drivers/regulator/Makefile
-> +++ b/drivers/regulator/Makefile
-> @@ -111,6 +111,7 @@ obj-$(CONFIG_REGULATOR_MT6357)      +=3D mt6357-regul=
-ator.o
->  obj-$(CONFIG_REGULATOR_MT6358) +=3D mt6358-regulator.o
->  obj-$(CONFIG_REGULATOR_MT6359) +=3D mt6359-regulator.o
->  obj-$(CONFIG_REGULATOR_MT6360) +=3D mt6360-regulator.o
-> +obj-$(CONFIG_REGULATOR_MT6363) +=3D mt6363-regulator.o
->  obj-$(CONFIG_REGULATOR_MT6370) +=3D mt6370-regulator.o
->  obj-$(CONFIG_REGULATOR_MT6380) +=3D mt6380-regulator.o
->  obj-$(CONFIG_REGULATOR_MT6397) +=3D mt6397-regulator.o
-> diff --git a/drivers/regulator/mt6363-regulator.c b/drivers/regulator/mt6=
-363-regulator.c
-> new file mode 100644
-> index 000000000000..ea7d4e4f38cb
-> --- /dev/null
-> +++ b/drivers/regulator/mt6363-regulator.c
-> @@ -0,0 +1,1076 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +//
-> +// Copyright (c) 2024 MediaTek Inc.
-> +// Copyright (c) 2025 Collabora Ltd
-> +//                    AngeloGioacchino Del Regno <angelogioacchino.delre=
-gno@collabora.com>
-> +
-> +#include <linux/delay.h>
-> +#include <linux/devm-helpers.h>
-> +#include <linux/err.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/kernel.h>
-> +#include <linux/module.h>
-> +#include <linux/of.h>
-> +#include <linux/of_device.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/regmap.h>
-> +
-> +#include <linux/regulator/driver.h>
-> +#include <linux/regulator/machine.h>
-> +#include <linux/regulator/mt6363-regulator.h>
-> +#include <linux/regulator/of_regulator.h>
-> +
-> +#define MT6363_REGULATOR_MODE_NORMAL   0
-> +#define MT6363_REGULATOR_MODE_FCCM     1
-> +#define MT6363_REGULATOR_MODE_LP       2
-> +#define MT6363_REGULATOR_MODE_ULP      3
-> +
-> +#define EN_SET_OFFSET  0x1
-> +#define EN_CLR_OFFSET  0x2
-> +#define OP_CFG_OFFSET  0x5
-> +
-> +#define NORMAL_OP_CFG  0x10
-> +#define NORMAL_OP_EN   0x800000
-> +
-> +#define OC_IRQ_ENABLE_DELAY_MS         10
-> +
-> +/* Unlock keys for TMA and BUCK_TOP */
-> +#define MT6363_TMA_UNLOCK_VALUE                0x9c9c
-> +#define MT6363_BUCK_TOP_UNLOCK_VALUE   0x5543
-> +
-> +#define MT6363_RG_BUCK_EFUSE_RSV1      0x1447
-> +#define MT6363_RG_BUCK_EFUSE_RSV1_MASK GENMASK(7, 4)
-> +
-> +enum {
-> +       MT6363_ID_VS2,
-> +       MT6363_ID_VBUCK1,
-> +       MT6363_ID_VBUCK2,
-> +       MT6363_ID_VBUCK3,
-> +       MT6363_ID_VBUCK4,
-> +       MT6363_ID_VBUCK5,
-> +       MT6363_ID_VBUCK6,
-> +       MT6363_ID_VBUCK7,
-> +       MT6363_ID_VS1,
-> +       MT6363_ID_VS3,
+Compared with the previously submitted version, the following
+information are some specific revision histories
 
-This ordering is a bit weird. Is there any particular reason for this?
-Order of the registers perhaps?
+V5-->V6 modifications:
+-Add specific revisions in the changes from v4 to v5.
+-Add hardware pin title and descriptions to dt-binding submission
+   information.
+-Modify the title descriptions in the dt-binding file.
+-Add 7925 what is it.
+-Wrap the descriptions of MT7925 chip uses the USB bus appropriately.
+-Change the compatible string to mediatek,mt7925-bluetooth in
+   the dt-binding file and driver code.
+-Drop gpio-controlelr properties in the dt-binding file.
+-Modify the descriptions of the reset-gpios
+   properties in the dt-binding file.
+-Change the node information of reset-gpios in bluetooth
+   from high level valid to low level valid.
 
-> +       MT6363_ID_VBUCK1_SSHUB,
-> +       MT6363_ID_VBUCK2_SSHUB,
-> +       MT6363_ID_VBUCK4_SSHUB,
-> +       MT6363_ID_VSRAM_DIGRF,
-> +       MT6363_ID_VSRAM_MDFE,
-> +       MT6363_ID_VSRAM_MODEM,
-> +       MT6363_ID_VSRAM_CPUB,
-> +       MT6363_ID_VSRAM_CPUM,
-> +       MT6363_ID_VSRAM_CPUL,
-> +       MT6363_ID_VSRAM_APU,
-> +       MT6363_ID_VEMC,
-> +       MT6363_ID_VCN13,
-> +       MT6363_ID_VTREF18,
-> +       MT6363_ID_VAUX18,
-> +       MT6363_ID_VCN15,
-> +       MT6363_ID_VUFS18,
-> +       MT6363_ID_VIO18,
-> +       MT6363_ID_VM18,
-> +       MT6363_ID_VA15,
-> +       MT6363_ID_VRF18,
-> +       MT6363_ID_VRFIO18,
-> +       MT6363_ID_VIO075,
-> +       MT6363_ID_VUFS12,
-> +       MT6363_ID_VA12_1,
-> +       MT6363_ID_VA12_2,
-> +       MT6363_ID_VRF12,
-> +       MT6363_ID_VRF13,
-> +       MT6363_ID_VRF09,
-> +       MT6363_ID_ISINK_LOAD
-> +};
-> +
+V4-->V5 modifications:
+-Correct the spelling error of word provides mentioned in V1.
+-Drop the xhci0 node and status property in the dt-binding file.
+-Modify the bt_reset tag node to bluetooth in the dt-binding file.
+-Add #gpio-cell descriptions to properties, nodes and requests.
+-Make a separate patch for the changes to dt-binding.
 
-[...]
+V3-->V4 modifications:
+-Modify submission information why use hardware pin to reset Bluetooth.
+-Write historical commit information into the cover letter.
+-Modify dt binding format information and
+   the explanation text in the dt-binding file.
 
-> +#define MT6363_LDO_LINEAR_OPS(match, vreg, vops, min, max, step,       \
-> +                             en_reg, en_bit, vs_reg, vs_mask,          \
-> +                             lp_reg, lp_bit)                           \
-> +[MT6363_ID_##vreg] =3D {                                                =
- \
-> +       .desc =3D {                                                      =
- \
-> +               .name =3D match,                                         =
- \
-> +               .of_match =3D of_match_ptr(match),                       =
- \
-> +               .ops =3D &vops,                                          =
- \
-> +               .type =3D REGULATOR_VOLTAGE,                             =
- \
-> +               .id =3D MT6363_ID_##vreg,                                =
- \
-> +               .owner =3D THIS_MODULE,                                  =
- \
-> +               .n_voltages =3D (max - min) / step + 1,                  =
- \
-> +               .min_uV =3D min,                                         =
- \
-> +               .uV_step =3D step,                                       =
- \
-> +               .enable_reg =3D en_reg,                                  =
- \
-> +               .enable_mask =3D BIT(en_bit),                            =
- \
-> +               .vsel_reg =3D vs_reg,                                    =
- \
-> +               .vsel_mask =3D vs_mask,                                  =
- \
-> +               .of_map_mode =3D mt6363_map_mode,                        =
- \
-> +       },                                                              \
-> +       .lp_mode_reg =3D lp_reg,                                         =
- \
-> +       .lp_mode_mask =3D BIT(lp_bit),                                   =
- \
-> +       .hw_lp_mode_reg =3D MT6363_LDO_##vreg##_HW_LP_MODE,              =
- \
-> +       .hw_lp_mode_mask =3D 0x4,                                        =
- \
-> +}
+V2-->V3 modifications:
+-Changed the capitalization of co-developer names,
+   using the correct capitalization of abbreviations and full
+   name, and corrected obvious spelling errors.
+-Add a revision history.
+-Remove the "BT Driver" in the prefix.
+-Add the bt-binding document, include inforamtion related to reset
+   pin and compatibility matching.
+-Add a comment before the schedule_delayed_work function call,
+   although schedule_delayed_work is asynchronous, there is no risk.
+   Even if it is not completed within 200ms, it will only postpone
+   the subsequent probe and will not have any impact.
+-Add a comment before the btmtk_reset_by_gpio function call,
+   if the compatibility filed or pin cannot be found in the dts
+   files, it can still reset bluetooth using software reset.
 
-Some of the LDOs have an extra "calibration" setting that can tweak
-the output in 0.01V intervals. Could we support that. At least for
-VRF12, VRF13, VRF18, the default is an extra 0.04V. It would be
-misleading for the DT to specify 1.8V while the regulator is actually
-outputting 1.84V.
+V2 modifications:
+-Modify gpio to GPIO, SW to software,
+   and fix other obvious spelling errors.
 
-You could look at the MT6358 driver to see how I implemented it.
+-- 
+2.46.0
 
-[...]
-
-> +static irqreturn_t mt6363_oc_isr(int irq, void *data)
-> +{
-> +       struct regulator_dev *rdev =3D (struct regulator_dev *)data;
-> +       struct mt6363_regulator_info *info =3D rdev_get_drvdata(rdev);
-> +
-> +       disable_irq_nosync(info->irq);
-> +
-> +       if (regulator_is_enabled_regmap(rdev))
-> +               regulator_notifier_call_chain(rdev, REGULATOR_EVENT_OVER_=
-CURRENT, NULL);
-> +
-> +       schedule_delayed_work(&info->oc_work, msecs_to_jiffies(OC_IRQ_ENA=
-BLE_DELAY_MS));
-
-Is this needed for debouncing?
-
-> +
-> +       return IRQ_HANDLED;
-> +}
-> +
-> +static int mt6363_set_ocp(struct regulator_dev *rdev, int lim, int sever=
-ity, bool enable)
-> +{
-> +       struct mt6363_regulator_info *info =3D rdev_get_drvdata(rdev);
-> +
-> +       /* MT6363 supports only enabling protection and does not support =
-limits */
-> +       if (lim || severity !=3D REGULATOR_SEVERITY_PROT || !enable)
-> +               return -EINVAL;
-> +
-> +       /* If there is no OCP interrupt, there's nothing to set */
-> +       if (info->irq <=3D 0)
-> +               return -EINVAL;
-
--EOPNOTSUPP instead? One gives an error while the other gives a warning.
-
-> +
-> +       return devm_request_threaded_irq(&rdev->dev, info->irq, NULL,
-> +                                        mt6363_oc_isr, IRQF_ONESHOT,
-> +                                        info->desc.name, rdev);
-> +}
-> +
-
-[...]
-
-> +/* The array is indexed by id(MT6363_ID_XXX) */
-> +static struct mt6363_regulator_info mt6363_regulators[] =3D {
-> +       MT6363_BUCK("buck-vs2", VS2, 0, 1600000, 12500,
-> +                   MT6363_RG_BUCK0_EN_ADDR,
-> +                   MT6363_RG_BUCK_VS2_EN_BIT,
-> +                   MT6363_RG_BUCK_VS2_VOSEL_ADDR,
-> +                   MT6363_RG_BUCK_VS2_VOSEL_MASK,
-> +                   MT6363_RG_BUCK0_LP_ADDR,
-> +                   MT6363_RG_BUCK_VS2_LP_BIT,
-> +                   MT6363_RG_BUCK0_FCCM_ADDR,
-> +                   MT6363_RG_VS2_FCCM_BIT),
-
-All this doesn't need to be spelled out. Perhaps you could use some
-preprocessor magic to assemble all the register names so that the
-entry could be simplified to just
-
-        MT6363_BUCK("buck-vs2", VS2, 0, 1600000, 12500,
-MT6363_RG_BUCK0_FCCM_ADDR),
-
-[...]
-
-> +       MT6363_SSHUB("buck-sshub1", VBUCK1_SSHUB, 0, 1193750, 6250,
-> +                    MT6363_RG_BUCK_VBUCK1_SSHUB_EN_ADDR,
-> +                    MT6363_RG_BUCK_VBUCK1_SSHUB_VOSEL_ADDR,
-> +                    MT6363_RG_BUCK_VBUCK1_SSHUB_VOSEL_MASK),
-> +       MT6363_SSHUB("buck-sshub2", VBUCK2_SSHUB, 0, 1193750, 6250,
-> +                    MT6363_RG_BUCK_VBUCK2_SSHUB_EN_ADDR,
-> +                    MT6363_RG_BUCK_VBUCK2_SSHUB_VOSEL_ADDR,
-> +                    MT6363_RG_BUCK_VBUCK2_SSHUB_VOSEL_MASK),
-> +       MT6363_SSHUB("buck-sshub4", VBUCK4_SSHUB, 0, 1193750, 6250,
-> +                    MT6363_RG_BUCK_VBUCK4_SSHUB_EN_ADDR,
-> +                    MT6363_RG_BUCK_VBUCK4_SSHUB_VOSEL_ADDR,
-> +                    MT6363_RG_BUCK_VBUCK4_SSHUB_VOSEL_MASK),
-
-As mentioned in my reply to the binding patch, these aren't real regulators=
-.
-
-> +       MT6363_LDO_L_SC("ldo-vsram-digrf", VSRAM_DIGRF, 400000, 1193750, =
-6250,
-> +                       MT6363_RG_BUCK1_EN_ADDR,
-> +                       MT6363_RG_LDO_VSRAM_DIGRF_EN_BIT,
-> +                       MT6363_RG_LDO_VSRAM_DIGRF_VOSEL_ADDR,
-> +                       MT6363_RG_LDO_VSRAM_DIGRF_VOSEL_MASK,
-> +                       MT6363_RG_BUCK1_LP_ADDR,
-> +                       MT6363_RG_LDO_VSRAM_DIGRF_LP_BIT),
-
-Same here, these could be compressed smaller with some preprocessor magic.
-
-[...]
-
-ChenYu
 
