@@ -4,72 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71AB9C83F0F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jul 2025 07:36:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3B59C8303C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jul 2025 08:10:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NxTAN64foXIxsH4J2KLUyKcFp7s9RqBMmrw6kLHxeqM=; b=JddhH1MYk1lwVQojTDbXgq16+j
-	WIym4rpfr/MxJaEEM2z2EckRmY3ne3slqam8ShEaXoT1QBVajadaf+5RpZgVhLM7On/kOfwAFBHXj
-	hEfh5apExTPn8FzSuh15C8qrRuB7INGVGTVtaam+v57hvXcmsuP+VerMQv71qVuQanONZdPPe/L9Z
-	uOym2fUU62D0l7RVLGXd/0ll1Pj1yGV8bgBJnka5v3OZFpg7ClgIFnKew5LNxIfPeG1K46EA4KNJL
-	+5723JXLcr/JZnJre09Nvda7IanPtpllbLM1nam4RhWHOkNoviVSyzvE3Xoj5RGo/R9XDWrFKG7bJ
-	D4i5QPEA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=GFLqhBmGowcpiiQwNum256VPL08ZNDpLKbHxe0rNTSA=; b=a2o8XWWCT+yqyiYMI7vKy/ffDY
+	l76fy6RYhcq3kQPWNvLOHTr/otIf+C5Fe7jTwDRIJin+nGaWJP/vtn/QDm16oeawy8OXMdwGiwDws
+	IalUxNt5398NH1s6RJprygs04MaJFn8WUq513rTat3LHh3G2IJjaLqUPxR9UWWhiOGYB5B8z9SHTa
+	zTdZMyvQaefmtnMlWt02uyRY2eiir5D01lhrL15ljEUZf7nUBBBIQnA288FFKYj6HYpEIXFxSlg0M
+	/aiQt42+BuV5+pxU7mJqtQfrEzOMjeUv6bqCKiCZKcToS0IWNXCpVqEq8gmCXZ4cyKl76Q5R2Mjqe
+	joEanDlg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZ2s6-00000004aoz-37G4;
-	Tue, 08 Jul 2025 07:36:10 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uZ3Oz-00000004hfN-3h8g;
+	Tue, 08 Jul 2025 08:10:09 +0000
+Received: from mail.bizovo.pl ([217.61.16.222])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZ2pm-00000004aXI-2s6r;
-	Tue, 08 Jul 2025 07:33:46 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id B34A561463;
-	Tue,  8 Jul 2025 07:33:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E4330C4CEED;
-	Tue,  8 Jul 2025 07:33:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751960025;
-	bh=PmHqTzW/ysKFVmsSvmen1NCnARGYFMnQHFeLSs8l8lc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=fdUR9vjrMxIkwiqRNrJVADFdJeji6nypTKhcEihHDRTA2h/J22q1Tmmu8j+Ls0sYd
-	 HR4Ru7IFSZYFCA7maYTFO82m5LfMQDGi/q39l1K1vHeOH/+JQ190f+BNZaiBR+Xafk
-	 w1Q60OLnd0/3hosS5xzhRLKPaX5uXth4kwH+82PmxB6aWmjkc5cKIKEwTIRNiLh5Xg
-	 Yb0TsGHvAqc1HtYeD/zxSctNQGIKtA/33lfA1indcxVVNPehiWnlcvhnhLXyLJvUxJ
-	 3tw7xO+t3KUyuo+JyVPn0ZfRE/nZJ6ABBEJTDtBt/TtxHIMctzLA2gzGr2pUvk0JDK
-	 /ZU72mRv0fUPQ==
-Date: Tue, 8 Jul 2025 09:33:42 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, Simon Horman <horms@kernel.org>,
-	Felix Fietkau <nbd@nbd.name>
-Subject: Re: [PATCH net-next v2 2/7] net: airoha: npu: Add NPU wlan memory
- initialization commands
-Message-ID: <aGzJ1vFufzBts_yG@lore-desk>
-References: <20250705-airoha-en7581-wlan-offlaod-v2-0-3cf32785e381@kernel.org>
- <20250705-airoha-en7581-wlan-offlaod-v2-2-3cf32785e381@kernel.org>
- <20250707-agile-aardwolf-of-politeness-29fead@krzk-bin>
- <aGt2L1e3xbWVoqOO@lore-desk>
- <679e6fd2-967f-4057-9ccd-92a37ecc4819@kernel.org>
- <aGvmoJ83EtYOIa0K@lore-desk>
- <904d1165-185e-43ac-9b52-a2f17f774e80@kernel.org>
+	id 1uZ3Ow-00000004hf0-3h4z
+	for linux-mediatek@lists.infradead.org;
+	Tue, 08 Jul 2025 08:10:08 +0000
+Received: by mail.bizovo.pl (Postfix, from userid 1002)
+	id B123D862E8; Tue,  8 Jul 2025 09:55:41 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=bizovo.pl; s=mail;
+	t=1751961386; bh=GFLqhBmGowcpiiQwNum256VPL08ZNDpLKbHxe0rNTSA=;
+	h=Date:From:To:Subject:From;
+	b=gWI6NlIQI5EhwmObmSxccwRG1davpO/z3C9dEIn9XmHmWLz5lp8SWRSSSMiQUEJLR
+	 41R5dP6hiNu8qV81GbstWzozCauVa7oO+EoTTsY9Gng6VZPJ3CSfLW5QrTE/7qLs8d
+	 fDu0UGeGy2VQX/4e8CmK0wesZzTyb8l5gVKK6sstEi8+Pf/n4EWo1lnKDPhZLbuRTm
+	 kLcwr1ltbvneUAbPWRfhfZ0CT9ADCrm4fNF9zgVrCPx01HQbmUlx2HqTrkndGfvTdc
+	 +ivt8L46QLTHFtBLvgmaWwXvdCuWNtG//eIWtu7AFxx/Ze0zztOht9TLkEfLXfUILI
+	 t/Jtu9GeR2xAg==
+Received: by mail.bizovo.pl for <linux-mediatek@lists.infradead.org>; Tue,  8 Jul 2025 07:55:28 GMT
+Message-ID: <20250708084500-0.1.8u.1932w.0.mq3y8by1pe@bizovo.pl>
+Date: Tue,  8 Jul 2025 07:55:28 GMT
+From: "Wiktoria Bielaszka" <wiktoria.bielaszka@bizovo.pl>
+To: <linux-mediatek@lists.infradead.org>
+Subject: =?UTF-8?Q?Zamro=C5=BCenie_ceny_energii?=
+X-Mailer: mail.bizovo.pl
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="1ik0M2Sq3xJXAfM5"
-Content-Disposition: inline
-In-Reply-To: <904d1165-185e-43ac-9b52-a2f17f774e80@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250708_011007_049241_23D6EE4A 
+X-CRM114-Status: UNSURE (   0.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,108 +66,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Dzie=C5=84 dobry,=20
 
---1ik0M2Sq3xJXAfM5
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+czy planuj=C4=85 Pa=C5=84stwo optymalizacj=C4=99 koszt=C3=B3w energii ele=
+ktrycznej w swojej firmie?
 
-> On 07/07/2025 17:24, Lorenzo Bianconi wrote:
-> >> On 07/07/2025 09:24, Lorenzo Bianconi wrote:
-> >>>> On Sat, Jul 05, 2025 at 11:09:46PM +0200, Lorenzo Bianconi wrote:
-> >>>>> +
-> >>>>>  struct airoha_npu *airoha_npu_get(struct device *dev, dma_addr_t *=
-stats_addr)
-> >>>>>  {
-> >>>>>  	struct platform_device *pdev;
-> >>>>> @@ -493,6 +573,7 @@ static int airoha_npu_probe(struct platform_dev=
-ice *pdev)
-> >>>>>  	npu->ops.ppe_deinit =3D airoha_npu_ppe_deinit;
-> >>>>>  	npu->ops.ppe_flush_sram_entries =3D airoha_npu_ppe_flush_sram_ent=
-ries;
-> >>>>>  	npu->ops.ppe_foe_commit_entry =3D airoha_npu_foe_commit_entry;
-> >>>>> +	npu->ops.wlan_init_reserved_memory =3D airoha_npu_wlan_init_memor=
-y;
-> >>>>
-> >>>> I cannot find in your code single place calling this (later you add a
-> >>>> wrapper... which is not called either).
-> >>>>
-> >>>> All this looks like dead code...
-> >>>
-> >>> As pointed out in the commit log, these callbacks will be used by MT7=
-6 driver
-> >>> to initialize the NPU reserved memory and registers during driver pro=
-be in
-> >>> order to initialize the WiFi offloading. Since MT76 patches are going=
- via
-> >>> the wireless tree, I needed to add these callbacks first.
-> >>
-> >> Cover letter does not link to your NPU patchset. You cannot add dead
-> >> code to the kernel and now it is pure dead code. Post your user - in
-> >> this or separate patchset.
-> >=20
-> > I guess you mean the related MT76 patches are not linked in the cover-l=
-etter,
-> > right? I have not posted them yet.
-> >=20
-> >>
-> >> Your explanation of dependency is also confusing. If these are added to
-> >> wireless tree (considering last experience how they rebase and cannot
-> >> easily handle cross tree merges), how does it solve your problem? You
-> >> will have it in one tree but not in the other, so still nothing...
-> >> That's anyway separate problem, because main issue is you add code whi=
-ch
-> >> we cannot even verify how it is being used.
-> >=20
-> > My main point here is wireless tree can't acutally merge the MT76 patch=
-es
-> > since, without the net-next ones (this series), it will not compile (so=
- I
->=20
-> This does not explain hiding the other part. Again - there is nothing
-> weird in patchset dependencies. Weird is saying there is dependency, so
-> I will not post code.
+Chcieliby=C5=9Bmy przedstawi=C4=87 nasz=C4=85 ofert=C4=99 XPOT, kt=C3=B3r=
+a mo=C5=BCe przynie=C5=9B=C4=87 znacz=C4=85ce oszcz=C4=99dno=C5=9Bci. Ju=C5=
+=BC od teraz, mog=C4=85 Pa=C5=84stwo uzyska=C4=87 cen=C4=99 ni=C5=BCsz=C4=
+=85 o 40,9% w stosunku do obecnej ceny ustawowej.=20
 
-I have a working patchset for MT76 support. I have not posted it yet just
-because I need to clean it up.
+Nasza propozycja obejmuje lata 2025 i 2026, a start wsp=C3=B3=C5=82pracy =
+jest mo=C5=BCliwy od zaraz. Gwarantujemy elastyczne warunki umowy (3-6-9-=
+12 miesi=C4=99cy), zapewniaj=C4=85c minimum formalno=C5=9Bci.
 
->=20
-> > posted net-next patches as preliminary ones for MT76 changes).
-> > Moreover, this is the same approach we used when we added WED support to
-> > mtk_eth_soc driver and the related MT76 support.
-> > However, I am fine to post the MT76 changes as RFC and just refer to it=
- in
-> > this series cover-letter. Agree?=20
-> >=20
-> >>
-> >> So far I see ABI break, but without user cannot judge. And that's the
-> >> hard reason this cannot be accepted.
-> >=20
-> > if you mean the dts changes, I will fix them in v3.
-> >=20
-> No, I mean driver.
+Jeste=C5=9Bmy pionierem w sprzeda=C5=BCy energii w cenach RDN wed=C5=82ug=
+ TGE dla ka=C5=BCdej grupy taryfowej. Przez ca=C5=82y okres trwania umowy=
+ zapewniamy Pa=C5=84stwu dedykowanego opiekuna, a ca=C5=82y proces Zmiany=
+ Sprzedawcy i wszelkie formalno=C5=9Bci realizujemy za Klient=C3=B3w. =20
 
-Sorry, can you please explain what is the ABI break in the driver codebase?
-airoha_npu_wlan_init_memory() is executed by MT76 driver and not during NPU
-probe phase.
+Ch=C4=99tnie porozmawiam o tym, jak mo=C5=BCemy wsp=C3=B3lnie zrealizowa=C4=
+=87 Pa=C5=84stwa cele energetyczne. Prosz=C4=99 o wiadomo=C5=9B=C4=87 w p=
+rzypadku zainteresowania.=20
 
-Regards,
-Lorenzo
 
->=20
-> Best regards,
-> Krzysztof
-
---1ik0M2Sq3xJXAfM5
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaGzJ1gAKCRA6cBh0uS2t
-rJ70AQDKW9DjcfHQlFHvXGhHzlDeXGR1AkdPDGOzsgKZe3hC4wD/QgxrN3+Nr8M7
-U9rFLAgI8fC2gByAD0uk/fsm/2EGDgE=
-=0IG7
------END PGP SIGNATURE-----
-
---1ik0M2Sq3xJXAfM5--
+Z pozdrowieniami
+Wiktoria Bielaszka
 
