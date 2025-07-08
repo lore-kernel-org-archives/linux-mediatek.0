@@ -4,95 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DE93C8303C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jul 2025 20:56:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 480DEC83F09
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jul 2025 21:34:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H444FZZ26Y/falHC/mRcuhbvMASG2hbu+jZAxqiMw+8=; b=Nle0YI25JuY/9IbEswLcSN4DuP
-	s1OdSvkUG7cqWRxC+G7DOOalG1I6LLcK3Um7fmBrkk5OBEyjf5GwBPEG9zEVNpBZ0MYLHDLJjsFXb
-	vxpQdvL9KfuFZ5SMgXyYlWhqMffNgkE48pszQJP79O0Rdw0BMEdYl/z4mpLtpucqY4IYI5l1sqL5y
-	j45jnYOVpeEL/9ZUbzfRm+wufGGZfsydmC4P/4nT1tpmNvGkBdS3QnEPScbBOApDh42Ydsfw1aINv
-	ZapcCG5ZHBad9Taxh3yKdB1MDB+ArB1Def2pEx4Y3NjoCrv9kvFz1igxxEm+w62IHWa1Hlv0Zx3bR
-	Pn0jbTDg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KbqbJ/8nGxp/NE3fHnhm8zE7sj639Vmep8l6nx8og6c=; b=DsDmspaaDGUv9+cofNWL8OP2MS
+	M271KEzvIlXYjn6kFISAt3qrQpVhdH38fYk3dHIft/8zCpkcqegYZ8QNxRqYO8xdSv52Xs3LGnywz
+	tPPW/9X0sS4gDppSTVJOhGTU0b8Y0OHXMAWRedggh62yIk6z73mQLyyomO9lon79QulmCn2Bcetxe
+	yOjFhJfE/8RVK02/719a/kwOVAT+aeSgCBjfbLMREZGOCUzcsn+qq6b9Wqw5k7lQlJt3RUjpP5sbe
+	Gq+d8/ekV/Tk8q0XR48PwFFldnTkRiKyaMIfLRRB2qyembXVJ6vOOyTqt6V6L/5OzYSRMuIbAxt7d
+	t1bTq6NA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZFMb-00000006ZyW-0PHn;
-	Tue, 08 Jul 2025 20:56:29 +0000
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+	id 1uZFxn-00000006gGU-1M5s;
+	Tue, 08 Jul 2025 21:34:55 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZElJ-00000006U74-0yhd;
-	Tue, 08 Jul 2025 20:17:58 +0000
-Received: by mail-pf1-x433.google.com with SMTP id d2e1a72fcca58-7399a2dc13fso5587870b3a.2;
-        Tue, 08 Jul 2025 13:17:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1752005877; x=1752610677; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=H444FZZ26Y/falHC/mRcuhbvMASG2hbu+jZAxqiMw+8=;
-        b=Hf2DP6e04wo7rvKBF2Q5nvJuNKPXU0xOBN6hCnTIHZ71hVU13qrAPGt3xXol8c/OsY
-         iPyduqWYtsMSVduQy2auI8KPpdHFhtD8ql0ZZLUE9LYOSzYTnZuLk/AuQV8q7nlEA0Ol
-         3RswOeZF/wtrCxZ6hHJbUX58j09/8aw8TAs2wenrEEDHcSYcHOttF37WTGltFEGgvkcR
-         EmPdJc0QTNKrHyhrbryjtxkVdcZ+PmOfP9WCE6dk4fRn7Yp4dJkqkX0/F/igaLl5ky5Q
-         pte/fH3CdWC2paVx9Jj2aP8Al7NRdUUDcBIBnrgiYzKDG9tzkXvng6IPVSuUlQ9adIGU
-         rhSA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1752005877; x=1752610677;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=H444FZZ26Y/falHC/mRcuhbvMASG2hbu+jZAxqiMw+8=;
-        b=hlfNCo/acb2cE/In15PkvisNn7RJNZb4Id1F4ddINs0Jj4+toXT6c5chVIDODjJwwD
-         6MD+ZDCHAupeOVbMr4uM5Su51q+4lQIANwhFc8ZbVXYBPUv6YHa1fDWeD6PGqNUcq/cG
-         hTJq1ShlyBOh+IxLDyHnEoEweUznw205ffpwYkLIfHBefTU6IoX4vJJBRffEx5ja82Eh
-         eWr0m6NEa4i9r8d9sfPQB5QYWvToGqCMvAOcUnhJtAejpwQdY2e4Xlv4jDCoYFBtvX02
-         Cq0QbmqaG2ejEntpmQzJqXz4l7bp9h47vNtFdRqXYjHsPXNQsisWGp280+PjUsU1jIZ2
-         YXLQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWKX0rYS2fFfT9jmtJBYlFFGEubLK3qKgkff9fa78cUm3ppxhhVaFopOWzdsAdAMVhby9ESN1yVP2jvGRQ1Fy8=@lists.infradead.org, AJvYcCWk07i6XIqazLbCNk2nS/b+7QLgqDkslAz1erimrE/GWgfRopeZ31dyoNZI4vzAajHRQcwY6j2z3m4KEt4KCu/e@lists.infradead.org
-X-Gm-Message-State: AOJu0YwaPS/FwhSMyg7EUFofClr4UV5bCzpy0ymcG8FLOKbh0BBGnv39
-	zb4OQXQaw4sCxFpethqHQ5LiPhU4GM9eiCi+Vwa3m8pH0JPR6pS1Ie23
-X-Gm-Gg: ASbGncsRPVmA2HtndAiBjmJRH61aeBRpynhl+rIZkOYjDUq2aUH3s9uRaVxQ4LNwHdU
-	kzrGiXiu9Wdi/7yt/4h6NXyqFqK6w6wW7+O4PSIjU30djRJrLB0eqIn/CdLnBUyWZCucXYh8eqC
-	g2ynt/enqdgv4a17OZH7ILp7VvoZi8sL8+moA0hvYYRNZFyhMJaah1FlAjtozYXmH/MWpWIv0QA
-	7DqJ5UMFBRkz9dFAdaX+nBzfPZKQiZXHPnUT3BM2/79kaFanFbqtBEnCaMtPOLMeiyKi5HMelDH
-	H/gU//qHMM3HY7Hn1tSMxC0Q5IDp1QNglqcMIbyfTu0=
-X-Google-Smtp-Source: AGHT+IEzzxNAAv00TJG8Gk8h+YAcNBRVGpDbVFRbhweDtAvP5Qa6pIVfiWZvjxEP/RXGT1BW/sMzpg==
-X-Received: by 2002:a05:6a21:a34a:b0:220:83e1:49a1 with SMTP id adf61e73a8af0-225b9f641b1mr25210715637.19.1752005876682;
-        Tue, 08 Jul 2025 13:17:56 -0700 (PDT)
-Received: from archlinux.lan ([2601:644:8200:dab8::1f6])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b38ee5f5d8csm12289625a12.39.2025.07.08.13.17.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 08 Jul 2025 13:17:56 -0700 (PDT)
-From: Rosen Penev <rosenp@gmail.com>
-To: linux-wireless@vger.kernel.org
-Cc: Johannes Berg <johannes@sipsolutions.net>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Stanislaw Gruszka <stf_xl@wp.pl>,
-	devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS),
-	linux-kernel@vger.kernel.org (open list),
-	linux-mips@vger.kernel.org (open list:MIPS),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
-	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
-Subject: [PATCHv2 wireless-next 7/7] dt-bindings: net: wireless: rt2800: add
-Date: Tue,  8 Jul 2025 13:17:45 -0700
-Message-ID: <20250708201745.5900-8-rosenp@gmail.com>
-X-Mailer: git-send-email 2.50.0
-In-Reply-To: <20250708201745.5900-1-rosenp@gmail.com>
-References: <20250708201745.5900-1-rosenp@gmail.com>
-MIME-Version: 1.0
+	id 1uZFs0-00000006fPS-1DlR;
+	Tue, 08 Jul 2025 21:28:57 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by dfw.source.kernel.org (Postfix) with ESMTP id C44345C583D;
+	Tue,  8 Jul 2025 21:28:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 396BFC4CEED;
+	Tue,  8 Jul 2025 21:28:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1752010135;
+	bh=/FVYZTlnzmURxTAnDhSQXnN1fi5/lPABhioS/jIPt2g=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=RWHMAc3TJrBaVRWru5ozRY2k4hVQ2tLqRowlKtIBjXEDfJae5jLn0kKMpcdn5Roql
+	 uPKVv1iXpSqCuSOuUCl594+js6ZeZcykvFfgbT+De0MqFLOgd7YvTT5DkjXjfIlYGB
+	 9Z8ela6qK+E86ZoGNdsQQwYnBPtnp4N6enoEozYzD54u/yLl8QwpEC7wZJoS7UaUys
+	 WSkcCi9ZMxlsVHYtxW8UD2e8a++3/7NhIW9MltZCWUulZk7EoxK8u+Ac8Wd+WYTOA5
+	 ewRDNe1wXqUnOur3EjV3lqbxHvfTdvTjWjF1EZa2F5+v82jozl4lWu4O367R8m3QNb
+	 xCW//ZHBJsu1A==
+Date: Tue, 08 Jul 2025 16:28:54 -0500
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
+MIME-Version: 1.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Stanislaw Gruszka <stf_xl@wp.pl>, linux-mips@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, linux-wireless@vger.kernel.org, 
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Johannes Berg <johannes@sipsolutions.net>, devicetree@vger.kernel.org
+To: Rosen Penev <rosenp@gmail.com>
+In-Reply-To: <20250708201745.5900-8-rosenp@gmail.com>
+References: <20250708201745.5900-1-rosenp@gmail.com>
+ <20250708201745.5900-8-rosenp@gmail.com>
+Message-Id: <175201013411.1121693.17824456704959772294.robh@kernel.org>
+Subject: Re: [PATCHv2 wireless-next 7/7] dt-bindings: net: wireless:
+ rt2800: add
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250708_131757_275529_55A42264 
-X-CRM114-Status: GOOD (  13.37  )
+X-CRM114-CacheID: sfid-20250708_142856_370895_0582592D 
+X-CRM114-Status: GOOD (  11.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,69 +79,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add device-tree bindings for the RT2800 SOC wifi device found in older
-Ralink/Mediatek devices.
 
-Signed-off-by: Rosen Penev <rosenp@gmail.com>
----
- .../bindings/net/wireless/ralink,rt2800.yaml  | 47 +++++++++++++++++++
- 1 file changed, 47 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/net/wireless/ralink,rt2800.yaml
+On Tue, 08 Jul 2025 13:17:45 -0700, Rosen Penev wrote:
+> Add device-tree bindings for the RT2800 SOC wifi device found in older
+> Ralink/Mediatek devices.
+> 
+> Signed-off-by: Rosen Penev <rosenp@gmail.com>
+> ---
+>  .../bindings/net/wireless/ralink,rt2800.yaml  | 47 +++++++++++++++++++
+>  1 file changed, 47 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/net/wireless/ralink,rt2800.yaml
+> 
 
-diff --git a/Documentation/devicetree/bindings/net/wireless/ralink,rt2800.yaml b/Documentation/devicetree/bindings/net/wireless/ralink,rt2800.yaml
-new file mode 100644
-index 000000000000..0c374cd5adb8
---- /dev/null
-+++ b/Documentation/devicetree/bindings/net/wireless/ralink,rt2800.yaml
-@@ -0,0 +1,47 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/net/wireless/ralink,rt2800.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Ralink RT2800 wireless devices
-+
-+maintainers:
-+  - Stanislaw Gruszka <stf_xl@wp.pl>
-+
-+description: |
-+  This node provides properties for configuring RT2800 SOC wifi device.
-+  The node is expected to be specified as a root node of the device.
-+
-+allOf:
-+  - $ref: ieee80211.yaml#
-+
-+properties:
-+  compatible:
-+    enum:
-+      - ralink,rt2800-wifi
-+
-+  reg:
-+    maxItems: 1
-+
-+  clocks:
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    wifi@110180000 {
-+      compatible = "ralink,rt2880-wifi";
-+      reg = <0x10180000 0x40000>;
-+      clocks = <&sysc 16>;
-+      interrupt-parent = <&cpuintc>;
-+      interrupts = <6>;
-+    };
--- 
-2.50.0
+My bot found errors running 'make dt_binding_check' on your patch:
+
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+Documentation/devicetree/bindings/net/wireless/ralink,rt2800.example.dtb: /example-0/wifi@110180000: failed to match any schema with compatible: ['ralink,rt2880-wifi']
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20250708201745.5900-8-rosenp@gmail.com
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
 
 
