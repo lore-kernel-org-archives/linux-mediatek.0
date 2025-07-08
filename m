@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CF60C83F0F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jul 2025 10:22:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 438A3C8303C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jul 2025 10:30:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lpGeu0fct+3VmHlRdU5eb8NMKV/Ar7w1D2lbejumdKs=; b=FYT+pTtbw0D2pWykeojHMKoILF
-	8cEvSP0J0lZ4VctLLZyojfI4TSNRSZfxu5LjG6FSXccZ5dvaEyPTCeTyBW4W+/x5f5mxE9NMKnguT
-	aOZwf+ltVvCuP3xad5mWEH/9ODNhI6ojmIg0V2CrSM9aIrSc1OnerdLyxTDJitwRMngmju9s5cm3h
-	z6ixvBtIIMPRMsVqHSCRDmxHiMRuVUDPmLdTXSP6+MoJ9+FWNdldBpRqwCkIMHzvzw8fTXKhXQzw6
-	HIdnR/5BCIWKEZXJmO9m2o4p8vbM8NDfRrJvkWfjHuRPTGzKpg2mz1K1oYA0satp8fWQiwQQjMspB
-	Lve+aXAA==;
+	bh=9jWe3GpjiIlL1nZ3AwtNcM7ezIxInSVu38CWRYqmno4=; b=xpjSM6+vtwDtXyXOV4Rx3Qu8hj
+	uc1lk9Bcek8IKFVgWFbdLO15rqFg93g3ZZAk180rD2HcBkvfuz7GoQF09LtHur6YdNVePbe7HGQ+h
+	eY5lXGVoOdkuwWmJglUNfkUNdrL2PAW+ABBgs7tFww7p5SLvsIyA9okrKFYcT4H6Jpv9JXw4xkBbi
+	Wb9V+36+1zDEv0eCk+3wE/aF3/9mtLyjhgGVNCGiN6RR4gQ1xWeFw/mKzf4enIugGbz6nuEWYVxjE
+	OCvyfqiTdMCUWdE4N0r0NqwlKjAAkV8g49r4v5nAmjfFIYhLbNJoXRsLn15hUefw9TNP5J6zlP61E
+	9QB/hszg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZ5TP-000000053Ya-2xDh;
-	Tue, 08 Jul 2025 10:22:51 +0000
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+	id 1uZ5aI-000000054Ta-2qG9;
+	Tue, 08 Jul 2025 10:29:58 +0000
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZ5B6-000000050Hi-1DO0;
-	Tue, 08 Jul 2025 10:03:58 +0000
-Received: by mail-pl1-x633.google.com with SMTP id d9443c01a7336-236470b2dceso35336445ad.0;
-        Tue, 08 Jul 2025 03:03:56 -0700 (PDT)
+	id 1uZ5EV-0000000514r-2sGi;
+	Tue, 08 Jul 2025 10:07:28 +0000
+Received: by mail-pj1-x1034.google.com with SMTP id 98e67ed59e1d1-31332cff2d5so3780812a91.1;
+        Tue, 08 Jul 2025 03:07:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1751969035; x=1752573835; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1751969247; x=1752574047; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=lpGeu0fct+3VmHlRdU5eb8NMKV/Ar7w1D2lbejumdKs=;
-        b=ccYde1dW10BIFSAj15l4699/ADChUoVUrq8Qx8th3DT/fo4W29BjSmD5KFuMrULMHs
-         WbveVRE1QPpZgrg7oM2rrhR0lH+qelY3aDAJwAMPP2Lc0D3GXu9VinzY5sx61DNzXTtp
-         6dH5a1HIUWFX2OHoq5WqOQzIBhecnX6dyTu2JlH3X6UwHyVeXQTCfZ6B6R0uPvEFNlNg
-         T46P/ueQPpolx9tM6Tf1KbtuIQSNqnx36LIva4Mk0tRM2pnXamm0Ch+XqviKzgKYpY7u
-         6hPSFhgE2vBUuAcfnmcDSU5du17l/qF6W3zgx5FEmW1NDeyC3U17UVrse9Uf4JQvkvAy
-         YR2A==
+        bh=9jWe3GpjiIlL1nZ3AwtNcM7ezIxInSVu38CWRYqmno4=;
+        b=bGXTyZutTss4dSP9adoPl6YWygQNOTGfIEgtLlssLOLdjcbQ5xpdcQ+sfvOM2H5WRR
+         dBAWPeaP3jSXyRLfKAaJdUxHfsP3uCJ1qYXD2Zk+b5L4RucIhv2D512nXaugHXfvqsja
+         cN7PJhBzoTbxXYZuMKr37ChHccdZ09sKFxvhejgkY6tLPZQu2t/8y6cUffulRY7IVKhy
+         dZb5/58PF5SP6vsL93gTuzwVsqcyQu07ADTl9lVZcdvDNBVE/RC7F++JtLmgjiVZQIF+
+         vOAwOeieqSS90AFTHa6lUefHXoDrsqvVYW7xfQj4zm0ExG6H0rZ8CuzyP+VXpXNuN1pY
+         5e0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751969035; x=1752573835;
+        d=1e100.net; s=20230601; t=1751969247; x=1752574047;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=lpGeu0fct+3VmHlRdU5eb8NMKV/Ar7w1D2lbejumdKs=;
-        b=eRQrkjNXj+m+dhgimkxCslXDEY9yvhoYdxZmhRW2igrKWwPjZ812+IYw0UiU1WC+AY
-         DZ6nyke8eFQ+ms+VyS3qpIaLXItTKx+1eCOPEno875DqfC9FRUJy56CmX5egnDqK0Nyq
-         mpXF3WP4s/XT4Qk1Dzsvy3R7BN50xDFsOclO6vIky2pjQZZvWWM9mExf3HJoVg3tWu8v
-         8F82ojELS8Quq9e2Wrxsud//RvZZuimpXYipKPnVkWxQOpB6qw8g8X7qj5ReEXsx8V9Q
-         ASo9qqDTalMeKn6Jv4f+12ok2TBKNUASjtQCszhXcVA45gyuaudv+GoFagmI/FOmZdLJ
-         Xb9w==
-X-Forwarded-Encrypted: i=1; AJvYcCU5fIMrXjKimhQewF89Dx0/4pHM8AGsrtC9QdW2eyZ+WljBV4Ku71unb5GJK2qI35YtNRH3dr+NECys+blJp/M=@lists.infradead.org, AJvYcCXqgoyyM6PW6p9JygHtkLZKyGmeSs38hCqeiDhHWKWoCIoNYOuqI7njSfp7ITECU5Yny3VubYOTSb+In0SB8t7Y@lists.infradead.org
-X-Gm-Message-State: AOJu0YxSQmvgDW3HKr5X91c7P/iq4p68RANDDeBYDxGsVUsoE4jCbD+J
-	fHRt2rvdxsLfqib94Rblj4xJmHmXrY578V4fuFZZeD6M3qNrWcIvWIJ9uxwbq5ac5RTPsYxlLQE
-	Osx8rzh2uXRi2NaTi0cPpGpNg+aKXUoM=
-X-Gm-Gg: ASbGncuWOlVnscHMXTgq6WZwGN0vYhtN+1Sm1VsQia11vAGUNLzG6BDeBA5kzYn8dYQ
-	7WggduuU6F/s720E3m5vDnV3EE8RfiiZ2djIgv1Q75YkdwzvzxxRQAmMAAlBmyJcW0Li1QjxWBJ
-	r+Rn+h8CnjKnsVlW+Ms5cdSBR0yvBhBeINHObVvzDh
-X-Google-Smtp-Source: AGHT+IHCEfcIS2hUnEdB9PbPmt5ZD9T64WlU2Ot8WUjUZqgiMJ9d2john/gI6sTWhRffzI0DT19R2HBQAqTyVFgmv0M=
-X-Received: by 2002:a17:903:a47:b0:23c:8f21:ac59 with SMTP id
- d9443c01a7336-23c8f21addemr149130485ad.29.1751969035426; Tue, 08 Jul 2025
- 03:03:55 -0700 (PDT)
+        bh=9jWe3GpjiIlL1nZ3AwtNcM7ezIxInSVu38CWRYqmno4=;
+        b=IgbokNXG6Z7GYZcnrXdfUsbYALsCT6sQStYSgC2WMJIFqblpRdrZ7DTuT01C97PN3G
+         WgRc0thHhkX1q/KZbhl/NyQPfsUvZdKd9blrWcIYXw4MRIxqsVrx3cfBbuSalQL2RSdf
+         /o+7zXLFiKR9wiJK2cltNcZJ+vfkOqZIgxnkSmzqhRxUt5OYM3xI4w19tZp4vxi3yBRJ
+         gb/ept2a/KMila89kp3InLDxE3bmS1FFJlFrphiG1hlNHZDKoWpSrTe7c8ZY2zc2WhEK
+         VsjEK+Ep6zTQwCL0nxlFWQIy8ufapJV8EBYEnKaksClwoqkBV5zfoRTxkEGhY1SOa8XW
+         WAyA==
+X-Forwarded-Encrypted: i=1; AJvYcCVBvkuHBa5x13GIHH23Tya0wjU9XfKIDyRG+87Rc/SqFZYXrNSK+KU+4elkdVybk6L620Psg0cRmcbTXEV3WwU=@lists.infradead.org, AJvYcCVx7c/hiockc8Nh6xLpRSW7mXOLpvERhVLat6+mNeNqIgTK4/my8cFQSJ8WtwBoAbRgC00B6TiWy29RQSS460e2@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyg2AL2aNhNpGPS2lQ3pprI+SrxosL7r9GXAq2Tyh8rNXkvZ6Nx
+	RNt4nsmIjdQi1pDToWg0xr4NpeJf4oVnbTOzLBJVH+zgob6XMUranRjIb8B6KakXoZJ0keTz0Fh
+	bj49uhY/uia0TX4ERyGn2FkxVxAvi1YU=
+X-Gm-Gg: ASbGnctgHNsVk3yiQs3kR/EB/PAvKr4PFcBWOgrZuOoxUXBM/zWYZB3HApV25vMAG8e
+	8dIVDSaTIPrwkXyBX3vwp6k+0XNdwEn1lxsGOilU0WKu2r3vPzPdUzOmm3gKNGm2ywxabs1Ofou
+	oFklLX/0Yu3i9Yk7E7NddAakgUtZsP6U7G4WUPQEoG
+X-Google-Smtp-Source: AGHT+IH5HS9R8EC1RTg/jg9CUL8rPNysDY/yHGuHTdZ8sVLdLzbsBYnKiUpv0L2D/dSxXO5fZVs10JjXwdkV3ew9wGg=
+X-Received: by 2002:a17:90b:3804:b0:311:f99e:7f4e with SMTP id
+ 98e67ed59e1d1-31c21db7b0fmr3713376a91.16.1751969246681; Tue, 08 Jul 2025
+ 03:07:26 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250706214111.45687-1-rosenp@gmail.com> <20250706214111.45687-4-rosenp@gmail.com>
-In-Reply-To: <20250706214111.45687-4-rosenp@gmail.com>
+References: <20250706214111.45687-1-rosenp@gmail.com> <20250706214111.45687-5-rosenp@gmail.com>
+In-Reply-To: <20250706214111.45687-5-rosenp@gmail.com>
 From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Date: Tue, 8 Jul 2025 12:03:44 +0200
-X-Gm-Features: Ac12FXwhjylZMsoY4rDqa01BVMXMM5PiGD4HvSivpj3vJ2MwrtIBDDKsIP82h3Y
-Message-ID: <CAMhs-H9PcmyNsZsU_JujV0PkRmJX5HSc0TBMR05OWmhUP0ByYA@mail.gmail.com>
-Subject: Re: [PATCH 3/6] wifi: rt2800soc: allow loading from OF
+Date: Tue, 8 Jul 2025 12:07:15 +0200
+X-Gm-Features: Ac12FXw1xdIN9U8Q2cMOcX8lGU96JDJzneChS1fP6nA64__OBK_Dj4Vk5DpL6rc
+Message-ID: <CAMhs-H9oqY+noxUyVWdH03bZmyime0G+y=hUXV=1Q3MByf4HsQ@mail.gmail.com>
+Subject: Re: [PATCH 4/6] wifi: rt2x00: soc: move and modernize probe
 To: Rosen Penev <rosenp@gmail.com>
 Cc: linux-wireless@vger.kernel.org, Johannes Berg <johannes@sipsolutions.net>, 
 	yangshiji66@qq.com, ansuelsmth@gmail.com, Rob Herring <robh@kernel.org>, 
@@ -84,8 +84,9 @@ Cc: linux-wireless@vger.kernel.org, Johannes Berg <johannes@sipsolutions.net>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250708_030356_324153_BDE5241F 
-X-CRM114-Status: GOOD (  12.57  )
+X-CRM114-CacheID: sfid-20250708_030727_723021_9F41C065 
+X-CRM114-Status: UNSURE (   9.34  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,27 +101,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jul 6, 2025 at 11:41=E2=80=AFPM Rosen Penev <rosenp@gmail.com> wrot=
+On Sun, Jul 6, 2025 at 11:42=E2=80=AFPM Rosen Penev <rosenp@gmail.com> wrot=
 e:
 >
-> Add a single bindng to help the already present dts files load the
-> driver. More are possible but there doesn't seem to be a significant
-> difference between them to justify this.
-
-typo: s/bindng/binding
-
->
-> Use wifi name per dtschema requirements.
->
-> The data field will be used to remove the custom non static probe
-> function and use of_device_get_match_data.
+> By moving functions from rt2x00soc to rt2800soc, the driver benefits
+> with potentially smaller compiled size. It also becomes much easier to
+> remove a bunch of manual memory management and use devm.
 >
 > Signed-off-by: Rosen Penev <rosenp@gmail.com>
 > ---
->  drivers/net/wireless/ralink/rt2x00/rt2800soc.c | 7 +++++++
->  1 file changed, 7 insertions(+)
-
-With the typo fixed:
+>  .../net/wireless/ralink/rt2x00/rt2800soc.c    |  67 +++++++++++-
+>  .../net/wireless/ralink/rt2x00/rt2x00soc.c    | 102 ------------------
+>  2 files changed, 65 insertions(+), 104 deletions(-)
 
 Reviewed-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
 
