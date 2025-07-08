@@ -4,81 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E59DC8303C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jul 2025 11:35:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C034C83F0A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jul 2025 12:04:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CQdbGu3oTwc5hqt9jRWRc5/LOjUerkQxt3ZG9u6Vhds=; b=YSIa7ggpcSliIMnHsKvLB9crpn
-	VpSe064rJkuP4WkmCpMCJPVkHtR8R1TCRFkXUU5f9oiQ0YZvDo718m4CEXidklOedlHZWYtctFGFr
-	d81EfVOJBp4aeo+UfuBW6LPoR6JnvZpM1EPw8agMh4VF2a0rTJQSgV/wuLFFe1l27fVUrV1YF4HAT
-	dPfAUu6+rA0VWSGgbrGD0sL+7kvQSOhrpDLU//A6pXUmaWBqrDTTQhDWOati6OhHndsp7NY2kjJyN
-	it2gZ17qU7WfxSu/eW/aCLdtFjTrCfL80hUt29qhbcraP2kyrl9zw/iHCQOKATi3B97yu9qiH753B
-	iLsn9gAw==;
+	bh=lHQ0tvNoqJ2yord/lFVua7QgHw4bt6G06+wkrQtEyBg=; b=KkuWLRHbMkM87QvM76JiuIY82L
+	VAOZ9jr83/kFM904trmzJJicBo/D/KU5wzefJIeICEvAjsG1QVJNjz2Wgi1F7fjKYaPAcNbUuzDv4
+	I1tmK4rYDnLvetgbjbir2hfqZewQmA+I5jjAnj6ESDF9wdwXsBcntvUg30wbDrzMbWYfpCobN9Gy4
+	1Ka6xCEQcOVtzG4Sus2p8KSSDvtXRyIF5QMniHZL9fekkgKsy9GJAT3foCQQNK6BVHi/vX7PXdAFt
+	sr6nfFjhErbE1opXT515nGJ9SWKYFMADR/oebKaRfApMOHJD8MS/YEQ/3+fcvkgdqmjMD9ghdVvG2
+	CHNag11Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZ6bl-00000005D64-1eb1;
-	Tue, 08 Jul 2025 11:35:33 +0000
+	id 1uZ73a-00000005Fp4-39Ux;
+	Tue, 08 Jul 2025 12:04:18 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZ6LS-00000005AfR-2gjM;
-	Tue, 08 Jul 2025 11:18:43 +0000
-X-UUID: 4bf14af65bed11f09eb0dd999d3936bf-20250708
+	id 1uZ6wc-00000005F0v-3zIH;
+	Tue, 08 Jul 2025 11:57:08 +0000
+X-UUID: a66352ae5bf211f09eb0dd999d3936bf-20250708
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=CQdbGu3oTwc5hqt9jRWRc5/LOjUerkQxt3ZG9u6Vhds=;
-	b=r8YfxBV0fZN5XVvPf2wPxpQp2uvve5QBKIdZ0W1yi1UqtPNUyZjEvEt7mu99ZHVM0aWuS9Is00ioFoxhoUy6FVOTm77xGiRnJR6f1px3S1me+uKZUazetQ8CpDoqsY4dwEFO5xuMryk+idJopAnc6RvUTp76hg/SjZHwRheH4q8=;
+	h=MIME-Version:Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:To:From:Subject:Message-ID; bh=lHQ0tvNoqJ2yord/lFVua7QgHw4bt6G06+wkrQtEyBg=;
+	b=PlWXGtciKBwCtq6tLTILEx8s1pdXfCY+cB8GMT1V6HaIzP7gOt3d6v3m7AwnEDIu5ggyzLtol/z4TH2CVI95o6u4PH1Ix6qwQ2TwVfqrUHVm4dhidnuUCtRo/0RhoEKSlXPdhMgKJVsS/4TPVUJiTILYoP9U9UNtMxS8JuN6C90=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.2,REQID:896764d9-1df9-46cc-be37-2972732b444e,IP:0,UR
-	L:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:25
-X-CID-META: VersionHash:9eb4ff7,CLOUDID:090ff0de-2070-40bb-9c24-dfabef7c07f4,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102,TC:nil,Content:0|50,EDM:-3
-	,IP:nil,URL:97|99|83|106|11|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:
-	0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.3.2,REQID:b08f2ffb-b22d-44b5-b885-ec649444519e,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:9eb4ff7,CLOUDID:3eaefbd7-b768-4ffb-8a44-cd8427608ba6,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102,TC:nil,Content:0|50,
+	EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
+	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 0,NGT
 X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 4bf14af65bed11f09eb0dd999d3936bf-20250708
+X-UUID: a66352ae5bf211f09eb0dd999d3936bf-20250708
 Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
-	(envelope-from <darren.ye@mediatek.com>)
+	(envelope-from <mason-cw.chang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1817418809; Tue, 08 Jul 2025 04:18:38 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+	with ESMTP id 1149947007; Tue, 08 Jul 2025 04:56:58 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.39; Tue, 8 Jul 2025 19:18:35 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1258.39 via Frontend Transport; Tue, 8 Jul 2025 19:18:34 +0800
-From: Darren.Ye <darren.ye@mediatek.com>
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Rob
- Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor
- Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Linus
- Walleij <linus.walleij@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>
-CC: <linux-sound@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-gpio@vger.kernel.org>, Darren Ye
-	<darren.ye@mediatek.com>, Krzysztof Kozlowski
-	<krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v6 10/10] ASoC: dt-bindings: mediatek,mt8196-nau8825: Add audio sound card
-Date: Tue, 8 Jul 2025 19:16:02 +0800
-Message-ID: <20250708111806.3992-11-darren.ye@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20250708111806.3992-1-darren.ye@mediatek.com>
-References: <20250708111806.3992-1-darren.ye@mediatek.com>
+ 15.2.1258.39; Tue, 8 Jul 2025 19:56:54 +0800
+Received: from [10.233.130.16] (10.233.130.16) by mtkmbs13n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.1258.39 via Frontend
+ Transport; Tue, 8 Jul 2025 19:56:54 +0800
+Message-ID: <b014c34a560854e6dd6a6dd483b9443f42252b51.camel@mediatek.com>
+Subject: Re: Aw: [PATCH 0/3] thermal/drivers/mediatek/lvts_thermal: add
+ mt7988 lvts commands
+From: Mason Chang <mason-cw.chang@mediatek.com>
+To: "rafael@kernel.org" <rafael@kernel.org>, "daniel.lezcano@linaro.org"
+	<daniel.lezcano@linaro.org>, "rui.zhang@intel.com" <rui.zhang@intel.com>,
+	"lukasz.luba@arm.com" <lukasz.luba@arm.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Nicolas Prado
+	<nfraprado@collabora.com>, "jpanis@baylibre.com" <jpanis@baylibre.com>,
+	"npitre@baylibre.com" <npitre@baylibre.com>, "colin.i.king@gmail.com"
+	<colin.i.king@gmail.com>, "u.kleine-koenig@baylibre.com"
+	<u.kleine-koenig@baylibre.com>, "wenst@chromium.org" <wenst@chromium.org>,
+	"linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "daniel@makrotopia.org"
+	<daniel@makrotopia.org>, Frank Wunderlich <frank-w@public-files.de>, Steven
+ Liu =?UTF-8?Q?=28=E5=8A=89=E4=BA=BA=E8=B1=AA=29?= <steven.liu@mediatek.com>,
+	Sam Shih =?UTF-8?Q?=28=E5=8F=B2=E7=A2=A9=E4=B8=89=29?=
+	<Sam.Shih@mediatek.com>
+Date: Tue, 8 Jul 2025 19:56:54 +0800
+In-Reply-To: <trinity-e9eaf8fd-42f1-46d5-b1df-3bfefe02b2fe-1750057280436@trinity-msg-rest-gmx-gmx-live-b647dc579-tr2th>
+References: <20250526102659.30225-1-mason-cw.chang@mediatek.com>
+	 <trinity-e9eaf8fd-42f1-46d5-b1df-3bfefe02b2fe-1750057280436@trinity-msg-rest-gmx-gmx-live-b647dc579-tr2th>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.52.3-0ubuntu1 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250708_041842_681438_E55B4652 
-X-CRM114-Status: GOOD (  13.93  )
+X-CRM114-CacheID: sfid-20250708_045706_996441_6BE77741 
+X-CRM114-Status: GOOD (  17.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,126 +100,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Darren Ye <darren.ye@mediatek.com>
+On Mon, 2025-06-16 at 07:01 +0000, Frank Wunderlich wrote:
+>=20
+> External email : Please do not click links or open attachments until
+> you have verified the sender or the content.
+>=20
+>=20
+> > Gesendet: Montag, 26. Mai 2025 um 12:26
+> > Von: "Mason Chang" <mason-cw.chang@mediatek.com>
+> > Betreff: [PATCH 0/3] thermal/drivers/mediatek/lvts_thermal: add
+> > mt7988 lvts commands
+> >=20
+> > Add the LVTS commands for Mediatek Filogic 880/MT7988.
+> >=20
+> > This series fixes severely abnormal and inaccurate LVTS temperature
+> > readings when using the default commands.
+> >=20
+> > Signed-off-by: Mason Chang <mason-cw.chang@mediatek.com>
+>=20
+> Hi
+>=20
+> just a friedly reminder for maintainers, is the patch series ok or
+> does it need any changes?
+>=20
+> regards Frank
 
-Add soundcard bindings for the MT8196 SoC with the NAU8825 audio codec.
+Hi all,
 
-Signed-off-by: Darren Ye <darren.ye@mediatek.com>
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
- .../sound/mediatek,mt8196-nau8825.yaml        | 102 ++++++++++++++++++
- 1 file changed, 102 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/sound/mediatek,mt8196-nau8825.yaml
+I submitted the patch a while ago, but haven't received any response
+from the maintainer yet. I would really appreciate it if any maintainer
+could take a look or provide some comments.
 
-diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt8196-nau8825.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt8196-nau8825.yaml
-new file mode 100644
-index 000000000000..5c4162e64004
---- /dev/null
-+++ b/Documentation/devicetree/bindings/sound/mediatek,mt8196-nau8825.yaml
-@@ -0,0 +1,102 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/sound/mediatek,mt8196-nau8825.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek MT8196 ASoC sound card
-+
-+maintainers:
-+  - Darren Ye <darren.ye@mediatek.com>
-+
-+allOf:
-+  - $ref: sound-card-common.yaml#
-+
-+properties:
-+  compatible:
-+    enum:
-+      - mediatek,mt8196-nau8825-sound
-+      - mediatek,mt8196-rt5682s-sound
-+      - mediatek,mt8196-rt5650-sound
-+
-+  mediatek,platform:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description: The phandle of MT8188 ASoC platform.
-+
-+patternProperties:
-+  "^dai-link-[0-9]+$":
-+    type: object
-+    description:
-+      Container for dai-link level properties and CODEC sub-nodes.
-+
-+    properties:
-+      link-name:
-+        description:
-+          This property corresponds to the name of the BE dai-link to which
-+          we are going to update parameters in this node.
-+        items:
-+          enum:
-+            - TDM_DPTX_BE
-+            - I2SOUT6_BE
-+            - I2SIN6_BE
-+            - I2SOUT4_BE
-+            - I2SOUT3_BE
-+
-+      codec:
-+        description: Holds subnode which indicates codec dai.
-+        type: object
-+        additionalProperties: false
-+        properties:
-+          sound-dai:
-+            minItems: 1
-+            maxItems: 2
-+        required:
-+          - sound-dai
-+
-+      dai-format:
-+        description: audio format.
-+        items:
-+          enum:
-+            - i2s
-+            - right_j
-+            - left_j
-+            - dsp_a
-+            - dsp_b
-+
-+      mediatek,clk-provider:
-+        $ref: /schemas/types.yaml#/definitions/string
-+        description: Indicates dai-link clock master.
-+        enum:
-+          - cpu
-+          - codec
-+
-+    additionalProperties: false
-+
-+    required:
-+      - link-name
-+
-+required:
-+  - compatible
-+  - mediatek,platform
-+
-+unevaluatedProperties: false
-+
-+examples:
-+  - |
-+    sound {
-+        compatible = "mediatek,mt8196-nau8825-sound";
-+        model = "mt8196-nau8825";
-+        mediatek,platform = <&afe>;
-+        pinctrl-names = "default";
-+        pinctrl-0 = <&aud_pins_default>;
-+        dai-link-0 {
-+            link-name = "I2SOUT6_BE";
-+            dai-format = "i2s";
-+            mediatek,clk-provider = "cpu";
-+            codec {
-+                sound-dai = <&nau8825>;
-+            };
-+        };
-+    };
-+
-+...
--- 
-2.45.2
+If there is a more appropriate maintainer or reviewer for this patch,
+please kindly let me know or help forward it.
+
+Thank you very much for your time and help!
+
+Sincerely,
+Mason
 
 
