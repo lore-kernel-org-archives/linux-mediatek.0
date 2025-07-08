@@ -4,65 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC9D9C83F0F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jul 2025 20:08:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF6CAC83F09
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jul 2025 20:39:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zjpUGumsyFT3wsCtF9Dlg1G6YfAqzI8ZghV7o/ro8w4=; b=VlgXSe3BC6QLhj4CTBcVqE2Xav
-	jPJWx87H59+Ez2Ui4y6F4f3EVDo62JmySze1VoJko2nAcgrArbUc7ijzRjnjkdQmasQs/OQE+kVci
-	8Nyu1dvKE/6xetLCCypE/soj7EON1XlQn8x8UrdaLPUv3zAL50Ca2PJYhAIJbsiTYutucK5pPnCXN
-	qHaMGpKwAQsm5DbZs8g5ptxUDrJA19HKZFjbIaEliVht6XgrFjOPIiHs0qauKpqi8BtzGZIY4pHgl
-	d3ckQvAUxWFaGrk06SukOlM4o59jIOVfGuWRfsLLSeFyTEunKnzzwNhEvxNazfQpVXJTBqiiTDQau
-	prcGcbEw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=cTTrNTGhub8A8V0WSX4PYi6yLCXMR+wXKB4MowDi9Gg=; b=gfK2CHdYUzK4LkmVCRxpvwVSb2
+	ydjNwb5Mj49YhFcosuPlXYe0sjrYM9j5klebO/AnJBWBWXuLwqzUqescEL1kNuk+2p+C+xZEK4sIm
+	dxAj8Y1o+pwlkbz9tvY6IWtGdb3zOVa6p+5SXNaDh9isw/anC71KYBQ98brA1/x4FMdKLKxL0f08K
+	XRtxx0XIfrobSYL2zHeCiCjjOmksAKjLFfAiOIe6axFANPDR7Idjz7kwArJDx7sEEBOZ2FoCApCE0
+	vdwIKlS4F8Cu55L3h/PeVXa/TDLARsoa31xgVv7vkoCC9UTq8XUiI2PpOfVgm8mG2NMfjpc2CFRQU
+	YcbbisLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZEc3-00000006Sl3-3gUh;
-	Tue, 08 Jul 2025 20:08:23 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1uZF6L-00000006XZy-0kCD;
+	Tue, 08 Jul 2025 20:39:41 +0000
+Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZE2C-00000006LpL-0b8x;
-	Tue, 08 Jul 2025 19:31:21 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 86FB95C516B;
-	Tue,  8 Jul 2025 19:31:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EF178C4CEED;
-	Tue,  8 Jul 2025 19:31:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752003079;
-	bh=4HIbXqO4X/zdFKMfYlEoWG4p7UkHS98SkaZFdbZdFKo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=CAqQP9MY6hAOf2CQAO7iVpo9cciRLieNSlVrPS7uTOEYeRSsdmr2ElnpEehToll8Q
-	 vHz9zzIQzp7ztQ8iQCbotghbpSBzrt4eHy9vraBL/Qmq1L51AXuMJY2Z9ReebWLQbE
-	 4SDvAIGoYAC0YEJ7zQaACrXyZI4KlKv3ZafZCfpS3oV6wMpGGqgowg1fy8pZh9cxlf
-	 2igN2LSWnHhUNBkOjqTvGxdsEOKJt6Fb6muVPKm/0tiQRveaLj/IBXksTKfqYC4tbf
-	 aZHBYSCTsqApeAMwjhtueGFVuA/r8VUxHmrhJ4Z/BsixGKQ/aNRynj6qBHhFfhxqRm
-	 DEBrYMxHLLBDg==
-Date: Tue, 8 Jul 2025 14:31:18 -0500
-From: Rob Herring <robh@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-mediatek@lists.infradead.org, lee@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, matthias.bgg@gmail.com, lgirdwood@gmail.com,
-	broonie@kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	kernel@collabora.com,
-	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>
-Subject: Re: [PATCH v2 7/8] dt-bindings: mfd: Add binding for MediaTek MT6363
- series SPMI PMIC
-Message-ID: <20250708193118.GB797072-robh@kernel.org>
-References: <20250707134451.154346-1-angelogioacchino.delregno@collabora.com>
- <20250707134451.154346-8-angelogioacchino.delregno@collabora.com>
+	id 1uZElA-00000006U45-1VJI;
+	Tue, 08 Jul 2025 20:17:49 +0000
+Received: by mail-pf1-x435.google.com with SMTP id d2e1a72fcca58-7425bd5a83aso4199724b3a.0;
+        Tue, 08 Jul 2025 13:17:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1752005867; x=1752610667; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=cTTrNTGhub8A8V0WSX4PYi6yLCXMR+wXKB4MowDi9Gg=;
+        b=CbIRtXLZa9dnSjd/aes+mVCD4C6DTlmc5TUKpZgEzQhFrFgLXe+vDKc/EuMJfHqDOn
+         1/wUVUvLvMI73iTe0dLog8MNcc7wcTDXZCPWEzakpQH1x0/8W4XEzUFotC6yta3q4WKt
+         fxslELPfsZy16S0KaEnx+D3DF6yBHbVMpEwqKK1k9AOoT82sA8ubmdPh3h2v+Os+yDht
+         jDg6KzjnzEiTJFSONG1iiAQwSds/bvbVHXBIlIO4E3RTB6HuC27lLPSyBm/766U9rmNK
+         67RuREaGaJVzWDluRXIk0n2jsOPYXcItqXEcwuRF5FptTvhWBQeeiHISR1oNgGOdHb/m
+         CL9w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1752005867; x=1752610667;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=cTTrNTGhub8A8V0WSX4PYi6yLCXMR+wXKB4MowDi9Gg=;
+        b=wZZ9uLFCusn35HE+YD/JigiJyIIJwFJ9Hl/unoVAhUVP7Hw5mxxOWtAVfak5IjP/j3
+         vQmEFGfkFisLEXT7/MVgT9fKdmfdBbMW5xCOYxnke8Mw5IeoxT/3nirXwOcYsb1kGDFo
+         UMKehPp/AdORhuM+kOF8r62xKs6CxRoCs82azxxnkeJo05lLBP1fWsDJOhc6UJKQ6MG0
+         M2IK8DHrF1uIOobaDXO5WQDPxOJQzjabHBKm6yNSUhFYqS80LDHnkl1BoSOavCYzh06N
+         Z5zZDs4Y8njOKdMpGlRpHNo25chDt1PPJHGpGTYqLjDcQLCSXk/aDPzu10+38O7T+mR6
+         sKMg==
+X-Forwarded-Encrypted: i=1; AJvYcCUxp45jjInr1NbiBug7BxJGi0vZ1/6ZciGt8GE3Z1KB6aQCFPPVP7E21jC6jmj7fXol5WVuyP15+p0KktTSykYw@lists.infradead.org, AJvYcCVonDQpcq70oRqrqoE2NUcFCqg/T3kEcplZqO0LRk0Vu8si4t3IQS+ylrFE2PofdN5Nvj5fl/4KEHdARC/BX8M=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwWc33h6wF0GEwIO5VA8HnC3KacX8n/pSdB2cS/4S4gkZgXJdsX
+	abXecXvGV7M8BBS/IPiVMlGevEfPoNj49lkWVOZUn8tkZWszZGgdrxkk
+X-Gm-Gg: ASbGncu6pcXb2MlIbgUT5YaHm9SuqvL8X+6OoNp+n5So1x8R0JpNMpD63TM17qsAZiW
+	WcYnrB9soknCI3EJYtiqHEmq4IsWVVPqVqYT/wi0CXiigv7xZaalHbkzS71i/Zl8pC00Kexoe7L
+	9zOvuXGcrQuzoFG0Hirvb/p68dN8fMQQRc7j2KgJuYSwTEoQn54FfKDPCgJ2gULV+Vje+cjuexh
+	3tM4aZgpRDv+eK6ae5nWpwXHbKh5VMHXKihkvUKBlYX9NgDf33eenewqWA+iPbcJlvTIOaxNFwm
+	R8zyrs2bDVr7tWqLVfRmypQF+ltAdkTgoOx9JpGG+T8=
+X-Google-Smtp-Source: AGHT+IGIcRTQ/IVzI2tJOroz5Lqm+kvT8pKeiBj/N2Gf7unUpL73LQu99cUIoFH4FDd+4jyRsbL5bw==
+X-Received: by 2002:a05:6a20:a10a:b0:220:2da8:325c with SMTP id adf61e73a8af0-22606387110mr30289384637.0.1752005867470;
+        Tue, 08 Jul 2025 13:17:47 -0700 (PDT)
+Received: from archlinux.lan ([2601:644:8200:dab8::1f6])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b38ee5f5d8csm12289625a12.39.2025.07.08.13.17.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 08 Jul 2025 13:17:47 -0700 (PDT)
+From: Rosen Penev <rosenp@gmail.com>
+To: linux-wireless@vger.kernel.org
+Cc: Johannes Berg <johannes@sipsolutions.net>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Stanislaw Gruszka <stf_xl@wp.pl>,
+	devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS),
+	linux-kernel@vger.kernel.org (open list),
+	linux-mips@vger.kernel.org (open list:MIPS),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCHv2 wireless-next 0/7] wifi: rt2x00: add OF bindings + cleanup
+Date: Tue,  8 Jul 2025 13:17:38 -0700
+Message-ID: <20250708201745.5900-1-rosenp@gmail.com>
+X-Mailer: git-send-email 2.50.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250707134451.154346-8-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250708_123120_261051_624C04B3 
-X-CRM114-Status: GOOD (  18.75  )
+X-CRM114-CacheID: sfid-20250708_131748_396358_E88494A4 
+X-CRM114-Status: UNSURE (   9.01  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,133 +105,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 07, 2025 at 03:44:50PM +0200, AngeloGioacchino Del Regno wrote:
-> Add a binding for the MediaTek MT6363/6373 (and similar) multi
-> function PMICs connected over SPMI.
-> 
-> These PMICs are found on board designs using newer MediaTek SoCs,
-> such as the Dimensity 9400 Smartphone chip, or the Chromebook
-> MT8196 chip.
-> 
-> Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> Link: https://lore.kernel.org/r/20250623120038.108891-2-angelogioacchino.delregno@collabora.com
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  .../bindings/mfd/mediatek,mt6363.yaml         | 115 ++++++++++++++++++
->  1 file changed, 115 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mt6363.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6363.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6363.yaml
-> new file mode 100644
-> index 000000000000..0d1078e92232
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6363.yaml
-> @@ -0,0 +1,115 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/mfd/mediatek,mt6363.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek MT6363 series SPMI PMICs multi-function device
-> +
-> +maintainers:
-> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> +
-> +description: |
-> +  Some MediaTek Power Management ICs (PMICs) found in board designs with
-> +  the Helio, Dimensity and/or Kompanio series of SoCs are interfaced to
-> +  the chip via the System Power Management Interface (SPMI) bus.
-> +
-> +  These PMICs are multi-function devices with various sub modules.
-> +  For example, those may include one, or more of the following:
-> +  - Auxiliary ADC Controller
-> +  - Clock Controller
-> +  - eFuses
-> +  - GPIO Controller
-> +  - Interrupt Controller
-> +  - Keys
-> +  - LEDs Controller
-> +  - Regulators
-> +  - RTC
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - mediatek,mt6363
-> +      - mediatek,mt6373
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  '#address-cells':
-> +    const: 0
+It doesn't even compile. Added OF bindings, documentation, and other
+stuff to hopefully this doesn't happen again.
 
-The only place 0 is valid is interrupt controllers for some ancient OF 
-reasons.
+v2: move all of 2x00soc to 2800soc. I didn't realize only two functions
+remained for no good reason.
+Fixed typos.
+Slightly changed probe for clarity.
 
-> +
-> +  '#size-cells':
-> +    const: 0
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  interrupt-controller: true
-> +
-> +  "#interrupt-cells":
-> +    const: 3
-> +
-> +  adc:
-> +    type: object
-> +    $ref: /schemas/iio/adc/mediatek,mt6359-auxadc.yaml#
-> +    unevaluatedProperties: false
-> +
-> +  regulators:
-> +    type: object
-> +    additionalProperties: true
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - '#address-cells'
-> +
-> +allOf:
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: mediatek,mt6363-regulator
+Rosen Penev (7):
+  wifi: rt2x00: add COMPILE_TEST
+  wifi: rt2x00: remove mod_name from platform_driver
+  wifi: rt2800soc: allow loading from OF
+  wifi: rt2800: move 2x00soc to 2800soc
+  wifi: rt2x00: soc: modernize probe
+  MIPS: dts: ralink: mt7620a: add wifi
+  dt-bindings: net: wireless: rt2800: add
 
-This is never true because the schema is only applied if the top-level 
-compatibles matched.
+ .../bindings/net/wireless/ralink,rt2800.yaml  |  47 ++++++
+ arch/mips/boot/dts/ralink/mt7620a.dtsi        |  10 ++
+ drivers/net/wireless/ralink/rt2x00/Kconfig    |   7 +-
+ drivers/net/wireless/ralink/rt2x00/Makefile   |   1 -
+ .../net/wireless/ralink/rt2x00/rt2800soc.c    | 102 +++++++++++-
+ .../net/wireless/ralink/rt2x00/rt2x00soc.c    | 151 ------------------
+ .../net/wireless/ralink/rt2x00/rt2x00soc.h    |  29 ----
+ 7 files changed, 156 insertions(+), 191 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/net/wireless/ralink,rt2800.yaml
+ delete mode 100644 drivers/net/wireless/ralink/rt2x00/rt2x00soc.c
+ delete mode 100644 drivers/net/wireless/ralink/rt2x00/rt2x00soc.h
 
-Just do this and drop the if/then schemas:
-
-regulators:
-  properties:
-    contains:
-      enum:
-        - mediatek,mt6363-regulator
-        - mediatek,mt6373-regulator
-
-Then the appropriate child schema will be applied. This doesn't enforce 
-you didn't use mediatek,mt6363-regulator on mt6373 PMIC or vice-versa,
-but I don't that really matters.
-
-> +    then:
-> +      properties:
-> +        regulators:
-> +          $ref: /schemas/regulator/mediatek,mt6363-regulator.yaml#
-> +
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: mediatek,mt6373-regulator
-> +    then:
-> +      properties:
-> +        regulators:
-> +          $ref: /schemas/regulator/mediatek,mt6373-regulator.yaml#
+-- 
+2.50.0
 
 
