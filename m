@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E9E3C71130
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jul 2025 04:12:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1350AC71130
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jul 2025 04:57:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=97PA7tnoUToVlQXPk0nMmVPATh2HU3vK09piMMjV8Cw=; b=wl6tJa3JkSSccIFg5te7d/OaM7
-	rpQGTNof3JdB1p7hJIQi6i7Kdx7q3dG8WhGBlLskDFAcGQlr3FGl119/PcugqK4cpUMRmuCYzpwrp
-	EIPRWtS5x1axYO5Xf7sqXbpticGHYfDTAxyeQgRgJ8v1uR2upV92MyLeRauyN04E+Z+tZqwGLmwS7
-	JcR2qm3utj5HeoOOJX3rcjoPVQOCvDJ1puNnEyj5ot757jXaL3FyP0w123DBhKlHegSyQH0ZavPSP
-	v2YzGmaKeisMOcn6DQZhiZgyloqBaBfKFOhvqa1KDNk551dXK0GDvzVcsjOg5VLeBlHNlzGxLJkko
-	cwO2QVXA==;
+	bh=Vr5j3HktXmdBuql9hRLpcA8htD63sRgEruV9zFxQJSk=; b=BZn2JREFHIdd2PbgK/6GD8UHTn
+	cIaCxZvKMCy23m89C1do3gmZ3By2l4Ll1M7HW91Z1013aBPuLQNcfBCg91tb2DeHWD94TPfJnJ/Xr
+	aI3E3JgLpK+xjXS/PdX0F8nkIwku2IXZNA9bJD+DQCMxwI1B9G4LHfo2e4nuKQ12eGMYrzqlN0c2k
+	XwMAFyCRHVd4IlcwhgdBFoE7PitrA25PUvBtW1RwE0cLOLvmnLOQXR4oIIsudN+us1Pvu9Fwy9GlN
+	A5NO9CxpVQKh0v+K7yrmtxDIsNpw9yUpzOIL4d+yLrRKXVj4z8zMwHi3DztH/zsQowkQLg9Z7gZdx
+	Y00KQ5Zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYzgq-00000004EBv-0C9U;
-	Tue, 08 Jul 2025 04:12:20 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1uZ0P0-00000004HiL-01sn;
+	Tue, 08 Jul 2025 04:57:58 +0000
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYzeT-00000004DxB-2H62
+	id 1uZ0Ow-00000004Hhd-2Q1O
 	for linux-mediatek@lists.infradead.org;
-	Tue, 08 Jul 2025 04:09:55 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-555163cd09aso3659696e87.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 07 Jul 2025 21:09:52 -0700 (PDT)
+	Tue, 08 Jul 2025 04:57:56 +0000
+Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-5561c20e2d5so4419255e87.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 07 Jul 2025 21:57:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1751947791; x=1752552591; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1751950673; x=1752555473; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=97PA7tnoUToVlQXPk0nMmVPATh2HU3vK09piMMjV8Cw=;
-        b=HcuTcl76XG0G07pNcOgsqQVEVhAr6dtFEEbvR2fYAevPXClx1VvoYne5hQMJX1EqA3
-         DFJrEj3GkGR20tykskbJ/gnRX9JJ+Gxiu5mtn34QAsNn7KnyimFCjw8YkfqNQdIY8D/T
-         dpNCDhhJYlI419qkQdKfmEZTLjOLAGKs0fnK0=
+        bh=Vr5j3HktXmdBuql9hRLpcA8htD63sRgEruV9zFxQJSk=;
+        b=bct2CJWwEY/YrxttZ2PY21XwLPzbvKi0DyrCMGpyaWNyTjXW3wJbeW7ATiuj9264pX
+         yGiEDoOP7wypDlCAsMYDJwvG1VEKw2ybsa6xbDvtXkJuOnKQ72P0lVMQvdRXOfWIMsKU
+         +e0247//+oR/a/1bphIb/O5oKNND91Dkpt5zQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751947791; x=1752552591;
+        d=1e100.net; s=20230601; t=1751950673; x=1752555473;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=97PA7tnoUToVlQXPk0nMmVPATh2HU3vK09piMMjV8Cw=;
-        b=xIxxxA+n03yynh9xx+qDOdqCOIhYIMz1hYvNHmRlmGzgnHYuL/09tJPt8/Gy7ODEsL
-         D/r+9e1AsqWRXtSAZGmODUSt5ZLz2e2+8kGyP0kpm49tNo5imL4kLrzMbX8630VoOf3W
-         vQsKHGjc5NaDoVIclf+mLZnFc44j5jLqSAsn6iwEiOKeFJ1tHt4A9P5gc5ctzcWuJ6AS
-         Sc84b8D2HYe9SL9H2T1K5aL+zfwlOt4ldm++PoHWwW+BxK++Z844UQpg4dBnSheq2bli
-         NVbK4hBLVEW24XHRE+AfMU5du76jpUYKuOaiS8UE3BN5PYf7G5oynn3YYBn2tXZ/qteG
-         4Rhg==
-X-Gm-Message-State: AOJu0YzJ+u5FJPqVaJB0J02OyHujeqLlv4T/SDYzEk939kVrSh/7/Oii
-	Ru3xZI454baMkfvR1cMpHGxAKwRzKM/tlKstK2PWshpzTtMRxt43j+gaBwmFSfWGqFzoMva/ytI
-	mUC7jqPlofJEc1+fw93xDQB/yK7lYPxfNDQ4N29o1EeZaFcC7O1k=
-X-Gm-Gg: ASbGnctSo8S2BKqJqainjSYCyPR7jtJo4g/dOHHAQvJJlJQKz1gOANDW0VlJtq7Urwr
-	4uW5ZJ/MubmUtqQ9fo8XEAf7b1madpj8gftH/BNMkJL9ISP+Yvn58cPtF7pRSM0H/3lqsPsnI19
-	YRvUqhIdbsErt5tny4GNsCgms2GMYOpgBSx5a56tH0JASwOAOkClwR9r5+cpDtxk0SRrL4YIc=
-X-Google-Smtp-Source: AGHT+IEVujyv6lAcDWE1bZGAyeEobtReCu0A+jIigUo7aBzy2SXT5pvaXtmoXS+q6pOlLoU2IHQ9/lFEOLFDtdD+mLU=
-X-Received: by 2002:a05:6512:6c5:b0:553:ae47:6856 with SMTP id
- 2adb3069b0e04-557f8310057mr327313e87.10.1751947790882; Mon, 07 Jul 2025
- 21:09:50 -0700 (PDT)
+        bh=Vr5j3HktXmdBuql9hRLpcA8htD63sRgEruV9zFxQJSk=;
+        b=U4aetmBcKfMWp2TSNuEtG73SQOOicAwhRYP3c/56MoK76VyPEZw9zlKDkUduAMVgG8
+         nZA4x1Cd9WqOMdYhp+jxQmuDCZIZQsaJ6e6LuMs1R+tetYZFILOgwGTpN953igjKNfT/
+         529Cugh3n920BX+E9pqe4o7n/M+Vq32EEYVAdII+QM8LNctuzGnh7bEQNe7j7oLf3vF2
+         n7YkErad9j3iWfFUpr+6v4GcJYudE9WHRwjeR5kG4ksm15U4D56/QOx8Hyel4boeGZ2G
+         vh+8LoayXrXddmzGn1Rp22FLt6JFSzL8pKvr3cbIGR9/5w4HB91gY208VjwoQfDxgGoG
+         G0ZA==
+X-Gm-Message-State: AOJu0YwxcO53Wm7qsFtPn3iU/VU3yDm1+FKzth9DERO7W6xkAcnpAJjC
+	g0CQbPYpZJPmf4BcfLB3QBayU+Czx2wRaapCfgJSPfsPtz7ol61cW7KlPVFEipYOv/s7dYwEJm7
+	9pmY8yjTCAvquHq52q2eyFQj19tzZeI3rCJjmNzbw
+X-Gm-Gg: ASbGnctsEe2QKbaczKRBgXVIY60sBf/Z8j+o9FvTsDC2cIjcEHQZMt2EGMcnUZEc1UE
+	nTKqDAabPW+4nJCzXjrvXwnCIvH9v5cO8jOkjM9W/tvX1fbvUyjmqeabCipMWnVhs/EQuTQHteC
+	d1Da8bHwLikSzg0cF0/AHWMCgsGNVu1kh/F0P7DR3MkkE4ckZ90+A8tx/29L0NRH7Z/8VEW2E=
+X-Google-Smtp-Source: AGHT+IGiKmRVVctKEN/87vc8xFNDgCG4gqbvI6NjBIPAZYuz9GsA3JMVpKP+W+7I3VmAlOaA1Oceumi0sItLoIdM0rg=
+X-Received: by 2002:a05:6512:ad2:b0:553:a456:a0d4 with SMTP id
+ 2adb3069b0e04-557f830d866mr441986e87.15.1751950672522; Mon, 07 Jul 2025
+ 21:57:52 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250707134451.154346-1-angelogioacchino.delregno@collabora.com> <20250707134451.154346-4-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20250707134451.154346-4-angelogioacchino.delregno@collabora.com>
+References: <20250707134451.154346-1-angelogioacchino.delregno@collabora.com> <20250707134451.154346-5-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20250707134451.154346-5-angelogioacchino.delregno@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 8 Jul 2025 12:09:39 +0800
-X-Gm-Features: Ac12FXzG3Dao19qlz-A1KXKkJqrEyMGo4bcZkDP1swxYmwtOwf1D0Gwc3OVNmQY
-Message-ID: <CAGXv+5FHA-Y1xyW=_UjGUDsqarXNTciGP7KnzoB2Jyj2Ft5rdQ@mail.gmail.com>
-Subject: Re: [PATCH v2 3/8] dt-bindings: regulator: Document MediaTek MT6363
+Date: Tue, 8 Jul 2025 12:57:41 +0800
+X-Gm-Features: Ac12FXxoiikXF1-TFEleSvh2qQAz2WaU9ADuyjClvcWDyJXjaLPqVQRaBRPRGBU
+Message-ID: <CAGXv+5GbcyEEBaEhB1QY5uZ-CnKpvRgOYhqv==d72KXkVSSB3g@mail.gmail.com>
+Subject: Re: [PATCH v2 4/8] regulator: Add support for MediaTek MT6363 SPMI
  PMIC Regulators
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: linux-mediatek@lists.infradead.org, lee@kernel.org, robh@kernel.org, 
@@ -78,8 +78,8 @@ Cc: linux-mediatek@lists.infradead.org, lee@kernel.org, robh@kernel.org,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250707_210953_717153_9B9575C8 
-X-CRM114-Status: GOOD (  29.24  )
+X-CRM114-CacheID: sfid-20250707_215754_934861_A2BE03CF 
+X-CRM114-Status: GOOD (  31.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,255 +96,312 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi,
 
-On Mon, Jul 7, 2025 at 10:27=E2=80=AFPM AngeloGioacchino Del Regno
+On Mon, Jul 7, 2025 at 10:29=E2=80=AFPM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> Add bindings for the regulators found in the MediaTek MT6363 PMIC,
-> usually found in board designs using the MT6991 Dimensity 9400 and
-> on MT8196 Kompanio SoC for Chromebooks, along with the MT6316 and
-> MT6373 PMICs.
+> Add a driver for the regulators found on the MT6363 PMIC, fully
+> controlled by SPMI interface.
+> This PMIC regulates voltage with an input range of 2.6-5.0V, and
+> features 10 buck converters and 26 LDOs.
 >
-> Link: https://lore.kernel.org/r/20250624073548.29732-4-angelogioacchino.d=
+> Link: https://lore.kernel.org/r/20250624073548.29732-5-angelogioacchino.d=
 elregno@collabora.com
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
 abora.com>
 > ---
->  .../regulator/mediatek,mt6363-regulator.yaml  | 175 ++++++++++++++++++
->  1 file changed, 175 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,=
-mt6363-regulator.yaml
+>  drivers/regulator/Kconfig                  |    9 +
+>  drivers/regulator/Makefile                 |    1 +
+>  drivers/regulator/mt6363-regulator.c       | 1076 ++++++++++++++++++++
+>  include/linux/regulator/mt6363-regulator.h |  326 ++++++
+>  4 files changed, 1412 insertions(+)
+>  create mode 100644 drivers/regulator/mt6363-regulator.c
+>  create mode 100644 include/linux/regulator/mt6363-regulator.h
 >
-> diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6363-=
-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt636=
-3-regulator.yaml
+> diff --git a/drivers/regulator/Kconfig b/drivers/regulator/Kconfig
+> index 81f2acd0f960..d770e51f7ad1 100644
+> --- a/drivers/regulator/Kconfig
+> +++ b/drivers/regulator/Kconfig
+> @@ -936,6 +936,15 @@ config REGULATOR_MT6360
+>           2-channel buck with Thermal Shutdown and Overload Protection
+>           6-channel High PSRR and Low Dropout LDO.
+>
+> +config REGULATOR_MT6363
+> +       tristate "MT6363 SPMI PMIC regulator driver"
+> +       depends on SPMI || COMPILE_TEST
+> +       help
+> +          Say Y here to enable support for regulators found in the Media=
+Tek
+> +          MT6363 SPMI PMIC.
+> +         This driver supports the control of different power rails of de=
+vice
+> +         through regulator interface.
+> +
+>  config REGULATOR_MT6370
+>         tristate "MT6370 SubPMIC Regulator"
+>         depends on MFD_MT6370
+> diff --git a/drivers/regulator/Makefile b/drivers/regulator/Makefile
+> index 46c0e75f6107..41eaeac5547d 100644
+> --- a/drivers/regulator/Makefile
+> +++ b/drivers/regulator/Makefile
+> @@ -111,6 +111,7 @@ obj-$(CONFIG_REGULATOR_MT6357)      +=3D mt6357-regul=
+ator.o
+>  obj-$(CONFIG_REGULATOR_MT6358) +=3D mt6358-regulator.o
+>  obj-$(CONFIG_REGULATOR_MT6359) +=3D mt6359-regulator.o
+>  obj-$(CONFIG_REGULATOR_MT6360) +=3D mt6360-regulator.o
+> +obj-$(CONFIG_REGULATOR_MT6363) +=3D mt6363-regulator.o
+>  obj-$(CONFIG_REGULATOR_MT6370) +=3D mt6370-regulator.o
+>  obj-$(CONFIG_REGULATOR_MT6380) +=3D mt6380-regulator.o
+>  obj-$(CONFIG_REGULATOR_MT6397) +=3D mt6397-regulator.o
+> diff --git a/drivers/regulator/mt6363-regulator.c b/drivers/regulator/mt6=
+363-regulator.c
 > new file mode 100644
-> index 000000000000..9df57b803edb
+> index 000000000000..ea7d4e4f38cb
 > --- /dev/null
-> +++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6363-regulat=
-or.yaml
-> @@ -0,0 +1,175 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/regulator/mediatek,mt6363-regulator.y=
-aml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +++ b/drivers/regulator/mt6363-regulator.c
+> @@ -0,0 +1,1076 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +//
+> +// Copyright (c) 2024 MediaTek Inc.
+> +// Copyright (c) 2025 Collabora Ltd
+> +//                    AngeloGioacchino Del Regno <angelogioacchino.delre=
+gno@collabora.com>
 > +
-> +title: MediaTek MT6363 PMIC Regulators
+> +#include <linux/delay.h>
+> +#include <linux/devm-helpers.h>
+> +#include <linux/err.h>
+> +#include <linux/interrupt.h>
+> +#include <linux/kernel.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/of_device.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/regmap.h>
 > +
-> +maintainers:
-> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> +#include <linux/regulator/driver.h>
+> +#include <linux/regulator/machine.h>
+> +#include <linux/regulator/mt6363-regulator.h>
+> +#include <linux/regulator/of_regulator.h>
 > +
-> +description:
-> +  The MT6363 SPMI PMIC provides 13 BUCK and 25 LDO (Low Dropout) regulat=
-ors
-> +  and can optionally provide overcurrent warnings with one ocp interrupt
-> +  for each voltage regulator.
+> +#define MT6363_REGULATOR_MODE_NORMAL   0
+> +#define MT6363_REGULATOR_MODE_FCCM     1
+> +#define MT6363_REGULATOR_MODE_LP       2
+> +#define MT6363_REGULATOR_MODE_ULP      3
 > +
-> +properties:
-> +  compatible:
-> +    const: mediatek,mt6363-regulator
+> +#define EN_SET_OFFSET  0x1
+> +#define EN_CLR_OFFSET  0x2
+> +#define OP_CFG_OFFSET  0x5
 > +
-> +  interrupts:
-> +    description: Overcurrent warning interrupts
-> +    minItems: 1
-> +    maxItems: 38
+> +#define NORMAL_OP_CFG  0x10
+> +#define NORMAL_OP_EN   0x800000
 > +
-> +  interrupt-names:
-> +    description:
-> +      Names for the overcurrent interrupts are the same as the name
-> +      of a regulator (hence the same as each regulator's node name).
-> +      For example, the interrupt name for regulator ldo-vemc will
-> +      be "ldo-vemc".
-> +    minItems: 1
-> +    maxItems: 38
-> +    contains:
-> +      enum:
-> +        - buck-sshub1
-> +        - buck-sshub2
-> +        - buck-sshub4
-> +        - buck-vb1
-> +        - buck-vb2
-> +        - buck-vb3
-> +        - buck-vb4
-> +        - buck-vb5
-> +        - buck-vb6
-> +        - buck-vb7
-> +        - buck-vs1
-> +        - buck-vs2
-> +        - buck-vs3
-> +        - ldo-va12-1
-> +        - ldo-va12-2
-> +        - ldo-va15
-> +        - ldo-vaux18
-> +        - ldo-vcn13
-> +        - ldo-vcn15
-> +        - ldo-vemc
-> +        - ldo-vio0p75
-> +        - ldo-vio18
-> +        - ldo-vm18
-> +        - ldo-vrf0p9
-> +        - ldo-vrf12
-> +        - ldo-vrf13
-> +        - ldo-vrf18
-> +        - ldo-vrf-io18
-> +        - ldo-vsram-apu
-> +        - ldo-vsram-cpub
-> +        - ldo-vsram-cpum
-> +        - ldo-vsram-cpul
-> +        - ldo-vsram-digrf
-> +        - ldo-vsram-mdfe
-> +        - ldo-vsram-modem
-> +        - ldo-vtref18
-> +        - ldo-vufs12
-> +        - ldo-vufs18
+> +#define OC_IRQ_ENABLE_DELAY_MS         10
+> +
+> +/* Unlock keys for TMA and BUCK_TOP */
+> +#define MT6363_TMA_UNLOCK_VALUE                0x9c9c
+> +#define MT6363_BUCK_TOP_UNLOCK_VALUE   0x5543
+> +
+> +#define MT6363_RG_BUCK_EFUSE_RSV1      0x1447
+> +#define MT6363_RG_BUCK_EFUSE_RSV1_MASK GENMASK(7, 4)
+> +
+> +enum {
+> +       MT6363_ID_VS2,
+> +       MT6363_ID_VBUCK1,
+> +       MT6363_ID_VBUCK2,
+> +       MT6363_ID_VBUCK3,
+> +       MT6363_ID_VBUCK4,
+> +       MT6363_ID_VBUCK5,
+> +       MT6363_ID_VBUCK6,
+> +       MT6363_ID_VBUCK7,
+> +       MT6363_ID_VS1,
+> +       MT6363_ID_VS3,
 
-To summarize my replies to the previous iteration, I think this is
-not a good representation, since a) the interrupts are internal
-to the PMIC, and it does not need to be spelled out in the DT, and
-b) this gives another meaning to the representation, it being to
-enable overcurrent protection on the given regulators. Instead
-the common regulator binding has the "regulator-over-current-protection"
-property that can be set in each regulator. IMO this is much more
-explicit.
+This ordering is a bit weird. Is there any particular reason for this?
+Order of the registers perhaps?
 
-
-> +  isink-load:
-> +    type: object
-> +    $ref: regulator.yaml#
-> +    unevaluatedProperties: false
-
-Do we know what this is for? There's no actual output with this name.
-
-> +  ldo-vemc:
-> +    type: object
-> +    $ref: regulator.yaml#
-> +    unevaluatedProperties: false
+> +       MT6363_ID_VBUCK1_SSHUB,
+> +       MT6363_ID_VBUCK2_SSHUB,
+> +       MT6363_ID_VBUCK4_SSHUB,
+> +       MT6363_ID_VSRAM_DIGRF,
+> +       MT6363_ID_VSRAM_MDFE,
+> +       MT6363_ID_VSRAM_MODEM,
+> +       MT6363_ID_VSRAM_CPUB,
+> +       MT6363_ID_VSRAM_CPUM,
+> +       MT6363_ID_VSRAM_CPUL,
+> +       MT6363_ID_VSRAM_APU,
+> +       MT6363_ID_VEMC,
+> +       MT6363_ID_VCN13,
+> +       MT6363_ID_VTREF18,
+> +       MT6363_ID_VAUX18,
+> +       MT6363_ID_VCN15,
+> +       MT6363_ID_VUFS18,
+> +       MT6363_ID_VIO18,
+> +       MT6363_ID_VM18,
+> +       MT6363_ID_VA15,
+> +       MT6363_ID_VRF18,
+> +       MT6363_ID_VRFIO18,
+> +       MT6363_ID_VIO075,
+> +       MT6363_ID_VUFS12,
+> +       MT6363_ID_VA12_1,
+> +       MT6363_ID_VA12_2,
+> +       MT6363_ID_VRF12,
+> +       MT6363_ID_VRF13,
+> +       MT6363_ID_VRF09,
+> +       MT6363_ID_ISINK_LOAD
+> +};
 > +
-> +patternProperties:
-> +  "^buck-(sshub[124]|vb[1-7]|vs[1-3])$":
 
-According to the datasheets, vb[1-7] should be vbuck[1-7].
+[...]
 
-There are no real outputs with the name sshub*. These seem to be some
-alternate setting / mode. I don't think they should be modeled as
-separate regulators.
+> +#define MT6363_LDO_LINEAR_OPS(match, vreg, vops, min, max, step,       \
+> +                             en_reg, en_bit, vs_reg, vs_mask,          \
+> +                             lp_reg, lp_bit)                           \
+> +[MT6363_ID_##vreg] =3D {                                                =
+ \
+> +       .desc =3D {                                                      =
+ \
+> +               .name =3D match,                                         =
+ \
+> +               .of_match =3D of_match_ptr(match),                       =
+ \
+> +               .ops =3D &vops,                                          =
+ \
+> +               .type =3D REGULATOR_VOLTAGE,                             =
+ \
+> +               .id =3D MT6363_ID_##vreg,                                =
+ \
+> +               .owner =3D THIS_MODULE,                                  =
+ \
+> +               .n_voltages =3D (max - min) / step + 1,                  =
+ \
+> +               .min_uV =3D min,                                         =
+ \
+> +               .uV_step =3D step,                                       =
+ \
+> +               .enable_reg =3D en_reg,                                  =
+ \
+> +               .enable_mask =3D BIT(en_bit),                            =
+ \
+> +               .vsel_reg =3D vs_reg,                                    =
+ \
+> +               .vsel_mask =3D vs_mask,                                  =
+ \
+> +               .of_map_mode =3D mt6363_map_mode,                        =
+ \
+> +       },                                                              \
+> +       .lp_mode_reg =3D lp_reg,                                         =
+ \
+> +       .lp_mode_mask =3D BIT(lp_bit),                                   =
+ \
+> +       .hw_lp_mode_reg =3D MT6363_LDO_##vreg##_HW_LP_MODE,              =
+ \
+> +       .hw_lp_mode_mask =3D 0x4,                                        =
+ \
+> +}
 
-Also, could we drop the type from the names? There's no real need for them.
-I managed to get them removed in the MT6366 binding, and I hope we can
-continue that scheme.
+Some of the LDOs have an extra "calibration" setting that can tweak
+the output in 0.01V intervals. Could we support that. At least for
+VRF12, VRF13, VRF18, the default is an extra 0.04V. It would be
+misleading for the DT to specify 1.8V while the regulator is actually
+outputting 1.84V.
 
-> +    description: Buck regulators
-> +    type: object
-> +    $ref: regulator.yaml#
-> +    properties:
-> +      regulator-allowed-modes:
-> +        description: |
-> +          Allowed Buck regulator operating modes allowed. Valid values b=
-elow.
-> +            0 - Normal mode with automatic power saving, reducing the sw=
-itching
-> +                frequency when light load conditions are detected
-> +            1 - Forced Continuous Conduction mode (FCCM) for improved vo=
-ltage
-> +                regulation accuracy with constant switching frequency bu=
-t lower
-> +                regulator efficiency
-> +            2 - Forced Low Power mode for improved regulator efficiency,=
- used
-> +                when no heavy load is expected, does not limit the maxim=
-um out
-> +                current but unless only a light load is applied, there w=
-ill be
-> +                regulation accuracy and efficiency losses.
-> +            3 - Forced Ultra Low Power mode for ultra low load, this gre=
-atly
-> +                reduces the maximum output power, makes the regulator to=
- be
-> +                efficient only for ultra light load, and greatly reduces=
- the
-> +                quiescent current (Iq) of the buck.
-> +        maxItems: 3
-> +        items:
-> +          enum: [ 0, 1, 2, 3 ]
-> +    unevaluatedProperties: false
-> +
-> +  "^ldo-va(12-1|12-2|15)$":
-> +    type: object
-> +    $ref: regulator.yaml#
-> +    unevaluatedProperties: false
-> +
-> +  "^ldo-v(aux|m|rf-io|tref)18$":
-> +    type: object
-> +    $ref: regulator.yaml#
-> +    unevaluatedProperties: false
-> +
-> +  "^ldo-vcn(13|15)$":
-> +    type: object
-> +    $ref: regulator.yaml#
-> +    unevaluatedProperties: false
-> +
-> +  "^ldo-vio(0p75|18)$":
-> +    type: object
-> +    $ref: regulator.yaml#
-> +    unevaluatedProperties: false
-> +
-> +  "^ldo-vrf(0p9|12|13|18)$":
-> +    type: object
-> +    $ref: regulator.yaml#
-> +    unevaluatedProperties: false
-> +
-> +  "^ldo-vsram-(apu|cpub|cpum|cpul|digrf|mdfe|modem)$":
-> +    type: object
-> +    $ref: regulator.yaml#
-> +    unevaluatedProperties: false
-> +
-> +  "^ldo-vufs(12|18)$":
-> +    type: object
-> +    $ref: regulator.yaml#
-> +    unevaluatedProperties: false
+You could look at the MT6358 driver to see how I implemented it.
 
-Could we also describe supplies? There should be:
+[...]
 
-vsys-(buck[1-7]|vs[1-3]|ldo1)-supply
+> +static irqreturn_t mt6363_oc_isr(int irq, void *data)
+> +{
+> +       struct regulator_dev *rdev =3D (struct regulator_dev *)data;
+> +       struct mt6363_regulator_info *info =3D rdev_get_drvdata(rdev);
+> +
+> +       disable_irq_nosync(info->irq);
+> +
+> +       if (regulator_is_enabled_regmap(rdev))
+> +               regulator_notifier_call_chain(rdev, REGULATOR_EVENT_OVER_=
+CURRENT, NULL);
+> +
+> +       schedule_delayed_work(&info->oc_work, msecs_to_jiffies(OC_IRQ_ENA=
+BLE_DELAY_MS));
 
+Is this needed for debouncing?
+
+> +
+> +       return IRQ_HANDLED;
+> +}
+> +
+> +static int mt6363_set_ocp(struct regulator_dev *rdev, int lim, int sever=
+ity, bool enable)
+> +{
+> +       struct mt6363_regulator_info *info =3D rdev_get_drvdata(rdev);
+> +
+> +       /* MT6363 supports only enabling protection and does not support =
+limits */
+> +       if (lim || severity !=3D REGULATOR_SEVERITY_PROT || !enable)
+> +               return -EINVAL;
+> +
+> +       /* If there is no OCP interrupt, there's nothing to set */
+> +       if (info->irq <=3D 0)
+> +               return -EINVAL;
+
+-EOPNOTSUPP instead? One gives an error while the other gives a warning.
+
+> +
+> +       return devm_request_threaded_irq(&rdev->dev, info->irq, NULL,
+> +                                        mt6363_oc_isr, IRQF_ONESHOT,
+> +                                        info->desc.name, rdev);
+> +}
+> +
+
+[...]
+
+> +/* The array is indexed by id(MT6363_ID_XXX) */
+> +static struct mt6363_regulator_info mt6363_regulators[] =3D {
+> +       MT6363_BUCK("buck-vs2", VS2, 0, 1600000, 12500,
+> +                   MT6363_RG_BUCK0_EN_ADDR,
+> +                   MT6363_RG_BUCK_VS2_EN_BIT,
+> +                   MT6363_RG_BUCK_VS2_VOSEL_ADDR,
+> +                   MT6363_RG_BUCK_VS2_VOSEL_MASK,
+> +                   MT6363_RG_BUCK0_LP_ADDR,
+> +                   MT6363_RG_BUCK_VS2_LP_BIT,
+> +                   MT6363_RG_BUCK0_FCCM_ADDR,
+> +                   MT6363_RG_VS2_FCCM_BIT),
+
+All this doesn't need to be spelled out. Perhaps you could use some
+preprocessor magic to assemble all the register names so that the
+entry could be simplified to just
+
+        MT6363_BUCK("buck-vs2", VS2, 0, 1600000, 12500,
+MT6363_RG_BUCK0_FCCM_ADDR),
+
+[...]
+
+> +       MT6363_SSHUB("buck-sshub1", VBUCK1_SSHUB, 0, 1193750, 6250,
+> +                    MT6363_RG_BUCK_VBUCK1_SSHUB_EN_ADDR,
+> +                    MT6363_RG_BUCK_VBUCK1_SSHUB_VOSEL_ADDR,
+> +                    MT6363_RG_BUCK_VBUCK1_SSHUB_VOSEL_MASK),
+> +       MT6363_SSHUB("buck-sshub2", VBUCK2_SSHUB, 0, 1193750, 6250,
+> +                    MT6363_RG_BUCK_VBUCK2_SSHUB_EN_ADDR,
+> +                    MT6363_RG_BUCK_VBUCK2_SSHUB_VOSEL_ADDR,
+> +                    MT6363_RG_BUCK_VBUCK2_SSHUB_VOSEL_MASK),
+> +       MT6363_SSHUB("buck-sshub4", VBUCK4_SSHUB, 0, 1193750, 6250,
+> +                    MT6363_RG_BUCK_VBUCK4_SSHUB_EN_ADDR,
+> +                    MT6363_RG_BUCK_VBUCK4_SSHUB_VOSEL_ADDR,
+> +                    MT6363_RG_BUCK_VBUCK4_SSHUB_VOSEL_MASK),
+
+As mentioned in my reply to the binding patch, these aren't real regulators=
+.
+
+> +       MT6363_LDO_L_SC("ldo-vsram-digrf", VSRAM_DIGRF, 400000, 1193750, =
+6250,
+> +                       MT6363_RG_BUCK1_EN_ADDR,
+> +                       MT6363_RG_LDO_VSRAM_DIGRF_EN_BIT,
+> +                       MT6363_RG_LDO_VSRAM_DIGRF_VOSEL_ADDR,
+> +                       MT6363_RG_LDO_VSRAM_DIGRF_VOSEL_MASK,
+> +                       MT6363_RG_BUCK1_LP_ADDR,
+> +                       MT6363_RG_LDO_VSRAM_DIGRF_LP_BIT),
+
+Same here, these could be compressed smaller with some preprocessor magic.
+
+[...]
 
 ChenYu
-
-> +required:
-> +  - compatible
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +
-> +    pmic {
-> +      interrupt-controller;
-> +      #interrupt-cells =3D <3>;
-> +
-> +      regulators {
-> +        compatible =3D "mediatek,mt6363-regulator";
-> +        interrupts =3D <4 16 IRQ_TYPE_LEVEL_HIGH>, <4 17 IRQ_TYPE_LEVEL_=
-HIGH>,
-> +                     <4 18 IRQ_TYPE_LEVEL_HIGH>, <4 19 IRQ_TYPE_LEVEL_HI=
-GH>;
-> +        interrupt-names =3D "ldo-vcn15", "ldo-vcn13", "ldo-vrf0p9", "ldo=
--vrf12";
-> +
-> +        ldo-vio18 {
-> +          regulator-name =3D "pp1800-vio18-s3";
-> +          regulator-min-microvolt =3D <1800000>;
-> +          regulator-max-microvolt =3D <1800000>;
-> +          regulator-allowed-modes =3D <0 2>;
-> +          regulator-allow-set-load;
-> +        };
-> +      };
-> +    };
-> +...
-> --
-> 2.49.0
->
->
 
