@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93A0DC71130
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jul 2025 06:14:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E300FC71130
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jul 2025 06:29:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SuUrIHHCBaxuE/1gHX8u5Re0YGZ58yo0r0TdUCAgwEI=; b=Hyp+TYuL/6nOKqjihSTAKiJQ9L
-	a2LUYvdOwMSnCXg8Gz1xAthnyvg030EPQoNySM7tBhrB7YDSiQHjU0hCODEm05p+5Fj5VyxBfK+71
-	9fECzSu2l607SkR77eYL3qysibSv7cCY+lWlSm/KQxyztew1XsKeC7E0Iv45Xn95iE8Ss3QqL5aKt
-	zt/y92Ab/SnijwfAL3+j7+z/FzYNrkum1dvxVImW3l7P6SOvFIAjNmzLNIYdHLlHTOGaLyxZ8sGGF
-	EDg++JnIu8S2HWURXawItiIB2c09WhvM6r93z3nBXAWs/oKM1/le1sJNxcJAdoHbmjMYfmikgXScZ
-	Y6WIQttA==;
+	bh=6wtrK2WpKpdyhxNgapFFvEF0gkvLzAdX2rfvDy2T+tA=; b=ikAMzGXsNYH20xfWNKXolJTNdp
+	+GpHC38QusIem125YE3tawqCifDCANNbKOvqFIVTXmmF/nu75mx4Fz0tZbxi/A03fdMuOfnvsQ00M
+	wpSskINhSGZg/cnK7duIk32XfC29or9/xKn5VTQlH5HEwnVQ94wiCjlsalbXE5IBNPhK9jmTsh0MP
+	9c4qLcv8xxVxIor9ERuVyX6hVaIBMOYtDoHbpV8lhJikOUmoOpsnZIKSm4HBCnDEjpd0wZho1Sagn
+	KQw0wWnEBCRu5c3X5O99cz6sWTHfHUh3wCWjTVhUV2bEqihOCmtj1xQnfg5r1NtGbmEP4JsVHQuga
+	kHDVE29Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZ1ap-00000004PGY-2DPo;
-	Tue, 08 Jul 2025 06:14:15 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1uZ1ph-00000004R44-1hTx;
+	Tue, 08 Jul 2025 06:29:37 +0000
+Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZ1UD-00000004OQy-3Oq4;
-	Tue, 08 Jul 2025 06:07:27 +0000
+	id 1uZ1mZ-00000004Qa8-0H3O;
+	Tue, 08 Jul 2025 06:26:24 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id DAAEA5C5D90;
-	Tue,  8 Jul 2025 06:07:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B5D42C4CEED;
-	Tue,  8 Jul 2025 06:07:20 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 1EE44A4056D;
+	Tue,  8 Jul 2025 06:26:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8E7C7C4CEED;
+	Tue,  8 Jul 2025 06:26:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751954844;
-	bh=Ih+qKsUZVzftzC6WOKB+NxIhVYKtNpoAKnGyaqzTauQ=;
+	s=k20201202; t=1751955981;
+	bh=L3HA/tyMA0TRaxoaUnpvv0ErFNnf684Z0UbbLl0ir8E=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=hRCx2cncCIe4LMmd+LKDGjF7u9XZgI5YzXgm3yl8al7WaWHR95gFBIsMZj7wC/6PY
-	 2h+7Q1VmlN/ltARXYGzko89RozYB7vOVSzd10CUat5XytkqOjB14oAelwWJsH6kCxw
-	 Vs4vdpEaIXvXmeaSUbqrqx4urMCkyN14A717ZCccOoW8AfAlctHLUnpP54xZ7mhMaH
-	 gZMKvmgd9VHEk3jnT3MC6Hc4chnP1lFsMTfbLNSeusQrz/mvuOb9wUOgiLp5+zGc41
-	 Sz9cSQbylvpuuUlUkGKrkZ2l+OQdGND99+LNuG866VDgJfZUjPQ7dpedrTtlwCcQl5
-	 fBuKpjMEliFww==
-Message-ID: <5f3e7d3b-f720-43e3-9c75-7e0f5230be2a@kernel.org>
-Date: Tue, 8 Jul 2025 08:07:19 +0200
+	b=WhHEtDvv4mnsqLLVj8sOF9egG/BAfoXGWWzhVZbc60cmJQvtGibRoqiziZgmR2SJk
+	 WlwyntQjoXvF80Aw4YWrQUE8Fzzlx20fC81IVSPTiwejaG75DXZhxruzfSceTJli5v
+	 Xeal4cXTCsxTKpRanOhPkdwT+Ks459V6pz4roXx4V/sJcsCYzFIeBMLDtPTI6RMW/m
+	 GX7eN5R1HfbwQwIZJp8kuFfYdW56muEBBFFmB7K+PPOqpqaC6CHDRuUDxadwdVDWfL
+	 gwPD7Mme0CFarUaKpsPSatO5B5j+YBN+R1WoUAWq5FiE0Jj4wQE0UJIogRI+xYHXzk
+	 5mwHVa0ZBXhVg==
+Message-ID: <904d1165-185e-43ac-9b52-a2f17f774e80@kernel.org>
+Date: Tue, 8 Jul 2025 08:26:17 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 1/1] Bluetooth: mediatek: add gpio pin to reset bt
-To: Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>,
- Marcel Holtmann <marcel@holtmann.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Luiz Von Dentz <luiz.dentz@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+Subject: Re: [PATCH net-next v2 2/7] net: airoha: npu: Add NPU wlan memory
+ initialization commands
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>
-Cc: Sean Wang <sean.wang@mediatek.com>, Jiande Lu <jiande.lu@mediatek.com>,
- Deren Wu <deren.Wu@mediatek.com>, Chris Lu <chris.lu@mediatek.com>,
- Hao Qin <Hao.qin@mediatek.com>, Wallace Yu <Wallace.Yu@mediatek.com>,
- linux-bluetooth <linux-bluetooth@vger.kernel.org>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- linux-mediatek <linux-mediatek@lists.infradead.org>,
- devicetree <devicetree@vger.kernel.org>
-References: <20250708060150.27375-1-ot_zhangchao.zhang@mediatek.com>
- <20250708060150.27375-2-ot_zhangchao.zhang@mediatek.com>
+ Conor Dooley <conor+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, Simon Horman <horms@kernel.org>,
+ Felix Fietkau <nbd@nbd.name>
+References: <20250705-airoha-en7581-wlan-offlaod-v2-0-3cf32785e381@kernel.org>
+ <20250705-airoha-en7581-wlan-offlaod-v2-2-3cf32785e381@kernel.org>
+ <20250707-agile-aardwolf-of-politeness-29fead@krzk-bin>
+ <aGt2L1e3xbWVoqOO@lore-desk>
+ <679e6fd2-967f-4057-9ccd-92a37ecc4819@kernel.org>
+ <aGvmoJ83EtYOIa0K@lore-desk>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -108,12 +107,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20250708060150.27375-2-ot_zhangchao.zhang@mediatek.com>
+In-Reply-To: <aGvmoJ83EtYOIa0K@lore-desk>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250707_230725_972039_6D4B26FE 
-X-CRM114-Status: GOOD (  20.52  )
+X-CRM114-CacheID: sfid-20250707_232623_316875_08A533D8 
+X-CRM114-Status: GOOD (  24.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,69 +127,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 08/07/2025 08:01, Zhangchao Zhang wrote:
-> Makes the platform Bluetooth to be reset by hardware pin,
-> it provides two methods to do it for mediatek controller,
-> and it has been tested locally many times and can reset normally.
+On 07/07/2025 17:24, Lorenzo Bianconi wrote:
+>> On 07/07/2025 09:24, Lorenzo Bianconi wrote:
+>>>> On Sat, Jul 05, 2025 at 11:09:46PM +0200, Lorenzo Bianconi wrote:
+>>>>> +
+>>>>>  struct airoha_npu *airoha_npu_get(struct device *dev, dma_addr_t *stats_addr)
+>>>>>  {
+>>>>>  	struct platform_device *pdev;
+>>>>> @@ -493,6 +573,7 @@ static int airoha_npu_probe(struct platform_device *pdev)
+>>>>>  	npu->ops.ppe_deinit = airoha_npu_ppe_deinit;
+>>>>>  	npu->ops.ppe_flush_sram_entries = airoha_npu_ppe_flush_sram_entries;
+>>>>>  	npu->ops.ppe_foe_commit_entry = airoha_npu_foe_commit_entry;
+>>>>> +	npu->ops.wlan_init_reserved_memory = airoha_npu_wlan_init_memory;
+>>>>
+>>>> I cannot find in your code single place calling this (later you add a
+>>>> wrapper... which is not called either).
+>>>>
+>>>> All this looks like dead code...
+>>>
+>>> As pointed out in the commit log, these callbacks will be used by MT76 driver
+>>> to initialize the NPU reserved memory and registers during driver probe in
+>>> order to initialize the WiFi offloading. Since MT76 patches are going via
+>>> the wireless tree, I needed to add these callbacks first.
+>>
+>> Cover letter does not link to your NPU patchset. You cannot add dead
+>> code to the kernel and now it is pure dead code. Post your user - in
+>> this or separate patchset.
 > 
-> When an exception occurs, resetting Bluetooth by hardware pin
-> is more stable than resetting Bluetooth by software.
-> If the corresponding pin is not found in dts,
-> bluetooth can also be reset successfully.
+> I guess you mean the related MT76 patches are not linked in the cover-letter,
+> right? I have not posted them yet.
 > 
-> Co-developed: Hao Qin <hao.qin@mediatek.com>
-> Co-developed: Chris Lu <chris.lu@mediatek.com>
-> Co-developed: Jiande Lu <jiande.lu@mediatek.com>
-> Signed-off-by: Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>
-> ---
->  drivers/bluetooth/btmtk.c | 69 +++++++++++++++++++++++++++++++++++++++
->  drivers/bluetooth/btmtk.h |  5 +++
->  2 files changed, 74 insertions(+)
+>>
+>> Your explanation of dependency is also confusing. If these are added to
+>> wireless tree (considering last experience how they rebase and cannot
+>> easily handle cross tree merges), how does it solve your problem? You
+>> will have it in one tree but not in the other, so still nothing...
+>> That's anyway separate problem, because main issue is you add code which
+>> we cannot even verify how it is being used.
 > 
-> diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-> index 4390fd571dbd..cdb90143be61 100644
-> --- a/drivers/bluetooth/btmtk.c
-> +++ b/drivers/bluetooth/btmtk.c
-> @@ -6,6 +6,8 @@
->  #include <linux/firmware.h>
->  #include <linux/usb.h>
->  #include <linux/iopoll.h>
-> +#include <linux/of.h>
-> +#include <linux/of_gpio.h>
->  #include <linux/unaligned.h>
->  
->  #include <net/bluetooth/bluetooth.h>
-> @@ -109,6 +111,65 @@ static void btmtk_coredump_notify(struct hci_dev *hdev, int state)
->  	}
->  }
->  
-> +static void btmtk_reset_by_gpio_work(struct work_struct *work)
-> +{
-> +	struct btmtk_reset_gpio *reset_gpio_data =
-> +			container_of(work, struct btmtk_reset_gpio, reset_work.work);
-> +
-> +	gpio_direction_output(reset_gpio_data->gpio_number, 1);
-> +	kfree(reset_gpio_data);
-> +}
-> +
-> +static int btmtk_reset_by_gpio(struct hci_dev *hdev)
-> +{
-> +	struct btmtk_data *data = hci_get_priv(hdev);
-> +	struct btmtk_reset_gpio *reset_gpio_data;
-> +	struct device_node *node;
-> +	int reset_gpio_number;
-> +
-> +	node = of_find_compatible_node(NULL, NULL, "mediatek,mt7925-bluetooth");
+> My main point here is wireless tree can't acutally merge the MT76 patches
+> since, without the net-next ones (this series), it will not compile (so I
 
-No. You don't take GPIOs from random node. You take them from your
-device with proper API, instead of:
+This does not explain hiding the other part. Again - there is nothing
+weird in patchset dependencies. Weird is saying there is dependency, so
+I will not post code.
 
-> +	if (node) {
-> +		reset_gpio_number = of_get_named_gpio(node, "reset-gpios", 0);
-
-legacy OF API. This only points that your driver model is broken or your
-hardware description is wrong.
-
+> posted net-next patches as preliminary ones for MT76 changes).
+> Moreover, this is the same approach we used when we added WED support to
+> mtk_eth_soc driver and the related MT76 support.
+> However, I am fine to post the MT76 changes as RFC and just refer to it in
+> this series cover-letter. Agree? 
+> 
+>>
+>> So far I see ABI break, but without user cannot judge. And that's the
+>> hard reason this cannot be accepted.
+> 
+> if you mean the dts changes, I will fix them in v3.
+> 
+No, I mean driver.
 
 Best regards,
 Krzysztof
