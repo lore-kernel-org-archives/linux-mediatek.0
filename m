@@ -4,55 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D04CBC8303C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jul 2025 07:14:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FC82C8303C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jul 2025 07:17:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=CncBn72Po4xfVSHEBJOvuxgfjvMFR73s62uElzwlrsY=; b=Byr/rIy4RUQQlj
-	OxhhhDPw2Krq0YixqIP63/lhi9JTRE4hlcEC+dCYzTL4hN0IinTE+FANBoKkZE8TCKRxNV/Rgew9q
-	+Nw7HdnBnjnixwboONOVZ1b1DwfIuF+1dVLDtbL2rIHpDOl2DOybkWLoqQ/kh6UG9A1dvJG3+h7ud
-	CTI7XC2ettGPufgMd+pxKe2Cqc7+DCFOeH0sCNW4i0g80WseTRoeFp5ILQDiY2EM7KrZNTd3pfRvo
-	4Dgvn7ChTUduWFK0h0VuWCjR7+WRNX9FrL3sqpaeKEif2+OKlfemlS+2IYwB8WMQqd4ovLHwsb4OZ
-	9qplXS5QiZclTdzaS7SQ==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BFd0NVHN2FB+0DvPCwujCccN64uIQ0Qpnb6VPXSrW3E=; b=AtrYWY3/7eRB/omkeOGXS+tTRf
+	lJ0VABmr+hNPAywaTbDPfUDQ5jNISSIPOBm8KE4AhqhX3d64QaLabwvKhtvNfHd4QVb2O7/U9gFHr
+	7d/7hDPWquWlMrIK7IKtwKHQQZWj59yT0mndstxNAx28rk4zfO+4/j0PNQ0/igBcn0Tg37cRjk8KF
+	v7J+yRVga+8kDA1yEF9CeCVfQlGYul9/0tJo0/WYpMdwwvqnZCYl/YRKGtr7nBjOW14Jz5fu4Sqs7
+	pDPJnsnAqtSCnHyw1s5A9Itcw6iXFyuhXB2CZHjp9+N7VwkiOb8kWIPFwPYsIFX5Zk/q5c6lYZqfr
+	IV6DawfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZ2XV-00000004YRI-1Cak;
-	Tue, 08 Jul 2025 07:14:53 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1uZ2Zo-00000004YfN-19mM;
+	Tue, 08 Jul 2025 07:17:16 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZ2V9-00000004YDh-3eX6;
-	Tue, 08 Jul 2025 07:12:27 +0000
+	id 1uZ2VC-00000004YEB-3Qwo;
+	Tue, 08 Jul 2025 07:12:30 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 4541661463;
-	Tue,  8 Jul 2025 07:12:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9B3CBC4CEED;
-	Tue,  8 Jul 2025 07:12:26 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 4357C61465;
+	Tue,  8 Jul 2025 07:12:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9B28BC4CEED;
+	Tue,  8 Jul 2025 07:12:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1751958747;
-	bh=gjo96x9e45Yxy/9KO1uojpXNo9dbAQFOswgfQn3glyk=;
-	h=From:Subject:Date:To:Cc:From;
-	b=McnzOBb7/RzDNvcdlzM1uSubEdBkiig7ZRA5PyG+8wyb0LBeN+lV/uZNuOuEbTjQk
-	 MQfoxQg/Xk3SwjfTZCJiNtFq4h5wqmWi9zTCZYq8sYSVWu4bHMWkKEUb4sQrSWvmxo
-	 FdIkGuBQ6iISqJH9gpQdCUMO6wbcaYhhvaS+gtML4Ony8fITM6mKhqwQHnLYN7hL+e
-	 Lhdyy+ZJx54sweX/XtZIUzlWfdL7ydaYwgmVBhbBVSC5zogXwMV0d5Pbr10+fzHtm1
-	 25j8nRvbnchGllJLG34a4DvTm62xRANOEtVYuyyDns1en2l6i7fi71yWcdxsASwRYf
-	 l9UfsK9lJXCWg==
+	s=k20201202; t=1751958750;
+	bh=SzEkAx2UZEVxCVcrkwBEfVoThhQdgL+QBqoVgAMyHC8=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=npWx24+zEocZSkBx5yc5LFW1AegC30qV94/npSxPM7n5HbuFHtI/e/JBt3I2VGLMS
+	 vHQ7bc8y39hzCG6l34Xl0hJpJPSygXJnC6bjvMrWsrsSz3z+IeBO8nCbf6BRMouo9g
+	 6LcjWRRXm6xWcVvfcScve0Y8PTktbu5GLWYOLdAanehg5SAJmPp2Jg0732ZgDpWlud
+	 e8mBZ/9g1XO6hvaKOfQaPkhtD9Gb3c7T1ns1GBybE2Jw4VtDMzrTPdpE+m3TTBvGbM
+	 XrcR+786aPW7/tfb/TCSiCgQe9WYcypElh/aeisqpRvUAc4Oy9a73YzLlbCu7yiYka
+	 LzTLTHcfElnkw==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Subject: [PATCH mt76 0/2] Fix MT7996 driver performance in the mixed
- MLO/non-MLO scenario
-Date: Tue, 08 Jul 2025 09:12:03 +0200
-Message-Id: <20250708-mt7996-mlo-fixes-v2-v1-0-f2682818a8a3@kernel.org>
+Date: Tue, 08 Jul 2025 09:12:04 +0200
+Subject: [PATCH mt76 1/2] wifi: mt76: mt7996: Overwrite unspecified link_id
+ in mt7996_tx()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAMPEbGgC/x3LQQqAIBBA0avErBtQodSuEi2ixhpICw0JwrsnL
- R+f/0KiyJRgaF6IlDnxGSpk28Cyz2Ej5LUalFCd0MKgv7W1PfrjRMcPJcwK1866nqSSxjqo5xX
- pb3Ucp1I+14tdCGUAAAA=
-X-Change-ID: 20250708-mt7996-mlo-fixes-v2-d59f6e12189f
+Message-Id: <20250708-mt7996-mlo-fixes-v2-v1-1-f2682818a8a3@kernel.org>
+References: <20250708-mt7996-mlo-fixes-v2-v1-0-f2682818a8a3@kernel.org>
+In-Reply-To: <20250708-mt7996-mlo-fixes-v2-v1-0-f2682818a8a3@kernel.org>
 To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
  Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -80,24 +78,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Two more fixes to improve MT7996 driver performances in the mixed
-MLO/non-MLO scenario
+Set link_id to msta or mvif primary value if it is set to
+IEEE80211_LINK_UNSPECIFIED by mac80211 in mt7996_tx routine.
 
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
-Lorenzo Bianconi (2):
-      wifi: mt76: mt7996: Overwrite unspecified link_id in mt7996_tx()
-      wifi: mt76: mt7996: Fix mt7996_mcu_sta_ba wcid configuration
+ drivers/net/wireless/mediatek/mt76/mt7996/main.c | 26 ++++++++++++++++--------
+ 1 file changed, 17 insertions(+), 9 deletions(-)
 
- drivers/net/wireless/mediatek/mt76/mt7996/main.c   | 32 ++++++++++++++--------
- drivers/net/wireless/mediatek/mt76/mt7996/mcu.c    | 12 ++++----
- drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h |  3 +-
- 3 files changed, 30 insertions(+), 17 deletions(-)
----
-base-commit: e553ac0d7616d6bcd06ed0c5f6126ce83097b31a
-change-id: 20250708-mt7996-mlo-fixes-v2-d59f6e12189f
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+index f846b8309ae2e9c39f9d5f2a21ca1edd89dcdf0c..03ec3edc9a632390cb6d86d75b2e65a302a9a372 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+@@ -1217,21 +1217,30 @@ static void mt7996_tx(struct ieee80211_hw *hw,
+ 	struct mt76_wcid *wcid = &dev->mt76.global_wcid;
+ 	u8 link_id = u32_get_bits(info->control.flags,
+ 				  IEEE80211_TX_CTRL_MLO_LINK);
++	struct mt7996_sta *msta;
++	struct mt7996_vif *mvif;
+ 
+ 	rcu_read_lock();
+ 
+-	if (vif) {
+-		struct mt7996_vif *mvif = (void *)vif->drv_priv;
++	msta = control->sta ? (void *)control->sta->drv_priv : NULL;
++	mvif = vif ? (void *)vif->drv_priv : NULL;
++
++	/* Use primary link_id if the value from mac80211 is set to
++	 * IEEE80211_LINK_UNSPECIFIED.
++	 */
++	if (link_id == IEEE80211_LINK_UNSPECIFIED) {
++		if (msta)
++			link_id = msta->deflink_id;
++		else if (mvif)
++			link_id = mvif->mt76.deflink_id;
++	}
++
++	if (mvif) {
+ 		struct mt76_vif_link *mlink = &mvif->deflink.mt76;
+ 
+ 		if (link_id < IEEE80211_LINK_UNSPECIFIED)
+ 			mlink = rcu_dereference(mvif->mt76.link[link_id]);
+ 
+-		if (!mlink) {
+-			ieee80211_free_txskb(hw, skb);
+-			goto unlock;
+-		}
+-
+ 		if (mlink->wcid)
+ 			wcid = mlink->wcid;
+ 
+@@ -1250,8 +1259,7 @@ static void mt7996_tx(struct ieee80211_hw *hw,
+ 		goto unlock;
+ 	}
+ 
+-	if (control->sta && link_id < IEEE80211_LINK_UNSPECIFIED) {
+-		struct mt7996_sta *msta = (void *)control->sta->drv_priv;
++	if (msta && link_id < IEEE80211_LINK_UNSPECIFIED) {
+ 		struct mt7996_sta_link *msta_link;
+ 
+ 		msta_link = rcu_dereference(msta->link[link_id]);
 
-Best regards,
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.50.0
 
 
