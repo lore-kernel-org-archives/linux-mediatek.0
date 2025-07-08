@@ -4,81 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC5BAC83F09
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jul 2025 22:14:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F346C8303C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jul 2025 23:54:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:
-	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=p0DP/yEP8mz0tV12G5LR9PQ4AN9dj0wNDnAmLxZaMVk=; b=x6rx/MmgyaRBp+gjUpvVlXSgcp
-	JyJmJydFgdLTkY0kw8ERo+3Dwk1eLcAPSRVtL0Y52Og8xFq1r24ADpnAUmEjaWjdb8XM8UobfXI2G
-	mC6+XiykxcxnZoUSPNYbbakUgpJ1C5SDGM/Dy1hsrhRqj2Vbo6ZEaDqnrZdausGiQijrZHrI52bg4
-	p4dCsuz4uycgn5X+KxIkSfHIL1UEFiymM3nILHgvqZXxX13LJM2FQVPO9IHBifa9w2dWhavkhOFJs
-	cAdcoc0st96y6OisinQQlGwuqzjG5JarAT9pjCJ/cRW8AuNgPvCj2XD1rjAQ0Bd40P1o9nlS4vk+o
-	I4WG8bRw==;
+	bh=LIpnI+/KkKYMz9Wfww8vVb4elUGSQP7L8IBvr/OnuBk=; b=Wz/e0+LioxjxCkJhP66vH/S4DE
+	nayTL9zwZEP28vh71yo6550IBF+fbpMK3zdVSv8Ekqm6nyeK7S2UN26KBzpavRvtG5O3CTbcB4J3m
+	7H0YANn0hUiEgF4ecVwWB/kxCN+/45+1i/gAQE9hRUmBfKjmir3gJ8opNJlkqm9ynvnFcG/39zm9J
+	o52Okr7AZEI0ZCkyg140ksCvJ300ZWuWNkqSwr87ESQA2PAAQJVjp14iN+HeGqYucK7aGDtGy/sxN
+	GodrfmaYxdNY0xZpFMS6p4WLsY+QDi1YbUJLwYDwiD+8FVeRpapwyMdXL8scyo+AfFEndJXycfoKy
+	j0X2gF9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZGZb-00000006ka5-2nI5;
-	Tue, 08 Jul 2025 22:13:59 +0000
-Received: from mx4.wp.pl ([212.77.101.12])
+	id 1uZI8c-00000006vBN-2UUj;
+	Tue, 08 Jul 2025 23:54:14 +0000
+Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZGQC-00000006ifh-1LGw
-	for linux-mediatek@lists.infradead.org;
-	Tue, 08 Jul 2025 22:04:17 +0000
-Received: (wp-smtpd smtp.wp.pl 9932 invoked from network); 9 Jul 2025 00:04:13 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wp.pl; s=20241105;
-          t=1752012253; bh=p0DP/yEP8mz0tV12G5LR9PQ4AN9dj0wNDnAmLxZaMVk=;
-          h=From:To:Subject;
-          b=IGiWjfSKBf4/nudFRpbvz4M2qi5dOEUcoDZVGGIr3PBsISx2DYgsF1nItLnHYNlFF
-           +i7jhIFAUie0xU7mW6cF7V+xj11rU4wt2rwi5TSTBXyT3UhR6/G2WsaBMnmLWQCdnw
-           bBdlFqj220eBcdvpb56l+gNdLb7uP30px4YC0EWNt95hyrnOP77KJm4sM03o5TYMQ4
-           MEV8DRCQw9HhSJkKDoymm5uM1WLJl2ezgZl8VMXqlHmLs/bWPutT2rrPMdVBKSel4b
-           VEMn4mQRJkTfb+WOe9mQFYOfwo79Z3uxdydbWWdwrRkMVyjayd53rVTWV4x3xuy/4W
-           YyL/Isf8NER+w==
-Received: from 83.24.138.239.ipv4.supernova.orange.pl (HELO laptop-olek.lan) (olek2@wp.pl@[83.24.138.239])
-          (envelope-sender <olek2@wp.pl>)
-          by smtp.wp.pl (WP-SMTPD) with ECDHE-RSA-AES256-GCM-SHA384 encrypted SMTP
-          for <rafael@kernel.org>; 9 Jul 2025 00:04:13 +0200
-From: Aleksander Jan Bajkowski <olek2@wp.pl>
-To: rafael@kernel.org,
-	daniel.lezcano@linaro.org,
-	rui.zhang@intel.com,
-	lukasz.luba@arm.com,
-	jic23@kernel.org,
-	dlechner@baylibre.com,
-	nuno.sa@analog.com,
-	andy@kernel.org,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	s.hauer@pengutronix.de,
-	olek2@wp.pl,
-	zhiyong.tao@mediatek.com,
-	linux-pm@vger.kernel.org,
-	linux-iio@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 3/3] arm64: dts: mediatek: add thermal sensor support on mt7981
-Date: Wed,  9 Jul 2025 00:04:05 +0200
-Message-Id: <20250708220405.1072393-4-olek2@wp.pl>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250708220405.1072393-1-olek2@wp.pl>
-References: <20250708220405.1072393-1-olek2@wp.pl>
+	id 1uZI8Z-00000006vAu-3IJh;
+	Tue, 08 Jul 2025 23:54:13 +0000
+Received: by mail-yb1-xb32.google.com with SMTP id 3f1490d57ef6-e8b3cc05665so2768024276.2;
+        Tue, 08 Jul 2025 16:54:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1752018850; x=1752623650; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=LIpnI+/KkKYMz9Wfww8vVb4elUGSQP7L8IBvr/OnuBk=;
+        b=f0pUStFZXAtDGm82iXC4MV6th733jROAORR43kckZSt6Z2ci/L9n1kAfVqZiY6Ix2V
+         D5hZobI3pjYMvpG6yVJU9+IjLg5TTCDywcS/tPOFbIl8vSBSoV9Vinf66pXVepQVGNah
+         Ms0fYDctulZ6ZhJ98sPjMKXcy6bw/mupdgg9xvCnkFzOitaIhBYmz+o5FtEvI/v4kPRN
+         1IIqMoRVqJQ711yYKnZex0B9DYiLrfPL8hvpYgqkKAsrLDPRkJp2kEQcaKW96ObjpWwg
+         fDbz2+xtAR79bxEbo8fDV6HbkE8meKPAYyfrWGPjtQiaxm8Ek2HF2G2S0Yr6iEfnRQ8o
+         tVUA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1752018850; x=1752623650;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=LIpnI+/KkKYMz9Wfww8vVb4elUGSQP7L8IBvr/OnuBk=;
+        b=XfsAWFOTCYeGzwKEHbQSYDEYvgz2KNEvh4er7G/G3LvIMCCVWQq/0MdCD/utp67BaH
+         XtNgT9cx+qvlQBqJ/knKJ1uRg7hmKcE4QtZLZJiQ/BqiWDwvh4TqJw+ZoYxnbMPbNk+Z
+         yqJqbyEcxSWdDRbiO+61tVewuwJ5ufY/2+1lTcSCMtNrPa2QZyLSvvYV0u1cB1ZqX2B9
+         wjOZHcK0NessPtkxjjuyQVxWuH6qouLoV7JkTx2nU5rA/YHhbpD7f67nPy/EdCqMFzMU
+         uYHXc59UPUPw9Y4fvaqqk/tqD5SfretXWsn2rAy7HK6Wbn23PJS7HEhupI6ExTn1f7eb
+         HC6Q==
+X-Forwarded-Encrypted: i=1; AJvYcCWST5GzvF53Dt7jgyZe9sJCdHytxeKB7MSsadeNljngNqdVDJ/uRrh6Bm4pF75AxLUDME92N77wyzv56c9DMpcu@lists.infradead.org, AJvYcCXqEA9iKF9lztD6Z403pGit7K1vd3CDFhB4wThDP1zHpWl3IaPXAAXvzSXcdUiabMIN5LCHIl0SiWC5EyMYIn8=@lists.infradead.org
+X-Gm-Message-State: AOJu0YynesCItnT76nTmvOL54to/f0dOxWpwlQQGX+cNw+rXBT0lxv9M
+	rE/yFgM7axNOxPPxvRUaVBPjeUW3ssBCXsBDZ2G8eSDLLmjt3/0gVlasqqHK/IqWHK1wITia8gg
+	WBzuCz+qT1egQVRGKqgDPjywiNmuyp+A=
+X-Gm-Gg: ASbGncuiFDRJOd9EVQcZ0zHg2HN/JJntWNHCO7+i2ySHozOw5nC5bDaCFRsZ/pPpwm5
+	wN0Uk//W54tWt4iFbavxw+mOca7S9rBMULg9tX+Kl9/5bBwnLzOsx6YAZNK1mrZDIRPLjKCMdH1
+	IB5oFhWKDY9cAYk+WtMIRAFQDbL9Lm3SkYv+XkxmNqkjqME/xWrdrfiqljerd+pUalQos=
+X-Google-Smtp-Source: AGHT+IHHnkecJrTiDBVoCM7eM4g32Pk1c3raG4mqxUk9pSpJNW1vy947mDXE0F5WHjldRJe6WxHFFxEogzvUMtezeI0=
+X-Received: by 2002:a05:690c:9c0e:b0:70e:2ba2:659d with SMTP id
+ 00721157ae682-717b19634eamr9861137b3.23.1752018850202; Tue, 08 Jul 2025
+ 16:54:10 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-WP-MailID: 995d0e042c99d6c3b46f7c20e293c2da
-X-WP-AV: skaner antywirusowy Poczty Wirtualnej Polski
-X-WP-SPAM: NO 0000000 [cbMx]                               
+References: <20250708201745.5900-1-rosenp@gmail.com> <20250708201745.5900-8-rosenp@gmail.com>
+ <175201013411.1121693.17824456704959772294.robh@kernel.org>
+In-Reply-To: <175201013411.1121693.17824456704959772294.robh@kernel.org>
+From: Rosen Penev <rosenp@gmail.com>
+Date: Tue, 8 Jul 2025 16:53:59 -0700
+X-Gm-Features: Ac12FXyerQ4XgpTDcxgbBtlk_P_w9tWTj-9IUlprsdtZUPLTaj8qf2lgKgQNTww
+Message-ID: <CAKxU2N_oUgqdOymr6RRSe3KYQpXrUUFm0SvOYFogx7NOVMv5LA@mail.gmail.com>
+Subject: Re: [PATCHv2 wireless-next 7/7] dt-bindings: net: wireless: rt2800: add
+To: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, Stanislaw Gruszka <stf_xl@wp.pl>, linux-mips@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-wireless@vger.kernel.org, 
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Johannes Berg <johannes@sipsolutions.net>, devicetree@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250708_150416_519944_1E2F92A3 
-X-CRM114-Status: UNSURE (   9.45  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250708_165411_825588_7DB66BC8 
+X-CRM114-Status: GOOD (  17.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,70 +99,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The temperature sensor in the MT7981 is same as in the MT7986.
+On Tue, Jul 8, 2025 at 2:28=E2=80=AFPM Rob Herring (Arm) <robh@kernel.org> =
+wrote:
+>
+>
+> On Tue, 08 Jul 2025 13:17:45 -0700, Rosen Penev wrote:
+> > Add device-tree bindings for the RT2800 SOC wifi device found in older
+> > Ralink/Mediatek devices.
+> >
+> > Signed-off-by: Rosen Penev <rosenp@gmail.com>
+> > ---
+> >  .../bindings/net/wireless/ralink,rt2800.yaml  | 47 +++++++++++++++++++
+> >  1 file changed, 47 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/net/wireless/rali=
+nk,rt2800.yaml
+> >
+>
+> My bot found errors running 'make dt_binding_check' on your patch:
+>
+> yamllint warnings/errors:
+>
+> dtschema/dtc warnings/errors:
+> Documentation/devicetree/bindings/net/wireless/ralink,rt2800.example.dtb:=
+ /example-0/wifi@110180000: failed to match any schema with compatible: ['r=
+alink,rt2880-wifi']
+ralink,rt2880-wifi vs ralink,rt2800-wifi
 
-Signed-off-by: Aleksander Jan Bajkowski <olek2@wp.pl>
----
- arch/arm64/boot/dts/mediatek/mt7981b.dtsi | 31 ++++++++++++++++++++++-
- 1 file changed, 30 insertions(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-index 5cbea9cd411f..277c11247c13 100644
---- a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-@@ -76,7 +76,7 @@ watchdog: watchdog@1001c000 {
- 			#reset-cells = <1>;
- 		};
- 
--		clock-controller@1001e000 {
-+		apmixedsys: clock-controller@1001e000 {
- 			compatible = "mediatek,mt7981-apmixedsys";
- 			reg = <0 0x1001e000 0 0x1000>;
- 			#clock-cells = <1>;
-@@ -184,6 +184,31 @@ spi@1100b000 {
- 			status = "disabled";
- 		};
- 
-+		thermal@1100c800 {
-+			compatible = "mediatek,mt7981-thermal",
-+				     "mediatek,mt7986-thermal";
-+			reg = <0 0x1100c800 0 0x800>;
-+			interrupts = <GIC_SPI 138 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&infracfg CLK_INFRA_THERM_CK>,
-+				 <&infracfg CLK_INFRA_ADC_26M_CK>;
-+			clock-names = "therm", "auxadc";
-+			nvmem-cells = <&thermal_calibration>;
-+			nvmem-cell-names = "calibration-data";
-+			#thermal-sensor-cells = <1>;
-+			mediatek,auxadc = <&auxadc>;
-+			mediatek,apmixedsys = <&apmixedsys>;
-+		};
-+
-+		auxadc: adc@1100d000 {
-+			compatible = "mediatek,mt7981-auxadc",
-+				     "mediatek,mt7986-auxadc";
-+			reg = <0 0x1100d000 0 0x1000>;
-+			clocks = <&infracfg CLK_INFRA_ADC_26M_CK>;
-+			clock-names = "main";
-+			#io-channel-cells = <1>;
-+			status = "disabled";
-+		};
-+
- 		pio: pinctrl@11d00000 {
- 			compatible = "mediatek,mt7981-pinctrl";
- 			reg = <0 0x11d00000 0 0x1000>,
-@@ -211,6 +236,10 @@ efuse@11f20000 {
- 			reg = <0 0x11f20000 0 0x1000>;
- 			#address-cells = <1>;
- 			#size-cells = <1>;
-+
-+			thermal_calibration: thermal-calib@274 {
-+				reg = <0x274 0xc>;
-+			};
- 		};
- 
- 		clock-controller@15000000 {
--- 
-2.39.5
-
+lovely...
+>
+> doc reference errors (make refcheckdocs):
+>
+> See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/202507=
+08201745.5900-8-rosenp@gmail.com
+>
+> The base for the series is generally the latest rc1. A different dependen=
+cy
+> should be noted in *this* patch.
+>
+> If you already ran 'make dt_binding_check' and didn't see the above
+> error(s), then make sure 'yamllint' is installed and dt-schema is up to
+> date:
+>
+> pip3 install dtschema --upgrade
+>
+> Please check and re-submit after running the above command yourself. Note
+> that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+> your schema. However, it must be unset to test all examples with your sch=
+ema.
+>
 
