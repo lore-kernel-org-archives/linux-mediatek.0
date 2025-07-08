@@ -4,63 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEFACC83F09
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jul 2025 20:03:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC9D9C83F0F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jul 2025 20:08:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=waUFlfYDtLCh3fV2xvfAcHAmgXoHDAkkSyJ3iUBp8s8=; b=DFfsaZlAEA8BxtI9HC1OyGZ2pr
-	k1jKvTL8aN/JsCfQRlfJK+FlCZQKh0nCZELLBaBM2XCjyTyogEIoGOmAvF9DgZEDNarBpRcBC8k+l
-	yas4cXqnKav2HKjQFlTaX80iG7LuRVbLFa1V6pSITckk71x0FHYDccoS6Z3nxF3vRuAZoicMj71sb
-	CUmCncI4A5bV2I653DJXXPkpwCz9Q04SjyUlCd7XFwqab9Wzjk67vB4ru4oT9JQa5xT1VwPTW2hZR
-	BAov3hu1WHDfFDjfEsXBgZ1+5MSIIYHjj58Y59KhQWhGhlqGlJQjkQjhYFMYWviityZ53H+2grq4V
-	CMaXSI6g==;
+	bh=zjpUGumsyFT3wsCtF9Dlg1G6YfAqzI8ZghV7o/ro8w4=; b=VlgXSe3BC6QLhj4CTBcVqE2Xav
+	jPJWx87H59+Ez2Ui4y6F4f3EVDo62JmySze1VoJko2nAcgrArbUc7ijzRjnjkdQmasQs/OQE+kVci
+	8Nyu1dvKE/6xetLCCypE/soj7EON1XlQn8x8UrdaLPUv3zAL50Ca2PJYhAIJbsiTYutucK5pPnCXN
+	qHaMGpKwAQsm5DbZs8g5ptxUDrJA19HKZFjbIaEliVht6XgrFjOPIiHs0qauKpqi8BtzGZIY4pHgl
+	d3ckQvAUxWFaGrk06SukOlM4o59jIOVfGuWRfsLLSeFyTEunKnzzwNhEvxNazfQpVXJTBqiiTDQau
+	prcGcbEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZEXQ-00000006SGU-3GfE;
-	Tue, 08 Jul 2025 20:03:36 +0000
+	id 1uZEc3-00000006Sl3-3gUh;
+	Tue, 08 Jul 2025 20:08:23 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZDu9-00000006LLm-1LBo;
-	Tue, 08 Jul 2025 19:23:03 +0000
+	id 1uZE2C-00000006LpL-0b8x;
+	Tue, 08 Jul 2025 19:31:21 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id BAF3D5C5B60;
-	Tue,  8 Jul 2025 19:23:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 245F0C4CEED;
-	Tue,  8 Jul 2025 19:23:00 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id 86FB95C516B;
+	Tue,  8 Jul 2025 19:31:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EF178C4CEED;
+	Tue,  8 Jul 2025 19:31:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752002580;
-	bh=dOvW17x+dbsJQLzVMph+iJfeu3y0qwjWlfWvz5ioVxI=;
+	s=k20201202; t=1752003079;
+	bh=4HIbXqO4X/zdFKMfYlEoWG4p7UkHS98SkaZFdbZdFKo=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=pMaeHI47SnTWqGnpKHGmbNN6znyP6Ax23KY3vl/Qu1DBOx8SV8IU1i8NTMGUw5vaA
-	 Oebj2IzjRfYKbJAZQ2H86HLCOBfrELJlu4Br04w4LpBYFKXJh/4yMkBmZhZmnnpHOP
-	 IEnVLAc+/MecRNYxWXeZa8zFq2L8DD/bVaPTakdYpB0eFLqxH3OkjxfQk/+Ja6vFfv
-	 lkA+hlxxYV12N4q0Q6APjc6SnWVpMPB+BW4pOcaqrMTBlWIL/HYyNKV+WfghB7iSQo
-	 Fe/JJzX+YL4dKW29fKD38ahN+21b5EFlsedZkLpejpzU4AwYnKCt06TdFf5jBrZKrE
-	 emQ3+UnADOKvg==
-Date: Tue, 8 Jul 2025 14:22:59 -0500
+	b=CAqQP9MY6hAOf2CQAO7iVpo9cciRLieNSlVrPS7uTOEYeRSsdmr2ElnpEehToll8Q
+	 vHz9zzIQzp7ztQ8iQCbotghbpSBzrt4eHy9vraBL/Qmq1L51AXuMJY2Z9ReebWLQbE
+	 4SDvAIGoYAC0YEJ7zQaACrXyZI4KlKv3ZafZCfpS3oV6wMpGGqgowg1fy8pZh9cxlf
+	 2igN2LSWnHhUNBkOjqTvGxdsEOKJt6Fb6muVPKm/0tiQRveaLj/IBXksTKfqYC4tbf
+	 aZHBYSCTsqApeAMwjhtueGFVuA/r8VUxHmrhJ4Z/BsixGKQ/aNRynj6qBHhFfhxqRm
+	 DEBrYMxHLLBDg==
+Date: Tue, 8 Jul 2025 14:31:18 -0500
 From: Rob Herring <robh@kernel.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: linux-mediatek@lists.infradead.org, lee@kernel.org, krzk+dt@kernel.org,
 	conor+dt@kernel.org, matthias.bgg@gmail.com, lgirdwood@gmail.com,
 	broonie@kernel.org, devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	kernel@collabora.com
-Subject: Re: [PATCH v2 1/8] dt-bindings: regulator: Document MediaTek MT6316
- PMIC Regulators
-Message-ID: <20250708192259.GA797072-robh@kernel.org>
+	kernel@collabora.com,
+	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>
+Subject: Re: [PATCH v2 7/8] dt-bindings: mfd: Add binding for MediaTek MT6363
+ series SPMI PMIC
+Message-ID: <20250708193118.GB797072-robh@kernel.org>
 References: <20250707134451.154346-1-angelogioacchino.delregno@collabora.com>
- <20250707134451.154346-2-angelogioacchino.delregno@collabora.com>
+ <20250707134451.154346-8-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <20250707134451.154346-2-angelogioacchino.delregno@collabora.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20250707134451.154346-8-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250708_122301_437257_44C536F1 
-X-CRM114-Status: GOOD (  16.81  )
+X-CRM114-CacheID: sfid-20250708_123120_261051_624C04B3 
+X-CRM114-Status: GOOD (  18.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,79 +77,133 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 07, 2025 at 03:44:44PM +0200, AngeloGioacchino Del Regno wrote:
-> Add bindings for the regulators found in the MediaTek MT6316 PMIC,
-> usually found in board designs using the MT6991 Dimensity 9400 and
-> on MT8196 Kompanio SoC for Chromebooks.
+On Mon, Jul 07, 2025 at 03:44:50PM +0200, AngeloGioacchino Del Regno wrote:
+> Add a binding for the MediaTek MT6363/6373 (and similar) multi
+> function PMICs connected over SPMI.
 > 
-> This chip is fully controlled by SPMI and has multiple variants
-> providing different phase configurations.
+> These PMICs are found on board designs using newer MediaTek SoCs,
+> such as the Dimensity 9400 Smartphone chip, or the Chromebook
+> MT8196 chip.
 > 
-> Link: https://lore.kernel.org/r/20250624073548.29732-2-angelogioacchino.delregno@collabora.com
+> Reviewed-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+> Link: https://lore.kernel.org/r/20250623120038.108891-2-angelogioacchino.delregno@collabora.com
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  .../regulator/mediatek,mt6316b-regulator.yaml | 46 +++++++++++++++++++
->  .../regulator/mediatek,mt6316c-regulator.yaml | 46 +++++++++++++++++++
->  .../regulator/mediatek,mt6316d-regulator.yaml | 41 +++++++++++++++++
->  3 files changed, 133 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml
->  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316c-regulator.yaml
->  create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316d-regulator.yaml
+>  .../bindings/mfd/mediatek,mt6363.yaml         | 115 ++++++++++++++++++
+>  1 file changed, 115 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mt6363.yaml
 > 
-> diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml
+> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6363.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6363.yaml
 > new file mode 100644
-> index 000000000000..e7a6b70cdab2
+> index 000000000000..0d1078e92232
 > --- /dev/null
-> +++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml
-> @@ -0,0 +1,46 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6363.yaml
+> @@ -0,0 +1,115 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
 > +%YAML 1.2
 > +---
-> +$id: http://devicetree.org/schemas/regulator/mediatek,mt6316b-regulator.yaml#
+> +$id: http://devicetree.org/schemas/mfd/mediatek,mt6363.yaml#
 > +$schema: http://devicetree.org/meta-schemas/core.yaml#
 > +
-> +title: MediaTek MT6316 BP/VP SPMI PMIC Regulators
+> +title: MediaTek MT6363 series SPMI PMICs multi-function device
 > +
 > +maintainers:
 > +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > +
-> +description:
-> +  The MediaTek MT6316BP/VP PMICs are fully controlled by SPMI interface, both
-> +  feature four step-down DC/DC (buck) converters, and provides 2+2 Phases,
-> +  joining Buck 1+2 for the first phase, and Buck 3+4 for the second phase.
+> +description: |
+> +  Some MediaTek Power Management ICs (PMICs) found in board designs with
+> +  the Helio, Dimensity and/or Kompanio series of SoCs are interfaced to
+> +  the chip via the System Power Management Interface (SPMI) bus.
+> +
+> +  These PMICs are multi-function devices with various sub modules.
+> +  For example, those may include one, or more of the following:
+> +  - Auxiliary ADC Controller
+> +  - Clock Controller
+> +  - eFuses
+> +  - GPIO Controller
+> +  - Interrupt Controller
+> +  - Keys
+> +  - LEDs Controller
+> +  - Regulators
+> +  - RTC
 > +
 > +properties:
 > +  compatible:
-> +    const: mediatek,mt6316b-regulator
+> +    enum:
+> +      - mediatek,mt6363
+> +      - mediatek,mt6373
 > +
-> +  vbuck12:
+> +  reg:
+> +    maxItems: 1
+> +
+> +  '#address-cells':
+> +    const: 0
+
+The only place 0 is valid is interrupt controllers for some ancient OF 
+reasons.
+
+> +
+> +  '#size-cells':
+> +    const: 0
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  interrupt-controller: true
+> +
+> +  "#interrupt-cells":
+> +    const: 3
+> +
+> +  adc:
 > +    type: object
-> +    $ref: regulator.yaml#
+> +    $ref: /schemas/iio/adc/mediatek,mt6359-auxadc.yaml#
 > +    unevaluatedProperties: false
 > +
-> +  vbuck34:
+> +  regulators:
 > +    type: object
-> +    $ref: regulator.yaml#
-> +    unevaluatedProperties: false
+> +    additionalProperties: true
 > +
-> +additionalProperties: false
+> +required:
+> +  - compatible
+> +  - reg
+> +  - '#address-cells'
 > +
-> +examples:
-> +  - |
-> +    pmic {
+> +allOf:
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            const: mediatek,mt6363-regulator
 
-Can we have exactly 1 complete example of the PMIC rather than this 
-piecemeal example.
+This is never true because the schema is only applied if the top-level 
+compatibles matched.
 
-> +      regulators {
-> +        compatible = "mediatek,mt6316b-regulator";
+Just do this and drop the if/then schemas:
+
+regulators:
+  properties:
+    contains:
+      enum:
+        - mediatek,mt6363-regulator
+        - mediatek,mt6373-regulator
+
+Then the appropriate child schema will be applied. This doesn't enforce 
+you didn't use mediatek,mt6363-regulator on mt6373 PMIC or vice-versa,
+but I don't that really matters.
+
+> +    then:
+> +      properties:
+> +        regulators:
+> +          $ref: /schemas/regulator/mediatek,mt6363-regulator.yaml#
 > +
-> +        vbuck12 {
-> +          regulator-min-microvolt = <450000>;
-> +          regulator-max-microvolt = <965000>;
-> +          regulator-always-on;
-> +        };
-> +      };
-> +    };
-> +...
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            const: mediatek,mt6373-regulator
+> +    then:
+> +      properties:
+> +        regulators:
+> +          $ref: /schemas/regulator/mediatek,mt6373-regulator.yaml#
+
 
