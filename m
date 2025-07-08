@@ -4,88 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02EC4C83030
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jul 2025 22:57:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B33DDC83030
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jul 2025 01:22:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LyTXGd3oxrcdwN+ZWfUesTZPlQxy4H1ZYTRObcRWa8Q=; b=GGyZ4+VhmBUgQ992pqWWuA+LqZ
-	c6jabZ5w5nyzKmi9MfKrPHy7yUN/idE90NbGi4qmyCH1zV9JoEfbRkiU8Sm+Ffv2GMZD0RaUyuTQu
-	PYuuS/nIVp9/yBvm/zmDNJYFcMouym6HzikNSFAu2lry5YMpGQ5QJgquBXn4WOBzepADVb5oKnYH8
-	s4ejkaGhrAJx5Y+r0HbL8bJOPs2usxDjysAfOI9oAL6FOWa25hMNc7+FwJfsKYZu2QwS8GQ3Ey76d
-	HGCuIwsjIjClzubd8Js/wmk2CUOhWZlnK7KYuD3Tiu5ULBi8sh8j1JuKvHOCBYm3l1BoDwqadfo9E
-	pJSoF8FA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gT+He+/bLdBApblDPvfhVm4fYFViV3TDN7BKrw8dpSE=; b=PHlWdx7JZGOC6yZTObWMnIOOBH
+	MfbhBQjzSaG04VG8RsDyELUP3CAgZZ632uF4H7w7Cz5ggYah6IxgJ8v28wbPp0v+ee3kAjYnKWo7J
+	Qd3H6mXFVNrHnOruSLnBrpix2MsAZVuIZQPAMkpEqgsf3zQ22Fyua/ywfodHmcIkfC4NvcxP9q+03
+	tcvmG+rO05SEP9AJbGPruEKan4nCAXaj0w1zRNH1atDPbGloNyhCjHjixDqLd1sQHDhiSxSYJ3/8N
+	sWA3sYU8Oys5ww5romVpkz9GfpbjUMNLZCg4DLlRnWXT7xHanRW/edFRn3fwblojRp2zC1GhWxhz7
+	NkA5d2ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYumN-00000003k8O-2ysX;
-	Mon, 07 Jul 2025 22:57:43 +0000
-Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29])
+	id 1uYx1y-00000003ws9-3LOH;
+	Tue, 08 Jul 2025 01:21:58 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uYuk3-00000003k0u-155z;
-	Mon, 07 Jul 2025 22:55:20 +0000
-Received: by mail-yb1-xb29.google.com with SMTP id 3f1490d57ef6-e84207a8aa3so2461694276.3;
-        Mon, 07 Jul 2025 15:55:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1751928918; x=1752533718; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=LyTXGd3oxrcdwN+ZWfUesTZPlQxy4H1ZYTRObcRWa8Q=;
-        b=E4RqNZS4wTvO7RTHYlDHLd+Al+GcVcY+SOqXc2ZTvdzLp+pf2HQO5HUYvgnPqElkxG
-         GBkcCJ7Q8J60Xye8y/N3ZDTjooQmPhPXLTajVphZIqHw27IH8AgfG7wZMk4hGJUrlc71
-         bvfjs54qETmNzC0h64XWBe32rQd/cEioUgqkjfsLUnIdO9l1Q7u2f3ZjoDDkmdp/y4X1
-         npWRHquLrS8Qy/F2WbYDnVLJ1csV2e1tYevuW3l6cYncJ6u4tfpw86um9LvDwxP1Ktfv
-         PXKnKnfo1Nz5Y73/EMk+qPooejWvVHMSu8M7BMKdAncsJTN+xGv/z7q/3WUZLLn42eMH
-         G1dg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1751928918; x=1752533718;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=LyTXGd3oxrcdwN+ZWfUesTZPlQxy4H1ZYTRObcRWa8Q=;
-        b=SUeTaIcQ3Elw0eTZMCaEHAdXtjblRlIZEV8CJgU5ORfNNdTBvfphIMhm6zmOz/pFVB
-         6m6laSe9dUDg9sW92MnAJQhxqd/Vdc6jzZZ6H9KVdp893Bj0uMx8ZmsXzcsyv6YAxRQ6
-         GCVaaz76LV8SpOj3QRgx8/MDrIqZ3UMEomzWr9QJNTDjKJsvIC1r2fSE6Yf1gCN4VycP
-         SI8uyRzFEkVY1ofsFG8cPUXRSpzda/XyoTYB9aS/mLMkYLJ00iCPyz1eam5+jgYJ4sQ0
-         OUYpChzpA+Cxv2sL1omNnuULszrjDp85cpQHtrNV8mhrbFicUP3Ru4j2a5n+HewLxd/U
-         Z5JA==
-X-Forwarded-Encrypted: i=1; AJvYcCVcIbAgDhKl8kQzpdO7txjjVM8YhAqcAxqqL39/TjM6cRn1cIt42k8j9ibU0jk0e2EcZPcC3nPMO4UHNkmtYRM=@lists.infradead.org, AJvYcCWOpqDVuCWVXIAsQNeGAiinkLl/2N1WRUVnuczpKLmRwIYy9VLPjwSb8qA6lURhsnc1YH8+VeJ3CG04+j+ddnEa@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywoljo4ZPKEIZttMzx9+KitFqmv7qWGKD0wY2zQ1yfipENxIiuS
-	fprBdrhH+WduOxA6xZQQqNQ8dVACHJK3mh5Gas0h/x2qQ8agokJCd0iq67nUD51O9woreyYvT/G
-	/9KDQAOSDeGV+StqHrXH/LKQX+W2XGPQ=
-X-Gm-Gg: ASbGncvJM4or4jIXCa9p7dQf+truqjQYcrCbTcxMArR356pQHyl6OSwlbI5RuIDZaBs
-	v0cyQjR7ABx7CUoL3X/LF5D4M7Nt+dL3zEzShbQQHD1KzPXp8svlQJ3bZMqIY29VKKXi3QdQr8x
-	sT305D3ne+xJyDq7GrHDaayu8kmMh8rh+xSkSoB8vHKwJj9tip2w4WR2LmBTppSLeyHFc=
-X-Google-Smtp-Source: AGHT+IFUqlSeXO7TN1tNOxRHWSczuY+UdbyZo5ZiJbvWxxUDKKmr0+ZLKF63xcIULGwasrd0gN8rpXhvNOBtbXtWouQ=
-X-Received: by 2002:a05:690c:690e:b0:70e:18c0:daba with SMTP id
- 00721157ae682-7166b7e8151mr182180917b3.25.1751928917782; Mon, 07 Jul 2025
- 15:55:17 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250706214111.45687-1-rosenp@gmail.com> <8c6f18ca47bf0dd78b6675d8b94000679b6c75cd.camel@sipsolutions.net>
- <CAKxU2N9vs5o4tj-9KxCHKevWU+J9wv+ZCOeD8o602y1GY8FzNw@mail.gmail.com> <b3a63d616c1ca337f6b9d14a9afaafe73bfbe8cc.camel@sipsolutions.net>
-In-Reply-To: <b3a63d616c1ca337f6b9d14a9afaafe73bfbe8cc.camel@sipsolutions.net>
-From: Rosen Penev <rosenp@gmail.com>
-Date: Mon, 7 Jul 2025 15:55:06 -0700
-X-Gm-Features: Ac12FXycPvJ6904Rtx31RRwaAeo58C7gGYz-ADfCLyeTnPkiok4GspDzrArWUl4
-Message-ID: <CAKxU2N-XviPav1Bh0yidyMUr=QbMr=0jyYyHKc+h0oaM9vak=Q@mail.gmail.com>
-Subject: Re: [PATCH 0/6] wifi: rt2x00: add OF bindings + cleanup
-To: Johannes Berg <johannes@sipsolutions.net>
-Cc: linux-wireless@vger.kernel.org, yangshiji66@qq.com, ansuelsmth@gmail.com, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Stanislaw Gruszka <stf_xl@wp.pl>, 
-	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, 
-	"open list:MIPS" <linux-mips@vger.kernel.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
+	id 1uYwzd-00000003wau-1QzN;
+	Tue, 08 Jul 2025 01:19:34 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.98.2)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1uYwzK-000000007oP-40A6;
+	Tue, 08 Jul 2025 01:19:15 +0000
+Date: Tue, 8 Jul 2025 02:19:11 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Rosen Penev <rosenp@gmail.com>
+Cc: linux-wireless@vger.kernel.org,
+	Johannes Berg <johannes@sipsolutions.net>, yangshiji66@qq.com,
+	ansuelsmth@gmail.com, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Stanislaw Gruszka <stf_xl@wp.pl>,
+	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>,
+	open list <linux-kernel@vger.kernel.org>,
+	"open list:MIPS" <linux-mips@vger.kernel.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
 	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH 6/6] MIPS: dts: ralink: mt7628a: add wifi binding
+Message-ID: <aGxyD3mtzdNZPPnx@makrotopia.org>
+References: <20250706214111.45687-1-rosenp@gmail.com>
+ <20250706214111.45687-7-rosenp@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250706214111.45687-7-rosenp@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250707_155519_292579_C717ED75 
-X-CRM114-Status: GOOD (  15.45  )
+X-CRM114-CacheID: sfid-20250707_181933_401007_ED415195 
+X-CRM114-Status: GOOD (  12.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,36 +74,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 7, 2025 at 11:36=E2=80=AFAM Johannes Berg <johannes@sipsolution=
-s.net> wrote:
->
-> On Mon, 2025-07-07 at 10:41 -0700, Rosen Penev wrote:
-> > On Mon, Jul 7, 2025 at 2:01=E2=80=AFAM Johannes Berg <johannes@sipsolut=
-ions.net> wrote:
-> > >
-> > > On Sun, 2025-07-06 at 14:41 -0700, Rosen Penev wrote:
-> > > > It doesn't even compile. Added OF bindings, documentation, and othe=
-r
-> > > > stuff to hopefully this doesn't happen again.
-> > > >
-> > > > Rosen Penev (6):
-> > > >   wifi: rt2x00: fix compilation
-> > > >
-> > >
-> > > That was half covered by Felix already, and really shouldn't do two
-> > > things at the same time anyway.
-> > Just saw what you're talking about. That's gonna be annoying though.
-> > The COMPILE_TEST commit will cause compilation to fail and the bot to
-> > complain before Felix' patch gets merged.
-> >
->
-> Yeah well. That doesn't really mean it should be merged together though,
-> and we can pretty easily make that work by just putting the further work
-> in after net/wireless is merged back.
-Looking at it again, I'm effectively removing rt2x00soc.c . Meaning
-Felix' patch is mostly useless here.
+On Sun, Jul 06, 2025 at 02:41:11PM -0700, Rosen Penev wrote:
+> MT7620A devices all contain a wifi device as part of the SOC. Add it
+> here to get it working.
+> 
+> Signed-off-by: Rosen Penev <rosenp@gmail.com>
+> ---
+>  arch/mips/boot/dts/ralink/mt7620a.dtsi | 10 ++++++++++
+>  1 file changed, 10 insertions(+)
 
-It might make more sense to submit this series at a later time.
->
-> johannes
+The commit title
+
+MIPS: dts: ralink: mt7628a: add wifi binding 
+
+seems wrong as the commit (correctly) touches mt7620a.dtsi and not
+mt7628a.dtsi (which would be wrong as the WiFi part of MT7628A is
+already supported by the mt76 driver and part of the device tree).
+Also the word 'binding' seems wrong in this context, you are adding
+a node to the device tree, not to the device tree bindings.
+
+I'd hence suggest to change the commit title to
+
+MIPS: dts: ralink: mt7620a: add wifi
 
