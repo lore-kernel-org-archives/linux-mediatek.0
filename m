@@ -4,68 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CF98C83F09
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jul 2025 02:02:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD254C83F09
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jul 2025 02:24:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=kyiDDBqJ0a4ZYp5mVtSCFXYgn/hQu3322reAZwp/92E=; b=OLC+PdHj1jXDEHBo8noxoiiHro
-	Oh2gOmCBxgqxVYZoHTI/FUfKKS2sQDGs7g3ZTgBMhV9dlItSYX/DjIN6PcmKDUpjKW1R8ZCb3Fzq1
-	mEEs9AS/2uVB/ZiAafenaZhrKfRiuuclKOf3AhX0260g3CCRdVqYBOPfBlZ3vttVN0EpvQXNiFLyF
-	h2yaliw7eJhfvoUYu6sAbHMNPY4dergmDQC+kvPFSmMdjPtncyKaRrPnofCSwqunMHxWd4ZQ+pWfy
-	axNqP0uPQqEjJ6HRezvPJJva7W4bgAzWK6+eQvHKScQQ3NPWqE7sFtzicVTKfQPUyZru9IttYqVU4
-	Wg1mpK6g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=l4b7YNwI2mId6wV052DaQYNqAr6otwP3QlgPB96X+TU=; b=PPjPAX25BmIY73H5jZEfeGdOIB
+	HNwWjvkEfN7w820OeccDALnlE2HMYSusRF96xr1d4QAsK35ZmucYA5Wb27dDDQ7Hw6zZRc7J5IEIT
+	YP61TGyXinR44KzgP1BYZYDDkpxB4Fxom0MWjh0XOalI0sQy1TXUrK0G6tonK/B+YqVmoYhdW1trj
+	QBg4Q08ylXKyku7z6NgsuE04sIjdfltxvW4jeNdY2ui/bAL0TV3fBbzrCFrphreGYH7ddIMg9JuIS
+	kaB3CouCUeulppdqwhnr/Fv5Yhf1JDmWVoLxlxaQ8+VH28ZsRwXMz5brX8TNDIRVrmnw4GrIE9OYI
+	xm3qlUuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZK9A-00000007919-30my;
-	Wed, 09 Jul 2025 02:02:57 +0000
-Received: from mg.richtek.com ([220.130.44.152])
+	id 1uZKU9-00000007AwU-0V9T;
+	Wed, 09 Jul 2025 02:24:37 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZK7C-000000078vz-2V0f;
-	Wed, 09 Jul 2025 02:00:56 +0000
-X-MailGates: (SIP:2,PASS,NONE)(compute_score:DELIVER,40,3)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=richtek.com;
-	s=richtek; t=1752026442;
-	bh=kyiDDBqJ0a4ZYp5mVtSCFXYgn/hQu3322reAZwp/92E=; l=1430;
-	h=From:To:Subject:Date:Message-ID:MIME-Version;
-	b=4BEa5BMhFVW9gnExMJANXLJRe4cKg6/c665eZJa3L+jSJJXcdu2Ki2WzkXW5d3Nol
-	 /csu1Ec8O3DitT7Uh7ljENcJPk+DY+B/gPrwkGU8s7BtVW+Jg8DEFD2wrb0rpuR+Nj
-	 loGxnVl4VIcZ+KoubuzYTCtWFEjmI4FY9Wf5dlQuxtRDEb3GzKJWFrv1do+X7RCyXp
-	 IQKmsV1rAgTkpxeTbPINnxMq2m6iya/9DtIwuNneOXojhsTZpIgH7lx2Ohbxx3+W8m
-	 fH3dpggNpm6bluJp/DGvW/g/m251if6XdD4x9vad8TldchXvm6O81ROJPeUW3CQH2q
-	 GV146WKztQfzA==
-Received: from 192.168.10.47
-	by mg.richtek.com with MailGates ESMTPS Server V6.0(244594:0:AUTH_RELAY)
-	(envelope-from <cy_huang@richtek.com>)
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256/256); Wed, 09 Jul 2025 10:00:21 +0800 (CST)
-Received: from ex3.rt.l (192.168.10.46) by ex4.rt.l (192.168.10.47) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Wed, 9 Jul
- 2025 10:00:20 +0800
-Received: from git-send.richtek.com (192.168.10.154) by ex3.rt.l
- (192.168.10.45) with Microsoft SMTP Server id 15.2.1544.11 via Frontend
- Transport; Wed, 9 Jul 2025 10:00:20 +0800
-From: <cy_huang@richtek.com>
-To: Lee Jones <lee@kernel.org>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, ChiaEn Wu <chiaen_wu@richtek.com>,
-	Andy Shevchenko <andy.shevchenko@gmail.com>, ChiYuan Huang
-	<cy_huang@richtek.com>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH] mfd: mt6370: Fix the interrupt naming typo
-Date: Wed, 9 Jul 2025 10:00:48 +0800
-Message-ID: <a6ab943f4660e39b8112ff58fa97af0507cd89e9.1752026324.git.cy_huang@richtek.com>
-X-Mailer: git-send-email 2.43.5
+	id 1uZKRj-00000007AWd-3F09;
+	Wed, 09 Jul 2025 02:22:07 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id E33D661151;
+	Wed,  9 Jul 2025 02:22:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D5D9C4CEED;
+	Wed,  9 Jul 2025 02:22:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1752027726;
+	bh=OfoDaqQ2V0qjoGLeO8rdU8Wgju6X0K8yq1beZOaKvpU=;
+	h=From:To:Cc:Subject:Date:From;
+	b=udtmn9gfG8VrwPGMkQ3vvV019c4XopWDfkbFcrockuBii8oioggfvbRiKtg6iKHmg
+	 MsLFDqbSYgF5rfqkz4eMrp5zvbKzImvQggkOE1H9P9nJsUHes3p8b8Ea9Nadwg3u4+
+	 FyYc06+9kxdnwREUkigBlRmrl2ObHe1wI7ngAJ6LeRTqs863cmywXVBUTF9KOK0LMe
+	 3+9m9h5jVNurwtNDTe084zYXGW5lo/cAup1ovudlWRaBTZAqSfpwney/oJ7pc3XxCu
+	 lpgOa0u6TeuIiDLvYmH61qba8uDNYb8MhFv5/qmLF69J+NYWP9z0DJSGe8cBp2MSjL
+	 fyfzVKeWnDnfw==
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v2] wifi: mt76: Use of_reserved_mem_region_to_resource() for "memory-region"
+Date: Tue,  8 Jul 2025 21:22:01 -0500
+Message-ID: <20250709022201.2092329-1-robh@kernel.org>
+X-Mailer: git-send-email 2.47.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250708_190055_663528_BCFAAD0D 
-X-CRM114-Status: UNSURE (   9.99  )
-X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,44 +73,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: ChiYuan Huang <cy_huang@richtek.com>
+Use the newly added of_reserved_mem_region_to_resource() function to
+handle "memory-region" properties.
 
-Modify the lowercase character to uppercase.
-
-Fixes: b2adf788e603 ("mfd: mt6370: Add MediaTek MT6370 support")
-Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
 ---
- drivers/mfd/mt6370.c | 2 +-
- drivers/mfd/mt6370.h | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+v2:
+  - Split to separate patch
+---
+ .../net/wireless/mediatek/mt76/mt7915/soc.c   | 21 +++++++------------
+ 1 file changed, 8 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/mfd/mt6370.c b/drivers/mfd/mt6370.c
-index c126ccb25d66..c7c2efe3598c 100644
---- a/drivers/mfd/mt6370.c
-+++ b/drivers/mfd/mt6370.c
-@@ -95,7 +95,7 @@ static const struct regmap_irq mt6370_irqs[] = {
- 	REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED1_SHORT, 8),
- 	REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED2_STRB, 8),
- 	REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED1_STRB, 8),
--	REGMAP_IRQ_REG_LINE(mT6370_IRQ_FLED2_STRB_TO, 8),
-+	REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED2_STRB_TO, 8),
- 	REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED1_STRB_TO, 8),
- 	REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED2_TOR, 8),
- 	REGMAP_IRQ_REG_LINE(MT6370_IRQ_FLED1_TOR, 8),
-diff --git a/drivers/mfd/mt6370.h b/drivers/mfd/mt6370.h
-index 094e59e4af4e..dd9ccc0a53f1 100644
---- a/drivers/mfd/mt6370.h
-+++ b/drivers/mfd/mt6370.h
-@@ -69,7 +69,7 @@
- #define MT6370_IRQ_FLED1_SHORT		79
- #define MT6370_IRQ_FLED2_STRB		80
- #define MT6370_IRQ_FLED1_STRB		81
--#define mT6370_IRQ_FLED2_STRB_TO	82
-+#define MT6370_IRQ_FLED2_STRB_TO	82
- #define MT6370_IRQ_FLED1_STRB_TO	83
- #define MT6370_IRQ_FLED2_TOR		84
- #define MT6370_IRQ_FLED1_TOR		85
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/soc.c b/drivers/net/wireless/mediatek/mt76/mt7915/soc.c
+index c823a7554a3a..5f19b506cc50 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/soc.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/soc.c
+@@ -284,20 +284,15 @@ static int mt798x_wmac_coninfra_check(struct mt7915_dev *dev)
+ static int mt798x_wmac_coninfra_setup(struct mt7915_dev *dev)
+ {
+ 	struct device *pdev = dev->mt76.dev;
+-	struct reserved_mem *rmem;
+-	struct device_node *np;
++	struct resource res;
+ 	u32 val;
++	int ret;
+ 
+-	np = of_parse_phandle(pdev->of_node, "memory-region", 0);
+-	if (!np)
+-		return -EINVAL;
+-
+-	rmem = of_reserved_mem_lookup(np);
+-	of_node_put(np);
+-	if (!rmem)
+-		return -EINVAL;
++	ret = of_reserved_mem_region_to_resource(pdev->of_node, 0, &res);
++	if (ret)
++		return ret;
+ 
+-	val = (rmem->base >> 16) & MT_TOP_MCU_EMI_BASE_MASK;
++	val = (res.start >> 16) & MT_TOP_MCU_EMI_BASE_MASK;
+ 
+ 	if (is_mt7986(&dev->mt76)) {
+ 		/* Set conninfra subsys PLL check */
+@@ -318,8 +313,8 @@ static int mt798x_wmac_coninfra_setup(struct mt7915_dev *dev)
+ 			       MT_TOP_EFUSE_BASE_MASK, 0x11f20000 >> 16);
+ 	}
+ 
+-	mt76_wr(dev, MT_INFRA_BUS_EMI_START, rmem->base);
+-	mt76_wr(dev, MT_INFRA_BUS_EMI_END, rmem->size);
++	mt76_wr(dev, MT_INFRA_BUS_EMI_START, res.start);
++	mt76_wr(dev, MT_INFRA_BUS_EMI_END, resource_size(&res));
+ 
+ 	mt76_rr(dev, MT_CONN_INFRA_EFUSE);
+ 
 -- 
-2.34.1
+2.47.2
 
 
