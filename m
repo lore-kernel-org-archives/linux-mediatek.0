@@ -4,87 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F346C8303C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jul 2025 23:54:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 324FEC8303C
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jul 2025 00:28:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LIpnI+/KkKYMz9Wfww8vVb4elUGSQP7L8IBvr/OnuBk=; b=Wz/e0+LioxjxCkJhP66vH/S4DE
-	nayTL9zwZEP28vh71yo6550IBF+fbpMK3zdVSv8Ekqm6nyeK7S2UN26KBzpavRvtG5O3CTbcB4J3m
-	7H0YANn0hUiEgF4ecVwWB/kxCN+/45+1i/gAQE9hRUmBfKjmir3gJ8opNJlkqm9ynvnFcG/39zm9J
-	o52Okr7AZEI0ZCkyg140ksCvJ300ZWuWNkqSwr87ESQA2PAAQJVjp14iN+HeGqYucK7aGDtGy/sxN
-	GodrfmaYxdNY0xZpFMS6p4WLsY+QDi1YbUJLwYDwiD+8FVeRpapwyMdXL8scyo+AfFEndJXycfoKy
-	j0X2gF9A==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=DcwWePkZ+61+GRHS7T5VOVYWhMHoHSzeV/UXG3AzxcI=; b=WkZgOV7RrYe116QASrows4vLEf
+	RJRcCuTgWeJM08XnTjBIdxoUzSk39admorwhehhxnDQC8ezcIisTiLg0hExSTvlroARFtfcouzoZl
+	4k3bB50RSBQYbKgWGKp7V+zt1x8mTuqazdqt67dRlhSqTKE0/pPawZZWMXkUbz5Kyd61c2qhTm6EC
+	2OBolZHOAt1VRGqyvzjsClQW2q+RVn4re6ymlXBM1d+Vf+jVFtk6xZYaopmWbpOAMZyAVrpphjzGB
+	A3qVRFj6wiFKQ9cjsLLpuYqJA09rUmXNeKHTllXayFmIh8a/7dmK8GKgbszwbNrQ9CR7JlHREDx3A
+	Avm0vVkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZI8c-00000006vBN-2UUj;
-	Tue, 08 Jul 2025 23:54:14 +0000
-Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
+	id 1uZIfI-00000006ziu-2MPF;
+	Wed, 09 Jul 2025 00:28:00 +0000
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZI8Z-00000006vAu-3IJh;
-	Tue, 08 Jul 2025 23:54:13 +0000
-Received: by mail-yb1-xb32.google.com with SMTP id 3f1490d57ef6-e8b3cc05665so2768024276.2;
-        Tue, 08 Jul 2025 16:54:11 -0700 (PDT)
+	id 1uZIa9-00000006yb5-1jGW;
+	Wed, 09 Jul 2025 00:22:42 +0000
+Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-7490acf57b9so3408789b3a.2;
+        Tue, 08 Jul 2025 17:22:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1752018850; x=1752623650; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=LIpnI+/KkKYMz9Wfww8vVb4elUGSQP7L8IBvr/OnuBk=;
-        b=f0pUStFZXAtDGm82iXC4MV6th733jROAORR43kckZSt6Z2ci/L9n1kAfVqZiY6Ix2V
-         D5hZobI3pjYMvpG6yVJU9+IjLg5TTCDywcS/tPOFbIl8vSBSoV9Vinf66pXVepQVGNah
-         Ms0fYDctulZ6ZhJ98sPjMKXcy6bw/mupdgg9xvCnkFzOitaIhBYmz+o5FtEvI/v4kPRN
-         1IIqMoRVqJQ711yYKnZex0B9DYiLrfPL8hvpYgqkKAsrLDPRkJp2kEQcaKW96ObjpWwg
-         fDbz2+xtAR79bxEbo8fDV6HbkE8meKPAYyfrWGPjtQiaxm8Ek2HF2G2S0Yr6iEfnRQ8o
-         tVUA==
+        d=gmail.com; s=20230601; t=1752020561; x=1752625361; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=DcwWePkZ+61+GRHS7T5VOVYWhMHoHSzeV/UXG3AzxcI=;
+        b=fmuPwkFzMVipp8Wh/HD5m+OWkPwZMeInNrGk2sDRTpWG7ylKwoweyIiQtPoPD7eQ/p
+         FSgfdlzn/02qjcmWatRU+l1CvPHJ7GtgIYhvMEIlGN8EZSJIXx+W8Sn0UtniwH1pNZen
+         iv7V3xrWuX53AN6OoBcqbObP3NKLnb4GIaMFmoy6zN1GL0YHV9cNKilpC1pqXyGtD0yL
+         s7GIqNiTMcWL2kl3VUtQZKBcHBD4sUMYw9HxKrB+8U5ZcLO3Zn4P2k2LIqYpu+aRBaT7
+         GxzdoP1IdulEjmDLytSg75QClN31wPqFSgQo7CgTtACvK96VGOe9YwpxudyejEOPjkPk
+         o+rQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1752018850; x=1752623650;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=LIpnI+/KkKYMz9Wfww8vVb4elUGSQP7L8IBvr/OnuBk=;
-        b=XfsAWFOTCYeGzwKEHbQSYDEYvgz2KNEvh4er7G/G3LvIMCCVWQq/0MdCD/utp67BaH
-         XtNgT9cx+qvlQBqJ/knKJ1uRg7hmKcE4QtZLZJiQ/BqiWDwvh4TqJw+ZoYxnbMPbNk+Z
-         yqJqbyEcxSWdDRbiO+61tVewuwJ5ufY/2+1lTcSCMtNrPa2QZyLSvvYV0u1cB1ZqX2B9
-         wjOZHcK0NessPtkxjjuyQVxWuH6qouLoV7JkTx2nU5rA/YHhbpD7f67nPy/EdCqMFzMU
-         uYHXc59UPUPw9Y4fvaqqk/tqD5SfretXWsn2rAy7HK6Wbn23PJS7HEhupI6ExTn1f7eb
-         HC6Q==
-X-Forwarded-Encrypted: i=1; AJvYcCWST5GzvF53Dt7jgyZe9sJCdHytxeKB7MSsadeNljngNqdVDJ/uRrh6Bm4pF75AxLUDME92N77wyzv56c9DMpcu@lists.infradead.org, AJvYcCXqEA9iKF9lztD6Z403pGit7K1vd3CDFhB4wThDP1zHpWl3IaPXAAXvzSXcdUiabMIN5LCHIl0SiWC5EyMYIn8=@lists.infradead.org
-X-Gm-Message-State: AOJu0YynesCItnT76nTmvOL54to/f0dOxWpwlQQGX+cNw+rXBT0lxv9M
-	rE/yFgM7axNOxPPxvRUaVBPjeUW3ssBCXsBDZ2G8eSDLLmjt3/0gVlasqqHK/IqWHK1wITia8gg
-	WBzuCz+qT1egQVRGKqgDPjywiNmuyp+A=
-X-Gm-Gg: ASbGncuiFDRJOd9EVQcZ0zHg2HN/JJntWNHCO7+i2ySHozOw5nC5bDaCFRsZ/pPpwm5
-	wN0Uk//W54tWt4iFbavxw+mOca7S9rBMULg9tX+Kl9/5bBwnLzOsx6YAZNK1mrZDIRPLjKCMdH1
-	IB5oFhWKDY9cAYk+WtMIRAFQDbL9Lm3SkYv+XkxmNqkjqME/xWrdrfiqljerd+pUalQos=
-X-Google-Smtp-Source: AGHT+IHHnkecJrTiDBVoCM7eM4g32Pk1c3raG4mqxUk9pSpJNW1vy947mDXE0F5WHjldRJe6WxHFFxEogzvUMtezeI0=
-X-Received: by 2002:a05:690c:9c0e:b0:70e:2ba2:659d with SMTP id
- 00721157ae682-717b19634eamr9861137b3.23.1752018850202; Tue, 08 Jul 2025
- 16:54:10 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250708201745.5900-1-rosenp@gmail.com> <20250708201745.5900-8-rosenp@gmail.com>
- <175201013411.1121693.17824456704959772294.robh@kernel.org>
-In-Reply-To: <175201013411.1121693.17824456704959772294.robh@kernel.org>
+        d=1e100.net; s=20230601; t=1752020561; x=1752625361;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=DcwWePkZ+61+GRHS7T5VOVYWhMHoHSzeV/UXG3AzxcI=;
+        b=MqH0iyVn1NBJO3SmbbynHwoOfnScKoL/EqkO/IYpHCIJkR+lXDlFsCPK3HhGCxayxr
+         tqCJVanGs5RYI+sPo/qNTNvPsZT3WqK5KZ4aYj3OKD8m6RPZEM+EHuvTNTLjMNG4v+Ap
+         TQ9+bpAFdvVXZ61cFVclPDDNjWb3puSQAVcsaHWWMVik1IWeWRedBW0AJk3rvlQk6zQP
+         GBirFrR+ZNtoViZqi666lRAO4Yv88350bFhomIMYOv/fq/kDRjlh55AGpxJUWAITeV01
+         hM3T7Epy4LToP9PtGlxU1RWbJ5nbHCgc/D4BWIeH2BoY/WTe2yYb6E4bGNzeJuwOU4QC
+         3ZMA==
+X-Forwarded-Encrypted: i=1; AJvYcCUGT3m7OIi1Aq57nPJX9TnY8wcvpdhCx6kUOgum6TGUz7FVgE82EqSBwtr6xXrKlREHOZ5cxfR02uY58ZdU5lEb@lists.infradead.org, AJvYcCXLXWWxjgDkJKTLS9qrwgXV0/oC/0WTRVM/dTcuygqn5QzO+nvSQPivDfdiCprCX0egdKwhMVBqJ29rR/KkYoA=@lists.infradead.org
+X-Gm-Message-State: AOJu0YwJFCmZh0bXZ2wzFBxVh1jf9+00vQw8+c4xIcRa2ns6WBah9lHz
+	EpqhTr0HCoBv2vGrmubG0dpegFIt8WBESqZn4WCJqgTlIOdcoKbLQ1gw
+X-Gm-Gg: ASbGncsQJTv1UizWF7zK+pBnJOhCq/yNef84AUsh3u5TxnqkAiSyYiH/4y8fhFxUqpA
+	vBDkEOTis8DZaC/sNw2bex+I3rNstL4KIo8Iac92aB0AyDtGhsKaO1ZaRnbDz/kE0C0T9AWu7Q1
+	BJqcj+GhGWDjZgJDS2Sl2W7NCuFdyM4GcB0W5Y2PVyLbnZP5e5JZAboBd2sYV9o1+ILUuxjGxB5
+	4klkfLmbbx60iWc1yMJa/0WgUpKDFbOsCCKpA9xt5uuzzXZgnz53mMPSdmrXzTEZYKQ4eMJoHf8
+	pSJk/kGf+XIdeSsrydTp4EDWhURy7w3zDPBSZUYXXt0=
+X-Google-Smtp-Source: AGHT+IEoBA4HHBIBWKsPCT2mLl7+qyWKOlyAaO+l5jgMStBRBhSbtVujXmRrrApyjtT9L32hT9oqWQ==
+X-Received: by 2002:a05:6a20:734d:b0:220:33e9:15da with SMTP id adf61e73a8af0-22cd68be5f5mr777221637.2.1752020560598;
+        Tue, 08 Jul 2025 17:22:40 -0700 (PDT)
+Received: from archlinux.lan ([2601:644:8200:dab8::1f6])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b3924868c3dsm4910400a12.23.2025.07.08.17.22.39
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 08 Jul 2025 17:22:40 -0700 (PDT)
 From: Rosen Penev <rosenp@gmail.com>
-Date: Tue, 8 Jul 2025 16:53:59 -0700
-X-Gm-Features: Ac12FXyerQ4XgpTDcxgbBtlk_P_w9tWTj-9IUlprsdtZUPLTaj8qf2lgKgQNTww
-Message-ID: <CAKxU2N_oUgqdOymr6RRSe3KYQpXrUUFm0SvOYFogx7NOVMv5LA@mail.gmail.com>
-Subject: Re: [PATCHv2 wireless-next 7/7] dt-bindings: net: wireless: rt2800: add
-To: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, Stanislaw Gruszka <stf_xl@wp.pl>, linux-mips@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-wireless@vger.kernel.org, 
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Johannes Berg <johannes@sipsolutions.net>, devicetree@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+To: linux-wireless@vger.kernel.org
+Cc: Johannes Berg <johannes@sipsolutions.net>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	=?UTF-8?q?Toke=20H=C3=B8iland-J=C3=B8rgensen?= <toke@toke.dk>,
+	Stanislaw Gruszka <stf_xl@wp.pl>,
+	Jeff Johnson <jeff.johnson@oss.qualcomm.com>,
+	Rosen Penev <rosenp@gmail.com>,
+	devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS),
+	linux-kernel@vger.kernel.org (open list),
+	linux-mips@vger.kernel.org (open list:MIPS),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCH wireless-next] wifi: ath9k: ahb: add OF dependency
+Date: Tue,  8 Jul 2025 17:22:38 -0700
+Message-ID: <20250709002238.5988-1-rosenp@gmail.com>
+X-Mailer: git-send-email 2.50.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250708_165411_825588_7DB66BC8 
-X-CRM114-Status: GOOD (  17.75  )
+X-CRM114-CacheID: sfid-20250708_172241_468720_B790F256 
+X-CRM114-Status: GOOD (  12.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,52 +107,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 8, 2025 at 2:28=E2=80=AFPM Rob Herring (Arm) <robh@kernel.org> =
-wrote:
->
->
-> On Tue, 08 Jul 2025 13:17:45 -0700, Rosen Penev wrote:
-> > Add device-tree bindings for the RT2800 SOC wifi device found in older
-> > Ralink/Mediatek devices.
-> >
-> > Signed-off-by: Rosen Penev <rosenp@gmail.com>
-> > ---
-> >  .../bindings/net/wireless/ralink,rt2800.yaml  | 47 +++++++++++++++++++
-> >  1 file changed, 47 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/net/wireless/rali=
-nk,rt2800.yaml
-> >
->
-> My bot found errors running 'make dt_binding_check' on your patch:
->
-> yamllint warnings/errors:
->
-> dtschema/dtc warnings/errors:
-> Documentation/devicetree/bindings/net/wireless/ralink,rt2800.example.dtb:=
- /example-0/wifi@110180000: failed to match any schema with compatible: ['r=
-alink,rt2880-wifi']
-ralink,rt2880-wifi vs ralink,rt2800-wifi
+The conversion to OF missed adding a Kconfig dependency.
 
-lovely...
->
-> doc reference errors (make refcheckdocs):
->
-> See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/202507=
-08201745.5900-8-rosenp@gmail.com
->
-> The base for the series is generally the latest rc1. A different dependen=
-cy
-> should be noted in *this* patch.
->
-> If you already ran 'make dt_binding_check' and didn't see the above
-> error(s), then make sure 'yamllint' is installed and dt-schema is up to
-> date:
->
-> pip3 install dtschema --upgrade
->
-> Please check and re-submit after running the above command yourself. Note
-> that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-> your schema. However, it must be unset to test all examples with your sch=
-ema.
->
+Fixes: 2fa490c0d7 ("wifi: ath9k: ahb: replace id_table with of")
+Signed-off-by: Rosen Penev <rosenp@gmail.com>
+---
+ Since this is for something that hasn't hit master yet, I assume
+ wireless-next is the proper place for it.
+ drivers/net/wireless/ath/ath9k/Kconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/net/wireless/ath/ath9k/Kconfig b/drivers/net/wireless/ath/ath9k/Kconfig
+index 0c47be06c153..47d570a5ca6a 100644
+--- a/drivers/net/wireless/ath/ath9k/Kconfig
++++ b/drivers/net/wireless/ath/ath9k/Kconfig
+@@ -47,7 +47,7 @@ config ATH9K_PCI
+ 
+ config ATH9K_AHB
+ 	bool "Atheros ath9k AHB bus support"
+-	depends on ATH9K
++	depends on ATH9K && OF
+ 	default n
+ 	help
+ 	  This option enables the AHB bus support in ath9k.
+-- 
+2.50.0
+
 
