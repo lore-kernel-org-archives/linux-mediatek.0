@@ -4,113 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EBCAC83F0F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jul 2025 17:04:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C49EC83F0A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jul 2025 17:13:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U/0cHEX1WGiZE8mwyI/JPOFvvGfe/GVd0huttz7DYHs=; b=QYw2qFPfR7qIZnOmGfOhSmQ6mG
-	B7dbKprXvd/Kq69ShKesIuRDbB4neD3VkLLbjzZusRuUu2pkw3fVdg2rwyCW+PWirw7fW9O70snxr
-	fHBt77TYY6ZSWvgAlozouaUhivwEyk+SRBbPZgf7fMW257h3W9ahy5FuTaqTZUPez7VYQObZIvJ6+
-	jxnpnQ/AdluF+uIRdOw0/OKG54AIomv+pPHViambstjxProwrSiRQa0B0hEA549uXiUZXAoBOKkWR
-	kW6l7x12VtEMf96lPUCmZd5eEQg4bt6PoFkrnGVYMojRY8JuJCumN0BCwoF1S8hueT7LZ3CboilDa
-	iwy8zJQg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=rYBWS+8dYRZolFFfJVTsJDzUHqNW8EbfvHKt/uobe2w=; b=SNIVXRbB4fsneO6jDIWbJz2+F6
+	5Ixt/iZnxJzRnFOyRE+jApv+Mf10vngbeOSQPScthHYIN1UOFOEL+gLOPLUvosCbPFm+QODDsauCC
+	swV8l/6GuJBTZj09E5DcYL1Htxr2xHYs89/MS7OdSRps6v1CWxIs4Ubz+TayOS7mhtzkCRCF0hU3V
+	FOwldIbW972JzCVEvcPQT7qw4GQgmIlhjiJt3BTY6YFD5xjcYEDU2YhXVUgRCJ7V0Zf6MDRP63/5m
+	6miIwmKKQOwUStrWGIzOD7LWbT8vQ6TW0lYc54201OGmqUSTDtiYSVeYSpXY37xJWCiHUIbUTtIo3
+	69fc3pqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZYDI-00000009NpO-3xYd;
-	Wed, 09 Jul 2025 17:04:08 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1uZYMV-00000009PMz-3yEK;
+	Wed, 09 Jul 2025 17:13:39 +0000
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZVx9-000000090iN-3DHG
-	for linux-mediatek@lists.infradead.org;
-	Wed, 09 Jul 2025 14:39:22 +0000
-Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-4537fdec39fso18071005e9.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 09 Jul 2025 07:39:19 -0700 (PDT)
+	id 1uZWD8-00000009498-02Ku;
+	Wed, 09 Jul 2025 14:55:51 +0000
+Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-23c8a505177so40261145ad.2;
+        Wed, 09 Jul 2025 07:55:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1752071958; x=1752676758; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=U/0cHEX1WGiZE8mwyI/JPOFvvGfe/GVd0huttz7DYHs=;
-        b=dxaxFHj/XmhZ0FtFEof6FzCYeUfukVvaglPxkEjVOED/XfjuZKiCUfH+qWod02exmp
-         Jx7UuqRnE7+ZljNqR8kJcdyiucqTe7HD4a4iYLrPiOlHHZi+87UW3S6jkzV805QpTq31
-         E7Saun5AbOjrc516G3w1nHQ564y0/+bjk/doxYSsQImH8U3I5bwTiwvmlybFHmBG0U6i
-         t254NV8U4Vp+Q48/jNp6/IFO39CoAB1nov6Ih3L6cwAA0xL7oE4fCYfrfL032zaWUgqF
-         4JXmHefD7mTUZfwFC5HQcspNAYtk7hn6cvXOYBImyEIrufQ1KxwKyoUAE83GeMDukrMw
-         vyOQ==
+        d=gmail.com; s=20230601; t=1752072949; x=1752677749; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=rYBWS+8dYRZolFFfJVTsJDzUHqNW8EbfvHKt/uobe2w=;
+        b=iQpIapIoYkP+BcCtP5kgyykrbWRi8JY9CHt1TVcaUR+eyTypYFQ49zrs6yIWAOHYPa
+         vXwtcQEStrXS4tVfA3j1/vTbrAaCcsHGuVmwU7mJ+7hmIWuJmxvUeicO6uRmPIvVUQIg
+         D2H5L+Q8JqZLY9y9Lnc4OhYubDf4KjdubnTXRXfSbsWCg/tDUPOD3H+xCmlHcasFaSl4
+         6fzQyTGUrBBELpeJga35mjAnsOxXnl18wgbDL2al/QVR3mZV2nFUIKBQY8L2j0vBV6NQ
+         XlIxVTZqjsgXPS51kGvRgBzgxRO6OsG5vf4NbYn3cOYI0RczVUFVF1UvXWwcjejm0WQX
+         gRKQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1752071958; x=1752676758;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=U/0cHEX1WGiZE8mwyI/JPOFvvGfe/GVd0huttz7DYHs=;
-        b=RvGmvJFrBOgVw8fgNDndDDJ8ikoTW385uThWyEaXmjDeW3Jl5FPtoW8TSP7TP6durg
-         MlmpW+hyoyf9q+MvTr8XrKmDk5EW7i541ZrycHu5y2my2p/hfAshkNqrAY2wC7oiAvUl
-         nJJIL2FIXoFSPG6gDm/nWlV6iudLIo4baC5BrgcUlPVQBom6z8+RMF2o9T98No0JCzLS
-         il0dEbMe7wjA2J6lb35cZwF3Bx4qQQXeDYRRHXjwRxBGei6YZ3leVg054Q96vcpxX4Mz
-         Hx095eCQr7Dvpdp8bPeRRfIbd2WakZq1XZRC+7UC3MfEZ1/QatsTtEZdMjECnBw2wfkX
-         tO6Q==
-X-Forwarded-Encrypted: i=1; AJvYcCX9bXwTFp9AKGrAbYnb0G0dejURVlvZlgq+a5a/mlpThUg7MAZDPdPaGPrpsuUmGsmVI+c3CHFYlr0wxHUpuQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzNaxF+GFAVRh2GgdAGt0mV/e+RpaupBGYY3hvSvCrZb4uDwIpU
-	UuKF+kZxMeTLQ+7Jscv4Uenp6xvvqYBx9QVWDJg0APWz3moWCBu9Q2W8IgNYrPIXm4o=
-X-Gm-Gg: ASbGnct1tTdxQseepegMxjCDF5FFlSJ+lu0JtHEWFPcI+Bz3Ggzw3g7gvrN47X6wWG9
-	a/el0tJq49fColCXupM0IDfiFjb3XGyDozaxAQoAA88lI9JAktDUPG5GhGAo2v+GnP5W3lPK0se
-	eq31MuwEMb0FHAXHj4V0mt208WletxsI8tJ4rWdyi/3fJq40CsL/TSQj5C6QQFbFMEpJJYvmwt9
-	gausJqUlvE/EXWCQUHFXo0Eg70en1bMqAttyhx4C109hUkv0S3HDdvTYu3LVbppKp9o4XzLTsNz
-	stRm9Qnh9/lQsF3l+2gMcvVEBmtoRqdxeLP84QB00/n/JHHtsoUAKQU=
-X-Google-Smtp-Source: AGHT+IHJL3AtHw/EonyubylYUgvsAX3aEA1kWb+hfmhi4rwD64AqP18DXBVWa7fZWLEMijUB//O7/Q==
-X-Received: by 2002:a05:600d:19:b0:43d:4e9:27ff with SMTP id 5b1f17b1804b1-454d5c8ae6emr21757475e9.7.1752071958441;
-        Wed, 09 Jul 2025 07:39:18 -0700 (PDT)
-Received: from [127.0.1.1] ([2a01:cb1d:dc:7e00:b04e:cfc4:3bd9:6180])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3b5dfbf56c9sm4480687f8f.79.2025.07.09.07.39.17
+        d=1e100.net; s=20230601; t=1752072949; x=1752677749;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=rYBWS+8dYRZolFFfJVTsJDzUHqNW8EbfvHKt/uobe2w=;
+        b=bM3V5MvDxkkXGbpZdqwXwEbE9gio2YvK+x0ZhCUXHz33lmvnbtMJwo6li63qK4+aIo
+         Th/RI5gX0I5wEzYUEWjCG4E6yHE1hAaXlTWrtyEivKD3nfIrfGOUhxUxnQ/lMRTdD+qM
+         N86JLFRX5BT95Azqvfj1c7FKtrZnckJAUTB5xcT1n4CNXpriWuXi6sVyvGWPQTAIC+r6
+         oIbK+8U9qcNhhBRedGbgs3qPc1qiGQ0zxXKGPxf04xmgPtsiWZekTaC3EHL96I4ML6H3
+         pndMHAux7fNfVyw6zON3ezqaMm7LI96GDS3WBudDuLfLO1PMuhImgyx0GTHkeMntpmby
+         HTyg==
+X-Forwarded-Encrypted: i=1; AJvYcCWfFWlnAUhD1PUJmrBsuw1k2oR0H7WSaGHmLuWK04Ij6wIh0h20KQ1X5injZWGIdncHEoIhKvpvjyIlAF8Ue/k=@lists.infradead.org, AJvYcCX1sK5TlqNMLMSErsfHluPQh3T40f8/CxFoC7NfBHOR3s/XlFcRugONrbA+BoL6o2WdG80yhANDH8Zfhcdg9Dab@lists.infradead.org
+X-Gm-Message-State: AOJu0YzEzTqdMPar3u0KULjdGpfUi9rnisGI86m9z2OluIXj+Z2hNpVw
+	y/QLTvtQaD0ezMFtz65I7mk5gzJKtcrw5Scqsk72WhZzsvf7fO1p84Ft
+X-Gm-Gg: ASbGncsTzbv609nCi8RnxlFbxQTRPUBfmDi3dpY8PxRU40oNadcar3nv5DeuJkyHzmD
+	1mHjaFea9/2jdgDgVh8X0RtunQHXvg3khfMhz0Vfz1iSUSnjeuYYokcrD0k3ZvM/ynXi19RwgIt
+	zpwi4sTclwJ1AMuHstm4LMTrl3/qDU2KxyEmbhNd/dKfjw5RJi/dX/LHHPdE7wz/13K6gmLAazP
+	ouoRG/e4hvVqTWF7w4es16hzev/gUux1ZgjUVfJwYlWCojpEc3XAF32c0pIaJvKBJSWA3oa2Wcu
+	QgYpATzI8+Thg0WWxqxmNg2//6yCPFRs5mbtCABa1Kvg1wMoGwDc5sQCYrGrvTl5m504Y99sLUy
+	ARA==
+X-Google-Smtp-Source: AGHT+IFPaUkBhW+7RcmFLLxMld4EFtuUsmWLGviLtfem1SfGzG5MQLw/zhlVTkW8+jGL3KbSDC8E6w==
+X-Received: by 2002:a17:903:17c6:b0:234:ef42:5d75 with SMTP id d9443c01a7336-23de245f590mr2955225ad.20.1752072948825;
+        Wed, 09 Jul 2025 07:55:48 -0700 (PDT)
+Received: from localhost.localdomain ([49.37.221.186])
+        by smtp.googlemail.com with ESMTPSA id d9443c01a7336-23c84593e0asm138530505ad.193.2025.07.09.07.55.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 09 Jul 2025 07:39:17 -0700 (PDT)
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Wed, 09 Jul 2025 16:39:08 +0200
-Subject: [PATCH v2 12/12] pinctrl: qcom: make the pinmuxing strict
+        Wed, 09 Jul 2025 07:55:48 -0700 (PDT)
+From: Abdun Nihaal <abdun.nihaal@gmail.com>
+To: nbd@nbd.name
+Cc: Abdun Nihaal <abdun.nihaal@gmail.com>,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	kvalo@kernel.org,
+	toke@toke.dk,
+	jeff.johnson@oss.qualcomm.com,
+	jirislaby@kernel.org,
+	u.kleine-koenig@baylibre.com,
+	linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] wifi: mt76: fix potential memory leak in mt76_wmac_probe()
+Date: Wed,  9 Jul 2025 20:25:30 +0530
+Message-ID: <20250709145532.41246-1-abdun.nihaal@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250709-pinctrl-gpio-pinfuncs-v2-12-b6135149c0d9@linaro.org>
-References: <20250709-pinctrl-gpio-pinfuncs-v2-0-b6135149c0d9@linaro.org>
-In-Reply-To: <20250709-pinctrl-gpio-pinfuncs-v2-0-b6135149c0d9@linaro.org>
-To: Linus Walleij <linus.walleij@linaro.org>, 
- Bjorn Andersson <andersson@kernel.org>, 
- Konrad Dybcio <konradybcio@kernel.org>, 
- Alexey Klimov <alexey.klimov@linaro.org>, 
- Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Paul Cercueil <paul@crapouillou.net>
-Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
- Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1081;
- i=bartosz.golaszewski@linaro.org; h=from:subject:message-id;
- bh=iQ18p+opwS51aj7kQgPPUv5KuYwgsHKMpCHQbdUzIuo=;
- b=owEBbQKS/ZANAwAKARGnLqAUcddyAcsmYgBobn8Hh53vwVwSAhW66U/ZVT3BJ1K+Xx5actm8W
- SIfx8mfLfuJAjMEAAEKAB0WIQQWnetsC8PEYBPSx58Rpy6gFHHXcgUCaG5/BwAKCRARpy6gFHHX
- coG7EACGCen1sbTZOcLtihqfgfleRvxd76y5gasx5ejhY5jN73Ryz+vjJHtDwd0l8c5SrMksrB6
- t7OuK5xDmCoMqMKP5oOyeqLRRCAkG+Bmb5B2OQB1nzWC9+7adNNl5rNXdk1UlZJum3AJqNI2xaU
- HzQ2ZDMceCyhG/Rb6B4qmWtfdLKiwGQTSjKvy2FoyiKyP1Kkg9mta/0tJcbaoCJ4KIGpY35E1Bz
- vNq+LbVz1VduLsXlH77XQUw5YQApX2JOKQ6E31YI4F6oiDHonqOoshmaQi+J0BEZYUgZEJIgRGe
- U0vwdMdBK4dlY3yHw6HrK2Tnqh8kawBRgh7OeZYoldO7ICasE0MkR1/VRArAynV34jM/THvbj3H
- +plh1jmtOLBgb3t3xLuhkdAjsXU7lLuznLsCsL+cweuriClQTCPwJtO/CuPSxCxQ0O/D4BSRZu5
- cVnckT4XlctODT6EkMNWLvzHgb/PAfHS0ZpGItYuV+nSdQ0nI653/gECD1stS1bkCeVnT/tJ0nJ
- WcFn6s33bTLewA0UiRkRJa3fwOCoP8hZripGucl8phvCVzKI8bI+ueBfR9B0nZzOJjwDDtVTdjj
- Xun95s+UXln6QtpXMasLGtGzUdktTreMUdgPihMF9TwaoN0biXPnFeXfQt2JXn4vWrGO9/mcIM6
- vn/2GgtvVmDuNAw==
-X-Developer-Key: i=bartosz.golaszewski@linaro.org; a=openpgp;
- fpr=169DEB6C0BC3C46013D2C79F11A72EA01471D772
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250709_073919_831869_0CADA952 
-X-CRM114-Status: UNSURE (   9.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250709_075550_043327_3D523534 
+X-CRM114-Status: GOOD (  12.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,33 +108,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+In mt76_wmac_probe(), when the mt76_alloc_device() call succeeds, memory
+is allocated for both struct ieee80211_hw and a workqueue. However, on
+the error path, the workqueue is not freed. Fix that by calling
+mt76_free_device() on the error path.
 
-The strict flag in struct pinmux_ops disallows the usage of the same pin
-as a GPIO and for another function. Without it, a rouge user-space
-process with enough privileges (or even a buggy driver) can request a
-used pin as GPIO and drive it, potentially confusing devices or even
-crashing the system. Set it globally for all pinctrl-msm users.
-
-Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+Fixes: c8846e101502 ("mt76: add driver for MT7603E and MT7628/7688")
+Signed-off-by: Abdun Nihaal <abdun.nihaal@gmail.com>
 ---
- drivers/pinctrl/qcom/pinctrl-msm.c | 1 +
- 1 file changed, 1 insertion(+)
+This patch is compile tested only. Not tested on real hardware.
 
-diff --git a/drivers/pinctrl/qcom/pinctrl-msm.c b/drivers/pinctrl/qcom/pinctrl-msm.c
-index 7010be8d1ace062fcf7743e539d2065d4aed856b..ad572c923e2ab8caed134207ec02c4107d4dc2bd 100644
---- a/drivers/pinctrl/qcom/pinctrl-msm.c
-+++ b/drivers/pinctrl/qcom/pinctrl-msm.c
-@@ -268,6 +268,7 @@ static const struct pinmux_ops msm_pinmux_ops = {
- 	.function_is_gpio	= pinmux_generic_function_is_gpio,
- 	.gpio_request_enable	= msm_pinmux_request_gpio,
- 	.set_mux		= msm_pinmux_set_mux,
-+	.strict			= true,
- };
+ drivers/net/wireless/mediatek/mt76/mt7603/soc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/soc.c b/drivers/net/wireless/mediatek/mt76/mt7603/soc.c
+index 08590aa68356..1dd372372048 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7603/soc.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7603/soc.c
+@@ -48,7 +48,7 @@ mt76_wmac_probe(struct platform_device *pdev)
  
- static int msm_config_reg(struct msm_pinctrl *pctrl,
-
+ 	return 0;
+ error:
+-	ieee80211_free_hw(mt76_hw(dev));
++	mt76_free_device(mdev);
+ 	return ret;
+ }
+ 
 -- 
-2.48.1
+2.43.0
 
 
