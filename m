@@ -4,134 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59EB3C83F09
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jul 2025 21:58:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F514C83F17
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jul 2025 22:57:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=A2ietRUbMDbJ4mE4kCJF5gt9v+ZI/BJHpjh+AfLfssc=; b=zszMsA6xNQj0xo+OqsE6hqORdB
-	PuvMePrWK3ZqFMQyH3hAqeLZohegd8rw6UdxgG+Mvh1xr44gDdm5wgUVBQnLIjE749+AHa9GgjWki
-	e2Ukpy+2FyXNEA6AFKw1GEWwUSmTzE/vrg6tfLQ7hqBlK9V2U32W4kFFg6j2Y6D7hMBVeDi6mCNP2
-	ptCkMWiEVDPnbxSV+QnowuuuX5kb+SQDY3U/rRWL21NxfkYLIiP7CulOm2KIYeCq3kWGyIv3Bszfk
-	phnzZTg/f4rMpkfudtaKCGBxVS55WxHZ/uQfcZUgIU1PSWzg/nPcmVa95YogTZ/9S+9RyqMOEff0X
-	OktZFSmw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AeNyhU0IbImTOM2sec3z2E+lKGcfLSldUoaa9IlHjM8=; b=mtOIclmTXr9K9k0NL69sB19Yne
+	f/i1QajbmQHrsqDux0R1cPC8DjSH2JucCWDypvSLvoiDXzOrLQC7iEgPHY1CvlDWTw2715o+/YRc1
+	ALMu5ZV/DbFruLT9Ypbo79ceC09L9GVp5/OXRoXoekFeXMetZtQWnxNK2LW6NQFHp4bQNONVYQFul
+	+weET+4ztIrNjD6OEmvWh0OCXN+iakQe11KUOL+/56txWc++hr3ZT3qG+0jdYmWDE70pkP5oes3xG
+	dpmvh0omSA4ifeoa/KpQ7XI+N8+LIo2IWSCFKSDXzck85V9eXCJs2w5TSZAXkmpIyBLUxrFSLinic
+	yfsS4LGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZcoW-00000009y1Q-45PO;
-	Wed, 09 Jul 2025 21:58:52 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1uZdjC-0000000AA44-29ZV;
+	Wed, 09 Jul 2025 22:57:26 +0000
+Received: from aposti.net ([185.119.170.32])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZZ9t-00000009VNf-3mmB
-	for linux-mediatek@lists.infradead.org;
-	Wed, 09 Jul 2025 18:04:43 +0000
-Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 569CowsQ011638
-	for <linux-mediatek@lists.infradead.org>; Wed, 9 Jul 2025 18:04:41 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	A2ietRUbMDbJ4mE4kCJF5gt9v+ZI/BJHpjh+AfLfssc=; b=VkHrX/iB1owUSxld
-	0k+fbo6IcOvwtEYGSSRlKjHpAinC0RiWd73EPPUC6SOM4iBvvYejo9Hir/sSs1M+
-	BimAHnZ5h1Bm7K6EukFdGpofuYt4/4mVpL2Pvk1zuKqdOPMAEA0hUXCuPSLOmkJI
-	uxhP+dVMdAmPY42H33WwyFKvhLTjLI7hykoi46pR/kn5Hgzte68IRcBVaBSbbEgM
-	cHTfSuCq3FFJOsKCluYO73ZuMuweN68F4RZKBYnZjt9JHLQRIPG83VqGx6D6sB7x
-	NYtuDq+MO3CE2+WCNg0do2owYKfya9Fs8n2UT5JIvD2kgG7SZnFYVVqX1VOzqctq
-	+OrFUw==
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com [209.85.222.199])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 47smafj1a1-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Wed, 09 Jul 2025 18:04:40 +0000 (GMT)
-Received: by mail-qk1-f199.google.com with SMTP id af79cd13be357-7d094e04aa4so3596785a.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 09 Jul 2025 11:04:40 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1752084280; x=1752689080;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=A2ietRUbMDbJ4mE4kCJF5gt9v+ZI/BJHpjh+AfLfssc=;
-        b=jIdYnL9yVWJcIsEk5s2cQEdTLcvhGZ1ZAZlBdEKrVB0oXR3R+R23k/UesyJMHMYBnT
-         9N3vKQeejBXzv6xUE9I3sxgTudO/auaCGbmFp/AdrONZf+C/RiYozDgoKAAEMCbrxAky
-         m7p80O+rUu+KNzBOfKJR4bdh2ZNh+qfgcZ6HelLBTIfQJyCn4UxP1WDhoJOaFNafVg4k
-         pZngsftOZHZ1mEPD5TGzMxSKfyYFlcLVYvdza9cJ1ET+wlfmrJMKTQEi+oeiFoFRxAHV
-         7kbbcL90EIvpz5OWLC8VgWIvkMnoLBQ8I450FFewa9u5pjFTW9EEkHKJ3Uksjjel+Cbz
-         SO/A==
-X-Forwarded-Encrypted: i=1; AJvYcCVT/+/QGavxS/WFpY+Hb2QHcNKWI3HrdPYoAllvUokJqPwyx5hgZlKzppBZ9LfMfZDZq0CjL8U4kkCi/G84gw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxtby/EHpA/Y6j7kODqayIEO/BvnJlCo3+tooO8BqUCYA7aQUJc
-	WQqE0vEZgNGApjPouJEUhZlzOdErZx+MJ9bQ4UcEOHWV28aeN/kYfESNglzN2PC2xkcSLiF0hz6
-	a3F+XMhS9jRWuZ/8uqXKb6q2MPv6ND8IHAwqR3o1H5+E+O6D4rHl0atoMsKqW+QNo4U4nOaKFru
-	M=
-X-Gm-Gg: ASbGncunXkgEsv4bPirZj2suBhE1qCB4qWLIUt1dygF257ANcIQFDS70dWqoMFeEtbb
-	mb5NCzXht/aLxORj6cciXZwNTd8RjO2SxMyWhK6CnNnKHRd02mGW+4lsMlaPqgLB+oXnRjsd5OR
-	0X/QNuCgKnJ99E6UH6vGt8wpofG1dH2cLlEXD78SQatryliS5zwwhpAWKIqIupGiG/JrBWKkKuJ
-	CQTwHWhjMOsVnFJza90pNHRTvklflUl9I0pm4kTxdqf1yKeAe4GXf/IlvkLyQW9s8ZOyLAbTHS+
-	yCpEejL3hpX/4nLBgv2npBemgXt6hGVVRFnOXbp/JNKaZr3fMFt/vIU5c2+sE510fzVMVb8ggX6
-	V4F0=
-X-Received: by 2002:a05:620a:2681:b0:7db:3fbc:d71f with SMTP id af79cd13be357-7db8b3307c8mr183720985a.0.1752084279982;
-        Wed, 09 Jul 2025 11:04:39 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFRdyICFCZxRrKtqyaPtAi/LxAqDz5IEHfkpkf3qpn9haIG2NUFS9hpsW2SKi6yjsOjwAtEOw==
-X-Received: by 2002:a05:620a:2681:b0:7db:3fbc:d71f with SMTP id af79cd13be357-7db8b3307c8mr183718485a.0.1752084279403;
-        Wed, 09 Jul 2025 11:04:39 -0700 (PDT)
-Received: from [192.168.143.225] (078088045245.garwolin.vectranet.pl. [78.88.45.245])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ae3f692f555sm1156700766b.60.2025.07.09.11.04.37
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 09 Jul 2025 11:04:38 -0700 (PDT)
-Message-ID: <256e01fc-fdba-4006-be8b-236fbbdf9f25@oss.qualcomm.com>
-Date: Wed, 9 Jul 2025 20:04:36 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 10/12] pinctrl: qcom: add infrastructure for marking
- pin functions as GPIOs
-To: Bartosz Golaszewski <brgl@bgdev.pl>,
-        Linus Walleij <linus.walleij@linaro.org>,
-        Bjorn Andersson <andersson@kernel.org>,
-        Konrad Dybcio <konradybcio@kernel.org>,
-        Alexey Klimov <alexey.klimov@linaro.org>,
-        Lorenzo Bianconi <lorenzo@kernel.org>,
-        Sean Wang <sean.wang@kernel.org>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Paul Cercueil <paul@crapouillou.net>
-Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
-        linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
-        linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
-        Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+	id 1uZcJM-00000009uau-1JoP;
+	Wed, 09 Jul 2025 21:26:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
+	s=mail; t=1752096392;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=AeNyhU0IbImTOM2sec3z2E+lKGcfLSldUoaa9IlHjM8=;
+	b=iVF8f94E7W50OAweMt+hTHDfgObOse4sZp8Eo5dQc8thX1hkibCzhxy/9KVJUZHhnhvRMH
+	4eM0KB6bD8knnRyAYR8EVPHw3dxxkjb9768f3Nvq8ePRJgS9TJDf6pTcpd4E4aNpTbvJ0u
+	DRWRu5b09tEtU9ZhjgXJKyC9Lf2wwfE=
+Message-ID: <5a2c7d244d0467d7236dbce920319c6df519bad7.camel@crapouillou.net>
+Subject: Re: [PATCH v2 07/12] pinctrl: ingenic: use
+ pinmux_generic_add_pinfunction()
+From: Paul Cercueil <paul@crapouillou.net>
+To: Bartosz Golaszewski <brgl@bgdev.pl>, Linus Walleij	
+ <linus.walleij@linaro.org>, Bjorn Andersson <andersson@kernel.org>, Konrad
+ Dybcio <konradybcio@kernel.org>, Alexey Klimov <alexey.klimov@linaro.org>,
+ Lorenzo Bianconi	 <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>,
+ Matthias Brugger	 <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
+ <angelogioacchino.delregno@collabora.com>
+Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, Bartosz
+ Golaszewski <bartosz.golaszewski@linaro.org>
+Date: Wed, 09 Jul 2025 23:25:30 +0200
+In-Reply-To: <20250709-pinctrl-gpio-pinfuncs-v2-7-b6135149c0d9@linaro.org>
 References: <20250709-pinctrl-gpio-pinfuncs-v2-0-b6135149c0d9@linaro.org>
- <20250709-pinctrl-gpio-pinfuncs-v2-10-b6135149c0d9@linaro.org>
-Content-Language: en-US
-From: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-In-Reply-To: <20250709-pinctrl-gpio-pinfuncs-v2-10-b6135149c0d9@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Authority-Analysis: v=2.4 cv=ZJ/XmW7b c=1 sm=1 tr=0 ts=686eaf38 cx=c_pps
- a=HLyN3IcIa5EE8TELMZ618Q==:117 a=FpWmc02/iXfjRdCD7H54yg==:17
- a=IkcTkHD0fZMA:10 a=Wb1JkmetP80A:10 a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8
- a=NA2ShB3TTlD8ZNnRZVMA:9 a=QEXdDO2ut3YA:10 a=bTQJ7kPSJx9SKPbeHEYW:22
- a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-ORIG-GUID: kkOY7V3e1e7jrvTkghaUrwcw9lyIjOEx
-X-Proofpoint-GUID: kkOY7V3e1e7jrvTkghaUrwcw9lyIjOEx
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNzA5MDE2MyBTYWx0ZWRfXw3dQmFGD7EQP
- mLJEm8R/88i8jpew5ttbjkej1i4X6J3Rd3pBmazmfJ+3C36kuvP9urOqIieQvhmyXn5YBsnOSgK
- 7or5lncOQaNYrjI1kOSLC6zy+99eMSjtMc31U2niz6H+ubndkIyWzDQ7x8T8ADhXX7RE7RDtezK
- XL3N+PwPn6NKO+9ZxYs+ineIK2fX1Bh9pRr9db7Vm6IM4oQLYaJUflbVm/MPheGFHNpYMZ5L7K4
- Xf+e2k+KcmFGpbapZevLGW1b9VMLwhebbC2pm6FW/JsJFcyljd/8AKOeXMkPTKpD/JBHVLCktvR
- /DrwsdGKrLtumGzfz6hvPzRPz4Va8lToKnbkD+/Cuxg8gFirUNCwo1QsQu1BTamfwxeuHccdJJj
- 8YgGoErTI64Bo5zkebnVp/z0JMcuf6NLDoPfzkKlvK3ecATRJmptpYq0TB4G9PdrUqchuWVS
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.7,FMLib:17.12.80.40
- definitions=2025-07-09_04,2025-07-09_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- mlxlogscore=999 impostorscore=0 spamscore=0 adultscore=0 clxscore=1015
- bulkscore=0 phishscore=0 priorityscore=1501 mlxscore=0 lowpriorityscore=0
- suspectscore=0 malwarescore=0 classifier=spam authscore=0 authtc=n/a authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2505280000
- definitions=main-2507090163
+	 <20250709-pinctrl-gpio-pinfuncs-v2-7-b6135149c0d9@linaro.org>
+Autocrypt: addr=paul@crapouillou.net; prefer-encrypt=mutual;
+ keydata=mQENBF0KhcEBCADkfmrzdTOp/gFOMQX0QwKE2WgeCJiHPWkpEuPH81/HB2dpjPZNW03ZM
+ LQfECbbaEkdbN4YnPfXgcc1uBe5mwOAPV1MBlaZcEt4M67iYQwSNrP7maPS3IaQJ18ES8JJ5Uf5Uz
+ FZaUawgH+oipYGW+v31cX6L3k+dGsPRM0Pyo0sQt52fsopNPZ9iag0iY7dGNuKenaEqkYNjwEgTtN
+ z8dt6s3hMpHIKZFL3OhAGi88wF/21isv0zkF4J0wlf9gYUTEEY3Eulx80PTVqGIcHZzfavlWIdzhe
+ +rxHTDGVwseR2Y1WjgFGQ2F+vXetAB8NEeygXee+i9nY5qt9c07m8mzjABEBAAG0JFBhdWwgQ2VyY
+ 3VlaWwgPHBhdWxAY3JhcG91aWxsb3UubmV0PokBTgQTAQoAOBYhBNdHYd8OeCBwpMuVxnPua9InSr
+ 1BBQJdCoXBAhsDBQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEHPua9InSr1BgvIH/0kLyrI3V0f
+ 33a6D3BJwc1grbygPVYGuC5l5eMnAI+rDmLR19E2yvibRpgUc87NmPEQPpbbtAZt8On/2WZoE5OIP
+ dlId/AHNpdgAtGXo0ZX4LGeVPjxjdkbrKVHxbcdcnY+zzaFglpbVSvp76pxqgVg8PgxkAAeeJV+ET
+ 4t0823Gz2HzCL/6JZhvKAEtHVulOWoBh368SYdolp1TSfORWmHzvQiCCCA+j0cMkYVGzIQzEQhX7U
+ rf9N/nhU5/SGLFEi9DcBfXoGzhyQyLXflhJtKm3XGB1K/pPulbKaPcKAl6rIDWPuFpHkSbmZ9r4KF
+ lBwgAhlGy6nqP7O3u7q23hRU=
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250709_110442_061794_40A2256C 
-X-CRM114-Status: UNSURE (   9.47  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250709_142640_864583_84E34E5B 
+X-CRM114-Status: GOOD (  13.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -146,16 +87,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/9/25 4:39 PM, Bartosz Golaszewski wrote:
+Hi Bartosz,
+
+Le mercredi 09 juillet 2025 =C3=A0 16:39 +0200, Bartosz Golaszewski a
+=C3=A9crit=C2=A0:
 > From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-> 
-> Add a helper macro that wraps PINCTRL_GPIO_PINFUNCTION() for pinctrl-msm
-> pin functions and assign the .function_is_gpio() callback in pinmux_ops.
-> 
+>=20
+> Instead of passing individual fields of struct pinfunction to
+> pinmux_generic_add_function(), use pinmux_generic_add_pinfunction()
+> and
+> pass the entire structure directly.
+>=20
 > Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+
+Reviewed-by: Paul Cercueil <paul@crapouillou.net>
+
+Cheers,
+-Paul
+
 > ---
-
-Reviewed-by: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-
-Konrad
+> =C2=A0drivers/pinctrl/pinctrl-ingenic.c | 5 ++---
+> =C2=A01 file changed, 2 insertions(+), 3 deletions(-)
+>=20
+> diff --git a/drivers/pinctrl/pinctrl-ingenic.c
+> b/drivers/pinctrl/pinctrl-ingenic.c
+> index
+> 3c660471ec6911ee494f45d2ffc13c4dc496fd2e..79119cf20efcf8cc701647d9ff9
+> 79c2b71bf7589 100644
+> --- a/drivers/pinctrl/pinctrl-ingenic.c
+> +++ b/drivers/pinctrl/pinctrl-ingenic.c
+> @@ -4574,9 +4574,8 @@ static int __init ingenic_pinctrl_probe(struct
+> platform_device *pdev)
+> =C2=A0		const struct function_desc *function =3D &chip_info-
+> >functions[i];
+> =C2=A0		const struct pinfunction *func =3D &function->func;
+> =C2=A0
+> -		err =3D pinmux_generic_add_function(jzpc->pctl, func-
+> >name,
+> -						=C2=A0 func->groups,
+> func->ngroups,
+> -						=C2=A0 function->data);
+> +		err =3D pinmux_generic_add_pinfunction(jzpc->pctl,
+> func,
+> +						=C2=A0=C2=A0=C2=A0=C2=A0 function-
+> >data);
+> =C2=A0		if (err < 0) {
+> =C2=A0			dev_err(dev, "Failed to register function
+> %s\n", func->name);
+> =C2=A0			return err;
 
