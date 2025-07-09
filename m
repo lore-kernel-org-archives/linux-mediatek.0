@@ -4,30 +4,30 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 548F8C83F09
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jul 2025 13:57:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D87D7C83F03
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jul 2025 14:01:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Mw75z6h4HeFha6AF7YI1R1VXg23z1dS7Y1C1o8vw7rQ=; b=AqkPbB32caEzYF
-	clUPkbbOfSGAfLAmVhyuNI2MOA5Pb8XkxiQzJy+GViVvpHC0svY7ZM27S+oNLbq+isZa+iOhB7InT
-	+FtYeXu2/4yu1je3nkboGjUitkJdnD/rQ1LJW+RGxBdJfLcKs6tnsj3HFex+IsTIxYKjP2SkUMqf5
-	qQq023I1JfCYy+i8akQQt9jTeKweG2fiVfGnPQsEGtJUc0dowqjeI2JXdJqvHvHfXQU7X0jZlI4xi
-	vjz0SneGGPNbHpXrHz1Vk4kTMeRhnxObePX2vNjJsRF7cU4oOUp8nSWIhdOCYx9U7HDvX0w56GiYa
-	/ZJDgXsK9CnVyegzy5LA==;
+	List-Owner; bh=Po3wYPbug5oitTRavuGEWn/QaJpRE4HKrgqN22L2B/4=; b=I1QgWNb1fT0TMk
+	9iA1FCOfDUEFZX3uSMsaHshRkTF+yOnwf8vognd8rTScSRqLwghxG2iovWeM5LTT/XXy2/D5miByT
+	VIuRONLnQslRPJhMRC+iOzr05dmGJLsOMfHKk0F74/SXGdJl0iW6e9dLpRatdApeTuEqMjicCzttc
+	TO4/no/jun9Lu/+VosdUB94z5qzWxQjlDGQEDi9dv+5ZU9VHZx43B8rwVBpGgGTOnMM4v9o2lPL1e
+	Ay4yIBEu4PE3F6bfDyiDSjc8Z8yQreNqMUnZemrQnguDO4pzOnoQqBrSs/QqUilOYPTbtPBPMTiNw
+	3mrNNr2ITPS10vVBtgvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZVIN-00000008s6R-0scw;
-	Wed, 09 Jul 2025 13:57:11 +0000
-Received: from mxout4.routing.net ([2a03:2900:1:a::9])
+	id 1uZVN0-00000008tGJ-1duR;
+	Wed, 09 Jul 2025 14:01:58 +0000
+Received: from mxout3.routing.net ([2a03:2900:1:a::8])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZSiZ-00000008SCe-3U35;
-	Wed, 09 Jul 2025 11:12:05 +0000
+	id 1uZSib-00000008SDb-02Gd;
+	Wed, 09 Jul 2025 11:12:06 +0000
 Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
-	by mxout4.routing.net (Postfix) with ESMTP id 63661100935;
+	by mxout3.routing.net (Postfix) with ESMTP id 061B3615AD;
 	Wed,  9 Jul 2025 11:12:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
 	s=20200217; t=1752059521;
@@ -35,13 +35,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=Mw75z6h4HeFha6AF7YI1R1VXg23z1dS7Y1C1o8vw7rQ=;
-	b=MzVzvAE1gokUWwIKohEWFrqkPn4hiv/+0+mq6sOvaeCNU1/FTCDq2+GTySkfzPhl6ikOep
-	ZGnFWnZqezfYLi7yFydOCJnMZWb9U2wsDEfnlrdP8rXQMx4xpbleJjClGOoMSCfIUYeGOI
-	WiKHQTbWf/Q44EYQYxitbsg1xxXa0U8=
+	bh=Po3wYPbug5oitTRavuGEWn/QaJpRE4HKrgqN22L2B/4=;
+	b=eHq6GCOvMKJLjDIFCWWtOJ5N3SuUfzKInZyDutULnAVvHYjZ50Shuy0EnsfJHQcbacLeCz
+	EOE7SrUPkf3KJMlXxnvsN02T660DpHBslWIHnzrOWIO3MNEi0pxtnGLQgNHWWl5KjSkJwA
+	3bhy6gNDQi3R1VcK+oz/c3ja1Plv0V8=
 Received: from frank-u24.. (fttx-pool-217.61.157.99.bambit.de [217.61.157.99])
-	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 0C9701226CC;
-	Wed,  9 Jul 2025 11:12:01 +0000 (UTC)
+	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id A399B1226D4;
+	Wed,  9 Jul 2025 11:12:00 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: MyungJoo Ham <myungjoo.ham@samsung.com>,
 	Kyungmin Park <kyungmin.park@samsung.com>,
@@ -66,17 +66,17 @@ To: MyungJoo Ham <myungjoo.ham@samsung.com>,
 	Daniel Golle <daniel@makrotopia.org>,
 	Lorenzo Bianconi <lorenzo@kernel.org>,
 	Felix Fietkau <nbd@nbd.name>
-Subject: [PATCH v9 13/13] arm64: dts: mediatek: mt7988a-bpi-r4: configure switch phys and leds
-Date: Wed,  9 Jul 2025 13:09:49 +0200
-Message-ID: <20250709111147.11843-14-linux@fw-web.de>
+Subject: [PATCH v9 12/13] arm64: dts: mediatek: mt7988a-bpi-r4: add sfp cages and link to gmac
+Date: Wed,  9 Jul 2025 13:09:48 +0200
+Message-ID: <20250709111147.11843-13-linux@fw-web.de>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250709111147.11843-1-linux@fw-web.de>
 References: <20250709111147.11843-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250709_041204_089897_84AE3045 
-X-CRM114-Status: GOOD (  10.74  )
+X-CRM114-CacheID: sfid-20250709_041205_364577_183C6916 
+X-CRM114-Status: GOOD (  11.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,94 +94,106 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-Assign pinctrl to switch phys and leds.
+Add SFP cages to Bananapi-R4 board. The 2.5g phy variant only contains the
+wan-SFP, so add this to common dtsi and the lan-sfp only to the dual-SFP
+variant.
 
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
 v4:
-- reorder switch phy(-led) properties
-v2:
-- add labels and led-function and include after dropping from soc dtsi
+- update 2g5-board (reorder and drop phy-connection-type)
+- order sfp properties
+v3:
+- enable mac with 2.5g phy on r4 phy variant because driver is now mainline
 ---
- .../dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi | 61 +++++++++++++++++++
- 1 file changed, 61 insertions(+)
+ .../mediatek/mt7988a-bananapi-bpi-r4-2g5.dts  | 11 +++++++++++
+ .../dts/mediatek/mt7988a-bananapi-bpi-r4.dts  | 19 +++++++++++++++++++
+ .../dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi | 19 +++++++++++++++++++
+ 3 files changed, 49 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
-index 4d709ee527df..7c9df606f60d 100644
---- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
-@@ -4,6 +4,7 @@
- 
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/regulator/richtek,rt5190a-regulator.h>
-+#include <dt-bindings/leds/common.h>
- 
- #include "mt7988a.dtsi"
- 
-@@ -152,6 +153,66 @@ &gmac2 {
- 	sfp = <&sfp1>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts
+index 53de9c113f60..6f0c81e3fd94 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts
+@@ -9,3 +9,14 @@ / {
+ 	model = "Banana Pi BPI-R4 (1x SFP+, 1x 2.5GbE)";
+ 	chassis-type = "embedded";
+ };
++
++&gmac1 {
++	phy = <&int_2p5g_phy>;
++	phy-mode = "internal";
++	status = "okay";
++};
++
++&int_2p5g_phy {
++	pinctrl-0 = <&i2p5gbe_led0_pins>;
++	pinctrl-names = "i2p5gbe-led";
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
+index 36bd1ef2efab..4b3796ba82e3 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dts
+@@ -8,6 +8,25 @@ / {
+ 	compatible = "bananapi,bpi-r4", "mediatek,mt7988a";
+ 	model = "Banana Pi BPI-R4 (2x SFP+)";
+ 	chassis-type = "embedded";
++
++	/* SFP2 cage (LAN) */
++	sfp2: sfp2 {
++		compatible = "sff,sfp";
++		i2c-bus = <&i2c_sfp2>;
++		maximum-power-milliwatt = <3000>;
++
++		los-gpios = <&pio 2 GPIO_ACTIVE_HIGH>;
++		mod-def0-gpios = <&pio 83 GPIO_ACTIVE_LOW>;
++		rate-select0-gpios = <&pio 3 GPIO_ACTIVE_LOW>;
++		tx-disable-gpios = <&pio 0 GPIO_ACTIVE_HIGH>;
++		tx-fault-gpios = <&pio 1 GPIO_ACTIVE_HIGH>;
++	};
++};
++
++&gmac1 {
++	managed = "in-band-status";
++	phy-mode = "usxgmii";
++	sfp = <&sfp2>;
  };
  
-+&gsw_phy0 {
-+	pinctrl-0 = <&gbe0_led0_pins>;
-+	pinctrl-names = "gbe-led";
-+};
+ &pca9545 {
+diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
+index 20073eb4d1bd..4d709ee527df 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
+@@ -63,6 +63,19 @@ reg_3p3v: regulator-3p3v {
+ 		regulator-boot-on;
+ 		regulator-always-on;
+ 	};
 +
-+&gsw_phy0_led0 {
-+	function = LED_FUNCTION_WAN;
-+	color = <LED_COLOR_ID_GREEN>;
-+	status = "okay";
-+};
++	/* SFP1 cage (WAN) */
++	sfp1: sfp1 {
++		compatible = "sff,sfp";
++		i2c-bus = <&i2c_sfp1>;
++		maximum-power-milliwatt = <3000>;
 +
-+&gsw_port0 {
-+	label = "wan";
-+};
-+
-+&gsw_phy1 {
-+	pinctrl-0 = <&gbe1_led0_pins>;
-+	pinctrl-names = "gbe-led";
-+};
-+
-+&gsw_phy1_led0 {
-+	function = LED_FUNCTION_LAN;
-+	color = <LED_COLOR_ID_GREEN>;
-+	status = "okay";
-+};
-+
-+&gsw_port1 {
-+	label = "lan1";
-+};
-+
-+&gsw_phy2 {
-+	pinctrl-0 = <&gbe2_led0_pins>;
-+	pinctrl-names = "gbe-led";
-+};
-+
-+&gsw_phy2_led0 {
-+	function = LED_FUNCTION_LAN;
-+	color = <LED_COLOR_ID_GREEN>;
-+	status = "okay";
-+};
-+
-+&gsw_port2 {
-+	label = "lan2";
-+};
-+
-+&gsw_phy3 {
-+	pinctrl-0 = <&gbe3_led0_pins>;
-+	pinctrl-names = "gbe-led";
-+};
-+
-+&gsw_phy3_led0 {
-+	function = LED_FUNCTION_LAN;
-+	color = <LED_COLOR_ID_GREEN>;
-+	status = "okay";
-+};
-+
-+&gsw_port3 {
-+	label = "lan3";
++		los-gpios = <&pio 54 GPIO_ACTIVE_HIGH>;
++		mod-def0-gpios = <&pio 82 GPIO_ACTIVE_LOW>;
++		rate-select0-gpios = <&pio 21 GPIO_ACTIVE_LOW>;
++		tx-disable-gpios = <&pio 70 GPIO_ACTIVE_HIGH>;
++		tx-fault-gpios = <&pio 69 GPIO_ACTIVE_HIGH>;
++	};
+ };
+ 
+ &cci {
+@@ -133,6 +146,12 @@ map-cpu-active-low {
+ 	};
+ };
+ 
++&gmac2 {
++	managed = "in-band-status";
++	phy-mode = "usxgmii";
++	sfp = <&sfp1>;
 +};
 +
  &i2c0 {
