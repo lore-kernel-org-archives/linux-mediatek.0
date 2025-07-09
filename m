@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D0C5C83F09
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jul 2025 10:19:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DC05C83F03
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jul 2025 10:26:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MR/VHVIGZbdziFP4wdziyYFpTeZxPxWQvBTZzaHY1rk=; b=IfpPfbJB4FE7Eem1CId9VTM6cl
-	4IJqIjQ6WpnMbccMVa+3ucNGKfh29pFufJD3U5xp2NIBQZpuQD/AuUQ1Yyblvc0P9cHxfVpgcRYKi
-	M65oRcuyohcrOj0k/eYJ3sOY8Mp02UlS3Z201zXiQvg15iw3Z+gqlQXmTFdeJib403MLBRLao7Vna
-	jG1N5N3T6ZQHR5e/yKAoLshwvywayUAfSmA6Ig4rDSZXDzGAC8epiXhFP8wuEeO4LuOfGsx3y3Jma
-	+4KpBxdTYEF89u4K5ZVpUtQe/EJh0xXityAYQom5NFPTVATdJ7WTgjgk/Ir0QbRjlNuTzC+LA2EAg
-	wgnxhLvA==;
+	bh=hRUQX8SKFHkN4O2Ha8HmekyApp+kOMZ426c2WqKVZy8=; b=3whqLAaTiAL1eAqnWHikHsgGr6
+	SXdYTt7lO4Vt+Fdj1DDkwGITIZLhvyWmahINp4evjVTxx+XFup8pUJoyhtQtr4X54mCi+re5laHrJ
+	nSS2XkGco7U62LXNPgPG6MUjN0WJjRhikVG3GNjesBZOnojwi2eCWpQX/4kx1sTKdXqVP7aUEYQKa
+	pkR5qpcna1PrPQsusRM4ERgdsQkqxAY2fBOqrzG4pQtd3a6umaJg4XA4WEhEbZfsH72ZTfoPe7enQ
+	MT5+4K3MAFIf+F+7xYH2+q9CSghTp0hehsCcbNTEQADPxCGXPghW7KT92XgIvBwi0WkAWSIibz2Lo
+	5w9hrreg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZRtJ-00000008Hr9-09aW;
-	Wed, 09 Jul 2025 10:19:05 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uZS0C-00000008InD-2ZlG;
+	Wed, 09 Jul 2025 10:26:12 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZQ9i-00000007y5S-1iE1;
-	Wed, 09 Jul 2025 08:27:54 +0000
+	id 1uZQCq-00000007ySE-1ItY;
+	Wed, 09 Jul 2025 08:31:09 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id D207161455;
-	Wed,  9 Jul 2025 08:27:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F3F19C4CEEF;
-	Wed,  9 Jul 2025 08:27:52 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 70B32A5472D;
+	Wed,  9 Jul 2025 08:31:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8C2EAC4CEEF;
+	Wed,  9 Jul 2025 08:31:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752049673;
-	bh=JQ1+Vm+0K0y8h9HijNHayqn7WMa42BU+nZE0V6oZ0Xw=;
+	s=k20201202; t=1752049867;
+	bh=/ZESWwyTJveRbGr5oE29xvj9PEV+f3vsHTfROkLMirQ=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=m9C1zRrngUo+zKh1qz9o/lGUIhk+lgLUAzXQ1p4p7yV42CMp2UU43uCVuuof5vfDM
-	 8UWVAh5dA0DKSUY1z8GCEf++dqYgg2kRO7zkXKOli2vGTngBMpk8RJQoNoAwDOXSft
-	 Fm6lPLk+svrUkXC2uBZOEZUUnj8VSpdgoxgmZmUHxkcI1ELJOHrI/zOFPUz+Fcyv7V
-	 YYJfeyB8msSWd43v4A7z3fRG7RbuuCwnaD1XcdOl5zzQIq1sBv8H7aPAx0vAS1DR8D
-	 Sk/Ox8R/6ALoIRhA8JygHl0O9vdAnAxSW/vKtm8hr2huo8222T5tAGx21WKx7n1coP
-	 2rOFj9FsmFR6A==
-Date: Wed, 9 Jul 2025 10:27:50 +0200
+	b=H/kyH0k+HWpffxiF3SfpqdP20X9KOdB8hawYaETGYEnQUZkxlrjWmdS/ERDyQpRYx
+	 n2dS9DYUXi/9ke89e0Pi2czneorKNGp+mKdVrQqds06QZEIfSEHMjy596QjW5xYyjv
+	 2RrrxglASIxVg3OmZC1ZTKSnrq0G+OdGbuhpSlQqcxatgxZ/SbBHsYO/2vatCLl+Yz
+	 E+zHCFVRb00wUEYz4zj8svDY3SPG5LVx9CMcHmB1hf9pZOzRIyv0ZITJAGGL4yDpI6
+	 5UlGbwlpGp3M6/RdZhtTtRLEnHtnC3VcnWUAAdi9QTGj5vux2ikBciBugqZdKv4J0L
+	 HelRFwtRA2gBA==
+Date: Wed, 9 Jul 2025 10:31:04 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Aleksander Jan Bajkowski <olek2@wp.pl>
 Cc: rafael@kernel.org, daniel.lezcano@linaro.org, rui.zhang@intel.com, 
@@ -51,14 +51,19 @@ Cc: rafael@kernel.org, daniel.lezcano@linaro.org, rui.zhang@intel.com,
 	zhiyong.tao@mediatek.com, linux-pm@vger.kernel.org, linux-iio@vger.kernel.org, 
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v3 1/3] dt-bindings: iio: adc: Add support for MT7981
-Message-ID: <20250709-industrious-marigold-snake-5a3eb5@krzk-bin>
+Subject: Re: [PATCH v3 2/3] dt-bindings: thermal: mediatek: add falback
+ compatible string for MT7981 and MT8516
+Message-ID: <20250709-spectral-friendly-frigatebird-bd80b6@krzk-bin>
 References: <20250708220405.1072393-1-olek2@wp.pl>
- <20250708220405.1072393-2-olek2@wp.pl>
+ <20250708220405.1072393-3-olek2@wp.pl>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20250708220405.1072393-2-olek2@wp.pl>
+In-Reply-To: <20250708220405.1072393-3-olek2@wp.pl>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250709_013108_451584_E497EC85 
+X-CRM114-Status: UNSURE (   6.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,36 +78,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 09, 2025 at 12:04:03AM +0200, Aleksander Jan Bajkowski wrote:
-> The temperature sensor in the MT7981 is same as in the MT7986.
-> Add compatible string for mt7981.
-> 
-> Signed-off-by: Aleksander Jan Bajkowski <olek2@wp.pl>
-> ---
->  .../devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml   | 4 ++++
->  1 file changed, 4 insertions(+)
+On Wed, Jul 09, 2025 at 12:04:04AM +0200, Aleksander Jan Bajkowski wrote:
+> +      - items:
+> +          - enum:
+> +              - mediatek,mt7981-thermal
+> +          - const: mediatek,mt7986-thermal
+> +      - items:
+> +          - enum:
+> +              - mediatek,mt8516-thermal
+> +          - const: mediatek,mt2701-thermal
 
+Groups of lists usually we order by fallback, so first goes items with
+mediatek,mt2701-thermal fallback and then items with
+mediatek,mt7986-thermal fallback.
+
+Anyway:
 Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
-
-<form letter>
-This is an automated instruction, just in case, because many review
-tags are being ignored. If you know the process, just skip it entirely
-(please do not feel offended by me posting it here - no bad intentions
-intended, no patronizing, I just want to avoid wasted efforts). If you
-do not know the process, here is a short explanation:
-
-Please add Acked-by/Reviewed-by/Tested-by tags when posting new
-versions of patchset, under or above your Signed-off-by tag, unless
-patch changed significantly (e.g. new properties added to the DT
-bindings). Tag is "received", when provided in a message replied to you
-on the mailing list. Tools like b4 can help here ('b4 trailers -u ...').
-However, there's no need to repost patches *only* to add the tags. The
-upstream maintainer will do that for tags received on the version they
-apply.
-
-https://elixir.bootlin.com/linux/v6.15/source/Documentation/process/submitting-patches.rst#L591
-</form letter>
 
 Best regards,
 Krzysztof
