@@ -4,80 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D22CFC83F09
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jul 2025 14:06:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98C64C83F03
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jul 2025 15:54:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c58atM53j6xJlfjeW4uz3/6gYrG19vaD/Ky2Z6w23+4=; b=NnVtrgQEr+wmeV
-	kUzJg+Gebt8Cz+V4f3B2oU1b6t+j5yLASmlX215Aun2A7p8KfAtgrqiprBEB1gDXSB2rYxc6ruapk
-	yFy2fiIwv/daDwc3GOIyKmWRbCQzue5DGZMSg1gmB9GDZDhRoQO4CEhZ5vgTyXBPAObzHVj5fVAsD
-	6asqSiLOk02dZ0PEdqVEGsmcH/aRz7OwLHkcm9lex2tvTDfwBKx67z9iKP3GqteLtSpDWWbb6kko2
-	dD2V6E1D3IgkZ7LBYDqE5boFdwjC3EmJt7XhPqm259kE5TfW2Zn/4vBqSEwcZrRo6Xk44W8jXTXT+
-	MUkAhSX07wB70pBf+oFw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2GA0EN9gnFYPYZkAghvtePvaCSCWcIe7GtWQ7AJTlGM=; b=2O/x6UZc+sSxmUAV3nImTynVh7
+	jiIgYfQKAba71aEIU35yxu+QT0v1OJWxAMx8TZ49+7gGtEL3wZT4INFo1bf56LKs/mCxSjN32ZEjQ
+	q8aQWa1FZ6gDpH58stL82BG/dCBY/upZXpWjxUR5RhEcT27hhFeLfJAQTuU9G3Kf5/LaZIlT3GQXg
+	2J5OQIGRuGzJtpxQNBG8oaCX6Zf7ah7vY2dH3T9TNhWs0xzB8VsPNywusH+f1JdLqLduo2UjN5afF
+	gM34vbh3aPy6iBUPfdIWUh5/47VXHFmijzU44vpiH/zYt27w7wT4y6Dkbj5iTqg6PvX0a7fGbL8i5
+	Sl1eQmSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZVRc-00000008u9t-1yl0;
-	Wed, 09 Jul 2025 14:06:44 +0000
-Received: from mxout2.routing.net ([2a03:2900:1:a::b])
+	id 1uZX7f-00000009DoI-1PSX;
+	Wed, 09 Jul 2025 15:54:15 +0000
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZSib-00000008SEQ-3AFI;
-	Wed, 09 Jul 2025 11:12:07 +0000
-Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
-	by mxout2.routing.net (Postfix) with ESMTP id 9DBF360415;
-	Wed,  9 Jul 2025 11:12:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1752059520;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=c58atM53j6xJlfjeW4uz3/6gYrG19vaD/Ky2Z6w23+4=;
-	b=SQsLJ1XddLx1flDYfMiD06aaz+xu+cU00lgxQ3taCPskDgSMkgFi132EYmOdPemFqylPKe
-	n3r8uSV62h28uKwjHZGQsouRST6hYoxKJIUEvzjNULrtDPVbPyzUyzIwiVtUEMkYQqZjQN
-	j1QrcCIXTTec6aLcxt9pT4vYLStmmGo=
-Received: from frank-u24.. (fttx-pool-217.61.157.99.bambit.de [217.61.157.99])
-	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 464E81226CC;
-	Wed,  9 Jul 2025 11:12:00 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: MyungJoo Ham <myungjoo.ham@samsung.com>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	Chanwoo Choi <cw00.choi@samsung.com>,
-	Georgi Djakov <djakov@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Johnson Wang <johnson.wang@mediatek.com>,
-	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Felix Fietkau <nbd@nbd.name>
-Subject: [PATCH v9 11/13] arm64: dts: mediatek: mt7988a-bpi-r4: add aliases for ethernet
-Date: Wed,  9 Jul 2025 13:09:47 +0200
-Message-ID: <20250709111147.11843-12-linux@fw-web.de>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250709111147.11843-1-linux@fw-web.de>
-References: <20250709111147.11843-1-linux@fw-web.de>
+	id 1uZV4w-00000008osn-1nJT
+	for linux-mediatek@lists.infradead.org;
+	Wed, 09 Jul 2025 13:43:19 +0000
+Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-3a588da60dfso3881011f8f.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 09 Jul 2025 06:43:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ffwll.ch; s=google; t=1752068596; x=1752673396; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=2GA0EN9gnFYPYZkAghvtePvaCSCWcIe7GtWQ7AJTlGM=;
+        b=A9ozfRmgJam7wqJLWtzsWNL2z/QY4eP8qcEGffj0PmWDqcDn0zNmZ955fdndguVnhR
+         0wg9uyaXxLepXN8TTDqOzPaQQmGzwig4BpX3GU9jJakxoamCPn23ISjVzMUxX/1zTD7L
+         1UU/LwWEgyZZ8w+kNDrkCjOlciCEVOrGL09NU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1752068596; x=1752673396;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=2GA0EN9gnFYPYZkAghvtePvaCSCWcIe7GtWQ7AJTlGM=;
+        b=dcLWkOseRmvNTxQJbDLit/We1tBvLQi24jGbX+UMRhN4pPSxL+gW1Zkgwz4FWzRr/1
+         z4dIZneIfAKnqQKVn/v2NKSL3HrGpSJsGMt9K70IMCLlP6pxis44gfFPcjc1ArhySVXg
+         3Uj7oTTIPhF7gwt0U6ENRh0v6XTkvO5Rlbee5Wf9GjANWivGcrGKcMzoNGVH4w4QX8qq
+         3GE60Eqv2ZPLKmdyiY6JQnfen3QtRa8p+46DOocQyx/Po8VaWqF+Ip45DAVbeqHlNntE
+         vo+cVXgEhZ9ah2l7x5hu8YUFltfcIx5u0HYJZeM4c33I21nu2FC+kjiei1sjuz0l/cIC
+         AAfA==
+X-Forwarded-Encrypted: i=1; AJvYcCWufkCl+DsZECbLqJWXirEjHan2KbpuUNPvN8wkQvgCLN1P8lyJiDCxk3mrXhwSAgfVRT+4Uy0GGSKxtwKkFg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxsBlDjpczx1uiiHkttS80TRec3RD+L5CrRHMEYICY/W8wTFEIR
+	+Ud0v8HxbE1MhWNGUVZ4cz1qQIHBCpeKkq5yZZ1Ed368nFFaprkycS2lu0Q9v55YQrw=
+X-Gm-Gg: ASbGnctdZI1A9/wFkGPxcCeGCdYHl8O9XR9mTHQLXq4QAcjPvb5g/v3II/ZIi9inWXC
+	BRtiOQGyffE/Vt16cxMeN9wo36/QSaLrme3Fb/Gvdx8eV7YBbfS8vPng3Clbq+p5Qok5W8Zry+O
+	TsSI1aeH/iyognsr/ipQugyTcWHljMWuStLdTlmAW4HpVRphh2oAxkDNVFvA/cPLwIgGvMs3bY4
+	5Ap7S7+76kfuZG6P4Belm6DAcFmKvG7wjcuHELwrLuROq6/CovMtWKTqQb2UjDk6vIybIlJKUgi
+	+d2grS2DjadY+yUgUT+1cxiBQwCQHICJhsawfwjW1e/xTjVMi6Yw3g6L3IVl51PFPQVrKT8uUw=
+	=
+X-Google-Smtp-Source: AGHT+IF79fZ8h3znMi15CeSd+JoB+26qQ0VCetCrzQoMkMwtHnpy+FY4TCDHHaTnggwV+tzno1DR/g==
+X-Received: by 2002:a05:6000:4012:b0:3a4:f7af:b41 with SMTP id ffacd0b85a97d-3b5e4527f04mr2311867f8f.15.1752068596310;
+        Wed, 09 Jul 2025 06:43:16 -0700 (PDT)
+Received: from phenom.ffwll.local ([2a02:168:57f4:0:5485:d4b2:c087:b497])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3b47030bd42sm15591538f8f.5.2025.07.09.06.43.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 09 Jul 2025 06:43:15 -0700 (PDT)
+Date: Wed, 9 Jul 2025 15:43:14 +0200
+From: Simona Vetter <simona.vetter@ffwll.ch>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+	Jason-JH Lin <jason-jh.lin@mediatek.com>,
+	Icenowy Zheng <uwu@icenowy.me>,
+	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Subject: Re: [GIT PULL] mediatek drm fixes - 20250706
+Message-ID: <aG5x8taTg2D5Na2F@phenom.ffwll.local>
+References: <20250706021955.2794-1-chunkuang.hu@kernel.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <20250706021955.2794-1-chunkuang.hu@kernel.org>
+X-Operating-System: Linux phenom 6.12.30-amd64 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250709_041205_934612_C36012C5 
-X-CRM114-Status: UNSURE (   9.65  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250709_064318_463552_3CC59A3E 
+X-CRM114-Status: GOOD (  16.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,38 +97,76 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-pm@vger.kernel.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+On Sun, Jul 06, 2025 at 02:19:55AM +0000, Chun-Kuang Hu wrote:
+> Hi, Dave & Daniel:
+> 
+> This includes:
+> 1. Add wait_event_timeout when disabling plane
+> 2. only announce AFBC if really supported
+> 3. mtk_dpi: Reorder output formats on MT8195/88
+> 
+> Regards,
+> Chun-Kuang.
+> 
+> The following changes since commit 19272b37aa4f83ca52bdf9c16d5d81bdd1354494:
+> 
+>   Linux 6.16-rc1 (2025-06-08 13:44:43 -0700)
+> 
+> are available in the Git repository at:
+> 
+>   https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-fixes-20250706
+> 
+> for you to fetch changes up to 8708a4897380da17bd1afa70f8c6bef06fefe360:
+> 
+>   drm/mediatek: mtk_dpi: Reorder output formats on MT8195/88 (2025-06-25 15:13:09 +0000)
 
-Add aliases for gmacs to allow bootloader setting mac-adresses.
+Tried to pull this, but doesn't seem to compile all that well:
 
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi | 6 ++++++
- 1 file changed, 6 insertions(+)
+drivers/gpu/drm/mediatek/mtk_crtc.c: In function ‘mtk_crtc_plane_disable’:
+drivers/gpu/drm/mediatek/mtk_crtc.c:729:22: error: ‘struct mtk_crtc’ has no member named ‘cmdq_client’
+  729 |         if (!mtk_crtc->cmdq_client.chan)
+      |                      ^~
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
-index 21eb91c8609f..20073eb4d1bd 100644
---- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
-@@ -8,6 +8,12 @@
- #include "mt7988a.dtsi"
- 
- / {
-+	aliases {
-+		ethernet0 = &gmac0;
-+		ethernet1 = &gmac1;
-+		ethernet2 = &gmac2;
-+	};
-+
- 	chosen {
- 		stdout-path = "serial0:115200n8";
- 	};
+
+There's more. I'm not exactly sure what's going on, but this looks like it
+wasn't tested?
+
+Thanks, Sima
+
+> 
+> ----------------------------------------------------------------
+> Mediatek DRM Fixes - 20250706
+> 
+> 1. Add wait_event_timeout when disabling plane
+> 2. only announce AFBC if really supported
+> 3. mtk_dpi: Reorder output formats on MT8195/88
+> 
+> ----------------------------------------------------------------
+> Icenowy Zheng (1):
+>       drm/mediatek: only announce AFBC if really supported
+> 
+> Jason-JH Lin (1):
+>       drm/mediatek: Add wait_event_timeout when disabling plane
+> 
+> Louis-Alexis Eyraud (1):
+>       drm/mediatek: mtk_dpi: Reorder output formats on MT8195/88
+> 
+>  drivers/gpu/drm/mediatek/mtk_crtc.c     | 34 ++++++++++++++++++++++++++++++++-
+>  drivers/gpu/drm/mediatek/mtk_crtc.h     |  1 +
+>  drivers/gpu/drm/mediatek/mtk_ddp_comp.c |  1 +
+>  drivers/gpu/drm/mediatek/mtk_ddp_comp.h |  9 +++++++++
+>  drivers/gpu/drm/mediatek/mtk_disp_drv.h |  1 +
+>  drivers/gpu/drm/mediatek/mtk_disp_ovl.c |  7 +++++++
+>  drivers/gpu/drm/mediatek/mtk_dpi.c      |  4 ++--
+>  drivers/gpu/drm/mediatek/mtk_plane.c    | 12 ++++++++++--
+>  drivers/gpu/drm/mediatek/mtk_plane.h    |  3 ++-
+>  9 files changed, 66 insertions(+), 6 deletions(-)
+
 -- 
-2.43.0
-
+Simona Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
 
