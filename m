@@ -4,68 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6B1BC83F12
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jul 2025 19:14:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1261EC83F03
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jul 2025 19:14:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mXBM8dLrdYEuexmX3f5LO6gxbkHjFdtBFeGvDAvqutM=; b=mDmcuro81TfM39YBuK6OPjSdGD
-	6uUEtJR2aNQHeZfWx2xaHanl9GLwChED3Ie7fBiirxoynxfrqICzleXlMf4pgSt67MVlt+u682ZVg
-	xkqYjP5z+W50TslRVsFxDrJ26y4LFp2RmU1CotN0nNZyGzqTuv75EyG8HtEifp/P2eCkEfKLwcnQj
-	W5ECmtt3cjhrcD/OovHz+iDNPAi8TWUL90ZUqGv0uJdojmggGBbDFVsvcrzZjkC/+lwwqNE0IO1/D
-	VljCdViQC7EqWMnl8k+beef1DXd8R4zUftoHwggmjW8xQ/jzZN8N0bSLfH1YcSHHObjOyzxIZBBVJ
-	KXmPcxPw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BL97RMe6eyV+6K7rfwk1iJvJt4TkmDT01pzFQN6vH2Q=; b=Nq2rf8JbtZHgnm0Drerbk7aI9v
+	msUWVas9o+dpYARCxs+EyBDSuiPfzPAQCoJ8lTa15MZTsXhDrOEENbynmyw6BVZt/lANbBYo+FToV
+	UhU7LYfewLsCiH9f3Bcl/ct9FU80i+SHQKUWaI9ez//kcWeYY6/Rui8874+e9ZuVLUZPimLcKC9C7
+	tjDAS7yjPaREDQ669cMyGCJugD3UEj7ekR6oMzQxf9yLWI87WCqjaSiVe9bZnghDbf9NC5e93xt3Z
+	5orCDULn03s1dHmmj7m0ODnzb1l834Ql+h4T0fu79yM6w9vFKW2tISzmV4vhDhuZhEcWm/6WQBHjG
+	lut4TVAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZaFS-00000009fkX-2oOq;
-	Wed, 09 Jul 2025 19:14:30 +0000
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+	id 1uZaFf-00000009g4M-05u9;
+	Wed, 09 Jul 2025 19:14:43 +0000
+Received: from mgamail.intel.com ([192.198.163.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZXAI-00000009Ebt-0Fv4;
-	Wed, 09 Jul 2025 15:56:59 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 5004AA54832;
-	Wed,  9 Jul 2025 15:56:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 408B2C4CEEF;
-	Wed,  9 Jul 2025 15:56:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752076617;
-	bh=O/H+N3TO1iyF42W90FkvMaPdy1iyg2L5o65UAMgY4T0=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=k4SMq1lDl0t/cpPFrA7uow796FMW7GCeKwtQrN5wEi5zXBiXSwxFeWIdMUbzVd5U8
-	 /tblIRlrJdfQKZdoPr64vHfpPgtdz3fhQFrMloKf7NMXZuE34W2HxGhgEcNfmHMSZY
-	 tq861hDUdrgazQaM7yKEeYXZflRhGBK75t5WX5mWhufldFDQzMfW4AOxp7jfLxl5h0
-	 O8ezv6cLXuzwzFIBfudhF8WWA8f5GaL8f1aQH9vOLfSmq60HHZMSfuyDc9fNtc45pT
-	 IP9aiI2TJCh67BTt8KnMuziAjKBMiYg6I6WH8b7cANgamtSjfRZhFslDKYecXU1Qn+
-	 rdOkyQBZs4YNQ==
-Date: Wed, 9 Jul 2025 16:56:44 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Aleksander Jan Bajkowski <olek2@wp.pl>, rafael@kernel.org,
- daniel.lezcano@linaro.org, rui.zhang@intel.com, lukasz.luba@arm.com,
- dlechner@baylibre.com, nuno.sa@analog.com, andy@kernel.org,
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- s.hauer@pengutronix.de, zhiyong.tao@mediatek.com, linux-pm@vger.kernel.org,
- linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v3 1/3] dt-bindings: iio: adc: Add support for MT7981
-Message-ID: <20250709165644.7614ac41@jic23-huawei>
-In-Reply-To: <20250709-industrious-marigold-snake-5a3eb5@krzk-bin>
-References: <20250708220405.1072393-1-olek2@wp.pl>
-	<20250708220405.1072393-2-olek2@wp.pl>
-	<20250709-industrious-marigold-snake-5a3eb5@krzk-bin>
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-pc-linux-gnu)
+	id 1uZXow-00000009KZS-1pVd
+	for linux-mediatek@lists.infradead.org;
+	Wed, 09 Jul 2025 16:38:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1752079138; x=1783615138;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=sscLlVLSTqX6Ja4Jl6uAsGtdoJXwQqGex1/xNaJecj8=;
+  b=llJQwhgND1Oz7b+vNgn1jcy9EaZ3h87aKSRGWNdQ4T8g4RltI0OKgNEA
+   1+QIacU3UkqC6/pUZ5fJuXxuo5TzxXfFSQL4eZFOE8a6JAlL1kHKXLFUn
+   A9CP1giZ2jKtXipx296dKDrm7cFMCd35dSvqzqnSKzBmAeIGrtjRoHN56
+   hhsvKC088DhmkRnqxtFY997QO0WceSVrz668sgmC1ZIyVFhpI/N19sCYj
+   WQU28fVDmN9dmB/IpTMs4kpySHRJSHCzPuONYNlvQ9Uqp7RYXIbS5AkLU
+   8VWDkYu6QshxOQcIj5a3F2iuqHXLXoXPUJtYqqna31tMo/xR4B3yYyVBW
+   g==;
+X-CSE-ConnectionGUID: aT7wrpSeSLmtnosX36pZNQ==
+X-CSE-MsgGUID: oPyUDkTVQAuIQLrydupdog==
+X-IronPort-AV: E=McAfee;i="6800,10657,11489"; a="54441012"
+X-IronPort-AV: E=Sophos;i="6.16,298,1744095600"; 
+   d="scan'208";a="54441012"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Jul 2025 09:38:54 -0700
+X-CSE-ConnectionGUID: j9qyy7HuTXKiHRMwQfnudw==
+X-CSE-MsgGUID: FFKNPH+ST/Wz/xZfw4p7PA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,298,1744095600"; 
+   d="scan'208";a="155236464"
+Received: from lkp-server01.sh.intel.com (HELO 9ee84586c615) ([10.239.97.150])
+  by orviesa006.jf.intel.com with ESMTP; 09 Jul 2025 09:38:52 -0700
+Received: from kbuild by 9ee84586c615 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1uZXon-0003lT-13;
+	Wed, 09 Jul 2025 16:38:49 +0000
+Date: Thu, 10 Jul 2025 00:38:25 +0800
+From: kernel test robot <lkp@intel.com>
+To: Guoqing Jiang <guoqing.jiang@canonical.com>, lgirdwood@gmail.com,
+	broonie@kernel.org, perex@perex.cz, tiwai@suse.com,
+	angelogioacchino.delregno@collabora.com, amergnat@baylibre.com
+Cc: oe-kbuild-all@lists.linux.dev, zoran.zhan@mediatek.com,
+	guoqing.jiang@canonical.com, linux-sound@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] ASoC: mediatek: mt8365-dai-i2s: pass correct size to
+ mt8365_dai_set_priv
+Message-ID: <202507100010.qEVMavru-lkp@intel.com>
+References: <20250709053900.55171-1-guoqing.jiang@canonical.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250709053900.55171-1-guoqing.jiang@canonical.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250709_085658_166678_E91C21A5 
-X-CRM114-Status: GOOD (  24.01  )
+X-CRM114-CacheID: sfid-20250709_093858_515130_A5A3B057 
+X-CRM114-Status: GOOD (  12.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,44 +91,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 9 Jul 2025 10:27:50 +0200
-Krzysztof Kozlowski <krzk@kernel.org> wrote:
+Hi Guoqing,
 
-> On Wed, Jul 09, 2025 at 12:04:03AM +0200, Aleksander Jan Bajkowski wrote:
-> > The temperature sensor in the MT7981 is same as in the MT7986.
-> > Add compatible string for mt7981.
-> > 
-> > Signed-off-by: Aleksander Jan Bajkowski <olek2@wp.pl>
-> > ---
-> >  .../devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml   | 4 ++++
-> >  1 file changed, 4 insertions(+)  
-> 
-> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> 
-Picked up this patch for the togreg branch of iio.git. Initially pushed out
-as testing as other stuff on there needs some test build coverage.
-> 
-> <form letter>
-> This is an automated instruction, just in case, because many review
-> tags are being ignored. If you know the process, just skip it entirely
-> (please do not feel offended by me posting it here - no bad intentions
-> intended, no patronizing, I just want to avoid wasted efforts). If you
-> do not know the process, here is a short explanation:
-> 
-> Please add Acked-by/Reviewed-by/Tested-by tags when posting new
-> versions of patchset, under or above your Signed-off-by tag, unless
-> patch changed significantly (e.g. new properties added to the DT
-> bindings). Tag is "received", when provided in a message replied to you
-> on the mailing list. Tools like b4 can help here ('b4 trailers -u ...').
-> However, there's no need to repost patches *only* to add the tags. The
-> upstream maintainer will do that for tags received on the version they
-> apply.
-> 
-> https://elixir.bootlin.com/linux/v6.15/source/Documentation/process/submitting-patches.rst#L591
-> </form letter>
-> 
-> Best regards,
-> Krzysztof
-> 
+kernel test robot noticed the following build errors:
 
+[auto build test ERROR on broonie-sound/for-next]
+[also build test ERROR on broonie-spi/for-next tiwai-sound/for-next tiwai-sound/for-linus linus/master v6.16-rc5 next-20250709]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Guoqing-Jiang/ASoC-mediatek-mt8365-dai-i2s-pass-correct-size-to-mt8365_dai_set_priv/20250709-134028
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+patch link:    https://lore.kernel.org/r/20250709053900.55171-1-guoqing.jiang%40canonical.com
+patch subject: [PATCH] ASoC: mediatek: mt8365-dai-i2s: pass correct size to mt8365_dai_set_priv
+config: csky-randconfig-001-20250709 (https://download.01.org/0day-ci/archive/20250710/202507100010.qEVMavru-lkp@intel.com/config)
+compiler: csky-linux-gcc (GCC) 15.1.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250710/202507100010.qEVMavru-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202507100010.qEVMavru-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   sound/soc/mediatek/mt8365/mt8365-dai-i2s.c: In function 'mt8365_dai_i2s_set_priv':
+>> sound/soc/mediatek/mt8365/mt8365-dai-i2s.c:819:43: error: invalid operands to binary & (have 'unsigned int' and 'struct mtk_afe_i2s_priv')
+     819 |                                           &mt8365_i2s_priv[i]);
+         |                                           ^~~~~~~~~~~~~~~~~~~
+         |                                                           |
+         |                                                           struct mtk_afe_i2s_priv
+>> sound/soc/mediatek/mt8365/mt8365-dai-i2s.c:817:23: error: too few arguments to function 'mt8365_dai_set_priv'; expected 4, have 3
+     817 |                 ret = mt8365_dai_set_priv(afe, mt8365_i2s_priv[i].id,
+         |                       ^~~~~~~~~~~~~~~~~~~
+   In file included from sound/soc/mediatek/mt8365/mt8365-dai-i2s.c:14:
+   sound/soc/mediatek/mt8365/mt8365-afe-common.h:428:5: note: declared here
+     428 | int mt8365_dai_set_priv(struct mtk_base_afe *afe,
+         |     ^~~~~~~~~~~~~~~~~~~
+
+
+vim +819 sound/soc/mediatek/mt8365/mt8365-dai-i2s.c
+
+402bbb13a195ca Alexandre Mergnat 2024-07-22  811  
+402bbb13a195ca Alexandre Mergnat 2024-07-22  812  static int mt8365_dai_i2s_set_priv(struct mtk_base_afe *afe)
+402bbb13a195ca Alexandre Mergnat 2024-07-22  813  {
+402bbb13a195ca Alexandre Mergnat 2024-07-22  814  	int i, ret;
+402bbb13a195ca Alexandre Mergnat 2024-07-22  815  
+402bbb13a195ca Alexandre Mergnat 2024-07-22  816  	for (i = 0; i < DAI_I2S_NUM; i++) {
+402bbb13a195ca Alexandre Mergnat 2024-07-22 @817  		ret = mt8365_dai_set_priv(afe, mt8365_i2s_priv[i].id,
+08cb0e42ff0631 Guoqing Jiang     2025-07-09  818  					  sizeof(mt8365_i2s_priv[i])
+402bbb13a195ca Alexandre Mergnat 2024-07-22 @819  					  &mt8365_i2s_priv[i]);
+402bbb13a195ca Alexandre Mergnat 2024-07-22  820  		if (ret)
+402bbb13a195ca Alexandre Mergnat 2024-07-22  821  			return ret;
+402bbb13a195ca Alexandre Mergnat 2024-07-22  822  	}
+402bbb13a195ca Alexandre Mergnat 2024-07-22  823  	return 0;
+402bbb13a195ca Alexandre Mergnat 2024-07-22  824  }
+402bbb13a195ca Alexandre Mergnat 2024-07-22  825  
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
