@@ -4,75 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F514C83F17
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jul 2025 22:57:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0CAAC83F17
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jul 2025 01:18:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AeNyhU0IbImTOM2sec3z2E+lKGcfLSldUoaa9IlHjM8=; b=mtOIclmTXr9K9k0NL69sB19Yne
-	f/i1QajbmQHrsqDux0R1cPC8DjSH2JucCWDypvSLvoiDXzOrLQC7iEgPHY1CvlDWTw2715o+/YRc1
-	ALMu5ZV/DbFruLT9Ypbo79ceC09L9GVp5/OXRoXoekFeXMetZtQWnxNK2LW6NQFHp4bQNONVYQFul
-	+weET+4ztIrNjD6OEmvWh0OCXN+iakQe11KUOL+/56txWc++hr3ZT3qG+0jdYmWDE70pkP5oes3xG
-	dpmvh0omSA4ifeoa/KpQ7XI+N8+LIo2IWSCFKSDXzck85V9eXCJs2w5TSZAXkmpIyBLUxrFSLinic
-	yfsS4LGw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=wvXX3+98b9csWyA6dkKmj1aJ7aZiKSOMpW9t77vrV88=; b=a5FAQ9dJz0cHPybDUF9O5TtWll
+	MTiCyaA6JQWSfbUgPR6wBaZrZ3il34mMdUwKS408NBacffsQXDFpxyaapOUZaXOJY4zBTXWIs5xqb
+	C8IqFjl8L/EKhDpc4tU/v7rmBvLGD4OViKA4PF16Nmny6c0ZXbxylwBuySkQaMmBbWeWSXYJ6aPuT
+	JziGEJ1RBKpeQNDioWsgf/MVzFR3EuEPmD1slKbXougMxn9KEVVxZ5DO9zeC9NydUHz8wg6S75PwW
+	Q3jXFaXNZQV7SYL78q+CSvUwVXopooIa5kkHBAHVEbMwIEK3T/ytUgkKoTHs9giTAUVevJ9KojzHn
+	neXkdbfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZdjC-0000000AA44-29ZV;
-	Wed, 09 Jul 2025 22:57:26 +0000
-Received: from aposti.net ([185.119.170.32])
+	id 1uZfvX-0000000APX5-48qi;
+	Thu, 10 Jul 2025 01:18:19 +0000
+Received: from smtp-relay-canonical-1.canonical.com ([185.125.188.121])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZcJM-00000009uau-1JoP;
-	Wed, 09 Jul 2025 21:26:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
-	s=mail; t=1752096392;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=AeNyhU0IbImTOM2sec3z2E+lKGcfLSldUoaa9IlHjM8=;
-	b=iVF8f94E7W50OAweMt+hTHDfgObOse4sZp8Eo5dQc8thX1hkibCzhxy/9KVJUZHhnhvRMH
-	4eM0KB6bD8knnRyAYR8EVPHw3dxxkjb9768f3Nvq8ePRJgS9TJDf6pTcpd4E4aNpTbvJ0u
-	DRWRu5b09tEtU9ZhjgXJKyC9Lf2wwfE=
-Message-ID: <5a2c7d244d0467d7236dbce920319c6df519bad7.camel@crapouillou.net>
-Subject: Re: [PATCH v2 07/12] pinctrl: ingenic: use
- pinmux_generic_add_pinfunction()
-From: Paul Cercueil <paul@crapouillou.net>
-To: Bartosz Golaszewski <brgl@bgdev.pl>, Linus Walleij	
- <linus.walleij@linaro.org>, Bjorn Andersson <andersson@kernel.org>, Konrad
- Dybcio <konradybcio@kernel.org>, Alexey Klimov <alexey.klimov@linaro.org>,
- Lorenzo Bianconi	 <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>,
- Matthias Brugger	 <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
- <angelogioacchino.delregno@collabora.com>
-Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, Bartosz
- Golaszewski <bartosz.golaszewski@linaro.org>
-Date: Wed, 09 Jul 2025 23:25:30 +0200
-In-Reply-To: <20250709-pinctrl-gpio-pinfuncs-v2-7-b6135149c0d9@linaro.org>
-References: <20250709-pinctrl-gpio-pinfuncs-v2-0-b6135149c0d9@linaro.org>
-	 <20250709-pinctrl-gpio-pinfuncs-v2-7-b6135149c0d9@linaro.org>
-Autocrypt: addr=paul@crapouillou.net; prefer-encrypt=mutual;
- keydata=mQENBF0KhcEBCADkfmrzdTOp/gFOMQX0QwKE2WgeCJiHPWkpEuPH81/HB2dpjPZNW03ZM
- LQfECbbaEkdbN4YnPfXgcc1uBe5mwOAPV1MBlaZcEt4M67iYQwSNrP7maPS3IaQJ18ES8JJ5Uf5Uz
- FZaUawgH+oipYGW+v31cX6L3k+dGsPRM0Pyo0sQt52fsopNPZ9iag0iY7dGNuKenaEqkYNjwEgTtN
- z8dt6s3hMpHIKZFL3OhAGi88wF/21isv0zkF4J0wlf9gYUTEEY3Eulx80PTVqGIcHZzfavlWIdzhe
- +rxHTDGVwseR2Y1WjgFGQ2F+vXetAB8NEeygXee+i9nY5qt9c07m8mzjABEBAAG0JFBhdWwgQ2VyY
- 3VlaWwgPHBhdWxAY3JhcG91aWxsb3UubmV0PokBTgQTAQoAOBYhBNdHYd8OeCBwpMuVxnPua9InSr
- 1BBQJdCoXBAhsDBQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEHPua9InSr1BgvIH/0kLyrI3V0f
- 33a6D3BJwc1grbygPVYGuC5l5eMnAI+rDmLR19E2yvibRpgUc87NmPEQPpbbtAZt8On/2WZoE5OIP
- dlId/AHNpdgAtGXo0ZX4LGeVPjxjdkbrKVHxbcdcnY+zzaFglpbVSvp76pxqgVg8PgxkAAeeJV+ET
- 4t0823Gz2HzCL/6JZhvKAEtHVulOWoBh368SYdolp1TSfORWmHzvQiCCCA+j0cMkYVGzIQzEQhX7U
- rf9N/nhU5/SGLFEi9DcBfXoGzhyQyLXflhJtKm3XGB1K/pPulbKaPcKAl6rIDWPuFpHkSbmZ9r4KF
- lBwgAhlGy6nqP7O3u7q23hRU=
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+	id 1uZfvV-0000000APWg-2rPl
+	for linux-mediatek@lists.infradead.org;
+	Thu, 10 Jul 2025 01:18:19 +0000
+Received: from laptop.lan (unknown [123.123.45.199])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-relay-canonical-1.canonical.com (Postfix) with ESMTPSA id 299183F6D4;
+	Thu, 10 Jul 2025 01:18:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+	s=20210705; t=1752110295;
+	bh=wvXX3+98b9csWyA6dkKmj1aJ7aZiKSOMpW9t77vrV88=;
+	h=From:To:Cc:Subject:Date:Message-Id:MIME-Version;
+	b=Ri8SbPqWN+8sNA2eSG1ZrBs8nnTbhVJj4L/h1Ei8ODqA7rl5uMPibgt/t2ApkOVZs
+	 1thpTWO7rPzv3GviGAubZHFsrDQv3UHwvBWskn43uyITe/1Yk+e29OI+GFpgmOCEhy
+	 +GligoP3K6XD99BV8G6DluC9bgxkivdvTDk2gN5Ev5qrcneCTeJHbmE99C+fYV9AxI
+	 AoWGuMfKQbJ+r61jxDMnvtSaqIzPrhH4MCDB5lMrj2adlej0CAX49k4VVITKAGGaBf
+	 DhBYgVW2VLSq870ENxViVrSoZ0nI+024t2Za8NtyhrsZ5JJHSCM4CkX/c/aGhL8WKA
+	 Wwwet6O9hW1iw==
+From: Guoqing Jiang <guoqing.jiang@canonical.com>
+To: lgirdwood@gmail.com,
+	broonie@kernel.org,
+	perex@perex.cz,
+	tiwai@suse.com,
+	angelogioacchino.delregno@collabora.com,
+	amergnat@baylibre.com
+Cc: zoran.zhan@mediatek.com,
+	guoqing.jiang@canonical.com,
+	linux-sound@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH V2] ASoC: mediatek: mt8365-dai-i2s: pass correct size to mt8365_dai_set_priv
+Date: Thu, 10 Jul 2025 09:18:06 +0800
+Message-Id: <20250710011806.134507-1-guoqing.jiang@canonical.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250709_142640_864583_84E34E5B 
-X-CRM114-Status: GOOD (  13.20  )
+X-CRM114-CacheID: sfid-20250709_181818_038333_9EFCAE45 
+X-CRM114-Status: GOOD (  10.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,52 +78,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Bartosz,
+Given mt8365_dai_set_priv allocate priv_size space to copy priv_data which
+means we should pass mt8365_i2s_priv[i] or "struct mtk_afe_i2s_priv"
+instead of afe_priv which has the size of "struct mt8365_afe_private".
 
-Le mercredi 09 juillet 2025 =C3=A0 16:39 +0200, Bartosz Golaszewski a
-=C3=A9crit=C2=A0:
-> From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
->=20
-> Instead of passing individual fields of struct pinfunction to
-> pinmux_generic_add_function(), use pinmux_generic_add_pinfunction()
-> and
-> pass the entire structure directly.
->=20
-> Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+Otherwise the KASAN complains about.
 
-Reviewed-by: Paul Cercueil <paul@crapouillou.net>
+[   59.389765] BUG: KASAN: global-out-of-bounds in mt8365_dai_set_priv+0xc8/0x168 [snd_soc_mt8365_pcm]
+...
+[   59.394789] Call trace:
+[   59.395167]  dump_backtrace+0xa0/0x128
+[   59.395733]  show_stack+0x20/0x38
+[   59.396238]  dump_stack_lvl+0xe8/0x148
+[   59.396806]  print_report+0x37c/0x5e0
+[   59.397358]  kasan_report+0xac/0xf8
+[   59.397885]  kasan_check_range+0xe8/0x190
+[   59.398485]  asan_memcpy+0x3c/0x98
+[   59.399022]  mt8365_dai_set_priv+0xc8/0x168 [snd_soc_mt8365_pcm]
+[   59.399928]  mt8365_dai_i2s_register+0x1e8/0x2b0 [snd_soc_mt8365_pcm]
+[   59.400893]  mt8365_afe_pcm_dev_probe+0x4d0/0xdf0 [snd_soc_mt8365_pcm]
+[   59.401873]  platform_probe+0xcc/0x228
+[   59.402442]  really_probe+0x340/0x9e8
+[   59.402992]  driver_probe_device+0x16c/0x3f8
+[   59.403638]  driver_probe_device+0x64/0x1d8
+[   59.404256]  driver_attach+0x1dc/0x4c8
+[   59.404840]  bus_for_each_dev+0x100/0x190
+[   59.405442]  driver_attach+0x44/0x68
+[   59.405980]  bus_add_driver+0x23c/0x500
+[   59.406550]  driver_register+0xf8/0x3d0
+[   59.407122]  platform_driver_register+0x68/0x98
+[   59.407810]  mt8365_afe_pcm_driver_init+0x2c/0xff8 [snd_soc_mt8365_pcm]
 
-Cheers,
--Paul
+Fixes: 402bbb13a195 ("ASoC: mediatek: mt8365: Add I2S DAI support")
+Signed-off-by: Guoqing Jiang <guoqing.jiang@canonical.com>
+---
+V2:
+1. fix issue reported by lkp, thanks.
 
-> ---
-> =C2=A0drivers/pinctrl/pinctrl-ingenic.c | 5 ++---
-> =C2=A01 file changed, 2 insertions(+), 3 deletions(-)
->=20
-> diff --git a/drivers/pinctrl/pinctrl-ingenic.c
-> b/drivers/pinctrl/pinctrl-ingenic.c
-> index
-> 3c660471ec6911ee494f45d2ffc13c4dc496fd2e..79119cf20efcf8cc701647d9ff9
-> 79c2b71bf7589 100644
-> --- a/drivers/pinctrl/pinctrl-ingenic.c
-> +++ b/drivers/pinctrl/pinctrl-ingenic.c
-> @@ -4574,9 +4574,8 @@ static int __init ingenic_pinctrl_probe(struct
-> platform_device *pdev)
-> =C2=A0		const struct function_desc *function =3D &chip_info-
-> >functions[i];
-> =C2=A0		const struct pinfunction *func =3D &function->func;
-> =C2=A0
-> -		err =3D pinmux_generic_add_function(jzpc->pctl, func-
-> >name,
-> -						=C2=A0 func->groups,
-> func->ngroups,
-> -						=C2=A0 function->data);
-> +		err =3D pinmux_generic_add_pinfunction(jzpc->pctl,
-> func,
-> +						=C2=A0=C2=A0=C2=A0=C2=A0 function-
-> >data);
-> =C2=A0		if (err < 0) {
-> =C2=A0			dev_err(dev, "Failed to register function
-> %s\n", func->name);
-> =C2=A0			return err;
+ sound/soc/mediatek/mt8365/mt8365-dai-i2s.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/sound/soc/mediatek/mt8365/mt8365-dai-i2s.c b/sound/soc/mediatek/mt8365/mt8365-dai-i2s.c
+index cae51756cead..cb9beb172ed5 100644
+--- a/sound/soc/mediatek/mt8365/mt8365-dai-i2s.c
++++ b/sound/soc/mediatek/mt8365/mt8365-dai-i2s.c
+@@ -812,11 +812,10 @@ static const struct snd_soc_dapm_route mtk_dai_i2s_routes[] = {
+ static int mt8365_dai_i2s_set_priv(struct mtk_base_afe *afe)
+ {
+ 	int i, ret;
+-	struct mt8365_afe_private *afe_priv = afe->platform_priv;
+ 
+ 	for (i = 0; i < DAI_I2S_NUM; i++) {
+ 		ret = mt8365_dai_set_priv(afe, mt8365_i2s_priv[i].id,
+-					  sizeof(*afe_priv),
++					  sizeof(mt8365_i2s_priv[i]),
+ 					  &mt8365_i2s_priv[i]);
+ 		if (ret)
+ 			return ret;
+-- 
+2.34.1
+
 
