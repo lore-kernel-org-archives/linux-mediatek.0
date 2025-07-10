@@ -4,80 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4FE7C83F1A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jul 2025 23:30:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48E6DC83F26
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Jul 2025 01:19:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kjtIav82DLIhRiYC6DDTmMkHb2eXdJHCwSAp2ZkRmAo=; b=iRI5mWIxsX3dG8AjbNvUDSbfPv
-	DL23idc9sO4FwTFyAjKVLonH6XHwGYCGoBOZ/9waDGYFxkD9G7qyYW35QuvQgOwn5E+00rcWpLzUR
-	2RrFUi1l/Op4lO57m4iy9/FFAu3R8AVVjVnx/x8/HpMOaWrvFEQtDJUCM00m2YlGQVPquduDcQnYN
-	Ze7Rdn7FUrKjJCAwJR6/tDhjN3ag9toZug4yl4KC5cSbZ0H2+aRqW1m3rGudtK3shAP8UtFIX+2lL
-	BAGLQ4XFsjiMe3lrGs8kVCtwjRZPQ5juJrZrevsO9RL0BRIk0GJL34LnIaxrOL5YczNGWemVI5i/Z
-	b+3fd6QA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QGdZ62l/vydF03/ld491RMeCXV/wH0DtGugzWoRO7EI=; b=Fbn2uUi8F2gqvLgHh71F3A+mE0
+	/21TEW/qlMBF0YppUqW6h+sZ4APynv0glRp/3L3G2Rr0ePOAtOvvQXq7liMseDOqQm9i/kwrdw9ir
+	wzhmN/KlOfagTFLDx1SyMltJZwgxoEin62QYL2kMUdWyh7bL2Q+RT8hOwqRiXN0Cfv+un03ZYD8oa
+	HXjq8d++17pyS4yhefSxl6qVJF1mA6dtBi3ALGajaLGSp5Mkfd27VjbHDMFGLpZDR39SBglPFjjTF
+	xuNrWg+ReEPQeQHdgrtHv+FfYApRxaWwnFyLLpJmjUA8xrgrC209xNSZbSqR7pRRkcX2nPm2SQGM/
+	7jXXp2/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ua0iq-0000000DHJZ-0Ort;
-	Thu, 10 Jul 2025 23:30:36 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1ua2Q8-0000000DQ1E-1rWR;
+	Fri, 11 Jul 2025 01:19:24 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZy1A-0000000CxBa-3PsQ;
-	Thu, 10 Jul 2025 20:37:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=kjtIav82DLIhRiYC6DDTmMkHb2eXdJHCwSAp2ZkRmAo=; b=Ls7NRHvnigCXYQRjo4B6gZgygV
-	b7ugxrwbzIPq+ewRrpb7fN4oiqYQu8iMjMA2XetblUMTqL0xEIVQe0LJ0+F5wOIkPulQB0i03m6Rx
-	nidH0JCpyYmhhQJcGLmS0ih8vOQhS0hUYkeGgOBFIAJ2caM4OfgRmOz8dwT2zNqtw/2Yi/ME40aoF
-	PriWiUKi5yUiXuSzJiLYTF5792JT26h9p6SFiCIPOaf+HfQaTMTN7QYKcadmRJyD3jd2N0Q/JOQkh
-	SMVA+W6DJzeUjPRN5SECOH6aOI9bMeTBcHt2O/xFj+98oET/1JgLQanACk0IuKYTI6ZdKFFvP816a
-	pTaiC3YQ==;
-Received: from sea.source.kernel.org ([172.234.252.31])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZy17-000000099en-1iSu;
-	Thu, 10 Jul 2025 20:37:19 +0000
+	id 1uZyzt-0000000D51Z-2SZZ;
+	Thu, 10 Jul 2025 21:40:05 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 579B947065;
-	Thu, 10 Jul 2025 20:37:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7D23AC4CEF9;
-	Thu, 10 Jul 2025 20:37:14 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id B691B61148;
+	Thu, 10 Jul 2025 21:40:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D82C0C4CEE3;
+	Thu, 10 Jul 2025 21:40:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752179835;
-	bh=CgImUwkenH3liQ9C4iUaFmfKZb9tKRP5V6VjbmRzY7c=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=TA6c2YcVTUWe8n7Xs2HiUhvJxDMcNT6SJjTUUXso5JEZKSsxFA3wb79FtxLbTTNwq
-	 i54iGisjtcG3VMssx1SIWXEDDadm7Gebx0O0Jy9w6gGBizquH2j8hKMQIg4CB7XcfR
-	 KXBMGANpwxlgjgpVQOBItGHx4qPCQg9TiZsw9ar/GKDsCsIfgwayem9liUNUvhWDfm
-	 ZHyZhl1j3qdcsWlCktLbIYkQ3k/Xv5radA5gtc6opgrh1zr6wXDuDPgHzGrN2S06Ii
-	 V2nJbm6F8gOqb8l3BkwdzdzAZdG7zIVa/0sGk1H70zDbsg5bwsP+rOXkSVC9CqdMqE
-	 glSd795lbkl6Q==
-Date: Thu, 10 Jul 2025 15:37:13 -0500
-From: Bjorn Andersson <andersson@kernel.org>
-To: Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: Linus Walleij <linus.walleij@linaro.org>, 
-	Konrad Dybcio <konradybcio@kernel.org>, Alexey Klimov <alexey.klimov@linaro.org>, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Paul Cercueil <paul@crapouillou.net>, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-Subject: Re: [PATCH v2 01/12] pinctrl: pinmux: open-code
- PINCTRL_FUNCTION_DESC()
-Message-ID: <z5hmnijgcowad5d7kksqockdltuggf2mszrsxhyv6yqwo3jwqr@n6hslkul4mbq>
-References: <20250709-pinctrl-gpio-pinfuncs-v2-0-b6135149c0d9@linaro.org>
- <20250709-pinctrl-gpio-pinfuncs-v2-1-b6135149c0d9@linaro.org>
+	s=k20201202; t=1752183604;
+	bh=SBkK1rGeuLP08x314M8mYiMkN0SFKYZEh/eAuabb4Z8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Dnjx6TdIACmG57PtS2gCl0f6rn+0h8ead2EGjXAwqcpPfO1UgHm9gtmbY1ZYaYTOW
+	 eaceEBefNCUqk4pV74bBC1fti1eSWmbuJ0BI8ocrTQ/bmz882KDGNF63pbcgWZuW49
+	 TwWqq3V98YZxgi7YMvTf4+T8Hgqekuenps69uBwEx/Ndo/PPcBKi9oBK51Yz5KkjRE
+	 Tp3qD3ZHUekgcGSjTnxh0oC1csAvbjWkuhjpv+53mGeD9UY+UFG3dFiJuegSQoB45N
+	 XB/EVCyjnEeiSGVuDA4OzGjhm3OzbJVFPRZvsQFXCeIMu+cz1AHj87LbjzJGrq4qVF
+	 KEUqmGakT7EJg==
+Message-ID: <d8b0abb2-1a12-42bf-aafd-4cd1e21babd6@kernel.org>
+Date: Thu, 10 Jul 2025 23:39:58 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250709-pinctrl-gpio-pinfuncs-v2-1-b6135149c0d9@linaro.org>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250710_213717_807256_6EE73BF4 
-X-CRM114-Status: GOOD (  16.44  )
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCHv3 wireless-next 7/7] dt-bindings: net: wireless: rt2800:
+ add
+To: Rosen Penev <rosenp@gmail.com>, linux-wireless@vger.kernel.org
+Cc: Johannes Berg <johannes@sipsolutions.net>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Stanislaw Gruszka <stf_xl@wp.pl>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>,
+ "open list:MIPS" <linux-mips@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>
+References: <20250710200820.262295-1-rosenp@gmail.com>
+ <20250710200820.262295-8-rosenp@gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
+ cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
+ JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
+ gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
+ J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
+ NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
+ BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
+ vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
+ Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
+ TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
+ S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
+ FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJoF1BKBQkWlnSaAAoJEBuTQ307
+ QWKbHukP/3t4tRp/bvDnxJfmNdNVn0gv9ep3L39IntPalBFwRKytqeQkzAju0whYWg+R/rwp
+ +r2I1Fzwt7+PTjsnMFlh1AZxGDmP5MFkzVsMnfX1lGiXhYSOMP97XL6R1QSXxaWOpGNCDaUl
+ ajorB0lJDcC0q3xAdwzRConxYVhlgmTrRiD8oLlSCD5baEAt5Zw17UTNDnDGmZQKR0fqLpWy
+ 786Lm5OScb7DjEgcA2PRm17st4UQ1kF0rQHokVaotxRM74PPDB8bCsunlghJl1DRK9s1aSuN
+ hL1Pv9VD8b4dFNvCo7b4hfAANPU67W40AaaGZ3UAfmw+1MYyo4QuAZGKzaP2ukbdCD/DYnqi
+ tJy88XqWtyb4UQWKNoQqGKzlYXdKsldYqrLHGoMvj1UN9XcRtXHST/IaLn72o7j7/h/Ac5EL
+ 8lSUVIG4TYn59NyxxAXa07Wi6zjVL1U11fTnFmE29ALYQEXKBI3KUO1A3p4sQWzU7uRmbuxn
+ naUmm8RbpMcOfa9JjlXCLmQ5IP7Rr5tYZUCkZz08LIfF8UMXwH7OOEX87Y++EkAB+pzKZNNd
+ hwoXulTAgjSy+OiaLtuCys9VdXLZ3Zy314azaCU3BoWgaMV0eAW/+gprWMXQM1lrlzvwlD/k
+ whyy9wGf0AEPpLssLVt9VVxNjo6BIkt6d1pMg6mHsUEVzsFNBFVDXDQBEADNkrQYSREUL4D3
+ Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
+ MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
+ OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
+ GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
+ 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
+ YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
+ 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
+ BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
+ JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
+ 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
+ YpsFAmgXUF8FCRaWWyoACgkQG5NDfTtBYptO0w//dlXJs5/42hAXKsk+PDg3wyEFb4NpyA1v
+ qmx7SfAzk9Hf6lWwU1O6AbqNMbh6PjEwadKUk1m04S7EjdQLsj/MBSgoQtCT3MDmWUUtHZd5
+ RYIPnPq3WVB47GtuO6/u375tsxhtf7vt95QSYJwCB+ZUgo4T+FV4hquZ4AsRkbgavtIzQisg
+ Dgv76tnEv3YHV8Jn9mi/Bu0FURF+5kpdMfgo1sq6RXNQ//TVf8yFgRtTUdXxW/qHjlYURrm2
+ H4kutobVEIxiyu6m05q3e9eZB/TaMMNVORx+1kM3j7f0rwtEYUFzY1ygQfpcMDPl7pRYoJjB
+ dSsm0ZuzDaCwaxg2t8hqQJBzJCezTOIkjHUsWAK+tEbU4Z4SnNpCyM3fBqsgYdJxjyC/tWVT
+ AQ18NRLtPw7tK1rdcwCl0GFQHwSwk5pDpz1NH40e6lU+NcXSeiqkDDRkHlftKPV/dV+lQXiu
+ jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
+ zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
+ XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
+In-Reply-To: <20250710200820.262295-8-rosenp@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,59 +125,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 09, 2025 at 04:38:57PM +0200, Bartosz Golaszewski wrote:
-> From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+On 10/07/2025 22:08, Rosen Penev wrote:
+> Add device-tree bindings for the RT2800 SOC wifi device found in older
+> Ralink/Mediatek devices.
 > 
-> This macro is only used in one place and pin function descriptors should
-> only be created by pinmux core so there's no point in exposing it to
-> other pinctrl users. Remove the macro and hand-code its functionality.
-> 
-> Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-
-Reviewed-by: Bjorn Andersson <andersson@kernel.org>
-
-Regards,
-Bjorn
-
+> Signed-off-by: Rosen Penev <rosenp@gmail.com>
 > ---
->  drivers/pinctrl/pinmux.c | 3 ++-
->  drivers/pinctrl/pinmux.h | 7 -------
->  2 files changed, 2 insertions(+), 8 deletions(-)
+>  .../bindings/net/wireless/ralink,rt2800.yaml  | 47 +++++++++++++++++++
+>  1 file changed, 47 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/net/wireless/ralink,rt2800.yaml
 > 
-> diff --git a/drivers/pinctrl/pinmux.c b/drivers/pinctrl/pinmux.c
-> index 0743190da59e819d1c72c1ed1ece72f206d60d65..daa7a11adabf672f802a8e9577c14e4da56b8678 100644
-> --- a/drivers/pinctrl/pinmux.c
-> +++ b/drivers/pinctrl/pinmux.c
-> @@ -893,7 +893,8 @@ int pinmux_generic_add_function(struct pinctrl_dev *pctldev,
->  	if (!function)
->  		return -ENOMEM;
->  
-> -	*function = PINCTRL_FUNCTION_DESC(name, groups, ngroups, data);
-> +	function->func = PINCTRL_PINFUNCTION(name, groups, ngroups);
-> +	function->data = data;
->  
->  	error = radix_tree_insert(&pctldev->pin_function_tree, selector, function);
->  	if (error)
-> diff --git a/drivers/pinctrl/pinmux.h b/drivers/pinctrl/pinmux.h
-> index 2965ec20b77fb360ca244800e30f1eafa988a2b1..5c039fd09f7474b4c104d3c36e0e8b8dc73a2ddd 100644
-> --- a/drivers/pinctrl/pinmux.h
-> +++ b/drivers/pinctrl/pinmux.h
-> @@ -141,13 +141,6 @@ struct function_desc {
->  	void *data;
->  };
->  
-> -/* Convenient macro to define a generic pin function descriptor */
-> -#define PINCTRL_FUNCTION_DESC(_name, _grps, _num_grps, _data)	\
-> -(struct function_desc) {					\
-> -	.func = PINCTRL_PINFUNCTION(_name, _grps, _num_grps),	\
-> -	.data = _data,						\
-> -}
-> -
->  int pinmux_generic_get_function_count(struct pinctrl_dev *pctldev);
->  
->  const char *
-> 
-> -- 
-> 2.48.1
-> 
+> diff --git a/Documentation/devicetree/bindings/net/wireless/ralink,rt2800.yaml b/Documentation/devicetree/bindings/net/wireless/ralink,rt2800.yaml
+> new file mode 100644
+> index 000000000000..8c13b25bd8b4
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/net/wireless/ralink,rt2800.yaml
+
+Filename should match compatible. You were already changing something
+here...
+
+Best regards,
+Krzysztof
 
