@@ -4,69 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3357C83F1D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jul 2025 09:51:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D52FC83F1D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jul 2025 10:10:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=8SJqB/gMv2eSoptVryu9D7dFYa3RbWh0OtJVn5Ie6Vs=; b=39TYCHfr2X1PfBiunDDxthxYhT
-	knFbvzUYQZ78o1l3CSBcptXHI3TraFhO2p9wwHRNMKYBgVy2dC9JQpMaBL1Ss2u1GvodnO9w21CIh
-	Z3Rmzha8qu6htfzRvTExvcR3yU6XSoJolz1kC2lVXdAxeQLy2olLdcgxe/AFbyuBcxUoHdJoFqFYr
-	PEKcNL7nH8ckvhPjQTRpvg6xLfOcJ5JNBBE4VNlvV+gMLzOa3Nxcm0cPZ/BYu/pi0s5J+U6iLZfdd
-	50HVswge0ukUfdfy5a33cnoY7AXpLQW35K0nvjeS8WdNGr/8XZ/MfIYzSVnjdWrbcO5S2dd/2OABj
-	6Ivi5D4w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IbMjrJbm+vCEXbCzlc+pe2ZZgUE7LGCN4UW3uV+MEfQ=; b=qRWMXfMkEcYwaLJM24/2N7o3k0
+	rEiD22+jBur3PWObUA2AifAc/RDyg+OsTg+DBTwr+xlKU5ZkCwljFOI9MkE0OUxEJ8kn49EuM9NWQ
+	xv7ZV/8IxPlMRHS1HIPWLB4NrJWjTpM3qL5HiukUuPVYjosNI8xaj6bNHnAvMeGrO6e4otZp68W7Q
+	mxbju9fbVI94pqHokH0mJgWpphT8CotFgsdyB6/7WxIDln0riEYl8VCXPeWbxZV+6nvO0jgiJhGnX
+	UX66uxhSNc9PhrLPJzWkv5uKbrXbqeI1hd1e7rbBGDl+NA319VTNi+RhGJUgFjuNmMimfaCoimUUJ
+	YEY6xBGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZnvs-0000000BODM-0dQ5;
-	Thu, 10 Jul 2025 09:51:12 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1uZoEJ-0000000BQP4-29DJ;
+	Thu, 10 Jul 2025 10:10:15 +0000
+Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZmc1-0000000BAQr-05iM;
-	Thu, 10 Jul 2025 08:26:37 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 747866147A;
-	Thu, 10 Jul 2025 08:26:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CB702C4CEE3;
-	Thu, 10 Jul 2025 08:26:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752135996;
-	bh=TK8f+x9z0S53lsJYOCmb+NOw7ZrgNPDi840QxYH9YA4=;
-	h=From:Date:Subject:To:Cc:From;
-	b=KXpVEzP6hXS6kj7opJHrauBUisSMM9bRMJSC4kCPytimA3WyexB5a1IHacsP5HNsf
-	 booHHtJhW6o+bXFdMMNmDcyRskJfgSzk1P1zbtYilHuMZ/D0NgSfgfIspffRXfPlZl
-	 HtWpQXI3zbSSSFJwKOCXaM4rYFPhq/cTYfw9nT3U3TRd0hFXqA1/A8VDms491mrWN7
-	 5IYuI0urUlQEaEGAeW3DCA7PNrFVFbwnlA0XHuLbtlfK0EZgjY+u/YiPHOYnEKUevo
-	 dO6H2OItbQe+03RVjAiVnnzZ+liE4o9PyMB8dSWwg4NhYtbRVnAaHNMZz875Y42gpH
-	 uF9NjvYLGfzUQ==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Thu, 10 Jul 2025 10:26:19 +0200
-Subject: [PATCH mt76] wifi: mt76: mt7996: Fix mt7996_mcu_bss_mld_tlv
- routine
+	id 1uZmrN-0000000BDSV-1LhO
+	for linux-mediatek@lists.infradead.org;
+	Thu, 10 Jul 2025 08:42:30 +0000
+Received: by mail-lj1-x22b.google.com with SMTP id 38308e7fff4ca-32f1763673cso8810001fa.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 10 Jul 2025 01:42:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1752136947; x=1752741747; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=IbMjrJbm+vCEXbCzlc+pe2ZZgUE7LGCN4UW3uV+MEfQ=;
+        b=ZSHDN618gnBNUgcv1usKkscspn73aOEsxwvvfT/+x+92GLqPSvjthEd2tFpAXo5SvJ
+         hLU5catNfHSGjNpkjHJhu1UZavTPUum9UV0/c996U2bRQ/fcb/Cedz0BVjr2tbCm3IBY
+         d1qMQFj771a5s8PQCyikndUiEljA+RFn0vLMM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1752136947; x=1752741747;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=IbMjrJbm+vCEXbCzlc+pe2ZZgUE7LGCN4UW3uV+MEfQ=;
+        b=G65wntYr2jMXIYd/vliUEpN+wraXrEoZS2P/nmlAqSSRoVi/4vTOCFO4RvWwaxCpnO
+         MDi3/DUWRtZrBJEHFyCC1wRKgespOxsauUIv00KCpMWB36XuTvhvgS+e4KOtZ3z+zzeI
+         e5kG2QX3McTjvJtG8NY0PBS5EJp8uz1BhGUBXpC4MvROc5B32Bz4FaXXwx7I1MAOgbPO
+         +5LcC0ym39uydmTwW4SsoFwsjqn3ldRIY6qPx6HjKlXaL+ZnvVgbIUH2LGiR7m9ZP5NG
+         iXjKAQZTvQKosopkElXC1tpyRGRwcUsiHjD+YCzgorBuO6o5fisSTCrUdW0UfG5B28Ub
+         06Ng==
+X-Forwarded-Encrypted: i=1; AJvYcCUisTr+VCTHClLGQchauc+nOdiAwA7Hzv97+9m117izLL36nB9Hf/tBfBG1Nc9JJ4E6EYN3zZi2pVjorrH1qw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxgBCi22sj8Nrrt3W6O1rayrQMfnvMLcWNWdTCo/Mv1rbYFNril
+	3/MK0X56TtaE4lXI1fHotQNvUgJ1Onlb854/yqrf7gEHJvRC1F9GeR47OMAelSmk1fGnxj21624
+	DvLGVZqAoYMO45GcFN1xfL6tK8QOLDFZXDP5woly/
+X-Gm-Gg: ASbGncs7SGMjsN9Z3MCcKHKeTim9NZiYpFyN1MDuDhCShwjZWvxhYMoIbls98VAOrEC
+	i4h1V4RLcr1yTzP+F0pMwqFw5daNOONd0eJQO1qW+uALURa9WLGyijRogblqyoQNbx6c7GnyRHs
+	OgIcTghGbVrOFG8N3YrYPPuj+9M8nKFkxL4Zwic2qEtNZ7bcInF5BoRBpoRYGfPUVUmnDoo4E=
+X-Google-Smtp-Source: AGHT+IH98HyUSFcxzn0ZLDTDXzcG2xAq4tfunT0Q0Flrc8e1qgVm3bYMsY/33vj2EMiqcDSWrQ5h5u7h7vcdWubER9k=
+X-Received: by 2002:a2e:a99f:0:b0:30b:b956:53c2 with SMTP id
+ 38308e7fff4ca-32fab95f588mr5305791fa.11.1752136946822; Thu, 10 Jul 2025
+ 01:42:26 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250710-mt7996-mlo-fixes-v3-v1-1-e7595b089f2c@kernel.org>
-X-B4-Tracking: v=1; b=H4sIACp5b2gC/x3LSwqAMAwA0atI1gZaRdt6FXHhJ2rAqrRSBPHuB
- pePYR6IFJgiNNkDgRJHPnaBzjMY135fCHkSQ6GKShmt0F/GuRr9duDMN0VMJdrK2dEO5GbSIOc
- Z6G8ytt37frFcVANlAAAA
-X-Change-ID: 20250710-mt7996-mlo-fixes-v3-8598c8be9fe1
-To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Peter Chiu <chui-hao.chiu@mediatek.com>, 
- StanleyYP Wang <StanleyYP.Wang@mediatek.com>, 
- Money Wang <Money.Wang@mediatek.com>, 
- Howard Hsu <howard-yh.hsu@mediatek.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: MeiChia Chiu <meichia.chiu@mediatek.com>, 
- Evelyn Tsai <evelyn.tsai@mediatek.com>, linux-wireless@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Bo Jiao <Bo.Jiao@mediatek.com>
-X-Mailer: b4 0.14.2
+References: <20250610063431.2955757-1-wenst@chromium.org> <CAGXv+5HDAZ-MBBMk00O+cdcq55KnsKdEAMD7E2uaAf=2LY=1cg@mail.gmail.com>
+ <5ee16a72-01a0-4f2c-9bcb-e4b4b069b2dd@collabora.com>
+In-Reply-To: <5ee16a72-01a0-4f2c-9bcb-e4b4b069b2dd@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 10 Jul 2025 16:42:15 +0800
+X-Gm-Features: Ac12FXxsLgCZAUA9cokLqBFuaQ1ZCvwcmNm2Lv9LiZZijxwC0ttVDjqCnXtUfEA
+Message-ID: <CAGXv+5E=xLJg9Y4OProhrH3ROy12J+3gNc3eiebGeJuEVEq+zw@mail.gmail.com>
+Subject: Re: [PATCH v2 0/2] arm64: mediatek: Enable efuse GPU speed bin post-processing
+To: Srinivas Kandagatla <srini@kernel.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	Lala Lin <lala.lin@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250710_014229_386993_A9A8919B 
+X-CRM114-Status: GOOD (  19.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,202 +96,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Update mt7996_mcu_bss_mld_tlv routine to properly support MLO
-configuring the BSS.
+Srinivas,
 
-Fixes: 98686cd21624c ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/wireless/mediatek/mt76/mt7996/main.c   | 42 ++++++++++++++++++++++
- drivers/net/wireless/mediatek/mt76/mt7996/mcu.c    | 26 ++++++++++----
- drivers/net/wireless/mediatek/mt76/mt7996/mcu.h    |  3 +-
- drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h |  8 +++++
- 4 files changed, 72 insertions(+), 7 deletions(-)
+On Thu, Jul 3, 2025 at 7:48=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 01/07/25 11:15, Chen-Yu Tsai ha scritto:
+> > Hi Angelo,
+> >
+> > On Tue, Jun 10, 2025 at 2:34=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.or=
+g> wrote:
+> >>
+> >> Hi everyone,
+> >>
+> >> This is v2 of the MT8188 efuse GPU speed bin post-processing enablemen=
+t
+> >> patches. In v1 [1] the change was made to the driver. Angelo, the plat=
+form
+> >> maintainer believes the change should be made to the DT binding instea=
+d
+> >> [2]. v2 adopts Angelo's argument.
+> >>
+> >> Patch 1 updates the efuse DT binding so that MT8186 is a base compatib=
+le
+> >> with no fallback, and MT8188 falls back to MT8186.
+> >>
+> >> Patch 2 updates the MT8188 DT to follow the new binding.
+> >>
+> >> If possible I would like to see both patches merged through the soc
+> >> tree once the DT binding maintainers give an ack. This avoids prolonge=
+d
+> >> waiting for the binding changes to land and uncertainty about whether
+> >> things have fully landed or not.
+> >>
+> >>
+> >> Thanks
+> >> ChenYu
+> >>
+> >> [1] https://lore.kernel.org/all/20241223100648.2166754-1-wenst@chromiu=
+m.org/
+> >> [2] https://lore.kernel.org/all/11028242-afe4-474a-9d76-cd1bd9208987@c=
+ollabora.com/
+> >>
+> >> Chen-Yu Tsai (2):
+> >>    dt-bindings: nvmem: mediatek: efuse: split MT8186/MT8188 from base
+> >>      version
+> >>    arm64: dts: mediatek: mt8188: Change efuse fallback compatible to
+> >>      mt8186
+> >
+> > Friendly ping. Please take a look and see if this scheme is to your lik=
+ing.
+> >
+>
+> For the whole series
+>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-index f846b8309ae2e9c39f9d5f2a21ca1edd89dcdf0c..f2880df17a41c2751f38a666a6bb767aa5008020 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-@@ -138,6 +138,28 @@ static int get_omac_idx(enum nl80211_iftype type, u64 mask)
- 	return -1;
- }
- 
-+static int get_own_mld_idx(u64 mask, bool group_mld)
-+{
-+	u8 start = group_mld ? 0 : 16;
-+	u8 end = group_mld ? 15 : 63;
-+	int idx;
-+
-+	idx = get_free_idx(mask, start, end);
-+	if (idx)
-+		return idx - 1;
-+
-+	/* If the 16-63 range is not available, perform another lookup in the
-+	 * range 0-15
-+	 */
-+	if (!group_mld) {
-+		idx = get_free_idx(mask, 0, 15);
-+		if (idx)
-+			return idx - 1;
-+	}
-+
-+	return -EINVAL;
-+}
-+
- static void
- mt7996_init_bitrate_mask(struct ieee80211_vif *vif, struct mt7996_vif_link *mlink)
- {
-@@ -289,6 +311,15 @@ int mt7996_vif_link_add(struct mt76_phy *mphy, struct ieee80211_vif *vif,
- 	if (idx < 0)
- 		return -ENOSPC;
- 
-+	if (!dev->mld_idx_mask) { /* first link in the group */
-+		mvif->mld_group_idx = get_own_mld_idx(dev->mld_idx_mask, true);
-+		mvif->mld_remap_idx = get_free_idx(dev->mld_remap_idx_mask,
-+						   0, 15);
-+	}
-+	link->mld_idx = get_own_mld_idx(dev->mld_idx_mask, false);
-+	if (link->mld_idx < 0)
-+		return -ENOSPC;
-+
- 	link->phy = phy;
- 	mlink->omac_idx = idx;
- 	mlink->band_idx = band_idx;
-@@ -301,6 +332,11 @@ int mt7996_vif_link_add(struct mt76_phy *mphy, struct ieee80211_vif *vif,
- 		return ret;
- 
- 	dev->mt76.vif_mask |= BIT_ULL(mlink->idx);
-+	if (!dev->mld_idx_mask) {
-+		dev->mld_idx_mask |= BIT_ULL(mvif->mld_group_idx);
-+		dev->mld_remap_idx_mask |= BIT_ULL(mvif->mld_remap_idx);
-+	}
-+	dev->mld_idx_mask |= BIT_ULL(link->mld_idx);
- 	phy->omac_mask |= BIT_ULL(mlink->omac_idx);
- 
- 	idx = MT7996_WTBL_RESERVED - mlink->idx;
-@@ -380,7 +416,13 @@ void mt7996_vif_link_remove(struct mt76_phy *mphy, struct ieee80211_vif *vif,
- 	}
- 
- 	dev->mt76.vif_mask &= ~BIT_ULL(mlink->idx);
-+	dev->mld_idx_mask &= ~BIT_ULL(link->mld_idx);
- 	phy->omac_mask &= ~BIT_ULL(mlink->omac_idx);
-+	if (!(dev->mld_idx_mask & ~BIT_ULL(mvif->mld_group_idx))) {
-+		/* last link */
-+		dev->mld_idx_mask &= ~BIT_ULL(mvif->mld_group_idx);
-+		dev->mld_remap_idx_mask &= ~BIT_ULL(mvif->mld_remap_idx);
-+	}
- 
- 	spin_lock_bh(&dev->mt76.sta_poll_lock);
- 	if (!list_empty(&msta_link->wcid.poll_list))
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-index 0374872db4777cc85eed594f7d977dd822927b6d..5f8701753bcad5b42ca9a0c80fbcda15d4d5f092 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-@@ -902,17 +902,28 @@ mt7996_mcu_bss_txcmd_tlv(struct sk_buff *skb, bool en)
- }
- 
- static void
--mt7996_mcu_bss_mld_tlv(struct sk_buff *skb, struct mt76_vif_link *mlink)
-+mt7996_mcu_bss_mld_tlv(struct sk_buff *skb,
-+		       struct ieee80211_bss_conf *link_conf,
-+		       struct mt7996_vif_link *link)
- {
-+	struct ieee80211_vif *vif = link_conf->vif;
-+	struct mt7996_vif *mvif = (struct mt7996_vif *)vif->drv_priv;
- 	struct bss_mld_tlv *mld;
- 	struct tlv *tlv;
- 
- 	tlv = mt7996_mcu_add_uni_tlv(skb, UNI_BSS_INFO_MLD, sizeof(*mld));
--
- 	mld = (struct bss_mld_tlv *)tlv;
--	mld->group_mld_id = 0xff;
--	mld->own_mld_id = mlink->idx;
--	mld->remap_idx = 0xff;
-+	mld->own_mld_id = link->mld_idx;
-+	mld->link_id = link_conf->link_id;
-+
-+	if (ieee80211_vif_is_mld(vif)) {
-+		mld->group_mld_id = mvif->mld_group_idx;
-+		mld->remap_idx = mvif->mld_remap_idx;
-+		memcpy(mld->mac_addr, vif->addr, ETH_ALEN);
-+	} else {
-+		mld->group_mld_id = 0xff;
-+		mld->remap_idx = 0xff;
-+	}
- }
- 
- static void
-@@ -1111,6 +1122,8 @@ int mt7996_mcu_add_bss_info(struct mt7996_phy *phy, struct ieee80211_vif *vif,
- 		goto out;
- 
- 	if (enable) {
-+		struct mt7996_vif_link *link;
-+
- 		mt7996_mcu_bss_rfch_tlv(skb, phy);
- 		mt7996_mcu_bss_bmc_tlv(skb, mlink, phy);
- 		mt7996_mcu_bss_ra_tlv(skb, phy);
-@@ -1121,7 +1134,8 @@ int mt7996_mcu_add_bss_info(struct mt7996_phy *phy, struct ieee80211_vif *vif,
- 			mt7996_mcu_bss_he_tlv(skb, vif, link_conf, phy);
- 
- 		/* this tag is necessary no matter if the vif is MLD */
--		mt7996_mcu_bss_mld_tlv(skb, mlink);
-+		link = container_of(mlink, struct mt7996_vif_link, mt76);
-+		mt7996_mcu_bss_mld_tlv(skb, link_conf, link);
- 	}
- 
- 	mt7996_mcu_bss_mbssid_tlv(skb, link_conf, enable);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
-index 130ea95626d5b1aacf748d572c62307f19681851..7b21d6ae7e43505cb824e00f8b55b0add015a5e5 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
-@@ -481,7 +481,8 @@ struct bss_mld_tlv {
- 	u8 own_mld_id;
- 	u8 mac_addr[ETH_ALEN];
- 	u8 remap_idx;
--	u8 __rsv[3];
-+	u8 link_id;
-+	u8 __rsv[2];
- } __packed;
- 
- struct sta_rec_ht_uni {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-index 1ad6bc046f7c01d43452252ed46677d42e0c8850..edab23f82a761fad6b7e55543860ed2f6c2873d7 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-@@ -248,11 +248,16 @@ struct mt7996_vif_link {
- 
- 	struct ieee80211_tx_queue_params queue_params[IEEE80211_NUM_ACS];
- 	struct cfg80211_bitrate_mask bitrate_mask;
-+
-+	u8 mld_idx;
- };
- 
- struct mt7996_vif {
- 	struct mt7996_vif_link deflink; /* must be first */
- 	struct mt76_vif_data mt76;
-+
-+	u8 mld_group_idx;
-+	u8 mld_remap_idx;
- };
- 
- /* crash-dump */
-@@ -337,6 +342,9 @@ struct mt7996_dev {
- 	u32 q_int_mask[MT7996_MAX_QUEUE];
- 	u32 q_wfdma_mask;
- 
-+	u64 mld_idx_mask;
-+	u64 mld_remap_idx_mask;
-+
- 	const struct mt76_bus_ops *bus_ops;
- 	struct mt7996_phy phy;
- 
+Could you merge  the DT binding patch so that we can merge the DT change
+ahead of -rc6? Or alternatively could you give an Ack so both patches
+go through the soc tree?
 
----
-base-commit: e553ac0d7616d6bcd06ed0c5f6126ce83097b31a
-change-id: 20250710-mt7996-mlo-fixes-v3-8598c8be9fe1
 
-Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
-
+Thanks
+ChenYu
 
