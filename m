@@ -4,58 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95A0BC83F1D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jul 2025 11:16:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B98C3C83F17
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jul 2025 11:19:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
 	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9f2kGS3RxUxSPapMDtL1tJEQtW0+ImMsTFSFoL+7YA0=; b=VS2MyqMD9hTk7J0NibG305CXhb
-	DHv7toySZ5nrEAmI11jhNXrxTQ59rTQauo5F7nk33n7MP6mzigER+kYUFkrqVhslXrTm5BaX7Mbd/
-	46PB6nxtTUqQgYPfEQ1RecphywNS2/Afj9u45gDHjiEvPzMGvZNh87c65jA73eWO70Vv6wpPaJ9Ji
-	rbWah56OTlgsZS6I6EjSkQBEbA5FAniEglHJ+di0Fy2vgYkao1n1oGUIfQ/3fLa+Y+/vUH/skqBIk
-	Jd25HHuWbD80TmiGtqpbCfJ+OnTw2HhugchosBh38EdmvjPOOeVWhenmwxJWti90+Bsf9g9sDjY8i
-	j6l4a3lQ==;
+	bh=lh4PWq6FeRkQ8Uxc6KUAXubIeafXXv+5afrGfRF66FU=; b=TA0qNjx207f9jsWeyqqTeuco9V
+	cybQVSeswU0YlJlMq6Rjw3QXjcDOoRKwptJOlUrP2xpo0widIM2+UmL+ECmaMvX9Jvo9vnN3gsr+v
+	OupuJAN60qLSLTGtLMqn9/qgFJTIl4yl7nfQXAHMbnyZETlifrzNRVOiSN1TYZCueboLJ/f1TDqv8
+	fiQ9MKxsuMSSzGftRA+LDrfbcNvzmWEVcuqzX0d9cUAFTXLUAW1hfIJE3VqAUpWFI0rkDtwFDRAUc
+	yNXvJW2sEQMlvoStD7MYow6nKKL89OaHnD2/NhJjdCfYD/6oEXMihw4Fr6gsfSUAN5rZ+kmTzJynX
+	1ohUx/0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZpGh-0000000Bbtn-2Oz0;
-	Thu, 10 Jul 2025 11:16:47 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1uZpJ7-0000000BcbA-2uv3;
+	Thu, 10 Jul 2025 11:19:17 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZnwI-0000000BOIq-1Shb;
-	Thu, 10 Jul 2025 09:51:39 +0000
+	id 1uZnws-0000000BOOC-0zOX;
+	Thu, 10 Jul 2025 09:52:14 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 9F6AF5C4941;
-	Thu, 10 Jul 2025 09:51:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B34C5C4CEF1;
-	Thu, 10 Jul 2025 09:51:36 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 399F86146A;
+	Thu, 10 Jul 2025 09:52:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5B5D7C4CEE3;
+	Thu, 10 Jul 2025 09:52:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752141097;
-	bh=ysqkpnLH5eHCh7kN2peKuvz2QENB7fUs4hX/rZeXMI0=;
+	s=k20201202; t=1752141132;
+	bh=pZGaq0Wu1dT/dxRh+MB2XlLidtH1F8cMudtE386pfjg=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=XogLWYsYrW52faB+LJo50ovT6WWOmctuyU0wl1eXn/u+z1IqrNMwRzsKuH2PYos6G
-	 gXMZJtf7yDibAbCPDdv5QcSM9ljX9W2mQiVgF1roWgdVohRfZZQp+EhBTOfOCVwyzp
-	 hebYtTxfSpS4mDbSuc/uJEG6EV3xIIH1Mu67BmLjolOH/3C50FIx+KJJkhemu8fTMB
-	 6nQQgOaHyM7Q0WrSKu9ofqNT3t2Ai9CsqvY07ysiHUNtwB4t6widDA8B3zQ9suwGrP
-	 bbCxQYy5TRtAwc26pFTZKiIoUO24IOVZiIyYG+ZWqyZmkZFpVM2mKxGDGIBlS09dWS
-	 +2jVfMv+JJiKg==
-Date: Thu, 10 Jul 2025 11:51:34 +0200
+	b=lIDgM0RRhADkfkCfjrESf7N9LWIsVsPWJutieH2NNF9Z1EW8Q4D3kAeZGMJyu55+5
+	 zwPw6eAQHXbJOpcZH7O02IYZ4joxKi0sMWSFyLygR9IdsbUtY6X25oPvtP3XiCpC04
+	 4gCXlq4UsCF2j6U19+893abdzEUw9I76OLTy4OZrr4Nr3Lz5N+0gE4j9BZD0saSUQQ
+	 Dxg9ZTSMk0b8q+Gn6oKnSrrfxG0dR9SK4NDvHJzW1Kly6RXeERNvBAsyGaWPCicZvo
+	 DbnPbuKRn3HVOA3d10mSYUWWlcCzmzXQ8BdYk8R+cnGvpymuS7BoES+e0YXYJFJWxh
+	 R9idoDyVAjeXA==
+Date: Thu, 10 Jul 2025 11:52:10 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Frank Wunderlich <linux@fw-web.de>
-Subject: Re: [PATCH v9 02/13] dt-bindings: net: mediatek,net: allow up to 8
- IRQs
-Message-ID: <20250710-tasteful-crystal-partridge-770464@krzk-bin>
+Subject: Re: [PATCH v9 03/13] dt-bindings: net: mediatek,net: allow irq names
+Message-ID: <20250710-dashing-wine-hippo-d879c9@krzk-bin>
 References: <20250709111147.11843-1-linux@fw-web.de>
- <20250709111147.11843-3-linux@fw-web.de>
+ <20250709111147.11843-4-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20250709111147.11843-3-linux@fw-web.de>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250710_025138_426954_D4932D46 
-X-CRM114-Status: GOOD (  11.34  )
+In-Reply-To: <20250709111147.11843-4-linux@fw-web.de>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,24 +67,27 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Landen Chao <Landen.Chao@mediatek.com>, linux-
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 09, 2025 at 01:09:38PM +0200, Frank Wunderlich wrote:
+On Wed, Jul 09, 2025 at 01:09:39PM +0200, Frank Wunderlich wrote:
 > From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> Increase the maximum IRQ count to 8 (4 FE + 4 RSS/LRO).
+> In preparation for MT7988 and RSS/LRO allow the interrupt-names
+> property.
+> In this way driver can request the interrupts by name which is much
+> more readable in the driver code and SoC's dtsi than relying on a
+> specific order.
 > 
-> Frame-engine-IRQs (max 4):
+> Frame-engine-IRQs (fe0..3):
 > MT7621, MT7628: 1 FE-IRQ
 > MT7622, MT7623: 3 FE-IRQs (only two used by the driver for now)
-> MT7981, MT7986, MT7988: 4 FE-IRQs (only two used by the driver for now)
+> MT7981, MT7986: 4 FE-IRQs (only two used by the driver for now)
 > 
-> Mediatek Filogic SoCs (mt798x) have 4 additional IRQs for RSS and/or
-> LRO. So MT798x have 8 IRQs in total.
+> RSS/LRO IRQs (pdma0..3) additional only on Filogic (MT798x) with
+> count of 4. So all IRQ-names (8) for Filogic.
 > 
-> MT7981 does not have a ethernet-node yet.
-> MT7986 Ethernet node is updated with RSS/LRO IRQs in this series.
-> MT7988 Ethernet node is added in this series.
+> Set boundaries for all compatibles same as irq count.
 > 
 > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
 
 Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
