@@ -4,70 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39309C83F17
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jul 2025 16:26:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FBF8C83F1D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jul 2025 16:28:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HVTTUG4ixR64gjOtXwPhydbCj9ebkFof+SdtPH9VgkU=; b=41QaN4VHEBk1XeLD0OeTIdIEqb
-	BHc7B/YFAxUQa1vFDsJE4MctpmLXgT927OJX2WnYm/PK4nQJe0KXZ9amiKrNocy7kEhsD5zzN+AAg
-	RXRm9mCpBrtYEMS3qZsTac54mA4aXUAAI5FBRqZ4Jv4lOwr1fqmCK0d2Kh+ov3NQPsvWkvHHQ+ycg
-	+FVZaQxcLwSZVRGrE5uP1YJpxfL5qI23d07P50cILPtRj3hONzWtZmQoGqVC9A6bG+sGPMdqo4CWf
-	wN67W/VgXHRHHTXza5112Y0Eai/u8hbZImjmW8QBwDOPbiLBKJr4VRfJb/FOSfv+8czdQwlUlt+WE
-	z+dgfyVg==;
+	bh=ohZghckTOHahyo7Fv9CrLJvqxiWNUIbteMeBFmb1lIc=; b=F9hQHaBn18Ah8clh70/U7Z5QFf
+	yyZpb8YmrpFHhriS8wWp4DuFACiTJJdiq7hI5Q2NB2uhKJOuucFr0pA7GoIQ71hcOcaog88PB9zSa
+	Fzb7GZV2UQrq4p5VYRCOMRivJOX6TqBta1rq1Lrao1PUzS6Ej3q3y654oHdNTDBZzX3SpBgkuXHYr
+	BQYJJ2yG1eGrnBA9wn6EK2hz3/dNdLKxGqES6b0h6w9f5qod59jo5yhcjTgmOfDwYTZgJCL/WJ+5R
+	WvNM+C0NktAi+OcW1TX0rMFRivq6MX8wmIUOlDrQfcZAWs+fLFSN8IrFRkHp5wuIu0MFCdBAXWdFz
+	/5Tw6PTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZu6G-0000000COGv-2ktg;
-	Thu, 10 Jul 2025 16:26:20 +0000
+	id 1uZu84-0000000CQuU-11y9;
+	Thu, 10 Jul 2025 16:28:12 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZrao-0000000Bzat-49LK
-	for linux-mediatek@lists.infradead.org;
-	Thu, 10 Jul 2025 13:45:44 +0000
+	id 1uZs8x-0000000C60Y-1lJO;
+	Thu, 10 Jul 2025 14:21:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1752155141;
-	bh=GuONawvPbvGUx5N5LK6rRWPPmEvqYxfiZR7qhY5tG0E=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=QZ5+xVfzmp49kaoVrLSHOBTiGvU6+OdAYgm+U0qT7Bd22uED+kTrWnibup4ajNlUR
-	 elXL8qC9S3bt2M0RWRlTYKwyYoEQNsowxnxtCG5mnESC2ZmToKthcJE/srbaTb8QOQ
-	 +2cRCtUtK0wsJpggE9qTSJn5X8evZcsCNoftAVAohIQYYA0BzkJaFajmQ9CbjQc9SD
-	 HIFDSq92ZQBS9CeAj09kcL6oKFCAD7/bLmJzXU30RC2pLJej5vGG/C1SXtd2PcNT+Z
-	 wntWiJiUvDHT9yMJjrjaNBwrYqb9ogxAu0zLSm0LLwbqAlKF2Udc/OQ7g3OO+wwtBV
-	 Mq5EUmQdpfVCA==
-Received: from [192.168.50.250] (unknown [171.76.82.69])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	s=mail; t=1752157257;
+	bh=2XjHkdOkObP5HVj5iejMMSjoEC9b3hAuC6HFJ71aAK4=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=PC+aKiYiogEuqlNa7TQGKyCx3vgGKlbJ3LCBXKRZ6o/4xDXSvVFGj2IWV3ohYnH8s
+	 q15YA5AcEoi54jaepRL9uEen3Ks+cgfy8IN3lKgCbSt/b7XWvpwL2s2uJgwn/JyS4W
+	 OfGtIffWq0aCuAqQQsh3AAfQcCSKxgbYO3YedG7wX3u3/vo7lrM7vAzM8+tEiS+8jh
+	 9ddmmRg+cDckW8WFvYCQPfBRBXCdIh3KMLfUf0mXuq2z3P6fbkOX7hAE0wdgwVVFOJ
+	 4R/+nmf67pi0PGgvns15v1dA09prn64xdvpKJgWWOT9Lms+OgLsPsk3XxqV8ZIJw0C
+	 zMlrYgPRAyXdQ==
+Received: from laura.lan (unknown [IPv6:2001:b07:646b:e2:bff:3863:712c:1a2c])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3E89717E0FB8;
-	Thu, 10 Jul 2025 15:45:39 +0200 (CEST)
-Message-ID: <cc12da37-d937-442e-88d3-cb946b683728@collabora.com>
-Date: Thu, 10 Jul 2025 19:15:37 +0530
+	(Authenticated sender: laura.nao)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 01D1D17E08E3;
+	Thu, 10 Jul 2025 16:20:55 +0200 (CEST)
+From: Laura Nao <laura.nao@collabora.com>
+To: angelogioacchino.delregno@collabora.com
+Cc: arnd@arndb.de,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	drew@pdp7.com,
+	gregkh@linuxfoundation.org,
+	kabel@kernel.org,
+	kernel@collabora.com,
+	khilman@baylibre.com,
+	krzk@kernel.org,
+	laura.nao@collabora.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	m.wilczynski@samsung.com,
+	matthias.bgg@gmail.com,
+	nm@ti.com,
+	pjp@fedoraproject.org,
+	quic_hyiwei@quicinc.com,
+	robh@kernel.org,
+	tudor.ambarus@linaro.org,
+	u.kleine-koenig@baylibre.com,
+	ulf.hansson@linaro.org
+Subject: Re: [RFC PATCH 2/3] dt-bindings: firmware: Document the MediaTek Hardware Voter (HWV)
+Date: Thu, 10 Jul 2025 16:19:41 +0200
+Message-Id: <20250710141941.75843-1-laura.nao@collabora.com>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <9560d4d2-5346-4d0a-a96f-c96ebe335f3c@collabora.com>
+References: <9560d4d2-5346-4d0a-a96f-c96ebe335f3c@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: drm-ci: mt8173-elm-hana:
- kms_atomic_transition@plane-all-modeset-transition-internal-panels flake
-To: Thomas Zimmermann <tzimmermann@suse.de>,
- linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- nfraprado@collabora.com, airlied@gmail.com, daniel@ffwll.ch,
- Daniel Stone <daniels@collabora.com>,
- Helen Mae Koike Fornazier <helen.fornazier@gmail.com>
-References: <30b3f8b0-3409-4329-bb60-b6287e1a439d@collabora.com>
- <ab591252-120c-4740-9e89-7efd31dc00a0@suse.de>
-Content-Language: en-US
-From: Vignesh Raman <vignesh.raman@collabora.com>
-In-Reply-To: <ab591252-120c-4740-9e89-7efd31dc00a0@suse.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250710_064543_332542_9F263815 
-X-CRM114-Status: UNSURE (   9.36  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250710_072059_606649_02F09E0F 
+X-CRM114-Status: GOOD (  40.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,437 +93,250 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Thomas,
-
-On 10/07/25 18:56, Thomas Zimmermann wrote:
-> Hi,
-> 
-> spamming the mailing lists with copy-paste mails is not going to help 
-> with these problems.
-
-Sorry, the intention was not to spam, but to ensure flake reports are 
-tracked.
-
-The link to the email will be added to drivers/gpu/drm/ci/xfails/.
-For example:
-https://gitlab.freedesktop.org/drm/misc/kernel/-/blob/drm-misc-next/drivers/gpu/drm/ci/xfails/mediatek-mt8173-flakes.txt?ref_type=heads#L51
-
-This is based on what is suggested in 
-Documentation/gpu/automated_testing.rst for flakes.
-
-For amdgpu, i915 and msm, a gitlab issue is created instead.
-
-Apologies for not mentioning this earlier in the email.
-
-Regards,
-Vignesh
-
-> 
-> Best regards
-> Thomas
-> 
-> Am 10.07.25 um 15:16 schrieb Vignesh Raman:
->> Hi Maintainers,
+On 7/7/25 12:40, AngeloGioacchino Del Regno wrote:
+> Il 03/07/25 10:56, AngeloGioacchino Del Regno ha scritto:
+>> Il 02/07/25 08:50, Krzysztof Kozlowski ha scritto:
+>>> On Tue, Jul 01, 2025 at 05:11:48PM +0200, AngeloGioacchino Del Regno wrote:
+>>>> Add documentation for the new MediaTek Hardware Voter, found in
+>>>> MediaTek SoCs like the MT8196 Kompanio Ultra for Chromebooks and
+>>>> the MT6991 Dimensity 9400 for Smartphones.
+>>>>
+>>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>>> ---
+>>>>   .../mediatek,mt6991-hardware-voter.yaml       | 70 +++++++++++++++++++
+>>>>   1 file changed, 70 insertions(+)
+>>>>   create mode 100644 Documentation/devicetree/bindings/firmware/mediatek,mt6991- hardware-voter.yaml
+>>>>
+>>>> diff --git a/Documentation/devicetree/bindings/firmware/mediatek,mt6991- hardware-voter.yaml b/Documentation/devicetree/bindings/firmware/ mediatek,mt6991-hardware-voter.yaml
+>>>> new file mode 100644
+>>>> index 000000000000..173b74c23a91
+>>>> --- /dev/null
+>>>> +++ b/Documentation/devicetree/bindings/firmware/mediatek,mt6991-hardware- voter.yaml
+>>>> @@ -0,0 +1,70 @@
+>>>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+>>>> +# Copyright 2025 Collabora Ltd
+>>>> +%YAML 1.2
+>>>> +---
+>>>> +$id: http://devicetree.org/schemas/firmware/mediatek,mt6991-hardware-voter.yaml#
+>>>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>>>> +
+>>>> +title: MediaTek Hardware Voter (HWV)
+>>>> +
+>>>> +maintainers:
+>>>> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>>> +
+>>>> +description:
+>>>> +  The MediaTek Hardware Voter (HWV) is a SoC-internal fixed-function MCU
+>>>> +  used to collect votes from both the Application Processor and from the
+>>>> +  various other remote processors present in the SoC, and transparently
+>>>> +  turn on or off various hardware resources (for example, power domains
+>>>> +  or system clocks) based on aggregation of votes done in the HWV MCU's
+>>>> +  internal state machine, therefore guaranteeing synchronization of the
+>>>> +  hardware resource requests between all components of the SoC and hence
+>>>> +  avoiding, for example, unclocked or unpowered access to the hardware.
+>>>> +
+>>>> +properties:
+>>>> +  $nodename:
+>>>> +    pattern: "^system-controller@[0-9a-f]+$"
+>>>> +
+>>>> +  compatible:
+>>>> +    const: mediatek,mt6991-hardware-voter
+>>>> +
+>>>> +  reg:
+>>>> +    items:
+>>>> +      - description: Address and size of the Hardware Voter MMIO
+>>>> + 
+>>>
+>>> No resources here, so this should go to power controller
+>>>
+>>>> +  power-controller:
+>>>> +    $ref: /schemas/power/mediatek,power-controller.yaml
+>>>> +
+>>>> +required:
+>>>> +  - compatible
+>>>> +  - reg
+>>>> +
+>>>> +additionalProperties: true
+>>>> +
+>>>> +examples:
+>>>> + - |
+>>>> +   scp_hwv: system-controller@14500000 {
+>>>> +     compatible = "mediatek,mt6991-hardware-voter";
+>>>> +     reg = <0 0x14500000 0 0x3000>;
+>>>> +
+>>>> +     power-controller {
+>>>> +       compatible = "mediatek,mt8196-hwv-scp-power-controller"; 
+>>>
+>>> mt8196 in mt6991 is very confusing.
+>>>
 >>
->> There is a flake test reported for the mediatek driver in drm-ci.
+>> Yeah that wasn't intentional; fyi, it's almost the same soc, that's why I mixed
+>> them up... :-)
 >>
->> # Board Name: mt8173-elm-hana
->> # Failure Rate: 60
->> # IGT Version: 2.1-g26ddb59c1
->> # Linux Version: 6.16.0-rc2
->> kms_atomic_transition@plane-all-modeset-transition-internal-panels
+>>> Anyway, this does not address my comment at all. You again create some
+>>> sort of syscon for voting, so no. You are supposed to use generic API
+>>> for voting: clocks, power domains, interconnects - whatever is there
+>>> applicable or necessary.
+>>>
 >>
->> 07:35:22.411: DEBUG - Begin test kms_atomic_transition@plane-all- 
->> modeset-transition-internal-panels
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) CRITICAL: 
->> Test assertion failure function wait_for_transition, file ../tests/ 
->> kms_atomic_transition.c:539:
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) CRITICAL: 
->> Failed assertion: fd_completed(data->drm_fd)
->> 07:35:22.411: ERROR - Igt error: Dynamic subtest pipe-A-eDP-1 failed.
->> 07:35:22.411: ERROR - Igt error: **** DEBUG ****
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.1: Setting property "CRTC_W" to 0x400/1024
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.1: Setting property "CRTC_H" to 0x300/768
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.1: Setting property "FB_ID" to 0x54/84
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.1: Setting property "CRTC_ID" to 0x39/57
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display:     populating plane data: A.2, fb 84
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "SRC_X" to 0x0/0
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "SRC_Y" to 0x0/0
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "SRC_W" to 0x4000000/67108864
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "SRC_H" to 0x3000000/50331648
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "CRTC_W" to 0x400/1024
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "CRTC_H" to 0x300/768
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "FB_ID" to 0x54/84
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "CRTC_ID" to 0x39/57
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display:     populating plane data: A.3, fb 83
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "SRC_X" to 0x0/0
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "SRC_Y" to 0x0/0
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "SRC_W" to 0x2000000/33554432
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "SRC_H" to 0x2000000/33554432
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "CRTC_W" to 0x200/512
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "CRTC_H" to 0x200/512
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "FB_ID" to 0x53/83
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "CRTC_ID" to 0x39/57
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: }
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: commit {
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display:     populating plane data: A.0, fb 82
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.0: Setting property "SRC_X" to 0x0/0
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.0: Setting property "SRC_Y" to 0x0/0
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.0: Setting property "SRC_W" to 0x5560000/89522176
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.0: Setting property "SRC_H" to 0x3000000/50331648
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.0: Setting property "CRTC_W" to 0x556/1366
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.0: Setting property "CRTC_H" to 0x300/768
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.0: Setting property "FB_ID" to 0x52/82
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.0: Setting property "CRTC_ID" to 0x39/57
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display:     populating plane data: A.1, fb 84
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.1: Setting property "SRC_X" to 0x0/0
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.1: Setting property "SRC_Y" to 0x0/0
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.1: Setting property "SRC_W" to 0x4000000/67108864
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.1: Setting property "SRC_H" to 0x3000000/50331648
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.1: Setting property "CRTC_W" to 0x400/1024
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.1: Setting property "CRTC_H" to 0x300/768
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.1: Setting property "FB_ID" to 0x54/84
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.1: Setting property "CRTC_ID" to 0x39/57
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display:     populating plane data: A.2, fb 84
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "SRC_X" to 0x0/0
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "SRC_Y" to 0x0/0
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "SRC_W" to 0x4000000/67108864
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "SRC_H" to 0x3000000/50331648
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "CRTC_W" to 0x400/1024
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "CRTC_H" to 0x300/768
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "FB_ID" to 0x54/84
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "CRTC_ID" to 0x39/57
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display:     populating plane data: A.3, fb 83
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "SRC_X" to 0x0/0
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "SRC_Y" to 0x0/0
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "SRC_W" to 0x2000000/33554432
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "SRC_H" to 0x2000000/33554432
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "CRTC_W" to 0x200/512
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "CRTC_H" to 0x200/512
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "FB_ID" to 0x53/83
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "CRTC_ID" to 0x39/57
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: }
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: eDP-1: set_pipe(A)
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: eDP-1: Selecting pipe A
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.1: plane_set_fb(0)
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.1: plane_set_size (0x0)
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.1: fb_set_position(0,0)
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.1: fb_set_size(0x0)
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.2: plane_set_fb(0)
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.2: plane_set_size (0x0)
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.2: fb_set_position(0,0)
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.2: fb_set_size(0x0)
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.3: plane_set_fb(0)
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.3: plane_set_size (0x0)
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.3: fb_set_position(0,0)
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.3: fb_set_size(0x0)
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: commit {
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: Pipe A: Setting property "MODE_ID" to 0x55/85
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: Pipe A: Setting property "ACTIVE" to 0x1/1
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display:     populating plane data: A.1, fb 0
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.1: Setting property "SRC_X" to 0x0/0
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.1: Setting property "SRC_Y" to 0x0/0
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.1: Setting property "SRC_W" to 0x0/0
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.1: Setting property "SRC_H" to 0x0/0
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.1: Setting property "CRTC_W" to 0x0/0
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.1: Setting property "CRTC_H" to 0x0/0
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.1: Setting property "FB_ID" to 0x0/0
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.1: Setting property "CRTC_ID" to 0x0/0
->> 07:35:22.411: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display:     populating plane data: A.2, fb 0
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "SRC_X" to 0x0/0
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "SRC_Y" to 0x0/0
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "SRC_W" to 0x0/0
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "SRC_H" to 0x0/0
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "CRTC_W" to 0x0/0
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "CRTC_H" to 0x0/0
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "FB_ID" to 0x0/0
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "CRTC_ID" to 0x0/0
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display:     populating plane data: A.3, fb 0
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "SRC_X" to 0x0/0
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "SRC_Y" to 0x0/0
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "SRC_W" to 0x0/0
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "SRC_H" to 0x0/0
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "CRTC_W" to 0x0/0
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "CRTC_H" to 0x0/0
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "FB_ID" to 0x0/0
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "CRTC_ID" to 0x0/0
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display:     eDP-1: preparing atomic, pipe: A
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: eDP-1: Setting property "CRTC_ID" to 0x39/57
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: }
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) DEBUG: 
->> Retrieved vblank seq: 4302 on unk
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.0: plane_set_fb(82)
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.0: plane_set_size (1366x768)
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.0: fb_set_position(0,0)
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.0: fb_set_size(1366x768)
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.0: fb_set_size(1366x768)
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.0: plane_set_size (1366x768)
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.1: plane_set_fb(84)
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.1: plane_set_size (1024x768)
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.1: fb_set_position(0,0)
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.1: fb_set_size(1024x768)
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.1: fb_set_size(1024x768)
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.1: plane_set_size (1024x768)
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.2: plane_set_fb(84)
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.2: plane_set_size (1024x768)
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.2: fb_set_position(0,0)
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.2: fb_set_size(1024x768)
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.2: fb_set_size(1024x768)
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.2: plane_set_size (1024x768)
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.3: plane_set_fb(83)
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.3: plane_set_size (512x512)
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.3: fb_set_position(0,0)
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.3: fb_set_size(512x512)
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.3: fb_set_size(512x512)
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: A.3: plane_set_size (512x512)
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: commit {
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: Pipe A: Setting property "MODE_ID" to 0x51/81
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display:     populating plane data: A.0, fb 82
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.0: Setting property "SRC_X" to 0x0/0
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.0: Setting property "SRC_Y" to 0x0/0
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.0: Setting property "SRC_W" to 0x5560000/89522176
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.0: Setting property "SRC_H" to 0x3000000/50331648
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.0: Setting property "CRTC_W" to 0x556/1366
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.0: Setting property "CRTC_H" to 0x300/768
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.0: Setting property "FB_ID" to 0x52/82
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.0: Setting property "CRTC_ID" to 0x39/57
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display:     populating plane data: A.1, fb 84
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.1: Setting property "SRC_X" to 0x0/0
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.1: Setting property "SRC_Y" to 0x0/0
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.1: Setting property "SRC_W" to 0x4000000/67108864
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.1: Setting property "SRC_H" to 0x3000000/50331648
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.1: Setting property "CRTC_W" to 0x400/1024
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.1: Setting property "CRTC_H" to 0x300/768
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.1: Setting property "FB_ID" to 0x54/84
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.1: Setting property "CRTC_ID" to 0x39/57
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display:     populating plane data: A.2, fb 84
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "SRC_X" to 0x0/0
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "SRC_Y" to 0x0/0
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "SRC_W" to 0x4000000/67108864
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "SRC_H" to 0x3000000/50331648
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "CRTC_W" to 0x400/1024
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "CRTC_H" to 0x300/768
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "FB_ID" to 0x54/84
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.2: Setting property "CRTC_ID" to 0x39/57
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display:     populating plane data: A.3, fb 83
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "SRC_X" to 0x0/0
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "SRC_Y" to 0x0/0
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "SRC_W" to 0x2000000/33554432
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "SRC_H" to 0x2000000/33554432
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "CRTC_W" to 0x200/512
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "CRTC_H" to 0x200/512
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "FB_ID" to 0x53/83
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: plane A.3: Setting property "CRTC_ID" to 0x39/57
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_kms- 
->> DEBUG: display: }
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) CRITICAL: 
->> Test assertion failure function wait_for_transition, file ../tests/ 
->> kms_atomic_transition.c:539:
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) CRITICAL: 
->> Failed assertion: fd_completed(data->drm_fd)
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_core- 
->> INFO: Stack trace:
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_core- 
->> INFO:   #0 ../lib/igt_core.c:2075 __igt_fail_assert()
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_core- 
->> INFO:   #1 ../tests/kms_atomic_transition.c:536 
->> wait_for_transition.constprop.0()
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_core- 
->> INFO:   #2 ../tests/kms_atomic_transition.c:715 
->> __igt_unique____real_main1122()
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_core- 
->> INFO:   #3 ../tests/kms_atomic_transition.c:1122 main()
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_core- 
->> INFO:   #4 [__libc_init_first+0x80]
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_core- 
->> INFO:   #5 [__libc_start_main+0x98]
->> 07:35:22.412: ERROR - Igt error: (kms_atomic_transition:403) igt_core- 
->> INFO:   #6 [_start+0x30]
->> 07:35:22.412: ERROR - Igt error: ****  END  ****
->> 07:35:22.412: ERROR - Test kms_atomic_transition@plane-all-modeset- 
->> transition-internal-panels: Fail: See "/results/ 
->> igt.kms_atomic_transition@plane-all-modeset-transition-internal- 
->> panels.log"
->> 07:35:22.412: DEBUG - End test kms_atomic_transition@plane-all- 
->> modeset-transition-internal-panels
+>> Making that loud and clear: Interconnect is not applicable.
 >>
->> Pipeline: https://gitlab.freedesktop.org/vigneshraman/msm/-/jobs/79879662
+>> The only way to do what you're proposing would be to add a bunch of `reg`
+>> to each devicetree node for each clock controller and each power controller;
+>> I can do that, but looks a bit dirty - and still yet another syscon-like
+>> alternative, but without having a real syscon declared in there.
 >>
->> Please could you have a look at these test results and let us know if 
->> you need more information to debug. Thank you.
+>> Mind you - both clock and power controllers are writing both to their own
+>> register space (and enabling external regulators, etc, for power domains)
+>> and to the hardware voter MMIO (which means that the HWV, in hardware, is
+>> fundamentally broken).
 >>
->> Regards,
->> Vignesh
-> 
+>> After this reply, the only option that is left to me is the following:
+>>
+>>          topckgen: clock-controller@10000000 {
+>>              compatible = "mediatek,mt8196-topckgen", "syscon";
+>>              reg = <0 0x10000000 0 0x800>, <0 0x14500010 0 0x48>,
+>>                    <0 0x14502c08 0 0x24>;
+>>              reg-names = "base", "hwvoter-base", "hwvoter-status";
+>>              #clock-cells = <1>;
+>>          };
+>>
+>>          imp_iic_wrap_north: clock-controller@13c30000 {
+>>              compatible = "mediatek,mt8196-imp-iic-wrap-n", "syscon";
+>>              reg = <0 0x13c30000 0 0x1000>, <0 0x14500000 0 0xc>,
+>>                    <0 0x14502c00 0 0xc>;
+>>              reg-names = "base", "hwvoter-base", "hwvoter-status";
+>>              #clock-cells = <1>;
+>>          };
+>>
+>>          /* Power Manager with Hardware Voter */
+>>          spm_hwv: power-controller@14500218 {
+>>              compatible = "mediatek,mt8196-hwv-scp-power-controller";
+>>              reg = <0 0x14500218 0 0x20>, <0 0x14501410 0 0x20>,
+>>                    <0 0x14505514 0 0xc>;
+>>              reg-names = "hwvoter-base", "hwvoter-status", "hwvoter-ack";
+>>              #address-cells = <1>;
+>>              #size-cells = <0>;
+>>              #power-domain-cells = <1>;
+>>
+>>              /* SCPSYS hardware voter power domains */
+>>              mm_proc_dormant: power-domain@MT8196_POWER_DOMAIN_MM_PROC_DORMANT {
+>>                  ..... etc, all power domains
+>>
+>> At this point, I'm really not sure that this would be better than just passing
+>> the mediatek,hardware-voter syscon to the clock controllers - as what I've done
+>> previously was effectively representing the hardware in the devicetree as it is,
+>> matching the real HW layout 1:1 (because again, each of the whole HWV MCU(s) are
+>> embedded into each of the two power controllers, one for System power, and one
+>> for Multimedia power).
+>>
+>> (btw, hardware speaking, the power controller is child of a system controller:
+>> there are two system controllers - "scpsystem" is for "compute part", and the
+>> "hfrpsystem" is for the "multimedia part" of the soc).
+>>
+>>   _______________________________________
+>> |                                       |
+>> | SYSTEM CONTROLLER (SCPSYS or HFRPSYS) |
+>> |   _____________________               |
+>> |  |                     |              | <===> Clock Controllers (more than one)
+>> |  | Power Controller    |     SOME     |       (provide subsystem clocks for iso
+>> |  |                     |    OTHER     |        during power domain enablement
+>> |  |     ______________  |   BLOCKS     |        even if a PD is voted)
+>> |  |    |              | |              |       non-subsystem clocks are voted,
+>> |  |    | HW Voter MCU | |              |       but subsystem ones are not voted
+>> |  |    |______________| |              |
+>> |  |_____________________|              | ===> Rest of the SoC
+>> |_______________________________________|
+>>
+>>
+>> Hence I'm asking you - does your idea still stand?
+>>
+>> Because after this, sorry for that - this doesn't want to be an attack - but
+>> I'm starting to have doubts about an approach that doesn't involve syscons.
+>>
+>> Cheers,
+>> Angelo 
+>
+> Sorry for the double reply, wanted to add some more words :-)
+>
+> As a note, I also thought about doing the following:
+>
+>     /* Secondary SCPSYS block with HWV capabilities */
+>     scp1_hwv: system-controller@14500000 {
+>         compatible = "mediatek,mt8196-scpsys", "syscon", "simple-mfd";
+>         reg = <0 0x14500000 0 0x3000>;
+>
+>         /* SCP Power Manager with Hardware Voter */
+>         spm_hwv: power-controller {
+>             compatible = "mediatek,mt8196-hwv-scp-power-controller";
+>             #address-cells = <1>;
+>             #size-cells = <0>;
+>             #power-domain-cells = <1>;
+>
+>             /* SCPSYS hardware voter power domains */
+>             mm_proc_dormant: power-domain@MT8196_POWER_DOMAIN_MM_PROC_DORMANT {
+>             ..... etc etc
+>             };
+>         };
+>
+>         imp_iic_wrap_north: clock-controller@13c30000 {
+>             compatible = "mediatek,mt8196-imp-iic-wrap-n", "syscon";
+>             reg = <0 0x13c30000 0 0x1000>;
+>             #clock-cells = <1>;
+>         };
+>     };
+>
+> ...but that's also not applicable, because the clock controllers are physically
+> *not* inside of the scpsys1 block, so that would *also* misrepresent the hardware
+> in the devicetree (besides still using a syscon in a way or another).
+>
+> So... I really don't see any way out of that, which really leaves me with the two
+> options that I described in the previous reply.
+>
+> Summarizing, either:
+>  - Adding hwv MMIOs (a bunch of, and each very small) to each clock controller (but
+>    still all of them are poking at the same HWV controller, and I foresee that this
+>    will backfire in some future iteration of the HWV hardware)
+>  - Reverting back to using the "mediatek,hardware-voter" syscon, like done in
+>    https://lore.kernel.org/20250624143220.244549-10-laura.nao@collabora.com
+>
+> I tried really hard and thought about this for weeks (actually, started even before
+> your feedback on Laura's series), but now I'm out of practical options that are
+> both correctly representing the hardware and not making the implementation fragile
+> (or actually more fragile than the actually broken HW implementation's fragility,
+> anyway).
+>
+> And besides - re-reading what I wrote after a bunch of days, the first option of
+> adding a bunch of hwv mmios to all of the clock controllers is, in my opinion, a
+> (dirty) hack - because those mmios don't belong to the clock controllers, and would
+> again misrepresent the hardware in DT - especially keeping in mind the fact that
+> the clock controllers can be controlled with *and* (not or) without the HWV (and in
+> some instances, even if using HWV, we must still write to the clock controllers'
+> mmio for extra programming, as explained before).
+>
+> Every second I think about this I get more and more convinced that my way of
+> passing the SCPSYS-HWV system controller handle as a syscon is right.
+>
+> Angelo
+>
 
+I’ve given this some more thought over the past few days.
+
+I can't see of any other viable alternative either, other than splitting 
+up the HWV MMIOs into multiple tiny reg entries across each consumer 
+node as mentioned..which feels fragile and wouldn't really be an accurate 
+representation of the HW, given they all ultimately target the same HWV MCU.
+
+All considered, modeling the HWV as a shared syscon passed to both clock 
+and power controllers still seems to me like the more accurate 
+representation of this specific hw layout, given both types of 
+controllers interact with the same voter logic and MMIO region.
+
+Krzysztof, does the approach with scattered small reg entries per clock 
+controller seem as awkward to you as it does to us? are there any other 
+directions you think we should explore here?
+
+Best,
+
+Laura
 
