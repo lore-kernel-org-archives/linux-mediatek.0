@@ -4,89 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D1CBC83F17
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jul 2025 19:08:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6894DC83F20
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jul 2025 22:43:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=EXXln8ztUf98iIGf/7dfBRdET9nYoY4W5NiVmN7viz4=; b=KFXxmsBUE5s2AD/UMZK72i8QRD
-	N4b4eBljsKfKAwkm/tYzexFN1qxj0fRs5CXAvZtb81wX/qLhaNH7PmK9R759Xjk7QqKBlwbfDS8tE
-	fMq0bOiKcugo+MfKZGRYsrXezEa2mjDFW88i3uMq06+gbJI9Af2wdRIUu8FcdCZlnnQm1cX0xqeEI
-	5ndExDw5q61qPewc1ZnEYrDgckkuExr263sINgFCM0Nl1/H++HMENHIBHQWA+tDbJl0xGEJgbA5cp
-	BsjZmqXAvt7HACdJAcN6HZgaOcsIUjX0zb2Xgh0bYHzY8g8jnKZNgkZyd9xqUnCrAsH+vDHJGglki
-	dVYEdoRA==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=scg75GovixsEvdVxNi0J1MYQaQj+4lzopjkTkcLZ+rU=; b=zjtellh/2/3Wl98nUKmhUFQmJD
+	T+Rxg+w4GQXoeeMG3yJNIJEp62yVDabFx0zx4Nktop3uaGJsJtKylAju1vV8ehvNs376WdpmeCJkp
+	wzaqA3p0Vexuy5ncbABW0CD5fctdX251JgNhJH+HvI49cjFKAZzzz5tKrL8ETptLgFcmjooqNYKJz
+	PfwswbY+cjibsof3uCC5tfpZuyXULKQHIYEthH1g+Q1qJc7PkLYzG2bQnrHF/GqhdB5DwzMH/73fZ
+	Mx5L3n92V7KxPLiK4lPHl2lalhKnvH8pnXeT0n8Z9it1vrTS/ccRgzEF4QMBGbX8wj7m17c+D1SRK
+	opDcu4Ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZwdV-0000000CmOf-2NWp;
-	Thu, 10 Jul 2025 19:08:49 +0000
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+	id 1uZzym-0000000DBRE-3NHU;
+	Thu, 10 Jul 2025 22:43:00 +0000
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uZuGq-0000000CTUp-18PE
-	for linux-mediatek@lists.infradead.org;
-	Thu, 10 Jul 2025 16:37:17 +0000
-Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-ae3be3eabd8so254058766b.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 10 Jul 2025 09:37:15 -0700 (PDT)
+	id 1uZxZA-0000000Ct7f-2Tmh;
+	Thu, 10 Jul 2025 20:08:25 +0000
+Received: by mail-pf1-x42f.google.com with SMTP id d2e1a72fcca58-747c2cc3419so1396309b3a.2;
+        Thu, 10 Jul 2025 13:08:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1752165434; x=1752770234; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=EXXln8ztUf98iIGf/7dfBRdET9nYoY4W5NiVmN7viz4=;
-        b=sZWQrf9ZV69p5AVoYKZjpsSnLGGki4Qifa1S4+zRO8GqDOsP0ZtC2r39uBjP+No+6N
-         pVfqIKtkas/P90U4gEeP9NHdTwv0z3znSpqemGrdiXDFh85w2Ny7XI8CMS7wHBejBlz+
-         ia3SCMwpkL/JrG7KdyWXs7yK1f8g8U/PEUBuKDXisFcMqy8BSIT96o51QUCJEc0eMDiJ
-         JLILfeYr7A+R5gjhbff+5W80xvwICWUAuEOdzCPBefjWjqlpSpcwyvmBUshdaoXrPF6v
-         21CZEmGaoLz1Z3Hxrldd3hb0PO/6zyPboBxvO+tsiECIeI7Ty96nQTe5N7XnWrRt76Qa
-         PoGw==
+        d=gmail.com; s=20230601; t=1752178103; x=1752782903; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=scg75GovixsEvdVxNi0J1MYQaQj+4lzopjkTkcLZ+rU=;
+        b=gMFmdBaPaauqoEcQSzwPGqbJRO11nPxN03HyEedMznd7YBkUxk4CxSYwwVlyAz4fUi
+         RjKAJId6rRJ4eApvru0lIhtRXq+FsgY08F7ZThIymQ8fvKZ9okj3SA3KIizultcHE9M+
+         bd2RLuiJmtiJZ5E1EKfX8WuIaYKcy6AiyUXbzh+Z2PCyZiKacu9gHBGFT6EzjYsCwTP8
+         Evrx6uEEoUwk88+hDYs/SLbwXyuwrGRro0MRG3sH5cx2SSMNPYPTOUhWsUWWaiTBlheI
+         o31S9iTbEJ8/c+9R2jQAF+LKDxIPsJwRdArYq88gfYW4OfjUxAqOJ++cl/IPNMCUZCr8
+         3TwA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1752165434; x=1752770234;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=EXXln8ztUf98iIGf/7dfBRdET9nYoY4W5NiVmN7viz4=;
-        b=I3i1+zoBsZRpSVPuhbJVFT2aQmoDvDIiRZjdRtXNEqO9KZK9LtR9QFatRGu3VU08l8
-         hVuKMlzvUex3Wf4+u15WBkGGR32CP1HNFxCRTYrQCx0u8SXWTmv7kkH289IjHXmMfBL9
-         Z/GW/Fh2z1UoMDaWLMfsL9Cz1E1EDTWkm/xp4ytW/FIavJk8Api47guycQEA1YAz0Adh
-         688GEAAySsLGrZdbmm4r2WEdR7iAKmpUCKwCRlGvkmgslQpCyhqDsH4VZQzkOB8Rjqob
-         ajauQCnEt7La7wc4rtemgUcERMd0K6k5vVqD5rwjQNGDDB7RXxI3OXl26N8g5++pjfBh
-         jOVw==
-X-Forwarded-Encrypted: i=1; AJvYcCUhbKNoWhbaLVAvfSaErXdD99WEqjdMiWYa0N+OloLYkJzEP52zOQt6v5RxuEMmmKewfoc5NETpW53Yn7/dPA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxaEqHisIOm6bSntykQ9qZ4AD1dAmwqQyaJqDddsTc/o8Tl/MS0
-	lie/lbumkn5ZI13Dh8x7qmiG7XJ/sDHwTIReXP8yyEIFfqEaudq1FHcl451WcPvuSyI=
-X-Gm-Gg: ASbGnctugN1+9MOlZ4N8cjW+sC5SmUtq9PbJWyw++c43KjRHs0b2EyfpGMs8F1v+bV5
-	m0xa+56JfbStuVb2Xn2s2N0woiJItCV3r3cMdwxH58VFQ4sPkfLotDJQqCiC0Llaj66bFMcjO8/
-	kMuR4Pl3BlHltlCP0bNn9w7eu0mlTlv+nUZHaRYWWVhZAMOQqw8PHN2SUqt0mzDCCR3rdjiyYle
-	PB74V/RZhXcI1Jpn/gVemux7srDgFOTDfEmI30epP/nbUmav9Sk0OOR/H+YMfou2l+CU4PMutvT
-	h2xYkt64d+PoeOjSq0MR/ys0PjWyl39kkOTBMKL0S82t3ELikUj/NdJHiYptS6kll/lA+4w3bgs
-	1AQKYb/CBmiROVZjqayagkgiZV+x7
-X-Google-Smtp-Source: AGHT+IELCUQ3D7o2E5fa6UZqXD1pU9+ZigPXm/NvY6HpZba0l8NVyN/8SJFdzxrZo+ZkOm2dFqnVfg==
-X-Received: by 2002:a17:907:84a:b0:ae3:c777:6e5e with SMTP id a640c23a62f3a-ae6e241e145mr464296066b.19.1752165434105;
-        Thu, 10 Jul 2025 09:37:14 -0700 (PDT)
-Received: from localhost (p200300f65f06ab0400000000000001b9.dip0.t-ipconnect.de. [2003:f6:5f06:ab04::1b9])
-        by smtp.gmail.com with UTF8SMTPSA id a640c23a62f3a-ae6e82646a5sm159267166b.90.2025.07.10.09.37.13
+        d=1e100.net; s=20230601; t=1752178103; x=1752782903;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=scg75GovixsEvdVxNi0J1MYQaQj+4lzopjkTkcLZ+rU=;
+        b=CC1HXL0eaQheFzhBhJsOCEVGs3kEOPJOB3SVcfMC9KMTOJMvxGJITQdmEdCurz9qOk
+         466ho2FSPO5oBh30sGFZPjhRbVnilwxbVyXTs283j95NHKewpOY1VAUro89hqhsd1IUR
+         uJqnz69ICF+HXSDVDH/rki+g5Jt0vYMGJFy/kJ76KXoe1kaQ9B3mcRLlxfdZX19m//tT
+         5u9n8MvYQcOrpVPhfxesTVFzW1WY82lcVQ8V+4FaObpfc82/qxl2FntKc12+U0iXmp6J
+         EDKI9PVWHJRulvkg3eUTENpFnxD5jLKYQrqexxCshj+JmfsxBxM7+j54BdpmO5eptr+v
+         vS2A==
+X-Forwarded-Encrypted: i=1; AJvYcCWujbPa0Ge9qnbimivOvT5+FQH1zEJNULD9elhdxT/f7oFlL3iUvwtffxe6FvZ80/ReyWPEDMrN8thN4Xx0AKY=@lists.infradead.org, AJvYcCXczRxggZ8c+vUyHjBzBovgFbD2pIdr+Fyvv0V43m359zuh5BPA8QVsHrTfcOZ8508CCQm4INvLmNUrdAi9jt0C@lists.infradead.org
+X-Gm-Message-State: AOJu0Yys45lrqka+ItHpNPVZiSrQ1aSyAYBkSthxNVCIsKt2HvrznfSC
+	795nUyW1w4s14e/vnEBPip/o+VMp0xulCMwVjqquGa1XjLWR+uOi9v0U
+X-Gm-Gg: ASbGnctaHNe1szjpV9+1Uhr47KugwEidxzYgQpB54D6/Ylqgsrsylo59+jGwLebu8t3
+	8lZnsXqu02It8zi3jRTikQYK3pBaou6a6awVElBAaZgReytJa6sXuIMb/rQARndIsTqcI5r4FvW
+	9u5g4cu8TU605xoTb2oO2U/pC5dvxGRWb74SqwgYeZDOOK/eQer1w57R2sUFBgyca/iK3J6dMdw
+	YRkAKNkN2w6Fc4P5BFI+6cVFa8JtmiT2HTd/dPSHu1ZTTHh8sWfA0e85rIZcCaxl2iaaqMtu5UX
+	mXSHFOnkE6RPbFijefn03Z2OwQqi2T3xVlk/ANCaWPs=
+X-Google-Smtp-Source: AGHT+IGk+CvEH9fmt2OXqR3GTJo5v/lWWaa+7STAsMYtu2xeDU7xQb1KOYuq7AJg1ahGYkxKyQGvwA==
+X-Received: by 2002:a05:6a00:807:b0:748:33f3:8da3 with SMTP id d2e1a72fcca58-74ee323a063mr442065b3a.19.1752178103355;
+        Thu, 10 Jul 2025 13:08:23 -0700 (PDT)
+Received: from archlinux.lan ([2601:644:8200:dab8::1f6])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-74eb9f1b29asm2729453b3a.87.2025.07.10.13.08.22
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Jul 2025 09:37:13 -0700 (PDT)
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
+        Thu, 10 Jul 2025 13:08:23 -0700 (PDT)
+From: Rosen Penev <rosenp@gmail.com>
+To: linux-wireless@vger.kernel.org
+Cc: Johannes Berg <johannes@sipsolutions.net>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	John Crispin <john@phrozen.org>
-Cc: linux-pwm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] pwm: mediatek: Fix duty and period setting
-Date: Thu, 10 Jul 2025 18:37:04 +0200
-Message-ID: <20250710163705.2095418-2-u.kleine-koenig@baylibre.com>
-X-Mailer: git-send-email 2.49.0
+	Stanislaw Gruszka <stf_xl@wp.pl>,
+	devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS),
+	linux-kernel@vger.kernel.org (open list),
+	linux-mips@vger.kernel.org (open list:MIPS),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCHv3 wireless-next 1/7] wifi: rt2x00: add COMPILE_TEST
+Date: Thu, 10 Jul 2025 13:08:14 -0700
+Message-ID: <20250710200820.262295-2-rosenp@gmail.com>
+X-Mailer: git-send-email 2.50.0
+In-Reply-To: <20250710200820.262295-1-rosenp@gmail.com>
+References: <20250710200820.262295-1-rosenp@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2748; i=u.kleine-koenig@baylibre.com; h=from:subject; bh=jOMELxbdXu94+iU1SXke2q4/fB9rAtm8W7mQtcZVjSc=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBob+wxnYMcBKyG/Wij6Oow0CKXmGRmtySGPvJB9 Ogiq55xVeyJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCaG/sMQAKCRCPgPtYfRL+ TqNfCACtwiv10W+Q7wOKif88ZIoxirsO+zClSsoYXkMw4ui3aWkEWGIEHio7LkX3Xx4MXI7yhj6 U+VvShsnQpqAq1+QKAxxxFYZ3HqI6/KjTXMf+vN37DMZrQNP8Ulvr3eiPOtQ8Sx4a4TNJMC1Yc2 aamAnmOd8eCg166EpsBGABrOaSw6oWa0kjmv593gDCcF+uHn6fMd0j9S2MIrMCF1sELwKMp0g6k PVbr0pGUHUv6lTuJ7Ngdm/nHSOYMKlpBAYKrC4uYt37YKV2H5HDD//3WAl162g0CuPQes69OFGH ZeVRLJyWMgOXqjanoT58DURN2ijBnhHuV7fNKzl/sHYRu7Ba
-X-Developer-Key: i=u.kleine-koenig@baylibre.com; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250710_093716_318180_FA797AEB 
-X-CRM114-Status: GOOD (  17.41  )
+X-CRM114-CacheID: sfid-20250710_130824_620056_4AE500B3 
+X-CRM114-Status: GOOD (  11.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,78 +107,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The period generated by the hardware is
+While this driver is for a specific arch, there is nothing preventing it
+from being compiled on other platforms.
 
-	((PWMDWIDTH + 1) << CLKDIV) / freq)
+Allows the various bots to test compilation and complain if a patch is
+bad.
 
-according to my tests with a signal analyser and also the documentation.
-
-The current algorithm doesn't consider the `+ 1` part and so configures
-slightly too high periods. The same issue exists for the duty cycle
-setting. So subtract 1 from both the register values for period and
-duty cycle. If period is 0, bail out, if duty_cycle is 0, just don't set
-bit 15 in the CON register.
-
-Note that the handling for duty_cycle == 0 is only based on
-experimentation; I don't have access to the documentation and so not
-setting bit 15 is just a guess that seems to work in practise.
-
-Fixes: caf065f8fd58 ("pwm: Add MediaTek PWM support")
-Signed-off-by: Uwe Kleine-König <u.kleine-koenig@baylibre.com>
+Signed-off-by: Rosen Penev <rosenp@gmail.com>
 ---
-Hello,
+ drivers/net/wireless/ralink/rt2x00/Kconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-given this problem is more than 8 years old, I won't bother Linus with
-this patch before v6.16, but still add a Cc: for stable when committing.
-Would be great to get some feedback from people who have access to the
-documentation to confirm that the bit 15 handling is sane (or propose a
-better alternative).
-
-Best regards
-Uwe
-
- drivers/pwm/pwm-mediatek.c | 18 ++++++++++++++----
- 1 file changed, 14 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
-index 6777c511622a..80e322f02512 100644
---- a/drivers/pwm/pwm-mediatek.c
-+++ b/drivers/pwm/pwm-mediatek.c
-@@ -150,7 +150,10 @@ static int pwm_mediatek_config(struct pwm_chip *chip, struct pwm_device *pwm,
- 	do_div(resolution, clk_rate);
+diff --git a/drivers/net/wireless/ralink/rt2x00/Kconfig b/drivers/net/wireless/ralink/rt2x00/Kconfig
+index d1fd66d44a7e..3a32ceead54f 100644
+--- a/drivers/net/wireless/ralink/rt2x00/Kconfig
++++ b/drivers/net/wireless/ralink/rt2x00/Kconfig
+@@ -202,7 +202,7 @@ endif
  
- 	cnt_period = DIV_ROUND_CLOSEST_ULL((u64)period_ns * 1000, resolution);
--	while (cnt_period > 8191) {
-+	if (!cnt_period)
-+		return -EINVAL;
-+
-+	while (cnt_period > 8192) {
- 		resolution *= 2;
- 		clkdiv++;
- 		cnt_period = DIV_ROUND_CLOSEST_ULL((u64)period_ns * 1000,
-@@ -173,9 +176,16 @@ static int pwm_mediatek_config(struct pwm_chip *chip, struct pwm_device *pwm,
- 	}
- 
- 	cnt_duty = DIV_ROUND_CLOSEST_ULL((u64)duty_ns * 1000, resolution);
--	pwm_mediatek_writel(pc, pwm->hwpwm, PWMCON, BIT(15) | clkdiv);
--	pwm_mediatek_writel(pc, pwm->hwpwm, reg_width, cnt_period);
--	pwm_mediatek_writel(pc, pwm->hwpwm, reg_thres, cnt_duty);
-+
-+	if (cnt_duty) {
-+		pwm_mediatek_writel(pc, pwm->hwpwm, PWMCON, BIT(15) | clkdiv);
-+		pwm_mediatek_writel(pc, pwm->hwpwm, reg_width, cnt_period - 1);
-+		pwm_mediatek_writel(pc, pwm->hwpwm, reg_thres, cnt_duty - 1);
-+	} else {
-+		pwm_mediatek_writel(pc, pwm->hwpwm, PWMCON, clkdiv);
-+		pwm_mediatek_writel(pc, pwm->hwpwm, reg_width, cnt_period - 1);
-+		pwm_mediatek_writel(pc, pwm->hwpwm, reg_thres, 0);
-+	}
- 
- out:
- 	pwm_mediatek_clk_disable(chip, pwm);
-
-base-commit: a582469541a3f39bed452c50c5d2744620b6db02
+ config RT2800SOC
+ 	tristate "Ralink WiSoC support"
+-	depends on SOC_RT288X || SOC_RT305X || SOC_MT7620
++	depends on SOC_RT288X || SOC_RT305X || SOC_MT7620 || COMPILE_TEST
+ 	select RT2X00_LIB_SOC
+ 	select RT2X00_LIB_MMIO
+ 	select RT2X00_LIB_CRYPTO
 -- 
-2.49.0
+2.50.0
 
 
