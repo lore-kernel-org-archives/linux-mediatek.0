@@ -4,62 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F284C83F1A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Jul 2025 14:03:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A55DAC83F1A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Jul 2025 15:45:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6MCZrcij4xagay+EUDhjWN8tHzuSkFv0VFCtASHolgs=; b=icgmcS8BVEIv97941AqLGd2fmg
-	w+GvO15zjlSixUSOAM+dhqyEEmRPJ0CqyNUp8WG+AVNE8eUklt5sfgKMQaKzuX6+AAPa8r8odf3CV
-	fwUwUZz90J001zz+IU03td9dvgnak55SVT+mEj1pjt7h8uVK0Cqywtccs+T/lAR/b0+eFsCsJ1W93
-	bYzNPn7vyXWEoDIJriehoDwAHz99pJOeswyZ1vy+YjVM4Em3aTxJRCIkZz++JAqJlOO4pOuVxW9o0
-	LDx8E+cgBP7PAvIL1GkemwjPz3aVMkeOYyWWR2nL2mwLfjt51yY09t7hjLbmaHY0EBUYzrgGBGczg
-	1pNpxYdg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=t0chg3P4XqvgAZUIms8Yq5sWYUihi9BDdnPNYfdKkT4=; b=PRm3niNtw6r5bH
+	FtsqiMbuq0n+C7REvvmT+1Mt4y8/4YSKIBcscBUXVLWFQz1cFwEZJAdVzKB8vRwGHep/v52tBgDt0
+	u+cLM9h/8LnLJYhYoEX+OQLcz4RYqO8Fj98zwrCdK3amdVH/vFcBywYAmuYd2eZvg2bdBpCZn1Yld
+	37JKqMXWb5kcdyzEzow2dRP4cWzqpVRxpx+uXWmXkB+J7w9Pi0cTOfnyRalQCmJUGiFSebfnWa2hm
+	Ekw2I0wEdxmNuIEvlSkxtTpUhWY93LkpKDVjCkFS6ZCfMmhXhia8kVLbZYHvqREmLfblBR60O5i/A
+	3hM9GCa6GDfkuQ3p5Izw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uaELK-0000000EypX-0EiO;
-	Fri, 11 Jul 2025 14:03:14 +0000
-Received: from relmlor2.renesas.com ([210.160.252.172] helo=relmlie6.idc.renesas.com)
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uaEJu-0000000Eyft-19Yk;
-	Fri, 11 Jul 2025 14:01:48 +0000
-X-CSE-ConnectionGUID: u+J0B6+/T5uGFOGm+7BUCQ==
-X-CSE-MsgGUID: fr8Dn2H2TS+aGBD12MXJ3g==
-Received: from unknown (HELO relmlir6.idc.renesas.com) ([10.200.68.152])
-  by relmlie6.idc.renesas.com with ESMTP; 11 Jul 2025 23:01:40 +0900
-Received: from DESKTOP-I3G733R.localdomain (unknown [10.14.100.10])
-	by relmlir6.idc.renesas.com (Postfix) with ESMTP id A31B7424DFE3;
-	Fri, 11 Jul 2025 23:01:32 +0900 (JST)
-From: Alexander Savchenko <oleksandr.savchenko.dn@bp.renesas.com>
-To: rosenp@gmail.com
-Cc: angelogioacchino.delregno@collabora.com,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	johannes@sipsolutions.net,
-	krzk+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-mips@vger.kernel.org,
-	linux-wireless@vger.kernel.org,
-	matthias.bgg@gmail.com,
-	robh@kernel.org,
-	stf_xl@wp.pl,
-	tsbogend@alpha.franken.de
-Subject: Re: [PATCHv3 wireless-next 5/7] wifi: rt2x00: soc: modernize probe
-Date: Fri, 11 Jul 2025 17:01:30 +0300
-Message-Id: <20250711140130.378067-1-oleksandr.savchenko.dn@bp.renesas.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250710200820.262295-6-rosenp@gmail.com>
-References: <20250710200820.262295-6-rosenp@gmail.com>
+	id 1uaFwf-0000000FBeD-32wm;
+	Fri, 11 Jul 2025 15:45:53 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uaFCD-0000000F5Vt-0H9g;
+	Fri, 11 Jul 2025 14:57:54 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1752245865; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=BKXSQmTRtZE4n/PLG40EzPKN3e2ZCFPV2jt/BgYTlrlobqCUMqYt9hdAOlPNsgpGjPGSrG8izWIOy4L1yb4k7MGlLsYD5keiHPQUIdWp1xDXHTKpjiEJFciYqBjqh7yU5G/YKhfVbMBG5yA2ceRzXJlIJSyW2ZYG944CCpbbCw8=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1752245865; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=t0chg3P4XqvgAZUIms8Yq5sWYUihi9BDdnPNYfdKkT4=; 
+	b=OBlXM7syQnZanUMLqHGxwSEkqXDEB38Obj7ERRSuZ0idi08ZmGycssqqGQ/7wjXWmjUtH8QPNpUUQMSCstJbZD0KjeL4ztqc+9lgp060KH/hjS4SRFuBR95SULi/XmSqn64KyEyhoOpV8jrLk2hBvge7FRzkQSu4lh2hTAeeUYc=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1752245865;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:To:To:Cc:Cc:Reply-To;
+	bh=t0chg3P4XqvgAZUIms8Yq5sWYUihi9BDdnPNYfdKkT4=;
+	b=Ejmyyd4r2PfMQXooQj/iEZ7wQ49PnjK4PrYSt8mit6FbtiEgEIUj16e+FcwdRN5E
+	ukMbsM6eWIwnMgA7xGah1DRYgBMgoS4z/IYJu8tge1Sbqm1co/WvJG3ewqir8VfsutB
+	G29v0IV6azuNyNKIer6rI3MBCjioGglFyK1weBWs=
+Received: by mx.zohomail.com with SMTPS id 1752245863784678.2744682613209;
+	Fri, 11 Jul 2025 07:57:43 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Subject: [PATCH 0/5] MT8196 CPUFreq Support
+Date: Fri, 11 Jul 2025 16:57:32 +0200
+Message-Id: <20250711-mt8196-cpufreq-v1-0-e1b0a3b4ac61@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAFwmcWgC/zWMQQqDMBBFrxJm3YEkpal6leJC41hnkahJLIJ49
+ w6VLt/nv3dApsSUoVEHJPpw5jkKmJsCP3XxTciDMFhtH/ppDIZSmdqhX7Yx0YqVG2pnyN617kG
+ kJdHI+y/4ai+W2ybdco3Qd5nQzyFwaVSkveC/De15fgFkX5LDkQAAAA==
+X-Change-ID: 20250711-mt8196-cpufreq-86d961e2300b
+To: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ "Rafael J. Wysocki" <rafael@kernel.org>, 
+ Viresh Kumar <viresh.kumar@linaro.org>, 
+ Hector Yuan <hector.yuan@mediatek.com>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250711_070146_420075_0D41D51F 
-X-CRM114-Status: UNSURE (   8.05  )
+X-CRM114-CacheID: sfid-20250711_075753_171028_0A853BBA 
+X-CRM114-Status: UNSURE (   9.31  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,54 +88,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rosen,
+This series adds the necessary bindings and driver changes to integrate
+MT8196 CPUFreq into the existing mediatek-cpufreq-hw driver. This
+necessitated two preparatory cleanup patches to the driver.
 
-looks like here are memory leaks in the patch, PSB.
+The CPU frequency was verified to actually be changing by comparing
+sysbench cpu numbers between fdvfs being enabled and it not being
+enabled.
 
-> +	eeprom = devm_kzalloc(&pdev->dev, ops->eeprom_size, GFP_KERNEL);
-> +	if (!eeprom)
-> +		return -ENOMEM;
-> +
-> +	rf = devm_kzalloc(&pdev->dev, ops->rf_size, GFP_KERNEL);
-> +	if (!rf)
-Here driver must freed eeprom memory resource.
-> +		return -ENOMEM;
-> +
-> +	hw = ieee80211_alloc_hw(sizeof(struct rt2x00_dev), ops->hw);
-> +	if (!hw)
-Here driver must freed rf and eeprom resources.
-> +		return dev_err_probe(&pdev->dev, -ENOMEM, "Failed to allocate hardware");
-> +
-> +	platform_set_drvdata(pdev, hw);
-> +
-> +	rt2x00dev = hw->priv;
-> +	rt2x00dev->dev = &pdev->dev;
-> +	rt2x00dev->ops = ops;
-> +	rt2x00dev->hw = hw;
-> +	rt2x00dev->irq = irq;
-> +	rt2x00dev->clk = clk;
-> +	rt2x00dev->eeprom = eeprom;
-> +	rt2x00dev->rf = rf;
-> +	rt2x00dev->name = pdev->dev.driver->name;
-> +	rt2x00dev->csr.base = mem;
-> +
-> +	rt2x00_set_chip_intf(rt2x00dev, RT2X00_CHIP_INTF_SOC);
-> +
-> +	retval = rt2x00lib_probe_dev(rt2x00dev);
-> +	if (retval)
-> +		goto exit_free_device;
-> +
-> +	return 0;
-> +
-> +exit_free_device:
-> +	ieee80211_free_hw(hw);
-> +
-Here driver must freed rf and eeprom resources.
-> +	return retval;
-> +}
+Enablement in the DT will be done once the MT8196 DT lands, so don't be
+surprised that no node uses these new compatibles so far.
 
-Also need to check the rest of allocated resources: mem, irq, clk.
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+---
+Nicolas Frattaroli (5):
+      dt-bindings: mfd: syscon: Add mt8196 fdvfs syscons
+      dt-bindings: cpufreq: mediatek-hw: add mt8196 cpufreq binding
+      cpufreq: mediatek-hw: Refactor match data into struct
+      cpufreq: mediatek-hw: Separate per-domain and per-instance data
+      cpufreq: mediatek-hw: Add support for MT8196
 
-BR,
-Alexander
+ .../bindings/cpufreq/cpufreq-mediatek-hw.yaml      |  64 +++++++++-
+ Documentation/devicetree/bindings/mfd/syscon.yaml  |   4 +
+ drivers/cpufreq/mediatek-cpufreq-hw.c              | 140 +++++++++++++++++----
+ 3 files changed, 184 insertions(+), 24 deletions(-)
+---
+base-commit: 42f78243e0c6fe42f2710f98513a55c102347ff0
+change-id: 20250711-mt8196-cpufreq-86d961e2300b
+
+Best regards,
+-- 
+Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+
 
