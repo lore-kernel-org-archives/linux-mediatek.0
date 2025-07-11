@@ -4,91 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 613FDC83F1B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Jul 2025 18:52:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6A78C83F1B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Jul 2025 20:48:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GCf8INkYZkwdneE2A9LSxUiQ+fJAXd8182xLW+8Tlv4=; b=ocIJgSktRXXfIgX1LeJ6ec0AIC
-	5+v9Lqr9vnU6cngAsatFIVZI035+Mr/SEqjietn5kx8ueZbGXEAusztcurmRKu5H/1f9+nx5Bj52x
-	TMVAdkcAUPOriVgHRkuLDwKCdXJ5u8N5v1uZONWODlGGAxK94/Sns2fk2HA/AsXWUmi+DGybDyaKb
-	Mhnk9WRriJfgR9IvlTyf03YkysSg+v8mpEpYF63nt1AgEAmzeop6bepfvWjvFJMuCZe89O+uAKmHT
-	+vUZ4jS4nv8CibxS72AtF1De2pHe2xLQkEIfh3kOfciFeTwle0/ttnl55iliIhNF5pgSh7MR0wS6l
-	0kvLjW9w==;
+	bh=68zxtYLTKBpsqGG1ojSx4GWgoXoxkdYc8QUb/iTWC04=; b=G5zPyEXD0OEH+2rL/p2jF5mNss
+	ZOER7JyCVDqqvFAmmL9gXR9Ee6YohbOxJAtJkybebMXcpx72vbn6i+etyF0IcN65JHgyYomHT3rxF
+	zzWMOgN0yv6it9Nb9GNFxMYjrg5HBV6Qh4axJHhKmFVEq/rkOFge+2dExTMYCzBXASyndgTobn8ks
+	uegzdNDWY8S8tnvV5YgWgaQnbtArkwQXEQAlCBQwv7E/Rj4itbu8QA/uxKk8D25u0vde+1R0Ft3Wd
+	gvUS+99tTSSiT0sYObudd6L8HtpE0vVi+7TzpUu4V/wo+LsseFSB0TUQ+GykEJydrl/O3iWFw+B8m
+	E4qQ/5Lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uaIr2-0000000FaDC-3Ad7;
-	Fri, 11 Jul 2025 18:52:16 +0000
-Received: from mail-yb1-xb2e.google.com ([2607:f8b0:4864:20::b2e])
+	id 1uaKfv-0000000FqJv-1S4h;
+	Fri, 11 Jul 2025 20:48:55 +0000
+Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uaIcZ-0000000FX5e-37qQ
-	for linux-mediatek@lists.infradead.org;
-	Fri, 11 Jul 2025 18:37:20 +0000
-Received: by mail-yb1-xb2e.google.com with SMTP id 3f1490d57ef6-e81f311a86fso2193345276.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 11 Jul 2025 11:37:19 -0700 (PDT)
+	id 1uaKRA-0000000FnUR-2ng3;
+	Fri, 11 Jul 2025 20:33:41 +0000
+Received: by mail-yw1-x1136.google.com with SMTP id 00721157ae682-710f39f5cb9so23799427b3.3;
+        Fri, 11 Jul 2025 13:33:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1752259038; x=1752863838; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1752266019; x=1752870819; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=GCf8INkYZkwdneE2A9LSxUiQ+fJAXd8182xLW+8Tlv4=;
-        b=JNbQh17DNRoaJg0xNsHHaHyRRnf4h4MS8rGUyTtgi6DYHW1nrCDhhfvRX/mmaYuJmO
-         ekYdL3FGuazop09tq5gV2ICiVSEBDBPSAiFFx5iBe/pe7g7BTery9qP7ihGYKGjiotaj
-         2PWckSNs0GIg86o6pyAe27f3MkFdi9An101x0nL4YDDdtLrQ+lWO0SCeHFcCPDYKbD6V
-         SDheRHQWUXOeJsf9Tu+8UkP3/HkQ2Go/V8HAsmQNbmwMGa7KmK25Ng4ugZtTLUB6VNhc
-         oS5x1wsjzq3BEb/200Ygk3eTX/Ih+MPEAMhv7vapsUQJ2p0Uxh+G6+c9Qf3POdNhgxDw
-         r3bQ==
+        bh=68zxtYLTKBpsqGG1ojSx4GWgoXoxkdYc8QUb/iTWC04=;
+        b=JgDDLVZDUOnkFoaRuYo764Z2qfYGVvZmDFxsN2tYHf+yp9gJFBJl66pvBhTqqPnlML
+         ceaDYXGudvJ2SrLOD2hEq2oE8eZ5GxkWBoWQiEb9udVpmbr7HvB4ufrpJ0QoujpHj+wG
+         sgT3rNqhs2IjbiTFYZHcvu7L9CNPTGp4NYngQDxVtT+FSoiFFPZLLqn9DWp/eyAODEW4
+         Ti91ZM/5qLYdqb1xE81KNkGQFlAmjJdtgyvq6xaH7DhnM32UZMs7GZM9aeWEGbDtdk4+
+         xTOyHUMRnaG0JPMoGfYVeirqNIYUOS9rP54/oF7/jaBHmr4En6G8uiCBazZigAXVLZfe
+         Tt+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1752259038; x=1752863838;
+        d=1e100.net; s=20230601; t=1752266019; x=1752870819;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=GCf8INkYZkwdneE2A9LSxUiQ+fJAXd8182xLW+8Tlv4=;
-        b=KM9UzD/8Jq8APMwDjkczFgn4alMlBWJuD0TiPrHjSQ1rMlzC46vYiZz78kw0rX2/Ae
-         +IL6AWYirsQPoFjSH2J1dSju33XbUZ/OJr5HsGcn0Ud0O1ubQuMyGXROs6/FwjZC1wj4
-         gVncZBiy6St1y8cp1+uVmoWifCqom8k9heL9mvc9Xv/m1apKK03m4r1VWcBgx9AVQ4yQ
-         EOou7UgvHhZw+XkdqKyx8uXHa/KiT0LLyUFubVCnWs7VW/DwruBv4c8Loo7iwgHWPTtA
-         Sy38NaXGyhQGzfryJ3XfewnD35oPQHQ52S27YaN9lyoPTYi8PRmPMDLROHb8ThCP5nx8
-         8X7A==
-X-Forwarded-Encrypted: i=1; AJvYcCW2yjG1wl97rY9amDqEqMG+YnJve29Lea7CVSOW/XEnjSNdRHV15UWMYYxgaG7vldRrFzMLNnEoGtTt58eD7g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzWmimbai6rCO8MymegPE6zNuRMVXHIqpRvc5XAihp6i0Ry/MCw
-	BGvaxpe1MsP3Kn52E0SWh6/XxdkMJWE95bXIkutNWdPeMBccy2Xo6qtIlN4gtAZN/XW8O6hO66b
-	PxiGmBgdpyx/ONnHVmfd/HrbwIVywpsJUE4BG/cNecA==
-X-Gm-Gg: ASbGncvPQGBrFxnDHY+6lUMoXqo79sqaCOfwd7Jq1tIAGvSxnbACvkS0MSBNWGla4kW
-	AYMHG1Kvr/mPmPVYfp7Co63sY8UUzSMGP+7Ci2HOhxBRqUZk+/sX+ojZDRd8QUFGLe4aU4IsSNr
-	FJ3+6buk+Ct1JHcZ62pM7KGN07kXXxK+mXqJ2WMMBlKBmoN5kC64vxS3udmQpsLnBEDotatx9J4
-	ECNBDU=
-X-Google-Smtp-Source: AGHT+IHzkdQtsARg4tgkPF4WasK2Xo6Mfikt+zRNsUMsy8+DUZg6XHckhgK5mt593KfRZFbjIPg2gYdMMhURtB+dxr4=
-X-Received: by 2002:a05:690c:f05:b0:710:e7ad:9d41 with SMTP id
- 00721157ae682-717d5d7aa0fmr72034937b3.12.1752259038573; Fri, 11 Jul 2025
- 11:37:18 -0700 (PDT)
+        bh=68zxtYLTKBpsqGG1ojSx4GWgoXoxkdYc8QUb/iTWC04=;
+        b=OSO5zZFryaChCw7afrjgTnZX7DCmcfaraNvqoOAZq5P9qz/4885YrZB3Sgcgo6uzFv
+         vYydDnHcUxYPTlXcIIQ+GN0+JKIRE6d64e6NAp9r9Vd+Em/VEG+K2kqM1I2G3wsSZNrZ
+         /aBICUPlL071MjhQqqkiuANoIFWaPD1whCQpzzqRfvdqzexsqKj9QQ3BxpQhI2AB30a4
+         l8OIow5SLAwtSoON98TOwnjCaMTajPCaRbb00NxTwMbzihrR32nyK+JausM5arF1GGz9
+         icW0nD1RG3yX+4DC/1vjPH0QgSe5djqEMoKRW1WkiG5orvm+nB2LRDtoWtxPDf45/arQ
+         AM4Q==
+X-Forwarded-Encrypted: i=1; AJvYcCW8qQyVMJV2q/mFAkmqiR9z3Xqj89f1wg2cMzTXwQHWtQC87eD+QzCR3xFjwzbcJK7LZsN1t3ETT/y7ZaH1wzU=@lists.infradead.org, AJvYcCWyYDeuxG5BCQr8T87S77Nu9oeKeKvzC5AV2OMkqGFw23myItacHffJCKkAN215R8hQ9ouSTrXeHAJIGoJniXNQ@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw1pOb4MwEtsr/E/bGzj51k2nYFW4O38es3NSJksC2SRMVpu48h
+	YDjV2NZuPLjJxeFB16s0S4f03LTbJaZ8249G16UBGPucp4T1Vh3FxbEbzyskWr0fbIczm9DxxVw
+	puyCJgiPrK8LycKOSIkYy+PM1ZuC8D8c=
+X-Gm-Gg: ASbGncuoIKjQNXkqTiebCPCfCXtwtn3s7BkkfjNs2Cooo4fzkQX1dRl+lhjqlIb+la2
+	EAgFsNiMfwlJwPKoNkNX3S2RCXqFBDFyxdE9Z1pswDiOO5cjm+EisiG1N3zVxha7420TdPlwDL9
+	DXQaIZJymOfBuyCcL0zmRRe6NDkW1g0HUEPAriBoPasosirg3lZD0BXKtntucPMYKOM3JJ4Vqp/
+	DJzk4kKHIGTARW/bZqZ
+X-Google-Smtp-Source: AGHT+IFg+WUq3I+LgojCtWQCG1ohGsNvGS0P6Am8moryAkN0ougdp4dlLradnGh+qIDN3ZBugeMbcm99Mg21Si+jSDc=
+X-Received: by 2002:a05:690c:d18:b0:710:e7ad:9d52 with SMTP id
+ 00721157ae682-717dad97268mr58784337b3.14.1752266019055; Fri, 11 Jul 2025
+ 13:33:39 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250709-pinctrl-gpio-pinfuncs-v2-0-b6135149c0d9@linaro.org> <20250709-pinctrl-gpio-pinfuncs-v2-8-b6135149c0d9@linaro.org>
-In-Reply-To: <20250709-pinctrl-gpio-pinfuncs-v2-8-b6135149c0d9@linaro.org>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Fri, 11 Jul 2025 20:37:05 +0200
-X-Gm-Features: Ac12FXzfU1xcaSYLqYAP3dXdgN5KjaQup50oBj2gBIW6fBcQFAAh4KjvNIaCjNI
-Message-ID: <CACRpkdYfRv-B=p61tVThFkjoqDGfcqOjmHxmj4wv-NYyky2-kg@mail.gmail.com>
-Subject: Re: [PATCH v2 08/12] pinctrl: qcom: use generic pin function helpers
-To: Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, 
-	Alexey Klimov <alexey.klimov@linaro.org>, Lorenzo Bianconi <lorenzo@kernel.org>, 
-	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Paul Cercueil <paul@crapouillou.net>, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mips@vger.kernel.org, 
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+References: <20250710200820.262295-6-rosenp@gmail.com> <20250711140130.378067-1-oleksandr.savchenko.dn@bp.renesas.com>
+In-Reply-To: <20250711140130.378067-1-oleksandr.savchenko.dn@bp.renesas.com>
+From: Rosen Penev <rosenp@gmail.com>
+Date: Fri, 11 Jul 2025 13:33:27 -0700
+X-Gm-Features: Ac12FXwXTVmcvlOTDwwKq18nH8e2J52S9X6I5huP6K-iIbpG3IV0HKFlWIK1Dro
+Message-ID: <CAKxU2N9bjn5ybyTpk9Cc4B_GcLYdbEwPtzoxQkuEKH=MeTi-dQ@mail.gmail.com>
+Subject: Re: [PATCHv3 wireless-next 5/7] wifi: rt2x00: soc: modernize probe
+To: Alexander Savchenko <oleksandr.savchenko.dn@bp.renesas.com>
+Cc: angelogioacchino.delregno@collabora.com, conor+dt@kernel.org, 
+	devicetree@vger.kernel.org, johannes@sipsolutions.net, krzk+dt@kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org, 
+	linux-wireless@vger.kernel.org, matthias.bgg@gmail.com, robh@kernel.org, 
+	stf_xl@wp.pl, tsbogend@alpha.franken.de
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250711_113719_799434_BFA2AB8E 
-X-CRM114-Status: UNSURE (   9.86  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20250711_133340_704848_F0ABD38B 
+X-CRM114-Status: GOOD (  11.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,25 +98,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 9, 2025 at 4:39=E2=80=AFPM Bartosz Golaszewski <brgl@bgdev.pl> =
-wrote:
-
-> From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+On Fri, Jul 11, 2025 at 7:01=E2=80=AFAM Alexander Savchenko
+<oleksandr.savchenko.dn@bp.renesas.com> wrote:
 >
-> Use the existing infrastructure for storing and looking up pin functions
-> in pinctrl core. Remove hand-crafted callbacks.
+> Hi Rosen,
 >
-> Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-
-Needless to say I'm a big fan of this patch set and it seems only
-this patch 8/12 has outstanding comments.
-
-Do you think you can do a quick iteration of it or does it require
-a lot of time?
-
-I am tempted to simply apply patches 1-7 to make your life
-easier past v6.17, should I do this?
-
-Yours,
-Linus Walleij
+> looks like here are memory leaks in the patch, PSB.
+>
+> > +     eeprom =3D devm_kzalloc(&pdev->dev, ops->eeprom_size, GFP_KERNEL)=
+;
+> > +     if (!eeprom)
+> > +             return -ENOMEM;
+> > +
+> > +     rf =3D devm_kzalloc(&pdev->dev, ops->rf_size, GFP_KERNEL);
+> > +     if (!rf)
+> Here driver must freed eeprom memory resource.
+> > +             return -ENOMEM;
+> > +
+> > +     hw =3D ieee80211_alloc_hw(sizeof(struct rt2x00_dev), ops->hw);
+> > +     if (!hw)
+> Here driver must freed rf and eeprom resources.
+> > +             return dev_err_probe(&pdev->dev, -ENOMEM, "Failed to allo=
+cate hardware");
+> > +
+> > +     platform_set_drvdata(pdev, hw);
+> > +
+> > +     rt2x00dev =3D hw->priv;
+> > +     rt2x00dev->dev =3D &pdev->dev;
+> > +     rt2x00dev->ops =3D ops;
+> > +     rt2x00dev->hw =3D hw;
+> > +     rt2x00dev->irq =3D irq;
+> > +     rt2x00dev->clk =3D clk;
+> > +     rt2x00dev->eeprom =3D eeprom;
+> > +     rt2x00dev->rf =3D rf;
+> > +     rt2x00dev->name =3D pdev->dev.driver->name;
+> > +     rt2x00dev->csr.base =3D mem;
+> > +
+> > +     rt2x00_set_chip_intf(rt2x00dev, RT2X00_CHIP_INTF_SOC);
+> > +
+> > +     retval =3D rt2x00lib_probe_dev(rt2x00dev);
+> > +     if (retval)
+> > +             goto exit_free_device;
+> > +
+> > +     return 0;
+> > +
+> > +exit_free_device:
+> > +     ieee80211_free_hw(hw);
+> > +
+> Here driver must freed rf and eeprom resources.
+> > +     return retval;
+> > +}
+>
+> Also need to check the rest of allocated resources: mem, irq, clk.
+The point of devm is to not have to...
+>
+> BR,
+> Alexander
 
