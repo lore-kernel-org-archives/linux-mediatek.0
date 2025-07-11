@@ -4,68 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30843C83F1A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Jul 2025 13:58:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F284C83F1A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Jul 2025 14:03:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ccWq+a961j2WZW8WYakSIm0ZFUqS2/5kE90b3G9s1Zw=; b=A/OdN8N79c7+LOhZ9b0ZDF35ao
-	1p9sn7qoMlFOpWXtNacaQFQg9/6CiwdPLbPedXqNyS4/HfdmCC8Y3jgs4IRo7PitPweHkMAHAN4oO
-	RzhiubQw2zo4c3gINPIO8MWe5IPN0Yc9P1OfAkLO6+410XQxl282lY5Qn4B9f0fTo1mGqYkjUuM3L
-	qlmslzYXkZ5Z0naD0BqjzkmK97AmZiThEQIE9ayDElWUqoxLsoGZ8C/HTqRK4yXKQrG4i6GFb9OYF
-	k9ALM+JRgGiYEB8RmwSNRkISeiNZzzb8g+YCGj+SwE1mYSMU5UyJ57AAu532kyGK7B0aAc+loDxem
-	aYcfSiAw==;
+	bh=6MCZrcij4xagay+EUDhjWN8tHzuSkFv0VFCtASHolgs=; b=icgmcS8BVEIv97941AqLGd2fmg
+	w+GvO15zjlSixUSOAM+dhqyEEmRPJ0CqyNUp8WG+AVNE8eUklt5sfgKMQaKzuX6+AAPa8r8odf3CV
+	fwUwUZz90J001zz+IU03td9dvgnak55SVT+mEj1pjt7h8uVK0Cqywtccs+T/lAR/b0+eFsCsJ1W93
+	bYzNPn7vyXWEoDIJriehoDwAHz99pJOeswyZ1vy+YjVM4Em3aTxJRCIkZz++JAqJlOO4pOuVxW9o0
+	LDx8E+cgBP7PAvIL1GkemwjPz3aVMkeOYyWWR2nL2mwLfjt51yY09t7hjLbmaHY0EBUYzrgGBGczg
+	1pNpxYdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uaEGL-0000000Ey65-2nYG;
-	Fri, 11 Jul 2025 13:58:05 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uaE8J-0000000Ewv9-0SZb;
-	Fri, 11 Jul 2025 13:49:48 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 1D9615C7124;
-	Fri, 11 Jul 2025 13:49:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B7D79C4CEED;
-	Fri, 11 Jul 2025 13:49:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752241785;
-	bh=UFDdrcPLJ6i3OpdTDDcWFXhe3Rcu0dfIq/WI277FTg8=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=pYGeJrjWQVIu+bKZ0c0vIUzaOvxTuILhU0KhapNdUtv1MTN6U13fHW/wuQiFhwD2I
-	 /Xjq7f6hES4/vGj4NHJmGsx01bLRWX5LsvDlhsWcDAzYavBEqcPhYfIka2rQWJdKTf
-	 Osf+b0isdeIEr2VuDC8alh9nTnawn0/72ZQfUmrD453me1m8QifPMGnmaG7PHet+PP
-	 0u6OjAUn2n9tv0ebc9B9YQQ8I0mA1pZvzyuxD8Cc3w9fUYjIcf3MUMJl8R2ruuboUz
-	 mP7AgJRu/80QHpzDTc7KQ0N76hGk/NsglE1jLpgtabdjAYREJcF/NSXzysJG1lKxWS
-	 N3k566Gvm9Ywg==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id DD392383B275;
-	Fri, 11 Jul 2025 13:50:08 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1uaELK-0000000EypX-0EiO;
+	Fri, 11 Jul 2025 14:03:14 +0000
+Received: from relmlor2.renesas.com ([210.160.252.172] helo=relmlie6.idc.renesas.com)
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uaEJu-0000000Eyft-19Yk;
+	Fri, 11 Jul 2025 14:01:48 +0000
+X-CSE-ConnectionGUID: u+J0B6+/T5uGFOGm+7BUCQ==
+X-CSE-MsgGUID: fr8Dn2H2TS+aGBD12MXJ3g==
+Received: from unknown (HELO relmlir6.idc.renesas.com) ([10.200.68.152])
+  by relmlie6.idc.renesas.com with ESMTP; 11 Jul 2025 23:01:40 +0900
+Received: from DESKTOP-I3G733R.localdomain (unknown [10.14.100.10])
+	by relmlir6.idc.renesas.com (Postfix) with ESMTP id A31B7424DFE3;
+	Fri, 11 Jul 2025 23:01:32 +0900 (JST)
+From: Alexander Savchenko <oleksandr.savchenko.dn@bp.renesas.com>
+To: rosenp@gmail.com
+Cc: angelogioacchino.delregno@collabora.com,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	johannes@sipsolutions.net,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-mips@vger.kernel.org,
+	linux-wireless@vger.kernel.org,
+	matthias.bgg@gmail.com,
+	robh@kernel.org,
+	stf_xl@wp.pl,
+	tsbogend@alpha.franken.de
+Subject: Re: [PATCHv3 wireless-next 5/7] wifi: rt2x00: soc: modernize probe
+Date: Fri, 11 Jul 2025 17:01:30 +0300
+Message-Id: <20250711140130.378067-1-oleksandr.savchenko.dn@bp.renesas.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20250710200820.262295-6-rosenp@gmail.com>
+References: <20250710200820.262295-6-rosenp@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH v2 0/7] Bluetooth: Fix typos
-From: patchwork-bot+bluetooth@kernel.org
-Message-Id: <175224180783.2277896.14693656286247860875.git-patchwork-notify@kernel.org>
-Date: Fri, 11 Jul 2025 13:50:07 +0000
-References: <20250703171815.1011001-1-hadess@hadess.net>
-In-Reply-To: <20250703171815.1011001-1-hadess@hadess.net>
-To: Bastien Nocera <hadess@hadess.net>
-Cc: trivial@kernel.org, marcel@holtmann.org, luiz.dentz@gmail.com,
- sean.wang@mediatek.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, sven@kernel.org, j@jannau.net,
- alyssa@rosenzweig.io, neal@gompa.dev, johan.hedberg@gmail.com,
- mingo@kernel.org, tglx@linutronix.de, viro@zeniv.linux.org.uk,
- kees@kernel.org, erick.archer@outlook.com, chris.lu@mediatek.com,
- linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- asahi@lists.linux.dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250711_064947_194082_1C00C794 
-X-CRM114-Status: UNSURE (   7.50  )
+X-CRM114-CacheID: sfid-20250711_070146_420075_0D41D51F 
+X-CRM114-Status: UNSURE (   8.05  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,42 +75,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Hi Rosen,
 
-This series was applied to bluetooth/bluetooth-next.git (master)
-by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
+looks like here are memory leaks in the patch, PSB.
 
-On Thu,  3 Jul 2025 19:16:54 +0200 you wrote:
-> Found using codespell.
-> 
-> Probably best taken in through the Bluetooth tree.
-> 
-> Changes since v1:
-> - Added whether typos were in comments or log strings
-> - Fix typo in typo fix ("btrtl: Fix typo")
-> 
-> [...]
+> +	eeprom = devm_kzalloc(&pdev->dev, ops->eeprom_size, GFP_KERNEL);
+> +	if (!eeprom)
+> +		return -ENOMEM;
+> +
+> +	rf = devm_kzalloc(&pdev->dev, ops->rf_size, GFP_KERNEL);
+> +	if (!rf)
+Here driver must freed eeprom memory resource.
+> +		return -ENOMEM;
+> +
+> +	hw = ieee80211_alloc_hw(sizeof(struct rt2x00_dev), ops->hw);
+> +	if (!hw)
+Here driver must freed rf and eeprom resources.
+> +		return dev_err_probe(&pdev->dev, -ENOMEM, "Failed to allocate hardware");
+> +
+> +	platform_set_drvdata(pdev, hw);
+> +
+> +	rt2x00dev = hw->priv;
+> +	rt2x00dev->dev = &pdev->dev;
+> +	rt2x00dev->ops = ops;
+> +	rt2x00dev->hw = hw;
+> +	rt2x00dev->irq = irq;
+> +	rt2x00dev->clk = clk;
+> +	rt2x00dev->eeprom = eeprom;
+> +	rt2x00dev->rf = rf;
+> +	rt2x00dev->name = pdev->dev.driver->name;
+> +	rt2x00dev->csr.base = mem;
+> +
+> +	rt2x00_set_chip_intf(rt2x00dev, RT2X00_CHIP_INTF_SOC);
+> +
+> +	retval = rt2x00lib_probe_dev(rt2x00dev);
+> +	if (retval)
+> +		goto exit_free_device;
+> +
+> +	return 0;
+> +
+> +exit_free_device:
+> +	ieee80211_free_hw(hw);
+> +
+Here driver must freed rf and eeprom resources.
+> +	return retval;
+> +}
 
-Here is the summary with links:
-  - [v2,1/7] Bluetooth: btintel: Fix typo in comment
-    https://git.kernel.org/bluetooth/bluetooth-next/c/728beb9bb8b3
-  - [v2,2/7] Bluetooth: btmtk: Fix typo in log string
-    https://git.kernel.org/bluetooth/bluetooth-next/c/03b2d5bf4881
-  - [v2,3/7] Bluetooth: btrtl: Fix typo in comment
-    https://git.kernel.org/bluetooth/bluetooth-next/c/5d12ca753070
-  - [v2,4/7] Bluetooth: hci_bcm4377: Fix typo in comment
-    https://git.kernel.org/bluetooth/bluetooth-next/c/aa0d0b408a5a
-  - [v2,5/7] Bluetooth: aosp: Fix typo in comment
-    https://git.kernel.org/bluetooth/bluetooth-next/c/033ea129991b
-  - [v2,6/7] Bluetooth: RFCOMM: Fix typos in comments
-    https://git.kernel.org/bluetooth/bluetooth-next/c/b14c362ad112
-  - [v2,7/7] Bluetooth: Fix typos in comments
-    https://git.kernel.org/bluetooth/bluetooth-next/c/c819e415efb3
+Also need to check the rest of allocated resources: mem, irq, clk.
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+BR,
+Alexander
 
