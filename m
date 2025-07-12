@@ -4,86 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6A78C83F1B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Jul 2025 20:48:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 920F4C83F21
+	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Jul 2025 08:59:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=68zxtYLTKBpsqGG1ojSx4GWgoXoxkdYc8QUb/iTWC04=; b=G5zPyEXD0OEH+2rL/p2jF5mNss
-	ZOER7JyCVDqqvFAmmL9gXR9Ee6YohbOxJAtJkybebMXcpx72vbn6i+etyF0IcN65JHgyYomHT3rxF
-	zzWMOgN0yv6it9Nb9GNFxMYjrg5HBV6Qh4axJHhKmFVEq/rkOFge+2dExTMYCzBXASyndgTobn8ks
-	uegzdNDWY8S8tnvV5YgWgaQnbtArkwQXEQAlCBQwv7E/Rj4itbu8QA/uxKk8D25u0vde+1R0Ft3Wd
-	gvUS+99tTSSiT0sYObudd6L8HtpE0vVi+7TzpUu4V/wo+LsseFSB0TUQ+GykEJydrl/O3iWFw+B8m
-	E4qQ/5Lg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Bs7C3OuDjp8spBtZUebXmMmqp+JNJ8zM38bJKoNTVC8=; b=e+8v3fHbf9ZaPu5F2d33FVndzF
+	sciN6M+sYt/EcrSBtre9JU7JSQ1ZAc9947UIdVYm1c1+Qljpqfpob7Uony0LyKjl9F/M2fR1oN9mO
+	07lqEL7cZTJQMzQVck7GVglFTbgnvvH3WOzvG1jeGXtKBlsaFNpmFIZI/uBxFsqfRMcbQFpO7FGuu
+	YJNuXgucibC/hADH8a2+TNeFYES6NdDIsQYom/P53veLoHiCI2/lskoFgZqpgecDErJEyDXQKFPKb
+	3CSV9PBnszLOh8K4QYAWrdcoR5S4kzHZqCmpdDpVRuhAiGnF9LzNwpvFZFkV3C2emjvc+lRWxgGcN
+	JHTalhCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uaKfv-0000000FqJv-1S4h;
-	Fri, 11 Jul 2025 20:48:55 +0000
-Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
+	id 1uaW5G-0000000GS4Q-0zf2;
+	Sat, 12 Jul 2025 08:59:50 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uaKRA-0000000FnUR-2ng3;
-	Fri, 11 Jul 2025 20:33:41 +0000
-Received: by mail-yw1-x1136.google.com with SMTP id 00721157ae682-710f39f5cb9so23799427b3.3;
-        Fri, 11 Jul 2025 13:33:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1752266019; x=1752870819; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=68zxtYLTKBpsqGG1ojSx4GWgoXoxkdYc8QUb/iTWC04=;
-        b=JgDDLVZDUOnkFoaRuYo764Z2qfYGVvZmDFxsN2tYHf+yp9gJFBJl66pvBhTqqPnlML
-         ceaDYXGudvJ2SrLOD2hEq2oE8eZ5GxkWBoWQiEb9udVpmbr7HvB4ufrpJ0QoujpHj+wG
-         sgT3rNqhs2IjbiTFYZHcvu7L9CNPTGp4NYngQDxVtT+FSoiFFPZLLqn9DWp/eyAODEW4
-         Ti91ZM/5qLYdqb1xE81KNkGQFlAmjJdtgyvq6xaH7DhnM32UZMs7GZM9aeWEGbDtdk4+
-         xTOyHUMRnaG0JPMoGfYVeirqNIYUOS9rP54/oF7/jaBHmr4En6G8uiCBazZigAXVLZfe
-         Tt+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1752266019; x=1752870819;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=68zxtYLTKBpsqGG1ojSx4GWgoXoxkdYc8QUb/iTWC04=;
-        b=OSO5zZFryaChCw7afrjgTnZX7DCmcfaraNvqoOAZq5P9qz/4885YrZB3Sgcgo6uzFv
-         vYydDnHcUxYPTlXcIIQ+GN0+JKIRE6d64e6NAp9r9Vd+Em/VEG+K2kqM1I2G3wsSZNrZ
-         /aBICUPlL071MjhQqqkiuANoIFWaPD1whCQpzzqRfvdqzexsqKj9QQ3BxpQhI2AB30a4
-         l8OIow5SLAwtSoON98TOwnjCaMTajPCaRbb00NxTwMbzihrR32nyK+JausM5arF1GGz9
-         icW0nD1RG3yX+4DC/1vjPH0QgSe5djqEMoKRW1WkiG5orvm+nB2LRDtoWtxPDf45/arQ
-         AM4Q==
-X-Forwarded-Encrypted: i=1; AJvYcCW8qQyVMJV2q/mFAkmqiR9z3Xqj89f1wg2cMzTXwQHWtQC87eD+QzCR3xFjwzbcJK7LZsN1t3ETT/y7ZaH1wzU=@lists.infradead.org, AJvYcCWyYDeuxG5BCQr8T87S77Nu9oeKeKvzC5AV2OMkqGFw23myItacHffJCKkAN215R8hQ9ouSTrXeHAJIGoJniXNQ@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw1pOb4MwEtsr/E/bGzj51k2nYFW4O38es3NSJksC2SRMVpu48h
-	YDjV2NZuPLjJxeFB16s0S4f03LTbJaZ8249G16UBGPucp4T1Vh3FxbEbzyskWr0fbIczm9DxxVw
-	puyCJgiPrK8LycKOSIkYy+PM1ZuC8D8c=
-X-Gm-Gg: ASbGncuoIKjQNXkqTiebCPCfCXtwtn3s7BkkfjNs2Cooo4fzkQX1dRl+lhjqlIb+la2
-	EAgFsNiMfwlJwPKoNkNX3S2RCXqFBDFyxdE9Z1pswDiOO5cjm+EisiG1N3zVxha7420TdPlwDL9
-	DXQaIZJymOfBuyCcL0zmRRe6NDkW1g0HUEPAriBoPasosirg3lZD0BXKtntucPMYKOM3JJ4Vqp/
-	DJzk4kKHIGTARW/bZqZ
-X-Google-Smtp-Source: AGHT+IFg+WUq3I+LgojCtWQCG1ohGsNvGS0P6Am8moryAkN0ougdp4dlLradnGh+qIDN3ZBugeMbcm99Mg21Si+jSDc=
-X-Received: by 2002:a05:690c:d18:b0:710:e7ad:9d52 with SMTP id
- 00721157ae682-717dad97268mr58784337b3.14.1752266019055; Fri, 11 Jul 2025
- 13:33:39 -0700 (PDT)
+	id 1uaW5F-0000000GS3d-1kaK
+	for linux-mediatek@bombadil.infradead.org;
+	Sat, 12 Jul 2025 08:59:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=Bs7C3OuDjp8spBtZUebXmMmqp+JNJ8zM38bJKoNTVC8=; b=BuO1koQrZcWKm78W0+ghp4VORs
+	wh0EZrPnO9h61744sTLh13jUU8uouXQE9+j+E8YS0MVZy0vg9jnYreGFrxFo8U4TNxiwndcWH9JkE
+	f4FSHCIjvzFTt5pC+rXFzvhSHCfNxxUvp5FDLoxkKmKLZlk5GCC5WWp7saTkvTkWkWFJ/JvUAOikz
+	6cdBH3SLTQrP4I5/WM+Z5c5tFFETZUKuYnz0Df8CLQrJtNG2aiTDm4iT3oEAbJdAEIzk4jkHRcwg8
+	nsdQetk+bWYcB9U7zskDFhIbuIW8ZQh+Wxy2W2se25x+SsfHperaOBur7NkFGpBKG5U3TTmlXSXeF
+	zD2zHzFw==;
+Received: from mx4.wp.pl ([212.77.101.11])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1uaW5B-00000009R7Z-1M8J
+	for linux-mediatek@lists.infradead.org;
+	Sat, 12 Jul 2025 08:59:47 +0000
+Received: (wp-smtpd smtp.wp.pl 2408 invoked from network); 12 Jul 2025 10:59:41 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wp.pl; s=20241105;
+          t=1752310781; bh=Bs7C3OuDjp8spBtZUebXmMmqp+JNJ8zM38bJKoNTVC8=;
+          h=From:To:Cc:Subject;
+          b=d0rXqUdYYP7ojvHs/CPxFw/4wkiV3jgKjUvitOGmuGyTOVXo3TgNlAvsjIKDj4vJ/
+           wLz5GCCHYkDeoi1cDltI232JmOSal/H1F1pkTpv3zc7NJykmyUzNupX24ZVLwVLAyJ
+           rDj9EfYv6iExMx3c9U6tBUuXXFZEYLfZbk4L7TrAsE6JtTA2oqQdJUB6g5OjMEDep0
+           0+zl5eWAA2YJhSJJbRbtUUSdM+Yu0qZl2DBeAgVbr1HU5Mf/NS7xDvn/cBDg1tqqUR
+           EHZGUJYEcMR7zCAxQkGPjUsS6qFvoz9pDJS6sII2cZnwZ60ZttrG/q1dtu7xqTogBF
+           XNwtDKxW+fbfg==
+Received: from 89-64-3-180.dynamic.play.pl (HELO localhost) (stf_xl@wp.pl@[89.64.3.180])
+          (envelope-sender <stf_xl@wp.pl>)
+          by smtp.wp.pl (WP-SMTPD) with ECDHE-RSA-AES256-GCM-SHA384 encrypted SMTP
+          for <rosenp@gmail.com>; 12 Jul 2025 10:59:41 +0200
+Date: Sat, 12 Jul 2025 10:59:40 +0200
+From: Stanislaw Gruszka <stf_xl@wp.pl>
+To: Rosen Penev <rosenp@gmail.com>
+Cc: linux-wireless@vger.kernel.org,
+	Johannes Berg <johannes@sipsolutions.net>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>,
+	open list <linux-kernel@vger.kernel.org>,
+	"open list:MIPS" <linux-mips@vger.kernel.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCHv3 wireless-next 2/7] wifi: rt2x00: remove mod_name from
+ platform_driver
+Message-ID: <20250712085940.GB9845@wp.pl>
+References: <20250710200820.262295-1-rosenp@gmail.com>
+ <20250710200820.262295-3-rosenp@gmail.com>
 MIME-Version: 1.0
-References: <20250710200820.262295-6-rosenp@gmail.com> <20250711140130.378067-1-oleksandr.savchenko.dn@bp.renesas.com>
-In-Reply-To: <20250711140130.378067-1-oleksandr.savchenko.dn@bp.renesas.com>
-From: Rosen Penev <rosenp@gmail.com>
-Date: Fri, 11 Jul 2025 13:33:27 -0700
-X-Gm-Features: Ac12FXwXTVmcvlOTDwwKq18nH8e2J52S9X6I5huP6K-iIbpG3IV0HKFlWIK1Dro
-Message-ID: <CAKxU2N9bjn5ybyTpk9Cc4B_GcLYdbEwPtzoxQkuEKH=MeTi-dQ@mail.gmail.com>
-Subject: Re: [PATCHv3 wireless-next 5/7] wifi: rt2x00: soc: modernize probe
-To: Alexander Savchenko <oleksandr.savchenko.dn@bp.renesas.com>
-Cc: angelogioacchino.delregno@collabora.com, conor+dt@kernel.org, 
-	devicetree@vger.kernel.org, johannes@sipsolutions.net, krzk+dt@kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org, 
-	linux-wireless@vger.kernel.org, matthias.bgg@gmail.com, robh@kernel.org, 
-	stf_xl@wp.pl, tsbogend@alpha.franken.de
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250710200820.262295-3-rosenp@gmail.com>
+X-WP-MailID: 78faf179404bc1cccf11415900ca8dfc
+X-WP-AV: skaner antywirusowy Poczty Wirtualnej Polski
+X-WP-SPAM: NO 0000001 [4eIB]                               
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250711_133340_704848_F0ABD38B 
-X-CRM114-Status: GOOD (  11.78  )
+X-CRM114-CacheID: sfid-20250712_095945_764659_93DC7B8D 
+X-CRM114-Status: GOOD (  17.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,60 +101,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 11, 2025 at 7:01=E2=80=AFAM Alexander Savchenko
-<oleksandr.savchenko.dn@bp.renesas.com> wrote:
->
-> Hi Rosen,
->
-> looks like here are memory leaks in the patch, PSB.
->
-> > +     eeprom =3D devm_kzalloc(&pdev->dev, ops->eeprom_size, GFP_KERNEL)=
-;
-> > +     if (!eeprom)
-> > +             return -ENOMEM;
-> > +
-> > +     rf =3D devm_kzalloc(&pdev->dev, ops->rf_size, GFP_KERNEL);
-> > +     if (!rf)
-> Here driver must freed eeprom memory resource.
-> > +             return -ENOMEM;
-> > +
-> > +     hw =3D ieee80211_alloc_hw(sizeof(struct rt2x00_dev), ops->hw);
-> > +     if (!hw)
-> Here driver must freed rf and eeprom resources.
-> > +             return dev_err_probe(&pdev->dev, -ENOMEM, "Failed to allo=
-cate hardware");
-> > +
-> > +     platform_set_drvdata(pdev, hw);
-> > +
-> > +     rt2x00dev =3D hw->priv;
-> > +     rt2x00dev->dev =3D &pdev->dev;
-> > +     rt2x00dev->ops =3D ops;
-> > +     rt2x00dev->hw =3D hw;
-> > +     rt2x00dev->irq =3D irq;
-> > +     rt2x00dev->clk =3D clk;
-> > +     rt2x00dev->eeprom =3D eeprom;
-> > +     rt2x00dev->rf =3D rf;
-> > +     rt2x00dev->name =3D pdev->dev.driver->name;
-> > +     rt2x00dev->csr.base =3D mem;
-> > +
-> > +     rt2x00_set_chip_intf(rt2x00dev, RT2X00_CHIP_INTF_SOC);
-> > +
-> > +     retval =3D rt2x00lib_probe_dev(rt2x00dev);
-> > +     if (retval)
-> > +             goto exit_free_device;
-> > +
-> > +     return 0;
-> > +
-> > +exit_free_device:
-> > +     ieee80211_free_hw(hw);
-> > +
-> Here driver must freed rf and eeprom resources.
-> > +     return retval;
-> > +}
->
-> Also need to check the rest of allocated resources: mem, irq, clk.
-The point of devm is to not have to...
->
-> BR,
-> Alexander
+On Thu, Jul 10, 2025 at 01:08:15PM -0700, Rosen Penev wrote:
+> mod_name is a legacy debugging feature with no real modern use. An
+> analysis of the underlying MIPS setup code reveals it to also be unused.
+> 
+> Signed-off-by: Rosen Penev <rosenp@gmail.com>
+> Reviewed-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Acked-by: Stanislaw Gruszka <stf_xl@wp.pl>
+> ---
+>  drivers/net/wireless/ralink/rt2x00/rt2800soc.c | 1 -
+>  1 file changed, 1 deletion(-)
+> 
+> diff --git a/drivers/net/wireless/ralink/rt2x00/rt2800soc.c b/drivers/net/wireless/ralink/rt2x00/rt2800soc.c
+> index 701ba54bf3e5..e73394cf6ea6 100644
+> --- a/drivers/net/wireless/ralink/rt2x00/rt2800soc.c
+> +++ b/drivers/net/wireless/ralink/rt2x00/rt2800soc.c
+> @@ -246,7 +246,6 @@ static int rt2800soc_probe(struct platform_device *pdev)
+>  static struct platform_driver rt2800soc_driver = {
+>  	.driver		= {
+>  		.name		= "rt2800_wmac",
+> -		.mod_name	= KBUILD_MODNAME,
+>  	},
+>  	.probe		= rt2800soc_probe,
+>  	.remove		= rt2x00soc_remove,
+> -- 
+> 2.50.0
+> 
 
