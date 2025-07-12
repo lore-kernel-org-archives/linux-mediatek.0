@@ -4,89 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF3EFC83F10
-	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Jul 2025 19:05:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1504BC83F10
+	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Jul 2025 20:04:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BKagfN2d5XxVdHG3XeAT69zzT+aJHWetXb6KF0S4PHA=; b=hvRhpPbfW5MoVvHopR0agx76fZ
-	N3iT37EMS/NdN5nfRBLFbbRRHodtAiPEd+IcxQR6cH9R2pBbnAGYLQsd76J+R0LBWTEoVu+ZylAoN
-	DNDNYl6hx8OcFCRg5CLYUcVbul/bN/J5vC7UH96Qb1so4+FGBisLN3tEKgWjC0+XrZzC905PvrrEo
-	Jssx13Klb7A3nm3ym/1NVliHfXN37TIu8zBB7Q7YfoYMBvlaM+azz+aWjCTZv7SwyHTzLxAiSWKNJ
-	6Uqj8GvYPHeKuWEz/DAGCLHFGg2hjuiO+hA0cCwEWZpYLBkuz57yFReR0JNNYtBnUcPZqSsWI3abZ
-	KmCm5/tg==;
+	bh=WYawKN+5MYGds6VxRs2d7qo+CH5vM5SkgS7CBcdvPVY=; b=kIJLvTducDyeJ948lt9BxvfoOS
+	Y+v3f4WmERqfqdgvkdRN1x6NIz/Df429NLPImOdE1+ph4d0htrDd30QtUg1ebmmY2F6kqdqIERu+s
+	E0RRYxiHV+FnrV2qknXTbpcwcCSkuOdSbZmrlL709bZOqRy7isn+O0nXgr2M16HAGMXlkWCk82cM1
+	NFGIYrRCEtL2ZwFIq+rwpsaOHlGyEGHQy6gB38YVCi8orhhMjvtozezbDCz62cn03J5ziJfMCLA0Z
+	fABn815zCaOMuy2Z9KIHZbsbz6NFXghLqkh3xkow89PT3PXMzvtISVY3GItVK/4OoVAg1sH73Ta0A
+	gDgdTD2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uafXC-0000000GvQX-3SOf;
-	Sat, 12 Jul 2025 19:05:18 +0000
-Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
+	id 1uagSW-0000000GyoP-3Ngb;
+	Sat, 12 Jul 2025 20:04:32 +0000
+Received: from mx3.wp.pl ([212.77.101.10])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uafUl-0000000GvFw-3Q7H;
-	Sat, 12 Jul 2025 19:02:48 +0000
-Received: by mail-yb1-xb32.google.com with SMTP id 3f1490d57ef6-e81a7d90835so2582856276.1;
-        Sat, 12 Jul 2025 12:02:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1752346967; x=1752951767; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=BKagfN2d5XxVdHG3XeAT69zzT+aJHWetXb6KF0S4PHA=;
-        b=VWi7jPqwTKvxKWOxfqcj18hsqXeQQTheISJCJYSAUqE6MM42bBtGhiLvIgLnewyjve
-         SX4yTIFfgnXLWoGs5HHbMUYeItfEDPTIBseUkc/17Z/ndihsCNMJuCJhWHD+Fdkrw+WL
-         +gULWvyQVUjFr47vkaQV58K4MnHPkm9VkQe+qkdDzFGtDE8UiM7LBu9nZ0UmIZZBKhGP
-         ZjpbTg10KutgHkKuNo8+S8ovfJEiwL9Yn0er0h0Vs4AK5kXTIMEPOprBZKLbd8g43I7Z
-         A+z2JBzZCCmFUEIFovieFGkU1dwCkzpy3T4T8P+XWJFe1exIcfpf/TDfjzLJ0MMYWZac
-         PDBg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1752346967; x=1752951767;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=BKagfN2d5XxVdHG3XeAT69zzT+aJHWetXb6KF0S4PHA=;
-        b=nt4Cgy+JBX+d7tlJhDcq+VQA7OIucRodEHwV9r4hQzMrNujxq6d9LgyWPDDRS26Vcp
-         47EMKmPKyZNWJDOsiwNV6Il1b+tKA+0zxilFHNMr0W/SqiKVII3eeY8d1v8JBnL4nYj1
-         nHyeARe9YVCzL9cacGTvT/zBxWCMNiJ81cJ8B/gzovQFreANxXsxwjA/YsjtYCq7cXax
-         0muytNmhHvWaKYPauNXu78y1KulI/+rD7Q9HPgH1dC3cpRMRlfKVp9fJoiyPGwLhUJWm
-         rJMA417vbdR90qEOy/A5r4gGWd7ALL1hgXP4e89u0GDi3RWaxpdhsYOtOFpaFqgNfN3l
-         b/Yg==
-X-Forwarded-Encrypted: i=1; AJvYcCWLV2rWcGZSX4IprO1r0ilk5dapgM8RWTmrgAlJwQoqr54vHLp0dL2WDoiD3Z1GDiD4st4huFYdeg1DDj72Pn4=@lists.infradead.org, AJvYcCXoSB71JGb8pNEX/zFYXAlLIcYg2dO7YuO4Eksm5RvY+8NBZSbDup4W59DcuMkU7hNf6ZXjDhRu+ehTF/ugpyD7@lists.infradead.org
-X-Gm-Message-State: AOJu0YxEt5sgI1KsTdspHmuCc4EsXkrP/9QVGcLmzQRhrR6nznOHi8F6
-	59Fs+wMSQpwNkGru3gHDi6gnwSsN341kbupbxYjLigv/lFqWcWPxYRJJKDuTqS9KMvNgHV59EqT
-	Y2BMK9fBy1AzGonGSpLENqDvSzMu1JjE=
-X-Gm-Gg: ASbGnctuKyBbSXLq82Da/kQEpOT30tRGZPkR6oGGIYvd3zaWLCy7NAyHwXvYWH3BGwl
-	zIAju9CmnK0qY6UWjHpDi96RP3Hbfi6+RjSdq9x2L4ov6jy0foufeDnS+2kMIB+7fdfLr4rfmEQ
-	WYob5bNmSXrEcuhg49xjoyL2vkLRRjCpYuQ71T7cqpKVIJy2uEg40gUXNiWoN7CA255gyDdo0qh
-	CkWLYBgkMiqY105qkt/
-X-Google-Smtp-Source: AGHT+IGcVwtnhZTlH9ebXa+wUvIAcCciQYTgsn0OHcrVkEU41TNWJ0CyN7Bjj8sV/x/9RM6/03LPIHWkDmUeM8sMpF4=
-X-Received: by 2002:a05:690c:3687:b0:710:f39f:4d3f with SMTP id
- 00721157ae682-717d786ddb7mr116815487b3.5.1752346966755; Sat, 12 Jul 2025
- 12:02:46 -0700 (PDT)
+	id 1uagNN-0000000GyMM-35Dy
+	for linux-mediatek@lists.infradead.org;
+	Sat, 12 Jul 2025 19:59:16 +0000
+Received: (wp-smtpd smtp.wp.pl 40337 invoked from network); 12 Jul 2025 21:59:08 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wp.pl; s=20241105;
+          t=1752350348; bh=WYawKN+5MYGds6VxRs2d7qo+CH5vM5SkgS7CBcdvPVY=;
+          h=From:To:Cc:Subject;
+          b=XrG2t3kMckVauQKz0F+m6Zb+dMXvYQV7LrPFcSqNirJWLDdMvRgzjHpnE48hDBKMJ
+           OFQUt0kEY381fB8H/3A8H100bqZIDoxFxochvoOFeG122uL8nn3yLR2iTmktUSKrCr
+           UR+XA1k0ti22puq0T9zQ7oBV+pYWzD41y2BDid/91hgB7ne501HurBlhzszQRO7Uaa
+           eMpPDkB3jOoHOli2Ow1GD5Vcw1AC0Tg26OIDhLzjf/PXTL2rLFfWjJ5Lx3lWZK/sxb
+           9yngqyPEKhEvHjBjd5f/rKA8sl/jR81oSjV4DAzwRUyAB3NWpC7/Km80Ktt5qAqOdl
+           MnLYcDa4X3Oug==
+Received: from 83.24.150.40.ipv4.supernova.orange.pl (HELO laptop-olek.lan) (olek2@wp.pl@[83.24.150.40])
+          (envelope-sender <olek2@wp.pl>)
+          by smtp.wp.pl (WP-SMTPD) with ECDHE-RSA-AES256-GCM-SHA384 encrypted SMTP
+          for <rafael@kernel.org>; 12 Jul 2025 21:59:08 +0200
+From: Aleksander Jan Bajkowski <olek2@wp.pl>
+To: rafael@kernel.org,
+	daniel.lezcano@linaro.org,
+	rui.zhang@intel.com,
+	lukasz.luba@arm.com,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	s.hauer@pengutronix.de,
+	rafal@milecki.pl,
+	linux-pm@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Aleksander Jan Bajkowski <olek2@wp.pl>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v4 1/2] dt-bindings: thermal: mediatek: add falback compatible string for MT7981 and MT8516
+Date: Sat, 12 Jul 2025 21:59:03 +0200
+Message-Id: <20250712195904.6988-2-olek2@wp.pl>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20250712195904.6988-1-olek2@wp.pl>
+References: <20250712195904.6988-1-olek2@wp.pl>
 MIME-Version: 1.0
-References: <20250710200820.262295-1-rosenp@gmail.com> <20250710200820.262295-4-rosenp@gmail.com>
- <20250712101418.GD9845@wp.pl>
-In-Reply-To: <20250712101418.GD9845@wp.pl>
-From: Rosen Penev <rosenp@gmail.com>
-Date: Sat, 12 Jul 2025 12:02:35 -0700
-X-Gm-Features: Ac12FXx4rcjDaaA71XVlUBA-AkCziwkS6KnteMro8jng8d1wYOSRPnIgM60fm5s
-Message-ID: <CAKxU2N-RXgFKYPAqEu3iZDMAisj_K-b+ZZTGFsabWz7pMK+02A@mail.gmail.com>
-Subject: Re: [PATCHv3 wireless-next 3/7] wifi: rt2800soc: allow loading from OF
-To: Stanislaw Gruszka <stf_xl@wp.pl>
-Cc: linux-wireless@vger.kernel.org, Johannes Berg <johannes@sipsolutions.net>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, 
-	"open list:MIPS" <linux-mips@vger.kernel.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-WP-MailID: b3b18c2aee2b4ebbd80a5f6acede9098
+X-WP-AV: skaner antywirusowy Poczty Wirtualnej Polski
+X-WP-SPAM: NO 0100003 [8XAz]                               
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250712_120247_851944_AF7A7875 
-X-CRM114-Status: GOOD (  25.86  )
+X-CRM114-CacheID: sfid-20250712_125914_244173_49224BC9 
+X-CRM114-Status: UNSURE (   8.06  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,79 +90,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jul 12, 2025 at 3:14=E2=80=AFAM Stanislaw Gruszka <stf_xl@wp.pl> wr=
-ote:
->
-> On Thu, Jul 10, 2025 at 01:08:16PM -0700, Rosen Penev wrote:
-> > Add a single binding to help the already present dts files load the
-> > driver. More are possible but there doesn't seem to be a significant
-> > difference between them to justify this.
-> >
-> > Use wifi name per dtschema requirements.
-> >
-> > The data field will be used to remove the custom non static probe
-> > function and use of_device_get_match_data.
-> >
-> > Added OF dependency to SOC CONFIG as adding of_match_table without OF
-> > being present makes no sense.
-> >
-> > Signed-off-by: Rosen Penev <rosenp@gmail.com>
-> > Reviewed-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-> > ---
-> >  drivers/net/wireless/ralink/rt2x00/Kconfig     | 2 +-
-> >  drivers/net/wireless/ralink/rt2x00/rt2800soc.c | 7 +++++++
-> >  2 files changed, 8 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/net/wireless/ralink/rt2x00/Kconfig b/drivers/net/w=
-ireless/ralink/rt2x00/Kconfig
-> > index 3a32ceead54f..a0dc9a751234 100644
-> > --- a/drivers/net/wireless/ralink/rt2x00/Kconfig
-> > +++ b/drivers/net/wireless/ralink/rt2x00/Kconfig
-> > @@ -202,7 +202,7 @@ endif
-> >
-> >  config RT2800SOC
-> >       tristate "Ralink WiSoC support"
-> > -     depends on SOC_RT288X || SOC_RT305X || SOC_MT7620 || COMPILE_TEST
-> > +     depends on OF && (SOC_RT288X || SOC_RT305X || SOC_MT7620 || COMPI=
-LE_TEST)
-> >       select RT2X00_LIB_SOC
-> >       select RT2X00_LIB_MMIO
-> >       select RT2X00_LIB_CRYPTO
-> > diff --git a/drivers/net/wireless/ralink/rt2x00/rt2800soc.c b/drivers/n=
-et/wireless/ralink/rt2x00/rt2800soc.c
-> > index e73394cf6ea6..db8d01f0cdc3 100644
-> > --- a/drivers/net/wireless/ralink/rt2x00/rt2800soc.c
-> > +++ b/drivers/net/wireless/ralink/rt2x00/rt2800soc.c
-> > @@ -243,9 +243,16 @@ static int rt2800soc_probe(struct platform_device =
-*pdev)
-> >       return rt2x00soc_probe(pdev, &rt2800soc_ops);
-> >  }
-> >
-> > +static const struct of_device_id rt2880_wmac_match[] =3D {
-> > +     { .compatible =3D "ralink,rt2880-wifi", .data =3D &rt2800soc_ops =
-},
->
-> Why do .data =3D rt2800soc_ops here and use it via of_device_get_match_da=
-ta()
-> in patch 5, insead of just use rt2800soc_ops directly in rt2800soc_probe =
-?
-I see more of the former instead of the latter in drivers.
->
-> Regards
-> Stanislaw
->
-> > +     {},
-> > +};
-> > +MODULE_DEVICE_TABLE(of, rt2880_wmac_match);
-> > +
-> >  static struct platform_driver rt2800soc_driver =3D {
-> >       .driver         =3D {
-> >               .name           =3D "rt2800_wmac",
-> > +             .of_match_table =3D rt2880_wmac_match,
-> >       },
-> >       .probe          =3D rt2800soc_probe,
-> >       .remove         =3D rt2x00soc_remove,
-> > --
-> > 2.50.0
-> >
+The ‘mediatek,mt7981-thermal’ and ‘mediatek,mt8516-thermal’ strings
+aren't definied in the driver. Both should have fallback compatible
+strings. This commit fixes this issue.
+
+Fixes: 788494ba0999 ("dt-bindings: thermal: convert Mediatek Thermal to the json-schema")
+Signed-off-by: Aleksander Jan Bajkowski <olek2@wp.pl>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+ .../bindings/thermal/mediatek,thermal.yaml    | 27 ++++++++++++-------
+ 1 file changed, 17 insertions(+), 10 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/thermal/mediatek,thermal.yaml b/Documentation/devicetree/bindings/thermal/mediatek,thermal.yaml
+index d96a2e32bd8f..7bd0955e6d04 100644
+--- a/Documentation/devicetree/bindings/thermal/mediatek,thermal.yaml
++++ b/Documentation/devicetree/bindings/thermal/mediatek,thermal.yaml
+@@ -20,16 +20,23 @@ allOf:
+ 
+ properties:
+   compatible:
+-    enum:
+-      - mediatek,mt2701-thermal
+-      - mediatek,mt2712-thermal
+-      - mediatek,mt7622-thermal
+-      - mediatek,mt7981-thermal
+-      - mediatek,mt7986-thermal
+-      - mediatek,mt8173-thermal
+-      - mediatek,mt8183-thermal
+-      - mediatek,mt8365-thermal
+-      - mediatek,mt8516-thermal
++    oneOf:
++      - enum:
++          - mediatek,mt2701-thermal
++          - mediatek,mt2712-thermal
++          - mediatek,mt7622-thermal
++          - mediatek,mt7986-thermal
++          - mediatek,mt8173-thermal
++          - mediatek,mt8183-thermal
++          - mediatek,mt8365-thermal
++      - items:
++          - enum:
++              - mediatek,mt8516-thermal
++          - const: mediatek,mt2701-thermal
++      - items:
++          - enum:
++              - mediatek,mt7981-thermal
++          - const: mediatek,mt7986-thermal
+ 
+   reg:
+     maxItems: 1
+-- 
+2.39.5
+
 
