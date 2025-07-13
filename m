@@ -4,59 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C95D3C83F17
-	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Jul 2025 20:40:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E986C83F1D
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Jul 2025 21:42:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=p7stzLVndc/b9y6vJvGeTTcJyYaISRRTWNly5Dkcffs=; b=jrxaTlSkeXTUtgSwbUclXU4Dog
-	SXsZDAEuOgsM1utDs6zU5c2OwUOerxk9Ih8QpFeCkoYQFMNe4LJrPmmLapvWvtMoyFyHJMYIRIc30
-	paXNkxZkZ7hIxfrl9OnASbntSPrtowhzsHK4KvmNXKQ81z4ALvIuzchSTRP2jFZWmOVfx9XU3Bq8d
-	Y/OyxOSvgte7kmpOhRrH7YINIglQdNPMRbPp2DDztOnqY4iR2WsehttKdh91yvgHYBqHGQjbOspoq
-	9KZyK+WZ0zyaMCpzM0X2bpcIyTtNPIHIK2x7b2dFsktJyTXY1G38Dve/LysOHZ6L4ebJBQu7A4Ds0
-	XkoPxiOw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QwQeVLxj3XfkfWgGw3amjmtds/bFedPxXMSoyVp4I0M=; b=Dk/F1PW/bTyK2aYfwBGlDrVKJu
+	5DNssU2g+a7Z46NEpD9Fru/xlAkFcKIoUVU98y7zhoDcxbcPDnzLBMaRcsW7axvLFg0jhvgWBQM3s
+	noCLn1O1f2gUe8d7t2Kr8/XPPDxoGGp9JIFv/Lpilf4e9COtW7imlG8TIfXCSx4vVAaBuqwLspFiY
+	vQVURPkFw6zuWx6mbz28ieQSG+LW7nYM87RhiGAnGUIr8qBOU/3UV/qETGZ5AIV6xJ6M+p0jc8E3m
+	C7RwsyPPeHGLZpPT8BjTMyEiSn6J2Fsa9ym/SnUv8bikRtD/OAdsh3a8oe57i6uXPrzE2h3I/ivrl
+	9ezxya/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ub3UV-00000000c1Q-2qot;
-	Sun, 13 Jul 2025 20:40:07 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1ub4Se-00000000fNY-1svh;
+	Sun, 13 Jul 2025 21:42:16 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ub3RR-00000000bqY-3V7H;
-	Sun, 13 Jul 2025 20:36:58 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.98.2)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1ub3R7-000000002gs-20cO;
-	Sun, 13 Jul 2025 20:36:37 +0000
-Date: Sun, 13 Jul 2025 21:36:34 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Cc: "Chester A. Unal" <chester.a.unal@arinc9.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org,
-	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next] net: dsa: mt7530: Constify struct regmap_config
-Message-ID: <aHQY0hVsua5pP0QC@makrotopia.org>
-References: <1b20b2e717e9ff15aa0d1e73442dde613174cfef.1752419299.git.christophe.jaillet@wanadoo.fr>
+	id 1ub4QE-00000000fB0-2FvS;
+	Sun, 13 Jul 2025 21:39:47 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by nyc.source.kernel.org (Postfix) with ESMTP id 21AAAA50AF5;
+	Sun, 13 Jul 2025 21:39:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BC5E5C4CEE3;
+	Sun, 13 Jul 2025 21:39:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1752442784;
+	bh=l2albCRDOERfrgRCczAdSrxmVZTv8VNwn1plCuVvM3Y=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=ShuzarwHk3Fd/ohRYVCkhatKqA4VRuupYJGUvUUsECMi/QCozlyF4PS6/WqbIOMlt
+	 FfIj8NCLJii01L/GeR/B1dZqlLyJluLcXSVe7My/ZGKT25nj7uTXY/1aduEOS43K7g
+	 AIwXcFjIzj7Xo3qal371jjI8rP76tzNjyMgQSj+JdpNIRKzXTWd2RCBCzch6XKW/bw
+	 f5QtrdkGYCP005/ffIAkKRAdZI7xlXU6Gw4YE63+GO3pck+N0yxxZ+v6QiAUbcCmf1
+	 Zgte4oZwgIwK9rDUa8oKiAzxmdLih+XWE3nzTja6iYuKNK8TB8k/mbVx7f5MngFyUw
+	 PK3qOVkg09qvA==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 33ECA383B276;
+	Sun, 13 Jul 2025 21:40:07 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next] net: dsa: mt7530: Constify struct regmap_config
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <175244280602.2861491.4513725766921457476.git-patchwork-notify@kernel.org>
+Date: Sun, 13 Jul 2025 21:40:06 +0000
+References: <1b20b2e717e9ff15aa0d1e73442dde613174cfef.1752419299.git.christophe.jaillet@wanadoo.fr>
 In-Reply-To: <1b20b2e717e9ff15aa0d1e73442dde613174cfef.1752419299.git.christophe.jaillet@wanadoo.fr>
+To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Cc: chester.a.unal@arinc9.com, daniel@makrotopia.org, dqfext@gmail.com,
+ sean.wang@mediatek.com, andrew@lunn.ch, olteanv@gmail.com,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250713_133657_873434_BAE020A9 
-X-CRM114-Status: GOOD (  18.04  )
+X-CRM114-CacheID: sfid-20250713_143946_644247_2FA39488 
+X-CRM114-Status: UNSURE (   9.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,7 +79,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jul 13, 2025 at 05:09:24PM +0200, Christophe JAILLET wrote:
+Hello:
+
+This patch was applied to netdev/net-next.git (main)
+by David S. Miller <davem@davemloft.net>:
+
+On Sun, 13 Jul 2025 17:09:24 +0200 you wrote:
 > 'struct regmap_config' are not modified in these drivers. They be
 > statically defined instead of allocated and populated at run-time.
 > 
@@ -81,55 +94,16 @@ On Sun, Jul 13, 2025 at 05:09:24PM +0200, Christophe JAILLET wrote:
 >     structures that hold some function pointers
 >   - the code is less verbose
 > 
-> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-> ---
->  drivers/net/dsa/mt7530-mdio.c | 21 +++++++++------------
->  drivers/net/dsa/mt7530-mmio.c | 21 ++++++++++-----------
->  2 files changed, 19 insertions(+), 23 deletions(-)
-> 
-> diff --git a/drivers/net/dsa/mt7530-mdio.c b/drivers/net/dsa/mt7530-mdio.c
-> index 51df42ccdbe6..0286a6cecb6f 100644
-> --- a/drivers/net/dsa/mt7530-mdio.c
-> +++ b/drivers/net/dsa/mt7530-mdio.c
-> @@ -136,10 +136,17 @@ static const struct of_device_id mt7530_of_match[] = {
->  };
->  MODULE_DEVICE_TABLE(of, mt7530_of_match);
->  
-> +static const struct regmap_config regmap_config = {
+> [...]
 
-Maybe calling this one 'regmap_config_mdio'...
+Here is the summary with links:
+  - [net-next] net: dsa: mt7530: Constify struct regmap_config
+    https://git.kernel.org/netdev/net-next/c/9eb73f92a0b0
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
 
-> +	.reg_bits = 16,
-> +	.val_bits = 32,
-> +	.reg_stride = 4,
-> +	.max_register = MT7530_CREV,
-> +	.disable_locking = true,
-> +};
-> +
-> ...
-
-> diff --git a/drivers/net/dsa/mt7530-mmio.c b/drivers/net/dsa/mt7530-mmio.c
-> index 842d74268e77..1dc8b93fb51a 100644
-> --- a/drivers/net/dsa/mt7530-mmio.c
-> +++ b/drivers/net/dsa/mt7530-mmio.c
-> @@ -18,10 +18,17 @@ static const struct of_device_id mt7988_of_match[] = {
->  };
->  MODULE_DEVICE_TABLE(of, mt7988_of_match);
->  
-> +static const struct regmap_config sw_regmap_config = {
-
-... and this one 'regmap_config_mmio' would be a bit nicer.
-
-> +	.name = "switch",
-> +	.reg_bits = 16,
-> +	.val_bits = 32,
-> +	.reg_stride = 4,
-> +	.max_register = MT7530_CREV,
-> +};
-> +
-
-Other than that:
-
-Reviewed-by: Daniel Golle <daniel@makrotopia.org>
 
