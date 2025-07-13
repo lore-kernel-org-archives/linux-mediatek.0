@@ -4,92 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CAD8C83F10
-	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Jul 2025 23:22:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4D33C83F17
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Jul 2025 07:15:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OJFl78XZ+XY3PQ6hqlxJcMbRGA/vaIbR4su4ePprkx4=; b=W1MCHk39yx56N8oR9qdOmppVwR
-	g6bEJIIhCoPMjJyG3svxBH9JXLkUN7mEACrK31F/WeRZPdiahJPOs8SXkZqWESBw1nhlQlN1I6/Qu
-	t7eMV+ouBchg1gD5FqDsCHOFqR4PQIQXWG9sAwyT5kzOAF0LZ2KVS3zqj/Gb/V8Yw112aZEtSF73z
-	6qXL2IwwNVNrb/gCVNAdk5TyyEpDQwJwQrOV3Dpoa73wba2SMjoMn4v7ta1AQreoXHLiyIAMeom61
-	2JM6QaarVkuGP3Gnv77b59TX0F8U5gvJCtbl6DYg1BbhGC76nnI0/fMh09N8Fx2UaMWcVMlntZAvS
-	tW12926w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=w6uk2vSSK6kqFUYuqq9wRIV5THBtnHlaQCSQ8TziC3o=; b=dXDiTwtYnx6q9yv0cXP7VEKFIa
+	hxiHfScbA/1dRIvvF9a9B4pGMatJqvAl0pzt3ga82bK5jyQFqzbY3s3NBlkeJMpgt6i6EGtM5Uoyv
+	LTPsFfB2ahuLsjgwBM3XNzTW+BpksfeTQRIGrXvIwjYIeQyaqEtb6mRIGSVVRp9SMkwGooNs1cegE
+	VeBJ9TZGXb0ldjfUjTgrxynBFDnNRV2UscXHZrCJxtraFdJKI7tQ8//cnrirrfYs/wsQJbfJtnIQl
+	MaujbGNESmCA+9hLBt2ab0dgeo8BrSB2wAf/9TuyReu+foNnkPGdx00Y5NN42w3eb6R3h1xwHXzAb
+	d6sRresA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uajYU-0000000H7M6-22j0;
-	Sat, 12 Jul 2025 23:22:54 +0000
-Received: from mail-qv1-xf29.google.com ([2607:f8b0:4864:20::f29])
+	id 1uaqw0-0000000HQyv-05zW;
+	Sun, 13 Jul 2025 07:15:40 +0000
+Received: from mx3.wp.pl ([212.77.101.9])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uajW5-0000000H7GH-1ndB;
-	Sat, 12 Jul 2025 23:20:26 +0000
-Received: by mail-qv1-xf29.google.com with SMTP id 6a1803df08f44-6faf66905baso41838846d6.2;
-        Sat, 12 Jul 2025 16:20:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1752362424; x=1752967224; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=OJFl78XZ+XY3PQ6hqlxJcMbRGA/vaIbR4su4ePprkx4=;
-        b=VMblYQSIJcWZRsANO/c6N+bRxyaM+g5MHc09P47MElP2j+PHJ9D+Q3Dodslzd2rs4W
-         58j3viHzrsqD346z0eaE1NXVzZW1Kwj6qItLuDAm72VKfxjLXnSYz7SVM5tZ22aWv4XP
-         OvTJL0N5SN1wdLmarCCtZ05DWlPgfk4oPgSYISoA9vYTOMMpFA3Yp0Xwn2NJbKD1VybR
-         eOIFtjrWFkcLwbMpGI+Lgn4N49xT59nbXRuuj6nd0rhH8EwjGQIZ//VH50XxptxN7wy3
-         jw4qOzUY523at4qrQfUtW0gr8oyZWEH6zGbUvWeRrgCnQpEAOMknHaDx3x8sp+BdZ3Nt
-         hy9Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1752362424; x=1752967224;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=OJFl78XZ+XY3PQ6hqlxJcMbRGA/vaIbR4su4ePprkx4=;
-        b=hdQm0H3DogDIS68A7ePz0epQRMsQmrPrhDgjxDeRh2WsyjiVYbOGYDNtBwRTLA2m4h
-         gqBiAtaPlSLnJlsfO4DeKprmUL7s3uTut8ZWj9SOs3mn/QfuK72LfT4LE5yB5Xi+ehBb
-         t/dplt4eJMpUT8c+Lpslh5T4tx1zfvEGOD37Esp68cjEQ244AFJ34LEKmrTINMkQHYvM
-         J91Djv1cMHenWi7oXlbsVzzIz3XeVUCh0f4icPXb+q32UXRKtf/JBBkPQJjUmswpVUNL
-         pl9+YhrC7jwK+ZPxyu/nvBV8UKDD3Pktk3Xvk4SXelzz6CjKmzve/vs7nPUrjTnb2pRk
-         ZGZQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWDcpcYIT1aGwegIBKgT3l1xu5/o5XWacG8los/Xx1Fl9hAcqwg8WhY4+pfNP9585hdSbR59wxpbq9UJCH7Saw=@lists.infradead.org, AJvYcCX4nE+M9g4lcj5AWJ2uQJ/5wdsxi7q06pjON1kQ5qVFnpz5XLNU/7RljsWhHEh4klEP1+QOItJGLwRkckT5AmOb@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw7+JzNE8r6x144ywnwDkbqejZrGK3Q47cWqiddKQDX5ZA1s42C
-	JzBf5Md12xBCRlPcCawQZ35M3PzabqspMa2D/oo5cFqvcDc7pKYnFHYF4bqr7eNixpPJ8H+NJtW
-	s7GqgMFlra3FRAhUFT2FiEKzFI3kzGcHHSw==
-X-Gm-Gg: ASbGncvnwHribhi8ruPCsz6gLIWSps2D2DxPXylpTeUGxpCOZZdT9FlyO2GNdlpICOI
-	7ymJ13emtl13dyU8pk/JwCJDoyQI+eWat/p06PNYZH+Wu0IUSKCCAo3TBA73dVCPlmvn2Fjt18U
-	yuC+n0f3tX+vh6wEagZrhJXoZi6ext8PsFv9Y81/eY4A9r8g/7l6VdjqM/3HeJfX165HL0Ybrvq
-	CmmBpg=
-X-Google-Smtp-Source: AGHT+IFxoLdRf98+nAnGYYkZ3v8X8Zabbt4512qKXAZnA97TDHShi9FJhWzH8PYyZvNSK3yat23YgSRK0z1vNWmf/lY=
-X-Received: by 2002:a05:6214:2b86:b0:702:c939:9d9d with SMTP id
- 6a1803df08f44-704a4220990mr161700106d6.28.1752362423744; Sat, 12 Jul 2025
- 16:20:23 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250710200820.262295-1-rosenp@gmail.com> <20250710200820.262295-8-rosenp@gmail.com>
- <d8b0abb2-1a12-42bf-aafd-4cd1e21babd6@kernel.org> <CAKxU2N-c2tHBYWBM+FJGqdSaqzw9u0O8e0G7AVqk6b0QdRnPTw@mail.gmail.com>
- <20250711-invisible-dainty-jackrabbit-acbf8f@krzk-bin> <20250712104006.GA13512@wp.pl>
- <e435a765-fb91-408f-81dd-01a73fc43b6b@kernel.org> <23e629cb-0698-4a9c-aa18-9a7e71aa8b73@kernel.org>
-In-Reply-To: <23e629cb-0698-4a9c-aa18-9a7e71aa8b73@kernel.org>
-From: Julian Calaby <julian.calaby@gmail.com>
-Date: Sun, 13 Jul 2025 09:20:12 +1000
-X-Gm-Features: Ac12FXzHmWw2pTYCCUYiI4xo0Q3W3oiBA__ty2FODlbGDbYFA2NA_IcVvNhC2_U
-Message-ID: <CAGRGNgVk9__2mCE-hYSP7T0yKLjPsDkvG6+NghJMXazYXUid1w@mail.gmail.com>
-Subject: Re: [PATCHv3 wireless-next 7/7] dt-bindings: net: wireless: rt2800: add
-To: Krzysztof Kozlowski <krzk@kernel.org>, Rob Herring <robh@kernel.org>
-Cc: Stanislaw Gruszka <stf_xl@wp.pl>, Rosen Penev <rosenp@gmail.com>, linux-wireless@vger.kernel.org, 
-	Johannes Berg <johannes@sipsolutions.net>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Thomas Bogendoerfer <tsbogend@alpha.franken.de>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, 
-	"open list:MIPS" <linux-mips@vger.kernel.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
+	id 1uaqvw-0000000HQyE-1R3i
+	for linux-mediatek@lists.infradead.org;
+	Sun, 13 Jul 2025 07:15:38 +0000
+Received: (wp-smtpd smtp.wp.pl 19348 invoked from network); 13 Jul 2025 09:15:32 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wp.pl; s=20241105;
+          t=1752390932; bh=w6uk2vSSK6kqFUYuqq9wRIV5THBtnHlaQCSQ8TziC3o=;
+          h=From:To:Cc:Subject;
+          b=FRjGIAFts+ncFni3a1QtStmqoRjGSBbzbv+fu3CCrvg0POfGxtRWy1qe9BDOdMv05
+           Jgufu28olMCo4lCy3gPEaC8Dtt0HTwAAUJti3zEEq+lbgP+qGGTjSgNVYY7tF6ECtG
+           GLQpn2fay8FHGilvqOc+/+XeYVIBavvoXRz6I9Qpj68JowKrrd9YhnRQzI28eb+A9C
+           8BtpVXwEBMRol9SJUvlvFF9aoE86vfLer19dJtVHzi99olSl7rMbQt7zuNt1FvEW+K
+           Bh6ZGVr4iRyVqvJVOEwHWe9OvldV49IM5X77YFpIUJrZS0Tuj3is0zaL+EJ3N0s+aJ
+           qbF6niVbKxudg==
+Received: from 89-64-3-180.dynamic.play.pl (HELO localhost) (stf_xl@wp.pl@[89.64.3.180])
+          (envelope-sender <stf_xl@wp.pl>)
+          by smtp.wp.pl (WP-SMTPD) with ECDHE-RSA-AES256-GCM-SHA384 encrypted SMTP
+          for <rosenp@gmail.com>; 13 Jul 2025 09:15:32 +0200
+Date: Sun, 13 Jul 2025 09:15:32 +0200
+From: Stanislaw Gruszka <stf_xl@wp.pl>
+To: Rosen Penev <rosenp@gmail.com>
+Cc: linux-wireless@vger.kernel.org,
+	Johannes Berg <johannes@sipsolutions.net>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>,
+	open list <linux-kernel@vger.kernel.org>,
+	"open list:MIPS" <linux-mips@vger.kernel.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
 	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCHv3 wireless-next 3/7] wifi: rt2800soc: allow loading from
+ OF
+Message-ID: <20250713071532.GA18469@wp.pl>
+References: <20250710200820.262295-1-rosenp@gmail.com>
+ <20250710200820.262295-4-rosenp@gmail.com>
+ <20250712101418.GD9845@wp.pl>
+ <CAKxU2N-RXgFKYPAqEu3iZDMAisj_K-b+ZZTGFsabWz7pMK+02A@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAKxU2N-RXgFKYPAqEu3iZDMAisj_K-b+ZZTGFsabWz7pMK+02A@mail.gmail.com>
+X-WP-MailID: a575d8a94d89fffda96a0f3af808d2f5
+X-WP-AV: skaner antywirusowy Poczty Wirtualnej Polski
+X-WP-SPAM: NO 0000000 [kZMB]                               
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250712_162025_474014_088C7047 
-X-CRM114-Status: GOOD (  30.27  )
+X-CRM114-CacheID: sfid-20250713_001536_851955_546DBEDA 
+X-CRM114-Status: GOOD (  23.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,100 +89,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof and Rob,
-
-On Sun, Jul 13, 2025 at 2:59=E2=80=AFAM Krzysztof Kozlowski <krzk@kernel.or=
-g> wrote:
->
-> On 12/07/2025 18:53, Krzysztof Kozlowski wrote:
-> > On 12/07/2025 12:40, Stanislaw Gruszka wrote:
-> >> Hi Krzysztof,
-> >>
-> >> On Fri, Jul 11, 2025 at 09:48:49AM +0200, Krzysztof Kozlowski wrote:
-> >>> On Thu, Jul 10, 2025 at 03:40:30PM -0700, Rosen Penev wrote:
-> >>>> On Thu, Jul 10, 2025 at 2:40=E2=80=AFPM Krzysztof Kozlowski <krzk@ke=
-rnel.org> wrote:
-> >>>>>
-> >>>>> On 10/07/2025 22:08, Rosen Penev wrote:
-> >>>>>> Add device-tree bindings for the RT2800 SOC wifi device found in o=
-lder
-> >>>>>> Ralink/Mediatek devices.
-> >>>>>>
-> >>>>>> Signed-off-by: Rosen Penev <rosenp@gmail.com>
-> >>>>>> ---
-> >>>>>>  .../bindings/net/wireless/ralink,rt2800.yaml  | 47 ++++++++++++++=
-+++++
-> >>>>>>  1 file changed, 47 insertions(+)
-> >>>>>>  create mode 100644 Documentation/devicetree/bindings/net/wireless=
-/ralink,rt2800.yaml
-> >>>>>>
-> >>>>>> diff --git a/Documentation/devicetree/bindings/net/wireless/ralink=
-,rt2800.yaml b/Documentation/devicetree/bindings/net/wireless/ralink,rt2800=
-.yaml
-> >>>>>> new file mode 100644
-> >>>>>> index 000000000000..8c13b25bd8b4
-> >>>>>> --- /dev/null
-> >>>>>> +++ b/Documentation/devicetree/bindings/net/wireless/ralink,rt2800=
-.yaml
-> >>>>>
-> >>>>> Filename should match compatible. You were already changing somethi=
-ng
-> >>>>> here...
-> >>>> hrm? that makes no sense. Various drivers have multiple compatible l=
-ines.
-> >>>
-> >>> Luckily we do not speak about drivers here. Anyway, follow standard
-> >>> review practices, you don't get special rules.
-> >>
-> >> Could you please elaborate what you mean ?
+On Sat, Jul 12, 2025 at 12:02:35PM -0700, Rosen Penev wrote:
+> On Sat, Jul 12, 2025 at 3:14 AM Stanislaw Gruszka <stf_xl@wp.pl> wrote:
 > >
-> > Rosen replied in abrasive way, so I am not going to dig this.
+> > On Thu, Jul 10, 2025 at 01:08:16PM -0700, Rosen Penev wrote:
+> > > Add a single binding to help the already present dts files load the
+> > > driver. More are possible but there doesn't seem to be a significant
+> > > difference between them to justify this.
+> > >
+> > > Use wifi name per dtschema requirements.
+> > >
+> > > The data field will be used to remove the custom non static probe
+> > > function and use of_device_get_match_data.
+> > >
+> > > Added OF dependency to SOC CONFIG as adding of_match_table without OF
+> > > being present makes no sense.
+> > >
+> > > Signed-off-by: Rosen Penev <rosenp@gmail.com>
+> > > Reviewed-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+> > > ---
+> > >  drivers/net/wireless/ralink/rt2x00/Kconfig     | 2 +-
+> > >  drivers/net/wireless/ralink/rt2x00/rt2800soc.c | 7 +++++++
+> > >  2 files changed, 8 insertions(+), 1 deletion(-)
+> > >
+> > > diff --git a/drivers/net/wireless/ralink/rt2x00/Kconfig b/drivers/net/wireless/ralink/rt2x00/Kconfig
+> > > index 3a32ceead54f..a0dc9a751234 100644
+> > > --- a/drivers/net/wireless/ralink/rt2x00/Kconfig
+> > > +++ b/drivers/net/wireless/ralink/rt2x00/Kconfig
+> > > @@ -202,7 +202,7 @@ endif
+> > >
+> > >  config RT2800SOC
+> > >       tristate "Ralink WiSoC support"
+> > > -     depends on SOC_RT288X || SOC_RT305X || SOC_MT7620 || COMPILE_TEST
+> > > +     depends on OF && (SOC_RT288X || SOC_RT305X || SOC_MT7620 || COMPILE_TEST)
+> > >       select RT2X00_LIB_SOC
+> > >       select RT2X00_LIB_MMIO
+> > >       select RT2X00_LIB_CRYPTO
+> > > diff --git a/drivers/net/wireless/ralink/rt2x00/rt2800soc.c b/drivers/net/wireless/ralink/rt2x00/rt2800soc.c
+> > > index e73394cf6ea6..db8d01f0cdc3 100644
+> > > --- a/drivers/net/wireless/ralink/rt2x00/rt2800soc.c
+> > > +++ b/drivers/net/wireless/ralink/rt2x00/rt2800soc.c
+> > > @@ -243,9 +243,16 @@ static int rt2800soc_probe(struct platform_device *pdev)
+> > >       return rt2x00soc_probe(pdev, &rt2800soc_ops);
+> > >  }
+> > >
+> > > +static const struct of_device_id rt2880_wmac_match[] = {
+> > > +     { .compatible = "ralink,rt2880-wifi", .data = &rt2800soc_ops },
 > >
-> >>
-> >> I greped through Documentation/devicetree/bindings/*/*.yaml and plenty
-> >
-> > I assume you refer to last 2 years bindings, not something older, right=
-?
-> > It is really poor argument to find old files and use them as example
-> > "they did like that".
-> >
-> >> of "compatible:" items do not match the filename. So hard to tell
-> >
-> > I did not ask for compatible to match filename.
-> >
-> >> what rule you are referencing, as it seems it's not really applied.
-> > Check reviews on the lists. It is pretty standard review. Everyone gets
-> > it for this case here - single device, single compatible.
->
-> BTW, it is not hiding on the lists:
->
-> https://lore.kernel.org/linux-devicetree/?q=3Df%3Aherring+filename
-> https://lore.kernel.org/linux-devicetree/?q=3Df%3Akozlowski+filename
+> > Why do .data = rt2800soc_ops here and use it via of_device_get_match_data()
+> > in patch 5, insead of just use rt2800soc_ops directly in rt2800soc_probe ?
+> I see more of the former instead of the latter in drivers.
 
-I just had a quick look through the in-tree documentation on device
-tree bindings and can't find this rule there.
+If there is no technical reason to use indirection, this can be
+simplified as well. Can be done as separate patch since you already
+posed v4.
 
-It's good that you and Rob are consistent in applying this rule, but
-pointing to the mailing list archives instead of the documentation
-makes it feel like patch submissions in this space are judged by some
-arbitrary set of undocumented rules.
+Regards
+Stanislaw
 
-Could you please update the documentation with the current set of
-requirements so that people who are new to this space have a
-consistent set of rules they can apply to their work?
-
-I understand that Krzysztof doesn't particularly like having
-discussions around the rules given his usual abrasive manner, so
-having the full rules documented would be a way to shift these
-conversations into something a bit more like how Greg applies stable
-rules: if you get it wrong, you get a link to the documentation, which
-should clarify most issues without any further discussion.
-
-Thanks,
-
---=20
-Julian Calaby
-
-Email: julian.calaby@gmail.com
-Profile: http://www.google.com/profiles/julian.calaby/
 
