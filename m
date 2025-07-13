@@ -4,91 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0573C83F17
-	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Jul 2025 09:17:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41068C83F1D
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Jul 2025 09:29:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=teFEt5VYoV+y5Dd7IIHlSpW2pgBGTG1QedDMUy1wx8U=; b=3YXV64KDhDc42/4PsZzvGNQ+i0
-	TCuyG383I/PhI++WTjwwGrUvQIGc4NAF5iwBR12oTm5ZG8Wyc+UwUqbw/9CK1yGv3onEqINMFPaQ7
-	wGh13WhTheItUavHkOeGN9BV+7ErA4yvX62O/KQyVKuDxSlJoKellklp5JWy0+Q1ON15o+5UfO12/
-	e+RW1slZJqT26zmQGuxuOGM5WA+efmk1mqbYoGaSVTA2B0wBAROSdNSzyqKzKSoQLmuy9wOXKLZQw
-	8ODfEanwtd56BdB6HyrZJz1s+/nDDMaRMe8LPqhkWc4w3VGgdPmvSThBj2bfZBf5VS15gE0b31pKT
-	1sT8b1mw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=z8l1uZ17d5krCHtbYqm9PDoWYLxWOwX4gFpsp2HGkHo=; b=eDWM4cF/lToX6H76SnpY8oGhWa
+	bg7VrTAiivSNXji6ezQ5L8EiJscGMY6CxXjIuoJaKeiq1XD0LjGv7Ds6aMAJCxzj9xZpMEjl9bJe/
+	zg72crAPj24AaFYvzjSiYqdCIqDFPt0RoJQzIPIYKjYiLkv9U3hfD15RByQUAL+68DsITvToDaYq6
+	JiPYNF6DLXiqPkePTpmCYtZuBoq/eJVbtVrV1BAQ127eHyzUHKEXkcTiSIG9QAlYvpztZwacYXSVG
+	6zN1kYwI63MMVz3wFpdWHDCcnuZRkgJ8GxVZUSZAW5XrLIAKgzCxY8/cu1v7BvHBbHWpjhEOJo/N4
+	3alJ8mdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uaspe-000000000Az-1Nyj;
-	Sun, 13 Jul 2025 09:17:14 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1uat1S-000000000sI-3dmo;
+	Sun, 13 Jul 2025 09:29:26 +0000
+Received: from s3.sipsolutions.net ([2a01:4f8:242:246e::2] helo=sipsolutions.net)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uasIw-0000000HY5P-22db
-	for linux-mediatek@lists.infradead.org;
-	Sun, 13 Jul 2025 08:43:30 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-5550dca1241so3121576e87.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 13 Jul 2025 01:43:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20230601.gappssmtp.com; s=20230601; t=1752396204; x=1753001004; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=teFEt5VYoV+y5Dd7IIHlSpW2pgBGTG1QedDMUy1wx8U=;
-        b=l+ANhPgMvqyDQ8Dz8xlQyt02MXXq76ovLDivwUkgnZGBdPb+ykiUPT/jo8RzyQ9MuQ
-         dXd7qmIv9jk6SeJygEdvSOIkaMSJ4R0H/wq8WejQNn1YM/5ThaoSvNo5gIBM2C5+H1f/
-         3kwJ/JW9l8KedYxMmRkK1Dc9CZVrnsNOkiBbhgdQmPq43i2Mm5RtsCoYINRBCv4OLqF4
-         pliVK9R7/jsqy+AVe69Garp/eifV11LA4Z3+eDTbtZMry5SP0FoiU9JLLWE/y/9tgTXU
-         +D6yGg5sfshPIkgmVC+ewQqbSmKY8dgnkQgLiEhiTE8ghN52UlfsRzXE3jultibaQEBS
-         AEgw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1752396204; x=1753001004;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=teFEt5VYoV+y5Dd7IIHlSpW2pgBGTG1QedDMUy1wx8U=;
-        b=Q1HmUBbKdr93D1VoBU9fk47pmGim5uXHx4UYohKUpDh1eWCzFBoJ9r4Q/61A6cQAke
-         nCsGPkRVIVYsby17Zu2JAxwvWKgGjAixpJh8RvJHZaZ+XrGBLbWPu9YNgjvTHKIll7mc
-         RCG2ndN00/CHSqkH3G53OwXjaDe1y85UUbTnEiekWTV1DLyeQaP6HX1V0xzh2Ls3tL1I
-         E3HUf5glgfH/Ih3apAmBv9SQJf/2sFoSjxw5ctOHxHGYo35wLijCWlRONSYi5NcBYHFc
-         OKdJ/0r08+dL7JtPAiU/GiQnxH7xVRZa2/zOSOabFuhwXhmE8/haBlG+drJyhTTRu+xR
-         H1dQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXsnZ3mblL/owO3HBOFkH64fbR95e6NmDcn6dEZxyTL0cjbziU3476pweOZ5yeWFH8BBVBlZgaw1qxle4Rw8g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwYFdxa9chBTUwid5k6qugQlqf0BtnieWQGVsCi8VBAEkbj/fDZ
-	U2CxMj7XKbrFDoN8upnH4G29nO7hF7X8rzYNhoj0w3qfGz8vBSORGR4hV3KcXbISOlKSEvRy/hY
-	8Q7fIlBF+i75GwG0oKtjgmZb9lmTTJ2pJF3gLUp4/dg==
-X-Gm-Gg: ASbGnctIqh+Mm15DKQAPQ/wqQQtYzW+wfPVvui88vXD9XTUPpjuK1zEzcjvw6UHMLET
-	eQmreZLC45AIZA7FyfX38yzwAynRrorEZBAJCbuCaVWDhdOKXoWaeEwDlctRl8c+7lRXwj4mqu+
-	n1f0LO0Kz5zGFSGvJhN8m6BYwh1H0Zu2ADK9YMw+2NiwreeIYRi9ZjalBX56NG7QxnJIv/eOc6L
-	0bJdcHEK2Ua6fo8vk29sgNLdIGWrqZ0uzqiG2LNrsSaZgjSwQ==
-X-Google-Smtp-Source: AGHT+IHBAbCKD5IYxg9QHbex64TGGdl/hyMZx/O9ZBosB5HyqtSevaVoy0zG6SyjrmS/Wv0vBuuPHSN0g6Rcj3+48Xc=
-X-Received: by 2002:a05:6512:1114:b0:553:d884:7922 with SMTP id
- 2adb3069b0e04-55a04668194mr2741453e87.48.1752396203838; Sun, 13 Jul 2025
- 01:43:23 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250709-pinctrl-gpio-pinfuncs-v2-0-b6135149c0d9@linaro.org>
- <20250709-pinctrl-gpio-pinfuncs-v2-8-b6135149c0d9@linaro.org> <CACRpkdYfRv-B=p61tVThFkjoqDGfcqOjmHxmj4wv-NYyky2-kg@mail.gmail.com>
-In-Reply-To: <CACRpkdYfRv-B=p61tVThFkjoqDGfcqOjmHxmj4wv-NYyky2-kg@mail.gmail.com>
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Sun, 13 Jul 2025 10:43:12 +0200
-X-Gm-Features: Ac12FXyIRZr_PZFqMr5GkGp0O9WQSutVaydnaLLulDe-fCJJJZygxCd1lTC-X0M
-Message-ID: <CAMRc=Me561DEHio+zN6oX9oqD6ue7z-y9E+cO_7_Z3L4taQd_A@mail.gmail.com>
-Subject: Re: [PATCH v2 08/12] pinctrl: qcom: use generic pin function helpers
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, 
-	Alexey Klimov <alexey.klimov@linaro.org>, Lorenzo Bianconi <lorenzo@kernel.org>, 
-	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Paul Cercueil <paul@crapouillou.net>, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mips@vger.kernel.org, 
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+	id 1uasPe-0000000HYie-1QaE;
+	Sun, 13 Jul 2025 08:50:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
+	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
+	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
+	Resent-Cc:Resent-Message-ID; bh=z8l1uZ17d5krCHtbYqm9PDoWYLxWOwX4gFpsp2HGkHo=;
+	t=1752396620; x=1753606220; b=kjB4UiYkTK2OBH2K/FiHrE6gRddigwZFVmPV6Ny23mZ1MTI
+	sDZjoos+eA6EMXibE/nzOd9Ka9lKWHh1ndnI8diwRb+wlgNVR9hq6Hpww47Y6uYBRwoea5CP4UzTk
+	1GjZdH0l0gGOIvQXQnk39Kve1wmm+oz51qnr2yrwhUaamj5hMNk5UV9ESAhKDfXGWdP0sT2GBRoOK
+	124SkBRll2t4Vx/xE3SK7soT6jOBAY6CVINNmVEvd9G9OcFOIP6vUryX8sNvWyVoyjd4TKo72ZYWG
+	9u02oCO2kGzj5fGsgx3aB1ZioRj+Gw8j/nBMV2nRL4uP2KNxX3pWtwxGRMArE7kA==;
+Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+	(Exim 4.98.2)
+	(envelope-from <johannes@sipsolutions.net>)
+	id 1uasPF-00000001ria-18EG;
+	Sun, 13 Jul 2025 10:49:58 +0200
+Message-ID: <36c4cd5f263e4bae22a1779a9befd24dacd5d3bf.camel@sipsolutions.net>
+Subject: Re: [PATCHv3 wireless-next 3/7] wifi: rt2800soc: allow loading from
+ OF
+From: Johannes Berg <johannes@sipsolutions.net>
+To: Stanislaw Gruszka <stf_xl@wp.pl>, Rosen Penev <rosenp@gmail.com>
+Cc: linux-wireless@vger.kernel.org, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Thomas
+ Bogendoerfer	 <tsbogend@alpha.franken.de>, Matthias Brugger
+ <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, "open list:OPEN FIRMWARE AND
+ FLATTENED DEVICE TREE BINDINGS"	 <devicetree@vger.kernel.org>, open list
+ <linux-kernel@vger.kernel.org>,  "open list:MIPS"
+ <linux-mips@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"	
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>
+Date: Sun, 13 Jul 2025 10:49:54 +0200
+In-Reply-To: <20250713071532.GA18469@wp.pl>
+References: <20250710200820.262295-1-rosenp@gmail.com>
+	 <20250710200820.262295-4-rosenp@gmail.com> <20250712101418.GD9845@wp.pl>
+	 <CAKxU2N-RXgFKYPAqEu3iZDMAisj_K-b+ZZTGFsabWz7pMK+02A@mail.gmail.com>
+	 <20250713071532.GA18469@wp.pl>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
+MIME-Version: 1.0
+X-malware-bazaar: not-scanned
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250713_014326_770863_CBAF963E 
-X-CRM114-Status: GOOD (  15.18  )
+X-CRM114-CacheID: sfid-20250713_015022_404604_09CF813F 
+X-CRM114-Status: UNSURE (   5.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,37 +85,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 11, 2025 at 8:37=E2=80=AFPM Linus Walleij <linus.walleij@linaro=
-.org> wrote:
->
-> On Wed, Jul 9, 2025 at 4:39=E2=80=AFPM Bartosz Golaszewski <brgl@bgdev.pl=
-> wrote:
->
-> > From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-> >
-> > Use the existing infrastructure for storing and looking up pin function=
-s
-> > in pinctrl core. Remove hand-crafted callbacks.
-> >
-> > Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
->
-> Needless to say I'm a big fan of this patch set and it seems only
-> this patch 8/12 has outstanding comments.
->
-> Do you think you can do a quick iteration of it or does it require
-> a lot of time?
->
+On Sun, 2025-07-13 at 09:15 +0200, Stanislaw Gruszka wrote:
+>=20
+> Can be done as separate patch since you already
+> posed v4.
 
-I don't want to rush it. Let's make it v6.18 material as I want the
-changes to spend some more time in next and not break anything. It
-affects literally all qualcomm platforms after all.
+Maybe I should point out that I've simply been dropping the patches
+unseen because they don't even apply.
 
-> I am tempted to simply apply patches 1-7 to make your life
-> easier past v6.17, should I do this?
->
-
-Yes, please, they carry no functional change, it will be less baggage
-for the future.
-
-Bart
+johannes
 
