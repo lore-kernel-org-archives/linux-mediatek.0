@@ -4,123 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FF0CC83F1D
-	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Jul 2025 09:31:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 197CFC83F17
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Jul 2025 11:09:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1bwZVSjk7w7/qWtqPHwoSRG3obOJ+goMmNipx7IlChc=; b=M2uX1e8W5v3HMURj3FBKawrLrf
-	KiQTC9GyWaVRGCo35en8Gu7zjZCLvF1W7/ZoQVI5EZVy/1TTm6vV0MvKyLniRKhBmu40Jr96wK2PJ
-	IyBQN3XU0aOmY/yHhKV2GUjkfT1rk8loxivRQEJcyjutrEF4hdfbTAJmE7U6x0qWXW1kiCJ6vmQ+W
-	/w+kNxohqf4gM3pVS2vC4D2T7BpQlPvjIZSdneHfMpkxarB/aptEGk/aJT1haYNyHYkyP3PhA7Eas
-	maFOP4viDYWvaQdja95uyjWT8TyqD4Hzo+dnyrrbacKaP+dq4xO1vXF46AJFnUMFeVH6dK/Q0UZ/s
-	GWlL2cjw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=e+xummqgYb2Lq6yLMj4NF5pLE9s1eEAYV29V7m0JwKI=; b=Gp+KHTJrNmGvXTbbSuexr85vnd
+	5rtYVpQfMV/17ssy6l9ur5vYp689+HAIt1wQuGDhUjojOyl3kdBtWK35usRF1YmcFaqOl+qXfaUyG
+	1R4W0HvEStpktTyhRBQ4GPo/yoCuyk4irXqtBiTtQ+k74JNfsTR42/64fchk/A2PYB0yXKDasrOxG
+	2aKrG/DEMlSQyTMPtDe7njBpLQIM11B0Tmb8/4u2c7bvX+1ZVDATYVAP6hbrfFodb0UsRPt3BJ9M7
+	K5CraXHeOJq4RSJPPu3mSYC70fvmN1aEByTyjWoC9SGvG5zZ0YsARpL925GAT4bB67Si1XRJHxI7j
+	ygACzX/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uat3p-0000000015L-1F68;
-	Sun, 13 Jul 2025 09:31:53 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1uauaB-000000005Mx-2EAB;
+	Sun, 13 Jul 2025 11:09:23 +0000
+Received: from s3.sipsolutions.net ([2a01:4f8:242:246e::2] helo=sipsolutions.net)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1uasSs-0000000HYxC-0PIv;
-	Sun, 13 Jul 2025 08:53:43 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 66A475C5689;
-	Sun, 13 Jul 2025 08:53:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A084BC4CEE3;
-	Sun, 13 Jul 2025 08:53:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752396821;
-	bh=w/0Fjh9qq3s60zMIQEKZHLpivdAFsTyEqdtPrlrf5fg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=o/XYSv0MOyz+pNsABlp/uGFYUDqCWV2Rp73lUEbZ+TZhPeOVEEwXUUJoJ9qWmNpLk
-	 A4eqYL336UjzsQVsQgtQva04bnTtCLxWSPApipCscMfyOSDlBAhiibV0mmYdV4heG6
-	 lRNu11XgnOKOzayPuUJ8dh8HwsTYg7QfJD61L01R3ccKp1EcAR6b3eMx0kj/3QZ6VD
-	 RUabtzY1qZGYjEy1OP6ig3ZKUdEw0tYZ587jWBdEl2MrwUqAyZlKaSnzmTfjMn0FcC
-	 Q7Z//oikApetqk//XBCZC94YvDBw1lv611HGs7kL/fby8EyL6nN7uZ88ufqF4ybr+2
-	 RTI7nreO2OpgQ==
-Message-ID: <cf137d24-3561-4e53-8f35-70ab501afcb8@kernel.org>
-Date: Sun, 13 Jul 2025 10:53:35 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCHv3 wireless-next 7/7] dt-bindings: net: wireless: rt2800:
- add
-To: Julian Calaby <julian.calaby@gmail.com>, Rob Herring <robh@kernel.org>
-Cc: Stanislaw Gruszka <stf_xl@wp.pl>, Rosen Penev <rosenp@gmail.com>,
- linux-wireless@vger.kernel.org, Johannes Berg <johannes@sipsolutions.net>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>,
- "open list:MIPS" <linux-mips@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>
+	id 1uauXm-000000005CU-2V7s;
+	Sun, 13 Jul 2025 11:06:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
+	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
+	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
+	Resent-Cc:Resent-Message-ID; bh=e+xummqgYb2Lq6yLMj4NF5pLE9s1eEAYV29V7m0JwKI=;
+	t=1752404814; x=1753614414; b=HHrHImdWu32DT26N0aVLX8zUe+/iLueegivuYn4+ImtMpEz
+	WXJbrmqXnW/kqkPIpboq3NRtN+7GuYyAb3kVoeXRVLSvYEbpw4WaQ22xa8KV/uRFVbg2XtTPuVMUH
+	d9cZrgSq8cUelgSjECc/vub3mxX3ub6qvUedVXrbn4TmFslYmTno5HjPZmfrpSWBRxZIYJOSzf9gx
+	S2OfraYWOA4xhL69/uLBJ8qFfd/ISGVIaeX3WQ9Qf/xVJ9Fem/YHVSlz0ANIeA1G/zgC11dYRNNMl
+	IoAT9ZmkCidmjNFVizgvWKs/9+/muAvIw29T7NsS6HTvnGlavduxOWGyK5hfRQ/Q==;
+Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+	(Exim 4.98.2)
+	(envelope-from <johannes@sipsolutions.net>)
+	id 1uauXh-000000020HW-1ovy;
+	Sun, 13 Jul 2025 13:06:49 +0200
+Message-ID: <1f78de8ee5fde6e3e652148c4f75878573957e50.camel@sipsolutions.net>
+Subject: Re: [PATCHv3 wireless-next 3/7] wifi: rt2800soc: allow loading from
+ OF
+From: Johannes Berg <johannes@sipsolutions.net>
+To: Stanislaw Gruszka <stf_xl@wp.pl>, Rosen Penev <rosenp@gmail.com>
+Cc: linux-wireless@vger.kernel.org, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Thomas
+ Bogendoerfer	 <tsbogend@alpha.franken.de>, Matthias Brugger
+ <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, "open list:OPEN FIRMWARE AND
+ FLATTENED DEVICE TREE BINDINGS"	 <devicetree@vger.kernel.org>, open list
+ <linux-kernel@vger.kernel.org>,  "open list:MIPS"
+ <linux-mips@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"	
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>
+Date: Sun, 13 Jul 2025 13:06:48 +0200
+In-Reply-To: <36c4cd5f263e4bae22a1779a9befd24dacd5d3bf.camel@sipsolutions.net> (sfid-20250713_105038_510459_ADA2EA39)
 References: <20250710200820.262295-1-rosenp@gmail.com>
- <20250710200820.262295-8-rosenp@gmail.com>
- <d8b0abb2-1a12-42bf-aafd-4cd1e21babd6@kernel.org>
- <CAKxU2N-c2tHBYWBM+FJGqdSaqzw9u0O8e0G7AVqk6b0QdRnPTw@mail.gmail.com>
- <20250711-invisible-dainty-jackrabbit-acbf8f@krzk-bin>
- <20250712104006.GA13512@wp.pl>
- <e435a765-fb91-408f-81dd-01a73fc43b6b@kernel.org>
- <23e629cb-0698-4a9c-aa18-9a7e71aa8b73@kernel.org>
- <CAGRGNgVk9__2mCE-hYSP7T0yKLjPsDkvG6+NghJMXazYXUid1w@mail.gmail.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <CAGRGNgVk9__2mCE-hYSP7T0yKLjPsDkvG6+NghJMXazYXUid1w@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+		 <20250710200820.262295-4-rosenp@gmail.com> <20250712101418.GD9845@wp.pl>
+		 <CAKxU2N-RXgFKYPAqEu3iZDMAisj_K-b+ZZTGFsabWz7pMK+02A@mail.gmail.com>
+		 <20250713071532.GA18469@wp.pl>
+	 <36c4cd5f263e4bae22a1779a9befd24dacd5d3bf.camel@sipsolutions.net>
+	 (sfid-20250713_105038_510459_ADA2EA39)
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.2 (3.56.2-1.fc42) 
+MIME-Version: 1.0
+X-malware-bazaar: not-scanned
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250713_015342_223958_4C79EEA2 
-X-CRM114-Status: GOOD (  25.73  )
+X-CRM114-CacheID: sfid-20250713_040654_629322_65E07559 
+X-CRM114-Status: UNSURE (   7.41  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,95 +87,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13/07/2025 01:20, Julian Calaby wrote:
-> Hi Krzysztof and Rob,
-> 
-> On Sun, Jul 13, 2025 at 2:59 AM Krzysztof Kozlowski <krzk@kernel.org> wrote:
->>
->> On 12/07/2025 18:53, Krzysztof Kozlowski wrote:
->>> On 12/07/2025 12:40, Stanislaw Gruszka wrote:
->>>> Hi Krzysztof,
->>>>
->>>> On Fri, Jul 11, 2025 at 09:48:49AM +0200, Krzysztof Kozlowski wrote:
->>>>> On Thu, Jul 10, 2025 at 03:40:30PM -0700, Rosen Penev wrote:
->>>>>> On Thu, Jul 10, 2025 at 2:40 PM Krzysztof Kozlowski <krzk@kernel.org> wrote:
->>>>>>>
->>>>>>> On 10/07/2025 22:08, Rosen Penev wrote:
->>>>>>>> Add device-tree bindings for the RT2800 SOC wifi device found in older
->>>>>>>> Ralink/Mediatek devices.
->>>>>>>>
->>>>>>>> Signed-off-by: Rosen Penev <rosenp@gmail.com>
->>>>>>>> ---
->>>>>>>>  .../bindings/net/wireless/ralink,rt2800.yaml  | 47 +++++++++++++++++++
->>>>>>>>  1 file changed, 47 insertions(+)
->>>>>>>>  create mode 100644 Documentation/devicetree/bindings/net/wireless/ralink,rt2800.yaml
->>>>>>>>
->>>>>>>> diff --git a/Documentation/devicetree/bindings/net/wireless/ralink,rt2800.yaml b/Documentation/devicetree/bindings/net/wireless/ralink,rt2800.yaml
->>>>>>>> new file mode 100644
->>>>>>>> index 000000000000..8c13b25bd8b4
->>>>>>>> --- /dev/null
->>>>>>>> +++ b/Documentation/devicetree/bindings/net/wireless/ralink,rt2800.yaml
->>>>>>>
->>>>>>> Filename should match compatible. You were already changing something
->>>>>>> here...
->>>>>> hrm? that makes no sense. Various drivers have multiple compatible lines.
->>>>>
->>>>> Luckily we do not speak about drivers here. Anyway, follow standard
->>>>> review practices, you don't get special rules.
->>>>
->>>> Could you please elaborate what you mean ?
->>>
->>> Rosen replied in abrasive way, so I am not going to dig this.
->>>
->>>>
->>>> I greped through Documentation/devicetree/bindings/*/*.yaml and plenty
->>>
->>> I assume you refer to last 2 years bindings, not something older, right?
->>> It is really poor argument to find old files and use them as example
->>> "they did like that".
->>>
->>>> of "compatible:" items do not match the filename. So hard to tell
->>>
->>> I did not ask for compatible to match filename.
->>>
->>>> what rule you are referencing, as it seems it's not really applied.
->>> Check reviews on the lists. It is pretty standard review. Everyone gets
->>> it for this case here - single device, single compatible.
->>
->> BTW, it is not hiding on the lists:
->>
->> https://lore.kernel.org/linux-devicetree/?q=f%3Aherring+filename
->> https://lore.kernel.org/linux-devicetree/?q=f%3Akozlowski+filename
-> 
-> I just had a quick look through the in-tree documentation on device
-> tree bindings and can't find this rule there.
-> 
-> It's good that you and Rob are consistent in applying this rule, but
-> pointing to the mailing list archives instead of the documentation
-> makes it feel like patch submissions in this space are judged by some
-> arbitrary set of undocumented rules.
-> 
-> Could you please update the documentation with the current set of
-> requirements so that people who are new to this space have a
-> consistent set of rules they can apply to their work?
+On Sun, 2025-07-13 at 10:49 +0200, Johannes Berg wrote:
+> On Sun, 2025-07-13 at 09:15 +0200, Stanislaw Gruszka wrote:
+> >=20
+> > Can be done as separate patch since you already
+> > posed v4.
+>=20
+> Maybe I should point out that I've simply been dropping the patches
+> unseen because they don't even apply.
 
+Ah, that's because of Felix's fix, so looks it will apply now that I've
+fast-forwarded wireless and wireless-next.
 
-I agree. I already grew the docs some time ago, then few days ago and I
-have in plan to keep growing it more. I'll document also this one,
-thanks for the pointer.
+I'd prefer a resend though (perhaps with the small thing Stanislaw
+thought might be fixed, your call) so the bot can pick it up.
 
-Regardless of the missing docs, argument "I found some old code like
-that" is almost never correct. And even if you find newest code like
-that, you still need to consider all reviews and discussions on the
-lists leading to such or some other decision. Including the most trivial
-reason: we often don't care about minor details. Filename is such minor
-detail, unused label in DTS example is another, even more frequent one
-(we complain about it but also accept many patches with it).
-
-Do I question every reviewer's comments like that on my patches, which I
-send a lot? That I found some old code which was different than what
-reviewer asked me? No.
-
-Best regards,
-Krzysztof
+johannes
 
