@@ -4,72 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEE58C83F21
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Jul 2025 13:15:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9627DC83F1B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Jul 2025 14:19:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=l9eAnCs+/E39mEpFrELdAjGkwDVD9NTMJNU7xW+Uohw=; b=Tg7mutd3tt2G3NV4YL2QSQ7vZg
-	AAbEnRr9hG7C2+9zddeLUIilUuzZ9BOCwv5Dm5CbsFnPcHB8y0Ua7f0cb/CYYYszVeX4diguIBWpq
-	oKWjVkGVBLKf55q88hQUbanXLwScQXV8DhSYWrvt1eq1HWaFiu10bWbMwEL/Zcgmy2Hl6biVdF8/O
-	hKbnwX68qI1VIrO803tnqn0Qwl4gHVfvmiQonTXFBowHJrmmYoYz7SjHUHIdB2UNMN8alc99cTSZE
-	Yc6s5TVxVhayHZbIyg4pgET5lP1j5+LPG+oRiiF4fBGrU/eLzNTSsnXxDnYaZ7oeL7zVrGhB4nquq
-	j968TgVA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=7mJcjUvSFYbGs2W28uhwfy8o8MgVOg2cTpg8MwDAIIY=; b=dlyuJ6yEepjH1h+9rK7KbJGJuZ
+	SDWW1kumBXbKgZbuLVo7Vh87DeqDjxkBU0eA5u00HSyWWtDIw3ReRAgrkqo5IA+Vx8EzZEDPmopI6
+	TZLiUUhUhJmssjySLpR2p0X0W5g5oSzGKF5X+C2az0RM+2KqMrvbRx/it/tQj0x5fbOjgR1HYnQ14
+	MupcY8uCQjnJj1It4t4/4Y3eOQJ49UQBRNowoDroOMVIjCGMycd7sF3kgR+cZZpPLnKRvw1kjl7tP
+	/aZ2P/mxdAvy5MhndOYWfCXKVnIxeEHRLsdh0MXV6RpztWs873m8jS8+a2lf/yqIidMzCwR9UmRL7
+	MyWPWCGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubJ1h-00000002FPI-1g9L;
-	Mon, 14 Jul 2025 13:15:25 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1ubK1M-00000002Rrn-06VA;
+	Mon, 14 Jul 2025 14:19:08 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubIMz-00000002BAW-3yhv;
-	Mon, 14 Jul 2025 12:33:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1752496400;
-	bh=4irWIhJ4mRp4qA3am0X7ku6qyTiSX9hhxAXsieMpu28=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Psz4i85hVOvV3ihew+dZZNJAlptx1OOddZmXypsKodmHlA/Enmv9mzxl522aySVWy
-	 asOcdKWO/byCjjuDkcEVL75xfHVALfoxyt0dZCpk7FPcMHNKFDjjWgEFZXpB9/aQ2W
-	 +KBL96Yq5FpMWFbNKVATPyqRI0cOUuGN4TmAjC72ahzLMpcHMNYdoOz6rSPjFCzGiJ
-	 7BO5+8deLtqNwTmV/wMwKKBqF3yq0RPb72NbjG3gBMtF6NCVWOoGJWe/yNMvQI+M2f
-	 dI7jPbBfKYLTo0qLlzEUQgDd9HxIhIyBXdotVepf9ZqBTtDx23yeE6ZnjmIIgIXFYn
-	 csVbFyUqx1riA==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5E55717E05F0;
-	Mon, 14 Jul 2025 14:33:19 +0200 (CEST)
-Message-ID: <190c5ddd-b89b-427f-abfe-b8ccccb75c3f@collabora.com>
-Date: Mon, 14 Jul 2025 14:33:18 +0200
+	id 1ubJox-00000002PvM-0J7S;
+	Mon, 14 Jul 2025 14:06:20 +0000
+X-UUID: b469aef260bb11f09f706fa2197c6ceb-20250714
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=7mJcjUvSFYbGs2W28uhwfy8o8MgVOg2cTpg8MwDAIIY=;
+	b=NMI4dFbDMuGIoSAH+Vtf8BO/n5iIdGSMOANTQUk+5Xd7RoENje9s4jD6hWLGC5dHrvdo/wEB8wVnCZ7zagOOyRFT7/D7Uwm01cNXE4HRSuNtRhMPfpyOaiLhOt1SOMBVPqIyofCbmVDLNx2FjrdJqx1h/rVwYBbE/Zp6rVz9dz8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.2,REQID:df18654f-f389-4b03-bdb0-b87276accc9c,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:9eb4ff7,CLOUDID:05c624df-2070-40bb-9c24-dfabef7c07f4,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102,TC:nil,Content:0|50,EDM:-3,IP:ni
+	l,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES
+	:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: b469aef260bb11f09f706fa2197c6ceb-20250714
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
+	(envelope-from <sirius.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 701064952; Mon, 14 Jul 2025 07:06:15 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.39; Mon, 14 Jul 2025 22:06:11 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1258.39 via Frontend Transport; Mon, 14 Jul 2025 22:06:11 +0800
+From: Sirius Wang <sirius.wang@mediatek.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Greg Kroah-Hartman
+	<gregkh@linuxfoundation.org>, Jiri Slaby <jirislaby@kernel.org>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Sean Wang <sean.wang@mediatek.com>
+CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-serial@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <wenst@chromium.org>,
+	<xavier.chang@mediatek.com>, Sirius Wang <sirius.wang@mediatek.com>
+Subject: [PATCH v4 0/3] Add mt8189 dts evaluation board and Makefile
+Date: Mon, 14 Jul 2025 22:06:02 +0800
+Message-ID: <20250714140608.2065966-1-sirius.wang@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/5] dt-bindings: mfd: syscon: Add mt8196 fdvfs syscons
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
- Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- Viresh Kumar <viresh.kumar@linaro.org>,
- Hector Yuan <hector.yuan@mediatek.com>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
-References: <20250711-mt8196-cpufreq-v1-0-e1b0a3b4ac61@collabora.com>
- <20250711-mt8196-cpufreq-v1-1-e1b0a3b4ac61@collabora.com>
- <4537173f-7f79-4629-a2ef-cbf1edd2ed81@collabora.com>
- <2866261.BEx9A2HvPv@workhorse>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <2866261.BEx9A2HvPv@workhorse>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20250714_053322_148407_B4A1519D 
-X-CRM114-Status: GOOD (  58.44  )
+X-CRM114-CacheID: sfid-20250714_070619_121245_34E55D79 
+X-CRM114-Status: GOOD (  11.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,227 +88,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 14/07/25 13:58, Nicolas Frattaroli ha scritto:
-> On Monday, 14 July 2025 10:47:32 Central European Summer Time AngeloGioacchino Del Regno wrote:
->> Il 11/07/25 16:57, Nicolas Frattaroli ha scritto:
->>> The MT8196 SoC uses two syscon ranges for CPU DVFS that are separate
->>> from each other. One, mt8196-fdvfs-config, is used to check for a magic
->>> number at that memory address to verify that fdvfs should be used. The
->>> other, mt8196-fdvfs, is used to configure the desired frequency for the
->>> DVFS controller for each CPU core.
->>>
->>
->> What is the reason why you're using syscons here?
->>
->> Can't we simply assign the FDVFS MMIO to the cpufreq-hw node?
-> 
-> That would require refactoring the driver way more since it currently
-> gets the number of performance domains from the number of regs. If
-> you want me to do that, I'll need to know how we should disambiguate
-> performance domains from misc things like fdvfs. Stuff like string
-> comparisons on reg-names seems very ugly for the driver to do, but
-> adding a property to explicitly specify the number of performance
-> domains would then put into question what the existing binding did
-> by just assuming this information is something that implementations
-> can get without any ambiguity.
-> 
-> Even if we forget that Linux is the only kernel that cares about this
-> device tree, I'm not totally on board with having the smattering of
-> dozens of different tiny register ranges in every DT node on mediatek
-> like the vendor kernel does it. And not to forget, it'd change the
-> binding even more, to the point where I'd probably have to create a
-> new binding for mt8196.
-> 
+We add basic chip support for Mediatek MT8189 on evaluation board.
 
-The problem that I see with having a syscon for this is that I can foresee
-future SoCs using the same cpufreq-hybrid IP, which means that we'd surely
-be cluttering the dt-bindings/mfd/syscon.yaml with a huge list of MediaTek
-SoCs (x2, because it's two syscons, even) without having a really-really
-valid reason to do so.
+In this series, we also add dt-bindings document definition for MT8189.
+
+This series is based on tag: next-20250714
+
+Changs in v4:
+ - Correct cpu-idle-states
+ - Change the "reg" property name of the "memory" node in the 
+   device tree source (DTS) to lowercase.
+
+Changs in v3:
+ - Move ulposc and ulposc3 before cpu nodes.
+ - Refactor cpu-map to a single cluster0.
+ - Change cpu nodes name from medium core to big core.
+ - Move psci before timer nodes.
+
+Changs in v2:
+ - Fix warning issues for make CHECK_DTBS=y
+ - Add mediatek,uart.yaml document
 
 
->> Or is there any reason why we can't declare it as mmio-sram? ...because I'm not
->> entirely sure but the FDVFS space should effectively be a [c]SRAM memory range...
-> 
-> mmio-sram is fairly useless for the purposes of having something as
-> a fixed set of registers, hence why nobody else does it. From my
-> research, it appears to mainly be used if you want to actually treat
-> it like a pool of memory from which to then dynamically allocate
-> things.
-> 
-> To use it like a syscon, which is what we're doing, you'll have to
-> specify your mmio-sram node, then add a child node as a reserved range
-> for the "syscon-like" area, and then specify in ranges that you want
-> that child node's address translated into the global address space as
-> expected. Then in the driver, you can't just do a single function call
-> to get some regmap to write into, you have to follow a phandle in your
-> vendor property pointing to said sram range, then get its address,
-> translate said address to the global SoC address space, and then iomap
-> it. And the cleanup for error paths/driver remove isn't fun either.
-> 
-> Besides, we don't actually know whether this is an sram range, or how
-> large it is. The only confirmed sram range was the csram_sys thing at
-> like 0x11bc00 which is not used because it turned out to be useless,
-> and dealing with the kernel's sram interface to use it as a reserved
-> range just to read 4 bytes from it was a wasted afternoon. And that's
-> not even the real starting address of that sram area, that's just a
-> part we know is used because downstream uses 5 KiB there for a codepath
-> that's dead when fdvfs is present (except the one thing where it installs
-> a panic handler to shove something into a register to make it stop dvfs
-> logging if the kernel is in the process of crashing).
-> 
-> I can be convinced to go through the pain of making this mmio-sram if
-> I have documentation of the whole memory map of the SoC that shows me
-> where and how large each area of sram is, so that I don't need to come
-> up with my own starting addresses and offsets based on whatever random
-> stuff I can infer from downstream DT.
-> 
-> Really, every writable syscon is probably implemented as "sram" in
-> hardware. But an sram cell that is not general use memory but is
-> treated by the hardware as having some meaning is not mmio-sram. We
-> can't ever use it in any way other than as a syscon, and telling
-> implementations that they can except then slapping a huge reserved
-> range into it just makes them have to implement syscons twice, once
-> as syscons and once as syscons-except-it's-a-reserved-sram-mmio-range.
-> 
+Sirius Wang (3):
+  dt-bindings: arm: Add compatible for MediaTek MT8189
+  dt-bindings: serial: mediatek,uart: Add compatible for MT8189
+  arm64: dts: mt8189: Add mt8189 dts evaluation board and Mafefile
 
-I understand. That's a valid reason, it's ok.
+ .../devicetree/bindings/arm/mediatek.yaml     |   4 +
+ .../bindings/serial/mediatek,uart.yaml        |   1 +
+ arch/arm64/boot/dts/mediatek/Makefile         |   1 +
+ arch/arm64/boot/dts/mediatek/mt8189-evb.dts   |  20 +
+ arch/arm64/boot/dts/mediatek/mt8189.dtsi      | 419 ++++++++++++++++++
+ 5 files changed, 445 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8189-evb.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8189.dtsi
 
-I'm not sure though why you're talking about huge restructuring of the MediaTek
-cpufreq driver to add the FDVFS registers in the reg list?
+-- 
+2.45.2
 
-There are only two MMIOs that we care about here, right? FDVFS and FDVFS-CONFIG.
-
-Imagine the devicetree node being like this:
-
-performance-controller@1234 {
-   compatible = "mediatek,mt8196-cpufreq-hw";
-   reg = <0 0xdomain1 0 0xsz>, <0 0xdomain2 0 0xsz>, <0xdomainN 0 0xsz> ...
-         <0 0xfdvfs 0 0xsz>, <0 0xfdvfsconfig 0 0xsz>;
-   #performance-domain-cells = <1>;
-};
-
-If you want, you can even do without having reg-names (though that might be better
-for readability), because:
-
-   1. This is a MT8196-specific binding (and node); this means that you can safely
-      assume that:
-      - There are three clusters (ignorable)
-      - There is FDVFS support (not ignorable)
-   2. No other SoC will ever use the MT8196 binding without being compatible with it
-      and anyway newer socs will need something like
-      compatible = "mediatek,mt1234-cpufreq-hw", "mediatek,mt8196-cpufreq-hw";
-      - This means that N.1 still stands for new SoCs
-
-So I do see two solutions here, of which I kinda prefer the one without reg-names.
-
-With reg-names:
-  1. Check all MMIOs named "domain%u" (domain0, domain1, domain2): this kind-of
-     reflects the naming of the cpufreq policies (policy0...N), which even keeps
-     things consistent between both hardware names and cpufreq software names (but
-     of course - as long as HW is described in bindings, we don't care about any
-     software defined names);
-     - This gives you the number of performance domains, 3 in the specific case
-       of the MT8196 SoC (and some future others for sure!)
-  2. Get reg by name: "fdvfs-base", "fdvfs-config"
-
-Without reg-names:
-  1. Define the following in the dt-bindings for the cpufreq with fdvfs:
-     reg:
-       - description: FDVFS Performance State (or voltage?) setting region
-       - description: FDVFS Configuration region
-       - description: Cluster 0 OPP tables and Performance State setting region
-       - description: Cluster 1 OPP tables and ...
-       - description: Cluster 2 OPP tables and ...
-       (new socs) - description: Cluster 3 ... etc etc etc
-  2. Add the MT8196 conditionals and exclusions:
-     if: (blahblah) mediatek,mt8196-cpufreq-hw
-     then: reg:   minItems: 5    maxItems: 5
-  3. Modify the driver like so:
-     - Add platform data for MT8196, and set a "uses_fdvfs = true" (or something
-       like that, anyway, your call about the naming)
-     - Get the FDVFS regions:
-         fdvfs_base = devm_platform_ioremap_resource(pdev, 0);
-         error_checking_here();
-         fdvfs_config = devm_platform_ioremap_resource(pdev, 1);
-         error_checking_here();
-
-         static int mtk_cpu_resources_init(.....)
-         {
-           .....code......
-           index = args.args[0]; /* performance-domains number after parsing */
-
-           if (pdata->uses_fdvfs)
-             index += 2;
-
-           ...code... (no further modification required)
-         }
-   4. Profit!
-
-Now, if you're thinking about *guaranteeing* that FDVFS is always the first two
-MMIOs in the node... just do not care.
-
-You are already enforcing that with devicetree bindings, so that's how you are
-guaranteeing that.
-
-Anyway - If you want to make an entirely new binding named
-            mediatek,mt8196-cpufreq-hw.yaml
-noone prevents you from doing that.
-
-If the binding describes the same hardware, it is WRONG to create a new one, but
-in this case it would be describing *new hardware* that is incompatible with the
-previous version, so that's RIGHT to do.
-
-You don't need to have two drivers for two bindings, either.
-
-You can have one driver with two different bindings, as long as it makes sense to
-have that (as in, if the two are incompatible in the binding, but in the actual
-code it still makes sense to have both in the same driver, that's ok).
-
-Cheers!
-Angelo
-
->>
->> Cheers,
->> Angelo
->>
-> 
-> Kind regards,
-> Nicolas Frattaroli
-> 
->>> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
->>> ---
->>>    Documentation/devicetree/bindings/mfd/syscon.yaml | 4 ++++
->>>    1 file changed, 4 insertions(+)
->>>
->>> diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Documentation/devicetree/bindings/mfd/syscon.yaml
->>> index 27672adeb1fedb7c81b8ae86c35f4f3b26d5516f..5ee49d2ba0cdb72dd697a0fd71c8416ad4fd2c1e 100644
->>> --- a/Documentation/devicetree/bindings/mfd/syscon.yaml
->>> +++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
->>> @@ -88,6 +88,8 @@ select:
->>>              - mediatek,mt8135-pctl-a-syscfg
->>>              - mediatek,mt8135-pctl-b-syscfg
->>>              - mediatek,mt8173-pctl-a-syscfg
->>> +          - mediatek,mt8196-fdvfs
->>> +          - mediatek,mt8196-fdvfs-config
->>>              - mediatek,mt8365-syscfg
->>>              - microchip,lan966x-cpu-syscon
->>>              - microchip,mpfs-sysreg-scb
->>> @@ -194,6 +196,8 @@ properties:
->>>              - mediatek,mt8135-pctl-a-syscfg
->>>              - mediatek,mt8135-pctl-b-syscfg
->>>              - mediatek,mt8173-pctl-a-syscfg
->>> +          - mediatek,mt8196-fdvfs
->>> +          - mediatek,mt8196-fdvfs-config
->>>              - mediatek,mt8365-infracfg-nao
->>>              - mediatek,mt8365-syscfg
->>>              - microchip,lan966x-cpu-syscon
->>>
->>
->>
->>
-> 
-> 
-> 
-> 
 
