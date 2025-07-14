@@ -4,64 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35D9DC83F17
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Jul 2025 07:48:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02EC2C83F1B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Jul 2025 07:49:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BmaAPCnpKM12OhXSftoPM8o7d5B12MuO1V48bt8+YE8=; b=iIM69OCTfCn8yXsU8Sk3lzyhAZ
-	WDCnWSLDhvcE8gzfRtoL3ZtDSXzZDNilPXzs2ZyGhQoUgkvoZETk/ZxTtk2rA+S4KJp0fhyRvRcvO
-	CLQkC2Hd1pmepSF6ZTZNxSjx7of6Y2UPjuP9/npfF/h+wW8TL4SELNtIaCLs9wm9BdiWOS7x3JTgU
-	xX4pFXYzxwnqSU3U0Fly5lnt8iVrzezKTg3jTdTZ/AbHkAW67DDpdRjupDmIK5e3I9UUazieaonDy
-	yNoGfhQfISLbDzdnkce2N0AAjFp0LuOFbjiP74R7MWbNc3c3IhKAqa93sib18uV5kh2v/TfHUjPYe
-	lAwnaNzA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vKBrsnVS6ESCJZGI5RMdRp2cdl53npmsWzq9LRe1fPY=; b=oNefYLYTD9RHcQuNTieC2I/pa5
+	UC4oww1MmwBbg2oBi7/F85iQ/Ul97bjdPgXr97+mNuvRLU0ozOAwkUKBcqlJ+JU7kXph3T8uwyWws
+	6i9PREdYW8uYUV+E3lN6L0ukw8rF+VywEU88tpVdkWPQlD6TFKuAPXat/Njnt2NPUheMy0rv7ptfi
+	WUpk1eRd2Hozdg/wRwL+0ilVzMcQSwVsrjaHCaIsTYN6DPBErq0Gf9VBCk8E1vMGMkuxJHgMlSm+n
+	CUt8ngY70u0LqAoKCm//nocO7KR1nXvWSYjW0glz0KNfq+YiG0ve0ITblRIbtKHdfFk3v6ZHo8Ily
+	qKgjWy9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubDvd-00000001W7H-2NhK;
-	Mon, 14 Jul 2025 07:48:49 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1ubDwB-00000001WMh-0hxS;
+	Mon, 14 Jul 2025 07:49:23 +0000
+Received: from nyc.source.kernel.org ([147.75.193.91])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ubDbQ-00000001TFN-1rr6;
-	Mon, 14 Jul 2025 07:27:56 +0000
+	id 1ubDmd-00000001Uvy-3ZTE;
+	Mon, 14 Jul 2025 07:39:33 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id C755360EDF;
-	Mon, 14 Jul 2025 07:27:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E09F4C4CEED;
-	Mon, 14 Jul 2025 07:27:54 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 10F5CA530A7;
+	Mon, 14 Jul 2025 07:39:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 44792C4CEED;
+	Mon, 14 Jul 2025 07:39:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1752478075;
-	bh=l9FcnN3Nw017Y5jMw/hRFAK60tqYcHmO+80ILEr7bjM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ngJOi6bps7q2MoH8KD+x/OCUoGWmHrKwsJt0uiO0jeK+fTy4I+fZwawX4oEfxak2r
-	 3zgZ2BT5ed2pg4NjE7pCCM5ZLAG30XmA0Q+9FrBR8DOOSNyXokxXNL8+yOo99yINCb
-	 nPgWFplMQAHiLP/PZ3PaSMdrozNaloMWSbN/vHxBX0ZM/WvyViTkW2waWtfMU3Rs2S
-	 aIRCSY6P+xiVnff8WPiJx89Fk3tKbTVvisetP+2dN6De+ba8vTou1irMP+qQB7Eq9M
-	 /NkosTtfAoYlwTtIs9h6jfAMJdJLsWknWS6O/pNaCEM4NnhwV+RP009Nf9Q5xC52RM
-	 CglfckzaVy5cg==
-Date: Mon, 14 Jul 2025 09:27:52 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Rosen Penev <rosenp@gmail.com>
-Cc: linux-wireless@vger.kernel.org, 
-	Johannes Berg <johannes@sipsolutions.net>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Stanislaw Gruszka <stf_xl@wp.pl>, 
-	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, 
-	"open list:MIPS" <linux-mips@vger.kernel.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCHv4 wireless-next 7/7] dt-bindings: net: wireless: rt2800:
- add
-Message-ID: <20250714-subtle-origami-gopher-c9099f@krzk-bin>
-References: <20250712210448.429318-1-rosenp@gmail.com>
- <20250712210448.429318-8-rosenp@gmail.com>
+	s=k20201202; t=1752478770;
+	bh=isH+LNOSuSMjjTwgNJb2F7KxIlurX0tYxz+h39DW+Pc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=AOD/KYobuLtBzyTbgiLp2pSrxVLtnp6Hhh49MCaM6g4HZNQpxAwHJJSvcdca3M8AM
+	 wyrlyS2GtsoYLpjaQTq27xjyrs/Fs2hH/GFIDdHFu4k4QYbnxGUxlofgPu16Ijlvle
+	 240zI9WDPWsPokYVvJ7try3I/M0yGgAqX0WJ3jjmyF5GxBeXrCeqfnumtiRFp9oKcT
+	 zGKFFJI4makuzZoLOBWuODbyFzGSerXiT9lox9wgLA/9oEERYx24rRUxLh+DCBXCIJ
+	 Mdc3y6VktUZKbE9Bn7OPaqXv285Yl7ryOXRmsU7Uu0OQWU9ZE1fRFElySSVdL2jQ/R
+	 ogqeu3NDl2wZQ==
+Message-ID: <623a647b-806a-4324-9c59-fcad3127f906@kernel.org>
+Date: Mon, 14 Jul 2025 09:39:24 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20250712210448.429318-8-rosenp@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next v2 2/7] net: airoha: npu: Add NPU wlan memory
+ initialization commands
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, Simon Horman <horms@kernel.org>,
+ Felix Fietkau <nbd@nbd.name>
+References: <20250705-airoha-en7581-wlan-offlaod-v2-0-3cf32785e381@kernel.org>
+ <20250705-airoha-en7581-wlan-offlaod-v2-2-3cf32785e381@kernel.org>
+ <20250707-agile-aardwolf-of-politeness-29fead@krzk-bin>
+ <aGt2L1e3xbWVoqOO@lore-desk>
+ <679e6fd2-967f-4057-9ccd-92a37ecc4819@kernel.org>
+ <aGvmoJ83EtYOIa0K@lore-desk>
+ <904d1165-185e-43ac-9b52-a2f17f774e80@kernel.org>
+ <aGzJ1vFufzBts_yG@lore-desk>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <aGzJ1vFufzBts_yG@lore-desk>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20250714_003932_027206_7FE717A0 
+X-CRM114-Status: GOOD (  13.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,68 +129,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jul 12, 2025 at 02:04:48PM -0700, Rosen Penev wrote:
-> Add device-tree bindings for the RT2800 SOC wifi device found in older
-> Ralink/Mediatek devices.
-
-Your subject was cut. Probably you wanted something like add "Realtek foo adapter" etc.
-
-
+On 08/07/2025 09:33, Lorenzo Bianconi wrote:
 > 
-> Signed-off-by: Rosen Penev <rosenp@gmail.com>
-> ---
->  .../bindings/net/wireless/ralink,rt2880.yaml  | 47 +++++++++++++++++++
->  1 file changed, 47 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/net/wireless/ralink,rt2880.yaml
+>>
+>>> posted net-next patches as preliminary ones for MT76 changes).
+>>> Moreover, this is the same approach we used when we added WED support to
+>>> mtk_eth_soc driver and the related MT76 support.
+>>> However, I am fine to post the MT76 changes as RFC and just refer to it in
+>>> this series cover-letter. Agree? 
+>>>
+>>>>
+>>>> So far I see ABI break, but without user cannot judge. And that's the
+>>>> hard reason this cannot be accepted.
+>>>
+>>> if you mean the dts changes, I will fix them in v3.
+>>>
+>> No, I mean driver.
 > 
-> diff --git a/Documentation/devicetree/bindings/net/wireless/ralink,rt2880.yaml b/Documentation/devicetree/bindings/net/wireless/ralink,rt2880.yaml
-> new file mode 100644
-> index 000000000000..a92aedf6ba01
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/net/wireless/ralink,rt2880.yaml
-> @@ -0,0 +1,47 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/net/wireless/ralink,rt2880.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Ralink RT2880 wireless device
-> +
-> +maintainers:
-> +  - Stanislaw Gruszka <stf_xl@wp.pl>
-> +
-> +description: |
-> +  This node provides properties for configuring RT2880 SOC wifi devices.
-> +  The node is expected to be specified as a root node of the device.
-> +
-> +allOf:
-> +  - $ref: ieee80211.yaml#
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - ralink,rt2880-wifi
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +required:
-> +  - compatible
-> +  - reg
+> Sorry, can you please explain what is the ABI break in the driver codebase?
+> airoha_npu_wlan_init_memory() is executed by MT76 driver and not during NPU
+> probe phase.
+> 
 
-Why clocks are optional? SoC devices rarely work without a clock.
+Read the first problem I pointed out - no user. Your new ABI returns
+error and you changed binding in incompatible way.
 
+Binding change is ABI break and its impact is impossible to judge due to
+missing code. I am speaking about this since beginning, but if you keep
+insisting that the driver does not matter then this is a NAK because you
+change ABI in the binding.
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Best regards,
 Krzysztof
-
 
